@@ -1,60 +1,84 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] drm/rockchip: gem: add the lacks lock and trivial changes
-Date: Wed, 31 May 2017 10:14:23 +0800
-Message-ID: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: gem: add the lacks lock and trivial changes
+Date: Wed, 31 May 2017 10:23:54 +0800
+Message-ID: <592E293A.2030006@rock-chips.com>
+References: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: mark.yao@rock-chips.com
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QXMgdGhlIGFsbG9jYXRpb24gYW5kIGZyZWUgYnVmZmVyIHRoYXQgbmVlZCB0byBhZGQgbXV0ZXgg
-bG9jayBmb3IgZHJtIG1tLApidXQgaXQgbGFja3MgdGhlIGxvY2tpbmcgb24gZXJyb3IgcGF0aCBp
-biByb2NrY2hpcF9nZW1faW9tbXVfbWFwKCkuCkFsc28sIHRoZSB0cml2aWFsIGNoYW5nZXMgbGlr
-ZSBUaGUgY29tbWVudCBzaG91bGQgYmUgIHBsYWNlZCBpbiB0aGUKa2VybmVsZG9jIGFuZCB1bnVz
-ZWQgYmxhbmsgbGluZS4KClNpZ25lZC1vZmYtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlw
-cy5jb20+Ci0tLQoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2Lmgg
-fCAyICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgNSAr
-KystLQogMiBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKaW5kZXggNDc5MDVm
-YS4uYzdlOTZiOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9kcnYuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Ry
-di5oCkBAIC00NSwxMyArNDUsMTMgQEAgc3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUgewogICoK
-ICAqIEBjcnRjOiBhcnJheSBvZiBlbmFibGVkIENSVENzLCB1c2VkIHRvIG1hcCBmcm9tICJwaXBl
-IiB0byBkcm1fY3J0Yy4KICAqIEBudW1fcGlwZTogbnVtYmVyIG9mIHBpcGVzIGZvciB0aGlzIGRl
-dmljZS4KKyAqIEBtbV9sb2NrOiBwcm90ZWN0IGRybV9tbSBvbiBtdWx0aS10aHJlYWRzLgogICov
-CiBzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgewogCXN0cnVjdCBkcm1fZmJfaGVscGVyIGZi
-ZGV2X2hlbHBlcjsKIAlzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKmZiZGV2X2JvOwogCXN0cnVjdCBk
-cm1fYXRvbWljX3N0YXRlICpzdGF0ZTsKIAlzdHJ1Y3QgaW9tbXVfZG9tYWluICpkb21haW47Ci0J
-LyogcHJvdGVjdCBkcm1fbW0gb24gbXVsdGktdGhyZWFkcyAqLwogCXN0cnVjdCBtdXRleCBtbV9s
-b2NrOwogCXN0cnVjdCBkcm1fbW0gbW07CiAJc3RydWN0IGxpc3RfaGVhZCBwc3JfbGlzdDsKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCmluZGV4IGRmOWU1NzAu
-LmI3NGFjNzEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
-YwpAQCAtMjksMTIgKzI5LDExIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ2VtX2lvbW11X21hcChz
-dHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqKQogCXNzaXplX3QgcmV0OwogCiAJbXV0
-ZXhfbG9jaygmcHJpdmF0ZS0+bW1fbG9jayk7Ci0KIAlyZXQgPSBkcm1fbW1faW5zZXJ0X25vZGVf
-Z2VuZXJpYygmcHJpdmF0ZS0+bW0sICZya19vYmotPm1tLAogCQkJCQkgcmtfb2JqLT5iYXNlLnNp
-emUsIFBBR0VfU0laRSwKIAkJCQkJIDAsIDApOwotCiAJbXV0ZXhfdW5sb2NrKCZwcml2YXRlLT5t
-bV9sb2NrKTsKKwogCWlmIChyZXQgPCAwKSB7CiAJCURSTV9FUlJPUigib3V0IG9mIEkvTyB2aXJ0
-dWFsIG1lbW9yeTogJXpkXG4iLCByZXQpOwogCQlyZXR1cm4gcmV0OwpAQCAtNTYsNyArNTUsOSBA
-QCBzdGF0aWMgaW50IHJvY2tjaGlwX2dlbV9pb21tdV9tYXAoc3RydWN0IHJvY2tjaGlwX2dlbV9v
-YmplY3QgKnJrX29iaikKIAlyZXR1cm4gMDsKIAogZXJyX3JlbW92ZV9ub2RlOgorCW11dGV4X2xv
-Y2soJnByaXZhdGUtPm1tX2xvY2spOwogCWRybV9tbV9yZW1vdmVfbm9kZSgmcmtfb2JqLT5tbSk7
-CisJbXV0ZXhfdW5sb2NrKCZwcml2YXRlLT5tbV9sb2NrKTsKIAogCXJldHVybiByZXQ7CiB9Ci0t
-IAoyLjcuNAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 2017年05月31日 10:14, Caesar Wang wrote:
+> As the allocation and free buffer that need to add mutex lock for drm mm,
+> but it lacks the locking on error path in rockchip_gem_iommu_map().
+> Also, the trivial changes like The comment should be  placed in the
+> kerneldoc and unused blank line.
+>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+
+Looks good.
+
+Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
+
+> ---
+>
+>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h | 2 +-
+>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 5 +++--
+>   2 files changed, 4 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> index 47905fa..c7e96b8 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> @@ -45,13 +45,13 @@ struct rockchip_crtc_state {
+>    *
+>    * @crtc: array of enabled CRTCs, used to map from "pipe" to drm_crtc.
+>    * @num_pipe: number of pipes for this device.
+> + * @mm_lock: protect drm_mm on multi-threads.
+>    */
+>   struct rockchip_drm_private {
+>   	struct drm_fb_helper fbdev_helper;
+>   	struct drm_gem_object *fbdev_bo;
+>   	struct drm_atomic_state *state;
+>   	struct iommu_domain *domain;
+> -	/* protect drm_mm on multi-threads */
+>   	struct mutex mm_lock;
+>   	struct drm_mm mm;
+>   	struct list_head psr_list;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> index df9e570..b74ac71 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> @@ -29,12 +29,11 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
+>   	ssize_t ret;
+>   
+>   	mutex_lock(&private->mm_lock);
+> -
+>   	ret = drm_mm_insert_node_generic(&private->mm, &rk_obj->mm,
+>   					 rk_obj->base.size, PAGE_SIZE,
+>   					 0, 0);
+> -
+>   	mutex_unlock(&private->mm_lock);
+> +
+>   	if (ret < 0) {
+>   		DRM_ERROR("out of I/O virtual memory: %zd\n", ret);
+>   		return ret;
+> @@ -56,7 +55,9 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
+>   	return 0;
+>   
+>   err_remove_node:
+> +	mutex_lock(&private->mm_lock);
+>   	drm_mm_remove_node(&rk_obj->mm);
+> +	mutex_unlock(&private->mm_lock);
+>   
+>   	return ret;
+>   }
+
+
+-- 
+Ｍark Yao
