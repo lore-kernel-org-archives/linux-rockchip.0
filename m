@@ -1,82 +1,76 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: gem: add the lacks lock and trivial changes
-Date: Thu, 1 Jun 2017 15:46:54 +0800
-Message-ID: <592FC66E.1030105@rock-chips.com>
-References: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Subject: [PATCH] PCI: rockchip: Handle return value of clk_prepare_enable
+Date: Thu,  1 Jun 2017 15:51:45 +0530
+Message-ID: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1496196863-25738-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: heiko@sntech.de, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org
+To: shawn.lin@rock-chips.com, wenrui.li@rock-chips.com, heiko@sntech.de
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017年05月31日 10:14, Caesar Wang wrote:
-> As the allocation and free buffer that need to add mutex lock for drm mm,
-> but it lacks the locking on error path in rockchip_gem_iommu_map().
-> Also, the trivial changes like The comment should be  placed in the
-> kerneldoc and unused blank line.
->
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> ---
+clk_prepare_enable() can fail here and we must check its return value.
 
-Pushed to drm-misc-next-fixes, Thanks.
+Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+---
+ drivers/pci/host/pcie-rockchip.c | 34 ++++++++++++++++++++++++++++------
+ 1 file changed, 28 insertions(+), 6 deletions(-)
 
->
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.h | 2 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 5 +++--
->   2 files changed, 4 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> index 47905fa..c7e96b8 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-> @@ -45,13 +45,13 @@ struct rockchip_crtc_state {
->    *
->    * @crtc: array of enabled CRTCs, used to map from "pipe" to drm_crtc.
->    * @num_pipe: number of pipes for this device.
-> + * @mm_lock: protect drm_mm on multi-threads.
->    */
->   struct rockchip_drm_private {
->   	struct drm_fb_helper fbdev_helper;
->   	struct drm_gem_object *fbdev_bo;
->   	struct drm_atomic_state *state;
->   	struct iommu_domain *domain;
-> -	/* protect drm_mm on multi-threads */
->   	struct mutex mm_lock;
->   	struct drm_mm mm;
->   	struct list_head psr_list;
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> index df9e570..b74ac71 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -29,12 +29,11 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
->   	ssize_t ret;
->   
->   	mutex_lock(&private->mm_lock);
-> -
->   	ret = drm_mm_insert_node_generic(&private->mm, &rk_obj->mm,
->   					 rk_obj->base.size, PAGE_SIZE,
->   					 0, 0);
-> -
->   	mutex_unlock(&private->mm_lock);
-> +
->   	if (ret < 0) {
->   		DRM_ERROR("out of I/O virtual memory: %zd\n", ret);
->   		return ret;
-> @@ -56,7 +55,9 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
->   	return 0;
->   
->   err_remove_node:
-> +	mutex_lock(&private->mm_lock);
->   	drm_mm_remove_node(&rk_obj->mm);
-> +	mutex_unlock(&private->mm_lock);
->   
->   	return ret;
->   }
-
-
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 0e020b6..0a248cd 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1259,24 +1259,46 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+ 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+ 	int err;
+ 
+-	clk_prepare_enable(rockchip->clk_pcie_pm);
+-	clk_prepare_enable(rockchip->hclk_pcie);
+-	clk_prepare_enable(rockchip->aclk_perf_pcie);
+-	clk_prepare_enable(rockchip->aclk_pcie);
++	err = clk_prepare_enable(rockchip->clk_pcie_pm);
++	if (err)
++		goto err_pcie_pm;
++
++	err = clk_prepare_enable(rockchip->hclk_pcie);
++	if (err)
++		goto err_hclk_pcie;
++
++	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
++	if (err)
++		goto err_aclk_perf_pcie;
++
++	err = clk_prepare_enable(rockchip->aclk_pcie);
++	if (err)
++		goto err_aclk_pcie;
+ 
+ 	err = rockchip_pcie_init_port(rockchip);
+ 	if (err)
+-		return err;
++		goto err_pcie_resume;
+ 
+ 	err = rockchip_cfg_atu(rockchip);
+ 	if (err)
+-		return err;
++		goto err_pcie_resume;
+ 
+ 	/* Need this to enter L1 again */
+ 	rockchip_pcie_update_txcredit_mui(rockchip);
+ 	rockchip_pcie_enable_interrupts(rockchip);
+ 
+ 	return 0;
++
++err_pcie_resume:
++	clk_disable_unprepare(rockchip->aclk_pcie);
++err_aclk_pcie:
++	clk_disable_unprepare(rockchip->aclk_perf_pcie);
++err_aclk_perf_pcie:
++	clk_disable_unprepare(rockchip->hclk_pcie);
++err_hclk_pcie:
++	clk_disable_unprepare(rockchip->clk_pcie_pm);
++err_pcie_pm:
++	return err;
+ }
+ 
+ static int rockchip_pcie_probe(struct platform_device *pdev)
 -- 
-Ｍark Yao
+1.9.1
