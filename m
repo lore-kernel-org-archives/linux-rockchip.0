@@ -1,64 +1,36 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v2 3/4] phy: rockchip-inno-usb2: add one phy comprises with two host-ports support
-Date: Fri,  2 Jun 2017 11:20:25 +0800
-Message-ID: <1496373626-27856-4-git-send-email-frank.wang@rock-chips.com>
-References: <1496373626-27856-1-git-send-email-frank.wang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1496373626-27856-1-git-send-email-frank.wang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, kishon@ti.com, robh+dt@kernel.org, mark.rutland@arm.com, william.wu@rock-chips.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, charles.chen@rock-chips.com, cody.xie@rock-chips.com, kevan.lan@rock-chips.com, huangtao@rock-chips.com, wmc@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/2] Add usb nodes on rk322x SoCs and enable usb on rk3229 evb
+Date: Fri,  2 Jun 2017 15:04:23 +0800
+Message-ID: <1496387065-21073-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: William Wu <william.wu@rock-chips.com>
+This series adds support for usb on rk322x SoCs.
 
-At the current rockchip-inno-usb2 phy driver framework, it can
-only support usb2-phy which comprises with one otg-port and one
-host-port.
+William Wu (2):
+  ARM: dts: rockchip: add usb nodes on rk322x
+  ARM: dts: rockchip: enable usb for rk3229 evb board
 
-However, some Rockchip SoCs' (e.g RK3228, RK3229) usb2-phy comprises
-with two host-ports, so we use index of otg id for one host-port
-configuration, and make it work the same as otg-port host mode.
+Tested on rk3229 evb board, and depended on the following
+patches and config.
+[1] https://patchwork.kernel.org/patch/9761507/
+[2] https://patchwork.kernel.org/patch/9761511/
+[3] https://patchwork.kernel.org/patch/9761515/
+[4] https://patchwork.kernel.org/patch/9761519/
+[5] enable CONFIG_PHY_ROCKCHIP_INNO_USB2
 
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
----
- drivers/phy/phy-rockchip-inno-usb2.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ arch/arm/boot/dts/rk3229-evb.dts |  74 +++++++++++++++++++++
+ arch/arm/boot/dts/rk322x.dtsi    | 138 ++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 211 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/phy-rockchip-inno-usb2.c b/drivers/phy/phy-rockchip-inno-usb2.c
-index d6e459d..d026b4cf 100644
---- a/drivers/phy/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/phy-rockchip-inno-usb2.c
-@@ -406,7 +406,8 @@ static int rockchip_usb2phy_init(struct phy *phy)
- 	mutex_lock(&rport->mutex);
- 
- 	if (rport->port_id == USB2PHY_PORT_OTG) {
--		if (rport->mode != USB_DR_MODE_HOST) {
-+		if (rport->mode != USB_DR_MODE_HOST &&
-+		    rport->mode != USB_DR_MODE_UNKNOWN) {
- 			/* clear bvalid status and enable bvalid detect irq */
- 			ret = property_enable(rphy,
- 					      &rport->port_cfg->bvalid_det_clr,
-@@ -496,7 +497,8 @@ static int rockchip_usb2phy_exit(struct phy *phy)
- 	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
- 
- 	if (rport->port_id == USB2PHY_PORT_OTG &&
--	    rport->mode != USB_DR_MODE_HOST) {
-+	    rport->mode != USB_DR_MODE_HOST &&
-+	    rport->mode != USB_DR_MODE_UNKNOWN) {
- 		cancel_delayed_work_sync(&rport->otg_sm_work);
- 		cancel_delayed_work_sync(&rport->chg_work);
- 	} else if (rport->port_id == USB2PHY_PORT_HOST)
-@@ -973,7 +975,8 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
- 	mutex_init(&rport->mutex);
- 
- 	rport->mode = of_usb_get_dr_mode_by_phy(child_np, -1);
--	if (rport->mode == USB_DR_MODE_HOST) {
-+	if (rport->mode == USB_DR_MODE_HOST ||
-+	    rport->mode == USB_DR_MODE_UNKNOWN) {
- 		ret = 0;
- 		goto out;
- 	}
 -- 
 2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
