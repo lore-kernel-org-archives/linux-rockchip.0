@@ -1,34 +1,25 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/2] Add usb nodes on rk322x SoCs and enable usb on rk3229 evb
-Date: Fri, 02 Jun 2017 14:14:45 +0200
-Message-ID: <1678079.AVLeaivyut@phil>
-References: <1496387065-21073-1-git-send-email-william.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 0/3] clk: rockchip: support clk controller for RK3128 SoC
+Date: Fri, 02 Jun 2017 15:39:10 +0200
+Message-ID: <2140102.d4ITpdkcYn@phil>
+References: <1496368045-17746-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1496387065-21073-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1496368045-17746-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: xf@rock-chips.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 2. Juni 2017, 15:04:23 CEST schrieb William Wu:
-> This series adds support for usb on rk322x SoCs.
-> 
-> William Wu (2):
->   ARM: dts: rockchip: add usb nodes on rk322x
->   ARM: dts: rockchip: enable usb for rk3229 evb board
-> 
-> Tested on rk3229 evb board, and depended on the following
-> patches and config.
+Hi Elaine,
 
-applied both for 4.13 (with some minor reordering in patch1)
+Am Freitag, 2. Juni 2017, 09:47:22 CEST schrieb Elaine Zhang:
+> The driver and clk ID\SRST ID it's also applies to the RK3126 SoC.
+
+applied all 3 for 4.13 (taking Rob's Ack from v1 for the first 2 patches)
 
 
 Thanks
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
