@@ -1,24 +1,34 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 0/3] clk: rockchip: support clk controller for RK3128 SoC
-Date: Fri, 02 Jun 2017 15:39:10 +0200
-Message-ID: <2140102.d4ITpdkcYn@phil>
-References: <1496368045-17746-1-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v3 0/4] make some special clk as critical_clocks
+Date: Fri, 02 Jun 2017 16:10:19 +0200
+Message-ID: <2347847.YaA7RMd5sr@phil>
+References: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1496368045-17746-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1493710446-7203-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: xf@rock-chips.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com
+Cc: xf@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+Am Dienstag, 2. Mai 2017, 15:34:02 CEST schrieb Elaine Zhang:
+> change in V3:
+> reword the commit message,explain why the specific clocks are need to be critical.
+> 
+> change in v2:
+> fix up some clks which have their own driver, not need to set as critical clocks
+> 
+> Elaine Zhang (4):
+>   clk: rockchip: rk3036: make pclk_ddrupctl as critical_clock
+>   clk: rockchip: rk3228: make noc and some special clk as
+>     critical_clocks
+>   clk: rockchip: rk3288: make noc and some special clk as
+>     critical_clocks
+>   clk: rockchip: rk3368: make some special clk as critical_clocks
 
-Am Freitag, 2. Juni 2017, 09:47:22 CEST schrieb Elaine Zhang:
-> The driver and clk ID\SRST ID it's also applies to the RK3126 SoC.
-
-applied all 3 for 4.13 (taking Rob's Ack from v1 for the first 2 patches)
+applied all 4 for 4.13
 
 
 Thanks
