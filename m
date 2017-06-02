@@ -1,96 +1,53 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 2/3] dt-bindings: add bindings for rk3128 clock controller
-Date: Fri, 02 Jun 2017 11:24:38 +0200
-Message-ID: <5144625.YTyQlHCbiT@phil>
-References: <1496368045-17746-1-git-send-email-zhangqing@rock-chips.com> <1496368045-17746-3-git-send-email-zhangqing@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v2 0/4] fix some issues for Rockchip usb2-phy and add
+ rk3228 SoCs' support
+Date: Fri, 2 Jun 2017 15:47:18 +0530
+Message-ID: <711e89a3-0f55-7458-2e4f-589d719a0548@ti.com>
+References: <1496373626-27856-1-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1496368045-17746-3-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: xf@rock-chips.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1496373626-27856-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, charles.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kevan.lan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cody.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 2. Juni 2017, 09:47:24 CEST schrieb Elaine Zhang:
-> Add devicetree bindings for Rockchip cru which found on
-> Rockchip SoCs.
+
+
+On Friday 02 June 2017 08:50 AM, Frank Wang wrote:
+> These series of patches fix some issues for rockchip usb2-phy and amend
+> usb2-phy framework to support one phy which comprises with two host-ports.
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> In addition, this change also add rk3228 usb2-phy support.
 
-the binding + binding header did receive an
+merged, thanks!
 
-	Acked-by: Rob Herring <robh@kernel.org>
-
-in v1 already. Please carry these over when sending new versions.
-[no need to do that for your v4 now though :-) ]
-
-> ---
->  .../bindings/clock/rockchip,rk3128-cru.txt         | 56 ++++++++++++++++++++++
->  1 file changed, 56 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+-Kishon
 > 
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
-> new file mode 100644
-> index 000000000000..455a9a00a623
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
-> @@ -0,0 +1,56 @@
-> +* Rockchip RK3128 Clock and Reset Unit
-> +
-> +The RK3128 clock controller generates and supplies clock to various
-> +controllers within the SoC and also implements a reset controller for SoC
-> +peripherals.
-> +
-> +Required Properties:
-> +
-> +- compatible: should be "rockchip,rk3128-cru"
-> +- reg: physical base address of the controller and length of memory mapped
-> +  region.
-> +- #clock-cells: should be 1.
-> +- #reset-cells: should be 1.
-> +
-> +Optional Properties:
-> +
-> +- rockchip,grf: phandle to the syscon managing the "general register files"
-> +  If missing pll rates are not changeable, due to the missing pll lock status.
-> +
-> +Each clock is assigned an identifier and client nodes can use this identifier
-> +to specify the clock which they consume. All available clocks are defined as
-> +preprocessor macros in the dt-bindings/clock/rk3128-cru.h headers and can be
-> +used in device tree sources. Similar macros exist for the reset sources in
-> +these files.
-> +
-> +External clocks:
-> +
-> +There are several clocks that are generated outside the SoC. It is expected
-> +that they are defined using standard clock bindings with following
-> +clock-output-names:
-> + - "xin24m" - crystal input - required,
-> + - "ext_i2s" - external I2S clock - optional,
-> + - "gmac_clkin" - external GMAC clock - optional
-> +
-> +Example: Clock controller node:
-> +
-> +	cru: cru@20000000 {
-> +		compatible = "rockchip,rk3128-cru";
-> +		reg = <0x20000000 0x1000>;
-> +		rockchip,grf = <&grf>;
-> +
-> +		#clock-cells = <1>;
-> +		#reset-cells = <1>;
-> +	};
-> +
-> +Example: UART controller node that consumes the clock generated by the clock
-> +  controller:
-> +
-> +	uart2: serial@20068000 {
-> +		compatible = "rockchip,serial";
-> +		reg = <0x20068000 0x100>;
-> +		interrupts = <GIC_SPI 22 IRQ_TYPE_LEVEL_HIGH>;
-> +		clock-frequency = <24000000>;
-> +		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
-> +		clock-names = "sclk_uart", "pclk_uart";
-> +	};
+> Changes from v1:
+>  - Replaced rk322x with rk3228 for PATCH 4/4.
+>  - Included devicetree people in the recipient list.
+> 
+> Frank Wang (1):
+>   phy: rockchip-inno-usb2: add support of usb2-phy for rk3228 SoCs
+> 
+> William Wu (3):
+>   phy: rockchip-inno-usb2: add a delay after phy resume
+>   phy: rockchip-inno-usb2: increase otg sm work first schedule time
+>   phy: rockchip-inno-usb2: add one phy comprises with two host-ports
+>     support
+> 
+>  .../bindings/phy/phy-rockchip-inno-usb2.txt        |  1 +
+>  drivers/phy/phy-rockchip-inno-usb2.c               | 74 ++++++++++++++++++++--
+>  2 files changed, 71 insertions(+), 4 deletions(-)
 > 
