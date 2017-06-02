@@ -1,34 +1,94 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] MAINTAINERS: update maintainer for rockchip PCIe driver
-Date: Fri,  2 Jun 2017 15:42:13 +0800
-Message-ID: <1496389333-234834-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] PCI: rockchip: Handle return value of clk_prepare_enable
+Date: Fri, 02 Jun 2017 10:34:57 +0200
+Message-ID: <2443470.gYk0NTnP8h@phil>
+References: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Cc: shawn.lin@rock-chips.com, wenrui.li@rock-chips.com, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Wenrui Li changed his employer and is no longer able to
-maintain this driver. So remove his email address from this
-file.
+Am Donnerstag, 1. Juni 2017, 15:51:45 CEST schrieb Arvind Yadav:
+> clk_prepare_enable() can fail here and we must check its return value.
+> 
+> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+looks good, but you may want to include 
+Bjorn Helgaas <bhelgaas@google.com>
 
- MAINTAINERS | 1 -
- 1 file changed, 1 deletion(-)
+who is the maintainer of the pci subsystem and would be the one
+to apply your patch.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9609ca6..5066ebe 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -10005,7 +10005,6 @@ F:	drivers/pci/dwc/pcie-hisi.c
- 
- PCIE DRIVER FOR ROCKCHIP
- M:	Shawn Lin <shawn.lin@rock-chips.com>
--M:	Wenrui Li <wenrui.li@rock-chips.com>
- L:	linux-pci@vger.kernel.org
- L:	linux-rockchip@lists.infradead.org
- S:	Maintained
--- 
-1.9.1
+Aynway, the patch itself looks good to me
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Cheers
+Heiko
+
+> ---
+>  drivers/pci/host/pcie-rockchip.c | 34 ++++++++++++++++++++++++++++------
+>  1 file changed, 28 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 0e020b6..0a248cd 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1259,24 +1259,46 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+>  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>  	int err;
+>  
+> -	clk_prepare_enable(rockchip->clk_pcie_pm);
+> -	clk_prepare_enable(rockchip->hclk_pcie);
+> -	clk_prepare_enable(rockchip->aclk_perf_pcie);
+> -	clk_prepare_enable(rockchip->aclk_pcie);
+> +	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+> +	if (err)
+> +		goto err_pcie_pm;
+> +
+> +	err = clk_prepare_enable(rockchip->hclk_pcie);
+> +	if (err)
+> +		goto err_hclk_pcie;
+> +
+> +	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
+> +	if (err)
+> +		goto err_aclk_perf_pcie;
+> +
+> +	err = clk_prepare_enable(rockchip->aclk_pcie);
+> +	if (err)
+> +		goto err_aclk_pcie;
+>  
+>  	err = rockchip_pcie_init_port(rockchip);
+>  	if (err)
+> -		return err;
+> +		goto err_pcie_resume;
+>  
+>  	err = rockchip_cfg_atu(rockchip);
+>  	if (err)
+> -		return err;
+> +		goto err_pcie_resume;
+>  
+>  	/* Need this to enter L1 again */
+>  	rockchip_pcie_update_txcredit_mui(rockchip);
+>  	rockchip_pcie_enable_interrupts(rockchip);
+>  
+>  	return 0;
+> +
+> +err_pcie_resume:
+> +	clk_disable_unprepare(rockchip->aclk_pcie);
+> +err_aclk_pcie:
+> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+> +err_aclk_perf_pcie:
+> +	clk_disable_unprepare(rockchip->hclk_pcie);
+> +err_hclk_pcie:
+> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
+> +err_pcie_pm:
+> +	return err;
+>  }
+>  
+>  static int rockchip_pcie_probe(struct platform_device *pdev)
+> 
