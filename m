@@ -1,53 +1,34 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2 0/4] fix some issues for Rockchip usb2-phy and add
- rk3228 SoCs' support
-Date: Fri, 2 Jun 2017 15:47:18 +0530
-Message-ID: <711e89a3-0f55-7458-2e4f-589d719a0548@ti.com>
-References: <1496373626-27856-1-git-send-email-frank.wang@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/2] Add usb nodes on rk322x SoCs and enable usb on rk3229 evb
+Date: Fri, 02 Jun 2017 14:14:45 +0200
+Message-ID: <1678079.AVLeaivyut@phil>
+References: <1496387065-21073-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1496373626-27856-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, charles.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kevan.lan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cody.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1496387065-21073-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Freitag, 2. Juni 2017, 15:04:23 CEST schrieb William Wu:
+> This series adds support for usb on rk322x SoCs.
+> 
+> William Wu (2):
+>   ARM: dts: rockchip: add usb nodes on rk322x
+>   ARM: dts: rockchip: enable usb for rk3229 evb board
+> 
+> Tested on rk3229 evb board, and depended on the following
+> patches and config.
+
+applied both for 4.13 (with some minor reordering in patch1)
 
 
-On Friday 02 June 2017 08:50 AM, Frank Wang wrote:
-> These series of patches fix some issues for rockchip usb2-phy and amend
-> usb2-phy framework to support one phy which comprises with two host-ports.
-> 
-> In addition, this change also add rk3228 usb2-phy support.
-
-merged, thanks!
-
--Kishon
-> 
-> Changes from v1:
->  - Replaced rk322x with rk3228 for PATCH 4/4.
->  - Included devicetree people in the recipient list.
-> 
-> Frank Wang (1):
->   phy: rockchip-inno-usb2: add support of usb2-phy for rk3228 SoCs
-> 
-> William Wu (3):
->   phy: rockchip-inno-usb2: add a delay after phy resume
->   phy: rockchip-inno-usb2: increase otg sm work first schedule time
->   phy: rockchip-inno-usb2: add one phy comprises with two host-ports
->     support
-> 
->  .../bindings/phy/phy-rockchip-inno-usb2.txt        |  1 +
->  drivers/phy/phy-rockchip-inno-usb2.c               | 74 ++++++++++++++++++++--
->  2 files changed, 71 insertions(+), 4 deletions(-)
-> 
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
