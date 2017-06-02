@@ -1,94 +1,96 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] PCI: rockchip: Handle return value of clk_prepare_enable
-Date: Fri, 02 Jun 2017 10:34:57 +0200
-Message-ID: <2443470.gYk0NTnP8h@phil>
-References: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
+Subject: Re: [PATCH v4 2/3] dt-bindings: add bindings for rk3128 clock controller
+Date: Fri, 02 Jun 2017 11:24:38 +0200
+Message-ID: <5144625.YTyQlHCbiT@phil>
+References: <1496368045-17746-1-git-send-email-zhangqing@rock-chips.com> <1496368045-17746-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
+In-Reply-To: <1496368045-17746-3-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Cc: shawn.lin@rock-chips.com, wenrui.li@rock-chips.com, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: xf@rock-chips.com, linux-clk@vger.kernel.org, huangtao@rock-chips.com, xxx@rock-chips.com, cl@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 1. Juni 2017, 15:51:45 CEST schrieb Arvind Yadav:
-> clk_prepare_enable() can fail here and we must check its return value.
+Am Freitag, 2. Juni 2017, 09:47:24 CEST schrieb Elaine Zhang:
+> Add devicetree bindings for Rockchip cru which found on
+> Rockchip SoCs.
 > 
-> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
-looks good, but you may want to include 
-Bjorn Helgaas <bhelgaas@google.com>
+the binding + binding header did receive an
 
-who is the maintainer of the pci subsystem and would be the one
-to apply your patch.
+	Acked-by: Rob Herring <robh@kernel.org>
 
-Aynway, the patch itself looks good to me
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-Cheers
-Heiko
+in v1 already. Please carry these over when sending new versions.
+[no need to do that for your v4 now though :-) ]
 
 > ---
->  drivers/pci/host/pcie-rockchip.c | 34 ++++++++++++++++++++++++++++------
->  1 file changed, 28 insertions(+), 6 deletions(-)
+>  .../bindings/clock/rockchip,rk3128-cru.txt         | 56 ++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
 > 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 0e020b6..0a248cd 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1259,24 +1259,46 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->  	int err;
->  
-> -	clk_prepare_enable(rockchip->clk_pcie_pm);
-> -	clk_prepare_enable(rockchip->hclk_pcie);
-> -	clk_prepare_enable(rockchip->aclk_perf_pcie);
-> -	clk_prepare_enable(rockchip->aclk_pcie);
-> +	err = clk_prepare_enable(rockchip->clk_pcie_pm);
-> +	if (err)
-> +		goto err_pcie_pm;
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> new file mode 100644
+> index 000000000000..455a9a00a623
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> @@ -0,0 +1,56 @@
+> +* Rockchip RK3128 Clock and Reset Unit
 > +
-> +	err = clk_prepare_enable(rockchip->hclk_pcie);
-> +	if (err)
-> +		goto err_hclk_pcie;
+> +The RK3128 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
 > +
-> +	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
-> +	if (err)
-> +		goto err_aclk_perf_pcie;
+> +Required Properties:
 > +
-> +	err = clk_prepare_enable(rockchip->aclk_pcie);
-> +	if (err)
-> +		goto err_aclk_pcie;
->  
->  	err = rockchip_pcie_init_port(rockchip);
->  	if (err)
-> -		return err;
-> +		goto err_pcie_resume;
->  
->  	err = rockchip_cfg_atu(rockchip);
->  	if (err)
-> -		return err;
-> +		goto err_pcie_resume;
->  
->  	/* Need this to enter L1 again */
->  	rockchip_pcie_update_txcredit_mui(rockchip);
->  	rockchip_pcie_enable_interrupts(rockchip);
->  
->  	return 0;
+> +- compatible: should be "rockchip,rk3128-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
 > +
-> +err_pcie_resume:
-> +	clk_disable_unprepare(rockchip->aclk_pcie);
-> +err_aclk_pcie:
-> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> +err_aclk_perf_pcie:
-> +	clk_disable_unprepare(rockchip->hclk_pcie);
-> +err_hclk_pcie:
-> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
-> +err_pcie_pm:
-> +	return err;
->  }
->  
->  static int rockchip_pcie_probe(struct platform_device *pdev)
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing pll rates are not changeable, due to the missing pll lock status.
+> +
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/rk3128-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "ext_i2s" - external I2S clock - optional,
+> + - "gmac_clkin" - external GMAC clock - optional
+> +
+> +Example: Clock controller node:
+> +
+> +	cru: cru@20000000 {
+> +		compatible = "rockchip,rk3128-cru";
+> +		reg = <0x20000000 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
+> +
+> +	uart2: serial@20068000 {
+> +		compatible = "rockchip,serial";
+> +		reg = <0x20068000 0x100>;
+> +		interrupts = <GIC_SPI 22 IRQ_TYPE_LEVEL_HIGH>;
+> +		clock-frequency = <24000000>;
+> +		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+> +		clock-names = "sclk_uart", "pclk_uart";
+> +	};
 > 
