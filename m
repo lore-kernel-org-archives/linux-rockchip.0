@@ -1,51 +1,93 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] MAINTAINERS: add RV1108 Rockchip soc to maintained files
-Date: Wed,  7 Jun 2017 13:06:27 +0200
-Message-ID: <20170607110627.4678-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+From: Jianhong Chen <chenjh@rock-chips.com>
+Subject: [PATCH v6 00/12] rk808: Add RK805 support
+Date: Thu,  8 Jun 2017 15:12:27 +0800
+Message-ID: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com>
+Return-path: <linux-input-owner@vger.kernel.org>
+Sender: linux-input-owner@vger.kernel.org
+To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org, chenjh <chenjh@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The RV1108, as a soc targetted at visual applications, does not follow
-the usual RKxxxx naming scheme and thus falls through the cracks of
-the current file list for Rockchip socs in MAINTAINERS.
+From: chenjh <chenjh@rock-chips.com>
 
-The driver side does not pose a problem, as the rv1108 shares most
-functionality with other Rockchip socs as usual, so we only need to
-add an expression catching the rv1108* arm32 devicetree files.
+change in v6:
+patch1~7 no changed in V6.
+add patch 8~12 for gpio and powerkey func for rk805.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-This could either be applied by arm-soc people directly, or I can
-integrate it into my arm32-dts-branch.
+change in v5:
+PATCH V5 1/7: NO change in V5
+PATCH V5 2/7: fix the rk805 reg addr in numerical order
+PATCH V5 3/7: NO change in V5
+PATCH V5 4/7: fix up the rk805_device_shutdown func
+PATCH V5 5/7: NO change in V5
+PATCH V5 6/7: NO change in V5
+PATCH V5 7/7: fix up the description of the rk805
 
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+change in v4:
+PATCH V4 1/7: NO change in V4
+PATCH V4 2/7: rename the commit message
+PATCH V4 3/7: NO change in V4
+PATCH V4 4/7: Split this patch up into subsystems patch 5/7 6/7
+PATCH V4 5/7: new added
+PATCH V4 6/7: new added
+PATCH V4 7/7: NO change in V4
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 053c3bdd1fe5..80f32df2aad5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1710,6 +1710,7 @@ L:	linux-rockchip@lists.infradead.org
- T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
- S:	Maintained
- F:	arch/arm/boot/dts/rk3*
-+F:	arch/arm/boot/dts/rv1108*
- F:	arch/arm/mach-rockchip/
- F:	drivers/clk/rockchip/
- F:	drivers/i2c/busses/i2c-rk3x.c
+
+change in V3:
+PATCH V3 1/5: NO change in V3
+PATCH V3 2/5: add rk805 RTC INT MASK define
+PATCH V3 3/5: RK805 set suspend enable and disable is different from rk808
+              use rk805_regs_ops and rk805_switch_ops
+PATCH V3 4/5: fix up the shutdown func
+              use pm_shutdown_prepare_fn to prepare shutdown
+              and pm_pwroff_fn pull down gpio to shut down rk805
+              it will update in the future(after rk808 support gpio func)
+PATCH V3 5/5: NO change in V3
+
+change in V2:
+PATCH V2 1/5: NO change in V2
+PATCH V2 2/5: add rk805 BUCK ILMAX define
+PATCH V2 3/5: NO change in V2
+PATCH V2 4/5: setting RK805 BUCK ILMAX in pre init
+PATCH V2 5/5: Add RK805 device tree bindings document
+
+Elaine Zhang (7):
+  mfd: rk808: fix up the chip id get failed
+  mfd: rk808: add rk805 regs addr and ID
+  regulator: rk808: Add regulator driver for RK805
+  mfd: rk808: Add RK805 support
+  clk: Kconfig: Name RK805 in Kconfig for COMMON_CLK_RK808
+  rtc: Kconfig: Name RK805 in Kconfig for RTC_DRV_RK808
+  mfd: dt-bindings: Add RK805 device tree bindings document
+
+chenjh (5):
+  gpio: Add GPIO driver for the RK805 PMIC
+  Input: Add power key driver for Rockchip RK805 PMIC
+  mfd: rk808: Add RK805 gpio support
+  mfd: rk808: Add RK805 power key support
+  gpio: dt-bindings: add bindings for Rockchip RK805 PMIC
+
+ .../devicetree/bindings/gpio/gpio-rk805.txt        |  37 ++++
+ Documentation/devicetree/bindings/mfd/rk808.txt    |  22 +-
+ drivers/clk/Kconfig                                |   4 +-
+ drivers/gpio/Kconfig                               |   6 +
+ drivers/gpio/Makefile                              |   1 +
+ drivers/gpio/gpio-rk805.c                          | 234 +++++++++++++++++++++
+ drivers/input/misc/Kconfig                         |   6 +
+ drivers/input/misc/Makefile                        |   1 +
+ drivers/input/misc/rk805-pwrkey.c                  | 111 ++++++++++
+ drivers/mfd/Kconfig                                |   4 +-
+ drivers/mfd/rk808.c                                | 147 ++++++++++++-
+ drivers/regulator/Kconfig                          |   4 +-
+ drivers/regulator/rk808-regulator.c                | 130 ++++++++++++
+ drivers/rtc/Kconfig                                |   4 +-
+ include/linux/mfd/rk808.h                          | 121 +++++++++++
+ 15 files changed, 817 insertions(+), 15 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/gpio/gpio-rk805.txt
+ create mode 100644 drivers/gpio/gpio-rk805.c
+ create mode 100644 drivers/input/misc/rk805-pwrkey.c
+
 -- 
-2.11.0
+1.9.1
+
+
