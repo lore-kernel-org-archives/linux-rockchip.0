@@ -1,77 +1,77 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for rk3228
-Date: Fri,  9 Jun 2017 17:36:14 +0800
-Message-ID: <1497000974-12696-1-git-send-email-david.wu@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: khilman@baylibre.com, rafael.j.wysocki@intel.com, nm@ti.com, heiko@sntech.de
-Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] rockchip clock changes for 4.13 part1
+Date: Fri, 09 Jun 2017 12:00:04 +0200
+Message-ID: <4709927.KhRz8573a2@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the necessary data for handling io voltage domains on the rk3228.
+Hi Mike, Stephen,
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
- .../devicetree/bindings/power/rockchip-io-domain.txt       |  7 +++++++
- drivers/power/avs/rockchip-io-domain.c                     | 14 ++++++++++++++
- 2 files changed, 21 insertions(+)
+please find below the core rockchip clock changes for 4.13.
+As stated, one new clock controller and some misc changes as always.
+There may be some more changes later on, but most likely nothing big.
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-index d3a5a93..43c21fb 100644
---- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-+++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-@@ -32,6 +32,7 @@ SoC is on the same page.
- Required properties:
- - compatible: should be one of:
-   - "rockchip,rk3188-io-voltage-domain" for rk3188
-+  - "rockchip,rk3228-io-voltage-domain" for rk3228
-   - "rockchip,rk3288-io-voltage-domain" for rk3288
-   - "rockchip,rk3328-io-voltage-domain" for rk3328
-   - "rockchip,rk3368-io-voltage-domain" for rk3368
-@@ -59,6 +60,12 @@ Possible supplies for rk3188:
- - vccio1-supply: The supply connected to VCCIO1.
-                  Sometimes also labeled VCCIO1 and VCCIO2.
- 
-+Possible supplies for rk3228:
-+- vccio1-supply: The supply connected to VCCIO1.
-+- vccio2-supply: The supply connected to VCCIO2.
-+- vccio3-supply: The supply connected to VCCIO3.
-+- vccio4-supply: The supply connected to VCCIO4.
-+
- Possible supplies for rk3288:
- - audio-supply:  The supply connected to APIO4_VDD.
- - bb-supply:     The supply connected to APIO5_VDD.
-diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
-index 8581252..031a343 100644
---- a/drivers/power/avs/rockchip-io-domain.c
-+++ b/drivers/power/avs/rockchip-io-domain.c
-@@ -253,6 +253,16 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
- 	},
- };
- 
-+static const struct rockchip_iodomain_soc_data soc_data_rk3228 = {
-+	.grf_offset = 0x418,
-+	.supply_names = {
-+		"vccio1",
-+		"vccio2",
-+		"vccio3",
-+		"vccio4",
-+	},
-+};
-+
- static const struct rockchip_iodomain_soc_data soc_data_rk3288 = {
- 	.grf_offset = 0x380,
- 	.supply_names = {
-@@ -345,6 +355,10 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
- 		.data = (void *)&soc_data_rk3188
- 	},
- 	{
-+		.compatible = "rockchip,rk3228-io-voltage-domain",
-+		.data = (void *)&soc_data_rk3228
-+	},
-+	{
- 		.compatible = "rockchip,rk3288-io-voltage-domain",
- 		.data = (void *)&soc_data_rk3288
- 	},
--- 
-1.9.1
+So please pull.
+Thanks
+Heiko
+
+
+The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
+
+  Linux 4.12-rc1 (2017-05-13 13:19:49 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.13-rockchip-clk1
+
+for you to fetch changes up to 223c24be740d293519ef8e03f5c075fab5512fd2:
+
+  clk: rockchip: mark some special clk as critical on rk3368 (2017-06-02 15:57:32 +0200)
+
+----------------------------------------------------------------
+One new clock controller for the rk3128 soc, a fixup for the rk3228 cpuclk
+table and the usual bunch of some new clock-ids and some clocks marked as
+critical.
+
+----------------------------------------------------------------
+Eddie Cai (2):
+      clk: rockchip: add ids for camera on rk3399
+      clk: rockchip: add ids for rk3399 testclks used for camera handling
+
+Elaine Zhang (10):
+      clk: rockchip: add clock-ids for more rk3228 clocks
+      clk: rockchip: fix up the RK3228 clk cpu setting table
+      clk: rockchip: add dt-binding header for rk3128
+      clk: rockchip: export more rk3228 clocks ids
+      dt-bindings: add bindings for rk3128 clock controller
+      clk: rockchip: add clock controller for rk3128
+      clk: rockchip: mark pclk_ddrupctl as critical_clock on rk3036
+      clk: rockchip: mark noc and some special clk as critical on rk3228
+      clk: rockchip: mark noc and some special clk as critical on rk3288
+      clk: rockchip: mark some special clk as critical on rk3368
+
+Heiko Stuebner (1):
+      Merge branch 'v4.13-shared/clkids' into v4.13-clk/next
+
+ .../bindings/clock/rockchip,rk3128-cru.txt         |  56 ++
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-rk3036.c                  |   1 +
+ drivers/clk/rockchip/clk-rk3128.c                  | 612 +++++++++++++++++++++
+ drivers/clk/rockchip/clk-rk3228.c                  | 164 ++++--
+ drivers/clk/rockchip/clk-rk3288.c                  |  14 +-
+ drivers/clk/rockchip/clk-rk3368.c                  |   5 +-
+ drivers/clk/rockchip/clk-rk3399.c                  |   4 +-
+ include/dt-bindings/clock/rk3128-cru.h             | 282 ++++++++++
+ include/dt-bindings/clock/rk3228-cru.h             |  47 ++
+ include/dt-bindings/clock/rk3399-cru.h             |   2 +
+ 11 files changed, 1122 insertions(+), 66 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk3128.c
+ create mode 100644 include/dt-bindings/clock/rk3128-cru.h
+
