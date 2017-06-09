@@ -1,76 +1,35 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v3 3/3] drm/rockchip: dw_hdmi: introduce the pclk for grf
-Date: Fri,  9 Jun 2017 15:10:46 +0800
-Message-ID: <1496992247-10727-1-git-send-email-mark.yao@rock-chips.com>
-References: <1496992228-10582-1-git-send-email-mark.yao@rock-chips.com>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH v1 0/2] Patches to add support spdif for rk322x
+Date: Fri,  9 Jun 2017 15:59:31 +0800
+Message-ID: <1496995173-63532-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1496992228-10582-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: heiko@sntech.de, broonie@kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rm9yIFJLMzM5OSdzIEdSRiBtb2R1bGUsIGlmIHdlIHdhbnQgdG8gb3BlcmF0ZSB0aGUgZ3JhcGhp
-YyByZWxhdGVkIGdyZgpyZWdpc3RlcnMsIHdlIG5lZWQgdG8gZW5hYmxlIHRoZSBwY2xrX3Zpb19n
-cmYgd2hpY2ggc3VwcGx5IHBvd2VyIGZvciBWSU8KR1JGIElPcywgc28gaXQncyBiZXR0ZXIgdG8g
-aW50cm9kdWNlIGFuIG9wdGlvbmFsIGdyZiBjbG9jayBpbiBkcml2ZXIuCgpTaWduZWQtb2ZmLWJ5
-OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFv
-IDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMgaW4gdjM6IG5vbmUKQ2hhbmdl
-cyBpbiB2MjogZGVzY3JpYmUgZ3JmIG9uIERvY3VtZW50YXRpb24uCgogLi4uL2JpbmRpbmdzL2Rp
-c3BsYXkvcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC50eHQgICAgIHwgIDEgKwogZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyAgICAgICAgICAgIHwgMTggKysrKysr
-KysrKysrKysrKysrCiAyIGZpbGVzIGNoYW5nZWQsIDE5IGluc2VydGlvbnMoKykKCmRpZmYgLS1n
-aXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9k
-d19oZG1pLXJvY2tjaGlwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9k
-aXNwbGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0CmluZGV4IDc3OWU4YWMuLjZiY2U2
-MzkgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0CisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0CkBAIC0z
-MSw2ICszMSw3IEBAIE9wdGlvbmFsIHByb3BlcnRpZXMKICAgSTJDIG1hc3RlciBjb250cm9sbGVy
-LgogLSBjbG9jay1uYW1lczogU2VlIGR3X2hkbWkudHh0LiBUaGUgImNlYyIgY2xvY2sgaXMgb3B0
-aW9uYWwuCiAtIGNsb2NrLW5hbWVzOiBNYXkgY29udGFpbiAiY2VjIiBhcyBkZWZpbmVkIGluIGR3
-X2hkbWkudHh0LgorLSBjbG9jay1uYW1lczogTWF5IGNvbnRhaW4gImdyZiIsIHBvd2VyIGZvciBn
-cmYgaW8uCiAtIGNsb2NrLW5hbWVzOiBNYXkgY29udGFpbiAidnBsbCIsIGV4dGVybmFsIGNsb2Nr
-IGZvciBzb21lIGhkbWkgcGh5LgogCiBFeGFtcGxlOgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9kd19oZG1pLXJvY2tjaGlwLmMKaW5kZXggYWFhMGYzZS4uMmI5Y2I0NyAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYworKysgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCkBAIC00Nyw2ICs0Nyw3IEBAIHN0
-cnVjdCByb2NrY2hpcF9oZG1pIHsKIAlzdHJ1Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsKIAljb25z
-dCBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaV9jaGlwX2RhdGEgKmNoaXBfZGF0YTsKIAlzdHJ1Y3QgY2xr
-ICp2cGxsX2NsazsKKwlzdHJ1Y3QgY2xrICpncmZfY2xrOwogfTsKIAogI2RlZmluZSB0b19yb2Nr
-Y2hpcF9oZG1pKHgpCWNvbnRhaW5lcl9vZih4LCBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSwgeCkKQEAg
-LTE4MSw2ICsxODIsMTYgQEAgc3RhdGljIGludCByb2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0cnVj
-dCByb2NrY2hpcF9oZG1pICpoZG1pKQogCQlyZXR1cm4gUFRSX0VSUihoZG1pLT52cGxsX2Nsayk7
-CiAJfQogCisJaGRtaS0+Z3JmX2NsayA9IGRldm1fY2xrX2dldChoZG1pLT5kZXYsICJncmYiKTsK
-KwlpZiAoUFRSX0VSUihoZG1pLT5ncmZfY2xrKSA9PSAtRU5PRU5UKSB7CisJCWhkbWktPmdyZl9j
-bGsgPSBOVUxMOworCX0gZWxzZSBpZiAoUFRSX0VSUihoZG1pLT5ncmZfY2xrKSA9PSAtRVBST0JF
-X0RFRkVSKSB7CisJCXJldHVybiAtRVBST0JFX0RFRkVSOworCX0gZWxzZSBpZiAoSVNfRVJSKGhk
-bWktPmdyZl9jbGspKSB7CisJCWRldl9lcnIoaGRtaS0+ZGV2LCAiZmFpbGVkIHRvIGdldCBncmYg
-Y2xvY2tcbiIpOworCQlyZXR1cm4gUFRSX0VSUihoZG1pLT5ncmZfY2xrKTsKKwl9CisKIAlyZXQg
-PSBjbGtfcHJlcGFyZV9lbmFibGUoaGRtaS0+dnBsbF9jbGspOwogCWlmIChyZXQpIHsKIAkJZGV2
-X2VycihoZG1pLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIEhETUkgdnBsbDogJWRcbiIsIHJldCk7
-CkBAIC0yNDYsMTAgKzI1NywxNyBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29k
-ZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIAllbHNlCiAJCXZhbCA9IGhk
-bWktPmNoaXBfZGF0YS0+bGNkc2VsX2JpZzsKIAorCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZSho
-ZG1pLT5ncmZfY2xrKTsKKwlpZiAocmV0IDwgMCkgeworCQlkZXZfZXJyKGhkbWktPmRldiwgImZh
-aWxlZCB0byBlbmFibGUgZ3JmY2xrICVkXG4iLCByZXQpOworCQlyZXR1cm47CisJfQorCiAJcmV0
-ID0gcmVnbWFwX3dyaXRlKGhkbWktPnJlZ21hcCwgaGRtaS0+Y2hpcF9kYXRhLT5sY2RzZWxfZ3Jm
-X3JlZywgdmFsKTsKIAlpZiAocmV0ICE9IDApCiAJCWRldl9lcnIoaGRtaS0+ZGV2LCAiQ291bGQg
-bm90IHdyaXRlIHRvIEdSRjogJWRcbiIsIHJldCk7CiAKKwljbGtfZGlzYWJsZV91bnByZXBhcmUo
-aGRtaS0+Z3JmX2Nsayk7CiAJZGV2X2RiZyhoZG1pLT5kZXYsICJ2b3AgJXMgb3V0cHV0IHRvIGhk
-bWlcbiIsCiAJCXJldCA/ICJMSVQiIDogIkJJRyIpOwogfQotLSAKMS45LjEKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+These patches to add support spdif for rk322x socs.
+
+
+Sugar Zhang (2):
+  ASoC: rockchip: add bindings for spdif controller
+  ARM: dts: rk322x: add spdif node
+
+ .../devicetree/bindings/sound/rockchip-spdif.txt     |  2 ++
+ arch/arm/boot/dts/rk322x.dtsi                        | 20 ++++++++++++++++++++
+ sound/soc/rockchip/rockchip_spdif.c                  |  4 ++++
+ 3 files changed, 26 insertions(+)
+
+-- 
+1.9.1
