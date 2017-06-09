@@ -1,35 +1,61 @@
 From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v1 0/2] Patches to add support spdif for rk322x
-Date: Fri,  9 Jun 2017 15:59:31 +0800
-Message-ID: <1496995173-63532-1-git-send-email-sugar.zhang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
+Subject: [PATCH v1 2/2] ARM: dts: rk322x: add spdif node
+Date: Fri,  9 Jun 2017 15:59:33 +0800
+Message-ID: <1496995173-63532-3-git-send-email-sugar.zhang@rock-chips.com>
+References: <1496995173-63532-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1496995173-63532-1-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, broonie@kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, Sugar Zhang <sugar.zhang@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-These patches to add support spdif for rk322x socs.
+This patch add spdif node for rk322x.
 
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 
-Sugar Zhang (2):
-  ASoC: rockchip: add bindings for spdif controller
-  ARM: dts: rk322x: add spdif node
+---
 
- .../devicetree/bindings/sound/rockchip-spdif.txt     |  2 ++
- arch/arm/boot/dts/rk322x.dtsi                        | 20 ++++++++++++++++++++
- sound/soc/rockchip/rockchip_spdif.c                  |  4 ++++
- 3 files changed, 26 insertions(+)
+ arch/arm/boot/dts/rk322x.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 48a0c1c..56f0842 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -168,6 +168,20 @@
+ 		status = "disabled";
+ 	};
+ 
++	spdif: spdif@100d0000 {
++		compatible = "rockchip,rk3228-spdif";
++		reg = <0x100d0000 0x1000>;
++		interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_SPDIF>, <&cru HCLK_SPDIF_8CH>;
++		clock-names = "mclk", "hclk";
++		dmas = <&pdma 10>;
++		#dma-cells = <1>;
++		dma-names = "tx";
++		pinctrl-names = "default";
++		pinctrl-0 = <&spdif_tx>;
++		status = "disabled";
++	};
++
+ 	i2s2: i2s2@100e0000 {
+ 		compatible = "rockchip,rk3228-i2s", "rockchip,rk3066-i2s";
+ 		reg = <0x100e0000 0x4000>;
+@@ -651,6 +665,12 @@
+ 			};
+ 		};
+ 
++		spdif {
++			spdif_tx: spdif-tx {
++				rockchip,pins = <3 31 RK_FUNC_2 &pcfg_pull_none>;
++			};
++		};
++
+ 		tsadc {
+ 			otp_gpio: otp-gpio {
+ 				rockchip,pins = <0 24 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
 1.9.1
