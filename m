@@ -1,26 +1,34 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.13 part1
-Date: Fri, 09 Jun 2017 12:00:04 +0200
-Message-ID: <4709927.KhRz8573a2@phil>
+Subject: [GIT PULL 1/3] Rockchip dts32 updates for 4.13 part1
+Date: Fri, 09 Jun 2017 12:13:44 +0200
+Message-ID: <2090243.QTRV0U63fj@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Arnd, Kevin, Olof,
 
-please find below the core rockchip clock changes for 4.13.
-As stated, one new clock controller and some misc changes as always.
-There may be some more changes later on, but most likely nothing big.
+please find below and in the subsequent replies Rockchip-related changes
+for 4.13. The tags describe the individual changes, but hightlight are probably
+the Mali-Midgard nodes on rk3288 and rk3399-Firefly board.
 
-So please pull.
+So if nothing looks out of place, please pull.
+
 Thanks
 Heiko
-
 
 The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
 
@@ -28,50 +36,83 @@ The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.13-rockchip-clk1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.13-rockchip-dts32-1
 
-for you to fetch changes up to 223c24be740d293519ef8e03f5c075fab5512fd2:
+for you to fetch changes up to 81b61d37705173b8b9eb52c4566a8fc7c7099520:
 
-  clk: rockchip: mark some special clk as critical on rk3368 (2017-06-02 15:57:32 +0200)
-
-----------------------------------------------------------------
-One new clock controller for the rk3128 soc, a fixup for the rk3228 cpuclk
-table and the usual bunch of some new clock-ids and some clocks marked as
-critical.
+  ARM: dts: rockchip: enable usb for rk3229 evb board (2017-06-02 14:11:57 +0200)
 
 ----------------------------------------------------------------
-Eddie Cai (2):
+A bunch of changes including mali gpu nodes for rk3288 boards
+following (and including) the new Mali Midgard binding; a lot of
+improvements for the rk3228/rk3229 socs (tsadc, operating points,
+usb, clock-rates, pinctrl, watchdog); finalizing the rk1108->rv1108
+rename and adc buttons for the rk3288 firefly boards.
+
+----------------------------------------------------------------
+Andy Yan (2):
+      ARM: dts: rockchip: rename core dtsi from RK1108 to RV1108
+      ARM: dts: rockchip: rename RK1108-evb to RV1108-evb
+
+Eddie Cai (1):
       clk: rockchip: add ids for camera on rk3399
-      clk: rockchip: add ids for rk3399 testclks used for camera handling
 
-Elaine Zhang (10):
+Elaine Zhang (2):
       clk: rockchip: add clock-ids for more rk3228 clocks
-      clk: rockchip: fix up the RK3228 clk cpu setting table
-      clk: rockchip: add dt-binding header for rk3128
-      clk: rockchip: export more rk3228 clocks ids
-      dt-bindings: add bindings for rk3128 clock controller
-      clk: rockchip: add clock controller for rk3128
-      clk: rockchip: mark pclk_ddrupctl as critical_clock on rk3036
-      clk: rockchip: mark noc and some special clk as critical on rk3228
-      clk: rockchip: mark noc and some special clk as critical on rk3288
-      clk: rockchip: mark some special clk as critical on rk3368
+      ARM: dts: rockchip: set default rates for core clocks on rk322x
+
+Enric Balletbo i Serra (1):
+      ARM: dts: rockchip: enable ARM Mali GPU on rk3288-veyron
+
+Finley Xiao (1):
+      ARM: dts: rockchip: add operating-points-v2 for cpu on rk322x
+
+Frank Wang (3):
+      ARM: dts: rockchip: add watchdog device node on rk322x
+      ARM: dts: rockchip: correct rk322x uart2 pinctrl
+      ARM: dts: rockchip: add second uart2 pinctrl on rk322x
+
+Guillaume Tucker (4):
+      dt-bindings: gpu: add bindings for the ARM Mali Midgard GPU
+      ARM: dts: rockchip: add ARM Mali GPU node for rk3288
+      ARM: dts: rockchip: enable ARM Mali GPU on rk3288-rock2-som
+      ARM: dts: rockchip: enable ARM Mali GPU on rk3288-firefly
 
 Heiko Stuebner (1):
-      Merge branch 'v4.13-shared/clkids' into v4.13-clk/next
+      Merge branch 'v4.13-shared/clkids' into v4.13-armsoc/dts32
 
- .../bindings/clock/rockchip,rk3128-cru.txt         |  56 ++
- drivers/clk/rockchip/Makefile                      |   1 +
- drivers/clk/rockchip/clk-rk3036.c                  |   1 +
- drivers/clk/rockchip/clk-rk3128.c                  | 612 +++++++++++++++++++++
- drivers/clk/rockchip/clk-rk3228.c                  | 164 ++++--
- drivers/clk/rockchip/clk-rk3288.c                  |  14 +-
- drivers/clk/rockchip/clk-rk3368.c                  |   5 +-
- drivers/clk/rockchip/clk-rk3399.c                  |   4 +-
- include/dt-bindings/clock/rk3128-cru.h             | 282 ++++++++++
- include/dt-bindings/clock/rk3228-cru.h             |  47 ++
+Randy Li (1):
+      ARM: dts: rockchip: add adc button for Firefly
+
+Rocky Hao (1):
+      ARM: dts: rockchip: set a sane frequence for tsadc on rk322x
+
+Sjoerd Simons (1):
+      ARM: dts: rockchip: Setup usb vbus-supply on rk3288-rock2
+
+Sugar Zhang (1):
+      ARM: dts: rockchip: fix rk322x i2s1 pinctrl error
+
+William Wu (2):
+      ARM: dts: rockchip: add usb nodes on rk322x
+      ARM: dts: rockchip: enable usb for rk3229 evb board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   4 +-
+ .../devicetree/bindings/gpu/arm,mali-midgard.txt   |  86 +++++++++
+ arch/arm/boot/dts/Makefile                         |   2 +-
+ arch/arm/boot/dts/rk3229-evb.dts                   |  74 ++++++++
+ arch/arm/boot/dts/rk322x.dtsi                      | 211 +++++++++++++++++++--
+ arch/arm/boot/dts/rk3288-firefly-reload.dts        |  17 ++
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  18 ++
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            |   5 +
+ arch/arm/boot/dts/rk3288-rock2-square.dts          |   8 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |   5 +
+ arch/arm/boot/dts/rk3288.dtsi                      |  43 +++++
+ .../boot/dts/{rk1108-evb.dts => rv1108-evb.dts}    |   6 +-
+ arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi}     |  20 +-
+ include/dt-bindings/clock/rk3228-cru.h             |  47 +++++
  include/dt-bindings/clock/rk3399-cru.h             |   2 +
- 11 files changed, 1122 insertions(+), 66 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-rk3128.c
- create mode 100644 include/dt-bindings/clock/rk3128-cru.h
-
+ 15 files changed, 517 insertions(+), 31 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+ rename arch/arm/boot/dts/{rk1108-evb.dts => rv1108-evb.dts} (94%)
+ rename arch/arm/boot/dts/{rk1108.dtsi => rv1108.dtsi} (95%)
