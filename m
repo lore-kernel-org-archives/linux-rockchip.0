@@ -1,74 +1,65 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v6 12/12] gpio: dt-bindings: add bindings for Rockchip
- RK805 PMIC
-Date: Mon, 12 Jun 2017 10:58:31 -0500
-Message-ID: <20170612155831.we2p6uxjy4nyblsk@rob-hp-laptop>
-References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com>
- <1496907193-29294-1-git-send-email-chenjh@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] spi: rockchip: add support for "cs-gpios" dts
+ property
+Date: Mon, 12 Jun 2017 17:38:14 +0100
+Message-ID: <20170612163814.rgbvb54hgxsdj6tf@sirena.org.uk>
+References: <1497248057-16550-1-git-send-email-jeffy.chen@rock-chips.com>
+ <dfe87919-b2cc-37e8-1598-6b3c730ff356@rock-chips.com>
+ <CAMuHMdUDjtSNRiBxcBnAMdUEaCZbioPoRE1h=p9=BqHMGmQaEQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="v4puphklnlp5dxxt"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1496907193-29294-1-git-send-email-chenjh@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianhong Chen <chenjh@rock-chips.com>
-Cc: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org
+In-Reply-To: <CAMuHMdUDjtSNRiBxcBnAMdUEaCZbioPoRE1h=p9=BqHMGmQaEQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>
+Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-spi <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 08, 2017 at 03:33:13PM +0800, Jianhong Chen wrote:
-> From: chenjh <chenjh@rock-chips.com>
-> 
-> Add device tree bindings documentation for Rockchip's RK805 PMIC
-> 
-> Signed-off-by: chenjh <chenjh@rock-chips.com>
-> ---
->  .../devicetree/bindings/gpio/gpio-rk805.txt        | 37 ++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/gpio/gpio-rk805.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/gpio/gpio-rk805.txt b/Documentation/devicetree/bindings/gpio/gpio-rk805.txt
-> new file mode 100644
-> index 0000000..98b75fa
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/gpio/gpio-rk805.txt
-> @@ -0,0 +1,37 @@
-> +RK805 GPIO controller
-> +
-> +This driver follows the usual GPIO bindings found in
-> +Documentation/devicetree/bindings/gpio/gpio.txt
-> +
-> +Required properties:
-> +- #gpio-cells: Should be two. The first cell is the pin number and the
-> +  second is the GPIO flags.
-> +- gpio-controller: Marks the device node as a GPIO controller.
-> +
-> +These properties must be added in the RK805 PMIC node, documented in
-> +Documentation/devicetree/bindings/mfd/rk808.txt
-> +
-> +Example:
-> +
-> +rk805: pmic@18 {
-> +	compatible = "rockchip,rk808";
-> +	clock-output-names = "xin32k", "rk808-clkout2";
-> +	interrupt-parent = <&gpio0>;
-> +	interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-> +	reg = <0x1a>;
-> +	rockchip,system-power-controller;
-> +	wakeup-source;
-> +	#clock-cells = <1>;
-> +	...
-> +	gpio-controller;
-> +	#gpio-cells = <2>;
-> +};
-> +
-> +
-> +Example of a peripheral using the PMIC GPIOs:
-> +
-> +wireless-bluetooth {
-> +		compatible = "bluetooth-platdata";
 
-Not a valid example compatible. While you don't really have to have a 
-valid one, it should be something that's not a "what not to do" and 
-would never be accepted.
+--v4puphklnlp5dxxt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Rob
+On Mon, Jun 12, 2017 at 10:18:06AM +0200, Geert Uytterhoeven wrote:
+> On Mon, Jun 12, 2017 at 9:15 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> > On 2017/6/12 14:14, Jeffy Chen wrote:
+
+> >>   +static int rockchip_spi_setup(struct spi_device *spi)
+> >> +{
+> >> +       int ret = 0;
+> >> +       unsigned long flags = (spi->mode & SPI_CS_HIGH) ?
+> >> +                             GPIOF_OUT_INIT_LOW : GPIOF_OUT_INIT_HIGH;
+> >> +       struct rockchip_spi_data *data = spi_get_ctldata(spi);
+> >> +
+> >> +       if (!gpio_is_valid(spi->cs_gpio))
+> >> +               return 0;
+
+> > return -EINVAL?
+
+> Isn't this check meant to fall back to hardware CS if no cs-gpios property
+> is present?
+
+I'd expect it to, otherwise the cs-gpios property is actualy mandatory.
+
+--v4puphklnlp5dxxt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlk+w3UACgkQJNaLcl1U
+h9DnCgf+OXg2QggBSu3RqoWjZVm0900QROcD7N8+ji9tg5o2HlW11YKPh7FkgdYf
+UmQBFFfXP4PBvAztwodoGXFxL4s6WcUhf5xvGr0F0CXEThlI3ljWUYXyFVOm60BX
+pTSUiQgToe4Z5lnMcc17T5cQ54TFNYFsP5b4U+bM4ZfVwCqbGyTSI8itXkh9eAxA
+gHNkATAQgRfFtuJvo0jgryOA0cLZj7wqMWqSpk2H6V2LwuOR9bdhL36vRLt6DZP6
+vUaCl99sA3IFyk70stYbuFpn9/f1U/TQjLP8UJvHKuR5TQhjERXo83BXC0tmbDKE
+/QH6k+n6SzyBi5zLZnkurv0e523LUA==
+=Vd63
+-----END PGP SIGNATURE-----
+
+--v4puphklnlp5dxxt--
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
