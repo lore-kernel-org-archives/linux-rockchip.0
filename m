@@ -1,144 +1,55 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v6 08/12] gpio: Add GPIO driver for the RK805 PMIC
-Date: Fri, 09 Jun 2017 14:17:42 +0200
-Message-ID: <2451251.ri2bNrhWeM@phil>
-References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com> <1496907001-27107-1-git-send-email-chenjh@rock-chips.com> <CACRpkdZRKWPgFoM=Owo+EXU3bA_oymn5_3WRS9cuMr3G7Hdi6Q@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdZRKWPgFoM=Owo+EXU3bA_oymn5_3WRS9cuMr3G7Hdi6Q@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Linus Walleij <linus.walleij@linaro.org>, Jianhong Chen <chenjh@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Alexandre Courbot <gnurou@gmail.com>, zhangqing@rock-chips.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, tony.xie@rock-chips.com, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Linux Input <linux-input@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, w.egorov@phytec.de
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: use cs-gpios for cros_ec_spi
+Date: Mon, 12 Jun 2017 14:14:16 +0800
+Message-ID: <1497248057-16550-2-git-send-email-jeffy.chen@rock-chips.com>
+References: <1497248057-16550-1-git-send-email-jeffy.chen@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1497248057-16550-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+The cros_ec requires CS line to be active after last message. But the CS
+would be toggled when powering off/on rockchip spi, which breaks ec xfer.
+Use GPIO CS to prevent that.
 
-Am Freitag, 9. Juni 2017, 13:37:26 CEST schrieb Linus Walleij:
-> Heiko, can you please look at this patch.
-> 
-> On Thu, Jun 8, 2017 at 9:30 AM, Jianhong Chen <chenjh@rock-chips.com> wrote:
-> 
-> > From: chenjh <chenjh@rock-chips.com>
-> 
-> Full name please.
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-git config --global user.name "John Doe"
+---
 
-might do the trick and make this permanent for all your commits :-)
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-
-> > RK805 has two configurable GPIOs that can be used for several
-> > purposes. These are output only.
-> >
-> > This driver is generic for other Rockchip PMICs to be added.
-> >
-> > Signed-off-by: chenjh <chenjh@rock-chips.com>
-> 
-> Dito.
-> 
-> Your commit message says they are output-only, yet you implement
-> .direction_input(). So what is is going to be?
-
-So far, I've only seen the rk808 and rk818. Both do not have any
-configurable pins.
-
-The rk805 which is a sort of variant of the above, does have the two
-pins defined below, but in the manual I could also only find them as
-output-only and having no other function than being output-pins.
-
-So I don't really know if all the input- or "gpio-mode"- handling is only
-an oversight (copy'n'paste) or if there are yet other rk808 variants around
-that can actually be configured as inputs or even non-gpio modes?
-
-I hope Jianhong will be able to answer that.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index eb50593..329a634 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -790,6 +790,8 @@ ap_i2c_audio: &i2c8 {
+ &spi5 {
+ 	status = "okay";
+ 
++	cs-gpios = <&gpio2 23 GPIO_ACTIVE_HIGH>;
++
+ 	cros_ec: ec@0 {
+ 		compatible = "google,cros-ec-spi";
+ 		reg = <0>;
+@@ -813,6 +815,10 @@ ap_i2c_audio: &i2c8 {
+ 	};
+ };
+ 
++&spi5_cs0 {
++	rockchip,pins = <2 23 RK_FUNC_GPIO &pcfg_pull_up>;
++};
++
+ &tsadc {
+ 	status = "okay";
+ 
+-- 
+2.1.4
 
 
-Heiko
-
-> 
-> > +#include <linux/i2c.h>
-> > +#include <linux/gpio.h>
-> 
-> Only use:
-> #include <linux/gpio/driver.h>
-> 
-> > +/*
-> > + * @mode: supported modes for this gpio, i.e. OUTPUT_MODE, OUTPUT_MODE...
-> 
-> Are you saying this should be an enum or a set of flags?
-> 
-> > +static int rk805_gpio_get(struct gpio_chip *chip, unsigned offset)
-> > +{
-> > +       int ret, val;
-> > +       struct rk805_gpio *gpio = gpiochip_get_data(chip);
-> > +
-> > +       ret = regmap_read(gpio->rk808->regmap, gpio->pins[offset].reg, &val);
-> > +       if (ret) {
-> > +               dev_err(gpio->dev, "gpio%d not support output mode\n", offset);
-> > +               return ret;
-> > +       }
-> > +
-> > +       return (val & gpio->pins[offset].val_msk) ? 1 : 0;
-> 
-> Do this:
-> 
-> return !!(val & gpio->pins[offset].val_msk)
-> 
-> > +static int rk805_gpio_request(struct gpio_chip *chip, unsigned offset)
-> > +{
-> > +       int ret;
-> > +       struct rk805_gpio *gpio = gpiochip_get_data(chip);
-> > +
-> > +       /* switch to gpio mode */
-> > +       if (gpio->pins[offset].func_mask) {
-> > +               ret = regmap_update_bits(gpio->rk808->regmap,
-> > +                                        gpio->pins[offset].reg,
-> > +                                        gpio->pins[offset].func_mask,
-> > +                                        gpio->pins[offset].func_mask);
-> > +               if (ret) {
-> > +                       dev_err(gpio->dev, "set gpio%d func failed\n", offset);
-> > +                       return ret;
-> > +               }
-> > +       }
-> > +
-> > +       return 0;
-> > +}
-> 
-> This is pin control. Why don't you implement a proper pin control
-> driver for this chip?
-> 
-> If you don't, this will just come back and haunt you.
-> 
-> Why not merge the driver into drivers/pinctrl/* and name it
-> pinctrl-rk805.c to begin with?
-> 
-> > +static const struct gpio_chip rk805_chip = {
-> > +       .label                  = "rk805-gpio",
-> > +       .owner                  = THIS_MODULE,
-> > +       .direction_input        = rk805_gpio_direction_input,
-> > +       .direction_output       = rk805_gpio_direction_output,
-> 
-> Please implement .get_direction()
-> 
-> > +       .get                    = rk805_gpio_get,
-> > +       .set                    = rk805_gpio_set,
-> > +       .request                = rk805_gpio_request,
-> > +       .base                   = -1,
-> > +       .ngpio                  = 2,
-> > +       .can_sleep              = true,
-> 
-> Consider assigning the .names[] array some pin names.
-> 
-> Yours,
-> Linus Walleij
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-> 
-
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
