@@ -1,90 +1,74 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] spi: rockchip: add support for "cs-gpios" dts property
-Date: Mon, 12 Jun 2017 11:23:37 +0200
-Message-ID: <2280770.UMxRo5IhGO@diego>
-References: <1497248057-16550-1-git-send-email-jeffy.chen@rock-chips.com> <4418523.E0t9k04HOG@diego> <593E5AF8.1080404@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v6 12/12] gpio: dt-bindings: add bindings for Rockchip
+ RK805 PMIC
+Date: Mon, 12 Jun 2017 10:58:31 -0500
+Message-ID: <20170612155831.we2p6uxjy4nyblsk@rob-hp-laptop>
+References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com>
+ <1496907193-29294-1-git-send-email-chenjh@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <593E5AF8.1080404-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1496907193-29294-1-git-send-email-chenjh@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jianhong Chen <chenjh@rock-chips.com>
+Cc: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 12. Juni 2017, 17:12:24 CEST schrieb jeffy:
-> Hi Heiko,
+On Thu, Jun 08, 2017 at 03:33:13PM +0800, Jianhong Chen wrote:
+> From: chenjh <chenjh@rock-chips.com>
 > 
-> thanx for your comments.
+> Add device tree bindings documentation for Rockchip's RK805 PMIC
 > 
-> On 06/12/2017 04:36 PM, Heiko Stübner wrote:
-> > Am Montag, 12. Juni 2017, 16:26:07 CEST schrieb jeffy:
-> >> Hi Shawn,
-> >> 
-> >> On 06/12/2017 03:15 PM, Shawn Lin wrote:
-> >>> Hi Jeffy,
-> >>> 
-> >>> On 2017/6/12 14:14, Jeffy Chen wrote:
-> >>>> Support using "cs-gpios" property to specify cs gpios.
-> >>>> 
-> >>>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >>>> ---
-> >>>> 
-> >>>>    .../devicetree/bindings/spi/spi-rockchip.txt       |  2 +
-> >>>>    drivers/spi/spi-rockchip.c                         | 52
-> >>>> 
-> >>>> ++++++++++++++++++++++
-> >>>> 
-> >>>>    2 files changed, 54 insertions(+)
-> >>>> 
-> >>>> diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-> >>>> b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-> >>>> index 83da493..02171b2 100644
-> >>>> --- a/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-> >>>> +++ b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-> >>> 
-> >>> The changes for doc should be another patch, and...
-> >> 
-> >> but i saw others didn't separate them:
-> >> cf9e478 spi: sh-msiof: Add slave mode support
-> >> 23e291c spi: rockchip: support "sleep" pin configuration
-> > 
-> > it sometimes falls through the cracks, but having dt-binding patches
-> > separate is meant to make it easier on DT-Maintainers to find
-> > patches they need to look at.
+> Signed-off-by: chenjh <chenjh@rock-chips.com>
+> ---
+>  .../devicetree/bindings/gpio/gpio-rk805.txt        | 37 ++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpio/gpio-rk805.txt
 > 
-> ok, will do.
-> 
-> >>>> +    if (!data->cs_gpio_requested) {
-> >>>> +        ret = gpio_request_one(spi->cs_gpio, flags,
-> >>>> +                       dev_name(&spi->dev));
-> >>>> +        if (!ret)
-> >>>> +            data->cs_gpio_requested = 1;
-> >>>> +    } else
-> >>>> +        ret = gpio_direction_output(spi->cs_gpio, flags);
-> >>> 
-> >>> need brace around 'else' statement. Also I don't see data used
-> >>> elsewhere, so you need these code above.
-> >> 
-> >> ok.
-> >> and the cs_gpio_requested is to mark cs_gpio requested, because the
-> >> setup func might be called multiple times, we only need to request gpio
-> >> at the first time.
-> > 
-> > Aren't the gpiod* functions meant to be used for new things?
-> > Also you might actually do a bit of error handling there, especially
-> > EPROBE_DEFER.
-> 
-> so you are suggesting to use gpiod* functions here to replace gpio_*
-> functions right?
+> diff --git a/Documentation/devicetree/bindings/gpio/gpio-rk805.txt b/Documentation/devicetree/bindings/gpio/gpio-rk805.txt
+> new file mode 100644
+> index 0000000..98b75fa
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gpio/gpio-rk805.txt
+> @@ -0,0 +1,37 @@
+> +RK805 GPIO controller
+> +
+> +This driver follows the usual GPIO bindings found in
+> +Documentation/devicetree/bindings/gpio/gpio.txt
+> +
+> +Required properties:
+> +- #gpio-cells: Should be two. The first cell is the pin number and the
+> +  second is the GPIO flags.
+> +- gpio-controller: Marks the device node as a GPIO controller.
+> +
+> +These properties must be added in the RK805 PMIC node, documented in
+> +Documentation/devicetree/bindings/mfd/rk808.txt
+> +
+> +Example:
+> +
+> +rk805: pmic@18 {
+> +	compatible = "rockchip,rk808";
+> +	clock-output-names = "xin32k", "rk808-clkout2";
+> +	interrupt-parent = <&gpio0>;
+> +	interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
+> +	reg = <0x1a>;
+> +	rockchip,system-power-controller;
+> +	wakeup-source;
+> +	#clock-cells = <1>;
+> +	...
+> +	gpio-controller;
+> +	#gpio-cells = <2>;
+> +};
+> +
+> +
+> +Example of a peripheral using the PMIC GPIOs:
+> +
+> +wireless-bluetooth {
+> +		compatible = "bluetooth-platdata";
 
-correct. And handle errors that may get returned, especially EPROBE_DEFER,
-but also other errors may indicate that your spi won't function as expected.
+Not a valid example compatible. While you don't really have to have a 
+valid one, it should be something that's not a "what not to do" and 
+would never be accepted.
 
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Rob
