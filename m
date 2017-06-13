@@ -1,67 +1,78 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v1 4/4] ASoC: rockchip: i2s: fixup clk div
-Date: Tue, 13 Jun 2017 21:48:51 +0100
-Message-ID: <20170613204851.devutejizfbroeao@sirena.org.uk>
-References: <1496998369-30556-1-git-send-email-sugar.zhang@rock-chips.com>
- <1496998369-30556-5-git-send-email-sugar.zhang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6543296030933368512=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1496998369-30556-5-git-send-email-sugar.zhang@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
+Subject: Applied "ASoC: rockchip: i2s: add a delay before i2s clear" to the asoc tree
+Date: Tue, 13 Jun 2017 22:07:49 +0100
+Message-ID: <E1dKt2T-0000Hw-9Z@debutante>
+References: <1496998369-30556-2-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1496998369-30556-2-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Mark Brown <broonie@kernel.org>, heiko@sntech.debroonie@kernel.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The patch
 
---===============6543296030933368512==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="mj66cy2qqkiq6hav"
-Content-Disposition: inline
+   ASoC: rockchip: i2s: add a delay before i2s clear
 
+has been applied to the asoc tree at
 
---mj66cy2qqkiq6hav
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-On Fri, Jun 09, 2017 at 04:52:49PM +0800, Sugar Zhang wrote:
-> we found mclk maybe not precise as required because of PLL,
-> but it still can be used and no side effect. for example, if we
-> require mclk 11289600, but get 11289598, it doesn't matter.
-> so using DIV_ROUND_CLOSEST to fix it.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-This is fine but seems to depend on patch 2.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
---mj66cy2qqkiq6hav
-Content-Type: application/pgp-signature; name="signature.asc"
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
------BEGIN PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAllAT7IACgkQJNaLcl1U
-h9BYtAgAg6doVgDKpLy5DlYemAq0FbOuPB0CXBoMzFYrvRGPOlEVfR2ZyZgbtYKp
-IFaTYFg3dC0j3AQahz36ldwkCiTPaJg3GMB7lmhmVdogG/SEvFxvIAUXpCMz/hoA
-1gmvfjkDJH0oiFjpG6bGTsNG+ZVKOVsJwHHV+XUSf7eVT4xOO8CpkU4i28NNYRRX
-qzdD3pwufCHrSFEWDnya666+WE6akL+pQY58+8Tko+3sfAEQw1o6jciLlkHdcMlu
-6wS6QiAtjtXUkVneQGGyrOIBEu8+ZPiX4kNlV5KjbPuwIxpnzBx/+Jh+KmsSsgKE
-vqtOjZEJ16dQ7q49BK9PhuNceAL1Cw==
-=7ANq
------END PGP SIGNATURE-----
+Thanks,
+Mark
 
---mj66cy2qqkiq6hav--
+From 5894b91d1e700f38b4157df143be1502cf08daa8 Mon Sep 17 00:00:00 2001
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Date: Fri, 9 Jun 2017 16:52:46 +0800
+Subject: [PATCH] ASoC: rockchip: i2s: add a delay before i2s clear
 
---===============6543296030933368512==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+in order to guarantee i2s lrck signal integrity, when i2s stop,
+need at least one lrck cycle to ensure signal integrity.
 
+the max delay time is when lrck is 8khz, the delay time is
+125us(1/8khz), using udelay(150) with a 25us margin.
 
---===============6543296030933368512==--
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 974915cb4c4f..f54843342ee2 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -116,6 +116,7 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+ 					   I2S_XFER_TXS_STOP |
+ 					   I2S_XFER_RXS_STOP);
+ 
++			udelay(150);
+ 			regmap_update_bits(i2s->regmap, I2S_CLR,
+ 					   I2S_CLR_TXC | I2S_CLR_RXC,
+ 					   I2S_CLR_TXC | I2S_CLR_RXC);
+@@ -162,6 +163,7 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+ 					   I2S_XFER_TXS_STOP |
+ 					   I2S_XFER_RXS_STOP);
+ 
++			udelay(150);
+ 			regmap_update_bits(i2s->regmap, I2S_CLR,
+ 					   I2S_CLR_TXC | I2S_CLR_RXC,
+ 					   I2S_CLR_TXC | I2S_CLR_RXC);
+-- 
+2.11.0
