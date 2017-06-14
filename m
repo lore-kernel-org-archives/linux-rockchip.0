@@ -1,147 +1,147 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "spi: rockchip: fix error handling when probe" to the spi tree
-Date: Tue, 13 Jun 2017 22:09:31 +0100
-Message-ID: <E1dKt47-0000lu-GO@debutante>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: 
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.orgbroonie@kernel.org, briannorris@chromium.org, dianders@chromium.org, heiko@sntech.de, linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.orglinux-spi@vger.kernel.org
+From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] spi: rockchip: add support for "cs-gpios" dts
+ property
+Date: Wed, 14 Jun 2017 09:27:41 +0800
+Message-ID: <5940910D.1020504@rock-chips.com>
+References: <1497331543-8565-1-git-send-email-jeffy.chen@rock-chips.com> <1497331543-8565-2-git-send-email-jeffy.chen@rock-chips.com> <20170613173346.GB9026@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170613173346.GB9026-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Hi Brian,
 
-   spi: rockchip: fix error handling when probe
+Thanx for your comments :)
 
-has been applied to the spi tree at
+On 06/14/2017 01:33 AM, Brian Norris wrote:
+> Hi Jeffy,
+>
+> On Tue, Jun 13, 2017 at 01:25:41PM +0800, Jeffy Chen wrote:
+>> Support using "cs-gpios" property to specify cs gpios.
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> 1/ request cs gpios in probe for better error handling
+>> 2/ use gpiod* function
+>> (suggested by Heiko Stuebner)
+>>
+>> 3/ split dt-binding changes to new patch
+>> (suggested by Shawn Lin & Heiko Stuebner)
+>>
+>> ---
+>>
+>> Changes in v2: None
+>>
+>>   drivers/spi/spi-rockchip.c | 30 +++++++++++++++++++++++++++++-
+>>   1 file changed, 29 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+>> index bab9b13..ad8997b 100644
+>> --- a/drivers/spi/spi-rockchip.c
+>> +++ b/drivers/spi/spi-rockchip.c
+>> @@ -16,7 +16,7 @@
+>>   #include <linux/clk.h>
+>>   #include <linux/dmaengine.h>
+>>   #include <linux/module.h>
+>> -#include <linux/of.h>
+>> +#include <linux/of_gpio.h>
+>>   #include <linux/pinctrl/consumer.h>
+>>   #include <linux/platform_device.h>
+>>   #include <linux/spi/spi.h>
+>> @@ -663,6 +663,27 @@ static bool rockchip_spi_can_dma(struct spi_master *master,
+>>   	return (xfer->len > rs->fifo_len);
+>>   }
+>>
+>> +static int rockchip_spi_setup_cs_gpios(struct device *dev)
+>> +{
+>> +	struct device_node *np = dev->of_node;
+>> +	struct gpio_desc *cs_gpio;
+>> +	int i, nb;
+>> +
+>> +	if (!np)
+>> +		return 0;
+>> +
+>> +	nb = of_gpio_named_count(np, "cs-gpios");
+>> +	for (i = 0; i < nb; i++) {
+>> +		/* We support both GPIO CS and HW CS */
+>> +		cs_gpio = devm_gpiod_get_index_optional(dev, "cs",
+>> +							i, GPIOD_ASIS);
+>> +		if (IS_ERR(cs_gpio))
+>> +			return PTR_ERR(cs_gpio);
+>
+> I'm a bit confused why you need this function at all. You aren't using
+> the references that you're grabbing here, so essentially this is just
+> error-checking.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+actually this is error-checking plus gpiod_request(see gpiod_get_index 
+in gpiolib.c)
+>
+> Are you doing anything here that isn't covered in
+> of_spi_register_master()?
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+expect for gpiod_request, another difference would be
+when the of_spi_register_master calls of_get_named_gpio to parse 
+cs-gpios, it would not do error handling here(fallback to HW CS):
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+         for (i = 0; i < nb; i++)
+                 cs[i] = of_get_named_gpio(np, "cs-gpios", i);
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+but in our case, if something wrong happens(except for ENOENT), we 
+cannot fallback to HW CS, because we already let pinctrl config GPIO CS.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+>
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static int rockchip_spi_probe(struct platform_device *pdev)
+>>   {
+>>   	int ret = 0;
+>> @@ -749,6 +770,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+>>   	master->transfer_one = rockchip_spi_transfer_one;
+>>   	master->max_transfer_size = rockchip_spi_max_transfer_size;
+>>   	master->handle_err = rockchip_spi_handle_err;
+>> +	master->flags = SPI_MASTER_GPIO_SS;
+>
+> I'm curious, do you actually need to assert both the HW and GPIO CS?
 
-Thanks,
-Mark
+yes, it would hang if we do spi xfer with wrong HW CS register 
+config(seems to be another controller limit)...
 
-From c351587e2502050f36d16e9e32c6c98975ecd6a2 Mon Sep 17 00:00:00 2001
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Date: Tue, 13 Jun 2017 13:25:40 +0800
-Subject: [PATCH] spi: rockchip: fix error handling when probe
+>
+> Brian
+>
+>>
+>>   	rs->dma_tx.ch = dma_request_chan(rs->dev, "tx");
+>>   	if (IS_ERR(rs->dma_tx.ch)) {
+>> @@ -783,6 +805,12 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+>>   		master->dma_rx = rs->dma_rx.ch;
+>>   	}
+>>
+>> +	ret = rockchip_spi_setup_cs_gpios(&pdev->dev);
+>> +	if (ret) {
+>> +		dev_err(&pdev->dev, "Failed to setup cs gpios\n");
+>> +		goto err_free_dma_rx;
+>> +	}
+>> +
+>>   	ret = devm_spi_register_master(&pdev->dev, master);
+>>   	if (ret) {
+>>   		dev_err(&pdev->dev, "Failed to register master\n");
+>> --
+>> 2.1.4
+>>
+>>
+>
+>
+>
 
-After failed to request dma tx chain, we need to disable pm_runtime.
-Also cleanup error labels for better readability.
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Reviewed-by: Brian Norris <briannorris@chromium.org>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- drivers/spi/spi-rockchip.c | 27 ++++++++++++++-------------
- 1 file changed, 14 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index acf31f36b898..bab9b13f0ad0 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -684,33 +684,33 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	rs->regs = devm_ioremap_resource(&pdev->dev, mem);
- 	if (IS_ERR(rs->regs)) {
- 		ret =  PTR_ERR(rs->regs);
--		goto err_ioremap_resource;
-+		goto err_put_master;
- 	}
- 
- 	rs->apb_pclk = devm_clk_get(&pdev->dev, "apb_pclk");
- 	if (IS_ERR(rs->apb_pclk)) {
- 		dev_err(&pdev->dev, "Failed to get apb_pclk\n");
- 		ret = PTR_ERR(rs->apb_pclk);
--		goto err_ioremap_resource;
-+		goto err_put_master;
- 	}
- 
- 	rs->spiclk = devm_clk_get(&pdev->dev, "spiclk");
- 	if (IS_ERR(rs->spiclk)) {
- 		dev_err(&pdev->dev, "Failed to get spi_pclk\n");
- 		ret = PTR_ERR(rs->spiclk);
--		goto err_ioremap_resource;
-+		goto err_put_master;
- 	}
- 
- 	ret = clk_prepare_enable(rs->apb_pclk);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to enable apb_pclk\n");
--		goto err_ioremap_resource;
-+		goto err_put_master;
- 	}
- 
- 	ret = clk_prepare_enable(rs->spiclk);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to enable spi_clk\n");
--		goto err_spiclk_enable;
-+		goto err_disable_apbclk;
- 	}
- 
- 	spi_enable_chip(rs, 0);
-@@ -728,7 +728,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	if (!rs->fifo_len) {
- 		dev_err(&pdev->dev, "Failed to get fifo length\n");
- 		ret = -EINVAL;
--		goto err_get_fifo_len;
-+		goto err_disable_spiclk;
- 	}
- 
- 	spin_lock_init(&rs->lock);
-@@ -755,7 +755,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 		/* Check tx to see if we need defer probing driver */
- 		if (PTR_ERR(rs->dma_tx.ch) == -EPROBE_DEFER) {
- 			ret = -EPROBE_DEFER;
--			goto err_get_fifo_len;
-+			goto err_disable_pm_runtime;
- 		}
- 		dev_warn(rs->dev, "Failed to request TX DMA channel\n");
- 		rs->dma_tx.ch = NULL;
-@@ -786,23 +786,24 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_master(&pdev->dev, master);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to register master\n");
--		goto err_register_master;
-+		goto err_free_dma_rx;
- 	}
- 
- 	return 0;
- 
--err_register_master:
--	pm_runtime_disable(&pdev->dev);
-+err_free_dma_rx:
- 	if (rs->dma_rx.ch)
- 		dma_release_channel(rs->dma_rx.ch);
- err_free_dma_tx:
- 	if (rs->dma_tx.ch)
- 		dma_release_channel(rs->dma_tx.ch);
--err_get_fifo_len:
-+err_disable_pm_runtime:
-+	pm_runtime_disable(&pdev->dev);
-+err_disable_spiclk:
- 	clk_disable_unprepare(rs->spiclk);
--err_spiclk_enable:
-+err_disable_apbclk:
- 	clk_disable_unprepare(rs->apb_pclk);
--err_ioremap_resource:
-+err_put_master:
- 	spi_master_put(master);
- 
- 	return ret;
--- 
-2.11.0
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
