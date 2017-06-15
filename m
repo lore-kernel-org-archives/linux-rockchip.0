@@ -1,45 +1,68 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] MAINTAINERS: update maintainer for rockchip PCIe driver
-Date: Wed, 14 Jun 2017 14:13:53 -0500
-Message-ID: <20170614191353.GF20778@bhelgaas-glaptop.roam.corp.google.com>
-References: <1496389333-234834-1-git-send-email-shawn.lin@rock-chips.com>
+From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 1/3] spi: rockchip: add support for "cs-gpios" dts
+ property
+Date: Thu, 15 Jun 2017 10:40:29 +0800
+Message-ID: <5941F39D.2090503@rock-chips.com>
+References: <201706141616.khtJ942K%fengguang.wu@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1496389333-234834-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <201706141616.khtJ942K%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 02, 2017 at 03:42:13PM +0800, Shawn Lin wrote:
-> Wenrui Li changed his employer and is no longer able to
-> maintain this driver. So remove his email address from this
-> file.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Hi guys(and Robot(^.^)),
 
-Applied to pci/host-rockhcip for v4.13, thanks!
+this is because i drop this patch:
+9783131 New          [v2,1/4] spi: rockchip: fix error handling when probe
 
+which is applied at 6/14, so not on v4.12-rc5 next-20170613.
+
+On 06/14/2017 05:04 PM, kbuild test robot wrote:
+> Hi Jeffy,
+>
+> [auto build test ERROR on rockchip/for-next]
+> [also build test ERROR on v4.12-rc5 next-20170613]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+>
+> url:    https://github.com/0day-ci/linux/commits/Jeffy-Chen/spi-rockchip-add-support-for-cs-gpios-dts-property/20170614-160238
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+> config: x86_64-randconfig-x012-201724 (attached as .config)
+> compiler: gcc-6 (Debian 6.2.0-3) 6.2.0 20160901
+> reproduce:
+>          # save the attached .config to linux build tree
+>          make ARCH=x86_64
+>
+> All errors (new ones prefixed by >>):
+>
+>     drivers//spi/spi-rockchip.c: In function 'rockchip_spi_probe':
+>>> drivers//spi/spi-rockchip.c:812:3: error: label 'err_free_dma_rx' used but not defined
+>        goto err_free_dma_rx;
+>        ^~~~
+>
+> vim +/err_free_dma_rx +812 drivers//spi/spi-rockchip.c
+>
+>     806			master->dma_rx = rs->dma_rx.ch;
+>     807		}
+>     808	
+>     809		ret = rockchip_spi_setup_cs_gpios(&pdev->dev);
+>     810		if (ret) {
+>     811			dev_err(&pdev->dev, "Failed to setup cs gpios\n");
+>   > 812			goto err_free_dma_rx;
+>     813		}
+>     814	
+>     815		ret = devm_spi_register_master(&pdev->dev, master);
+>
 > ---
-> 
->  MAINTAINERS | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 9609ca6..5066ebe 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -10005,7 +10005,6 @@ F:	drivers/pci/dwc/pcie-hisi.c
->  
->  PCIE DRIVER FOR ROCKCHIP
->  M:	Shawn Lin <shawn.lin@rock-chips.com>
-> -M:	Wenrui Li <wenrui.li@rock-chips.com>
->  L:	linux-pci@vger.kernel.org
->  L:	linux-rockchip@lists.infradead.org
->  S:	Maintained
-> -- 
-> 1.9.1
-> 
-> 
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+>
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
