@@ -1,68 +1,45 @@
-From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] spi: rockchip: add support for "cs-gpios" dts
- property
-Date: Thu, 15 Jun 2017 10:40:29 +0800
-Message-ID: <5941F39D.2090503@rock-chips.com>
-References: <201706141616.khtJ942K%fengguang.wu@intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <201706141616.khtJ942K%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH] ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
+Date: Thu, 15 Jun 2017 07:53:11 +0200
+Message-ID: <20170615055311.8049-1-christophe.jaillet@wanadoo.fr>
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
+Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi guys(and Robot(^.^)),
+If this memory allocation fail, we must disable what has been enabled.
+Do not return immediately but go thrue the error handling path instead.
 
-this is because i drop this patch:
-9783131 New          [v2,1/4] spi: rockchip: fix error handling when probe
+Also use 'devm_kmemdup' instead of 'devm_kzalloc+memcpy' to simplify code.
 
-which is applied at 6/14, so not on v4.12-rc5 next-20170613.
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-On 06/14/2017 05:04 PM, kbuild test robot wrote:
-> Hi Jeffy,
->
-> [auto build test ERROR on rockchip/for-next]
-> [also build test ERROR on v4.12-rc5 next-20170613]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
->
-> url:    https://github.com/0day-ci/linux/commits/Jeffy-Chen/spi-rockchip-add-support-for-cs-gpios-dts-property/20170614-160238
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-> config: x86_64-randconfig-x012-201724 (attached as .config)
-> compiler: gcc-6 (Debian 6.2.0-3) 6.2.0 20160901
-> reproduce:
->          # save the attached .config to linux build tree
->          make ARCH=x86_64
->
-> All errors (new ones prefixed by >>):
->
->     drivers//spi/spi-rockchip.c: In function 'rockchip_spi_probe':
->>> drivers//spi/spi-rockchip.c:812:3: error: label 'err_free_dma_rx' used but not defined
->        goto err_free_dma_rx;
->        ^~~~
->
-> vim +/err_free_dma_rx +812 drivers//spi/spi-rockchip.c
->
->     806			master->dma_rx = rs->dma_rx.ch;
->     807		}
->     808	
->     809		ret = rockchip_spi_setup_cs_gpios(&pdev->dev);
->     810		if (ret) {
->     811			dev_err(&pdev->dev, "Failed to setup cs gpios\n");
->   > 812			goto err_free_dma_rx;
->     813		}
->     814	
->     815		ret = devm_spi_register_master(&pdev->dev, master);
->
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Center
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
->
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index af5e0da144f7..f3aa3dfe914b 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -643,12 +643,13 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 			goto err_pm_disable;
+ 	}
+ 
+-	soc_dai = devm_kzalloc(&pdev->dev,
++	soc_dai = devm_kmemdup(&pdev->dev, &rockchip_i2s_dai
+ 			       sizeof(*soc_dai), GFP_KERNEL);
+-	if (!soc_dai)
+-		return -ENOMEM;
++	if (!soc_dai) {
++		err = -ENOMEM;
++		goto err_pm_disable;
++	}
+ 
+-	memcpy(soc_dai, &rockchip_i2s_dai, sizeof(*soc_dai));
+ 	if (!of_property_read_u32(node, "rockchip,playback-channels", &val)) {
+ 		if (val >= 2 && val <= 8)
+ 			soc_dai->playback.channels_max = val;
+-- 
+2.11.0
 
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
