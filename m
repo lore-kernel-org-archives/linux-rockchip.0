@@ -1,93 +1,80 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+From: Mark Brown <broonie@kernel.org>
 Subject: Re: Applied "ASoC: rockchip: Fix an error handling in
  'rockchip_i2s_probe'" to the asoc tree
-Date: Thu, 15 Jun 2017 19:32:53 +0200
-Message-ID: <77af69fd-3135-36d6-385b-82d044c32f44@wanadoo.fr>
+Date: Thu, 15 Jun 2017 20:12:53 +0100
+Message-ID: <20170615191253.ffuz3jay2fothn37@sirena.org.uk>
 References: <20170615055311.8049-1-christophe.jaillet@wanadoo.fr>
  <E1dLYRz-0001l4-SZ@debutante>
+ <77af69fd-3135-36d6-385b-82d044c32f44@wanadoo.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <E1dLYRz-0001l4-SZ@debutante>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============0923629493011463475=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <77af69fd-3135-36d6-385b-82d044c32f44@wanadoo.fr>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Le 15/06/2017 à 19:20, Mark Brown a écrit :
-> The patch
->
->     ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
->
-> has been applied to the asoc tree at
->
->     git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git
->
-> All being well this means that it will be integrated into the linux-next
-> tree (usually sometime in the next 24 hours) and sent to Linus during
-> the next merge window (or sooner if it is a bug fix), however if
-> problems are discovered then the patch may be dropped or reverted.
->
-> You may get further e-mails resulting from automated or manual testing
-> and review of the tree, please engage with people reporting problems and
-> send followup patches addressing any issues that are reported if needed.
->
-> If any updates are required or you are submitting further changes they
-> should be sent as incremental updates against current git, existing
-> patches will not be replaced.
->
-> Please add any relevant lists and maintainers to the CCs when replying
-> to this mail.
->
-> Thanks,
-> Mark
->
->  From c3a3d3c41b74b05267bab6173f2a8224a1443ba6 Mon Sep 17 00:00:00 2001
-> From: Christophe Jaillet <christophe.jaillet@wanadoo.fr>
-> Date: Thu, 15 Jun 2017 07:53:11 +0200
-> Subject: [PATCH] ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
->
-> If this memory allocation fail, we must disable what has been enabled.
-> Do not return immediately but go thrue the error handling path instead.
->
-> Also use 'devm_kmemdup' instead of 'devm_kzalloc+memcpy' to simplify code.
->
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Signed-off-by: Mark Brown <broonie@kernel.org>
-> ---
->   sound/soc/rockchip/rockchip_i2s.c | 9 +++++----
->   1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> index 66a26c56c658..ce09dee2202e 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-> @@ -641,12 +641,13 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
->   			goto err_pm_disable;
->   	}
->   
-> -	soc_dai = devm_kzalloc(&pdev->dev,
-> +	soc_dai = devm_kmemdup(&pdev->dev, &rockchip_i2s_dai
->   			       sizeof(*soc_dai), GFP_KERNEL);
-> -	if (!soc_dai)
-> -		return -ENOMEM;
-> +	if (!soc_dai) {
-> +		err = -ENOMEM;
-> +		goto err_pm_disable;
-> +	}
->   
-> -	memcpy(soc_dai, &rockchip_i2s_dai, sizeof(*soc_dai));
->   	if (!of_property_read_u32(node, "rockchip,playback-channels", &val)) {
->   		if (val >= 2 && val <= 8)
->   			soc_dai->playback.channels_max = val;
 
-Thanks for taking the patch, but there is a typo in it. A comma is 
-missing as spotted by the kbuild test robot.
+--===============0923629493011463475==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="vog7pfzldkgzzr5q"
+Content-Disposition: inline
 
-I hope that you have seen it and fixed it before applying.
 
-All my patches are normally compile tested. I don't know what has gone 
-wrong for this one. I apologize for the issue.
+--vog7pfzldkgzzr5q
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-CJ
+On Thu, Jun 15, 2017 at 07:32:53PM +0200, Christophe JAILLET wrote:
+> Le 15/06/2017 =E0 19:20, Mark Brown a =E9crit :
+
+> > -	memcpy(soc_dai, &rockchip_i2s_dai, sizeof(*soc_dai));
+> >   	if (!of_property_read_u32(node, "rockchip,playback-channels", &val))=
+ {
+> >   		if (val >=3D 2 && val <=3D 8)
+> >   			soc_dai->playback.channels_max =3D val;
+
+> Thanks for taking the patch, but there is a typo in it. A comma is missing
+> as spotted by the kbuild test robot.
+
+> I hope that you have seen it and fixed it before applying.
+
+Ugh, no.  Like the mail says this is the patch that got applied.  The
+kbuild tests were against the rockchip tree not mine so i thought this
+was something else...
+
+--vog7pfzldkgzzr5q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAllC3DQACgkQJNaLcl1U
+h9CEAAf+JeKfeUzWeooD/sYPVbAGraHT7va/JFA3hMaF/CNQMQoMMZ1U8LbwNaVZ
+XeBa4i2LIS6rNQZp5IGSw167610FjftjPYpAZwQtWWU/Pkf1YpXITVV/4I2ZAFRD
+K+WM9cvjusa4XQDe16h9soImHQ6yih/qELttpJrslm6aMOJcrS15EDI2lFAnVSum
+DQAl70cXTss0KlkHuVcbCWSwu8CvcecXviVkYZeb37yOuLQvyw4rrgEp+M+LQHDL
+Gs4og9YkIzpsf6EPZV6NuhgWYV+OaXXrCUQj8ippJrHrwKweVroeSG+1knYEAs+S
+iqlTS5YEZx0HSh4bF2vyv6kDjrUf3g==
+=q0W7
+-----END PGP SIGNATURE-----
+
+--vog7pfzldkgzzr5q--
+
+--===============0923629493011463475==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============0923629493011463475==--
