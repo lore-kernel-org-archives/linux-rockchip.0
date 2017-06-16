@@ -1,89 +1,70 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: Re: Applied "ASoC: rockchip: Fix an error handling in
- 'rockchip_i2s_probe'" to the asoc tree
-Date: Fri, 16 Jun 2017 06:57:30 +0200
-Message-ID: <e92fef8d-5ce1-0b7d-d130-0246d2cb7f91@wanadoo.fr>
-References: <20170615055311.8049-1-christophe.jaillet@wanadoo.fr>
- <E1dLYRz-0001l4-SZ@debutante>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] soc: rockchip: disable jtag switching for RK3328 Soc
+Date: Fri, 16 Jun 2017 16:17:45 +0800
+Message-ID: <b11e5b39-dc90-ded5-f767-4058dffa85a8@rock-chips.com>
+References: <1495699104-137633-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <E1dLYRz-0001l4-SZ@debutante>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1495699104-137633-1-git-send-email-shawn.lin@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Le 15/06/2017 à 19:20, Mark Brown a écrit :
-> The patch
->
->     ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
->
-> has been applied to the asoc tree at
->
->     git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git
->
-> All being well this means that it will be integrated into the linux-next
-> tree (usually sometime in the next 24 hours) and sent to Linus during
-> the next merge window (or sooner if it is a bug fix), however if
-> problems are discovered then the patch may be dropped or reverted.
->
-> You may get further e-mails resulting from automated or manual testing
-> and review of the tree, please engage with people reporting problems and
-> send followup patches addressing any issues that are reported if needed.
->
-> If any updates are required or you are submitting further changes they
-> should be sent as incremental updates against current git, existing
-> patches will not be replaced.
->
-> Please add any relevant lists and maintainers to the CCs when replying
-> to this mail.
->
-> Thanks,
-> Mark
->
->  From c3a3d3c41b74b05267bab6173f2a8224a1443ba6 Mon Sep 17 00:00:00 2001
-> From: Christophe Jaillet <christophe.jaillet@wanadoo.fr>
-> Date: Thu, 15 Jun 2017 07:53:11 +0200
-> Subject: [PATCH] ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
->
-> If this memory allocation fail, we must disable what has been enabled.
-> Do not return immediately but go thrue the error handling path instead.
->
-> Also use 'devm_kmemdup' instead of 'devm_kzalloc+memcpy' to simplify code.
->
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Signed-off-by: Mark Brown <broonie@kernel.org>
+Hi Heiko,
+
+Ping.... :)
+
+On 2017/5/25 15:58, Shawn Lin wrote:
+> Disable IO function switching between sdmmc and jtag
+> for RK3328 Soc.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > ---
->   sound/soc/rockchip/rockchip_i2s.c | 9 +++++----
->   1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> index 66a26c56c658..ce09dee2202e 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-> @@ -641,12 +641,13 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
->   			goto err_pm_disable;
->   	}
+> 
+>   drivers/soc/rockchip/grf.c | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
+> 
+> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+> index d61db34..15e71fd 100644
+> --- a/drivers/soc/rockchip/grf.c
+> +++ b/drivers/soc/rockchip/grf.c
+> @@ -54,6 +54,17 @@ struct rockchip_grf_info {
+>   	.num_values = ARRAY_SIZE(rk3288_defaults),
+>   };
 >   
-> -	soc_dai = devm_kzalloc(&pdev->dev,
-> +	soc_dai = devm_kmemdup(&pdev->dev, &rockchip_i2s_dai
->   			       sizeof(*soc_dai), GFP_KERNEL);
-> -	if (!soc_dai)
-> -		return -ENOMEM;
-> +	if (!soc_dai) {
-> +		err = -ENOMEM;
-> +		goto err_pm_disable;
-> +	}
+> +#define RK3328_GRF_SOC_CON4		0x410
+> +
+> +static const struct rockchip_grf_value rk3328_defaults[] __initconst = {
+> +	{ "jtag switching", RK3328_GRF_SOC_CON4, HIWORD_UPDATE(0, 1, 12) },
+> +};
+> +
+> +static const struct rockchip_grf_info rk3328_grf __initconst = {
+> +	.values = rk3328_defaults,
+> +	.num_values = ARRAY_SIZE(rk3328_defaults),
+> +};
+> +
+>   #define RK3368_GRF_SOC_CON15		0x43c
 >   
-> -	memcpy(soc_dai, &rockchip_i2s_dai, sizeof(*soc_dai));
->   	if (!of_property_read_u32(node, "rockchip,playback-channels", &val)) {
->   		if (val >= 2 && val <= 8)
->   			soc_dai->playback.channels_max = val;
-
-... and 'err' should be 'ret'...
-
-I'm really confused for such a ugly proposal !
-
-CJ
+>   static const struct rockchip_grf_value rk3368_defaults[] __initconst = {
+> @@ -84,6 +95,9 @@ struct rockchip_grf_info {
+>   		.compatible = "rockchip,rk3288-grf",
+>   		.data = (void *)&rk3288_grf,
+>   	}, {
+> +		.compatible = "rockchip,rk3328-grf",
+> +		.data = (void *)&rk3328_grf,
+> +	}, {
+>   		.compatible = "rockchip,rk3368-grf",
+>   		.data = (void *)&rk3368_grf,
+>   	}, {
+> 
