@@ -1,70 +1,78 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] soc: rockchip: disable jtag switching for RK3328 Soc
-Date: Fri, 16 Jun 2017 16:17:45 +0800
-Message-ID: <b11e5b39-dc90-ded5-f767-4058dffa85a8@rock-chips.com>
-References: <1495699104-137633-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1495699104-137633-1-git-send-email-shawn.lin@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 2/2] PCI: rockchip: do some post-cleanup work for phy
+Date: Fri, 16 Jun 2017 16:17:48 +0800
+Message-ID: <1497601068-181656-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+This patch invents rockchip_pcie_lane_map for looking
+up all lanes and find active one(s). Then we pass
+on the active lane map for phy_set_mode so that the
+we could do some basic cleanup work for power-saving by
+idle the failed lane(s).
 
-Ping.... :)
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-On 2017/5/25 15:58, Shawn Lin wrote:
-> Disable IO function switching between sdmmc and jtag
-> for RK3328 Soc.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->   drivers/soc/rockchip/grf.c | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-> index d61db34..15e71fd 100644
-> --- a/drivers/soc/rockchip/grf.c
-> +++ b/drivers/soc/rockchip/grf.c
-> @@ -54,6 +54,17 @@ struct rockchip_grf_info {
->   	.num_values = ARRAY_SIZE(rk3288_defaults),
->   };
->   
-> +#define RK3328_GRF_SOC_CON4		0x410
-> +
-> +static const struct rockchip_grf_value rk3328_defaults[] __initconst = {
-> +	{ "jtag switching", RK3328_GRF_SOC_CON4, HIWORD_UPDATE(0, 1, 12) },
-> +};
-> +
-> +static const struct rockchip_grf_info rk3328_grf __initconst = {
-> +	.values = rk3328_defaults,
-> +	.num_values = ARRAY_SIZE(rk3328_defaults),
-> +};
-> +
->   #define RK3368_GRF_SOC_CON15		0x43c
->   
->   static const struct rockchip_grf_value rk3368_defaults[] __initconst = {
-> @@ -84,6 +95,9 @@ struct rockchip_grf_info {
->   		.compatible = "rockchip,rk3288-grf",
->   		.data = (void *)&rk3288_grf,
->   	}, {
-> +		.compatible = "rockchip,rk3328-grf",
-> +		.data = (void *)&rk3328_grf,
-> +	}, {
->   		.compatible = "rockchip,rk3368-grf",
->   		.data = (void *)&rk3368_grf,
->   	}, {
-> 
+ drivers/pci/host/pcie-rockchip.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 0e020b6..c1916fd 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -15,6 +15,7 @@
+  * (at your option) any later version.
+  */
+ 
++#include <linux/bitrev.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
+@@ -111,6 +112,9 @@
+ #define   PCIE_CORE_TXCREDIT_CFG1_MUI_SHIFT	16
+ #define   PCIE_CORE_TXCREDIT_CFG1_MUI_ENCODE(x) \
+ 		(((x) >> 3) << PCIE_CORE_TXCREDIT_CFG1_MUI_SHIFT)
++#define PCIE_CORE_LANE_MAP		(PCIE_CORE_CTRL_MGMT_BASE + 0x200)
++#define   PCIE_CORE_LANE_MAP_MASK		0x0000000f
++#define   PCIE_CORE_LANE_MAP_REVERSE		BIT(16)
+ #define PCIE_CORE_INT_STATUS		(PCIE_CORE_CTRL_MGMT_BASE + 0x20c)
+ #define   PCIE_CORE_INT_PRFPE			BIT(0)
+ #define   PCIE_CORE_INT_CRFPE			BIT(1)
+@@ -292,6 +296,19 @@ static int rockchip_pcie_valid_device(struct rockchip_pcie *rockchip,
+ 	return 1;
+ }
+ 
++
++static u8 rockchip_pcie_lane_map(struct rockchip_pcie *rockchip)
++{
++	u32 val = rockchip_pcie_read(rockchip, PCIE_CORE_LANE_MAP);
++	u8 map = val & PCIE_CORE_LANE_MAP_MASK;
++
++	/* The link may be using a reverse-indexed mapping. */
++	if (val & PCIE_CORE_LANE_MAP_REVERSE)
++		map = bitrev8(map) >> 4;
++
++	return map;
++}
++
+ static int rockchip_pcie_rd_own_conf(struct rockchip_pcie *rockchip,
+ 				     int where, int size, u32 *val)
+ {
+@@ -646,6 +663,9 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 			  PCIE_CORE_PL_CONF_LANE_SHIFT);
+ 	dev_dbg(dev, "current link width is x%d\n", status);
+ 
++	/* Pass on the lane map for phy to do some power-saving work */
++	phy_set_mode(rockchip->phy, rockchip_pcie_lane_map(rockchip));
++
+ 	rockchip_pcie_write(rockchip, ROCKCHIP_VENDOR_ID,
+ 			    PCIE_CORE_CONFIG_VENDOR);
+ 	rockchip_pcie_write(rockchip,
+-- 
+1.9.1
