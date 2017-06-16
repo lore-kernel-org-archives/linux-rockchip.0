@@ -1,92 +1,89 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: Handle return value of clk_prepare_enable
-Date: Thu, 15 Jun 2017 16:48:40 -0500
-Message-ID: <20170615214840.GI12735@bhelgaas-glaptop.roam.corp.google.com>
-References: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: Re: Applied "ASoC: rockchip: Fix an error handling in
+ 'rockchip_i2s_probe'" to the asoc tree
+Date: Fri, 16 Jun 2017 06:57:30 +0200
+Message-ID: <e92fef8d-5ce1-0b7d-d130-0246d2cb7f91@wanadoo.fr>
+References: <20170615055311.8049-1-christophe.jaillet@wanadoo.fr>
+ <E1dLYRz-0001l4-SZ@debutante>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <4ebfc69644f9d6e9e5ff0cfc82e9efa5c476be0e.1496312348.git.arvind.yadav.cs@gmail.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Cc: shawn.lin@rock-chips.com, wenrui.li@rock-chips.com, heiko@sntech.de, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <E1dLYRz-0001l4-SZ@debutante>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 01, 2017 at 03:51:45PM +0530, Arvind Yadav wrote:
-> clk_prepare_enable() can fail here and we must check its return value.
-> 
-> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
-
-Applied with ack/reviewed-by from Shawn and Heiko to pci/host-rockchip for
-v4.13, thanks!
-
-I had to apply it manually because of other changes in the same area, so it
-would be good if you could check it over.
-
-https://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git/commit/?h=pci/host-rockchip&id=45f8ce937bc2e06e040f1118f64783b54ade7363
-
+Le 15/06/2017 à 19:20, Mark Brown a écrit :
+> The patch
+>
+>     ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
+>
+> has been applied to the asoc tree at
+>
+>     git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git
+>
+> All being well this means that it will be integrated into the linux-next
+> tree (usually sometime in the next 24 hours) and sent to Linus during
+> the next merge window (or sooner if it is a bug fix), however if
+> problems are discovered then the patch may be dropped or reverted.
+>
+> You may get further e-mails resulting from automated or manual testing
+> and review of the tree, please engage with people reporting problems and
+> send followup patches addressing any issues that are reported if needed.
+>
+> If any updates are required or you are submitting further changes they
+> should be sent as incremental updates against current git, existing
+> patches will not be replaced.
+>
+> Please add any relevant lists and maintainers to the CCs when replying
+> to this mail.
+>
+> Thanks,
+> Mark
+>
+>  From c3a3d3c41b74b05267bab6173f2a8224a1443ba6 Mon Sep 17 00:00:00 2001
+> From: Christophe Jaillet <christophe.jaillet@wanadoo.fr>
+> Date: Thu, 15 Jun 2017 07:53:11 +0200
+> Subject: [PATCH] ASoC: rockchip: Fix an error handling in 'rockchip_i2s_probe'
+>
+> If this memory allocation fail, we must disable what has been enabled.
+> Do not return immediately but go thrue the error handling path instead.
+>
+> Also use 'devm_kmemdup' instead of 'devm_kzalloc+memcpy' to simplify code.
+>
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> Signed-off-by: Mark Brown <broonie@kernel.org>
 > ---
->  drivers/pci/host/pcie-rockchip.c | 34 ++++++++++++++++++++++++++++------
->  1 file changed, 28 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 0e020b6..0a248cd 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1259,24 +1259,46 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->  	int err;
->  
-> -	clk_prepare_enable(rockchip->clk_pcie_pm);
-> -	clk_prepare_enable(rockchip->hclk_pcie);
-> -	clk_prepare_enable(rockchip->aclk_perf_pcie);
-> -	clk_prepare_enable(rockchip->aclk_pcie);
-> +	err = clk_prepare_enable(rockchip->clk_pcie_pm);
-> +	if (err)
-> +		goto err_pcie_pm;
-> +
-> +	err = clk_prepare_enable(rockchip->hclk_pcie);
-> +	if (err)
-> +		goto err_hclk_pcie;
-> +
-> +	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
-> +	if (err)
-> +		goto err_aclk_perf_pcie;
-> +
-> +	err = clk_prepare_enable(rockchip->aclk_pcie);
-> +	if (err)
-> +		goto err_aclk_pcie;
->  
->  	err = rockchip_pcie_init_port(rockchip);
->  	if (err)
-> -		return err;
-> +		goto err_pcie_resume;
->  
->  	err = rockchip_cfg_atu(rockchip);
->  	if (err)
-> -		return err;
-> +		goto err_pcie_resume;
->  
->  	/* Need this to enter L1 again */
->  	rockchip_pcie_update_txcredit_mui(rockchip);
->  	rockchip_pcie_enable_interrupts(rockchip);
->  
->  	return 0;
-> +
-> +err_pcie_resume:
-> +	clk_disable_unprepare(rockchip->aclk_pcie);
-> +err_aclk_pcie:
-> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> +err_aclk_perf_pcie:
-> +	clk_disable_unprepare(rockchip->hclk_pcie);
-> +err_hclk_pcie:
-> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
-> +err_pcie_pm:
-> +	return err;
->  }
->  
->  static int rockchip_pcie_probe(struct platform_device *pdev)
-> -- 
-> 1.9.1
-> 
+>   sound/soc/rockchip/rockchip_i2s.c | 9 +++++----
+>   1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+> index 66a26c56c658..ce09dee2202e 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.c
+> +++ b/sound/soc/rockchip/rockchip_i2s.c
+> @@ -641,12 +641,13 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+>   			goto err_pm_disable;
+>   	}
+>   
+> -	soc_dai = devm_kzalloc(&pdev->dev,
+> +	soc_dai = devm_kmemdup(&pdev->dev, &rockchip_i2s_dai
+>   			       sizeof(*soc_dai), GFP_KERNEL);
+> -	if (!soc_dai)
+> -		return -ENOMEM;
+> +	if (!soc_dai) {
+> +		err = -ENOMEM;
+> +		goto err_pm_disable;
+> +	}
+>   
+> -	memcpy(soc_dai, &rockchip_i2s_dai, sizeof(*soc_dai));
+>   	if (!of_property_read_u32(node, "rockchip,playback-channels", &val)) {
+>   		if (val >= 2 && val <= 8)
+>   			soc_dai->playback.channels_max = val;
+
+... and 'err' should be 'ret'...
+
+I'm really confused for such a ugly proposal !
+
+CJ
