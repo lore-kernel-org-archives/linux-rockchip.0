@@ -1,35 +1,28 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH v2 0/2] Add usb2 nodes on RK3328 SoCs and enable usb2 on
- RK3328 evb
-Date: Fri, 16 Jun 2017 18:34:13 +0800
-Message-ID: <1497609255-15724-1-git-send-email-william.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 2/2] ARM: dts: rk322x: add spdif node
+Date: Sat, 17 Jun 2017 19:56:29 +0200
+Message-ID: <2530167.bvmFb2R02b@phil>
+References: <1496995173-63532-1-git-send-email-sugar.zhang@rock-chips.com> <1496995173-63532-3-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, huangtao@rock-chips.com, frank.wang@rock-chips.com, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, william.wu@rock-chips.com, daniel.meng@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1496995173-63532-3-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: broonie@kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This series adds support for usb2 on RK3328 SoCs.
-Tested on RK3328 evaluation board.
+Am Freitag, 9. Juni 2017, 15:59:33 CEST schrieb Sugar Zhang:
+> This patch add spdif node for rk322x.
+> 
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 
-William Wu (2):
-  arm64: dts: rockchip: add usb2 nodes for RK3328 SoCs
-  arm64: dts: rockchip: enable usb2 for RK3328 evaluation board
+applied, after adapting the subject to
+	ARM: dts: rockchip: add rk322x spdif node
 
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 25 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3328.dtsi    | 76 +++++++++++++++++++++++++++++
- 2 files changed, 101 insertions(+)
+and dropping the #dma-cells property.
+#dma-cells is a property of dma-controllers not dma-clients.
 
--- 
-2.0.0
+
+Heiko
