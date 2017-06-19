@@ -1,30 +1,42 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 2/3] dt-bindings: spi/rockchip: add "cs-gpios"
- optional property
-Date: Sun, 18 Jun 2017 09:05:35 -0500
-Message-ID: <20170617001205.kddjsznkj7niomhj@rob-hp-laptop>
-References: <1497411483-23377-1-git-send-email-jeffy.chen@rock-chips.com>
- <1497411483-23377-2-git-send-email-jeffy.chen@rock-chips.com>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH] MAINTAINERS: add RV1108 Rockchip soc to maintained files
+Date: Sun, 18 Jun 2017 18:54:29 -0700
+Message-ID: <20170619015429.GA30022@localhost>
+References: <20170607110627.4678-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1497411483-23377-2-git-send-email-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, broonie@kernel.org, briannorris@chromium.org, dianders@chromium.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20170607110627.4678-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 14, 2017 at 11:38:02AM +0800, Jeffy Chen wrote:
-> Update document devicetree bindings to support "cs-gpios" property.
+On Wed, Jun 07, 2017 at 01:06:27PM +0200, Heiko Stuebner wrote:
+> The RV1108, as a soc targetted at visual applications, does not follow
+> the usual RKxxxx naming scheme and thus falls through the cracks of
+> the current file list for Rockchip socs in MAINTAINERS.
 > 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> The driver side does not pose a problem, as the rv1108 shares most
+> functionality with other Rockchip socs as usual, so we only need to
+> add an expression catching the rv1108* arm32 devicetree files.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
-> 
-> Changes in v3: None
-> Changes in v2: None
-> 
->  Documentation/devicetree/bindings/spi/spi-rockchip.txt | 2 ++
->  1 file changed, 2 insertions(+)
+> This could either be applied by arm-soc people directly, or I can
+> integrate it into my arm32-dts-branch.
 
-Acked-by: Rob Herring <robh@kernel.org>
+Applied to next/fixes-non-critical
+
+
+-Olof
