@@ -1,15 +1,14 @@
 From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 2/3] Rockchip dts64 updates for 4.13 part1
-Date: Sun, 18 Jun 2017 19:08:30 -0700
-Message-ID: <20170619020830.GM30022@localhost>
+Subject: Re: [GIT PULL 1/3] Rockchip dts32 updates for 4.13 part1
+Date: Sun, 18 Jun 2017 19:07:54 -0700
+Message-ID: <20170619020754.GL30022@localhost>
 References: <2090243.QTRV0U63fj@phil>
- <3220808.DiVK6dvI90@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <3220808.DiVK6dvI90@phil>
+In-Reply-To: <2090243.QTRV0U63fj@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,27 +22,38 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 09, 2017 at 12:14:36PM +0200, Heiko Stuebner wrote:
+On Fri, Jun 09, 2017 at 12:13:44PM +0200, Heiko Stuebner wrote:
+> Hi Arnd, Kevin, Olof,
+> 
+> please find below and in the subsequent replies Rockchip-related changes
+> for 4.13. The tags describe the individual changes, but hightlight are probably
+> the Mali-Midgard nodes on rk3288 and rk3399-Firefly board.
+> 
+> So if nothing looks out of place, please pull.
+> 
+> Thanks
+> Heiko
+> 
 > The following changes since commit 2ea659a9ef488125eb46da6eb571de5eae5c43f6:
 > 
 >   Linux 4.12-rc1 (2017-05-13 13:19:49 -0700)
 > 
 > are available in the git repository at:
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.13-rockchip-dts64-1
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.13-rockchip-dts32-1
 > 
-> for you to fetch changes up to 5fd3ffb92d33f86a5c0757ef879f7d785beeec92:
+> for you to fetch changes up to 81b61d37705173b8b9eb52c4566a8fc7c7099520:
 > 
->   arm64: dts: rockchip: update common rk3399 operating points (2017-05-30 12:12:07 +0200)
+>   ARM: dts: rockchip: enable usb for rk3229 evb board (2017-06-02 14:11:57 +0200)
 > 
 > ----------------------------------------------------------------
-> Support for the new rk3399 firefly board; extending the pcie ranges to
-> make usage of pci switches possible; some more qos and pinctrl nodes on
-> rk3399; updates for the rk3399 cpu operating points including separate
-> opps for the higher rates OP1 variant of the chip and mmc-nodes for
-> the rk3328.
+> A bunch of changes including mali gpu nodes for rk3288 boards
+> following (and including) the new Mali Midgard binding; a lot of
+> improvements for the rk3228/rk3229 socs (tsadc, operating points,
+> usb, clock-rates, pinctrl, watchdog); finalizing the rk1108->rv1108
+> rename and adc buttons for the rk3288 firefly boards.
 
-Merged, thanks!
+Thanks, merged.
 
 
 -Olof
