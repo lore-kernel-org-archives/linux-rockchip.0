@@ -1,50 +1,59 @@
-From: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 2/2] drm/sun4i: add const to drm_encoder_helper_funcs structures
-Date: Tue, 20 Jun 2017 18:38:00 +0530
-Message-ID: <1497964080-27301-3-git-send-email-bhumirks@gmail.com>
+From: Maxime Ripard <maxime.ripard@free-electrons.com>
+Subject: Re: [PATCH 2/2] drm/sun4i: add const to drm_encoder_helper_funcs
+ structures
+Date: Tue, 20 Jun 2017 15:35:46 +0200
+Message-ID: <20170620133546.f4ea4fhen2jnhsk5@flea.lan>
 References: <1497964080-27301-1-git-send-email-bhumirks@gmail.com>
+ <1497964080-27301-3-git-send-email-bhumirks@gmail.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+        protocol="application/pgp-signature"; boundary="3axz5cxotzfwirol"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1497964080-27301-1-git-send-email-bhumirks@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1497964080-27301-3-git-send-email-bhumirks@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: julia.lawall@lip6.fr, maxime.ripard@free-electrons.com, airlied@linux.ie, wens@csie.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: julia.lawall@lip6.fr, airlied@linux.ie, wens@csie.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add const to drm_encoder_helper_funcs structures as they are only passed
-as an argument to the function drm_encoder_helper_add and this argument
-is of type const. So, add const to these structures.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/gpu/drm/sun4i/sun4i_rgb.c | 2 +-
- drivers/gpu/drm/sun4i/sun4i_tv.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+--3axz5cxotzfwirol
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/gpu/drm/sun4i/sun4i_rgb.c b/drivers/gpu/drm/sun4i/sun4i_rgb.c
-index 422b191..67847d2 100644
---- a/drivers/gpu/drm/sun4i/sun4i_rgb.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_rgb.c
-@@ -181,7 +181,7 @@ static void sun4i_rgb_encoder_mode_set(struct drm_encoder *encoder,
- 	clk_set_phase(tcon->dclk, 120);
- }
- 
--static struct drm_encoder_helper_funcs sun4i_rgb_enc_helper_funcs = {
-+static const struct drm_encoder_helper_funcs sun4i_rgb_enc_helper_funcs = {
- 	.atomic_check	= sun4i_rgb_atomic_check,
- 	.mode_set	= sun4i_rgb_encoder_mode_set,
- 	.disable	= sun4i_rgb_encoder_disable,
-diff --git a/drivers/gpu/drm/sun4i/sun4i_tv.c b/drivers/gpu/drm/sun4i/sun4i_tv.c
-index 338b9e5..b20f97a 100644
---- a/drivers/gpu/drm/sun4i/sun4i_tv.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_tv.c
-@@ -488,7 +488,7 @@ static void sun4i_tv_mode_set(struct drm_encoder *encoder,
- 	regmap_write(tv->regs, SUN4I_TVE_SLAVE_REG, 0);
- }
- 
--static struct drm_encoder_helper_funcs sun4i_tv_helper_funcs = {
-+static const struct drm_encoder_helper_funcs sun4i_tv_helper_funcs = {
- 	.atomic_check	= sun4i_tv_atomic_check,
- 	.disable	= sun4i_tv_disable,
- 	.enable		= sun4i_tv_enable,
--- 
-2.7.4
+On Tue, Jun 20, 2017 at 06:38:00PM +0530, Bhumika Goyal wrote:
+> Add const to drm_encoder_helper_funcs structures as they are only passed
+> as an argument to the function drm_encoder_helper_add and this argument
+> is of type const. So, add const to these structures.
+>=20
+> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+
+Acked-by: Maxime Ripard <maxime.ripard@free-electrons.com>
+
+--=20
+Maxime Ripard, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
+
+--3axz5cxotzfwirol
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAEBAgAGBQJZSSSyAAoJEBx+YmzsjxAgR+IQAKpn9wEJuTGZZCOyxkNNyzND
+e/40NqxxEcJi9fbWE0BarLl+ylGZYVqfqzdD6qm5xlGUQ5lvjhC4lgI8fPcHaFy7
+RA4HCBIFhaT4mMfJDJDJkki7jaPRxUtjFLhU0iiMYWqLmf5ne3ndWTTgbD3RQfj3
+LM6vOQQ2pesgXz6owZu/G4hAhArFrlGOSlU5mGq2hFe3rJZZVJ/KZ4AXX3JP4B7i
+rJi5VZ6f8tqpuo7lR8+1cJx8GKF035NsguFf1ZC3GQXO+dyfHr36a4TZQTJXZqnB
+21Bi1npLnFWBz3+5H6dyXAj/cBWBnXYQo96BqfgwS5JdXbxaOchXndQoXikBmAxW
+NEP3sNFh9jZV9D8wnCGIVcn/i1hf5+Ve4JCCnePTBYVZX+Y6n5+EkBgYOEdNdA8/
+cDK+eMVWVXVX+zt/tRrD3+5RnXDz0SrgcJljVXGu8Rp/O8jUKuJqLL+d+sy+TbV3
+lEmkH6NcQczhwGWE5uTiD8mZvGhz8kAnrFn9pO/oJIEyTgf6ReyxdvlbITT9SUzU
+BGFCJYmRbsCYXh+OoLsH94NxLZA7CnAYG+XMJ/uxrxw0mUU7v8yKAbzDN5XTAYqI
+maJSu0TCcJpT/LRqSbVVDW3NgGUwwpr7KcKsh/36KRCpiU5Te49qv4kQyyKWU26i
+6MkMQ5pM73Wk3qXL+vMv
+=ZVCH
+-----END PGP SIGNATURE-----
+
+--3axz5cxotzfwirol--
