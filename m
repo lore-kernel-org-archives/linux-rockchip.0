@@ -1,191 +1,82 @@
-From: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v6 09/12] Input: Add power key driver for Rockchip RK805
- PMIC
-Date: Mon, 19 Jun 2017 20:06:43 -0700
-Message-ID: <20170620030643.GG21379@dtor-ws>
-References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com>
- <1496907027-27197-1-git-send-email-chenjh@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 1/6] ARM: dts: rockchip: add basic dtsi file for RK3229
+ SoC
+Date: Tue, 20 Jun 2017 15:13:00 +0800
+Message-ID: <354e6995-cc80-660b-41c4-535be85564c4@rock-chips.com>
+References: <1497510980-23207-1-git-send-email-frank.wang@rock-chips.com>
+ <18070472.si2qlgbqtt@phil>
+ <7e8e2097-d5ca-a594-cb87-1b7b221fd58a@rock-chips.com>
+ <25831201.s5BUplWuV7@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1496907027-27197-1-git-send-email-chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <25831201.s5BUplWuV7@diego>
+Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jianhong Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, charles.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kevan.lan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, =?UTF-8?B?6ZmI5YGl5rSq?= <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 08, 2017 at 03:30:27PM +0800, Jianhong Chen wrote:
-> From: chenjh <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This driver provides a input driver for the power
-> key on the Rockchip RK805 PMIC.
-> 
-> Signed-off-by: chenjh <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  drivers/input/misc/Kconfig        |   6 +++
->  drivers/input/misc/Makefile       |   1 +
->  drivers/input/misc/rk805-pwrkey.c | 111 ++++++++++++++++++++++++++++++++++++++
->  3 files changed, 118 insertions(+)
->  create mode 100644 drivers/input/misc/rk805-pwrkey.c
-> 
-> diff --git a/drivers/input/misc/Kconfig b/drivers/input/misc/Kconfig
-> index 5b6c522..72dc4f5 100644
-> --- a/drivers/input/misc/Kconfig
-> +++ b/drivers/input/misc/Kconfig
-> @@ -571,6 +571,12 @@ config INPUT_PWM_BEEPER
->  	  To compile this driver as a module, choose M here: the module will be
->  	  called pwm-beeper.
->  
-> +config INPUT_RK805_PWRKEY
-> +	tristate "Rockchip RK805 PMIC power key support"
-> +	depends on MFD_RK808
-> +	help
-> +	  Select this option to enable power key driver for RK805.
-> +
->  config INPUT_GPIO_ROTARY_ENCODER
->  	tristate "Rotary encoders connected to GPIO pins"
->  	depends on GPIOLIB || COMPILE_TEST
-> diff --git a/drivers/input/misc/Makefile b/drivers/input/misc/Makefile
-> index b10523f..c27052a 100644
-> --- a/drivers/input/misc/Makefile
-> +++ b/drivers/input/misc/Makefile
-> @@ -63,6 +63,7 @@ obj-$(CONFIG_INPUT_REGULATOR_HAPTIC)	+= regulator-haptic.o
->  obj-$(CONFIG_INPUT_RETU_PWRBUTTON)	+= retu-pwrbutton.o
->  obj-$(CONFIG_INPUT_AXP20X_PEK)		+= axp20x-pek.o
->  obj-$(CONFIG_INPUT_GPIO_ROTARY_ENCODER)	+= rotary_encoder.o
-> +obj-$(CONFIG_INPUT_RK805_PWRKEY)	+= rk805-pwrkey.o
->  obj-$(CONFIG_INPUT_SGI_BTNS)		+= sgi_btns.o
->  obj-$(CONFIG_INPUT_SIRFSOC_ONKEY)	+= sirfsoc-onkey.o
->  obj-$(CONFIG_INPUT_SOC_BUTTON_ARRAY)	+= soc_button_array.o
-> diff --git a/drivers/input/misc/rk805-pwrkey.c b/drivers/input/misc/rk805-pwrkey.c
-> new file mode 100644
-> index 0000000..188eed5
-> --- /dev/null
-> +++ b/drivers/input/misc/rk805-pwrkey.c
-> @@ -0,0 +1,111 @@
-> +/*
-> + * Rockchip RK805 PMIC Power Key driver
-> + *
-> + * Copyright (c) 2017, Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * Author: Chen Jianhong <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under  the terms of the GNU General  Public License as published by the
-> + * Free Software Foundation;  either version 2 of the License, or (at your
-> + * option) any later version.
-> + *
-> + */
-> +#include <linux/errno.h>
-> +#include <linux/init.h>
-> +#include <linux/input.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/platform_device.h>
-> +
-> +static irqreturn_t pwrkey_fall_irq(int irq, void *_pwr)
-> +{
-> +	struct input_dev *pwr = _pwr;
-> +
-> +	input_report_key(pwr, KEY_POWER, 1);
-> +	input_sync(pwr);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static irqreturn_t pwrkey_rise_irq(int irq, void *_pwr)
-> +{
-> +	struct input_dev *pwr = _pwr;
-> +
-> +	input_report_key(pwr, KEY_POWER, 0);
-> +	input_sync(pwr);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int rk805_pwrkey_probe(struct platform_device *pdev)
-> +{
-> +	struct input_dev *pwr;
-> +	int fall_irq, rise_irq;
-> +	int err;
-> +
-> +	pwr = devm_input_allocate_device(&pdev->dev);
-> +	if (!pwr) {
-> +		dev_err(&pdev->dev, "Can't allocate power button\n");
-> +		return -ENOMEM;
-> +	}
-> +
-> +	pwr->name = "rk805 pwrkey";
-> +	pwr->phys = "rk805_pwrkey/input0";
-> +	pwr->dev.parent = &pdev->dev;
-> +	input_set_capability(pwr, EV_KEY, KEY_POWER);
-> +
-> +	fall_irq = platform_get_irq(pdev, 0);
-> +	if (fall_irq < 0) {
-> +		dev_err(&pdev->dev, "Can't get fall irq: %d\n", fall_irq);
-> +		return fall_irq;
-> +	}
-> +
-> +	rise_irq = platform_get_irq(pdev, 1);
-> +	if (rise_irq < 0) {
-> +		dev_err(&pdev->dev, "Can't get rise irq: %d\n", rise_irq);
-> +		return rise_irq;
-> +	}
-> +
-> +	err = devm_request_threaded_irq(&pwr->dev, fall_irq, NULL,
-> +					pwrkey_fall_irq,
-> +					IRQF_TRIGGER_FALLING | IRQF_ONESHOT,
-> +					"rk805_pwrkey_fall", pwr);
+Hi Heiko,
 
-I think you want devm_request_any_context_irq() here as your interrupt
-handler does not need to sleep.
+On 2017/6/19 20:30, Heiko Stübner wrote:
+> Hi Frank,
+>
+> Am Montag, 19. Juni 2017, 18:34:27 CEST schrieb Frank Wang:
+>> On 2017/6/18 2:12, Heiko Stuebner wrote:
+>>> Am Donnerstag, 15. Juni 2017, 15:16:15 CEST schrieb Frank Wang:
+>>>> Due to some tiny differences between RK3228 and RK3229, this patch
+>>>> adds a basic dtsi file which includes a new CPU opp table and PSCI
+>>>> brought up support for RK3229.
+>>>>
+>>>> Signed-off-by: Frank Wang<frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> [...]
+>
+>>>> +	psci {
+>>>> +		compatible = "arm,psci-1.0", "arm,psci-0.2";
+>>>> +		method = "smc";
+>>>> +	};
+>>>> +};
+>>>> +
+>>>> +&cpu0 {
+>>>> +	enable-method = "psci";
+>>>> +};
+>>> Hmm, I don't really understand this.
+>>> What method of core-bringup does the rk3228 use? In the current
+>>> rk322x.dtsi there is no enable-method at all defined.
+>> For non-security, the same with rk3036 SoC, we use rk3036-smp method to
+>> bring-up cores, and for security, we use arm-psci method.
+>> As security become more and more important and required, we would prefer
+>> using arm-psci method, and it is also an easy way to use.
+>>
+>>> So is the rk3228 firmware using a different method than the rk3229?
+>> No, they are the same. How about I move these changes to rk322x.dtsi?
+> yep, that is what I was getting at with my question ;-)
+>
+>
+>>> And out of curiosity as this is a arm32 without atf, is the psci
+>>> implementation (for uboot?) you're using available somewhere?
+>> Ah, it is included in op-tee :-)
+> Is that super secret or will this be part of the official op-tee [0]
+> at some point (Similar to the ATF stuff on arm64)?
 
-> +	if (err < 0) {
-> +		dev_err(&pdev->dev, "Can't register fall irq: %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	err = devm_request_threaded_irq(&pwr->dev, rise_irq, NULL,
-> +					pwrkey_rise_irq,
-> +					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
-> +					"rk805_pwrkey_rise", pwr);
-> +	if (err < 0) {
-> +		dev_err(&pdev->dev, "Can't register rise irq: %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	err = input_register_device(pwr);
-> +	if (err) {
-> +		dev_err(&pdev->dev, "Can't register power button: %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, pwr);
-> +	device_init_wakeup(&pdev->dev, true);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver rk805_pwrkey_driver = {
-> +	.probe	= rk805_pwrkey_probe,
-> +	.driver	= {
-> +		.name = "rk805-pwrkey",
-> +	},
-> +};
-> +module_platform_driver(rk805_pwrkey_driver);
-> +
-> +MODULE_AUTHOR("Chen Jianghong <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
-> +MODULE_DESCRIPTION("RK805 PMIC Power Key driver");
-> +MODULE_LICENSE("GPL v2");
-> -- 
-> 1.9.1
-> 
-> 
+Hmm, the op-tee itself must keep secure, but the psci part in it can be 
+extracted to public, although it may have a bit of secure risk.
+Due to Rockchip have amended the frame of op-tee to support psci, we can 
+try to upstream these changes to official op-tee or push them to source 
+codes of Rockchip in git-hub.
 
--- 
-Dmitry
+
+BR.
+Frank
+
+> Heiko
+>
+> [0]https://github.com/OP-TEE/optee_os/tree/master/core/arch/arm
+>
+>
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
