@@ -1,59 +1,65 @@
-From: Maxime Ripard <maxime.ripard@free-electrons.com>
-Subject: Re: [PATCH 2/2] drm/sun4i: add const to drm_encoder_helper_funcs
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: add const to drm_encoder_helper_funcs
  structures
-Date: Tue, 20 Jun 2017 15:35:46 +0200
-Message-ID: <20170620133546.f4ea4fhen2jnhsk5@flea.lan>
+Date: Wed, 21 Jun 2017 08:48:52 +0800
+Message-ID: <5949C274.6050806@rock-chips.com>
 References: <1497964080-27301-1-git-send-email-bhumirks@gmail.com>
- <1497964080-27301-3-git-send-email-bhumirks@gmail.com>
+ <1497964080-27301-2-git-send-email-bhumirks@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="3axz5cxotzfwirol"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1497964080-27301-3-git-send-email-bhumirks@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bhumika Goyal <bhumirks@gmail.com>
-Cc: julia.lawall@lip6.fr, airlied@linux.ie, wens@csie.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1497964080-27301-2-git-send-email-bhumirks@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bhumika Goyal <bhumirks@gmail.com>, julia.lawall@lip6.fr, maxime.ripard@free-electrons.com, airlied@linux.ie, wens@csie.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---3axz5cxotzfwirol
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Jun 20, 2017 at 06:38:00PM +0530, Bhumika Goyal wrote:
-> Add const to drm_encoder_helper_funcs structures as they are only passed
-> as an argument to the function drm_encoder_helper_add and this argument
-> is of type const. So, add const to these structures.
->=20
-> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
-
-Acked-by: Maxime Ripard <maxime.ripard@free-electrons.com>
-
---=20
-Maxime Ripard, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
-
---3axz5cxotzfwirol
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIcBAEBAgAGBQJZSSSyAAoJEBx+YmzsjxAgR+IQAKpn9wEJuTGZZCOyxkNNyzND
-e/40NqxxEcJi9fbWE0BarLl+ylGZYVqfqzdD6qm5xlGUQ5lvjhC4lgI8fPcHaFy7
-RA4HCBIFhaT4mMfJDJDJkki7jaPRxUtjFLhU0iiMYWqLmf5ne3ndWTTgbD3RQfj3
-LM6vOQQ2pesgXz6owZu/G4hAhArFrlGOSlU5mGq2hFe3rJZZVJ/KZ4AXX3JP4B7i
-rJi5VZ6f8tqpuo7lR8+1cJx8GKF035NsguFf1ZC3GQXO+dyfHr36a4TZQTJXZqnB
-21Bi1npLnFWBz3+5H6dyXAj/cBWBnXYQo96BqfgwS5JdXbxaOchXndQoXikBmAxW
-NEP3sNFh9jZV9D8wnCGIVcn/i1hf5+Ve4JCCnePTBYVZX+Y6n5+EkBgYOEdNdA8/
-cDK+eMVWVXVX+zt/tRrD3+5RnXDz0SrgcJljVXGu8Rp/O8jUKuJqLL+d+sy+TbV3
-lEmkH6NcQczhwGWE5uTiD8mZvGhz8kAnrFn9pO/oJIEyTgf6ReyxdvlbITT9SUzU
-BGFCJYmRbsCYXh+OoLsH94NxLZA7CnAYG+XMJ/uxrxw0mUU7v8yKAbzDN5XTAYqI
-maJSu0TCcJpT/LRqSbVVDW3NgGUwwpr7KcKsh/36KRCpiU5Te49qv4kQyyKWU26i
-6MkMQ5pM73Wk3qXL+vMv
-=ZVCH
------END PGP SIGNATURE-----
-
---3axz5cxotzfwirol--
+T24gMjAxN+W5tDA25pyIMjDml6UgMjE6MDcsIEJodW1pa2EgR295YWwgd3JvdGU6Cj4gQWRkIGNv
+bnN0IHRvIGRybV9lbmNvZGVyX2hlbHBlcl9mdW5jcyBzdHJ1Y3R1cmVzIGFzIHRoZXkgYXJlIG9u
+bHkgcGFzc2VkCj4gYXMgYW4gYXJndW1lbnQgdG8gdGhlIGZ1bmN0aW9uIGRybV9lbmNvZGVyX2hl
+bHBlcl9hZGQgYW5kIHRoaXMgYXJndW1lbnQKPiBpcyBvZiB0eXBlIGNvbnN0LiBTbywgYWRkIGNv
+bnN0IHRvIHRoZXNlIHN0cnVjdHVyZXMuIEFsc28sIGZpeCBsaW5lIG92ZXIKPiA4MCBjaGFyYWN0
+ZXJzIHdhcm5pbmcgd2hpbGUgYWRkaW5nIGNvbnN0Lgo+Cj4gU2lnbmVkLW9mZi1ieTogQmh1bWlr
+YSBHb3lhbCA8Ymh1bWlya3NAZ21haWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAzICsrLQo+ICAgZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2lubm9faGRtaS5jICAgICAgICAgICAgfCAyICstCj4gICAyIGZpbGVzIGNoYW5n
+ZWQsIDMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5kZXggOTYwNjEyMS4uOTZj
+NmMxMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAt
+cm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1y
+b2NrY2hpcC5jCj4gQEAgLTI1Miw3ICsyNTIsOCBAQCByb2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9h
+dG9taWNfY2hlY2soc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+ICAgCXJldHVybiAwOwo+
+ICAgfQo+ICAgCj4gLXN0YXRpYyBzdHJ1Y3QgZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzIHJvY2tj
+aGlwX2RwX2VuY29kZXJfaGVscGVyX2Z1bmNzID0gewo+ICtzdGF0aWMKPiArY29uc3Qgc3RydWN0
+IGRybV9lbmNvZGVyX2hlbHBlcl9mdW5jcyByb2NrY2hpcF9kcF9lbmNvZGVyX2hlbHBlcl9mdW5j
+cyA9IHsKCkkgZG9uJ3QgdGhpbmsgc3BsaXQgc3RhdGljIGFuZCBjb25zdCBpbnRvIHR3byBsaW5l
+IGlzIGEgZ29vZCBpZGVhLCBpdCdzIAp1Z2x5LiBJJ20gb2sgb3ZlciA4MCBjaGFyYWN0ZXJzIHdp
+dGggZ29vZC1sb29raW5nLgpPciBzcGxpdCBsaWtlIGZvbGxvd2luZzoKc3RhdGljIGNvbnN0IHN0
+cnVjdCBkcm1fZW5jb2Rlcl9oZWxwZXJfZnVuY3MKcm9ja2NoaXBfZHBfZW5jb2Rlcl9oZWxwZXJf
+ZnVuY3MgPSB7Cgo+ICAgCS5tb2RlX2ZpeHVwID0gcm9ja2NoaXBfZHBfZHJtX2VuY29kZXJfbW9k
+ZV9maXh1cCwKPiAgIAkubW9kZV9zZXQgPSByb2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9tb2RlX3Nl
+dCwKPiAgIAkuZW5hYmxlID0gcm9ja2NoaXBfZHBfZHJtX2VuY29kZXJfZW5hYmxlLAo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMKPiBpbmRleCA3ZDliNzVlLi40YWI5ZmFkIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+IEBAIC01MzAsNyArNTMwLDcgQEAg
+aW5ub19oZG1pX2VuY29kZXJfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
+ciwKPiAgIAlyZXR1cm4gMDsKPiAgIH0KPiAgIAo+IC1zdGF0aWMgc3RydWN0IGRybV9lbmNvZGVy
+X2hlbHBlcl9mdW5jcyBpbm5vX2hkbWlfZW5jb2Rlcl9oZWxwZXJfZnVuY3MgPSB7Cj4gK3N0YXRp
+YyBjb25zdCBzdHJ1Y3QgZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzIGlubm9faGRtaV9lbmNvZGVy
+X2hlbHBlcl9mdW5jcyA9IHsKPiAgIAkuZW5hYmxlICAgICA9IGlubm9faGRtaV9lbmNvZGVyX2Vu
+YWJsZSwKPiAgIAkuZGlzYWJsZSAgICA9IGlubm9faGRtaV9lbmNvZGVyX2Rpc2FibGUsCj4gICAJ
+Lm1vZGVfZml4dXAgPSBpbm5vX2hkbWlfZW5jb2Rlcl9tb2RlX2ZpeHVwLAoKVGhhbmtzCgotLSAK
+77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
