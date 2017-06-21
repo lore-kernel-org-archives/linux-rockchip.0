@@ -1,88 +1,28 @@
 From: Bhumika Goyal <bhumirks@gmail.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: add const to drm_encoder_helper_funcs structures
-Date: Wed, 21 Jun 2017 11:38:04 +0530
-Message-ID: <CAOH+1jH5k0-veO_p-Jn91FYO04ZJ-ai0Zns17skXcB5ToY10=Q@mail.gmail.com>
-References: <1497964080-27301-1-git-send-email-bhumirks@gmail.com>
- <1497964080-27301-2-git-send-email-bhumirks@gmail.com> <5949C274.6050806@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: [PATCH v2 0/2] drm: constify drm_encoder_helper_funcs structures
+Date: Wed, 21 Jun 2017 12:01:08 +0530
+Message-ID: <1498026670-10671-1-git-send-email-bhumirks@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5949C274.6050806@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>, maxime.ripard@free-electrons.com, airlied@linux.ie, Chen-Yu Tsai <wens@csie.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+To: julia.lawall@lip6.fr, maxime.ripard@free-electrons.com, airlied@linux.ie, wens@csie.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org
+Cc: Bhumika Goyal <bhumirks@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 21, 2017 at 6:18 AM, Mark yao <mark.yao@rock-chips.com> wrote:
-> On 2017=E5=B9=B406=E6=9C=8820=E6=97=A5 21:07, Bhumika Goyal wrote:
->>
->> Add const to drm_encoder_helper_funcs structures as they are only passed
->> as an argument to the function drm_encoder_helper_add and this argument
->> is of type const. So, add const to these structures. Also, fix line over
->> 80 characters warning while adding const.
->>
->> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
->> ---
->>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 3 ++-
->>   drivers/gpu/drm/rockchip/inno_hdmi.c            | 2 +-
->>   2 files changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index 9606121..96c6c10 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -252,7 +252,8 @@ rockchip_dp_drm_encoder_atomic_check(struct
->> drm_encoder *encoder,
->>         return 0;
->>   }
->>   -static struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_fun=
-cs
->> =3D {
->> +static
->> +const struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs =
-=3D
->> {
->
->
-> I don't think split static and const into two line is a good idea, it's
-> ugly. I'm ok over 80 characters with good-looking.
-> Or split like following:
-> static const struct drm_encoder_helper_funcs
-> rockchip_dp_encoder_helper_funcs =3D {
->
+Add const to drm_encoder_helper_funcs structures.
 
-Okay, so I will let the line exceed over 80 characters and send a v2.
+Changes in v2 -
+* Let the line exceed over 80 characters while adding const
+in analogix_dp-rockchip.c file.
 
-Thanks,
-Bhumika
+Bhumika Goyal (2):
+  drm/rockchip: add const to drm_encoder_helper_funcs structures
+  drm/sun4i: add const to drm_encoder_helper_funcs structures
 
->>         .mode_fixup =3D rockchip_dp_drm_encoder_mode_fixup,
->>         .mode_set =3D rockchip_dp_drm_encoder_mode_set,
->>         .enable =3D rockchip_dp_drm_encoder_enable,
->> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c
->> b/drivers/gpu/drm/rockchip/inno_hdmi.c
->> index 7d9b75e..4ab9fad 100644
->> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
->> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
->> @@ -530,7 +530,7 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder
->> *encoder,
->>         return 0;
->>   }
->>   -static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs=
- =3D
->> {
->> +static const struct drm_encoder_helper_funcs
->> inno_hdmi_encoder_helper_funcs =3D {
->>         .enable     =3D inno_hdmi_encoder_enable,
->>         .disable    =3D inno_hdmi_encoder_disable,
->>         .mode_fixup =3D inno_hdmi_encoder_mode_fixup,
->
->
-> Thanks
->
-> --
-> =EF=BC=ADark Yao
->
->
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c            | 2 +-
+ drivers/gpu/drm/sun4i/sun4i_rgb.c               | 2 +-
+ drivers/gpu/drm/sun4i/sun4i_tv.c                | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+-- 
+2.7.4
