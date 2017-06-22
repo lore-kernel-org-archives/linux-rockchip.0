@@ -1,65 +1,49 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] nvmem: rockchip-efuse: amend compatible rk322x-efuse to rk3228-efuse
-Date: Thu, 22 Jun 2017 11:10:46 +0200
-Message-ID: <48352151.OspxPMcbie@phil>
-References: <1498121207-24941-1-git-send-email-frank.wang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1498121207-24941-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [RESEND PATCH v2 0/7] add some device nodes support for rk322x SoC
+Date: Thu, 22 Jun 2017 18:29:55 +0800
+Message-ID: <1498127402-6705-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org, ulf.hansson@linaro.org, mark.rutland@arm.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org, charles.chen@rock-chips.com, kevan.lan@rock-chips.com, huangtao@rock-chips.com, finley.xiao@rock-chips.com, david.wu@rock-chips.com, shawn.lin@rock-chips.com, wmc@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 22. Juni 2017, 16:46:47 CEST schrieb Frank Wang:
-> As the comments from Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> that compatible
-> should not contain any placeholders, this patch fix it for rk3228 SoC.
-> 
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Resend these series for adding compatible changes of efuse in [PATCH v2 7/7].
 
-not sure how this slipped through in the first place, but the rk322x
-compatible would only make it into 4.13, so it should still be fine to
-simply correct that issue, before it hits mainline.
+These series add sdmmc, sdio, and other device nodes support for
+rk322x SoCs, and also introduce rk3229 basic dtsi file specifically.
 
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Changes from v1:
+- Extracted cpu enable-method from rk3229.dtsi to rk322x.dtsi
+- Amended compatible rk322x-efuse to rk3228-efuse in [PATCH v2 7/7].
+- Updated the 'Reviewed-by' tag from Heiko Stuebner <heiko@sntech.de> for [PATCH v2 3/7].
 
-> ---
->  Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 2 +-
->  drivers/nvmem/rockchip-efuse.c                             | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-> index 194926f..1ff02afd 100644
-> --- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-> +++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-> @@ -4,7 +4,7 @@ Required properties:
->  - compatible: Should be one of the following.
->    - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
->    - "rockchip,rk3188-efuse" - for RK3188 SoCs.
-> -  - "rockchip,rk322x-efuse" - for RK322x SoCs.
-> +  - "rockchip,rk3228-efuse" - for RK3228 SoCs.
->    - "rockchip,rk3288-efuse" - for RK3288 SoCs.
->    - "rockchip,rk3399-efuse" - for RK3399 SoCs.
->  - reg: Should contain the registers location and exact eFuse size
-> diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-> index a0d4ede..63e3eb5 100644
-> --- a/drivers/nvmem/rockchip-efuse.c
-> +++ b/drivers/nvmem/rockchip-efuse.c
-> @@ -170,7 +170,7 @@ static const struct of_device_id rockchip_efuse_match[] = {
->  		.data = (void *)&rockchip_rk3288_efuse_read,
->  	},
->  	{
-> -		.compatible = "rockchip,rk322x-efuse",
-> +		.compatible = "rockchip,rk3228-efuse",
->  		.data = (void *)&rockchip_rk3288_efuse_read,
->  	},
->  	{
-> 
+The following patch on patchwork are required for this changes.
+https://patchwork.kernel.org/patch/9803825/
+
+David Wu (1):
+  ARM: dts: rockchip: Add io-domain node for rk3228
+
+Finley Xiao (1):
+  ARM: dts: rockchip: add efuse device node for rk3228
+
+Frank Wang (2):
+  ARM: dts: rockchip: add cpu enable method for rk3228 SoC
+  ARM: dts: rockchip: add basic dtsi file for RK3229 SoC
+
+Shawn Lin (3):
+  Documentation: rockchip-dw-mshc: add description for rk3228
+  ARM: dts: rockchip: fix compatible string for eMMC node of rk3228 SoC
+  ARM: dts: rockchip: add sdmmc and sdio nodes for rk3228 SoC
+
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |  1 +
+ arch/arm/boot/dts/rk3229-evb.dts                   |  2 +-
+ arch/arm/boot/dts/rk3229.dtsi                      | 89 +++++++++++++++++++++
+ arch/arm/boot/dts/rk322x.dtsi                      | 93 +++++++++++++++++++++-
+ 4 files changed, 183 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3229.dtsi
+
+-- 
+2.0.0
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
