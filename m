@@ -1,47 +1,47 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3.1 1/3] drm/rockchip: dw_hdmi: add RK3399 HDMI support
-Date: Thu, 22 Jun 2017 10:25:49 +0200
-Message-ID: <2895576.2l0uxY0YQ7@phil>
-References: <1496992236-10634-1-git-send-email-mark.yao@rock-chips.com>
- <1751555.73cFbViMXZ@phil> <594B79A4.1000509@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <594B79A4.1000509@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH] nvmem: rockchip-efuse: amend compatible rk322x-efuse to rk3228-efuse
+Date: Thu, 22 Jun 2017 16:46:47 +0800
+Message-ID: <1498121207-24941-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: srinivas.kandagatla@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, finley.xiao@rock-chips.com, cl@rock-chips.com, wmc@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMjIuIEp1bmkgMjAxNywgMTY6MDI6NDQgQ0VTVCBzY2hyaWViIE1hcmsg
-eWFvOgo+IE9uIDIwMTflubQwNuaciDIy5pelIDE1OjMxLCBIZWlrbyBTdHVlYm5lciB3cm90ZToK
-PiA+PiArCj4gPj4gPisvKioKPiA+PiA+KyAqIHN0cnVjdCByb2NrY2hpcF9oZG1pX2NoaXBfZGF0
-YSAtIHNwbGl0ZSB0aGUgZ3JmIHNldHRpbmcgb2Yga2luZCBvZiBjaGlwcwo+ID4+ID4rICogQGxj
-ZHNlbF9ncmZfcmVnOiBncmYgcmVnaXN0ZXIgb2Zmc2V0IG9mIGxjZGMgc2VsZWN0Cj4gPj4gPisg
-KiBAbGNkc2VsX2JpZzogcmVnIHZhbHVlIG9mIHNlbGVjdGluZyB2b3AgYmlnIGZvciBIRE1JCj4g
-Pj4gPisgKiBAbGNkc2VsX2xpdDogcmVnIHZhbHVlIG9mIHNlbGVjdGluZyB2b3AgbGl0dGxlIGZv
-ciBIRE1JCj4gPj4gPisgKi8KPiA+PiA+K3N0cnVjdCByb2NrY2hpcF9oZG1pX2NoaXBfZGF0YSB7
-Cj4gPj4gPisJdTMyCWxjZHNlbF9ncmZfcmVnOwo+ID4gSG93IGRvIHlvdSBwbGFuIG9uIGhhbmRs
-aW5nIHRoZSByazMzNjggKHdpdGggb25seSBvbmUgVk9QIGFuZCB0aHVzCj4gPiBubyBzZWxlY3Rp
-b24gaGFwcGVuaW5nKT8gSSdkIGp1c3QgbWFrZSB0aGUgYWJvdmUgYW4gaW50LCBzbyB3ZSBjb3Vs
-ZAo+ID4gc2V0IGl0IHRvIC0xIGZvciB0aGF0IGNhc2UuICh2YWx1ZSAwIGlzIGFmdGVyIGFsbCBh
-IHZhbGlkIHJlZykuCj4gCj4gSXQncyBhIHByb2JsZW0gaGFuZGxpbmcgb24gcmszMzY4LCB1c2lu
-ZyAtMSB0byBqdWRnZSBtZWFucyB0aGF0IHdlIG5lZWQKPiBpbml0aWFsIHRoZSBsY2RzZWxfZ3Jm
-X3JlZyB0byAtMSBvbiByazMzNjggcGxhdGZvcm0sIHdlIG5lZWQgYWx3YXlzIGFkZCBhIHBsYXRm
-b3JtCj4gZGF0YSB0byBoYW5kbGUgaXQsIHNlZW1zIG5vdCBnb29kIGVub3VnaC4KPiAKPiBTaW5j
-ZSB0aGUgaGRtaSBjaGlwIGRhdGEgb25seSB1c2UgZm9yIHZvcCBzZWxlY3Rpb24sIG1heWJlIHdl
-IGNhbiBqdWRnZSB3aXRoCj4gY2hlY2tpbmcgaGRtaS0+Y2hpcF9kYXRhID09IE5VTEwgZm9yIHRo
-ZSBjYXNlLgoKeWVhaCwgdGhhdCBjb3VsZCB3b3JrIGFzIHdlbGwgLi4uIGFzIGxvbmcgYXMgdGhl
-IGdyZi12b3Atc2VsZWN0IGlzIHRoZSBvbmx5IGNoaXAtZGF0YQpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+As the comments from Heiko Stuebner <heiko@sntech.de> that compatible
+should not contain any placeholders, this patch fix it for rk3228 SoC.
+
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+---
+ Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 2 +-
+ drivers/nvmem/rockchip-efuse.c                             | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+index 194926f..1ff02afd 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
++++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+@@ -4,7 +4,7 @@ Required properties:
+ - compatible: Should be one of the following.
+   - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
+   - "rockchip,rk3188-efuse" - for RK3188 SoCs.
+-  - "rockchip,rk322x-efuse" - for RK322x SoCs.
++  - "rockchip,rk3228-efuse" - for RK3228 SoCs.
+   - "rockchip,rk3288-efuse" - for RK3288 SoCs.
+   - "rockchip,rk3399-efuse" - for RK3399 SoCs.
+ - reg: Should contain the registers location and exact eFuse size
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index a0d4ede..63e3eb5 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -170,7 +170,7 @@ static const struct of_device_id rockchip_efuse_match[] = {
+ 		.data = (void *)&rockchip_rk3288_efuse_read,
+ 	},
+ 	{
+-		.compatible = "rockchip,rk322x-efuse",
++		.compatible = "rockchip,rk3228-efuse",
+ 		.data = (void *)&rockchip_rk3288_efuse_read,
+ 	},
+ 	{
+-- 
+2.0.0
