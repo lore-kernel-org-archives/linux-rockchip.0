@@ -1,56 +1,63 @@
-From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 11/11] ARM64: dts: rockchip: Enable gmac2phy for rk3328-evb
-Date: Fri, 23 Jun 2017 13:04:09 +0800
-Message-ID: <1498194249-8368-1-git-send-email-david.wu@rock-chips.com>
-References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1498192929-7519-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org
-Cc: andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH] pinctrl: rockchip: add irq_shutdown
+Date: Fri, 23 Jun 2017 21:03:39 +0800
+Message-ID: <1498223019-9123-1-git-send-email-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: tfiga@chromium.org, briannorris@chromium.org, heiko@sntech.de, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Let's enable the gmac2phy, make the gmac2phy work on
-the rk3328-evb board.
+Currently the rockchip pinctrl driver would try to enable/disable the
+gpio bank clk when enable/disable an irq.
 
-Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+So when the irq core trying to shutdown an already disabled irq, it
+would result in unbalanced clk disable request:
+[   35.911955] WARNING: at drivers/clk/clk.c:680
+...
+[   37.272271] Call trace:
+[   37.274729] [<ffffffc0007ac270>] clk_core_disable+0x28/0x194
+[   37.280395] [<ffffffc0007ac6a8>] clk_disable+0x34/0x48
+[   37.285544] [<ffffffc0004f3bf0>] rockchip_irq_disable+0x30/0x3c
+[   37.291472] [<ffffffc00027a7e0>] __irq_disable+0x40/0x64
+[   37.296791] [<ffffffc00027a86c>] irq_shutdown+0x68/0x8c
+[   37.302023] [<ffffffc0002777fc>] __free_irq+0x110/0x218
+[   37.307254] [<ffffffc0002779a8>] free_irq+0x54/0x64
+[   37.312138] [<ffffffc00027ba24>] devm_irq_release+0x24/0x30
+
+Add an irq_shutdown callback, and do a sanity check for irq state to
+prevent that.
+
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index cf27239..b9f36da 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -50,6 +50,23 @@
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
-+
-+	vcc_phy: vcc-phy-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_phy";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&gmac2phy {
-+	phy-supply = <&vcc_phy>;
-+	clock_in_out = "output";
-+	assigned-clocks = <&cru SCLK_MAC2PHY_SRC>;
-+	assigned-clock-rate = <50000000>;
-+	assigned-clocks = <&cru SCLK_MAC2PHY>;
-+	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
-+	status = "okay";
- };
+ drivers/pinctrl/pinctrl-rockchip.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 607f52c..b0e3130 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2551,6 +2551,12 @@ static void rockchip_irq_disable(struct irq_data *d)
+ 	clk_disable(bank->clk);
+ }
  
- &uart2 {
++static void rockchip_irq_shutdown(struct irq_data *d)
++{
++	if (!irqd_irq_disabled(d))
++		rockchip_irq_disable(d);
++}
++
+ static void rockchip_irq_bus_lock(struct irq_data *d)
+ {
+ 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+@@ -2641,6 +2647,7 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+ 		gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
+ 		gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
+ 		gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
++		gc->chip_types[0].chip.irq_shutdown = rockchip_irq_shutdown;
+ 		gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
+ 		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
+ 		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
 -- 
-1.9.1
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.1.4
