@@ -1,63 +1,46 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH] pinctrl: rockchip: add irq_shutdown
-Date: Fri, 23 Jun 2017 21:03:39 +0800
-Message-ID: <1498223019-9123-1-git-send-email-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: tfiga@chromium.org, briannorris@chromium.org, heiko@sntech.de, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH 01/11] net: phy: Add rockchip phy driver support
+Date: Fri, 23 Jun 2017 15:55:45 +0200
+Message-ID: <20170623135545.GB21943@lunn.ch>
+References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com>
+ <1498192929-7519-2-git-send-email-david.wu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1498192929-7519-2-git-send-email-david.wu@rock-chips.com>
+Sender: netdev-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de, f.fainelli@gmail.com, peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently the rockchip pinctrl driver would try to enable/disable the
-gpio bank clk when enable/disable an irq.
+On Fri, Jun 23, 2017 at 12:41:59PM +0800, David Wu wrote:
+> Support internal ephy currently.
+> 
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> ---
+>  drivers/net/phy/Kconfig    |  4 ++
+>  drivers/net/phy/Makefile   |  1 +
+>  drivers/net/phy/rockchip.c | 94 ++++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 99 insertions(+)
+>  create mode 100644 drivers/net/phy/rockchip.c
+> 
+> diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+> index c360dd6..86010d4 100644
+> --- a/drivers/net/phy/Kconfig
+> +++ b/drivers/net/phy/Kconfig
+> @@ -350,6 +350,10 @@ config XILINX_GMII2RGMII
+>           the Reduced Gigabit Media Independent Interface(RGMII) between
+>           Ethernet physical media devices and the Gigabit Ethernet controller.
+>  
+> +config ROCKCHIP_MAC_PHY
+> +	tristate "Drivers for ROCKCHIP MAC PHY"
+> +	---help---
+> +	  Currently supports the mac internal ephy.
+>  endif # PHYLIB
 
-So when the irq core trying to shutdown an already disabled irq, it
-would result in unbalanced clk disable request:
-[   35.911955] WARNING: at drivers/clk/clk.c:680
-...
-[   37.272271] Call trace:
-[   37.274729] [<ffffffc0007ac270>] clk_core_disable+0x28/0x194
-[   37.280395] [<ffffffc0007ac6a8>] clk_disable+0x34/0x48
-[   37.285544] [<ffffffc0004f3bf0>] rockchip_irq_disable+0x30/0x3c
-[   37.291472] [<ffffffc00027a7e0>] __irq_disable+0x40/0x64
-[   37.296791] [<ffffffc00027a86c>] irq_shutdown+0x68/0x8c
-[   37.302023] [<ffffffc0002777fc>] __free_irq+0x110/0x218
-[   37.307254] [<ffffffc0002779a8>] free_irq+0x54/0x64
-[   37.312138] [<ffffffc00027ba24>] devm_irq_release+0x24/0x30
+Alphabetic order please for Kconfig and Makefile.
 
-Add an irq_shutdown callback, and do a sanity check for irq state to
-prevent that.
+I will review the rest later today/tomorrow.
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
-
- drivers/pinctrl/pinctrl-rockchip.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 607f52c..b0e3130 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2551,6 +2551,12 @@ static void rockchip_irq_disable(struct irq_data *d)
- 	clk_disable(bank->clk);
- }
- 
-+static void rockchip_irq_shutdown(struct irq_data *d)
-+{
-+	if (!irqd_irq_disabled(d))
-+		rockchip_irq_disable(d);
-+}
-+
- static void rockchip_irq_bus_lock(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
-@@ -2641,6 +2647,7 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
- 		gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
- 		gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
- 		gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
-+		gc->chip_types[0].chip.irq_shutdown = rockchip_irq_shutdown;
- 		gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
- 		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
- 		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
--- 
-2.1.4
+  Andrew
