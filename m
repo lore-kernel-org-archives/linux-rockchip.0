@@ -1,158 +1,210 @@
-From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] spi: rockchip: add support for "cs-gpios" dts
- property
-Date: Fri, 23 Jun 2017 12:02:09 +0800
-Message-ID: <594C92C1.1040704@rock-chips.com>
-References: <1497411483-23377-1-git-send-email-jeffy.chen@rock-chips.com> <CAD=FV=WqhOUqf+JP2=m0Jt5dHqB_FqKLEw2SZTQtBbEv41+u_A@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: use cs-gpios for cros_ec_spi
+Date: Thu, 22 Jun 2017 21:26:19 -0700
+Message-ID: <CAD=FV=VWjbGpY4nj2L0_6xaYY2_tp0pJ5q=BgppL9GWefBUGog@mail.gmail.com>
+References: <1497331543-8565-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1497331543-8565-4-git-send-email-jeffy.chen@rock-chips.com>
+ <20170613175043.GC9026@google.com> <20170613182225.smahsf3jzvbc7w7z@sirena.org.uk>
+ <20170620004739.GA67314@google.com> <CAD=FV=UKe5M-M=gXwdjp25vpR0CHtk1APRF0_b4PXQrGOc40+A@mail.gmail.com>
+ <594C905E.1040208@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=WqhOUqf+JP2=m0Jt5dHqB_FqKLEw2SZTQtBbEv41+u_A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-spi <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <594C905E.1040208@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: jeffy <jeffy.chen@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Mark Brown <broonie@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi doug,
+Hi,
 
-Thanx for your comments.
-
-On 06/23/2017 05:41 AM, Doug Anderson wrote:
-> Hi,
+On Thu, Jun 22, 2017 at 8:51 PM, jeffy <jeffy.chen@rock-chips.com> wrote:
+> Hi doug,
 >
-> On Tue, Jun 13, 2017 at 8:38 PM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> Support using "cs-gpios" property to specify cs gpios.
+> Thanx for your comments.
+>
+>
+> On 06/23/2017 06:47 AM, Doug Anderson wrote:
 >>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Hi,
+>>
+>> On Mon, Jun 19, 2017 at 5:47 PM, Brian Norris <briannorris@chromium.org>
+>> wrote:
+>>>
+>>> Hi Mark,
+>>>
+>>> Forgot to follow up here:
+>>>
+>>> On Tue, Jun 13, 2017 at 07:22:25PM +0100, Mark Brown wrote:
+>>>>
+>>>> On Tue, Jun 13, 2017 at 10:50:44AM -0700, Brian Norris wrote:
+>>>>>
+>>>>> On Tue, Jun 13, 2017 at 01:25:43PM +0800, Jeffy Chen wrote:
+>>>>>>
+>>>>>> The cros_ec requires CS line to be active after last message. But the
+>>>>>> CS
+>>>>>> would be toggled when powering off/on rockchip spi, which breaks ec
+>>>>>> xfer.
+>>>>>> Use GPIO CS to prevent that.
+>>>>
+>>>>
+>>>>> I suppose this change is fine. (At least, I don't have a good reason
+>>>>> not
+>>>>> to do this.)
+>>>>
+>>>>
+>>>>> But I still wonder whether this is something that the SPI core can be
+>>>>> expected to handle. drivers/mfd/cros_ec_spi.c already sets the
+>>>>> appropriate trans->cs_change bits, to ensure CS remains active in
+>>>>> between certain messages (all under spi_bus_lock()). But you're
+>>>>> suggesting that your bus controller may deassert CS if you runtime
+>>>>> suspend the device (e.g., in between messages).
+>>>>
+>>>>
+>>>>> So, is your controller just peculiar? Or should the SPI core avoid
+>>>>> autosuspending the bus controller when it's been instructed to keep CS
+>>>>> active? Any thoughts Mark?
+>>>>
+>>>>
+>>>> This sounds like the controller being unusual - though frankly the
+>>>> ChromeOS chip select usage is also odd so it's fairly rare for something
+>>>> like this to come up.  I'd not expect a runtime suspend to loose the pin
+>>>> state, though possibly through use of pinctrl rather than the
+>>>> controller.
+>>>
+>>>
+>>> I haven't personally verified this behavior (it probably wouldn't be too
+>>> hard to rig up a test driver to hold CS low while allowing the
+>>> controller to autosuspend? spidev can do this?), but Rockchip folks seem
+>>> to have concluded this.
+>>>
+>>> I suppose I'm fine with relying on cs-gpios as a workaround.
+>>
+>>
+>> I'm similarly hesitant to rely on cs-gpios as a workaround, though I
+>> won't directly stand in its way...  ...it seems like it would be
+>> slightly better to actually add a runtime_suspend() callback and
+>> adjust the pinmux dynamically (that would allow us to use the hardware
+>> chip select control if we ever enable that in the driver), but I'm not
+>> sure all the extra work to do that is worth it.
+>>
+>> It feels a little bit to me like the workaround here doesn't belong in
+>> the board's device tree file, though.  This is a quirk of the SoC's
+>> SPI controller whenever it's runtime suspended.  Any board using this
+>> SPI could possibly be affected, right?
+>
+> hmm, so i should add cs_gpio to all rockchip boards right?
+
+I think with the pinmux change I suggested below (which would be in
+rk3399.dtsi) you wouldn't need the cs-gpios workaround anywhere.  If
+someone _wanted_ to get cs-gpios to get more than one chip select or
+to use a different GPIO as a chip select, they could.  ...but there
+would be no need to use cs-gpios as a workaround.
+
+
+>> Oh wait (!!!!)
+>>
+>>
+>> Let's think about this.  Let me ask a question.  When you runtime
+>> suspend the SPI part (and turn off the power domain) but don't
+>> configure pins to be GPIO, what happens?  I'm assuming it's one of
+>> three things:
+>>
+>> 1. The line is driven a certain direction (probably low).  This seems
+>> unlikely.
+>>
+>> 2. The line is no longer driven by the SPI controller and thus the
+>> pin's pulls take effect.  This seems _likely_.
+>>
+>> 3. The line is no longer driven by the SPI controller and somehow the
+>> pulls stop taking effect.  This seems unlikely.
+>>
+>>
+>> ...I'll assume that #2 is right (please correct if I'm wrong).
+>> Thinking about that makes me think that we need to worry not just
+>> about the chip select line but about the other SPI lines too, right?
+>> AKA if the SPI controller stops driving the chip select line, it's
+>> probably also not driving MISO, MOSI, or TXD.
+>>
+>> ...so looking at all the SPI lines, they all have pullup configured in
+>> the "default" mode in rk3399.dtsi.
+>>
+>> ...and looking as "cros_ec_spi.c", I see that we appear to be using
+>> MODE_0.
+>>
+>>
+>> That means if you runtime suspend while the cros EC code was running
+>> and none of your patches have landed, all lines will float high.
+>>
+>> 1. Chip select will be deasserted (this is the problem you're trying to
+>> solve).
+>>
+>> 2. Data line and clock line will get pulled high.
+>>
+>> Using spi.h, MODE_0 means SPI_CPOL=0 and SPI_CPHA=0.  Using Wikipedia
+>> (which is never wrong, of course), that means data is captured on the
+>> clock's rising edge.  Thus we'll actually clock one bit of data here,
+>> but at the same time that we try to turn off chip select.
+>>
+>>
+>> ...now we look at your proposed solution and we'll leave chip select
+>> on, but we'll still clock one bit of data (oops).  ...or, I guess, if
+>> the EC itself has pulls configured we might be in some state where the
+>> different pulls are fighting, but that still seems non-ideal.
+>>
 >> ---
 >>
->> Changes in v3:
->> include linux/gpio/consumer.h for compile errors on ARCH_X86
->> (reported by kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>)
+>> So how do we fix this?  IMHO:
 >>
->> Changes in v2:
->> 1/ request cs gpios in probe for better error handling
->> 2/ use gpiod* function
->> (suggested by Heiko Stuebner)
->> 3/ split dt-binding changes to new patch
->> (suggested by Shawn Lin & Heiko Stuebner)
+>> Add 4 new pinctrl states in rk3399.dtsi:
 >>
->>   drivers/spi/spi-rockchip.c | 31 ++++++++++++++++++++++++++++++-
->>   1 file changed, 30 insertions(+), 1 deletion(-)
+>>    cs_low_clk_low, cs_low_clk_high, cs_high_clk_low, cs_high_clk_high
 >>
->> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
->> index bab9b13..4bcf251 100644
->> --- a/drivers/spi/spi-rockchip.c
->> +++ b/drivers/spi/spi-rockchip.c
->> @@ -16,7 +16,8 @@
->>   #include <linux/clk.h>
->>   #include <linux/dmaengine.h>
->>   #include <linux/module.h>
->> -#include <linux/of.h>
->> +#include <linux/gpio/consumer.h>
->> +#include <linux/of_gpio.h>
->>   #include <linux/pinctrl/consumer.h>
->>   #include <linux/platform_device.h>
->>   #include <linux/spi/spi.h>
->> @@ -663,6 +664,27 @@ static bool rockchip_spi_can_dma(struct spi_master *master,
->>          return (xfer->len > rs->fifo_len);
->>   }
+>> These would each look something like this:
 >>
->> +static int rockchip_spi_setup_cs_gpios(struct device *dev)
->> +{
->> +       struct device_node *np = dev->of_node;
->> +       struct gpio_desc *cs_gpio;
->> +       int i, nb;
->> +
->> +       if (!np)
->> +               return 0;
+>> spi5_cs_low_data_low: spi5-cs-low-data-low {
+>>    rockchip,pins = <2 22 RK_FUNC_0 &pcfg_output_low>,
+>>      <2 23 RK_FUNC_0 &pcfg_output_low>;
+>> };
+>>
+>> Where "pcfg_output_low" would be moved from the existing location in
+>> "rk3399-gru.dtsi" to the main "rk3399.dtsi" file.
+>>
+>>
+>> ...now, you'd define runtime_suspend and runtime_resume functions
+>> where you'd look at the current state of the chip select and output
+>> and select one of these 4 pinmuxes so that things _don't_ change.
+>>
+>> If the pinmuxes didn't exist you'd simply deny PM Runtime Transitions.
+>> That would nicely take care of the backward compatibility problem.
+>> Old DTS files would work, they just wouldn't be able to Runtime PM
+>> properly.
 >
-> Not sure you really to check for NULL "np".  Do we really run properly
-> without device tree?  We already call of_property_read_u32()
-> unconditionally...
-hmm, right
->
->
->> +
->> +       nb = of_gpio_named_count(np, "cs-gpios");
->> +       for (i = 0; i < nb; i++) {
->
-> Implicitly if there is any error getting "cs-gpios" (AKA if it doesn't
-> exist) you'll return a negative value here, then return "0" for the
-> function.  AKA cs-gpios is optional...  The behavior is correct, but
-> it's a bit non-obvious.  Personally I would have at least put a
-> comment even if you didn't put an explicit check.
-ok
->
->
->> +               /* We support both GPIO CS and HW CS */
->> +               cs_gpio = devm_gpiod_get_index_optional(dev, "cs",
->> +                                                       i, GPIOD_ASIS);
->> +               if (IS_ERR(cs_gpio))
->> +                       return PTR_ERR(cs_gpio);
->
-> As per your discussion with Brian, your whole reason for having this
-> function is that:
->
-> 1. Core SPI framework treats errors getting the GPIO as non-fatal (SPI
-> framework falls back on using the HW chip select).
->
-> Mark is the expert, but IMHO that seems like a bug in the core SPI
-> framework and you should fix it there rather than hacking around in
-> the driver.  _In theory_ you could break backward compatibility
-> (someone could have been relying on the old behavior that an error
-> caused you to fallback to the HW chip select), but I think that's not
-> likely as long as you handle things like:
->
->    cs-gpios = <&gpio1 0 0>, <0>, <&gpio1 1 0>, <&gpio1 2 0>;
->
-> AKA if someone has explicitly specified <0> for the GPIO then _that_
-> shouldn't be an error and we should do the fallback to HW chip select.
-> If we really expect old buggy DTS files that get broken by the old
-> behavior then we'd have to ask for advice from Mark and/or device tree
-> experts...
-right, it would be good to be handled in the spi core.
-and i think devm_gpiod_get_index_optional would take care of the <0> 
-fallback case
->
->
-> As evidence that the current SPI core is broken in the way it is and
-> could use a patch, it would be easy to "fall back" to a chip select
-> that's greater than "master->num_chipselect", which seems to me like a
-> clear bug.
->
-> --
->
-> 2. The SPI framework doesn't end up calling gpiod_request().  It seems
-> like it ought to.  Requiring the sub driver to do this seems wrong.
->
->
->> +       }
->> +
->> +       return 0;
->> +}
->> +
->>   static int rockchip_spi_probe(struct platform_device *pdev)
->>   {
->>          int ret = 0;
->> @@ -749,6 +771,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
->>          master->transfer_one = rockchip_spi_transfer_one;
->>          master->max_transfer_size = rockchip_spi_max_transfer_size;
->>          master->handle_err = rockchip_spi_handle_err;
->> +       master->flags = SPI_MASTER_GPIO_SS;
->
-> IMHO this one line in your patch makes total sense and it seems like
-> you could post it by itself and it could land.  All the error check
-> and gpiod_request() bikeshedding could be deferred to a separate
-> patch.
-ok, that make sense, will do in next version.
->
->
->
+> so we should use runtime pinmuxes to fix this issue, and also support
+> cs_gpio as an option right?
+
+Right.  So in my opinion:
+
+* Your patch to add "SPI_MASTER_GPIO_SS" would be fine to post and
+land, but it wouldn't be needed for the runtime PM issue.  Thinking
+about this and the GPIO chip selects, I wonder if the whole
+SPI_MASTER_GPIO_SS concept is broken if you use one "GPIO" based chip
+select and one native chip select.  I can try looking through the code
+tomorrow if you're going to pursue this and haven't figured it out...
+
+* If you want to improve the way that the SPI framework handles GPIO
+chip selects (to handle errors better and request the GPIO better),
+that would be fine.  ...but it also wouldn't be needed for the runtime
+PM issue.
+
+* There should be no need to add cs-gpios to existing boards if you're
+using the pinmux solution.
+
+* You'd want to add the pinmux configs to the main rk3399.dtsi file
+and then add code to the rockchip SPI driver to select the right
+pinmux (depending on the current state of the chip select and the
+current polarity) at runtime suspend.  ...then go back to "default"
+mode at runtime resume.
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Doug
