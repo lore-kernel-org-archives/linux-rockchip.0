@@ -1,56 +1,38 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 01/11] net: phy: Add rockchip phy driver support
-Date: Sat, 24 Jun 2017 10:38:13 +0200
-Message-ID: <2277908.rG2NXdikOp@phil>
-References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com> <1498192929-7519-2-git-send-email-david.wu@rock-chips.com> <20170624021910.GB4875@lunn.ch>
+From: Thomas Gleixner <tglx@linutronix.de>
+Subject: Re: [PATCH for 4.12] Revert "pinctrl: rockchip: avoid hardirq-unsafe
+ functions in irq_chip"
+Date: Sat, 24 Jun 2017 11:21:43 +0200 (CEST)
+Message-ID: <alpine.DEB.2.20.1706241120360.1941@nanos>
+References: <20170517225634.GA11404@google.com> <20170527021900.GA119873@google.com> <20170623205911.GA143883@google.com> <alpine.DEB.2.20.1706232353220.2234@nanos> <20170623224049.GP3721@linux.vnet.ibm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170624021910.GB4875-g2DYL2Zd6BY@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
-Cc: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=US-ASCII
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20170623224049.GP3721@linux.vnet.ibm.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>
+Cc: Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Peter Zijlstra <peterz@infradead.org>, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 24. Juni 2017, 04:19:10 CEST schrieb Andrew Lunn:
-> On Fri, Jun 23, 2017 at 12:41:59PM +0800, David Wu wrote:
-> > Support internal ephy currently.
+On Fri, 23 Jun 2017, Paul E. McKenney wrote:
+> On Sat, Jun 24, 2017 at 12:12:49AM +0200, Thomas Gleixner wrote:
+> > which added that RCU locking stuff and thereby broke the long existing
+> > bus_lock() facility of the interrupt core.
 > > 
-> > Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > ---
-> >  drivers/net/phy/Kconfig    |  4 ++
-> >  drivers/net/phy/Makefile   |  1 +
-> >  drivers/net/phy/rockchip.c | 94 ++++++++++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 99 insertions(+)
-> >  create mode 100644 drivers/net/phy/rockchip.c
+> > irq_bus_lock/unlock was explicitely made to allow sleeping locks for
+> > interrupt chips which hang behind slow busses like i2c or spi. It took us
+> > quite some effort to get this done and that patch broke it permanently.
 > > 
-> > diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
-> > index c360dd6..86010d4 100644
-> > --- a/drivers/net/phy/Kconfig
-> > +++ b/drivers/net/phy/Kconfig
-> > @@ -350,6 +350,10 @@ config XILINX_GMII2RGMII
-> >           the Reduced Gigabit Media Independent Interface(RGMII) between
-> >           Ethernet physical media devices and the Gigabit Ethernet controller.
-> >  
-> > +config ROCKCHIP_MAC_PHY
+> > I'm not sure what to do here. This is an ever recurring issue simply
+> > because RT requires that sleeping locks can be taken inside rcu locked
+> > regions. So sooner than later we need a resoilution for that problem.
 > 
-> This is a bit of an odd name, having both MAC and PHY in it. Are there
-> any other RockChip PHYs? Any external PHYS? Are they register
-> incompatible with the internal PHY?  Is it even RockChip IP? Or has it
-> been licensed from somebody else?
-> 
-> I would more likely just call it ROCKCHIP_PHY.
+> The usual advice would be for 4990d4fe327b ("PM / Wakeirq: Add automated
+> device wake IRQ handling") to use SRCU rather than RCU.  Is there some
+> reason that won't work?
 
-hmm, we do have quite a number of non-net phys in the phy subsystem
-(DP, PCIe, ...) and given that the above would be CONFIG_ROCKCHIP_PHY
-in a global sense, sounds like it could make things confusing.
+I can't see one. So yes, we should rather convert that stuff to SRCU
+instead of playing ping pong forever.
 
-So some addition sounds reasonable ... ROCKCHIP_ETH_PHY or so?
+Thanks,
 
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	tglx
