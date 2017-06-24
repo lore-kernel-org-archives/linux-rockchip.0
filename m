@@ -1,143 +1,39 @@
-From: "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>
-Subject: Re: PM / wakeirq: Convert to SRCU
-Date: Sat, 24 Jun 2017 06:53:20 -0700
-Message-ID: <20170624135320.GS3721@linux.vnet.ibm.com>
-References: <alpine.DEB.2.20.1706241153260.1941@nanos>
-Reply-To: paulmck@linux.vnet.ibm.com
+From: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
+Subject: Re: [PATCH 01/11] net: phy: Add rockchip phy driver support
+Date: Sat, 24 Jun 2017 16:04:06 +0200
+Message-ID: <20170624140406.GL4875@lunn.ch>
+References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com>
+ <1498192929-7519-2-git-send-email-david.wu@rock-chips.com>
+ <20170624021910.GB4875@lunn.ch>
+ <2277908.rG2NXdikOp@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-gpio-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1706241153260.1941@nanos>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Peter Zijlstra <peterz@infradead.org>, Tony Lindgren <tony@atomide.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>
+In-Reply-To: <2277908.rG2NXdikOp@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Jun 24, 2017 at 11:56:11AM +0200, Thomas Gleixner wrote:
-> The wakeirq infrastructure uses RCU to protect the list of wakeirqs. That
-> breaks the irq bus locking infrastructure, which allows sleeping functions
-> to be called so interrupt controllers behind slow busses, e.g. i2c, can be
-> handled.
+> hmm, we do have quite a number of non-net phys in the phy subsystem
+> (DP, PCIe, ...) and given that the above would be CONFIG_ROCKCHIP_PHY
+> in a global sense, sounds like it could make things confusing.
 > 
-> The wakeirq functions hold rcu_read_lock and call into irq functions, which
-> in case of interrupts using the irq bus locking will trigger a
-> might_sleep() splat.
-> 
-> Convert the wakeirq infrastructure to Sleepable RCU and unbreak it.
-> 
-> Fixes: 4990d4fe327b ("PM / Wakeirq: Add automated device wake IRQ handling")
-> Reported-by: Brian Norris <briannorris@chromium.org>
-> Suggested-by: Paul E. McKenney <paulmck@linux.vnet.ibm.com>
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: stable@vger.kernel.org
+> So some addition sounds reasonable ... ROCKCHIP_ETH_PHY or so?
 
-Looks plausible.  One suggestion on initialization below, and a couple
-of questions about uses of RCU that this patch does not convert to SRCU.
+I follow you reasoning, but generic phy is the new kid on the
+block. It is well established that Ethernet PHYs are called
+<MANUFACTURER>_PHY.
 
-							Thanx, Paul
+If you do want to consider generic phy, the logical name would be
+ROCKCHIP_PHY_PHY, since generic phy postfixes with _SATA, _USB, _PCIE,
+etc. But that does leave an issues when we have an Ethernet PHY which
+needs a generic PHY. In some sense, SERDES could be considered as
+something supported by a generic PHY...
 
-> ---
->  drivers/base/power/wakeup.c |   20 ++++++++++++--------
->  1 file changed, 12 insertions(+), 8 deletions(-)
-> 
-> --- a/drivers/base/power/wakeup.c
-> +++ b/drivers/base/power/wakeup.c
-> @@ -60,6 +60,8 @@ static LIST_HEAD(wakeup_sources);
-> 
->  static DECLARE_WAIT_QUEUE_HEAD(wakeup_count_wait_queue);
-> 
-> +static struct srcu_struct wakeup_srcu;
-
-I suggest this to avoid the need for boot-time init_srcu_struct():
-
-DEFINE_STATIC_SRCU(wakeup_srcu);
-
-> +
->  static struct wakeup_source deleted_ws = {
->  	.name = "deleted",
->  	.lock =  __SPIN_LOCK_UNLOCKED(deleted_ws.lock),
-> @@ -198,7 +200,7 @@ void wakeup_source_remove(struct wakeup_
->  	spin_lock_irqsave(&events_lock, flags);
->  	list_del_rcu(&ws->entry);
->  	spin_unlock_irqrestore(&events_lock, flags);
-> -	synchronize_rcu();
-> +	synchronize_srcu(&wakeup_srcu);
->  }
->  EXPORT_SYMBOL_GPL(wakeup_source_remove);
-
-The uses of RCU in device_wakeup_arm_wake_irqs() and
-device_wakeup_disarm_wake_irqs() are unrelated and thus do not
-need to be converted?  Or am I looking at the wrong version of
-the kernel?  (Looking at f65013d655ac ("Merge branch 'for-linus' of
-git://git.kernel.org/pub/scm/linux/kernel/git/ebiederm/user-namespace")
-in Linus's tree.)
-
-If these two functions are making unrelated use of RCU and thus don't
-need to be converted to SRCU, might be worth a comment somewhere.
-
-> @@ -804,10 +806,10 @@ EXPORT_SYMBOL_GPL(pm_wakeup_dev_event);
->  void pm_print_active_wakeup_sources(void)
->  {
->  	struct wakeup_source *ws;
-> -	int active = 0;
-> +	int srcuidx, active = 0;
->  	struct wakeup_source *last_activity_ws = NULL;
-> 
-> -	rcu_read_lock();
-> +	srcuidx = srcu_read_lock(&wakeup_srcu);
->  	list_for_each_entry_rcu(ws, &wakeup_sources, entry) {
->  		if (ws->active) {
->  			pr_debug("active wakeup source: %s\n", ws->name);
-> @@ -823,7 +825,7 @@ void pm_print_active_wakeup_sources(void
->  	if (!active && last_activity_ws)
->  		pr_debug("last active wakeup source: %s\n",
->  			last_activity_ws->name);
-> -	rcu_read_unlock();
-> +	srcu_read_unlock(&wakeup_srcu, srcuidx);
->  }
->  EXPORT_SYMBOL_GPL(pm_print_active_wakeup_sources);
-> 
-> @@ -950,8 +952,9 @@ void pm_wakep_autosleep_enabled(bool set
->  {
->  	struct wakeup_source *ws;
->  	ktime_t now = ktime_get();
-> +	int srcuidx;
-> 
-> -	rcu_read_lock();
-> +	srcuidx = srcu_read_lock(&wakeup_srcu);
->  	list_for_each_entry_rcu(ws, &wakeup_sources, entry) {
->  		spin_lock_irq(&ws->lock);
->  		if (ws->autosleep_enabled != set) {
-> @@ -965,7 +968,7 @@ void pm_wakep_autosleep_enabled(bool set
->  		}
->  		spin_unlock_irq(&ws->lock);
->  	}
-> -	rcu_read_unlock();
-> +	srcu_read_unlock(&wakeup_srcu, srcuidx);
->  }
->  #endif /* CONFIG_PM_AUTOSLEEP */
-
-Same question for pm_wakep_autosleep_enabled().
-
-> @@ -1026,15 +1029,16 @@ static int print_wakeup_source_stats(str
->  static int wakeup_sources_stats_show(struct seq_file *m, void *unused)
->  {
->  	struct wakeup_source *ws;
-> +	int srcuidx;
-> 
->  	seq_puts(m, "name\t\tactive_count\tevent_count\twakeup_count\t"
->  		"expire_count\tactive_since\ttotal_time\tmax_time\t"
->  		"last_change\tprevent_suspend_time\n");
-> 
-> -	rcu_read_lock();
-> +	srcuidx = srcu_read_lock(&wakeup_srcu);
->  	list_for_each_entry_rcu(ws, &wakeup_sources, entry)
->  		print_wakeup_source_stats(m, ws);
-> -	rcu_read_unlock();
-> +	srcu_read_unlock(&wakeup_srcu, srcuidx);
-> 
->  	print_wakeup_source_stats(m, &deleted_ws);
-> 
-> 
-
+	Andrew
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
