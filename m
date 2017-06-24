@@ -1,44 +1,55 @@
-From: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
-Subject: Re: [PATCH 05/11] net: stmmac: dwmac-rk: Add internal phy support
-Date: Sat, 24 Jun 2017 04:29:54 +0200
-Message-ID: <20170624022954.GD4875@lunn.ch>
-References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com>
- <1498193947-8011-1-git-send-email-david.wu@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 01/11] net: phy: Add rockchip phy driver support
+Date: Sat, 24 Jun 2017 10:38:13 +0200
+Message-ID: <2277908.rG2NXdikOp@phil>
+References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com> <1498192929-7519-2-git-send-email-david.wu@rock-chips.com> <20170624021910.GB4875@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1498193947-8011-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20170624021910.GB4875-g2DYL2Zd6BY@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>
+Cc: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 23, 2017 at 12:59:07PM +0800, David Wu wrote:
-> To make internal phy worked, need to configure the phy_clock,
-> phy cru_reset and related registers.
+Am Samstag, 24. Juni 2017, 04:19:10 CEST schrieb Andrew Lunn:
+> On Fri, Jun 23, 2017 at 12:41:59PM +0800, David Wu wrote:
+> > Support internal ephy currently.
+> > 
+> > Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > ---
+> >  drivers/net/phy/Kconfig    |  4 ++
+> >  drivers/net/phy/Makefile   |  1 +
+> >  drivers/net/phy/rockchip.c | 94 ++++++++++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 99 insertions(+)
+> >  create mode 100644 drivers/net/phy/rockchip.c
+> > 
+> > diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+> > index c360dd6..86010d4 100644
+> > --- a/drivers/net/phy/Kconfig
+> > +++ b/drivers/net/phy/Kconfig
+> > @@ -350,6 +350,10 @@ config XILINX_GMII2RGMII
+> >           the Reduced Gigabit Media Independent Interface(RGMII) between
+> >           Ethernet physical media devices and the Gigabit Ethernet controller.
+> >  
+> > +config ROCKCHIP_MAC_PHY
 > 
-> Change-Id: I6971c0a769754b824b1b908b56080cbaf7867d13
-> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  .../devicetree/bindings/net/rockchip-dwmac.txt     |  3 +
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 82 ++++++++++++++++++++++
->  2 files changed, 85 insertions(+)
+> This is a bit of an odd name, having both MAC and PHY in it. Are there
+> any other RockChip PHYs? Any external PHYS? Are they register
+> incompatible with the internal PHY?  Is it even RockChip IP? Or has it
+> been licensed from somebody else?
 > 
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> index 8f42755..0514f69 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> @@ -22,6 +22,7 @@ Required properties:
->  	   <&cru SCLK_MACREF_OUT> clock gate for RMII reference clock output
->  	   <&cru ACLK_GMAC>: AXI clock gate for GMAC
->  	   <&cru PCLK_GMAC>: APB clock gate for GMAC
-> +	   <&cru MAC_PHY>: clock for internal macphy
+> I would more likely just call it ROCKCHIP_PHY.
 
-If this is the PHY clock, should it actually be specified in the PHY
-binding? Can you read the PHY ID registers with this clock off?
+hmm, we do have quite a number of non-net phys in the phy subsystem
+(DP, PCIe, ...) and given that the above would be CONFIG_ROCKCHIP_PHY
+in a global sense, sounds like it could make things confusing.
 
-	 Andrew
+So some addition sounds reasonable ... ROCKCHIP_ETH_PHY or so?
+
+
+Heiko
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
