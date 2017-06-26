@@ -1,43 +1,115 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2]  PM / wakeirq: Convert to SRCU
-Date: Mon, 26 Jun 2017 13:37:11 -0700
-Message-ID: <20170626203709.GA11099@google.com>
-References: <alpine.DEB.2.20.1706241153260.1941@nanos>
- <20170624135320.GS3721@linux.vnet.ibm.com>
- <alpine.DEB.2.20.1706251103320.1996@nanos>
- <20170625144559.GA3721@linux.vnet.ibm.com>
- <alpine.DEB.2.20.1706251930220.2528@nanos>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] spi: rockchip: Keep master alive when CS asserted
+Date: Mon, 26 Jun 2017 15:17:37 -0700
+Message-ID: <20170626221736.GA126468@google.com>
+References: <1498446606-5529-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-gpio-owner@vger.kernel.org>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.20.1706251930220.2528@nanos>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Peter Zijlstra <peterz@infradead.org>, Tony Lindgren <tony@atomide.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>
+In-Reply-To: <1498446606-5529-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Jun 25, 2017 at 07:31:13PM +0200, Thomas Gleixner wrote:
-> The wakeirq infrastructure uses RCU to protect the list of wakeirqs. That
-> breaks the irq bus locking infrastructure, which is allows sleeping
-> functions to be called so interrupt controllers behind slow busses,
-> e.g. i2c, can be handled.
+Hi Jeffy,
+
+On Mon, Jun 26, 2017 at 11:10:06AM +0800, Jeffy Chen wrote:
+> The cros_ec requires CS line to be active after last message. But the CS
+> would be toggled when powering off/on rockchip spi, which breaks ec xfer.
+
+I believe Doug's point was larger than just the CS line. He was
+guessing that you're also stopping driving any of the other pins (e.g.,
+CLK), which could cause more problems. Seems like it'd be good to note
+that in the second sentence here.
+
+> Keep spi alive after CS asserted to prevent that.
 > 
-> The wakeirq functions hold rcu_read_lock and call into irq functions, which
-> in case of interrupts using the irq bus locking will trigger a
-> might_sleep() splat.
+> Suggested-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
-> Convert the wakeirq infrastructure to Sleepable RCU and unbreak it.
-> 
-> Fixes: 4990d4fe327b ("PM / Wakeirq: Add automated device wake IRQ handling")
-> Reported-by: Brian Norris <briannorris@chromium.org>
-> Suggested-by: Paul E. McKenney <paulmck@linux.vnet.ibm.com>
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 > ---
->  drivers/base/power/wakeup.c |   32 ++++++++++++++++++--------------
->  1 file changed, 18 insertions(+), 14 deletions(-)
+> 
+>  drivers/spi/spi-rockchip.c | 22 +++++++++++++++++-----
+>  1 file changed, 17 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> index acf31f3..df016a1 100644
+> --- a/drivers/spi/spi-rockchip.c
+> +++ b/drivers/spi/spi-rockchip.c
+> @@ -264,7 +264,7 @@ static inline u32 rx_max(struct rockchip_spi *rs)
+>  
+>  static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+>  {
+> -	u32 ser;
+> +	u32 ser, new_ser;
+>  	struct spi_master *master = spi->master;
+>  	struct rockchip_spi *rs = spi_master_get_devdata(master);
+>  
+> @@ -288,13 +288,25 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+>  	 * Note: enable(rockchip_spi_set_cs) = !enable(spi_set_cs)
+>  	 */
+>  	if (!enable)
+> -		ser |= 1 << spi->chip_select;
+> +		new_ser = ser | BIT(spi->chip_select);
+>  	else
+> -		ser &= ~(1 << spi->chip_select);
+> +		new_ser = ser & ~BIT(spi->chip_select);
+>  
+> -	writel_relaxed(ser, rs->regs + ROCKCHIP_SPI_SER);
+> +	if (new_ser == ser)
+> +		goto out;
 
-This resolves the warnings I've seen, for sure. And I don't seem to have
-any new suspend/resume problems, so:
+Hmm, this doens't exactly feel like a situation for 'goto'. Personally,
+an indented 'if' block would make this clearer:
 
-Tested-by: Brian Norris <briannorris@chromium.org>
+	if (new_ser != ser) {
+		... // all the stuff you do only on CS edges
+	}
+
+>  
+> -	pm_runtime_put_sync(rs->dev);
+> +	writel_relaxed(new_ser, rs->regs + ROCKCHIP_SPI_SER);
+> +
+> +	/*
+> +	 * The rockchip spi would stop driving CS when power down.
+
+Replace "CS" with "all pins"? And:
+s/power/powered/
+
+> +	 * So we need to keep it alive after CS asserted
+
+To make this clearer, note that we're keeping an unbalanced runtime PM
+reference on purpose. Like instead of "we need to keep it alive after CS
+asserted", maybe "we hold a runtime PM reference as long as CS is
+asserted."?
+
+> +	 */
+> +	if (!enable)
+> +		return;
+> +	pm_runtime_put(rs->dev);
+
+I still had to read this through a few times to be sure it was right (I
+think it's correct?). Maybe to make this extra clear, a comment like
+"Drop reference from when we first asserted CS" could go above this?
+
+> +
+> +out:
+> +	pm_runtime_put(rs->dev);
+
+You've dropped the "_sync()" that used to be here. I think that's
+probably fine, but I wanted to call it out.
+
+Brian
+
+>  
+>  static int rockchip_spi_prepare_message(struct spi_master *master,
+> -- 
+> 2.1.4
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
