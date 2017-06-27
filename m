@@ -1,225 +1,129 @@
 From: "David.Wu" <david.wu@rock-chips.com>
 Subject: Re: [PATCH 05/11] net: stmmac: dwmac-rk: Add internal phy support
-Date: Tue, 27 Jun 2017 22:21:24 +0800
-Message-ID: <1f8255c9-14c1-440f-0f0c-d173ed439d8d@rock-chips.com>
+Date: Tue, 27 Jun 2017 22:33:20 +0800
+Message-ID: <924d248f-f1c0-7fa2-4b97-c4f753ffe35b@rock-chips.com>
 References: <1498192929-7519-1-git-send-email-david.wu@rock-chips.com>
  <1498193947-8011-1-git-send-email-david.wu@rock-chips.com>
- <3788bbae-c99c-b63e-8910-f98567124cac@gmail.com>
+ <2805278.mLmlzpUgMM@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <3788bbae-c99c-b63e-8910-f98567124cac@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>, davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de
-Cc: andrew@lunn.ch, peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2805278.mLmlzpUgMM@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mark.rutland@arm.com, andrew@lunn.ch, hwg@rock-chips.com, f.fainelli@gmail.com, huangtao@rock-chips.com, alexandre.torgue@st.com, arnd@arndb.de, devicetree@vger.kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, netdev@vger.kernel.org, olof@lixom.net, peppe.cavallaro@st.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Florian,
-
-Sorry for reply late.
-
-在 2017/6/24 0:22, Florian Fainelli 写道:
-> On 06/22/2017 09:59 PM, David Wu wrote:
->> To make internal phy worked, need to configure the phy_clock,
->> phy cru_reset and related registers.
->>
->> Change-Id: I6971c0a769754b824b1b908b56080cbaf7867d13
->> Signed-off-by: David Wu <david.wu@rock-chips.com>
->> ---
->>   .../devicetree/bindings/net/rockchip-dwmac.txt     |  3 +
->>   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 82 ++++++++++++++++++++++
->>   2 files changed, 85 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
->> index 8f42755..0514f69 100644
->> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
->> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
->> @@ -22,6 +22,7 @@ Required properties:
->>   	   <&cru SCLK_MACREF_OUT> clock gate for RMII reference clock output
->>   	   <&cru ACLK_GMAC>: AXI clock gate for GMAC
->>   	   <&cru PCLK_GMAC>: APB clock gate for GMAC
->> +	   <&cru MAC_PHY>: clock for internal macphy
->>    - clock-names: One name for each entry in the clocks property.
->>    - phy-mode: See ethernet.txt file in the same directory.
->>    - pinctrl-names: Names corresponding to the numbered pinctrl states.
->> @@ -35,6 +36,8 @@ Required properties:
->>    - assigned-clocks: main clock, should be <&cru SCLK_MAC>;
->>    - assigned-clock-parents = parent of main clock.
->>      can be <&ext_gmac> or <&cru SCLK_MAC_PLL>.
->> + - phy-type: For internal phy, it must be "internal"; For external phy, no need
->> +   to configure this.
-> 
-> Use the standard "phy-mode" property. You will see
-> drivers/net/ethernet/broadcom/genet/ actually define a phy-mode =
-> "internal" property specifically for that. This should probably be
-> generalized so it is useful to other drivers a well, I will do just that.
-> 
-
-I'm a little confused for the property of phy-mode = "internal".
-If the property of phy-mode is configured as "internal" from DT , i 
-could not get the rmii or rgmii mode for the phy.
-I use it to differentiate rmii or rgmii for different configuration.
-
->>   
->>   Optional properties:
->>    - tx_delay: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
->> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
->> index a8e8fd5..c1a1413 100644
->> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
->> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
->> @@ -41,6 +41,7 @@ struct rk_gmac_ops {
->>   	void (*set_to_rmii)(struct rk_priv_data *bsp_priv);
->>   	void (*set_rgmii_speed)(struct rk_priv_data *bsp_priv, int speed);
->>   	void (*set_rmii_speed)(struct rk_priv_data *bsp_priv, int speed);
->> +	void (*internal_phy_powerup)(struct rk_priv_data *bsp_priv);
->>   };
->>   
->>   struct rk_priv_data {
->> @@ -52,6 +53,7 @@ struct rk_priv_data {
->>   
->>   	bool clk_enabled;
->>   	bool clock_input;
->> +	bool internal_phy;
->>   
->>   	struct clk *clk_mac;
->>   	struct clk *gmac_clkin;
->> @@ -61,6 +63,9 @@ struct rk_priv_data {
->>   	struct clk *clk_mac_refout;
->>   	struct clk *aclk_mac;
->>   	struct clk *pclk_mac;
->> +	struct clk *clk_macphy;
->> +
->> +	struct reset_control *macphy_reset;
->>   
->>   	int tx_delay;
->>   	int rx_delay;
->> @@ -750,6 +755,48 @@ static void rk3399_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
->>   	.set_rmii_speed = rk3399_set_rmii_speed,
->>   };
->>   
->> +#define RK_GRF_MACPHY_CON0		0xb00
->> +#define RK_GRF_MACPHY_CON1		0xb04
->> +#define RK_GRF_MACPHY_CON2		0xb08
->> +#define RK_GRF_MACPHY_CON3		0xb0c
->> +
->> +#define RK_MACPHY_ENABLE		GRF_BIT(0)
->> +#define RK_MACPHY_DISABLE		GRF_CLR_BIT(0)
->> +#define RK_MACPHY_CFG_CLK_50M		GRF_BIT(14)
->> +#define RK_GMAC2PHY_RMII_MODE		(GRF_BIT(6) | GRF_CLR_BIT(7))
->> +#define RK_GRF_CON2_MACPHY_ID		HIWORD_UPDATE(0x1234, 0xffff, 0)
->> +#define RK_GRF_CON3_MACPHY_ID		HIWORD_UPDATE(0x35, 0x3f, 0)
->> +
->> +static void rk_gmac_internal_phy_powerup(struct rk_priv_data *priv)
->> +{
->> +	if (priv->ops->internal_phy_powerup)
->> +		priv->ops->internal_phy_powerup(priv);
->> +
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_CFG_CLK_50M);
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_GMAC2PHY_RMII_MODE);
->> +
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON2, RK_GRF_CON2_MACPHY_ID);
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON3, RK_GRF_CON3_MACPHY_ID);
->> +
->> +	/* disable macphy, the default value is enabled */
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
->> +	if (priv->macphy_reset)
->> +		reset_control_assert(priv->macphy_reset);
->> +	usleep_range(10, 20);
->> +	if (priv->macphy_reset)
->> +		reset_control_deassert(priv->macphy_reset);
->> +	usleep_range(10, 20);
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_ENABLE);
->> +	msleep(30);
->> +}
->> +
->> +static void rk_gmac_internal_phy_powerdown(struct rk_priv_data *priv)
->> +{
->> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
->> +	if (priv->macphy_reset)
->> +		reset_control_assert(priv->macphy_reset);
->> +}
->> +
->>   static int gmac_clk_init(struct rk_priv_data *bsp_priv)
->>   {
->>   	struct device *dev = &bsp_priv->pdev->dev;
->> @@ -803,6 +850,14 @@ static int gmac_clk_init(struct rk_priv_data *bsp_priv)
->>   			clk_set_rate(bsp_priv->clk_mac, 50000000);
->>   	}
->>   
->> +	if (bsp_priv->internal_phy) {
->> +		bsp_priv->clk_macphy = devm_clk_get(dev, "clk_macphy");
->> +		if (IS_ERR(bsp_priv->clk_macphy))
->> +			dev_err(dev, "cannot get %s clock\n", "clk_macphy");
->> +		else
->> +			clk_set_rate(bsp_priv->clk_macphy, 50000000);
->> +	}
->> +
->>   	return 0;
->>   }
->>   
->> @@ -826,6 +881,9 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
->>   						bsp_priv->clk_mac_refout);
->>   			}
->>   
->> +			if (!IS_ERR(bsp_priv->clk_macphy))
->> +				clk_prepare_enable(bsp_priv->clk_macphy);
->> +
->>   			if (!IS_ERR(bsp_priv->aclk_mac))
->>   				clk_prepare_enable(bsp_priv->aclk_mac);
->>   
->> @@ -858,6 +916,9 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
->>   						bsp_priv->clk_mac_refout);
->>   			}
->>   
->> +			if (!IS_ERR(bsp_priv->clk_macphy))
->> +				clk_disable_unprepare(bsp_priv->clk_macphy);
->> +
->>   			if (!IS_ERR(bsp_priv->aclk_mac))
->>   				clk_disable_unprepare(bsp_priv->aclk_mac);
->>   
->> @@ -940,6 +1001,21 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
->>   			bsp_priv->clock_input = false;
->>   	}
->>   
->> +	ret = of_property_read_string(dev->of_node, "phy-type", &strings);
->> +	if (!ret && !strcmp(strings, "internal")) {
->> +		bsp_priv->internal_phy = true;
->> +		bsp_priv->macphy_reset = devm_reset_control_get(dev,
->> +				  "mac-phy");
->> +		if (IS_ERR(bsp_priv->macphy_reset)) {
->> +			dev_info(dev, "no macphy_reset control found\n");
->> +			bsp_priv->macphy_reset = NULL;
->> +		}
->> +	} else {
->> +		bsp_priv->internal_phy = false;
->> +	}
->> +	dev_info(dev, "internal PHY? (%s).\n",
->> +		 bsp_priv->internal_phy ? "yes" : "no");
->> +
->>   	ret = of_property_read_u32(dev->of_node, "tx_delay", &value);
->>   	if (ret) {
->>   		bsp_priv->tx_delay = 0x30;
->> @@ -1014,6 +1090,9 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
->>   	pm_runtime_enable(dev);
->>   	pm_runtime_get_sync(dev);
->>   
->> +	if (bsp_priv->internal_phy)
->> +		rk_gmac_internal_phy_powerup(bsp_priv);
->> +
->>   	return 0;
->>   }
->>   
->> @@ -1021,6 +1100,9 @@ static void rk_gmac_powerdown(struct rk_priv_data *gmac)
->>   {
->>   	struct device *dev = &gmac->pdev->dev;
->>   
->> +	if (gmac->internal_phy)
->> +		rk_gmac_internal_phy_powerdown(gmac);
->> +
->>   	pm_runtime_put_sync(dev);
->>   	pm_runtime_disable(dev);
->>   
->>
-> 
-> 
+SGkgSGVpa28sCgrU2iAyMDE3LzYvMjQgMToxOSwgSGVpa28gU3R1ZWJuZXIg0LS1wDoKPiBIaSBE
+YXZpZCwKPiAKPiBBbSBGcmVpdGFnLCAyMy4gSnVuaSAyMDE3LCAxMjo1OTowNyBDRVNUIHNjaHJp
+ZWIgRGF2aWQgV3U6Cj4+IFRvIG1ha2UgaW50ZXJuYWwgcGh5IHdvcmtlZCwgbmVlZCB0byBjb25m
+aWd1cmUgdGhlIHBoeV9jbG9jaywKPj4gcGh5IGNydV9yZXNldCBhbmQgcmVsYXRlZCByZWdpc3Rl
+cnMuCj4+Cj4+IENoYW5nZS1JZDogSTY5NzFjMGE3Njk3NTRiODI0YjFiOTA4YjU2MDgwY2JhZjc4
+NjdkMTMKPiAKPiBwbGVhc2UgcmVtb3ZlIGFsbCBDaGFuZ2UtSWRzIGZyb20gcGF0Y2hlcyBiZWZv
+cmUgc2VuZGluZyB1cHN0cmVhbS4KPiBUaGVyZSB3ZXJlIG1vcmUgYWZmZWN0ZWQgcGF0Y2hlcyBp
+biB0aGlzIHNlcmllcy4KPiAKPj4gU2lnbmVkLW9mZi1ieTogRGF2aWQgV3UgPGRhdmlkLnd1QHJv
+Y2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvcm9j
+a2NoaXAtZHdtYWMudHh0ICAgICB8ICAzICsKPj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1p
+Y3JvL3N0bW1hYy9kd21hYy1yay5jICAgICB8IDgyICsrKysrKysrKysrKysrKysrKysrKysKPj4g
+ICAyIGZpbGVzIGNoYW5nZWQsIDg1IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvcm9ja2NoaXAtZHdtYWMudHh0IGIv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy50eHQK
+Pj4gaW5kZXggOGY0Mjc1NS4uMDUxNGY2OSAxMDA2NDQKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy50eHQKPj4gKysrIGIvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy50eHQKPj4gQEAg
+LTIyLDYgKzIyLDcgQEAgUmVxdWlyZWQgcHJvcGVydGllczoKPj4gICAJICAgPCZjcnUgU0NMS19N
+QUNSRUZfT1VUPiBjbG9jayBnYXRlIGZvciBSTUlJIHJlZmVyZW5jZSBjbG9jayBvdXRwdXQKPj4g
+ICAJICAgPCZjcnUgQUNMS19HTUFDPjogQVhJIGNsb2NrIGdhdGUgZm9yIEdNQUMKPj4gICAJICAg
+PCZjcnUgUENMS19HTUFDPjogQVBCIGNsb2NrIGdhdGUgZm9yIEdNQUMKPj4gKwkgICA8JmNydSBN
+QUNfUEhZPjogY2xvY2sgZm9yIGludGVybmFsIG1hY3BoeQo+IAo+IHRoYXQgY2xvY2sgc2hvdWxk
+IG5vdCBiZSBsaXN0ZWQgYXMgYWx3YXlzICJSZXF1aXJlZCIgbGlrZSBpdCBpcyBoZXJlLgo+IE1h
+a2UgaXQgc29tZSBzb3J0IG9mIGV4dHJhIHBhcmFncmFwaCBtYXJraW5nIGl0IGFzIHJlcXVpcmVk
+IHdoZW4gdXNpbmcKPiBhbiBpbnRlcm5hbCBwaHkuCj4gCgpPa2F5LCBtb3ZlIGl0IHRvIHRoZSBv
+cHRpb24uCgo+PiAgICAtIGNsb2NrLW5hbWVzOiBPbmUgbmFtZSBmb3IgZWFjaCBlbnRyeSBpbiB0
+aGUgY2xvY2tzIHByb3BlcnR5Lgo+PiAgICAtIHBoeS1tb2RlOiBTZWUgZXRoZXJuZXQudHh0IGZp
+bGUgaW4gdGhlIHNhbWUgZGlyZWN0b3J5Lgo+PiAgICAtIHBpbmN0cmwtbmFtZXM6IE5hbWVzIGNv
+cnJlc3BvbmRpbmcgdG8gdGhlIG51bWJlcmVkIHBpbmN0cmwgc3RhdGVzLgo+PiBAQCAtMzUsNiAr
+MzYsOCBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+PiAgICAtIGFzc2lnbmVkLWNsb2NrczogbWFp
+biBjbG9jaywgc2hvdWxkIGJlIDwmY3J1IFNDTEtfTUFDPjsKPj4gICAgLSBhc3NpZ25lZC1jbG9j
+ay1wYXJlbnRzID0gcGFyZW50IG9mIG1haW4gY2xvY2suCj4+ICAgICAgY2FuIGJlIDwmZXh0X2dt
+YWM+IG9yIDwmY3J1IFNDTEtfTUFDX1BMTD4uCj4+ICsgLSBwaHktdHlwZTogRm9yIGludGVybmFs
+IHBoeSwgaXQgbXVzdCBiZSAiaW50ZXJuYWwiOyBGb3IgZXh0ZXJuYWwgcGh5LCBubyBuZWVkCj4+
+ICsgICB0byBjb25maWd1cmUgdGhpcy4KPj4gICAKPj4gICBPcHRpb25hbCBwcm9wZXJ0aWVzOgo+
+PiAgICAtIHR4X2RlbGF5OiBEZWxheSB2YWx1ZSBmb3IgVFhEIHRpbWluZy4gUmFuZ2UgdmFsdWUg
+aXMgMH4weDdGLCAweDMwIGFzIGRlZmF1bHQuCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+c3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYwo+PiBpbmRleCBhOGU4ZmQ1Li5jMWExNDEzIDEwMDY0
+NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5j
+Cj4+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLmMK
+Pj4gQEAgLTQxLDYgKzQxLDcgQEAgc3RydWN0IHJrX2dtYWNfb3BzIHsKPj4gICAJdm9pZCAoKnNl
+dF90b19ybWlpKShzdHJ1Y3QgcmtfcHJpdl9kYXRhICpic3BfcHJpdik7Cj4+ICAgCXZvaWQgKCpz
+ZXRfcmdtaWlfc3BlZWQpKHN0cnVjdCBya19wcml2X2RhdGEgKmJzcF9wcml2LCBpbnQgc3BlZWQp
+Owo+PiAgIAl2b2lkICgqc2V0X3JtaWlfc3BlZWQpKHN0cnVjdCBya19wcml2X2RhdGEgKmJzcF9w
+cml2LCBpbnQgc3BlZWQpOwo+PiArCXZvaWQgKCppbnRlcm5hbF9waHlfcG93ZXJ1cCkoc3RydWN0
+IHJrX3ByaXZfZGF0YSAqYnNwX3ByaXYpOwo+PiAgIH07Cj4+ICAgCj4+ICAgc3RydWN0IHJrX3By
+aXZfZGF0YSB7Cj4+IEBAIC01Miw2ICs1Myw3IEBAIHN0cnVjdCBya19wcml2X2RhdGEgewo+PiAg
+IAo+PiAgIAlib29sIGNsa19lbmFibGVkOwo+PiAgIAlib29sIGNsb2NrX2lucHV0Owo+PiArCWJv
+b2wgaW50ZXJuYWxfcGh5Owo+PiAgIAo+PiAgIAlzdHJ1Y3QgY2xrICpjbGtfbWFjOwo+PiAgIAlz
+dHJ1Y3QgY2xrICpnbWFjX2Nsa2luOwo+PiBAQCAtNjEsNiArNjMsOSBAQCBzdHJ1Y3QgcmtfcHJp
+dl9kYXRhIHsKPj4gICAJc3RydWN0IGNsayAqY2xrX21hY19yZWZvdXQ7Cj4+ICAgCXN0cnVjdCBj
+bGsgKmFjbGtfbWFjOwo+PiAgIAlzdHJ1Y3QgY2xrICpwY2xrX21hYzsKPj4gKwlzdHJ1Y3QgY2xr
+ICpjbGtfbWFjcGh5Owo+PiArCj4+ICsJc3RydWN0IHJlc2V0X2NvbnRyb2wgKm1hY3BoeV9yZXNl
+dDsKPj4gICAKPj4gICAJaW50IHR4X2RlbGF5Owo+PiAgIAlpbnQgcnhfZGVsYXk7Cj4+IEBAIC03
+NTAsNiArNzU1LDQ4IEBAIHN0YXRpYyB2b2lkIHJrMzM5OV9zZXRfcm1paV9zcGVlZChzdHJ1Y3Qg
+cmtfcHJpdl9kYXRhICpic3BfcHJpdiwgaW50IHNwZWVkKQo+PiAgIAkuc2V0X3JtaWlfc3BlZWQg
+PSByazMzOTlfc2V0X3JtaWlfc3BlZWQsCj4+ICAgfTsKPj4gICAKPj4gKyNkZWZpbmUgUktfR1JG
+X01BQ1BIWV9DT04wCQkweGIwMAo+PiArI2RlZmluZSBSS19HUkZfTUFDUEhZX0NPTjEJCTB4YjA0
+Cj4+ICsjZGVmaW5lIFJLX0dSRl9NQUNQSFlfQ09OMgkJMHhiMDgKPj4gKyNkZWZpbmUgUktfR1JG
+X01BQ1BIWV9DT04zCQkweGIwYwo+PiArCj4+ICsjZGVmaW5lIFJLX01BQ1BIWV9FTkFCTEUJCUdS
+Rl9CSVQoMCkKPj4gKyNkZWZpbmUgUktfTUFDUEhZX0RJU0FCTEUJCUdSRl9DTFJfQklUKDApCj4+
+ICsjZGVmaW5lIFJLX01BQ1BIWV9DRkdfQ0xLXzUwTQkJR1JGX0JJVCgxNCkKPj4gKyNkZWZpbmUg
+UktfR01BQzJQSFlfUk1JSV9NT0RFCQkoR1JGX0JJVCg2KSB8IEdSRl9DTFJfQklUKDcpKQo+PiAr
+I2RlZmluZSBSS19HUkZfQ09OMl9NQUNQSFlfSUQJCUhJV09SRF9VUERBVEUoMHgxMjM0LCAweGZm
+ZmYsIDApCj4+ICsjZGVmaW5lIFJLX0dSRl9DT04zX01BQ1BIWV9JRAkJSElXT1JEX1VQREFURSgw
+eDM1LCAweDNmLCAwKQo+IAo+IFRoZXNlIGFyZSBwcmltYXJpbHkgcmVnaXN0ZXJzIGZvciB0aGUg
+cmszMzI4IGFuZCBjb21lIGZyb20gdGhlIEdSRiB3aGljaCBpcwo+IHNvbWVob3cgcHJvbmUgdG8g
+Y2hpcC1kZXNpZ25lcnMgbW92aW5nIGJpdHMgYXJvdW5kIGluIHJlZ2lzdGVycyBhbmQgYWxzbwo+
+IGVzcGVjaWFsbHkgdGhlIHJlZ2lzdGVyIG9mZnNldHMgKCpfQ09OeCkgd2lsbCBwcm9iYWJseSBu
+b3Qgc3RheSB0aGUgc2FtZQo+IG9uIGZ1dHVyZSBzb2NzLgo+IAoKSSB0aGluayB0aGV5IHNob3Vs
+ZCB0cnkgdG8ga2VlcCB0aGUgc2FtZS4gQnV0IHdoYXQgeW91IHNhaWQgaXMgdmVyeSAKcmVhc29u
+YWJsZS4gU28gbGV0J3MgZ2l2ZSByazMyMjggYW5kIHJrMzMyOCBkaWZmZXJlbnQgCmludGVybmFs
+X3BoeV9wb3dlcnVwKCkgaW4gdGhlIHJrX2dtYWNfb3BzIHRvIHNldCB0aGVpciBvd24gY29uZmln
+dXJhdGlvbj8KCj4gCj4+ICtzdGF0aWMgdm9pZCBya19nbWFjX2ludGVybmFsX3BoeV9wb3dlcnVw
+KHN0cnVjdCBya19wcml2X2RhdGEgKnByaXYpCj4+ICt7Cj4+ICsJaWYgKHByaXYtPm9wcy0+aW50
+ZXJuYWxfcGh5X3Bvd2VydXApCj4+ICsJCXByaXYtPm9wcy0+aW50ZXJuYWxfcGh5X3Bvd2VydXAo
+cHJpdik7Cj4+ICsKPj4gKwlyZWdtYXBfd3JpdGUocHJpdi0+Z3JmLCBSS19HUkZfTUFDUEhZX0NP
+TjAsIFJLX01BQ1BIWV9DRkdfQ0xLXzUwTSk7Cj4+ICsJcmVnbWFwX3dyaXRlKHByaXYtPmdyZiwg
+UktfR1JGX01BQ1BIWV9DT04wLCBSS19HTUFDMlBIWV9STUlJX01PREUpOwo+PiArCj4+ICsJcmVn
+bWFwX3dyaXRlKHByaXYtPmdyZiwgUktfR1JGX01BQ1BIWV9DT04yLCBSS19HUkZfQ09OMl9NQUNQ
+SFlfSUQpOwo+PiArCXJlZ21hcF93cml0ZShwcml2LT5ncmYsIFJLX0dSRl9NQUNQSFlfQ09OMywg
+UktfR1JGX0NPTjNfTUFDUEhZX0lEKTsKPj4gKwo+PiArCS8qIGRpc2FibGUgbWFjcGh5LCB0aGUg
+ZGVmYXVsdCB2YWx1ZSBpcyBlbmFibGVkICovCj4gCj4gdGhhdCBjb21tZW50IGlzIG5vdCBwcm92
+aWRpbmcgdXNlZnVsIGluZm9ybWF0aW9uLCBtYXliZQo+IAkvKiBtYWNwaHkgbmVlZHMgdG8gYmUg
+ZGlzYWJsZWQgYmVmb3JlIHRyeWluZyB0byByZXNldCBpdCAqLwo+IAo+IAo+PiArCXJlZ21hcF93
+cml0ZShwcml2LT5ncmYsIFJLX0dSRl9NQUNQSFlfQ09OMCwgUktfTUFDUEhZX0RJU0FCTEUpOwo+
+PiArCWlmIChwcml2LT5tYWNwaHlfcmVzZXQpCj4+ICsJCXJlc2V0X2NvbnRyb2xfYXNzZXJ0KHBy
+aXYtPm1hY3BoeV9yZXNldCk7Cj4+ICsJdXNsZWVwX3JhbmdlKDEwLCAyMCk7Cj4+ICsJaWYgKHBy
+aXYtPm1hY3BoeV9yZXNldCkKPj4gKwkJcmVzZXRfY29udHJvbF9kZWFzc2VydChwcml2LT5tYWNw
+aHlfcmVzZXQpOwo+PiArCXVzbGVlcF9yYW5nZSgxMCwgMjApOwo+PiArCXJlZ21hcF93cml0ZShw
+cml2LT5ncmYsIFJLX0dSRl9NQUNQSFlfQ09OMCwgUktfTUFDUEhZX0VOQUJMRSk7Cj4+ICsJbXNs
+ZWVwKDMwKTsKPiAKPiBkb2VzIHRoaXMgZG8gYW55dGhpbmcgdXNlZnVsIGlmIHByaXYtPm1hY3Bo
+eV9yZXNldCBpcyBub3Qgc2V0LCBvciBjb3VsZAo+IHdlIGp1c3QgY2hhbmdlIHRoYXQgdG8KPiAK
+Ck9rYXkuCgo+IGlmIChwcml2LT5tYWNwaHlfcmVzZXQpIHsKPiAJcmVnbWFwX3dyaXRlKHByaXYt
+PmdyZiwgUktfR1JGX01BQ1BIWV9DT04wLCBSS19NQUNQSFlfRElTQUJMRSk7Cj4gCXJlc2V0X2Nv
+bnRyb2xfYXNzZXJ0KHByaXYtPm1hY3BoeV9yZXNldCk7Cj4gCXVzbGVlcF9yYW5nZSgxMCwgMjAp
+Owo+IAlyZXNldF9jb250cm9sX2RlYXNzZXJ0KHByaXYtPm1hY3BoeV9yZXNldCk7Cj4gCXVzbGVl
+cF9yYW5nZSgxMCwgMjApOwo+IAlyZWdtYXBfd3JpdGUocHJpdi0+Z3JmLCBSS19HUkZfTUFDUEhZ
+X0NPTjAsIFJLX01BQ1BIWV9FTkFCTEUpOwo+IAltc2xlZXAoMzApOwo+IH0KPiAKPiAKPiBIZWlr
+bwo+IAo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LWFybS1rZXJuZWwK
