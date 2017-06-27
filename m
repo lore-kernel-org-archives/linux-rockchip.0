@@ -1,33 +1,129 @@
-From: Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: [PATCH for 4.12] Revert "pinctrl: rockchip: avoid hardirq-unsafe
- functions in irq_chip"
-Date: Tue, 27 Jun 2017 20:07:25 +0200 (CEST)
-Message-ID: <alpine.DEB.2.20.1706272006140.1890@nanos>
-References: <20170517225634.GA11404@google.com> <20170527021900.GA119873@google.com> <20170623205911.GA143883@google.com> <alpine.DEB.2.20.1706232353220.2234@nanos> <20170627000622.GA63039@google.com> <alpine.DEB.2.20.1706271357520.1798@nanos>
- <alpine.DEB.2.20.1706271504521.1798@nanos> <20170627172306.GA91202@google.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2] spi: rockchip: Disable Runtime PM when chip select is asserted
+Date: Tue, 27 Jun 2017 12:27:43 -0700
+Message-ID: <CAD=FV=WwCiMySpC-SMFQmM_JFCMdcSGQLXut1rUVVe_8E96-ew@mail.gmail.com>
+References: <1498530035-22070-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20170627172306.GA91202@google.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, Peter Zijlstra <peterz@infradead.org>, Tony Lindgren <tony@atomide.com>, "David.Wu" <david.wu@rock-chips.com>, =?ISO-2022-JP?Q?'=1B$B2+Es=1B=28J'?= <huangtao@rock-chips.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1498530035-22070-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-spi <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 27 Jun 2017, Brian Norris wrote:
-> On Tue, Jun 27, 2017 at 03:06:26PM +0200, Thomas Gleixner wrote:
-> > That said, the commit should be reverted and the issue needs to analyzed
-> > proper. We still need the RCU -> SCRU conversion, but that's a different
-> > problem.
-> 
-> Can we consider this an "ack" for the $subject then? Heiko also gave his
-> approval. How can this get merged? It's running a bit late for 4.12,
-> though it really shouldn't be risky (at least for non-RT stuff that was
-> working warning-free already in 4.11), but a 4.13-rc1 with -stable tag
-> could work as well.
+Hi,
 
-Yes. That revert can go into 4.12 from my POV, but I leave that to Linus.
+On Mon, Jun 26, 2017 at 7:20 PM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> The rockchip spi would stop driving pins when runtime suspended, which
+> might break slave's xfer(for example cros_ec).
+>
+> Since we have pullups on those pins, we only need to care about the CS
+> asserted case.
+>
+> So let's keep the spi alive when chip select is asserted for that.
+>
+> Also change use pm_runtime_put instead of pm_runtime_put_sync.
+>
+> Suggested-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> ---
+>
+> Changes in v2:
+> Improve commit message and comments and coding style.
+>
+>  drivers/spi/spi-rockchip.c | 23 ++++++++++++++++++-----
+>  1 file changed, 18 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> index acf31f3..ea0edd7 100644
+> --- a/drivers/spi/spi-rockchip.c
+> +++ b/drivers/spi/spi-rockchip.c
+> @@ -264,7 +264,7 @@ static inline u32 rx_max(struct rockchip_spi *rs)
+>
+>  static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+>  {
+> -       u32 ser;
+> +       u32 ser, new_ser;
+>         struct spi_master *master = spi->master;
+>         struct rockchip_spi *rs = spi_master_get_devdata(master);
+>
+> @@ -288,13 +288,26 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+>          * Note: enable(rockchip_spi_set_cs) = !enable(spi_set_cs)
+>          */
+>         if (!enable)
+> -               ser |= 1 << spi->chip_select;
+> +               new_ser = ser | BIT(spi->chip_select);
+>         else
+> -               ser &= ~(1 << spi->chip_select);
+> +               new_ser = ser & ~BIT(spi->chip_select);
+>
+> -       writel_relaxed(ser, rs->regs + ROCKCHIP_SPI_SER);
+> +       if (new_ser != ser) {
 
-Thanks,
+IMHO it's not a great idea to use the state of the hardware register
+here.  Using the state of the hardware register probably works OK, but
+it makes me just a little nervous.  If something happened to the state
+of the register (someone used /dev/mem to tweak, or the peripherals
+got reset, or ...) then you could end up with an unbalanced set of PM
+Runtime calls.  I know none of those things are common, but it still
+seems less than great to me.
 
-	tglx
+I'd rather we kept track in "struct rockchip_spi" whether we already
+called pm_runtime_get_sync().  AKA the following (untested):
+
+bool cs_asserted = !enable;
+
+/* Return immediately for no-op */
+if (cs_asserted == rs->cs_asserted)
+  return;
+
+/* Keep things powered as long as CS is asserted */
+if (cs_asserted) {
+  pm_runtime_get_sync(rs->dev);
+  rs->cs_asserted = true;
+}
+
+ser = ...
+...
+...
+
+if (!cs_asserted)
+  pm_runtime_put(rs->dev);
+
+
+NOTE: another advantage of storing the state in 'struct rockchip_spi'
+is that you can access it without pm_runtime_get_sync().
+
+
+> +               writel_relaxed(new_ser, rs->regs + ROCKCHIP_SPI_SER);
+>
+> -       pm_runtime_put_sync(rs->dev);
+> +               /*
+> +                * The rockchip spi would stop driving all pins when powered
+> +                * down.
+> +                * So hold a runtime PM reference as long as CS is asserted.
+> +                */
+> +               if (!enable)
+> +                       return;
+> +
+> +               /* Drop reference from when we first asserted CS */
+> +               pm_runtime_put(rs->dev);
+> +       }
+> +
+> +       pm_runtime_put(rs->dev);
+
+One note is that you should still submit your patch to add
+"SPI_MASTER_GPIO_SS" to spi-rockchip.c.  It's important that the SPI
+driver see the CS transitions so that it can do the PM Runtime get/put
+even when someone uses a GPIO chip select.  Even though the GPIO chip
+select will keep state, we don't want the rest of the lines to stop
+being driven.
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
