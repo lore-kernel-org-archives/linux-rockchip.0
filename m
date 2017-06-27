@@ -1,81 +1,58 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3 0/3] Add support for es8323 and hdmi
- audio to the firefly-rk3288
-Date: Tue, 27 Jun 2017 17:07:59 +0100
-Message-ID: <20170627160759.psg4o2gpfnyb5bx6@sirena.org.uk>
-References: <20170512132227.24916-1-romain.perier@collabora.com>
- <20170512132227.24916-9-romain.perier@collabora.com>
- <98ec8d72-2977-4347-86b0-4b423b55c434@collabora.com>
- <20170626140740.jlgtwaaivn3bvg2g@sirena.org.uk>
- <778a96a1-a6b0-ad78-89c1-7928dd50e3c4@collabora.com>
+From: Thomas Gleixner <tglx@linutronix.de>
+Subject: Re: [PATCH for 4.12] Revert "pinctrl: rockchip: avoid hardirq-unsafe
+ functions in irq_chip"
+Date: Tue, 27 Jun 2017 18:35:11 +0200 (CEST)
+Message-ID: <alpine.DEB.2.20.1706271621530.1798@nanos>
+References: <20170517225634.GA11404@google.com> <20170627000622.GA63039@google.com> <alpine.DEB.2.20.1706271357520.1798@nanos> <1674651.7QIPUCEQPh@diego>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3821673440049500111=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <778a96a1-a6b0-ad78-89c1-7928dd50e3c4@collabora.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Romain Perier <romain.perier@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Romain Perier <romain.perier@collabora.co.uk>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; BOUNDARY="8323329-1454316633-1498578140=:1798"
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1674651.7QIPUCEQPh@diego>
+Content-ID: <alpine.DEB.2.20.1706271834500.1798@nanos>
+Sender: linux-pm-owner@vger.kernel.org
+To: =?ISO-8859-15?Q?Heiko_St=FCbner?= <heiko@sntech.de>
+Cc: Brian Norris <briannorris@chromium.org>, Linus Walleij <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, Peter Zijlstra <peterz@infradead.org>, Tony Lindgren <tony@atomide.com>, "David.Wu" <david.wu@rock-chips.com>, =?ISO-2022-JP?Q?'=1B$B2+Es=1B=28J'?= <huangtao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
---===============3821673440049500111==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="wkt3egjmpcilgsts"
-Content-Disposition: inline
+--8323329-1454316633-1498578140=:1798
+Content-Type: text/plain; CHARSET=ISO-8859-15
+Content-Transfer-Encoding: 8BIT
+Content-ID: <alpine.DEB.2.20.1706271834501.1798@nanos>
 
+On Tue, 27 Jun 2017, Heiko Stübner wrote:
+> Am Dienstag, 27. Juni 2017, 15:01:32 CEST schrieb Thomas Gleixner:
+> > The only irq chip function which uses the regmap magic is the
+> > irq_set_type() callback. Now, I have a hard time to understand (though I'm
+> > no regmap/pinctrl expert) why that regmap stuff needs to be called in the
+> > first place. The level and the polarity are programmed via:
+> > 
+> >         writel_relaxed(level, gc->reg_base + GPIO_INTTYPE_LEVEL);
+> >         writel_relaxed(polarity, gc->reg_base + GPIO_INT_POLARITY);
+> > 
+> > Why needs the regmap machinery to be invoked there? The GPIO is already
+> > muxed and configured as interrupt, otherwise none of the irq functions
+> > could be invoked. Hmm?
+> 
+> That is a safeguard against the pinmux not being set as "gpio" but some other 
+> function, if the irq is requested directly without going through the gpio API. 
+> 
+> But looking at struct irq_chip and also other pinctrl drivers again, it seems
+> the new [0] irq_request_resources might be the way saner place for this.
+> Especially as it also prevents the mux-setting from being called more than 
+> once.
 
---wkt3egjmpcilgsts
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+That'll fail on RT as well because irq_request_resources() is called with
+irq_desc->lock held and interrupts disabled.
 
-On Mon, Jun 26, 2017 at 04:19:59PM +0200, Romain Perier wrote:
-> I did not kill a kitten or a puppy, I have just sent a ping 2 weeks
-> later for v3. The v2 was sent on Jan 23 2017... so that's not what I
-> call a top post or a flood ^^
->=20
-> anyway,
-> Have a nice day,
-> Romain
->=20
-> Le 26/06/2017 =E0 16:07, Mark Brown a =E9crit :
+irq_request_resources() can probably be called without holding desc->lock,
+though we need some form of protection against concurrent irq
+requests/free. I'll have look into that.
 
-You're top posting *again* in reply to a mail asking you not to do that
-and explaining why.  The mail I sent also explained why I can't really
-do anything with your content free ping and what you should do instead. =20
-The text I send for these things is fairly long as it's trying to be
-clear about what needs to be done and why.
+Thanks,
 
---wkt3egjmpcilgsts
-Content-Type: application/pgp-signature; name="signature.asc"
+	tglx
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAllSgt4ACgkQJNaLcl1U
-h9BRygf7BubZifywYaAF72Z/UFILEKGmcwpVMY7Bp3mazKZW1TyFIJU7zpD7MCDo
-S0rp+mmk4cbeX9n4kErsvGoIzoR+1ZeotfQI2pt3AJCb4Y9lA0zYqngKq+oE/Vxo
-g5tztnXAAYBNLD1DXnSiw8ei1rQ9WHxITkTSMK5EQktq9jnQpKdRMv54OB+KuZPS
-o5KlkDHRPPqRn2O6CLJfUbjK1zITuFmOfy3GiMU9gFvnExqzbhe/jEc0ekNfZYBE
-NE6ZPqeYvej+oBspRG0ApjFL09SbGADuwqEm92uN6ThScPZIWHD6UgwVOUkswLwB
-TDXcB7HbAB3t81e6iy4cf+SgndmjQw==
-=bF29
------END PGP SIGNATURE-----
-
---wkt3egjmpcilgsts--
-
---===============3821673440049500111==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============3821673440049500111==--
+--8323329-1454316633-1498578140=:1798--
