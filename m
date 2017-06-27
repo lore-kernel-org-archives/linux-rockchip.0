@@ -1,75 +1,60 @@
-From: Tony Lindgren <tony@atomide.com>
-Subject: Re: [PATCH for 4.12] Revert "pinctrl: rockchip: avoid hardirq-unsafe
- functions in irq_chip"
-Date: Tue, 27 Jun 2017 00:32:50 -0700
-Message-ID: <20170627073249.GY3730@atomide.com>
-References: <20170517225634.GA11404@google.com>
- <20170527021900.GA119873@google.com>
- <20170623205911.GA143883@google.com>
- <alpine.DEB.2.20.1706232353220.2234@nanos>
- <20170627000622.GA63039@google.com>
- <20170627062409.GX3730@atomide.com>
- <20170627070731.GA23083@google.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH 1/5] [media] rockchip/rga: v4l2 m2m support
+Date: Tue, 27 Jun 2017 17:39:09 +0900
+Message-ID: <CAAFQd5BHAiTq9f4nvwFiy5DzZ0Jep9d4K0saAkoxzaK86a8GJg@mail.gmail.com>
+References: <1498488673-27900-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170627070731.GA23083@google.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, Peter Zijlstra <peterz@infradead.org>, "David.Wu" <david.wu@rock-chips.com>, =?utf-8?B?J+m7hOa2myc=?= <huangtao@rock-chips.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1498488673-27900-1-git-send-email-jacob-chen@iotwrt.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-* Brian Norris <briannorris@chromium.org> [170627 00:07]:
-> On Mon, Jun 26, 2017 at 11:24:09PM -0700, Tony Lindgren wrote:
-> > Hmm so how come drivers/bluetooth/btusb.c can't use the generic
-> > dev_pm_set_dedicated_wake_irq()? Can you please take a look?
-> 
-> I took a look previously, and last time I did, there were too many bugs
-> for it to be useful. You may have fixed the ones I reported w.r.t.
-> assumptions about runtime PM.
+Hi Jacob,
 
-Yes several issues got fixed over past few years. If you find issues
-please let me know, otherwise I can't help.
+Please see my comments inline.
 
-> I also recall there being some difficulty with supporting
-> level-triggered interrupts that way. (This signal has no device-level
-> mask, and it triggers for all sorts of BT activity. There may not be a
-> relevant "edge".)
+On Mon, Jun 26, 2017 at 11:51 PM, Jacob Chen <jacob-chen@iotwrt.com> wrote:
+> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
+> accelerates 2D graphics operations, such as point/line drawing, image
+> scaling, rotation, BitBLT, alpha blending and image blur/sharpness.
+[snip]
+> +static int rga_buf_init(struct vb2_buffer *vb)
+> +{
+> +       struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> +       struct rockchip_rga *rga = ctx->rga;
+> +       struct sg_table *sgt;
+> +       struct scatterlist *sgl;
+> +       unsigned int *pages;
+> +       struct rga_buf *buf;
+> +       unsigned int address, len, i, p;
+> +       unsigned int mapped_size = 0;
+> +
+> +       /* Create local MMU table for RGA */
+> +       sgt = vb2_plane_cookie(vb, 0);
+> +
+> +       /*
+> +        * Alloc (2^3 * 4K) = 32K byte for storing pages, those space could
+> +        * cover 32K * 4K = 128M ram address.
 
-Well typically the wakeirq needs to be disabled during runtime like we
-do for the generic wakeirqs. It might be connected to the RX line for
-example so it's just noise during runtime. If you actually need it during
-runtime then it's a separate story but I doubt that's the case here.
+Unless I'm missing something, there is 1024 32-bit values in one 4K
+page, which can point to 4 MB of memory. The code allocates 8 of them,
+which in total allows at most 32 MB per buffer.
 
-Talking of GPIO interrupt triggering, I wonder if something like below
-might help? It seems we're missing the setting of triggering, see below.
+> +        */
+> +       pages = (unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
 
-> > If there are issues remaining let's rather fix them so we can get rid
-> > of the custom tinkering of wake-up events in the drivers.
-> 
-> That's nice, but that doesn't answer my questions. Perhaps that's a side
-> project. The point is that we're clearly violating the documented APIs.
+This is rather unfortunate and you should expect failures here on
+actively used systems with uptime longer than few hours. Changing this
+to dma_alloc_coherent() and enabling CMA _might_ give you a bit better
+success rate, but...
 
-Certainly all these issues need to be fixed if we intent to use it. Funny
-how I have not run into these with my test cases. Do you have a GPIO
-irqchip on I2C for handling the wake-up interrupts?
+Normally, this kind of (scatter-gather capable) hardware would allow
+some kind of linking of separate pages, e.g. last entry in the page
+would point to the next page, or something like that. Doesn't this RGA
+block have something similar?
 
-Regards,
-
-Tony
-
-8< -------
-diff --git a/drivers/base/power/wakeirq.c b/drivers/base/power/wakeirq.c
---- a/drivers/base/power/wakeirq.c
-+++ b/drivers/base/power/wakeirq.c
-@@ -198,7 +198,8 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
- 	 * so we use a threaded irq.
- 	 */
- 	err = request_threaded_irq(irq, NULL, handle_threaded_wake_irq,
--				   IRQF_ONESHOT, dev_name(dev), wirq);
-+				   irq_get_trigger_type(irq) | IRQF_ONESHOT,
-+				   dev_name(dev), wirq);
- 	if (err)
- 		goto err_free;
- 
+Best regards,
+Tomasz
