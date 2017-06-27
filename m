@@ -1,131 +1,57 @@
-From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] spi: rockchip: Keep master alive when CS asserted
-Date: Tue, 27 Jun 2017 10:22:47 +0800
-Message-ID: <5951C177.4000600@rock-chips.com>
-References: <1498446606-5529-1-git-send-email-jeffy.chen@rock-chips.com> <20170626221736.GA126468@google.com>
+From: Tony Lindgren <tony@atomide.com>
+Subject: Re: [PATCH for 4.12] Revert "pinctrl: rockchip: avoid hardirq-unsafe
+ functions in irq_chip"
+Date: Mon, 26 Jun 2017 23:24:09 -0700
+Message-ID: <20170627062409.GX3730@atomide.com>
+References: <20170517225634.GA11404@google.com>
+ <20170527021900.GA119873@google.com>
+ <20170623205911.GA143883@google.com>
+ <alpine.DEB.2.20.1706232353220.2234@nanos>
+ <20170627000622.GA63039@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170626221736.GA126468-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170627000622.GA63039@google.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, LKML <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, John Keeping <john@metanate.com>, linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>, "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, Peter Zijlstra <peterz@infradead.org>, "David.Wu" <david.wu@rock-chips.com>, =?utf-8?B?J+m7hOa2myc=?= <huangtao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi brian,
+* Brian Norris <briannorris@chromium.org> [170626 17:06]:
+> So I agree that the above commit was problematic, and that you have
+> fixed that in your patch ("PM / wakeirq: Convert to SRCU"). But I
+> noticed there were other threads where people have complained about the
+> $subject patch also causing problems with drivers that call
+> disable_irq_nosync() from within an IRQ context. So I poked around with
+> one such driver that calls disable_irq_nosync() from its ISR [1], and
+> saw this:
+> 
+> [   14.524945] Bluetooth: : OOB Wake-on-BT configured at IRQ 56
+> [   14.531657] usbcore: registered new interface driver btusb
+> [   18.973886] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:238
+> [   18.987695] in_atomic(): 1, irqs_disabled(): 128, pid: 0, name: swapper/0
+> [   18.995282] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.12.0-rc6+ #1233
+> [   19.002669] Hardware name: Google Kevin (DT)
+> [   19.007435] Call trace:
+> [   19.010171] [<ffffff8008089928>] dump_backtrace+0x0/0x24c
+> [   19.016202] [<ffffff8008089b94>] show_stack+0x20/0x28
+> [   19.021846] [<ffffff8008371270>] dump_stack+0x90/0xb0
+> [   19.027488] [<ffffff80080cd2a0>] ___might_sleep+0x10c/0x124
+> [   19.033713] [<ffffff80080cd330>] __might_sleep+0x78/0x88
+> [   19.039647] [<ffffff800879e248>] mutex_lock+0x2c/0x64
+> [   19.045291] [<ffffff80083ad578>] rockchip_irq_bus_lock+0x30/0x3c
+> [   19.052003] [<ffffff80080f6c68>] __irq_get_desc_lock+0x78/0x98
+> [   19.058519] [<ffffff80080f8e90>] __disable_irq_nosync+0x38/0x80
+> [   19.065132] [<ffffff80080f8ef8>] disable_irq_nosync+0x20/0x2c
+> [   19.071555] [<ffffff8000a99f58>] btusb_oob_wake_handler+0x4c/0x68 [btusb]
 
-thanx for your comments.
+Hmm so how come drivers/bluetooth/btusb.c can't use the generic
+dev_pm_set_dedicated_wake_irq()? Can you please take a look?
 
-On 06/27/2017 06:17 AM, Brian Norris wrote:
-> Hi Jeffy,
->
-> On Mon, Jun 26, 2017 at 11:10:06AM +0800, Jeffy Chen wrote:
->> The cros_ec requires CS line to be active after last message. But the CS
->> would be toggled when powering off/on rockchip spi, which breaks ec xfer.
->
-> I believe Doug's point was larger than just the CS line. He was
-> guessing that you're also stopping driving any of the other pins (e.g.,
-> CLK), which could cause more problems. Seems like it'd be good to note
-> that in the second sentence here.
-right, i need to rewrite this.
->
->> Keep spi alive after CS asserted to prevent that.
->>
->> Suggested-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> ---
->>
->>   drivers/spi/spi-rockchip.c | 22 +++++++++++++++++-----
->>   1 file changed, 17 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
->> index acf31f3..df016a1 100644
->> --- a/drivers/spi/spi-rockchip.c
->> +++ b/drivers/spi/spi-rockchip.c
->> @@ -264,7 +264,7 @@ static inline u32 rx_max(struct rockchip_spi *rs)
->>
->>   static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
->>   {
->> -	u32 ser;
->> +	u32 ser, new_ser;
->>   	struct spi_master *master = spi->master;
->>   	struct rockchip_spi *rs = spi_master_get_devdata(master);
->>
->> @@ -288,13 +288,25 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
->>   	 * Note: enable(rockchip_spi_set_cs) = !enable(spi_set_cs)
->>   	 */
->>   	if (!enable)
->> -		ser |= 1 << spi->chip_select;
->> +		new_ser = ser | BIT(spi->chip_select);
->>   	else
->> -		ser &= ~(1 << spi->chip_select);
->> +		new_ser = ser & ~BIT(spi->chip_select);
->>
->> -	writel_relaxed(ser, rs->regs + ROCKCHIP_SPI_SER);
->> +	if (new_ser == ser)
->> +		goto out;
->
-> Hmm, this doens't exactly feel like a situation for 'goto'. Personally,
-> an indented 'if' block would make this clearer:
->
-> 	if (new_ser != ser) {
-> 		... // all the stuff you do only on CS edges
-> 	}
->
-ok, will do.
->>
->> -	pm_runtime_put_sync(rs->dev);
->> +	writel_relaxed(new_ser, rs->regs + ROCKCHIP_SPI_SER);
->> +
->> +	/*
->> +	 * The rockchip spi would stop driving CS when power down.
->
-> Replace "CS" with "all pins"? And:
-> s/power/powered/
-done
->
->> +	 * So we need to keep it alive after CS asserted
->
-> To make this clearer, note that we're keeping an unbalanced runtime PM
-> reference on purpose. Like instead of "we need to keep it alive after CS
-> asserted", maybe "we hold a runtime PM reference as long as CS is
-> asserted."?
-done
->
->> +	 */
->> +	if (!enable)
->> +		return;
->> +	pm_runtime_put(rs->dev);
->
-> I still had to read this through a few times to be sure it was right (I
-> think it's correct?). Maybe to make this extra clear, a comment like
-> "Drop reference from when we first asserted CS" could go above this?
->
-done
->> +
->> +out:
->> +	pm_runtime_put(rs->dev);
->
-> You've dropped the "_sync()" that used to be here. I think that's
-> probably fine, but I wanted to call it out.
-right, i'll mention it in commit message too.
->
-> Brian
->
->>
->>   static int rockchip_spi_prepare_message(struct spi_master *master,
->> --
->> 2.1.4
->>
->>
->
->
->
+If there are issues remaining let's rather fix them so we can get rid
+of the custom tinkering of wake-up events in the drivers.
 
+Regards,
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Tony
