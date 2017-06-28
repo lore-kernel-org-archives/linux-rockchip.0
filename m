@@ -1,81 +1,66 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix typo in mmc pinctrl
-Date: Tue, 27 Jun 2017 21:28:56 +0200
-Message-ID: <1623992.6iPIWFxdC5@diego>
-References: <20170627061904.12128-1-klaus.goger@theobroma-systems.com>
+From: Jacob Chen <jacobchen110@gmail.com>
+Subject: Re: [PATCH 1/5] [media] rockchip/rga: v4l2 m2m support
+Date: Wed, 28 Jun 2017 08:29:09 +0800
+Message-ID: <CAFLEztT7urS_VAJ5h3dUgyCyJwfeAFezwcAr8QpRHAEEbsGSWQ@mail.gmail.com>
+References: <1498488673-27900-1-git-send-email-jacob-chen@iotwrt.com> <CAAFQd5BHAiTq9f4nvwFiy5DzZ0Jep9d4K0saAkoxzaK86a8GJg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170627061904.12128-1-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5BHAiTq9f4nvwFiy5DzZ0Jep9d4K0saAkoxzaK86a8GJg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 27. Juni 2017, 08:19:03 CEST schrieb Klaus Goger:
-> replace all occurrences of sdmcc with sdmmc in the rockchip devicetree
-> files.
-> 
-> Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> ---
-> 
->  arch/arm/boot/dts/rk3036.dtsi                | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi     | 2 +-
+Hi,
 
-please split arm32/arm64 changes, as they go through different branches
-on their way to mainline.
+2017-06-27 16:39 GMT+08:00 Tomasz Figa <tfiga@chromium.org>:
+> Hi Jacob,
+>
+> Please see my comments inline.
+>
+> On Mon, Jun 26, 2017 at 11:51 PM, Jacob Chen <jacob-chen@iotwrt.com> wrote:
+>> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
+>> accelerates 2D graphics operations, such as point/line drawing, image
+>> scaling, rotation, BitBLT, alpha blending and image blur/sharpness.
+> [snip]
+>> +static int rga_buf_init(struct vb2_buffer *vb)
+>> +{
+>> +       struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+>> +       struct rockchip_rga *rga = ctx->rga;
+>> +       struct sg_table *sgt;
+>> +       struct scatterlist *sgl;
+>> +       unsigned int *pages;
+>> +       struct rga_buf *buf;
+>> +       unsigned int address, len, i, p;
+>> +       unsigned int mapped_size = 0;
+>> +
+>> +       /* Create local MMU table for RGA */
+>> +       sgt = vb2_plane_cookie(vb, 0);
+>> +
+>> +       /*
+>> +        * Alloc (2^3 * 4K) = 32K byte for storing pages, those space could
+>> +        * cover 32K * 4K = 128M ram address.
+>
+> Unless I'm missing something, there is 1024 32-bit values in one 4K
+> page, which can point to 4 MB of memory. The code allocates 8 of them,
+> which in total allows at most 32 MB per buffer.
+>
+>> +        */
+>> +       pages = (unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+>
+> This is rather unfortunate and you should expect failures here on
+> actively used systems with uptime longer than few hours. Changing this
+> to dma_alloc_coherent() and enabling CMA _might_ give you a bit better
+> success rate, but...
+>
 
-Otherwise looks good
-Heiko
+I decide to alloc a page pool when driver probe and get page from that poll.
 
->  3 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-> index ec91325d3b6e..bc5942023889 100644
-> --- a/arch/arm/boot/dts/rk3036.dtsi
-> +++ b/arch/arm/boot/dts/rk3036.dtsi
-> @@ -599,7 +599,7 @@
->  				rockchip,pins = <1 15 RK_FUNC_1 &pcfg_pull_default>;
->  			};
-> 
-> -			sdmmc_cd: sdmcc-cd {
-> +			sdmmc_cd: sdmmc-cd {
->  				rockchip,pins = <1 17 RK_FUNC_1 &pcfg_pull_default>;
->  			};
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi index
-> eb5059344023..eddc6eb31286 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> @@ -1031,7 +1031,7 @@ ap_i2c_audio: &i2c8 {
->  		 * hurt and dw_mmc will ignore it.  We make sure to disable
->  		 * the pull though so we don't burn needless power.
->  		 */
-> -		sdmmc_cd: sdmcc-cd {
-> +		sdmmc_cd: sdmmc-cd {
->  			rockchip,pins =
->  				<0 7 RK_FUNC_1 &pcfg_pull_none>;
->  		};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index 69c56f7316c4..21f32c42d7db
-> 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1786,7 +1786,7 @@
->  					<4 RK_PB5 RK_FUNC_1 &pcfg_pull_up>;
->  			};
-> 
-> -			sdmmc_cd: sdmcc-cd {
-> +			sdmmc_cd: sdmmc-cd {
->  				rockchip,pins =
->  					<0 RK_PA7 RK_FUNC_1 &pcfg_pull_up>;
->  			};
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Normally, this kind of (scatter-gather capable) hardware would allow
+> some kind of linking of separate pages, e.g. last entry in the page
+> would point to the next page, or something like that. Doesn't this RGA
+> block have something similar?
+>
+> Best regards,
+> Tomasz
