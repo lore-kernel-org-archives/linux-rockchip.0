@@ -1,66 +1,142 @@
-From: Jacob Chen <jacobchen110@gmail.com>
-Subject: Re: [PATCH 1/5] [media] rockchip/rga: v4l2 m2m support
-Date: Wed, 28 Jun 2017 08:29:09 +0800
-Message-ID: <CAFLEztT7urS_VAJ5h3dUgyCyJwfeAFezwcAr8QpRHAEEbsGSWQ@mail.gmail.com>
-References: <1498488673-27900-1-git-send-email-jacob-chen@iotwrt.com> <CAAFQd5BHAiTq9f4nvwFiy5DzZ0Jep9d4K0saAkoxzaK86a8GJg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5BHAiTq9f4nvwFiy5DzZ0Jep9d4K0saAkoxzaK86a8GJg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 2/2] spi: rockchip: Disable Runtime PM when chip select is asserted
+Date: Wed, 28 Jun 2017 12:38:43 +0800
+Message-ID: <1498624723-17332-2-git-send-email-jeffy.chen@rock-chips.com>
+References: <1498624723-17332-1-git-send-email-jeffy.chen@rock-chips.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1498624723-17332-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+The rockchip spi would stop driving pins when runtime suspended, which
+might break slave's xfer(for example cros_ec).
 
-2017-06-27 16:39 GMT+08:00 Tomasz Figa <tfiga@chromium.org>:
-> Hi Jacob,
->
-> Please see my comments inline.
->
-> On Mon, Jun 26, 2017 at 11:51 PM, Jacob Chen <jacob-chen@iotwrt.com> wrote:
->> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
->> accelerates 2D graphics operations, such as point/line drawing, image
->> scaling, rotation, BitBLT, alpha blending and image blur/sharpness.
-> [snip]
->> +static int rga_buf_init(struct vb2_buffer *vb)
->> +{
->> +       struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
->> +       struct rockchip_rga *rga = ctx->rga;
->> +       struct sg_table *sgt;
->> +       struct scatterlist *sgl;
->> +       unsigned int *pages;
->> +       struct rga_buf *buf;
->> +       unsigned int address, len, i, p;
->> +       unsigned int mapped_size = 0;
->> +
->> +       /* Create local MMU table for RGA */
->> +       sgt = vb2_plane_cookie(vb, 0);
->> +
->> +       /*
->> +        * Alloc (2^3 * 4K) = 32K byte for storing pages, those space could
->> +        * cover 32K * 4K = 128M ram address.
->
-> Unless I'm missing something, there is 1024 32-bit values in one 4K
-> page, which can point to 4 MB of memory. The code allocates 8 of them,
-> which in total allows at most 32 MB per buffer.
->
->> +        */
->> +       pages = (unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
->
-> This is rather unfortunate and you should expect failures here on
-> actively used systems with uptime longer than few hours. Changing this
-> to dma_alloc_coherent() and enabling CMA _might_ give you a bit better
-> success rate, but...
->
+Since we have pullups on those pins, we only need to care about this
+when the CS asserted.
 
-I decide to alloc a page pool when driver probe and get page from that poll.
+So let's keep the spi alive when chip select is asserted.
 
-> Normally, this kind of (scatter-gather capable) hardware would allow
-> some kind of linking of separate pages, e.g. last entry in the page
-> would point to the next page, or something like that. Doesn't this RGA
-> block have something similar?
->
-> Best regards,
-> Tomasz
+Also use pm_runtime_put instead of pm_runtime_put_sync.
+
+Suggested-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+---
+
+Changes in v3:
+Store cs states in struct rockchip_spi, and use it to detect cs state
+instead of hw register.
+
+Changes in v2:
+Improve commit message and comments and coding style.
+
+ drivers/spi/spi-rockchip.c | 51 +++++++++++++++++++++++-----------------------
+ 1 file changed, 26 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 52ea160..0b4a52b 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -25,6 +25,11 @@
+ 
+ #define DRIVER_NAME "rockchip-spi"
+ 
++#define ROCKCHIP_SPI_CLR_BITS(reg, bits) \
++		writel_relaxed(readl_relaxed(reg) & ~(bits), reg)
++#define ROCKCHIP_SPI_SET_BITS(reg, bits) \
++		writel_relaxed(readl_relaxed(reg) | (bits), reg)
++
+ /* SPI register offsets */
+ #define ROCKCHIP_SPI_CTRLR0			0x0000
+ #define ROCKCHIP_SPI_CTRLR1			0x0004
+@@ -149,6 +154,8 @@
+  */
+ #define ROCKCHIP_SPI_MAX_TRANLEN		0xffff
+ 
++#define ROCKCHIP_SPI_MAX_CS_NUM			2
++
+ enum rockchip_ssi_type {
+ 	SSI_MOTO_SPI = 0,
+ 	SSI_TI_SSP,
+@@ -193,6 +200,8 @@ struct rockchip_spi {
+ 	/* protect state */
+ 	spinlock_t lock;
+ 
++	bool cs_asserted[ROCKCHIP_SPI_MAX_CS_NUM];
++
+ 	u32 use_dma;
+ 	struct sg_table tx_sg;
+ 	struct sg_table rx_sg;
+@@ -264,37 +273,29 @@ static inline u32 rx_max(struct rockchip_spi *rs)
+ 
+ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+ {
+-	u32 ser;
+ 	struct spi_master *master = spi->master;
+ 	struct rockchip_spi *rs = spi_master_get_devdata(master);
++	bool cs_asserted = !enable;
+ 
+-	pm_runtime_get_sync(rs->dev);
++	/* Return immediately for no-op */
++	if (cs_asserted == rs->cs_asserted[spi->chip_select])
++		return;
+ 
+-	ser = readl_relaxed(rs->regs + ROCKCHIP_SPI_SER) & SER_MASK;
++	if (cs_asserted) {
++		/* Keep things powered as long as CS is asserted */
++		pm_runtime_get_sync(rs->dev);
+ 
+-	/*
+-	 * drivers/spi/spi.c:
+-	 * static void spi_set_cs(struct spi_device *spi, bool enable)
+-	 * {
+-	 *		if (spi->mode & SPI_CS_HIGH)
+-	 *			enable = !enable;
+-	 *
+-	 *		if (spi->cs_gpio >= 0)
+-	 *			gpio_set_value(spi->cs_gpio, !enable);
+-	 *		else if (spi->master->set_cs)
+-	 *		spi->master->set_cs(spi, !enable);
+-	 * }
+-	 *
+-	 * Note: enable(rockchip_spi_set_cs) = !enable(spi_set_cs)
+-	 */
+-	if (!enable)
+-		ser |= 1 << spi->chip_select;
+-	else
+-		ser &= ~(1 << spi->chip_select);
++		ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER,
++				      BIT(spi->chip_select));
++	} else {
++		ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER,
++				      BIT(spi->chip_select));
+ 
+-	writel_relaxed(ser, rs->regs + ROCKCHIP_SPI_SER);
++		/* Drop reference from when we first asserted CS */
++		pm_runtime_put(rs->dev);
++	}
+ 
+-	pm_runtime_put_sync(rs->dev);
++	rs->cs_asserted[spi->chip_select] = cs_asserted;
+ }
+ 
+ static int rockchip_spi_prepare_message(struct spi_master *master,
+@@ -739,7 +740,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 	master->auto_runtime_pm = true;
+ 	master->bus_num = pdev->id;
+ 	master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LOOP;
+-	master->num_chipselect = 2;
++	master->num_chipselect = ROCKCHIP_SPI_MAX_CS_NUM;
+ 	master->dev.of_node = pdev->dev.of_node;
+ 	master->bits_per_word_mask = SPI_BPW_MASK(16) | SPI_BPW_MASK(8);
+ 
+-- 
+2.1.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
