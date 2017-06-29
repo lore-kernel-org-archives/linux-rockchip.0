@@ -1,86 +1,168 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 5/5] dt-bindings: Document the Rockchip RGA bindings
-Date: Wed, 28 Jun 2017 17:29:37 -0500
-Message-ID: <20170628222937.jscrixi5uo2vasnk@rob-hp-laptop>
-References: <1498488802-1439-1-git-send-email-jacob-chen@iotwrt.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 4/4] arm64: dts: add RK3399-Q7 (Puma) SoM
+Date: Thu, 29 Jun 2017 08:14:53 +0800
+Message-ID: <8319b665-dd0d-36fc-999d-f4ae1afbd38b@rock-chips.com>
+References: <20170626191854.58253-1-klaus.goger@theobroma-systems.com>
+ <20170626191854.58253-5-klaus.goger@theobroma-systems.com>
+ <2336478.rsaXP0O2Er@diego>
+ <db92a83b-a80b-6c9f-76dc-646d9155bc20@rock-chips.com>
+ <8378C275-0F65-4B91-A9B8-23E78799F7E5@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1498488802-1439-1-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+In-Reply-To: <8378C275-0F65-4B91-A9B8-23E78799F7E5-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 26, 2017 at 10:53:22PM +0800, Jacob Chen wrote:
-> Add DT bindings documentation for Rockchip RGA
+Hi
+
+On 2017/6/28 22:01, Klaus Goger wrote:
+> Hi Shawn,
 > 
-> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-> ---
->  .../devicetree/bindings/media/rockchip-rga.txt     | 36 ++++++++++++++++++++++
+>> On 28 Jun 2017, at 14:41, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>
 
-Should be under bindings/gpu/
+--8<-----------
 
->  1 file changed, 36 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
+>>>
+>>>> +&pcie0 {
+>>>> +	ep-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_LOW>;
+>>>> +	num-lanes = <4>;
+>>>> +	pinctrl-names = "default";
+>>>> +	pinctrl-0 = <&pcie_clkreqn>;
+>>>> +	status = "okay";
+>>>
+>>> vpcie{3v3, 1v8, 0v9}-supply properties?
+>>
+>> These supply are optional which depend on the HW design.
+>> But pcie_clkreqn doesn't really work. I think we should
+>> use pcie_clkreqn_cpm instead and fix this for rk3399-evb.dts
+>> to prevent the further copy-n-paste.
 > 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.txt b/Documentation/devicetree/bindings/media/rockchip-rga.txt
-> new file mode 100644
-> index 0000000..48a260e5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip-rga.txt
-> @@ -0,0 +1,36 @@
-> +device-tree bindings for rockchip 2D raster graphic acceleration controller (RGA)
-> +
-> +RGA is a separate 2D raster graphic acceleration unit. It accelerates 2D
-> +graphics operations, such as point/line drawing, image scaling, rotation,
-> +BitBLT, alpha blending and image blur/sharpness.
-> +
-> +Required properties:
-> +- compatible: value should be one of the following
-> +		"rockchip,rk3228-rga";
-> +		"rockchip,rk3288-rga";
-> +		"rockchip,rk3399-rga";
-> +
-> +- interrupts: RGA interrupt number.
-> +
-> +- clocks: phandle to RGA sclk/hclk/aclk clocks
-> +
-> +- clock-names: should be "aclk" "hclk" and "sclk"
-> +
-> +- resets: Must contain an entry for each entry in reset-names.
-> +  See ../reset/reset.txt for details.
-> +- reset-names: should be "core" "axi" and "ahb"
-> +
-> +Example:
-> +SoC specific DT entry:
-> +	rga: rga@ff680000 {
+> I could add the supply properties but since they where optional and
+> are generated by dedicated always-on regulators supplied from the
+> also always on regulator vcc3v3_sys I didn’t see the need for it.
+> But if anyone to have a full model of the power tree visible in the
+> devicetree even if not controllable I can add it in v2.
 
-gpu@...
+Ok, so you don't need to add these here. :)
 
-> +		compatible = "rockchip,rk3399-rga";
-> +		reg = <0xff680000 0x10000>;
-> +		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-names = "rga";
-> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
-> +		clock-names = "aclk", "hclk", "sclk";
-> +
-> +		resets = <&cru SRST_RGA_CORE>, <&cru SRST_A_RGA>, <&cru SRST_H_RGA>;
-> +		reset-names = "core, "axi", "ahb";
-> +		status = "disabled";
-
-Don't show status in examples.
-
-> +	};
-> -- 
-> 2.7.4
 > 
-> --
-> To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Since the properties are optional maybe we should also change
+> the dev_info "no xxx regulator found” in pcie-rockchip.c to something
+> less severe sounding.
+> 
+>>>> +};
+>>>> +
+>>>
+>>> [...]
+>>>
+>>>> +&sdmmc {
+>>>> +	clock-frequency = <150000000>;
+>>
+>> we deprecates this now, so please use max-frequency instead.
+>>
+>>>> +	bus-width = <4>;
+>>>> +	cap-mmc-highspeed;
+>>>> +	cap-sd-highspeed;
+>>>> +	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+>>
+>> Really this board use gpio-based card detect pin?
+>>
+>>>> +	wp-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_LOW>;
+>>>> +	num-slots = <1>;
+>>>> +	pinctrl-names = "default";
+>>>> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_gpio &sdmmc_bus4>;
+>>
+>> I guess you don't need sdmmc_gpio and let mmc core request
+>> this gpio as irq pin from parsing cd-gpios?
+> 
+> I tried to just use the PA7 as SDMMC0_DET but didn’t get any state changes when
+
+Hmm.. we use PA7 as SDMMC0_DET for vendor kernel 4.4.
+I guess something goes wrong here and will check if later.
+
+> removing it or pugging it in after bootup. I tried to follow the mmc code path to see
+> which of the 3 card detection modes get configured. It looked to me as the CDETECT
+> register gets used but this would not generate any interrupts and requires polling of the
+> register. So not using a a gpio card detect requires the broken-cd property for me.
+> If i overlooked something I’m happy to change it, I was planning to take a look at it later
+> anyways
+> 
+>>
+>>>> +	status = "okay";
+>>>> +};
+>>
+>> And I would be more happy here to see the present of vqmmc and vmmc
+>> supply if possible.
+> 
+> Since we are a SoM vmmc would be a property required to be provided from the baseboard
+> and not part of the module dts.
+> I will add vqmmc for the I/O voltage supplying APIO#
+
+good to know that.
+
+> 
+>>>> +
+>>>> +
+>>>
+>>> double empty line
+>>>
+>>>
+>>>> +&spi1 {
+>>>> +	status = "okay";
+>>>> +
+>>>> +	flash: norflash@0 {
+>>>
+>>> norflash: flash@0 maybe?
+>>>
+>>> You reference the phandle and at the position it gets referenced
+>>> the specific name might be more helpful.
+>>>
+>>>
+>>>> +		compatible = "jedec,spi-nor";
+>>>> +		reg = <0>;
+>>>> +		spi-max-frequency = <50000000>;
+>>>> +	};
+>>>> +};
+>>>
+>>>
+>>>
+>>>> +&pinctrl {
+>>>> +	pinctrl-names = "default";
+>>>> +	pinctrl-0 = <&puma_pin_hog>;
+>>>> +
+>>>> +	hog {
+>>>> +			puma_pin_hog: puma_pin_hog {
+>>>
+>>> puma_pin_hog: puma-pin-hog
+>>>
+>>> Same for more defined pinctrl nodes below that.
+>>>
+>>>
+>>> Heiko
+>>>
+>>> _______________________________________________
+>>> Linux-rockchip mailing list
+>>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>>
+>>
+>>
+>> -- 
+>> Best Regards
+>> Shawn Lin
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
