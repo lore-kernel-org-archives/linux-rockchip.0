@@ -1,78 +1,60 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH 5/5] Arm64: dts: rockchip: Add pwm nodes for rk3328
-Date: Thu, 29 Jun 2017 20:34:10 +0800
-Message-ID: <1498739650-27774-1-git-send-email-david.wu@rock-chips.com>
-References: <1498739271-27431-1-git-send-email-david.wu@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1498739271-27431-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: thierry.reding@gmail.com, heiko@sntech.de, boris.brezillon@free-electrons.com, robh+dt@kernel.org
-Cc: catalin.marinas@arm.com, briannorris@chromium.org, dianders@chromium.org, mark.rutland@arm.com, huangtao@rock-chips.com, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH for 4.12] Revert "pinctrl: rockchip: avoid hardirq-unsafe
+ functions in irq_chip"
+Date: Thu, 29 Jun 2017 15:05:07 +0200
+Message-ID: <CACRpkdbwTR24eo6RYVR3GmWT+aWKEAj3CpAqv45xQwbFyxb8mw@mail.gmail.com>
+References: <20170517225634.GA11404@google.com> <20170527021900.GA119873@google.com>
+ <20170623205911.GA143883@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20170623205911.GA143883@google.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Thomas Gleixner <tglx@linutronix.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julia Cartwright <julia@ni.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, John Keeping <john@metanate.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-There are 4 pwm channels built in rk3328 soc, need to configure
-the both APB clock and bus clock.
+On Fri, Jun 23, 2017 at 10:59 PM, Brian Norris <briannorris@chromium.org> wrote:
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 45 ++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+> This reverts commit 88bb94216f59e10802aaf78c858a4146085faf18.
+>
+> It introduced a new CONFIG_DEBUG_ATOMIC_SLEEP warning in v4.12-rc1:
+>
+> [ 7226.716713] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:238
+> [ 7226.716716] in_atomic(): 0, irqs_disabled(): 0, pid: 1708, name: bash
+> [ 7226.716722] CPU: 1 PID: 1708 Comm: bash Not tainted 4.12.0-rc6+ #1213
+> [ 7226.716724] Hardware name: Google Kevin (DT)
+> [ 7226.716726] Call trace:
+> [ 7226.716738] [<ffffff8008089928>] dump_backtrace+0x0/0x24c
+> [ 7226.716743] [<ffffff8008089b94>] show_stack+0x20/0x28
+> [ 7226.716749] [<ffffff8008371370>] dump_stack+0x90/0xb0
+> [ 7226.716755] [<ffffff80080cd2a0>] ___might_sleep+0x10c/0x124
+> [ 7226.716760] [<ffffff80080cd330>] __might_sleep+0x78/0x88
+> [ 7226.716765] [<ffffff800879e210>] mutex_lock+0x2c/0x64
+> [ 7226.716771] [<ffffff80083ad678>] rockchip_irq_bus_lock+0x30/0x3c
+> [ 7226.716777] [<ffffff80080f6d40>] __irq_get_desc_lock+0x78/0x98
+> [ 7226.716782] [<ffffff80080f7e6c>] irq_set_irq_wake+0x44/0x12c
+> [ 7226.716787] [<ffffff8008486e18>] dev_pm_arm_wake_irq+0x4c/0x58
+> [ 7226.716792] [<ffffff800848b80c>] device_wakeup_arm_wake_irqs+0x3c/0x58
+> [ 7226.716796] [<ffffff80084896fc>] dpm_suspend_noirq+0xf8/0x3a0
+> [ 7226.716800] [<ffffff80080f1384>] suspend_devices_and_enter+0x1a4/0x9a8
+> [ 7226.716803] [<ffffff80080f21ec>] pm_suspend+0x664/0x6a4
+> [ 7226.716807] [<ffffff80080f04d8>] state_store+0xd4/0xf8
+> ...
+>
+> It was reported on -rc1, and it's still not fixed in -rc6, so it should
+> just be reverted.
+>
+> Cc: John Keeping <john@metanate.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 29b3800..46f0847 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -310,6 +310,51 @@
- 		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
- 	};
- 
-+	pwm0: pwm@ff1b0000 {
-+		compatible = "rockchip,rk3328-pwm";
-+		reg = <0x0 0xff1b0000 0x0 0x10>;
-+		#pwm-cells = <3>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwm0_pin>;
-+		clocks = <&cru SCLK_PWM>, <&cru PCLK_PWM>;
-+		clock-names = "pwm", "pclk";
-+		status = "disabled";
-+	};
-+
-+	pwm1: pwm@ff1b0010 {
-+		compatible = "rockchip,rk3328-pwm";
-+		reg = <0x0 0xff1b0010 0x0 0x10>;
-+		#pwm-cells = <3>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwm1_pin>;
-+		clocks = <&cru SCLK_PWM>, <&cru PCLK_PWM>;
-+		clock-names = "pwm", "pclk";
-+		status = "disabled";
-+	};
-+
-+	pwm2: pwm@ff1b0020 {
-+		compatible = "rockchip,rk3328-pwm";
-+		reg = <0x0 0xff1b0020 0x0 0x10>;
-+		#pwm-cells = <3>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwm2_pin>;
-+		clocks = <&cru SCLK_PWM>, <&cru PCLK_PWM>;
-+		clock-names = "pwm", "pclk";
-+		status = "disabled";
-+	};
-+
-+	pwm3: pwm@ff1b0030 {
-+		compatible = "rockchip,rk3328-pwm";
-+		reg = <0x0 0xff1b0030 0x0 0x10>;
-+		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
-+		#pwm-cells = <3>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwmir_pin>;
-+		clocks = <&cru SCLK_PWM>, <&cru PCLK_PWM>;
-+		clock-names = "pwm", "pclk";
-+		status = "disabled";
-+	};
-+
- 	saradc: adc@ff280000 {
- 		compatible = "rockchip,rk3328-saradc", "rockchip,rk3399-saradc";
- 		reg = <0x0 0xff280000 0x0 0x100>;
--- 
-1.9.1
+Revert applied for fixes with Heiko's review tag after reading up
+on the discussion.
+
+What a mess, sigh. Thanks to everyone who is helping to fix this
+up.
+
+Yours,
+Linus Walleij
