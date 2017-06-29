@@ -1,200 +1,33 @@
-From: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] mmc: dw_mmc-rockchip: parse
- rockchip,desired-num-phases from DT
-Date: Thu, 29 Jun 2017 19:57:40 +0900
-Message-ID: <203776cb-c6d4-4de5-1005-668984778f4a@samsung.com>
-References: <1494916134-68043-1-git-send-email-shawn.lin@rock-chips.com>
-        <CGME20170516063039epcas1p49836d3f2fb67c402d6ffd30f7eebef96@epcas1p4.samsung.com>
-        <1494916134-68043-2-git-send-email-shawn.lin@rock-chips.com>
-        <87542133-3d88-ea4f-03b7-884274964e48@samsung.com>
-        <35413895-08d3-c916-e5ec-d5c087260391@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"
-Content-Transfer-Encoding: 7bit
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/5] Add rk3328 pwm support
+Date: Thu, 29 Jun 2017 20:27:46 +0800
+Message-ID: <1498739271-27431-1-git-send-email-david.wu@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-reply-to: <35413895-08d3-c916-e5ec-d5c087260391-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: catalin.marinas-5wv7dgnIgG8@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/29/2017 10:38 AM, Shawn Lin wrote:
-> Hi Jaehoon,
+There are two features of rk3328 pwm module.
+ - PWM APB and function clocks are different.
+ - Add pwm atomic hardware update
 
-Applied to my dwmmc repository. Thanks!
+David Wu (5):
+  pwm: rockchip: Add APB and function both clocks support
+  pwm: rockchip: Remove the judge from return value of pwm_config
+  pwm: rockchip: Move the configuration of polarity from pwm_enable() to
+    pwm_config()
+  pwm: rockchip: Add atomic updated feature for rk3328
+  Arm64: dts: rockchip: Add pwm nodes for rk3328
 
-Best Regards,
-Jaehoon Chung
+ .../devicetree/bindings/pwm/pwm-rockchip.txt       |   9 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  45 +++++
+ drivers/pwm/pwm-rockchip.c                         | 184 ++++++++++++++++-----
+ 3 files changed, 197 insertions(+), 41 deletions(-)
 
-> 
-> On 2017/5/18 10:20, Jaehoon Chung wrote:
->> Hi Shawn,
->>
->> On 05/16/2017 03:28 PM, Shawn Lin wrote:
->>> Currently we unconditionally do tuning for each degree, which
->>> costs 900ms for each boot and resume.
->>>
->>> May someone argue that this is a question of accuracy VS time. But I
->>> would say it's a trick of how we need to do decision for our boards.
->>> If we don't care the time we spend at all, we could definitely do tuning
->>> for each degree. But when we need to improve the user experience, for
->>> instance, speed up resuming from S3, we should also have the right to
->>> do that. This patch add parsing "rockchip,desired-num-phases", for folks
->>> to specify the number of doing tuning. If not specified, 360 will be used
->>> as before.
->>>
->>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> Will pick this patch with [PATCH 1/2] after getting acked tags from DT guys.
->>
-> 
-> patch 1 was acked by Rob, so I assume these two are material for 4.13?
-> 
->> Best Regards,
->> Jaehoon Chung
->>
->>>
->>> ---
->>>
->>> Changes in v2:
->>> - rename property to rockchip,desired-num-phases
->>>
->>>   drivers/mmc/host/dw_mmc-rockchip.c | 48 ++++++++++++++++++++++++--------------
->>>   1 file changed, 30 insertions(+), 18 deletions(-)
->>>
->>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
->>> index 372fb6e..a3f1c2b 100644
->>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
->>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
->>> @@ -25,6 +25,7 @@ struct dw_mci_rockchip_priv_data {
->>>       struct clk        *drv_clk;
->>>       struct clk        *sample_clk;
->>>       int            default_sample_phase;
->>> +    int            num_phases;
->>>   };
->>>     static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->>> @@ -133,8 +134,8 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->>>       }
->>>   }
->>>   -#define NUM_PHASES            360
->>> -#define TUNING_ITERATION_TO_PHASE(i)    (DIV_ROUND_UP((i) * 360, NUM_PHASES))
->>> +#define TUNING_ITERATION_TO_PHASE(i, num_phases) \
->>> +        (DIV_ROUND_UP((i) * 360, num_phases))
->>>     static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>   {
->>> @@ -159,13 +160,15 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           return -EIO;
->>>       }
->>>   -    ranges = kmalloc_array(NUM_PHASES / 2 + 1, sizeof(*ranges), GFP_KERNEL);
->>> +    ranges = kmalloc_array(priv->num_phases / 2 + 1,
->>> +                   sizeof(*ranges), GFP_KERNEL);
->>>       if (!ranges)
->>>           return -ENOMEM;
->>>         /* Try each phase and extract good ranges */
->>> -    for (i = 0; i < NUM_PHASES; ) {
->>> -        clk_set_phase(priv->sample_clk, TUNING_ITERATION_TO_PHASE(i));
->>> +    for (i = 0; i < priv->num_phases; ) {
->>> +        clk_set_phase(priv->sample_clk,
->>> +                  TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
->>>             v = !mmc_send_tuning(mmc, opcode, NULL);
->>>   @@ -179,7 +182,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           if (v) {
->>>               ranges[range_count-1].end = i;
->>>               i++;
->>> -        } else if (i == NUM_PHASES - 1) {
->>> +        } else if (i == priv->num_phases - 1) {
->>>               /* No extra skipping rules if we're at the end */
->>>               i++;
->>>           } else {
->>> @@ -188,11 +191,11 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>                * one since testing bad phases is slow.  Skip
->>>                * 20 degrees.
->>>                */
->>> -            i += DIV_ROUND_UP(20 * NUM_PHASES, 360);
->>> +            i += DIV_ROUND_UP(20 * priv->num_phases, 360);
->>>                 /* Always test the last one */
->>> -            if (i >= NUM_PHASES)
->>> -                i = NUM_PHASES - 1;
->>> +            if (i >= priv->num_phases)
->>> +                i = priv->num_phases - 1;
->>>           }
->>>             prev_v = v;
->>> @@ -210,7 +213,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           range_count--;
->>>       }
->>>   -    if (ranges[0].start == 0 && ranges[0].end == NUM_PHASES - 1) {
->>> +    if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
->>>           clk_set_phase(priv->sample_clk, priv->default_sample_phase);
->>>           dev_info(host->dev, "All phases work, using default phase %d.",
->>>                priv->default_sample_phase);
->>> @@ -222,7 +225,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           int len = (ranges[i].end - ranges[i].start + 1);
->>>             if (len < 0)
->>> -            len += NUM_PHASES;
->>> +            len += priv->num_phases;
->>>             if (longest_range_len < len) {
->>>               longest_range_len = len;
->>> @@ -230,25 +233,30 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           }
->>>             dev_dbg(host->dev, "Good phase range %d-%d (%d len)\n",
->>> -            TUNING_ITERATION_TO_PHASE(ranges[i].start),
->>> -            TUNING_ITERATION_TO_PHASE(ranges[i].end),
->>> +            TUNING_ITERATION_TO_PHASE(ranges[i].start,
->>> +                          priv->num_phases),
->>> +            TUNING_ITERATION_TO_PHASE(ranges[i].end,
->>> +                          priv->num_phases),
->>>               len
->>>           );
->>>       }
->>>         dev_dbg(host->dev, "Best phase range %d-%d (%d len)\n",
->>> -        TUNING_ITERATION_TO_PHASE(ranges[longest_range].start),
->>> -        TUNING_ITERATION_TO_PHASE(ranges[longest_range].end),
->>> +        TUNING_ITERATION_TO_PHASE(ranges[longest_range].start,
->>> +                      priv->num_phases),
->>> +        TUNING_ITERATION_TO_PHASE(ranges[longest_range].end,
->>> +                      priv->num_phases),
->>>           longest_range_len
->>>       );
->>>         middle_phase = ranges[longest_range].start + longest_range_len / 2;
->>> -    middle_phase %= NUM_PHASES;
->>> +    middle_phase %= priv->num_phases;
->>>       dev_info(host->dev, "Successfully tuned phase to %d\n",
->>> -         TUNING_ITERATION_TO_PHASE(middle_phase));
->>> +         TUNING_ITERATION_TO_PHASE(middle_phase, priv->num_phases));
->>>         clk_set_phase(priv->sample_clk,
->>> -              TUNING_ITERATION_TO_PHASE(middle_phase));
->>> +              TUNING_ITERATION_TO_PHASE(middle_phase,
->>> +                        priv->num_phases));
->>>     free:
->>>       kfree(ranges);
->>> @@ -264,6 +272,10 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
->>>       if (!priv)
->>>           return -ENOMEM;
->>>   +    if (of_property_read_u32(np, "rockchip,desired-num-phases",
->>> +                    &priv->num_phases))
->>> +        priv->num_phases = 360;
->>> +
->>>       if (of_property_read_u32(np, "rockchip,default-sample-phase",
->>>                       &priv->default_sample_phase))
->>>           priv->default_sample_phase = 0;
->>>
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>
->>
->>
-> 
-> -- 
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
-> 
-> 
+-- 
+1.9.1
+
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
