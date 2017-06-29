@@ -1,40 +1,98 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 1/3] dt-bindings: PCI: rockchip: Add vpcie12v-supply for Rockchip PCIe controller
-Date: Thu, 29 Jun 2017 09:21:28 +0800
-Message-ID: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 2/3] PCI: rockchip: control optional 12v power supply
+Date: Thu, 29 Jun 2017 09:22:23 +0800
+Message-ID: <1498699343-65467-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-PCIe connector provide a optional 12V power supply for high
-power downstream components, so we add this as a optional
-one if we need to control it.
+This patch is trying to get vpcie12v from DT and control
+it if available.
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/pci/host/pcie-rockchip.c | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-index 1453a73..9b88959 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-@@ -47,6 +47,7 @@ Optional Property:
- 	using 24MHz OSC for RC's PHY.
- - ep-gpios: contain the entry for pre-reset gpio
- - num-lanes: number of lanes to use
-+- vpcie12v-supply: The phandle to the 12v regulator to use for PCIe.
- - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
- - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
- - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 199edd5..c545213 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -221,6 +221,7 @@ struct rockchip_pcie {
+ 	struct	clk *aclk_perf_pcie;
+ 	struct	clk *hclk_pcie;
+ 	struct	clk *clk_pcie_pm;
++	struct	regulator *vpcie12v; /* 12V power supply */
+ 	struct	regulator *vpcie3v3; /* 3.3V power supply */
+ 	struct	regulator *vpcie1v8; /* 1.8V power supply */
+ 	struct	regulator *vpcie0v9; /* 0.9V power supply */
+@@ -1013,6 +1014,13 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
++	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
++	if (IS_ERR(rockchip->vpcie12v)) {
++		if (PTR_ERR(rockchip->vpcie12v) == -EPROBE_DEFER)
++			return -EPROBE_DEFER;
++		dev_info(dev, "no vpcie12v regulator found\n");
++	}
++
+ 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+ 	if (IS_ERR(rockchip->vpcie3v3)) {
+ 		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
+@@ -1042,11 +1050,19 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
+ 	struct device *dev = rockchip->dev;
+ 	int err;
+ 
++	if (!IS_ERR(rockchip->vpcie12v)) {
++		err = regulator_enable(rockchip->vpcie12v);
++		if (err) {
++			dev_err(dev, "fail to enable vpcie12v regulator\n");
++			goto err_out;
++		}
++	}
++
+ 	if (!IS_ERR(rockchip->vpcie3v3)) {
+ 		err = regulator_enable(rockchip->vpcie3v3);
+ 		if (err) {
+ 			dev_err(dev, "fail to enable vpcie3v3 regulator\n");
+-			goto err_out;
++			goto err_disable_12v;
+ 		}
+ 	}
+ 
+@@ -1074,6 +1090,9 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
+ err_disable_3v3:
+ 	if (!IS_ERR(rockchip->vpcie3v3))
+ 		regulator_disable(rockchip->vpcie3v3);
++err_disable_12v:
++	if (!IS_ERR(rockchip->vpcie12v))
++		regulator_disable(rockchip->vpcie12v);
+ err_out:
+ 	return err;
+ }
+@@ -1497,6 +1516,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ err_free_res:
+ 	pci_free_resource_list(&res);
+ err_vpcie:
++	if (!IS_ERR(rockchip->vpcie12v))
++		regulator_disable(rockchip->vpcie12v);
+ 	if (!IS_ERR(rockchip->vpcie3v3))
+ 		regulator_disable(rockchip->vpcie3v3);
+ 	if (!IS_ERR(rockchip->vpcie1v8))
+@@ -1533,6 +1554,8 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+ 	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+ 	clk_disable_unprepare(rockchip->aclk_pcie);
+ 
++	if (!IS_ERR(rockchip->vpcie12v))
++		regulator_disable(rockchip->vpcie12v);
+ 	if (!IS_ERR(rockchip->vpcie3v3))
+ 		regulator_disable(rockchip->vpcie3v3);
+ 	if (!IS_ERR(rockchip->vpcie1v8))
 -- 
 1.9.1
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
