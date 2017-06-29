@@ -1,200 +1,79 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH v2 2/2] mmc: dw_mmc-rockchip: parse
- rockchip,desired-num-phases from DT
-Date: Thu, 29 Jun 2017 18:47:29 +0900
-Message-ID: <d7698d78-1a39-2b9f-3013-26c7b55ae5dc@samsung.com>
-References: <1494916134-68043-1-git-send-email-shawn.lin@rock-chips.com>
-        <CGME20170516063039epcas1p49836d3f2fb67c402d6ffd30f7eebef96@epcas1p4.samsung.com>
-        <1494916134-68043-2-git-send-email-shawn.lin@rock-chips.com>
-        <87542133-3d88-ea4f-03b7-884274964e48@samsung.com>
-        <35413895-08d3-c916-e5ec-d5c087260391@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v6 08/12] gpio: Add GPIO driver for the RK805 PMIC
+Date: Thu, 29 Jun 2017 12:29:10 +0200
+Message-ID: <1617153.S9fhFArdpW@diego>
+References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com> <2451251.ri2bNrhWeM@phil> <e74942d4-2e64-045b-7cb4-ab79af0bc850@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <35413895-08d3-c916-e5ec-d5c087260391@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: devicetree@vger.kernel.org, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <e74942d4-2e64-045b-7cb4-ab79af0bc850@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Jianhong Chen <chenjh@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Alexandre Courbot <gnurou@gmail.com>, zhangqing@rock-chips.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, tony.xie@rock-chips.com, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Linux Input <linux-input@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+Hi,
 
-On 06/29/2017 10:38 AM, Shawn Lin wrote:
-> Hi Jaehoon,
+Am Mittwoch, 14. Juni 2017, 20:11:06 CEST schrieb Jianhong Chen:
+> 在 2017/6/9 20:17, Heiko Stuebner 写道:
+> > Am Freitag, 9. Juni 2017, 13:37:26 CEST schrieb Linus Walleij:
+> >> Heiko, can you please look at this patch.
+> >> 
+> >> On Thu, Jun 8, 2017 at 9:30 AM, Jianhong Chen <chenjh@rock-chips.com> 
+wrote:
+> >>> From: chenjh <chenjh@rock-chips.com>
+> >> 
+> >> Full name please.
+> > 
+> > git config --global user.name "John Doe"
+> > 
+> > might do the and make this permanent for all your commits :-)
+> > 
+> >>> RK805 has two configurable GPIOs that can be used for several
+> >>> purposes. These are output only.
+> >>> 
+> >>> This driver is generic for other Rockchip PMICs to be added.
+> >>> 
+> >>> Signed-off-by: chenjh <chenjh@rock-chips.com>
+> >> 
+> >> Dito.
+> >> 
+> >> Your commit message says they are output-only, yet you implement
+> >> .direction_input(). So what is is going to be?
+> > 
+> > So far, I've only seen the rk808 and rk818. Both do not have any
+> > configurable pins.
+> > 
+> > The rk805 which is a sort of variant of the above, does have the two
+> > pins defined below, but in the manual I could also only find them as
+> > output-only and having no other function than being output-pins.
+> > 
+> > So I don't really know if all the input- or "gpio-mode"- handling is only
+> > an oversight (copy'n'paste) or if there are yet other rk808 variants
+> > around
+> > that can actually be configured as inputs or even non-gpio modes?
+> > 
+> > I hope Jianhong will be able to answer that.
+> > 
+> > 
+> > Heiko
 > 
-> On 2017/5/18 10:20, Jaehoon Chung wrote:
->> Hi Shawn,
->>
->> On 05/16/2017 03:28 PM, Shawn Lin wrote:
->>> Currently we unconditionally do tuning for each degree, which
->>> costs 900ms for each boot and resume.
->>>
->>> May someone argue that this is a question of accuracy VS time. But I
->>> would say it's a trick of how we need to do decision for our boards.
->>> If we don't care the time we spend at all, we could definitely do tuning
->>> for each degree. But when we need to improve the user experience, for
->>> instance, speed up resuming from S3, we should also have the right to
->>> do that. This patch add parsing "rockchip,desired-num-phases", for folks
->>> to specify the number of doing tuning. If not specified, 360 will be used
->>> as before.
->>>
->>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->>
->> Will pick this patch with [PATCH 1/2] after getting acked tags from DT guys.
->>
-> 
-> patch 1 was acked by Rob, so I assume these two are material for 4.13?
+> This driver is not only for rk805, but also intend for rk816 and furtrue
+> PMICs.
+> The rk816 has one multi function pin(TS/GPIO), when setting as gpio, it
+> can be configured as output or input.
+> Here is simple description from manual: "Thermistor input. Connect a
+> thermistor from this pin to ground. The thermistor is usually inside the
+> battery pack. (multi-function for GPIO) ".
 
-Sorry for late..Will pick and PR..Thanks!
+As Linus suggested, this sounds like you want a pinctrl driver that 
+also handles the gpios.
 
-Best Regards,
-Jaehoon Chung
+Ideally you might also directly provide support for this rk816 in the
+same patch series, so reviewers can see the full extend of what is
+supported.
 
-> 
->> Best Regards,
->> Jaehoon Chung
->>
->>>
->>> ---
->>>
->>> Changes in v2:
->>> - rename property to rockchip,desired-num-phases
->>>
->>>   drivers/mmc/host/dw_mmc-rockchip.c | 48 ++++++++++++++++++++++++--------------
->>>   1 file changed, 30 insertions(+), 18 deletions(-)
->>>
->>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
->>> index 372fb6e..a3f1c2b 100644
->>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
->>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
->>> @@ -25,6 +25,7 @@ struct dw_mci_rockchip_priv_data {
->>>       struct clk        *drv_clk;
->>>       struct clk        *sample_clk;
->>>       int            default_sample_phase;
->>> +    int            num_phases;
->>>   };
->>>     static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->>> @@ -133,8 +134,8 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->>>       }
->>>   }
->>>   -#define NUM_PHASES            360
->>> -#define TUNING_ITERATION_TO_PHASE(i)    (DIV_ROUND_UP((i) * 360, NUM_PHASES))
->>> +#define TUNING_ITERATION_TO_PHASE(i, num_phases) \
->>> +        (DIV_ROUND_UP((i) * 360, num_phases))
->>>     static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>   {
->>> @@ -159,13 +160,15 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           return -EIO;
->>>       }
->>>   -    ranges = kmalloc_array(NUM_PHASES / 2 + 1, sizeof(*ranges), GFP_KERNEL);
->>> +    ranges = kmalloc_array(priv->num_phases / 2 + 1,
->>> +                   sizeof(*ranges), GFP_KERNEL);
->>>       if (!ranges)
->>>           return -ENOMEM;
->>>         /* Try each phase and extract good ranges */
->>> -    for (i = 0; i < NUM_PHASES; ) {
->>> -        clk_set_phase(priv->sample_clk, TUNING_ITERATION_TO_PHASE(i));
->>> +    for (i = 0; i < priv->num_phases; ) {
->>> +        clk_set_phase(priv->sample_clk,
->>> +                  TUNING_ITERATION_TO_PHASE(i, priv->num_phases));
->>>             v = !mmc_send_tuning(mmc, opcode, NULL);
->>>   @@ -179,7 +182,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           if (v) {
->>>               ranges[range_count-1].end = i;
->>>               i++;
->>> -        } else if (i == NUM_PHASES - 1) {
->>> +        } else if (i == priv->num_phases - 1) {
->>>               /* No extra skipping rules if we're at the end */
->>>               i++;
->>>           } else {
->>> @@ -188,11 +191,11 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>                * one since testing bad phases is slow.  Skip
->>>                * 20 degrees.
->>>                */
->>> -            i += DIV_ROUND_UP(20 * NUM_PHASES, 360);
->>> +            i += DIV_ROUND_UP(20 * priv->num_phases, 360);
->>>                 /* Always test the last one */
->>> -            if (i >= NUM_PHASES)
->>> -                i = NUM_PHASES - 1;
->>> +            if (i >= priv->num_phases)
->>> +                i = priv->num_phases - 1;
->>>           }
->>>             prev_v = v;
->>> @@ -210,7 +213,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           range_count--;
->>>       }
->>>   -    if (ranges[0].start == 0 && ranges[0].end == NUM_PHASES - 1) {
->>> +    if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
->>>           clk_set_phase(priv->sample_clk, priv->default_sample_phase);
->>>           dev_info(host->dev, "All phases work, using default phase %d.",
->>>                priv->default_sample_phase);
->>> @@ -222,7 +225,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           int len = (ranges[i].end - ranges[i].start + 1);
->>>             if (len < 0)
->>> -            len += NUM_PHASES;
->>> +            len += priv->num_phases;
->>>             if (longest_range_len < len) {
->>>               longest_range_len = len;
->>> @@ -230,25 +233,30 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
->>>           }
->>>             dev_dbg(host->dev, "Good phase range %d-%d (%d len)\n",
->>> -            TUNING_ITERATION_TO_PHASE(ranges[i].start),
->>> -            TUNING_ITERATION_TO_PHASE(ranges[i].end),
->>> +            TUNING_ITERATION_TO_PHASE(ranges[i].start,
->>> +                          priv->num_phases),
->>> +            TUNING_ITERATION_TO_PHASE(ranges[i].end,
->>> +                          priv->num_phases),
->>>               len
->>>           );
->>>       }
->>>         dev_dbg(host->dev, "Best phase range %d-%d (%d len)\n",
->>> -        TUNING_ITERATION_TO_PHASE(ranges[longest_range].start),
->>> -        TUNING_ITERATION_TO_PHASE(ranges[longest_range].end),
->>> +        TUNING_ITERATION_TO_PHASE(ranges[longest_range].start,
->>> +                      priv->num_phases),
->>> +        TUNING_ITERATION_TO_PHASE(ranges[longest_range].end,
->>> +                      priv->num_phases),
->>>           longest_range_len
->>>       );
->>>         middle_phase = ranges[longest_range].start + longest_range_len / 2;
->>> -    middle_phase %= NUM_PHASES;
->>> +    middle_phase %= priv->num_phases;
->>>       dev_info(host->dev, "Successfully tuned phase to %d\n",
->>> -         TUNING_ITERATION_TO_PHASE(middle_phase));
->>> +         TUNING_ITERATION_TO_PHASE(middle_phase, priv->num_phases));
->>>         clk_set_phase(priv->sample_clk,
->>> -              TUNING_ITERATION_TO_PHASE(middle_phase));
->>> +              TUNING_ITERATION_TO_PHASE(middle_phase,
->>> +                        priv->num_phases));
->>>     free:
->>>       kfree(ranges);
->>> @@ -264,6 +272,10 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
->>>       if (!priv)
->>>           return -ENOMEM;
->>>   +    if (of_property_read_u32(np, "rockchip,desired-num-phases",
->>> +                    &priv->num_phases))
->>> +        priv->num_phases = 360;
->>> +
->>>       if (of_property_read_u32(np, "rockchip,default-sample-phase",
->>>                       &priv->default_sample_phase))
->>>           priv->default_sample_phase = 0;
->>>
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>
->>
->>
-> 
-> -- 
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
-> 
-> 
+
+Heiko
 
