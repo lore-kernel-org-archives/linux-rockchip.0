@@ -1,51 +1,33 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [patch 1/5] pinctrl: samsung: Remove bogus irq_[un]mask from
- resource management
-Date: Fri, 30 Jun 2017 16:58:13 +0200
-Message-ID: <20170630145813.r4h346yi6iricslm@kozik-lap>
-References: <20170629213334.375848050@linutronix.de>
- <20170629214343.882576048@linutronix.de>
- <CACRpkdazKNDdcoJxvJ9injibZmOTsdmN-Y0sTS5eyanwz=iFEA@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/2] Add usb2 nodes on RK3328 SoCs and enable usb2 on RK3328 evb
+Date: Fri, 30 Jun 2017 22:29:19 +0200
+Message-ID: <5556458.KTz3hiI43L@phil>
+References: <1497609255-15724-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CACRpkdazKNDdcoJxvJ9injibZmOTsdmN-Y0sTS5eyanwz=iFEA@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julia Cartwright <julia@ni.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, John Keeping <john@metanate.com>, Doug Anderson <dianders@chromium.org>, Tomasz Figa <tomasz.figa@gmail.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Kukjin Kim <kgene@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1497609255-15724-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 30, 2017 at 03:53:18PM +0200, Linus Walleij wrote:
-> On Thu, Jun 29, 2017 at 11:33 PM, Thomas Gleixner <tglx@linutronix.de> wrote:
+Am Freitag, 16. Juni 2017, 18:34:13 CEST schrieb William Wu:
+> This series adds support for usb2 on RK3328 SoCs.
+> Tested on RK3328 evaluation board.
 > 
-> > The irq chip callbacks irq_request/release_resources() have absolutely no
-> > business with masking and unmasking the irq.
-> >
-> > The core code unmasks the interrupt after complete setup and masks it
-> > before invoking irq_release_resources().
-> >
-> > The unmask is actually harmful as it happens before the interrupt is
-> > completely initialized in __setup_irq().
-> >
-> > Remove it.
-> >
-> > Fixes: f6a8249f9e55 ("pinctrl: exynos: Lock GPIOs as interrupts when used as EINTs")
-> > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> > Cc: Tomasz Figa <tomasz.figa@gmail.com>
-> > Cc: Krzysztof Kozlowski <krzk@kernel.org>
-> > Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>
-> > Cc: Linus Walleij <linus.walleij@linaro.org>
-> > Cc: Kukjin Kim <kgene@kernel.org>
-> > Cc: linux-arm-kernel@lists.infradead.org
-> > Cc: linux-samsung-soc@vger.kernel.org
-> > Cc: linux-gpio@vger.kernel.org
-> 
-> Patch applied directly since it has no deps and fixes queued stuff for v4.13.
-> I guess Krysztof will make sure it doesn't break anything.
+> William Wu (2):
+>   arm64: dts: rockchip: add usb2 nodes for RK3328 SoCs
+>   arm64: dts: rockchip: enable usb2 for RK3328 evaluation board
 
-Everything seems to work fine with the patchset.
+applied for 4.14 with the node references in patch2 slightly restructured.
+(u2phy subnodes separate via their phandle)
 
-Best regards,
-Krzysztof
 
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
