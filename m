@@ -1,33 +1,43 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/2] Add usb2 nodes on RK3328 SoCs and enable usb2 on RK3328 evb
-Date: Fri, 30 Jun 2017 22:29:19 +0200
-Message-ID: <5556458.KTz3hiI43L@phil>
-References: <1497609255-15724-1-git-send-email-william.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: arm64: dts: rockchip: add SdioAudio pd control for rk3399
+Date: Fri, 30 Jun 2017 22:41:28 +0200
+Message-ID: <4239199.7DEpkIs6Fd@phil>
+References: <1498802513-535-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1497609255-15724-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1498802513-535-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dianders@chromium.org, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 16. Juni 2017, 18:34:13 CEST schrieb William Wu:
-> This series adds support for usb2 on RK3328 SoCs.
-> Tested on RK3328 evaluation board.
+Hi Caesar,
+
+Am Freitag, 30. Juni 2017, 14:01:53 CEST schrieb Caesar Wang:
+
+subject was missing the "[PATCH]" prefix. While not necessary for applying,
+having it makes it easier to find stuff in an inbox :-) .
+
+
+> The SdioAudio power domain includes the i2s/spdif/spi5/sdio.
 > 
-> William Wu (2):
->   arm64: dts: rockchip: add usb2 nodes for RK3328 SoCs
->   arm64: dts: rockchip: enable usb2 for RK3328 evaluation board
+> So this patch adds the pd control for rk3399 i2s/spdif/spi5/sdio, in order
+> to save more power consumption.
+> 
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
+> 
+> Changes note:
+> - As the Jeffy fixes the spi'cs issue recently as follows:
+> aa09938 spi: rockchip: Disable Runtime PM when chip select is asserted
+> c863795 spi: rockchip: Set GPIO_SS flag to enable Slave Select with GPIO CS
+> c351587 spi: rockchip: fix error handling when probe
 
-applied for 4.14 with the node references in patch2 slightly restructured.
-(u2phy subnodes separate via their phandle)
+as these are in Mark's tree for 4.13, I've now applied your patch for 4.14
+but moved the power-domains property for sdio and spi5 to a better sort
+position.
 
 
-Thanks
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
