@@ -1,56 +1,63 @@
-From: Tomasz Figa <tomasz.figa@gmail.com>
-Subject: Re: [patch 1/5] pinctrl: samsung: Remove bogus irq_[un]mask from
- resource management
-Date: Fri, 30 Jun 2017 15:20:41 +0900
-Message-ID: <CA+Ln22Esc-1P6bcMeXuTVztiyFMXsOV1O0V=tZOj4YEwLZJSuQ@mail.gmail.com>
-References: <20170629213334.375848050@linutronix.de> <20170629214343.882576048@linutronix.de>
- <CA+Ln22GyEDZidAWkMonjLYF0etxNjZ0btwYkQ5raAPsnk1bJFg@mail.gmail.com> <CAJKOXPd+ir1+036jmN+Pd6WWvTcTES2xV9LLsh-W=DYvc2LoEQ@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2 1/4] dt-bindings: pwm-backlight: add pwm-delay-us property
+Date: Fri, 30 Jun 2017 13:21:06 +0200
+Message-ID: <20170630112109.13785-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CAJKOXPd+ir1+036jmN+Pd6WWvTcTES2xV9LLsh-W=DYvc2LoEQ@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, LKML <linux-kernel@vger.kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, John Keeping <john@metanate.com>, Doug Anderson <dianders@chromium.org>, Kukjin Kim <kgene@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-2017-06-30 15:02 GMT+09:00 Krzysztof Kozlowski <krzk@kernel.org>:
-> On Fri, Jun 30, 2017 at 4:47 AM, Tomasz Figa <tomasz.figa@gmail.com> wrote:
->> Hi Thomas,
->>
->> 2017-06-30 6:33 GMT+09:00 Thomas Gleixner <tglx@linutronix.de>:
->>> The irq chip callbacks irq_request/release_resources() have absolutely no
->>> business with masking and unmasking the irq.
->>>
->>> The core code unmasks the interrupt after complete setup and masks it
->>> before invoking irq_release_resources().
->>>
->>> The unmask is actually harmful as it happens before the interrupt is
->>> completely initialized in __setup_irq().
->>>
->>> Remove it.
->>
->> Good catch, thanks! (Note that the original patch of mine [1] did that
->> in .irq_startup()/.irq_shutdown(), which was for some reason changed
->> later, but I don't remember the exact story.)
->>
->> [1] https://patchwork.kernel.org/patch/4466431/
->>
->> Acked-by: Tomasz Figa <tomasz.figa@gmail.com>
->>
->> Sylwester, Krzysztof, would you be able to do some basic test?
->
-> I suppose this was not tested so yes - I have platforms do this. I
-> understand that checking any non-shared GPIO interrupt should be
-> sufficient to test, right?
+From: huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-I think any interrupt from the Exynos pin controller should work, even
-shared one. I'd expect irq_request_resources() to be invoked for
-shared interrupts as well, otherwise we have a problem... (I quickly
-looked through kernel/irq/manage.c and it seems to be invoked for the
-first __setup_irq() call even for shared interrupts.)
+Add a pwm-delay-us property to specify the delay between setting an
+initial (non-zero) PWM value and enabling the backlight, and also the
+delay between disabling the backlight and setting PWM value to 0.
 
-Thanks.
+Signed-off-by: huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+Changes since v1:
+ - As suggested by Daniel Thompson
+   - Do not assume power-on delay and power-off delay will be the same
 
-Best regards,
-Tomasz
+v1: https://lkml.org/lkml/2017/6/28/219
+
+ Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
+index 764db86..49b037e 100644
+--- a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
++++ b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
+@@ -17,6 +17,11 @@ Optional properties:
+                "pwms" property (see PWM binding[0])
+   - enable-gpios: contains a single GPIO specifier for the GPIO which enables
+                   and disables the backlight (see GPIO binding[1])
++  - pwm-delay-us: delay between setting an initial (non-zero) PWM value and
++                  enabling the backlight, and also the delay between disabling
++                  the backlight and setting PWM value to 0.
++                  The 1st cell is the pre-delay in micro seconds.
++                  The 2nd cell is the post-delay in micro seconds.
+ 
+ [0]: Documentation/devicetree/bindings/pwm/pwm.txt
+ [1]: Documentation/devicetree/bindings/gpio/gpio.txt
+@@ -32,4 +37,5 @@ Example:
+ 
+ 		power-supply = <&vdd_bl_reg>;
+ 		enable-gpios = <&gpio 58 0>;
++		pwm-delay-us = <10000 10000>;
+ 	};
+-- 
+2.9.3
