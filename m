@@ -1,79 +1,100 @@
-From: Tomasz Figa <tomasz.figa@gmail.com>
-Subject: Re: [patch 1/5] pinctrl: samsung: Remove bogus irq_[un]mask from
- resource management
-Date: Fri, 30 Jun 2017 11:47:35 +0900
-Message-ID: <CA+Ln22GyEDZidAWkMonjLYF0etxNjZ0btwYkQ5raAPsnk1bJFg@mail.gmail.com>
-References: <20170629213334.375848050@linutronix.de> <20170629214343.882576048@linutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20170629214343.882576048@linutronix.de>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julia Cartwright <julia@ni.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, John Keeping <john@metanate.com>, Doug Anderson <dianders@chromium.org>, Kukjin Kim <kgene@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: arm64: dts: rockchip: add SdioAudio pd control for rk3399
+Date: Fri, 30 Jun 2017 14:01:53 +0800
+Message-ID: <1498802513-535-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thomas,
+The SdioAudio power domain includes the i2s/spdif/spi5/sdio.
 
-2017-06-30 6:33 GMT+09:00 Thomas Gleixner <tglx@linutronix.de>:
-> The irq chip callbacks irq_request/release_resources() have absolutely no
-> business with masking and unmasking the irq.
->
-> The core code unmasks the interrupt after complete setup and masks it
-> before invoking irq_release_resources().
->
-> The unmask is actually harmful as it happens before the interrupt is
-> completely initialized in __setup_irq().
->
-> Remove it.
+So this patch adds the pd control for rk3399 i2s/spdif/spi5/sdio, in order
+to save more power consumption.
 
-Good catch, thanks! (Note that the original patch of mine [1] did that
-in .irq_startup()/.irq_shutdown(), which was for some reason changed
-later, but I don't remember the exact story.)
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-[1] https://patchwork.kernel.org/patch/4466431/
+Changes note:
+- As the Jeffy fixes the spi'cs issue recently as follows:
+aa09938 spi: rockchip: Disable Runtime PM when chip select is asserted
+c863795 spi: rockchip: Set GPIO_SS flag to enable Slave Select with GPIO CS
+c351587 spi: rockchip: fix error handling when probe
+- Posted this CL to support the SdioAudio power domain as commnets on
+  https://chromium-review.googlesource.com/#/c/378562/
 
-Acked-by: Tomasz Figa <tomasz.figa@gmail.com>
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Sylwester, Krzysztof, would you be able to do some basic test?
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 33e17d7..a1dd0da 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -289,6 +289,7 @@
+ 		fifo-depth = <0x100>;
+ 		resets = <&cru SRST_SDIO0>;
+ 		reset-names = "reset";
++		power-domains = <&power RK3399_PD_SDIOAUDIO>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -678,6 +679,7 @@
+ 		pinctrl-0 = <&spi5_clk &spi5_tx &spi5_rx &spi5_cs0>;
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
++		power-domains = <&power RK3399_PD_SDIOAUDIO>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -952,6 +954,11 @@
+ 					 <&cru SCLK_SDMMC>;
+ 				pm_qos = <&qos_sd>;
+ 			};
++			pd_sdioaudio@RK3399_PD_SDIOAUDIO {
++				reg = <RK3399_PD_SDIOAUDIO>;
++				clocks = <&cru HCLK_SDIO>;
++				pm_qos = <&qos_sdioaudio>;
++			};
+ 			pd_vio@RK3399_PD_VIO {
+ 				reg = <RK3399_PD_VIO>;
+ 				#address-cells = <1>;
+@@ -1372,6 +1379,7 @@
+ 		clocks = <&cru SCLK_SPDIF_8CH>, <&cru HCLK_SPDIF>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&spdif_bus>;
++		power-domains = <&power RK3399_PD_SDIOAUDIO>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -1386,6 +1394,7 @@
+ 		clocks = <&cru SCLK_I2S0_8CH>, <&cru HCLK_I2S0_8CH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&i2s0_8ch_bus>;
++		power-domains = <&power RK3399_PD_SDIOAUDIO>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -1399,6 +1408,7 @@
+ 		clocks = <&cru SCLK_I2S1_8CH>, <&cru HCLK_I2S1_8CH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&i2s1_2ch_bus>;
++		power-domains = <&power RK3399_PD_SDIOAUDIO>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -1410,6 +1420,7 @@
+ 		dma-names = "tx", "rx";
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		clocks = <&cru SCLK_I2S2_8CH>, <&cru HCLK_I2S2_8CH>;
++		power-domains = <&power RK3399_PD_SDIOAUDIO>;
+ 		status = "disabled";
+ 	};
+ 
+-- 
+2.7.4
 
-Best regards,
-Tomasz
-
->
-> Fixes: f6a8249f9e55 ("pinctrl: exynos: Lock GPIOs as interrupts when used as EINTs")
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Tomasz Figa <tomasz.figa@gmail.com>
-> Cc: Krzysztof Kozlowski <krzk@kernel.org>
-> Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Kukjin Kim <kgene@kernel.org>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-samsung-soc@vger.kernel.org
-> Cc: linux-gpio@vger.kernel.org
-> ---
->  drivers/pinctrl/samsung/pinctrl-exynos.c |    4 ----
->  1 file changed, 4 deletions(-)
->
-> --- a/drivers/pinctrl/samsung/pinctrl-exynos.c
-> +++ b/drivers/pinctrl/samsung/pinctrl-exynos.c
-> @@ -205,8 +205,6 @@ static int exynos_irq_request_resources(
->
->         spin_unlock_irqrestore(&bank->slock, flags);
->
-> -       exynos_irq_unmask(irqd);
-> -
->         return 0;
->  }
->
-> @@ -226,8 +224,6 @@ static void exynos_irq_release_resources
->         shift = irqd->hwirq * bank_type->fld_width[PINCFG_TYPE_FUNC];
->         mask = (1 << bank_type->fld_width[PINCFG_TYPE_FUNC]) - 1;
->
-> -       exynos_irq_mask(irqd);
-> -
->         spin_lock_irqsave(&bank->slock, flags);
->
->         con = readl(bank->eint_base + reg_con);
->
->
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
