@@ -1,52 +1,33 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: add ARM Mali GPU node for rk3399
-Date: Sat, 01 Jul 2017 18:04:26 +0200
-Message-ID: <6356522.W9n5LLYRuo@phil>
-References: <1498913770-16519-1-git-send-email-jacob-chen@iotwrt.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Subject: Re: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for rk3228
+Date: Sat, 1 Jul 2017 18:17:27 +0200
+Message-ID: <CAJZ5v0j5siD_1GSBqmv0c78gb99qixKU15Qqu0ufWY5CuzmTjg@mail.gmail.com>
+References: <1497000974-12696-1-git-send-email-david.wu@rock-chips.com>
+ <8439045.hRh8SXquWF@phil> <1525287.LZSCgZlMQ2@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1498913770-16519-1-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1525287.LZSCgZlMQ2@phil>
+Sender: linux-pm-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: David Wu <david.wu@rock-chips.com>, Kevin Hilman <khilman@baylibre.com>, Rafael Wysocki <rafael.j.wysocki@intel.com>, Nishanth Menon <nm@ti.com>, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, Linux PM <linux-pm@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+On Sat, Jul 1, 2017 at 12:02 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Freitag, 9. Juni 2017, 12:45:46 CEST schrieb Heiko Stuebner:
+>> Am Freitag, 9. Juni 2017, 17:36:14 CEST schrieb David Wu:
+>> > This adds the necessary data for handling io voltage domains on the rk3228.
+>> >
+>> > Signed-off-by: David Wu <david.wu@rock-chips.com>
+>>
+>> matches the manual, so
+>> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+>
+> Kevin, Rafael,
+>
+> any thoughts on this?
 
-Am Samstag, 1. Juli 2017, 20:56:08 CEST schrieb Jacob Chen:
-> Add Mali GPU device tree node for the rk3399 SoC.
-> Tested with rockchip-forwardports repo.
-> 
-> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 1cbd7a2..e795135 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1443,6 +1443,18 @@
->  		status = "disabled";
->  	};
->  
-> +	gpu: mali@ff9a0000 {
-> +		compatible = "rockchip,rk3399-mali", "arm,mali-t860", "arm,mali-midgard";
+I've queued it up.
 
-this is missing a separate patch adding rockchip,rk3399-mali to 
-	Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
-
-Also arm,mali-midgard is not part of the binding. I just saw that it slipped
-into the example in the binding file and also the rk3288.dtsi - which should
-be fixed. But the driver should bind against the arm,mali-t860 alone, not
-the mali-midgard.
-
-
-Heiko
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks,
+Rafael
