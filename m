@@ -1,58 +1,42 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 4/4] arm64: dts: add RK3399-Q7 (Puma) SoM
-Date: Sat, 01 Jul 2017 00:13:25 +0200
-Message-ID: <1912092.hfJnF4sPpq@phil>
-References: <20170626191854.58253-1-klaus.goger@theobroma-systems.com> <20170626191854.58253-5-klaus.goger@theobroma-systems.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 1/5] ARM: dts: rockchip: enable ARM Mali GPU on rk3288-tinker
+Date: Sat,  1 Jul 2017 10:02:43 +0800
+Message-ID: <1498874567-11219-2-git-send-email-jacob-chen@iotwrt.com>
+References: <1498874567-11219-1-git-send-email-jacob-chen@iotwrt.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170626191854.58253-5-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+In-Reply-To: <1498874567-11219-1-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Klaus,
+Add reference to the Mali GPU device tree node on rk3288-tinker.
+Tested on Tinker board.
 
-Am Montag, 26. Juni 2017, 21:18:54 CEST schrieb Klaus Goger:
-> The RK3399-Q7 SoM is a Qseven-compatible (70mm x 70mm, MXM-230
-> connector) system-on-module from Theobroma Systems, featuring the
-> Rockchip RK3399.
-> 
-> It provides the following feature set:
->  * up to 4GB DDR3
->  * on-module SPI-NOR flash
->  * on-module eMMC (with 8-bit 1.8V interface)
->  * SD card (on a baseboad) via edge connector
->  * Gigabit Ethernet with on-module Micrel KSZ9031 GbE PHY
->  * HDMI/eDP/2x MIPI-DSI
->  * 2x MIPI-CSI
->  * USB
->    - 1x USB 3.0 dual-role (direct connection)
->    - 2x USB 3.0 host + 1x USB 2.0 (on-module USB 3.0 hub)
->  * on-module STM32 Cortex-M0 companion controller, implementing:
->    - low-power RTC functionality (ISL1208 emulation)
->    - fan controller (AMC6821 emulation)
->    - USB<->CAN bridge controller
-> 
-> Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> 
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/Makefile        |   1 +
->  arch/arm64/boot/dts/rockchip/rk3399-puma.dts | 650 +++++++++++++++++++++++++++
+Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-tinker.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-One thing I forgot to address was the SOM'nes of the puma board. People
-might want to use that with different base-boards so you might want to
-split this up into a rk3399-puma-som.dtsi and for example rk3399-puma-haikou.dts
-for the Puma + Haikou Q7 combination.
+diff --git a/arch/arm/boot/dts/rk3288-tinker.dts b/arch/arm/boot/dts/rk3288-tinker.dts
+index f601c78..ba0d0bf 100644
+--- a/arch/arm/boot/dts/rk3288-tinker.dts
++++ b/arch/arm/boot/dts/rk3288-tinker.dts
+@@ -156,6 +156,11 @@
+ 	status = "ok";
+ };
+ 
++&gpu {
++	mali-supply = <&vdd_gpu>;
++	status = "okay";
++};
++
+ &hdmi {
+ 	ddc-i2c-bus = <&i2c5>;
+ 	status = "okay";
+-- 
+2.7.4
 
-Examples for such a split may be the rk3288-phycore, rk3288-rock2 and
-rk3288-firefly-reload.
-
-
-Heiko
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
