@@ -1,28 +1,59 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH v2 6/7] ARM: dts: rockchip: Add io-domain node for rk3228
-Date: Sat, 01 Jul 2017 21:31:53 +0200
-Message-ID: <22377346.N3tpHtavCv@phil>
-References: <1498127402-6705-1-git-send-email-frank.wang@rock-chips.com> <1498127543-6889-1-git-send-email-frank.wang@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 3/3] PCI: rockchip: use local variable dev consistently
+Date: Sun, 2 Jul 2017 16:30:30 -0500
+Message-ID: <20170702213030.GE18324@bhelgaas-glaptop.roam.corp.google.com>
+References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
+ <1498699369-65515-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1498127543-6889-1-git-send-email-frank.wang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: robh+dt@kernel.org, ulf.hansson@linaro.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org, charles.chen@rock-chips.com, kevan.lan@rock-chips.com, huangtao@rock-chips.com, finley.xiao@rock-chips.com, david.wu@rock-chips.com, shawn.lin@rock-chips.com, wmc@rock-chips.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1498699369-65515-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 22. Juni 2017, 18:32:23 CEST schrieb Frank Wang:
-> From: David Wu <david.wu@rock-chips.com>
+On Thu, Jun 29, 2017 at 09:22:49AM +0800, Shawn Lin wrote:
+> We have "struct device *dev" in rockchip_pcie_probe but
+> still fetch it from pdev and rockchip->dev somewhere.
+> This patch tries to improve and no functional change intended.
 > 
-> This patch adds io-domain support for rk3228 SoC.
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Applied to pci/host-rockchip for v4.13, thanks!
+
+I don't object to patches 1 & 2, but haven't applied them yet in case Rob
+has any comments.
+
+> ---
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-
-with Rafael having picked up the driver side today, applied for 4.14
-
-
-Thanks
-Heiko
+>  drivers/pci/host/pcie-rockchip.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index c545213..eb0a170 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1482,15 +1482,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	if (err)
+>  		goto err_free_res;
+>  
+> -	rockchip->msg_region = devm_ioremap(rockchip->dev,
+> -					    rockchip->msg_bus_addr, SZ_1M);
+> +	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
+>  	if (!rockchip->msg_region) {
+>  		err = -ENOMEM;
+>  		goto err_free_res;
+>  	}
+>  
+>  	list_splice_init(&res, &bridge->windows);
+> -	bridge->dev.parent = &pdev->dev;
+> +	bridge->dev.parent = dev;
+>  	bridge->sysdata = rockchip;
+>  	bridge->busnr = 0;
+>  	bridge->ops = &rockchip_pcie_ops;
+> -- 
+> 1.9.1
+> 
+> 
