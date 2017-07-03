@@ -1,59 +1,56 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 3/3] PCI: rockchip: use local variable dev consistently
-Date: Sun, 2 Jul 2017 16:30:30 -0500
-Message-ID: <20170702213030.GE18324@bhelgaas-glaptop.roam.corp.google.com>
-References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
- <1498699369-65515-1-git-send-email-shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: kill pcie_clkreqn and pcie_clkreqnb
+ for rk3399
+Date: Mon,  3 Jul 2017 10:08:20 +0800
+Message-ID: <1499047700-166028-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1499047700-166028-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1498699369-65515-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1499047700-166028-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 29, 2017 at 09:22:49AM +0800, Shawn Lin wrote:
-> We have "struct device *dev" in rockchip_pcie_probe but
-> still fetch it from pdev and rockchip->dev somewhere.
-> This patch tries to improve and no functional change intended.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Kill these two pinctrl reference totally from rk3399 as it
+never work indeed.
 
-Applied to pci/host-rockchip for v4.13, thanks!
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-I don't object to patches 1 & 2, but haven't applied them yet in case Rob
-has any comments.
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index c545213..eb0a170 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -1482,15 +1482,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	if (err)
->  		goto err_free_res;
->  
-> -	rockchip->msg_region = devm_ioremap(rockchip->dev,
-> -					    rockchip->msg_bus_addr, SZ_1M);
-> +	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
->  	if (!rockchip->msg_region) {
->  		err = -ENOMEM;
->  		goto err_free_res;
->  	}
->  
->  	list_splice_init(&res, &bridge->windows);
-> -	bridge->dev.parent = &pdev->dev;
-> +	bridge->dev.parent = dev;
->  	bridge->sysdata = rockchip;
->  	bridge->busnr = 0;
->  	bridge->ops = &rockchip_pcie_ops;
-> -- 
-> 1.9.1
-> 
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 69c56f7..fea97671 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -2090,16 +2090,6 @@
+ 		};
+ 
+ 		pcie {
+-			pcie_clkreqn: pci-clkreqn {
+-				rockchip,pins =
+-					<2 26 RK_FUNC_2 &pcfg_pull_none>;
+-			};
+-
+-			pcie_clkreqnb: pci-clkreqnb {
+-				rockchip,pins =
+-					<4 24 RK_FUNC_1 &pcfg_pull_none>;
+-			};
+-
+ 			pcie_clkreqn_cpm: pci-clkreqn-cpm {
+ 				rockchip,pins =
+ 					<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+-- 
+1.9.1
