@@ -1,139 +1,68 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: [PATCH 1/5] [media] rockchip/rga: v4l2 m2m support
-Date: Mon, 3 Jul 2017 10:17:13 +0800
-Message-ID: <8adf331a-d466-9d2e-010a-4701cc10da56@rock-chips.com>
-References: <1498488673-27900-1-git-send-email-jacob-chen@iotwrt.com>
- <1498492189.3710.4.camel@ndufresne.ca>
- <CAFLEztT4z81P8c5pce0zZtaJc+UDsAdXWGp8Rvmq5VL+TsWNNg@mail.gmail.com>
- <1498578582.25964.5.camel@ndufresne.ca>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH 2/5] pwm: rockchip: Remove the judge from return value
+ of rockchip_pwm_config()
+Date: Mon, 3 Jul 2017 20:31:57 +0200
+Message-ID: <20170703203157.7fa28975@bbrezillon>
+References: <1498739271-27431-1-git-send-email-david.wu@rock-chips.com>
+        <1498739271-27431-3-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1498578582.25964.5.camel@ndufresne.ca>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Jacob Chen <jacobchen110@gmail.com>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, mchehab@kernel.org, hans.verkuil@cisco.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1498739271-27431-3-git-send-email-david.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: thierry.reding@gmail.com, heiko@sntech.de, robh+dt@kernel.org, catalin.marinas@arm.com, briannorris@chromium.org, dianders@chromium.org, mark.rutland@arm.com, huangtao@rock-chips.com, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On Thu, 29 Jun 2017 20:27:48 +0800
+David Wu <david.wu@rock-chips.com> wrote:
 
-
-On 06/27/2017 11:49 PM, Nicolas Dufresne wrote:
-> Le mardi 27 juin 2017 à 23:11 +0800, Jacob Chen a écrit :
->> Hi Nicolas.
->>
->> 2017-06-26 23:49 GMT+08:00 Nicolas Dufresne <nicolas@ndufresne.ca>:
->>>
->>> Le lundi 26 juin 2017 à 22:51 +0800, Jacob Chen a écrit :
->>>> Rockchip RGA is a separate 2D raster graphic acceleration unit.
->>>> It
->>>> accelerates 2D graphics operations, such as point/line drawing,
->>>> image
->>>> scaling, rotation, BitBLT, alpha blending and image
->>>> blur/sharpness.
->>>>
->>>> The drvier is mostly based on s5p-g2d v4l2 m2m driver.
->>>> And supports various operations from the rendering pipeline.
->>>>   - copy
->>>>   - fast solid color fill
->>>>   - rotation
->>>>   - flip
->>>>   - alpha blending
->>>>
->>>> The code in rga-hw.c is used to configure regs accroding to
->>>> operations.
->>>>
->>>> The code in rga-buf.c is used to create private mmu table for
->>>> RGA.
->>>> The tables is stored in a list, and be removed when buffer is
->>>> cleanup.
->>>>
->>>> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
->>>> ---
->>>>   drivers/media/platform/Kconfig                |  11 +
->>>>   drivers/media/platform/Makefile               |   2 +
->>>>   drivers/media/platform/rockchip-rga/Makefile  |   3 +
->>>>   drivers/media/platform/rockchip-rga/rga-buf.c | 176 +++++
->>>>   drivers/media/platform/rockchip-rga/rga-hw.c  | 456 ++++++++++++
->>>>   drivers/media/platform/rockchip-rga/rga-hw.h  | 434 ++++++++++++
->>>>   drivers/media/platform/rockchip-rga/rga.c     | 979
->>>> ++++++++++++++++++++++++++
->>>>   drivers/media/platform/rockchip-rga/rga.h     | 133 ++++
->>>>   8 files changed, 2194 insertions(+)
->>>>   create mode 100644 drivers/media/platform/rockchip-rga/Makefile
->>>>   create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
->>>>   create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
->>>>   create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
->>>>   create mode 100644 drivers/media/platform/rockchip-rga/rga.c
->>>>   create mode 100644 drivers/media/platform/rockchip-rga/rga.h
->>>>
->>>
->>> Could be nice to generalize. We could setup a control and fill the
->>> values base on porter duff operations, then drivers can implement a
->>> subset. Right now, there is no generic way for userspace to know if
->>> a
->>> driver is just doing copies with some transformations, or if it can
->>> actually do alpha blending hence used for composting streams. Note
->>> that
->>> I haven't looked at all possibilities, Freescale IMX.6 seems to
->>> have a
->>> similar driver, which has been wrapped in GStreamer with this
->>> proposed
->>> elements:
->>>
->>> https://bugzilla.gnome.org/show_bug.cgi?id=772766
->>>
->>
->> Yeah, i also want it use a generic api.
->> "porter duff operations" looks good, i will look at it.
->>
->>>> +#define V4L2_CID_RGA_ALHPA_REG0 (V4L2_CID_USER_BASE | 0x1002)
->>>> +#define V4L2_CID_RGA_ALHPA_REG1 (V4L2_CID_USER_BASE | 0x1003)
->>>
->>> It's not obvious why there is two CID, and how this differ from
->>> existing V4L2_CID_ALPHA (the global alpha control).
->>
->> They are used to calculate factors for below formulas.
->>
->>      dst alpha = Factor1 * src alpha + Factor2 * dst alpha
->>      dst color = Factor3 * src color + Factor4 * dst color
->>
->> I have no idea how to generalize it, and there is no upstream
->> application need it,
->> so i just simply exposed the reg.
-In my memory, it is is used for convert AYUV to ARGB.
+> It seems the rockchip_pwm_config always returns the result 0,
+> so remove the judge.
 > 
-> Then maybe it's better to just not expose it in the public API in the
-> initial patch (nothing forces you to enable everything). The idea is
-> that it can be added later as needed, taking the time to figure-out a
-> new API or to figure-out how this matches anything that exist.
-> 
->>
->>>> +
->>>> +/* Operation values */
->>>> +#define OP_COPY 0
->>>> +#define OP_SOLID_FILL 1
->>>> +#define OP_ALPHA_BLEND 2
->>>> +
->>>> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum
->>>> v4l2_buf_type type);
->>>> +
->>>> +/* RGA Buffers Manage Part */
->>>> +extern const struct vb2_ops rga_qops;
->>>> +void *rga_buf_find_page(struct vb2_buffer *vb);
->>>> +void rga_buf_clean(struct rga_ctx *ctx);
->>>> +
->>>> +/* RGA Hardware Part */
->>>> +void rga_write(struct rockchip_rga *rga, u32 reg, u32 value);
->>>> +u32 rga_read(struct rockchip_rga *rga, u32 reg);
->>>> +void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32
->>>> mask);
->>>> +void rga_start(struct rockchip_rga *rga);
->>>> +void rga_cmd_set(struct rga_ctx *ctx, void *src_mmu_pages, void
->>>> *dst_mmu_pages);
->>>> +
->>>> +#endif
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
 
--- 
-Randy Li
+Acked-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+
+> ---
+>  drivers/pwm/pwm-rockchip.c | 12 ++----------
+>  1 file changed, 2 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+> index 617824c..cd45f17 100644
+> --- a/drivers/pwm/pwm-rockchip.c
+> +++ b/drivers/pwm/pwm-rockchip.c
+> @@ -165,7 +165,7 @@ static void rockchip_pwm_get_state(struct pwm_chip *chip,
+>  	clk_disable(pc->pclk);
+>  }
+>  
+> -static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+> +static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  			       int duty_ns, int period_ns)
+>  {
+>  	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
+> @@ -188,8 +188,6 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  
+>  	writel(period, pc->base + pc->data->regs.period);
+>  	writel(duty, pc->base + pc->data->regs.duty);
+> -
+> -	return 0;
+>  }
+>  
+>  static int rockchip_pwm_enable(struct pwm_chip *chip,
+> @@ -236,13 +234,7 @@ static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>  		enabled = false;
+>  	}
+>  
+> -	ret = rockchip_pwm_config(chip, pwm, state->duty_cycle, state->period);
+> -	if (ret) {
+> -		if (enabled != curstate.enabled)
+> -			rockchip_pwm_enable(chip, pwm, !enabled,
+> -				      state->polarity);
+> -		goto out;
+> -	}
+> +	rockchip_pwm_config(chip, pwm, state->duty_cycle, state->period);
+>  
+>  	if (state->enabled != enabled) {
+>  		ret = rockchip_pwm_enable(chip, pwm, state->enabled,
