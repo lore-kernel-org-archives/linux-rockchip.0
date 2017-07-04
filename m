@@ -1,25 +1,36 @@
-From: "David.Wu" <david.wu@rock-chips.com>
-Subject: Re: [PATCH 4/5] pwm: rockchip: Add atomic updated feature for rk3328
-Date: Tue, 4 Jul 2017 15:37:54 +0800
-Message-ID: <05cccb3d-2b35-1878-6173-9a96adef17ba@rock-chips.com>
-References: <1498739271-27431-1-git-send-email-david.wu@rock-chips.com>
- <1498739271-27431-5-git-send-email-david.wu@rock-chips.com>
- <20170703203957.03f3d1db@bbrezillon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <20170703203957.03f3d1db@bbrezillon>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: thierry.reding@gmail.com, heiko@sntech.de, robh+dt@kernel.org, catalin.marinas@arm.com, briannorris@chromium.org, dianders@chromium.org, mark.rutland@arm.com, huangtao@rock-chips.com, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/6] add and enable some device nodes for rk3229-evb board
+Date: Tue,  4 Jul 2017 16:12:41 +0800
+Message-ID: <1499155967-26090-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Boris,
+These series add and enable regulators, gpio-keys, eMMC and other device
+nodes support for rk3229-evb board.
 
-ÔÚ 2017/7/4 2:39, Boris Brezillon Ð´µÀ:
-> Yet another customization. Don't you think we can extract common parts,
-> expose them as helpers and then have 3 different pwm_ops (with 3
-> different ->apply() implementation), one for each IP revision.
+David Wu (1):
+  ARM: dts: rockchip: enable io-domain for rk3229-evb
 
-Sounds reasonable.I will try to implement 3 different apply().
+Finley Xiao (1):
+  ARM: dts: rockchip: add cpu-supply property for cpu node of rk3229-evb
+
+Frank Wang (4):
+  ARM: dts: rockchip: add regulator nodes for rk3229-evb
+  ARM: dts: rockchip: enable eMMC for rk3229-evb
+  ARM: dts: rockchip: enable tsadc for rk3229-evb
+  ARM: dts: rockchip: add gpio power-key for rk3229-evb
+
+ arch/arm/boot/dts/rk3229-evb.dts | 106 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 106 insertions(+)
+
+-- 
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
