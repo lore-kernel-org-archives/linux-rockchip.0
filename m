@@ -1,75 +1,45 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 3/3] PCI: rockchip: use local variable dev consistently
-Date: Fri, 7 Jul 2017 08:40:18 +0800
-Message-ID: <4a311df0-cb8e-fa78-d781-cd27fa2f3035@rock-chips.com>
-References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
- <1498699369-65515-1-git-send-email-shawn.lin@rock-chips.com>
- <20170702213030.GE18324@bhelgaas-glaptop.roam.corp.google.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: fix NULL check on devm_kzalloc() return
+ value
+Date: Fri, 7 Jul 2017 08:56:28 +0800
+Message-ID: <595EDC3C.1010801@rock-chips.com>
+References: <20170706215833.GA25411@embeddedgus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20170702213030.GE18324@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170706215833.GA25411@embeddedgus>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: "Gustavo A. R. Silva" <garsilva@embeddedor.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
-
-On 2017/7/3 5:30, Bjorn Helgaas wrote:
-> On Thu, Jun 29, 2017 at 09:22:49AM +0800, Shawn Lin wrote:
->> We have "struct device *dev" in rockchip_pcie_probe but
->> still fetch it from pdev and rockchip->dev somewhere.
->> This patch tries to improve and no functional change intended.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> Applied to pci/host-rockchip for v4.13, thanks!
-> 
-> I don't object to patches 1 & 2, but haven't applied them yet in case Rob
-> has any comments.
-
-It's possible for patches 1 & 2 to be the candidate of v4.13 at the last
-minute? :)
-
-> 
->> ---
->>
->>   drivers/pci/host/pcie-rockchip.c | 5 ++---
->>   1 file changed, 2 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
->> index c545213..eb0a170 100644
->> --- a/drivers/pci/host/pcie-rockchip.c
->> +++ b/drivers/pci/host/pcie-rockchip.c
->> @@ -1482,15 +1482,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->>   	if (err)
->>   		goto err_free_res;
->>   
->> -	rockchip->msg_region = devm_ioremap(rockchip->dev,
->> -					    rockchip->msg_bus_addr, SZ_1M);
->> +	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
->>   	if (!rockchip->msg_region) {
->>   		err = -ENOMEM;
->>   		goto err_free_res;
->>   	}
->>   
->>   	list_splice_init(&res, &bridge->windows);
->> -	bridge->dev.parent = &pdev->dev;
->> +	bridge->dev.parent = dev;
->>   	bridge->sysdata = rockchip;
->>   	bridge->busnr = 0;
->>   	bridge->ops = &rockchip_pcie_ops;
->> -- 
->> 1.9.1
->>
->>
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-> 
-> 
+T24gMjAxN+W5tDA35pyIMDfml6UgMDU6NTgsIEd1c3Rhdm8gQS4gUi4gU2lsdmEgd3JvdGU6Cj4g
+VGhlIHJpZ2h0IHZhcmlhYmxlIHRvIGNoZWNrIGhlcmUgaXMgcG9ydCwgbm90IGRwLgo+Cj4gVGhp
+cyBpc3N1ZSB3YXMgZGV0ZWN0ZWQgdXNpbmcgQ29jY2luZWxsZSBhbmQgdGhlIGZvbGxvd2luZyBz
+ZW1hbnRpYyBwYXRjaDoKPgo+IEBACj4gZXhwcmVzc2lvbiB4Owo+IGlkZW50aWZpZXIgZmxkOwo+
+IEBACj4KPiAqIHggPSBkZXZtX2t6YWxsb2MoLi4uKTsKPiAgICAuLi4gd2hlbiAhPSB4ID09IE5V
+TEwKPiAgICB4LT5mbGQKPgo+IFNpZ25lZC1vZmYtYnk6IEd1c3Rhdm8gQS4gUi4gU2lsdmEgPGdh
+cnNpbHZhQGVtYmVkZGVkb3IuY29tPgoKVGhhbmtzIGZvciB0aGUgZml4LAoKQWNrZWQtYnk6IE1h
+cmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KCj4gLS0tCj4gICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyB8IDIgKy0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1k
+cC1jb3JlLmMKPiBpbmRleCAxNGZhMWY4Li45YjBiMDU4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiBAQCAtMTE5NSw3ICsxMTk1LDcgQEAgc3RhdGljIGludCBj
+ZG5fZHBfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgIAkJCWNvbnRpbnVl
+Owo+ICAgCj4gICAJCXBvcnQgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKnBvcnQpLCBHRlBf
+S0VSTkVMKTsKPiAtCQlpZiAoIWRwKQo+ICsJCWlmICghcG9ydCkKPiAgIAkJCXJldHVybiAtRU5P
+TUVNOwo+ICAgCj4gICAJCXBvcnQtPmV4dGNvbiA9IGV4dGNvbjsKCgotLSAK77ytYXJrIFlhbwoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
