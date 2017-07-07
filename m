@@ -1,46 +1,75 @@
-From: "Gustavo A. R. Silva" <garsilva@embeddedor.com>
-Subject: [PATCH] drm/rockchip: fix NULL check on devm_kzalloc() return value
-Date: Thu, 6 Jul 2017 16:58:33 -0500
-Message-ID: <20170706215833.GA25411@embeddedgus>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 3/3] PCI: rockchip: use local variable dev consistently
+Date: Fri, 7 Jul 2017 08:40:18 +0800
+Message-ID: <4a311df0-cb8e-fa78-d781-cd27fa2f3035@rock-chips.com>
+References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
+ <1498699369-65515-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170702213030.GE18324@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <garsilva@embeddedor.com>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170702213030.GE18324@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The right variable to check here is port, not dp.
+Hi Bjorn,
 
-This issue was detected using Coccinelle and the following semantic patch:
+On 2017/7/3 5:30, Bjorn Helgaas wrote:
+> On Thu, Jun 29, 2017 at 09:22:49AM +0800, Shawn Lin wrote:
+>> We have "struct device *dev" in rockchip_pcie_probe but
+>> still fetch it from pdev and rockchip->dev somewhere.
+>> This patch tries to improve and no functional change intended.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> Applied to pci/host-rockchip for v4.13, thanks!
+> 
+> I don't object to patches 1 & 2, but haven't applied them yet in case Rob
+> has any comments.
 
-@@
-expression x;
-identifier fld;
-@@
+It's possible for patches 1 & 2 to be the candidate of v4.13 at the last
+minute? :)
 
-* x = devm_kzalloc(...);
-  ... when != x == NULL
-  x->fld
-
-Signed-off-by: Gustavo A. R. Silva <garsilva@embeddedor.com>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 14fa1f8..9b0b058 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1195,7 +1195,7 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 			continue;
- 
- 		port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
--		if (!dp)
-+		if (!port)
- 			return -ENOMEM;
- 
- 		port->extcon = extcon;
--- 
-2.5.0
+> 
+>> ---
+>>
+>>   drivers/pci/host/pcie-rockchip.c | 5 ++---
+>>   1 file changed, 2 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+>> index c545213..eb0a170 100644
+>> --- a/drivers/pci/host/pcie-rockchip.c
+>> +++ b/drivers/pci/host/pcie-rockchip.c
+>> @@ -1482,15 +1482,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>>   	if (err)
+>>   		goto err_free_res;
+>>   
+>> -	rockchip->msg_region = devm_ioremap(rockchip->dev,
+>> -					    rockchip->msg_bus_addr, SZ_1M);
+>> +	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
+>>   	if (!rockchip->msg_region) {
+>>   		err = -ENOMEM;
+>>   		goto err_free_res;
+>>   	}
+>>   
+>>   	list_splice_init(&res, &bridge->windows);
+>> -	bridge->dev.parent = &pdev->dev;
+>> +	bridge->dev.parent = dev;
+>>   	bridge->sysdata = rockchip;
+>>   	bridge->busnr = 0;
+>>   	bridge->ops = &rockchip_pcie_ops;
+>> -- 
+>> 1.9.1
+>>
+>>
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+> 
+> 
