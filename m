@@ -1,41 +1,59 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] ARM: dts: rockchip: remove arm,mali-midgard compatible from rk3288
-Date: Mon, 10 Jul 2017 14:12:27 +0200
-Message-ID: <20170710121227.14264-2-heiko@sntech.de>
-References: <20170710121227.14264-1-heiko@sntech.de>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170710121227.14264-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: fix NULL check on devm_kzalloc() return
+ value
+Date: Mon, 10 Jul 2017 15:04:52 -0400
+Message-ID: <20170710190452.6nzd4tihronl5m5n@art_vandelay>
+References: <20170706215833.GA25411@embeddedgus>
+ <595EDC3C.1010801@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <595EDC3C.1010801@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "Gustavo A. R. Silva" <garsilva@embeddedor.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The binding specifies the actual implementations only (mali-t760
-for example) but not the arm,mali-midgard used in some vendor kernels.
-So drop that compatible property from the rk3288 where it had slipped in.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index cb1d415d1201..e99d7ff4c939 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -1135,7 +1135,7 @@
- 	};
- 
- 	gpu: mali@ffa30000 {
--		compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
-+		compatible = "rockchip,rk3288-mali", "arm,mali-t760";
- 		reg = <0xffa30000 0x10000>;
- 		interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
- 			     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--- 
-2.11.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gRnJpLCBKdWwgMDcsIDIwMTcgYXQgMDg6NTY6MjhBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gT24gMjAxN+W5tDA35pyIMDfml6UgMDU6NTgsIEd1c3Rhdm8gQS4gUi4gU2lsdmEgd3JvdGU6
+Cj4gPiBUaGUgcmlnaHQgdmFyaWFibGUgdG8gY2hlY2sgaGVyZSBpcyBwb3J0LCBub3QgZHAuCj4g
+PiAKPiA+IFRoaXMgaXNzdWUgd2FzIGRldGVjdGVkIHVzaW5nIENvY2NpbmVsbGUgYW5kIHRoZSBm
+b2xsb3dpbmcgc2VtYW50aWMgcGF0Y2g6Cj4gPiAKPiA+IEBACj4gPiBleHByZXNzaW9uIHg7Cj4g
+PiBpZGVudGlmaWVyIGZsZDsKPiA+IEBACj4gPiAKPiA+ICogeCA9IGRldm1fa3phbGxvYyguLi4p
+Owo+ID4gICAgLi4uIHdoZW4gIT0geCA9PSBOVUxMCj4gPiAgICB4LT5mbGQKPiA+IAo+ID4gU2ln
+bmVkLW9mZi1ieTogR3VzdGF2byBBLiBSLiBTaWx2YSA8Z2Fyc2lsdmFAZW1iZWRkZWRvci5jb20+
+Cj4gCj4gVGhhbmtzIGZvciB0aGUgZml4LAo+IAo+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55
+YW9Acm9jay1jaGlwcy5jb20+CgpIaSBNYXJrLApJJ3ZlIGFwcGxpZWQgdGhpcyBwYXRjaCwgYnV0
+IGluIHRoZSBmdXR1cmUsIHBsZWFzZSBhcHBseSBjaGFuZ2VzIGRpcmVjdGx5Cmluc3RlYWQgb2Yg
+anVzdCBhY2tpbmcuIAoKSWYgeW91J3JlIHVuYWJsZSB0byBhcHBseSBpdCBmb3Igc29tZSByZWFz
+b24gKHZhY2F0aW9uLCBldGMpLCBwbGVhc2UgcmVhY2ggb3V0IHRvCm9uZSBvZiB0aGUgLW1pc2Mg
+bWFpbnRhaW5lcnMgdmlhIGVtYWlsIG9yIGlyYyBzbyB3ZSBkb24ndCBpbmFkdmVydGVudGx5IGxv
+c2UgdHJhY2sKb2YgaXQgb24gdGhlIGxpc3QuCgpTZWFuCgo+IAo+ID4gLS0tCj4gPiAgIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIHwgMiArLQo+ID4gICAxIGZpbGUgY2hh
+bmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiA+IGluZGV4IDE0ZmExZjguLjliMGIwNTggMTAwNjQ0
+Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+ID4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiA+IEBAIC0xMTk1LDcg
+KzExOTUsNyBAQCBzdGF0aWMgaW50IGNkbl9kcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNl
+ICpwZGV2KQo+ID4gICAJCQljb250aW51ZTsKPiA+ICAgCQlwb3J0ID0gZGV2bV9remFsbG9jKGRl
+diwgc2l6ZW9mKCpwb3J0KSwgR0ZQX0tFUk5FTCk7Cj4gPiAtCQlpZiAoIWRwKQo+ID4gKwkJaWYg
+KCFwb3J0KQo+ID4gICAJCQlyZXR1cm4gLUVOT01FTTsKPiA+ICAgCQlwb3J0LT5leHRjb24gPSBl
+eHRjb247Cj4gCj4gCj4gLS0gCj4g77ytYXJrIFlhbwo+IAo+IAo+IF9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+
+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gClNlYW4gUGF1bCwgU29mdHdh
+cmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
