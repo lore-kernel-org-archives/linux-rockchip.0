@@ -1,59 +1,103 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: fix NULL check on devm_kzalloc() return
- value
-Date: Mon, 10 Jul 2017 15:04:52 -0400
-Message-ID: <20170710190452.6nzd4tihronl5m5n@art_vandelay>
-References: <20170706215833.GA25411@embeddedgus>
- <595EDC3C.1010801@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 1/2] phy-rockchip-pcie: add set_mode callback
+Date: Mon, 10 Jul 2017 15:39:37 -0500
+Message-ID: <20170710203937.GA5610@bhelgaas-glaptop.roam.corp.google.com>
+References: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <595EDC3C.1010801@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "Gustavo A. R. Silva" <garsilva@embeddedor.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdWwgMDcsIDIwMTcgYXQgMDg6NTY6MjhBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
-Cj4gT24gMjAxN+W5tDA35pyIMDfml6UgMDU6NTgsIEd1c3Rhdm8gQS4gUi4gU2lsdmEgd3JvdGU6
-Cj4gPiBUaGUgcmlnaHQgdmFyaWFibGUgdG8gY2hlY2sgaGVyZSBpcyBwb3J0LCBub3QgZHAuCj4g
-PiAKPiA+IFRoaXMgaXNzdWUgd2FzIGRldGVjdGVkIHVzaW5nIENvY2NpbmVsbGUgYW5kIHRoZSBm
-b2xsb3dpbmcgc2VtYW50aWMgcGF0Y2g6Cj4gPiAKPiA+IEBACj4gPiBleHByZXNzaW9uIHg7Cj4g
-PiBpZGVudGlmaWVyIGZsZDsKPiA+IEBACj4gPiAKPiA+ICogeCA9IGRldm1fa3phbGxvYyguLi4p
-Owo+ID4gICAgLi4uIHdoZW4gIT0geCA9PSBOVUxMCj4gPiAgICB4LT5mbGQKPiA+IAo+ID4gU2ln
-bmVkLW9mZi1ieTogR3VzdGF2byBBLiBSLiBTaWx2YSA8Z2Fyc2lsdmFAZW1iZWRkZWRvci5jb20+
-Cj4gCj4gVGhhbmtzIGZvciB0aGUgZml4LAo+IAo+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55
-YW9Acm9jay1jaGlwcy5jb20+CgpIaSBNYXJrLApJJ3ZlIGFwcGxpZWQgdGhpcyBwYXRjaCwgYnV0
-IGluIHRoZSBmdXR1cmUsIHBsZWFzZSBhcHBseSBjaGFuZ2VzIGRpcmVjdGx5Cmluc3RlYWQgb2Yg
-anVzdCBhY2tpbmcuIAoKSWYgeW91J3JlIHVuYWJsZSB0byBhcHBseSBpdCBmb3Igc29tZSByZWFz
-b24gKHZhY2F0aW9uLCBldGMpLCBwbGVhc2UgcmVhY2ggb3V0IHRvCm9uZSBvZiB0aGUgLW1pc2Mg
-bWFpbnRhaW5lcnMgdmlhIGVtYWlsIG9yIGlyYyBzbyB3ZSBkb24ndCBpbmFkdmVydGVudGx5IGxv
-c2UgdHJhY2sKb2YgaXQgb24gdGhlIGxpc3QuCgpTZWFuCgo+IAo+ID4gLS0tCj4gPiAgIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIHwgMiArLQo+ID4gICAxIGZpbGUgY2hh
-bmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiA+IGluZGV4IDE0ZmExZjguLjliMGIwNTggMTAwNjQ0
-Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+ID4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiA+IEBAIC0xMTk1LDcg
-KzExOTUsNyBAQCBzdGF0aWMgaW50IGNkbl9kcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNl
-ICpwZGV2KQo+ID4gICAJCQljb250aW51ZTsKPiA+ICAgCQlwb3J0ID0gZGV2bV9remFsbG9jKGRl
-diwgc2l6ZW9mKCpwb3J0KSwgR0ZQX0tFUk5FTCk7Cj4gPiAtCQlpZiAoIWRwKQo+ID4gKwkJaWYg
-KCFwb3J0KQo+ID4gICAJCQlyZXR1cm4gLUVOT01FTTsKPiA+ICAgCQlwb3J0LT5leHRjb24gPSBl
-eHRjb247Cj4gCj4gCj4gLS0gCj4g77ytYXJrIFlhbwo+IAo+IAo+IF9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+
-IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0gClNlYW4gUGF1bCwgU29mdHdh
-cmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Fri, Jun 16, 2017 at 04:17:47PM +0800, Shawn Lin wrote:
+> phy_mode was added for switching USB mode purposely as
+> well as phy_set_mode API. However other types of PHY could
+> also have some miscellaneous setting/modes need to be
+> handled. This patch is gonna support this callback for
+> phy-rockchip-pcie and do some power-saving work there.
+
+> Note that we just stuff in some other values other that the
+> existing phy_mode and convert it in the coressponding driver
+> instead, otherwise we should extend the phy_mode again which
+> it doesn't make sense to add in new driver's specificed value.
+> Overall it looks fine to me as the controller's driver and the
+> phy's driver are paired so that the caller and the consumer should
+> be able to keep the value(mode) in consistent.
+
+s/coressponding/corresponding/
+s/specificed/specified/
+s/in consistent/consistent/
+
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/phy/rockchip/phy-rockchip-pcie.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> index 6904633..9ffad15 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> @@ -255,11 +255,33 @@ static int rockchip_pcie_phy_exit(struct phy *phy)
+>  	return 0;
+>  }
+>  
+> +static int rockchip_pcie_phy_set_mode(struct phy *phy, enum phy_mode mode)
+> +{
+> +	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+> +	u8 map = (u8)mode;
+> +	int i;
+> +
+> +	for (i = 0; i < PHY_MAX_LANE_NUM; i++) {
+> +		if (map & BIT(i))
+> +			continue;
+
+phy_mode is defined as:
+
+  enum phy_mode {
+	  PHY_MODE_INVALID,
+	  PHY_MODE_USB_HOST,
+	  PHY_MODE_USB_DEVICE,
+	  PHY_MODE_USB_OTG,
+  };
+
+You're using phy_mode as something entirely different -- a bitmap of
+which lanes you want to keep active.  I understand you're trying to
+avoid extending phy_mode again, but I just want to point out that
+there are no other places that subvert phy_mode as you're doing.
+
+It's probably worth a comment here about why we're not using the
+standard enum values.  I see you already have one at the caller.
+
+I'm not the PHY guy, so I'd like Kishon's ack before going down this
+road.
+
+> +
+> +		dev_dbg(&phy->dev, "idling lane %d\n", i);
+> +		regmap_write(rk_phy->reg_base,
+> +			     rk_phy->phy_data->pcie_laneoff,
+> +			     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
+> +			     PHY_LANE_IDLE_MASK,
+> +			     PHY_LANE_IDLE_A_SHIFT + i));
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct phy_ops ops = {
+>  	.init		= rockchip_pcie_phy_init,
+>  	.exit		= rockchip_pcie_phy_exit,
+>  	.power_on	= rockchip_pcie_phy_power_on,
+>  	.power_off	= rockchip_pcie_phy_power_off,
+> +	.set_mode	= rockchip_pcie_phy_set_mode,
+>  	.owner		= THIS_MODULE,
+>  };
+>  
+> -- 
+> 1.9.1
+> 
+> 
