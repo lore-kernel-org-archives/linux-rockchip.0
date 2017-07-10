@@ -1,103 +1,51 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 1/2] phy-rockchip-pcie: add set_mode callback
-Date: Mon, 10 Jul 2017 15:39:37 -0500
-Message-ID: <20170710203937.GA5610@bhelgaas-glaptop.roam.corp.google.com>
-References: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: PCI: rockchip: Add vpcie12v-supply for
+ Rockchip PCIe controller
+Date: Mon, 10 Jul 2017 15:44:33 -0500
+Message-ID: <20170710204433.GB5610@bhelgaas-glaptop.roam.corp.google.com>
+References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org
+In-Reply-To: <1498699288-63944-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 16, 2017 at 04:17:47PM +0800, Shawn Lin wrote:
-> phy_mode was added for switching USB mode purposely as
-> well as phy_set_mode API. However other types of PHY could
-> also have some miscellaneous setting/modes need to be
-> handled. This patch is gonna support this callback for
-> phy-rockchip-pcie and do some power-saving work there.
+On Thu, Jun 29, 2017 at 09:21:28AM +0800, Shawn Lin wrote:
+> PCIe connector provide a optional 12V power supply for high
+> power downstream components, so we add this as a optional
+> one if we need to control it.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-> Note that we just stuff in some other values other that the
-> existing phy_mode and convert it in the coressponding driver
-> instead, otherwise we should extend the phy_mode again which
-> it doesn't make sense to add in new driver's specificed value.
-> Overall it looks fine to me as the controller's driver and the
-> phy's driver are paired so that the caller and the consumer should
-> be able to keep the value(mode) in consistent.
+Applied patches 1 & 2 with Rob's ack to pci/host-rockchip for v4.14,
+thanks!
 
-s/coressponding/corresponding/
-s/specificed/specified/
-s/in consistent/consistent/
-
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > ---
 > 
->  drivers/phy/rockchip/phy-rockchip-pcie.c | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
+>  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> index 6904633..9ffad15 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> @@ -255,11 +255,33 @@ static int rockchip_pcie_phy_exit(struct phy *phy)
->  	return 0;
->  }
->  
-> +static int rockchip_pcie_phy_set_mode(struct phy *phy, enum phy_mode mode)
-> +{
-> +	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-> +	u8 map = (u8)mode;
-> +	int i;
-> +
-> +	for (i = 0; i < PHY_MAX_LANE_NUM; i++) {
-> +		if (map & BIT(i))
-> +			continue;
-
-phy_mode is defined as:
-
-  enum phy_mode {
-	  PHY_MODE_INVALID,
-	  PHY_MODE_USB_HOST,
-	  PHY_MODE_USB_DEVICE,
-	  PHY_MODE_USB_OTG,
-  };
-
-You're using phy_mode as something entirely different -- a bitmap of
-which lanes you want to keep active.  I understand you're trying to
-avoid extending phy_mode again, but I just want to point out that
-there are no other places that subvert phy_mode as you're doing.
-
-It's probably worth a comment here about why we're not using the
-standard enum values.  I see you already have one at the caller.
-
-I'm not the PHY guy, so I'd like Kishon's ack before going down this
-road.
-
-> +
-> +		dev_dbg(&phy->dev, "idling lane %d\n", i);
-> +		regmap_write(rk_phy->reg_base,
-> +			     rk_phy->phy_data->pcie_laneoff,
-> +			     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
-> +			     PHY_LANE_IDLE_MASK,
-> +			     PHY_LANE_IDLE_A_SHIFT + i));
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static const struct phy_ops ops = {
->  	.init		= rockchip_pcie_phy_init,
->  	.exit		= rockchip_pcie_phy_exit,
->  	.power_on	= rockchip_pcie_phy_power_on,
->  	.power_off	= rockchip_pcie_phy_power_off,
-> +	.set_mode	= rockchip_pcie_phy_set_mode,
->  	.owner		= THIS_MODULE,
->  };
->  
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> index 1453a73..9b88959 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> @@ -47,6 +47,7 @@ Optional Property:
+>  	using 24MHz OSC for RC's PHY.
+>  - ep-gpios: contain the entry for pre-reset gpio
+>  - num-lanes: number of lanes to use
+> +- vpcie12v-supply: The phandle to the 12v regulator to use for PCIe.
+>  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
+>  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
+>  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
 > -- 
 > 1.9.1
 > 
 > 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
