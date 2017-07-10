@@ -1,50 +1,32 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH] iio: adc: rockchip_saradc: add NULL check on
- of_match_device() return value
-Date: Sun, 9 Jul 2017 19:10:07 +0100
-Message-ID: <20170709191007.5d79c950@kernel.org>
-References: <20170707065131.GA23382@embeddedgus>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] nvmem: rockchip-efuse: parse 'rockchip,efuse-size'
+Date: Sun, 9 Jul 2017 20:26:03 -0500
+Message-ID: <20170710012603.yf3onf5kp6wgi3b3@rob-hp-laptop>
+References: <1499326597-10821-1-git-send-email-finley.xiao@rock-chips.com>
+ <1499326597-10821-2-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170707065131.GA23382@embeddedgus>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Gustavo A. R. Silva" <garsilva@embeddedor.com>
-Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1499326597-10821-2-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 7 Jul 2017 01:51:31 -0500
-"Gustavo A. R. Silva" <garsilva@embeddedor.com> wrote:
-
-> Check return value from call to of_match_device()
-> in order to prevent a NULL pointer dereference.
+On Thu, Jul 06, 2017 at 03:36:36PM +0800, Finley Xiao wrote:
+> The eFuse size is defined in property <reg> before, but the length
+> of registers is not equal to the size on some platforms, so we
+> add a new property to redefine it.
 > 
-> In case of NULL print error message and return -ENODEV
-> 
-> Signed-off-by: Gustavo A. R. Silva <garsilva@embeddedor.com>
-Applied.
-
-Thanks,
-
-Jonathan
+> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  drivers/iio/adc/rockchip_saradc.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index ae6d332..2bf2ed1 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -224,6 +224,11 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
->  	info = iio_priv(indio_dev);
->  
->  	match = of_match_device(rockchip_saradc_match, &pdev->dev);
-> +	if (!match) {
-> +		dev_err(&pdev->dev, "failed to match device\n");
-> +		return -ENODEV;
-> +	}
-> +
->  	info->data = match->data;
->  
->  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 4 ++++
+>  drivers/nvmem/rockchip-efuse.c                             | 4 +++-
+>  2 files changed, 7 insertions(+), 1 deletion(-)
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
