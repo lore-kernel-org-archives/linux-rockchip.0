@@ -1,51 +1,61 @@
-From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: PCI: rockchip: Add vpcie12v-supply for
- Rockchip PCIe controller
-Date: Mon, 10 Jul 2017 15:44:33 -0500
-Message-ID: <20170710204433.GB5610@bhelgaas-glaptop.roam.corp.google.com>
-References: <1498699288-63944-1-git-send-email-shawn.lin@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: fix NULL check on devm_kzalloc() return
+ value
+Date: Tue, 11 Jul 2017 08:44:54 +0800
+Message-ID: <59641F86.4010902@rock-chips.com>
+References: <20170706215833.GA25411@embeddedgus>
+ <595EDC3C.1010801@rock-chips.com>
+ <20170710190452.6nzd4tihronl5m5n@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1498699288-63944-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170710190452.6nzd4tihronl5m5n@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "Gustavo A. R. Silva" <garsilva@embeddedor.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 29, 2017 at 09:21:28AM +0800, Shawn Lin wrote:
-> PCIe connector provide a optional 12V power supply for high
-> power downstream components, so we add this as a optional
-> one if we need to control it.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Applied patches 1 & 2 with Rob's ack to pci/host-rockchip for v4.14,
-thanks!
-
-> ---
-> 
->  Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> index 1453a73..9b88959 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -47,6 +47,7 @@ Optional Property:
->  	using 24MHz OSC for RC's PHY.
->  - ep-gpios: contain the entry for pre-reset gpio
->  - num-lanes: number of lanes to use
-> +- vpcie12v-supply: The phandle to the 12v regulator to use for PCIe.
->  - vpcie3v3-supply: The phandle to the 3.3v regulator to use for PCIe.
->  - vpcie1v8-supply: The phandle to the 1.8v regulator to use for PCIe.
->  - vpcie0v9-supply: The phandle to the 0.9v regulator to use for PCIe.
-> -- 
-> 1.9.1
-> 
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxN+W5tDA35pyIMTHml6UgMDM6MDQsIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBGcmksIEp1
+bCAwNywgMjAxNyBhdCAwODo1NjoyOEFNICswODAwLCBNYXJrIHlhbyB3cm90ZToKPj4gT24gMjAx
+N+W5tDA35pyIMDfml6UgMDU6NTgsIEd1c3Rhdm8gQS4gUi4gU2lsdmEgd3JvdGU6Cj4+PiBUaGUg
+cmlnaHQgdmFyaWFibGUgdG8gY2hlY2sgaGVyZSBpcyBwb3J0LCBub3QgZHAuCj4+Pgo+Pj4gVGhp
+cyBpc3N1ZSB3YXMgZGV0ZWN0ZWQgdXNpbmcgQ29jY2luZWxsZSBhbmQgdGhlIGZvbGxvd2luZyBz
+ZW1hbnRpYyBwYXRjaDoKPj4+Cj4+PiBAQAo+Pj4gZXhwcmVzc2lvbiB4Owo+Pj4gaWRlbnRpZmll
+ciBmbGQ7Cj4+PiBAQAo+Pj4KPj4+ICogeCA9IGRldm1fa3phbGxvYyguLi4pOwo+Pj4gICAgIC4u
+LiB3aGVuICE9IHggPT0gTlVMTAo+Pj4gICAgIHgtPmZsZAo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6
+IEd1c3Rhdm8gQS4gUi4gU2lsdmEgPGdhcnNpbHZhQGVtYmVkZGVkb3IuY29tPgo+PiBUaGFua3Mg
+Zm9yIHRoZSBmaXgsCj4+Cj4+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
+cy5jb20+Cj4gSGkgTWFyaywKPiBJJ3ZlIGFwcGxpZWQgdGhpcyBwYXRjaCwgYnV0IGluIHRoZSBm
+dXR1cmUsIHBsZWFzZSBhcHBseSBjaGFuZ2VzIGRpcmVjdGx5Cj4gaW5zdGVhZCBvZiBqdXN0IGFj
+a2luZy4KPgo+IElmIHlvdSdyZSB1bmFibGUgdG8gYXBwbHkgaXQgZm9yIHNvbWUgcmVhc29uICh2
+YWNhdGlvbiwgZXRjKSwgcGxlYXNlIHJlYWNoIG91dCB0bwo+IG9uZSBvZiB0aGUgLW1pc2MgbWFp
+bnRhaW5lcnMgdmlhIGVtYWlsIG9yIGlyYyBzbyB3ZSBkb24ndCBpbmFkdmVydGVudGx5IGxvc2Ug
+dHJhY2sKPiBvZiBpdCBvbiB0aGUgbGlzdC4KPgo+IFNlYW4KSGkgU2VhbgoKR290IGl0LCAgSSAg
+d2lsbCBkbyBpdCByaWdodCBuZXh0IHRpbWUuClRoYW5rcyB0byBpbmZvcm0gbWUgdGhpcywKCj4K
+Pj4+IC0tLQo+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCAy
+ICstCj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkK
+Pj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3Jl
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+Pj4gaW5kZXggMTRm
+YTFmOC4uOWIwYjA1OCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9j
+ZG4tZHAtY29yZS5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNv
+cmUuYwo+Pj4gQEAgLTExOTUsNyArMTE5NSw3IEBAIHN0YXRpYyBpbnQgY2RuX2RwX3Byb2JlKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+PiAgICAJCQljb250aW51ZTsKPj4+ICAgIAkJ
+cG9ydCA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqcG9ydCksIEdGUF9LRVJORUwpOwo+Pj4g
+LQkJaWYgKCFkcCkKPj4+ICsJCWlmICghcG9ydCkKPj4+ICAgIAkJCXJldHVybiAtRU5PTUVNOwo+
+Pj4gICAgCQlwb3J0LT5leHRjb24gPSBleHRjb247Cj4+Cj4+IC0tIAo+PiDvvK1hcmsgWWFvCj4+
+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+
+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+Zwo+PiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
