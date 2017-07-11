@@ -1,61 +1,50 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: fix NULL check on devm_kzalloc() return
- value
-Date: Tue, 11 Jul 2017 08:44:54 +0800
-Message-ID: <59641F86.4010902@rock-chips.com>
-References: <20170706215833.GA25411@embeddedgus>
- <595EDC3C.1010801@rock-chips.com>
- <20170710190452.6nzd4tihronl5m5n@art_vandelay>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: remove arm,mali-midgard
+ compatible from rk3288
+Date: Mon, 10 Jul 2017 22:00:00 -0500
+Message-ID: <20170711030000.uj7jhiqwnzkm76w2@rob-hp-laptop>
+References: <20170710121227.14264-1-heiko@sntech.de>
+ <20170710121227.14264-2-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170710190452.6nzd4tihronl5m5n@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "Gustavo A. R. Silva" <garsilva@embeddedor.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170710121227.14264-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA35pyIMTHml6UgMDM6MDQsIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBGcmksIEp1
-bCAwNywgMjAxNyBhdCAwODo1NjoyOEFNICswODAwLCBNYXJrIHlhbyB3cm90ZToKPj4gT24gMjAx
-N+W5tDA35pyIMDfml6UgMDU6NTgsIEd1c3Rhdm8gQS4gUi4gU2lsdmEgd3JvdGU6Cj4+PiBUaGUg
-cmlnaHQgdmFyaWFibGUgdG8gY2hlY2sgaGVyZSBpcyBwb3J0LCBub3QgZHAuCj4+Pgo+Pj4gVGhp
-cyBpc3N1ZSB3YXMgZGV0ZWN0ZWQgdXNpbmcgQ29jY2luZWxsZSBhbmQgdGhlIGZvbGxvd2luZyBz
-ZW1hbnRpYyBwYXRjaDoKPj4+Cj4+PiBAQAo+Pj4gZXhwcmVzc2lvbiB4Owo+Pj4gaWRlbnRpZmll
-ciBmbGQ7Cj4+PiBAQAo+Pj4KPj4+ICogeCA9IGRldm1fa3phbGxvYyguLi4pOwo+Pj4gICAgIC4u
-LiB3aGVuICE9IHggPT0gTlVMTAo+Pj4gICAgIHgtPmZsZAo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6
-IEd1c3Rhdm8gQS4gUi4gU2lsdmEgPGdhcnNpbHZhQGVtYmVkZGVkb3IuY29tPgo+PiBUaGFua3Mg
-Zm9yIHRoZSBmaXgsCj4+Cj4+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
-cy5jb20+Cj4gSGkgTWFyaywKPiBJJ3ZlIGFwcGxpZWQgdGhpcyBwYXRjaCwgYnV0IGluIHRoZSBm
-dXR1cmUsIHBsZWFzZSBhcHBseSBjaGFuZ2VzIGRpcmVjdGx5Cj4gaW5zdGVhZCBvZiBqdXN0IGFj
-a2luZy4KPgo+IElmIHlvdSdyZSB1bmFibGUgdG8gYXBwbHkgaXQgZm9yIHNvbWUgcmVhc29uICh2
-YWNhdGlvbiwgZXRjKSwgcGxlYXNlIHJlYWNoIG91dCB0bwo+IG9uZSBvZiB0aGUgLW1pc2MgbWFp
-bnRhaW5lcnMgdmlhIGVtYWlsIG9yIGlyYyBzbyB3ZSBkb24ndCBpbmFkdmVydGVudGx5IGxvc2Ug
-dHJhY2sKPiBvZiBpdCBvbiB0aGUgbGlzdC4KPgo+IFNlYW4KSGkgU2VhbgoKR290IGl0LCAgSSAg
-d2lsbCBkbyBpdCByaWdodCBuZXh0IHRpbWUuClRoYW5rcyB0byBpbmZvcm0gbWUgdGhpcywKCj4K
-Pj4+IC0tLQo+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCAy
-ICstCj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkK
-Pj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3Jl
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+Pj4gaW5kZXggMTRm
-YTFmOC4uOWIwYjA1OCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9j
-ZG4tZHAtY29yZS5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNv
-cmUuYwo+Pj4gQEAgLTExOTUsNyArMTE5NSw3IEBAIHN0YXRpYyBpbnQgY2RuX2RwX3Byb2JlKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+PiAgICAJCQljb250aW51ZTsKPj4+ICAgIAkJ
-cG9ydCA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqcG9ydCksIEdGUF9LRVJORUwpOwo+Pj4g
-LQkJaWYgKCFkcCkKPj4+ICsJCWlmICghcG9ydCkKPj4+ICAgIAkJCXJldHVybiAtRU5PTUVNOwo+
-Pj4gICAgCQlwb3J0LT5leHRjb24gPSBleHRjb247Cj4+Cj4+IC0tIAo+PiDvvK1hcmsgWWFvCj4+
-Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+
-IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-Zwo+PiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+On Mon, Jul 10, 2017 at 02:12:27PM +0200, Heiko Stuebner wrote:
+> The binding specifies the actual implementations only (mali-t760
+> for example) but not the arm,mali-midgard used in some vendor kernels.
+> So drop that compatible property from the rk3288 where it had slipped in.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3288.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index cb1d415d1201..e99d7ff4c939 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -1135,7 +1135,7 @@
+>  	};
+>  
+>  	gpu: mali@ffa30000 {
+
+This should also be gpu@..., not mali.
+
+> -		compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
+> +		compatible = "rockchip,rk3288-mali", "arm,mali-t760";
+>  		reg = <0xffa30000 0x10000>;
+>  		interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
+>  			     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+> -- 
+> 2.11.0
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
