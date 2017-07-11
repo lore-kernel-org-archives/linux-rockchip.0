@@ -1,55 +1,62 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 1/2] phy-rockchip-pcie: add set_mode callback
-Date: Mon, 10 Jul 2017 22:20:32 -0700
-Message-ID: <CA+ASDXOpPdk+mrVQxrDmhsL-SUNSnQ_CqGXuW-Vrh_D7Gh8jxA@mail.gmail.com>
-References: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com> <cea27b15-2c2d-a4a9-76f8-f4798c152101@ti.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: remove arm, mali-midgard
+ compatible from rk3288
+Date: Tue, 11 Jul 2017 16:04:38 +0800
+Message-ID: <972bed58-76c2-04e3-f2ab-d5b8065a92dd@gmail.com>
+References: <20170710121227.14264-1-heiko@sntech.de>
+ <20170710121227.14264-2-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <cea27b15-2c2d-a4a9-76f8-f4798c152101@ti.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-pci@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170710121227.14264-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
+Heiko,
 
-On Mon, Jul 10, 2017 at 9:45 PM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> On Friday 16 June 2017 01:47 PM, Shawn Lin wrote:
-> > phy_mode was added for switching USB mode purposely as
-> > well as phy_set_mode API. However other types of PHY could
-> > also have some miscellaneous setting/modes need to be
-> > handled. This patch is gonna support this callback for
-> > phy-rockchip-pcie and do some power-saving work there.
-> > Note that we just stuff in some other values other that the
-> > existing phy_mode and convert it in the coressponding driver
-> > instead, otherwise we should extend the phy_mode again which
-> > it doesn't make sense to add in new driver's specificed value.
-> > Overall it looks fine to me as the controller's driver and the
-> > phy's driver are paired so that the caller and the consumer should
-> > be able to keep the value(mode) in consistent.
+在 2017年07月10日 20:12, Heiko Stuebner 写道:
+> The binding specifies the actual implementations only (mali-t760
+> for example) but not the arm,mali-midgard used in some vendor kernels.
+> So drop that compatible property from the rk3288 where it had slipped in.
 >
-> I really don't prefer using an API other that what it is intended for. We have
-> to come up with a better way for handling this.
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>   arch/arm/boot/dts/rk3288.dtsi | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> IIUC this patch sets unused lanes in idle mode? If yes, then can't we model
-> each lane as a separate phy, so that we can power-on/power-off each lane
-> independently.
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index cb1d415d1201..e99d7ff4c939 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -1135,7 +1135,7 @@
+>   	};
+>   
+>   	gpu: mali@ffa30000 {
+> -		compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
+> +		compatible = "rockchip,rk3288-mali", "arm,mali-t760";
 
-I suggested the same to Shawn previously. I'm interested in seeing his response.
+If we remove the "arm,mali-midgard", the mali driver maybe need update 
+first.
 
-But personally I'm still not sure if that's the most accurate way to
-describe this PHY, except for the fact that inevitably, most device
-tree bindings get molded to match the related kernel APIs, rather than
-the other way around. What if instead, we added an enum mode entry
-that represents "finished link training", at which point the PHY would
-then know it can power down the unused lanes (that's assuming the PHY
-can figure that part out)?
+ From the lastest MALI driver on ARM supply, the compatible only two 
+property.
+mali_kbase_core_linux.c
+4163:    { .compatible = "arm,malit6xx" },
+4164:    { .compatible = "arm,mali-midgard" },
 
-Or if we did re-model this PHY, how are we supposed to handle backward
-compatibility? Can the same PHY driver support 2 different of_xlate
-methods? I guess we'd have to provide an implementation that sets the
-driver up to behave completely differently based on the number of
-#phy-cells?
+That's odd with the two compatible, the driver should support the more.
 
-Brian
+-Caesar
+
+>   		reg = <0xffa30000 0x10000>;
+>   		interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
+>   			     <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
