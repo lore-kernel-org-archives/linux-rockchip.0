@@ -1,77 +1,66 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/4] arm64: dts: rockchip: add ARM Mali GPU node for RK3399 SoCs
-Date: Wed, 12 Jul 2017 09:19:42 +0200
-Message-ID: <4066931.s766IOqHgB@phil>
-References: <1499840971-20392-1-git-send-email-wxt@rock-chips.com> <1499840971-20392-3-git-send-email-wxt@rock-chips.com>
+From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Subject: [PATCH 09/16] drm/rockchip: Use for_each_oldnew_plane_in_state in
+ vop_crtc_atomic_flush
+Date: Wed, 12 Jul 2017 10:13:37 +0200
+Message-ID: <20170712081344.25495-10-maarten.lankhorst@linux.intel.com>
+References: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1499840971-20392-3-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: dri-devel@lists.freedesktop.org
+Cc: Heiko Stuebner <heiko@sntech.de>, intel-gfx@lists.freedesktop.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+for_each_obj_in_state is about to be removed, so use the new atomic
+iterator macros.
 
-Am Mittwoch, 12. Juli 2017, 14:29:28 CEST schrieb Caesar Wang:
-> Add Mali GPU device tree node for the RK3399 SoCs, with devfreq
-> opp table.
-> 
-> RK3399 and RK3399-OP1 SoCs have a different recommendation table with
-> gpu opp. As the ARM's mali driver found on
-> https://developer.arm.com/products/software/mali-drivers/midgard-kernel.
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 33 ++++++++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi     | 33 ++++++++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi         | 16 ++++++++++++
->  3 files changed, 82 insertions(+)
+Signed-off-by: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Mark Yao <mark.yao@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-[...]
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 1cbd7a2..8c6438b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1443,6 +1443,22 @@
->  		status = "disabled";
->  	};
->  
-> +	gpu: gpu@ff9a0000 {
-> +		compatible = "arm,rk3399-mali",
-> +			     "arm,malit860",
-> +			     "arm,malit86x",
-> +			     "arm,malit8xx";
-
-no wildcards and correct compatibles please.
-The binding specifies arm,mali-t860 for your chip and the soc
-specific compatible needs a rockchip vendor, so you need
-
-	compatible = "rockchip,rk3399-mali", "arm,mali-t860";
-
-
-> +		reg = <0x0 0xff9a0000 0x0 0x10000>;
-> +		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "GPU", "JOB", "MMU";
-
-interrupt names are job, mmu, gpu in lower case. The out-of-tree driver
-will need to conform to that.
-
-> +		clocks = <&cru ACLK_GPU>;
-> +		clock-names = "clk_mali";
-
-no clock-names property, as midgard malis only have one clock input
-
-
-Heiko
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index ee876a9631f0..f90088b1a247 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1029,7 +1029,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+ 				  struct drm_crtc_state *old_crtc_state)
+ {
+ 	struct drm_atomic_state *old_state = old_crtc_state->state;
+-	struct drm_plane_state *old_plane_state;
++	struct drm_plane_state *old_plane_state, *new_plane_state;
+ 	struct vop *vop = to_vop(crtc);
+ 	struct drm_plane *plane;
+ 	int i;
+@@ -1060,11 +1060,12 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	}
+ 	spin_unlock_irq(&crtc->dev->event_lock);
+ 
+-	for_each_plane_in_state(old_state, plane, old_plane_state, i) {
++	for_each_oldnew_plane_in_state(old_state, plane, old_plane_state,
++				       new_plane_state, i) {
+ 		if (!old_plane_state->fb)
+ 			continue;
+ 
+-		if (old_plane_state->fb == plane->state->fb)
++		if (old_plane_state->fb == new_plane_state->fb)
+ 			continue;
+ 
+ 		drm_framebuffer_reference(old_plane_state->fb);
+-- 
+2.11.0
