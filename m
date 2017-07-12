@@ -1,97 +1,67 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/4] arm64: dts: rockchip: add ARM Mali GPU node for
- RK3399 SoCs
-Date: Wed, 12 Jul 2017 17:16:29 +0800
-Message-ID: <3c3a2e24-7cb1-dc31-6532-1d6182bdf3ee@gmail.com>
-References: <1499840971-20392-1-git-send-email-wxt@rock-chips.com>
- <1499840971-20392-3-git-send-email-wxt@rock-chips.com>
- <4066931.s766IOqHgB@phil>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 09/16] drm/rockchip: Use
+ for_each_oldnew_plane_in_state in vop_crtc_atomic_flush
+Date: Wed, 12 Jul 2017 11:21:58 +0200
+Message-ID: <20170712092158.44xm7fkrskcdtfs4@phenom.ffwll.local>
+References: <20170712081344.25495-1-maarten.lankhorst@linux.intel.com>
+ <20170712081344.25495-10-maarten.lankhorst@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4066931.s766IOqHgB@phil>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20170712081344.25495-10-maarten.lankhorst@linux.intel.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2017年07月12日 15:19, Heiko Stuebner 写道:
-> Hi Caesar,
->
-> Am Mittwoch, 12. Juli 2017, 14:29:28 CEST schrieb Caesar Wang:
->> Add Mali GPU device tree node for the RK3399 SoCs, with devfreq
->> opp table.
->>
->> RK3399 and RK3399-OP1 SoCs have a different recommendation table with
->> gpu opp. As the ARM's mali driver found on
->> https://developer.arm.com/products/software/mali-drivers/midgard-kernel.
->>
->> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>   arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 33 ++++++++++++++++++++++++
->>   arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi     | 33 ++++++++++++++++++++++++
->>   arch/arm64/boot/dts/rockchip/rk3399.dtsi         | 16 ++++++++++++
->>   3 files changed, 82 insertions(+)
-> [...]
->
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> index 1cbd7a2..8c6438b 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> @@ -1443,6 +1443,22 @@
->>   		status = "disabled";
->>   	};
->>   
->> +	gpu: gpu@ff9a0000 {
->> +		compatible = "arm,rk3399-mali",
->> +			     "arm,malit860",
->> +			     "arm,malit86x",
->> +			     "arm,malit8xx";
-> no wildcards and correct compatibles please.
-> The binding specifies arm,mali-t860 for your chip and the soc
-> specific compatible needs a rockchip vendor, so you need
->
-> 	compatible = "rockchip,rk3399-mali", "arm,mali-t860";
->
-
-Okay,  sound resonable.
-
->> +		reg = <0x0 0xff9a0000 0x0 0x10000>;
->> +		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>,
->> +			     <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
->> +			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>;
->> +		interrupt-names = "GPU", "JOB", "MMU";
-> interrupt names are job, mmu, gpu in lower case. The out-of-tree driver
-> will need to conform to that.
-
-Okay, we need update the ARM's mali driver to follow up.
-
->> +		clocks = <&cru ACLK_GPU>;
->> +		clock-names = "clk_mali";
-> no clock-names property, as midgard malis only have one clock input
-
-Sorry, I seem to be reference for the MAILI's document, not the Linux 
-document.
-
-Update these for patches v2.
-
-Thanks your comments.
-
--Caesar
-
->
-> Heiko
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gV2VkLCBKdWwgMTIsIDIwMTcgYXQgMTA6MTM6MzdBTSArMDIwMCwgTWFhcnRlbiBMYW5raG9y
+c3Qgd3JvdGU6Cj4gZm9yX2VhY2hfb2JqX2luX3N0YXRlIGlzIGFib3V0IHRvIGJlIHJlbW92ZWQs
+IHNvIHVzZSB0aGUgbmV3IGF0b21pYwo+IGl0ZXJhdG9yIG1hY3Jvcy4KPiAKPiBTaWduZWQtb2Zm
+LWJ5OiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29t
+Pgo+IENjOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4gQ2M6IEhlaWtvIFN0
+dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5m
+cmFkZWFkLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gLS0t
+Cj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA3ICsrKyst
+LS0KPiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiAK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCBl
+ZTg3NmE5NjMxZjAuLmY5MDA4OGIxYTI0NyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0xMDI5LDcgKzEwMjksNyBAQCBzdGF0aWMgdm9p
+ZCB2b3BfY3J0Y19hdG9taWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAJCQkJICBz
+dHJ1Y3QgZHJtX2NydGNfc3RhdGUgKm9sZF9jcnRjX3N0YXRlKQo+ICB7Cj4gIAlzdHJ1Y3QgZHJt
+X2F0b21pY19zdGF0ZSAqb2xkX3N0YXRlID0gb2xkX2NydGNfc3RhdGUtPnN0YXRlOwo+IC0Jc3Ry
+dWN0IGRybV9wbGFuZV9zdGF0ZSAqb2xkX3BsYW5lX3N0YXRlOwo+ICsJc3RydWN0IGRybV9wbGFu
+ZV9zdGF0ZSAqb2xkX3BsYW5lX3N0YXRlLCAqbmV3X3BsYW5lX3N0YXRlOwo+ICAJc3RydWN0IHZv
+cCAqdm9wID0gdG9fdm9wKGNydGMpOwo+ICAJc3RydWN0IGRybV9wbGFuZSAqcGxhbmU7Cj4gIAlp
+bnQgaTsKPiBAQCAtMTA2MCwxMSArMTA2MCwxMiBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19hdG9t
+aWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAJfQo+ICAJc3Bpbl91bmxvY2tfaXJx
+KCZjcnRjLT5kZXYtPmV2ZW50X2xvY2spOwo+ICAKPiAtCWZvcl9lYWNoX3BsYW5lX2luX3N0YXRl
+KG9sZF9zdGF0ZSwgcGxhbmUsIG9sZF9wbGFuZV9zdGF0ZSwgaSkgewo+ICsJZm9yX2VhY2hfb2xk
+bmV3X3BsYW5lX2luX3N0YXRlKG9sZF9zdGF0ZSwgcGxhbmUsIG9sZF9wbGFuZV9zdGF0ZSwKPiAr
+CQkJCSAgICAgICBuZXdfcGxhbmVfc3RhdGUsIGkpIHsKPiAgCQlpZiAoIW9sZF9wbGFuZV9zdGF0
+ZS0+ZmIpCj4gIAkJCWNvbnRpbnVlOwo+ICAKPiAtCQlpZiAob2xkX3BsYW5lX3N0YXRlLT5mYiA9
+PSBwbGFuZS0+c3RhdGUtPmZiKQo+ICsJCWlmIChvbGRfcGxhbmVfc3RhdGUtPmZiID09IG5ld19w
+bGFuZV9zdGF0ZS0+ZmIpCj4gIAkJCWNvbnRpbnVlOwoKVGhpcyBlbnRpcmUgbWFjaGluZXJ5IGhl
+cmUgc2VlbXMgdG8gYmUgdGhlIHBlcmZlY3QgY2FuZGlkYXRlIGZvciBCb3JpcycKd2FpdF9mb3Jf
+ZmxpcF9kb25lIHdvcmsuCgpQYXRjaCBpdHNlbGYgbG9va3MgZ29vZC4KClJldmlld2VkLWJ5OiBE
+YW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgo+ICAKPiAgCQlkcm1fZnJhbWVi
+dWZmZXJfcmVmZXJlbmNlKG9sZF9wbGFuZV9zdGF0ZS0+ZmIpOwo+IC0tIAo+IDIuMTEuMAo+IAo+
+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKLS0g
+CkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6
+Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LWdmeAo=
