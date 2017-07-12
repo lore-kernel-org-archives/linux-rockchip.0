@@ -1,98 +1,167 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 4/5] drm/rockchip: vop: add a series of vop support
-Date: Wed, 12 Jul 2017 14:33:58 -0400
-Message-ID: <20170712183358.7n4vspuygiuu6era@art_vandelay>
-References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
- <1499825034-7604-1-git-send-email-mark.yao@rock-chips.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v5 1/5] dt-bindings: gpu: add bindings for the ARM Mali
+ Midgard GPU
+Date: Wed, 12 Jul 2017 11:43:39 -0700
+Message-ID: <20170712184338.GA140539@google.com>
+References: <cover.1493804968.git.guillaume.tucker@collabora.com>
+ <bebe578ba130de5fa320ca7c6427b2fae83d61d7.1493804968.git.guillaume.tucker@collabora.com>
+ <20170712172636.GA90759@google.com>
+ <1692483.PxpH1MfcPQ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1499825034-7604-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1692483.PxpH1MfcPQ@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Wookey <wookey-Xpnwy/r4z8dg9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBKdWwgMTIsIDIwMTcgYXQgMTA6MDM6NTRBTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
-Cj4gVm9wIEZ1bGwgZnJhbWV3b3JrIG5vdyBoYXMgZm9sbG93aW5nIHZvcHM6Cj4gSVAgdmVyc2lv
-biAgICBjaGlwbmFtZQo+ICAgMy4xICAgICAgICAgICByazMyODgKPiAgIDMuMiAgICAgICAgICAg
-cmszMzY4Cj4gICAzLjQgICAgICAgICAgIHJrMzM2Ngo+ICAgMy41ICAgICAgICAgICByazMzOTkg
-YmlnCj4gICAzLjYgICAgICAgICAgIHJrMzM5OSBsaXQKCkJlbG93IHlvdSBzYXkgbGl0dGxlIHZv
-cCBpcyBtYWpvciA9PSAyLCBidXQgeW91IGhhdmUgbWFqb3IgPT0gMyBoZXJlLgoKPiAgIDMuNyAg
-ICAgICAgICAgcmszMjI4Cj4gICAzLjggICAgICAgICAgIHJrMzMyOAo+IAo+IFRoZSBhYm92ZSBJ
-UCB2ZXJzaW9uIGlzIGZyb20gSC9XIGRlZmluZSwgc29tZSBvZiB2b3Agc3VwcG9ydCBnZXQKPiB0
-aGUgSVAgdmVyc2lvbiBmcm9tIFZFUlNJT05fSU5GTyByZWdpc3Rlciwgc29tZSBhcmUgbm90Lgo+
-IGhhcmRjb2RlIHRoZSBJUCB2ZXJzaW9uIGZvciBlYWNoIHZvcCB0byBpZGVudGlmeSB0aGVtLgo+
-IAo+IG1ham9yIHZlcnNpb246IHVzZWQgZm9yIElQIHN0cnVjdHVyZSwgVm9wIGZ1bGwgZnJhbWV3
-b3JrIGlzIDMsCj4gICAgICAgICAgICAgICAgdm9wIGxpdHRsZSBmcmFtZXdvcmsgaXMgMi4KPiBt
-aW5vciB2ZXJzaW9uOiBvbiBzYW1lIHN0cnVjdHVyZSwgbmV3ZXIgZGVzaWduIHZvcCB3aWxsIGJp
-Z2dlcgo+ICAgICAgICAgICAgICAgIHRoZW4gb2xkIG9uZS4KPiAKPiBDaGFuZ2VzIGluIHYyOgo+
-IC0gcmVuYW1lIHJrMzIyeCB0byByazMyMjgoSGVpa28gU3TDvGJuZXIpCj4gLSBjb3JyZWN0IHNv
-bWUgdm9wIHJlZ2lzdGVycyBkZWZpbmUKPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFy
-ay55YW9Acm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF92b3BfcmVnLmMgfCAyMDIgKysrKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfdm9wX3JlZy5oIHwgOTA1ICsrKysrKysrKysrKysrKysrKysrKystLS0tLS0K
-PiAgMiBmaWxlcyBjaGFuZ2VkLCA4NjMgaW5zZXJ0aW9ucygrKSwgMjQ0IGRlbGV0aW9ucygtKQo+
-IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3Jl
-Zy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+IGluZGV4
-IDE1OWNlZGYuLmIzMzQ4M2MgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX3ZvcF9yZWcuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF92b3BfcmVnLmMKPiBAQCAtMjExLDYgKzIxMSw3IEBACj4gIAkuc3RhbmRieSA9IFZPUF9S
-RUcoUkszMjg4X1NZU19DVFJMLCAweDEsIDIyKSwKPiAgCS5nYXRlX2VuID0gVk9QX1JFRyhSSzMy
-ODhfU1lTX0NUUkwsIDB4MSwgMjMpLAo+ICAJLm1tdV9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19D
-VFJMLCAweDEsIDIwKSwKPiArCS5kcF9lbiA9IFZPUF9SRUdfVkVSKFJLMzM5OV9TWVNfQ1RSTCwg
-MHgxLCAxMSwgMywgNSwgLTEpLAo+ICAJLnJnYl9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJM
-LCAweDEsIDEyKSwKPiAgCS5oZG1pX2VuID0gVk9QX1JFRyhSSzMyODhfU1lTX0NUUkwsIDB4MSwg
-MTMpLAo+ICAJLmVkcF9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAweDEsIDE0KSwKPiBA
-QCAtMjIwLDE0ICsyMjEsMTkgQEAKPiAgCS5kYXRhX2JsYW5rID0gVk9QX1JFRyhSSzMyODhfRFNQ
-X0NUUkwwLCAweDEsIDE5KSwKPiAgCS5kc3BfYmxhbmsgPSBWT1BfUkVHKFJLMzI4OF9EU1BfQ1RS
-TDAsIDB4MywgMTgpLAo+ICAJLm91dF9tb2RlID0gVk9QX1JFRyhSSzMyODhfRFNQX0NUUkwwLCAw
-eGYsIDApLAo+IC0JLnBpbl9wb2wgPSBWT1BfUkVHKFJLMzI4OF9EU1BfQ1RSTDAsIDB4ZiwgNCks
-Cj4gKwkucGluX3BvbCA9IFZPUF9SRUdfVkVSKFJLMzI4OF9EU1BfQ1RSTDAsIDB4ZiwgNCwgMywg
-MCwgMSksCj4gKwkuZHBfcGluX3BvbCA9IFZPUF9SRUdfVkVSKFJLMzM5OV9EU1BfQ1RSTDEsIDB4
-ZiwgMTYsIDMsIDUsIC0xKSwKPiArCS5yZ2JfcGluX3BvbCA9IFZPUF9SRUdfVkVSKFJLMzM2OF9E
-U1BfQ1RSTDEsIDB4ZiwgMTYsIDMsIDIsIC0xKSwKPiArCS5oZG1pX3Bpbl9wb2wgPSBWT1BfUkVH
-X1ZFUihSSzMzNjhfRFNQX0NUUkwxLCAweGYsIDIwLCAzLCAyLCAtMSksCj4gKwkuZWRwX3Bpbl9w
-b2wgPSBWT1BfUkVHX1ZFUihSSzMzNjhfRFNQX0NUUkwxLCAweGYsIDI0LCAzLCAyLCAtMSksCj4g
-KwkubWlwaV9waW5fcG9sID0gVk9QX1JFR19WRVIoUkszMzY4X0RTUF9DVFJMMSwgMHhmLCAyOCwg
-MywgMiwgLTEpLAo+ICAJLmh0b3RhbF9wdyA9IFZPUF9SRUcoUkszMjg4X0RTUF9IVE9UQUxfSFNf
-RU5ELCAweDFmZmYxZmZmLCAwKSwKPiAgCS5oYWN0X3N0X2VuZCA9IFZPUF9SRUcoUkszMjg4X0RT
-UF9IQUNUX1NUX0VORCwgMHgxZmZmMWZmZiwgMCksCj4gIAkudnRvdGFsX3B3ID0gVk9QX1JFRyhS
-SzMyODhfRFNQX1ZUT1RBTF9WU19FTkQsIDB4MWZmZjFmZmYsIDApLAo+ICAJLnZhY3Rfc3RfZW5k
-ID0gVk9QX1JFRyhSSzMyODhfRFNQX1ZBQ1RfU1RfRU5ELCAweDFmZmYxZmZmLCAwKSwKPiAgCS5o
-cG9zdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzI4OF9QT1NUX0RTUF9IQUNUX0lORk8sIDB4MWZmZjFm
-ZmYsIDApLAo+ICAJLnZwb3N0X3N0X2VuZCA9IFZPUF9SRUcoUkszMjg4X1BPU1RfRFNQX1ZBQ1Rf
-SU5GTywgMHgxZmZmMWZmZiwgMCksCj4gLQkuZ2xvYmFsX3JlZ2RvbmVfZW4gPSBWT1BfUkVHKFJL
-MzI4OF9TWVNfQ1RSTCwgMHgxLCAxMSksCj4gKwkuZ2xvYmFsX3JlZ2RvbmVfZW4gPSBWT1BfUkVH
-X1ZFUihSSzMyODhfU1lTX0NUUkwsIDB4MSwgMTEsIDMsIDIsIC0xKSwKPiAgCS5jZmdfZG9uZSA9
-IFZPUF9SRUcoUkszMjg4X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKCkknbSBub3QgcmVhbGx5IGNv
-bnZpbmNlZCBWT1BfUkVHX1ZFUiBpcyBhIGdvb2QgaWRlYS4gSW4gdGhlIGNhc2Ugb2YgZHBfZW4g
-YW5kCnBpbl9wb2wsIHRoZSByZWdpc3RlciBpcyBhbHJlYWR5IHVzZWQgZm9yIGRpZmZlcmVudCBv
-ZmZzZXRzLCBzbyBwcmVzdW1hYmx5CnlvdSdyZSB3cml0aW5nIGludG8gZG9uJ3QgY2FyZSBvZmZz
-ZXRzPwoKSW4gdGhlIG90aGVyIGNhc2VzLCBpdCBqdXN0IGxvb2tzIGxpa2UgYSBmZXcgbmV3IHJl
-Z2lzdGVycyBhZGRlZCBmb3IgMzM2OCBhbmQKMzM5OS4gSW4gdGhpcyBzY2VuYXJpbywgSSBkb24n
-dCB0aGluayBpdCdzIHRoYXQgYmFkIHRvIGp1c3QgaGF2ZSBzZXBhcmF0ZQpzdHJ1Y3RzIGZvciBl
-YWNoIHZlcnNpb24gdGhhdCBoYXMgZGlzdGluY3QgZmVhdHVyZXMuIFRoZXJlJ3MgZ29pbmcgdG8g
-YmUgbW9yZQpkdXBsaWNhdGlvbiwgYnV0IHRoZW4gaXQncyBzdXBlciBlYXN5IHRvIHVuZGVyc3Rh
-bmQgd2hpY2ggcGxhdGZvcm0gaGFzIHdoaWNoCnJlZ2lzdGVycy4KClRoZSB3aG9sZSB2ZXJzaW9u
-aW5nIHN5c3RlbSBpcyBhIGxpdHRsZSBzdHJhbmdlLiBGb3IgZXhhbXBsZSwgaXMgZWFjaCB2ZXJz
-aW9uCmd1YXJhbnRlZWQgdG8gaGF2ZSB0aGUgcmVnaXN0ZXJlZCBkZWZpbmVkIGZvciB0aGUgcHJl
-dmlvdXMgdmVyc2lvbiAoaWU6IDMuNgpjb250YWlucyBhbGwgcmVnaXN0ZXJzIGRlZmluZWQgZm9y
-IDMuNSk/CgpTZWFuCgoKPHNuaXA+Cgo+IC0tIAo+IDEuOS4xCj4gCj4gCj4gX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVsLCBT
-b2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Heiko,
+
+On Wed, Jul 12, 2017 at 08:30:55PM +0200, Heiko Stuebner wrote:
+> Am Mittwoch, 12. Juli 2017, 10:26:39 CEST schrieb Brian Norris:
+> > On Wed, May 03, 2017 at 10:56:25AM +0100, Guillaume Tucker wrote:
+> > > The ARM Mali Midgard GPU family is present in a number of SoCs
+> > > from many different vendors such as Samsung Exynos and Rockchip.
+> > > 
+> > > Import the device tree bindings documentation from the r16p0
+> > > 
+> > > release of the Mali Midgard GPU kernel driver:
+> > >   https://developer.arm.com/-/media/Files/downloads/mali-drivers/kernel/ma
+> > >   li-midgard-gpu/TX011-SW-99002-r16p0-00rel0.tgz> 
+> > > Remove the copyright and GPL licence header as deemed not necessary.
+> > > 
+> > > Redesign the "compatible" property strings to list all the Mali
+> > > Midgard GPU types and add vendor specific ones.
+> > > 
+> > > Drop the "clock-names" property as the Mali Midgard GPU uses only one
+> > > clock (the driver now needs to call clk_get with NULL).
+> > > 
+> > > Convert the "interrupt-names" property values to lower-case: "job",
+> > > "mmu" and "gpu".
+> > > 
+> > > Replace the deprecated "operating-points" optional property with
+> > > "operating-points-v2".
+> > > 
+> > > Omit the following optional properties in this initial version as they
+> > > 
+> > > are only used in very specific cases:
+> > >   * snoop_enable_smc
+> > >   * snoop_disable_smc
+> > >   * jm_config
+> > >   * power_model
+> > >   * system-coherency
+> > >   * ipa-model
+> > > 
+> > > Update the example accordingly to reflect all these changes, based on
+> > > rk3288 mali-t760.
+> > > 
+> > > CC: John Reitan <john.reitan-5wv7dgnIgG8@public.gmane.org>
+> > > Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > > Signed-off-by: Guillaume Tucker <guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > > ---
+> > > 
+> > >  .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 86
+> > >  ++++++++++++++++++++++ 1 file changed, 86 insertions(+)
+> > >  create mode 100644
+> > >  Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt> 
+> > > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> > > b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt new file
+> > > mode 100644
+> > > index 000000000000..d3b6e1a4713a
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
+> > 
+> > ^^ This file name implies we're talking about a base "arm,mali-midgard"
+> > compatible property.
+> 
+> it follows the precedent of arm,mali-utgard.txt and while the file-name
+> is not part of the compatible list, it feels way better collecting all the 
+> variants in one file, compared to spawning multiple ones for each soc
+> vendor using a mali gpu.
+> 
+> Also in other places the naming of binding descriptions does not follow
+> any compatible at all, so the filename = main-compatible does not seem
+> to be the rule.
+
+Well, when they do get a name in the form of "<vendor>,<foo>.txt", the
+"<vendor>,<foo>" is usually at least *a* valid compatible string. For
+example, "nvidia,gk20a.txt" has several other strings, but its filename
+is one of the supported ones.
+
+Anyway, that wasn't my main worry. I was mostly curious about the body
+of the text.
+
+> > > @@ -0,0 +1,86 @@
+> > > +ARM Mali Midgard GPU
+> > > +====================
+> > > +
+> > > +Required properties:
+> > > +
+> > > +- compatible :
+> > > +  * Must contain one of the following:
+> > > +    + "arm,mali-t604"
+> > > +    + "arm,mali-t624"
+> > > +    + "arm,mali-t628"
+> > > +    + "arm,mali-t720"
+> > > +    + "arm,mali-t760"
+> > > +    + "arm,mali-t820"
+> > > +    + "arm,mali-t830"
+> > > +    + "arm,mali-t860"
+> > > +    + "arm,mali-t880"
+> > > +  * which must be preceded by one of the following vendor specifics:
+> > > +    + "amlogic,meson-gxm-mali"
+> > > +    + "rockchip,rk3288-mali"
+> > 
+> > But it's not listed here.
+> > 
+> > > +
+> > > +- reg : Physical base address of the device and length of the register
+> > > area. +
+> > > +- interrupts : Contains the three IRQ lines required by Mali Midgard
+> > > devices. +
+> > > +- interrupt-names : Contains the names of IRQ resources in the order they
+> > > were +  provided in the interrupts property. Must contain: "job", "mmu",
+> > > "gpu". +
+> > > +
+> > > +Optional properties:
+> > > +
+> > > +- clocks : Phandle to clock for the Mali Midgard device.
+> > > +
+> > > +- mali-supply : Phandle to regulator for the Mali device. Refer to
+> > > +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
+> > > +
+> > > +- operating-points-v2 : Refer to
+> > > Documentation/devicetree/bindings/power/opp.txt +  for details.
+> > > +
+> > > +
+> > > +Example for a Mali-T760:
+> > > +
+> > > +gpu@ffa30000 {
+> > > +	compatible = "rockchip,rk3288-mali", "arm,mali-t760",
+> > > "arm,mali-midgard";
+> > 
+> > And it *is* used here in this example.
+> > 
+> > So, should it be used/documented or not?
+> 
+> No I don't think it should and have patches that drop the mali-midgard from
+> the example + rk3288 dtsi to not confuse people:
+> - https://patchwork.kernel.org/patch/9832811/
+> - https://patchwork.kernel.org/patch/9832807/
+
+I didn't notice those. Thanks.
+
+> Devicetree supposedly should not contain wildcards and without knowing
+> for real that all of then in fact are compatible we should not assume so
+> [and that's hard to check with all the secrecy :-) ] . Using the real name 
+> (tXXX) sounds nice enough.
+
+Fine with me.
+
+Brian
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
