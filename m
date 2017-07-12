@@ -1,86 +1,28 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/7] pwm: rockchip: Add APB and function both clocks support
-Date: Wed, 12 Jul 2017 21:09:30 +0200
-Message-ID: <2474407.Xar3q3nCx6@diego>
-References: <1499486629-9659-1-git-send-email-david.wu@rock-chips.com> <CAD=FV=Vqkueo_cqU8bJXXT3pV5d1dZR5LF+c=O-Ka1qR-Ff-WQ@mail.gmail.com> <caba81f3-d066-d64e-7e8e-6457b759e757@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RESEND PATCH v2 1/7] ARM: dts: rockchip: add cpu enable method for rk3228 SoC
+Date: Thu, 13 Jul 2017 01:34:10 +0200
+Message-ID: <48386264.sWdhVGKZz6@phil>
+References: <1498127402-6705-1-git-send-email-frank.wang@rock-chips.com> <1498127402-6705-2-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <caba81f3-d066-d64e-7e8e-6457b759e757-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?utf-8?B?6buE5rab?= <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1498127402-6705-2-git-send-email-frank.wang@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: robh+dt@kernel.org, ulf.hansson@linaro.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org, charles.chen@rock-chips.com, kevan.lan@rock-chips.com, huangtao@rock-chips.com, finley.xiao@rock-chips.com, david.wu@rock-chips.com, shawn.lin@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
-
-Am Mittwoch, 12. Juli 2017, 16:38:09 CEST schrieb David.Wu:
-> Hi Doug,
+Am Donnerstag, 22. Juni 2017, 18:29:56 CEST schrieb Frank Wang:
+> This patch sets PSCI as the default cpu enable-method for RK3228 SoC.
 > 
-> 在 2017/7/12 1:03, Doug Anderson 写道:
-> > Hi,
-> > 
-> > On Fri, Jul 7, 2017 at 9:03 PM, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> >> @@ -6,7 +6,13 @@ Required properties:
-> >>      "rockchip,rk3288-pwm": found on RK3288 SoC
-> >>      "rockchip,vop-pwm": found integrated in VOP on RK3288 SoC
-> >>    
-> >>    - reg: physical base address and length of the controller's registers
-> >> 
-> >> - - clocks: phandle and clock specifier of the PWM reference clock
-> >> + - clocks: See ../clock/clock-bindings.txt
-> >> +   - For older hardware (rk2928, rk3066, rk3188, rk3228, rk3288,
-> >> rk3399):
-> >> +     - There is one clock that's used both to derive the functional
-> >> clock
-> >> +       for the device and as the bus clock.
-> >> +   - For newer hardware (rk3328 and future socs): specified by name
-> >> +     - "pwm": This is used to derive the functional clock.
-> >> +     - "pclk": This is the APB bus clock.
-> > 
-> > I'm pretty sure that that the above description doesn't quite match the
-> > code.
-> > 
-> > * The above description says that for old hardware there is one clock
-> > and 'clock-names' was not necessary (though as I understand it it's OK
-> > if it's there).
-> > 
-> > * The old code matched the old description.  AKA: if there was no
-> > "clock-names" then everything was OK.
-> > 
-> > * The new code will not work if there was no "clock-names".
-> > 
-> > Many of the old devices had a clock-names present (and it was "pwm"),
-> > but not all.  Specifically it looks like
-> > "arch/arm/boot/dts/rk3xxx.dtsi" doesn't specify a clock-names.
-> 
-> So we can keep code: the pc->clk = devm_clk_get(&pdev->dev, NULL);
-> If the name is NULL, we can get the first clk defined at DTB.
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
 
-I don't think it will work that way.
+I've seen the work on OP-TEE mainlining for the psci implementation
+which seems to be progressing nicely and with the code in the open
+now, it's possible to replace the firmware if needed.
 
-clk_get with NULL argument will likely grab the first clock of the list
-independent of clock-names being present.
-
-It might be better to do something like [pseudo-code]:
-
-pwm->pclk = clk_get( ..., "pclk");
-if (IS_ERR(pwm->pclk))
-	pwm->pclk = NULL;
-
-pwm->pwm_clk = clk_get(..., "pwm");
-if (IS_ERR(pwm->pwm_clk))
-	pwm->pwm_clk = clk_get(..., NULL);
-if (IS_ERR(pwm->pwm_clk))
-	return PTR_ERR(pwm->pwm_clk);
-
-That way, you make your way backwards through the pwm-binding-history.
-Ending at the single-clock without clock-names property as the last fallback.
+So I've applied this patch for 4.14.
 
 
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
