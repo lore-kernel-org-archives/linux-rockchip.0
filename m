@@ -1,99 +1,95 @@
-From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/7] pwm: rockchip: Add APB and function both clocks
- support
-Date: Wed, 12 Jul 2017 16:38:09 +0800
-Message-ID: <caba81f3-d066-d64e-7e8e-6457b759e757@rock-chips.com>
-References: <1499486629-9659-1-git-send-email-david.wu@rock-chips.com>
- <1499486629-9659-2-git-send-email-david.wu@rock-chips.com>
- <CAD=FV=Vqkueo_cqU8bJXXT3pV5d1dZR5LF+c=O-Ka1qR-Ff-WQ@mail.gmail.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: add ARM Mali GPU node for
+ RK3399 SoCs
+Date: Wed, 12 Jul 2017 17:16:29 +0800
+Message-ID: <3c3a2e24-7cb1-dc31-6532-1d6182bdf3ee@gmail.com>
+References: <1499840971-20392-1-git-send-email-wxt@rock-chips.com>
+ <1499840971-20392-3-git-send-email-wxt@rock-chips.com>
+ <4066931.s766IOqHgB@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=Vqkueo_cqU8bJXXT3pV5d1dZR5LF+c=O-Ka1qR-Ff-WQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <4066931.s766IOqHgB@phil>
+Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?B?6buE5rab?= <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-
-在 2017/7/12 1:03, Doug Anderson 写道:
-> Hi,
-> 
-> On Fri, Jul 7, 2017 at 9:03 PM, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> 
->> @@ -6,7 +6,13 @@ Required properties:
->>      "rockchip,rk3288-pwm": found on RK3288 SoC
->>      "rockchip,vop-pwm": found integrated in VOP on RK3288 SoC
->>    - reg: physical base address and length of the controller's registers
->> - - clocks: phandle and clock specifier of the PWM reference clock
->> + - clocks: See ../clock/clock-bindings.txt
->> +   - For older hardware (rk2928, rk3066, rk3188, rk3228, rk3288, rk3399):
->> +     - There is one clock that's used both to derive the functional clock
->> +       for the device and as the bus clock.
->> +   - For newer hardware (rk3328 and future socs): specified by name
->> +     - "pwm": This is used to derive the functional clock.
->> +     - "pclk": This is the APB bus clock.
-> 
-> I'm pretty sure that that the above description doesn't quite match the code.
-> 
-> * The above description says that for old hardware there is one clock
-> and 'clock-names' was not necessary (though as I understand it it's OK
-> if it's there).
-> 
-> * The old code matched the old description.  AKA: if there was no
-> "clock-names" then everything was OK.
-> 
-> * The new code will not work if there was no "clock-names".
-> 
-> Many of the old devices had a clock-names present (and it was "pwm"),
-> but not all.  Specifically it looks like
-> "arch/arm/boot/dts/rk3xxx.dtsi" doesn't specify a clock-names.
-> 
-
-So we can keep code: the pc->clk = devm_clk_get(&pdev->dev, NULL);
-If the name is NULL, we can get the first clk defined at DTB.
-
->> @@ -343,13 +344,38 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
->>          if (IS_ERR(pc->base))
->>                  return PTR_ERR(pc->base);
+在 2017年07月12日 15:19, Heiko Stuebner 写道:
+> Hi Caesar,
+>
+> Am Mittwoch, 12. Juli 2017, 14:29:28 CEST schrieb Caesar Wang:
+>> Add Mali GPU device tree node for the RK3399 SoCs, with devfreq
+>> opp table.
 >>
->> -       pc->clk = devm_clk_get(&pdev->dev, NULL);
->> -       if (IS_ERR(pc->clk))
->> -               return PTR_ERR(pc->clk);
->> +       pc->clk = devm_clk_get(&pdev->dev, "pwm");
->> +       count = of_property_count_strings(pdev->dev.of_node, "clock-names");
->> +       if (count == 2)
->> +               pc->pclk = devm_clk_get(&pdev->dev, "pclk");
->> +       else
->> +               pc->pclk = pc->clk;
->> +
->> +       if (IS_ERR(pc->clk)) {
->> +               ret = PTR_ERR(pc->clk);
->> +               if (ret != -EPROBE_DEFER)
->> +                       dev_err(&pdev->dev, "Can't get bus clk: %d\n", ret);
->> +               return ret;
->> +       }
->> +
->> +       if (IS_ERR(pc->pclk)) {
->> +               ret = PTR_ERR(pc->pclk);
->> +               if (ret != -EPROBE_DEFER)
->> +                       dev_err(&pdev->dev, "Can't get APB clk: %d\n", ret);
->> +               return ret;
->> +       }
-> 
-> In the above code you need to check the count _before_ trying to get
-> the clock by name.
+>> RK3399 and RK3399-OP1 SoCs have a different recommendation table with
+>> gpu opp. As the ARM's mali driver found on
+>> https://developer.arm.com/products/software/mali-drivers/midgard-kernel.
+>>
+>> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>>   arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi | 33 ++++++++++++++++++++++++
+>>   arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi     | 33 ++++++++++++++++++++++++
+>>   arch/arm64/boot/dts/rockchip/rk3399.dtsi         | 16 ++++++++++++
+>>   3 files changed, 82 insertions(+)
+> [...]
+>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index 1cbd7a2..8c6438b 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -1443,6 +1443,22 @@
+>>   		status = "disabled";
+>>   	};
+>>   
+>> +	gpu: gpu@ff9a0000 {
+>> +		compatible = "arm,rk3399-mali",
+>> +			     "arm,malit860",
+>> +			     "arm,malit86x",
+>> +			     "arm,malit8xx";
+> no wildcards and correct compatibles please.
+> The binding specifies arm,mali-t860 for your chip and the soc
+> specific compatible needs a rockchip vendor, so you need
+>
+> 	compatible = "rockchip,rk3399-mali", "arm,mali-t860";
+>
 
-Okay, I will fix it.
+Okay,  sound resonable.
 
-> 
-> 
-> -Doug
-> 
-> 
-> 
+>> +		reg = <0x0 0xff9a0000 0x0 0x10000>;
+>> +		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>,
+>> +			     <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
+>> +			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>;
+>> +		interrupt-names = "GPU", "JOB", "MMU";
+> interrupt names are job, mmu, gpu in lower case. The out-of-tree driver
+> will need to conform to that.
+
+Okay, we need update the ARM's mali driver to follow up.
+
+>> +		clocks = <&cru ACLK_GPU>;
+>> +		clock-names = "clk_mali";
+> no clock-names property, as midgard malis only have one clock input
+
+Sorry, I seem to be reference for the MAILI's document, not the Linux 
+document.
+
+Update these for patches v2.
+
+Thanks your comments.
+
+-Caesar
+
+>
+> Heiko
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
