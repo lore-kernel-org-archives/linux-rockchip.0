@@ -1,107 +1,49 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 3/5] drm/rockchip: vop: move line_flag_num to
- interrupt registers
-Date: Wed, 12 Jul 2017 13:54:37 -0400
-Message-ID: <20170712175437.6do5shj2evqft7nc@art_vandelay>
-References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
- <1499825027-7552-1-git-send-email-mark.yao@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH] PCI: rockchip: fix wrong check of
+ pci_scan_root_bus_bridge
+Date: Wed, 12 Jul 2017 12:55:25 -0500
+Message-ID: <20170712175525.GC14614@bhelgaas-glaptop.roam.corp.google.com>
+References: <1499768108-48891-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1499825027-7552-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1499768108-48891-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBKdWwgMTIsIDIwMTcgYXQgMTA6MDM6NDZBTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
-CgpBZ2FpbiwgcGxlYXNlIGFkZCBjb21taXQgbWVzc2FnZSBkZXNjcmliaW5nIHRoZSB3aGF0IGFu
-ZCB3aHkgb2YgdGhpcyBjaGFuZ2UuCgpZb3UgY2FuIGFsc28gYWRkOgoKUmV2aWV3ZWQtYnk6IFNl
-YW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKCj4gU2lnbmVkLW9mZi1ieTogTWFyayBZ
-YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgNCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF92b3BfcmVnLmMgfCA4ICsrKystLS0tCj4gIDMgZmlsZXMgY2hhbmdlZCwgNyBp
-bnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4IGE5MTgwZmQuLmJlMjA4ZWUgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtNTA3LDcg
-KzUwNyw3IEBAIHN0YXRpYyB2b2lkIHZvcF9saW5lX2ZsYWdfaXJxX2VuYWJsZShzdHJ1Y3Qgdm9w
-ICp2b3AsIGludCBsaW5lX251bSkKPiAgCj4gIAlzcGluX2xvY2tfaXJxc2F2ZSgmdm9wLT5pcnFf
-bG9jaywgZmxhZ3MpOwo+ICAKPiAtCVZPUF9DVFJMX1NFVCh2b3AsIGxpbmVfZmxhZ19udW1bMF0s
-IGxpbmVfbnVtKTsKPiArCVZPUF9JTlRSX1NFVCh2b3AsIGxpbmVfZmxhZ19udW1bMF0sIGxpbmVf
-bnVtKTsKPiAgCVZPUF9JTlRSX1NFVF9UWVBFKHZvcCwgY2xlYXIsIExJTkVfRkxBR19JTlRSLCAx
-KTsKPiAgCVZPUF9JTlRSX1NFVF9UWVBFKHZvcCwgZW5hYmxlLCBMSU5FX0ZMQUdfSU5UUiwgMSk7
-Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAo+IGlu
-ZGV4IGU0ZGU4OTAuLmY2NDY4NWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmgKPiBAQCAtNzAsOCArNzAsNiBAQCBzdHJ1Y3Qgdm9wX2N0cmwgewo+
-ICAJc3RydWN0IHZvcF9yZWcgaHBvc3Rfc3RfZW5kOwo+ICAJc3RydWN0IHZvcF9yZWcgdnBvc3Rf
-c3RfZW5kOwo+ICAKPiAtCXN0cnVjdCB2b3BfcmVnIGxpbmVfZmxhZ19udW1bMl07Cj4gLQo+ICAJ
-c3RydWN0IHZvcF9yZWcgZ2xvYmFsX3JlZ2RvbmVfZW47Cj4gIAlzdHJ1Y3Qgdm9wX3JlZyBjZmdf
-ZG9uZTsKPiAgfTsKPiBAQCAtNzksNiArNzcsOCBAQCBzdHJ1Y3Qgdm9wX2N0cmwgewo+ICBzdHJ1
-Y3Qgdm9wX2ludHIgewo+ICAJY29uc3QgaW50ICppbnRyczsKPiAgCXVpbnQzMl90IG5pbnRyczsK
-PiArCj4gKwlzdHJ1Y3Qgdm9wX3JlZyBsaW5lX2ZsYWdfbnVtWzJdOwo+ICAJc3RydWN0IHZvcF9y
-ZWcgZW5hYmxlOwo+ICAJc3RydWN0IHZvcF9yZWcgY2xlYXI7Cj4gIAlzdHJ1Y3Qgdm9wX3JlZyBz
-dGF0dXM7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92
-b3BfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4g
-aW5kZXggNzc0NDYwMy4uMTU5Y2VkZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX3ZvcF9yZWcuYwo+IEBAIC0xMTgsNiArMTE4LDcgQEAKPiAgc3RhdGljIGNvbnN0
-IHN0cnVjdCB2b3BfaW50ciByazMwMzZfaW50ciA9IHsKPiAgCS5pbnRycyA9IHJrMzAzNl92b3Bf
-aW50cnMsCj4gIAkubmludHJzID0gQVJSQVlfU0laRShyazMwMzZfdm9wX2ludHJzKSwKPiArCS5s
-aW5lX2ZsYWdfbnVtWzBdID0gVk9QX1JFRyhSSzMwMzZfSU5UX1NUQVRVUywgMHhmZmYsIDEyKSwK
-PiAgCS5zdGF0dXMgPSBWT1BfUkVHKFJLMzAzNl9JTlRfU1RBVFVTLCAweGYsIDApLAo+ICAJLmVu
-YWJsZSA9IFZPUF9SRUcoUkszMDM2X0lOVF9TVEFUVVMsIDB4ZiwgNCksCj4gIAkuY2xlYXIgPSBW
-T1BfUkVHKFJLMzAzNl9JTlRfU1RBVFVTLCAweGYsIDgpLAo+IEBAIC0xMzEsNyArMTMyLDYgQEAK
-PiAgCS5oYWN0X3N0X2VuZCA9IFZPUF9SRUcoUkszMDM2X0RTUF9IQUNUX1NUX0VORCwgMHgxZmZm
-MWZmZiwgMCksCj4gIAkudnRvdGFsX3B3ID0gVk9QX1JFRyhSSzMwMzZfRFNQX1ZUT1RBTF9WU19F
-TkQsIDB4MWZmZjFmZmYsIDApLAo+ICAJLnZhY3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMwMzZfRFNQ
-X1ZBQ1RfU1RfRU5ELCAweDFmZmYxZmZmLCAwKSwKPiAtCS5saW5lX2ZsYWdfbnVtWzBdID0gVk9Q
-X1JFRyhSSzMwMzZfSU5UX1NUQVRVUywgMHhmZmYsIDEyKSwKPiAgCS5jZmdfZG9uZSA9IFZPUF9S
-RUcoUkszMDM2X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKPiAgfTsKPiAgCj4gQEAgLTIyNyw3ICsy
-MjcsNiBAQAo+ICAJLnZhY3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMyODhfRFNQX1ZBQ1RfU1RfRU5E
-LCAweDFmZmYxZmZmLCAwKSwKPiAgCS5ocG9zdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzI4OF9QT1NU
-X0RTUF9IQUNUX0lORk8sIDB4MWZmZjFmZmYsIDApLAo+ICAJLnZwb3N0X3N0X2VuZCA9IFZPUF9S
-RUcoUkszMjg4X1BPU1RfRFNQX1ZBQ1RfSU5GTywgMHgxZmZmMWZmZiwgMCksCj4gLQkubGluZV9m
-bGFnX251bVswXSA9IFZPUF9SRUcoUkszMjg4X0lOVFJfQ1RSTDAsIDB4MWZmZiwgMTIpLAo+ICAJ
-Lmdsb2JhbF9yZWdkb25lX2VuID0gVk9QX1JFRyhSSzMyODhfU1lTX0NUUkwsIDB4MSwgMTEpLAo+
-ICAJLmNmZ19kb25lID0gVk9QX1JFRyhSSzMyODhfUkVHX0NGR19ET05FLCAweDEsIDApLAo+ICB9
-Owo+IEBAIC0yNTksNiArMjU4LDcgQEAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfaW50ciBy
-azMyODhfdm9wX2ludHIgPSB7Cj4gIAkuaW50cnMgPSByazMyODhfdm9wX2ludHJzLAo+ICAJLm5p
-bnRycyA9IEFSUkFZX1NJWkUocmszMjg4X3ZvcF9pbnRycyksCj4gKwkubGluZV9mbGFnX251bVsw
-XSA9IFZPUF9SRUcoUkszMjg4X0lOVFJfQ1RSTDAsIDB4MWZmZiwgMTIpLAo+ICAJLnN0YXR1cyA9
-IFZPUF9SRUcoUkszMjg4X0lOVFJfQ1RSTDAsIDB4ZiwgMCksCj4gIAkuZW5hYmxlID0gVk9QX1JF
-RyhSSzMyODhfSU5UUl9DVFJMMCwgMHhmLCA0KSwKPiAgCS5jbGVhciA9IFZPUF9SRUcoUkszMjg4
-X0lOVFJfQ1RSTDAsIDB4ZiwgOCksCj4gQEAgLTI5NSw4ICsyOTUsNiBAQAo+ICAJLnZhY3Rfc3Rf
-ZW5kID0gVk9QX1JFRyhSSzMzOTlfRFNQX1ZBQ1RfU1RfRU5ELCAweDFmZmYxZmZmLCAwKSwKPiAg
-CS5ocG9zdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzM5OV9QT1NUX0RTUF9IQUNUX0lORk8sIDB4MWZm
-ZjFmZmYsIDApLAo+ICAJLnZwb3N0X3N0X2VuZCA9IFZPUF9SRUcoUkszMzk5X1BPU1RfRFNQX1ZB
-Q1RfSU5GTywgMHgxZmZmMWZmZiwgMCksCj4gLQkubGluZV9mbGFnX251bVswXSA9IFZPUF9SRUco
-UkszMzk5X0xJTkVfRkxBRywgMHhmZmZmLCAwKSwKPiAtCS5saW5lX2ZsYWdfbnVtWzFdID0gVk9Q
-X1JFRyhSSzMzOTlfTElORV9GTEFHLCAweGZmZmYsIDE2KSwKPiAgCS5jZmdfZG9uZSA9IFZPUF9S
-RUdfTUFTSyhSSzMzOTlfUkVHX0NGR19ET05FLCAweDEsIDApLAo+ICB9Owo+ICAKPiBAQCAtMzEz
-LDYgKzMxMSw4IEBACj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2ludHIgcmszMzk5X3ZvcF9p
-bnRyID0gewo+ICAJLmludHJzID0gcmszMzk5X3ZvcF9pbnRycywKPiAgCS5uaW50cnMgPSBBUlJB
-WV9TSVpFKHJrMzM5OV92b3BfaW50cnMpLAo+ICsJLmxpbmVfZmxhZ19udW1bMF0gPSBWT1BfUkVH
-KFJLMzM5OV9MSU5FX0ZMQUcsIDB4ZmZmZiwgMCksCj4gKwkubGluZV9mbGFnX251bVsxXSA9IFZP
-UF9SRUcoUkszMzk5X0xJTkVfRkxBRywgMHhmZmZmLCAxNiksCj4gIAkuc3RhdHVzID0gVk9QX1JF
-R19NQVNLKFJLMzM5OV9JTlRSX1NUQVRVUzAsIDB4ZmZmZiwgMCksCj4gIAkuZW5hYmxlID0gVk9Q
-X1JFR19NQVNLKFJLMzM5OV9JTlRSX0VOMCwgMHhmZmZmLCAwKSwKPiAgCS5jbGVhciA9IFZPUF9S
-RUdfTUFTSyhSSzMzOTlfSU5UUl9DTEVBUjAsIDB4ZmZmZiwgMCksCj4gLS0gCj4gMS45LjEKPiAK
-PiAKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBP
-UwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Jul 11, 2017 at 06:15:08PM +0800, Shawn Lin wrote:
+> It's wrong to check the return value of pci_scan_root_bus_bridge
+> here by using (!err) as 0 means it successfully scans the root
+> bridge. So the probe process will be terminated mistakenly.
+> 
+> Fixes: ae13cb9b ("PCI: rockchip: Convert PCI scan API to ...")
+> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Applied with Lorenzo's ack to for-linus for v4.13, thanks!
+
+> ---
+> 
+>  drivers/pci/host/pcie-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 5acf869..7bb9870 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -1483,7 +1483,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	bridge->swizzle_irq = pci_common_swizzle;
+>  
+>  	err = pci_scan_root_bus_bridge(bridge);
+> -	if (!err)
+> +	if (err < 0)
+>  		goto err_free_res;
+>  
+>  	bus = bridge->bus;
+> -- 
+> 1.9.1
+> 
+> 
