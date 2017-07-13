@@ -1,14 +1,16 @@
 From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 4/5] drm/rockchip: vop: add a series of vop support
-Date: Thu, 13 Jul 2017 09:31:48 +0800
-Message-ID: <5966CD84.4040901@rock-chips.com>
+Subject: Re: [PATCH v2 2/5] drm/rockchip: vop: support verify registers with
+ vop version
+Date: Thu, 13 Jul 2017 09:45:12 +0800
+Message-ID: <5966D0A8.6060003@rock-chips.com>
 References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
- <1499825034-7604-1-git-send-email-mark.yao@rock-chips.com>
- <20170712183358.7n4vspuygiuu6era@art_vandelay>
+ <1499825019-7503-1-git-send-email-mark.yao@rock-chips.com>
+ <20170712175305.n7kk7dzvfs2vywz3@art_vandelay>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0108273350=="
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170712183358.7n4vspuygiuu6era@art_vandelay>
+In-Reply-To: <20170712175305.n7kk7dzvfs2vywz3@art_vandelay>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -22,221 +24,151 @@ To: Sean Paul <seanpaul@chromium.org>
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0108273350==
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  </head>
-  <body bgcolor="#FFFFFF" text="#000000">
-    <div class="moz-cite-prefix">On 2017年07月13日 02:33, Sean Paul wrote:<br>
-    </div>
-    <blockquote cite="mid:20170712183358.7n4vspuygiuu6era@art_vandelay"
-      type="cite">
-      <pre wrap="">On Wed, Jul 12, 2017 at 10:03:54AM +0800, Mark Yao wrote:
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">Vop Full framework now has following vops:
-IP version    chipname
-  3.1           rk3288
-  3.2           rk3368
-  3.4           rk3366
-  3.5           rk3399 big
-  3.6           rk3399 lit
-</pre>
-      </blockquote>
-      <pre wrap="">
-Below you say little vop is major == 2, but you have major == 3 here.</pre>
-    </blockquote>
-    <br>
-    "RK3399 lit" is a full design vop framework, just cut down some
-    feature from rk3399 big design, so it's IP major is 3.<br>
-    <br>
-    the little vop is rk3066, rk3188, rk3036, etc.<br>
-    <br>
-    <blockquote cite="mid:20170712183358.7n4vspuygiuu6era@art_vandelay"
-      type="cite">
-      <pre wrap="">
-
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">  3.7           rk3228
-  3.8           rk3328
-
-The above IP version is from H/W define, some of vop support get
-the IP version from VERSION_INFO register, some are not.
-hardcode the IP version for each vop to identify them.
-
-major version: used for IP structure, Vop full framework is 3,
-               vop little framework is 2.
-minor version: on same structure, newer design vop will bigger
-               then old one.
-
-Changes in v2:
-- rename rk322x to rk3228(Heiko Stübner)
-- correct some vop registers define
-
-Signed-off-by: Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>
----
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 202 +++++--
- drivers/gpu/drm/rockchip/rockchip_vop_reg.h | 905 ++++++++++++++++++++++------
- 2 files changed, 863 insertions(+), 244 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 159cedf..b33483c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -211,6 +211,7 @@
- 	.standby = VOP_REG(RK3288_SYS_CTRL, 0x1, 22),
- 	.gate_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 23),
- 	.mmu_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 20),
-+	.dp_en = VOP_REG_VER(RK3399_SYS_CTRL, 0x1, 11, 3, 5, -1),
- 	.rgb_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 12),
- 	.hdmi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 13),
- 	.edp_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 14),
-@@ -220,14 +221,19 @@
- 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
- 	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
- 	.out_mode = VOP_REG(RK3288_DSP_CTRL0, 0xf, 0),
--	.pin_pol = VOP_REG(RK3288_DSP_CTRL0, 0xf, 4),
-+	.pin_pol = VOP_REG_VER(RK3288_DSP_CTRL0, 0xf, 4, 3, 0, 1),
-+	.dp_pin_pol = VOP_REG_VER(RK3399_DSP_CTRL1, 0xf, 16, 3, 5, -1),
-+	.rgb_pin_pol = VOP_REG_VER(RK3368_DSP_CTRL1, 0xf, 16, 3, 2, -1),
-+	.hdmi_pin_pol = VOP_REG_VER(RK3368_DSP_CTRL1, 0xf, 20, 3, 2, -1),
-+	.edp_pin_pol = VOP_REG_VER(RK3368_DSP_CTRL1, 0xf, 24, 3, 2, -1),
-+	.mipi_pin_pol = VOP_REG_VER(RK3368_DSP_CTRL1, 0xf, 28, 3, 2, -1),
- 	.htotal_pw = VOP_REG(RK3288_DSP_HTOTAL_HS_END, 0x1fff1fff, 0),
- 	.hact_st_end = VOP_REG(RK3288_DSP_HACT_ST_END, 0x1fff1fff, 0),
- 	.vtotal_pw = VOP_REG(RK3288_DSP_VTOTAL_VS_END, 0x1fff1fff, 0),
- 	.vact_st_end = VOP_REG(RK3288_DSP_VACT_ST_END, 0x1fff1fff, 0),
- 	.hpost_st_end = VOP_REG(RK3288_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
- 	.vpost_st_end = VOP_REG(RK3288_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
--	.global_regdone_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 11),
-+	.global_regdone_en = VOP_REG_VER(RK3288_SYS_CTRL, 0x1, 11, 3, 2, -1),
- 	.cfg_done = VOP_REG(RK3288_REG_CFG_DONE, 0x1, 0),
-</pre>
-      </blockquote>
-      <pre wrap="">
-I'm not really convinced VOP_REG_VER is a good idea. In the case of dp_en and
-pin_pol, the register is already used for different offsets, so presumably
-you're writing into don't care offsets?</pre>
-    </blockquote>
-    <br>
-    VOP_REG_VER control when the register works.<br>
-    for pin_pol, it only works on version(3.0 - 3.1),  rk3288, it's
-    dummy operate on other chips.<br>
-    for dp_en, it works on version (3.5 - bigger), rk3399 big, rk3399
-    lit, rk322x, etc.<br>
-    it's dummy operate on rk3288, rk3368.<br>
-    <br>
-    Using VOP_REG means the register works on all platform,  Using
-    VOP_REG_VER means only can use on some platform.<br>
-    <br>
-    So don't worry about writing wrong offsets, the register would be
-    dummy on un-support platform.<br>
-    <blockquote cite="mid:20170712183358.7n4vspuygiuu6era@art_vandelay"
-      type="cite">
-      <pre wrap="">
-
-In the other cases, it just looks like a few new registers added for 3368 and
-3399. In this scenario, I don't think it's that bad to just have separate
-structs for each version that has distinct features. There's going to be more
-duplication, but then it's super easy to understand which platform has which
-registers.</pre>
-    </blockquote>
-    <br>
-    separate
-    structs is TODO on my plan, separate with control, modesetting, etc.<br>
-    but many register has no a clean group define, and need rewrite
-    write/read ops,<br>
-    need handle conflict for each platform.<br>
-    <br>
-    And I think  VOP_REG_VER mechanism can both works with separate
-    structs.
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <br>
-    <br>
-    <blockquote cite="mid:20170712183358.7n4vspuygiuu6era@art_vandelay"
-      type="cite">
-      <pre wrap="">
-
-The whole versioning system is a little strange. For example, is each version
-guaranteed to have the registered defined for the previous version (ie: 3.6
-contains all registers defined for 3.5)?</pre>
-    </blockquote>
-    <br>
-    Mostly, new version will contains all register of previous, if some
-    register only support on old version,<br>
-    example, pin_pol, only support on rk3288, use VOP_REG_VER limit it
-    only can work on 3288.<br>
-    so it's no problem for this case.<br>
-    <br>
-    And If newer design vop actually have many register difference, no
-    possible to using VOP_REG_VER,<br>
-    example rk3328, that means we need create a new register table for
-    it.<br>
-    <br>
-    <blockquote cite="mid:20170712183358.7n4vspuygiuu6era@art_vandelay"
-      type="cite">
-      <pre wrap="">
-
-Sean</pre>
-    </blockquote>
-    <br>
-    <br>
-    Using VOP_REG_VER is to solved tiny difference registers on same vop
-    design, then those<br>
-    vop can reuse register table. after that we can easy found what
-    register difference<br>
-    for those same design vop from register table.<br>
-    <br>
-    H/W design always do that on design update: fix bugs and add new
-    feature, <br>
-    With register table reusing, if we add a new feature for old design,
-    all the newer design<br>
-    will get benefit.<br>
-    <br>
-    <blockquote cite="mid:20170712183358.7n4vspuygiuu6era@art_vandelay"
-      type="cite">
-      <pre wrap="">
-
-
-&lt;snip&gt;
-
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">-- 
-1.9.1
-
-
-_______________________________________________
-dri-devel mailing list
-<a class="moz-txt-link-abbreviated" href="mailto:dri-devel@lists.freedesktop.org">dri-devel@lists.freedesktop.org</a>
-<a class="moz-txt-link-freetext" href="https://lists.freedesktop.org/mailman/listinfo/dri-devel">https://lists.freedesktop.org/mailman/listinfo/dri-devel</a>
-</pre>
-      </blockquote>
-      <pre wrap="">
-</pre>
-    </blockquote>
-    <br>
-    <br>
-    <pre class="moz-signature" cols="999999">-- 
-Ｍark Yao</pre>
-  </body>
-</html>
-
-
---===============0108273350==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============0108273350==--
+T24gMjAxN+W5tDA35pyIMTPml6UgMDE6NTMsIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBXZWQsIEp1
+bCAxMiwgMjAxNyBhdCAxMDowMzozOEFNICswODAwLCBNYXJrIFlhbyB3cm90ZToKPgo+IFBsZWFz
+ZSBhZGQgYSBjb21taXQgbWVzc2FnZSBkZXNjcmliaW5nICp3aGF0KiBhbmQgKndoeSogeW91IGFy
+ZSBtYWtpbmcgdGhlCj4gY2hhbmdlLgoKR290IGl0LCBJIHdpbGwgZml4IGl0IGF0IG5leHQgdmVy
+c2lvbi4KClRoYW5rcy4KPgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9j
+ay1jaGlwcy5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fdm9wLmMgfCA2NiArKysrKysrKysrKysrKysrKysrKystLS0tLS0tLQo+PiAgIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAxOCArKysrKystLQo+PiAg
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAyMCArKysrKyst
+LS0KPj4gICAzIGZpbGVzIGNoYW5nZWQsIDc3IGluc2VydGlvbnMoKyksIDI3IGRlbGV0aW9ucygt
+KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4g
+aW5kZXggN2E1ZjgwOS4uYTkxODBmZCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IEBAIC00MiwzMyArNDIsNjAgQEAKPj4gICAjaW5jbHVk
+ZSAicm9ja2NoaXBfZHJtX3Bzci5oIgo+PiAgICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fdm9wLmgi
+Cj4+ICAgCj4+IC0jZGVmaW5lIF9fUkVHX1NFVF9SRUxBWEVEKHgsIG9mZiwgbWFzaywgc2hpZnQs
+IHYsIHdyaXRlX21hc2spIFwKPj4gLQkJdm9wX21hc2tfd3JpdGUoeCwgb2ZmLCBtYXNrLCBzaGlm
+dCwgdiwgd3JpdGVfbWFzaywgdHJ1ZSkKPj4gKyNkZWZpbmUgVk9QX1JFR19TVVBQT1JUKHZvcCwg
+cmVnKSBcCj4+ICsJCSghcmVnLm1ham9yIHx8IChyZWcubWFqb3IgPT0gVk9QX01BSk9SKHZvcC0+
+ZGF0YS0+dmVyc2lvbikgJiYgXAo+PiArCQlyZWcuYmVnaW5fbWlub3IgPD0gVk9QX01JTk9SKHZv
+cC0+ZGF0YS0+dmVyc2lvbikgJiYgXAo+PiArCQlyZWcuZW5kX21pbm9yID49IFZPUF9NSU5PUih2
+b3AtPmRhdGEtPnZlcnNpb24pICYmIFwKPj4gKwkJcmVnLm1hc2spKQo+IFRoaXMgd291bGQgYmUg
+YmV0dGVyIHN1aXRlZCBhcyBhIHN0YXRpYyBpbmxpbmUgZnVuY3Rpb24uIEFzIHdvdWxkIG1hbnkg
+b2YgdGhlCj4gbWFjcm9zIGJlbG93LgoKR290IGl0LCB3aWxsIGZpeCBpdCBhdCBuZXh0IHZlcnNp
+b24uCj4KPj4gICAKPj4gLSNkZWZpbmUgX19SRUdfU0VUX05PUk1BTCh4LCBvZmYsIG1hc2ssIHNo
+aWZ0LCB2LCB3cml0ZV9tYXNrKSBcCj4+IC0JCXZvcF9tYXNrX3dyaXRlKHgsIG9mZiwgbWFzaywg
+c2hpZnQsIHYsIHdyaXRlX21hc2ssIGZhbHNlKQo+PiArI2RlZmluZSBWT1BfV0lOX1NVUFBPUlQo
+dm9wLCB3aW4sIG5hbWUpIFwKPj4gKwkJVk9QX1JFR19TVVBQT1JUKHZvcCwgd2luLT5waHktPm5h
+bWUpCj4+ICAgCj4+IC0jZGVmaW5lIFJFR19TRVQoeCwgYmFzZSwgcmVnLCB2LCBtb2RlKSBcCj4+
+IC0JCV9fUkVHX1NFVF8jI21vZGUoeCwgYmFzZSArIHJlZy5vZmZzZXQsIFwKPj4gLQkJCQkgcmVn
+Lm1hc2ssIHJlZy5zaGlmdCwgdiwgcmVnLndyaXRlX21hc2spCj4+IC0jZGVmaW5lIFJFR19TRVRf
+TUFTSyh4LCBiYXNlLCByZWcsIG1hc2ssIHYsIG1vZGUpIFwKPj4gLQkJX19SRUdfU0VUXyMjbW9k
+ZSh4LCBiYXNlICsgcmVnLm9mZnNldCwgXAo+PiAtCQkJCSBtYXNrLCByZWcuc2hpZnQsIHYsIHJl
+Zy53cml0ZV9tYXNrKQo+PiArI2RlZmluZSBWT1BfQ1RSTF9TVVBQT1JUKHZvcCwgbmFtZSkgXAo+
+PiArCQlWT1BfUkVHX1NVUFBPUlQodm9wLCB2b3AtPmRhdGEtPmN0cmwtPm5hbWUpCj4+ICsKPj4g
+KyNkZWZpbmUgVk9QX0lOVFJfU1VQUE9SVCh2b3AsIG5hbWUpIFwKPj4gKwkJVk9QX1JFR19TVVBQ
+T1JUKHZvcCwgdm9wLT5kYXRhLT5pbnRyLT5uYW1lKQo+PiArCj4+ICsjZGVmaW5lIF9fUkVHX1NF
+VCh4LCBvZmYsIG1hc2ssIHNoaWZ0LCB2LCB3cml0ZV9tYXNrLCByZWxheGVkKSBcCj4+ICsJCXZv
+cF9tYXNrX3dyaXRlKHgsIG9mZiwgbWFzaywgc2hpZnQsIHYsIHdyaXRlX21hc2ssIHJlbGF4ZWQp
+Cj4gVGhlcmUncyByZWFsbHkgbm8gcG9pbnQgdG8gdGhpcywganVzdCBjYWxsIHZvcF9tYXNrX3dy
+aXRlIGRpcmVjdGx5LgoKR290IGl0LCB3aWxsIGZpeCBpdCBhdCBuZXh0IHZlcnNpb24uCj4KPj4g
+Kwo+PiArI2RlZmluZSBfUkVHX1NFVCh2b3AsIG5hbWUsIG9mZiwgcmVnLCBtYXNrLCB2LCByZWxh
+eGVkKSBcCj4+ICsJZG8geyBcCj4+ICsJCWlmIChWT1BfUkVHX1NVUFBPUlQodm9wLCByZWcpKSBc
+Cj4+ICsJCQlfX1JFR19TRVQodm9wLCBvZmYgKyByZWcub2Zmc2V0LCBtYXNrLCByZWcuc2hpZnQs
+IFwKPiBzL21hc2svcmVnLm1hc2sgJiBtYXNrLwoKR290IGl0LCB3aWxsIGZpeCBpdCBhdCBuZXh0
+IHZlcnNpb24uCj4KPj4gKwkJCQkgIHYsIHJlZy53cml0ZV9tYXNrLCByZWxheGVkKTsgXAo+PiAr
+CQllbHNlIFwKPj4gKwkJCWRldl9kYmcodm9wLT5kZXYsICJXYXJuaW5nOiBub3Qgc3VwcG9ydCAi
+I25hbWUiXG4iKTsgXAo+PiArCX0gd2hpbGUgKDApCj4KPiBBbHNvIGJldHRlciBhcyBzdGF0aWMg
+aW5saW5lLCBJTU8uCgpHb29kIGlkZWEsIEkgd2lsbCB0cnkgaXQuCgo+Cj4+ICsKPj4gKyNkZWZp
+bmUgUkVHX1NFVCh4LCBuYW1lLCBvZmYsIHJlZywgdiwgcmVsYXhlZCkgXAo+PiArCQlfUkVHX1NF
+VCh4LCBuYW1lLCBvZmYsIHJlZywgcmVnLm1hc2ssIHYsIHJlbGF4ZWQpCj4gcy9yZWcubWFzay9+
+MC8KCkdvdCBpdCwgd2lsbCBmaXggaXQgYXQgbmV4dCB2ZXJzaW9uLgo+Cj4+ICsjZGVmaW5lIFJF
+R19TRVRfTUFTSyh4LCBuYW1lLCBvZmYsIHJlZywgbWFzaywgdiwgcmVsYXhlZCkgXAo+PiArCQlf
+UkVHX1NFVCh4LCBuYW1lLCBvZmYsIHJlZywgcmVnLm1hc2sgJiBtYXNrLCB2LCByZWxheGVkKQo+
+IHMvcmVnLm1hc2sgJi8vCj4KPiBBbHNvLCB0aGVzZSBjYW4gYmVjb21lIHN0YXRpYyBpbmxpbmUg
+ZnVuY3Rpb25zIGFzIHdlbGwuCgpHb3QgaXQsIHdpbGwgZml4IGl0IGF0IG5leHQgdmVyc2lvbi4K
+Pgo+PiAgIAo+PiAgICNkZWZpbmUgVk9QX1dJTl9TRVQoeCwgd2luLCBuYW1lLCB2KSBcCj4+IC0J
+CVJFR19TRVQoeCwgd2luLT5iYXNlLCB3aW4tPnBoeS0+bmFtZSwgdiwgUkVMQVhFRCkKPj4gKwkJ
+UkVHX1NFVCh4LCBuYW1lLCB3aW4tPmJhc2UsIHdpbi0+cGh5LT5uYW1lLCB2LCB0cnVlKQo+PiAr
+I2RlZmluZSBWT1BfV0lOX1NFVF9FWFQoeCwgd2luLCBleHQsIG5hbWUsIHYpIFwKPj4gKwkJUkVH
+X1NFVCh4LCBuYW1lLCAwLCB3aW4tPmV4dC0+bmFtZSwgdiwgdHJ1ZSkKPj4gICAjZGVmaW5lIFZP
+UF9TQ0xfU0VUKHgsIHdpbiwgbmFtZSwgdikgXAo+PiAtCQlSRUdfU0VUKHgsIHdpbi0+YmFzZSwg
+d2luLT5waHktPnNjbC0+bmFtZSwgdiwgUkVMQVhFRCkKPj4gKwkJUkVHX1NFVCh4LCBuYW1lLCB3
+aW4tPmJhc2UsIHdpbi0+cGh5LT5zY2wtPm5hbWUsIHYsIHRydWUpCj4+ICAgI2RlZmluZSBWT1Bf
+U0NMX1NFVF9FWFQoeCwgd2luLCBuYW1lLCB2KSBcCj4+IC0JCVJFR19TRVQoeCwgd2luLT5iYXNl
+LCB3aW4tPnBoeS0+c2NsLT5leHQtPm5hbWUsIHYsIFJFTEFYRUQpCj4+ICsJCVJFR19TRVQoeCwg
+bmFtZSwgd2luLT5iYXNlLCB3aW4tPnBoeS0+c2NsLT5leHQtPm5hbWUsIHYsIHRydWUpCj4+ICsK
+Pj4gICAjZGVmaW5lIFZPUF9DVFJMX1NFVCh4LCBuYW1lLCB2KSBcCj4+IC0JCVJFR19TRVQoeCwg
+MCwgKHgpLT5kYXRhLT5jdHJsLT5uYW1lLCB2LCBOT1JNQUwpCj4+ICsJCVJFR19TRVQoeCwgbmFt
+ZSwgMCwgKHgpLT5kYXRhLT5jdHJsLT5uYW1lLCB2LCBmYWxzZSkKPj4gICAKPj4gICAjZGVmaW5l
+IFZPUF9JTlRSX0dFVCh2b3AsIG5hbWUpIFwKPj4gICAJCXZvcF9yZWFkX3JlZyh2b3AsIDAsICZ2
+b3AtPmRhdGEtPmN0cmwtPm5hbWUpCj4+ICAgCj4+IC0jZGVmaW5lIFZPUF9JTlRSX1NFVCh2b3As
+IG5hbWUsIG1hc2ssIHYpIFwKPj4gLQkJUkVHX1NFVF9NQVNLKHZvcCwgMCwgdm9wLT5kYXRhLT5p
+bnRyLT5uYW1lLCBtYXNrLCB2LCBOT1JNQUwpCj4+ICsjZGVmaW5lIFZPUF9JTlRSX1NFVCh2b3As
+IG5hbWUsIHYpIFwKPj4gKwkJUkVHX1NFVCh2b3AsIG5hbWUsIDAsIHZvcC0+ZGF0YS0+aW50ci0+
+bmFtZSwgXAo+PiArCQkJdiwgZmFsc2UpCj4+ICsjZGVmaW5lIFZPUF9JTlRSX1NFVF9NQVNLKHZv
+cCwgbmFtZSwgbWFzaywgdikgXAo+PiArCQlSRUdfU0VUX01BU0sodm9wLCBuYW1lLCAwLCB2b3At
+PmRhdGEtPmludHItPm5hbWUsIFwKPj4gKwkJCSAgICAgbWFzaywgdiwgZmFsc2UpCj4+ICsKPj4g
+ICAjZGVmaW5lIFZPUF9JTlRSX1NFVF9UWVBFKHZvcCwgbmFtZSwgdHlwZSwgdikgXAo+PiAgIAlk
+byB7IFwKPj4gICAJCWludCBpLCByZWcgPSAwLCBtYXNrID0gMDsgXAo+PiBAQCAtNzgsMTMgKzEw
+NSwxNiBAQAo+PiAgIAkJCQltYXNrIHw9IDEgPDwgaTsgXAo+PiAgIAkJCX0gXAo+PiAgIAkJfSBc
+Cj4+IC0JCVZPUF9JTlRSX1NFVCh2b3AsIG5hbWUsIG1hc2ssIHJlZyk7IFwKPj4gKwkJVk9QX0lO
+VFJfU0VUX01BU0sodm9wLCBuYW1lLCBtYXNrLCByZWcpOyBcCj4+ICAgCX0gd2hpbGUgKDApCj4+
+ICAgI2RlZmluZSBWT1BfSU5UUl9HRVRfVFlQRSh2b3AsIG5hbWUsIHR5cGUpIFwKPj4gICAJCXZv
+cF9nZXRfaW50cl90eXBlKHZvcCwgJnZvcC0+ZGF0YS0+aW50ci0+bmFtZSwgdHlwZSkKPj4gICAK
+Pj4gKyNkZWZpbmUgVk9QX0NUUkxfR0VUKHgsIG5hbWUpIFwKPj4gKwkJdm9wX3JlYWRfcmVnKHgs
+IDAsICZ2b3AtPmRhdGEtPmN0cmwtPm5hbWUpCj4+ICsKPj4gICAjZGVmaW5lIFZPUF9XSU5fR0VU
+KHgsIHdpbiwgbmFtZSkgXAo+PiAtCQl2b3BfcmVhZF9yZWcoeCwgd2luLT5iYXNlLCAmd2luLT5w
+aHktPm5hbWUpCj4+ICsJCXZvcF9yZWFkX3JlZyh4LCB3aW4tPm9mZnNldCwgd2luLT5waHktPm5h
+bWUpCj4+ICAgCj4+ICAgI2RlZmluZSBWT1BfV0lOX0dFVF9ZUkdCQUREUih2b3AsIHdpbikgXAo+
+PiAgIAkJdm9wX3JlYWRsKHZvcCwgd2luLT5iYXNlICsgd2luLT5waHktPnlyZ2JfbXN0Lm9mZnNl
+dCkKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+dm9wLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oCj4+IGlu
+ZGV4IDA4NGQzYjIuLmU0ZGU4OTAgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuaAo+PiBAQCAtMTUsNiArMTUsMTQgQEAKPj4gICAjaWZuZGVmIF9S
+T0NLQ0hJUF9EUk1fVk9QX0gKPj4gICAjZGVmaW5lIF9ST0NLQ0hJUF9EUk1fVk9QX0gKPj4gICAK
+Pj4gKy8qCj4+ICsgKiBtYWpvcjogSVAgbWFqb3IgdmVydGlvbiwgdXNlZCBmb3IgSVAgc3RydWN0
+dXJlCj4gcy92ZXJ0aW9uL3ZlcnNpb24KCkdvdCBpdCwgd2lsbCBmaXggaXQgYXQgbmV4dCB2ZXJz
+aW9uLgpUaGFua3MuCgo+Cj4+ICsgKiBtaW5vcjogYmlnIGZlYXR1cmUgY2hhbmdlIHVuZGVyIHNh
+bWUgc3RydWN0dXJlCj4+ICsgKi8KPj4gKyNkZWZpbmUgVk9QX1ZFUlNJT04obWFqb3IsIG1pbm9y
+KQkoKG1ham9yKSA8PCA4IHwgKG1pbm9yKSkKPj4gKyNkZWZpbmUgVk9QX01BSk9SKHZlcnNpb24p
+CQkoKHZlcnNpb24pID4+IDgpCj4+ICsjZGVmaW5lIFZPUF9NSU5PUih2ZXJzaW9uKQkJKCh2ZXJz
+aW9uKSAmIDB4ZmYpCj4+ICsKPj4gICBlbnVtIHZvcF9kYXRhX2Zvcm1hdCB7Cj4+ICAgCVZPUF9G
+TVRfQVJHQjg4ODggPSAwLAo+PiAgIAlWT1BfRk1UX1JHQjg4OCwKPj4gQEAgLTI1LDEwICszMywx
+MyBAQCBlbnVtIHZvcF9kYXRhX2Zvcm1hdCB7Cj4+ICAgfTsKPj4gICAKPj4gICBzdHJ1Y3Qgdm9w
+X3JlZyB7Cj4+IC0JdWludDMyX3Qgb2Zmc2V0Owo+PiAtCXVpbnQzMl90IHNoaWZ0Owo+PiAgIAl1
+aW50MzJfdCBtYXNrOwo+PiAtCWJvb2wgd3JpdGVfbWFzazsKPj4gKwl1aW50MzJfdCBvZmZzZXQ6
+MTI7Cj4+ICsJdWludDMyX3Qgc2hpZnQ6NTsKPj4gKwl1aW50MzJfdCBiZWdpbl9taW5vcjo0Owo+
+PiArCXVpbnQzMl90IGVuZF9taW5vcjo0Owo+PiArCXVpbnQzMl90IG1ham9yOjM7Cj4+ICsJdWlu
+dDMyX3Qgd3JpdGVfbWFzazoxOwo+IFdoeSBhcmUgeW91IHBhY2tpbmcgdGhpcz8KCm1ha2Ugc3Ry
+dWN0IHZvcF9yZWcgbm90IHRvbyBiaWcsIGp1cyB1NjQgc2l6ZSwgc3RydWN0IHZvcF9yZWcgdXNl
+IGEgbG90IG9uIHJlZ2lzdGVyIGRlZmluZSwgcGFja2luZyBpdCB3b3VsZCByZWR1Y2UgcmVnaXN0
+ZXIgdGFibGUgc2l6ZS4KCj4KPj4gICB9Owo+PiAgIAo+PiAgIHN0cnVjdCB2b3BfY3RybCB7Cj4+
+IEBAIC0xMzQsNiArMTQ1LDcgQEAgc3RydWN0IHZvcF93aW5fZGF0YSB7Cj4+ICAgfTsKPj4gICAK
+Pj4gICBzdHJ1Y3Qgdm9wX2RhdGEgewo+PiArCXVpbnQzMl90IHZlcnNpb247Cj4+ICAgCWNvbnN0
+IHN0cnVjdCB2b3BfY3RybCAqY3RybDsKPj4gICAJY29uc3Qgc3RydWN0IHZvcF9pbnRyICppbnRy
+Owo+PiAgIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW47Cj4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+PiBpbmRleCAwMGU5ZDc5Li43NzQ0NjAz
+IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3Jl
+Zy5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMK
+Pj4gQEAgLTIwLDE3ICsyMCwyNSBAQAo+PiAgICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fdm9wLmgi
+Cj4+ICAgI2luY2x1ZGUgInJvY2tjaGlwX3ZvcF9yZWcuaCIKPj4gICAKPj4gLSNkZWZpbmUgVk9Q
+X1JFRyhvZmYsIF9tYXNrLCBzKSBcCj4+ICsjZGVmaW5lIFZPUF9SRUdfVkVSX01BU0sob2ZmLCBf
+bWFzaywgcywgX3dyaXRlX21hc2ssIF9tYWpvciwgXAo+PiArCQkJIF9iZWdpbl9taW5vciwgX2Vu
+ZF9taW5vcikgXAo+PiAgIAkJey5vZmZzZXQgPSBvZmYsIFwKPj4gICAJCSAubWFzayA9IF9tYXNr
+LCBcCj4+ICAgCQkgLnNoaWZ0ID0gcywgXAo+PiAtCQkgLndyaXRlX21hc2sgPSBmYWxzZSx9Cj4+
+ICsJCSAud3JpdGVfbWFzayA9IF93cml0ZV9tYXNrLCBcCj4+ICsJCSAubWFqb3IgPSBfbWFqb3Is
+IFwKPj4gKwkJIC5iZWdpbl9taW5vciA9IF9iZWdpbl9taW5vciwgXAo+PiArCQkgLmVuZF9taW5v
+ciA9IF9lbmRfbWlub3IsfQo+PiArCj4+ICsjZGVmaW5lIFZPUF9SRUdfVkVSKG9mZiwgX21hc2ss
+IHMsIF9tYWpvciwgX2JlZ2luX21pbm9yLCBfZW5kX21pbm9yKSBcCj4+ICsJCVZPUF9SRUdfVkVS
+X01BU0sob2ZmLCBfbWFzaywgcywgZmFsc2UsIFwKPj4gKwkJCQkgX21ham9yLCBfYmVnaW5fbWlu
+b3IsIF9lbmRfbWlub3IpCj4+ICsKPj4gKyNkZWZpbmUgVk9QX1JFRyhvZmYsIF9tYXNrLCBzKSBc
+Cj4+ICsJCVZPUF9SRUdfVkVSKG9mZiwgX21hc2ssIHMsIDAsIDAsIC0xKQo+PiAgIAo+PiAgICNk
+ZWZpbmUgVk9QX1JFR19NQVNLKG9mZiwgX21hc2ssIHMpIFwKPj4gLQkJey5vZmZzZXQgPSBvZmYs
+IFwKPj4gLQkJIC5tYXNrID0gX21hc2ssIFwKPj4gLQkJIC5zaGlmdCA9IHMsIFwKPj4gLQkJIC53
+cml0ZV9tYXNrID0gdHJ1ZSx9Cj4+ICsJCVZPUF9SRUdfVkVSX01BU0sob2ZmLCBfbWFzaywgcywg
+dHJ1ZSwgMCwgMCwgLTEpCj4+ICAgCj4+ICAgc3RhdGljIGNvbnN0IHVpbnQzMl90IGZvcm1hdHNf
+d2luX2Z1bGxbXSA9IHsKPj4gICAJRFJNX0ZPUk1BVF9YUkdCODg4OCwKPj4gLS0gCj4+IDEuOS4x
+Cj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Cj4+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwo+PiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
