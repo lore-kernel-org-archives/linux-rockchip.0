@@ -1,111 +1,101 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 3/5] drm/rockchip: vop: move line_flag_num to interrupt
- registers
-Date: Thu, 13 Jul 2017 09:46:10 +0800
-Message-ID: <5966D0E2.8040102@rock-chips.com>
-References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
- <1499825027-7552-1-git-send-email-mark.yao@rock-chips.com>
- <20170712175437.6do5shj2evqft7nc@art_vandelay>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/2] phy-rockchip-pcie: add set_mode callback
+Date: Thu, 13 Jul 2017 10:27:51 +0800
+Message-ID: <623ab689-e848-a7b1-4e13-20e53b7ff11e@rock-chips.com>
+References: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
+ <cea27b15-2c2d-a4a9-76f8-f4798c152101@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170712175437.6do5shj2evqft7nc@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <cea27b15-2c2d-a4a9-76f8-f4798c152101@ti.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA35pyIMTPml6UgMDE6NTQsIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBXZWQsIEp1
-bCAxMiwgMjAxNyBhdCAxMDowMzo0NkFNICswODAwLCBNYXJrIFlhbyB3cm90ZToKPgo+IEFnYWlu
-LCBwbGVhc2UgYWRkIGNvbW1pdCBtZXNzYWdlIGRlc2NyaWJpbmcgdGhlIHdoYXQgYW5kIHdoeSBv
-ZiB0aGlzIGNoYW5nZS4KPgo+IFlvdSBjYW4gYWxzbyBhZGQ6Cj4KPiBSZXZpZXdlZC1ieTogU2Vh
-biBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4KClRoYW5rcyBmb3IgdGhlIHJldmlldywg
-d2lsbCBmaXggaXQgYXQgbmV4dCB2ZXJzaW9uLgoKPj4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8g
-PG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMiArLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCA0ICsrLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgOCArKysrLS0tLQo+PiAgIDMgZmlsZXMgY2hhbmdl
-ZCwgNyBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gaW5kZXggYTkxODBmZC4uYmUyMDhlZSAx
-MDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-Ywo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+
-IEBAIC01MDcsNyArNTA3LDcgQEAgc3RhdGljIHZvaWQgdm9wX2xpbmVfZmxhZ19pcnFfZW5hYmxl
-KHN0cnVjdCB2b3AgKnZvcCwgaW50IGxpbmVfbnVtKQo+PiAgIAo+PiAgIAlzcGluX2xvY2tfaXJx
-c2F2ZSgmdm9wLT5pcnFfbG9jaywgZmxhZ3MpOwo+PiAgIAo+PiAtCVZPUF9DVFJMX1NFVCh2b3As
-IGxpbmVfZmxhZ19udW1bMF0sIGxpbmVfbnVtKTsKPj4gKwlWT1BfSU5UUl9TRVQodm9wLCBsaW5l
-X2ZsYWdfbnVtWzBdLCBsaW5lX251bSk7Cj4+ICAgCVZPUF9JTlRSX1NFVF9UWVBFKHZvcCwgY2xl
-YXIsIExJTkVfRkxBR19JTlRSLCAxKTsKPj4gICAJVk9QX0lOVFJfU0VUX1RZUEUodm9wLCBlbmFi
-bGUsIExJTkVfRkxBR19JTlRSLCAxKTsKPj4gICAKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5oCj4+IGluZGV4IGU0ZGU4OTAuLmY2NDY4NWUgMTAwNjQ0Cj4+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKPj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAo+PiBAQCAtNzAs
-OCArNzAsNiBAQCBzdHJ1Y3Qgdm9wX2N0cmwgewo+PiAgIAlzdHJ1Y3Qgdm9wX3JlZyBocG9zdF9z
-dF9lbmQ7Cj4+ICAgCXN0cnVjdCB2b3BfcmVnIHZwb3N0X3N0X2VuZDsKPj4gICAKPj4gLQlzdHJ1
-Y3Qgdm9wX3JlZyBsaW5lX2ZsYWdfbnVtWzJdOwo+PiAtCj4+ICAgCXN0cnVjdCB2b3BfcmVnIGds
-b2JhbF9yZWdkb25lX2VuOwo+PiAgIAlzdHJ1Y3Qgdm9wX3JlZyBjZmdfZG9uZTsKPj4gICB9Owo+
-PiBAQCAtNzksNiArNzcsOCBAQCBzdHJ1Y3Qgdm9wX2N0cmwgewo+PiAgIHN0cnVjdCB2b3BfaW50
-ciB7Cj4+ICAgCWNvbnN0IGludCAqaW50cnM7Cj4+ICAgCXVpbnQzMl90IG5pbnRyczsKPj4gKwo+
-PiArCXN0cnVjdCB2b3BfcmVnIGxpbmVfZmxhZ19udW1bMl07Cj4+ICAgCXN0cnVjdCB2b3BfcmVn
-IGVuYWJsZTsKPj4gICAJc3RydWN0IHZvcF9yZWcgY2xlYXI7Cj4+ICAgCXN0cnVjdCB2b3BfcmVn
-IHN0YXR1czsKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF92b3BfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5j
-Cj4+IGluZGV4IDc3NDQ2MDMuLjE1OWNlZGYgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+PiBAQCAtMTE4LDYgKzExOCw3IEBACj4+ICAgc3Rh
-dGljIGNvbnN0IHN0cnVjdCB2b3BfaW50ciByazMwMzZfaW50ciA9IHsKPj4gICAJLmludHJzID0g
-cmszMDM2X3ZvcF9pbnRycywKPj4gICAJLm5pbnRycyA9IEFSUkFZX1NJWkUocmszMDM2X3ZvcF9p
-bnRycyksCj4+ICsJLmxpbmVfZmxhZ19udW1bMF0gPSBWT1BfUkVHKFJLMzAzNl9JTlRfU1RBVFVT
-LCAweGZmZiwgMTIpLAo+PiAgIAkuc3RhdHVzID0gVk9QX1JFRyhSSzMwMzZfSU5UX1NUQVRVUywg
-MHhmLCAwKSwKPj4gICAJLmVuYWJsZSA9IFZPUF9SRUcoUkszMDM2X0lOVF9TVEFUVVMsIDB4Ziwg
-NCksCj4+ICAgCS5jbGVhciA9IFZPUF9SRUcoUkszMDM2X0lOVF9TVEFUVVMsIDB4ZiwgOCksCj4+
-IEBAIC0xMzEsNyArMTMyLDYgQEAKPj4gICAJLmhhY3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMwMzZf
-RFNQX0hBQ1RfU1RfRU5ELCAweDFmZmYxZmZmLCAwKSwKPj4gICAJLnZ0b3RhbF9wdyA9IFZPUF9S
-RUcoUkszMDM2X0RTUF9WVE9UQUxfVlNfRU5ELCAweDFmZmYxZmZmLCAwKSwKPj4gICAJLnZhY3Rf
-c3RfZW5kID0gVk9QX1JFRyhSSzMwMzZfRFNQX1ZBQ1RfU1RfRU5ELCAweDFmZmYxZmZmLCAwKSwK
-Pj4gLQkubGluZV9mbGFnX251bVswXSA9IFZPUF9SRUcoUkszMDM2X0lOVF9TVEFUVVMsIDB4ZmZm
-LCAxMiksCj4+ICAgCS5jZmdfZG9uZSA9IFZPUF9SRUcoUkszMDM2X1JFR19DRkdfRE9ORSwgMHgx
-LCAwKSwKPj4gICB9Owo+PiAgIAo+PiBAQCAtMjI3LDcgKzIyNyw2IEBACj4+ICAgCS52YWN0X3N0
-X2VuZCA9IFZPUF9SRUcoUkszMjg4X0RTUF9WQUNUX1NUX0VORCwgMHgxZmZmMWZmZiwgMCksCj4+
-ICAgCS5ocG9zdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzI4OF9QT1NUX0RTUF9IQUNUX0lORk8sIDB4
-MWZmZjFmZmYsIDApLAo+PiAgIAkudnBvc3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMyODhfUE9TVF9E
-U1BfVkFDVF9JTkZPLCAweDFmZmYxZmZmLCAwKSwKPj4gLQkubGluZV9mbGFnX251bVswXSA9IFZP
-UF9SRUcoUkszMjg4X0lOVFJfQ1RSTDAsIDB4MWZmZiwgMTIpLAo+PiAgIAkuZ2xvYmFsX3JlZ2Rv
-bmVfZW4gPSBWT1BfUkVHKFJLMzI4OF9TWVNfQ1RSTCwgMHgxLCAxMSksCj4+ICAgCS5jZmdfZG9u
-ZSA9IFZPUF9SRUcoUkszMjg4X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKPj4gICB9Owo+PiBAQCAt
-MjU5LDYgKzI1OCw3IEBACj4+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfaW50ciByazMyODhf
-dm9wX2ludHIgPSB7Cj4+ICAgCS5pbnRycyA9IHJrMzI4OF92b3BfaW50cnMsCj4+ICAgCS5uaW50
-cnMgPSBBUlJBWV9TSVpFKHJrMzI4OF92b3BfaW50cnMpLAo+PiArCS5saW5lX2ZsYWdfbnVtWzBd
-ID0gVk9QX1JFRyhSSzMyODhfSU5UUl9DVFJMMCwgMHgxZmZmLCAxMiksCj4+ICAgCS5zdGF0dXMg
-PSBWT1BfUkVHKFJLMzI4OF9JTlRSX0NUUkwwLCAweGYsIDApLAo+PiAgIAkuZW5hYmxlID0gVk9Q
-X1JFRyhSSzMyODhfSU5UUl9DVFJMMCwgMHhmLCA0KSwKPj4gICAJLmNsZWFyID0gVk9QX1JFRyhS
-SzMyODhfSU5UUl9DVFJMMCwgMHhmLCA4KSwKPj4gQEAgLTI5NSw4ICsyOTUsNiBAQAo+PiAgIAku
-dmFjdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzM5OV9EU1BfVkFDVF9TVF9FTkQsIDB4MWZmZjFmZmYs
-IDApLAo+PiAgIAkuaHBvc3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMzOTlfUE9TVF9EU1BfSEFDVF9J
-TkZPLCAweDFmZmYxZmZmLCAwKSwKPj4gICAJLnZwb3N0X3N0X2VuZCA9IFZPUF9SRUcoUkszMzk5
-X1BPU1RfRFNQX1ZBQ1RfSU5GTywgMHgxZmZmMWZmZiwgMCksCj4+IC0JLmxpbmVfZmxhZ19udW1b
-MF0gPSBWT1BfUkVHKFJLMzM5OV9MSU5FX0ZMQUcsIDB4ZmZmZiwgMCksCj4+IC0JLmxpbmVfZmxh
-Z19udW1bMV0gPSBWT1BfUkVHKFJLMzM5OV9MSU5FX0ZMQUcsIDB4ZmZmZiwgMTYpLAo+PiAgIAku
-Y2ZnX2RvbmUgPSBWT1BfUkVHX01BU0soUkszMzk5X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKPj4g
-ICB9Owo+PiAgIAo+PiBAQCAtMzEzLDYgKzMxMSw4IEBACj4+ICAgc3RhdGljIGNvbnN0IHN0cnVj
-dCB2b3BfaW50ciByazMzOTlfdm9wX2ludHIgPSB7Cj4+ICAgCS5pbnRycyA9IHJrMzM5OV92b3Bf
-aW50cnMsCj4+ICAgCS5uaW50cnMgPSBBUlJBWV9TSVpFKHJrMzM5OV92b3BfaW50cnMpLAo+PiAr
-CS5saW5lX2ZsYWdfbnVtWzBdID0gVk9QX1JFRyhSSzMzOTlfTElORV9GTEFHLCAweGZmZmYsIDAp
-LAo+PiArCS5saW5lX2ZsYWdfbnVtWzFdID0gVk9QX1JFRyhSSzMzOTlfTElORV9GTEFHLCAweGZm
-ZmYsIDE2KSwKPj4gICAJLnN0YXR1cyA9IFZPUF9SRUdfTUFTSyhSSzMzOTlfSU5UUl9TVEFUVVMw
-LCAweGZmZmYsIDApLAo+PiAgIAkuZW5hYmxlID0gVk9QX1JFR19NQVNLKFJLMzM5OV9JTlRSX0VO
-MCwgMHhmZmZmLCAwKSwKPj4gICAJLmNsZWFyID0gVk9QX1JFR19NQVNLKFJLMzM5OV9JTlRSX0NM
-RUFSMCwgMHhmZmZmLCAwKSwKPj4gLS0gCj4+IDEuOS4xCj4+Cj4+CgoKLS0gCu+8rWFyayBZYW8K
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Kishon,
+
+On 2017/7/11 12:45, Kishon Vijay Abraham I wrote:
+> Hi,
+> 
+> On Friday 16 June 2017 01:47 PM, Shawn Lin wrote:
+>> phy_mode was added for switching USB mode purposely as
+>> well as phy_set_mode API. However other types of PHY could
+>> also have some miscellaneous setting/modes need to be
+>> handled. This patch is gonna support this callback for
+>> phy-rockchip-pcie and do some power-saving work there.
+>> Note that we just stuff in some other values other that the
+>> existing phy_mode and convert it in the coressponding driver
+>> instead, otherwise we should extend the phy_mode again which
+>> it doesn't make sense to add in new driver's specificed value.
+>> Overall it looks fine to me as the controller's driver and the
+>> phy's driver are paired so that the caller and the consumer should
+>> be able to keep the value(mode) in consistent.
+> 
+> I really don't prefer using an API other that what it is intended for. We have
+> to come up with a better way for handling this.
+
+okay.
+
+> 
+> IIUC this patch sets unused lanes in idle mode? If yes, then can't we model
+> each lane as a separate phy, so that we can power-on/power-off each lane
+> independently.
+
+I will have a try and see how far I will go.
+
+Thanks.
+
+> 
+> Thanks
+> Kishon
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> ---
+>>
+>>   drivers/phy/rockchip/phy-rockchip-pcie.c | 22 ++++++++++++++++++++++
+>>   1 file changed, 22 insertions(+)
+>>
+>> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+>> index 6904633..9ffad15 100644
+>> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
+>> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+>> @@ -255,11 +255,33 @@ static int rockchip_pcie_phy_exit(struct phy *phy)
+>>   	return 0;
+>>   }
+>>   
+>> +static int rockchip_pcie_phy_set_mode(struct phy *phy, enum phy_mode mode)
+>> +{
+>> +	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>> +	u8 map = (u8)mode;
+>> +	int i;
+>> +
+>> +	for (i = 0; i < PHY_MAX_LANE_NUM; i++) {
+>> +		if (map & BIT(i))
+>> +			continue;
+>> +
+>> +		dev_dbg(&phy->dev, "idling lane %d\n", i);
+>> +		regmap_write(rk_phy->reg_base,
+>> +			     rk_phy->phy_data->pcie_laneoff,
+>> +			     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
+>> +			     PHY_LANE_IDLE_MASK,
+>> +			     PHY_LANE_IDLE_A_SHIFT + i));
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static const struct phy_ops ops = {
+>>   	.init		= rockchip_pcie_phy_init,
+>>   	.exit		= rockchip_pcie_phy_exit,
+>>   	.power_on	= rockchip_pcie_phy_power_on,
+>>   	.power_off	= rockchip_pcie_phy_power_off,
+>> +	.set_mode	= rockchip_pcie_phy_set_mode,
+>>   	.owner		= THIS_MODULE,
+>>   };
+>>   
+>>
+> 
+> 
+> 
