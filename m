@@ -1,35 +1,232 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 3/6] ARM: dts: rockchip: enable io-domain for rk3229-evb
-Date: Thu, 13 Jul 2017 02:13:57 +0200
-Message-ID: <2843042.yPticsUjGq@phil>
-References: <1499243421-21460-1-git-send-email-frank.wang@rock-chips.com> <1499243421-21460-4-git-send-email-frank.wang@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2 1/5] drm/rockchip: vop: get rid of register init table
+Date: Thu, 13 Jul 2017 09:33:45 +0800
+Message-ID: <5966CDF9.3060509@rock-chips.com>
+References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
+ <1499825008-7451-1-git-send-email-mark.yao@rock-chips.com>
+ <20170712164758.ojzsfjq4vrf2cj27@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1499243421-21460-4-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170712164758.ojzsfjq4vrf2cj27@art_vandelay>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 5. Juli 2017, 16:30:18 CEST schrieb Frank Wang:
-> From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This patch enables io-domain support for rk3229-evb board.
-> 
-> The power domain of VCCIO3 is selected from maskrom, so we do not
-> need to configure it.
-> 
-> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On 2017年07月13日 00:47, Sean Paul wrote:
+> On Wed, Jul 12, 2017 at 10:03:27AM +0800, Mark Yao wrote:
+>> Register init table use un-document define, it is unreadable,
+>> And sometimes we only want to update tiny bits, init table
+>> method is not friendly, it's diffcult to reuse for difference
+>> chips.
+> While I'm happy to see the init_table removed, it seems like the new code is not
+> equivalent to the old (ie: some register writes have been dropped). How did you
+> ensure that you're not breaking existing boards that depend on the deleted register
+> initialization?
+>
+> Sean
 
-applied for 4.14
+All the existing boards works fine on my internal kernel board with the init_table removed,
+We had tested all the existing boards, so it's no problem to removed init_table
+
+>
+>> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+>> ---
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  6 ++--
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 10 ++-----
+>>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 43 +++--------------------------
+>>   3 files changed, 10 insertions(+), 49 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> index 45589d6..7a5f809 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> @@ -1393,7 +1393,6 @@ static void vop_destroy_crtc(struct vop *vop)
+>>   static int vop_initial(struct vop *vop)
+>>   {
+>>   	const struct vop_data *vop_data = vop->data;
+>> -	const struct vop_reg_data *init_table = vop_data->init_table;
+>>   	struct reset_control *ahb_rst;
+>>   	int i, ret;
+>>   
+>> @@ -1453,13 +1452,14 @@ static int vop_initial(struct vop *vop)
+>>   
+>>   	memcpy(vop->regsbak, vop->regs, vop->len);
+>>   
+>> -	for (i = 0; i < vop_data->table_size; i++)
+>> -		vop_writel(vop, init_table[i].offset, init_table[i].value);
+>> +	VOP_CTRL_SET(vop, global_regdone_en, 1);
+>> +	VOP_CTRL_SET(vop, dsp_blank, 0);
+>>   
+>>   	for (i = 0; i < vop_data->win_size; i++) {
+>>   		const struct vop_win_data *win = &vop_data->win[i];
+>>   
+>>   		VOP_WIN_SET(vop, win, enable, 0);
+>> +		VOP_WIN_SET(vop, win, gate, 1);
+>>   	}
+>>   
+>>   	vop_cfg_done(vop);
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+>> index 9979fd0..084d3b2 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+>> @@ -24,11 +24,6 @@ enum vop_data_format {
+>>   	VOP_FMT_YUV444SP,
+>>   };
+>>   
+>> -struct vop_reg_data {
+>> -	uint32_t offset;
+>> -	uint32_t value;
+>> -};
+>> -
+>>   struct vop_reg {
+>>   	uint32_t offset;
+>>   	uint32_t shift;
+>> @@ -46,6 +41,7 @@ struct vop_ctrl {
+>>   	struct vop_reg hdmi_en;
+>>   	struct vop_reg mipi_en;
+>>   	struct vop_reg dp_en;
+>> +	struct vop_reg dsp_blank;
+>>   	struct vop_reg out_mode;
+>>   	struct vop_reg dither_down;
+>>   	struct vop_reg dither_up;
+>> @@ -65,6 +61,7 @@ struct vop_ctrl {
+>>   
+>>   	struct vop_reg line_flag_num[2];
+>>   
+>> +	struct vop_reg global_regdone_en;
+>>   	struct vop_reg cfg_done;
+>>   };
+>>   
+>> @@ -115,6 +112,7 @@ struct vop_win_phy {
+>>   	uint32_t nformats;
+>>   
+>>   	struct vop_reg enable;
+>> +	struct vop_reg gate;
+>>   	struct vop_reg format;
+>>   	struct vop_reg rb_swap;
+>>   	struct vop_reg act_info;
+>> @@ -136,8 +134,6 @@ struct vop_win_data {
+>>   };
+>>   
+>>   struct vop_data {
+>> -	const struct vop_reg_data *init_table;
+>> -	unsigned int table_size;
+>>   	const struct vop_ctrl *ctrl;
+>>   	const struct vop_intr *intr;
+>>   	const struct vop_win_data *win;
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>> index bafd698..00e9d79 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>> @@ -127,13 +127,7 @@
+>>   	.cfg_done = VOP_REG(RK3036_REG_CFG_DONE, 0x1, 0),
+>>   };
+>>   
+>> -static const struct vop_reg_data rk3036_vop_init_reg_table[] = {
+>> -	{RK3036_DSP_CTRL1, 0x00000000},
+>> -};
+>> -
+>>   static const struct vop_data rk3036_vop = {
+>> -	.init_table = rk3036_vop_init_reg_table,
+>> -	.table_size = ARRAY_SIZE(rk3036_vop_init_reg_table),
+>>   	.ctrl = &rk3036_ctrl_data,
+>>   	.intr = &rk3036_intr,
+>>   	.win = rk3036_vop_win_data,
+>> @@ -193,7 +187,8 @@
+>>   static const struct vop_win_phy rk3288_win23_data = {
+>>   	.data_formats = formats_win_lite,
+>>   	.nformats = ARRAY_SIZE(formats_win_lite),
+>> -	.enable = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 0),
+>> +	.enable = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 4),
+>> +	.gate = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 0),
+>>   	.format = VOP_REG(RK3288_WIN2_CTRL0, 0x7, 1),
+>>   	.rb_swap = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 12),
+>>   	.dsp_info = VOP_REG(RK3288_WIN2_DSP_INFO0, 0x0fff0fff, 0),
+>> @@ -215,6 +210,7 @@
+>>   	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
+>>   	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
+>>   	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
+>> +	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
+>>   	.out_mode = VOP_REG(RK3288_DSP_CTRL0, 0xf, 0),
+>>   	.pin_pol = VOP_REG(RK3288_DSP_CTRL0, 0xf, 4),
+>>   	.htotal_pw = VOP_REG(RK3288_DSP_HTOTAL_HS_END, 0x1fff1fff, 0),
+>> @@ -224,22 +220,10 @@
+>>   	.hpost_st_end = VOP_REG(RK3288_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
+>>   	.vpost_st_end = VOP_REG(RK3288_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
+>>   	.line_flag_num[0] = VOP_REG(RK3288_INTR_CTRL0, 0x1fff, 12),
+>> +	.global_regdone_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 11),
+>>   	.cfg_done = VOP_REG(RK3288_REG_CFG_DONE, 0x1, 0),
+>>   };
+>>   
+>> -static const struct vop_reg_data rk3288_init_reg_table[] = {
+>> -	{RK3288_SYS_CTRL, 0x00c00000},
+>> -	{RK3288_DSP_CTRL0, 0x00000000},
+>> -	{RK3288_WIN0_CTRL0, 0x00000080},
+>> -	{RK3288_WIN1_CTRL0, 0x00000080},
+>> -	/* TODO: Win2/3 support multiple area function, but we haven't found
+>> -	 * a suitable way to use it yet, so let's just use them as other windows
+>> -	 * with only area 0 enabled.
+>> -	 */
+>> -	{RK3288_WIN2_CTRL0, 0x00000010},
+>> -	{RK3288_WIN3_CTRL0, 0x00000010},
+>> -};
+>> -
+>>   /*
+>>    * Note: rk3288 has a dedicated 'cursor' window, however, that window requires
+>>    * special support to get alpha blending working.  For now, just use overlay
+>> @@ -273,8 +257,6 @@
+>>   };
+>>   
+>>   static const struct vop_data rk3288_vop = {
+>> -	.init_table = rk3288_init_reg_table,
+>> -	.table_size = ARRAY_SIZE(rk3288_init_reg_table),
+>>   	.feature = VOP_FEATURE_OUTPUT_RGB10,
+>>   	.intr = &rk3288_vop_intr,
+>>   	.ctrl = &rk3288_ctrl_data,
+>> @@ -328,22 +310,7 @@
+>>   	.clear = VOP_REG_MASK(RK3399_INTR_CLEAR0, 0xffff, 0),
+>>   };
+>>   
+>> -static const struct vop_reg_data rk3399_init_reg_table[] = {
+>> -	{RK3399_SYS_CTRL, 0x2000f800},
+>> -	{RK3399_DSP_CTRL0, 0x00000000},
+>> -	{RK3399_WIN0_CTRL0, 0x00000080},
+>> -	{RK3399_WIN1_CTRL0, 0x00000080},
+>> -	/* TODO: Win2/3 support multiple area function, but we haven't found
+>> -	 * a suitable way to use it yet, so let's just use them as other windows
+>> -	 * with only area 0 enabled.
+>> -	 */
+>> -	{RK3399_WIN2_CTRL0, 0x00000010},
+>> -	{RK3399_WIN3_CTRL0, 0x00000010},
+>> -};
+>> -
+>>   static const struct vop_data rk3399_vop_big = {
+>> -	.init_table = rk3399_init_reg_table,
+>> -	.table_size = ARRAY_SIZE(rk3399_init_reg_table),
+>>   	.feature = VOP_FEATURE_OUTPUT_RGB10,
+>>   	.intr = &rk3399_vop_intr,
+>>   	.ctrl = &rk3399_ctrl_data,
+>> @@ -362,8 +329,6 @@
+>>   };
+>>   
+>>   static const struct vop_data rk3399_vop_lit = {
+>> -	.init_table = rk3399_init_reg_table,
+>> -	.table_size = ARRAY_SIZE(rk3399_init_reg_table),
+>>   	.intr = &rk3399_vop_intr,
+>>   	.ctrl = &rk3399_ctrl_data,
+>>   	/*
+>> -- 
+>> 1.9.1
+>>
+>>
+>> _______________________________________________
+>> dri-devel mailing list
+>> dri-devel@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
 
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Ｍark Yao
