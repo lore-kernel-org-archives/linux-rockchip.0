@@ -1,66 +1,29 @@
-From: Maxime Ripard <maxime.ripard@free-electrons.com>
-Subject: [PATCH 4/4] drm/sun4i: make sure we don't have a commit pending
-Date: Thu, 13 Jul 2017 16:41:16 +0200
-Message-ID: <a6dfec7ea3598c64f6653e9b8b5febac79172341.1499956639.git-series.maxime.ripard@free-electrons.com>
-References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: gpu: drop wrong compatible from midgard binding example
+Date: Thu, 13 Jul 2017 19:11:38 +0200
+Message-ID: <75024304.PTG7UsXO2n@phil>
+References: <20170710121227.14264-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
-In-Reply-To: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
-References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, Maxime Ripard <maxime.ripard@free-electrons.com>
-Cc: linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170710121227.14264-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: guillaume.tucker-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW4gdGhlIGVhcmxpZXIgZGlzcGxheSBlbmdpbmUgZGVzaWducywgYW55IHJlZ2lzdGVyIGFjY2Vz
-cyB3aGlsZSBhIGNvbW1pdAppcyBwZW5kaW5nIGlzIGZvcmJpZGRlbi4KCk9uZSBvZiB0aGUgc3lt
-cHRvbXMgaXMgdGhhdCByZWFkaW5nIGEgcmVnaXN0ZXIgd2lsbCByZXR1cm4gYW5vdGhlciwgcmFu
-ZG9tLApyZWdpc3RlciB2YWx1ZSB3aGljaCBjYW4gbGVhZCB0byByZWdpc3RlciBjb3JydXB0aW9u
-cyBpZiB3ZSBldmVyIGRvIGEKcmVhZC9tb2RpZnkvd3JpdGUgY3ljbGUuCgpTaWduZWQtb2ZmLWJ5
-OiBNYXhpbWUgUmlwYXJkIDxtYXhpbWUucmlwYXJkQGZyZWUtZWxlY3Ryb25zLmNvbT4KLS0tCiBk
-cml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFja2VuZC5jIHwgMTQgKysrKysrKysrKysrKysK
-IGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9jcnRjLmMgICAgfCAgMSArCiAyIGZpbGVzIGNo
-YW5nZWQsIDE1IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vc3Vu
-NGkvc3VuNGlfYmFja2VuZC5jIGIvZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQu
-YwppbmRleCBjZjQ4MDIxOGRhYTUuLmNlMWY0MGY3NTExZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vc3VuNGkv
-c3VuNGlfYmFja2VuZC5jCkBAIC02Nyw2ICs2NywxOSBAQCBzdGF0aWMgdm9pZCBzdW40aV9iYWNr
-ZW5kX2NvbW1pdChzdHJ1Y3Qgc3VueGlfZW5naW5lICplbmdpbmUpCiAJCSAgICAgU1VONElfQkFD
-S0VORF9SRUdCVUZGQ1RMX0xPQURDVEwpOwogfQogCitzdGF0aWMgaW50IHN1bjRpX2JhY2tlbmRf
-Y29tbWl0X3BvbGwoc3RydWN0IHN1bnhpX2VuZ2luZSAqZW5naW5lKQoreworCXUzMiB2YWw7CisK
-KwlEUk1fREVCVUdfRFJJVkVSKCJQb2xsaW5nIGZvciB0aGUgY29tbWl0IHRvIGVuZFxuIik7CisK
-KwlyZXR1cm4gcmVnbWFwX3JlYWRfcG9sbF90aW1lb3V0KGVuZ2luZS0+cmVncywKKwkJCQkJU1VO
-NElfQkFDS0VORF9SRUdCVUZGQ1RMX1JFRywKKwkJCQkJdmFsLAorCQkJCQkhKHZhbCAmIFNVTjRJ
-X0JBQ0tFTkRfUkVHQlVGRkNUTF9MT0FEQ1RMKSwKKwkJCQkJMTAwLCA1MDAwMCk7Cit9CisKIHZv
-aWQgc3VuNGlfYmFja2VuZF9sYXllcl9lbmFibGUoc3RydWN0IHN1bjRpX2JhY2tlbmQgKmJhY2tl
-bmQsCiAJCQkJaW50IGxheWVyLCBib29sIGVuYWJsZSkKIHsKQEAgLTMzMCw2ICszNDMsNyBAQCBz
-dGF0aWMgaW50IHN1bjRpX2JhY2tlbmRfb2ZfZ2V0X2lkKHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9k
-ZSkKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBzdW54aV9lbmdpbmVfb3BzIHN1bjRpX2JhY2tlbmRf
-ZW5naW5lX29wcyA9IHsKIAkuY29tbWl0CQkJCT0gc3VuNGlfYmFja2VuZF9jb21taXQsCisJLmNv
-bW1pdF9wb2xsCQkJPSBzdW40aV9iYWNrZW5kX2NvbW1pdF9wb2xsLAogCS5sYXllcnNfaW5pdAkJ
-CT0gc3VuNGlfbGF5ZXJzX2luaXQsCiAJLmFwcGx5X2NvbG9yX2NvcnJlY3Rpb24JCT0gc3VuNGlf
-YmFja2VuZF9hcHBseV9jb2xvcl9jb3JyZWN0aW9uLAogCS5kaXNhYmxlX2NvbG9yX2NvcnJlY3Rp
-b24JPSBzdW40aV9iYWNrZW5kX2Rpc2FibGVfY29sb3JfY29ycmVjdGlvbiwKZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vc3Vu
-NGkvc3VuNGlfY3J0Yy5jCmluZGV4IDJlYmExZDg2MzlkOC4uMzE1NTA0OTNmYTFkIDEwMDY0NAot
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfY3J0Yy5jCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9zdW40aS9zdW40aV9jcnRjLmMKQEAgLTM0LDYgKzM0LDcgQEAgc3RhdGljIHZvaWQgc3Vu
-NGlfY3J0Y19hdG9taWNfYmVnaW4oc3RydWN0IGRybV9jcnRjICpjcnRjLAogCQkJCSAgICBzdHJ1
-Y3QgZHJtX2NydGNfc3RhdGUgKm9sZF9zdGF0ZSkKIHsKIAlzdHJ1Y3Qgc3VuNGlfY3J0YyAqc2Ny
-dGMgPSBkcm1fY3J0Y190b19zdW40aV9jcnRjKGNydGMpOworCXN0cnVjdCBzdW54aV9lbmdpbmUg
-KmVuZ2luZSA9IHNjcnRjLT5lbmdpbmU7CiAJc3RydWN0IGRybV9kZXZpY2UgKmRldiA9IGNydGMt
-PmRldjsKIAl1bnNpZ25lZCBsb25nIGZsYWdzOwogCi0tIApnaXQtc2VyaWVzIDAuOS4xCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Montag, 10. Juli 2017, 14:12:26 CEST schrieb Heiko Stuebner:
+> The binding rightfully only specifies compatibles for actual implementations
+> and not for the whole family. In the example an arm,mali-midgard slipped
+> through from downstream devicetrees though. So drop that to not confuse
+> people reading (or copying) that example.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+applied as fix for 4.13 with Robs Ack
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
