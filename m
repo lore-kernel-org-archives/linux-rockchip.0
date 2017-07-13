@@ -1,96 +1,152 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: pwm-backlight: add pwm-delay-us property
-Date: Thu, 13 Jul 2017 09:49:16 +0200
-Message-ID: <CAFqH_5101OQWGyeHtUB-2mUwnbpnPq7FWWnYfjKAgyC9BVMmag@mail.gmail.com>
-References: <20170630112109.13785-1-enric.balletbo@collabora.com>
- <CAL_Jsq+xpdsqbreQpN6oTdr+X2cHNnJr8tVEzG+tgTvhZUka6g@mail.gmail.com>
- <CAFqH_53tNo1G-ctbmux6AEWWFPXbuiFqTuZ94Gj_mDjFk_MksQ@mail.gmail.com>
- <CAFqH_538k_eZ4vtzJJCOmDwFnjEM0B4grgfq0uiDkE3n13Sguw@mail.gmail.com> <20170713073954.GA1363@amd>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2] clk: fractional-divider: fix up the fractional clk's
+ jitter
+Date: Thu, 13 Jul 2017 15:53:04 +0800
+Message-ID: <596726E0.6010403@rock-chips.com>
+References: <1499395943-19516-1-git-send-email-zhangqing@rock-chips.com> <1517147.8QBNcir4nx@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <20170713073954.GA1363@amd>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Pavel Machek <pavel@ucw.cz>
-Cc: Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Linux PWM List <linux-pwm@vger.kernel.org>, "linux-fbdev@vger.kernel.org" <linux-fbdev@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, huang lin <hl@rock-chips.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1517147.8QBNcir4nx@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-2017-07-13 9:39 GMT+02:00 Pavel Machek <pavel@ucw.cz>:
-> On Thu 2017-07-13 09:22:15, Enric Balletbo Serra wrote:
->> Rob,
->>
->> 2017-07-06 20:23 GMT+02:00 Enric Balletbo Serra <eballetbo@gmail.com>:
->> > Hi Rob,
->> >
->> > 2017-07-06 19:07 GMT+02:00 Rob Herring <robh+dt@kernel.org>:
->> >> On Fri, Jun 30, 2017 at 6:21 AM, Enric Balletbo i Serra
->> >> <enric.balletbo@collabora.com> wrote:
->> >>> From: huang lin <hl@rock-chips.com>
->> >>>
->> >>> Add a pwm-delay-us property to specify the delay between setting an
->> >>> initial (non-zero) PWM value and enabling the backlight, and also the
->> >>> delay between disabling the backlight and setting PWM value to 0.
->> >>>
->> >>> Signed-off-by: huang lin <hl@rock-chips.com>
->> >>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> >>> ---
->> >>> Changes since v1:
->> >>>  - As suggested by Daniel Thompson
->> >>>    - Do not assume power-on delay and power-off delay will be the same
->> >>>
->> >>> v1: https://lkml.org/lkml/2017/6/28/219
->> >>>
->> >>>  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
->> >>>  1 file changed, 6 insertions(+)
->> >>>
->> >>> diff --git a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
->> >>> index 764db86..49b037e 100644
->> >>> --- a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
->> >>> +++ b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
->> >>> @@ -17,6 +17,11 @@ Optional properties:
->> >>>                 "pwms" property (see PWM binding[0])
->> >>>    - enable-gpios: contains a single GPIO specifier for the GPIO which enables
->> >>>                    and disables the backlight (see GPIO binding[1])
->> >>> +  - pwm-delay-us: delay between setting an initial (non-zero) PWM value and
->> >>> +                  enabling the backlight, and also the delay between disabling
->> >>> +                  the backlight and setting PWM value to 0.
->> >>> +                  The 1st cell is the pre-delay in micro seconds.
->> >>> +                  The 2nd cell is the post-delay in micro seconds.
->> >>
->> >> pre and post imply a time before and after a certain event, but these
->> >> are for 2 different events. These are more like an enable/on delay and
->> >> disable/off delay which probably should be separate properties. What
->> >> happens when we need the opposite sequence or a different sequence?
->> >> Maybe some panel requires the PWM to be 0 until some time after
->> >> enabling.
->> >>
->>
->> A second proposal, what do you think?
->>
->>   - post-pwm-on-delay-us: Delay in us after setting an initial (non-zero) PWM
->>                           and enabling the backlight using GPIO.
+
+
+On 07/10/2017 07:05 PM, Heiko Stuebner wrote:
+> Hi Elaine,
 >
-> This says "PWM on", "enable GPIO", "delay". Which is not what you
-> want.
+> Am Freitag, 7. Juli 2017, 10:52:23 CEST schrieb Elaine Zhang:
+>> add clk_fractional_divider_special_ops for rockchip specific requirements,
+>> fractional divider must set that denominator is 20 times larger than
+>> numerator to generate precise clock frequency.
+>> Otherwise the CLK jitter is very big, poor quality of the clock signal.
+>>
+>> RK document description:
+>> 3.1.9  Fractional divider usage
+>> To get specific frequency, clocks of I2S, SPDIF, UARTcan be generated by
+>> fractional divider. Generally you must set that denominator is 20 times
+>> larger than numerator to generate precise clock frequency. So the
+>> fractional divider applies only to generate low frequency clock like
+>> I2S, UART.igned-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>>
+>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>> ---
+>>   drivers/clk/clk-fractional-divider.c | 32 ++++++++++++++++++++++++++++++++
+>>   drivers/clk/rockchip/clk.c           |  2 +-
+>>   include/linux/clk-provider.h         |  1 +
+>>   3 files changed, 34 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clk/clk-fractional-divider.c b/drivers/clk/clk-fractional-divider.c
+>> index aab904618eb6..3107b33327f9 100644
+>> --- a/drivers/clk/clk-fractional-divider.c
+>> +++ b/drivers/clk/clk-fractional-divider.c
+>> @@ -158,6 +158,38 @@ struct clk_hw *clk_hw_register_fractional_divider(struct device *dev,
+>>   }
+>>   EXPORT_SYMBOL_GPL(clk_hw_register_fractional_divider);
+>>
+>> +static long clk_fd_round_rate_special(struct clk_hw *hw, unsigned long rate,
+>> +				      unsigned long *parent_rate)
+>> +{
+>
+> this obviously still encodes Rockchip-specific things into the generic
+> fractional-divider driver. And it's of course only special for Rockchip
+> fractional dividers and will end it chaos if every implementation wants
+> to add a "special" function there.
+>
+> Did you have a look at the patch I added to the last mail (for real this time)?
 >
 
-Ok, seems I need to improve a bit more my English skills. :)
+I think your patch is not most appropriate.
+Because I think the rational_best_approximation is work well, I modified 
+is parent_rate,
+I just need to make sure the parent_rate > frac_rate * 20.
+And I modify this like: (It is more appropriate?)
 
-after -> between ?
+(I tested in RK SoCs. It's work well.)
+diff --git a/drivers/clk/clk-fractional-divider.c 
+b/drivers/clk/clk-fractional-divider.c
+index e7a315e840e6..ccc9a98e53ce 100644
+--- a/drivers/clk/clk-fractional-divider.c
++++ b/drivers/clk/clk-fractional-divider.c
+@@ -62,6 +62,9 @@ static long clk_fd_round_rate(struct clk_hw *hw, 
+unsigned long rate,
+  	if (!rate || rate >= *parent_rate)
+  		return *parent_rate;
 
-Then, if I understand correctly, this (found in another binding that I
-used as reference)
++	if (fd->approx)
++		fd->approx(hw, rate, parent_rate);
++
+  	/*
+  	 * Get rate closer to *parent_rate to guarantee there is no overflow
+  	 * for m and n. In the result it will be the nearest rate left shifted
+@@ -147,6 +150,7 @@ struct clk_hw 
+*clk_hw_register_fractional_divider(struct device *dev,
+  	fd->nmask = GENMASK(nwidth - 1, 0) << nshift;
+  	fd->flags = clk_divider_flags;
+  	fd->lock = lock;
++	fd->approx = NULL;
+  	fd->hw.init = &init;
 
-- post-power-on-delay-ms : Delay in ms after powering the card and
-        de-asserting the reset-gpios (if any)
+  	hw = &fd->hw;
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index e96a2e187862..a8ed48ffd531 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -160,6 +160,21 @@ static int rockchip_clk_frac_notifier_cb(struct 
+notifier_block *nb,
+  	return notifier_from_errno(ret);
+  }
 
-means,
++void rockchip_fractional_special_approx(struct clk_hw *hw,
++					unsigned long rate,
++					unsigned long *parent_rate)
++{
++	struct clk_hw *p_parent;
++	unsigned long p_rate, p_parent_rate;
++
++	p_rate = clk_hw_get_rate(clk_hw_get_parent(hw));
++	if ((rate * 20 > p_rate) && (p_rate % rate != 0)) {
++		p_parent = clk_hw_get_parent(clk_hw_get_parent(hw));
++		p_parent_rate = clk_hw_get_rate(p_parent);
++		*parent_rate = p_parent_rate;
++	}
++}
++
+  static struct clk *rockchip_clk_register_frac_branch(
+  		struct rockchip_clk_provider *ctx, const char *name,
+  		const char *const *parent_names, u8 num_parents,
+@@ -206,6 +221,7 @@ static struct clk *rockchip_clk_register_frac_branch(
+  	div->nwidth = 16;
+  	div->nmask = GENMASK(div->nwidth - 1, 0) << div->nshift;
+  	div->lock = lock;
++	div->approx = rockchip_fractional_special_approx;
+  	div_ops = &clk_fractional_divider_ops;
 
-Power the card, de-asserting reset, delay ?
+  	clk = clk_register_composite(NULL, name, parent_names, num_parents,
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index f70440a4edd7..6e4f6940e39e 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -513,6 +513,9 @@ struct clk_fractional_divider {
+  	u8		nwidth;
+  	u32		nmask;
+  	u8		flags;
++	void            (*approx)(struct clk_hw *hw,
++				  unsigned long rate,
++				  unsigned long *parent_rate);
+  	spinlock_t	*lock;
+  };
 
-Regards,
- Enric.
 
-> --
-> (english) http://www.livejournal.com/~pavelmachek
-> (cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
+
+>
+> Heiko
+>
+>
+>
+>
+
