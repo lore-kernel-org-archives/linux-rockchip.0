@@ -1,58 +1,87 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH] nvmem: rockchip-efuse: amend compatible rk322x-efuse to rk3228-efuse
-Date: Fri, 14 Jul 2017 16:38:43 +0800
-Message-ID: <1500021523-1300-1-git-send-email-frank.wang@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH 4/4] drm/sun4i: make sure we don't have a commit pending
+Date: Fri, 14 Jul 2017 16:56:01 +0800
+Message-ID: <CAGb2v64KnB_zU0yk7MsGr9WRK1wpWq1xOj_cNuQ4mSQJeAGarw@mail.gmail.com>
+References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
+ <a6dfec7ea3598c64f6653e9b8b5febac79172341.1499956639.git-series.maxime.ripard@free-electrons.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <a6dfec7ea3598c64f6653e9b8b5febac79172341.1499956639.git-series.maxime.ripard@free-electrons.com>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/SAMSUNG EXYNO..." <linux-samsung-soc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-As the comments from Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> that compatible
-should not contain any placeholders, this patch fix it for rk3228 SoC.
+Hi,
 
-Note that this is a fix for v4.13, due to fixing the current non-standard
-binding name that should not become part of an official kernel release.
+On Thu, Jul 13, 2017 at 10:41 PM, Maxime Ripard
+<maxime.ripard@free-electrons.com> wrote:
+> In the earlier display engine designs, any register access while a commit
+> is pending is forbidden.
+>
+> One of the symptoms is that reading a register will return another, random,
+> register value which can lead to register corruptions if we ever do a
+> read/modify/write cycle.
 
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 2 +-
- drivers/nvmem/rockchip-efuse.c                             | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Alternatively, if changes to the backend (layers) are guaranteed to happen
+while the CRTC is disabled (which seems to be the case after looking at
+drm_atomic_helper_commit_planes and drm_atomic_helper_commit_tail), we
+could just turn on register auto-commit all the time and not deal with
+this.
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-index 194926f..1ff02afd 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-@@ -4,7 +4,7 @@ Required properties:
- - compatible: Should be one of the following.
-   - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
-   - "rockchip,rk3188-efuse" - for RK3188 SoCs.
--  - "rockchip,rk322x-efuse" - for RK322x SoCs.
-+  - "rockchip,rk3228-efuse" - for RK3228 SoCs.
-   - "rockchip,rk3288-efuse" - for RK3288 SoCs.
-   - "rockchip,rk3399-efuse" - for RK3399 SoCs.
- - reg: Should contain the registers location and exact eFuse size
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index a0d4ede..63e3eb5 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -170,7 +170,7 @@ static const struct of_device_id rockchip_efuse_match[] = {
- 		.data = (void *)&rockchip_rk3288_efuse_read,
- 	},
- 	{
--		.compatible = "rockchip,rk322x-efuse",
-+		.compatible = "rockchip,rk3228-efuse",
- 		.data = (void *)&rockchip_rk3288_efuse_read,
- 	},
- 	{
--- 
-2.0.0
+ChenYu
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
+> Signed-off-by: Maxime Ripard <maxime.ripard@free-electrons.com>
+> ---
+>  drivers/gpu/drm/sun4i/sun4i_backend.c | 14 ++++++++++++++
+>  drivers/gpu/drm/sun4i/sun4i_crtc.c    |  1 +
+>  2 files changed, 15 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> index cf480218daa5..ce1f40f7511e 100644
+> --- a/drivers/gpu/drm/sun4i/sun4i_backend.c
+> +++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> @@ -67,6 +67,19 @@ static void sun4i_backend_commit(struct sunxi_engine *engine)
+>                      SUN4I_BACKEND_REGBUFFCTL_LOADCTL);
+>  }
+>
+> +static int sun4i_backend_commit_poll(struct sunxi_engine *engine)
+> +{
+> +       u32 val;
+> +
+> +       DRM_DEBUG_DRIVER("Polling for the commit to end\n");
+> +
+> +       return regmap_read_poll_timeout(engine->regs,
+> +                                       SUN4I_BACKEND_REGBUFFCTL_REG,
+> +                                       val,
+> +                                       !(val & SUN4I_BACKEND_REGBUFFCTL_LOADCTL),
+> +                                       100, 50000);
+> +}
+> +
+>  void sun4i_backend_layer_enable(struct sun4i_backend *backend,
+>                                 int layer, bool enable)
+>  {
+> @@ -330,6 +343,7 @@ static int sun4i_backend_of_get_id(struct device_node *node)
+>
+>  static const struct sunxi_engine_ops sun4i_backend_engine_ops = {
+>         .commit                         = sun4i_backend_commit,
+> +       .commit_poll                    = sun4i_backend_commit_poll,
+>         .layers_init                    = sun4i_layers_init,
+>         .apply_color_correction         = sun4i_backend_apply_color_correction,
+>         .disable_color_correction       = sun4i_backend_disable_color_correction,
+> diff --git a/drivers/gpu/drm/sun4i/sun4i_crtc.c b/drivers/gpu/drm/sun4i/sun4i_crtc.c
+> index 2eba1d8639d8..31550493fa1d 100644
+> --- a/drivers/gpu/drm/sun4i/sun4i_crtc.c
+> +++ b/drivers/gpu/drm/sun4i/sun4i_crtc.c
+> @@ -34,6 +34,7 @@ static void sun4i_crtc_atomic_begin(struct drm_crtc *crtc,
+>                                     struct drm_crtc_state *old_state)
+>  {
+>         struct sun4i_crtc *scrtc = drm_crtc_to_sun4i_crtc(crtc);
+> +       struct sunxi_engine *engine = scrtc->engine;
+>         struct drm_device *dev = crtc->dev;
+>         unsigned long flags;
+>
+> --
+> git-series 0.9.1
