@@ -1,87 +1,96 @@
-From: Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [PATCH 4/4] drm/sun4i: make sure we don't have a commit pending
-Date: Fri, 14 Jul 2017 16:56:01 +0800
-Message-ID: <CAGb2v64KnB_zU0yk7MsGr9WRK1wpWq1xOj_cNuQ4mSQJeAGarw@mail.gmail.com>
-References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
- <a6dfec7ea3598c64f6653e9b8b5febac79172341.1499956639.git-series.maxime.ripard@free-electrons.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RFC PATCH 3/6] phy: rockcip-pcie: reconstruct driver to support
+ per-lane PHYs
+Date: Fri, 14 Jul 2017 17:14:22 +0800
+Message-ID: <f612829f-0bcb-3a8f-76e1-b88e1932f888@rock-chips.com>
+References: <1500004101-240296-1-git-send-email-shawn.lin@rock-chips.com>
+ <1500004366-241633-1-git-send-email-shawn.lin@rock-chips.com>
+ <1500004366-241633-2-git-send-email-shawn.lin@rock-chips.com>
+ <20170714051030.GA59140@google.com>
+ <a0b188ea-71e2-8c8a-999d-754a35891ab9@rock-chips.com>
+ <59686CCA.60804@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <a6dfec7ea3598c64f6653e9b8b5febac79172341.1499956639.git-series.maxime.ripard@free-electrons.com>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Maxime Ripard <maxime.ripard@free-electrons.com>
-Cc: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/SAMSUNG EXYNO..." <linux-samsung-soc@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <59686CCA.60804-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Jeffy,
 
-On Thu, Jul 13, 2017 at 10:41 PM, Maxime Ripard
-<maxime.ripard@free-electrons.com> wrote:
-> In the earlier display engine designs, any register access while a commit
-> is pending is forbidden.
->
-> One of the symptoms is that reading a register will return another, random,
-> register value which can lead to register corruptions if we ever do a
-> read/modify/write cycle.
+On 2017/7/14 15:03, jeffy wrote:
+> Hi Shawn,
+> 
+> On 07/14/2017 02:33 PM, Shawn Lin wrote:
+>>>
+>>>> +        return rk_phy->phys[0];
+>>>> +    }
+>>>> +}
+>>>> +
+>>>>   static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
+>>>>                     u32 addr, u32 data)
+>>>>   {
+>>>> @@ -114,20 +139,55 @@ static inline u32 phy_rd_cfg(struct
+>>>> rockchip_pcie_phy *rk_phy,
+>>>>       return val;
+>>>>   }
+>>>> -static int rockchip_pcie_phy_power_off(struct phy *phy)
+>>>> +static int rockchip_pcie_phy_common_power_off(struct phy *phy)
+>>>>   {
+>>>>       struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>>>>       int err = 0;
+>>>> +    if (WARN_ON(!rk_phy->pwr_cnt))
+>>>> +        return -EINVAL;
+>>>> +
+>>>> +    if (rk_phy->pwr_cnt > 0)
+>>>
+>>> This should be:
+>>>
+>>>     if (--rk_phy->pwr_cnt)
+>>>
+>>> Also, you technically might need locking, now that multiple phys (which
+>>> each only have their own independent mutex) are accessing the same
+>>> refcount. Or maybe just make this an atomic variable.
+>>
+>> Good catch!
+> Sounds like we need something similar to phy-core.c's power_count and 
+> init_count.
 
-Alternatively, if changes to the backend (layers) are guaranteed to happen
-while the CRTC is disabled (which seems to be the case after looking at
-drm_atomic_helper_commit_planes and drm_atomic_helper_commit_tail), we
-could just turn on register auto-commit all the time and not deal with
-this.
+Probably, and I will look into it later.
 
-ChenYu
+> 
+>>>> +
+>>>>       return 0;
+>>>>   }
+>>>> +#define DECLARE_PHY_POWER_OFF_PER_LANE(id) \
+>>>> +static int rockchip_pcie_lane##id##_phy_power_off(struct phy *phy) \
+>>>
+>>> What? All this macro magic (and duplicate generated functions) should
+>>> not be necessary. You just need some per-phy data that keeps the index.
+>>
+>> I can't quite follow yours here. The only argument passing on to
+>> the PHY APIs is 'struct phy *phy', and how could you trace the index
+>> from it? The caller should save phy instead of 'rockchip_pcie_phy', in
+>> which the per-phy data should be.
+>>
+>> Or could you kindly show me some example here:)
+>>
+> Maybe add a struct rockchip_pcie_phy_data for each phy, contains their 
+> index and a pointer to the common struct rockchip_pcie_phy?
 
->
-> Signed-off-by: Maxime Ripard <maxime.ripard@free-electrons.com>
-> ---
->  drivers/gpu/drm/sun4i/sun4i_backend.c | 14 ++++++++++++++
->  drivers/gpu/drm/sun4i/sun4i_crtc.c    |  1 +
->  2 files changed, 15 insertions(+)
->
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
-> index cf480218daa5..ce1f40f7511e 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_backend.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
-> @@ -67,6 +67,19 @@ static void sun4i_backend_commit(struct sunxi_engine *engine)
->                      SUN4I_BACKEND_REGBUFFCTL_LOADCTL);
->  }
->
-> +static int sun4i_backend_commit_poll(struct sunxi_engine *engine)
-> +{
-> +       u32 val;
-> +
-> +       DRM_DEBUG_DRIVER("Polling for the commit to end\n");
-> +
-> +       return regmap_read_poll_timeout(engine->regs,
-> +                                       SUN4I_BACKEND_REGBUFFCTL_REG,
-> +                                       val,
-> +                                       !(val & SUN4I_BACKEND_REGBUFFCTL_LOADCTL),
-> +                                       100, 50000);
-> +}
-> +
->  void sun4i_backend_layer_enable(struct sun4i_backend *backend,
->                                 int layer, bool enable)
->  {
-> @@ -330,6 +343,7 @@ static int sun4i_backend_of_get_id(struct device_node *node)
->
->  static const struct sunxi_engine_ops sun4i_backend_engine_ops = {
->         .commit                         = sun4i_backend_commit,
-> +       .commit_poll                    = sun4i_backend_commit_poll,
->         .layers_init                    = sun4i_layers_init,
->         .apply_color_correction         = sun4i_backend_apply_color_correction,
->         .disable_color_correction       = sun4i_backend_disable_color_correction,
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_crtc.c b/drivers/gpu/drm/sun4i/sun4i_crtc.c
-> index 2eba1d8639d8..31550493fa1d 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_crtc.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_crtc.c
-> @@ -34,6 +34,7 @@ static void sun4i_crtc_atomic_begin(struct drm_crtc *crtc,
->                                     struct drm_crtc_state *old_state)
->  {
->         struct sun4i_crtc *scrtc = drm_crtc_to_sun4i_crtc(crtc);
-> +       struct sunxi_engine *engine = scrtc->engine;
->         struct drm_device *dev = crtc->dev;
->         unsigned long flags;
->
-> --
-> git-series 0.9.1
+yes, I got Brian's point after reading it more times, and I almost
+finish converting to per-lane data now..
+
+> 
+> 
+> 
+> 
+> 
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
