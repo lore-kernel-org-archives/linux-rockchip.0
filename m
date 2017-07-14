@@ -1,109 +1,58 @@
-From: Guillaume Tucker <guillaume.tucker@collabora.com>
-Subject: Re: [PATCH v5 1/5] dt-bindings: gpu: add bindings for the ARM Mali
- Midgard GPU
-Date: Fri, 14 Jul 2017 08:42:35 +0100
-Message-ID: <cb0f5f26-159a-5c01-da98-572aa4c8d976@collabora.com>
-References: <cover.1493804968.git.guillaume.tucker@collabora.com>
- <bebe578ba130de5fa320ca7c6427b2fae83d61d7.1493804968.git.guillaume.tucker@collabora.com>
- <20170712172636.GA90759@google.com>
- <3339c7d9-c420-777c-e8eb-e9b82a38aa97@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3339c7d9-c420-777c-e8eb-e9b82a38aa97@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, devicetree@vger.kernel.org, Sjoerd Simons <sjoerd.simons@collabora.com>, Wookey <wookey@wookware.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, John Reitan <john.reitan@arm.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-arm-kernel@lists.infradead.org
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RESEND PATCH] nvmem: rockchip-efuse: amend compatible rk322x-efuse to rk3228-efuse
+Date: Fri, 14 Jul 2017 16:38:43 +0800
+Message-ID: <1500021523-1300-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 14/07/17 07:41, Guillaume Tucker wrote:
-> Hi Brian,
->
-> On 12/07/17 18:26, Brian Norris wrote:
->> Hi Guillaume,
->>
->> I know this has already been merged, but I figured here was an OK place
->> to note (inline):
->>
->> On Wed, May 03, 2017 at 10:56:25AM +0100, Guillaume Tucker wrote:
->
-> [...]
->
->>> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->>> new file mode 100644
->>> index 000000000000..d3b6e1a4713a
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt
->>
->> ^^ This file name implies we're talking about a base "arm,mali-midgard"
->> compatible property.
->>
->>> @@ -0,0 +1,86 @@
->>> +ARM Mali Midgard GPU
->>> +====================
->>> +
->>> +Required properties:
->>> +
->>> +- compatible :
->>> +  * Must contain one of the following:
->>> +    + "arm,mali-t604"
->>> +    + "arm,mali-t624"
->>> +    + "arm,mali-t628"
->>> +    + "arm,mali-t720"
->>> +    + "arm,mali-t760"
->>> +    + "arm,mali-t820"
->>> +    + "arm,mali-t830"
->>> +    + "arm,mali-t860"
->>> +    + "arm,mali-t880"
->>> +  * which must be preceded by one of the following vendor specifics:
->>> +    + "amlogic,meson-gxm-mali"
->>> +    + "rockchip,rk3288-mali"
->>
->> But it's not listed here.
->>
->>> +
->>> +- reg : Physical base address of the device and length of the register area.
->>> +
->>> +- interrupts : Contains the three IRQ lines required by Mali Midgard devices.
->>> +
->>> +- interrupt-names : Contains the names of IRQ resources in the order they were
->>> +  provided in the interrupts property. Must contain: "job", "mmu", "gpu".
->>> +
->>> +
->>> +Optional properties:
->>> +
->>> +- clocks : Phandle to clock for the Mali Midgard device.
->>> +
->>> +- mali-supply : Phandle to regulator for the Mali device. Refer to
->>> +  Documentation/devicetree/bindings/regulator/regulator.txt for details.
->>> +
->>> +- operating-points-v2 : Refer to Documentation/devicetree/bindings/power/opp.txt
->>> +  for details.
->>> +
->>> +
->>> +Example for a Mali-T760:
->>> +
->>> +gpu@ffa30000 {
->>> +    compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
->>
->> And it *is* used here in this example.
->>
->> So, should it be used/documented or not?
->
-> The important part is that having only arm,mali-midgard in the
-> gpu node is not enough to accurately describe the hardware, which
-> is why it is not listed in the required compatible strings.  On
-> the other hand, it does help with describing the hardware, so
-> it's fine to use it.  If people find this confusing then I guess
-> we could add something to say that arm,mali-midgard can be used
-> optionally in addition to the specific ones.
->
-> Also, if you look at the 64-bit ARM CPUs for example, they
-> typically have armv8 in their node although armv8 is not
-> mentioned anywhere in the bindings documentation...
+As the comments from Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> that compatible
+should not contain any placeholders, this patch fix it for rk3228 SoC.
 
-Sorry I've only just seen Heiko's other emails and patches about
-removing arm,mali-midgard from the example.
+Note that this is a fix for v4.13, due to fixing the current non-standard
+binding name that should not become part of an official kernel release.
 
-Guillaume
+Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 2 +-
+ drivers/nvmem/rockchip-efuse.c                             | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+index 194926f..1ff02afd 100644
+--- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
++++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+@@ -4,7 +4,7 @@ Required properties:
+ - compatible: Should be one of the following.
+   - "rockchip,rk3066a-efuse" - for RK3066a SoCs.
+   - "rockchip,rk3188-efuse" - for RK3188 SoCs.
+-  - "rockchip,rk322x-efuse" - for RK322x SoCs.
++  - "rockchip,rk3228-efuse" - for RK3228 SoCs.
+   - "rockchip,rk3288-efuse" - for RK3288 SoCs.
+   - "rockchip,rk3399-efuse" - for RK3399 SoCs.
+ - reg: Should contain the registers location and exact eFuse size
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index a0d4ede..63e3eb5 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -170,7 +170,7 @@ static const struct of_device_id rockchip_efuse_match[] = {
+ 		.data = (void *)&rockchip_rk3288_efuse_read,
+ 	},
+ 	{
+-		.compatible = "rockchip,rk322x-efuse",
++		.compatible = "rockchip,rk3228-efuse",
+ 		.data = (void *)&rockchip_rk3288_efuse_read,
+ 	},
+ 	{
+-- 
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
