@@ -1,69 +1,82 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 1/4] drm/atomic: implement drm_atomic_helper_commit_tail
- for runtime_pm users
-Date: Fri, 14 Jul 2017 07:37:54 +0200
-Message-ID: <CAKMK7uE4j3Dy4qOd+WbTxg1BrYfPXGZVsxMWgPSx_1a1OhKu7A@mail.gmail.com>
-References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
- <aeeb8f778dae8f170294b6da92819973b742feb2.1499956639.git-series.maxime.ripard@free-electrons.com>
- <1823154.LT2zYSFJ4j@avalon>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/5] arm64: dts: rockchip: Add rk3399 vop and display-subsystem
+Date: Fri, 14 Jul 2017 08:33:07 +0200
+Message-ID: <3813924.64TLu7Ua5F@phil>
+References: <1499875435-23944-1-git-send-email-jacob-chen@iotwrt.com> <4655605.dLm3uFpe8F@phil> <CAFLEztSbZExA2_t5D+TWGsrCU5Gqrg7azdi97brhjO2wPdup3A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1823154.LT2zYSFJ4j@avalon>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Seung-Woo Kim <sw0312.kim@samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:DRM DRIVERS FOR RENESAS" <linux-renesas-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, Kyungmin Park <kyungmin.park@samsung.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAFLEztSbZExA2_t5D+TWGsrCU5Gqrg7azdi97brhjO2wPdup3A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jacob Chen <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, long jacob <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdWwgMTQsIDIwMTcgYXQgMTo0MyBBTSwgTGF1cmVudCBQaW5jaGFydAo8bGF1cmVu
-dC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPiB3cm90ZToKPj4gQ29tbWl0IDUyMDU1YmFmYTFm
-ZiAoImRybTogcmNhci1kdTogTW92ZSBwbGFuZSBjb21taXQgY29kZSBmcm9tIENSVEMKPj4gc3Rh
-cnQgdG8gQ1JUQyByZXN1bWUiKSBjaGFuZ2VkIHRoZSBvcmRlciBvZiB0aGUgcGxhbmUgY29tbWl0
-IGFuZCBDUlRDCj4+IGVuYWJsZSBvcGVyYXRpb25zIHRvIGFjY29tbW9kYXRlIHRoZSBydW50aW1l
-IFBNIHJlcXVpcmVtZW50cy4gSG93ZXZlciwKPj4gdGhpcyBpbnRyb2R1Y2VkIGNvcnJ1cHRpb24g
-aW4gdGhlIGZpcnN0IGRpc3BsYXllZCBmcmFtZSwgYXMgdGhlIENSVEMgaXMKPj4gbm93IGVuYWJs
-ZWQgd2l0aG91dCBhbnkgcGxhbmUgY29uZmlndXJlZC4gT24gR2VuMiBoYXJkd2FyZSB0aGUgZmly
-c3QKPj4gZnJhbWUgd2lsbCBiZSBibGFjayBhbmQgbGlrZWx5IHVubm90aWNlZCwgYnV0IG9uIEdl
-bjMgaGFyZHdhcmUgd2UgZW5kIHVwCj4+IHN0YXJ0aW5nIHRoZSBkaXNwbGF5IGJlZm9yZSB0aGUg
-VlNQIGNvbXBvc2l0b3IsIHdoaWNoIGlzIG1vcmUKPj4gbm90aWNlYWJsZS4KPj4KPj4gVG8gZml4
-IHRoaXMsIHJldmVydCB0aGUgb3JkZXIgb2YgdGhlIGNvbW1pdCBvcGVyYXRpb25zIGJhY2ssIGFu
-ZCBoYW5kbGUKPj4gcnVudGltZSBQTSByZXF1aXJlbWVudHMgaW4gdGhlIENSVEMgLmF0b21pY19i
-ZWdpbigpIGFuZCAuYXRvbWljX2VuYWJsZSgpCj4+IGhlbHBlciBvcGVyYXRpb24gaGFuZGxlcnMu
-Cj4KPiBJIGJlbGlldmUgdGhhdCB0aGUgInJ1bnRpbWUgUE0iIG9yZGVyIGlzIHByb2JsZW1hdGlj
-IGluIG1vc3QgZHJpdmVycy4gVGhlCj4gcHJvYmxlbSB1c3VhbGx5IGdvZXMgdW5ub3RpY2VkIGFz
-IG1vc3QgbW9uaXRvcnMgd2lsbCBub3QgZXZlbiBkaXNwbGF5IHRoZQo+IGZpcnN0IGZyYW1lLCBh
-bmQgSSBhc3N1bWUgbWFueSBkZXZpY2VzIHdpbGwganVzdCBvdXRwdXQgaXQgYmxhY2ssIGJ1dCBp
-dCdzIGFuCj4gaXNzdWUgbm9uZXRoZWxlc3MuCj4KPiBOb3RlIHRoYXQgbXkgZHJpdmVyIGhhc24n
-dCBsb3N0IHRoZSAicnVudGltZSBQTSIgcmVxdWlyZW1lbnRzLCBzbyBJIGhhZCB0bwo+IHN1cHBv
-cnQgdGhlbSB3aXRoIHRoZSAic3RhbmRhcmQiIG9yZGVyLiBUaGUgYmVzdCB3YXkgSSd2ZSBmb3Vu
-ZCB3YXMgdG8gcnVudGltZQo+IHJlc3VtZSBpbiB0aGUgb25lIG9mIC5hdG9taWNfYmVnaW4oKSBh
-bmQgLmVuYWJsZSgpIHRoYXQgaXMgcnVuIGZpcnN0LiBOb3QgdmVyeQo+IG5lYXQsIGFzIHNpbWls
-YXIgY29kZSB3b3VsZCBiZSBuZWVkZWQgaW4gbW9zdCBkcml2ZXJzLiBJIHdvbmRlciB3aGV0aGVy
-IGl0Cj4gd291bGRuJ3QgYmUgdXNlZnVsIHRvIGFkZCByZXN1bWUvc3VzcGVuZCBoZWxwZXIgY2Fs
-bGJhY2tzIGZvciB0aGUgQ1JUQy4KCkkgZGlzY3Vzc2VkIHRoaXMgd2l0aCBMYXVyZW50IGFuZCBl
-eHBsYWluZWQgdGhhdCAiZmlyc3QgYmxhY2sgZnJhbWUiCmlzIGV4YWN0bHkgd2hhdCBpOTE1IGRv
-ZXMuIEknZCBzYXkgZ2l2ZW4gc3BlY2lhbCBjdXN0b21lciByZXF1ZXN0cyB3ZQpkb24ndCB5ZXQg
-aGF2ZSB0byBib3RoZXIgd2l0aCB0aGlzIGluIGdlbmVyYWwgLi4uCgpXcnQgYWRkaW5nIG1vcmUg
-aG9va3MgZm9yIHJwbTogSSBob25lc3RseSBkb24ndCBsaWtlIHRoYXQsIGJlY2F1c2UKdGhlbiBz
-b21lb25lIGVsc2Ugd2FudHMgdG8gYWRkIGEgaG9vayBmb3IgY2xvY2tzLCBvciBmb3IgdGhlIHNp
-ZGViYW5kCmFuZCB0aGVuIHdlIGhhdmUgYSBob3Jyb3Igc2hvdyBvZiBob29rcyB3aGVyZSBldmVy
-eSBkcml2ZXIgdXNlcyBqdXN0IGEKdmVyeSBzbWFsbCBzdWJzZXQuIFRoZSBwb2ludCBvZiBhdG9t
-aWMgaGVscGVycyBpcyB0byBtYWtlIHRoZW0KbW9kdWxhciwgaWYgb25lIHBhcnQgZG9lc24ndCBm
-aXQsIGp1c3QgcmVkbyBpbiB5b3VyIGRyaXZlci4gR29hbApzaG91bGQgYmUgdGhhdCBzaGFyZWQg
-cGFydHMgYXJlIGdvb2QgZm9yIGFib3V0IDkwJSBvZgpkcml2ZXJzL3VzZS1jYXNlcyAobWF5YmUg
-ZXZlbiBsZXNzLCB0aGVyZSdzIHNvb29vbyBtYW55IHNwZWNpYWwKY2FzZXMpLgoKdGxkcjsgSSBz
-dGlsbCB0aGluayB0aGUgX3J1bnRpbWVfcG0gdmFyaWFudCBpcyB0aGUgcmVjb21tZW5kZWQgd2F5
-IHRvIGRvIHRoaXMuCi1EYW5pZWwKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIs
-IEludGVsIENvcnBvcmF0aW9uCis0MSAoMCkgNzkgMzY1IDU3IDQ4IC0gaHR0cDovL2Jsb2cuZmZ3
-bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Jacob,
+
+Am Freitag, 14. Juli 2017, 09:52:30 CEST schrieb Jacob Chen:
+> 2017-07-14 7:34 GMT+08:00 Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>:
+> > Am Donnerstag, 13. Juli 2017, 00:03:51 CEST schrieb Jacob Chen:
+> >> Add devicetree nodes for rk3399 VOP (Video Output Processors), and the
+> >> top level display-subsystem root node.
+> >>
+> >> Later patches add endpoints (eDP, HDMI, MIPI, etc) that attach to the
+> >> VOPs' output ports.
+> >>
+> >> Signed-off-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+> >> ---
+> >>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 65 ++++++++++++++++++++++++++++++++
+> >>  1 file changed, 65 insertions(+)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >> index e795135..300e500 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >> @@ -1455,6 +1455,71 @@
+> >>               status = "disabled";
+> >>       };
+> >>
+> >> +     vopl: vop@ff8f0000 {
+> >> +             compatible = "rockchip,rk3399-vop-lit";
+> >> +             reg = <0x0 0xff8f0000 0x0 0x1ffc>, <0x0 0xff8f2000 0x0 0x400>;
+> >
+> > What is this second memory region doing? It looks like this is the meant
+> > to cover VOP_GAMMA_LUT_ADDR, but can't you just map the whole area?
+> > ChromeOS seems to be doing fine using the whole area as
+> >         <0x0 0xff8f0000 0x0 0x3efc>
+> > and I've also not seen any code changes actually mapping/using this
+> > second area.
+> >
+> 
+> 0x1c00 - 0x200 for cabc_lut
+> 0x2000 - 0x300 for gama_lut
+> 
+> My mistakes, It seems mark havn't send gamma and cabc support to upstream.
+> We shoud just using the whole area map.
+> 
+> 
+> >
+> >> +             interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
+> >> +             clocks = <&cru ACLK_VOP1>, <&cru DCLK_VOP1>, <&cru HCLK_VOP1>, <&cru DCLK_VOP1_DIV>;
+> >> +             clock-names = "aclk_vop", "dclk_vop", "hclk_vop", "dclk_source";
+> >
+> > While I know that this is based on my idea on handling the hdmi pll-rate
+> > requirements, I haven't found the matching code- and dt-binding-changes
+> > posted to a list yet.
+> >
+> 
+> Yeah, should i collect mark's patches or remove it at first?
+
+As we don't know how much discussion is necessary for that, removing
+dclk_source in the first iteration and re-add it once the feature.
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
