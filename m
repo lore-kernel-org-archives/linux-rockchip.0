@@ -1,95 +1,105 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RFC PATCH 3/6] phy: rockcip-pcie: reconstruct driver to support
- per-lane PHYs
-Date: Fri, 14 Jul 2017 17:14:22 +0800
-Message-ID: <f612829f-0bcb-3a8f-76e1-b88e1932f888@rock-chips.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [RFC PATCH 6/6] dt-bindings: PCI: rockchip: convert to use
+ per-lane PHY model
+Date: Fri, 14 Jul 2017 13:47:13 -0700
+Message-ID: <20170714204711.GA13174@google.com>
 References: <1500004101-240296-1-git-send-email-shawn.lin@rock-chips.com>
  <1500004366-241633-1-git-send-email-shawn.lin@rock-chips.com>
- <1500004366-241633-2-git-send-email-shawn.lin@rock-chips.com>
- <20170714051030.GA59140@google.com>
- <a0b188ea-71e2-8c8a-999d-754a35891ab9@rock-chips.com>
- <59686CCA.60804@rock-chips.com>
+ <1500004366-241633-5-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <59686CCA.60804-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1500004366-241633-5-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+Hi Shawn,
 
-On 2017/7/14 15:03, jeffy wrote:
-> Hi Shawn,
+On Fri, Jul 14, 2017 at 11:52:46AM +0800, Shawn Lin wrote:
+> Deprecate legacy PHY model and encourage to use per-lane PHY
+> model.
 > 
-> On 07/14/2017 02:33 PM, Shawn Lin wrote:
->>>
->>>> +        return rk_phy->phys[0];
->>>> +    }
->>>> +}
->>>> +
->>>>   static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
->>>>                     u32 addr, u32 data)
->>>>   {
->>>> @@ -114,20 +139,55 @@ static inline u32 phy_rd_cfg(struct
->>>> rockchip_pcie_phy *rk_phy,
->>>>       return val;
->>>>   }
->>>> -static int rockchip_pcie_phy_power_off(struct phy *phy)
->>>> +static int rockchip_pcie_phy_common_power_off(struct phy *phy)
->>>>   {
->>>>       struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
->>>>       int err = 0;
->>>> +    if (WARN_ON(!rk_phy->pwr_cnt))
->>>> +        return -EINVAL;
->>>> +
->>>> +    if (rk_phy->pwr_cnt > 0)
->>>
->>> This should be:
->>>
->>>     if (--rk_phy->pwr_cnt)
->>>
->>> Also, you technically might need locking, now that multiple phys (which
->>> each only have their own independent mutex) are accessing the same
->>> refcount. Or maybe just make this an atomic variable.
->>
->> Good catch!
-> Sounds like we need something similar to phy-core.c's power_count and 
-> init_count.
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+>  .../devicetree/bindings/pci/rockchip-pcie.txt      | 25 ++++++++++++++++++++--
+>  1 file changed, 23 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> index 1453a73..78d4469 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> @@ -19,8 +19,6 @@ Required properties:
+>  	- "pm"
+>  - msi-map: Maps a Requester ID to an MSI controller and associated
+>  	msi-specifier data. See ./pci-msi.txt
+> -- phys: From PHY bindings: Phandle for the Generic PHY for PCIe.
+> -- phy-names:  MUST be "pcie-phy".
+>  - interrupts: Three interrupt entries must be specified.
+>  - interrupt-names: Must include the following names
+>  	- "sys"
+> @@ -42,6 +40,18 @@ Required properties:
+>  	interrupt source. The value must be 1.
+>  - interrupt-map-mask and interrupt-map: standard PCI properties
+>  
+> +Required properties for legacy PHY model (deprecated):
+> +- phys: From PHY bindings: Phandle for the Generic PHY for PCIe.
+> +- phy-names:  MUST be "pcie-phy".
+> +
+> +Required properties for per-lane PHY model:
+> +- phys: Must contain an phandle to a PHY for each entry in phy-names.
+> +- phy-names: Must include an entry for each active lane. Note that the number
+> +  of entries does not have to (though usually will) be equal to the specified
+> +  number of lanes in the num-lanes property. Entries are of the form
+> +  "pcie-phy-N": where N ranges from 0 to the value specified of (num-lanes - 1).
+> +  (see example below)
 
-Probably, and I will look into it later.
+So (for the non-legacy case) are you requiring listing all 4 PHY lanes,
+or not? If you aren't, then you need to make the PHY driver handle the
+case were lanes {X..3} were never "powered on", but we want them idled.
+IIUC, your current (broken) implementation is trying (incorrectly) to
+only idle a lane once it has been powered on and then back off. But that
+won't ever happen if we only request (for example) PHY lane 0.
 
-> 
->>>> +
->>>>       return 0;
->>>>   }
->>>> +#define DECLARE_PHY_POWER_OFF_PER_LANE(id) \
->>>> +static int rockchip_pcie_lane##id##_phy_power_off(struct phy *phy) \
->>>
->>> What? All this macro magic (and duplicate generated functions) should
->>> not be necessary. You just need some per-phy data that keeps the index.
->>
->> I can't quite follow yours here. The only argument passing on to
->> the PHY APIs is 'struct phy *phy', and how could you trace the index
->> from it? The caller should save phy instead of 'rockchip_pcie_phy', in
->> which the per-phy data should be.
->>
->> Or could you kindly show me some example here:)
->>
-> Maybe add a struct rockchip_pcie_phy_data for each phy, contains their 
-> index and a pointer to the common struct rockchip_pcie_phy?
+It's also misleading that it's possible to specify only some subset of
+the PHY lanes, but the driver might still try to use them all.
 
-yes, I got Brian's point after reading it more times, and I almost
-finish converting to per-lane data now..
+Brian
 
+> +
+>  Optional Property:
+>  - aspm-no-l0s: RC won't support ASPM L0s. This property is needed if
+>  	using 24MHz OSC for RC's PHY.
+> @@ -95,6 +105,7 @@ pcie0: pcie@f8000000 {
+>  		 <&cru SRST_PCIE_PM>, <&cru SRST_P_PCIE>, <&cru SRST_A_PCIE>;
+>  	reset-names = "core", "mgmt", "mgmt-sticky", "pipe",
+>  		      "pm", "pclk", "aclk";
+> +	/* deprecated legacy PHY model */
+>  	phys = <&pcie_phy>;
+>  	phy-names = "pcie-phy";
+>  	pinctrl-names = "default";
+> @@ -111,3 +122,13 @@ pcie0: pcie@f8000000 {
+>  		#interrupt-cells = <1>;
+>  	};
+>  };
+> +
+> +pcie0: pcie@f8000000 {
+> +	...
+> +
+> +	/* preferred per-lane PHY model */
+> +	phys = <&pcie_phy 0>, <&pcie_phy 1>, <&pcie_phy 2>, <&pcie_phy 3>;
+> +	phy-names = "pcie-phy-0", "pcie-phy-1", "pcie-phy-2", "pcie-phy-3";
+> +
+> +	...
+> +};
+> -- 
+> 1.9.1
 > 
 > 
-> 
-> 
-> 
-
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
