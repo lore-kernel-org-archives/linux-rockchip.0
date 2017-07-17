@@ -1,43 +1,69 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/5] arm64: dts: rockchip: Add rk3399 vop and display-subsystem
-Date: Sun, 16 Jul 2017 19:31:09 +0200
-Message-ID: <71446982.CYE3jZejiS@phil>
-References: <1499875435-23944-1-git-send-email-jacob-chen@iotwrt.com> <1499875435-23944-2-git-send-email-jacob-chen@iotwrt.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1499875435-23944-2-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: [PATCH 2/5] phy: rockchip-inno-usb2: Replace the extcon API
+Date: Mon, 17 Jul 2017 10:20:53 +0900
+Message-ID: <1500254456-6525-3-git-send-email-cw00.choi@samsung.com>
+References: <1500254456-6525-1-git-send-email-cw00.choi@samsung.com>
+        <CGME20170717012058epcas1p157e9a296eb5e415ae24bb51a1e6026db@epcas1p1.samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1500254456-6525-1-git-send-email-cw00.choi@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kishon@ti.com, balbi@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, cw00.choi@samsung.com, chanwoo@kernel.org, myungjoo.ham@samsung.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+This patch uses the resource-managed extcon API for extcon_register_notifier()
+and replaces the deprecated extcon API as following:
+- extcon_get_cable_state_() -> extcon_get_state()
+- extcon_set_cable_state_() -> extcon_set_state_sync()
 
-Am Donnerstag, 13. Juli 2017, 00:03:51 CEST schrieb Jacob Chen:
-> Add devicetree nodes for rk3399 VOP (Video Output Processors), and the
-> top level display-subsystem root node.
-> 
-> Later patches add endpoints (eDP, HDMI, MIPI, etc) that attach to the
-> VOPs' output ports.
-> 
-> Signed-off-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Cc: linux-rockchip@lists.infradead.org
+acked-by: Kishon Vijay Abraham I <kishon@ti.com>
+Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-you might want to reduce the number of Signed-offs a bit :-)
-
-Also authorship needs to be fixed. I.e. first Signed-off for this patch
-is from Mark, so in that case Mark probably also was the original author
-and the patch should reflect that. General rule, topmost Signed-off is
-of course from the original author.
-
-
-Heiko
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 626883d9d176..ef033089b7a0 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -545,7 +545,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+ 			rockchip_usb2phy_power_off(rport->phy);
+ 		/* fall through */
+ 	case OTG_STATE_B_IDLE:
+-		if (extcon_get_cable_state_(rphy->edev, EXTCON_USB_HOST) > 0) {
++		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) > 0) {
+ 			dev_dbg(&rport->phy->dev, "usb otg host connect\n");
+ 			rport->state = OTG_STATE_A_HOST;
+ 			rockchip_usb2phy_power_on(rport->phy);
+@@ -598,7 +598,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+ 			rport->vbus_attached = vbus_attach;
+ 
+ 			if (notify_charger && rphy->edev) {
+-				extcon_set_cable_state_(rphy->edev,
++				extcon_set_state_sync(rphy->edev,
+ 							cable, vbus_attach);
+ 				if (cable == EXTCON_CHG_USB_SDP)
+ 					extcon_set_state_sync(rphy->edev,
+@@ -619,7 +619,7 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+ 		sch_work = true;
+ 		break;
+ 	case OTG_STATE_A_HOST:
+-		if (extcon_get_cable_state_(rphy->edev, EXTCON_USB_HOST) == 0) {
++		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) == 0) {
+ 			dev_dbg(&rport->phy->dev, "usb otg host disconnect\n");
+ 			rport->state = OTG_STATE_B_IDLE;
+ 			rockchip_usb2phy_power_off(rport->phy);
+@@ -1006,8 +1006,8 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 	if (!IS_ERR(rphy->edev)) {
+ 		rport->event_nb.notifier_call = rockchip_otg_event;
+ 
+-		ret = extcon_register_notifier(rphy->edev, EXTCON_USB_HOST,
+-					       &rport->event_nb);
++		ret = devm_extcon_register_notifier(rphy->dev, rphy->edev,
++					EXTCON_USB_HOST, &rport->event_nb);
+ 		if (ret)
+ 			dev_err(rphy->dev, "register USB HOST notifier failed\n");
+ 	}
+-- 
+1.9.1
