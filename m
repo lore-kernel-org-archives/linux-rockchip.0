@@ -1,45 +1,87 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: cdn-dp: send audio infoframe to sink
-Date: Mon, 17 Jul 2017 13:44:28 -0700
-Message-ID: <CAD=FV=Xq6ZDgzzL9Y79hmtZxdogBkUwx=6NwQHM+8vt9PRL__A@mail.gmail.com>
-References: <1500116418-4178-1-git-send-email-zyw@rock-chips.com>
- <20170717202300.c2r7ypclqbwvqbzq@art_vandelay>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 1/2] phy-rockchip-pcie: add set_mode callback
+Date: Mon, 17 Jul 2017 14:03:44 -0700
+Message-ID: <20170717210342.GA115703@google.com>
+References: <1497601068-181656-1-git-send-email-shawn.lin@rock-chips.com>
+ <cea27b15-2c2d-a4a9-76f8-f4798c152101@ti.com>
+ <CA+ASDXOpPdk+mrVQxrDmhsL-SUNSnQ_CqGXuW-Vrh_D7Gh8jxA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170717202300.c2r7ypclqbwvqbzq@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Zhong <zyw@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CA+ASDXOpPdk+mrVQxrDmhsL-SUNSnQ_CqGXuW-Vrh_D7Gh8jxA@mail.gmail.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBNb24sIEp1bCAxNywgMjAxNyBhdCAxOjIzIFBNLCBTZWFuIFBhdWwgPHNlYW5wYXVs
-QGNocm9taXVtLm9yZz4gd3JvdGU6Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvY2RuLWRwLWNvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29y
-ZS5jCj4+IGluZGV4IDliMGIwNTguLmU1OWNhNDcgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9jZG4tZHAtY29yZS5jCj4+IEBAIC04MDIsNiArODAyLDcgQEAgc3RhdGljIGludCBjZG5f
-ZHBfYXVkaW9faHdfcGFyYW1zKHN0cnVjdCBkZXZpY2UgKmRldiwgIHZvaWQgKmRhdGEsCj4+ICAg
-ICAgICAgICAgICAgLnNhbXBsZV9yYXRlID0gcGFyYW1zLT5zYW1wbGVfcmF0ZSwKPj4gICAgICAg
-ICAgICAgICAuY2hhbm5lbHMgPSBwYXJhbXMtPmNoYW5uZWxzLAo+PiAgICAgICB9Owo+PiArICAg
-ICB1OCBidWZmZXJbMTRdOwo+Cj4gV2h5IDE0Pwo+Cj4gSSB0aGluayB5b3Ugc2hvdWxkIHByb2Jh
-Ymx5IGhhdmUgYnVmZmVyW0hETUlfQVVESU9fSU5GT0ZSQU1FX1NJWkUgKwo+IFNEUF9IRUFERVJf
-U0laRV0gc28gdGhlIHJlYWRlciBrbm93cyBob3cgeW91IGFycml2ZWQgYXQgdGhpcyB2YWx1ZS4K
-Pgo+PiAgICAgICBpbnQgcmV0Owo+Pgo+PiAgICAgICBtdXRleF9sb2NrKCZkcC0+bG9jayk7Cj4+
-IEBAIC04MjMsNiArODI0LDI1IEBAIHN0YXRpYyBpbnQgY2RuX2RwX2F1ZGlvX2h3X3BhcmFtcyhz
-dHJ1Y3QgZGV2aWNlICpkZXYsICB2b2lkICpkYXRhLAo+PiAgICAgICAgICAgICAgIGdvdG8gb3V0
-Owo+PiAgICAgICB9Cj4+Cj4+ICsgICAgIG1lbXNldChidWZmZXIsIDAsIHNpemVvZihidWZmZXIp
-KTsKCkl0IGlzIGxlc3MgZXJyb3IgcHJvbmUgKGFuZCBwcm9iYWJseSBtYWtlcyBiZXR0ZXIgY29k
-ZSkgdG8ganVzdCB0byBkbwp0aGlzIGF0IGluaXQgdGltZS4gIEFLQToKCnU4IGJ1ZmZlclsxNF0g
-PSB7IDAgfTsKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Mon, Jul 10, 2017 at 10:20:32PM -0700, Brian Norris wrote:
+> Hi Kishon,
+
+Hi again Kishon,
+
+I didn't get a response from you, but Shawn is continuing to send
+several versions of a patchset implementing one of these suggestions.
+I'd like to ping back here, in the hopes of getting an answer.
+
+> On Mon, Jul 10, 2017 at 9:45 PM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
+> > On Friday 16 June 2017 01:47 PM, Shawn Lin wrote:
+> > > phy_mode was added for switching USB mode purposely as
+> > > well as phy_set_mode API. However other types of PHY could
+> > > also have some miscellaneous setting/modes need to be
+> > > handled. This patch is gonna support this callback for
+> > > phy-rockchip-pcie and do some power-saving work there.
+> > > Note that we just stuff in some other values other that the
+> > > existing phy_mode and convert it in the coressponding driver
+> > > instead, otherwise we should extend the phy_mode again which
+> > > it doesn't make sense to add in new driver's specificed value.
+> > > Overall it looks fine to me as the controller's driver and the
+> > > phy's driver are paired so that the caller and the consumer should
+> > > be able to keep the value(mode) in consistent.
+> >
+> > I really don't prefer using an API other that what it is intended for. We have
+> > to come up with a better way for handling this.
+> >
+> > IIUC this patch sets unused lanes in idle mode? If yes, then can't we model
+> > each lane as a separate phy, so that we can power-on/power-off each lane
+> > independently.
+> 
+> I suggested the same to Shawn previously. I'm interested in seeing his response.
+
+Judging by Shawn's subsequent patches, I guess he saw no problem with
+this. I'm still not so sure.
+
+> But personally I'm still not sure if that's the most accurate way to
+> describe this PHY, except for the fact that inevitably, most device
+> tree bindings get molded to match the related kernel APIs, rather than
+> the other way around. What if instead, we added an enum mode entry
+> that represents "finished link training", at which point the PHY would
+> then know it can power down the unused lanes (that's assuming the PHY
+> can figure that part out)?
+
+Can I get an answer here? Is it possible that we extend the PHY API with
+either a new 'phy_mode', or with some other PCIe-specific extension? As
+I said above, it doesn't actually seem like a natural description of the
+hardware to say that there are 4 PHYs here, instead of just 1. And then
+it puts more burden on the provider/consumer drivers to do a lot of
+weird accounting, just so that this single piece of hardware can fit the
+current limited set of APIs.
+
+This is not the first time that some concept isn't so easy to fit into
+the existing framework. I think it would be prudent to consider ways to
+better extend the API to support modes specific to device classes.
+You've already done that for some USB pieces, and I think it would make
+sense to extend this to PCIe. For instance, we could have the PHY export
+things like "number of PCIe lanes", and support callbacks for "disable
+unused lanes".
+
+> Or if we did re-model this PHY, how are we supposed to handle backward
+> compatibility? Can the same PHY driver support 2 different of_xlate
+> methods? I guess we'd have to provide an implementation that sets the
+> driver up to behave completely differently based on the number of
+> #phy-cells?
+
+I guess Shawn was able to work out some of this. But all the extra
+state-tracking and reference counting appears to be hard to get right...
+
+Brian
