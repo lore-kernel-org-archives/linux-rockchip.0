@@ -1,188 +1,139 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: vop: get rid of register init table
-Date: Mon, 17 Jul 2017 10:10:21 +0800
-Message-ID: <596C1C8D.6030100@rock-chips.com>
-References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
- <1499825008-7451-1-git-send-email-mark.yao@rock-chips.com>
- <20170712164758.ojzsfjq4vrf2cj27@art_vandelay>
- <5966CDF9.3060509@rock-chips.com>
- <20170713202927.7mb2w2tudin3fizx@art_vandelay>
+From: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Subject: Re: [PATCH v2 6/6] dt-bindings: Document the Rockchip RGA bindings
+Date: Mon, 17 Jul 2017 05:21:53 +0300
+Message-ID: <68196359.W3MbNaIOVC@avalon>
+References: <1500101920-24039-1-git-send-email-jacob-chen@iotwrt.com> <1918615.rEp9U5BAbC@avalon> <1882912.vhlUDqklbZ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170713202927.7mb2w2tudin3fizx@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1882912.vhlUDqklbZ@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA35pyIMTTml6UgMDQ6MjksIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBUaHUsIEp1
-bCAxMywgMjAxNyBhdCAwOTozMzo0NUFNICswODAwLCBNYXJrIHlhbyB3cm90ZToKPj4gT24gMjAx
-N+W5tDA35pyIMTPml6UgMDA6NDcsIFNlYW4gUGF1bCB3cm90ZToKPj4+IE9uIFdlZCwgSnVsIDEy
-LCAyMDE3IGF0IDEwOjAzOjI3QU0gKzA4MDAsIE1hcmsgWWFvIHdyb3RlOgo+Pj4+IFJlZ2lzdGVy
-IGluaXQgdGFibGUgdXNlIHVuLWRvY3VtZW50IGRlZmluZSwgaXQgaXMgdW5yZWFkYWJsZSwKPj4+
-PiBBbmQgc29tZXRpbWVzIHdlIG9ubHkgd2FudCB0byB1cGRhdGUgdGlueSBiaXRzLCBpbml0IHRh
-YmxlCj4+Pj4gbWV0aG9kIGlzIG5vdCBmcmllbmRseSwgaXQncyBkaWZmY3VsdCB0byByZXVzZSBm
-b3IgZGlmZmVyZW5jZQo+Pj4+IGNoaXBzLgo+Pj4gV2hpbGUgSSdtIGhhcHB5IHRvIHNlZSB0aGUg
-aW5pdF90YWJsZSByZW1vdmVkLCBpdCBzZWVtcyBsaWtlIHRoZSBuZXcgY29kZSBpcyBub3QKPj4+
-IGVxdWl2YWxlbnQgdG8gdGhlIG9sZCAoaWU6IHNvbWUgcmVnaXN0ZXIgd3JpdGVzIGhhdmUgYmVl
-biBkcm9wcGVkKS4gSG93IGRpZCB5b3UKPj4+IGVuc3VyZSB0aGF0IHlvdSdyZSBub3QgYnJlYWtp
-bmcgZXhpc3RpbmcgYm9hcmRzIHRoYXQgZGVwZW5kIG9uIHRoZSBkZWxldGVkIHJlZ2lzdGVyCj4+
-PiBpbml0aWFsaXphdGlvbj8KPj4+Cj4+PiBTZWFuCj4+IEFsbCB0aGUgZXhpc3RpbmcgYm9hcmRz
-IHdvcmtzIGZpbmUgb24gbXkgaW50ZXJuYWwga2VybmVsIGJvYXJkIHdpdGggdGhlIGluaXRfdGFi
-bGUgcmVtb3ZlZCwKPj4gV2UgaGFkIHRlc3RlZCBhbGwgdGhlIGV4aXN0aW5nIGJvYXJkcywgc28g
-aXQncyBubyBwcm9ibGVtIHRvIHJlbW92ZWQgaW5pdF90YWJsZQo+Pgo+IFRoYXQgYmVncyB0aGUg
-cXVlc3Rpb24uLi4gd2h5IHdhcyBpdCBpbnRyb2R1Y2VkIGlmIGl0J3Mgbm90IG5lY2Vzc2FyeT8K
-SGkgU2VhbgoKU29tZSByZWdpc3RlcnMgbmVlZCB0byBiZSBpbml0aWFsaXplZCB3aGVuIHZvcCBw
-b3dlciBvbiwgZ2xvYmFsX2NvbmZpZ19kb25lLCBibGFuaywgd2luIGdhdGUsIGV0Yy4KUHJldmlv
-dXNseSBpbml0X3RhYmxlIHdhcyBpbnRyb2R1Y2VkIHRvIGhhbmRsZSB0aGUgaW5pdGlhbGl6YXRp
-b24gb2YgdGhlc2UgcmVnaXN0ZXJzLgoKU28sIHdoZW4gd2UgcmVtb3ZlIHRoZSBpbml0X3RhYmxl
-IG1lY2hhbmlzbSwgd2UgbmVlZCB0byByZS1qb2luIHRoZSBpbml0aWFsaXphdGlvbiBvZiB0aGVz
-ZSByZWdpc3RlcnMsCnRoaXMgam9iIGlzIGFscmVhZHkgZG9uZSBpbiB0aGlzIHBhdGNoLgoKSSB0
-aGluayB0aGUgdGl0bGUgImdldCByaWQgb2YiIGNhdXNlZCBzb21lIGRvdWJ0cywgaXQncyBub3Qg
-anVzdCByZW1vdmUgaW5pdF90YWJsZSBtZWNoYW5pc20sCnRvIGJlIGV4YWN0LCBkaXJlY3Qgc2V0
-dGluZyBuZWVkZWQgcmVnaXN0ZXIgaW5zdGVhZCBvZiBoYW5kbGluZyB3aXRoIGluaXRfdGFibGUu
-CgpJIHdpbGwgbWFrZSBpdCBjbGVhbmVyIG5leHQgdmVyc2lvbi4KClRoYW5rcy4KCj4KPiBTZWFu
-Cj4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+
-Cj4+Pj4gLS0tCj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYyB8ICA2ICsrLS0KPj4+PiAgICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5oIHwgMTAgKystLS0tLQo+Pj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF92b3BfcmVnLmMgfCA0MyArKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+Pj4+
-ICAgIDMgZmlsZXMgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKSwgNDkgZGVsZXRpb25zKC0pCj4+
-Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+
-PiBpbmRleCA0NTU4OWQ2Li43YTVmODA5IDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4gQEAgLTEzOTMsNyArMTM5Myw2IEBAIHN0
-YXRpYyB2b2lkIHZvcF9kZXN0cm95X2NydGMoc3RydWN0IHZvcCAqdm9wKQo+Pj4+ICAgIHN0YXRp
-YyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQo+Pj4+ICAgIHsKPj4+PiAgICAJY29u
-c3Qgc3RydWN0IHZvcF9kYXRhICp2b3BfZGF0YSA9IHZvcC0+ZGF0YTsKPj4+PiAtCWNvbnN0IHN0
-cnVjdCB2b3BfcmVnX2RhdGEgKmluaXRfdGFibGUgPSB2b3BfZGF0YS0+aW5pdF90YWJsZTsKPj4+
-PiAgICAJc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFoYl9yc3Q7Cj4+Pj4gICAgCWludCBpLCByZXQ7
-Cj4+Pj4gQEAgLTE0NTMsMTMgKzE0NTIsMTQgQEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChzdHJ1
-Y3Qgdm9wICp2b3ApCj4+Pj4gICAgCW1lbWNweSh2b3AtPnJlZ3NiYWssIHZvcC0+cmVncywgdm9w
-LT5sZW4pOwo+Pj4+IC0JZm9yIChpID0gMDsgaSA8IHZvcF9kYXRhLT50YWJsZV9zaXplOyBpKysp
-Cj4+Pj4gLQkJdm9wX3dyaXRlbCh2b3AsIGluaXRfdGFibGVbaV0ub2Zmc2V0LCBpbml0X3RhYmxl
-W2ldLnZhbHVlKTsKPj4+PiArCVZPUF9DVFJMX1NFVCh2b3AsIGdsb2JhbF9yZWdkb25lX2VuLCAx
-KTsKPj4+PiArCVZPUF9DVFJMX1NFVCh2b3AsIGRzcF9ibGFuaywgMCk7Cj4+Pj4gICAgCWZvciAo
-aSA9IDA7IGkgPCB2b3BfZGF0YS0+d2luX3NpemU7IGkrKykgewo+Pj4+ICAgIAkJY29uc3Qgc3Ry
-dWN0IHZvcF93aW5fZGF0YSAqd2luID0gJnZvcF9kYXRhLT53aW5baV07Cj4+Pj4gICAgCQlWT1Bf
-V0lOX1NFVCh2b3AsIHdpbiwgZW5hYmxlLCAwKTsKPj4+PiArCQlWT1BfV0lOX1NFVCh2b3AsIHdp
-biwgZ2F0ZSwgMSk7Cj4+Pj4gICAgCX0KPj4+PiAgICAJdm9wX2NmZ19kb25lKHZvcCk7Cj4+Pj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oCj4+Pj4gaW5kZXgg
-OTk3OWZkMC4uMDg0ZDNiMiAxMDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5oCj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuaAo+Pj4+IEBAIC0yNCwxMSArMjQsNiBAQCBlbnVtIHZvcF9kYXRh
-X2Zvcm1hdCB7Cj4+Pj4gICAgCVZPUF9GTVRfWVVWNDQ0U1AsCj4+Pj4gICAgfTsKPj4+PiAtc3Ry
-dWN0IHZvcF9yZWdfZGF0YSB7Cj4+Pj4gLQl1aW50MzJfdCBvZmZzZXQ7Cj4+Pj4gLQl1aW50MzJf
-dCB2YWx1ZTsKPj4+PiAtfTsKPj4+PiAtCj4+Pj4gICAgc3RydWN0IHZvcF9yZWcgewo+Pj4+ICAg
-IAl1aW50MzJfdCBvZmZzZXQ7Cj4+Pj4gICAgCXVpbnQzMl90IHNoaWZ0Owo+Pj4+IEBAIC00Niw2
-ICs0MSw3IEBAIHN0cnVjdCB2b3BfY3RybCB7Cj4+Pj4gICAgCXN0cnVjdCB2b3BfcmVnIGhkbWlf
-ZW47Cj4+Pj4gICAgCXN0cnVjdCB2b3BfcmVnIG1pcGlfZW47Cj4+Pj4gICAgCXN0cnVjdCB2b3Bf
-cmVnIGRwX2VuOwo+Pj4+ICsJc3RydWN0IHZvcF9yZWcgZHNwX2JsYW5rOwo+Pj4+ICAgIAlzdHJ1
-Y3Qgdm9wX3JlZyBvdXRfbW9kZTsKPj4+PiAgICAJc3RydWN0IHZvcF9yZWcgZGl0aGVyX2Rvd247
-Cj4+Pj4gICAgCXN0cnVjdCB2b3BfcmVnIGRpdGhlcl91cDsKPj4+PiBAQCAtNjUsNiArNjEsNyBA
-QCBzdHJ1Y3Qgdm9wX2N0cmwgewo+Pj4+ICAgIAlzdHJ1Y3Qgdm9wX3JlZyBsaW5lX2ZsYWdfbnVt
-WzJdOwo+Pj4+ICsJc3RydWN0IHZvcF9yZWcgZ2xvYmFsX3JlZ2RvbmVfZW47Cj4+Pj4gICAgCXN0
-cnVjdCB2b3BfcmVnIGNmZ19kb25lOwo+Pj4+ICAgIH07Cj4+Pj4gQEAgLTExNSw2ICsxMTIsNyBA
-QCBzdHJ1Y3Qgdm9wX3dpbl9waHkgewo+Pj4+ICAgIAl1aW50MzJfdCBuZm9ybWF0czsKPj4+PiAg
-ICAJc3RydWN0IHZvcF9yZWcgZW5hYmxlOwo+Pj4+ICsJc3RydWN0IHZvcF9yZWcgZ2F0ZTsKPj4+
-PiAgICAJc3RydWN0IHZvcF9yZWcgZm9ybWF0Owo+Pj4+ICAgIAlzdHJ1Y3Qgdm9wX3JlZyByYl9z
-d2FwOwo+Pj4+ICAgIAlzdHJ1Y3Qgdm9wX3JlZyBhY3RfaW5mbzsKPj4+PiBAQCAtMTM2LDggKzEz
-NCw2IEBAIHN0cnVjdCB2b3Bfd2luX2RhdGEgewo+Pj4+ICAgIH07Cj4+Pj4gICAgc3RydWN0IHZv
-cF9kYXRhIHsKPj4+PiAtCWNvbnN0IHN0cnVjdCB2b3BfcmVnX2RhdGEgKmluaXRfdGFibGU7Cj4+
-Pj4gLQl1bnNpZ25lZCBpbnQgdGFibGVfc2l6ZTsKPj4+PiAgICAJY29uc3Qgc3RydWN0IHZvcF9j
-dHJsICpjdHJsOwo+Pj4+ICAgIAljb25zdCBzdHJ1Y3Qgdm9wX2ludHIgKmludHI7Cj4+Pj4gICAg
-CWNvbnN0IHN0cnVjdCB2b3Bfd2luX2RhdGEgKndpbjsKPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPj4+PiBpbmRleCBiYWZkNjk4Li4wMGU5ZDc5IDEw
-MDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVn
-LmMKPj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5j
-Cj4+Pj4gQEAgLTEyNywxMyArMTI3LDcgQEAKPj4+PiAgICAJLmNmZ19kb25lID0gVk9QX1JFRyhS
-SzMwMzZfUkVHX0NGR19ET05FLCAweDEsIDApLAo+Pj4+ICAgIH07Cj4+Pj4gLXN0YXRpYyBjb25z
-dCBzdHJ1Y3Qgdm9wX3JlZ19kYXRhIHJrMzAzNl92b3BfaW5pdF9yZWdfdGFibGVbXSA9IHsKPj4+
-PiAtCXtSSzMwMzZfRFNQX0NUUkwxLCAweDAwMDAwMDAwfSwKPj4+PiAtfTsKPj4+PiAtCj4+Pj4g
-ICAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfZGF0YSByazMwMzZfdm9wID0gewo+Pj4+IC0JLmlu
-aXRfdGFibGUgPSByazMwMzZfdm9wX2luaXRfcmVnX3RhYmxlLAo+Pj4+IC0JLnRhYmxlX3NpemUg
-PSBBUlJBWV9TSVpFKHJrMzAzNl92b3BfaW5pdF9yZWdfdGFibGUpLAo+Pj4+ICAgIAkuY3RybCA9
-ICZyazMwMzZfY3RybF9kYXRhLAo+Pj4+ICAgIAkuaW50ciA9ICZyazMwMzZfaW50ciwKPj4+PiAg
-ICAJLndpbiA9IHJrMzAzNl92b3Bfd2luX2RhdGEsCj4+Pj4gQEAgLTE5Myw3ICsxODcsOCBAQAo+
-Pj4+ICAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgcmszMjg4X3dpbjIzX2RhdGEg
-PSB7Cj4+Pj4gICAgCS5kYXRhX2Zvcm1hdHMgPSBmb3JtYXRzX3dpbl9saXRlLAo+Pj4+ICAgIAku
-bmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZvcm1hdHNfd2luX2xpdGUpLAo+Pj4+IC0JLmVuYWJsZSA9
-IFZPUF9SRUcoUkszMjg4X1dJTjJfQ1RSTDAsIDB4MSwgMCksCj4+Pj4gKwkuZW5hYmxlID0gVk9Q
-X1JFRyhSSzMyODhfV0lOMl9DVFJMMCwgMHgxLCA0KSwKPj4+PiArCS5nYXRlID0gVk9QX1JFRyhS
-SzMyODhfV0lOMl9DVFJMMCwgMHgxLCAwKSwKPj4+PiAgICAJLmZvcm1hdCA9IFZPUF9SRUcoUksz
-Mjg4X1dJTjJfQ1RSTDAsIDB4NywgMSksCj4+Pj4gICAgCS5yYl9zd2FwID0gVk9QX1JFRyhSSzMy
-ODhfV0lOMl9DVFJMMCwgMHgxLCAxMiksCj4+Pj4gICAgCS5kc3BfaW5mbyA9IFZPUF9SRUcoUksz
-Mjg4X1dJTjJfRFNQX0lORk8wLCAweDBmZmYwZmZmLCAwKSwKPj4+PiBAQCAtMjE1LDYgKzIxMCw3
-IEBACj4+Pj4gICAgCS5kaXRoZXJfZG93biA9IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMSwgMHhm
-LCAxKSwKPj4+PiAgICAJLmRpdGhlcl91cCA9IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMSwgMHgx
-LCA2KSwKPj4+PiAgICAJLmRhdGFfYmxhbmsgPSBWT1BfUkVHKFJLMzI4OF9EU1BfQ1RSTDAsIDB4
-MSwgMTkpLAo+Pj4+ICsJLmRzcF9ibGFuayA9IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMCwgMHgz
-LCAxOCksCj4+Pj4gICAgCS5vdXRfbW9kZSA9IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMCwgMHhm
-LCAwKSwKPj4+PiAgICAJLnBpbl9wb2wgPSBWT1BfUkVHKFJLMzI4OF9EU1BfQ1RSTDAsIDB4Ziwg
-NCksCj4+Pj4gICAgCS5odG90YWxfcHcgPSBWT1BfUkVHKFJLMzI4OF9EU1BfSFRPVEFMX0hTX0VO
-RCwgMHgxZmZmMWZmZiwgMCksCj4+Pj4gQEAgLTIyNCwyMiArMjIwLDEwIEBACj4+Pj4gICAgCS5o
-cG9zdF9zdF9lbmQgPSBWT1BfUkVHKFJLMzI4OF9QT1NUX0RTUF9IQUNUX0lORk8sIDB4MWZmZjFm
-ZmYsIDApLAo+Pj4+ICAgIAkudnBvc3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMyODhfUE9TVF9EU1Bf
-VkFDVF9JTkZPLCAweDFmZmYxZmZmLCAwKSwKPj4+PiAgICAJLmxpbmVfZmxhZ19udW1bMF0gPSBW
-T1BfUkVHKFJLMzI4OF9JTlRSX0NUUkwwLCAweDFmZmYsIDEyKSwKPj4+PiArCS5nbG9iYWxfcmVn
-ZG9uZV9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAweDEsIDExKSwKPj4+PiAgICAJLmNm
-Z19kb25lID0gVk9QX1JFRyhSSzMyODhfUkVHX0NGR19ET05FLCAweDEsIDApLAo+Pj4+ICAgIH07
-Cj4+Pj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3JlZ19kYXRhIHJrMzI4OF9pbml0X3JlZ190
-YWJsZVtdID0gewo+Pj4+IC0Je1JLMzI4OF9TWVNfQ1RSTCwgMHgwMGMwMDAwMH0sCj4+Pj4gLQl7
-UkszMjg4X0RTUF9DVFJMMCwgMHgwMDAwMDAwMH0sCj4+Pj4gLQl7UkszMjg4X1dJTjBfQ1RSTDAs
-IDB4MDAwMDAwODB9LAo+Pj4+IC0Je1JLMzI4OF9XSU4xX0NUUkwwLCAweDAwMDAwMDgwfSwKPj4+
-PiAtCS8qIFRPRE86IFdpbjIvMyBzdXBwb3J0IG11bHRpcGxlIGFyZWEgZnVuY3Rpb24sIGJ1dCB3
-ZSBoYXZlbid0IGZvdW5kCj4+Pj4gLQkgKiBhIHN1aXRhYmxlIHdheSB0byB1c2UgaXQgeWV0LCBz
-byBsZXQncyBqdXN0IHVzZSB0aGVtIGFzIG90aGVyIHdpbmRvd3MKPj4+PiAtCSAqIHdpdGggb25s
-eSBhcmVhIDAgZW5hYmxlZC4KPj4+PiAtCSAqLwo+Pj4+IC0Je1JLMzI4OF9XSU4yX0NUUkwwLCAw
-eDAwMDAwMDEwfSwKPj4+PiAtCXtSSzMyODhfV0lOM19DVFJMMCwgMHgwMDAwMDAxMH0sCj4+Pj4g
-LX07Cj4+Pj4gLQo+Pj4+ICAgIC8qCj4+Pj4gICAgICogTm90ZTogcmszMjg4IGhhcyBhIGRlZGlj
-YXRlZCAnY3Vyc29yJyB3aW5kb3csIGhvd2V2ZXIsIHRoYXQgd2luZG93IHJlcXVpcmVzCj4+Pj4g
-ICAgICogc3BlY2lhbCBzdXBwb3J0IHRvIGdldCBhbHBoYSBibGVuZGluZyB3b3JraW5nLiAgRm9y
-IG5vdywganVzdCB1c2Ugb3ZlcmxheQo+Pj4+IEBAIC0yNzMsOCArMjU3LDYgQEAKPj4+PiAgICB9
-Owo+Pj4+ICAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2RhdGEgcmszMjg4X3ZvcCA9IHsKPj4+
-PiAtCS5pbml0X3RhYmxlID0gcmszMjg4X2luaXRfcmVnX3RhYmxlLAo+Pj4+IC0JLnRhYmxlX3Np
-emUgPSBBUlJBWV9TSVpFKHJrMzI4OF9pbml0X3JlZ190YWJsZSksCj4+Pj4gICAgCS5mZWF0dXJl
-ID0gVk9QX0ZFQVRVUkVfT1VUUFVUX1JHQjEwLAo+Pj4+ICAgIAkuaW50ciA9ICZyazMyODhfdm9w
-X2ludHIsCj4+Pj4gICAgCS5jdHJsID0gJnJrMzI4OF9jdHJsX2RhdGEsCj4+Pj4gQEAgLTMyOCwy
-MiArMzEwLDcgQEAKPj4+PiAgICAJLmNsZWFyID0gVk9QX1JFR19NQVNLKFJLMzM5OV9JTlRSX0NM
-RUFSMCwgMHhmZmZmLCAwKSwKPj4+PiAgICB9Owo+Pj4+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHZv
-cF9yZWdfZGF0YSByazMzOTlfaW5pdF9yZWdfdGFibGVbXSA9IHsKPj4+PiAtCXtSSzMzOTlfU1lT
-X0NUUkwsIDB4MjAwMGY4MDB9LAo+Pj4+IC0Je1JLMzM5OV9EU1BfQ1RSTDAsIDB4MDAwMDAwMDB9
-LAo+Pj4+IC0Je1JLMzM5OV9XSU4wX0NUUkwwLCAweDAwMDAwMDgwfSwKPj4+PiAtCXtSSzMzOTlf
-V0lOMV9DVFJMMCwgMHgwMDAwMDA4MH0sCj4+Pj4gLQkvKiBUT0RPOiBXaW4yLzMgc3VwcG9ydCBt
-dWx0aXBsZSBhcmVhIGZ1bmN0aW9uLCBidXQgd2UgaGF2ZW4ndCBmb3VuZAo+Pj4+IC0JICogYSBz
-dWl0YWJsZSB3YXkgdG8gdXNlIGl0IHlldCwgc28gbGV0J3MganVzdCB1c2UgdGhlbSBhcyBvdGhl
-ciB3aW5kb3dzCj4+Pj4gLQkgKiB3aXRoIG9ubHkgYXJlYSAwIGVuYWJsZWQuCj4+Pj4gLQkgKi8K
-Pj4+PiAtCXtSSzMzOTlfV0lOMl9DVFJMMCwgMHgwMDAwMDAxMH0sCj4+Pj4gLQl7UkszMzk5X1dJ
-TjNfQ1RSTDAsIDB4MDAwMDAwMTB9LAo+Pj4+IC19Owo+Pj4+IC0KPj4+PiAgICBzdGF0aWMgY29u
-c3Qgc3RydWN0IHZvcF9kYXRhIHJrMzM5OV92b3BfYmlnID0gewo+Pj4+IC0JLmluaXRfdGFibGUg
-PSByazMzOTlfaW5pdF9yZWdfdGFibGUsCj4+Pj4gLQkudGFibGVfc2l6ZSA9IEFSUkFZX1NJWkUo
-cmszMzk5X2luaXRfcmVnX3RhYmxlKSwKPj4+PiAgICAJLmZlYXR1cmUgPSBWT1BfRkVBVFVSRV9P
-VVRQVVRfUkdCMTAsCj4+Pj4gICAgCS5pbnRyID0gJnJrMzM5OV92b3BfaW50ciwKPj4+PiAgICAJ
-LmN0cmwgPSAmcmszMzk5X2N0cmxfZGF0YSwKPj4+PiBAQCAtMzYyLDggKzMyOSw2IEBACj4+Pj4g
-ICAgfTsKPj4+PiAgICBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9kYXRhIHJrMzM5OV92b3BfbGl0
-ID0gewo+Pj4+IC0JLmluaXRfdGFibGUgPSByazMzOTlfaW5pdF9yZWdfdGFibGUsCj4+Pj4gLQku
-dGFibGVfc2l6ZSA9IEFSUkFZX1NJWkUocmszMzk5X2luaXRfcmVnX3RhYmxlKSwKPj4+PiAgICAJ
-LmludHIgPSAmcmszMzk5X3ZvcF9pbnRyLAo+Pj4+ICAgIAkuY3RybCA9ICZyazMzOTlfY3RybF9k
-YXRhLAo+Pj4+ICAgIAkvKgo+Pj4+IC0tIAo+Pj4+IDEuOS4xCj4+Pj4KPj4+Pgo+Pj4+IF9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+Pj4gZHJpLWRldmVs
-IG1haWxpbmcgbGlzdAo+Pj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPj4+PiBo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+
-Pgo+PiAtLSAKPj4g77ytYXJrIFlhbwo+Pgo+PgoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Heiko,
+
+On Sunday 16 Jul 2017 18:07:58 Heiko Stuebner wrote:
+> Am Samstag, 15. Juli 2017, 12:23:12 CEST schrieb Laurent Pinchart:
+> > On Saturday 15 Jul 2017 14:58:40 Jacob Chen wrote:
+> >> Add DT bindings documentation for Rockchip RGA
+> >> 
+> >> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+> >> ---
+> >> 
+> >>  .../devicetree/bindings/media/rockchip-rga.txt     | 35 +++++++++++++++
+> >>  1 file changed, 35 insertions(+)
+> >>  create mode 100644
+> >>  Documentation/devicetree/bindings/media/rockchip-rga.txt
+> >> 
+> >> diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.txt
+> >> b/Documentation/devicetree/bindings/media/rockchip-rga.txt new file mode
+> >> 100644
+> >> index 0000000..966eba0
+> >> --- /dev/null
+> >> +++ b/Documentation/devicetree/bindings/media/rockchip-rga.txt
+> >> @@ -0,0 +1,35 @@
+> >> +device-tree bindings for rockchip 2D raster graphic acceleration
+> >> controller (RGA)
+> >> +
+> >> +RGA is a separate 2D raster graphic acceleration unit. It accelerates
+> >> 2D
+> > 
+> > "Separate" from what ? Do you mean "standalone" ?
+> > 
+> >> +graphics operations, such as point/line drawing, image scaling,
+> >> rotation,
+> >> +BitBLT, alpha blending and image blur/sharpness.
+> >> +
+> >> +Required properties:
+> >> +- compatible: value should be one of the following
+> >> +		"rockchip,rk3228-rga";
+> >> +		"rockchip,rk3288-rga";
+> >> +		"rockchip,rk3399-rga";
+> > 
+> > The driver in patch 2/6 has match entry for rk3328, which is missing from
+> > this list.
+> > 
+> > As the implementation of the driver doesn't seem to discriminate between
+> > the four SoCs, wouldn't it make sense to create a generic compatible
+> > string on which the driver would match ? You can have both the generic
+> > and SoC-specific compatible strings in DT if there are differences
+> > between the IP core in those SoCs that might need to be handled later by
+> > the driver.
+> 
+> I think the block is named something like RGA2 in some kernel trees, but
+> am not sure if that is an actual name, or someone just added a number.
+> From short glances at vendor rga-code in the past, it looks like there are
+> currently 2 basic versions of the in existence I.e. older Rockchip socs
+> (like the rk3188 or so) use something older.
+> 
+> I think everywhere else we do have only (or at least mostly) soc-specifc
+> compatibles, but I guess that is more a question what Rob prefers.
+
+Many SoC vendors use SoC-specific compatible string, often in addition to more 
+generic ones. When a more generic compatible string is available, drivers can 
+match against it, which avoid having to update drivers every time a new SoC 
+integrates the same version of the IP core. The SoC-specific compatible string 
+is still specified in DT, "just in case" we later realize that the IP core 
+integrated in the SoC is slightly different than the other ones and requires 
+specific handling in the driver.
+
+I'm not completely happy with that scheme, as it's really a workaround for 
+defective communication with the hardware team (or possibly defective hardware 
+development...), but that's the best compromise we have so far.
+
+> >> +- interrupts: RGA interrupt number.
+> > 
+> > This is an "interrupt specifier", not just an "interrupt number" (as you
+> > can see in the example below there are three numbers)
+> > 
+> >> +
+> >> +- clocks: phandle to RGA sclk/hclk/aclk clocks
+> >> +
+> >> +- clock-names: should be "aclk" "hclk" and "sclk"
+> > 
+> > Nitpicking, there should be a comma after "aclk".
+> > 
+> >> +
+> >> +- resets: Must contain an entry for each entry in reset-names.
+> >> +  See ../reset/reset.txt for details.
+> >> +- reset-names: should be "core" "axi" and "ahb"
+> > 
+> > And a comma after "core".
+> > 
+> >> +
+> >> +Example:
+> >> +SoC specific DT entry:
+> >
+> > s/SoC specific/SoC-specific/
+> > 
+> >> +	rga: rga@ff680000 {
+> >> +		compatible = "rockchip,rk3399-rga";
+> >> +		reg = <0xff680000 0x10000>;
+> >> +		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
+> >> +		interrupt-names = "rga";
+> > 
+> > The interrupt-names property is not described above. Do you really need it
+> > ?
+> >
+> >> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru
+> >> SCLK_RGA_CORE>;
+> >> +		clock-names = "aclk", "hclk", "sclk";
+> >> +
+> >> +		resets = <&cru SRST_RGA_CORE>, <&cru SRST_A_RGA>, <&cru
+> >> SRST_H_RGA>;
+> >> +		reset-names = "core, "axi", "ahb";
+> >> +	};
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
