@@ -1,37 +1,66 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: gpu: add the RK3399 mali for
- rockchip specifics
-Date: Mon, 17 Jul 2017 14:51:16 -0500
-Message-ID: <20170717195116.7sjm23vhei7egycq@rob-hp-laptop>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 2/5] dt-bindings: gpu: add a power_model optional
+ properties for MALI
+Date: Mon, 17 Jul 2017 15:07:33 -0500
+Message-ID: <20170717200733.nax6jfbvs3rjd7t4@rob-hp-laptop>
 References: <1500279271-15249-1-git-send-email-wxt@rock-chips.com>
- <1500279271-15249-2-git-send-email-wxt@rock-chips.com>
+ <1500279271-15249-3-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1500279271-15249-2-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <1500279271-15249-3-git-send-email-wxt@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, rocky.hao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 17, 2017 at 04:14:27PM +0800, Caesar Wang wrote:
-> RK3399's GPU uses the quad-core Mali-T860, which is the new generation of
-> high-end graphics processors from ARM.
-> 
-> This patch added "rockchip,rk3399-mali" for dt-bindings, in order to
-> support IPA of gpu thermal in later.
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v2: None
-> 
->  Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt | 1 +
->  1 file changed, 1 insertion(+)
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gTW9uLCBKdWwgMTcsIDIwMTcgYXQgMDQ6MTQ6MjhQTSArMDgwMCwgQ2Flc2FyIFdhbmcgd3Jv
+dGU6Cj4gVGhpcyBwYXRjaCBhZGRzIHRoZSBNQUxJJ3MgcG93ZXItbW9kZWwgdG8gc2V0IHRoZSBJ
+UEEgbW9kZWwgdG8gYmUgdXNlZAo+IGZvciBwb3dlciBtYW5hZ2VtZW50LgoKV2hhdCdzIElQQT8g
+SW5kaWEgUGFsZSBBbGUgb3IgSW50ZXJtZWRpYXRlIFBoeXNpY2FsIEFkZHJlc3M/Cgo+IAo+IFNp
+Z25lZC1vZmYtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gCj4g
+Q2hhbmdlcyBpbiB2MjogTm9uZQo+IAo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZ3B1L2FybSxtYWxpLW1pZGdhcmQudHh0IHwgMTIgKysrKysrKysrKysrCj4gIDEgZmlsZSBj
+aGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9ncHUvYXJtLG1hbGktbWlkZ2FyZC50eHQgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZ3B1L2FybSxtYWxpLW1pZGdhcmQudHh0Cj4gaW5kZXgg
+YTQ2MWU0Ny4uYjYxNmU2YiAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvZ3B1L2FybSxtYWxpLW1pZGdhcmQudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL2dwdS9hcm0sbWFsaS1taWRnYXJkLnR4dAo+IEBAIC0zNyw2ICsz
+NywxOCBAQCBPcHRpb25hbCBwcm9wZXJ0aWVzOgo+ICAtIG9wZXJhdGluZy1wb2ludHMtdjIgOiBS
+ZWZlciB0byBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93ZXIvb3BwLnR4dAo+
+ICAgIGZvciBkZXRhaWxzLgo+ICAKPiArLSBwb3dlcl9tb2RlbCA6IFNldHMgcG93ZXIgbW9kZWwg
+cGFyYW1ldGVycy4gTm90ZSB0aGF0IHRoaXMgbW9kZWwgd2FzIGRlc2lnbmVkIGZvciB0aGUgSnVu
+bwo+ICsJICAgICAgICBwbGF0Zm9ybSwgYW5kIG1heSBub3QgYmUgc3VpdGFibGUgZm9yIG90aGVy
+IHBsYXRmb3Jtcy4gQSBzdHJ1Y3R1cmUgY29udGFpbmluZyA6Cj4gKwktIGNvbXBhdGlibGU6IFNo
+b3VsZCBiZSBhcm0sbWFsaS1zaW1wbGUtcG93ZXItbW9kZWwKPiArCS0gZHluYW1pYy1jb2VmZmlj
+aWVudDogQ29lZmZpY2llbnQsIGluIHBXLyhIeiBWXjIpLCB3aGljaCBpcyBtdWx0aXBsaWVkCj4g
+KwkgIGJ5IHZeMipmIHRvIGNhbGN1bGF0ZSB0aGUgZHluYW1pYyBwb3dlciBjb25zdW1wdGlvbi4K
+PiArCS0gc3RhdGljLWNvZWZmaWNpZW50OiBDb2VmZmljaWVudCwgaW4gdVcvVl4zLCB3aGljaCBp
+cyBtdWx0aXBsaWVkIGJ5Cj4gKwkgIHZeMyB0byBjYWxjdWxhdGUgdGhlIHN0YXRpYyBwb3dlciBj
+b25zdW1wdGlvbi4KPiArCS0gdHM6IEFuIGFycmF5IGNvbnRhaW5pbmcgY29lZmZpY2llbnRzIGZv
+ciB0aGUgdGVtcGVyYXR1cmUgc2NhbGluZwo+ICsJICBmYWN0b3IuIFRoaXMgaXMgdXNlZCB0byBz
+Y2FsZSB0aGUgc3RhdGljIHBvd2VyIGJ5IGEgZmFjdG9yIG9mCj4gKwkgIHRzZi8xMDAwMDAwLCB3
+aGVyZSB0c2YgPSB0c1szXSpUXjMgKyB0c1syXSpUXjIgKyB0c1sxXSpUICsgdHNbMF0sCj4gKwkg
+IGFuZCBUID0gdGVtcGVyYXR1cmUgaW4gZGVncmVlcy4KPiArCS0gdGhlcm1hbC16b25lOiBBIHN0
+cmluZyBpZGVudGlmeWluZyB0aGUgdGhlcm1hbCB6b25lIHVzZWQgZm9yIHRoZSBHUFUKClRoaXMg
+Y2FuIGFsbCBlYXNpbHkgYmUgaW1wbGllZCBieSB0aGUgY29tcGF0aWJsZSBzdHJpbmcuIEknbSBu
+b3QgCmluY2xpbmVkIHRvIGFjY2VwdCBzb21ldGhpbmcgTWFsaSBzcGVjaWZpYyBoZXJlLgoKVGhp
+cyBsb29rcyAqdmVyeSogcHJlY2lzZSwgYnV0IEknZCBiZSBzdXJwcmlzZWQgaWYgdGhlc2UgdmFs
+dWVzIGFyZSBhbnkgCm1vcmUgdGhhbiBtYWdpYyB2YWx1ZXMgKGF0IGxlYXN0IHRoZSBkeW5hbWlj
+IGNvZWYpIGFkanVzdGVkIHVudGlsIHRoZSAKZGVzaXJlZCBwb3dlci9wZXJmb3JtYW5jZSByZXF1
+aXJlbWVudHMgYXJlIGFjaGlldmVkLiBUbyBwdXQgaXQgYW5vdGhlciAKd2F5LCB3aHkgZG9uJ3Qg
+d2UgaGF2ZSBzaW1pbGFyIHZhbHVlcyBmb3IgQ1BVcz8gCgpSb2IKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
