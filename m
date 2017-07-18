@@ -1,97 +1,138 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 1/4] drm/atomic: implement drm_atomic_helper_commit_tail for runtime_pm users
-Date: Tue, 18 Jul 2017 13:14:12 +0300
-Message-ID: <10955632.YI7NJnTkKU@avalon>
-References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com> <1823154.LT2zYSFJ4j@avalon> <20170718070522.6uu7s6o3ivpemslf@flea>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v2 1/2] video/hdmi: Introduce helpers for the HDMI audio infoframe payload
+Date: Tue, 18 Jul 2017 19:20:41 +0800
+Message-ID: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170718070522.6uu7s6o3ivpemslf@flea>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Maxime Ripard <maxime.ripard@free-electrons.com>
-Cc: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: seanpaul@chromium.org, dianders@chromium.org, briannorris@chromium.org
+Cc: linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, heiko@sntech.de, Chris Zhong <zyw@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Shashank Sharma <shashank.sharma@intel.com>, Jose Abreu <joabreu@synopsys.com>, Jani Nikula <jani.nikula@intel.com>, Thierry Reding <treding@nvidia.com>, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Maxime,
+The DP is using the same audio infoframe payload as hdmi, per DP 1.3
+spec, but it has a different header. Provide a new interface here,
+it just packs the payload.
 
-On Tuesday 18 Jul 2017 09:05:22 Maxime Ripard wrote:
-> On Fri, Jul 14, 2017 at 02:43:12AM +0300, Laurent Pinchart wrote:
-> > On Thursday 13 Jul 2017 16:41:13 Maxime Ripard wrote:
-> >> The current drm_atomic_helper_commit_tail helper works only if the CRTC
-> >> is accessible, and documents an alternative implementation that is
-> >> supposed to be used if that happens.
-> >> 
-> >> That implementation is then duplicated by some drivers. Instead of
-> >> documenting it, let's implement an helper that all the relevant users
-> >> can use directly.
-> >> 
-> >> Signed-off-by: Maxime Ripard <maxime.ripard@free-electrons.com>
-> >> ---
-> >> 
-> >>  drivers/gpu/drm/drm_atomic_helper.c        | 47 +++++++++++++++--------
-> >>  drivers/gpu/drm/exynos/exynos_drm_fb.c     | 27 +-------------
-> >>  drivers/gpu/drm/rcar-du/rcar_du_kms.c      | 18 +---------
-> > 
-> > I've submitted "[PATCH] drm: rcar-du: Setup planes before enabling CRTC to
-> > avoid flicker" that changes the rcar-du implementation to the standard
-> > disable/update planes/enable order, so I'd appreciate if you could drop
-> > the rcar-du part of this patch to avoid conflicts.
-> 
-> I will.
-> 
-> > This being said, the reason why I switched back from the "runtime PM" to
-> > the "standard" order is probably of interest to you. Quoting the commit
-> > message,
-> >
-> >> Commit 52055bafa1ff ("drm: rcar-du: Move plane commit code from CRTC
-> >> start to CRTC resume") changed the order of the plane commit and CRTC
-> >> enable operations to accommodate the runtime PM requirements. However,
-> >> this introduced corruption in the first displayed frame, as the CRTC is
-> >> now enabled without any plane configured. On Gen2 hardware the first
-> >> frame will be black and likely unnoticed, but on Gen3 hardware we end up
-> >> starting the display before the VSP compositor, which is more
-> >> noticeable.
-> >> 
-> >> To fix this, revert the order of the commit operations back, and handle
-> >> runtime PM requirements in the CRTC .atomic_begin() and .atomic_enable()
-> >> helper operation handlers.
-> > 
-> > I believe that the "runtime PM" order is problematic in most drivers. The
-> > problem usually goes unnoticed as most monitors will not even display the
-> > first frame, and I assume many devices will just output it black, but it's
-> > an issue nonetheless.
-> > 
-> > Note that my driver hasn't lost the "runtime PM" requirements, so I had to
-> > support them with the "standard" order. The best way I've found was to
-> > runtime resume in the one of .atomic_begin() and .enable() that is run
-> > first. Not very neat, as similar code would be needed in most drivers. I
-> > wonder whether it wouldn't be useful to add resume/suspend helper
-> > callbacks for the CRTC.
-> 
-> I'm not sure it would apply. Our driver doesn't use runtime_pm at all,
-> but in order for the commits to happen, we need to have the CRTC
-> active, but it will remain powered up the whole time. I'm not sure if
-> we'll ever see such a frame.
-> 
-> But since this seems to be a pretty generic, maybe we should address
-> it in the helper itself?
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
 
-I think that would make sense.
+Changes in v2: None
 
-There are a few options that result in too many combinations for separate 
-commit tail helpers to be provided in my opinion:
+ drivers/video/hdmi.c | 66 ++++++++++++++++++++++++++++++++++++++--------------
+ include/linux/hdmi.h |  3 ++-
+ 2 files changed, 50 insertions(+), 19 deletions(-)
 
-- disable/enable/planes vs. disable/planes/enable
-- DRM_PLANE_COMMIT_ACTIVE_ONLY vs. all CRTCs
-- drm_atomic_helper_wait_for_vblanks vs drm_atomic_helper_wait_for_flip_done
-
-Maybe we could add a few CRTC commit helper flags along the line of 
-DRM_PLANE_COMMIT_ACTIVE_ONLY, add a field to the drm_crtc structure to store 
-them, and have drm_atomic_helper_commit_tail() use those flags to control the 
-sequence of operations.
-
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 1cf907e..e0b041e 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -240,6 +240,49 @@ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
+ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+ 
+ /**
++ * hdmi_audio_infoframe_pack_payload() - write HDMI audio infoframe payload to
++ * binary buffer
++ * @frame: HDMI audio infoframe
++ * @buffer: destination buffer
++ * @size: size of buffer
++ *
++ * Packs the information contained in the @frame structure into a binary
++ * representation that can be written into the corresponding controller
++ * registers.
++ *
++ * Returns 0 on success or a negative error code on failure.
++ */
++ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
++					  void *buffer, size_t size)
++{
++	unsigned char channels;
++	u8 *ptr = buffer;
++
++	if (size < frame->length)
++		return -ENOSPC;
++
++	memset(buffer, 0, size);
++
++	if (frame->channels >= 2)
++		channels = frame->channels - 1;
++	else
++		channels = 0;
++
++	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
++	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
++		 (frame->sample_size & 0x3);
++	ptr[2] = frame->coding_type_ext & 0x1f;
++	ptr[3] = frame->channel_allocation;
++	ptr[4] = (frame->level_shift_value & 0xf) << 3;
++
++	if (frame->downmix_inhibit)
++		ptr[4] |= BIT(7);
++
++	return 0;
++}
++EXPORT_SYMBOL(hdmi_audio_infoframe_pack_payload);
++
++/**
+  * hdmi_audio_infoframe_pack() - write HDMI audio infoframe to binary buffer
+  * @frame: HDMI audio infoframe
+  * @buffer: destination buffer
+@@ -256,22 +299,15 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size)
+ {
+-	unsigned char channels;
+ 	u8 *ptr = buffer;
+ 	size_t length;
++	int ret;
+ 
+ 	length = HDMI_INFOFRAME_HEADER_SIZE + frame->length;
+ 
+ 	if (size < length)
+ 		return -ENOSPC;
+ 
+-	memset(buffer, 0, size);
+-
+-	if (frame->channels >= 2)
+-		channels = frame->channels - 1;
+-	else
+-		channels = 0;
+-
+ 	ptr[0] = frame->type;
+ 	ptr[1] = frame->version;
+ 	ptr[2] = frame->length;
+@@ -279,16 +315,10 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 
+ 	/* start infoframe payload */
+ 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+-
+-	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
+-	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
+-		 (frame->sample_size & 0x3);
+-	ptr[2] = frame->coding_type_ext & 0x1f;
+-	ptr[3] = frame->channel_allocation;
+-	ptr[4] = (frame->level_shift_value & 0xf) << 3;
+-
+-	if (frame->downmix_inhibit)
+-		ptr[4] |= BIT(7);
++	ret = hdmi_audio_infoframe_pack_payload(frame, ptr,
++					size - HDMI_INFOFRAME_HEADER_SIZE);
++	if (ret)
++		return ret;
+ 
+ 	hdmi_infoframe_set_checksum(buffer, length);
+ 
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index d271ff2..d93c709 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -272,7 +272,8 @@ struct hdmi_audio_infoframe {
+ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
+ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size);
+-
++ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
++					  void *buffer, size_t size);
+ enum hdmi_3d_structure {
+ 	HDMI_3D_STRUCTURE_INVALID = -1,
+ 	HDMI_3D_STRUCTURE_FRAME_PACKING = 0,
 -- 
-Regards,
-
-Laurent Pinchart
+2.7.4
