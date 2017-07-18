@@ -1,93 +1,97 @@
-From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 3/4] ARM64: dts: rockchip: rk3368 add iommu nodes
-Date: Tue, 18 Jul 2017 18:02:04 +0800
-Message-ID: <1500372125-114261-3-git-send-email-xxm@rock-chips.com>
-References: <1500372125-114261-1-git-send-email-xxm@rock-chips.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 1/4] drm/atomic: implement drm_atomic_helper_commit_tail for runtime_pm users
+Date: Tue, 18 Jul 2017 13:14:12 +0300
+Message-ID: <10955632.YI7NJnTkKU@avalon>
+References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com> <1823154.LT2zYSFJ4j@avalon> <20170718070522.6uu7s6o3ivpemslf@flea>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1500372125-114261-1-git-send-email-xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170718070522.6uu7s6o3ivpemslf@flea>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi Maxime,
 
-Add IEP/ISP/VOP/HEVC/VPU iommu nodes
+On Tuesday 18 Jul 2017 09:05:22 Maxime Ripard wrote:
+> On Fri, Jul 14, 2017 at 02:43:12AM +0300, Laurent Pinchart wrote:
+> > On Thursday 13 Jul 2017 16:41:13 Maxime Ripard wrote:
+> >> The current drm_atomic_helper_commit_tail helper works only if the CRTC
+> >> is accessible, and documents an alternative implementation that is
+> >> supposed to be used if that happens.
+> >> 
+> >> That implementation is then duplicated by some drivers. Instead of
+> >> documenting it, let's implement an helper that all the relevant users
+> >> can use directly.
+> >> 
+> >> Signed-off-by: Maxime Ripard <maxime.ripard@free-electrons.com>
+> >> ---
+> >> 
+> >>  drivers/gpu/drm/drm_atomic_helper.c        | 47 +++++++++++++++--------
+> >>  drivers/gpu/drm/exynos/exynos_drm_fb.c     | 27 +-------------
+> >>  drivers/gpu/drm/rcar-du/rcar_du_kms.c      | 18 +---------
+> > 
+> > I've submitted "[PATCH] drm: rcar-du: Setup planes before enabling CRTC to
+> > avoid flicker" that changes the rcar-du implementation to the standard
+> > disable/update planes/enable order, so I'd appreciate if you could drop
+> > the rcar-du part of this patch to avoid conflicts.
+> 
+> I will.
+> 
+> > This being said, the reason why I switched back from the "runtime PM" to
+> > the "standard" order is probably of interest to you. Quoting the commit
+> > message,
+> >
+> >> Commit 52055bafa1ff ("drm: rcar-du: Move plane commit code from CRTC
+> >> start to CRTC resume") changed the order of the plane commit and CRTC
+> >> enable operations to accommodate the runtime PM requirements. However,
+> >> this introduced corruption in the first displayed frame, as the CRTC is
+> >> now enabled without any plane configured. On Gen2 hardware the first
+> >> frame will be black and likely unnoticed, but on Gen3 hardware we end up
+> >> starting the display before the VSP compositor, which is more
+> >> noticeable.
+> >> 
+> >> To fix this, revert the order of the commit operations back, and handle
+> >> runtime PM requirements in the CRTC .atomic_begin() and .atomic_enable()
+> >> helper operation handlers.
+> > 
+> > I believe that the "runtime PM" order is problematic in most drivers. The
+> > problem usually goes unnoticed as most monitors will not even display the
+> > first frame, and I assume many devices will just output it black, but it's
+> > an issue nonetheless.
+> > 
+> > Note that my driver hasn't lost the "runtime PM" requirements, so I had to
+> > support them with the "standard" order. The best way I've found was to
+> > runtime resume in the one of .atomic_begin() and .enable() that is run
+> > first. Not very neat, as similar code would be needed in most drivers. I
+> > wonder whether it wouldn't be useful to add resume/suspend helper
+> > callbacks for the CRTC.
+> 
+> I'm not sure it would apply. Our driver doesn't use runtime_pm at all,
+> but in order for the commits to happen, we need to have the CRTC
+> active, but it will remain powered up the whole time. I'm not sure if
+> we'll ever see such a frame.
+> 
+> But since this seems to be a pretty generic, maybe we should address
+> it in the helper itself?
 
-Signed-off-by: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 48 ++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+I think that would make sense.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 6d5dc05..ed9a56c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -724,6 +724,54 @@
- 		status = "disabled";
- 	};
- 
-+	iep_mmu: iommu@ff900800 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x0 0xff900800 0x0 0x100>;
-+		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "iep_mmu";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	isp_mmu: iommu@ff914000 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x0 0xff914000 0x0 0x100>,
-+		      <0x0 0xff915000 0x0 0x100>;
-+		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "isp_mmu";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	vop_mmu: iommu@ff930300 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x0 0xff930300 0x0 0x100>;
-+		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "vop_mmu";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	hevc_mmu: iommu@ff9a0440 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x0 0xff9a0440 0x0 0x40>,
-+		      <0x0 0xff9a0480 0x0 0x40>;
-+		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "hevc_mmu";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	vpu_mmu: iommu@ff9a0800 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x0 0xff9a0800 0x0 0x100>;
-+		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "vepu_mmu", "vdpu_mmu";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	gic: interrupt-controller@ffb71000 {
- 		compatible = "arm,gic-400";
- 		interrupt-controller;
+There are a few options that result in too many combinations for separate 
+commit tail helpers to be provided in my opinion:
+
+- disable/enable/planes vs. disable/planes/enable
+- DRM_PLANE_COMMIT_ACTIVE_ONLY vs. all CRTCs
+- drm_atomic_helper_wait_for_vblanks vs drm_atomic_helper_wait_for_flip_done
+
+Maybe we could add a few CRTC commit helper flags along the line of 
+DRM_PLANE_COMMIT_ACTIVE_ONLY, add a field to the drm_crtc structure to store 
+them, and have drm_atomic_helper_commit_tail() use those flags to control the 
+sequence of operations.
+
 -- 
-1.9.1
+Regards,
+
+Laurent Pinchart
