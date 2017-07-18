@@ -1,138 +1,105 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2 1/2] video/hdmi: Introduce helpers for the HDMI audio infoframe payload
-Date: Tue, 18 Jul 2017 19:20:41 +0800
-Message-ID: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH v2 2/2] drm/rockchip: cdn-dp: send audio infoframe to sink
+Date: Tue, 18 Jul 2017 19:20:42 +0800
+Message-ID: <1500376842-6739-2-git-send-email-zyw@rock-chips.com>
+References: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: seanpaul@chromium.org, dianders@chromium.org, briannorris@chromium.org
-Cc: linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, heiko@sntech.de, Chris Zhong <zyw@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Shashank Sharma <shashank.sharma@intel.com>, Jose Abreu <joabreu@synopsys.com>, Jani Nikula <jani.nikula@intel.com>, Thierry Reding <treding@nvidia.com>, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The DP is using the same audio infoframe payload as hdmi, per DP 1.3
-spec, but it has a different header. Provide a new interface here,
-it just packs the payload.
-
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
----
-
-Changes in v2: None
-
- drivers/video/hdmi.c | 66 ++++++++++++++++++++++++++++++++++++++--------------
- include/linux/hdmi.h |  3 ++-
- 2 files changed, 50 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
-index 1cf907e..e0b041e 100644
---- a/drivers/video/hdmi.c
-+++ b/drivers/video/hdmi.c
-@@ -240,6 +240,49 @@ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
- EXPORT_SYMBOL(hdmi_audio_infoframe_init);
- 
- /**
-+ * hdmi_audio_infoframe_pack_payload() - write HDMI audio infoframe payload to
-+ * binary buffer
-+ * @frame: HDMI audio infoframe
-+ * @buffer: destination buffer
-+ * @size: size of buffer
-+ *
-+ * Packs the information contained in the @frame structure into a binary
-+ * representation that can be written into the corresponding controller
-+ * registers.
-+ *
-+ * Returns 0 on success or a negative error code on failure.
-+ */
-+ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
-+					  void *buffer, size_t size)
-+{
-+	unsigned char channels;
-+	u8 *ptr = buffer;
-+
-+	if (size < frame->length)
-+		return -ENOSPC;
-+
-+	memset(buffer, 0, size);
-+
-+	if (frame->channels >= 2)
-+		channels = frame->channels - 1;
-+	else
-+		channels = 0;
-+
-+	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-+	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
-+		 (frame->sample_size & 0x3);
-+	ptr[2] = frame->coding_type_ext & 0x1f;
-+	ptr[3] = frame->channel_allocation;
-+	ptr[4] = (frame->level_shift_value & 0xf) << 3;
-+
-+	if (frame->downmix_inhibit)
-+		ptr[4] |= BIT(7);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(hdmi_audio_infoframe_pack_payload);
-+
-+/**
-  * hdmi_audio_infoframe_pack() - write HDMI audio infoframe to binary buffer
-  * @frame: HDMI audio infoframe
-  * @buffer: destination buffer
-@@ -256,22 +299,15 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
- ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 				  void *buffer, size_t size)
- {
--	unsigned char channels;
- 	u8 *ptr = buffer;
- 	size_t length;
-+	int ret;
- 
- 	length = HDMI_INFOFRAME_HEADER_SIZE + frame->length;
- 
- 	if (size < length)
- 		return -ENOSPC;
- 
--	memset(buffer, 0, size);
--
--	if (frame->channels >= 2)
--		channels = frame->channels - 1;
--	else
--		channels = 0;
--
- 	ptr[0] = frame->type;
- 	ptr[1] = frame->version;
- 	ptr[2] = frame->length;
-@@ -279,16 +315,10 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 
- 	/* start infoframe payload */
- 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
--
--	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
--	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
--		 (frame->sample_size & 0x3);
--	ptr[2] = frame->coding_type_ext & 0x1f;
--	ptr[3] = frame->channel_allocation;
--	ptr[4] = (frame->level_shift_value & 0xf) << 3;
--
--	if (frame->downmix_inhibit)
--		ptr[4] |= BIT(7);
-+	ret = hdmi_audio_infoframe_pack_payload(frame, ptr,
-+					size - HDMI_INFOFRAME_HEADER_SIZE);
-+	if (ret)
-+		return ret;
- 
- 	hdmi_infoframe_set_checksum(buffer, length);
- 
-diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
-index d271ff2..d93c709 100644
---- a/include/linux/hdmi.h
-+++ b/include/linux/hdmi.h
-@@ -272,7 +272,8 @@ struct hdmi_audio_infoframe {
- int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
- ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 				  void *buffer, size_t size);
--
-+ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
-+					  void *buffer, size_t size);
- enum hdmi_3d_structure {
- 	HDMI_3D_STRUCTURE_INVALID = -1,
- 	HDMI_3D_STRUCTURE_FRAME_PACKING = 0,
--- 
-2.7.4
+U29tZSBEUC9IRE1JIHNpbmsgbmVlZCB0byByZWNlaXZlIHRoZSBhdWRpbyBpbmZvZnJhbWUgdG8g
+cGxheSBzb3VuZCwKZXNwZWNpYWxseSBzb21lIG11bHRpLWNoYW5uZWwgQVYgcmVjZWl2ZXIsIHRo
+ZXkgbmVlZCB0aGUKY2hhbm5lbF9hbGxvY2F0aW9uIGZyb20gaW5mb2ZyYW1lIHRvIGNvbmZpZyB0
+aGUgc3BlYWtlcnMuIFNlbmQgdGhlCmF1ZGlvIGluZm9mcmFtZSB2aWEgU0RQIHdpbGwgbWFrZSB0
+aGVtIHdvcmsgcHJvcGVybHkuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2st
+Y2hpcHMuY29tPgoKLS0tCgpDaGFuZ2VzIGluIHYyOgotIEFjY29yZGluZyB0byB0aGUgYWR2aWNl
+IG9mIFNlYW4gUGF1bCBhbmQgRG91Zwp1c2UgaGRtaV9hdWRpb19pbmZvZnJhbWVfcGFja19wYXls
+b2FkIHRvIHBhY2sgdGhlIGJ1ZmZlcgpkZWZpbmUgYSBTRFBfSEVBREVSX1NJWkUKCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyB8IDIwICsrKysrKysrKysrKysrKysrKysr
+CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jICB8IDI3ICsrKysrKysrKysr
+KysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuaCAg
+fCAgNiArKysrKysKIGluY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIuaCAgICAgICAgICAgIHwgIDEg
+KwogNCBmaWxlcyBjaGFuZ2VkLCA1NCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvY2RuLWRwLWNvcmUuYwppbmRleCA5YjBiMDU4Li42YTRmYzY2IDEwMDY0NAotLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvY2RuLWRwLWNvcmUuYwpAQCAtODAyLDYgKzgwMiw3IEBAIHN0YXRpYyBpbnQgY2Ru
+X2RwX2F1ZGlvX2h3X3BhcmFtcyhzdHJ1Y3QgZGV2aWNlICpkZXYsICB2b2lkICpkYXRhLAogCQku
+c2FtcGxlX3JhdGUgPSBwYXJhbXMtPnNhbXBsZV9yYXRlLAogCQkuY2hhbm5lbHMgPSBwYXJhbXMt
+PmNoYW5uZWxzLAogCX07CisJdTggYnVmZmVyW0hETUlfQVVESU9fSU5GT0ZSQU1FX1NJWkUgKyBF
+RFBfU0RQX0hFQURFUl9TSVpFXSA9IHsgMCB9OwogCWludCByZXQ7CiAKIAltdXRleF9sb2NrKCZk
+cC0+bG9jayk7CkBAIC04MjMsNiArODI0LDI1IEBAIHN0YXRpYyBpbnQgY2RuX2RwX2F1ZGlvX2h3
+X3BhcmFtcyhzdHJ1Y3QgZGV2aWNlICpkZXYsICB2b2lkICpkYXRhLAogCQlnb3RvIG91dDsKIAl9
+CiAKKwkvKgorCSAqIFByZXBhcmUgdGhlIGluZm9mcmFtZSBoZWFkZXIgdG8gU0RQIGhlYWRlciBw
+ZXIgRFAgMS4zIHNwZWMsIFRhYmxlCisJICogMi05OC4KKwkgKi8KKwlidWZmZXJbMF0gPSAwOwor
+CWJ1ZmZlclsxXSA9IEhETUlfSU5GT0ZSQU1FX1RZUEVfQVVESU87CisJYnVmZmVyWzJdID0gMHgx
+YjsKKwlidWZmZXJbM10gPSAweDQ4OworCisJcmV0ID0gaGRtaV9hdWRpb19pbmZvZnJhbWVfcGFj
+a19wYXlsb2FkKCZwYXJhbXMtPmNlYSwKKwkJCQkJCSZidWZmZXJbRURQX1NEUF9IRUFERVJfU0la
+RV0sCisJCQkJCQlIRE1JX0FVRElPX0lORk9GUkFNRV9TSVpFKTsKKwlpZiAocmV0IDwgMCkgewor
+CQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byBwYWNrIGF1ZGlvIGluZm9mcmFtZTogJWRc
+biIsIHJldCk7CisJCWdvdG8gb3V0OworCX0KKworCWNkbl9kcF9zZHBfd3JpdGUoZHAsIDAsIGJ1
+ZmZlciwgc2l6ZW9mKGJ1ZmZlcikpOworCiAJcmV0ID0gY2RuX2RwX2F1ZGlvX2NvbmZpZyhkcCwg
+JmF1ZGlvKTsKIAlpZiAoIXJldCkKIAkJZHAtPmF1ZGlvX2luZm8gPSBhdWRpbzsKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jCmluZGV4IGIxNGQyMTEuLjRhODE4ZTQgMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMKKysrIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwpAQCAtMjg2LDYgKzI4NiwzMyBAQCBpbnQgY2Ru
+X2RwX2RwY2Rfd3JpdGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwLCB1MzIgYWRkciwgdTggdmFs
+dWUpCiAJcmV0dXJuIHJldDsKIH0KIAordm9pZCBjZG5fZHBfc2RwX3dyaXRlKHN0cnVjdCBjZG5f
+ZHBfZGV2aWNlICpkcCwgaW50IGVudHJ5X2lkLCB1OCAqYnVmLAorCQkgICAgICB1MzIgYnVmX2xl
+bikKK3sKKwlpbnQgaWR4OworCXUzMiAqcGFja2V0ID0gKHUzMiAqKWJ1ZjsKKwl1MzIgbnVtX3Bh
+Y2tldHMgPSBidWZfbGVuIC8gNDsKKwl1OCB0eXBlOworCisJaWYgKGJ1Zl9sZW4gPCBFRFBfU0RQ
+X0hFQURFUl9TSVpFKSB7CisJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgInNkcCBidWZmZXIgbGVu
+Z3RoOiAlZFxuIiwgYnVmX2xlbik7CisJCXJldHVybjsKKwl9CisKKwl0eXBlID0gYnVmWzFdOwor
+CisJZm9yIChpZHggPSAwOyBpZHggPCBudW1fcGFja2V0czsgaWR4KyspCisJCXdyaXRlbChjcHVf
+dG9fbGUzMigqcGFja2V0KyspLCBkcC0+cmVncyArIFNPVVJDRV9QSUZfREFUQV9XUik7CisKKwl3
+cml0ZWwoZW50cnlfaWQsIGRwLT5yZWdzICsgU09VUkNFX1BJRl9XUl9BRERSKTsKKworCXdyaXRl
+bChGX0hPU1RfV1IsIGRwLT5yZWdzICsgU09VUkNFX1BJRl9XUl9SRVEpOworCisJd3JpdGVsKFBJ
+Rl9QS1RfVFlQRV9WQUxJRCB8IEZfUEFDS0VUX1RZUEUodHlwZSkgfCBlbnRyeV9pZCwKKwkgICAg
+ICAgZHAtPnJlZ3MgKyBTT1VSQ0VfUElGX1BLVF9BTExPQ19SRUcpOworCXdyaXRlbChQSUZfUEtU
+X0FMTE9DX1dSX0VOLCBkcC0+cmVncyArIFNPVVJDRV9QSUZfUEtUX0FMTE9DX1dSX0VOKTsKK30K
+KwogaW50IGNkbl9kcF9sb2FkX2Zpcm13YXJlKHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCwgY29u
+c3QgdTMyICppX21lbSwKIAkJCSB1MzIgaV9zaXplLCBjb25zdCB1MzIgKmRfbWVtLCB1MzIgZF9z
+aXplKQogewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcu
+aCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKaW5kZXggYzRiYmI0YTgz
+Li42ZWMwZTgxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJl
+Zy5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKQEAgLTQyNCw2
+ICs0MjQsMTEgQEAKIC8qIFJlZmVyZW5jZSBjeWNsZXMgd2hlbiB1c2luZyBsYW5lIGNsb2NrIGFz
+IHJlZmVyZW5jZSAqLwogI2RlZmluZSBMQU5FX1JFRl9DWUMJCQkJMHg4MDAwCiAKKyNkZWZpbmUg
+Rl9IT1NUX1dSCQlCSVQoMCkKKyNkZWZpbmUgUElGX1BLVF9BTExPQ19XUl9FTglCSVQoMCkKKyNk
+ZWZpbmUgUElGX1BLVF9UWVBFX1ZBTElECSgzIDw8IDE2KQorI2RlZmluZSBGX1BBQ0tFVF9UWVBF
+KHgpCSgoKHgpICYgMHhmZikgPDwgOCkKKwogZW51bSB2b2x0YWdlX3N3aW5nX2xldmVsIHsKIAlW
+T0xUQUdFX0xFVkVMXzAsCiAJVk9MVEFHRV9MRVZFTF8xLApAQCAtNDc4LDUgKzQ4Myw2IEBAIGlu
+dCBjZG5fZHBfc2V0X3ZpZGVvX3N0YXR1cyhzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsIGludCBh
+Y3RpdmUpOwogaW50IGNkbl9kcF9jb25maWdfdmlkZW8oc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
+KTsKIGludCBjZG5fZHBfYXVkaW9fc3RvcChzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsIHN0cnVj
+dCBhdWRpb19pbmZvICphdWRpbyk7CiBpbnQgY2RuX2RwX2F1ZGlvX211dGUoc3RydWN0IGNkbl9k
+cF9kZXZpY2UgKmRwLCBib29sIGVuYWJsZSk7Cit2b2lkIGNkbl9kcF9zZHBfd3JpdGUoc3RydWN0
+IGNkbl9kcF9kZXZpY2UgKmRwLCBpbnQgZW50cnlfaWQsIHU4ICpidWYsIHUzMiBsZW4pOwogaW50
+IGNkbl9kcF9hdWRpb19jb25maWcoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwLCBzdHJ1Y3QgYXVk
+aW9faW5mbyAqYXVkaW8pOwogI2VuZGlmIC8qIF9DRE5fRFBfUkVHX0ggKi8KZGlmZiAtLWdpdCBh
+L2luY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIuaCBiL2luY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIu
+aAppbmRleCBiMTc0NzZhLi41ZDVkZDA3IDEwMDY0NAotLS0gYS9pbmNsdWRlL2RybS9kcm1fZHBf
+aGVscGVyLmgKKysrIGIvaW5jbHVkZS9kcm0vZHJtX2RwX2hlbHBlci5oCkBAIC04NzgsNiArODc4
+LDcgQEAgc3RydWN0IGVkcF9zZHBfaGVhZGVyIHsKIAl1OCBIQjM7IC8qIDc6NSByZXNlcnZlZCwg
+NDowIG51bWJlciBvZiB2YWxpZCBkYXRhIGJ5dGVzICovCiB9IF9fcGFja2VkOwogCisjZGVmaW5l
+IEVEUF9TRFBfSEVBREVSX1NJWkUJCQk0CiAjZGVmaW5lIEVEUF9TRFBfSEVBREVSX1JFVklTSU9O
+X01BU0sJCTB4MUYKICNkZWZpbmUgRURQX1NEUF9IRUFERVJfVkFMSURfUEFZTE9BRF9CWVRFUwkw
+eDFGCiAKLS0gCjIuNy40CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
