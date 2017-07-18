@@ -1,105 +1,159 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2 2/2] drm/rockchip: cdn-dp: send audio infoframe to sink
-Date: Tue, 18 Jul 2017 19:20:42 +0800
-Message-ID: <1500376842-6739-2-git-send-email-zyw@rock-chips.com>
-References: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: cdn-dp: send audio infoframe to sink
+Date: Tue, 18 Jul 2017 19:36:13 +0800
+Message-ID: <e926d902-ceb9-4189-7ad7-ce95f134c3a6@rock-chips.com>
+References: <1500116418-4178-1-git-send-email-zyw@rock-chips.com>
+ <20170717202300.c2r7ypclqbwvqbzq@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: seanpaul@chromium.org, dianders@chromium.org, briannorris@chromium.org
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=gb18030; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170717202300.c2r7ypclqbwvqbzq@art_vandelay>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U29tZSBEUC9IRE1JIHNpbmsgbmVlZCB0byByZWNlaXZlIHRoZSBhdWRpbyBpbmZvZnJhbWUgdG8g
-cGxheSBzb3VuZCwKZXNwZWNpYWxseSBzb21lIG11bHRpLWNoYW5uZWwgQVYgcmVjZWl2ZXIsIHRo
-ZXkgbmVlZCB0aGUKY2hhbm5lbF9hbGxvY2F0aW9uIGZyb20gaW5mb2ZyYW1lIHRvIGNvbmZpZyB0
-aGUgc3BlYWtlcnMuIFNlbmQgdGhlCmF1ZGlvIGluZm9mcmFtZSB2aWEgU0RQIHdpbGwgbWFrZSB0
-aGVtIHdvcmsgcHJvcGVybHkuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2st
-Y2hpcHMuY29tPgoKLS0tCgpDaGFuZ2VzIGluIHYyOgotIEFjY29yZGluZyB0byB0aGUgYWR2aWNl
-IG9mIFNlYW4gUGF1bCBhbmQgRG91Zwp1c2UgaGRtaV9hdWRpb19pbmZvZnJhbWVfcGFja19wYXls
-b2FkIHRvIHBhY2sgdGhlIGJ1ZmZlcgpkZWZpbmUgYSBTRFBfSEVBREVSX1NJWkUKCiBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyB8IDIwICsrKysrKysrKysrKysrKysrKysr
-CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jICB8IDI3ICsrKysrKysrKysr
-KysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuaCAg
-fCAgNiArKysrKysKIGluY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIuaCAgICAgICAgICAgIHwgIDEg
-KwogNCBmaWxlcyBjaGFuZ2VkLCA1NCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvY2RuLWRwLWNvcmUuYwppbmRleCA5YjBiMDU4Li42YTRmYzY2IDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvY2RuLWRwLWNvcmUuYwpAQCAtODAyLDYgKzgwMiw3IEBAIHN0YXRpYyBpbnQgY2Ru
-X2RwX2F1ZGlvX2h3X3BhcmFtcyhzdHJ1Y3QgZGV2aWNlICpkZXYsICB2b2lkICpkYXRhLAogCQku
-c2FtcGxlX3JhdGUgPSBwYXJhbXMtPnNhbXBsZV9yYXRlLAogCQkuY2hhbm5lbHMgPSBwYXJhbXMt
-PmNoYW5uZWxzLAogCX07CisJdTggYnVmZmVyW0hETUlfQVVESU9fSU5GT0ZSQU1FX1NJWkUgKyBF
-RFBfU0RQX0hFQURFUl9TSVpFXSA9IHsgMCB9OwogCWludCByZXQ7CiAKIAltdXRleF9sb2NrKCZk
-cC0+bG9jayk7CkBAIC04MjMsNiArODI0LDI1IEBAIHN0YXRpYyBpbnQgY2RuX2RwX2F1ZGlvX2h3
-X3BhcmFtcyhzdHJ1Y3QgZGV2aWNlICpkZXYsICB2b2lkICpkYXRhLAogCQlnb3RvIG91dDsKIAl9
-CiAKKwkvKgorCSAqIFByZXBhcmUgdGhlIGluZm9mcmFtZSBoZWFkZXIgdG8gU0RQIGhlYWRlciBw
-ZXIgRFAgMS4zIHNwZWMsIFRhYmxlCisJICogMi05OC4KKwkgKi8KKwlidWZmZXJbMF0gPSAwOwor
-CWJ1ZmZlclsxXSA9IEhETUlfSU5GT0ZSQU1FX1RZUEVfQVVESU87CisJYnVmZmVyWzJdID0gMHgx
-YjsKKwlidWZmZXJbM10gPSAweDQ4OworCisJcmV0ID0gaGRtaV9hdWRpb19pbmZvZnJhbWVfcGFj
-a19wYXlsb2FkKCZwYXJhbXMtPmNlYSwKKwkJCQkJCSZidWZmZXJbRURQX1NEUF9IRUFERVJfU0la
-RV0sCisJCQkJCQlIRE1JX0FVRElPX0lORk9GUkFNRV9TSVpFKTsKKwlpZiAocmV0IDwgMCkgewor
-CQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byBwYWNrIGF1ZGlvIGluZm9mcmFtZTogJWRc
-biIsIHJldCk7CisJCWdvdG8gb3V0OworCX0KKworCWNkbl9kcF9zZHBfd3JpdGUoZHAsIDAsIGJ1
-ZmZlciwgc2l6ZW9mKGJ1ZmZlcikpOworCiAJcmV0ID0gY2RuX2RwX2F1ZGlvX2NvbmZpZyhkcCwg
-JmF1ZGlvKTsKIAlpZiAoIXJldCkKIAkJZHAtPmF1ZGlvX2luZm8gPSBhdWRpbzsKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jCmluZGV4IGIxNGQyMTEuLjRhODE4ZTQgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwpAQCAtMjg2LDYgKzI4NiwzMyBAQCBpbnQgY2Ru
-X2RwX2RwY2Rfd3JpdGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwLCB1MzIgYWRkciwgdTggdmFs
-dWUpCiAJcmV0dXJuIHJldDsKIH0KIAordm9pZCBjZG5fZHBfc2RwX3dyaXRlKHN0cnVjdCBjZG5f
-ZHBfZGV2aWNlICpkcCwgaW50IGVudHJ5X2lkLCB1OCAqYnVmLAorCQkgICAgICB1MzIgYnVmX2xl
-bikKK3sKKwlpbnQgaWR4OworCXUzMiAqcGFja2V0ID0gKHUzMiAqKWJ1ZjsKKwl1MzIgbnVtX3Bh
-Y2tldHMgPSBidWZfbGVuIC8gNDsKKwl1OCB0eXBlOworCisJaWYgKGJ1Zl9sZW4gPCBFRFBfU0RQ
-X0hFQURFUl9TSVpFKSB7CisJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgInNkcCBidWZmZXIgbGVu
-Z3RoOiAlZFxuIiwgYnVmX2xlbik7CisJCXJldHVybjsKKwl9CisKKwl0eXBlID0gYnVmWzFdOwor
-CisJZm9yIChpZHggPSAwOyBpZHggPCBudW1fcGFja2V0czsgaWR4KyspCisJCXdyaXRlbChjcHVf
-dG9fbGUzMigqcGFja2V0KyspLCBkcC0+cmVncyArIFNPVVJDRV9QSUZfREFUQV9XUik7CisKKwl3
-cml0ZWwoZW50cnlfaWQsIGRwLT5yZWdzICsgU09VUkNFX1BJRl9XUl9BRERSKTsKKworCXdyaXRl
-bChGX0hPU1RfV1IsIGRwLT5yZWdzICsgU09VUkNFX1BJRl9XUl9SRVEpOworCisJd3JpdGVsKFBJ
-Rl9QS1RfVFlQRV9WQUxJRCB8IEZfUEFDS0VUX1RZUEUodHlwZSkgfCBlbnRyeV9pZCwKKwkgICAg
-ICAgZHAtPnJlZ3MgKyBTT1VSQ0VfUElGX1BLVF9BTExPQ19SRUcpOworCXdyaXRlbChQSUZfUEtU
-X0FMTE9DX1dSX0VOLCBkcC0+cmVncyArIFNPVVJDRV9QSUZfUEtUX0FMTE9DX1dSX0VOKTsKK30K
-KwogaW50IGNkbl9kcF9sb2FkX2Zpcm13YXJlKHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCwgY29u
-c3QgdTMyICppX21lbSwKIAkJCSB1MzIgaV9zaXplLCBjb25zdCB1MzIgKmRfbWVtLCB1MzIgZF9z
-aXplKQogewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcu
-aCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKaW5kZXggYzRiYmI0YTgz
-Li42ZWMwZTgxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJl
-Zy5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKQEAgLTQyNCw2
-ICs0MjQsMTEgQEAKIC8qIFJlZmVyZW5jZSBjeWNsZXMgd2hlbiB1c2luZyBsYW5lIGNsb2NrIGFz
-IHJlZmVyZW5jZSAqLwogI2RlZmluZSBMQU5FX1JFRl9DWUMJCQkJMHg4MDAwCiAKKyNkZWZpbmUg
-Rl9IT1NUX1dSCQlCSVQoMCkKKyNkZWZpbmUgUElGX1BLVF9BTExPQ19XUl9FTglCSVQoMCkKKyNk
-ZWZpbmUgUElGX1BLVF9UWVBFX1ZBTElECSgzIDw8IDE2KQorI2RlZmluZSBGX1BBQ0tFVF9UWVBF
-KHgpCSgoKHgpICYgMHhmZikgPDwgOCkKKwogZW51bSB2b2x0YWdlX3N3aW5nX2xldmVsIHsKIAlW
-T0xUQUdFX0xFVkVMXzAsCiAJVk9MVEFHRV9MRVZFTF8xLApAQCAtNDc4LDUgKzQ4Myw2IEBAIGlu
-dCBjZG5fZHBfc2V0X3ZpZGVvX3N0YXR1cyhzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsIGludCBh
-Y3RpdmUpOwogaW50IGNkbl9kcF9jb25maWdfdmlkZW8oc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
-KTsKIGludCBjZG5fZHBfYXVkaW9fc3RvcChzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsIHN0cnVj
-dCBhdWRpb19pbmZvICphdWRpbyk7CiBpbnQgY2RuX2RwX2F1ZGlvX211dGUoc3RydWN0IGNkbl9k
-cF9kZXZpY2UgKmRwLCBib29sIGVuYWJsZSk7Cit2b2lkIGNkbl9kcF9zZHBfd3JpdGUoc3RydWN0
-IGNkbl9kcF9kZXZpY2UgKmRwLCBpbnQgZW50cnlfaWQsIHU4ICpidWYsIHUzMiBsZW4pOwogaW50
-IGNkbl9kcF9hdWRpb19jb25maWcoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwLCBzdHJ1Y3QgYXVk
-aW9faW5mbyAqYXVkaW8pOwogI2VuZGlmIC8qIF9DRE5fRFBfUkVHX0ggKi8KZGlmZiAtLWdpdCBh
-L2luY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIuaCBiL2luY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIu
-aAppbmRleCBiMTc0NzZhLi41ZDVkZDA3IDEwMDY0NAotLS0gYS9pbmNsdWRlL2RybS9kcm1fZHBf
-aGVscGVyLmgKKysrIGIvaW5jbHVkZS9kcm0vZHJtX2RwX2hlbHBlci5oCkBAIC04NzgsNiArODc4
-LDcgQEAgc3RydWN0IGVkcF9zZHBfaGVhZGVyIHsKIAl1OCBIQjM7IC8qIDc6NSByZXNlcnZlZCwg
-NDowIG51bWJlciBvZiB2YWxpZCBkYXRhIGJ5dGVzICovCiB9IF9fcGFja2VkOwogCisjZGVmaW5l
-IEVEUF9TRFBfSEVBREVSX1NJWkUJCQk0CiAjZGVmaW5lIEVEUF9TRFBfSEVBREVSX1JFVklTSU9O
-X01BU0sJCTB4MUYKICNkZWZpbmUgRURQX1NEUF9IRUFERVJfVkFMSURfUEFZTE9BRF9CWVRFUwkw
-eDFGCiAKLS0gCjIuNy40CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+Hi Sean
+
+Thanks for your replying.
+
+
+On Tuesday, July 18, 2017 04:23 AM, Sean Paul wrote:
+> On Sat, Jul 15, 2017 at 07:00:18PM +0800, Chris Zhong wrote:
+>> Some DP/HDMI sink need to receive the audio infoframe to play sound,
+>> especially some multi-channel AV receiver, they need the
+>> channel_allocation from infoframe to config the speakers. Send the
+>> audio infoframe via SDP will make them work properly.
+>>
+>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> Hi Chris,
+> Thanks for the patch, please see comments below.
+>
+>> ---
+>>
+>>   drivers/gpu/drm/rockchip/cdn-dp-core.c | 20 ++++++++++++++++++++
+>>   drivers/gpu/drm/rockchip/cdn-dp-reg.c  | 19 +++++++++++++++++++
+>>   drivers/gpu/drm/rockchip/cdn-dp-reg.h  |  6 ++++++
+>>   3 files changed, 45 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+>> index 9b0b058..e59ca47 100644
+>> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
+>> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+>> @@ -802,6 +802,7 @@ static int cdn_dp_audio_hw_params(struct device *dev,  void *data,
+>>   		.sample_rate = params->sample_rate,
+>>   		.channels = params->channels,
+>>   	};
+>> +	u8 buffer[14];
+> Why 14?
+>
+> I think you should probably have buffer[HDMI_AUDIO_INFOFRAME_SIZE +
+> SDP_HEADER_SIZE] so the reader knows how you arrived at this value.
+>
+>>   	int ret;
+>>   
+>>   	mutex_lock(&dp->lock);
+>> @@ -823,6 +824,25 @@ static int cdn_dp_audio_hw_params(struct device *dev,  void *data,
+>>   		goto out;
+>>   	}
+>>   
+>> +	memset(buffer, 0, sizeof(buffer));
+>> +
+>> +	ret = hdmi_audio_infoframe_pack(&params->cea, buffer, sizeof(buffer));
+>> +	if (ret < 0) {
+>> +		DRM_DEV_ERROR(dev, "Failed to pack audio infoframe: %d\n", ret);
+>> +		goto out;
+>> +	}
+>> +
+>> +	/*
+>> +	 * Change the infoframe header to SDP header per DP 1.3 spec, Table
+>> +	 * 2-98.
+>> +	 */
+>> +	buffer[0] = 0;
+>> +	buffer[1] = HDMI_INFOFRAME_TYPE_AUDIO;
+>> +	buffer[2] = 0x1b;
+>> +	buffer[3] = 0x48;
+> Instead of doing this, consider splitting up hdmi_audio_infoframe_pack into
+> hdmi_audio_infoframe_pack and hdmi_audio_infoframe_pack_payload. The first
+> function does everything, while the second just packs the payload, then you can
+> set the SDP header independently.
+>
+>> +
+>> +	cdn_dp_sdp_write(dp, 0, buffer, sizeof(buffer));
+>> +
+>>   	ret = cdn_dp_audio_config(dp, &audio);
+>>   	if (!ret)
+>>   		dp->audio_info = audio;
+>> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+>> index b14d211..8907db0 100644
+>> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+>> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+>> @@ -951,6 +951,25 @@ static void cdn_dp_audio_config_spdif(struct cdn_dp_device *dp)
+>>   	clk_set_rate(dp->spdif_clk, CDN_DP_SPDIF_CLK);
+>>   }
+>>   
+>> +void cdn_dp_sdp_write(struct cdn_dp_device *dp, int entry_id, u8 *buf, u32 len)
+>> +{
+>> +	int idx;
+>> +	u32 *packet = (u32 *)buf;
+>> +	u32 length = len / 4;
+> length and len are pretty terrible names, it would be quite easy to use the
+> wrong one. Consider more descriptive names (ie: buf_len and num_packets).
+>
+>> +	u8 type = buf[1];
+> Check for len < 0?
+>
+>> +
+>> +	for (idx = 0; idx < length; idx++)
+>> +		writel(cpu_to_le32(*packet++), dp->regs + SOURCE_PIF_DATA_WR);
+>> +
+>> +	writel(entry_id, dp->regs + SOURCE_PIF_WR_ADDR);
+>> +
+>> +	writel(F_HOST_WR, dp->regs + SOURCE_PIF_WR_REQ);
+>> +
+>> +	writel(PIF_PKT_TYPE_VALID | F_PACKET_TYPE(type) | entry_id,
+>> +	       dp->regs + SOURCE_PIF_PKT_ALLOC_REG);
+>> +	writel(PIF_PKT_ALLOC_WR_EN, dp->regs + SOURCE_PIF_PKT_ALLOC_WR_EN);
+>> +}
+>> +
+>>   int cdn_dp_audio_config(struct cdn_dp_device *dp, struct audio_info *audio)
+>>   {
+>>   	int ret;
+>> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.h b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+>> index c4bbb4a83..6ec0e81 100644
+>> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+>> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+>> @@ -424,6 +424,11 @@
+>>   /* Reference cycles when using lane clock as reference */
+>>   #define LANE_REF_CYC				0x8000
+>>   
+>> +#define F_HOST_WR		BIT(0)
+>> +#define PIF_PKT_ALLOC_WR_EN	BIT(0)
+>> +#define PIF_PKT_TYPE_VALID	(3 << 16)
+>> +#define F_PACKET_TYPE(x)	(((x) & 0xff) << 8)
+> Can you tuck these #defines under the definition of SOURCE_PIF_PKT_ALLOC_REG, so
+> we know which register they apply to?
+>
+>
+Considering the existing code style of this file, can we keep these 
+defines here?
+
+>> +
+>>   enum voltage_swing_level {
+>>   	VOLTAGE_LEVEL_0,
+>>   	VOLTAGE_LEVEL_1,
+>> @@ -478,5 +483,6 @@ int cdn_dp_set_video_status(struct cdn_dp_device *dp, int active);
+>>   int cdn_dp_config_video(struct cdn_dp_device *dp);
+>>   int cdn_dp_audio_stop(struct cdn_dp_device *dp, struct audio_info *audio);
+>>   int cdn_dp_audio_mute(struct cdn_dp_device *dp, bool enable);
+>> +void cdn_dp_sdp_write(struct cdn_dp_device *dp, int entry_id, u8 *buf, u32 len);
+>>   int cdn_dp_audio_config(struct cdn_dp_device *dp, struct audio_info *audio);
+>>   #endif /* _CDN_DP_REG_H */
+>> -- 
+>> 2.6.3
+>>
+
+-- 
+Chris Zhong
