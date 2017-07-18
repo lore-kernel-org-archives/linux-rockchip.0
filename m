@@ -1,159 +1,108 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: cdn-dp: send audio infoframe to sink
-Date: Tue, 18 Jul 2017 19:36:13 +0800
-Message-ID: <e926d902-ceb9-4189-7ad7-ce95f134c3a6@rock-chips.com>
-References: <1500116418-4178-1-git-send-email-zyw@rock-chips.com>
- <20170717202300.c2r7ypclqbwvqbzq@art_vandelay>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/4] drm/atomic: implement drm_atomic_helper_commit_tail
+ for runtime_pm users
+Date: Tue, 18 Jul 2017 14:08:39 +0200
+Message-ID: <20170718120839.k7zsey67qgrtnfwe@phenom.ffwll.local>
+References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
+ <1823154.LT2zYSFJ4j@avalon> <20170718070522.6uu7s6o3ivpemslf@flea>
+ <10955632.YI7NJnTkKU@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gb18030; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170717202300.c2r7ypclqbwvqbzq@art_vandelay>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, briannorris@chromium.org, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <10955632.YI7NJnTkKU@avalon>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-samsung-soc@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, Kyungmin Park <kyungmin.park@samsung.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean
-
-Thanks for your replying.
-
-
-On Tuesday, July 18, 2017 04:23 AM, Sean Paul wrote:
-> On Sat, Jul 15, 2017 at 07:00:18PM +0800, Chris Zhong wrote:
->> Some DP/HDMI sink need to receive the audio infoframe to play sound,
->> especially some multi-channel AV receiver, they need the
->> channel_allocation from infoframe to config the speakers. Send the
->> audio infoframe via SDP will make them work properly.
->>
->> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> Hi Chris,
-> Thanks for the patch, please see comments below.
->
->> ---
->>
->>   drivers/gpu/drm/rockchip/cdn-dp-core.c | 20 ++++++++++++++++++++
->>   drivers/gpu/drm/rockchip/cdn-dp-reg.c  | 19 +++++++++++++++++++
->>   drivers/gpu/drm/rockchip/cdn-dp-reg.h  |  6 ++++++
->>   3 files changed, 45 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> index 9b0b058..e59ca47 100644
->> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
->> @@ -802,6 +802,7 @@ static int cdn_dp_audio_hw_params(struct device *dev,  void *data,
->>   		.sample_rate = params->sample_rate,
->>   		.channels = params->channels,
->>   	};
->> +	u8 buffer[14];
-> Why 14?
->
-> I think you should probably have buffer[HDMI_AUDIO_INFOFRAME_SIZE +
-> SDP_HEADER_SIZE] so the reader knows how you arrived at this value.
->
->>   	int ret;
->>   
->>   	mutex_lock(&dp->lock);
->> @@ -823,6 +824,25 @@ static int cdn_dp_audio_hw_params(struct device *dev,  void *data,
->>   		goto out;
->>   	}
->>   
->> +	memset(buffer, 0, sizeof(buffer));
->> +
->> +	ret = hdmi_audio_infoframe_pack(&params->cea, buffer, sizeof(buffer));
->> +	if (ret < 0) {
->> +		DRM_DEV_ERROR(dev, "Failed to pack audio infoframe: %d\n", ret);
->> +		goto out;
->> +	}
->> +
->> +	/*
->> +	 * Change the infoframe header to SDP header per DP 1.3 spec, Table
->> +	 * 2-98.
->> +	 */
->> +	buffer[0] = 0;
->> +	buffer[1] = HDMI_INFOFRAME_TYPE_AUDIO;
->> +	buffer[2] = 0x1b;
->> +	buffer[3] = 0x48;
-> Instead of doing this, consider splitting up hdmi_audio_infoframe_pack into
-> hdmi_audio_infoframe_pack and hdmi_audio_infoframe_pack_payload. The first
-> function does everything, while the second just packs the payload, then you can
-> set the SDP header independently.
->
->> +
->> +	cdn_dp_sdp_write(dp, 0, buffer, sizeof(buffer));
->> +
->>   	ret = cdn_dp_audio_config(dp, &audio);
->>   	if (!ret)
->>   		dp->audio_info = audio;
->> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
->> index b14d211..8907db0 100644
->> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
->> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
->> @@ -951,6 +951,25 @@ static void cdn_dp_audio_config_spdif(struct cdn_dp_device *dp)
->>   	clk_set_rate(dp->spdif_clk, CDN_DP_SPDIF_CLK);
->>   }
->>   
->> +void cdn_dp_sdp_write(struct cdn_dp_device *dp, int entry_id, u8 *buf, u32 len)
->> +{
->> +	int idx;
->> +	u32 *packet = (u32 *)buf;
->> +	u32 length = len / 4;
-> length and len are pretty terrible names, it would be quite easy to use the
-> wrong one. Consider more descriptive names (ie: buf_len and num_packets).
->
->> +	u8 type = buf[1];
-> Check for len < 0?
->
->> +
->> +	for (idx = 0; idx < length; idx++)
->> +		writel(cpu_to_le32(*packet++), dp->regs + SOURCE_PIF_DATA_WR);
->> +
->> +	writel(entry_id, dp->regs + SOURCE_PIF_WR_ADDR);
->> +
->> +	writel(F_HOST_WR, dp->regs + SOURCE_PIF_WR_REQ);
->> +
->> +	writel(PIF_PKT_TYPE_VALID | F_PACKET_TYPE(type) | entry_id,
->> +	       dp->regs + SOURCE_PIF_PKT_ALLOC_REG);
->> +	writel(PIF_PKT_ALLOC_WR_EN, dp->regs + SOURCE_PIF_PKT_ALLOC_WR_EN);
->> +}
->> +
->>   int cdn_dp_audio_config(struct cdn_dp_device *dp, struct audio_info *audio)
->>   {
->>   	int ret;
->> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.h b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
->> index c4bbb4a83..6ec0e81 100644
->> --- a/drivers/gpu/drm/rockchip/cdn-dp-reg.h
->> +++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
->> @@ -424,6 +424,11 @@
->>   /* Reference cycles when using lane clock as reference */
->>   #define LANE_REF_CYC				0x8000
->>   
->> +#define F_HOST_WR		BIT(0)
->> +#define PIF_PKT_ALLOC_WR_EN	BIT(0)
->> +#define PIF_PKT_TYPE_VALID	(3 << 16)
->> +#define F_PACKET_TYPE(x)	(((x) & 0xff) << 8)
-> Can you tuck these #defines under the definition of SOURCE_PIF_PKT_ALLOC_REG, so
-> we know which register they apply to?
->
->
-Considering the existing code style of this file, can we keep these 
-defines here?
-
->> +
->>   enum voltage_swing_level {
->>   	VOLTAGE_LEVEL_0,
->>   	VOLTAGE_LEVEL_1,
->> @@ -478,5 +483,6 @@ int cdn_dp_set_video_status(struct cdn_dp_device *dp, int active);
->>   int cdn_dp_config_video(struct cdn_dp_device *dp);
->>   int cdn_dp_audio_stop(struct cdn_dp_device *dp, struct audio_info *audio);
->>   int cdn_dp_audio_mute(struct cdn_dp_device *dp, bool enable);
->> +void cdn_dp_sdp_write(struct cdn_dp_device *dp, int entry_id, u8 *buf, u32 len);
->>   int cdn_dp_audio_config(struct cdn_dp_device *dp, struct audio_info *audio);
->>   #endif /* _CDN_DP_REG_H */
->> -- 
->> 2.6.3
->>
-
--- 
-Chris Zhong
+T24gVHVlLCBKdWwgMTgsIDIwMTcgYXQgMDE6MTQ6MTJQTSArMDMwMCwgTGF1cmVudCBQaW5jaGFy
+dCB3cm90ZToKPiBIaSBNYXhpbWUsCj4gCj4gT24gVHVlc2RheSAxOCBKdWwgMjAxNyAwOTowNToy
+MiBNYXhpbWUgUmlwYXJkIHdyb3RlOgo+ID4gT24gRnJpLCBKdWwgMTQsIDIwMTcgYXQgMDI6NDM6
+MTJBTSArMDMwMCwgTGF1cmVudCBQaW5jaGFydCB3cm90ZToKPiA+ID4gT24gVGh1cnNkYXkgMTMg
+SnVsIDIwMTcgMTY6NDE6MTMgTWF4aW1lIFJpcGFyZCB3cm90ZToKPiA+ID4+IFRoZSBjdXJyZW50
+IGRybV9hdG9taWNfaGVscGVyX2NvbW1pdF90YWlsIGhlbHBlciB3b3JrcyBvbmx5IGlmIHRoZSBD
+UlRDCj4gPiA+PiBpcyBhY2Nlc3NpYmxlLCBhbmQgZG9jdW1lbnRzIGFuIGFsdGVybmF0aXZlIGlt
+cGxlbWVudGF0aW9uIHRoYXQgaXMKPiA+ID4+IHN1cHBvc2VkIHRvIGJlIHVzZWQgaWYgdGhhdCBo
+YXBwZW5zLgo+ID4gPj4gCj4gPiA+PiBUaGF0IGltcGxlbWVudGF0aW9uIGlzIHRoZW4gZHVwbGlj
+YXRlZCBieSBzb21lIGRyaXZlcnMuIEluc3RlYWQgb2YKPiA+ID4+IGRvY3VtZW50aW5nIGl0LCBs
+ZXQncyBpbXBsZW1lbnQgYW4gaGVscGVyIHRoYXQgYWxsIHRoZSByZWxldmFudCB1c2Vycwo+ID4g
+Pj4gY2FuIHVzZSBkaXJlY3RseS4KPiA+ID4+IAo+ID4gPj4gU2lnbmVkLW9mZi1ieTogTWF4aW1l
+IFJpcGFyZCA8bWF4aW1lLnJpcGFyZEBmcmVlLWVsZWN0cm9ucy5jb20+Cj4gPiA+PiAtLS0KPiA+
+ID4+IAo+ID4gPj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX2hlbHBlci5jICAgICAgICB8
+IDQ3ICsrKysrKysrKysrKysrKy0tLS0tLS0tCj4gPiA+PiAgZHJpdmVycy9ncHUvZHJtL2V4eW5v
+cy9leHlub3NfZHJtX2ZiLmMgICAgIHwgMjcgKy0tLS0tLS0tLS0tLS0KPiA+ID4+ICBkcml2ZXJz
+L2dwdS9kcm0vcmNhci1kdS9yY2FyX2R1X2ttcy5jICAgICAgfCAxOCArLS0tLS0tLS0tCj4gPiA+
+IAo+ID4gPiBJJ3ZlIHN1Ym1pdHRlZCAiW1BBVENIXSBkcm06IHJjYXItZHU6IFNldHVwIHBsYW5l
+cyBiZWZvcmUgZW5hYmxpbmcgQ1JUQyB0bwo+ID4gPiBhdm9pZCBmbGlja2VyIiB0aGF0IGNoYW5n
+ZXMgdGhlIHJjYXItZHUgaW1wbGVtZW50YXRpb24gdG8gdGhlIHN0YW5kYXJkCj4gPiA+IGRpc2Fi
+bGUvdXBkYXRlIHBsYW5lcy9lbmFibGUgb3JkZXIsIHNvIEknZCBhcHByZWNpYXRlIGlmIHlvdSBj
+b3VsZCBkcm9wCj4gPiA+IHRoZSByY2FyLWR1IHBhcnQgb2YgdGhpcyBwYXRjaCB0byBhdm9pZCBj
+b25mbGljdHMuCj4gPiAKPiA+IEkgd2lsbC4KPiA+IAo+ID4gPiBUaGlzIGJlaW5nIHNhaWQsIHRo
+ZSByZWFzb24gd2h5IEkgc3dpdGNoZWQgYmFjayBmcm9tIHRoZSAicnVudGltZSBQTSIgdG8KPiA+
+ID4gdGhlICJzdGFuZGFyZCIgb3JkZXIgaXMgcHJvYmFibHkgb2YgaW50ZXJlc3QgdG8geW91LiBR
+dW90aW5nIHRoZSBjb21taXQKPiA+ID4gbWVzc2FnZSwKPiA+ID4KPiA+ID4+IENvbW1pdCA1MjA1
+NWJhZmExZmYgKCJkcm06IHJjYXItZHU6IE1vdmUgcGxhbmUgY29tbWl0IGNvZGUgZnJvbSBDUlRD
+Cj4gPiA+PiBzdGFydCB0byBDUlRDIHJlc3VtZSIpIGNoYW5nZWQgdGhlIG9yZGVyIG9mIHRoZSBw
+bGFuZSBjb21taXQgYW5kIENSVEMKPiA+ID4+IGVuYWJsZSBvcGVyYXRpb25zIHRvIGFjY29tbW9k
+YXRlIHRoZSBydW50aW1lIFBNIHJlcXVpcmVtZW50cy4gSG93ZXZlciwKPiA+ID4+IHRoaXMgaW50
+cm9kdWNlZCBjb3JydXB0aW9uIGluIHRoZSBmaXJzdCBkaXNwbGF5ZWQgZnJhbWUsIGFzIHRoZSBD
+UlRDIGlzCj4gPiA+PiBub3cgZW5hYmxlZCB3aXRob3V0IGFueSBwbGFuZSBjb25maWd1cmVkLiBP
+biBHZW4yIGhhcmR3YXJlIHRoZSBmaXJzdAo+ID4gPj4gZnJhbWUgd2lsbCBiZSBibGFjayBhbmQg
+bGlrZWx5IHVubm90aWNlZCwgYnV0IG9uIEdlbjMgaGFyZHdhcmUgd2UgZW5kIHVwCj4gPiA+PiBz
+dGFydGluZyB0aGUgZGlzcGxheSBiZWZvcmUgdGhlIFZTUCBjb21wb3NpdG9yLCB3aGljaCBpcyBt
+b3JlCj4gPiA+PiBub3RpY2VhYmxlLgo+ID4gPj4gCj4gPiA+PiBUbyBmaXggdGhpcywgcmV2ZXJ0
+IHRoZSBvcmRlciBvZiB0aGUgY29tbWl0IG9wZXJhdGlvbnMgYmFjaywgYW5kIGhhbmRsZQo+ID4g
+Pj4gcnVudGltZSBQTSByZXF1aXJlbWVudHMgaW4gdGhlIENSVEMgLmF0b21pY19iZWdpbigpIGFu
+ZCAuYXRvbWljX2VuYWJsZSgpCj4gPiA+PiBoZWxwZXIgb3BlcmF0aW9uIGhhbmRsZXJzLgo+ID4g
+PiAKPiA+ID4gSSBiZWxpZXZlIHRoYXQgdGhlICJydW50aW1lIFBNIiBvcmRlciBpcyBwcm9ibGVt
+YXRpYyBpbiBtb3N0IGRyaXZlcnMuIFRoZQo+ID4gPiBwcm9ibGVtIHVzdWFsbHkgZ29lcyB1bm5v
+dGljZWQgYXMgbW9zdCBtb25pdG9ycyB3aWxsIG5vdCBldmVuIGRpc3BsYXkgdGhlCj4gPiA+IGZp
+cnN0IGZyYW1lLCBhbmQgSSBhc3N1bWUgbWFueSBkZXZpY2VzIHdpbGwganVzdCBvdXRwdXQgaXQg
+YmxhY2ssIGJ1dCBpdCdzCj4gPiA+IGFuIGlzc3VlIG5vbmV0aGVsZXNzLgo+ID4gPiAKPiA+ID4g
+Tm90ZSB0aGF0IG15IGRyaXZlciBoYXNuJ3QgbG9zdCB0aGUgInJ1bnRpbWUgUE0iIHJlcXVpcmVt
+ZW50cywgc28gSSBoYWQgdG8KPiA+ID4gc3VwcG9ydCB0aGVtIHdpdGggdGhlICJzdGFuZGFyZCIg
+b3JkZXIuIFRoZSBiZXN0IHdheSBJJ3ZlIGZvdW5kIHdhcyB0bwo+ID4gPiBydW50aW1lIHJlc3Vt
+ZSBpbiB0aGUgb25lIG9mIC5hdG9taWNfYmVnaW4oKSBhbmQgLmVuYWJsZSgpIHRoYXQgaXMgcnVu
+Cj4gPiA+IGZpcnN0LiBOb3QgdmVyeSBuZWF0LCBhcyBzaW1pbGFyIGNvZGUgd291bGQgYmUgbmVl
+ZGVkIGluIG1vc3QgZHJpdmVycy4gSQo+ID4gPiB3b25kZXIgd2hldGhlciBpdCB3b3VsZG4ndCBi
+ZSB1c2VmdWwgdG8gYWRkIHJlc3VtZS9zdXNwZW5kIGhlbHBlcgo+ID4gPiBjYWxsYmFja3MgZm9y
+IHRoZSBDUlRDLgo+ID4gCj4gPiBJJ20gbm90IHN1cmUgaXQgd291bGQgYXBwbHkuIE91ciBkcml2
+ZXIgZG9lc24ndCB1c2UgcnVudGltZV9wbSBhdCBhbGwsCj4gPiBidXQgaW4gb3JkZXIgZm9yIHRo
+ZSBjb21taXRzIHRvIGhhcHBlbiwgd2UgbmVlZCB0byBoYXZlIHRoZSBDUlRDCj4gPiBhY3RpdmUs
+IGJ1dCBpdCB3aWxsIHJlbWFpbiBwb3dlcmVkIHVwIHRoZSB3aG9sZSB0aW1lLiBJJ20gbm90IHN1
+cmUgaWYKPiA+IHdlJ2xsIGV2ZXIgc2VlIHN1Y2ggYSBmcmFtZS4KPiA+IAo+ID4gQnV0IHNpbmNl
+IHRoaXMgc2VlbXMgdG8gYmUgYSBwcmV0dHkgZ2VuZXJpYywgbWF5YmUgd2Ugc2hvdWxkIGFkZHJl
+c3MKPiA+IGl0IGluIHRoZSBoZWxwZXIgaXRzZWxmPwo+IAo+IEkgdGhpbmsgdGhhdCB3b3VsZCBt
+YWtlIHNlbnNlLgo+IAo+IFRoZXJlIGFyZSBhIGZldyBvcHRpb25zIHRoYXQgcmVzdWx0IGluIHRv
+byBtYW55IGNvbWJpbmF0aW9ucyBmb3Igc2VwYXJhdGUgCj4gY29tbWl0IHRhaWwgaGVscGVycyB0
+byBiZSBwcm92aWRlZCBpbiBteSBvcGluaW9uOgo+IAo+IC0gZGlzYWJsZS9lbmFibGUvcGxhbmVz
+IHZzLiBkaXNhYmxlL3BsYW5lcy9lbmFibGUKPiAtIERSTV9QTEFORV9DT01NSVRfQUNUSVZFX09O
+TFkgdnMuIGFsbCBDUlRDcwo+IC0gZHJtX2F0b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcyB2
+cyBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl9mbGlwX2RvbmUKPiAKPiBNYXliZSB3ZSBjb3Vs
+ZCBhZGQgYSBmZXcgQ1JUQyBjb21taXQgaGVscGVyIGZsYWdzIGFsb25nIHRoZSBsaW5lIG9mIAo+
+IERSTV9QTEFORV9DT01NSVRfQUNUSVZFX09OTFksIGFkZCBhIGZpZWxkIHRvIHRoZSBkcm1fY3J0
+YyBzdHJ1Y3R1cmUgdG8gc3RvcmUgCj4gdGhlbSwgYW5kIGhhdmUgZHJtX2F0b21pY19oZWxwZXJf
+Y29tbWl0X3RhaWwoKSB1c2UgdGhvc2UgZmxhZ3MgdG8gY29udHJvbCB0aGUgCj4gc2VxdWVuY2Ug
+b2Ygb3BlcmF0aW9ucy4KCldoeSBub3Qgd3JpdGUgeW91ciBvd24/IFllcyBpdCdzIGEgYml0IG9m
+IGNvcHlwYXN0ZSwgYnV0IGltbyB0aGF0J3MgcmVhbGx5Cm5vdCBob3JyaWJsZS4gSSdtIGFscmVh
+ZHkgbm90IGhhcHB5IHdpdGggdGhlIGZsYWdzIGZvciBjb21taXRfcGxhbmVzCmJlY2F1c2UgdGhl
+IGRvY3MgZm9yIHRoZW0gYXJlIG5vdCBncmVhdCBhbmQgaXQncyBoYXJkIHRvIGtub3cgd2hlbiB0
+byB1c2UKdGhlbSBhbmQgd2hlbiBub3QgdG8uCgotPmNvbW1pdF90YWlsIHdhcyBzcGVjaWZpY2Fs
+bHkgZG9uZSB0byBhbGxvdyBkcml2ZXJzIHRvIG92ZXJ3cml0ZSB0aGUgaHcKY29tbWl0IHN0YWdl
+IHdpdGhvdXQgaGF2aW5nIHRvIHJlaW52ZW50IGFsbCB0aGUgb3RoZXIgY29tbWl0IHRyYWNraW5n
+LiBJCmV4cGVjdCBtb3N0IG5vbi1zaW1wbGUgZHJpdmVycyB0byBoYXZlIHRoZWlyIG93biBjb21t
+aXRfdGFpbCBmdW5jdGlvbi4KLURhbmllbAotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdp
+bmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
