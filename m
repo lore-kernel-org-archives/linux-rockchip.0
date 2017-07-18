@@ -1,56 +1,80 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [RFC PATCH v3 7/7] dt-bindings: phy: convert to use per-lane Rockchip PCIe PHY
-Date: Tue, 18 Jul 2017 15:59:22 +0800
-Message-ID: <1500364762-98146-3-git-send-email-shawn.lin@rock-chips.com>
-References: <1500364623-97041-1-git-send-email-shawn.lin@rock-chips.com>
- <1500364762-98146-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1500364762-98146-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Daniel Thompson <daniel.thompson@linaro.org>
+Subject: Re: [PATCH v3 1/5] pwm-backlight: enable/disable the PWM before/after
+ LCD enable toggle.
+Date: Tue, 18 Jul 2017 10:34:13 +0100
+Message-ID: <94b569c6-9495-aaca-54f6-5620052543fa@linaro.org>
+References: <20170717212811.25374-1-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <20170717212811.25374-1-enric.balletbo@collabora.com>
+Content-Language: en-US
+Sender: linux-pwm-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch deprecate the legacy PCIe PHY and encourage user
-to use per-lane PHY mode by setting #phy-cells to 1.
+On 17/07/17 22:28, Enric Balletbo i Serra wrote:
+> Before this patch the enable signal was set before the PWM signal and
+> vice-versa on power off. I guess that this sequence is wrong, at least,
+> it is on the different panels datasheets that I checked, so I inverted
+> the sequence to follow the specs.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Could you list the part numbers for the panels you checked? Getting that 
+in the git history would be really helpful for future archaeologists 
+(including me).
 
-Acked-by: Rob Herring <robh@kernel.org>
----
+Also whilst changing the header I'd also say that "I guess that" does 
+not inspire much confidence. It sounds like you have done some homework 
+here... surely you've moved past guess work!
 
-Changes in v3:
-- rename the commit tile
 
-Changes in v2: None
+Daniel.
 
- Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-index 0f6222a..b496042 100644
---- a/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-+++ b/Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
-@@ -3,7 +3,6 @@ Rockchip PCIE PHY
- 
- Required properties:
-  - compatible: rockchip,rk3399-pcie-phy
-- - #phy-cells: must be 0
-  - clocks: Must contain an entry in clock-names.
- 	See ../clocks/clock-bindings.txt for details.
-  - clock-names: Must be "refclk"
-@@ -11,6 +10,12 @@ Required properties:
- 	See ../reset/reset.txt for details.
-  - reset-names: Must be "phy"
- 
-+Required properties for legacy PHY mode (deprecated):
-+ - #phy-cells: must be 0
-+
-+Required properties for per-lane PHY mode (preferred):
-+ - #phy-cells: must be 1
-+
- Example:
- 
- grf: syscon@ff770000 {
--- 
-1.9.1
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+> Changes since v2:
+>   - Add this as a separate patch (Thierry Reding)
+> Changes since v1:
+>   - None
+> 
+>   drivers/video/backlight/pwm_bl.c | 9 +++++----
+>   1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
+> index 002f1ce..909a686 100644
+> --- a/drivers/video/backlight/pwm_bl.c
+> +++ b/drivers/video/backlight/pwm_bl.c
+> @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
+>   	if (err < 0)
+>   		dev_err(pb->dev, "failed to enable power supply\n");
+>   
+> +	pwm_enable(pb->pwm);
+> +
+>   	if (pb->enable_gpio)
+>   		gpiod_set_value_cansleep(pb->enable_gpio, 1);
+>   
+> -	pwm_enable(pb->pwm);
+>   	pb->enabled = true;
+>   }
+>   
+> @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
+>   	if (!pb->enabled)
+>   		return;
+>   
+> -	pwm_config(pb->pwm, 0, pb->period);
+> -	pwm_disable(pb->pwm);
+> -
+>   	if (pb->enable_gpio)
+>   		gpiod_set_value_cansleep(pb->enable_gpio, 0);
+>   
+> +	pwm_config(pb->pwm, 0, pb->period);
+> +	pwm_disable(pb->pwm);
+> +
+>   	regulator_disable(pb->power_supply);
+>   	pb->enabled = false;
+>   }
+> 
