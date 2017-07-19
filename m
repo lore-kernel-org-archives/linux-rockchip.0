@@ -1,13 +1,25 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH 031/102] iio: adc: rockchip_saradc: explicitly request exclusive reset control
-Date: Wed, 19 Jul 2017 17:25:35 +0200
-Message-ID: <20170719152646.25903-32-p.zabel@pengutronix.de>
+From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH 058/102] phy: rockchip-pcie: explicitly request exclusive
+ reset control
+Date: Wed, 19 Jul 2017 17:26:02 +0200
+Message-ID: <20170719152646.25903-59-p.zabel@pengutronix.de>
 References: <20170719152646.25903-1-p.zabel@pengutronix.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170719152646.25903-1-p.zabel@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, linux-rockchip@lists.infradead.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170719152646.25903-1-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
@@ -18,31 +30,26 @@ explicit API call so the temporary transition helpers can be removed.
 
 No functional changes.
 
-Cc: Jonathan Cameron <jic23@kernel.org>
-Cc: Hartmut Knaack <knaack.h@gmx.de>
-Cc: Lars-Peter Clausen <lars@metafoo.de>
-Cc: Peter Meerwald-Stadler <pmeerw@pmeerw.net>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-iio@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 ---
- drivers/iio/adc/rockchip_saradc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-pcie.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index ae6d3324f5183..1d9300ba07c00 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -235,7 +235,8 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	 * The reset should be an optional property, as it should work
- 	 * with old devicetrees as well
- 	 */
--	info->reset = devm_reset_control_get(&pdev->dev, "saradc-apb");
-+	info->reset = devm_reset_control_get_exclusive(&pdev->dev,
-+						       "saradc-apb");
- 	if (IS_ERR(info->reset)) {
- 		ret = PTR_ERR(info->reset);
- 		if (ret != -ENOENT)
+diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+index 6904633cad687..258220b7f481c 100644
+--- a/drivers/phy/rockchip/phy-rockchip-pcie.c
++++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+@@ -305,7 +305,7 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+ 	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
+ 	rk_phy->reg_base = grf;
+ 
+-	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
++	rk_phy->phy_rst = devm_reset_control_get_exclusive(dev, "phy");
+ 	if (IS_ERR(rk_phy->phy_rst)) {
+ 		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
+ 			dev_err(dev,
 -- 
 2.11.0
