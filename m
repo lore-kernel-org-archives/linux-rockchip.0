@@ -1,42 +1,70 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v4 6/7] dt-bindings: display: fill Documents for series of vop
-Date: Wed, 19 Jul 2017 10:52:49 +0800
-Message-ID: <1500432770-13267-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH v4 7/7] drm/rockchip: vop: rk3328: fix overlay abnormal
+Date: Wed, 19 Jul 2017 10:52:55 +0800
+Message-ID: <1500432776-13322-1-git-send-email-mark.yao@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Q2hhbmdlcyBpbiB2MjoKLSByZW5hbWUgcmszMjJ4IHRvIHJrMzIyOChIZWlrbyBTdMO8Ym5lcikK
-ClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hp
-cC12b3AudHh0IHwgNCArKysrCiAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCgpkaWZm
-IC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2No
-aXAvcm9ja2NoaXAtdm9wLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9k
-aXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZvcC50eHQKaW5kZXggOWViM2YwYS4uNWQ4MzVkOSAx
-MDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9j
-a2NoaXAvcm9ja2NoaXAtdm9wLnR4dAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3AudHh0CkBAIC04LDggKzgsMTIgQEAg
-UmVxdWlyZWQgcHJvcGVydGllczoKIC0gY29tcGF0aWJsZTogdmFsdWUgc2hvdWxkIGJlIG9uZSBv
-ZiB0aGUgZm9sbG93aW5nCiAJCSJyb2NrY2hpcCxyazMwMzYtdm9wIjsKIAkJInJvY2tjaGlwLHJr
-MzI4OC12b3AiOworCQkicm9ja2NoaXAscmszMzY4LXZvcCI7CisJCSJyb2NrY2hpcCxyazMzNjYt
-dm9wIjsKIAkJInJvY2tjaGlwLHJrMzM5OS12b3AtYmlnIjsKIAkJInJvY2tjaGlwLHJrMzM5OS12
-b3AtbGl0IjsKKwkJInJvY2tjaGlwLHJrMzIyOC12b3AiOworCQkicm9ja2NoaXAscmszMzI4LXZv
-cCI7CiAKIC0gaW50ZXJydXB0czogc2hvdWxkIGNvbnRhaW4gYSBsaXN0IG9mIGFsbCBWT1AgSVAg
-YmxvY2sgaW50ZXJydXB0cyBpbiB0aGUKIAkJIG9yZGVyOiBWU1lOQywgTENEX1NZU1RFTS4gVGhl
-IGludGVycnVwdCBzcGVjaWZpZXIKLS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+It's a hardware bug, all window's overlay channel reset
+value is same, hardware overlay would be die.
+
+so we must initial difference id for each overlay channel.
+
+The Channel register is supported on all vop will full design.
+Following is the details for this register
+VOP_WIN0_CTRL2
+  bit[7:4] win_rid_win0_cbr
+       axi read id of win0 cbr channel
+  bit[3:0] win_rid_win0_yrgb
+       axi read id of win0 yrgb channel
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 1 +
+ 3 files changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 92d098b..e4b3388 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1452,7 +1452,9 @@ static int vop_initial(struct vop *vop)
+ 
+ 	for (i = 0; i < vop_data->win_size; i++) {
+ 		const struct vop_win_data *win = &vop_data->win[i];
++		int channel = i * 2 + 1;
+ 
++		VOP_WIN_SET(vop, win, channel, (channel + 1) << 4 | channel);
+ 		VOP_WIN_SET(vop, win, enable, 0);
+ 		VOP_WIN_SET(vop, win, gate, 1);
+ 	}
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 43d08c8..af1091f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -141,6 +141,7 @@ struct vop_win_phy {
+ 
+ 	struct vop_reg dst_alpha_ctl;
+ 	struct vop_reg src_alpha_ctl;
++	struct vop_reg channel;
+ };
+ 
+ struct vop_win_data {
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 99f8ba4..cc8d408 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -196,6 +196,7 @@
+ 	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
+ 	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
+ 	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
++	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
+ };
+ 
+ static const struct vop_win_phy rk3288_win23_data = {
+-- 
+1.9.1
