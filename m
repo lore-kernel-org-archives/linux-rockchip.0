@@ -1,99 +1,296 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: support mail and IPA thermal
- for rk3399
-Date: Wed, 19 Jul 2017 17:06:59 +0800
-Message-ID: <65759378-509b-3287-fd78-02361e89429b@rock-chips.com>
-References: <1500279271-15249-1-git-send-email-wxt@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [RFC PATCH v4 3/7] phy: rockcip-pcie: reconstruct driver to
+ support per-lane PHYs
+Date: Wed, 19 Jul 2017 17:36:25 +0800
+Message-ID: <5497c3e0-a74e-f4ae-dd02-ba321182a9ec@rock-chips.com>
+References: <1500448979-93067-1-git-send-email-shawn.lin@rock-chips.com>
+ <1500448979-93067-4-git-send-email-shawn.lin@rock-chips.com>
+ <81b03327-e720-ed51-87d1-9ac0c7a9dc0a@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1500279271-15249-1-git-send-email-wxt@rock-chips.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, rocky.hao@rock-chips.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-arm-kernel@lists.infradead.org, Roger Chen <roger.chen@rock-chips.com>, William wu <wulf@rock-chips.com>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <81b03327-e720-ed51-87d1-9ac0c7a9dc0a@ti.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: shawn.lin@rock-chips.com, Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iICYgSGVpa28sCgpEbyB3ZSBoYXZlIHRoZSBjaGFuY2UgdG8gbWVyZ2UgdGhlc2UgcGF0
-Y2hlcz8KCkknbSB0cnkgdG8gYnJpbmcgdXAgdGhlIGRpc3BsYXkgYW5kIHJ1biB3ZWJnbCBmb3Ig
-dGVzdGluZyB3aXRoIG15IGdpdGh1YiBvbgpodHRwczovL2dpdGh1Yi5jb20vQ2Flc2FyLWdpdGh1
-Yi9yb2NrY2hpcC9jb21taXRzL2dydS9uZXh0LXN0YWJsZS1jaHJvbWVvcwoKSSBiZWxpZXZlIHRo
-ZSBSb2NreUBSSyB3aWxsIHBvc3QgcGF0Y2hlcyB0byBzdXBwb3J0IHRoZSBvdGhlciBTb0NzIGFm
-dGVyLgoKLUNhZXNhcgoK5ZyoIDIwMTflubQwN+aciDE35pelIDE2OjE0LCBDYWVzYXIgV2FuZyDl
-hpnpgZM6Cj4gVGhpcyBzZXJpZXMgcGF0Y2hlcyBzdXBwb3J0ZWQgdGhlIG1haWwgaW4gZGV2aWNl
-dHJlZSBhbmQgdXNlZCB0aGUKPiB0aGVybWFsIElQQSBieSBkZWZhdWx0Lgo+Cj4gVmVyaWZpZWQg
-d2l0aCBrZXJuZWwgaXMgYmFzZWQgb24gTGludXMncyBtYXN0ZXIgYnJhbmNoIGFuZCBIZWlrbydz
-Cj4gdjQuMTQtYXJtc29jLXRtcC9kdHM2NCBicmFuY2guICggVGhlIExpbnV4IHZlcnNpb24gNC4x
-Mi4wIGZvciBub3cpLgo+Cj4gVGhlIG1vc3Qgcm9ja2NoaXAgU29DcyB3aWxsIGJlIHN1cHBvcnRl
-ZCB3aXRoIElQQSBtb2RlIGZvciB0aGVybWFsCj4gaW4gbGF0ZXIuCj4KPiAtLS0KPgo+IEhpc3Rv
-cnkgdmVyc2lvbjoKPiAxLiBUaGUgZmlyc3QgdmVyc2lvbiBmb3VuZCBvbgo+IGh0dHBzOi8vd3d3
-LnNwaW5pY3MubmV0L2xpc3RzL2FybS1rZXJuZWwvbXNnNTkzMTE4Lmh0bWwKPgo+IFRlc3RlZCBv
-biBLZXZpbiBib2FyZCB3aXRoIGJyaW5naW5nIHVwIENocm9tZU9TLgo+IE9TIFZFUlNJT046Cj4g
-ICAgICBDSFJPTUVPU19SRUxFQVNFX0RFU0NSSVBUSU9OPTk2OTMuMS4wIChPZmZpY2lhbCBCdWls
-ZCkgZGV2LWNoYW5uZWwga2V2aW4gdGVzdAo+Cj4gQklPUyBWRVJTSU9OOgo+ICAgICAgR29vZ2xl
-X0tldmluLjg3ODUuMjExLjIwMTdfMDZfMjBfMTA0Mwo+Cj4gRUMgVkVSU0lPTjoKPiAgICAgIEJ1
-aWxkIGluZm86ICAgIGtldmluX3YxLjEwLjIxNy0yNDUxNDk2MWQgMjAxNy0wNy0wMyAwNzo0Njoz
-NiB3eHRAbmIKPgo+IFdpdGggdGhlIEFSTSdzIGxhc3Rlc3QgbWFsaSBkcml2ZXIgVFgwMTEtU1ct
-OTkwMDItcjE4cDAtMDFyZWwwIG9uCj4gaHR0cHM6Ly9kZXZlbG9wZXIuYXJtLmNvbS9wcm9kdWN0
-cy9zb2Z0d2FyZS9tYWxpLWRyaXZlcnMvbWlkZ2FyZC1rZXJuZWwKPgo+ICBGcm9tIHRoZSBib290
-dXAgbG9nOgo+ICAgICAgbG9jYWxob3N0IGRldmZyZXEwICMgZG1lc2cgfGdyZXAgbWFsaQo+ICAg
-ICAgWyAgICAwLjkzMzMzNF0gbWFsaSBmZjlhMDAwMC5ncHU6IEdQVSBpZGVudGlmaWVkIGFzIDB4
-MDg2MCByMnAwIHN0YXR1cyAwCj4gICAgICBbICAgIDAuOTQwODMwXSBtYWxpIGZmOWEwMDAwLmdw
-dTogUHJvdGVjdGVkIG1vZGUgbm90IGF2YWlsYWJsZQo+ICAgICAgWyAgICAwLjk0NzMzNF0gbWFs
-aSBmZjlhMDAwMC5ncHU6IFVzaW5nIGNvbmZpZ3VyZWQgcG93ZXIgbW9kZWwgbWFsaS1zaW1wbGUt
-cG93ZXItbW9kZWwsIGFuZCBmYWxsYmFjayBtYWxpLXNpbXBsZS1wb3dlci1tb2RlbAo+ICAgICAg
-WyAgICAwLjk2MDA4M10gbWFsaSBmZjlhMDAwMC5ncHU6IFByb2JlZCBhcyBtYWxpMAo+Cj4gICAg
-ICBsb2NhbGhvc3QgZGV2ZnJlcTAgIyBwd2QKPiAgICAgIC9zeXMvZGV2aWNlcy9wbGF0Zm9ybS9m
-ZjlhMDAwMC5ncHUvZGV2ZnJlcS9kZXZmcmVxMAo+ICAgICAgbG9jYWxob3N0IGRldmZyZXEwICMg
-bHMKPiAgICAgIGF2YWlsYWJsZV9mcmVxdWVuY2llcyAgZGV2aWNlICAgIG1pbl9mcmVxICAgICAg
-ICAgIHN1YnN5c3RlbSAgICB1ZXZlbnQKPiAgICAgIGF2YWlsYWJsZV9nb3Zlcm5vcnMgICAgZ292
-ZXJub3IgIHBvbGxpbmdfaW50ZXJ2YWwgIHRhcmdldF9mcmVxICB1c2Vyc3BhY2UKPiAgICAgIGN1
-cl9mcmVxICAgICAgICAgICAgICAgbWF4X2ZyZXEgIHBvd2VyICAgICAgICAgICAgIHRyYW5zX3N0
-YXQKPgo+ICAgICAgbG9jYWxob3N0IGZmOWEwMDAwLmdwdSAjIGxzCj4gICAgICBjb3JlX2F2YWls
-YWJpbGl0eV9wb2xpY3kgIGdwdWluZm8gICAgICAgICAgICAgICBtb2RhbGlhcyAgICAgICBzb2Z0
-X2pvYl90aW1lb3V0Cj4gICAgICBjb3JlX21hc2sgICAgICAgICAgICAgICAgIGpzX3NjaGVkdWxp
-bmdfcGVyaW9kICBvZl9ub2RlICAgICAgICBzdWJzeXN0ZW0KPiAgICAgIGRldmZyZXEgICAgICAg
-ICAgICAgICAgICAganNfdGltZW91dHMgICAgICAgICAgIHBtX3Bvd2Vyb2ZmICAgIHVldmVudAo+
-ICAgICAgZHJpdmVyICAgICAgICAgICAgICAgICAgICBtZW1fcG9vbF9tYXhfc2l6ZSAgICAgcG93
-ZXIKPiAgICAgIGRyaXZlcl9vdmVycmlkZSAgICAgICAgICAgbWVtX3Bvb2xfc2l6ZSAgICAgICAg
-IHBvd2VyX3BvbGljeQo+ICAgICAgZHZmc19wZXJpb2QgICAgICAgICAgICAgICBtaXNjICAgICAg
-ICAgICAgICAgICAgcmVzZXRfdGltZW91dAo+IC0tLQo+Cj4gQW5kIGZvciB0aGVybWFsIHdpdGgg
-SVBBLgo+IFRyeSB0byBydW4gJ21kNXN1bSAvZGV2L3plcm8gJicgYW5kIG9jdGFuZS9iZW5jaG1h
-cmsgc2NyaXB0cyB0byBnbyB1cCB0aGUgdGVtcGVyYXR1cmUuCj4gIEZyb20gdGhlIHNjcmlwdHMg
-dG8gaGF2ZSBhIGxvb2sgYXQgdGhlIGFjdHVhbCBjb250cm9sLgo+ICIKPiB3aGlsZSB0cnVlOyBk
-byBncmVwICIiIC9zeXMvY2xhc3MvdGhlcm1hbC90aGVybWFsX3pvbmVbMC0xXS90ZW1wIC9zeXMv
-ZGV2aWNlcy9zeXN0ZW0vY3B1L2NwdVswLTVdL2NwdWZyZXEvc2NhbGluZ19jdXJfZnJlcSAvc3lz
-L2RldmljZXMvcGxhdGZvcm0vZmY5YTAwMDAuZ3B1L2RldmZyZXEvZGV2ZnJlcTAvY3VyX2ZyZXE7
-ZGF0ZTtzbGVlcCAuNTsgZG9uZSAmCj4gIgo+Cj4gLUNhZXNhcgo+Cj4KPiBDaGFuZ2VzIGluIHYy
-Ogo+IEFzIEhlaWtvIGNvbW1lbnRzIG9uIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
-Y2gvOTgzNTkzOS8KPiAtIGludGVycnVwdC1uYW1lIHVzZSB0aGUgbG93ZXIgY2FzZS4KPiAtIHVz
-ZSB0aGUgY29ycmVjdCBjb21wYXRpYmxlICJhcm0sbWFsaS10ODYwIgo+IC0gcmVtb3ZlIHRoZSBj
-bG9jayBuYW1lLCBzaW5jZSB0aGUgbWFsaSBvbmx5IGhhdmUgb25lIGlucHV0IGNsb2NrLgo+IC0g
-Zm9vQCB3aWxsIHByb2R1Y2Ugd2FybmluZ3Mgd2hlbiB1c2VkIHdpdGhvdXQgcmVnIHByb3BlcnR5
-Lgo+IC0gdXBkYXRlIHRoZSBjb21taXQgdG8gZXhwbGFpbiB0aGUgdHdvIHBhc3NpdmUgdHJpcCBw
-b2ludHMgY2hhbmdlZC4KPgo+IENhZXNhciBXYW5nICg1KToKPiAgICBkdC1iaW5kaW5nczogZ3B1
-OiBhZGQgdGhlIFJLMzM5OSBtYWxpIGZvciByb2NrY2hpcCBzcGVjaWZpY3MKPiAgICBkdC1iaW5k
-aW5nczogZ3B1OiBhZGQgYSBwb3dlcl9tb2RlbCBvcHRpb25hbCBwcm9wZXJ0aWVzIGZvciBNQUxJ
-Cj4gICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCBBUk0gTWFsaSBHUFUgbm9kZSBmb3IgUksz
-Mzk5IFNvQ3MKPiAgICBhcm02NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIHRoZSBHUFUgZm9yIFJL
-MzM5OS1HUlUKPiAgICBhcm02NDogZHRzOiByb2NrY2hpcDogdXBkYXRlIHRoZSB0aGVybWFsIHpv
-bmVzIGZvciBSSzMzOTkgU29Dcwo+Cj4gICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9ncHUvYXJt
-LG1hbGktbWlkZ2FyZC50eHQgICB8IDEzICsrKysKPiAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LWdydS5kdHNpICAgICAgIHwgIDUgKysKPiAgIGFyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAvcmszMzk5LW9wMS1vcHAuZHRzaSAgIHwgMzMgKysrKysrKysrKwo+ICAgYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktb3BwLmR0c2kgICAgICAgfCAzMyArKysr
-KysrKysrCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpICAgICAg
-ICAgICB8IDc0ICsrKysrKysrKysrKy0tLS0tLS0tLS0KPiAgIDUgZmlsZXMgY2hhbmdlZCwgMTI1
-IGluc2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQo+CgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Kishon,
+
+On 2017/7/19 16:08, Kishon Vijay Abraham I wrote:
+> Hi Shawn,
+> 
+> On Wednesday 19 July 2017 12:52 PM, Shawn Lin wrote:
+>> This patch reconstructs the whole driver to support per-lane
+>> PHYs. Note that we could also support the legacy PHY if you
+>> don't provide argument to our of_xlate.
+> 
+> one comment below which I failed to notice before..
+
+I will fix it and respin v5.
+
+BTW, are you fine with all these patches merged via Bjorn's
+PCI tree in order to narrow down the timing gap for testing
+linux-next? If yes, could you kindly ack patch 3 of V5
+if it looks good to you? :)
+
+Thanks.
+
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> Reviewed-by: Brian Norris <briannorris@chromium.org>
+>> Tested-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> ---
+>>
+>> Changes in v4: None
+>> Changes in v3:
+>> - remove unnecessary forward declaration
+>> - keep mutex inside struct rockchip_pcie_phy
+>> - fix wrong check of args number
+>> - move de-idle lanes after deasserting the reset
+>>
+>> Changes in v2:
+>> - deprecate legacy PHY model
+>> - improve rockchip_pcie_phy_of_xlate
+>> - fix wrong calculation of pwr_cnt and add new init_cnt
+>> - add internal locking
+>> - introduce per-lane data to simply the code
+>>
+>>   drivers/phy/rockchip/phy-rockchip-pcie.c | 124 +++++++++++++++++++++++++++----
+>>   1 file changed, 110 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+>> index 6904633..b5005a5 100644
+>> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
+>> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+>> @@ -73,10 +73,39 @@ struct rockchip_pcie_data {
+>>   struct rockchip_pcie_phy {
+>>   	struct rockchip_pcie_data *phy_data;
+>>   	struct regmap *reg_base;
+>> +	struct phy_pcie_instance {
+>> +		struct phy *phy;
+>> +		u32 index;
+>> +	} phys[PHY_MAX_LANE_NUM];
+>> +	struct mutex pcie_mutex;
+>>   	struct reset_control *phy_rst;
+>>   	struct clk *clk_pciephy_ref;
+>> +	int pwr_cnt;
+>> +	int init_cnt;
+>>   };
+>>   
+>> +static inline
+>> +struct rockchip_pcie_phy *to_pcie_phy(struct phy_pcie_instance *inst)
+>> +{
+>> +	return container_of(inst, struct rockchip_pcie_phy,
+>> +					phys[inst->index]);
+>> +}
+>> +
+>> +static struct phy *rockchip_pcie_phy_of_xlate(struct device *dev,
+>> +					      struct of_phandle_args *args)
+>> +{
+>> +	struct rockchip_pcie_phy *rk_phy = dev_get_drvdata(dev);
+>> +
+>> +	if (args->args_count == 0)
+>> +		return rk_phy->phys[0].phy;
+>> +
+>> +	if (WARN_ON(args->args[0] >= PHY_MAX_LANE_NUM))
+>> +		return ERR_PTR(-ENODEV);
+>> +
+>> +	return rk_phy->phys[args->args[0]].phy;
+>> +}
+>> +
+>> +
+>>   static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
+>>   			      u32 addr, u32 data)
+>>   {
+>> @@ -116,29 +145,59 @@ static inline u32 phy_rd_cfg(struct rockchip_pcie_phy *rk_phy,
+>>   
+>>   static int rockchip_pcie_phy_power_off(struct phy *phy)
+>>   {
+>> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+>> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>>   	int err = 0;
+>>   
+>> +	mutex_lock(&rk_phy->pcie_mutex);
+>> +
+>> +	regmap_write(rk_phy->reg_base,
+>> +		     rk_phy->phy_data->pcie_laneoff,
+>> +		     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
+>> +				   PHY_LANE_IDLE_MASK,
+>> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+>> +
+>> +	if (--rk_phy->pwr_cnt)
+>> +		goto err_out;
+>> +
+>>   	err = reset_control_assert(rk_phy->phy_rst);
+>>   	if (err) {
+>>   		dev_err(&phy->dev, "assert phy_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_restore;
+>>   	}
+>>   
+>> +err_out:
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>>   	return 0;
+>> +
+>> +err_restore:
+>> +	++rk_phy->pwr_cnt;
+>> +	regmap_write(rk_phy->reg_base,
+>> +		     rk_phy->phy_data->pcie_laneoff,
+>> +		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+>> +				   PHY_LANE_IDLE_MASK,
+>> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>> +	return err;
+>>   }
+>>   
+>>   static int rockchip_pcie_phy_power_on(struct phy *phy)
+>>   {
+>> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+>> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>>   	int err = 0;
+>>   	u32 status;
+>>   	unsigned long timeout;
+>>   
+>> +	mutex_lock(&rk_phy->pcie_mutex);
+>> +
+>> +	if (rk_phy->pwr_cnt++)
+>> +		goto err_out;
+>> +
+>>   	err = reset_control_deassert(rk_phy->phy_rst);
+>>   	if (err) {
+>>   		dev_err(&phy->dev, "deassert phy_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_pwr_cnt;
+>>   	}
+>>   
+>>   	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
+>> @@ -146,6 +205,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
+>>   				   PHY_CFG_ADDR_MASK,
+>>   				   PHY_CFG_ADDR_SHIFT));
+>>   
+>> +	regmap_write(rk_phy->reg_base,
+>> +		     rk_phy->phy_data->pcie_laneoff,
+>> +		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+>> +				   PHY_LANE_IDLE_MASK,
+>> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+>> +
+>>   	/*
+>>   	 * No documented timeout value for phy operation below,
+>>   	 * so we make it large enough here. And we use loop-break
+>> @@ -214,18 +279,29 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
+>>   		goto err_pll_lock;
+>>   	}
+>>   
+>> +err_out:
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>>   	return 0;
+>>   
+>>   err_pll_lock:
+>>   	reset_control_assert(rk_phy->phy_rst);
+>> +err_pwr_cnt:
+>> +	--rk_phy->pwr_cnt;
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>>   	return err;
+>>   }
+>>   
+>>   static int rockchip_pcie_phy_init(struct phy *phy)
+>>   {
+>> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+>> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>>   	int err = 0;
+>>   
+>> +	mutex_lock(&rk_phy->pcie_mutex);
+>> +
+>> +	if (rk_phy->init_cnt++)
+>> +		goto err_out;
+>> +
+>>   	err = clk_prepare_enable(rk_phy->clk_pciephy_ref);
+>>   	if (err) {
+>>   		dev_err(&phy->dev, "Fail to enable pcie ref clock.\n");
+>> @@ -238,20 +314,33 @@ static int rockchip_pcie_phy_init(struct phy *phy)
+>>   		goto err_reset;
+>>   	}
+>>   
+>> -	return err;
+>> +err_out:
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>> +	return 0;
+>>   
+>>   err_reset:
+>> +
+>>   	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
+>>   err_refclk:
+>> +	--rk_phy->init_cnt;
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>>   	return err;
+>>   }
+>>   
+>>   static int rockchip_pcie_phy_exit(struct phy *phy)
+>>   {
+>> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+>> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+>> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>> +
+>> +	mutex_lock(&rk_phy->pcie_mutex);
+>> +
+>> +	if (--rk_phy->init_cnt)
+>> +		goto err_init_cnt;
+>>   
+>>   	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
+>>   
+>> +err_init_cnt:
+>> +	mutex_unlock(&rk_phy->pcie_mutex);
+>>   	return 0;
+>>   }
+>>   
+>> @@ -283,10 +372,10 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>>   {
+>>   	struct device *dev = &pdev->dev;
+>>   	struct rockchip_pcie_phy *rk_phy;
+>> -	struct phy *generic_phy;
+>>   	struct phy_provider *phy_provider;
+>>   	struct regmap *grf;
+>>   	const struct of_device_id *of_id;
+>> +	int i;
+>>   
+>>   	grf = syscon_node_to_regmap(dev->parent->of_node);
+>>   	if (IS_ERR(grf)) {
+>> @@ -305,6 +394,8 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>>   	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
+>>   	rk_phy->reg_base = grf;
+>>   
+>> +	mutex_init(&rk_phy->pcie_mutex);
+>> +
+>>   	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
+>>   	if (IS_ERR(rk_phy->phy_rst)) {
+>>   		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
+>> @@ -319,14 +410,19 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>>   		return PTR_ERR(rk_phy->clk_pciephy_ref);
+>>   	}
+>>   
+>> -	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
+>> -	if (IS_ERR(generic_phy)) {
+>> -		dev_err(dev, "failed to create PHY\n");
+>> -		return PTR_ERR(generic_phy);
+>> +	for (i = 0; i < PHY_MAX_LANE_NUM; i++) {
+>> +		rk_phy->phys[i].phy = devm_phy_create(dev, dev->of_node, &ops);
+>> +		if (IS_ERR(rk_phy->phys[i].phy)) {
+>> +			dev_err(dev, "failed to create PHY%d\n", i);
+>> +			return PTR_ERR(rk_phy->phys[i].phy);
+>> +		}
+>> +		rk_phy->phys[i].index = i;
+> 
+> 
+> For legacy dt, it would create more number of phys than required right? it
+> would be nice to fix that.
+> 
+> Thanks
+> Kishon
+> 
+> 
+> 
