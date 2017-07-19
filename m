@@ -1,47 +1,46 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] ARM: Convert to using %pOF instead of full_name
-Date: Wed, 19 Jul 2017 10:35:20 -0500
-Message-ID: <CAL_JsqK1Y3xhZwNxme934UF_t=6ZdSyqBtrMmceUC798ftL+mQ@mail.gmail.com>
-References: <20170718214339.7774-1-robh@kernel.org> <20170719062220.wefnkqhd7javbcee@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170719062220.wefnkqhd7javbcee@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: "arm@kernel.org" <arm@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Magnus Damm <magnus.damm@gmail.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Jason Cooper <jason@lakedaemon.net>, Simon Horman <horms@verge.net.au>, Gregory Clement <gregory.clement@free-electrons.com>, linux-omap <linux-omap@vger.kernel.org>, Sasc
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH 082/102] thermal: rockchip: explicitly request exclusive reset control
+Date: Wed, 19 Jul 2017 17:26:26 +0200
+Message-ID: <20170719152646.25903-83-p.zabel@pengutronix.de>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20170719152646.25903-1-p.zabel@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 19, 2017 at 1:22 AM, Uwe Kleine-König
-<u.kleine-koenig@pengutronix.de> wrote:
-> On Tue, Jul 18, 2017 at 04:42:41PM -0500, Rob Herring wrote:
->> Now that we have a custom printf format specifier, convert users of
->> full_name to use %pOF instead. This is preparation to remove storing
->
-> Oh nice. If the commit adding %pOF is already set in stone, i'd suggest
-> to mention the commit id here in the commit log.
+Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+reset lines") started to transition the reset control request API calls
+to explicitly state whether the driver needs exclusive or shared reset
+control behavior. Convert all drivers requesting exclusive resets to the
+explicit API call so the temporary transition helpers can be removed.
 
-It is in 4.13, but I'm not really eager to update all 60 patches and
-I'd prefer consistency in the commit msg as quite a few have already
-been applied.
+No functional changes.
 
->> of the full path string for each node.
+Cc: Zhang Rui <rui.zhang@intel.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+---
+ drivers/thermal/rockchip_thermal.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-[...]
-
->> @@ -103,8 +103,8 @@ void __init arm_dt_init_cpu_maps(void)
->>                */
->>               cell = of_get_property(cpu, "reg", &prop_bytes);
->>               if (!cell || prop_bytes < sizeof(*cell)) {
->> -                     pr_debug(" * %s missing reg property\n",
->> -                                  cpu->full_name);
->> +                     pr_debug(" * %pOF missing reg property\n",
->> +                                  cpu);
->
-> You could join lines here and in the next hunk. And there are two more
-> further down.
-
-Okay. I did that generally, but missed a few.
-
-Rob
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 4c77965124535..7ca53a4368124 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1088,7 +1088,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	if (IS_ERR(thermal->regs))
+ 		return PTR_ERR(thermal->regs);
+ 
+-	thermal->reset = devm_reset_control_get(&pdev->dev, "tsadc-apb");
++	thermal->reset = devm_reset_control_get_exclusive(&pdev->dev,
++							  "tsadc-apb");
+ 	if (IS_ERR(thermal->reset)) {
+ 		error = PTR_ERR(thermal->reset);
+ 		dev_err(&pdev->dev, "failed to get tsadc reset: %d\n", error);
+-- 
+2.11.0
