@@ -1,47 +1,40 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RFC PATCH v4 3/7] phy: rockcip-pcie: reconstruct driver to
- support per-lane PHYs
-Date: Wed, 19 Jul 2017 15:54:29 +0800
-Message-ID: <3e4f8aeb-d4ea-5a80-54a9-43cc6b3488c2@rock-chips.com>
-References: <1500448979-93067-1-git-send-email-shawn.lin@rock-chips.com>
- <1500448979-93067-4-git-send-email-shawn.lin@rock-chips.com>
- <e1afec0e-ba1b-4721-4ddb-c6ef3b85e65f@ti.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] ARM: Convert to using %pOF instead of full_name
+Date: Wed, 19 Jul 2017 10:02:20 +0200
+Message-ID: <3802101.Kq7DfALjfy@phil>
+References: <20170718214339.7774-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <e1afec0e-ba1b-4721-4ddb-c6ef3b85e65f@ti.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: shawn.lin@rock-chips.com, Rob Herring <robh@kernel.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <20170718214339.7774-1-robh@kernel.org>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: arm@kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@free-electrons.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Tony Lindgren <tony@atomide.com>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Paul Walmsley <paul@pwsan.com>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
+Am Dienstag, 18. Juli 2017, 16:42:41 CEST schrieb Rob Herring:
+> Now that we have a custom printf format specifier, convert users of
+> full_name to use %pOF instead. This is preparation to remove storing
+> of the full path string for each node.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-On 2017/7/19 15:50, Kishon Vijay Abraham I wrote:
-> 
-> 
-> On Wednesday 19 July 2017 12:52 PM, Shawn Lin wrote:
->> This patch reconstructs the whole driver to support per-lane
->> PHYs. Note that we could also support the legacy PHY if you
->> don't provide argument to our of_xlate.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> Reviewed-by: Brian Norris <briannorris@chromium.org>
->> Tested-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> 
-> This design looks good! I'll queue this once I start queuing 4.14.
-> 
+for the Rockchip part
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-Great!  Thanks. :)
-
-> Thanks
-> Kishon
+> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+> index 3abafdbdd7f4..2b5b0e43d657 100644
+> --- a/arch/arm/mach-rockchip/platsmp.c
+> +++ b/arch/arm/mach-rockchip/platsmp.c
+> @@ -182,8 +182,8 @@ static int __init rockchip_smp_prepare_sram(struct device_node *node)
 > 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-> 
+>  	ret = of_address_to_resource(node, 0, &res);
+>  	if (ret < 0) {
+> -		pr_err("%s: could not get address for node %s\n",
+> -		       __func__, node->full_name);
+> +		pr_err("%s: could not get address for node %pOF\n",
+> +		       __func__, node);
+>  		return ret;
+>  	}
 > 
