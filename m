@@ -1,303 +1,253 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v5 3/7] phy: rockcip-pcie: reconstruct driver to support
- per-lane PHYs
-Date: Wed, 19 Jul 2017 16:02:02 +0530
-Message-ID: <18f85d03-3ce2-513b-bf1e-319cc9c7d979@ti.com>
-References: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
- <1500458118-139042-4-git-send-email-shawn.lin@rock-chips.com>
+From: Jacob Chen <jacobchen110@gmail.com>
+Subject: Re: [PATCH v2 2/6] [media] rockchip/rga: v4l2 m2m support
+Date: Wed, 19 Jul 2017 18:40:23 +0800
+Message-ID: <CAFLEztR24XBFFtSitvKQ5iRA802nm1LHE2pJvUmZUbFd5F6-Tw@mail.gmail.com>
+References: <1500101920-24039-1-git-send-email-jacob-chen@iotwrt.com>
+ <2363665.x6z9MR1vqI@avalon> <1500137353.2353.1.camel@ndufresne.ca>
+ <11368407.z8bSoa2YAE@avalon> <1500302710.21957.1.camel@ndufresne.ca>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1500458118-139042-4-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1500302710.21957.1.camel@ndufresne.ca>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, s.nawrocki@samsung.com, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
+
+2017-07-17 22:45 GMT+08:00 Nicolas Dufresne <nicolas@ndufresne.ca>:
+> Le lundi 17 juillet 2017 =C3=A0 05:37 +0300, Laurent Pinchart a =C3=A9cri=
+t :
+>> Hi Nicolas,
+>>
+>> On Saturday 15 Jul 2017 12:49:13 Personnel wrote:
+>>
+>> You might want to fix your mailer to use your name :-)
+>>
+>> > Le samedi 15 juillet 2017 =C3=A0 12:42 +0300, Laurent Pinchart a =C3=
+=A9crit :
+>> > > On Saturday 15 Jul 2017 14:58:36 Jacob Chen wrote:
+>> > > > Rockchip RGA is a separate 2D raster graphic acceleration unit. It
+>> > > > accelerates 2D graphics operations, such as point/line drawing, im=
+age
+>> > > > scaling, rotation, BitBLT, alpha blending and image blur/sharpness=
+.
+>> > > >
+>> > > > The drvier is mostly based on s5p-g2d v4l2 m2m driver.
+>> > > > And supports various operations from the rendering pipeline.
+>> > > >
+>> > > >  - copy
+>> > > >  - fast solid color fill
+>> > > >  - rotation
+>> > > >  - flip
+>> > > >  - alpha blending
+>> > >
+>> > > I notice that you don't support the drawing operations. How do you p=
+lan to
+>> > > support them later through the V4L2 M2M API ? I hate stating the obv=
+ious,
+>> > > but wouldn't the DRM API be better fit for a graphic accelerator ?
+>> >
+>> > It could fit, maybe, but it really lacks some framework. Also, DRM is
+>> > not really meant for M2M operation, and it's also not great for multi-
+>> > process.
+>>
+>> GPUs on embedded devices are mem-to-mem, and they're definitely shared b=
+etween
+>> multiple processes :-)
+>>
+>> > Until recently, there was competing drivers for Exynos, both
+>> > implemented in V4L2 and DRM, for similar rational, all DRM ones are
+>> > being deprecated/removed.
+>> >
+>> > I think 2D blitters in V4L2 are fine, but they terribly lack something
+>> > to differentiate them from converters/scalers when looking up the HW
+>> > list. Could be as simple as a capability flag, if I can suggest. For
+>> > the reference, the 2D blitter on IMX6 has been used to implement a liv=
+e
+>> > video mixer in GStreamer.
+>> >
+>> > https://bugzilla.gnome.org/show_bug.cgi?id=3D772766
+>>
+>> If we decide that 2D blitters should be supported by V4L2 (and I'm open =
+to get
+>> convinced about that), we really need to define a proper API before merg=
+ing a
+>> bunch of drivers that will implement things in slightly different ways,
+>> otherwise the future will be very painful.
+>
+> Arguably, Jacob is not proposing anything new, as at least one other
+> driver has been merged.
+>
+>>
+>> Among the issues that need to be solved are
+>>
+>> - stateful vs. stateless operation (as mentioned by Jacob in this mail
+>> thread), a.k.a. the request API
+>
+> Would it be possible to extend your thought. To me, Request API could
+> enable more use cases but is not strictly required.
+>
+>>
+>> - exposing capabilities to userspace (a single capability flag would be =
+enough
+>> only if all blitters expose the same API, which I'm not sure we can assu=
+me)
+>
+> I am just rethinking this. With this patch series, Jacob is trying to
+> generalize the Blit Operation controls (still need a name, blend mode
+> does not work). We can easily make a recommendation to set the default
+> operation to a copy operation (drivers always support that). This way,
+> the node will behave like a converter (scaler, colorspace converter,
+> rotator and/or etc.) Checking the presence of that control, we can
+> clearly and quickly figure-out what this node is about. The capability
+> remains a nice idea, but probably optional.
+>
+> I totally agree we should document the behaviours and rationals for
+> picking a certain default. The control should maybe become a "menu"
+> too, so each driver can cherry-pick the blit operations they support
+> (using int with min/max requires userspace trial and error, we already
+> did that mistake for encoders profiles and level).
+>
+>>
+>> - single input (a.k.a. in-place blitters as you mentioned below) vs. mul=
+tiple
+>> inputs
+>
+> I do think the second is something you can build on top of the first by
+> cascading (what we do in the refereed GStreamer element). So far this
+> is applicable to Exynos, IMX6 and now Rockchip (probably more). The
+> "optimal" form for the second case seems like something that will be
+> implemented using much lower level kernel interface, like a GPU
+> programming interface (aka proprietary Adreno C2D API), or through
+> multiple nodes (multiple inputs and outputs). It's seems like the cut
+> between high-end and low-end.
+>
+>>
+>> - API for 2D-accelerated operations other than blitting (filling, point =
+and
+>> line drawing, ...)
+>
+> I doubt such hardware exist in a form that is not bound to the GPU. I'm
+> not ignoring your point, there is a clear overlap between how we
+> integrated GPUs and having this into V4L2.
+>
+
+I think stateless and multiple inputs are optional, we don't have to
+support it right now.
+(Though we really need a stateless m2m API, too many hardwares need it, not=
+ just
+2d blitters, but also internal dsp, image process units.... It would
+be really great
+ if people could convert their custom drivers to V4L2. )
 
 
-On Wednesday 19 July 2017 03:25 PM, Shawn Lin wrote:
-> This patch reconstructs the whole driver to support per-lane
-> PHYs. Note that we could also support the legacy PHY if you
-> don't provide argument to our of_xlate.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Tested-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Agree that we should have API for more 2D-accelerated operations and
+capabilities,
 
-Acked-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-> ---
-> 
-> Changes in v5:
-> - don't create more number of phys if it's legacy PHY model
-> 
-> Changes in v4: None
-> Changes in v3:
-> - remove unnecessary forward declaration
-> - keep mutex inside struct rockchip_pcie_phy
-> - fix wrong check of args number
-> - move de-idle lanes after deasserting the reset
-> 
-> Changes in v2:
-> - deprecate legacy PHY model
-> - improve rockchip_pcie_phy_of_xlate
-> - fix wrong calculation of pwr_cnt and add new init_cnt
-> - add internal locking
-> - introduce per-lane data to simply the code
-> 
->  drivers/phy/rockchip/phy-rockchip-pcie.c | 132 +++++++++++++++++++++++++++----
->  1 file changed, 118 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> index 6904633..550499e 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> @@ -73,10 +73,39 @@ struct rockchip_pcie_data {
->  struct rockchip_pcie_phy {
->  	struct rockchip_pcie_data *phy_data;
->  	struct regmap *reg_base;
-> +	struct phy_pcie_instance {
-> +		struct phy *phy;
-> +		u32 index;
-> +	} phys[PHY_MAX_LANE_NUM];
-> +	struct mutex pcie_mutex;
->  	struct reset_control *phy_rst;
->  	struct clk *clk_pciephy_ref;
-> +	int pwr_cnt;
-> +	int init_cnt;
->  };
->  
-> +static inline
-> +struct rockchip_pcie_phy *to_pcie_phy(struct phy_pcie_instance *inst)
-> +{
-> +	return container_of(inst, struct rockchip_pcie_phy,
-> +					phys[inst->index]);
-> +}
-> +
-> +static struct phy *rockchip_pcie_phy_of_xlate(struct device *dev,
-> +					      struct of_phandle_args *args)
-> +{
-> +	struct rockchip_pcie_phy *rk_phy = dev_get_drvdata(dev);
-> +
-> +	if (args->args_count == 0)
-> +		return rk_phy->phys[0].phy;
-> +
-> +	if (WARN_ON(args->args[0] >= PHY_MAX_LANE_NUM))
-> +		return ERR_PTR(-ENODEV);
-> +
-> +	return rk_phy->phys[args->args[0]].phy;
-> +}
-> +
-> +
->  static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
->  			      u32 addr, u32 data)
->  {
-> @@ -116,29 +145,59 @@ static inline u32 phy_rd_cfg(struct rockchip_pcie_phy *rk_phy,
->  
->  static int rockchip_pcie_phy_power_off(struct phy *phy)
->  {
-> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
-> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
->  	int err = 0;
->  
-> +	mutex_lock(&rk_phy->pcie_mutex);
-> +
-> +	regmap_write(rk_phy->reg_base,
-> +		     rk_phy->phy_data->pcie_laneoff,
-> +		     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
-> +				   PHY_LANE_IDLE_MASK,
-> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
-> +
-> +	if (--rk_phy->pwr_cnt)
-> +		goto err_out;
-> +
->  	err = reset_control_assert(rk_phy->phy_rst);
->  	if (err) {
->  		dev_err(&phy->dev, "assert phy_rst err %d\n", err);
-> -		return err;
-> +		goto err_restore;
->  	}
->  
-> +err_out:
-> +	mutex_unlock(&rk_phy->pcie_mutex);
->  	return 0;
-> +
-> +err_restore:
-> +	++rk_phy->pwr_cnt;
-> +	regmap_write(rk_phy->reg_base,
-> +		     rk_phy->phy_data->pcie_laneoff,
-> +		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
-> +				   PHY_LANE_IDLE_MASK,
-> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
-> +	mutex_unlock(&rk_phy->pcie_mutex);
-> +	return err;
->  }
->  
->  static int rockchip_pcie_phy_power_on(struct phy *phy)
->  {
-> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
-> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
->  	int err = 0;
->  	u32 status;
->  	unsigned long timeout;
->  
-> +	mutex_lock(&rk_phy->pcie_mutex);
-> +
-> +	if (rk_phy->pwr_cnt++)
-> +		goto err_out;
-> +
->  	err = reset_control_deassert(rk_phy->phy_rst);
->  	if (err) {
->  		dev_err(&phy->dev, "deassert phy_rst err %d\n", err);
-> -		return err;
-> +		goto err_pwr_cnt;
->  	}
->  
->  	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
-> @@ -146,6 +205,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
->  				   PHY_CFG_ADDR_MASK,
->  				   PHY_CFG_ADDR_SHIFT));
->  
-> +	regmap_write(rk_phy->reg_base,
-> +		     rk_phy->phy_data->pcie_laneoff,
-> +		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
-> +				   PHY_LANE_IDLE_MASK,
-> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
-> +
->  	/*
->  	 * No documented timeout value for phy operation below,
->  	 * so we make it large enough here. And we use loop-break
-> @@ -214,18 +279,29 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
->  		goto err_pll_lock;
->  	}
->  
-> +err_out:
-> +	mutex_unlock(&rk_phy->pcie_mutex);
->  	return 0;
->  
->  err_pll_lock:
->  	reset_control_assert(rk_phy->phy_rst);
-> +err_pwr_cnt:
-> +	--rk_phy->pwr_cnt;
-> +	mutex_unlock(&rk_phy->pcie_mutex);
->  	return err;
->  }
->  
->  static int rockchip_pcie_phy_init(struct phy *phy)
->  {
-> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
-> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
->  	int err = 0;
->  
-> +	mutex_lock(&rk_phy->pcie_mutex);
-> +
-> +	if (rk_phy->init_cnt++)
-> +		goto err_out;
-> +
->  	err = clk_prepare_enable(rk_phy->clk_pciephy_ref);
->  	if (err) {
->  		dev_err(&phy->dev, "Fail to enable pcie ref clock.\n");
-> @@ -238,20 +314,33 @@ static int rockchip_pcie_phy_init(struct phy *phy)
->  		goto err_reset;
->  	}
->  
-> -	return err;
-> +err_out:
-> +	mutex_unlock(&rk_phy->pcie_mutex);
-> +	return 0;
->  
->  err_reset:
-> +
->  	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
->  err_refclk:
-> +	--rk_phy->init_cnt;
-> +	mutex_unlock(&rk_phy->pcie_mutex);
->  	return err;
->  }
->  
->  static int rockchip_pcie_phy_exit(struct phy *phy)
->  {
-> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
-> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
-> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
-> +
-> +	mutex_lock(&rk_phy->pcie_mutex);
-> +
-> +	if (--rk_phy->init_cnt)
-> +		goto err_init_cnt;
->  
->  	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
->  
-> +err_init_cnt:
-> +	mutex_unlock(&rk_phy->pcie_mutex);
->  	return 0;
->  }
->  
-> @@ -283,10 +372,11 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct rockchip_pcie_phy *rk_phy;
-> -	struct phy *generic_phy;
->  	struct phy_provider *phy_provider;
->  	struct regmap *grf;
->  	const struct of_device_id *of_id;
-> +	int i;
-> +	u32 phy_num;
->  
->  	grf = syscon_node_to_regmap(dev->parent->of_node);
->  	if (IS_ERR(grf)) {
-> @@ -305,6 +395,8 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
->  	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
->  	rk_phy->reg_base = grf;
->  
-> +	mutex_init(&rk_phy->pcie_mutex);
-> +
->  	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
->  	if (IS_ERR(rk_phy->phy_rst)) {
->  		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
-> @@ -319,14 +411,26 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
->  		return PTR_ERR(rk_phy->clk_pciephy_ref);
->  	}
->  
-> -	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
-> -	if (IS_ERR(generic_phy)) {
-> -		dev_err(dev, "failed to create PHY\n");
-> -		return PTR_ERR(generic_phy);
-> +	/* parse #phy-cells to see if it's legacy PHY model */
-> +	if (of_property_read_u32(dev->of_node, "#phy-cells", &phy_num))
-> +		return -ENOENT;
-> +
-> +	phy_num = (phy_num == 0) ? 1 : PHY_MAX_LANE_NUM;
-> +	dev_dbg(dev, "phy number is %d\n", phy_num);
-> +
-> +	for (i = 0; i < phy_num; i++) {
-> +		rk_phy->phys[i].phy = devm_phy_create(dev, dev->of_node, &ops);
-> +		if (IS_ERR(rk_phy->phys[i].phy)) {
-> +			dev_err(dev, "failed to create PHY%d\n", i);
-> +			return PTR_ERR(rk_phy->phys[i].phy);
-> +		}
-> +		rk_phy->phys[i].index = i;
-> +		phy_set_drvdata(rk_phy->phys[i].phy, &rk_phy->phys[i]);
->  	}
->  
-> -	phy_set_drvdata(generic_phy, rk_phy);
-> -	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> +	platform_set_drvdata(pdev, rk_phy);
-> +	phy_provider = devm_of_phy_provider_register(dev,
-> +					rockchip_pcie_phy_of_xlate);
->  
->  	return PTR_ERR_OR_ZERO(phy_provider);
->  }
-> 
+What about this?
+
+#define V4L2_CID_2D_MODE
+enum v4l2_2d_mode {
+        V4L2_2D_MODE_COPY
+        V4L2_2D_MODE_FILLING
+        V4L2_2D_MODE_PORTERDUFF
+        /*
+        V4L2_2D_MODE_BITBLT
+        V4L2_2D_MODE_ALPHA_BLEND
+        other operations.....
+        */
+}
+
+
+/* for V4L2_2D_MODE_PORTERDUFF */
+#define V4L2_CID_2D_PORTERDUFF_MODE
+ATOP
+SRC
+.....
+
+
+/* for V4L2_2D_MODE_BITBLT */
+#define V4L2_2D_BITBLT_ROP
+XOR
+OR
+AND
+NOT
+....
+
+#define .......
+
+
+/* for V4L2_2D_MODE_ALPHA_BLEND */
+#define .......
+........
+
+/* for V4L2_2D_MODE_FILLING */
+V4L2_CID_BG_COLOR
+#define .......
+
+
+We use copy as the default mode for hardware that not support bitblt/alpha =
+blend
+e.g : some image process units, used for image enhancement/noise reduction
+(Though BITBLT+copy rop or V4L2_2D_MODE_PORTERDUFF+SRC+MODE =3D copy)
+
+
+V4L2_2D_MODE_PORTERDUFF are used to wrap bitblt/alpha-blend.
+If driver need a more customizable API, they could implent  V4L2_2D_MODE_BI=
+TBLT/
+V4L2_2D_MODE_ALPHA_BLEND, or they just need implent V4L2_2D_MODE_PORTERDUFF=
+.
+
+
+Driver return false in ioctl to show capabilities.
+
+
+>>
+>> > > Additionally, V4L2 M2M has one source and one destination. How do yo=
+u
+>> > > implement alpha blending in that case, which by definition requires =
+at
+>> > > least two sources ?
+>> >
+>> > This type of HW only do in-place blits. When using such a node, the
+>> > buffer queued on the V4L2_CAPTURE contains the destination image, and
+>> > the buffer queued on the V4L2_OUTPUT is the source image.
+>> >
+>> > > > The code in rga-hw.c is used to configure regs accroding to operat=
+ions.
+>> > > >
+>> > > > The code in rga-buf.c is used to create private mmu table for RGA.
+>> > > > The tables is stored in a list, and be removed when buffer is clea=
+nup.
+>> > >
+>> > > Looking at the implementation it seems to be a scatter-gather list, =
+not an
+>> > > MMU. Is that right ? Does the hardware documentation refer to it as =
+an MMU
+>> > > ?
+>> > >
+>> > > > Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+>> > > > ---
+>> > > >
+>> > > >  drivers/media/platform/Kconfig                |  11 +
+>> > > >  drivers/media/platform/Makefile               |   2 +
+>> > > >  drivers/media/platform/rockchip-rga/Makefile  |   3 +
+>> > > >  drivers/media/platform/rockchip-rga/rga-buf.c | 122 ++++
+>> > > >  drivers/media/platform/rockchip-rga/rga-hw.c  | 652 +++++++++++++=
++++++
+>> > > >  drivers/media/platform/rockchip-rga/rga-hw.h  | 437 ++++++++++++
+>> > > >  drivers/media/platform/rockchip-rga/rga.c     | 958 +++++++++++++=
+++++++
+>> > > >  drivers/media/platform/rockchip-rga/rga.h     | 111 +++
+>> > > >  8 files changed, 2296 insertions(+)
+>> > > >  create mode 100644 drivers/media/platform/rockchip-rga/Makefile
+>> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
+>> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
+>> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
+>> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga.c
+>> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga.h
+>>
+>>
