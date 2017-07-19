@@ -1,8 +1,8 @@
 From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 054/102] PCI: rockchip: explicitly request exclusive reset
- control
-Date: Wed, 19 Jul 2017 17:25:58 +0200
-Message-ID: <20170719152646.25903-55-p.zabel@pengutronix.de>
+Subject: [PATCH 059/102] phy: rockchip-typec: explicitly request exclusive
+ reset control
+Date: Wed, 19 Jul 2017 17:26:03 +0200
+Message-ID: <20170719152646.25903-60-p.zabel@pengutronix.de>
 References: <20170719152646.25903-1-p.zabel@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,7 +19,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
@@ -30,77 +30,40 @@ explicit API call so the temporary transition helpers can be removed.
 
 No functional changes.
 
-Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 ---
- drivers/pci/host/pcie-rockchip.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-typec.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 7bb9870f6d8ce..e50d6f5a81f4b 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -903,49 +903,50 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
- 		rockchip->link_gen = 2;
- 
--	rockchip->core_rst = devm_reset_control_get(dev, "core");
-+	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
- 	if (IS_ERR(rockchip->core_rst)) {
- 		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing core reset property in node\n");
- 		return PTR_ERR(rockchip->core_rst);
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index 7cfb0f8995de8..caf046e1348d1 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -888,19 +888,19 @@ static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
+ 		return PTR_ERR(tcphy->clk_ref);
  	}
  
--	rockchip->mgmt_rst = devm_reset_control_get(dev, "mgmt");
-+	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
- 	if (IS_ERR(rockchip->mgmt_rst)) {
- 		if (PTR_ERR(rockchip->mgmt_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing mgmt reset property in node\n");
- 		return PTR_ERR(rockchip->mgmt_rst);
+-	tcphy->uphy_rst = devm_reset_control_get(dev, "uphy");
++	tcphy->uphy_rst = devm_reset_control_get_exclusive(dev, "uphy");
+ 	if (IS_ERR(tcphy->uphy_rst)) {
+ 		dev_err(dev, "no uphy_rst reset control found\n");
+ 		return PTR_ERR(tcphy->uphy_rst);
  	}
  
--	rockchip->mgmt_sticky_rst = devm_reset_control_get(dev, "mgmt-sticky");
-+	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
-+								     "mgmt-sticky");
- 	if (IS_ERR(rockchip->mgmt_sticky_rst)) {
- 		if (PTR_ERR(rockchip->mgmt_sticky_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing mgmt-sticky reset property in node\n");
- 		return PTR_ERR(rockchip->mgmt_sticky_rst);
+-	tcphy->pipe_rst = devm_reset_control_get(dev, "uphy-pipe");
++	tcphy->pipe_rst = devm_reset_control_get_exclusive(dev, "uphy-pipe");
+ 	if (IS_ERR(tcphy->pipe_rst)) {
+ 		dev_err(dev, "no pipe_rst reset control found\n");
+ 		return PTR_ERR(tcphy->pipe_rst);
  	}
  
--	rockchip->pipe_rst = devm_reset_control_get(dev, "pipe");
-+	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
- 	if (IS_ERR(rockchip->pipe_rst)) {
- 		if (PTR_ERR(rockchip->pipe_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing pipe reset property in node\n");
- 		return PTR_ERR(rockchip->pipe_rst);
- 	}
- 
--	rockchip->pm_rst = devm_reset_control_get(dev, "pm");
-+	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
- 	if (IS_ERR(rockchip->pm_rst)) {
- 		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing pm reset property in node\n");
- 		return PTR_ERR(rockchip->pm_rst);
- 	}
- 
--	rockchip->pclk_rst = devm_reset_control_get(dev, "pclk");
-+	rockchip->pclk_rst = devm_reset_control_get_exclusive(dev, "pclk");
- 	if (IS_ERR(rockchip->pclk_rst)) {
- 		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing pclk reset property in node\n");
- 		return PTR_ERR(rockchip->pclk_rst);
- 	}
- 
--	rockchip->aclk_rst = devm_reset_control_get(dev, "aclk");
-+	rockchip->aclk_rst = devm_reset_control_get_exclusive(dev, "aclk");
- 	if (IS_ERR(rockchip->aclk_rst)) {
- 		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
- 			dev_err(dev, "missing aclk reset property in node\n");
+-	tcphy->tcphy_rst = devm_reset_control_get(dev, "uphy-tcphy");
++	tcphy->tcphy_rst = devm_reset_control_get_exclusive(dev, "uphy-tcphy");
+ 	if (IS_ERR(tcphy->tcphy_rst)) {
+ 		dev_err(dev, "no tcphy_rst reset control found\n");
+ 		return PTR_ERR(tcphy->tcphy_rst);
 -- 
 2.11.0
