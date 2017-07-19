@@ -1,253 +1,277 @@
-From: Jacob Chen <jacobchen110@gmail.com>
-Subject: Re: [PATCH v2 2/6] [media] rockchip/rga: v4l2 m2m support
-Date: Wed, 19 Jul 2017 18:40:23 +0800
-Message-ID: <CAFLEztR24XBFFtSitvKQ5iRA802nm1LHE2pJvUmZUbFd5F6-Tw@mail.gmail.com>
-References: <1500101920-24039-1-git-send-email-jacob-chen@iotwrt.com>
- <2363665.x6z9MR1vqI@avalon> <1500137353.2353.1.camel@ndufresne.ca>
- <11368407.z8bSoa2YAE@avalon> <1500302710.21957.1.camel@ndufresne.ca>
+From: Gregory CLEMENT <gregory.clement@free-electrons.com>
+Subject: Re: [PATCH] ARM: Convert to using %pOF instead of full_name
+Date: Wed, 19 Jul 2017 13:43:57 +0200
+Message-ID: <878tjk7ite.fsf@free-electrons.com>
+References: <20170718214339.7774-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1500302710.21957.1.camel@ndufresne.ca>
+In-Reply-To: <20170718214339.7774-1-robh@kernel.org> (Rob Herring's message of
+        "Tue, 18 Jul 2017 16:42:41 -0500")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, s.nawrocki@samsung.com, Tomasz Figa <tfiga@chromium.org>
+To: Rob Herring <robh@kernel.org>
+Cc: arm@kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Tony Lindgren <tony@atomide.com>, =?utf-8?Q?Beno=C3=AEt?= Cousson <bcousson@baylibre.com>, Paul Walmsley <paul@pwsan.com>, Heiko Stuebner <heiko@sntech.de>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Rob,
+ 
+ On mar., juil. 18 2017, Rob Herring <robh@kernel.org> wrote:
 
-2017-07-17 22:45 GMT+08:00 Nicolas Dufresne <nicolas@ndufresne.ca>:
-> Le lundi 17 juillet 2017 =C3=A0 05:37 +0300, Laurent Pinchart a =C3=A9cri=
-t :
->> Hi Nicolas,
->>
->> On Saturday 15 Jul 2017 12:49:13 Personnel wrote:
->>
->> You might want to fix your mailer to use your name :-)
->>
->> > Le samedi 15 juillet 2017 =C3=A0 12:42 +0300, Laurent Pinchart a =C3=
-=A9crit :
->> > > On Saturday 15 Jul 2017 14:58:36 Jacob Chen wrote:
->> > > > Rockchip RGA is a separate 2D raster graphic acceleration unit. It
->> > > > accelerates 2D graphics operations, such as point/line drawing, im=
-age
->> > > > scaling, rotation, BitBLT, alpha blending and image blur/sharpness=
-.
->> > > >
->> > > > The drvier is mostly based on s5p-g2d v4l2 m2m driver.
->> > > > And supports various operations from the rendering pipeline.
->> > > >
->> > > >  - copy
->> > > >  - fast solid color fill
->> > > >  - rotation
->> > > >  - flip
->> > > >  - alpha blending
->> > >
->> > > I notice that you don't support the drawing operations. How do you p=
-lan to
->> > > support them later through the V4L2 M2M API ? I hate stating the obv=
-ious,
->> > > but wouldn't the DRM API be better fit for a graphic accelerator ?
->> >
->> > It could fit, maybe, but it really lacks some framework. Also, DRM is
->> > not really meant for M2M operation, and it's also not great for multi-
->> > process.
->>
->> GPUs on embedded devices are mem-to-mem, and they're definitely shared b=
-etween
->> multiple processes :-)
->>
->> > Until recently, there was competing drivers for Exynos, both
->> > implemented in V4L2 and DRM, for similar rational, all DRM ones are
->> > being deprecated/removed.
->> >
->> > I think 2D blitters in V4L2 are fine, but they terribly lack something
->> > to differentiate them from converters/scalers when looking up the HW
->> > list. Could be as simple as a capability flag, if I can suggest. For
->> > the reference, the 2D blitter on IMX6 has been used to implement a liv=
-e
->> > video mixer in GStreamer.
->> >
->> > https://bugzilla.gnome.org/show_bug.cgi?id=3D772766
->>
->> If we decide that 2D blitters should be supported by V4L2 (and I'm open =
-to get
->> convinced about that), we really need to define a proper API before merg=
-ing a
->> bunch of drivers that will implement things in slightly different ways,
->> otherwise the future will be very painful.
+> Now that we have a custom printf format specifier, convert users of
+> full_name to use %pOF instead. This is preparation to remove storing
+> of the full path string for each node.
 >
-> Arguably, Jacob is not proposing anything new, as at least one other
-> driver has been merged.
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> Cc: Russell King <linux@armlinux.org.uk>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: Javier Martinez Canillas <javier@osg.samsung.com>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Sascha Hauer <kernel@pengutronix.de>
+> Cc: Fabio Estevam <fabio.estevam@nxp.com>
+> Cc: Jason Cooper <jason@lakedaemon.net>
+> Cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: Gregory Clement <gregory.clement@free-electrons.com>
+> Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
+> Cc: Tony Lindgren <tony@atomide.com>
+> Cc: "Benoît Cousson" <bcousson@baylibre.com>
+> Cc: Paul Walmsley <paul@pwsan.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Simon Horman <horms@verge.net.au>
+> Cc: Magnus Damm <magnus.damm@gmail.com>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-samsung-soc@vger.kernel.org
+> Cc: linux-omap@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-renesas-soc@vger.kernel.org
+> ---
+>  arch/arm/kernel/cpuidle.c            | 4 ++--
+>  arch/arm/kernel/devtree.c            | 6 +++---
+>  arch/arm/kernel/topology.c           | 4 ++--
+>  arch/arm/mach-exynos/suspend.c       | 8 ++++----
+>  arch/arm/mach-imx/gpc.c              | 4 ++--
+>  arch/arm/mach-mvebu/kirkwood.c       | 4 ++--
+
+For the krkwood part
+Acked-by: Gregory CLEMENT <gregory.clement@free-electrons.com>
+
+Thanks,
+
+Gregory
+
+>  arch/arm/mach-omap2/omap-wakeupgen.c | 4 ++--
+>  arch/arm/mach-omap2/omap_hwmod.c     | 4 ++--
+>  arch/arm/mach-rockchip/platsmp.c     | 4 ++--
+>  arch/arm/mach-shmobile/pm-rmobile.c  | 8 ++++----
+>  10 files changed, 25 insertions(+), 25 deletions(-)
 >
->>
->> Among the issues that need to be solved are
->>
->> - stateful vs. stateless operation (as mentioned by Jacob in this mail
->> thread), a.k.a. the request API
+> diff --git a/arch/arm/kernel/cpuidle.c b/arch/arm/kernel/cpuidle.c
+> index a3308ad1a024..fda5579123a8 100644
+> --- a/arch/arm/kernel/cpuidle.c
+> +++ b/arch/arm/kernel/cpuidle.c
+> @@ -101,8 +101,8 @@ static int __init arm_cpuidle_read_ops(struct device_node *dn, int cpu)
 >
-> Would it be possible to extend your thought. To me, Request API could
-> enable more use cases but is not strictly required.
+>  	ops = arm_cpuidle_get_ops(enable_method);
+>  	if (!ops) {
+> -		pr_warn("%s: unsupported enable-method property: %s\n",
+> -			dn->full_name, enable_method);
+> +		pr_warn("%pOF: unsupported enable-method property: %s\n",
+> +			dn, enable_method);
+>  		return -EOPNOTSUPP;
+>  	}
 >
->>
->> - exposing capabilities to userspace (a single capability flag would be =
-enough
->> only if all blitters expose the same API, which I'm not sure we can assu=
-me)
+> diff --git a/arch/arm/kernel/devtree.c b/arch/arm/kernel/devtree.c
+> index f676febbb270..28174c9a94ac 100644
+> --- a/arch/arm/kernel/devtree.c
+> +++ b/arch/arm/kernel/devtree.c
+> @@ -95,7 +95,7 @@ void __init arm_dt_init_cpu_maps(void)
+>  		if (of_node_cmp(cpu->type, "cpu"))
+>  			continue;
 >
-> I am just rethinking this. With this patch series, Jacob is trying to
-> generalize the Blit Operation controls (still need a name, blend mode
-> does not work). We can easily make a recommendation to set the default
-> operation to a copy operation (drivers always support that). This way,
-> the node will behave like a converter (scaler, colorspace converter,
-> rotator and/or etc.) Checking the presence of that control, we can
-> clearly and quickly figure-out what this node is about. The capability
-> remains a nice idea, but probably optional.
+> -		pr_debug(" * %s...\n", cpu->full_name);
+> +		pr_debug(" * %pOF...\n", cpu);
+>  		/*
+>  		 * A device tree containing CPU nodes with missing "reg"
+>  		 * properties is considered invalid to build the
+> @@ -103,8 +103,8 @@ void __init arm_dt_init_cpu_maps(void)
+>  		 */
+>  		cell = of_get_property(cpu, "reg", &prop_bytes);
+>  		if (!cell || prop_bytes < sizeof(*cell)) {
+> -			pr_debug(" * %s missing reg property\n",
+> -				     cpu->full_name);
+> +			pr_debug(" * %pOF missing reg property\n",
+> +				     cpu);
+>  			of_node_put(cpu);
+>  			return;
+>  		}
+> diff --git a/arch/arm/kernel/topology.c b/arch/arm/kernel/topology.c
+> index bf949a763dbe..e596c5b8f931 100644
+> --- a/arch/arm/kernel/topology.c
+> +++ b/arch/arm/kernel/topology.c
+> @@ -127,8 +127,8 @@ static void __init parse_dt_topology(void)
 >
-> I totally agree we should document the behaviours and rationals for
-> picking a certain default. The control should maybe become a "menu"
-> too, so each driver can cherry-pick the blit operations they support
-> (using int with min/max requires userspace trial and error, we already
-> did that mistake for encoders profiles and level).
+>  		rate = of_get_property(cn, "clock-frequency", &len);
+>  		if (!rate || len != 4) {
+> -			pr_err("%s missing clock-frequency property\n",
+> -				cn->full_name);
+> +			pr_err("%pOF missing clock-frequency property\n",
+> +				cn);
+>  			continue;
+>  		}
 >
->>
->> - single input (a.k.a. in-place blitters as you mentioned below) vs. mul=
-tiple
->> inputs
+> diff --git a/arch/arm/mach-exynos/suspend.c b/arch/arm/mach-exynos/suspend.c
+> index 748cfb8d5212..3c7b66c22697 100644
+> --- a/arch/arm/mach-exynos/suspend.c
+> +++ b/arch/arm/mach-exynos/suspend.c
+> @@ -187,21 +187,21 @@ static int __init exynos_pmu_irq_init(struct device_node *node,
+>  	struct irq_domain *parent_domain, *domain;
 >
-> I do think the second is something you can build on top of the first by
-> cascading (what we do in the refereed GStreamer element). So far this
-> is applicable to Exynos, IMX6 and now Rockchip (probably more). The
-> "optimal" form for the second case seems like something that will be
-> implemented using much lower level kernel interface, like a GPU
-> programming interface (aka proprietary Adreno C2D API), or through
-> multiple nodes (multiple inputs and outputs). It's seems like the cut
-> between high-end and low-end.
+>  	if (!parent) {
+> -		pr_err("%s: no parent, giving up\n", node->full_name);
+> +		pr_err("%pOF: no parent, giving up\n", node);
+>  		return -ENODEV;
+>  	}
 >
->>
->> - API for 2D-accelerated operations other than blitting (filling, point =
-and
->> line drawing, ...)
+>  	parent_domain = irq_find_host(parent);
+>  	if (!parent_domain) {
+> -		pr_err("%s: unable to obtain parent domain\n", node->full_name);
+> +		pr_err("%pOF: unable to obtain parent domain\n", node);
+>  		return -ENXIO;
+>  	}
 >
-> I doubt such hardware exist in a form that is not bound to the GPU. I'm
-> not ignoring your point, there is a clear overlap between how we
-> integrated GPUs and having this into V4L2.
+>  	pmu_base_addr = of_iomap(node, 0);
+>
+>  	if (!pmu_base_addr) {
+> -		pr_err("%s: failed to find exynos pmu register\n",
+> -		       node->full_name);
+> +		pr_err("%pOF: failed to find exynos pmu register\n",
+> +		       node);
+>  		return -ENOMEM;
+>  	}
+>
+> diff --git a/arch/arm/mach-imx/gpc.c b/arch/arm/mach-imx/gpc.c
+> index 93f584ba0130..de535cb679b3 100644
+> --- a/arch/arm/mach-imx/gpc.c
+> +++ b/arch/arm/mach-imx/gpc.c
+> @@ -224,13 +224,13 @@ static int __init imx_gpc_init(struct device_node *node,
+>  	int i;
+>
+>  	if (!parent) {
+> -		pr_err("%s: no parent, giving up\n", node->full_name);
+> +		pr_err("%pOF: no parent, giving up\n", node);
+>  		return -ENODEV;
+>  	}
+>
+>  	parent_domain = irq_find_host(parent);
+>  	if (!parent_domain) {
+> -		pr_err("%s: unable to obtain parent domain\n", node->full_name);
+> +		pr_err("%pOF: unable to obtain parent domain\n", node);
+>  		return -ENXIO;
+>  	}
+>
+> diff --git a/arch/arm/mach-mvebu/kirkwood.c b/arch/arm/mach-mvebu/kirkwood.c
+> index 7d9f2fd9e450..419da435bc94 100644
+> --- a/arch/arm/mach-mvebu/kirkwood.c
+> +++ b/arch/arm/mach-mvebu/kirkwood.c
+> @@ -107,8 +107,8 @@ static void __init kirkwood_dt_eth_fixup(void)
+>  		clk_prepare_enable(clk);
+>
+>  		/* store MAC address register contents in local-mac-address */
+> -		pr_err(FW_INFO "%s: local-mac-address is not set\n",
+> -		       np->full_name);
+> +		pr_err(FW_INFO "%pOF: local-mac-address is not set\n",
+> +		       np);
+>
+>  		pmac = kzalloc(sizeof(*pmac) + 6, GFP_KERNEL);
+>  		if (!pmac)
+> diff --git a/arch/arm/mach-omap2/omap-wakeupgen.c b/arch/arm/mach-omap2/omap-wakeupgen.c
+> index 33ed5d53fa45..4bb6751864a5 100644
+> --- a/arch/arm/mach-omap2/omap-wakeupgen.c
+> +++ b/arch/arm/mach-omap2/omap-wakeupgen.c
+> @@ -522,13 +522,13 @@ static int __init wakeupgen_init(struct device_node *node,
+>  	u32 val;
+>
+>  	if (!parent) {
+> -		pr_err("%s: no parent, giving up\n", node->full_name);
+> +		pr_err("%pOF: no parent, giving up\n", node);
+>  		return -ENODEV;
+>  	}
+>
+>  	parent_domain = irq_find_host(parent);
+>  	if (!parent_domain) {
+> -		pr_err("%s: unable to obtain parent domain\n", node->full_name);
+> +		pr_err("%pOF: unable to obtain parent domain\n", node);
+>  		return -ENXIO;
+>  	}
+>  	/* Not supported on OMAP4 ES1.0 silicon */
+> diff --git a/arch/arm/mach-omap2/omap_hwmod.c b/arch/arm/mach-omap2/omap_hwmod.c
+> index 3b47ded5fa0c..2dbd63239c54 100644
+> --- a/arch/arm/mach-omap2/omap_hwmod.c
+> +++ b/arch/arm/mach-omap2/omap_hwmod.c
+> @@ -2417,8 +2417,8 @@ static int __init _init_mpu_rt_base(struct omap_hwmod *oh, void *data,
+>  		if (mem)
+>  			pr_err("omap_hwmod: %s: Could not ioremap\n", oh->name);
+>  		else
+> -			pr_err("omap_hwmod: %s: Missing dt reg%i for %s\n",
+> -			       oh->name, index, np->full_name);
+> +			pr_err("omap_hwmod: %s: Missing dt reg%i for %pOF\n",
+> +			       oh->name, index, np);
+>  		return -ENXIO;
+>  	}
+>
+> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+> index 3abafdbdd7f4..2b5b0e43d657 100644
+> --- a/arch/arm/mach-rockchip/platsmp.c
+> +++ b/arch/arm/mach-rockchip/platsmp.c
+> @@ -182,8 +182,8 @@ static int __init rockchip_smp_prepare_sram(struct device_node *node)
+>
+>  	ret = of_address_to_resource(node, 0, &res);
+>  	if (ret < 0) {
+> -		pr_err("%s: could not get address for node %s\n",
+> -		       __func__, node->full_name);
+> +		pr_err("%s: could not get address for node %pOF\n",
+> +		       __func__, node);
+>  		return ret;
+>  	}
+>
+> diff --git a/arch/arm/mach-shmobile/pm-rmobile.c b/arch/arm/mach-shmobile/pm-rmobile.c
+> index 699429f28b73..4c395f9fd178 100644
+> --- a/arch/arm/mach-shmobile/pm-rmobile.c
+> +++ b/arch/arm/mach-shmobile/pm-rmobile.c
+> @@ -195,8 +195,8 @@ static void __init add_special_pd(struct device_node *np, enum pd_types type)
+>  		return;
+>  	}
+>
+> -	pr_debug("Special PM domain %s type %d for %s\n", pd->name, type,
+> -		 np->full_name);
+> +	pr_debug("Special PM domain %s type %d for %pOF\n", pd->name, type,
+> +		 np);
+>
+>  	special_pds[num_special_pds].pd = pd;
+>  	special_pds[num_special_pds].type = type;
+> @@ -331,13 +331,13 @@ static int __init rmobile_init_pm_domains(void)
+>  	for_each_compatible_node(np, NULL, "renesas,sysc-rmobile") {
+>  		base = of_iomap(np, 0);
+>  		if (!base) {
+> -			pr_warn("%s cannot map reg 0\n", np->full_name);
+> +			pr_warn("%pOF cannot map reg 0\n", np);
+>  			continue;
+>  		}
+>
+>  		pmd = of_get_child_by_name(np, "pm-domains");
+>  		if (!pmd) {
+> -			pr_warn("%s lacks pm-domains node\n", np->full_name);
+> +			pr_warn("%pOF lacks pm-domains node\n", np);
+>  			continue;
+>  		}
+>
+> --
+> 2.11.0
 >
 
-I think stateless and multiple inputs are optional, we don't have to
-support it right now.
-(Though we really need a stateless m2m API, too many hardwares need it, not=
- just
-2d blitters, but also internal dsp, image process units.... It would
-be really great
- if people could convert their custom drivers to V4L2. )
-
-
-Agree that we should have API for more 2D-accelerated operations and
-capabilities,
-
-What about this?
-
-#define V4L2_CID_2D_MODE
-enum v4l2_2d_mode {
-        V4L2_2D_MODE_COPY
-        V4L2_2D_MODE_FILLING
-        V4L2_2D_MODE_PORTERDUFF
-        /*
-        V4L2_2D_MODE_BITBLT
-        V4L2_2D_MODE_ALPHA_BLEND
-        other operations.....
-        */
-}
-
-
-/* for V4L2_2D_MODE_PORTERDUFF */
-#define V4L2_CID_2D_PORTERDUFF_MODE
-ATOP
-SRC
-.....
-
-
-/* for V4L2_2D_MODE_BITBLT */
-#define V4L2_2D_BITBLT_ROP
-XOR
-OR
-AND
-NOT
-....
-
-#define .......
-
-
-/* for V4L2_2D_MODE_ALPHA_BLEND */
-#define .......
-........
-
-/* for V4L2_2D_MODE_FILLING */
-V4L2_CID_BG_COLOR
-#define .......
-
-
-We use copy as the default mode for hardware that not support bitblt/alpha =
-blend
-e.g : some image process units, used for image enhancement/noise reduction
-(Though BITBLT+copy rop or V4L2_2D_MODE_PORTERDUFF+SRC+MODE =3D copy)
-
-
-V4L2_2D_MODE_PORTERDUFF are used to wrap bitblt/alpha-blend.
-If driver need a more customizable API, they could implent  V4L2_2D_MODE_BI=
-TBLT/
-V4L2_2D_MODE_ALPHA_BLEND, or they just need implent V4L2_2D_MODE_PORTERDUFF=
-.
-
-
-Driver return false in ioctl to show capabilities.
-
-
->>
->> > > Additionally, V4L2 M2M has one source and one destination. How do yo=
-u
->> > > implement alpha blending in that case, which by definition requires =
-at
->> > > least two sources ?
->> >
->> > This type of HW only do in-place blits. When using such a node, the
->> > buffer queued on the V4L2_CAPTURE contains the destination image, and
->> > the buffer queued on the V4L2_OUTPUT is the source image.
->> >
->> > > > The code in rga-hw.c is used to configure regs accroding to operat=
-ions.
->> > > >
->> > > > The code in rga-buf.c is used to create private mmu table for RGA.
->> > > > The tables is stored in a list, and be removed when buffer is clea=
-nup.
->> > >
->> > > Looking at the implementation it seems to be a scatter-gather list, =
-not an
->> > > MMU. Is that right ? Does the hardware documentation refer to it as =
-an MMU
->> > > ?
->> > >
->> > > > Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
->> > > > ---
->> > > >
->> > > >  drivers/media/platform/Kconfig                |  11 +
->> > > >  drivers/media/platform/Makefile               |   2 +
->> > > >  drivers/media/platform/rockchip-rga/Makefile  |   3 +
->> > > >  drivers/media/platform/rockchip-rga/rga-buf.c | 122 ++++
->> > > >  drivers/media/platform/rockchip-rga/rga-hw.c  | 652 +++++++++++++=
-+++++
->> > > >  drivers/media/platform/rockchip-rga/rga-hw.h  | 437 ++++++++++++
->> > > >  drivers/media/platform/rockchip-rga/rga.c     | 958 +++++++++++++=
-++++++
->> > > >  drivers/media/platform/rockchip-rga/rga.h     | 111 +++
->> > > >  8 files changed, 2296 insertions(+)
->> > > >  create mode 100644 drivers/media/platform/rockchip-rga/Makefile
->> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
->> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
->> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
->> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga.c
->> > > >  create mode 100644 drivers/media/platform/rockchip-rga/rga.h
->>
->>
+-- 
+Gregory Clement, Free Electrons
+Kernel, drivers, real-time and embedded Linux
+development, consulting, training and support.
+http://free-electrons.com
