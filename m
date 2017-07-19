@@ -1,69 +1,131 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] gpu: Convert to using %pOF instead of full_name
-Date: Wed, 19 Jul 2017 23:03:17 +0300
-Message-ID: <1822320.HPtxg24hjI@avalon>
-References: <20170718214339.7774-24-robh@kernel.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: support mail and IPA thermal for rk3399
+Date: Wed, 19 Jul 2017 23:06:53 +0200
+Message-ID: <3610458.AeGaZ0pxhP@phil>
+References: <1500279271-15249-1-git-send-email-wxt@rock-chips.com> <65759378-509b-3287-fd78-02361e89429b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170718214339.7774-24-robh@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Kukjin Kim <kgene@kernel.org>, devicetree@vger.kernel.org, Chen Feng <puck.chen@hisilicon.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Carlo Caione <carlo@caione.org>, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vge
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <65759378-509b-3287-fd78-02361e89429b-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iLAoKVGhhbmsgeW91IGZvciB0aGUgcGF0Y2guCgpPbiBUdWVzZGF5IDE4IEp1bCAyMDE3
-IDE2OjQzOjA0IFJvYiBIZXJyaW5nIHdyb3RlOgo+IE5vdyB0aGF0IHdlIGhhdmUgYSBjdXN0b20g
-cHJpbnRmIGZvcm1hdCBzcGVjaWZpZXIsIGNvbnZlcnQgdXNlcnMgb2YKPiBmdWxsX25hbWUgdG8g
-dXNlICVwT0YgaW5zdGVhZC4gVGhpcyBpcyBwcmVwYXJhdGlvbiB0byByZW1vdmUgc3RvcmluZwo+
-IG9mIHRoZSBmdWxsIHBhdGggc3RyaW5nIGZvciBlYWNoIG5vZGUuCj4gCj4gU2lnbmVkLW9mZi1i
-eTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiBDYzogUnVzc2VsbCBLaW5nIDxsaW51
-eEBhcm1saW51eC5vcmcudWs+Cj4gQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4K
-PiBDYzogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBpbnRlbC5jb20+Cj4gQ2M6IEphbmkg
-TmlrdWxhIDxqYW5pLm5pa3VsYUBsaW51eC5pbnRlbC5jb20+Cj4gQ2M6IFNlYW4gUGF1bCA8c2Vh
-bnBhdWxAY2hyb21pdW0ub3JnPgo+IENjOiBJbmtpIERhZSA8aW5raS5kYWVAc2Ftc3VuZy5jb20+
-Cj4gQ2M6IEpvb255b3VuZyBTaGltIDxqeTA5MjIuc2hpbUBzYW1zdW5nLmNvbT4KPiBDYzogU2V1
-bmctV29vIEtpbSA8c3cwMzEyLmtpbUBzYW1zdW5nLmNvbT4KPiBDYzogS3l1bmdtaW4gUGFyayA8
-a3l1bmdtaW4ucGFya0BzYW1zdW5nLmNvbT4KPiBDYzogS3VramluIEtpbSA8a2dlbmVAa2VybmVs
-Lm9yZz4KPiBDYzogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJuZWwub3JnPgo+IENjOiBK
-YXZpZXIgTWFydGluZXogQ2FuaWxsYXMgPGphdmllckBvc2cuc2Ftc3VuZy5jb20+Cj4gQ2M6IFhp
-bmxpYW5nIExpdSA8ei5saXV4aW5saWFuZ0BoaXNpbGljb24uY29tPgo+IENjOiBSb25ncm9uZyBa
-b3UgPHpvdXJvbmdyb25nQGdtYWlsLmNvbT4KPiBDYzogWGlud2VpIEtvbmcgPGtvbmcua29uZ3hp
-bndlaUBoaXNpbGljb24uY29tPgo+IENjOiBDaGVuIEZlbmcgPHB1Y2suY2hlbkBoaXNpbGljb24u
-Y29tPgo+IENjOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IENjOiBQaGlsaXBwIFphYmVs
-IDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IENjOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlh
-cy5iZ2dAZ21haWwuY29tPgo+IENjOiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJy
-ZS5jb20+Cj4gQ2M6IENhcmxvIENhaW9uZSA8Y2FybG9AY2Fpb25lLm9yZz4KPiBDYzogS2V2aW4g
-SGlsbWFuIDxraGlsbWFuQGJheWxpYnJlLmNvbT4KPiBDYzogVGhpZXJyeSBSZWRpbmcgPHRoaWVy
-cnkucmVkaW5nQGdtYWlsLmNvbT4KPiBDYzogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5j
-aGFydEBpZGVhc29uYm9hcmQuY29tPgo+IENjOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
-cy5jb20+Cj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IE1heGlt
-ZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAZnJlZS1lbGVjdHJvbnMuY29tPgo+IENjOiBDaGVuLVl1
-IFRzYWkgPHdlbnNAY3NpZS5vcmc+Cj4gQ2M6IEp5cmkgU2FyaGEgPGpzYXJoYUB0aS5jb20+Cj4g
-Q2M6IFRvbWkgVmFsa2VpbmVuIDx0b21pLnZhbGtlaW5lbkB0aS5jb20+Cj4gQ2M6IGRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
-YWRlYWQub3JnCj4gQ2M6IGxpbnV4LXNhbXN1bmctc29jQHZnZXIua2VybmVsLm9yZwo+IENjOiBs
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LWFtbG9naWNAbGlz
-dHMuaW5mcmFkZWFkLm9yZwo+IENjOiBsaW51eC1yZW5lc2FzLXNvY0B2Z2VyLmtlcm5lbC5vcmcK
-PiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IC0tLQpbc25pcF0KPiAg
-ZHJpdmVycy9ncHUvZHJtL2RybV9taXBpX2RzaS5jICAgICAgICAgICAgICAgICAgfCAgNiArKyst
-LS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9tb2Rlcy5jICAgICAgICAgICAgICAgICAgICAgfCAg
-NCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyAgICAgICAgICAgICAgICAgICAgICAg
-IHwgIDQgKystLQpbc25pcF0KPiAgZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLWx2ZHMuYyAg
-ICAgICAgICAgICAgfCAxNiArKysrKysrKy0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yY2Fy
-LWR1L3JjYXJfZHVfZW5jb2Rlci5jICAgICAgIHwgIDQgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-cmNhci1kdS9yY2FyX2R1X2ttcy5jICAgICAgICAgICB8IDE2ICsrKysrKysrLS0tLS0tLS0KCkZv
-ciBhbGwgdGhlIGFib3ZlLAoKUmV2aWV3ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQu
-cGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFy
-dAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Mittwoch, 19. Juli 2017, 17:06:59 CEST schrieb Caesar Wang:
+> Hi Rob & Heiko,
+> 
+> Do we have the chance to merge these patches?
+
+From the mali-thermal thingy, it doesn't look like Rob likes that IPA stuff.
+
+So I'll most likely pick the other patches that rely on approved bindings
+after I return from my vacation and leave the thermal issue until it can
+be resolved.
+
+
+Heiko
+
+> 
+> I'm try to bring up the display and run webgl for testing with my github on
+> https://github.com/Caesar-github/rockchip/commits/gru/next-stable-chromeos
+> 
+> I believe the Rocky@RK will post patches to support the other SoCs after.
+> 
+> -Caesar
+> 
+> 在 2017年07月17日 16:14, Caesar Wang 写道:
+> > This series patches supported the mail in devicetree and used the
+> > thermal IPA by default.
+> >
+> > Verified with kernel is based on Linus's master branch and Heiko's
+> > v4.14-armsoc-tmp/dts64 branch. ( The Linux version 4.12.0 for now).
+> >
+> > The most rockchip SoCs will be supported with IPA mode for thermal
+> > in later.
+> >
+> > ---
+> >
+> > History version:
+> > 1. The first version found on
+> > https://www.spinics.net/lists/arm-kernel/msg593118.html
+> >
+> > Tested on Kevin board with bringing up ChromeOS.
+> > OS VERSION:
+> >      CHROMEOS_RELEASE_DESCRIPTION=9693.1.0 (Official Build) dev-channel kevin test
+> >
+> > BIOS VERSION:
+> >      Google_Kevin.8785.211.2017_06_20_1043
+> >
+> > EC VERSION:
+> >      Build info:    kevin_v1.10.217-24514961d 2017-07-03 07:46:36 wxt@nb
+> >
+> > With the ARM's lastest mali driver TX011-SW-99002-r18p0-01rel0 on
+> > https://developer.arm.com/products/software/mali-drivers/midgard-kernel
+> >
+> >  From the bootup log:
+> >      localhost devfreq0 # dmesg |grep mali
+> >      [    0.933334] mali ff9a0000.gpu: GPU identified as 0x0860 r2p0 status 0
+> >      [    0.940830] mali ff9a0000.gpu: Protected mode not available
+> >      [    0.947334] mali ff9a0000.gpu: Using configured power model mali-simple-power-model, and fallback mali-simple-power-model
+> >      [    0.960083] mali ff9a0000.gpu: Probed as mali0
+> >
+> >      localhost devfreq0 # pwd
+> >      /sys/devices/platform/ff9a0000.gpu/devfreq/devfreq0
+> >      localhost devfreq0 # ls
+> >      available_frequencies  device    min_freq          subsystem    uevent
+> >      available_governors    governor  polling_interval  target_freq  userspace
+> >      cur_freq               max_freq  power             trans_stat
+> >
+> >      localhost ff9a0000.gpu # ls
+> >      core_availability_policy  gpuinfo               modalias       soft_job_timeout
+> >      core_mask                 js_scheduling_period  of_node        subsystem
+> >      devfreq                   js_timeouts           pm_poweroff    uevent
+> >      driver                    mem_pool_max_size     power
+> >      driver_override           mem_pool_size         power_policy
+> >      dvfs_period               misc                  reset_timeout
+> > ---
+> >
+> > And for thermal with IPA.
+> > Try to run 'md5sum /dev/zero &' and octane/benchmark scripts to go up the temperature.
+> >  From the scripts to have a look at the actual control.
+> > "
+> > while true; do grep "" /sys/class/thermal/thermal_zone[0-1]/temp /sys/devices/system/cpu/cpu[0-5]/cpufreq/scaling_cur_freq /sys/devices/platform/ff9a0000.gpu/devfreq/devfreq0/cur_freq;date;sleep .5; done &
+> > "
+> >
+> > -Caesar
+> >
+> >
+> > Changes in v2:
+> > As Heiko comments on https://patchwork.kernel.org/patch/9835939/
+> > - interrupt-name use the lower case.
+> > - use the correct compatible "arm,mali-t860"
+> > - remove the clock name, since the mali only have one input clock.
+> > - foo@ will produce warnings when used without reg property.
+> > - update the commit to explain the two passive trip points changed.
+> >
+> > Caesar Wang (5):
+> >    dt-bindings: gpu: add the RK3399 mali for rockchip specifics
+> >    dt-bindings: gpu: add a power_model optional properties for MALI
+> >    arm64: dts: rockchip: add ARM Mali GPU node for RK3399 SoCs
+> >    arm64: dts: rockchip: enable the GPU for RK3399-GRU
+> >    arm64: dts: rockchip: update the thermal zones for RK3399 SoCs
+> >
+> >   .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 13 ++++
+> >   arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |  5 ++
+> >   arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi   | 33 ++++++++++
+> >   arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       | 33 ++++++++++
+> >   arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 74 ++++++++++++----------
+> >   5 files changed, 125 insertions(+), 33 deletions(-)
+> >
+> 
+> 
+> 
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
