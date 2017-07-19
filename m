@@ -1,64 +1,69 @@
-From: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
-Date: Wed, 19 Jul 2017 21:15:15 +0200
-Message-ID: <20170719211515.46a1196c@windsurf>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH] gpu: Convert to using %pOF instead of full_name
+Date: Wed, 19 Jul 2017 23:03:17 +0300
+Message-ID: <1822320.HPtxg24hjI@avalon>
+References: <20170718214339.7774-24-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170719152646.25903-1-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Chen <Peter.Chen-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Marc Dietrich <marvin24-Mmb7MZpHnFY@public.gmane.org>, Rakesh Iyer <riyer-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Ohad Ben-Cohen <ohad-Ix1uc/W3ht7QT0dZR+AlfA@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170718214339.7774-24-robh@kernel.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Kukjin Kim <kgene@kernel.org>, devicetree@vger.kernel.org, Chen Feng <puck.chen@hisilicon.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Carlo Caione <carlo@caione.org>, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vge
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
-
-On Wed, 19 Jul 2017 17:25:04 +0200, Philipp Zabel wrote:
-> The reset control API has two modes: exclusive access, where the driver
-> expects to have full and immediate control over the state of the reset
-> line, and shared (clock-like) access, where drivers only request reset
-> deassertion while active, but don't care about the state of the reset line
-> while inactive.
-> 
-> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
-> reset lines") started to transition the reset control request API calls
-> to explicitly state whether the driver needs exclusive or shared reset
-> control behavior.
-> 
-> This series converts all drivers that currently implicitly request
-> exclusive reset controls to the corresponding explicit API call. It is,
-> for the most part, generated from the following semantic patch:
-> 
-> @@
-> expression rstc, dev, id;
-> @@
-> -rstc = reset_control_get(dev, id);
-> +rstc = reset_control_get_exclusive(dev, id);
-
-I don't know if it has been discussed in the past, so forgive me if it
-has been. Have you considered adding a "int flags" argument to the
-existing reset_control_get_*() functions, rather than introducing
-separate exclusive variants ?
-
-Indeed, with a "int flags" argument you could in the future add more
-variants/behaviors without actually multiplying the number of
-functions. Something like the "flags" argument for request_irq() for
-example.
-
-Best regards,
-
-Thomas
--- 
-Thomas Petazzoni, CTO, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+SGkgUm9iLAoKVGhhbmsgeW91IGZvciB0aGUgcGF0Y2guCgpPbiBUdWVzZGF5IDE4IEp1bCAyMDE3
+IDE2OjQzOjA0IFJvYiBIZXJyaW5nIHdyb3RlOgo+IE5vdyB0aGF0IHdlIGhhdmUgYSBjdXN0b20g
+cHJpbnRmIGZvcm1hdCBzcGVjaWZpZXIsIGNvbnZlcnQgdXNlcnMgb2YKPiBmdWxsX25hbWUgdG8g
+dXNlICVwT0YgaW5zdGVhZC4gVGhpcyBpcyBwcmVwYXJhdGlvbiB0byByZW1vdmUgc3RvcmluZwo+
+IG9mIHRoZSBmdWxsIHBhdGggc3RyaW5nIGZvciBlYWNoIG5vZGUuCj4gCj4gU2lnbmVkLW9mZi1i
+eTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiBDYzogUnVzc2VsbCBLaW5nIDxsaW51
+eEBhcm1saW51eC5vcmcudWs+Cj4gQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4K
+PiBDYzogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBpbnRlbC5jb20+Cj4gQ2M6IEphbmkg
+TmlrdWxhIDxqYW5pLm5pa3VsYUBsaW51eC5pbnRlbC5jb20+Cj4gQ2M6IFNlYW4gUGF1bCA8c2Vh
+bnBhdWxAY2hyb21pdW0ub3JnPgo+IENjOiBJbmtpIERhZSA8aW5raS5kYWVAc2Ftc3VuZy5jb20+
+Cj4gQ2M6IEpvb255b3VuZyBTaGltIDxqeTA5MjIuc2hpbUBzYW1zdW5nLmNvbT4KPiBDYzogU2V1
+bmctV29vIEtpbSA8c3cwMzEyLmtpbUBzYW1zdW5nLmNvbT4KPiBDYzogS3l1bmdtaW4gUGFyayA8
+a3l1bmdtaW4ucGFya0BzYW1zdW5nLmNvbT4KPiBDYzogS3VramluIEtpbSA8a2dlbmVAa2VybmVs
+Lm9yZz4KPiBDYzogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJuZWwub3JnPgo+IENjOiBK
+YXZpZXIgTWFydGluZXogQ2FuaWxsYXMgPGphdmllckBvc2cuc2Ftc3VuZy5jb20+Cj4gQ2M6IFhp
+bmxpYW5nIExpdSA8ei5saXV4aW5saWFuZ0BoaXNpbGljb24uY29tPgo+IENjOiBSb25ncm9uZyBa
+b3UgPHpvdXJvbmdyb25nQGdtYWlsLmNvbT4KPiBDYzogWGlud2VpIEtvbmcgPGtvbmcua29uZ3hp
+bndlaUBoaXNpbGljb24uY29tPgo+IENjOiBDaGVuIEZlbmcgPHB1Y2suY2hlbkBoaXNpbGljb24u
+Y29tPgo+IENjOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IENjOiBQaGlsaXBwIFphYmVs
+IDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IENjOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlh
+cy5iZ2dAZ21haWwuY29tPgo+IENjOiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJy
+ZS5jb20+Cj4gQ2M6IENhcmxvIENhaW9uZSA8Y2FybG9AY2Fpb25lLm9yZz4KPiBDYzogS2V2aW4g
+SGlsbWFuIDxraGlsbWFuQGJheWxpYnJlLmNvbT4KPiBDYzogVGhpZXJyeSBSZWRpbmcgPHRoaWVy
+cnkucmVkaW5nQGdtYWlsLmNvbT4KPiBDYzogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5j
+aGFydEBpZGVhc29uYm9hcmQuY29tPgo+IENjOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
+cy5jb20+Cj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IE1heGlt
+ZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAZnJlZS1lbGVjdHJvbnMuY29tPgo+IENjOiBDaGVuLVl1
+IFRzYWkgPHdlbnNAY3NpZS5vcmc+Cj4gQ2M6IEp5cmkgU2FyaGEgPGpzYXJoYUB0aS5jb20+Cj4g
+Q2M6IFRvbWkgVmFsa2VpbmVuIDx0b21pLnZhbGtlaW5lbkB0aS5jb20+Cj4gQ2M6IGRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
+YWRlYWQub3JnCj4gQ2M6IGxpbnV4LXNhbXN1bmctc29jQHZnZXIua2VybmVsLm9yZwo+IENjOiBs
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LWFtbG9naWNAbGlz
+dHMuaW5mcmFkZWFkLm9yZwo+IENjOiBsaW51eC1yZW5lc2FzLXNvY0B2Z2VyLmtlcm5lbC5vcmcK
+PiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IC0tLQpbc25pcF0KPiAg
+ZHJpdmVycy9ncHUvZHJtL2RybV9taXBpX2RzaS5jICAgICAgICAgICAgICAgICAgfCAgNiArKyst
+LS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9tb2Rlcy5jICAgICAgICAgICAgICAgICAgICAgfCAg
+NCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyAgICAgICAgICAgICAgICAgICAgICAg
+IHwgIDQgKystLQpbc25pcF0KPiAgZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLWx2ZHMuYyAg
+ICAgICAgICAgICAgfCAxNiArKysrKysrKy0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yY2Fy
+LWR1L3JjYXJfZHVfZW5jb2Rlci5jICAgICAgIHwgIDQgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+cmNhci1kdS9yY2FyX2R1X2ttcy5jICAgICAgICAgICB8IDE2ICsrKysrKysrLS0tLS0tLS0KCkZv
+ciBhbGwgdGhlIGFib3ZlLAoKUmV2aWV3ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQu
+cGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFy
+dAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
