@@ -1,45 +1,76 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [RFC PATCH v4 3/7] phy: rockcip-pcie: reconstruct driver to
- support per-lane PHYs
-Date: Wed, 19 Jul 2017 15:07:50 +0530
-Message-ID: <c3e7f755-9c36-5cec-7598-f72c9e3cba60@ti.com>
-References: <1500448979-93067-1-git-send-email-shawn.lin@rock-chips.com>
- <1500448979-93067-4-git-send-email-shawn.lin@rock-chips.com>
- <81b03327-e720-ed51-87d1-9ac0c7a9dc0a@ti.com>
- <5497c3e0-a74e-f4ae-dd02-ba321182a9ec@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v5 1/7] PCI: rockchip: split out rockchip_pcie_get_phys
+Date: Wed, 19 Jul 2017 17:55:12 +0800
+Message-ID: <1500458118-139042-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <5497c3e0-a74e-f4ae-dd02-ba321182a9ec@rock-chips.com>
+In-Reply-To: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+We plan to introduce per-lanes PHY, so split out new
+function to make it easy in the future. No functional
+change intended.
 
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Acked-by: Kishon Vijay Abraham I <kishon@ti.com>
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+Tested-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-On Wednesday 19 July 2017 03:06 PM, Shawn Lin wrote:
-> Hi Kishon,
-> 
-> On 2017/7/19 16:08, Kishon Vijay Abraham I wrote:
->> Hi Shawn,
->>
->> On Wednesday 19 July 2017 12:52 PM, Shawn Lin wrote:
->>> This patch reconstructs the whole driver to support per-lane
->>> PHYs. Note that we could also support the legacy PHY if you
->>> don't provide argument to our of_xlate.
->>
->> one comment below which I failed to notice before..
-> 
-> I will fix it and respin v5.
-> 
-> BTW, are you fine with all these patches merged via Bjorn's
-> PCI tree in order to narrow down the timing gap for testing
-> linux-next? If yes, could you kindly ack patch 3 of V5
-> if it looks good to you? :)
+Changes in v5: None
+Changes in v4:
+- use err variable to check return value of
+  rockchip_pcie_get_phys
+- add Brian's tag
 
-sure!
+Changes in v3: None
+Changes in v2: None
 
-Thanks
-Kishon
+ drivers/pci/host/pcie-rockchip.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 5acf869..c42feab 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -853,6 +853,19 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+ 	chained_irq_exit(chip, desc);
+ }
+ 
++static int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip)
++{
++	struct device *dev = rockchip->dev;
++
++	rockchip->phy = devm_phy_get(dev, "pcie-phy");
++	if (IS_ERR(rockchip->phy)) {
++		if (PTR_ERR(rockchip->phy) != -EPROBE_DEFER)
++			dev_err(dev, "missing phy\n");
++		return PTR_ERR(rockchip->phy);
++	}
++
++	return 0;
++}
+ 
+ /**
+  * rockchip_pcie_parse_dt - Parse Device Tree
+@@ -883,12 +896,9 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 	if (IS_ERR(rockchip->apb_base))
+ 		return PTR_ERR(rockchip->apb_base);
+ 
+-	rockchip->phy = devm_phy_get(dev, "pcie-phy");
+-	if (IS_ERR(rockchip->phy)) {
+-		if (PTR_ERR(rockchip->phy) != -EPROBE_DEFER)
+-			dev_err(dev, "missing phy\n");
+-		return PTR_ERR(rockchip->phy);
+-	}
++	err = rockchip_pcie_get_phys(rockchip);
++	if (err)
++		return err;
+ 
+ 	rockchip->lanes = 1;
+ 	err = of_property_read_u32(node, "num-lanes", &rockchip->lanes);
+-- 
+1.9.1
