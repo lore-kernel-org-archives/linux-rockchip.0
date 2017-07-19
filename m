@@ -1,179 +1,303 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH] mmc: dw_mmc: introduce timer for broken command
- transfer over scheme
-Date: Wed, 19 Jul 2017 19:30:36 +0900
-Message-ID: <27c58edd-d041-d04d-aa21-a1b6f9fa0610@samsung.com>
-References: <CGME20170711093941epcas5p31f50fb8d4df37e515bbfb377af29d755@epcas5p3.samsung.com>
-        <1499765917-228806-1-git-send-email-shawn.lin@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v5 3/7] phy: rockcip-pcie: reconstruct driver to support
+ per-lane PHYs
+Date: Wed, 19 Jul 2017 16:02:02 +0530
+Message-ID: <18f85d03-3ce2-513b-bf1e-319cc9c7d979@ti.com>
+References: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
+ <1500458118-139042-4-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <1499765917-228806-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, Ziyuan Xu <xzy.xu@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Addy Ke <addy.ke@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1500458118-139042-4-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
 
-On 07/11/2017 06:38 PM, Shawn Lin wrote:
-> From: Addy Ke <addy.ke@rock-chips.com>
-> 
-> Per the databook of designware mmc controller 2.70a, table 3-2, cmd
-> done interrupt should be fired as soon as the the cmd is sent via
-> cmd line. And the response timeout interrupt should be generated
-> unconditioinally as well if the controller doesn't receive the resp.
-> However that doesn't seem to meet the fact of rockchip specified Soc
-> platforms using dwmmc. We have continuously found the the cmd done or
-> response timeout interrupt missed somehow which took us a long time to
-> understand what was happening. Finally we narrow down the root to
-> the reconstruction of sample circuit for dwmmc IP introduced by
-> rockchip and the buggy design sweeps over all the existing rockchip
-> Socs using dwmmc disastrously.
-> 
-> It seems no way to work around this bug without the proper break-out
-> mechanism so that we seek for a parallel pair the same as the handling
-> for missing data response timeout, namely dto timer. Adding this cto
-> timer seems easily to handle this bug but it's hard to restrict the code
-> under the rockchip specified context. So after merging this patch, it
-> sets up the cto timer for all the platforms using dwmmc IP which isn't
-> ideal but at least we don't advertise new quirk here. Fortunately, no
-> obvious performance regression was found by test and the pre-existing
-> similar catch-all timer for sdhci has proved it's an acceptant way to
-> make the code as robust as possible.
-> 
-> Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=196321
-> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
-> Signed-off-by: Ziyuan Xu <xzy.xu@rock-chips.com>
-> [shawn.lin: rewrite the code and the commit msg throughout]
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Will pick this after testing with my targets.
-
-Best Regards,
-Jaehoon Chung
-
+On Wednesday 19 July 2017 03:25 PM, Shawn Lin wrote:
+> This patch reconstructs the whole driver to support per-lane
+> PHYs. Note that we could also support the legacy PHY if you
+> don't provide argument to our of_xlate.
 > 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Tested-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Acked-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
 > ---
 > 
->  drivers/mmc/host/dw_mmc.c | 48 +++++++++++++++++++++++++++++++++++++++++++++++
->  drivers/mmc/host/dw_mmc.h |  2 ++
->  2 files changed, 50 insertions(+)
+> Changes in v5:
+> - don't create more number of phys if it's legacy PHY model
 > 
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index a9dfb26..2f6121e 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -398,6 +398,21 @@ static u32 dw_mci_prep_stop_abort(struct dw_mci *host, struct mmc_command *cmd)
->  	return cmdr;
->  }
->  
-> +static inline void dw_mci_set_cto(struct dw_mci *host)
-> +{
-> +	unsigned int cto_clks;
-> +	unsigned int cto_ms;
-> +
-> +	cto_clks = mci_readl(host, TMOUT) & 0xff;
-> +	cto_ms = DIV_ROUND_UP(cto_clks, host->bus_hz / 1000);
-> +
-> +	/* add a bit spare time */
-> +	cto_ms += 10;
-> +
-> +	mod_timer(&host->cto_timer,
-> +		  jiffies + msecs_to_jiffies(cto_ms) + 1);
-> +}
-> +
->  static void dw_mci_start_command(struct dw_mci *host,
->  				 struct mmc_command *cmd, u32 cmd_flags)
->  {
-> @@ -410,6 +425,10 @@ static void dw_mci_start_command(struct dw_mci *host,
->  	wmb(); /* drain writebuffer */
->  	dw_mci_wait_while_busy(host, cmd_flags);
->  
-> +	/* response expected command only */
-> +	if (cmd_flags & SDMMC_CMD_RESP_EXP)
-> +		dw_mci_set_cto(host);
-> +
->  	mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START);
->  }
->  
-> @@ -2599,6 +2618,7 @@ static irqreturn_t dw_mci_interrupt(int irq, void *dev_id)
->  		}
->  
->  		if (pending & DW_MCI_CMD_ERROR_FLAGS) {
-> +			del_timer(&host->cto_timer);
->  			mci_writel(host, RINTSTS, DW_MCI_CMD_ERROR_FLAGS);
->  			host->cmd_status = pending;
->  			smp_wmb(); /* drain writebuffer */
-> @@ -2642,6 +2662,7 @@ static irqreturn_t dw_mci_interrupt(int irq, void *dev_id)
->  		}
->  
->  		if (pending & SDMMC_INT_CMD_DONE) {
-> +			del_timer(&host->cto_timer);
->  			mci_writel(host, RINTSTS, SDMMC_INT_CMD_DONE);
->  			dw_mci_cmd_interrupt(host, pending);
->  		}
-> @@ -2914,6 +2935,30 @@ static void dw_mci_cmd11_timer(unsigned long arg)
->  	tasklet_schedule(&host->tasklet);
->  }
->  
-> +static void dw_mci_cto_timer(unsigned long arg)
-> +{
-> +	struct dw_mci *host = (struct dw_mci *)arg;
-> +
-> +	switch (host->state) {
-> +	case STATE_SENDING_CMD11:
-> +	case STATE_SENDING_CMD:
-> +	case STATE_SENDING_STOP:
-> +		/*
-> +		 * If CMD_DONE interrupt does NOT come in sending command
-> +		 * state, we should notify the driver to terminate current
-> +		 * transfer and report a command timeout to the core.
-> +		 */
-> +		host->cmd_status = SDMMC_INT_RTO;
-> +		set_bit(EVENT_CMD_COMPLETE, &host->pending_events);
-> +		tasklet_schedule(&host->tasklet);
-> +		break;
-> +	default:
-> +		dev_warn(host->dev, "Unexpected command timeout, state %d\n",
-> +			 host->state);
-> +		break;
-> +	}
-> +}
-> +
->  static void dw_mci_dto_timer(unsigned long arg)
->  {
->  	struct dw_mci *host = (struct dw_mci *)arg;
-> @@ -3085,6 +3130,9 @@ int dw_mci_probe(struct dw_mci *host)
->  	setup_timer(&host->cmd11_timer,
->  		    dw_mci_cmd11_timer, (unsigned long)host);
->  
-> +	setup_timer(&host->cto_timer,
-> +		    dw_mci_cto_timer, (unsigned long)host);
-> +
->  	setup_timer(&host->dto_timer,
->  		    dw_mci_dto_timer, (unsigned long)host);
->  
-> diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
-> index 75da375..4210927 100644
-> --- a/drivers/mmc/host/dw_mmc.h
-> +++ b/drivers/mmc/host/dw_mmc.h
-> @@ -126,6 +126,7 @@ struct dw_mci_dma_slave {
->   * @irq: The irq value to be passed to request_irq.
->   * @sdio_id0: Number of slot0 in the SDIO interrupt registers.
->   * @cmd11_timer: Timer for SD3.0 voltage switch over scheme.
-> + * @cto_timer: Timer for broken command transfer over scheme.
->   * @dto_timer: Timer for broken data transfer over scheme.
->   *
->   * Locking
-> @@ -232,6 +233,7 @@ struct dw_mci {
->  	int			sdio_id0;
->  
->  	struct timer_list       cmd11_timer;
-> +	struct timer_list       cto_timer;
->  	struct timer_list       dto_timer;
+> Changes in v4: None
+> Changes in v3:
+> - remove unnecessary forward declaration
+> - keep mutex inside struct rockchip_pcie_phy
+> - fix wrong check of args number
+> - move de-idle lanes after deasserting the reset
+> 
+> Changes in v2:
+> - deprecate legacy PHY model
+> - improve rockchip_pcie_phy_of_xlate
+> - fix wrong calculation of pwr_cnt and add new init_cnt
+> - add internal locking
+> - introduce per-lane data to simply the code
+> 
+>  drivers/phy/rockchip/phy-rockchip-pcie.c | 132 +++++++++++++++++++++++++++----
+>  1 file changed, 118 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> index 6904633..550499e 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> @@ -73,10 +73,39 @@ struct rockchip_pcie_data {
+>  struct rockchip_pcie_phy {
+>  	struct rockchip_pcie_data *phy_data;
+>  	struct regmap *reg_base;
+> +	struct phy_pcie_instance {
+> +		struct phy *phy;
+> +		u32 index;
+> +	} phys[PHY_MAX_LANE_NUM];
+> +	struct mutex pcie_mutex;
+>  	struct reset_control *phy_rst;
+>  	struct clk *clk_pciephy_ref;
+> +	int pwr_cnt;
+> +	int init_cnt;
 >  };
 >  
+> +static inline
+> +struct rockchip_pcie_phy *to_pcie_phy(struct phy_pcie_instance *inst)
+> +{
+> +	return container_of(inst, struct rockchip_pcie_phy,
+> +					phys[inst->index]);
+> +}
+> +
+> +static struct phy *rockchip_pcie_phy_of_xlate(struct device *dev,
+> +					      struct of_phandle_args *args)
+> +{
+> +	struct rockchip_pcie_phy *rk_phy = dev_get_drvdata(dev);
+> +
+> +	if (args->args_count == 0)
+> +		return rk_phy->phys[0].phy;
+> +
+> +	if (WARN_ON(args->args[0] >= PHY_MAX_LANE_NUM))
+> +		return ERR_PTR(-ENODEV);
+> +
+> +	return rk_phy->phys[args->args[0]].phy;
+> +}
+> +
+> +
+>  static inline void phy_wr_cfg(struct rockchip_pcie_phy *rk_phy,
+>  			      u32 addr, u32 data)
+>  {
+> @@ -116,29 +145,59 @@ static inline u32 phy_rd_cfg(struct rockchip_pcie_phy *rk_phy,
+>  
+>  static int rockchip_pcie_phy_power_off(struct phy *phy)
+>  {
+> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>  	int err = 0;
+>  
+> +	mutex_lock(&rk_phy->pcie_mutex);
+> +
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->phy_data->pcie_laneoff,
+> +		     HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
+> +				   PHY_LANE_IDLE_MASK,
+> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+> +
+> +	if (--rk_phy->pwr_cnt)
+> +		goto err_out;
+> +
+>  	err = reset_control_assert(rk_phy->phy_rst);
+>  	if (err) {
+>  		dev_err(&phy->dev, "assert phy_rst err %d\n", err);
+> -		return err;
+> +		goto err_restore;
+>  	}
+>  
+> +err_out:
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+>  	return 0;
+> +
+> +err_restore:
+> +	++rk_phy->pwr_cnt;
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->phy_data->pcie_laneoff,
+> +		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+> +				   PHY_LANE_IDLE_MASK,
+> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+> +	return err;
+>  }
+>  
+>  static int rockchip_pcie_phy_power_on(struct phy *phy)
+>  {
+> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>  	int err = 0;
+>  	u32 status;
+>  	unsigned long timeout;
+>  
+> +	mutex_lock(&rk_phy->pcie_mutex);
+> +
+> +	if (rk_phy->pwr_cnt++)
+> +		goto err_out;
+> +
+>  	err = reset_control_deassert(rk_phy->phy_rst);
+>  	if (err) {
+>  		dev_err(&phy->dev, "deassert phy_rst err %d\n", err);
+> -		return err;
+> +		goto err_pwr_cnt;
+>  	}
+>  
+>  	regmap_write(rk_phy->reg_base, rk_phy->phy_data->pcie_conf,
+> @@ -146,6 +205,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
+>  				   PHY_CFG_ADDR_MASK,
+>  				   PHY_CFG_ADDR_SHIFT));
+>  
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->phy_data->pcie_laneoff,
+> +		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+> +				   PHY_LANE_IDLE_MASK,
+> +				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+> +
+>  	/*
+>  	 * No documented timeout value for phy operation below,
+>  	 * so we make it large enough here. And we use loop-break
+> @@ -214,18 +279,29 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
+>  		goto err_pll_lock;
+>  	}
+>  
+> +err_out:
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+>  	return 0;
+>  
+>  err_pll_lock:
+>  	reset_control_assert(rk_phy->phy_rst);
+> +err_pwr_cnt:
+> +	--rk_phy->pwr_cnt;
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+>  	return err;
+>  }
+>  
+>  static int rockchip_pcie_phy_init(struct phy *phy)
+>  {
+> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+>  	int err = 0;
+>  
+> +	mutex_lock(&rk_phy->pcie_mutex);
+> +
+> +	if (rk_phy->init_cnt++)
+> +		goto err_out;
+> +
+>  	err = clk_prepare_enable(rk_phy->clk_pciephy_ref);
+>  	if (err) {
+>  		dev_err(&phy->dev, "Fail to enable pcie ref clock.\n");
+> @@ -238,20 +314,33 @@ static int rockchip_pcie_phy_init(struct phy *phy)
+>  		goto err_reset;
+>  	}
+>  
+> -	return err;
+> +err_out:
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+> +	return 0;
+>  
+>  err_reset:
+> +
+>  	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
+>  err_refclk:
+> +	--rk_phy->init_cnt;
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+>  	return err;
+>  }
+>  
+>  static int rockchip_pcie_phy_exit(struct phy *phy)
+>  {
+> -	struct rockchip_pcie_phy *rk_phy = phy_get_drvdata(phy);
+> +	struct phy_pcie_instance *inst = phy_get_drvdata(phy);
+> +	struct rockchip_pcie_phy *rk_phy = to_pcie_phy(inst);
+> +
+> +	mutex_lock(&rk_phy->pcie_mutex);
+> +
+> +	if (--rk_phy->init_cnt)
+> +		goto err_init_cnt;
+>  
+>  	clk_disable_unprepare(rk_phy->clk_pciephy_ref);
+>  
+> +err_init_cnt:
+> +	mutex_unlock(&rk_phy->pcie_mutex);
+>  	return 0;
+>  }
+>  
+> @@ -283,10 +372,11 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct rockchip_pcie_phy *rk_phy;
+> -	struct phy *generic_phy;
+>  	struct phy_provider *phy_provider;
+>  	struct regmap *grf;
+>  	const struct of_device_id *of_id;
+> +	int i;
+> +	u32 phy_num;
+>  
+>  	grf = syscon_node_to_regmap(dev->parent->of_node);
+>  	if (IS_ERR(grf)) {
+> @@ -305,6 +395,8 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>  	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
+>  	rk_phy->reg_base = grf;
+>  
+> +	mutex_init(&rk_phy->pcie_mutex);
+> +
+>  	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
+>  	if (IS_ERR(rk_phy->phy_rst)) {
+>  		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
+> @@ -319,14 +411,26 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>  		return PTR_ERR(rk_phy->clk_pciephy_ref);
+>  	}
+>  
+> -	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
+> -	if (IS_ERR(generic_phy)) {
+> -		dev_err(dev, "failed to create PHY\n");
+> -		return PTR_ERR(generic_phy);
+> +	/* parse #phy-cells to see if it's legacy PHY model */
+> +	if (of_property_read_u32(dev->of_node, "#phy-cells", &phy_num))
+> +		return -ENOENT;
+> +
+> +	phy_num = (phy_num == 0) ? 1 : PHY_MAX_LANE_NUM;
+> +	dev_dbg(dev, "phy number is %d\n", phy_num);
+> +
+> +	for (i = 0; i < phy_num; i++) {
+> +		rk_phy->phys[i].phy = devm_phy_create(dev, dev->of_node, &ops);
+> +		if (IS_ERR(rk_phy->phys[i].phy)) {
+> +			dev_err(dev, "failed to create PHY%d\n", i);
+> +			return PTR_ERR(rk_phy->phys[i].phy);
+> +		}
+> +		rk_phy->phys[i].index = i;
+> +		phy_set_drvdata(rk_phy->phys[i].phy, &rk_phy->phys[i]);
+>  	}
+>  
+> -	phy_set_drvdata(generic_phy, rk_phy);
+> -	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> +	platform_set_drvdata(pdev, rk_phy);
+> +	phy_provider = devm_of_phy_provider_register(dev,
+> +					rockchip_pcie_phy_of_xlate);
+>  
+>  	return PTR_ERR_OR_ZERO(phy_provider);
+>  }
 > 
-
