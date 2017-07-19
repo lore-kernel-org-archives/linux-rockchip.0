@@ -1,112 +1,64 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/2] video/hdmi: Introduce helpers for the HDMI audio
- infoframe payload
-Date: Wed, 19 Jul 2017 10:27:06 -0700
-Message-ID: <CAD=FV=V=dG1=Zw_WnX_54ChA1kzVkPqHPWuVU4Qdx88Xx1jSLw@mail.gmail.com>
-References: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
- <CAD=FV=WNNa_V2PDyFve5gskpd0K2CTkkWatufWFeLjxrbbk_Vw@mail.gmail.com> <06a4828d-9a37-0918-9f33-43014468045d@rock-chips.com>
+From: Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
+Date: Wed, 19 Jul 2017 21:15:15 +0200
+Message-ID: <20170719211515.46a1196c@windsurf>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <06a4828d-9a37-0918-9f33-43014468045d@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Sean Paul <seanpaul@chromium.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark yao <mark.yao@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Shashank Sharma <shashank.sharma@intel.com>, Jose Abreu <joabreu@synopsys.com>, Jani Nikula <jani.nikula@intel.com>, Thierry Reding <treding@nvidia.com>, linux-fbdev@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170719152646.25903-1-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Chen <Peter.Chen-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Marc Dietrich <marvin24-Mmb7MZpHnFY@public.gmane.org>, Rakesh Iyer <riyer-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Ohad Ben-Cohen <ohad-Ix1uc/W3ht7QT0dZR+AlfA@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
+Hello,
 
-On Tue, Jul 18, 2017 at 5:49 PM, Chris Zhong <zyw@rock-chips.com> wrote:
-> Hi Doug
->
->
->
-> On Tuesday, July 18, 2017 11:16 PM, Doug Anderson wrote:
->>
->> Hi,
->>
->> On Tue, Jul 18, 2017 at 4:20 AM, Chris Zhong <zyw@rock-chips.com> wrote:
->>>
->>> The DP is using the same audio infoframe payload as hdmi, per DP 1.3
->>> spec, but it has a different header. Provide a new interface here,
->>> it just packs the payload.
->>>
->>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->>> ---
->>>
->>> Changes in v2: None
->>>
->>>   drivers/video/hdmi.c | 66
->>> ++++++++++++++++++++++++++++++++++++++--------------
->>>   include/linux/hdmi.h |  3 ++-
->>>   2 files changed, 50 insertions(+), 19 deletions(-)
->>>
->>> diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
->>> index 1cf907e..e0b041e 100644
->>> --- a/drivers/video/hdmi.c
->>> +++ b/drivers/video/hdmi.c
->>> @@ -240,6 +240,49 @@ int hdmi_audio_infoframe_init(struct
->>> hdmi_audio_infoframe *frame)
->>>   EXPORT_SYMBOL(hdmi_audio_infoframe_init);
->>>
->>>   /**
->>> + * hdmi_audio_infoframe_pack_payload() - write HDMI audio infoframe
->>> payload to
->>> + * binary buffer
->>> + * @frame: HDMI audio infoframe
->>> + * @buffer: destination buffer
->>> + * @size: size of buffer
->>> + *
->>> + * Packs the information contained in the @frame structure into a binary
->>> + * representation that can be written into the corresponding controller
->>> + * registers.
->>> + *
->>> + * Returns 0 on success or a negative error code on failure.
->>> + */
->>> +ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe
->>> *frame,
->>> +                                         void *buffer, size_t size)
->>> +{
->>> +       unsigned char channels;
->>> +       u8 *ptr = buffer;
->>> +
->>> +       if (size < frame->length)
->>
->> You also need to return -ENOSPC if (size < 5).  That's because below
->> you always write 5 elements into this array.  I'll leave it to someone
->> with actual DRM experience to say whether they want a #define of some
->> sort here.  Probably they do since someone made a #define for
->> "HDMI_INFOFRAME_HEADER_SIZE".
->>
->> Also: you don't use frame->length anywhere in this function and it
->> doesn't seem to be related with packing the payload.  Seems like you
->> shouldn't check it here.
->
-> Actually, I think it should be "if (size < HDMI_AUDIO_INFOFRAME_SIZE)"
+On Wed, 19 Jul 2017 17:25:04 +0200, Philipp Zabel wrote:
+> The reset control API has two modes: exclusive access, where the driver
+> expects to have full and immediate control over the state of the reset
+> line, and shared (clock-like) access, where drivers only request reset
+> deassertion while active, but don't care about the state of the reset line
+> while inactive.
+> 
+> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+> reset lines") started to transition the reset control request API calls
+> to explicitly state whether the driver needs exclusive or shared reset
+> control behavior.
+> 
+> This series converts all drivers that currently implicitly request
+> exclusive reset controls to the corresponding explicit API call. It is,
+> for the most part, generated from the following semantic patch:
+> 
+> @@
+> expression rstc, dev, id;
+> @@
+> -rstc = reset_control_get(dev, id);
+> +rstc = reset_control_get_exclusive(dev, id);
 
-Ah, OK.  My main point was that this function needed to make sense on
-its own.  ...and the function in your patch writes to [0] through [4]
-without actually confirming that there are at least 5 elements.  I'd
-be OK with:
+I don't know if it has been discussed in the past, so forgive me if it
+has been. Have you considered adding a "int flags" argument to the
+existing reset_control_get_*() functions, rather than introducing
+separate exclusive variants ?
 
-  if ((size < frame->length || size < HDMI_AUDIO_INFOFRAME_SIZE)
+Indeed, with a "int flags" argument you could in the future add more
+variants/behaviors without actually multiplying the number of
+functions. Something like the "flags" argument for request_irq() for
+example.
 
+Best regards,
 
->>> +               return -ENOSPC;
->>> +
->>> +       memset(buffer, 0, size);
->>
->> I don't think the memset belongs here.  It seems like all this
->> function is doing is setting up ptr[0] through ptr[4] and the memset()
->> doesn't belong with that, does it?
->>
-> I think the length of payload is 10 Bytes(DB1~DB10), per audio infoframe
-> Format,
-> but we only use the front 5 Bytes, the back 5 bytes must be 0. If we take
-> the 10
-> bytes as a whole, it make sense.
-
-OK, memset() here makes sense with what you say about the frame
-needing to be 10 bytes big.
-
--Doug
+Thomas
+-- 
+Thomas Petazzoni, CTO, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
