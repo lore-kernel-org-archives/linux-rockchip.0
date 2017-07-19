@@ -1,185 +1,165 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH] iommu: Convert to using %pOF instead of full_name
-Date: Tue, 18 Jul 2017 16:43:09 -0500
-Message-ID: <20170718214339.7774-29-robh@kernel.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v2 1/2] video/hdmi: Introduce helpers for the HDMI audio
+ infoframe payload
+Date: Wed, 19 Jul 2017 08:49:03 +0800
+Message-ID: <06a4828d-9a37-0918-9f33-43014468045d@rock-chips.com>
+References: <1500376842-6739-1-git-send-email-zyw@rock-chips.com>
+ <CAD=FV=WNNa_V2PDyFve5gskpd0K2CTkkWatufWFeLjxrbbk_Vw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=WNNa_V2PDyFve5gskpd0K2CTkkWatufWFeLjxrbbk_Vw@mail.gmail.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Sean Paul <seanpaul@chromium.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark yao <mark.yao@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Shashank Sharma <shashank.sharma@intel.com>, Jose Abreu <joabreu@synopsys.com>, Jani Nikula <jani.nikula@intel.com>, Thierry Reding <treding@nvidia.com>, linux-fbdev@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Now that we have a custom printf format specifier, convert users of
-full_name to use %pOF instead. This is preparation to remove storing
-of the full path string for each node.
+Hi Doug
 
-Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
----
- drivers/iommu/fsl_pamu.c        | 20 ++++++++------------
- drivers/iommu/fsl_pamu_domain.c | 10 ++++------
- drivers/iommu/of_iommu.c        |  3 +--
- drivers/iommu/rockchip-iommu.c  | 10 +++++-----
- 4 files changed, 18 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/iommu/fsl_pamu.c b/drivers/iommu/fsl_pamu.c
-index a34355fca37a..919ad9045ac4 100644
---- a/drivers/iommu/fsl_pamu.c
-+++ b/drivers/iommu/fsl_pamu.c
-@@ -530,8 +530,8 @@ u32 get_stash_id(u32 stash_dest_hint, u32 vcpu)
- 		if (node) {
- 			prop = of_get_property(node, "cache-stash-id", NULL);
- 			if (!prop) {
--				pr_debug("missing cache-stash-id at %s\n",
--					 node->full_name);
-+				pr_debug("missing cache-stash-id at %pOF\n",
-+					 node);
- 				of_node_put(node);
- 				return ~(u32)0;
- 			}
-@@ -557,8 +557,8 @@ u32 get_stash_id(u32 stash_dest_hint, u32 vcpu)
- 		if (stash_dest_hint == cache_level) {
- 			prop = of_get_property(node, "cache-stash-id", NULL);
- 			if (!prop) {
--				pr_debug("missing cache-stash-id at %s\n",
--					 node->full_name);
-+				pr_debug("missing cache-stash-id at %pOF\n",
-+					 node);
- 				of_node_put(node);
- 				return ~(u32)0;
- 			}
-@@ -568,8 +568,7 @@ u32 get_stash_id(u32 stash_dest_hint, u32 vcpu)
+On Tuesday, July 18, 2017 11:16 PM, Doug Anderson wrote:
+> Hi,
+>
+> On Tue, Jul 18, 2017 at 4:20 AM, Chris Zhong <zyw@rock-chips.com> wrote:
+>> The DP is using the same audio infoframe payload as hdmi, per DP 1.3
+>> spec, but it has a different header. Provide a new interface here,
+>> it just packs the payload.
+>>
+>> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>> ---
+>>
+>> Changes in v2: None
+>>
+>>   drivers/video/hdmi.c | 66 ++++++++++++++++++++++++++++++++++++++--------------
+>>   include/linux/hdmi.h |  3 ++-
+>>   2 files changed, 50 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+>> index 1cf907e..e0b041e 100644
+>> --- a/drivers/video/hdmi.c
+>> +++ b/drivers/video/hdmi.c
+>> @@ -240,6 +240,49 @@ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
+>>   EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+>>
+>>   /**
+>> + * hdmi_audio_infoframe_pack_payload() - write HDMI audio infoframe payload to
+>> + * binary buffer
+>> + * @frame: HDMI audio infoframe
+>> + * @buffer: destination buffer
+>> + * @size: size of buffer
+>> + *
+>> + * Packs the information contained in the @frame structure into a binary
+>> + * representation that can be written into the corresponding controller
+>> + * registers.
+>> + *
+>> + * Returns 0 on success or a negative error code on failure.
+>> + */
+>> +ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
+>> +                                         void *buffer, size_t size)
+>> +{
+>> +       unsigned char channels;
+>> +       u8 *ptr = buffer;
+>> +
+>> +       if (size < frame->length)
+> You also need to return -ENOSPC if (size < 5).  That's because below
+> you always write 5 elements into this array.  I'll leave it to someone
+> with actual DRM experience to say whether they want a #define of some
+> sort here.  Probably they do since someone made a #define for
+> "HDMI_INFOFRAME_HEADER_SIZE".
+>
+> Also: you don't use frame->length anywhere in this function and it
+> doesn't seem to be related with packing the payload.  Seems like you
+> shouldn't check it here.
+Actually, I think it should be "if (size < HDMI_AUDIO_INFOFRAME_SIZE)"
 
- 		prop = of_get_property(node, "next-level-cache", NULL);
- 		if (!prop) {
--			pr_debug("can't find next-level-cache at %s\n",
--				 node->full_name);
-+			pr_debug("can't find next-level-cache at %pOF\n", node);
- 			of_node_put(node);
- 			return ~(u32)0;  /* can't traverse any further */
- 		}
-@@ -1063,8 +1062,7 @@ static int fsl_pamu_probe(struct platform_device *pdev)
+>
+>
+>> +               return -ENOSPC;
+>> +
+>> +       memset(buffer, 0, size);
+> I don't think the memset belongs here.  It seems like all this
+> function is doing is setting up ptr[0] through ptr[4] and the memset()
+> doesn't belong with that, does it?
+>
+I think the length of payload is 10 Bytes(DB1~DB10), per audio infoframe 
+Format,
+but we only use the front 5 Bytes, the back 5 bytes must be 0. If we 
+take the 10
+bytes as a whole, it make sense.
 
- 	guts_node = of_find_matching_node(NULL, guts_device_ids);
- 	if (!guts_node) {
--		dev_err(dev, "could not find GUTS node %s\n",
--			dev->of_node->full_name);
-+		dev_err(dev, "could not find GUTS node %pOF\n", dev->of_node);
- 		ret = -ENODEV;
- 		goto error;
- 	}
-@@ -1246,8 +1244,7 @@ static __init int fsl_pamu_init(void)
 
- 	pdev = platform_device_alloc("fsl-of-pamu", 0);
- 	if (!pdev) {
--		pr_err("could not allocate device %s\n",
--		       np->full_name);
-+		pr_err("could not allocate device %pOF\n", np);
- 		ret = -ENOMEM;
- 		goto error_device_alloc;
- 	}
-@@ -1259,8 +1256,7 @@ static __init int fsl_pamu_init(void)
+>> @@ -256,22 +299,15 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+>>   ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+>>                                    void *buffer, size_t size)
+>>   {
+>> -       unsigned char channels;
+>>          u8 *ptr = buffer;
+>>          size_t length;
+>> +       int ret;
+>>
+>>          length = HDMI_INFOFRAME_HEADER_SIZE + frame->length;
+>>
+>>          if (size < length)
+>>                  return -ENOSPC;
+>>
+>> -       memset(buffer, 0, size);
+> It seems like the memset() belongs here, logically.  This function
+> deals with the whole buffer so it should be clearing it.
+>
+>> -
+>> -       if (frame->channels >= 2)
+>> -               channels = frame->channels - 1;
+>> -       else
+>> -               channels = 0;
+>> -
+>>          ptr[0] = frame->type;
+>>          ptr[1] = frame->version;
+>>          ptr[2] = frame->length;
+>> @@ -279,16 +315,10 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+>>
+>>          /* start infoframe payload */
+>>          ptr += HDMI_INFOFRAME_HEADER_SIZE;
+>> -
+>> -       ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
+>> -       ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
+>> -                (frame->sample_size & 0x3);
+>> -       ptr[2] = frame->coding_type_ext & 0x1f;
+>> -       ptr[3] = frame->channel_allocation;
+>> -       ptr[4] = (frame->level_shift_value & 0xf) << 3;
+>> -
+>> -       if (frame->downmix_inhibit)
+>> -               ptr[4] |= BIT(7);
+>> +       ret = hdmi_audio_infoframe_pack_payload(frame, ptr,
+>> +                                       size - HDMI_INFOFRAME_HEADER_SIZE);
+>> +       if (ret)
+>> +               return ret;
+>>
+>>          hdmi_infoframe_set_checksum(buffer, length);
+>>
+>> diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+>> index d271ff2..d93c709 100644
+>> --- a/include/linux/hdmi.h
+>> +++ b/include/linux/hdmi.h
+>> @@ -272,7 +272,8 @@ struct hdmi_audio_infoframe {
+>>   int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
+>>   ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+>>                                    void *buffer, size_t size);
+>> -
+>> +ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
+>> +                                         void *buffer, size_t size);
+> nit: seems like you're changing whitespace here (there used to be a
+> blank line before the enum).
+>
+>>   enum hdmi_3d_structure {
+>>          HDMI_3D_STRUCTURE_INVALID = -1,
+>>          HDMI_3D_STRUCTURE_FRAME_PACKING = 0,
+>> --
+>> 2.7.4
+>>
+>
+>
 
- 	ret = platform_device_add(pdev);
- 	if (ret) {
--		pr_err("could not add device %s (err=%i)\n",
--		       np->full_name, ret);
-+		pr_err("could not add device %pOF (err=%i)\n", np, ret);
- 		goto error_device_add;
- 	}
-
-diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
-index da0e1e30ef37..01c73479345d 100644
---- a/drivers/iommu/fsl_pamu_domain.c
-+++ b/drivers/iommu/fsl_pamu_domain.c
-@@ -619,8 +619,8 @@ static int handle_attach_device(struct fsl_dma_domain *dma_domain,
- 	for (i = 0; i < num; i++) {
- 		/* Ensure that LIODN value is valid */
- 		if (liodn[i] >= PAACE_NUMBER_ENTRIES) {
--			pr_debug("Invalid liodn %d, attach device failed for %s\n",
--				 liodn[i], dev->of_node->full_name);
-+			pr_debug("Invalid liodn %d, attach device failed for %pOF\n",
-+				 liodn[i], dev->of_node);
- 			ret = -EINVAL;
- 			break;
- 		}
-@@ -684,8 +684,7 @@ static int fsl_pamu_attach_device(struct iommu_domain *domain,
- 		liodn_cnt = len / sizeof(u32);
- 		ret = handle_attach_device(dma_domain, dev, liodn, liodn_cnt);
- 	} else {
--		pr_debug("missing fsl,liodn property at %s\n",
--			 dev->of_node->full_name);
-+		pr_debug("missing fsl,liodn property at %pOF\n", dev->of_node);
- 		ret = -EINVAL;
- 	}
-
-@@ -720,8 +719,7 @@ static void fsl_pamu_detach_device(struct iommu_domain *domain,
- 	if (prop)
- 		detach_device(dev, dma_domain);
- 	else
--		pr_debug("missing fsl,liodn property at %s\n",
--			 dev->of_node->full_name);
-+		pr_debug("missing fsl,liodn property at %pOF\n", dev->of_node);
- }
-
- static  int configure_domain_geometry(struct iommu_domain *domain, void *data)
-diff --git a/drivers/iommu/of_iommu.c b/drivers/iommu/of_iommu.c
-index 8cb60829a7a1..fe91b35ddf7f 100644
---- a/drivers/iommu/of_iommu.c
-+++ b/drivers/iommu/of_iommu.c
-@@ -255,8 +255,7 @@ static int __init of_iommu_init(void)
- 		const of_iommu_init_fn init_fn = match->data;
-
- 		if (init_fn && init_fn(np))
--			pr_err("Failed to initialise IOMMU %s\n",
--				of_node_full_name(np));
-+			pr_err("Failed to initialise IOMMU %pOF\n", np);
- 	}
-
- 	return 0;
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4ba48a26b389..1b8155dada26 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1008,20 +1008,20 @@ static int rk_iommu_group_set_iommudata(struct iommu_group *group,
- 	ret = of_parse_phandle_with_args(np, "iommus", "#iommu-cells", 0,
- 					 &args);
- 	if (ret) {
--		dev_err(dev, "of_parse_phandle_with_args(%s) => %d\n",
--			np->full_name, ret);
-+		dev_err(dev, "of_parse_phandle_with_args(%pOF) => %d\n",
-+			np, ret);
- 		return ret;
- 	}
- 	if (args.args_count != 0) {
--		dev_err(dev, "incorrect number of iommu params found for %s (found %d, expected 0)\n",
--			args.np->full_name, args.args_count);
-+		dev_err(dev, "incorrect number of iommu params found for %pOF (found %d, expected 0)\n",
-+			args.np, args.args_count);
- 		return -EINVAL;
- 	}
-
- 	pd = of_find_device_by_node(args.np);
- 	of_node_put(args.np);
- 	if (!pd) {
--		dev_err(dev, "iommu %s not found\n", args.np->full_name);
-+		dev_err(dev, "iommu %pOF not found\n", args.np);
- 		return -EPROBE_DEFER;
- 	}
-
---
-2.11.0
+-- 
+Chris Zhong
