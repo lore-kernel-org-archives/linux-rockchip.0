@@ -1,122 +1,117 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v4 2/7] drm/rockchip: vop: move write_relaxed flags to vop
- register
-Date: Wed, 19 Jul 2017 10:52:28 +0800
-Message-ID: <1500432748-13052-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Subject: [PATCH v4 3/7] drm/rockchip: vop: move line_flag_num to interrupt registers
+Date: Wed, 19 Jul 2017 10:52:36 +0800
+Message-ID: <1500432757-13109-1-git-send-email-mark.yao@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2luY2UgdGhlIGRybSBhdG9taWMgZnJhbWV3b3JrLCBvbmx5IGEgc21hbGwgcGFydCBvZiB0aGUg
-dm9wCnJlZ2lzdGVyIG5lZWRzIHN5bmMgd3JpdGUsIEN1cnJlbnRseSBzZWVtcyBvbmx5IGZvbGxv
-d2luZyByZWdpc3RlcnMKbmVlZCBzeW5jIHdyaXRlOgogICBjZmdfZG9uZSwgc3RhbmRieSBhbmQg
-aW50ZXJydXB0IHJlbGF0ZWQgcmVnaXN0ZXIuCgpBbGwgY3RybCByZWdpc3RlcnMgYXJlIHVzaW5n
-IHRoZSBzeW5jIHdyaXRlIG1ldGhvZCB0aGF0IGlzCmluZWZmaWNpZW50LCBoYXJkY29kZSB0aGUg
-d3JpdGVfcmVsYXhlZCBmbGFncyB0byB2b3AgcmVnaXN0ZXJzLAp0aGVuIGNhbiBvbmx5IGRvIHN5
-bmNocm9uaXplIHdyaXRlIGZvciB0aG9zZSBhY3R1YWwgbmVlZGVkIHJlZ2lzdGVyLgoKU2lnbmVk
-LW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxNCArKystLS0tLS0tCiBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgNDIgKysrKysrKysrKysr
-KysrKy0tLS0tLS0tLS0tLS0KIDIgZmlsZXMgY2hhbmdlZCwgMjggaW5zZXJ0aW9ucygrKSwgMjgg
-ZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmMKaW5kZXggODExNjRkNi4uNzg0YTJiNyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC00MiwxOCArNDIsMTIgQEAKICNpbmNsdWRlICJyb2NrY2hp
-cF9kcm1fcHNyLmgiCiAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX3ZvcC5oIgogCi0jZGVmaW5lIF9f
-UkVHX1NFVF9SRUxBWEVEKHgsIG9mZiwgbWFzaywgc2hpZnQsIHYsIHdyaXRlX21hc2spIFwKLQkJ
-dm9wX21hc2tfd3JpdGUoeCwgb2ZmLCBtYXNrLCBzaGlmdCwgdiwgd3JpdGVfbWFzaywgdHJ1ZSkK
-LQotI2RlZmluZSBfX1JFR19TRVRfTk9STUFMKHgsIG9mZiwgbWFzaywgc2hpZnQsIHYsIHdyaXRl
-X21hc2spIFwKLQkJdm9wX21hc2tfd3JpdGUoeCwgb2ZmLCBtYXNrLCBzaGlmdCwgdiwgd3JpdGVf
-bWFzaywgZmFsc2UpCi0KICNkZWZpbmUgUkVHX1NFVCh4LCBiYXNlLCByZWcsIHYsIG1vZGUpIFwK
-LQkJX19SRUdfU0VUXyMjbW9kZSh4LCBiYXNlICsgcmVnLm9mZnNldCwgXAotCQkJCSByZWcubWFz
-aywgcmVnLnNoaWZ0LCB2LCByZWcud3JpdGVfbWFzaykKKwkJdm9wX21hc2tfd3JpdGUoeCwgYmFz
-ZSArIHJlZy5vZmZzZXQsIHJlZy5tYXNrLCByZWcuc2hpZnQsIFwKKwkJCSAgICAgICB2LCByZWcu
-d3JpdGVfbWFzaywgcmVnLnJlbGF4ZWQpCiAjZGVmaW5lIFJFR19TRVRfTUFTSyh4LCBiYXNlLCBy
-ZWcsIG1hc2ssIHYsIG1vZGUpIFwKLQkJX19SRUdfU0VUXyMjbW9kZSh4LCBiYXNlICsgcmVnLm9m
-ZnNldCwgXAotCQkJCSBtYXNrLCByZWcuc2hpZnQsIHYsIHJlZy53cml0ZV9tYXNrKQorCQl2b3Bf
-bWFza193cml0ZSh4LCBiYXNlICsgcmVnLm9mZnNldCwgXAorCQkJICAgICAgIG1hc2ssIHJlZy5z
-aGlmdCwgdiwgcmVnLndyaXRlX21hc2ssIHJlZy5yZWxheGVkKQogCiAjZGVmaW5lIFZPUF9XSU5f
-U0VUKHgsIHdpbiwgbmFtZSwgdikgXAogCQlSRUdfU0VUKHgsIHdpbi0+YmFzZSwgd2luLT5waHkt
-Pm5hbWUsIHYsIFJFTEFYRUQpCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3Zv
-cF9yZWcuYwppbmRleCAwMGU5ZDc5Li42OTFkZDQyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKQEAgLTIwLDE3ICsyMCwyMyBAQAogI2luY2x1ZGUgInJv
-Y2tjaGlwX2RybV92b3AuaCIKICNpbmNsdWRlICJyb2NrY2hpcF92b3BfcmVnLmgiCiAKLSNkZWZp
-bmUgVk9QX1JFRyhvZmYsIF9tYXNrLCBzKSBcCi0JCXsub2Zmc2V0ID0gb2ZmLCBcCisjZGVmaW5l
-IF9WT1BfUkVHKG9mZiwgX21hc2ssIF9zaGlmdCwgX3dyaXRlX21hc2ssIF9yZWxheGVkKSBcCisJ
-CXsgXAorCQkgLm9mZnNldCA9IG9mZiwgXAogCQkgLm1hc2sgPSBfbWFzaywgXAotCQkgLnNoaWZ0
-ID0gcywgXAotCQkgLndyaXRlX21hc2sgPSBmYWxzZSx9CisJCSAuc2hpZnQgPSBfc2hpZnQsIFwK
-KwkJIC53cml0ZV9tYXNrID0gX3dyaXRlX21hc2ssIFwKKwkJIC5yZWxheGVkID0gX3JlbGF4ZWQs
-IFwKKwkJfQogCi0jZGVmaW5lIFZPUF9SRUdfTUFTSyhvZmYsIF9tYXNrLCBzKSBcCi0JCXsub2Zm
-c2V0ID0gb2ZmLCBcCi0JCSAubWFzayA9IF9tYXNrLCBcCi0JCSAuc2hpZnQgPSBzLCBcCi0JCSAu
-d3JpdGVfbWFzayA9IHRydWUsfQorI2RlZmluZSBWT1BfUkVHKG9mZiwgX21hc2ssIF9zaGlmdCkg
-XAorCQlfVk9QX1JFRyhvZmYsIF9tYXNrLCBfc2hpZnQsIGZhbHNlLCB0cnVlKQorCisjZGVmaW5l
-IFZPUF9SRUdfU1lOQyhvZmYsIF9tYXNrLCBfc2hpZnQpIFwKKwkJX1ZPUF9SRUcob2ZmLCBfbWFz
-aywgX3NoaWZ0LCBmYWxzZSwgZmFsc2UpCisKKyNkZWZpbmUgVk9QX1JFR19NQVNLX1NZTkMob2Zm
-LCBfbWFzaywgX3NoaWZ0KSBcCisJCV9WT1BfUkVHKG9mZiwgX21hc2ssIF9zaGlmdCwgdHJ1ZSwg
-ZmFsc2UpCiAKIHN0YXRpYyBjb25zdCB1aW50MzJfdCBmb3JtYXRzX3dpbl9mdWxsW10gPSB7CiAJ
-RFJNX0ZPUk1BVF9YUkdCODg4OCwKQEAgLTExNiw3ICsxMjIsNyBAQAogfTsKIAogc3RhdGljIGNv
-bnN0IHN0cnVjdCB2b3BfY3RybCByazMwMzZfY3RybF9kYXRhID0gewotCS5zdGFuZGJ5ID0gVk9Q
-X1JFRyhSSzMwMzZfU1lTX0NUUkwsIDB4MSwgMzApLAorCS5zdGFuZGJ5ID0gVk9QX1JFR19TWU5D
-KFJLMzAzNl9TWVNfQ1RSTCwgMHgxLCAzMCksCiAJLm91dF9tb2RlID0gVk9QX1JFRyhSSzMwMzZf
-RFNQX0NUUkwwLCAweGYsIDApLAogCS5waW5fcG9sID0gVk9QX1JFRyhSSzMwMzZfRFNQX0NUUkww
-LCAweGYsIDQpLAogCS5odG90YWxfcHcgPSBWT1BfUkVHKFJLMzAzNl9EU1BfSFRPVEFMX0hTX0VO
-RCwgMHgxZmZmMWZmZiwgMCksCkBAIC0xMjQsNyArMTMwLDcgQEAKIAkudnRvdGFsX3B3ID0gVk9Q
-X1JFRyhSSzMwMzZfRFNQX1ZUT1RBTF9WU19FTkQsIDB4MWZmZjFmZmYsIDApLAogCS52YWN0X3N0
-X2VuZCA9IFZPUF9SRUcoUkszMDM2X0RTUF9WQUNUX1NUX0VORCwgMHgxZmZmMWZmZiwgMCksCiAJ
-LmxpbmVfZmxhZ19udW1bMF0gPSBWT1BfUkVHKFJLMzAzNl9JTlRfU1RBVFVTLCAweGZmZiwgMTIp
-LAotCS5jZmdfZG9uZSA9IFZPUF9SRUcoUkszMDM2X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKKwku
-Y2ZnX2RvbmUgPSBWT1BfUkVHX1NZTkMoUkszMDM2X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKIH07
-CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2RhdGEgcmszMDM2X3ZvcCA9IHsKQEAgLTIwMCw3
-ICsyMDYsNyBAQAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfY3RybCByazMyODhfY3Ry
-bF9kYXRhID0gewotCS5zdGFuZGJ5ID0gVk9QX1JFRyhSSzMyODhfU1lTX0NUUkwsIDB4MSwgMjIp
-LAorCS5zdGFuZGJ5ID0gVk9QX1JFR19TWU5DKFJLMzI4OF9TWVNfQ1RSTCwgMHgxLCAyMiksCiAJ
-LmdhdGVfZW4gPSBWT1BfUkVHKFJLMzI4OF9TWVNfQ1RSTCwgMHgxLCAyMyksCiAJLm1tdV9lbiA9
-IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAweDEsIDIwKSwKIAkucmdiX2VuID0gVk9QX1JFRyhS
-SzMyODhfU1lTX0NUUkwsIDB4MSwgMTIpLApAQCAtMjIxLDcgKzIyNyw3IEBACiAJLnZwb3N0X3N0
-X2VuZCA9IFZPUF9SRUcoUkszMjg4X1BPU1RfRFNQX1ZBQ1RfSU5GTywgMHgxZmZmMWZmZiwgMCks
-CiAJLmxpbmVfZmxhZ19udW1bMF0gPSBWT1BfUkVHKFJLMzI4OF9JTlRSX0NUUkwwLCAweDFmZmYs
-IDEyKSwKIAkuZ2xvYmFsX3JlZ2RvbmVfZW4gPSBWT1BfUkVHKFJLMzI4OF9TWVNfQ1RSTCwgMHgx
-LCAxMSksCi0JLmNmZ19kb25lID0gVk9QX1JFRyhSSzMyODhfUkVHX0NGR19ET05FLCAweDEsIDAp
-LAorCS5jZmdfZG9uZSA9IFZPUF9SRUdfU1lOQyhSSzMyODhfUkVHX0NGR19ET05FLCAweDEsIDAp
-LAogfTsKIAogLyoKQEAgLTI2NSw3ICsyNzEsNyBAQAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVj
-dCB2b3BfY3RybCByazMzOTlfY3RybF9kYXRhID0gewotCS5zdGFuZGJ5ID0gVk9QX1JFRyhSSzMz
-OTlfU1lTX0NUUkwsIDB4MSwgMjIpLAorCS5zdGFuZGJ5ID0gVk9QX1JFR19TWU5DKFJLMzM5OV9T
-WVNfQ1RSTCwgMHgxLCAyMiksCiAJLmdhdGVfZW4gPSBWT1BfUkVHKFJLMzM5OV9TWVNfQ1RSTCwg
-MHgxLCAyMyksCiAJLmRwX2VuID0gVk9QX1JFRyhSSzMzOTlfU1lTX0NUUkwsIDB4MSwgMTEpLAog
-CS5yZ2JfZW4gPSBWT1BfUkVHKFJLMzM5OV9TWVNfQ1RSTCwgMHgxLCAxMiksCkBAIC0yODksNyAr
-Mjk1LDcgQEAKIAkudnBvc3Rfc3RfZW5kID0gVk9QX1JFRyhSSzMzOTlfUE9TVF9EU1BfVkFDVF9J
-TkZPLCAweDFmZmYxZmZmLCAwKSwKIAkubGluZV9mbGFnX251bVswXSA9IFZPUF9SRUcoUkszMzk5
-X0xJTkVfRkxBRywgMHhmZmZmLCAwKSwKIAkubGluZV9mbGFnX251bVsxXSA9IFZPUF9SRUcoUksz
-Mzk5X0xJTkVfRkxBRywgMHhmZmZmLCAxNiksCi0JLmNmZ19kb25lID0gVk9QX1JFR19NQVNLKFJL
-MzM5OV9SRUdfQ0ZHX0RPTkUsIDB4MSwgMCksCisJLmNmZ19kb25lID0gVk9QX1JFR19NQVNLX1NZ
-TkMoUkszMzk5X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKIH07CiAKIHN0YXRpYyBjb25zdCBpbnQg
-cmszMzk5X3ZvcF9pbnRyc1tdID0gewpAQCAtMzA1LDkgKzMxMSw5IEBACiBzdGF0aWMgY29uc3Qg
-c3RydWN0IHZvcF9pbnRyIHJrMzM5OV92b3BfaW50ciA9IHsKIAkuaW50cnMgPSByazMzOTlfdm9w
-X2ludHJzLAogCS5uaW50cnMgPSBBUlJBWV9TSVpFKHJrMzM5OV92b3BfaW50cnMpLAotCS5zdGF0
-dXMgPSBWT1BfUkVHX01BU0soUkszMzk5X0lOVFJfU1RBVFVTMCwgMHhmZmZmLCAwKSwKLQkuZW5h
-YmxlID0gVk9QX1JFR19NQVNLKFJLMzM5OV9JTlRSX0VOMCwgMHhmZmZmLCAwKSwKLQkuY2xlYXIg
-PSBWT1BfUkVHX01BU0soUkszMzk5X0lOVFJfQ0xFQVIwLCAweGZmZmYsIDApLAorCS5zdGF0dXMg
-PSBWT1BfUkVHX01BU0tfU1lOQyhSSzMzOTlfSU5UUl9TVEFUVVMwLCAweGZmZmYsIDApLAorCS5l
-bmFibGUgPSBWT1BfUkVHX01BU0tfU1lOQyhSSzMzOTlfSU5UUl9FTjAsIDB4ZmZmZiwgMCksCisJ
-LmNsZWFyID0gVk9QX1JFR19NQVNLX1NZTkMoUkszMzk5X0lOVFJfQ0xFQVIwLCAweGZmZmYsIDAp
-LAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfZGF0YSByazMzOTlfdm9wX2JpZyA9IHsK
-LS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+In the hardware design process, the design of line flags
+register is associated with the interrupt register,
+placing the line flags in the interrupt definition is
+more reasonable, and it would make multi-vop define easilier.
+
+Changes in v3:
+- Explain more in details, introduce why we need this patch
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 4 ++--
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 8 ++++----
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 784a2b7..4f6c7bc 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -982,7 +982,7 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
+ 	VOP_CTRL_SET(vop, vact_st_end, val);
+ 	VOP_CTRL_SET(vop, vpost_st_end, val);
+ 
+-	VOP_CTRL_SET(vop, line_flag_num[0], vact_end);
++	VOP_INTR_SET(vop, line_flag_num[0], vact_end);
+ 
+ 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 084d3b2..9c5da32 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -59,8 +59,6 @@ struct vop_ctrl {
+ 	struct vop_reg hpost_st_end;
+ 	struct vop_reg vpost_st_end;
+ 
+-	struct vop_reg line_flag_num[2];
+-
+ 	struct vop_reg global_regdone_en;
+ 	struct vop_reg cfg_done;
+ };
+@@ -68,6 +66,8 @@ struct vop_ctrl {
+ struct vop_intr {
+ 	const int *intrs;
+ 	uint32_t nintrs;
++
++	struct vop_reg line_flag_num[2];
+ 	struct vop_reg enable;
+ 	struct vop_reg clear;
+ 	struct vop_reg status;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 691dd42..064a46d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -116,6 +116,7 @@
+ static const struct vop_intr rk3036_intr = {
+ 	.intrs = rk3036_vop_intrs,
+ 	.nintrs = ARRAY_SIZE(rk3036_vop_intrs),
++	.line_flag_num[0] = VOP_REG(RK3036_INT_STATUS, 0xfff, 12),
+ 	.status = VOP_REG(RK3036_INT_STATUS, 0xf, 0),
+ 	.enable = VOP_REG(RK3036_INT_STATUS, 0xf, 4),
+ 	.clear = VOP_REG(RK3036_INT_STATUS, 0xf, 8),
+@@ -129,7 +130,6 @@
+ 	.hact_st_end = VOP_REG(RK3036_DSP_HACT_ST_END, 0x1fff1fff, 0),
+ 	.vtotal_pw = VOP_REG(RK3036_DSP_VTOTAL_VS_END, 0x1fff1fff, 0),
+ 	.vact_st_end = VOP_REG(RK3036_DSP_VACT_ST_END, 0x1fff1fff, 0),
+-	.line_flag_num[0] = VOP_REG(RK3036_INT_STATUS, 0xfff, 12),
+ 	.cfg_done = VOP_REG_SYNC(RK3036_REG_CFG_DONE, 0x1, 0),
+ };
+ 
+@@ -225,7 +225,6 @@
+ 	.vact_st_end = VOP_REG(RK3288_DSP_VACT_ST_END, 0x1fff1fff, 0),
+ 	.hpost_st_end = VOP_REG(RK3288_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
+ 	.vpost_st_end = VOP_REG(RK3288_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
+-	.line_flag_num[0] = VOP_REG(RK3288_INTR_CTRL0, 0x1fff, 12),
+ 	.global_regdone_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 11),
+ 	.cfg_done = VOP_REG_SYNC(RK3288_REG_CFG_DONE, 0x1, 0),
+ };
+@@ -257,6 +256,7 @@
+ static const struct vop_intr rk3288_vop_intr = {
+ 	.intrs = rk3288_vop_intrs,
+ 	.nintrs = ARRAY_SIZE(rk3288_vop_intrs),
++	.line_flag_num[0] = VOP_REG(RK3288_INTR_CTRL0, 0x1fff, 12),
+ 	.status = VOP_REG(RK3288_INTR_CTRL0, 0xf, 0),
+ 	.enable = VOP_REG(RK3288_INTR_CTRL0, 0xf, 4),
+ 	.clear = VOP_REG(RK3288_INTR_CTRL0, 0xf, 8),
+@@ -293,8 +293,6 @@
+ 	.vact_st_end = VOP_REG(RK3399_DSP_VACT_ST_END, 0x1fff1fff, 0),
+ 	.hpost_st_end = VOP_REG(RK3399_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
+ 	.vpost_st_end = VOP_REG(RK3399_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
+-	.line_flag_num[0] = VOP_REG(RK3399_LINE_FLAG, 0xffff, 0),
+-	.line_flag_num[1] = VOP_REG(RK3399_LINE_FLAG, 0xffff, 16),
+ 	.cfg_done = VOP_REG_MASK_SYNC(RK3399_REG_CFG_DONE, 0x1, 0),
+ };
+ 
+@@ -311,6 +309,8 @@
+ static const struct vop_intr rk3399_vop_intr = {
+ 	.intrs = rk3399_vop_intrs,
+ 	.nintrs = ARRAY_SIZE(rk3399_vop_intrs),
++	.line_flag_num[0] = VOP_REG(RK3399_LINE_FLAG, 0xffff, 0),
++	.line_flag_num[1] = VOP_REG(RK3399_LINE_FLAG, 0xffff, 16),
+ 	.status = VOP_REG_MASK_SYNC(RK3399_INTR_STATUS0, 0xffff, 0),
+ 	.enable = VOP_REG_MASK_SYNC(RK3399_INTR_EN0, 0xffff, 0),
+ 	.clear = VOP_REG_MASK_SYNC(RK3399_INTR_CLEAR0, 0xffff, 0),
+-- 
+1.9.1
