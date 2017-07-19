@@ -1,70 +1,70 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v4 7/7] drm/rockchip: vop: rk3328: fix overlay abnormal
-Date: Wed, 19 Jul 2017 10:52:55 +0800
-Message-ID: <1500432776-13322-1-git-send-email-mark.yao@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/7] drm/rockchip: add all full framework vop support
+Date: Wed, 19 Jul 2017 10:57:15 +0800
+Message-ID: <1500433036-13730-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It's a hardware bug, all window's overlay channel reset
-value is same, hardware overlay would be die.
+These patches try to make all current rockchip full framework vop works
+on drm, fill missing vop on full framework.
+Vop Full framework now has following vops:
+IP version    chipname
+      3.1           rk3288
+      3.2           rk3368
+      3.4           rk3366
+      3.5           rk3399 big
+      3.6           rk3399 lit
+      3.7           rk3228
+      3.8           rk3328
 
-so we must initial difference id for each overlay channel.
+Group the vop register, it would make register  definition clearer and
+more easily to reuse same group register define for difference vops.
 
-The Channel register is supported on all vop will full design.
-Following is the details for this register
-VOP_WIN0_CTRL2
-  bit[7:4] win_rid_win0_cbr
-       axi read id of win0 cbr channel
-  bit[3:0] win_rid_win0_yrgb
-       axi read id of win0 yrgb channel
+Tested on rk3399 excavator board with kernel 4.13-rc1.
 
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 ++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 1 +
- 3 files changed, 4 insertions(+)
+And other chips tested on rockchip kernel 4.4:
+   https://github.com/rockchip-linux/kernel/tree/release-4.4/drivers/gpu/drm/rockchip
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 92d098b..e4b3388 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1452,7 +1452,9 @@ static int vop_initial(struct vop *vop)
- 
- 	for (i = 0; i < vop_data->win_size; i++) {
- 		const struct vop_win_data *win = &vop_data->win[i];
-+		int channel = i * 2 + 1;
- 
-+		VOP_WIN_SET(vop, win, channel, (channel + 1) << 4 | channel);
- 		VOP_WIN_SET(vop, win, enable, 0);
- 		VOP_WIN_SET(vop, win, gate, 1);
- 	}
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 43d08c8..af1091f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -141,6 +141,7 @@ struct vop_win_phy {
- 
- 	struct vop_reg dst_alpha_ctl;
- 	struct vop_reg src_alpha_ctl;
-+	struct vop_reg channel;
- };
- 
- struct vop_win_data {
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 99f8ba4..cc8d408 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -196,6 +196,7 @@
- 	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
- 	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
- 	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
-+	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
- };
- 
- static const struct vop_win_phy rk3288_win23_data = {
+Changes in v4:
+- rebase to newest torvalds kernel, fix merge conflict 
+
+Changes in v3:
+- group vop register instead using VOP_REG_VER mechanism
+- move write_relaxed flags to vop registers
+- Explain more on patch commit message
+- fix rk3328 overlay abnormal
+
+Changes in v2:
+- rename rk322x to rk3228(Heiko Stübner)
+- correct some vop registers define
+
+Mark Yao (7):
+  drm/rockchip: vop: initialize registers directly
+  drm/rockchip: vop: move write_relaxed flags to vop register
+  drm/rockchip: vop: move line_flag_num to interrupt registers
+  drm/rockchip: vop: group vop registers
+  drm/rockchip: vop: add a series of vop support
+  dt-bindings: display: fill Documents for series of vop
+  drm/rockchip: vop: rk3328: fix overlay abnormal
+
+ .../bindings/display/rockchip/rockchip-vop.txt     |   4 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 109 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |  81 +-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c        | 374 ++++++---
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.h        | 905 ++++++++++++++++-----
+ 5 files changed, 1074 insertions(+), 399 deletions(-)
+
 -- 
 1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
