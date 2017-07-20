@@ -1,131 +1,358 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: support mail and IPA thermal for rk3399
-Date: Wed, 19 Jul 2017 23:06:53 +0200
-Message-ID: <3610458.AeGaZ0pxhP@phil>
-References: <1500279271-15249-1-git-send-email-wxt@rock-chips.com> <65759378-509b-3287-fd78-02361e89429b@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <65759378-509b-3287-fd78-02361e89429b-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [RFT PATCH] mmc: sdhci-of-arasan: Add command queue support
+Date: Thu, 20 Jul 2017 09:43:18 +0800
+Message-ID: <1500514998-183947-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Adrian Hunter <adrian.hunter@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 19. Juli 2017, 17:06:59 CEST schrieb Caesar Wang:
-> Hi Rob & Heiko,
-> 
-> Do we have the chance to merge these patches?
+Just for folks who are interested in testing CQE using RK3399
+platforms. And This patch depends on the unmerged CQE support
+for mmc core which could be found here:
 
-From the mali-thermal thingy, it doesn't look like Rob likes that IPA stuff.
+http://www.spinics.net/lists/linux-mmc/msg44648.html
 
-So I'll most likely pick the other patches that rely on approved bindings
-after I return from my vacation and leave the thermal issue until it can
-be resolved.
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+
+ drivers/mmc/host/Kconfig           |   1 +
+ drivers/mmc/host/sdhci-of-arasan.c | 199 ++++++++++++++++++++++++++++++++++---
+ 2 files changed, 186 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
+index 2242633..a14efcb 100644
+--- a/drivers/mmc/host/Kconfig
++++ b/drivers/mmc/host/Kconfig
+@@ -123,6 +123,7 @@ config MMC_SDHCI_OF_ARASAN
+ 	depends on MMC_SDHCI_PLTFM
+ 	depends on OF
+ 	depends on COMMON_CLK
++	select MMC_CQHC
+ 	help
+ 	  This selects the Arasan Secure Digital Host Controller Interface
+ 	  (SDHCI). This hardware is found e.g. in Xilinx' Zynq SoC.
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index b13c0a7..02e198b 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -24,10 +24,13 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/phy/phy.h>
++#include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+-#include "sdhci-pltfm.h"
+ #include <linux/of.h>
+ 
++#include "cqhci.h"
++#include "sdhci-pltfm.h"
++
+ #define SDHCI_ARASAN_VENDOR_REGISTER	0x78
+ 
+ #define VENDOR_ENHANCED_STROBE		BIT(0)
+@@ -89,7 +92,7 @@ struct sdhci_arasan_data {
+ 	struct clk	*clk_ahb;
+ 	struct phy	*phy;
+ 	bool		is_phy_on;
+-
++	bool		has_cqe;
+ 	struct clk_hw	sdcardclk_hw;
+ 	struct clk      *sdcardclk;
+ 
+@@ -262,23 +265,70 @@ static int sdhci_arasan_voltage_switch(struct mmc_host *mmc,
+ 	return -EINVAL;
+ }
+ 
+-static struct sdhci_ops sdhci_arasan_ops = {
++static u32 sdhci_arasan_cqhci_irq(struct sdhci_host *host, u32 intmask)
++{
++	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
++	struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
++	int cmd_error = 0;
++	int data_error = 0;
++
++	if (!sdhci_arasan->has_cqe)
++		return 0;
++
++	if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
++		return intmask;
++
++	cqhci_irq(host->mmc, intmask, cmd_error, data_error);
++
++	return 0;
++}
++
++static void sdhci_arasan_dumpregs(struct mmc_host *mmc)
++{
++	sdhci_dumpregs(mmc_priv(mmc));
++}
++
++static void sdhci_arasan_cqe_enable(struct mmc_host *mmc)
++{
++	struct sdhci_host *host = mmc_priv(mmc);
++	u32 reg;
++
++	/*
++	 * CQE gets stuck if it sees Buffer Read Enable bit set, which can be
++	 * the case after tuning, so ensure the buffer is drained.
++	 */
++	reg = sdhci_readl(host, SDHCI_PRESENT_STATE);
++	while (reg & SDHCI_DATA_AVAILABLE) {
++		sdhci_readl(host, SDHCI_BUFFER);
++		reg = sdhci_readl(host, SDHCI_PRESENT_STATE);
++	}
++
++	sdhci_cqe_enable(mmc);
++}
++
++static const struct cqhci_host_ops sdhci_arasan_cqhci_ops = {
++	.enable         = sdhci_arasan_cqe_enable,
++	.disable        = sdhci_cqe_disable,
++	.dumpregs       = sdhci_arasan_dumpregs,
++};
++
++static struct sdhci_ops sdhci_arasan_cqe_ops = {
+ 	.set_clock = sdhci_arasan_set_clock,
+ 	.get_max_clock = sdhci_pltfm_clk_get_max_clock,
+ 	.get_timeout_clock = sdhci_pltfm_clk_get_max_clock,
+ 	.set_bus_width = sdhci_set_bus_width,
+ 	.reset = sdhci_arasan_reset,
+ 	.set_uhs_signaling = sdhci_set_uhs_signaling,
++	.irq = sdhci_arasan_cqhci_irq,
+ };
+ 
+-static struct sdhci_pltfm_data sdhci_arasan_pdata = {
+-	.ops = &sdhci_arasan_ops,
++static struct sdhci_pltfm_data sdhci_arasan_cqe_pdata = {
++	.ops = &sdhci_arasan_cqe_ops,
+ 	.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN,
+ 	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+ 			SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+ };
+ 
+-#ifdef CONFIG_PM_SLEEP
+ /**
+  * sdhci_arasan_suspend - Suspend method for the driver
+  * @dev:	Address of the device structure
+@@ -286,7 +336,7 @@ static int sdhci_arasan_voltage_switch(struct mmc_host *mmc,
+  *
+  * Put the device in a low power state.
+  */
+-static int sdhci_arasan_suspend(struct device *dev)
++static int __maybe_unused sdhci_arasan_suspend(struct device *dev)
+ {
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct sdhci_host *host = platform_get_drvdata(pdev);
+@@ -297,6 +347,12 @@ static int sdhci_arasan_suspend(struct device *dev)
+ 	if (host->tuning_mode != SDHCI_TUNING_MODE_3)
+ 		mmc_retune_needed(host->mmc);
+ 
++	if (sdhci_arasan->has_cqe) {
++		ret = cqhci_suspend(host->mmc);
++		if (ret)
++			return ret;
++	}
++
+ 	ret = sdhci_suspend_host(host);
+ 	if (ret)
+ 		return ret;
+@@ -324,7 +380,7 @@ static int sdhci_arasan_suspend(struct device *dev)
+  *
+  * Resume operation after suspend
+  */
+-static int sdhci_arasan_resume(struct device *dev)
++static int __maybe_unused sdhci_arasan_resume(struct device *dev)
+ {
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct sdhci_host *host = platform_get_drvdata(pdev);
+@@ -353,12 +409,70 @@ static int sdhci_arasan_resume(struct device *dev)
+ 		sdhci_arasan->is_phy_on = true;
+ 	}
+ 
+-	return sdhci_resume_host(host);
++	ret = sdhci_resume_host(host);
++	if (ret) {
++		dev_err(dev, "Cannot resume host.\n");
++		return ret;
++	}
++
++	if (sdhci_arasan->has_cqe)
++		return cqhci_resume(host->mmc);
++
++	return 0;
++}
++
++static int __maybe_unused sdhci_arasan_runtime_suspend(struct device *dev)
++{
++	struct platform_device *pdev = to_platform_device(dev);
++	struct sdhci_host *host = platform_get_drvdata(pdev);
++	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
++	struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
++	int ret;
++
++	if (sdhci_arasan->has_cqe) {
++		ret = cqhci_suspend(host->mmc);
++		if (ret)
++			return ret;
++	}
++
++	ret = sdhci_runtime_suspend_host(host);
++	if (ret)
++		return ret;
++
++	clk_disable_unprepare(pltfm_host->clk);
++	clk_disable_unprepare(sdhci_arasan->clk_ahb);
++
++	return 0;
++}
++
++static int __maybe_unused sdhci_arasan_runtime_resume(struct device *dev)
++{
++	struct platform_device *pdev = to_platform_device(dev);
++	struct sdhci_host *host = platform_get_drvdata(pdev);
++	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
++	struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
++	int ret;
++
++	clk_prepare_enable(pltfm_host->clk);
++	clk_prepare_enable(sdhci_arasan->clk_ahb);
++
++	ret = sdhci_runtime_resume_host(host);
++	if (ret)
++		return ret;
++
++	if (sdhci_arasan->has_cqe)
++		return cqhci_resume(host->mmc);
++
++	return 0;
+ }
+-#endif /* ! CONFIG_PM_SLEEP */
+ 
+-static SIMPLE_DEV_PM_OPS(sdhci_arasan_dev_pm_ops, sdhci_arasan_suspend,
+-			 sdhci_arasan_resume);
++static const struct dev_pm_ops sdhci_arasan_dev_pm_ops = {
++	SET_SYSTEM_SLEEP_PM_OPS(sdhci_arasan_suspend,
++				sdhci_arasan_resume)
++	SET_RUNTIME_PM_OPS(sdhci_arasan_runtime_suspend,
++			   sdhci_arasan_runtime_resume,
++			   NULL)
++};
+ 
+ static const struct of_device_id sdhci_arasan_of_match[] = {
+ 	/* SoC-specific compatible strings w/ soc_ctl_map */
+@@ -556,6 +670,49 @@ static void sdhci_arasan_unregister_sdclk(struct device *dev)
+ 	of_clk_del_provider(dev->of_node);
+ }
+ 
++static int sdhci_arasan_add_host(struct sdhci_arasan_data *sdhci_arasan)
++{
++	struct sdhci_host *host = sdhci_arasan->host;
++	struct cqhci_host *cq_host;
++	bool dma64;
++	int ret;
++
++	if (!sdhci_arasan->has_cqe)
++		return sdhci_add_host(host);
++
++	ret = sdhci_setup_host(host);
++	if (ret)
++		return ret;
++
++	cq_host = devm_kzalloc(host->mmc->parent,
++			       sizeof(*cq_host), GFP_KERNEL);
++	if (!cq_host) {
++		ret = -ENOMEM;
++		goto cleanup;
++	}
++
++	cq_host->mmio = host->ioaddr + 0x200;
++	cq_host->ops = &sdhci_arasan_cqhci_ops;
++
++	dma64 = host->flags & SDHCI_USE_64_BIT_DMA;
++	if (dma64)
++		cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
++
++	ret = cqhci_init(cq_host, host->mmc, dma64);
++	if (ret)
++		goto cleanup;
++
++	ret = __sdhci_add_host(host);
++	if (ret)
++		goto cleanup;
++
++	return 0;
++
++cleanup:
++	sdhci_cleanup_host(host);
++	return ret;
++}
++
+ static int sdhci_arasan_probe(struct platform_device *pdev)
+ {
+ 	int ret;
+@@ -567,8 +724,9 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+ 	struct sdhci_arasan_data *sdhci_arasan;
+ 	struct device_node *np = pdev->dev.of_node;
+ 
+-	host = sdhci_pltfm_init(pdev, &sdhci_arasan_pdata,
++	host = sdhci_pltfm_init(pdev, &sdhci_arasan_cqe_pdata,
+ 				sizeof(*sdhci_arasan));
++
+ 	if (IS_ERR(host))
+ 		return PTR_ERR(host);
+ 
+@@ -619,6 +777,12 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+ 		goto clk_dis_ahb;
+ 	}
+ 
++	pm_runtime_get_noresume(&pdev->dev);
++	pm_runtime_set_active(&pdev->dev);
++	pm_runtime_enable(&pdev->dev);
++	pm_runtime_set_autosuspend_delay(&pdev->dev, 50);
++	pm_runtime_use_autosuspend(&pdev->dev);
++
+ 	sdhci_get_of_property(pdev);
+ 
+ 	if (of_property_read_bool(np, "xlnx,fails-without-test-cd"))
+@@ -663,12 +827,15 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+ 					sdhci_arasan_hs400_enhanced_strobe;
+ 		host->mmc_host_ops.start_signal_voltage_switch =
+ 					sdhci_arasan_voltage_switch;
++		sdhci_arasan->has_cqe = true;
++		host->mmc->caps2 |= MMC_CAP2_CQE;
+ 	}
+ 
+-	ret = sdhci_add_host(host);
++	ret = sdhci_arasan_add_host(sdhci_arasan);
+ 	if (ret)
+ 		goto err_add_host;
+ 
++	pm_runtime_put(&pdev->dev);
+ 	return 0;
+ 
+ err_add_host:
+@@ -677,6 +844,9 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+ unreg_clk:
+ 	sdhci_arasan_unregister_sdclk(&pdev->dev);
+ clk_disable_all:
++	pm_runtime_disable(&pdev->dev);
++	pm_runtime_set_suspended(&pdev->dev);
++	pm_runtime_put_noidle(&pdev->dev);
+ 	clk_disable_unprepare(clk_xin);
+ clk_dis_ahb:
+ 	clk_disable_unprepare(sdhci_arasan->clk_ahb);
+@@ -704,6 +874,7 @@ static int sdhci_arasan_remove(struct platform_device *pdev)
+ 	ret = sdhci_pltfm_unregister(pdev);
+ 
+ 	clk_disable_unprepare(clk_ahb);
++	pm_runtime_disable(&pdev->dev);
+ 
+ 	return ret;
+ }
+-- 
+1.9.1
 
 
-Heiko
-
-> 
-> I'm try to bring up the display and run webgl for testing with my github on
-> https://github.com/Caesar-github/rockchip/commits/gru/next-stable-chromeos
-> 
-> I believe the Rocky@RK will post patches to support the other SoCs after.
-> 
-> -Caesar
-> 
-> 在 2017年07月17日 16:14, Caesar Wang 写道:
-> > This series patches supported the mail in devicetree and used the
-> > thermal IPA by default.
-> >
-> > Verified with kernel is based on Linus's master branch and Heiko's
-> > v4.14-armsoc-tmp/dts64 branch. ( The Linux version 4.12.0 for now).
-> >
-> > The most rockchip SoCs will be supported with IPA mode for thermal
-> > in later.
-> >
-> > ---
-> >
-> > History version:
-> > 1. The first version found on
-> > https://www.spinics.net/lists/arm-kernel/msg593118.html
-> >
-> > Tested on Kevin board with bringing up ChromeOS.
-> > OS VERSION:
-> >      CHROMEOS_RELEASE_DESCRIPTION=9693.1.0 (Official Build) dev-channel kevin test
-> >
-> > BIOS VERSION:
-> >      Google_Kevin.8785.211.2017_06_20_1043
-> >
-> > EC VERSION:
-> >      Build info:    kevin_v1.10.217-24514961d 2017-07-03 07:46:36 wxt@nb
-> >
-> > With the ARM's lastest mali driver TX011-SW-99002-r18p0-01rel0 on
-> > https://developer.arm.com/products/software/mali-drivers/midgard-kernel
-> >
-> >  From the bootup log:
-> >      localhost devfreq0 # dmesg |grep mali
-> >      [    0.933334] mali ff9a0000.gpu: GPU identified as 0x0860 r2p0 status 0
-> >      [    0.940830] mali ff9a0000.gpu: Protected mode not available
-> >      [    0.947334] mali ff9a0000.gpu: Using configured power model mali-simple-power-model, and fallback mali-simple-power-model
-> >      [    0.960083] mali ff9a0000.gpu: Probed as mali0
-> >
-> >      localhost devfreq0 # pwd
-> >      /sys/devices/platform/ff9a0000.gpu/devfreq/devfreq0
-> >      localhost devfreq0 # ls
-> >      available_frequencies  device    min_freq          subsystem    uevent
-> >      available_governors    governor  polling_interval  target_freq  userspace
-> >      cur_freq               max_freq  power             trans_stat
-> >
-> >      localhost ff9a0000.gpu # ls
-> >      core_availability_policy  gpuinfo               modalias       soft_job_timeout
-> >      core_mask                 js_scheduling_period  of_node        subsystem
-> >      devfreq                   js_timeouts           pm_poweroff    uevent
-> >      driver                    mem_pool_max_size     power
-> >      driver_override           mem_pool_size         power_policy
-> >      dvfs_period               misc                  reset_timeout
-> > ---
-> >
-> > And for thermal with IPA.
-> > Try to run 'md5sum /dev/zero &' and octane/benchmark scripts to go up the temperature.
-> >  From the scripts to have a look at the actual control.
-> > "
-> > while true; do grep "" /sys/class/thermal/thermal_zone[0-1]/temp /sys/devices/system/cpu/cpu[0-5]/cpufreq/scaling_cur_freq /sys/devices/platform/ff9a0000.gpu/devfreq/devfreq0/cur_freq;date;sleep .5; done &
-> > "
-> >
-> > -Caesar
-> >
-> >
-> > Changes in v2:
-> > As Heiko comments on https://patchwork.kernel.org/patch/9835939/
-> > - interrupt-name use the lower case.
-> > - use the correct compatible "arm,mali-t860"
-> > - remove the clock name, since the mali only have one input clock.
-> > - foo@ will produce warnings when used without reg property.
-> > - update the commit to explain the two passive trip points changed.
-> >
-> > Caesar Wang (5):
-> >    dt-bindings: gpu: add the RK3399 mali for rockchip specifics
-> >    dt-bindings: gpu: add a power_model optional properties for MALI
-> >    arm64: dts: rockchip: add ARM Mali GPU node for RK3399 SoCs
-> >    arm64: dts: rockchip: enable the GPU for RK3399-GRU
-> >    arm64: dts: rockchip: update the thermal zones for RK3399 SoCs
-> >
-> >   .../devicetree/bindings/gpu/arm,mali-midgard.txt   | 13 ++++
-> >   arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |  5 ++
-> >   arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi   | 33 ++++++++++
-> >   arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       | 33 ++++++++++
-> >   arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 74 ++++++++++++----------
-> >   5 files changed, 125 insertions(+), 33 deletions(-)
-> >
-> 
-> 
-> 
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
