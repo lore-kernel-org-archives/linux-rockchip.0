@@ -1,42 +1,74 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 5/5] dt-bindings: display: fill Documents for series of
- vop
-Date: Thu, 20 Jul 2017 10:10:53 +0800
-Message-ID: <5970112D.4050904@rock-chips.com>
-References: <1499824991-7391-1-git-send-email-mark.yao@rock-chips.com>
- <1499825042-7652-1-git-send-email-mark.yao@rock-chips.com>
- <20170717172447.mwmccb5szsutc3k7@rob-hp-laptop>
+From: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v5 0/7] drm/rockchip: add all full framework vop support
+Date: Thu, 20 Jul 2017 10:42:44 +0800
+Message-ID: <1500518564-30371-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170717172447.mwmccb5szsutc3k7@rob-hp-laptop>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA35pyIMTjml6UgMDE6MjQsIFJvYiBIZXJyaW5nIHdyb3RlOgo+IE9uIFdlZCwg
-SnVsIDEyLCAyMDE3IGF0IDEwOjA0OjAyQU0gKzA4MDAsIE1hcmsgWWFvIHdyb3RlOgo+PiBDaGFu
-Z2VzIGluIHYyOgo+PiAtIHJlbmFtZSByazMyMnggdG8gcmszMjI4KEhlaWtvIFN0w7xibmVyKQo+
-IFRoaXMgZ29lcyBiZWxvdyAnLS0tJyBhbmQgeW91IG5lZWQgYSBjb21taXQgbXNnIGhlcmUuIEFs
-c28sIGl0IGlzIG5vdAo+IGNsZWFyIGluIHRoZSBzdWJqZWN0IHRoaXMgaXMgZm9yIFJvY2tjaGlw
-Lgo+CgpHb3QgaXQsIHdpbGwgZml4IGl0IGF0IG5leHQgdmVyc2lvbi4KClRoYW5rcy4KCj4+IFNp
-Z25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+
-ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9j
-a2NoaXAtdm9wLnR4dCB8IDQgKysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMo
-KykKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCj4KPgo+CgoKLS0gCu+8rWFyayBZYW8KCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QK
-bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+These patches try to make all current rockchip full framework vop works
+on drm, fill missing vop on full framework.
+Vop Full framework now has following vops:
+IP version    chipname
+      3.1           rk3288
+      3.2           rk3368
+      3.4           rk3366
+      3.5           rk3399 big
+      3.6           rk3399 lit
+      3.7           rk3228
+      3.8           rk3328
+
+Group the vop register, it would make register  definition clearer and
+more easily to reuse same group register define for difference vops.
+
+Tested on rk3399 excavator board with kernel 4.13-rc1.
+
+And other chips tested on rockchip kernel 4.4:
+   https://github.com/rockchip-linux/kernel/tree/release-4.4/drivers/gpu/drm/rockchip
+
+Changes in v5:
+- clean document commit title
+- move changes description out of docummit commit msg
+
+Changes in v4:
+- rebase to newest torvalds kernel, fix merge conflict 
+
+Changes in v3:
+- group vop register instead using VOP_REG_VER mechanism
+- Explain more on patch commit message
+- move write_relaxed flags to vop registers
+- fix rk3328 overlay abnormal
+
+Changes in v2:
+- rename rk322x to rk3228
+- correct some vop registers define
+
+Mark Yao (7):
+  drm/rockchip: vop: initialize registers directly
+  drm/rockchip: vop: move write_relaxed flags to vop register
+  drm/rockchip: vop: move line_flag_num to interrupt registers
+  drm/rockchip: vop: group vop registers
+  drm/rockchip: vop: add a series of vop support
+  dt-bindings: display: rockchip: fill Documents for vop series
+  drm/rockchip: vop: rk3328: fix overlay abnormal
+
+ .../bindings/display/rockchip/rockchip-vop.txt     |   4 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        | 109 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |  81 +-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c        | 374 ++++++---
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.h        | 905 ++++++++++++++++-----
+ 5 files changed, 1074 insertions(+), 399 deletions(-)
+
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
