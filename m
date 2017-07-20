@@ -1,76 +1,63 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
-Date: Thu, 20 Jul 2017 14:55:12 +0200
-Message-ID: <1500555312.2354.75.camel@pengutronix.de>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de>
-         <20170719211515.46a1196c@windsurf>
-         <1500543415.2354.37.camel@pengutronix.de>
-         <20170720123640.43c2ce01@windsurf>
+From: Maxime Ripard <maxime.ripard@free-electrons.com>
+Subject: [PATCH v2 0/4] drm/sun4i: Fix a register access bug
+Date: Thu, 20 Jul 2017 15:01:15 +0200
+Message-ID: <cover.204b8c1b76558ee33ecf147e51c2b6a04d302d55.1500555652.git-series.maxime.ripard@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <20170720123640.43c2ce01@windsurf>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
-Cc: linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>, Prashant Gaikwad <pgaikwad@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Peter Chen <Peter.Chen@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org, Marc Dietrich <marvin24@gmx.de>, Rakesh Iyer <riyer@nvidia.com>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-clk@vger.kernel.org, Wim Van Sebroeck <wim@iguana.be>, Wolfram Sang <wsa@the-dreams.de>, Xinliang Liu <z.liuxinliang@hisilicon.com>, Chanwoo Choi <cw00.choi@samsung.com>, Alan Stern <stern@rowland.harvard.edu>, Jiri Slaby <jslaby@suse.com>, Michael Turquette <mturquette@baylibre.com>, Guenter Roeck <linux@roeck-us.net>, Ohad Ben-Cohen <ohad@wizery.com>, linux-pm@vger.kernel.org, Thomas Gleixner <tglx>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thomas,
-
-On Thu, 2017-07-20 at 12:36 +0200, Thomas Petazzoni wrote:
-> Hello,
-> 
-> On Thu, 20 Jul 2017 11:36:55 +0200, Philipp Zabel wrote:
-> 
-> > > I don't know if it has been discussed in the past, so forgive me if it
-> > > has been. Have you considered adding a "int flags" argument to the
-> > > existing reset_control_get_*() functions, rather than introducing
-> > > separate exclusive variants ?
-> > > 
-> > > Indeed, with a "int flags" argument you could in the future add more
-> > > variants/behaviors without actually multiplying the number of
-> > > functions. Something like the "flags" argument for request_irq() for
-> > > example.  
-> > 
-> > I can't find the discussion right now, but I remember we had talked
-> > about this in the past.
-> > Behind the scenes, all the inline API functions already call common
-> > entry points with flags (well, currently separate bool parameters for
-> > shared and optional).
-> > One reason against exposing those as an int flags in the user facing API
-> > is the possibility to accidentally provide a wrong value.
-> 
-> This is a quite strange argument. You could also accidentally use the
-> wrong variant of the function, just like you could use the wrong flag.
-
-You can't accidentally use no flag at all or a completely bogus value
-with the "plethora of inline functions" variant.
-
-> Once again, the next time you have another parameter for those reset
-> functions, beyond the exclusive/shared variant, you will multiply again
-> by two the number of functions ? You already have the  exclusive/shared
-> and optional/mandatory variants, so 4 variants. When you'll add a new
-> parameter, you'll have 8 variants. Doesn't seem really good.
-
-I'd rather avoid adding more variants, if possible. The complexity
-increases regardless of whether the API is expressed as a bunch of
-functions or as a single function with a bunch of flags.
-
-> What about reset_control_get(struct device *, const char *, int flags)
-> to replace all those variants ?
-
-While I like how this looks, unfortunately (devm_)reset_control_get
-already exists without the flags, so we can't change to that with a
-gentle transition.
-
-regards
-Philipp
+VGhlIEFsbHdpbm5lciBiYWNrZW5kIGhhcyBhIGNvbW1pdCBiaXQgaW4gb3JkZXIgdG8gcHVzaCB0
+aGUgbmV3CmNvbmZpZ3VyYXRpb24gdG8gdGhlIGFjdHVhbCBoYXJkd2FyZS4gV2UndmUgYWx3YXlz
+IGJlZW4gdXNpbmcgdGhhdCBiaXQuCgpIb3dldmVyLCB3ZSBhbHNvIHNob3VsZCBwb2xsIGZvciB0
+aGF0IGJpdCB0byBjbGVhciwgd2hpY2ggd2UgZG9uJ3QuCkFjY2Vzc2luZyBhbnkgcmVnaXN0ZXIg
+d2hpbGUgYSBjb21taXQgaXMgcGVuZGluZyBpcyBmb3JiaWRkZW4sIGFuZCB3aWxsIGZvcgpleGFt
+cGxlIHNob3cgYSBzeW1wdG9tIG9mIHJlYWRpbmcgYW5vdGhlciwgcmFuZG9tLCByZWdpc3Rlci4K
+CklmIHlvdSBnZXQgdGhpcyBkdXJpbmcgYSByZWFkL21vZGlmeS93cml0ZSBjeWNsZSwgdGhpcyB3
+aWxsIHJlc3VsdCBpbgpyYW5kb20gcmVnaXN0ZXIgY29ycnVwdGlvbiwgd2hpY2ggYXJlIHByZXR0
+eSBiYWQuCgpUaGlzIGNhbiBiZSBzaG93biB1c2luZyB0aGUgZm9sbG93aW5nIHByb2dyYW0gKHdo
+aWxlIHRoZSBiYWNrZW5kIGlzCmFjdGl2ZSk6Cmh0dHA6Ly9jb2RlLmJ1bGl4Lm9yZy9nZGw0NHAt
+MTYxNDM3P3JhdwoKRm9ydHVuYXRlbHkgZm9yIHVzLCB0aGlzIGlzIG5vdCByZWFsbHkgbGlrZWx5
+IHRvIGhhcHBlbi4gVGhlIHdpbmRvdyB3aGVyZQppdCBjYW4gaGFwcGVuIGlzIHF1aXRlIHRoaW4s
+IGFuZCBpdCBvbmx5IGhhcHBlbnMgZHVyaW5nIGEgbW9kZXNldCwgc2luY2UKaXQncyB0aGUgb25s
+eSB0aW1lIHdlIGNvbW1pdCBzb21lIG5ldyBjb25maWd1cmF0aW9uLgoKVW5mb3J0dW5hdGVseSBm
+b3IgdXMsIFFUIGRvZXMgYSByaWRpY3Vsb3VzIGFtb3VudCBvZiBtb2Rlc2V0LCBhbmQgd2lsbCBq
+dXN0CmhpdCB0aGF0IHdpbmRvdyBhZnRlciBhIHdoaWxlLCBjcmVhdGluZyBhIGRpc3RvcmRlZCAo
+c2luY2UgdGhlIHJlZ2lzdGVyIHdlCnJlYWQvbW9kaWZ5L3dyaXRlIGFsc28gaGFzIHNjYWxpbmcg
+YXR0cmlidXRlcykgb3Igd2l0aCB3ZWlyZCBjb2xvcnMgKHNpbmNlCml0IGFsc28gaGFzIGEgaW52
+ZXJ0aW9uIG9mIHJlZCBhbmQgYmx1ZSBjb21wb25lbnRzKS4gQW5kIG1pZ2h0IGZpeCBpdHNlbGYK
+bGF0ZXIgb24gYnkgcmVhZGluZyBhbm90aGVyIHJhbmRvbSByZWdpc3RlciB3aXRoIHByb3BlciB2
+YWx1ZXMgZm9yIHRoZXNlCmZpZWxkcy4KCkxldCBtZSBrbm93IHdoYXQgeW91IHRoaW5rLApNYXhp
+bWUKCkNoYW5nZXMgZnJvbSB2MToKICAtIFJlbmFtZWQgdGhlIGZ1bmN0aW9uIGRybV9hdG9taWNf
+aGVscGVyX2NvbW1pdF90YWlsX3JwbQogIC0gRHJvcHBlZCB0aGUgY2hhbmdlcyBpbiB0aGUgcmNh
+ci1kdSBkcml2ZXIKICAtIEVuaGFuY2VkIHRoZSBkb2N1bWVudGF0aW9uIGJhc2VkIG9uIERhbmll
+bCdzIGNvbW1lbnRzCgpNYXhpbWUgUmlwYXJkICg0KToKICBkcm0vYXRvbWljOiBpbXBsZW1lbnQg
+ZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X3RhaWwgZm9yIHJ1bnRpbWVfcG0gdXNlcnMKICBkcm0v
+c3VuNGk6IFVzZSB0aGUgcnVudGltZV9wbSBjb21taXRfdGFpbCB2YXJpYW50CiAgZHJtL3N1bjRp
+OiBlbmdpbmU6IEFkZCBjb21taXRfcG9sbCBmdW5jdGlvbgogIGRybS9zdW40aTogbWFrZSBzdXJl
+IHdlIGRvbid0IGhhdmUgYSBjb21taXQgcGVuZGluZwoKIGRyaXZlcnMvZ3B1L2RybS9kcm1fYXRv
+bWljX2hlbHBlci5jICAgICAgICB8IDQ5ICsrKysrKysrKysrKysrKy0tLS0tLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZmIuYyAgICAgfCAyNyArLS0tLS0tLS0tLS0tLQog
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIHwgMjEgKy0tLS0tLS0t
+LS0KIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9iYWNrZW5kLmMgICAgICB8IDE0ICsrKysr
+KystCiBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfY3J0Yy5jICAgICAgICAgfCAgMyArLQog
+ZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2ZyYW1lYnVmZmVyLmMgIHwgIDYgKysrLQogZHJp
+dmVycy9ncHUvZHJtL3N1bjRpL3N1bnhpX2VuZ2luZS5oICAgICAgIHwgMTQgKysrKysrKy0KIGlu
+Y2x1ZGUvZHJtL2RybV9hdG9taWNfaGVscGVyLmggICAgICAgICAgICB8ICAxICstCiA4IGZpbGVz
+IGNoYW5nZWQsIDc0IGluc2VydGlvbnMoKyksIDYxIGRlbGV0aW9ucygtKQoKYmFzZS1jb21taXQ6
+IDU3NzFhOGMwODg4MGNkY2EzYmZiNGEzZmM2ZDMwOWQ2YmJhMjA4NzcKLS0gCmdpdC1zZXJpZXMg
+MC45LjEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
