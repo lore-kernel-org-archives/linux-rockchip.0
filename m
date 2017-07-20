@@ -1,123 +1,63 @@
-From: Maxime Ripard <maxime.ripard@free-electrons.com>
-Subject: Re: [PATCH 4/4] drm/sun4i: make sure we don't have a commit pending
-Date: Thu, 20 Jul 2017 11:53:39 +0200
-Message-ID: <20170720095339.lkyufn6qq5rnra4n@flea>
-References: <cover.75b0c7f741ed33015a7ad44941bed1f6152a48a9.1499956639.git-series.maxime.ripard@free-electrons.com>
- <a6dfec7ea3598c64f6653e9b8b5febac79172341.1499956639.git-series.maxime.ripard@free-electrons.com>
- <CAGb2v64KnB_zU0yk7MsGr9WRK1wpWq1xOj_cNuQ4mSQJeAGarw@mail.gmail.com>
- <20170717065504.xnahsboer3fh4k3i@flea>
- <CAGb2v676F2ye7fDUSFwzWMxd8rF7_5YAxn+u+MNG-U2PuaDDoQ@mail.gmail.com>
- <20170718070732.ogoyc2fjcxoqbgj5@flea>
- <CAKMK7uGk7ncuBqCDbgeg9ai3RkuDRmQ75Jr1kAP5QCBj006cxg@mail.gmail.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v3 5/5] ARM: dts: rockchip: set PWM delay backlight
+ settings for Minnie
+Date: Thu, 20 Jul 2017 12:03:40 +0200
+Message-ID: <CAFqH_51DezYBsf9Ny1MngOFxZc5HazbH_RHtbwhHodpQmTw0Mg@mail.gmail.com>
+References: <20170717212811.25374-1-enric.balletbo@collabora.com>
+ <20170717212811.25374-5-enric.balletbo@collabora.com> <20170720081038.GD13103@amd>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="6pukwqvvgnlhri6j"
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAKMK7uGk7ncuBqCDbgeg9ai3RkuDRmQ75Jr1kAP5QCBj006cxg@mail.gmail.com>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Chen-Yu Tsai <wens@csie.org>, "open list:ARM/SHMOBILE ARM..." <linux-renesas-soc@vger.kernel.org>, "moderated list:ARM/SAMSUNG EXYNO..." <linux-samsung-soc@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170720081038.GD13103@amd>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Pavel Machek <pavel@ucw.cz>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Rob Herring <robh+dt@kernel.org>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Pavel,
 
---6pukwqvvgnlhri6j
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+2017-07-20 10:10 GMT+02:00 Pavel Machek <pavel@ucw.cz>:
+> On Mon 2017-07-17 23:28:11, Enric Balletbo i Serra wrote:
+>> The minnie devices comes with an AUO B101EAN01 panel which is different
+>> from default veyron devices, thus the power on/off timing sequence is
+>> slightly different. The datasheet specifies a pwm delay of 200 ms, so
+>> update the PMW delay proprieties accordingly.
+>
+> Wait a wait a moment!
+>
+>> --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+>> +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+>> @@ -123,6 +123,8 @@
+>>                       240 241 242 243 244 245 246 247
+>>                       248 249 250 251 252 253 254 255>;
+>>       power-supply = <&backlight_regulator>;
+>> +     post-pwm-on-delay-us = <20000>;
+>
+> -us = <20 000>;
+>
+> This is not 200 msec.
+>
 
-Hi Daniel,
+Oops, good catch.
 
-On Tue, Jul 18, 2017 at 09:35:03AM +0200, Daniel Vetter wrote:
-> On Tue, Jul 18, 2017 at 9:07 AM, Maxime Ripard
-> <maxime.ripard@free-electrons.com> wrote:
-> > On Mon, Jul 17, 2017 at 02:57:19PM +0800, Chen-Yu Tsai wrote:
-> >> On Mon, Jul 17, 2017 at 2:55 PM, Maxime Ripard
-> >> <maxime.ripard@free-electrons.com> wrote:
-> >> > On Fri, Jul 14, 2017 at 04:56:01PM +0800, Chen-Yu Tsai wrote:
-> >> >> Hi,
-> >> >>
-> >> >> On Thu, Jul 13, 2017 at 10:41 PM, Maxime Ripard
-> >> >> <maxime.ripard@free-electrons.com> wrote:
-> >> >> > In the earlier display engine designs, any register access while =
-a commit
-> >> >> > is pending is forbidden.
-> >> >> >
-> >> >> > One of the symptoms is that reading a register will return anothe=
-r, random,
-> >> >> > register value which can lead to register corruptions if we ever =
-do a
-> >> >> > read/modify/write cycle.
-> >> >>
-> >> >> Alternatively, if changes to the backend (layers) are guaranteed to=
- happen
-> >> >> while the CRTC is disabled (which seems to be the case after lookin=
-g at
-> >> >> drm_atomic_helper_commit_planes and drm_atomic_helper_commit_tail),=
- we
-> >> >> could just turn on register auto-commit all the time and not deal w=
-ith
-> >> >> this.
-> >> >
-> >> > As far as I understand, it will only be the case if we need a new
-> >> > modeset or we changed the active CRTC or connectors. But if you chan=
-ge
-> >> > only the format, buffers or properties it won't be the case, and we'=
-ll
-> >> > need to commit.
-> >>
-> >> So in other words, if someone were to use it for actual compositing and
-> >> moved the upper composited layer around, we would need commit support =
-to be
-> >> safe.
-> >>
-> >> Sounds more or less like something a video player would do.
-> >
-> > Not only that. A change of buffer will happen every frame or so, and
-> > we can change the format whenever we want too (even if it's usually
-> > going to be in sync with a new buffer). Changing a property can happen
-> > any time too (like zpos for example).
->=20
-> You can upgrade any property change to an atomic modeset by e.g.
-> setting connector->mode_changed (and then making sure to call
-> check_modeset() helper again perhaps). This is for cases where your hw
-> can't handle a property change within 1 vblank. The default is just
-> the solution for most common hw.
->=20
-> The other way round works too, you can clear these flags in your
-> atomic_check callbacks. But that requires a bit more care (to make
-> sure you never clear it when there's something else also changing that
-> still needs a full modeset sequence to commit to hw).
+> Plus, it is quite anti-social to do udelay(200 000).
+>
+> Plus, it is very anti-socifal to use udelay_range(200msec,
+> 400msec).
+>
+> Whoever told you udelay_range is good thing to use -- it is not, and
+> it is certainly not worth making user wait 200msec more!
+>
 
-Hmm, that's good to know, but that would imply disabling the CRTC each
-time we change even a small property, with all the visual artifacts it
-might imply, right?
+Checked again some datasheets and seems that or not require a delay or
+the delays are 10ms+, so according to [1] I'll use msleep instead.
 
-Maxime
+[1] https://www.kernel.org/doc/Documentation/timers/timers-howto.txt
 
---=20
-Maxime Ripard, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+Thanks,
+ Enric
 
---6pukwqvvgnlhri6j
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIcBAEBAgAGBQJZcH2jAAoJEBx+YmzsjxAggFEP/jGaqxY8H25VdipBweR+MtGT
-ZCU/hyiUJCZcjWEFbueeEuxAxDAEnpRVXma/ZFYKcPRsXUC37P9oDKaWzXBFac5J
-5lPPUP5uwPT/x5RlTf+Bc8j+fbHxgG+MK+XMGhkQDgzqLE4ABydQVsGf4P61kHeO
-D6YP/oG6BAa0GMo8n9XM88WbT7RJLzLe0OQniu9+9veHrCSbKbnXZdQB8YGLg8pl
-3FTIaJ0/jKqIeK46bd+NQts5LALxKKJIzXO+28hYyh33wE8jIb3Fc4zRVn25aFOL
-DqYvMhgEkebssWOovavPOd0mqS7sJliZN76RulmDJ4xWnRdUmgwSDL4PuUfzOcna
-T9Vn2UXvVbPyEFlyI3kAYv5eSZfG1Y+NMiXrNHd1UI8rORWDGvgLjpStP64ZUaYI
-AkuMQuugHMQZ9DINE8fgEa9Oy1gS4GYEyo6VUKZXNPiWewu6EQjq+qqaj7YFr09m
-+GUDarbEWV+9aQi8+BFxx6zrOMYVVG6SsneLediZ9M0a4M3IIE7X9/m3GGyLezds
-KmvURn6BxMcW40VEV51coIpG+8OyC0OagF1kYb+EanRPxK5ADpUCRAqwzOjCerKL
-D215UID3phfCdRJuOLJGwZuiBnYG1AfG3Ksgu3vNaWYn/8H/kPJlZg28L9gTH9GC
-Pv3dDOSnhE9kq1xJhndb
-=UVwq
------END PGP SIGNATURE-----
-
---6pukwqvvgnlhri6j--
+>                                                                         Pavel
+> --
+> (english) http://www.livejournal.com/~pavelmachek
+> (cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
