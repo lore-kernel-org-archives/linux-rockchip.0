@@ -1,32 +1,74 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 001/102] ARM: rockchip: explicitly request exclusive reset control
-Date: Thu, 20 Jul 2017 22:28:14 +0200
-Message-ID: <65246208.Xb7026sEv2@phil>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de> <20170719152646.25903-2-p.zabel@pengutronix.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] iommu: Convert to using %pOF instead of full_name
+Date: Thu, 20 Jul 2017 22:35:46 +0200
+Message-ID: <3567821.Si31GJ2fDW@phil>
+References: <20170718214339.7774-29-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170719152646.25903-2-p.zabel@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170718214339.7774-29-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 19. Juli 2017, 17:25:05 CEST schrieb Philipp Zabel:
-> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
-> reset lines") started to transition the reset control request API calls
-> to explicitly state whether the driver needs exclusive or shared reset
-> control behavior. Convert all drivers requesting exclusive resets to the
-> explicit API call so the temporary transition helpers can be removed.
+Am Dienstag, 18. Juli 2017, 16:43:09 CEST schrieb Rob Herring:
+> Now that we have a custom printf format specifier, convert users of
+> full_name to use %pOF instead. This is preparation to remove storing
+> of the full path string for each node.
 > 
-> No functional changes.
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+> Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> ---
+>  drivers/iommu/rockchip-iommu.c  | 10 +++++-----
+
+for the Rockchip-related part
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 4ba48a26b389..1b8155dada26 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -1008,20 +1008,20 @@ static int rk_iommu_group_set_iommudata(struct iommu_group *group,
+>  	ret = of_parse_phandle_with_args(np, "iommus", "#iommu-cells", 0,
+>  					 &args);
+>  	if (ret) {
+> -		dev_err(dev, "of_parse_phandle_with_args(%s) => %d\n",
+> -			np->full_name, ret);
+> +		dev_err(dev, "of_parse_phandle_with_args(%pOF) => %d\n",
+> +			np, ret);
+>  		return ret;
+>  	}
+>  	if (args.args_count != 0) {
+> -		dev_err(dev, "incorrect number of iommu params found for %s (found %d, expected 0)\n",
+> -			args.np->full_name, args.args_count);
+> +		dev_err(dev, "incorrect number of iommu params found for %pOF (found %d, expected 0)\n",
+> +			args.np, args.args_count);
+>  		return -EINVAL;
+>  	}
 > 
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+>  	pd = of_find_device_by_node(args.np);
+>  	of_node_put(args.np);
+>  	if (!pd) {
+> -		dev_err(dev, "iommu %s not found\n", args.np->full_name);
+> +		dev_err(dev, "iommu %pOF not found\n", args.np);
+>  		return -EPROBE_DEFER;
+>  	}
+> 
+> --
+> 2.11.0
+> 
+> 
+> 
 
-amended the subject with an "[...] in smp code" and applied for 4.14
 
-
-Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
