@@ -1,89 +1,59 @@
-From: Joseph Chen <chenjh@rock-chips.com>
-Subject: [PATCH v7 12/12] pinctrl: dt-bindings: add bindings for Rockchip RK805 PMIC
-Date: Fri, 21 Jul 2017 19:19:01 +0800
-Message-ID: <1500635941-12930-1-git-send-email-chenjh@rock-chips.com>
-References: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, wdc@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org, Joseph Chen <chenjh@rock-chips.com>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH v4 3/5] pwm-backlight: add support for PWM delays
+ proprieties.
+Date: Fri, 21 Jul 2017 13:21:34 +0200
+Message-ID: <20170721112134.GA10340@amd>
+References: <20170721104813.5389-1-enric.balletbo@collabora.com>
+ <20170721104813.5389-3-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+        protocol="application/pgp-signature"; boundary="FCuugMFkClbJLl1L"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170721104813.5389-3-enric.balletbo@collabora.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Rob Herring <robh+dt@kernel.org>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
----
- .../devicetree/bindings/pinctrl/pinctrl-rk805.txt  | 63 ++++++++++++++++++++++
- 1 file changed, 63 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
-new file mode 100644
-index 0000000..367ddf9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
-@@ -0,0 +1,63 @@
-+Pincontrol driver for RK805 Power management IC.
-+
-+RK805 has 2 pins which can be configured as GPIO output only.
-+
-+Please refer file <devicetree/bindings/pinctrl/pinctrl-bindings.txt>
-+for details of the common pinctrl bindings used by client devices,
-+including the meaning of the phrase "pin configuration node".
-+
-+Optional Pinmux properties:
-+--------------------------
-+Following properties are required if default setting of pins are required
-+at boot.
-+- pinctrl-names: A pinctrl state named per <pinctrl-binding.txt>.
-+- pinctrl[0...n]: Properties to contain the phandle for pinctrl states per
-+		<pinctrl-binding.txt>.
-+
-+The pin configurations are defined as child of the pinctrl states node. Each
-+sub-node have following properties:
-+
-+Required properties:
-+------------------
-+- #gpio-cells: Should be two. The first cell is the pin number and the
-+  second is the GPIO flags.
-+
-+- gpio-controller: Marks the device node as a GPIO controller.
-+
-+- pins: List of pins. Valid values of pins properties are: gpio0, gpio1.
-+
-+First 2 properties must be added in the RK805 PMIC node, documented in
-+Documentation/devicetree/bindings/mfd/rk808.txt
-+
-+Optional properties:
-+-------------------
-+Following are optional properties defined as pinmux DT binding document
-+<pinctrl-bindings.txt>. Absence of properties will leave the configuration
-+on default.
-+	function,
-+	output-low,
-+	output-high.
-+
-+Valid values for function properties are: gpio.
-+
-+Theres is also not customised properties for any GPIO.
-+
-+Example:
-+--------
-+rk805: rk805@18 {
-+	compatible = "rockchip,rk805";
-+	...
-+	gpio-controller;
-+	#gpio-cells = <2>;
-+
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pmic_int_l>, <&rk805_default>;
-+
-+	rk805_default: pinmux {
-+		gpio01 {
-+			pins = "gpio0", "gpio1";
-+			function = "gpio";
-+			output-high.
-+		};
-+	};
-+};
--- 
-1.9.1
+--FCuugMFkClbJLl1L
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri 2017-07-21 12:48:11, Enric Balletbo i Serra wrote:
+> Some panels (i.e. N116BGE-L41), in their power sequence specifications,
+> request a delay between set the PWM signal and enable the backlight and
+> between clear the PWM signal and disable the backlight. Add support for
+> the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
+> the timings.
+>=20
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+For 3-5:
+
+Acked-by: Pavel Machek <pavel@ucw.cz>
+
+I guess you probably meant "properties" and I guess english could be
+improved in the comments, but... this is good enough and not worth
+more iterations.
+
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--FCuugMFkClbJLl1L
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAllx474ACgkQMOfwapXb+vIlQwCfQXHVlqRrjnka9TAeEzYqRWI+
+SywAn00Bl5ZFSAHZ0EVm1nUU+SDHlzpF
+=0ZKG
+-----END PGP SIGNATURE-----
+
+--FCuugMFkClbJLl1L--
