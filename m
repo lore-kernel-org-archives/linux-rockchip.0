@@ -1,12 +1,14 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: enable sdmmc controller on
- rk3399-firefly
-Date: Fri, 21 Jul 2017 16:30:59 +0800
-Message-ID: <1500625859-208199-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: Boundary between pinctrl and peripheral settings
+Date: Fri, 21 Jul 2017 11:28:36 +0200
+Message-ID: <2138098.LEr4AWErLQ@phil>
+References: <1719598.F3JUalFtig@phil> <2621764.2a2E3U2WOa@phil>
+ <d0ade22d-3e3d-6bf3-3a06-e85e74360147@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <d0ade22d-3e3d-6bf3-3a06-e85e74360147-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,42 +18,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This allows basic support for SD highspeed cards but no UHS-I mode
-got ready due to the propagated defer-probe error from RK805.
-
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index 2821671..b118833 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -630,6 +630,18 @@
- 	status = "okay";
- };
- 
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	cd-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
-+	disable-wp;
-+	max-frequency = <150000000>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
-+	status = "okay";
-+};
-+
- &sdhci {
- 	bus-width = <8>;
- 	mmc-hs400-1_8v;
--- 
-1.9.1
+SGkgRGF2aWQsCgpBbSBGcmVpdGFnLCAyMS4gSnVsaSAyMDE3LCAxNDozMzowMCBDRVNUIHNjaHJp
+ZWIgRGF2aWQuV3U6Cj4gVW5mb3J0dW5hdGVseSwgYWZ0ZXIgdGhlIGRpc2N1c3Npb24gd2l0aCBJ
+Qywgd2UgZmVlbCB0aGF0IHdlIGNhbiBub3QgCj4gbWFrZSBoYXJkd2FyZSBhdXRvbWF0aWMgc3dp
+dGNoOwo+IFRoZSByZWFzb24gZm9yIHRoaXMgaXMgdGhhdCBpZiB5b3UgYWNjaWRlbnRhbGx5IGNv
+bmZpZ3VyZSBhbGwgb2YgdGhlc2UgCj4gY29uZmlndXJhdGlvbnMsIHRoZSBoYXJkd2FyZSBkb2Vz
+bid0IGtub3cgd2hpY2ggb25lIHRvIGNob29zZSwgYW5kIHRoZW4gCj4gaXQncyBub3QgZ29vZCBm
+b3Igb3VyIGRlYnVnLCBiZWNhdXNlIEkgZG9uJ3Qga25vdyB3aGljaCBvcHRpb24gdGhlIAo+IGN1
+cnJlbnQgaGFyZHdhcmUgaXMgc3dpdGNoaW5nIHRvLgoKSSBndWVzcyB3ZSBjYW4gbGl2ZSB3aXRo
+IHRoZSByb3V0aW5nIHNvbHV0aW9uLCBhcyBpdCBsb29rcyBtYW5hZ2VhYmxlIDotKSAuCgo+IFNv
+IHdlIHN0aWxsIG1haW50YWluIHRoZSBjdXJyZW50IHdheSwgYnV0IGFzayB0aGVtIHRvIHdyaXRl
+IG1vcmUgY2xlYXJseSAKPiBhbmQgZWFzaWx5IGluIHRoZSBUUk0gZmlsZS4KCk9rIC4uLiBtYXli
+ZSBhbHNvIHRyeSB0byBrZWVwIHRoZW0gZnJvbSBiZWluZyBvdmVybHkgY3JlYXRpdmUgd2l0aCB0
+aGUKcm91dGluZyBvcHRpb25zICh0aGUgcmszMzI4IG1hYyBwaW5zIGhhZCB0aGVzZSBzdHJhbmdl
+IHN0YXRlcywgd2hlcmUKd2Ugd2VyZSBsdWNreSB0aGF0IHNvbWUgb2YgdGhlbSB3ZXJlIGp1c3Qg
+bm90IHVzYWJsZSkuCgoKSGVpa28KCgoKPiDlnKggMjAxNy81LzIzIDA6MjksIEhlaWtvIFN0dWVi
+bmVyIOWGmemBkzoKPiA+IEkgd2FzIHRhbGtpbmcgd2l0aCBEYXZpZCBXdSBhYm91dCB0aGF0IGEg
+c2hvcnQgd2hpbGUgYWdvIGFzIHdlbGw6LSkgIC4KPiA+IAo+ID4gICBGcm9tIHdoYXQgSSd2ZSBo
+ZWFyZWQsIGluIHRoZSBmdXR1cmUgc29jcyBtYXkgYmUgYWJsZSB0byBzZWxlY3QgdGhhdAo+ID4g
+cm91dGluZyB0aGVtc2VsZnMgYmFzZWQgb24gdGhlIGlvbXV4IGFuZCBoYXZpbmcgaGFkIHRpbWUg
+dG8gcG9uZGVyCj4gPiB0aGUgd2hvbGUgaXNzdWUgZm9yIHNvbWUgdGltZSBub3csIEkgZG8gZ3Vl
+c3Mgc29tZSBzb3J0IG9mIGxpc3Qgd291bGQgYmUKPiA+IHRoZSBsZWFzdCBpbnRydXNpdmUgc29s
+dXRpb24uCj4gCj4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
