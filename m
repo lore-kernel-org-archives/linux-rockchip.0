@@ -1,36 +1,116 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 000/102] Convert drivers to explicit reset API
-Date: Thu, 20 Jul 2017 22:32:49 +0200
-Message-ID: <1687646.TMvigZNUOP__4187.64552237025$1500660934$gmane$org@phil>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+Subject: Re: [PATCH V2 2/3] iommu/rockchip: add multi irqs support
+Date: Fri, 21 Jul 2017 20:37:02 +0200
+Message-ID: <1622328.YERcK565Fd@phil>
+References: <1500618430-114821-1-git-send-email-xxm@rock-chips.com>
+	<5666211.VjCXUuunyU@phil>
+	<675fd7bf-7551-4f95-9b9c-8a2151e59ee1@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170719152646.25903-1-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Chen <Peter.Chen-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Marc Dietrich <marvin24-Mmb7MZpHnFY@public.gmane.org>, Rakesh Iyer <riyer-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Xinliang Liu <z.liuxinliang-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Ohad Ben-Cohen <ohad-Ix1uc/W3ht7QT0dZR+AlfA@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <675fd7bf-7551-4f95-9b9c-8a2151e59ee1-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: xxm <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Am Freitag, 21. Juli 2017, 15:54:40 CEST schrieb xxm:
+> Hi Heiko,
+> 
+> 
+> On 07/21/2017 03:07 PM, Heiko Stuebner wrote:
+> > Am Freitag, 21. Juli 2017, 14:27:09 CEST schrieb Simon Xue:
+> >> From: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >>
+> >> RK3368 vpu mmu have two irqs, this patch support multi irqs
+> >>
+> >> Signed-off-by: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> ---
+> >> changes since V1:
+> >>   - use devm_kcalloc instead of devm_kzalloc when alloc irq array
+> >>
+> >>   drivers/iommu/rockchip-iommu.c | 34 ++++++++++++++++++++++++----------
+> >>   1 file changed, 24 insertions(+), 10 deletions(-)
+> >>
+> >> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> >> index 4ba48a2..3c462c0 100644
+> >> --- a/drivers/iommu/rockchip-iommu.c
+> >> +++ b/drivers/iommu/rockchip-iommu.c
+> >> @@ -90,7 +90,8 @@ struct rk_iommu {
+> >>   	struct device *dev;
+> >>   	void __iomem **bases;
+> >>   	int num_mmu;
+> >> -	int irq;
+> >> +	int *irq;
+> >> +	int num_irq;
+> >>   	struct iommu_device iommu;
+> >>   	struct list_head node; /* entry in rk_iommu_domain.iommus */
+> >>   	struct iommu_domain *domain; /* domain to which iommu is attached */
+> >> @@ -825,10 +826,12 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+> >>   
+> >>   	iommu->domain = domain;
+> >>   
+> >> -	ret = devm_request_irq(iommu->dev, iommu->irq, rk_iommu_irq,
+> >> -			       IRQF_SHARED, dev_name(dev), iommu);
+> >> -	if (ret)
+> >> -		return ret;
+> >> +	for (i = 0; i < iommu->num_irq; i++) {
+> >> +		ret = devm_request_irq(iommu->dev, iommu->irq[i], rk_iommu_irq,
+> >> +				       IRQF_SHARED, dev_name(dev), iommu);
+> >> +		if (ret)
+> >> +			return ret;
+> >> +	}
+> >>   
+> >>   	for (i = 0; i < iommu->num_mmu; i++) {
+> >>   		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
+> >> @@ -878,7 +881,8 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
+> >>   	}
+> >>   	rk_iommu_disable_stall(iommu);
+> >>   
+> >> -	devm_free_irq(iommu->dev, iommu->irq, iommu);
+> >> +	for (i = 0; i < iommu->num_irq; i++)
+> >> +		devm_free_irq(iommu->dev, iommu->irq[i], iommu);
+> >>   
+> >>   	iommu->domain = NULL;
+> >>   
+> >> @@ -1157,10 +1161,20 @@ static int rk_iommu_probe(struct platform_device *pdev)
+> >>   	if (iommu->num_mmu == 0)
+> >>   		return PTR_ERR(iommu->bases[0]);
+> >>   
+> >> -	iommu->irq = platform_get_irq(pdev, 0);
+> >> -	if (iommu->irq < 0) {
+> >> -		dev_err(dev, "Failed to get IRQ, %d\n", iommu->irq);
+> >> -		return -ENXIO;
+> >> +	while (platform_get_irq(pdev, iommu->num_irq) >= 0)
+> >> +		iommu->num_irq++;
+> > Hmm, this could also result in a iommu having 0 irqs if wrongly
+> > configured and probe would still suceed. This sounds somehow
+> > wrong to me.
+> >
+> > But I'm not sure if there is precedent on how to handle a variable
+> > number of interrupts correctly somewhere.
+> 
+> How about add a judgement for iommu->num_irq ? like this:
+> if (!iommu->num_irq)
+> 	return -ENOXIO;
 
->   crypto: rockchip: explicitly request exclusive reset control
->   iio: adc: rockchip_saradc: explicitly request exclusive reset control
->   PCI: rockchip: explicitly request exclusive reset control
->   phy: rockchip-pcie: explicitly request exclusive reset control
->   phy: rockchip-typec: explicitly request exclusive reset control
->   phy: rockchip-usb: explicitly request exclusive reset control
->   thermal: rockchip: explicitly request exclusive reset control
+platform devices already have a function that gets you the number of irqs.
+Re-using that is way better than open-coding it, so
 
-for the driver-related Rockchip changes
+iommu->num_irq = platform_irq_count(pdev);
+if (iommu->num_irq < 0)
+	return iommu->num_irq;
+if (iommu->num_irq == 0)
+	return -ENXIO;
 
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+Heiko
