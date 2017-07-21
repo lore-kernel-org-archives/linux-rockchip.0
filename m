@@ -1,103 +1,43 @@
-From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH V2 2/3] iommu/rockchip: add multi irqs support
-Date: Fri, 21 Jul 2017 14:27:09 +0800
-Message-ID: <1500618430-114821-2-git-send-email-xxm@rock-chips.com>
-References: <1500618430-114821-1-git-send-email-xxm@rock-chips.com>
+From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: Boundary between pinctrl and peripheral settings
+Date: Fri, 21 Jul 2017 14:33:00 +0800
+Message-ID: <d0ade22d-3e3d-6bf3-3a06-e85e74360147@rock-chips.com>
+References: <1719598.F3JUalFtig@phil> <5983290.MocaVmHgjo@phil>
+ <97536e9f-7ad9-032b-d2dd-921f97464123@rock-chips.com>
+ <2621764.2a2E3U2WOa@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1500618430-114821-1-git-send-email-xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2621764.2a2E3U2WOa@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-RK3368 vpu mmu have two irqs, this patch support multi irqs
-
-Signed-off-by: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-changes since V1:
- - use devm_kcalloc instead of devm_kzalloc when alloc irq array
-
- drivers/iommu/rockchip-iommu.c | 34 ++++++++++++++++++++++++----------
- 1 file changed, 24 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4ba48a2..3c462c0 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -90,7 +90,8 @@ struct rk_iommu {
- 	struct device *dev;
- 	void __iomem **bases;
- 	int num_mmu;
--	int irq;
-+	int *irq;
-+	int num_irq;
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-@@ -825,10 +826,12 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
- 
- 	iommu->domain = domain;
- 
--	ret = devm_request_irq(iommu->dev, iommu->irq, rk_iommu_irq,
--			       IRQF_SHARED, dev_name(dev), iommu);
--	if (ret)
--		return ret;
-+	for (i = 0; i < iommu->num_irq; i++) {
-+		ret = devm_request_irq(iommu->dev, iommu->irq[i], rk_iommu_irq,
-+				       IRQF_SHARED, dev_name(dev), iommu);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	for (i = 0; i < iommu->num_mmu; i++) {
- 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
-@@ -878,7 +881,8 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
- 	}
- 	rk_iommu_disable_stall(iommu);
- 
--	devm_free_irq(iommu->dev, iommu->irq, iommu);
-+	for (i = 0; i < iommu->num_irq; i++)
-+		devm_free_irq(iommu->dev, iommu->irq[i], iommu);
- 
- 	iommu->domain = NULL;
- 
-@@ -1157,10 +1161,20 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	if (iommu->num_mmu == 0)
- 		return PTR_ERR(iommu->bases[0]);
- 
--	iommu->irq = platform_get_irq(pdev, 0);
--	if (iommu->irq < 0) {
--		dev_err(dev, "Failed to get IRQ, %d\n", iommu->irq);
--		return -ENXIO;
-+	while (platform_get_irq(pdev, iommu->num_irq) >= 0)
-+		iommu->num_irq++;
-+
-+	iommu->irq = devm_kcalloc(dev, iommu->num_irq, sizeof(*iommu->irq),
-+				  GFP_KERNEL);
-+	if (!iommu->irq)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < iommu->num_irq; i++) {
-+		iommu->irq[i] = platform_get_irq(pdev, i);
-+		if (iommu->irq[i] < 0) {
-+			dev_err(dev, "Failed to get IRQ, %d\n", iommu->irq[i]);
-+			return -ENXIO;
-+		}
- 	}
- 
- 	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
--- 
-1.9.1
+SGkgSGVpa28sCgpVbmZvcnR1bmF0ZWx5LCBhZnRlciB0aGUgZGlzY3Vzc2lvbiB3aXRoIElDLCB3
+ZSBmZWVsIHRoYXQgd2UgY2FuIG5vdCAKbWFrZSBoYXJkd2FyZSBhdXRvbWF0aWMgc3dpdGNoOwpU
+aGUgcmVhc29uIGZvciB0aGlzIGlzIHRoYXQgaWYgeW91IGFjY2lkZW50YWxseSBjb25maWd1cmUg
+YWxsIG9mIHRoZXNlIApjb25maWd1cmF0aW9ucywgdGhlIGhhcmR3YXJlIGRvZXNuJ3Qga25vdyB3
+aGljaCBvbmUgdG8gY2hvb3NlLCBhbmQgdGhlbiAKaXQncyBub3QgZ29vZCBmb3Igb3VyIGRlYnVn
+LCBiZWNhdXNlIEkgZG9uJ3Qga25vdyB3aGljaCBvcHRpb24gdGhlIApjdXJyZW50IGhhcmR3YXJl
+IGlzIHN3aXRjaGluZyB0by4KU28gd2Ugc3RpbGwgbWFpbnRhaW4gdGhlIGN1cnJlbnQgd2F5LCBi
+dXQgYXNrIHRoZW0gdG8gd3JpdGUgbW9yZSBjbGVhcmx5IAphbmQgZWFzaWx5IGluIHRoZSBUUk0g
+ZmlsZS4KCuWcqCAyMDE3LzUvMjMgMDoyOSwgSGVpa28gU3R1ZWJuZXIg5YaZ6YGTOgo+IEkgd2Fz
+IHRhbGtpbmcgd2l0aCBEYXZpZCBXdSBhYm91dCB0aGF0IGEgc2hvcnQgd2hpbGUgYWdvIGFzIHdl
+bGw6LSkgIC4KPiAKPiAgIEZyb20gd2hhdCBJJ3ZlIGhlYXJlZCwgaW4gdGhlIGZ1dHVyZSBzb2Nz
+IG1heSBiZSBhYmxlIHRvIHNlbGVjdCB0aGF0Cj4gcm91dGluZyB0aGVtc2VsZnMgYmFzZWQgb24g
+dGhlIGlvbXV4IGFuZCBoYXZpbmcgaGFkIHRpbWUgdG8gcG9uZGVyCj4gdGhlIHdob2xlIGlzc3Vl
+IGZvciBzb21lIHRpbWUgbm93LCBJIGRvIGd1ZXNzIHNvbWUgc29ydCBvZiBsaXN0IHdvdWxkIGJl
+Cj4gdGhlIGxlYXN0IGludHJ1c2l2ZSBzb2x1dGlvbi4KCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
