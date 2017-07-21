@@ -1,68 +1,104 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/2] iommu/rockchip: ignore isp mmu reset operation
-Date: Fri, 21 Jul 2017 09:54:00 +0800
-Message-ID: <c8d74b7f-9c74-e5a7-d0e0-2e52ae8d6e8b@rock-chips.com>
-References: <1500600921-102537-1-git-send-email-xxm@rock-chips.com>
- <1500600921-102537-2-git-send-email-xxm@rock-chips.com>
+From: Jianhong Chen <chenjh@rock-chips.com>
+Subject: Re: [PATCH v6 08/12] gpio: Add GPIO driver for the RK805 PMIC
+Date: Fri, 21 Jul 2017 10:00:29 +0800
+Message-ID: <67c2e8bb-dadd-faa3-dcd0-0f325b3cbfce@rock-chips.com>
+References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com>
+ <2451251.ri2bNrhWeM@phil>
+ <e74942d4-2e64-045b-7cb4-ab79af0bc850@rock-chips.com>
+ <1617153.S9fhFArdpW@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1500600921-102537-2-git-send-email-xxm@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Simon Xue <xxm@rock-chips.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <1617153.S9fhFArdpW@diego>
+Sender: linux-input-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Alexandre Courbot <gnurou@gmail.com>, zhangqing@rock-chips.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, tony.xie@rock-chips.com, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Linux Input <linux-input@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Simon,
-
-On 2017/7/21 9:35, Simon Xue wrote:
-> From: Simon <xxm@rock-chips.com>
-> 
-> ISP mmu can't support reset operation, it won't get the
-> expected result when reset, but rest functions work normally.
-> Add this patch as a WA for this issue.
-> 
-> Signed-off-by: Simon <xxm@rock-chips.com>
-> ---
->   drivers/iommu/rockchip-iommu.c | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index b38283e..47c00b9 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -92,6 +92,7 @@ struct rk_iommu {
->   	int num_mmu;
->   	int *irq;
->   	int num_irq;
-> +	bool reset_disabled;
->   	struct iommu_device iommu;
->   	struct list_head node; /* entry in rk_iommu_domain.iommus */
->   	struct iommu_domain *domain; /* domain to which iommu is attached */
-> @@ -415,6 +416,9 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
->   	int ret, i;
->   	u32 dte_addr;
->   
-> +	if (iommu->reset_disabled)
-> +		return 0;
-> +
->   	/*
->   	 * Check if register DTE_ADDR is working by writing DTE_ADDR_DUMMY
->   	 * and verifying that upper 5 nybbles are read back.
-> @@ -1177,6 +1181,9 @@ static int rk_iommu_probe(struct platform_device *pdev)
->   		}
->   	}
->   
-> +	iommu->reset_disabled = device_property_read_bool(dev,
-> +					"rk_iommu,disable_reset_quirk");
-> +
-
-Please update Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-as well. And please use '-' instead of '_' for DT property.
 
 
->   	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
->   	if (err)
->   		return err;
-> 
+在 2017/6/29 18:29, Heiko Stübner 写道:
+
+> Hi,
+>
+> Am Mittwoch, 14. Juni 2017, 20:11:06 CEST schrieb Jianhong Chen:
+>> 在 2017/6/9 20:17, Heiko Stuebner 写道:
+>>> Am Freitag, 9. Juni 2017, 13:37:26 CEST schrieb Linus Walleij:
+>>>> Heiko, can you please look at this patch.
+>>>>
+>>>> On Thu, Jun 8, 2017 at 9:30 AM, Jianhong Chen <chenjh@rock-chips.com>
+> wrote:
+>>>>> From: chenjh <chenjh@rock-chips.com>
+>>>> Full name please.
+>>> git config --global user.name "John Doe"
+>>>
+>>> might do the and make this permanent for all your commits :-)
+>>>
+>>>>> RK805 has two configurable GPIOs that can be used for several
+>>>>> purposes. These are output only.
+>>>>>
+>>>>> This driver is generic for other Rockchip PMICs to be added.
+>>>>>
+>>>>> Signed-off-by: chenjh <chenjh@rock-chips.com>
+>>>> Dito.
+>>>>
+>>>> Your commit message says they are output-only, yet you implement
+>>>> .direction_input(). So what is is going to be?
+>>> So far, I've only seen the rk808 and rk818. Both do not have any
+>>> configurable pins.
+>>>
+>>> The rk805 which is a sort of variant of the above, does have the two
+>>> pins defined below, but in the manual I could also only find them as
+>>> output-only and having no other function than being output-pins.
+>>>
+>>> So I don't really know if all the input- or "gpio-mode"- handling is only
+>>> an oversight (copy'n'paste) or if there are yet other rk808 variants
+>>> around
+>>> that can actually be configured as inputs or even non-gpio modes?
+>>>
+>>> I hope Jianhong will be able to answer that.
+>>>
+>>>
+>>> Heiko
+>> This driver is not only for rk805, but also intend for rk816 and furtrue
+>> PMICs.
+>> The rk816 has one multi function pin(TS/GPIO), when setting as gpio, it
+>> can be configured as output or input.
+>> Here is simple description from manual: "Thermistor input. Connect a
+>> thermistor from this pin to ground. The thermistor is usually inside the
+>> battery pack. (multi-function for GPIO) ".
+> As Linus suggested, this sounds like you want a pinctrl driver that
+> also handles the gpios.
+>
+> Ideally you might also directly provide support for this rk816 in the
+> same patch series, so reviewers can see the full extend of what is
+> supported.
+>
+>
+> Heiko
+>
+
+Hi, Heiko:
+
+      I have moved gpio-rk805.c to drivers/pinctrl/pinctrl-rk805.c, this 
+driver is also designed for rk816 or furture PMICs to extend.
+      RK816 is not in our team's plan at this porting, it will be added 
+at next time, so I don't directly provide rk816 in this driver. I will 
+add more descriptions in commit message to express my design purpose.
+
+      Are you agreed ?  If so, I will send [PATCH v7] today.
+
+
+-- 
+Best Regards
+----------------------------------------------------------------------------
+陈健洪 (Joseph Chen)
+E-mail：chenjh@rock-chips.com
+福州瑞芯微电子股份有限公司
+Fuzhou Rockchip Electronics Co.Ltd
+福建省福州市铜盘路软件大道89号软件园A区21号楼 (350003)
+No. 21 Building, A District, No.89,software Boulevard Fuzhou,Fujian,PRC
+TEL：0591-83991906/07-8573
+
+
