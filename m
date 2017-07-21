@@ -1,93 +1,57 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v6 08/12] gpio: Add GPIO driver for the RK805 PMIC
-Date: Fri, 21 Jul 2017 10:12:45 +0200
-Message-ID: <1879271.veJUKjWuAS@phil>
-References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com> <1617153.S9fhFArdpW@diego> <67c2e8bb-dadd-faa3-dcd0-0f325b3cbfce@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: enable sdmmc controller on
+ rk3399-firefly
+Date: Fri, 21 Jul 2017 16:30:59 +0800
+Message-ID: <1500625859-208199-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <67c2e8bb-dadd-faa3-dcd0-0f325b3cbfce@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianhong Chen <chenjh@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Alexandre Courbot <gnurou@gmail.com>, zhangqing@rock-chips.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, tony.xie@rock-chips.com, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Linux Input <linux-input@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, w.egorov@phytec.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 21. Juli 2017, 10:00:29 CEST schrieb Jianhong Chen:
-> 
-> 在 2017/6/29 18:29, Heiko Stübner 写道:
-> 
-> > Hi,
-> >
-> > Am Mittwoch, 14. Juni 2017, 20:11:06 CEST schrieb Jianhong Chen:
-> >> 在 2017/6/9 20:17, Heiko Stuebner 写道:
-> >>> Am Freitag, 9. Juni 2017, 13:37:26 CEST schrieb Linus Walleij:
-> >>>> Heiko, can you please look at this patch.
-> >>>>
-> >>>> On Thu, Jun 8, 2017 at 9:30 AM, Jianhong Chen <chenjh@rock-chips.com>
-> > wrote:
-> >>>>> From: chenjh <chenjh@rock-chips.com>
-> >>>> Full name please.
-> >>> git config --global user.name "John Doe"
-> >>>
-> >>> might do the and make this permanent for all your commits :-)
-> >>>
-> >>>>> RK805 has two configurable GPIOs that can be used for several
-> >>>>> purposes. These are output only.
-> >>>>>
-> >>>>> This driver is generic for other Rockchip PMICs to be added.
-> >>>>>
-> >>>>> Signed-off-by: chenjh <chenjh@rock-chips.com>
-> >>>> Dito.
-> >>>>
-> >>>> Your commit message says they are output-only, yet you implement
-> >>>> .direction_input(). So what is is going to be?
-> >>> So far, I've only seen the rk808 and rk818. Both do not have any
-> >>> configurable pins.
-> >>>
-> >>> The rk805 which is a sort of variant of the above, does have the two
-> >>> pins defined below, but in the manual I could also only find them as
-> >>> output-only and having no other function than being output-pins.
-> >>>
-> >>> So I don't really know if all the input- or "gpio-mode"- handling is only
-> >>> an oversight (copy'n'paste) or if there are yet other rk808 variants
-> >>> around
-> >>> that can actually be configured as inputs or even non-gpio modes?
-> >>>
-> >>> I hope Jianhong will be able to answer that.
-> >>>
-> >>>
-> >>> Heiko
-> >> This driver is not only for rk805, but also intend for rk816 and furtrue
-> >> PMICs.
-> >> The rk816 has one multi function pin(TS/GPIO), when setting as gpio, it
-> >> can be configured as output or input.
-> >> Here is simple description from manual: "Thermistor input. Connect a
-> >> thermistor from this pin to ground. The thermistor is usually inside the
-> >> battery pack. (multi-function for GPIO) ".
-> > As Linus suggested, this sounds like you want a pinctrl driver that
-> > also handles the gpios.
-> >
-> > Ideally you might also directly provide support for this rk816 in the
-> > same patch series, so reviewers can see the full extend of what is
-> > supported.
-> >
-> >
-> > Heiko
-> >
-> 
-> Hi, Heiko:
-> 
->       I have moved gpio-rk805.c to drivers/pinctrl/pinctrl-rk805.c, this 
-> driver is also designed for rk816 or furture PMICs to extend.
->       RK816 is not in our team's plan at this porting, it will be added 
-> at next time, so I don't directly provide rk816 in this driver. I will 
-> add more descriptions in commit message to express my design purpose.
-> 
->       Are you agreed ?  If so, I will send [PATCH v7] today.
+This allows basic support for SD highspeed cards but no UHS-I mode
+got ready due to the propagated defer-probe error from RK805.
 
-yep, sounds good. But we will of course see more, once you have sent
-the patches :-) .
+Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-Heiko
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 2821671..b118833 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -630,6 +630,18 @@
+ 	status = "okay";
+ };
+ 
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	cd-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
++	disable-wp;
++	max-frequency = <150000000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
++	status = "okay";
++};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	mmc-hs400-1_8v;
+-- 
+1.9.1
