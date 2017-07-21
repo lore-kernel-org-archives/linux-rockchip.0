@@ -1,114 +1,93 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v3] clk: fractional-divider: fix up the fractional clk's jitter
-Date: Fri, 21 Jul 2017 16:03:07 +0800
-Message-ID: <1500624187-12165-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v6 08/12] gpio: Add GPIO driver for the RK805 PMIC
+Date: Fri, 21 Jul 2017 10:12:45 +0200
+Message-ID: <1879271.veJUKjWuAS@phil>
+References: <1496905959-29202-1-git-send-email-chenjh@rock-chips.com> <1617153.S9fhFArdpW@diego> <67c2e8bb-dadd-faa3-dcd0-0f325b3cbfce@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <67c2e8bb-dadd-faa3-dcd0-0f325b3cbfce@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jianhong Chen <chenjh@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Tao Huang <huangtao@rock-chips.com>, Alexandre Courbot <gnurou@gmail.com>, zhangqing@rock-chips.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, tony.xie@rock-chips.com, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Linux Input <linux-input@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Fractional dividers may have special requirements concerning numerator
-and denominator selection that differ from just getting the best
-approximation.
+Am Freitag, 21. Juli 2017, 10:00:29 CEST schrieb Jianhong Chen:
+> 
+> 在 2017/6/29 18:29, Heiko Stübner 写道:
+> 
+> > Hi,
+> >
+> > Am Mittwoch, 14. Juni 2017, 20:11:06 CEST schrieb Jianhong Chen:
+> >> 在 2017/6/9 20:17, Heiko Stuebner 写道:
+> >>> Am Freitag, 9. Juni 2017, 13:37:26 CEST schrieb Linus Walleij:
+> >>>> Heiko, can you please look at this patch.
+> >>>>
+> >>>> On Thu, Jun 8, 2017 at 9:30 AM, Jianhong Chen <chenjh@rock-chips.com>
+> > wrote:
+> >>>>> From: chenjh <chenjh@rock-chips.com>
+> >>>> Full name please.
+> >>> git config --global user.name "John Doe"
+> >>>
+> >>> might do the and make this permanent for all your commits :-)
+> >>>
+> >>>>> RK805 has two configurable GPIOs that can be used for several
+> >>>>> purposes. These are output only.
+> >>>>>
+> >>>>> This driver is generic for other Rockchip PMICs to be added.
+> >>>>>
+> >>>>> Signed-off-by: chenjh <chenjh@rock-chips.com>
+> >>>> Dito.
+> >>>>
+> >>>> Your commit message says they are output-only, yet you implement
+> >>>> .direction_input(). So what is is going to be?
+> >>> So far, I've only seen the rk808 and rk818. Both do not have any
+> >>> configurable pins.
+> >>>
+> >>> The rk805 which is a sort of variant of the above, does have the two
+> >>> pins defined below, but in the manual I could also only find them as
+> >>> output-only and having no other function than being output-pins.
+> >>>
+> >>> So I don't really know if all the input- or "gpio-mode"- handling is only
+> >>> an oversight (copy'n'paste) or if there are yet other rk808 variants
+> >>> around
+> >>> that can actually be configured as inputs or even non-gpio modes?
+> >>>
+> >>> I hope Jianhong will be able to answer that.
+> >>>
+> >>>
+> >>> Heiko
+> >> This driver is not only for rk805, but also intend for rk816 and furtrue
+> >> PMICs.
+> >> The rk816 has one multi function pin(TS/GPIO), when setting as gpio, it
+> >> can be configured as output or input.
+> >> Here is simple description from manual: "Thermistor input. Connect a
+> >> thermistor from this pin to ground. The thermistor is usually inside the
+> >> battery pack. (multi-function for GPIO) ".
+> > As Linus suggested, this sounds like you want a pinctrl driver that
+> > also handles the gpios.
+> >
+> > Ideally you might also directly provide support for this rk816 in the
+> > same patch series, so reviewers can see the full extend of what is
+> > supported.
+> >
+> >
+> > Heiko
+> >
+> 
+> Hi, Heiko:
+> 
+>       I have moved gpio-rk805.c to drivers/pinctrl/pinctrl-rk805.c, this 
+> driver is also designed for rk816 or furture PMICs to extend.
+>       RK816 is not in our team's plan at this porting, it will be added 
+> at next time, so I don't directly provide rk816 in this driver. I will 
+> add more descriptions in commit message to express my design purpose.
+> 
+>       Are you agreed ?  If so, I will send [PATCH v7] today.
 
-For example on Rockchip socs the denominator must be at least 20 times
-larger than the numerator to generate precise clock frequencies.
-
-Therefore add the ability to provide custom approximation functions,
-approx = rockchip_fractional_special_approx;
-but approx = NULL in the default case.
-
-RK document description:
-3.1.9  Fractional divider usage
-To get specific frequency, clocks of I2S, SPDIF, UARTcan be generated by
-fractional divider. Generally you must set that denominator is 20 times
-larger than numerator to generate precise clock frequency. So the
-fractional divider applies only to generate low frequency clock like
-I2S, UART.
-
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/clk-fractional-divider.c |  4 ++++
- drivers/clk/rockchip/clk.c           | 20 ++++++++++++++++++++
- include/linux/clk-provider.h         |  3 +++
- 3 files changed, 27 insertions(+)
-
-diff --git a/drivers/clk/clk-fractional-divider.c b/drivers/clk/clk-fractional-divider.c
-index aab904618eb6..ab2bc229ef2f 100644
---- a/drivers/clk/clk-fractional-divider.c
-+++ b/drivers/clk/clk-fractional-divider.c
-@@ -60,6 +60,9 @@ static long clk_fd_round_rate(struct clk_hw *hw, unsigned long rate,
- 	if (!rate || rate >= *parent_rate)
- 		return *parent_rate;
- 
-+	if (fd->approx)
-+		fd->approx(hw, rate, parent_rate);
-+
- 	/*
- 	 * Get rate closer to *parent_rate to guarantee there is no overflow
- 	 * for m and n. In the result it will be the nearest rate left shifted
-@@ -145,6 +148,7 @@ struct clk_hw *clk_hw_register_fractional_divider(struct device *dev,
- 	fd->nmask = GENMASK(nwidth - 1, 0) << nshift;
- 	fd->flags = clk_divider_flags;
- 	fd->lock = lock;
-+	fd->approx = NULL;
- 	fd->hw.init = &init;
- 
- 	hw = &fd->hw;
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index fe1d393cf678..8b21c5b19107 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -164,6 +164,25 @@ static int rockchip_clk_frac_notifier_cb(struct notifier_block *nb,
- 	return notifier_from_errno(ret);
- }
- 
-+/**
-+ * fractional divider must set that denominator is 20 times larger than
-+ * numerator to generate precise clock frequency.
-+ */
-+void rockchip_fractional_special_approx(struct clk_hw *hw,
-+					unsigned long rate,
-+					unsigned long *parent_rate)
-+{
-+	struct clk_hw *p_parent;
-+	unsigned long p_rate, p_parent_rate;
-+
-+	p_rate = clk_hw_get_rate(clk_hw_get_parent(hw));
-+	if ((rate * 20 > p_rate) && (p_rate % rate != 0)) {
-+		p_parent = clk_hw_get_parent(clk_hw_get_parent(hw));
-+		p_parent_rate = clk_hw_get_rate(p_parent);
-+		*parent_rate = p_parent_rate;
-+	}
-+}
-+
- static struct clk *rockchip_clk_register_frac_branch(
- 		struct rockchip_clk_provider *ctx, const char *name,
- 		const char *const *parent_names, u8 num_parents,
-@@ -210,6 +229,7 @@ static struct clk *rockchip_clk_register_frac_branch(
- 	div->nwidth = 16;
- 	div->nmask = GENMASK(div->nwidth - 1, 0) << div->nshift;
- 	div->lock = lock;
-+	div->approx = rockchip_fractional_special_approx;
- 	div_ops = &clk_fractional_divider_ops;
- 
- 	clk = clk_register_composite(NULL, name, parent_names, num_parents,
-diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-index a428aec36ace..807262375292 100644
---- a/include/linux/clk-provider.h
-+++ b/include/linux/clk-provider.h
-@@ -564,6 +564,9 @@ struct clk_fractional_divider {
- 	u8		nwidth;
- 	u32		nmask;
- 	u8		flags;
-+	void            (*approx)(struct clk_hw *hw,
-+				  unsigned long rate,
-+				  unsigned long *parent_rate);
- 	spinlock_t	*lock;
- };
- 
--- 
-1.9.1
+yep, sounds good. But we will of course see more, once you have sent
+the patches :-) .
 
 
+Heiko
