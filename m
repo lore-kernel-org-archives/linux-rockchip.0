@@ -1,23 +1,23 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 058/102] phy: rockchip-pcie: explicitly request exclusive
- reset control
-Date: Sat, 22 Jul 2017 21:09:05 +0800
-Message-ID: <8d913686-5765-c808-772f-da389e991b71@rock-chips.com>
+Subject: Re: [PATCH 054/102] PCI: rockchip: explicitly request exclusive reset
+ control
+Date: Sat, 22 Jul 2017 21:12:27 +0800
+Message-ID: <f4a8b573-7a5f-ff8a-65c3-f6b907e6a10a@rock-chips.com>
 References: <20170719152646.25903-1-p.zabel@pengutronix.de>
- <20170719152646.25903-59-p.zabel@pengutronix.de>
+ <20170719152646.25903-55-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=gbk; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170719152646.25903-59-p.zabel@pengutronix.de>
+In-Reply-To: <20170719152646.25903-55-p.zabel@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Philipp
+Hi Philipp,
 
-On 2017/7/19 23:26, Philipp Zabel wrote:
+On 2017/7/19 23:25, Philipp Zabel wrote:
 > Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
 > reset lines") started to transition the reset control request API calls
 > to explicitly state whether the driver needs exclusive or shared reset
@@ -26,32 +26,84 @@ On 2017/7/19 23:26, Philipp Zabel wrote:
 >
 > No functional changes.
 >
-> Cc: Kishon Vijay Abraham I <kishon@ti.com>
+> Cc: Shawn Lin <shawn.lin@rock-chips.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
 > Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-pci@vger.kernel.org
 > Cc: linux-rockchip@lists.infradead.org
 > Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 > ---
->  drivers/phy/rockchip/phy-rockchip-pcie.c | 2 +-
+>  drivers/pci/host/pcie-rockchip.c | 15 ++++++++-------
 
-This driver is under reconstruction and would probably go via
-pci tree later. So I would mention your change to the reconstruction
-work if that's applied.
+As mentioned in the thread of conversion for phy-rockchip-pcie,
+I would prefer add your patches after the reconstruction work got
+merged.
 
->  1 file changed, 1 insertion(+), 1 deletion(-)
+
+>  1 file changed, 8 insertions(+), 7 deletions(-)
 >
-> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> index 6904633cad687..258220b7f481c 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> @@ -305,7 +305,7 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
->  	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
->  	rk_phy->reg_base = grf;
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 7bb9870f6d8ce..e50d6f5a81f4b 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -903,49 +903,50 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
+>  		rockchip->link_gen = 2;
 >
-> -	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
-> +	rk_phy->phy_rst = devm_reset_control_get_exclusive(dev, "phy");
->  	if (IS_ERR(rk_phy->phy_rst)) {
->  		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
->  			dev_err(dev,
+> -	rockchip->core_rst = devm_reset_control_get(dev, "core");
+> +	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
+>  	if (IS_ERR(rockchip->core_rst)) {
+>  		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing core reset property in node\n");
+>  		return PTR_ERR(rockchip->core_rst);
+>  	}
+>
+> -	rockchip->mgmt_rst = devm_reset_control_get(dev, "mgmt");
+> +	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
+>  	if (IS_ERR(rockchip->mgmt_rst)) {
+>  		if (PTR_ERR(rockchip->mgmt_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing mgmt reset property in node\n");
+>  		return PTR_ERR(rockchip->mgmt_rst);
+>  	}
+>
+> -	rockchip->mgmt_sticky_rst = devm_reset_control_get(dev, "mgmt-sticky");
+> +	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
+> +								     "mgmt-sticky");
+>  	if (IS_ERR(rockchip->mgmt_sticky_rst)) {
+>  		if (PTR_ERR(rockchip->mgmt_sticky_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing mgmt-sticky reset property in node\n");
+>  		return PTR_ERR(rockchip->mgmt_sticky_rst);
+>  	}
+>
+> -	rockchip->pipe_rst = devm_reset_control_get(dev, "pipe");
+> +	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
+>  	if (IS_ERR(rockchip->pipe_rst)) {
+>  		if (PTR_ERR(rockchip->pipe_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing pipe reset property in node\n");
+>  		return PTR_ERR(rockchip->pipe_rst);
+>  	}
+>
+> -	rockchip->pm_rst = devm_reset_control_get(dev, "pm");
+> +	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
+>  	if (IS_ERR(rockchip->pm_rst)) {
+>  		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing pm reset property in node\n");
+>  		return PTR_ERR(rockchip->pm_rst);
+>  	}
+>
+> -	rockchip->pclk_rst = devm_reset_control_get(dev, "pclk");
+> +	rockchip->pclk_rst = devm_reset_control_get_exclusive(dev, "pclk");
+>  	if (IS_ERR(rockchip->pclk_rst)) {
+>  		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing pclk reset property in node\n");
+>  		return PTR_ERR(rockchip->pclk_rst);
+>  	}
+>
+> -	rockchip->aclk_rst = devm_reset_control_get(dev, "aclk");
+> +	rockchip->aclk_rst = devm_reset_control_get_exclusive(dev, "aclk");
+>  	if (IS_ERR(rockchip->aclk_rst)) {
+>  		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
+>  			dev_err(dev, "missing aclk reset property in node\n");
 >
 
 
