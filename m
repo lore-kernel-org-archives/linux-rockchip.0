@@ -1,126 +1,44 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] [RESEND] drm/rockchip: fix Kconfig dependencies
-Date: Fri, 21 Jul 2017 23:12:06 +0200
-Message-ID: <20170721211214.3386387-1-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, linux-rockchip@lists.infradead.org, Stephen Boyd <stephen.boyd@linaro.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, robdclark@gmail.com, Sean Paul <seanpaul@chromium.org>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+From: Joseph Chen <chenjh@rock-chips.com>
+Subject: [PATCH v7 05/12] clk: Kconfig: Name RK805 in Kconfig for COMMON_CLK_RK808
+Date: Sat, 22 Jul 2017 11:34:13 +0800
+Message-ID: <1500694453-416-1-git-send-email-chenjh@rock-chips.com>
+References: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com>
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com>
+Sender: linux-input-owner@vger.kernel.org
+To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, wdc@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A bug that I had fixed earlier just came back, with CONFIG_EXTCON=m,
-the rockchip drm driver will fail to link:
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_get_port_lanes':
-cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x30): undefined reference to `extcon_get_state'
-cdn-dp-core.c:(.text.cdn_dp_get_port_lanes+0x6c): undefined reference to `extcon_get_property'
-drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_check_sink_connection':
-cdn-dp-core.c:(.text.cdn_dp_check_sink_connection+0x80): undefined reference to `extcon_get_state'
-drivers/gpu/drm/rockchip/cdn-dp-core.o: In function `cdn_dp_enable':
-cdn-dp-core.c:(.text.cdn_dp_enable+0x748): undefined reference to `extcon_get_property'
+The RK808 and RK805 PMICs are using a similar register map.
+We can reuse the clk driver for the RK805 PMIC. So let's add
+the RK805 in the Kconfig description.
 
-The problem is that that the sub-drivers are now all linked into the
-main rockchip drm module, which breaks all the Kconfig dependencies
-that are specified in the options for those sub-drivers.
-
-This clarifies the dependency to ensure that we can only turn on the DP
-driver when EXTCON is reachable. As the 'select' statements can now
-cause additional options to become built-in when they should be
-loadable modules, I'm moving those into the main driver config option.
-The dependency on DRM_ROCKCHIP can be reduced into a single 'if'
-statement here for brevity, but this has no functional effect.
-
-Fixes: b6705157b2db ("drm/rockchip: add extcon dependency for DP")
-Fixes: 8820b68bd378 ("drm/rockchip: Refactor the component match logic.")
-Link: https://patchwork.kernel.org/patch/9648761/
-Acked-by: Guenter Roeck <groeck@chromium.org>
-Tested-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
-Originally submitted on March 28, got two positive replies, but the
-patch was never applied in mainline.
----
- drivers/gpu/drm/rockchip/Kconfig | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+ drivers/clk/Kconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 50c41c0a50ef..dcc539ba85d6 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -5,6 +5,10 @@ config DRM_ROCKCHIP
- 	select DRM_KMS_HELPER
- 	select DRM_PANEL
- 	select VIDEOMODE_HELPERS
-+	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
-+	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
-+	select DRM_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
-+	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
- 	help
- 	  Choose this option if you have a Rockchip soc chipset.
- 	  This driver provides kernel mode setting and buffer
-@@ -12,10 +16,10 @@ config DRM_ROCKCHIP
- 	  2D or 3D acceleration; acceleration is performed by other
- 	  IP found on the SoC.
+diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+index 9356ab4..7ca8f02 100644
+--- a/drivers/clk/Kconfig
++++ b/drivers/clk/Kconfig
+@@ -39,10 +39,10 @@ config COMMON_CLK_MAX77686
+ 	  clock.
  
-+if DRM_ROCKCHIP
-+
- config ROCKCHIP_ANALOGIX_DP
- 	bool "Rockchip specific extensions for Analogix DP driver"
--	depends on DRM_ROCKCHIP
--	select DRM_ANALOGIX_DP
- 	help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Analogix Core DP driver. If you want to enable DP
-@@ -23,9 +27,7 @@ config ROCKCHIP_ANALOGIX_DP
- 
- config ROCKCHIP_CDN_DP
-         bool "Rockchip cdn DP"
--        depends on DRM_ROCKCHIP
--	depends on EXTCON
--	select SND_SOC_HDMI_CODEC if SND_SOC
-+	depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
-         help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the cdn DP driver. If you want to enable Dp on
-@@ -34,8 +36,6 @@ config ROCKCHIP_CDN_DP
- 
- config ROCKCHIP_DW_HDMI
-         bool "Rockchip specific extensions for Synopsys DW HDMI"
--        depends on DRM_ROCKCHIP
--        select DRM_DW_HDMI
-         help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Synopsys DesignWare HDMI driver. If you want to
-@@ -44,8 +44,6 @@ config ROCKCHIP_DW_HDMI
- 
- config ROCKCHIP_DW_MIPI_DSI
- 	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
--	depends on DRM_ROCKCHIP
--	select DRM_MIPI_DSI
- 	help
- 	 This selects support for Rockchip SoC specific extensions
- 	 for the Synopsys DesignWare HDMI driver. If you want to
-@@ -54,8 +52,9 @@ config ROCKCHIP_DW_MIPI_DSI
- 
- config ROCKCHIP_INNO_HDMI
- 	bool "Rockchip specific extensions for Innosilicon HDMI"
--	depends on DRM_ROCKCHIP
- 	help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Innosilicon HDMI driver. If you want to enable
- 	  HDMI on RK3036 based SoC, you should select this option.
-+
-+endif
+ config COMMON_CLK_RK808
+-	tristate "Clock driver for RK808/RK818"
++	tristate "Clock driver for RK805/RK808/RK818"
+ 	depends on MFD_RK808
+ 	---help---
+-	  This driver supports RK808 and RK818 crystal oscillator clock. These
++	  This driver supports RK805, RK808 and RK818 crystal oscillator clock. These
+ 	  multi-function devices have two fixed-rate oscillators,
+ 	  clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
+ 	  by control register.
 -- 
-2.9.0
+1.9.1
+
+
