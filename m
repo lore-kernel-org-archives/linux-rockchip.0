@@ -1,44 +1,60 @@
-From: Joseph Chen <chenjh@rock-chips.com>
-Subject: [PATCH v7 05/12] clk: Kconfig: Name RK805 in Kconfig for COMMON_CLK_RK808
-Date: Sat, 22 Jul 2017 11:34:13 +0800
-Message-ID: <1500694453-416-1-git-send-email-chenjh@rock-chips.com>
-References: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com>
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com>
-Sender: linux-input-owner@vger.kernel.org
-To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, wdc@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 058/102] phy: rockchip-pcie: explicitly request exclusive
+ reset control
+Date: Sat, 22 Jul 2017 21:09:05 +0800
+Message-ID: <8d913686-5765-c808-772f-da389e991b71@rock-chips.com>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+ <20170719152646.25903-59-p.zabel@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170719152646.25903-59-p.zabel@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Elaine Zhang <zhangqing@rock-chips.com>
+Hi Philipp
 
-The RK808 and RK805 PMICs are using a similar register map.
-We can reuse the clk driver for the RK805 PMIC. So let's add
-the RK805 in the Kconfig description.
+On 2017/7/19 23:26, Philipp Zabel wrote:
+> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+> reset lines") started to transition the reset control request API calls
+> to explicitly state whether the driver needs exclusive or shared reset
+> control behavior. Convert all drivers requesting exclusive resets to the
+> explicit API call so the temporary transition helpers can be removed.
+>
+> No functional changes.
+>
+> Cc: Kishon Vijay Abraham I <kishon@ti.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-pcie.c | 2 +-
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/Kconfig | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This driver is under reconstruction and would probably go via
+pci tree later. So I would mention your change to the reconstruction
+work if that's applied.
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index 9356ab4..7ca8f02 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -39,10 +39,10 @@ config COMMON_CLK_MAX77686
- 	  clock.
- 
- config COMMON_CLK_RK808
--	tristate "Clock driver for RK808/RK818"
-+	tristate "Clock driver for RK805/RK808/RK818"
- 	depends on MFD_RK808
- 	---help---
--	  This driver supports RK808 and RK818 crystal oscillator clock. These
-+	  This driver supports RK805, RK808 and RK818 crystal oscillator clock. These
- 	  multi-function devices have two fixed-rate oscillators,
- 	  clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
- 	  by control register.
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> index 6904633cad687..258220b7f481c 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> @@ -305,7 +305,7 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
+>  	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
+>  	rk_phy->reg_base = grf;
+>
+> -	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
+> +	rk_phy->phy_rst = devm_reset_control_get_exclusive(dev, "phy");
+>  	if (IS_ERR(rk_phy->phy_rst)) {
+>  		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
+>  			dev_err(dev,
+>
+
+
 -- 
-1.9.1
-
-
+Best Regards
+Shawn Lin
