@@ -1,69 +1,50 @@
-From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH V3 3/3] iommu/rockchip: ignore isp mmu reset operation
-Date: Mon, 24 Jul 2017 10:37:15 +0800
-Message-ID: <1500863835-32877-3-git-send-email-xxm@rock-chips.com>
-References: <1500863835-32877-1-git-send-email-xxm@rock-chips.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 054/102] PCI: rockchip: explicitly request exclusive
+ reset control
+Date: Mon, 24 Jul 2017 10:35:14 +0200
+Message-ID: <1500885314.2391.52.camel@pengutronix.de>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+         <20170719152646.25903-55-p.zabel@pengutronix.de>
+         <f4a8b573-7a5f-ff8a-65c3-f6b907e6a10a@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1500863835-32877-1-git-send-email-xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f4a8b573-7a5f-ff8a-65c3-f6b907e6a10a@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-ISP mmu can't support reset operation, it won't get the
-expected result when reset, but rest functions work normally.
-Add this patch as a WA for this issue.
+Hi Shawn,
 
-Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-changes since V2:
-use rockchip,disable-mmu-reset instead of rk-iommu,disable-reset-quirk
+On Sat, 2017-07-22 at 21:12 +0800, Shawn Lin wrote:
+> Hi Philipp,
+> 
+> On 2017/7/19 23:25, Philipp Zabel wrote:
+> > Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+> > reset lines") started to transition the reset control request API calls
+> > to explicitly state whether the driver needs exclusive or shared reset
+> > control behavior. Convert all drivers requesting exclusive resets to the
+> > explicit API call so the temporary transition helpers can be removed.
+> >
+> > No functional changes.
+> >
+> > Cc: Shawn Lin <shawn.lin@rock-chips.com>
+> > Cc: Bjorn Helgaas <bhelgaas@google.com>
+> > Cc: Heiko Stuebner <heiko@sntech.de>
+> > Cc: linux-pci@vger.kernel.org
+> > Cc: linux-rockchip@lists.infradead.org
+> > Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+> > ---
+> >  drivers/pci/host/pcie-rockchip.c | 15 ++++++++-------
+> 
+> As mentioned in the thread of conversion for phy-rockchip-pcie,
+> I would prefer add your patches after the reconstruction work got
+> merged.
 
- drivers/iommu/rockchip-iommu.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Feel free to add them when and where it is most convenient for you.
+Please let me know if you want me to rebase them somewhere.
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index e2852b0..78ea341 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -92,6 +92,7 @@ struct rk_iommu {
- 	int num_mmu;
- 	int *irq;
- 	int num_irq;
-+	bool reset_disabled;
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-@@ -415,6 +416,9 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
- 	int ret, i;
- 	u32 dte_addr;
- 
-+	if (iommu->reset_disabled)
-+		return 0;
-+
- 	/*
- 	 * Check if register DTE_ADDR is working by writing DTE_ADDR_DUMMY
- 	 * and verifying that upper 5 nybbles are read back.
-@@ -1180,6 +1184,9 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 		}
- 	}
- 
-+	iommu->reset_disabled = device_property_read_bool(dev,
-+					"rockchip,disable-mmu-reset");
-+
- 	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
- 	if (err)
- 		return err;
--- 
-1.9.1
+regards
+Philipp
