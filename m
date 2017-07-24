@@ -1,58 +1,84 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] [RESEND] drm/rockchip: fix Kconfig dependencies
-Date: Mon, 24 Jul 2017 09:58:18 +0800
-Message-ID: <5975543A.80407@rock-chips.com>
-References: <20170721211214.3386387-1-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170721211214.3386387-1-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Arnd Bergmann <arnd@arndb.de>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Stephen Boyd <stephen.boyd@linaro.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH V3 1/4] ARM64: dts: rockchip: rk3328 add iommu nodes
+Date: Mon, 24 Jul 2017 10:32:07 +0800
+Message-ID: <1500863530-32792-1-git-send-email-xxm@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA35pyIMjLml6UgMDU6MTIsIEFybmQgQmVyZ21hbm4gd3JvdGU6Cj4gQSBidWcg
-dGhhdCBJIGhhZCBmaXhlZCBlYXJsaWVyIGp1c3QgY2FtZSBiYWNrLCB3aXRoIENPTkZJR19FWFRD
-T049bSwKPiB0aGUgcm9ja2NoaXAgZHJtIGRyaXZlciB3aWxsIGZhaWwgdG8gbGluazoKPgo+IGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5vOiBJbiBmdW5jdGlvbiBgY2RuX2Rw
-X2dldF9wb3J0X2xhbmVzJzoKPiBjZG4tZHAtY29yZS5jOigudGV4dC5jZG5fZHBfZ2V0X3BvcnRf
-bGFuZXMrMHgzMCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGV4dGNvbl9nZXRfc3RhdGUnCj4g
-Y2RuLWRwLWNvcmUuYzooLnRleHQuY2RuX2RwX2dldF9wb3J0X2xhbmVzKzB4NmMpOiB1bmRlZmlu
-ZWQgcmVmZXJlbmNlIHRvIGBleHRjb25fZ2V0X3Byb3BlcnR5Jwo+IGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9jZG4tZHAtY29yZS5vOiBJbiBmdW5jdGlvbiBgY2RuX2RwX2NoZWNrX3NpbmtfY29u
-bmVjdGlvbic6Cj4gY2RuLWRwLWNvcmUuYzooLnRleHQuY2RuX2RwX2NoZWNrX3NpbmtfY29ubmVj
-dGlvbisweDgwKTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgZXh0Y29uX2dldF9zdGF0ZScKPiBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUubzogSW4gZnVuY3Rpb24gYGNkbl9k
-cF9lbmFibGUnOgo+IGNkbi1kcC1jb3JlLmM6KC50ZXh0LmNkbl9kcF9lbmFibGUrMHg3NDgpOiB1
-bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBleHRjb25fZ2V0X3Byb3BlcnR5Jwo+Cj4gVGhlIHByb2Js
-ZW0gaXMgdGhhdCB0aGF0IHRoZSBzdWItZHJpdmVycyBhcmUgbm93IGFsbCBsaW5rZWQgaW50byB0
-aGUKPiBtYWluIHJvY2tjaGlwIGRybSBtb2R1bGUsIHdoaWNoIGJyZWFrcyBhbGwgdGhlIEtjb25m
-aWcgZGVwZW5kZW5jaWVzCj4gdGhhdCBhcmUgc3BlY2lmaWVkIGluIHRoZSBvcHRpb25zIGZvciB0
-aG9zZSBzdWItZHJpdmVycy4KPgo+IFRoaXMgY2xhcmlmaWVzIHRoZSBkZXBlbmRlbmN5IHRvIGVu
-c3VyZSB0aGF0IHdlIGNhbiBvbmx5IHR1cm4gb24gdGhlIERQCj4gZHJpdmVyIHdoZW4gRVhUQ09O
-IGlzIHJlYWNoYWJsZS4gQXMgdGhlICdzZWxlY3QnIHN0YXRlbWVudHMgY2FuIG5vdwo+IGNhdXNl
-IGFkZGl0aW9uYWwgb3B0aW9ucyB0byBiZWNvbWUgYnVpbHQtaW4gd2hlbiB0aGV5IHNob3VsZCBi
-ZQo+IGxvYWRhYmxlIG1vZHVsZXMsIEknbSBtb3ZpbmcgdGhvc2UgaW50byB0aGUgbWFpbiBkcml2
-ZXIgY29uZmlnIG9wdGlvbi4KPiBUaGUgZGVwZW5kZW5jeSBvbiBEUk1fUk9DS0NISVAgY2FuIGJl
-IHJlZHVjZWQgaW50byBhIHNpbmdsZSAnaWYnCj4gc3RhdGVtZW50IGhlcmUgZm9yIGJyZXZpdHks
-IGJ1dCB0aGlzIGhhcyBubyBmdW5jdGlvbmFsIGVmZmVjdC4KPgo+IEZpeGVzOiBiNjcwNTE1N2Iy
-ZGIgKCJkcm0vcm9ja2NoaXA6IGFkZCBleHRjb24gZGVwZW5kZW5jeSBmb3IgRFAiKQo+IEZpeGVz
-OiA4ODIwYjY4YmQzNzggKCJkcm0vcm9ja2NoaXA6IFJlZmFjdG9yIHRoZSBjb21wb25lbnQgbWF0
-Y2ggbG9naWMuIikKPiBMaW5rOmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTY0
-ODc2MS8KPiBBY2tlZC1ieTogR3VlbnRlciBSb2Vjazxncm9lY2tAY2hyb21pdW0ub3JnPgo+IFRl
-c3RlZC1ieTogSmVmZnkgQ2hlbjxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1v
-ZmYtYnk6IEFybmQgQmVyZ21hbm48YXJuZEBhcm5kYi5kZT4KClB1c2hlZCB0byBkcm0tbWlzYy1m
-aXhlcy4KClRoYW5rcy4KCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Add H265e/VEPU/VPU/VDEC/VOP iommu nodes
+
+Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+changes since V2:
+ - none
+
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 45 ++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 0be96ce..bdd7711 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -320,6 +320,51 @@
+ 		status = "disabled";
+ 	};
+ 
++	h265e_mmu: iommu@ff330200 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff330200 0 0x100>;
++		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "h265e_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
++	vepu_mmu: iommu@ff340800 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff340800 0x0 0x40>;
++		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vepu_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
++	vpu_mmu: iommu@ff350800 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff350800 0x0 0x40>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vpu_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
++	rkvdec_mmu: iommu@ff360480 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff360480 0x0 0x40>, <0x0 0xff3604c0 0x0 0x40>;
++		interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "rkvdec_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
++	vop_mmu: iommu@ff373f00 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff373f00 0x0 0x100>;
++		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "vop_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
+ 	cru: clock-controller@ff440000 {
+ 		compatible = "rockchip,rk3328-cru", "rockchip,cru", "syscon";
+ 		reg = <0x0 0xff440000 0x0 0x1000>;
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
