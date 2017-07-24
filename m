@@ -1,124 +1,91 @@
-From: Daniel Thompson <daniel.thompson@linaro.org>
-Subject: Re: [PATCH v4 3/5] pwm-backlight: add support for PWM delays
- proprieties.
-Date: Mon, 24 Jul 2017 16:22:21 +0100
-Message-ID: <0e2d4f9b-0f27-3793-0c27-2a2df5c32cf0@linaro.org>
-References: <20170721104813.5389-1-enric.balletbo@collabora.com>
- <20170721104813.5389-3-enric.balletbo@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 2/5] dt-bindings: gpu: add a power_model optional
+ properties for MALI
+Date: Mon, 24 Jul 2017 11:39:37 -0500
+Message-ID: <20170724163937.ppz24xg6ltkmal7f@rob-hp-laptop>
+References: <1500279271-15249-1-git-send-email-wxt@rock-chips.com>
+ <1500279271-15249-3-git-send-email-wxt@rock-chips.com>
+ <20170717200733.nax6jfbvs3rjd7t4@rob-hp-laptop>
+ <3b464bab-2d72-717c-3aa0-410b1e1bd930@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <20170721104813.5389-3-enric.balletbo@collabora.com>
-Content-Language: en-US
-Sender: linux-pwm-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <3b464bab-2d72-717c-3aa0-410b1e1bd930@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, rocky.hao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 21/07/17 11:48, Enric Balletbo i Serra wrote:
-> Some panels (i.e. N116BGE-L41), in their power sequence specifications,
-> request a delay between set the PWM signal and enable the backlight and
-> between clear the PWM signal and disable the backlight. Add support for
-> the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
-> the timings.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-
-
-> ---
-> Changes since v3:
->   - Use two named members instead of pwm_delay[] (Daniel and Pavel)
->   - Use msleep instead of usleep_range. (Pavel)
-> Changes since v2:
->   - Move the pwm/enable sequence to another patch (Thierry Reding)
-> Changes since v1:
->   - As suggested by Daniel Thompson
->     - Do not assume power-on delay and power-off delay will be the same
->   - Move the check of dt property to the parse dt function.
-> 
->   drivers/video/backlight/pwm_bl.c | 19 +++++++++++++++++++
->   include/linux/pwm_backlight.h    |  2 ++
->   2 files changed, 21 insertions(+)
-> 
-> diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
-> index 909a686..6cf6109 100644
-> --- a/drivers/video/backlight/pwm_bl.c
-> +++ b/drivers/video/backlight/pwm_bl.c
-> @@ -10,6 +10,7 @@
->    * published by the Free Software Foundation.
->    */
->   
-> +#include <linux/delay.h>
->   #include <linux/gpio/consumer.h>
->   #include <linux/gpio.h>
->   #include <linux/module.h>
-> @@ -35,6 +36,8 @@ struct pwm_bl_data {
->   	struct gpio_desc	*enable_gpio;
->   	unsigned int		scale;
->   	bool			legacy;
-> +	unsigned int		post_pwm_on_delay;
-> +	unsigned int		pwm_off_delay;
->   	int			(*notify)(struct device *,
->   					  int brightness);
->   	void			(*notify_after)(struct device *,
-> @@ -56,6 +59,9 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
->   
->   	pwm_enable(pb->pwm);
->   
-> +	if (pb->post_pwm_on_delay)
-> +		msleep(pb->post_pwm_on_delay);
-> +
->   	if (pb->enable_gpio)
->   		gpiod_set_value_cansleep(pb->enable_gpio, 1);
->   
-> @@ -70,6 +76,9 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
->   	if (pb->enable_gpio)
->   		gpiod_set_value_cansleep(pb->enable_gpio, 0);
->   
-> +	if (pb->pwm_off_delay)
-> +		msleep(pb->pwm_off_delay);
-> +
->   	pwm_config(pb->pwm, 0, pb->period);
->   	pwm_disable(pb->pwm);
->   
-> @@ -175,6 +184,14 @@ static int pwm_backlight_parse_dt(struct device *dev,
->   		data->max_brightness--;
->   	}
->   
-> +	/*
-> +	 * These values are optional and set as 0 by default, the out values
-> +	 * are modified only if a valid u32 value can be decoded.
-> +	 */
-> +	of_property_read_u32(node, "post-pwm-on-delay-ms",
-> +			     &data->post_pwm_on_delay);
-> +	of_property_read_u32(node, "pwm-off-delay-ms", &data->pwm_off_delay);
-> +
->   	data->enable_gpio = -EINVAL;
->   	return 0;
->   }
-> @@ -273,6 +290,8 @@ static int pwm_backlight_probe(struct platform_device *pdev)
->   	pb->exit = data->exit;
->   	pb->dev = &pdev->dev;
->   	pb->enabled = false;
-> +	pb->post_pwm_on_delay = data->post_pwm_on_delay;
-> +	pb->pwm_off_delay = data->pwm_off_delay;
->   
->   	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
->   						  GPIOD_ASIS);
-> diff --git a/include/linux/pwm_backlight.h b/include/linux/pwm_backlight.h
-> index efdd922..62f59c4 100644
-> --- a/include/linux/pwm_backlight.h
-> +++ b/include/linux/pwm_backlight.h
-> @@ -13,6 +13,8 @@ struct platform_pwm_backlight_data {
->   	unsigned int lth_brightness;
->   	unsigned int pwm_period_ns;
->   	unsigned int *levels;
-> +	unsigned int post_pwm_on_delay;
-> +	unsigned int pwm_off_delay;
->   	/* TODO remove once all users are switched to gpiod_* API */
->   	int enable_gpio;
->   	int (*init)(struct device *dev);
-> 
+T24gVHVlLCBKdWwgMTgsIDIwMTcgYXQgMDg6NTg6NTBBTSArMDgwMCwgQ2Flc2FyIFdhbmcgd3Jv
+dGU6Cj4gUm9iLAo+IAo+IOWcqCAyMDE35bm0MDfmnIgxOOaXpSAwNDowNywgUm9iIEhlcnJpbmcg
+5YaZ6YGTOgo+ID4gT24gTW9uLCBKdWwgMTcsIDIwMTcgYXQgMDQ6MTQ6MjhQTSArMDgwMCwgQ2Fl
+c2FyIFdhbmcgd3JvdGU6Cj4gPiA+IFRoaXMgcGF0Y2ggYWRkcyB0aGUgTUFMSSdzIHBvd2VyLW1v
+ZGVsIHRvIHNldCB0aGUgSVBBIG1vZGVsIHRvIGJlIHVzZWQKPiA+ID4gZm9yIHBvd2VyIG1hbmFn
+ZW1lbnQuCj4gPiBXaGF0J3MgSVBBPyBJbmRpYSBQYWxlIEFsZSBvciBJbnRlcm1lZGlhdGUgUGh5
+c2ljYWwgQWRkcmVzcz8KPiAKPiBJUEEgaXMgaW50ZWxsaWdlbnQgUG93ZXIgQWxsb2NhdG9yLiAg
+KEFzIHRoZSBBUk0gaW50cm9kdWNlZCBvbgo+IGh0dHBzOi8vZGV2ZWxvcGVyLmFybS5jb20vb3Bl
+bi1zb3VyY2UvaW50ZWxsaWdlbnQtcG93ZXItYWxsb2NhdGlvbikKPiAKPiA+IAo+ID4gPiBTaWdu
+ZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+ID4gPiAtLS0KPiA+
+ID4gCj4gPiA+IENoYW5nZXMgaW4gdjI6IE5vbmUKPiA+ID4gCj4gPiA+ICAgRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dwdS9hcm0sbWFsaS1taWRnYXJkLnR4dCB8IDEyICsrKysr
+KysrKysrKwo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspCj4gPiA+IAo+
+ID4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dwdS9h
+cm0sbWFsaS1taWRnYXJkLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9n
+cHUvYXJtLG1hbGktbWlkZ2FyZC50eHQKPiA+ID4gaW5kZXggYTQ2MWU0Ny4uYjYxNmU2YiAxMDA2
+NDQKPiA+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dwdS9hcm0s
+bWFsaS1taWRnYXJkLnR4dAo+ID4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZ3B1L2FybSxtYWxpLW1pZGdhcmQudHh0Cj4gPiA+IEBAIC0zNyw2ICszNywxOCBAQCBP
+cHRpb25hbCBwcm9wZXJ0aWVzOgo+ID4gPiAgIC0gb3BlcmF0aW5nLXBvaW50cy12MiA6IFJlZmVy
+IHRvIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9vcHAudHh0Cj4gPiA+
+ICAgICBmb3IgZGV0YWlscy4KPiA+ID4gKy0gcG93ZXJfbW9kZWwgOiBTZXRzIHBvd2VyIG1vZGVs
+IHBhcmFtZXRlcnMuIE5vdGUgdGhhdCB0aGlzIG1vZGVsIHdhcyBkZXNpZ25lZCBmb3IgdGhlIEp1
+bm8KPiA+ID4gKwkgICAgICAgIHBsYXRmb3JtLCBhbmQgbWF5IG5vdCBiZSBzdWl0YWJsZSBmb3Ig
+b3RoZXIgcGxhdGZvcm1zLiBBIHN0cnVjdHVyZSBjb250YWluaW5nIDoKPiA+ID4gKwktIGNvbXBh
+dGlibGU6IFNob3VsZCBiZSBhcm0sbWFsaS1zaW1wbGUtcG93ZXItbW9kZWwKPiA+ID4gKwktIGR5
+bmFtaWMtY29lZmZpY2llbnQ6IENvZWZmaWNpZW50LCBpbiBwVy8oSHogVl4yKSwgd2hpY2ggaXMg
+bXVsdGlwbGllZAo+ID4gPiArCSAgYnkgdl4yKmYgdG8gY2FsY3VsYXRlIHRoZSBkeW5hbWljIHBv
+d2VyIGNvbnN1bXB0aW9uLgo+ID4gPiArCS0gc3RhdGljLWNvZWZmaWNpZW50OiBDb2VmZmljaWVu
+dCwgaW4gdVcvVl4zLCB3aGljaCBpcyBtdWx0aXBsaWVkIGJ5Cj4gPiA+ICsJICB2XjMgdG8gY2Fs
+Y3VsYXRlIHRoZSBzdGF0aWMgcG93ZXIgY29uc3VtcHRpb24uCj4gPiA+ICsJLSB0czogQW4gYXJy
+YXkgY29udGFpbmluZyBjb2VmZmljaWVudHMgZm9yIHRoZSB0ZW1wZXJhdHVyZSBzY2FsaW5nCj4g
+PiA+ICsJICBmYWN0b3IuIFRoaXMgaXMgdXNlZCB0byBzY2FsZSB0aGUgc3RhdGljIHBvd2VyIGJ5
+IGEgZmFjdG9yIG9mCj4gPiA+ICsJICB0c2YvMTAwMDAwMCwgd2hlcmUgdHNmID0gdHNbM10qVF4z
+ICsgdHNbMl0qVF4yICsgdHNbMV0qVCArIHRzWzBdLAo+ID4gPiArCSAgYW5kIFQgPSB0ZW1wZXJh
+dHVyZSBpbiBkZWdyZWVzLgo+ID4gPiArCS0gdGhlcm1hbC16b25lOiBBIHN0cmluZyBpZGVudGlm
+eWluZyB0aGUgdGhlcm1hbCB6b25lIHVzZWQgZm9yIHRoZSBHUFUKPiA+IFRoaXMgY2FuIGFsbCBl
+YXNpbHkgYmUgaW1wbGllZCBieSB0aGUgY29tcGF0aWJsZSBzdHJpbmcuIEknbSBub3QKPiA+IGlu
+Y2xpbmVkIHRvIGFjY2VwdCBzb21ldGhpbmcgTWFsaSBzcGVjaWZpYyBoZXJlLgo+IAo+IElzbid0
+ICBhcm0sbWFsaS1taWRnYXJkLnR4dCBkb2N1bWVudCBzdWl0IGZvciBNYWxpIHNwZWNpZmljPyA6
+LSkKCkl0IGlzLCBidXQgSSdtIHNheWluZyB3ZSBzaG91bGRuJ3QgaGF2ZSBzb21ldGhpbmcgTWFs
+aSBzcGVjaWZpYyBoZXJlLiBJdCAKc2hvdWxkIGJlIHNvbWV0aGluZyB0aGF0IHdvcmtzIGFjcm9z
+cyBkaWZmZXJlbnQgR1BVcyBhdCBsZWFzdC4gSU9XLCBnZXQgCnNvbWUgYWdyZWVtZW50IHdpdGgg
+c2F5IGFkcmVubyBmb2xrcyB0aGF0IHRoZXNlIHByb3BlcnRpZXMgYXJlIHVzZWZ1bCBhbmQgCkkn
+bGwgYmUgbW9yZSByZWNlcHRpdmUuIAoKPiA+IAo+ID4gVGhpcyBsb29rcyAqdmVyeSogcHJlY2lz
+ZSwgYnV0IEknZCBiZSBzdXJwcmlzZWQgaWYgdGhlc2UgdmFsdWVzIGFyZSBhbnkKPiA+IG1vcmUg
+dGhhbiBtYWdpYyB2YWx1ZXMgKGF0IGxlYXN0IHRoZSBkeW5hbWljIGNvZWYpIGFkanVzdGVkIHVu
+dGlsIHRoZQo+ID4gZGVzaXJlZCBwb3dlci9wZXJmb3JtYW5jZSByZXF1aXJlbWVudHMgYXJlIGFj
+aGlldmVkLiBUbyBwdXQgaXQgYW5vdGhlcgo+ID4gd2F5LCB3aHkgZG9uJ3Qgd2UgaGF2ZSBzaW1p
+bGFyIHZhbHVlcyBmb3IgQ1BVcz8KPiAKPiBUaGVzZSB2YWx1ZSB3YXMgY2FsY3VsYXRlZCBieSBy
+dW5uaW5nIGZ1bGwgR1BVIHByb2Nlc3MuCj4gCj4gQ1BVIGhhZCB0aGUgc2ltaWxhciB2YWx1ZSBm
+b3IgZHRzaS4KPiAKPiBTYXk6IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0
+c2kKPiAgICAgICAgIGNwdV9iMDogY3B1QDEwMCB7Cj4gICAgICAgICAgICAgLi4uCj4gICAgICAg
+ICAgICAgZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCA9IDw0MzY+Owo+ICAgICAgICAgICAgIC4u
+Lgo+ICAgICAgICAgfTsKCkluZGVlZC4gV2hpbGUgaXQgaXMgZG9jdW1lbnRlZCBmb3IgQVJNIENQ
+VXMsIEkgZG9uJ3Qgc2VlIHRoYXQgaXQgCmlzIHdpZGVseSB1c2VkIGFzIG9ubHkgdGhlIGhpNjIy
+MCBkdHMgZGVmaW5lcyBpdC4gU28gZWl0aGVyIHN1cHBvcnQgZm9yIApwbGF0Zm9ybXMgaXMganVz
+dCBtaXNzaW5nLCBvciB1cHN0cmVhbSBpcyBub3QgcmVhbGx5IHVzaW5nIHRoaXMgcHJvcGVydHku
+CgpBbmQgaWYgd2UgYXJlIGdvaW5nIHRvIHVzZSB0aGlzLCB0aGVuIGl0IG5lZWRzIHRvIGJlIGRv
+Y3VtZW50ZWQgaW4gYSAKY29tbW9uIGxvY2F0aW9uIGFuZCBtb3ZlZCBvdXQgb2YgYXJtL2NwdXMu
+dHh0LgoKUm9iCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
