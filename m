@@ -1,163 +1,58 @@
-From: zain wang <wzz@rock-chips.com>
-Subject: [RESEND PATCH 1/2] crypto: rockchip - move the crypto completion from interrupt context
-Date: Mon, 24 Jul 2017 09:23:13 +0800
-Message-ID: <1500859394-1799-2-git-send-email-wzz@rock-chips.com>
-References: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>
-Cc: jekarlson@gmail.com, shawn.lin@rock-chips.com, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zain wang <wzz@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] [RESEND] drm/rockchip: fix Kconfig dependencies
+Date: Mon, 24 Jul 2017 09:58:18 +0800
+Message-ID: <5975543A.80407@rock-chips.com>
+References: <20170721211214.3386387-1-arnd@arndb.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170721211214.3386387-1-arnd@arndb.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Arnd Bergmann <arnd@arndb.de>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Stephen Boyd <stephen.boyd@linaro.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It's illegal to call the completion function from hardirq context,
-it will cause runtime tests to fail. Let's build a new task (done_task)
-for moving update operation from hardirq context.
-
-Signed-off-by: zain wang <wzz@rock-chips.com>
----
- drivers/crypto/rockchip/rk3288_crypto.c            | 39 ++++++++++++++++------
- drivers/crypto/rockchip/rk3288_crypto.h            |  4 ++-
- drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c |  2 +-
- drivers/crypto/rockchip/rk3288_crypto_ahash.c      |  2 +-
- 4 files changed, 33 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index d0f80c6..c2b1dd7 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -169,24 +169,22 @@ static irqreturn_t rk_crypto_irq_handle(int irq, void *dev_id)
- {
- 	struct rk_crypto_info *dev  = platform_get_drvdata(dev_id);
- 	u32 interrupt_status;
--	int err = 0;
- 
- 	spin_lock(&dev->lock);
- 	interrupt_status = CRYPTO_READ(dev, RK_CRYPTO_INTSTS);
- 	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, interrupt_status);
-+
- 	if (interrupt_status & 0x0a) {
- 		dev_warn(dev->dev, "DMA Error\n");
--		err = -EFAULT;
--	} else if (interrupt_status & 0x05) {
--		err = dev->update(dev);
-+		dev->err = -EFAULT;
- 	}
--	if (err)
--		dev->complete(dev, err);
-+	tasklet_schedule(&dev->done_task);
-+
- 	spin_unlock(&dev->lock);
- 	return IRQ_HANDLED;
- }
- 
--static void rk_crypto_tasklet_cb(unsigned long data)
-+static void rk_crypto_queue_task_cb(unsigned long data)
- {
- 	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
- 	struct crypto_async_request *async_req, *backlog;
-@@ -210,11 +208,26 @@ static void rk_crypto_tasklet_cb(unsigned long data)
- 		dev->ablk_req = ablkcipher_request_cast(async_req);
- 	else
- 		dev->ahash_req = ahash_request_cast(async_req);
-+	dev->err = 0;
- 	err = dev->start(dev);
- 	if (err)
- 		dev->complete(dev, err);
- }
- 
-+static void rk_crypto_done_task_cb(unsigned long data)
-+{
-+	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
-+
-+	if (dev->err) {
-+		dev->complete(dev, dev->err);
-+		return;
-+	}
-+
-+	dev->err = dev->update(dev);
-+	if (dev->err)
-+		dev->complete(dev, dev->err);
-+}
-+
- static struct rk_crypto_tmp *rk_cipher_algs[] = {
- 	&rk_ecb_aes_alg,
- 	&rk_cbc_aes_alg,
-@@ -361,8 +374,10 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 	crypto_info->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, crypto_info);
- 
--	tasklet_init(&crypto_info->crypto_tasklet,
--		     rk_crypto_tasklet_cb, (unsigned long)crypto_info);
-+	tasklet_init(&crypto_info->queue_task,
-+		     rk_crypto_queue_task_cb, (unsigned long)crypto_info);
-+	tasklet_init(&crypto_info->done_task,
-+		     rk_crypto_done_task_cb, (unsigned long)crypto_info);
- 	crypto_init_queue(&crypto_info->queue, 50);
- 
- 	crypto_info->enable_clk = rk_crypto_enable_clk;
-@@ -380,7 +395,8 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 	return 0;
- 
- err_register_alg:
--	tasklet_kill(&crypto_info->crypto_tasklet);
-+	tasklet_kill(&crypto_info->queue_task);
-+	tasklet_kill(&crypto_info->done_task);
- err_crypto:
- 	return err;
- }
-@@ -390,7 +406,8 @@ static int rk_crypto_remove(struct platform_device *pdev)
- 	struct rk_crypto_info *crypto_tmp = platform_get_drvdata(pdev);
- 
- 	rk_crypto_unregister();
--	tasklet_kill(&crypto_tmp->crypto_tasklet);
-+	tasklet_kill(&crypto_tmp->done_task);
-+	tasklet_kill(&crypto_tmp->queue_task);
- 	return 0;
- }
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index d7b71fe..65ad1c2 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.h
-+++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -190,9 +190,11 @@ struct rk_crypto_info {
- 	void __iomem			*reg;
- 	int				irq;
- 	struct crypto_queue		queue;
--	struct tasklet_struct		crypto_tasklet;
-+	struct tasklet_struct		queue_task;
-+	struct tasklet_struct		done_task;
- 	struct ablkcipher_request	*ablk_req;
- 	struct ahash_request		*ahash_req;
-+	int 				err;
- 	/* device lock */
- 	spinlock_t			lock;
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-index b5a3afe..8787e44 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-@@ -42,7 +42,7 @@ static int rk_handle_req(struct rk_crypto_info *dev,
- 	spin_lock_irqsave(&dev->lock, flags);
- 	err = ablkcipher_enqueue_request(&dev->queue, req);
- 	spin_unlock_irqrestore(&dev->lock, flags);
--	tasklet_schedule(&dev->crypto_tasklet);
-+	tasklet_schedule(&dev->queue_task);
- 	return err;
- }
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index 7185882..9b55585 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -204,7 +204,7 @@ static int rk_ahash_digest(struct ahash_request *req)
- 	ret = crypto_enqueue_request(&dev->queue, &req->base);
- 	spin_unlock_irqrestore(&dev->lock, flags);
- 
--	tasklet_schedule(&dev->crypto_tasklet);
-+	tasklet_schedule(&dev->queue_task);
- 
- 	/*
- 	 * it will take some time to process date after last dma transmission.
--- 
-1.9.1
+T24gMjAxN+W5tDA35pyIMjLml6UgMDU6MTIsIEFybmQgQmVyZ21hbm4gd3JvdGU6Cj4gQSBidWcg
+dGhhdCBJIGhhZCBmaXhlZCBlYXJsaWVyIGp1c3QgY2FtZSBiYWNrLCB3aXRoIENPTkZJR19FWFRD
+T049bSwKPiB0aGUgcm9ja2NoaXAgZHJtIGRyaXZlciB3aWxsIGZhaWwgdG8gbGluazoKPgo+IGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5vOiBJbiBmdW5jdGlvbiBgY2RuX2Rw
+X2dldF9wb3J0X2xhbmVzJzoKPiBjZG4tZHAtY29yZS5jOigudGV4dC5jZG5fZHBfZ2V0X3BvcnRf
+bGFuZXMrMHgzMCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGV4dGNvbl9nZXRfc3RhdGUnCj4g
+Y2RuLWRwLWNvcmUuYzooLnRleHQuY2RuX2RwX2dldF9wb3J0X2xhbmVzKzB4NmMpOiB1bmRlZmlu
+ZWQgcmVmZXJlbmNlIHRvIGBleHRjb25fZ2V0X3Byb3BlcnR5Jwo+IGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9jZG4tZHAtY29yZS5vOiBJbiBmdW5jdGlvbiBgY2RuX2RwX2NoZWNrX3NpbmtfY29u
+bmVjdGlvbic6Cj4gY2RuLWRwLWNvcmUuYzooLnRleHQuY2RuX2RwX2NoZWNrX3NpbmtfY29ubmVj
+dGlvbisweDgwKTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgZXh0Y29uX2dldF9zdGF0ZScKPiBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUubzogSW4gZnVuY3Rpb24gYGNkbl9k
+cF9lbmFibGUnOgo+IGNkbi1kcC1jb3JlLmM6KC50ZXh0LmNkbl9kcF9lbmFibGUrMHg3NDgpOiB1
+bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBleHRjb25fZ2V0X3Byb3BlcnR5Jwo+Cj4gVGhlIHByb2Js
+ZW0gaXMgdGhhdCB0aGF0IHRoZSBzdWItZHJpdmVycyBhcmUgbm93IGFsbCBsaW5rZWQgaW50byB0
+aGUKPiBtYWluIHJvY2tjaGlwIGRybSBtb2R1bGUsIHdoaWNoIGJyZWFrcyBhbGwgdGhlIEtjb25m
+aWcgZGVwZW5kZW5jaWVzCj4gdGhhdCBhcmUgc3BlY2lmaWVkIGluIHRoZSBvcHRpb25zIGZvciB0
+aG9zZSBzdWItZHJpdmVycy4KPgo+IFRoaXMgY2xhcmlmaWVzIHRoZSBkZXBlbmRlbmN5IHRvIGVu
+c3VyZSB0aGF0IHdlIGNhbiBvbmx5IHR1cm4gb24gdGhlIERQCj4gZHJpdmVyIHdoZW4gRVhUQ09O
+IGlzIHJlYWNoYWJsZS4gQXMgdGhlICdzZWxlY3QnIHN0YXRlbWVudHMgY2FuIG5vdwo+IGNhdXNl
+IGFkZGl0aW9uYWwgb3B0aW9ucyB0byBiZWNvbWUgYnVpbHQtaW4gd2hlbiB0aGV5IHNob3VsZCBi
+ZQo+IGxvYWRhYmxlIG1vZHVsZXMsIEknbSBtb3ZpbmcgdGhvc2UgaW50byB0aGUgbWFpbiBkcml2
+ZXIgY29uZmlnIG9wdGlvbi4KPiBUaGUgZGVwZW5kZW5jeSBvbiBEUk1fUk9DS0NISVAgY2FuIGJl
+IHJlZHVjZWQgaW50byBhIHNpbmdsZSAnaWYnCj4gc3RhdGVtZW50IGhlcmUgZm9yIGJyZXZpdHks
+IGJ1dCB0aGlzIGhhcyBubyBmdW5jdGlvbmFsIGVmZmVjdC4KPgo+IEZpeGVzOiBiNjcwNTE1N2Iy
+ZGIgKCJkcm0vcm9ja2NoaXA6IGFkZCBleHRjb24gZGVwZW5kZW5jeSBmb3IgRFAiKQo+IEZpeGVz
+OiA4ODIwYjY4YmQzNzggKCJkcm0vcm9ja2NoaXA6IFJlZmFjdG9yIHRoZSBjb21wb25lbnQgbWF0
+Y2ggbG9naWMuIikKPiBMaW5rOmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTY0
+ODc2MS8KPiBBY2tlZC1ieTogR3VlbnRlciBSb2Vjazxncm9lY2tAY2hyb21pdW0ub3JnPgo+IFRl
+c3RlZC1ieTogSmVmZnkgQ2hlbjxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1v
+ZmYtYnk6IEFybmQgQmVyZ21hbm48YXJuZEBhcm5kYi5kZT4KClB1c2hlZCB0byBkcm0tbWlzYy1m
+aXhlcy4KClRoYW5rcy4KCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
