@@ -1,36 +1,75 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable sdmmc controller on
- rk3399-firefly
-Date: Tue, 25 Jul 2017 21:50:21 +0200
-Message-ID: <2079579.gPOS495xqH@phil>
-References: <1500625859-208199-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5 2/7] drm/rockchip: vop: move write_relaxed flags to vop
+ register
+Date: Tue, 25 Jul 2017 23:47:09 +0200
+Message-ID: <2048476.V4PpOSpEqb@phil>
+References: <1500518564-30371-1-git-send-email-mark.yao@rock-chips.com>
+ <1500518608-30538-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1500625859-208199-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1500518608-30538-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 21. Juli 2017, 16:30:59 CEST schrieb Shawn Lin:
-> This allows basic support for SD highspeed cards but no UHS-I mode
-> got ready due to the propagated defer-probe error from RK805.
-> 
-> Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-applied for 4.14
-
-
-Thanks
-Heiko
+SGkgTWFyaywKCkFtIERvbm5lcnN0YWcsIDIwLiBKdWxpIDIwMTcsIDEwOjQzOjI3IENFU1Qgc2No
+cmllYiBNYXJrIFlhbzoKPiBTaW5jZSB0aGUgZHJtIGF0b21pYyBmcmFtZXdvcmssIG9ubHkgYSBz
+bWFsbCBwYXJ0IG9mIHRoZSB2b3AKPiByZWdpc3RlciBuZWVkcyBzeW5jIHdyaXRlLCBDdXJyZW50
+bHkgc2VlbXMgb25seSBmb2xsb3dpbmcgcmVnaXN0ZXJzCj4gbmVlZCBzeW5jIHdyaXRlOgo+ICAg
+IGNmZ19kb25lLCBzdGFuZGJ5IGFuZCBpbnRlcnJ1cHQgcmVsYXRlZCByZWdpc3Rlci4KPiAKPiBB
+bGwgY3RybCByZWdpc3RlcnMgYXJlIHVzaW5nIHRoZSBzeW5jIHdyaXRlIG1ldGhvZCB0aGF0IGlz
+Cj4gaW5lZmZpY2llbnQsIGhhcmRjb2RlIHRoZSB3cml0ZV9yZWxheGVkIGZsYWdzIHRvIHZvcCBy
+ZWdpc3RlcnMsCj4gdGhlbiBjYW4gb25seSBkbyBzeW5jaHJvbml6ZSB3cml0ZSBmb3IgdGhvc2Ug
+YWN0dWFsIG5lZWRlZCByZWdpc3Rlci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFy
+ay55YW9Acm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMgfCAxNCArKystLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCA0MiArKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0t
+LQo+ICAyIGZpbGVzIGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKyksIDI4IGRlbGV0aW9ucygtKQo+
+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4
+IDgxMTY0ZDYuLjc4NGEyYjcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMKPiBAQCAtNDIsMTggKzQyLDEyIEBACj4gICNpbmNsdWRlICJyb2NrY2hp
+cF9kcm1fcHNyLmgiCj4gICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fdm9wLmgiCj4gIAo+IC0jZGVm
+aW5lIF9fUkVHX1NFVF9SRUxBWEVEKHgsIG9mZiwgbWFzaywgc2hpZnQsIHYsIHdyaXRlX21hc2sp
+IFwKPiAtCQl2b3BfbWFza193cml0ZSh4LCBvZmYsIG1hc2ssIHNoaWZ0LCB2LCB3cml0ZV9tYXNr
+LCB0cnVlKQo+IC0KPiAtI2RlZmluZSBfX1JFR19TRVRfTk9STUFMKHgsIG9mZiwgbWFzaywgc2hp
+ZnQsIHYsIHdyaXRlX21hc2spIFwKPiAtCQl2b3BfbWFza193cml0ZSh4LCBvZmYsIG1hc2ssIHNo
+aWZ0LCB2LCB3cml0ZV9tYXNrLCBmYWxzZSkKPiAtCj4gICNkZWZpbmUgUkVHX1NFVCh4LCBiYXNl
+LCByZWcsIHYsIG1vZGUpIFwKPiAtCQlfX1JFR19TRVRfIyNtb2RlKHgsIGJhc2UgKyByZWcub2Zm
+c2V0LCBcCj4gLQkJCQkgcmVnLm1hc2ssIHJlZy5zaGlmdCwgdiwgcmVnLndyaXRlX21hc2spCj4g
+KwkJdm9wX21hc2tfd3JpdGUoeCwgYmFzZSArIHJlZy5vZmZzZXQsIHJlZy5tYXNrLCByZWcuc2hp
+ZnQsIFwKPiArCQkJICAgICAgIHYsIHJlZy53cml0ZV9tYXNrLCByZWcucmVsYXhlZCkKPiAgI2Rl
+ZmluZSBSRUdfU0VUX01BU0soeCwgYmFzZSwgcmVnLCBtYXNrLCB2LCBtb2RlKSBcCj4gLQkJX19S
+RUdfU0VUXyMjbW9kZSh4LCBiYXNlICsgcmVnLm9mZnNldCwgXAo+IC0JCQkJIG1hc2ssIHJlZy5z
+aGlmdCwgdiwgcmVnLndyaXRlX21hc2spCj4gKwkJdm9wX21hc2tfd3JpdGUoeCwgYmFzZSArIHJl
+Zy5vZmZzZXQsIFwKPiArCQkJICAgICAgIG1hc2ssIHJlZy5zaGlmdCwgdiwgcmVnLndyaXRlX21h
+c2ssIHJlZy5yZWxheGVkKQoKeW91IG9ubHkgaW50cm9kdWNlIHRoZSByZWxheGVkIGVsZW1lbnQg
+b2Ygc3RydWN0IHZvcF9yZWcgaW4gcGF0Y2g0LgpTbyB1c2luZyBpdCBoZXJlIHByb2R1Y2VzIGEg
+Y29tcGlsZSBlcnJvcgoKLi4vZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
+b3AuYzogSW4gZnVuY3Rpb24g4oCYdm9wX2NmZ19kb25l4oCZOgouLi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jOjQ3OjMzOiBlcnJvcjog4oCYY29uc3Qgc3RydWN0
+IHZvcF9yZWfigJkgaGFzIG5vIG1lbWJlciBuYW1lZCDigJhyZWxheGVk4oCZCiAgICAgICAgICAg
+diwgcmVnLndyaXRlX21hc2ssIHJlZy5yZWxheGVkKQogICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBeCi4uL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmM6
+NTk6Mzogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvIOKAmFJFR19TRVTigJkKICAgUkVHX1NF
+VCh4LCAwLCAoeCktPmRhdGEtPmN0cmwtPm5hbWUsIHYsIE5PUk1BTCkKICAgXn5+fn5+fgouLi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jOjIwMToyOiBub3RlOiBp
+biBleHBhbnNpb24gb2YgbWFjcm8g4oCYVk9QX0NUUkxfU0VU4oCZCiAgVk9QX0NUUkxfU0VUKHZv
+cCwgY2ZnX2RvbmUsIDEpOwogIF5+fn5+fn5+fn5+fgoKd2hlbiBvbmx5IHBhdGNoZXMgMSsyIGFy
+ZSBhcHBsaWVkLiBTbyB0aGUgcmVsYXhlZCBmaWVsZCBhZGRpdGlvbiBzaG91bGQKZGVmaW5pdGx5
+IG1vdmUgaW50byB0aGlzIHBhdGNoIHRvIG5vdCBicmVhayBiaXNlY3RhYmlsaXR5LgoKCkhlaWtv
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
