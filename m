@@ -1,177 +1,166 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH 7/8] drm: Nuke drm_atomic_helper_connector_dpms
-Date: Tue, 25 Jul 2017 10:04:19 +0200
-Message-ID: <5976FB83.20005@baylibre.com>
-References: <20170725080122.20548-1-daniel.vetter@ffwll.ch>
- <20170725080122.20548-8-daniel.vetter@ffwll.ch>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1] clk: rockchip: rk3128: modify rk3128 clk driver to support rk3126
+Date: Tue, 25 Jul 2017 10:07:02 +0200
+Message-ID: <2781955.2VuQGUX9V5@diego>
+References: <1500966996-5660-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170725080122.20548-8-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, nouveau@lists.freedesktop.org, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-mediatek@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Romain Perier <romain.perier@collabora.com>, Daniel Vetter <daniel.vetter@intel.com>, Jyri Sarha <jsarha@ti.com>, Marek Vasut <marex@denx.de>, linux-renesas-soc@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, Alexey Brodkin <abrodkin@synopsys.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Ben Skeggs <bskeggs>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1500966996-5660-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpMZSAyNS8wNy8yMDE3IDEwOjAxLCBEYW5pZWwgVmV0dGVyIGEgw6ljcml0IDoKPiBJdCdzIGRl
-YWQgY29kZSwgdGhlIGNvcmUgaGFuZGxlcyBhbGwgdGhpcyBkaXJlY3RseSBub3cuCj4gCj4gVGhl
-IG9ubHkgc3BlY2lhbCBjYXNlIGlzIG5vdXZlYXUgYW5kIHRkYTk4OHggd2hpY2ggdXNlZCBvbmUg
-ZnVuY3Rpb24KPiBmb3IgYm90aCBsZWdhY3kgbW9kZXNldCBjb2RlIGFuZCAtbnY1MCBhdG9taWMg
-d29ybGQgaW5zdGVhZCBvZiAyCj4gdnRhYmxlcy4gQnV0IGFtb3VudHMgdG8gZXhhY3RseSB0aGUg
-c2FtZS4KPiAKPiB2MjogUmViYXNlIG92ZXIgdGhlIHBhbmVsL2JyaWRlZyByZWZhY3RvcmluZ3Mg
-aW4gc3RtL2x0ZGMuCj4gCj4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZl
-dHRlckBpbnRlbC5jb20+Cj4gQ2M6IEFyY2hpdCBUYW5lamEgPGFyY2hpdHRAY29kZWF1cm9yYS5v
-cmc+Cj4gQ2M6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+Cj4gQ2M6IExhdXJl
-bnQgUGluY2hhcnQgPExhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KPiBDYzogUGV0
-ZXIgU2VubmEgVHNjaHVkaW4gPHBldGVyLnNlbm5hQGNvbGxhYm9yYS5jb20+Cj4gQ2M6IE1hcnRp
-biBEb25uZWxseSA8bWFydGluLmRvbm5lbGx5QGdlLmNvbT4KPiBDYzogTWFydHluIFdlbGNoIDxt
-YXJ0eW4ud2VsY2hAY29sbGFib3JhLmNvLnVrPgo+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwu
-dmV0dGVyQGludGVsLmNvbT4KPiBDYzogSmFuaSBOaWt1bGEgPGphbmkubmlrdWxhQGxpbnV4Lmlu
-dGVsLmNvbT4KPiBDYzogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gQ2M6IERh
-dmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiBDYzogSW5raSBEYWUgPGlua2kuZGFlQHNh
-bXN1bmcuY29tPgo+IENjOiBKb29ueW91bmcgU2hpbSA8ankwOTIyLnNoaW1Ac2Ftc3VuZy5jb20+
-Cj4gQ2M6IFNldW5nLVdvbyBLaW0gPHN3MDMxMi5raW1Ac2Ftc3VuZy5jb20+Cj4gQ2M6IEt5dW5n
-bWluIFBhcmsgPGt5dW5nbWluLnBhcmtAc2Ftc3VuZy5jb20+Cj4gQ2M6IEt1a2ppbiBLaW0gPGtn
-ZW5lQGtlcm5lbC5vcmc+Cj4gQ2M6IEtyenlzenRvZiBLb3psb3dza2kgPGtyemtAa2VybmVsLm9y
-Zz4KPiBDYzogU3RlZmFuIEFnbmVyIDxzdGVmYW5AYWduZXIuY2g+Cj4gQ2M6IEFsaXNvbiBXYW5n
-IDxhbGlzb24ud2FuZ0BmcmVlc2NhbGUuY29tPgo+IENjOiBSdXNzZWxsIEtpbmcgPGxpbnV4QGFy
-bWxpbnV4Lm9yZy51az4KPiBDYzogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5k
-ZT4KPiBDYzogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPiBDYzogTWF0dGhpYXMgQnJ1Z2dl
-ciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiBDYzogTmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJv
-bmdAYmF5bGlicmUuY29tPgo+IENjOiBDYXJsbyBDYWlvbmUgPGNhcmxvQGNhaW9uZS5vcmc+Cj4g
-Q2M6IEtldmluIEhpbG1hbiA8a2hpbG1hbkBiYXlsaWJyZS5jb20+Cj4gQ2M6IE1hcmVrIFZhc3V0
-IDxtYXJleEBkZW54LmRlPgo+IENjOiBCZW4gU2tlZ2dzIDxic2tlZ2dzQHJlZGhhdC5jb20+Cj4g
-Q2M6IFRvbWkgVmFsa2VpbmVuIDx0b21pLnZhbGtlaW5lbkB0aS5jb20+Cj4gQ2M6IEVyaWMgQW5o
-b2x0IDxlcmljQGFuaG9sdC5uZXQ+Cj4gQ2M6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBz
-LmNvbT4KPiBDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBDYzogQmVuamFt
-aW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGxpbmFyby5vcmc+Cj4gQ2M6IFZpbmNlbnQg
-QWJyaW91IDx2aW5jZW50LmFicmlvdUBzdC5jb20+Cj4gQ2M6IFlhbm5pY2sgRmVydHJlIDx5YW5u
-aWNrLmZlcnRyZUBzdC5jb20+Cj4gQ2M6IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBz
-dC5jb20+Cj4gQ2M6IE1heGltZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAZnJlZS1lbGVjdHJvbnMu
-Y29tPgo+IENjOiBDaGVuLVl1IFRzYWkgPHdlbnNAY3NpZS5vcmc+Cj4gQ2M6IFRoaWVycnkgUmVk
-aW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+Cj4gQ2M6IEpvbmF0aGFuIEh1bnRlciA8am9u
-YXRoYW5oQG52aWRpYS5jb20+Cj4gQ2M6IEp5cmkgU2FyaGEgPGpzYXJoYUB0aS5jb20+Cj4gQ2M6
-IEdlcmQgSG9mZm1hbm4gPGtyYXhlbEByZWRoYXQuY29tPgo+IENjOiBTaGF3biBHdW8gPHNoYXdu
-Z3VvQGtlcm5lbC5vcmc+Cj4gQ2M6IEpvaG4gU3R1bHR6IDxqb2huLnN0dWx0ekBsaW5hcm8ub3Jn
-Pgo+IENjOiBMYXJzLVBldGVyIENsYXVzZW4gPGxhcnNAbWV0YWZvby5kZT4KPiBDYzogU2VyZ2Vp
-IFNodHlseW92IDxzZXJnZWkuc2h0eWx5b3ZAY29nZW50ZW1iZWRkZWQuY29tPgo+IENjOiBKZWZm
-eSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IENjOiBUb21ldSBWaXpvc28gPHRv
-bWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgo+IENjOiBZYWtpciBZYW5nIDxrdWFua3Vhbi55QGdt
-YWlsLmNvbT4KPiBDYzogTWFyZWsgU3p5cHJvd3NraSA8bS5zenlwcm93c2tpQHNhbXN1bmcuY29t
-Pgo+IENjOiBKb3NlIEFicmV1IDxKb3NlLkFicmV1QHN5bm9wc3lzLmNvbT4KPiBDYzogUm9tYWlu
-IFBlcmllciA8cm9tYWluLnBlcmllckBjb2xsYWJvcmEuY29tPgo+IENjOiBLaWVyYW4gQmluZ2hh
-bSA8a2llcmFuLmJpbmdoYW0rcmVuZXNhc0BpZGVhc29uYm9hcmQuY29tPgo+IENjOiBYaW5saWFu
-ZyBMaXUgPHoubGl1eGlubGlhbmdAaGlzaWxpY29uLmNvbT4KPiBDYzogQWxleGV5IEJyb2RraW4g
-PGFicm9ka2luQHN5bm9wc3lzLmNvbT4KPiBDYzogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIuZGV1
-Y2hlckBhbWQuY29tPgo+IENjOiBSb25ncm9uZyBab3UgPHpvdXJvbmdyb25nQGdtYWlsLmNvbT4K
-PiBDYzogUm9iIENsYXJrIDxyb2JkY2xhcmtAZ21haWwuY29tPgo+IENjOiBIYWkgTGkgPGhhbGlA
-Y29kZWF1cm9yYS5vcmc+Cj4gQ2M6ICJOb3JhbGYgVHLDuG5uZXMiIDxub3JhbGZAdHJvbm5lcy5v
-cmc+Cj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IENjOiBsaW51
-eC1zYW1zdW5nLXNvY0B2Z2VyLmtlcm5lbC5vcmcKPiBDYzogaW50ZWwtZ2Z4QGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwo+IENjOiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6
-IGxpbnV4LWFtbG9naWNAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IENjOiBub3V2ZWF1QGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwo+IENjOiBsaW51eC1yZW5lc2FzLXNvY0B2Z2VyLmtlcm5lbC5vcmcKPiBD
-YzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IENjOiBsaW51eC10ZWdyYUB2
-Z2VyLmtlcm5lbC5vcmcKPiBDYzogdmlydHVhbGl6YXRpb25AbGlzdHMubGludXgtZm91bmRhdGlv
-bi5vcmcKPiBDYzogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gQ2M6IEJhb3lvdSBY
-aWUgPGJhb3lvdS54aWVAbGluYXJvLm9yZz4KPiBDYzogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5i
-cmV6aWxsb25AZnJlZS1lbGVjdHJvbnMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL2Fkdjc1MTEvYWR2NzUxMV9kcnYuYyAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9hbmFsb2dpeC1hbng3OHh4LmMgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDEgLQo+ICBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2R1bWItdmdhLWRhYy5jICAgICAgICAgICAgICB8ICAxIC0KPiAgLi4u
-L2RybS9icmlkZ2UvbWVnYWNoaXBzLXN0ZHB4eHh4LWdlLWI4NTB2My1mdy5jICAgfCAgMSAtCj4g
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvbnhwLXB0bjM0NjAuYyAgICAgICAgICAgICAgIHwgIDEg
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhbmVsLmMgICAgICAgICAgICAgICAgICAgICB8
-ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wYXJhZGUtcHM4NjIyLmMgICAgICAgICAg
-ICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc2lpOTAyeC5jICAgICAgICAgICAg
-ICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
-YyAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90YzM1ODc2Ny5jICAg
-ICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGktdGZwNDEw
-LmMgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19o
-ZWxwZXIuYyAgICAgICAgICAgICAgICB8IDc5IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgZHJp
-dmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX2RwaS5jICAgICAgICAgICAgfCAgMSAtCj4g
-IGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9kc2kuYyAgICAgICAgICAgIHwgIDEg
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fdmlkaS5jICAgICAgICAgICB8
-ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfaGRtaS5jICAgICAgICAgICAg
-ICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9mc2wtZGN1L2ZzbF9kY3VfZHJtX3JnYi5jICAg
-ICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1jL2hpYm1jX2Ry
-bV92ZGFjLmMgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL2kyYy90ZGE5OTh4X2Rydi5jICAg
-ICAgICAgICAgICAgICAgfCAxMCArLS0KPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfY3J0
-LmMgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2ludGVs
-X2RwLmMgICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9p
-bnRlbF9kcF9tc3QuYyAgICAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL2k5
-MTUvaW50ZWxfZHNpLmMgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9pOTE1L2ludGVsX2R2by5jICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vaTkxNS9pbnRlbF9oZG1pLmMgICAgICAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVy
-cy9ncHUvZHJtL2k5MTUvaW50ZWxfbHZkcy5jICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRy
-aXZlcnMvZ3B1L2RybS9pOTE1L2ludGVsX3Nkdm8uYyAgICAgICAgICAgICAgICAgIHwgIDEgLQo+
-ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF90di5jICAgICAgICAgICAgICAgICAgICB8ICAx
-IC0KPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtbGRiLmMgICAgICAgICAgICAgICAgICAgICAg
-fCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LXR2ZS5jICAgICAgICAgICAgICAgICAg
-ICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vaW14L3BhcmFsbGVsLWRpc3BsYXkuYyAgICAg
-ICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAg
-ICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5j
-ICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fdmVu
-Y19jdmJzLmMgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL21zbS9kc2kvZHNp
-X21hbmFnZXIuYyAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9tc20vZWRw
-L2VkcF9jb25uZWN0b3IuYyAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vbXNt
-L2hkbWkvaGRtaV9jb25uZWN0b3IuYyAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJt
-L21zbS9tZHAvbWRwNC9tZHA0X2x2ZHNfY29ubmVjdG9yLmMgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1
-L2RybS9teHNmYi9teHNmYl9vdXQuYyAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJz
-L2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1X2Nvbm5lY3Rvci5jICAgICAgICB8IDEyICstLS0KPiAg
-ZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvbnY1MF9kaXNwbGF5LmMgICAgICAgICAgICAgfCAgMSAt
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9vbWFwZHJtL29tYXBfY29ubmVjdG9yLmMgICAgICAgICAgIHwg
-IDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vcGwxMTEvcGwxMTFfY29ubmVjdG9yLmMgICAgICAgICAg
-ICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9kdV9sdmRzY29uLmMgICAg
-ICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jICAg
-ICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
-YyAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRt
-aS5jICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2R2by5j
-ICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9o
-ZGEuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9z
-dGlfaGRtaS5jICAgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9z
-dW40aS9zdW40aV9oZG1pX2VuYy5jICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9k
-cm0vc3VuNGkvc3VuNGlfcmdiLmMgICAgICAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9n
-cHUvZHJtL3N1bjRpL3N1bjRpX3R2LmMgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZl
-cnMvZ3B1L2RybS90ZWdyYS9kc2kuYyAgICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vdGVncmEvaGRtaS5jICAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0K
-PiAgZHJpdmVycy9ncHUvZHJtL3RlZ3JhL3JnYi5jICAgICAgICAgICAgICAgICAgICAgICAgfCAg
-MSAtCj4gIGRyaXZlcnMvZ3B1L2RybS90ZWdyYS9zb3IuYyAgICAgICAgICAgICAgICAgICAgICAg
-IHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vdGlsY2RjL3RpbGNkY19wYW5lbC5jICAgICAgICAg
-ICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfdGZwNDEwLmMgICAg
-ICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS90aW55ZHJtL2NvcmUvdGlueWRybS1w
-aXBlLmMgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF9oZG1pLmMgICAg
-ICAgICAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRfdmVjLmMg
-ICAgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS92aXJ0aW8vdmly
-dGdwdV9kaXNwbGF5LmMgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0venRlL3p4
-X2hkbWkuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL3p0
-ZS96eF90dmVuYy5jICAgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS96dGUvenhfdmdhLmMgICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBpbmNsdWRlL2Ry
-bS9kcm1fYXRvbWljX2hlbHBlci5oICAgICAgICAgICAgICAgICAgICB8ICAyIC0KPiAgNjggZmls
-ZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAxNjQgZGVsZXRpb25zKC0pCj4gCgo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fdmVuY19jdmJzLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVzb24vbWVzb25fdmVuY19jdmJzLmMKPiBpbmRleCAwMDc3NWIzOTdkYmEuLjc5
-ZDk1Y2E4YTBjMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fdmVu
-Y19jdmJzLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fdmVuY19jdmJzLmMK
-PiBAQCAtMTE4LDcgKzExOCw2IEBAIHN0YXRpYyBpbnQgbWVzb25fY3Zic19jb25uZWN0b3JfbW9k
-ZV92YWxpZChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+ICB9Cj4gIAo+ICBzdGF0
-aWMgY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgbWVzb25fY3Zic19jb25uZWN0b3Jf
-ZnVuY3MgPSB7Cj4gLQkuZHBtcwkJCT0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2RwbXMs
-Cj4gIAkuZGV0ZWN0CQkJPSBtZXNvbl9jdmJzX2Nvbm5lY3Rvcl9kZXRlY3QsCj4gIAkuZmlsbF9t
-b2RlcwkJPSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3JfbW9kZXMsCj4gIAkuZGVz
-dHJveQkJPSBtZXNvbl9jdmJzX2Nvbm5lY3Rvcl9kZXN0cm95LAoKRm9yIG1lc29uIGRyaXZlciA6
-CkFja2VkLWJ5OiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJyZS5jb20+CgpGb3Ig
-dGhlIHJlc3Q6ClJldmlld2VkLWJ5OiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJy
-ZS5jb20+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Elaine,
+
+Am Dienstag, 25. Juli 2017, 15:16:36 CEST schrieb Elaine Zhang:
+> rk3128 and rk3126 have some gate registers describe differences.
+> So need to make some distinctions.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  drivers/clk/rockchip/clk-rk3128.c      | 59
+> +++++++++++++++++++++++++++++++--- include/dt-bindings/clock/rk3128-cru.h |
+>  3 ++
+>  2 files changed, 57 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3128.c
+> b/drivers/clk/rockchip/clk-rk3128.c index e243f2eae68f..0039b8940900 100644
+> --- a/drivers/clk/rockchip/clk-rk3128.c
+> +++ b/drivers/clk/rockchip/clk-rk3128.c
+> @@ -459,9 +459,8 @@ enum rk3128_plls {
+>  			RK2928_CLKSEL_CON(2), 14, 2, MFLAGS, 8, 5, DFLAGS,
+>  			RK2928_CLKGATE_CON(10), 15, GFLAGS),
+> 
+> -	COMPOSITE(SCLK_SFC, "sclk_sfc", mux_sclk_sfc_src_p, 0,
+> -			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS,
+> -			RK2928_CLKGATE_CON(3), 15, GFLAGS),
+> +	COMPOSITE_NOGATE(0, "sclk_sfc_src", mux_sclk_sfc_src_p, 0,
+> +			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS),
+> 
+>  	COMPOSITE_NOMUX(PCLK_PMU_PRE, "pclk_pmu_pre", "cpll", 0,
+>  			RK2928_CLKSEL_CON(29), 8, 6, DFLAGS,
+> @@ -495,7 +494,6 @@ enum rk3128_plls {
+>  	GATE(ACLK_DMAC, "aclk_dmac", "aclk_peri", 0, RK2928_CLKGATE_CON(5), 1,
+> GFLAGS), GATE(0, "aclk_peri_niu", "aclk_peri", CLK_IGNORE_UNUSED,
+> RK2928_CLKGATE_CON(9), 15, GFLAGS), GATE(0, "aclk_cpu_to_peri",
+> "aclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 2, GFLAGS),
+> -	GATE(HCLK_GPS, "hclk_gps", "aclk_peri", 0, RK2928_CLKGATE_CON(3), 14,
+> GFLAGS),
+> 
+>  	GATE(HCLK_I2S_8CH, "hclk_i2s_8ch", "hclk_peri", 0, RK2928_CLKGATE_CON(7),
+> 4, GFLAGS), GATE(0, "hclk_peri_matrix", "hclk_peri", CLK_IGNORE_UNUSED,
+> RK2928_CLKGATE_CON(4), 0, GFLAGS), @@ -541,7 +539,6 @@ enum rk3128_plls {
+>  	GATE(0, "hclk_rom", "hclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5),
+> 6, GFLAGS), GATE(HCLK_CRYPTO, "hclk_crypto", "hclk_cpu", 0,
+> RK2928_CLKGATE_CON(3), 5, GFLAGS),
+> 
+> -	GATE(PCLK_HDMI, "pclk_hdmi", "pclk_cpu", 0, RK2928_CLKGATE_CON(3), 8,
+> GFLAGS), GATE(PCLK_ACODEC, "pclk_acodec", "pclk_cpu", 0,
+> RK2928_CLKGATE_CON(5), 14, GFLAGS), GATE(0, "pclk_ddrupctl", "pclk_cpu",
+> CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 7, GFLAGS), GATE(0, "pclk_grf",
+> "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 4, GFLAGS), @@ -574,6
+> +571,7 @@ static void __init rk3128_clk_init(struct device_node *np) {
+>  	struct rockchip_clk_provider *ctx;
+>  	void __iomem *reg_base;
+> +	struct clk *clk;
+> 
+>  	reg_base = of_iomap(np, 0);
+>  	if (!reg_base) {
+> @@ -593,6 +591,57 @@ static void __init rk3128_clk_init(struct device_node
+> *np) RK3128_GRF_SOC_STATUS0);
+>  	rockchip_clk_register_branches(ctx, rk3128_clk_branches,
+>  				  ARRAY_SIZE(rk3128_clk_branches));
+> +
+> +	if (of_machine_is_compatible("rockchip,rk3128")) {
+> +		clk = clk_register_gate(NULL, "sclk_sfc", "sclk_sfc_src", 0,
+> +				ctx->reg_base + RK2928_CLKGATE_CON(3), 15, GFLAGS, &ctx->lock);
+> +		if (IS_ERR(clk))
+> +			pr_warn("%s: could not register clock sclk_sfc: %ld\n",
+> +				__func__, PTR_ERR(clk));
+> +		else
+> +			rockchip_clk_add_lookup(ctx, clk, SCLK_SFC);
+> +
+
+Instead of having this in (hard to read) open code, could you look at how
+rk3066/rk3188 does that please?
+
+I.e. have the differences in separate tables (common clocks stay in the same 
+table of course) and then use a real rockchip,rk3128-cru / rockchip,rk3126-cru 
+clock init to use the correct set of clock tables.
+
+
+Thanks
+Heiko
+
+> +		clk = clk_register_gate(NULL, "hclk_gps", "aclk_peri", 0,
+> +				ctx->reg_base + RK2928_CLKGATE_CON(3), 14, GFLAGS, &ctx->lock);
+> +		if (IS_ERR(clk))
+> +			pr_warn("%s: could not register clock hclk_gps: %ld\n",
+> +				__func__, PTR_ERR(clk));
+> +		else
+> +			rockchip_clk_add_lookup(ctx, clk, HCLK_GPS);
+> +
+> +		clk = clk_register_gate(NULL, "pclk_hdmi", "pclk_cpu", 0,
+> +				ctx->reg_base + RK2928_CLKGATE_CON(3), 8, GFLAGS, &ctx->lock);
+> +		if (IS_ERR(clk))
+> +			pr_warn("%s: could not register clock pclk_hdmi: %ld\n",
+> +				__func__, PTR_ERR(clk));
+> +		else
+> +			rockchip_clk_add_lookup(ctx, clk, PCLK_HDMI);
+> +	} else {
+> +		clk = clk_register_gate(NULL, "pclk_stimer", "pclk_cpu",
+> CLK_IGNORE_UNUSED, +				ctx->reg_base + RK2928_CLKGATE_CON(3), 15, 
+GFLAGS,
+> &ctx->lock); +		if (IS_ERR(clk))
+> +			pr_warn("%s: could not register clock pclk_stimer: %ld\n",
+> +				__func__, PTR_ERR(clk));
+> +		else
+> +			rockchip_clk_add_lookup(ctx, clk, PCLK_STIMER);
+> +
+> +		clk = clk_register_gate(NULL, "pclk_s_efuse", "pclk_cpu",
+> CLK_IGNORE_UNUSED, +				ctx->reg_base + RK2928_CLKGATE_CON(3), 14, 
+GFLAGS,
+> &ctx->lock); +		if (IS_ERR(clk))
+> +			pr_warn("%s: could not register clock pclk_s_efuse: %ld\n",
+> +				__func__, PTR_ERR(clk));
+> +		else
+> +			rockchip_clk_add_lookup(ctx, clk, PCLK_S_EFUSE);
+> +
+> +		clk = clk_register_gate(NULL, "pclk_sgrf", "pclk_cpu", 
+CLK_IGNORE_UNUSED,
+> +				ctx->reg_base + RK2928_CLKGATE_CON(3), 8, GFLAGS, &ctx->lock); +		
+if
+> (IS_ERR(clk))
+> +			pr_warn("%s: could not register clock pclk_sgrf: %ld\n",
+> +				__func__, PTR_ERR(clk));
+> +		else
+> +			rockchip_clk_add_lookup(ctx, clk, PCLK_SGRF);
+> +	}
+> +
+>  	rockchip_clk_protect_critical(rk3128_critical_clocks,
+>  				      ARRAY_SIZE(rk3128_critical_clocks));
+> 
+> diff --git a/include/dt-bindings/clock/rk3128-cru.h
+> b/include/dt-bindings/clock/rk3128-cru.h index 92894f4306cf..0451c9c42375
+> 100644
+> --- a/include/dt-bindings/clock/rk3128-cru.h
+> +++ b/include/dt-bindings/clock/rk3128-cru.h
+> @@ -125,6 +125,9 @@
+>  #define PCLK_GMAC		367
+>  #define PCLK_PMU_PRE		368
+>  #define PCLK_SIM_CARD		369
+> +#define PCLK_STIMER		370
+> +#define PCLK_S_EFUSE		371
+> +#define PCLK_SGRF		372
+> 
+>  /* hclk gates */
+>  #define HCLK_SPDIF		440
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
