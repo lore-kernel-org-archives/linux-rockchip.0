@@ -1,41 +1,37 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 7/8] drm: Nuke drm_atomic_helper_connector_dpms
-Date: Tue, 25 Jul 2017 10:59:17 +0200
-Message-ID: <1500973157.4101.13.camel@pengutronix.de>
-References: <20170725080122.20548-1-daniel.vetter@ffwll.ch>
- <20170725080122.20548-8-daniel.vetter@ffwll.ch>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170725080122.20548-8-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, Neil Armstrong <narmstrong@baylibre.com>, nouveau@lists.freedesktop.org, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-mediatek@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Romain Perier <romain.perier@collabora.com>, Daniel Vetter <daniel.vetter@intel.com>, Jyri Sarha <jsarha@ti.com>, Marek Vasut <marex@denx.de>, linux-renesas-soc@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, Alexey Brodkin <abrodkin@synopsys.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter>
+From: Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/5] thermal: rockchip: add tsadc support in thermal driver and IPA thermal control for rk3328 in dts
+Date: Tue, 25 Jul 2017 17:09:43 +0800
+Message-ID: <1500973788-14627-1-git-send-email-rocky.hao@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCAyMDE3LTA3LTI1IGF0IDEwOjAxICswMjAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
-IEl0J3MgZGVhZCBjb2RlLCB0aGUgY29yZSBoYW5kbGVzIGFsbCB0aGlzIGRpcmVjdGx5IG5vdy4K
-PiAKPiBUaGUgb25seSBzcGVjaWFsIGNhc2UgaXMgbm91dmVhdSBhbmQgdGRhOTg4eCB3aGljaCB1
-c2VkIG9uZSBmdW5jdGlvbgo+IGZvciBib3RoIGxlZ2FjeSBtb2Rlc2V0IGNvZGUgYW5kIC1udjUw
-IGF0b21pYyB3b3JsZCBpbnN0ZWFkIG9mIDIKPiB2dGFibGVzLiBCdXQgYW1vdW50cyB0byBleGFj
-dGx5IHRoZSBzYW1lLgo+IAo+IHYyOiBSZWJhc2Ugb3ZlciB0aGUgcGFuZWwvYnJpZGVnIHJlZmFj
-dG9yaW5ncyBpbiBzdG0vbHRkYy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgVmV0dGVyIDxk
-YW5pZWwudmV0dGVyQGludGVsLmNvbT4KWy4uLl0KPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgt
-bGRiLmMgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9pbXgv
-aW14LXR2ZS5jICAgICAgICAgICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-aW14L3BhcmFsbGVsLWRpc3BsYXkuYyAgICAgICAgICAgICB8ICAxIC0KPiAgZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICAgICAgIHwgIDEgLQoKQWNrZWQt
-Ynk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CgpyZWdhcmRzClBoaWxp
-cHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This series patches add the tsadc support in thermal driver and in devicetree for rk3328.
+Also add thermal control with Intelligent Power Allocation (IPA) policy by default.  Please
+refer to https://developer.arm.com/open-source/intelligent-power-allocation for more information
+about IPA.
+
+
+Rocky Hao (5):
+  dt-bindings: rockchip-thermal: Support the RK3328 SoC compatible
+  thermal: rockchip: Support the RK3328 SOC in thermal driver
+  arm64: dts: rockchip: add tsadc node for rk3328 SoC
+  arm64: dts: rockchip: add thermal nodes for rk3328 SoC
+  arm64: dts: rockchip: Enable tsadc module on RK3328 eavluation board
+
+ .../bindings/thermal/rockchip-thermal.txt          |  1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |  4 ++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 63 +++++++++++++++++++++
+ drivers/thermal/rockchip_thermal.c                 | 65 ++++++++++++++++++++++
+ 4 files changed, 133 insertions(+)
+
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
