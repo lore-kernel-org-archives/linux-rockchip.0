@@ -1,77 +1,135 @@
-From: Maxime Ripard <maxime.ripard@free-electrons.com>
-Subject: Re: [PATCH v2 1/4] drm/atomic: implement
- drm_atomic_helper_commit_tail for runtime_pm users
-Date: Tue, 25 Jul 2017 08:57:34 +0200
-Message-ID: <20170725065734.kbtb2mrfsjwm2szz@flea>
-References: <cover.204b8c1b76558ee33ecf147e51c2b6a04d302d55.1500555652.git-series.maxime.ripard@free-electrons.com>
- <a8f92dc70048bab746e94dadd1c23200626aff60.1500555652.git-series.maxime.ripard@free-electrons.com>
- <20170720184628.5vizn7hjdaaz7rqy@phenom.ffwll.local>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="26cvhe4wesa4iglx"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170720184628.5vizn7hjdaaz7rqy@phenom.ffwll.local>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1] clk: rockchip: rk3128: modify rk3128 clk driver to support rk3126
+Date: Tue, 25 Jul 2017 15:16:36 +0800
+Message-ID: <1500966996-5660-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+rk3128 and rk3126 have some gate registers describe differences.
+So need to make some distinctions.
 
---26cvhe4wesa4iglx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3128.c      | 59 +++++++++++++++++++++++++++++++---
+ include/dt-bindings/clock/rk3128-cru.h |  3 ++
+ 2 files changed, 57 insertions(+), 5 deletions(-)
 
-Hi Daniel,
+diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
+index e243f2eae68f..0039b8940900 100644
+--- a/drivers/clk/rockchip/clk-rk3128.c
++++ b/drivers/clk/rockchip/clk-rk3128.c
+@@ -459,9 +459,8 @@ enum rk3128_plls {
+ 			RK2928_CLKSEL_CON(2), 14, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK2928_CLKGATE_CON(10), 15, GFLAGS),
+ 
+-	COMPOSITE(SCLK_SFC, "sclk_sfc", mux_sclk_sfc_src_p, 0,
+-			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS,
+-			RK2928_CLKGATE_CON(3), 15, GFLAGS),
++	COMPOSITE_NOGATE(0, "sclk_sfc_src", mux_sclk_sfc_src_p, 0,
++			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS),
+ 
+ 	COMPOSITE_NOMUX(PCLK_PMU_PRE, "pclk_pmu_pre", "cpll", 0,
+ 			RK2928_CLKSEL_CON(29), 8, 6, DFLAGS,
+@@ -495,7 +494,6 @@ enum rk3128_plls {
+ 	GATE(ACLK_DMAC, "aclk_dmac", "aclk_peri", 0, RK2928_CLKGATE_CON(5), 1, GFLAGS),
+ 	GATE(0, "aclk_peri_niu", "aclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(9), 15, GFLAGS),
+ 	GATE(0, "aclk_cpu_to_peri", "aclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 2, GFLAGS),
+-	GATE(HCLK_GPS, "hclk_gps", "aclk_peri", 0, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+ 
+ 	GATE(HCLK_I2S_8CH, "hclk_i2s_8ch", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 4, GFLAGS),
+ 	GATE(0, "hclk_peri_matrix", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 0, GFLAGS),
+@@ -541,7 +539,6 @@ enum rk3128_plls {
+ 	GATE(0, "hclk_rom", "hclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 6, GFLAGS),
+ 	GATE(HCLK_CRYPTO, "hclk_crypto", "hclk_cpu", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
+ 
+-	GATE(PCLK_HDMI, "pclk_hdmi", "pclk_cpu", 0, RK2928_CLKGATE_CON(3), 8, GFLAGS),
+ 	GATE(PCLK_ACODEC, "pclk_acodec", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 14, GFLAGS),
+ 	GATE(0, "pclk_ddrupctl", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 7, GFLAGS),
+ 	GATE(0, "pclk_grf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 4, GFLAGS),
+@@ -574,6 +571,7 @@ static void __init rk3128_clk_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 	void __iomem *reg_base;
++	struct clk *clk;
+ 
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+@@ -593,6 +591,57 @@ static void __init rk3128_clk_init(struct device_node *np)
+ 				   RK3128_GRF_SOC_STATUS0);
+ 	rockchip_clk_register_branches(ctx, rk3128_clk_branches,
+ 				  ARRAY_SIZE(rk3128_clk_branches));
++
++	if (of_machine_is_compatible("rockchip,rk3128")) {
++		clk = clk_register_gate(NULL, "sclk_sfc", "sclk_sfc_src", 0,
++				ctx->reg_base + RK2928_CLKGATE_CON(3), 15, GFLAGS, &ctx->lock);
++		if (IS_ERR(clk))
++			pr_warn("%s: could not register clock sclk_sfc: %ld\n",
++				__func__, PTR_ERR(clk));
++		else
++			rockchip_clk_add_lookup(ctx, clk, SCLK_SFC);
++
++		clk = clk_register_gate(NULL, "hclk_gps", "aclk_peri", 0,
++				ctx->reg_base + RK2928_CLKGATE_CON(3), 14, GFLAGS, &ctx->lock);
++		if (IS_ERR(clk))
++			pr_warn("%s: could not register clock hclk_gps: %ld\n",
++				__func__, PTR_ERR(clk));
++		else
++			rockchip_clk_add_lookup(ctx, clk, HCLK_GPS);
++
++		clk = clk_register_gate(NULL, "pclk_hdmi", "pclk_cpu", 0,
++				ctx->reg_base + RK2928_CLKGATE_CON(3), 8, GFLAGS, &ctx->lock);
++		if (IS_ERR(clk))
++			pr_warn("%s: could not register clock pclk_hdmi: %ld\n",
++				__func__, PTR_ERR(clk));
++		else
++			rockchip_clk_add_lookup(ctx, clk, PCLK_HDMI);
++	} else {
++		clk = clk_register_gate(NULL, "pclk_stimer", "pclk_cpu", CLK_IGNORE_UNUSED,
++				ctx->reg_base + RK2928_CLKGATE_CON(3), 15, GFLAGS, &ctx->lock);
++		if (IS_ERR(clk))
++			pr_warn("%s: could not register clock pclk_stimer: %ld\n",
++				__func__, PTR_ERR(clk));
++		else
++			rockchip_clk_add_lookup(ctx, clk, PCLK_STIMER);
++
++		clk = clk_register_gate(NULL, "pclk_s_efuse", "pclk_cpu", CLK_IGNORE_UNUSED,
++				ctx->reg_base + RK2928_CLKGATE_CON(3), 14, GFLAGS, &ctx->lock);
++		if (IS_ERR(clk))
++			pr_warn("%s: could not register clock pclk_s_efuse: %ld\n",
++				__func__, PTR_ERR(clk));
++		else
++			rockchip_clk_add_lookup(ctx, clk, PCLK_S_EFUSE);
++
++		clk = clk_register_gate(NULL, "pclk_sgrf", "pclk_cpu", CLK_IGNORE_UNUSED,
++				ctx->reg_base + RK2928_CLKGATE_CON(3), 8, GFLAGS, &ctx->lock);
++		if (IS_ERR(clk))
++			pr_warn("%s: could not register clock pclk_sgrf: %ld\n",
++				__func__, PTR_ERR(clk));
++		else
++			rockchip_clk_add_lookup(ctx, clk, PCLK_SGRF);
++	}
++
+ 	rockchip_clk_protect_critical(rk3128_critical_clocks,
+ 				      ARRAY_SIZE(rk3128_critical_clocks));
+ 
+diff --git a/include/dt-bindings/clock/rk3128-cru.h b/include/dt-bindings/clock/rk3128-cru.h
+index 92894f4306cf..0451c9c42375 100644
+--- a/include/dt-bindings/clock/rk3128-cru.h
++++ b/include/dt-bindings/clock/rk3128-cru.h
+@@ -125,6 +125,9 @@
+ #define PCLK_GMAC		367
+ #define PCLK_PMU_PRE		368
+ #define PCLK_SIM_CARD		369
++#define PCLK_STIMER		370
++#define PCLK_S_EFUSE		371
++#define PCLK_SGRF		372
+ 
+ /* hclk gates */
+ #define HCLK_SPDIF		440
+-- 
+1.9.1
 
-On Thu, Jul 20, 2017 at 08:46:28PM +0200, Daniel Vetter wrote:
-> On Thu, Jul 20, 2017 at 03:01:16PM +0200, Maxime Ripard wrote:
-> > The current drm_atomic_helper_commit_tail helper works only if the CRTC=
- is
-> > accessible, and documents an alternative implementation that is suppose=
-d to
-> > be used if that happens.
-> >=20
-> > That implementation is then duplicated by some drivers. Instead of
-> > documenting it, let's implement an helper that all the relevant users c=
-an
-> > use directly.
-> >=20
-> > Signed-off-by: Maxime Ripard <maxime.ripard@free-electrons.com>
->=20
-> Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
->=20
-> Should I throw this into drm-misc, or do you want to merge this through
-> some driver tree?
 
-Yes, you can put them in drm-misc, it will the be the easiest option.
-
-Thanks!
-Maxime
-
---=20
-Maxime Ripard, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
-
---26cvhe4wesa4iglx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIcBAEBAgAGBQJZduveAAoJEBx+YmzsjxAgm6oP/1DwCy48Y1XdDytrb+iB2sGF
-Cba/gXGWgi8yTN34QilwH2fNmES56+qAUmQqjm5htwGwHbs4tHEdCm4aWuDtnvEQ
-dYf6AP1I75BsJGSpKZ0CHxRFpUAGx0pA2dkPJLpgzHtLxAves46uMPmMtGLW4qrO
-5kx0J2ou99LbvYk+Nwgwn82pDax9htFtubWzTGPqlbtf1m3/RHGQ73KrgF58zS8N
-wNuo9Kt45Sf/tZLU/E0A9osJKpFr4w09xJGUYW+s4Jtgyv7olW6VHNHlJcWUtZ6c
-pQeXZH1y2dtwhbNwn7cgRmWwY3ZEMKMaw+DfqVM/NKHWhFwkyDdu24sBCRtWGoTo
-VuQc3XsILhS8ESL/wHEkJHElcbpQt2zp7hBkjahl50uvMgvZQM0O1qR8F3MnGvvG
-6eJzi/dgONvDNawdLM6yOenwT0bzh1poLRbWRQPXaD6CHRHmMQkrfqgdFa0/o8HA
-Er1rKaaluTbGQ1q/wijbUBlRWDL6Q1kgfIHLJFWmdXcPkuEU5VmJI7e2sa9qqHLh
-os6FXFal7A1LDd7RhUF2fLapaRgUIQwyFlmN9Baymd+gqXind5J2HCw/Wcm9FiWt
-peEyGPAGy9Ogx/1HkFez964I3aydq0Mkz7mIxIQrhQIq4n/hGm94Qkd34QK4LvyZ
-KzMz1G3BGdTZOUbdv3YW
-=nfr2
------END PGP SIGNATURE-----
-
---26cvhe4wesa4iglx--
