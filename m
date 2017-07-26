@@ -1,138 +1,44 @@
-From: "Jingoo Han" <jingoohan1@gmail.com>
-Subject: Re: [PATCH v4 3/5] pwm-backlight: add support for PWM delays proprieties.
-Date: Wed, 26 Jul 2017 13:01:53 -0400
-Message-ID: <000001d30630$e2a3d160$a7eb7420$@gmail.com>
-References: <20170721104813.5389-1-enric.balletbo@collabora.com> <20170721104813.5389-3-enric.balletbo@collabora.com> <0e2d4f9b-0f27-3793-0c27-2a2df5c32cf0@linaro.org>
+From: Emil Karlson <jekarlson@gmail.com>
+Subject: Re: [RESEND PATCH 0/2] crypto/rockchip: fix some issue which causes
+ crypto failed
+Date: Wed, 26 Jul 2017 20:44:18 +0300
+Message-ID: <CAELSAVZAs=Tqz_yHb2u8StXFeC550Tm98jqmnRFZLRmFCqs0bA@mail.gmail.com>
+References: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain;
-        charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <0e2d4f9b-0f27-3793-0c27-2a2df5c32cf0@linaro.org>
-Content-Language: en-us
-Sender: linux-kernel-owner@vger.kernel.org
-To: 'Daniel Thompson' <daniel.thompson@linaro.org>, 'Enric Balletbo i Serra' <enric.balletbo@collabora.com>, 'Thierry Reding' <thierry.reding@gmail.com>, 'Lee Jones' <lee.jones@linaro.org>, 'Bartlomiej Zolnierkiewicz' <b.zolnierkie@samsung.com>, 'Rob Herring' <robh+dt@kernel.org>, 'Pavel Machek' <pavel@ucw.cz>, 'Richard Purdie' <rpurdie@rpsys.net>, 'Jacek Anaszewski' <jacek.anaszewski@gmail.com>, 'Heiko Stuebner' <heiko@sntech.de>
-Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: zain wang <wzz@rock-chips.com>
+Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Monday, July 24, 2017 11:22 AM, Daniel Thompson wrote:
-> On 21/07/17 11:48, Enric Balletbo i Serra wrote:
-> > Some panels (i.e. N116BGE-L41), in their power sequence specifications,
-> > request a delay between set the PWM signal and enable the backlight and
-> > between clear the PWM signal and disable the backlight. Add support for
-> > the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
-> > the timings.
-> >
-> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> 
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+Greetings
 
-Acked-by: Jingoo Han <jingoohan1@gmail.com>
+While I am not getting the original error anymore, using dm-crypt
+still fails at cryptsetup luksOpen with [rk_ablk_rx:331] Lack of data
+https://users.aalto.fi/~jkarlson/files/rk3288-fail_2017-07-24.jpg
 
-Best regards,
-Jingoo Han
+Test platform: Asus chromebook C201/rk3288 linux-4.12.3+ this patchset
 
-> 
-> 
-> > ---
-> > Changes since v3:
-> >   - Use two named members instead of pwm_delay[] (Daniel and Pavel)
-> >   - Use msleep instead of usleep_range. (Pavel)
-> > Changes since v2:
-> >   - Move the pwm/enable sequence to another patch (Thierry Reding)
-> > Changes since v1:
-> >   - As suggested by Daniel Thompson
-> >     - Do not assume power-on delay and power-off delay will be the same
-> >   - Move the check of dt property to the parse dt function.
-> >
-> >   drivers/video/backlight/pwm_bl.c | 19 +++++++++++++++++++
-> >   include/linux/pwm_backlight.h    |  2 ++
-> >   2 files changed, 21 insertions(+)
-> >
-> > diff --git a/drivers/video/backlight/pwm_bl.c
-> b/drivers/video/backlight/pwm_bl.c
-> > index 909a686..6cf6109 100644
-> > --- a/drivers/video/backlight/pwm_bl.c
-> > +++ b/drivers/video/backlight/pwm_bl.c
-> > @@ -10,6 +10,7 @@
-> >    * published by the Free Software Foundation.
-> >    */
-> >
-> > +#include <linux/delay.h>
-> >   #include <linux/gpio/consumer.h>
-> >   #include <linux/gpio.h>
-> >   #include <linux/module.h>
-> > @@ -35,6 +36,8 @@ struct pwm_bl_data {
-> >   	struct gpio_desc	*enable_gpio;
-> >   	unsigned int		scale;
-> >   	bool			legacy;
-> > +	unsigned int		post_pwm_on_delay;
-> > +	unsigned int		pwm_off_delay;
-> >   	int			(*notify)(struct device *,
-> >   					  int brightness);
-> >   	void			(*notify_after)(struct device *,
-> > @@ -56,6 +59,9 @@ static void pwm_backlight_power_on(struct pwm_bl_data
-> *pb, int brightness)
-> >
-> >   	pwm_enable(pb->pwm);
-> >
-> > +	if (pb->post_pwm_on_delay)
-> > +		msleep(pb->post_pwm_on_delay);
-> > +
-> >   	if (pb->enable_gpio)
-> >   		gpiod_set_value_cansleep(pb->enable_gpio, 1);
-> >
-> > @@ -70,6 +76,9 @@ static void pwm_backlight_power_off(struct pwm_bl_data
-> *pb)
-> >   	if (pb->enable_gpio)
-> >   		gpiod_set_value_cansleep(pb->enable_gpio, 0);
-> >
-> > +	if (pb->pwm_off_delay)
-> > +		msleep(pb->pwm_off_delay);
-> > +
-> >   	pwm_config(pb->pwm, 0, pb->period);
-> >   	pwm_disable(pb->pwm);
-> >
-> > @@ -175,6 +184,14 @@ static int pwm_backlight_parse_dt(struct device
-> *dev,
-> >   		data->max_brightness--;
-> >   	}
-> >
-> > +	/*
-> > +	 * These values are optional and set as 0 by default, the out
-> values
-> > +	 * are modified only if a valid u32 value can be decoded.
-> > +	 */
-> > +	of_property_read_u32(node, "post-pwm-on-delay-ms",
-> > +			     &data->post_pwm_on_delay);
-> > +	of_property_read_u32(node, "pwm-off-delay-ms", &data-
-> >pwm_off_delay);
-> > +
-> >   	data->enable_gpio = -EINVAL;
-> >   	return 0;
-> >   }
-> > @@ -273,6 +290,8 @@ static int pwm_backlight_probe(struct
-> platform_device *pdev)
-> >   	pb->exit = data->exit;
-> >   	pb->dev = &pdev->dev;
-> >   	pb->enabled = false;
-> > +	pb->post_pwm_on_delay = data->post_pwm_on_delay;
-> > +	pb->pwm_off_delay = data->pwm_off_delay;
-> >
-> >   	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
-> >   						  GPIOD_ASIS);
-> > diff --git a/include/linux/pwm_backlight.h
-> b/include/linux/pwm_backlight.h
-> > index efdd922..62f59c4 100644
-> > --- a/include/linux/pwm_backlight.h
-> > +++ b/include/linux/pwm_backlight.h
-> > @@ -13,6 +13,8 @@ struct platform_pwm_backlight_data {
-> >   	unsigned int lth_brightness;
-> >   	unsigned int pwm_period_ns;
-> >   	unsigned int *levels;
-> > +	unsigned int post_pwm_on_delay;
-> > +	unsigned int pwm_off_delay;
-> >   	/* TODO remove once all users are switched to gpiod_* API */
-> >   	int enable_gpio;
-> >   	int (*init)(struct device *dev);
-> >
+Best Regards
+-Emil
+
+On Mon, Jul 24, 2017 at 4:23 AM, zain wang <wzz@rock-chips.com> wrote:
+> These patches fix some bugs on rockchip's crypto which would cause crypto failed.
+>
+> zain wang (2):
+>   crypto: rockchip - move the crypto completion from interrupt context
+>   crypto: rockchip - return the err code when unable dequeue the crypto
+>     request
+>
+>  drivers/crypto/rockchip/rk3288_crypto.c            | 58 +++++++++++-----------
+>  drivers/crypto/rockchip/rk3288_crypto.h            |  4 +-
+>  drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c | 17 ++++++-
+>  drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 16 +++++-
+>  4 files changed, 62 insertions(+), 33 deletions(-)
+>
+> --
+> 1.9.1
+>
+>
