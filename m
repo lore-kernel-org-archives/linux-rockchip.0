@@ -1,44 +1,46 @@
-From: Emil Karlson <jekarlson@gmail.com>
-Subject: Re: [RESEND PATCH 0/2] crypto/rockchip: fix some issue which causes
- crypto failed
-Date: Wed, 26 Jul 2017 20:44:18 +0300
-Message-ID: <CAELSAVZAs=Tqz_yHb2u8StXFeC550Tm98jqmnRFZLRmFCqs0bA@mail.gmail.com>
-References: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
+From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
+Subject: Re: [PATCH 7/8] drm: Nuke drm_atomic_helper_connector_dpms
+Date: Wed, 26 Jul 2017 21:00:53 +0200
+Message-ID: <96fd05d9-6cab-4a40-6a63-d0b9a5872434@tronnes.org>
+References: <20170725080122.20548-1-daniel.vetter@ffwll.ch>
+ <20170725080122.20548-8-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: zain wang <wzz@rock-chips.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170725080122.20548-8-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, Neil Armstrong <narmstrong@baylibre.com>, nouveau@lists.freedesktop.org, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Romain Perier <romain.perier@collabora.com>, Daniel Vetter <daniel.vetter@intel.com>, Jyri Sarha <jsarha@ti.com>, Marek Vasut <marex@denx.de>, linux-renesas-soc@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, Alexey Brodkin <abrodkin@synopsys.com>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Greetings
-
-While I am not getting the original error anymore, using dm-crypt
-still fails at cryptsetup luksOpen with [rk_ablk_rx:331] Lack of data
-https://users.aalto.fi/~jkarlson/files/rk3288-fail_2017-07-24.jpg
-
-Test platform: Asus chromebook C201/rk3288 linux-4.12.3+ this patchset
-
-Best Regards
--Emil
-
-On Mon, Jul 24, 2017 at 4:23 AM, zain wang <wzz@rock-chips.com> wrote:
-> These patches fix some bugs on rockchip's crypto which would cause crypto failed.
->
-> zain wang (2):
->   crypto: rockchip - move the crypto completion from interrupt context
->   crypto: rockchip - return the err code when unable dequeue the crypto
->     request
->
->  drivers/crypto/rockchip/rk3288_crypto.c            | 58 +++++++++++-----------
->  drivers/crypto/rockchip/rk3288_crypto.h            |  4 +-
->  drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c | 17 ++++++-
->  drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 16 +++++-
->  4 files changed, 62 insertions(+), 33 deletions(-)
->
-> --
-> 1.9.1
->
->
+CkRlbiAyNS4wNy4yMDE3IDEwLjAxLCBza3JldiBEYW5pZWwgVmV0dGVyOgo+IEl0J3MgZGVhZCBj
+b2RlLCB0aGUgY29yZSBoYW5kbGVzIGFsbCB0aGlzIGRpcmVjdGx5IG5vdy4KPgo+IFRoZSBvbmx5
+IHNwZWNpYWwgY2FzZSBpcyBub3V2ZWF1IGFuZCB0ZGE5ODh4IHdoaWNoIHVzZWQgb25lIGZ1bmN0
+aW9uCj4gZm9yIGJvdGggbGVnYWN5IG1vZGVzZXQgY29kZSBhbmQgLW52NTAgYXRvbWljIHdvcmxk
+IGluc3RlYWQgb2YgMgo+IHZ0YWJsZXMuIEJ1dCBhbW91bnRzIHRvIGV4YWN0bHkgdGhlIHNhbWUu
+Cj4KPiB2MjogUmViYXNlIG92ZXIgdGhlIHBhbmVsL2JyaWRlZyByZWZhY3RvcmluZ3MgaW4gc3Rt
+L2x0ZGMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGlu
+dGVsLmNvbT4KLi4uCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS90aW55ZHJtL2NvcmUv
+dGlueWRybS1waXBlLmMgYi9kcml2ZXJzL2dwdS9kcm0vdGlueWRybS9jb3JlL3Rpbnlkcm0tcGlw
+ZS5jCj4gaW5kZXggZWM0M2ZiN2FkOWU0Li43OWI2Njg3OTc3ZDMgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3Rpbnlkcm0vY29yZS90aW55ZHJtLXBpcGUuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS90aW55ZHJtL2NvcmUvdGlueWRybS1waXBlLmMKPiBAQCAtNzEsNyArNzEsNiBAQCBz
+dGF0aWMgdm9pZCB0aW55ZHJtX2Nvbm5lY3Rvcl9kZXN0cm95KHN0cnVjdCBkcm1fY29ubmVjdG9y
+ICpjb25uZWN0b3IpCj4gICB9Cj4gICAKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5l
+Y3Rvcl9mdW5jcyB0aW55ZHJtX2Nvbm5lY3Rvcl9mdW5jcyA9IHsKPiAtCS5kcG1zID0gZHJtX2F0
+b21pY19oZWxwZXJfY29ubmVjdG9yX2RwbXMsCj4gICAJLnJlc2V0ID0gZHJtX2F0b21pY19oZWxw
+ZXJfY29ubmVjdG9yX3Jlc2V0LAo+ICAgCS5kZXRlY3QgPSB0aW55ZHJtX2Nvbm5lY3Rvcl9kZXRl
+Y3QsCj4gICAJLmZpbGxfbW9kZXMgPSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3Jf
+bW9kZXMsCgpBY2tlZC1ieTogTm9yYWxmIFRyw7hubmVzIDxub3JhbGZAdHJvbm5lcy5vcmc+Cgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
