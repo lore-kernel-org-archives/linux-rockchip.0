@@ -1,223 +1,147 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v6 1/7] drm/rockchip: vop: initialize registers directly
-Date: Wed, 26 Jul 2017 14:19:05 +0800
-Message-ID: <1501049946-5877-1-git-send-email-mark.yao@rock-chips.com>
+Subject: [PATCH v6 2/7] drm/rockchip: vop: move write_relaxed flags to vop
+ register
+Date: Wed, 26 Jul 2017 14:19:12 +0800
+Message-ID: <1501049953-5946-1-git-send-email-mark.yao@rock-chips.com>
 References: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-At present we are using init_table to initialize some
-registers, but the Register init table use un-document define,
-it is unreadable, and sometimes we only want to update tiny
-bits, init table method is not friendly, it's diffcult to
-reuse for difference chips.
-
-To make it clean, initialize registers directly, and drops
-init_table mechanism out.
-
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
----
-Changes in v6:
-- fix rk3036 blank display
-
-Changes in v3:
-- Explain more in details
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  6 ++--
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 10 ++-----
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 44 ++++-------------------------
- 3 files changed, 11 insertions(+), 49 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 5d45033..81164d6 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1395,7 +1395,6 @@ static void vop_destroy_crtc(struct vop *vop)
- static int vop_initial(struct vop *vop)
- {
- 	const struct vop_data *vop_data = vop->data;
--	const struct vop_reg_data *init_table = vop_data->init_table;
- 	struct reset_control *ahb_rst;
- 	int i, ret;
- 
-@@ -1455,13 +1454,14 @@ static int vop_initial(struct vop *vop)
- 
- 	memcpy(vop->regsbak, vop->regs, vop->len);
- 
--	for (i = 0; i < vop_data->table_size; i++)
--		vop_writel(vop, init_table[i].offset, init_table[i].value);
-+	VOP_CTRL_SET(vop, global_regdone_en, 1);
-+	VOP_CTRL_SET(vop, dsp_blank, 0);
- 
- 	for (i = 0; i < vop_data->win_size; i++) {
- 		const struct vop_win_data *win = &vop_data->win[i];
- 
- 		VOP_WIN_SET(vop, win, enable, 0);
-+		VOP_WIN_SET(vop, win, gate, 1);
- 	}
- 
- 	vop_cfg_done(vop);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 9979fd0..084d3b2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -24,11 +24,6 @@ enum vop_data_format {
- 	VOP_FMT_YUV444SP,
- };
- 
--struct vop_reg_data {
--	uint32_t offset;
--	uint32_t value;
--};
--
- struct vop_reg {
- 	uint32_t offset;
- 	uint32_t shift;
-@@ -46,6 +41,7 @@ struct vop_ctrl {
- 	struct vop_reg hdmi_en;
- 	struct vop_reg mipi_en;
- 	struct vop_reg dp_en;
-+	struct vop_reg dsp_blank;
- 	struct vop_reg out_mode;
- 	struct vop_reg dither_down;
- 	struct vop_reg dither_up;
-@@ -65,6 +61,7 @@ struct vop_ctrl {
- 
- 	struct vop_reg line_flag_num[2];
- 
-+	struct vop_reg global_regdone_en;
- 	struct vop_reg cfg_done;
- };
- 
-@@ -115,6 +112,7 @@ struct vop_win_phy {
- 	uint32_t nformats;
- 
- 	struct vop_reg enable;
-+	struct vop_reg gate;
- 	struct vop_reg format;
- 	struct vop_reg rb_swap;
- 	struct vop_reg act_info;
-@@ -136,8 +134,6 @@ struct vop_win_data {
- };
- 
- struct vop_data {
--	const struct vop_reg_data *init_table;
--	unsigned int table_size;
- 	const struct vop_ctrl *ctrl;
- 	const struct vop_intr *intr;
- 	const struct vop_win_data *win;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index bafd698..58da855 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -119,6 +119,7 @@
- 	.standby = VOP_REG(RK3036_SYS_CTRL, 0x1, 30),
- 	.out_mode = VOP_REG(RK3036_DSP_CTRL0, 0xf, 0),
- 	.pin_pol = VOP_REG(RK3036_DSP_CTRL0, 0xf, 4),
-+	.dsp_blank = VOP_REG(RK3036_DSP_CTRL1, 0x1, 24),
- 	.htotal_pw = VOP_REG(RK3036_DSP_HTOTAL_HS_END, 0x1fff1fff, 0),
- 	.hact_st_end = VOP_REG(RK3036_DSP_HACT_ST_END, 0x1fff1fff, 0),
- 	.vtotal_pw = VOP_REG(RK3036_DSP_VTOTAL_VS_END, 0x1fff1fff, 0),
-@@ -127,13 +128,7 @@
- 	.cfg_done = VOP_REG(RK3036_REG_CFG_DONE, 0x1, 0),
- };
- 
--static const struct vop_reg_data rk3036_vop_init_reg_table[] = {
--	{RK3036_DSP_CTRL1, 0x00000000},
--};
--
- static const struct vop_data rk3036_vop = {
--	.init_table = rk3036_vop_init_reg_table,
--	.table_size = ARRAY_SIZE(rk3036_vop_init_reg_table),
- 	.ctrl = &rk3036_ctrl_data,
- 	.intr = &rk3036_intr,
- 	.win = rk3036_vop_win_data,
-@@ -193,7 +188,8 @@
- static const struct vop_win_phy rk3288_win23_data = {
- 	.data_formats = formats_win_lite,
- 	.nformats = ARRAY_SIZE(formats_win_lite),
--	.enable = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 0),
-+	.enable = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 4),
-+	.gate = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3288_WIN2_CTRL0, 0x7, 1),
- 	.rb_swap = VOP_REG(RK3288_WIN2_CTRL0, 0x1, 12),
- 	.dsp_info = VOP_REG(RK3288_WIN2_DSP_INFO0, 0x0fff0fff, 0),
-@@ -215,6 +211,7 @@
- 	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
- 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
- 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
-+	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
- 	.out_mode = VOP_REG(RK3288_DSP_CTRL0, 0xf, 0),
- 	.pin_pol = VOP_REG(RK3288_DSP_CTRL0, 0xf, 4),
- 	.htotal_pw = VOP_REG(RK3288_DSP_HTOTAL_HS_END, 0x1fff1fff, 0),
-@@ -224,22 +221,10 @@
- 	.hpost_st_end = VOP_REG(RK3288_POST_DSP_HACT_INFO, 0x1fff1fff, 0),
- 	.vpost_st_end = VOP_REG(RK3288_POST_DSP_VACT_INFO, 0x1fff1fff, 0),
- 	.line_flag_num[0] = VOP_REG(RK3288_INTR_CTRL0, 0x1fff, 12),
-+	.global_regdone_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 11),
- 	.cfg_done = VOP_REG(RK3288_REG_CFG_DONE, 0x1, 0),
- };
- 
--static const struct vop_reg_data rk3288_init_reg_table[] = {
--	{RK3288_SYS_CTRL, 0x00c00000},
--	{RK3288_DSP_CTRL0, 0x00000000},
--	{RK3288_WIN0_CTRL0, 0x00000080},
--	{RK3288_WIN1_CTRL0, 0x00000080},
--	/* TODO: Win2/3 support multiple area function, but we haven't found
--	 * a suitable way to use it yet, so let's just use them as other windows
--	 * with only area 0 enabled.
--	 */
--	{RK3288_WIN2_CTRL0, 0x00000010},
--	{RK3288_WIN3_CTRL0, 0x00000010},
--};
--
- /*
-  * Note: rk3288 has a dedicated 'cursor' window, however, that window requires
-  * special support to get alpha blending working.  For now, just use overlay
-@@ -273,8 +258,6 @@
- };
- 
- static const struct vop_data rk3288_vop = {
--	.init_table = rk3288_init_reg_table,
--	.table_size = ARRAY_SIZE(rk3288_init_reg_table),
- 	.feature = VOP_FEATURE_OUTPUT_RGB10,
- 	.intr = &rk3288_vop_intr,
- 	.ctrl = &rk3288_ctrl_data,
-@@ -328,22 +311,7 @@
- 	.clear = VOP_REG_MASK(RK3399_INTR_CLEAR0, 0xffff, 0),
- };
- 
--static const struct vop_reg_data rk3399_init_reg_table[] = {
--	{RK3399_SYS_CTRL, 0x2000f800},
--	{RK3399_DSP_CTRL0, 0x00000000},
--	{RK3399_WIN0_CTRL0, 0x00000080},
--	{RK3399_WIN1_CTRL0, 0x00000080},
--	/* TODO: Win2/3 support multiple area function, but we haven't found
--	 * a suitable way to use it yet, so let's just use them as other windows
--	 * with only area 0 enabled.
--	 */
--	{RK3399_WIN2_CTRL0, 0x00000010},
--	{RK3399_WIN3_CTRL0, 0x00000010},
--};
--
- static const struct vop_data rk3399_vop_big = {
--	.init_table = rk3399_init_reg_table,
--	.table_size = ARRAY_SIZE(rk3399_init_reg_table),
- 	.feature = VOP_FEATURE_OUTPUT_RGB10,
- 	.intr = &rk3399_vop_intr,
- 	.ctrl = &rk3399_ctrl_data,
-@@ -362,8 +330,6 @@
- };
- 
- static const struct vop_data rk3399_vop_lit = {
--	.init_table = rk3399_init_reg_table,
--	.table_size = ARRAY_SIZE(rk3399_init_reg_table),
- 	.intr = &rk3399_vop_intr,
- 	.ctrl = &rk3399_ctrl_data,
- 	/*
--- 
-1.9.1
+U2luY2UgdGhlIGRybSBhdG9taWMgZnJhbWV3b3JrLCBvbmx5IGEgc21hbGwgcGFydCBvZiB0aGUg
+dm9wCnJlZ2lzdGVyIG5lZWRzIHN5bmMgd3JpdGUsIEN1cnJlbnRseSBzZWVtcyBvbmx5IGZvbGxv
+d2luZyByZWdpc3RlcnMKbmVlZCBzeW5jIHdyaXRlOgogICBjZmdfZG9uZSwgc3RhbmRieSBhbmQg
+aW50ZXJydXB0IHJlbGF0ZWQgcmVnaXN0ZXIuCgpBbGwgY3RybCByZWdpc3RlcnMgYXJlIHVzaW5n
+IHRoZSBzeW5jIHdyaXRlIG1ldGhvZCB0aGF0IGlzCmluZWZmaWNpZW50LCBoYXJkY29kZSB0aGUg
+d3JpdGVfcmVsYXhlZCBmbGFncyB0byB2b3AgcmVnaXN0ZXJzLAp0aGVuIGNhbiBvbmx5IGRvIHN5
+bmNocm9uaXplIHdyaXRlIGZvciB0aG9zZSBhY3R1YWwgbmVlZGVkIHJlZ2lzdGVyLgoKU2lnbmVk
+LW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KQ2hhbmdlcyBp
+biB2NjoKLSBmaXggY29tcGlsZSBlcnJvcgoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgfCAyOCArKysrKysrKy0tLS0tLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgIDEgKwogZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8IDQyICsrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0t
+CiAzIGZpbGVzIGNoYW5nZWQsIDM2IGluc2VydGlvbnMoKyksIDM1IGRlbGV0aW9ucygtKQoKZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IDgxMTY0ZDYu
+LmE3OTJlYTMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YwpAQCAtNDIsMzMgKzQyLDI3IEBACiAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX3Bzci5oIgogI2lu
+Y2x1ZGUgInJvY2tjaGlwX2RybV92b3AuaCIKIAotI2RlZmluZSBfX1JFR19TRVRfUkVMQVhFRCh4
+LCBvZmYsIG1hc2ssIHNoaWZ0LCB2LCB3cml0ZV9tYXNrKSBcCi0JCXZvcF9tYXNrX3dyaXRlKHgs
+IG9mZiwgbWFzaywgc2hpZnQsIHYsIHdyaXRlX21hc2ssIHRydWUpCi0KLSNkZWZpbmUgX19SRUdf
+U0VUX05PUk1BTCh4LCBvZmYsIG1hc2ssIHNoaWZ0LCB2LCB3cml0ZV9tYXNrKSBcCi0JCXZvcF9t
+YXNrX3dyaXRlKHgsIG9mZiwgbWFzaywgc2hpZnQsIHYsIHdyaXRlX21hc2ssIGZhbHNlKQotCi0j
+ZGVmaW5lIFJFR19TRVQoeCwgYmFzZSwgcmVnLCB2LCBtb2RlKSBcCi0JCV9fUkVHX1NFVF8jI21v
+ZGUoeCwgYmFzZSArIHJlZy5vZmZzZXQsIFwKLQkJCQkgcmVnLm1hc2ssIHJlZy5zaGlmdCwgdiwg
+cmVnLndyaXRlX21hc2spCi0jZGVmaW5lIFJFR19TRVRfTUFTSyh4LCBiYXNlLCByZWcsIG1hc2ss
+IHYsIG1vZGUpIFwKLQkJX19SRUdfU0VUXyMjbW9kZSh4LCBiYXNlICsgcmVnLm9mZnNldCwgXAot
+CQkJCSBtYXNrLCByZWcuc2hpZnQsIHYsIHJlZy53cml0ZV9tYXNrKQorI2RlZmluZSBSRUdfU0VU
+KHgsIGJhc2UsIHJlZywgdikgXAorCQl2b3BfbWFza193cml0ZSh4LCBiYXNlICsgcmVnLm9mZnNl
+dCwgcmVnLm1hc2ssIHJlZy5zaGlmdCwgXAorCQkJICAgICAgIHYsIHJlZy53cml0ZV9tYXNrLCBy
+ZWcucmVsYXhlZCkKKyNkZWZpbmUgUkVHX1NFVF9NQVNLKHgsIGJhc2UsIHJlZywgbWFzaywgdikg
+XAorCQl2b3BfbWFza193cml0ZSh4LCBiYXNlICsgcmVnLm9mZnNldCwgXAorCQkJICAgICAgIG1h
+c2ssIHJlZy5zaGlmdCwgdiwgcmVnLndyaXRlX21hc2ssIHJlZy5yZWxheGVkKQogCiAjZGVmaW5l
+IFZPUF9XSU5fU0VUKHgsIHdpbiwgbmFtZSwgdikgXAotCQlSRUdfU0VUKHgsIHdpbi0+YmFzZSwg
+d2luLT5waHktPm5hbWUsIHYsIFJFTEFYRUQpCisJCVJFR19TRVQoeCwgd2luLT5iYXNlLCB3aW4t
+PnBoeS0+bmFtZSwgdikKICNkZWZpbmUgVk9QX1NDTF9TRVQoeCwgd2luLCBuYW1lLCB2KSBcCi0J
+CVJFR19TRVQoeCwgd2luLT5iYXNlLCB3aW4tPnBoeS0+c2NsLT5uYW1lLCB2LCBSRUxBWEVEKQor
+CQlSRUdfU0VUKHgsIHdpbi0+YmFzZSwgd2luLT5waHktPnNjbC0+bmFtZSwgdikKICNkZWZpbmUg
+Vk9QX1NDTF9TRVRfRVhUKHgsIHdpbiwgbmFtZSwgdikgXAotCQlSRUdfU0VUKHgsIHdpbi0+YmFz
+ZSwgd2luLT5waHktPnNjbC0+ZXh0LT5uYW1lLCB2LCBSRUxBWEVEKQorCQlSRUdfU0VUKHgsIHdp
+bi0+YmFzZSwgd2luLT5waHktPnNjbC0+ZXh0LT5uYW1lLCB2KQogI2RlZmluZSBWT1BfQ1RSTF9T
+RVQoeCwgbmFtZSwgdikgXAotCQlSRUdfU0VUKHgsIDAsICh4KS0+ZGF0YS0+Y3RybC0+bmFtZSwg
+diwgTk9STUFMKQorCQlSRUdfU0VUKHgsIDAsICh4KS0+ZGF0YS0+Y3RybC0+bmFtZSwgdikKIAog
+I2RlZmluZSBWT1BfSU5UUl9HRVQodm9wLCBuYW1lKSBcCiAJCXZvcF9yZWFkX3JlZyh2b3AsIDAs
+ICZ2b3AtPmRhdGEtPmN0cmwtPm5hbWUpCiAKICNkZWZpbmUgVk9QX0lOVFJfU0VUKHZvcCwgbmFt
+ZSwgbWFzaywgdikgXAotCQlSRUdfU0VUX01BU0sodm9wLCAwLCB2b3AtPmRhdGEtPmludHItPm5h
+bWUsIG1hc2ssIHYsIE5PUk1BTCkKKwkJUkVHX1NFVF9NQVNLKHZvcCwgMCwgdm9wLT5kYXRhLT5p
+bnRyLT5uYW1lLCBtYXNrLCB2KQogI2RlZmluZSBWT1BfSU5UUl9TRVRfVFlQRSh2b3AsIG5hbWUs
+IHR5cGUsIHYpIFwKIAlkbyB7IFwKIAkJaW50IGksIHJlZyA9IDAsIG1hc2sgPSAwOyBcCmRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAppbmRleCAwODRkM2IyLi4w
+NTZiOTc0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgK
+QEAgLTI5LDYgKzI5LDcgQEAgc3RydWN0IHZvcF9yZWcgewogCXVpbnQzMl90IHNoaWZ0OwogCXVp
+bnQzMl90IG1hc2s7CiAJYm9vbCB3cml0ZV9tYXNrOworCWJvb2wgcmVsYXhlZDsKIH07CiAKIHN0
+cnVjdCB2b3BfY3RybCB7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9y
+ZWcuYwppbmRleCA1OGRhODU1Li5kNzk3NGRhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF92b3BfcmVnLmMKQEAgLTIwLDE3ICsyMCwyMyBAQAogI2luY2x1ZGUgInJvY2tj
+aGlwX2RybV92b3AuaCIKICNpbmNsdWRlICJyb2NrY2hpcF92b3BfcmVnLmgiCiAKLSNkZWZpbmUg
+Vk9QX1JFRyhvZmYsIF9tYXNrLCBzKSBcCi0JCXsub2Zmc2V0ID0gb2ZmLCBcCisjZGVmaW5lIF9W
+T1BfUkVHKG9mZiwgX21hc2ssIF9zaGlmdCwgX3dyaXRlX21hc2ssIF9yZWxheGVkKSBcCisJCXsg
+XAorCQkgLm9mZnNldCA9IG9mZiwgXAogCQkgLm1hc2sgPSBfbWFzaywgXAotCQkgLnNoaWZ0ID0g
+cywgXAotCQkgLndyaXRlX21hc2sgPSBmYWxzZSx9CisJCSAuc2hpZnQgPSBfc2hpZnQsIFwKKwkJ
+IC53cml0ZV9tYXNrID0gX3dyaXRlX21hc2ssIFwKKwkJIC5yZWxheGVkID0gX3JlbGF4ZWQsIFwK
+KwkJfQogCi0jZGVmaW5lIFZPUF9SRUdfTUFTSyhvZmYsIF9tYXNrLCBzKSBcCi0JCXsub2Zmc2V0
+ID0gb2ZmLCBcCi0JCSAubWFzayA9IF9tYXNrLCBcCi0JCSAuc2hpZnQgPSBzLCBcCi0JCSAud3Jp
+dGVfbWFzayA9IHRydWUsfQorI2RlZmluZSBWT1BfUkVHKG9mZiwgX21hc2ssIF9zaGlmdCkgXAor
+CQlfVk9QX1JFRyhvZmYsIF9tYXNrLCBfc2hpZnQsIGZhbHNlLCB0cnVlKQorCisjZGVmaW5lIFZP
+UF9SRUdfU1lOQyhvZmYsIF9tYXNrLCBfc2hpZnQpIFwKKwkJX1ZPUF9SRUcob2ZmLCBfbWFzaywg
+X3NoaWZ0LCBmYWxzZSwgZmFsc2UpCisKKyNkZWZpbmUgVk9QX1JFR19NQVNLX1NZTkMob2ZmLCBf
+bWFzaywgX3NoaWZ0KSBcCisJCV9WT1BfUkVHKG9mZiwgX21hc2ssIF9zaGlmdCwgdHJ1ZSwgZmFs
+c2UpCiAKIHN0YXRpYyBjb25zdCB1aW50MzJfdCBmb3JtYXRzX3dpbl9mdWxsW10gPSB7CiAJRFJN
+X0ZPUk1BVF9YUkdCODg4OCwKQEAgLTExNiw3ICsxMjIsNyBAQAogfTsKIAogc3RhdGljIGNvbnN0
+IHN0cnVjdCB2b3BfY3RybCByazMwMzZfY3RybF9kYXRhID0gewotCS5zdGFuZGJ5ID0gVk9QX1JF
+RyhSSzMwMzZfU1lTX0NUUkwsIDB4MSwgMzApLAorCS5zdGFuZGJ5ID0gVk9QX1JFR19TWU5DKFJL
+MzAzNl9TWVNfQ1RSTCwgMHgxLCAzMCksCiAJLm91dF9tb2RlID0gVk9QX1JFRyhSSzMwMzZfRFNQ
+X0NUUkwwLCAweGYsIDApLAogCS5waW5fcG9sID0gVk9QX1JFRyhSSzMwMzZfRFNQX0NUUkwwLCAw
+eGYsIDQpLAogCS5kc3BfYmxhbmsgPSBWT1BfUkVHKFJLMzAzNl9EU1BfQ1RSTDEsIDB4MSwgMjQp
+LApAQCAtMTI1LDcgKzEzMSw3IEBACiAJLnZ0b3RhbF9wdyA9IFZPUF9SRUcoUkszMDM2X0RTUF9W
+VE9UQUxfVlNfRU5ELCAweDFmZmYxZmZmLCAwKSwKIAkudmFjdF9zdF9lbmQgPSBWT1BfUkVHKFJL
+MzAzNl9EU1BfVkFDVF9TVF9FTkQsIDB4MWZmZjFmZmYsIDApLAogCS5saW5lX2ZsYWdfbnVtWzBd
+ID0gVk9QX1JFRyhSSzMwMzZfSU5UX1NUQVRVUywgMHhmZmYsIDEyKSwKLQkuY2ZnX2RvbmUgPSBW
+T1BfUkVHKFJLMzAzNl9SRUdfQ0ZHX0RPTkUsIDB4MSwgMCksCisJLmNmZ19kb25lID0gVk9QX1JF
+R19TWU5DKFJLMzAzNl9SRUdfQ0ZHX0RPTkUsIDB4MSwgMCksCiB9OwogCiBzdGF0aWMgY29uc3Qg
+c3RydWN0IHZvcF9kYXRhIHJrMzAzNl92b3AgPSB7CkBAIC0yMDEsNyArMjA3LDcgQEAKIH07CiAK
+IHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2N0cmwgcmszMjg4X2N0cmxfZGF0YSA9IHsKLQkuc3Rh
+bmRieSA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAweDEsIDIyKSwKKwkuc3RhbmRieSA9IFZP
+UF9SRUdfU1lOQyhSSzMyODhfU1lTX0NUUkwsIDB4MSwgMjIpLAogCS5nYXRlX2VuID0gVk9QX1JF
+RyhSSzMyODhfU1lTX0NUUkwsIDB4MSwgMjMpLAogCS5tbXVfZW4gPSBWT1BfUkVHKFJLMzI4OF9T
+WVNfQ1RSTCwgMHgxLCAyMCksCiAJLnJnYl9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAw
+eDEsIDEyKSwKQEAgLTIyMiw3ICsyMjgsNyBAQAogCS52cG9zdF9zdF9lbmQgPSBWT1BfUkVHKFJL
+MzI4OF9QT1NUX0RTUF9WQUNUX0lORk8sIDB4MWZmZjFmZmYsIDApLAogCS5saW5lX2ZsYWdfbnVt
+WzBdID0gVk9QX1JFRyhSSzMyODhfSU5UUl9DVFJMMCwgMHgxZmZmLCAxMiksCiAJLmdsb2JhbF9y
+ZWdkb25lX2VuID0gVk9QX1JFRyhSSzMyODhfU1lTX0NUUkwsIDB4MSwgMTEpLAotCS5jZmdfZG9u
+ZSA9IFZPUF9SRUcoUkszMjg4X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKKwkuY2ZnX2RvbmUgPSBW
+T1BfUkVHX1NZTkMoUkszMjg4X1JFR19DRkdfRE9ORSwgMHgxLCAwKSwKIH07CiAKIC8qCkBAIC0y
+NjYsNyArMjcyLDcgQEAKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2N0cmwgcmszMzk5
+X2N0cmxfZGF0YSA9IHsKLQkuc3RhbmRieSA9IFZPUF9SRUcoUkszMzk5X1NZU19DVFJMLCAweDEs
+IDIyKSwKKwkuc3RhbmRieSA9IFZPUF9SRUdfU1lOQyhSSzMzOTlfU1lTX0NUUkwsIDB4MSwgMjIp
+LAogCS5nYXRlX2VuID0gVk9QX1JFRyhSSzMzOTlfU1lTX0NUUkwsIDB4MSwgMjMpLAogCS5kcF9l
+biA9IFZPUF9SRUcoUkszMzk5X1NZU19DVFJMLCAweDEsIDExKSwKIAkucmdiX2VuID0gVk9QX1JF
+RyhSSzMzOTlfU1lTX0NUUkwsIDB4MSwgMTIpLApAQCAtMjkwLDcgKzI5Niw3IEBACiAJLnZwb3N0
+X3N0X2VuZCA9IFZPUF9SRUcoUkszMzk5X1BPU1RfRFNQX1ZBQ1RfSU5GTywgMHgxZmZmMWZmZiwg
+MCksCiAJLmxpbmVfZmxhZ19udW1bMF0gPSBWT1BfUkVHKFJLMzM5OV9MSU5FX0ZMQUcsIDB4ZmZm
+ZiwgMCksCiAJLmxpbmVfZmxhZ19udW1bMV0gPSBWT1BfUkVHKFJLMzM5OV9MSU5FX0ZMQUcsIDB4
+ZmZmZiwgMTYpLAotCS5jZmdfZG9uZSA9IFZPUF9SRUdfTUFTSyhSSzMzOTlfUkVHX0NGR19ET05F
+LCAweDEsIDApLAorCS5jZmdfZG9uZSA9IFZPUF9SRUdfTUFTS19TWU5DKFJLMzM5OV9SRUdfQ0ZH
+X0RPTkUsIDB4MSwgMCksCiB9OwogCiBzdGF0aWMgY29uc3QgaW50IHJrMzM5OV92b3BfaW50cnNb
+XSA9IHsKQEAgLTMwNiw5ICszMTIsOSBAQAogc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfaW50ciBy
+azMzOTlfdm9wX2ludHIgPSB7CiAJLmludHJzID0gcmszMzk5X3ZvcF9pbnRycywKIAkubmludHJz
+ID0gQVJSQVlfU0laRShyazMzOTlfdm9wX2ludHJzKSwKLQkuc3RhdHVzID0gVk9QX1JFR19NQVNL
+KFJLMzM5OV9JTlRSX1NUQVRVUzAsIDB4ZmZmZiwgMCksCi0JLmVuYWJsZSA9IFZPUF9SRUdfTUFT
+SyhSSzMzOTlfSU5UUl9FTjAsIDB4ZmZmZiwgMCksCi0JLmNsZWFyID0gVk9QX1JFR19NQVNLKFJL
+MzM5OV9JTlRSX0NMRUFSMCwgMHhmZmZmLCAwKSwKKwkuc3RhdHVzID0gVk9QX1JFR19NQVNLX1NZ
+TkMoUkszMzk5X0lOVFJfU1RBVFVTMCwgMHhmZmZmLCAwKSwKKwkuZW5hYmxlID0gVk9QX1JFR19N
+QVNLX1NZTkMoUkszMzk5X0lOVFJfRU4wLCAweGZmZmYsIDApLAorCS5jbGVhciA9IFZPUF9SRUdf
+TUFTS19TWU5DKFJLMzM5OV9JTlRSX0NMRUFSMCwgMHhmZmZmLCAwKSwKIH07CiAKIHN0YXRpYyBj
+b25zdCBzdHJ1Y3Qgdm9wX2RhdGEgcmszMzk5X3ZvcF9iaWcgPSB7Ci0tIAoxLjkuMQoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
