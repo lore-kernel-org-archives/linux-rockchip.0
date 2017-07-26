@@ -1,105 +1,140 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v3 2/2] drm/rockchip: cdn-dp: send audio infoframe to sink
-Date: Wed, 26 Jul 2017 20:37:30 +0800
-Message-ID: <1501072650-32653-2-git-send-email-zyw@rock-chips.com>
-References: <1501072650-32653-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501072650-32653-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Subject: [PATCH v3 1/2] video/hdmi: Introduce helpers for the HDMI audio infoframe payload
+Date: Wed, 26 Jul 2017 20:37:29 +0800
+Message-ID: <1501072650-32653-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: seanpaul@chromium.org, dianders@chromium.org, briannorris@chromium.org
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, heiko@sntech.de, Chris Zhong <zyw@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Jose Abreu <joabreu@synopsys.com>, Shashank Sharma <shashank.sharma@intel.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <treding@nvidia.com>, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U29tZSBEUC9IRE1JIHNpbmsgbmVlZCB0byByZWNlaXZlIHRoZSBhdWRpbyBpbmZvZnJhbWUgdG8g
-cGxheSBzb3VuZCwKZXNwZWNpYWxseSBzb21lIG11bHRpLWNoYW5uZWwgQVYgcmVjZWl2ZXIsIHRo
-ZXkgbmVlZCB0aGUKY2hhbm5lbF9hbGxvY2F0aW9uIGZyb20gaW5mb2ZyYW1lIHRvIGNvbmZpZyB0
-aGUgc3BlYWtlcnMuIFNlbmQgdGhlCmF1ZGlvIGluZm9mcmFtZSB2aWEgU0RQIHdpbGwgbWFrZSB0
-aGVtIHdvcmsgcHJvcGVybHkuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2st
-Y2hpcHMuY29tPgoKLS0tCgpDaGFuZ2VzIGluIHYzOiBOb25lCkNoYW5nZXMgaW4gdjI6Ci0gQWNj
-b3JkaW5nIHRvIHRoZSBhZHZpY2Ugb2YgU2VhbiBQYXVsIGFuZCBEb3VnCnVzZSBoZG1pX2F1ZGlv
-X2luZm9mcmFtZV9wYWNrX3BheWxvYWQgdG8gcGFjayB0aGUgYnVmZmVyCmRlZmluZSBhIFNEUF9I
-RUFERVJfU0laRQoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIHwgMjAg
-KysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVn
-LmMgIHwgMjcgKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvY2RuLWRwLXJlZy5oICB8ICA2ICsrKysrKwogaW5jbHVkZS9kcm0vZHJtX2RwX2hlbHBl
-ci5oICAgICAgICAgICAgfCAgMSArCiA0IGZpbGVzIGNoYW5nZWQsIDU0IGluc2VydGlvbnMoKykK
-CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyBiL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCmluZGV4IDliMGIwNTguLjZhNGZj
-NjYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jCkBAIC04MDIsNiArODAy
-LDcgQEAgc3RhdGljIGludCBjZG5fZHBfYXVkaW9faHdfcGFyYW1zKHN0cnVjdCBkZXZpY2UgKmRl
-diwgIHZvaWQgKmRhdGEsCiAJCS5zYW1wbGVfcmF0ZSA9IHBhcmFtcy0+c2FtcGxlX3JhdGUsCiAJ
-CS5jaGFubmVscyA9IHBhcmFtcy0+Y2hhbm5lbHMsCiAJfTsKKwl1OCBidWZmZXJbSERNSV9BVURJ
-T19JTkZPRlJBTUVfU0laRSArIEVEUF9TRFBfSEVBREVSX1NJWkVdID0geyAwIH07CiAJaW50IHJl
-dDsKIAogCW11dGV4X2xvY2soJmRwLT5sb2NrKTsKQEAgLTgyMyw2ICs4MjQsMjUgQEAgc3RhdGlj
-IGludCBjZG5fZHBfYXVkaW9faHdfcGFyYW1zKHN0cnVjdCBkZXZpY2UgKmRldiwgIHZvaWQgKmRh
-dGEsCiAJCWdvdG8gb3V0OwogCX0KIAorCS8qCisJICogUHJlcGFyZSB0aGUgaW5mb2ZyYW1lIGhl
-YWRlciB0byBTRFAgaGVhZGVyIHBlciBEUCAxLjMgc3BlYywgVGFibGUKKwkgKiAyLTk4LgorCSAq
-LworCWJ1ZmZlclswXSA9IDA7CisJYnVmZmVyWzFdID0gSERNSV9JTkZPRlJBTUVfVFlQRV9BVURJ
-TzsKKwlidWZmZXJbMl0gPSAweDFiOworCWJ1ZmZlclszXSA9IDB4NDg7CisKKwlyZXQgPSBoZG1p
-X2F1ZGlvX2luZm9mcmFtZV9wYWNrX3BheWxvYWQoJnBhcmFtcy0+Y2VhLAorCQkJCQkJJmJ1ZmZl
-cltFRFBfU0RQX0hFQURFUl9TSVpFXSwKKwkJCQkJCUhETUlfQVVESU9fSU5GT0ZSQU1FX1NJWkUp
-OworCWlmIChyZXQgPCAwKSB7CisJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIHBhY2sg
-YXVkaW8gaW5mb2ZyYW1lOiAlZFxuIiwgcmV0KTsKKwkJZ290byBvdXQ7CisJfQorCisJY2RuX2Rw
-X3NkcF93cml0ZShkcCwgMCwgYnVmZmVyLCBzaXplb2YoYnVmZmVyKSk7CisKIAlyZXQgPSBjZG5f
-ZHBfYXVkaW9fY29uZmlnKGRwLCAmYXVkaW8pOwogCWlmICghcmV0KQogCQlkcC0+YXVkaW9faW5m
-byA9IGF1ZGlvOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1y
-ZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMKaW5kZXggYjE0ZDIx
-MS4uNGE4MThlNCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1y
-ZWcuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jCkBAIC0yODYs
-NiArMjg2LDMzIEBAIGludCBjZG5fZHBfZHBjZF93cml0ZShzdHJ1Y3QgY2RuX2RwX2RldmljZSAq
-ZHAsIHUzMiBhZGRyLCB1OCB2YWx1ZSkKIAlyZXR1cm4gcmV0OwogfQogCit2b2lkIGNkbl9kcF9z
-ZHBfd3JpdGUoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwLCBpbnQgZW50cnlfaWQsIHU4ICpidWYs
-CisJCSAgICAgIHUzMiBidWZfbGVuKQoreworCWludCBpZHg7CisJdTMyICpwYWNrZXQgPSAodTMy
-ICopYnVmOworCXUzMiBudW1fcGFja2V0cyA9IGJ1Zl9sZW4gLyA0OworCXU4IHR5cGU7CisKKwlp
-ZiAoYnVmX2xlbiA8IEVEUF9TRFBfSEVBREVSX1NJWkUpIHsKKwkJRFJNX0RFVl9FUlJPUihkcC0+
-ZGV2LCAic2RwIGJ1ZmZlciBsZW5ndGg6ICVkXG4iLCBidWZfbGVuKTsKKwkJcmV0dXJuOworCX0K
-KworCXR5cGUgPSBidWZbMV07CisKKwlmb3IgKGlkeCA9IDA7IGlkeCA8IG51bV9wYWNrZXRzOyBp
-ZHgrKykKKwkJd3JpdGVsKGNwdV90b19sZTMyKCpwYWNrZXQrKyksIGRwLT5yZWdzICsgU09VUkNF
-X1BJRl9EQVRBX1dSKTsKKworCXdyaXRlbChlbnRyeV9pZCwgZHAtPnJlZ3MgKyBTT1VSQ0VfUElG
-X1dSX0FERFIpOworCisJd3JpdGVsKEZfSE9TVF9XUiwgZHAtPnJlZ3MgKyBTT1VSQ0VfUElGX1dS
-X1JFUSk7CisKKwl3cml0ZWwoUElGX1BLVF9UWVBFX1ZBTElEIHwgRl9QQUNLRVRfVFlQRSh0eXBl
-KSB8IGVudHJ5X2lkLAorCSAgICAgICBkcC0+cmVncyArIFNPVVJDRV9QSUZfUEtUX0FMTE9DX1JF
-Ryk7CisJd3JpdGVsKFBJRl9QS1RfQUxMT0NfV1JfRU4sIGRwLT5yZWdzICsgU09VUkNFX1BJRl9Q
-S1RfQUxMT0NfV1JfRU4pOworfQorCiBpbnQgY2RuX2RwX2xvYWRfZmlybXdhcmUoc3RydWN0IGNk
-bl9kcF9kZXZpY2UgKmRwLCBjb25zdCB1MzIgKmlfbWVtLAogCQkJIHUzMiBpX3NpemUsIGNvbnN0
-IHUzMiAqZF9tZW0sIHUzMiBkX3NpemUpCiB7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvY2RuLWRwLXJlZy5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1y
-ZWcuaAppbmRleCBjNGJiYjRhODMuLjZlYzBlODEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9jZG4tZHAtcmVnLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nk
-bi1kcC1yZWcuaApAQCAtNDI0LDYgKzQyNCwxMSBAQAogLyogUmVmZXJlbmNlIGN5Y2xlcyB3aGVu
-IHVzaW5nIGxhbmUgY2xvY2sgYXMgcmVmZXJlbmNlICovCiAjZGVmaW5lIExBTkVfUkVGX0NZQwkJ
-CQkweDgwMDAKIAorI2RlZmluZSBGX0hPU1RfV1IJCUJJVCgwKQorI2RlZmluZSBQSUZfUEtUX0FM
-TE9DX1dSX0VOCUJJVCgwKQorI2RlZmluZSBQSUZfUEtUX1RZUEVfVkFMSUQJKDMgPDwgMTYpCisj
-ZGVmaW5lIEZfUEFDS0VUX1RZUEUoeCkJKCgoeCkgJiAweGZmKSA8PCA4KQorCiBlbnVtIHZvbHRh
-Z2Vfc3dpbmdfbGV2ZWwgewogCVZPTFRBR0VfTEVWRUxfMCwKIAlWT0xUQUdFX0xFVkVMXzEsCkBA
-IC00NzgsNSArNDgzLDYgQEAgaW50IGNkbl9kcF9zZXRfdmlkZW9fc3RhdHVzKHN0cnVjdCBjZG5f
-ZHBfZGV2aWNlICpkcCwgaW50IGFjdGl2ZSk7CiBpbnQgY2RuX2RwX2NvbmZpZ192aWRlbyhzdHJ1
-Y3QgY2RuX2RwX2RldmljZSAqZHApOwogaW50IGNkbl9kcF9hdWRpb19zdG9wKHN0cnVjdCBjZG5f
-ZHBfZGV2aWNlICpkcCwgc3RydWN0IGF1ZGlvX2luZm8gKmF1ZGlvKTsKIGludCBjZG5fZHBfYXVk
-aW9fbXV0ZShzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsIGJvb2wgZW5hYmxlKTsKK3ZvaWQgY2Ru
-X2RwX3NkcF93cml0ZShzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsIGludCBlbnRyeV9pZCwgdTgg
-KmJ1ZiwgdTMyIGxlbik7CiBpbnQgY2RuX2RwX2F1ZGlvX2NvbmZpZyhzdHJ1Y3QgY2RuX2RwX2Rl
-dmljZSAqZHAsIHN0cnVjdCBhdWRpb19pbmZvICphdWRpbyk7CiAjZW5kaWYgLyogX0NETl9EUF9S
-RUdfSCAqLwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2RwX2hlbHBlci5oIGIvaW5jbHVk
-ZS9kcm0vZHJtX2RwX2hlbHBlci5oCmluZGV4IGIxNzQ3NmEuLjVkNWRkMDcgMTAwNjQ0Ci0tLSBh
-L2luY2x1ZGUvZHJtL2RybV9kcF9oZWxwZXIuaAorKysgYi9pbmNsdWRlL2RybS9kcm1fZHBfaGVs
-cGVyLmgKQEAgLTg3OCw2ICs4NzgsNyBAQCBzdHJ1Y3QgZWRwX3NkcF9oZWFkZXIgewogCXU4IEhC
-MzsgLyogNzo1IHJlc2VydmVkLCA0OjAgbnVtYmVyIG9mIHZhbGlkIGRhdGEgYnl0ZXMgKi8KIH0g
-X19wYWNrZWQ7CiAKKyNkZWZpbmUgRURQX1NEUF9IRUFERVJfU0laRQkJCTQKICNkZWZpbmUgRURQ
-X1NEUF9IRUFERVJfUkVWSVNJT05fTUFTSwkJMHgxRgogI2RlZmluZSBFRFBfU0RQX0hFQURFUl9W
-QUxJRF9QQVlMT0FEX0JZVEVTCTB4MUYKIAotLSAKMi43LjQKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The DP is using the same audio infoframe payload as hdmi, per DP 1.3
+spec, but it has a different header. Provide a new interface here,
+it just packs the payload.
+
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+---
+
+Changes in v3:
+- add size < HDMI_AUDIO_INFOFRAME_SIZE check according to Doug's advice
+
+Changes in v2: None
+
+ drivers/video/hdmi.c | 66 ++++++++++++++++++++++++++++++++++++++--------------
+ include/linux/hdmi.h |  2 ++
+ 2 files changed, 50 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 1cf907e..9868050 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -240,6 +240,49 @@ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
+ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+ 
+ /**
++ * hdmi_audio_infoframe_pack_payload() - write HDMI audio infoframe payload to
++ * binary buffer
++ * @frame: HDMI audio infoframe
++ * @buffer: destination buffer
++ * @size: size of buffer
++ *
++ * Packs the information contained in the @frame structure into a binary
++ * representation that can be written into the corresponding controller
++ * registers.
++ *
++ * Returns 0 on success or a negative error code on failure.
++ */
++ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
++					  void *buffer, size_t size)
++{
++	unsigned char channels;
++	u8 *ptr = buffer;
++
++	if (size < frame->length || size < HDMI_AUDIO_INFOFRAME_SIZE)
++		return -ENOSPC;
++
++	memset(buffer, 0, size);
++
++	if (frame->channels >= 2)
++		channels = frame->channels - 1;
++	else
++		channels = 0;
++
++	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
++	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
++		 (frame->sample_size & 0x3);
++	ptr[2] = frame->coding_type_ext & 0x1f;
++	ptr[3] = frame->channel_allocation;
++	ptr[4] = (frame->level_shift_value & 0xf) << 3;
++
++	if (frame->downmix_inhibit)
++		ptr[4] |= BIT(7);
++
++	return 0;
++}
++EXPORT_SYMBOL(hdmi_audio_infoframe_pack_payload);
++
++/**
+  * hdmi_audio_infoframe_pack() - write HDMI audio infoframe to binary buffer
+  * @frame: HDMI audio infoframe
+  * @buffer: destination buffer
+@@ -256,22 +299,15 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
+ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size)
+ {
+-	unsigned char channels;
+ 	u8 *ptr = buffer;
+ 	size_t length;
++	int ret;
+ 
+ 	length = HDMI_INFOFRAME_HEADER_SIZE + frame->length;
+ 
+ 	if (size < length)
+ 		return -ENOSPC;
+ 
+-	memset(buffer, 0, size);
+-
+-	if (frame->channels >= 2)
+-		channels = frame->channels - 1;
+-	else
+-		channels = 0;
+-
+ 	ptr[0] = frame->type;
+ 	ptr[1] = frame->version;
+ 	ptr[2] = frame->length;
+@@ -279,16 +315,10 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 
+ 	/* start infoframe payload */
+ 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+-
+-	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
+-	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
+-		 (frame->sample_size & 0x3);
+-	ptr[2] = frame->coding_type_ext & 0x1f;
+-	ptr[3] = frame->channel_allocation;
+-	ptr[4] = (frame->level_shift_value & 0xf) << 3;
+-
+-	if (frame->downmix_inhibit)
+-		ptr[4] |= BIT(7);
++	ret = hdmi_audio_infoframe_pack_payload(frame, ptr,
++					size - HDMI_INFOFRAME_HEADER_SIZE);
++	if (ret)
++		return ret;
+ 
+ 	hdmi_infoframe_set_checksum(buffer, length);
+ 
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index d271ff2..a4be132 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -272,6 +272,8 @@ struct hdmi_audio_infoframe {
+ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
+ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size);
++ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
++					  void *buffer, size_t size);
+ 
+ enum hdmi_3d_structure {
+ 	HDMI_3D_STRUCTURE_INVALID = -1,
+-- 
+2.7.4
