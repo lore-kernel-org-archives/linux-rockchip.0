@@ -1,71 +1,90 @@
 From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v5 3/7] drm/rockchip: vop: move line_flag_num to interrupt
- registers
-Date: Wed, 26 Jul 2017 14:17:06 +0800
-Message-ID: <597833E2.4070607@rock-chips.com>
+Subject: Re: [PATCH v5 2/7] drm/rockchip: vop: move write_relaxed flags to vop
+ register
+Date: Wed, 26 Jul 2017 14:17:23 +0800
+Message-ID: <597833F3.4050307@rock-chips.com>
 References: <1500518564-30371-1-git-send-email-mark.yao@rock-chips.com>
- <1500518613-30590-1-git-send-email-mark.yao@rock-chips.com>
- <1816316.NCRF09CkBJ@phil>
+ <1500518608-30538-1-git-send-email-mark.yao@rock-chips.com>
+ <2048476.V4PpOSpEqb@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1816316.NCRF09CkBJ@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2048476.V4PpOSpEqb@phil>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA35pyIMjbml6UgMDU6NTQsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEhpIE1h
-cmssCj4KPiBBbSBEb25uZXJzdGFnLCAyMC4gSnVsaSAyMDE3LCAxMDo0MzozMiBDRVNUIHNjaHJp
-ZWIgTWFyayBZYW86Cj4+IEluIHRoZSBoYXJkd2FyZSBkZXNpZ24gcHJvY2VzcywgdGhlIGRlc2ln
-biBvZiBsaW5lIGZsYWdzCj4+IHJlZ2lzdGVyIGlzIGFzc29jaWF0ZWQgd2l0aCB0aGUgaW50ZXJy
-dXB0IHJlZ2lzdGVyLAo+PiBwbGFjaW5nIHRoZSBsaW5lIGZsYWdzIGluIHRoZSBpbnRlcnJ1cHQg
-ZGVmaW5pdGlvbiBpcwo+PiBtb3JlIHJlYXNvbmFibGUsIGFuZCBpdCB3b3VsZCBtYWtlIG11bHRp
-LXZvcCBkZWZpbmUgZWFzaWxpZXIuCj4+Cj4+IENoYW5nZXMgaW4gdjM6Cj4+IC0gRXhwbGFpbiBt
-b3JlIGluIGRldGFpbHMsIGludHJvZHVjZSB3aHkgd2UgbmVlZCB0aGlzIHBhdGNoCj4+Cj4+IFNp
-Z25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPj4gUmV2aWV3
-ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+PiAtLS0KPj4gICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMiArLQo+PiAgIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCA0ICsrLS0KPj4gICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgOCArKysrLS0tLQo+PiAg
-IDMgZmlsZXMgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+Pgo+PiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gaW5kZXggNzg0
-YTJiNy4uNGY2YzdiYyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jCj4+IEBAIC05ODIsNyArOTgyLDcgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNf
-ZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPj4gICAJVk9QX0NUUkxfU0VUKHZvcCwgdmFj
-dF9zdF9lbmQsIHZhbCk7Cj4+ICAgCVZPUF9DVFJMX1NFVCh2b3AsIHZwb3N0X3N0X2VuZCwgdmFs
-KTsKPj4gICAKPj4gLQlWT1BfQ1RSTF9TRVQodm9wLCBsaW5lX2ZsYWdfbnVtWzBdLCB2YWN0X2Vu
-ZCk7Cj4+ICsJVk9QX0lOVFJfU0VUKHZvcCwgbGluZV9mbGFnX251bVswXSwgdmFjdF9lbmQpOwo+
-IFdpdGggcGF0Y2hlcyBhcHBsaWVkIHVwIHRvIHRoaXMgb25lIEkgZW5kIHVwIHdpdGgKPgo+ICAg
-IENDIFtNXSAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Aubwo+IC4u
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmM6IEluIGZ1bmN0aW9u
-IOKAmHZvcF9jcnRjX2VuYWJsZeKAmToKPiAuLi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jOjk4NTo0NjogZXJyb3I6IG1hY3JvICJWT1BfSU5UUl9TRVQiIHJlcXVp
-cmVzIDQgYXJndW1lbnRzLCBidXQgb25seSAzIGdpdmVuCj4gICAgVk9QX0lOVFJfU0VUKHZvcCwg
-bGluZV9mbGFnX251bVswXSwgdmFjdF9lbmQpOwo+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXgo+IC4uL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fdm9wLmM6OTg1OjI6IGVycm9yOiDigJhWT1BfSU5UUl9TRVTigJkgdW5kZWNsYXJl
-ZCAoZmlyc3QgdXNlIGluIHRoaXMgZnVuY3Rpb24pCj4gICAgVk9QX0lOVFJfU0VUKHZvcCwgbGlu
-ZV9mbGFnX251bVswXSwgdmFjdF9lbmQpOwo+ICAgIF5+fn5+fn5+fn5+fgo+IC4uL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmM6OTg1OjI6IG5vdGU6IGVhY2ggdW5k
-ZWNsYXJlZCBpZGVudGlmaWVyIGlzIHJlcG9ydGVkIG9ubHkgb25jZSBmb3IgZWFjaCBmdW5jdGlv
-biBpdCBhcHBlYXJzIGluCj4KPiBJbiBwYXRjaDQgeW91IHJlcGxhY2UgdGhpcyBhZ2Fpbiwgd2l0
-aAo+IC0JVk9QX0lOVFJfU0VUKHZvcCwgbGluZV9mbGFnX251bVswXSwgdmFjdF9lbmQpOwo+ICsJ
-Vk9QX1JFR19TRVQodm9wLCBpbnRyLCBsaW5lX2ZsYWdfbnVtWzBdLCB2YWN0X2VuZCk7Cj4KPiBi
-dXQgdGhpcyBpbnRlcm1lZGlhdGUgYnJlYWthZ2Ugc2hvdWxkIG5vdCBoYXBwZW4sIHRvIGtlZXAg
-YmlzZWN0YWJpbGl0eS4KPgo+Cj4gSGVpa28KPgo+Cj4KSGkgSGVpa28KClRoYW5rcyBmb3IgdGhl
-IHRlc3QsIHdpbGwgZml4IGl0IGF0IG5leHQgdmVyc2lvbi4KCi0tIArvvK1hcmsgWWFvCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 2017年07月26日 05:47, Heiko Stuebner wrote:
+> Hi Mark,
+>
+> Am Donnerstag, 20. Juli 2017, 10:43:27 CEST schrieb Mark Yao:
+>> Since the drm atomic framework, only a small part of the vop
+>> register needs sync write, Currently seems only following registers
+>> need sync write:
+>>     cfg_done, standby and interrupt related register.
+>>
+>> All ctrl registers are using the sync write method that is
+>> inefficient, hardcode the write_relaxed flags to vop registers,
+>> then can only do synchronize write for those actual needed register.
+>>
+>> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+>> ---
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 14 +++-------
+>>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 42 ++++++++++++++++-------------
+>>   2 files changed, 28 insertions(+), 28 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> index 81164d6..784a2b7 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> @@ -42,18 +42,12 @@
+>>   #include "rockchip_drm_psr.h"
+>>   #include "rockchip_drm_vop.h"
+>>   
+>> -#define __REG_SET_RELAXED(x, off, mask, shift, v, write_mask) \
+>> -		vop_mask_write(x, off, mask, shift, v, write_mask, true)
+>> -
+>> -#define __REG_SET_NORMAL(x, off, mask, shift, v, write_mask) \
+>> -		vop_mask_write(x, off, mask, shift, v, write_mask, false)
+>> -
+>>   #define REG_SET(x, base, reg, v, mode) \
+>> -		__REG_SET_##mode(x, base + reg.offset, \
+>> -				 reg.mask, reg.shift, v, reg.write_mask)
+>> +		vop_mask_write(x, base + reg.offset, reg.mask, reg.shift, \
+>> +			       v, reg.write_mask, reg.relaxed)
+>>   #define REG_SET_MASK(x, base, reg, mask, v, mode) \
+>> -		__REG_SET_##mode(x, base + reg.offset, \
+>> -				 mask, reg.shift, v, reg.write_mask)
+>> +		vop_mask_write(x, base + reg.offset, \
+>> +			       mask, reg.shift, v, reg.write_mask, reg.relaxed)
+> you only introduce the relaxed element of struct vop_reg in patch4.
+> So using it here produces a compile error
+>
+> ../drivers/gpu/drm/rockchip/rockchip_drm_vop.c: In function ‘vop_cfg_done’:
+> ../drivers/gpu/drm/rockchip/rockchip_drm_vop.c:47:33: error: ‘const struct vop_reg’ has no member named ‘relaxed’
+>             v, reg.write_mask, reg.relaxed)
+>                                   ^
+> ../drivers/gpu/drm/rockchip/rockchip_drm_vop.c:59:3: note: in expansion of macro ‘REG_SET’
+>     REG_SET(x, 0, (x)->data->ctrl->name, v, NORMAL)
+>     ^~~~~~~
+> ../drivers/gpu/drm/rockchip/rockchip_drm_vop.c:201:2: note: in expansion of macro ‘VOP_CTRL_SET’
+>    VOP_CTRL_SET(vop, cfg_done, 1);
+>    ^~~~~~~~~~~~
+>
+> when only patches 1+2 are applied. So the relaxed field addition should
+> definitly move into this patch to not break bisectability.
+>
+>
+> Heiko
+>
+>
+>
+>
+Hi Heiko
+
+Thanks for the test, will fix it at next version.
+
+-- 
+Ｍark Yao
