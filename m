@@ -1,98 +1,138 @@
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH RESEND v3 3/3] arm: dts: Add support for ES8323 to the Firefly-RK3288
-Date: Wed, 26 Jul 2017 15:55:26 +0200
-Message-ID: <20170726135526.475-12-romain.perier@collabora.com>
-References: <20170726135526.475-1-romain.perier@collabora.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170726135526.475-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: "Jingoo Han" <jingoohan1@gmail.com>
+Subject: Re: [PATCH v4 3/5] pwm-backlight: add support for PWM delays proprieties.
+Date: Wed, 26 Jul 2017 13:01:53 -0400
+Message-ID: <000001d30630$e2a3d160$a7eb7420$@gmail.com>
+References: <20170721104813.5389-1-enric.balletbo@collabora.com> <20170721104813.5389-3-enric.balletbo@collabora.com> <0e2d4f9b-0f27-3793-0c27-2a2df5c32cf0@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain;
+        charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <0e2d4f9b-0f27-3793-0c27-2a2df5c32cf0@linaro.org>
+Content-Language: en-us
+Sender: linux-kernel-owner@vger.kernel.org
+To: 'Daniel Thompson' <daniel.thompson@linaro.org>, 'Enric Balletbo i Serra' <enric.balletbo@collabora.com>, 'Thierry Reding' <thierry.reding@gmail.com>, 'Lee Jones' <lee.jones@linaro.org>, 'Bartlomiej Zolnierkiewicz' <b.zolnierkie@samsung.com>, 'Rob Herring' <robh+dt@kernel.org>, 'Pavel Machek' <pavel@ucw.cz>, 'Richard Purdie' <rpurdie@rpsys.net>, 'Jacek Anaszewski' <jacek.anaszewski@gmail.com>, 'Heiko Stuebner' <heiko@sntech.de>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This commit adds the DT definition of the es8388 i2c device found at
-address 0x10. It also adds the definition for connecting the Rockchip
-I2S to the es8323 analog output.
+On Monday, July 24, 2017 11:22 AM, Daniel Thompson wrote:
+> On 21/07/17 11:48, Enric Balletbo i Serra wrote:
+> > Some panels (i.e. N116BGE-L41), in their power sequence specifications,
+> > request a delay between set the PWM signal and enable the backlight and
+> > between clear the PWM signal and disable the backlight. Add support for
+> > the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
+> > the timings.
+> >
+> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> 
+> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
 
-Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-firefly.dtsi | 38 +++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+Acked-by: Jingoo Han <jingoohan1@gmail.com>
 
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 32dabae12e67..24e3fe77bc42 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -116,6 +116,19 @@
- 		};
- 	};
- 
-+	sound-i2s {
-+		compatible = "rockchip,rk3288-hdmi-analog";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&phone_ctl>, <&hp_det>;
-+		rockchip,audio-codec = <&es8323>;
-+		rockchip,hp-det-gpios = <&gpio7 15 GPIO_ACTIVE_HIGH>;
-+		rockchip,hp-en-gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,model = "I2S";
-+		rockchip,routing = "Analog", "LOUT2",
-+				   "Analog", "ROUT2";
-+	};
-+
- 	vbat_wl: vcc_sys: vsys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
-@@ -389,6 +402,17 @@
- 
- &i2c2 {
- 	status = "okay";
-+
-+	es8323: es8323@10 {
-+		compatible = "everest,es8323", "everest,es8328";
-+		reg = <0x10>;
-+		AVDD-supply = <&vcca_33>;
-+		DVDD-supply = <&vcca_33>;
-+		HPVDD-supply = <&vcca_33>;
-+		PVDD-supply = <&vcca_33>;
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		clock-names = "i2s_clk_out";
-+	};
- };
- 
- &i2c4 {
-@@ -399,6 +423,10 @@
- 	status = "okay";
- };
- 
-+&i2s {
-+	status = "okay";
-+};
-+
- &io_domains {
- 	status = "okay";
- 
-@@ -501,6 +529,16 @@
- 		};
- 	};
- 
-+	headphone {
-+		hp_det: hp-det {
-+			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		phone_ctl: phone-ctl {
-+			rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
- 	usb_host {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.11.0
+Best regards,
+Jingoo Han
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> 
+> > ---
+> > Changes since v3:
+> >   - Use two named members instead of pwm_delay[] (Daniel and Pavel)
+> >   - Use msleep instead of usleep_range. (Pavel)
+> > Changes since v2:
+> >   - Move the pwm/enable sequence to another patch (Thierry Reding)
+> > Changes since v1:
+> >   - As suggested by Daniel Thompson
+> >     - Do not assume power-on delay and power-off delay will be the same
+> >   - Move the check of dt property to the parse dt function.
+> >
+> >   drivers/video/backlight/pwm_bl.c | 19 +++++++++++++++++++
+> >   include/linux/pwm_backlight.h    |  2 ++
+> >   2 files changed, 21 insertions(+)
+> >
+> > diff --git a/drivers/video/backlight/pwm_bl.c
+> b/drivers/video/backlight/pwm_bl.c
+> > index 909a686..6cf6109 100644
+> > --- a/drivers/video/backlight/pwm_bl.c
+> > +++ b/drivers/video/backlight/pwm_bl.c
+> > @@ -10,6 +10,7 @@
+> >    * published by the Free Software Foundation.
+> >    */
+> >
+> > +#include <linux/delay.h>
+> >   #include <linux/gpio/consumer.h>
+> >   #include <linux/gpio.h>
+> >   #include <linux/module.h>
+> > @@ -35,6 +36,8 @@ struct pwm_bl_data {
+> >   	struct gpio_desc	*enable_gpio;
+> >   	unsigned int		scale;
+> >   	bool			legacy;
+> > +	unsigned int		post_pwm_on_delay;
+> > +	unsigned int		pwm_off_delay;
+> >   	int			(*notify)(struct device *,
+> >   					  int brightness);
+> >   	void			(*notify_after)(struct device *,
+> > @@ -56,6 +59,9 @@ static void pwm_backlight_power_on(struct pwm_bl_data
+> *pb, int brightness)
+> >
+> >   	pwm_enable(pb->pwm);
+> >
+> > +	if (pb->post_pwm_on_delay)
+> > +		msleep(pb->post_pwm_on_delay);
+> > +
+> >   	if (pb->enable_gpio)
+> >   		gpiod_set_value_cansleep(pb->enable_gpio, 1);
+> >
+> > @@ -70,6 +76,9 @@ static void pwm_backlight_power_off(struct pwm_bl_data
+> *pb)
+> >   	if (pb->enable_gpio)
+> >   		gpiod_set_value_cansleep(pb->enable_gpio, 0);
+> >
+> > +	if (pb->pwm_off_delay)
+> > +		msleep(pb->pwm_off_delay);
+> > +
+> >   	pwm_config(pb->pwm, 0, pb->period);
+> >   	pwm_disable(pb->pwm);
+> >
+> > @@ -175,6 +184,14 @@ static int pwm_backlight_parse_dt(struct device
+> *dev,
+> >   		data->max_brightness--;
+> >   	}
+> >
+> > +	/*
+> > +	 * These values are optional and set as 0 by default, the out
+> values
+> > +	 * are modified only if a valid u32 value can be decoded.
+> > +	 */
+> > +	of_property_read_u32(node, "post-pwm-on-delay-ms",
+> > +			     &data->post_pwm_on_delay);
+> > +	of_property_read_u32(node, "pwm-off-delay-ms", &data-
+> >pwm_off_delay);
+> > +
+> >   	data->enable_gpio = -EINVAL;
+> >   	return 0;
+> >   }
+> > @@ -273,6 +290,8 @@ static int pwm_backlight_probe(struct
+> platform_device *pdev)
+> >   	pb->exit = data->exit;
+> >   	pb->dev = &pdev->dev;
+> >   	pb->enabled = false;
+> > +	pb->post_pwm_on_delay = data->post_pwm_on_delay;
+> > +	pb->pwm_off_delay = data->pwm_off_delay;
+> >
+> >   	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
+> >   						  GPIOD_ASIS);
+> > diff --git a/include/linux/pwm_backlight.h
+> b/include/linux/pwm_backlight.h
+> > index efdd922..62f59c4 100644
+> > --- a/include/linux/pwm_backlight.h
+> > +++ b/include/linux/pwm_backlight.h
+> > @@ -13,6 +13,8 @@ struct platform_pwm_backlight_data {
+> >   	unsigned int lth_brightness;
+> >   	unsigned int pwm_period_ns;
+> >   	unsigned int *levels;
+> > +	unsigned int post_pwm_on_delay;
+> > +	unsigned int pwm_off_delay;
+> >   	/* TODO remove once all users are switched to gpiod_* API */
+> >   	int enable_gpio;
+> >   	int (*init)(struct device *dev);
+> >
