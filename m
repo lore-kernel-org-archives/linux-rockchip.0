@@ -1,140 +1,54 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v3 1/2] video/hdmi: Introduce helpers for the HDMI audio infoframe payload
-Date: Wed, 26 Jul 2017 20:37:29 +0800
-Message-ID: <1501072650-32653-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: seanpaul@chromium.org, dianders@chromium.org, briannorris@chromium.org
-Cc: linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, heiko@sntech.de, Chris Zhong <zyw@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Jose Abreu <joabreu@synopsys.com>, Shashank Sharma <shashank.sharma@intel.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <treding@nvidia.com>, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH V3 1/4] ARM64: dts: rockchip: rk3328 add iommu nodes
+Date: Wed, 26 Jul 2017 15:53:06 +0200
+Message-ID: <1668393.AqADimcrsl@diego>
+References: <1500863530-32792-1-git-send-email-xxm@rock-chips.com>
+	<7545443.2JTXH2SMA9@diego> <20170726122753.GQ15833@8bytes.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20170726122753.GQ15833-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The DP is using the same audio infoframe payload as hdmi, per DP 1.3
-spec, but it has a different header. Provide a new interface here,
-it just packs the payload.
+Hi Joerg,
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
----
+Am Mittwoch, 26. Juli 2017, 14:27:53 CEST schrieb Joerg Roedel:
+> On Wed, Jul 26, 2017 at 01:44:02PM +0200, Heiko St=FCbner wrote:
+> > I really would prefer iommu dt-nodes going through my tree :-)
+> > =
 
-Changes in v3:
-- add size < HDMI_AUDIO_INFOFRAME_SIZE check according to Doug's advice
+> > Especially as parts of these conflict with already pending patches for
+> > graphics support and with the iommu nodes sitting in your tree these
+> > would need to wait another kernel release.
+> =
 
-Changes in v2: None
+> Sure, no problem. I have nothing pushed yet, so it's easy to remove
+> again. Do you want to take all three patch-sets from Simon through your
+> tree or just this one?
 
- drivers/video/hdmi.c | 66 ++++++++++++++++++++++++++++++++++++++--------------
- include/linux/hdmi.h |  2 ++
- 2 files changed, 50 insertions(+), 18 deletions(-)
+no, I'm of course fine with (and even very much in favor of) iommu-code
+going through your tree :-) . I just want to keep the devicetree changes
+together to prevent conflicts (and unnecessary wait times).
 
-diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
-index 1cf907e..9868050 100644
---- a/drivers/video/hdmi.c
-+++ b/drivers/video/hdmi.c
-@@ -240,6 +240,49 @@ int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame)
- EXPORT_SYMBOL(hdmi_audio_infoframe_init);
- 
- /**
-+ * hdmi_audio_infoframe_pack_payload() - write HDMI audio infoframe payload to
-+ * binary buffer
-+ * @frame: HDMI audio infoframe
-+ * @buffer: destination buffer
-+ * @size: size of buffer
-+ *
-+ * Packs the information contained in the @frame structure into a binary
-+ * representation that can be written into the corresponding controller
-+ * registers.
-+ *
-+ * Returns 0 on success or a negative error code on failure.
-+ */
-+ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
-+					  void *buffer, size_t size)
-+{
-+	unsigned char channels;
-+	u8 *ptr = buffer;
-+
-+	if (size < frame->length || size < HDMI_AUDIO_INFOFRAME_SIZE)
-+		return -ENOSPC;
-+
-+	memset(buffer, 0, size);
-+
-+	if (frame->channels >= 2)
-+		channels = frame->channels - 1;
-+	else
-+		channels = 0;
-+
-+	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-+	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
-+		 (frame->sample_size & 0x3);
-+	ptr[2] = frame->coding_type_ext & 0x1f;
-+	ptr[3] = frame->channel_allocation;
-+	ptr[4] = (frame->level_shift_value & 0xf) << 3;
-+
-+	if (frame->downmix_inhibit)
-+		ptr[4] |= BIT(7);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(hdmi_audio_infoframe_pack_payload);
-+
-+/**
-  * hdmi_audio_infoframe_pack() - write HDMI audio infoframe to binary buffer
-  * @frame: HDMI audio infoframe
-  * @buffer: destination buffer
-@@ -256,22 +299,15 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_init);
- ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 				  void *buffer, size_t size)
- {
--	unsigned char channels;
- 	u8 *ptr = buffer;
- 	size_t length;
-+	int ret;
- 
- 	length = HDMI_INFOFRAME_HEADER_SIZE + frame->length;
- 
- 	if (size < length)
- 		return -ENOSPC;
- 
--	memset(buffer, 0, size);
--
--	if (frame->channels >= 2)
--		channels = frame->channels - 1;
--	else
--		channels = 0;
--
- 	ptr[0] = frame->type;
- 	ptr[1] = frame->version;
- 	ptr[2] = frame->length;
-@@ -279,16 +315,10 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 
- 	/* start infoframe payload */
- 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
--
--	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
--	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
--		 (frame->sample_size & 0x3);
--	ptr[2] = frame->coding_type_ext & 0x1f;
--	ptr[3] = frame->channel_allocation;
--	ptr[4] = (frame->level_shift_value & 0xf) << 3;
--
--	if (frame->downmix_inhibit)
--		ptr[4] |= BIT(7);
-+	ret = hdmi_audio_infoframe_pack_payload(frame, ptr,
-+					size - HDMI_INFOFRAME_HEADER_SIZE);
-+	if (ret)
-+		return ret;
- 
- 	hdmi_infoframe_set_checksum(buffer, length);
- 
-diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
-index d271ff2..a4be132 100644
---- a/include/linux/hdmi.h
-+++ b/include/linux/hdmi.h
-@@ -272,6 +272,8 @@ struct hdmi_audio_infoframe {
- int hdmi_audio_infoframe_init(struct hdmi_audio_infoframe *frame);
- ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 				  void *buffer, size_t size);
-+ssize_t hdmi_audio_infoframe_pack_payload(struct hdmi_audio_infoframe *frame,
-+					  void *buffer, size_t size);
- 
- enum hdmi_3d_structure {
- 	HDMI_3D_STRUCTURE_INVALID = -1,
--- 
-2.7.4
+Having code and dts changes go through different trees is no problem, as th=
+ey =
+
+don't have a compile-time dependencies on each other and come together nice=
+ly =
+
+in linux-next again.
+
+
+Heiko
