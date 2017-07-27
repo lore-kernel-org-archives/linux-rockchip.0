@@ -1,13 +1,13 @@
 From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [v6,1/7] drm/rockchip: vop: initialize registers directly
-Date: Thu, 27 Jul 2017 16:31:33 +0800
-Message-ID: <5979A4E5.6090107@rock-chips.com>
-References: <1501049946-5877-1-git-send-email-mark.yao@rock-chips.com>
+Subject: Re: [v6,7/7] drm/rockchip: vop: rk3328: fix overlay abnormal
+Date: Thu, 27 Jul 2017 16:42:36 +0800
+Message-ID: <5979A77C.6000304@rock-chips.com>
+References: <1501049980-6239-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501049946-5877-1-git-send-email-mark.yao@rock-chips.com>
+In-Reply-To: <1501049980-6239-1-git-send-email-mark.yao@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -21,16 +21,17 @@ To: Mark yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko S
 Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgbWFyaywKCk9uIDA3LzI2LzIwMTcgMDI6MTkgUE0sIE1hcmsgeWFvIHdyb3RlOgo+IEF0IHBy
-ZXNlbnQgd2UgYXJlIHVzaW5nIGluaXRfdGFibGUgdG8gaW5pdGlhbGl6ZSBzb21lCj4gcmVnaXN0
-ZXJzLCBidXQgdGhlIFJlZ2lzdGVyIGluaXQgdGFibGUgdXNlIHVuLWRvY3VtZW50IGRlZmluZSwK
-PiBpdCBpcyB1bnJlYWRhYmxlLCBhbmQgc29tZXRpbWVzIHdlIG9ubHkgd2FudCB0byB1cGRhdGUg
-dGlueQo+IGJpdHMsIGluaXQgdGFibGUgbWV0aG9kIGlzIG5vdCBmcmllbmRseSwgaXQncyBkaWZm
-Y3VsdCB0bwo+IHJldXNlIGZvciBkaWZmZXJlbmNlIGNoaXBzLgo+Cj4gVG8gbWFrZSBpdCBjbGVh
-biwgaW5pdGlhbGl6ZSByZWdpc3RlcnMgZGlyZWN0bHksIGFuZCBkcm9wcwo+IGluaXRfdGFibGUg
-bWVjaGFuaXNtIG91dC4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvPG1hcmsueWFvQHJvY2st
-Y2hpcHMuY29tPgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXI8aGVpa29Ac250ZWNoLmRlPgoK
-UmV2aWV3ZWQtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+CgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+SGkgbWFyaywKCk9uIDA3LzI2LzIwMTcgMDI6MTkgUE0sIE1hcmsgeWFvIHdyb3RlOgo+IEl0J3Mg
+YSBoYXJkd2FyZSBidWcsIGFsbCB3aW5kb3cncyBvdmVybGF5IGNoYW5uZWwgcmVzZXQKPiB2YWx1
+ZSBpcyBzYW1lLCBoYXJkd2FyZSBvdmVybGF5IHdvdWxkIGJlIGRpZS4KPgo+IHNvIHdlIG11c3Qg
+aW5pdGlhbCBkaWZmZXJlbmNlIGlkIGZvciBlYWNoIG92ZXJsYXkgY2hhbm5lbC4KPgo+IFRoZSBD
+aGFubmVsIHJlZ2lzdGVyIGlzIHN1cHBvcnRlZCBvbiBhbGwgdm9wIHdpbGwgZnVsbCBkZXNpZ24u
+Cj4gRm9sbG93aW5nIGlzIHRoZSBkZXRhaWxzIGZvciB0aGlzIHJlZ2lzdGVyCj4gVk9QX1dJTjBf
+Q1RSTDIKPiAgICBiaXRbNzo0XSB3aW5fcmlkX3dpbjBfY2JyCj4gICAgICAgICBheGkgcmVhZCBp
+ZCBvZiB3aW4wIGNiciBjaGFubmVsCj4gICAgYml0WzM6MF0gd2luX3JpZF93aW4wX3lyZ2IKPiAg
+ICAgICAgIGF4aSByZWFkIGlkIG9mIHdpbjAgeXJnYiBjaGFubmVsCj4KPiBTaWduZWQtb2ZmLWJ5
+OiBNYXJrIFlhbzxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KClJldmlld2VkLWJ5OiBKZWZmeSBD
+aGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
