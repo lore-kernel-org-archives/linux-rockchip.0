@@ -1,37 +1,52 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v6 3/7] drm/rockchip: vop: move line_flag_num to interrupt
- registers
-Date: Thu, 27 Jul 2017 00:50:51 +0200
-Message-ID: <1646231.OqT85nW1UI@phil>
-References: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
- <1501049960-6006-1-git-send-email-mark.yao@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/5] dt-bindings: rockchip-thermal: Support the RK3328 SoC compatible
+Date: Thu, 27 Jul 2017 08:36:15 +0200
+Message-ID: <4621265.xPXIvBV6Fl@diego>
+References: <1500973788-14627-1-git-send-email-rocky.hao@rock-chips.com> <1500973788-14627-2-git-send-email-rocky.hao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501049960-6006-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1500973788-14627-2-git-send-email-rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDI2LiBKdWxpIDIwMTcsIDE0OjE5OjE5IENFU1Qgc2NocmllYiBNYXJrIFlh
-bzoKPiBJbiB0aGUgaGFyZHdhcmUgZGVzaWduIHByb2Nlc3MsIHRoZSBkZXNpZ24gb2YgbGluZSBm
-bGFncwo+IHJlZ2lzdGVyIGlzIGFzc29jaWF0ZWQgd2l0aCB0aGUgaW50ZXJydXB0IHJlZ2lzdGVy
-LAo+IHBsYWNpbmcgdGhlIGxpbmUgZmxhZ3MgaW4gdGhlIGludGVycnVwdCBkZWZpbml0aW9uIGlz
-Cj4gbW9yZSByZWFzb25hYmxlLCBhbmQgaXQgd291bGQgbWFrZSBtdWx0aS12b3AgZGVmaW5lIGVh
-c2lsaWVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBz
-LmNvbT4KPiBSZXZpZXdlZC1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cgpv
-biByazMwMzYgYW5kIHJrMzI4OApUZXN0ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRl
-Y2guZGU+CgoKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+Hi Rocky,
+
+Am Dienstag, 25. Juli 2017, 17:09:44 CEST schrieb Rocky Hao:
+> attempt to new compatible for thermal founding on RK3328 SoC.
+> 
+> Change-Id: Ie6f6d7b4e545891a0035851a923c0412f584140c
+> Signed-off-by: Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+generally looks good but you should not have gerrit Change-Ids in patches
+for mainline. This is true for all patches in this series.
+
+
+Heiko
+
+> ---
+>  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+> b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt index
+> 43003aec94bd..e3a6234fb1ac 100644
+> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+> @@ -4,6 +4,7 @@ Required properties:
+>  - compatible : should be "rockchip,<name>-tsadc"
+>     "rockchip,rk3228-tsadc": found on RK3228 SoCs
+>     "rockchip,rk3288-tsadc": found on RK3288 SoCs
+> +   "rockchip,rk3328-tsadc": found on RK3328 SoCs
+>     "rockchip,rk3368-tsadc": found on RK3368 SoCs
+>     "rockchip,rk3399-tsadc": found on RK3399 SoCs
+>  - reg : physical base address of the controller and length of memory mapped
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
