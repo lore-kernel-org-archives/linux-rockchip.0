@@ -1,100 +1,58 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v6 4/7] drm/rockchip: vop: group vop registers
-Date: Thu, 27 Jul 2017 12:10:40 +0200
-Message-ID: <10499935.q3BgzX4LKL@diego>
-References: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
- <1501049966-6070-1-git-send-email-mark.yao@rock-chips.com>
- <44153824.CqyclESHdT@diego>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH V3 1/4] ARM64: dts: rockchip: rk3328 add iommu nodes
+Date: Thu, 27 Jul 2017 14:15:18 +0200
+Message-ID: <20170727121518.GB21502@8bytes.org>
+References: <1500863530-32792-1-git-send-email-xxm@rock-chips.com>
+	<7545443.2JTXH2SMA9@diego> <20170726122753.GQ15833@8bytes.org>
+	<1668393.AqADimcrsl@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <44153824.CqyclESHdT@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1668393.AqADimcrsl@diego>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMjcuIEp1bGkgMjAxNywgMTE6NTE6MDYgQ0VTVCBzY2hyaWViIEhlaWtv
-IFN0w7xibmVyOgo+IEhpIE1hcmssCj4gCj4gQW0gTWl0dHdvY2gsIDI2LiBKdWxpIDIwMTcsIDE0
-OjE5OjI1IENFU1Qgc2NocmllYiBNYXJrIFlhbzoKPiA+IEdyb3VwaW5nIHRoZSB2b3AgcmVnaXN0
-ZXJzIGZhY2lsaXRhdGVzIG1ha2UgcmVnaXN0ZXIKPiA+IGRlZmluaXRpb24gY2xlYXJlciwgYW5k
-IGFsc28gaXMgdXNlZnVsIGZvciBkaWZmZXJlbnQgdm9wCj4gPiByZXVzZSB0aGUgc2FtZSBncm91
-cCByZWdpc3Rlci4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJv
-Y2stY2hpcHMuY29tPgo+ID4gLS0tCj4gPiAKPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jIHwgIDk5Cj4gPiAgKysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4g
-PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCB8ICA2MCArKysr
-KysrKy0tLS0tLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3Jl
-Zy5jIHwgMTEyCj4gPiAKPiA+ICsrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0gMyBmaWxlcyBj
-aGFuZ2VkLCAxNDQgaW5zZXJ0aW9ucygrKSwgMTI3Cj4gPiBkZWxldGlvbnMoLSkKPiAKPiBUaGlz
-IGJyZWFrcyBkaXNwbGF5IHN1cHBvcnQgb24gYm90aCByazMwMzYgYW5kIHJrMzI4OCBhbmQgSSBl
-bmQgdXAKPiB3aXRoIGEgbnVsbCBwb2ludGVyIGRlcmVmZXJlbmNlIGluCj4gCj4gWyAgIDEwLjY0
-MDI5N10gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0
-IHZpcnR1YWwKPiBhZGRyZXNzIDAwMDAwMDAwIFsgICAxMC42NTQ0MzBdIHBnZCA9IGMwMjA0MDAw
-Cj4gWyAgIDEwLjY1NzQ1Ml0gWzAwMDAwMDAwXSAqcGdkPTAwMDAwMDAwCj4gWyAgIDEwLjY2MTQ3
-M10gSW50ZXJuYWwgZXJyb3I6IE9vcHM6IDUgWyMxXSBTTVAgQVJNCj4gWyAgIDEwLjY2NjYzNV0g
-TW9kdWxlcyBsaW5rZWQgaW46IHNuZF9wY20gbWVkaWEgc25kX3RpbWVyIHBoeV9yb2NrY2hpcF9k
-cAo+IHNuZCBzb3VuZGNvcmUgcm9ja2NoaXBkcm0gZHdfaGRtaSBhbmFsb2dpeF9kcCBydGNfcms4
-MDggcHdtX3JvY2tjaGlwCj4gY2xrX3JrODA4IHNwaV9yb2NrY2hpcCBbICAgMTAuNjgyODk3XSBD
-UFU6IDIgUElEOiAxNDMgQ29tbToga3dvcmtlci8yOjIgTm90Cj4gdGFpbnRlZCA0LjEzLjAtcmMy
-LTAxNzkxLWcyYjg2NjAzZDA1MTUgIzM1NSBbICAgMTAuNjkyNDMwXSBIYXJkd2FyZSBuYW1lOgo+
-IFJvY2tjaGlwIChEZXZpY2UgVHJlZSkKPiBbICAgMTAuNjk3NjkyXSBXb3JrcXVldWU6IGV2ZW50
-cyBkZWZlcnJlZF9wcm9iZV93b3JrX2Z1bmMKPiBbICAgMTAuNzAyMTUyXSBMaW51eCB2aWRlbyBj
-YXB0dXJlIGludGVyZmFjZTogdjIuMDAKPiBbICAgMTAuNzA4NTkwXSB0YXNrOiBlZTM4YzgwMCB0
-YXNrLnN0YWNrOiBlZDJlNjAwMAo+IFsgICAxMC43MTM2NTZdIFBDIGlzIGF0IHZvcF9yZWdfc2V0
-LmNvbnN0cHJvcC40KzB4NC8weGE4IFtyb2NrY2hpcGRybV0KPiBbICAgMTAuNzIwNjY4XSBMUiBp
-cyBhdCB2b3BfYmluZCsweDU2OC8weDhhMCBbcm9ja2NoaXBkcm1dCgpUaGUgb2J2aW91cyByZWFz
-b24gZm9yIHRoYXQgaXMKCj4gQEAgLTE2NCwxNCArMTUzLDIwIEBAIHN0YXRpYyBpbmxpbmUgdWlu
-dDMyX3Qgdm9wX3JlYWRfcmVnKHN0cnVjdCB2b3AgKnZvcCwKPiB1aW50MzJfdCBiYXNlLCByZXR1
-cm4gKHZvcF9yZWFkbCh2b3AsIGJhc2UgKyByZWctPm9mZnNldCkgPj4gcmVnLT5zaGlmdCkgJgo+
-IHJlZy0+bWFzazsgfQo+IAo+IC1zdGF0aWMgaW5saW5lIHZvaWQgdm9wX21hc2tfd3JpdGUoc3Ry
-dWN0IHZvcCAqdm9wLCB1aW50MzJfdCBvZmZzZXQsCj4gLQkJCQkgIHVpbnQzMl90IG1hc2ssIHVp
-bnQzMl90IHNoaWZ0LCB1aW50MzJfdCB2LAo+IC0JCQkJICBib29sIHdyaXRlX21hc2ssIGJvb2wg
-cmVsYXhlZCkKPiArc3RhdGljIHZvaWQgdm9wX3JlZ19zZXQoc3RydWN0IHZvcCAqdm9wLCBjb25z
-dCBzdHJ1Y3Qgdm9wX3JlZyAqcmVnLAo+ICsJCQl1aW50MzJfdCBfb2Zmc2V0LCB1aW50MzJfdCBf
-bWFzaywgdWludDMyX3QgdiwKPiArCQkJY29uc3QgY2hhciAqcmVnX25hbWUpCj4gIHsKPiAtCWlm
-ICghbWFzaykKPiArCWludCBvZmZzZXQgPSByZWctPm9mZnNldCArIF9vZmZzZXQ7Cj4gKwlpbnQg
-bWFzayA9IHJlZy0+bWFzayAmIF9tYXNrOwo+ICsJaW50IHNoaWZ0ID0gcmVnLT5zaGlmdDsKPiAr
-Cj4gKwlpZiAoIXJlZyB8fCAhcmVnLT5tYXNrKSB7Cj4gKwkJZGV2X2RiZyh2b3AtPmRldiwgIldh
-cm5pbmc6IG5vdCBzdXBwb3J0ICVzXG4iLCByZWdfbmFtZSk7Cj4gIAkJcmV0dXJuOwo+ICsJfQoK
-d2hlcmUgdGhlIGNoZWNrIGZvciAhcmVnIGhhcHBlbnMgYWZ0ZXIgaXQgZ290IGFscmVhZHkgZGVy
-ZWZlcmVuY2VkLgpCdXQgZXZlbiB3aXRoIHRoYXQgZml4ZWQgSSBlbmQgdXAgd2l0aAoKb24gcmsz
-Mjg4OgpbICAgIDcuMjU0ODIzXSByb2NrY2hpcC12b3AgZmY5MzAwMDAudm9wOiBXYXJuaW5nOiBu
-b3Qgc3VwcG9ydCBnbG9iYWxfcmVnZG9uZV9lbgpbICAgIDcuMjYyODQ3XSByb2NrY2hpcC12b3Ag
-ZmY5MzAwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBnYXRlClsgICAgNy4yNjk1ODBdIHJv
-Y2tjaGlwLXZvcCBmZjkzMDAwMC52b3A6IFdhcm5pbmc6IG5vdCBzdXBwb3J0IGdhdGUKWyAgICA3
-LjMwMjc2NV0gcm9ja2NoaXAtdm9wIGZmOTQwMDAwLnZvcDogV2FybmluZzogbm90IHN1cHBvcnQg
-Z2xvYmFsX3JlZ2RvbmVfZW4KWyAgICA3LjMxMDc1OF0gcm9ja2NoaXAtdm9wIGZmOTQwMDAwLnZv
-cDogV2FybmluZzogbm90IHN1cHBvcnQgZ2F0ZQpbICAgIDcuMzE3NDc1XSByb2NrY2hpcC12b3Ag
-ZmY5NDAwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBnYXRlClsgICAgNy40MjU3MjRdIHJv
-Y2tjaGlwLXZvcCBmZjkzMDAwMC52b3A6IFdhcm5pbmc6IG5vdCBzdXBwb3J0IGVkcF9waW5fcG9s
-ClsgICAgNy41MjYyOThdIHJvY2tjaGlwLXZvcCBmZjk0MDAwMC52b3A6IFdhcm5pbmc6IG5vdCBz
-dXBwb3J0IGhkbWlfcGluX3BvbAoKb24gcmszMDM2OgpbICAgMTIuMzg5MTM4XSByb2NrY2hpcC12
-b3AgMTAxMTgwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBnbG9iYWxfcmVnZG9uZV9lbgpb
-ICAgMTIuMzk3MzI0XSByb2NrY2hpcC12b3AgMTAxMTgwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3Vw
-cG9ydCBnYXRlClsgICAxMi40MDQxNjVdIHJvY2tjaGlwLXZvcCAxMDExODAwMC52b3A6IFdhcm5p
-bmc6IG5vdCBzdXBwb3J0IGdhdGUKWyAgIDEzLjc0NzM2MV0gcm9ja2NoaXAtdm9wIDEwMTE4MDAw
-LnZvcDogV2FybmluZzogbm90IHN1cHBvcnQgaGRtaV9waW5fcG9sClsgICAxMy43NDczNzFdIHJv
-Y2tjaGlwLXZvcCAxMDExODAwMC52b3A6IFdhcm5pbmc6IG5vdCBzdXBwb3J0IGhkbWlfZW4KWyAg
-IDEzLjc0NzM3OV0gcm9ja2NoaXAtdm9wIDEwMTE4MDAwLnZvcDogV2FybmluZzogbm90IHN1cHBv
-cnQgaHBvc3Rfc3RfZW5kClsgICAxMy43NDczODVdIHJvY2tjaGlwLXZvcCAxMDExODAwMC52b3A6
-IFdhcm5pbmc6IG5vdCBzdXBwb3J0IHZwb3N0X3N0X2VuZApbICAgMTMuNzQ3NDYxXSByb2NrY2hp
-cC12b3AgMTAxMTgwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBzcmNfYWxwaGFfY3RsClsg
-ICAxMy43NjcwOThdIHJvY2tjaGlwLXZvcCAxMDExODAwMC52b3A6IFdhcm5pbmc6IG5vdCBzdXBw
-b3J0IHNyY19hbHBoYV9jdGwKWyAgIDEzLjc4NjA2MF0gcm9ja2NoaXAtdm9wIDEwMTE4MDAwLnZv
-cDogV2FybmluZzogbm90IHN1cHBvcnQgc3JjX2FscGhhX2N0bAoKV2hpbGUgcmVxZG9uZSBhbmQg
-ZnJpZW5kcyBhcmUgb2J2aW91c2x5IGZlYXR1cmVzIG9mIG5ld2VyIHZvcHMsIGF0IGxlYXN0CnRo
-ZSBoZG1pIHBpbi1wb2wgaXMgYXZhaWxhYmxlIG9uIGJvdGggdGhlc2Ugc29jcy4KCldpdGggdGhp
-cyBwYXRjaCBhcHBsaWVkIChhbmQgbnVsbC1wdHIgZml4ZWQpIEkgZW5kIHVwIHdpdGhvdXQgaGRt
-aSBvdXRwdXQKb24gYm90aCBzb2NzLgoKCkhlaWtvCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hey Heiko,
+
+On Wed, Jul 26, 2017 at 03:53:06PM +0200, Heiko St=FCbner wrote:
+> Having code and dts changes go through different trees is no problem, as =
+they =
+
+> don't have a compile-time dependencies on each other and come together ni=
+cely =
+
+> in linux-next again.
+
+Okay, I removed
+
+ARM64: dts: rockchip: rk3328 add iommu nodes
+ARM: dts: rockchip: rk322x add iommu nodes
+ARM64: dts: rockchip: rk3368 add iommu nodes
+ARM64: dts: rockchip: rk3399 add iommu nodes
+ARM64: dts: rockchip: rk3328 add iommu nodes
+ARM: dts: rockchip: rk322x add iommu nodes
+ARM64: dts: rockchip: rk3368 add iommu nodes
+ARM64: dts: rockchip: rk3399 add iommu nodes
+
+from my tree again and kept
+
+Docs: dt: rockchip: add rockchip,disable-mmu-reset property
+iommu/rockchip: add multi irqs support
+iommu/rockchip: ignore isp mmu reset operation
+
+
+Regards,
+
+	Joerg
