@@ -1,47 +1,36 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v1 2/2] arm64: dts: rockchip: add rk3328 spdif node
-Date: Thu, 27 Jul 2017 16:16:04 +0800
-Message-ID: <1501143365-76104-3-git-send-email-sugar.zhang@rock-chips.com>
-References: <1501143365-76104-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501143365-76104-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org, Sugar Zhang <sugar.zhang@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Liang Chen <cl@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [v6,1/7] drm/rockchip: vop: initialize registers directly
+Date: Thu, 27 Jul 2017 16:31:33 +0800
+Message-ID: <5979A4E5.6090107@rock-chips.com>
+References: <1501049946-5877-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1501049946-5877-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add the spdif dt node for rk3328.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-
----
-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index f1a284b..d278670 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -189,6 +189,19 @@
- 		status = "disabled";
- 	};
- 
-+	spdif: spdif@ff030000 {
-+		compatible = "rockchip,rk3328-spdif";
-+		reg = <0x0 0xff030000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_SPDIF>, <&cru HCLK_SPDIF_8CH>;
-+		clock-names = "mclk", "hclk";
-+		dmas = <&dmac 10>;
-+		dma-names = "tx";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&spdifm2_tx>;
-+		status = "disabled";
-+	};
-+
- 	grf: syscon@ff100000 {
- 		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff100000 0x0 0x1000>;
--- 
-2.7.4
+SGkgbWFyaywKCk9uIDA3LzI2LzIwMTcgMDI6MTkgUE0sIE1hcmsgeWFvIHdyb3RlOgo+IEF0IHBy
+ZXNlbnQgd2UgYXJlIHVzaW5nIGluaXRfdGFibGUgdG8gaW5pdGlhbGl6ZSBzb21lCj4gcmVnaXN0
+ZXJzLCBidXQgdGhlIFJlZ2lzdGVyIGluaXQgdGFibGUgdXNlIHVuLWRvY3VtZW50IGRlZmluZSwK
+PiBpdCBpcyB1bnJlYWRhYmxlLCBhbmQgc29tZXRpbWVzIHdlIG9ubHkgd2FudCB0byB1cGRhdGUg
+dGlueQo+IGJpdHMsIGluaXQgdGFibGUgbWV0aG9kIGlzIG5vdCBmcmllbmRseSwgaXQncyBkaWZm
+Y3VsdCB0bwo+IHJldXNlIGZvciBkaWZmZXJlbmNlIGNoaXBzLgo+Cj4gVG8gbWFrZSBpdCBjbGVh
+biwgaW5pdGlhbGl6ZSByZWdpc3RlcnMgZGlyZWN0bHksIGFuZCBkcm9wcwo+IGluaXRfdGFibGUg
+bWVjaGFuaXNtIG91dC4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvPG1hcmsueWFvQHJvY2st
+Y2hpcHMuY29tPgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXI8aGVpa29Ac250ZWNoLmRlPgoK
+UmV2aWV3ZWQtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+CgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
