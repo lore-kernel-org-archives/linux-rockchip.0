@@ -1,41 +1,49 @@
-From: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] watchdog: dw_wdt: fix overflow issue in dw_wdt_top_in_seconds
-Date: Thu, 27 Jul 2017 20:50:43 +0800
-Message-ID: <1501159843-6623-1-git-send-email-huibin.hong@rock-chips.com>
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org
-Cc: linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 00/11] Add the internal phy support
+Date: Thu, 27 Jul 2017 20:55:45 +0800
+Message-ID: <1501160156-30328-1-git-send-email-david.wu@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org
+Cc: peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-If top is 15, (1 << (16 + top)) may be negative.
+The rk3228 and rk3328 support internal phy inside, let's enable
+it to work. And the internal phy need to do some special setting, so
+register the rockchip internal phy driver.
 
-Change-Id: I76e4a603a54f093e64a4b266008570e3afcdb35a
-Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/watchdog/dw_wdt.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+David Wu (11):
+  net: phy: Add rockchip phy driver support
+  multi_v7_defconfig: Make rockchip phy built-in
+  arm64: defconfig: Enable CONFIG_ROCKCHIP_PHY
+  net: stmmac: dwmac-rk: Remove unwanted code for rk3328_set_to_rmii()
+  net: stmmac: dwmac-rk: Add internal phy support
+  net: stmmac: dwmac-rk: Add internal phy support for rk3228
+  net: stmmac: dwmac-rk: Add internal phy supprot for rk3328
+  ARM: dts: rk322x: Add support internal phy for gmac
+  ARM: dts: rk3228-evb: Enable the internal phy for gmac
+  ARM64: dts: rockchip: Add gmac2phy node support for rk3328
+  ARM64: dts: rockchip: Enable gmac2phy for rk3328-evb
 
-diff --git a/drivers/watchdog/dw_wdt.c b/drivers/watchdog/dw_wdt.c
-index 6ea0634..059c974 100644
---- a/drivers/watchdog/dw_wdt.c
-+++ b/drivers/watchdog/dw_wdt.c
-@@ -81,7 +81,9 @@ static inline int dw_wdt_top_in_seconds(unsigned top)
- 	 * There are 16 possible timeout values in 0..15 where the number of
- 	 * cycles is 2 ^ (16 + i) and the watchdog counts down.
- 	 */
--	return (1 << (16 + top)) / clk_get_rate(dw_wdt.clk);
-+	unsigned int cycles = 1 << (16 + top);
-+
-+	return cycles / clk_get_rate(dw_wdt.clk);
- }
- 
- static int dw_wdt_get_top(void)
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |   4 +-
+ arch/arm/boot/dts/rk3228-evb.dts                   |  19 +++
+ arch/arm/boot/dts/rk322x.dtsi                      |   8 +-
+ arch/arm/configs/multi_v7_defconfig                |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |  17 +++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  24 ++++
+ arch/arm64/configs/defconfig                       |   1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 135 +++++++++++++++++++--
+ drivers/net/phy/Kconfig                            |   5 +
+ drivers/net/phy/Makefile                           |   1 +
+ drivers/net/phy/rockchip.c                         | 128 +++++++++++++++++++
+ 11 files changed, 328 insertions(+), 15 deletions(-)
+ create mode 100644 drivers/net/phy/rockchip.c
+
 -- 
 1.9.1
 
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
