@@ -1,79 +1,183 @@
-From: Corentin Labbe <clabbe.montjoie-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 05/11] net: stmmac: dwmac-rk: Add internal phy support
-Date: Thu, 27 Jul 2017 19:31:52 +0200
-Message-ID: <20170727173152.GA16362@Red>
-References: <1501160156-30328-1-git-send-email-david.wu@rock-chips.com>
- <1501160540-30662-1-git-send-email-david.wu@rock-chips.com>
- <20170727134834.GD18666@lunn.ch>
- <65ae1747-4dff-b1d8-8aa3-684fc8c7809a@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v7 02/12] mfd: rk808: add rk805 regs addr and ID
+Date: Thu, 27 Jul 2017 23:07:25 +0200
+Message-ID: <4167643.JGZsyoLtym@phil>
+References: <1500635681-12477-1-git-send-email-chenjh@rock-chips.com> <1500635681-12477-3-git-send-email-chenjh@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <65ae1747-4dff-b1d8-8aa3-684fc8c7809a-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, peppe.cavallaro-qxv4g6HH51o@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1500635681-12477-3-git-send-email-chenjh@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Joseph Chen <chenjh@rock-chips.com>, gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, broonie@kernel.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, wdc@rock-chips.com, tony.xie@rock-chips.com, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jul 27, 2017 at 09:54:01AM -0700, Florian Fainelli wrote:
-> On 07/27/2017 06:48 AM, Andrew Lunn wrote:
-> > On Thu, Jul 27, 2017 at 09:02:16PM +0800, David Wu wrote:
-> >> To make internal phy work, need to configure the phy_clock,
-> >> phy cru_reset and related registers.
-> >>
-> >> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >> ---
-> >> changes in v2:
-> >>  - Use the standard "phy-mode" property for internal phy. (Florian)
-> > 
-> > I think we need to discuss this. This PHY appears to be on an MDIO
-> > bus, it uses a standard PHY driver, and it appears to be using an RMII
-> > interface. So it is just an ordinary PHY.
+Hi Joseph,
+
+Am Freitag, 21. Juli 2017, 19:14:31 CEST schrieb Joseph Chen:
+> From: Elaine Zhang <zhangqing@rock-chips.com>
 > 
-> First, the fact that the internal PHY also appears through MDIO is
-> orthogonal to the fact that it is internal or external. Plenty of
-> designs have internal PHYs exposed through MDIO because that is
-> convenient. What matters though is how the data/clock lines are wired
-> internally, which is what "phy-mode" describes.
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+When you send out patches from someone else you should still add your own
+Signed-off-by line. So the patches that are originally from Elaine, should have
+her Signed-off first and yours below.
+
+Same for other patches in this series not authored by you.
+
+Heiko
+
+> ---
+>  include/linux/mfd/rk808.h | 120 ++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 120 insertions(+)
 > 
-> > 
-> > Internal is supposed to be something which is not ordinary, does not
-> > use one of the standard phy modes, needs something special to make it
-> > work.
-> > 
-> > Florain, it appears to be your suggestion to use internal. What do you
-> > say?
-> 
-> phy-mode = "internal" really means that it is not a standard MII variant
-> to connect the data/clock lines between the Ethernet MAC and the PHY,
-> and this can happen in some designs (although quite unlikely). So from
-> there we could do several things depending on the requirements:
-> 
-> - if you can have your Ethernet MAC driver perform the necessary
-> configuration *after* you have been able to bind the PHY device with its
-> PHY driver, then the PHY driver should have PHY_IS_INTERNAL in its
-> flags, and you can use phy_is_internal() from PHYLIB to tell you that
-> and we could imagine using: phy-mode = "rmii" because that would not too
-> much of a stretch
-> 
-> - if you need knowledge about this PHY connection type prior to binding
-> the PHY device and its driver (that is, before of_phy_connect()) we
-> could add a boolean property e.g: "phy-is-internal" that allows us to
-> know that, or we can have a new phy-mode value, e.g: "internal-rmii"
-> which describes that, either way would probably be fine, but the former
-> scales better
+> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+> index 54feb14..d315659 100644
+> --- a/include/linux/mfd/rk808.h
+> +++ b/include/linux/mfd/rk808.h
+> @@ -206,6 +206,97 @@ enum rk818_reg {
+>  #define RK818_USB_ILMIN_2000MA		0x7
+>  #define RK818_USB_CHG_SD_VSEL_MASK	0x70
+>  
+> +/* RK805 */
+> +enum rk805_reg {
+> +	RK805_ID_DCDC1,
+> +	RK805_ID_DCDC2,
+> +	RK805_ID_DCDC3,
+> +	RK805_ID_DCDC4,
+> +	RK805_ID_LDO1,
+> +	RK805_ID_LDO2,
+> +	RK805_ID_LDO3,
+> +};
+> +
+> +/* CONFIG REGISTER */
+> +#define RK805_VB_MON_REG		0x21
+> +#define RK805_THERMAL_REG		0x22
+> +
+> +/* POWER CHANNELS ENABLE REGISTER */
+> +#define RK805_DCDC_EN_REG		0x23
+> +#define RK805_SLP_DCDC_EN_REG		0x25
+> +#define RK805_SLP_LDO_EN_REG		0x26
+> +#define RK805_LDO_EN_REG		0x27
+> +
+> +/* BUCK AND LDO CONFIG REGISTER */
+> +#define RK805_BUCK_LDO_SLP_LP_EN_REG	0x2A
+> +#define RK805_BUCK1_CONFIG_REG		0x2E
+> +#define RK805_BUCK1_ON_VSEL_REG		0x2F
+> +#define RK805_BUCK1_SLP_VSEL_REG	0x30
+> +#define RK805_BUCK2_CONFIG_REG		0x32
+> +#define RK805_BUCK2_ON_VSEL_REG		0x33
+> +#define RK805_BUCK2_SLP_VSEL_REG	0x34
+> +#define RK805_BUCK3_CONFIG_REG		0x36
+> +#define RK805_BUCK4_CONFIG_REG		0x37
+> +#define RK805_BUCK4_ON_VSEL_REG		0x38
+> +#define RK805_BUCK4_SLP_VSEL_REG	0x39
+> +#define RK805_LDO1_ON_VSEL_REG		0x3B
+> +#define RK805_LDO1_SLP_VSEL_REG		0x3C
+> +#define RK805_LDO2_ON_VSEL_REG		0x3D
+> +#define RK805_LDO2_SLP_VSEL_REG		0x3E
+> +#define RK805_LDO3_ON_VSEL_REG		0x3F
+> +#define RK805_LDO3_SLP_VSEL_REG		0x40
+> +
+> +/* INTERRUPT REGISTER */
+> +#define RK805_PWRON_LP_INT_TIME_REG	0x47
+> +#define RK805_PWRON_DB_REG		0x48
+> +#define RK805_DEV_CTRL_REG		0x4B
+> +#define RK805_INT_STS_REG		0x4C
+> +#define RK805_INT_STS_MSK_REG		0x4D
+> +#define RK805_GPIO_IO_POL_REG		0x50
+> +#define RK805_OUT_REG			0x52
+> +#define RK805_ON_SOURCE_REG		0xAE
+> +#define RK805_OFF_SOURCE_REG		0xAF
+> +
+> +#define RK805_NUM_REGULATORS		7
+> +
+> +#define RK805_PWRON_FALL_RISE_INT_EN	0x0
+> +#define RK805_PWRON_FALL_RISE_INT_MSK	0x81
+> +
+> +/* RK805 IRQ Definitions */
+> +#define RK805_IRQ_PWRON_RISE		0
+> +#define RK805_IRQ_VB_LOW		1
+> +#define RK805_IRQ_PWRON			2
+> +#define RK805_IRQ_PWRON_LP		3
+> +#define RK805_IRQ_HOTDIE		4
+> +#define RK805_IRQ_RTC_ALARM		5
+> +#define RK805_IRQ_RTC_PERIOD		6
+> +#define RK805_IRQ_PWRON_FALL		7
+> +
+> +#define RK805_IRQ_PWRON_RISE_MSK	BIT(0)
+> +#define RK805_IRQ_VB_LOW_MSK		BIT(1)
+> +#define RK805_IRQ_PWRON_MSK		BIT(2)
+> +#define RK805_IRQ_PWRON_LP_MSK		BIT(3)
+> +#define RK805_IRQ_HOTDIE_MSK		BIT(4)
+> +#define RK805_IRQ_RTC_ALARM_MSK		BIT(5)
+> +#define RK805_IRQ_RTC_PERIOD_MSK	BIT(6)
+> +#define RK805_IRQ_PWRON_FALL_MSK	BIT(7)
+> +
+> +#define RK805_PWR_RISE_INT_STATUS	BIT(0)
+> +#define RK805_VB_LOW_INT_STATUS		BIT(1)
+> +#define RK805_PWRON_INT_STATUS		BIT(2)
+> +#define RK805_PWRON_LP_INT_STATUS	BIT(3)
+> +#define RK805_HOTDIE_INT_STATUS		BIT(4)
+> +#define RK805_ALARM_INT_STATUS		BIT(5)
+> +#define RK805_PERIOD_INT_STATUS		BIT(6)
+> +#define RK805_PWR_FALL_INT_STATUS	BIT(7)
+> +
+> +#define RK805_BUCK1_2_ILMAX_MASK	(3 << 6)
+> +#define RK805_BUCK3_4_ILMAX_MASK        (3 << 3)
+> +#define RK805_RTC_PERIOD_INT_MASK	(1 << 6)
+> +#define RK805_RTC_ALARM_INT_MASK	(1 << 5)
+> +#define RK805_INT_ALARM_EN		(1 << 3)
+> +#define RK805_INT_TIMER_EN		(1 << 2)
+> +
+>  /* RK808 IRQ Definitions */
+>  #define RK808_IRQ_VOUT_LO	0
+>  #define RK808_IRQ_VB_LO		1
+> @@ -298,7 +389,14 @@ enum rk818_reg {
+>  #define VOUT_LO_INT	BIT(0)
+>  #define CLK32KOUT2_EN	BIT(0)
+>  
+> +#define TEMP115C			0x0c
+> +#define TEMP_HOTDIE_MSK			0x0c
+> +#define SLP_SD_MSK			(0x3 << 2)
+> +#define SHUTDOWN_FUN			(0x2 << 2)
+> +#define SLEEP_FUN			(0x1 << 2)
+>  #define RK8XX_ID_MSK			0xfff0
+> +#define FPWM_MODE			BIT(7)
+> +
+>  enum {
+>  	BUCK_ILMIN_50MA,
+>  	BUCK_ILMIN_100MA,
+> @@ -322,6 +420,28 @@ enum {
+>  };
+>  
+>  enum {
+> +	RK805_BUCK1_2_ILMAX_2500MA,
+> +	RK805_BUCK1_2_ILMAX_3000MA,
+> +	RK805_BUCK1_2_ILMAX_3500MA,
+> +	RK805_BUCK1_2_ILMAX_4000MA,
+> +};
+> +
+> +enum {
+> +	RK805_BUCK3_ILMAX_1500MA,
+> +	RK805_BUCK3_ILMAX_2000MA,
+> +	RK805_BUCK3_ILMAX_2500MA,
+> +	RK805_BUCK3_ILMAX_3000MA,
+> +};
+> +
+> +enum {
+> +	RK805_BUCK4_ILMAX_2000MA,
+> +	RK805_BUCK4_ILMAX_2500MA,
+> +	RK805_BUCK4_ILMAX_3000MA,
+> +	RK805_BUCK4_ILMAX_3500MA,
+> +};
+> +
+> +enum {
+> +	RK805_ID = 0x8050,
+>  	RK808_ID = 0x0000,
+>  	RK818_ID = 0x8181,
+>  };
 > 
 
-Hello
 
-We have the same problem on Allwinner SoCs for dwmac-sun8i, we need to set a syscon for chossing between internal/external PHY.
-Having this phy-is-internal would be very helpfull. (adding internal-xmii will add too many flags in our case)
-
-Thanks
-Regards
-Corentin Labbe
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
