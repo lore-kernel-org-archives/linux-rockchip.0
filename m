@@ -1,116 +1,161 @@
 From: Mark yao <mark.yao@rock-chips.com>
 Subject: Re: [PATCH v6 4/7] drm/rockchip: vop: group vop registers
-Date: Fri, 28 Jul 2017 09:02:48 +0800
-Message-ID: <597A8D38.3040905@rock-chips.com>
+Date: Fri, 28 Jul 2017 10:45:33 +0800
+Message-ID: <597AA54D.60706@rock-chips.com>
 References: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
  <1501049966-6070-1-git-send-email-mark.yao@rock-chips.com>
  <44153824.CqyclESHdT@diego> <10499935.q3BgzX4LKL@diego>
+ <597A8D38.3040905@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <10499935.q3BgzX4LKL@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <597A8D38.3040905@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28KClRoYW5rcyBmb3IgdGhlIHRlc3QuCgpPbiAyMDE35bm0MDfmnIgyN+aXpSAxODox
-MCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gRG9ubmVyc3RhZywgMjcuIEp1bGkgMjAxNywg
-MTE6NTE6MDYgQ0VTVCBzY2hyaWViIEhlaWtvIFN0w7xibmVyOgo+PiBIaSBNYXJrLAo+Pgo+PiBB
-bSBNaXR0d29jaCwgMjYuIEp1bGkgMjAxNywgMTQ6MTk6MjUgQ0VTVCBzY2hyaWViIE1hcmsgWWFv
-Ogo+Pj4gR3JvdXBpbmcgdGhlIHZvcCByZWdpc3RlcnMgZmFjaWxpdGF0ZXMgbWFrZSByZWdpc3Rl
-cgo+Pj4gZGVmaW5pdGlvbiBjbGVhcmVyLCBhbmQgYWxzbyBpcyB1c2VmdWwgZm9yIGRpZmZlcmVu
-dCB2b3AKPj4+IHJldXNlIHRoZSBzYW1lIGdyb3VwIHJlZ2lzdGVyLgo+Pj4KPj4+IFNpZ25lZC1v
-ZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4KPj4+
-ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICA5OQo+Pj4g
-ICArKysrKysrKysrKystLS0tLS0tLS0tLS0KPj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuaCB8ICA2MCArKysrKysrKy0tLS0tLS0KPj4+ICAgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8IDExMgo+Pj4KPj4+ICsrKysrKysr
-KysrKysrKy0tLS0tLS0tLS0tLS0gMyBmaWxlcyBjaGFuZ2VkLCAxNDQgaW5zZXJ0aW9ucygrKSwg
-MTI3Cj4+PiBkZWxldGlvbnMoLSkKPj4gVGhpcyBicmVha3MgZGlzcGxheSBzdXBwb3J0IG9uIGJv
-dGggcmszMDM2IGFuZCByazMyODggYW5kIEkgZW5kIHVwCj4+IHdpdGggYSBudWxsIHBvaW50ZXIg
-ZGVyZWZlcmVuY2UgaW4KPj4KPj4gWyAgIDEwLjY0MDI5N10gVW5hYmxlIHRvIGhhbmRsZSBrZXJu
-ZWwgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZpcnR1YWwKPj4gYWRkcmVzcyAwMDAwMDAw
-MCBbICAgMTAuNjU0NDMwXSBwZ2QgPSBjMDIwNDAwMAo+PiBbICAgMTAuNjU3NDUyXSBbMDAwMDAw
-MDBdICpwZ2Q9MDAwMDAwMDAKPj4gWyAgIDEwLjY2MTQ3M10gSW50ZXJuYWwgZXJyb3I6IE9vcHM6
-IDUgWyMxXSBTTVAgQVJNCj4+IFsgICAxMC42NjY2MzVdIE1vZHVsZXMgbGlua2VkIGluOiBzbmRf
-cGNtIG1lZGlhIHNuZF90aW1lciBwaHlfcm9ja2NoaXBfZHAKPj4gc25kIHNvdW5kY29yZSByb2Nr
-Y2hpcGRybSBkd19oZG1pIGFuYWxvZ2l4X2RwIHJ0Y19yazgwOCBwd21fcm9ja2NoaXAKPj4gY2xr
-X3JrODA4IHNwaV9yb2NrY2hpcCBbICAgMTAuNjgyODk3XSBDUFU6IDIgUElEOiAxNDMgQ29tbTog
-a3dvcmtlci8yOjIgTm90Cj4+IHRhaW50ZWQgNC4xMy4wLXJjMi0wMTc5MS1nMmI4NjYwM2QwNTE1
-ICMzNTUgWyAgIDEwLjY5MjQzMF0gSGFyZHdhcmUgbmFtZToKPj4gUm9ja2NoaXAgKERldmljZSBU
-cmVlKQo+PiBbICAgMTAuNjk3NjkyXSBXb3JrcXVldWU6IGV2ZW50cyBkZWZlcnJlZF9wcm9iZV93
-b3JrX2Z1bmMKPj4gWyAgIDEwLjcwMjE1Ml0gTGludXggdmlkZW8gY2FwdHVyZSBpbnRlcmZhY2U6
-IHYyLjAwCj4+IFsgICAxMC43MDg1OTBdIHRhc2s6IGVlMzhjODAwIHRhc2suc3RhY2s6IGVkMmU2
-MDAwCj4+IFsgICAxMC43MTM2NTZdIFBDIGlzIGF0IHZvcF9yZWdfc2V0LmNvbnN0cHJvcC40KzB4
-NC8weGE4IFtyb2NrY2hpcGRybV0KPj4gWyAgIDEwLjcyMDY2OF0gTFIgaXMgYXQgdm9wX2JpbmQr
-MHg1NjgvMHg4YTAgW3JvY2tjaGlwZHJtXQo+IFRoZSBvYnZpb3VzIHJlYXNvbiBmb3IgdGhhdCBp
-cwo+Cj4+IEBAIC0xNjQsMTQgKzE1MywyMCBAQCBzdGF0aWMgaW5saW5lIHVpbnQzMl90IHZvcF9y
-ZWFkX3JlZyhzdHJ1Y3Qgdm9wICp2b3AsCj4+IHVpbnQzMl90IGJhc2UsIHJldHVybiAodm9wX3Jl
-YWRsKHZvcCwgYmFzZSArIHJlZy0+b2Zmc2V0KSA+PiByZWctPnNoaWZ0KSAmCj4+IHJlZy0+bWFz
-azsgfQo+Pgo+PiAtc3RhdGljIGlubGluZSB2b2lkIHZvcF9tYXNrX3dyaXRlKHN0cnVjdCB2b3Ag
-KnZvcCwgdWludDMyX3Qgb2Zmc2V0LAo+PiAtCQkJCSAgdWludDMyX3QgbWFzaywgdWludDMyX3Qg
-c2hpZnQsIHVpbnQzMl90IHYsCj4+IC0JCQkJICBib29sIHdyaXRlX21hc2ssIGJvb2wgcmVsYXhl
-ZCkKPj4gK3N0YXRpYyB2b2lkIHZvcF9yZWdfc2V0KHN0cnVjdCB2b3AgKnZvcCwgY29uc3Qgc3Ry
-dWN0IHZvcF9yZWcgKnJlZywKPj4gKwkJCXVpbnQzMl90IF9vZmZzZXQsIHVpbnQzMl90IF9tYXNr
-LCB1aW50MzJfdCB2LAo+PiArCQkJY29uc3QgY2hhciAqcmVnX25hbWUpCj4+ICAgewo+PiAtCWlm
-ICghbWFzaykKPj4gKwlpbnQgb2Zmc2V0ID0gcmVnLT5vZmZzZXQgKyBfb2Zmc2V0Owo+PiArCWlu
-dCBtYXNrID0gcmVnLT5tYXNrICYgX21hc2s7Cj4+ICsJaW50IHNoaWZ0ID0gcmVnLT5zaGlmdDsK
-CkRvZXMgdGhlIGNyYXNoIGlzIHRoYXQgdXNpbmcgcmVnLT5vZmZzZXQvbWFzay9zaGlmdCBiZWZv
-cmUgIXJlZyBjaGVja2luZz8KCj4+ICsKPj4gKwlpZiAoIXJlZyB8fCAhcmVnLT5tYXNrKSB7Cj4+
-ICsJCWRldl9kYmcodm9wLT5kZXYsICJXYXJuaW5nOiBub3Qgc3VwcG9ydCAlc1xuIiwgcmVnX25h
-bWUpOwo+PiAgIAkJcmV0dXJuOwo+PiArCX0KPiB3aGVyZSB0aGUgY2hlY2sgZm9yICFyZWcgaGFw
-cGVucyBhZnRlciBpdCBnb3QgYWxyZWFkeSBkZXJlZmVyZW5jZWQuCj4gQnV0IGV2ZW4gd2l0aCB0
-aGF0IGZpeGVkIEkgZW5kIHVwIHdpdGgKPgo+IG9uIHJrMzI4ODoKPiBbICAgIDcuMjU0ODIzXSBy
-b2NrY2hpcC12b3AgZmY5MzAwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBnbG9iYWxfcmVn
-ZG9uZV9lbgo+IFsgICAgNy4yNjI4NDddIHJvY2tjaGlwLXZvcCBmZjkzMDAwMC52b3A6IFdhcm5p
-bmc6IG5vdCBzdXBwb3J0IGdhdGUKPiBbICAgIDcuMjY5NTgwXSByb2NrY2hpcC12b3AgZmY5MzAw
-MDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBnYXRlCj4gWyAgICA3LjMwMjc2NV0gcm9ja2No
-aXAtdm9wIGZmOTQwMDAwLnZvcDogV2FybmluZzogbm90IHN1cHBvcnQgZ2xvYmFsX3JlZ2RvbmVf
-ZW4KPiBbICAgIDcuMzEwNzU4XSByb2NrY2hpcC12b3AgZmY5NDAwMDAudm9wOiBXYXJuaW5nOiBu
-b3Qgc3VwcG9ydCBnYXRlCj4gWyAgICA3LjMxNzQ3NV0gcm9ja2NoaXAtdm9wIGZmOTQwMDAwLnZv
-cDogV2FybmluZzogbm90IHN1cHBvcnQgZ2F0ZQo+IFsgICAgNy40MjU3MjRdIHJvY2tjaGlwLXZv
-cCBmZjkzMDAwMC52b3A6IFdhcm5pbmc6IG5vdCBzdXBwb3J0IGVkcF9waW5fcG9sCj4gWyAgICA3
-LjUyNjI5OF0gcm9ja2NoaXAtdm9wIGZmOTQwMDAwLnZvcDogV2FybmluZzogbm90IHN1cHBvcnQg
-aGRtaV9waW5fcG9sCgpSazMyODggZG9lcyBub3Qgc3VwcG9ydCBpbmRlcGVuZGVudCBwaW5fcG9s
-IHNldHRpbmdzLCBhbGwgb3V0cHV0IGludGVyZmFjZXMgc2hhcmUgdGhlIHBpbl9wb2wgcmVnaXN0
-ZXIsClNvIG5vdCBzdXBwb3J0IGhkbWlfcGluX3BvbCBoZXJlIGlzIGNvcnJlY3QuCgpoZG1pIHBp
-biBwb2wgd291bGQgYmUgc2V0IGJ5IGZvbGxvd2luZyByZWdpc3RlcjoKICAgICAucGluX3BvbCA9
-IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMCwgMHhmLCA0KSwKCj4KPiBvbiByazMwMzY6Cj4gWyAg
-IDEyLjM4OTEzOF0gcm9ja2NoaXAtdm9wIDEwMTE4MDAwLnZvcDogV2FybmluZzogbm90IHN1cHBv
-cnQgZ2xvYmFsX3JlZ2RvbmVfZW4KPiBbICAgMTIuMzk3MzI0XSByb2NrY2hpcC12b3AgMTAxMTgw
-MDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBnYXRlCj4gWyAgIDEyLjQwNDE2NV0gcm9ja2No
-aXAtdm9wIDEwMTE4MDAwLnZvcDogV2FybmluZzogbm90IHN1cHBvcnQgZ2F0ZQo+IFsgICAxMy43
-NDczNjFdIHJvY2tjaGlwLXZvcCAxMDExODAwMC52b3A6IFdhcm5pbmc6IG5vdCBzdXBwb3J0IGhk
-bWlfcGluX3BvbAo+IFsgICAxMy43NDczNzFdIHJvY2tjaGlwLXZvcCAxMDExODAwMC52b3A6IFdh
-cm5pbmc6IG5vdCBzdXBwb3J0IGhkbWlfZW4KPiBbICAgMTMuNzQ3Mzc5XSByb2NrY2hpcC12b3Ag
-MTAxMTgwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCBocG9zdF9zdF9lbmQKPiBbICAgMTMu
-NzQ3Mzg1XSByb2NrY2hpcC12b3AgMTAxMTgwMDAudm9wOiBXYXJuaW5nOiBub3Qgc3VwcG9ydCB2
-cG9zdF9zdF9lbmQKPiBbICAgMTMuNzQ3NDYxXSByb2NrY2hpcC12b3AgMTAxMTgwMDAudm9wOiBX
-YXJuaW5nOiBub3Qgc3VwcG9ydCBzcmNfYWxwaGFfY3RsCj4gWyAgIDEzLjc2NzA5OF0gcm9ja2No
-aXAtdm9wIDEwMTE4MDAwLnZvcDogV2FybmluZzogbm90IHN1cHBvcnQgc3JjX2FscGhhX2N0bAo+
-IFsgICAxMy43ODYwNjBdIHJvY2tjaGlwLXZvcCAxMDExODAwMC52b3A6IFdhcm5pbmc6IG5vdCBz
-dXBwb3J0IHNyY19hbHBoYV9jdGwKPgo+IFdoaWxlIHJlcWRvbmUgYW5kIGZyaWVuZHMgYXJlIG9i
-dmlvdXNseSBmZWF0dXJlcyBvZiBuZXdlciB2b3BzLCBhdCBsZWFzdAo+IHRoZSBoZG1pIHBpbi1w
-b2wgaXMgYXZhaWxhYmxlIG9uIGJvdGggdGhlc2Ugc29jcy4KPgo+IFdpdGggdGhpcyBwYXRjaCBh
-cHBsaWVkIChhbmQgbnVsbC1wdHIgZml4ZWQpIEkgZW5kIHVwIHdpdGhvdXQgaGRtaSBvdXRwdXQK
-PiBvbiBib3RoIHNvY3MuCgpIbW1tLCBJIGFtIGNvbmZ1c2VkLCBmcm9tIGNvZGUgcmV2aWV3LCBJ
-IGRpZG4ndCBzZWUgd2hhdCB3aWxsIGNhdXNlIGhkbWkgbm90IHdvcmsgb24gcmszMDM2IGFuZCBy
-azMyODgsCgpHaXZlIG1lIHNvbWUgdGltZSwgSSB0cnkgdG8gYnJpbmd1cCBteSBwb3BtZXRhbCBy
-azMyODggYm9hcmQgdG8gZG8gdGhlIHRlc3QuCgpIZWlrbywgVGhhbmtzIHZlcnkgbXVjaCBmb3Ig
-eW91ciB0ZXN0LgoKPgo+Cj4gSGVpa28KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPgo+Cj4KCgotLSAK77ytYXJrIFlhbwoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Heiko
+
+On 2017年07月28日 09:02, Mark yao wrote:
+> Hi Heiko
+>
+> Thanks for the test.
+>
+> On 2017年07月27日 18:10, Heiko Stübner wrote:
+>> Am Donnerstag, 27. Juli 2017, 11:51:06 CEST schrieb Heiko Stübner:
+>>> Hi Mark,
+>>>
+>>> Am Mittwoch, 26. Juli 2017, 14:19:25 CEST schrieb Mark Yao:
+>>>> Grouping the vop registers facilitates make register
+>>>> definition clearer, and also is useful for different vop
+>>>> reuse the same group register.
+>>>>
+>>>> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+>>>> ---
+>>>>
+>>>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  99
+>>>>   ++++++++++++------------
+>>>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  60 ++++++++-------
+>>>>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 112
+>>>>
+>>>> +++++++++++++++------------- 3 files changed, 144 insertions(+), 127
+>>>> deletions(-)
+>>> This breaks display support on both rk3036 and rk3288 and I end up
+>>> with a null pointer dereference in
+>>>
+>>> [   10.640297] Unable to handle kernel NULL pointer dereference at virtual
+>>> address 00000000 [   10.654430] pgd = c0204000
+>>> [   10.657452] [00000000] *pgd=00000000
+>>> [   10.661473] Internal error: Oops: 5 [#1] SMP ARM
+>>> [   10.666635] Modules linked in: snd_pcm media snd_timer phy_rockchip_dp
+>>> snd soundcore rockchipdrm dw_hdmi analogix_dp rtc_rk808 pwm_rockchip
+>>> clk_rk808 spi_rockchip [   10.682897] CPU: 2 PID: 143 Comm: kworker/2:2 Not
+>>> tainted 4.13.0-rc2-01791-g2b86603d0515 #355 [   10.692430] Hardware name:
+>>> Rockchip (Device Tree)
+>>> [   10.697692] Workqueue: events deferred_probe_work_func
+>>> [   10.702152] Linux video capture interface: v2.00
+>>> [   10.708590] task: ee38c800 task.stack: ed2e6000
+>>> [   10.713656] PC is at vop_reg_set.constprop.4+0x4/0xa8 [rockchipdrm]
+>>> [   10.720668] LR is at vop_bind+0x568/0x8a0 [rockchipdrm]
+>> The obvious reason for that is
+>>
+>>> @@ -164,14 +153,20 @@ static inline uint32_t vop_read_reg(struct vop *vop,
+>>> uint32_t base, return (vop_readl(vop, base + reg->offset) >> reg->shift) &
+>>> reg->mask; }
+>>>
+>>> -static inline void vop_mask_write(struct vop *vop, uint32_t offset,
+>>> -                  uint32_t mask, uint32_t shift, uint32_t v,
+>>> -                  bool write_mask, bool relaxed)
+>>> +static void vop_reg_set(struct vop *vop, const struct vop_reg *reg,
+>>> +            uint32_t _offset, uint32_t _mask, uint32_t v,
+>>> +            const char *reg_name)
+>>>   {
+>>> -    if (!mask)
+>>> +    int offset = reg->offset + _offset;
+>>> +    int mask = reg->mask & _mask;
+>>> +    int shift = reg->shift;
+>
+> Does the crash is that using reg->offset/mask/shift before !reg checking?
+
+I reproduce this cause, from objdump, it crash on "int mask = reg->mask & _mask; "
+Seems difference gcc has difference behavior, my aarch64 gcc maybe optimize it,
+only access when the value be used. I think that is the reason why rk3399 works on my test.
+
+I will fix it at next version.
+
+>
+>>> +
+>>> +    if (!reg || !reg->mask) {
+>>> +        dev_dbg(vop->dev, "Warning: not support %s\n", reg_name);
+>>>           return;
+>>> +    }
+>> where the check for !reg happens after it got already dereferenced.
+>> But even with that fixed I end up with
+>>
+>> on rk3288:
+>> [    7.254823] rockchip-vop ff930000.vop: Warning: not support global_regdone_en
+>> [    7.262847] rockchip-vop ff930000.vop: Warning: not support gate
+>> [    7.269580] rockchip-vop ff930000.vop: Warning: not support gate
+>> [    7.302765] rockchip-vop ff940000.vop: Warning: not support global_regdone_en
+>> [    7.310758] rockchip-vop ff940000.vop: Warning: not support gate
+>> [    7.317475] rockchip-vop ff940000.vop: Warning: not support gate
+>> [    7.425724] rockchip-vop ff930000.vop: Warning: not support edp_pin_pol
+>> [    7.526298] rockchip-vop ff940000.vop: Warning: not support hdmi_pin_pol
+>
+> Rk3288 does not support independent pin_pol settings, all output interfaces share the pin_pol register,
+> So not support hdmi_pin_pol here is correct.
+>
+> hdmi pin pol would be set by following register:
+>     .pin_pol = VOP_REG(RK3288_DSP_CTRL0, 0xf, 4),
+>
+>>
+>> on rk3036:
+>> [   12.389138] rockchip-vop 10118000.vop: Warning: not support global_regdone_en
+>> [   12.397324] rockchip-vop 10118000.vop: Warning: not support gate
+>> [   12.404165] rockchip-vop 10118000.vop: Warning: not support gate
+>> [   13.747361] rockchip-vop 10118000.vop: Warning: not support hdmi_pin_pol
+>> [   13.747371] rockchip-vop 10118000.vop: Warning: not support hdmi_en
+>> [   13.747379] rockchip-vop 10118000.vop: Warning: not support hpost_st_end
+>> [   13.747385] rockchip-vop 10118000.vop: Warning: not support vpost_st_end
+>> [   13.747461] rockchip-vop 10118000.vop: Warning: not support src_alpha_ctl
+>> [   13.767098] rockchip-vop 10118000.vop: Warning: not support src_alpha_ctl
+>> [   13.786060] rockchip-vop 10118000.vop: Warning: not support src_alpha_ctl
+>>
+>> While reqdone and friends are obviously features of newer vops, at least
+>> the hdmi pin-pol is available on both these socs.
+>>
+>> With this patch applied (and null-ptr fixed) I end up without hdmi output
+>> on both socs.
+>
+> Hmmm, I am confused, from code review, I didn't see what will cause hdmi not work on rk3036 and rk3288,
+>
+> Give me some time, I try to bringup my popmetal rk3288 board to do the test.
+>
+> Heiko, Thanks very much for your test.
+
+Hi Heiko
+
+After fix null pointer problem, On rk3288 popmetal board, hdmi works good on my test, Can you double check it?
+
+Thanks.
+
+>
+>>
+>>
+>> Heiko
+>>
+>> _______________________________________________
+>> Linux-rockchip mailing list
+>> Linux-rockchip@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>
+>>
+>>
+>
+>
+
+
+-- 
+Ｍark Yao
