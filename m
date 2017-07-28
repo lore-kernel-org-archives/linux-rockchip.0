@@ -1,38 +1,34 @@
-From: "David.Wu" <david.wu@rock-chips.com>
-Subject: Re: [PATCH v2 01/11] net: phy: Add rockchip phy driver support
-Date: Fri, 28 Jul 2017 16:19:52 +0800
-Message-ID: <c92ffbe9-dfb0-0fd7-680d-699c31902534@rock-chips.com>
-References: <1501160156-30328-1-git-send-email-david.wu@rock-chips.com>
- <1501160156-30328-2-git-send-email-david.wu@rock-chips.com>
- <807c43ee-8421-c0b3-8aea-6091bef07a4c@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v6.1 4/7] drm/rockchip: vop: group vop registers
+Date: Fri, 28 Jul 2017 11:21:04 +0200
+Message-ID: <2703369.ItVkh0VymE@phil>
+References: <1501049966-6070-1-git-send-email-mark.yao@rock-chips.com>
+ <1501221986-29722-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <807c43ee-8421-c0b3-8aea-6091bef07a4c@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>, davem@davemloft.net, heiko@sntech.de, andrew@lunn.ch, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de
-Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1501221986-29722-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Florian,
-
-在 2017/7/28 0:51, Florian Fainelli 写道:
->> +}
->> +
->> +static int rockchip_internal_phy_config_init(struct phy_device *phydev)
->> +{
->> +	int val;
->> +
->> +	/*
->> +	 * The auto MIDX has linked problem on some board,
->> +	 * workround to disable auto MDIX.
->> +	 */
-> If this a board-specific problem you may consider register a PHY fixup
-> for the affected boards, or introduce a specific property to illustrate
-> that MDI-X is broken.
-
-You mean is that if I need disable Auto-mdix, then I'm going to add a 
-property to DTS, from here to decide whether or not to close Auto-mdix?
-
-> 
+QW0gRnJlaXRhZywgMjguIEp1bGkgMjAxNywgMTQ6MDY6MjUgQ0VTVCBzY2hyaWViIE1hcmsgWWFv
+Ogo+IEdyb3VwaW5nIHRoZSB2b3AgcmVnaXN0ZXJzIGZhY2lsaXRhdGVzIG1ha2UgcmVnaXN0ZXIK
+PiBkZWZpbml0aW9uIGNsZWFyZXIsIGFuZCBhbHNvIGlzIHVzZWZ1bCBmb3IgZGlmZmVyZW50IHZv
+cAo+IHJldXNlIHRoZSBzYW1lIGdyb3VwIHJlZ2lzdGVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1h
+cmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiBSZXZpZXdlZC1ieTogSmVmZnkgQ2hl
+biA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KCm9uIHJrMzAzNiBhbmQgcmszMjg4ClRlc3Rl
+ZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
