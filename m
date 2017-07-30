@@ -1,59 +1,59 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 2/2] arm64: dts: rockchip: add rk3328 spdif node
-Date: Sat, 29 Jul 2017 23:12:00 +0200
-Message-ID: <2919371.Go0PDiTJp1@phil>
-References: <1501143365-76104-1-git-send-email-sugar.zhang@rock-chips.com> <1501143365-76104-3-git-send-email-sugar.zhang@rock-chips.com>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: [PATCH] phy: rockchip-inno-usb2: fix of_irq_get_byname() error checks
+Date: Sun, 30 Jul 2017 20:46:23 +0300
+Message-ID: <20170730174630.481994041@cogentembedded.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=ISO-8859-15
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501143365-76104-3-git-send-email-sugar.zhang@rock-chips.com>
+Content-Disposition: inline; filename=phy-rockchip-inno-usb2-fix-of_irq_get_byname-error-checks.patch
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: broonie@kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Liang Chen <cl@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 27. Juli 2017, 16:16:04 CEST schrieb Sugar Zhang:
-> This patch add the spdif dt node for rk3328.
-> 
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> 
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> index f1a284b..d278670 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> @@ -189,6 +189,19 @@
->  		status = "disabled";
->  	};
->  
+of_irq_get_byname() may  return 0 as well as negative error number on
+failure,  while the driver only checks for the negative values. The driver
+would then call devm_request_threaded_irq() for IRQ0 and thus never get
+the valid interrupts.
 
-I've adapted the patch so that it can exist without the previous one
-and applied it for 4.14.
+Check for IRQ <= 0 instead and return -ENXIO iff  it's 0 from
+rockchip_usb2phy_{host|otg}_port_init(), and thus fail the driver's probe.
 
+Fixes: 0e08d2a727e6 ("phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy")
+Fixes: 98898f3bc83c ("phy: rockchip-inno-usb2: support otg-port for rk3399")
+Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 
-Thanks
-Heiko
+---
+The patch is against the 'fixes' branch of Kishon's 'linux-phy.git' repo.
 
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-> +	spdif: spdif@ff030000 {
-> +		compatible = "rockchip,rk3328-spdif";
-> +		reg = <0x0 0xff030000 0x0 0x1000>;
-> +		interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_SPDIF>, <&cru HCLK_SPDIF_8CH>;
-> +		clock-names = "mclk", "hclk";
-> +		dmas = <&dmac 10>;
-> +		dma-names = "tx";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&spdifm2_tx>;
-> +		status = "disabled";
-> +	};
-> +
->  	grf: syscon@ff100000 {
->  		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
->  		reg = <0x0 0xff100000 0x0 0x1000>;
-> 
+Index: linux-phy/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+===================================================================
+--- linux-phy.orig/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ linux-phy/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -925,9 +925,9 @@ static int rockchip_usb2phy_host_port_in
+ 	INIT_DELAYED_WORK(&rport->sm_work, rockchip_usb2phy_sm_work);
+ 
+ 	rport->ls_irq = of_irq_get_byname(child_np, "linestate");
+-	if (rport->ls_irq < 0) {
++	if (rport->ls_irq <= 0) {
+ 		dev_err(rphy->dev, "no linestate irq provided\n");
+-		return rport->ls_irq;
++		return rport->ls_irq ?: -ENXIO;
+ 	}
+ 
+ 	ret = devm_request_threaded_irq(rphy->dev, rport->ls_irq, NULL,
+@@ -988,9 +988,9 @@ static int rockchip_usb2phy_otg_port_ini
+ 		of_property_read_bool(child_np, "rockchip,utmi-avalid");
+ 
+ 	rport->bvalid_irq = of_irq_get_byname(child_np, "otg-bvalid");
+-	if (rport->bvalid_irq < 0) {
++	if (rport->bvalid_irq <= 0) {
+ 		dev_err(rphy->dev, "no vbus valid irq provided\n");
+-		ret = rport->bvalid_irq;
++		ret = rport->bvalid_irq ?: -ENXIO;
+ 		goto out;
+ 	}
+ 
