@@ -1,76 +1,53 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 2/6] drm/rockchip: vop: fix iommu page fault when resume
-Date: Mon, 31 Jul 2017 17:49:42 +0800
-Message-ID: <1501494582-6934-1-git-send-email-mark.yao@rock-chips.com>
+Subject: [PATCH 4/6] drm/rockchip: vop: round_up pitches to word align
+Date: Mon, 31 Jul 2017 17:49:50 +0800
+Message-ID: <1501494591-7034-1-git-send-email-mark.yao@rock-chips.com>
 References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW9tbXUgd291bGQgZ2V0IHBhZ2UgZmF1bHQgd2l0aCBmb2xsb3dpbmcgcGF0aDoKICAgdm9wX2Rp
-c2FibGU6CiAgICAgIDEsIGRpc2FibGUgYWxsIHdpbmRvd3MgYW5kIHNldCB2b3AgY29uZmlnIGRv
-bmUKICAgICAgMiwgdm9wIGVudGVyIHRvIHN0YW5keSwgYWxsIHdpbmRvd3Mgbm90IHdvcmtzLCBi
-dXQgdGhlaXIgcmVnaXN0ZXJzCiAgICAgICAgIGFyZSBub3QgY2xlYW4sIHdoZW4geW91IHJlYWQg
-d2luZG93J3MgZW5hYmxlIGJpdCwgbWF5IGZvdW5kIHRoZQogICAgICAgICB3aW5kb3cgaXMgZW5h
-YmxlLgoKICAgdm9wX2VuYWJsZToKICAgICAgMSwgbWVtY3B5KHZvcC0+cmVnc2Jhaywgdm9wLT5y
-ZWdzLCBsZW4pCiAgICAgICAgIHNhdmUgY3VycmVudCB2b3AgcmVnaXN0ZXJzIHRvIHZvcC0+cmVn
-c2JhaywgdGhlbiB5b3UgY2FuIGZvdW5kCiAgICAgICAgIHdpbmRvdyBpcyBlbmFibGUgb24gcmVn
-c2Jhay4KICAgICAgMiwgVk9QX1dJTl9TRVQodm9wLCB3aW4sIGdhdGUsIDEpOwogICAgICAgICBm
-b3JjZSBlbmFibGUgd2luZG93IGdhdGUsIGJ1dCBnYXRlIGFuZCBlbmFibGUgYXJlIG9uIHNhbWUK
-ICAgICAgICAgaGFyZHdhcmUgcmVnaXN0ZXIsIHRoZW4gd2luZG93IGVuYWJsZSBiaXQgcmV3cml0
-ZSB0byB2b3AgaGFyZHdhcmUuCiAgICAgIDMsIHZvcCBwb3dlciBvbiwgYW5kIHZvcCBtaWdodCB0
-cnkgdG8gc2NhbiBkZXN0cm95ZWQgYnVmZmVyLAogICAgICAgICB0aGVuIGlvbW11IGdldCBwYWdl
-IGZhdWx0LgoKTW92ZSB3aW5kb3dzIGRpc2FibGUgYWZ0ZXIgdm9wIHJlZ3NiYWsgcmVzdG9yZSwg
-dGhlbiB2b3AgcmVnc2JhayBtZWNoYW5pc20Kd291bGQga2VlcCB0cmFjaW5nIHRoZSBtb2RpZnks
-IGV2ZXJ5dGhpbmcgd291bGQgYmUgc2FmZS4KClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJr
-Lnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jIHwgMzMgKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0KIDEgZmlsZSBj
-aGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxOCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCAwYmZkNTYzLi4wYjVmZDc1IDEw
-MDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTQ5NSw3
-ICs0OTUsNyBAQCBzdGF0aWMgdm9pZCB2b3BfbGluZV9mbGFnX2lycV9kaXNhYmxlKHN0cnVjdCB2
-b3AgKnZvcCkKIHN0YXRpYyBpbnQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiB7
-CiAJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMpOwotCWludCByZXQ7CisJaW50IHJldCwg
-aTsKIAogCXJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmModm9wLT5kZXYpOwogCWlmIChyZXQgPCAw
-KSB7CkBAIC01MjgsNiArNTI4LDIwIEBAIHN0YXRpYyBpbnQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJt
-X2NydGMgKmNydGMpCiAJfQogCiAJbWVtY3B5KHZvcC0+cmVncywgdm9wLT5yZWdzYmFrLCB2b3At
-Pmxlbik7CisJLyoKKwkgKiBXZSBuZWVkIHRvIG1ha2Ugc3VyZSB0aGF0IGFsbCB3aW5kb3dzIGFy
-ZSBkaXNhYmxlZCBiZWZvcmUgd2UKKwkgKiBlbmFibGUgdGhlIGNydGMuIE90aGVyd2lzZSB3ZSBt
-aWdodCB0cnkgdG8gc2NhbiBmcm9tIGEgZGVzdHJveWVkCisJICogYnVmZmVyIGxhdGVyLgorCSAq
-LworCWZvciAoaSA9IDA7IGkgPCB2b3AtPmRhdGEtPndpbl9zaXplOyBpKyspIHsKKwkJc3RydWN0
-IHZvcF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07CisJCWNvbnN0IHN0cnVjdCB2b3Bfd2lu
-X2RhdGEgKndpbiA9IHZvcF93aW4tPmRhdGE7CisKKwkJc3Bpbl9sb2NrKCZ2b3AtPnJlZ19sb2Nr
-KTsKKwkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGVuYWJsZSwgMCk7CisJCXNwaW5fdW5sb2NrKCZ2
-b3AtPnJlZ19sb2NrKTsKKwl9CisKIAl2b3BfY2ZnX2RvbmUodm9wKTsKIAogCS8qCkBAIC01NjEs
-MjggKzU3NSwxMSBAQCBzdGF0aWMgaW50IHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRj
-KQogc3RhdGljIHZvaWQgdm9wX2NydGNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiB7
-CiAJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMpOwotCWludCBpOwogCiAJV0FSTl9PTih2
-b3AtPmV2ZW50KTsKIAogCXJvY2tjaGlwX2RybV9wc3JfZGVhY3RpdmF0ZSgmdm9wLT5jcnRjKTsK
-IAotCS8qCi0JICogV2UgbmVlZCB0byBtYWtlIHN1cmUgdGhhdCBhbGwgd2luZG93cyBhcmUgZGlz
-YWJsZWQgYmVmb3JlIHdlCi0JICogZGlzYWJsZSB0aGF0IGNydGMuIE90aGVyd2lzZSB3ZSBtaWdo
-dCB0cnkgdG8gc2NhbiBmcm9tIGEgZGVzdHJveWVkCi0JICogYnVmZmVyIGxhdGVyLgotCSAqLwot
-CWZvciAoaSA9IDA7IGkgPCB2b3AtPmRhdGEtPndpbl9zaXplOyBpKyspIHsKLQkJc3RydWN0IHZv
-cF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07Ci0JCWNvbnN0IHN0cnVjdCB2b3Bfd2luX2Rh
-dGEgKndpbiA9IHZvcF93aW4tPmRhdGE7Ci0KLQkJc3Bpbl9sb2NrKCZ2b3AtPnJlZ19sb2NrKTsK
-LQkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGVuYWJsZSwgMCk7Ci0JCXNwaW5fdW5sb2NrKCZ2b3At
-PnJlZ19sb2NrKTsKLQl9Ci0KLQl2b3BfY2ZnX2RvbmUodm9wKTsKLQogCWRybV9jcnRjX3ZibGFu
-a19vZmYoY3J0Yyk7CiAKIAkvKgotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+VOP pitch register is word align, need align to word.
+
+VOP_WIN0_VIR:
+  bit[31:16] win0_vir_stride_uv
+    Number of words of Win0 uv Virtual width
+  bit[15:0] win0_vir_width
+    Number of words of Win0 yrgb Virtual width
+    ARGB888 : win0_vir_width
+    RGB888 : (win0_vir_width*3/4) + (win0_vir_width%3)
+    RGB565 : ceil(win0_vir_width/2)
+    YUV : ceil(win0_vir_width/4)
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 0b5fd75..fa0d9f7 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -756,7 +756,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	spin_lock(&vop->reg_lock);
+ 
+ 	VOP_WIN_SET(vop, win, format, format);
+-	VOP_WIN_SET(vop, win, yrgb_vir, fb->pitches[0] >> 2);
++	VOP_WIN_SET(vop, win, yrgb_vir, DIV_ROUND_UP(fb->pitches[0], 4));
+ 	VOP_WIN_SET(vop, win, yrgb_mst, dma_addr);
+ 	if (is_yuv_support(fb->format->format)) {
+ 		int hsub = drm_format_horz_chroma_subsampling(fb->format->format);
+@@ -770,7 +770,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
+ 
+ 		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
+-		VOP_WIN_SET(vop, win, uv_vir, fb->pitches[1] >> 2);
++		VOP_WIN_SET(vop, win, uv_vir, DIV_ROUND_UP(fb->pitches[1], 4));
+ 		VOP_WIN_SET(vop, win, uv_mst, dma_addr);
+ 	}
+ 
+-- 
+1.9.1
