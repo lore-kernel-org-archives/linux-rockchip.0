@@ -1,48 +1,72 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH] ASoC: rockchip: add bindings for i2s
-Date: Mon, 31 Jul 2017 09:47:51 +0800
-Message-ID: <1501465671-22863-1-git-send-email-sugar.zhang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: heiko@sntech.de, broonie@kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH v3 0/5] Add Rockchip RGA V4l2 support
+Date: Mon, 31 Jul 2017 11:07:35 +0800
+Message-ID: <1501470460-12014-1-git-send-email-jacob-chen@iotwrt.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add bindings for rk3036/rk3228/rk3328/rk3366 i2s.
+This patch series add a v4l2 m2m drvier for rockchip RGA direct rendering based 2d graphics acceleration module.
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
+Before, my colleague yakir have write a drm RGA drvier and send it to the lists.
+http://lists.infradead.org/pipermail/linux-arm-kernel/2016-March/416769.html
+I have been asked to find a userspace user("compositor") for it, but after some studys, my conclusion is that unlike exynos g2d,
+rockchip rga are not suitable for compositor. Rockchip RGA have a limited MMU, which means it can only hold several buffers in the same time.
+When it was used in compositor, it will waste a lot of time to import/export/flush buffer, resulting in a bad performance.
 
- Documentation/devicetree/bindings/sound/rockchip-i2s.txt | 4 ++++
- 1 file changed, 4 insertions(+)
+A few months ago, i saw a discussion in dri-devel-PD4FTy7X32lNgt0PjOBp9xlNPtJONSTn@public.gmane.org
+It remind that we could write a v4l2 m2m RGA driver, since we usually use RGA for streaming purpose.
+https://patches.linaro.org/cover/97727/
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
-index 206aba1..b208a75 100644
---- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
-+++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
-@@ -7,8 +7,12 @@ Required properties:
- 
- - compatible: should be one of the following:
-    - "rockchip,rk3066-i2s": for rk3066
-+   - "rockchip,rk3036-i2s", "rockchip,rk3066-i2s": for rk3036
-    - "rockchip,rk3188-i2s", "rockchip,rk3066-i2s": for rk3188
-+   - "rockchip,rk3228-i2s", "rockchip,rk3066-i2s": for rk3228
-    - "rockchip,rk3288-i2s", "rockchip,rk3066-i2s": for rk3288
-+   - "rockchip,rk3328-i2s", "rockchip,rk3066-i2s": for rk3328
-+   - "rockchip,rk3366-i2s", "rockchip,rk3066-i2s": for rk3366
-    - "rockchip,rk3368-i2s", "rockchip,rk3066-i2s": for rk3368
-    - "rockchip,rk3399-i2s", "rockchip,rk3066-i2s": for rk3399
- - reg: physical base address of the controller and length of memory mapped
+I have test this driver with gstreamer v4l2transform plugin and it seems work well.
+
+change in V3:
+- rename the controls.
+- add pm_runtime support.
+- enable node by default.
+- correct spelling in documents.
+
+change in V2:
+- generalize the controls.
+- map buffers (10-50 us) in every cmd-run rather than in buffer-import to avoid get_free_pages failed on
+actively used systems.
+- remove status in dt-bindings examples.
+
+Jacob Chen (5):
+  [media] v4l: add blend modes controls
+  [media]: rockchip/rga: v4l2 m2m support
+  ARM: dts: rockchip: add RGA device node for RK3288
+  ARM: dts: rockchip: add RGA device node for RK3399
+  dt-bindings: Document the Rockchip RGA bindings
+
+ .../devicetree/bindings/media/rockchip-rga.txt     |  33 +
+ arch/arm/boot/dts/rk3288.dtsi                      |  11 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  11 +
+ drivers/media/platform/Kconfig                     |  11 +
+ drivers/media/platform/Makefile                    |   2 +
+ drivers/media/platform/rockchip-rga/Makefile       |   3 +
+ drivers/media/platform/rockchip-rga/rga-buf.c      | 141 +++
+ drivers/media/platform/rockchip-rga/rga-hw.c       | 650 ++++++++++++++
+ drivers/media/platform/rockchip-rga/rga-hw.h       | 437 +++++++++
+ drivers/media/platform/rockchip-rga/rga.c          | 987 +++++++++++++++++++++
+ drivers/media/platform/rockchip-rga/rga.h          | 110 +++
+ drivers/media/v4l2-core/v4l2-ctrls.c               |  20 +-
+ include/uapi/linux/v4l2-controls.h                 |  16 +-
+ 13 files changed, 2430 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
+ create mode 100644 drivers/media/platform/rockchip-rga/Makefile
+ create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
+ create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
+ create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
+ create mode 100644 drivers/media/platform/rockchip-rga/rga.c
+ create mode 100644 drivers/media/platform/rockchip-rga/rga.h
+
 -- 
 2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
