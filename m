@@ -1,41 +1,59 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v3 2/2] dt-bindings: add documentation for rk3126 clock
-Date: Mon, 31 Jul 2017 18:42:08 +0800
-Message-ID: <1501497728-7805-3-git-send-email-zhangqing@rock-chips.com>
-References: <1501497728-7805-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501497728-7805-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 2/2] dt-bindings: add documentation for rk3126 clock
+Date: Mon, 31 Jul 2017 13:24:27 +0200
+Message-ID: <1528313.SDTh7a5k6t@diego>
+References: <1501497728-7805-1-git-send-email-zhangqing@rock-chips.com> <1501497728-7805-3-git-send-email-zhangqing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1501497728-7805-3-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This add bindings documentation for rk3126 SoCs.
+Hi Elaine,
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Am Montag, 31. Juli 2017, 18:42:08 CEST schrieb Elaine Zhang:
+> This add bindings documentation for rk3126 SoCs.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
-index 455a9a00a623..25098fa8595f 100644
---- a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
-@@ -1,12 +1,12 @@
--* Rockchip RK3128 Clock and Reset Unit
-+* Rockchip RK3128/RK3126 Clock and Reset Unit
- 
--The RK3128 clock controller generates and supplies clock to various
-+The RK3128/RK3126 clock controller generates and supplies clock to various
- controllers within the SoC and also implements a reset controller for SoC
- peripherals.
- 
- Required Properties:
- 
--- compatible: should be "rockchip,rk3128-cru"
-+- compatible: should be "rockchip,rk3128-cru", "rockchip,rk3126-cru"
- - reg: physical base address of the controller and length of memory mapped
-   region.
- - #clock-cells: should be 1.
--- 
-1.9.1
+thanks for noticing that the binding doc was missing, I meant to
+write a response about that but didn't find the time yet.
+
+> ---
+>  Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt index
+> 455a9a00a623..25098fa8595f 100644
+> --- a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+> @@ -1,12 +1,12 @@
+> -* Rockchip RK3128 Clock and Reset Unit
+> +* Rockchip RK3128/RK3126 Clock and Reset Unit
+> 
+> -The RK3128 clock controller generates and supplies clock to various
+> +The RK3128/RK3126 clock controller generates and supplies clock to various
+>  controllers within the SoC and also implements a reset controller for SoC
+>  peripherals.
+> 
+>  Required Properties:
+> 
+> -- compatible: should be "rockchip,rk3128-cru"
+> +- compatible: should be "rockchip,rk3128-cru", "rockchip,rk3126-cru"
+
+- compatible: should be one of "rockchip,rk3128-cru" or "rockchip,rk3126-cru".
+
+
+Heiko
+
+
+>  - reg: physical base address of the controller and length of memory mapped
+>    region.
+>  - #clock-cells: should be 1.
+
+
