@@ -1,66 +1,81 @@
-From: Emil Velikov <emil.l.velikov@gmail.com>
+From: Daniel Vetter <daniel@ffwll.ch>
 Subject: Re: [PATCH 6/6] drm/rockchip: fix race with kms hotplug and fbdev
-Date: Mon, 31 Jul 2017 12:57:25 +0100
-Message-ID: <CACvgo511Cb0_vT1vR+q-3d3zU2PmHmi-r-aH8uZHQXDj8V4byg@mail.gmail.com>
-References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com> <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
+Date: Mon, 31 Jul 2017 14:28:16 +0200
+Message-ID: <CAKMK7uFXGPRQOxAXi+0_TO4HUN8p1RweGOGGsvnQrAcHbtuXWg@mail.gmail.com>
+References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
+ <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
+ <CACvgo511Cb0_vT1vR+q-3d3zU2PmHmi-r-aH8uZHQXDj8V4byg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CACvgo511Cb0_vT1vR+q-3d3zU2PmHmi-r-aH8uZHQXDj8V4byg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Emil Velikov <emil.l.velikov@gmail.com>
+Cc: LAKML <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 31 July 2017 at 10:50, Mark Yao <mark.yao@rock-chips.com> wrote:
-> Since fb_helper is not a pointer on rockchip_drm_private, it's no
-> need to check pointer.
->
-> Kms hotplug event may race into fbdev helper initial, and fb_helper->dev
-> may be NULL pointer, that would cause the bug:
->
-> [    0.735411] [00000200] *pgd=00000000f6ffe003, *pud=00000000f6ffe003, *pmd=0000000000000000
-> [    0.736156] Internal error: Oops: 96000005 [#1] PREEMPT SMP
-> [    0.736648] Modules linked in:
-> [    0.736930] CPU: 2 PID: 20 Comm: kworker/2:0 Not tainted 4.4.41 #20
-> [    0.737480] Hardware name: Rockchip RK3399 Board rev2 (BOX) (DT)
-> [    0.738020] Workqueue: events cdn_dp_pd_event_work
-> [    0.738447] task: ffffffc0f21f3100 ti: ffffffc0f2218000 task.ti: ffffffc0f2218000
-> [    0.739109] PC is at mutex_lock+0x14/0x44
-> [    0.739469] LR is at drm_fb_helper_hotplug_event+0x30/0x114
-> [    0.756253] [<ffffff8008a344f4>] mutex_lock+0x14/0x44
-> [    0.756260] [<ffffff8008445708>] drm_fb_helper_hotplug_event+0x30/0x114
-> [    0.756271] [<ffffff8008473c84>] rockchip_drm_output_poll_changed+0x18/0x20
-> [    0.756280] [<ffffff8008439fcc>] drm_kms_helper_hotplug_event+0x28/0x34
-> [    0.756286] [<ffffff800846c444>] cdn_dp_pd_event_work+0x394/0x3c4
-> [    0.756295] [<ffffff80080b2b38>] process_one_work+0x218/0x3e0
-> [    0.756302] [<ffffff80080b3538>] worker_thread+0x2e8/0x404
-> [    0.756308] [<ffffff80080b7e70>] kthread+0xe8/0xf0
-> [    0.756316] [<ffffff8008082690>] ret_from_fork+0x10/0x40
->
-> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> index 81f9548..e6bd0f4 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> @@ -170,7 +170,7 @@ static void rockchip_drm_output_poll_changed(struct drm_device *dev)
->         struct rockchip_drm_private *private = dev->dev_private;
->         struct drm_fb_helper *fb_helper = &private->fbdev_helper;
->
-> -       if (fb_helper)
-> +       if (fb_helper->dev)
->                 drm_fb_helper_hotplug_event(fb_helper);
-Food for thought:
-
-Quick grep shows that no other drivers have such a ->dev check. Does
-this mean that either the issue is rockchip specific?
-If not, one could look into resolving the problem directly in drm core.
-
-Or at least update the other users, so they don't stumble upon the problem?
-
-HTH
-Emil
+T24gTW9uLCBKdWwgMzEsIDIwMTcgYXQgMTo1NyBQTSwgRW1pbCBWZWxpa292IDxlbWlsLmwudmVs
+aWtvdkBnbWFpbC5jb20+IHdyb3RlOgo+IE9uIDMxIEp1bHkgMjAxNyBhdCAxMDo1MCwgTWFyayBZ
+YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4gU2luY2UgZmJfaGVscGVyIGlz
+IG5vdCBhIHBvaW50ZXIgb24gcm9ja2NoaXBfZHJtX3ByaXZhdGUsIGl0J3Mgbm8KPj4gbmVlZCB0
+byBjaGVjayBwb2ludGVyLgo+Pgo+PiBLbXMgaG90cGx1ZyBldmVudCBtYXkgcmFjZSBpbnRvIGZi
+ZGV2IGhlbHBlciBpbml0aWFsLCBhbmQgZmJfaGVscGVyLT5kZXYKPj4gbWF5IGJlIE5VTEwgcG9p
+bnRlciwgdGhhdCB3b3VsZCBjYXVzZSB0aGUgYnVnOgo+Pgo+PiBbICAgIDAuNzM1NDExXSBbMDAw
+MDAyMDBdICpwZ2Q9MDAwMDAwMDBmNmZmZTAwMywgKnB1ZD0wMDAwMDAwMGY2ZmZlMDAzLCAqcG1k
+PTAwMDAwMDAwMDAwMDAwMDAKPj4gWyAgICAwLjczNjE1Nl0gSW50ZXJuYWwgZXJyb3I6IE9vcHM6
+IDk2MDAwMDA1IFsjMV0gUFJFRU1QVCBTTVAKPj4gWyAgICAwLjczNjY0OF0gTW9kdWxlcyBsaW5r
+ZWQgaW46Cj4+IFsgICAgMC43MzY5MzBdIENQVTogMiBQSUQ6IDIwIENvbW06IGt3b3JrZXIvMjow
+IE5vdCB0YWludGVkIDQuNC40MSAjMjAKPj4gWyAgICAwLjczNzQ4MF0gSGFyZHdhcmUgbmFtZTog
+Um9ja2NoaXAgUkszMzk5IEJvYXJkIHJldjIgKEJPWCkgKERUKQo+PiBbICAgIDAuNzM4MDIwXSBX
+b3JrcXVldWU6IGV2ZW50cyBjZG5fZHBfcGRfZXZlbnRfd29yawo+PiBbICAgIDAuNzM4NDQ3XSB0
+YXNrOiBmZmZmZmZjMGYyMWYzMTAwIHRpOiBmZmZmZmZjMGYyMjE4MDAwIHRhc2sudGk6IGZmZmZm
+ZmMwZjIyMTgwMDAKPj4gWyAgICAwLjczOTEwOV0gUEMgaXMgYXQgbXV0ZXhfbG9jaysweDE0LzB4
+NDQKPj4gWyAgICAwLjczOTQ2OV0gTFIgaXMgYXQgZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50
+KzB4MzAvMHgxMTQKPj4gWyAgICAwLjc1NjI1M10gWzxmZmZmZmY4MDA4YTM0NGY0Pl0gbXV0ZXhf
+bG9jaysweDE0LzB4NDQKPj4gWyAgICAwLjc1NjI2MF0gWzxmZmZmZmY4MDA4NDQ1NzA4Pl0gZHJt
+X2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50KzB4MzAvMHgxMTQKPj4gWyAgICAwLjc1NjI3MV0gWzxm
+ZmZmZmY4MDA4NDczYzg0Pl0gcm9ja2NoaXBfZHJtX291dHB1dF9wb2xsX2NoYW5nZWQrMHgxOC8w
+eDIwCj4+IFsgICAgMC43NTYyODBdIFs8ZmZmZmZmODAwODQzOWZjYz5dIGRybV9rbXNfaGVscGVy
+X2hvdHBsdWdfZXZlbnQrMHgyOC8weDM0Cj4+IFsgICAgMC43NTYyODZdIFs8ZmZmZmZmODAwODQ2
+YzQ0ND5dIGNkbl9kcF9wZF9ldmVudF93b3JrKzB4Mzk0LzB4M2M0Cj4+IFsgICAgMC43NTYyOTVd
+IFs8ZmZmZmZmODAwODBiMmIzOD5dIHByb2Nlc3Nfb25lX3dvcmsrMHgyMTgvMHgzZTAKPj4gWyAg
+ICAwLjc1NjMwMl0gWzxmZmZmZmY4MDA4MGIzNTM4Pl0gd29ya2VyX3RocmVhZCsweDJlOC8weDQw
+NAo+PiBbICAgIDAuNzU2MzA4XSBbPGZmZmZmZjgwMDgwYjdlNzA+XSBrdGhyZWFkKzB4ZTgvMHhm
+MAo+PiBbICAgIDAuNzU2MzE2XSBbPGZmZmZmZjgwMDgwODI2OTA+XSByZXRfZnJvbV9mb3JrKzB4
+MTAvMHg0MAo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
+cy5jb20+Cj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9m
+Yi5jIHwgMiArLQo+PiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9u
+KC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4g
+aW5kZXggODFmOTU0OC4uZTZiZDBmNCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZmIuYwo+PiBAQCAtMTcwLDcgKzE3MCw3IEBAIHN0YXRpYyB2b2lkIHJv
+Y2tjaGlwX2RybV9vdXRwdXRfcG9sbF9jaGFuZ2VkKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpCj4+
+ICAgICAgICAgc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZGV2LT5kZXZf
+cHJpdmF0ZTsKPj4gICAgICAgICBzdHJ1Y3QgZHJtX2ZiX2hlbHBlciAqZmJfaGVscGVyID0gJnBy
+aXZhdGUtPmZiZGV2X2hlbHBlcjsKPj4KPj4gLSAgICAgICBpZiAoZmJfaGVscGVyKQo+PiArICAg
+ICAgIGlmIChmYl9oZWxwZXItPmRldikKPj4gICAgICAgICAgICAgICAgIGRybV9mYl9oZWxwZXJf
+aG90cGx1Z19ldmVudChmYl9oZWxwZXIpOwo+IEZvb2QgZm9yIHRob3VnaHQ6Cj4KPiBRdWljayBn
+cmVwIHNob3dzIHRoYXQgbm8gb3RoZXIgZHJpdmVycyBoYXZlIHN1Y2ggYSAtPmRldiBjaGVjay4g
+RG9lcwo+IHRoaXMgbWVhbiB0aGF0IGVpdGhlciB0aGUgaXNzdWUgaXMgcm9ja2NoaXAgc3BlY2lm
+aWM/Cj4gSWYgbm90LCBvbmUgY291bGQgbG9vayBpbnRvIHJlc29sdmluZyB0aGUgcHJvYmxlbSBk
+aXJlY3RseSBpbiBkcm0gY29yZS4KPgo+IE9yIGF0IGxlYXN0IHVwZGF0ZSB0aGUgb3RoZXIgdXNl
+cnMsIHNvIHRoZXkgZG9uJ3Qgc3R1bWJsZSB1cG9uIHRoZSBwcm9ibGVtPwoKVGhlIGZiZGV2IGhl
+bHBlcnMgc3VwcG9ydCBhbHJlYWR5IGhhbmRsaW5nIGhvdHBsdWcgZXZlbnRzIGJlZm9yZSB5b3UK
+aGF2ZSBmaW5hbGl6ZWQgdGhlIGZiZGV2IHNldHVwLiBQbGVhc2UgcmVhZCB0aGUga2VybmVsZG9j
+IGZvciB0aGUKdmFyaW91cyBmYmRldiBmdW5jdGlvbnMsIHRoZXkgZXhwbGFpbiB3aGF0IHlvdSBz
+aG91bGQgYmUgZG9pbmcuIFRoaXMKaGFjayBoZXJlIHNob3VsZCBpbmRlZWQgbm90IGJlIG5lZWRl
+ZC4KLURhbmllbAotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29y
+cG9yYXRpb24KKzQxICgwKSA3OSAzNjUgNTcgNDggLSBodHRwOi8vYmxvZy5mZndsbC5jaApfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
