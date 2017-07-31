@@ -1,50 +1,57 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH] ASoC: improve RT5514 dependencies
-Date: Mon, 31 Jul 2017 11:45:27 +0200
-Message-ID: <CAK8P3a22DxYuecnD_2n4cNfjFmW=bxAUbAYqkwYM+imBOeXf7w@mail.gmail.com>
-References: <20170731083217.4142512-1-arnd@arndb.de> <s5hh8xt0xwy.wl-tiwai@suse.de>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH 1/6] drm/rockchip: vop: no need wait vblank on crtc enable
+Date: Mon, 31 Jul 2017 17:49:37 +0800
+Message-ID: <1501494577-6884-1-git-send-email-mark.yao@rock-chips.com>
+References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <s5hh8xt0xwy.wl-tiwai@suse.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Takashi Iwai <tiwai@suse.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Matthias Brugger <matthias.bgg@gmail.com>, Hsin-yu Chao <hychao@google.com>, Harsha Priya N <harshapriya.n@intel.com>, Naveen M <naveen.m@intel.com>, Vinod Koul <vinod.koul@intel.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, Charles Keepax <ckeepax@opensource.wolfsonmicro.com>, Jaroslav Kysela <perex@perex.cz>, Sugar Zhang <sugar.zhang@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 31, 2017 at 11:15 AM, Takashi Iwai <tiwai@suse.de> wrote:
-> On Mon, 31 Jul 2017 10:30:55 +0200,
-> Arnd Bergmann wrote:
->>
->> With SND_SOC_RT5514_SPI=m and SND_SOC_RT5514=y, we get this link error:
->>
->> sound/soc/codecs/rt5514.o: In function `rt5514_dsp_voice_wake_up_put':
->> rt5514.c:(.text+0x2068): undefined reference to `rt5514_spi_burst_write'
->> rt5514.c:(.text+0x20c8): undefined reference to `rt5514_spi_burst_write'
->>
->> This adds another Kconfig symbol to work around the link error, forcing
->> the main driver to be a loadable module as well if some other driver
->> selects the I2C side to be built-in.
->>
->> Fixes: 2a18483a7fb4 ("ASoC: Intel: Add Kabylake machine driver for RT5514, RT5663 and MAX98927")
->> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
->> ---
->> This can now lead to a configuration with
->> SND_SOC_INTEL_KBL_RT5663_RT5514_MAX98927_MACH=y and SND_SOC_RT5514=m. I
->> don't know if that is a problem or not.
->>
->> An alternative approach would be to flip the dependency between
->> rt5514_spi.ko and rt5514.ko and avoid having the rt5514_spi_burst_write
->> symbol exported.
->
-> The current usage of
->   #if defined(CONFIG_SND_SOC_RT5514_SPI)
-> in rt5514_dsp_voice_wake_up_put() is already broken.  We need the fix
-> in anyway.
->
-> IMO, flipping the dependency looks saner to me.  The SPI function call
-> is a kind of add-on, after all.
-
-Ok. I'll leave that up to the maintainers of the codec driver then.
-
-        Arnd
+U2luY2UgYXRvbWljIGZyYW1ld29yaywgY3J0YyBlbmFibGUgYW5kIGRpc2FibGUgYXJlIGluIHBh
+aXJzLApubyBuZWVkIHRvIHdhaXQgdmJsYW5rLgoKU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1h
+cmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgfCAzNiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxl
+IGNoYW5nZWQsIDM2IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5jCmluZGV4IDFkNDIwNDkuLjBiZmQ1NjMgMTAwNjQ0Ci0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtODkzLDQyICs4OTMsNiBAQCBzdGF0
+aWMgdm9pZCB2b3BfY3J0Y19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQogCQlyZXR1cm47
+CiAJfQogCi0JLyoKLQkgKiBJZiBkY2xrIHJhdGUgaXMgemVybywgbWVhbiB0aGF0IHNjYW5vdXQg
+aXMgc3RvcCwKLQkgKiB3ZSBkb24ndCBuZWVkIHdhaXQgYW55IG1vcmUuCi0JICovCi0JaWYgKGNs
+a19nZXRfcmF0ZSh2b3AtPmRjbGspKSB7Ci0JCS8qCi0JCSAqIFJrMzI4OCB2b3AgdGltaW5nIHJl
+Z2lzdGVyIGlzIGltbWVkaWF0ZWx5LCB3aGVuIGNvbmZpZ3VyZQotCQkgKiBkaXNwbGF5IHRpbWlu
+ZyBvbiBkaXNwbGF5IHRpbWUsIG1heSBjYXVzZSB0ZWFyaW5nLgotCQkgKgotCQkgKiBWb3Agc3Rh
+bmRieSB3aWxsIHRha2UgZWZmZWN0IGF0IGVuZCBvZiBjdXJyZW50IGZyYW1lLAotCQkgKiBpZiBk
+c3AgaG9sZCB2YWxpZCBpcnEgaGFwcGVuLCBpdCBtZWFucyBzdGFuZGJ5IGNvbXBsZXRlLgotCQkg
+KgotCQkgKiBtb2RlIHNldDoKLQkJICogICAgc3RhbmRieSBhbmQgd2FpdCBjb21wbGV0ZSAtLT4g
+fC0tLS0KLQkJICogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBkaXNwbGF5IHRp
+bWUKLQkJICogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfC0tLS0KLQkJICogICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfC0tLT4gZHNwIGhvbGQgaXJxCi0JCSAqICAg
+ICBjb25maWd1cmUgZGlzcGxheSB0aW1pbmcgLS0+IHwKLQkJICogICAgICAgICBzdGFuZGJ5IGV4
+aXQgICAgICAgICAgICAgfAotCQkgKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
+IG5ldyBmcmFtZSBzdGFydC4KLQkJICovCi0KLQkJcmVpbml0X2NvbXBsZXRpb24oJnZvcC0+ZHNw
+X2hvbGRfY29tcGxldGlvbik7Ci0JCXZvcF9kc3BfaG9sZF92YWxpZF9pcnFfZW5hYmxlKHZvcCk7
+Ci0KLQkJc3Bpbl9sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKLQotCQlWT1BfUkVHX1NFVCh2b3AsIGNv
+bW1vbiwgc3RhbmRieSwgMSk7Ci0KLQkJc3Bpbl91bmxvY2soJnZvcC0+cmVnX2xvY2spOwotCi0J
+CXdhaXRfZm9yX2NvbXBsZXRpb24oJnZvcC0+ZHNwX2hvbGRfY29tcGxldGlvbik7Ci0KLQkJdm9w
+X2RzcF9ob2xkX3ZhbGlkX2lycV9kaXNhYmxlKHZvcCk7Ci0JfQotCiAJcGluX3BvbCA9IEJJVChE
+Q0xLX0lOVkVSVCk7CiAJcGluX3BvbCB8PSAoYWRqdXN0ZWRfbW9kZS0+ZmxhZ3MgJiBEUk1fTU9E
+RV9GTEFHX1BIU1lOQykgPwogCQkgICBCSVQoSFNZTkNfUE9TSVRJVkUpIDogMDsKLS0gCjEuOS4x
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
