@@ -1,11 +1,11 @@
-From: Jacob Chen <jacob-chen@iotwrt.com>
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 Subject: [PATCH v3 2/5] [RESEND] [media]: rockchip/rga: v4l2 m2m support
-Date: Mon, 31 Jul 2017 14:51:16 +0800
-Message-ID: <1501483876-18335-1-git-send-email-jacob-chen@iotwrt.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, s.nawrocki@samsung.com, tfiga@chromium.org, nicolas@ndufresne.ca, Jacob Chen <jacob-chen@iotwrt.com>
+Date: Mon, 31 Jul 2017 14:59:27 +0800
+Message-ID: <1501484367-18689-1-git-send-email-jacob-chen@iotwrt.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Rockchip RGA is a separate 2D raster graphic acceleration unit. It
@@ -23,7 +23,7 @@ And supports various operations from the rendering pipeline.
 The code in rga-hw.c is used to configure regs accroding to operations
 The code in rga-buf.c is used to create (1-Level)mmu table for RGA
 
-Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 ---
  drivers/media/platform/Kconfig                |  11 +
  drivers/media/platform/Makefile               |   2 +
@@ -93,7 +93,7 @@ index 0000000..b4d28e3
 @@ -0,0 +1,141 @@
 +/*
 + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-+ * Author: Jacob Chen <jacob-chen@iotwrt.com>
++ * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 + *
 + * This software is licensed under the terms of the GNU General Public
 + * License version 2, as published by the Free Software Foundation, and
@@ -157,7 +157,7 @@ index 0000000..b4d28e3
 +	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
 +}
 +
-+static int  rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
++static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
 +{
 +	struct rga_ctx *ctx = vb2_get_drv_priv(q);
 +	struct rockchip_rga *rga = ctx->rga;
@@ -240,7 +240,7 @@ index 0000000..2261c01
 @@ -0,0 +1,650 @@
 +/*
 + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-+ * Author: Jacob Chen <jacob-chen@iotwrt.com>
++ * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 + *
 + * This software is licensed under the terms of the GNU General Public
 + * License version 2, as published by the Free Software Foundation, and
@@ -896,7 +896,7 @@ index 0000000..5c6569c
 @@ -0,0 +1,437 @@
 +/*
 + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-+ * Author: Jacob Chen <jacob-chen@iotwrt.com>
++ * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 + *
 + * This software is licensed under the terms of the GNU General Public
 + * License version 2, as published by the Free Software Foundation, and
@@ -1339,7 +1339,7 @@ index 0000000..738e649
 @@ -0,0 +1,987 @@
 +/*
 + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-+ * Author: Jacob Chen <jacob-chen@iotwrt.com>
++ * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 + *
 + * This software is licensed under the terms of the GNU General Public
 + * License version 2, as published by the Free Software Foundation, and
@@ -2321,7 +2321,7 @@ index 0000000..738e649
 +
 +module_platform_driver(rga_pdrv);
 +
-+MODULE_AUTHOR("Jacob Chen <jacob-chen@iotwrt.com>");
++MODULE_AUTHOR("Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>");
 +MODULE_DESCRIPTION("Rockchip Raster 2d Grapphic Acceleration Unit");
 +MODULE_LICENSE("GPL");
 diff --git a/drivers/media/platform/rockchip-rga/rga.h b/drivers/media/platform/rockchip-rga/rga.h
@@ -2332,7 +2332,7 @@ index 0000000..9d30b41
 @@ -0,0 +1,110 @@
 +/*
 + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-+ * Author: Jacob Chen <jacob-chen@iotwrt.com>
++ * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 + *
 + * This software is licensed under the terms of the GNU General Public
 + * License version 2, as published by the Free Software Foundation, and
@@ -2442,3 +2442,8 @@ index 0000000..9d30b41
 +#endif
 -- 
 2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
