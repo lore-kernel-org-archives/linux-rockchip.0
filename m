@@ -1,57 +1,46 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 6/6] drm/rockchip: fix race with kms hotplug and fbdev
-Date: Mon, 31 Jul 2017 17:50:00 +0800
-Message-ID: <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
-References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH 00/14] Support more devices on rockchip rv1108
+Date: Mon, 31 Jul 2017 18:04:09 +0800
+Message-ID: <1501495449-21290-1-git-send-email-andy.yan@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: heiko@sntech.de
+Cc: devicetree@vger.kernel.org, linus.walleij@linaro.org, mturquette@baylibre.com, linux-gpio@vger.kernel.org, sboyd@codeaurora.org, broonie@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-i2c@vger.kernel.org, shawn.lin@rock-chips.com, linux-spi@vger.kernel.org, zhangqing@rock-chips.com, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Since fb_helper is not a pointer on rockchip_drm_private, it's no
-need to check pointer.
 
-Kms hotplug event may race into fbdev helper initial, and fb_helper->dev
-may be NULL pointer, that would cause the bug:
+This series try to support i2c/spi/pwm/saradc/pmic/watchdog and
+the full clk tree on rockchip rv1108 soc.
 
-[    0.735411] [00000200] *pgd=00000000f6ffe003, *pud=00000000f6ffe003, *pmd=0000000000000000
-[    0.736156] Internal error: Oops: 96000005 [#1] PREEMPT SMP
-[    0.736648] Modules linked in:
-[    0.736930] CPU: 2 PID: 20 Comm: kworker/2:0 Not tainted 4.4.41 #20
-[    0.737480] Hardware name: Rockchip RK3399 Board rev2 (BOX) (DT)
-[    0.738020] Workqueue: events cdn_dp_pd_event_work
-[    0.738447] task: ffffffc0f21f3100 ti: ffffffc0f2218000 task.ti: ffffffc0f2218000
-[    0.739109] PC is at mutex_lock+0x14/0x44
-[    0.739469] LR is at drm_fb_helper_hotplug_event+0x30/0x114
-[    0.756253] [<ffffff8008a344f4>] mutex_lock+0x14/0x44
-[    0.756260] [<ffffff8008445708>] drm_fb_helper_hotplug_event+0x30/0x114
-[    0.756271] [<ffffff8008473c84>] rockchip_drm_output_poll_changed+0x18/0x20
-[    0.756280] [<ffffff8008439fcc>] drm_kms_helper_hotplug_event+0x28/0x34
-[    0.756286] [<ffffff800846c444>] cdn_dp_pd_event_work+0x394/0x3c4
-[    0.756295] [<ffffff80080b2b38>] process_one_work+0x218/0x3e0
-[    0.756302] [<ffffff80080b3538>] worker_thread+0x2e8/0x404
-[    0.756308] [<ffffff80080b7e70>] kthread+0xe8/0xf0
-[    0.756316] [<ffffff8008082690>] ret_from_fork+0x10/0x40
 
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Andy Yan (12):
+  pinctrl: rockchip: add input schmitt support for rv1108
+  dt-bindings: i2c: rk3x: add support for rv1108
+  i2c: rk3x: add support for rv1108
+  ARM: dts: rockchip: add i2c dt node for rv1108
+  spi: rockchip: add compatible string for rv1108 spi
+  ARM: dts: rockchip: add spi dt node for rv1108
+  ARM: dts: rockchip: add pwm dt node for rv1108
+  ARM: dts: rockchip: add watchdog dt node for rv1108
+  ARM: dts: rockchip: add saradc support for rv1108
+  ARM: dts: rockchip: add pwm backlight for rv1108 evb
+  ARM: dts: rockchip: add pmic rk805 dt node for rv1108 evb
+  ARM: dts: rockchip: add accelerometer bma250e dt node for rv1108 evb
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index 81f9548..e6bd0f4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -170,7 +170,7 @@ static void rockchip_drm_output_poll_changed(struct drm_device *dev)
- 	struct rockchip_drm_private *private = dev->dev_private;
- 	struct drm_fb_helper *fb_helper = &private->fbdev_helper;
- 
--	if (fb_helper)
-+	if (fb_helper->dev)
- 		drm_fb_helper_hotplug_event(fb_helper);
- }
- 
+Elaine Zhang (2):
+  clk: rockchip: add more clk ids for rv1108
+  clk: rockchip: support more clks for rv1108
+
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |   1 +
+ .../devicetree/bindings/spi/spi-rockchip.txt       |   1 +
+ arch/arm/boot/dts/rv1108-evb.dts                   | 158 +++++++
+ arch/arm/boot/dts/rv1108.dtsi                      | 249 ++++++++++
+ drivers/clk/rockchip/clk-rv1108.c                  | 513 ++++++++++++++++-----
+ drivers/i2c/busses/i2c-rk3x.c                      |   9 +
+ drivers/pinctrl/pinctrl-rockchip.c                 |  31 ++
+ drivers/spi/spi-rockchip.c                         |   1 +
+ include/dt-bindings/clock/rv1108-cru.h             | 128 ++++-
+ 9 files changed, 964 insertions(+), 127 deletions(-)
+
 -- 
-1.9.1
+2.7.4
