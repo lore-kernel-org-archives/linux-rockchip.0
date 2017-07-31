@@ -1,7 +1,7 @@
 From: Jacob Chen <jacob-chen@iotwrt.com>
-Subject: [PATCH v3 2/5] [media]: rockchip/rga: v4l2 m2m support
-Date: Mon, 31 Jul 2017 14:43:40 +0800
-Message-ID: <1501483420-18053-1-git-send-email-jacob-chen@iotwrt.com>
+Subject: [PATCH v3 2/5] [RESEND] [media]: rockchip/rga: v4l2 m2m support
+Date: Mon, 31 Jul 2017 14:51:16 +0800
+Message-ID: <1501483876-18335-1-git-send-email-jacob-chen@iotwrt.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
@@ -924,7 +924,7 @@ index 0000000..5c6569c
 +
 +#define RGA_TIMEOUT 500
 +
-+/* Registers adress */
++/* Registers address */
 +#define RGA_SYS_CTRL 0x0000
 +#define RGA_CMD_CTRL 0x0004
 +#define RGA_CMD_BASE 0x0008
