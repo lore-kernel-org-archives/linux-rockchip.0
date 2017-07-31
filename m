@@ -1,1023 +1,2560 @@
-From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 07/14] spi: rockchip: add compatible string for rv1108 spi
-Date: Mon, 31 Jul 2017 21:16:17 +0800
-Message-ID: <201707312143.orecEyQq%fengguang.wu@intel.com>
-References: <1501496103-21713-1-git-send-email-andy.yan@rock-chips.com>
+From: Jacob Chen <jacobchen110@gmail.com>
+Subject: Re: [PATCH v3 2/5] [media]: rockchip/rga: v4l2 m2m support
+Date: Mon, 31 Jul 2017 22:25:23 +0800
+Message-ID: <CAFLEztScSS4cvfmMj6Gjua7TUcrNBJCtwjgykr3PEThzJceKUQ@mail.gmail.com>
+References: <1501470460-12014-1-git-send-email-jacob-chen@iotwrt.com>
+ <1501470460-12014-3-git-send-email-jacob-chen@iotwrt.com> <d7aedc2e-46db-8e6a-2744-de0f98b2ed48@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="0F1p//8PRICkK4MW"
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1501496103-21713-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d7aedc2e-46db-8e6a-2744-de0f98b2ed48@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, laurent.pinchart+renesas@ideasonboard.com, Hans Verkuil <hans.verkuil@cisco.com>, s.nawrocki@samsung.com, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Hans,
 
---0F1p//8PRICkK4MW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+2017-07-31 16:38 GMT+08:00 Hans Verkuil <hverkuil@xs4all.nl>:
+> Hi Jacob,
+>
+> A quick review below:
+>
+> On 07/31/2017 05:07 AM, Jacob Chen wrote:
+>> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
+>> accelerates 2D graphics operations, such as point/line drawing, image
+>> scaling, rotation, BitBLT, alpha blending and image blur/sharpness
+>>
+>> The drvier is mostly based on s5p-g2d v4l2 m2m driver
+>
+> drvier -> driver
+>
+>> And supports various operations from the rendering pipeline.
+>>  - copy
+>>  - fast solid color fill
+>>  - rotation
+>>  - flip
+>>  - alpha blending
+>
+> What other operations are supported by the HW but not (yet?) in this
+> driver?
+>
 
-Hi Andy,
+All of them are supported in this driver.
+V4L2_CID_ROTATE - rotation
+V4L2_CID_VFLIP - flip
+V4L2_CID_BG_COLOR - color fill
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on v4.13-rc3 next-20170731]
-[cannot apply to robh/for-next]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+V4L2_CID_PORTER_DUFF_MODE - copy/alpha blending
 
-url:    https://github.com/0day-ci/linux/commits/Andy-Yan/Support-more-devices-on-rockchip-rv1108/20170731-200355
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-config: xtensa-allmodconfig (attached as .config)
-compiler: xtensa-linux-gcc (GCC) 4.9.0
-reproduce:
-        wget https://raw.githubusercontent.com/01org/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # save the attached .config to linux build tree
-        make.cross ARCH=xtensa 
 
-All errors (new ones prefixed by >>):
+>>
+>> The code in rga-hw.c is used to configure regs accroding to operations
+>
+> accroding -> according
+>
+>> The code in rga-buf.c is used to create (1-Level)mmu table for RGA
+>> The tables is stored in a list, and be removed when buffer is cleanup
+>>
+>> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+>> ---
+>>  drivers/media/platform/Kconfig                |  11 +
+>>  drivers/media/platform/Makefile               |   2 +
+>>  drivers/media/platform/rockchip-rga/Makefile  |   3 +
+>>  drivers/media/platform/rockchip-rga/rga-buf.c | 141 ++++
+>>  drivers/media/platform/rockchip-rga/rga-hw.c  | 650 +++++++++++++++++
+>>  drivers/media/platform/rockchip-rga/rga-hw.h  | 437 ++++++++++++
+>>  drivers/media/platform/rockchip-rga/rga.c     | 987 ++++++++++++++++++++++++++
+>>  drivers/media/platform/rockchip-rga/rga.h     | 110 +++
+>>  8 files changed, 2341 insertions(+)
+>>  create mode 100644 drivers/media/platform/rockchip-rga/Makefile
+>>  create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
+>>  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
+>>  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
+>>  create mode 100644 drivers/media/platform/rockchip-rga/rga.c
+>>  create mode 100644 drivers/media/platform/rockchip-rga/rga.h
+>>
+>> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+>> index c9106e1..8199bcf 100644
+>> --- a/drivers/media/platform/Kconfig
+>> +++ b/drivers/media/platform/Kconfig
+>> @@ -411,6 +411,17 @@ config VIDEO_RENESAS_VSP1
+>>         To compile this driver as a module, choose M here: the module
+>>         will be called vsp1.
+>>
+>> +config VIDEO_ROCKCHIP_RGA
+>> +     tristate "Rockchip Raster 2d Grapphic Acceleration Unit"
+>> +     depends on VIDEO_DEV && VIDEO_V4L2 && HAS_DMA
+>> +     depends on ARCH_ROCKCHIP || COMPILE_TEST
+>> +     select VIDEOBUF2_DMA_SG
+>> +     select V4L2_MEM2MEM_DEV
+>> +     default n
+>> +     ---help---
+>> +       This is a v4l2 driver for Rockchip SOC RGA2
+>> +       2d graphics accelerator.
+>> +
+>>  config VIDEO_TI_VPE
+>>       tristate "TI VPE (Video Processing Engine) driver"
+>>       depends on VIDEO_DEV && VIDEO_V4L2
+>> diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+>> index 349ddf6..3bf096f 100644
+>> --- a/drivers/media/platform/Makefile
+>> +++ b/drivers/media/platform/Makefile
+>> @@ -54,6 +54,8 @@ obj-$(CONFIG_VIDEO_RENESAS_FDP1)    += rcar_fdp1.o
+>>  obj-$(CONFIG_VIDEO_RENESAS_JPU)      += rcar_jpu.o
+>>  obj-$(CONFIG_VIDEO_RENESAS_VSP1)     += vsp1/
+>>
+>> +obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)     += rockchip-rga/
+>> +
+>>  obj-y        += omap/
+>>
+>>  obj-$(CONFIG_VIDEO_AM437X_VPFE)              += am437x/
+>> diff --git a/drivers/media/platform/rockchip-rga/Makefile b/drivers/media/platform/rockchip-rga/Makefile
+>> new file mode 100644
+>> index 0000000..92fe254
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip-rga/Makefile
+>> @@ -0,0 +1,3 @@
+>> +rockchip-rga-objs := rga.o rga-hw.o rga-buf.o
+>> +
+>> +obj-$(CONFIG_VIDEO_ROCKCHIP_RGA) += rockchip-rga.o
+>> diff --git a/drivers/media/platform/rockchip-rga/rga-buf.c b/drivers/media/platform/rockchip-rga/rga-buf.c
+>> new file mode 100644
+>> index 0000000..b4d28e3
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip-rga/rga-buf.c
+>> @@ -0,0 +1,141 @@
+>> +/*
+>> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+>
+> I think the copyright statement should include a year.
+>
+>> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>> + *
+>> + * This software is licensed under the terms of the GNU General Public
+>> + * License version 2, as published by the Free Software Foundation, and
+>> + * may be copied, distributed, and modified under those terms.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/pm_runtime.h>
+>> +
+>> +#include <media/v4l2-device.h>
+>> +#include <media/v4l2-ioctl.h>
+>> +#include <media/v4l2-mem2mem.h>
+>> +#include <media/videobuf2-dma-sg.h>
+>> +#include <media/videobuf2-v4l2.h>
+>> +
+>> +#include "rga-hw.h"
+>> +#include "rga.h"
+>> +
+>> +static int
+>> +rga_queue_setup(struct vb2_queue *vq,
+>> +             unsigned int *nbuffers, unsigned int *nplanes,
+>> +             unsigned int sizes[], struct device *alloc_devs[])
+>> +{
+>> +     struct rga_ctx *ctx = vb2_get_drv_priv(vq);
+>> +     struct rga_frame *f = rga_get_frame(ctx, vq->type);
+>> +
+>> +     if (IS_ERR(f))
+>> +             return PTR_ERR(f);
+>> +
+>
+> Since you are supporting VIDIOC_CREATE_BUFS you need to add this check:
+>
+>         if (*nplanes)
+>                 return sizes[0] < f->size ? -EINVAL : 0;
+>
+>> +     sizes[0] = f->size;
+>> +     *nplanes = 1;
+>> +
+>> +     if (*nbuffers == 0)
+>> +             *nbuffers = 1;
+>
+> No need, *nbuffers is never 0.
+>
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int rga_buf_prepare(struct vb2_buffer *vb)
+>> +{
+>> +     struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+>> +     struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
+>> +
+>> +     if (IS_ERR(f))
+>> +             return PTR_ERR(f);
+>> +
+>> +     vb2_set_plane_payload(vb, 0, f->size);
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static void rga_buf_queue(struct vb2_buffer *vb)
+>> +{
+>> +     struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>> +     struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+>> +
+>> +     v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
+>> +}
+>> +
+>> +static int  rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
+>> +{
+>> +     struct rga_ctx *ctx = vb2_get_drv_priv(q);
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     int ret;
+>> +
+>> +     ret = pm_runtime_get_sync(rga->dev);
+>> +     return ret > 0 ? 0 : ret;
+>
+> If ret != 0 then you need to return all queued buffers back to vb2 (vb2_buffer_done)
+> with state VB2_BUF_STATE_QUEUED. Similar to what you do in stop_streaming, but with
+> state QUEUED instead of ERROR.
+>
 
->> drivers/spi/spi-rockchip.c:923:2: error: expected '}' before '{' token
-     { .compatible = "rockchip,rk3036-spi", },
-     ^
+ok, but i think it can't be done in stop_streaming.
 
-vim +923 drivers/spi/spi-rockchip.c
-
-64e36824 addy ke     2014-07-01  920  
-64e36824 addy ke     2014-07-01  921  static const struct of_device_id rockchip_spi_dt_match[] = {
-b8251f6e Andy Yan    2017-07-31  922  	{ .compatible = "rockchip,rv1108-spi", }
-aa29ea3d Caesar Wang 2016-05-20 @923  	{ .compatible = "rockchip,rk3036-spi", },
-64e36824 addy ke     2014-07-01  924  	{ .compatible = "rockchip,rk3066-spi", },
-b839b785 Addy Ke     2014-07-11  925  	{ .compatible = "rockchip,rk3188-spi", },
-aa29ea3d Caesar Wang 2016-05-20  926  	{ .compatible = "rockchip,rk3228-spi", },
-b839b785 Addy Ke     2014-07-11  927  	{ .compatible = "rockchip,rk3288-spi", },
-aa29ea3d Caesar Wang 2016-05-20  928  	{ .compatible = "rockchip,rk3368-spi", },
-9b7a5622 Xu Jianqun  2016-02-18  929  	{ .compatible = "rockchip,rk3399-spi", },
-64e36824 addy ke     2014-07-01  930  	{ },
-64e36824 addy ke     2014-07-01  931  };
-64e36824 addy ke     2014-07-01  932  MODULE_DEVICE_TABLE(of, rockchip_spi_dt_match);
-64e36824 addy ke     2014-07-01  933  
-
-:::::: The code at line 923 was first introduced by commit
-:::::: aa29ea3df27dbba19ef59023d0f7330f2fdc58ae spi/rockchip: add the rk3036/rk3228/rk3368 to match for driver
-
-:::::: TO: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-:::::: CC: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
-
---0F1p//8PRICkK4MW
-Content-Type: application/gzip
-Content-Disposition: attachment; filename=".config.gz"
-Content-Transfer-Encoding: base64
-
-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
-
---0F1p//8PRICkK4MW--
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>> +}
+>> +
+>> +static void rga_buf_stop_streaming(struct vb2_queue *q)
+>> +{
+>> +     struct rga_ctx *ctx = vb2_get_drv_priv(q);
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     struct vb2_v4l2_buffer *vbuf;
+>> +
+>> +     for (;;) {
+>> +             if (V4L2_TYPE_IS_OUTPUT(q->type))
+>> +                     vbuf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+>> +             else
+>> +                     vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+>> +             if (!vbuf)
+>> +                     return;
+>> +             v4l2_m2m_buf_done(vbuf, VB2_BUF_STATE_ERROR);
+>> +     }
+>> +
+>> +     pm_runtime_put(rga->dev);
+>> +}
+>> +
+>> +const struct vb2_ops rga_qops = {
+>> +     .queue_setup = rga_queue_setup,
+>> +     .buf_prepare = rga_buf_prepare,
+>> +     .buf_queue = rga_buf_queue,
+>> +     .start_streaming = rga_buf_start_streaming,
+>> +     .stop_streaming = rga_buf_stop_streaming,
+>
+> I'm pretty sure you need to add:
+>
+>         .wait_prepare           = vb2_ops_wait_prepare,
+>         .wait_finish            = vb2_ops_wait_finish,
+>
+> otherwise you'll have potential locking problems.
+>
+>> +};
+>> +
+>> +/* RGA MMU is a 1-Level MMU, so it can't be used through the IOMMU API.
+>> + * We use it more like a scatter-gather list.
+>> + */
+>> +void rga_buf_map(struct vb2_buffer *vb)
+>> +{
+>> +     struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     struct sg_table *sgt;
+>> +     struct scatterlist *sgl;
+>> +     unsigned int *pages;
+>> +     unsigned int address, len, i, p;
+>> +     unsigned int mapped_size = 0;
+>> +
+>> +     if (vb->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+>> +             pages = rga->src_mmu_pages;
+>> +     else
+>> +             pages = rga->dst_mmu_pages;
+>> +
+>> +     /* Create local MMU table for RGA */
+>> +     sgt = vb2_plane_cookie(vb, 0);
+>> +
+>> +     for_each_sg(sgt->sgl, sgl, sgt->nents, i) {
+>> +             len = sg_dma_len(sgl) >> PAGE_SHIFT;
+>> +             address = sg_phys(sgl);
+>> +
+>> +             for (p = 0; p < len; p++) {
+>> +                     dma_addr_t phys = address + (p << PAGE_SHIFT);
+>> +
+>> +                     pages[mapped_size + p] = phys;
+>> +             }
+>> +
+>> +             mapped_size += len;
+>> +     }
+>> +
+>> +     /* sync local MMU table for RGA */
+>> +     dma_sync_single_for_device(rga->dev, virt_to_phys(pages),
+>> +                                8 * PAGE_SIZE, DMA_BIDIRECTIONAL);
+>> +}
+>> diff --git a/drivers/media/platform/rockchip-rga/rga-hw.c b/drivers/media/platform/rockchip-rga/rga-hw.c
+>> new file mode 100644
+>> index 0000000..2261c01
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip-rga/rga-hw.c
+>> @@ -0,0 +1,650 @@
+>> +/*
+>> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+>> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>> + *
+>> + * This software is licensed under the terms of the GNU General Public
+>> + * License version 2, as published by the Free Software Foundation, and
+>> + * may be copied, distributed, and modified under those terms.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/pm_runtime.h>
+>> +
+>> +#include "rga-hw.h"
+>> +#include "rga.h"
+>> +
+>> +enum e_rga_start_pos {
+>> +     LT = 0,
+>> +     LB = 1,
+>> +     RT = 2,
+>> +     RB = 3,
+>> +};
+>> +
+>> +struct rga_addr_offset {
+>> +     unsigned int y_off;
+>> +     unsigned int u_off;
+>> +     unsigned int v_off;
+>> +};
+>> +
+>> +struct rga_corners_addr_offset {
+>> +     struct rga_addr_offset left_top;
+>> +     struct rga_addr_offset right_top;
+>> +     struct rga_addr_offset left_bottom;
+>> +     struct rga_addr_offset right_bottom;
+>> +};
+>> +
+>> +static unsigned int rga_get_scaling(unsigned int src, unsigned int dst)
+>> +{
+>> +     /*
+>> +      * The rga hw scaling factor is a normalized inverse of the scaling factor.
+>> +      * For example: When source width is 100 and destination width is 200
+>> +      * (scaling of 2x), then the hw factor is NC * 100 / 200.
+>> +      * The normalization factor (NC) is 2^16 = 0x10000.
+>> +      */
+>> +
+>> +     return (src > dst) ? ((dst << 16) / src) : ((src << 16) / dst);
+>> +}
+>> +
+>> +static struct rga_corners_addr_offset
+>> +rga_get_addr_offset(struct rga_frame *frm, unsigned int x, unsigned int y,
+>> +                 unsigned int w, unsigned int h)
+>> +{
+>> +     struct rga_corners_addr_offset offsets;
+>> +     struct rga_addr_offset *lt, *lb, *rt, *rb;
+>> +     unsigned int x_div = 0,
+>> +                  y_div = 0, uv_stride = 0, pixel_width = 0, uv_factor = 0;
+>> +
+>> +     lt = &offsets.left_top;
+>> +     lb = &offsets.left_bottom;
+>> +     rt = &offsets.right_top;
+>> +     rb = &offsets.right_bottom;
+>> +
+>> +     x_div = frm->fmt->x_div;
+>> +     y_div = frm->fmt->y_div;
+>> +     uv_factor = frm->fmt->uv_factor;
+>> +     uv_stride = frm->stride / x_div;
+>> +     pixel_width = frm->stride / frm->width;
+>> +
+>> +     lt->y_off = y * frm->stride + x * pixel_width;
+>> +     lt->u_off =
+>> +             frm->width * frm->height + (y / y_div) * uv_stride + x / x_div;
+>> +     lt->v_off = lt->u_off + frm->width * frm->height / uv_factor;
+>> +
+>> +     lb->y_off = lt->y_off + (h - 1) * frm->stride;
+>> +     lb->u_off = lt->u_off + (h / y_div - 1) * uv_stride;
+>> +     lb->v_off = lt->v_off + (h / y_div - 1) * uv_stride;
+>> +
+>> +     rt->y_off = lt->y_off + (w - 1) * pixel_width;
+>> +     rt->u_off = lt->u_off + w / x_div - 1;
+>> +     rt->v_off = lt->v_off + w / x_div - 1;
+>> +
+>> +     rb->y_off = lb->y_off + (w - 1) * pixel_width;
+>> +     rb->u_off = lb->u_off + w / x_div - 1;
+>> +     rb->v_off = lb->v_off + w / x_div - 1;
+>> +
+>> +     return offsets;
+>> +}
+>> +
+>> +static struct rga_addr_offset *rga_lookup_draw_pos(struct
+>> +             rga_corners_addr_offset
+>> +             * offsets, u32 rotate_mode,
+>> +             u32 mirr_mode)
+>> +{
+>> +     static enum e_rga_start_pos rot_mir_point_matrix[4][4] = {
+>> +             {
+>> +                     LT, RT, LB, RB,
+>> +             },
+>> +             {
+>> +                     RT, LT, RB, LB,
+>> +             },
+>> +             {
+>> +                     RB, LB, RT, LT,
+>> +             },
+>> +             {
+>> +                     LB, RB, LT, RT,
+>> +             },
+>> +     };
+>> +
+>> +     if (offsets == NULL)
+>> +             return NULL;
+>> +
+>> +     switch (rot_mir_point_matrix[rotate_mode][mirr_mode]) {
+>> +     case LT:
+>> +             return &offsets->left_top;
+>> +     case LB:
+>> +             return &offsets->left_bottom;
+>> +     case RT:
+>> +             return &offsets->right_top;
+>> +     case RB:
+>> +             return &offsets->right_bottom;
+>> +     }
+>> +
+>> +     return NULL;
+>> +}
+>> +
+>> +static void rga_cmd_set_src_addr(struct rga_ctx *ctx, void *mmu_pages)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     u32 *dest = rga->cmdbuf_virt;
+>> +     unsigned int reg;
+>> +
+>> +     reg = RGA_MMU_SRC_BASE - RGA_MODE_BASE_REG;
+>> +     dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
+>> +
+>> +     reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
+>> +     dest[reg >> 2] |= 0x7;
+>> +}
+>> +
+>> +static void rga_cmd_set_src1_addr(struct rga_ctx *ctx, void *mmu_pages)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     u32 *dest = rga->cmdbuf_virt;
+>> +     unsigned int reg;
+>> +
+>> +     reg = RGA_MMU_SRC1_BASE - RGA_MODE_BASE_REG;
+>> +     dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
+>> +
+>> +     reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
+>> +     dest[reg >> 2] |= 0x7 << 4;
+>> +}
+>> +
+>> +static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, void *mmu_pages)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     u32 *dest = rga->cmdbuf_virt;
+>> +     unsigned int reg;
+>> +
+>> +     reg = RGA_MMU_DST_BASE - RGA_MODE_BASE_REG;
+>> +     dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
+>> +
+>> +     reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
+>> +     dest[reg >> 2] |= 0x7 << 8;
+>> +}
+>> +
+>> +static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     u32 *dest = rga->cmdbuf_virt;
+>> +     unsigned int scale_dst_w, scale_dst_h;
+>> +     unsigned int src_h, src_w, src_x, src_y, dst_h, dst_w, dst_x, dst_y;
+>> +     union rga_src_info src_info;
+>> +     union rga_dst_info dst_info;
+>> +     union rga_src_x_factor x_factor;
+>> +     union rga_src_y_factor y_factor;
+>> +     union rga_src_vir_info src_vir_info;
+>> +     union rga_src_act_info src_act_info;
+>> +     union rga_dst_vir_info dst_vir_info;
+>> +     union rga_dst_act_info dst_act_info;
+>> +
+>> +     struct rga_addr_offset *dst_offset;
+>> +     struct rga_corners_addr_offset offsets;
+>> +     struct rga_corners_addr_offset src_offsets;
+>> +
+>> +     src_h = ctx->in.crop.height;
+>> +     src_w = ctx->in.crop.width;
+>> +     src_x = ctx->in.crop.left;
+>> +     src_y = ctx->in.crop.top;
+>> +     dst_h = ctx->out.crop.height;
+>> +     dst_w = ctx->out.crop.width;
+>> +     dst_x = ctx->out.crop.left;
+>> +     dst_y = ctx->out.crop.top;
+>> +
+>> +     src_info.val = dest[(RGA_SRC_INFO - RGA_MODE_BASE_REG) >> 2];
+>> +     dst_info.val = dest[(RGA_DST_INFO - RGA_MODE_BASE_REG) >> 2];
+>> +     x_factor.val = dest[(RGA_SRC_X_FACTOR - RGA_MODE_BASE_REG) >> 2];
+>> +     y_factor.val = dest[(RGA_SRC_Y_FACTOR - RGA_MODE_BASE_REG) >> 2];
+>> +     src_vir_info.val = dest[(RGA_SRC_VIR_INFO - RGA_MODE_BASE_REG) >> 2];
+>> +     src_act_info.val = dest[(RGA_SRC_ACT_INFO - RGA_MODE_BASE_REG) >> 2];
+>> +     dst_vir_info.val = dest[(RGA_DST_VIR_INFO - RGA_MODE_BASE_REG) >> 2];
+>> +     dst_act_info.val = dest[(RGA_DST_ACT_INFO - RGA_MODE_BASE_REG) >> 2];
+>> +
+>> +     src_info.data.format = ctx->in.fmt->hw_format;
+>> +     src_info.data.swap = ctx->in.fmt->color_swap;
+>> +     dst_info.data.format = ctx->out.fmt->hw_format;
+>> +     dst_info.data.swap = ctx->out.fmt->color_swap;
+>> +
+>> +     if (ctx->in.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
+>> +             if (ctx->out.fmt->hw_format < RGA_COLOR_FMT_YUV422SP)
+>> +                     src_info.data.csc_mode = RGA_SRC_CSC_MODE_BT601_R0;
+>> +     }
+>> +     if (ctx->out.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
+>> +             dst_info.data.csc_mode = RGA_DST_CSC_MODE_BT601_R0;
+>> +
+>> +     if (ctx->op == V4L2_PORTER_DUFF_CLEAR) {
+>> +
+>> +             /*
+>> +              * Configure the target color to foreground color.
+>> +              */
+>> +             dest[(RGA_SRC_FG_COLOR - RGA_MODE_BASE_REG) >> 2] =
+>> +                     ctx->fill_color;
+>> +             dst_vir_info.data.vir_stride = ctx->out.stride >> 2;
+>> +             dst_act_info.data.act_height = dst_h - 1;
+>> +             dst_act_info.data.act_width = dst_w - 1;
+>> +
+>> +             offsets =
+>> +                     rga_get_addr_offset(&ctx->out, dst_x, dst_y, dst_w, dst_h);
+>> +             dst_offset = &offsets.left_top;
+>> +
+>> +             goto write_dst;
+>> +     }
+>> +
+>> +     if (ctx->vflip)
+>> +             src_info.data.mir_mode |= RGA_SRC_MIRR_MODE_X;
+>> +
+>> +     if (ctx->hflip)
+>> +             src_info.data.mir_mode |= RGA_SRC_MIRR_MODE_Y;
+>> +
+>> +     switch (ctx->rotate) {
+>> +     case 90:
+>> +             src_info.data.rot_mode = RGA_SRC_ROT_MODE_90_DEGREE;
+>> +             break;
+>> +     case 180:
+>> +             src_info.data.rot_mode = RGA_SRC_ROT_MODE_180_DEGREE;
+>> +             break;
+>> +     case 270:
+>> +             src_info.data.rot_mode = RGA_SRC_ROT_MODE_270_DEGREE;
+>> +             break;
+>> +     default:
+>> +             src_info.data.rot_mode = RGA_SRC_ROT_MODE_0_DEGREE;
+>> +             break;
+>> +     }
+>> +
+>> +     /*
+>> +      * Cacluate the up/down scaling mode/factor.
+>> +      *
+>> +      * RGA used to scale the picture first, and then rotate second,
+>> +      * so we need to swap the w/h when rotate degree is 90/270.
+>> +      */
+>> +     if (src_info.data.rot_mode == RGA_SRC_ROT_MODE_90_DEGREE
+>> +         || src_info.data.rot_mode == RGA_SRC_ROT_MODE_270_DEGREE) {
+>> +             if (rga->version.major == 0 || rga->version.minor == 0) {
+>> +                     if (dst_w == src_h)
+>> +                             src_h -= 8;
+>> +                     if (abs(src_w - dst_h) < 16)
+>> +                             src_w -= 16;
+>> +             }
+>> +
+>> +             scale_dst_h = dst_w;
+>> +             scale_dst_w = dst_h;
+>> +     } else {
+>> +             scale_dst_w = dst_w;
+>> +             scale_dst_h = dst_h;
+>> +     }
+>> +
+>> +     if (src_w == scale_dst_w) {
+>> +             src_info.data.hscl_mode = RGA_SRC_HSCL_MODE_NO;
+>> +             x_factor.val = 0;
+>> +     } else if (src_w > scale_dst_w) {
+>> +             src_info.data.hscl_mode = RGA_SRC_HSCL_MODE_DOWN;
+>> +             x_factor.data.down_scale_factor =
+>> +                     rga_get_scaling(src_w, scale_dst_w) + 1;
+>> +     } else {
+>> +             src_info.data.hscl_mode = RGA_SRC_HSCL_MODE_UP;
+>> +             x_factor.data.up_scale_factor =
+>> +                     rga_get_scaling(src_w - 1, scale_dst_w - 1);
+>> +     }
+>> +
+>> +     if (src_h == scale_dst_h) {
+>> +             src_info.data.vscl_mode = RGA_SRC_VSCL_MODE_NO;
+>> +             y_factor.val = 0;
+>> +     } else if (src_h > scale_dst_h) {
+>> +             src_info.data.vscl_mode = RGA_SRC_VSCL_MODE_DOWN;
+>> +             y_factor.data.down_scale_factor =
+>> +                     rga_get_scaling(src_h, scale_dst_h) + 1;
+>> +     } else {
+>> +             src_info.data.vscl_mode = RGA_SRC_VSCL_MODE_UP;
+>> +             y_factor.data.up_scale_factor =
+>> +                     rga_get_scaling(src_h - 1, scale_dst_h - 1);
+>> +     }
+>> +
+>> +     /*
+>> +      * Cacluate the framebuffer virtual strides and active size,
+>> +      * note that the step of vir_stride / vir_width is 4 byte words
+>> +      */
+>> +     src_vir_info.data.vir_stride = ctx->in.stride >> 2;
+>> +     src_vir_info.data.vir_width = ctx->in.stride >> 2;
+>> +
+>> +     src_act_info.data.act_height = src_h - 1;
+>> +     src_act_info.data.act_width = src_w - 1;
+>> +
+>> +     dst_vir_info.data.vir_stride = ctx->out.stride >> 2;
+>> +     dst_act_info.data.act_height = dst_h - 1;
+>> +     dst_act_info.data.act_width = dst_w - 1;
+>> +
+>> +     /*
+>> +      * Cacluate the source framebuffer base address with offset pixel.
+>> +      */
+>> +     src_offsets = rga_get_addr_offset(&ctx->in, src_x, src_y, src_w, src_h);
+>> +
+>> +     /*
+>> +      * Configure the dest framebuffer base address with pixel offset.
+>> +      */
+>> +     offsets = rga_get_addr_offset(&ctx->out, dst_x, dst_y, dst_w, dst_h);
+>> +     dst_offset = rga_lookup_draw_pos(&offsets, src_info.data.rot_mode,
+>> +                                      src_info.data.mir_mode);
+>> +
+>> +     dest[(RGA_SRC_Y_RGB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+>> +             src_offsets.left_top.y_off;
+>> +     dest[(RGA_SRC_CB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+>> +             src_offsets.left_top.u_off;
+>> +     dest[(RGA_SRC_CR_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+>> +             src_offsets.left_top.v_off;
+>> +
+>> +     dest[(RGA_SRC_X_FACTOR - RGA_MODE_BASE_REG) >> 2] = x_factor.val;
+>> +     dest[(RGA_SRC_Y_FACTOR - RGA_MODE_BASE_REG) >> 2] = y_factor.val;
+>> +     dest[(RGA_SRC_VIR_INFO - RGA_MODE_BASE_REG) >> 2] = src_vir_info.val;
+>> +     dest[(RGA_SRC_ACT_INFO - RGA_MODE_BASE_REG) >> 2] = src_act_info.val;
+>> +
+>> +     dest[(RGA_SRC_INFO - RGA_MODE_BASE_REG) >> 2] = src_info.val;
+>> +
+>> +write_dst:
+>> +     dest[(RGA_DST_Y_RGB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+>> +             dst_offset->y_off;
+>> +     dest[(RGA_DST_CB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+>> +             dst_offset->u_off;
+>> +     dest[(RGA_DST_CR_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+>> +             dst_offset->v_off;
+>> +
+>> +     dest[(RGA_DST_VIR_INFO - RGA_MODE_BASE_REG) >> 2] = dst_vir_info.val;
+>> +     dest[(RGA_DST_ACT_INFO - RGA_MODE_BASE_REG) >> 2] = dst_act_info.val;
+>> +
+>> +     dest[(RGA_DST_INFO - RGA_MODE_BASE_REG) >> 2] = dst_info.val;
+>> +}
+>> +
+>> +static void rga_cmd_set_mode(struct rga_ctx *ctx)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     u32 *dest = rga->cmdbuf_virt;
+>> +     union rga_mode_ctrl mode;
+>> +     union rga_alpha_ctrl0 alpha_ctrl0;
+>> +     union rga_alpha_ctrl1 alpha_ctrl1;
+>> +
+>> +     mode.val = 0;
+>> +     alpha_ctrl0.val = 0;
+>> +     alpha_ctrl1.val = 0;
+>> +
+>> +     switch (ctx->op) {
+>> +     case V4L2_PORTER_DUFF_CLEAR:
+>> +             mode.data.gradient_sat = 1;
+>> +             mode.data.render = RGA_MODE_RENDER_RECTANGLE_FILL;
+>> +             mode.data.cf_rop4_pat = RGA_MODE_CF_ROP4_SOLID;
+>> +             mode.data.bitblt = RGA_MODE_BITBLT_MODE_SRC_TO_DST;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_DST:
+>> +     case V4L2_PORTER_DUFF_DSTATOP:
+>> +     case V4L2_PORTER_DUFF_DSTIN:
+>> +     case V4L2_PORTER_DUFF_DSTOUT:
+>> +     case V4L2_PORTER_DUFF_DSTOVER:
+>> +     case V4L2_PORTER_DUFF_SRCATOP:
+>> +     case V4L2_PORTER_DUFF_SRCIN:
+>> +     case V4L2_PORTER_DUFF_SRCOUT:
+>> +     case V4L2_PORTER_DUFF_SRCOVER:
+>> +             mode.data.gradient_sat = 1;
+>> +             mode.data.render = RGA_MODE_RENDER_BITBLT;
+>> +             mode.data.bitblt = RGA_MODE_BITBLT_MODE_SRC_TO_DST;
+>> +
+>> +             alpha_ctrl0.data.rop_en = 1;
+>> +             alpha_ctrl0.data.rop_mode = RGA_ALPHA_ROP_MODE_3;
+>> +             alpha_ctrl0.data.rop_select = RGA_ALPHA_SELECT_ALPHA;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_cal_m0 = RGA_ALPHA_CAL_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_cal_m0 = RGA_ALPHA_CAL_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_cal_m1 = RGA_ALPHA_CAL_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_cal_m1 = RGA_ALPHA_CAL_NORMAL;
+>> +             break;
+>> +     default:
+>> +             mode.data.gradient_sat = 1;
+>> +             mode.data.render = RGA_MODE_RENDER_BITBLT;
+>> +             mode.data.bitblt = RGA_MODE_BITBLT_MODE_SRC_TO_DST;
+>> +             break;
+>> +     }
+>> +
+>> +     switch (ctx->op) {
+>> +     case V4L2_PORTER_DUFF_DST:
+>> +             /* A=Dst.a */
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+>> +
+>> +             /* C=Dst.c */
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ONE;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_DSTATOP:
+>> +             /* A=Src.a */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+>> +
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             /* C=Src.a*Dst.c+Src.c*(1.0-Dst.a) */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_DSTIN:
+>> +             /* A=Dst.a*Src.a */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER;
+>> +
+>> +             /* C=Dst.c*Src.a */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_DSTOUT:
+>> +             /* A=Dst.a*(1.0-Src.a) */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             /* C=Dst.c*(1.0-Src.a) */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_DSTOVER:
+>> +             /* A=Src.a+Dst.a*(1.0-Src.a) */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             /* C=Dst.c+Src.c*(1.0-Dst.a) */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ONE;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_SRCATOP:
+>> +             /* A=Dst.a */
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+>> +
+>> +             /* C=Dst.a*Src.c+Dst.c*(1.0-Src.a) */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_SRCIN:
+>> +             /* A=Src.a*Dst.a */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER;
+>> +
+>> +             /* C=Src.c*Dst.a */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_SRCOUT:
+>> +             /* A=Src.a*(1.0-Dst.a) */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+>> +
+>> +             /* C=Src.c*(1.0-Dst.a) */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+>> +             break;
+>> +     case V4L2_PORTER_DUFF_SRCOVER:
+>> +             /* A=Src.a+Dst.a*(1.0-Src.a) */
+>> +             alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+>> +
+>> +             alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +
+>> +             /* C=Src.c+Dst.c*(1.0-Src.a) */
+>> +             alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ONE;
+>> +
+>> +             alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+>> +             alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+>> +             alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+>> +             alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+>> +             break;
+>> +     default:
+>> +             break;
+>> +     }
+>> +
+>> +     dest[(RGA_ALPHA_CTRL0 - RGA_MODE_BASE_REG) >> 2] = alpha_ctrl0.val;
+>> +     dest[(RGA_ALPHA_CTRL1 - RGA_MODE_BASE_REG) >> 2] = alpha_ctrl1.val;
+>> +
+>> +     dest[(RGA_MODE_CTRL - RGA_MODE_BASE_REG) >> 2] = mode.val;
+>> +}
+>> +
+>> +void rga_cmd_set(struct rga_ctx *ctx)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +
+>> +     memset(rga->cmdbuf_virt, 0, RGA_CMDBUF_SIZE * 4);
+>> +
+>> +     if (ctx->op != V4L2_PORTER_DUFF_CLEAR) {
+>> +             rga_cmd_set_src_addr(ctx, rga->src_mmu_pages);
+>> +             /*
+>> +              * Due to hardware bug,
+>> +              * src1 mmu also should be configured when using alpha blending.
+>> +              */
+>> +             rga_cmd_set_src1_addr(ctx, rga->dst_mmu_pages);
+>> +     }
+>> +     rga_cmd_set_dst_addr(ctx, rga->dst_mmu_pages);
+>> +     rga_cmd_set_mode(ctx);
+>> +
+>> +     rga_cmd_set_trans_info(ctx);
+>> +
+>> +     rga_write(rga, RGA_CMD_BASE, rga->cmdbuf_phy);
+>> +}
+>> +
+>> +void rga_write(struct rockchip_rga *rga, u32 reg, u32 value)
+>> +{
+>> +     writel(value, rga->regs + reg);
+>> +}
+>> +
+>> +u32 rga_read(struct rockchip_rga *rga, u32 reg)
+>> +{
+>> +     return readl(rga->regs + reg);
+>> +}
+>> +
+>> +void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask)
+>> +{
+>> +     u32 temp = rga_read(rga, reg) & ~(mask);
+>> +
+>> +     temp |= val & mask;
+>> +     rga_write(rga, reg, temp);
+>> +}
+>> +
+>> +void rga_start(struct rockchip_rga *rga)
+>> +{
+>> +     /* sync CMD buf for RGA */
+>> +     dma_sync_single_for_device(rga->dev, rga->cmdbuf_phy,
+>> +                                PAGE_SIZE, DMA_BIDIRECTIONAL);
+>> +
+>> +     rga_write(rga, RGA_SYS_CTRL, 0x00);
+>> +
+>> +     rga_write(rga, RGA_SYS_CTRL, 0x22);
+>> +
+>> +     rga_write(rga, RGA_INT, 0x600);
+>> +
+>> +     rga_write(rga, RGA_CMD_CTRL, 0x1);
+>> +}
+>> diff --git a/drivers/media/platform/rockchip-rga/rga-hw.h b/drivers/media/platform/rockchip-rga/rga-hw.h
+>> new file mode 100644
+>> index 0000000..5c6569c
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip-rga/rga-hw.h
+>> @@ -0,0 +1,437 @@
+>> +/*
+>> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+>> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>> + *
+>> + * This software is licensed under the terms of the GNU General Public
+>> + * License version 2, as published by the Free Software Foundation, and
+>> + * may be copied, distributed, and modified under those terms.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +#ifndef __RGA_HW_H__
+>> +#define __RGA_HW_H__
+>> +
+>> +#define RGA_CMDBUF_SIZE 0x20
+>> +
+>> +/* Hardware limits */
+>> +#define MAX_WIDTH 8192
+>> +#define MAX_HEIGHT 8192
+>> +
+>> +#define MIN_WIDTH 34
+>> +#define MIN_HEIGHT 34
+>> +
+>> +#define DEFAULT_WIDTH 100
+>> +#define DEFAULT_HEIGHT 100
+>> +
+>> +#define RGA_TIMEOUT 500
+>> +
+>> +/* Registers adress */
+>> +#define RGA_SYS_CTRL 0x0000
+>> +#define RGA_CMD_CTRL 0x0004
+>> +#define RGA_CMD_BASE 0x0008
+>> +#define RGA_INT 0x0010
+>> +#define RGA_MMU_CTRL0 0x0014
+>> +#define RGA_VERSION_INFO 0x0028
+>> +
+>> +#define RGA_MODE_BASE_REG 0x0100
+>> +#define RGA_MODE_MAX_REG 0x017C
+>> +
+>> +#define RGA_MODE_CTRL 0x0100
+>> +#define RGA_SRC_INFO 0x0104
+>> +#define RGA_SRC_Y_RGB_BASE_ADDR 0x0108
+>> +#define RGA_SRC_CB_BASE_ADDR 0x010c
+>> +#define RGA_SRC_CR_BASE_ADDR 0x0110
+>> +#define RGA_SRC1_RGB_BASE_ADDR 0x0114
+>> +#define RGA_SRC_VIR_INFO 0x0118
+>> +#define RGA_SRC_ACT_INFO 0x011c
+>> +#define RGA_SRC_X_FACTOR 0x0120
+>> +#define RGA_SRC_Y_FACTOR 0x0124
+>> +#define RGA_SRC_BG_COLOR 0x0128
+>> +#define RGA_SRC_FG_COLOR 0x012c
+>> +#define RGA_SRC_TR_COLOR0 0x0130
+>> +#define RGA_SRC_TR_COLOR1 0x0134
+>> +
+>> +#define RGA_DST_INFO 0x0138
+>> +#define RGA_DST_Y_RGB_BASE_ADDR 0x013c
+>> +#define RGA_DST_CB_BASE_ADDR 0x0140
+>> +#define RGA_DST_CR_BASE_ADDR 0x0144
+>> +#define RGA_DST_VIR_INFO 0x0148
+>> +#define RGA_DST_ACT_INFO 0x014c
+>> +
+>> +#define RGA_ALPHA_CTRL0 0x0150
+>> +#define RGA_ALPHA_CTRL1 0x0154
+>> +#define RGA_FADING_CTRL 0x0158
+>> +#define RGA_PAT_CON 0x015c
+>> +#define RGA_ROP_CON0 0x0160
+>> +#define RGA_ROP_CON1 0x0164
+>> +#define RGA_MASK_BASE 0x0168
+>> +
+>> +#define RGA_MMU_CTRL1 0x016C
+>> +#define RGA_MMU_SRC_BASE 0x0170
+>> +#define RGA_MMU_SRC1_BASE 0x0174
+>> +#define RGA_MMU_DST_BASE 0x0178
+>> +
+>> +/* Registers value */
+>> +#define RGA_MODE_RENDER_BITBLT 0
+>> +#define RGA_MODE_RENDER_COLOR_PALETTE 1
+>> +#define RGA_MODE_RENDER_RECTANGLE_FILL 2
+>> +#define RGA_MODE_RENDER_UPDATE_PALETTE_LUT_RAM 3
+>> +
+>> +#define RGA_MODE_BITBLT_MODE_SRC_TO_DST 0
+>> +#define RGA_MODE_BITBLT_MODE_SRC_SRC1_TO_DST 1
+>> +
+>> +#define RGA_MODE_CF_ROP4_SOLID 0
+>> +#define RGA_MODE_CF_ROP4_PATTERN 1
+>> +
+>> +#define RGA_COLOR_FMT_ABGR8888 0
+>> +#define RGA_COLOR_FMT_XBGR8888 1
+>> +#define RGA_COLOR_FMT_BGR888 2
+>> +#define RGA_COLOR_FMT_BGR565 4
+>> +#define RGA_COLOR_FMT_ABGR1555 5
+>> +#define RGA_COLOR_FMT_ABGR4444 6
+>> +#define RGA_COLOR_FMT_YUV422SP 8
+>> +#define RGA_COLOR_FMT_YUV422P 9
+>> +#define RGA_COLOR_FMT_YUV420SP 10
+>> +#define RGA_COLOR_FMT_YUV420P 11
+>> +/* SRC_COLOR Palette */
+>> +#define RGA_COLOR_FMT_CP_1BPP 12
+>> +#define RGA_COLOR_FMT_CP_2BPP 13
+>> +#define RGA_COLOR_FMT_CP_4BPP 14
+>> +#define RGA_COLOR_FMT_CP_8BPP 15
+>> +#define RGA_COLOR_FMT_MASK 15
+>> +
+>> +#define RGA_COLOR_NONE_SWAP 0
+>> +#define RGA_COLOR_RB_SWAP 1
+>> +#define RGA_COLOR_ALPHA_SWAP 2
+>> +#define RGA_COLOR_UV_SWAP 4
+>> +
+>> +#define RGA_SRC_CSC_MODE_BYPASS 0
+>> +#define RGA_SRC_CSC_MODE_BT601_R0 1
+>> +#define RGA_SRC_CSC_MODE_BT601_R1 2
+>> +#define RGA_SRC_CSC_MODE_BT709_R0 3
+>> +#define RGA_SRC_CSC_MODE_BT709_R1 4
+>> +
+>> +#define RGA_SRC_ROT_MODE_0_DEGREE 0
+>> +#define RGA_SRC_ROT_MODE_90_DEGREE 1
+>> +#define RGA_SRC_ROT_MODE_180_DEGREE 2
+>> +#define RGA_SRC_ROT_MODE_270_DEGREE 3
+>> +
+>> +#define RGA_SRC_MIRR_MODE_NO 0
+>> +#define RGA_SRC_MIRR_MODE_X 1
+>> +#define RGA_SRC_MIRR_MODE_Y 2
+>> +#define RGA_SRC_MIRR_MODE_X_Y 3
+>> +
+>> +#define RGA_SRC_HSCL_MODE_NO 0
+>> +#define RGA_SRC_HSCL_MODE_DOWN 1
+>> +#define RGA_SRC_HSCL_MODE_UP 2
+>> +
+>> +#define RGA_SRC_VSCL_MODE_NO 0
+>> +#define RGA_SRC_VSCL_MODE_DOWN 1
+>> +#define RGA_SRC_VSCL_MODE_UP 2
+>> +
+>> +#define RGA_SRC_TRANS_ENABLE_R 1
+>> +#define RGA_SRC_TRANS_ENABLE_G 2
+>> +#define RGA_SRC_TRANS_ENABLE_B 4
+>> +#define RGA_SRC_TRANS_ENABLE_A 8
+>> +
+>> +#define RGA_SRC_BIC_COE_SELEC_CATROM 0
+>> +#define RGA_SRC_BIC_COE_SELEC_MITCHELL 1
+>> +#define RGA_SRC_BIC_COE_SELEC_HERMITE 2
+>> +#define RGA_SRC_BIC_COE_SELEC_BSPLINE 3
+>> +
+>> +#define RGA_DST_DITHER_MODE_888_TO_666 0
+>> +#define RGA_DST_DITHER_MODE_888_TO_565 1
+>> +#define RGA_DST_DITHER_MODE_888_TO_555 2
+>> +#define RGA_DST_DITHER_MODE_888_TO_444 3
+>> +
+>> +#define RGA_DST_CSC_MODE_BYPASS 0
+>> +#define RGA_DST_CSC_MODE_BT601_R0 1
+>> +#define RGA_DST_CSC_MODE_BT601_R1 2
+>> +#define RGA_DST_CSC_MODE_BT709_R0 3
+>> +
+>> +#define RGA_ALPHA_ROP_MODE_2 0
+>> +#define RGA_ALPHA_ROP_MODE_3 1
+>> +#define RGA_ALPHA_ROP_MODE_4 2
+>> +
+>> +#define RGA_ALPHA_SELECT_ALPHA 0
+>> +#define RGA_ALPHA_SELECT_ROP 1
+>> +
+>> +#define RGA_ALPHA_MASK_BIG_ENDIAN 0
+>> +#define RGA_ALPHA_MASK_LITTLE_ENDIAN 1
+>> +
+>> +#define RGA_ALPHA_NORMAL 0
+>> +#define RGA_ALPHA_REVERSE 1
+>> +
+>> +#define RGA_ALPHA_BLEND_GLOBAL 0
+>> +#define RGA_ALPHA_BLEND_NORMAL 1
+>> +#define RGA_ALPHA_BLEND_MULTIPLY 2
+>> +
+>> +#define RGA_ALPHA_CAL_CUT 0
+>> +#define RGA_ALPHA_CAL_NORMAL 1
+>> +
+>> +#define RGA_ALPHA_FACTOR_ZERO 0
+>> +#define RGA_ALPHA_FACTOR_ONE 1
+>> +#define RGA_ALPHA_FACTOR_OTHER 2
+>> +#define RGA_ALPHA_FACTOR_OTHER_REVERSE 3
+>> +#define RGA_ALPHA_FACTOR_SELF 4
+>> +
+>> +#define RGA_ALPHA_COLOR_NORMAL 0
+>> +#define RGA_ALPHA_COLOR_MULTIPLY_CAL 1
+>> +
+>> +/* Registers union */
+>> +union rga_mode_ctrl {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:2] */
+>> +             unsigned int render:3;
+>> +             /* [3:6] */
+>> +             unsigned int bitblt:1;
+>> +             unsigned int cf_rop4_pat:1;
+>> +             unsigned int alpha_zero_key:1;
+>> +             unsigned int gradient_sat:1;
+>> +             /* [7:31] */
+>> +             unsigned int reserved:25;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_info {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:3] */
+>> +             unsigned int format:4;
+>> +             /* [4:7] */
+>> +             unsigned int swap:3;
+>> +             unsigned int cp_endian:1;
+>> +             /* [8:17] */
+>> +             unsigned int csc_mode:2;
+>> +             unsigned int rot_mode:2;
+>> +             unsigned int mir_mode:2;
+>> +             unsigned int hscl_mode:2;
+>> +             unsigned int vscl_mode:2;
+>> +             /* [18:22] */
+>> +             unsigned int trans_mode:1;
+>> +             unsigned int trans_enable:4;
+>> +             /* [23:25] */
+>> +             unsigned int dither_up_en:1;
+>> +             unsigned int bic_coe_sel:2;
+>> +             /* [26:31] */
+>> +             unsigned int reserved:6;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_vir_info {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int vir_width:15;
+>> +             unsigned int reserved:1;
+>> +             /* [16:25] */
+>> +             unsigned int vir_stride:10;
+>> +             /* [26:31] */
+>> +             unsigned int reserved1:6;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_act_info {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int act_width:13;
+>> +             unsigned int reserved:3;
+>> +             /* [16:31] */
+>> +             unsigned int act_height:13;
+>> +             unsigned int reserved1:3;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_x_factor {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int down_scale_factor:16;
+>> +             /* [16:31] */
+>> +             unsigned int up_scale_factor:16;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_y_factor {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int down_scale_factor:16;
+>> +             /* [16:31] */
+>> +             unsigned int up_scale_factor:16;
+>> +     } data;
+>> +};
+>> +
+>> +/* Alpha / Red / Green / Blue */
+>> +union rga_src_cp_gr_color {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int gradient_x:16;
+>> +             /* [16:31] */
+>> +             unsigned int gradient_y:16;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_transparency_color0 {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:7] */
+>> +             unsigned int trans_rmin:8;
+>> +             /* [8:15] */
+>> +             unsigned int trans_gmin:8;
+>> +             /* [16:23] */
+>> +             unsigned int trans_bmin:8;
+>> +             /* [24:31] */
+>> +             unsigned int trans_amin:8;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_src_transparency_color1 {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:7] */
+>> +             unsigned int trans_rmax:8;
+>> +             /* [8:15] */
+>> +             unsigned int trans_gmax:8;
+>> +             /* [16:23] */
+>> +             unsigned int trans_bmax:8;
+>> +             /* [24:31] */
+>> +             unsigned int trans_amax:8;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_dst_info {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:3] */
+>> +             unsigned int format:4;
+>> +             /* [4:6] */
+>> +             unsigned int swap:3;
+>> +             /* [7:9] */
+>> +             unsigned int src1_format:3;
+>> +             /* [10:11] */
+>> +             unsigned int src1_swap:2;
+>> +             /* [12:15] */
+>> +             unsigned int dither_up_en:1;
+>> +             unsigned int dither_down_en:1;
+>> +             unsigned int dither_down_mode:2;
+>> +             /* [16:18] */
+>> +             unsigned int csc_mode:2;
+>> +             unsigned int csc_clip:1;
+>> +             /* [19:31] */
+>> +             unsigned int reserved:13;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_dst_vir_info {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int vir_stride:15;
+>> +             unsigned int reserved:1;
+>> +             /* [16:31] */
+>> +             unsigned int src1_vir_stride:15;
+>> +             unsigned int reserved1:1;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_dst_act_info {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:15] */
+>> +             unsigned int act_width:12;
+>> +             unsigned int reserved:4;
+>> +             /* [16:31] */
+>> +             unsigned int act_height:12;
+>> +             unsigned int reserved1:4;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_alpha_ctrl0 {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:3] */
+>> +             unsigned int rop_en:1;
+>> +             unsigned int rop_select:1;
+>> +             unsigned int rop_mode:2;
+>> +             /* [4:11] */
+>> +             unsigned int src_fading_val:8;
+>> +             /* [12:20] */
+>> +             unsigned int dst_fading_val:8;
+>> +             unsigned int mask_endian:1;
+>> +             /* [21:31] */
+>> +             unsigned int reserved:11;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_alpha_ctrl1 {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:1] */
+>> +             unsigned int dst_color_m0:1;
+>> +             unsigned int src_color_m0:1;
+>> +             /* [2:7] */
+>> +             unsigned int dst_factor_m0:3;
+>> +             unsigned int src_factor_m0:3;
+>> +             /* [8:9] */
+>> +             unsigned int dst_alpha_cal_m0:1;
+>> +             unsigned int src_alpha_cal_m0:1;
+>> +             /* [10:13] */
+>> +             unsigned int dst_blend_m0:2;
+>> +             unsigned int src_blend_m0:2;
+>> +             /* [14:15] */
+>> +             unsigned int dst_alpha_m0:1;
+>> +             unsigned int src_alpha_m0:1;
+>> +             /* [16:21] */
+>> +             unsigned int dst_factor_m1:3;
+>> +             unsigned int src_factor_m1:3;
+>> +             /* [22:23] */
+>> +             unsigned int dst_alpha_cal_m1:1;
+>> +             unsigned int src_alpha_cal_m1:1;
+>> +             /* [24:27] */
+>> +             unsigned int dst_blend_m1:2;
+>> +             unsigned int src_blend_m1:2;
+>> +             /* [28:29] */
+>> +             unsigned int dst_alpha_m1:1;
+>> +             unsigned int src_alpha_m1:1;
+>> +             /* [30:31] */
+>> +             unsigned int reserved:2;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_fading_ctrl {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:7] */
+>> +             unsigned int fading_offset_r:8;
+>> +             /* [8:15] */
+>> +             unsigned int fading_offset_g:8;
+>> +             /* [16:23] */
+>> +             unsigned int fading_offset_b:8;
+>> +             /* [24:31] */
+>> +             unsigned int fading_en:1;
+>> +             unsigned int reserved:7;
+>> +     } data;
+>> +};
+>> +
+>> +union rga_pat_con {
+>> +     unsigned int val;
+>> +     struct {
+>> +             /* [0:7] */
+>> +             unsigned int width:8;
+>> +             /* [8:15] */
+>> +             unsigned int height:8;
+>> +             /* [16:23] */
+>> +             unsigned int offset_x:8;
+>> +             /* [24:31] */
+>> +             unsigned int offset_y:8;
+>> +     } data;
+>> +};
+>> +
+>> +#endif
+>> diff --git a/drivers/media/platform/rockchip-rga/rga.c b/drivers/media/platform/rockchip-rga/rga.c
+>> new file mode 100644
+>> index 0000000..738e649
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip-rga/rga.c
+>> @@ -0,0 +1,987 @@
+>> +/*
+>> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+>> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>> + *
+>> + * This software is licensed under the terms of the GNU General Public
+>> + * License version 2, as published by the Free Software Foundation, and
+>> + * may be copied, distributed, and modified under those terms.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/clk.h>
+>> +#include <linux/debugfs.h>
+>> +#include <linux/delay.h>
+>> +#include <linux/fs.h>
+>> +#include <linux/interrupt.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/pm_runtime.h>
+>> +#include <linux/reset.h>
+>> +#include <linux/sched.h>
+>> +#include <linux/slab.h>
+>> +#include <linux/timer.h>
+>> +
+>> +#include <linux/platform_device.h>
+>> +#include <media/v4l2-device.h>
+>> +#include <media/v4l2-ioctl.h>
+>> +#include <media/v4l2-mem2mem.h>
+>> +#include <media/videobuf2-dma-sg.h>
+>> +#include <media/videobuf2-v4l2.h>
+>> +
+>> +#include "rga-hw.h"
+>> +#include "rga.h"
+>> +
+>> +static void job_abort(void *prv)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +
+>> +     if (rga->curr == NULL)  /* No job currently running */
+>> +             return;
+>> +
+>> +     wait_event_timeout(rga->irq_queue,
+>> +                        rga->curr == NULL, msecs_to_jiffies(RGA_TIMEOUT));
+>> +}
+>> +
+>> +static void device_run(void *prv)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     struct vb2_buffer *src, *dst;
+>> +     unsigned long flags;
+>> +
+>> +     spin_lock_irqsave(&rga->ctrl_lock, flags);
+>> +
+>> +     rga->curr = ctx;
+>> +
+>> +     src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+>> +     dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+>> +
+>> +     rga_buf_map(src);
+>> +     rga_buf_map(dst);
+>> +
+>> +     rga_cmd_set(ctx);
+>> +
+>> +     rga_start(rga);
+>> +
+>> +     spin_unlock_irqrestore(&rga->ctrl_lock, flags);
+>> +}
+>> +
+>> +static irqreturn_t rga_isr(int irq, void *prv)
+>> +{
+>> +     struct rockchip_rga *rga = prv;
+>> +     int intr;
+>> +
+>> +     intr = rga_read(rga, RGA_INT) & 0xf;
+>> +
+>> +     rga_mod(rga, RGA_INT, intr << 4, 0xf << 4);
+>> +
+>> +     if (intr & 0x04) {
+>> +             struct vb2_v4l2_buffer *src, *dst;
+>> +             struct rga_ctx *ctx = rga->curr;
+>> +
+>> +             BUG_ON(ctx == NULL);
+>> +
+>> +             rga->curr = NULL;
+>> +
+>> +             src = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+>> +             dst = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+>> +
+>> +             BUG_ON(src == NULL);
+>> +             BUG_ON(dst == NULL);
+>> +
+>> +             dst->timecode = src->timecode;
+>> +             dst->vb2_buf.timestamp = src->vb2_buf.timestamp;
+>> +             dst->flags &= ~V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
+>> +             dst->flags |= src->flags & V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
+>> +
+>> +             v4l2_m2m_buf_done(src, VB2_BUF_STATE_DONE);
+>> +             v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
+>> +             v4l2_m2m_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx);
+>> +
+>> +             wake_up(&rga->irq_queue);
+>> +     }
+>> +
+>> +     return IRQ_HANDLED;
+>> +}
+>> +
+>> +static struct v4l2_m2m_ops rga_m2m_ops = {
+>> +     .device_run = device_run,
+>> +     .job_abort = job_abort,
+>> +};
+>> +
+>> +static int
+>> +queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+>> +{
+>> +     struct rga_ctx *ctx = priv;
+>> +     int ret;
+>> +
+>> +     src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT;
+>> +     src_vq->io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF;
+>
+> VB2_USERPTR should only be used if the DMA is able to handle partial
+> pages. I.e. the memory allocated by malloc() will start at a 8 byte
+> aligned address in the middle of a page, and ditto for the last page.
+>
+> If the DMA cannot handle this, then you shouldn't set this streaming
+> mode. Same for the capture queue below.
+>
+>> +     src_vq->drv_priv = ctx;
+>> +     src_vq->ops = &rga_qops;
+>> +     src_vq->mem_ops = &vb2_dma_sg_memops;
+>> +     src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+>> +     src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+>> +     src_vq->lock = &ctx->rga->mutex;
+>> +     src_vq->dev = ctx->rga->v4l2_dev.dev;
+>> +
+>> +     ret = vb2_queue_init(src_vq);
+>> +     if (ret)
+>> +             return ret;
+>> +
+>> +     dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+>> +     dst_vq->io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF;
+>> +     dst_vq->drv_priv = ctx;
+>> +     dst_vq->ops = &rga_qops;
+>> +     dst_vq->mem_ops = &vb2_dma_sg_memops;
+>> +     dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+>> +     dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+>> +     dst_vq->lock = &ctx->rga->mutex;
+>> +     dst_vq->dev = ctx->rga->v4l2_dev.dev;
+>> +
+>> +     return vb2_queue_init(dst_vq);
+>> +}
+>> +
+>> +static int rga_s_ctrl(struct v4l2_ctrl *ctrl)
+>> +{
+>> +     struct rga_ctx *ctx = container_of(ctrl->handler, struct rga_ctx,
+>> +                                        ctrl_handler);
+>> +     unsigned long flags;
+>> +
+>> +     spin_lock_irqsave(&ctx->rga->ctrl_lock, flags);
+>> +     switch (ctrl->id) {
+>> +     case V4L2_CID_PORTER_DUFF_MODE:
+>> +             ctx->op = ctrl->val;
+>> +             break;
+>> +     case V4L2_CID_HFLIP:
+>> +             ctx->hflip = ctrl->val;
+>> +             break;
+>> +     case V4L2_CID_VFLIP:
+>> +             ctx->vflip = ctrl->val;
+>> +             break;
+>> +     case V4L2_CID_ROTATE:
+>> +             ctx->rotate = ctrl->val;
+>> +             break;
+>> +     case V4L2_CID_BG_COLOR:
+>> +             ctx->fill_color = ctrl->val;
+>> +             break;
+>> +     }
+>> +     spin_unlock_irqrestore(&ctx->rga->ctrl_lock, flags);
+>> +     return 0;
+>> +}
+>> +
+>> +static const struct v4l2_ctrl_ops rga_ctrl_ops = {
+>> +     .s_ctrl = rga_s_ctrl,
+>> +};
+>> +
+>> +static int rga_setup_ctrls(struct rga_ctx *ctx)
+>> +{
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +
+>> +     v4l2_ctrl_handler_init(&ctx->ctrl_handler, 7);
+>> +
+>> +     v4l2_ctrl_new_std_menu(&ctx->ctrl_handler, &rga_ctrl_ops,
+>> +                            V4L2_CID_PORTER_DUFF_MODE,
+>> +                            V4L2_PORTER_DUFF_CLEAR, 0,
+>> +                            V4L2_PORTER_DUFF_SRC);
+>> +
+>> +     v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+>> +                       V4L2_CID_HFLIP, 0, 1, 1, 0);
+>> +
+>> +     v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+>> +                       V4L2_CID_VFLIP, 0, 1, 1, 0);
+>> +
+>> +     v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+>> +                       V4L2_CID_ROTATE, 0, 270, 90, 0);
+>> +
+>> +     v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+>> +                       V4L2_CID_BG_COLOR, 0, 0xffffffff, 1, 0);
+>> +
+>> +     if (ctx->ctrl_handler.error) {
+>> +             int err = ctx->ctrl_handler.error;
+>> +
+>> +             v4l2_err(&rga->v4l2_dev, "%s failed\n", __func__);
+>> +             v4l2_ctrl_handler_free(&ctx->ctrl_handler);
+>> +             return err;
+>> +     }
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +struct rga_fmt formats[] = {
+>> +     {
+>> +             .name = "ARGB_8888",
+>
+> Don't set the name. This is supplied by the v4l2-core (see v4l2-ioctl.c) to ensure
+> consistent naming between drivers.
+>
+>> +             .fourcc = V4L2_PIX_FMT_ARGB32,
+>> +             .color_swap = RGA_COLOR_RB_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_ABGR8888,
+>> +             .depth = 32,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "XRGB_8888",
+>> +             .fourcc = V4L2_PIX_FMT_XRGB32,
+>> +             .color_swap = RGA_COLOR_RB_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_XBGR8888,
+>> +             .depth = 32,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "BGRA_8888",
+>> +             .fourcc = V4L2_PIX_FMT_ABGR32,
+>> +             .color_swap = RGA_COLOR_ALPHA_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_ABGR8888,
+>> +             .depth = 32,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "BGRX_8888",
+>> +             .fourcc = V4L2_PIX_FMT_XBGR32,
+>> +             .color_swap = RGA_COLOR_ALPHA_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_XBGR8888,
+>> +             .depth = 32,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "RGB_888",
+>> +             .fourcc = V4L2_PIX_FMT_RGB24,
+>> +             .color_swap = RGA_COLOR_RB_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_BGR888,
+>> +             .depth = 24,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "ARGB_444",
+>> +             .fourcc = V4L2_PIX_FMT_ARGB444,
+>> +             .color_swap = RGA_COLOR_RB_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_ABGR4444,
+>> +             .depth = 16,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "ARGB_1555",
+>> +             .fourcc = V4L2_PIX_FMT_ARGB555,
+>> +             .color_swap = RGA_COLOR_RB_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_ABGR1555,
+>> +             .depth = 16,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "RGB_565",
+>> +             .fourcc = V4L2_PIX_FMT_RGB565,
+>> +             .color_swap = RGA_COLOR_RB_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_BGR565,
+>> +             .depth = 16,
+>> +             .uv_factor = 1,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "NV_21",
+>> +             .fourcc = V4L2_PIX_FMT_NV21,
+>> +             .color_swap = RGA_COLOR_UV_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV420SP,
+>> +             .depth = 12,
+>> +             .uv_factor = 4,
+>> +             .y_div = 2,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "NV_61",
+>> +             .fourcc = V4L2_PIX_FMT_NV61,
+>> +             .color_swap = RGA_COLOR_UV_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV422SP,
+>> +             .depth = 16,
+>> +             .uv_factor = 2,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "NV_12",
+>> +             .fourcc = V4L2_PIX_FMT_NV12,
+>> +             .color_swap = RGA_COLOR_NONE_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV420SP,
+>> +             .depth = 12,
+>> +             .uv_factor = 4,
+>> +             .y_div = 2,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "NV_16",
+>> +             .fourcc = V4L2_PIX_FMT_NV16,
+>> +             .color_swap = RGA_COLOR_NONE_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV422SP,
+>> +             .depth = 16,
+>> +             .uv_factor = 2,
+>> +             .y_div = 1,
+>> +             .x_div = 1,
+>> +     },
+>> +     {
+>> +             .name = "YUV_420",
+>> +             .fourcc = V4L2_PIX_FMT_YUV420,
+>> +             .color_swap = RGA_COLOR_NONE_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV420P,
+>> +             .depth = 12,
+>> +             .uv_factor = 4,
+>> +             .y_div = 2,
+>> +             .x_div = 2,
+>> +     },
+>> +     {
+>> +             .name = "YUV_422",
+>> +             .fourcc = V4L2_PIX_FMT_YUV422P,
+>> +             .color_swap = RGA_COLOR_NONE_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV422P,
+>> +             .depth = 16,
+>> +             .uv_factor = 2,
+>> +             .y_div = 1,
+>> +             .x_div = 2,
+>> +     },
+>> +     {
+>> +             .name = "YVU_420",
+>> +             .fourcc = V4L2_PIX_FMT_YVU420,
+>> +             .color_swap = RGA_COLOR_UV_SWAP,
+>> +             .hw_format = RGA_COLOR_FMT_YUV420P,
+>> +             .depth = 12,
+>> +             .uv_factor = 4,
+>> +             .y_div = 2,
+>> +             .x_div = 2,
+>> +     },
+>> +};
+>> +
+>> +#define NUM_FORMATS ARRAY_SIZE(formats)
+>> +
+>> +struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
+>> +{
+>> +     unsigned int i;
+>> +
+>> +     for (i = 0; i < NUM_FORMATS; i++) {
+>> +             if (formats[i].fourcc == f->fmt.pix.pixelformat)
+>> +                     return &formats[i];
+>> +     }
+>> +     return NULL;
+>> +}
+>> +
+>> +static struct rga_frame def_frame = {
+>> +     .width = DEFAULT_WIDTH,
+>> +     .height = DEFAULT_HEIGHT,
+>> +     .crop.left = 0,
+>> +     .crop.top = 0,
+>> +     .crop.width = DEFAULT_WIDTH,
+>> +     .crop.height = DEFAULT_HEIGHT,
+>> +     .fmt = &formats[0],
+>> +};
+>> +
+>> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type)
+>> +{
+>> +     switch (type) {
+>> +     case V4L2_BUF_TYPE_VIDEO_OUTPUT:
+>> +             return &ctx->in;
+>> +     case V4L2_BUF_TYPE_VIDEO_CAPTURE:
+>> +             return &ctx->out;
+>> +     default:
+>> +             return ERR_PTR(-EINVAL);
+>> +     }
+>> +}
+>> +
+>> +static int rga_open(struct file *file)
+>> +{
+>> +     struct rockchip_rga *rga = video_drvdata(file);
+>> +     struct rga_ctx *ctx = NULL;
+>> +     int ret = 0;
+>> +
+>> +     ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+>> +     if (!ctx)
+>> +             return -ENOMEM;
+>> +     ctx->rga = rga;
+>> +     /* Set default formats */
+>> +     ctx->in = def_frame;
+>> +     ctx->out = def_frame;
+>> +
+>> +     if (mutex_lock_interruptible(&rga->mutex)) {
+>> +             kfree(ctx);
+>> +             return -ERESTARTSYS;
+>> +     }
+>> +     ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(rga->m2m_dev, ctx, &queue_init);
+>> +     if (IS_ERR(ctx->fh.m2m_ctx)) {
+>> +             ret = PTR_ERR(ctx->fh.m2m_ctx);
+>> +             mutex_unlock(&rga->mutex);
+>> +             kfree(ctx);
+>> +             return ret;
+>> +     }
+>> +     v4l2_fh_init(&ctx->fh, video_devdata(file));
+>> +     file->private_data = &ctx->fh;
+>> +     v4l2_fh_add(&ctx->fh);
+>> +
+>> +     rga_setup_ctrls(ctx);
+>> +
+>> +     /* Write the default values to the ctx struct */
+>> +     v4l2_ctrl_handler_setup(&ctx->ctrl_handler);
+>> +
+>> +     ctx->fh.ctrl_handler = &ctx->ctrl_handler;
+>> +     mutex_unlock(&rga->mutex);
+>> +
+>> +     v4l2_info(&rga->v4l2_dev, "instance opened\n");
+>
+> Drop this, no need to spam the kernel log.
+>
+>> +     return 0;
+>> +}
+>> +
+>> +static int rga_release(struct file *file)
+>> +{
+>> +     struct rockchip_rga *rga = video_drvdata(file);
+>> +     struct rga_ctx *ctx =
+>> +             container_of(file->private_data, struct rga_ctx, fh);
+>> +
+>> +     v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+>> +
+>> +     v4l2_ctrl_handler_free(&ctx->ctrl_handler);
+>> +     v4l2_fh_del(&ctx->fh);
+>> +     v4l2_fh_exit(&ctx->fh);
+>> +     kfree(ctx);
+>> +     v4l2_info(&rga->v4l2_dev, "instance closed\n");
+>
+> Ditto.
+>
+>> +     return 0;
+>> +}
+>> +
+>> +static const struct v4l2_file_operations rga_fops = {
+>> +     .owner = THIS_MODULE,
+>> +     .open = rga_open,
+>> +     .release = rga_release,
+>> +     .poll = v4l2_m2m_fop_poll,
+>> +     .unlocked_ioctl = video_ioctl2,
+>> +     .mmap = v4l2_m2m_fop_mmap,
+>> +};
+>> +
+>> +static int
+>> +vidioc_querycap(struct file *file, void *priv, struct v4l2_capability *cap)
+>> +{
+>> +     strncpy(cap->driver, RGA_NAME, sizeof(cap->driver) - 1);
+>> +     strncpy(cap->card, RGA_NAME, sizeof(cap->card) - 1);
+>> +     cap->bus_info[0] = 0;
+>
+> This should be something like: "platform:rga"
+>
+>> +     cap->device_caps = V4L2_CAP_VIDEO_M2M | V4L2_CAP_STREAMING;
+>> +     cap->capabilities = cap->device_caps | V4L2_CAP_DEVICE_CAPS;
+>
+> Drop these two lines. Instead set the device_caps of struct video_device and
+> the v4l2 core will fill in these two fields for you.
+>
+>> +     return 0;
+>> +}
+>> +
+>> +static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+>> +{
+>> +     struct rga_fmt *fmt;
+>> +
+>> +     if (f->index >= NUM_FORMATS)
+>> +             return -EINVAL;
+>> +
+>> +     fmt = &formats[f->index];
+>> +     f->pixelformat = fmt->fourcc;
+>> +     strncpy(f->description, fmt->name, sizeof(f->description) - 1);
+>
+> Drop this, the description is filled in by the v4l2 core.
+>
+>> +     return 0;
+>> +}
+>> +
+>> +static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct vb2_queue *vq;
+>> +     struct rga_frame *frm;
+>> +
+>> +     vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+>> +     if (!vq)
+>> +             return -EINVAL;
+>> +     frm = rga_get_frame(ctx, f->type);
+>> +     if (IS_ERR(frm))
+>> +             return PTR_ERR(frm);
+>> +
+>> +     f->fmt.pix.width = frm->width;
+>> +     f->fmt.pix.height = frm->height;
+>> +     f->fmt.pix.field = V4L2_FIELD_NONE;
+>> +     f->fmt.pix.pixelformat = frm->fmt->fourcc;
+>> +     f->fmt.pix.bytesperline = frm->stride;
+>> +     f->fmt.pix.sizeimage = frm->size;
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
+>> +{
+>> +     struct rga_fmt *fmt;
+>> +     enum v4l2_field *field;
+>> +
+>> +     fmt = rga_fmt_find(f);
+>> +     if (!fmt)
+>> +             return -EINVAL;
+>> +
+>> +     field = &f->fmt.pix.field;
+>> +     if (*field == V4L2_FIELD_ANY)
+>> +             *field = V4L2_FIELD_NONE;
+>> +     else if (*field != V4L2_FIELD_NONE)
+>> +             return -EINVAL;
+>
+> Just set field to FIELD_NONE directly:
+>
+>         f->fmt.pix.field = FIELD_NONE;
+>
+>> +
+>> +     if (f->fmt.pix.width > MAX_WIDTH)
+>> +             f->fmt.pix.width = MAX_WIDTH;
+>> +     if (f->fmt.pix.height > MAX_HEIGHT)
+>> +             f->fmt.pix.height = MAX_HEIGHT;
+>> +
+>> +     if (f->fmt.pix.width < MIN_WIDTH)
+>> +             f->fmt.pix.width = MIN_WIDTH;
+>> +     if (f->fmt.pix.height < MIN_HEIGHT)
+>> +             f->fmt.pix.height = MIN_HEIGHT;
+>> +
+>> +     if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
+>> +             f->fmt.pix.bytesperline = f->fmt.pix.width;
+>> +     else
+>> +             f->fmt.pix.bytesperline = (f->fmt.pix.width * fmt->depth) >> 3;
+>> +
+>> +     f->fmt.pix.sizeimage =
+>> +             f->fmt.pix.height * (f->fmt.pix.width * fmt->depth) >> 3;
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     struct vb2_queue *vq;
+>> +     struct rga_frame *frm;
+>> +     struct rga_fmt *fmt;
+>> +     int ret = 0;
+>> +
+>> +     /* Adjust all values accordingly to the hardware capabilities
+>> +      * and chosen format.
+>> +      */
+>> +     ret = vidioc_try_fmt(file, prv, f);
+>> +     if (ret)
+>> +             return ret;
+>> +     vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+>> +     if (vb2_is_busy(vq)) {
+>> +             v4l2_err(&rga->v4l2_dev, "queue (%d) bust\n", f->type);
+>> +             return -EBUSY;
+>> +     }
+>> +     frm = rga_get_frame(ctx, f->type);
+>> +     if (IS_ERR(frm))
+>> +             return PTR_ERR(frm);
+>> +     fmt = rga_fmt_find(f);
+>> +     if (!fmt)
+>> +             return -EINVAL;
+>> +     frm->width = f->fmt.pix.width;
+>> +     frm->height = f->fmt.pix.height;
+>> +     frm->size = f->fmt.pix.sizeimage;
+>> +     frm->fmt = fmt;
+>> +     frm->stride = f->fmt.pix.bytesperline;
+>> +
+>> +     /* Reset crop settings */
+>> +     frm->crop.left = 0;
+>> +     frm->crop.top = 0;
+>> +     frm->crop.width = frm->width;
+>> +     frm->crop.height = frm->height;
+>> +     return 0;
+>> +}
+>> +
+>> +static int
+>> +vidioc_cropcap(struct file *file, void *priv, struct v4l2_cropcap *cr)
+>> +{
+>> +     struct rga_ctx *ctx = priv;
+>> +     struct rga_frame *f;
+>> +
+>> +     f = rga_get_frame(ctx, cr->type);
+>> +     if (IS_ERR(f))
+>> +             return PTR_ERR(f);
+>> +
+>> +     cr->bounds.left = 0;
+>> +     cr->bounds.top = 0;
+>> +     cr->bounds.width = f->width;
+>> +     cr->bounds.height = f->height;
+>> +     cr->defrect = cr->bounds;
+>> +     return 0;
+>> +}
+>> +
+>> +static int vidioc_g_crop(struct file *file, void *prv, struct v4l2_crop *cr)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct rga_frame *f;
+>> +
+>> +     f = rga_get_frame(ctx, cr->type);
+>> +     if (IS_ERR(f))
+>> +             return PTR_ERR(f);
+>> +
+>> +     cr->c = f->crop;
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int
+>> +vidioc_try_crop(struct file *file, void *prv, const struct v4l2_crop *cr)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct rockchip_rga *rga = ctx->rga;
+>> +     struct rga_frame *f;
+>> +
+>> +     f = rga_get_frame(ctx, cr->type);
+>> +     if (IS_ERR(f))
+>> +             return PTR_ERR(f);
+>> +
+>> +     if (cr->c.top < 0 || cr->c.left < 0) {
+>> +             v4l2_err(&rga->v4l2_dev,
+>> +                      "doesn't support negative values for top & left.\n");
+>> +             return -EINVAL;
+>> +     }
+>> +
+>> +     if (cr->c.left + cr->c.width > f->width ||
+>> +         cr->c.top + cr->c.height > f->height ||
+>> +         cr->c.width < MIN_WIDTH || cr->c.height < MIN_HEIGHT) {
+>> +
+>> +             v4l2_err(&rga->v4l2_dev, "unsupport crop value.\n");
+>> +             return -EINVAL;
+>> +     }
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int
+>> +vidioc_s_crop(struct file *file, void *prv, const struct v4l2_crop *cr)
+>> +{
+>> +     struct rga_ctx *ctx = prv;
+>> +     struct rga_frame *f;
+>> +     int ret;
+>> +
+>> +     ret = vidioc_try_crop(file, prv, cr);
+>> +     if (ret)
+>> +             return ret;
+>> +     f = rga_get_frame(ctx, cr->type);
+>> +     if (IS_ERR(f))
+>> +             return PTR_ERR(f);
+>> +
+>> +     f->crop = cr->c;
+>> +
+>> +     return 0;
+>> +}
+>
+> Nack. Implement the selection API instead. The crop API is deprecated and must
+> not be used in new drivers. And it almost certainly doesn't do what you expect
+> for a m2m device.
+>
+> Look at existing m2m drivers that support g/s_selection and see how it is done
+> there.
+>
+>> +
+>> +static const struct v4l2_ioctl_ops rga_ioctl_ops = {
+>> +     .vidioc_querycap = vidioc_querycap,
+>> +
+>> +     .vidioc_enum_fmt_vid_cap = vidioc_enum_fmt,
+>> +     .vidioc_g_fmt_vid_cap = vidioc_g_fmt,
+>> +     .vidioc_try_fmt_vid_cap = vidioc_try_fmt,
+>> +     .vidioc_s_fmt_vid_cap = vidioc_s_fmt,
+>> +
+>> +     .vidioc_enum_fmt_vid_out = vidioc_enum_fmt,
+>> +     .vidioc_g_fmt_vid_out = vidioc_g_fmt,
+>> +     .vidioc_try_fmt_vid_out = vidioc_try_fmt,
+>> +     .vidioc_s_fmt_vid_out = vidioc_s_fmt,
+>> +
+>> +     .vidioc_reqbufs = v4l2_m2m_ioctl_reqbufs,
+>> +     .vidioc_querybuf = v4l2_m2m_ioctl_querybuf,
+>> +     .vidioc_qbuf = v4l2_m2m_ioctl_qbuf,
+>> +     .vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
+>> +     .vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
+>> +     .vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
+>> +     .vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
+>> +
+>> +     .vidioc_streamon = v4l2_m2m_ioctl_streamon,
+>> +     .vidioc_streamoff = v4l2_m2m_ioctl_streamoff,
+>> +
+>> +     .vidioc_g_crop = vidioc_g_crop,
+>> +     .vidioc_s_crop = vidioc_s_crop,
+>> +     .vidioc_cropcap = vidioc_cropcap,
+>> +};
+>> +
+>> +static struct video_device rga_videodev = {
+>> +     .name = "rockchip-rga",
+>> +     .fops = &rga_fops,
+>> +     .ioctl_ops = &rga_ioctl_ops,
+>> +     .minor = -1,
+>> +     .release = video_device_release,
+>> +     .vfl_dir = VFL_DIR_M2M,
+>> +};
+>> +
+>> +static int rga_enable_clocks(struct rockchip_rga *rga)
+>> +{
+>> +     int ret;
+>> +
+>> +     ret = clk_prepare_enable(rga->sclk);
+>> +     if (ret) {
+>> +             dev_err(rga->dev, "Cannot enable rga sclk: %d\n", ret);
+>> +             return ret;
+>> +     }
+>> +
+>> +     ret = clk_prepare_enable(rga->aclk);
+>> +     if (ret) {
+>> +             dev_err(rga->dev, "Cannot enable rga aclk: %d\n", ret);
+>> +             goto err_disable_sclk;
+>> +     }
+>> +
+>> +     ret = clk_prepare_enable(rga->hclk);
+>> +     if (ret) {
+>> +             dev_err(rga->dev, "Cannot enable rga hclk: %d\n", ret);
+>> +             goto err_disable_aclk;
+>> +     }
+>> +
+>> +     return 0;
+>> +
+>> +err_disable_sclk:
+>> +     clk_disable_unprepare(rga->sclk);
+>> +err_disable_aclk:
+>> +     clk_disable_unprepare(rga->aclk);
+>> +
+>> +     return ret;
+>> +}
+>> +
+>> +static void rga_disable_clocks(struct rockchip_rga *rga)
+>> +{
+>> +     clk_disable_unprepare(rga->sclk);
+>> +     clk_disable_unprepare(rga->hclk);
+>> +     clk_disable_unprepare(rga->aclk);
+>> +}
+>> +
+>> +static int rga_parse_dt(struct rockchip_rga *rga)
+>> +{
+>> +     struct reset_control *core_rst, *axi_rst, *ahb_rst;
+>> +
+>> +     core_rst = devm_reset_control_get(rga->dev, "core");
+>> +     if (IS_ERR(core_rst)) {
+>> +             dev_err(rga->dev, "failed to get core reset controller\n");
+>> +             return PTR_ERR(core_rst);
+>> +     }
+>> +
+>> +     axi_rst = devm_reset_control_get(rga->dev, "axi");
+>> +     if (IS_ERR(axi_rst)) {
+>> +             dev_err(rga->dev, "failed to get axi reset controller\n");
+>> +             return PTR_ERR(axi_rst);
+>> +     }
+>> +
+>> +     ahb_rst = devm_reset_control_get(rga->dev, "ahb");
+>> +     if (IS_ERR(ahb_rst)) {
+>> +             dev_err(rga->dev, "failed to get ahb reset controller\n");
+>> +             return PTR_ERR(ahb_rst);
+>> +     }
+>> +
+>> +     reset_control_assert(core_rst);
+>> +     udelay(1);
+>> +     reset_control_deassert(core_rst);
+>> +
+>> +     reset_control_assert(axi_rst);
+>> +     udelay(1);
+>> +     reset_control_deassert(axi_rst);
+>> +
+>> +     reset_control_assert(ahb_rst);
+>> +     udelay(1);
+>> +     reset_control_deassert(ahb_rst);
+>> +
+>> +     rga->sclk = devm_clk_get(rga->dev, "sclk");
+>> +     if (IS_ERR(rga->sclk)) {
+>> +             dev_err(rga->dev, "failed to get sclk clock\n");
+>> +             return PTR_ERR(rga->sclk);
+>> +     }
+>> +
+>> +     rga->aclk = devm_clk_get(rga->dev, "aclk");
+>> +     if (IS_ERR(rga->aclk)) {
+>> +             dev_err(rga->dev, "failed to get aclk clock\n");
+>> +             return PTR_ERR(rga->aclk);
+>> +     }
+>> +
+>> +     rga->hclk = devm_clk_get(rga->dev, "hclk");
+>> +     if (IS_ERR(rga->hclk)) {
+>> +             dev_err(rga->dev, "failed to get hclk clock\n");
+>> +             return PTR_ERR(rga->hclk);
+>> +     }
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int rga_probe(struct platform_device *pdev)
+>> +{
+>> +     struct rockchip_rga *rga;
+>> +     struct video_device *vfd;
+>> +     struct resource *res;
+>> +     int ret = 0;
+>> +     int irq;
+>> +
+>> +     if (!pdev->dev.of_node)
+>> +             return -ENODEV;
+>> +
+>> +     rga = devm_kzalloc(&pdev->dev, sizeof(*rga), GFP_KERNEL);
+>> +     if (!rga)
+>> +             return -ENOMEM;
+>> +
+>> +     rga->dev = &pdev->dev;
+>> +     spin_lock_init(&rga->ctrl_lock);
+>> +     mutex_init(&rga->mutex);
+>> +
+>> +     init_waitqueue_head(&rga->irq_queue);
+>> +
+>> +     ret = rga_parse_dt(rga);
+>> +     if (ret)
+>> +             dev_err(&pdev->dev, "Unable to parse OF data\n");
+>> +
+>> +     pm_runtime_enable(rga->dev);
+>> +
+>> +     res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>> +
+>> +     rga->regs = devm_ioremap_resource(rga->dev, res);
+>> +     if (IS_ERR(rga->regs)) {
+>> +             ret = PTR_ERR(rga->regs);
+>> +             goto err_put_clk;
+>> +     }
+>> +
+>> +     irq = platform_get_irq(pdev, 0);
+>> +     if (irq < 0) {
+>> +             dev_err(rga->dev, "failed to get irq\n");
+>> +             ret = irq;
+>> +             goto err_put_clk;
+>> +     }
+>> +
+>> +     ret = devm_request_irq(rga->dev, irq, rga_isr, 0,
+>> +                            dev_name(rga->dev), rga);
+>> +     if (ret < 0) {
+>> +             dev_err(rga->dev, "failed to request irq\n");
+>> +             goto err_put_clk;
+>> +     }
+>> +
+>> +     ret = v4l2_device_register(&pdev->dev, &rga->v4l2_dev);
+>> +     if (ret)
+>> +             goto err_put_clk;
+>> +     vfd = video_device_alloc();
+>> +     if (!vfd) {
+>> +             v4l2_err(&rga->v4l2_dev, "Failed to allocate video device\n");
+>> +             ret = -ENOMEM;
+>> +             goto unreg_v4l2_dev;
+>> +     }
+>> +     *vfd = rga_videodev;
+>> +     vfd->lock = &rga->mutex;
+>> +     vfd->v4l2_dev = &rga->v4l2_dev;
+>> +     ret = video_register_device(vfd, VFL_TYPE_GRABBER, 0);
+>
+> Use -1 instead of 0. You also need to move this to the end of this function:
+> as soon as the video node is created it can be used, so you better do that
+> when everything has been initialized.
+>
+>> +     if (ret) {
+>> +             v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
+>> +             goto rel_vdev;
+>> +     }
+>> +
+>> +     video_set_drvdata(vfd, rga);
+>> +     snprintf(vfd->name, sizeof(vfd->name), "%s", rga_videodev.name);
+>> +     rga->vfd = vfd;
+>> +     v4l2_info(&rga->v4l2_dev, "device registered as /dev/video%d\n",
+>> +               vfd->num);
+>
+> Use video_device_node_name() to get the name.
+>
+>> +     platform_set_drvdata(pdev, rga);
+>> +     rga->m2m_dev = v4l2_m2m_init(&rga_m2m_ops);
+>> +     if (IS_ERR(rga->m2m_dev)) {
+>> +             v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
+>> +             ret = PTR_ERR(rga->m2m_dev);
+>> +             goto unreg_video_dev;
+>> +     }
+>> +
+>> +     pm_runtime_get_sync(rga->dev);
+>> +
+>> +     rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
+>> +     rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
+>
+> Is this the HW version number? If so, then that would be useful to log here.
+>
+>> +
+>> +     pm_runtime_put(rga->dev);
+>> +
+>> +     /* Create CMD buffer */
+>> +     rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
+>> +                                        &rga->cmdbuf_phy, GFP_KERNEL,
+>> +                                        DMA_ATTR_WRITE_COMBINE);
+>> +
+>> +     rga->src_mmu_pages =
+>> +             (unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+>> +     rga->dst_mmu_pages =
+>> +             (unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+>> +
+>> +     def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
+>> +
+>> +     return 0;
+>> +
+>> +unreg_video_dev:
+>> +     video_unregister_device(rga->vfd);
+>> +rel_vdev:
+>> +     video_device_release(vfd);
+>> +unreg_v4l2_dev:
+>> +     v4l2_device_unregister(&rga->v4l2_dev);
+>> +err_put_clk:
+>> +     pm_runtime_disable(rga->dev);
+>> +
+>> +     return ret;
+>> +}
+>> +
+>> +static int rga_remove(struct platform_device *pdev)
+>> +{
+>> +     struct rockchip_rga *rga = platform_get_drvdata(pdev);
+>> +
+>> +     dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, &rga->cmdbuf_virt,
+>> +                    rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
+>> +
+>> +     free_pages((unsigned long)rga->src_mmu_pages, 3);
+>> +     free_pages((unsigned long)rga->dst_mmu_pages, 3);
+>> +
+>> +     v4l2_info(&rga->v4l2_dev, "Removing\n");
+>> +
+>> +     v4l2_m2m_release(rga->m2m_dev);
+>> +     video_unregister_device(rga->vfd);
+>> +     v4l2_device_unregister(&rga->v4l2_dev);
+>> +
+>> +     pm_runtime_disable(rga->dev);
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +#ifdef CONFIG_PM
+>> +static int rga_runtime_suspend(struct device *dev)
+>> +{
+>> +     struct rockchip_rga *rga = dev_get_drvdata(dev);
+>> +
+>> +     rga_disable_clocks(rga);
+>> +
+>> +     return 0;
+>> +}
+>> +
+>> +static int rga_runtime_resume(struct device *dev)
+>> +{
+>> +     struct rockchip_rga *rga = dev_get_drvdata(dev);
+>> +
+>> +     return rga_enable_clocks(rga);
+>> +}
+>> +#endif
+>> +
+>> +static const struct dev_pm_ops rga_pm = {
+>> +     SET_RUNTIME_PM_OPS(rga_runtime_suspend,
+>> +                        rga_runtime_resume, NULL)
+>> +};
+>> +
+>> +static const struct of_device_id rockchip_rga_match[] = {
+>> +     {
+>> +             .compatible = "rockchip,rk3288-rga",
+>> +     },
+>> +     {
+>> +             .compatible = "rockchip,rk3399-rga",
+>> +     },
+>> +     {},
+>> +};
+>> +
+>> +MODULE_DEVICE_TABLE(of, rockchip_rga_match);
+>> +
+>> +static struct platform_driver rga_pdrv = {
+>> +     .probe = rga_probe,
+>> +     .remove = rga_remove,
+>> +     .driver = {
+>> +             .name = "rockchip-rga",
+>> +             .pm = &rga_pm,
+>> +             .of_match_table = rockchip_rga_match,
+>> +     },
+>> +};
+>> +
+>> +module_platform_driver(rga_pdrv);
+>> +
+>> +MODULE_AUTHOR("Jacob Chen <jacob-chen@iotwrt.com>");
+>> +MODULE_DESCRIPTION("Rockchip Raster 2d Grapphic Acceleration Unit");
+>> +MODULE_LICENSE("GPL");
+>> diff --git a/drivers/media/platform/rockchip-rga/rga.h b/drivers/media/platform/rockchip-rga/rga.h
+>> new file mode 100644
+>> index 0000000..9d30b41
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip-rga/rga.h
+>> @@ -0,0 +1,110 @@
+>> +/*
+>> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+>> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+>> + *
+>> + * This software is licensed under the terms of the GNU General Public
+>> + * License version 2, as published by the Free Software Foundation, and
+>> + * may be copied, distributed, and modified under those terms.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +#ifndef __RGA_H__
+>> +#define __RGA_H__
+>> +
+>> +#include <linux/platform_device.h>
+>> +#include <media/videobuf2-v4l2.h>
+>> +#include <media/v4l2-ctrls.h>
+>> +#include <media/v4l2-device.h>
+>> +
+>> +#define RGA_NAME "rockchip-rga"
+>> +
+>> +struct rga_fmt {
+>> +     char *name;
+>> +     u32 fourcc;
+>> +     int depth;
+>> +     u8 uv_factor;
+>> +     u8 y_div;
+>> +     u8 x_div;
+>> +     u8 color_swap;
+>> +     u8 hw_format;
+>> +};
+>> +
+>> +struct rga_frame {
+>> +     /* Original dimensions */
+>> +     u32 width;
+>> +     u32 height;
+>> +
+>> +     /* Crop */
+>> +     struct v4l2_rect crop;
+>> +
+>> +     /* Image format */
+>> +     struct rga_fmt *fmt;
+>> +
+>> +     /* Variables that can calculated once and reused */
+>> +     u32 stride;
+>> +     u32 size;
+>> +};
+>> +
+>> +struct rockchip_rga_version {
+>> +     u32 major;
+>> +     u32 minor;
+>> +};
+>> +
+>> +struct rga_ctx {
+>> +     struct v4l2_fh fh;
+>> +     struct rockchip_rga *rga;
+>> +     struct rga_frame in;
+>> +     struct rga_frame out;
+>> +     struct v4l2_ctrl_handler ctrl_handler;
+>> +
+>> +     /* Control values */
+>> +     u32 op;
+>> +     u32 hflip;
+>> +     u32 vflip;
+>> +     u32 rotate;
+>> +     u32 fill_color;
+>> +};
+>> +
+>> +struct rockchip_rga {
+>> +     struct v4l2_device v4l2_dev;
+>> +     struct v4l2_m2m_dev *m2m_dev;
+>> +     struct video_device *vfd;
+>> +
+>> +     struct device *dev;
+>> +     struct regmap *grf;
+>> +     void __iomem *regs;
+>> +     struct clk *sclk;
+>> +     struct clk *aclk;
+>> +     struct clk *hclk;
+>> +     struct rockchip_rga_version version;
+>> +
+>> +     struct mutex mutex;
+>> +     spinlock_t ctrl_lock;
+>> +
+>> +     wait_queue_head_t irq_queue;
+>> +
+>> +     struct rga_ctx *curr;
+>> +     dma_addr_t cmdbuf_phy;
+>> +     void *cmdbuf_virt;
+>> +     unsigned int *src_mmu_pages;
+>> +     unsigned int *dst_mmu_pages;
+>> +};
+>> +
+>> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type);
+>> +
+>> +/* RGA Buffers Manage Part */
+>> +extern const struct vb2_ops rga_qops;
+>> +void rga_buf_map(struct vb2_buffer *vb);
+>> +
+>> +/* RGA Hardware Part */
+>> +void rga_write(struct rockchip_rga *rga, u32 reg, u32 value);
+>> +u32 rga_read(struct rockchip_rga *rga, u32 reg);
+>> +void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask);
+>> +void rga_start(struct rockchip_rga *rga);
+>> +
+>> +void rga_cmd_set(struct rga_ctx *ctx);
+>> +
+>> +#endif
+>>
+>
+> Regards,
+>
+>         Hans
