@@ -1,1183 +1,430 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v4 3/6] [media] rockchip/rga: v4l2 m2m support
-Date: Mon, 31 Jul 2017 18:18:44 +0200
-Message-ID: <5dabed8f-f848-1ada-533e-2d7614862172@xs4all.nl>
-References: <1501515182-26705-1-git-send-email-jacob-chen@iotwrt.com>
- <1501515182-26705-4-git-send-email-jacob-chen@iotwrt.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1501515182-26705-4-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org
+From: Joe Kniss <djmk-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH] Add drm ioctl DRM_IOCTL_MODE_GETFB2 & associated helpers.
+Date: Mon, 31 Jul 2017 11:29:13 -0700
+Message-ID: <20170731182913.136758-1-djmk@google.com>
+References: <CAOvnNvYKXsy9dvOB0ge1WxQbwubPpzKofd=OGagKyft-yQJ1xw@mail.gmail.com>
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAOvnNvYKXsy9dvOB0ge1WxQbwubPpzKofd=OGagKyft-yQJ1xw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, marcheu-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, alexander.deucher-5C7GfCeVMHo@public.gmane.org, jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, patrik.r.jakobsson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, bskeggs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, tomi.valkeinen-l0cyMroinI0@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org, gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, funfunctor-dczkZgxz+BNUPWh3PAxdjQ@public.gmane.org, Andrey.Grodzovsky-5C7GfCeVMHo@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, nils.wallmenius-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, michel.daenzer-5C7GfCeVMHo@public.gmane.org, djmk-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07/31/2017 05:32 PM, Jacob Chen wrote:
-> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
-> accelerates 2D graphics operations, such as point/line drawing, image
-> scaling, rotation, BitBLT, alpha blending and image blur/sharpness
-> 
-> The drvier is mostly based on s5p-g2d v4l2 m2m driver
-> And supports various operations from the rendering pipeline.
->  - copy
->  - fast solid color fill
->  - rotation
->  - flip
->  - alpha blending
-> 
-> The code in rga-hw.c is used to configure regs according to operations
-> The code in rga-buf.c is used to create private mmu table for RGA.
-> 
-> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-> ---
->  drivers/media/platform/Kconfig                |  11 +
->  drivers/media/platform/Makefile               |   2 +
->  drivers/media/platform/rockchip-rga/Makefile  |   3 +
->  drivers/media/platform/rockchip-rga/rga-buf.c | 155 ++++
->  drivers/media/platform/rockchip-rga/rga-hw.c  | 650 +++++++++++++++++
->  drivers/media/platform/rockchip-rga/rga-hw.h  | 437 ++++++++++++
->  drivers/media/platform/rockchip-rga/rga.c     | 980 ++++++++++++++++++++++++++
->  drivers/media/platform/rockchip-rga/rga.h     | 109 +++
->  8 files changed, 2347 insertions(+)
->  create mode 100644 drivers/media/platform/rockchip-rga/Makefile
->  create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
->  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
->  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
->  create mode 100644 drivers/media/platform/rockchip-rga/rga.c
->  create mode 100644 drivers/media/platform/rockchip-rga/rga.h
-> 
+New getfb2 functionality uses drm_mode_fb_cmd2 struct to be symmetric
+with addfb2.   Also modifies *_fb_create_handle() calls to accept a
+format_plane_index so that handles for each plane can be generated.
+Previously, many *_fb_create_handle() calls simply defaulted to plane 0 only.
 
-<snip>
+Signed-off-by: Joe Kniss <djmk-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c |  5 +-
+ drivers/gpu/drm/armada/armada_fb.c          |  1 +
+ drivers/gpu/drm/drm_crtc_internal.h         |  2 +
+ drivers/gpu/drm/drm_fb_cma_helper.c         | 11 ++--
+ drivers/gpu/drm/drm_framebuffer.c           | 79 ++++++++++++++++++++++++++++-
+ drivers/gpu/drm/drm_ioctl.c                 |  1 +
+ drivers/gpu/drm/exynos/exynos_drm_fb.c      |  7 ++-
+ drivers/gpu/drm/gma500/framebuffer.c        |  2 +
+ drivers/gpu/drm/i915/intel_display.c        |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c       |  1 +
+ drivers/gpu/drm/msm/msm_fb.c                |  5 +-
+ drivers/gpu/drm/nouveau/nouveau_display.c   |  1 +
+ drivers/gpu/drm/omapdrm/omap_fb.c           |  5 +-
+ drivers/gpu/drm/radeon/radeon_display.c     |  5 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  6 ++-
+ drivers/gpu/drm/tegra/fb.c                  |  9 +++-
+ include/drm/drm_framebuffer.h               |  1 +
+ include/uapi/drm/drm.h                      |  2 +
+ 18 files changed, 127 insertions(+), 17 deletions(-)
 
-> diff --git a/drivers/media/platform/rockchip-rga/rga.c b/drivers/media/platform/rockchip-rga/rga.c
-> new file mode 100644
-> index 0000000..0c0bc4b
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip-rga/rga.c
-> @@ -0,0 +1,980 @@
-> +/*
-> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-> + * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-> + *
-> + * This software is licensed under the terms of the GNU General Public
-> + * License version 2, as published by the Free Software Foundation, and
-> + * may be copied, distributed, and modified under those terms.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/debugfs.h>
-> +#include <linux/delay.h>
-> +#include <linux/fs.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/reset.h>
-> +#include <linux/sched.h>
-> +#include <linux/slab.h>
-> +#include <linux/timer.h>
-> +
-> +#include <linux/platform_device.h>
-> +#include <media/v4l2-device.h>
-> +#include <media/v4l2-ioctl.h>
-> +#include <media/v4l2-mem2mem.h>
-> +#include <media/videobuf2-dma-sg.h>
-> +#include <media/videobuf2-v4l2.h>
-> +
-> +#include "rga-hw.h"
-> +#include "rga.h"
-> +
-> +static void job_abort(void *prv)
-> +{
-> +	struct rga_ctx *ctx = prv;
-> +	struct rockchip_rga *rga = ctx->rga;
-> +
-> +	if (rga->curr == NULL)	/* No job currently running */
-> +		return;
-> +
-> +	wait_event_timeout(rga->irq_queue,
-> +			   rga->curr == NULL, msecs_to_jiffies(RGA_TIMEOUT));
-> +}
-> +
-> +static void device_run(void *prv)
-> +{
-> +	struct rga_ctx *ctx = prv;
-> +	struct rockchip_rga *rga = ctx->rga;
-> +	struct vb2_buffer *src, *dst;
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&rga->ctrl_lock, flags);
-> +
-> +	rga->curr = ctx;
-> +
-> +	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> +	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> +
-> +	rga_buf_map(src);
-> +	rga_buf_map(dst);
-> +
-> +	rga_cmd_set(ctx);
-> +
-> +	rga_start(rga);
-> +
-> +	spin_unlock_irqrestore(&rga->ctrl_lock, flags);
-> +}
-> +
-> +static irqreturn_t rga_isr(int irq, void *prv)
-> +{
-> +	struct rockchip_rga *rga = prv;
-> +	int intr;
-> +
-> +	intr = rga_read(rga, RGA_INT) & 0xf;
-> +
-> +	rga_mod(rga, RGA_INT, intr << 4, 0xf << 4);
-> +
-> +	if (intr & 0x04) {
-> +		struct vb2_v4l2_buffer *src, *dst;
-> +		struct rga_ctx *ctx = rga->curr;
-> +
-> +		BUG_ON(ctx == NULL);
-> +
-> +		rga->curr = NULL;
-> +
-> +		src = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-> +		dst = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-> +
-> +		BUG_ON(src == NULL);
-> +		BUG_ON(dst == NULL);
-> +
-> +		dst->timecode = src->timecode;
-> +		dst->vb2_buf.timestamp = src->vb2_buf.timestamp;
-> +		dst->flags &= ~V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
-> +		dst->flags |= src->flags & V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
-> +
-> +		v4l2_m2m_buf_done(src, VB2_BUF_STATE_DONE);
-> +		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
-> +		v4l2_m2m_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx);
-> +
-> +		wake_up(&rga->irq_queue);
-> +	}
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static struct v4l2_m2m_ops rga_m2m_ops = {
-> +	.device_run = device_run,
-> +	.job_abort = job_abort,
-> +};
-> +
-> +static int
-> +queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
-> +{
-> +	struct rga_ctx *ctx = priv;
-> +	int ret;
-> +
-> +	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT;
-> +	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
-> +	src_vq->drv_priv = ctx;
-> +	src_vq->ops = &rga_qops;
-> +	src_vq->mem_ops = &vb2_dma_sg_memops;
-> +	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-> +	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
-> +	src_vq->lock = &ctx->rga->mutex;
-> +	src_vq->dev = ctx->rga->v4l2_dev.dev;
-> +
-> +	ret = vb2_queue_init(src_vq);
-> +	if (ret)
-> +		return ret;
-> +
-> +	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-> +	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
-> +	dst_vq->drv_priv = ctx;
-> +	dst_vq->ops = &rga_qops;
-> +	dst_vq->mem_ops = &vb2_dma_sg_memops;
-> +	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-> +	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
-> +	dst_vq->lock = &ctx->rga->mutex;
-> +	dst_vq->dev = ctx->rga->v4l2_dev.dev;
-> +
-> +	return vb2_queue_init(dst_vq);
-> +}
-> +
-> +static int rga_s_ctrl(struct v4l2_ctrl *ctrl)
-> +{
-> +	struct rga_ctx *ctx = container_of(ctrl->handler, struct rga_ctx,
-> +					   ctrl_handler);
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&ctx->rga->ctrl_lock, flags);
-> +	switch (ctrl->id) {
-> +	case V4L2_CID_PORTER_DUFF_MODE:
-> +		ctx->op = ctrl->val;
-> +		break;
-> +	case V4L2_CID_HFLIP:
-> +		ctx->hflip = ctrl->val;
-> +		break;
-> +	case V4L2_CID_VFLIP:
-> +		ctx->vflip = ctrl->val;
-> +		break;
-> +	case V4L2_CID_ROTATE:
-> +		ctx->rotate = ctrl->val;
-> +		break;
-> +	case V4L2_CID_BG_COLOR:
-> +		ctx->fill_color = ctrl->val;
-> +		break;
-> +	}
-> +	spin_unlock_irqrestore(&ctx->rga->ctrl_lock, flags);
-> +	return 0;
-> +}
-> +
-> +static const struct v4l2_ctrl_ops rga_ctrl_ops = {
-> +	.s_ctrl = rga_s_ctrl,
-> +};
-> +
-> +static int rga_setup_ctrls(struct rga_ctx *ctx)
-> +{
-> +	struct rockchip_rga *rga = ctx->rga;
-> +
-> +	v4l2_ctrl_handler_init(&ctx->ctrl_handler, 7);
-> +
-> +	v4l2_ctrl_new_std_menu(&ctx->ctrl_handler, &rga_ctrl_ops,
-> +			       V4L2_CID_PORTER_DUFF_MODE,
-> +			       V4L2_PORTER_DUFF_CLEAR, 0,
-> +			       V4L2_PORTER_DUFF_SRC);
-> +
-> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
-> +			  V4L2_CID_HFLIP, 0, 1, 1, 0);
-> +
-> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
-> +			  V4L2_CID_VFLIP, 0, 1, 1, 0);
-> +
-> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
-> +			  V4L2_CID_ROTATE, 0, 270, 90, 0);
-> +
-> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
-> +			  V4L2_CID_BG_COLOR, 0, 0xffffffff, 1, 0);
-> +
-> +	if (ctx->ctrl_handler.error) {
-> +		int err = ctx->ctrl_handler.error;
-> +
-> +		v4l2_err(&rga->v4l2_dev, "%s failed\n", __func__);
-> +		v4l2_ctrl_handler_free(&ctx->ctrl_handler);
-> +		return err;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +struct rga_fmt formats[] = {
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_ARGB32,
-> +		.color_swap = RGA_COLOR_RB_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_ABGR8888,
-> +		.depth = 32,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_XRGB32,
-> +		.color_swap = RGA_COLOR_RB_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_XBGR8888,
-> +		.depth = 32,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_ABGR32,
-> +		.color_swap = RGA_COLOR_ALPHA_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_ABGR8888,
-> +		.depth = 32,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_XBGR32,
-> +		.color_swap = RGA_COLOR_ALPHA_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_XBGR8888,
-> +		.depth = 32,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_RGB24,
-> +		.color_swap = RGA_COLOR_RB_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_BGR888,
-> +		.depth = 24,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_ARGB444,
-> +		.color_swap = RGA_COLOR_RB_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_ABGR4444,
-> +		.depth = 16,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_ARGB555,
-> +		.color_swap = RGA_COLOR_RB_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_ABGR1555,
-> +		.depth = 16,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_RGB565,
-> +		.color_swap = RGA_COLOR_RB_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_BGR565,
-> +		.depth = 16,
-> +		.uv_factor = 1,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV21,
-> +		.color_swap = RGA_COLOR_UV_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV420SP,
-> +		.depth = 12,
-> +		.uv_factor = 4,
-> +		.y_div = 2,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV61,
-> +		.color_swap = RGA_COLOR_UV_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV422SP,
-> +		.depth = 16,
-> +		.uv_factor = 2,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV12,
-> +		.color_swap = RGA_COLOR_NONE_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV420SP,
-> +		.depth = 12,
-> +		.uv_factor = 4,
-> +		.y_div = 2,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_NV16,
-> +		.color_swap = RGA_COLOR_NONE_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV422SP,
-> +		.depth = 16,
-> +		.uv_factor = 2,
-> +		.y_div = 1,
-> +		.x_div = 1,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_YUV420,
-> +		.color_swap = RGA_COLOR_NONE_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV420P,
-> +		.depth = 12,
-> +		.uv_factor = 4,
-> +		.y_div = 2,
-> +		.x_div = 2,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_YUV422P,
-> +		.color_swap = RGA_COLOR_NONE_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV422P,
-> +		.depth = 16,
-> +		.uv_factor = 2,
-> +		.y_div = 1,
-> +		.x_div = 2,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_YVU420,
-> +		.color_swap = RGA_COLOR_UV_SWAP,
-> +		.hw_format = RGA_COLOR_FMT_YUV420P,
-> +		.depth = 12,
-> +		.uv_factor = 4,
-> +		.y_div = 2,
-> +		.x_div = 2,
-> +	},
-> +};
-> +
-> +#define NUM_FORMATS ARRAY_SIZE(formats)
-> +
-> +struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
-> +{
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < NUM_FORMATS; i++) {
-> +		if (formats[i].fourcc == f->fmt.pix.pixelformat)
-> +			return &formats[i];
-> +	}
-> +	return NULL;
-> +}
-> +
-> +static struct rga_frame def_frame = {
-> +	.width = DEFAULT_WIDTH,
-> +	.height = DEFAULT_HEIGHT,
-> +	.crop.left = 0,
-> +	.crop.top = 0,
-> +	.crop.width = DEFAULT_WIDTH,
-> +	.crop.height = DEFAULT_HEIGHT,
-> +	.fmt = &formats[0],
-> +};
-> +
-> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type)
-> +{
-> +	switch (type) {
-> +	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
-> +		return &ctx->in;
-> +	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
-> +		return &ctx->out;
-> +	default:
-> +		return ERR_PTR(-EINVAL);
-> +	}
-> +}
-> +
-> +static int rga_open(struct file *file)
-> +{
-> +	struct rockchip_rga *rga = video_drvdata(file);
-> +	struct rga_ctx *ctx = NULL;
-> +	int ret = 0;
-> +
-> +	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-> +	if (!ctx)
-> +		return -ENOMEM;
-> +	ctx->rga = rga;
-> +	/* Set default formats */
-> +	ctx->in = def_frame;
-> +	ctx->out = def_frame;
-> +
-> +	if (mutex_lock_interruptible(&rga->mutex)) {
-> +		kfree(ctx);
-> +		return -ERESTARTSYS;
-> +	}
-> +	ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(rga->m2m_dev, ctx, &queue_init);
-> +	if (IS_ERR(ctx->fh.m2m_ctx)) {
-> +		ret = PTR_ERR(ctx->fh.m2m_ctx);
-> +		mutex_unlock(&rga->mutex);
-> +		kfree(ctx);
-> +		return ret;
-> +	}
-> +	v4l2_fh_init(&ctx->fh, video_devdata(file));
-> +	file->private_data = &ctx->fh;
-> +	v4l2_fh_add(&ctx->fh);
-> +
-> +	rga_setup_ctrls(ctx);
-> +
-> +	/* Write the default values to the ctx struct */
-> +	v4l2_ctrl_handler_setup(&ctx->ctrl_handler);
-> +
-> +	ctx->fh.ctrl_handler = &ctx->ctrl_handler;
-> +	mutex_unlock(&rga->mutex);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rga_release(struct file *file)
-> +{
-> +	struct rga_ctx *ctx =
-> +		container_of(file->private_data, struct rga_ctx, fh);
-> +	struct rockchip_rga *rga = ctx->rga;
-> +
-> +	mutex_lock(&rga->mutex);
-> +
-> +	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
-> +
-> +	v4l2_ctrl_handler_free(&ctx->ctrl_handler);
-> +	v4l2_fh_del(&ctx->fh);
-> +	v4l2_fh_exit(&ctx->fh);
-> +	kfree(ctx);
-> +
-> +	mutex_unlock(&rga->mutex);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct v4l2_file_operations rga_fops = {
-> +	.owner = THIS_MODULE,
-> +	.open = rga_open,
-> +	.release = rga_release,
-> +	.poll = v4l2_m2m_fop_poll,
-> +	.unlocked_ioctl = video_ioctl2,
-> +	.mmap = v4l2_m2m_fop_mmap,
-> +};
-> +
-> +static int
-> +vidioc_querycap(struct file *file, void *priv, struct v4l2_capability *cap)
-> +{
-> +	strlcpy(cap->driver, RGA_NAME, sizeof(cap->driver));
-> +	strlcpy(cap->card, "rockchip rga", sizeof(cap->card));
-> +	strlcpy(cap->bus_info, "platform:rga", sizeof(cap->bus_info));
-> +
-> +	cap->bus_info[0] = 0;
-
-You forgot to remove this line.
-
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
-> +{
-> +	struct rga_fmt *fmt;
-> +
-> +	if (f->index >= NUM_FORMATS)
-> +		return -EINVAL;
-> +
-> +	fmt = &formats[f->index];
-> +	f->pixelformat = fmt->fourcc;
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
-> +{
-> +	struct rga_ctx *ctx = prv;
-> +	struct vb2_queue *vq;
-> +	struct rga_frame *frm;
-> +
-> +	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> +	if (!vq)
-> +		return -EINVAL;
-> +	frm = rga_get_frame(ctx, f->type);
-> +	if (IS_ERR(frm))
-> +		return PTR_ERR(frm);
-> +
-> +	f->fmt.pix.width = frm->width;
-> +	f->fmt.pix.height = frm->height;
-> +	f->fmt.pix.field = V4L2_FIELD_NONE;
-> +	f->fmt.pix.pixelformat = frm->fmt->fourcc;
-> +	f->fmt.pix.bytesperline = frm->stride;
-> +	f->fmt.pix.sizeimage = frm->size;
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
-> +{
-> +	struct rga_fmt *fmt;
-> +
-> +	fmt = rga_fmt_find(f);
-> +	if (!fmt)
-> +		return -EINVAL;
-> +
-> +	f->fmt.pix.field = V4L2_FIELD_NONE;
-> +
-> +	if (f->fmt.pix.width > MAX_WIDTH)
-> +		f->fmt.pix.width = MAX_WIDTH;
-> +	if (f->fmt.pix.height > MAX_HEIGHT)
-> +		f->fmt.pix.height = MAX_HEIGHT;
-> +
-> +	if (f->fmt.pix.width < MIN_WIDTH)
-> +		f->fmt.pix.width = MIN_WIDTH;
-> +	if (f->fmt.pix.height < MIN_HEIGHT)
-> +		f->fmt.pix.height = MIN_HEIGHT;
-> +
-> +	if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
-> +		f->fmt.pix.bytesperline = f->fmt.pix.width;
-> +	else
-> +		f->fmt.pix.bytesperline = (f->fmt.pix.width * fmt->depth) >> 3;
-> +
-> +	f->fmt.pix.sizeimage =
-> +		f->fmt.pix.height * (f->fmt.pix.width * fmt->depth) >> 3;
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
-> +{
-> +	struct rga_ctx *ctx = prv;
-> +	struct rockchip_rga *rga = ctx->rga;
-> +	struct vb2_queue *vq;
-> +	struct rga_frame *frm;
-> +	struct rga_fmt *fmt;
-> +	int ret = 0;
-> +
-> +	/* Adjust all values accordingly to the hardware capabilities
-> +	 * and chosen format.
-> +	 */
-> +	ret = vidioc_try_fmt(file, prv, f);
-> +	if (ret)
-> +		return ret;
-> +	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> +	if (vb2_is_busy(vq)) {
-> +		v4l2_err(&rga->v4l2_dev, "queue (%d) bust\n", f->type);
-> +		return -EBUSY;
-> +	}
-> +	frm = rga_get_frame(ctx, f->type);
-> +	if (IS_ERR(frm))
-> +		return PTR_ERR(frm);
-> +	fmt = rga_fmt_find(f);
-> +	if (!fmt)
-> +		return -EINVAL;
-> +	frm->width = f->fmt.pix.width;
-> +	frm->height = f->fmt.pix.height;
-> +	frm->size = f->fmt.pix.sizeimage;
-> +	frm->fmt = fmt;
-> +	frm->stride = f->fmt.pix.bytesperline;
-> +
-> +	/* Reset crop settings */
-> +	frm->crop.left = 0;
-> +	frm->crop.top = 0;
-> +	frm->crop.width = frm->width;
-> +	frm->crop.height = frm->height;
-> +	return 0;
-> +}
-> +
-> +static int
-> +vidioc_try_crop(struct rga_ctx *ctx, u32 type,
-> +			    struct v4l2_rect *r)
-> +{
-> +	struct rockchip_rga *rga = ctx->rga;
-> +	struct rga_frame *f;
-> +
-> +	f = rga_get_frame(ctx, type);
-> +	if (IS_ERR(f))
-> +		return PTR_ERR(f);
-> +
-> +	if (r->top < 0 || r->left < 0) {
-> +		v4l2_err(&rga->v4l2_dev,
-> +			 "doesn't support negative values for top & left.\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (r->left + r->width > f->width ||
-> +	    r->top + r->height > f->height ||
-> +	    r->width < MIN_WIDTH || r->height < MIN_HEIGHT) {
-> +
-> +		v4l2_err(&rga->v4l2_dev, "unsupport crop value.\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_g_selection(struct file *file, void *prv,
-> +				       struct v4l2_selection *s)
-> +{
-> +	struct rga_ctx *ctx = prv;
-> +	struct rga_frame *f;
-> +
-> +	f = rga_get_frame(ctx, s->type);
-> +	if (IS_ERR(f))
-> +		return PTR_ERR(f);
-> +
-> +	switch (s->target) {
-> +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
-> +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
-> +	case V4L2_SEL_TGT_CROP_BOUNDS:
-> +	case V4L2_SEL_TGT_CROP_DEFAULT:
-> +		s->r.left = 0;
-> +		s->r.top = 0;
-> +		s->r.width = f->width;
-> +		s->r.height = f->height;
-> +		return 0;
-> +
-> +	case V4L2_SEL_TGT_COMPOSE:
-> +	case V4L2_SEL_TGT_CROP:
-> +		s->r.left = f->crop.left;
-> +		s->r.top = f->crop.top;
-> +		s->r.width = f->crop.width;
-> +		s->r.height = f->crop.height;
-> +		return 0;
-> +	}
-
-You're now supporting both crop and compose. That can't be right. I suspect
-that you support crop for the output queue and compose for the capture queue.
-That's typical for m2m devices. So you need to check which queue you are
-setting the selection for and check the selection target accordingly.
-
-> +
-> +	return -EINVAL;
-> +}
-> +
-> +static int vidioc_s_selection(struct file *file, void *prv,
-> +				       struct v4l2_selection *s)
-> +{
-> +	struct rga_ctx *ctx = prv;
-> +	struct rga_frame *f;
-> +	struct v4l2_rect new_r;
-> +	int ret = 0;
-> +
-
-Same here: you need to check the selection target based on the queue type.
-
-> +	new_r = s->r;
-> +	ret = vidioc_try_crop(ctx, s->type, &new_r);
-> +	if (ret)
-> +		return ret;
-> +
-> +	f = rga_get_frame(ctx, s->type);
-> +	if (IS_ERR(f))
-> +		return PTR_ERR(f);
-> +
-> +	s->r = new_r;
-> +	f->crop = new_r;
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct v4l2_ioctl_ops rga_ioctl_ops = {
-> +	.vidioc_querycap = vidioc_querycap,
-> +
-> +	.vidioc_enum_fmt_vid_cap = vidioc_enum_fmt,
-> +	.vidioc_g_fmt_vid_cap = vidioc_g_fmt,
-> +	.vidioc_try_fmt_vid_cap = vidioc_try_fmt,
-> +	.vidioc_s_fmt_vid_cap = vidioc_s_fmt,
-> +
-> +	.vidioc_enum_fmt_vid_out = vidioc_enum_fmt,
-> +	.vidioc_g_fmt_vid_out = vidioc_g_fmt,
-> +	.vidioc_try_fmt_vid_out = vidioc_try_fmt,
-> +	.vidioc_s_fmt_vid_out = vidioc_s_fmt,
-> +
-> +	.vidioc_reqbufs = v4l2_m2m_ioctl_reqbufs,
-> +	.vidioc_querybuf = v4l2_m2m_ioctl_querybuf,
-> +	.vidioc_qbuf = v4l2_m2m_ioctl_qbuf,
-> +	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
-> +	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
-> +	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-> +	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
-> +
-> +	.vidioc_streamon = v4l2_m2m_ioctl_streamon,
-> +	.vidioc_streamoff = v4l2_m2m_ioctl_streamoff,
-> +
-> +	.vidioc_g_selection = vidioc_g_selection,
-> +	.vidioc_s_selection = vidioc_s_selection
-> +};
-> +
-> +static struct video_device rga_videodev = {
-> +	.name = "rockchip-rga",
-> +	.fops = &rga_fops,
-> +	.ioctl_ops = &rga_ioctl_ops,
-> +	.minor = -1,
-> +	.release = video_device_release,
-> +	.vfl_dir = VFL_DIR_M2M,
-> +	.device_caps = V4L2_CAP_VIDEO_M2M | V4L2_CAP_STREAMING,
-> +};
-> +
-> +static int rga_enable_clocks(struct rockchip_rga *rga)
-> +{
-> +	int ret;
-> +
-> +	ret = clk_prepare_enable(rga->sclk);
-> +	if (ret) {
-> +		dev_err(rga->dev, "Cannot enable rga sclk: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = clk_prepare_enable(rga->aclk);
-> +	if (ret) {
-> +		dev_err(rga->dev, "Cannot enable rga aclk: %d\n", ret);
-> +		goto err_disable_sclk;
-> +	}
-> +
-> +	ret = clk_prepare_enable(rga->hclk);
-> +	if (ret) {
-> +		dev_err(rga->dev, "Cannot enable rga hclk: %d\n", ret);
-> +		goto err_disable_aclk;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_disable_sclk:
-> +	clk_disable_unprepare(rga->sclk);
-> +err_disable_aclk:
-> +	clk_disable_unprepare(rga->aclk);
-> +
-> +	return ret;
-> +}
-> +
-> +static void rga_disable_clocks(struct rockchip_rga *rga)
-> +{
-> +	clk_disable_unprepare(rga->sclk);
-> +	clk_disable_unprepare(rga->hclk);
-> +	clk_disable_unprepare(rga->aclk);
-> +}
-> +
-> +static int rga_parse_dt(struct rockchip_rga *rga)
-> +{
-> +	struct reset_control *core_rst, *axi_rst, *ahb_rst;
-> +
-> +	core_rst = devm_reset_control_get(rga->dev, "core");
-> +	if (IS_ERR(core_rst)) {
-> +		dev_err(rga->dev, "failed to get core reset controller\n");
-> +		return PTR_ERR(core_rst);
-> +	}
-> +
-> +	axi_rst = devm_reset_control_get(rga->dev, "axi");
-> +	if (IS_ERR(axi_rst)) {
-> +		dev_err(rga->dev, "failed to get axi reset controller\n");
-> +		return PTR_ERR(axi_rst);
-> +	}
-> +
-> +	ahb_rst = devm_reset_control_get(rga->dev, "ahb");
-> +	if (IS_ERR(ahb_rst)) {
-> +		dev_err(rga->dev, "failed to get ahb reset controller\n");
-> +		return PTR_ERR(ahb_rst);
-> +	}
-> +
-> +	reset_control_assert(core_rst);
-> +	udelay(1);
-> +	reset_control_deassert(core_rst);
-> +
-> +	reset_control_assert(axi_rst);
-> +	udelay(1);
-> +	reset_control_deassert(axi_rst);
-> +
-> +	reset_control_assert(ahb_rst);
-> +	udelay(1);
-> +	reset_control_deassert(ahb_rst);
-> +
-> +	rga->sclk = devm_clk_get(rga->dev, "sclk");
-> +	if (IS_ERR(rga->sclk)) {
-> +		dev_err(rga->dev, "failed to get sclk clock\n");
-> +		return PTR_ERR(rga->sclk);
-> +	}
-> +
-> +	rga->aclk = devm_clk_get(rga->dev, "aclk");
-> +	if (IS_ERR(rga->aclk)) {
-> +		dev_err(rga->dev, "failed to get aclk clock\n");
-> +		return PTR_ERR(rga->aclk);
-> +	}
-> +
-> +	rga->hclk = devm_clk_get(rga->dev, "hclk");
-> +	if (IS_ERR(rga->hclk)) {
-> +		dev_err(rga->dev, "failed to get hclk clock\n");
-> +		return PTR_ERR(rga->hclk);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rga_probe(struct platform_device *pdev)
-> +{
-> +	struct rockchip_rga *rga;
-> +	struct video_device *vfd;
-> +	struct resource *res;
-> +	int ret = 0;
-> +	int irq;
-> +
-> +	if (!pdev->dev.of_node)
-> +		return -ENODEV;
-> +
-> +	rga = devm_kzalloc(&pdev->dev, sizeof(*rga), GFP_KERNEL);
-> +	if (!rga)
-> +		return -ENOMEM;
-> +
-> +	rga->dev = &pdev->dev;
-> +	spin_lock_init(&rga->ctrl_lock);
-> +	mutex_init(&rga->mutex);
-> +
-> +	init_waitqueue_head(&rga->irq_queue);
-> +
-> +	ret = rga_parse_dt(rga);
-> +	if (ret)
-> +		dev_err(&pdev->dev, "Unable to parse OF data\n");
-> +
-> +	pm_runtime_enable(rga->dev);
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +
-> +	rga->regs = devm_ioremap_resource(rga->dev, res);
-> +	if (IS_ERR(rga->regs)) {
-> +		ret = PTR_ERR(rga->regs);
-> +		goto err_put_clk;
-> +	}
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0) {
-> +		dev_err(rga->dev, "failed to get irq\n");
-> +		ret = irq;
-> +		goto err_put_clk;
-> +	}
-> +
-> +	ret = devm_request_irq(rga->dev, irq, rga_isr, 0,
-> +			       dev_name(rga->dev), rga);
-> +	if (ret < 0) {
-> +		dev_err(rga->dev, "failed to request irq\n");
-> +		goto err_put_clk;
-> +	}
-> +
-> +	ret = v4l2_device_register(&pdev->dev, &rga->v4l2_dev);
-> +	if (ret)
-> +		goto err_put_clk;
-> +	vfd = video_device_alloc();
-> +	if (!vfd) {
-> +		v4l2_err(&rga->v4l2_dev, "Failed to allocate video device\n");
-> +		ret = -ENOMEM;
-> +		goto unreg_v4l2_dev;
-> +	}
-> +	*vfd = rga_videodev;
-> +	vfd->lock = &rga->mutex;
-> +	vfd->v4l2_dev = &rga->v4l2_dev;
-> +
-> +	video_set_drvdata(vfd, rga);
-> +	snprintf(vfd->name, sizeof(vfd->name), "%s", rga_videodev.name);
-> +	rga->vfd = vfd;
-> +	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
-> +		  vfd->name, video_device_node_name(vfd));
-> +	platform_set_drvdata(pdev, rga);
-> +	rga->m2m_dev = v4l2_m2m_init(&rga_m2m_ops);
-> +	if (IS_ERR(rga->m2m_dev)) {
-> +		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
-> +		ret = PTR_ERR(rga->m2m_dev);
-> +		goto unreg_video_dev;
-> +	}
-> +
-> +	pm_runtime_get_sync(rga->dev);
-> +
-> +	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
-> +	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
-> +
-> +	v4l2_info(&rga->v4l2_dev, "HW Verson: 0x%x%x\n", rga->version.major,
-> +		rga->version.minor);
-
-s/Verson/Version/
-
-Also add a '.' to separate major from minor: 0x%02x.%x or something like that.
-
-> +
-> +	pm_runtime_put(rga->dev);
-> +
-> +	/* Create CMD buffer */
-> +	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
-> +					   &rga->cmdbuf_phy, GFP_KERNEL,
-> +					   DMA_ATTR_WRITE_COMBINE);
-> +
-> +	rga->src_mmu_pages =
-> +		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-> +	rga->dst_mmu_pages =
-> +		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-> +
-> +	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
-> +
-> +	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
-> +	if (ret) {
-> +		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
-> +		goto rel_vdev;
-> +	}
-> +
-> +	return 0;
-> +
-> +rel_vdev:
-> +	video_device_release(vfd);
-> +unreg_video_dev:
-> +	video_unregister_device(rga->vfd);
-> +unreg_v4l2_dev:
-> +	v4l2_device_unregister(&rga->v4l2_dev);
-> +err_put_clk:
-> +	pm_runtime_disable(rga->dev);
-> +
-> +	return ret;
-> +}
-> +
-> +static int rga_remove(struct platform_device *pdev)
-> +{
-> +	struct rockchip_rga *rga = platform_get_drvdata(pdev);
-> +
-> +	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, &rga->cmdbuf_virt,
-> +		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
-> +
-> +	free_pages((unsigned long)rga->src_mmu_pages, 3);
-> +	free_pages((unsigned long)rga->dst_mmu_pages, 3);
-> +
-> +	v4l2_info(&rga->v4l2_dev, "Removing\n");
-> +
-> +	v4l2_m2m_release(rga->m2m_dev);
-> +	video_unregister_device(rga->vfd);
-> +	v4l2_device_unregister(&rga->v4l2_dev);
-> +
-> +	pm_runtime_disable(rga->dev);
-> +
-> +	return 0;
-> +}
-> +
-> +#ifdef CONFIG_PM
-> +static int rga_runtime_suspend(struct device *dev)
-> +{
-> +	struct rockchip_rga *rga = dev_get_drvdata(dev);
-> +
-> +	rga_disable_clocks(rga);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rga_runtime_resume(struct device *dev)
-> +{
-> +	struct rockchip_rga *rga = dev_get_drvdata(dev);
-> +
-> +	return rga_enable_clocks(rga);
-> +}
-> +#endif
-> +
-> +static const struct dev_pm_ops rga_pm = {
-> +	SET_RUNTIME_PM_OPS(rga_runtime_suspend,
-> +			   rga_runtime_resume, NULL)
-> +};
-> +
-> +static const struct of_device_id rockchip_rga_match[] = {
-> +	{
-> +		.compatible = "rockchip,rk3288-rga",
-> +	},
-> +	{
-> +		.compatible = "rockchip,rk3399-rga",
-> +	},
-> +	{},
-> +};
-> +
-> +MODULE_DEVICE_TABLE(of, rockchip_rga_match);
-> +
-> +static struct platform_driver rga_pdrv = {
-> +	.probe = rga_probe,
-> +	.remove = rga_remove,
-> +	.driver = {
-> +		.name = RGA_NAME,
-> +		.pm = &rga_pm,
-> +		.of_match_table = rockchip_rga_match,
-> +	},
-> +};
-> +
-> +module_platform_driver(rga_pdrv);
-> +
-> +MODULE_AUTHOR("Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>");
-> +MODULE_DESCRIPTION("Rockchip Raster 2d Grapphic Acceleration Unit");
-> +MODULE_LICENSE("GPL");
-> diff --git a/drivers/media/platform/rockchip-rga/rga.h b/drivers/media/platform/rockchip-rga/rga.h
-> new file mode 100644
-> index 0000000..3249ce2
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip-rga/rga.h
-> @@ -0,0 +1,109 @@
-> +/*
-> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-> + * Author: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-> + *
-> + * This software is licensed under the terms of the GNU General Public
-> + * License version 2, as published by the Free Software Foundation, and
-> + * may be copied, distributed, and modified under those terms.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +#ifndef __RGA_H__
-> +#define __RGA_H__
-> +
-> +#include <linux/platform_device.h>
-> +#include <media/videobuf2-v4l2.h>
-> +#include <media/v4l2-ctrls.h>
-> +#include <media/v4l2-device.h>
-> +
-> +#define RGA_NAME "rockchip-rga"
-> +
-> +struct rga_fmt {
-> +	u32 fourcc;
-> +	int depth;
-> +	u8 uv_factor;
-> +	u8 y_div;
-> +	u8 x_div;
-> +	u8 color_swap;
-> +	u8 hw_format;
-> +};
-> +
-> +struct rga_frame {
-> +	/* Original dimensions */
-> +	u32 width;
-> +	u32 height;
-> +
-> +	/* Crop */
-> +	struct v4l2_rect crop;
-> +
-> +	/* Image format */
-> +	struct rga_fmt *fmt;
-> +
-> +	/* Variables that can calculated once and reused */
-> +	u32 stride;
-> +	u32 size;
-> +};
-> +
-> +struct rockchip_rga_version {
-> +	u32 major;
-> +	u32 minor;
-> +};
-> +
-> +struct rga_ctx {
-> +	struct v4l2_fh fh;
-> +	struct rockchip_rga *rga;
-> +	struct rga_frame in;
-> +	struct rga_frame out;
-> +	struct v4l2_ctrl_handler ctrl_handler;
-> +
-> +	/* Control values */
-> +	u32 op;
-> +	u32 hflip;
-> +	u32 vflip;
-> +	u32 rotate;
-> +	u32 fill_color;
-> +};
-> +
-> +struct rockchip_rga {
-> +	struct v4l2_device v4l2_dev;
-> +	struct v4l2_m2m_dev *m2m_dev;
-> +	struct video_device *vfd;
-> +
-> +	struct device *dev;
-> +	struct regmap *grf;
-> +	void __iomem *regs;
-> +	struct clk *sclk;
-> +	struct clk *aclk;
-> +	struct clk *hclk;
-> +	struct rockchip_rga_version version;
-> +
-> +	struct mutex mutex;
-> +	spinlock_t ctrl_lock;
-> +
-> +	wait_queue_head_t irq_queue;
-> +
-> +	struct rga_ctx *curr;
-> +	dma_addr_t cmdbuf_phy;
-> +	void *cmdbuf_virt;
-> +	unsigned int *src_mmu_pages;
-> +	unsigned int *dst_mmu_pages;
-> +};
-> +
-> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type);
-> +
-> +/* RGA Buffers Manage Part */
-> +extern const struct vb2_ops rga_qops;
-> +void rga_buf_map(struct vb2_buffer *vb);
-> +
-> +/* RGA Hardware Part */
-> +void rga_write(struct rockchip_rga *rga, u32 reg, u32 value);
-> +u32 rga_read(struct rockchip_rga *rga, u32 reg);
-> +void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask);
-> +void rga_start(struct rockchip_rga *rga);
-> +
-> +void rga_cmd_set(struct rga_ctx *ctx);
-> +
-> +#endif
-> 
-
-Did you test this with v4l2-compliance? What is the output?
-
-Regards,
-
-	Hans
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+index 39fc388f222a..c77c1cd265a0 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
+@@ -566,8 +566,9 @@ static void amdgpu_user_framebuffer_destroy(struct drm_framebuffer *fb)
+ }
+ 
+ static int amdgpu_user_framebuffer_create_handle(struct drm_framebuffer *fb,
+-						  struct drm_file *file_priv,
+-						  unsigned int *handle)
++						 unsigned int plane_index,
++						 struct drm_file *file_priv,
++						 unsigned int *handle)
+ {
+ 	struct amdgpu_framebuffer *amdgpu_fb = to_amdgpu_framebuffer(fb);
+ 
+diff --git a/drivers/gpu/drm/armada/armada_fb.c b/drivers/gpu/drm/armada/armada_fb.c
+index 2a7eb6817c36..9f237544f6c5 100644
+--- a/drivers/gpu/drm/armada/armada_fb.c
++++ b/drivers/gpu/drm/armada/armada_fb.c
+@@ -23,6 +23,7 @@ static void armada_fb_destroy(struct drm_framebuffer *fb)
+ }
+ 
+ static int armada_fb_create_handle(struct drm_framebuffer *fb,
++	unsigned int format_plane_index,
+ 	struct drm_file *dfile, unsigned int *handle)
+ {
+ 	struct armada_framebuffer *dfb = drm_fb_to_armada_fb(fb);
+diff --git a/drivers/gpu/drm/drm_crtc_internal.h b/drivers/gpu/drm/drm_crtc_internal.h
+index 955c5690bf64..ec8d913240fe 100644
+--- a/drivers/gpu/drm/drm_crtc_internal.h
++++ b/drivers/gpu/drm/drm_crtc_internal.h
+@@ -170,6 +170,8 @@ int drm_mode_rmfb(struct drm_device *dev,
+ 		  void *data, struct drm_file *file_priv);
+ int drm_mode_getfb(struct drm_device *dev,
+ 		   void *data, struct drm_file *file_priv);
++int drm_mode_getfb2(struct drm_device *dev,
++		   void *data, struct drm_file *file_priv);
+ int drm_mode_dirtyfb_ioctl(struct drm_device *dev,
+ 			   void *data, struct drm_file *file_priv);
+ 
+diff --git a/drivers/gpu/drm/drm_fb_cma_helper.c b/drivers/gpu/drm/drm_fb_cma_helper.c
+index 596fabf18c3e..5fd7bcc2c6d1 100644
+--- a/drivers/gpu/drm/drm_fb_cma_helper.c
++++ b/drivers/gpu/drm/drm_fb_cma_helper.c
+@@ -110,13 +110,16 @@ void drm_fb_cma_destroy(struct drm_framebuffer *fb)
+ }
+ EXPORT_SYMBOL(drm_fb_cma_destroy);
+ 
+-int drm_fb_cma_create_handle(struct drm_framebuffer *fb,
+-	struct drm_file *file_priv, unsigned int *handle)
++static int drm_fb_cma_create_handle(struct drm_framebuffer *fb,
++				    unsigned int format_plane_index,
++				    struct drm_file *file_priv,
++				    unsigned int *handle)
+ {
+ 	struct drm_fb_cma *fb_cma = to_fb_cma(fb);
+-
++	if (format_plane_index >= 4 || !fb_dma->obj[format_plane_index])
++		return -ENOENT;
+ 	return drm_gem_handle_create(file_priv,
+-			&fb_cma->obj[0]->base, handle);
++			&fb_cma->obj[format_plane_index]->base, handle);
+ }
+ EXPORT_SYMBOL(drm_fb_cma_create_handle);
+ 
+diff --git a/drivers/gpu/drm/drm_framebuffer.c b/drivers/gpu/drm/drm_framebuffer.c
+index 28a0108a1ab8..67b3be1bedbc 100644
+--- a/drivers/gpu/drm/drm_framebuffer.c
++++ b/drivers/gpu/drm/drm_framebuffer.c
+@@ -24,6 +24,7 @@
+ #include <drm/drmP.h>
+ #include <drm/drm_auth.h>
+ #include <drm/drm_framebuffer.h>
++#include <drm/drm_gem.h>
+ 
+ #include "drm_crtc_internal.h"
+ 
+@@ -438,7 +439,7 @@ int drm_mode_getfb(struct drm_device *dev,
+ 	if (fb->funcs->create_handle) {
+ 		if (drm_is_current_master(file_priv) || capable(CAP_SYS_ADMIN) ||
+ 		    drm_is_control_client(file_priv)) {
+-			ret = fb->funcs->create_handle(fb, file_priv,
++			ret = fb->funcs->create_handle(fb, 0, file_priv,
+ 						       &r->handle);
+ 		} else {
+ 			/* GET_FB() is an unprivileged ioctl so we must not
+@@ -458,6 +459,82 @@ int drm_mode_getfb(struct drm_device *dev,
+ 	return ret;
+ }
+ 
++/**
++ * drm_mode_getfb2 - get FB info
++ * @dev: drm device for the ioctl
++ * @data: data pointer for the ioctl
++ * @file_priv: drm file for the ioctl call
++ *
++ * Lookup the FB given its ID and return info about it.
++ *
++ * Called by the user via ioctl.
++ *
++ * Returns:
++ * Zero on success, negative errno on failure.
++ */
++int drm_mode_getfb2(struct drm_device *dev,
++		   void *data, struct drm_file *file_priv)
++{
++	struct drm_mode_fb_cmd2 *r = data;
++	struct drm_framebuffer *fb;
++	int ret, i;
++
++	if (!drm_core_check_feature(dev, DRIVER_MODESET))
++		return -EINVAL;
++
++	fb = drm_framebuffer_lookup(dev, r->fb_id);
++	if (!fb)
++		return -ENOENT;
++
++	r->height = fb->height;
++	r->width = fb->width;
++	r->pixel_format = fb->format->format;
++	for (i = 0; i < 4; ++i) {
++		r->pitches[i] = fb->pitches[i];
++		r->offsets[i] = fb->offsets[i];
++		r->modifier[i] = fb->modifier;
++		r->handles[i] = 0;
++	}
++
++	for (i = 0; i < fb->format->num_planes; ++i) {
++		if (fb->funcs->create_handle) {
++			if (drm_is_current_master(file_priv) ||
++			    capable(CAP_SYS_ADMIN) ||
++			    drm_is_control_client(file_priv)) {
++				ret = fb->funcs->create_handle(fb, i, file_priv,
++							       &r->handles[i]);
++				if (ret)
++					break;
++			} else {
++				/* GET_FB() is an unprivileged ioctl so we must
++				 * not return a buffer-handle to non-master
++				 * processes! For backwards-compatibility
++				 * reasons, we cannot make GET_FB() privileged,
++				 * so just return an invalid handle for
++				 * non-masters. */
++				r->handles[i] = 0;
++				ret = 0;
++			}
++		} else {
++			ret = -ENODEV;
++			break;
++		}
++	}
++
++	/* If handle creation failed, delete/dereference any that were made. */
++	if (ret) {
++		for (i = 0; i < 4; ++i) {
++			if (r->handles[i])
++				drm_gem_handle_delete(file_priv, r->handles[i]);
++			r->handles[i] = 0;
++		}
++	}
++
++	drm_framebuffer_unreference(fb);
++
++	return ret;
++}
++
+ /**
+  * drm_mode_dirtyfb_ioctl - flush frontbuffer rendering on an FB
+  * @dev: drm device for the ioctl
+diff --git a/drivers/gpu/drm/drm_ioctl.c b/drivers/gpu/drm/drm_ioctl.c
+index a7c61c23685a..a9b578dc5d17 100644
+--- a/drivers/gpu/drm/drm_ioctl.c
++++ b/drivers/gpu/drm/drm_ioctl.c
+@@ -627,6 +627,7 @@ static const struct drm_ioctl_desc drm_ioctls[] = {
+ 	DRM_IOCTL_DEF(DRM_IOCTL_MODE_SETPROPERTY, drm_mode_connector_property_set_ioctl, DRM_MASTER|DRM_CONTROL_ALLOW|DRM_UNLOCKED),
+ 	DRM_IOCTL_DEF(DRM_IOCTL_MODE_GETPROPBLOB, drm_mode_getblob_ioctl, DRM_CONTROL_ALLOW|DRM_UNLOCKED),
+ 	DRM_IOCTL_DEF(DRM_IOCTL_MODE_GETFB, drm_mode_getfb, DRM_CONTROL_ALLOW|DRM_UNLOCKED),
++	DRM_IOCTL_DEF(DRM_IOCTL_MODE_GETFB2, drm_mode_getfb2, DRM_CONTROL_ALLOW|DRM_UNLOCKED),
+ 	DRM_IOCTL_DEF(DRM_IOCTL_MODE_ADDFB, drm_mode_addfb, DRM_CONTROL_ALLOW|DRM_UNLOCKED),
+ 	DRM_IOCTL_DEF(DRM_IOCTL_MODE_ADDFB2, drm_mode_addfb2, DRM_CONTROL_ALLOW|DRM_UNLOCKED),
+ 	DRM_IOCTL_DEF(DRM_IOCTL_MODE_RMFB, drm_mode_rmfb, DRM_CONTROL_ALLOW|DRM_UNLOCKED),
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_fb.c b/drivers/gpu/drm/exynos/exynos_drm_fb.c
+index c77a5aced81a..5e8b774dc1af 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_fb.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_fb.c
+@@ -88,13 +88,16 @@ static void exynos_drm_fb_destroy(struct drm_framebuffer *fb)
+ }
+ 
+ static int exynos_drm_fb_create_handle(struct drm_framebuffer *fb,
++				       unsigned int format_plane_index,
+ 					struct drm_file *file_priv,
+ 					unsigned int *handle)
+ {
+ 	struct exynos_drm_fb *exynos_fb = to_exynos_fb(fb);
+-
++	if (format_plane_index >= MAX_FB_BUFFER ||
++	    !exynos_fb->exynos_gem[format_plane_index])
++		return -ENOENT;
+ 	return drm_gem_handle_create(file_priv,
+-				     &exynos_fb->exynos_gem[0]->base, handle);
++		     &exynos_fb->exynos_gem[format_plane_index]->base, handle);
+ }
+ 
+ static const struct drm_framebuffer_funcs exynos_drm_fb_funcs = {
+diff --git a/drivers/gpu/drm/gma500/framebuffer.c b/drivers/gpu/drm/gma500/framebuffer.c
+index ffe6b4ffa1a8..c221544b4c6a 100644
+--- a/drivers/gpu/drm/gma500/framebuffer.c
++++ b/drivers/gpu/drm/gma500/framebuffer.c
+@@ -42,6 +42,7 @@
+ 
+ static void psb_user_framebuffer_destroy(struct drm_framebuffer *fb);
+ static int psb_user_framebuffer_create_handle(struct drm_framebuffer *fb,
++					      unsigned int format_plane_index,
+ 					      struct drm_file *file_priv,
+ 					      unsigned int *handle);
+ 
+@@ -619,6 +620,7 @@ static void psbfb_output_poll_changed(struct drm_device *dev)
+  *	the work for us
+  */
+ static int psb_user_framebuffer_create_handle(struct drm_framebuffer *fb,
++					      unsigned int plane_index,
+ 					      struct drm_file *file_priv,
+ 					      unsigned int *handle)
+ {
+diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
+index 3282b0f4b134..54fdd30b0598 100644
+--- a/drivers/gpu/drm/i915/intel_display.c
++++ b/drivers/gpu/drm/i915/intel_display.c
+@@ -15853,6 +15853,7 @@ static void intel_user_framebuffer_destroy(struct drm_framebuffer *fb)
+ }
+ 
+ static int intel_user_framebuffer_create_handle(struct drm_framebuffer *fb,
++						unsigned int format_plane_index,
+ 						struct drm_file *file,
+ 						unsigned int *handle)
+ {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.c b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
+index d4246c9dceae..8343144ba1cd 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_fb.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
+@@ -44,6 +44,7 @@ struct drm_gem_object *mtk_fb_get_gem_obj(struct drm_framebuffer *fb)
+ }
+ 
+ static int mtk_drm_fb_create_handle(struct drm_framebuffer *fb,
++				    unsigned int format_plane_index,
+ 				    struct drm_file *file_priv,
+ 				    unsigned int *handle)
+ {
+diff --git a/drivers/gpu/drm/msm/msm_fb.c b/drivers/gpu/drm/msm/msm_fb.c
+index 5cf165c9c3a9..de92fc8a7a1c 100644
+--- a/drivers/gpu/drm/msm/msm_fb.c
++++ b/drivers/gpu/drm/msm/msm_fb.c
+@@ -30,12 +30,15 @@ struct msm_framebuffer {
+ 
+ 
+ static int msm_framebuffer_create_handle(struct drm_framebuffer *fb,
++		unsigned int format_plane_index,
+ 		struct drm_file *file_priv,
+ 		unsigned int *handle)
+ {
+ 	struct msm_framebuffer *msm_fb = to_msm_framebuffer(fb);
++	if (format_plane_index >= MAX_PLANE)
++		return -ENOENT;
+ 	return drm_gem_handle_create(file_priv,
+-			msm_fb->planes[0], handle);
++			msm_fb->planes[format_plane_index], handle);
+ }
+ 
+ static void msm_framebuffer_destroy(struct drm_framebuffer *fb)
+diff --git a/drivers/gpu/drm/nouveau/nouveau_display.c b/drivers/gpu/drm/nouveau/nouveau_display.c
+index 72fdba1a1c5d..bc30c0d3d9cd 100644
+--- a/drivers/gpu/drm/nouveau/nouveau_display.c
++++ b/drivers/gpu/drm/nouveau/nouveau_display.c
+@@ -237,6 +237,7 @@ nouveau_user_framebuffer_destroy(struct drm_framebuffer *drm_fb)
+ 
+ static int
+ nouveau_user_framebuffer_create_handle(struct drm_framebuffer *drm_fb,
++				       unsigned int format_plane_index,
+ 				       struct drm_file *file_priv,
+ 				       unsigned int *handle)
+ {
+diff --git a/drivers/gpu/drm/omapdrm/omap_fb.c b/drivers/gpu/drm/omapdrm/omap_fb.c
+index 29dc677dd4d3..a982c72a773e 100644
+--- a/drivers/gpu/drm/omapdrm/omap_fb.c
++++ b/drivers/gpu/drm/omapdrm/omap_fb.c
+@@ -90,12 +90,15 @@ struct omap_framebuffer {
+ };
+ 
+ static int omap_framebuffer_create_handle(struct drm_framebuffer *fb,
++		unsigned int format_plane_index,
+ 		struct drm_file *file_priv,
+ 		unsigned int *handle)
+ {
+ 	struct omap_framebuffer *omap_fb = to_omap_framebuffer(fb);
++	if (format_plane_index >= 4 || !omap_fb->planes[format_plane_index])
++		return -ENOENT;
+ 	return drm_gem_handle_create(file_priv,
+-			omap_fb->planes[0].bo, handle);
++			omap_fb->planes[format_plane_index].bo, handle);
+ }
+ 
+ static void omap_framebuffer_destroy(struct drm_framebuffer *fb)
+diff --git a/drivers/gpu/drm/radeon/radeon_display.c b/drivers/gpu/drm/radeon/radeon_display.c
+index aea8b62835a4..2188e6341cd9 100644
+--- a/drivers/gpu/drm/radeon/radeon_display.c
++++ b/drivers/gpu/drm/radeon/radeon_display.c
+@@ -1306,8 +1306,9 @@ static void radeon_user_framebuffer_destroy(struct drm_framebuffer *fb)
+ }
+ 
+ static int radeon_user_framebuffer_create_handle(struct drm_framebuffer *fb,
+-						  struct drm_file *file_priv,
+-						  unsigned int *handle)
++						 unsigned int plane_index,
++						 struct drm_file *file_priv,
++						 unsigned int *handle)
+ {
+ 	struct radeon_framebuffer *radeon_fb = to_radeon_framebuffer(fb);
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index c9ccdf8f44bb..206d93249519 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -55,13 +55,15 @@ static void rockchip_drm_fb_destroy(struct drm_framebuffer *fb)
+ }
+ 
+ static int rockchip_drm_fb_create_handle(struct drm_framebuffer *fb,
++					 unsigned int format_plane_index,
+ 					 struct drm_file *file_priv,
+ 					 unsigned int *handle)
+ {
+ 	struct rockchip_drm_fb *rockchip_fb = to_rockchip_fb(fb);
+-
++	if (format_plane_index >= ROCKCHIP_MAX_FB_BUFFER)
++		return -ENOENT;
+ 	return drm_gem_handle_create(file_priv,
+-				     rockchip_fb->obj[0], handle);
++				  rockchip_fb->obj[format_plane_index], handle);
+ }
+ 
+ static int rockchip_drm_fb_dirty(struct drm_framebuffer *fb,
+diff --git a/drivers/gpu/drm/tegra/fb.c b/drivers/gpu/drm/tegra/fb.c
+index f142f6a4db25..ff206b143503 100644
+--- a/drivers/gpu/drm/tegra/fb.c
++++ b/drivers/gpu/drm/tegra/fb.c
+@@ -81,11 +81,16 @@ static void tegra_fb_destroy(struct drm_framebuffer *framebuffer)
+ }
+ 
+ static int tegra_fb_create_handle(struct drm_framebuffer *framebuffer,
++				  unsigned int format_plane_index,
+ 				  struct drm_file *file, unsigned int *handle)
+ {
+ 	struct tegra_fb *fb = to_tegra_fb(framebuffer);
+-
+-	return drm_gem_handle_create(file, &fb->planes[0]->gem, handle);
++	if (format_plane_index >= fb->num_planes ||
++	    !fb->planes[format_plane_index])
++		return -ENOENT;
++	return drm_gem_handle_create(file,
++				     &fb->planes[format_plane_index]->gem,
++				     handle);
+ }
+ 
+ static const struct drm_framebuffer_funcs tegra_fb_funcs = {
+diff --git a/include/drm/drm_framebuffer.h b/include/drm/drm_framebuffer.h
+index dd1e3e99dcff..2fb398cb4646 100644
+--- a/include/drm/drm_framebuffer.h
++++ b/include/drm/drm_framebuffer.h
+@@ -66,6 +66,7 @@ struct drm_framebuffer_funcs {
+ 	 * 0 on success or a negative error code on failure.
+ 	 */
+ 	int (*create_handle)(struct drm_framebuffer *fb,
++			     unsigned int plane_index,
+ 			     struct drm_file *file_priv,
+ 			     unsigned int *handle);
+ 	/**
+diff --git a/include/uapi/drm/drm.h b/include/uapi/drm/drm.h
+index b2c52843bc70..c81c75335cca 100644
+--- a/include/uapi/drm/drm.h
++++ b/include/uapi/drm/drm.h
+@@ -814,6 +814,8 @@ extern "C" {
+ #define DRM_IOCTL_MODE_CREATEPROPBLOB	DRM_IOWR(0xBD, struct drm_mode_create_blob)
+ #define DRM_IOCTL_MODE_DESTROYPROPBLOB	DRM_IOWR(0xBE, struct drm_mode_destroy_blob)
+ 
++#define DRM_IOCTL_MODE_GETFB2  DRM_IOWR(0xC4, struct drm_mode_fb_cmd2)
++
+ /**
+  * Device specific ioctls should only be in their respective headers
+  * The device specific ioctl range is from 0x40 to 0x9f.
+-- 
+2.14.0.rc0.400.g1c36432dff-goog
