@@ -1,126 +1,113 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v3 1/5] [media] v4l: add porter duff blend controls
-Date: Mon, 31 Jul 2017 10:12:36 +0200
-Message-ID: <c6d4997f-30c6-9583-6cf5-32b374e4de29@xs4all.nl>
-References: <1501470460-12014-1-git-send-email-jacob-chen@iotwrt.com>
- <1501470460-12014-2-git-send-email-jacob-chen@iotwrt.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] ASoC: improve RT5514 dependencies
+Date: Mon, 31 Jul 2017 10:30:55 +0200
+Message-ID: <20170731083217.4142512-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501470460-12014-2-git-send-email-jacob-chen@iotwrt.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, s.nawrocki@samsung.com, tfiga@chromium.org, nicolas@ndufresne.ca
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, Ryder Lee <ryder.lee@mediatek.com>, Hsin-yu Chao <hychao@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-rockchip@lists.infradead.org, Harsha Priya N <harshapriya.n@intel.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, Vinod Koul <vinod.koul@intel.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Naveen M <naveen.m@intel.com>, Charles Keepax <ckeepax@opensource.wolfsonmicro.com>, Xing Zheng <zhengxing@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07/31/2017 05:07 AM, Jacob Chen wrote:
-> At peresent, we don't have a control for Compositing and Blend.
-> All drivers are just doing copies while actually many hardwares
-> supports more functions.
-> 
-> So Adding V4L2 controls for Compositing and Blend, used for for
-> composting streams.
-> 
-> The values are based on porter duff operations.
-> Defined in below links.
-> https://developer.xamarin.com/api/type/Android.Graphics.PorterDuff+Mode/
-> 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
-> Suggested-by: Nicolas Dufresne <nicolas@ndufresne.ca>
-> ---
->  drivers/media/v4l2-core/v4l2-ctrls.c | 20 +++++++++++++++++++-
->  include/uapi/linux/v4l2-controls.h   | 16 +++++++++++++++-
->  2 files changed, 34 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
-> index b9e08e3..561d7d5 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
-> @@ -478,7 +478,21 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
->  		"Region Grid",
->  		NULL,
->  	};
-> -
-> +	static const char * const porter_duff_modes[] = {
-> +		"Source",
-> +		"Source Top",
-> +		"Source In",
-> +		"Source Out",
-> +		"Source Over",
-> +		"Destination",
-> +		"Destination Top",
-> +		"Destination In",
-> +		"Destination Out",
-> +		"Destination Over",
-> +		"Add",
-> +		"Clear",
-> +		NULL
-> +	};
->  
->  	switch (id) {
->  	case V4L2_CID_MPEG_AUDIO_SAMPLING_FREQ:
-> @@ -564,6 +578,8 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
->  		return vpx_golden_frame_sel;
->  	case V4L2_CID_JPEG_CHROMA_SUBSAMPLING:
->  		return jpeg_chroma_subsampling;
-> +	case V4L2_CID_PORTER_DUFF_MODE:
-> +		return porter_duff_modes;
->  	case V4L2_CID_DV_TX_MODE:
->  		return dv_tx_mode;
->  	case V4L2_CID_DV_TX_RGB_RANGE:
-> @@ -886,6 +902,7 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_PIXEL_RATE:		return "Pixel Rate";
->  	case V4L2_CID_TEST_PATTERN:		return "Test Pattern";
->  	case V4L2_CID_DEINTERLACING_MODE:	return "Deinterlacing Mode";
-> +	case V4L2_CID_PORTER_DUFF_MODE:		return "PorterDuff Blend Modes";
->  
->  	/* DV controls */
->  	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
-> @@ -1060,6 +1077,7 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_DV_RX_IT_CONTENT_TYPE:
->  	case V4L2_CID_TEST_PATTERN:
->  	case V4L2_CID_DEINTERLACING_MODE:
-> +	case V4L2_CID_PORTER_DUFF_MODE:
->  	case V4L2_CID_TUNE_DEEMPHASIS:
->  	case V4L2_CID_MPEG_VIDEO_VPX_GOLDEN_FRAME_SEL:
->  	case V4L2_CID_DETECT_MD_MODE:
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> index 0d2e1e0..9543b4b 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -893,7 +893,21 @@ enum v4l2_jpeg_chroma_subsampling {
->  #define V4L2_CID_PIXEL_RATE			(V4L2_CID_IMAGE_PROC_CLASS_BASE + 2)
->  #define V4L2_CID_TEST_PATTERN			(V4L2_CID_IMAGE_PROC_CLASS_BASE + 3)
->  #define V4L2_CID_DEINTERLACING_MODE		(V4L2_CID_IMAGE_PROC_CLASS_BASE + 4)
-> -
-> +#define V4L2_CID_PORTER_DUFF_MODE		(V4L2_CID_IMAGE_PROC_CLASS_BASE + 5)
+With SND_SOC_RT5514_SPI=m and SND_SOC_RT5514=y, we get this link error:
 
-I recommend that you add a link to e.g. https://en.wikipedia.org/wiki/Alpha_compositing
-as a comment here.
+sound/soc/codecs/rt5514.o: In function `rt5514_dsp_voice_wake_up_put':
+rt5514.c:(.text+0x2068): undefined reference to `rt5514_spi_burst_write'
+rt5514.c:(.text+0x20c8): undefined reference to `rt5514_spi_burst_write'
 
-> +enum v4l2_porter_duff_mode {
-> +	V4L2_PORTER_DUFF_SRC			= 0,
-> +	V4L2_PORTER_DUFF_SRCATOP		= 1,
-> +	V4L2_PORTER_DUFF_SRCIN			= 2,
-> +	V4L2_PORTER_DUFF_SRCOUT			= 3,
-> +	V4L2_PORTER_DUFF_SRCOVER		= 4,
-> +	V4L2_PORTER_DUFF_DST			= 5,
-> +	V4L2_PORTER_DUFF_DSTATOP		= 6,
-> +	V4L2_PORTER_DUFF_DSTIN			= 7,
-> +	V4L2_PORTER_DUFF_DSTOUT			= 8,
-> +	V4L2_PORTER_DUFF_DSTOVER		= 9,
-> +	V4L2_PORTER_DUFF_ADD			= 10,
-> +	V4L2_PORTER_DUFF_CLEAR			= 11,
-> +};
->  
->  /*  DV-class control IDs defined by V4L2 */
->  #define V4L2_CID_DV_CLASS_BASE			(V4L2_CTRL_CLASS_DV | 0x900)
-> 
+This adds another Kconfig symbol to work around the link error, forcing
+the main driver to be a loadable module as well if some other driver
+selects the I2C side to be built-in.
 
-This control also has to be documented in Documentation/media/uapi/v4l/extended-controls.rst.
+Fixes: 2a18483a7fb4 ("ASoC: Intel: Add Kabylake machine driver for RT5514, RT5663 and MAX98927")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+This can now lead to a configuration with
+SND_SOC_INTEL_KBL_RT5663_RT5514_MAX98927_MACH=y and SND_SOC_RT5514=m. I
+don't know if that is a problem or not.
 
-Regards,
+An alternative approach would be to flip the dependency between
+rt5514_spi.ko and rt5514.ko and avoid having the rt5514_spi_burst_write
+symbol exported.
+---
+ sound/soc/codecs/Kconfig   | 7 ++++++-
+ sound/soc/intel/Kconfig    | 2 +-
+ sound/soc/mediatek/Kconfig | 2 +-
+ sound/soc/rockchip/Kconfig | 1 -
+ 4 files changed, 8 insertions(+), 4 deletions(-)
 
-	Hans
+diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
+index 024ddc9938ed..115c6144ca2a 100644
+--- a/sound/soc/codecs/Kconfig
++++ b/sound/soc/codecs/Kconfig
+@@ -117,7 +117,7 @@ config SND_SOC_ALL_CODECS
+ 	select SND_SOC_RT274 if I2C
+ 	select SND_SOC_RT286 if I2C
+ 	select SND_SOC_RT298 if I2C
+-	select SND_SOC_RT5514 if I2C
++	select SND_SOC_RT5514_I2C if I2C
+ 	select SND_SOC_RT5616 if I2C
+ 	select SND_SOC_RT5631 if I2C
+ 	select SND_SOC_RT5640 if I2C
+@@ -738,6 +738,11 @@ config SND_SOC_RT298
+ 
+ config SND_SOC_RT5514
+ 	tristate
++	default m if SND_SOC_RT5514_SPI=m
++	default SND_SOC_RT5514_I2C || SND_SOC_RT5514_SPI
++
++config SND_SOC_RT5514_I2C
++	tristate
+ 
+ config SND_SOC_RT5514_SPI
+ 	tristate
+diff --git a/sound/soc/intel/Kconfig b/sound/soc/intel/Kconfig
+index b301bfff1c09..f5ef912190ed 100644
+--- a/sound/soc/intel/Kconfig
++++ b/sound/soc/intel/Kconfig
+@@ -259,7 +259,7 @@ config SND_SOC_INTEL_KBL_RT5663_RT5514_MAX98927_MACH
+         select SND_SOC_INTEL_SST
+         select SND_SOC_INTEL_SKYLAKE
+         select SND_SOC_RT5663
+-        select SND_SOC_RT5514
++        select SND_SOC_RT5514_I2C
+         select SND_SOC_MAX98927
+         select SND_SOC_HDAC_HDMI
+         help
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 5c68797f36c4..6ccf73ae77ca 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -67,7 +67,7 @@ config SND_SOC_MT8173_RT5650_RT5514
+ 	tristate "ASoC Audio driver for MT8173 with RT5650 RT5514 codecs"
+ 	depends on SND_SOC_MT8173 && I2C
+ 	select SND_SOC_RT5645
+-	select SND_SOC_RT5514
++	select SND_SOC_RT5514_I2C
+ 	help
+ 	  This adds ASoC driver for Mediatek MT8173 boards
+ 	  with the RT5650 and RT5514 codecs.
+diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
+index c84487805876..c1139aecdfbe 100644
+--- a/sound/soc/rockchip/Kconfig
++++ b/sound/soc/rockchip/Kconfig
+@@ -65,7 +65,6 @@ config SND_SOC_RK3399_GRU_SOUND
+ 	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB && CLKDEV_LOOKUP && SPI
+ 	select SND_SOC_ROCKCHIP_I2S
+ 	select SND_SOC_MAX98357A
+-	select SND_SOC_RT5514
+ 	select SND_SOC_DA7219
+ 	select SND_SOC_RT5514_SPI
+ 	help
+-- 
+2.9.0
