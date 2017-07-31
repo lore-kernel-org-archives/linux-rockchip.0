@@ -1,83 +1,61 @@
-From: Jacob Chen <jacob-chen@iotwrt.com>
-Subject: [PATCH v2] arm64: dts: rockchip: add rk3399 hdmi nodes
-Date: Mon, 31 Jul 2017 23:58:45 +0800
-Message-ID: <1501516725-6838-1-git-send-email-jacob-chen@iotwrt.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob-chen@iotwrt.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v4 2/6] [media] extended-controls.rst: add PorterDuff mode
+ control
+Date: Mon, 31 Jul 2017 18:07:17 +0200
+Message-ID: <d5bc50d0-f468-f1b4-b52a-4f1c10d7d9af@xs4all.nl>
+References: <1501515182-26705-1-git-send-email-jacob-chen@iotwrt.com>
+ <1501515182-26705-3-git-send-email-jacob-chen@iotwrt.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1501515182-26705-3-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add an hdmi node, and also add hdmi endpoints to vopb and vopl
-output port nodes.
+On 07/31/2017 05:32 PM, Jacob Chen wrote:
+> PorterDuff mode control are used to determine
+> how two images are combined.
+> 
+> Signed-off-by: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+> ---
+>  Documentation/media/uapi/v4l/extended-controls.rst | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/media/uapi/v4l/extended-controls.rst b/Documentation/media/uapi/v4l/extended-controls.rst
+> index abb1057..f9c93bb 100644
+> --- a/Documentation/media/uapi/v4l/extended-controls.rst
+> +++ b/Documentation/media/uapi/v4l/extended-controls.rst
+> @@ -3021,6 +3021,10 @@ Image Process Control IDs
+>      The video deinterlacing mode (such as Bob, Weave, ...). The menu items are
+>      driver specific and are documented in :ref:`v4l-drivers`.
+>  
+> +``V4L2_CID_PORTER_DUFF_MODE (menu)``
+> +    The PorterDuff blend modes. PorterDuff is way to overlay, combine and
+> +    trim images as if they were pieces of cardboard, device could use to
+> +    determine how two images are combined.
 
-changes in v2:
- - remove spare lines
+A little rewrite:
 
-Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 35 ++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+    The PorterDuff blend modes. PorterDuff is a method to overlay, combine and
+    trim images as if they were pieces of cardboard. The device uses this to
+    determine how two images are combined.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 5c5c9d9..3906471 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1485,6 +1485,10 @@
- 				remote-endpoint = <&edp_in_vopl>;
- 			};
- 
-+			vopl_out_hdmi: endpoint@2 {
-+				reg = <2>;
-+				remote-endpoint = <&hdmi_in_vopl>;
-+			};
- 		};
- 	};
- 
-@@ -1526,6 +1530,10 @@
- 				remote-endpoint = <&mipi_in_vopb>;
- 			};
- 
-+			vopb_out_hdmi: endpoint@2 {
-+				reg = <2>;
-+				remote-endpoint = <&hdmi_in_vopb>;
-+			};
- 		};
- 	};
- 
-@@ -1541,6 +1549,33 @@
- 		status = "disabled";
- 	};
- 
-+	hdmi: hdmi@ff940000 {
-+		compatible = "rockchip,rk3399-dw-hdmi";
-+		reg = <0x0 0xff940000 0x0 0x20000>;
-+		reg-io-width = <4>;
-+		rockchip,grf = <&grf>;
-+		power-domains = <&power RK3399_PD_HDCP>;
-+		interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_SFR>, <&cru PLL_VPLL>, <&cru PCLK_VIO_GRF>;
-+		clock-names = "iahb", "isfr", "vpll", "grf";
-+		status = "disabled";
-+
-+		ports {
-+			hdmi_in: port {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				hdmi_in_vopb: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vopb_out_hdmi>;
-+				};
-+				hdmi_in_vopl: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&vopl_out_hdmi>;
-+				};
-+			};
-+		};
-+	};
-+
- 	mipi_dsi: mipi@ff960000 {
- 		compatible = "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi";
- 		reg = <0x0 0xff960000 0x0 0x8000>;
--- 
-2.7.4
+Also add a link to the same android article that you pointed to in the header.
+
+Regards,
+
+	Hans
+
+>  
+>  .. _dv-controls:
+>  
+> 
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
