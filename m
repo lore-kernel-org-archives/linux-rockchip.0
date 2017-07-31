@@ -1,67 +1,48 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v6 0/7] drm/rockchip: add all full framework vop support
-Date: Mon, 31 Jul 2017 09:02:49 +0800
-Message-ID: <597E81B9.20408@rock-chips.com>
-References: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH] ASoC: rockchip: add bindings for i2s
+Date: Mon, 31 Jul 2017 09:47:51 +0800
+Message-ID: <1501465671-22863-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: heiko@sntech.de, broonie@kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkKClB1c2hlZCB0byBkcm0tbWlzYy1uZXh0LgoKVGhhbmtzIFNlYW4gUGF1bCwgSmVmZnkgQ2hl
-bidzIHJldmlldywgSGVpa28ncyB0ZXN0IGFuZCBSb2IncyBhY2suCgpCZXN0IHJlZ2FyZHMuCgpP
-biAyMDE35bm0MDfmnIgyNuaXpSAxNDoxOCwgTWFyayBZYW8gd3JvdGU6Cj4gVGhlc2UgcGF0Y2hl
-cyB0cnkgdG8gbWFrZSBhbGwgY3VycmVudCByb2NrY2hpcCBmdWxsIGZyYW1ld29yayB2b3Agd29y
-a3MKPiBvbiBkcm0sIGZpbGwgbWlzc2luZyB2b3Agb24gZnVsbCBmcmFtZXdvcmsuCj4gVm9wIEZ1
-bGwgZnJhbWV3b3JrIG5vdyBoYXMgZm9sbG93aW5nIHZvcHM6Cj4gSVAgdmVyc2lvbiAgICBjaGlw
-bmFtZQo+ICAgICAgICAzLjEgICAgICAgICAgIHJrMzI4OAo+ICAgICAgICAzLjIgICAgICAgICAg
-IHJrMzM2OAo+ICAgICAgICAzLjQgICAgICAgICAgIHJrMzM2Ngo+ICAgICAgICAzLjUgICAgICAg
-ICAgIHJrMzM5OSBiaWcKPiAgICAgICAgMy42ICAgICAgICAgICByazMzOTkgbGl0Cj4gICAgICAg
-IDMuNyAgICAgICAgICAgcmszMjI4Cj4gICAgICAgIDMuOCAgICAgICAgICAgcmszMzI4Cj4KPiBH
-cm91cCB0aGUgdm9wIHJlZ2lzdGVyLCBpdCB3b3VsZCBtYWtlIHJlZ2lzdGVyICBkZWZpbml0aW9u
-IGNsZWFyZXIgYW5kCj4gbW9yZSBlYXNpbHkgdG8gcmV1c2Ugc2FtZSBncm91cCByZWdpc3RlciBk
-ZWZpbmUgZm9yIGRpZmZlcmVuY2Ugdm9wcy4KPgo+IFRlc3RlZCBvbiByazMzOTkgZXhjYXZhdG9y
-IGJvYXJkIHdpdGgga2VybmVsIDQuMTMtcmMxLgo+Cj4gQW5kIG90aGVyIGNoaXBzIHRlc3RlZCBv
-biByb2NrY2hpcCBrZXJuZWwgNC40Ogo+ICAgICBodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAt
-bGludXgva2VybmVsL3RyZWUvcmVsZWFzZS00LjQvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwCj4K
-PiBDaGFuZ2VzIGluIHY2Ogo+IC0gZml4IHNvbWUgcGF0Y2hlcyBjb21wbGllIGVycm9yCj4gLSBm
-aXggcmszMDM2IGRpc3BsYXkgYmxhbmsKPgo+IENoYW5nZXMgaW4gdjU6Cj4gLSBjbGVhbiBkb2N1
-bWVudCBjb21taXQgdGl0bGUKPiAtIG1vdmUgY2hhbmdlcyBkZXNjcmlwdGlvbiBvdXQgb2YgZG9j
-dW1taXQgY29tbWl0IG1zZwo+Cj4gQ2hhbmdlcyBpbiB2NDoKPiAtIHJlYmFzZSB0byBuZXdlc3Qg
-dG9ydmFsZHMga2VybmVsLCBmaXggbWVyZ2UgY29uZmxpY3QKPgo+IENoYW5nZXMgaW4gdjM6Cj4g
-LSBncm91cCB2b3AgcmVnaXN0ZXIgaW5zdGVhZCB1c2luZyBWT1BfUkVHX1ZFUiBtZWNoYW5pc20K
-PiAtIEV4cGxhaW4gbW9yZSBvbiBwYXRjaCBjb21taXQgbWVzc2FnZQo+IC0gbW92ZSB3cml0ZV9y
-ZWxheGVkIGZsYWdzIHRvIHZvcCByZWdpc3RlcnMKPiAtIGZpeCByazMzMjggb3ZlcmxheSBhYm5v
-cm1hbAo+Cj4gQ2hhbmdlcyBpbiB2MjoKPiAtIHJlbmFtZSByazMyMnggdG8gcmszMjI4Cj4gLSBj
-b3JyZWN0IHNvbWUgdm9wIHJlZ2lzdGVycyBkZWZpbmUKPgo+IE1hcmsgWWFvICg3KToKPiAgICBk
-cm0vcm9ja2NoaXA6IHZvcDogaW5pdGlhbGl6ZSByZWdpc3RlcnMgZGlyZWN0bHkKPiAgICBkcm0v
-cm9ja2NoaXA6IHZvcDogbW92ZSB3cml0ZV9yZWxheGVkIGZsYWdzIHRvIHZvcCByZWdpc3Rlcgo+
-ICAgIGRybS9yb2NrY2hpcDogdm9wOiBtb3ZlIGxpbmVfZmxhZ19udW0gdG8gaW50ZXJydXB0IHJl
-Z2lzdGVycwo+ICAgIGRybS9yb2NrY2hpcDogdm9wOiBncm91cCB2b3AgcmVnaXN0ZXJzCj4gICAg
-ZHJtL3JvY2tjaGlwOiB2b3A6IGFkZCBhIHNlcmllcyBvZiB2b3Agc3VwcG9ydAo+ICAgIGR0LWJp
-bmRpbmdzOiBkaXNwbGF5OiByb2NrY2hpcDogZmlsbCBEb2N1bWVudHMgZm9yIHZvcCBzZXJpZXMK
-PiAgICBkcm0vcm9ja2NoaXA6IHZvcDogcmszMzI4OiBmaXggb3ZlcmxheSBhYm5vcm1hbAo+Cj4g
-ICAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3AudHh0ICAgICB8ICAg
-NCArCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAg
-ICB8IDEwOSArKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmggICAgICAgIHwgIDgxICstCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-dm9wX3JlZy5jICAgICAgICB8IDM3NSArKysrKystLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmggICAgICAgIHwgOTA1ICsrKysrKysrKysrKysrKystLS0t
-LQo+ICAgNSBmaWxlcyBjaGFuZ2VkLCAxMDc1IGluc2VydGlvbnMoKyksIDM5OSBkZWxldGlvbnMo
-LSkKPgoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+This patch add bindings for rk3036/rk3228/rk3328/rk3366 i2s.
+
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+---
+
+ Documentation/devicetree/bindings/sound/rockchip-i2s.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+index 206aba1..b208a75 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+@@ -7,8 +7,12 @@ Required properties:
+ 
+ - compatible: should be one of the following:
+    - "rockchip,rk3066-i2s": for rk3066
++   - "rockchip,rk3036-i2s", "rockchip,rk3066-i2s": for rk3036
+    - "rockchip,rk3188-i2s", "rockchip,rk3066-i2s": for rk3188
++   - "rockchip,rk3228-i2s", "rockchip,rk3066-i2s": for rk3228
+    - "rockchip,rk3288-i2s", "rockchip,rk3066-i2s": for rk3288
++   - "rockchip,rk3328-i2s", "rockchip,rk3066-i2s": for rk3328
++   - "rockchip,rk3366-i2s", "rockchip,rk3066-i2s": for rk3366
+    - "rockchip,rk3368-i2s", "rockchip,rk3066-i2s": for rk3368
+    - "rockchip,rk3399-i2s", "rockchip,rk3066-i2s": for rk3399
+ - reg: physical base address of the controller and length of memory mapped
+-- 
+2.7.4
