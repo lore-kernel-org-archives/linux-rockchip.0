@@ -1,42 +1,57 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 5/6] drm/rockchip: vop: report error when check resource error
-Date: Mon, 31 Jul 2017 17:49:55 +0800
-Message-ID: <1501494596-7090-1-git-send-email-mark.yao@rock-chips.com>
+Subject: [PATCH 6/6] drm/rockchip: fix race with kms hotplug and fbdev
+Date: Mon, 31 Jul 2017 17:50:00 +0800
+Message-ID: <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
 References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIHVzZXIgd291bGQgYmUgY29uZnVzZWQgd2hpbGUgZmFjaW5nIGEgZXJyb3IgY29tbWl0IHdp
-dGhvdXQKYW55IGVycm9yIHJlcG9ydC4KClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlh
-b0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5jIHwgNCArKystCiAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAxIGRl
-bGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
-aW5kZXggZmEwZDlmNy4uOTk5YzJlMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jCkBAIC02NzQsOCArNjc0LDEwIEBAIHN0YXRpYyBpbnQgdm9wX3BsYW5l
-X2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAkgKiBTcmMueDEgY2FuIGJl
-IG9kZCB3aGVuIGRvIGNsaXAsIGJ1dCB5dXYgcGxhbmUgc3RhcnQgcG9pbnQKIAkgKiBuZWVkIGFs
-aWduIHdpdGggMiBwaXhlbC4KIAkgKi8KLQlpZiAoaXNfeXV2X3N1cHBvcnQoZmItPmZvcm1hdC0+
-Zm9ybWF0KSAmJiAoKHN0YXRlLT5zcmMueDEgPj4gMTYpICUgMikpCisJaWYgKGlzX3l1dl9zdXBw
-b3J0KGZiLT5mb3JtYXQtPmZvcm1hdCkgJiYgKChzdGF0ZS0+c3JjLngxID4+IDE2KSAlIDIpKSB7
-CisJCURSTV9FUlJPUigiSW52YWxpZCBTb3VyY2U6IFl1diBmb3JtYXQgbm90IHN1cHBvcnQgb2Rk
-IHhwb3NcbiIpOwogCQlyZXR1cm4gLUVJTlZBTDsKKwl9CiAKIAlyZXR1cm4gMDsKIH0KLS0gCjEu
-OS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Since fb_helper is not a pointer on rockchip_drm_private, it's no
+need to check pointer.
+
+Kms hotplug event may race into fbdev helper initial, and fb_helper->dev
+may be NULL pointer, that would cause the bug:
+
+[    0.735411] [00000200] *pgd=00000000f6ffe003, *pud=00000000f6ffe003, *pmd=0000000000000000
+[    0.736156] Internal error: Oops: 96000005 [#1] PREEMPT SMP
+[    0.736648] Modules linked in:
+[    0.736930] CPU: 2 PID: 20 Comm: kworker/2:0 Not tainted 4.4.41 #20
+[    0.737480] Hardware name: Rockchip RK3399 Board rev2 (BOX) (DT)
+[    0.738020] Workqueue: events cdn_dp_pd_event_work
+[    0.738447] task: ffffffc0f21f3100 ti: ffffffc0f2218000 task.ti: ffffffc0f2218000
+[    0.739109] PC is at mutex_lock+0x14/0x44
+[    0.739469] LR is at drm_fb_helper_hotplug_event+0x30/0x114
+[    0.756253] [<ffffff8008a344f4>] mutex_lock+0x14/0x44
+[    0.756260] [<ffffff8008445708>] drm_fb_helper_hotplug_event+0x30/0x114
+[    0.756271] [<ffffff8008473c84>] rockchip_drm_output_poll_changed+0x18/0x20
+[    0.756280] [<ffffff8008439fcc>] drm_kms_helper_hotplug_event+0x28/0x34
+[    0.756286] [<ffffff800846c444>] cdn_dp_pd_event_work+0x394/0x3c4
+[    0.756295] [<ffffff80080b2b38>] process_one_work+0x218/0x3e0
+[    0.756302] [<ffffff80080b3538>] worker_thread+0x2e8/0x404
+[    0.756308] [<ffffff80080b7e70>] kthread+0xe8/0xf0
+[    0.756316] [<ffffff8008082690>] ret_from_fork+0x10/0x40
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index 81f9548..e6bd0f4 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -170,7 +170,7 @@ static void rockchip_drm_output_poll_changed(struct drm_device *dev)
+ 	struct rockchip_drm_private *private = dev->dev_private;
+ 	struct drm_fb_helper *fb_helper = &private->fbdev_helper;
+ 
+-	if (fb_helper)
++	if (fb_helper->dev)
+ 		drm_fb_helper_hotplug_event(fb_helper);
+ }
+ 
+-- 
+1.9.1
