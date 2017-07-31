@@ -1,59 +1,67 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: [PATCH] phy: rockchip-inno-usb2: fix of_irq_get_byname() error checks
-Date: Sun, 30 Jul 2017 20:46:23 +0300
-Message-ID: <20170730174630.481994041@cogentembedded.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v6 0/7] drm/rockchip: add all full framework vop support
+Date: Mon, 31 Jul 2017 09:02:49 +0800
+Message-ID: <597E81B9.20408@rock-chips.com>
+References: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-15
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline; filename=phy-rockchip-inno-usb2-fix-of_irq_get_byname-error-checks.patch
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1501049930-5794-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-of_irq_get_byname() may  return 0 as well as negative error number on
-failure,  while the driver only checks for the negative values. The driver
-would then call devm_request_threaded_irq() for IRQ0 and thus never get
-the valid interrupts.
-
-Check for IRQ <= 0 instead and return -ENXIO iff  it's 0 from
-rockchip_usb2phy_{host|otg}_port_init(), and thus fail the driver's probe.
-
-Fixes: 0e08d2a727e6 ("phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy")
-Fixes: 98898f3bc83c ("phy: rockchip-inno-usb2: support otg-port for rk3399")
-Signed-off-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-
----
-The patch is against the 'fixes' branch of Kishon's 'linux-phy.git' repo.
-
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-Index: linux-phy/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-===================================================================
---- linux-phy.orig/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ linux-phy/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -925,9 +925,9 @@ static int rockchip_usb2phy_host_port_in
- 	INIT_DELAYED_WORK(&rport->sm_work, rockchip_usb2phy_sm_work);
- 
- 	rport->ls_irq = of_irq_get_byname(child_np, "linestate");
--	if (rport->ls_irq < 0) {
-+	if (rport->ls_irq <= 0) {
- 		dev_err(rphy->dev, "no linestate irq provided\n");
--		return rport->ls_irq;
-+		return rport->ls_irq ?: -ENXIO;
- 	}
- 
- 	ret = devm_request_threaded_irq(rphy->dev, rport->ls_irq, NULL,
-@@ -988,9 +988,9 @@ static int rockchip_usb2phy_otg_port_ini
- 		of_property_read_bool(child_np, "rockchip,utmi-avalid");
- 
- 	rport->bvalid_irq = of_irq_get_byname(child_np, "otg-bvalid");
--	if (rport->bvalid_irq < 0) {
-+	if (rport->bvalid_irq <= 0) {
- 		dev_err(rphy->dev, "no vbus valid irq provided\n");
--		ret = rport->bvalid_irq;
-+		ret = rport->bvalid_irq ?: -ENXIO;
- 		goto out;
- 	}
- 
+SGkKClB1c2hlZCB0byBkcm0tbWlzYy1uZXh0LgoKVGhhbmtzIFNlYW4gUGF1bCwgSmVmZnkgQ2hl
+bidzIHJldmlldywgSGVpa28ncyB0ZXN0IGFuZCBSb2IncyBhY2suCgpCZXN0IHJlZ2FyZHMuCgpP
+biAyMDE35bm0MDfmnIgyNuaXpSAxNDoxOCwgTWFyayBZYW8gd3JvdGU6Cj4gVGhlc2UgcGF0Y2hl
+cyB0cnkgdG8gbWFrZSBhbGwgY3VycmVudCByb2NrY2hpcCBmdWxsIGZyYW1ld29yayB2b3Agd29y
+a3MKPiBvbiBkcm0sIGZpbGwgbWlzc2luZyB2b3Agb24gZnVsbCBmcmFtZXdvcmsuCj4gVm9wIEZ1
+bGwgZnJhbWV3b3JrIG5vdyBoYXMgZm9sbG93aW5nIHZvcHM6Cj4gSVAgdmVyc2lvbiAgICBjaGlw
+bmFtZQo+ICAgICAgICAzLjEgICAgICAgICAgIHJrMzI4OAo+ICAgICAgICAzLjIgICAgICAgICAg
+IHJrMzM2OAo+ICAgICAgICAzLjQgICAgICAgICAgIHJrMzM2Ngo+ICAgICAgICAzLjUgICAgICAg
+ICAgIHJrMzM5OSBiaWcKPiAgICAgICAgMy42ICAgICAgICAgICByazMzOTkgbGl0Cj4gICAgICAg
+IDMuNyAgICAgICAgICAgcmszMjI4Cj4gICAgICAgIDMuOCAgICAgICAgICAgcmszMzI4Cj4KPiBH
+cm91cCB0aGUgdm9wIHJlZ2lzdGVyLCBpdCB3b3VsZCBtYWtlIHJlZ2lzdGVyICBkZWZpbml0aW9u
+IGNsZWFyZXIgYW5kCj4gbW9yZSBlYXNpbHkgdG8gcmV1c2Ugc2FtZSBncm91cCByZWdpc3RlciBk
+ZWZpbmUgZm9yIGRpZmZlcmVuY2Ugdm9wcy4KPgo+IFRlc3RlZCBvbiByazMzOTkgZXhjYXZhdG9y
+IGJvYXJkIHdpdGgga2VybmVsIDQuMTMtcmMxLgo+Cj4gQW5kIG90aGVyIGNoaXBzIHRlc3RlZCBv
+biByb2NrY2hpcCBrZXJuZWwgNC40Ogo+ICAgICBodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAt
+bGludXgva2VybmVsL3RyZWUvcmVsZWFzZS00LjQvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwCj4K
+PiBDaGFuZ2VzIGluIHY2Ogo+IC0gZml4IHNvbWUgcGF0Y2hlcyBjb21wbGllIGVycm9yCj4gLSBm
+aXggcmszMDM2IGRpc3BsYXkgYmxhbmsKPgo+IENoYW5nZXMgaW4gdjU6Cj4gLSBjbGVhbiBkb2N1
+bWVudCBjb21taXQgdGl0bGUKPiAtIG1vdmUgY2hhbmdlcyBkZXNjcmlwdGlvbiBvdXQgb2YgZG9j
+dW1taXQgY29tbWl0IG1zZwo+Cj4gQ2hhbmdlcyBpbiB2NDoKPiAtIHJlYmFzZSB0byBuZXdlc3Qg
+dG9ydmFsZHMga2VybmVsLCBmaXggbWVyZ2UgY29uZmxpY3QKPgo+IENoYW5nZXMgaW4gdjM6Cj4g
+LSBncm91cCB2b3AgcmVnaXN0ZXIgaW5zdGVhZCB1c2luZyBWT1BfUkVHX1ZFUiBtZWNoYW5pc20K
+PiAtIEV4cGxhaW4gbW9yZSBvbiBwYXRjaCBjb21taXQgbWVzc2FnZQo+IC0gbW92ZSB3cml0ZV9y
+ZWxheGVkIGZsYWdzIHRvIHZvcCByZWdpc3RlcnMKPiAtIGZpeCByazMzMjggb3ZlcmxheSBhYm5v
+cm1hbAo+Cj4gQ2hhbmdlcyBpbiB2MjoKPiAtIHJlbmFtZSByazMyMnggdG8gcmszMjI4Cj4gLSBj
+b3JyZWN0IHNvbWUgdm9wIHJlZ2lzdGVycyBkZWZpbmUKPgo+IE1hcmsgWWFvICg3KToKPiAgICBk
+cm0vcm9ja2NoaXA6IHZvcDogaW5pdGlhbGl6ZSByZWdpc3RlcnMgZGlyZWN0bHkKPiAgICBkcm0v
+cm9ja2NoaXA6IHZvcDogbW92ZSB3cml0ZV9yZWxheGVkIGZsYWdzIHRvIHZvcCByZWdpc3Rlcgo+
+ICAgIGRybS9yb2NrY2hpcDogdm9wOiBtb3ZlIGxpbmVfZmxhZ19udW0gdG8gaW50ZXJydXB0IHJl
+Z2lzdGVycwo+ICAgIGRybS9yb2NrY2hpcDogdm9wOiBncm91cCB2b3AgcmVnaXN0ZXJzCj4gICAg
+ZHJtL3JvY2tjaGlwOiB2b3A6IGFkZCBhIHNlcmllcyBvZiB2b3Agc3VwcG9ydAo+ICAgIGR0LWJp
+bmRpbmdzOiBkaXNwbGF5OiByb2NrY2hpcDogZmlsbCBEb2N1bWVudHMgZm9yIHZvcCBzZXJpZXMK
+PiAgICBkcm0vcm9ja2NoaXA6IHZvcDogcmszMzI4OiBmaXggb3ZlcmxheSBhYm5vcm1hbAo+Cj4g
+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3AudHh0ICAgICB8ICAg
+NCArCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAg
+ICB8IDEwOSArKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+LmggICAgICAgIHwgIDgxICstCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+dm9wX3JlZy5jICAgICAgICB8IDM3NSArKysrKystLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmggICAgICAgIHwgOTA1ICsrKysrKysrKysrKysrKystLS0t
+LQo+ICAgNSBmaWxlcyBjaGFuZ2VkLCAxMDc1IGluc2VydGlvbnMoKyksIDM5OSBkZWxldGlvbnMo
+LSkKPgoKCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
