@@ -1,165 +1,94 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v4 1/2] clk: rockchip: rk3128: modify rk3128 clk driver to support rk3126
-Date: Tue,  1 Aug 2017 09:17:03 +0800
-Message-ID: <1501550224-6875-2-git-send-email-zhangqing@rock-chips.com>
-References: <1501550224-6875-1-git-send-email-zhangqing@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 6/6] drm/rockchip: fix race with kms hotplug and fbdev
+Date: Tue, 1 Aug 2017 10:00:36 +0800
+Message-ID: <597FE0C4.4000808@rock-chips.com>
+References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
+ <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
+ <CACvgo511Cb0_vT1vR+q-3d3zU2PmHmi-r-aH8uZHQXDj8V4byg@mail.gmail.com>
+ <CAKMK7uFXGPRQOxAXi+0_TO4HUN8p1RweGOGGsvnQrAcHbtuXWg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501550224-6875-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <CAKMK7uFXGPRQOxAXi+0_TO4HUN8p1RweGOGGsvnQrAcHbtuXWg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
+To: Daniel Vetter <daniel@ffwll.ch>, Emil Velikov <emil.l.velikov@gmail.com>
+Cc: LAKML <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-rk3128 and rk3126 have some gate registers describe differences.
-So need to make some distinctions.
-The RK3126 and RK3128 Same clock description we move it to
-the common clock branches.
-And the different clks description use the own clock branches.
+On 2017年07月31日 20:28, Daniel Vetter wrote:
+> On Mon, Jul 31, 2017 at 1:57 PM, Emil Velikov <emil.l.velikov@gmail.com> wrote:
+>> On 31 July 2017 at 10:50, Mark Yao <mark.yao@rock-chips.com> wrote:
+>>> Since fb_helper is not a pointer on rockchip_drm_private, it's no
+>>> need to check pointer.
+>>>
+>>> Kms hotplug event may race into fbdev helper initial, and fb_helper->dev
+>>> may be NULL pointer, that would cause the bug:
+>>>
+>>> [    0.735411] [00000200] *pgd=00000000f6ffe003, *pud=00000000f6ffe003, *pmd=0000000000000000
+>>> [    0.736156] Internal error: Oops: 96000005 [#1] PREEMPT SMP
+>>> [    0.736648] Modules linked in:
+>>> [    0.736930] CPU: 2 PID: 20 Comm: kworker/2:0 Not tainted 4.4.41 #20
+>>> [    0.737480] Hardware name: Rockchip RK3399 Board rev2 (BOX) (DT)
+>>> [    0.738020] Workqueue: events cdn_dp_pd_event_work
+>>> [    0.738447] task: ffffffc0f21f3100 ti: ffffffc0f2218000 task.ti: ffffffc0f2218000
+>>> [    0.739109] PC is at mutex_lock+0x14/0x44
+>>> [    0.739469] LR is at drm_fb_helper_hotplug_event+0x30/0x114
+>>> [    0.756253] [<ffffff8008a344f4>] mutex_lock+0x14/0x44
+>>> [    0.756260] [<ffffff8008445708>] drm_fb_helper_hotplug_event+0x30/0x114
+>>> [    0.756271] [<ffffff8008473c84>] rockchip_drm_output_poll_changed+0x18/0x20
+>>> [    0.756280] [<ffffff8008439fcc>] drm_kms_helper_hotplug_event+0x28/0x34
+>>> [    0.756286] [<ffffff800846c444>] cdn_dp_pd_event_work+0x394/0x3c4
+>>> [    0.756295] [<ffffff80080b2b38>] process_one_work+0x218/0x3e0
+>>> [    0.756302] [<ffffff80080b3538>] worker_thread+0x2e8/0x404
+>>> [    0.756308] [<ffffff80080b7e70>] kthread+0xe8/0xf0
+>>> [    0.756316] [<ffffff8008082690>] ret_from_fork+0x10/0x40
+>>>
+>>> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+>>> ---
+>>>   drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+>>> index 81f9548..e6bd0f4 100644
+>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+>>> @@ -170,7 +170,7 @@ static void rockchip_drm_output_poll_changed(struct drm_device *dev)
+>>>          struct rockchip_drm_private *private = dev->dev_private;
+>>>          struct drm_fb_helper *fb_helper = &private->fbdev_helper;
+>>>
+>>> -       if (fb_helper)
+>>> +       if (fb_helper->dev)
+>>>                  drm_fb_helper_hotplug_event(fb_helper);
+>> Food for thought:
+>>
+>> Quick grep shows that no other drivers have such a ->dev check. Does
+>> this mean that either the issue is rockchip specific?
+>> If not, one could look into resolving the problem directly in drm core.
+>>
+>> Or at least update the other users, so they don't stumble upon the problem?
+> The fbdev helpers support already handling hotplug events before you
+> have finalized the fbdev setup. Please read the kerneldoc for the
+> various fbdev functions, they explain what you should be doing. This
+> hack here should indeed not be needed.
+> -Daniel
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3128.c | 69 +++++++++++++++++++++++++++++++--------
- 1 file changed, 55 insertions(+), 14 deletions(-)
+Hi Daniel
 
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index e243f2eae68f..62d7854e4b87 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -201,7 +201,7 @@ enum rk3128_plls {
- 	MUX(SCLK_UART2, "sclk_uart2", mux_uart2_p, CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(15), 8, 2, MFLAGS);
- 
--static struct rockchip_clk_branch rk3128_clk_branches[] __initdata = {
-+static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	/*
- 	 * Clock-Architecture Diagram 1
- 	 */
-@@ -459,10 +459,6 @@ enum rk3128_plls {
- 			RK2928_CLKSEL_CON(2), 14, 2, MFLAGS, 8, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(10), 15, GFLAGS),
- 
--	COMPOSITE(SCLK_SFC, "sclk_sfc", mux_sclk_sfc_src_p, 0,
--			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS,
--			RK2928_CLKGATE_CON(3), 15, GFLAGS),
--
- 	COMPOSITE_NOMUX(PCLK_PMU_PRE, "pclk_pmu_pre", "cpll", 0,
- 			RK2928_CLKSEL_CON(29), 8, 6, DFLAGS,
- 			RK2928_CLKGATE_CON(1), 0, GFLAGS),
-@@ -495,7 +491,6 @@ enum rk3128_plls {
- 	GATE(ACLK_DMAC, "aclk_dmac", "aclk_peri", 0, RK2928_CLKGATE_CON(5), 1, GFLAGS),
- 	GATE(0, "aclk_peri_niu", "aclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(9), 15, GFLAGS),
- 	GATE(0, "aclk_cpu_to_peri", "aclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 2, GFLAGS),
--	GATE(HCLK_GPS, "hclk_gps", "aclk_peri", 0, RK2928_CLKGATE_CON(3), 14, GFLAGS),
- 
- 	GATE(HCLK_I2S_8CH, "hclk_i2s_8ch", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 4, GFLAGS),
- 	GATE(0, "hclk_peri_matrix", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 0, GFLAGS),
-@@ -541,7 +536,6 @@ enum rk3128_plls {
- 	GATE(0, "hclk_rom", "hclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 6, GFLAGS),
- 	GATE(HCLK_CRYPTO, "hclk_crypto", "hclk_cpu", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
- 
--	GATE(PCLK_HDMI, "pclk_hdmi", "pclk_cpu", 0, RK2928_CLKGATE_CON(3), 8, GFLAGS),
- 	GATE(PCLK_ACODEC, "pclk_acodec", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 14, GFLAGS),
- 	GATE(0, "pclk_ddrupctl", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 7, GFLAGS),
- 	GATE(0, "pclk_grf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 4, GFLAGS),
-@@ -561,6 +555,21 @@ enum rk3128_plls {
- 	MMC(SCLK_EMMC_SAMPLE,  "emmc_sample",  "sclk_emmc",  RK3228_EMMC_CON1,  0),
- };
- 
-+static struct rockchip_clk_branch rk3126_clk_branches[] __initdata = {
-+	GATE(0, "pclk_stimer", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
-+	GATE(0, "pclk_s_efuse", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
-+	GATE(0, "pclk_sgrf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 8, GFLAGS),
-+};
-+
-+static struct rockchip_clk_branch rk3128_clk_branches[] __initdata = {
-+	COMPOSITE(SCLK_SFC, "sclk_sfc", mux_sclk_sfc_src_p, 0,
-+			RK2928_CLKSEL_CON(11), 14, 2, MFLAGS, 8, 5, DFLAGS,
-+			RK2928_CLKGATE_CON(3), 15, GFLAGS),
-+
-+	GATE(HCLK_GPS, "hclk_gps", "aclk_peri", 0, RK2928_CLKGATE_CON(3), 14, GFLAGS),
-+	GATE(PCLK_HDMI, "pclk_hdmi", "pclk_cpu", 0, RK2928_CLKGATE_CON(3), 8, GFLAGS),
-+};
-+
- static const char *const rk3128_critical_clocks[] __initconst = {
- 	"aclk_cpu",
- 	"hclk_cpu",
-@@ -570,7 +579,7 @@ enum rk3128_plls {
- 	"pclk_peri",
- };
- 
--static void __init rk3128_clk_init(struct device_node *np)
-+static struct rockchip_clk_provider *__init rk3128_common_clk_init(struct device_node *np)
- {
- 	struct rockchip_clk_provider *ctx;
- 	void __iomem *reg_base;
-@@ -578,23 +587,21 @@ static void __init rk3128_clk_init(struct device_node *np)
- 	reg_base = of_iomap(np, 0);
- 	if (!reg_base) {
- 		pr_err("%s: could not map cru region\n", __func__);
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
- 
- 	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
- 	if (IS_ERR(ctx)) {
- 		pr_err("%s: rockchip clk init failed\n", __func__);
- 		iounmap(reg_base);
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
- 
- 	rockchip_clk_register_plls(ctx, rk3128_pll_clks,
- 				   ARRAY_SIZE(rk3128_pll_clks),
- 				   RK3128_GRF_SOC_STATUS0);
--	rockchip_clk_register_branches(ctx, rk3128_clk_branches,
--				  ARRAY_SIZE(rk3128_clk_branches));
--	rockchip_clk_protect_critical(rk3128_critical_clocks,
--				      ARRAY_SIZE(rk3128_critical_clocks));
-+	rockchip_clk_register_branches(ctx, common_clk_branches,
-+				  ARRAY_SIZE(common_clk_branches));
- 
- 	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
- 			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
-@@ -606,6 +613,40 @@ static void __init rk3128_clk_init(struct device_node *np)
- 
- 	rockchip_register_restart_notifier(ctx, RK2928_GLB_SRST_FST, NULL);
- 
-+	return ctx;
-+}
-+
-+static void __init rk3126_clk_init(struct device_node *np)
-+{
-+	struct rockchip_clk_provider *ctx;
-+
-+	ctx = rk3128_common_clk_init(np);
-+	if (IS_ERR(ctx))
-+		return;
-+
-+	rockchip_clk_register_branches(ctx, rk3126_clk_branches,
-+				       ARRAY_SIZE(rk3126_clk_branches));
-+	rockchip_clk_protect_critical(rk3128_critical_clocks,
-+				      ARRAY_SIZE(rk3128_critical_clocks));
-+
-+	rockchip_clk_of_add_provider(np, ctx);
-+}
-+
-+CLK_OF_DECLARE(rk3126_cru, "rockchip,rk3126-cru", rk3126_clk_init);
-+
-+static void __init rk3128_clk_init(struct device_node *np)
-+{
-+	struct rockchip_clk_provider *ctx;
-+
-+	ctx = rk3128_common_clk_init(np);
-+	if (IS_ERR(ctx))
-+		return;
-+
-+	rockchip_clk_register_branches(ctx, rk3128_clk_branches,
-+				       ARRAY_SIZE(rk3128_clk_branches));
-+	rockchip_clk_protect_critical(rk3128_critical_clocks,
-+				      ARRAY_SIZE(rk3128_critical_clocks));
-+
- 	rockchip_clk_of_add_provider(np, ctx);
- }
- 
+Right, the doc[0] already detail this:
+     It is possible, though perhaps somewhat tricky, to implement race-free hotplug detection using
+     the fbdev helpers. The drm_fb_helper_prepare() helper must be called first to initialize the
+     minimum required to make hotplug detection work.Drivers also need to make sure to properly
+     set up the drm_mode_config.funcs member. After calling drm_kms_helper_poll_init() it is safe to
+     enable interrupts and start processing hotplug events.
+
+The problem is drm/rockchip do the wrong initial, call drm_kms_helper_poll_init before fbdev setup.
+
+will fix it at next version.
+
+[0]: https://01.org/linuxgraphics/gfx-docs/drm/gpu/drm-kms-helpers.html#fbdev-helper-functions-reference
+
+Best regards.
+
 -- 
-1.9.1
+Ｍark Yao
