@@ -1,688 +1,494 @@
-From: Joe Kniss <djmk@google.com>
-Subject: Re: [PATCH] Add drm ioctl DRM_IOCTL_MODE_GETFB2 &
-	associated helpers.
-Date: Tue, 1 Aug 2017 10:24:25 -0700
-Message-ID: <CAOvnNvZoHv8prg2R57cgGx5w7h69=X3hQGrpP5iXaLujhOfzYA@mail.gmail.com>
-References: <CAOvnNvYKXsy9dvOB0ge1WxQbwubPpzKofd=OGagKyft-yQJ1xw@mail.gmail.com>
- <20170731182913.136758-1-djmk@google.com> <1585370.MpXFX8O0mo@avalon>
+From: kbuild test robot <fengguang.wu@intel.com>
+Subject: [rockchip:v4.14-armsoc/dts32 24/24] Error:
+ arch/arm/boot/dts/rv1108.dtsi:166.18-19 syntax error
+Date: Wed, 2 Aug 2017 02:46:48 +0800
+Message-ID: <201708020247.iHTNS8tt%fengguang.wu@intel.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1887489858=="
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <1585370.MpXFX8O0mo@avalon>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: amd-gfx@lists.freedesktop.org, heiko@sntech.de, Sean Paul <seanpaul@google.com>, michel.daenzer@amd.com, dri-devel@lists.freedesktop.org, thierry.reding@gmail.com, krzk@kernel.org, gnurou@gmail.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, javier@osg.samsung.com, tomi.valkeinen@ti.com, bskeggs@redhat.com, nouveau@lists.freedesktop.org, ck.hu@mediatek.com, Andrey.Grodzovsky@amd.com, Joe Kniss <djmk@chromium.org>, swarren@wwwdotorg.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, lin <ux-tegra@vger.kernel.org>, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@google.com>, nils.wallmenius@gmail.com, freedreno@lists.freedesktop.org, sw0312.kim@samsung.com
+Content-Type: multipart/mixed; boundary="KsGdsel6WgEHnImy"
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, kbuild-all@01.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============1887489858==
-Content-Type: multipart/alternative; boundary="94eb2c1ba8cc4527630555b46b08"
 
---94eb2c1ba8cc4527630555b46b08
-Content-Type: text/plain; charset="UTF-8"
-
-Thanks for the quick review!
-
-On Tue, Aug 1, 2017 at 5:09 AM, Laurent Pinchart <laurent.pinchart@
-ideasonboard.com> wrote:
-
-> Hi Joe,
->
-> Thank you for the patch.
->
-> On Monday 31 Jul 2017 11:29:13 Joe Kniss wrote:
-> > New getfb2 functionality uses drm_mode_fb_cmd2 struct to be symmetric
-> > with addfb2.
->
-> What's the use case for this ? We haven't needed such an ioctl for so long
-> that it seemed to me that userspace doesn't really need it, but I could be
-> wrong.
->
-> Sorry, I failed to reference the original email.  Here it is:
-<snip>
- I am a recent addition to Google's ChromeOS gfx team.   I am currently
-working on display testing and reporting.   An important part of this is
-our screen capture tool, which works by querying drm for crtcs, planes, and
-fbs.  Unfortunately, there is only limited information available via
-drmModeGetFB(), which often wrong information when drmModeAddFB2() was used
-to create the fbs.   For example, if the pixel format is NV12 or YUV420,
-the fb returned knows nothing about the additional buffer planes required
-by these formats.   Ideally, we would like a function (e.g. drmModeGetFB2)
-to return information symmetric with drmModeAddFB2 including the pixel
-format id, buffer plane information etc.
-</snip>
-ChromeOS has needed this functionality from the start, for both testing and
-error reporting.  We got away with guessing the buffer's format (32bit
-xrgb) until now.  We are now enabling overlays and more formats including
-multi-planar (e.g. NV12).  Current getfb() reports neither the pixel format
-nor  planar information.  Without this information, going forward, our gfx
-testing is going to break.  It would be great if we had access to higher
-level buffer structs (like gbm), but we generally don't since they would be
-created by other apps (chrome browser, android apps, etc...).
-
-
-> > Also modifies *_fb_create_handle() calls to accept a
-> > format_plane_index so that handles for each plane can be generated.
-> > Previously, many *_fb_create_handle() calls simply defaulted to plane 0
-> > only.
->
-> And with this patch the amd/amdgpu, armada, gma500, i915, mediatek, msm,
-> nouveau and radeon drivers still do. Do none of them support multi-planar
-> formats ?
->
-> I would imagine that some of these do support multi-planar formats, but
-they don't appear to have them implemented yet (except perhaps as offsets
-into a single buffer).  I will certainly be looking into this soon, but any
-changes will come in future patches.
-
-
-> > Signed-off-by: Joe Kniss <djmk@google.com>
-> > ---
-> >  drivers/gpu/drm/amd/amdgpu/amdgpu_display.c |  5 +-
-> >  drivers/gpu/drm/armada/armada_fb.c          |  1 +
-> >  drivers/gpu/drm/drm_crtc_internal.h         |  2 +
-> >  drivers/gpu/drm/drm_fb_cma_helper.c         | 11 ++--
-> >  drivers/gpu/drm/drm_framebuffer.c           | 79
-> +++++++++++++++++++++++++-
-> >  drivers/gpu/drm/drm_ioctl.c                 |  1 +
-> >  drivers/gpu/drm/exynos/exynos_drm_fb.c      |  7 ++-
-> >  drivers/gpu/drm/gma500/framebuffer.c        |  2 +
-> >  drivers/gpu/drm/i915/intel_display.c        |  1 +
-> >  drivers/gpu/drm/mediatek/mtk_drm_fb.c       |  1 +
-> >  drivers/gpu/drm/msm/msm_fb.c                |  5 +-
-> >  drivers/gpu/drm/nouveau/nouveau_display.c   |  1 +
-> >  drivers/gpu/drm/omapdrm/omap_fb.c           |  5 +-
-> >  drivers/gpu/drm/radeon/radeon_display.c     |  5 +-
-> >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  6 ++-
-> >  drivers/gpu/drm/tegra/fb.c                  |  9 +++-
-> >  include/drm/drm_framebuffer.h               |  1 +
-> >  include/uapi/drm/drm.h                      |  2 +
-> >  18 files changed, 127 insertions(+), 17 deletions(-)
->
-> [snip]
->
-> > diff --git a/drivers/gpu/drm/drm_framebuffer.c
-> > b/drivers/gpu/drm/drm_framebuffer.c index 28a0108a1ab8..67b3be1bedbc
-> 100644
-> > --- a/drivers/gpu/drm/drm_framebuffer.c
-> > +++ b/drivers/gpu/drm/drm_framebuffer.c
-> > @@ -24,6 +24,7 @@
-> >  #include <drm/drmP.h>
-> >  #include <drm/drm_auth.h>
-> >  #include <drm/drm_framebuffer.h>
-> > +#include <drm/drm_gem.h>
-> >
-> >  #include "drm_crtc_internal.h"
->
-> [snip]
->
-> > +/**
-> > + * drm_mode_getfb2 - get FB info
-> > + * @dev: drm device for the ioctl
-> > + * @data: data pointer for the ioctl
-> > + * @file_priv: drm file for the ioctl call
-> > + *
-> > + * Lookup the FB given its ID and return info about it.
-> > + *
-> > + * Called by the user via ioctl.
-> > + *
-> > + * Returns:
-> > + * Zero on success, negative errno on failure.
-> > + */
-> > +int drm_mode_getfb2(struct drm_device *dev,
-> > +                void *data, struct drm_file *file_priv)
-> > +{
-> > +     struct drm_mode_fb_cmd2 *r = data;
-> > +     struct drm_framebuffer *fb;
-> > +     int ret, i;
-> > +
-> > +     if (!drm_core_check_feature(dev, DRIVER_MODESET))
-> > +             return -EINVAL;
-> > +
-> > +     fb = drm_framebuffer_lookup(dev, r->fb_id);
-> > +     if (!fb)
-> > +             return -ENOENT;
-> > +
-> > +     r->height = fb->height;
-> > +     r->width = fb->width;
-> > +     r->pixel_format = fb->format->format;
-> > +     for (i = 0; i < 4; ++i) {
-> > +             r->pitches[i] = fb->pitches[i];
-> > +             r->offsets[i] = fb->offsets[i];
-> > +             r->modifier[i] = fb->modifier;
-> > +             r->handles[i] = 0;
-> > +     }
-> > +
-> > +     for (i = 0; i < fb->format->num_planes; ++i) {
-> > +             if (fb->funcs->create_handle) {
-> > +                     if (drm_is_current_master(file_priv) ||
-> > +                         capable(CAP_SYS_ADMIN) ||
-> > +                         drm_is_control_client(file_priv)) {
-> > +                             ret = fb->funcs->create_handle(fb, i,
-> > file_priv,
-> > +
-> > &r->handles[i]);
-> > +                             if (ret)
-> > +                                     break;
-> > +                     } else {
-> > +                             /* GET_FB() is an unprivileged ioctl so we
-> > must
-> > +                              * not return a buffer-handle to non-master
-> > +                              * processes! For backwards-compatibility
-> > +                              * reasons, we cannot make GET_FB()
-> > privileged,
-> > +                              * so just return an invalid handle for
-> > +                              * non-masters. */
->
-> There's no backward compatibility to handle here, just make it privileged
-> if
-> it has to be.
->
-> Sure thing, sounds good.
-
-
-
-> > +                             r->handles[i] = 0;
-> > +                             ret = 0;
-> > +                     }
-> > +             } else {
-> > +                     ret = -ENODEV;
-> > +                     break;
-> > +             }
-> > +     }
-> > +
-> > +     /* If handle creation failed, delete/dereference any that were
-> made.
-> */
-> > +     if (ret) {
-> > +             for (i = 0; i < 4; ++i) {
-> > +                     if (r->handles[i])
-> > +                             drm_gem_handle_delete(file_priv, r-
-> >handles[i]);
->
-> My initial reaction to this was to reply that not all drivers use GEM, but
-> after some investigation it seems they actually do. If that's really the
-> case,
-> we could get rid of the .create_handle() operation completely, which should
-> simplify the implementation of both DRM_IOCTL_MODE_GETFB and
-> DRM_IOCTL_MODE_GETFB2.
->
-> Deleting the handle is the same in all cases, but creating the handle
-isn't consistent across the drivers.  I didn't see a clean way to simplify
-this.
-
-
-> > +                     r->handles[i] = 0;
-> > +             }
-> > +     }
-> > +
-> > +     drm_framebuffer_unreference(fb);
-> > +
-> > +     return ret;
-> > +}
->
-> [snip]
->
-> > diff --git a/drivers/gpu/drm/omapdrm/omap_fb.c
-> > b/drivers/gpu/drm/omapdrm/omap_fb.c index 29dc677dd4d3..a982c72a773e
-> 100644
-> > --- a/drivers/gpu/drm/omapdrm/omap_fb.c
-> > +++ b/drivers/gpu/drm/omapdrm/omap_fb.c
-> > @@ -90,12 +90,15 @@ struct omap_framebuffer {
-> >  };
-> >
-> >  static int omap_framebuffer_create_handle(struct drm_framebuffer *fb,
-> > +             unsigned int format_plane_index,
-> >               struct drm_file *file_priv,
-> >               unsigned int *handle)
-> >  {
-> >       struct omap_framebuffer *omap_fb = to_omap_framebuffer(fb);
-> > +     if (format_plane_index >= 4 || !omap_fb->planes[format_plane_
-> index])
->
-> The first check shouldn't be needed, the core should never call this
-> operation
-> with an index >= 4.
->
-> I'll remove the check then.
-
-
-> > +             return -ENOENT;
-> >       return drm_gem_handle_create(file_priv,
-> > -                     omap_fb->planes[0].bo, handle);
-> > +                     omap_fb->planes[format_plane_index].bo, handle);
-> >  }
->
-> [snip]
->
-> > diff --git a/include/uapi/drm/drm.h b/include/uapi/drm/drm.h
-> > index b2c52843bc70..c81c75335cca 100644
-> > --- a/include/uapi/drm/drm.h
-> > +++ b/include/uapi/drm/drm.h
-> > @@ -814,6 +814,8 @@ extern "C" {
-> >  #define DRM_IOCTL_MODE_CREATEPROPBLOB        DRM_IOWR(0xBD, struct
-> > drm_mode_create_blob)
-> > #define DRM_IOCTL_MODE_DESTROYPROPBLOB        DRM_IOWR(0xBE, struct
-> > drm_mode_destroy_blob)
-> >
-> > +#define DRM_IOCTL_MODE_GETFB2  DRM_IOWR(0xC4, struct drm_mode_fb_cmd2)
-> > +
->
-> Which tree is this based on ? The last defined ioctl
-> (DRM_IOCTL_SYNCOBJ_FD_TO_HANDLE) is 0xC2 in drm-next and drm-misc-next.
->
-> I just did a quick search for "DRM_IOWR 0xC*" and picked the first unused
-one, there was a patch in-flight from last month that used 0xC3 (
-https://lists.freedesktop.org/archives/amd-gfx/2017-June/010153.html).
-Naturally, I'll set this to whatever is appropriate.
-
-
-> >  /**
-> >   * Device specific ioctls should only be in their respective headers
-> >   * The device specific ioctl range is from 0x40 to 0x9f.
->
-> --
-> Regards,
->
-> Laurent Pinchart
->
->
-Thanks!
--j
-
-
--- 
-Dr. Joe Michael Kniss |  Google ChromeOS |  djmk@google.com   |
-1-801-898-7977 <(801)%20898-7977>
-
---94eb2c1ba8cc4527630555b46b08
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thanks for the quick review!=C2=A0<br><div class=3D"gmail_=
-extra"><br><div class=3D"gmail_quote">On Tue, Aug 1, 2017 at 5:09 AM, Laure=
-nt Pinchart <span dir=3D"ltr">&lt;<a href=3D"mailto:laurent.pinchart@ideaso=
-nboard.com" target=3D"_blank">laurent.pinchart@<wbr>ideasonboard.com</a>&gt=
-;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
-x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi Joe=
-,<br>
-<br>
-Thank you for the patch.<br>
-<span><br>
-On Monday 31 Jul 2017 11:29:13 Joe Kniss wrote:<br>
-&gt; New getfb2 functionality uses drm_mode_fb_cmd2 struct to be symmetric<=
-br>
-&gt; with addfb2.<br>
-<br>
-</span>What&#39;s the use case for this ? We haven&#39;t needed such an ioc=
-tl for so long<br>
-that it seemed to me that userspace doesn&#39;t really need it, but I could=
- be<br>
-wrong.<br>
-<span><br></span></blockquote><div>Sorry, I failed to reference the origina=
-l email.=C2=A0 Here it is:=C2=A0</div><div>&lt;snip&gt;</div><div><span sty=
-le=3D"font-size:12.8px">=C2=A0I am a recent addition to Google&#39;s Chrome=
-OS gfx team. =C2=A0 I am currently working on display testing and reporting=
-. =C2=A0 An important part of this is our screen capture tool, which works =
-by querying drm for crtcs, planes, and fbs.=C2=A0 Unfortunately, there is o=
-nly limited information available via drmModeGetFB(), which often wrong inf=
-ormation when drmModeAddFB2() was used to create the fbs. =C2=A0 For exampl=
-e, if the pixel format is NV12 or YUV420, the fb returned knows nothing abo=
-ut the additional buffer planes required by these formats. =C2=A0 Ideally, =
-we would like a function (e.g. drmModeGetFB2) to return information symmetr=
-ic with drmModeAddFB2 including the pixel format id, buffer plane informati=
-on etc. =C2=A0=C2=A0</span></div><div><span style=3D"font-size:12.8px">&lt;=
-/snip&gt;</span></div><div>ChromeOS has needed this functionality from the =
-start, for both testing and error reporting.=C2=A0 We got away with guessin=
-g the buffer&#39;s format (32bit xrgb) until now.=C2=A0 We are now enabling=
- overlays and more formats including multi-planar (e.g. NV12).=C2=A0 Curren=
-t getfb() reports neither the pixel format nor =C2=A0planar information.=C2=
-=A0 Without this information, going forward, our gfx testing is going to br=
-eak.=C2=A0 It would be great if we had access to higher level buffer struct=
-s (like gbm), but we generally don&#39;t since they would be created by oth=
-er apps (chrome browser, android apps, etc...).</div><div>=C2=A0</div><bloc=
-kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
-1px solid rgb(204,204,204);padding-left:1ex"><span>
-&gt; Also modifies *_fb_create_handle() calls to accept a<br>
-&gt; format_plane_index so that handles for each plane can be generated.<br=
->
-&gt; Previously, many *_fb_create_handle() calls simply defaulted to plane =
-0<br>
-&gt; only.<br>
-<br>
-</span>And with this patch the amd/amdgpu, armada, gma500, i915, mediatek, =
-msm,<br>
-nouveau and radeon drivers still do. Do none of them support multi-planar<b=
-r>
-formats ?<br>
-<span><br></span></blockquote><div>I would imagine that some of these do su=
-pport multi-planar formats, but they don&#39;t appear to have them implemen=
-ted yet (except perhaps as offsets into a single buffer).=C2=A0 I will cert=
-ainly be looking into this soon, but any changes will come in future patche=
-s. =C2=A0</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex"><span>
-&gt; Signed-off-by: Joe Kniss &lt;<a href=3D"mailto:djmk@google.com" target=
-=3D"_blank">djmk@google.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/gpu/drm/amd/amdgpu/amd<wbr>gpu_display.c |=C2=A0 5 +-<br=
->
-&gt;=C2=A0 drivers/gpu/drm/armada/armada_<wbr>fb.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 |=C2=A0 1 +<br>
-&gt;=C2=A0 drivers/gpu/drm/drm_crtc_inter<wbr>nal.h=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0|=C2=A0 2 +<br>
-&gt;=C2=A0 drivers/gpu/drm/drm_fb_cma_hel<wbr>per.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0| 11 ++--<br>
-</span>&gt;=C2=A0 drivers/gpu/drm/drm_framebuffe<wbr>r.c=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0| 79 +++++++++++++++++++++++++-<br>
-<span>&gt;=C2=A0 drivers/gpu/drm/drm_ioctl.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 1 +<br>
-&gt;=C2=A0 drivers/gpu/drm/exynos/exynos_<wbr>drm_fb.c=C2=A0 =C2=A0 =C2=A0 =
-|=C2=A0 7 ++-<br>
-&gt;=C2=A0 drivers/gpu/drm/gma500/framebu<wbr>ffer.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 |=C2=A0 2 +<br>
-&gt;=C2=A0 drivers/gpu/drm/i915/intel_dis<wbr>play.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 |=C2=A0 1 +<br>
-&gt;=C2=A0 drivers/gpu/drm/mediatek/mtk_d<wbr>rm_fb.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0|=C2=A0 1 +<br>
-&gt;=C2=A0 drivers/gpu/drm/msm/msm_fb.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 5 +-<br>
-&gt;=C2=A0 drivers/gpu/drm/nouveau/nouvea<wbr>u_display.c=C2=A0 =C2=A0|=C2=
-=A0 1 +<br>
-&gt;=C2=A0 drivers/gpu/drm/omapdrm/omap_f<wbr>b.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0|=C2=A0 5 +-<br>
-&gt;=C2=A0 drivers/gpu/drm/radeon/radeon_<wbr>display.c=C2=A0 =C2=A0 =C2=A0=
-|=C2=A0 5 +-<br>
-&gt;=C2=A0 drivers/gpu/drm/rockchip/rockc<wbr>hip_drm_fb.c=C2=A0 |=C2=A0 6 =
-++-<br>
-&gt;=C2=A0 drivers/gpu/drm/tegra/fb.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 9 +++-<br>
-&gt;=C2=A0 include/drm/drm_framebuffer.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 1 +<br>
-&gt;=C2=A0 include/uapi/drm/drm.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 2 +<br>
-&gt;=C2=A0 18 files changed, 127 insertions(+), 17 deletions(-)<br>
-<br>
-</span>[snip]<br>
-<span><br>
-&gt; diff --git a/drivers/gpu/drm/drm_framebuf<wbr>fer.c<br>
-&gt; b/drivers/gpu/drm/drm_framebuf<wbr>fer.c index 28a0108a1ab8..67b3be1be=
-dbc 100644<br>
-&gt; --- a/drivers/gpu/drm/drm_framebuf<wbr>fer.c<br>
-&gt; +++ b/drivers/gpu/drm/drm_framebuf<wbr>fer.c<br>
-&gt; @@ -24,6 +24,7 @@<br>
-&gt;=C2=A0 #include &lt;drm/drmP.h&gt;<br>
-&gt;=C2=A0 #include &lt;drm/drm_auth.h&gt;<br>
-&gt;=C2=A0 #include &lt;drm/drm_framebuffer.h&gt;<br>
-&gt; +#include &lt;drm/drm_gem.h&gt;<br>
-&gt;<br>
-&gt;=C2=A0 #include &quot;drm_crtc_internal.h&quot;<br>
-<br>
-</span>[snip]<br>
-<div><div class=3D"gmail-m_-3711990965528987190h5"><br>
-&gt; +/**<br>
-&gt; + * drm_mode_getfb2 - get FB info<br>
-&gt; + * @dev: drm device for the ioctl<br>
-&gt; + * @data: data pointer for the ioctl<br>
-&gt; + * @file_priv: drm file for the ioctl call<br>
-&gt; + *<br>
-&gt; + * Lookup the FB given its ID and return info about it.<br>
-&gt; + *<br>
-&gt; + * Called by the user via ioctl.<br>
-&gt; + *<br>
-&gt; + * Returns:<br>
-&gt; + * Zero on success, negative errno on failure.<br>
-&gt; + */<br>
-&gt; +int drm_mode_getfb2(struct drm_device *dev,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 void *data, s=
-truct drm_file *file_priv)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct drm_mode_fb_cmd2 *r =3D data;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct drm_framebuffer *fb;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0int ret, i;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (!drm_core_check_feature(dev, DRIVER_MODESET))=
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -EINVAL;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0fb =3D drm_framebuffer_lookup(dev, r-&gt;fb_id);<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (!fb)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -ENOENT;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0r-&gt;height =3D fb-&gt;height;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0r-&gt;width =3D fb-&gt;width;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0r-&gt;pixel_format =3D fb-&gt;format-&gt;format;<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; 4; ++i) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0r-&gt;pitches[i] =3D =
-fb-&gt;pitches[i];<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0r-&gt;offsets[i] =3D =
-fb-&gt;offsets[i];<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0r-&gt;modifier[i] =3D=
- fb-&gt;modifier;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0r-&gt;handles[i] =3D =
-0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; fb-&gt;format-&gt;num_planes=
-; ++i) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (fb-&gt;funcs-&gt;=
-create_handle) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0if (drm_is_current_master(file_pr<wbr>iv) ||<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0capable(CAP_SYS_ADMIN) ||<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0drm_is_control_client(file_pr<wbr>iv)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ret =3D fb-&gt;funcs-&gt;create_handle(f=
-b, i,<br>
-&gt; file_priv,<br>
-&gt; +<br>
-&gt; &amp;r-&gt;handles[i]);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (ret)<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0} else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* GET_FB() is an unprivileged ioctl so =
-we<br>
-&gt; must<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * not return a buffer-handle to non-mas=
-ter<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * processes! For backwards-compatibilit=
-y<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * reasons, we cannot make GET_FB()<br>
-&gt; privileged,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * so just return an invalid handle for<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * non-masters. */<br>
-<br>
-</div></div>There&#39;s no backward compatibility to handle here, just make=
- it privileged if<br>
-it has to be.<br>
-<span><br></span></blockquote><div>Sure thing, sounds good.</div><div><br><=
-/div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
- 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><sp=
-an>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0r-&gt;handles[i] =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ret =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0}<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0ret =3D -ENODEV;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0break;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0/* If handle creation failed, delete/dereference =
-any that were made.<br>
-*/<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (ret) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; =
-4; ++i) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0if (r-&gt;handles[i])<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0drm_gem_handle_delete(file_pr<wbr>iv, r-=
-<br>
-&gt;handles[i]);<br>
-<br>
-</span>My initial reaction to this was to reply that not all drivers use GE=
-M, but<br>
-after some investigation it seems they actually do. If that&#39;s really th=
-e case,<br>
-we could get rid of the .create_handle() operation completely, which should=
-<br>
-simplify the implementation of both DRM_IOCTL_MODE_GETFB and<br>
-DRM_IOCTL_MODE_GETFB2.<br>
-<span><br></span></blockquote><div>Deleting the handle is the same in all c=
-ases, but creating the handle isn&#39;t consistent across the drivers.=C2=
-=A0 I didn&#39;t see a clean way to simplify this.</div><div>=C2=A0</div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
-ft:1px solid rgb(204,204,204);padding-left:1ex"><span>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0r-&gt;handles[i] =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0drm_framebuffer_unreference(f<wbr>b);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0return ret;<br>
-&gt; +}<br>
-<br>
-</span>[snip]<br>
-<span><br>
-&gt; diff --git a/drivers/gpu/drm/omapdrm/omap<wbr>_fb.c<br>
-&gt; b/drivers/gpu/drm/omapdrm/omap<wbr>_fb.c index 29dc677dd4d3..a982c72a7=
-73e 100644<br>
-&gt; --- a/drivers/gpu/drm/omapdrm/omap<wbr>_fb.c<br>
-&gt; +++ b/drivers/gpu/drm/omapdrm/omap<wbr>_fb.c<br>
-&gt; @@ -90,12 +90,15 @@ struct omap_framebuffer {<br>
-&gt;=C2=A0 };<br>
-&gt;<br>
-&gt;=C2=A0 static int omap_framebuffer_create_handle<wbr>(struct drm_frameb=
-uffer *fb,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned int format_p=
-lane_index,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0struct drm_file =
-*file_priv,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned int *ha=
-ndle)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct omap_framebuffer *omap_fb =3D to_omap=
-_framebuffer(fb);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (format_plane_index &gt;=3D 4 || !omap_fb-&gt;=
-planes[format_plane_<wbr>index])<br>
-<br>
-</span>The first check shouldn&#39;t be needed, the core should never call =
-this operation<br>
-with an index &gt;=3D 4.<br>
-<span><br></span></blockquote><div>I&#39;ll remove the check then.</div><di=
-v>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><span>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -ENOENT;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return drm_gem_handle_create(file_pri<wbr>v,=
-<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0omap_fb-&gt;planes[0].bo, handle);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0omap_fb-&gt;planes[format_plane_<wbr>index].bo, handle);<br>
-&gt;=C2=A0 }<br>
-<br>
-</span>[snip]<br>
-<span><br>
-&gt; diff --git a/include/uapi/drm/drm.h b/include/uapi/drm/drm.h<br>
-&gt; index b2c52843bc70..c81c75335cca 100644<br>
-&gt; --- a/include/uapi/drm/drm.h<br>
-&gt; +++ b/include/uapi/drm/drm.h<br>
-&gt; @@ -814,6 +814,8 @@ extern &quot;C&quot; {<br>
-&gt;=C2=A0 #define DRM_IOCTL_MODE_CREATEPROPBLOB=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- DRM_IOWR(0xBD, struct<br>
-&gt; drm_mode_create_blob)<br>
-&gt; #define DRM_IOCTL_MODE_<wbr>DESTROYPROPBLOB=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- DRM_IOWR(0xBE, struct<br>
-&gt; drm_mode_destroy_blob)<br>
-&gt;<br>
-&gt; +#define DRM_IOCTL_MODE_GETFB2=C2=A0 DRM_IOWR(0xC4, struct drm_mode_fb=
-_cmd2)<br>
-&gt; +<br>
-<br>
-</span>Which tree is this based on ? The last defined ioctl<br>
-(DRM_IOCTL_SYNCOBJ_FD_TO_HANDL<wbr>E) is 0xC2 in drm-next and drm-misc-next=
-.<br>
-<span><br></span></blockquote><div>I just did a quick search for &quot;DRM_=
-IOWR 0xC*&quot; and picked the first unused one, there was a patch in-fligh=
-t from last month that used 0xC3 (<a href=3D"https://lists.freedesktop.org/=
-archives/amd-gfx/2017-June/010153.html">https://lists.freedesktop.org/archi=
-ves/amd-gfx/2017-June/010153.html</a>). =C2=A0 Naturally, I&#39;ll set this=
- to whatever is appropriate.</div><div>=C2=A0</div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
-04,204);padding-left:1ex"><span>
-&gt;=C2=A0 /**<br>
-&gt;=C2=A0 =C2=A0* Device specific ioctls should only be in their respectiv=
-e headers<br>
-&gt;=C2=A0 =C2=A0* The device specific ioctl range is from 0x40 to 0x9f.<br=
->
-<br>
---<br>
-</span>Regards,<br>
-<br>
-Laurent Pinchart<br>
-<br>
-</blockquote></div><div class=3D"gmail_extra"><br></div>Thanks! =C2=A0</div=
-><div class=3D"gmail_extra">-j<br><br clear=3D"all"><div><br></div>-- <br><=
-div class=3D"gmail-m_-3711990965528987190gmail_signature"><div dir=3D"ltr">=
-<div><div dir=3D"ltr"><table cellspacing=3D"0" cellpadding=3D"0" style=3D"t=
-ext-align:center;color:rgb(80,0,80);font-family:&quot;Times New Roman&quot;=
-"><tbody><tr style=3D"color:rgb(85,85,85);font-family:sans-serif;font-size:=
-small"><td nowrap style=3D"border-top:2px solid rgb(213,15,37)"><font size=
-=3D"1"><font face=3D"garamond, serif">Dr. Joe Michael Kniss </font>|</font>=
-</td><td nowrap style=3D"border-top:2px solid rgb(51,105,232)"><font size=
-=3D"1">=C2=A0<font face=3D"garamond, serif"><font color=3D"#0b5394">G</font=
-><font color=3D"#cc0000">o</font><font color=3D"#bf9000">o</font><font colo=
-r=3D"#0b5394">g</font><font color=3D"#38761d">l</font><font color=3D"#cc000=
-0">e</font><font color=3D"#000000">=C2=A0</font><font color=3D"#444444">Chr=
-omeOS</font></font><font color=3D"#000000">=C2=A0</font>|</font></td><td no=
-wrap style=3D"border-top:2px solid rgb(0,153,57)"><font size=3D"1"><font fa=
-ce=3D"garamond, serif">=C2=A0<a href=3D"mailto:djmk@google.com" target=3D"_=
-blank">djmk<font color=3D"#1155cc">@google.com</font></a>=C2=A0</font>=C2=
-=A0</font></td><td nowrap style=3D"border-top:2px solid rgb(238,178,17)"><f=
-ont size=3D"1"><a value=3D"+16504298119" style=3D"color:rgb(17,85,204)">| <=
-/a><font face=3D"garamond, serif"><font color=3D"#1155cc"><a href=3D"tel:(8=
-01)%20898-7977" value=3D"+18018987977" target=3D"_blank">1-801-898-7977</a>=
-</font><br></font></font></td></tr></tbody></table></div></div></div></div>
-</div></div>
-
---94eb2c1ba8cc4527630555b46b08--
-
---===============1887489858==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
+--KsGdsel6WgEHnImy
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4
-IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git v4.14-armsoc/dts32
+head:   752db55c894e48ff08a89946604950071bed5f1e
+commit: 752db55c894e48ff08a89946604950071bed5f1e [24/24] ARM: dts: rockchip: add watchdog dt node for rv1108
+config: arm-at91_dt_defconfig (attached as .config)
+compiler: arm-linux-gnueabi-gcc (Debian 6.1.1-9) 6.1.1 20160705
+reproduce:
+        wget https://raw.githubusercontent.com/01org/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        git checkout 752db55c894e48ff08a89946604950071bed5f1e
+        # save the attached .config to linux build tree
+        make.cross ARCH=arm 
 
---===============1887489858==--
+All errors (new ones prefixed by >>):
+
+>> Error: arch/arm/boot/dts/rv1108.dtsi:166.18-19 syntax error
+   FATAL ERROR: Unable to parse input tree
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+
+--KsGdsel6WgEHnImy
+Content-Type: application/gzip
+Content-Disposition: attachment; filename=".config.gz"
+Content-Transfer-Encoding: base64
+
+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
+
+--KsGdsel6WgEHnImy
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--KsGdsel6WgEHnImy--
