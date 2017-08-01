@@ -1,37 +1,28 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 02/14] clk: rockchip: support more clks for rv1108
-Date: Tue, 01 Aug 2017 01:31:10 +0200
-Message-ID: <17095133.Ri7aPbk3bA@phil>
-References: <1501495449-21290-1-git-send-email-andy.yan@rock-chips.com> <1501495719-21452-1-git-send-email-andy.yan@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v4 0/2] clk: rockchip: support clk drivers for RK3126 SoC.
+Date: Tue,  1 Aug 2017 09:17:02 +0800
+Message-ID: <1501550224-6875-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1501495719-21452-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: devicetree@vger.kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, shawn.lin@rock-chips.com, zhangqing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-arm-kernel@lists.infradead.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 31. Juli 2017, 18:08:39 CEST schrieb Andy Yan:
-> From: Elaine Zhang <zhangqing@rock-chips.com>
-> 
-> 1. Added the description of the missing clock,
-> make the clock more complete.
-> 2. fix up some clk descriptions error.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+changed in V4:
+modify the document description for rk3126 clock.
 
-Again, this should be split into multiple patches that are easier to review.
-- pll-fixes
-- fixes for existing clocks
-- renames of things
-- new clock-definitions
+changed in V3:
+add documentation for rk3126 clock
 
-And should definitly include a bit more explanation.
+Elaine Zhang (2):
+  clk: rockchip: rk3128: modify rk3128 clk driver to support rk3126
+  dt-bindings: add documentation for rk3126 clock
 
+ .../bindings/clock/rockchip,rk3128-cru.txt         |  8 ++-
+ drivers/clk/rockchip/clk-rk3128.c                  | 69 +++++++++++++++++-----
+ 2 files changed, 60 insertions(+), 17 deletions(-)
 
-Thanks
-Heiko
+-- 
+1.9.1
+
 
