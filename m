@@ -1,74 +1,24 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v1.1] drm/rockchip: fix race with kms hotplug and fbdev
-Date: Tue,  1 Aug 2017 16:11:43 +0800
-Message-ID: <1501575103-20136-1-git-send-email-mark.yao@rock-chips.com>
-References: <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH 0/3] add some quirks for Rockchip usb2-phy and add rv1108 SoCs' support
+Date: Tue,  1 Aug 2017 16:12:10 +0800
+Message-ID: <1501575133-20953-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, kishon@ti.com, gregkh@linuxfoundation.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, william.wu@rock-chips.com, daniel.meng@rock-chips.com, kever.yang@rock-chips.com, andy.yan@rock-chips.com, wmc@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWNjb3JkaW5nIHRvIHRoZSBrZXJuZWxkb2NbMF0sIHNob3VsZCBkbyBmYmRldiBzZXR1cCBiZWZv
-cmUgY2FsbGluZwpkcm1fa21zX2hlbHBlcl9wb2xsX2luaXQoKSwgb3RoZXJ3aXNlLCBLbXMgaG90
-cGx1ZyBldmVudCBtYXkgcmFjZQppbnRvIGZiZGV2IGhlbHBlciBpbml0aWFsLCBhbmQgZmJfaGVs
-cGVyLT5kZXYgbWF5IGJlIE5VTEwgcG9pbnRlciwKdGhhdCB3b3VsZCBjYXVzZSB0aGUgYnVnOgpb
-ICAgIDAuNzM1NDExXSBbMDAwMDAyMDBdICpwZ2Q9MDAwMDAwMDBmNmZmZTAwMywgKnB1ZD0wMDAw
-MDAwMGY2ZmZlMDAzLCAqcG1kPTAwMDAwMDAwMDAwMDAwMDAKWyAgICAwLjczNjE1Nl0gSW50ZXJu
-YWwgZXJyb3I6IE9vcHM6IDk2MDAwMDA1IFsjMV0gUFJFRU1QVCBTTVAKWyAgICAwLjczNjY0OF0g
-TW9kdWxlcyBsaW5rZWQgaW46ClsgICAgMC43MzY5MzBdIENQVTogMiBQSUQ6IDIwIENvbW06IGt3
-b3JrZXIvMjowIE5vdCB0YWludGVkIDQuNC40MSAjMjAKWyAgICAwLjczNzQ4MF0gSGFyZHdhcmUg
-bmFtZTogUm9ja2NoaXAgUkszMzk5IEJvYXJkIHJldjIgKEJPWCkgKERUKQpbICAgIDAuNzM4MDIw
-XSBXb3JrcXVldWU6IGV2ZW50cyBjZG5fZHBfcGRfZXZlbnRfd29yawpbICAgIDAuNzM4NDQ3XSB0
-YXNrOiBmZmZmZmZjMGYyMWYzMTAwIHRpOiBmZmZmZmZjMGYyMjE4MDAwIHRhc2sudGk6IGZmZmZm
-ZmMwZjIyMTgwMDAKWyAgICAwLjczOTEwOV0gUEMgaXMgYXQgbXV0ZXhfbG9jaysweDE0LzB4NDQK
-WyAgICAwLjczOTQ2OV0gTFIgaXMgYXQgZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50KzB4MzAv
-MHgxMTQKWyAgICAwLjc1NjI1M10gWzxmZmZmZmY4MDA4YTM0NGY0Pl0gbXV0ZXhfbG9jaysweDE0
-LzB4NDQKWyAgICAwLjc1NjI2MF0gWzxmZmZmZmY4MDA4NDQ1NzA4Pl0gZHJtX2ZiX2hlbHBlcl9o
-b3RwbHVnX2V2ZW50KzB4MzAvMHgxMTQKWyAgICAwLjc1NjI3MV0gWzxmZmZmZmY4MDA4NDczYzg0
-Pl0gcm9ja2NoaXBfZHJtX291dHB1dF9wb2xsX2NoYW5nZWQrMHgxOC8weDIwClsgICAgMC43NTYy
-ODBdIFs8ZmZmZmZmODAwODQzOWZjYz5dIGRybV9rbXNfaGVscGVyX2hvdHBsdWdfZXZlbnQrMHgy
-OC8weDM0ClsgICAgMC43NTYyODZdIFs8ZmZmZmZmODAwODQ2YzQ0ND5dIGNkbl9kcF9wZF9ldmVu
-dF93b3JrKzB4Mzk0LzB4M2M0ClsgICAgMC43NTYyOTVdIFs8ZmZmZmZmODAwODBiMmIzOD5dIHBy
-b2Nlc3Nfb25lX3dvcmsrMHgyMTgvMHgzZTAKWyAgICAwLjc1NjMwMl0gWzxmZmZmZmY4MDA4MGIz
-NTM4Pl0gd29ya2VyX3RocmVhZCsweDJlOC8weDQwNApbICAgIDAuNzU2MzA4XSBbPGZmZmZmZjgw
-MDgwYjdlNzA+XSBrdGhyZWFkKzB4ZTgvMHhmMApbICAgIDAuNzU2MzE2XSBbPGZmZmZmZjgwMDgw
-ODI2OTA+XSByZXRfZnJvbV9mb3JrKzB4MTAvMHg0MAoKWzBdOiBodHRwczovLzAxLm9yZy9saW51
-eGdyYXBoaWNzL2dmeC1kb2NzL2RybS9ncHUvZHJtLWttcy1oZWxwZXJzLmh0bWwKClNpZ25lZC1v
-ZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMgaW4g
-djEuMToKLSBBY2NvcmRpbmcgdG8gdGhlIGtlcm5lbGRvYywgZml4IHRoZSByYWNlIGJ1ZyBpbiBn
-ZW5lcmljIHdheS4KCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
-IHwgMTMgKysrKysrLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgNyBk
-ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
-YwppbmRleCA4NDhlZGNmLi5jNDFmNDhhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZHJ2LmMKQEAgLTE2MSwyMiArMTYxLDIxIEBAIHN0YXRpYyBpbnQgcm9ja2No
-aXBfZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQogCSAqLwogCWRybV9kZXYtPmlycV9lbmFi
-bGVkID0gdHJ1ZTsKIAotCS8qIGluaXQga21zIHBvbGwgZm9yIGhhbmRsaW5nIGhwZCAqLwotCWRy
-bV9rbXNfaGVscGVyX3BvbGxfaW5pdChkcm1fZGV2KTsKLQogCXJldCA9IHJvY2tjaGlwX2RybV9m
-YmRldl9pbml0KGRybV9kZXYpOwogCWlmIChyZXQpCi0JCWdvdG8gZXJyX2ttc19oZWxwZXJfcG9s
-bF9maW5pOworCQlnb3RvIGVycl91bmJpbmRfYWxsOworCisJLyogaW5pdCBrbXMgcG9sbCBmb3Ig
-aGFuZGxpbmcgaHBkICovCisJZHJtX2ttc19oZWxwZXJfcG9sbF9pbml0KGRybV9kZXYpOwogCiAJ
-cmV0ID0gZHJtX2Rldl9yZWdpc3Rlcihkcm1fZGV2LCAwKTsKIAlpZiAocmV0KQotCQlnb3RvIGVy
-cl9mYmRldl9maW5pOworCQlnb3RvIGVycl9rbXNfaGVscGVyX3BvbGxfZmluaTsKIAogCXJldHVy
-biAwOwotZXJyX2ZiZGV2X2Zpbmk6Ci0Jcm9ja2NoaXBfZHJtX2ZiZGV2X2ZpbmkoZHJtX2Rldik7
-CiBlcnJfa21zX2hlbHBlcl9wb2xsX2Zpbmk6CiAJZHJtX2ttc19oZWxwZXJfcG9sbF9maW5pKGRy
-bV9kZXYpOworCXJvY2tjaGlwX2RybV9mYmRldl9maW5pKGRybV9kZXYpOwogZXJyX3VuYmluZF9h
-bGw6CiAJY29tcG9uZW50X3VuYmluZF9hbGwoZGV2LCBkcm1fZGV2KTsKIGVycl9tb2RlX2NvbmZp
-Z19jbGVhbnVwOgotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+These series of patches add companion_grf_quirk and otg_mux_irq_quirk for
+rockchip usb2-phy. In addition, this change also add rv1108 usb2-phy support.
+
+Frank Wang (3):
+  phy: rockchip-inno-usb2: add companion grf quirk
+  phy: rockchip-inno-usb2: add otg mux irq quirk
+  phy: rockchip-inno-usb2: add support of usb2-phy for rv1108 SoCs
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |  10 +
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c      | 223 ++++++++++++++++-----
+ 2 files changed, 182 insertions(+), 51 deletions(-)
+
+-- 
+2.0.0
