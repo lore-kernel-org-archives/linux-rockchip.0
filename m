@@ -1,175 +1,240 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 1/4] drm/atomic: implement drm_atomic_helper_commit_tail
- for runtime_pm users
-Date: Wed, 2 Aug 2017 16:28:16 +0200
-Message-ID: <CAKMK7uHVRY3dRdn=3-n0w9BkATjj3Yo3r9=AW8A=cbw0EG9GzA@mail.gmail.com>
-References: <cover.204b8c1b76558ee33ecf147e51c2b6a04d302d55.1500555652.git-series.maxime.ripard@free-electrons.com>
- <CAKMK7uH_JviQ-n6tR17qqJxitXX91dLhnwYBEW2NxvKS7-3HAA@mail.gmail.com>
- <20170802124648.GP970@e110455-lin.cambridge.arm.com> <3036323.BRqfrJhm0Z@avalon>
+From: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 05/11] net: stmmac: dwmac-rk: Add internal phy support
+Date: Wed, 2 Aug 2017 10:38:04 -0700
+Message-ID: <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
+References: <1501654546-17292-1-git-send-email-david.wu@rock-chips.com>
+ <1501654888-19514-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <3036323.BRqfrJhm0Z@avalon>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Liviu Dudau <Liviu.Dudau@arm.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Seung-Woo Kim <sw0312.kim@samsung.com>, Chen-Yu Tsai <wens@csie.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1501654888-19514-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org
+Cc: peppe.cavallaro-qxv4g6HH51o@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hwg-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 2, 2017 at 3:27 PM, Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
-> Hi Livu,
->
-> On Wednesday 02 Aug 2017 13:46:48 Liviu Dudau wrote:
->> On Wed, Aug 02, 2017 at 01:27:23PM +0200, Daniel Vetter wrote:
->> > On Wed, Aug 2, 2017 at 1:20 PM, Liviu Dudau <Liviu.Dudau@arm.com> wrote:
->> >> On Thu, Jul 20, 2017 at 03:01:16PM +0200, Maxime Ripard wrote:
->> >>> +/**
->> >>> + * drm_atomic_helper_commit_tail_rpm - commit atomic update to
->> >>> hardware
->> >>> + * @old_state: new modeset state to be committed
->> >>> + *
->> >>> + * This is an alternative implementation for the
->> >>> + * &drm_mode_config_helper_funcs.atomic_commit_tail hook, for drivers
->> >>> + * that support runtime_pm or need the CRTC to be enabled to perform a
->> >>> + * commit. Otherwise, one should use the default implementation
->> >>> + * drm_atomic_helper_commit_tail().
->> >>> + */
->> >>> +void drm_atomic_helper_commit_tail_rpm(struct drm_atomic_state
->> >>> *old_state)
->> >>> +{
->> >>> +     struct drm_device *dev = old_state->dev;
->> >>> +
->> >>> +     drm_atomic_helper_commit_modeset_disables(dev, old_state);
->> >>> +
->> >>> +     drm_atomic_helper_commit_modeset_enables(dev, old_state);
->> >>> +
->> >>> +     drm_atomic_helper_commit_planes(dev, old_state,
->> >>> +                                     DRM_PLANE_COMMIT_ACTIVE_ONLY);
->> >>> +
->> >>> +     drm_atomic_helper_commit_hw_done(old_state);
->> >>> +
->> >>> +     drm_atomic_helper_wait_for_vblanks(dev, old_state);
->> >>> +
->> >>> +     drm_atomic_helper_cleanup_planes(dev, old_state);
->> >>> +}
->> >>> +EXPORT_SYMBOL(drm_atomic_helper_commit_tail_rpm);
->> >>> +
->> >>
->> >> Given that this function is supposed to be used by runtime PM aware
->> >> drivers and that the hook is called from the DRM core, should there not
->> >> be some pm_runtime_{get,put} calls wrapping the body of this function?
->>
->> Hi Daniel,
->>
->> > No, because the drm atomic helpers have no idea which device is
->> > backing which part of the drm device. Some drivers might on have one
->> > device for the entire driver, some one device for just the display
->> > part (which might or might not match drm_device->dev). And many arm
->> > drivers have a device for each block separately (and you need to call
->> > rpm_get/put on each). And some something in-between (e.g. core device
->> > + external encoders).
->>
->> Hmm, I understand your point about this function not having to care about
->> pm_runtime_{get,put}, but I do not agree with your view that if it wanted to
->> care about it, it wouldn't be able to do the right thing because it doesn't
->> have the right device. After all, this function is about handling the
->> updates that this atomic commit is concerned about, so having the
->> old_state->dev drm_device pointer and its associated device should be
->> enough. Am I missing something?
->
-> In embedded system it's quite common for display hardware to be made of
-> multiple IP cores. Depending on the SoC you could have to manage runtime PM at
-> the CRTC level for instance. The DRM core doesn't know about that, and sees a
-> single device only.
->
-> I've expressed my doubts previously about the need for a RPM version of
-> drm_atomic_helper_commit_tail(), as the resulting order of CRTC enable/disable
-> and plane update operations can lead to corrupt frames when enabling the CRTC.
-> I had a commit tail implementation in the rcar-du driver that was very similar
-> to drm_atomic_helper_commit_tail_rpm(), and had to move back to the standard
-> order to fix the corrupt frame issue. The result isn't as clean as I would
-> like, as power handling is split between the CRTC enable/disable and the
-> atomic begin/flush in a way that is not straightforward.
->
-> It now occurred to me that a simpler implementation could be possible. I'll
-> have to experiment with it first, but the idea is as follows.
->
-> 1 Call pm_runtime_get_sync() at the beginning of .commit_tail() and
-> pm_runtime_put() at the end.
->
-> 2. Use the standard CRTC disable, plane update, CRTC enable order in
-> .commit_tail().
->
-> 3. Call pm_runtime_get() in the CRTC .enable() handler and pm_runtime_put() in
-> the CRTC .disable() handler;
->
-> This should guarantee that the device won't be suspended between CRTC disable
-> and CRTC enable during a mode set, without requiring any special collaboration
-> between CRTC enable/disable and atomic begin/flush to handle runtime PM. If
-> drivers implement this, there should be no need for
-> drm_atomic_helper_commit_tail_rpm().
->
-> Maxime, Daniel, what do you think about this ?
+On 08/01/2017 11:21 PM, David Wu wrote:
+> To make internal phy work, need to configure the phy_clock,
+> phy cru_reset and related registers.
+> 
+> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  .../devicetree/bindings/net/rockchip-dwmac.txt     |  6 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 81 ++++++++++++++++++++++
+>  2 files changed, 86 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> index 8f42755..ec39b31 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> @@ -25,7 +25,8 @@ Required properties:
+>   - clock-names: One name for each entry in the clocks property.
+>   - phy-mode: See ethernet.txt file in the same directory.
+>   - pinctrl-names: Names corresponding to the numbered pinctrl states.
+> - - pinctrl-0: pin-control mode. can be <&rgmii_pins> or <&rmii_pins>.
+> + - pinctrl-0: pin-control mode. can be <&rgmii_pins>, <&rmii_pins> or led pins
+> +   for internal phy mode.
+>   - clock_in_out: For RGMII, it must be "input", means main clock(125MHz)
+>     is not sourced from SoC's PLL, but input from PHY; For RMII, "input" means
+>     PHY provides the reference clock(50MHz), "output" means GMAC provides the
+> @@ -40,6 +41,9 @@ Optional properties:
+>   - tx_delay: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
+>   - rx_delay: Delay value for RXD timing. Range value is 0~0x7F, 0x10 as default.
+>   - phy-supply: phandle to a regulator if the PHY needs one
+> + - clocks: <&cru MAC_PHY>: Clock selector for internal macphy
+> + - phy-is-internal: A boolean property allows us to know that MAC will connect to
+> +   internal phy.
 
-Ok, since you just said on irc that the corrupted frame is some random
-color, that's indeed not cool. What all other drivers (well at least
-i915) do is:
+This is incorrect in two ways:
 
-1. Enable the screen, but scan out nothing as a pure black. This might
-mean you need to set up the blend unit with a background color of
-black.
-2. Do an atomic flip to the new screen contents.
+- this is a property of the PHY, so it should be documented as such in
+Documentation/devicetree/bindings/net/phy.txt so other bindings can
+re-use it
 
-This way you get the sequence implement in the new _rpm
-implementation. And for most normal hw this gives you the simplest
-implementation, and has the benefit that writing to disabled hw blocks
-indicates a bug. Wrapping an entire sequence with rpm_get/put like
-Laurent describes is a really good way to hide bugs (e.g. write new
-stuff to hw you're about to disable and then drop the hw settings on
-the floor). Yes it makes implementation a bit easier, but easier !=
-more correct in many cases. Nasty self-checks are good for getting kms
-implementation rights.
+- if it was specific to your MAC you would expect a vendor prefix to
+this property, which is not there
 
-Another benefit of this sequence is that the initial plane enable
-after a crtc enable is like any other "background black -> planes"
-atomic switch, and atomic does allow you to disable all planes. So
-your driver better supports that (or is one of the few which has to
-reject a config without any planes), since userspace might want to
-enable the CRTC with no planes, and then you have the exact same bug
-again.
+An alternative way to implement the external/internal logic selection
+would be mandate that your Ethernet PHY node have a compatible string
+like this:
 
-It sounds like Laurent's 3rd gen rcar-du is special, and so needs
-special code (or well just a bugfix to enable the composer with all
-black in the CRTC enable code.
+phy@0 {
+	compatible = "ethernet-phy-id1234.d400", "ethernet-phy-802.3-c22";
+};
 
-Cheers, Daniel
+Then you don't need this phy-is-internal property, because you can
+locate the PHY node by the phy-handle (see more about that in a reply to
+patch 10) and you can determine ahead of time whether this PHY is
+internal or not based on its compatible string.
 
->> > I don't think there's anything the helpers can to to help support this.
->> >
->> > Also, just wrapping functions with rpm_get/put only papers over bugs
->> > in your driver - either you enable something, then the rpm_get needs
->> > to be done anyway (since the hw will be shut down otherwise), or you
->> > disable something, same reasons. The only thing a rpm_get/put does is
->> > paper over the bugs where you try to access the hw when it's off. As
->> > soon as this function finishes, the hw is shut down again, drops all
->> > register values on the floor, so either that access wasn't needed, or
->> > your driver has a bug (because it assumes the register values survive
->> > when they don't).
->> >
->> > So imo all around a bad idea, at least from my experience of doing rpm
->> > enabling on i915 hw.
->>
->> Understood. Thanks!
->
-> --
-> Regards,
->
-> Laurent Pinchart
->
+Thank you
 
+>  
+>  Example:
+>  
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> index a8e8fd5..7b80ab9 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> @@ -41,6 +41,7 @@ struct rk_gmac_ops {
+>  	void (*set_to_rmii)(struct rk_priv_data *bsp_priv);
+>  	void (*set_rgmii_speed)(struct rk_priv_data *bsp_priv, int speed);
+>  	void (*set_rmii_speed)(struct rk_priv_data *bsp_priv, int speed);
+> +	void (*internal_phy_powerup)(struct rk_priv_data *bsp_priv);
+>  };
+>  
+>  struct rk_priv_data {
+> @@ -52,6 +53,7 @@ struct rk_priv_data {
+>  
+>  	bool clk_enabled;
+>  	bool clock_input;
+> +	bool internal_phy;
+>  
+>  	struct clk *clk_mac;
+>  	struct clk *gmac_clkin;
+> @@ -61,6 +63,9 @@ struct rk_priv_data {
+>  	struct clk *clk_mac_refout;
+>  	struct clk *aclk_mac;
+>  	struct clk *pclk_mac;
+> +	struct clk *clk_macphy;
+> +
+> +	struct reset_control *macphy_reset;
+>  
+>  	int tx_delay;
+>  	int rx_delay;
+> @@ -750,6 +755,50 @@ static void rk3399_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
+>  	.set_rmii_speed = rk3399_set_rmii_speed,
+>  };
+>  
+> +#define RK_GRF_MACPHY_CON0		0xb00
+> +#define RK_GRF_MACPHY_CON1		0xb04
+> +#define RK_GRF_MACPHY_CON2		0xb08
+> +#define RK_GRF_MACPHY_CON3		0xb0c
+> +
+> +#define RK_MACPHY_ENABLE		GRF_BIT(0)
+> +#define RK_MACPHY_DISABLE		GRF_CLR_BIT(0)
+> +#define RK_MACPHY_CFG_CLK_50M		GRF_BIT(14)
+> +#define RK_GMAC2PHY_RMII_MODE		(GRF_BIT(6) | GRF_CLR_BIT(7))
+> +#define RK_GRF_CON2_MACPHY_ID		HIWORD_UPDATE(0x1234, 0xffff, 0)
+> +#define RK_GRF_CON3_MACPHY_ID		HIWORD_UPDATE(0x35, 0x3f, 0)
+> +
+> +static void rk_gmac_internal_phy_powerup(struct rk_priv_data *priv)
+> +{
+> +	if (priv->ops->internal_phy_powerup)
+> +		priv->ops->internal_phy_powerup(priv);
+> +
+> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_CFG_CLK_50M);
+> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_GMAC2PHY_RMII_MODE);
+> +
+> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON2, RK_GRF_CON2_MACPHY_ID);
+> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON3, RK_GRF_CON3_MACPHY_ID);
+> +
+> +	if (priv->macphy_reset) {
+> +		/* macphy needs to be disabled before trying to reset it */
+> +		regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
+> +		if (priv->macphy_reset)
+> +			reset_control_assert(priv->macphy_reset);
+> +		usleep_range(10, 20);
+> +		if (priv->macphy_reset)
+> +			reset_control_deassert(priv->macphy_reset);
+> +		usleep_range(10, 20);
+> +		regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_ENABLE);
+> +		msleep(30);
+> +	}
+> +}
+> +
+> +static void rk_gmac_internal_phy_powerdown(struct rk_priv_data *priv)
+> +{
+> +	regmap_write(priv->grf, RK_GRF_MACPHY_CON0, RK_MACPHY_DISABLE);
+> +	if (priv->macphy_reset)
+> +		reset_control_assert(priv->macphy_reset);
+> +}
+> +
+>  static int gmac_clk_init(struct rk_priv_data *bsp_priv)
+>  {
+>  	struct device *dev = &bsp_priv->pdev->dev;
+> @@ -803,6 +852,14 @@ static int gmac_clk_init(struct rk_priv_data *bsp_priv)
+>  			clk_set_rate(bsp_priv->clk_mac, 50000000);
+>  	}
+>  
+> +	if (bsp_priv->internal_phy) {
+> +		bsp_priv->clk_macphy = devm_clk_get(dev, "clk_macphy");
+> +		if (IS_ERR(bsp_priv->clk_macphy))
+> +			dev_err(dev, "cannot get %s clock\n", "clk_macphy");
+> +		else
+> +			clk_set_rate(bsp_priv->clk_macphy, 50000000);
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> @@ -826,6 +883,9 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+>  						bsp_priv->clk_mac_refout);
+>  			}
+>  
+> +			if (!IS_ERR(bsp_priv->clk_macphy))
+> +				clk_prepare_enable(bsp_priv->clk_macphy);
+> +
+>  			if (!IS_ERR(bsp_priv->aclk_mac))
+>  				clk_prepare_enable(bsp_priv->aclk_mac);
+>  
+> @@ -858,6 +918,9 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+>  						bsp_priv->clk_mac_refout);
+>  			}
+>  
+> +			if (!IS_ERR(bsp_priv->clk_macphy))
+> +				clk_disable_unprepare(bsp_priv->clk_macphy);
+> +
+>  			if (!IS_ERR(bsp_priv->aclk_mac))
+>  				clk_disable_unprepare(bsp_priv->aclk_mac);
+>  
+> @@ -940,6 +1003,18 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
+>  			bsp_priv->clock_input = false;
+>  	}
+>  
+> +	bsp_priv->internal_phy = device_property_read_bool(dev,
+> +							   "phy-is-internal");
+> +	if (bsp_priv->internal_phy) {
+> +		bsp_priv->macphy_reset = devm_reset_control_get(dev, "mac-phy");
+> +		if (IS_ERR(bsp_priv->macphy_reset)) {
+> +			dev_info(dev, "no macphy_reset control found\n");
+> +			bsp_priv->macphy_reset = NULL;
+> +		}
+> +	}
+> +	dev_info(dev, "internal PHY? (%s).\n",
+> +		 bsp_priv->internal_phy ? "yes" : "no");
+> +
+>  	ret = of_property_read_u32(dev->of_node, "tx_delay", &value);
+>  	if (ret) {
+>  		bsp_priv->tx_delay = 0x30;
+> @@ -1014,6 +1089,9 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+>  	pm_runtime_enable(dev);
+>  	pm_runtime_get_sync(dev);
+>  
+> +	if (bsp_priv->internal_phy)
+> +		rk_gmac_internal_phy_powerup(bsp_priv);
+> +
+>  	return 0;
+>  }
+>  
+> @@ -1021,6 +1099,9 @@ static void rk_gmac_powerdown(struct rk_priv_data *gmac)
+>  {
+>  	struct device *dev = &gmac->pdev->dev;
+>  
+> +	if (gmac->internal_phy)
+> +		rk_gmac_internal_phy_powerdown(gmac);
+> +
+>  	pm_runtime_put_sync(dev);
+>  	pm_runtime_disable(dev);
+>  
+> 
 
 
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-+41 (0) 79 365 57 48 - http://blog.ffwll.ch
+Florian
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
