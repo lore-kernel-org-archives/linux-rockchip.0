@@ -1,98 +1,89 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [PATCH v3 10/11] ARM64: dts: rockchip: Add gmac2phy node support
- for rk3328
-Date: Wed, 2 Aug 2017 10:40:09 -0700
-Message-ID: <30389901-ac6f-0bb9-e103-d0cea1f66e5d@gmail.com>
-References: <1501654546-17292-1-git-send-email-david.wu@rock-chips.com>
- <1501655097-21054-1-git-send-email-david.wu@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v5 0/7] Reconstruct rockchip's PCIe and PCIe-PHY driver
+ for per-lane PHY model
+Date: Wed, 2 Aug 2017 17:57:55 -0500
+Message-ID: <20170802225755.GR20308@bhelgaas-glaptop.roam.corp.google.com>
+References: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501655097-21054-1-git-send-email-david.wu@rock-chips.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>, davem@davemloft.net, heiko@sntech.de, andrew@lunn.ch, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de
-Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 08/01/2017 11:24 PM, David Wu wrote:
-> The gmac2phy controller of rk3328 is connected to internal phy
-> directly inside, add the node for the internal phy support.
+On Wed, Jul 19, 2017 at 05:55:11PM +0800, Shawn Lin wrote:
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
+> This patchset is trying to reconstruct PCIe and PCIe-PHY driver
+> for rockchip platform in order to support per-lane PHY mode. And
+> we could idle the inactive lane(s) finally.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> index 0be96ce..51c8c66 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> @@ -63,6 +63,8 @@
->  		i2c1 = &i2c1;
->  		i2c2 = &i2c2;
->  		i2c3 = &i2c3;
-> +		ethernet0 = &gmac2io;
-> +		ethernet1 = &gmac2phy;
->  	};
->  
->  	cpus {
-> @@ -424,6 +426,29 @@
->  		status = "disabled";
->  	};
->  
-> +	gmac2phy: eth@ff550000 {
-> +		compatible = "rockchip,rk3328-gmac";
-> +		reg = <0x0 0xff550000 0x0 0x10000>;
-> +		rockchip,grf = <&grf>;
-> +		interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-names = "macirq";
-> +		clocks = <&cru SCLK_MAC2PHY_SRC>, <&cru SCLK_MAC2PHY_RXTX>,
-> +			 <&cru SCLK_MAC2PHY_RXTX>, <&cru SCLK_MAC2PHY_REF>,
-> +			 <&cru ACLK_MAC2PHY>, <&cru PCLK_MAC2PHY>,
-> +			 <&cru SCLK_MAC2PHY_OUT>;
-> +		clock-names = "stmmaceth", "mac_clk_rx",
-> +			      "mac_clk_tx", "clk_mac_ref",
-> +			      "aclk_mac", "pclk_mac",
-> +			      "clk_macphy";
-> +		resets = <&cru SRST_GMAC2PHY_A>, <&cru SRST_MACPHY>;
-> +		reset-names = "stmmaceth", "mac-phy";
-> +		phy-mode = "rmii";
-> +		phy-is-internal;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&fephyled_rxm1 &fephyled_linkm1>;
-> +		status = "disabled";
-
-But where is the the phy-handle property that points to this internal
-PHY? Even if it is internal, it should be described properly with a mdio
-bus sub-node and a standard Ethernet PHY node as specified by both
-Documentation/devicetree/bindings/net/mdio.txt and
-Documentation/devicetree/bindings/net/phy.txt
-
-That means we should at least see something like this (on top of what
-you added already)
-		phy-handle = <&phy0>;
-
-		mdio {
-			compatible = "snps,dwmac-mdio";
-			#address-cells = <1>;
-			#size-cells = <0>;
-
-			phy@0 {
-				compatible = "ethernet-phy-id1234.d400", "ethernet-phy-802.3-c22";
-				reg = <0>;
-				phy-is-internal;
-			};
-		};
-
-> +	};
-> +
->  	gic: interrupt-controller@ff811000 {
->  		compatible = "arm,gic-400";
->  		#interrupt-cells = <3>;
+> We deprecate the legacy PHY mode but the code could still
+> support it in order not to break backware compatibility of DTB. And I
+> organize the patches carefully so that we don't introduce git-bisect
+> issue.
 > 
+> Patchset was reviewed by Brian and fully tested by Jeffy. Rob acked
+> patch 6 & 7. Kishon acked patch 1, 2 and 4, and will ack patch 3 once
+> this patch 3 of v5 looks good.
+> 
+> Patch 5 for DTS changes for Rockchip part still need ack from Heiko, and
+> it would be fine for Heiko to pick it up after pcie and pcie-phy changes
+> got merged.
+> 
+> It would be fine for Bjorn to pick all these patches up to narrow down
+> the timing gap for testing linux-next. :)
+> 
+> 
+> Changes in v5:
+> - don't create more number of phys if it's legacy PHY model
+> 
+> Changes in v4:
+> - use err variable to check return value of
+>   rockchip_pcie_get_phys
+> - add Brian's tag
+> - move rockchip_pcie_get_phys to where it stands in
+>   patch 1.
+> - print PHY index in err output log
+> - return u8 for rockchip_pcie_lane_map
+> 
+> Changes in v3:
+> - kill rockchip_pcie_manipulate_phys and related stuff
+> - use phys array
+> - improve the commit msg
+> - remove unnecessary forward declaration
+> - keep mutex inside struct rockchip_pcie_phy
+> - fix wrong check of args number
+> - move de-idle lanes after deasserting the reset
+> - use cached lanes_map to avoid powering off inactive
+>   lanes twice
+> - rename the commit tile
+> 
+> Changes in v2:
+> - deprecate legacy PHY model
+> - improve rockchip_pcie_phy_of_xlate
+> - fix wrong calculation of pwr_cnt and add new init_cnt
+> - add internal locking
+> - introduce per-lane data to simply the code
+> 
+> Shawn Lin (7):
+>   PCI: rockchip: split out rockchip_pcie_get_phys
+>   PCI: rockchip: introduce per-lanes PHYs support
+>   phy: rockcip-pcie: reconstruct driver to support per-lane PHYs
+>   PCI: rockchip: idle the inactive PHY(s)
+>   arm64: dts: rockchip: convert PCIe to use per-lane PHYs for rk3339
+>   dt-bindings: PCI: rockchip: convert to use per-lane PHY model
+>   dt-bindings: phy: convert to use per-lane Rockchip PCIe PHY
+> 
+>  .../devicetree/bindings/pci/rockchip-pcie.txt      |  25 +++-
+>  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  |   7 +-
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   8 +-
+>  drivers/pci/host/pcie-rockchip.c                   | 122 +++++++++++++++----
+>  drivers/phy/rockchip/phy-rockchip-pcie.c           | 132 ++++++++++++++++++---
+>  5 files changed, 253 insertions(+), 41 deletions(-)
 
+Applied with Kishon's ack on 3/7 to pci/host-rockchip for v4.14.
 
--- 
-Florian
+Thanks for all your work on these, Shawn!
