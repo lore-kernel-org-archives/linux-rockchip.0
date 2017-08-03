@@ -1,89 +1,85 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 4/5] dt-bindings: phy-rockchip-inno-usb2: add otg mux
- irq quirk
-Date: Thu, 3 Aug 2017 09:47:37 +0800
-Message-ID: <0cd69042-5ff5-900a-fe6e-c162452b71bf@rock-chips.com>
-References: <1501660390-5956-1-git-send-email-frank.wang@rock-chips.com>
- <1501660390-5956-5-git-send-email-frank.wang@rock-chips.com>
- <2188240.QH672TG27n@diego>
+From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: rk3288 add more iommu nodes
+Date: Thu,  3 Aug 2017 10:04:03 +0800
+Message-ID: <1501725843-37391-1-git-send-email-xxm@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2188240.QH672TG27n@diego>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Add IEP/ISP/VPU/HEVC iommu nodes
 
-On 2017/8/2 19:25, Heiko Stübner wrote:
-> Hi Frank,
->
-> Am Mittwoch, 2. August 2017, 15:53:09 CEST schrieb Frank Wang:
->> Add rockchip,otg_mux_irq_quirk property to support the otg-id/
->> otg-bvalid/linestate irqs that are multiplexed to one irq in
->> otg-port on some special Rockchip SoCs (e.g RV1108).
->>
->> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>   Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt | 5 +++++
->>   1 file changed, 5 insertions(+)
->>
->> diff --git
->> a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt index
->> ddf868a..d49572b 100644
->> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> @@ -22,6 +22,8 @@ Optional properties:
->>   		 register files".
->>    - rockchip,companion_grf_quirk : when set driver will request
->>   		 "rockchip,usbgrf" phandle as one companion-grf.
->> + - rockchip,otg_mux_irq_quirk: set if otg-id/otg-bvalid/linestate irqs
->> +		 are multiplexed to one irq in otg-port on some SoCs.
->>
->>   Required nodes : a sub-node is required for each port the phy provides.
->>   		 The sub-node name is used to identify host or otg port,
->> @@ -36,6 +38,9 @@ Required properties (port (child) node):
->>   	* "otg-id" : for the otg id interrupt.
->>   	* "otg-bvalid" : for the otg vbus interrupt.
->>   	* "linestate" : for the host/otg linestate interrupt.
->> +	* "otg-mux" : otg-port interrupt, which multiplex otg-id/otg-bvalid/
->> +		linestate irqs to one irq. Should specify if
->> +		rockchip,otg_mux_irq_quirk property is set.
-> I'd think that should be auto-detectable in the driver without the quirk
-> property above?
->
-> I.e. check for the otg-mux interrupt first on probe and if can be found, you
-> know that this is the case, otherwise look for the regular interrupts.
->
->
-> Also I would write that down a bit differently, so that it doesn't confuse
-> people. Something similar to:
->
->   - interrupt-names : a list which should
-> +    Regular case:
-> 	* "otg-id" : for the otg id interrupt.
-> 	* "otg-bvalid" : for the otg vbus interrupt.
-> 	* "linestate" : for the host/otg linestate interrupt.
-> +    Some socs use one interrupt with the obove muxed together, so for these
-> +	* "otg-mux" : otg-port interrupt, which multiplex otg-id/otg-bvalid/
-> +		linestate irqs to one irq.
->
->
-> Heiko
->
+Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-Thanks for your comments, I will fix it in next version.
-
-
-BR.
-Frank
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 2484f11..90646a2 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -953,6 +953,25 @@
+ 		status = "okay";
+ 	};
+ 
++	iep_mmu: iommu@ff900800 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff900800 0x0 0x40>;
++		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "iep_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
++	isp_mmu: iommu@ff914000 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
++		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "isp_mmu";
++		#iommu-cells = <0>;
++		rockchip,disable-mmu-reset;
++		status = "disabled";
++	};
++
+ 	vopb: vop@ff930000 {
+ 		compatible = "rockchip,rk3288-vop";
+ 		reg = <0xff930000 0x19c>;
+@@ -1126,6 +1145,24 @@
+ 		};
+ 	};
+ 
++	vpu_mmu: iommu@ff9a0800 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff9a0800 0x0 0x100>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vpu_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
++	hevc_mmu: iommu@ff9c0440 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
++		interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "hevc_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
+ 	gpu: mali@ffa30000 {
+ 		compatible = "rockchip,rk3288-mali", "arm,mali-t760", "arm,mali-midgard";
+ 		reg = <0xffa30000 0x10000>;
+-- 
+1.9.1
