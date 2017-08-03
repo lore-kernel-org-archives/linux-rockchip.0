@@ -1,59 +1,93 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 058/102] phy: rockchip-pcie: explicitly request exclusive
- reset control
-Date: Thu, 3 Aug 2017 08:37:12 +0800
-Message-ID: <70531cf6-4576-1619-7ec8-11b771af4c96@rock-chips.com>
-References: <20170719152646.25903-1-p.zabel@pengutronix.de>
- <20170719152646.25903-59-p.zabel@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Huibin Hong <huibin.hong@rock-chips.com>
+Subject: [PATCH] ARM: dts: rockchip: rk322x: add spi node and spi pinctrl
+Date: Thu,  3 Aug 2017 09:16:49 +0800
+Message-ID: <1501723009-19367-1-git-send-email-huibin.hong@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170719152646.25903-59-p.zabel@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>
+To: heiko@sntech.de, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux@arm.linux.org.uk
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Huibin Hong <huibin.hong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-[+ Bjorn]
+Change-Id: I5bf28e2319ceb90bdc52d732cce2f646b29cae36
+Signed-off-by: Huibin Hong <huibin.hong@rock-chips.com>
+---
+ arch/arm/boot/dts/rk322x.dtsi | 50 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-On 2017/7/19 23:26, Philipp Zabel wrote:
-> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
-> reset lines") started to transition the reset control request API calls
-> to explicitly state whether the driver needs exclusive or shared reset
-> control behavior. Convert all drivers requesting exclusive resets to the
-> explicit API call so the temporary transition helpers can be removed.
-> 
-> No functional changes.
-> 
-> Cc: Kishon Vijay Abraham I <kishon@ti.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-
-some changes for phy-rockchip-pcie.c would go via pci tree
-for 4.14, so is it ok for Bjorn to pick this up if no objection
-from Kishon, in case of merge conflict?
-
-Anyway,
-
-Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-> ---
->   drivers/phy/rockchip/phy-rockchip-pcie.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> index 6904633cad687..258220b7f481c 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-> @@ -305,7 +305,7 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
->   	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
->   	rk_phy->reg_base = grf;
->   
-> -	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
-> +	rk_phy->phy_rst = devm_reset_control_get_exclusive(dev, "phy");
->   	if (IS_ERR(rk_phy->phy_rst)) {
->   		if (PTR_ERR(rk_phy->phy_rst) != -EPROBE_DEFER)
->   			dev_err(dev,
-> 
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 678daf7..b47f58e 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -54,6 +54,7 @@
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
+ 		serial2 = &uart2;
++		spi0 = &spi0;
+ 	};
+ 
+ 	cpus {
+@@ -401,6 +402,19 @@
+ 		status = "disabled";
+ 	};
+ 
++	spi0: spi@11090000 {
++		compatible = "rockchip,rk3228-spi";
++		reg = <0x11090000 0x1000>;
++		interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&spi0_clk &spi0_tx &spi0_rx &spi0_cs0 &spi0_cs1>;
++		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
++		clock-names = "spiclk", "apb_pclk";
++		status = "disabled";
++	};
++
+ 	wdt: watchdog@110a0000 {
+ 		compatible = "rockchip,rk322x-wdt", "snps,dw-wdt";
+ 		reg = <0x110a0000 0x100>;
+@@ -1058,6 +1072,42 @@
+ 			};
+ 		};
+ 
++		spi-0 {
++			spi0_clk: spi0-clk {
++				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_cs0: spi0-cs0 {
++				rockchip,pins = <0 14 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_tx: spi0-tx {
++				rockchip,pins = <0 11 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_rx: spi0-rx {
++				rockchip,pins = <0 13 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_cs1: spi0-cs1 {
++				rockchip,pins = <1 12 RK_FUNC_1 &pcfg_pull_up>;
++			};
++		};
++
++		spi-1 {
++			spi1_clk: spi1-clk {
++				rockchip,pins = <0 23 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_cs0: spi1-cs0 {
++				rockchip,pins = <2 2 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_rx: spi1-rx {
++				rockchip,pins = <2 0 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_tx: spi1-tx {
++				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_cs1: spi1-cs1 {
++				rockchip,pins = <2 3 RK_FUNC_2 &pcfg_pull_up>;
++			};
++		};
++
+ 		i2s1 {
+ 			i2s1_bus: i2s1-bus {
+ 				rockchip,pins = <0 8 RK_FUNC_1 &pcfg_pull_none>,
+-- 
+1.9.1
