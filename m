@@ -1,43 +1,89 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] phy: rockchip-typec: remove unused dfp variable
-Date: Thu,  3 Aug 2017 09:26:19 +0800
-Message-ID: <1501723579-127373-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 4/5] dt-bindings: phy-rockchip-inno-usb2: add otg mux
+ irq quirk
+Date: Thu, 3 Aug 2017 09:47:37 +0800
+Message-ID: <0cd69042-5ff5-900a-fe6e-c162452b71bf@rock-chips.com>
+References: <1501660390-5956-1-git-send-email-frank.wang@rock-chips.com>
+ <1501660390-5956-5-git-send-email-frank.wang@rock-chips.com>
+ <2188240.QH672TG27n@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2188240.QH672TG27n@diego>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to silent the 'W=1' compile warning:
+Hi Heiko,
 
-drivers/phy/rockchip/phy-rockchip-typec.c: In function 'tcphy_get_mode':
-drivers/phy/rockchip/phy-rockchip-typec.c:625:7: warning: variable 'dfp'
-set but not used [-Wunused-but-set-variable]
+On 2017/8/2 19:25, Heiko Stübner wrote:
+> Hi Frank,
+>
+> Am Mittwoch, 2. August 2017, 15:53:09 CEST schrieb Frank Wang:
+>> Add rockchip,otg_mux_irq_quirk property to support the otg-id/
+>> otg-bvalid/linestate irqs that are multiplexed to one irq in
+>> otg-port on some special Rockchip SoCs (e.g RV1108).
+>>
+>> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>   Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt | 5 +++++
+>>   1 file changed, 5 insertions(+)
+>>
+>> diff --git
+>> a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+>> b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt index
+>> ddf868a..d49572b 100644
+>> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+>> @@ -22,6 +22,8 @@ Optional properties:
+>>   		 register files".
+>>    - rockchip,companion_grf_quirk : when set driver will request
+>>   		 "rockchip,usbgrf" phandle as one companion-grf.
+>> + - rockchip,otg_mux_irq_quirk: set if otg-id/otg-bvalid/linestate irqs
+>> +		 are multiplexed to one irq in otg-port on some SoCs.
+>>
+>>   Required nodes : a sub-node is required for each port the phy provides.
+>>   		 The sub-node name is used to identify host or otg port,
+>> @@ -36,6 +38,9 @@ Required properties (port (child) node):
+>>   	* "otg-id" : for the otg id interrupt.
+>>   	* "otg-bvalid" : for the otg vbus interrupt.
+>>   	* "linestate" : for the host/otg linestate interrupt.
+>> +	* "otg-mux" : otg-port interrupt, which multiplex otg-id/otg-bvalid/
+>> +		linestate irqs to one irq. Should specify if
+>> +		rockchip,otg_mux_irq_quirk property is set.
+> I'd think that should be auto-detectable in the driver without the quirk
+> property above?
+>
+> I.e. check for the otg-mux interrupt first on probe and if can be found, you
+> know that this is the case, otherwise look for the regular interrupts.
+>
+>
+> Also I would write that down a bit differently, so that it doesn't confuse
+> people. Something similar to:
+>
+>   - interrupt-names : a list which should
+> +    Regular case:
+> 	* "otg-id" : for the otg id interrupt.
+> 	* "otg-bvalid" : for the otg vbus interrupt.
+> 	* "linestate" : for the host/otg linestate interrupt.
+> +    Some socs use one interrupt with the obove muxed together, so for these
+> +	* "otg-mux" : otg-port interrupt, which multiplex otg-id/otg-bvalid/
+> +		linestate irqs to one irq.
+>
+>
+> Heiko
+>
 
-Cc: Chris Zhong <zyw@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+Thanks for your comments, I will fix it in next version.
 
- drivers/phy/rockchip/phy-rockchip-typec.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 7cfb0f8..4d2c57f 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -622,12 +622,11 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
- 	struct extcon_dev *edev = tcphy->extcon;
- 	union extcon_property_value property;
- 	unsigned int id;
--	bool dfp, ufp, dp;
-+	bool ufp, dp;
- 	u8 mode;
- 	int ret;
- 
- 	ufp = extcon_get_state(edev, EXTCON_USB);
--	dfp = extcon_get_state(edev, EXTCON_USB_HOST);
- 	dp = extcon_get_state(edev, EXTCON_DISP_DP);
- 
- 	mode = MODE_DFP_USB;
--- 
-1.9.1
+BR.
+Frank
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
