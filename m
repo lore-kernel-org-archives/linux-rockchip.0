@@ -1,29 +1,38 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [RESEND PATCH 0/2] crypto/rockchip: fix some issue which causes
- crypto failed
-Date: Thu, 3 Aug 2017 14:26:13 +0800
-Message-ID: <20170803062613.GN12039@gondor.apana.org.au>
-References: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1500859394-1799-1-git-send-email-wzz@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: zain wang <wzz@rock-chips.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, jekarlson@gmail.com, shawn.lin@rock-chips.com, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: include opp dtsi for rk3399 firefly
+Date: Thu,  3 Aug 2017 15:02:00 +0800
+Message-ID: <1501743720-6778-1-git-send-email-jay.xu@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 24, 2017 at 09:23:12AM +0800, zain wang wrote:
-> These patches fix some bugs on rockchip's crypto which would cause crypto failed.
-> 
-> zain wang (2):
->   crypto: rockchip - move the crypto completion from interrupt context
->   crypto: rockchip - return the err code when unable dequeue the crypto
->     request
+Add opp tables for cpu cluster0 and cluster1 by including
+rk3399-opp.dtsi.
 
-All applied.  Thanks.
+Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index eed7e99..7fd4bfc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -43,6 +43,7 @@
+ /dts-v1/;
+ #include <dt-bindings/pwm/pwm.h>
+ #include "rk3399.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Firefly-RK3399 Board";
 -- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
