@@ -1,38 +1,30 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: include opp dtsi for rk3399 firefly
-Date: Thu,  3 Aug 2017 15:02:00 +0800
-Message-ID: <1501743720-6778-1-git-send-email-jay.xu@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Zain Wang <wzz@rock-chips.com>
+Subject: Some ideas about tcpm driver
+Date: Thu, 3 Aug 2017 15:28:53 +0800
+Message-ID: <c01f3195-ed9f-38c8-63e3-e59138fc9f80@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Guenter Roeck <groeck@chromium.org>, Yueyao Zhu <yueyao@google.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add opp tables for cpu cluster0 and cluster1 by including
-rk3399-opp.dtsi.
+Hi all,
 
-Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 1 +
- 1 file changed, 1 insertion(+)
+In recent days, I tested the fusb302 driver with tcpm. (RK3399 evb board)
+But I found an issues:
+     There is not a regulator for type-c vbus power-supply in my board.
+     The vbus is just controlled by a gpio-pin, and unable to support 
+other voltage except 5V.
+     But now, I can't use fusb302 driver without workaround fix.
+     Could you fix it in next version? @Yueyao
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index eed7e99..7fd4bfc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -43,6 +43,7 @@
- /dts-v1/;
- #include <dt-bindings/pwm/pwm.h>
- #include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
- 
- / {
- 	model = "Firefly-RK3399 Board";
--- 
-1.9.1
+The altmode looks not complete. I can't enter DP Alt Mode now.
+And we'd like to used extcon function (used in Chrome) to link usb, dp 
+and type-c together.
+How do you think about it? @Guenter
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks
+Zain
