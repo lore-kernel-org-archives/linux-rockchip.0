@@ -1,93 +1,234 @@
-From: Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [PATCH v3 05/11] net: stmmac: dwmac-rk: Add internal phy support
-Date: Thu, 3 Aug 2017 19:06:33 +0800
-Message-ID: <CAGb2v65Rtw2B3Hcs4L0jTRQ2ApUduJ+Nf1W1XnqXBBmFwMaP-g@mail.gmail.com>
-References: <1501654546-17292-1-git-send-email-david.wu@rock-chips.com>
- <1501654888-19514-1-git-send-email-david.wu@rock-chips.com> <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
+From: Cihangir Akturk <cakturk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 00/29] DRM API conversions
+Date: Thu,  3 Aug 2017 14:58:15 +0300
+Message-ID: <1501761585-11757-1-git-send-email-cakturk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: David Wu <david.wu@rock-chips.com>, David Miller <davem@davemloft.net>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Olof Johansson <olof@lixom.net>, Russell King <linux@armlinux.org.uk>, Arnd Bergmann <arnd@arndb.de>, Tao Huang <huangtao@rock-chips.com>, hwg@rock-chips.com, alexandre.torgue@st.com, devicetree <devicetree@vger.kernel.org>, netdev <netdev@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, linux-arm-kernel <linux-arm-kernel@lists.infradea>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Xinliang Liu <xinliang.liu-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Sumit Semwal <sumit.semwal-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alex Xie <AlexBin.Xie-5C7GfCeVMHo@public.gmane.org>, Chunming Zhou <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ben Skeggs <bskeggs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Andrey Grodzovsky <Andrey.Grodzovsky-5C7GfCeVMHo@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dave Airlie <airlied-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Nicolai=20H=C3=A4hnle?= <Nicolai.Haehnle-5C7GfCeVMHo@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer-5C7GfCeVMHo@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alex Deucher <alexander.deucher-5C7GfCeVMHo@public.gmane.org>, Ken Wang <Qingqing.Wang-5C7GfCeVMHo@public.gmane.org>, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 3, 2017 at 1:38 AM, Florian Fainelli <f.fainelli@gmail.com> wrote:
-> On 08/01/2017 11:21 PM, David Wu wrote:
->> To make internal phy work, need to configure the phy_clock,
->> phy cru_reset and related registers.
->>
->> Signed-off-by: David Wu <david.wu@rock-chips.com>
->> ---
->>  .../devicetree/bindings/net/rockchip-dwmac.txt     |  6 +-
->>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 81 ++++++++++++++++++++++
->>  2 files changed, 86 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
->> index 8f42755..ec39b31 100644
->> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
->> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
->> @@ -25,7 +25,8 @@ Required properties:
->>   - clock-names: One name for each entry in the clocks property.
->>   - phy-mode: See ethernet.txt file in the same directory.
->>   - pinctrl-names: Names corresponding to the numbered pinctrl states.
->> - - pinctrl-0: pin-control mode. can be <&rgmii_pins> or <&rmii_pins>.
->> + - pinctrl-0: pin-control mode. can be <&rgmii_pins>, <&rmii_pins> or led pins
->> +   for internal phy mode.
->>   - clock_in_out: For RGMII, it must be "input", means main clock(125MHz)
->>     is not sourced from SoC's PLL, but input from PHY; For RMII, "input" means
->>     PHY provides the reference clock(50MHz), "output" means GMAC provides the
->> @@ -40,6 +41,9 @@ Optional properties:
->>   - tx_delay: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
->>   - rx_delay: Delay value for RXD timing. Range value is 0~0x7F, 0x10 as default.
->>   - phy-supply: phandle to a regulator if the PHY needs one
->> + - clocks: <&cru MAC_PHY>: Clock selector for internal macphy
->> + - phy-is-internal: A boolean property allows us to know that MAC will connect to
->> +   internal phy.
->
-> This is incorrect in two ways:
->
-> - this is a property of the PHY, so it should be documented as such in
-> Documentation/devicetree/bindings/net/phy.txt so other bindings can
-> re-use it
->
-> - if it was specific to your MAC you would expect a vendor prefix to
-> this property, which is not there
->
-> An alternative way to implement the external/internal logic selection
-> would be mandate that your Ethernet PHY node have a compatible string
-> like this:
->
-> phy@0 {
->         compatible = "ethernet-phy-id1234.d400", "ethernet-phy-802.3-c22";
-> };
->
-> Then you don't need this phy-is-internal property, because you can
-> locate the PHY node by the phy-handle (see more about that in a reply to
-> patch 10) and you can determine ahead of time whether this PHY is
-> internal or not based on its compatible string.
+This patch set replaces the occurrences of drm_*_reference() and
+drm_*_unreference() with the new drm_*_get() and drm_*_put() functions.
+All patches in the series do the same thing, converting to the new APIs.
+I created patches per DRM driver as suggested by Daniel Vetter.
 
-This doesn't really work for us (sunxi). The "internal" PHY of the H3
-is also available in the X-Powers AC200 combo chip, which would be
-external. Same ID. So if someone were to be stupid and put the two
-together, you wouldn't know which one it actually is. Generically
-it doesn't make sense to match against the ID either. The PHY is
-only integrated or inlined into the SoC, meaning it could be moved
-elsewhere or even be a discreet part.
+Background:
 
-The way I see it is more like a reversed pinmux. The system should
-select either the internal set or external set of xMII pins to use.
+In the kernel, reference counting APIs use *_get(), *_put() style naming
+to reference-count the objects. But DRM subsystem uses a different
+naming for them such as *_reference(), *_unreference() which is
+inconsistent with the other reference counting APIs in the kernel. To
+solve this consistency issue, Thierry Reding introduced a couple of
+functions and compatibility aliases in the following commits for them.
 
-A phy-is-internal property in the PHY node would work for us. We
-already need a PHY node to describe its clocks and resets.
+commit 020a218f95bd3ceff7dd1022ff7ebc0497bc7bf9
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:38 2017 +0100
 
-A side note to this solution is that, since the internal PHY is defined
-at the .dtsi level, any external PHYs at the same address would need to
-make sure to delete the property, which is kind of counterintuitive, but
-it is how device tree works. One would want to put the internal PHY's
-address, assuming it is configurable, on something that is rarely used.
+    drm: Introduce drm_mode_object_{get,put}()
+
+commit ad09360750afa18a0a0ce0253d6ea6033abc22e7
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:39 2017 +0100
+
+    drm: Introduce drm_connector_{get,put}()
+
+commit a4a69da06bc11a937a6e417938b1bb698ee1fa46
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:40 2017 +0100
+
+    drm: Introduce drm_framebuffer_{get,put}()
+
+commit e6b62714e87c8811d5564b6a0738dcde63a51774
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:41 2017 +0100
+
+    drm: Introduce drm_gem_object_{get,put}()
+
+commit 6472e5090be7c78749a3c279b4faae87ab835c40
+Author: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Date:   Tue Feb 28 15:46:42 2017 +0100
+
+    drm: Introduce drm_property_blob_{get,put}()
 
 
-Regards
-ChenYu
+This patch set was generated using the following shell script:
+
+#!/bin/sh
+
+path=$1
+
+do_replace() {
+    local pattern=$1
+    local replacement=$2
+
+    git grep -lw "${pattern}" -- "${path}/*.[hc]" |\
+        xargs -r sed -i "s/\b$pattern\b/$replacement/g"
+}
+
+do_replace drm_mode_object_reference drm_mode_object_get
+do_replace drm_mode_object_unreference drm_mode_object_put
+do_replace drm_connector_reference drm_connector_get
+do_replace drm_connector_unreference drm_connector_put
+do_replace drm_framebuffer_reference drm_framebuffer_get
+do_replace drm_framebuffer_unreference drm_framebuffer_put
+do_replace drm_gem_object_reference drm_gem_object_get
+do_replace drm_gem_object_unreference drm_gem_object_put
+do_replace __drm_gem_object_unreference __drm_gem_object_put
+do_replace drm_gem_object_unreference_unlocked drm_gem_object_put_unlocked
+do_replace drm_property_reference_blob drm_property_blob_get
+do_replace drm_property_unreference_blob drm_property_blob_put
+
+Cihangir Akturk (29):
+  drm/amdgpu: switch to drm_*{get,put} helpers
+  drm: mali-dp: switch to drm_*{get,put} helpers
+  drm/armada: switch to drm_*{get,put} helpers
+  drm/ast: switch to drm_*{get,put} helpers
+  drm/atmel-hlcdc: switch to drm_*{get,put} helpers
+  drm/bochs: switch to drm_*{get,put} helpers
+  drm/cirrus: switch to drm_*{get,put} helpers
+  drm/etnaviv: switch to drm_*{get,put} helpers
+  drm/exynos: switch to drm_*{get,put} helpers
+  drm/gma500: switch to drm_*{get,put} helpers
+  drm/hisilicon: switch to drm_*{get,put} helpers
+  drm/i915: switch to drm_*{get,put} helpers
+  drm/imx: switch to drm_*{get,put} helpers
+  drm/mediatek: switch to drm_*{get,put} helpers
+  drm/mgag200: switch to drm_*{get,put} helpers
+  drm/msm: switch to drm_*{get,put} helpers
+  drm/nouveau: switch to drm_*{get,put} helpers
+  drm/omap: switch to drm_*{get,put} helpers
+  drm/qxl: switch to drm_*{get,put} helpers
+  drm/radeon: switch to drm_*{get,put} helpers
+  drm/rockchip: switch to drm_*{get,put} helpers
+  drm/tegra: switch to drm_*{get,put} helpers
+  drm/tilcdc: switch to drm_*{get,put} helpers
+  drm/udl: switch to drm_*{get,put} helpers
+  drm/vc4: switch to drm_*{get,put} helpers
+  drm/vgem: switch to drm_*{get,put} helpers
+  drm/virtio: switch to drm_*{get,put} helpers
+  drm/vmwgfx: switch to drm_*{get,put} helpers
+  staging: vboxvideo: switch to drm_*{get,put} helpers
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c       |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c            |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c       |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_fb.c            |  4 +--
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c           | 22 ++++++++---------
+ drivers/gpu/drm/amd/amdgpu/dce_v10_0.c            |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/dce_v11_0.c            |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/dce_v6_0.c             |  6 ++---
+ drivers/gpu/drm/amd/amdgpu/dce_v8_0.c             |  6 ++---
+ drivers/gpu/drm/arm/malidp_planes.c               |  2 +-
+ drivers/gpu/drm/armada/armada_crtc.c              | 22 ++++++++---------
+ drivers/gpu/drm/armada/armada_drv.c               |  2 +-
+ drivers/gpu/drm/armada/armada_fb.c                |  8 +++---
+ drivers/gpu/drm/armada/armada_fbdev.c             |  6 ++---
+ drivers/gpu/drm/armada/armada_gem.c               | 14 +++++------
+ drivers/gpu/drm/armada/armada_overlay.c           |  4 +--
+ drivers/gpu/drm/ast/ast_fb.c                      |  2 +-
+ drivers/gpu/drm/ast/ast_main.c                    | 10 ++++----
+ drivers/gpu/drm/ast/ast_mode.c                    |  6 ++---
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c   |  8 +++---
+ drivers/gpu/drm/bochs/bochs_fbdev.c               |  2 +-
+ drivers/gpu/drm/bochs/bochs_mm.c                  | 10 ++++----
+ drivers/gpu/drm/cirrus/cirrus_fbdev.c             |  2 +-
+ drivers/gpu/drm/cirrus/cirrus_main.c              | 10 ++++----
+ drivers/gpu/drm/etnaviv/etnaviv_drv.c             |  8 +++---
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c             | 20 +++++++--------
+ drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c       |  2 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem_submit.c      |  4 +--
+ drivers/gpu/drm/exynos/exynos_drm_fb.c            |  4 +--
+ drivers/gpu/drm/exynos/exynos_drm_gem.c           | 12 ++++-----
+ drivers/gpu/drm/exynos/exynos_drm_plane.c         |  2 +-
+ drivers/gpu/drm/gma500/framebuffer.c              |  4 +--
+ drivers/gpu/drm/gma500/gem.c                      |  4 +--
+ drivers/gpu/drm/gma500/gma_display.c              |  6 ++---
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_fbdev.c |  4 +--
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_ttm.c       |  8 +++---
+ drivers/gpu/drm/i915/i915_gem_object.h            | 10 ++++----
+ drivers/gpu/drm/i915/intel_display.c              | 24 +++++++++---------
+ drivers/gpu/drm/i915/intel_dp_mst.c               |  2 +-
+ drivers/gpu/drm/i915/intel_fbdev.c                |  4 +--
+ drivers/gpu/drm/imx/ipuv3-crtc.c                  |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c             |  4 +--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c            |  4 +--
+ drivers/gpu/drm/mgag200/mgag200_cursor.c          |  2 +-
+ drivers/gpu/drm/mgag200/mgag200_fb.c              |  4 +--
+ drivers/gpu/drm/mgag200/mgag200_main.c            | 10 ++++----
+ drivers/gpu/drm/msm/adreno/a5xx_gpu.c             | 10 ++++----
+ drivers/gpu/drm/msm/adreno/a5xx_power.c           |  2 +-
+ drivers/gpu/drm/msm/adreno/adreno_gpu.c           |  2 +-
+ drivers/gpu/drm/msm/mdp/mdp4/mdp4_crtc.c          |  6 ++---
+ drivers/gpu/drm/msm/mdp/mdp4/mdp4_kms.c           |  2 +-
+ drivers/gpu/drm/msm/mdp/mdp5/mdp5_crtc.c          |  2 +-
+ drivers/gpu/drm/msm/mdp/mdp5/mdp5_plane.c         |  4 +--
+ drivers/gpu/drm/msm/msm_drv.c                     |  8 +++---
+ drivers/gpu/drm/msm/msm_fb.c                      |  4 +--
+ drivers/gpu/drm/msm/msm_fbdev.c                   |  2 +-
+ drivers/gpu/drm/msm/msm_gem.c                     |  8 +++---
+ drivers/gpu/drm/msm/msm_gem_submit.c              |  4 +--
+ drivers/gpu/drm/msm/msm_gpu.c                     |  4 +--
+ drivers/gpu/drm/msm/msm_ringbuffer.c              |  2 +-
+ drivers/gpu/drm/nouveau/dispnv04/crtc.c           |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_abi16.c           |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_display.c         |  8 +++---
+ drivers/gpu/drm/nouveau/nouveau_fbcon.c           |  2 +-
+ drivers/gpu/drm/nouveau/nouveau_gem.c             | 14 +++++------
+ drivers/gpu/drm/nouveau/nv50_display.c            |  2 +-
+ drivers/gpu/drm/omapdrm/omap_drv.c                |  2 +-
+ drivers/gpu/drm/omapdrm/omap_fb.c                 |  4 +--
+ drivers/gpu/drm/omapdrm/omap_fbdev.c              |  2 +-
+ drivers/gpu/drm/omapdrm/omap_gem.c                |  4 +--
+ drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c         |  2 +-
+ drivers/gpu/drm/qxl/qxl_display.c                 |  4 +--
+ drivers/gpu/drm/qxl/qxl_dumb.c                    |  2 +-
+ drivers/gpu/drm/qxl/qxl_fb.c                      |  6 ++---
+ drivers/gpu/drm/qxl/qxl_gem.c                     |  2 +-
+ drivers/gpu/drm/qxl/qxl_ioctl.c                   |  4 +--
+ drivers/gpu/drm/qxl/qxl_object.c                  |  6 ++---
+ drivers/gpu/drm/radeon/radeon_cs.c                |  2 +-
+ drivers/gpu/drm/radeon/radeon_cursor.c            |  6 ++---
+ drivers/gpu/drm/radeon/radeon_display.c           | 12 ++++-----
+ drivers/gpu/drm/radeon/radeon_fb.c                |  4 +--
+ drivers/gpu/drm/radeon/radeon_gem.c               | 30 +++++++++++------------
+ drivers/gpu/drm/radeon/radeon_object.c            |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c        |  6 ++---
+ drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c     |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c       |  4 +--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c       |  4 +--
+ drivers/gpu/drm/tegra/drm.c                       | 12 ++++-----
+ drivers/gpu/drm/tegra/fb.c                        |  8 +++---
+ drivers/gpu/drm/tegra/gem.c                       | 10 ++++----
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c              |  6 ++---
+ drivers/gpu/drm/udl/udl_fb.c                      |  6 ++---
+ drivers/gpu/drm/udl/udl_gem.c                     |  4 +--
+ drivers/gpu/drm/vc4/vc4_bo.c                      | 12 ++++-----
+ drivers/gpu/drm/vc4/vc4_crtc.c                    |  6 ++---
+ drivers/gpu/drm/vc4/vc4_gem.c                     | 14 +++++------
+ drivers/gpu/drm/vc4/vc4_kms.c                     |  2 +-
+ drivers/gpu/drm/vgem/vgem_drv.c                   |  4 +--
+ drivers/gpu/drm/vgem/vgem_fence.c                 |  2 +-
+ drivers/gpu/drm/virtio/virtgpu_display.c          |  4 +--
+ drivers/gpu/drm/virtio/virtgpu_gem.c              |  4 +--
+ drivers/gpu/drm/virtio/virtgpu_ioctl.c            | 14 +++++------
+ drivers/gpu/drm/vmwgfx/vmwgfx_fb.c                |  2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c             |  4 +--
+ drivers/staging/vboxvideo/vbox_fb.c               |  2 +-
+ drivers/staging/vboxvideo/vbox_main.c             |  8 +++---
+ drivers/staging/vboxvideo/vbox_mode.c             |  2 +-
+ 107 files changed, 319 insertions(+), 319 deletions(-)
+
+-- 
+2.7.4
