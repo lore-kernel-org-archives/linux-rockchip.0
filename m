@@ -1,44 +1,70 @@
-From: "David.Wu" <david.wu@rock-chips.com>
-Subject: Re: [PATCH v3 05/11] net: stmmac: dwmac-rk: Add internal phy support
-Date: Thu, 3 Aug 2017 22:02:53 +0800
-Message-ID: <6cf4697e-7e94-0e14-a059-c80053492da3@rock-chips.com>
-References: <1501654546-17292-1-git-send-email-david.wu@rock-chips.com>
- <1501654888-19514-1-git-send-email-david.wu@rock-chips.com>
- <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
+From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v6] rockchip/rga: v4l2 m2m support
+Date: Thu, 3 Aug 2017 22:25:12 +0800
+Message-ID: <201708032210.34IGlPCJ%fengguang.wu@intel.com>
+References: <1501668050-31618-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>, davem@davemloft.net, heiko@sntech.de, andrew@lunn.ch, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de
-Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, wens@csie.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1501668050-31618-1-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Florian & ChenYu
+Hi Jacob,
 
-在 2017/8/3 1:38, Florian Fainelli 写道:
-> This is incorrect in two ways:
-> 
-> - this is a property of the PHY, so it should be documented as such in
-> Documentation/devicetree/bindings/net/phy.txt so other bindings can
-> re-use it
-> 
-> - if it was specific to your MAC you would expect a vendor prefix to
-> this property, which is not there
-> 
-> An alternative way to implement the external/internal logic selection
-> would be mandate that your Ethernet PHY node have a compatible string
-> like this:
-> 
-> phy@0 {
-> 	compatible = "ethernet-phy-id1234.d400", "ethernet-phy-802.3-c22";
-> };
-> 
-> Then you don't need this phy-is-internal property, because you can
-> locate the PHY node by the phy-handle (see more about that in a reply to
-> patch 10) and you can determine ahead of time whether this PHY is
-> internal or not based on its compatible string.
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on v4.13-rc3 next-20170803]
+[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 
-We may implement a read_bool_property after parsed phy phandle at 
-stmmac_platform.c, which would make MAC driver know it is a internal phy.
+url:    https://github.com/0day-ci/linux/commits/Jacob-Chen/rockchip-rga-v4l2-m2m-support/20170802-235943
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+reproduce:
+        # apt-get install sparse
+        make ARCH=x86_64 allmodconfig
+        make C=1 CF=-D__CHECK_ENDIAN__
+
+
+sparse warnings: (new ones prefixed by >>)
+
+
+vim +/case +159 drivers/media/platform/rockchip-rga/rga.c
+
+   150	
+   151	static int rga_s_ctrl(struct v4l2_ctrl *ctrl)
+   152	{
+   153		struct rga_ctx *ctx = container_of(ctrl->handler, struct rga_ctx,
+   154						   ctrl_handler);
+   155		unsigned long flags;
+   156	
+   157		spin_lock_irqsave(&ctx->rga->ctrl_lock, flags);
+   158		switch (ctrl->id) {
+ > 159		case V4L2_CID_PORTER_DUFF_MODE:
+   160			ctx->op = ctrl->val;
+   161			break;
+   162		case V4L2_CID_HFLIP:
+   163			ctx->hflip = ctrl->val;
+   164			break;
+   165		case V4L2_CID_VFLIP:
+   166			ctx->vflip = ctrl->val;
+   167			break;
+   168		case V4L2_CID_ROTATE:
+   169			ctx->rotate = ctrl->val;
+   170			break;
+   171		case V4L2_CID_BG_COLOR:
+   172			ctx->fill_color = ctrl->val;
+   173			break;
+   174		}
+   175		spin_unlock_irqrestore(&ctx->rga->ctrl_lock, flags);
+   176		return 0;
+   177	}
+   178	
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
