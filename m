@@ -1,69 +1,36 @@
-From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v6] rockchip/rga: v4l2 m2m support
-Date: Thu, 3 Aug 2017 22:25:12 +0800
-Message-ID: <201708032210.34IGlPCJ%fengguang.wu@intel.com>
-References: <1501668050-31618-1-git-send-email-jacob-chen@iotwrt.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH RESEND v3 1/3] SoC: es8328-i2c: Add compatible for ES8323
+Date: Thu, 3 Aug 2017 14:01:16 -0500
+Message-ID: <20170803190116.wo6siwstbkzd4ph7@rob-hp-laptop>
+References: <20170726135526.475-1-romain.perier@collabora.com>
+ <20170726135526.475-10-romain.perier@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1501668050-31618-1-git-send-email-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+In-Reply-To: <20170726135526.475-10-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+To: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+On Wed, Jul 26, 2017 at 03:55:24PM +0200, Romain Perier wrote:
+> This commit adds a compatible string for everest,es8323. This is an
+> audio codec that is compatible with es8328 and can be found for example
+> on the Firefly-RK3288 board.
+> 
+> Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/sound/es8328.txt | 5 ++++-
+>  sound/soc/codecs/es8328-i2c.c                      | 2 ++
+>  2 files changed, 6 insertions(+), 1 deletion(-)
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on v4.13-rc3 next-20170803]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+I acked the previous v3 at the end of the discussion. Please add acks 
+when posting new versions.
 
-url:    https://github.com/0day-ci/linux/commits/Jacob-Chen/rockchip-rga-v4l2-m2m-support/20170802-235943
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-reproduce:
-        # apt-get install sparse
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF=-D__CHECK_ENDIAN__
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-
-sparse warnings: (new ones prefixed by >>)
-
-
-vim +/case +159 drivers/media/platform/rockchip-rga/rga.c
-
-   150	
-   151	static int rga_s_ctrl(struct v4l2_ctrl *ctrl)
-   152	{
-   153		struct rga_ctx *ctx = container_of(ctrl->handler, struct rga_ctx,
-   154						   ctrl_handler);
-   155		unsigned long flags;
-   156	
-   157		spin_lock_irqsave(&ctx->rga->ctrl_lock, flags);
-   158		switch (ctrl->id) {
- > 159		case V4L2_CID_PORTER_DUFF_MODE:
-   160			ctx->op = ctrl->val;
-   161			break;
-   162		case V4L2_CID_HFLIP:
-   163			ctx->hflip = ctrl->val;
-   164			break;
-   165		case V4L2_CID_VFLIP:
-   166			ctx->vflip = ctrl->val;
-   167			break;
-   168		case V4L2_CID_ROTATE:
-   169			ctx->rotate = ctrl->val;
-   170			break;
-   171		case V4L2_CID_BG_COLOR:
-   172			ctx->fill_color = ctrl->val;
-   173			break;
-   174		}
-   175		spin_unlock_irqrestore(&ctx->rga->ctrl_lock, flags);
-   176		return 0;
-   177	}
-   178	
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+Rob
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
