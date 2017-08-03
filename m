@@ -1,49 +1,44 @@
-From: Sandy Huang <sandy.huang@rock-chips.com>
-Subject: Re: [PATCH 2/6] drm/rockchip: vop: fix iommu page fault when resume
-Date: Thu, 3 Aug 2017 21:06:27 +0800
-Message-ID: <5c613e33-f5f2-6b5f-69a6-cc3a7aa93a71@rock-chips.com>
-References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
- <1501494582-6934-1-git-send-email-mark.yao@rock-chips.com>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH v3 05/11] net: stmmac: dwmac-rk: Add internal phy support
+Date: Thu, 3 Aug 2017 22:02:53 +0800
+Message-ID: <6cf4697e-7e94-0e14-a059-c80053492da3@rock-chips.com>
+References: <1501654546-17292-1-git-send-email-david.wu@rock-chips.com>
+ <1501654888-19514-1-git-send-email-david.wu@rock-chips.com>
+ <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501494582-6934-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <6b1ebf64-6903-6d35-b1fc-92ec47334425@gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Florian Fainelli <f.fainelli@gmail.com>, davem@davemloft.net, heiko@sntech.de, andrew@lunn.ch, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de
+Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, wens@csie.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgbWFyaywKCuWcqCAyMDE3LzcvMzEgMTc6NDksIE1hcmsgWWFvIOWGmemBkzoKPiBJb21tdSB3
-b3VsZCBnZXQgcGFnZSBmYXVsdCB3aXRoIGZvbGxvd2luZyBwYXRoOgo+ICAgICB2b3BfZGlzYWJs
-ZToKPiAgICAgICAgMSwgZGlzYWJsZSBhbGwgd2luZG93cyBhbmQgc2V0IHZvcCBjb25maWcgZG9u
-ZQo+ICAgICAgICAyLCB2b3AgZW50ZXIgdG8gc3RhbmR5LCBhbGwgd2luZG93cyBub3Qgd29ya3Ms
-IGJ1dCB0aGVpciByZWdpc3RlcnMKPiAgICAgICAgICAgYXJlIG5vdCBjbGVhbiwgd2hlbiB5b3Ug
-cmVhZCB3aW5kb3cncyBlbmFibGUgYml0LCBtYXkgZm91bmQgdGhlCj4gICAgICAgICAgIHdpbmRv
-dyBpcyBlbmFibGUuCj4gCj4gICAgIHZvcF9lbmFibGU6Cj4gICAgICAgIDEsIG1lbWNweSh2b3At
-PnJlZ3NiYWssIHZvcC0+cmVncywgbGVuKQo+ICAgICAgICAgICBzYXZlIGN1cnJlbnQgdm9wIHJl
-Z2lzdGVycyB0byB2b3AtPnJlZ3NiYWssIHRoZW4geW91IGNhbiBmb3VuZAo+ICAgICAgICAgICB3
-aW5kb3cgaXMgZW5hYmxlIG9uIHJlZ3NiYWsuCj4gICAgICAgIDIsIFZPUF9XSU5fU0VUKHZvcCwg
-d2luLCBnYXRlLCAxKTsKPiAgICAgICAgICAgZm9yY2UgZW5hYmxlIHdpbmRvdyBnYXRlLCBidXQg
-Z2F0ZSBhbmQgZW5hYmxlIGFyZSBvbiBzYW1lCj4gICAgICAgICAgIGhhcmR3YXJlIHJlZ2lzdGVy
-LCB0aGVuIHdpbmRvdyBlbmFibGUgYml0IHJld3JpdGUgdG8gdm9wIGhhcmR3YXJlLgo+ICAgICAg
-ICAzLCB2b3AgcG93ZXIgb24sIGFuZCB2b3AgbWlnaHQgdHJ5IHRvIHNjYW4gZGVzdHJveWVkIGJ1
-ZmZlciwKPiAgICAgICAgICAgdGhlbiBpb21tdSBnZXQgcGFnZSBmYXVsdC4KPiAKPiBNb3ZlIHdp
-bmRvd3MgZGlzYWJsZSBhZnRlciB2b3AgcmVnc2JhayByZXN0b3JlLCB0aGVuIHZvcCByZWdzYmFr
-IG1lY2hhbmlzbQo+IHdvdWxkIGtlZXAgdHJhY2luZyB0aGUgbW9kaWZ5LCBldmVyeXRoaW5nIHdv
-dWxkIGJlIHNhZmUuCj4gCj4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2st
-Y2hpcHMuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV92b3AuYyB8IDMzICsrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tCj4gICAxIGZpbGUgY2hh
-bmdlZCwgMTUgaW5zZXJ0aW9ucygrKSwgMTggZGVsZXRpb25zKC0pCj4gCgpSZXZpZXdlZC1ieTog
-U2FuZHkgaHVhbmcgPHNhbmR5Lmh1YW5nQHJvY2stY2hpcHMuY29tPgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Florian & ChenYu
+
+在 2017/8/3 1:38, Florian Fainelli 写道:
+> This is incorrect in two ways:
+> 
+> - this is a property of the PHY, so it should be documented as such in
+> Documentation/devicetree/bindings/net/phy.txt so other bindings can
+> re-use it
+> 
+> - if it was specific to your MAC you would expect a vendor prefix to
+> this property, which is not there
+> 
+> An alternative way to implement the external/internal logic selection
+> would be mandate that your Ethernet PHY node have a compatible string
+> like this:
+> 
+> phy@0 {
+> 	compatible = "ethernet-phy-id1234.d400", "ethernet-phy-802.3-c22";
+> };
+> 
+> Then you don't need this phy-is-internal property, because you can
+> locate the PHY node by the phy-handle (see more about that in a reply to
+> patch 10) and you can determine ahead of time whether this PHY is
+> internal or not based on its compatible string.
+
+We may implement a read_bool_property after parsed phy phandle at 
+stmmac_platform.c, which would make MAC driver know it is a internal phy.
