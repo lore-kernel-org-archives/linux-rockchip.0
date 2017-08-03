@@ -1,89 +1,104 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v5 0/7] Reconstruct rockchip's PCIe and PCIe-PHY driver
- for per-lane PHY model
-Date: Wed, 2 Aug 2017 17:57:55 -0500
-Message-ID: <20170802225755.GR20308@bhelgaas-glaptop.roam.corp.google.com>
-References: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 054/102] PCI: rockchip: explicitly request exclusive reset
+ control
+Date: Thu, 3 Aug 2017 08:31:55 +0800
+Message-ID: <2e1c1b5c-6406-64f0-c5e9-6e7ad340d357@rock-chips.com>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+ <20170719152646.25903-55-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1500458118-139042-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20170719152646.25903-55-p.zabel@pengutronix.de>
 Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 19, 2017 at 05:55:11PM +0800, Shawn Lin wrote:
-> 
-> This patchset is trying to reconstruct PCIe and PCIe-PHY driver
-> for rockchip platform in order to support per-lane PHY mode. And
-> we could idle the inactive lane(s) finally.
-> 
-> We deprecate the legacy PHY mode but the code could still
-> support it in order not to break backware compatibility of DTB. And I
-> organize the patches carefully so that we don't introduce git-bisect
-> issue.
-> 
-> Patchset was reviewed by Brian and fully tested by Jeffy. Rob acked
-> patch 6 & 7. Kishon acked patch 1, 2 and 4, and will ack patch 3 once
-> this patch 3 of v5 looks good.
-> 
-> Patch 5 for DTS changes for Rockchip part still need ack from Heiko, and
-> it would be fine for Heiko to pick it up after pcie and pcie-phy changes
-> got merged.
-> 
-> It would be fine for Bjorn to pick all these patches up to narrow down
-> the timing gap for testing linux-next. :)
-> 
-> 
-> Changes in v5:
-> - don't create more number of phys if it's legacy PHY model
-> 
-> Changes in v4:
-> - use err variable to check return value of
->   rockchip_pcie_get_phys
-> - add Brian's tag
-> - move rockchip_pcie_get_phys to where it stands in
->   patch 1.
-> - print PHY index in err output log
-> - return u8 for rockchip_pcie_lane_map
-> 
-> Changes in v3:
-> - kill rockchip_pcie_manipulate_phys and related stuff
-> - use phys array
-> - improve the commit msg
-> - remove unnecessary forward declaration
-> - keep mutex inside struct rockchip_pcie_phy
-> - fix wrong check of args number
-> - move de-idle lanes after deasserting the reset
-> - use cached lanes_map to avoid powering off inactive
->   lanes twice
-> - rename the commit tile
-> 
-> Changes in v2:
-> - deprecate legacy PHY model
-> - improve rockchip_pcie_phy_of_xlate
-> - fix wrong calculation of pwr_cnt and add new init_cnt
-> - add internal locking
-> - introduce per-lane data to simply the code
-> 
-> Shawn Lin (7):
->   PCI: rockchip: split out rockchip_pcie_get_phys
->   PCI: rockchip: introduce per-lanes PHYs support
->   phy: rockcip-pcie: reconstruct driver to support per-lane PHYs
->   PCI: rockchip: idle the inactive PHY(s)
->   arm64: dts: rockchip: convert PCIe to use per-lane PHYs for rk3339
->   dt-bindings: PCI: rockchip: convert to use per-lane PHY model
->   dt-bindings: phy: convert to use per-lane Rockchip PCIe PHY
-> 
->  .../devicetree/bindings/pci/rockchip-pcie.txt      |  25 +++-
->  .../devicetree/bindings/phy/rockchip-pcie-phy.txt  |   7 +-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   8 +-
->  drivers/pci/host/pcie-rockchip.c                   | 122 +++++++++++++++----
->  drivers/phy/rockchip/phy-rockchip-pcie.c           | 132 ++++++++++++++++++---
->  5 files changed, 253 insertions(+), 41 deletions(-)
+Hi,
 
-Applied with Kishon's ack on 3/7 to pci/host-rockchip for v4.14.
+On 2017/7/19 23:25, Philipp Zabel wrote:
+> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+> reset lines") started to transition the reset control request API calls
+> to explicitly state whether the driver needs exclusive or shared reset
+> control behavior. Convert all drivers requesting exclusive resets to the
+> explicit API call so the temporary transition helpers can be removed.
+> 
+> No functional changes.
+> 
+> Cc: Shawn Lin <shawn.lin@rock-chips.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-pci@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-Thanks for all your work on these, Shawn!
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+> ---
+>   drivers/pci/host/pcie-rockchip.c | 15 ++++++++-------
+>   1 file changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 7bb9870f6d8ce..e50d6f5a81f4b 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -903,49 +903,50 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>   	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
+>   		rockchip->link_gen = 2;
+>   
+> -	rockchip->core_rst = devm_reset_control_get(dev, "core");
+> +	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
+>   	if (IS_ERR(rockchip->core_rst)) {
+>   		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing core reset property in node\n");
+>   		return PTR_ERR(rockchip->core_rst);
+>   	}
+>   
+> -	rockchip->mgmt_rst = devm_reset_control_get(dev, "mgmt");
+> +	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
+>   	if (IS_ERR(rockchip->mgmt_rst)) {
+>   		if (PTR_ERR(rockchip->mgmt_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing mgmt reset property in node\n");
+>   		return PTR_ERR(rockchip->mgmt_rst);
+>   	}
+>   
+> -	rockchip->mgmt_sticky_rst = devm_reset_control_get(dev, "mgmt-sticky");
+> +	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
+> +								     "mgmt-sticky");
+>   	if (IS_ERR(rockchip->mgmt_sticky_rst)) {
+>   		if (PTR_ERR(rockchip->mgmt_sticky_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing mgmt-sticky reset property in node\n");
+>   		return PTR_ERR(rockchip->mgmt_sticky_rst);
+>   	}
+>   
+> -	rockchip->pipe_rst = devm_reset_control_get(dev, "pipe");
+> +	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
+>   	if (IS_ERR(rockchip->pipe_rst)) {
+>   		if (PTR_ERR(rockchip->pipe_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing pipe reset property in node\n");
+>   		return PTR_ERR(rockchip->pipe_rst);
+>   	}
+>   
+> -	rockchip->pm_rst = devm_reset_control_get(dev, "pm");
+> +	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
+>   	if (IS_ERR(rockchip->pm_rst)) {
+>   		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing pm reset property in node\n");
+>   		return PTR_ERR(rockchip->pm_rst);
+>   	}
+>   
+> -	rockchip->pclk_rst = devm_reset_control_get(dev, "pclk");
+> +	rockchip->pclk_rst = devm_reset_control_get_exclusive(dev, "pclk");
+>   	if (IS_ERR(rockchip->pclk_rst)) {
+>   		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing pclk reset property in node\n");
+>   		return PTR_ERR(rockchip->pclk_rst);
+>   	}
+>   
+> -	rockchip->aclk_rst = devm_reset_control_get(dev, "aclk");
+> +	rockchip->aclk_rst = devm_reset_control_get_exclusive(dev, "aclk");
+>   	if (IS_ERR(rockchip->aclk_rst)) {
+>   		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
+>   			dev_err(dev, "missing aclk reset property in node\n");
+> 
