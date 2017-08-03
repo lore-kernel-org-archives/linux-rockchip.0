@@ -1,125 +1,124 @@
-From: Cihangir Akturk <cakturk@gmail.com>
-Subject: [PATCH 21/29] drm/rockchip: switch to drm_*{get,put} helpers
-Date: Thu,  3 Aug 2017 14:58:36 +0300
-Message-ID: <1501761585-11757-22-git-send-email-cakturk@gmail.com>
-References: <1501761585-11757-1-git-send-email-cakturk@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1501761585-11757-1-git-send-email-cakturk@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Cihangir Akturk <cakturk@gmail.com>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+From: Joseph Chen <chenjh@rock-chips.com>
+Subject: [PATCH v8 00/12] rk808: Add RK805 support
+Date: Thu,  3 Aug 2017 20:20:29 +0800
+Message-ID: <1501762841-20262-1-git-send-email-chenjh@rock-chips.com>
+Return-path: <linux-input-owner@vger.kernel.org>
+Sender: linux-input-owner@vger.kernel.org
+To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, wdc@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org, Joseph Chen <chenjh@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-drm_*_reference() and drm_*_unreference() functions are just
-compatibility alias for drm_*_get() and drm_*_put() adn should not be
-used by new code. So convert all users of compatibility functions to use
-the new APIs.
+change in v8:
+PATCH V8 1/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 2/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 3/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 4/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 5/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 6/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 7/12: add: Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+PATCH V8 8/12: (1) Kconfig: update coding style
+	       (2) pinctrl-rk805.c: using #include <linux/gpio/driver.h>
+	       (3) pinctrl-rk805.c: inline data and open code it; remove FUNCTION_GROUP and PINGROUP macros definition 
+PATCH V8 9/12: NO change in V8
+PATCH V8 10/12: apply tag: Acked-by: Linus Walleij <linus.walleij@linaro.org>	
+PATCH V8 11/12: NO change in V8
+PATCH V8 12/12: (1) using semicolon after "output-high"
+		(2) apply tag: Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
-Signed-off-by: Cihangir Akturk <cakturk@gmail.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c    | 6 +++---
- drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c   | 4 ++--
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c   | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
+change in v7:
+PATCH V7 1/12: NO change in V7
+PATCH V7 2/12: NO change in V7
+PATCH V7 3/12: fix missing: Acked-by: Mark Brown <broonie@kernel.org>
+PATCH V7 4/12: NO change in V7
+PATCH V7 5/12: NO change in V7
+PATCH V7 6/12: NO change in V7
+PATCH V7 7/12: fix missing: Acked-by: Rob Herring <robh@kernel.org>
+PATCH V7 8/12: abandon drivers/gpio/gpio-rk805.c and add drivers/pinctrl/pinctrl-rk805.c
+PATCH V7 9/12: reset author and signed off with my english name
+	       reset MODULE_AUTHOR() with my english name
+	       replace devm_request_threaded_irq() with devm_request_any_context_irq()
+PATCH V7 10/12: replace 'gpio-rk805' with 'pinctrl-rk805' in struct mfd_cell rk805s[]
+PATCH V7 11/12: NO change in V7
+PATCH V7 12/12: dt-bindings: abandon gpio-rk805.txt and add pinctrl-rk805.txt
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index 81f9548..a933b58 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -48,7 +48,7 @@ static void rockchip_drm_fb_destroy(struct drm_framebuffer *fb)
- 	int i;
- 
- 	for (i = 0; i < ROCKCHIP_MAX_FB_BUFFER; i++)
--		drm_gem_object_unreference_unlocked(rockchip_fb->obj[i]);
-+		drm_gem_object_put_unlocked(rockchip_fb->obj[i]);
- 
- 	drm_framebuffer_cleanup(fb);
- 	kfree(rockchip_fb);
-@@ -144,7 +144,7 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
- 			width * drm_format_plane_cpp(mode_cmd->pixel_format, i);
- 
- 		if (obj->size < min_size) {
--			drm_gem_object_unreference_unlocked(obj);
-+			drm_gem_object_put_unlocked(obj);
- 			ret = -EINVAL;
- 			goto err_gem_object_unreference;
- 		}
-@@ -161,7 +161,7 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
- 
- err_gem_object_unreference:
- 	for (i--; i >= 0; i--)
--		drm_gem_object_unreference_unlocked(objs[i]);
-+		drm_gem_object_put_unlocked(objs[i]);
- 	return ERR_PTR(ret);
- }
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-index ce946b9..724579e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-@@ -173,7 +173,7 @@ void rockchip_drm_fbdev_fini(struct drm_device *dev)
- 	drm_fb_helper_unregister_fbi(helper);
- 
- 	if (helper->fb)
--		drm_framebuffer_unreference(helper->fb);
-+		drm_framebuffer_put(helper->fb);
- 
- 	drm_fb_helper_fini(helper);
- }
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index b74ac71..9f880d0 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -383,7 +383,7 @@ rockchip_gem_create_with_handle(struct drm_file *file_priv,
- 		goto err_handle_create;
- 
- 	/* drop reference from allocate - handle holds it now. */
--	drm_gem_object_unreference_unlocked(obj);
-+	drm_gem_object_put_unlocked(obj);
- 
- 	return rk_obj;
- 
-@@ -414,7 +414,7 @@ int rockchip_gem_dumb_map_offset(struct drm_file *file_priv,
- 	DRM_DEBUG_KMS("offset = 0x%llx\n", *offset);
- 
- out:
--	drm_gem_object_unreference_unlocked(obj);
-+	drm_gem_object_put_unlocked(obj);
- 
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 5d45033..12e17e6 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1065,7 +1065,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 		if (old_plane_state->fb == plane->state->fb)
- 			continue;
- 
--		drm_framebuffer_reference(old_plane_state->fb);
-+		drm_framebuffer_get(old_plane_state->fb);
- 		drm_flip_work_queue(&vop->fb_unref_work, old_plane_state->fb);
- 		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
- 		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
-@@ -1189,7 +1189,7 @@ static void vop_fb_unref_worker(struct drm_flip_work *work, void *val)
- 	struct drm_framebuffer *fb = val;
- 
- 	drm_crtc_vblank_put(&vop->crtc);
--	drm_framebuffer_unreference(fb);
-+	drm_framebuffer_put(fb);
- }
- 
- static void vop_handle_vblank(struct vop *vop)
+change in v6:
+patch1~7 no changed in V6.
+add patch 8~12 for gpio and powerkey func for rk805.
+
+change in v5:
+PATCH V5 1/7: NO change in V5
+PATCH V5 2/7: fix the rk805 reg addr in numerical order
+PATCH V5 3/7: NO change in V5
+PATCH V5 4/7: fix up the rk805_device_shutdown func
+PATCH V5 5/7: NO change in V5
+PATCH V5 6/7: NO change in V5
+PATCH V5 7/7: fix up the description of the rk805
+
+change in v4:
+PATCH V4 1/7: NO change in V4
+PATCH V4 2/7: rename the commit message
+PATCH V4 3/7: NO change in V4
+PATCH V4 4/7: Split this patch up into subsystems patch 5/7 6/7
+PATCH V4 5/7: new added
+PATCH V4 6/7: new added
+PATCH V4 7/7: NO change in V4
+
+
+change in V3:
+PATCH V3 1/5: NO change in V3
+PATCH V3 2/5: add rk805 RTC INT MASK define
+PATCH V3 3/5: RK805 set suspend enable and disable is different from rk808
+              use rk805_regs_ops and rk805_switch_ops
+PATCH V3 4/5: fix up the shutdown func
+              use pm_shutdown_prepare_fn to prepare shutdown
+              and pm_pwroff_fn pull down gpio to shut down rk805
+              it will update in the future(after rk808 support gpio func)
+PATCH V3 5/5: NO change in V3
+
+change in V2:
+PATCH V2 1/5: NO change in V2
+PATCH V2 2/5: add rk805 BUCK ILMAX define
+PATCH V2 3/5: NO change in V2
+PATCH V2 4/5: setting RK805 BUCK ILMAX in pre init
+PATCH V2 5/5: Add RK805 device tree bindings document
+
+Elaine Zhang (7):
+  mfd: rk808: fix up the chip id get failed
+  mfd: rk808: add rk805 regs addr and ID
+  regulator: rk808: Add regulator driver for RK805
+  mfd: rk808: Add RK805 support
+  clk: Kconfig: Name RK805 in Kconfig for COMMON_CLK_RK808
+  rtc: Kconfig: Name RK805 in Kconfig for RTC_DRV_RK808
+  mfd: dt-bindings: Add RK805 device tree bindings document
+
+Joseph Chen (5):
+  pinctrl: Add pinctrl driver for the RK805 PMIC
+  Input: Add power key driver for Rockchip RK805 PMIC
+  mfd: rk808: Add RK805 pinctrl support
+  mfd: rk808: Add RK805 power key support
+  pinctrl: dt-bindings: add bindings for Rockchip RK805 PMIC
+
+ Documentation/devicetree/bindings/mfd/rk808.txt    |  22 +-
+ .../devicetree/bindings/pinctrl/pinctrl-rk805.txt  |  63 +++
+ drivers/clk/Kconfig                                |   4 +-
+ drivers/input/misc/Kconfig                         |   6 +
+ drivers/input/misc/Makefile                        |   1 +
+ drivers/input/misc/rk805-pwrkey.c                  | 111 +++++
+ drivers/mfd/Kconfig                                |   4 +-
+ drivers/mfd/rk808.c                                | 147 +++++-
+ drivers/pinctrl/Kconfig                            |   9 +
+ drivers/pinctrl/Makefile                           |   1 +
+ drivers/pinctrl/pinctrl-rk805.c                    | 493 +++++++++++++++++++++
+ drivers/regulator/Kconfig                          |   4 +-
+ drivers/regulator/rk808-regulator.c                | 130 ++++++
+ drivers/rtc/Kconfig                                |   4 +-
+ include/linux/mfd/rk808.h                          | 121 +++++
+ 15 files changed, 1105 insertions(+), 15 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
+ create mode 100644 drivers/input/misc/rk805-pwrkey.c
+ create mode 100644 drivers/pinctrl/pinctrl-rk805.c
+
 -- 
-2.7.4
+1.9.1
+
+
