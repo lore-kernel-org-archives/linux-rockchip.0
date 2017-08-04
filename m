@@ -1,61 +1,21 @@
-From: Sandy Huang <sandy.huang@rock-chips.com>
-Subject: Re: [PATCH v1.1] drm/rockchip: fix race with kms hotplug and fbdev
-Date: Fri, 4 Aug 2017 11:20:25 +0800
-Message-ID: <3084b854-1b82-5a72-ad51-f7b12e5a57a0@rock-chips.com>
-References: <1501494601-7140-1-git-send-email-mark.yao@rock-chips.com>
- <1501575103-20136-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1501575103-20136-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Finley Xiao <finley.xiao@rock-chips.com>
+Subject: [PATCH 0/2] arm64: dts: rockchip: add cpu operating points and efuse node for RK3328 SoC
+Date: Fri,  4 Aug 2017 11:33:36 +0800
+Message-ID: <1501817618-65504-1-git-send-email-finley.xiao@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, jay.xu@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, cl@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCuWcqCAyMDE3LzgvMSAxNjoxMSwgTWFyayBZYW8g5YaZ6YGTOgo+IEFjY29yZGlu
-ZyB0byB0aGUga2VybmVsZG9jWzBdLCBzaG91bGQgZG8gZmJkZXYgc2V0dXAgYmVmb3JlIGNhbGxp
-bmcKPiBkcm1fa21zX2hlbHBlcl9wb2xsX2luaXQoKSwgb3RoZXJ3aXNlLCBLbXMgaG90cGx1ZyBl
-dmVudCBtYXkgcmFjZQo+IGludG8gZmJkZXYgaGVscGVyIGluaXRpYWwsIGFuZCBmYl9oZWxwZXIt
-PmRldiBtYXkgYmUgTlVMTCBwb2ludGVyLAo+IHRoYXQgd291bGQgY2F1c2UgdGhlIGJ1ZzoKPiBb
-ICAgIDAuNzM1NDExXSBbMDAwMDAyMDBdICpwZ2Q9MDAwMDAwMDBmNmZmZTAwMywgKnB1ZD0wMDAw
-MDAwMGY2ZmZlMDAzLCAqcG1kPTAwMDAwMDAwMDAwMDAwMDAKPiBbICAgIDAuNzM2MTU2XSBJbnRl
-cm5hbCBlcnJvcjogT29wczogOTYwMDAwMDUgWyMxXSBQUkVFTVBUIFNNUAo+IFsgICAgMC43MzY2
-NDhdIE1vZHVsZXMgbGlua2VkIGluOgo+IFsgICAgMC43MzY5MzBdIENQVTogMiBQSUQ6IDIwIENv
-bW06IGt3b3JrZXIvMjowIE5vdCB0YWludGVkIDQuNC40MSAjMjAKPiBbICAgIDAuNzM3NDgwXSBI
-YXJkd2FyZSBuYW1lOiBSb2NrY2hpcCBSSzMzOTkgQm9hcmQgcmV2MiAoQk9YKSAoRFQpCj4gWyAg
-ICAwLjczODAyMF0gV29ya3F1ZXVlOiBldmVudHMgY2RuX2RwX3BkX2V2ZW50X3dvcmsKPiBbICAg
-IDAuNzM4NDQ3XSB0YXNrOiBmZmZmZmZjMGYyMWYzMTAwIHRpOiBmZmZmZmZjMGYyMjE4MDAwIHRh
-c2sudGk6IGZmZmZmZmMwZjIyMTgwMDAKPiBbICAgIDAuNzM5MTA5XSBQQyBpcyBhdCBtdXRleF9s
-b2NrKzB4MTQvMHg0NAo+IFsgICAgMC43Mzk0NjldIExSIGlzIGF0IGRybV9mYl9oZWxwZXJfaG90
-cGx1Z19ldmVudCsweDMwLzB4MTE0Cj4gWyAgICAwLjc1NjI1M10gWzxmZmZmZmY4MDA4YTM0NGY0
-Pl0gbXV0ZXhfbG9jaysweDE0LzB4NDQKPiBbICAgIDAuNzU2MjYwXSBbPGZmZmZmZjgwMDg0NDU3
-MDg+XSBkcm1fZmJfaGVscGVyX2hvdHBsdWdfZXZlbnQrMHgzMC8weDExNAo+IFsgICAgMC43NTYy
-NzFdIFs8ZmZmZmZmODAwODQ3M2M4ND5dIHJvY2tjaGlwX2RybV9vdXRwdXRfcG9sbF9jaGFuZ2Vk
-KzB4MTgvMHgyMAo+IFsgICAgMC43NTYyODBdIFs8ZmZmZmZmODAwODQzOWZjYz5dIGRybV9rbXNf
-aGVscGVyX2hvdHBsdWdfZXZlbnQrMHgyOC8weDM0Cj4gWyAgICAwLjc1NjI4Nl0gWzxmZmZmZmY4
-MDA4NDZjNDQ0Pl0gY2RuX2RwX3BkX2V2ZW50X3dvcmsrMHgzOTQvMHgzYzQKPiBbICAgIDAuNzU2
-Mjk1XSBbPGZmZmZmZjgwMDgwYjJiMzg+XSBwcm9jZXNzX29uZV93b3JrKzB4MjE4LzB4M2UwCj4g
-WyAgICAwLjc1NjMwMl0gWzxmZmZmZmY4MDA4MGIzNTM4Pl0gd29ya2VyX3RocmVhZCsweDJlOC8w
-eDQwNAo+IFsgICAgMC43NTYzMDhdIFs8ZmZmZmZmODAwODBiN2U3MD5dIGt0aHJlYWQrMHhlOC8w
-eGYwCj4gWyAgICAwLjc1NjMxNl0gWzxmZmZmZmY4MDA4MDgyNjkwPl0gcmV0X2Zyb21fZm9yaysw
-eDEwLzB4NDAKPiAKPiBbMF06IGh0dHBzOi8vMDEub3JnL2xpbnV4Z3JhcGhpY3MvZ2Z4LWRvY3Mv
-ZHJtL2dwdS9kcm0ta21zLWhlbHBlcnMuaHRtbAo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFv
-IDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiBDaGFuZ2VzIGluIHYxLjE6Cj4gLSBB
-Y2NvcmRpbmcgdG8gdGhlIGtlcm5lbGRvYywgZml4IHRoZSByYWNlIGJ1ZyBpbiBnZW5lcmljIHdh
-eS4KPiAKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAx
-MyArKysrKystLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCA3IGRl
-bGV0aW9ucygtKQo+IApSZXZpZXdlZC1ieTogU2FuZHkgaHVhbmcgPHNhbmR5Lmh1YW5nQHJvY2st
-Y2hpcHMuY29tPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+Add cpu operating points and an efuse node in the device tree for rk3228 SoC
+
+Finley Xiao (2):
+  arm64: dts: rockchip: Add cpu operating points for RK3328 SoC
+  arm64: dts: rockchip: Add efuse device node for RK3328 SoC
+
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 66 ++++++++++++++++++++++++++++++++
+ 1 file changed, 66 insertions(+)
+
+-- 
+2.7.4
