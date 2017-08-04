@@ -1,42 +1,45 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH] cpufreq: dt: Add rk3328 compatible to use generic
- cpufreq driver
-Date: Fri, 4 Aug 2017 10:40:41 +0530
-Message-ID: <20170804051041.GB28857@vireshk-i7>
-References: <1501811551-39168-1-git-send-email-finley.xiao@rock-chips.com>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH RESEND v3 1/3] SoC: es8328-i2c: Add compatible for ES8323
+Date: Fri, 4 Aug 2017 08:44:32 +0200
+Message-ID: <0febe9b7-724a-78fa-6ced-ec0874c5488f@collabora.com>
+References: <20170726135526.475-1-romain.perier@collabora.com>
+ <20170726135526.475-10-romain.perier@collabora.com>
+ <20170803190116.wo6siwstbkzd4ph7@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1501811551-39168-1-git-send-email-finley.xiao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Finley Xiao <finley.xiao@rock-chips.com>
-Cc: heiko@sntech.de, rjw@rjwysocki.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, jay.xu@rock-chips.com, huangtao@rock-chips.coms, tony.xie@rock-chips.com, cl@rock-chips.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170803190116.wo6siwstbkzd4ph7@rob-hp-laptop>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04-08-17, 09:52, Finley Xiao wrote:
-> This patch adds the rk3328 compatible string for supporting
-> the generic cpufreq driver on RK3328.
-> 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> ---
->  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
-> index 096aea7..13c0c47 100644
-> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
-> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-> @@ -76,6 +76,7 @@ static const struct of_device_id machines[] __initconst = {
->  	{ .compatible = "rockchip,rk3188", },
->  	{ .compatible = "rockchip,rk3228", },
->  	{ .compatible = "rockchip,rk3288", },
-> +	{ .compatible = "rockchip,rk3328", },
->  	{ .compatible = "rockchip,rk3366", },
->  	{ .compatible = "rockchip,rk3368", },
->  	{ .compatible = "rockchip,rk3399", },
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
--- 
-viresh
+Le 03/08/2017 à 21:01, Rob Herring a écrit :
+> On Wed, Jul 26, 2017 at 03:55:24PM +0200, Romain Perier wrote:
+>> This commit adds a compatible string for everest,es8323. This is an
+>> audio codec that is compatible with es8328 and can be found for example
+>> on the Firefly-RK3288 board.
+>>
+>> Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> ---
+>>  Documentation/devicetree/bindings/sound/es8328.txt | 5 ++++-
+>>  sound/soc/codecs/es8328-i2c.c                      | 2 ++
+>>  2 files changed, 6 insertions(+), 1 deletion(-)
+> I acked the previous v3 at the end of the discussion. Please add acks 
+> when posting new versions.
+>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>
+> Rob
+
+My bad! Thanks
+
+Romain
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
