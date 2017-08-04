@@ -1,45 +1,58 @@
-From: Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 5/5] arm64: dts: rockchip: Enable tsadc module on RK3328 eavluation board
-Date: Fri,  4 Aug 2017 16:09:40 +0800
-Message-ID: <1501834180-1830-1-git-send-email-rocky.hao@rock-chips.com>
-References: <1501833976-1100-1-git-send-email-rocky.hao@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1501833976-1100-1-git-send-email-rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip dts32 fixes for 4.13
+Date: Fri, 04 Aug 2017 11:16:29 +0200
+Message-ID: <3943171.Z7m20BX0pe@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-enable tsadc module on RK3328 eavluation board
+Hi Arnd, Kevin, Olof,
 
-Signed-off-by: Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-Change in v2:
-- remove gerrit Change-Id
+please find below a fixup for 32bit devicetree parts for 4.13.
+As the tag describes it is meant to stop proliferation of the
+wrong example through copy-pastes.
 
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+So please pull
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 8c61d91bf89b..e7db0dc97ce0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -52,6 +52,10 @@
- 	};
- };
- 
-+&tsadc {
-+	status = "okay";
-+};
-+
- &uart2 {
- 	status = "okay";
- };
--- 
-1.9.1
+Thanks
+Heiko
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+
+  Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.13-rockchip-dts32fixes-1
+
+for you to fetch changes up to ca12437303f35b0a5b97c856d88886ce9df6a0d7:
+
+  ARM: dts: rockchip: fix mali gpu node on rk3288 (2017-07-16 17:04:50 +0200)
+
+----------------------------------------------------------------
+Fix for the recently added mali dt support. The example
+showed a wrong value, so fix it before it gets copy-pasted
+to much.
+
+----------------------------------------------------------------
+Heiko Stuebner (2):
+      dt-bindings: gpu: drop wrong compatible from midgard binding example
+      ARM: dts: rockchip: fix mali gpu node on rk3288
+
+ Documentation/devicetree/bindings/gpu/arm,mali-midgard.txt | 2 +-
+ arch/arm/boot/dts/rk3288.dtsi                              | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
