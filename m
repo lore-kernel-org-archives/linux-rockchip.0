@@ -1,53 +1,35 @@
-From: Zain Wang <wzz@rock-chips.com>
-Subject: Re: Some ideas about tcpm driver
-Date: Fri, 4 Aug 2017 18:25:59 +0800
-Message-ID: <e42944b0-aeb7-2eff-ba1e-957bb73e02dc@rock-chips.com>
-References: <c01f3195-ed9f-38c8-63e3-e59138fc9f80@rock-chips.com>
- <CABXOdTf1661zJDnQf1ddqTWYozMMH=vAHbQUVM5LxKZ=vX5Qgg@mail.gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] Rockchip dts32 fixes for 4.13
+Date: Fri, 4 Aug 2017 12:49:29 +0200
+Message-ID: <CAK8P3a1OTiCsdzS3v_PYtjnGPdyGNS8gkMqf+yJ8nM-TBat6_g@mail.gmail.com>
+References: <3943171.Z7m20BX0pe@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABXOdTf1661zJDnQf1ddqTWYozMMH=vAHbQUVM5LxKZ=vX5Qgg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Guenter Roeck <groeck@google.com>
-Cc: Guenter Roeck <groeck@chromium.org>, Yueyao Zhu <yueyao@google.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <3943171.Z7m20BX0pe@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Fri, Aug 4, 2017 at 11:16 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Hi Arnd, Kevin, Olof,
+>
+> please find below a fixup for 32bit devicetree parts for 4.13.
+> As the tag describes it is meant to stop proliferation of the
+> wrong example through copy-pastes.
+>
+> So please pull
 
+Pulled into fixes, thanks!
 
-在 2017/8/3 21:02, Guenter Roeck 写道:
-> On Thu, Aug 3, 2017 at 12:28 AM, Zain Wang <wzz@rock-chips.com> wrote:
->> Hi all,
->>
->> In recent days, I tested the fusb302 driver with tcpm. (RK3399 evb board)
->> But I found an issues:
->>      There is not a regulator for type-c vbus power-supply in my board.
->>      The vbus is just controlled by a gpio-pin, and unable to support other
->> voltage except 5V.
-> gpio-regulator does not work ?
-Thanks for you idea， it works well with regulator-gpio.
-
-Zain
->
->>      But now, I can't use fusb302 driver without workaround fix.
->>      Could you fix it in next version? @Yueyao
->>
->> The altmode looks not complete. I can't enter DP Alt Mode now.
-> Yes, I know. Patches welcome.
->
->> And we'd like to used extcon function (used in Chrome) to link usb, dp and
->> type-c together.
-> Plan is to use the extcon driver (from cros-ec) to register with the
-> type-c infrastructure. I have not thought about how to tie low level
-> drivers (fusb/tcpm) with extcon. Ideas welcome.
->
-> Guenter
->
->> How do you think about it? @Guenter
->>
->> Thanks
->> Zain
->>
->
->
+        Arnd
