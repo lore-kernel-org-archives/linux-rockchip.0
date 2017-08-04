@@ -1,35 +1,53 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL] Rockchip dts32 fixes for 4.13
-Date: Fri, 4 Aug 2017 12:49:29 +0200
-Message-ID: <CAK8P3a1OTiCsdzS3v_PYtjnGPdyGNS8gkMqf+yJ8nM-TBat6_g@mail.gmail.com>
-References: <3943171.Z7m20BX0pe@phil>
+From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [v5,22/46] pwm: rockchip: avoid glitches on already running PWMs
+Date: Fri, 4 Aug 2017 20:45:04 +0800
+Message-ID: <a5efa7d7-ceb5-e6b0-b2d1-2d79cd20265f@rock-chips.com>
+References: <1459368249-13241-23-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3943171.Z7m20BX0pe@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1459368249-13241-23-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: =?UTF-8?B?J+m7hOa2myc=?= <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?B?5byg552b?= <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?6K645YmR576k?= <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Aug 4, 2017 at 11:16 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Hi Arnd, Kevin, Olof,
->
-> please find below a fixup for 32bit devicetree parts for 4.13.
-> As the tag describes it is meant to stop proliferation of the
-> wrong example through copy-pastes.
->
-> So please pull
-
-Pulled into fixes, thanks!
-
-        Arnd
+SGkgQm9yaXMgJiBIZWlrbywKCuWcqCAyMDE2LzMvMzEgNDowMywgQm9yaXMgQlJFWklMTE9OIOWG
+memBkzoKPiArCS8qIEtlZXAgdGhlIFBXTSBjbGsgZW5hYmxlZCBpZiB0aGUgUFdNIGFwcGVhcnMg
+dG8gYmUgdXAgYW5kIHJ1bm5pbmcuICovCj4gKwlwd21fZ2V0X3N0YXRlKHBjLT5jaGlwLnB3bXMs
+ICZwc3RhdGUpOwo+ICsJaWYgKCFwc3RhdGUuZW5hYmxlZCkKPiArCQljbGtfZGlzYWJsZShwYy0+
+Y2xrKTsKCldlIGZvdW5kIGEgaXNzdWUgcmVjZW50bHksIGlmIHRoZSBwd20wIGlzIG5vdCBlbmFi
+bGVkIGF0IHVib290IGFuZCBwd20yIAppcyBlbmFibGVkIGF0IHVib290LCB0aGUgUFdNIGNsb2Nr
+IHdpbGwgYmUgZGlzYWJsZWQgYXQgcHdtMCdzIHByb2JlLiBJdCAKaXMgdHJ1ZSB0byBjbG9zZSB0
+aGUgcHdtIGNsb2NrLCBhbmQgdGhlIHB3bTIgY2FuJ3Qgd29yayBkdXJpbmcgYSB3aGlsZSwgCnVu
+dGlsIHRoZSBwd20yIHByb2JlLCBiZWNhdXNlIHRoZSBwd20wIGFuZCBwd20yIGFyZSB0aGUgc2Ft
+ZSBjbG9jayBmb3IgCnRoZWlyIHdvcmsuIEluIGZhY3QsIHRoZSBwd20wIGNhbiBub3Qga25vdyB0
+aGUgcHdtMidzIHN0YXR1cy4KClNvIHdlIG5lZWQgdG8gZ2V0IGFsbCB0aGUgUFdNcyBzdGF0ZSBp
+biBhIHB1YmxpYyBwbGFjZSB3aGVyZSBpdCdzIGVhcmx5IAp0aGFuIHRoZSBQV00gcHJvYmUsIGlm
+IHRoYXQncyB0aGUgd2F5IGl0IGlzLiBUaGVuIGtlZXAgdGhlIFBXTSBjbGsgCmVuYWJsZWQgaWYg
+dGhlaXMgaXMgb25lIFBXTSBhcHBlYXJzIHRvIGJlIHVwIGFuZCBydW5uaW5nLiBUaGUgcGxhY2Ug
+Cm1heWJlIGluIHRoZSBjbG9jayBjb3JlIGluaXQsIGxpa2UgYWRkaW5nIHB3bSBjbG9jayBhcyBj
+cml0aWFsIG9uZS4KCkFub3RoZXIgd2F5IGlzIHRoYXQgd2UgZG9uJ3QgZW5hYmxlIHB3bSBjbG9j
+ayBmaXJzdGx5IGF0IFBXTSBwcm9iZSwgCmJlY2F1c2Ugd2hldGhlciBvciBub3QgdGhlIFBXTSBz
+dGF0ZSBoYXMgYmVlbiBlbmFibGVkIGluIHRoZSBVYm9vdCwgbGlrZSAKb3RoZXIgbW9kdWxlcywg
+b3VyIGNoaXAgZGVmYXVsdCBQV00gY2xvY2sgcmVnaXN0ZXJzIGFyZSBlbmFibGVkIGF0IHRoZSAK
+YmVnaW5uaW5nLCByZWFkIHRoZSBQV00gcmVnaXN0ZXJzIGRpcmVjdGx5IHRvIGtub3cgdGhlIFBX
+TSBzdGF0ZS4gVGhlbiAKaWYgdGhlIFBXTSBzdGF0ZSBpcyBlbmFibGVkLCBjYWxsIHRoZSBlbmFi
+bGVfY2xrKHBjLT5jbGspIHRvIGFkZCB0aGUgCmNsb2NrIGNvdW50PTEuIElmIHRoZSBQV00gc3Rh
+dGUgaXMgZGlzYWJsZWQsIHdlIGRvIG5vdGhpbmcuIEFmdGVyIGFsbCAKdGhlIFBXTXMgYXJlIHBy
+b2JlZCBhbmQgYWxsIG1vZHVsZXMgYXJlIHByb2JlZCwgdGhlIGNsb2NrIGNvcmUgd2lsbCBnYXRl
+IAp0aGUgUFdNIGNsb2NrIGlmIHRoZSBjbG9jayBjb3VudCBpcyAwLCBhbmQga2VlcCBjbGsgZW5h
+YmxlZCBpZiB0aGUgY2xvY2sgCmNvdW50IGlzIG5vdCAwLgoKSG93IGRvIHlvdSBmZWVsIGFib3V0
+IGl0PwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
