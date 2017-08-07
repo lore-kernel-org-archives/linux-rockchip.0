@@ -1,99 +1,63 @@
-From: Jacob Chen <jacobchen110@gmail.com>
-Subject: Re: [PATCH] media: i2c: OV5647: gate clock lane before stream on
-Date: Mon, 7 Aug 2017 19:06:17 +0800
-Message-ID: <CAFLEztQcCijnmkp_r3-gy2ptM0b+WFEw4Sf1MeiatJbvnKqA8A@mail.gmail.com>
-References: <1500950041-5449-1-git-send-email-jacob-chen@iotwrt.com>
- <CAFLEztQHYWAk39+gQCD0XkKPVqmUY5kPZydWgw8+zu53+D2_pA@mail.gmail.com> <1502093851.2490.4.camel@pengutronix.de>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: add bindings for i2s
+Date: Mon, 7 Aug 2017 12:36:53 +0100
+Message-ID: <20170807113653.zcxv4zgxem4ivghp@sirena.org.uk>
+References: <1501465671-22863-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502093851.2490.4.camel@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org, roliveir@synopsys.com, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, vladimir_zapolskiy@mentor.com, Hans Verkuil <hans.verkuil@cisco.com>, sakari.ailus@linux.intel.com, slongerbeam@gmail.com, robh+dt@kernel.org, lolivei@synopsys.com
+Content-Type: multipart/mixed; boundary="===============8986657769506224397=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1501465671-22863-1-git-send-email-sugar.zhang@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Philipp,
 
-2017-08-07 16:17 GMT+08:00 Philipp Zabel <p.zabel@pengutronix.de>:
-> Hi Jacob,
->
-> On Mon, 2017-08-07 at 15:11 +0800, Jacob Chen wrote:
->> Hi all,
->>
->> 2017-07-25 10:34 GMT+08:00 Jacob Chen <jacob-chen@iotwrt.com>:
->> > According to datasheet, BIT5 in reg-0x4800 are used to
->> > enable/disable clock lane gate.
->> >
->> > It's wrong to make clock lane free running before
->> > sensor stream on was called, while the mipi phy
->> > are not initialized.
->> >
->> > Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
->>>
->> > ---
->> >  drivers/media/i2c/ov5647.c | 10 +++++++++-
->> >  1 file changed, 9 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
->> > index 95ce90f..d3e6fd0 100644
->> > --- a/drivers/media/i2c/ov5647.c
->> > +++ b/drivers/media/i2c/ov5647.c
->> > @@ -253,6 +253,10 @@ static int ov5647_stream_on(struct v4l2_subdev *sd)
->> >  {
->> >         int ret;
->> >
->> > +       ret = ov5647_write(sd, 0x4800, 0x04);
->> > +       if (ret < 0)
->> > +               return ret;
->> > +
->> >         ret = ov5647_write(sd, 0x4202, 0x00);
->> >         if (ret < 0)
->> >                 return ret;
->> > @@ -264,6 +268,10 @@ static int ov5647_stream_off(struct v4l2_subdev *sd)
->> >  {
->> >         int ret;
->> >
->> > +       ret = ov5647_write(sd, 0x4800, 0x25);
->> > +       if (ret < 0)
->> > +               return ret;
->> > +
->> >         ret = ov5647_write(sd, 0x4202, 0x0f);
->> >         if (ret < 0)
->> >                 return ret;
->> > @@ -320,7 +328,7 @@ static int __sensor_init(struct v4l2_subdev *sd)
->> >                         return ret;
->> >         }
->> >
->> > -       return ov5647_write(sd, 0x4800, 0x04);
->> > +       return ov5647_stream_off(sd);
->> >  }
->> >
->> >  static int ov5647_sensor_power(struct v4l2_subdev *sd, int on)
->> > --
->> > 2.7.4
->> >
->>
->> Can anyone comment on it?
->>
->> I saw there is a same discussion in  https://patchwork.kernel.org/patch/9569031/
->> There is a comment in i.MX CSI2 driver.
->> "
->> Configure MIPI Camera Sensor to put all Tx lanes in LP-11 state.
->> This must be carried out by the MIPI sensor's s_power(ON) subdev
->> op.
->> "
->> That's what this patch do, sensor driver should make sure that clock
->> lanes are in stop state while not streaming.
->
-> This is not the same, as far as I can tell. BIT(5) is just clock lane
-> gating, as you describe above. To put the bus into LP-11 state, BIT(2)
-> needs to be set.
->
+--===============8986657769506224397==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mtk2zd6ml7hyfpnp"
+Content-Disposition: inline
 
-Yeah, but i double that clock lane is not in LP11 when continue clock
-mode is enabled.
 
-> regards
-> Philipp
->
+--mtk2zd6ml7hyfpnp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Jul 31, 2017 at 09:47:51AM +0800, Sugar Zhang wrote:
+> This patch add bindings for rk3036/rk3228/rk3328/rk3366 i2s.
+
+Can we please also add these to the driver so that we'll match on those.
+
+--mtk2zd6ml7hyfpnp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmIUNQACgkQJNaLcl1U
+h9Buzwf/Q3ZNHGMbUt8Viu3l+KFV/SvTQAc4tsWYizNKkXK9sTlSLT14CN9rh/F7
+Av61CYxfJRubveQzaHnT44un841dq0T1ZvDtBgyZmXf7mrHhFZsLQ0b+ESuQZPGT
+j3rrYMFkyM9oQeb9qedi3wYQdlWTYzFANNGyoIIRR71jS5ZEdDKO3Hi/9kAC/KW8
+OQsGvJEjz2JJooLQ6sJRY73xWHQjICApFmBdSJWA/xVGY3/G8fRqSvtt5/8lBFvb
+I4G8m/FbIwd6dJwCnjEwd90G+MvWYjTlwN7lldcquBhLHRd4RiB5xjUV1FA0x0WX
+MLYMJeVtHaDkkUjq7apzo58ubojGYQ==
+=VZLi
+-----END PGP SIGNATURE-----
+
+--mtk2zd6ml7hyfpnp--
+
+--===============8986657769506224397==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============8986657769506224397==--
