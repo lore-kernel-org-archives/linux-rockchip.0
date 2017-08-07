@@ -1,114 +1,79 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] RM: dts: rockchip: rk322x: add spi node and spi pinctrl
-Date: Mon, 7 Aug 2017 10:33:15 +0800
-Message-ID: <7b4b3bce-e467-51ae-3295-20933c85e6ef@rock-chips.com>
-References: <1502070311-19663-1-git-send-email-huibin.hong@rock-chips.com>
+From: Jacob Chen <jacobchen110@gmail.com>
+Subject: Re: [PATCH] media: i2c: OV5647: gate clock lane before stream on
+Date: Mon, 7 Aug 2017 15:11:25 +0800
+Message-ID: <CAFLEztQHYWAk39+gQCD0XkKPVqmUY5kPZydWgw8+zu53+D2_pA@mail.gmail.com>
+References: <1500950041-5449-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502070311-19663-1-git-send-email-huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, sofia-kernel.list-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1500950041-5449-1-git-send-email-jacob-chen@iotwrt.com>
+Sender: linux-media-owner@vger.kernel.org
+To: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Cc: linux-kernel@vger.kernel.org, roliveir@synopsys.com, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, vladimir_zapolskiy@mentor.com, Hans Verkuil <hans.verkuil@cisco.com>, sakari.ailus@linux.intel.com, Jacob Chen <jacob-chen@iotwrt.com>, p.zabel@pengutronix.de, slongerbeam@gmail.com, robh+dt@kernel.org, lolivei@synopsys.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Huibing,
+Hi all,
 
-     Does this patch suppose to be V3?
-
-     and there is a typo in subject.
-
-
-Thanks,
-- Kever
-On 08/07/2017 09:45 AM, Huibin Hong wrote:
-> Add spi node and spi pinctrl for rk322x
+2017-07-25 10:34 GMT+08:00 Jacob Chen <jacob-chen@iotwrt.com>:
+> According to datasheet, BIT5 in reg-0x4800 are used to
+> enable/disable clock lane gate.
 >
-> Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> It's wrong to make clock lane free running before
+> sensor stream on was called, while the mipi phy
+> are not initialized.
+>
+> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 > ---
+>  drivers/media/i2c/ov5647.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
 >
->   arch/arm/boot/dts/rk322x.dtsi | 50 +++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 50 insertions(+)
+> diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+> index 95ce90f..d3e6fd0 100644
+> --- a/drivers/media/i2c/ov5647.c
+> +++ b/drivers/media/i2c/ov5647.c
+> @@ -253,6 +253,10 @@ static int ov5647_stream_on(struct v4l2_subdev *sd)
+>  {
+>         int ret;
 >
-> diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-> index f3e4ffd..1a7afef 100644
-> --- a/arch/arm/boot/dts/rk322x.dtsi
-> +++ b/arch/arm/boot/dts/rk322x.dtsi
-> @@ -55,6 +55,7 @@
->   		serial0 = &uart0;
->   		serial1 = &uart1;
->   		serial2 = &uart2;
-> +		spi0 = &spi0;
->   	};
->   
->   	cpus {
-> @@ -361,6 +362,19 @@
->   		status = "disabled";
->   	};
->   
-> +	spi0: spi@11090000 {
-> +		compatible = "rockchip,rk3228-spi";
-> +		reg = <0x11090000 0x1000>;
-> +		interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&spi0_clk &spi0_tx &spi0_rx &spi0_cs0 &spi0_cs1>;
-> +		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
-> +		clock-names = "spiclk", "apb_pclk";
-> +		status = "disabled";
-> +	};
+> +       ret = ov5647_write(sd, 0x4800, 0x04);
+> +       if (ret < 0)
+> +               return ret;
 > +
->   	wdt: watchdog@110a0000 {
->   		compatible = "snps,dw-wdt";
->   		reg = <0x110a0000 0x100>;
-> @@ -797,6 +811,42 @@
->   			};
->   		};
->   
-> +		spi-0 {
-> +			spi0_clk: spi0-clk {
-> +				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi0_cs0: spi0-cs0 {
-> +				rockchip,pins = <0 14 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi0_tx: spi0-tx {
-> +				rockchip,pins = <0 11 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi0_rx: spi0-rx {
-> +				rockchip,pins = <0 13 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi0_cs1: spi0-cs1 {
-> +				rockchip,pins = <1 12 RK_FUNC_1 &pcfg_pull_up>;
-> +			};
-> +		};
+>         ret = ov5647_write(sd, 0x4202, 0x00);
+>         if (ret < 0)
+>                 return ret;
+> @@ -264,6 +268,10 @@ static int ov5647_stream_off(struct v4l2_subdev *sd)
+>  {
+>         int ret;
+>
+> +       ret = ov5647_write(sd, 0x4800, 0x25);
+> +       if (ret < 0)
+> +               return ret;
 > +
-> +		spi-1 {
-> +			spi1_clk: spi1-clk {
-> +				rockchip,pins = <0 23 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi1_cs0: spi1-cs0 {
-> +				rockchip,pins = <2 2 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi1_rx: spi1-rx {
-> +				rockchip,pins = <2 0 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi1_tx: spi1-tx {
-> +				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +			spi1_cs1: spi1-cs1 {
-> +				rockchip,pins = <2 3 RK_FUNC_2 &pcfg_pull_up>;
-> +			};
-> +		};
-> +
->   		i2s1 {
->   			i2s1_bus: i2s1-bus {
->   				rockchip,pins = <0 8 RK_FUNC_1 &pcfg_pull_none>,
+>         ret = ov5647_write(sd, 0x4202, 0x0f);
+>         if (ret < 0)
+>                 return ret;
+> @@ -320,7 +328,7 @@ static int __sensor_init(struct v4l2_subdev *sd)
+>                         return ret;
+>         }
+>
+> -       return ov5647_write(sd, 0x4800, 0x04);
+> +       return ov5647_stream_off(sd);
+>  }
+>
+>  static int ov5647_sensor_power(struct v4l2_subdev *sd, int on)
+> --
+> 2.7.4
+>
 
+Can anyone comment on it?
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I saw there is a same discussion in  https://patchwork.kernel.org/patch/9569031/
+There is a comment in i.MX CSI2 driver.
+"
+Configure MIPI Camera Sensor to put all Tx lanes in LP-11 state.
+This must be carried out by the MIPI sensor's s_power(ON) subdev
+op.
+"
+That's what this patch do, sensor driver should make sure that clock
+lanes are in stop state while not streaming.
