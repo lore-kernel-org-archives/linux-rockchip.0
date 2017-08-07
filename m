@@ -1,63 +1,72 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] ASoC: rockchip: add bindings for i2s
-Date: Mon, 7 Aug 2017 12:36:53 +0100
-Message-ID: <20170807113653.zcxv4zgxem4ivghp@sirena.org.uk>
+Subject: Applied "ASoC: rockchip: add bindings for i2s" to the asoc tree
+Date: Mon, 07 Aug 2017 12:51:57 +0100
+Message-ID: <E1degZh-0006lR-R0@debutante>
 References: <1501465671-22863-1-git-send-email-sugar.zhang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============8986657769506224397=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1501465671-22863-1-git-send-email-sugar.zhang@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, Mark Brown <broonie@kernel.org>, heiko@sntech.debroonie@kernel.org, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The patch
 
---===============8986657769506224397==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="mtk2zd6ml7hyfpnp"
-Content-Disposition: inline
+   ASoC: rockchip: add bindings for i2s
 
+has been applied to the asoc tree at
 
---mtk2zd6ml7hyfpnp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-On Mon, Jul 31, 2017 at 09:47:51AM +0800, Sugar Zhang wrote:
-> This patch add bindings for rk3036/rk3228/rk3328/rk3366 i2s.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-Can we please also add these to the driver so that we'll match on those.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
---mtk2zd6ml7hyfpnp
-Content-Type: application/pgp-signature; name="signature.asc"
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
------BEGIN PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmIUNQACgkQJNaLcl1U
-h9Buzwf/Q3ZNHGMbUt8Viu3l+KFV/SvTQAc4tsWYizNKkXK9sTlSLT14CN9rh/F7
-Av61CYxfJRubveQzaHnT44un841dq0T1ZvDtBgyZmXf7mrHhFZsLQ0b+ESuQZPGT
-j3rrYMFkyM9oQeb9qedi3wYQdlWTYzFANNGyoIIRR71jS5ZEdDKO3Hi/9kAC/KW8
-OQsGvJEjz2JJooLQ6sJRY73xWHQjICApFmBdSJWA/xVGY3/G8fRqSvtt5/8lBFvb
-I4G8m/FbIwd6dJwCnjEwd90G+MvWYjTlwN7lldcquBhLHRd4RiB5xjUV1FA0x0WX
-MLYMJeVtHaDkkUjq7apzo58ubojGYQ==
-=VZLi
------END PGP SIGNATURE-----
+Thanks,
+Mark
 
---mtk2zd6ml7hyfpnp--
+From 3508cade13ba43ebafbee9064fa6114e857afd20 Mon Sep 17 00:00:00 2001
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Date: Mon, 31 Jul 2017 09:47:51 +0800
+Subject: [PATCH] ASoC: rockchip: add bindings for i2s
 
---===============8986657769506224397==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+This patch add bindings for rk3036/rk3228/rk3328/rk3366 i2s.
 
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ Documentation/devicetree/bindings/sound/rockchip-i2s.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
 
---===============8986657769506224397==--
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+index 206aba1b34bb..b208a752576c 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+@@ -7,8 +7,12 @@ Required properties:
+ 
+ - compatible: should be one of the following:
+    - "rockchip,rk3066-i2s": for rk3066
++   - "rockchip,rk3036-i2s", "rockchip,rk3066-i2s": for rk3036
+    - "rockchip,rk3188-i2s", "rockchip,rk3066-i2s": for rk3188
++   - "rockchip,rk3228-i2s", "rockchip,rk3066-i2s": for rk3228
+    - "rockchip,rk3288-i2s", "rockchip,rk3066-i2s": for rk3288
++   - "rockchip,rk3328-i2s", "rockchip,rk3066-i2s": for rk3328
++   - "rockchip,rk3366-i2s", "rockchip,rk3066-i2s": for rk3366
+    - "rockchip,rk3368-i2s", "rockchip,rk3066-i2s": for rk3368
+    - "rockchip,rk3399-i2s", "rockchip,rk3066-i2s": for rk3399
+ - reg: physical base address of the controller and length of memory mapped
+-- 
+2.13.3
