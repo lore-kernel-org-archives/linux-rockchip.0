@@ -1,57 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 06/23] clk: rockchip: support more clks for rv1108
-Date: Tue, 08 Aug 2017 00:57:45 +0200
-Message-ID: <11738434.oWbxbgkgjP@phil>
-References: <1501662303-11687-1-git-send-email-andy.yan@rock-chips.com> <1501662837-12029-1-git-send-email-andy.yan@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 1/2] clk: fractional-divider: allow overriding of
+ approximation
+Date: Mon, 7 Aug 2017 16:02:30 -0700
+Message-ID: <20170807230230.GY2146@codeaurora.org>
+References: <1500624187-12165-1-git-send-email-zhangqing@rock-chips.com>
+ <5990882.df1suBpf8V@phil>
+ <5453089.AIzWDZk3ey@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1501662837-12029-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: robh+dt@kernel.org, shawn.lin@rock-chips.com, zhangqing@rock-chips.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5453089.AIzWDZk3ey@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
-
-Am Mittwoch, 2. August 2017, 16:33:57 CEST schrieb Andy Yan:
+On 08/01, Heiko Stuebner wrote:
 > From: Elaine Zhang <zhangqing@rock-chips.com>
 > 
-> Added the description of the missing clock,
-> make the clock tree more complete.
+> Fractional dividers may have special requirements concerning numerator
+> and denominator selection that differ from just getting the best
+> approximation.
+> 
+> For example on Rockchip socs the denominator must be at least 20 times
+> larger than the numerator to generate precise clock frequencies.
+> 
+> Therefore add the ability to provide custom approximation functions.
 > 
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
 
-[...]
+Acked-by: Stephen Boyd <sboyd@codeaurora.org>
 
->  	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
->  
-> -	COMPOSITE(0, "i2s0_src", mux_pll_src_2plls_p, 0,
-> +	/* PD_BUS */
-> +	GATE(0, "aclk_bus_src_gpll", "gpll", CLK_IGNORE_UNUSED,
-> +			RV1108_CLKGATE_CON(1), 0, GFLAGS),
-> +	GATE(0, "aclk_bus_src_apll", "apll", CLK_IGNORE_UNUSED,
-> +			RV1108_CLKGATE_CON(1), 1, GFLAGS),
-> +	GATE(0, "aclk_bus_src_dpll", "dpll", CLK_IGNORE_UNUSED,
-> +			RV1108_CLKGATE_CON(1), 2, GFLAGS),
-> +	COMPOSITE_NOGATE(ACLK_PRE, "aclk_bus_pre", mux_aclk_bus_src_p, 0,
-> +			RV1108_CLKSEL_CON(2), 8, 2, MFLAGS, 0, 5, DFLAGS),
-> +	COMPOSITE_NOMUX(HCLK_BUS, "hclk_bus_pre", "aclk_bus_pre", 0,
-> +			RV1108_CLKSEL_CON(3), 0, 5, DFLAGS,
-> +			RV1108_CLKGATE_CON(1), 4, GFLAGS),
-
-you're adding a (new / second) hclk_bus_pre here, but only drop the
-old in patch 7. Please structure patch-contents in a way that each patch
-is self-contained and works on its own ... aka the clock tree should not
-get worse if only patch 6 is applied (like in a random git bisect), but
-here the state is bad between these 2 patches.
-
-hclk_bus_pre also is only _one_ example and there are probably more of
-those hiding in these clock patches. So please fix these issues.
-
-
-Thanks
-Heiko
-
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
