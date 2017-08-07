@@ -1,48 +1,101 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add support for rk3399 excavator main board
-Date: Sun, 06 Aug 2017 17:46:01 +0200
-Message-ID: <3974482.WU7faVNnLz@phil>
-References: <201708040551.mSxlH21s%fengguang.wu@intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <201708040551.mSxlH21s%fengguang.wu@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kbuild test robot <lkp@intel.com>
-Cc: Jacob Chen <jacob-chen@iotwrt.com>, kbuild-all@01.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, kever.yang@rock-chips.com, mark.yao@rock-chips.com, zhangqing@rock-chips.com
+From: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] RM: dts: rockchip: rk322x: add spi node and spi pinctrl
+Date: Mon,  7 Aug 2017 09:45:11 +0800
+Message-ID: <1502070311-19663-1-git-send-email-huibin.hong@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sofia-kernel.list-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 4. August 2017, 05:28:40 CEST schrieb kbuild test robot:
-> Hi Jacob,
-> 
-> [auto build test ERROR on rockchip/for-next]
-> [also build test ERROR on v4.13-rc3 next-20170803]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-> 
-> url:    https://github.com/0day-ci/linux/commits/Jacob-Chen/arm64-dts-rockchip-Add-support-for-rk3399-sapphire-SOM/20170804-002840
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-> config: arm64-defconfig (attached as .config)
-> compiler: aarch64-linux-gnu-gcc (Debian 6.1.1-9) 6.1.1 20160705
-> reproduce:
->         wget https://raw.githubusercontent.com/01org/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # save the attached .config to linux build tree
->         make.cross ARCH=arm64 
-> 
-> All errors (new ones prefixed by >>):
-> 
-> >> Error: arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:197.1-6 Label or path hdmi not found
-> >> Error: arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:632.1-6 Label or path vopb not found
-> >> Error: arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:636.1-10 Label or path vopb_mmu not found
-> >> Error: arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:640.1-6 Label or path vopl not found
-> >> Error: arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:644.1-10 Label or path vopl_mmu not found
-> >> Error: arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts:157.1-5 Label or path edp not found
->    FATAL ERROR: Syntax error parsing input tree
+Add spi node and spi pinctrl for rk322x
 
-that's ok, it just depended on the series from Jacob adding these
-display-related nodes and I've applied that series before picking up
-this new board, so everything still compiles fine.
+Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ arch/arm/boot/dts/rk322x.dtsi | 50 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index f3e4ffd..1a7afef 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -55,6 +55,7 @@
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
+ 		serial2 = &uart2;
++		spi0 = &spi0;
+ 	};
+ 
+ 	cpus {
+@@ -361,6 +362,19 @@
+ 		status = "disabled";
+ 	};
+ 
++	spi0: spi@11090000 {
++		compatible = "rockchip,rk3228-spi";
++		reg = <0x11090000 0x1000>;
++		interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&spi0_clk &spi0_tx &spi0_rx &spi0_cs0 &spi0_cs1>;
++		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
++		clock-names = "spiclk", "apb_pclk";
++		status = "disabled";
++	};
++
+ 	wdt: watchdog@110a0000 {
+ 		compatible = "snps,dw-wdt";
+ 		reg = <0x110a0000 0x100>;
+@@ -797,6 +811,42 @@
+ 			};
+ 		};
+ 
++		spi-0 {
++			spi0_clk: spi0-clk {
++				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_cs0: spi0-cs0 {
++				rockchip,pins = <0 14 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_tx: spi0-tx {
++				rockchip,pins = <0 11 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_rx: spi0-rx {
++				rockchip,pins = <0 13 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi0_cs1: spi0-cs1 {
++				rockchip,pins = <1 12 RK_FUNC_1 &pcfg_pull_up>;
++			};
++		};
++
++		spi-1 {
++			spi1_clk: spi1-clk {
++				rockchip,pins = <0 23 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_cs0: spi1-cs0 {
++				rockchip,pins = <2 2 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_rx: spi1-rx {
++				rockchip,pins = <2 0 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_tx: spi1-tx {
++				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_up>;
++			};
++			spi1_cs1: spi1-cs1 {
++				rockchip,pins = <2 3 RK_FUNC_2 &pcfg_pull_up>;
++			};
++		};
++
+ 		i2s1 {
+ 			i2s1_bus: i2s1-bus {
+ 				rockchip,pins = <0 8 RK_FUNC_1 &pcfg_pull_none>,
+-- 
+1.9.1
 
 
-Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
