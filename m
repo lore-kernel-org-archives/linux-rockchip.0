@@ -1,32 +1,25 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v8 11/12] mfd: rk808: Add RK805 power key support
-Date: Tue, 8 Aug 2017 11:50:08 +0100
-Message-ID: <20170808105008.xnd4xigzvvne3aam@dell>
-References: <1501762841-20262-1-git-send-email-chenjh@rock-chips.com>
- <1501763170-20636-1-git-send-email-chenjh@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-input-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1501763170-20636-1-git-send-email-chenjh@rock-chips.com>
-Sender: linux-input-owner@vger.kernel.org
-To: Joseph Chen <chenjh@rock-chips.com>
-Cc: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, zhangqing@rock-chips.com, wdc@rock-chips.com, devicetree@vger.kernel.org, w.egorov@phytec.de, lgirdwood@gmail.com, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-gpio@vger.kernel.org, linux-input@vger.kernel.org
+From: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH 0/3] drm: make drm_connector_funcs structures const
+Date: Tue,  8 Aug 2017 16:58:29 +0530
+Message-ID: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: julia.lawall@lip6.fr, architt@codeaurora.org, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, maxime.ripard@free-electrons.com, wens@csie.org
+Cc: Bhumika Goyal <bhumirks@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 03 Aug 2017, Joseph Chen wrote:
+Declare drm_connector_funcs structures as const.
 
-> Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
-> ---
->  drivers/mfd/rk808.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+Bhumika Goyal (3):
+  drm/bridge: make drm_connector_funcs structures const
+  drm/sun4i: make drm_connector_funcs structures const
+  drm/rockchip: make drm_connector_funcs structures const
 
-For my own reference:
-  Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c         | 2 +-
+ drivers/gpu/drm/sun4i/sun4i_rgb.c            | 2 +-
+ drivers/gpu/drm/sun4i/sun4i_tv.c             | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
 -- 
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+1.9.1
