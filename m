@@ -1,7 +1,7 @@
 From: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH 1/3] drm/bridge: make drm_connector_funcs structures const
-Date: Tue,  8 Aug 2017 16:58:30 +0530
-Message-ID: <1502191712-11231-2-git-send-email-bhumirks@gmail.com>
+Subject: [PATCH 2/3] drm/sun4i: make drm_connector_funcs structures const
+Date: Tue,  8 Aug 2017 16:58:31 +0530
+Message-ID: <1502191712-11231-3-git-send-email-bhumirks@gmail.com>
 References: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
@@ -47,21 +47,35 @@ struct drm_connector_funcs s;
 
 Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
 ---
- drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/sun4i/sun4i_rgb.c | 2 +-
+ drivers/gpu/drm/sun4i/sun4i_tv.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-index ff9792d..ee16635 100644
---- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-+++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-@@ -785,7 +785,7 @@ static int adv7511_connector_get_modes(struct drm_connector *connector)
- 	return adv7511_detect(adv, connector);
+diff --git a/drivers/gpu/drm/sun4i/sun4i_rgb.c b/drivers/gpu/drm/sun4i/sun4i_rgb.c
+index 76362c0..4a456de 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_rgb.c
++++ b/drivers/gpu/drm/sun4i/sun4i_rgb.c
+@@ -119,7 +119,7 @@ static int sun4i_rgb_mode_valid(struct drm_connector *connector,
+ 	drm_connector_cleanup(connector);
  }
  
--static struct drm_connector_funcs adv7511_connector_funcs = {
-+static const struct drm_connector_funcs adv7511_connector_funcs = {
- 	.dpms = drm_atomic_helper_connector_dpms,
- 	.fill_modes = drm_helper_probe_single_connector_modes,
- 	.detect = adv7511_connector_detect,
+-static struct drm_connector_funcs sun4i_rgb_con_funcs = {
++static const struct drm_connector_funcs sun4i_rgb_con_funcs = {
+ 	.dpms			= drm_atomic_helper_connector_dpms,
+ 	.fill_modes		= drm_helper_probe_single_connector_modes,
+ 	.destroy		= sun4i_rgb_connector_destroy,
+diff --git a/drivers/gpu/drm/sun4i/sun4i_tv.c b/drivers/gpu/drm/sun4i/sun4i_tv.c
+index 73bfe7b..d246794 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_tv.c
++++ b/drivers/gpu/drm/sun4i/sun4i_tv.c
+@@ -537,7 +537,7 @@ static int sun4i_tv_comp_mode_valid(struct drm_connector *connector,
+ 	drm_connector_cleanup(connector);
+ }
+ 
+-static struct drm_connector_funcs sun4i_tv_comp_connector_funcs = {
++static const struct drm_connector_funcs sun4i_tv_comp_connector_funcs = {
+ 	.dpms			= drm_atomic_helper_connector_dpms,
+ 	.fill_modes		= drm_helper_probe_single_connector_modes,
+ 	.destroy		= sun4i_tv_comp_connector_destroy,
 -- 
 1.9.1
