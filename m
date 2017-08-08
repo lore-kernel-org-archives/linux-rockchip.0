@@ -1,47 +1,51 @@
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: [PATCH] thermal: rockchip: fix error return code in
- rockchip_thermal_probe()
-Date: Mon, 7 Aug 2017 23:35:17 -0500
-Message-ID: <20170808043517.GA13356@embeddedgus>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v3 0/9] clk: rockchip: support clk for RV1108 Soc
+Date: Tue,  8 Aug 2017 15:15:38 +0800
+Message-ID: <1502176547-30817-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-kernel-owner@vger.kernel.org
-To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, shawn.lin@rock-chips.com, andy.yan@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-platform_get_irq() returns an error code, but the rockchip_thermal driver
-ignores it and always returns -EINVAL. This is not correct and, prevents
--EPROBE_DEFER from being propagated properly.
+RV1108 submit is too much, make the CLK part out to review alone.
 
-Notice that platform_get_irq() no longer returns 0 on error:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e330b9a6bb35dc7097a4f02cb1ae7b6f96df92af
+Changes in v3:
+[PATCH v3 1/9] None
+[PATCH v3 2/9] None
+[PATCH v3 3/9] None
+[PATCH v3 4/9] None
+[PATCH v3 5/9] None
+[PATCH v3 6/9] fix up the structure patch-contents
+[PATCH v3 7/9] fix up the structure patch-contents
+[PATCH v3 8/9] fix up the structure patch-contents
+[PATCH v3 8/9] None
 
-Print and propagate the return value of platform_get_irq on failure.
+Changes in v2:
+[PATCH v2 1/9] split the rename and intentation fix part
+[PATCH v2 2/9] None
+[PATCH v2 3/9] None
+[PATCH v2 4/9] split the new added clks and rename.
+[PATCH v2 5/9] None
+[PATCH v2 6/9] None
+[PATCH v2 7/9] None
+[PATCH v2 8/9] None
+[PATCH v3 9/9] None
 
-This issue was detected with the help of Coccinelle.
+Elaine Zhang (9):
+  clk: rockchip: add more clk ids for rv1108
+  clk: rockchip: rename the clk id for HCLK_I2S1_2CH
+  clk: rockchip: fix up the indentation stuff for RV1108 SoC
+  clk: rockchip: support more rates for cpuclk
+  clk: rockchip: fix up the pll clks error for rv1108 SoC
+  clk: rockchip: support more clks for rv1108
+  clk: rockchip: fix up some clks describe error for rv1108 SoC
+  clk: rockchip: rename some of clks for rv1108 SoC
+  clk: rockchip: add some critical clocks for rv1108 SoC
 
-Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
----
- drivers/thermal/rockchip_thermal.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk-rv1108.c      | 476 +++++++++++++++++++++++++++------
+ include/dt-bindings/clock/rv1108-cru.h | 123 +++++++--
+ 2 files changed, 494 insertions(+), 105 deletions(-)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 4c77965..6ca9747 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1068,8 +1068,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0) {
--		dev_err(&pdev->dev, "no irq resource?\n");
--		return -EINVAL;
-+		dev_err(&pdev->dev, "no irq resource: %d\n", irq);
-+		return irq;
- 	}
- 
- 	thermal = devm_kzalloc(&pdev->dev, sizeof(struct rockchip_thermal_data),
 -- 
-2.5.0
+1.9.1
