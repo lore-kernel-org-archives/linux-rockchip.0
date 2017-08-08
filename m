@@ -1,173 +1,92 @@
-From: Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1] arm64: dts: rockchip: add rk805 node for rk3328-evb
-Date: Tue,  8 Aug 2017 16:07:24 +0800
-Message-ID: <1502179644-3220-1-git-send-email-chenjh@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: wdc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH v3 3/5] pwm-backlight: add support for PWM delays
+ proprieties.
+Date: Tue, 8 Aug 2017 10:11:35 +0200
+Message-ID: <20170808081135.GD12854@amd>
+References: <20170717212811.25374-1-enric.balletbo@collabora.com>
+ <20170717212811.25374-3-enric.balletbo@collabora.com>
+ <d38fa016-ea9c-edf8-9684-5c1235d27c82@linaro.org>
+ <20170720080656.GC13103@amd>
+ <38adad8d-754b-d1dd-167a-913afd8075d6@linaro.org>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+        protocol="application/pgp-signature"; boundary="DrWhICOqskFTAXiy"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <38adad8d-754b-d1dd-167a-913afd8075d6@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Rob Herring <robh+dt@kernel.org>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 137 ++++++++++++++++++++++++++++
- 1 file changed, 137 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index cf27239..e8705fd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -50,8 +50,145 @@
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
-+
-+	dc_12v: dc-12v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "dc_12v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc_sys: vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_12v>;
-+	};
- };
- 
- &uart2 {
- 	status = "okay";
- };
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	rk805: rk805@18 {
-+		compatible = "rockchip,rk805";
-+		reg = <0x18>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		clock-output-names = "xin32k", "rk805-clkout2";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+
-+		vcc1-supply = <&vcc_sys>;
-+		vcc2-supply = <&vcc_sys>;
-+		vcc3-supply = <&vcc_sys>;
-+		vcc4-supply = <&vcc_sys>;
-+		vcc5-supply = <&vcc_io>;
-+		vcc6-supply = <&vcc_io>;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_io: DCDC_REG4 {
-+				regulator-name = "vcc_io";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_18: LDO_REG1 {
-+				regulator-name = "vcc_18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc18_emmc: LDO_REG2 {
-+				regulator-name = "vcc18_emmc";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_10: LDO_REG3 {
-+				regulator-name = "vdd_10";
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+				regulator-boot-on;
-+				regulator-always-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
--- 
-1.9.1
+--DrWhICOqskFTAXiy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Thu 2017-07-20 11:37:17, Daniel Thompson wrote:
+> On 20/07/17 09:06, Pavel Machek wrote:
+> >Hi!
+> >
+> >>>--- a/drivers/video/backlight/pwm_bl.c
+> >>>+++ b/drivers/video/backlight/pwm_bl.c
+> >>>@@ -10,6 +10,7 @@
+> >>>   * published by the Free Software Foundation.
+> >>>   */
+> >>>+#include <linux/delay.h>
+> >>>  #include <linux/gpio/consumer.h>
+> >>>  #include <linux/gpio.h>
+> >>>  #include <linux/module.h>
+> >>>@@ -35,6 +36,7 @@ struct pwm_bl_data {
+> >>>  	struct gpio_desc	*enable_gpio;
+> >>>  	unsigned int		scale;
+> >>>  	bool			legacy;
+> >>>+	unsigned int		pwm_delay[2];
+> >>
+> >>Two named members would be better here (eliminating the "magic" 0
+> >>and 1).
+> >
+> >My thought, too.
+> >
+> >>>@@ -56,6 +58,9 @@ static void pwm_backlight_power_on(struct pwm_bl_dat=
+a *pb, int brightness)
+> >>>  	pwm_enable(pb->pwm);
+> >>>+	if (pb->pwm_delay[0])
+> >>>+		usleep_range(pb->pwm_delay[0], pb->pwm_delay[0] * 2);
+> >
+> >Plus I'd just do the delay unconditionally :-).
+>=20
+> ... does this still apply if this code is switched to msleep()?
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+No.
+
+> msleep() has no wait avoidance[1] and if lots of drivers are reckless abo=
+ut
+> sleeping for 10ms it soon starts to show up in the boot time (especially
+> optimized ones).
+=2E..
+> [1] As it happens I can't see that many early bail out paths in
+>     usleep_range() either.
+
+Well, in usleep_range(1,2) should be fast enough operation, and
+usleep_range(0,0) should be similar to usleep_range(1,2) at worst :-).
+									Pavel
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--DrWhICOqskFTAXiy
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAlmJcjcACgkQMOfwapXb+vKPRACfVe6FGJaudAE2XIMyyPmrAIqR
+AkcAnjKBMmalv49Ha8uuthVrpzZ/1S0Y
+=M3I1
+-----END PGP SIGNATURE-----
+
+--DrWhICOqskFTAXiy--
