@@ -1,42 +1,51 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH 3/3] dt-bindings: ASoC: rockchip: Add rockchip,codec-names property
-Date: Wed,  9 Aug 2017 20:19:39 +0800
-Message-ID: <1502281179-15916-4-git-send-email-jeffy.chen@rock-chips.com>
-References: <1502281179-15916-1-git-send-email-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502281179-15916-1-git-send-email-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de
-Cc: briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH 0/6] drm/rockchip: Some fixes
+Date: Wed, 9 Aug 2017 09:38:34 -0400
+Message-ID: <CAOw6vbJr5Ya5Lyd3MqhSZd=mPaKzCwcBeSGfJLtv=kFUDvXbhw@mail.gmail.com>
+References: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1501494569-6825-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a new rockchip,codec-names property, so that the driver can parse
-the codecs by name.
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
-
- Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-index eac91db..aa951a7 100644
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-@@ -11,6 +11,7 @@ Optional properties:
-   If this option is specified, which means it's required dmic need
-   delay for DMIC to ready so that rt5514 can avoid recording before
-   DMIC send valid data
-+- rockchip,codec-names: The names of the MAX98357A/RT5514/DA7219 codecs
- 
- Example:
- 
-@@ -18,5 +19,6 @@ sound {
- 	compatible = "rockchip,rk3399-gru-sound";
- 	rockchip,cpu = <&i2s0>;
- 	rockchip,codec = <&max98357a &rt5514 &da7219>;
-+	rockchip,codec-names = "MAX98357A", "RT5514", "DA7219";
- 	dmic-wakeup-delay-ms = <20>;
- };
--- 
-2.1.4
+T24gTW9uLCBKdWwgMzEsIDIwMTcgYXQgNTo0OSBBTSwgTWFyayBZYW8gPG1hcmsueWFvQHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPiBIZXJlIGFyZSBzb21lIGZpeGVzIHBvcnQgZnJvbSByb2NrY2hp
+cF9saW51eCBwcm9qZWN0WzBdLAo+Cj4gVGVzdGVkIG9uIHJrMzM5OSBhbmQgcmszMjg4IGJvYXJk
+Lgo+Cj4gWzBdOiBodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsCj4KPiBN
+YXJrIFlhbyAoNik6Cj4gICBkcm0vcm9ja2NoaXA6IHZvcDogbm8gbmVlZCB3YWl0IHZibGFuayBv
+biBjcnRjIGVuYWJsZQo+ICAgZHJtL3JvY2tjaGlwOiB2b3A6IGZpeCBpb21tdSBwYWdlIGZhdWx0
+IHdoZW4gcmVzdW1lCj4gICBkcm0vcm9ja2NoaXA6IHZvcDogZml4IE5WMTIgdmlkZW8gZGlzcGxh
+eSBlcnJvcgo+ICAgZHJtL3JvY2tjaGlwOiB2b3A6IHJvdW5kX3VwIHBpdGNoZXMgdG8gd29yZCBh
+bGlnbgo+ICAgZHJtL3JvY2tjaGlwOiB2b3A6IHJlcG9ydCBlcnJvciB3aGVuIGNoZWNrIHJlc291
+cmNlIGVycm9yCj4gICBkcm0vcm9ja2NoaXA6IGZpeCByYWNlIHdpdGgga21zIGhvdHBsdWcgYW5k
+IGZiZGV2CgoKSGkgTWFyaywKSSBub3RpY2VkIHlvdSBhcHBsaWVkIHRoaXMgc2V0IHRvIGJvdGgg
+LW1pc2MtbmV4dCBhbmQgLW1pc2MtZml4ZXMuIEluCnRoZSBmdXR1cmUsIHBsZWFzZSBkbyBub3Qg
+YXBwbHkgcGF0Y2hlcyBpbiBib3RoIHBsYWNlcy4KCkluc3RlYWQsIGNvbnN1bHQgdGhlIGZsb3dj
+aGFydCB1bmRlciAiV2hlcmUgRG8gSSBBcHBseSBNeSBQYXRjaD8iIGF0Cmh0dHBzOi8vMDEub3Jn
+L2xpbnV4Z3JhcGhpY3MvZ2Z4LWRvY3MvbWFpbnRhaW5lci10b29scy9kcm0tbWlzYy5odG1sCmFu
+ZCBjaG9vc2UgdGhlIG1vc3QgYXBwcm9wcmlhdGUgcGxhY2UuIElmIHlvdSBhcmUgdW5zdXJlLCBw
+bGVhc2UgcmVhY2gKb3V0IHRvIGEgLW1pc2MgbWFpbnRhaW5lci4KClRoYW5rIHlvdSwKClNlYW4K
+Cj4KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICB8ICAyICst
+Cj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA3NyArKysr
+KysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5oIHwgIDMgKysKPiAgMyBmaWxlcyBjaGFuZ2VkLCAyNCBpbnNlcnRpb25z
+KCspLCA1OCBkZWxldGlvbnMoLSkKPgo+IC0tCj4gMS45LjEKPgo+Cj4gX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
