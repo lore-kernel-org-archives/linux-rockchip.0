@@ -1,165 +1,57 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] PCI: rockchip: manipulate phy properly if failing to probe the driver
-Date: Wed,  9 Aug 2017 19:14:23 +0800
-Message-ID: <1502277263-187898-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v9 03/12] regulator: rk808: Add regulator driver for RK805
+Date: Wed, 9 Aug 2017 12:42:38 +0100
+Message-ID: <20170809114238.3vy47z3acztggrq7@sirena.org.uk>
+References: <1502273060-12201-1-git-send-email-chenjh@rock-chips.com>
+ <1502273060-12201-4-git-send-email-chenjh@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="gzkhzlwjlirtvidg"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1502273060-12201-4-git-send-email-chenjh@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Joseph Chen <chenjh@rock-chips.com>
+Cc: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, wdc@rock-chips.com, tony.xie@rock-chips.com, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-We observed that the clk_pciephy_ref is still enabled when we actually
-fail to probe the driver.
 
-root@linaro-alip:~# cat /sys/kernel/debug/clk/clk_summary | grep pcie
-clk_pciephy_ref			  1	1	 24000000	0 0
-clk_pcie_pm			  0	0	 24000000	0 0
-      clk_pcie_core_cru           0	0	125000000	0 0
-      clk_pciephy_ref100m         0	0	100000000	0 0
-		aclk_pcie         0	0	148500000	0 0
-		aclk_perf_pcie    0	0	148500000	0 0
-			pclk_pcie 0	0	 37125000	0 0
-clk_pcie_core                     0	0		0	0 0
+--gzkhzlwjlirtvidg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-clk_pciephy_ref is used by phy driver and we need to properly disable
-it for this case. So this patch add error handle for the function of
-rockchip_pcie_init_port to fix this issue.
+On Wed, Aug 09, 2017 at 06:04:11PM +0800, Joseph Chen wrote:
+> From: Elaine Zhang <zhangqing@rock-chips.com>
+>=20
+> Add support for the rk805 regulator. The regulator module consists
+> of 4 DCDCs, 3 LDOs.
+>=20
+> The output voltages are configurable and are meant to supply power
+> to the main processor and other components.
+>=20
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+> Acked-by: Mark Brown <broonie@kernel.org>
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+Can we please at least get the first couple of patches merged so
+anything else that needs the new defines like this can get merged?  If
+there's later bits of the series that need this many revisions they
+shouldn't be holding up the earlier bits that have been fine for ages.
 
- drivers/pci/host/pcie-rockchip.c | 38 ++++++++++++++++++++++++--------------
- 1 file changed, 24 insertions(+), 14 deletions(-)
+--gzkhzlwjlirtvidg
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 2eccd53..ce6371b 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -561,32 +561,32 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		err = phy_init(rockchip->phys[i]);
- 		if (err) {
- 			dev_err(dev, "init phy%d err %d\n", i, err);
--			return err;
-+			goto err_phy_exit;
- 		}
- 	}
- 
- 	err = reset_control_assert(rockchip->core_rst);
- 	if (err) {
- 		dev_err(dev, "assert core_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_assert(rockchip->mgmt_rst);
- 	if (err) {
- 		dev_err(dev, "assert mgmt_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_assert(rockchip->mgmt_sticky_rst);
- 	if (err) {
- 		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_assert(rockchip->pipe_rst);
- 	if (err) {
- 		dev_err(dev, "assert pipe_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	udelay(10);
-@@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	err = reset_control_deassert(rockchip->pm_rst);
- 	if (err) {
- 		dev_err(dev, "deassert pm_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_deassert(rockchip->aclk_rst);
- 	if (err) {
- 		dev_err(dev, "deassert aclk_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_deassert(rockchip->pclk_rst);
- 	if (err) {
- 		dev_err(dev, "deassert pclk_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	if (rockchip->link_gen == 2)
-@@ -628,7 +628,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		err = phy_power_on(rockchip->phys[i]);
- 		if (err) {
- 			dev_err(dev, "power on phy%d err %d\n", i, err);
--			return err;
-+			goto err_phy_power_off;
- 		}
- 	}
- 
-@@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
- 	if (err) {
- 		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	err = reset_control_deassert(rockchip->core_rst);
- 	if (err) {
- 		dev_err(dev, "deassert core_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	err = reset_control_deassert(rockchip->mgmt_rst);
- 	if (err) {
- 		dev_err(dev, "deassert mgmt_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	err = reset_control_deassert(rockchip->pipe_rst);
- 	if (err) {
- 		dev_err(dev, "deassert pipe_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	/* Fix the transmitted FTS count desired to exit from L0s. */
-@@ -690,7 +690,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 				 500 * USEC_PER_MSEC);
- 	if (err) {
- 		dev_err(dev, "PCIe link training gen1 timeout!\n");
--		return -ETIMEDOUT;
-+		err = -ETIMEDOUT;
-+		goto err_phy_power_off;
- 	}
- 
- 	if (rockchip->link_gen == 2) {
-@@ -751,6 +752,15 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
- 
- 	return 0;
-+
-+err_phy_exit:
-+	for (; i >= 0; --i)
-+		phy_exit(rockchip->phys[i]);
-+err_phy_power_off:
-+	for (; i >= 0; --i)
-+		phy_power_off(rockchip->phys[i]);
-+
-+	return err;
- }
- 
- static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
--- 
-1.9.1
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmK9S4ACgkQJNaLcl1U
+h9B8Swf/YDUfGLkEhHNlHD8c6DCFKplu7o85jgVJ9CsHXjrKf86aEDpTB+dZlz89
+1Os2lxXaA2f74C2w57TphWiD8zKQajfLpH9BiTL9DFg4RdiU+2GWlMO1sF7vXwMp
+oZ7a1+smYvt8+qyNSTSe564cbPso75Q2xVviaFz86osxBilGVE3aY+btgcus0znQ
+dTWdk8I8syjhSs74pK617uwqr9+83MxVmQ/W7T6fqQTGU16nt+P9fK1zVh3wRvG2
+d5tweLF8CxeIzd3sIZ1RoYFRSsC1O7ggn6XQ3c/KiYoBSDpOkGfeS5IIhCSMv0W6
+F0jehN3jSRhaHRybzzvBFC1f1GbXPw==
+=+N7x
+-----END PGP SIGNATURE-----
+
+--gzkhzlwjlirtvidg--
