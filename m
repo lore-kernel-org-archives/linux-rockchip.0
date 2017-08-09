@@ -1,43 +1,57 @@
-From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Subject: Re: [PATCH] cpufreq: dt: Add rk3328 compatible to use generic cpufreq driver
-Date: Thu, 10 Aug 2017 00:49:35 +0200
-Message-ID: <2561837.4o82W0B20K@aspire.rjw.lan>
-References: <1501811551-39168-1-git-send-email-finley.xiao@rock-chips.com> <20170804051041.GB28857@vireshk-i7>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH] drm/rockchip: Skip suspend/resume if no display is attached
+Date: Wed,  9 Aug 2017 16:07:24 -0700
+Message-ID: <20170809230724.113819-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20170804051041.GB28857@vireshk-i7>
-Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>, Finley Xiao <finley.xiao@rock-chips.com>
-Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, jay.xu@rock-chips.com, huangtao@rock-chips.coms, tony.xie@rock-chips.com, cl@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday, August 4, 2017 7:10:41 AM CEST Viresh Kumar wrote:
-> On 04-08-17, 09:52, Finley Xiao wrote:
-> > This patch adds the rk3328 compatible string for supporting
-> > the generic cpufreq driver on RK3328.
-> > 
-> > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> > ---
-> >  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
-> > index 096aea7..13c0c47 100644
-> > --- a/drivers/cpufreq/cpufreq-dt-platdev.c
-> > +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-> > @@ -76,6 +76,7 @@ static const struct of_device_id machines[] __initconst = {
-> >  	{ .compatible = "rockchip,rk3188", },
-> >  	{ .compatible = "rockchip,rk3228", },
-> >  	{ .compatible = "rockchip,rk3288", },
-> > +	{ .compatible = "rockchip,rk3328", },
-> >  	{ .compatible = "rockchip,rk3366", },
-> >  	{ .compatible = "rockchip,rk3368", },
-> >  	{ .compatible = "rockchip,rk3399", },
-> 
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-> 
-> 
-
-Applied, thanks!
+cm9ja2NoaXBfZHJtX3N5c19zdXNwZW5kL3Jlc3VtZSgpIG9iYWlucyBhIHN0cnVjdCBkcm1fZGV2
+aWNlIHBvaW50ZXIKZnJvbSBkcnZkYXRhLCB0aGUgcG9pbnRlciBpcyB0aGVuIGRlcmVmZXJlbmNl
+ZCB0byBvYnRhaW4gcHJpdmF0ZSBkYXRhLgpkcnZkYXRhIGlzIHNldCB3aGVuIGEgZGlzcGxheSBp
+cyBib3VuZCwgb24gc3lzdGVtcyB3aXRob3V0IGEKKHN1Y2Nlc3NmdWxseSBwcm9iZWQpIGRpc3Bs
+YXkgZHJ2ZGF0YSBpcyBOVUxMIGFuZCB0aGUgUE0gZnVuY3Rpb25zCnRyeSB0byBkZXJlZmVyZW5j
+ZSBhIE5VTEwgcG9pbnRlci4KClRoZSBzdXNwZW5kL3Jlc3VtZSBjb2RlIHJlbGllcyBvbiBhIHZh
+bGlkIGRybV9kZXZpY2Ugb2JqZWN0LCBza2lwIGl0IGlmCnRoZSBwb2ludGVyIGlzIE5VTEwuCgpT
+aWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBLYWVobGNrZSA8bWthQGNocm9taXVtLm9yZz4KLS0tCiBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMTQgKysrKysrKysr
+KysrLS0KIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCmluZGV4IGM2YjFi
+N2YzYTJhMy4uNjIyODE0NWQ5NDk2IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmMKQEAgLTI3NSwxMSArMjc1LDE2IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlw
+X2RybV9mYl9yZXN1bWUoc3RydWN0IGRybV9kZXZpY2UgKmRybSkKIHN0YXRpYyBpbnQgcm9ja2No
+aXBfZHJtX3N5c19zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikKIHsKIAlzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZHJtID0gZGV2X2dldF9kcnZkYXRhKGRldik7Ci0Jc3RydWN0IHJvY2tjaGlwX2RybV9w
+cml2YXRlICpwcml2ID0gZHJtLT5kZXZfcHJpdmF0ZTsKKwlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3By
+aXZhdGUgKnByaXY7CisKKwlpZiAoIWRybSkKKwkJLyogbm8gZGlzcGxheSBhdHRhY2hlZCAqLwor
+CQlyZXR1cm4gMDsKIAogCWRybV9rbXNfaGVscGVyX3BvbGxfZGlzYWJsZShkcm0pOwogCXJvY2tj
+aGlwX2RybV9mYl9zdXNwZW5kKGRybSk7CiAKKwlwcml2ID0gZHJtLT5kZXZfcHJpdmF0ZTsKIAlw
+cml2LT5zdGF0ZSA9IGRybV9hdG9taWNfaGVscGVyX3N1c3BlbmQoZHJtKTsKIAlpZiAoSVNfRVJS
+KHByaXYtPnN0YXRlKSkgewogCQlyb2NrY2hpcF9kcm1fZmJfcmVzdW1lKGRybSk7CkBAIC0yOTMs
+OCArMjk4LDEzIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3N5c19zdXNwZW5kKHN0cnVjdCBk
+ZXZpY2UgKmRldikKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3N5c19yZXN1bWUoc3RydWN0IGRl
+dmljZSAqZGV2KQogewogCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBkZXZfZ2V0X2RydmRhdGEo
+ZGV2KTsKLQlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXYgPSBkcm0tPmRldl9wcml2
+YXRlOworCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJpdjsKKworCWlmICghZHJtKQor
+CQkvKiBubyBkaXNwbGF5IGF0dGFjaGVkICovCisJCXJldHVybiAwOwogCisJcHJpdiA9IGRybS0+
+ZGV2X3ByaXZhdGU7CiAJZHJtX2F0b21pY19oZWxwZXJfcmVzdW1lKGRybSwgcHJpdi0+c3RhdGUp
+OwogCXJvY2tjaGlwX2RybV9mYl9yZXN1bWUoZHJtKTsKIAlkcm1fa21zX2hlbHBlcl9wb2xsX2Vu
+YWJsZShkcm0pOwotLSAKMi4xNC4wLjQzNC5nOTgwOTZmZDdhOC1nb29nCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
