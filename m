@@ -1,90 +1,43 @@
-From: Joseph Chen <chenjh@rock-chips.com>
-Subject: [PATCH v9 12/12] pinctrl: dt-bindings: add bindings for Rockchip RK805 PMIC
-Date: Wed,  9 Aug 2017 18:07:53 +0800
-Message-ID: <1502273273-12728-1-git-send-email-chenjh@rock-chips.com>
-References: <1502273060-12201-1-git-send-email-chenjh@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502273060-12201-1-git-send-email-chenjh@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
-Cc: huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, broonie@kernel.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, wdc@rock-chips.com, tony.xie@rock-chips.com, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de, Joseph Chen <chenjh@rock-chips.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH 0/3] drm: make drm_connector_funcs structures const
+Date: Wed, 9 Aug 2017 16:02:45 +0530
+Message-ID: <3bb03b50-5b73-4fee-2323-d3b67ed3553e@codeaurora.org>
+References: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bhumika Goyal <bhumirks@gmail.com>, julia.lawall@lip6.fr, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, maxime.ripard@free-electrons.com, wens@csie.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
----
- .../devicetree/bindings/pinctrl/pinctrl-rk805.txt  | 63 ++++++++++++++++++++++
- 1 file changed, 63 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
-
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
-new file mode 100644
-index 0000000..eee3dc2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
-@@ -0,0 +1,63 @@
-+Pincontrol driver for RK805 Power management IC.
-+
-+RK805 has 2 pins which can be configured as GPIO output only.
-+
-+Please refer file <devicetree/bindings/pinctrl/pinctrl-bindings.txt>
-+for details of the common pinctrl bindings used by client devices,
-+including the meaning of the phrase "pin configuration node".
-+
-+Optional Pinmux properties:
-+--------------------------
-+Following properties are required if default setting of pins are required
-+at boot.
-+- pinctrl-names: A pinctrl state named per <pinctrl-binding.txt>.
-+- pinctrl[0...n]: Properties to contain the phandle for pinctrl states per
-+		<pinctrl-binding.txt>.
-+
-+The pin configurations are defined as child of the pinctrl states node. Each
-+sub-node have following properties:
-+
-+Required properties:
-+------------------
-+- #gpio-cells: Should be two. The first cell is the pin number and the
-+  second is the GPIO flags.
-+
-+- gpio-controller: Marks the device node as a GPIO controller.
-+
-+- pins: List of pins. Valid values of pins properties are: gpio0, gpio1.
-+
-+First 2 properties must be added in the RK805 PMIC node, documented in
-+Documentation/devicetree/bindings/mfd/rk808.txt
-+
-+Optional properties:
-+-------------------
-+Following are optional properties defined as pinmux DT binding document
-+<pinctrl-bindings.txt>. Absence of properties will leave the configuration
-+on default.
-+	function,
-+	output-low,
-+	output-high.
-+
-+Valid values for function properties are: gpio.
-+
-+Theres is also not customised properties for any GPIO.
-+
-+Example:
-+--------
-+rk805: rk805@18 {
-+	compatible = "rockchip,rk805";
-+	...
-+	gpio-controller;
-+	#gpio-cells = <2>;
-+
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pmic_int_l>, <&rk805_default>;
-+
-+	rk805_default: pinmux {
-+		gpio01 {
-+			pins = "gpio0", "gpio1";
-+			function = "gpio";
-+			output-high;
-+		};
-+	};
-+};
--- 
-1.9.1
+CgpPbiAwOC8wOC8yMDE3IDA0OjU4IFBNLCBCaHVtaWthIEdveWFsIHdyb3RlOgo+IERlY2xhcmUg
+ZHJtX2Nvbm5lY3Rvcl9mdW5jcyBzdHJ1Y3R1cmVzIGFzIGNvbnN0LgoKQ291bGQgeW91IHJlYmFz
+ZSB0aGlzIHNlcmllcyBvdmVyIHRoZSBsYXRlc3QgZHJtLW1pc2MtbmV4dD8gVGhlCnJlY2VudGx5
+IG1lcmdlZCBwYXRjaCAiZHJtOiBOdWtlIGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9kcG1z
+IgpjYXVzZXMgY29uZmxpY3RzIHdpdGggdGhlc2UuCgpkcm0tbWlzYy1uZXh0OgoKaHR0cHM6Ly9j
+Z2l0LmZyZWVkZXNrdG9wLm9yZy9kcm0vZHJtLW1pc2MvbG9nLwoKVGhhbmtzLApBcmNoaXQKCj4g
+Cj4gQmh1bWlrYSBHb3lhbCAoMyk6Cj4gICAgZHJtL2JyaWRnZTogbWFrZSBkcm1fY29ubmVjdG9y
+X2Z1bmNzIHN0cnVjdHVyZXMgY29uc3QKPiAgICBkcm0vc3VuNGk6IG1ha2UgZHJtX2Nvbm5lY3Rv
+cl9mdW5jcyBzdHJ1Y3R1cmVzIGNvbnN0Cj4gICAgZHJtL3JvY2tjaGlwOiBtYWtlIGRybV9jb25u
+ZWN0b3JfZnVuY3Mgc3RydWN0dXJlcyBjb25zdAo+IAo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS9hZHY3NTExL2Fkdjc1MTFfZHJ2LmMgfCAyICstCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvaW5ub19oZG1pLmMgICAgICAgICB8IDIgKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9z
+dW40aV9yZ2IuYyAgICAgICAgICAgIHwgMiArLQo+ICAgZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1
+bjRpX3R2LmMgICAgICAgICAgICAgfCAyICstCj4gICA0IGZpbGVzIGNoYW5nZWQsIDQgaW5zZXJ0
+aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPiAKCi0tIApRdWFsY29tbSBJbm5vdmF0aW9uIENlbnRl
+ciwgSW5jLiBpcyBhIG1lbWJlciBvZiBDb2RlIEF1cm9yYSBGb3J1bSwKYSBMaW51eCBGb3VuZGF0
+aW9uIENvbGxhYm9yYXRpdmUgUHJvamVjdApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
