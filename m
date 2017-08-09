@@ -1,14 +1,16 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1] clk: Keep clocks in their initial state until clk_disable_unused() is called
-Date: Wed,  9 Aug 2017 15:37:29 +0800
-Message-ID: <1502264249-30509-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
+Subject: [RESEND PATCH v1] clk: Keep clocks in their initial state until clk_disable_unused() is called
+Date: Wed,  9 Aug 2017 15:53:00 +0800
+Message-ID: <1502265180-21661-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
 Cc: boris.brezillon@free-electrons.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, david.wu@rock-chips.com, xjq@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-ome drivers are briefly preparing+enabling the clock in their
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+
+Some drivers are briefly preparing+enabling the clock in their
 ->probe() hook and disable+unprepare them before leaving the function.
 
 This can be problem if a clock is shared between different devices, and
@@ -104,5 +106,3 @@ index fc58c52a26b4..3f61374a364b 100644
  	 * query the current clock phase, or just assume it's in phase.
 -- 
 1.9.1
-
-
