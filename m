@@ -1,53 +1,48 @@
-From: Joseph Chen <chenjh@rock-chips.com>
-Subject: Re: [PATCH v9 00/12] rk808: Add RK805 support
-Date: Wed, 9 Aug 2017 17:43:20 +0800
-Message-ID: <4102ff30-af99-0459-5888-89f7f01879aa@rock-chips.com>
-References: <1502244643-11712-1-git-send-email-chenjh@rock-chips.com>
- <1741653.yAH6rPlhTH@phil>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: [PATCH 0/3] drm/rockchip: lvds: add support Rockchip Soc LVDS
+Date: Wed,  9 Aug 2017 18:00:46 +0800
+Message-ID: <1502272846-63941-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1741653.yAH6rPlhTH@phil>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, linux-gpio@vger.kernel.org, wdc@rock-chips.com, broonie@kernel.org, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@armlinux.org.uk>
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-在 2017/8/9 17:35, Heiko Stuebner 写道:
-> Hi Joseph,
->
-> Am Mittwoch, 9. August 2017, 10:10:41 CEST schrieb Joseph Chen:
->> change in v9:
->> PATCH V9 1/12:  (1) fix spelling issue: s/Chip/chip/
->> 		(2) add: Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
->> PATCH V9 2/12 ~ 12/12: they are applied and no changes, so I don't resend them.
-> I don't know Lee's workflow, but I'm not sure that is actually true.
->
-> I.e. he added "for his own reference" Acked-for-MFD-by: tags to the
-> patches, but did not apply them (and therefore you cannot find them on [0])
->
-> So I'd think you might need to send everything again?
->
->
-> Heiko
->
-> [0] https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git/log/?h=for-mfd-next
->
-
-Ok, I think it's my misunderstanding, I will send everything later.:-)
-
--- 
-Best Regards
-----------------------------------------------------------------------------
-陈健洪 (Joseph Chen)
-E-mail：chenjh@rock-chips.com
-福州瑞芯微电子股份有限公司
-Fuzhou Rockchip Electronics Co.Ltd
-福建省福州市铜盘路软件大道89号软件园A区21号楼 (350003)
-No. 21 Building, A District, No.89,software Boulevard Fuzhou,Fujian,PRC
-TEL：0591-83991906/07-8573
-
-
+VGhpcyBwYXRjaGVzIGFkZCBzdXBwb3J0IFJvY2tjaGlwIFJLMzI4OCBMVkRTIHN1cHBvcnQsIGJh
+c2VkIG9uIHBhdGNoZXMgZnJvbQpNYXJrIHlhb1swXSBhbmQgSGVpa28gU3R1ZWJuZXJbMV0uCgpb
+MF06IGh0dHBzOi8vZ2l0aHViLmNvbS9Sb2NrY2hpcE9wZW5zb3VyY2VDb21tdW5pdHkvcG9wbWV0
+YWwta2VybmVsLTMuMTQKWzFdOiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9waXBlcm1haWwv
+bGludXgtcm9ja2NoaXAvMjAxNS1BcHJpbC8wMDI4MzAuaHRtbAoKQ2hhbmdlczoKLSBVcGRhdGUg
+cm9ja2NoaXBfbHZkc19lbmNvZGVyX2hlbHBlcl9mdW5jcyB0byBhdG9taWMgQVBJCi0gQWRkIGJy
+aWRnZSBmdW5jdGlvbiBmb3IgUkdCL0xWRFMgY29udmVydCB0byBvdGhlciBvdXRwdXQgdHlwZQot
+IEZpeCBzb21lIHVucmVhc29uYWJsZSBkZWZpbmUKLSBBZGFwdGVyIHRvIHRoZSBsYXRlc3Qgcm9j
+a2NoaXAgRFJNIGRyaXZlciBmcmFtZXdvcmsKLSBBZGQgcGluY3RybCBmb3IgUkdCIG91dHB1dCB0
+eXBlCi0gUmVzZXZlZCBzb21lIGRlZmluZSBmb3Igcm9ja2NoaXAgbmV4dCBTb2MKClNhbmR5IEh1
+YW5nICgzKToKICBkdC1iaW5kaW5nczogZGlzcGxheTogQWRkIERvY3VtZW50IGZvciBSb2NrY2hp
+cCBTb2MgTFZEUwogIEFSTTogZHRzOiBBZGQgTFZEUyBpbmZvIGZvciByazMyODgKICBkcm0vcm9j
+a2NoaXA6IEFkZCBzdXBwb3J0IGZvciBSb2NrY2hpcCBTb2MgTFZEUwoKIC4uLi9iaW5kaW5ncy9k
+aXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLWx2ZHMudHh0ICAgIHwgMTA0ICsrKwogYXJjaC9hcm0v
+Ym9vdC9kdHMvcmszMjg4LmR0c2kgICAgICAgICAgICAgICAgICAgICAgfCAgNTIgKysKIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgICAgIHwgICA5ICsKIGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAxICsK
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgICAgICAgICAgIHwgNzM0
+ICsrKysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2x2ZHMuaCAgICAgICAgICAgfCAxMTIgKysrKwogNiBmaWxlcyBjaGFuZ2VkLCAxMDEyIGluc2Vy
+dGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC1sdmRzLnR4dAogY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5oCgotLSAKMi43
+LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
