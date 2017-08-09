@@ -1,81 +1,50 @@
-From: Joseph Chen <chenjh@rock-chips.com>
-Subject: [PATCH v9 01/12] mfd: rk808: fix up the chip id get failed
-Date: Wed,  9 Aug 2017 10:10:42 +0800
-Message-ID: <1502244643-11712-2-git-send-email-chenjh@rock-chips.com>
-References: <1502244643-11712-1-git-send-email-chenjh@rock-chips.com>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH v3 01/11] net: phy: Add rockchip phy driver support
+Date: Wed, 9 Aug 2017 15:01:16 +0800
+Message-ID: <4cfa1cbc-d3a9-d27a-ecd3-2285d6e498a7@rock-chips.com>
+References: <1501654546-17292-1-git-send-email-david.wu@rock-chips.com>
+ <1501654546-17292-2-git-send-email-david.wu@rock-chips.com>
+ <20170802132121.GA24708@lunn.ch>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502244643-11712-1-git-send-email-chenjh@rock-chips.com>
+In-Reply-To: <20170802132121.GA24708@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com
-Cc: huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, broonie@kernel.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, wdc@rock-chips.com, tony.xie@rock-chips.com, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de, Joseph Chen <chenjh@rock-chips.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: davem@davemloft.net, heiko@sntech.de, f.fainelli@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de, peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Elaine Zhang <zhangqing@rock-chips.com>
+Hi Andrew,
 
-the rk8xx chip id is:
-((MSB << 8) | LSB) & 0xfff0
+ÔÚ 2017/8/2 21:21, Andrew Lunn Ð´µÀ:
+>> +static struct phy_driver rockchip_phy_driver[] = {
+>> +{
+>> +	.phy_id			= 0x1234d400,
+>> +	.phy_id_mask		= 0xfffffff0,
+>> +	.name			= "Rockchip internal EPHY",
+>> +	.features		= (PHY_BASIC_FEATURES | SUPPORTED_Pause
+>> +				   | SUPPORTED_Asym_Pause),
+> 
+> Please take a look at Documentation/networking/phy.txt and
+> Fixes: 529ed1275263 ("net: phy: phy drivers should not set SUPPORTED_[Asym_]Pause")
+> 
+> Pause frames / flow control
+> 
+>   The PHY does not participate directly in flow control/pause frames except by
+>   making sure that the SUPPORTED_Pause and SUPPORTED_AsymPause bits are set in
+>   MII_ADVERTISE to indicate towards the link partner that the Ethernet MAC
+>   controller supports such a thing. Since flow control/pause frames generation
+>   involves the Ethernet MAC driver, it is recommended that this driver takes care
+>   of properly indicating advertisement and support for such features by setting
+>   the SUPPORTED_Pause and SUPPORTED_AsymPause bits accordingly. This can be done
+>   either before or after phy_connect() and/or as a result of implementing the
+>   ethtool::set_pauseparam feature.
+> 
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
----
- drivers/mfd/rk808.c       | 21 +++++++++++++++------
- include/linux/mfd/rk808.h |  1 +
- 2 files changed, 16 insertions(+), 6 deletions(-)
+Thanks for the reminder, I'll remove it.
 
-diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index fd087cb..8e60eba 100644
---- a/drivers/mfd/rk808.c
-+++ b/drivers/mfd/rk808.c
-@@ -325,7 +325,7 @@ static int rk808_probe(struct i2c_client *client,
- 	void (*pm_pwroff_fn)(void);
- 	int nr_pre_init_regs;
- 	int nr_cells;
--	int pm_off = 0;
-+	int pm_off = 0, msb, lsb;
- 	int ret;
- 	int i;
- 
-@@ -333,14 +333,23 @@ static int rk808_probe(struct i2c_client *client,
- 	if (!rk808)
- 		return -ENOMEM;
- 
--	rk808->variant = i2c_smbus_read_word_data(client, RK808_ID_MSB);
--	if (rk808->variant < 0) {
--		dev_err(&client->dev, "Failed to read the chip id at 0x%02x\n",
-+	/* Read chip variant */
-+	msb = i2c_smbus_read_byte_data(client, RK808_ID_MSB);
-+	if (msb < 0) {
-+		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
- 			RK808_ID_MSB);
--		return rk808->variant;
-+		return msb;
- 	}
- 
--	dev_dbg(&client->dev, "Chip id: 0x%x\n", (unsigned int)rk808->variant);
-+	lsb = i2c_smbus_read_byte_data(client, RK808_ID_LSB);
-+	if (lsb < 0) {
-+		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
-+			RK808_ID_LSB);
-+		return lsb;
-+	}
-+
-+	rk808->variant = ((msb << 8) | lsb) & RK8XX_ID_MSK;
-+	dev_info(&client->dev, "chip id: 0x%x\n", (unsigned int)rk808->variant);
- 
- 	switch (rk808->variant) {
- 	case RK808_ID:
-diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-index 83701ef..54feb14 100644
---- a/include/linux/mfd/rk808.h
-+++ b/include/linux/mfd/rk808.h
-@@ -298,6 +298,7 @@ enum rk818_reg {
- #define VOUT_LO_INT	BIT(0)
- #define CLK32KOUT2_EN	BIT(0)
- 
-+#define RK8XX_ID_MSK			0xfff0
- enum {
- 	BUCK_ILMIN_50MA,
- 	BUCK_ILMIN_100MA,
--- 
-1.9.1
+> 	Andrew
+> 
+> 
+> 
