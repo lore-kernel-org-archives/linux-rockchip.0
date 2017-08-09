@@ -1,135 +1,34 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/4] phy: rockchip: use of_device_get_match_data()
-Date: Wed, 9 Aug 2017 17:17:57 +0800
-Message-ID: <1502270280-13792-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v9 00/12] rk808: Add RK805 support
+Date: Wed, 09 Aug 2017 11:35:53 +0200
+Message-ID: <1741653.yAH6rPlhTH@phil>
+References: <1502244643-11712-1-git-send-email-chenjh@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kamil Debski <kamil-MZ2JYD8fkKLYtjvyW6yDsg@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Vivek Gautam <vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, Baoyou Xie <baoyou.xie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1502244643-11712-1-git-send-email-chenjh@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Joseph Chen <chenjh@rock-chips.com>, gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, linux-gpio@vger.kernel.org, wdc@rock-chips.com, broonie@kernel.org, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-reduce the boilerplate code to get the specific data
+Hi Joseph,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c |    9 +++------
- drivers/phy/rockchip/phy-rockchip-pcie.c      |    7 +++----
- drivers/phy/rockchip/phy-rockchip-usb.c       |   10 +++-------
- 3 files changed, 9 insertions(+), 17 deletions(-)
+Am Mittwoch, 9. August 2017, 10:10:41 CEST schrieb Joseph Chen:
+> change in v9:
+> PATCH V9 1/12:  (1) fix spelling issue: s/Chip/chip/
+> 		(2) add: Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+> PATCH V9 2/12 ~ 12/12: they are applied and no changes, so I don't resend them.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 626883d..c2379b2 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -27,6 +27,7 @@
- #include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
-@@ -1024,7 +1025,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	struct phy_provider *provider;
- 	struct rockchip_usb2phy *rphy;
- 	const struct rockchip_usb2phy_cfg *phy_cfgs;
--	const struct of_device_id *match;
- 	unsigned int reg;
- 	int index, ret;
- 
-@@ -1032,11 +1032,9 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	if (!rphy)
- 		return -ENOMEM;
- 
--	match = of_match_device(dev->driver->of_match_table, dev);
--	if (!match || !match->data) {
--		dev_err(dev, "phy configs are not assigned!\n");
-+	phy_cfgs = of_device_get_match_data(dev);
-+	if (!phy_cfgs)
- 		return -EINVAL;
--	}
- 
- 	if (!dev->parent || !dev->parent->of_node)
- 		return -EINVAL;
-@@ -1052,7 +1050,6 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 	}
- 
- 	rphy->dev = dev;
--	phy_cfgs = match->data;
- 	rphy->chg_state = USB_CHG_STATE_UNDEFINED;
- 	rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
- 	platform_set_drvdata(pdev, rphy);
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index 6904633..f7dc0d6 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -21,6 +21,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -286,7 +287,6 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
- 	struct phy *generic_phy;
- 	struct phy_provider *phy_provider;
- 	struct regmap *grf;
--	const struct of_device_id *of_id;
- 
- 	grf = syscon_node_to_regmap(dev->parent->of_node);
- 	if (IS_ERR(grf)) {
-@@ -298,11 +298,10 @@ static int rockchip_pcie_phy_probe(struct platform_device *pdev)
- 	if (!rk_phy)
- 		return -ENOMEM;
- 
--	of_id = of_match_device(rockchip_pcie_phy_dt_ids, &pdev->dev);
--	if (!of_id)
-+	rk_phy->phy_data = of_device_get_match_data(dev);
-+	if (!rk_phy->phy_data)
- 		return -EINVAL;
- 
--	rk_phy->phy_data = (struct rockchip_pcie_data *)of_id->data;
- 	rk_phy->reg_base = grf;
- 
- 	rk_phy->phy_rst = devm_reset_control_get(dev, "phy");
-diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-index 3378eeb..7db1166 100644
---- a/drivers/phy/rockchip/phy-rockchip-usb.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-@@ -22,6 +22,7 @@
- #include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -417,7 +418,6 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_usb_phy_base *phy_base;
- 	struct phy_provider *phy_provider;
--	const struct of_device_id *match;
- 	struct device_node *child;
- 	int err;
- 
-@@ -425,13 +425,9 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 	if (!phy_base)
- 		return -ENOMEM;
- 
--	match = of_match_device(dev->driver->of_match_table, dev);
--	if (!match || !match->data) {
--		dev_err(dev, "missing phy data\n");
-+	phy_base->pdata = of_device_get_match_data(dev);
-+	if (!phy_base->pdata)
- 		return -EINVAL;
--	}
--
--	phy_base->pdata = match->data;
- 
- 	phy_base->dev = dev;
- 	phy_base->reg_base = ERR_PTR(-ENODEV);
--- 
-1.7.9.5
+I don't know Lee's workflow, but I'm not sure that is actually true.
+
+I.e. he added "for his own reference" Acked-for-MFD-by: tags to the
+patches, but did not apply them (and therefore you cannot find them on [0])
+
+So I'd think you might need to send everything again?
+
+
+Heiko
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git/log/?h=for-mfd-next
