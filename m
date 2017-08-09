@@ -1,43 +1,165 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH 0/3] drm: make drm_connector_funcs structures const
-Date: Wed, 9 Aug 2017 16:02:45 +0530
-Message-ID: <3bb03b50-5b73-4fee-2323-d3b67ed3553e@codeaurora.org>
-References: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bhumika Goyal <bhumirks@gmail.com>, julia.lawall@lip6.fr, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, mark.yao@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, maxime.ripard@free-electrons.com, wens@csie.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: rockchip: manipulate phy properly if failing to probe the driver
+Date: Wed,  9 Aug 2017 19:14:23 +0800
+Message-ID: <1502277263-187898-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwOC8wOC8yMDE3IDA0OjU4IFBNLCBCaHVtaWthIEdveWFsIHdyb3RlOgo+IERlY2xhcmUg
-ZHJtX2Nvbm5lY3Rvcl9mdW5jcyBzdHJ1Y3R1cmVzIGFzIGNvbnN0LgoKQ291bGQgeW91IHJlYmFz
-ZSB0aGlzIHNlcmllcyBvdmVyIHRoZSBsYXRlc3QgZHJtLW1pc2MtbmV4dD8gVGhlCnJlY2VudGx5
-IG1lcmdlZCBwYXRjaCAiZHJtOiBOdWtlIGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9kcG1z
-IgpjYXVzZXMgY29uZmxpY3RzIHdpdGggdGhlc2UuCgpkcm0tbWlzYy1uZXh0OgoKaHR0cHM6Ly9j
-Z2l0LmZyZWVkZXNrdG9wLm9yZy9kcm0vZHJtLW1pc2MvbG9nLwoKVGhhbmtzLApBcmNoaXQKCj4g
-Cj4gQmh1bWlrYSBHb3lhbCAoMyk6Cj4gICAgZHJtL2JyaWRnZTogbWFrZSBkcm1fY29ubmVjdG9y
-X2Z1bmNzIHN0cnVjdHVyZXMgY29uc3QKPiAgICBkcm0vc3VuNGk6IG1ha2UgZHJtX2Nvbm5lY3Rv
-cl9mdW5jcyBzdHJ1Y3R1cmVzIGNvbnN0Cj4gICAgZHJtL3JvY2tjaGlwOiBtYWtlIGRybV9jb25u
-ZWN0b3JfZnVuY3Mgc3RydWN0dXJlcyBjb25zdAo+IAo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hZHY3NTExL2Fkdjc1MTFfZHJ2LmMgfCAyICstCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvaW5ub19oZG1pLmMgICAgICAgICB8IDIgKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9z
-dW40aV9yZ2IuYyAgICAgICAgICAgIHwgMiArLQo+ICAgZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1
-bjRpX3R2LmMgICAgICAgICAgICAgfCAyICstCj4gICA0IGZpbGVzIGNoYW5nZWQsIDQgaW5zZXJ0
-aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPiAKCi0tIApRdWFsY29tbSBJbm5vdmF0aW9uIENlbnRl
-ciwgSW5jLiBpcyBhIG1lbWJlciBvZiBDb2RlIEF1cm9yYSBGb3J1bSwKYSBMaW51eCBGb3VuZGF0
-aW9uIENvbGxhYm9yYXRpdmUgUHJvamVjdApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+We observed that the clk_pciephy_ref is still enabled when we actually
+fail to probe the driver.
+
+root@linaro-alip:~# cat /sys/kernel/debug/clk/clk_summary | grep pcie
+clk_pciephy_ref			  1	1	 24000000	0 0
+clk_pcie_pm			  0	0	 24000000	0 0
+      clk_pcie_core_cru           0	0	125000000	0 0
+      clk_pciephy_ref100m         0	0	100000000	0 0
+		aclk_pcie         0	0	148500000	0 0
+		aclk_perf_pcie    0	0	148500000	0 0
+			pclk_pcie 0	0	 37125000	0 0
+clk_pcie_core                     0	0		0	0 0
+
+clk_pciephy_ref is used by phy driver and we need to properly disable
+it for this case. So this patch add error handle for the function of
+rockchip_pcie_init_port to fix this issue.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/pci/host/pcie-rockchip.c | 38 ++++++++++++++++++++++++--------------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 2eccd53..ce6371b 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -561,32 +561,32 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		err = phy_init(rockchip->phys[i]);
+ 		if (err) {
+ 			dev_err(dev, "init phy%d err %d\n", i, err);
+-			return err;
++			goto err_phy_exit;
+ 		}
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->core_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert core_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->mgmt_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert mgmt_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->mgmt_sticky_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->pipe_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert pipe_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	udelay(10);
+@@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	err = reset_control_deassert(rockchip->pm_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert pm_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->aclk_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert aclk_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->pclk_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert pclk_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	if (rockchip->link_gen == 2)
+@@ -628,7 +628,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		err = phy_power_on(rockchip->phys[i]);
+ 		if (err) {
+ 			dev_err(dev, "power on phy%d err %d\n", i, err);
+-			return err;
++			goto err_phy_power_off;
+ 		}
+ 	}
+ 
+@@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->core_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert core_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->mgmt_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->pipe_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert pipe_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	/* Fix the transmitted FTS count desired to exit from L0s. */
+@@ -690,7 +690,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 				 500 * USEC_PER_MSEC);
+ 	if (err) {
+ 		dev_err(dev, "PCIe link training gen1 timeout!\n");
+-		return -ETIMEDOUT;
++		err = -ETIMEDOUT;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	if (rockchip->link_gen == 2) {
+@@ -751,6 +752,15 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
+ 
+ 	return 0;
++
++err_phy_exit:
++	for (; i >= 0; --i)
++		phy_exit(rockchip->phys[i]);
++err_phy_power_off:
++	for (; i >= 0; --i)
++		phy_power_off(rockchip->phys[i]);
++
++	return err;
+ }
+ 
+ static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+-- 
+1.9.1
