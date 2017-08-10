@@ -1,27 +1,28 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 6/6] dt-bindings: Document the Rockchip RGA bindings
-Date: Thu, 10 Aug 2017 10:43:40 -0500
-Message-ID: <20170810154340.3ojgemwf64pyggek@rob-hp-laptop>
-References: <1501643987-27847-1-git-send-email-jacob-chen@iotwrt.com>
- <1501643987-27847-7-git-send-email-jacob-chen@iotwrt.com>
+Subject: Re: [PATCH v2 11/23] dt-bindings: i2c: rk3x: add support for rv1108
+Date: Thu, 10 Aug 2017 11:15:00 -0500
+Message-ID: <20170810161500.e3f4ufbqpqcng6v2@rob-hp-laptop>
+References: <1501662303-11687-1-git-send-email-andy.yan@rock-chips.com>
+ <1501663312-12310-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1501643987-27847-7-git-send-email-jacob-chen@iotwrt.com>
+In-Reply-To: <1501663312-12310-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca, Yakir Yang <ykk@rock-chips.com>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 02, 2017 at 11:19:47AM +0800, Jacob Chen wrote:
-> Add DT bindings documentation for Rockchip RGA
+On Wed, Aug 02, 2017 at 04:41:52PM +0800, Andy Yan wrote:
+> Add dt Document for i2c controller on rv1108
 > 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > ---
->  .../devicetree/bindings/media/rockchip-rga.txt     | 33 ++++++++++++++++++++++
->  1 file changed, 33 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
+> 
+> Changes in v2: None
+> 
+>  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
 Acked-by: Rob Herring <robh@kernel.org>
