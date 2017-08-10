@@ -1,32 +1,32 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 5/5] phy: rockchip-inno-usb2: add support of usb2-phy
- for rv1108 SoCs
-Date: Thu, 10 Aug 2017 12:07:18 -0500
-Message-ID: <20170810170718.vv74gtqdu4oaymo3@rob-hp-laptop>
-References: <1501747753-6983-1-git-send-email-frank.wang@rock-chips.com>
- <1501747831-13520-1-git-send-email-frank.wang@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: rockchip-thermal: Support the RK3328
+ SoC compatible
+Date: Thu, 10 Aug 2017 12:49:47 -0500
+Message-ID: <20170810174947.r2wl4c4zimkyhamj@rob-hp-laptop>
+References: <1501833976-1100-1-git-send-email-rocky.hao@rock-chips.com>
+ <1501833976-1100-2-git-send-email-rocky.hao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1501747831-13520-1-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+In-Reply-To: <1501833976-1100-2-git-send-email-rocky.hao@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Rocky Hao <rocky.hao@rock-chips.com>
+Cc: rui.zhang@intel.com, edubezval@gmail.com, heiko@sntech.de, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 03, 2017 at 04:10:31PM +0800, Frank Wang wrote:
-> This adds support usb2-phy for rv1108 SoCs and amend phy Documentation.
+On Fri, Aug 04, 2017 at 04:06:12PM +0800, Rocky Hao wrote:
+> attempt to new compatible for thermal founding on RK3328 SoC.
+
+? "Add a new compatible..."
+
 > 
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
 > ---
->  .../bindings/phy/phy-rockchip-inno-usb2.txt        |  1 +
+> Change in v2:
+> - remove gerrit Change-Id
+> 
+>  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c      | 43 ++++++++++++++++++++++
->  2 files changed, 44 insertions(+)
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Rob Herring <robh@kernel.org>
