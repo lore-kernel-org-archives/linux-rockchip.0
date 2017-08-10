@@ -1,159 +1,51 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
-Date: Thu, 10 Aug 2017 19:18:43 +0800
-Message-ID: <1502363923-19946-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: set PLLs and core clocks rates for RK3188
+Date: Thu, 10 Aug 2017 13:46:25 +0200
+Message-ID: <20170810114625.28823-1-romain.perier@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-With CONFIG_DEBUG_SHIRQ enabled, the irq tear down routine
-would still access the irq handler registed as a shard irq.
-Per the comment within the function of __free_irq, it says
-"It's a shared IRQ -- the driver ought to be prepared for
-an IRQ event to happen even now it's being freed". However
-when failing to probe the driver, it may disable the clock
-for accessing the register and the following check for shared
-irq state would call the irq handler which accesses the register
-w/o the clk enabled. That will hang the system forever.
+Currently, rates for PLLs or core peri clocks are not set to a specific
+rate when booting the kernel. Depending on the previously used
+bootloader the state of the clk tree can be good or not.
 
-With adding some dump_stack we could see how that happened.
+This commits set PLLs and core clocks rates by using the
+assigned-clocks property in CRU (like for RK3288)
 
-calling  rockchip_pcie_driver_init+0x0/0x28 @ 1
-rockchip-pcie f8000000.pcie: no vpcie3v3 regulator found
-rockchip-pcie f8000000.pcie: no vpcie1v8 regulator found
-rockchip-pcie f8000000.pcie: no vpcie0v9 regulator found
-rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
-CPU: 0 PID: 1 Comm: swapper/0 Not tainted
-4.13.0-rc3-next-20170807-ARCH+ #189
-Hardware name: Firefly-RK3399 Board (DT)
-Call trace:
-[<ffff000008089bf0>] dump_backtrace+0x0/0x250
-[<ffff000008089eb0>] show_stack+0x20/0x28
-[<ffff000008c3313c>] dump_stack+0x90/0xb0
-[<ffff000008632ad4>] rockchip_pcie_read.isra.11+0x54/0x58
-[<ffff0000086334fc>] rockchip_pcie_client_irq_handler+0x30/0x1a0
-[<ffff00000813ce98>] __free_irq+0x1c8/0x2dc
-[<ffff00000813d044>] free_irq+0x44/0x74
-[<ffff0000081415fc>] devm_irq_release+0x24/0x2c
-[<ffff00000877429c>] release_nodes+0x1d8/0x30c
-[<ffff000008774838>] devres_release_all+0x3c/0x5c
-[<ffff00000876f19c>] driver_probe_device+0x244/0x494
-[<ffff00000876f50c>] __driver_attach+0x120/0x124
-[<ffff00000876cb80>] bus_for_each_dev+0x6c/0xac
-[<ffff00000876e984>] driver_attach+0x2c/0x34
-[<ffff00000876e3a4>] bus_add_driver+0x244/0x2b0
-[<ffff000008770264>] driver_register+0x70/0x110
-[<ffff0000087718b4>] platform_driver_register+0x60/0x6c
-[<ffff0000091eb108>] rockchip_pcie_driver_init+0x20/0x28
-[<ffff000008083a2c>] do_one_initcall+0xc8/0x130
-[<ffff0000091a0ea8>] kernel_init_freeable+0x1a0/0x238
-[<ffff000008c461cc>] kernel_init+0x18/0x108
-[<ffff0000080836c0>] ret_from_fork+0x10/0x50
-
-In order to fix this, we remove all the clock-disabling from
-the error handle path and driver's remove function. And replying
-on the devm_add_action_or_reset to fire the clock-disabling at
-the appropriate time.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
+Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
+ arch/arm/boot/dts/rk3188.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Changes in v2:
-- use devm_add_action_or_reset to fix this ordering suggested by
-  Heiko and Jeffy. Thanks!
-
- drivers/pci/host/pcie-rockchip.c | 33 +++++++++++++++++----------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 39aafe2..7713561 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -939,6 +939,16 @@ static int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip)
- 	return 0;
- }
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 1399bc04ea77..de6bde651cc2 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -160,6 +160,17 @@
  
-+static void rockchip_pcie_disable_clocks(void *data)
-+{
-+	struct rockchip_pcie *rockchip = data;
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
++		assigned-clocks = <&cru PLL_GPLL>, <&cru PLL_DPLL>,
++				  <&cru PLL_CPLL>, <&cru PLL_APLL>,
++				  <&cru ACLK_CPU>, <&cru HCLK_CPU>,
++				  <&cru PCLK_CPU>, <&cru ACLK_PERI>,
++				  <&cru HCLK_PERI>, <&cru PCLK_PERI>;
 +
-+	clk_disable_unprepare(rockchip->clk_pcie_pm);
-+	clk_disable_unprepare(rockchip->hclk_pcie);
-+	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-+	clk_disable_unprepare(rockchip->aclk_pcie);
-+}
-+
- /**
-  * rockchip_pcie_parse_dt - Parse Device Tree
-  * @rockchip: PCIe port information
-@@ -1071,6 +1081,9 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		return -EINVAL;
- 	}
++		assigned-clock-rates = <891000000>, <300000000>,
++				       <132000000>, <312000000>,
++				       <148500000>, <148500000>,
++				       <74250000>, <127285715>,
++				       <127285715>, <63642858>;
+ 	};
  
-+	devm_add_action_or_reset(dev,
-+				 rockchip_pcie_disable_clocks, rockchip);
-+
- 	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
- 			       IRQF_SHARED, "pcie-sys", rockchip);
- 	if (err) {
-@@ -1493,25 +1506,25 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	err = clk_prepare_enable(rockchip->aclk_pcie);
- 	if (err) {
- 		dev_err(dev, "unable to enable aclk_pcie clock\n");
--		goto err_aclk_pcie;
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
- 	if (err) {
- 		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
--		goto err_aclk_perf_pcie;
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(rockchip->hclk_pcie);
- 	if (err) {
- 		dev_err(dev, "unable to enable hclk_pcie clock\n");
--		goto err_hclk_pcie;
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(rockchip->clk_pcie_pm);
- 	if (err) {
- 		dev_err(dev, "unable to enable hclk_pcie clock\n");
--		goto err_pcie_pm;
-+		return err;
- 	}
- 
- 	err = rockchip_pcie_set_vpcie(rockchip);
-@@ -1615,14 +1628,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (!IS_ERR(rockchip->vpcie0v9))
- 		regulator_disable(rockchip->vpcie0v9);
- err_set_vpcie:
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--err_pcie_pm:
--	clk_disable_unprepare(rockchip->hclk_pcie);
--err_hclk_pcie:
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--err_aclk_perf_pcie:
--	clk_disable_unprepare(rockchip->aclk_pcie);
--err_aclk_pcie:
- 	return err;
- }
- 
-@@ -1644,10 +1649,6 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
- 		phy_exit(rockchip->phys[i]);
- 	}
- 
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->aclk_pcie);
- 
- 	if (!IS_ERR(rockchip->vpcie12v))
- 		regulator_disable(rockchip->vpcie12v);
+ 	efuse: efuse@20010000 {
 -- 
-1.9.1
+2.11.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
