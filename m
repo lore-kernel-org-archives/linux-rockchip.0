@@ -1,52 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: phy-rockchip-inno-usb2: add
- companion grf quirk
-Date: Thu, 10 Aug 2017 12:05:08 -0500
-Message-ID: <20170810170508.pwf35mud4ffnrzzd@rob-hp-laptop>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 4/5] dt-bindings: phy-rockchip-inno-usb2: add otg-mux
+ interrupt
+Date: Thu, 10 Aug 2017 12:06:40 -0500
+Message-ID: <20170810170640.xdntfubu3lzoqsad@rob-hp-laptop>
 References: <1501747753-6983-1-git-send-email-frank.wang@rock-chips.com>
- <1501747753-6983-3-git-send-email-frank.wang@rock-chips.com>
+ <1501747753-6983-5-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1501747753-6983-3-git-send-email-frank.wang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: heiko@sntech.de, kishon@ti.com, mark.rutland@arm.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, william.wu@rock-chips.com, daniel.meng@rock-chips.com, kever.yang@rock-chips.com, andy.yan@rock-chips.com, wmc@rock-chips.com
+In-Reply-To: <1501747753-6983-5-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 03, 2017 at 04:09:10PM +0800, Frank Wang wrote:
-> Add rockchip,usbgrf and rockchip,companion_grf_quirk to support
-> the registers of usb-phy that are distributed in grf and usbgrf
-> on some special Rockchip SoCs (e.g RV1108).
+On Thu, Aug 03, 2017 at 04:09:12PM +0800, Frank Wang wrote:
+> Add otg-mux property to support multiplexed interrupt in otg-port
+> on some Rockchip SoC (e.g RV1108).
 > 
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt | 4 ++++
->  1 file changed, 4 insertions(+)
+>  Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 > 
 > diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> index 84d59b0..ddf868a 100644
+> index ddf868a..ed6aee4 100644
 > --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
 > +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> @@ -18,6 +18,10 @@ Optional properties:
->  		 usb-phy output 480m and xin24m.
->  		 Refer to clk/clock-bindings.txt for generic clock
->  		 consumer properties.
-> + - rockchip,usbgrf : phandle to the syscon managing the "usb general
-> +		 register files".
-> + - rockchip,companion_grf_quirk : when set driver will request
-> +		 "rockchip,usbgrf" phandle as one companion-grf.
+> @@ -32,10 +32,14 @@ Required nodes : a sub-node is required for each port the phy provides.
+>  Required properties (port (child) node):
+>   - #phy-cells : must be 0. See ./phy-bindings.txt for details.
+>   - interrupts : specify an interrupt for each entry in interrupt-names.
+> - - interrupt-names : a list which shall be the following entries:
+> + - interrupt-names : a list which should be one of the following cases:
+> +	Regular case:
+>  	* "otg-id" : for the otg id interrupt.
+>  	* "otg-bvalid" : for the otg vbus interrupt.
+>  	* "linestate" : for the host/otg linestate interrupt.
+> +	Some SoCs use one interrupt with the obove muxed together, so for these
 
-Why isn't presence of rockchip,usbgrf or being implied by an SoC 
-specific compatible string enough? 
+s/obove/above/
 
-In any case, use '-' rather than '_'.
+With that,
 
->  
->  Required nodes : a sub-node is required for each port the phy provides.
->  		 The sub-node name is used to identify host or otg port,
-> -- 
-> 2.0.0
-> 
-> 
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
