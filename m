@@ -1,32 +1,101 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: rockchip-thermal: Support the RK3328
- SoC compatible
-Date: Thu, 10 Aug 2017 12:49:47 -0500
-Message-ID: <20170810174947.r2wl4c4zimkyhamj@rob-hp-laptop>
-References: <1501833976-1100-1-git-send-email-rocky.hao@rock-chips.com>
- <1501833976-1100-2-git-send-email-rocky.hao@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH 3/3] drm/rockchip: Add support for Rockchip Soc LVDS
+Date: Thu, 10 Aug 2017 14:05:19 -0400
+Message-ID: <20170810180519.ezndiczwpheac4ih@art_vandelay>
+References: <1502272846-63941-1-git-send-email-hjc@rock-chips.com>
+ <1502272861-64226-1-git-send-email-hjc@rock-chips.com>
+ <20170809195812.vtndofimdiojb4cr@art_vandelay>
+ <d24020c6-ef7f-6c7d-b655-99e56c8760d5@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1501833976-1100-2-git-send-email-rocky.hao@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Rocky Hao <rocky.hao@rock-chips.com>
-Cc: rui.zhang@intel.com, edubezval@gmail.com, heiko@sntech.de, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com
+In-Reply-To: <d24020c6-ef7f-6c7d-b655-99e56c8760d5@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sandy Huang <sandy.huang@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Aug 04, 2017 at 04:06:12PM +0800, Rocky Hao wrote:
-> attempt to new compatible for thermal founding on RK3328 SoC.
-
-? "Add a new compatible..."
-
-> 
-> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
-> ---
-> Change in v2:
-> - remove gerrit Change-Id
-> 
->  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 1 +
->  1 file changed, 1 insertion(+)
-
-Acked-by: Rob Herring <robh@kernel.org>
+T24gVGh1LCBBdWcgMTAsIDIwMTcgYXQgMDU6MzU6NTJQTSArMDgwMCwgU2FuZHkgSHVhbmcgd3Jv
+dGU6Cj4gSGkgU2VhbiBQYXVsLAo+ICAgICBUaGFua3MgZm9yIHlvdXIgcmV2aWV3Lgo+IAo+IOWc
+qCAyMDE3LzgvMTAgMzo1OCwgU2VhbiBQYXVsIOWGmemBkzoKPiA+IE9uIFdlZCwgQXVnIDA5LCAy
+MDE3IGF0IDA2OjAwOjU5UE0gKzA4MDAsIFNhbmR5IEh1YW5nIHdyb3RlOgo+ID4gPiBUaGlzIGFk
+ZHMgc3VwcG9ydCBmb3IgUm9ja2NoaXAgc29jIGx2ZHMgZm91bmQgb24gcmszMjg4Cj4gPiA+IEJh
+c2VkIG9uIHRoZSBwYXRjaGVzIGZyb20gTWFyayB5YW8gYW5kIEhlaWtvIFN0dWVibmVyCj4gPiA+
+IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+
+ID4gPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4g
+PiA+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gPiA+
+IC0tLQo+ID4gPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgfCAg
+IDkgKwo+ID4gPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgfCAg
+IDEgKwo+ID4gPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgfCA3
+MzQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gPiAgIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmggfCAxMTIgKysrKysKPiA+ID4gICA0IGZpbGVzIGNo
+YW5nZWQsIDg1NiBpbnNlcnRpb25zKCspCj4gPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKPiA+ID4gICBjcmVhdGUgbW9kZSAx
+MDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuaAo+ID4gPiAKCjxz
+bmlwIC8+Cgo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2x2ZHMuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKPiA+
+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+ID4gaW5kZXggMDAwMDAwMC4uYTRhZDNmMAo+ID4g
+PiAtLS0gL2Rldi9udWxsCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9sdmRzLmMKCjxzbmlwIC8+Cgo+ID4gPiArCWx2ZHMtPmRybV9kZXYgPSBkcm1fZGV2Owo+
+ID4gPiArCXBvcnQgPSBvZl9ncmFwaF9nZXRfcG9ydF9ieV9pZChkZXYtPm9mX25vZGUsIDEpOwo+
+ID4gPiArCWlmICghcG9ydCkgewo+ID4gPiArCQlkZXZfZXJyKGRldiwgImNhbid0IGZvdW5kIHBv
+cnQgcG9pbnQsIHBsZWFzZSBpbml0IGx2ZHMgcGFuZWwgcG9ydCFcbiIpOwo+ID4gPiArCQlyZXR1
+cm4gLUVJTlZBTDsKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+ID4gKwlmb3JfZWFjaF9jaGlsZF9vZl9u
+b2RlKHBvcnQsIGVuZHBvaW50KSB7Cj4gPiA+ICsJCXJlbW90ZSA9IG9mX2dyYXBoX2dldF9yZW1v
+dGVfcG9ydF9wYXJlbnQoZW5kcG9pbnQpOwo+ID4gPiArCQlpZiAoIXJlbW90ZSkgewo+ID4gPiAr
+CQkJZGV2X2VycihkZXYsICJjYW4ndCBmb3VuZCBwYW5lbCBub2RlLCBwbGVhc2UgaW5pdCFcbiIp
+Owo+ID4gPiArCQkJcmV0ID0gLUVJTlZBTDsKPiA+ID4gKwkJCWdvdG8gZXJyX3B1dF9wb3J0Owo+
+ID4gPiArCQl9Cj4gPiA+ICsJCWlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShyZW1vdGUpKSB7
+Cj4gPiA+ICsJCQlvZl9ub2RlX3B1dChyZW1vdGUpOwo+ID4gPiArCQkJcmVtb3RlID0gTlVMTDsK
+PiA+ID4gKwkJCWNvbnRpbnVlOwo+ID4gPiArCQl9Cj4gPiA+ICsJCWJyZWFrOwo+ID4gPiArCX0K
+PiA+ID4gKwlpZiAoIXJlbW90ZSkgewo+ID4gPiArCQlkZXZfZXJyKGRldiwgImNhbid0IGZvdW5k
+IHJlbW90ZSBub2RlLCBwbGVhc2UgaW5pdCFcbiIpOwo+ID4gPiArCQlyZXQgPSAtRUlOVkFMOwo+
+ID4gPiArCQlnb3RvIGVycl9wdXRfcG9ydDsKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+ID4gKwlsdmRz
+LT5wYW5lbCA9IG9mX2RybV9maW5kX3BhbmVsKHJlbW90ZSk7Cj4gPiA+ICsJaWYgKCFsdmRzLT5w
+YW5lbCkKPiA+ID4gKwkJbHZkcy0+YnJpZGdlID0gb2ZfZHJtX2ZpbmRfYnJpZGdlKHJlbW90ZSk7
+Cj4gPiAKPiA+IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgpCj4gPiAKPiAKPiBiZWNhdXNl
+IHRoZSBsdmRzIHBvcnRzIG1heWJlIGNvbm5lY3QgdG8gbHZkcy1wYW5lbCBvciBjb25uZWN0IHRv
+Cj4gcmsxMDAwKHdoaWNoIGlzIGNvbnZlcnQgUkdCIHRvIENWQlMgb3V0cHV0KSwgc28gaSBoYXZl
+IHRvIGdldCB0aGUgcmVtb3RlCj4gcG9ydCBwYXJlbnQgYW5kIGNoZWNrIHRoZSBzdGF0dXMsIGFu
+ZCBmaW5hbCBnZXQgdGhlIGFjdGl2ZSByZW1vdGUgcG9pbnQuCj4gCgoKCj4gbHZkc19wYW5lbDog
+bHZkcy1wYW5lbCB7Cj4gCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gCXBvcnRzIHsKPiAJCXBhbmVs
+X2luX2x2ZHM6IGVuZHBvaW50IHsKPiAJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jmx2ZHNfb3V0X3Bh
+bmVsPjsKPiAJCX07Cj4gCX07Cj4gfTsKPiAKPiByazEwMDA6IHJrMTAwMEAweGZmMDAwMDAwIHsK
+PiAJc3RhdHVzID0gIm9rYXkiOwo+IAlwb3J0cyB7Cj4gCQlyazEwMDBfaW5fbHZkczogZW5kcG9p
+bnQgewo+IAkJCXJlbW90ZS1lbmRwb2ludCA9IDwmbHZkc19vdXRfcGFuZWw+Owo+IAkJfTsKPiAJ
+fTsKPiB9Owo+IAo+ICZsdmRzIHsKPiAJc3RhdHVzID0gIm9rYXkiOwo+IAlwb3J0cyB7Cj4gCQls
+dmRzX291dDogcG9ydEAxIHsKPiAJCQlyZWcgPSA8MT47Cj4gCQkJbHZkc19vdXRfcGFuZWw6IGVu
+ZHBvaW50QDAgewo+IAkJCQlyZWcgPSA8MD47Cj4gCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmcGFu
+ZWxfaW5fbHZkcz47Cj4gCQkJfTsKPiAJCQlsdmRzX291dF9yazEwMDA6IGVuZHBvaW50QDEgewo+
+IAkJCQlyZWcgPSA8MT47Cj4gCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmcmsxMDAwX2luX2x2ZHM+
+Owo+IAkJCX07Cj4gCQl9Owo+IAo+IAl9Owo+IH07CgpIaSBTYW5keSwKRm9yZ2l2ZSBtZSwgdGhp
+cyBpcyBwcm9iYWJseSBhIHN0dXBpZCBxdWVzdGlvbi4gSSBkb24ndCBzZWUgaG93IHRoaXMgdXNl
+Y2FzZSBpcwp1bmlxdWUgZnJvbSB0aGUgb3RoZXIgdXNlcnMgb2YgZHJtX29mX2ZpbmRfcGFuZWxf
+b3JfYnJpZGdlLiBDb3VsZG4ndCB5b3UgY2hhbmdlCnlvdXIgZGV2aWNldHJlZSBiaW5kaW5ncyB0
+byBjb25mb3JtIHRvIHNvbWV0aGluZyBkcm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UoKQpjYW4g
+d29yayB3aXRoPwoKVGhhbmsgeW91LAoKU2VhbgoKPHNuaXAgLz4KCj4gPiA+IC0tIAo+ID4gPiAy
+LjcuNAo+ID4gPiAKPiA+ID4gCj4gPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCj4gPiA+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiA+ID4gZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+ID4gPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+ID4gCj4gCj4gLS0gCj4gQmVzdCBSZWdh
+cmQKPiAKPiDpu4TlrrbpkpcKPiBTYW5keSBIdWFuZwo+IOemj+W3nueRnuiKr+W+rueUteWtkOiC
+oeS7veaciemZkOWFrOWPuC3lm77lvaLkuI7mmL7npLrns7vnu5/pg6jpl6gKPiBGdXpob3UgUm9j
+a2NoaXAgRWxlY3Ryb25pY3MgQ28uTHRkIC0gR3JhcGhpY3MgJiBEaXNwbGF5IERlcHQuCj4gQWRk
+cjog56aP5bee5biC6byT5qW85Yy66ZOc55uY6Lev6L2v5Lu25aSn6YGTODnlj7fnpo/lt57ova/k
+u7blm61B5Yy6MjHlj7fmpbwoMzUwMDAzKQo+ICAgICAgICAgIE5vLiAyMSBCdWlsZGluZywgQSBE
+aXN0cmljdCwgTm8uODksc29mdHdhcmUgQm91bGV2YXJkCj4gRnV6aG91LEZ1amlhbixQUkMKPiBU
+ZWzvvJorODYgMDU5MS04Nzg4NDkxOSAgODY5MAo+IEUtbWFpbO+8mmhqY0Byb2NrLWNoaXBzLmNv
+bQo+IAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVt
+IE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
