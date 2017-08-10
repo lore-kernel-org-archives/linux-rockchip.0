@@ -1,45 +1,69 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v2 3/3] dt-bindings: ASoC: rockchip: Add rockchip,codec-names property
-Date: Thu, 10 Aug 2017 12:54:58 +0800
-Message-ID: <1502340898-28403-4-git-send-email-jeffy.chen@rock-chips.com>
-References: <1502340898-28403-1-git-send-email-jeffy.chen@rock-chips.com>
+From: Bhumika Goyal <bhumirks@gmail.com>
+Subject: Re: [PATCH 0/3] drm: make drm_connector_funcs structures const
+Date: Thu, 10 Aug 2017 11:50:45 +0530
+Message-ID: <CAOH+1jEPKTEro=zPO7bzFLdHE_eMF3_n+6sjVWPJ-p-M37+M=g@mail.gmail.com>
+References: <1502191712-11231-1-git-send-email-bhumirks@gmail.com>
+ <3bb03b50-5b73-4fee-2323-d3b67ed3553e@codeaurora.org> <20170809163742.t6vl4rpzarmlyyrh@phenom.ffwll.local>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502340898-28403-1-git-send-email-jeffy.chen@rock-chips.com>
+In-Reply-To: <20170809163742.t6vl4rpzarmlyyrh@phenom.ffwll.local>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de
-Cc: briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Archit Taneja <architt@codeaurora.org>, Bhumika Goyal <bhumirks@gmail.com>, Julia Lawall <julia.lawall@lip6.fr>, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Mark yao <mark.yao@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, maxime.ripard@free-electrons.com, Chen-Yu Tsai <wens@csie.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a new rockchip,codec-names property, so that the driver can parse
-the codecs by name.
+On Wed, Aug 9, 2017 at 10:07 PM, Daniel Vetter <daniel@ffwll.ch> wrote:
+> On Wed, Aug 09, 2017 at 04:02:45PM +0530, Archit Taneja wrote:
+>>
+>>
+>> On 08/08/2017 04:58 PM, Bhumika Goyal wrote:
+>> > Declare drm_connector_funcs structures as const.
+>>
+>> Could you rebase this series over the latest drm-misc-next? The
+>> recently merged patch "drm: Nuke drm_atomic_helper_connector_dpms"
+>> causes conflicts with these.
+>
+> I got bored and fixed up the conflicts (wiggle pulled it off). All
+> applied, no need to resend.
+>
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
+Thank you :)
 
-Changes in v2:
-Let rockchip,codec-names be a required property.
+Thanks,
+Bhumika
 
- Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-index eac91db..05351df 100644
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
-@@ -5,6 +5,7 @@ Required properties:
- - rockchip,cpu: The phandle of the Rockchip I2S controller that's
-   connected to the codecs
- - rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
-+- rockchip,codec-names: The names of the MAX98357A/RT5514/DA7219 codecs
- 
- Optional properties:
- - dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
-@@ -18,5 +19,6 @@ sound {
- 	compatible = "rockchip,rk3399-gru-sound";
- 	rockchip,cpu = <&i2s0>;
- 	rockchip,codec = <&max98357a &rt5514 &da7219>;
-+	rockchip,codec-names = "MAX98357A", "RT5514", "DA7219";
- 	dmic-wakeup-delay-ms = <20>;
- };
--- 
-2.1.4
+> Thanks, Daniel
+>
+>>
+>> drm-misc-next:
+>>
+>> https://cgit.freedesktop.org/drm/drm-misc/log/
+>>
+>> Thanks,
+>> Archit
+>>
+>> >
+>> > Bhumika Goyal (3):
+>> >    drm/bridge: make drm_connector_funcs structures const
+>> >    drm/sun4i: make drm_connector_funcs structures const
+>> >    drm/rockchip: make drm_connector_funcs structures const
+>> >
+>> >   drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 2 +-
+>> >   drivers/gpu/drm/rockchip/inno_hdmi.c         | 2 +-
+>> >   drivers/gpu/drm/sun4i/sun4i_rgb.c            | 2 +-
+>> >   drivers/gpu/drm/sun4i/sun4i_tv.c             | 2 +-
+>> >   4 files changed, 4 insertions(+), 4 deletions(-)
+>> >
+>>
+>> --
+>> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+>> a Linux Foundation Collaborative Project
+>> _______________________________________________
+>> dri-devel mailing list
+>> dri-devel@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
