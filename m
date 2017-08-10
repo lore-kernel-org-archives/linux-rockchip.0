@@ -1,66 +1,193 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH v4 05/12] Documentation: net: phy: Add phy-is-internal
- binding
-Date: Thu, 10 Aug 2017 02:20:41 +0200
-Message-ID: <20170810002041.GA10776@lunn.ch>
-References: <1502280475-736-1-git-send-email-david.wu@rock-chips.com>
- <1502280630-2254-1-git-send-email-david.wu@rock-chips.com>
- <778B0470-8ABD-46AD-A63D-F0CF4911C800@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <778B0470-8ABD-46AD-A63D-F0CF4911C800@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: David Wu <david.wu@rock-chips.com>, davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de, peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2] PCI: rockchip: manipulate phy properly if failing to probe the driver
+Date: Thu, 10 Aug 2017 08:36:31 +0800
+Message-ID: <1502325391-32492-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 09, 2017 at 03:47:34PM -0700, Florian Fainelli wrote:
-> On August 9, 2017 5:10:30 AM PDT, David Wu <david.wu@rock-chips.com> wrote:
-> >Add the documentation for internal phy. A boolean property
-> >indicates that a internal phy will be used.
-> >
-> >Signed-off-by: David Wu <david.wu@rock-chips.com>
-> >---
-> > Documentation/devicetree/bindings/net/phy.txt | 3 +++
-> > 1 file changed, 3 insertions(+)
-> >
-> >diff --git a/Documentation/devicetree/bindings/net/phy.txt
-> >b/Documentation/devicetree/bindings/net/phy.txt
-> >index b558576..942c892 100644
-> >--- a/Documentation/devicetree/bindings/net/phy.txt
-> >+++ b/Documentation/devicetree/bindings/net/phy.txt
-> >@@ -52,6 +52,9 @@ Optional Properties:
-> >   Mark the corresponding energy efficient ethernet mode as broken and
-> >   request the ethernet to stop advertising it.
-> > 
-> >+- phy-is-internal: If set, indicates that phy will connect to the MAC
-> >as a
-> >+  internal phy.
-> 
-> Something along the lines of:
-> 
-> If set, indicates that the PHY is integrated into the same physical package as the Ethernet MAC.
+We observed that the clk_pciephy_ref is still enabled when we actually
+fail to probe the driver.
 
-Hi Florian, David.
+root@linaro-alip:~# cat /sys/kernel/debug/clk/clk_summary | grep pcie
+clk_pciephy_ref			  1	1	 24000000	0 0
+clk_pcie_pm			  0	0	 24000000	0 0
+      clk_pcie_core_cru           0	0	125000000	0 0
+      clk_pciephy_ref100m         0	0	100000000	0 0
+		aclk_pcie         0	0	148500000	0 0
+		aclk_perf_pcie    0	0	148500000	0 0
+			pclk_pcie 0	0	 37125000	0 0
+clk_pcie_core                     0	0		0	0 0
 
-I'm happy with the property name. But i think the text needs more
-description. We deal with Ethernet switches with integrated PHYs. Yet
-for us, this property is unneeded.
+clk_pciephy_ref is used by phy driver and we need to properly disable
+it for this case. So this patch add error handle for the function of
+rockchip_pcie_init_port to fix this issue.
 
-Seeing this property means some bit of software needs to ensure the
-internal PHY should be used, when given the choice between an internal
-and external PHY. So i would say something like:
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-    If set, indicates that the PHY is integrated into the same
-    physical package as the Ethernet MAC. If needed, muxers should be
-    configured to ensure the internal PHY is used. The absence of this
-    property indicates the muxers should be configured so that the
-    external PHY is used.
+---
 
-This last part is important. If the bootloader has set the internal
-PHY to be used, you need to reset it. Otherwise we are going to get
-into a mess sometime later and need to add a phy-is-external property.
+Changes in v2:
+- introduce two new variables init and pwron for simply the logic
+  of handle different kinds of failure cases
 
-     Andrew
+ drivers/pci/host/pcie-rockchip.c | 52 ++++++++++++++++++++++++----------------
+ 1 file changed, 31 insertions(+), 21 deletions(-)
+
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 2eccd53..39aafe2 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -534,7 +534,7 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
+ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ {
+ 	struct device *dev = rockchip->dev;
+-	int err, i;
++	int err, i, init, pwron;
+ 	u32 status;
+ 
+ 	gpiod_set_value(rockchip->ep_gpio, 0);
+@@ -557,36 +557,36 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
+-	for (i = 0; i < MAX_LANE_NUM; i++) {
+-		err = phy_init(rockchip->phys[i]);
++	for (init = 0; init < MAX_LANE_NUM; init++) {
++		err = phy_init(rockchip->phys[init]);
+ 		if (err) {
+-			dev_err(dev, "init phy%d err %d\n", i, err);
+-			return err;
++			dev_err(dev, "init phy%d err %d\n", init, err);
++			goto err_phy_exit;
+ 		}
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->core_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert core_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->mgmt_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert mgmt_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->mgmt_sticky_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_assert(rockchip->pipe_rst);
+ 	if (err) {
+ 		dev_err(dev, "assert pipe_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	udelay(10);
+@@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	err = reset_control_deassert(rockchip->pm_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert pm_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->aclk_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert aclk_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->pclk_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert pclk_rst err %d\n", err);
+-		return err;
++		goto err_phy_exit;
+ 	}
+ 
+ 	if (rockchip->link_gen == 2)
+@@ -624,11 +624,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 			    PCIE_CLIENT_MODE_RC,
+ 			    PCIE_CLIENT_CONFIG);
+ 
+-	for (i = 0; i < MAX_LANE_NUM; i++) {
+-		err = phy_power_on(rockchip->phys[i]);
++	for (pwron = 0; pwron < MAX_LANE_NUM; pwron++) {
++		err = phy_power_on(rockchip->phys[pwron]);
+ 		if (err) {
+-			dev_err(dev, "power on phy%d err %d\n", i, err);
+-			return err;
++			dev_err(dev, "power on phy%d err %d\n", pwron, err);
++			goto err_phy_power_off;
+ 		}
+ 	}
+ 
+@@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->core_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert core_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->mgmt_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	err = reset_control_deassert(rockchip->pipe_rst);
+ 	if (err) {
+ 		dev_err(dev, "deassert pipe_rst err %d\n", err);
+-		return err;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	/* Fix the transmitted FTS count desired to exit from L0s. */
+@@ -690,7 +690,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 				 500 * USEC_PER_MSEC);
+ 	if (err) {
+ 		dev_err(dev, "PCIe link training gen1 timeout!\n");
+-		return -ETIMEDOUT;
++		err = -ETIMEDOUT;
++		goto err_phy_power_off;
+ 	}
+ 
+ 	if (rockchip->link_gen == 2) {
+@@ -751,6 +752,15 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+ 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
+ 
+ 	return 0;
++
++err_phy_power_off:
++	for (i = 0; i < init; i++)
++		phy_power_off(rockchip->phys[i]);
++err_phy_exit:
++	for (i = 0; i < pwron; i++)
++		phy_exit(rockchip->phys[i]);
++
++	return err;
+ }
+ 
+ static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+-- 
+1.9.1
