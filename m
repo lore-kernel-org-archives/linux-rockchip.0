@@ -1,30 +1,54 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 19/23] dt-bindings: adc: add description for rv1108
- saradc
-Date: Thu, 10 Aug 2017 11:18:00 -0500
-Message-ID: <20170810161800.m63tavdrawwkqejv@rob-hp-laptop>
-References: <1501662303-11687-1-git-send-email-andy.yan@rock-chips.com>
- <1501663953-12768-1-git-send-email-andy.yan@rock-chips.com>
+From: SF Markus Elfring <elfring@users.sourceforge.net>
+Subject: [PATCH] ASoC: rockchip: Delete an error message for a
+ failed memory allocation in rockchip_i2s_probe()
+Date: Thu, 10 Aug 2017 18:46:28 +0200
+Message-ID: <85e3e6a2-ecbd-5988-2460-d4f8ca6062f9@users.sourceforge.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1501663953-12768-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-iio@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Language: en-GB
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>
+Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 02, 2017 at 04:52:33PM +0800, Andy Yan wrote:
-> Add device tree bindings document for saradc on
-> rockchip rv1108 soc.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
-> 
-> Changes in v2: None
-> 
->  Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt | 1 +
->  1 file changed, 1 insertion(+)
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Thu, 10 Aug 2017 18:38:09 +0200
 
-Acked-by: Rob Herring <robh@kernel.org>
+Omit an extra message for a memory allocation failure in this function.
+
+This issue was detected by using the Coccinelle software.
+
+Link: http://events.linuxfoundation.org/sites/events/files/slides/LCJ16-Refactor_Strings-WSang_0.pdf
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 199338fdeda0..b6590467fd14 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -579,10 +579,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	int val;
+ 
+ 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
+-	if (!i2s) {
+-		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
++	if (!i2s)
+ 		return -ENOMEM;
+-	}
+ 
+ 	i2s->dev = &pdev->dev;
+ 
+-- 
+2.14.0
