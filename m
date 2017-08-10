@@ -1,54 +1,52 @@
-From: SF Markus Elfring <elfring@users.sourceforge.net>
-Subject: [PATCH] ASoC: rockchip: Delete an error message for a
- failed memory allocation in rockchip_i2s_probe()
-Date: Thu, 10 Aug 2017 18:46:28 +0200
-Message-ID: <85e3e6a2-ecbd-5988-2460-d4f8ca6062f9@users.sourceforge.net>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 2/5] dt-bindings: phy-rockchip-inno-usb2: add
+ companion grf quirk
+Date: Thu, 10 Aug 2017 12:05:08 -0500
+Message-ID: <20170810170508.pwf35mud4ffnrzzd@rob-hp-laptop>
+References: <1501747753-6983-1-git-send-email-frank.wang@rock-chips.com>
+ <1501747753-6983-3-git-send-email-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>
-Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1501747753-6983-3-git-send-email-frank.wang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: heiko@sntech.de, kishon@ti.com, mark.rutland@arm.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, william.wu@rock-chips.com, daniel.meng@rock-chips.com, kever.yang@rock-chips.com, andy.yan@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Thu, 10 Aug 2017 18:38:09 +0200
+On Thu, Aug 03, 2017 at 04:09:10PM +0800, Frank Wang wrote:
+> Add rockchip,usbgrf and rockchip,companion_grf_quirk to support
+> the registers of usb-phy that are distributed in grf and usbgrf
+> on some special Rockchip SoCs (e.g RV1108).
+> 
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+> index 84d59b0..ddf868a 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+> @@ -18,6 +18,10 @@ Optional properties:
+>  		 usb-phy output 480m and xin24m.
+>  		 Refer to clk/clock-bindings.txt for generic clock
+>  		 consumer properties.
+> + - rockchip,usbgrf : phandle to the syscon managing the "usb general
+> +		 register files".
+> + - rockchip,companion_grf_quirk : when set driver will request
+> +		 "rockchip,usbgrf" phandle as one companion-grf.
 
-Omit an extra message for a memory allocation failure in this function.
+Why isn't presence of rockchip,usbgrf or being implied by an SoC 
+specific compatible string enough? 
 
-This issue was detected by using the Coccinelle software.
+In any case, use '-' rather than '_'.
 
-Link: http://events.linuxfoundation.org/sites/events/files/slides/LCJ16-Refactor_Strings-WSang_0.pdf
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
----
- sound/soc/rockchip/rockchip_i2s.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 199338fdeda0..b6590467fd14 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -579,10 +579,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	int val;
- 
- 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
--	if (!i2s) {
--		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
-+	if (!i2s)
- 		return -ENOMEM;
--	}
- 
- 	i2s->dev = &pdev->dev;
- 
--- 
-2.14.0
+>  
+>  Required nodes : a sub-node is required for each port the phy provides.
+>  		 The sub-node name is used to identify host or otg port,
+> -- 
+> 2.0.0
+> 
+> 
