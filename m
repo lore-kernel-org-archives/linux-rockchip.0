@@ -1,193 +1,446 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] PCI: rockchip: manipulate phy properly if failing to probe the driver
-Date: Thu, 10 Aug 2017 08:36:31 +0800
-Message-ID: <1502325391-32492-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add rk3328-rock64 board
+Date: Thu, 10 Aug 2017 09:24:18 +0800
+Message-ID: <8e116c15-905b-3392-5b1f-c6e31c342d94@rock-chips.com>
+References: <20170809220408.4301-1-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170809220408.4301-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We observed that the clk_pciephy_ref is still enabled when we actually
-fail to probe the driver.
+Hi Heiko,
 
-root@linaro-alip:~# cat /sys/kernel/debug/clk/clk_summary | grep pcie
-clk_pciephy_ref			  1	1	 24000000	0 0
-clk_pcie_pm			  0	0	 24000000	0 0
-      clk_pcie_core_cru           0	0	125000000	0 0
-      clk_pciephy_ref100m         0	0	100000000	0 0
-		aclk_pcie         0	0	148500000	0 0
-		aclk_perf_pcie    0	0	148500000	0 0
-			pclk_pcie 0	0	 37125000	0 0
-clk_pcie_core                     0	0		0	0 0
+On 2017/8/10 6:04, Heiko Stuebner wrote:
+> The ROCK64 is a credit card size 4K60P HDR Media Board Computer using the
+> Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
+> up to 4GB 1600MHz LPDDR3 memory. It provides eMMC module socket, MicroSD
+> Card slot, Pi-2 Bus, Pi-P5+ Bus, USB 3.0 and many others peripheral
+> devices interface for makers to integrate with sensors and devices.
+> 
+> The devicetree currently supports basic peripherals, with more to be
+> added later on.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+> Depends on rk805 pmic support landing, which hopefully will happen
+> in the next days.
+> 
+>   Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>   arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+>   arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     | 362 +++++++++++++++++++++
+>   3 files changed, 367 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+> index 88d95323d301..b54e9bfd9562 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+> @@ -134,6 +134,10 @@ Rockchip platforms device tree bindings
+>       Required root node properties:
+>        - compatible = "phytec,rk3288-pcm-947", "phytec,rk3288-phycore-som", "rockchip,rk3288";
+>   
+> +- Pine64 Rock64 board:
+> +    Required root node properties:
+> +    - compatible = "pine64,rock64", "rockchip,rk3328";
+> +
+>   - Rockchip PX3 Evaluation board:
+>       Required root node properties:
+>         - compatible = "rockchip,px3-evb", "rockchip,px3", "rockchip,rk3188";
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index d0ad366bbd12..106fb8e0f2f8 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -1,4 +1,5 @@
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-orion-r68-meta.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> new file mode 100644
+> index 000000000000..a77a94200f96
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -0,0 +1,362 @@
+> +/*
+> + * Copyright (c) 2017 PINE64
+> + *
+> + * This file is dual-licensed: you can use it either under the terms
+> + * of the GPL or the X11 license, at your option. Note that this dual
+> + * licensing only applies to this file, and not this project as a
+> + * whole.
+> + *
+> + *  a) This library is free software; you can redistribute it and/or
+> + *     modify it under the terms of the GNU General Public License as
+> + *     published by the Free Software Foundation; either version 2 of the
+> + *     License, or (at your option) any later version.
+> + *
+> + *     This library is distributed in the hope that it will be useful,
+> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *     GNU General Public License for more details.
+> + *
+> + * Or, alternatively,
+> + *
+> + *  b) Permission is hereby granted, free of charge, to any person
+> + *     obtaining a copy of this software and associated documentation
+> + *     files (the "Software"), to deal in the Software without
+> + *     restriction, including without limitation the rights to use,
+> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> + *     sell copies of the Software, and to permit persons to whom the
+> + *     Software is furnished to do so, subject to the following
+> + *     conditions:
+> + *
+> + *     The above copyright notice and this permission notice shall be
+> + *     included in all copies or substantial portions of the Software.
+> + *
+> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> + *     OTHER DEALINGS IN THE SOFTWARE.
+> + */
+> +
+> +/dts-v1/;
+> +#include "rk3328.dtsi"
+> +
+> +/ {
+> +	model = "Pine64 Rock64";
+> +	compatible = "pine64,rock64", "rockchip,rk3328";
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +
+> +	gmac_clkin: external-gmac-clock {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <125000000>;
+> +		clock-output-names = "gmac_clkin";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	sdio_pwrseq: sdio-pwrseq {
+> +		compatible = "mmc-pwrseq-simple";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wifi_enable_h>;
+> +
+> +		/*
+> +		 * On the module itself this is one of these (depending
+> +		 * on the actual card populated):
+> +		 * - SDIO_RESET_L_WL_REG_ON
+> +		 * - PDN (power down when low)
+> +		 */
+> +		reset-gpios = <&gpio1 18 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+> +	vcc_sd: sdmmc-regulator {
+> +		compatible = "regulator-fixed";
+> +		gpio = <&gpio0 30 GPIO_ACTIVE_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&sdmmc0m1_gpio>;
+> +		regulator-name = "vcc_sd";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&vcc_io>;
+> +	};
+> +
+> +	vcc_host_5v: vcc-host-5v-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb30_host_drv>;
+> +		regulator-name = "vcc_host_5v";
+> +		regulator-always-on;
+> +		vin-supply = <&vcc_sys>;
+> +	};
+> +
+> +	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb20_host_drv>;
+> +		regulator-name = "vcc_host1_5v";
+> +		regulator-always-on;
+> +		vin-supply = <&vcc_sys>;
+> +	};
+> +
+> +	vcc_sys: vcc-sys {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +	};
+> +};
+> +
+> +&cpu0 {
+> +	cpu-supply = <&vdd_arm>;
+> +};
+> +
+> +&emmc {
+> +	bus-width = <8>;
+> +	cap-mmc-highspeed;
+> +	supports-emmc;
+> +	disable-wp;
+> +	non-removable;
+> +	num-slots = <1>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+> +	status = "okay";
+> +};
+> +
 
-clk_pciephy_ref is used by phy driver and we need to properly disable
-it for this case. So this patch add error handle for the function of
-rockchip_pcie_init_port to fix this issue.
+supports-{emmc, sd, sdio} aren't vaild properties.
+If you do want to speedup the init process and you
+could add no-sd and no-sdio for emmc.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+num-slots is deprecated and would be cleaned from all dts for 4.14
+cycle. And disable-wp is only used for SD card now.
 
----
+The same comment for the following sd and sdio nodes.
 
-Changes in v2:
-- introduce two new variables init and pwron for simply the logic
-  of handle different kinds of failure cases
+> +&gmac2io {
+> +	phy-supply = <&vcc_io>;
+> +	phy-mode = "rgmii";
+> +	clock_in_out = "input";
+> +	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 10000 50000>;
+> +	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+> +	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&rgmiim1_pins>;
+> +	tx_delay = <0x26>;
+> +	rx_delay = <0x11>;
+> +	status = "okay";
+> +};
+> +
+> +&i2c1 {
+> +	status = "okay";
+> +
+> +	rk805: rk805@18 {
+> +		compatible = "rockchip,rk805";
+> +		reg = <0x18>;
+> +		interrupt-parent = <&gpio2>;
+> +		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
+> +		#clock-cells = <1>;
+> +		clock-output-names = "xin32k", "rk805-clkout2";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pmic_int_l>;
+> +		rockchip,system-power-controller;
+> +		wakeup-source;
+> +
+> +		vcc1-supply = <&vcc_sys>;
+> +		vcc2-supply = <&vcc_sys>;
+> +		vcc3-supply = <&vcc_sys>;
+> +		vcc4-supply = <&vcc_sys>;
+> +		vcc5-supply = <&vcc_io>;
+> +		vcc6-supply = <&vcc_sys>;
+> +
+> +		regulators {
+> +			vdd_logic: DCDC_REG1 {
+> +				regulator-name = "vdd_logic";
+> +				regulator-min-microvolt = <712500>;
+> +				regulator-max-microvolt = <1450000>;
+> +				regulator-initial-mode = <0x1>;
+> +				regulator-ramp-delay = <12500>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-mode = <0x2>;
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <1000000>;
+> +				};
+> +			};
+> +
+> +			vdd_arm: DCDC_REG2 {
+> +				regulator-name = "vdd_arm";
+> +				regulator-min-microvolt = <712500>;
+> +				regulator-max-microvolt = <1450000>;
+> +				regulator-initial-mode = <0x1>;
+> +				regulator-ramp-delay = <12500>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-mode = <0x2>;
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <950000>;
+> +				};
+> +			};
+> +
+> +			vcc_ddr: DCDC_REG3 {
+> +				regulator-name = "vcc_ddr";
+> +				regulator-initial-mode = <0x1>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-mode = <0x2>;
+> +					regulator-on-in-suspend;
+> +				};
+> +			};
+> +
+> +			vcc_io: DCDC_REG4 {
+> +				regulator-name = "vcc_io";
+> +				regulator-min-microvolt = <3300000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-initial-mode = <0x1>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-mode = <0x2>;
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <3300000>;
+> +				};
+> +			};
+> +
+> +			vcc_18: LDO_REG1 {
+> +				regulator-name = "vdd_18";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <1800000>;
+> +				};
+> +			};
+> +
+> +			vcc18_emmc: LDO_REG2 {
+> +				regulator-name = "vcc_18emmc";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <1800000>;
+> +				};
+> +			};
+> +
+> +			vdd_10: LDO_REG3 {
+> +				regulator-name = "vdd_10";
+> +				regulator-min-microvolt = <1000000>;
+> +				regulator-max-microvolt = <1000000>;
+> +				regulator-boot-on;
+> +				regulator-always-on;
+> +				regulator-state-mem {
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <1000000>;
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&io_domains {
+> +	status = "okay";
+> +
+> +	vccio1-supply = <&vcc_io>;
+> +	vccio2-supply = <&vcc18_emmc>;
+> +	vccio3-supply = <&vcc_io>;
+> +	vccio4-supply = <&vcc_18>;
+> +	vccio5-supply = <&vcc_io>;
+> +	vccio6-supply = <&vcc_io>;
+> +	pmuio-supply = <&vcc_io>;
+> +};
+> +
+> +&pinctrl {
+> +	pmic {
+> +		pmic_int_l: pmic-int-l {
+> +			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+> +	sdio-pwrseq {
+> +		wifi_enable_h: wifi-enable-h {
+> +			rockchip,pins = <1 18 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	usb2 {
+> +		usb20_host_drv: usb20-host-drv {
+> +			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	usb3 {
+> +		usb30_host_drv: usb30-host-drv {
+> +			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +};
+> +
+> +&sdio {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	disable-wp > +	keep-power-in-suspend;
+> +	max-frequency = <150000000>;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	num-slots = <1>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
+> +	supports-sdio;
+> +	status = "disabled";
+> +};
+> +
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	max-frequency = <150000000>;
+> +	num-slots = <1>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
+> +	supports-sd;
+> +	vmmc-supply = <&vcc_sd>;
+> +	status = "okay";
+> +};
+> +
+> +&uart2 {
+> +	status = "okay";
+> +};
+> +
+> +&u2phy {
+> +	status = "okay";
+> +
+> +	u2phy_host: host-port {
+> +		status = "okay";
+> +	};
+> +
+> +	u2phy_otg: otg-port {
+> +		status = "okay";
+> +	};
+> +};
+> +
+> +&usb20_otg {
+> +	dr_mode = "host";
+> +	status = "okay";
+> +};
+> +
+> +&usb_host0_ehci {
+> +	status = "okay";
+> +};
+> +
+> +&usb_host0_ohci {
+> +	status = "okay";
+> +};
+> 
 
- drivers/pci/host/pcie-rockchip.c | 52 ++++++++++++++++++++++++----------------
- 1 file changed, 31 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 2eccd53..39aafe2 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -534,7 +534,7 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
- static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- {
- 	struct device *dev = rockchip->dev;
--	int err, i;
-+	int err, i, init, pwron;
- 	u32 status;
- 
- 	gpiod_set_value(rockchip->ep_gpio, 0);
-@@ -557,36 +557,36 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
- 
--	for (i = 0; i < MAX_LANE_NUM; i++) {
--		err = phy_init(rockchip->phys[i]);
-+	for (init = 0; init < MAX_LANE_NUM; init++) {
-+		err = phy_init(rockchip->phys[init]);
- 		if (err) {
--			dev_err(dev, "init phy%d err %d\n", i, err);
--			return err;
-+			dev_err(dev, "init phy%d err %d\n", init, err);
-+			goto err_phy_exit;
- 		}
- 	}
- 
- 	err = reset_control_assert(rockchip->core_rst);
- 	if (err) {
- 		dev_err(dev, "assert core_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_assert(rockchip->mgmt_rst);
- 	if (err) {
- 		dev_err(dev, "assert mgmt_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_assert(rockchip->mgmt_sticky_rst);
- 	if (err) {
- 		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_assert(rockchip->pipe_rst);
- 	if (err) {
- 		dev_err(dev, "assert pipe_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	udelay(10);
-@@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	err = reset_control_deassert(rockchip->pm_rst);
- 	if (err) {
- 		dev_err(dev, "deassert pm_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_deassert(rockchip->aclk_rst);
- 	if (err) {
- 		dev_err(dev, "deassert aclk_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	err = reset_control_deassert(rockchip->pclk_rst);
- 	if (err) {
- 		dev_err(dev, "deassert pclk_rst err %d\n", err);
--		return err;
-+		goto err_phy_exit;
- 	}
- 
- 	if (rockchip->link_gen == 2)
-@@ -624,11 +624,11 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 			    PCIE_CLIENT_MODE_RC,
- 			    PCIE_CLIENT_CONFIG);
- 
--	for (i = 0; i < MAX_LANE_NUM; i++) {
--		err = phy_power_on(rockchip->phys[i]);
-+	for (pwron = 0; pwron < MAX_LANE_NUM; pwron++) {
-+		err = phy_power_on(rockchip->phys[pwron]);
- 		if (err) {
--			dev_err(dev, "power on phy%d err %d\n", i, err);
--			return err;
-+			dev_err(dev, "power on phy%d err %d\n", pwron, err);
-+			goto err_phy_power_off;
- 		}
- 	}
- 
-@@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
- 	if (err) {
- 		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	err = reset_control_deassert(rockchip->core_rst);
- 	if (err) {
- 		dev_err(dev, "deassert core_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	err = reset_control_deassert(rockchip->mgmt_rst);
- 	if (err) {
- 		dev_err(dev, "deassert mgmt_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	err = reset_control_deassert(rockchip->pipe_rst);
- 	if (err) {
- 		dev_err(dev, "deassert pipe_rst err %d\n", err);
--		return err;
-+		goto err_phy_power_off;
- 	}
- 
- 	/* Fix the transmitted FTS count desired to exit from L0s. */
-@@ -690,7 +690,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 				 500 * USEC_PER_MSEC);
- 	if (err) {
- 		dev_err(dev, "PCIe link training gen1 timeout!\n");
--		return -ETIMEDOUT;
-+		err = -ETIMEDOUT;
-+		goto err_phy_power_off;
- 	}
- 
- 	if (rockchip->link_gen == 2) {
-@@ -751,6 +752,15 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
- 
- 	return 0;
-+
-+err_phy_power_off:
-+	for (i = 0; i < init; i++)
-+		phy_power_off(rockchip->phys[i]);
-+err_phy_exit:
-+	for (i = 0; i < pwron; i++)
-+		phy_exit(rockchip->phys[i]);
-+
-+	return err;
- }
- 
- static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
--- 
-1.9.1
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
