@@ -1,61 +1,42 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH v2 0/5] thermal: rockchip: add tsadc support in thermal
- driver and IPA thermal control for rk3328 in dts
-Date: Fri, 11 Aug 2017 16:01:28 +0800
-Message-ID: <1502438488.2597.0.camel@intel.com>
-References: <1501833976-1100-1-git-send-email-rocky.hao@rock-chips.com>
-         <1502427095.2598.21.camel@intel.com> <3025917.NAhhjSz36M@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3025917.NAhhjSz36M@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rocky Hao <rocky.hao@rock-chips.com>, edubezval@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/5] add some properties for Rockchip usb2-phy and add rv1108 SoCs' support
+Date: Fri, 11 Aug 2017 16:07:46 +0800
+Message-ID: <1502438871-9482-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 2017-08-11 at 08:27 +0200, Heiko Stuebner wrote:
-> Hi,
-> 
-> Am Freitag, 11. August 2017, 12:51:35 CEST schrieb Zhang Rui:
-> > 
-> > On Fri, 2017-08-04 at 16:06 +0800, Rocky Hao wrote:
-> > > 
-> > > This series patches add the tsadc support in thermal driver and
-> > > in
-> > > devicetree for rk3328.
-> > > Also add thermal control with Intelligent Power Allocation (IPA)
-> > > policy by default.  Please
-> > > refer to https://developer.arm.com/open-source/intelligent-power-
-> > > allo
-> > > cation for more information
-> > > about IPA.
-> > > 
-> > > Rocky Hao (5):
-> > >   dt-bindings: rockchip-thermal: Support the RK3328 SoC
-> > > compatible
-> > >   thermal: rockchip: Support the RK3328 SOC in thermal driver
-> > >   arm64: dts: rockchip: add tsadc node for rk3328 SoC
-> > >   arm64: dts: rockchip: add thermal nodes for rk3328 SoC
-> > >   arm64: dts: rockchip: Enable tsadc module on RK3328 eavluation
-> > > board
-> > > 
-> > I can take this patch set if we have ACK for patch 3, 4 and 5.
-> I would prefer if you would just apply patches 1+2 alone and I'd take
-> the devicetree patches through my tree.
-> 
-> Having devicetree stuff mingle in a lot of trees produces unnecessary
-> conflicts, so the general best practice is having code + binding.txt
-> going through the driver tree and devicetree stuff through the
-> platform
-> tree.
-> 
-OKay, I will take patch 1 and 2 and queue them for next merge window.
+These series of patches add rockchip,usbgrf property and otg_mux interrupt for
+rockchip usb2-phy. In addition, this change also add rv1108 usb2-phy support.
 
-thanks,
-rui
-> 
-> Thanks
-> Heiko
-> 
+Changes from v3:
+ - Updated the 'Acked-by' tag from Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>.
+ - Matched the SoC specific compatible string instead of companion_grf_quirk.
+
+Changes from v2:
+ - Amend otg-mux interrupt to be auto-detectable and update related dt-bindings.
+
+Changes from v1:
+ - Send the dt-bindings as a separate patch and cc devicetree list.
+
+Frank Wang (5):
+  phy: rockchip-inno-usb2: add support for rockchip,usbgrf property
+  dt-bindings: phy-rockchip-inno-usb2: add rockchip,usbgrf property
+  phy: rockchip-inno-usb2: add support for otg-mux interrupt
+  dt-bindings: phy-rockchip-inno-usb2: add otg-mux interrupt
+  phy: rockchip-inno-usb2: add support of usb2-phy for rv1108 SoCs
+
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |  11 +-
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c      | 215 ++++++++++++++++-----
+ 2 files changed, 174 insertions(+), 52 deletions(-)
+
+-- 
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
