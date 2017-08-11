@@ -1,59 +1,56 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH] thermal: rockchip: fix error return code in
- rockchip_thermal_probe()
-Date: Fri, 11 Aug 2017 11:08:27 +0800
-Message-ID: <1502420907.2598.9.camel@intel.com>
-References: <20170808043517.GA13356@embeddedgus>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20170808043517.GA13356@embeddedgus>
-Sender: linux-pm-owner@vger.kernel.org
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 00/13] Support more devices on rockchip rv1108
+Date: Fri, 11 Aug 2017 11:36:18 +0800
+Message-ID: <1502422578-30611-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2017-08-07 at 23:35 -0500, Gustavo A. R. Silva wrote:
-> platform_get_irq() returns an error code, but the rockchip_thermal
-> driver
-> ignores it and always returns -EINVAL. This is not correct and,
-> prevents
-> -EPROBE_DEFER from being propagated properly.
-> 
-> Notice that platform_get_irq() no longer returns 0 on error:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co
-> mmit/?id=e330b9a6bb35dc7097a4f02cb1ae7b6f96df92af
-> 
-> Print and propagate the return value of platform_get_irq on failure.
-> 
-> This issue was detected with the help of Coccinelle.
-> 
-> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+This series try to support i2c/spi/pwm/saradc/pmic/watchdog
+on rockchip rv1108 soc.
 
-Applied.
+As the clk tree part has been taken from Elaine's series, so
+this part will be not included in my series from this version.
 
-thanks,
-rui
-> ---
->  drivers/thermal/rockchip_thermal.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c
-> b/drivers/thermal/rockchip_thermal.c
-> index 4c77965..6ca9747 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -1068,8 +1068,8 @@ static int rockchip_thermal_probe(struct
-> platform_device *pdev)
->  
->  	irq = platform_get_irq(pdev, 0);
->  	if (irq < 0) {
-> -		dev_err(&pdev->dev, "no irq resource?\n");
-> -		return -EINVAL;
-> +		dev_err(&pdev->dev, "no irq resource: %d\n", irq);
-> +		return irq;
->  	}
->  
->  	thermal = devm_kzalloc(&pdev->dev, sizeof(struct
-> rockchip_thermal_data),
+This version has no more changes, except the pwm  dt-bindings
+followed by Rob's suggestion, and the Acked-by from Rob of other
+dt-bindings.
+
+Changes in v3:
+- remove the clk tree part
+- make the compatible string be: "rockchip,rv1108-pwm", "rockchip,rk3288-pwm"
+  for rv1108 pwm
+
+Changes in v2:
+- add compatible string "rockchip,rv1108-pwm"
+- add compatible string "rockchip,rv1108-saradc"
+
+Andy Yan (13):
+  dt-bindings: i2c: rk3x: add support for rv1108
+  i2c: rk3x: add support for rv1108
+  ARM: dts: rockchip: add i2c dt node for rv1108
+  spi: rockchip: add compatible string for rv1108 spi
+  ARM: dts: rockchip: add spi dt node for rv1108
+  dt-bindings: pwm: add description for rv1108 pwm
+  ARM: dts: rockchip: add pwm dt node for rv1108
+  ARM: dts: rockchip: add watchdog dt node for rv1108
+  dt-bindings: adc: add description for rv1108 saradc
+  ARM: dts: rockchip: add saradc support for rv1108
+  ARM: dts: rockchip: add pwm backlight for rv1108 evb
+  ARM: dts: rockchip: add pmic rk805 dt node for rv1108 evb
+  ARM: dts: rockchip: add accelerometer bma250e dt node for rv1108 evb
+
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |   1 +
+ .../bindings/iio/adc/rockchip-saradc.txt           |   1 +
+ .../devicetree/bindings/pwm/pwm-rockchip.txt       |   3 +-
+ .../devicetree/bindings/spi/spi-rockchip.txt       |   1 +
+ arch/arm/boot/dts/rv1108-evb.dts                   | 158 +++++++++++++
+ arch/arm/boot/dts/rv1108.dtsi                      | 249 +++++++++++++++++++++
+ drivers/i2c/busses/i2c-rk3x.c                      |   9 +
+ drivers/spi/spi-rockchip.c                         |   1 +
+ 8 files changed, 422 insertions(+), 1 deletion(-)
+
+-- 
+2.7.4
