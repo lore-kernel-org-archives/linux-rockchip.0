@@ -1,286 +1,105 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3] PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
-Date: Fri, 11 Aug 2017 09:52:51 +0800
-Message-ID: <1502416371-185632-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Sandy Huang <sandy.huang@rock-chips.com>
+Subject: Re: [PATCH 3/3] drm/rockchip: Add support for Rockchip Soc LVDS
+Date: Fri, 11 Aug 2017 10:15:16 +0800
+Message-ID: <78abe787-c7f1-d8e4-3fcd-e08ea092be6f@rock-chips.com>
+References: <1502272846-63941-1-git-send-email-hjc@rock-chips.com>
+ <1502272861-64226-1-git-send-email-hjc@rock-chips.com>
+ <20170809195812.vtndofimdiojb4cr@art_vandelay>
+ <d24020c6-ef7f-6c7d-b655-99e56c8760d5@rock-chips.com>
+ <20170810180519.ezndiczwpheac4ih@art_vandelay>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170810180519.ezndiczwpheac4ih@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-With CONFIG_DEBUG_SHIRQ enabled, the irq tear down routine
-would still access the irq handler registed as a shard irq.
-Per the comment within the function of __free_irq, it says
-"It's a shared IRQ -- the driver ought to be prepared for
-an IRQ event to happen even now it's being freed". However
-when failing to probe the driver, it may disable the clock
-for accessing the register and the following check for shared
-irq state would call the irq handler which accesses the register
-w/o the clk enabled. That will hang the system forever.
-
-With adding some dump_stack we could see how that happened.
-
-calling  rockchip_pcie_driver_init+0x0/0x28 @ 1
-rockchip-pcie f8000000.pcie: no vpcie3v3 regulator found
-rockchip-pcie f8000000.pcie: no vpcie1v8 regulator found
-rockchip-pcie f8000000.pcie: no vpcie0v9 regulator found
-rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
-CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.13.0-rc3-next-20170807-ARCH+ #189
-Hardware name: Firefly-RK3399 Board (DT)
-Call trace:
-[<ffff000008089bf0>] dump_backtrace+0x0/0x250
-[<ffff000008089eb0>] show_stack+0x20/0x28
-[<ffff000008c3313c>] dump_stack+0x90/0xb0
-[<ffff000008632ad4>] rockchip_pcie_read.isra.11+0x54/0x58
-[<ffff0000086334fc>] rockchip_pcie_client_irq_handler+0x30/0x1a0
-[<ffff00000813ce98>] __free_irq+0x1c8/0x2dc
-[<ffff00000813d044>] free_irq+0x44/0x74
-[<ffff0000081415fc>] devm_irq_release+0x24/0x2c
-[<ffff00000877429c>] release_nodes+0x1d8/0x30c
-[<ffff000008774838>] devres_release_all+0x3c/0x5c
-[<ffff00000876f19c>] driver_probe_device+0x244/0x494
-[<ffff00000876f50c>] __driver_attach+0x120/0x124
-[<ffff00000876cb80>] bus_for_each_dev+0x6c/0xac
-[<ffff00000876e984>] driver_attach+0x2c/0x34
-[<ffff00000876e3a4>] bus_add_driver+0x244/0x2b0
-[<ffff000008770264>] driver_register+0x70/0x110
-[<ffff0000087718b4>] platform_driver_register+0x60/0x6c
-[<ffff0000091eb108>] rockchip_pcie_driver_init+0x20/0x28
-[<ffff000008083a2c>] do_one_initcall+0xc8/0x130
-[<ffff0000091a0ea8>] kernel_init_freeable+0x1a0/0x238
-[<ffff000008c461cc>] kernel_init+0x18/0x108
-[<ffff0000080836c0>] ret_from_fork+0x10/0x50
-
-In order to fix this, we remove all the clock-disabling from
-the error handle path and driver's remove function. And replying
-on the devm_add_action_or_reset to fire the clock-disabling at
-the appropriate time. Also split out rockchip_pcie_setup_irq
-and move requesting irq after enabling clks to avoid this kind
-of issues.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
----
-
-Changes in v3:
-- check the return value of devm_add_action_or_reset and spilt out
-  rockchip_pcie_setup_irq in order to move requesting irq after
-  enabling clks.
-
-Changes in v2:
-- use devm_add_action_or_reset to fix this ordering suggested by
-  Heiko and Jeffy. Thanks!
-
- drivers/pci/host/pcie-rockchip.c | 136 +++++++++++++++++++++++----------------
- 1 file changed, 79 insertions(+), 57 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 39aafe2..c12c5bc 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -939,6 +939,51 @@ static int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip)
- 	return 0;
- }
- 
-+static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
-+{
-+	int irq, err;
-+	struct device *dev = rockchip->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
-+
-+	irq = platform_get_irq_byname(pdev, "sys");
-+	if (irq < 0) {
-+		dev_err(dev, "missing sys IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
-+			       IRQF_SHARED, "pcie-sys", rockchip);
-+	if (err) {
-+		dev_err(dev, "failed to request PCIe subsystem IRQ\n");
-+		return err;
-+	}
-+
-+	irq = platform_get_irq_byname(pdev, "legacy");
-+	if (irq < 0) {
-+		dev_err(dev, "missing legacy IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	irq_set_chained_handler_and_data(irq,
-+					 rockchip_pcie_legacy_int_handler,
-+					 rockchip);
-+
-+	irq = platform_get_irq_byname(pdev, "client");
-+	if (irq < 0) {
-+		dev_err(dev, "missing client IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
-+			       IRQF_SHARED, "pcie-client", rockchip);
-+	if (err) {
-+		dev_err(dev, "failed to request PCIe client IRQ\n");
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * rockchip_pcie_parse_dt - Parse Device Tree
-  * @rockchip: PCIe port information
-@@ -951,7 +996,6 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct device_node *node = dev->of_node;
- 	struct resource *regs;
--	int irq;
- 	int err;
- 
- 	regs = platform_get_resource_byname(pdev,
-@@ -1065,42 +1109,6 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		return PTR_ERR(rockchip->clk_pcie_pm);
- 	}
- 
--	irq = platform_get_irq_byname(pdev, "sys");
--	if (irq < 0) {
--		dev_err(dev, "missing sys IRQ resource\n");
--		return -EINVAL;
--	}
--
--	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
--			       IRQF_SHARED, "pcie-sys", rockchip);
--	if (err) {
--		dev_err(dev, "failed to request PCIe subsystem IRQ\n");
--		return err;
--	}
--
--	irq = platform_get_irq_byname(pdev, "legacy");
--	if (irq < 0) {
--		dev_err(dev, "missing legacy IRQ resource\n");
--		return -EINVAL;
--	}
--
--	irq_set_chained_handler_and_data(irq,
--					 rockchip_pcie_legacy_int_handler,
--					 rockchip);
--
--	irq = platform_get_irq_byname(pdev, "client");
--	if (irq < 0) {
--		dev_err(dev, "missing client IRQ resource\n");
--		return -EINVAL;
--	}
--
--	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
--			       IRQF_SHARED, "pcie-client", rockchip);
--	if (err) {
--		dev_err(dev, "failed to request PCIe client IRQ\n");
--		return err;
--	}
--
- 	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
- 	if (IS_ERR(rockchip->vpcie12v)) {
- 		if (PTR_ERR(rockchip->vpcie12v) == -EPROBE_DEFER)
-@@ -1460,6 +1468,16 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
- 	return err;
- }
- 
-+static void rockchip_pcie_disable_clocks(void *data)
-+{
-+	struct rockchip_pcie *rockchip = data;
-+
-+	clk_disable_unprepare(rockchip->clk_pcie_pm);
-+	clk_disable_unprepare(rockchip->hclk_pcie);
-+	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-+	clk_disable_unprepare(rockchip->aclk_pcie);
-+}
-+
- static int rockchip_pcie_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pcie *rockchip;
-@@ -1493,31 +1511,49 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	err = clk_prepare_enable(rockchip->aclk_pcie);
- 	if (err) {
- 		dev_err(dev, "unable to enable aclk_pcie clock\n");
--		goto err_aclk_pcie;
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
- 	if (err) {
- 		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
--		goto err_aclk_perf_pcie;
-+		clk_disable_unprepare(rockchip->aclk_pcie);
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(rockchip->hclk_pcie);
- 	if (err) {
- 		dev_err(dev, "unable to enable hclk_pcie clock\n");
--		goto err_hclk_pcie;
-+		clk_disable_unprepare(rockchip->aclk_pcie);
-+		clk_disable_unprepare(rockchip->aclk_perf_pcie);
-+		return err;
- 	}
- 
- 	err = clk_prepare_enable(rockchip->clk_pcie_pm);
- 	if (err) {
--		dev_err(dev, "unable to enable hclk_pcie clock\n");
--		goto err_pcie_pm;
-+		dev_err(dev, "unable to enable clk_pcie_pm clock\n");
-+		clk_disable_unprepare(rockchip->aclk_pcie);
-+		clk_disable_unprepare(rockchip->aclk_perf_pcie);
-+		clk_disable_unprepare(rockchip->hclk_pcie);
-+		return err;
- 	}
- 
-+	err = devm_add_action_or_reset(dev,
-+				       rockchip_pcie_disable_clocks,
-+				       rockchip);
-+	if (err) {
-+		dev_err(dev, "unable to add action or reset\n");
-+		return err;
-+	}
-+
-+	err = rockchip_pcie_setup_irq(rockchip);
-+	if (err)
-+		return err;
-+
- 	err = rockchip_pcie_set_vpcie(rockchip);
- 	if (err) {
- 		dev_err(dev, "failed to set vpcie regulator\n");
--		goto err_set_vpcie;
-+		return err;
- 	}
- 
- 	err = rockchip_pcie_init_port(rockchip);
-@@ -1614,15 +1650,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 		regulator_disable(rockchip->vpcie1v8);
- 	if (!IS_ERR(rockchip->vpcie0v9))
- 		regulator_disable(rockchip->vpcie0v9);
--err_set_vpcie:
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--err_pcie_pm:
--	clk_disable_unprepare(rockchip->hclk_pcie);
--err_hclk_pcie:
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--err_aclk_perf_pcie:
--	clk_disable_unprepare(rockchip->aclk_pcie);
--err_aclk_pcie:
- 	return err;
- }
- 
-@@ -1644,11 +1671,6 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
- 		phy_exit(rockchip->phys[i]);
- 	}
- 
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->aclk_pcie);
--
- 	if (!IS_ERR(rockchip->vpcie12v))
- 		regulator_disable(rockchip->vpcie12v);
- 	if (!IS_ERR(rockchip->vpcie3v3))
--- 
-1.9.1
+CgrlnKggMjAxNy84LzExIDI6MDUsIFNlYW4gUGF1bCDlhpnpgZM6Cj4gT24gVGh1LCBBdWcgMTAs
+IDIwMTcgYXQgMDU6MzU6NTJQTSArMDgwMCwgU2FuZHkgSHVhbmcgd3JvdGU6Cj4+IEhpIFNlYW4g
+UGF1bCwKPj4gICAgICBUaGFua3MgZm9yIHlvdXIgcmV2aWV3Lgo+Pgo+PiDlnKggMjAxNy84LzEw
+IDM6NTgsIFNlYW4gUGF1bCDlhpnpgZM6Cj4+PiBPbiBXZWQsIEF1ZyAwOSwgMjAxNyBhdCAwNjow
+MDo1OVBNICswODAwLCBTYW5keSBIdWFuZyB3cm90ZToKPj4+PiBUaGlzIGFkZHMgc3VwcG9ydCBm
+b3IgUm9ja2NoaXAgc29jIGx2ZHMgZm91bmQgb24gcmszMjg4Cj4+Pj4gQmFzZWQgb24gdGhlIHBh
+dGNoZXMgZnJvbSBNYXJrIHlhbyBhbmQgSGVpa28gU3R1ZWJuZXIKPj4+Pgo+Pj4+IFNpZ25lZC1v
+ZmYtYnk6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4+Pj4gU2lnbmVkLW9mZi1i
+eTogTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+Pj4+IFNpZ25lZC1vZmYtYnk6
+IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+Pj4gLS0tCj4+Pj4gICAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgICAgICAgICB8ICAgOSArCj4+Pj4gICAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICB8ICAgMSArCj4+Pj4gICAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyB8IDczNCArKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrCj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2x2ZHMuaCB8IDExMiArKysrKwo+Pj4+ICAgIDQgZmlsZXMgY2hhbmdlZCwgODU2IGluc2VydGlv
+bnMoKykKPj4+PiAgICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2x2ZHMuYwo+Pj4+ICAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5oCj4+Pj4KPiAKPiA8c25pcCAvPgo+IAo+Pj4+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+Pj4+IG5ldyBmaWxlIG1vZGUg
+MTAwNjQ0Cj4+Pj4gaW5kZXggMDAwMDAwMC4uYTRhZDNmMAo+Pj4+IC0tLSAvZGV2L251bGwKPj4+
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCj4gCj4gPHNu
+aXAgLz4KPiAKPj4+PiArCWx2ZHMtPmRybV9kZXYgPSBkcm1fZGV2Owo+Pj4+ICsJcG9ydCA9IG9m
+X2dyYXBoX2dldF9wb3J0X2J5X2lkKGRldi0+b2Zfbm9kZSwgMSk7Cj4+Pj4gKwlpZiAoIXBvcnQp
+IHsKPj4+PiArCQlkZXZfZXJyKGRldiwgImNhbid0IGZvdW5kIHBvcnQgcG9pbnQsIHBsZWFzZSBp
+bml0IGx2ZHMgcGFuZWwgcG9ydCFcbiIpOwo+Pj4+ICsJCXJldHVybiAtRUlOVkFMOwo+Pj4+ICsJ
+fQo+Pj4+ICsKPj4+PiArCWZvcl9lYWNoX2NoaWxkX29mX25vZGUocG9ydCwgZW5kcG9pbnQpIHsK
+Pj4+PiArCQlyZW1vdGUgPSBvZl9ncmFwaF9nZXRfcmVtb3RlX3BvcnRfcGFyZW50KGVuZHBvaW50
+KTsKPj4+PiArCQlpZiAoIXJlbW90ZSkgewo+Pj4+ICsJCQlkZXZfZXJyKGRldiwgImNhbid0IGZv
+dW5kIHBhbmVsIG5vZGUsIHBsZWFzZSBpbml0IVxuIik7Cj4+Pj4gKwkJCXJldCA9IC1FSU5WQUw7
+Cj4+Pj4gKwkJCWdvdG8gZXJyX3B1dF9wb3J0Owo+Pj4+ICsJCX0KPj4+PiArCQlpZiAoIW9mX2Rl
+dmljZV9pc19hdmFpbGFibGUocmVtb3RlKSkgewo+Pj4+ICsJCQlvZl9ub2RlX3B1dChyZW1vdGUp
+Owo+Pj4+ICsJCQlyZW1vdGUgPSBOVUxMOwo+Pj4+ICsJCQljb250aW51ZTsKPj4+PiArCQl9Cj4+
+Pj4gKwkJYnJlYWs7Cj4+Pj4gKwl9Cj4+Pj4gKwlpZiAoIXJlbW90ZSkgewo+Pj4+ICsJCWRldl9l
+cnIoZGV2LCAiY2FuJ3QgZm91bmQgcmVtb3RlIG5vZGUsIHBsZWFzZSBpbml0IVxuIik7Cj4+Pj4g
+KwkJcmV0ID0gLUVJTlZBTDsKPj4+PiArCQlnb3RvIGVycl9wdXRfcG9ydDsKPj4+PiArCX0KPj4+
+PiArCj4+Pj4gKwlsdmRzLT5wYW5lbCA9IG9mX2RybV9maW5kX3BhbmVsKHJlbW90ZSk7Cj4+Pj4g
+KwlpZiAoIWx2ZHMtPnBhbmVsKQo+Pj4+ICsJCWx2ZHMtPmJyaWRnZSA9IG9mX2RybV9maW5kX2Jy
+aWRnZShyZW1vdGUpOwo+Pj4KPj4+IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgpCj4+Pgo+
+Pgo+PiBiZWNhdXNlIHRoZSBsdmRzIHBvcnRzIG1heWJlIGNvbm5lY3QgdG8gbHZkcy1wYW5lbCBv
+ciBjb25uZWN0IHRvCj4+IHJrMTAwMCh3aGljaCBpcyBjb252ZXJ0IFJHQiB0byBDVkJTIG91dHB1
+dCksIHNvIGkgaGF2ZSB0byBnZXQgdGhlIHJlbW90ZQo+PiBwb3J0IHBhcmVudCBhbmQgY2hlY2sg
+dGhlIHN0YXR1cywgYW5kIGZpbmFsIGdldCB0aGUgYWN0aXZlIHJlbW90ZSBwb2ludC4KPj4KPiAK
+PiAKPiAKPj4gbHZkc19wYW5lbDogbHZkcy1wYW5lbCB7Cj4+IAlzdGF0dXMgPSAiZGlzYWJsZWQi
+Owo+PiAJcG9ydHMgewo+PiAJCXBhbmVsX2luX2x2ZHM6IGVuZHBvaW50IHsKPj4gCQkJcmVtb3Rl
+LWVuZHBvaW50ID0gPCZsdmRzX291dF9wYW5lbD47Cj4+IAkJfTsKPj4gCX07Cj4+IH07Cj4+Cj4+
+IHJrMTAwMDogcmsxMDAwQDB4ZmYwMDAwMDAgewo+PiAJc3RhdHVzID0gIm9rYXkiOwo+PiAJcG9y
+dHMgewo+PiAJCXJrMTAwMF9pbl9sdmRzOiBlbmRwb2ludCB7Cj4+IAkJCXJlbW90ZS1lbmRwb2lu
+dCA9IDwmbHZkc19vdXRfcGFuZWw+Owo+PiAJCX07Cj4+IAl9Owo+PiB9Owo+Pgo+PiAmbHZkcyB7
+Cj4+IAlzdGF0dXMgPSAib2theSI7Cj4+IAlwb3J0cyB7Cj4+IAkJbHZkc19vdXQ6IHBvcnRAMSB7
+Cj4+IAkJCXJlZyA9IDwxPjsKPj4gCQkJbHZkc19vdXRfcGFuZWw6IGVuZHBvaW50QDAgewo+PiAJ
+CQkJcmVnID0gPDA+Owo+PiAJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZwYW5lbF9pbl9sdmRzPjsK
+Pj4gCQkJfTsKPj4gCQkJbHZkc19vdXRfcmsxMDAwOiBlbmRwb2ludEAxIHsKPj4gCQkJCXJlZyA9
+IDwxPjsKPj4gCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmcmsxMDAwX2luX2x2ZHM+Owo+PiAJCQl9
+Owo+PiAJCX07Cj4+Cj4+IAl9Owo+PiB9Owo+IAo+IEhpIFNhbmR5LAo+IEZvcmdpdmUgbWUsIHRo
+aXMgaXMgcHJvYmFibHkgYSBzdHVwaWQgcXVlc3Rpb24uIEkgZG9uJ3Qgc2VlIGhvdyB0aGlzIHVz
+ZWNhc2UgaXMKPiB1bmlxdWUgZnJvbSB0aGUgb3RoZXIgdXNlcnMgb2YgZHJtX29mX2ZpbmRfcGFu
+ZWxfb3JfYnJpZGdlLiBDb3VsZG4ndCB5b3UgY2hhbmdlCj4geW91ciBkZXZpY2V0cmVlIGJpbmRp
+bmdzIHRvIGNvbmZvcm0gdG8gc29tZXRoaW5nIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgp
+Cj4gY2FuIHdvcmsgd2l0aD8KPiAKPiBUaGFuayB5b3UsCj4gCkhpIHNlYW4sCiAgICAgTWF5YmUg
+aSBjYW4gdXNlIHRoZSBmb2xsb3dpbmcgbWV0aG9kIHRvIHVzZSAKZHJtX29mX2ZpbmRfcGFuZWxf
+b3JfYnJpZGdlKCkgYW5kIG5vIG5lZWQgdG8gY2hhbmdlIG15IERULCBidXQgdGhlcmUgaXMgCmFu
+b3RoZXIgcXVlc3Rpb246CiAgICAgVGhlIExWRFMgb3V0cHV0IGZvcm1hdChyb2NrY2hpcCxvdXRw
+dXTjgIFyb2NrY2hpcCxkYXRhLW1hcHBpbmcgZXRjLikKZGVwZW5kIG9uIGRpZmZlcmVudCBwYW5l
+bCwgc28gaXQgc2hvdWxkIGJlIHB1dCB1bmRlciByZW1vdGUgcGFuZWwgcG9pbnQuCklmIHVzZSBk
+cm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2XvvIgpLCB0aGlzIGp1c3QgcmV0dXJuIHBhbmVsIG9y
+IGJyaWRnZSwgCnNvIGkgaGF2ZSB0byBiYWNrIHRvIGdldCByZW1vdGUgcGFuZWwgcG9pbnQgYW5k
+IGdldCB0aGUgb3V0cHV0IGZvcm1hdC4KCnJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRn
+ZShkZXYtPm9mX25vZGUsIDEsIDAsICZsdmRzLT5wYW5lbCwKICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAmbHZkcy0+YnJpZGdlKTsKaWYgKHJldCkKICAgICByZXQgPSBkcm1fb2Zf
+ZmluZF9wYW5lbF9vcl9icmlkZ2UoZGV2LT5vZl9ub2RlLCAxLCAxLCAmbHZkcy0+cGFuZWwsCiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZsdmRzLT5icmlkZ2UpOwppZiAo
+cmV0KSB7CiAgICAgRFJNX0RFVl9FUlJPUihkZXYsICJmYWlsZWQgdG8gZmluZCBwYW5lbCBhbmQg
+YnJpZGdlIG5vZGVcbiIpOwogICAgIHJldCAgPSAtRVBST0JFX0RFRkVSOwogICAgIGdvdG8gZXJy
+X3B1dF9yZW1vdGU7Cn0KCQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCg==
