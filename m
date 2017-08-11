@@ -1,105 +1,73 @@
-From: Sandy Huang <sandy.huang@rock-chips.com>
-Subject: Re: [PATCH 3/3] drm/rockchip: Add support for Rockchip Soc LVDS
-Date: Fri, 11 Aug 2017 10:15:16 +0800
-Message-ID: <78abe787-c7f1-d8e4-3fcd-e08ea092be6f@rock-chips.com>
-References: <1502272846-63941-1-git-send-email-hjc@rock-chips.com>
- <1502272861-64226-1-git-send-email-hjc@rock-chips.com>
- <20170809195812.vtndofimdiojb4cr@art_vandelay>
- <d24020c6-ef7f-6c7d-b655-99e56c8760d5@rock-chips.com>
- <20170810180519.ezndiczwpheac4ih@art_vandelay>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v3] PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
+Date: Fri, 11 Aug 2017 10:39:08 +0800
+Message-ID: <598D18CC.5080104@rock-chips.com>
+References: <1502416371-185632-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20170810180519.ezndiczwpheac4ih@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1502416371-185632-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxNy84LzExIDI6MDUsIFNlYW4gUGF1bCDlhpnpgZM6Cj4gT24gVGh1LCBBdWcgMTAs
-IDIwMTcgYXQgMDU6MzU6NTJQTSArMDgwMCwgU2FuZHkgSHVhbmcgd3JvdGU6Cj4+IEhpIFNlYW4g
-UGF1bCwKPj4gICAgICBUaGFua3MgZm9yIHlvdXIgcmV2aWV3Lgo+Pgo+PiDlnKggMjAxNy84LzEw
-IDM6NTgsIFNlYW4gUGF1bCDlhpnpgZM6Cj4+PiBPbiBXZWQsIEF1ZyAwOSwgMjAxNyBhdCAwNjow
-MDo1OVBNICswODAwLCBTYW5keSBIdWFuZyB3cm90ZToKPj4+PiBUaGlzIGFkZHMgc3VwcG9ydCBm
-b3IgUm9ja2NoaXAgc29jIGx2ZHMgZm91bmQgb24gcmszMjg4Cj4+Pj4gQmFzZWQgb24gdGhlIHBh
-dGNoZXMgZnJvbSBNYXJrIHlhbyBhbmQgSGVpa28gU3R1ZWJuZXIKPj4+Pgo+Pj4+IFNpZ25lZC1v
-ZmYtYnk6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4+Pj4gU2lnbmVkLW9mZi1i
-eTogTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+Pj4+IFNpZ25lZC1vZmYtYnk6
-IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+Pj4gLS0tCj4+Pj4gICAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgICAgICAgICB8ICAgOSArCj4+Pj4gICAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICB8ICAgMSArCj4+Pj4gICAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyB8IDczNCArKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrCj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2x2ZHMuaCB8IDExMiArKysrKwo+Pj4+ICAgIDQgZmlsZXMgY2hhbmdlZCwgODU2IGluc2VydGlv
-bnMoKykKPj4+PiAgICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2x2ZHMuYwo+Pj4+ICAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5oCj4+Pj4KPiAKPiA8c25pcCAvPgo+IAo+Pj4+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+Pj4+IG5ldyBmaWxlIG1vZGUg
-MTAwNjQ0Cj4+Pj4gaW5kZXggMDAwMDAwMC4uYTRhZDNmMAo+Pj4+IC0tLSAvZGV2L251bGwKPj4+
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCj4gCj4gPHNu
-aXAgLz4KPiAKPj4+PiArCWx2ZHMtPmRybV9kZXYgPSBkcm1fZGV2Owo+Pj4+ICsJcG9ydCA9IG9m
-X2dyYXBoX2dldF9wb3J0X2J5X2lkKGRldi0+b2Zfbm9kZSwgMSk7Cj4+Pj4gKwlpZiAoIXBvcnQp
-IHsKPj4+PiArCQlkZXZfZXJyKGRldiwgImNhbid0IGZvdW5kIHBvcnQgcG9pbnQsIHBsZWFzZSBp
-bml0IGx2ZHMgcGFuZWwgcG9ydCFcbiIpOwo+Pj4+ICsJCXJldHVybiAtRUlOVkFMOwo+Pj4+ICsJ
-fQo+Pj4+ICsKPj4+PiArCWZvcl9lYWNoX2NoaWxkX29mX25vZGUocG9ydCwgZW5kcG9pbnQpIHsK
-Pj4+PiArCQlyZW1vdGUgPSBvZl9ncmFwaF9nZXRfcmVtb3RlX3BvcnRfcGFyZW50KGVuZHBvaW50
-KTsKPj4+PiArCQlpZiAoIXJlbW90ZSkgewo+Pj4+ICsJCQlkZXZfZXJyKGRldiwgImNhbid0IGZv
-dW5kIHBhbmVsIG5vZGUsIHBsZWFzZSBpbml0IVxuIik7Cj4+Pj4gKwkJCXJldCA9IC1FSU5WQUw7
-Cj4+Pj4gKwkJCWdvdG8gZXJyX3B1dF9wb3J0Owo+Pj4+ICsJCX0KPj4+PiArCQlpZiAoIW9mX2Rl
-dmljZV9pc19hdmFpbGFibGUocmVtb3RlKSkgewo+Pj4+ICsJCQlvZl9ub2RlX3B1dChyZW1vdGUp
-Owo+Pj4+ICsJCQlyZW1vdGUgPSBOVUxMOwo+Pj4+ICsJCQljb250aW51ZTsKPj4+PiArCQl9Cj4+
-Pj4gKwkJYnJlYWs7Cj4+Pj4gKwl9Cj4+Pj4gKwlpZiAoIXJlbW90ZSkgewo+Pj4+ICsJCWRldl9l
-cnIoZGV2LCAiY2FuJ3QgZm91bmQgcmVtb3RlIG5vZGUsIHBsZWFzZSBpbml0IVxuIik7Cj4+Pj4g
-KwkJcmV0ID0gLUVJTlZBTDsKPj4+PiArCQlnb3RvIGVycl9wdXRfcG9ydDsKPj4+PiArCX0KPj4+
-PiArCj4+Pj4gKwlsdmRzLT5wYW5lbCA9IG9mX2RybV9maW5kX3BhbmVsKHJlbW90ZSk7Cj4+Pj4g
-KwlpZiAoIWx2ZHMtPnBhbmVsKQo+Pj4+ICsJCWx2ZHMtPmJyaWRnZSA9IG9mX2RybV9maW5kX2Jy
-aWRnZShyZW1vdGUpOwo+Pj4KPj4+IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgpCj4+Pgo+
-Pgo+PiBiZWNhdXNlIHRoZSBsdmRzIHBvcnRzIG1heWJlIGNvbm5lY3QgdG8gbHZkcy1wYW5lbCBv
-ciBjb25uZWN0IHRvCj4+IHJrMTAwMCh3aGljaCBpcyBjb252ZXJ0IFJHQiB0byBDVkJTIG91dHB1
-dCksIHNvIGkgaGF2ZSB0byBnZXQgdGhlIHJlbW90ZQo+PiBwb3J0IHBhcmVudCBhbmQgY2hlY2sg
-dGhlIHN0YXR1cywgYW5kIGZpbmFsIGdldCB0aGUgYWN0aXZlIHJlbW90ZSBwb2ludC4KPj4KPiAK
-PiAKPiAKPj4gbHZkc19wYW5lbDogbHZkcy1wYW5lbCB7Cj4+IAlzdGF0dXMgPSAiZGlzYWJsZWQi
-Owo+PiAJcG9ydHMgewo+PiAJCXBhbmVsX2luX2x2ZHM6IGVuZHBvaW50IHsKPj4gCQkJcmVtb3Rl
-LWVuZHBvaW50ID0gPCZsdmRzX291dF9wYW5lbD47Cj4+IAkJfTsKPj4gCX07Cj4+IH07Cj4+Cj4+
-IHJrMTAwMDogcmsxMDAwQDB4ZmYwMDAwMDAgewo+PiAJc3RhdHVzID0gIm9rYXkiOwo+PiAJcG9y
-dHMgewo+PiAJCXJrMTAwMF9pbl9sdmRzOiBlbmRwb2ludCB7Cj4+IAkJCXJlbW90ZS1lbmRwb2lu
-dCA9IDwmbHZkc19vdXRfcGFuZWw+Owo+PiAJCX07Cj4+IAl9Owo+PiB9Owo+Pgo+PiAmbHZkcyB7
-Cj4+IAlzdGF0dXMgPSAib2theSI7Cj4+IAlwb3J0cyB7Cj4+IAkJbHZkc19vdXQ6IHBvcnRAMSB7
-Cj4+IAkJCXJlZyA9IDwxPjsKPj4gCQkJbHZkc19vdXRfcGFuZWw6IGVuZHBvaW50QDAgewo+PiAJ
-CQkJcmVnID0gPDA+Owo+PiAJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZwYW5lbF9pbl9sdmRzPjsK
-Pj4gCQkJfTsKPj4gCQkJbHZkc19vdXRfcmsxMDAwOiBlbmRwb2ludEAxIHsKPj4gCQkJCXJlZyA9
-IDwxPjsKPj4gCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmcmsxMDAwX2luX2x2ZHM+Owo+PiAJCQl9
-Owo+PiAJCX07Cj4+Cj4+IAl9Owo+PiB9Owo+IAo+IEhpIFNhbmR5LAo+IEZvcmdpdmUgbWUsIHRo
-aXMgaXMgcHJvYmFibHkgYSBzdHVwaWQgcXVlc3Rpb24uIEkgZG9uJ3Qgc2VlIGhvdyB0aGlzIHVz
-ZWNhc2UgaXMKPiB1bmlxdWUgZnJvbSB0aGUgb3RoZXIgdXNlcnMgb2YgZHJtX29mX2ZpbmRfcGFu
-ZWxfb3JfYnJpZGdlLiBDb3VsZG4ndCB5b3UgY2hhbmdlCj4geW91ciBkZXZpY2V0cmVlIGJpbmRp
-bmdzIHRvIGNvbmZvcm0gdG8gc29tZXRoaW5nIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgp
-Cj4gY2FuIHdvcmsgd2l0aD8KPiAKPiBUaGFuayB5b3UsCj4gCkhpIHNlYW4sCiAgICAgTWF5YmUg
-aSBjYW4gdXNlIHRoZSBmb2xsb3dpbmcgbWV0aG9kIHRvIHVzZSAKZHJtX29mX2ZpbmRfcGFuZWxf
-b3JfYnJpZGdlKCkgYW5kIG5vIG5lZWQgdG8gY2hhbmdlIG15IERULCBidXQgdGhlcmUgaXMgCmFu
-b3RoZXIgcXVlc3Rpb246CiAgICAgVGhlIExWRFMgb3V0cHV0IGZvcm1hdChyb2NrY2hpcCxvdXRw
-dXTjgIFyb2NrY2hpcCxkYXRhLW1hcHBpbmcgZXRjLikKZGVwZW5kIG9uIGRpZmZlcmVudCBwYW5l
-bCwgc28gaXQgc2hvdWxkIGJlIHB1dCB1bmRlciByZW1vdGUgcGFuZWwgcG9pbnQuCklmIHVzZSBk
-cm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2XvvIgpLCB0aGlzIGp1c3QgcmV0dXJuIHBhbmVsIG9y
-IGJyaWRnZSwgCnNvIGkgaGF2ZSB0byBiYWNrIHRvIGdldCByZW1vdGUgcGFuZWwgcG9pbnQgYW5k
-IGdldCB0aGUgb3V0cHV0IGZvcm1hdC4KCnJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRn
-ZShkZXYtPm9mX25vZGUsIDEsIDAsICZsdmRzLT5wYW5lbCwKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAmbHZkcy0+YnJpZGdlKTsKaWYgKHJldCkKICAgICByZXQgPSBkcm1fb2Zf
-ZmluZF9wYW5lbF9vcl9icmlkZ2UoZGV2LT5vZl9ub2RlLCAxLCAxLCAmbHZkcy0+cGFuZWwsCiAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZsdmRzLT5icmlkZ2UpOwppZiAo
-cmV0KSB7CiAgICAgRFJNX0RFVl9FUlJPUihkZXYsICJmYWlsZWQgdG8gZmluZCBwYW5lbCBhbmQg
-YnJpZGdlIG5vZGVcbiIpOwogICAgIHJldCAgPSAtRVBST0JFX0RFRkVSOwogICAgIGdvdG8gZXJy
-X3B1dF9yZW1vdGU7Cn0KCQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Hi Shawn,
+
+On 08/11/2017 09:52 AM, Shawn Lin wrote:
+> +static void rockchip_pcie_disable_clocks(void *data)
+> +{
+> +	struct rockchip_pcie *rockchip = data;
+> +
+> +	clk_disable_unprepare(rockchip->clk_pcie_pm);
+> +	clk_disable_unprepare(rockchip->hclk_pcie);
+> +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+> +	clk_disable_unprepare(rockchip->aclk_pcie);
+> +}
+
+maybe we can reuse this function in suspend noirq
+
+
+> +
+>   static int rockchip_pcie_probe(struct platform_device *pdev)
+>   {
+>   	struct rockchip_pcie *rockchip;
+> @@ -1493,31 +1511,49 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>   	err = clk_prepare_enable(rockchip->aclk_pcie);
+>   	if (err) {
+>   		dev_err(dev, "unable to enable aclk_pcie clock\n");
+> -		goto err_aclk_pcie;
+> +		return err;
+>   	}
+>
+>   	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
+>   	if (err) {
+>   		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
+> -		goto err_aclk_perf_pcie;
+> +		clk_disable_unprepare(rockchip->aclk_pcie);
+> +		return err;
+>   	}
+>
+>   	err = clk_prepare_enable(rockchip->hclk_pcie);
+>   	if (err) {
+>   		dev_err(dev, "unable to enable hclk_pcie clock\n");
+> -		goto err_hclk_pcie;
+> +		clk_disable_unprepare(rockchip->aclk_pcie);
+> +		clk_disable_unprepare(rockchip->aclk_perf_pcie);
+> +		return err;
+>   	}
+>
+>   	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+>   	if (err) {
+> -		dev_err(dev, "unable to enable hclk_pcie clock\n");
+> -		goto err_pcie_pm;
+> +		dev_err(dev, "unable to enable clk_pcie_pm clock\n");
+> +		clk_disable_unprepare(rockchip->aclk_pcie);
+> +		clk_disable_unprepare(rockchip->aclk_perf_pcie);
+> +		clk_disable_unprepare(rockchip->hclk_pcie);
+> +		return err;
+>   	}
+
+maybe we can have a rockchip_pcie_enable_clocks for these, and also 
+reuse it in resume noirq
