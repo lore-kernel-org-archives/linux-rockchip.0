@@ -1,44 +1,38 @@
-From: "rocky.hao" <rocky.hao@rock-chips.com>
-Subject: Re: [PATCH v2 1/5] dt-bindings: rockchip-thermal: Support the RK3328
- SoC compatible
-Date: Fri, 11 Aug 2017 09:08:45 +0800
-Message-ID: <fc8bb9cd-af82-c9cb-39bd-043c8d080ada@rock-chips.com>
-References: <1501833976-1100-1-git-send-email-rocky.hao@rock-chips.com>
- <1501833976-1100-2-git-send-email-rocky.hao@rock-chips.com>
- <20170810174947.r2wl4c4zimkyhamj@rob-hp-laptop>
+From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 3/3] dt-bindings: ASoC: rockchip: Add rockchip,codec-names
+ property
+Date: Fri, 11 Aug 2017 09:30:21 +0800
+Message-ID: <598D08AD.8090609@rock-chips.com>
+References: <1502340898-28403-1-git-send-email-jeffy.chen@rock-chips.com> <1502340898-28403-4-git-send-email-jeffy.chen@rock-chips.com> <20170810145607.g663oq7cfxjmaxtf@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170810174947.r2wl4c4zimkyhamj@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: rui.zhang@intel.com, edubezval@gmail.com, heiko@sntech.de, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170810145607.g663oq7cfxjmaxtf-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+Hi Mark,
 
-Thank you very much for your reply, and your ack of course.
+On 08/10/2017 10:56 PM, Mark Brown wrote:
+> On Thu, Aug 10, 2017 at 12:54:58PM +0800, Jeffy Chen wrote:
+>> Add a new rockchip,codec-names property, so that the driver can parse
+>> the codecs by name.
+>
+> Why?  You're already referencing the CODECs by phandle and these names
+> are not part of any ABI...
+>
 
-Best Regards,
-Rocky
+currently we are binding the phandles to a fixed codec list in the 
+driver. but we want to make it dynamic, since some exist codecs could be 
+optional, and some new codecs could be add for new board too.
 
-ÔÚ 2017/8/11 1:49, Rob Herring Ð´µÀ:
-> On Fri, Aug 04, 2017 at 04:06:12PM +0800, Rocky Hao wrote:
->> attempt to new compatible for thermal founding on RK3328 SoC.
-> 
-> ? "Add a new compatible..."
-> 
->>
->> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
->> ---
->> Change in v2:
->> - remove gerrit Change-Id
->>
->>   Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 1 +
->>   1 file changed, 1 insertion(+)
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> 
-> 
-> 
+and the support of this new property in the driver is added in 
+https://patchwork.kernel.org/patch/9892737
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
