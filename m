@@ -1,93 +1,105 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: display: Add Document for Rockchip Soc
- LVDS
-Date: Fri, 11 Aug 2017 17:38:31 +0200
-Message-ID: <1502465911.2310.18.camel@pengutronix.de>
-References: <1502272846-63941-1-git-send-email-hjc@rock-chips.com>
-         <1502272851-63997-1-git-send-email-hjc@rock-chips.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 20/28] drm/rockchip: switch to drm_*_get(),
+ drm_*_put() helpers
+Date: Fri, 11 Aug 2017 12:03:25 -0400
+Message-ID: <20170811160325.553z6yjocbmbeyn6@art_vandelay>
+References: <1502454794-28558-1-git-send-email-cakturk@gmail.com>
+ <1502454794-28558-21-git-send-email-cakturk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502272851-63997-1-git-send-email-hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1502454794-28558-21-git-send-email-cakturk@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Cihangir Akturk <cakturk@gmail.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2017-08-09 at 18:00 +0800, Sandy Huang wrote:
-> This patch add Document for Rockchip Soc RK3288 LVDS,
-> This based on the patches from Mark yao and Heiko Stuebner.
-> 
-> > Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Signed-off-by: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
->  .../bindings/display/rockchip/rockchip-lvds.txt    | 104 +++++++++++++++++++++
->  1 file changed, 104 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
-> new file mode 100644
-> index 0000000..bf934ba
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
-> @@ -0,0 +1,104 @@
-> +Rockchip RK3288 LVDS interface
-> +================================
-> +
-> +Required properties:
-> +- compatible: matching the soc type, one of
-> > +	- "rockchip,rk3288-lvds";
-> +
-> +- reg: physical base address of the controller and length
-> > +	of memory mapped region.
-> +- clocks: must include clock specifiers corresponding to entries in the
-> > +	clock-names property.
-> +- clock-names: must contain "pclk_lvds"
-> +
-> +- avdd1v0-supply: regulator phandle for 1.0V analog power
-> +- avdd1v8-supply: regulator phandle for 1.8V analog power
-> +- avdd3v3-supply: regulator phandle for 3.3V analog power
-> +
-> +- rockchip,grf: phandle to the general register files syscon
-> +
-> +Optional properties
-> +- pinctrl-names: must contain a "lcdc" entry.
-> +- pinctrl-0: pin control group to be used for this controller.
-> +
-> +Required nodes:
-> +
-> +The lvds has two video ports as described by
-> > +	Documentation/devicetree/bindings/media/video-interfaces.txt.
-> +Their connections are modeled using the OF graph bindings specified in
-> > +	Documentation/devicetree/bindings/graph.txt.
-> +
-> +- video port 0 for the VOP inputs
-> +- video port 1 for either a panel or subsequent encoder
-> +
-> +the lvds panel described by
-> > +	Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> +
-> +- rockchip,data-mapping: should be "vesa" or "jeida",
-> > +	This describes how the color bits are laid out in the
-> > +	serialized LVDS signal.
-> +- rockchip,data-width : should be <18> or <24>;
-
-This can already be described by the panel itself, via the bus_format
-property in the panel_desc for panel-simple, or via the existing panel
-device tree property "data-mapping" in panel-lvds, which can be set to
-"jeida-18", "jeida-24", or "vesa-24".
-
-The LVDS driver can then read the panel bus information from the
-panel's connector->display_info.bus_formats.
-
-So if these properties are necessary at all, they at least should be
-optional (overrides).
-
-regards
-Philipp
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gRnJpLCBBdWcgMTEsIDIwMTcgYXQgMDM6MzM6MDZQTSArMDMwMCwgQ2loYW5naXIgQWt0dXJr
+IHdyb3RlOgo+IFVzZSBkcm1fKl9nZXQoKSBhbmQgZHJtXypfcHV0KCkgaGVscGVycyBpbnN0ZWFk
+IG9mIGRybV8qX3JlZmVyZW5jZSgpCj4gYW5kIGRybV8qX3VucmVmZXJlbmNlKCkgaGVscGVycy4K
+PiAKPiBkcm1fKl9yZWZlcmVuY2UoKSBhbmQgZHJtXypfdW5yZWZlcmVuY2UoKSBmdW5jdGlvbnMg
+YXJlIGp1c3QKPiBjb21wYXRpYmlsaXR5IGFsaWFzIGZvciBkcm1fKl9nZXQoKSBhbmQgZHJtXypf
+cHV0KCkgYW5kIHNob3VsZCBub3QgYmUKPiB1c2VkIGJ5IG5ldyBjb2RlLiBTbyBjb252ZXJ0IGFs
+bCB1c2VycyBvZiBjb21wYXRpYmlsaXR5IGZ1bmN0aW9ucyB0bwo+IHVzZSB0aGUgbmV3IEFQSXMu
+Cj4gCj4gR2VuZXJhdGVkIGJ5OiBzY3JpcHRzL2NvY2NpbmVsbGUvYXBpL2RybS1nZXQtcHV0LmNv
+Y2NpCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2loYW5naXIgQWt0dXJrIDxjYWt0dXJrQGdtYWlsLmNv
+bT4KCkFwcGxpZWQgdG8gZHJtLW1pc2MtbmV4dCwgdGhhbmsgeW91IQoKU2VhbgoKPiAtLS0KPiAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICAgIHwgNiArKystLS0K
+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jIHwgMiArLQo+
+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jICAgfCAyICstCj4g
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICB8IDQgKystLQo+
+ICA0IGZpbGVzIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCj4gaW5kZXggOGEwZjc1
+Ni4uNzA3NzMwNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2ZiLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2ZiLmMKPiBAQCAtNDgsNyArNDgsNyBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fZmJfZGVz
+dHJveShzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpmYikKPiAgCWludCBpOwo+ICAKPiAgCWZvciAo
+aSA9IDA7IGkgPCBST0NLQ0hJUF9NQVhfRkJfQlVGRkVSOyBpKyspCj4gLQkJZHJtX2dlbV9vYmpl
+Y3RfdW5yZWZlcmVuY2VfdW5sb2NrZWQocm9ja2NoaXBfZmItPm9ialtpXSk7Cj4gKwkJZHJtX2dl
+bV9vYmplY3RfcHV0X3VubG9ja2VkKHJvY2tjaGlwX2ZiLT5vYmpbaV0pOwo+ICAKPiAgCWRybV9m
+cmFtZWJ1ZmZlcl9jbGVhbnVwKGZiKTsKPiAgCWtmcmVlKHJvY2tjaGlwX2ZiKTsKPiBAQCAtMTQ0
+LDcgKzE0NCw3IEBAIHJvY2tjaGlwX3VzZXJfZmJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpk
+ZXYsIHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2LAo+ICAJCQl3aWR0aCAqIGRybV9mb3JtYXRf
+cGxhbmVfY3BwKG1vZGVfY21kLT5waXhlbF9mb3JtYXQsIGkpOwo+ICAKPiAgCQlpZiAob2JqLT5z
+aXplIDwgbWluX3NpemUpIHsKPiAtCQkJZHJtX2dlbV9vYmplY3RfdW5yZWZlcmVuY2VfdW5sb2Nr
+ZWQob2JqKTsKPiArCQkJZHJtX2dlbV9vYmplY3RfcHV0X3VubG9ja2VkKG9iaik7Cj4gIAkJCXJl
+dCA9IC1FSU5WQUw7Cj4gIAkJCWdvdG8gZXJyX2dlbV9vYmplY3RfdW5yZWZlcmVuY2U7Cj4gIAkJ
+fQo+IEBAIC0xNjEsNyArMTYxLDcgQEAgcm9ja2NoaXBfdXNlcl9mYl9jcmVhdGUoc3RydWN0IGRy
+bV9kZXZpY2UgKmRldiwgc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYsCj4gIAo+ICBlcnJfZ2Vt
+X29iamVjdF91bnJlZmVyZW5jZToKPiAgCWZvciAoaS0tOyBpID49IDA7IGktLSkKPiAtCQlkcm1f
+Z2VtX29iamVjdF91bnJlZmVyZW5jZV91bmxvY2tlZChvYmpzW2ldKTsKPiArCQlkcm1fZ2VtX29i
+amVjdF9wdXRfdW5sb2NrZWQob2Jqc1tpXSk7Cj4gIAlyZXR1cm4gRVJSX1BUUihyZXQpOwo+ICB9
+Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2ZiZGV2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMK
+PiBpbmRleCBjZTk0NmI5Li43MjQ1NzllIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYwo+IEBAIC0xNzMsNyArMTczLDcgQEAgdm9pZCByb2Nr
+Y2hpcF9kcm1fZmJkZXZfZmluaShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2KQo+ICAJZHJtX2ZiX2hl
+bHBlcl91bnJlZ2lzdGVyX2ZiaShoZWxwZXIpOwo+ICAKPiAgCWlmIChoZWxwZXItPmZiKQo+IC0J
+CWRybV9mcmFtZWJ1ZmZlcl91bnJlZmVyZW5jZShoZWxwZXItPmZiKTsKPiArCQlkcm1fZnJhbWVi
+dWZmZXJfcHV0KGhlbHBlci0+ZmIpOwo+ICAKPiAgCWRybV9mYl9oZWxwZXJfZmluaShoZWxwZXIp
+Owo+ICB9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4g
+aW5kZXggZjc0MzMzZS4uMTg2OWM4YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0zODMsNyArMzgzLDcgQEAgcm9ja2NoaXBfZ2VtX2Ny
+ZWF0ZV93aXRoX2hhbmRsZShzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdiwKPiAgCQlnb3RvIGVy
+cl9oYW5kbGVfY3JlYXRlOwo+ICAKPiAgCS8qIGRyb3AgcmVmZXJlbmNlIGZyb20gYWxsb2NhdGUg
+LSBoYW5kbGUgaG9sZHMgaXQgbm93LiAqLwo+IC0JZHJtX2dlbV9vYmplY3RfdW5yZWZlcmVuY2Vf
+dW5sb2NrZWQob2JqKTsKPiArCWRybV9nZW1fb2JqZWN0X3B1dF91bmxvY2tlZChvYmopOwo+ICAK
+PiAgCXJldHVybiBya19vYmo7Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYwo+IGluZGV4IDk0ODcxOWQuLmJmOWVkMGUgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTAyNiw3ICsxMDI2LDcg
+QEAgc3RhdGljIHZvaWQgdm9wX2NydGNfYXRvbWljX2ZsdXNoKHN0cnVjdCBkcm1fY3J0YyAqY3J0
+YywKPiAgCQlpZiAob2xkX3BsYW5lX3N0YXRlLT5mYiA9PSBuZXdfcGxhbmVfc3RhdGUtPmZiKQo+
+ICAJCQljb250aW51ZTsKPiAgCj4gLQkJZHJtX2ZyYW1lYnVmZmVyX3JlZmVyZW5jZShvbGRfcGxh
+bmVfc3RhdGUtPmZiKTsKPiArCQlkcm1fZnJhbWVidWZmZXJfZ2V0KG9sZF9wbGFuZV9zdGF0ZS0+
+ZmIpOwo+ICAJCWRybV9mbGlwX3dvcmtfcXVldWUoJnZvcC0+ZmJfdW5yZWZfd29yaywgb2xkX3Bs
+YW5lX3N0YXRlLT5mYik7Cj4gIAkJc2V0X2JpdChWT1BfUEVORElOR19GQl9VTlJFRiwgJnZvcC0+
+cGVuZGluZyk7Cj4gIAkJV0FSTl9PTihkcm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpICE9IDApOwo+
+IEBAIC0xMTUwLDcgKzExNTAsNyBAQCBzdGF0aWMgdm9pZCB2b3BfZmJfdW5yZWZfd29ya2VyKHN0
+cnVjdCBkcm1fZmxpcF93b3JrICp3b3JrLCB2b2lkICp2YWwpCj4gIAlzdHJ1Y3QgZHJtX2ZyYW1l
+YnVmZmVyICpmYiA9IHZhbDsKPiAgCj4gIAlkcm1fY3J0Y192YmxhbmtfcHV0KCZ2b3AtPmNydGMp
+Owo+IC0JZHJtX2ZyYW1lYnVmZmVyX3VucmVmZXJlbmNlKGZiKTsKPiArCWRybV9mcmFtZWJ1ZmZl
+cl9wdXQoZmIpOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCB2b3BfaGFuZGxlX3ZibGFuayhzdHJ1
+Y3Qgdm9wICp2b3ApCj4gLS0gCj4gMi43LjQKPiAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwo+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0
+Cj4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCgotLSAKU2VhbiBQ
+YXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
