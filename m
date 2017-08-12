@@ -1,64 +1,43 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add rk3328-rock64 board
-Date: Sat, 12 Aug 2017 01:33:36 +0200
-Message-ID: <6368063.kvbHAoN7Jh@phil>
-References: <20170809220408.4301-1-heiko@sntech.de> <8e116c15-905b-3392-5b1f-c6e31c342d94@rock-chips.com>
+From: Jonathan Cameron <jic23-tko9wxEg+fIOOJlXag/Snyp2UmYkHbXO@public.gmane.org>
+Subject: Re: [PATCH v2 19/23] dt-bindings: adc: add description for rv1108
+ saradc
+Date: Sat, 12 Aug 2017 12:13:12 +0100
+Message-ID: <20170812121312.14b31f02@archlinux>
+References: <1501662303-11687-1-git-send-email-andy.yan@rock-chips.com>
+        <1501663953-12768-1-git-send-email-andy.yan@rock-chips.com>
+        <20170810161800.m63tavdrawwkqejv@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <8e116c15-905b-3392-5b1f-c6e31c342d94-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170810161800.m63tavdrawwkqejv@rob-hp-laptop>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+On Thu, 10 Aug 2017 11:18:00 -0500
+Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 
-Am Donnerstag, 10. August 2017, 09:24:18 CEST schrieb Shawn Lin:
-> On 2017/8/10 6:04, Heiko Stuebner wrote:
-> > The ROCK64 is a credit card size 4K60P HDR Media Board Computer using the
-> > Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
-> > up to 4GB 1600MHz LPDDR3 memory. It provides eMMC module socket, MicroSD
-> > Card slot, Pi-2 Bus, Pi-P5+ Bus, USB 3.0 and many others peripheral
-> > devices interface for makers to integrate with sensors and devices.
+> On Wed, Aug 02, 2017 at 04:52:33PM +0800, Andy Yan wrote:
+> > Add device tree bindings document for saradc on
+> > rockchip rv1108 soc.
 > > 
-> > The devicetree currently supports basic peripherals, with more to be
-> > added later on.
-> > 
-> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > > ---
-
-[...]
-
-> > +&emmc {
-> > +	bus-width = <8>;
-> > +	cap-mmc-highspeed;
-> > +	supports-emmc;
-> > +	disable-wp;
-> > +	non-removable;
-> > +	num-slots = <1>;
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-> > +	status = "okay";
-> > +};
-> > +
+> > 
+> > Changes in v2: None
+> > 
+> >  Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt | 1 +
+> >  1 file changed, 1 insertion(+)  
 > 
-> supports-{emmc, sd, sdio} aren't vaild properties.
-> If you do want to speedup the init process and you
-> could add no-sd and no-sdio for emmc.
-> 
-> num-slots is deprecated and would be cleaned from all dts for 4.14
-> cycle. And disable-wp is only used for SD card now.
-> 
-> The same comment for the following sd and sdio nodes.
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Applied to the togreg branch of iio.git
 
-Thanks for keeping an eye on the mmc properties. I've dropped
-the offending ones and send a v2 patch.
+Thanks,
 
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Jonathan
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-iio" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
