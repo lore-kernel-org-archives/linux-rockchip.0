@@ -1,22 +1,22 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: Delete an error message for a failed memory allocation in rockchip_i2s_probe()" to the asoc tree
-Date: Mon, 14 Aug 2017 17:42:36 +0100
-Message-ID: <E1dhIRo-000569-KC@finisterre>
-References: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
+Subject: Applied "spi: rockchip: add compatible string for rv1108 spi" to the spi tree
+Date: Mon, 14 Aug 2017 17:45:18 +0100
+Message-ID: <E1dhIUQ-0005k7-1c@finisterre>
+References: <1501663563-12482-1-git-send-email-andy.yan@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
+In-Reply-To: <1501663563-12482-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Elfring <elfring@users.sourceforge.net>
-Cc: Mark Brown <broonie@kernel.org>, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.orgbroonie@kernel.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@stud.acs.upb.ro>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>, Mark Brown <broonie@kernel.org>, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, linux-spi@vger.kernel.orglinux-spi@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 The patch
 
-   ASoC: rockchip: Delete an error message for a failed memory allocation in rockchip_i2s_probe()
+   spi: rockchip: add compatible string for rv1108 spi
 
-has been applied to the asoc tree at
+has been applied to the spi tree at
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
@@ -37,38 +37,45 @@ to this mail.
 Thanks,
 Mark
 
-From b48b2710913d583ff93c365413532e1a7cd60d84 Mon Sep 17 00:00:00 2001
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Thu, 10 Aug 2017 18:38:09 +0200
-Subject: [PATCH] ASoC: rockchip: Delete an error message for a failed memory
- allocation in rockchip_i2s_probe()
+From 6b860e69e873be247d19174ab6b24d0b5741bf8c Mon Sep 17 00:00:00 2001
+From: Andy Yan <andy.yan@rock-chips.com>
+Date: Mon, 14 Aug 2017 16:34:22 +0800
+Subject: [PATCH] spi: rockchip: add compatible string for rv1108 spi
 
-Omit an extra message for a memory allocation failure in this function.
+The spi on rv1108 is the same as other rockchip based
+socs, add compatible string for it.
 
-This issue was detected by using the Coccinelle software.
-
-Link: http://events.linuxfoundation.org/sites/events/files/slides/LCJ16-Refactor_Strings-WSang_0.pdf
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/rockchip/rockchip_i2s.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ Documentation/devicetree/bindings/spi/spi-rockchip.txt | 1 +
+ drivers/spi/spi-rockchip.c                             | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 199338fdeda0..b6590467fd14 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -579,10 +579,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	int val;
+diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.txt b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
+index 83da4931d832..6e3ffacbba32 100644
+--- a/Documentation/devicetree/bindings/spi/spi-rockchip.txt
++++ b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
+@@ -6,6 +6,7 @@ and display controllers using the SPI communication interface.
+ Required Properties:
  
- 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
--	if (!i2s) {
--		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
-+	if (!i2s)
- 		return -ENOMEM;
--	}
+ - compatible: should be one of the following.
++    "rockchip,rv1108-spi" for rv1108 SoCs.
+     "rockchip,rk3036-spi" for rk3036 SoCS.
+     "rockchip,rk3066-spi" for rk3066 SoCs.
+     "rockchip,rk3188-spi" for rk3188 SoCs.
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 34f6440a5255..474033e2149e 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -914,6 +914,7 @@ static const struct dev_pm_ops rockchip_spi_pm = {
+ };
  
- 	i2s->dev = &pdev->dev;
- 
+ static const struct of_device_id rockchip_spi_dt_match[] = {
++	{ .compatible = "rockchip,rv1108-spi", },
+ 	{ .compatible = "rockchip,rk3036-spi", },
+ 	{ .compatible = "rockchip,rk3066-spi", },
+ 	{ .compatible = "rockchip,rk3188-spi", },
 -- 
 2.13.2
