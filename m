@@ -1,60 +1,74 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH] watchdog: dw_wdt: fix overflow issue in
- dw_wdt_top_in_seconds
-Date: Mon, 14 Aug 2017 08:37:52 -0700
-Message-ID: <20170814153752.GB7025@roeck-us.net>
-References: <1501159843-6623-1-git-send-email-huibin.hong@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1501159843-6623-1-git-send-email-huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: Delete an error message for a failed memory allocation in rockchip_i2s_probe()" to the asoc tree
+Date: Mon, 14 Aug 2017 17:42:36 +0100
+Message-ID: <E1dhIRo-000569-KC@finisterre>
+References: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170225101834.28232-1-mihai.dumitru2201@stud.acs.upb.ro>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Markus Elfring <elfring@users.sourceforge.net>
+Cc: Mark Brown <broonie@kernel.org>, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@gmail.com>, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.orgbroonie@kernel.org, Mihai-Valentin DUMITRU <mihai.dumitru2201@stud.acs.upb.ro>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jul 27, 2017 at 08:50:43PM +0800, Huibin Hong wrote:
-> If top is 15, (1 << (16 + top)) may be negative.
-> 
-> Change-Id: I76e4a603a54f093e64a4b266008570e3afcdb35a
+The patch
 
-No Change-Id in upstream patches, please.
+   ASoC: rockchip: Delete an error message for a failed memory allocation in rockchip_i2s_probe()
 
-> Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+has been applied to the asoc tree at
 
-I am having trouble applying this patch. What is its baseline version ?
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-Guenter
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-> ---
->  drivers/watchdog/dw_wdt.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/watchdog/dw_wdt.c b/drivers/watchdog/dw_wdt.c
-> index 6ea0634..059c974 100644
-> --- a/drivers/watchdog/dw_wdt.c
-> +++ b/drivers/watchdog/dw_wdt.c
-> @@ -81,7 +81,9 @@ static inline int dw_wdt_top_in_seconds(unsigned top)
->  	 * There are 16 possible timeout values in 0..15 where the number of
->  	 * cycles is 2 ^ (16 + i) and the watchdog counts down.
->  	 */
-> -	return (1 << (16 + top)) / clk_get_rate(dw_wdt.clk);
-> +	unsigned int cycles = 1 << (16 + top);
-> +
-> +	return cycles / clk_get_rate(dw_wdt.clk);
->  }
->  
->  static int dw_wdt_get_top(void)
-> -- 
-> 1.9.1
-> 
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
---
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From b48b2710913d583ff93c365413532e1a7cd60d84 Mon Sep 17 00:00:00 2001
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Thu, 10 Aug 2017 18:38:09 +0200
+Subject: [PATCH] ASoC: rockchip: Delete an error message for a failed memory
+ allocation in rockchip_i2s_probe()
+
+Omit an extra message for a memory allocation failure in this function.
+
+This issue was detected by using the Coccinelle software.
+
+Link: http://events.linuxfoundation.org/sites/events/files/slides/LCJ16-Refactor_Strings-WSang_0.pdf
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 199338fdeda0..b6590467fd14 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -579,10 +579,8 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	int val;
+ 
+ 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
+-	if (!i2s) {
+-		dev_err(&pdev->dev, "Can't allocate rk_i2s_dev\n");
++	if (!i2s)
+ 		return -ENOMEM;
+-	}
+ 
+ 	i2s->dev = &pdev->dev;
+ 
+-- 
+2.13.2
