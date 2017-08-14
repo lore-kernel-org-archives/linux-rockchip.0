@@ -1,88 +1,144 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH 1/3] dt-bindings: display: Add Document for Rockchip Soc
- LVDS
-Date: Mon, 14 Aug 2017 12:04:38 +0800
-Message-ID: <7ebfa933-57ca-658a-84ef-6e47b0009209@rock-chips.com>
-References: <1502272846-63941-1-git-send-email-hjc@rock-chips.com>
- <1502272851-63997-1-git-send-email-hjc@rock-chips.com>
- <1502465911.2310.18.camel@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1502465911.2310.18.camel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 1/3] dt-bindings: display: Add Document for Rockchip Soc LVDS
+Date: Mon, 14 Aug 2017 15:01:34 +0800
+Message-ID: <1502694097-196236-1-git-send-email-hjc@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxNy84LzExIDIzOjM4LCBQaGlsaXBwIFphYmVsIOWGmemBkzoKPiBPbiBXZWQsIDIw
-MTctMDgtMDkgYXQgMTg6MDAgKzA4MDAsIFNhbmR5IEh1YW5nIHdyb3RlOgo+PiBUaGlzIHBhdGNo
-IGFkZCBEb2N1bWVudCBmb3IgUm9ja2NoaXAgU29jIFJLMzI4OCBMVkRTLAo+PiBUaGlzIGJhc2Vk
-IG9uIHRoZSBwYXRjaGVzIGZyb20gTWFyayB5YW8gYW5kIEhlaWtvIFN0dWVibmVyLgo+Pgo+Pj4g
-U2lnbmVkLW9mZi1ieTogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPj4+IFNpZ25l
-ZC1vZmYtYnk6IE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPj4+IFNpZ25lZC1v
-ZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+IC0tLQo+PiAgIC4uLi9i
-aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLWx2ZHMudHh0ICAgIHwgMTA0ICsrKysr
-KysrKysrKysrKysrKysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxMDQgaW5zZXJ0aW9ucygrKQo+
-PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-ZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC1sdmRzLnR4dAo+Pgo+PiBkaWZmIC0tZ2l0IGEvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAt
-bHZkcy50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2Nr
-Y2hpcC9yb2NrY2hpcC1sdmRzLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAw
-MDAwMDAwLi5iZjkzNGJhCj4+IC0tLSAvZGV2L251bGwKPj4gKysrIGIvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtbHZkcy50eHQKPj4g
-QEAgLTAsMCArMSwxMDQgQEAKPj4gK1JvY2tjaGlwIFJLMzI4OCBMVkRTIGludGVyZmFjZQo+PiAr
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPj4gKwo+PiArUmVxdWlyZWQgcHJvcGVy
-dGllczoKPj4gKy0gY29tcGF0aWJsZTogbWF0Y2hpbmcgdGhlIHNvYyB0eXBlLCBvbmUgb2YKPj4+
-ICsJLSAicm9ja2NoaXAscmszMjg4LWx2ZHMiOwo+PiArCj4+ICstIHJlZzogcGh5c2ljYWwgYmFz
-ZSBhZGRyZXNzIG9mIHRoZSBjb250cm9sbGVyIGFuZCBsZW5ndGgKPj4+ICsJb2YgbWVtb3J5IG1h
-cHBlZCByZWdpb24uCj4+ICstIGNsb2NrczogbXVzdCBpbmNsdWRlIGNsb2NrIHNwZWNpZmllcnMg
-Y29ycmVzcG9uZGluZyB0byBlbnRyaWVzIGluIHRoZQo+Pj4gKwljbG9jay1uYW1lcyBwcm9wZXJ0
-eS4KPj4gKy0gY2xvY2stbmFtZXM6IG11c3QgY29udGFpbiAicGNsa19sdmRzIgo+PiArCj4+ICst
-IGF2ZGQxdjAtc3VwcGx5OiByZWd1bGF0b3IgcGhhbmRsZSBmb3IgMS4wViBhbmFsb2cgcG93ZXIK
-Pj4gKy0gYXZkZDF2OC1zdXBwbHk6IHJlZ3VsYXRvciBwaGFuZGxlIGZvciAxLjhWIGFuYWxvZyBw
-b3dlcgo+PiArLSBhdmRkM3YzLXN1cHBseTogcmVndWxhdG9yIHBoYW5kbGUgZm9yIDMuM1YgYW5h
-bG9nIHBvd2VyCj4+ICsKPj4gKy0gcm9ja2NoaXAsZ3JmOiBwaGFuZGxlIHRvIHRoZSBnZW5lcmFs
-IHJlZ2lzdGVyIGZpbGVzIHN5c2Nvbgo+PiArCj4+ICtPcHRpb25hbCBwcm9wZXJ0aWVzCj4+ICst
-IHBpbmN0cmwtbmFtZXM6IG11c3QgY29udGFpbiBhICJsY2RjIiBlbnRyeS4KPj4gKy0gcGluY3Ry
-bC0wOiBwaW4gY29udHJvbCBncm91cCB0byBiZSB1c2VkIGZvciB0aGlzIGNvbnRyb2xsZXIuCj4+
-ICsKPj4gK1JlcXVpcmVkIG5vZGVzOgo+PiArCj4+ICtUaGUgbHZkcyBoYXMgdHdvIHZpZGVvIHBv
-cnRzIGFzIGRlc2NyaWJlZCBieQo+Pj4gKwlEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvbWVkaWEvdmlkZW8taW50ZXJmYWNlcy50eHQuCj4+ICtUaGVpciBjb25uZWN0aW9ucyBhcmUg
-bW9kZWxlZCB1c2luZyB0aGUgT0YgZ3JhcGggYmluZGluZ3Mgc3BlY2lmaWVkIGluCj4+PiArCURv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9ncmFwaC50eHQuCj4+ICsKPj4gKy0gdmlk
-ZW8gcG9ydCAwIGZvciB0aGUgVk9QIGlucHV0cwo+PiArLSB2aWRlbyBwb3J0IDEgZm9yIGVpdGhl
-ciBhIHBhbmVsIG9yIHN1YnNlcXVlbnQgZW5jb2Rlcgo+PiArCj4+ICt0aGUgbHZkcyBwYW5lbCBk
-ZXNjcmliZWQgYnkKPj4+ICsJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
-YXkvcGFuZWwvc2ltcGxlLXBhbmVsLnR4dAo+PiArCj4+ICstIHJvY2tjaGlwLGRhdGEtbWFwcGlu
-Zzogc2hvdWxkIGJlICJ2ZXNhIiBvciAiamVpZGEiLAo+Pj4gKwlUaGlzIGRlc2NyaWJlcyBob3cg
-dGhlIGNvbG9yIGJpdHMgYXJlIGxhaWQgb3V0IGluIHRoZQo+Pj4gKwlzZXJpYWxpemVkIExWRFMg
-c2lnbmFsLgo+PiArLSByb2NrY2hpcCxkYXRhLXdpZHRoIDogc2hvdWxkIGJlIDwxOD4gb3IgPDI0
-PjsKPiAKPiBUaGlzIGNhbiBhbHJlYWR5IGJlIGRlc2NyaWJlZCBieSB0aGUgcGFuZWwgaXRzZWxm
-LCB2aWEgdGhlIGJ1c19mb3JtYXQKPiBwcm9wZXJ0eSBpbiB0aGUgcGFuZWxfZGVzYyBmb3IgcGFu
-ZWwtc2ltcGxlLCBvciB2aWEgdGhlIGV4aXN0aW5nIHBhbmVsCj4gZGV2aWNlIHRyZWUgcHJvcGVy
-dHkgImRhdGEtbWFwcGluZyIgaW4gcGFuZWwtbHZkcywgd2hpY2ggY2FuIGJlIHNldCB0bwo+ICJq
-ZWlkYS0xOCIsICJqZWlkYS0yNCIsIG9yICJ2ZXNhLTI0Ii4KPiAKPiBUaGUgTFZEUyBkcml2ZXIg
-Y2FuIHRoZW4gcmVhZCB0aGUgcGFuZWwgYnVzIGluZm9ybWF0aW9uIGZyb20gdGhlCj4gcGFuZWwn
-cyBjb25uZWN0b3ItPmRpc3BsYXlfaW5mby5idXNfZm9ybWF0cy4KPiAKQmVjYXVzZSB0aGUgbHZk
-cyBtYXliZSBjb25uZWN0ZWQgdG8gcGFuZWwgb3Igc29tZSBjb3ZlciBjaGlwIGp1c3QgbGlrZSAK
-cmdiMmN2YnMgZXRjLiAsIGluIHRoaXMgY2FzZSwgd2Ugbm8gbmVlZCB0byBlbmFibGUgcGFuZWws
-IHNvIHdlIGhhdmUgdG8gCmdldCB0aGlzIHByb3RlcnR5IGF0IGhlcmUuCgo+IFNvIGlmIHRoZXNl
-IHByb3BlcnRpZXMgYXJlIG5lY2Vzc2FyeSBhdCBhbGwsIHRoZXkgYXQgbGVhc3Qgc2hvdWxkIGJl
-Cj4gb3B0aW9uYWwgKG92ZXJyaWRlcykuCj4Kb2ssIGkgd2lsbCBzZXQgZGF0YS1tYXBwaW5nIHRv
-IG9wdGlvbi4KPiByZWdhcmRzCj4gUGhpbGlwcAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4g
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPiAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This patch add Document for Rockchip Soc RK3288 LVDS,
+This based on the patches from Mark yao and Heiko Stuebner.
+
+Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+Changes:
+    set lvds data-mapping to opctions.
+
+ .../bindings/display/rockchip/rockchip-lvds.txt    | 106 +++++++++++++++++++++
+ 1 file changed, 106 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+new file mode 100644
+index 0000000..e8207dc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+@@ -0,0 +1,106 @@
++Rockchip RK3288 LVDS interface
++================================
++
++Required properties:
++- compatible: matching the soc type, one of
++	- "rockchip,rk3288-lvds";
++
++- reg: physical base address of the controller and length
++	of memory mapped region.
++- clocks: must include clock specifiers corresponding to entries in the
++	clock-names property.
++- clock-names: must contain "pclk_lvds"
++
++- avdd1v0-supply: regulator phandle for 1.0V analog power
++- avdd1v8-supply: regulator phandle for 1.8V analog power
++- avdd3v3-supply: regulator phandle for 3.3V analog power
++
++- rockchip,grf: phandle to the general register files syscon
++
++Optional properties:
++- pinctrl-names: must contain a "lcdc" entry.
++- pinctrl-0: pin control group to be used for this controller.
++
++Required nodes:
++
++The lvds has two video ports as described by
++	Documentation/devicetree/bindings/media/video-interfaces.txt.
++Their connections are modeled using the OF graph bindings specified in
++	Documentation/devicetree/bindings/graph.txt.
++
++- video port 0 for the VOP inputs
++- video port 1 for either a panel or subsequent encoder
++
++the lvds panel described by
++	Documentation/devicetree/bindings/display/panel/simple-panel.txt
++
++Panel required properties:
++- rockchip,data-width : should be <18> or <24>;
++- rockchip,output: should be "rgb", "lvds" or "duallvds",
++	This describes the output face.
++- ports for remote LVDS output
++
++Panel optional properties:
++- rockchip,data-mapping: should be "vesa" or "jeida",
++	This describes how the color bits are laid out in the
++	serialized LVDS signal.
++Example:
++
++lvds_panel: lvds-panel {
++	status = "okay";
++	compatible = "simple-panel";
++	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
++	rockchip,data-mapping = "jeida";
++	rockchip,data-width = <24>;
++	rockchip,output = "rgb";
++
++	ports {
++		panel_in_lvds: endpoint {
++			remote-endpoint = <&lvds_out_panel>;
++		};
++	};
++};
++
++
++For Rockchip RK3288:
++
++	lvds: lvds@ff96c000 {
++		compatible = "rockchip,rk3288-lvds";
++		rockchip,grf = <&grf>;
++		reg = <0xff96c000 0x4000>;
++		clocks = <&cru PCLK_LVDS_PHY>;
++		clock-names = "pclk_lvds";
++		pinctrl-names = "lcdc";
++		pinctrl-0 = <&lcdc_ctl>;
++		avdd1v0-supply = <&vdd10_lcd>;
++		avdd1v8-supply = <&vcc18_lcd>;
++		avdd3v3-supply = <&vcca_33>;
++		rockchip,data-mapping = "jeida";
++		rockchip,data-width = <24>;
++		rockchip,output = "rgb";
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			lvds_in: port@0 {
++				reg = <0>;
++
++				lvds_in_vopb: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&vopb_out_lvds>;
++				};
++				lvds_in_vopl: endpoint@1 {
++					reg = <1>;
++					remote-endpoint = <&vopl_out_lvds>;
++				};
++			};
++
++			lvds_out: port@1 {
++				reg = <1>;
++
++				lvds_out_panel: endpoint {
++					remote-endpoint = <&panel_in>;
++				};
++			};
++		};
++	};
+-- 
+2.7.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
