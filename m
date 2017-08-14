@@ -1,79 +1,39 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.14 part1
-Date: Mon, 14 Aug 2017 01:27:11 +0200
-Message-ID: <2274885.hdbqj6Qr1b@phil>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH v3 0/7] Add rk3328 pwm support
+Date: Mon, 14 Aug 2017 10:46:54 +0800
+Message-ID: <7e5a11c1-5f1d-9dff-435f-2624d95e16a3@rock-chips.com>
+References: <1502206715-24174-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1502206715-24174-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: thierry.reding@gmail.com, heiko@sntech.de, boris.brezillon@free-electrons.com, robh+dt@kernel.org
+Cc: catalin.marinas@arm.com, briannorris@chromium.org, dianders@chromium.org, mark.rutland@arm.com, huangtao@rock-chips.com, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Boris && thierry,
 
-please find below rockchip clock-changes targetted at 4.14.
-As we talked about before, it includes the approximation-callback
-for fractional dividers, Acked by Stephen.
+Do you have any other suggestion for the patches?
 
-Apart from that we have the usual changes as described by the tag.
-So if stuff looks ok, please pull.
-
-
-Thanks
-Heiko
-
-
-The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
-
-  Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-clk1
-
-for you to fetch changes up to 5d890c2df900db0197d46ec75383d7633ef41c82:
-
-  clk: rockchip: add special approximation to fix up fractional clk's jitter (2017-08-08 17:45:42 +0200)
-
-----------------------------------------------------------------
-The biggest change is fixing the jitter on the fractional clock-type
-Rockchip socs experience with the default approximation. For that we
-introduce the ability to override it with a clock-specific approximation
-and use that to create the needed rate settings as described in the
-Rockchip soc manuals (same for all Rockchip socs).
-
-Apart from that we have support for the rk3126 clock controller
-which is similar to the rk3128 with some minimal differences
-and a lot of improvements and fixes for the rv1108 clock controller
-(missing clocks, some clock-ids, naming fixes, register fixes).
-
-----------------------------------------------------------------
-Elaine Zhang (13):
-      clk: rockchip: add more clk ids for rv1108
-      clk: rockchip: rename the clk id for HCLK_I2S1_2CH
-      clk: rockchip: fix up indentation of some RV1108 clock-ids
-      clk: rockchip: support more rates for rv1108 cpuclk
-      clk: rockchip: fix up the pll clks error for rv1108 SoC
-      clk: rockchip: support more clks for rv1108
-      clk: rockchip: fix up some clks describe error for rv1108 SoC
-      clk: rockchip: rename some of clks for rv1108 SoC
-      clk: rockchip: add some critical clocks for rv1108 SoC
-      dt-bindings: add documentation for rk3126 clock
-      clk: rockchip: modify rk3128 clk driver to also support rk3126
-      clk: fractional-divider: allow overriding of approximation
-      clk: rockchip: add special approximation to fix up fractional clk's jitter
-
-Heiko Stuebner (1):
-      Merge branch 'v4.14-shared/clkids' into v4.14-clk/next
-
- .../bindings/clock/rockchip,rk3128-cru.txt         |   8 +-
- drivers/clk/clk-fractional-divider.c               |  28 +-
- drivers/clk/rockchip/clk-rk3128.c                  |  69 +++-
- drivers/clk/rockchip/clk-rv1108.c                  | 460 +++++++++++++++++----
- drivers/clk/rockchip/clk.c                         |  36 ++
- include/dt-bindings/clock/rv1108-cru.h             | 123 +++++-
- include/linux/clk-provider.h                       |   3 +
- 7 files changed, 605 insertions(+), 122 deletions(-)
-
+ÔÚ 2017/8/8 23:38, David Wu Ð´µÀ:
+> There are two features of rk3328 pwm module.
+>   - PWM APB and function clocks are different.
+>   - Add pwm atomic hardware update
+> 
+> David Wu (7):
+>    pwm: rockchip: Add APB and function both clocks support
+>    pwm: rockchip: Remove the judge from return value of pwm_config
+>    pwm: rockchip: Use pwm_apply instead of the pwm_enable
+>    pwm: rockchip: Move the configuration of polarity from
+>      rockchip_pwm_set_enable() to rockchip_pwm_config()
+>    pwm: rockchip: Use same pwm ops for each IP
+>    pwm: rockchip: Add rk3328 pwm support
+>    arm64: dts: rockchip: Add pwm nodes for rk3328
+> 
+>   .../devicetree/bindings/pwm/pwm-rockchip.txt       |   8 +-
+>   arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  45 ++++
+>   drivers/pwm/pwm-rockchip.c                         | 281 +++++++++++----------
+>   3 files changed, 199 insertions(+), 135 deletions(-)
+> 
