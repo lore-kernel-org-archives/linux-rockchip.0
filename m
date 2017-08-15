@@ -1,14 +1,46 @@
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 2/5] ASoC: rockchip: constify snd_soc_dai_ops structures
-Date: Tue, 15 Aug 2017 17:10:09 +0200
-Message-ID: <1502809812-13891-3-git-send-email-Julia.Lawall@lip6.fr>
-References: <1502809812-13891-1-git-send-email-Julia.Lawall@lip6.fr>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: constify snd_soc_dai_ops structures" to the asoc tree
+Date: Tue, 15 Aug 2017 18:15:24 +0100
+Message-ID: <E1dhfR6-0003dt-LY@debutante>
+References: <1502809812-13891-3-git-send-email-Julia.Lawall@lip6.fr>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502809812-13891-1-git-send-email-Julia.Lawall@lip6.fr>
+In-Reply-To: <1502809812-13891-3-git-send-email-Julia.Lawall@lip6.fr>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Liam Girdwood <lgirdwood@gmail.com>
-Cc: bhumirks@gmail.com, kernel-janitors@vger.kernel.org, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, bhumirks@gmail.comalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
+
+The patch
+
+   ASoC: rockchip: constify snd_soc_dai_ops structures
+
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 0966a2588779d0d44706f973c1e8ff240be43017 Mon Sep 17 00:00:00 2001
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Date: Tue, 15 Aug 2017 17:10:09 +0200
+Subject: [PATCH] ASoC: rockchip: constify snd_soc_dai_ops structures
 
 These snd_soc_dai_ops structures are only stored in the ops field of
 a snd_soc_dai_driver structure, which is const.  Thus, the
@@ -17,13 +49,13 @@ snd_soc_dai_ops structures can be const too.
 Done with the help of Coccinelle.
 
 Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/rockchip/rockchip_pdm.c |    2 +-
+ sound/soc/rockchip/rockchip_pdm.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
-index c5ddeed..400e29e 100644
+index c5ddeed97260..400e29edb1c9 100644
 --- a/sound/soc/rockchip/rockchip_pdm.c
 +++ b/sound/soc/rockchip/rockchip_pdm.c
 @@ -249,7 +249,7 @@ static int rockchip_pdm_dai_probe(struct snd_soc_dai *dai)
@@ -35,3 +67,5 @@ index c5ddeed..400e29e 100644
  	.set_fmt = rockchip_pdm_set_fmt,
  	.trigger = rockchip_pdm_trigger,
  	.hw_params = rockchip_pdm_hw_params,
+-- 
+2.13.3
