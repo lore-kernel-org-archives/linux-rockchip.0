@@ -1,45 +1,51 @@
-From: Wadim Egorov <w.egorov@phytec.de>
-Subject: Re: [PATCH v5 3/3] drm/rockchip: Add support for Rockchip Soc LVDS
-Date: Tue, 15 Aug 2017 11:08:24 +0200
-Message-ID: <3e6822fa-58f6-9207-32b1-340e330bf758@phytec.de>
-References: <1502768955-176510-1-git-send-email-hjc@rock-chips.com>
- <1502768969-176681-1-git-send-email-hjc@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v9 00/12] rk808: Add RK805 support
+Date: Tue, 15 Aug 2017 16:14:52 +0200
+Message-ID: <4371065.5c7F4tU4zv@diego>
+References: <1502273060-12201-1-git-send-email-chenjh@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1502768969-176681-1-git-send-email-hjc@rock-chips.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sandy Huang <hjc@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1502273060-12201-1-git-send-email-chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wdc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org, Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpBbSAxNS4wOC4yMDE3IHVtIDA1OjQ5IHNjaHJpZWIgU2FuZHkgSHVhbmc6Cj4gVGhpcyBhZGRz
-IHN1cHBvcnQgZm9yIFJvY2tjaGlwIHNvYyBsdmRzIGZvdW5kIG9uIHJrMzI4OAo+IEJhc2VkIG9u
-IHRoZSBwYXRjaGVzIGZyb20gTWFyayB5YW8gYW5kIEhlaWtvIFN0dWVibmVyCj4KPiBTaWduZWQt
-b2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6
-IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvS2NvbmZpZyAgICAgICAgICAgIHwgICA5ICsKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL01ha2VmaWxlICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgIDIgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2Rydi5oIHwgICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2x2ZHMuYyAgICB8IDU5OSArKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmggICAgfCAxMDkgKysrKysKPiAg
-NiBmaWxlcyBjaGFuZ2VkLCA3MjEgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+ICBjcmVhdGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuaAo+CkkgaGF2ZSB0
-ZXN0ZWQgdGhpcyB3aXRoIGFuIEVUTTA3MDBHMERINiA3LjAiIExDRCBwYW5lbCBvbiB0aGUKcGh5
-Q09SRS1SSzMyODguCgpUZXN0ZWQtYnk6IFdhZGltIEVnb3JvdiA8dy5lZ29yb3ZAcGh5dGVjLmRl
-PgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Joseph,
+
+Am Mittwoch, 9. August 2017, 18:04:08 CEST schrieb Joseph Chen:
+> change in v9:
+> PATCH V9 1/12: (1) fix spelling issue: s/Chip/chip/
+> 	       (2) apply tag: Acked-for-MFD-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> PATCH V9 2/12: apply tag: Acked-for-MFD-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> PATCH V9 3/12: None
+> PATCH V9 4/12: apply tag: Acked-for-MFD-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> PATCH V9 5/12: None
+> PATCH V9 6/12: None
+> PATCH V9 7/12: apply tag: Acked-for-MFD-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> PATCH V9 8/12: apply tag: Acked-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> PATCH V9 9/12: None (Actually, something directly updated by Dmitry Torokhov 
+> and applied on PATCH V7. Link: https://git.kernel.org/pub/scm/linux/kernel/
+> git/dtor/input.git/log/?h=next
+> PATCH V9 10/12: apply tag: Acked-for-MFD-by: Lee Jones<lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> PATCH V9 11/12: apply tag: Acked-for-MFD-by: Lee Jones<lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> 
+
+you might want to check your recipient list, because in at least the cover-
+letter and the first patches, I did not see Lee's email address included.
+
+So he may very well not even see that there are patches waiting.
+
+So please check the recipients and if necessary resend with Lee included?
+
+
+Heiko
