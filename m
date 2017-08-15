@@ -1,71 +1,54 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: constify snd_soc_dai_ops structures" to the asoc tree
-Date: Tue, 15 Aug 2017 18:15:24 +0100
-Message-ID: <E1dhfR6-0003dt-LY@debutante>
-References: <1502809812-13891-3-git-send-email-Julia.Lawall@lip6.fr>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502809812-13891-3-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, bhumirks@gmail.comalsa-devel@alsa-project.org
+From: Paul Burton <paul.burton@imgtec.com>
+Subject: [PATCH v7 8/8] PCI: rockchip: Use PCI_NUM_INTX
+Date: Tue, 15 Aug 2017 12:02:23 -0700
+Message-ID: <20170815190223.18807-9-paul.burton@imgtec.com>
+References: <20170815190223.18807-1-paul.burton@imgtec.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170815190223.18807-1-paul.burton@imgtec.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org
+Cc: Paul Burton <paul.burton@imgtec.com>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Use the PCI_NUM_INTX macro to indicate the number of PCI INTx interrupts
+rather than the magic number 4. This makes it clearer where the number
+comes from & what it relates to.
 
-   ASoC: rockchip: constify snd_soc_dai_ops structures
+Signed-off-by: Paul Burton <paul.burton@imgtec.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-pci@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
 
-has been applied to the asoc tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 0966a2588779d0d44706f973c1e8ff240be43017 Mon Sep 17 00:00:00 2001
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Date: Tue, 15 Aug 2017 17:10:09 +0200
-Subject: [PATCH] ASoC: rockchip: constify snd_soc_dai_ops structures
-
-These snd_soc_dai_ops structures are only stored in the ops field of
-a snd_soc_dai_driver structure, which is const.  Thus, the
-snd_soc_dai_ops structures can be const too.
-
-Done with the help of Coccinelle.
-
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/rockchip/rockchip_pdm.c | 2 +-
+I have only build tested this.
+
+Changes in v7: None
+Changes in v6: None
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+
+ drivers/pci/host/pcie-rockchip.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
-index c5ddeed97260..400e29edb1c9 100644
---- a/sound/soc/rockchip/rockchip_pdm.c
-+++ b/sound/soc/rockchip/rockchip_pdm.c
-@@ -249,7 +249,7 @@ static int rockchip_pdm_dai_probe(struct snd_soc_dai *dai)
- 	return 0;
- }
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 7bb9870f6d8c..eae195ca06ab 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1116,7 +1116,7 @@ static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
+ 		return -EINVAL;
+ 	}
  
--static struct snd_soc_dai_ops rockchip_pdm_dai_ops = {
-+static const struct snd_soc_dai_ops rockchip_pdm_dai_ops = {
- 	.set_fmt = rockchip_pdm_set_fmt,
- 	.trigger = rockchip_pdm_trigger,
- 	.hw_params = rockchip_pdm_hw_params,
+-	rockchip->irq_domain = irq_domain_add_linear(intc, 4,
++	rockchip->irq_domain = irq_domain_add_linear(intc, PCI_NUM_INTX,
+ 						    &intx_domain_ops, rockchip);
+ 	if (!rockchip->irq_domain) {
+ 		dev_err(dev, "failed to get a INTx IRQ domain\n");
 -- 
-2.13.3
+2.14.1
