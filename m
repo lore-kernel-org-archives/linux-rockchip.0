@@ -1,47 +1,81 @@
-From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 0/7] Add rk3328 pwm support
-Date: Wed, 16 Aug 2017 18:49:41 +0800
-Message-ID: <89a895fd-d905-6a5b-c697-8e43ecc55e73@rock-chips.com>
-References: <1502206715-24174-1-git-send-email-david.wu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502206715-24174-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: catalin.marinas-5wv7dgnIgG8@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "spi: rockchip: configure CTRLR1 according to size and data frame" to the spi tree
+Date: Wed, 16 Aug 2017 12:21:01 +0100
+Message-ID: <E1dhwNh-0003iD-VL@finisterre>
+References: <1502849522-10073-1-git-send-email-huibin.hong@rock-chips.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1502849522-10073-1-git-send-email-huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.orgMark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.orglinux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
+The patch
 
-For the PWM patches, whether we let the first patch land in, that is PWM 
-APB and function clocks are different in rk3328 and rv1108 SOCs. If the 
-first patch was merged before 4.14, it will guarantee that the PWM is 
-working, and the lock function you might review it later.
+   spi: rockchip: configure CTRLR1 according to size and data frame
 
-ÔÚ 2017/8/8 23:38, David Wu Ð´µÀ:
-> There are two features of rk3328 pwm module.
->   - PWM APB and function clocks are different.
->   - Add pwm atomic hardware update
-> 
-> David Wu (7):
->    pwm: rockchip: Add APB and function both clocks support
->    pwm: rockchip: Remove the judge from return value of pwm_config
->    pwm: rockchip: Use pwm_apply instead of the pwm_enable
->    pwm: rockchip: Move the configuration of polarity from
->      rockchip_pwm_set_enable() to rockchip_pwm_config()
->    pwm: rockchip: Use same pwm ops for each IP
->    pwm: rockchip: Add rk3328 pwm support
->    arm64: dts: rockchip: Add pwm nodes for rk3328
-> 
->   .../devicetree/bindings/pwm/pwm-rockchip.txt       |   8 +-
->   arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  45 ++++
->   drivers/pwm/pwm-rockchip.c                         | 281 +++++++++++----------
->   3 files changed, 199 insertions(+), 135 deletions(-)
-> 
+has been applied to the spi tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 04b37d2d02c0a5ae2f4e59326ef6deaff18e0456 Mon Sep 17 00:00:00 2001
+From: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Date: Wed, 16 Aug 2017 10:12:02 +0800
+Subject: [PATCH] spi: rockchip: configure CTRLR1 according to size and data
+ frame
+
+CTRLR1 is number of data frames, when rx only.
+When data frame is 8 bit, CTRLR1 is len-1.
+When data frame is 16 bit, CTRLR1 is (len/2)-1.
+
+Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ drivers/spi/spi-rockchip.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 474033e2149e..fdcf3076681b 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -568,7 +568,13 @@ static void rockchip_spi_config(struct rockchip_spi *rs)
+ 
+ 	writel_relaxed(cr0, rs->regs + ROCKCHIP_SPI_CTRLR0);
+ 
+-	writel_relaxed(rs->len - 1, rs->regs + ROCKCHIP_SPI_CTRLR1);
++	if (rs->n_bytes == 1)
++		writel_relaxed(rs->len - 1, rs->regs + ROCKCHIP_SPI_CTRLR1);
++	else if (rs->n_bytes == 2)
++		writel_relaxed((rs->len / 2) - 1, rs->regs + ROCKCHIP_SPI_CTRLR1);
++	else
++		writel_relaxed((rs->len * 2) - 1, rs->regs + ROCKCHIP_SPI_CTRLR1);
++
+ 	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_TXFTLR);
+ 	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
+ 
+-- 
+2.13.2
 
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
