@@ -1,43 +1,47 @@
 From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL 2/4] Rockchip driver changes for 4.14
-Date: Wed, 16 Aug 2017 21:48:13 +0200
-Message-ID: <CAK8P3a0sybjOOCq8Ux=in2Y8=FhkGCqgjcMaXSh3oXz_ktx-oQ@mail.gmail.com>
-References: <12145142.47nS8LyXIe@phil> <2005870.SXnsRdLqkP@phil>
+Subject: Re: [PATCH v2] ARM: Convert to using %pOF instead of full_name
+Date: Wed, 16 Aug 2017 22:27:44 +0200
+Message-ID: <CAK8P3a0UfQ6fThn61Dch1TKPvKkF+7RtDwbv+xhSoWPHNC60hg@mail.gmail.com>
+References: <20170721192835.25555-1-robh@kernel.org> <CAL_JsqJQ7yUhtJca1hupd5zSqo5RTj5k5zc_Ueex1nzbOnjXdw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2005870.SXnsRdLqkP@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqJQ7yUhtJca1hupd5zSqo5RTj5k5zc_Ueex1nzbOnjXdw@mail.gmail.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: "arm@kernel.org" <arm@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, Kukjin Kim <kgene@kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Tony Lindgren <tony@atomide.com>, =?UTF-8?Q?Beno=C3=AEt_Cousson?= <bcousson@baylibre.com>, Paul Walmsley <paul@pwsan.com>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>"linux-arm-kernel@lists.infradead.org" <linux>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Aug 6, 2017 at 11:49 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+On Thu, Aug 10, 2017 at 12:06 AM, Rob Herring <robh@kernel.org> wrote:
+> On Fri, Jul 21, 2017 at 2:28 PM, Rob Herring <robh@kernel.org> wrote:
+>> Now that we have a custom printf format specifier, convert users of
+>> full_name to use %pOF instead. This is preparation to remove storing
+>> of the full path string for each node.
+>>
+>> Signed-off-by: Rob Herring <robh@kernel.org>
+>> Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+>> Acked-by: Heiko Stuebner <heiko@sntech.de>
+>> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+>> Acked-by: Gregory CLEMENT <gregory.clement@free-electrons.com>
+>>
+>>  arch/arm/kernel/cpuidle.c            | 4 ++--
+>>  arch/arm/kernel/devtree.c            | 5 ++---
+>>  arch/arm/kernel/topology.c           | 3 +--
+>>  arch/arm/mach-exynos/suspend.c       | 7 +++----
+>>  arch/arm/mach-imx/gpc.c              | 4 ++--
+>>  arch/arm/mach-mvebu/kirkwood.c       | 3 +--
+>>  arch/arm/mach-omap2/omap-wakeupgen.c | 4 ++--
+>>  arch/arm/mach-omap2/omap_hwmod.c     | 4 ++--
+>>  arch/arm/mach-rockchip/platsmp.c     | 4 ++--
+>>  arch/arm/mach-shmobile/pm-rmobile.c  | 7 +++----
+>>  10 files changed, 20 insertions(+), 25 deletions(-)
 >
->   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+> Arnd, Olof,
 >
-> are available in the git repository at:
->
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-drivers-1
->
-> for you to fetch changes up to bd85f4b76916f9d9d7130e58601662133399079a:
->
->   soc: rockchip: power-domain: add power domain support for rk3366 (2017-07-20 22:42:19 +0200)
->
-> ----------------------------------------------------------------
-> Powerdomain support for rk3366 and disabling of the automatic
-> jtag/sdmmc switching for rk3328.
+> Can you please apply this one.
 
-Pulled into next/drivers, thanks!
+Applied to next/cleanup now, with the Acks. I think that should be the last
+patch of this series that you wanted me to apply. Can you double-check
+and maybe re-submit any patches I may have missed?
 
-      Arnd
+        Arnd
