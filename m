@@ -1,54 +1,47 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: Assign mic irq to correct device for Gru
-Date: Wed, 16 Aug 2017 17:24:32 +0800
-Message-ID: <20170816092432.23991-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, hychao@chromium.org
-Cc: briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+From: "David.Wu" <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 0/7] Add rk3328 pwm support
+Date: Wed, 16 Aug 2017 18:49:41 +0800
+Message-ID: <89a895fd-d905-6a5b-c697-8e43ecc55e73@rock-chips.com>
+References: <1502206715-24174-1-git-send-email-david.wu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1502206715-24174-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: catalin.marinas-5wv7dgnIgG8@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently we are assigning mic irq to rt5514 i2c driver, which is wrong.
-Assign it to rt5514 spi driver instead.
+Hi Thierry,
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
+For the PWM patches, whether we let the first patch land in, that is PWM 
+APB and function clocks are different in rk3328 and rv1108 SOCs. If the 
+first patch was merged before 4.14, it will guarantee that the PWM is 
+working, and the lock function you might review it later.
 
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ÔÚ 2017/8/8 23:38, David Wu Ð´µÀ:
+> There are two features of rk3328 pwm module.
+>   - PWM APB and function clocks are different.
+>   - Add pwm atomic hardware update
+> 
+> David Wu (7):
+>    pwm: rockchip: Add APB and function both clocks support
+>    pwm: rockchip: Remove the judge from return value of pwm_config
+>    pwm: rockchip: Use pwm_apply instead of the pwm_enable
+>    pwm: rockchip: Move the configuration of polarity from
+>      rockchip_pwm_set_enable() to rockchip_pwm_config()
+>    pwm: rockchip: Use same pwm ops for each IP
+>    pwm: rockchip: Add rk3328 pwm support
+>    arm64: dts: rockchip: Add pwm nodes for rk3328
+> 
+>   .../devicetree/bindings/pwm/pwm-rockchip.txt       |   8 +-
+>   arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  45 ++++
+>   drivers/pwm/pwm-rockchip.c                         | 281 +++++++++++----------
+>   3 files changed, 199 insertions(+), 135 deletions(-)
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index d48e98b62d09..d7723a77ae03 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -612,12 +612,8 @@ ap_i2c_mic: &i2c1 {
- 	headsetcodec: rt5514@57 {
- 		compatible = "realtek,rt5514";
- 		reg = <0x57>;
--		interrupt-parent = <&gpio1>;
--		interrupts = <13 IRQ_TYPE_LEVEL_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&mic_int>;
-+
- 		realtek,dmic-init-delay = <20>;
--		wakeup-source;
- 	};
- };
- 
-@@ -826,9 +822,13 @@ ap_i2c_audio: &i2c8 {
- 	wacky_spi_audio: spi2@0 {
- 		compatible = "realtek,rt5514";
- 		reg = <0>;
--
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <13 IRQ_TYPE_LEVEL_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&mic_int>;
- 		/* May run faster once verified. */
- 		spi-max-frequency = <10000000>;
-+		wakeup-source;
- 	};
- };
- 
--- 
-2.11.0
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
