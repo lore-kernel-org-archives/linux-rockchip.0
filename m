@@ -1,34 +1,43 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH 6/7] ASoC: samsung: make snd_soc_ops const
-Date: Wed, 16 Aug 2017 21:22:32 +0200
-Message-ID: <20170816192232.5g7armlu5xpxwz62@kozik-lap>
-References: <1502902770-3758-1-git-send-email-bhumirks@gmail.com>
- <1502902770-3758-7-git-send-email-bhumirks@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL 2/4] Rockchip driver changes for 4.14
+Date: Wed, 16 Aug 2017 21:48:13 +0200
+Message-ID: <CAK8P3a0sybjOOCq8Ux=in2Y8=FhkGCqgjcMaXSh3oXz_ktx-oQ@mail.gmail.com>
+References: <12145142.47nS8LyXIe@phil> <2005870.SXnsRdLqkP@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1502902770-3758-7-git-send-email-bhumirks@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bhumika Goyal <bhumirks@gmail.com>
-Cc: julia.lawall@lip6.fr, lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, heiko@sntech.de, sbkim73@samsung.com, s.nawrocki@samsung.com, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2005870.SXnsRdLqkP@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 16, 2017 at 10:29:29PM +0530, Bhumika Goyal wrote:
-> Make these const as they are only stored in the ops field of a
-> snd_soc_dai_link structure, which is const.
-> Done using Coccinelle.
-> 
-> Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
-> ---
->  sound/soc/samsung/jive_wm8750.c     | 2 +-
->  sound/soc/samsung/s3c24xx_simtec.c  | 2 +-
->  sound/soc/samsung/s3c24xx_uda134x.c | 2 +-
->  sound/soc/samsung/smdk_spdif.c      | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
-> 
+On Sun, Aug 6, 2017 at 11:49 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+>
+>   Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+>
+> are available in the git repository at:
+>
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-drivers-1
+>
+> for you to fetch changes up to bd85f4b76916f9d9d7130e58601662133399079a:
+>
+>   soc: rockchip: power-domain: add power domain support for rk3366 (2017-07-20 22:42:19 +0200)
+>
+> ----------------------------------------------------------------
+> Powerdomain support for rk3366 and disabling of the automatic
+> jtag/sdmmc switching for rk3328.
 
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+Pulled into next/drivers, thanks!
 
-Best regards,
-Krzysztof
+      Arnd
