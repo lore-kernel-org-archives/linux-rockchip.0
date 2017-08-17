@@ -1,63 +1,53 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: [PATCH 09/13] drm/rockchip: Use sychronized interface of the IOMMU-API
-Date: Thu, 17 Aug 2017 14:56:32 +0200
-Message-ID: <1502974596-23835-10-git-send-email-joro@8bytes.org>
-References: <1502974596-23835-1-git-send-email-joro@8bytes.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 06/12] net: stmmac: dwmac-rk: Add internal phy support
+Date: Thu, 17 Aug 2017 10:10:28 -0500
+Message-ID: <20170817151028.ewrgdk7qqd3nqzhe@rob-hp-laptop>
+References: <1502280475-736-1-git-send-email-david.wu@rock-chips.com>
+ <1502280661-2308-1-git-send-email-david.wu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502974596-23835-1-git-send-email-joro@8bytes.org>
+Content-Disposition: inline
+In-Reply-To: <1502280661-2308-1-git-send-email-david.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: iommu@lists.linux-foundation.org
-Cc: linux-kernel@vger.kernel.org, Suravee Suthikulpanit <Suravee.Suthikulpanit@amd.com>, Joerg Roedel <jroedel@suse.de>, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: davem@davemloft.net, heiko@sntech.de, andrew@lunn.ch, f.fainelli@gmail.com, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, olof@lixom.net, linux@armlinux.org.uk, arnd@arndb.de, peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, hwg@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Joerg Roedel <jroedel@suse.de>
+On Wed, Aug 09, 2017 at 08:11:01PM +0800, David Wu wrote:
+> To make internal phy work, need to configure the phy_clock,
+> phy cru_reset and related registers.
+> 
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> ---
+> change in v4:
+>  - PHY is internal or not base on the phy-is-internal property via phy node.
+> 
+>  .../devicetree/bindings/net/rockchip-dwmac.txt     |  4 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 88 ++++++++++++++++++++++
+>  2 files changed, 91 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> index 8f42755..4f51305 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+> @@ -25,7 +25,8 @@ Required properties:
+>   - clock-names: One name for each entry in the clocks property.
+>   - phy-mode: See ethernet.txt file in the same directory.
+>   - pinctrl-names: Names corresponding to the numbered pinctrl states.
+> - - pinctrl-0: pin-control mode. can be <&rgmii_pins> or <&rmii_pins>.
+> + - pinctrl-0: pin-control mode. can be <&rgmii_pins>, <&rmii_pins> or led pins
+> +   for internal phy mode.
+>   - clock_in_out: For RGMII, it must be "input", means main clock(125MHz)
+>     is not sourced from SoC's PLL, but input from PHY; For RMII, "input" means
+>     PHY provides the reference clock(50MHz), "output" means GMAC provides the
+> @@ -40,6 +41,7 @@ Optional properties:
+>   - tx_delay: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
+>   - rx_delay: Delay value for RXD timing. Range value is 0~0x7F, 0x10 as default.
+>   - phy-supply: phandle to a regulator if the PHY needs one
+> + - clocks: <&cru MAC_PHY>: Clock selector for internal macphy
 
-The map and unmap functions of the IOMMU-API changed their
-semantics: They do no longer guarantee that the hardware
-TLBs are synchronized with the page-table updates they made.
+I assume this is required if internal phy is used. 'clocks' is already 
+documented above, so this needs to be documented with it.
 
-To make conversion easier, new synchronized functions have
-been introduced which give these guarantees again until the
-code is converted to use the new TLB-flush interface of the
-IOMMU-API, which allows certain optimizations.
-
-But for now, just convert this code to use the synchronized
-functions so that it will behave as before.
-
-Cc: Mark Yao <mark.yao@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index b74ac71..6d28224 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -41,8 +41,8 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
- 
- 	rk_obj->dma_addr = rk_obj->mm.start;
- 
--	ret = iommu_map_sg(private->domain, rk_obj->dma_addr, rk_obj->sgt->sgl,
--			   rk_obj->sgt->nents, prot);
-+	ret = iommu_map_sg_sync(private->domain, rk_obj->dma_addr,
-+				rk_obj->sgt->sgl, rk_obj->sgt->nents, prot);
- 	if (ret < rk_obj->base.size) {
- 		DRM_ERROR("failed to map buffer: size=%zd request_size=%zd\n",
- 			  ret, rk_obj->base.size);
-@@ -67,7 +67,7 @@ static int rockchip_gem_iommu_unmap(struct rockchip_gem_object *rk_obj)
- 	struct drm_device *drm = rk_obj->base.dev;
- 	struct rockchip_drm_private *private = drm->dev_private;
- 
--	iommu_unmap(private->domain, rk_obj->dma_addr, rk_obj->size);
-+	iommu_unmap_sync(private->domain, rk_obj->dma_addr, rk_obj->size);
- 
- 	mutex_lock(&private->mm_lock);
- 
--- 
-2.7.4
+Rob
