@@ -1,58 +1,71 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v2 3/3] arm64: dts: rockchip: Handle pcie wake in pcie driver for Gru
-Date: Thu, 17 Aug 2017 20:04:31 +0800
-Message-ID: <20170817120431.12398-4-jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Thu, 17 Aug 2017 20:04:29 +0800
+Message-ID: <20170817120431.12398-2-jeffy.chen@rock-chips.com>
 References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, bhelgaas@google.com
-Cc: shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
+Cc: shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently we are handling pcie wake irq in mrvl wifi driver.
-Move it to rockchip pcie driver for Gru boards.
+Add support for PCIE_WAKE pin in rockchip pcie driver.
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
-Changes in v2: None
+Changes in v2:
+Use dev_pm_set_dedicated_wake_irq
+        -- Suggested by Brian Norris <briannorris@chromium.com>
 
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index d48e98b62d09..42158512e979 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -712,7 +712,15 @@ ap_i2c_audio: &i2c8 {
+diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+index 7bb9870f6d8c..c2b973c738fe 100644
+--- a/drivers/pci/host/pcie-rockchip.c
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -36,6 +36,7 @@
+ #include <linux/pci_ids.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_wakeirq.h>
+ #include <linux/reset.h>
+ #include <linux/regmap.h>
  
- 	ep-gpios = <&gpio2 27 GPIO_ACTIVE_HIGH>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie_clkreqn_cpm>, <&wifi_perst_l>;
-+	pinctrl-0 = <&pcie_clkreqn_cpm>, <&wlan_host_wake_l>, <&wifi_perst_l>;
+@@ -853,7 +854,6 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+ 	chained_irq_exit(chip, desc);
+ }
+ 
+-
+ /**
+  * rockchip_pcie_parse_dt - Parse Device Tree
+  * @rockchip: PCIe port information
+@@ -1018,6 +1018,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+ 		return err;
+ 	}
+ 
++	device_init_wakeup(dev, true);
++	irq = platform_get_irq_byname(pdev, "wake");
++	if (irq >= 0) {
++		err = dev_pm_set_dedicated_wake_irq(dev, irq);
++		if (err)
++			dev_err(dev, "failed to setup PCIe wake IRQ\n");
++	}
 +
-+	interrupts-extended = <&gic GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gic GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gic GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gpio0 8 IRQ_TYPE_LEVEL_LOW>;
-+	interrupt-names = "sys", "legacy", "client", "wake";
-+	/delete-property/ interrupts;
+ 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+ 	if (IS_ERR(rockchip->vpcie3v3)) {
+ 		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
+@@ -1524,6 +1532,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+ 
++	dev_pm_clear_wake_irq(dev);
++	device_init_wakeup(dev, false);
 +
- 	vpcie3v3-supply = <&pp3300_wifi_bt>;
- 	vpcie1v8-supply = <&wlan_pd_n>; /* HACK: see &wlan_pd_n */
- 	vpcie0v9-supply = <&pp900_pcie>;
-@@ -727,11 +735,6 @@ ap_i2c_audio: &i2c8 {
- 			compatible = "pci1b4b,2b42";
- 			reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
- 			       0x83010000 0x0 0x00100000 0x0 0x00100000>;
--			interrupt-parent = <&gpio0>;
--			interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
--			pinctrl-names = "default";
--			pinctrl-0 = <&wlan_host_wake_l>;
--			wakeup-source;
- 		};
- 	};
- };
+ 	pci_stop_root_bus(rockchip->root_bus);
+ 	pci_remove_root_bus(rockchip->root_bus);
+ 	pci_unmap_iospace(rockchip->io);
 -- 
 2.11.0
