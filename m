@@ -1,50 +1,69 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3 2/9] ASoC: rockchip: Remove obsolete dmic-delay
-Date: Thu, 17 Aug 2017 18:11:52 +0100
-Message-ID: <20170817171152.abf3ngr6nr22jfif@sirena.org.uk>
-References: <20170817044417.22069-1-jeffy.chen@rock-chips.com>
- <20170817044417.22069-3-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="bqjgvkvdwut4v32t"
+Subject: Applied "ASoC: sh: make snd_soc_ops const" to the asoc tree
+Date: Thu, 17 Aug 2017 18:12:58 +0100
+Message-ID: <E1diOLq-0008Kf-J9@debutante>
+References: <1502902770-3758-8-git-send-email-bhumirks@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170817044417.22069-3-jeffy.chen@rock-chips.com>
+In-Reply-To: <1502902770-3758-8-git-send-email-bhumirks@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de, briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: Mark Brown <broonie@kernel.org>, julia.lawall@lip6.fr, lgirdwood@gmail.combroonie@kernel.org, perex@perex.cz, tiwai@suse.com, daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, heiko@sntech.de, krzk@kernel.org, sbkim73@samsung.com, s.nawrocki@samsung.com, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The patch
 
---bqjgvkvdwut4v32t
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   ASoC: sh: make snd_soc_ops const
 
-On Thu, Aug 17, 2017 at 12:44:10PM +0800, Jeffy Chen wrote:
+has been applied to the asoc tree at
 
-> This property is no longer used.
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-> -Optional properties:
-> -- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
-> -  If this option is specified, which means it's required dmic need
-> -  delay for DMIC to ready so that rt5514 can avoid recording before
-> -  DMIC send valid data
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-Why would nobody ever want to use this in future?
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
---bqjgvkvdwut4v32t
-Content-Type: application/pgp-signature; name="signature.asc"
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
------BEGIN PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmVzlcACgkQJNaLcl1U
-h9CMBQf8DLSsu24hEigv9P56llv+ChN6gu0QcEJ2pXLWg/tqaNMAureIDeEmca7A
-POtNQNkIGXDQdoa+eoOsoHCIK6CSqeJ5Mw4Cm0jXU5NEtYBZl68p1pMBsknBbK3+
-K0zcoF9qSNXroBuVUlkO7bq8Rkcc7jMhcufY9tKYwJep19eRBA96+kEFJQucISBm
-4yYopi0nYUsL3zZ77OWVBBYHsUF9Ov3V5v1ZNiYRWRtkHoRHkIsX7+0T4+0GKerk
-FvQhQxYev2kwyvjFETVWzMvnTHHY5CSKpcK1d0GulWAYGdsF6Thi+oHxne1Ukg1U
-oKuB1WTWn7EXCcC1iG9a4daR3i5ndw==
-=MaRz
------END PGP SIGNATURE-----
+Thanks,
+Mark
 
---bqjgvkvdwut4v32t--
+From a46d0592d164c017342d2d86e5d123735ec046ae Mon Sep 17 00:00:00 2001
+From: Bhumika Goyal <bhumirks@gmail.com>
+Date: Wed, 16 Aug 2017 22:29:30 +0530
+Subject: [PATCH] ASoC: sh: make snd_soc_ops const
+
+Make this const as it is only stored in the ops field of a
+snd_soc_dai_link structure, which is const.
+Done using Coccinelle.
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/sh/migor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/sh/migor.c b/sound/soc/sh/migor.c
+index 672bcd4c252b..ecb057ff9fbb 100644
+--- a/sound/soc/sh/migor.c
++++ b/sound/soc/sh/migor.c
+@@ -98,7 +98,7 @@ static int migor_hw_free(struct snd_pcm_substream *substream)
+ 	return 0;
+ }
+ 
+-static struct snd_soc_ops migor_dai_ops = {
++static const struct snd_soc_ops migor_dai_ops = {
+ 	.hw_params = migor_hw_params,
+ 	.hw_free = migor_hw_free,
+ };
+-- 
+2.13.3
