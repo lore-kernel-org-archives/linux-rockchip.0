@@ -1,10 +1,10 @@
 From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: enable usb3 for RK3328 evaluation board
-Date: Thu, 17 Aug 2017 15:35:42 +0800
-Message-ID: <1502955342-21985-3-git-send-email-william.wu@rock-chips.com>
-References: <1502955342-21985-1-git-send-email-william.wu@rock-chips.com>
+Subject: [PATCH v2 2/2] arm64: dts: rockchip: enable usb3 for RK3328 evaluation board
+Date: Thu, 17 Aug 2017 15:54:50 +0800
+Message-ID: <1502956490-23087-3-git-send-email-william.wu@rock-chips.com>
+References: <1502956490-23087-1-git-send-email-william.wu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502955342-21985-1-git-send-email-william.wu@rock-chips.com>
+In-Reply-To: <1502956490-23087-1-git-send-email-william.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com, william.wu@rock-chips.com
@@ -16,6 +16,9 @@ support USB 3.0 HOST on RK3328 evaluation board.
 
 Signed-off-by: William Wu <william.wu@rock-chips.com>
 ---
+Changes in v2:
+- None
+
  arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 9 +++++++++
  1 file changed, 9 insertions(+)
 
