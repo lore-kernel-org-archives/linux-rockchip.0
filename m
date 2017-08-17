@@ -1,71 +1,63 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Thu, 17 Aug 2017 20:04:29 +0800
-Message-ID: <20170817120431.12398-2-jeffy.chen@rock-chips.com>
-References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: [PATCH 09/13] drm/rockchip: Use sychronized interface of the IOMMU-API
+Date: Thu, 17 Aug 2017 14:56:32 +0200
+Message-ID: <1502974596-23835-10-git-send-email-joro@8bytes.org>
+References: <1502974596-23835-1-git-send-email-joro@8bytes.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
+In-Reply-To: <1502974596-23835-1-git-send-email-joro@8bytes.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, bhelgaas@google.com
-Cc: shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: iommu@lists.linux-foundation.org
+Cc: linux-kernel@vger.kernel.org, Suravee Suthikulpanit <Suravee.Suthikulpanit@amd.com>, Joerg Roedel <jroedel@suse.de>, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support for PCIE_WAKE pin in rockchip pcie driver.
+From: Joerg Roedel <jroedel@suse.de>
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+The map and unmap functions of the IOMMU-API changed their
+semantics: They do no longer guarantee that the hardware
+TLBs are synchronized with the page-table updates they made.
+
+To make conversion easier, new synchronized functions have
+been introduced which give these guarantees again until the
+code is converted to use the new TLB-flush interface of the
+IOMMU-API, which allows certain optimizations.
+
+But for now, just convert this code to use the synchronized
+functions so that it will behave as before.
+
+Cc: Mark Yao <mark.yao@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Changes in v2:
-Use dev_pm_set_dedicated_wake_irq
-        -- Suggested by Brian Norris <briannorris@chromium.com>
-
- drivers/pci/host/pcie-rockchip.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 7bb9870f6d8c..c2b973c738fe 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -36,6 +36,7 @@
- #include <linux/pci_ids.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_wakeirq.h>
- #include <linux/reset.h>
- #include <linux/regmap.h>
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index b74ac71..6d28224 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -41,8 +41,8 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
  
-@@ -853,7 +854,6 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
- 	chained_irq_exit(chip, desc);
- }
+ 	rk_obj->dma_addr = rk_obj->mm.start;
  
--
- /**
-  * rockchip_pcie_parse_dt - Parse Device Tree
-  * @rockchip: PCIe port information
-@@ -1018,6 +1018,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
+-	ret = iommu_map_sg(private->domain, rk_obj->dma_addr, rk_obj->sgt->sgl,
+-			   rk_obj->sgt->nents, prot);
++	ret = iommu_map_sg_sync(private->domain, rk_obj->dma_addr,
++				rk_obj->sgt->sgl, rk_obj->sgt->nents, prot);
+ 	if (ret < rk_obj->base.size) {
+ 		DRM_ERROR("failed to map buffer: size=%zd request_size=%zd\n",
+ 			  ret, rk_obj->base.size);
+@@ -67,7 +67,7 @@ static int rockchip_gem_iommu_unmap(struct rockchip_gem_object *rk_obj)
+ 	struct drm_device *drm = rk_obj->base.dev;
+ 	struct rockchip_drm_private *private = drm->dev_private;
  
-+	device_init_wakeup(dev, true);
-+	irq = platform_get_irq_byname(pdev, "wake");
-+	if (irq >= 0) {
-+		err = dev_pm_set_dedicated_wake_irq(dev, irq);
-+		if (err)
-+			dev_err(dev, "failed to setup PCIe wake IRQ\n");
-+	}
-+
- 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
- 	if (IS_ERR(rockchip->vpcie3v3)) {
- 		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
-@@ -1524,6 +1532,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+-	iommu_unmap(private->domain, rk_obj->dma_addr, rk_obj->size);
++	iommu_unmap_sync(private->domain, rk_obj->dma_addr, rk_obj->size);
  
-+	dev_pm_clear_wake_irq(dev);
-+	device_init_wakeup(dev, false);
-+
- 	pci_stop_root_bus(rockchip->root_bus);
- 	pci_remove_root_bus(rockchip->root_bus);
- 	pci_unmap_iospace(rockchip->io);
+ 	mutex_lock(&private->mm_lock);
+ 
 -- 
-2.11.0
+2.7.4
