@@ -1,89 +1,206 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for rv1108
-Date: Thu, 17 Aug 2017 18:37:46 +0800
-Message-ID: <1502966266-15215-1-git-send-email-david.wu@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: khilman@baylibre.com, rafael.j.wysocki@intel.com, nm@ti.com, heiko@sntech.de
-Cc: huangtao@rock-chips.com, andy.yan@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [RFC PATCH 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Thu, 17 Aug 2017 20:03:26 +0800
+Message-ID: <5995860E.30105@rock-chips.com>
+References: <20170816075224.31734-1-jeffy.chen@rock-chips.com> <20170816075224.31734-2-jeffy.chen@rock-chips.com> <20170816174936.GB99323@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170816174936.GB99323@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the necessary data for handling io voltage domains on the rv1108.
+Hi Brian,
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
- .../bindings/power/rockchip-io-domain.txt          |  2 ++
- drivers/power/avs/rockchip-io-domain.c             | 38 ++++++++++++++++++++++
- 2 files changed, 40 insertions(+)
+i've tried dev_pm_set_dedicated_wake_irq, it doesn't work well on 
+upstream kernel(for level irq).
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-index 43c21fb..d9d96fd 100644
---- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-+++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-@@ -31,6 +31,8 @@ SoC is on the same page.
- 
- Required properties:
- - compatible: should be one of:
-+  - "rockchip,rv1108-io-voltage-domain" for rv1108
-+  - "rockchip,rv1108-pmu-io-voltage-domain" for rv1108 pmu-domains
-   - "rockchip,rk3188-io-voltage-domain" for rk3188
-   - "rockchip,rk3228-io-voltage-domain" for rk3228
-   - "rockchip,rk3288-io-voltage-domain" for rk3288
-diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
-index 031a343..a55205eb 100644
---- a/drivers/power/avs/rockchip-io-domain.c
-+++ b/drivers/power/avs/rockchip-io-domain.c
-@@ -227,6 +227,36 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
- 		dev_warn(iod->dev, "couldn't update pmu io iodomain ctrl\n");
- }
- 
-+static const struct rockchip_iodomain_soc_data soc_data_rv1108 = {
-+	.grf_offset = 0x404,
-+	.supply_names = {
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		NULL,
-+		"vccio1",
-+		"vccio2",
-+		"vccio3",
-+		"vccio5",
-+		"vccio6",
-+	},
-+
-+};
-+
-+static const struct rockchip_iodomain_soc_data soc_data_rv1108_pmu = {
-+	.grf_offset = 0x104,
-+	.supply_names = {
-+		"pmu",
-+	},
-+};
-+
- /*
-  * On the rk3188 the io-domains are handled by a shared register with the
-  * lower 8 bits being still being continuing drive-strength settings.
-@@ -351,6 +381,14 @@ static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
- 
- static const struct of_device_id rockchip_iodomain_match[] = {
- 	{
-+		.compatible = "rockchip,rv1108-io-voltage-domain",
-+		.data = (void *)&soc_data_rv1108
-+	},
-+	{
-+		.compatible = "rockchip,rv1108-pmu-io-voltage-domain",
-+		.data = (void *)&soc_data_rv1108_pmu
-+	},
-+	{
- 		.compatible = "rockchip,rk3188-io-voltage-domain",
- 		.data = (void *)&soc_data_rk3188
- 	},
--- 
-1.9.1
+
+it looks like we would delay real set trigger type to request irq after 
+this commit:
+1e2a7d78499e irqdomain: Don't set type when mapping an IRQ
+
+so calling irq_set_status_flags before request irq would lose trigger 
+type setting.
+
+
+things work well after reverted that commit, so i will send my patch 
+soon, and ask irq people about it :)
+
+
+On 08/17/2017 01:49 AM, Brian Norris wrote:
+>  Hi,
+>
+> On Wed, Aug 16, 2017 at 03:52:22PM +0800, Jeffy Chen wrote:
+>> Add support for PCIE_WAKE pin in rockchip pcie driver.
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> ---
+>>
+>>   drivers/pci/host/pcie-rockchip.c | 58 ++++++++++++++++++++++++++++++++++++++++
+>>   1 file changed, 58 insertions(+)
+>>
+>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+>> index 7bb9870f6d8c..f969a6d3cd85 100644
+>> --- a/drivers/pci/host/pcie-rockchip.c
+>> +++ b/drivers/pci/host/pcie-rockchip.c
+>> @@ -38,6 +38,7 @@
+>>   #include <linux/platform_device.h>
+>>   #include <linux/reset.h>
+>>   #include <linux/regmap.h>
+>> +#include <linux/suspend.h>
+>>
+>>   /*
+>>    * The upper 16 bits of PCIE_CLIENT_CONFIG are a write mask for the lower 16
+>> @@ -226,6 +227,8 @@ struct rockchip_pcie {
+>>   	struct	regulator *vpcie1v8; /* 1.8V power supply */
+>>   	struct	regulator *vpcie0v9; /* 0.9V power supply */
+>>   	struct	gpio_desc *ep_gpio;
+>> +	int	wake_irq;
+>> +	bool	wake_by_pcie;
+>>   	u32	lanes;
+>>   	u8	root_bus_nr;
+>>   	int	link_gen;
+>> @@ -853,6 +856,20 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+>>   	chained_irq_exit(chip, desc);
+>>   }
+>>
+>> +static irqreturn_t rockchip_pcie_wake_irq_handler(int irq, void *arg)
+>> +{
+>> +	struct rockchip_pcie *rockchip = arg;
+>> +
+>> +	rockchip->wake_by_pcie = true;
+>> +
+>> +	disable_irq_nosync(rockchip->wake_irq);
+>> +	disable_irq_wake(rockchip->wake_irq);
+>> +
+>> +	pm_wakeup_event(rockchip->dev, 0);
+>> +	pm_system_wakeup();
+>> +
+>> +	return IRQ_HANDLED;
+>> +}
+>>
+>>   /**
+>>    * rockchip_pcie_parse_dt - Parse Device Tree
+>> @@ -868,6 +885,7 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>>   	struct resource *regs;
+>>   	int irq;
+>>   	int err;
+>> +	bool wakeup = 0;
+>
+> '0' should be 'false'.
+right
+>
+>>
+>>   	regs = platform_get_resource_byname(pdev,
+>>   					    IORESOURCE_MEM,
+>> @@ -1018,6 +1036,21 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>>   		return err;
+>>   	}
+>>
+>> +	rockchip->wake_irq = platform_get_irq_byname(pdev, "wake");
+>> +	if (rockchip->wake_irq >= 0) {
+>> +		err = devm_request_irq(dev, rockchip->wake_irq,
+>> +				       rockchip_pcie_wake_irq_handler,
+>> +				       0, "pcie-wake", rockchip);
+>> +		if (err) {
+>> +			dev_err(dev, "failed to request PCIe wake IRQ\n");
+>> +			return err;
+>> +		}
+>> +
+>> +		disable_irq(rockchip->wake_irq);
+>
+> If you're worried about keeping this disabled at first, you can just use
+> this nifty trick (since this isn't a shared interrupt) -- call this
+> before requesting the IRQ:
+>
+> 	irq_set_status_flags(rockchip->wake_irq, IRQ_NOAUTOEN);
+>
+> You could also consider using dev_pm_set_dedicated_wake_irq() to handle
+> this -- but beware, it still might not quite handle level-triggered
+> interrupt properly. I'm pretty sure Tony Lindgren would be happy to get
+> testing or patches for that though :) He already sent me something a
+> while back but I didn't have time to test it out.
+ok, that seems very handy
+>
+>> +		wakeup = device_property_read_bool(dev, "wakeup-source");
+>> +	}
+>> +	device_init_wakeup(dev, wakeup);
+>
+> Shouldn't you call 'device_init_wakeup(dev, false)' on remove()?
+ok
+>
+>> +
+>>   	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+>>   	if (IS_ERR(rockchip->vpcie3v3)) {
+>>   		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
+>> @@ -1270,6 +1303,30 @@ static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
+>>   	return 0;
+>>   }
+>>
+>> +static int __maybe_unused rockchip_pcie_suspend(struct device *dev)
+>
+> Why do this in suspend() instead of suspend_noirq()? You shouldn't
+> really need a separate method here.
+>
+> Note that this should be a level-triggered interrupt which remains
+> asserted, so there should be no chance of "missing" it if you don't
+> enable it in time.
+>
+> And on a related note: if you try the dedicated wake irq approach, this
+> will only occur just before the noirq phase anyway, since
+> device_wakeup_arm_wake_irqs() is called in dpm_suspend_noirq().
+right
+>
+>> +{
+>> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>> +
+>> +	rockchip->wake_by_pcie = false;
+>> +
+>> +	if (device_may_wakeup(dev)) {
+>> +		enable_irq_wake(rockchip->wake_irq);
+>> +		enable_irq(rockchip->wake_irq);
+>> +	}
+>> +	return 0;
+>> +}
+>> +
+>> +static int __maybe_unused rockchip_pcie_resume(struct device *dev)
+>> +{
+>> +	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>> +
+>> +	if (device_may_wakeup(dev) && !rockchip->wake_by_pcie) {
+>
+> The use of 'wake_by_pcie' is racy; an interrupt could be in flight (but
+> not completed), and so it could set 'wake_by_pcie' just after you're
+> reading this. Then, you'll get a double-disable.
+>
+> I believe the safe way to handle this would be to use an atomic
+> test-and-set / test-and-clear approach (either atomic_cmpxchg(), or use
+> a spinlock).
+right, and we don't need these if using dev_pm_set_dedicated_wake_irq
+>
+>> +		disable_irq(rockchip->wake_irq);
+>> +		disable_irq_wake(rockchip->wake_irq);
+>> +	}
+>> +	return 0;
+>> +}
+>> +
+>>   static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
+>>   {
+>>   	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>> @@ -1548,6 +1605,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+>>   }
+>>
+>>   static const struct dev_pm_ops rockchip_pcie_pm_ops = {
+>> +	SET_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend, rockchip_pcie_resume)
+>>   	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
+>>   				      rockchip_pcie_resume_noirq)
+>>   };
+>
+> Brian
+>
+>
+>
