@@ -1,80 +1,162 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v2 1/3] ASoC: rockchip: Parse dai links
-	from dts
-Date: Wed, 16 Aug 2017 16:50:58 -0700
-Message-ID: <20170816235058.GA173745@google.com>
-References: <1502340898-28403-1-git-send-email-jeffy.chen@rock-chips.com>
- <1502340898-28403-2-git-send-email-jeffy.chen@rock-chips.com>
- <20170816215909.GC109008@google.com>
- <5994CD58.7030406@rock-chips.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [RFC PATCH 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Thu, 17 Aug 2017 08:25:06 +0800
+Message-ID: <5994E262.9070300@rock-chips.com>
+References: <20170816075224.31734-1-jeffy.chen@rock-chips.com> <20170816075224.31734-2-jeffy.chen@rock-chips.com> <5440b476-f811-c478-c19a-9ee08005de6b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-Content-Disposition: inline
-In-Reply-To: <5994CD58.7030406@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: jeffy <jeffy.chen@rock-chips.com>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, dgreid@chromium.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <5440b476-f811-c478-c19a-9ee08005de6b@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, briannorris@chromium.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-El Thu, Aug 17, 2017 at 06:55:20AM +0800 jeffy ha dit:
-
-> hi matthias,
-> 
-> thanks for your suggestion.
-> 
-> On 08/17/2017 05:59 AM, Matthias Kaehlcke wrote:
-> >El Thu, Aug 10, 2017 at 12:54:56PM +0800 Jeffy Chen ha dit:
-> >
-> >>>Refactor rockchip_sound_probe, parse dai links from dts instead of
-> >>>hard coding them.
-> >Mark doesn't seem to be overly convinced that 'rockchip,codec-names'
-> >is a good idea (https://lkml.org/lkml/2017/8/10/511).
-> >
-> >How about using something like this instead:
-> >
-> >static const char *dailink_compat[] = {
-> >	[DAILINK_MAX98357A] = "maxim,max98357a",
-> >	[DAILINK_RT5514] = "realtek,rt5514",
-> >	[DAILINK_DA7219] = "dlg,da7219",
-> >};
-> i've thought about this too, but i'm working on converting rt5514
-> dsp(spi) from codec name matching to of_node, and it would have the
-> same compatible with rt5514(i2c)
-
-Bummer!
-
-I wonder if a relatively inoffensive DT hack would be an appropriate
-solution in this case, since the conflicting compatible string is a
-somewhat special case and this change only affects the DT and the
-driver/glue of a specific device (family).
-
-The hack would consist in adding an additional 'compatible' entry to
-the DT entry of the codec, which is ignored by the rt5514 driver, and
-only used by the sound glue to identify it:
-
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -671,7 +671,7 @@ ap_i2c_mic: &i2c1 {
-        i2c-scl-rising-time-ns = <300>;
- 
-        headsetcodec: rt5514@57 {
--               compatible = "realtek,rt5514";
-+               compatible = "realtek,rt5514", "realtek,rt5514-i2c";
+hi shawn,
 
 
-And then use "realtek,rt5514-i2c" in dailink_compat.
-
-Mark, would you prefer a hack like this over the list of codec names
-or do you have any other suggestions?
-
-Matthias
+On 08/16/2017 05:00 PM, Shawn Lin wrote:
+> Hi Jeffy,
+>
+> On 2017/8/16 15:52, Jeffy Chen wrote:
+>> Add support for PCIE_WAKE pin in rockchip pcie driver.
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> ---
+>>
+>>   drivers/pci/host/pcie-rockchip.c | 58
+>> ++++++++++++++++++++++++++++++++++++++++
+>>   1 file changed, 58 insertions(+)
+>>
+>> diff --git a/drivers/pci/host/pcie-rockchip.c
+>> b/drivers/pci/host/pcie-rockchip.c
+>> index 7bb9870f6d8c..f969a6d3cd85 100644
+>> --- a/drivers/pci/host/pcie-rockchip.c
+>> +++ b/drivers/pci/host/pcie-rockchip.c
+>> @@ -38,6 +38,7 @@
+>>   #include <linux/platform_device.h>
+>>   #include <linux/reset.h>
+>>   #include <linux/regmap.h>
+>> +#include <linux/suspend.h>
+>>   /*
+>>    * The upper 16 bits of PCIE_CLIENT_CONFIG are a write mask for the
+>> lower 16
+>> @@ -226,6 +227,8 @@ struct rockchip_pcie {
+>>       struct    regulator *vpcie1v8; /* 1.8V power supply */
+>>       struct    regulator *vpcie0v9; /* 0.9V power supply */
+>>       struct    gpio_desc *ep_gpio;
+>> +    int    wake_irq;
+>> +    bool    wake_by_pcie;
+>>       u32    lanes;
+>>       u8    root_bus_nr;
+>>       int    link_gen;
+>> @@ -853,6 +856,20 @@ static void
+>> rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+>>       chained_irq_exit(chip, desc);
+>>   }
+>> +static irqreturn_t rockchip_pcie_wake_irq_handler(int irq, void *arg)
+>> +{
+>> +    struct rockchip_pcie *rockchip = arg;
+>> +
+>> +    rockchip->wake_by_pcie = true;
+>> +
+>> +    disable_irq_nosync(rockchip->wake_irq);
+>> +    disable_irq_wake(rockchip->wake_irq);
+>> +
+>> +    pm_wakeup_event(rockchip->dev, 0);
+>> +    pm_system_wakeup();
+>> +
+>> +    return IRQ_HANDLED;
+>> +}
+>>   /**
+>>    * rockchip_pcie_parse_dt - Parse Device Tree
+>> @@ -868,6 +885,7 @@ static int rockchip_pcie_parse_dt(struct
+>> rockchip_pcie *rockchip)
+>>       struct resource *regs;
+>>       int irq;
+>>       int err;
+>> +    bool wakeup = 0;
+>>       regs = platform_get_resource_byname(pdev,
+>>                           IORESOURCE_MEM,
+>> @@ -1018,6 +1036,21 @@ static int rockchip_pcie_parse_dt(struct
+>> rockchip_pcie *rockchip)
+>>           return err;
+>>       }
+>> +    rockchip->wake_irq = platform_get_irq_byname(pdev, "wake");
+>> +    if (rockchip->wake_irq >= 0) {
+>> +        err = devm_request_irq(dev, rockchip->wake_irq,
+>> +                       rockchip_pcie_wake_irq_handler,
+>> +                       0, "pcie-wake", rockchip);
+>> +        if (err) {
+>> +            dev_err(dev, "failed to request PCIe wake IRQ\n");
+>> +            return err;
+>
+> This is optional, so I'm not sure if we should prevent the driver to
+> probe?
+it would only break probe when there's a wake irq, but failed to enable 
+it. but the wake irq itself is optional
+>
+>> +        }
+>> +
+>> +        disable_irq(rockchip->wake_irq);
+>> +        wakeup = device_property_read_bool(dev, "wakeup-source");
+>
+> The purpose we add this, is for ep to wakeup the system, so why not
+> always treate it as a wakeup source.
+it's an extra option to disable wake by wakeup-source property
+>
+>> +    }
+>> +    device_init_wakeup(dev, wakeup);
+>> +
+>>       rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+>>       if (IS_ERR(rockchip->vpcie3v3)) {
+>>           if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
+>> @@ -1270,6 +1303,30 @@ static int rockchip_pcie_wait_l2(struct
+>> rockchip_pcie *rockchip)
+>>       return 0;
+>>   }
+>> +static int __maybe_unused rockchip_pcie_suspend(struct device *dev)
+>> +{
+>> +    struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>> +
+>> +    rockchip->wake_by_pcie = false;
+>> +
+>> +    if (device_may_wakeup(dev)) {
+>> +        enable_irq_wake(rockchip->wake_irq);
+>> +        enable_irq(rockchip->wake_irq);
+>> +    }
+>> +    return 0;
+>> +}
+>> +
+>> +static int __maybe_unused rockchip_pcie_resume(struct device *dev)
+>> +{
+>> +    struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>> +
+>> +    if (device_may_wakeup(dev) && !rockchip->wake_by_pcie) {
+>
+> I don't get this that why we need to check wake_by_pcie here?
+>
+it's to avoid double disable when it got a irq before resume
+>> +        disable_irq(rockchip->wake_irq);
+>> +        disable_irq_wake(rockchip->wake_irq);
+>> +    }
+>> +    return 0;
+>> +}
+>> +
+>>   static int __maybe_unused rockchip_pcie_suspend_noirq(struct device
+>> *dev)
+>>   {
+>>       struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>> @@ -1548,6 +1605,7 @@ static int rockchip_pcie_remove(struct
+>> platform_device *pdev)
+>>   }
+>>   static const struct dev_pm_ops rockchip_pcie_pm_ops = {
+>> +    SET_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend, rockchip_pcie_resume)
+>>       SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
+>>                         rockchip_pcie_resume_noirq)
+>>   };
+>>
+>
+>
+>
