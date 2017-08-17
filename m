@@ -1,63 +1,41 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [RFC PATCH 2/3] dt-bindings: PCI: rockchip: Add support for pcie
- wake irq
-Date: Thu, 17 Aug 2017 14:17:52 +0800
-Message-ID: <59953510.8000509@rock-chips.com>
-References: <20170816075224.31734-1-jeffy.chen@rock-chips.com> <20170816075224.31734-3-jeffy.chen@rock-chips.com> <35487e90-74f2-3a66-70d3-d0780b0b6e26@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd support
+Date: Thu, 17 Aug 2017 15:17:32 +0800
+Message-ID: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <35487e90-74f2-3a66-70d3-d0780b0b6e26@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, briannorris@chromium.org, dianders@chromium.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: heiko@sntech.de
+Cc: Albert Aribaud <albert.u.boot@aribaud.net>, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-On 08/16/2017 04:35 PM, Shawn Lin wrote:
-> Hi Jeffy
->
-> On 2017/8/16 15:52, Jeffy Chen wrote:
->> Add an optional interrupt for PCIE_WAKE pin.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> ---
->>
->>   Documentation/devicetree/bindings/pci/rockchip-pcie.txt | 11
->> +++++++----
->>   1 file changed, 7 insertions(+), 4 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> index 1453a734c2f5..6ef9903567db 100644
->> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> @@ -22,10 +22,13 @@ Required properties:
->>   - phys: From PHY bindings: Phandle for the Generic PHY for PCIe.
->>   - phy-names:  MUST be "pcie-phy".
->>   - interrupts: Three interrupt entries must be specified.
->> -- interrupt-names: Must include the following names
->> -    - "sys"
->> -    - "legacy"
->> -    - "client"
->> +- interrupt-names: Include the following names
->> +    Required:
->> +        - "sys"
->> +        - "legacy"
->> +        - "client"
->> +    Optional:
->> +        - "wake"
->
-> It would be better to introduce interrupts-extended and show a example
-> here. :)
-ok, will add it in next version
->
->>   - resets: Must contain seven entries for each entry in reset-names.
->>          See ../reset/reset.txt for details.
->>   - reset-names: Must include the following names
->>
->
->
->
+CkFkZCBzZHJhbSBkcml2ZXIgZm9yIHJrMzIyOSBhbmQgb3RoZXIgZml4IGxpa2UgcGluY3RybCBh
+bmQgc2Qgbm9kZS4KCgpDaGFuZ2VzIGluIHYyOgotIHNwbGl0IHRoaXMgcGF0Y2ggaW4gdHdvIHBh
+dGNoZXMKCktldmVyIFlhbmcgKDUpOgogIHJvY2tjaGlwOiByazMyMng6IHVwZGF0ZSBkcmFtIGJh
+bmsgc2l6ZQogIHJvY2tjaGlwOiByazMyMng6IGFkZCBzZHJhbSBkcml2ZXIKICByb2NrY2hpcDog
+cmszMjJ4OiBwaW5jdHJsOiB1c2luZyBjb21wYXRpYmxlIG5hbWUgc2FtZSB3aXRoIGR0cwogIHJv
+Y2tjaGlwOiByazMyMng6IHBpbmN0cmw6IGZpeCBJTyBNQVNLIGVycm9yIG9uIHNkY2FyZCBwaW4K
+ICByb2NrY2hpcDogZHRzOiByazMyMjk6IHJlbW92ZSBkcmFtIGNoYW5uZWwgaW5mbwoKIGFyY2gv
+YXJtL2R0cy9yazMyMjktZXZiLmR0cyAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgLQogYXJj
+aC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9yazMyMnguaCB8IDU4MSArKysr
+KysrKysrKysrKysKIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjJ4LWJvYXJkLmMgICAgICAg
+ICAgICAgfCAgMTAgKy0KIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjJ4L01ha2VmaWxlICAg
+ICAgICAgICAgfCAgIDEgKwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyMngvc2RyYW1fcmsz
+MjJ4LmMgICAgICB8IDg1NSArKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL3BpbmN0cmwv
+cm9ja2NoaXAvcGluY3RybF9yazMyMnguYyAgICAgICAgIHwgICA4ICstCiA2IGZpbGVzIGNoYW5n
+ZWQsIDE0NDcgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzIyeC5oCiBjcmVh
+dGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyMngvc2RyYW1fcmszMjJ4
+LmMKCi0tIAoxLjkuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xp
+c3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
