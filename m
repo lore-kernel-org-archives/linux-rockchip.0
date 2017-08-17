@@ -1,83 +1,140 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: cirrus: make snd_soc_ops const" to the asoc tree
-Date: Thu, 17 Aug 2017 18:13:11 +0100
-Message-ID: <E1diOM3-0008Pg-Bn@debutante>
-References: <1502902770-3758-3-git-send-email-bhumirks@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502902770-3758-3-git-send-email-bhumirks@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bhumika Goyal <bhumirks@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, julia.lawall@lip6.fr, lgirdwood@gmail.combroonie@kernel.org, perex@perex.cz, tiwai@suse.com, daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, heiko@sntech.de, krzk@kernel.org, sbkim73@samsung.com, s.nawrocki@samsung.com, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.orgalsa-devel@alsa-project.org
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3328-rock64 board
+Date: Thu, 17 Aug 2017 15:20:29 -0500
+Message-ID: <20170817202029.iset3te4zvb4jhfo@rob-hp-laptop>
+References: <20170811232947.18698-1-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170811232947.18698-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On Sat, Aug 12, 2017 at 01:29:47AM +0200, Heiko Stuebner wrote:
+> The ROCK64 is a credit card size 4K60P HDR Media Board Computer using the
+> Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
+> up to 4GB 1600MHz LPDDR3 memory. It provides eMMC module socket, MicroSD
+> Card slot, Pi-2 Bus, Pi-P5+ Bus, USB 3.0 and many others peripheral
+> devices interface for makers to integrate with sensors and devices.
+> 
+> The devicetree currently supports basic peripherals, with more to be
+> added later on.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+> changes in v2:
+> - remove obsolete mmc properties found by Shawn
+> - enable newly added tsadc node
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+>  arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     | 375 +++++++++++++++++++++
+>  3 files changed, 380 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+> index 88d95323d301..b54e9bfd9562 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+> @@ -134,6 +134,10 @@ Rockchip platforms device tree bindings
+>      Required root node properties:
+>       - compatible = "phytec,rk3288-pcm-947", "phytec,rk3288-phycore-som", "rockchip,rk3288";
+>  
+> +- Pine64 Rock64 board:
+> +    Required root node properties:
+> +    - compatible = "pine64,rock64", "rockchip,rk3328";
+> +
+>  - Rockchip PX3 Evaluation board:
+>      Required root node properties:
+>        - compatible = "rockchip,px3-evb", "rockchip,px3", "rockchip,rk3188";
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index d0ad366bbd12..106fb8e0f2f8 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -1,4 +1,5 @@
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-orion-r68-meta.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> new file mode 100644
+> index 000000000000..7b9bc57a1536
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -0,0 +1,375 @@
+> +/*
+> + * Copyright (c) 2017 PINE64
+> + *
+> + * This file is dual-licensed: you can use it either under the terms
+> + * of the GPL or the X11 license, at your option. Note that this dual
+> + * licensing only applies to this file, and not this project as a
+> + * whole.
+> + *
+> + *  a) This library is free software; you can redistribute it and/or
+> + *     modify it under the terms of the GNU General Public License as
+> + *     published by the Free Software Foundation; either version 2 of the
+> + *     License, or (at your option) any later version.
+> + *
+> + *     This library is distributed in the hope that it will be useful,
+> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *     GNU General Public License for more details.
+> + *
+> + * Or, alternatively,
+> + *
+> + *  b) Permission is hereby granted, free of charge, to any person
+> + *     obtaining a copy of this software and associated documentation
+> + *     files (the "Software"), to deal in the Software without
+> + *     restriction, including without limitation the rights to use,
+> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> + *     sell copies of the Software, and to permit persons to whom the
+> + *     Software is furnished to do so, subject to the following
+> + *     conditions:
+> + *
+> + *     The above copyright notice and this permission notice shall be
+> + *     included in all copies or substantial portions of the Software.
+> + *
+> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> + *     OTHER DEALINGS IN THE SOFTWARE.
+> + */
 
-   ASoC: cirrus: make snd_soc_ops const
+Use SPDX tags here instead if you want.
 
-has been applied to the asoc tree at
+[...]
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
+> +	status = "disabled";
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+Normally, this is disabled in the SOC dts and enabled here.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 7f8159acecb3bb58c0d782813dc605ebef63b317 Mon Sep 17 00:00:00 2001
-From: Bhumika Goyal <bhumirks@gmail.com>
-Date: Wed, 16 Aug 2017 22:29:25 +0530
-Subject: [PATCH] ASoC: cirrus: make snd_soc_ops const
-
-Make these const as they are only stored in the ops field of a
-snd_soc_dai_link structure, which is const.
-Done using Coccinelle.
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/cirrus/edb93xx.c     | 2 +-
- sound/soc/cirrus/snappercl15.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/cirrus/edb93xx.c b/sound/soc/cirrus/edb93xx.c
-index 85962657aabe..c53bd6f2c2d7 100644
---- a/sound/soc/cirrus/edb93xx.c
-+++ b/sound/soc/cirrus/edb93xx.c
-@@ -56,7 +56,7 @@ static int edb93xx_hw_params(struct snd_pcm_substream *substream,
- 				      SND_SOC_CLOCK_OUT);
- }
- 
--static struct snd_soc_ops edb93xx_ops = {
-+static const struct snd_soc_ops edb93xx_ops = {
- 	.hw_params	= edb93xx_hw_params,
- };
- 
-diff --git a/sound/soc/cirrus/snappercl15.c b/sound/soc/cirrus/snappercl15.c
-index 98089df08df6..2334ec19e7eb 100644
---- a/sound/soc/cirrus/snappercl15.c
-+++ b/sound/soc/cirrus/snappercl15.c
-@@ -45,7 +45,7 @@ static int snappercl15_hw_params(struct snd_pcm_substream *substream,
- 	return 0;
- }
- 
--static struct snd_soc_ops snappercl15_ops = {
-+static const struct snd_soc_ops snappercl15_ops = {
- 	.hw_params	= snappercl15_hw_params,
- };
- 
--- 
-2.13.3
+> +};
+> +
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	max-frequency = <150000000>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
+> +	supports-sd;
+> +	vmmc-supply = <&vcc_sd>;
+> +	status = "okay";
+> +};
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
