@@ -1,7 +1,8 @@
 From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 5/5] rockchip: dts: rk3229: remove dram channel info
-Date: Thu, 17 Aug 2017 15:17:37 +0800
-Message-ID: <1502954257-7256-6-git-send-email-kever.yang@rock-chips.com>
+Subject: [PATCH v2 3/5] rockchip: rk322x: pinctrl: using compatible name same
+ with dts
+Date: Thu, 17 Aug 2017 15:17:35 +0800
+Message-ID: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
 References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,33 +19,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Albert Aribaud <albert.u.boot-LhW3hqR2+23R7s880joybQ@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Meng Dongyang <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The dram channel info will be auto detect by the driver,
-we do not need it.
+The dts from kernel is using rk3228-pinctrl as compatible name,
+need to sync with it to make the driver work.
 
 Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 ---
 
-Changes in v2: None
+Changes in v2:
+- split this patch in two patches
 
- arch/arm/dts/rk3229-evb.dts | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/pinctrl/rockchip/pinctrl_rk322x.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/dts/rk3229-evb.dts b/arch/arm/dts/rk3229-evb.dts
-index 37137c2..fc405ef 100644
---- a/arch/arm/dts/rk3229-evb.dts
-+++ b/arch/arm/dts/rk3229-evb.dts
-@@ -40,7 +40,6 @@
+diff --git a/drivers/pinctrl/rockchip/pinctrl_rk322x.c b/drivers/pinctrl/rockchip/pinctrl_rk322x.c
+index 7aaf4b5..d9f8614 100644
+--- a/drivers/pinctrl/rockchip/pinctrl_rk322x.c
++++ b/drivers/pinctrl/rockchip/pinctrl_rk322x.c
+@@ -279,12 +279,12 @@ static int rk322x_pinctrl_probe(struct udevice *dev)
+ }
+ 
+ static const struct udevice_id rk322x_pinctrl_ids[] = {
+-	{ .compatible = "rockchip,rk322x-pinctrl" },
++	{ .compatible = "rockchip,rk3228-pinctrl" },
+ 	{ }
  };
  
- &dmc {
--	rockchip,sdram-channel = /bits/ 8 <1 10 3 2 1 0 15 15>;
- 	rockchip,pctl-timing = <0x96 0xC8 0x1F3 0xF 0x8000004D 0x4 0x4E 0x6 0x3
- 		0x0 0x6 0x5 0xC 0x10 0x6 0x4 0x4
- 		0x5 0x4 0x200 0x3 0xA 0x40 0x0 0x1
+-U_BOOT_DRIVER(pinctrl_rk322x) = {
+-	.name		= "pinctrl_rk322x",
++U_BOOT_DRIVER(pinctrl_rk3228) = {
++	.name		= "pinctrl_rk3228",
+ 	.id		= UCLASS_PINCTRL,
+ 	.of_match	= rk322x_pinctrl_ids,
+ 	.priv_auto_alloc_size = sizeof(struct rk322x_pinctrl_priv),
 -- 
 1.9.1
