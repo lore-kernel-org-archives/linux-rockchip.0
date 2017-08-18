@@ -1,63 +1,169 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/9] ASoC: rockchip: Remove obsolete dmic-delay
-Date: Fri, 18 Aug 2017 12:52:23 +0100
-Message-ID: <20170818115223.pyfqji5jkplt6isx@sirena.org.uk>
-References: <20170817044417.22069-1-jeffy.chen@rock-chips.com>
- <20170817044417.22069-3-jeffy.chen@rock-chips.com>
- <20170817171152.abf3ngr6nr22jfif@sirena.org.uk>
- <599645E2.4020402@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="m6wid7jysdtjmmci"
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: Add basic DVFS support for RK3368
+Date: Fri, 18 Aug 2017 14:17:01 +0200
+Message-ID: <20170818121701.12668-1-romain.perier@collabora.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <599645E2.4020402-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+This adds and enable the operating points that have been tested and are
+currently supported by the SoC. This also adds clocks for ARMCLKL and
+ARMCLKB.
 
---m6wid7jysdtjmmci
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
 
-On Fri, Aug 18, 2017 at 09:41:54AM +0800, jeffy wrote:
-> On 08/18/2017 01:11 AM, Mark Brown wrote:
-> > On Thu, Aug 17, 2017 at 12:44:10PM +0800, Jeffy Chen wrote:
+Changes in v2:
+- Switched to binding v2 for operating-points
+- Improved commit message
+- Rebased onto linux-next
 
-> > > -Optional properties:
-> > > -- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
-> > > -  If this option is specified, which means it's required dmic need
-> > > -  delay for DMIC to ready so that rt5514 can avoid recording before
-> > > -  DMIC send valid data
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 75 +++++++++++++++++++++++++++++++-
+ 1 file changed, 73 insertions(+), 2 deletions(-)
 
-> > Why would nobody ever want to use this in future?
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index b6f234f10585..7f42a9111062 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -113,7 +113,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x0>;
+ 			enable-method = "psci";
+-
++			clocks = <&cru ARMCLKL>;
++			operating-points-v2 = <&cluster0_opp>;
+ 			#cooling-cells = <2>; /* min followed by max */
+ 		};
+ 
+@@ -122,6 +123,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x1>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
++			operating-points-v2 = <&cluster0_opp>;
+ 		};
+ 
+ 		cpu_l2: cpu@2 {
+@@ -129,6 +132,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x2>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
++			operating-points-v2 = <&cluster0_opp>;
+ 		};
+ 
+ 		cpu_l3: cpu@3 {
+@@ -136,6 +141,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x3>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
++			operating-points-v2 = <&cluster0_opp>;
+ 		};
+ 
+ 		cpu_b0: cpu@100 {
+@@ -143,7 +150,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x100>;
+ 			enable-method = "psci";
+-
++			clocks = <&cru ARMCLKB>;
++			operating-points-v2 = <&cluster1_opp>;
+ 			#cooling-cells = <2>; /* min followed by max */
+ 		};
+ 
+@@ -152,6 +160,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x101>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
++			operating-points-v2 = <&cluster1_opp>;
+ 		};
+ 
+ 		cpu_b2: cpu@102 {
+@@ -159,6 +169,8 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x102>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
++			operating-points-v2 = <&cluster1_opp>;
+ 		};
+ 
+ 		cpu_b3: cpu@103 {
+@@ -166,9 +178,68 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x103>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
++			operating-points-v2 = <&cluster1_opp>;
+ 		};
+ 	};
+ 
++	cluster0_opp: opp-table0 {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp00 {
++			opp-hz = /bits/ 64 <312000000>;
++			opp-microvolt = <950000>;
++			clock-latency-ns = <40000>;
++		};
++		opp01 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <950000>;
++		};
++		opp02 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <950000>;
++		};
++		opp03 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <1025000>;
++		};
++		opp04 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <1125000>;
++		};
++	};
++
++	cluster1_opp: opp-table1 {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp00 {
++			opp-hz = /bits/ 64 <312000000>;
++			opp-microvolt = <950000>;
++			clock-latency-ns = <40000>;
++		};
++		opp01 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <950000>;
++		};
++		opp02 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <950000>;
++		};
++		opp03 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <975000>;
++		};
++		opp04 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <1050000>;
++		};
++	};
++
++
++
++
+ 	amba {
+ 		compatible = "simple-bus";
+ 		#address-cells = <2>;
+-- 
+2.11.0
 
-> hmmm, check again, rt5514 fixed this issue in there driver instead in:
-> a5461fd6c8f7 ASoC: rt5514: Add the DMIC initial delay to wait it ready.
-
-> so we don't need this...
-
-You don't need it on your board for new DTs but why is it not possible
-that another board might need it?
-
---m6wid7jysdtjmmci
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmW1PcACgkQJNaLcl1U
-h9Ajwgf9HA9rtrdJwNVlAtEKNVupp1jzWXvXw7UIeADdamflEQ3RP9vYmENUHoLn
-VinUjB0TGRRqb5hQedf/p5N8x1kuytGXrkfucoQqJ8V7YJR8NKiINQI7yTRCYW7X
-OcJOj44puTm/pSlOWaexhC+rGmcDjEKpY0beZI0jHt79r+Ayv1/3FxHuNCHR498l
-KXmDKHgfgI1vSNZeDpV3DisCZvp7/J6WdghOMvqnnvrtmvWWK6+umOWSaHG2PGZE
-iy96mfapluf9MCfvGfCm8zFoxit2mYNcnAweHZSNQuoCe+Nh8rX4A+77SPsMEZUx
-Qn303i4WoIEaXc62qr/4ewAETN+73A==
-=TCfK
------END PGP SIGNATURE-----
-
---m6wid7jysdtjmmci--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
