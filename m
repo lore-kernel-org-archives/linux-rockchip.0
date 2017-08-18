@@ -1,35 +1,32 @@
-From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [U-Boot, v2,
- 3/5] rockchip: rk322x: pinctrl: using compatible name same with dts
-Date: Fri, 18 Aug 2017 18:04:45 +0200
-Message-ID: <E1dijlN-0007jJ-46@mail.theobroma-systems.com>
-References: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v3 2/7] pwm: rockchip: Remove the judge from return value
+ of pwm_config
+Date: Fri, 18 Aug 2017 09:28:31 -0700
+Message-ID: <20170818162830.GA115593@google.com>
+References: <1502206715-24174-1-git-send-email-david.wu@rock-chips.com>
+ <1502206715-24174-3-git-send-email-david.wu@rock-chips.com>
+ <20170818153255.GC18307@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170818153255.GC18307@ulmo>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: David Wu <david.wu@rock-chips.com>, heiko@sntech.de, boris.brezillon@free-electrons.com, robh+dt@kernel.org, catalin.marinas@arm.com, dianders@chromium.org, mark.rutland@arm.com, huangtao@rock-chips.com, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-PiBUaGUgZHRzIGZyb20ga2VybmVsIGlzIHVzaW5nIHJrMzIyOC1waW5jdHJsIGFzIGNvbXBhdGli
-bGUgbmFtZSwKPiBuZWVkIHRvIHN5bmMgd2l0aCBpdCB0byBtYWtlIHRoZSBkcml2ZXIgd29yay4K
-PiAKPiBTaWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29t
-Pgo+IFJldmlld2VkLWJ5OiBQaGlsaXBwIFRvbXNpY2ggPHBoaWxpcHAudG9tc2ljaEB0aGVvYnJv
-bWEtc3lzdGVtcy5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIHNwbGl0IHRoaXMg
-cGF0Y2ggaW4gdHdvIHBhdGNoZXMKPiAKPiAgZHJpdmVycy9waW5jdHJsL3JvY2tjaGlwL3BpbmN0
-cmxfcmszMjJ4LmMgfCA2ICsrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCsp
-LCAzIGRlbGV0aW9ucygtKQo+IAoKQWNrZWQtYnk6IFBoaWxpcHAgVG9tc2ljaCA8cGhpbGlwcC50
-b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVu
-eC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
+On Fri, Aug 18, 2017 at 05:32:55PM +0200, Thierry Reding wrote:
+> I don't understand what the "judge" is supposed to be, but I've applied
+> this to for-4.14/drivers anyway. Thanks.
+
+Probably just an artifact of non-native English.
+
+Judging by context, David probably meant more like "Remove the check for
+the return value". I believe I've seen other non-native English speakers
+use "judge" in a way similar to "check" or "test" in the context of
+comparisons and error checking. (A search through my mailbox for "judge"
+confirms this.)
+
+Regards,
+Brian
