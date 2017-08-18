@@ -1,93 +1,64 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd
-	support
-Date: Fri, 18 Aug 2017 19:24:10 +0800
-Message-ID: <5f4ba87f-82fd-4048-3df7-23c6a83f2526@rock-chips.com>
-References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
- <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
- <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
- <549AFCBD-88EC-4ED5-B719-5558D4FCC614@theobroma-systems.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/9] ASoC: rockchip: Remove obsolete dmic-delay
+Date: Fri, 18 Aug 2017 12:52:23 +0100
+Message-ID: <20170818115223.pyfqji5jkplt6isx@sirena.org.uk>
+References: <20170817044417.22069-1-jeffy.chen@rock-chips.com>
+ <20170817044417.22069-3-jeffy.chen@rock-chips.com>
+ <20170817171152.abf3ngr6nr22jfif@sirena.org.uk>
+ <599645E2.4020402@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <549AFCBD-88EC-4ED5-B719-5558D4FCC614@theobroma-systems.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, Albert Aribaud <albert.u.boot@aribaud.net>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="m6wid7jysdtjmmci"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <599645E2.4020402-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwOC8xOC8yMDE3IDAzOjM2IFBNLCBEci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+PiBP
-biAxOCBBdWcgMjAxNywgYXQgMDg6MjYsIEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlw
-cy5jb20+IHdyb3RlOgo+Pgo+PiBQaGlsaXBwLAo+Pgo+Pgo+PiBPbiAwOC8xNy8yMDE3IDA0OjM0
-IFBNLCBEci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+Pj4+IE9uIDE3IEF1ZyAyMDE3LCBhdCAw
-OToxNywgS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pj4K
-Pj4+Pgo+Pj4+IEFkZCBzZHJhbSBkcml2ZXIgZm9yIHJrMzIyOSBhbmQgb3RoZXIgZml4IGxpa2Ug
-cGluY3RybCBhbmQgc2Qgbm9kZS4KPj4+Pgo+Pj4+Cj4+Pj4gQ2hhbmdlcyBpbiB2MjoKPj4+PiAt
-IHNwbGl0IHRoaXMgcGF0Y2ggaW4gdHdvIHBhdGNoZXMKPj4+Pgo+Pj4+IEtldmVyIFlhbmcgKDUp
-Ogo+Pj4+ICAgcm9ja2NoaXA6IHJrMzIyeDogdXBkYXRlIGRyYW0gYmFuayBzaXplCj4+Pj4gICBy
-b2NrY2hpcDogcmszMjJ4OiBhZGQgc2RyYW0gZHJpdmVyCj4+Pj4gICByb2NrY2hpcDogcmszMjJ4
-OiBwaW5jdHJsOiB1c2luZyBjb21wYXRpYmxlIG5hbWUgc2FtZSB3aXRoIGR0cwo+Pj4+ICAgcm9j
-a2NoaXA6IHJrMzIyeDogcGluY3RybDogZml4IElPIE1BU0sgZXJyb3Igb24gc2RjYXJkIHBpbgo+
-Pj4+ICAgcm9ja2NoaXA6IGR0czogcmszMjI5OiByZW1vdmUgZHJhbSBjaGFubmVsIGluZm8KPj4+
-Pgo+Pj4+IGFyY2gvYXJtL2R0cy9yazMyMjktZXZiLmR0cyAgICAgICAgICAgICAgICAgICAgICAg
-fCAgIDEgLQo+Pj4+IGFyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fcmsz
-MjJ4LmggfCA1ODEgKysrKysrKysrKysrKysrCj4+Pj4gYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9y
-azMyMngtYm9hcmQuYyAgICAgICAgICAgICB8ICAxMCArLQo+Pj4+IGFyY2gvYXJtL21hY2gtcm9j
-a2NoaXAvcmszMjJ4L01ha2VmaWxlICAgICAgICAgICAgfCAgIDEgKwo+Pj4+IGFyY2gvYXJtL21h
-Y2gtcm9ja2NoaXAvcmszMjJ4L3NkcmFtX3JrMzIyeC5jICAgICAgfCA4NTUgKysrKysrKysrKysr
-KysrKysrKysrKwo+Pj4gRGV2aWNlLW1vZGVsIERSQU0gY29udHJvbGxlciBkcml2ZXJzIHNob3Vs
-ZCBnZW5lcmFsbHkgZ28gdG8gZHJpdmVycy9yYW07IHRoZXJl4oCZcwo+Pj4gYWxyZWFkeSBhIHN1
-YmRpcmVjdG9yeSBmb3IgdGhlIFJvY2tjaGlwLXNwZWNpZmljIGRyaXZlcnMgY3JlYXRlZCB0aGVy
-ZS4KPj4gSSdtIHNvcnJ5LCBJIGRpZG4ndCBzZWUgaXQsIGV2ZW4gd2l0aCB0aGUgbGF0ZXN0IG1h
-aW5saW5lIFUtQm9vdCwKPj4gYW5kIGJvdGggeW91IGFuZCBTaW1vbiBoYWQgcmV2aWV3IHRoZSBm
-aXJzdCB2ZXJzaW9uIGRyaXZlciB3aGljaCBzZW5kIG91dAo+PiBhYm91dCBvbmUgbW9udGggYWdv
-LCBJIGRvbid0IGtub3cgd2h5IGl0J3Mgbm90IGFwcGxpZWQsIHNvIEkgc2VuZCBpdCBhZ2FpbiB3
-aXRoCj4+IG90aGVyIHBhdGNoZXMgY2hhbmdlLgo+IFRoZSBkZWNpc2lvbiB0byBtb3ZlIHRoaXMg
-b3ZlciB0byBkcml2ZXJzL3JhbSBpcyBvbmx5IGFib3V0IDYgd2Vla3Mgb2xkLgo+IEhvd2V2ZXIs
-IEkgZGlkbuKAmXQgd2FudCB0byBhZGQgYSBuZXcgZHJpdmVyIGluIHRoZSBvbGQgbG9jYXRpb24g
-KGFzIHdl4oCZZCB0aGVuCj4gaGF2ZSB0byBtb3ZlIGl0IGluIHRoZSBuZWFyIGZ1dHVyZSA7IG5v
-dGUgdGhhdCBmb3IgdGhlIFJLMzM5OSwgSeKAmWxsIHN1Ym1pdCBhCj4gcGF0Y2ggdG8gbW92ZSB0
-aGUgZHJpdmVyIHRvIGRyaXZlcnMvcmFtIGZvciB0aGUgbmV4dCByZWxlYXNlIGN5Y2xlKS4KPgo+
-IFRoZSBwYXRjaCBoYXMgbm90IGJlZW4gYXBwbGllZCwgYXMgdGhlcmXigJlzIHVuYWRkcmVzc2Vk
-IHJldmlldyBjb21tZW50czoKPiBJIGhhZCByZXF1ZXN0ZWQgdGhhdCB0aGUgYW1vdW50IG9mIGRh
-dGEgc3RydWN0dXJlcyBhcmUgZGVkdXBsaWNhdGVkLCBhcyB0aGUKPiBwY3RsLXJlZ2lzdGVyIHNl
-ZW1lZCB0aGUgc2FtZSBhcyB0aGUgcmszMjg4IGFuZCB0aGUgcmszMzY4Lgo+IEkgdGhpbmsgdGhl
-cmUgd2FzIGEgYml0IG1vcmUgY29kZSB0aGF0IGNvdWxkIGJlIHNoYXJlZCBhbHJlYWR5Lgo+Cj4g
-V2UgcmVhbGx5IG5lZWQgdG8gZ2V0IG91ciBEUkFNIGRyaXZlcnMgaW50byBzaGFwZSwgYXMgdGhl
-c2UgYXJlIGJlY29taW5nCj4gYSBtYWpvciBzb3VyY2Ugb2YgY29kZSBkdXBsaWNhdGlvbi4KCkZp
-cnN0IHBhdGNoIGRvIG5vdCBoYXZlIHVuYWRkcmVzc2VkIGNvbW1lbnRzLCB0aGUgc2Vjb25kIHBh
-dGNoIGhhdmUsCkkgaGF2ZSByZXBseSB0aGUgY29tbWVudCBpbiBtYWlsIG9mIGxhc3QgdmVyc2lv
-biwgYnV0IG5vdCBnZXQgYW55IHJlc3BvbnNlLgoKSSBzdGlsbCBob3BlIHRoaXMgcGF0Y2ggc2V0
-IGNhbiBtZXJnZSBmaXJzdCwgYW5kIHRoZW4gd2UgY2FuIG1vdmUgYWxsIG9mIApkcml2ZXJzCnRv
-IGRyaXZlcnMvcmFtIHRvZ2V0aGVyLCBhbmQgSSBiZWxpZXZlIHdlIGNhbiB0cnkgdG8gYWJzdHJh
-Y3QgbW9yZSBjb21tb24KZnVuY3Rpb24gb3V0IGZyb20gZGlmZmVyZW50IFNvQ3MsIGp1c3QgbGlr
-ZSB3aGF0IEkgaGF2ZSBkb25lIGZvciAKc2RyYW1fY29tbW9uLmMuCkJ1dCB5b3UgaGF2ZSB0byBu
-b3RpY2UgdGhhdCB0aGUgRFJBTSBjb250cm9sbGVyIGFuZCB0aGUgcGh5IG9wZXJhdGlvbiAKYXJl
-IGFsd2F5cwp0aWdodCBjb3VwbGluZywgbm90IHNvIGVhc3kgdG8gc2VwYXJhdGUgdGhlbiBldmVu
-IHRoZSBwY3RsIGFyZSB2ZXJ5IApzaW1pbGFyKHRoZXkgYXJlCm5vdCB0aGUgc2FtZSkuClNvIGl0
-J3MgYmV0dGVyIHRvIG1ha2UgdGhlIGRyaXZlciBhdmFpbGFibGUgZmlyc3QsIGFuZCB0aGVuIHdl
-IGNhbiBtb3ZlIApmb3J3YXJkIHRvIG1ha2UKbW9yZSBjb2RlIGJlIHNoYXJlZC4KClRoYW5rcywK
-LSBLZXZlcgo+Cj4+IFRoYW5rcywKPj4gLSBLZXZlcgo+Pj4+IGRyaXZlcnMvcGluY3RybC9yb2Nr
-Y2hpcC9waW5jdHJsX3JrMzIyeC5jICAgICAgICAgfCAgIDggKy0KPj4+PiA2IGZpbGVzIGNoYW5n
-ZWQsIDE0NDcgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4+PiBjcmVhdGUgbW9kZSAx
-MDA2NDQgYXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9yazMyMnguaAo+
-Pj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC9zZHJh
-bV9yazMyMnguYwo+Pj4+Cj4+Pj4gLS0gCj4+Pj4gMS45LjEKPj4+Pgo+Pj4gX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4+IExpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdAo+Pj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4gaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+
-Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-ClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5k
-ZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+
+--m6wid7jysdtjmmci
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Aug 18, 2017 at 09:41:54AM +0800, jeffy wrote:
+> On 08/18/2017 01:11 AM, Mark Brown wrote:
+> > On Thu, Aug 17, 2017 at 12:44:10PM +0800, Jeffy Chen wrote:
+
+> > > -Optional properties:
+> > > -- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
+> > > -  If this option is specified, which means it's required dmic need
+> > > -  delay for DMIC to ready so that rt5514 can avoid recording before
+> > > -  DMIC send valid data
+
+> > Why would nobody ever want to use this in future?
+
+> hmmm, check again, rt5514 fixed this issue in there driver instead in:
+> a5461fd6c8f7 ASoC: rt5514: Add the DMIC initial delay to wait it ready.
+
+> so we don't need this...
+
+You don't need it on your board for new DTs but why is it not possible
+that another board might need it?
+
+--m6wid7jysdtjmmci
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlmW1PcACgkQJNaLcl1U
+h9Ajwgf9HA9rtrdJwNVlAtEKNVupp1jzWXvXw7UIeADdamflEQ3RP9vYmENUHoLn
+VinUjB0TGRRqb5hQedf/p5N8x1kuytGXrkfucoQqJ8V7YJR8NKiINQI7yTRCYW7X
+OcJOj44puTm/pSlOWaexhC+rGmcDjEKpY0beZI0jHt79r+Ayv1/3FxHuNCHR498l
+KXmDKHgfgI1vSNZeDpV3DisCZvp7/J6WdghOMvqnnvrtmvWWK6+umOWSaHG2PGZE
+iy96mfapluf9MCfvGfCm8zFoxit2mYNcnAweHZSNQuoCe+Nh8rX4A+77SPsMEZUx
+Qn303i4WoIEaXc62qr/4ewAETN+73A==
+=TCfK
+-----END PGP SIGNATURE-----
+
+--m6wid7jysdtjmmci--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
