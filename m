@@ -1,14 +1,14 @@
 From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
 Subject: Re: [U-Boot, v2,
- 4/5] rockchip: rk322x: pinctrl: fix IO MASK error on sdcard pin
-Date: Fri, 18 Aug 2017 18:04:44 +0200
-Message-ID: <E1dijlM-0007jJ-Hp@mail.theobroma-systems.com>
-References: <1502954257-7256-5-git-send-email-kever.yang@rock-chips.com>
+ 3/5] rockchip: rk322x: pinctrl: using compatible name same with dts
+Date: Fri, 18 Aug 2017 18:04:45 +0200
+Message-ID: <E1dijlN-0007jJ-46@mail.theobroma-systems.com>
+References: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1502954257-7256-5-git-send-email-kever.yang@rock-chips.com>
+In-Reply-To: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <http://lists.denx.de/pipermail/u-boot/>
@@ -22,13 +22,14 @@ To: Kever Yang <kever.yang@rock-chips.com>
 Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-PiBGaXggdGhlIElPTVVYIHNldHRpbmcgZm9yIFNEY2FyZCBDTUQgcGluIGF0IHRoZSBzYW1lIHRp
-bWUuCj4gCj4gU2lnbmVkLW9mZi1ieTogS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBz
-LmNvbT4KPiBSZXZpZXdlZC1ieTogUGhpbGlwcCBUb21zaWNoIDxwaGlsaXBwLnRvbXNpY2hAdGhl
-b2Jyb21hLXN5c3RlbXMuY29tPgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPiAKPiAg
-ZHJpdmVycy9waW5jdHJsL3JvY2tjaGlwL3BpbmN0cmxfcmszMjJ4LmMgfCAyICstCj4gIDEgZmls
-ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAoKQWNrZWQtYnk6IFBo
-aWxpcHAgVG9tc2ljaCA8cGhpbGlwcC50b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxp
-bmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGlu
-Zm8vdS1ib290Cg==
+PiBUaGUgZHRzIGZyb20ga2VybmVsIGlzIHVzaW5nIHJrMzIyOC1waW5jdHJsIGFzIGNvbXBhdGli
+bGUgbmFtZSwKPiBuZWVkIHRvIHN5bmMgd2l0aCBpdCB0byBtYWtlIHRoZSBkcml2ZXIgd29yay4K
+PiAKPiBTaWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29t
+Pgo+IFJldmlld2VkLWJ5OiBQaGlsaXBwIFRvbXNpY2ggPHBoaWxpcHAudG9tc2ljaEB0aGVvYnJv
+bWEtc3lzdGVtcy5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIHNwbGl0IHRoaXMg
+cGF0Y2ggaW4gdHdvIHBhdGNoZXMKPiAKPiAgZHJpdmVycy9waW5jdHJsL3JvY2tjaGlwL3BpbmN0
+cmxfcmszMjJ4LmMgfCA2ICsrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCsp
+LCAzIGRlbGV0aW9ucygtKQo+IAoKQWNrZWQtYnk6IFBoaWxpcHAgVG9tc2ljaCA8cGhpbGlwcC50
+b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVu
+eC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
