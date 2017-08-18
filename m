@@ -1,81 +1,75 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Fri, 18 Aug 2017 15:23:39 +0800
-Message-ID: <5e3accf1-6f84-861f-f647-628322bb7841@rock-chips.com>
-References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
- <20170817120431.12398-2-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20170817120431.12398-2-jeffy.chen@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
+Subject: Re: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd
+	support
+Date: Fri, 18 Aug 2017 09:36:28 +0200
+Message-ID: <549AFCBD-88EC-4ED5-B719-5558D4FCC614@theobroma-systems.com>
+References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
+ <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
+ <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
+Mime-Version: 1.0 (Mac OS X Mail 8.2 \(2104\))
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Albert Aribaud <albert.u.boot@aribaud.net>, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy
-
-On 2017/8/17 20:04, Jeffy Chen wrote:
-> Add support for PCIE_WAKE pin in rockchip pcie driver.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> ---
-> 
-> Changes in v2:
-> Use dev_pm_set_dedicated_wake_irq
->          -- Suggested by Brian Norris <briannorris@chromium.com>
-> 
->   drivers/pci/host/pcie-rockchip.c | 13 ++++++++++++-
->   1 file changed, 12 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 7bb9870f6d8c..c2b973c738fe 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -36,6 +36,7 @@
->   #include <linux/pci_ids.h>
->   #include <linux/phy/phy.h>
->   #include <linux/platform_device.h>
-> +#include <linux/pm_wakeirq.h>
->   #include <linux/reset.h>
->   #include <linux/regmap.h>
->   
-> @@ -853,7 +854,6 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
->   	chained_irq_exit(chip, desc);
->   }
->   
-> -
->   /**
->    * rockchip_pcie_parse_dt - Parse Device Tree
->    * @rockchip: PCIe port information
-> @@ -1018,6 +1018,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
->   		return err;
->   	}
->   
-> +	device_init_wakeup(dev, true);
-> +	irq = platform_get_irq_byname(pdev, "wake");
-> +	if (irq >= 0) {
-> +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
-> +		if (err)
-> +			dev_err(dev, "failed to setup PCIe wake IRQ\n");
-> +	}
-> +
->   	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
->   	if (IS_ERR(rockchip->vpcie3v3)) {
->   		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
-> @@ -1524,6 +1532,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
->   	struct device *dev = &pdev->dev;
->   	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->   
-> +	dev_pm_clear_wake_irq(dev);
-> +	device_init_wakeup(dev, false);
-> +
-
-Looks good overall but I think we need this on the
-error handling path of rockchip_pcie_probe as well?
-
->   	pci_stop_root_bus(rockchip->root_bus);
->   	pci_remove_root_bus(rockchip->root_bus);
->   	pci_unmap_iospace(rockchip->io);
-> 
+Cj4gT24gMTggQXVnIDIwMTcsIGF0IDA4OjI2LCBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPiAKPiBQaGlsaXBwLAo+IAo+IAo+IE9uIDA4LzE3LzIwMTcgMDQ6
+MzQgUE0sIERyLiBQaGlsaXBwIFRvbXNpY2ggd3JvdGU6Cj4+PiBPbiAxNyBBdWcgMjAxNywgYXQg
+MDk6MTcsIEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pj4g
+Cj4+PiAKPj4+IEFkZCBzZHJhbSBkcml2ZXIgZm9yIHJrMzIyOSBhbmQgb3RoZXIgZml4IGxpa2Ug
+cGluY3RybCBhbmQgc2Qgbm9kZS4KPj4+IAo+Pj4gCj4+PiBDaGFuZ2VzIGluIHYyOgo+Pj4gLSBz
+cGxpdCB0aGlzIHBhdGNoIGluIHR3byBwYXRjaGVzCj4+PiAKPj4+IEtldmVyIFlhbmcgKDUpOgo+
+Pj4gIHJvY2tjaGlwOiByazMyMng6IHVwZGF0ZSBkcmFtIGJhbmsgc2l6ZQo+Pj4gIHJvY2tjaGlw
+OiByazMyMng6IGFkZCBzZHJhbSBkcml2ZXIKPj4+ICByb2NrY2hpcDogcmszMjJ4OiBwaW5jdHJs
+OiB1c2luZyBjb21wYXRpYmxlIG5hbWUgc2FtZSB3aXRoIGR0cwo+Pj4gIHJvY2tjaGlwOiByazMy
+Mng6IHBpbmN0cmw6IGZpeCBJTyBNQVNLIGVycm9yIG9uIHNkY2FyZCBwaW4KPj4+ICByb2NrY2hp
+cDogZHRzOiByazMyMjk6IHJlbW92ZSBkcmFtIGNoYW5uZWwgaW5mbwo+Pj4gCj4+PiBhcmNoL2Fy
+bS9kdHMvcmszMjI5LWV2Yi5kdHMgICAgICAgICAgICAgICAgICAgICAgIHwgICAxIC0KPj4+IGFy
+Y2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fcmszMjJ4LmggfCA1ODEgKysr
+KysrKysrKysrKysrCj4+PiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC1ib2FyZC5jICAg
+ICAgICAgICAgIHwgIDEwICstCj4+PiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC9NYWtl
+ZmlsZSAgICAgICAgICAgIHwgICAxICsKPj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjJ4
+L3NkcmFtX3JrMzIyeC5jICAgICAgfCA4NTUgKysrKysrKysrKysrKysrKysrKysrKwo+PiBEZXZp
+Y2UtbW9kZWwgRFJBTSBjb250cm9sbGVyIGRyaXZlcnMgc2hvdWxkIGdlbmVyYWxseSBnbyB0byBk
+cml2ZXJzL3JhbTsgdGhlcmXigJlzCj4+IGFscmVhZHkgYSBzdWJkaXJlY3RvcnkgZm9yIHRoZSBS
+b2NrY2hpcC1zcGVjaWZpYyBkcml2ZXJzIGNyZWF0ZWQgdGhlcmUuCj4gCj4gSSdtIHNvcnJ5LCBJ
+IGRpZG4ndCBzZWUgaXQsIGV2ZW4gd2l0aCB0aGUgbGF0ZXN0IG1haW5saW5lIFUtQm9vdCwKPiBh
+bmQgYm90aCB5b3UgYW5kIFNpbW9uIGhhZCByZXZpZXcgdGhlIGZpcnN0IHZlcnNpb24gZHJpdmVy
+IHdoaWNoIHNlbmQgb3V0Cj4gYWJvdXQgb25lIG1vbnRoIGFnbywgSSBkb24ndCBrbm93IHdoeSBp
+dCdzIG5vdCBhcHBsaWVkLCBzbyBJIHNlbmQgaXQgYWdhaW4gd2l0aAo+IG90aGVyIHBhdGNoZXMg
+Y2hhbmdlLgoKVGhlIGRlY2lzaW9uIHRvIG1vdmUgdGhpcyBvdmVyIHRvIGRyaXZlcnMvcmFtIGlz
+IG9ubHkgYWJvdXQgNiB3ZWVrcyBvbGQuCkhvd2V2ZXIsIEkgZGlkbuKAmXQgd2FudCB0byBhZGQg
+YSBuZXcgZHJpdmVyIGluIHRoZSBvbGQgbG9jYXRpb24gKGFzIHdl4oCZZCB0aGVuCmhhdmUgdG8g
+bW92ZSBpdCBpbiB0aGUgbmVhciBmdXR1cmUgOyBub3RlIHRoYXQgZm9yIHRoZSBSSzMzOTksIEni
+gJlsbCBzdWJtaXQgYQpwYXRjaCB0byBtb3ZlIHRoZSBkcml2ZXIgdG8gZHJpdmVycy9yYW0gZm9y
+IHRoZSBuZXh0IHJlbGVhc2UgY3ljbGUpLgoKVGhlIHBhdGNoIGhhcyBub3QgYmVlbiBhcHBsaWVk
+LCBhcyB0aGVyZeKAmXMgdW5hZGRyZXNzZWQgcmV2aWV3IGNvbW1lbnRzOgpJIGhhZCByZXF1ZXN0
+ZWQgdGhhdCB0aGUgYW1vdW50IG9mIGRhdGEgc3RydWN0dXJlcyBhcmUgZGVkdXBsaWNhdGVkLCBh
+cyB0aGUKcGN0bC1yZWdpc3RlciBzZWVtZWQgdGhlIHNhbWUgYXMgdGhlIHJrMzI4OCBhbmQgdGhl
+IHJrMzM2OC4KSSB0aGluayB0aGVyZSB3YXMgYSBiaXQgbW9yZSBjb2RlIHRoYXQgY291bGQgYmUg
+c2hhcmVkIGFscmVhZHkuCgpXZSByZWFsbHkgbmVlZCB0byBnZXQgb3VyIERSQU0gZHJpdmVycyBp
+bnRvIHNoYXBlLCBhcyB0aGVzZSBhcmUgYmVjb21pbmcKYSBtYWpvciBzb3VyY2Ugb2YgY29kZSBk
+dXBsaWNhdGlvbi4KCj4gVGhhbmtzLAo+IC0gS2V2ZXIKPj4gCj4+PiBkcml2ZXJzL3BpbmN0cmwv
+cm9ja2NoaXAvcGluY3RybF9yazMyMnguYyAgICAgICAgIHwgICA4ICstCj4+PiA2IGZpbGVzIGNo
+YW5nZWQsIDE0NDcgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4+IGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzIyeC5o
+Cj4+PiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyMngvc2Ry
+YW1fcmszMjJ4LmMKPj4+IAo+Pj4gLS0gCj4+PiAxLjkuMQo+Pj4gCj4+IAo+PiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKPj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFp
+bGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0
+aW5mby91LWJvb3QK
