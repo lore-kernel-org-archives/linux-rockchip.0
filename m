@@ -1,135 +1,60 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Sat, 19 Aug 2017 04:05:01 +0800
-Message-ID: <5997486D.4040803@rock-chips.com>
-References: <20170817120431.12398-1-jeffy.chen@rock-chips.com> <20170817120431.12398-2-jeffy.chen@rock-chips.com> <20170818170107.GA119461@google.com> <20170818181416.GF6008@atomide.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 4/5] arm64: dts: add RK3399-Q7 (Puma) SoM
+Date: Fri, 18 Aug 2017 23:14:48 +0200
+Message-ID: <2629491.nQPY0c5PWU@phil>
+References: <20170818193445.47542-1-klaus.goger@theobroma-systems.com> <20170818193445.47542-5-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170818181416.GF6008@atomide.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tony Lindgren <tony@atomide.com>, Brian Norris <briannorris@chromium.org>
-Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170818193445.47542-5-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi guys,
+Am Freitag, 18. August 2017, 21:34:44 CEST schrieb Klaus Goger:
+> The RK3399-Q7 SoM is a Qseven-compatible (70mm x 70mm, MXM-230
+> connector) system-on-module from Theobroma Systems, featuring the
+> Rockchip RK3399.
+> 
+> It provides the following feature set:
+>  * up to 4GB DDR3
+>  * on-module SPI-NOR flash
+>  * on-module eMMC (with 8-bit 1.8V interface)
+>  * SD card (on a baseboad) via edge connector
+>  * Gigabit Ethernet with on-module Micrel KSZ9031 GbE PHY
+>  * HDMI/eDP/2x MIPI-DSI
+>  * 2x MIPI-CSI
+>  * USB
+>    - 1x USB 3.0 dual-role (direct connection)
+>    - 2x USB 3.0 host + 1x USB 2.0 (on-module USB 3.0 hub)
+>  * on-module STM32 Cortex-M0 companion controller, implementing:
+>    - low-power RTC functionality (ISL1208 emulation)
+>    - fan controller (AMC6821 emulation)
+>    - USB<->CAN bridge controller
+> 
+> Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> ---
+> 
+> Changes in v2:
+> ₋ split SoM parts into it's own dtsi
+> - use dashes in phandles
 
-On 08/19/2017 02:14 AM, Tony Lindgren wrote:
->> static irqreturn_t handle_threaded_wake_irq(int irq, void *_wirq)
->> >{
->> >         struct wake_irq *wirq = _wirq;
->> >         int res;
->> >
->> >         /* Maybe abort suspend? */
->> >         if (irqd_is_wakeup_set(irq_get_irq_data(irq))) {
->> >                 pm_wakeup_event(wirq->dev, 0);
->> >
->> >                 return IRQ_HANDLED; <--- We can return here, with the trigger still asserted
->> >         }
->> >...
->> >
->> >This could cause some kind of an IRQ storm, including a lockup or
->> >significant slowdown, I think.
-> Hmm yeah that should be checked. The test cases I have are all
-> edge interrupts where there is no status whatsoever after the
-> wake-up event except which irq fired.
->
-> To me it seems that the wakeirq consumer driver should be able
-> to clear the level wakeirq in it's runtime_resume, or even better,
-> maybe all it takes is just let the consumer driver's irq handler
-> clear the level wakeirq when it runs after runtime_resume.
->
+as I was stumbling over this comment and checked the patch for it,
+dashes in node-names, underscores in phandles (phandles are the
+references defined in front of nodes and used later).
 
-i did some tests about it:
-[   70.335883] device_wakeup_arm_wake_irqs <-- enable wake irq
-[   70.335932] handle_threaded_wake_irq
-...<--- a lot of wake irq handler log
-[   70.335965] suspend_device_irq
-[   70.335987] irq_pm_check_wakeup <--- wake and disable wake irq
-...<--- no wake irq handler log
-[   70.336173] resume_irqs <-- enable wake irq
-[   70.336480] handle_threaded_wake_irq
-...<--- a lot of wake irq handler log
-[   70.336600] device_wakeup_disarm_wake_irqs < disable wake irq
-...<--- no wake irq handler log
+The patch itself is doing things correctly, so it's only a wording issue here :-)
+
+Otherwise looks good, just need Rob looking at the bindings things.
+I'll probably find some properties to move around when applying
+(to conform to sorting expectations)
 
 
-so it would indeed possible to get irq storm in 
-device_wakeup_arm_wake_irqs to suspend_device_irq
-and resume_irqs to device_wakeup_disarm_wake_irqs.
+Heiko
 
-
-a simple workaround would be:
-enable_irq_wake
-suspend_device_irq
-enable_irq
-...irq fired, irq_pm_check_wakeup disabled irq
-disable_irq
-resume_irqs
-disable_irq_wake
-
-
-
-
-and i have a hacky patch for that, which works well:
-
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1308,6 +1308,8 @@ static int __maybe_unused 
-rockchip_pcie_suspend_noirq(struct
-device *dev)
-         if (!IS_ERR(rockchip->vpcie0v9))
-                 regulator_disable(rockchip->vpcie0v9);
-
-+       dev_pm_enable_wake_irq(dev);
-+
-         return ret;
-  }
-
-@@ -1316,6 +1318,8 @@ static int __maybe_unused 
-rockchip_pcie_resume_noirq(struct d
-evice *dev)
-         struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-         int err;
-
-+       dev_pm_disable_wake_irq(dev);
-+
-
-
-@ -323,7 +324,7 @@ void dev_pm_arm_wake_irq(struct wake_irq *wirq)
-                 return;
-
-         if (device_may_wakeup(wirq->dev)) {
--               if (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
-+               if (0 && wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
-                         enable_irq(wirq->irq);
-
-                 enable_irq_wake(wirq->irq);
-@@ -345,7 +346,7 @@ void dev_pm_disarm_wake_irq(struct wake_irq *wirq)
-         if (device_may_wakeup(wirq->dev)) {
-                 disable_irq_wake(wirq->irq);
-
--               if (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
-+               if (0 && wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
-                         disable_irq_nosync(wirq->irq);
-         }
-
-
-
-which is basically move enable_irq and disable_irq to driver noirq 
-stages, to avoid:
-1/ not disabled by irq_pm_check_wakeup when it first fired
-2/ re-enabled by resume_irq when it disabled by irq_pm_check_wakeup
-
-
-with that hack, i no longer saw the irq storm, and the irq handler would 
-never be called:
-
-[    9.693385] device_wakeup_arm_wake_irqs
-[    9.697130] suspend_device_irq
-<--- suspend noirq, enable wake irq
-[    9.716569] irq_pm_check_wakeup disable the wake irq
-<--- resume noirq, disable wake irq
-[    9.968115] resume_irqs <-- enable wake irq(not actually enable, 
-since disabled twice)
-[   10.193072] device_wakeup_disarm_wake_irqs
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
