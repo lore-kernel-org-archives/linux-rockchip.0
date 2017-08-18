@@ -1,75 +1,124 @@
-From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd
-	support
-Date: Fri, 18 Aug 2017 09:36:28 +0200
-Message-ID: <549AFCBD-88EC-4ED5-B719-5558D4FCC614@theobroma-systems.com>
-References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
- <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
- <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
-Mime-Version: 1.0 (Mac OS X Mail 8.2 \(2104\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Albert Aribaud <albert.u.boot@aribaud.net>, u-boot@lists.denx.de
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: Add basic DVFS support for RK3368
+Date: Fri, 18 Aug 2017 09:50:53 +0200
+Message-ID: <20170818075053.8779-1-romain.perier@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Cj4gT24gMTggQXVnIDIwMTcsIGF0IDA4OjI2LCBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2st
-Y2hpcHMuY29tPiB3cm90ZToKPiAKPiBQaGlsaXBwLAo+IAo+IAo+IE9uIDA4LzE3LzIwMTcgMDQ6
-MzQgUE0sIERyLiBQaGlsaXBwIFRvbXNpY2ggd3JvdGU6Cj4+PiBPbiAxNyBBdWcgMjAxNywgYXQg
-MDk6MTcsIEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pj4g
-Cj4+PiAKPj4+IEFkZCBzZHJhbSBkcml2ZXIgZm9yIHJrMzIyOSBhbmQgb3RoZXIgZml4IGxpa2Ug
-cGluY3RybCBhbmQgc2Qgbm9kZS4KPj4+IAo+Pj4gCj4+PiBDaGFuZ2VzIGluIHYyOgo+Pj4gLSBz
-cGxpdCB0aGlzIHBhdGNoIGluIHR3byBwYXRjaGVzCj4+PiAKPj4+IEtldmVyIFlhbmcgKDUpOgo+
-Pj4gIHJvY2tjaGlwOiByazMyMng6IHVwZGF0ZSBkcmFtIGJhbmsgc2l6ZQo+Pj4gIHJvY2tjaGlw
-OiByazMyMng6IGFkZCBzZHJhbSBkcml2ZXIKPj4+ICByb2NrY2hpcDogcmszMjJ4OiBwaW5jdHJs
-OiB1c2luZyBjb21wYXRpYmxlIG5hbWUgc2FtZSB3aXRoIGR0cwo+Pj4gIHJvY2tjaGlwOiByazMy
-Mng6IHBpbmN0cmw6IGZpeCBJTyBNQVNLIGVycm9yIG9uIHNkY2FyZCBwaW4KPj4+ICByb2NrY2hp
-cDogZHRzOiByazMyMjk6IHJlbW92ZSBkcmFtIGNoYW5uZWwgaW5mbwo+Pj4gCj4+PiBhcmNoL2Fy
-bS9kdHMvcmszMjI5LWV2Yi5kdHMgICAgICAgICAgICAgICAgICAgICAgIHwgICAxIC0KPj4+IGFy
-Y2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fcmszMjJ4LmggfCA1ODEgKysr
-KysrKysrKysrKysrCj4+PiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC1ib2FyZC5jICAg
-ICAgICAgICAgIHwgIDEwICstCj4+PiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC9NYWtl
-ZmlsZSAgICAgICAgICAgIHwgICAxICsKPj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjJ4
-L3NkcmFtX3JrMzIyeC5jICAgICAgfCA4NTUgKysrKysrKysrKysrKysrKysrKysrKwo+PiBEZXZp
-Y2UtbW9kZWwgRFJBTSBjb250cm9sbGVyIGRyaXZlcnMgc2hvdWxkIGdlbmVyYWxseSBnbyB0byBk
-cml2ZXJzL3JhbTsgdGhlcmXigJlzCj4+IGFscmVhZHkgYSBzdWJkaXJlY3RvcnkgZm9yIHRoZSBS
-b2NrY2hpcC1zcGVjaWZpYyBkcml2ZXJzIGNyZWF0ZWQgdGhlcmUuCj4gCj4gSSdtIHNvcnJ5LCBJ
-IGRpZG4ndCBzZWUgaXQsIGV2ZW4gd2l0aCB0aGUgbGF0ZXN0IG1haW5saW5lIFUtQm9vdCwKPiBh
-bmQgYm90aCB5b3UgYW5kIFNpbW9uIGhhZCByZXZpZXcgdGhlIGZpcnN0IHZlcnNpb24gZHJpdmVy
-IHdoaWNoIHNlbmQgb3V0Cj4gYWJvdXQgb25lIG1vbnRoIGFnbywgSSBkb24ndCBrbm93IHdoeSBp
-dCdzIG5vdCBhcHBsaWVkLCBzbyBJIHNlbmQgaXQgYWdhaW4gd2l0aAo+IG90aGVyIHBhdGNoZXMg
-Y2hhbmdlLgoKVGhlIGRlY2lzaW9uIHRvIG1vdmUgdGhpcyBvdmVyIHRvIGRyaXZlcnMvcmFtIGlz
-IG9ubHkgYWJvdXQgNiB3ZWVrcyBvbGQuCkhvd2V2ZXIsIEkgZGlkbuKAmXQgd2FudCB0byBhZGQg
-YSBuZXcgZHJpdmVyIGluIHRoZSBvbGQgbG9jYXRpb24gKGFzIHdl4oCZZCB0aGVuCmhhdmUgdG8g
-bW92ZSBpdCBpbiB0aGUgbmVhciBmdXR1cmUgOyBub3RlIHRoYXQgZm9yIHRoZSBSSzMzOTksIEni
-gJlsbCBzdWJtaXQgYQpwYXRjaCB0byBtb3ZlIHRoZSBkcml2ZXIgdG8gZHJpdmVycy9yYW0gZm9y
-IHRoZSBuZXh0IHJlbGVhc2UgY3ljbGUpLgoKVGhlIHBhdGNoIGhhcyBub3QgYmVlbiBhcHBsaWVk
-LCBhcyB0aGVyZeKAmXMgdW5hZGRyZXNzZWQgcmV2aWV3IGNvbW1lbnRzOgpJIGhhZCByZXF1ZXN0
-ZWQgdGhhdCB0aGUgYW1vdW50IG9mIGRhdGEgc3RydWN0dXJlcyBhcmUgZGVkdXBsaWNhdGVkLCBh
-cyB0aGUKcGN0bC1yZWdpc3RlciBzZWVtZWQgdGhlIHNhbWUgYXMgdGhlIHJrMzI4OCBhbmQgdGhl
-IHJrMzM2OC4KSSB0aGluayB0aGVyZSB3YXMgYSBiaXQgbW9yZSBjb2RlIHRoYXQgY291bGQgYmUg
-c2hhcmVkIGFscmVhZHkuCgpXZSByZWFsbHkgbmVlZCB0byBnZXQgb3VyIERSQU0gZHJpdmVycyBp
-bnRvIHNoYXBlLCBhcyB0aGVzZSBhcmUgYmVjb21pbmcKYSBtYWpvciBzb3VyY2Ugb2YgY29kZSBk
-dXBsaWNhdGlvbi4KCj4gVGhhbmtzLAo+IC0gS2V2ZXIKPj4gCj4+PiBkcml2ZXJzL3BpbmN0cmwv
-cm9ja2NoaXAvcGluY3RybF9yazMyMnguYyAgICAgICAgIHwgICA4ICstCj4+PiA2IGZpbGVzIGNo
-YW5nZWQsIDE0NDcgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4+IGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzIyeC5o
-Cj4+PiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyMngvc2Ry
-YW1fcmszMjJ4LmMKPj4+IAo+Pj4gLS0gCj4+PiAxLjkuMQo+Pj4gCj4+IAo+PiBfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKPj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFp
-bGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0
-aW5mby91LWJvb3QK
+This adds and enable the operating points that have been tested and are
+currently supported by the SoC.
+
+Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+
+Note: RK3288 is using operating-points binding v1, while RK3399 is using
+binding v2. I can send another iteration for switching to binding v2,
+if required.
+
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 6d5dc0587e59..f2ae3bf9377a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -113,8 +113,18 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x0>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
++			operating-points = <
++				/* KHz    uV */
++				312000 950000
++				408000 950000
++				600000 950000
++				816000 1025000
++				1008000 1125000
++			>;
+ 
+ 			#cooling-cells = <2>; /* min followed by max */
++			clock-latency = <40000>;
+ 		};
+ 
+ 		cpu_l1: cpu@1 {
+@@ -122,6 +132,7 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x1>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
+ 		};
+ 
+ 		cpu_l2: cpu@2 {
+@@ -129,6 +140,7 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x2>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
+ 		};
+ 
+ 		cpu_l3: cpu@3 {
+@@ -136,6 +148,7 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x3>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKL>;
+ 		};
+ 
+ 		cpu_b0: cpu@100 {
+@@ -143,8 +156,18 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x100>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
++			operating-points = <
++				/* KHz    uV */
++				312000 950000
++				408000 950000
++				600000 950000
++				816000 975000
++				1008000 1050000
++			>;
+ 
+ 			#cooling-cells = <2>; /* min followed by max */
++			clock-latency = <40000>;
+ 		};
+ 
+ 		cpu_b1: cpu@101 {
+@@ -152,6 +175,7 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x101>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
+ 		};
+ 
+ 		cpu_b2: cpu@102 {
+@@ -159,6 +183,7 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x102>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
+ 		};
+ 
+ 		cpu_b3: cpu@103 {
+@@ -166,9 +191,11 @@
+ 			compatible = "arm,cortex-a53", "arm,armv8";
+ 			reg = <0x0 0x103>;
+ 			enable-method = "psci";
++			clocks = <&cru ARMCLKB>;
+ 		};
+ 	};
+ 
++
+ 	amba {
+ 		compatible = "simple-bus";
+ 		#address-cells = <2>;
+-- 
+2.11.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
