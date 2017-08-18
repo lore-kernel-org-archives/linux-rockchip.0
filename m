@@ -1,110 +1,51 @@
 From: Tony Lindgren <tony@atomide.com>
 Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Fri, 18 Aug 2017 11:14:16 -0700
-Message-ID: <20170818181416.GF6008@atomide.com>
+Date: Fri, 18 Aug 2017 11:28:52 -0700
+Message-ID: <20170818182850.GG6008@atomide.com>
 References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
  <20170817120431.12398-2-jeffy.chen@rock-chips.com>
  <20170818170107.GA119461@google.com>
+ <59972817.4030907@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170818170107.GA119461@google.com>
+In-Reply-To: <59972817.4030907@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: jeffy <jeffy.chen@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-* Brian Norris <briannorris@chromium.org> [170818 10:01]:
-> + Tony
-> 
-> On Thu, Aug 17, 2017 at 08:04:29PM +0800, Jeffy Chen wrote:
-> > Add support for PCIE_WAKE pin in rockchip pcie driver.
+* jeffy <jeffy.chen@rock-chips.com> [170818 11:05]:
+> On 08/19/2017 01:01 AM, Brian Norris wrote:
+> > BTW, in another context, Tony suggested we might need to fix up the IRQ flags
+> > like this:
 > > 
-> > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> > ---
+> > int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
+> > {
+> > ...
+> >          err = request_threaded_irq(irq, NULL, handle_threaded_wake_irq,
+> > -                                  IRQF_ONESHOT, dev_name(dev), wirq);
+> > +                                  IRQF_ONESHOT | irq_get_trigger_type(irq), dev_name(dev), wirq);
 > > 
-> > Changes in v2:
-> > Use dev_pm_set_dedicated_wake_irq
-> >         -- Suggested by Brian Norris <briannorris@chromium.com>
-> > 
-> >  drivers/pci/host/pcie-rockchip.c | 13 ++++++++++++-
-> >  1 file changed, 12 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> > index 7bb9870f6d8c..c2b973c738fe 100644
-> > --- a/drivers/pci/host/pcie-rockchip.c
-> > +++ b/drivers/pci/host/pcie-rockchip.c
-> > @@ -36,6 +36,7 @@
-> >  #include <linux/pci_ids.h>
-> >  #include <linux/phy/phy.h>
-> >  #include <linux/platform_device.h>
-> > +#include <linux/pm_wakeirq.h>
-> >  #include <linux/reset.h>
-> >  #include <linux/regmap.h>
-> >  
-> > @@ -853,7 +854,6 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
-> >  	chained_irq_exit(chip, desc);
-> >  }
-> >  
-> > -
-> >  /**
-> >   * rockchip_pcie_parse_dt - Parse Device Tree
-> >   * @rockchip: PCIe port information
-> > @@ -1018,6 +1018,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
-> >  		return err;
-> >  	}
-> >  
-> > +	device_init_wakeup(dev, true);
-> > +	irq = platform_get_irq_byname(pdev, "wake");
-> > +	if (irq >= 0) {
-> > +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
+> > But IIUC, that's not actually necessary, because __setup_irq()
+> > automatically configures the trigger type if the driver didn't request
+> > one explicitly.
 > 
-> Did you test that this works out correctly as a level-triggered
-> interrupt? IIUC, the dummy handler won't mask the interrupt, so it might
-> keep firing. See:
+> actually this would not work...irq_get_trigger_type would return zero due to
+> a bug which we have a patch for it already:
 > 
-> static irqreturn_t handle_threaded_wake_irq(int irq, void *_wirq)
-> {
->         struct wake_irq *wirq = _wirq;
->         int res;
-> 
->         /* Maybe abort suspend? */
->         if (irqd_is_wakeup_set(irq_get_irq_data(irq))) {
->                 pm_wakeup_event(wirq->dev, 0);
->         
->                 return IRQ_HANDLED; <--- We can return here, with the trigger still asserted
->         }
-> ...
-> 
-> This could cause some kind of an IRQ storm, including a lockup or
-> significant slowdown, I think.
+> 9908207 New          [tip:irq/urgent] genirq: Restore trigger settings in
+> irq_modify_status()
 
-Hmm yeah that should be checked. The test cases I have are all
-edge interrupts where there is no status whatsoever after the
-wake-up event except which irq fired.
+Thanks for that information. So it seems we can leave out the
+irq_get_trigger_type() here then? Might be worth checking
+that it really does get populated though :)
 
-To me it seems that the wakeirq consumer driver should be able
-to clear the level wakeirq in it's runtime_resume, or even better,
-maybe all it takes is just let the consumer driver's irq handler
-clear the level wakeirq when it runs after runtime_resume.
+> BTW, using dev_name for the name of this wake irq seems not very
+> convenient...maybe add a ":wake" suffix?
 
-> BTW, in another context, Tony suggested we might need to fix up the IRQ flags
-> like this:
-> 
-> int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
-> {
-> ...
->         err = request_threaded_irq(irq, NULL, handle_threaded_wake_irq,
-> -                                  IRQF_ONESHOT, dev_name(dev), wirq);
-> +                                  IRQF_ONESHOT | irq_get_trigger_type(irq), dev_name(dev), wirq);
-> 
-> But IIUC, that's not actually necessary, because __setup_irq()
-> automatically configures the trigger type if the driver didn't request
-> one explicitly.
-
-OK so we should make sure that the triggering is parsed
-properly when passed in from device tree.
+Good idea, will take a look.
 
 Regards,
 
