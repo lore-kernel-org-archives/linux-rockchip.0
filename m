@@ -1,54 +1,135 @@
-From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: [PATCH v2 0/5] arm64: dts: add RK3399-Q7
-Date: Fri, 18 Aug 2017 21:34:40 +0200
-Message-ID: <20170818193445.47542-1-klaus.goger@theobroma-systems.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Sat, 19 Aug 2017 04:05:01 +0800
+Message-ID: <5997486D.4040803@rock-chips.com>
+References: <20170817120431.12398-1-jeffy.chen@rock-chips.com> <20170817120431.12398-2-jeffy.chen@rock-chips.com> <20170818170107.GA119461@google.com> <20170818181416.GF6008@atomide.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Jorik Jonker <jorik-U9/BOH3cVv3CLqq/8VZgpA@public.gmane.org>, Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH73oGB3hsPCZA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Icenowy Zheng <icenowy-h8G6r0blFSE@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?q?Pawe=C5=82=20Jarosz?= <paweljar>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170818181416.GF6008@atomide.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tony Lindgren <tony@atomide.com>, Brian Norris <briannorris@chromium.org>
+Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkcyB0aGUgZGV2aWNldHJlZSBmb3IgdGhlIFFzZXZlbiBtb2R1bGUgUkszMzk5LVE3IGFuZCBp
-dCdzIEVWSyBiYXNlYm9hcmQuClNlZSBodHRwczovL3d3dy50aGVvYnJvbWEtc3lzdGVtcy5jb20v
-cmszMzk5LXE3LyBmb3IgbW9yZSBpbmZvcm1hdGlvbgphYm91dCB0aGUgbW9kdWxlCgpBcyBpdCB1
-c2VzIGZhbjUzNTU1NSBpbnN0ZWFkIG9mIHN5cjgyeCB0aGF0IGhhcyBzbGlnaHRseSBkaWZmZXJl
-bnQKdm9sdGFnZSBzZXR0aW5ncyB3ZSBhbHNvIG92ZXJ3cml0ZSB0aGUgY3B1X2IgY2x1c3RlciBv
-cHAgc2V0dGluZ3MKZnJvbSByazMzOTktb3BwLmR0c2kKClRoaXMgc2VyaWVzIGFsc28gaW5jbHVk
-ZXMgYWRkaXRpb25hbCBkZXZpY2V0cmVlIGJpbmRpbmdzIHRvIHNhdGlzZnkKY2hlY2twYXRjaC4K
-ClR3byBpc3N1ZXMgdGhhdCBoYXZlIGJlZW4gb2JzZXJ2ZWQgd2l0aCBjdXJyZW50IGxpbnV4LW5l
-eHQ6CiAqICBQQ0llIGlzIG5vdCB3b3JraW5nIGR1ZSBpb21tdV9nZXRfZG9tYWluX2Zvcl9kZXYg
-YWx3YXlzIHJldHVybmluZyBudWxsLgogKiAgU0QtQ2FyZCBkZXRlY3Qgb25seSB3b3JrcyBpZiB1
-c2VkIGFzIGNkLWdwaW8uCgoKQ2hhbmdlcyBpbiB2MjoK4oKLIHNwbGl0IGR0cyBpbiBhIFNvTSBk
-dHNpIGFuZCBhIGR0cyBmb3IgdGhlIGJhc2Vib2FyZAotIHVzZSBkYXNoZXMgaW4gcGhhbmRsZXMK
-LSB1c2UgL2RlbGV0ZS1ub2RlLyBiZWZvcmUgcmVkZWZpbmluZyBvcHAtdGFibGUxCi0gYWRkIGNv
-bW1lbnQgd2h5IG9wcC10YWJsZTEgaXMgcmVkZWZpbmVkCi0gdXNlIGdlbmVyaWMgbm9kZSBuYW1l
-cwotIHJlbW92ZSBkZXByZWNhdGVkIHJlZ3VsYXRvci1jb21wYXRpYmxlIHByb3BlcnR5Ci0gYWRk
-IHZxbW1jIHByb3BlcnR5IHRvIHNkbW1jCgpLbGF1cyBHb2dlciAoNSk6CiAgZHQtYmluZGluZ3M6
-IGFkZCB2ZW5kb3IgcHJlZml4IGZvciBUaGVvYnJvbWEgU3lzdGVtcwogIGR0LWJpbmRpbmdzOiBh
-ZGQgYW1jNjgyMSwgaXNsMTIwOCB0cml2aWFsIGJpbmRpbmdzCiAgZHQtYmluZGluZ3M6IGFkZCBy
-azMzOTktcTcgU29NCiAgYXJtNjQ6IGR0czogYWRkIFJLMzM5OS1RNyAoUHVtYSkgU29NCiAgYXJt
-NjQ6IGR0czogYWRkIEhhaWtvdSBiYXNlYm9hcmQgd2l0aCBSSzMzOTktUTcgU29NCgogRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC50eHQgfCAgIDQgKwogLi4u
-L2RldmljZXRyZWUvYmluZGluZ3MvdHJpdmlhbC1kZXZpY2VzLnR4dCAgICAgICAgfCAgIDIgKwog
-Li4uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnR4dCAgICAgICAgfCAgIDEg
-KwogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgfCAg
-IDEgKwogLi4uL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLWhhaWtvdS5kdHMg
-fCAyMjggKysrKysrKysrCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1h
-LmR0c2kgICAgICB8IDU0NiArKysrKysrKysrKysrKysrKysrKysKIDYgZmlsZXMgY2hhbmdlZCwg
-NzgyIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM5OS1wdW1hLWhhaWtvdS5kdHMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLmR0c2kKCi0tIAoyLjExLjAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi guys,
+
+On 08/19/2017 02:14 AM, Tony Lindgren wrote:
+>> static irqreturn_t handle_threaded_wake_irq(int irq, void *_wirq)
+>> >{
+>> >         struct wake_irq *wirq = _wirq;
+>> >         int res;
+>> >
+>> >         /* Maybe abort suspend? */
+>> >         if (irqd_is_wakeup_set(irq_get_irq_data(irq))) {
+>> >                 pm_wakeup_event(wirq->dev, 0);
+>> >
+>> >                 return IRQ_HANDLED; <--- We can return here, with the trigger still asserted
+>> >         }
+>> >...
+>> >
+>> >This could cause some kind of an IRQ storm, including a lockup or
+>> >significant slowdown, I think.
+> Hmm yeah that should be checked. The test cases I have are all
+> edge interrupts where there is no status whatsoever after the
+> wake-up event except which irq fired.
+>
+> To me it seems that the wakeirq consumer driver should be able
+> to clear the level wakeirq in it's runtime_resume, or even better,
+> maybe all it takes is just let the consumer driver's irq handler
+> clear the level wakeirq when it runs after runtime_resume.
+>
+
+i did some tests about it:
+[   70.335883] device_wakeup_arm_wake_irqs <-- enable wake irq
+[   70.335932] handle_threaded_wake_irq
+...<--- a lot of wake irq handler log
+[   70.335965] suspend_device_irq
+[   70.335987] irq_pm_check_wakeup <--- wake and disable wake irq
+...<--- no wake irq handler log
+[   70.336173] resume_irqs <-- enable wake irq
+[   70.336480] handle_threaded_wake_irq
+...<--- a lot of wake irq handler log
+[   70.336600] device_wakeup_disarm_wake_irqs < disable wake irq
+...<--- no wake irq handler log
+
+
+so it would indeed possible to get irq storm in 
+device_wakeup_arm_wake_irqs to suspend_device_irq
+and resume_irqs to device_wakeup_disarm_wake_irqs.
+
+
+a simple workaround would be:
+enable_irq_wake
+suspend_device_irq
+enable_irq
+...irq fired, irq_pm_check_wakeup disabled irq
+disable_irq
+resume_irqs
+disable_irq_wake
+
+
+
+
+and i have a hacky patch for that, which works well:
+
++++ b/drivers/pci/host/pcie-rockchip.c
+@@ -1308,6 +1308,8 @@ static int __maybe_unused 
+rockchip_pcie_suspend_noirq(struct
+device *dev)
+         if (!IS_ERR(rockchip->vpcie0v9))
+                 regulator_disable(rockchip->vpcie0v9);
+
++       dev_pm_enable_wake_irq(dev);
++
+         return ret;
+  }
+
+@@ -1316,6 +1318,8 @@ static int __maybe_unused 
+rockchip_pcie_resume_noirq(struct d
+evice *dev)
+         struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+         int err;
+
++       dev_pm_disable_wake_irq(dev);
++
+
+
+@ -323,7 +324,7 @@ void dev_pm_arm_wake_irq(struct wake_irq *wirq)
+                 return;
+
+         if (device_may_wakeup(wirq->dev)) {
+-               if (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
++               if (0 && wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
+                         enable_irq(wirq->irq);
+
+                 enable_irq_wake(wirq->irq);
+@@ -345,7 +346,7 @@ void dev_pm_disarm_wake_irq(struct wake_irq *wirq)
+         if (device_may_wakeup(wirq->dev)) {
+                 disable_irq_wake(wirq->irq);
+
+-               if (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
++               if (0 && wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED)
+                         disable_irq_nosync(wirq->irq);
+         }
+
+
+
+which is basically move enable_irq and disable_irq to driver noirq 
+stages, to avoid:
+1/ not disabled by irq_pm_check_wakeup when it first fired
+2/ re-enabled by resume_irq when it disabled by irq_pm_check_wakeup
+
+
+with that hack, i no longer saw the irq storm, and the irq handler would 
+never be called:
+
+[    9.693385] device_wakeup_arm_wake_irqs
+[    9.697130] suspend_device_irq
+<--- suspend noirq, enable wake irq
+[    9.716569] irq_pm_check_wakeup disable the wake irq
+<--- resume noirq, disable wake irq
+[    9.968115] resume_irqs <-- enable wake irq(not actually enable, 
+since disabled twice)
+[   10.193072] device_wakeup_disarm_wake_irqs
