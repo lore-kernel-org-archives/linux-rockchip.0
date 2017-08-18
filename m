@@ -1,117 +1,40 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Fri, 18 Aug 2017 10:01:08 -0700
-Message-ID: <20170818170107.GA119461@google.com>
-References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
- <20170817120431.12398-2-jeffy.chen@rock-chips.com>
+From: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Subject: Re: [U-Boot, v2,
+ 3/5] rockchip: rk322x: pinctrl: using compatible name same with dts
+Date: Fri, 18 Aug 2017 19:06:50 +0200
+Message-ID: <E1dikjS-00015n-A5@mail.theobroma-systems.com>
+References: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170817120431.12398-2-jeffy.chen@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1502954257-7256-4-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-+ Tony
-
-On Thu, Aug 17, 2017 at 08:04:29PM +0800, Jeffy Chen wrote:
-> Add support for PCIE_WAKE pin in rockchip pcie driver.
+> The dts from kernel is using rk3228-pinctrl as compatible name,
+> need to sync with it to make the driver work.
 > 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> Acked-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 > ---
 > 
 > Changes in v2:
-> Use dev_pm_set_dedicated_wake_irq
->         -- Suggested by Brian Norris <briannorris@chromium.com>
+> - split this patch in two patches
 > 
->  drivers/pci/host/pcie-rockchip.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
+>  drivers/pinctrl/rockchip/pinctrl_rk322x.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 7bb9870f6d8c..c2b973c738fe 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -36,6 +36,7 @@
->  #include <linux/pci_ids.h>
->  #include <linux/phy/phy.h>
->  #include <linux/platform_device.h>
-> +#include <linux/pm_wakeirq.h>
->  #include <linux/reset.h>
->  #include <linux/regmap.h>
->  
-> @@ -853,7 +854,6 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
->  	chained_irq_exit(chip, desc);
->  }
->  
-> -
->  /**
->   * rockchip_pcie_parse_dt - Parse Device Tree
->   * @rockchip: PCIe port information
-> @@ -1018,6 +1018,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
->  		return err;
->  	}
->  
-> +	device_init_wakeup(dev, true);
-> +	irq = platform_get_irq_byname(pdev, "wake");
-> +	if (irq >= 0) {
-> +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
 
-Did you test that this works out correctly as a level-triggered
-interrupt? IIUC, the dummy handler won't mask the interrupt, so it might
-keep firing. See:
-
-static irqreturn_t handle_threaded_wake_irq(int irq, void *_wirq)
-{
-        struct wake_irq *wirq = _wirq;
-        int res;
-
-        /* Maybe abort suspend? */
-        if (irqd_is_wakeup_set(irq_get_irq_data(irq))) {
-                pm_wakeup_event(wirq->dev, 0);
-        
-                return IRQ_HANDLED; <--- We can return here, with the trigger still asserted
-        }
-...
-
-This could cause some kind of an IRQ storm, including a lockup or
-significant slowdown, I think.
-
-BTW, in another context, Tony suggested we might need to fix up the IRQ flags
-like this:
-
-int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
-{
-...
-        err = request_threaded_irq(irq, NULL, handle_threaded_wake_irq,
--                                  IRQF_ONESHOT, dev_name(dev), wirq);
-+                                  IRQF_ONESHOT | irq_get_trigger_type(irq), dev_name(dev), wirq);
-
-But IIUC, that's not actually necessary, because __setup_irq()
-automatically configures the trigger type if the driver didn't request
-one explicitly.
-
-Brian
-
-> +		if (err)
-> +			dev_err(dev, "failed to setup PCIe wake IRQ\n");
-> +	}
-> +
->  	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
->  	if (IS_ERR(rockchip->vpcie3v3)) {
->  		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
-> @@ -1524,6 +1532,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
->  
-> +	dev_pm_clear_wake_irq(dev);
-> +	device_init_wakeup(dev, false);
-> +
->  	pci_stop_root_bus(rockchip->root_bus);
->  	pci_remove_root_bus(rockchip->root_bus);
->  	pci_unmap_iospace(rockchip->io);
-> -- 
-> 2.11.0
-> 
-> 
+Applied to u-boot-rockchip, thanks!
