@@ -1,14 +1,14 @@
 From: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 Subject: Re: [U-Boot, v2,
- 3/5] rockchip: rk322x: pinctrl: using compatible name same with dts
-Date: Fri, 18 Aug 2017 19:06:50 +0200
-Message-ID: <E1dikjS-00015n-A5@mail.theobroma-systems.com>
-References: <1502954257-7256-4-git-send-email-kever.yang@rock-chips.com>
+ 4/5] rockchip: rk322x: pinctrl: fix IO MASK error on sdcard pin
+Date: Fri, 18 Aug 2017 19:06:51 +0200
+Message-ID: <E1dikjT-00015n-4k@mail.theobroma-systems.com>
+References: <1502954257-7256-5-git-send-email-kever.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1502954257-7256-4-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1502954257-7256-5-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,19 +22,17 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-> The dts from kernel is using rk3228-pinctrl as compatible name,
-> need to sync with it to make the driver work.
+> Fix the IOMUX setting for SDcard CMD pin at the same time.
 > 
 > Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 > Acked-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 > ---
 > 
-> Changes in v2:
-> - split this patch in two patches
+> Changes in v2: None
 > 
->  drivers/pinctrl/rockchip/pinctrl_rk322x.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/pinctrl/rockchip/pinctrl_rk322x.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
 Applied to u-boot-rockchip, thanks!
