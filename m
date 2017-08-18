@@ -1,42 +1,89 @@
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add basic DVFS support for RK3368
-Date: Fri, 18 Aug 2017 11:40:30 +0200
-Message-ID: <f283f9de-e9ce-e2b9-645f-b5f0566ebccf@collabora.com>
-References: <20170818075053.8779-1-romain.perier@collabora.com>
- <10444104.mndukromaz@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3328-rock64 board
+Date: Fri, 18 Aug 2017 12:04:09 +0200
+Message-ID: <3137651.GzLSZkl6sq@phil>
+References: <20170811232947.18698-1-heiko@sntech.de> <20170817202029.iset3te4zvb4jhfo@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <10444104.mndukromaz@phil>
-Content-Language: en-US
+In-Reply-To: <20170817202029.iset3te4zvb4jhfo@rob-hp-laptop>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Am Donnerstag, 17. August 2017, 15:20:29 CEST schrieb Rob Herring:
+> On Sat, Aug 12, 2017 at 01:29:47AM +0200, Heiko Stuebner wrote:
+
+> > +/*
+> > + * Copyright (c) 2017 PINE64
+> > + *
+> > + * This file is dual-licensed: you can use it either under the terms
+> > + * of the GPL or the X11 license, at your option. Note that this dual
+> > + * licensing only applies to this file, and not this project as a
+> > + * whole.
+> > + *
+> > + *  a) This library is free software; you can redistribute it and/or
+> > + *     modify it under the terms of the GNU General Public License as
+> > + *     published by the Free Software Foundation; either version 2 of the
+> > + *     License, or (at your option) any later version.
+> > + *
+> > + *     This library is distributed in the hope that it will be useful,
+> > + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + *     GNU General Public License for more details.
+> > + *
+> > + * Or, alternatively,
+> > + *
+> > + *  b) Permission is hereby granted, free of charge, to any person
+> > + *     obtaining a copy of this software and associated documentation
+> > + *     files (the "Software"), to deal in the Software without
+> > + *     restriction, including without limitation the rights to use,
+> > + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> > + *     sell copies of the Software, and to permit persons to whom the
+> > + *     Software is furnished to do so, subject to the following
+> > + *     conditions:
+> > + *
+> > + *     The above copyright notice and this permission notice shall be
+> > + *     included in all copies or substantial portions of the Software.
+> > + *
+> > + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> > + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> > + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> > + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> > + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> > + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> > + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> > + *     OTHER DEALINGS IN THE SOFTWARE.
+> > + */
+> 
+> Use SPDX tags here instead if you want.
+
+There was opposition against using SPDX in the past [0] and
+arm-soc maintainers didn't have a fixed opinion on this, so I decided
+to stick with real license headers for Rockchip devicetrees for the
+time being and/or until consensus is reached :-) .
 
 
-Le 18/08/2017 à 10:20, Heiko Stuebner a écrit :
-> Am Freitag, 18. August 2017, 09:50:53 CEST schrieb Romain Perier:
->> This adds and enable the operating points that have been tested and are
->> currently supported by the SoC.
->>
->> Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->> ---
->>
->> Note: RK3288 is using operating-points binding v1, while RK3399 is using
->> binding v2. I can send another iteration for switching to binding v2,
->> if required.
-> Yes please use v2 for _new_ operating points :-) .
->
-> One more thing down below.
+[0] https://lkml.org/lkml/2017/2/28/750
 
-Ack, will do.
+[...]
 
-Thanks,
-Romain
+> > +	mmc-pwrseq = <&sdio_pwrseq>;
+> > +	non-removable;
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
+> > +	status = "disabled";
+> 
+> Normally, this is disabled in the SOC dts and enabled here.
+
+yeah, somehow I'm missing some things when trying to clean up a
+vendor-devicetree myself, I would normally find when reviewing a
+sent in one. Will fix that.
+
+
+Heiko
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
