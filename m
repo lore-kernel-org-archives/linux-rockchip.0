@@ -1,36 +1,57 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: disable tx ipgap linecheck for rk3399 dwc3
-Date: Fri, 18 Aug 2017 11:18:24 +0200
-Message-ID: <4718044.sxV3Y2WdLf@phil>
-References: <1502958272-1384-1-git-send-email-william.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: add usb3 controller node for RK3328 SoCs
+Date: Fri, 18 Aug 2017 11:24:14 +0200
+Message-ID: <7917076.Ei9Henru6l@phil>
+References: <1502956490-23087-1-git-send-email-william.wu@rock-chips.com> <1502956490-23087-2-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502958272-1384-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1502956490-23087-2-git-send-email-william.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: William Wu <william.wu@rock-chips.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 17. August 2017, 16:24:32 CEST schrieb William Wu:
-> RK3399 USB DWC3 controller has a issue that FS/LS devices not
-> recognized if inserted through USB 3.0 HUB. It's because that
-> the inter-packet delay between the SSPLIT token to SETUP token
-> is about 566ns, more then the USB spec requirement.
+Hi William,
+
+Am Donnerstag, 17. August 2017, 15:54:49 CEST schrieb William Wu:
+> RK3328 has one USB 3.0 OTG controller which uses DWC_USB3
+> core's general architecture. It can act as static xHCI host
+> controller, static device controller, USB 3.0/2.0 OTG basing
+> on ID of USB3.0 PHY.
 > 
-> This patch adds a quirk "snps,dis-tx-ipgap-linecheck-quirk" to
-> disable the u2mac linestate check to decrease the SSPLIT token
-> to SETUP token inter-packet delay from 566ns to 466ns.
+> Signed-off-by: William Wu <william.wu@rock-chips.com>
+> ---
+> Changes in v2:
+> - Modify the dwc3 quirk "snps,tx-ipgap-linecheck-dis-quirk" to
+>   "snps,dis-tx-ipgap-linecheck-quirk"
 > 
-> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>  .../devicetree/bindings/usb/rockchip,dwc3.txt      |  4 +++-
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 27 ++++++++++++++++++++++
+>  2 files changed, 30 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+> index 0536a93..d6b2e47 100644
+> --- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+> +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+> @@ -1,7 +1,9 @@
+>  Rockchip SuperSpeed DWC3 USB SoC controller
+>  
+>  Required properties:
+> -- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
+> +- compatible:	should be one of the following:
+> +  - "rockchip,rk3399-dwc3": for rk3399 SoC
+> +  - "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3": for rk3328 SoC
+>  - clocks:	A list of phandle + clock-specifier pairs for the
+>  		clocks listed in clock-names
+>  - clock-names:	Should contain the following:
 
-applied for 4.14
+This probably shouldn't be part of the patch adding the dts node, but
+instead should be a separate patch and should either go through some
+usb tree or at least get an Ack from usb maintainers (Felipe Balbi and/or
+Greg Kroah Hartman), so you should definitly include them into your
+recipient list.
 
 
-Thanks
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
