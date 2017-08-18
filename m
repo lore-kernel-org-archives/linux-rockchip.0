@@ -1,33 +1,59 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 1/2] clk: rockchip: add rk3228 sclk_sdio_src ID
-Date: Fri, 18 Aug 2017 11:49:24 +0800
-Message-ID: <1503028165-27072-2-git-send-email-zhangqing@rock-chips.com>
-References: <1503028165-27072-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503028165-27072-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, cl@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd
+	support
+Date: Fri, 18 Aug 2017 14:26:43 +0800
+Message-ID: <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
+References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
+ <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
+Cc: linux-rockchip@lists.infradead.org, Albert Aribaud <albert.u.boot@aribaud.net>, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch exports sdio src clock for dts reference.
-
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- include/dt-bindings/clock/rk3228-cru.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/include/dt-bindings/clock/rk3228-cru.h b/include/dt-bindings/clock/rk3228-cru.h
-index 56f841c22801..55655ab0a4c4 100644
---- a/include/dt-bindings/clock/rk3228-cru.h
-+++ b/include/dt-bindings/clock/rk3228-cru.h
-@@ -49,6 +49,7 @@
- #define SCLK_EMMC_DRV		117
- #define SCLK_SDMMC_SAMPLE	118
- #define SCLK_SDIO_SAMPLE	119
-+#define SCLK_SDIO_SRC		120
- #define SCLK_EMMC_SAMPLE	121
- #define SCLK_VOP		122
- #define SCLK_HDMI_HDCP		123
--- 
-1.9.1
+UGhpbGlwcCwKCgpPbiAwOC8xNy8yMDE3IDA0OjM0IFBNLCBEci4gUGhpbGlwcCBUb21zaWNoIHdy
+b3RlOgo+PiBPbiAxNyBBdWcgMjAxNywgYXQgMDk6MTcsIEtldmVyIFlhbmcgPGtldmVyLnlhbmdA
+cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pgo+Pgo+PiBBZGQgc2RyYW0gZHJpdmVyIGZvciByazMy
+MjkgYW5kIG90aGVyIGZpeCBsaWtlIHBpbmN0cmwgYW5kIHNkIG5vZGUuCj4+Cj4+Cj4+IENoYW5n
+ZXMgaW4gdjI6Cj4+IC0gc3BsaXQgdGhpcyBwYXRjaCBpbiB0d28gcGF0Y2hlcwo+Pgo+PiBLZXZl
+ciBZYW5nICg1KToKPj4gICByb2NrY2hpcDogcmszMjJ4OiB1cGRhdGUgZHJhbSBiYW5rIHNpemUK
+Pj4gICByb2NrY2hpcDogcmszMjJ4OiBhZGQgc2RyYW0gZHJpdmVyCj4+ICAgcm9ja2NoaXA6IHJr
+MzIyeDogcGluY3RybDogdXNpbmcgY29tcGF0aWJsZSBuYW1lIHNhbWUgd2l0aCBkdHMKPj4gICBy
+b2NrY2hpcDogcmszMjJ4OiBwaW5jdHJsOiBmaXggSU8gTUFTSyBlcnJvciBvbiBzZGNhcmQgcGlu
+Cj4+ICAgcm9ja2NoaXA6IGR0czogcmszMjI5OiByZW1vdmUgZHJhbSBjaGFubmVsIGluZm8KPj4K
+Pj4gYXJjaC9hcm0vZHRzL3JrMzIyOS1ldmIuZHRzICAgICAgICAgICAgICAgICAgICAgICB8ICAg
+MSAtCj4+IGFyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fcmszMjJ4Lmgg
+fCA1ODEgKysrKysrKysrKysrKysrCj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjJ4LWJv
+YXJkLmMgICAgICAgICAgICAgfCAgMTAgKy0KPj4gYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMy
+MngvTWFrZWZpbGUgICAgICAgICAgICB8ICAgMSArCj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAv
+cmszMjJ4L3NkcmFtX3JrMzIyeC5jICAgICAgfCA4NTUgKysrKysrKysrKysrKysrKysrKysrKwo+
+IERldmljZS1tb2RlbCBEUkFNIGNvbnRyb2xsZXIgZHJpdmVycyBzaG91bGQgZ2VuZXJhbGx5IGdv
+IHRvIGRyaXZlcnMvcmFtOyB0aGVyZeKAmXMKPiBhbHJlYWR5IGEgc3ViZGlyZWN0b3J5IGZvciB0
+aGUgUm9ja2NoaXAtc3BlY2lmaWMgZHJpdmVycyBjcmVhdGVkIHRoZXJlLgoKSSdtIHNvcnJ5LCBJ
+IGRpZG4ndCBzZWUgaXQsIGV2ZW4gd2l0aCB0aGUgbGF0ZXN0IG1haW5saW5lIFUtQm9vdCwKYW5k
+IGJvdGggeW91IGFuZCBTaW1vbiBoYWQgcmV2aWV3IHRoZSBmaXJzdCB2ZXJzaW9uIGRyaXZlciB3
+aGljaCBzZW5kIG91dAphYm91dCBvbmUgbW9udGggYWdvLCBJIGRvbid0IGtub3cgd2h5IGl0J3Mg
+bm90IGFwcGxpZWQsIHNvIEkgc2VuZCBpdCAKYWdhaW4gd2l0aApvdGhlciBwYXRjaGVzIGNoYW5n
+ZS4KClRoYW5rcywKLSBLZXZlcgo+Cj4+IGRyaXZlcnMvcGluY3RybC9yb2NrY2hpcC9waW5jdHJs
+X3JrMzIyeC5jICAgICAgICAgfCAgIDggKy0KPj4gNiBmaWxlcyBjaGFuZ2VkLCAxNDQ3IGluc2Vy
+dGlvbnMoKyksIDkgZGVsZXRpb25zKC0pCj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9p
+bmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzIyeC5oCj4+IGNyZWF0ZSBtb2RlIDEw
+MDY0NCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC9zZHJhbV9yazMyMnguYwo+Pgo+PiAt
+LSAKPj4gMS45LjEKPj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRl
+Cmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
