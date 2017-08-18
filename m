@@ -1,59 +1,81 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd
-	support
-Date: Fri, 18 Aug 2017 14:26:43 +0800
-Message-ID: <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
-References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
- <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Fri, 18 Aug 2017 15:23:39 +0800
+Message-ID: <5e3accf1-6f84-861f-f647-628322bb7841@rock-chips.com>
+References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
+ <20170817120431.12398-2-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, Albert Aribaud <albert.u.boot@aribaud.net>, u-boot@lists.denx.de
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170817120431.12398-2-jeffy.chen@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-UGhpbGlwcCwKCgpPbiAwOC8xNy8yMDE3IDA0OjM0IFBNLCBEci4gUGhpbGlwcCBUb21zaWNoIHdy
-b3RlOgo+PiBPbiAxNyBBdWcgMjAxNywgYXQgMDk6MTcsIEtldmVyIFlhbmcgPGtldmVyLnlhbmdA
-cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pgo+Pgo+PiBBZGQgc2RyYW0gZHJpdmVyIGZvciByazMy
-MjkgYW5kIG90aGVyIGZpeCBsaWtlIHBpbmN0cmwgYW5kIHNkIG5vZGUuCj4+Cj4+Cj4+IENoYW5n
-ZXMgaW4gdjI6Cj4+IC0gc3BsaXQgdGhpcyBwYXRjaCBpbiB0d28gcGF0Y2hlcwo+Pgo+PiBLZXZl
-ciBZYW5nICg1KToKPj4gICByb2NrY2hpcDogcmszMjJ4OiB1cGRhdGUgZHJhbSBiYW5rIHNpemUK
-Pj4gICByb2NrY2hpcDogcmszMjJ4OiBhZGQgc2RyYW0gZHJpdmVyCj4+ICAgcm9ja2NoaXA6IHJr
-MzIyeDogcGluY3RybDogdXNpbmcgY29tcGF0aWJsZSBuYW1lIHNhbWUgd2l0aCBkdHMKPj4gICBy
-b2NrY2hpcDogcmszMjJ4OiBwaW5jdHJsOiBmaXggSU8gTUFTSyBlcnJvciBvbiBzZGNhcmQgcGlu
-Cj4+ICAgcm9ja2NoaXA6IGR0czogcmszMjI5OiByZW1vdmUgZHJhbSBjaGFubmVsIGluZm8KPj4K
-Pj4gYXJjaC9hcm0vZHRzL3JrMzIyOS1ldmIuZHRzICAgICAgICAgICAgICAgICAgICAgICB8ICAg
-MSAtCj4+IGFyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fcmszMjJ4Lmgg
-fCA1ODEgKysrKysrKysrKysrKysrCj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjJ4LWJv
-YXJkLmMgICAgICAgICAgICAgfCAgMTAgKy0KPj4gYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMy
-MngvTWFrZWZpbGUgICAgICAgICAgICB8ICAgMSArCj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAv
-cmszMjJ4L3NkcmFtX3JrMzIyeC5jICAgICAgfCA4NTUgKysrKysrKysrKysrKysrKysrKysrKwo+
-IERldmljZS1tb2RlbCBEUkFNIGNvbnRyb2xsZXIgZHJpdmVycyBzaG91bGQgZ2VuZXJhbGx5IGdv
-IHRvIGRyaXZlcnMvcmFtOyB0aGVyZeKAmXMKPiBhbHJlYWR5IGEgc3ViZGlyZWN0b3J5IGZvciB0
-aGUgUm9ja2NoaXAtc3BlY2lmaWMgZHJpdmVycyBjcmVhdGVkIHRoZXJlLgoKSSdtIHNvcnJ5LCBJ
-IGRpZG4ndCBzZWUgaXQsIGV2ZW4gd2l0aCB0aGUgbGF0ZXN0IG1haW5saW5lIFUtQm9vdCwKYW5k
-IGJvdGggeW91IGFuZCBTaW1vbiBoYWQgcmV2aWV3IHRoZSBmaXJzdCB2ZXJzaW9uIGRyaXZlciB3
-aGljaCBzZW5kIG91dAphYm91dCBvbmUgbW9udGggYWdvLCBJIGRvbid0IGtub3cgd2h5IGl0J3Mg
-bm90IGFwcGxpZWQsIHNvIEkgc2VuZCBpdCAKYWdhaW4gd2l0aApvdGhlciBwYXRjaGVzIGNoYW5n
-ZS4KClRoYW5rcywKLSBLZXZlcgo+Cj4+IGRyaXZlcnMvcGluY3RybC9yb2NrY2hpcC9waW5jdHJs
-X3JrMzIyeC5jICAgICAgICAgfCAgIDggKy0KPj4gNiBmaWxlcyBjaGFuZ2VkLCAxNDQ3IGluc2Vy
-dGlvbnMoKyksIDkgZGVsZXRpb25zKC0pCj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9p
-bmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzIyeC5oCj4+IGNyZWF0ZSBtb2RlIDEw
-MDY0NCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC9zZHJhbV9yazMyMnguYwo+Pgo+PiAt
-LSAKPj4gMS45LjEKPj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRl
-Cmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+Hi Jeffy
+
+On 2017/8/17 20:04, Jeffy Chen wrote:
+> Add support for PCIE_WAKE pin in rockchip pcie driver.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> Use dev_pm_set_dedicated_wake_irq
+>          -- Suggested by Brian Norris <briannorris@chromium.com>
+> 
+>   drivers/pci/host/pcie-rockchip.c | 13 ++++++++++++-
+>   1 file changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> index 7bb9870f6d8c..c2b973c738fe 100644
+> --- a/drivers/pci/host/pcie-rockchip.c
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -36,6 +36,7 @@
+>   #include <linux/pci_ids.h>
+>   #include <linux/phy/phy.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/pm_wakeirq.h>
+>   #include <linux/reset.h>
+>   #include <linux/regmap.h>
+>   
+> @@ -853,7 +854,6 @@ static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
+>   	chained_irq_exit(chip, desc);
+>   }
+>   
+> -
+>   /**
+>    * rockchip_pcie_parse_dt - Parse Device Tree
+>    * @rockchip: PCIe port information
+> @@ -1018,6 +1018,14 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>   		return err;
+>   	}
+>   
+> +	device_init_wakeup(dev, true);
+> +	irq = platform_get_irq_byname(pdev, "wake");
+> +	if (irq >= 0) {
+> +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
+> +		if (err)
+> +			dev_err(dev, "failed to setup PCIe wake IRQ\n");
+> +	}
+> +
+>   	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+>   	if (IS_ERR(rockchip->vpcie3v3)) {
+>   		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
+> @@ -1524,6 +1532,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+>   	struct device *dev = &pdev->dev;
+>   	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+>   
+> +	dev_pm_clear_wake_irq(dev);
+> +	device_init_wakeup(dev, false);
+> +
+
+Looks good overall but I think we need this on the
+error handling path of rockchip_pcie_probe as well?
+
+>   	pci_stop_root_bus(rockchip->root_bus);
+>   	pci_remove_root_bus(rockchip->root_bus);
+>   	pci_unmap_iospace(rockchip->io);
+> 
