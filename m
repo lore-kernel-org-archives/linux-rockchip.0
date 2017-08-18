@@ -1,170 +1,86 @@
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: Add basic DVFS support for RK3368
-Date: Fri, 18 Aug 2017 14:17:01 +0200
-Message-ID: <20170818121701.12668-1-romain.perier@collabora.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 4/4] phy: tegra: use of_device_get_match_data()
+Date: Fri, 18 Aug 2017 14:42:03 +0200
+Message-ID: <20170818124203.GA4556@ulmo>
+References: <1502270280-13792-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1502270280-13792-4-git-send-email-chunfeng.yun@mediatek.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="T4sUOijqQbZv57TR"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1502270280-13792-4-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Kamil Debski <kamil@wypas.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Jonathan Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Lee Jones <lee.jones@linaro.org>, Vivek Gautam <vivek.gautam@codeaurora.org>, Axel Lin <axel.lin@ingics.com>, Baoyou Xie <baoyou.xie@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Sekhar Nori <nsekhar@ti.com>, Viresh Kumar <viresh.kumar@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.orglin
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds and enable the operating points that have been tested and are
-currently supported by the SoC. This also adds clocks for ARMCLKL and
-ARMCLKB.
 
-Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
+--T4sUOijqQbZv57TR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes in v2:
-- Switched to binding v2 for operating-points
-- Improved commit message
-- Rebased onto linux-next
+On Wed, Aug 09, 2017 at 05:18:00PM +0800, Chunfeng Yun wrote:
+> reduce the boilerplate code to get the specific data
+>=20
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/phy/tegra/xusb.c |    6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 75 +++++++++++++++++++++++++++++++-
- 1 file changed, 73 insertions(+), 2 deletions(-)
+You're not reducing by much here. =3D)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index b6f234f10585..7f42a9111062 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -113,7 +113,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x0>;
- 			enable-method = "psci";
--
-+			clocks = <&cru ARMCLKL>;
-+			operating-points-v2 = <&cluster0_opp>;
- 			#cooling-cells = <2>; /* min followed by max */
- 		};
- 
-@@ -122,6 +123,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x1>;
- 			enable-method = "psci";
-+			clocks = <&cru ARMCLKL>;
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		cpu_l2: cpu@2 {
-@@ -129,6 +132,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x2>;
- 			enable-method = "psci";
-+			clocks = <&cru ARMCLKL>;
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		cpu_l3: cpu@3 {
-@@ -136,6 +141,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x3>;
- 			enable-method = "psci";
-+			clocks = <&cru ARMCLKL>;
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
- 		cpu_b0: cpu@100 {
-@@ -143,7 +150,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x100>;
- 			enable-method = "psci";
--
-+			clocks = <&cru ARMCLKB>;
-+			operating-points-v2 = <&cluster1_opp>;
- 			#cooling-cells = <2>; /* min followed by max */
- 		};
- 
-@@ -152,6 +160,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x101>;
- 			enable-method = "psci";
-+			clocks = <&cru ARMCLKB>;
-+			operating-points-v2 = <&cluster1_opp>;
- 		};
- 
- 		cpu_b2: cpu@102 {
-@@ -159,6 +169,8 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x102>;
- 			enable-method = "psci";
-+			clocks = <&cru ARMCLKB>;
-+			operating-points-v2 = <&cluster1_opp>;
- 		};
- 
- 		cpu_b3: cpu@103 {
-@@ -166,9 +178,68 @@
- 			compatible = "arm,cortex-a53", "arm,armv8";
- 			reg = <0x0 0x103>;
- 			enable-method = "psci";
-+			clocks = <&cru ARMCLKB>;
-+			operating-points-v2 = <&cluster1_opp>;
- 		};
- 	};
- 
-+	cluster0_opp: opp-table0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp00 {
-+			opp-hz = /bits/ 64 <312000000>;
-+			opp-microvolt = <950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <1025000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <1125000>;
-+		};
-+	};
-+
-+	cluster1_opp: opp-table1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp00 {
-+			opp-hz = /bits/ 64 <312000000>;
-+			opp-microvolt = <950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <975000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <1050000>;
-+		};
-+	};
-+
-+
-+
-+
- 	amba {
- 		compatible = "simple-bus";
- 		#address-cells = <2>;
--- 
-2.11.0
+> diff --git a/drivers/phy/tegra/xusb.c b/drivers/phy/tegra/xusb.c
+> index 3cbcb25..25cdfb1 100644
+> --- a/drivers/phy/tegra/xusb.c
+> +++ b/drivers/phy/tegra/xusb.c
+> @@ -848,7 +848,6 @@ static int tegra_xusb_padctl_probe(struct platform_de=
+vice *pdev)
+>  	struct device_node *np =3D of_node_get(pdev->dev.of_node);
+>  	const struct tegra_xusb_padctl_soc *soc;
+>  	struct tegra_xusb_padctl *padctl;
+> -	const struct of_device_id *match;
+>  	struct resource *res;
+>  	int err;
+> =20
+> @@ -861,8 +860,9 @@ static int tegra_xusb_padctl_probe(struct platform_de=
+vice *pdev)
+> =20
+>  	of_node_put(np);
+> =20
+> -	match =3D of_match_node(tegra_xusb_padctl_of_match, pdev->dev.of_node);
+> -	soc =3D match->data;
+> +	soc =3D of_device_get_match_data(&pdev->dev);
+> +	if (!soc)
+> +		return -EINVAL;
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This is never going to happen. There will always be a match, otherwise
+this function would never be called.
+
+Also, if you omit these last two lines, then you actually do reduce the
+boilerplate.
+
+Thierry
+
+--T4sUOijqQbZv57TR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlmW4JgACgkQ3SOs138+
+s6HZeA/+JZndCg9U/ujFpVP64Fa46vJ+TIk6H8Y1Bba9fMQCVVvGTMRBB83bRFw3
+/9Ftr3ih5HSYVb7SJAH8v0Uwp3AUAMENOkkllBoXmZj8+paBDk5CACy+uyM1k2Vr
+Uj6+UK05jNoQv7RhtdOoVz5YBwypMyMVaYSYrOUMHnI4VkppPEwgqMXY/4BY+vUf
+QRSTZC03rPG4vamuyQ4eVDnmxUaoDUezodpCrdil7UZ2X12BLJfuY1G/xTcH8imJ
+/LCglKY0ET0SZYgCvOBhYwD48Km21tPIdzJ/VSsyTishn5ZZHi9reYHVwJWKuTBm
+0Xu1A/mAM6G2k2nkqSTAATLzV+Fj19Ivz/KI5ddmJ+1edf/D64mEhT3Y4uVvFQBF
+9NQJ/fgRI0V2O4O21owl2y3N+oPvWJFdyktopmUi4n4dk/nmyPxYZ26OzJuwDGoE
+og7JOdUF5L2czOJkNmc0YmFOfWloatp6FJYSMH8AC5lt4koiceGSNhNrf2nTHT7a
+qsDcZRnzsQh8AlPBhFmTnC96ZGlfOKl8YSh4cJf/FnRFo6FbvRgkjybNqpTE0bSz
+qYrk3eGV2wEfqn2Iphq2pqqRTmQNLOINdM09etnecL7SyA0hZGDZaPFHnLWOut+y
+Ov2oJfNvQa9Pryr6kMTx2wkMr1S0hkN79TdDBBxceH+k1bj/ZJA=
+=zQR5
+-----END PGP SIGNATURE-----
+
+--T4sUOijqQbZv57TR--
