@@ -1,38 +1,32 @@
-From: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: Re: [U-Boot, v2,
- 4/5] rockchip: rk322x: pinctrl: fix IO MASK error on sdcard pin
-Date: Fri, 18 Aug 2017 19:06:51 +0200
-Message-ID: <E1dikjT-00015n-4k@mail.theobroma-systems.com>
-References: <1502954257-7256-5-git-send-email-kever.yang@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Fri, 18 Aug 2017 10:07:17 -0700
+Message-ID: <20170818170716.GB119461@google.com>
+References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
+ <20170817120431.12398-2-jeffy.chen@rock-chips.com>
+ <20170818170107.GA119461@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1502954257-7256-5-git-send-email-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170818170107.GA119461@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-> Fix the IOMUX setting for SDcard CMD pin at the same time.
+On Fri, Aug 18, 2017 at 10:01:07AM -0700, Brian Norris wrote:
+> + Tony
 > 
-> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> Acked-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> ---
-> 
-> Changes in v2: None
-> 
->  drivers/pinctrl/rockchip/pinctrl_rk322x.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+> On Thu, Aug 17, 2017 at 08:04:29PM +0800, Jeffy Chen wrote:
+> > Add support for PCIE_WAKE pin in rockchip pcie driver.
+> > 
+> > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> > ---
+> > 
+> > Changes in v2:
+> > Use dev_pm_set_dedicated_wake_irq
+> >         -- Suggested by Brian Norris <briannorris@chromium.com>
 
-Applied to u-boot-rockchip, thanks!
+Oops, I forgot you sent a v3. Same questions/comments apply there
+though.
