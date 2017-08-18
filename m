@@ -1,55 +1,93 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH v4 0/5] add some properties for Rockchip usb2-phy and add
- rv1108 SoCs' support
-Date: Fri, 18 Aug 2017 16:27:54 +0530
-Message-ID: <e0777596-cd2e-aef5-56a4-6caa18df3aac@ti.com>
-References: <1502438871-9482-1-git-send-email-frank.wang@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 0/5] rockchip: rk3229: add sdram and sd
+	support
+Date: Fri, 18 Aug 2017 19:24:10 +0800
+Message-ID: <5f4ba87f-82fd-4048-3df7-23c6a83f2526@rock-chips.com>
+References: <1502954257-7256-1-git-send-email-kever.yang@rock-chips.com>
+ <F4797E3B-C3F2-48FE-BE4F-D6219E12C63F@theobroma-systems.com>
+ <f13e2734-fcad-2575-2331-1fdf90fe0889@rock-chips.com>
+ <549AFCBD-88EC-4ED5-B719-5558D4FCC614@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1502438871-9482-1-git-send-email-frank.wang@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, gregkh@linuxfoundation.org
-Cc: huangtao@rock-chips.com, devicetree@vger.kernel.org, wmc@rock-chips.com, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, william.wu@rock-chips.com, andy.yan@rock-chips.com, daniel.meng@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <549AFCBD-88EC-4ED5-B719-5558D4FCC614@theobroma-systems.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, Albert Aribaud <albert.u.boot@aribaud.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On Friday 11 August 2017 01:37 PM, Frank Wang wrote:
-> These series of patches add rockchip,usbgrf property and otg_mux interrupt for
-> rockchip usb2-phy. In addition, this change also add rv1108 usb2-phy support.
-
-merged, thanks!
-
--Kishon
-> 
-> Changes from v3:
->  - Updated the 'Acked-by' tag from Rob Herring <robh@kernel.org>.
->  - Matched the SoC specific compatible string instead of companion_grf_quirk.
-> 
-> Changes from v2:
->  - Amend otg-mux interrupt to be auto-detectable and update related dt-bindings.
-> 
-> Changes from v1:
->  - Send the dt-bindings as a separate patch and cc devicetree list.
-> 
-> Frank Wang (5):
->   phy: rockchip-inno-usb2: add support for rockchip,usbgrf property
->   dt-bindings: phy-rockchip-inno-usb2: add rockchip,usbgrf property
->   phy: rockchip-inno-usb2: add support for otg-mux interrupt
->   dt-bindings: phy-rockchip-inno-usb2: add otg-mux interrupt
->   phy: rockchip-inno-usb2: add support of usb2-phy for rv1108 SoCs
-> 
->  .../bindings/phy/phy-rockchip-inno-usb2.txt        |  11 +-
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c      | 215 ++++++++++++++++-----
->  2 files changed, 174 insertions(+), 52 deletions(-)
-> 
+CgpPbiAwOC8xOC8yMDE3IDAzOjM2IFBNLCBEci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+PiBP
+biAxOCBBdWcgMjAxNywgYXQgMDg6MjYsIEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlw
+cy5jb20+IHdyb3RlOgo+Pgo+PiBQaGlsaXBwLAo+Pgo+Pgo+PiBPbiAwOC8xNy8yMDE3IDA0OjM0
+IFBNLCBEci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+Pj4+IE9uIDE3IEF1ZyAyMDE3LCBhdCAw
+OToxNywgS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pj4K
+Pj4+Pgo+Pj4+IEFkZCBzZHJhbSBkcml2ZXIgZm9yIHJrMzIyOSBhbmQgb3RoZXIgZml4IGxpa2Ug
+cGluY3RybCBhbmQgc2Qgbm9kZS4KPj4+Pgo+Pj4+Cj4+Pj4gQ2hhbmdlcyBpbiB2MjoKPj4+PiAt
+IHNwbGl0IHRoaXMgcGF0Y2ggaW4gdHdvIHBhdGNoZXMKPj4+Pgo+Pj4+IEtldmVyIFlhbmcgKDUp
+Ogo+Pj4+ICAgcm9ja2NoaXA6IHJrMzIyeDogdXBkYXRlIGRyYW0gYmFuayBzaXplCj4+Pj4gICBy
+b2NrY2hpcDogcmszMjJ4OiBhZGQgc2RyYW0gZHJpdmVyCj4+Pj4gICByb2NrY2hpcDogcmszMjJ4
+OiBwaW5jdHJsOiB1c2luZyBjb21wYXRpYmxlIG5hbWUgc2FtZSB3aXRoIGR0cwo+Pj4+ICAgcm9j
+a2NoaXA6IHJrMzIyeDogcGluY3RybDogZml4IElPIE1BU0sgZXJyb3Igb24gc2RjYXJkIHBpbgo+
+Pj4+ICAgcm9ja2NoaXA6IGR0czogcmszMjI5OiByZW1vdmUgZHJhbSBjaGFubmVsIGluZm8KPj4+
+Pgo+Pj4+IGFyY2gvYXJtL2R0cy9yazMyMjktZXZiLmR0cyAgICAgICAgICAgICAgICAgICAgICAg
+fCAgIDEgLQo+Pj4+IGFyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fcmsz
+MjJ4LmggfCA1ODEgKysrKysrKysrKysrKysrCj4+Pj4gYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9y
+azMyMngtYm9hcmQuYyAgICAgICAgICAgICB8ICAxMCArLQo+Pj4+IGFyY2gvYXJtL21hY2gtcm9j
+a2NoaXAvcmszMjJ4L01ha2VmaWxlICAgICAgICAgICAgfCAgIDEgKwo+Pj4+IGFyY2gvYXJtL21h
+Y2gtcm9ja2NoaXAvcmszMjJ4L3NkcmFtX3JrMzIyeC5jICAgICAgfCA4NTUgKysrKysrKysrKysr
+KysrKysrKysrKwo+Pj4gRGV2aWNlLW1vZGVsIERSQU0gY29udHJvbGxlciBkcml2ZXJzIHNob3Vs
+ZCBnZW5lcmFsbHkgZ28gdG8gZHJpdmVycy9yYW07IHRoZXJl4oCZcwo+Pj4gYWxyZWFkeSBhIHN1
+YmRpcmVjdG9yeSBmb3IgdGhlIFJvY2tjaGlwLXNwZWNpZmljIGRyaXZlcnMgY3JlYXRlZCB0aGVy
+ZS4KPj4gSSdtIHNvcnJ5LCBJIGRpZG4ndCBzZWUgaXQsIGV2ZW4gd2l0aCB0aGUgbGF0ZXN0IG1h
+aW5saW5lIFUtQm9vdCwKPj4gYW5kIGJvdGggeW91IGFuZCBTaW1vbiBoYWQgcmV2aWV3IHRoZSBm
+aXJzdCB2ZXJzaW9uIGRyaXZlciB3aGljaCBzZW5kIG91dAo+PiBhYm91dCBvbmUgbW9udGggYWdv
+LCBJIGRvbid0IGtub3cgd2h5IGl0J3Mgbm90IGFwcGxpZWQsIHNvIEkgc2VuZCBpdCBhZ2FpbiB3
+aXRoCj4+IG90aGVyIHBhdGNoZXMgY2hhbmdlLgo+IFRoZSBkZWNpc2lvbiB0byBtb3ZlIHRoaXMg
+b3ZlciB0byBkcml2ZXJzL3JhbSBpcyBvbmx5IGFib3V0IDYgd2Vla3Mgb2xkLgo+IEhvd2V2ZXIs
+IEkgZGlkbuKAmXQgd2FudCB0byBhZGQgYSBuZXcgZHJpdmVyIGluIHRoZSBvbGQgbG9jYXRpb24g
+KGFzIHdl4oCZZCB0aGVuCj4gaGF2ZSB0byBtb3ZlIGl0IGluIHRoZSBuZWFyIGZ1dHVyZSA7IG5v
+dGUgdGhhdCBmb3IgdGhlIFJLMzM5OSwgSeKAmWxsIHN1Ym1pdCBhCj4gcGF0Y2ggdG8gbW92ZSB0
+aGUgZHJpdmVyIHRvIGRyaXZlcnMvcmFtIGZvciB0aGUgbmV4dCByZWxlYXNlIGN5Y2xlKS4KPgo+
+IFRoZSBwYXRjaCBoYXMgbm90IGJlZW4gYXBwbGllZCwgYXMgdGhlcmXigJlzIHVuYWRkcmVzc2Vk
+IHJldmlldyBjb21tZW50czoKPiBJIGhhZCByZXF1ZXN0ZWQgdGhhdCB0aGUgYW1vdW50IG9mIGRh
+dGEgc3RydWN0dXJlcyBhcmUgZGVkdXBsaWNhdGVkLCBhcyB0aGUKPiBwY3RsLXJlZ2lzdGVyIHNl
+ZW1lZCB0aGUgc2FtZSBhcyB0aGUgcmszMjg4IGFuZCB0aGUgcmszMzY4Lgo+IEkgdGhpbmsgdGhl
+cmUgd2FzIGEgYml0IG1vcmUgY29kZSB0aGF0IGNvdWxkIGJlIHNoYXJlZCBhbHJlYWR5Lgo+Cj4g
+V2UgcmVhbGx5IG5lZWQgdG8gZ2V0IG91ciBEUkFNIGRyaXZlcnMgaW50byBzaGFwZSwgYXMgdGhl
+c2UgYXJlIGJlY29taW5nCj4gYSBtYWpvciBzb3VyY2Ugb2YgY29kZSBkdXBsaWNhdGlvbi4KCkZp
+cnN0IHBhdGNoIGRvIG5vdCBoYXZlIHVuYWRkcmVzc2VkIGNvbW1lbnRzLCB0aGUgc2Vjb25kIHBh
+dGNoIGhhdmUsCkkgaGF2ZSByZXBseSB0aGUgY29tbWVudCBpbiBtYWlsIG9mIGxhc3QgdmVyc2lv
+biwgYnV0IG5vdCBnZXQgYW55IHJlc3BvbnNlLgoKSSBzdGlsbCBob3BlIHRoaXMgcGF0Y2ggc2V0
+IGNhbiBtZXJnZSBmaXJzdCwgYW5kIHRoZW4gd2UgY2FuIG1vdmUgYWxsIG9mIApkcml2ZXJzCnRv
+IGRyaXZlcnMvcmFtIHRvZ2V0aGVyLCBhbmQgSSBiZWxpZXZlIHdlIGNhbiB0cnkgdG8gYWJzdHJh
+Y3QgbW9yZSBjb21tb24KZnVuY3Rpb24gb3V0IGZyb20gZGlmZmVyZW50IFNvQ3MsIGp1c3QgbGlr
+ZSB3aGF0IEkgaGF2ZSBkb25lIGZvciAKc2RyYW1fY29tbW9uLmMuCkJ1dCB5b3UgaGF2ZSB0byBu
+b3RpY2UgdGhhdCB0aGUgRFJBTSBjb250cm9sbGVyIGFuZCB0aGUgcGh5IG9wZXJhdGlvbiAKYXJl
+IGFsd2F5cwp0aWdodCBjb3VwbGluZywgbm90IHNvIGVhc3kgdG8gc2VwYXJhdGUgdGhlbiBldmVu
+IHRoZSBwY3RsIGFyZSB2ZXJ5IApzaW1pbGFyKHRoZXkgYXJlCm5vdCB0aGUgc2FtZSkuClNvIGl0
+J3MgYmV0dGVyIHRvIG1ha2UgdGhlIGRyaXZlciBhdmFpbGFibGUgZmlyc3QsIGFuZCB0aGVuIHdl
+IGNhbiBtb3ZlIApmb3J3YXJkIHRvIG1ha2UKbW9yZSBjb2RlIGJlIHNoYXJlZC4KClRoYW5rcywK
+LSBLZXZlcgo+Cj4+IFRoYW5rcywKPj4gLSBLZXZlcgo+Pj4+IGRyaXZlcnMvcGluY3RybC9yb2Nr
+Y2hpcC9waW5jdHJsX3JrMzIyeC5jICAgICAgICAgfCAgIDggKy0KPj4+PiA2IGZpbGVzIGNoYW5n
+ZWQsIDE0NDcgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4+PiBjcmVhdGUgbW9kZSAx
+MDA2NDQgYXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9yazMyMnguaAo+
+Pj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzIyeC9zZHJh
+bV9yazMyMnguYwo+Pj4+Cj4+Pj4gLS0gCj4+Pj4gMS45LjEKPj4+Pgo+Pj4gX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4+IExpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdAo+Pj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4gaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+
+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+ClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5k
+ZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
