@@ -1,57 +1,44 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: add usb3 controller node for RK3328 SoCs
-Date: Fri, 18 Aug 2017 11:24:14 +0200
-Message-ID: <7917076.Ei9Henru6l@phil>
-References: <1502956490-23087-1-git-send-email-william.wu@rock-chips.com> <1502956490-23087-2-git-send-email-william.wu@rock-chips.com>
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add basic DVFS support for RK3368
+Date: Fri, 18 Aug 2017 11:40:30 +0200
+Message-ID: <f283f9de-e9ce-e2b9-645f-b5f0566ebccf@collabora.com>
+References: <20170818075053.8779-1-romain.perier@collabora.com>
+ <10444104.mndukromaz@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1502956490-23087-2-git-send-email-william.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: William Wu <william.wu@rock-chips.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <10444104.mndukromaz@phil>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi William,
-
-Am Donnerstag, 17. August 2017, 15:54:49 CEST schrieb William Wu:
-> RK3328 has one USB 3.0 OTG controller which uses DWC_USB3
-> core's general architecture. It can act as static xHCI host
-> controller, static device controller, USB 3.0/2.0 OTG basing
-> on ID of USB3.0 PHY.
-> 
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
-> ---
-> Changes in v2:
-> - Modify the dwc3 quirk "snps,tx-ipgap-linecheck-dis-quirk" to
->   "snps,dis-tx-ipgap-linecheck-quirk"
-> 
->  .../devicetree/bindings/usb/rockchip,dwc3.txt      |  4 +++-
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 27 ++++++++++++++++++++++
->  2 files changed, 30 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-> index 0536a93..d6b2e47 100644
-> --- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-> +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-> @@ -1,7 +1,9 @@
->  Rockchip SuperSpeed DWC3 USB SoC controller
->  
->  Required properties:
-> -- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
-> +- compatible:	should be one of the following:
-> +  - "rockchip,rk3399-dwc3": for rk3399 SoC
-> +  - "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3": for rk3328 SoC
->  - clocks:	A list of phandle + clock-specifier pairs for the
->  		clocks listed in clock-names
->  - clock-names:	Should contain the following:
-
-This probably shouldn't be part of the patch adding the dts node, but
-instead should be a separate patch and should either go through some
-usb tree or at least get an Ack from usb maintainers (Felipe Balbi and/or
-Greg Kroah Hartman), so you should definitly include them into your
-recipient list.
+Hello,
 
 
-Heiko
+Le 18/08/2017 à 10:20, Heiko Stuebner a écrit :
+> Am Freitag, 18. August 2017, 09:50:53 CEST schrieb Romain Perier:
+>> This adds and enable the operating points that have been tested and are
+>> currently supported by the SoC.
+>>
+>> Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> ---
+>>
+>> Note: RK3288 is using operating-points binding v1, while RK3399 is using
+>> binding v2. I can send another iteration for switching to binding v2,
+>> if required.
+> Yes please use v2 for _new_ operating points :-) .
+>
+> One more thing down below.
+
+Ack, will do.
+
+Thanks,
+Romain
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
