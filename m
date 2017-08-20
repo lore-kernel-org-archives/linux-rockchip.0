@@ -1,26 +1,73 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Assign mic irq to correct device for Gru
-Date: Sat, 19 Aug 2017 01:17:26 +0200
-Message-ID: <1737976.DtYLZJGtdQ@phil>
-References: <20170816092432.23991-1-jeffy.chen@rock-chips.com>
+From: Peng Donglin <dolinux.peng@gmail.com>
+Subject: [PATCH 00/12] Remove unnecessary function call
+Date: Sun, 20 Aug 2017 13:21:00 +0800
+Message-ID: <1503206460-14848-1-git-send-email-dolinux.peng@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170816092432.23991-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, hychao@chromium.org, briannorris@chromium.org, dianders@chromium.org, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: nicolas.ferre@microchip.com, lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, plai@codeaurora.org, bgoswami@codeaurora.org, heiko@sntech.de, krzk@kernel.org, sbkim73@samsung.com, s.nawrocki@samsung.com, maxime.ripard@free-electrons.com, wens@csie.org, thierry.reding@gmail.com, jonathanh@nvidia.com, matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Peng Donglin <dolinux.peng@gmail.com>, linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 16. August 2017, 17:24:32 CEST schrieb Jeffy Chen:
-> Currently we are assigning mic irq to rt5514 i2c driver, which is wrong.
-> Assign it to rt5514 spi driver instead.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+First of all,the address of pdev->dev is assigned to card->dev,then
+the function platform_set_drvdata copies the value the variable card
+to pdev->dev.driver_data, but when calling snd_soc_register_card,the
+function dev_set_drvdata(card->dev, card) will also do the same copy
+operation,so i think that the former copy operation can be removed.
 
-applied for 4.14
+Peng Donglin (12):
+  ASoC: s3c24xx_uda134x: Remove unnecessary function call
+  ASoC: mediatek: Remove unnecessary function call
+  ASoC: Intel: Remove unnecessary function call
+  ASoC: atmel: Remove unnecessary function call
+  ASoC: atmel: Remove unnecessary function call
+  ASoC: rockchip: Remove unnecessary function call
+  ASoC: mxs-sgtl5000: Remove unnecessary function call
+  ASoC: qcom: Remove useless function call
+  ASoC: qcom: Remove unnecessary function call
+  ASoC: sun4i-codec: Remove unnecessary function call
+  ASoC: tegra: Remove unnecessary function call
+  ASoC: ux500: Remove unnecessary function call
 
+ sound/soc/atmel/atmel-classd.c                   | 1 -
+ sound/soc/atmel/atmel-pdmic.c                    | 1 -
+ sound/soc/intel/boards/bytcht_da7213.c           | 1 -
+ sound/soc/intel/boards/bytcht_es8316.c           | 1 -
+ sound/soc/intel/boards/bytcr_rt5651.c            | 1 -
+ sound/soc/intel/boards/cht_bsw_max98090_ti.c     | 1 -
+ sound/soc/intel/boards/cht_bsw_rt5645.c          | 1 -
+ sound/soc/intel/boards/cht_bsw_rt5672.c          | 1 -
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c | 1 -
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c | 1 -
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c        | 1 -
+ sound/soc/mxs/mxs-sgtl5000.c                     | 1 -
+ sound/soc/qcom/apq8016_sbc.c                     | 1 -
+ sound/soc/qcom/storm.c                           | 1 -
+ sound/soc/rockchip/rk3288_hdmi_analog.c          | 2 --
+ sound/soc/rockchip/rk3399_gru_sound.c            | 1 -
+ sound/soc/samsung/s3c24xx_uda134x.c              | 1 -
+ sound/soc/sunxi/sun4i-codec.c                    | 1 -
+ sound/soc/tegra/tegra_alc5632.c                  | 1 -
+ sound/soc/tegra/tegra_max98090.c                 | 1 -
+ sound/soc/tegra/tegra_rt5640.c                   | 1 -
+ sound/soc/tegra/tegra_rt5677.c                   | 1 -
+ sound/soc/tegra/tegra_sgtl5000.c                 | 1 -
+ sound/soc/tegra/tegra_wm8753.c                   | 1 -
+ sound/soc/tegra/tegra_wm8903.c                   | 1 -
+ sound/soc/tegra/tegra_wm9712.c                   | 1 -
+ sound/soc/tegra/trimslice.c                      | 1 -
+ sound/soc/ux500/mop500.c                         | 1 -
+ 28 files changed, 29 deletions(-)
 
-Thanks
-Heiko
+-- 
+1.9.1
