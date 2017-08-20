@@ -1,49 +1,60 @@
-From: Peng Donglin <dolinux.peng@gmail.com>
-Subject: [PATCH 06/12] ASoC: rockchip: Remove unnecessary function call
-Date: Sun, 20 Aug 2017 13:25:46 +0800
-Message-ID: <1503206746-15555-1-git-send-email-dolinux.peng@gmail.com>
+From: Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH 031/102] iio: adc: rockchip_saradc: explicitly request
+ exclusive reset control
+Date: Sun, 20 Aug 2017 12:09:02 +0100
+Message-ID: <20170820120902.72557043@archlinux>
+References: <20170719152646.25903-1-p.zabel@pengutronix.de>
+        <20170719152646.25903-32-p.zabel@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170719152646.25903-32-p.zabel@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Peng Donglin <dolinux.peng@gmail.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-First of all,the address of pdev->dev is assigned to card->dev,then
-the function platform_set_drvdata copies the value the variable card
-to pdev->dev.driver_data, but when calling snd_soc_register_card,the
-function dev_set_drvdata(card->dev, card) will also do the same copy
-operation,so i think that the former copy operation can be removed.
+On Wed, 19 Jul 2017 17:25:35 +0200
+Philipp Zabel <p.zabel@pengutronix.de> wrote:
 
-Signed-off-by: Peng Donglin <dolinux.peng@gmail.com>
----
- sound/soc/rockchip/rk3288_hdmi_analog.c | 2 --
- sound/soc/rockchip/rk3399_gru_sound.c   | 1 -
- 2 files changed, 3 deletions(-)
+> Commit a53e35db70d1 ("reset: Ensure drivers are explicit when requesting
+> reset lines") started to transition the reset control request API calls
+> to explicitly state whether the driver needs exclusive or shared reset
+> control behavior. Convert all drivers requesting exclusive resets to the
+> explicit API call so the temporary transition helpers can be removed.
+> 
+> No functional changes.
+> 
+> Cc: Jonathan Cameron <jic23@kernel.org>
+> Cc: Hartmut Knaack <knaack.h@gmx.de>
+> Cc: Lars-Peter Clausen <lars@metafoo.de>
+> Cc: Peter Meerwald-Stadler <pmeerw@pmeerw.net>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-iio@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+Applied to the togreg branch of iio.git and pushed out as testing for
+the autobuilders to play with it.
 
-diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
-index dbc53e4..37ef162 100644
---- a/sound/soc/rockchip/rk3288_hdmi_analog.c
-+++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
-@@ -272,8 +272,6 @@ static int snd_rk_mc_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	platform_set_drvdata(pdev, card);
--
- 	return ret;
- }
- 
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 3475c61..70c0908 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -362,7 +362,6 @@ static int rockchip_sound_probe(struct platform_device *pdev)
- 	rockchip_dailinks[DAILINK_RT5514_DSP].platform_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
- 
- 	card->dev = &pdev->dev;
--	platform_set_drvdata(pdev, card);
- 
- 	ret = devm_snd_soc_register_card(&pdev->dev, card);
- 	if (ret)
--- 
-1.9.1
+Thanks,
+
+Jonathan
+> ---
+>  drivers/iio/adc/rockchip_saradc.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index ae6d3324f5183..1d9300ba07c00 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -235,7 +235,8 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  	 * The reset should be an optional property, as it should work
+>  	 * with old devicetrees as well
+>  	 */
+> -	info->reset = devm_reset_control_get(&pdev->dev, "saradc-apb");
+> +	info->reset = devm_reset_control_get_exclusive(&pdev->dev,
+> +						       "saradc-apb");
+>  	if (IS_ERR(info->reset)) {
+>  		ret = PTR_ERR(info->reset);
+>  		if (ret != -ENOENT)
