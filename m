@@ -1,21 +1,29 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] PM / AVS: rockchip-io: add io selectors and supplies for RV1108
-Date: Tue, 22 Aug 2017 00:00:02 +0200
-Message-ID: <3462279.PGzmALbDiu@phil>
-References: <1503313113-31056-1-git-send-email-david.wu@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1 1/2] clk: rockchip: add rk3228 sclk_sdio_src ID
+Date: Tue, 22 Aug 2017 00:37:41 +0200
+Message-ID: <22784402.835yMo1lPR@phil>
+References: <1503028165-27072-1-git-send-email-zhangqing@rock-chips.com> <1503028165-27072-2-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1503313113-31056-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>, khilman@baylibre.com, rafael.j.wysocki@intel.com
-Cc: nm@ti.com, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1503028165-27072-2-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 21. August 2017, 18:58:33 CEST schrieb David Wu:
-> This adds the necessary data for handling io voltage domains on the RV1108.
+Am Freitag, 18. August 2017, 11:49:24 CEST schrieb Elaine Zhang:
+> This patch exports sdio src clock for dts reference.
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+applied for 4.14
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
