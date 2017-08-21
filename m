@@ -1,120 +1,57 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH 2/3] ARM: dts: rockchip: add usb nodes for rv1108 SoCs
-Date: Mon, 21 Aug 2017 16:39:27 +0800
-Message-ID: <1503304768-14520-3-git-send-email-frank.wang@rock-chips.com>
-References: <1503304768-14520-1-git-send-email-frank.wang@rock-chips.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH 1/2] ARM: dts: rockchip: add cpu opp table for rv1108
+Date: Mon, 21 Aug 2017 17:06:44 +0800
+Message-ID: <1503306404-28876-1-git-send-email-andy.yan@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503304768-14520-1-git-send-email-frank.wang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, william.wu@rock-chips.com, daniel.meng@rock-chips.com, kever.yang@rock-chips.com, andy.yan@rock-chips.com, wmc@rock-chips.com, Frank Wang <frank.wang@rock-chips.com>
+To: heiko@sntech.de
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds usb otg/host controllers and phys nodes for RV1108 SoCs.
+Add cpu opp table for rv1108 to support frequency
+from 408MHZ to 1008MHZ.
 
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
- arch/arm/boot/dts/rv1108.dtsi | 73 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 72 insertions(+), 1 deletion(-)
 
+ arch/arm/boot/dts/rv1108-evb.dts | 4 ++++
+ arch/arm/boot/dts/rv1108.dtsi    | 9 +++++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
+index 32fb09a..e517aa3 100644
+--- a/arch/arm/boot/dts/rv1108-evb.dts
++++ b/arch/arm/boot/dts/rv1108-evb.dts
+@@ -104,6 +104,10 @@
+ 	};
+ };
+ 
++&cpu0 {
++	cpu-supply = <&vdd_core>;
++};
++
+ &i2c0 {
+ 	status = "okay";
+ 	i2c-scl-rising-time-ns = <275>;
 diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index 25fab0b..2322328 100644
+index 064cec3..6ebf07c 100644
 --- a/arch/arm/boot/dts/rv1108.dtsi
 +++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -262,8 +262,35 @@
+@@ -69,6 +69,15 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0xf00>;
++			operating-points = <
++				/* KHz    uV */
++				408000	975000
++				600000	975000
++				816000	1025000
++				1008000	1150000
++			>;
++			clock-latency = <40000>;
++			clocks = <&cru ARMCLK>;
+ 		};
  	};
  
- 	grf: syscon@10300000 {
--		compatible = "rockchip,rv1108-grf", "syscon";
-+		compatible = "rockchip,rv1108-grf", "syscon", "simple-mfd";
- 		reg = <0x10300000 0x1000>;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		u2phy: usb2-phy@100 {
-+			compatible = "rockchip,rv1108-usb2phy";
-+			reg = <0x100 0x0c>;
-+			rockchip,usbgrf = <&usbgrf>;
-+			clocks = <&cru SCLK_USBPHY>;
-+			clock-names = "phyclk";
-+			#clock-cells = <0>;
-+			clock-output-names = "usbphy";
-+			status = "disabled";
-+
-+			u2phy_otg: otg-port {
-+				#phy-cells = <0>;
-+				interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "otg-mux";
-+				status = "disabled";
-+			};
-+
-+			u2phy_host: host-port {
-+				#phy-cells = <0>;
-+				interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "linestate";
-+				status = "disabled";
-+			};
-+		};
- 	};
- 
- 	watchdog: wdt@10360000 {
-@@ -353,6 +380,11 @@
- 		reg = <0x20060000 0x1000>;
- 	};
- 
-+	usbgrf: syscon@202a0000 {
-+		compatible = "rockchip,rv1108-usbgrf", "syscon";
-+		reg = <0x202a0000 0x1000>;
-+	};
-+
- 	cru: clock-controller@20200000 {
- 		compatible = "rockchip,rv1108-cru";
- 		reg = <0x20200000 0x1000>;
-@@ -399,6 +431,45 @@
- 		status = "disabled";
- 	};
- 
-+	usb_host_ehci: usb@30140000 {
-+		compatible = "generic-ehci";
-+		reg = <0x30140000 0x20000>;
-+		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_HOST0>, <&u2phy>;
-+		clock-names = "usbhost", "utmi";
-+		phys = <&u2phy_host>;
-+		phy-names = "usb";
-+		status = "disabled";
-+	};
-+
-+	usb_host_ohci: usb@30160000 {
-+		compatible = "generic-ohci";
-+		reg = <0x30160000 0x20000>;
-+		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_HOST0>, <&u2phy>;
-+		clock-names = "usbhost", "utmi";
-+		phys = <&u2phy_host>;
-+		phy-names = "usb";
-+		status = "disabled";
-+	};
-+
-+	usb_otg: usb@30180000 {
-+		compatible = "rockchip,rv1108-usb", "rockchip,rk3066-usb",
-+			     "snps,dwc2";
-+		reg = <0x30180000 0x40000>;
-+		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_OTG>;
-+		clock-names = "otg";
-+		dr_mode = "otg";
-+		g-np-tx-fifo-size = <16>;
-+		g-rx-fifo-size = <280>;
-+		g-tx-fifo-size = <256 128 128 64 32 16>;
-+		g-use-dma;
-+		phys = <&u2phy_otg>;
-+		phy-names = "usb2-phy";
-+		status = "disabled";
-+	};
-+
- 	gic: interrupt-controller@32010000 {
- 		compatible = "arm,gic-400";
- 		interrupt-controller;
 -- 
-2.0.0
+2.7.4
