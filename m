@@ -1,67 +1,32 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: [GIT PULL] Immutable branch between MFD, Pinctrl and Regulator due
- for the v4.14 merge window
-Date: Mon, 21 Aug 2017 09:25:10 +0100
-Message-ID: <20170821082510.qbxdhuffce22uuoe@dell>
-References: <20170821012842.17875-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170821012842.17875-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: chenjh@rock-chips.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/2] Patches to add support pdm controller for rk3328
+Date: Mon, 21 Aug 2017 16:25:05 +0800
+Message-ID: <1503303907-57630-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Enjoy!
+These patches to add support pdm for rk3328 socs.
 
-The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+Changes in v2:
+- separate pinctrl pins
+  remove unused fsync clk, it's debug pins
 
-  Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+Sugar Zhang (2):
+  arm64: dts: rockchip: add rk3328 pdm node
+  ASoC: rockchip: separate pinctrl pins from each other
 
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git ib-mfd-pinctrl-regulator-v4.14
-
-for you to fetch changes up to f7c22398f5e95c995a34d4f196d53cfc32562aed:
-
-  mfd: rk808: Add RK805 power key support (2017-08-21 08:54:56 +0100)
-
-----------------------------------------------------------------
-Immutable branch between MFD, Pinctrl and Regulator due for the v4.14 merge window
-
-----------------------------------------------------------------
-Elaine Zhang (5):
-      mfd: rk808: Fix up the chip id get failed
-      mfd: rk808: Add rk805 regs addr and ID
-      regulator: rk808: Add regulator driver for RK805
-      mfd: rk808: Add RK805 support
-      mfd: dt-bindings: Add RK805 device tree bindings document
-
-Joseph Chen (4):
-      pinctrl: dt-bindings: Add bindings for Rockchip RK805 PMIC
-      pinctrl: Add pinctrl driver for the RK805 PMIC
-      mfd: rk808: Add RK805 pinctrl support
-      mfd: rk808: Add RK805 power key support
-
- Documentation/devicetree/bindings/mfd/rk808.txt    |  22 +-
- .../devicetree/bindings/pinctrl/pinctrl-rk805.txt  |  63 +++
- drivers/mfd/Kconfig                                |   4 +-
- drivers/mfd/rk808.c                                | 147 +++++-
- drivers/pinctrl/Kconfig                            |   9 +
- drivers/pinctrl/Makefile                           |   1 +
- drivers/pinctrl/pinctrl-rk805.c                    | 493 +++++++++++++++++++++
- drivers/regulator/Kconfig                          |   4 +-
- drivers/regulator/rk808-regulator.c                | 130 ++++++
- include/linux/mfd/rk808.h                          | 121 +++++
- 10 files changed, 983 insertions(+), 11 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
- create mode 100644 drivers/pinctrl/pinctrl-rk805.c
+ .../devicetree/bindings/sound/rockchip,pdm.txt     |  7 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 77 ++++++++++++++++++++++
+ 2 files changed, 82 insertions(+), 2 deletions(-)
 
 -- 
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+2.7.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
