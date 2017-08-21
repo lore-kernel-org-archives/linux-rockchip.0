@@ -1,122 +1,33 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v2 1/2] arm64: dts: rockchip: add rk3328 pdm node
-Date: Mon, 21 Aug 2017 16:25:06 +0800
-Message-ID: <1503303907-57630-2-git-send-email-sugar.zhang@rock-chips.com>
-References: <1503303907-57630-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503303907-57630-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org, Sugar Zhang <sugar.zhang@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Liang Chen <cl@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/3] add usb support for rv1108 SoCs
+Date: Mon, 21 Aug 2017 16:39:25 +0800
+Message-ID: <1503304768-14520-1-git-send-email-frank.wang@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add pdm controller device node for rk3328.
+This serie adds USB related device nodes support for rv1108 SoCs, in addition,
+Rockchip's rv1108-evb board has one usb otg controller and one usb host
+controller, each controller connect with one usb-phy port through UTMI+
+interface, the changes also enable usb related for rv1108-evb board.
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Frank Wang (3):
+  dt-bindings: update dt-binding for rv1108 SoCs
+  ARM: dts: rockchip: add usb nodes for rv1108 SoCs
+  ARM: dts: rockchip: enable usb for rv1108-evb
 
----
+ .../devicetree/bindings/soc/rockchip/grf.txt       |  3 +
+ arch/arm/boot/dts/rv1108-evb.dts                   | 24 +++++++
+ arch/arm/boot/dts/rv1108.dtsi                      | 73 +++++++++++++++++++++-
+ 3 files changed, 99 insertions(+), 1 deletion(-)
 
-Changes in v2:
-- separate pinctrl pins
-  remove unused fsync clk, it's debug pins
-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 77 ++++++++++++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 0be96ce..c4f52ec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -156,6 +156,27 @@
- 		clock-output-names = "xin24m";
- 	};
- 
-+	pdm: pdm@ff040000 {
-+		compatible = "rockchip,pdm";
-+		reg = <0x0 0xff040000 0x0 0x1000>;
-+		clocks = <&cru SCLK_PDM>, <&cru HCLK_PDM>;
-+		clock-names = "pdm_clk", "pdm_hclk";
-+		dmas = <&dmac 16>;
-+		dma-names = "rx";
-+		pinctrl-names = "default", "sleep";
-+		pinctrl-0 = <&pdmm0_clk
-+			     &pdmm0_sdi0
-+			     &pdmm0_sdi1
-+			     &pdmm0_sdi2
-+			     &pdmm0_sdi3>;
-+		pinctrl-1 = <&pdmm0_clk_sleep
-+			     &pdmm0_sdi0_sleep
-+			     &pdmm0_sdi1_sleep
-+			     &pdmm0_sdi2_sleep
-+			     &pdmm0_sdi3_sleep>;
-+		status = "disabled";
-+	};
-+
- 	grf: syscon@ff100000 {
- 		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff100000 0x0 0x1000>;
-@@ -734,6 +755,62 @@
- 			};
- 		};
- 
-+		pdm-0 {
-+			pdmm0_clk: pdmm0-clk {
-+				rockchip,pins = <2 RK_PC2 2 &pcfg_pull_none>;
-+			};
-+
-+			pdmm0_fsync: pdmm0-fsync {
-+				rockchip,pins = <2 RK_PC7 2 &pcfg_pull_none>;
-+			};
-+
-+			pdmm0_sdi0: pdmm0-sdi0 {
-+				rockchip,pins = <2 RK_PC3 2 &pcfg_pull_none>;
-+			};
-+
-+			pdmm0_sdi1: pdmm0-sdi1 {
-+				rockchip,pins = <2 RK_PC4 2 &pcfg_pull_none>;
-+			};
-+
-+			pdmm0_sdi2: pdmm0-sdi2 {
-+				rockchip,pins = <2 RK_PC5 2 &pcfg_pull_none>;
-+			};
-+
-+			pdmm0_sdi3: pdmm0-sdi3 {
-+				rockchip,pins = <2 RK_PC6 2 &pcfg_pull_none>;
-+			};
-+
-+			pdmm0_clk_sleep: pdmm0-clk-sleep {
-+				rockchip,pins =
-+					<2 RK_PC2 RK_FUNC_GPIO &pcfg_input_high>;
-+			};
-+
-+			pdmm0_sdi0_sleep: pdmm0-sdi0-sleep {
-+				rockchip,pins =
-+					<2 RK_PC3 RK_FUNC_GPIO &pcfg_input_high>;
-+			};
-+
-+			pdmm0_sdi1_sleep: pdmm0-sdi1-sleep {
-+				rockchip,pins =
-+					<2 RK_PC4 RK_FUNC_GPIO &pcfg_input_high>;
-+			};
-+
-+			pdmm0_sdi2_sleep: pdmm0-sdi2-sleep {
-+				rockchip,pins =
-+					<2 RK_PC5 RK_FUNC_GPIO &pcfg_input_high>;
-+			};
-+
-+			pdmm0_sdi3_sleep: pdmm0-sdi3-sleep {
-+				rockchip,pins =
-+					<2 RK_PC6 RK_FUNC_GPIO &pcfg_input_high>;
-+			};
-+
-+			pdmm0_fsync_sleep: pdmm0-fsync-sleep {
-+				rockchip,pins =
-+					<2 RK_PC7 RK_FUNC_GPIO &pcfg_input_high>;
-+			};
-+		};
-+
- 		i2s1 {
- 			i2s1_mclk: i2s1-mclk {
- 				rockchip,pins = <2 RK_PB7 1 &pcfg_pull_none>;
 -- 
-2.7.4
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
