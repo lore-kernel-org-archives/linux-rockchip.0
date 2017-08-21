@@ -1,43 +1,43 @@
-From: Guillaume Tucker <guillaume.tucker@collabora.com>
-Subject: [PATCH] regulator: fan53555: fix I2C device ids
-Date: Mon, 21 Aug 2017 13:47:43 +0100
-Message-ID: <20170821124743.52924-1-guillaume.tucker@collabora.com>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v3 1/3] dt-bindings: usb: add DT binding for RK3328 dwc3 controller
+Date: Mon, 21 Aug 2017 21:36:04 +0800
+Message-ID: <1503322566-31489-2-git-send-email-william.wu@rock-chips.com>
+References: <1503322566-31489-1-git-send-email-william.wu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1503322566-31489-1-git-send-email-william.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>
-Cc: linux-kernel@vger.kernel.org, Sjoerd Simons <sjoerd.simons@collabora.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Wookey <wookey@wookware.org>, Guillaume Tucker <guillaume.tucker@collabora.com>
+To: heiko@sntech.de, balbi@kernel.org, gregkh@linuxfoundation.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com, william.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The device tree nodes all correctly describe the regulators as
-syr827 or syr828, but the I2C device id is currently set to the
-wildcard value of syr82x in the driver.  This causes udev to fail
-to match the driver module with the modalias data from sysfs.
+Adds the device tree bindings description for RK3328 and
+compatible USB DWC3 controller.
 
-Fix this by replacing the I2C device ids with ones that match the
-device tree descriptions, with syr827 and syr828.  Tested on
-Firefly rk3288 board.  The syr82x id was not used anywhere.
-
-Fixes: e80c47bd738b (regulator: fan53555: Export I2C module alias information)
-Signed-off-by: Guillaume Tucker <guillaume.tucker@collabora.com>
+Signed-off-by: William Wu <william.wu@rock-chips.com>
 ---
- drivers/regulator/fan53555.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Changes in v3:
+- Add this for separate usb dt-bindings patch.
 
-diff --git a/drivers/regulator/fan53555.c b/drivers/regulator/fan53555.c
-index 60f431831582..ca29d49fdadd 100644
---- a/drivers/regulator/fan53555.c
-+++ b/drivers/regulator/fan53555.c
-@@ -476,7 +476,10 @@ static const struct i2c_device_id fan53555_id[] = {
- 		.name = "fan53555",
- 		.driver_data = FAN53555_VENDOR_FAIRCHILD
- 	}, {
--		.name = "syr82x",
-+		.name = "syr827",
-+		.driver_data = FAN53555_VENDOR_SILERGY
-+	}, {
-+		.name = "syr828",
- 		.driver_data = FAN53555_VENDOR_SILERGY
- 	},
- 	{ },
+Changes in v2:
+- None
+
+ Documentation/devicetree/bindings/usb/rockchip,dwc3.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+index 0536a93..d6b2e47 100644
+--- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
++++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+@@ -1,7 +1,9 @@
+ Rockchip SuperSpeed DWC3 USB SoC controller
+ 
+ Required properties:
+-- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
++- compatible:	should be one of the following:
++  - "rockchip,rk3399-dwc3": for rk3399 SoC
++  - "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3": for rk3328 SoC
+ - clocks:	A list of phandle + clock-specifier pairs for the
+ 		clocks listed in clock-names
+ - clock-names:	Should contain the following:
 -- 
-2.11.0
+2.0.0
