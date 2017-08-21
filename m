@@ -1,406 +1,149 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3] arm64: dts: rockchip: add rk3328-rock64 board
-Date: Mon, 21 Aug 2017 17:50:20 +0200
-Message-ID: <20170821155020.3230-1-heiko@sntech.de>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [v5,22/46] pwm: rockchip: avoid glitches on already running PWMs
+Date: Mon, 21 Aug 2017 09:49:52 -0700
+Message-ID: <CAD=FV=V6MvyO5XygsYCzDahG1C8ZX4+LuXebkhRuWPOzOx1RsQ@mail.gmail.com>
+References: <1459368249-13241-23-git-send-email-boris.brezillon@free-electrons.com>
+ <a5efa7d7-ceb5-e6b0-b2d1-2d79cd20265f@rock-chips.com> <20170804160701.4d9f404d@bbrezillon>
+ <2250536.aM833QY2s7@phil> <CAD=FV=U=_sOyUipGnujWMnMn19Og87JYbbaKOza=0p5-5GpHog@mail.gmail.com>
+ <20170821173955.30b0f5a2@bbrezillon>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20170821173955.30b0f5a2@bbrezillon>
+Sender: linux-clk-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, "David.Wu" <david.wu@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?B?5byg552b?= <zhangqing@rock-chips.com>, =?UTF-8?B?6K645YmR576k?= <jay.xu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The ROCK64 is a credit card size 4K60P HDR Media Board Computer using the
-Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
-up to 4GB 1600MHz LPDDR3 memory. It provides eMMC module socket, MicroSD
-Card slot, Pi-2 Bus, Pi-P5+ Bus, USB 3.0 and many others peripheral
-devices interface for makers to integrate with sensors and devices.
+Hi,
 
-The devicetree currently supports basic peripherals, with more to be
-added later on.
+On Mon, Aug 21, 2017 at 8:39 AM, Boris Brezillon
+<boris.brezillon@free-electrons.com> wrote:
+> Hi Doug,
+>
+> Sorry for the late reply.
+>
+> Le Fri, 4 Aug 2017 09:22:56 -0700,
+> Doug Anderson <dianders@chromium.org> a =C3=A9crit :
+>
+>> Hi,
+>>
+>> On Fri, Aug 4, 2017 at 7:48 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+>> >> > We found a issue recently, if the pwm0 is not enabled at uboot and =
+pwm2
+>> >> > is enabled at uboot, the PWM clock will be disabled at pwm0's probe=
+. It
+>> >> > is true to close the pwm clock, and the pwm2 can't work during a wh=
+ile,
+>> >> > until the pwm2 probe, because the pwm0 and pwm2 are the same clock =
+for
+>> >> > their work. In fact, the pwm0 can not know the pwm2's status.
+>> >> >
+>> >> > So we need to get all the PWMs state in a public place where it's e=
+arly
+>> >> > than the PWM probe, if that's the way it is. Then keep the PWM clk
+>> >> > enabled if theis is one PWM appears to be up and running. The place
+>> >> > maybe in the clock core init, like adding pwm clock as critial one.
+>> >> >
+>> >> > Another way is that we don't enable pwm clock firstly at PWM probe,
+>> >> > because whether or not the PWM state has been enabled in the Uboot,=
+ like
+>> >> > other modules, our chip default PWM clock registers are enabled at =
+the
+>> >> > beginning, read the PWM registers directly to know the PWM state. T=
+hen
+>> >> > if the PWM state is enabled, call the enable_clk(pc->clk) to add th=
+e
+>> >> > clock count=3D1. If the PWM state is disabled, we do nothing. After=
+ all
+>> >> > the PWMs are probed and all modules are probed, the clock core will=
+ gate
+>> >> > the PWM clock if the clock count is 0, and keep clk enabled if the =
+clock
+>> >> > count is not 0.
+>> >> >
+>> >> > How do you feel about it?
+>> >>
+>> >> Ouch. That's indeed hard to solve in a clean way. I may have
+>> >> something to suggest but I'm not sure clk maintainers will like it: w=
+hat
+>> >> if we make clk_disable() and clk_unprepare() just decrement the refco=
+unt
+>> >> before the disable-unused-clks procedure has been executed (see
+>> >> proposed patch below)? This way all clks that have been enabled by th=
+e
+>> >> bootloader will stay in such state until all drivers have had a chanc=
+e
+>> >> to retain them (IOW, call clk_prepare()+clk_enable()).
+>> >>
+>> >> BTW, I think the problem you're describing here is not unique to PWM
+>> >> devices, it's just that now, some PWM drivers are smart and try to ke=
+ep
+>> >> clks enabled to prevent glitches.
+>> >
+>> > Actually, Mike had patches that introduced so called "handoff" clocks =
+[0].
+>> > Clocks that were handled as critical until some driver picked them up.
+>> >
+>> > It's not exactly the same as your change and still would require
+>> > intervention from clock-drivers to mark clocks in such a way.
+>>
+>> Right.  As you're saying handoff isn't enough because in this case a
+>> driver _has_ picked up the clock.  The whole issue is that it's a
+>> shared clock between the 4 PLLs.  One driver already claimed the
+>> clock, enabled it, and disabled it.  Really something would need to
+>> know that another driver in the future might want to also pick up the
+>> clock.
+>>
+>>
+>> > So I really also like your approach, as it would make clock wiggling
+>> > during early boot safe for everyone involved :-) .
+>> >
+>> > And both seem to cater to slightly different use-cases as well.
+>>
+>> One worry I have about not truly disabling any clocks at boot time is
+>> that it could break someone who relies on a clock being disabled.  I'm
+>> not 100% sure that any of these would really affect someone, but...
+>>
+>> ...there is one example case I know of where you absolutely need a
+>> clock to stop on command (AKA it wouldn't be OK to defer till late
+>> init).  That case is for SD Card Tuning.  When you're doing a voltage
+>> switch the actual transition is keyed off the card clock stopping.
+>> That would break if there was a situation where clk_disable() didn't
+>> actually do what it was supposed to.  This is a bit of a contrived
+>> case and probably isn't 100% relevant (I think dw_mmc, for instance,
+>> stops the card clock directly through the dw_mmc IP block and it's
+>> invisible to the common clock framework), but it illustrates the point
+>> that there could plausibly be cases where deferring a clk_disable()
+>> might be unwise.
+>
+> Right, I didn't consider this use case, but some drivers might rely on
+> the fact that clk_disable() disables the clk right away instead of
+> deferring it.
+>
+>>
+>> I suppose, though, that it would be possible to distinguish those two
+>> cases via a 2nd API call.  AKA:
+>>
+>> clk_disable() -- disable the clock eventually
+>> clk_disable_sync() -- disable the clock but don't defer.  Still won't
+>> actually disable if someone else explicitly holds a reference.
+>
+> Actually, I'd recommend keeping the existing behavior for clk_disable()
+> and adding a new function called clk_disable_async() (or
+> clk_disable_deferrable()). This way we do not break existing users that
+> rely on clk_disable() synchronicity and force users that actually allow
+> deferring clk gating to explicitly state it.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
-changes in v3:
-- remove another forgotten obsolete mmc property
-- remove sdio nodes (not actually used on the board)
-- drop regulator mode properties, not specified for rk805
-changes in v2:
-- remove obsolete mmc properties found by Shawn
-- enable newly added tsadc node
+Yeah, there's a tradeoff.  Your solution is definitely safer and
+causes less short term churn.  ...but it's at the expense of some
+inconsistency between various similar APIs (some APIs the "default" is
+sync and some the "default" is async).  Although I guess if there's
+one consistent thing about the kernel APIs it's that they're
+inconsistent.  :-P
 
- Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     | 333 +++++++++++++++++++++
- 3 files changed, 338 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+Is anyone volunteering to do this?  Do we want anyone with actual
+"approval" authority to chime in?
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 88d95323d301..b54e9bfd9562 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -134,6 +134,10 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-      - compatible = "phytec,rk3288-pcm-947", "phytec,rk3288-phycore-som", "rockchip,rk3288";
- 
-+- Pine64 Rock64 board:
-+    Required root node properties:
-+    - compatible = "pine64,rock64", "rockchip,rk3328";
-+
- - Rockchip PX3 Evaluation board:
-     Required root node properties:
-       - compatible = "rockchip,px3-evb", "rockchip,px3", "rockchip,rk3188";
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index d0ad366bbd12..106fb8e0f2f8 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -1,4 +1,5 @@
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-orion-r68-meta.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-new file mode 100644
-index 000000000000..d4f80786e7c2
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -0,0 +1,333 @@
-+/*
-+ * Copyright (c) 2017 PINE64
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This library is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This library is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+#include "rk3328.dtsi"
-+
-+/ {
-+	model = "Pine64 Rock64";
-+	compatible = "pine64,rock64", "rockchip,rk3328";
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	gmac_clkin: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac_clkin";
-+		#clock-cells = <0>;
-+	};
-+
-+	vcc_sd: sdmmc-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc0m1_gpio>;
-+		regulator-name = "vcc_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	vcc_host_5v: vcc-host-5v-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb30_host_drv>;
-+		regulator-name = "vcc_host_5v";
-+		regulator-always-on;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
-+	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_host_drv>;
-+		regulator-name = "vcc_host1_5v";
-+		regulator-always-on;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
-+	vcc_sys: vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-+	vmmc-supply = <&vcc_io>;
-+	vqmmc-supply = <&vcc18_emmc>;
-+	status = "okay";
-+};
-+
-+&gmac2io {
-+	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-+	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
-+	clock_in_out = "input";
-+	phy-supply = <&vcc_io>;
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmiim1_pins>;
-+	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 50000>;
-+	tx_delay = <0x26>;
-+	rx_delay = <0x11>;
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	rk805: rk805@18 {
-+		compatible = "rockchip,rk805";
-+		reg = <0x18>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		clock-output-names = "xin32k", "rk805-clkout2";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+
-+		vcc1-supply = <&vcc_sys>;
-+		vcc2-supply = <&vcc_sys>;
-+		vcc3-supply = <&vcc_sys>;
-+		vcc4-supply = <&vcc_sys>;
-+		vcc5-supply = <&vcc_io>;
-+		vcc6-supply = <&vcc_sys>;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_io: DCDC_REG4 {
-+				regulator-name = "vcc_io";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_18: LDO_REG1 {
-+				regulator-name = "vdd_18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc18_emmc: LDO_REG2 {
-+				regulator-name = "vcc_18emmc";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_10: LDO_REG3 {
-+				regulator-name = "vdd_10";
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&io_domains {
-+	status = "okay";
-+
-+	vccio1-supply = <&vcc_io>;
-+	vccio2-supply = <&vcc18_emmc>;
-+	vccio3-supply = <&vcc_io>;
-+	vccio4-supply = <&vcc_18>;
-+	vccio5-supply = <&vcc_io>;
-+	vccio6-supply = <&vcc_io>;
-+	pmuio-supply = <&vcc_io>;
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb2 {
-+		usb20_host_drv: usb20-host-drv {
-+			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb3 {
-+		usb30_host_drv: usb30-host-drv {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	max-frequency = <150000000>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-+	vmmc-supply = <&vcc_sd>;
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <0>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+
-+	u2phy_host: host-port {
-+		status = "okay";
-+	};
-+
-+	u2phy_otg: otg-port {
-+		status = "okay";
-+	};
-+};
-+
-+&usb20_otg {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
--- 
-2.14.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Doug
