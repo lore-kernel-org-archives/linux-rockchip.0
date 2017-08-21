@@ -1,32 +1,105 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk805 node for rk3328-evb
-Date: Mon, 21 Aug 2017 12:05:35 +0200
-Message-ID: <1567365.GLZbXPjLJs@phil>
-References: <1502244224-11999-1-git-send-email-chenjh@rock-chips.com> <1502244224-11999-2-git-send-email-chenjh@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1502244224-11999-2-git-send-email-chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: wdc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, afaerber-l3A5Bk7waGM@public.gmane.org, fabio.estevam-3arQi8VN3Tc@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH] net: ethernet: stmmac: dwmac-rk: Add rv1108 gmac support
+Date: Mon, 21 Aug 2017 18:12:55 +0800
+Message-ID: <1503310375-30393-1-git-send-email-david.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org, linux@armlinux.org.uk
+Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 9. August 2017, 10:03:44 CEST schrieb Joseph Chen:
-> RK805 consists of 4 DCDCs, 3 LDOs. It's different from RK808
-> and RK818 that there are 2 output only GPIOs, we should add
-> properties "gpio-controller" and "gpio-cells = <2>".
-> 
-> Signed-off-by: Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+It only supports rmii interface. Add constants and callback functions
+for the dwmac on rv1108 socs. As can be seen, the base structure is
+the same, only registers and the bits in them moved slightly.
 
-adapted to the meanwhile changed rk3328-evb.dts and then
-applied for 4.14
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+---
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |  1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 53 ++++++++++++++++++++++
+ 2 files changed, 54 insertions(+)
 
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+index 8f42755..c132538 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+@@ -10,6 +10,7 @@ Required properties:
+    "rockchip,rk3366-gmac": found on RK3366 SoCs
+    "rockchip,rk3368-gmac": found on RK3368 SoCs
+    "rockchip,rk3399-gmac": found on RK3399 SoCs
++   "rockchip,rv1108-gmac": found on RV1108 SoCs
+  - reg: addresses and length of the register sets for the device.
+  - interrupts: Should contain the GMAC interrupts.
+  - interrupt-names: Should contain the interrupt names "macirq".
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 2176403..99823f5 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -787,6 +787,58 @@ static void rk3399_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
+ 	.set_rmii_speed = rk3399_set_rmii_speed,
+ };
+ 
++#define RV1108_GRF_GMAC_CON0		0X0900
++
++/* RV1108_GRF_GMAC_CON0 */
++#define RV1108_GMAC_PHY_INTF_SEL_RMII	(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | \
++					GRF_BIT(6))
++#define RV1108_GMAC_FLOW_CTRL		GRF_BIT(3)
++#define RV1108_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
++#define RV1108_GMAC_SPEED_10M		GRF_CLR_BIT(2)
++#define RV1108_GMAC_SPEED_100M		GRF_BIT(2)
++#define RV1108_GMAC_RMII_CLK_25M	GRF_BIT(7)
++#define RV1108_GMAC_RMII_CLK_2_5M	GRF_CLR_BIT(7)
++
++static void rv1108_set_to_rmii(struct rk_priv_data *bsp_priv)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, RV1108_GRF_GMAC_CON0,
++		     RV1108_GMAC_PHY_INTF_SEL_RMII);
++}
++
++static void rv1108_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
++		return;
++	}
++
++	if (speed == 10) {
++		regmap_write(bsp_priv->grf, RV1108_GRF_GMAC_CON0,
++			     RV1108_GMAC_RMII_CLK_2_5M |
++			     RV1108_GMAC_SPEED_10M);
++	} else if (speed == 100) {
++		regmap_write(bsp_priv->grf, RV1108_GRF_GMAC_CON0,
++			     RV1108_GMAC_RMII_CLK_25M |
++			     RV1108_GMAC_SPEED_100M);
++	} else {
++		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
++	}
++}
++
++static const struct rk_gmac_ops rv1108_ops = {
++	.set_to_rmii = rv1108_set_to_rmii,
++	.set_rmii_speed = rv1108_set_rmii_speed,
++};
++
+ #define RK_GRF_MACPHY_CON0		0xb00
+ #define RK_GRF_MACPHY_CON1		0xb04
+ #define RK_GRF_MACPHY_CON2		0xb08
+@@ -1267,6 +1319,7 @@ static int rk_gmac_resume(struct device *dev)
+ 	{ .compatible = "rockchip,rk3366-gmac", .data = &rk3366_ops },
+ 	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_ops },
+ 	{ .compatible = "rockchip,rk3399-gmac", .data = &rk3399_ops },
++	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, rk_gmac_dwmac_match);
+-- 
+1.9.1
