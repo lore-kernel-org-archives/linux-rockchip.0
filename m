@@ -1,57 +1,26 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 1/2] ARM: dts: rockchip: add cpu opp table for rv1108
-Date: Mon, 21 Aug 2017 17:06:44 +0800
-Message-ID: <1503306404-28876-1-git-send-email-andy.yan@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 7/8] ARM: dts: rockchip: add pmic rk805 dt node for rv1108 evb
+Date: Mon, 21 Aug 2017 11:48:13 +0200
+Message-ID: <2749560.3r9KG54GLu@phil>
+References: <1502699477-8063-1-git-send-email-andy.yan@rock-chips.com> <1502700221-8792-1-git-send-email-andy.yan@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1502700221-8792-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Andy Yan <andy.yan@rock-chips.com>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add cpu opp table for rv1108 to support frequency
-from 408MHZ to 1008MHZ.
+Am Montag, 14. August 2017, 16:43:41 CEST schrieb Andy Yan:
+> RK805 is used as the voltage regulator on rv1108 evaluation
+> board. Add device tree node for it.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+applied for 4.14
 
- arch/arm/boot/dts/rv1108-evb.dts | 4 ++++
- arch/arm/boot/dts/rv1108.dtsi    | 9 +++++++++
- 2 files changed, 13 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-index 32fb09a..e517aa3 100644
---- a/arch/arm/boot/dts/rv1108-evb.dts
-+++ b/arch/arm/boot/dts/rv1108-evb.dts
-@@ -104,6 +104,10 @@
- 	};
- };
- 
-+&cpu0 {
-+	cpu-supply = <&vdd_core>;
-+};
-+
- &i2c0 {
- 	status = "okay";
- 	i2c-scl-rising-time-ns = <275>;
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index 064cec3..6ebf07c 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -69,6 +69,15 @@
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a7";
- 			reg = <0xf00>;
-+			operating-points = <
-+				/* KHz    uV */
-+				408000	975000
-+				600000	975000
-+				816000	1025000
-+				1008000	1150000
-+			>;
-+			clock-latency = <40000>;
-+			clocks = <&cru ARMCLK>;
- 		};
- 	};
- 
--- 
-2.7.4
+Thanks
+Heiko
