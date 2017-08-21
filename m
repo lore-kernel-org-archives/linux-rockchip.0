@@ -1,51 +1,55 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v7] rockchip/rga: v4l2 m2m support
-Date: Mon, 21 Aug 2017 16:16:39 +0200
-Message-ID: <fe2c1de6-dd6c-378f-8a1e-d790807310b1@xs4all.nl>
-References: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: add cpu opp table for rv1108
+Date: Mon, 21 Aug 2017 17:30:05 +0200
+Message-ID: <1530970.y6TTxhzjmZ@phil>
+References: <1503306404-28876-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1503306404-28876-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+Hi Andy,
 
-On 08/03/2017 07:23 AM, Jacob Chen wrote:
-> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
-> accelerates 2D graphics operations, such as point/line drawing, image
-> scaling, rotation, BitBLT, alpha blending and image blur/sharpness
+Am Montag, 21. August 2017, 17:06:44 CEST schrieb Andy Yan:
+> Add cpu opp table for rv1108 to support frequency
+> from 408MHZ to 1008MHZ.
 > 
-> The drvier is mostly based on s5p-g2d v4l2 m2m driver
-> And supports various operations from the rendering pipeline.
->  - copy
->  - fast solid color fill
->  - rotation
->  - flip
->  - alpha blending
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
 > 
-> The code in rga-hw.c is used to configure regs according to operations
-> The code in rga-buf.c is used to create private mmu table for RGA.
+>  arch/arm/boot/dts/rv1108-evb.dts | 4 ++++
+>  arch/arm/boot/dts/rv1108.dtsi    | 9 +++++++++
+>  2 files changed, 13 insertions(+)
 > 
-> changes in V7:
-> - fix some warning reported by "checkpatch --strict"
-> 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+> diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
+> index 32fb09a..e517aa3 100644
+> --- a/arch/arm/boot/dts/rv1108-evb.dts
+> +++ b/arch/arm/boot/dts/rv1108-evb.dts
+> @@ -104,6 +104,10 @@
+>  	};
+>  };
+>  
+> +&cpu0 {
+> +	cpu-supply = <&vdd_core>;
+> +};
+> +
 
-Can you post the v4l2-compliance output? I gather that there is at least one
-colorspace-related error that appears to be a v4l2-compliance bug, so I'd
-like to see the exact error it gives. I'll see if I can fix it so this driver
-has a clean compliance output.
+please split into two patches (operating points + cpu-supply)
+and use the operating-points-v2 binding.
 
-I apologize that this driver probably won't make 4.14. Too much to review...
 
-I hope to do the v7 review within a week.
-
-Regards,
-
-	Hans
+Thanks
+Heiko
