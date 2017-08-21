@@ -1,28 +1,51 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH v3 0/3] Add usb3 ctrl node on RK3328 SoCs and enable usb3 host on RK3328 evb
-Date: Mon, 21 Aug 2017 21:36:03 +0800
-Message-ID: <1503322566-31489-1-git-send-email-william.wu@rock-chips.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v7] rockchip/rga: v4l2 m2m support
+Date: Mon, 21 Aug 2017 16:16:39 +0200
+Message-ID: <fe2c1de6-dd6c-378f-8a1e-d790807310b1@xs4all.nl>
+References: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, balbi@kernel.org, gregkh@linuxfoundation.org
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com, william.wu@rock-chips.com
+To: Jacob Chen <jacob-chen@iotwrt.com>, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca
 List-Id: linux-rockchip.vger.kernel.org
 
-This series add support for usb3 controller on RK3328 SoCs.
-This series don't include usb3 phy patches, and I will try
-to submit usb3 phy patches individually later.
+Hi Jacob,
 
-Tested on RK3328 evaluation board.
+On 08/03/2017 07:23 AM, Jacob Chen wrote:
+> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
+> accelerates 2D graphics operations, such as point/line drawing, image
+> scaling, rotation, BitBLT, alpha blending and image blur/sharpness
+> 
+> The drvier is mostly based on s5p-g2d v4l2 m2m driver
+> And supports various operations from the rendering pipeline.
+>  - copy
+>  - fast solid color fill
+>  - rotation
+>  - flip
+>  - alpha blending
+> 
+> The code in rga-hw.c is used to configure regs according to operations
+> The code in rga-buf.c is used to create private mmu table for RGA.
+> 
+> changes in V7:
+> - fix some warning reported by "checkpatch --strict"
+> 
+> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 
-William Wu (3):
-  dt-bindings: usb: add DT binding for RK3328 dwc3 controller
-  arm64: dts: rockchip: add usb3 controller node for RK3328 SoCs
-  arm64: dts: rockchip: enable usb3 for RK3328 evaluation board
+Can you post the v4l2-compliance output? I gather that there is at least one
+colorspace-related error that appears to be a v4l2-compliance bug, so I'd
+like to see the exact error it gives. I'll see if I can fix it so this driver
+has a clean compliance output.
 
- .../devicetree/bindings/usb/rockchip,dwc3.txt      |  4 +++-
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |  9 ++++++++
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 27 ++++++++++++++++++++++
- 3 files changed, 39 insertions(+), 1 deletion(-)
+I apologize that this driver probably won't make 4.14. Too much to review...
 
--- 
-2.0.0
+I hope to do the v7 review within a week.
+
+Regards,
+
+	Hans
