@@ -1,46 +1,76 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 2/3] ARM: dts: rockchip: add cpu power supply for rv1108 evb
-Date: Tue, 22 Aug 2017 21:13:30 +0800
-Message-ID: <1503407610-14001-1-git-send-email-andy.yan@rock-chips.com>
-References: <1503407515-13943-1-git-send-email-andy.yan@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1503407515-13943-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v6 1/8] ASoC: rockchip: Correct 'dmic-delay' property name
+Date: Tue, 22 Aug 2017 23:10:02 +0800
+Message-ID: <20170822151009.19014-2-jeffy.chen@rock-chips.com>
+References: <20170822151009.19014-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170822151009.19014-1-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de
+Cc: briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The cpu is powered by regulator vdd_core on RV1108 evalution
-board. Add it to the cpu dt node.
+The 'dmic-delay' property name is different with the dt-binding.
 
-Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+So correct it with 'dmic-wakeup-delay-ms'.
+
+Fixes: 3a6f9dce6116 (ASoC: rk3399_gru_sound: fix recording pop at first attempt)
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+
 ---
 
+Changes in v6: None
+Changes in v5:
+Keep the dmic-delay property, but correct it with the name in
+dt-binding.
+        -- Suggested-by Mark Brown <broonie@kernel.org>
+
+Changes in v3: None
 Changes in v2: None
 
- arch/arm/boot/dts/rv1108-evb.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+ sound/soc/rockchip/rk3399_gru_sound.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-index 32fb09a..e517aa3 100644
---- a/arch/arm/boot/dts/rv1108-evb.dts
-+++ b/arch/arm/boot/dts/rv1108-evb.dts
-@@ -104,6 +104,10 @@
- 	};
- };
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 3475c61a5fa0..70b5821afb17 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -38,7 +38,7 @@
  
-+&cpu0 {
-+	cpu-supply = <&vdd_core>;
-+};
-+
- &i2c0 {
- 	status = "okay";
- 	i2c-scl-rising-time-ns = <275>;
+ #define SOUND_FS	256
+ 
+-static unsigned int rt5514_dmic_delay;
++static unsigned int dmic_wakeup_delay;
+ 
+ static struct snd_soc_jack rockchip_sound_jack;
+ 
+@@ -126,7 +126,7 @@ static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
+ 	}
+ 
+ 	/* Wait for DMIC stable */
+-	msleep(rt5514_dmic_delay);
++	msleep(dmic_wakeup_delay);
+ 
+ 	return 0;
+ }
+@@ -348,13 +348,13 @@ static int rockchip_sound_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	/* Set DMIC delay */
+-	ret = device_property_read_u32(&pdev->dev, "dmic-delay",
+-					&rt5514_dmic_delay);
++	/* Set DMIC wakeup delay */
++	ret = device_property_read_u32(&pdev->dev, "dmic-wakeup-delay-ms",
++					&dmic_wakeup_delay);
+ 	if (ret) {
+-		rt5514_dmic_delay = 0;
++		dmic_wakeup_delay = 0;
+ 		dev_dbg(&pdev->dev,
+-			"no optional property 'dmic-delay' found, default: no delay\n");
++			"no optional property 'dmic-wakeup-delay-ms' found, default: no delay\n");
+ 	}
+ 
+ 	rockchip_dailinks[DAILINK_RT5514_DSP].cpu_name = kstrdup_const(dev_name(dev), GFP_KERNEL);
 -- 
-2.7.4
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.11.0
