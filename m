@@ -1,48 +1,64 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v5 1/9] ASoC: rockchip: Remove obsolete
-	dmic-delay
-Date: Tue, 22 Aug 2017 19:01:52 +0800
-Message-ID: <599C0F20.7080807@rock-chips.com>
-References: <20170822075729.8438-1-jeffy.chen@rock-chips.com>
- <20170822075729.8438-2-jeffy.chen@rock-chips.com>
- <20170822103241.wjiycavsro7abknj@sirena.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170822103241.wjiycavsro7abknj@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, mengdong.lin@linux.intel.com, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, Oder Chiou <oder_chiou@realtek.com>, briannorris@chromium.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, dianders@chromium.org, linux-rockchip@lists.infradead.org, mka@chromium.org, Takashi Iwai <tiwai@suse.com>, dgreid@chromium.org, lars@metafoo.de, linux-arm-kernel@lists.infradead.org
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v2 1/3] ARM: dts: rockchip: add cpu opp table for rv1108
+Date: Tue, 22 Aug 2017 21:11:55 +0800
+Message-ID: <1503407515-13943-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+Add cpu opp table for rv1108 to support frequency
+from 408MHZ to 1008MHZ.
 
-On 08/22/2017 06:32 PM, Mark Brown wrote:
-> On Tue, Aug 22, 2017 at 03:57:20PM +0800, Jeffy Chen wrote:
->> This property is no longer used.
->
-> I would still rather keep the existing property documented (the binding
-> does need to be fixed) than remove it.  It's better practice and it's
-> not costing a huge amount.
->
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
-sorry, i should explain more in the commit msg...
+---
 
-just to clarify, this property is replaced by 
-"realtek,dmic-init-delay-ms" in rt5514 driver:
+Changes in v2:
+- switch to operating-points-v2
+- split cpu-supply to a separate patch
 
-a5461fd6c8f7 ASoC: rt5514: Add the DMIC initial delay to wait it ready.
+ arch/arm/boot/dts/rv1108.dtsi | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-which does exactly the same thing as the old one: perform a delay after 
-set clk...
-
-i can do that if you still insist to keep it, since it's harmless :)
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index 064cec3..1b854e1 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -69,6 +69,33 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0xf00>;
++			operating-points-v2 = <&cpu_opp_table>;
++			clocks = <&cru ARMCLK>;
++		};
++	};
++
++	cpu_opp_table: opp_table {
++		compatible = "operating-points-v2";
++
++		opp-408000000 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <975000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <975000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-816000000 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <1025000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1008000000 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <1150000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 	};
+ 
+-- 
+2.7.4
