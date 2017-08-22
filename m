@@ -1,63 +1,33 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v2] PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
-Date: Tue, 22 Aug 2017 10:30:52 +0800
-Message-ID: <599B975C.20807@rock-chips.com>
-References: <1502363923-19946-1-git-send-email-shawn.lin@rock-chips.com> <3312094.6zR5NuJAgK@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 2/9] ASoC: rockchip: Remove obsolete dmic-delay
+Date: Mon, 21 Aug 2017 21:42:09 -0500
+Message-ID: <20170822024209.ej6y7pv77ztupvrq@rob-hp-laptop>
+References: <20170818031147.16810-1-jeffy.chen@rock-chips.com>
+ <20170818031147.16810-3-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <3312094.6zR5NuJAgK@phil>
-Sender: linux-pci-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170818031147.16810-3-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de, briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Fri, Aug 18, 2017 at 11:11:40AM +0800, Jeffy Chen wrote:
+> This property is no longer used.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+> 
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  .../bindings/sound/rockchip,rk3399-gru-sound.txt           |  7 -------
+>  sound/soc/rockchip/rk3399_gru_sound.c                      | 14 --------------
+>  2 files changed, 21 deletions(-)
 
-On 08/10/2017 08:22 PM, Heiko Stuebner wrote:
->>
->> >+	devm_add_action_or_reset(dev,
->> >+				 rockchip_pcie_disable_clocks, rockchip);
->> >+
-> err = devm_add_action_or_reset(...)
-> if (err) {
-> ...
-> }
->
-> devm_add_action_or_reset can fail. When it fails, it will call the
-> action already, so your error handling does not need to disable
-> clocks on its own.
->
->
-> Also, as a more general comment, right now you do devm_request_irq
-> from rockchip_pcie_parse_dt, which gets called_before_  clocks are
-> enabled.
->
-> This will likely bite you at some point as well, as the irq can fire at
-> any point after it got requested ... including before you enable the
-> clocks.
->
-> So the order should probably be
->
-> - enable clocks
-> - register devm_action to shutdown clocks
-> - parse_dt including requesting the irq.
->
->
-> Heiko
+Well, obviously not used since they don't even match.
 
-it turns out this irq handler not only depends on clks, but also pm 
-domain :(
-
-so handling it with devm_* functions would be a little 
-complicated(https://lkml.org/lkml/2017/8/15/146).
-
-would it make sense to use request_irq/free_irq directly?
-
-or maybe add a flag(for example probed), and check it in the irq handler 
-before read registers? then we would just need to make sure the priv 
-struct be freed later than the irq.
-
->
->
+Acked-by: Rob Herring <robh@kernel.org>
