@@ -1,177 +1,94 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH] PCI: rockchip: manipulate phy properly if failing to
- probe the driver
-Date: Tue, 22 Aug 2017 15:47:50 -0500
-Message-ID: <20170822204750.GG6948@bhelgaas-glaptop.roam.corp.google.com>
-References: <1502277263-187898-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL v2] rockchip clock changes for 4.14
+Date: Tue, 22 Aug 2017 22:48:32 +0200
+Message-ID: <2504131.RNZrFhkOWB@phil>
+References: <2274885.hdbqj6Qr1b@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1502277263-187898-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <2274885.hdbqj6Qr1b@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 09, 2017 at 07:14:23PM +0800, Shawn Lin wrote:
-> We observed that the clk_pciephy_ref is still enabled when we actually
-> fail to probe the driver.
-> 
-> root@linaro-alip:~# cat /sys/kernel/debug/clk/clk_summary | grep pcie
-> clk_pciephy_ref			  1	1	 24000000	0 0
-> clk_pcie_pm			  0	0	 24000000	0 0
->       clk_pcie_core_cru           0	0	125000000	0 0
->       clk_pciephy_ref100m         0	0	100000000	0 0
-> 		aclk_pcie         0	0	148500000	0 0
-> 		aclk_perf_pcie    0	0	148500000	0 0
-> 			pclk_pcie 0	0	 37125000	0 0
-> clk_pcie_core                     0	0		0	0 0
-> 
-> clk_pciephy_ref is used by phy driver and we need to properly disable
-> it for this case. So this patch add error handle for the function of
-> rockchip_pcie_init_port to fix this issue.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Hi Mike, Stephen,
 
-Applied to pci/host-rockchip for v4.14, thanks!
+please find below rockchip clock-changes targetted at 4.14.
+As we talked about before, it includes the approximation-callback
+for fractional dividers, Acked by Stephen.
 
-> ---
-> 
->  drivers/pci/host/pcie-rockchip.c | 38 ++++++++++++++++++++++++--------------
->  1 file changed, 24 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 2eccd53..ce6371b 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -561,32 +561,32 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  		err = phy_init(rockchip->phys[i]);
->  		if (err) {
->  			dev_err(dev, "init phy%d err %d\n", i, err);
-> -			return err;
-> +			goto err_phy_exit;
->  		}
->  	}
->  
->  	err = reset_control_assert(rockchip->core_rst);
->  	if (err) {
->  		dev_err(dev, "assert core_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	err = reset_control_assert(rockchip->mgmt_rst);
->  	if (err) {
->  		dev_err(dev, "assert mgmt_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	err = reset_control_assert(rockchip->mgmt_sticky_rst);
->  	if (err) {
->  		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	err = reset_control_assert(rockchip->pipe_rst);
->  	if (err) {
->  		dev_err(dev, "assert pipe_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	udelay(10);
-> @@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	err = reset_control_deassert(rockchip->pm_rst);
->  	if (err) {
->  		dev_err(dev, "deassert pm_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	err = reset_control_deassert(rockchip->aclk_rst);
->  	if (err) {
->  		dev_err(dev, "deassert aclk_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	err = reset_control_deassert(rockchip->pclk_rst);
->  	if (err) {
->  		dev_err(dev, "deassert pclk_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_exit;
->  	}
->  
->  	if (rockchip->link_gen == 2)
-> @@ -628,7 +628,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  		err = phy_power_on(rockchip->phys[i]);
->  		if (err) {
->  			dev_err(dev, "power on phy%d err %d\n", i, err);
-> -			return err;
-> +			goto err_phy_power_off;
->  		}
->  	}
->  
-> @@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
->  	if (err) {
->  		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_power_off;
->  	}
->  
->  	err = reset_control_deassert(rockchip->core_rst);
->  	if (err) {
->  		dev_err(dev, "deassert core_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_power_off;
->  	}
->  
->  	err = reset_control_deassert(rockchip->mgmt_rst);
->  	if (err) {
->  		dev_err(dev, "deassert mgmt_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_power_off;
->  	}
->  
->  	err = reset_control_deassert(rockchip->pipe_rst);
->  	if (err) {
->  		dev_err(dev, "deassert pipe_rst err %d\n", err);
-> -		return err;
-> +		goto err_phy_power_off;
->  	}
->  
->  	/* Fix the transmitted FTS count desired to exit from L0s. */
-> @@ -690,7 +690,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  				 500 * USEC_PER_MSEC);
->  	if (err) {
->  		dev_err(dev, "PCIe link training gen1 timeout!\n");
-> -		return -ETIMEDOUT;
-> +		err = -ETIMEDOUT;
-> +		goto err_phy_power_off;
->  	}
->  
->  	if (rockchip->link_gen == 2) {
-> @@ -751,6 +752,15 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
->  
->  	return 0;
-> +
-> +err_phy_exit:
-> +	for (; i >= 0; --i)
-> +		phy_exit(rockchip->phys[i]);
-> +err_phy_power_off:
-> +	for (; i >= 0; --i)
-> +		phy_power_off(rockchip->phys[i]);
-> +
-> +	return err;
->  }
->  
->  static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
-> -- 
-> 1.9.1
-> 
-> 
+Apart from that we have the usual changes as described by the tag.
+So if stuff looks ok, please pull.
+
+changes in pull v2:
+Compared to v1 of the pull I included some more clock-ids and
+rv1108 fixes that came in meanwhile.
+
+
+Thanks
+Heiko
+
+
+The following changes since commit 5771a8c08880cdca3bfb4a3fc6d309d6bba20877:
+
+  Linux v4.13-rc1 (2017-07-15 15:22:10 -0700)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-clk1
+
+for you to fetch changes up to 64a1644bc3baa62b769455d811b7999b9a1c6cd1:
+
+  clk: rockchip: fix the rv1108 clk_mac sel register description (2017-08-22 02:55:03 +0200)
+
+----------------------------------------------------------------
+The biggest change is fixing the jitter on the fractional clock-type
+Rockchip socs experience with the default approximation. For that we
+introduce the ability to override it with a clock-specific approximation
+and use that to create the needed rate settings as described in the
+Rockchip soc manuals (same for all Rockchip socs).
+
+Apart from that we have support for the rk3126 clock controller
+which is similar to the rk3128 with some minimal differences
+and a lot of improvements and fixes for the rv1108 clock controller
+(missing clocks, some clock-ids, naming fixes, register fixes).
+
+----------------------------------------------------------------
+Elaine Zhang (19):
+      clk: rockchip: add more clk ids for rv1108
+      clk: rockchip: rename the clk id for HCLK_I2S1_2CH
+      clk: rockchip: fix up indentation of some RV1108 clock-ids
+      clk: rockchip: support more rates for rv1108 cpuclk
+      clk: rockchip: fix up the pll clks error for rv1108 SoC
+      clk: rockchip: support more clks for rv1108
+      clk: rockchip: fix up some clks describe error for rv1108 SoC
+      clk: rockchip: rename some of clks for rv1108 SoC
+      clk: rockchip: add some critical clocks for rv1108 SoC
+      dt-bindings: add documentation for rk3126 clock
+      clk: rockchip: modify rk3128 clk driver to also support rk3126
+      clk: fractional-divider: allow overriding of approximation
+      clk: rockchip: add special approximation to fix up fractional clk's jitter
+      clk: rockchip: add rk3228 sclk_sdio_src ID
+      clk: rockchip: add rv1108 ACLK_GAMC and PCLK_GMAC ID
+      clk: rockchip: add rk3228 SCLK_SDIO_SRC clk id
+      clk: rockchip: add rv1108 ACLK_GMAC and PCLK_GMAC clocks
+      clk: rockchip: rename rv1108 macphy clock to mac
+      clk: rockchip: fix the rv1108 clk_mac sel register description
+
+Heiko Stuebner (2):
+      Merge branch 'v4.14-shared/clkids' into v4.14-clk/next
+      Merge branch 'v4.14-shared/clkids' into v4.14-clk/next
+
+ .../bindings/clock/rockchip,rk3128-cru.txt         |   8 +-
+ drivers/clk/clk-fractional-divider.c               |  28 +-
+ drivers/clk/rockchip/clk-rk3128.c                  |  69 ++-
+ drivers/clk/rockchip/clk-rk3228.c                  |   2 +-
+ drivers/clk/rockchip/clk-rv1108.c                  | 462 +++++++++++++++++----
+ drivers/clk/rockchip/clk.c                         |  36 ++
+ include/dt-bindings/clock/rk3228-cru.h             |   1 +
+ include/dt-bindings/clock/rv1108-cru.h             | 125 +++++-
+ include/linux/clk-provider.h                       |   3 +
+ 9 files changed, 611 insertions(+), 123 deletions(-)
+
