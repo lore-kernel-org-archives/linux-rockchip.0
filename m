@@ -1,47 +1,50 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Wed, 23 Aug 2017 10:16:13 +0800
-Message-ID: <599CE56D.3060000@rock-chips.com>
-References: <20170817120431.12398-1-jeffy.chen@rock-chips.com> <20170817120431.12398-2-jeffy.chen@rock-chips.com> <20170818170107.GA119461@google.com> <20170818181416.GF6008@atomide.com> <5997486D.4040803@rock-chips.com> <20170822172653.GJ6008@atomide.com> <599CDB37.3070307@rock-chips.com> <20170823015714.GA129497@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20170823015714.GA129497@google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Tony Lindgren <tony@atomide.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v7 0/3] Add support Rockchip Soc LVDS
+Date: Wed, 23 Aug 2017 14:26:55 +0800
+Message-ID: <1503469615-39406-1-git-send-email-hjc@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
+this patches add support Rockchip RK3288 LVDS support, based on patches from
+Mark yao[0] and Heiko Stuebner[1].
 
-On 08/23/2017 09:57 AM, Brian Norris wrote:
-> Hi Jeffy,
->
-> On Wed, Aug 23, 2017 at 09:32:39AM +0800, Jeffy Chen wrote:
->> and for eage irq, maybe we should enable it right after(or before)
->> the driver activate wake function(for example activate WOWLAN or
->> WOLAN), otherwise would it be possible to miss some irqs(triggered
->> before we actually enable the wake irq)?
->
-> I already mentioned this: for the PCI case, the specification explicitly
-> says that the WAKE# pin must remain asserted until the system wakes and
-> resets the link. So we don't have this problem.
-Sorry, i means for other use cases of wakeirq, for example sdio wifi
+[0]: https://github.com/RockchipOpensourceCommunity/popmetal-kernel-3.14
+[1]: http://lists.infradead.org/pipermail/linux-rockchip/2015-April/002830.html
 
->
-> But it is probably still useful to make sure there's a well-defined
-> point at which these interrupts are armed, so that if a device driver
-> does care, it can account for that. Just before suspend_noirq (as it is
-> today) is probably fine, so if there's some device-level handling that
-> needs to happen before we get to suspend (but after the wakeirq is
-> armed), it can go in the device or bus {suspend,resume}_noirq callbacks.
+Changes:
+- Update rockchip_lvds_encoder_helper_funcs to atomic API
+- Add bridge function for RGB/LVDS convert to other output type
+- Fix some unreasonable define
+- Adapter to the latest rockchip DRM driver framework
+- Add pinctrl for RGB output type
+- Reseved some define for rockchip next Soc
 
-Yes, then we may need to handle "disable level irq" job in the irq 
-handler(or runtime resume callback as current wakeirq API suggested) for 
-irqs received before suspend devices irqs.
->
-> Brian
->
->
->
+Sandy Huang (3):
+  dt-bindings: display: Add Document for Rockchip Soc LVDS
+  ARM: dts: Add LVDS info for rk3288
+  drm/rockchip: Add support for Rockchip Soc LVDS
+
+ .../bindings/display/rockchip/rockchip-lvds.txt    |  99 ++++
+ arch/arm/boot/dts/rk3288.dtsi                      |  52 ++
+ drivers/gpu/drm/rockchip/Kconfig                   |   9 +
+ drivers/gpu/drm/rockchip/Makefile                  |   1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |   2 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |   1 +
+ drivers/gpu/drm/rockchip/rockchip_lvds.c           | 582 +++++++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_lvds.h           | 114 ++++
+ 8 files changed, 860 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_lvds.c
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_lvds.h
+
+-- 
+2.7.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
