@@ -1,53 +1,32 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v5 09/10] PCI: rockchip: remove irq domain if failing to probe
-Date: Wed, 23 Aug 2017 15:03:31 +0800
-Message-ID: <1503471811-74167-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 0/3] add usb support for rv1108 SoCs
+Date: Wed, 23 Aug 2017 09:26:27 +0200
+Message-ID: <4411588.R4EXSA7JtF@phil>
+References: <1503304768-14520-1-git-send-email-frank.wang@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1503304768-14520-1-git-send-email-frank.wang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wang <frank.wang@rock-chips.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, william.wu@rock-chips.com, daniel.meng@rock-chips.com, kever.yang@rock-chips.com, andy.yan@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Am Montag, 21. August 2017, 16:39:25 CEST schrieb Frank Wang:
+> This serie adds USB related device nodes support for rv1108 SoCs, in addition,
+> Rockchip's rv1108-evb board has one usb otg controller and one usb host
+> controller, each controller connect with one usb-phy port through UTMI+
+> interface, the changes also enable usb related for rv1108-evb board.
+> 
+> Frank Wang (3):
+>   dt-bindings: update dt-binding for rv1108 SoCs
+>   ARM: dts: rockchip: add usb nodes for rv1108 SoCs
+>   ARM: dts: rockchip: enable usb for rv1108-evb
 
-Fix the missing to call irq_domain_remove if failing
-to finish the probe.
+applied all 3 for 4.14 ... with some minor changes to patch subjects
+and property ordering
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
 
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-
- drivers/pci/host/pcie-rockchip.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 6dbd3fd..e752d3e 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1572,7 +1572,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
- 					       &res, &io_base);
- 	if (err)
--		goto err_deinit_port;
-+		goto err_remove_irq_domain;
- 
- 	err = devm_request_pci_bus_resources(dev, &res);
- 	if (err)
-@@ -1644,6 +1644,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- err_free_res:
- 	pci_free_resource_list(&res);
-+err_remove_irq_domain:
-+	irq_domain_remove(rockchip->irq_domain);
- err_deinit_port:
- 	rockchip_pcie_deinit_phys(rockchip);
- err_vpcie:
--- 
-1.9.1
+Thanks
+Heiko
