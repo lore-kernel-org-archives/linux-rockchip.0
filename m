@@ -1,28 +1,116 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 5/5] arm64: dts: add Haikou baseboard with RK3399-Q7 SoM
-Date: Wed, 23 Aug 2017 09:43:58 +0200
-Message-ID: <2213567.s1uYChctBr@phil>
-References: <20170818193445.47542-1-klaus.goger@theobroma-systems.com> <20170818193445.47542-6-klaus.goger@theobroma-systems.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170818193445.47542-6-klaus.goger@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Klaus Goger <klaus.goger@theobroma-systems.com>
-Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Liang Chen <cl@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jorik Jonker <jorik@kippendief.biz>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Icenowy Zheng <icenowy@aosc.io>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Chen-Yu Tsai <wens@csie.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH v2] pinctrl: rockchip: Add rv1108 recalculated iomux support
+Date: Wed, 23 Aug 2017 16:00:07 +0800
+Message-ID: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: heiko@sntech.de, linus.walleij@linaro.org
+Cc: huangtao@rock-chips.com, andy.yan@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 18. August 2017, 21:34:45 CEST schrieb Klaus Goger:
-> Haikou is a Qseven and μQseven baseboard featuring PCIe, USB3 and a
-> video connector for MIPI-DSI/CSI and eDP adapter.
-> 
-> This dts is for usage with the RK3399-Q7 SoM Puma.
-> 
-> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
+The pins from GPIO1A0 to GPIO1B1 are special, need to recalculate
+iomux. And the register offset is larger than the u8 range, so changed
+to u32.
 
-applied for 4.14, after adding a "rockchip:" in the subject (after "dts:")
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 68 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 67 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index c6f472e..b5cb785 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -301,7 +301,7 @@ struct rockchip_pin_bank {
+ struct rockchip_mux_recalced_data {
+ 	u8 num;
+ 	u8 pin;
+-	u8 reg;
++	u32 reg;
+ 	u8 bit;
+ 	u8 mask;
+ };
+@@ -558,6 +558,70 @@ static void rockchip_dt_free_map(struct pinctrl_dev *pctldev,
+  * Hardware access
+  */
+ 
++static struct rockchip_mux_recalced_data rv1108_mux_recalced_data[] = {
++	{
++		.num = 1,
++		.pin = 0,
++		.reg = 0x418,
++		.bit = 0,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 1,
++		.reg = 0x418,
++		.bit = 2,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 2,
++		.reg = 0x418,
++		.bit = 4,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 3,
++		.reg = 0x418,
++		.bit = 6,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 4,
++		.reg = 0x418,
++		.bit = 8,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 5,
++		.reg = 0x418,
++		.bit = 10,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 6,
++		.reg = 0x418,
++		.bit = 12,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 7,
++		.reg = 0x418,
++		.bit = 14,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 8,
++		.reg = 0x41c,
++		.bit = 0,
++		.mask = 0x3
++	}, {
++		.num = 1,
++		.pin = 9,
++		.reg = 0x41c,
++		.bit = 2,
++		.mask = 0x3
++	},
++};
++
+ static  struct rockchip_mux_recalced_data rk3128_mux_recalced_data[] = {
+ 	{
+ 		.num = 2,
+@@ -3162,6 +3226,8 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 	.type			= RV1108,
+ 	.grf_mux_offset		= 0x10,
+ 	.pmu_mux_offset		= 0x0,
++	.iomux_recalced		= rv1108_mux_recalced_data,
++	.niomux_recalced	= ARRAY_SIZE(rv1108_mux_recalced_data),
+ 	.pull_calc_reg		= rv1108_calc_pull_reg_and_bit,
+ 	.drv_calc_reg		= rv1108_calc_drv_reg_and_bit,
+ 	.schmitt_calc_reg	= rv1108_calc_schmitt_reg_and_bit,
+-- 
+1.9.1
 
 
-Thanks
-Heiko
