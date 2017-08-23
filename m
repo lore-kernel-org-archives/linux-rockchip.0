@@ -1,51 +1,28 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 4/5] arm64: dts: add RK3399-Q7 (Puma) SoM
-Date: Wed, 23 Aug 2017 09:38:06 +0200
-Message-ID: <1970473.BhgrPuBMdS@phil>
-References: <20170818193445.47542-1-klaus.goger@theobroma-systems.com> <20170818193445.47542-5-klaus.goger@theobroma-systems.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 5/5] arm64: dts: add Haikou baseboard with RK3399-Q7 SoM
+Date: Wed, 23 Aug 2017 09:43:58 +0200
+Message-ID: <2213567.s1uYChctBr@phil>
+References: <20170818193445.47542-1-klaus.goger@theobroma-systems.com> <20170818193445.47542-6-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170818193445.47542-5-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170818193445.47542-6-klaus.goger@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Klaus Goger <klaus.goger@theobroma-systems.com>
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, Liang Chen <cl@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jorik Jonker <jorik@kippendief.biz>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Icenowy Zheng <icenowy@aosc.io>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Chen-Yu Tsai <wens@csie.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 18. August 2017, 21:34:44 CEST schrieb Klaus Goger:
-> The RK3399-Q7 SoM is a Qseven-compatible (70mm x 70mm, MXM-230
-> connector) system-on-module from Theobroma Systems, featuring the
-> Rockchip RK3399.
+Am Freitag, 18. August 2017, 21:34:45 CEST schrieb Klaus Goger:
+> Haikou is a Qseven and μQseven baseboard featuring PCIe, USB3 and a
+> video connector for MIPI-DSI/CSI and eDP adapter.
 > 
-> It provides the following feature set:
->  * up to 4GB DDR3
->  * on-module SPI-NOR flash
->  * on-module eMMC (with 8-bit 1.8V interface)
->  * SD card (on a baseboad) via edge connector
->  * Gigabit Ethernet with on-module Micrel KSZ9031 GbE PHY
->  * HDMI/eDP/2x MIPI-DSI
->  * 2x MIPI-CSI
->  * USB
->    - 1x USB 3.0 dual-role (direct connection)
->    - 2x USB 3.0 host + 1x USB 2.0 (on-module USB 3.0 hub)
->  * on-module STM32 Cortex-M0 companion controller, implementing:
->    - low-power RTC functionality (ISL1208 emulation)
->    - fan controller (AMC6821 emulation)
->    - USB<->CAN bridge controller
+> This dts is for usage with the RK3399-Q7 SoM Puma.
 > 
-> Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
 
-applied for 4.14 with:
-- a comment style fix
-- added "rockchip:" to patch subject 
-- 2 minor indentation fixes
-- property and node reorderings
+applied for 4.14, after adding a "rockchip:" in the subject (after "dts:")
 
 
 Thanks
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
