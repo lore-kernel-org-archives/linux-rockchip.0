@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v5 01/10] PCI: rockchip: spilt out rockchip_pcie_setup_irq
-Date: Wed, 23 Aug 2017 15:02:05 +0800
-Message-ID: <1503471725-73765-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v5 03/10] PCI: rockchip: spilt out rockchip_pcie_disable_clocks
+Date: Wed, 23 Aug 2017 15:02:28 +0800
+Message-ID: <1503471748-73858-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
 In-Reply-To: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
@@ -10,8 +10,8 @@ To: Bjorn Helgaas <bhelgaas@google.com>
 Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Spilt out rockchip_pcie_setup_irq in order to prepare for
-the following bug fixing. No functional change intended.
+Spilt out rockchip_pcie_disable_clocks so that it could be
+reused by other functions. No functional change intended.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
@@ -21,116 +21,77 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/pci/host/pcie-rockchip.c | 82 +++++++++++++++++++++++-----------------
- 1 file changed, 47 insertions(+), 35 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 30 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 2eccd53..6dc3d83 100644
+index 52974cf..971d22b 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -929,6 +929,51 @@ static int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip)
- 	return 0;
+@@ -1414,6 +1414,16 @@ static int rockchip_pcie_enable_clocks(
+ 	return err;
  }
  
-+static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
++static void rockchip_pcie_disable_clocks(void *data)
 +{
-+	int irq, err;
-+	struct device *dev = rockchip->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
++	struct rockchip_pcie *rockchip = data;
 +
-+	irq = platform_get_irq_byname(pdev, "sys");
-+	if (irq < 0) {
-+		dev_err(dev, "missing sys IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
-+			       IRQF_SHARED, "pcie-sys", rockchip);
-+	if (err) {
-+		dev_err(dev, "failed to request PCIe subsystem IRQ\n");
-+		return err;
-+	}
-+
-+	irq = platform_get_irq_byname(pdev, "legacy");
-+	if (irq < 0) {
-+		dev_err(dev, "missing legacy IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	irq_set_chained_handler_and_data(irq,
-+					 rockchip_pcie_legacy_int_handler,
-+					 rockchip);
-+
-+	irq = platform_get_irq_byname(pdev, "client");
-+	if (irq < 0) {
-+		dev_err(dev, "missing client IRQ resource\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
-+			       IRQF_SHARED, "pcie-client", rockchip);
-+	if (err) {
-+		dev_err(dev, "failed to request PCIe client IRQ\n");
-+		return err;
-+	}
-+
-+	return 0;
++	clk_disable_unprepare(rockchip->clk_pcie_pm);
++	clk_disable_unprepare(rockchip->hclk_pcie);
++	clk_disable_unprepare(rockchip->aclk_perf_pcie);
++	clk_disable_unprepare(rockchip->aclk_pcie);
 +}
 +
- /**
-  * rockchip_pcie_parse_dt - Parse Device Tree
-  * @rockchip: PCIe port information
-@@ -941,7 +986,6 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct device_node *node = dev->of_node;
- 	struct resource *regs;
--	int irq;
- 	int err;
- 
- 	regs = platform_get_resource_byname(pdev,
-@@ -1055,41 +1099,9 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		return PTR_ERR(rockchip->clk_pcie_pm);
+ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
+ {
+ 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+@@ -1437,10 +1447,7 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
+ 		phy_exit(rockchip->phys[i]);
  	}
  
--	irq = platform_get_irq_byname(pdev, "sys");
--	if (irq < 0) {
--		dev_err(dev, "missing sys IRQ resource\n");
--		return -EINVAL;
--	}
--
--	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
--			       IRQF_SHARED, "pcie-sys", rockchip);
--	if (err) {
--		dev_err(dev, "failed to request PCIe subsystem IRQ\n");
--		return err;
--	}
--
--	irq = platform_get_irq_byname(pdev, "legacy");
--	if (irq < 0) {
--		dev_err(dev, "missing legacy IRQ resource\n");
--		return -EINVAL;
--	}
--
--	irq_set_chained_handler_and_data(irq,
--					 rockchip_pcie_legacy_int_handler,
--					 rockchip);
--
--	irq = platform_get_irq_byname(pdev, "client");
--	if (irq < 0) {
--		dev_err(dev, "missing client IRQ resource\n");
--		return -EINVAL;
--	}
--
--	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
--			       IRQF_SHARED, "pcie-client", rockchip);
--	if (err) {
--		dev_err(dev, "failed to request PCIe client IRQ\n");
-+	err = rockchip_pcie_setup_irq(rockchip);
-+	if (err)
- 		return err;
--	}
+-	clk_disable_unprepare(rockchip->clk_pcie_pm);
+-	clk_disable_unprepare(rockchip->hclk_pcie);
+-	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-	clk_disable_unprepare(rockchip->aclk_pcie);
++	rockchip_pcie_disable_clocks(rockchip);
  
- 	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
- 	if (IS_ERR(rockchip->vpcie12v)) {
+ 	if (!IS_ERR(rockchip->vpcie0v9))
+ 		regulator_disable(rockchip->vpcie0v9);
+@@ -1480,10 +1487,7 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+ 	return 0;
+ 
+ err_pcie_resume:
+-	clk_disable_unprepare(rockchip->aclk_pcie);
+-	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-	clk_disable_unprepare(rockchip->hclk_pcie);
+-	clk_disable_unprepare(rockchip->clk_pcie_pm);
++	rockchip_pcie_disable_clocks(rockchip);
+ 	return err;
+ }
+ 
+@@ -1622,10 +1626,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (!IS_ERR(rockchip->vpcie0v9))
+ 		regulator_disable(rockchip->vpcie0v9);
+ err_set_vpcie:
+-	clk_disable_unprepare(rockchip->clk_pcie_pm);
+-	clk_disable_unprepare(rockchip->hclk_pcie);
+-	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-	clk_disable_unprepare(rockchip->aclk_pcie);
++	rockchip_pcie_disable_clocks(rockchip);
+ 	return err;
+ }
+ 
+@@ -1647,10 +1648,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+ 		phy_exit(rockchip->phys[i]);
+ 	}
+ 
+-	clk_disable_unprepare(rockchip->clk_pcie_pm);
+-	clk_disable_unprepare(rockchip->hclk_pcie);
+-	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-	clk_disable_unprepare(rockchip->aclk_pcie);
++	rockchip_pcie_disable_clocks(rockchip);
+ 
+ 	if (!IS_ERR(rockchip->vpcie12v))
+ 		regulator_disable(rockchip->vpcie12v);
 -- 
 1.9.1
