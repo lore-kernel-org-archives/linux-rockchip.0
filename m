@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v5 10/10] PCI: rockchip: umap io space if failing to probe
-Date: Wed, 23 Aug 2017 15:03:39 +0800
-Message-ID: <1503471819-74224-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v5 09/10] PCI: rockchip: remove irq domain if failing to probe
+Date: Wed, 23 Aug 2017 15:03:31 +0800
+Message-ID: <1503471811-74167-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
 In-Reply-To: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
@@ -12,12 +12,11 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-Fix the missing to call pci_unmap_iospace if failing
+Fix the missing to call irq_domain_remove if failing
 to finish the probe.
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
 ---
 
 Changes in v5: None
@@ -25,45 +24,30 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/pci/host/pcie-rockchip.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index e752d3e..70d878b 100644
+index 6dbd3fd..e752d3e 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1610,12 +1610,12 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- 	err = rockchip_pcie_cfg_atu(rockchip);
+@@ -1572,7 +1572,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
+ 					       &res, &io_base);
  	if (err)
--		goto err_free_res;
-+		goto err_unmap_iospace;
+-		goto err_deinit_port;
++		goto err_remove_irq_domain;
  
- 	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
- 	if (!rockchip->msg_region) {
- 		err = -ENOMEM;
--		goto err_free_res;
-+		goto err_unmap_iospace;
- 	}
+ 	err = devm_request_pci_bus_resources(dev, &res);
+ 	if (err)
+@@ -1644,6 +1644,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
  
- 	list_splice_init(&res, &bridge->windows);
-@@ -1628,7 +1628,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- 	err = pci_scan_root_bus_bridge(bridge);
- 	if (err < 0)
--		goto err_free_res;
-+		goto err_unmap_iospace;
- 
- 	bus = bridge->bus;
- 
-@@ -1642,6 +1642,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	pci_bus_add_devices(bus);
- 	return 0;
- 
-+err_unmap_iospace:
-+	pci_unmap_iospace(rockchip->io);
  err_free_res:
  	pci_free_resource_list(&res);
- err_remove_irq_domain:
++err_remove_irq_domain:
++	irq_domain_remove(rockchip->irq_domain);
+ err_deinit_port:
+ 	rockchip_pcie_deinit_phys(rockchip);
+ err_vpcie:
 -- 
 1.9.1
