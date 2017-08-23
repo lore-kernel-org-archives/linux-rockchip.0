@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v5 03/10] PCI: rockchip: spilt out rockchip_pcie_disable_clocks
-Date: Wed, 23 Aug 2017 15:02:28 +0800
-Message-ID: <1503471748-73858-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v5 02/10] PCI: rockchip: spilt out rockchip_pcie_enable_clocks
+Date: Wed, 23 Aug 2017 15:02:19 +0800
+Message-ID: <1503471739-73811-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-pci-owner@vger.kernel.org>
 In-Reply-To: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
@@ -10,8 +10,9 @@ To: Bjorn Helgaas <bhelgaas@google.com>
 Cc: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Spilt out rockchip_pcie_disable_clocks so that it could be
-reused by other functions. No functional change intended.
+Spilt out rockchip_pcie_enable_clocks so that it could be
+reused by rockchip_pcie_resume_noirq and rockchip_pcie_probe.
+No functional change intended.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
@@ -21,77 +22,145 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/pci/host/pcie-rockchip.c | 30 ++++++++++++++----------------
- 1 file changed, 14 insertions(+), 16 deletions(-)
+ drivers/pci/host/pcie-rockchip.c | 91 ++++++++++++++++++++--------------------
+ 1 file changed, 46 insertions(+), 45 deletions(-)
 
 diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 52974cf..971d22b 100644
+index 6dc3d83..52974cf 100644
 --- a/drivers/pci/host/pcie-rockchip.c
 +++ b/drivers/pci/host/pcie-rockchip.c
-@@ -1414,6 +1414,16 @@ static int rockchip_pcie_enable_clocks(
- 	return err;
+@@ -1373,6 +1373,47 @@ static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
+ 	return 0;
  }
  
-+static void rockchip_pcie_disable_clocks(void *data)
++static int rockchip_pcie_enable_clocks(
++				struct rockchip_pcie *rockchip)
 +{
-+	struct rockchip_pcie *rockchip = data;
++	struct device *dev = rockchip->dev;
++	int err;
 +
-+	clk_disable_unprepare(rockchip->clk_pcie_pm);
++	err = clk_prepare_enable(rockchip->aclk_pcie);
++	if (err) {
++		dev_err(dev, "unable to enable aclk_pcie clock\n");
++		return err;
++	}
++
++	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
++	if (err) {
++		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
++		goto err_aclk_perf_pcie;
++	}
++
++	err = clk_prepare_enable(rockchip->hclk_pcie);
++	if (err) {
++		dev_err(dev, "unable to enable hclk_pcie clock\n");
++		goto err_hclk_pcie;
++	}
++
++	err = clk_prepare_enable(rockchip->clk_pcie_pm);
++	if (err) {
++		dev_err(dev, "unable to enable clk_pcie_pm clock\n");
++		goto err_clk_pcie_pm;
++	}
++
++	return 0;
++
++err_clk_pcie_pm:
 +	clk_disable_unprepare(rockchip->hclk_pcie);
++err_hclk_pcie:
 +	clk_disable_unprepare(rockchip->aclk_perf_pcie);
++err_aclk_perf_pcie:
 +	clk_disable_unprepare(rockchip->aclk_pcie);
++	return err;
 +}
 +
  static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
  {
  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-@@ -1437,10 +1447,7 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
- 		phy_exit(rockchip->phys[i]);
+@@ -1420,21 +1461,9 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
+ 		}
  	}
  
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->aclk_pcie);
-+	rockchip_pcie_disable_clocks(rockchip);
+-	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+-	if (err)
+-		goto err_pcie_pm;
+-
+-	err = clk_prepare_enable(rockchip->hclk_pcie);
+-	if (err)
+-		goto err_hclk_pcie;
+-
+-	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
+-	if (err)
+-		goto err_aclk_perf_pcie;
+-
+-	err = clk_prepare_enable(rockchip->aclk_pcie);
++	err = rockchip_pcie_enable_clocks(rockchip);
+ 	if (err)
+-		goto err_aclk_pcie;
++		return err;
  
- 	if (!IS_ERR(rockchip->vpcie0v9))
- 		regulator_disable(rockchip->vpcie0v9);
-@@ -1480,10 +1487,7 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
- 	return 0;
+ 	err = rockchip_pcie_init_port(rockchip);
+ 	if (err)
+@@ -1452,13 +1481,9 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
  
  err_pcie_resume:
--	clk_disable_unprepare(rockchip->aclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
-+	rockchip_pcie_disable_clocks(rockchip);
+ 	clk_disable_unprepare(rockchip->aclk_pcie);
+-err_aclk_pcie:
+ 	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-err_aclk_perf_pcie:
+ 	clk_disable_unprepare(rockchip->hclk_pcie);
+-err_hclk_pcie:
+ 	clk_disable_unprepare(rockchip->clk_pcie_pm);
+-err_pcie_pm:
  	return err;
  }
  
-@@ -1622,10 +1626,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (!IS_ERR(rockchip->vpcie0v9))
+@@ -1492,29 +1517,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
+ 
+-	err = clk_prepare_enable(rockchip->aclk_pcie);
+-	if (err) {
+-		dev_err(dev, "unable to enable aclk_pcie clock\n");
+-		goto err_aclk_pcie;
+-	}
+-
+-	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
+-	if (err) {
+-		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
+-		goto err_aclk_perf_pcie;
+-	}
+-
+-	err = clk_prepare_enable(rockchip->hclk_pcie);
+-	if (err) {
+-		dev_err(dev, "unable to enable hclk_pcie clock\n");
+-		goto err_hclk_pcie;
+-	}
+-
+-	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+-	if (err) {
+-		dev_err(dev, "unable to enable hclk_pcie clock\n");
+-		goto err_pcie_pm;
+-	}
++	err = rockchip_pcie_enable_clocks(rockchip);
++	if (err)
++		return err;
+ 
+ 	err = rockchip_pcie_set_vpcie(rockchip);
+ 	if (err) {
+@@ -1618,13 +1623,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
  		regulator_disable(rockchip->vpcie0v9);
  err_set_vpcie:
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->aclk_pcie);
-+	rockchip_pcie_disable_clocks(rockchip);
+ 	clk_disable_unprepare(rockchip->clk_pcie_pm);
+-err_pcie_pm:
+ 	clk_disable_unprepare(rockchip->hclk_pcie);
+-err_hclk_pcie:
+ 	clk_disable_unprepare(rockchip->aclk_perf_pcie);
+-err_aclk_perf_pcie:
+ 	clk_disable_unprepare(rockchip->aclk_pcie);
+-err_aclk_pcie:
  	return err;
  }
  
-@@ -1647,10 +1648,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
- 		phy_exit(rockchip->phys[i]);
- 	}
- 
--	clk_disable_unprepare(rockchip->clk_pcie_pm);
--	clk_disable_unprepare(rockchip->hclk_pcie);
--	clk_disable_unprepare(rockchip->aclk_perf_pcie);
--	clk_disable_unprepare(rockchip->aclk_pcie);
-+	rockchip_pcie_disable_clocks(rockchip);
- 
- 	if (!IS_ERR(rockchip->vpcie12v))
- 		regulator_disable(rockchip->vpcie12v);
 -- 
 1.9.1
