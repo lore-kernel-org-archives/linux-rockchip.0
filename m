@@ -1,29 +1,193 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: update dt-binding for rv1108 SoCs
-Date: Tue, 22 Aug 2017 19:38:40 -0500
-Message-ID: <20170823003840.5pxc2jaqjpc7ttr5@rob-hp-laptop>
-References: <1503304768-14520-1-git-send-email-frank.wang@rock-chips.com>
- <1503304768-14520-2-git-send-email-frank.wang@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: rockchip: manipulate phy properly if failing to
+ probe the driver
+Date: Wed, 23 Aug 2017 09:03:04 +0800
+Message-ID: <4680e7be-0715-132a-3b4c-ae266d459ad2@rock-chips.com>
+References: <1502277263-187898-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170822204750.GG6948@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1503304768-14520-2-git-send-email-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170822204750.GG6948@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Aug 21, 2017 at 04:39:26PM +0800, Frank Wang wrote:
-> This patch adds the compatible of GRF and USBGRF for RV1108 SoCs.
-> 
-> Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/soc/rockchip/grf.txt | 3 +++
->  1 file changed, 3 insertions(+)
+Hi Bjorn,
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On 2017/8/23 4:47, Bjorn Helgaas wrote:
+> On Wed, Aug 09, 2017 at 07:14:23PM +0800, Shawn Lin wrote:
+>> We observed that the clk_pciephy_ref is still enabled when we actually
+>> fail to probe the driver.
+>>
+>> root@linaro-alip:~# cat /sys/kernel/debug/clk/clk_summary | grep pcie
+>> clk_pciephy_ref			  1	1	 24000000	0 0
+>> clk_pcie_pm			  0	0	 24000000	0 0
+>>        clk_pcie_core_cru           0	0	125000000	0 0
+>>        clk_pciephy_ref100m         0	0	100000000	0 0
+>> 		aclk_pcie         0	0	148500000	0 0
+>> 		aclk_perf_pcie    0	0	148500000	0 0
+>> 			pclk_pcie 0	0	 37125000	0 0
+>> clk_pcie_core                     0	0		0	0 0
+>>
+>> clk_pciephy_ref is used by phy driver and we need to properly disable
+>> it for this case. So this patch add error handle for the function of
+>> rockchip_pcie_init_port to fix this issue.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> Applied to pci/host-rockchip for v4.14, thanks!
+
+I actually posted a v2 sometime ago, so could you please drop this one?
+
+And there are still some other error handling path should be fixed.
+So I think that is what Jeffy's patch did:
+
+http://patchwork.ozlabs.org/patch/804239/
+
+
+> 
+>> ---
+>>
+>>   drivers/pci/host/pcie-rockchip.c | 38 ++++++++++++++++++++++++--------------
+>>   1 file changed, 24 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+>> index 2eccd53..ce6371b 100644
+>> --- a/drivers/pci/host/pcie-rockchip.c
+>> +++ b/drivers/pci/host/pcie-rockchip.c
+>> @@ -561,32 +561,32 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>   		err = phy_init(rockchip->phys[i]);
+>>   		if (err) {
+>>   			dev_err(dev, "init phy%d err %d\n", i, err);
+>> -			return err;
+>> +			goto err_phy_exit;
+>>   		}
+>>   	}
+>>   
+>>   	err = reset_control_assert(rockchip->core_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "assert core_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	err = reset_control_assert(rockchip->mgmt_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "assert mgmt_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	err = reset_control_assert(rockchip->mgmt_sticky_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	err = reset_control_assert(rockchip->pipe_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "assert pipe_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	udelay(10);
+>> @@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>   	err = reset_control_deassert(rockchip->pm_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert pm_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	err = reset_control_deassert(rockchip->aclk_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert aclk_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	err = reset_control_deassert(rockchip->pclk_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert pclk_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_exit;
+>>   	}
+>>   
+>>   	if (rockchip->link_gen == 2)
+>> @@ -628,7 +628,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>   		err = phy_power_on(rockchip->phys[i]);
+>>   		if (err) {
+>>   			dev_err(dev, "power on phy%d err %d\n", i, err);
+>> -			return err;
+>> +			goto err_phy_power_off;
+>>   		}
+>>   	}
+>>   
+>> @@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>   	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_power_off;
+>>   	}
+>>   
+>>   	err = reset_control_deassert(rockchip->core_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert core_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_power_off;
+>>   	}
+>>   
+>>   	err = reset_control_deassert(rockchip->mgmt_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert mgmt_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_power_off;
+>>   	}
+>>   
+>>   	err = reset_control_deassert(rockchip->pipe_rst);
+>>   	if (err) {
+>>   		dev_err(dev, "deassert pipe_rst err %d\n", err);
+>> -		return err;
+>> +		goto err_phy_power_off;
+>>   	}
+>>   
+>>   	/* Fix the transmitted FTS count desired to exit from L0s. */
+>> @@ -690,7 +690,8 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>   				 500 * USEC_PER_MSEC);
+>>   	if (err) {
+>>   		dev_err(dev, "PCIe link training gen1 timeout!\n");
+>> -		return -ETIMEDOUT;
+>> +		err = -ETIMEDOUT;
+>> +		goto err_phy_power_off;
+>>   	}
+>>   
+>>   	if (rockchip->link_gen == 2) {
+>> @@ -751,6 +752,15 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>>   	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
+>>   
+>>   	return 0;
+>> +
+>> +err_phy_exit:
+>> +	for (; i >= 0; --i)
+>> +		phy_exit(rockchip->phys[i]);
+>> +err_phy_power_off:
+>> +	for (; i >= 0; --i)
+>> +		phy_power_off(rockchip->phys[i]);
+>> +
+>> +	return err;
+>>   }
+>>   
+>>   static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+>> -- 
+>> 1.9.1
+>>
+>>
+> 
+> 
+> 
