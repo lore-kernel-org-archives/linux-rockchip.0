@@ -1,26 +1,35 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/3] ARM: dts: rockchip: add cpu power supply for rv1108 evb
-Date: Wed, 23 Aug 2017 01:34:21 +0200
-Message-ID: <1674928.yr4pPaqQNI@phil>
-References: <1503407515-13943-1-git-send-email-andy.yan@rock-chips.com> <1503407610-14001-1-git-send-email-andy.yan@rock-chips.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 3/5] dt-bindings: add rk3399-q7 SoM
+Date: Tue, 22 Aug 2017 19:23:43 -0500
+Message-ID: <20170823002343.3yuagvfe4vqmxnh7@rob-hp-laptop>
+References: <20170818193445.47542-1-klaus.goger@theobroma-systems.com>
+ <20170818193445.47542-4-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503407610-14001-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170818193445.47542-4-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH73oGB3hsPCZA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 22. August 2017, 21:13:30 CEST schrieb Andy Yan:
-> The cpu is powered by regulator vdd_core on RV1108 evalution
-> board. Add it to the cpu dt node.
+On Fri, Aug 18, 2017 at 09:34:43PM +0200, Klaus Goger wrote:
+> RK3399-Q7 is a Qseven compatible system-on-module by Theobroma Systems.
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> This adds the module and the EVK baseboard "Haikou"
+> 
+> Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> ---
+> 
+> Changes in v2: None
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-applied for 4.14.
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-
-Thanks
-Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
