@@ -1,40 +1,62 @@
-From: <cl@rock-chips.com>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: add cpu regulator for rk3328 evaluation board
-Date: Thu, 24 Aug 2017 10:37:03 +0800
-Message-ID: <1503542223-21044-4-git-send-email-cl@rock-chips.com>
-References: <1503542223-21044-1-git-send-email-cl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503542223-21044-1-git-send-email-cl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawnguo@kernel.org, rocky.hao@rock-chips.com, afaerber@suse.de, fabio.estevam@nxp.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, rjw@rjwysocki.net, viresh.kumar@linaro.org, linux-pm@vger.kernel.org, Liang Chen <cl@rock-chips.com>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [RESENT PATCH v7 0/7] ASoC: rockchip: Parse dai links
+	from dts
+Date: Thu, 24 Aug 2017 12:52:20 +0800
+Message-ID: <20170824045227.15504-1-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, briannorris@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Mark Brown <broonie@kernel.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Will Deacon <will.deacon@arm.com>, dianders@chromium.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, mka@chromium.org, Klaus Goger <klaus.goger@theobroma-systems.com>, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Liang Chen <cl@rock-chips.com>
 
-RK3328 Evaluation Board use rk805 pmic, and one of the DCDCs in
-rk805 is for cpu regulator, assign the cpu regulator, so the
-cpufreq can work fine.
+Currently we are using a fixed list of dai links in the driver.
+This serial of patches would let the driver parse dai links from
+dts, so that we can make some of them optional for future boards.
 
-Signed-off-by: Liang Chen <cl@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+Tested on my chromebook bob(with cros 4.4 kernel), it still works
+after disabled rt5514 codecs in the dts.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 30816c1..f82b2d0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -96,6 +96,10 @@
- 	};
- };
- 
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
- &emmc {
- 	bus-width = <8>;
- 	cap-mmc-highspeed;
+
+Changes in v7:
+Rebase on the newest for-next
+
+Changes in v6:
+Add dmic wakeup delay(not used for now).
+
+Changes in v3:
+Use compatible to match audio codecs
+        -- Suggested-by Matthias Kaehlcke <mka@chromium.org>
+
+Changes in v2:
+Let rockchip,codec-names be a required property, because we plan to
+add more supported codecs to the fixed dai link list in the driver.
+
+Jeffy Chen (7):
+  ASoC: rockchip: Use codec of_node and dai_name for rt5514 dsp
+  arm64: dts: rockchip: Add rt5514 dsp for Gru
+  arm64: dts: rockchip: Update rt5514 devices' compatible for Gru
+  ASoC: rockchip: Parse dai links from dts
+  ASoC: rockchip: Add support for DP codec
+  ASoC: rockchip: Add support for DMIC codec
+  dt-bindings: ASoC: rockchip: Update description of rockchip,codec
+
+ .../bindings/sound/rockchip,rk3399-gru-sound.txt   |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |   7 +-
+ sound/soc/rockchip/Kconfig                         |   2 +
+ sound/soc/rockchip/rk3399_gru_sound.c              | 255 +++++++++++++++------
+ 4 files changed, 186 insertions(+), 80 deletions(-)
+
 -- 
-1.9.1
+2.11.0
