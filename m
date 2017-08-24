@@ -1,99 +1,36 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 2/2] second round of Rockchip dts32 changes for 4.14
-Date: Thu, 24 Aug 2017 10:42:12 +0200
-Message-ID: <2301603.fd1AhSc3fO@phil>
-References: <4088347.CX4PhsiguF@phil>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [RESEND v9 06/12] rtc: Kconfig: Name RK805 in Kconfig for
+ RTC_DRV_RK808
+Date: Thu, 24 Aug 2017 11:17:50 +0200
+Message-ID: <20170824091750.yoo5wzg77ftt2wyt@piout.net>
+References: <1502848628-27757-1-git-send-email-chenjh@rock-chips.com>
+ <1502848835-24800-1-git-send-email-chenjh@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4088347.CX4PhsiguF@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1502848835-24800-1-git-send-email-chenjh@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Joseph Chen <chenjh@rock-chips.com>
+Cc: gnurou@gmail.com, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, lee.jones@linaro.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, broonie@kernel.org, zhangqing@rock-chips.com, robh+dt@kernel.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, wdc@rock-chips.com, tony.xie@rock-chips.com, linux-input@vger.kernel.org, mark.rutland@arm.com, w.egorov@phytec.de, linux-clk@vger.kernel.org, a.zummo@towertech.it, rtc-linux@googlegroups.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 0f4dc7e154d054303c4dd6b5c3e3207f9a7f8714:
+On 16/08/2017 at 10:00:35 +0800, Joseph Chen wrote:
+> From: Elaine Zhang <zhangqing@rock-chips.com>
+> 
+> The RK808 and RK805 PMICs are using a similar register map.
+> We can reuse the rtc driver for the RK805 PMIC. So let's add
+> the RK805 in the Kconfig description.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+> ---
+>  drivers/rtc/Kconfig | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+Applied, thanks.
 
-  ARM: dts: rockchip: fix property-ordering in rv1108 mmc nodes (2017-07-22 22:41:35 +0200)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-dts32-2
-
-for you to fetch changes up to 274ff50d3ad951bca0adbfb9ffd628d35ba6db6f:
-
-  ARM: dts: rockchip: enable usb for rv1108-evb (2017-08-23 09:24:51 +0200)
-
-----------------------------------------------------------------
-A lot of attention for the rv1108 soc targetted at media-processing
-(usb, operating points, spi, pwm, adc, watchdog, i2c and devices for
-its evb).
-
-RK3228/3229 gets iommu and spi nodes. Similar to the rk3288 which
-also gets some more iommu nodes as well as getting converted to 64
-bit addresses due to wanting to address more than 4GB of memory
-via LPAE.
-
-----------------------------------------------------------------
-Andy Yan (10):
-      ARM: dts: rockchip: add i2c dt nodes for rv1108
-      ARM: dts: rockchip: add watchdog dt node for rv1108
-      ARM: dts: rockchip: add saradc support for rv1108
-      ARM: dts: rockchip: add spi dt node for rv1108
-      ARM: dts: rockchip: add pwm dt nodes for rv1108
-      ARM: dts: rockchip: add pwm backlight for rv1108 evb
-      ARM: dts: rockchip: add pmic rk805 dt node for rv1108 evb
-      ARM: dts: rockchip: add accelerometer bma250e dt node for rv1108 evb
-      ARM: dts: rockchip: add cpu opp table for rv1108
-      ARM: dts: rockchip: add cpu power supply for rv1108 evb
-
-Elaine Zhang (3):
-      clk: rockchip: add more clk ids for rv1108
-      clk: rockchip: rename the clk id for HCLK_I2S1_2CH
-      clk: rockchip: fix up indentation of some RV1108 clock-ids
-
-Frank Wang (3):
-      dt-bindings: update grf-binding for rv1108 SoCs
-      ARM: dts: rockchip: add usb nodes for rv1108 SoCs
-      ARM: dts: rockchip: enable usb for rv1108-evb
-
-Heiko Stuebner (1):
-      Merge branch 'v4.14-shared/clkids' into v4.14-armsoc/dts32
-
-Huibin Hong (1):
-      ARM: dts: rockchip: add spi node and spi pinctrl on rk3228/rk3229
-
-Simon Xue (2):
-      ARM: dts: rockchip: add more iommu nodes on rk3288
-      ARM: dts: rockchip: add rk322x iommu nodes
-
-Tao Huang (1):
-      ARM: dts: rockchip: convert rk3288 device tree files to 64 bits
-
- .../devicetree/bindings/soc/rockchip/grf.txt       |   3 +
- arch/arm/boot/dts/rk322x.dtsi                      |  86 +++++
- arch/arm/boot/dts/rk3288-evb.dtsi                  |   2 +-
- arch/arm/boot/dts/rk3288-fennec.dts                |   2 +-
- arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi  |   2 +-
- arch/arm/boot/dts/rk3288-firefly.dtsi              |   2 +-
- arch/arm/boot/dts/rk3288-miqi.dts                  |   2 +-
- arch/arm/boot/dts/rk3288-phycore-som.dtsi          |   2 +-
- arch/arm/boot/dts/rk3288-popmetal.dts              |   2 +-
- arch/arm/boot/dts/rk3288-r89.dts                   |   2 +-
- arch/arm/boot/dts/rk3288-rock2-som.dtsi            |   2 +-
- arch/arm/boot/dts/rk3288-tinker.dts                |   2 +-
- arch/arm/boot/dts/rk3288-veyron.dtsi               |   2 +-
- arch/arm/boot/dts/rk3288.dtsi                      | 215 +++++++------
- arch/arm/boot/dts/rv1108-evb.dts                   | 186 +++++++++++
- arch/arm/boot/dts/rv1108.dtsi                      | 349 ++++++++++++++++++++-
- include/dt-bindings/clock/rv1108-cru.h             | 123 +++++++-
- 17 files changed, 867 insertions(+), 117 deletions(-)
+-- 
+Alexandre Belloni, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
