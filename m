@@ -1,452 +1,106 @@
 From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v4 1/4] PCI: rockchip: Fix error handlings
-Date: Thu, 24 Aug 2017 11:50:05 -0500
-Message-ID: <20170824165005.GJ31858@bhelgaas-glaptop.roam.corp.google.com>
+Subject: Re: [PATCH v4 2/4] PCI: rockchip: Add support for pcie wake irq
+Date: Thu, 24 Aug 2017 11:51:36 -0500
+Message-ID: <20170824165136.GK31858@bhelgaas-glaptop.roam.corp.google.com>
 References: <20170822031934.8675-1-jeffy.chen@rock-chips.com>
- <20170822031934.8675-2-jeffy.chen@rock-chips.com>
+ <20170822031934.8675-3-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170822031934.8675-2-jeffy.chen@rock-chips.com>
+In-Reply-To: <20170822031934.8675-3-jeffy.chen@rock-chips.com>
 Sender: linux-pci-owner@vger.kernel.org
 To: Jeffy Chen <jeffy.chen@rock-chips.com>
 Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 22, 2017 at 11:19:31AM +0800, Jeffy Chen wrote:
-> Fix error handlings in probe & resume.
+On Tue, Aug 22, 2017 at 11:19:32AM +0800, Jeffy Chen wrote:
+> Add support for PCIE_WAKE pin in rockchip pcie driver.
 
-Changelog should have a little detail about *what* you're fixing.  For
-example, it looks like you are powering off PHYs if the init fails.
+Changelog should include a hint about what DT property this PCIE_WAKE
+support depends on.
 
 > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 > ---
 > 
-> Changes in v4:
-> Rebase on newest for-next branch, also fix error handling by:
-> 1e7f570a1b86 PCI: rockchip: Idle inactive PHY(s)
+> Changes in v4: None
+> Changes in v3:
+> Fix error handling
 > 
-> Changes in v3: None
-> Changes in v2: None
+> Changes in v2:
+> Use dev_pm_set_dedicated_wake_irq
+>         -- Suggested by Brian Norris <briannorris@chromium.com>
 > 
->  drivers/pci/host/pcie-rockchip.c | 160 +++++++++++++++++++++------------------
->  1 file changed, 87 insertions(+), 73 deletions(-)
+>  drivers/pci/host/pcie-rockchip.c | 21 +++++++++++++++++++--
+>  1 file changed, 19 insertions(+), 2 deletions(-)
 > 
 > diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 2eccd532c256..5d85ec2e2fb0 100644
+> index 5d85ec2e2fb0..a0f7267984da 100644
 > --- a/drivers/pci/host/pcie-rockchip.c
 > +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -561,32 +561,32 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  		err = phy_init(rockchip->phys[i]);
->  		if (err) {
->  			dev_err(dev, "init phy%d err %d\n", i, err);
-> -			return err;
-> +			goto err_exit_phy;
->  		}
+> @@ -37,6 +37,7 @@
+>  #include <linux/pci_ids.h>
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/pm_wakeirq.h>
+>  #include <linux/reset.h>
+>  #include <linux/regmap.h>
+>  
+> @@ -1111,6 +1112,15 @@ static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  		return err;
 >  	}
 >  
->  	err = reset_control_assert(rockchip->core_rst);
->  	if (err) {
->  		dev_err(dev, "assert core_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	err = reset_control_assert(rockchip->mgmt_rst);
->  	if (err) {
->  		dev_err(dev, "assert mgmt_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	err = reset_control_assert(rockchip->mgmt_sticky_rst);
->  	if (err) {
->  		dev_err(dev, "assert mgmt_sticky_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	err = reset_control_assert(rockchip->pipe_rst);
->  	if (err) {
->  		dev_err(dev, "assert pipe_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	udelay(10);
-> @@ -594,19 +594,19 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	err = reset_control_deassert(rockchip->pm_rst);
->  	if (err) {
->  		dev_err(dev, "deassert pm_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	err = reset_control_deassert(rockchip->aclk_rst);
->  	if (err) {
->  		dev_err(dev, "deassert aclk_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	err = reset_control_deassert(rockchip->pclk_rst);
->  	if (err) {
->  		dev_err(dev, "deassert pclk_rst err %d\n", err);
-> -		return err;
-> +		goto err_exit_phy;
->  	}
->  
->  	if (rockchip->link_gen == 2)
-> @@ -628,7 +628,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  		err = phy_power_on(rockchip->phys[i]);
->  		if (err) {
->  			dev_err(dev, "power on phy%d err %d\n", i, err);
-> -			return err;
-> +			goto err_power_off_phy;
->  		}
->  	}
->  
-> @@ -639,25 +639,25 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	err = reset_control_deassert(rockchip->mgmt_sticky_rst);
->  	if (err) {
->  		dev_err(dev, "deassert mgmt_sticky_rst err %d\n", err);
-> -		return err;
-> +		goto err_power_off_phy;
->  	}
->  
->  	err = reset_control_deassert(rockchip->core_rst);
->  	if (err) {
->  		dev_err(dev, "deassert core_rst err %d\n", err);
-> -		return err;
-> +		goto err_power_off_phy;
->  	}
->  
->  	err = reset_control_deassert(rockchip->mgmt_rst);
->  	if (err) {
->  		dev_err(dev, "deassert mgmt_rst err %d\n", err);
-> -		return err;
-> +		goto err_power_off_phy;
->  	}
->  
->  	err = reset_control_deassert(rockchip->pipe_rst);
->  	if (err) {
->  		dev_err(dev, "deassert pipe_rst err %d\n", err);
-> -		return err;
-> +		goto err_power_off_phy;
->  	}
->  
->  	/* Fix the transmitted FTS count desired to exit from L0s. */
-> @@ -690,7 +690,7 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  				 500 * USEC_PER_MSEC);
->  	if (err) {
->  		dev_err(dev, "PCIe link training gen1 timeout!\n");
-> -		return -ETIMEDOUT;
-> +		goto err_power_off_phy;
->  	}
->  
->  	if (rockchip->link_gen == 2) {
-> @@ -751,6 +751,26 @@ static int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
->  	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
->  
->  	return 0;
-> +err_power_off_phy:
-> +	while (i--)
-> +		phy_power_off(rockchip->phys[i]);
-> +	i = MAX_LANE_NUM;
-> +err_exit_phy:
-> +	while (i--)
-> +		phy_exit(rockchip->phys[i]);
-> +	return err;
-> +}
-> +
-> +static void rockchip_pcie_deinit_phys(struct rockchip_pcie *rockchip)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < MAX_LANE_NUM; i++) {
-> +		/* inactive lane is already powered off */
-> +		if (rockchip->legacy_phy || rockchip->lanes_map & BIT(i))
-> +			phy_power_off(rockchip->phys[i]);
-> +		phy_exit(rockchip->phys[i]);
+> +	/* Must init wakeup before setting dedicated wake irq. */
+> +	device_init_wakeup(dev, true);
+> +	irq = platform_get_irq_byname(pdev, "wake");
+> +	if (irq >= 0) {
+> +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
+> +		if (err)
+> +			dev_err(dev, "failed to setup PCIe wake IRQ\n");
+
+Error message could include the IRQ #.
+
 > +	}
->  }
+> +
+>  	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
+>  	if (IS_ERR(rockchip->vpcie12v)) {
+>  		if (PTR_ERR(rockchip->vpcie12v) == -EPROBE_DEFER)
+> @@ -1493,12 +1503,13 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
 >  
->  static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
-> @@ -1131,7 +1151,7 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
->  		err = regulator_enable(rockchip->vpcie12v);
->  		if (err) {
->  			dev_err(dev, "fail to enable vpcie12v regulator\n");
-> -			goto err_out;
-> +			return err;
->  		}
->  	}
->  
-> @@ -1160,7 +1180,6 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
->  	}
->  
->  	return 0;
-> -
->  err_disable_1v8:
->  	if (!IS_ERR(rockchip->vpcie1v8))
->  		regulator_disable(rockchip->vpcie1v8);
-> @@ -1170,7 +1189,6 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
->  err_disable_12v:
->  	if (!IS_ERR(rockchip->vpcie12v))
->  		regulator_disable(rockchip->vpcie12v);
-> -err_out:
->  	return err;
->  }
->  
-> @@ -1364,7 +1382,7 @@ static int rockchip_pcie_wait_l2(struct rockchip_pcie *rockchip)
->  static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
->  {
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-> -	int ret, i;
-> +	int ret;
->  
->  	/* disable core and cli int since we don't need to ack PME_ACK */
->  	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) |
-> @@ -1377,12 +1395,7 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
->  		return ret;
->  	}
->  
-> -	for (i = 0; i < MAX_LANE_NUM; i++) {
-> -		/* inactive lane is already powered off */
-> -		if (rockchip->lanes_map & BIT(i))
-> -			phy_power_off(rockchip->phys[i]);
-> -		phy_exit(rockchip->phys[i]);
-> -	}
-> +	rockchip_pcie_deinit_phys(rockchip);
->  
->  	clk_disable_unprepare(rockchip->clk_pcie_pm);
->  	clk_disable_unprepare(rockchip->hclk_pcie);
-> @@ -1391,7 +1404,6 @@ static int __maybe_unused rockchip_pcie_suspend_noirq(struct device *dev)
->  
->  	if (!IS_ERR(rockchip->vpcie0v9))
->  		regulator_disable(rockchip->vpcie0v9);
-> -
->  	return ret;
->  }
->  
-> @@ -1410,43 +1422,46 @@ static int __maybe_unused rockchip_pcie_resume_noirq(struct device *dev)
->  
->  	err = clk_prepare_enable(rockchip->clk_pcie_pm);
+>  	err = rockchip_pcie_parse_dt(rockchip);
 >  	if (err)
-> -		goto err_pcie_pm;
-> +		goto err_disable_0v9;
+> -		return err;
+> +		/* It's safe to disable wake even not enabled */
+> +		goto err_disable_wake;
 >  
->  	err = clk_prepare_enable(rockchip->hclk_pcie);
->  	if (err)
-> -		goto err_hclk_pcie;
-> +		goto err_disable_clk_pcie_pm;
->  
->  	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
->  	if (err)
-> -		goto err_aclk_perf_pcie;
-> +		goto err_disable_hclk_pcie;
->  
->  	err = clk_prepare_enable(rockchip->aclk_pcie);
->  	if (err)
-> -		goto err_aclk_pcie;
-> +		goto err_disable_aclk_perf_pcie;
->  
->  	err = rockchip_pcie_init_port(rockchip);
->  	if (err)
-> -		goto err_pcie_resume;
-> +		goto err_disable_aclk_pcie;
->  
->  	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
-> -		goto err_pcie_resume;
-> +		goto err_deinit_port;
->  
->  	/* Need this to enter L1 again */
->  	rockchip_pcie_update_txcredit_mui(rockchip);
->  	rockchip_pcie_enable_interrupts(rockchip);
->  
->  	return 0;
-> -
-> -err_pcie_resume:
-> +err_deinit_port:
-> +	rockchip_pcie_deinit_phys(rockchip);
-> +err_disable_aclk_pcie:
->  	clk_disable_unprepare(rockchip->aclk_pcie);
-> -err_aclk_pcie:
-> +err_disable_aclk_perf_pcie:
->  	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> -err_aclk_perf_pcie:
-> +err_disable_hclk_pcie:
->  	clk_disable_unprepare(rockchip->hclk_pcie);
-> -err_hclk_pcie:
-> +err_disable_clk_pcie_pm:
->  	clk_disable_unprepare(rockchip->clk_pcie_pm);
-> -err_pcie_pm:
-> +err_disable_0v9:
-> +	if (!IS_ERR(rockchip->vpcie0v9))
-> +		regulator_disable(rockchip->vpcie0v9);
->  	return err;
->  }
->  
-> @@ -1483,47 +1498,47 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
 >  	err = clk_prepare_enable(rockchip->aclk_pcie);
 >  	if (err) {
 >  		dev_err(dev, "unable to enable aclk_pcie clock\n");
-> -		goto err_aclk_pcie;
-> +		return err;
+> -		return err;
+> +		goto err_disable_wake;
 >  	}
 >  
 >  	err = clk_prepare_enable(rockchip->aclk_perf_pcie);
->  	if (err) {
->  		dev_err(dev, "unable to enable aclk_perf_pcie clock\n");
-> -		goto err_aclk_perf_pcie;
-> +		goto err_disable_aclk_pcie;
->  	}
->  
->  	err = clk_prepare_enable(rockchip->hclk_pcie);
->  	if (err) {
->  		dev_err(dev, "unable to enable hclk_pcie clock\n");
-> -		goto err_hclk_pcie;
-> +		goto err_disable_aclk_perf_pcie;
->  	}
->  
->  	err = clk_prepare_enable(rockchip->clk_pcie_pm);
->  	if (err) {
->  		dev_err(dev, "unable to enable hclk_pcie clock\n");
-> -		goto err_pcie_pm;
-> +		goto err_disable_hclk_pcie;
->  	}
->  
->  	err = rockchip_pcie_set_vpcie(rockchip);
->  	if (err) {
->  		dev_err(dev, "failed to set vpcie regulator\n");
-> -		goto err_set_vpcie;
-> +		goto err_disable_clk_pcie_pm;
->  	}
->  
->  	err = rockchip_pcie_init_port(rockchip);
->  	if (err)
-> -		goto err_vpcie;
-> +		goto err_disable_vpcie;
->  
->  	rockchip_pcie_enable_interrupts(rockchip);
->  
->  	err = rockchip_pcie_init_irq_domain(rockchip);
->  	if (err < 0)
-> -		goto err_vpcie;
-> +		goto err_deinit_port;
->  
->  	err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
->  					       &res, &io_base);
->  	if (err)
-> -		goto err_vpcie;
-> +		goto err_remove_irq_domain;
->  
->  	err = devm_request_pci_bus_resources(dev, &res);
->  	if (err)
-> @@ -1561,12 +1576,12 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
-> -		goto err_free_res;
-> +		goto err_unmap_iospace;
->  
->  	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
->  	if (!rockchip->msg_region) {
->  		err = -ENOMEM;
-> -		goto err_free_res;
-> +		goto err_unmap_iospace;
->  	}
->  
->  	list_splice_init(&res, &bridge->windows);
-> @@ -1591,28 +1606,33 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		pcie_bus_configure_settings(child);
->  
->  	pci_bus_add_devices(bus);
-> -	return 0;
->  
-> +	return 0;
-> +err_unmap_iospace:
-> +	pci_unmap_iospace(rockchip->io);
->  err_free_res:
->  	pci_free_resource_list(&res);
-> -err_vpcie:
-> -	if (!IS_ERR(rockchip->vpcie12v))
-> -		regulator_disable(rockchip->vpcie12v);
-> -	if (!IS_ERR(rockchip->vpcie3v3))
-> -		regulator_disable(rockchip->vpcie3v3);
-> -	if (!IS_ERR(rockchip->vpcie1v8))
-> -		regulator_disable(rockchip->vpcie1v8);
-> +err_remove_irq_domain:
-> +	irq_domain_remove(rockchip->irq_domain);
-> +err_deinit_port:
-> +	rockchip_pcie_deinit_phys(rockchip);
-> +err_disable_vpcie:
->  	if (!IS_ERR(rockchip->vpcie0v9))
->  		regulator_disable(rockchip->vpcie0v9);
-> -err_set_vpcie:
-> +	if (!IS_ERR(rockchip->vpcie1v8))
-> +		regulator_disable(rockchip->vpcie1v8);
-> +	if (!IS_ERR(rockchip->vpcie3v3))
-> +		regulator_disable(rockchip->vpcie3v3);
-> +	if (!IS_ERR(rockchip->vpcie12v))
-> +		regulator_disable(rockchip->vpcie12v);
-> +err_disable_clk_pcie_pm:
->  	clk_disable_unprepare(rockchip->clk_pcie_pm);
-> -err_pcie_pm:
-> +err_disable_hclk_pcie:
->  	clk_disable_unprepare(rockchip->hclk_pcie);
-> -err_hclk_pcie:
-> +err_disable_aclk_perf_pcie:
+> @@ -1633,6 +1644,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
 >  	clk_disable_unprepare(rockchip->aclk_perf_pcie);
-> -err_aclk_perf_pcie:
-> +err_disable_aclk_pcie:
+>  err_disable_aclk_pcie:
 >  	clk_disable_unprepare(rockchip->aclk_pcie);
-> -err_aclk_pcie:
+> +err_disable_wake:
+> +	dev_pm_clear_wake_irq(dev);
+> +	device_init_wakeup(dev, false);
 >  	return err;
 >  }
 >  
-> @@ -1620,33 +1640,27 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-> -	int i;
+> @@ -1662,6 +1676,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
+>  	if (!IS_ERR(rockchip->vpcie12v))
+>  		regulator_disable(rockchip->vpcie12v);
 >  
->  	pci_stop_root_bus(rockchip->root_bus);
->  	pci_remove_root_bus(rockchip->root_bus);
->  	pci_unmap_iospace(rockchip->io);
->  	irq_domain_remove(rockchip->irq_domain);
->  
-> -	for (i = 0; i < MAX_LANE_NUM; i++) {
-> -		/* inactive lane is already powered off */
-> -		if (rockchip->lanes_map & BIT(i))
-> -			phy_power_off(rockchip->phys[i]);
-> -		phy_exit(rockchip->phys[i]);
-> -	}
-> +	rockchip_pcie_deinit_phys(rockchip);
->  
->  	clk_disable_unprepare(rockchip->clk_pcie_pm);
->  	clk_disable_unprepare(rockchip->hclk_pcie);
->  	clk_disable_unprepare(rockchip->aclk_perf_pcie);
->  	clk_disable_unprepare(rockchip->aclk_pcie);
->  
-> -	if (!IS_ERR(rockchip->vpcie12v))
-> -		regulator_disable(rockchip->vpcie12v);
-> -	if (!IS_ERR(rockchip->vpcie3v3))
-> -		regulator_disable(rockchip->vpcie3v3);
-> -	if (!IS_ERR(rockchip->vpcie1v8))
-> -		regulator_disable(rockchip->vpcie1v8);
->  	if (!IS_ERR(rockchip->vpcie0v9))
->  		regulator_disable(rockchip->vpcie0v9);
-> +	if (!IS_ERR(rockchip->vpcie1v8))
-> +		regulator_disable(rockchip->vpcie1v8);
-> +	if (!IS_ERR(rockchip->vpcie3v3))
-> +		regulator_disable(rockchip->vpcie3v3);
-> +	if (!IS_ERR(rockchip->vpcie12v))
-> +		regulator_disable(rockchip->vpcie12v);
->  
+> +	dev_pm_clear_wake_irq(dev);
+> +	device_init_wakeup(dev, false);
+> +
 >  	return 0;
 >  }
+>  
 > -- 
 > 2.11.0
 > 
