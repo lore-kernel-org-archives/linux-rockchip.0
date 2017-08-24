@@ -1,36 +1,89 @@
-From: Rocky Hao <rocky.hao@rock-chips.com>
-Subject: [PATCH 5/5] arm: dts: rockchip: enable tsadc module on RV1108 evaluation board
-Date: Thu, 24 Aug 2017 18:32:14 +0800
-Message-ID: <1503570734-8942-1-git-send-email-rocky.hao@rock-chips.com>
-References: <1503570475-7850-1-git-send-email-rocky.hao@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1503570475-7850-1-git-send-email-rocky.hao@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: rui.zhang@intel.com, edubezval@gmail.com, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com
-Cc: shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com, rocky.hao@rock-chips.com
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL 2/2] second round of Rockchip dts32 changes for 4.14
+Date: Thu, 24 Aug 2017 15:50:51 +0200
+Message-ID: <CAK8P3a3SKUoNPzCQMgnV=g+f3twBM_9Gn-=k0znx4cMRkeb9cQ@mail.gmail.com>
+References: <4088347.CX4PhsiguF@phil> <2301603.fd1AhSc3fO@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2301603.fd1AhSc3fO@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable tsadc module on RV1108 evaluation board
+On Thu, Aug 24, 2017 at 10:42 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> The following changes since commit 0f4dc7e154d054303c4dd6b5c3e3207f9a7f8714:
+>
+>   ARM: dts: rockchip: fix property-ordering in rv1108 mmc nodes (2017-07-22 22:41:35 +0200)
+>
+> are available in the git repository at:
+>
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-dts32-2
+>
+> for you to fetch changes up to 274ff50d3ad951bca0adbfb9ffd628d35ba6db6f:
+>
+>   ARM: dts: rockchip: enable usb for rv1108-evb (2017-08-23 09:24:51 +0200)
+>
+> ----------------------------------------------------------------
+> A lot of attention for the rv1108 soc targetted at media-processing
+> (usb, operating points, spi, pwm, adc, watchdog, i2c and devices for
+> its evb).
+>
+> RK3228/3229 gets iommu and spi nodes. Similar to the rk3288 which
+> also gets some more iommu nodes as well as getting converted to 64
+> bit addresses due to wanting to address more than 4GB of memory
+> via LPAE.
 
-Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
----
- arch/arm/boot/dts/rv1108-evb.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+Pulled into next/dt with a small fixup, see below. Please check.
 
-diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-index 39197c3e9e0e..885f760d8ca1 100644
---- a/arch/arm/boot/dts/rv1108-evb.dts
-+++ b/arch/arm/boot/dts/rv1108-evb.dts
-@@ -218,6 +218,10 @@
- 	status = "okay";
- };
- 
-+&tsadc {
-+	status = "okay";
-+};
+Thanks!
+
+      Arnd
+
+
+diff --cc arch/arm/boot/dts/rk3288.dtsi
+index 858e1fed762a,c0c04e99e159..356ed1e62452
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@@ -1126,9 -1145,27 +1145,27 @@@
+                };
+        };
+
++       vpu_mmu: iommu@ff9a0800 {
++               compatible = "rockchip,iommu";
++               reg = <0x0 0xff9a0800 0x0 0x100>;
++               interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++               interrupt-names = "vpu_mmu";
++               #iommu-cells = <0>;
++               status = "disabled";
++       };
 +
- &uart0 {
- 	status = "okay";
- };
--- 
-1.9.1
++       hevc_mmu: iommu@ff9c0440 {
++               compatible = "rockchip,iommu";
++               reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
++               interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
++               interrupt-names = "hevc_mmu";
++               #iommu-cells = <0>;
++               status = "disabled";
++       };
++
+ -      gpu: mali@ffa30000 {
+ -              compatible = "rockchip,rk3288-mali", "arm,mali-t760",
+"arm,mali-midgard";
+ +      gpu: gpu@ffa30000 {
+ +              compatible = "rockchip,rk3288-mali", "arm,mali-t760";
+-               reg = <0xffa30000 0x10000>;
++               reg = <0x0 0xffa30000 0x0 0x10000>;
+                interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
+                             <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
