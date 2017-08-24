@@ -1,7 +1,8 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] arm64: defconfig: enable rockchip graphics
-Date: Thu, 24 Aug 2017 17:02:10 +0200
-Message-ID: <20170824150210.10949-1-heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: enable display subsystem on
+ rk3399-firefly
+Date: Thu, 24 Aug 2017 17:49:19 +0200
+Message-ID: <20170824154919.12324-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,51 +16,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable the graphics-related options needed by Rockchip boards.
-This includes the pwm-backlight which will be needed by the internal
-displays used on Gru Chrome-devices.
+Enable the graphics-related nodes on the rk3399-firefly which makes
+it possible to see output on the on-board hdmi output.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- arch/arm64/configs/defconfig | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index b4ca115b3be1..0789c7a66969 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -358,6 +358,12 @@ CONFIG_DRM_EXYNOS_DSI=y
- # CONFIG_DRM_EXYNOS_DP is not set
- CONFIG_DRM_EXYNOS_HDMI=y
- CONFIG_DRM_EXYNOS_MIC=y
-+CONFIG_DRM_ROCKCHIP=m
-+CONFIG_ROCKCHIP_ANALOGIX_DP=y
-+CONFIG_ROCKCHIP_CDN_DP=y
-+CONFIG_ROCKCHIP_DW_HDMI=y
-+CONFIG_ROCKCHIP_DW_MIPI_DSI=y
-+CONFIG_ROCKCHIP_INNO_HDMI=y
- CONFIG_DRM_RCAR_DU=m
- CONFIG_DRM_RCAR_LVDS=y
- CONFIG_DRM_RCAR_VSP=y
-@@ -370,6 +376,7 @@ CONFIG_DRM_MESON=m
- CONFIG_FB=y
- CONFIG_FB_ARMCLCD=y
- CONFIG_BACKLIGHT_GENERIC=m
-+CONFIG_BACKLIGHT_PWM=m
- CONFIG_BACKLIGHT_LP855X=m
- CONFIG_FRAMEBUFFER_CONSOLE=y
- CONFIG_LOGO=y
-@@ -482,6 +489,7 @@ CONFIG_ARM_MHU=y
- CONFIG_PLATFORM_MHU=y
- CONFIG_BCM2835_MBOX=y
- CONFIG_HI6220_MBOX=y
-+CONFIG_ROCKCHIP_IOMMU=y
- CONFIG_ARM_SMMU=y
- CONFIG_ARM_SMMU_V3=y
- CONFIG_RPMSG_QCOM_SMD=y
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 7fd4bfcaa38e..05fb773f975b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -255,6 +255,11 @@
+ 	status = "okay";
+ };
+ 
++&hdmi {
++	ddc-i2c-bus = <&i2c3>;
++	status = "okay";
++};
++
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	i2c-scl-rising-time-ns = <168>;
+@@ -728,3 +733,23 @@
+ 	status = "okay";
+ 	dr_mode = "host";
+ };
++
++&vopb {
++	assigned-clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>, <&cru DCLK_VOP0>;
++	assigned-clock-rates = <400000000>, <200000000>, <100000000>;
++	status = "okay";
++};
++
++&vopb_mmu {
++	status = "okay";
++};
++
++&vopl {
++	assigned-clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>, <&cru DCLK_VOP1>;
++	assigned-clock-rates = <400000000>, <200000000>, <100000000>;
++	status = "okay";
++};
++
++&vopl_mmu {
++	status = "okay";
++};
 -- 
 2.14.1
