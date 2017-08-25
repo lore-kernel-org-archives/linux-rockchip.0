@@ -1,46 +1,53 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v5 04/10] PCI: rockchip: fix system hang up if activating
- CONFIG_DEBUG_SHIRQ
-Date: Thu, 24 Aug 2017 18:44:05 -0700
-Message-ID: <20170825014403.GA100450@google.com>
-References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
- <1503471758-73904-1-git-send-email-shawn.lin@rock-chips.com>
- <20170824202111.GS31858@bhelgaas-glaptop.roam.corp.google.com>
- <CAKdAkRRFxsAfJrzr=rjo_mtMzP0y9-cRz9Vz+M92AhbYd5B=ww@mail.gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] arm64: defconfig: enable rockchip graphics
+Date: Fri, 25 Aug 2017 10:06:53 +0800
+Message-ID: <599F863D.5020208@rock-chips.com>
+References: <20170824150210.10949-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAKdAkRRFxsAfJrzr=rjo_mtMzP0y9-cRz9Vz+M92AhbYd5B=ww@mail.gmail.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, Linux PCI <linux-pci@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Tejun Heo <tj@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170824150210.10949-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 24, 2017 at 02:10:52PM -0700, Dmitry Torokhov wrote:
-> On Thu, Aug 24, 2017 at 1:21 PM, Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > [+cc Tejun, Dmitry, Michael, Stephen, linux-clk for devm/clk questions]
-> >
-> > On Wed, Aug 23, 2017 at 03:02:38PM +0800, Shawn Lin wrote:
-> >> With CONFIG_DEBUG_SHIRQ enabled, the irq tear down routine
-> >> would still access the irq handler registed as a shard irq.
-> >> Per the comment within the function of __free_irq, it says
-> >> "It's a shared IRQ -- the driver ought to be prepared for
-> >> an IRQ event to happen even now it's being freed". However
-> >> when failing to probe the driver, it may disable the clock
-> >> for accessing the register and the following check for shared
-> >> irq state would call the irq handler which accesses the register
-> >> w/o the clk enabled. That will hang the system forever.
-
-Side note: why is this driver even requesting a shared IRQ? This is for
-rk3399, and the IRQ is a dedicated GIC interrupt for the PCIe
-controller. It shouldn't need to be 'shared'.
-
-The problem still might not be *only* theoretical though, since it's
-still possible for this non-shared interrupt to
-(a) trigger
-(b) concurrently, we remove/tear down (including disable clocks)
-(c) we service the IRQ      <-- dead, because clock is disabled
-(d) if we ever got here... free_irq()
-
-Brian
+T24gMjAxN+W5tDA45pyIMjTml6UgMjM6MDIsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEVuYWJs
+ZSB0aGUgZ3JhcGhpY3MtcmVsYXRlZCBvcHRpb25zIG5lZWRlZCBieSBSb2NrY2hpcCBib2FyZHMu
+Cj4gVGhpcyBpbmNsdWRlcyB0aGUgcHdtLWJhY2tsaWdodCB3aGljaCB3aWxsIGJlIG5lZWRlZCBi
+eSB0aGUgaW50ZXJuYWwKPiBkaXNwbGF5cyB1c2VkIG9uIEdydSBDaHJvbWUtZGV2aWNlcy4KPgo+
+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCkhp
+IEhlaWtvCgpUaGFua3MgZm9yIHRoZSBwYXRjaCwgYW5kIGl0IGxvb2tzIGdvb2QgZm9yIG1lLgoK
+UmV2aWV3ZWQtYnk6IE1hcmsgWWFvQHJvY2stY2hpcHMuY29tCgo+ICAgYXJjaC9hcm02NC9jb25m
+aWdzL2RlZmNvbmZpZyB8IDggKysrKysrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlv
+bnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnIGIvYXJj
+aC9hcm02NC9jb25maWdzL2RlZmNvbmZpZwo+IGluZGV4IGI0Y2ExMTViM2JlMS4uMDc4OWM3YTY2
+OTY5IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWcKPiArKysgYi9h
+cmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnCj4gQEAgLTM1OCw2ICszNTgsMTIgQEAgQ09ORklH
+X0RSTV9FWFlOT1NfRFNJPXkKPiAgICMgQ09ORklHX0RSTV9FWFlOT1NfRFAgaXMgbm90IHNldAo+
+ICAgQ09ORklHX0RSTV9FWFlOT1NfSERNST15Cj4gICBDT05GSUdfRFJNX0VYWU5PU19NSUM9eQo+
+ICtDT05GSUdfRFJNX1JPQ0tDSElQPW0KPiArQ09ORklHX1JPQ0tDSElQX0FOQUxPR0lYX0RQPXkK
+PiArQ09ORklHX1JPQ0tDSElQX0NETl9EUD15Cj4gK0NPTkZJR19ST0NLQ0hJUF9EV19IRE1JPXkK
+PiArQ09ORklHX1JPQ0tDSElQX0RXX01JUElfRFNJPXkKPiArQ09ORklHX1JPQ0tDSElQX0lOTk9f
+SERNST15Cj4gICBDT05GSUdfRFJNX1JDQVJfRFU9bQo+ICAgQ09ORklHX0RSTV9SQ0FSX0xWRFM9
+eQo+ICAgQ09ORklHX0RSTV9SQ0FSX1ZTUD15Cj4gQEAgLTM3MCw2ICszNzYsNyBAQCBDT05GSUdf
+RFJNX01FU09OPW0KPiAgIENPTkZJR19GQj15Cj4gICBDT05GSUdfRkJfQVJNQ0xDRD15Cj4gICBD
+T05GSUdfQkFDS0xJR0hUX0dFTkVSSUM9bQo+ICtDT05GSUdfQkFDS0xJR0hUX1BXTT1tCj4gICBD
+T05GSUdfQkFDS0xJR0hUX0xQODU1WD1tCj4gICBDT05GSUdfRlJBTUVCVUZGRVJfQ09OU09MRT15
+Cj4gICBDT05GSUdfTE9HTz15Cj4gQEAgLTQ4Miw2ICs0ODksNyBAQCBDT05GSUdfQVJNX01IVT15
+Cj4gICBDT05GSUdfUExBVEZPUk1fTUhVPXkKPiAgIENPTkZJR19CQ00yODM1X01CT1g9eQo+ICAg
+Q09ORklHX0hJNjIyMF9NQk9YPXkKPiArQ09ORklHX1JPQ0tDSElQX0lPTU1VPXkKPiAgIENPTkZJ
+R19BUk1fU01NVT15Cj4gICBDT05GSUdfQVJNX1NNTVVfVjM9eQo+ICAgQ09ORklHX1JQTVNHX1FD
+T01fU01EPXkKCgotLSAK77ytYXJrIFlhbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1h
+cm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
