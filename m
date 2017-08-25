@@ -1,1179 +1,2570 @@
-From: Cyrille Pitchen <cyrille.pitchen-yU5RGvR974pGWvitb5QawA@public.gmane.org>
-Subject: Re: [PATCH v7 2/3] mtd: spi-nor: add rockchip serial flash controller
- driver
-Date: Fri, 25 Aug 2017 13:29:17 +0200
-Message-ID: <e8b000bd-01e0-33bb-5cc4-ce14377e8272@wedev4u.fr>
-References: <1500977251-15001-1-git-send-email-andy.yan@rock-chips.com>
- <1500977323-15104-1-git-send-email-andy.yan@rock-chips.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v7] rockchip/rga: v4l2 m2m support
+Date: Fri, 25 Aug 2017 14:09:07 +0200
+Message-ID: <3968ed02-205b-e41a-d5cf-337c9b4b149a@xs4all.nl>
+References: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1500977323-15104-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
+Hi Jacob,
 
-I see many issues in this driver:
+As promised, some more (small) review comments below.
 
-Le 25/07/2017 à 12:08, Andy Yan a écrit :
-> From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On 03/08/17 07:23, Jacob Chen wrote:
+> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
+> accelerates 2D graphics operations, such as point/line drawing, image
+> scaling, rotation, BitBLT, alpha blending and image blur/sharpness
 > 
-> Add rockchip serial flash controller driver
+> The drvier is mostly based on s5p-g2d v4l2 m2m driver
+
+driver
+
+> And supports various operations from the rendering pipeline.
+>  - copy
+>  - fast solid color fill
+>  - rotation
+>  - flip
+>  - alpha blending
 > 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Acked-by: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> The code in rga-hw.c is used to configure regs according to operations
+> The code in rga-buf.c is used to create private mmu table for RGA.
 > 
+> changes in V7:
+> - fix some warning reported by "checkpatch --strict"
+> 
+> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 > ---
+>  drivers/media/platform/Kconfig                |   11 +
+>  drivers/media/platform/Makefile               |    2 +
+>  drivers/media/platform/rockchip-rga/Makefile  |    3 +
+>  drivers/media/platform/rockchip-rga/rga-buf.c |  155 ++++
+>  drivers/media/platform/rockchip-rga/rga-hw.c  |  670 ++++++++++++++++
+>  drivers/media/platform/rockchip-rga/rga-hw.h  |  437 +++++++++++
+>  drivers/media/platform/rockchip-rga/rga.c     | 1026 +++++++++++++++++++++++++
+>  drivers/media/platform/rockchip-rga/rga.h     |  110 +++
+>  8 files changed, 2414 insertions(+)
+>  create mode 100644 drivers/media/platform/rockchip-rga/Makefile
+>  create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
+>  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
+>  create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
+>  create mode 100644 drivers/media/platform/rockchip-rga/rga.c
+>  create mode 100644 drivers/media/platform/rockchip-rga/rga.h
 > 
-> Changes in v7:
-> - correct the fifo status check in pio read/write mode.
-> - copy data from user buffer to dma buffer
-> 
-> Changes in v6:
-> - fold in Andy's improvement for checking fifo level
->   before pio read
-> - rename the controller to rv1108 since offically it's
->   renamed and acked by Rob.
-> - use dma_coerce_mask_and_coherent suggested by Andy.
-> 
-> Changes in v5:
-> - check if the buf is aligned to 32bit
-> - check if the buf for dma comes from vmalloc
-> - fix to use 1-1-n according to the current framework
-> - avoid bytes cnt overflow
-> 
-> Changes in v4:
-> - use uppercase DMA for description
-> - simplify the code of get_if_type
-> - use dma_dir to simplify the code
-> - simplify the rockchip_sfc_do_rd_wr
-> - some minor improvements
-> - add reset controller when doing resume
-> 
-> Changes in v3:
-> - use io{read32,write32}_rep to simplify the corner cases
-> - remove more unnecessary bit definitions
-> - some minor comment fixes and improvement
-> - fix wrong unregister function
-> - unify more code
-> - use nor to avoid constantly replicating the whole
->   sfc->flash[sfc->num_chip].nor
-> - add email for MODULE_AUTHOR
-> - remove #if 1 --- #endif
-> - extract DMA code to imporve the code structure
-> - reset all when failing to do dma
-> - pass sfc to get_if_type
-> - rename sfc-no-dma to sfc-no-DMA
-> 
-> Changes in v2:
-> - fix typos
-> - add some comment for buffer and others operations
-> - rename SFC_MAX_CHIP_NUM to MAX_CHIPSELECT_NUM
-> - use u8 for cs
-> - return -EINVAL for default case of get_if_type
-> - use readl_poll_*() to check timeout cases
-> - simplify and clarify some condition checks
-> - rework the bitshifts to simplify the code
-> - define SFC_CMD_DUMMY(x)
-> - fix ummap for dma read path and finish all the
->   cache maintenance.
-> - rename to rockchip_sfc_chip_priv and embed struct spi_nor
->   in it.
-> - add MODULE_AUTHOR
-> - add runtime PM and general PM support.
-> - Thanks for Marek's comments. Link:
->   http://lists.infradead.org/pipermail/linux-mtd/2016-November/070321.html
-> 
->  MAINTAINERS                        |   8 +
->  drivers/mtd/spi-nor/Kconfig        |   7 +
->  drivers/mtd/spi-nor/Makefile       |   3 +-
->  drivers/mtd/spi-nor/rockchip-sfc.c | 942 +++++++++++++++++++++++++++++++++++++
->  4 files changed, 959 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/mtd/spi-nor/rockchip-sfc.c
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 205d397..257361b 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -11258,6 +11258,14 @@ L:	linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->  S:	Odd Fixes
->  F:	drivers/tty/serial/rp2.*
+> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> index 041cb80a..d0d1a21 100644
+> --- a/drivers/media/platform/Kconfig
+> +++ b/drivers/media/platform/Kconfig
+> @@ -427,6 +427,17 @@ config VIDEO_RENESAS_VSP1
+>  	  To compile this driver as a module, choose M here: the module
+>  	  will be called vsp1.
 >  
-> +ROCKCHIP SERIAL FLASH CONTROLLER DRIVER
-> +M:	Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> +L:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> +L:	linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> +S:	Maintained
-> +F:	Documentation/devicetree/bindings/mtd/rockchip-sfc.txt
-> +F:	drivers/mtd/spi-nor/rockchip-sfc.c
-> +
->  ROSE NETWORK LAYER
->  M:	Ralf Baechle <ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>
->  L:	linux-hams-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> diff --git a/drivers/mtd/spi-nor/Kconfig b/drivers/mtd/spi-nor/Kconfig
-> index 293c8a4..dbbcff9 100644
-> --- a/drivers/mtd/spi-nor/Kconfig
-> +++ b/drivers/mtd/spi-nor/Kconfig
-> @@ -113,4 +113,11 @@ config SPI_STM32_QUADSPI
->  	  This enables support for the STM32 Quad SPI controller.
->  	  We only connect the NOR to this controller.
->  
-> +config SPI_ROCKCHIP_SFC
-> +	tristate "Rockchip Serial Flash Controller(SFC)"
+> +config VIDEO_ROCKCHIP_RGA
+> +	tristate "Rockchip Raster 2d Grapphic Acceleration Unit"
+> +	depends on VIDEO_DEV && VIDEO_V4L2 && HAS_DMA
 > +	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	depends on HAS_IOMEM && HAS_DMA
-> +	help
-> +	  This enables support for rockchip serial flash controller.
+> +	select VIDEOBUF2_DMA_SG
+> +	select V4L2_MEM2MEM_DEV
+> +	default n
+> +	---help---
+> +	  This is a v4l2 driver for Rockchip SOC RGA2
+> +	  2d graphics accelerator.
 > +
->  endif # MTD_SPI_NOR
-> diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
-> index 285aab8..cbc65b8 100644
-> --- a/drivers/mtd/spi-nor/Makefile
-> +++ b/drivers/mtd/spi-nor/Makefile
-> @@ -8,4 +8,5 @@ obj-$(CONFIG_MTD_MT81xx_NOR)    += mtk-quadspi.o
->  obj-$(CONFIG_SPI_NXP_SPIFI)	+= nxp-spifi.o
->  obj-$(CONFIG_SPI_INTEL_SPI)	+= intel-spi.o
->  obj-$(CONFIG_SPI_INTEL_SPI_PLATFORM)	+= intel-spi-platform.o
-> -obj-$(CONFIG_SPI_STM32_QUADSPI)	+= stm32-quadspi.o
-> \ No newline at end of file
-> +obj-$(CONFIG_SPI_STM32_QUADSPI)	+= stm32-quadspi.o
-> +obj-$(CONFIG_SPI_ROCKCHIP_SFC) += rockchip-sfc.o
-> diff --git a/drivers/mtd/spi-nor/rockchip-sfc.c b/drivers/mtd/spi-nor/rockchip-sfc.c
+>  config VIDEO_TI_VPE
+>  	tristate "TI VPE (Video Processing Engine) driver"
+>  	depends on VIDEO_DEV && VIDEO_V4L2
+> diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+> index 63303d6..baf83060 100644
+> --- a/drivers/media/platform/Makefile
+> +++ b/drivers/media/platform/Makefile
+> @@ -57,6 +57,8 @@ obj-$(CONFIG_VIDEO_RENESAS_FDP1)	+= rcar_fdp1.o
+>  obj-$(CONFIG_VIDEO_RENESAS_JPU) 	+= rcar_jpu.o
+>  obj-$(CONFIG_VIDEO_RENESAS_VSP1)	+= vsp1/
+>  
+> +obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)	+= rockchip-rga/
+> +
+>  obj-y	+= omap/
+>  
+>  obj-$(CONFIG_VIDEO_AM437X_VPFE)		+= am437x/
+> diff --git a/drivers/media/platform/rockchip-rga/Makefile b/drivers/media/platform/rockchip-rga/Makefile
 > new file mode 100644
-> index 0000000..df7a918
+> index 0000000..92fe254
 > --- /dev/null
-> +++ b/drivers/mtd/spi-nor/rockchip-sfc.c
-> @@ -0,0 +1,942 @@
+> +++ b/drivers/media/platform/rockchip-rga/Makefile
+> @@ -0,0 +1,3 @@
+> +rockchip-rga-objs := rga.o rga-hw.o rga-buf.o
+> +
+> +obj-$(CONFIG_VIDEO_ROCKCHIP_RGA) += rockchip-rga.o
+> diff --git a/drivers/media/platform/rockchip-rga/rga-buf.c b/drivers/media/platform/rockchip-rga/rga-buf.c
+> new file mode 100644
+> index 0000000..6a9fd2c
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip-rga/rga-buf.c
+> @@ -0,0 +1,155 @@
 > +/*
-> + * Rockchip Serial Flash Controller Driver
+> + * Copyright (C) 2017 Fuzhou Rockchip Electronics Co.Ltd
+> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
 > + *
-> + * Copyright (c) 2017, Rockchip Inc.
-> + * Author: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
 > + *
 > + * This program is distributed in the hope that it will be useful,
 > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
 > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 > + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program. If not, see <http://www.gnu.org/licenses/>.
 > + */
-> +#include <linux/bitops.h>
-> +#include <linux/clk.h>
-> +#include <linux/completion.h>
-> +#include <linux/dma-mapping.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/mm.h>
-> +#include <linux/module.h>
-> +#include <linux/mtd/mtd.h>
-> +#include <linux/mtd/spi-nor.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
+> +
 > +#include <linux/pm_runtime.h>
-> +#include <linux/slab.h>
 > +
-> +/* System control */
-> +#define SFC_CTRL			0x0
-> +#define  SFC_CTRL_COMMON_BITS_1		0x0
-> +#define  SFC_CTRL_COMMON_BITS_2		0x1
-> +#define  SFC_CTRL_COMMON_BITS_4		0x2
-> +#define  SFC_CTRL_DATA_BITS_SHIFT	12
-> +#define  SFC_CTRL_ADDR_BITS_SHIFT	10
-> +#define  SFC_CTRL_CMD_BITS_SHIFT	8
-> +#define  SFC_CTRL_PHASE_SEL_NEGETIVE	BIT(1)
+> +#include <media/v4l2-device.h>
+> +#include <media/v4l2-ioctl.h>
+> +#include <media/v4l2-mem2mem.h>
+> +#include <media/videobuf2-dma-sg.h>
+> +#include <media/videobuf2-v4l2.h>
 > +
-> +/* Interrupt mask */
-> +#define SFC_IMR				0x4
-> +#define  SFC_IMR_RX_FULL		BIT(0)
-> +#define  SFC_IMR_RX_UFLOW		BIT(1)
-> +#define  SFC_IMR_TX_OFLOW		BIT(2)
-> +#define  SFC_IMR_TX_EMPTY		BIT(3)
-> +#define  SFC_IMR_TRAN_FINISH		BIT(4)
-> +#define  SFC_IMR_BUS_ERR		BIT(5)
-> +#define  SFC_IMR_NSPI_ERR		BIT(6)
-> +#define  SFC_IMR_DMA			BIT(7)
-> +/* Interrupt clear */
-> +#define SFC_ICLR			0x8
-> +#define  SFC_ICLR_RX_FULL		BIT(0)
-> +#define  SFC_ICLR_RX_UFLOW		BIT(1)
-> +#define  SFC_ICLR_TX_OFLOW		BIT(2)
-> +#define  SFC_ICLR_TX_EMPTY		BIT(3)
-> +#define  SFC_ICLR_TRAN_FINISH		BIT(4)
-> +#define  SFC_ICLR_BUS_ERR		BIT(5)
-> +#define  SFC_ICLR_NSPI_ERR		BIT(6)
-> +#define  SFC_ICLR_DMA			BIT(7)
-> +/* FIFO threshold level */
-> +#define SFC_FTLR			0xc
-> +#define  SFC_FTLR_TX_SHIFT		0
-> +#define  SFC_FTLR_TX_MASK		0x1f
-> +#define  SFC_FTLR_RX_SHIFT		8
-> +#define  SFC_FTLR_RX_MASK		0x1f
-> +/* Reset FSM and FIFO */
-> +#define SFC_RCVR			0x10
-> +#define  SFC_RCVR_RESET			BIT(0)
-> +/* Enhanced mode */
-> +#define SFC_AX				0x14
-> +/* Address Bit number */
-> +#define SFC_ABIT			0x18
-> +/* Interrupt status */
-> +#define SFC_ISR				0x1c
-> +#define  SFC_ISR_RX_FULL_SHIFT		BIT(0)
-> +#define  SFC_ISR_RX_UFLOW_SHIFT		BIT(1)
-> +#define  SFC_ISR_TX_OFLOW_SHIFT		BIT(2)
-> +#define  SFC_ISR_TX_EMPTY_SHIFT		BIT(3)
-> +#define  SFC_ISR_TX_FINISH_SHIFT	BIT(4)
-> +#define  SFC_ISR_BUS_ERR_SHIFT		BIT(5)
-> +#define  SFC_ISR_NSPI_ERR_SHIFT		BIT(6)
-> +#define  SFC_ISR_DMA_SHIFT		BIT(7)
-> +/* FIFO status */
-> +#define SFC_FSR				0x20
-> +#define  SFC_FSR_TX_IS_FULL		BIT(0)
-> +#define  SFC_FSR_TX_IS_EMPTY		BIT(1)
-> +#define  SFC_FSR_RX_IS_EMPTY		BIT(2)
-> +#define  SFC_FSR_RX_IS_FULL		BIT(3)
-> +#define  SFC_FSR_TXLV_MASK		GENMASK(12, 8)
-> +#define  SFC_FSR_TXLV_SHIFT		8
-> +#define  SFC_FSR_RXLV_MASK		GENMASK(20, 16)
-> +#define  SFC_FSR_RXLV_SHIFT		16
-> +/* FSM status */
-> +#define SFC_SR				0x24
-> +#define  SFC_SR_IS_IDLE			0x0
-> +#define  SFC_SR_IS_BUSY			0x1
-> +/* Raw interrupt status */
-> +#define SFC_RISR			0x28
-> +#define  SFC_RISR_RX_FULL		BIT(0)
-> +#define  SFC_RISR_RX_UNDERFLOW		BIT(1)
-> +#define  SFC_RISR_TX_OVERFLOW		BIT(2)
-> +#define  SFC_RISR_TX_EMPTY		BIT(3)
-> +#define  SFC_RISR_TRAN_FINISH		BIT(4)
-> +#define  SFC_RISR_BUS_ERR		BIT(5)
-> +#define  SFC_RISR_NSPI_ERR		BIT(6)
-> +#define  SFC_RISR_DMA			BIT(7)
-> +/* Master trigger */
-> +#define SFC_DMA_TRIGGER			0x80
-> +/* Src or Dst addr for master */
-> +#define SFC_DMA_ADDR			0x84
-> +/* Command */
-> +#define SFC_CMD				0x100
-> +#define  SFC_CMD_IDX_SHIFT		0
-> +#define  SFC_CMD_DUMMY_SHIFT		8
-> +#define  SFC_CMD_DIR_RD			0
-> +#define  SFC_CMD_DIR_WR			1
-> +#define  SFC_CMD_DIR_SHIFT		12
-> +#define  SFC_CMD_ADDR_ZERO		(0x0 << 14)
-> +#define  SFC_CMD_ADDR_24BITS		(0x1 << 14)
-> +#define  SFC_CMD_ADDR_32BITS		(0x2 << 14)
-> +#define  SFC_CMD_ADDR_FRS		(0x3 << 14)
-> +#define  SFC_CMD_TRAN_BYTES_SHIFT	16
-> +#define  SFC_CMD_TRAN_BYTES_MASK	16
-
-strange value for a mask
-> +#define  SFC_CMD_CS_SHIFT		30
-> +/* Address */
-> +#define SFC_ADDR			0x104
-> +/* Data */
-> +#define SFC_DATA			0x108
+> +#include "rga-hw.h"
+> +#include "rga.h"
 > +
-> +#define SFC_MAX_CHIPSELECT_NUM		4
-> +#define SFC_DMA_MAX_LEN			0x4000
-> +#define SFC_MAX_TRANS_BYTES		0x3fff
-> +#define SFC_CMD_DUMMY(x) \
-> +	((x) << SFC_CMD_DUMMY_SHIFT)
-> +
-> +enum rockchip_sfc_iftype {
-> +	IF_TYPE_STD,
-> +	IF_TYPE_DUAL,
-> +	IF_TYPE_QUAD,
-> +};
-> +
-> +struct rockchip_sfc;
-> +struct rockchip_sfc_chip_priv {
-> +	u8 cs;
-> +	u32 clk_rate;
-> +	struct spi_nor nor;
-> +	struct rockchip_sfc *sfc;
-> +};
-> +
-> +struct rockchip_sfc {
-> +	struct device *dev;
-> +	struct mutex lock;
-> +	void __iomem *regbase;
-> +	struct clk *hclk;
-> +	struct clk *clk;
-> +	/* virtual mapped addr for dma_buffer */
-> +	void *buffer;
-> +	dma_addr_t dma_buffer;
-> +	struct completion cp;
-> +	struct rockchip_sfc_chip_priv flash[SFC_MAX_CHIPSELECT_NUM];
-> +	u32 num_chip;
-> +	bool use_dma;
-> +};
-> +
-> +static int get_if_type(struct rockchip_sfc *sfc, enum spi_nor_protocol proto)
+> +static int
+> +rga_queue_setup(struct vb2_queue *vq,
+> +		unsigned int *nbuffers, unsigned int *nplanes,
+> +		unsigned int sizes[], struct device *alloc_devs[])
 > +{
-> +	if (proto == SNOR_PROTO_1_1_2)
-> +		return IF_TYPE_DUAL;
-> +	else if (proto == SNOR_PROTO_1_1_4)
-> +		return IF_TYPE_QUAD;
-> +	else if (proto == SNOR_PROTO_1_1_1)
-> +		return IF_TYPE_STD;
+> +	struct rga_ctx *ctx = vb2_get_drv_priv(vq);
+> +	struct rga_frame *f = rga_get_frame(ctx, vq->type);
 > +
-> +	dev_err(sfc->dev, "unsupported SPI read mode\n");
-> +	return -EINVAL;
-> +}
+> +	if (IS_ERR(f))
+> +		return PTR_ERR(f);
 > +
-> +static int rockchip_sfc_reset(struct rockchip_sfc *sfc)
-> +{
-> +	int err;
-> +	u32 status;
+> +	if (*nplanes)
+> +		return sizes[0] < f->size ? -EINVAL : 0;
 > +
-> +	writel_relaxed(SFC_RCVR_RESET, sfc->regbase + SFC_RCVR);
-> +
-> +	err = readl_poll_timeout(sfc->regbase + SFC_RCVR, status,
-> +				 !(status & SFC_RCVR_RESET), 20,
-> +				 jiffies_to_usecs(HZ));
-> +	if (err)
-> +		dev_err(sfc->dev, "SFC reset never finished\n");
-> +
-> +	/* Still need to clear the masked interrupt from RISR */
-> +	writel_relaxed(SFC_ICLR_RX_FULL | SFC_ICLR_RX_UFLOW |
-> +		       SFC_ICLR_TX_OFLOW | SFC_ICLR_TX_EMPTY |
-> +		       SFC_ICLR_TRAN_FINISH | SFC_ICLR_BUS_ERR |
-> +		       SFC_ICLR_NSPI_ERR | SFC_ICLR_DMA,
-> +		       sfc->regbase + SFC_ICLR);
-> +	return err;
-> +}
-> +
-> +static int rockchip_sfc_init(struct rockchip_sfc *sfc)
-> +{
-> +	int err;
-> +
-> +	err = rockchip_sfc_reset(sfc);
-> +	if (err)
-> +		return err;
-> +
-> +	/* Mask all eight interrupts */
-> +	writel_relaxed(0xff, sfc->regbase + SFC_IMR);
-> +
-> +	writel_relaxed(SFC_CTRL_PHASE_SEL_NEGETIVE, sfc->regbase + SFC_CTRL);
+> +	sizes[0] = f->size;
+> +	*nplanes = 1;
 > +
 > +	return 0;
 > +}
 > +
-> +static int rockchip_sfc_prep(struct spi_nor *nor, enum spi_nor_ops ops)
+> +static int rga_buf_prepare(struct vb2_buffer *vb)
 > +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	int ret;
+> +	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> +	struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
 > +
-> +	mutex_lock(&sfc->lock);
-> +	pm_runtime_get_sync(sfc->dev);
+> +	if (IS_ERR(f))
+> +		return PTR_ERR(f);
 > +
-> +	ret = clk_set_rate(sfc->clk, priv->clk_rate);
-> +	if (ret)
-> +		goto out;
-> +
-> +	ret = clk_prepare_enable(sfc->clk);
-> +	if (ret)
-> +		goto out;
+> +	vb2_set_plane_payload(vb, 0, f->size);
 > +
 > +	return 0;
-> +
-> +out:
-> +	mutex_unlock(&sfc->lock);
-> +	return ret;
 > +}
 > +
-> +static void rockchip_sfc_unprep(struct spi_nor *nor, enum spi_nor_ops ops)
+> +static void rga_buf_queue(struct vb2_buffer *vb)
 > +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
+> +	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+> +	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
 > +
-> +	clk_disable_unprepare(sfc->clk);
-> +	mutex_unlock(&sfc->lock);
-> +	pm_runtime_mark_last_busy(sfc->dev);
-> +	pm_runtime_put_autosuspend(sfc->dev);
+> +	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
 > +}
 > +
-> +static int rockchip_sfc_get_fifo_level(struct rockchip_sfc *sfc, int wr, u32 timeout)
+> +static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
 > +{
-> +	unsigned long deadline = jiffies + timeout;
-> +	int level;
-> +	u32 fsr;
+> +	struct rga_ctx *ctx = vb2_get_drv_priv(q);
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	int ret, i;
 > +
-> +	do {
-> +		fsr = readl_relaxed(sfc->regbase + SFC_FSR);
-> +		if (wr)
-> +			level = (fsr & SFC_FSR_TXLV_MASK) >> SFC_FSR_TXLV_SHIFT;
+> +	ret = pm_runtime_get_sync(rga->dev);
+> +
+> +	if (ret < 0) {
+> +		for (i = 0; i < q->num_buffers; ++i) {
+> +			if (q->bufs[i]->state == VB2_BUF_STATE_ACTIVE) {
+> +				v4l2_m2m_buf_done(to_vb2_v4l2_buffer(q->bufs[i]),
+> +						VB2_BUF_STATE_QUEUED);
+> +			}
+> +		}
+> +
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void rga_buf_stop_streaming(struct vb2_queue *q)
+> +{
+> +	struct rga_ctx *ctx = vb2_get_drv_priv(q);
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	struct vb2_v4l2_buffer *vbuf;
+> +
+> +	for (;;) {
+> +		if (V4L2_TYPE_IS_OUTPUT(q->type))
+> +			vbuf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
 > +		else
-> +			level = (fsr & SFC_FSR_RXLV_MASK) >> SFC_FSR_RXLV_SHIFT;
-> +		if (time_after_eq(jiffies, deadline))
-> +			return -ETIMEDOUT;
-> +		udelay(1);
-
-if level != 0, is it needed to call udelay or check for time out?
-
-> +	} while (!level);
-> +
-> +	return level;
-> +}
-> +
-> +static int rockchip_sfc_wait_op_finish(struct rockchip_sfc *sfc)
-> +{
-> +	int err;
-> +	u32 status;
-> +
-> +	/*
-> +	 * Note: tx and rx share the same fifo, so the rx's water level
-> +	 * is the same as rx's, which means this function could be reused
-> +	 * for checking the read operations as well.
-> +	 */
-> +	err = readl_poll_timeout(sfc->regbase + SFC_FSR, status,
-> +				 status & SFC_FSR_TX_IS_EMPTY,
-> +				 20, jiffies_to_usecs(2 * HZ));
-> +	if (err)
-> +		dev_err(sfc->dev, "SFC fifo never empty\n");
-> +
-> +	return err;
-> +}
-> +
-> +static int rockchip_sfc_op_reg(struct spi_nor *nor,
-> +			       u8 opcode, int len, u8 optype)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	bool tx_no_empty, rx_no_empty, is_busy;
-> +	int err;
-> +	u32 reg;
-> +
-> +	reg = readl_relaxed(sfc->regbase + SFC_FSR);
-> +	tx_no_empty = !(reg & SFC_FSR_TX_IS_EMPTY);
-> +	rx_no_empty = !(reg & SFC_FSR_RX_IS_EMPTY);
-> +
-> +	is_busy = readl_relaxed(sfc->regbase + SFC_SR);
-> +
-> +	if (tx_no_empty || rx_no_empty || is_busy) {
-> +		err = rockchip_sfc_reset(sfc);
-> +		if (err)
-> +			return err;
+> +			vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> +		if (!vbuf)
+> +			break;
+> +		v4l2_m2m_buf_done(vbuf, VB2_BUF_STATE_ERROR);
 > +	}
 > +
-> +	reg = IF_TYPE_STD << SFC_CTRL_DATA_BITS_SHIFT;
-> +	reg |= IF_TYPE_STD << SFC_CTRL_ADDR_BITS_SHIFT;
-> +	reg |= IF_TYPE_STD << SFC_CTRL_CMD_BITS_SHIFT;
-> +	reg |= SFC_CTRL_PHASE_SEL_NEGETIVE;
-> +	writel_relaxed(reg, sfc->regbase + SFC_CTRL);
-> +	reg = opcode << SFC_CMD_IDX_SHIFT;
-> +	reg |= len << SFC_CMD_TRAN_BYTES_SHIFT;
-> +	reg |= priv->cs << SFC_CMD_CS_SHIFT;
-> +	reg |= optype << SFC_CMD_DIR_SHIFT;
-> +	writel_relaxed(reg, sfc->regbase + SFC_CMD);
-> +
-> +	return 0;
+> +	pm_runtime_put(rga->dev);
 > +}
 > +
-> +static int rockchip_sfc_write_fifo(struct rockchip_sfc *sfc, u8 *buf, int len)
+> +const struct vb2_ops rga_qops = {
+> +	.queue_setup = rga_queue_setup,
+> +	.buf_prepare = rga_buf_prepare,
+> +	.buf_queue = rga_buf_queue,
+> +	.wait_prepare = vb2_ops_wait_prepare,
+> +	.wait_finish = vb2_ops_wait_finish,
+> +	.start_streaming = rga_buf_start_streaming,
+> +	.stop_streaming = rga_buf_stop_streaming,
+> +};
+> +
+> +/* RGA MMU is a 1-Level MMU, so it can't be used through the IOMMU API.
+> + * We use it more like a scatter-gather list.
+> + */
+> +void rga_buf_map(struct vb2_buffer *vb)
 > +{
-
-The 'len' arguement of rockchip_sfc_read_fifo() seems to be in bytes
-whereas here 'len' is a number of DWORDS.
-This is not consistant.
-
-> +	u8 tx_level;
-> +	u32 dwords;
+> +	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	struct sg_table *sgt;
+> +	struct scatterlist *sgl;
+> +	unsigned int *pages;
+> +	unsigned int address, len, i, p;
+> +	unsigned int mapped_size = 0;
 > +
-> +	while (len) {
-> +		tx_level = rockchip_sfc_get_fifo_level(sfc, SFC_CMD_DIR_WR, HZ);
-> +		if (tx_level <= 0)
-
-As far as I understand, rockchip_sfc_get_fifo_level() can't return 0, so
-tx_level can't be 0. The test should be if (tx_level < 0)
-
-Besides, if tx_level could be 0 here, this function would retrun 0 as if
-it succeeded whereas it has actually failed.
-
-> +			return tx_level;
-> +		dwords = min_t(u32, tx_level, len);
-> +		iowrite32_rep(sfc->regbase + SFC_DATA, buf, dwords);
-> +		buf += dwords << 2;
-> +		len -= dwords;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_sfc_read_fifo(struct rockchip_sfc *sfc, u8 *buf, int len)
-> +{
-> +	u32 tmp;
-> +	u8 read_words;
-> +	u8 rx_level;
-> +	u32 dwords;
-> +
-> +	/* 32-bit access only */
-> +	if (len >= sizeof(u32)) {
-> +		dwords = len >> 2;
-> +		while (dwords) {
-> +			rx_level = rockchip_sfc_get_fifo_level(sfc, SFC_CMD_DIR_RD, HZ);
-> +			if (rx_level <= 0)
-
-if (rx_level < 0)
-> +				return rx_level;
-> +			read_words = min_t(u32, rx_level, dwords);
-> +			ioread32_rep(sfc->regbase + SFC_DATA, buf, read_words);
-> +			buf += read_words << 2;
-> +			dwords -= read_words;
-> +		}
-> +		len %= 4;
-> +	}
-> +
-> +	/* read the rest none word aligned bytes */
-> +	if (len) {
-> +		rx_level = rockchip_sfc_get_fifo_level(sfc, SFC_CMD_DIR_RD, HZ);
-> +		if (rx_level <= 0)
-
-if (rx_level < 0)
-> +			return rx_level;
-> +		tmp = readl_relaxed(sfc->regbase + SFC_DATA);
-> +		memcpy(buf, &tmp, len);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_sfc_read_reg(struct spi_nor *nor, u8 opcode,
-> +				 u8 *buf, int len)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	int ret;
-> +	int trans;
-> +
-> +	while (len > 0) {
-> +		trans = min_t(int, len, SFC_MAX_TRANS_BYTES);
-> +		ret = rockchip_sfc_op_reg(nor, opcode, trans, SFC_CMD_DIR_RD);
-
-You simply cannot split a single SPI command into many smallers SPI
-commands like that.
-
-Unlike _read(), _read_reg() doesn't send an address or offset after the
-instruction byte in the SPI command. Then let's take the example of the
-Read JEDEC ID command (9Fh), if you send this command many times in this
-loop, you would read always the same bytes starting from offset 0.
-
-
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = rockchip_sfc_read_fifo(sfc, buf, trans);
-
-Why rockchip_sfc_write_reg() cares about the alignment of its 'buf'
-argument but not rockchip_sfr_read_reg() here?
-
-> +		if (ret < 0)
-> +			return ret;
-> +		buf += trans;
-> +		len -= trans;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_sfc_write_reg(struct spi_nor *nor, u8 opcode,
-> +				  u8 *buf, int len)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	u32 dwords;
-> +	int ret;
-> +	u8 *pbuf = buf;
-> +	u8 *tmpbuf = NULL;
-> +
-> +	/* Align bytes to dwords */
-> +	dwords = DIV_ROUND_UP(len, sizeof(u32));
-> +	if (!IS_ALIGNED((u32)buf, sizeof(u32))) {
-> +		dev_dbg(sfc->dev, "write_reg buf is not aligned to u32\n");
-> +		tmpbuf = kzalloc(sizeof(*tmpbuf), len);
-> +		if (!tmpbuf)
-> +			return -ENOMEM;
-> +		memcpy(tmpbuf, buf, len);
-> +		pbuf = tmpbuf;
-> +	}
-> +
-> +	ret = rockchip_sfc_op_reg(nor, opcode, len, SFC_CMD_DIR_WR);
-> +	if (ret)
-> +		return ret;
-> +	ret = rockchip_sfc_write_fifo(sfc, pbuf, dwords);
-> +
-> +	kfree(tmpbuf);
-> +
-> +	return ret;
-> +}
-> +
-> +static inline void rockchip_sfc_setup_transfer(struct spi_nor *nor,
-> +					       loff_t from_to,
-> +					       size_t len, u8 op_type)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	u32 reg;
-> +	u8 if_type = IF_TYPE_STD;
-> +
-> +	if (op_type == SFC_CMD_DIR_RD)
-> +		if_type = get_if_type(sfc, nor->read_proto);
-> +	writel_relaxed((if_type << SFC_CTRL_DATA_BITS_SHIFT) |
-> +		       (IF_TYPE_STD << SFC_CTRL_ADDR_BITS_SHIFT) |
-> +		       (IF_TYPE_STD << SFC_CTRL_CMD_BITS_SHIFT) |
-> +		       SFC_CTRL_PHASE_SEL_NEGETIVE,
-> +		       sfc->regbase + SFC_CTRL);
-> +
-> +	if (op_type == SFC_CMD_DIR_WR)
-> +		reg = nor->program_opcode << SFC_CMD_IDX_SHIFT;
+> +	if (vb->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> +		pages = rga->src_mmu_pages;
 > +	else
-> +		reg = nor->read_opcode << SFC_CMD_IDX_SHIFT;
+> +		pages = rga->dst_mmu_pages;
 > +
-> +	reg |= op_type << SFC_CMD_DIR_SHIFT;
-> +	reg |= (nor->addr_width == 4) ?
-> +		SFC_CMD_ADDR_32BITS : SFC_CMD_ADDR_24BITS;
+> +	/* Create local MMU table for RGA */
+> +	sgt = vb2_plane_cookie(vb, 0);
 > +
-> +	reg |= priv->cs << SFC_CMD_CS_SHIFT;
-> +	reg |= len << SFC_CMD_TRAN_BYTES_SHIFT;
+> +	for_each_sg(sgt->sgl, sgl, sgt->nents, i) {
+> +		len = sg_dma_len(sgl) >> PAGE_SHIFT;
+> +		address = sg_phys(sgl);
 > +
-> +	if (op_type == SFC_CMD_DIR_RD)
-> +		reg |= SFC_CMD_DUMMY(nor->read_dummy);
+> +		for (p = 0; p < len; p++) {
+> +			dma_addr_t phys = address + (p << PAGE_SHIFT);
 > +
-> +	/* Should minus one as 0x0 means 1 bit flash address */
-> +	writel_relaxed(nor->addr_width * 8 - 1, sfc->regbase + SFC_ABIT);
-> +	writel_relaxed(reg, sfc->regbase + SFC_CMD);
-> +	writel_relaxed(from_to, sfc->regbase + SFC_ADDR);
+> +			pages[mapped_size + p] = phys;
+> +		}
+> +
+> +		mapped_size += len;
+> +	}
+> +
+> +	/* sync local MMU table for RGA */
+> +	dma_sync_single_for_device(rga->dev, virt_to_phys(pages),
+> +				   8 * PAGE_SIZE, DMA_BIDIRECTIONAL);
 > +}
+> diff --git a/drivers/media/platform/rockchip-rga/rga-hw.c b/drivers/media/platform/rockchip-rga/rga-hw.c
+> new file mode 100644
+> index 0000000..5b7ee58
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip-rga/rga-hw.c
+> @@ -0,0 +1,670 @@
+> +/*
+> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
 > +
-> +static int rockchip_sfc_do_dma_transfer(struct spi_nor *nor, loff_t from_to,
-> +					dma_addr_t dma_buf, size_t len,
-> +					u8 op_type)
+> +#include <linux/pm_runtime.h>
+> +
+> +#include "rga-hw.h"
+> +#include "rga.h"
+> +
+> +enum e_rga_start_pos {
+> +	LT = 0,
+> +	LB = 1,
+> +	RT = 2,
+> +	RB = 3,
+> +};
+> +
+> +struct rga_addr_offset {
+> +	unsigned int y_off;
+> +	unsigned int u_off;
+> +	unsigned int v_off;
+> +};
+> +
+> +struct rga_corners_addr_offset {
+> +	struct rga_addr_offset left_top;
+> +	struct rga_addr_offset right_top;
+> +	struct rga_addr_offset left_bottom;
+> +	struct rga_addr_offset right_bottom;
+> +};
+> +
+> +static unsigned int rga_get_scaling(unsigned int src, unsigned int dst)
 > +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	u32 reg;
-> +	int err = 0;
-> +
-> +	init_completion(&sfc->cp);
-> +
-> +	writel_relaxed(SFC_ICLR_RX_FULL | SFC_ICLR_RX_UFLOW |
-> +		       SFC_ICLR_TX_OFLOW | SFC_ICLR_TX_EMPTY |
-> +		       SFC_ICLR_TRAN_FINISH | SFC_ICLR_BUS_ERR |
-> +		       SFC_ICLR_NSPI_ERR | SFC_ICLR_DMA,
-> +		       sfc->regbase + SFC_ICLR);
-> +
-> +	/* Enable transfer complete interrupt */
-> +	reg = readl_relaxed(sfc->regbase + SFC_IMR);
-> +	reg &= ~SFC_IMR_TRAN_FINISH;
-> +	writel_relaxed(reg, sfc->regbase + SFC_IMR);
-> +
-> +	rockchip_sfc_setup_transfer(nor, from_to, len, op_type);
-> +	writel_relaxed(dma_buf, sfc->regbase + SFC_DMA_ADDR);
-> +
 > +	/*
-> +	 * Start dma but note that the sfc->dma_buffer is derived from
-> +	 * dmam_alloc_coherent so we don't actually need any sync operations
-> +	 * for coherent dma memory.
+> +	 * The rga hw scaling factor is a normalized inverse of the
+> +	 * scaling factor.
+> +	 * For example: When source width is 100 and destination width is 200
+> +	 * (scaling of 2x), then the hw factor is NC * 100 / 200.
+> +	 * The normalization factor (NC) is 2^16 = 0x10000.
 > +	 */
-> +	writel_relaxed(0x1, sfc->regbase + SFC_DMA_TRIGGER);
 > +
-> +	/* Wait for the interrupt. */
-> +	if (!wait_for_completion_timeout(&sfc->cp, msecs_to_jiffies(2000))) {
-> +		dev_err(sfc->dev, "DMA wait for transfer finish timeout\n");
-> +		err = -ETIMEDOUT;
-> +	}
-> +
-> +	/* Disable transfer finish interrupt */
-> +	reg = readl_relaxed(sfc->regbase + SFC_IMR);
-> +	reg |= SFC_IMR_TRAN_FINISH;
-> +	writel_relaxed(reg, sfc->regbase + SFC_IMR);
-> +
-> +	if (err) {
-> +		rockchip_sfc_reset(sfc);
-> +		return err;
-> +	}
-> +
-> +	return rockchip_sfc_wait_op_finish(sfc);
+> +	return (src > dst) ? ((dst << 16) / src) : ((src << 16) / dst);
 > +}
 > +
-> +static inline int rockchip_sfc_pio_write(struct rockchip_sfc *sfc, u_char *buf,
-> +					 size_t len)
+> +static struct rga_corners_addr_offset
+> +rga_get_addr_offset(struct rga_frame *frm, unsigned int x, unsigned int y,
+> +		    unsigned int w, unsigned int h)
 > +{
-> +	u32 dwords;
-> +	u8 *tmpbuf;
+> +	struct rga_corners_addr_offset offsets;
+> +	struct rga_addr_offset *lt, *lb, *rt, *rb;
+> +	unsigned int x_div = 0,
+> +		     y_div = 0, uv_stride = 0, pixel_width = 0, uv_factor = 0;
 > +
-> +	/*
-> +	 * Align bytes to dwords, although we will write some extra
-> +	 * bytes to fifo but the transfer bytes number in SFC_CMD
-> +	 * register will make sure we just send out the expected
-> +	 * byte numbers and the extra bytes will be clean before
-> +	 * setting up the next transfer. We should always round up
-> +	 * to align to DWORD as the ahb for Rockchip Socs won't
-> +	 * support non-aligned-to-DWORD transfer.
-> +	 */
-> +	dwords = DIV_ROUND_UP(len, sizeof(u32));
-> +	if (!IS_ALIGNED((u32)buf, sizeof(u32))) {
-> +		dev_dbg(sfc->dev, "pio_write buf is not aligned to u32\n");
-> +		tmpbuf = kmalloc(sizeof(*tmpbuf), len);
-> +		if (!tmpbuf)
-> +			return -ENOMEM;
-> +		memcpy((u32 *)tmpbuf, (u32 *)buf, dwords);
-> +	}
+> +	lt = &offsets.left_top;
+> +	lb = &offsets.left_bottom;
+> +	rt = &offsets.right_top;
+> +	rb = &offsets.right_bottom;
 > +
-> +	iowrite32_rep(sfc->regbase + SFC_DATA,
-> +		      !IS_ALIGNED((u32)buf, sizeof(u32)) ? tmpbuf : buf,
-
-You could introduce a pbuf variable like you did in
-rockchip_sfc_write_reg(), hence the last argument of iowrite32_rep()
-would simply be pbuf.
-
-Also, why don't you care about the FIFO level, here?
-
-rockchip_sfc_pio_read == rockchip_sfc_read_fifo
-
-but
-
-rockchip_sfc_pio_write != rockchip_sfc_write_fifo
-
-?
-
-Please, try to do something more consistant between read_reg(),
-write_reg(), read() and write() about data transfers and dealing with
-alignment issues.
-
-> +		      dwords);
+> +	x_div = frm->fmt->x_div;
+> +	y_div = frm->fmt->y_div;
+> +	uv_factor = frm->fmt->uv_factor;
+> +	uv_stride = frm->stride / x_div;
+> +	pixel_width = frm->stride / frm->width;
 > +
-> +	if (!IS_ALIGNED((u32)buf, sizeof(u32)))
-> +		kfree(tmpbuf);
+> +	lt->y_off = y * frm->stride + x * pixel_width;
+> +	lt->u_off =
+> +		frm->width * frm->height + (y / y_div) * uv_stride + x / x_div;
+> +	lt->v_off = lt->u_off + frm->width * frm->height / uv_factor;
 > +
-> +	return rockchip_sfc_wait_op_finish(sfc);
+> +	lb->y_off = lt->y_off + (h - 1) * frm->stride;
+> +	lb->u_off = lt->u_off + (h / y_div - 1) * uv_stride;
+> +	lb->v_off = lt->v_off + (h / y_div - 1) * uv_stride;
+> +
+> +	rt->y_off = lt->y_off + (w - 1) * pixel_width;
+> +	rt->u_off = lt->u_off + w / x_div - 1;
+> +	rt->v_off = lt->v_off + w / x_div - 1;
+> +
+> +	rb->y_off = lb->y_off + (w - 1) * pixel_width;
+> +	rb->u_off = lb->u_off + w / x_div - 1;
+> +	rb->v_off = lb->v_off + w / x_div - 1;
+> +
+> +	return offsets;
 > +}
 > +
-> +static inline int rockchip_sfc_pio_read(struct rockchip_sfc *sfc, u_char *buf,
-> +					size_t len)
+> +static struct rga_addr_offset *rga_lookup_draw_pos(struct
+> +		rga_corners_addr_offset
+> +		* offsets, u32 rotate_mode,
+> +		u32 mirr_mode)
 > +{
-> +	return rockchip_sfc_read_fifo(sfc, buf, len);
-> +}
-> +
-> +static int rockchip_sfc_pio_transfer(struct spi_nor *nor, loff_t from_to,
-> +				     size_t len, u_char *buf, u8 op_type)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	size_t trans;
-> +	int ret;
-> +
-> +	while (len > 0) {
-> +		trans = min_t(size_t, SFC_MAX_TRANS_BYTES, len);
-> +		rockchip_sfc_setup_transfer(nor, from_to, trans, op_type);
-> +
-> +		if (op_type == SFC_CMD_DIR_WR) {
-> +			ret = rockchip_sfc_pio_write(sfc, buf, trans);
-> +			if (ret)
-> +				return ret;
-> +		} else {
-> +			ret = rockchip_sfc_pio_read(sfc, buf, trans);
-> +			if (ret)
-> +				return ret;
-> +		}
-> +		len -= trans;
-> +		buf += trans;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_sfc_dma_transfer(struct spi_nor *nor, loff_t from_to,
-> +				     size_t len, u_char *buf, u8 op_type)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	size_t offset;
-> +	int ret;
-> +	size_t aligned_trans;
-> +	size_t padding_len;
-> +
-> +	for (offset = 0; offset < len; offset += SFC_DMA_MAX_LEN) {
-> +		size_t trans = min_t(size_t, SFC_DMA_MAX_LEN, len - offset);
-> +
-> +		aligned_trans = ALIGN(trans, 4);
-> +		padding_len = aligned_trans - trans;
-
-This is all wrong, you cannot split SPI commands into smaller SPI
-commands nor you can add padding bytes to align the length of the
-transfer data.
-
-'aligned_trans' only (not 'len') is passed to
-rockchip_sfc_do_dma_transfer() so rockchip_sfc_setup_transfer() will
-write the wrong value into the SFC_CMD register.
-
-If the driver is asked to write 9 bytes, it must write 9 bytes, not 12.
-
-Even worse, you cannot split a Page Program command into smaller Page
-Program commands. Indeed, you can't send a Page Program command
-immediately after another Page Program command, like this function can
-do. Actually, spi-nor.c checks the Status Register for write completion
-after having called nor->write() and no SPI command can be sent to the
-memory until the BUSY bit is cleared.
-
-Please, don't try to duplicate here what spi-nor.c already does.
-
-
-Best regards,
-
-Cyrille
-
-> +
-> +		if (op_type == SFC_CMD_DIR_WR) {
-> +			memcpy(sfc->buffer, buf + offset, trans);
-> +			/* padding the package to 4 byte aligned */
-> +			memset(sfc->buffer + trans, 0xff, padding_len);
-> +		}
-> +
-> +		ret = rockchip_sfc_do_dma_transfer(nor, from_to + offset,
-> +						   sfc->dma_buffer,
-> +						   aligned_trans, op_type);
-> +		if (ret) {
-> +			dev_warn(nor->dev, "DMA timeout\n");
-> +			return ret;
-> +		}
-> +
-> +		if (op_type == SFC_CMD_DIR_RD)
-> +			memcpy(buf + offset, sfc->buffer, trans);
-> +	}
-> +
-> +	return len;
-> +}
-> +
-> +static ssize_t rockchip_sfc_do_rd_wr(struct spi_nor *nor, loff_t from_to,
-> +				     size_t len, u_char *buf, u32 op_type)
-> +{
-> +	struct rockchip_sfc_chip_priv *priv = nor->priv;
-> +	struct rockchip_sfc *sfc = priv->sfc;
-> +	int ret;
-> +
-> +	if (likely(sfc->use_dma))
-> +		return rockchip_sfc_dma_transfer(nor, from_to, len,
-> +						 buf, op_type);
-> +
-> +	/* Fall back to PIO mode if DMA isn't present */
-> +	ret = rockchip_sfc_pio_transfer(nor, from_to, len,
-> +					(u_char *)buf, op_type);
-> +	if (ret) {
-> +		dev_warn(nor->dev, "PIO %s timeout\n",
-> +			 (op_type == SFC_CMD_DIR_RD) ? "read" : "write");
-> +		return ret;
-> +	}
-> +
-> +	return len;
-> +}
-> +
-> +static ssize_t rockchip_sfc_read(struct spi_nor *nor, loff_t from,
-> +				 size_t len, u_char *read_buf)
-> +{
-> +	return rockchip_sfc_do_rd_wr(nor, from, len,
-> +				     read_buf, SFC_CMD_DIR_RD);
-> +}
-> +
-> +static ssize_t rockchip_sfc_write(struct spi_nor *nor, loff_t to,
-> +				  size_t len, const u_char *write_buf)
-> +{
-> +	return rockchip_sfc_do_rd_wr(nor, to, len,
-> +				     (u_char *)write_buf,
-> +				     SFC_CMD_DIR_WR);
-> +}
-> +
-> +static int rockchip_sfc_register(struct device_node *np,
-> +				 struct rockchip_sfc *sfc)
-> +{
-> +	const struct spi_nor_hwcaps hwcaps = {
-> +		.mask = SNOR_HWCAPS_READ |
-> +			SNOR_HWCAPS_READ_FAST |
-> +			SNOR_HWCAPS_READ_1_1_2 |
-> +			SNOR_HWCAPS_READ_1_1_4 |
-> +			SNOR_HWCAPS_PP,
+> +	static enum e_rga_start_pos rot_mir_point_matrix[4][4] = {
+> +		{
+> +			LT, RT, LB, RB,
+> +		},
+> +		{
+> +			RT, LT, RB, LB,
+> +		},
+> +		{
+> +			RB, LB, RT, LT,
+> +		},
+> +		{
+> +			LB, RB, LT, RT,
+> +		},
 > +	};
-> +	struct device *dev = sfc->dev;
-> +	struct mtd_info *mtd;
-> +	struct spi_nor *nor;
-> +	int ret;
 > +
-> +	nor = &sfc->flash[sfc->num_chip].nor;
-> +	nor->dev = dev;
-> +	spi_nor_set_flash_node(nor, np);
+> +	if (!offsets)
+> +		return NULL;
 > +
-> +	ret = of_property_read_u8(np, "reg", &sfc->flash[sfc->num_chip].cs);
-> +	if (ret) {
-> +		dev_err(dev, "No reg property for %s\n",
-> +			np->full_name);
-> +		return ret;
+> +	switch (rot_mir_point_matrix[rotate_mode][mirr_mode]) {
+> +	case LT:
+> +		return &offsets->left_top;
+> +	case LB:
+> +		return &offsets->left_bottom;
+> +	case RT:
+> +		return &offsets->right_top;
+> +	case RB:
+> +		return &offsets->right_bottom;
 > +	}
 > +
-> +	ret = of_property_read_u32(np, "spi-max-frequency",
-> +				   &sfc->flash[sfc->num_chip].clk_rate);
-> +	if (ret) {
-> +		dev_err(dev, "No spi-max-frequency property for %s\n",
-> +			np->full_name);
-> +		return ret;
+> +	return NULL;
+> +}
+> +
+> +static void rga_cmd_set_src_addr(struct rga_ctx *ctx, void *mmu_pages)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	u32 *dest = rga->cmdbuf_virt;
+> +	unsigned int reg;
+> +
+> +	reg = RGA_MMU_SRC_BASE - RGA_MODE_BASE_REG;
+> +	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
+> +
+> +	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
+> +	dest[reg >> 2] |= 0x7;
+> +}
+> +
+> +static void rga_cmd_set_src1_addr(struct rga_ctx *ctx, void *mmu_pages)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	u32 *dest = rga->cmdbuf_virt;
+> +	unsigned int reg;
+> +
+> +	reg = RGA_MMU_SRC1_BASE - RGA_MODE_BASE_REG;
+> +	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
+> +
+> +	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
+> +	dest[reg >> 2] |= 0x7 << 4;
+> +}
+> +
+> +static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, void *mmu_pages)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	u32 *dest = rga->cmdbuf_virt;
+> +	unsigned int reg;
+> +
+> +	reg = RGA_MMU_DST_BASE - RGA_MODE_BASE_REG;
+> +	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
+> +
+> +	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
+> +	dest[reg >> 2] |= 0x7 << 8;
+> +}
+> +
+> +static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	u32 *dest = rga->cmdbuf_virt;
+> +	unsigned int scale_dst_w, scale_dst_h;
+> +	unsigned int src_h, src_w, src_x, src_y, dst_h, dst_w, dst_x, dst_y;
+> +	union rga_src_info src_info;
+> +	union rga_dst_info dst_info;
+> +	union rga_src_x_factor x_factor;
+> +	union rga_src_y_factor y_factor;
+> +	union rga_src_vir_info src_vir_info;
+> +	union rga_src_act_info src_act_info;
+> +	union rga_dst_vir_info dst_vir_info;
+> +	union rga_dst_act_info dst_act_info;
+> +
+> +	struct rga_addr_offset *dst_offset;
+> +	struct rga_corners_addr_offset offsets;
+> +	struct rga_corners_addr_offset src_offsets;
+> +
+> +	src_h = ctx->in.crop.height;
+> +	src_w = ctx->in.crop.width;
+> +	src_x = ctx->in.crop.left;
+> +	src_y = ctx->in.crop.top;
+> +	dst_h = ctx->out.crop.height;
+> +	dst_w = ctx->out.crop.width;
+> +	dst_x = ctx->out.crop.left;
+> +	dst_y = ctx->out.crop.top;
+> +
+> +	src_info.val = dest[(RGA_SRC_INFO - RGA_MODE_BASE_REG) >> 2];
+> +	dst_info.val = dest[(RGA_DST_INFO - RGA_MODE_BASE_REG) >> 2];
+> +	x_factor.val = dest[(RGA_SRC_X_FACTOR - RGA_MODE_BASE_REG) >> 2];
+> +	y_factor.val = dest[(RGA_SRC_Y_FACTOR - RGA_MODE_BASE_REG) >> 2];
+> +	src_vir_info.val = dest[(RGA_SRC_VIR_INFO - RGA_MODE_BASE_REG) >> 2];
+> +	src_act_info.val = dest[(RGA_SRC_ACT_INFO - RGA_MODE_BASE_REG) >> 2];
+> +	dst_vir_info.val = dest[(RGA_DST_VIR_INFO - RGA_MODE_BASE_REG) >> 2];
+> +	dst_act_info.val = dest[(RGA_DST_ACT_INFO - RGA_MODE_BASE_REG) >> 2];
+> +
+> +	src_info.data.format = ctx->in.fmt->hw_format;
+> +	src_info.data.swap = ctx->in.fmt->color_swap;
+> +	dst_info.data.format = ctx->out.fmt->hw_format;
+> +	dst_info.data.swap = ctx->out.fmt->color_swap;
+> +
+> +	if (ctx->in.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
+> +		if (ctx->out.fmt->hw_format < RGA_COLOR_FMT_YUV422SP) {
+> +			switch (ctx->in.colorspace) {
+> +			case V4L2_COLORSPACE_REC709:
+> +				src_info.data.csc_mode =
+> +					RGA_SRC_CSC_MODE_BT709_R0;
+> +				break;
+> +			default:
+> +				src_info.data.csc_mode =
+> +					RGA_SRC_CSC_MODE_BT601_R0;
+> +				break;
+> +			}
+> +		}
 > +	}
 > +
-> +	sfc->flash[sfc->num_chip].sfc = sfc;
-> +	nor->priv = &sfc->flash[sfc->num_chip];
-> +
-> +	nor->prepare = rockchip_sfc_prep;
-> +	nor->unprepare = rockchip_sfc_unprep;
-> +	nor->read_reg = rockchip_sfc_read_reg;
-> +	nor->write_reg = rockchip_sfc_write_reg;
-> +	nor->read = rockchip_sfc_read;
-> +	nor->write = rockchip_sfc_write;
-> +	nor->erase = NULL;
-> +	ret = spi_nor_scan(nor, NULL, &hwcaps);
-> +	if (ret)
-> +		return ret;
-> +
-> +	mtd = &nor->mtd;
-> +	mtd->name = np->name;
-> +	ret = mtd_device_register(mtd, NULL, 0);
-> +	if (ret)
-> +		return ret;
-> +
-> +	sfc->num_chip++;
-> +	return 0;
-> +}
-> +
-> +static void rockchip_sfc_unregister_all(struct rockchip_sfc *sfc)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < sfc->num_chip; i++)
-> +		mtd_device_unregister(&sfc->flash[i].nor.mtd);
-> +}
-> +
-> +static int rockchip_sfc_register_all(struct rockchip_sfc *sfc)
-> +{
-> +	struct device *dev = sfc->dev;
-> +	struct device_node *np;
-> +	int ret;
-> +
-> +	for_each_available_child_of_node(dev->of_node, np) {
-> +		ret = rockchip_sfc_register(np, sfc);
-> +		if (ret)
-> +			goto fail;
-> +
-> +		if (sfc->num_chip == SFC_MAX_CHIPSELECT_NUM) {
-> +			dev_warn(dev, "Exceeds the max cs limitation\n");
+> +	if (ctx->out.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
+> +		switch (ctx->out.colorspace) {
+> +		case V4L2_COLORSPACE_REC709:
+> +			dst_info.data.csc_mode = RGA_SRC_CSC_MODE_BT709_R0;
+> +			break;
+> +		default:
+> +			dst_info.data.csc_mode = RGA_DST_CSC_MODE_BT601_R0;
 > +			break;
 > +		}
 > +	}
 > +
-> +	return 0;
+> +	if (ctx->op == V4L2_PORTER_DUFF_CLEAR) {
+> +		/*
+> +		 * Configure the target color to foreground color.
+> +		 */
+> +		dest[(RGA_SRC_FG_COLOR - RGA_MODE_BASE_REG) >> 2] =
+> +			ctx->fill_color;
+> +		dst_vir_info.data.vir_stride = ctx->out.stride >> 2;
+> +		dst_act_info.data.act_height = dst_h - 1;
+> +		dst_act_info.data.act_width = dst_w - 1;
 > +
-> +fail:
-> +	dev_err(dev, "Failed to register all chips\n");
-> +	/* Unregister all the _registered_ nor flash */
-> +	rockchip_sfc_unregister_all(sfc);
-> +	return ret;
+> +		offsets = rga_get_addr_offset(&ctx->out, dst_x, dst_y,
+> +					      dst_w, dst_h);
+> +		dst_offset = &offsets.left_top;
+> +
+> +		goto write_dst;
+> +	}
+> +
+> +	if (ctx->vflip)
+> +		src_info.data.mir_mode |= RGA_SRC_MIRR_MODE_X;
+> +
+> +	if (ctx->hflip)
+> +		src_info.data.mir_mode |= RGA_SRC_MIRR_MODE_Y;
+> +
+> +	switch (ctx->rotate) {
+> +	case 90:
+> +		src_info.data.rot_mode = RGA_SRC_ROT_MODE_90_DEGREE;
+> +		break;
+> +	case 180:
+> +		src_info.data.rot_mode = RGA_SRC_ROT_MODE_180_DEGREE;
+> +		break;
+> +	case 270:
+> +		src_info.data.rot_mode = RGA_SRC_ROT_MODE_270_DEGREE;
+> +		break;
+> +	default:
+> +		src_info.data.rot_mode = RGA_SRC_ROT_MODE_0_DEGREE;
+> +		break;
+> +	}
+> +
+> +	/*
+> +	 * Cacluate the up/down scaling mode/factor.
+> +	 *
+> +	 * RGA used to scale the picture first, and then rotate second,
+> +	 * so we need to swap the w/h when rotate degree is 90/270.
+> +	 */
+> +	if (src_info.data.rot_mode == RGA_SRC_ROT_MODE_90_DEGREE ||
+> +	    src_info.data.rot_mode == RGA_SRC_ROT_MODE_270_DEGREE) {
+> +		if (rga->version.major == 0 || rga->version.minor == 0) {
+> +			if (dst_w == src_h)
+> +				src_h -= 8;
+> +			if (abs(src_w - dst_h) < 16)
+> +				src_w -= 16;
+> +		}
+> +
+> +		scale_dst_h = dst_w;
+> +		scale_dst_w = dst_h;
+> +	} else {
+> +		scale_dst_w = dst_w;
+> +		scale_dst_h = dst_h;
+> +	}
+> +
+> +	if (src_w == scale_dst_w) {
+> +		src_info.data.hscl_mode = RGA_SRC_HSCL_MODE_NO;
+> +		x_factor.val = 0;
+> +	} else if (src_w > scale_dst_w) {
+> +		src_info.data.hscl_mode = RGA_SRC_HSCL_MODE_DOWN;
+> +		x_factor.data.down_scale_factor =
+> +			rga_get_scaling(src_w, scale_dst_w) + 1;
+> +	} else {
+> +		src_info.data.hscl_mode = RGA_SRC_HSCL_MODE_UP;
+> +		x_factor.data.up_scale_factor =
+> +			rga_get_scaling(src_w - 1, scale_dst_w - 1);
+> +	}
+> +
+> +	if (src_h == scale_dst_h) {
+> +		src_info.data.vscl_mode = RGA_SRC_VSCL_MODE_NO;
+> +		y_factor.val = 0;
+> +	} else if (src_h > scale_dst_h) {
+> +		src_info.data.vscl_mode = RGA_SRC_VSCL_MODE_DOWN;
+> +		y_factor.data.down_scale_factor =
+> +			rga_get_scaling(src_h, scale_dst_h) + 1;
+> +	} else {
+> +		src_info.data.vscl_mode = RGA_SRC_VSCL_MODE_UP;
+> +		y_factor.data.up_scale_factor =
+> +			rga_get_scaling(src_h - 1, scale_dst_h - 1);
+> +	}
+> +
+> +	/*
+> +	 * Cacluate the framebuffer virtual strides and active size,
+> +	 * note that the step of vir_stride / vir_width is 4 byte words
+> +	 */
+> +	src_vir_info.data.vir_stride = ctx->in.stride >> 2;
+> +	src_vir_info.data.vir_width = ctx->in.stride >> 2;
+> +
+> +	src_act_info.data.act_height = src_h - 1;
+> +	src_act_info.data.act_width = src_w - 1;
+> +
+> +	dst_vir_info.data.vir_stride = ctx->out.stride >> 2;
+> +	dst_act_info.data.act_height = dst_h - 1;
+> +	dst_act_info.data.act_width = dst_w - 1;
+> +
+> +	/*
+> +	 * Cacluate the source framebuffer base address with offset pixel.
+> +	 */
+> +	src_offsets = rga_get_addr_offset(&ctx->in, src_x, src_y,
+> +					  src_w, src_h);
+> +
+> +	/*
+> +	 * Configure the dest framebuffer base address with pixel offset.
+> +	 */
+> +	offsets = rga_get_addr_offset(&ctx->out, dst_x, dst_y, dst_w, dst_h);
+> +	dst_offset = rga_lookup_draw_pos(&offsets, src_info.data.rot_mode,
+> +					 src_info.data.mir_mode);
+> +
+> +	dest[(RGA_SRC_Y_RGB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+> +		src_offsets.left_top.y_off;
+> +	dest[(RGA_SRC_CB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+> +		src_offsets.left_top.u_off;
+> +	dest[(RGA_SRC_CR_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+> +		src_offsets.left_top.v_off;
+> +
+> +	dest[(RGA_SRC_X_FACTOR - RGA_MODE_BASE_REG) >> 2] = x_factor.val;
+> +	dest[(RGA_SRC_Y_FACTOR - RGA_MODE_BASE_REG) >> 2] = y_factor.val;
+> +	dest[(RGA_SRC_VIR_INFO - RGA_MODE_BASE_REG) >> 2] = src_vir_info.val;
+> +	dest[(RGA_SRC_ACT_INFO - RGA_MODE_BASE_REG) >> 2] = src_act_info.val;
+> +
+> +	dest[(RGA_SRC_INFO - RGA_MODE_BASE_REG) >> 2] = src_info.val;
+> +
+> +write_dst:
+> +	dest[(RGA_DST_Y_RGB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+> +		dst_offset->y_off;
+> +	dest[(RGA_DST_CB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+> +		dst_offset->u_off;
+> +	dest[(RGA_DST_CR_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+> +		dst_offset->v_off;
+> +
+> +	dest[(RGA_DST_VIR_INFO - RGA_MODE_BASE_REG) >> 2] = dst_vir_info.val;
+> +	dest[(RGA_DST_ACT_INFO - RGA_MODE_BASE_REG) >> 2] = dst_act_info.val;
+> +
+> +	dest[(RGA_DST_INFO - RGA_MODE_BASE_REG) >> 2] = dst_info.val;
 > +}
 > +
-> +static irqreturn_t rockchip_sfc_irq_handler(int irq, void *dev_id)
+> +static void rga_cmd_set_mode(struct rga_ctx *ctx)
 > +{
-> +	struct rockchip_sfc *sfc = dev_id;
-> +	u32 reg;
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	u32 *dest = rga->cmdbuf_virt;
+> +	union rga_mode_ctrl mode;
+> +	union rga_alpha_ctrl0 alpha_ctrl0;
+> +	union rga_alpha_ctrl1 alpha_ctrl1;
 > +
-> +	reg = readl_relaxed(sfc->regbase + SFC_RISR);
-> +	dev_dbg(sfc->dev, "Get irq: 0x%x\n", reg);
+> +	mode.val = 0;
+> +	alpha_ctrl0.val = 0;
+> +	alpha_ctrl1.val = 0;
 > +
-> +	/* Clear interrupt */
-> +	writel_relaxed(reg, sfc->regbase + SFC_ICLR);
+> +	switch (ctx->op) {
+> +	case V4L2_PORTER_DUFF_CLEAR:
+> +		mode.data.gradient_sat = 1;
+> +		mode.data.render = RGA_MODE_RENDER_RECTANGLE_FILL;
+> +		mode.data.cf_rop4_pat = RGA_MODE_CF_ROP4_SOLID;
+> +		mode.data.bitblt = RGA_MODE_BITBLT_MODE_SRC_TO_DST;
+> +		break;
+> +	case V4L2_PORTER_DUFF_DST:
+> +	case V4L2_PORTER_DUFF_DSTATOP:
+> +	case V4L2_PORTER_DUFF_DSTIN:
+> +	case V4L2_PORTER_DUFF_DSTOUT:
+> +	case V4L2_PORTER_DUFF_DSTOVER:
+> +	case V4L2_PORTER_DUFF_SRCATOP:
+> +	case V4L2_PORTER_DUFF_SRCIN:
+> +	case V4L2_PORTER_DUFF_SRCOUT:
+> +	case V4L2_PORTER_DUFF_SRCOVER:
+> +		mode.data.gradient_sat = 1;
+> +		mode.data.render = RGA_MODE_RENDER_BITBLT;
+> +		mode.data.bitblt = RGA_MODE_BITBLT_MODE_SRC_TO_DST;
 > +
-> +	if (reg & SFC_RISR_TRAN_FINISH)
-> +		complete(&sfc->cp);
+> +		alpha_ctrl0.data.rop_en = 1;
+> +		alpha_ctrl0.data.rop_mode = RGA_ALPHA_ROP_MODE_3;
+> +		alpha_ctrl0.data.rop_select = RGA_ALPHA_SELECT_ALPHA;
+> +
+> +		alpha_ctrl1.data.dst_alpha_cal_m0 = RGA_ALPHA_CAL_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_cal_m0 = RGA_ALPHA_CAL_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_cal_m1 = RGA_ALPHA_CAL_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_cal_m1 = RGA_ALPHA_CAL_NORMAL;
+> +		break;
+> +	default:
+> +		mode.data.gradient_sat = 1;
+> +		mode.data.render = RGA_MODE_RENDER_BITBLT;
+> +		mode.data.bitblt = RGA_MODE_BITBLT_MODE_SRC_TO_DST;
+> +		break;
+> +	}
+> +
+> +	switch (ctx->op) {
+> +	case V4L2_PORTER_DUFF_DST:
+> +		/* A=Dst.a */
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+> +
+> +		/* C=Dst.c */
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ONE;
+> +		break;
+> +	case V4L2_PORTER_DUFF_DSTATOP:
+> +		/* A=Src.a */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+> +
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		/* C=Src.a*Dst.c+Src.c*(1.0-Dst.a) */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+> +		break;
+> +	case V4L2_PORTER_DUFF_DSTIN:
+> +		/* A=Dst.a*Src.a */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER;
+> +
+> +		/* C=Dst.c*Src.a */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+> +		break;
+> +	case V4L2_PORTER_DUFF_DSTOUT:
+> +		/* A=Dst.a*(1.0-Src.a) */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		/* C=Dst.c*(1.0-Src.a) */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +		break;
+> +	case V4L2_PORTER_DUFF_DSTOVER:
+> +		/* A=Src.a+Dst.a*(1.0-Src.a) */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		/* C=Dst.c+Src.c*(1.0-Dst.a) */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ONE;
+> +		break;
+> +	case V4L2_PORTER_DUFF_SRCATOP:
+> +		/* A=Dst.a */
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+> +
+> +		/* C=Dst.a*Src.c+Dst.c*(1.0-Src.a) */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +		break;
+> +	case V4L2_PORTER_DUFF_SRCIN:
+> +		/* A=Src.a*Dst.a */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER;
+> +
+> +		/* C=Src.c*Dst.a */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+> +		break;
+> +	case V4L2_PORTER_DUFF_SRCOUT:
+> +		/* A=Src.a*(1.0-Dst.a) */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_ZERO;
+> +
+> +		/* C=Src.c*(1.0-Dst.a) */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_ZERO;
+> +		break;
+> +	case V4L2_PORTER_DUFF_SRCOVER:
+> +		/* A=Src.a+Dst.a*(1.0-Src.a) */
+> +		alpha_ctrl1.data.src_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m1 = RGA_ALPHA_FACTOR_ONE;
+> +
+> +		alpha_ctrl1.data.dst_alpha_m1 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m1 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m1 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +
+> +		/* C=Src.c+Dst.c*(1.0-Src.a) */
+> +		alpha_ctrl1.data.src_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.src_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.src_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.src_factor_m0 = RGA_ALPHA_FACTOR_ONE;
+> +
+> +		alpha_ctrl1.data.dst_color_m0 = RGA_ALPHA_COLOR_NORMAL;
+> +		alpha_ctrl1.data.dst_alpha_m0 = RGA_ALPHA_NORMAL;
+> +		alpha_ctrl1.data.dst_blend_m0 = RGA_ALPHA_BLEND_NORMAL;
+> +		alpha_ctrl1.data.dst_factor_m0 = RGA_ALPHA_FACTOR_OTHER_REVERSE;
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> +
+> +	dest[(RGA_ALPHA_CTRL0 - RGA_MODE_BASE_REG) >> 2] = alpha_ctrl0.val;
+> +	dest[(RGA_ALPHA_CTRL1 - RGA_MODE_BASE_REG) >> 2] = alpha_ctrl1.val;
+> +
+> +	dest[(RGA_MODE_CTRL - RGA_MODE_BASE_REG) >> 2] = mode.val;
+> +}
+> +
+> +void rga_cmd_set(struct rga_ctx *ctx)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +
+> +	memset(rga->cmdbuf_virt, 0, RGA_CMDBUF_SIZE * 4);
+> +
+> +	if (ctx->op != V4L2_PORTER_DUFF_CLEAR) {
+> +		rga_cmd_set_src_addr(ctx, rga->src_mmu_pages);
+> +		/*
+> +		 * Due to hardware bug,
+> +		 * src1 mmu also should be configured when using alpha blending.
+> +		 */
+> +		rga_cmd_set_src1_addr(ctx, rga->dst_mmu_pages);
+> +	}
+> +	rga_cmd_set_dst_addr(ctx, rga->dst_mmu_pages);
+> +	rga_cmd_set_mode(ctx);
+> +
+> +	rga_cmd_set_trans_info(ctx);
+> +
+> +	rga_write(rga, RGA_CMD_BASE, rga->cmdbuf_phy);
+> +}
+> +
+> +void rga_write(struct rockchip_rga *rga, u32 reg, u32 value)
+> +{
+> +	writel(value, rga->regs + reg);
+> +}
+> +
+> +u32 rga_read(struct rockchip_rga *rga, u32 reg)
+> +{
+> +	return readl(rga->regs + reg);
+> +}
+> +
+> +void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask)
+> +{
+> +	u32 temp = rga_read(rga, reg) & ~(mask);
+> +
+> +	temp |= val & mask;
+> +	rga_write(rga, reg, temp);
+> +}
+> +
+> +void rga_start(struct rockchip_rga *rga)
+> +{
+> +	/* sync CMD buf for RGA */
+> +	dma_sync_single_for_device(rga->dev, rga->cmdbuf_phy,
+> +				   PAGE_SIZE, DMA_BIDIRECTIONAL);
+> +
+> +	rga_write(rga, RGA_SYS_CTRL, 0x00);
+> +
+> +	rga_write(rga, RGA_SYS_CTRL, 0x22);
+> +
+> +	rga_write(rga, RGA_INT, 0x600);
+> +
+> +	rga_write(rga, RGA_CMD_CTRL, 0x1);
+> +}
+> diff --git a/drivers/media/platform/rockchip-rga/rga-hw.h b/drivers/media/platform/rockchip-rga/rga-hw.h
+> new file mode 100644
+> index 0000000..a8b6353
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip-rga/rga-hw.h
+> @@ -0,0 +1,437 @@
+> +/*
+> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#ifndef __RGA_HW_H__
+> +#define __RGA_HW_H__
+> +
+> +#define RGA_CMDBUF_SIZE 0x20
+> +
+> +/* Hardware limits */
+> +#define MAX_WIDTH 8192
+> +#define MAX_HEIGHT 8192
+> +
+> +#define MIN_WIDTH 34
+> +#define MIN_HEIGHT 34
+> +
+> +#define DEFAULT_WIDTH 100
+> +#define DEFAULT_HEIGHT 100
+> +
+> +#define RGA_TIMEOUT 500
+> +
+> +/* Registers address */
+> +#define RGA_SYS_CTRL 0x0000
+> +#define RGA_CMD_CTRL 0x0004
+> +#define RGA_CMD_BASE 0x0008
+> +#define RGA_INT 0x0010
+> +#define RGA_MMU_CTRL0 0x0014
+> +#define RGA_VERSION_INFO 0x0028
+> +
+> +#define RGA_MODE_BASE_REG 0x0100
+> +#define RGA_MODE_MAX_REG 0x017C
+> +
+> +#define RGA_MODE_CTRL 0x0100
+> +#define RGA_SRC_INFO 0x0104
+> +#define RGA_SRC_Y_RGB_BASE_ADDR 0x0108
+> +#define RGA_SRC_CB_BASE_ADDR 0x010c
+> +#define RGA_SRC_CR_BASE_ADDR 0x0110
+> +#define RGA_SRC1_RGB_BASE_ADDR 0x0114
+> +#define RGA_SRC_VIR_INFO 0x0118
+> +#define RGA_SRC_ACT_INFO 0x011c
+> +#define RGA_SRC_X_FACTOR 0x0120
+> +#define RGA_SRC_Y_FACTOR 0x0124
+> +#define RGA_SRC_BG_COLOR 0x0128
+> +#define RGA_SRC_FG_COLOR 0x012c
+> +#define RGA_SRC_TR_COLOR0 0x0130
+> +#define RGA_SRC_TR_COLOR1 0x0134
+> +
+> +#define RGA_DST_INFO 0x0138
+> +#define RGA_DST_Y_RGB_BASE_ADDR 0x013c
+> +#define RGA_DST_CB_BASE_ADDR 0x0140
+> +#define RGA_DST_CR_BASE_ADDR 0x0144
+> +#define RGA_DST_VIR_INFO 0x0148
+> +#define RGA_DST_ACT_INFO 0x014c
+> +
+> +#define RGA_ALPHA_CTRL0 0x0150
+> +#define RGA_ALPHA_CTRL1 0x0154
+> +#define RGA_FADING_CTRL 0x0158
+> +#define RGA_PAT_CON 0x015c
+> +#define RGA_ROP_CON0 0x0160
+> +#define RGA_ROP_CON1 0x0164
+> +#define RGA_MASK_BASE 0x0168
+> +
+> +#define RGA_MMU_CTRL1 0x016C
+> +#define RGA_MMU_SRC_BASE 0x0170
+> +#define RGA_MMU_SRC1_BASE 0x0174
+> +#define RGA_MMU_DST_BASE 0x0178
+> +
+> +/* Registers value */
+> +#define RGA_MODE_RENDER_BITBLT 0
+> +#define RGA_MODE_RENDER_COLOR_PALETTE 1
+> +#define RGA_MODE_RENDER_RECTANGLE_FILL 2
+> +#define RGA_MODE_RENDER_UPDATE_PALETTE_LUT_RAM 3
+> +
+> +#define RGA_MODE_BITBLT_MODE_SRC_TO_DST 0
+> +#define RGA_MODE_BITBLT_MODE_SRC_SRC1_TO_DST 1
+> +
+> +#define RGA_MODE_CF_ROP4_SOLID 0
+> +#define RGA_MODE_CF_ROP4_PATTERN 1
+> +
+> +#define RGA_COLOR_FMT_ABGR8888 0
+> +#define RGA_COLOR_FMT_XBGR8888 1
+> +#define RGA_COLOR_FMT_BGR888 2
+> +#define RGA_COLOR_FMT_BGR565 4
+> +#define RGA_COLOR_FMT_ABGR1555 5
+> +#define RGA_COLOR_FMT_ABGR4444 6
+> +#define RGA_COLOR_FMT_YUV422SP 8
+> +#define RGA_COLOR_FMT_YUV422P 9
+> +#define RGA_COLOR_FMT_YUV420SP 10
+> +#define RGA_COLOR_FMT_YUV420P 11
+> +/* SRC_COLOR Palette */
+> +#define RGA_COLOR_FMT_CP_1BPP 12
+> +#define RGA_COLOR_FMT_CP_2BPP 13
+> +#define RGA_COLOR_FMT_CP_4BPP 14
+> +#define RGA_COLOR_FMT_CP_8BPP 15
+> +#define RGA_COLOR_FMT_MASK 15
+> +
+> +#define RGA_COLOR_NONE_SWAP 0
+> +#define RGA_COLOR_RB_SWAP 1
+> +#define RGA_COLOR_ALPHA_SWAP 2
+> +#define RGA_COLOR_UV_SWAP 4
+> +
+> +#define RGA_SRC_CSC_MODE_BYPASS 0
+> +#define RGA_SRC_CSC_MODE_BT601_R0 1
+> +#define RGA_SRC_CSC_MODE_BT601_R1 2
+> +#define RGA_SRC_CSC_MODE_BT709_R0 3
+> +#define RGA_SRC_CSC_MODE_BT709_R1 4
+> +
+> +#define RGA_SRC_ROT_MODE_0_DEGREE 0
+> +#define RGA_SRC_ROT_MODE_90_DEGREE 1
+> +#define RGA_SRC_ROT_MODE_180_DEGREE 2
+> +#define RGA_SRC_ROT_MODE_270_DEGREE 3
+> +
+> +#define RGA_SRC_MIRR_MODE_NO 0
+> +#define RGA_SRC_MIRR_MODE_X 1
+> +#define RGA_SRC_MIRR_MODE_Y 2
+> +#define RGA_SRC_MIRR_MODE_X_Y 3
+> +
+> +#define RGA_SRC_HSCL_MODE_NO 0
+> +#define RGA_SRC_HSCL_MODE_DOWN 1
+> +#define RGA_SRC_HSCL_MODE_UP 2
+> +
+> +#define RGA_SRC_VSCL_MODE_NO 0
+> +#define RGA_SRC_VSCL_MODE_DOWN 1
+> +#define RGA_SRC_VSCL_MODE_UP 2
+> +
+> +#define RGA_SRC_TRANS_ENABLE_R 1
+> +#define RGA_SRC_TRANS_ENABLE_G 2
+> +#define RGA_SRC_TRANS_ENABLE_B 4
+> +#define RGA_SRC_TRANS_ENABLE_A 8
+> +
+> +#define RGA_SRC_BIC_COE_SELEC_CATROM 0
+> +#define RGA_SRC_BIC_COE_SELEC_MITCHELL 1
+> +#define RGA_SRC_BIC_COE_SELEC_HERMITE 2
+> +#define RGA_SRC_BIC_COE_SELEC_BSPLINE 3
+> +
+> +#define RGA_DST_DITHER_MODE_888_TO_666 0
+> +#define RGA_DST_DITHER_MODE_888_TO_565 1
+> +#define RGA_DST_DITHER_MODE_888_TO_555 2
+> +#define RGA_DST_DITHER_MODE_888_TO_444 3
+> +
+> +#define RGA_DST_CSC_MODE_BYPASS 0
+> +#define RGA_DST_CSC_MODE_BT601_R0 1
+> +#define RGA_DST_CSC_MODE_BT601_R1 2
+> +#define RGA_DST_CSC_MODE_BT709_R0 3
+> +
+> +#define RGA_ALPHA_ROP_MODE_2 0
+> +#define RGA_ALPHA_ROP_MODE_3 1
+> +#define RGA_ALPHA_ROP_MODE_4 2
+> +
+> +#define RGA_ALPHA_SELECT_ALPHA 0
+> +#define RGA_ALPHA_SELECT_ROP 1
+> +
+> +#define RGA_ALPHA_MASK_BIG_ENDIAN 0
+> +#define RGA_ALPHA_MASK_LITTLE_ENDIAN 1
+> +
+> +#define RGA_ALPHA_NORMAL 0
+> +#define RGA_ALPHA_REVERSE 1
+> +
+> +#define RGA_ALPHA_BLEND_GLOBAL 0
+> +#define RGA_ALPHA_BLEND_NORMAL 1
+> +#define RGA_ALPHA_BLEND_MULTIPLY 2
+> +
+> +#define RGA_ALPHA_CAL_CUT 0
+> +#define RGA_ALPHA_CAL_NORMAL 1
+> +
+> +#define RGA_ALPHA_FACTOR_ZERO 0
+> +#define RGA_ALPHA_FACTOR_ONE 1
+> +#define RGA_ALPHA_FACTOR_OTHER 2
+> +#define RGA_ALPHA_FACTOR_OTHER_REVERSE 3
+> +#define RGA_ALPHA_FACTOR_SELF 4
+> +
+> +#define RGA_ALPHA_COLOR_NORMAL 0
+> +#define RGA_ALPHA_COLOR_MULTIPLY_CAL 1
+> +
+> +/* Registers union */
+> +union rga_mode_ctrl {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:2] */
+> +		unsigned int render:3;
+> +		/* [3:6] */
+> +		unsigned int bitblt:1;
+> +		unsigned int cf_rop4_pat:1;
+> +		unsigned int alpha_zero_key:1;
+> +		unsigned int gradient_sat:1;
+> +		/* [7:31] */
+> +		unsigned int reserved:25;
+> +	} data;
+> +};
+> +
+> +union rga_src_info {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:3] */
+> +		unsigned int format:4;
+> +		/* [4:7] */
+> +		unsigned int swap:3;
+> +		unsigned int cp_endian:1;
+> +		/* [8:17] */
+> +		unsigned int csc_mode:2;
+> +		unsigned int rot_mode:2;
+> +		unsigned int mir_mode:2;
+> +		unsigned int hscl_mode:2;
+> +		unsigned int vscl_mode:2;
+> +		/* [18:22] */
+> +		unsigned int trans_mode:1;
+> +		unsigned int trans_enable:4;
+> +		/* [23:25] */
+> +		unsigned int dither_up_en:1;
+> +		unsigned int bic_coe_sel:2;
+> +		/* [26:31] */
+> +		unsigned int reserved:6;
+> +	} data;
+> +};
+> +
+> +union rga_src_vir_info {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int vir_width:15;
+> +		unsigned int reserved:1;
+> +		/* [16:25] */
+> +		unsigned int vir_stride:10;
+> +		/* [26:31] */
+> +		unsigned int reserved1:6;
+> +	} data;
+> +};
+> +
+> +union rga_src_act_info {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int act_width:13;
+> +		unsigned int reserved:3;
+> +		/* [16:31] */
+> +		unsigned int act_height:13;
+> +		unsigned int reserved1:3;
+> +	} data;
+> +};
+> +
+> +union rga_src_x_factor {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int down_scale_factor:16;
+> +		/* [16:31] */
+> +		unsigned int up_scale_factor:16;
+> +	} data;
+> +};
+> +
+> +union rga_src_y_factor {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int down_scale_factor:16;
+> +		/* [16:31] */
+> +		unsigned int up_scale_factor:16;
+> +	} data;
+> +};
+> +
+> +/* Alpha / Red / Green / Blue */
+> +union rga_src_cp_gr_color {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int gradient_x:16;
+> +		/* [16:31] */
+> +		unsigned int gradient_y:16;
+> +	} data;
+> +};
+> +
+> +union rga_src_transparency_color0 {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:7] */
+> +		unsigned int trans_rmin:8;
+> +		/* [8:15] */
+> +		unsigned int trans_gmin:8;
+> +		/* [16:23] */
+> +		unsigned int trans_bmin:8;
+> +		/* [24:31] */
+> +		unsigned int trans_amin:8;
+> +	} data;
+> +};
+> +
+> +union rga_src_transparency_color1 {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:7] */
+> +		unsigned int trans_rmax:8;
+> +		/* [8:15] */
+> +		unsigned int trans_gmax:8;
+> +		/* [16:23] */
+> +		unsigned int trans_bmax:8;
+> +		/* [24:31] */
+> +		unsigned int trans_amax:8;
+> +	} data;
+> +};
+> +
+> +union rga_dst_info {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:3] */
+> +		unsigned int format:4;
+> +		/* [4:6] */
+> +		unsigned int swap:3;
+> +		/* [7:9] */
+> +		unsigned int src1_format:3;
+> +		/* [10:11] */
+> +		unsigned int src1_swap:2;
+> +		/* [12:15] */
+> +		unsigned int dither_up_en:1;
+> +		unsigned int dither_down_en:1;
+> +		unsigned int dither_down_mode:2;
+> +		/* [16:18] */
+> +		unsigned int csc_mode:2;
+> +		unsigned int csc_clip:1;
+> +		/* [19:31] */
+> +		unsigned int reserved:13;
+> +	} data;
+> +};
+> +
+> +union rga_dst_vir_info {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int vir_stride:15;
+> +		unsigned int reserved:1;
+> +		/* [16:31] */
+> +		unsigned int src1_vir_stride:15;
+> +		unsigned int reserved1:1;
+> +	} data;
+> +};
+> +
+> +union rga_dst_act_info {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:15] */
+> +		unsigned int act_width:12;
+> +		unsigned int reserved:4;
+> +		/* [16:31] */
+> +		unsigned int act_height:12;
+> +		unsigned int reserved1:4;
+> +	} data;
+> +};
+> +
+> +union rga_alpha_ctrl0 {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:3] */
+> +		unsigned int rop_en:1;
+> +		unsigned int rop_select:1;
+> +		unsigned int rop_mode:2;
+> +		/* [4:11] */
+> +		unsigned int src_fading_val:8;
+> +		/* [12:20] */
+> +		unsigned int dst_fading_val:8;
+> +		unsigned int mask_endian:1;
+> +		/* [21:31] */
+> +		unsigned int reserved:11;
+> +	} data;
+> +};
+> +
+> +union rga_alpha_ctrl1 {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:1] */
+> +		unsigned int dst_color_m0:1;
+> +		unsigned int src_color_m0:1;
+> +		/* [2:7] */
+> +		unsigned int dst_factor_m0:3;
+> +		unsigned int src_factor_m0:3;
+> +		/* [8:9] */
+> +		unsigned int dst_alpha_cal_m0:1;
+> +		unsigned int src_alpha_cal_m0:1;
+> +		/* [10:13] */
+> +		unsigned int dst_blend_m0:2;
+> +		unsigned int src_blend_m0:2;
+> +		/* [14:15] */
+> +		unsigned int dst_alpha_m0:1;
+> +		unsigned int src_alpha_m0:1;
+> +		/* [16:21] */
+> +		unsigned int dst_factor_m1:3;
+> +		unsigned int src_factor_m1:3;
+> +		/* [22:23] */
+> +		unsigned int dst_alpha_cal_m1:1;
+> +		unsigned int src_alpha_cal_m1:1;
+> +		/* [24:27] */
+> +		unsigned int dst_blend_m1:2;
+> +		unsigned int src_blend_m1:2;
+> +		/* [28:29] */
+> +		unsigned int dst_alpha_m1:1;
+> +		unsigned int src_alpha_m1:1;
+> +		/* [30:31] */
+> +		unsigned int reserved:2;
+> +	} data;
+> +};
+> +
+> +union rga_fading_ctrl {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:7] */
+> +		unsigned int fading_offset_r:8;
+> +		/* [8:15] */
+> +		unsigned int fading_offset_g:8;
+> +		/* [16:23] */
+> +		unsigned int fading_offset_b:8;
+> +		/* [24:31] */
+> +		unsigned int fading_en:1;
+> +		unsigned int reserved:7;
+> +	} data;
+> +};
+> +
+> +union rga_pat_con {
+> +	unsigned int val;
+> +	struct {
+> +		/* [0:7] */
+> +		unsigned int width:8;
+> +		/* [8:15] */
+> +		unsigned int height:8;
+> +		/* [16:23] */
+> +		unsigned int offset_x:8;
+> +		/* [24:31] */
+> +		unsigned int offset_y:8;
+> +	} data;
+> +};
+> +
+> +#endif
+> diff --git a/drivers/media/platform/rockchip-rga/rga.c b/drivers/media/platform/rockchip-rga/rga.c
+> new file mode 100644
+> index 0000000..5ed3a48
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip-rga/rga.c
+> @@ -0,0 +1,1026 @@
+> +/*
+> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/debugfs.h>
+> +#include <linux/delay.h>
+> +#include <linux/fs.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/reset.h>
+> +#include <linux/sched.h>
+> +#include <linux/slab.h>
+> +#include <linux/timer.h>
+> +
+> +#include <linux/platform_device.h>
+> +#include <media/v4l2-device.h>
+> +#include <media/v4l2-event.h>
+> +#include <media/v4l2-ioctl.h>
+> +#include <media/v4l2-mem2mem.h>
+> +#include <media/videobuf2-dma-sg.h>
+> +#include <media/videobuf2-v4l2.h>
+> +
+> +#include "rga-hw.h"
+> +#include "rga.h"
+> +
+> +static void job_abort(void *prv)
+> +{
+> +	struct rga_ctx *ctx = prv;
+> +	struct rockchip_rga *rga = ctx->rga;
+> +
+> +	if (!rga->curr)	/* No job currently running */
+> +		return;
+> +
+> +	wait_event_timeout(rga->irq_queue,
+> +			   !rga->curr, msecs_to_jiffies(RGA_TIMEOUT));
+> +}
+> +
+> +static void device_run(void *prv)
+> +{
+> +	struct rga_ctx *ctx = prv;
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	struct vb2_buffer *src, *dst;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&rga->ctrl_lock, flags);
+> +
+> +	rga->curr = ctx;
+> +
+> +	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> +	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> +
+> +	rga_buf_map(src);
+> +	rga_buf_map(dst);
+> +
+> +	rga_cmd_set(ctx);
+> +
+> +	rga_start(rga);
+> +
+> +	spin_unlock_irqrestore(&rga->ctrl_lock, flags);
+> +}
+> +
+> +static irqreturn_t rga_isr(int irq, void *prv)
+> +{
+> +	struct rockchip_rga *rga = prv;
+> +	int intr;
+> +
+> +	intr = rga_read(rga, RGA_INT) & 0xf;
+> +
+> +	rga_mod(rga, RGA_INT, intr << 4, 0xf << 4);
+> +
+> +	if (intr & 0x04) {
+> +		struct vb2_v4l2_buffer *src, *dst;
+> +		struct rga_ctx *ctx = rga->curr;
+> +
+> +		BUG_ON(!ctx);
+> +
+> +		rga->curr = NULL;
+> +
+> +		src = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> +		dst = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> +
+> +		BUG_ON(!src);
+> +		BUG_ON(!dst);
+> +
+> +		dst->timecode = src->timecode;
+> +		dst->vb2_buf.timestamp = src->vb2_buf.timestamp;
+> +		dst->flags &= ~V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
+> +		dst->flags |= src->flags & V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
+> +
+> +		v4l2_m2m_buf_done(src, VB2_BUF_STATE_DONE);
+> +		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
+> +		v4l2_m2m_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx);
+> +
+> +		wake_up(&rga->irq_queue);
+> +	}
 > +
 > +	return IRQ_HANDLED;
 > +}
 > +
-> +static int rockchip_sfc_probe(struct platform_device *pdev)
+> +static struct v4l2_m2m_ops rga_m2m_ops = {
+> +	.device_run = device_run,
+> +	.job_abort = job_abort,
+> +};
+> +
+> +static int
+> +queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
 > +{
-> +	struct device *dev = &pdev->dev;
-> +	struct resource *res;
-> +	struct rockchip_sfc *sfc;
+> +	struct rga_ctx *ctx = priv;
 > +	int ret;
 > +
-> +	sfc = devm_kzalloc(dev, sizeof(*sfc), GFP_KERNEL);
-> +	if (!sfc)
+> +	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT;
+> +	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+> +	src_vq->drv_priv = ctx;
+> +	src_vq->ops = &rga_qops;
+> +	src_vq->mem_ops = &vb2_dma_sg_memops;
+> +	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+> +	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> +	src_vq->lock = &ctx->rga->mutex;
+> +	src_vq->dev = ctx->rga->v4l2_dev.dev;
+> +
+> +	ret = vb2_queue_init(src_vq);
+> +	if (ret)
+> +		return ret;
+> +
+> +	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+> +	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+> +	dst_vq->drv_priv = ctx;
+> +	dst_vq->ops = &rga_qops;
+> +	dst_vq->mem_ops = &vb2_dma_sg_memops;
+> +	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+> +	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> +	dst_vq->lock = &ctx->rga->mutex;
+> +	dst_vq->dev = ctx->rga->v4l2_dev.dev;
+> +
+> +	return vb2_queue_init(dst_vq);
+> +}
+> +
+> +static int rga_s_ctrl(struct v4l2_ctrl *ctrl)
+> +{
+> +	struct rga_ctx *ctx = container_of(ctrl->handler, struct rga_ctx,
+> +					   ctrl_handler);
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&ctx->rga->ctrl_lock, flags);
+> +	switch (ctrl->id) {
+> +	case V4L2_CID_PORTER_DUFF_MODE:
+> +		ctx->op = ctrl->val;
+> +		break;
+> +	case V4L2_CID_HFLIP:
+> +		ctx->hflip = ctrl->val;
+> +		break;
+> +	case V4L2_CID_VFLIP:
+> +		ctx->vflip = ctrl->val;
+> +		break;
+> +	case V4L2_CID_ROTATE:
+> +		ctx->rotate = ctrl->val;
+> +		break;
+> +	case V4L2_CID_BG_COLOR:
+> +		ctx->fill_color = ctrl->val;
+> +		break;
+> +	}
+> +	spin_unlock_irqrestore(&ctx->rga->ctrl_lock, flags);
+> +	return 0;
+> +}
+> +
+> +static const struct v4l2_ctrl_ops rga_ctrl_ops = {
+> +	.s_ctrl = rga_s_ctrl,
+> +};
+> +
+> +static int rga_setup_ctrls(struct rga_ctx *ctx)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +
+> +	v4l2_ctrl_handler_init(&ctx->ctrl_handler, 5);
+> +
+> +	v4l2_ctrl_new_std_menu(&ctx->ctrl_handler, &rga_ctrl_ops,
+> +			       V4L2_CID_PORTER_DUFF_MODE,
+> +			       V4L2_PORTER_DUFF_CLEAR, 0,
+> +			       V4L2_PORTER_DUFF_SRC);
+> +
+> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+> +			  V4L2_CID_HFLIP, 0, 1, 1, 0);
+> +
+> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+> +			  V4L2_CID_VFLIP, 0, 1, 1, 0);
+> +
+> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+> +			  V4L2_CID_ROTATE, 0, 270, 90, 0);
+> +
+> +	v4l2_ctrl_new_std(&ctx->ctrl_handler, &rga_ctrl_ops,
+> +			  V4L2_CID_BG_COLOR, 0, 0xffffffff, 1, 0);
+> +
+> +	if (ctx->ctrl_handler.error) {
+> +		int err = ctx->ctrl_handler.error;
+> +
+> +		v4l2_err(&rga->v4l2_dev, "%s failed\n", __func__);
+> +		v4l2_ctrl_handler_free(&ctx->ctrl_handler);
+> +		return err;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +struct rga_fmt formats[] = {
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_ARGB32,
+> +		.color_swap = RGA_COLOR_RB_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_ABGR8888,
+> +		.depth = 32,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_XRGB32,
+> +		.color_swap = RGA_COLOR_RB_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_XBGR8888,
+> +		.depth = 32,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_ABGR32,
+> +		.color_swap = RGA_COLOR_ALPHA_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_ABGR8888,
+> +		.depth = 32,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_XBGR32,
+> +		.color_swap = RGA_COLOR_ALPHA_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_XBGR8888,
+> +		.depth = 32,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_RGB24,
+> +		.color_swap = RGA_COLOR_RB_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_BGR888,
+> +		.depth = 24,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_ARGB444,
+> +		.color_swap = RGA_COLOR_RB_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_ABGR4444,
+> +		.depth = 16,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_ARGB555,
+> +		.color_swap = RGA_COLOR_RB_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_ABGR1555,
+> +		.depth = 16,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_RGB565,
+> +		.color_swap = RGA_COLOR_RB_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_BGR565,
+> +		.depth = 16,
+> +		.uv_factor = 1,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_NV21,
+> +		.color_swap = RGA_COLOR_UV_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV420SP,
+> +		.depth = 12,
+> +		.uv_factor = 4,
+> +		.y_div = 2,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_NV61,
+> +		.color_swap = RGA_COLOR_UV_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV422SP,
+> +		.depth = 16,
+> +		.uv_factor = 2,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_NV12,
+> +		.color_swap = RGA_COLOR_NONE_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV420SP,
+> +		.depth = 12,
+> +		.uv_factor = 4,
+> +		.y_div = 2,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_NV16,
+> +		.color_swap = RGA_COLOR_NONE_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV422SP,
+> +		.depth = 16,
+> +		.uv_factor = 2,
+> +		.y_div = 1,
+> +		.x_div = 1,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_YUV420,
+> +		.color_swap = RGA_COLOR_NONE_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV420P,
+> +		.depth = 12,
+> +		.uv_factor = 4,
+> +		.y_div = 2,
+> +		.x_div = 2,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_YUV422P,
+> +		.color_swap = RGA_COLOR_NONE_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV422P,
+> +		.depth = 16,
+> +		.uv_factor = 2,
+> +		.y_div = 1,
+> +		.x_div = 2,
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_YVU420,
+> +		.color_swap = RGA_COLOR_UV_SWAP,
+> +		.hw_format = RGA_COLOR_FMT_YUV420P,
+> +		.depth = 12,
+> +		.uv_factor = 4,
+> +		.y_div = 2,
+> +		.x_div = 2,
+> +	},
+> +};
+> +
+> +#define NUM_FORMATS ARRAY_SIZE(formats)
+> +
+> +struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
+> +{
+> +	unsigned int i;
+> +
+> +	for (i = 0; i < NUM_FORMATS; i++) {
+> +		if (formats[i].fourcc == f->fmt.pix.pixelformat)
+> +			return &formats[i];
+> +	}
+> +	return NULL;
+> +}
+> +
+> +static struct rga_frame def_frame = {
+> +	.width = DEFAULT_WIDTH,
+> +	.height = DEFAULT_HEIGHT,
+> +	.colorspace = V4L2_COLORSPACE_DEFAULT,
+> +	.crop.left = 0,
+> +	.crop.top = 0,
+> +	.crop.width = DEFAULT_WIDTH,
+> +	.crop.height = DEFAULT_HEIGHT,
+> +	.fmt = &formats[0],
+> +};
+> +
+> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type)
+> +{
+> +	switch (type) {
+> +	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
+> +		return &ctx->in;
+> +	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
+> +		return &ctx->out;
+> +	default:
+> +		return ERR_PTR(-EINVAL);
+> +	}
+> +}
+> +
+> +static int rga_open(struct file *file)
+> +{
+> +	struct rockchip_rga *rga = video_drvdata(file);
+> +	struct rga_ctx *ctx = NULL;
+> +	int ret = 0;
+> +
+> +	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+> +	if (!ctx)
 > +		return -ENOMEM;
+> +	ctx->rga = rga;
+> +	/* Set default formats */
+> +	ctx->in = def_frame;
+> +	ctx->out = def_frame;
 > +
-> +	platform_set_drvdata(pdev, sfc);
-> +	sfc->dev = dev;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	sfc->regbase = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(sfc->regbase))
-> +		return PTR_ERR(sfc->regbase);
-> +
-> +	sfc->clk = devm_clk_get(&pdev->dev, "sfc");
-> +	if (IS_ERR(sfc->clk)) {
-> +		dev_err(&pdev->dev, "Failed to get sfc interface clk\n");
-> +		return PTR_ERR(sfc->clk);
+> +	if (mutex_lock_interruptible(&rga->mutex)) {
+> +		kfree(ctx);
+> +		return -ERESTARTSYS;
 > +	}
-> +
-> +	sfc->hclk = devm_clk_get(&pdev->dev, "hsfc");
-> +	if (IS_ERR(sfc->hclk)) {
-> +		dev_err(&pdev->dev, "Failed to get sfc ahp clk\n");
-> +		return PTR_ERR(sfc->hclk);
-> +	}
-> +
-> +	ret = dma_coerce_mask_and_coherent(dev, DMA_BIT_MASK(32));
-> +	if (ret) {
-> +		dev_warn(dev, "Unable to set dma mask\n");
+> +	ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(rga->m2m_dev, ctx, &queue_init);
+> +	if (IS_ERR(ctx->fh.m2m_ctx)) {
+> +		ret = PTR_ERR(ctx->fh.m2m_ctx);
+> +		mutex_unlock(&rga->mutex);
+> +		kfree(ctx);
 > +		return ret;
 > +	}
+> +	v4l2_fh_init(&ctx->fh, video_devdata(file));
+> +	file->private_data = &ctx->fh;
+> +	v4l2_fh_add(&ctx->fh);
 > +
-> +	sfc->buffer = dmam_alloc_coherent(dev, SFC_DMA_MAX_LEN,
-> +					  &sfc->dma_buffer,
-> +					  GFP_KERNEL);
-> +	if (!sfc->buffer)
-> +		return -ENOMEM;
+> +	rga_setup_ctrls(ctx);
 > +
-> +	mutex_init(&sfc->lock);
+> +	/* Write the default values to the ctx struct */
+> +	v4l2_ctrl_handler_setup(&ctx->ctrl_handler);
 > +
-> +	ret = clk_prepare_enable(sfc->hclk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to enable hclk\n");
-> +		goto err_hclk;
-> +	}
+> +	ctx->fh.ctrl_handler = &ctx->ctrl_handler;
+> +	mutex_unlock(&rga->mutex);
 > +
-> +	ret = clk_prepare_enable(sfc->clk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Failed to enable clk\n");
-> +		goto err_clk;
-> +	}
-> +
-> +	sfc->use_dma = !of_property_read_bool(sfc->dev->of_node,
-> +					      "rockchip,sfc-no-dma");
-> +
-> +	/* Find the irq */
-> +	ret = platform_get_irq(pdev, 0);
-> +	if (ret < 0) {
-> +		dev_err(dev, "Failed to get the irq\n");
-> +		goto err_irq;
-> +	}
-> +
-> +	ret = devm_request_irq(dev, ret, rockchip_sfc_irq_handler,
-> +			       0, pdev->name, sfc);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to request irq\n");
-> +		goto err_irq;
-> +	}
-> +
-> +	sfc->num_chip = 0;
-> +	ret = rockchip_sfc_init(sfc);
-> +	if (ret)
-> +		goto err_irq;
-> +
-> +	pm_runtime_get_noresume(&pdev->dev);
-> +	pm_runtime_set_active(&pdev->dev);
-> +	pm_runtime_enable(&pdev->dev);
-> +	pm_runtime_set_autosuspend_delay(&pdev->dev, 50);
-> +	pm_runtime_use_autosuspend(&pdev->dev);
-> +
-> +	ret = rockchip_sfc_register_all(sfc);
-> +	if (ret)
-> +		goto err_register;
-> +
-> +	clk_disable_unprepare(sfc->clk);
-> +	pm_runtime_put_autosuspend(&pdev->dev);
 > +	return 0;
+> +}
 > +
-> +err_register:
-> +	pm_runtime_disable(&pdev->dev);
-> +	pm_runtime_set_suspended(&pdev->dev);
-> +	pm_runtime_put_noidle(&pdev->dev);
-> +err_irq:
-> +	clk_disable_unprepare(sfc->clk);
-> +err_clk:
-> +	clk_disable_unprepare(sfc->hclk);
-> +err_hclk:
-> +	mutex_destroy(&sfc->lock);
+> +static int rga_release(struct file *file)
+> +{
+> +	struct rga_ctx *ctx =
+> +		container_of(file->private_data, struct rga_ctx, fh);
+> +	struct rockchip_rga *rga = ctx->rga;
+> +
+> +	mutex_lock(&rga->mutex);
+> +
+> +	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+> +
+> +	v4l2_ctrl_handler_free(&ctx->ctrl_handler);
+> +	v4l2_fh_del(&ctx->fh);
+> +	v4l2_fh_exit(&ctx->fh);
+> +	kfree(ctx);
+> +
+> +	mutex_unlock(&rga->mutex);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct v4l2_file_operations rga_fops = {
+> +	.owner = THIS_MODULE,
+> +	.open = rga_open,
+> +	.release = rga_release,
+> +	.poll = v4l2_m2m_fop_poll,
+> +	.unlocked_ioctl = video_ioctl2,
+> +	.mmap = v4l2_m2m_fop_mmap,
+> +};
+> +
+> +static int
+> +vidioc_querycap(struct file *file, void *priv, struct v4l2_capability *cap)
+> +{
+> +	strlcpy(cap->driver, RGA_NAME, sizeof(cap->driver));
+> +	strlcpy(cap->card, "rockchip-rga", sizeof(cap->card));
+> +	strlcpy(cap->bus_info, "platform:rga", sizeof(cap->bus_info));
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+> +{
+> +	struct rga_fmt *fmt;
+> +
+> +	if (f->index >= NUM_FORMATS)
+> +		return -EINVAL;
+> +
+> +	fmt = &formats[f->index];
+> +	f->pixelformat = fmt->fourcc;
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+> +{
+> +	struct rga_ctx *ctx = prv;
+> +	struct vb2_queue *vq;
+> +	struct rga_frame *frm;
+> +
+> +	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> +	if (!vq)
+> +		return -EINVAL;
+> +	frm = rga_get_frame(ctx, f->type);
+> +	if (IS_ERR(frm))
+> +		return PTR_ERR(frm);
+> +
+> +	f->fmt.pix.width = frm->width;
+> +	f->fmt.pix.height = frm->height;
+> +	f->fmt.pix.field = V4L2_FIELD_NONE;
+> +	f->fmt.pix.pixelformat = frm->fmt->fourcc;
+> +	f->fmt.pix.bytesperline = frm->stride;
+> +	f->fmt.pix.sizeimage = frm->size;
+> +	f->fmt.pix.colorspace = frm->colorspace;
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
+> +{
+> +	struct rga_fmt *fmt;
+> +
+> +	fmt = rga_fmt_find(f);
+> +	if (!fmt) {
+> +		fmt = &formats[0];
+> +		f->fmt.pix.pixelformat = fmt->fourcc;
+> +	}
+> +
+> +	f->fmt.pix.field = V4L2_FIELD_NONE;
+> +
+> +	if (f->fmt.pix.width > MAX_WIDTH)
+> +		f->fmt.pix.width = MAX_WIDTH;
+> +	if (f->fmt.pix.height > MAX_HEIGHT)
+> +		f->fmt.pix.height = MAX_HEIGHT;
+> +
+> +	if (f->fmt.pix.width < MIN_WIDTH)
+> +		f->fmt.pix.width = MIN_WIDTH;
+> +	if (f->fmt.pix.height < MIN_HEIGHT)
+> +		f->fmt.pix.height = MIN_HEIGHT;
+> +
+> +	if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
+> +		f->fmt.pix.bytesperline = f->fmt.pix.width;
+> +	else
+> +		f->fmt.pix.bytesperline = (f->fmt.pix.width * fmt->depth) >> 3;
+> +
+> +	f->fmt.pix.sizeimage =
+> +		f->fmt.pix.height * (f->fmt.pix.width * fmt->depth) >> 3;
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+> +{
+> +	struct rga_ctx *ctx = prv;
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	struct vb2_queue *vq;
+> +	struct rga_frame *frm;
+> +	struct rga_fmt *fmt;
+> +	int ret = 0;
+> +
+> +	/* Adjust all values accordingly to the hardware capabilities
+> +	 * and chosen format.
+> +	 */
+> +	ret = vidioc_try_fmt(file, prv, f);
+> +	if (ret)
+> +		return ret;
+> +	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> +	if (vb2_is_busy(vq)) {
+> +		v4l2_err(&rga->v4l2_dev, "queue (%d) bust\n", f->type);
+> +		return -EBUSY;
+> +	}
+> +	frm = rga_get_frame(ctx, f->type);
+> +	if (IS_ERR(frm))
+> +		return PTR_ERR(frm);
+> +	fmt = rga_fmt_find(f);
+> +	if (!fmt)
+> +		return -EINVAL;
+> +	frm->width = f->fmt.pix.width;
+> +	frm->height = f->fmt.pix.height;
+> +	frm->size = f->fmt.pix.sizeimage;
+> +	frm->fmt = fmt;
+> +	frm->stride = f->fmt.pix.bytesperline;
+> +	frm->colorspace = f->fmt.pix.colorspace;
+> +
+> +	/* Reset crop settings */
+> +	frm->crop.left = 0;
+> +	frm->crop.top = 0;
+> +	frm->crop.width = frm->width;
+> +	frm->crop.height = frm->height;
+> +
+> +	return 0;
+> +}
+> +
+> +static int
+> +vidioc_try_crop(struct rga_ctx *ctx, struct v4l2_selection *s)
+> +{
+> +	struct rockchip_rga *rga = ctx->rga;
+> +	struct rga_frame *f;
+> +
+> +	f = rga_get_frame(ctx, s->type);
+> +	if (IS_ERR(f))
+> +		return PTR_ERR(f);
+> +
+> +	switch (s->target) {
+> +	case V4L2_SEL_TGT_COMPOSE:
+> +		/*
+> +		 * COMPOSE target is only valid for capture buffer type, return
+> +		 * error for output buffer type
+> +		 */
+> +		if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+
+I think '!= V4L2_BUF_TYPE_VIDEO_CAPTURE' makes more sense.
+
+> +			return -EINVAL;
+> +		break;
+> +	case V4L2_SEL_TGT_CROP:
+> +		/*
+> +		 * CROP target is only valid for output buffer type, return
+> +		 * error for capture buffer type
+> +		 */
+> +		if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+
+!= V4L2_BUF_TYPE_VIDEO_OUTPUT
+
+> +			return -EINVAL;
+> +		break;
+> +	/*
+> +	 * bound and default crop/compose targets are invalid targets to
+> +	 * try/set
+> +	 */
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (s->r.top < 0 || s->r.left < 0) {
+> +		v4l2_err(&rga->v4l2_dev,
+> +			 "doesn't support negative values for top & left.\n");
+
+I'd make this v4l2_dbg.
+
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (s->r.left + s->r.width > s->r.width ||
+> +	    s->r.top + s->r.height > s->r.height ||
+
+Sorry, is this right? This basically means the same as:
+
+s->r.left != 0 || s->r.top != 0
+
+I suspect you want to test against the current v4l2_pix_format
+width and height since you compose into that buffer.
+
+> +	    s->r.width < MIN_WIDTH || s->r.height < MIN_HEIGHT) {
+> +		v4l2_err(&rga->v4l2_dev, "unsupport crop value.\n");
+
+v4l2_dbg.
+
+s/unsupport/unsupported/
+
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_g_selection(struct file *file, void *prv,
+> +			      struct v4l2_selection *s)
+> +{
+> +	struct rga_ctx *ctx = prv;
+> +	struct rga_frame *f;
+> +	bool use_frame = false;
+> +
+> +	f = rga_get_frame(ctx, s->type);
+> +	if (IS_ERR(f))
+> +		return PTR_ERR(f);
+> +
+> +	switch (s->target) {
+> +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> +		if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+
+Same comment here, invert these conditions.
+
+> +			return -EINVAL;
+> +		break;
+> +	case V4L2_SEL_TGT_CROP_BOUNDS:
+> +	case V4L2_SEL_TGT_CROP_DEFAULT:
+> +		if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+> +			return -EINVAL;
+> +		break;
+> +	case V4L2_SEL_TGT_COMPOSE:
+> +		if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> +			return -EINVAL;
+> +		use_frame = true;
+> +		break;
+> +	case V4L2_SEL_TGT_CROP:
+> +		if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+> +			return -EINVAL;
+> +		use_frame = true;
+> +		break;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (use_frame) {
+> +		s->r = f->crop;
+> +	} else {
+> +		s->r.left = 0;
+> +		s->r.top = 0;
+> +		s->r.width = f->width;
+> +		s->r.height = f->height;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_s_selection(struct file *file, void *prv,
+> +			      struct v4l2_selection *s)
+> +{
+> +	struct rga_ctx *ctx = prv;
+> +	struct rga_frame *f;
+> +	int ret = 0;
+> +
+> +	ret = vidioc_try_crop(ctx, s);
+> +	if (ret)
+> +		return ret;
+> +
+> +	f = rga_get_frame(ctx, s->type);
+> +	if (IS_ERR(f))
+> +		return PTR_ERR(f);
+> +
+> +	f->crop = s->r;
+> +
 > +	return ret;
 > +}
 > +
-> +static int rockchip_sfc_remove(struct platform_device *pdev)
+> +static const struct v4l2_ioctl_ops rga_ioctl_ops = {
+> +	.vidioc_querycap = vidioc_querycap,
+> +
+> +	.vidioc_enum_fmt_vid_cap = vidioc_enum_fmt,
+> +	.vidioc_g_fmt_vid_cap = vidioc_g_fmt,
+> +	.vidioc_try_fmt_vid_cap = vidioc_try_fmt,
+> +	.vidioc_s_fmt_vid_cap = vidioc_s_fmt,
+> +
+> +	.vidioc_enum_fmt_vid_out = vidioc_enum_fmt,
+> +	.vidioc_g_fmt_vid_out = vidioc_g_fmt,
+> +	.vidioc_try_fmt_vid_out = vidioc_try_fmt,
+> +	.vidioc_s_fmt_vid_out = vidioc_s_fmt,
+> +
+> +	.vidioc_reqbufs = v4l2_m2m_ioctl_reqbufs,
+> +	.vidioc_querybuf = v4l2_m2m_ioctl_querybuf,
+> +	.vidioc_qbuf = v4l2_m2m_ioctl_qbuf,
+> +	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
+> +	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
+> +	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
+> +	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
+> +
+> +	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+> +	.vidioc_unsubscribe_event = v4l2_event_unsubscribe,
+> +
+> +	.vidioc_streamon = v4l2_m2m_ioctl_streamon,
+> +	.vidioc_streamoff = v4l2_m2m_ioctl_streamoff,
+> +
+> +	.vidioc_g_selection = vidioc_g_selection,
+> +	.vidioc_s_selection = vidioc_s_selection,
+> +};
+> +
+> +static struct video_device rga_videodev = {
+> +	.name = "rockchip-rga",
+> +	.fops = &rga_fops,
+> +	.ioctl_ops = &rga_ioctl_ops,
+> +	.minor = -1,
+> +	.release = video_device_release,
+> +	.vfl_dir = VFL_DIR_M2M,
+> +	.device_caps = V4L2_CAP_VIDEO_M2M | V4L2_CAP_STREAMING,
+> +};
+> +
+> +static int rga_enable_clocks(struct rockchip_rga *rga)
 > +{
-> +	struct rockchip_sfc *sfc = platform_get_drvdata(pdev);
+> +	int ret;
 > +
-> +	pm_runtime_get_sync(&pdev->dev);
-> +	pm_runtime_disable(&pdev->dev);
-> +	pm_runtime_put_noidle(&pdev->dev);
+> +	ret = clk_prepare_enable(rga->sclk);
+> +	if (ret) {
+> +		dev_err(rga->dev, "Cannot enable rga sclk: %d\n", ret);
+> +		return ret;
+> +	}
 > +
-> +	rockchip_sfc_unregister_all(sfc);
-> +	mutex_destroy(&sfc->lock);
-> +	clk_disable_unprepare(sfc->clk);
-> +	clk_disable_unprepare(sfc->hclk);
+> +	ret = clk_prepare_enable(rga->aclk);
+> +	if (ret) {
+> +		dev_err(rga->dev, "Cannot enable rga aclk: %d\n", ret);
+> +		goto err_disable_sclk;
+> +	}
+> +
+> +	ret = clk_prepare_enable(rga->hclk);
+> +	if (ret) {
+> +		dev_err(rga->dev, "Cannot enable rga hclk: %d\n", ret);
+> +		goto err_disable_aclk;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_disable_sclk:
+> +	clk_disable_unprepare(rga->sclk);
+> +err_disable_aclk:
+> +	clk_disable_unprepare(rga->aclk);
+> +
+> +	return ret;
+> +}
+> +
+> +static void rga_disable_clocks(struct rockchip_rga *rga)
+> +{
+> +	clk_disable_unprepare(rga->sclk);
+> +	clk_disable_unprepare(rga->hclk);
+> +	clk_disable_unprepare(rga->aclk);
+> +}
+> +
+> +static int rga_parse_dt(struct rockchip_rga *rga)
+> +{
+> +	struct reset_control *core_rst, *axi_rst, *ahb_rst;
+> +
+> +	core_rst = devm_reset_control_get(rga->dev, "core");
+> +	if (IS_ERR(core_rst)) {
+> +		dev_err(rga->dev, "failed to get core reset controller\n");
+> +		return PTR_ERR(core_rst);
+> +	}
+> +
+> +	axi_rst = devm_reset_control_get(rga->dev, "axi");
+> +	if (IS_ERR(axi_rst)) {
+> +		dev_err(rga->dev, "failed to get axi reset controller\n");
+> +		return PTR_ERR(axi_rst);
+> +	}
+> +
+> +	ahb_rst = devm_reset_control_get(rga->dev, "ahb");
+> +	if (IS_ERR(ahb_rst)) {
+> +		dev_err(rga->dev, "failed to get ahb reset controller\n");
+> +		return PTR_ERR(ahb_rst);
+> +	}
+> +
+> +	reset_control_assert(core_rst);
+> +	udelay(1);
+> +	reset_control_deassert(core_rst);
+> +
+> +	reset_control_assert(axi_rst);
+> +	udelay(1);
+> +	reset_control_deassert(axi_rst);
+> +
+> +	reset_control_assert(ahb_rst);
+> +	udelay(1);
+> +	reset_control_deassert(ahb_rst);
+> +
+> +	rga->sclk = devm_clk_get(rga->dev, "sclk");
+> +	if (IS_ERR(rga->sclk)) {
+> +		dev_err(rga->dev, "failed to get sclk clock\n");
+> +		return PTR_ERR(rga->sclk);
+> +	}
+> +
+> +	rga->aclk = devm_clk_get(rga->dev, "aclk");
+> +	if (IS_ERR(rga->aclk)) {
+> +		dev_err(rga->dev, "failed to get aclk clock\n");
+> +		return PTR_ERR(rga->aclk);
+> +	}
+> +
+> +	rga->hclk = devm_clk_get(rga->dev, "hclk");
+> +	if (IS_ERR(rga->hclk)) {
+> +		dev_err(rga->dev, "failed to get hclk clock\n");
+> +		return PTR_ERR(rga->hclk);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rga_probe(struct platform_device *pdev)
+> +{
+> +	struct rockchip_rga *rga;
+> +	struct video_device *vfd;
+> +	struct resource *res;
+> +	int ret = 0;
+> +	int irq;
+> +
+> +	if (!pdev->dev.of_node)
+> +		return -ENODEV;
+> +
+> +	rga = devm_kzalloc(&pdev->dev, sizeof(*rga), GFP_KERNEL);
+> +	if (!rga)
+> +		return -ENOMEM;
+> +
+> +	rga->dev = &pdev->dev;
+> +	spin_lock_init(&rga->ctrl_lock);
+> +	mutex_init(&rga->mutex);
+> +
+> +	init_waitqueue_head(&rga->irq_queue);
+> +
+> +	ret = rga_parse_dt(rga);
+> +	if (ret)
+> +		dev_err(&pdev->dev, "Unable to parse OF data\n");
+> +
+> +	pm_runtime_enable(rga->dev);
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +
+> +	rga->regs = devm_ioremap_resource(rga->dev, res);
+> +	if (IS_ERR(rga->regs)) {
+> +		ret = PTR_ERR(rga->regs);
+> +		goto err_put_clk;
+> +	}
+> +
+> +	irq = platform_get_irq(pdev, 0);
+> +	if (irq < 0) {
+> +		dev_err(rga->dev, "failed to get irq\n");
+> +		ret = irq;
+> +		goto err_put_clk;
+> +	}
+> +
+> +	ret = devm_request_irq(rga->dev, irq, rga_isr, 0,
+> +			       dev_name(rga->dev), rga);
+> +	if (ret < 0) {
+> +		dev_err(rga->dev, "failed to request irq\n");
+> +		goto err_put_clk;
+> +	}
+> +
+> +	ret = v4l2_device_register(&pdev->dev, &rga->v4l2_dev);
+> +	if (ret)
+> +		goto err_put_clk;
+> +	vfd = video_device_alloc();
+> +	if (!vfd) {
+> +		v4l2_err(&rga->v4l2_dev, "Failed to allocate video device\n");
+> +		ret = -ENOMEM;
+> +		goto unreg_v4l2_dev;
+> +	}
+> +	*vfd = rga_videodev;
+> +	vfd->lock = &rga->mutex;
+> +	vfd->v4l2_dev = &rga->v4l2_dev;
+> +
+> +	video_set_drvdata(vfd, rga);
+> +	snprintf(vfd->name, sizeof(vfd->name), "%s", rga_videodev.name);
+> +	rga->vfd = vfd;
+> +
+> +	platform_set_drvdata(pdev, rga);
+> +	rga->m2m_dev = v4l2_m2m_init(&rga_m2m_ops);
+> +	if (IS_ERR(rga->m2m_dev)) {
+> +		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
+> +		ret = PTR_ERR(rga->m2m_dev);
+> +		goto unreg_video_dev;
+> +	}
+> +
+> +	pm_runtime_get_sync(rga->dev);
+> +
+> +	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
+> +	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
+> +
+> +	v4l2_info(&rga->v4l2_dev, "HW Version: 0x%02x.%02x\n",
+> +		  rga->version.major, rga->version.minor);
+> +
+> +	pm_runtime_put(rga->dev);
+> +
+> +	/* Create CMD buffer */
+> +	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
+> +					   &rga->cmdbuf_phy, GFP_KERNEL,
+> +					   DMA_ATTR_WRITE_COMBINE);
+> +
+> +	rga->src_mmu_pages =
+> +		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> +	rga->dst_mmu_pages =
+> +		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> +
+> +	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
+> +	def_frame.size = def_frame.stride * def_frame.height;
+> +
+> +	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
+> +	if (ret) {
+> +		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
+> +		goto rel_vdev;
+> +	}
+> +
+> +	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
+> +		  vfd->name, video_device_node_name(vfd));
+> +
+> +	return 0;
+> +
+> +rel_vdev:
+> +	video_device_release(vfd);
+> +unreg_video_dev:
+> +	video_unregister_device(rga->vfd);
+> +unreg_v4l2_dev:
+> +	v4l2_device_unregister(&rga->v4l2_dev);
+> +err_put_clk:
+> +	pm_runtime_disable(rga->dev);
+> +
+> +	return ret;
+> +}
+> +
+> +static int rga_remove(struct platform_device *pdev)
+> +{
+> +	struct rockchip_rga *rga = platform_get_drvdata(pdev);
+> +
+> +	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, &rga->cmdbuf_virt,
+> +		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
+> +
+> +	free_pages((unsigned long)rga->src_mmu_pages, 3);
+> +	free_pages((unsigned long)rga->dst_mmu_pages, 3);
+> +
+> +	v4l2_info(&rga->v4l2_dev, "Removing\n");
+> +
+> +	v4l2_m2m_release(rga->m2m_dev);
+> +	video_unregister_device(rga->vfd);
+> +	v4l2_device_unregister(&rga->v4l2_dev);
+> +
+> +	pm_runtime_disable(rga->dev);
+> +
 > +	return 0;
 > +}
 > +
 > +#ifdef CONFIG_PM
-> +int rockchip_sfc_runtime_suspend(struct device *dev)
+> +static int rga_runtime_suspend(struct device *dev)
 > +{
-> +	struct rockchip_sfc *sfc = dev_get_drvdata(dev);
+> +	struct rockchip_rga *rga = dev_get_drvdata(dev);
 > +
-> +	clk_disable_unprepare(sfc->hclk);
+> +	rga_disable_clocks(rga);
+> +
 > +	return 0;
 > +}
 > +
-> +int rockchip_sfc_runtime_resume(struct device *dev)
+> +static int rga_runtime_resume(struct device *dev)
 > +{
-> +	struct rockchip_sfc *sfc = dev_get_drvdata(dev);
+> +	struct rockchip_rga *rga = dev_get_drvdata(dev);
 > +
-> +	clk_prepare_enable(sfc->hclk);
-> +	return rockchip_sfc_reset(sfc);
+> +	return rga_enable_clocks(rga);
 > +}
-> +#endif /* CONFIG_PM */
+> +#endif
 > +
-> +static const struct of_device_id rockchip_sfc_dt_ids[] = {
-> +	{ .compatible = "rockchip,sfc"},
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, rockchip_sfc_dt_ids);
-> +
-> +static const struct dev_pm_ops rockchip_sfc_dev_pm_ops = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> +				pm_runtime_force_resume)
-> +	SET_RUNTIME_PM_OPS(rockchip_sfc_runtime_suspend,
-> +			   rockchip_sfc_runtime_resume, NULL)
+> +static const struct dev_pm_ops rga_pm = {
+> +	SET_RUNTIME_PM_OPS(rga_runtime_suspend,
+> +			   rga_runtime_resume, NULL)
 > +};
 > +
-> +static struct platform_driver rockchip_sfc_driver = {
-> +	.driver = {
-> +		.name	= "rockchip-sfc",
-> +		.of_match_table = rockchip_sfc_dt_ids,
-> +		.pm = &rockchip_sfc_dev_pm_ops,
+> +static const struct of_device_id rockchip_rga_match[] = {
+> +	{
+> +		.compatible = "rockchip,rk3288-rga",
 > +	},
-> +	.probe	= rockchip_sfc_probe,
-> +	.remove	= rockchip_sfc_remove,
+> +	{
+> +		.compatible = "rockchip,rk3399-rga",
+> +	},
+> +	{},
 > +};
-> +module_platform_driver(rockchip_sfc_driver);
 > +
-> +MODULE_LICENSE("GPL v2");
-> +MODULE_DESCRIPTION("Rockchip Serial Flash Controller Driver");
-> +MODULE_AUTHOR("Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
+> +MODULE_DEVICE_TABLE(of, rockchip_rga_match);
+> +
+> +static struct platform_driver rga_pdrv = {
+> +	.probe = rga_probe,
+> +	.remove = rga_remove,
+> +	.driver = {
+> +		.name = RGA_NAME,
+> +		.pm = &rga_pm,
+> +		.of_match_table = rockchip_rga_match,
+> +	},
+> +};
+> +
+> +module_platform_driver(rga_pdrv);
+> +
+> +MODULE_AUTHOR("Jacob Chen <jacob-chen@iotwrt.com>");
+> +MODULE_DESCRIPTION("Rockchip Raster 2d Grapphic Acceleration Unit");
+> +MODULE_LICENSE("GPL");
+> diff --git a/drivers/media/platform/rockchip-rga/rga.h b/drivers/media/platform/rockchip-rga/rga.h
+> new file mode 100644
+> index 0000000..c7d35b8
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip-rga/rga.h
+> @@ -0,0 +1,110 @@
+> +/*
+> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + * Author: Jacob Chen <jacob-chen@iotwrt.com>
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#ifndef __RGA_H__
+> +#define __RGA_H__
+> +
+> +#include <linux/platform_device.h>
+> +#include <media/videobuf2-v4l2.h>
+> +#include <media/v4l2-ctrls.h>
+> +#include <media/v4l2-device.h>
+> +
+> +#define RGA_NAME "rockchip-rga"
+> +
+> +struct rga_fmt {
+> +	u32 fourcc;
+> +	int depth;
+> +	u8 uv_factor;
+> +	u8 y_div;
+> +	u8 x_div;
+> +	u8 color_swap;
+> +	u8 hw_format;
+> +};
+> +
+> +struct rga_frame {
+> +	/* Original dimensions */
+> +	u32 width;
+> +	u32 height;
+> +	u32 colorspace;
+> +
+> +	/* Crop */
+> +	struct v4l2_rect crop;
+> +
+> +	/* Image format */
+> +	struct rga_fmt *fmt;
+> +
+> +	/* Variables that can calculated once and reused */
+> +	u32 stride;
+> +	u32 size;
+> +};
+> +
+> +struct rockchip_rga_version {
+> +	u32 major;
+> +	u32 minor;
+> +};
+> +
+> +struct rga_ctx {
+> +	struct v4l2_fh fh;
+> +	struct rockchip_rga *rga;
+> +	struct rga_frame in;
+> +	struct rga_frame out;
+> +	struct v4l2_ctrl_handler ctrl_handler;
+> +
+> +	/* Control values */
+> +	u32 op;
+> +	u32 hflip;
+> +	u32 vflip;
+> +	u32 rotate;
+> +	u32 fill_color;
+> +};
+> +
+> +struct rockchip_rga {
+> +	struct v4l2_device v4l2_dev;
+> +	struct v4l2_m2m_dev *m2m_dev;
+> +	struct video_device *vfd;
+> +
+> +	struct device *dev;
+> +	struct regmap *grf;
+> +	void __iomem *regs;
+> +	struct clk *sclk;
+> +	struct clk *aclk;
+> +	struct clk *hclk;
+> +	struct rockchip_rga_version version;
+> +
+> +	struct mutex mutex;
+> +	spinlock_t ctrl_lock;
+> +
+> +	wait_queue_head_t irq_queue;
+> +
+> +	struct rga_ctx *curr;
+> +	dma_addr_t cmdbuf_phy;
+> +	void *cmdbuf_virt;
+> +	unsigned int *src_mmu_pages;
+> +	unsigned int *dst_mmu_pages;
+> +};
+> +
+> +struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type);
+> +
+> +/* RGA Buffers Manage Part */
+> +extern const struct vb2_ops rga_qops;
+> +void rga_buf_map(struct vb2_buffer *vb);
+> +
+> +/* RGA Hardware Part */
+> +void rga_write(struct rockchip_rga *rga, u32 reg, u32 value);
+> +u32 rga_read(struct rockchip_rga *rga, u32 reg);
+> +void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask);
+> +void rga_start(struct rockchip_rga *rga);
+> +
+> +void rga_cmd_set(struct rga_ctx *ctx);
+> +
+> +#endif
 > 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+So this looks good, except for the fairly small comments above.
+
+As mentioned earlier, I need the v4l2-compliance output and I'll look at what is
+currently failing there. That should be fixed either in the driver or in the
+compliance test (if the problem is there).
+
+One other question: did you actually test crop/compose? Handling selection
+correctly is always tricky, so make sure this is tested.
+
+Regards,
+
+	Hans
