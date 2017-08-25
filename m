@@ -1,96 +1,30 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v4 3/4] dt-bindings: PCI: rockchip: Add support for pcie
- wake irq
-Date: Fri, 25 Aug 2017 10:35:33 +0800
-Message-ID: <53dc2510-cf96-fdd6-4fb7-ba8cfa485556@rock-chips.com>
-References: <20170822031934.8675-1-jeffy.chen@rock-chips.com>
- <20170822031934.8675-4-jeffy.chen@rock-chips.com>
- <20170824165353.GL31858@bhelgaas-glaptop.roam.corp.google.com>
- <20170825021132.GA104845@google.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] pinctrl: rockchip: Add rv1108 recalculated iomux support
+Date: Fri, 25 Aug 2017 11:23:17 +0200
+Message-ID: <23515351.KtMKrjq6Hm@phil>
+References: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170825021132.GA104845@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Bjorn Helgaas <helgaas@kernel.org>
-Cc: shawn.lin@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, dianders@chromium.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, andy.yan@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Mittwoch, 23. August 2017, 16:00:07 CEST schrieb David Wu:
+> The pins from GPIO1A0 to GPIO1B1 are special, need to recalculate
+> iomux. And the register offset is larger than the u8 range, so changed
+> to u32.
+> 
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
 
-On 2017/8/25 10:11, Brian Norris wrote:
-> On Thu, Aug 24, 2017 at 11:53:54AM -0500, Bjorn Helgaas wrote:
->> On Tue, Aug 22, 2017 at 11:19:33AM +0800, Jeffy Chen wrote:
->>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> 
->>> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->>> index 5678be82530d..9f6504129e80 100644
->>> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->>> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->>> @@ -20,10 +20,13 @@ Required properties:
->>>   - msi-map: Maps a Requester ID to an MSI controller and associated
->>>   	msi-specifier data. See ./pci-msi.txt
->>>   - interrupts: Three interrupt entries must be specified.
->>> -- interrupt-names: Must include the following names
->>> -	- "sys"
->>> -	- "legacy"
->>> -	- "client"
->>> +- interrupt-names: Include the following names
->>> +	Required:
->>> +		- "sys"
->>> +		- "legacy"
->>> +		- "client"
->>> +	Optional:
->>> +		- "wake"
->>
->> Why is there no other PCI binding that includes "wake" as an
->> interrupt-name?  This feels like something that should be fairly
->> common across host controllers.  I don't want a Rockport-specific
-> 
-> s/port/chip/ :)
-> 
->> DT description if it could be made more general.
-> 
-> I'm not sure we can really answer that question ("why do no other PCI
-> bindings have this?"). But one guess would be that every other
-> controller uses only beacon wake.
-> 
-> It would be OK with me if we made a blanket statement that a controller
-> with a "wake" interrupt means PCI WAKE# (per the specification). It's
-> possible this could even be stuck into some generic PCI/DT code
-> eventually. (I don't think we have a really good place for this today.)
+While I'm still struggling trying to understand why some chip-designer
+would move these iomux settings into the general SOC_CON registers,
+this matches the documentation for the rv1108, so
 
-I guess we could register a pcie port service for dedicated WAKE# as it 
-seems fairly parallel to pme code there, if we need a common place for
-that?
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
 
-> 
-> Brian
-> 
->>>   - resets: Must contain seven entries for each entry in reset-names.
->>>   	   See ../reset/reset.txt for details.
->>>   - reset-names: Must include the following names
->>> @@ -87,10 +90,11 @@ pcie0: pcie@f8000000 {
->>>   	clock-names = "aclk", "aclk-perf",
->>>   		      "hclk", "pm";
->>>   	bus-range = <0x0 0x1>;
->>> -	interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
->>> -		     <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
->>> -		     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>;
->>> -	interrupt-names = "sys", "legacy", "client";
->>> +	interrupts-extended = <&gic GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
->>> +			      <&gic GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
->>> +			      <&gic GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>,
->>> +			      <&gpio0 8 IRQ_TYPE_LEVEL_LOW>;
->>> +	interrupt-names = "sys", "legacy", "client", "wake";
->>>   	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
->>>   	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
->>>   	assigned-clock-rates = <100000000>;
->>> -- 
->>> 2.11.0
->>>
->>>
-> 
-> 
-> 
+Heiko
