@@ -1,30 +1,31 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] pinctrl: rockchip: Add rv1108 recalculated iomux support
-Date: Fri, 25 Aug 2017 11:23:17 +0200
-Message-ID: <23515351.KtMKrjq6Hm@phil>
-References: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
+Subject: Re: [PATCH v2 2/3] cpufreq: rockchip: add support for rk3328 soc
+Date: Fri, 25 Aug 2017 11:29:55 +0200
+Message-ID: <1648103.UpmdRsUd1Z@phil>
+References: <1503542223-21044-1-git-send-email-cl@rock-chips.com> <1503542223-21044-3-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, andy.yan@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1503542223-21044-3-git-send-email-cl@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawnguo@kernel.org, rocky.hao@rock-chips.com, afaerber@suse.de, fabio.estevam@nxp.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, rjw@rjwysocki.net, viresh.kumar@linaro.org, linux-pm@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 23. August 2017, 16:00:07 CEST schrieb David Wu:
-> The pins from GPIO1A0 to GPIO1B1 are special, need to recalculate
-> iomux. And the register offset is larger than the u8 range, so changed
-> to u32.
+Hi,
+
+Am Donnerstag, 24. August 2017, 10:37:02 CEST schrieb cl@rock-chips.com:
+> From: Liang Chen <cl@rock-chips.com>
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Add compatible rockchip,rk3328 to the machines table to
+> launch cpufreq-dt driver for rk3328 soc.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
 
-While I'm still struggling trying to understand why some chip-designer
-would move these iomux settings into the general SOC_CON registers,
-this matches the documentation for the rv1108, so
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+this already got added some days ago by a patch from Finley [0]
 
 
 Heiko
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=319af40a0053fea2ecadcf10bef7e796c91ea8c0
