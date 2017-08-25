@@ -1,61 +1,37 @@
-From: Jacob Chen <jacobchen110@gmail.com>
-Subject: Re: [PATCH v7] rockchip/rga: v4l2 m2m support
-Date: Fri, 25 Aug 2017 22:57:21 +0800
-Message-ID: <CAFLEztQOyOxqPajzwANr7cG-EGqv813Wad3weeMGBB1BNNT2Ag@mail.gmail.com>
-References: <1501737812-24171-1-git-send-email-jacob-chen@iotwrt.com> <fe2c1de6-dd6c-378f-8a1e-d790807310b1@xs4all.nl>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 1/3] dt-bindings: usb: add DT binding for RK3328 dwc3
+ controller
+Date: Fri, 25 Aug 2017 13:01:45 -0500
+Message-ID: <20170825180145.cgpgkrjitwqkpmbz@rob-hp-laptop>
+References: <1503322566-31489-1-git-send-email-william.wu@rock-chips.com>
+ <1503322566-31489-2-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <fe2c1de6-dd6c-378f-8a1e-d790807310b1@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, laurent.pinchart+renesas@ideasonboard.com, Hans Verkuil <hans.verkuil@cisco.com>, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1503322566-31489-2-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Hans,
+On Mon, Aug 21, 2017 at 09:36:04PM +0800, William Wu wrote:
+> Adds the device tree bindings description for RK3328 and
+> compatible USB DWC3 controller.
+> 
+> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> Changes in v3:
+> - Add this for separate usb dt-bindings patch.
+> 
+> Changes in v2:
+> - None
+> 
+>  Documentation/devicetree/bindings/usb/rockchip,dwc3.txt | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-2017-08-21 22:16 GMT+08:00 Hans Verkuil <hverkuil@xs4all.nl>:
-> Hi Jacob,
->
-> On 08/03/2017 07:23 AM, Jacob Chen wrote:
->> Rockchip RGA is a separate 2D raster graphic acceleration unit. It
->> accelerates 2D graphics operations, such as point/line drawing, image
->> scaling, rotation, BitBLT, alpha blending and image blur/sharpness
->>
->> The drvier is mostly based on s5p-g2d v4l2 m2m driver
->> And supports various operations from the rendering pipeline.
->>  - copy
->>  - fast solid color fill
->>  - rotation
->>  - flip
->>  - alpha blending
->>
->> The code in rga-hw.c is used to configure regs according to operations
->> The code in rga-buf.c is used to create private mmu table for RGA.
->>
->> changes in V7:
->> - fix some warning reported by "checkpatch --strict"
->>
->> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
->
-> Can you post the v4l2-compliance output? I gather that there is at least one
-> colorspace-related error that appears to be a v4l2-compliance bug, so I'd
-> like to see the exact error it gives. I'll see if I can fix it so this driver
-> has a clean compliance output.
->
-
-OK, i will post it.
-
-> I apologize that this driver probably won't make 4.14. Too much to review...
->
-
-It doesn't matter,
-I'm still writing the userspace for this driver ,
-At peresent this driver might have a lot of bugs, since i didn't test
-it much in production environment .
-
-> I hope to do the v7 review within a week.
->
-> Regards,
->
->         Hans
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
