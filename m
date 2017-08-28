@@ -1,68 +1,25 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v5 0/10] Some cleanup and bug fix for pcie-rockchip
-Date: Mon, 28 Aug 2017 13:33:39 -0500
-Message-ID: <20170828183339.GI8154@bhelgaas-glaptop.roam.corp.google.com>
-References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
- <20170825213838.GB8154@bhelgaas-glaptop.roam.corp.google.com>
- <c6e1a387-ee7b-1694-31d6-1b2f553e3d0f@rock-chips.com>
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Subject: Re: [PATCH v2] PM / AVS: rockchip-io: add io selectors and supplies for RV1108
+Date: Mon, 28 Aug 2017 23:20:22 +0200
+Message-ID: <3886468.XEC4IP3pzY@aspire.rjw.lan>
+References: <1503313113-31056-1-git-send-email-david.wu@rock-chips.com> <3462279.PGzmALbDiu@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <c6e1a387-ee7b-1694-31d6-1b2f553e3d0f@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3462279.PGzmALbDiu@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>
+Cc: khilman@baylibre.com, rafael.j.wysocki@intel.com, nm@ti.com, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Aug 28, 2017 at 10:22:24AM +0800, Shawn Lin wrote:
-> Hi Bjorn,
+On Tuesday, August 22, 2017 12:00:02 AM CEST Heiko Stuebner wrote:
+> Am Montag, 21. August 2017, 18:58:33 CEST schrieb David Wu:
+> > This adds the necessary data for handling io voltage domains on the RV1108.
+> > 
+> > Signed-off-by: David Wu <david.wu@rock-chips.com>
 > 
-> On 2017/8/26 5:38, Bjorn Helgaas wrote:
-> >On Wed, Aug 23, 2017 at 03:01:13PM +0800, Shawn Lin wrote:
-> >>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 > 
-> ...
-> 
-> >
-> >I applied these to pci/host-rockchip except for these:
-> >
-> >   PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
-> >   PCI: rockchip: fix missing phy manipulation for legacy phy
-> >
-> >I'm not really happy with the devm/clk_prepare_enable situation, so
-> >I'm waiting to see if a better solution emerges.
-> >
-> >I went ahead and applied the tweaks I proposed to the earlier "PCI:
-> >rockchip: Add per-lane PHY support" and "PCI: rockchip: Idle inactive
-> >PHY(s)" patches.  I *think* those make the "fix missing phy
-> >manipulation for legacy phy" patch unnecessary.
-> >
-> >But please take a look and make sure.  If I went the wrong direction,
-> >I'll gladly back it out.
-> 
-> I tested both of legacy and per-lane PHY mode, and it works fine.
-> 
-> But just a nit:
-> 
-> with legacy PHY, we could avoid to print the following message
-> which is confusing as for legacy PHY mode, we couldn't idle
-> any inactive lanes.
-> 
-> [    0.655192] rockchip-pcie f8000000.pcie: idling lane 1
-> [    0.655696] rockchip-pcie f8000000.pcie: idling lane 2
-> [    0.656194] rockchip-pcie f8000000.pcie: idling lane 3
-> 
-> So I think we could return 0xf for legacy PHY mode like this:
-> 
-> static u8 rockchip_pcie_lane_map(struct rockchip_pcie *rockchip)
->         u8 map;
-> 
->         if (rockchip->legacy_phy)
-> -               return BIT(0);
-> +               return GENMASK(MAX_LANE_NUM - 1, 0);
 
-When we're using legacy PHY mode, this changes lanes_map from 0x1 to
-0xf.  That means we won't print the "idling lane 1" message.  It
-*also* means we won't call phy_power_off() for lanes 1-3.  Is that the
-correct behavior?  Does the legacy PHY mode actually use all 4 PHYs?
+Patch applied, thanks!
