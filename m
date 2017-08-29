@@ -1,93 +1,150 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v5 0/10] Some cleanup and bug fix for pcie-rockchip
-Date: Tue, 29 Aug 2017 08:47:28 +0800
-Message-ID: <6067d630-3434-c009-89be-c4688bc1e7c3@rock-chips.com>
-References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
- <20170825213838.GB8154@bhelgaas-glaptop.roam.corp.google.com>
- <c6e1a387-ee7b-1694-31d6-1b2f553e3d0f@rock-chips.com>
- <20170828183339.GI8154@bhelgaas-glaptop.roam.corp.google.com>
+From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v7 1/3] dt-bindings: display: Add Document for Rockchip
+ Soc LVDS
+Date: Tue, 29 Aug 2017 18:17:11 +0800
+Message-ID: <59A53F27.2010308@rock-chips.com>
+References: <1503469615-39406-1-git-send-email-hjc@rock-chips.com>
+ <1503469622-39462-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20170828183339.GI8154@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1503469622-39462-1-git-send-email-hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+On 2017年08月23日 14:26, Sandy Huang wrote:
+> This patch add Document for Rockchip Soc RK3288 LVDS,
+> This based on the patches from Mark yao and Heiko Stuebner.
+>
+> Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+Looks good for me:
 
-On 2017/8/29 2:33, Bjorn Helgaas wrote:
-> On Mon, Aug 28, 2017 at 10:22:24AM +0800, Shawn Lin wrote:
->> Hi Bjorn,
->>
->> On 2017/8/26 5:38, Bjorn Helgaas wrote:
->>> On Wed, Aug 23, 2017 at 03:01:13PM +0800, Shawn Lin wrote:
->>>>
->>
->> ...
->>
->>>
->>> I applied these to pci/host-rockchip except for these:
->>>
->>>    PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
->>>    PCI: rockchip: fix missing phy manipulation for legacy phy
->>>
->>> I'm not really happy with the devm/clk_prepare_enable situation, so
->>> I'm waiting to see if a better solution emerges.
->>>
->>> I went ahead and applied the tweaks I proposed to the earlier "PCI:
->>> rockchip: Add per-lane PHY support" and "PCI: rockchip: Idle inactive
->>> PHY(s)" patches.  I *think* those make the "fix missing phy
->>> manipulation for legacy phy" patch unnecessary.
->>>
->>> But please take a look and make sure.  If I went the wrong direction,
->>> I'll gladly back it out.
->>
->> I tested both of legacy and per-lane PHY mode, and it works fine.
->>
->> But just a nit:
->>
->> with legacy PHY, we could avoid to print the following message
->> which is confusing as for legacy PHY mode, we couldn't idle
->> any inactive lanes.
->>
->> [    0.655192] rockchip-pcie f8000000.pcie: idling lane 1
->> [    0.655696] rockchip-pcie f8000000.pcie: idling lane 2
->> [    0.656194] rockchip-pcie f8000000.pcie: idling lane 3
->>
->> So I think we could return 0xf for legacy PHY mode like this:
->>
->> static u8 rockchip_pcie_lane_map(struct rockchip_pcie *rockchip)
->>          u8 map;
->>
->>          if (rockchip->legacy_phy)
->> -               return BIT(0);
->> +               return GENMASK(MAX_LANE_NUM - 1, 0);
-> 
-> When we're using legacy PHY mode, this changes lanes_map from 0x1 to
-> 0xf.  That means we won't print the "idling lane 1" message.  It
-> *also* means we won't call phy_power_off() for lanes 1-3.  Is that the
-> correct behavior?  Does the legacy PHY mode actually use all 4 PHYs?
+Reviewed-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Yes, it's the correct behaviour. The 4 PHYs is abstraction of 4 lanes
-for per-lane PHY mode, but for legacy PHY mode, PHY represents a single
-component managing 4 lanes together. So no matter how many lanes are
-used, we couldn't call phy_power_off for legacy PHY mode until we really
-want to power off the PHY. That is  why we need to recontruct the pcie
-and phy driver to migrate to per-lane PHY mode as we could treat each
-lane as a phy object and let phy driver do idling work in the
-phy_power_off callback instead of power-off work if ref count isn't
-decreased to zero.
+> Changes according to Rob Herring's review.
+>
+>   .../bindings/display/rockchip/rockchip-lvds.txt    | 99 ++++++++++++++++++++++
+>   1 file changed, 99 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+>
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+> new file mode 100644
+> index 0000000..da6939e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+> @@ -0,0 +1,99 @@
+> +Rockchip RK3288 LVDS interface
+> +================================
+> +
+> +Required properties:
+> +- compatible: matching the soc type, one of
+> +	- "rockchip,rk3288-lvds";
+> +
+> +- reg: physical base address of the controller and length
+> +	of memory mapped region.
+> +- clocks: must include clock specifiers corresponding to entries in the
+> +	clock-names property.
+> +- clock-names: must contain "pclk_lvds"
+> +
+> +- avdd1v0-supply: regulator phandle for 1.0V analog power
+> +- avdd1v8-supply: regulator phandle for 1.8V analog power
+> +- avdd3v3-supply: regulator phandle for 3.3V analog power
+> +
+> +- rockchip,grf: phandle to the general register files syscon
+> +- rockchip,output: "rgb", "lvds" or "duallvds", This describes the output interface
+> +
+> +Optional properties:
+> +- pinctrl-names: must contain a "lcdc" entry.
+> +- pinctrl-0: pin control group to be used for this controller.
+> +
+> +Required nodes:
+> +
+> +The lvds has two video ports as described by
+> +	Documentation/devicetree/bindings/media/video-interfaces.txt
+> +Their connections are modeled using the OF graph bindings specified in
+> +	Documentation/devicetree/bindings/graph.txt.
+> +
+> +- video port 0 for the VOP input, the remote endpoint maybe vopb or vopl
+> +- video port 1 for either a panel or subsequent encoder
+> +
+> +the lvds panel described by
+> +	Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> +
+> +Panel required properties:
+> +- ports for remote LVDS output
+> +
+> +Panel optional properties:
+> +- data-mapping: should be "vesa-24","jeida-24" or "jeida-18".
+> +This describes decribed by:
+> +	Documentation/devicetree/bindings/display/panel/panel-lvds.txt
+> +
+> +Example:
+> +
+> +lvds_panel: lvds-panel {
+> +	compatible = "auo,b101ean01";
+> +	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
+> +	data-mapping = "jeida-24";
+> +
+> +	ports {
+> +		panel_in_lvds: endpoint {
+> +			remote-endpoint = <&lvds_out_panel>;
+> +		};
+> +	};
+> +};
+> +
+> +For Rockchip RK3288:
+> +
+> +	lvds: lvds@ff96c000 {
+> +		compatible = "rockchip,rk3288-lvds";
+> +		rockchip,grf = <&grf>;
+> +		reg = <0xff96c000 0x4000>;
+> +		clocks = <&cru PCLK_LVDS_PHY>;
+> +		clock-names = "pclk_lvds";
+> +		pinctrl-names = "lcdc";
+> +		pinctrl-0 = <&lcdc_ctl>;
+> +		avdd1v0-supply = <&vdd10_lcd>;
+> +		avdd1v8-supply = <&vcc18_lcd>;
+> +		avdd3v3-supply = <&vcca_33>;
+> +		rockchip,output = "rgb";
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			lvds_in: port@0 {
+> +				reg = <0>;
+> +
+> +				lvds_in_vopb: endpoint@0 {
+> +					reg = <0>;
+> +					remote-endpoint = <&vopb_out_lvds>;
+> +				};
+> +				lvds_in_vopl: endpoint@1 {
+> +					reg = <1>;
+> +					remote-endpoint = <&vopl_out_lvds>;
+> +				};
+> +			};
+> +
+> +			lvds_out: port@1 {
+> +				reg = <1>;
+> +
+> +				lvds_out_panel: endpoint {
+> +					remote-endpoint = <&panel_in_lvds>;
+> +				};
+> +			};
+> +		};
+> +	};
 
-Also I think the key point here is that for legacy PHY mode, only
-phys[0] is vaild, so there is no difference if we call phy_power_off for
-phys[1..3] as you did, because PHY API will check the phy object and
-won't do anything if seeing invalid/NULL phy object. So changing 
-lanes_map from 0x1 to 0xf is only silent the "idling lane x" log.
+
+-- 
+Ｍark Yao
 
 
-> 
-> 
-> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
