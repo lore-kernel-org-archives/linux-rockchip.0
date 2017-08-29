@@ -1,49 +1,93 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v4 3/4] dt-bindings: PCI: rockchip: Add support for pcie
- wake irq
-Date: Mon, 28 Aug 2017 15:44:49 -0700
-Message-ID: <20170828224447.GA3119@google.com>
-References: <20170822031934.8675-1-jeffy.chen@rock-chips.com>
- <20170822031934.8675-4-jeffy.chen@rock-chips.com>
- <20170825181439.d3hlwrcbmcss3sx6@rob-hp-laptop>
- <20170825181959.GA64040@google.com>
- <CAL_Jsq+MeiwOf=VDLZrxgPuLNEDvtGY=X-K1=6w9aaFVZgg1hA@mail.gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v5 0/10] Some cleanup and bug fix for pcie-rockchip
+Date: Tue, 29 Aug 2017 08:47:28 +0800
+Message-ID: <6067d630-3434-c009-89be-c4688bc1e7c3@rock-chips.com>
+References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
+ <20170825213838.GB8154@bhelgaas-glaptop.roam.corp.google.com>
+ <c6e1a387-ee7b-1694-31d6-1b2f553e3d0f@rock-chips.com>
+ <20170828183339.GI8154@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAL_Jsq+MeiwOf=VDLZrxgPuLNEDvtGY=X-K1=6w9aaFVZgg1hA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "bhelgaas@google.com" <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>, Doug Anderson <dianders@chromium.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20170828183339.GI8154@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Aug 28, 2017 at 04:32:55PM -0500, Rob Herring wrote:
-> On Fri, Aug 25, 2017 at 1:20 PM, Brian Norris <briannorris@chromium.org> wrote:
-> > On Fri, Aug 25, 2017 at 01:14:39PM -0500, Rob Herring wrote:
-> >> Use the wakeup source binding:
-> >> Documentation/devicetree/bindings/power/wakeup-source.txt
-> >
-> > And I suppose this means we'd fall under this paragraph?
-> >
-> >     "However if the devices have dedicated interrupt as the wakeup source
-> >     then they need to specify/identify the same using device specific
-> >     interrupt name. In such cases only that interrupt can be used as wakeup
-> >     interrupt."
-> >
-> > We don't expect *any* interrupt to qualify as PCI WAKE#; so we should
-> > still also document the interrupt name ("wake"?) in
-> > Documentation/devicetree/bindings/pci/pci.txt as Bjorn suggested, in
-> > addition to using the 'wakeup-source' property documented there.
+Hi Bjorn,
+
+On 2017/8/29 2:33, Bjorn Helgaas wrote:
+> On Mon, Aug 28, 2017 at 10:22:24AM +0800, Shawn Lin wrote:
+>> Hi Bjorn,
+>>
+>> On 2017/8/26 5:38, Bjorn Helgaas wrote:
+>>> On Wed, Aug 23, 2017 at 03:01:13PM +0800, Shawn Lin wrote:
+>>>>
+>>
+>> ...
+>>
+>>>
+>>> I applied these to pci/host-rockchip except for these:
+>>>
+>>>    PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
+>>>    PCI: rockchip: fix missing phy manipulation for legacy phy
+>>>
+>>> I'm not really happy with the devm/clk_prepare_enable situation, so
+>>> I'm waiting to see if a better solution emerges.
+>>>
+>>> I went ahead and applied the tweaks I proposed to the earlier "PCI:
+>>> rockchip: Add per-lane PHY support" and "PCI: rockchip: Idle inactive
+>>> PHY(s)" patches.  I *think* those make the "fix missing phy
+>>> manipulation for legacy phy" patch unnecessary.
+>>>
+>>> But please take a look and make sure.  If I went the wrong direction,
+>>> I'll gladly back it out.
+>>
+>> I tested both of legacy and per-lane PHY mode, and it works fine.
+>>
+>> But just a nit:
+>>
+>> with legacy PHY, we could avoid to print the following message
+>> which is confusing as for legacy PHY mode, we couldn't idle
+>> any inactive lanes.
+>>
+>> [    0.655192] rockchip-pcie f8000000.pcie: idling lane 1
+>> [    0.655696] rockchip-pcie f8000000.pcie: idling lane 2
+>> [    0.656194] rockchip-pcie f8000000.pcie: idling lane 3
+>>
+>> So I think we could return 0xf for legacy PHY mode like this:
+>>
+>> static u8 rockchip_pcie_lane_map(struct rockchip_pcie *rockchip)
+>>          u8 map;
+>>
+>>          if (rockchip->legacy_phy)
+>> -               return BIT(0);
+>> +               return GENMASK(MAX_LANE_NUM - 1, 0);
 > 
-> I believe the defined interrupt name is "wakeup" as example 1 shows.
+> When we're using legacy PHY mode, this changes lanes_map from 0x1 to
+> 0xf.  That means we won't print the "idling lane 1" message.  It
+> *also* means we won't call phy_power_off() for lanes 1-3.  Is that the
+> correct behavior?  Does the legacy PHY mode actually use all 4 PHYs?
 
-That's an example, not a definition. And the definition I quoted
-literally says "device specific interrupt name". The PCIe specification
-calls it "WAKE#" all over the place, so I figured that's a good name to
-use.
+Yes, it's the correct behaviour. The 4 PHYs is abstraction of 4 lanes
+for per-lane PHY mode, but for legacy PHY mode, PHY represents a single
+component managing 4 lanes together. So no matter how many lanes are
+used, we couldn't call phy_power_off for legacy PHY mode until we really
+want to power off the PHY. That is  why we need to recontruct the pcie
+and phy driver to migrate to per-lane PHY mode as we could treat each
+lane as a phy object and let phy driver do idling work in the
+phy_power_off callback instead of power-off work if ref count isn't
+decreased to zero.
 
-"wakeup" is also fine I suppose, as long as we document that it must be
-PCIe WAKE# signal, as per the PCIe specfication.
+Also I think the key point here is that for legacy PHY mode, only
+phys[0] is vaild, so there is no difference if we call phy_power_off for
+phys[1..3] as you did, because PHY API will check the phy object and
+won't do anything if seeing invalid/NULL phy object. So changing 
+lanes_map from 0x1 to 0xf is only silent the "idling lane x" log.
 
-Brian
+
+> 
+> 
+> 
