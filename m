@@ -1,92 +1,80 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v5 0/10] Some cleanup and bug fix for pcie-rockchip
-Date: Tue, 29 Aug 2017 13:25:10 -0500
-Message-ID: <20170829182510.GA2304@bhelgaas-glaptop.roam.corp.google.com>
-References: <1503471673-69478-1-git-send-email-shawn.lin@rock-chips.com>
- <20170825213838.GB8154@bhelgaas-glaptop.roam.corp.google.com>
- <c6e1a387-ee7b-1694-31d6-1b2f553e3d0f@rock-chips.com>
- <20170828183339.GI8154@bhelgaas-glaptop.roam.corp.google.com>
- <6067d630-3434-c009-89be-c4688bc1e7c3@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: Update description of
+	rockchip, codec" to the asoc tree
+Date: Tue, 29 Aug 2017 20:25:47 +0100 (BST)
+Message-ID: <20170829192547.A15614400E7@finisterre.ee.mobilebroadband>
+References: <20170822153555.20735-9-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <6067d630-3434-c009-89be-c4688bc1e7c3@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170822153555.20735-9-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>, alsa-devel@alsa-project.org, heiko@sntech.de, devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, dgreid@chromium.org, mka@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 29, 2017 at 08:47:28AM +0800, Shawn Lin wrote:
-> Hi Bjorn,
-> 
-> On 2017/8/29 2:33, Bjorn Helgaas wrote:
-> >On Mon, Aug 28, 2017 at 10:22:24AM +0800, Shawn Lin wrote:
-> >>Hi Bjorn,
-> >>
-> >>On 2017/8/26 5:38, Bjorn Helgaas wrote:
-> >>>On Wed, Aug 23, 2017 at 03:01:13PM +0800, Shawn Lin wrote:
-> >>>>
-> >>
-> >>...
-> >>
-> >>>
-> >>>I applied these to pci/host-rockchip except for these:
-> >>>
-> >>>   PCI: rockchip: fix system hang up if activating CONFIG_DEBUG_SHIRQ
-> >>>   PCI: rockchip: fix missing phy manipulation for legacy phy
-> >>>
-> >>>I'm not really happy with the devm/clk_prepare_enable situation, so
-> >>>I'm waiting to see if a better solution emerges.
-> >>>
-> >>>I went ahead and applied the tweaks I proposed to the earlier "PCI:
-> >>>rockchip: Add per-lane PHY support" and "PCI: rockchip: Idle inactive
-> >>>PHY(s)" patches.  I *think* those make the "fix missing phy
-> >>>manipulation for legacy phy" patch unnecessary.
-> >>>
-> >>>But please take a look and make sure.  If I went the wrong direction,
-> >>>I'll gladly back it out.
-> >>
-> >>I tested both of legacy and per-lane PHY mode, and it works fine.
-> >>
-> >>But just a nit:
-> >>
-> >>with legacy PHY, we could avoid to print the following message
-> >>which is confusing as for legacy PHY mode, we couldn't idle
-> >>any inactive lanes.
-> >>
-> >>[    0.655192] rockchip-pcie f8000000.pcie: idling lane 1
-> >>[    0.655696] rockchip-pcie f8000000.pcie: idling lane 2
-> >>[    0.656194] rockchip-pcie f8000000.pcie: idling lane 3
-> >>
-> >>So I think we could return 0xf for legacy PHY mode like this:
-> >>
-> >>static u8 rockchip_pcie_lane_map(struct rockchip_pcie *rockchip)
-> >>         u8 map;
-> >>
-> >>         if (rockchip->legacy_phy)
-> >>-               return BIT(0);
-> >>+               return GENMASK(MAX_LANE_NUM - 1, 0);
-> >
-> >When we're using legacy PHY mode, this changes lanes_map from 0x1 to
-> >0xf.  That means we won't print the "idling lane 1" message.  It
-> >*also* means we won't call phy_power_off() for lanes 1-3.  Is that the
-> >correct behavior?  Does the legacy PHY mode actually use all 4 PHYs?
-> 
-> Yes, it's the correct behaviour. The 4 PHYs is abstraction of 4 lanes
-> for per-lane PHY mode, but for legacy PHY mode, PHY represents a single
-> component managing 4 lanes together. So no matter how many lanes are
-> used, we couldn't call phy_power_off for legacy PHY mode until we really
-> want to power off the PHY. That is  why we need to recontruct the pcie
-> and phy driver to migrate to per-lane PHY mode as we could treat each
-> lane as a phy object and let phy driver do idling work in the
-> phy_power_off callback instead of power-off work if ref count isn't
-> decreased to zero.
-> 
-> Also I think the key point here is that for legacy PHY mode, only
-> phys[0] is vaild, so there is no difference if we call phy_power_off for
-> phys[1..3] as you did, because PHY API will check the phy object and
-> won't do anything if seeing invalid/NULL phy object. So changing
-> lanes_map from 0x1 to 0xf is only silent the "idling lane x" log.
+The patch
 
-OK, I folded in the GENMASK update above.
+   ASoC: rockchip: Update description of rockchip, codec
+
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From aa71fba41b6fdcfe7d7772b057b76177304775dd Mon Sep 17 00:00:00 2001
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Date: Thu, 24 Aug 2017 12:52:27 +0800
+Subject: [PATCH] ASoC: rockchip: Update description of rockchip, codec
+
+Update description for newly added optional audio codecs.
+
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+index eac91db07178..72d3cf4c2606 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+@@ -4,7 +4,7 @@ Required properties:
+ - compatible: "rockchip,rk3399-gru-sound"
+ - rockchip,cpu: The phandle of the Rockchip I2S controller that's
+   connected to the codecs
+-- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
++- rockchip,codec: The phandle of the audio codecs
+ 
+ Optional properties:
+ - dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
+-- 
+2.13.2
