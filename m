@@ -1,74 +1,35 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: constify snd_soc_ops structures" to the asoc tree
-Date: Wed, 30 Aug 2017 16:22:44 +0100
-Message-ID: <E1dn4pI-0003SU-7O@debutante>
-References: <20170830095814.2030-1-jeffy.chen@rock-chips.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [RESENT PATCH v7 3/7] arm64: dts: rockchip: Update rt5514 devices'
+ compatible for Gru
+Date: Thu, 31 Aug 2017 01:00:44 +0800
+Message-ID: <59A6EF3C.5090308@rock-chips.com>
+References: <20170824045227.15504-1-jeffy.chen@rock-chips.com> <20170824045227.15504-4-jeffy.chen@rock-chips.com> <1649093.IvC24TsujL@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170830095814.2030-1-jeffy.chen@rock-chips.com>
+In-Reply-To: <1649093.IvC24TsujL@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.orgbroonie@kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Hi Heiko,
 
-   ASoC: rockchip: constify snd_soc_ops structures
+thanks for your reply.
 
-has been applied to the asoc tree at
+On 08/30/2017 09:30 PM, Heiko Stübner wrote:
+>> >-		compatible = "realtek,rt5514";
+>> >+		compatible = "realtek,rt5514", "realtek,rt5514-i2c";
+> the rt5514-i2c and -spi compatibles should be documented in the binding-txt
+> of the chip, but I haven't found any mention of this.
+>
+>
+> Heiko
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+these compatibles are only used for our snd driver to detect rt5514 i2c 
+driver and rt5514 spi driver, suggested by Matthias at 
+https://patchwork.kernel.org/patch/9904731/
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 1fe165b7e9c3e1b1cfa98310979db0814c7445ea Mon Sep 17 00:00:00 2001
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Date: Wed, 30 Aug 2017 17:58:14 +0800
-Subject: [PATCH] ASoC: rockchip: constify snd_soc_ops structures
-
-Add const to dp/dmic snd_soc_ops.
-
-Fixes: 626d84db64d7 (ASoC: rockchip: Add support for DMIC codec)
-Fixes: 3313faf1053e (ASoC: rockchip: Add support for DP codec)
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rk3399_gru_sound.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 5ab25962cabd..0513fe480353 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -301,11 +301,11 @@ static const struct snd_soc_ops rockchip_sound_da7219_ops = {
- 	.hw_params = rockchip_sound_da7219_hw_params,
- };
- 
--static struct snd_soc_ops rockchip_sound_cdndp_ops = {
-+static const struct snd_soc_ops rockchip_sound_cdndp_ops = {
- 	.hw_params = rockchip_sound_cdndp_hw_params,
- };
- 
--static struct snd_soc_ops rockchip_sound_dmic_ops = {
-+static const struct snd_soc_ops rockchip_sound_dmic_ops = {
- 	.hw_params = rockchip_sound_dmic_hw_params,
- };
- 
--- 
-2.14.1
+should i add it in the rockchip,rk3399-gru-sound.txt or rt5514 binding 
+document?
