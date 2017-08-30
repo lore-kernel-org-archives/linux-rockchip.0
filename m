@@ -1,43 +1,40 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [PATCH] arm64: defconfig: enable rockchip graphics
-Date: Tue, 29 Aug 2017 22:24:48 -0700
-Message-ID: <20170830052448.GF14499@localhost>
-References: <20170824150210.10949-1-heiko@sntech.de>
- <599F863D.5020208@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <599F863D.5020208-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] ASoC: rockchip: constify snd_soc_ops structures
+Date: Wed, 30 Aug 2017 17:58:14 +0800
+Message-ID: <20170830095814.2030-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, broonie@kernel.org
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Aug 25, 2017 at 10:06:53AM +0800, Mark yao wrote:
-> On 2017???08???24??? 23:02, Heiko Stuebner wrote:
-> >Enable the graphics-related options needed by Rockchip boards.
-> >This includes the pwm-backlight which will be needed by the internal
-> >displays used on Gru Chrome-devices.
-> >
-> >Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> >---
-> Hi Heiko
-> 
-> Thanks for the patch, and it looks good for me.
-> 
-> Reviewed-by: Mark Yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Add const to dp/dmic snd_soc_ops.
 
-THat's not the right format for tags, but applied with it fixed up.
+Fixes: 626d84db64d7 (ASoC: rockchip: Add support for DMIC codec)
+Fixes: 3313faf1053e (ASoC: rockchip: Add support for DP codec)
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
+ sound/soc/rockchip/rk3399_gru_sound.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
--Olof
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 5ab25962cabd..0513fe480353 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -301,11 +301,11 @@ static const struct snd_soc_ops rockchip_sound_da7219_ops = {
+ 	.hw_params = rockchip_sound_da7219_hw_params,
+ };
+ 
+-static struct snd_soc_ops rockchip_sound_cdndp_ops = {
++static const struct snd_soc_ops rockchip_sound_cdndp_ops = {
+ 	.hw_params = rockchip_sound_cdndp_hw_params,
+ };
+ 
+-static struct snd_soc_ops rockchip_sound_dmic_ops = {
++static const struct snd_soc_ops rockchip_sound_dmic_ops = {
+ 	.hw_params = rockchip_sound_dmic_hw_params,
+ };
+ 
+-- 
+2.11.0
