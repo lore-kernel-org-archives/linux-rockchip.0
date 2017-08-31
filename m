@@ -1,35 +1,26 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [RESENT PATCH v7 3/7] arm64: dts: rockchip: Update rt5514 devices'
- compatible for Gru
-Date: Thu, 31 Aug 2017 01:00:44 +0800
-Message-ID: <59A6EF3C.5090308@rock-chips.com>
-References: <20170824045227.15504-1-jeffy.chen@rock-chips.com> <20170824045227.15504-4-jeffy.chen@rock-chips.com> <1649093.IvC24TsujL@diego>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2] pinctrl: rockchip: Add rv1108 recalculated iomux support
+Date: Thu, 31 Aug 2017 15:26:28 +0200
+Message-ID: <CACRpkdY+U49Ls6ZFVbk6j2i8HASUAKnb5zDV0oyUyosphWJ4iw@mail.gmail.com>
+References: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1649093.IvC24TsujL@diego>
+In-Reply-To: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>Rob Herring <robh+dt@kernel.org>
+To: David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tao Huang <huangtao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Wed, Aug 23, 2017 at 10:00 AM, David Wu <david.wu@rock-chips.com> wrote:
 
-thanks for your reply.
-
-On 08/30/2017 09:30 PM, Heiko Stübner wrote:
->> >-		compatible = "realtek,rt5514";
->> >+		compatible = "realtek,rt5514", "realtek,rt5514-i2c";
-> the rt5514-i2c and -spi compatibles should be documented in the binding-txt
-> of the chip, but I haven't found any mention of this.
+> The pins from GPIO1A0 to GPIO1B1 are special, need to recalculate
+> iomux. And the register offset is larger than the u8 range, so changed
+> to u32.
 >
->
-> Heiko
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
 
-these compatibles are only used for our snd driver to detect rt5514 i2c 
-driver and rt5514 spi driver, suggested by Matthias at 
-https://patchwork.kernel.org/patch/9904731/
+Patch applied with Heiko's review tag.
 
-should i add it in the rockchip,rk3399-gru-sound.txt or rt5514 binding 
-document?
+Yours,
+Linus Walleij
