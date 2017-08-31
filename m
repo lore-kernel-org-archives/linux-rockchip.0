@@ -1,26 +1,26 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v2] pinctrl: rockchip: Add rv1108 recalculated iomux support
-Date: Thu, 31 Aug 2017 15:26:28 +0200
-Message-ID: <CACRpkdY+U49Ls6ZFVbk6j2i8HASUAKnb5zDV0oyUyosphWJ4iw@mail.gmail.com>
-References: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/5] dt-bindings: rockchip-thermal: Support the RV1108
+ SoC compatible
+Date: Thu, 31 Aug 2017 12:57:50 -0500
+Message-ID: <20170831175750.ypsnrktdet3uarr7@rob-hp-laptop>
+References: <1503570475-7850-1-git-send-email-rocky.hao@rock-chips.com>
+ <1503570475-7850-2-git-send-email-rocky.hao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1503475207-30288-1-git-send-email-david.wu@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <1503570475-7850-2-git-send-email-rocky.hao@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tao Huang <huangtao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Rocky Hao <rocky.hao@rock-chips.com>
+Cc: rui.zhang@intel.com, edubezval@gmail.com, heiko@sntech.de, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 23, 2017 at 10:00 AM, David Wu <david.wu@rock-chips.com> wrote:
+On Thu, Aug 24, 2017 at 06:27:51PM +0800, Rocky Hao wrote:
+> Add a new compatible for thermal founding on RV1108 SoCs.
+> 
+> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-> The pins from GPIO1A0 to GPIO1B1 are special, need to recalculate
-> iomux. And the register offset is larger than the u8 range, so changed
-> to u32.
->
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-
-Patch applied with Heiko's review tag.
-
-Yours,
-Linus Walleij
+Acked-by: Rob Herring <robh@kernel.org>
