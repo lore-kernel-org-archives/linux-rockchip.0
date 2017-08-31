@@ -1,39 +1,43 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: Add rk3288 vyasa board
-Date: Thu, 31 Aug 2017 16:04:21 -0500
-Message-ID: <20170831210421.l2zmpexisagoxdks@rob-hp-laptop>
-References: <1503742164-3926-1-git-send-email-jteki@openedev.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] of: Add vendor prefix for Amarula Solutions
+Date: Thu, 31 Aug 2017 23:54:03 +0200
+Message-ID: <1633009.GLYYEVNxi7@phil>
+References: <1503730303-11422-1-git-send-email-jteki@openedev.com> <20170831200855.db654hikvddf7prz@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1503742164-3926-1-git-send-email-jteki@openedev.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagannadh.teki@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170831200855.db654hikvddf7prz@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Jagan Teki <jagannadh.teki-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Aug 26, 2017 at 03:39:24PM +0530, Jagan Teki wrote:
-> From: Jagan Teki <jagan@amarulasolutions.com>
-> 
-> This patch adds initial support for rk3288 based
-> Vyasa board, which is made by Amarula Solutions.
-> 
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> ---
-> Changes for v2:
-> - Added entry in Documentation/devicetree/bindings/arm/rockchip.txt
-> 
->  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
->  arch/arm/boot/dts/Makefile                         |   3 +-
->  arch/arm/boot/dts/rk3288-vyasa.dts                 | 312 +++++++++++++++++++++
->  3 files changed, 318 insertions(+), 1 deletion(-)
->  create mode 100644 arch/arm/boot/dts/rk3288-vyasa.dts
+Hi Rob,
 
-Acked-by: Rob Herring <robh@kernel.org>
+Am Donnerstag, 31. August 2017, 15:08:55 CEST schrieb Rob Herring:
+> On Sat, Aug 26, 2017 at 12:21:42PM +0530, Jagan Teki wrote:
+> > From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > 
+> > Added 'amarula' as a vendor prefix for Amarula Solutions,
+> > specialist in Embedded and Opensource solutions.
+> > 
+> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > ---
+> >  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+> >  1 file changed, 1 insertion(+)
+> 
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-I assume the regulator node names are consistent with other platforms, 
-but at some point please fix them to be lowercase and not use '_'. IOW, 
-build the dtbs with "W=2" and fix the warnings.
+just to clarify ... you did apply the last vendor-prefixes yourself
+to prevent conflicts. From the Ack, I assume I should merge that
+with the devicetree itself, right?
 
-Rob
+I'm fine with it either way.
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
