@@ -1,39 +1,30 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] of: Add vendor prefix for Amarula Solutions
-Date: Fri, 1 Sep 2017 07:23:38 -0500
-Message-ID: <CAL_Jsq+4cnY_4O_QVdkF=ZL8Ty1k_2cTBhb7uoVVxwM8QkcLUQ@mail.gmail.com>
-References: <1503730303-11422-1-git-send-email-jteki@openedev.com>
- <20170831200855.db654hikvddf7prz@rob-hp-laptop> <1633009.GLYYEVNxi7@phil>
+Subject: Re: [PATCH 3/4] nvmem: rockchip: add support for RK3368
+Date: Fri, 1 Sep 2017 09:32:58 -0500
+Message-ID: <20170901143258.ccto72dhc5hd34ou@rob-hp-laptop>
+References: <20170828121604.15968-1-romain.perier@collabora.com>
+ <20170828121604.15968-4-romain.perier@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1633009.GLYYEVNxi7@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jagan Teki <jagannadh.teki@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170828121604.15968-4-romain.perier@collabora.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Romain Perier <romain.perier@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 31, 2017 at 4:54 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Hi Rob,
->
-> Am Donnerstag, 31. August 2017, 15:08:55 CEST schrieb Rob Herring:
->> On Sat, Aug 26, 2017 at 12:21:42PM +0530, Jagan Teki wrote:
->> > From: Jagan Teki <jagan@amarulasolutions.com>
->> >
->> > Added 'amarula' as a vendor prefix for Amarula Solutions,
->> > specialist in Embedded and Opensource solutions.
->> >
->> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
->> > ---
->> >  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
->> >  1 file changed, 1 insertion(+)
->>
->> Acked-by: Rob Herring <robh@kernel.org>
->
-> just to clarify ... you did apply the last vendor-prefixes yourself
-> to prevent conflicts. From the Ack, I assume I should merge that
-> with the devicetree itself, right?
+On Mon, Aug 28, 2017 at 02:16:03PM +0200, Romain Perier wrote:
+> This adds the necessary functions and data for handling support on RK3368
+> SoCs.
+> 
+> Signed-off-by: Romain Perier <romain.perier@collabora.com>
+> ---
+>  .../devicetree/bindings/nvmem/rockchip-efuse.txt   |  1 +
 
-I have not applied. You can apply it.
+For the binding only:
 
-Rob
+Acked-by: Rob Herring <robh@kernel.org>
+
+>  drivers/nvmem/rockchip-efuse.c                     | 80 ++++++++++++++++++++++
+>  2 files changed, 81 insertions(+)
