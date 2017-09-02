@@ -1,54 +1,50 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: Add rk3288 vyasa board
-Date: Fri, 01 Sep 2017 19:20:28 +0200
-Message-ID: <3424135.KE5FrDYz9C@phil>
-References: <1503742164-3926-1-git-send-email-jteki@openedev.com> <20170831210421.l2zmpexisagoxdks@rob-hp-laptop> <CAD6G_RSR35sX2x8xpdht0XUbnjeEBML9bxwCqtHYC7oM5fazEA@mail.gmail.com>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: [PATCH v8 0/3] Add support Rockchip Soc LVDS
+Date: Sat,  2 Sep 2017 19:28:43 +0800
+Message-ID: <1504351723-135876-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD6G_RSR35sX2x8xpdht0XUbnjeEBML9bxwCqtHYC7oM5fazEA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jagan Teki <jagannadh.teki-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@armlinux.org.uk>
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 1. September 2017, 22:36:08 CEST schrieb Jagan Teki:
-> On Fri, Sep 1, 2017 at 2:34 AM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> > On Sat, Aug 26, 2017 at 03:39:24PM +0530, Jagan Teki wrote:
-> >> From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> >>
-> >> This patch adds initial support for rk3288 based
-> >> Vyasa board, which is made by Amarula Solutions.
-> >>
-> >> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> >> ---
-> >> Changes for v2:
-> >> - Added entry in Documentation/devicetree/bindings/arm/rockchip.txt
-> >>
-> >>  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
-> >>  arch/arm/boot/dts/Makefile                         |   3 +-
-> >>  arch/arm/boot/dts/rk3288-vyasa.dts                 | 312 +++++++++++++++++++++
-> >>  3 files changed, 318 insertions(+), 1 deletion(-)
-> >>  create mode 100644 arch/arm/boot/dts/rk3288-vyasa.dts
-> >
-> > Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> >
-> > I assume the regulator node names are consistent with other platforms,
-> > but at some point please fix them to be lowercase and not use '_'. IOW,
-> > build the dtbs with "W=2" and fix the warnings.
-> 
-> Out-off these [1], only /i2c@ff650000 and  /memory are related to this
-> dts and these are consistent across rk3288 dts node name, so there is
-> nothing that I can fix here. If not please let me know if you find
-> any.
-
-And the regulator node-names are actually part of the rk808 binding,
-so should also stay that way.
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+dGhpcyBwYXRjaGVzIGFkZCBzdXBwb3J0IFJvY2tjaGlwIFJLMzI4OCBMVkRTIHN1cHBvcnQsIGJh
+c2VkIG9uIHBhdGNoZXMgZnJvbQpNYXJrIHlhb1swXSBhbmQgSGVpa28gU3R1ZWJuZXJbMV0uCgpb
+MF06IGh0dHBzOi8vZ2l0aHViLmNvbS9Sb2NrY2hpcE9wZW5zb3VyY2VDb21tdW5pdHkvcG9wbWV0
+YWwta2VybmVsLTMuMTQKWzFdOiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9waXBlcm1haWwv
+bGludXgtcm9ja2NoaXAvMjAxNS1BcHJpbC8wMDI4MzAuaHRtbAoKQ2hhbmdlczoKLSBVcGRhdGUg
+cm9ja2NoaXBfbHZkc19lbmNvZGVyX2hlbHBlcl9mdW5jcyB0byBhdG9taWMgQVBJCi0gQWRkIGJy
+aWRnZSBmdW5jdGlvbiBmb3IgUkdCL0xWRFMgY29udmVydCB0byBvdGhlciBvdXRwdXQgdHlwZQot
+IEZpeCBzb21lIHVucmVhc29uYWJsZSBkZWZpbmUKLSBBZGFwdGVyIHRvIHRoZSBsYXRlc3Qgcm9j
+a2NoaXAgRFJNIGRyaXZlciBmcmFtZXdvcmsKLSBBZGQgcGluY3RybCBmb3IgUkdCIG91dHB1dCB0
+eXBlCi0gUmVzZXZlZCBzb21lIGRlZmluZSBmb3Igcm9ja2NoaXAgbmV4dCBTb2MKClNhbmR5IEh1
+YW5nICgzKToKICBkdC1iaW5kaW5nczogZGlzcGxheTogQWRkIERvY3VtZW50IGZvciBSb2NrY2hp
+cCBTb2MgTFZEUwogIEFSTTogZHRzOiBBZGQgTFZEUyBpbmZvIGZvciByazMyODgKICBkcm0vcm9j
+a2NoaXA6IEFkZCBzdXBwb3J0IGZvciBSb2NrY2hpcCBTb2MgTFZEUwoKIC4uLi9iaW5kaW5ncy9k
+aXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLWx2ZHMudHh0ICAgIHwgIDk5ICsrKysKIGFyY2gvYXJt
+L2Jvb3QvZHRzL3JrMzI4OC5kdHNpICAgICAgICAgICAgICAgICAgICAgIHwgIDUyICsrCiBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgICB8ICAgOCArCiBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICB8ICAgMSAr
+CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jICAgICAgICB8ICAg
+MiArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8
+ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jICAgICAgICAg
+ICB8IDU4MiArKysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9sdmRzLmggICAgICAgICAgIHwgMTE0ICsrKysKIDggZmlsZXMgY2hhbmdlZCwgODU5
+IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC1sdmRzLnR4dAogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5oCgot
+LSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
