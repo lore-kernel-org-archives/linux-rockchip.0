@@ -1,48 +1,53 @@
-From: Jagan Teki <jagannadh.teki@gmail.com>
-Subject: rk3288: Enable HDMI hang boot and no Linux log
-Date: Mon, 4 Sep 2017 18:14:56 +0530
-Message-ID: <CAD6G_RQqVJbPHosWV1YUf86-pK1YzvEYzy4=WG948iiXqbZw-w@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: rk3288: Enable HDMI hang boot and no Linux log
+Date: Mon, 04 Sep 2017 15:34:25 +0200
+Message-ID: <2008140.oetUxFhdGh@diego>
+References: <CAD6G_RQqVJbPHosWV1YUf86-pK1YzvEYzy4=WG948iiXqbZw-w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAD6G_RQqVJbPHosWV1YUf86-pK1YzvEYzy4=WG948iiXqbZw-w@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jagan Teki <jagannadh.teki@gmail.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Is linux-next support HDMI on rk3288? I'm trying to enable hdmi (with
-ddc-i2c-bus) statically along with Linux boot logo. Observed an kernel
-boot hang, didn't find whats wrong because DWC MHL PHY as detected
-from the log.
-
-Here is the full log[1] please let me know if I miss any?
-
-Log:
------
-[    1.983832] rockchip-drm display-subsystem: bound ff930000.vop (ops
-0xc0f53418)
-[    1.992170] rockchip-drm display-subsystem: bound ff940000.vop (ops
-0xc0f53418)
-[    2.000416] dwhdmi-rockchip ff980000.hdmi: Detected HDMI TX
-controller v2.00a with HDCP (DWC MHL PHY)
-[    2.011210] rockchip-drm display-subsystem: bound ff980000.hdmi
-(ops 0xc0f551f4)
-[    2.019490] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
-[    2.026888] [drm] No driver support for vblank timestamp query.
-[    2.033516] [drm] Cannot find any crtc or sizes
-[    2.038731] [drm] Initialized rockchip 1.0.0 20140818 for
-display-subsystem on minor 0
-[    2.047818] hctosys: unable to open rtc device (rtc0)
-[    2.053958]  mmcblk0: p1
-[    2.057009] ttyS2 - failed to request DMA
-
-[1] https://paste.ubuntu.com/25464674/
-
-thanks!
--- 
-Jagan Teki
-Free Software Engineer | www.openedev.com
-U-Boot, Linux | Upstream Maintainer
-Hyderabad, India.
+SGksCgpBbSBNb250YWcsIDQuIFNlcHRlbWJlciAyMDE3LCAxODoxNDo1NiBDRVNUIHNjaHJpZWIg
+SmFnYW4gVGVraToKPiBJcyBsaW51eC1uZXh0IHN1cHBvcnQgSERNSSBvbiByazMyODg/IEknbSB0
+cnlpbmcgdG8gZW5hYmxlIGhkbWkgKHdpdGgKPiBkZGMtaTJjLWJ1cykgc3RhdGljYWxseSBhbG9u
+ZyB3aXRoIExpbnV4IGJvb3QgbG9nby4gT2JzZXJ2ZWQgYW4ga2VybmVsCj4gYm9vdCBoYW5nLCBk
+aWRuJ3QgZmluZCB3aGF0cyB3cm9uZyBiZWNhdXNlIERXQyBNSEwgUEhZIGFzIGRldGVjdGVkCj4g
+ZnJvbSB0aGUgbG9nLgoKRldJVyBqdXN0IGNoZWNrZWQgc29tZXRoaW5nIGJhc2VkIG9uIDQuMTMt
+cmM3IG9uIGEgcmszMjg4LWZpcmVmbHkgYW5kIGhkbWkKaXMgd29ya2luZyBuaWNlbHkgLSBhcyBl
+eHBlY3RlZC4KCkFsc28geW91ciBrZXJuZWwgc2VlbXMgdG8gc3RvcCBhdCB0aGUgc3RhZ2Ugd2hl
+cmUgaXQgaGFuZHMgb3ZlciB0byB0aGUgcm9vdGZzLCAKc28gSSdkIGd1ZXNzIHlvdXIgaXNzdWUg
+bWlnaHQgYmUgZm91bmQgaW4gdGhhdCBhcmVhLiBUaGUgaGRtaSBsb29rcyBpbm5vY2VudCAKcmVn
+YXJkaW5nIHlvdXIgaXNzdWUuCgoKSGVpa28KCgo+IEhlcmUgaXMgdGhlIGZ1bGwgbG9nWzFdIHBs
+ZWFzZSBsZXQgbWUga25vdyBpZiBJIG1pc3MgYW55Pwo+IAo+IExvZzoKPiAtLS0tLQo+IFsgICAg
+MS45ODM4MzJdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY5MzAwMDAu
+dm9wIChvcHMKPiAweGMwZjUzNDE4KQo+IFsgICAgMS45OTIxNzBdIHJvY2tjaGlwLWRybSBkaXNw
+bGF5LXN1YnN5c3RlbTogYm91bmQgZmY5NDAwMDAudm9wIChvcHMKPiAweGMwZjUzNDE4KQo+IFsg
+ICAgMi4wMDA0MTZdIGR3aGRtaS1yb2NrY2hpcCBmZjk4MDAwMC5oZG1pOiBEZXRlY3RlZCBIRE1J
+IFRYCj4gY29udHJvbGxlciB2Mi4wMGEgd2l0aCBIRENQIChEV0MgTUhMIFBIWSkKPiBbICAgIDIu
+MDExMjEwXSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmOTgwMDAwLmhk
+bWkKPiAob3BzIDB4YzBmNTUxZjQpCj4gWyAgICAyLjAxOTQ5MF0gW2RybV0gU3VwcG9ydHMgdmJs
+YW5rIHRpbWVzdGFtcCBjYWNoaW5nIFJldiAyICgyMS4xMC4yMDEzKS4KPiBbICAgIDIuMDI2ODg4
+XSBbZHJtXSBObyBkcml2ZXIgc3VwcG9ydCBmb3IgdmJsYW5rIHRpbWVzdGFtcCBxdWVyeS4KPiBb
+ICAgIDIuMDMzNTE2XSBbZHJtXSBDYW5ub3QgZmluZCBhbnkgY3J0YyBvciBzaXplcwo+IFsgICAg
+Mi4wMzg3MzFdIFtkcm1dIEluaXRpYWxpemVkIHJvY2tjaGlwIDEuMC4wIDIwMTQwODE4IGZvcgo+
+IGRpc3BsYXktc3Vic3lzdGVtIG9uIG1pbm9yIDAKPiBbICAgIDIuMDQ3ODE4XSBoY3Rvc3lzOiB1
+bmFibGUgdG8gb3BlbiBydGMgZGV2aWNlIChydGMwKQo+IFsgICAgMi4wNTM5NThdICBtbWNibGsw
+OiBwMQo+IFsgICAgMi4wNTcwMDldIHR0eVMyIC0gZmFpbGVkIHRvIHJlcXVlc3QgRE1BCj4gCj4g
+WzFdIGh0dHBzOi8vcGFzdGUudWJ1bnR1LmNvbS8yNTQ2NDY3NC8KPiAKPiB0aGFua3MhCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
