@@ -1,109 +1,43 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH v8 2/3] ARM: dts: Add LVDS info for rk3288
-Date: Sat,  2 Sep 2017 19:28:52 +0800
-Message-ID: <1504351732-135989-1-git-send-email-hjc@rock-chips.com>
-References: <1504351723-135876-1-git-send-email-hjc@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1504351723-135876-1-git-send-email-hjc@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>
-Cc: Sandy Huang <hjc@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2 0/4] rockchip: Add efuse support for RK3368 SoCs
+Date: Mon,  4 Sep 2017 10:51:15 +0200
+Message-ID: <20170904085119.25981-1-romain.perier@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-add LVDS info in rk3288.dtsi for LVDS driver
-This based on the patches from Mark yao and Heiko Stuebner.
+This set of patches exports the right clocks, add required functions
+and data, and definition for enabling and supporting eFuse on RK3368
+SoCs.
 
-Signed-off-by: Mark yao <mark.yao@rock-chips.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sandy Huang <hjc@rock-chips.com>
----
-Change the Signed-off order
+Note: On my geekbox rk3368, I was unable to flash a working upstream ATF
+or upstream uboot (missing support for LPDDR3 init and timping). I cannot
+test the driver without the secure mode for this efuse on my hardware.So
+I am asking for testing. I think that it should work like on rk3288
 
- arch/arm/boot/dts/rk3288.dtsi | 52 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+Changes in v2:
+- Removed ARM SMC calls for efuse, we need to do as upstream ATF and
+  uboot mainline do, so no secure-regs for efuse
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 858e1fed..b82c31a 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -983,6 +983,11 @@
- 				reg = <2>;
- 				remote-endpoint = <&mipi_in_vopb>;
- 			};
-+
-+			vopb_out_lvds: endpoint@3 {
-+				reg = <3>;
-+				remote-endpoint = <&lvds_in_vopb>;
-+			};
- 		};
- 	};
- 
-@@ -1026,6 +1031,11 @@
- 				reg = <2>;
- 				remote-endpoint = <&mipi_in_vopl>;
- 			};
-+
-+			vopl_out_lvds: endpoint@3 {
-+				reg = <3>;
-+				remote-endpoint = <&lvds_in_vopl>;
-+			};
- 		};
- 	};
- 
-@@ -1099,6 +1109,39 @@
- 		};
- 	};
- 
-+	lvds: lvds@ff96c000 {
-+		compatible = "rockchip,rk3288-lvds";
-+		reg = <0xff96c000 0x4000>;
-+		clocks = <&cru PCLK_LVDS_PHY>;
-+		clock-names = "pclk_lvds";
-+		pinctrl-names = "lcdc";
-+		pinctrl-0 = <&lcdc_ctl>;
-+		power-domains = <&power RK3288_PD_VIO>;
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			lvds_in: port@0 {
-+				reg = <0>;
-+
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				lvds_in_vopb: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vopb_out_lvds>;
-+				};
-+				lvds_in_vopl: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&vopl_out_lvds>;
-+				};
-+			};
-+		};
-+	};
-+
- 	hdmi: hdmi@ff980000 {
- 		compatible = "rockchip,rk3288-dw-hdmi";
- 		reg = <0xff980000 0x20000>;
-@@ -1823,5 +1866,14 @@
- 				rockchip,pins = <RK_GPIO6 11 RK_FUNC_1 &pcfg_pull_none>;
- 			};
- 		};
-+
-+		lcdc {
-+			lcdc_ctl: lcdc-ctl {
-+				rockchip,pins = <1 24 RK_FUNC_1 &pcfg_pull_none>,
-+						<1 25 RK_FUNC_1 &pcfg_pull_none>,
-+						<1 26 RK_FUNC_1 &pcfg_pull_none>,
-+						<1 27 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
- 	};
- };
+Romain Perier (4):
+  clk: rockchip: add clock id for PCLK_EFUSE256 of RK3368 SoCs
+  clk: rockchip: export clock pclk_efuse_256 for RK3368 SoCs
+  nvmem: rockchip: add support for RK3368
+  arm64: dts: rockchip: add efuse for RK3368 SoCs
+
+ Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt |  1 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi                   | 14 ++++++++++++++
+ drivers/clk/rockchip/clk-rk3368.c                          |  2 +-
+ drivers/nvmem/rockchip-efuse.c                             |  4 ++++
+ include/dt-bindings/clock/rk3368-cru.h                     |  1 +
+ 5 files changed, 21 insertions(+), 1 deletion(-)
+
 -- 
-2.7.4
+2.11.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
