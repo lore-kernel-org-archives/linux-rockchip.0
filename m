@@ -1,53 +1,44 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: rk3288: Enable HDMI hang boot and no Linux log
-Date: Mon, 04 Sep 2017 15:34:25 +0200
-Message-ID: <2008140.oetUxFhdGh@diego>
-References: <CAD6G_RQqVJbPHosWV1YUf86-pK1YzvEYzy4=WG948iiXqbZw-w@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [RESENT PATCH v7 3/7] arm64: dts: rockchip: Update rt5514 devices' compatible for Gru
+Date: Tue, 05 Sep 2017 00:33:47 +0200
+Message-ID: <3717071.LIWpZa6hqd@diego>
+References: <20170824045227.15504-1-jeffy.chen@rock-chips.com> <1649093.IvC24TsujL@diego> <59A6EF3C.5090308@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAD6G_RQqVJbPHosWV1YUf86-pK1YzvEYzy4=WG948iiXqbZw-w@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jagan Teki <jagannadh.teki@gmail.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <59A6EF3C.5090308-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpBbSBNb250YWcsIDQuIFNlcHRlbWJlciAyMDE3LCAxODoxNDo1NiBDRVNUIHNjaHJpZWIg
-SmFnYW4gVGVraToKPiBJcyBsaW51eC1uZXh0IHN1cHBvcnQgSERNSSBvbiByazMyODg/IEknbSB0
-cnlpbmcgdG8gZW5hYmxlIGhkbWkgKHdpdGgKPiBkZGMtaTJjLWJ1cykgc3RhdGljYWxseSBhbG9u
-ZyB3aXRoIExpbnV4IGJvb3QgbG9nby4gT2JzZXJ2ZWQgYW4ga2VybmVsCj4gYm9vdCBoYW5nLCBk
-aWRuJ3QgZmluZCB3aGF0cyB3cm9uZyBiZWNhdXNlIERXQyBNSEwgUEhZIGFzIGRldGVjdGVkCj4g
-ZnJvbSB0aGUgbG9nLgoKRldJVyBqdXN0IGNoZWNrZWQgc29tZXRoaW5nIGJhc2VkIG9uIDQuMTMt
-cmM3IG9uIGEgcmszMjg4LWZpcmVmbHkgYW5kIGhkbWkKaXMgd29ya2luZyBuaWNlbHkgLSBhcyBl
-eHBlY3RlZC4KCkFsc28geW91ciBrZXJuZWwgc2VlbXMgdG8gc3RvcCBhdCB0aGUgc3RhZ2Ugd2hl
-cmUgaXQgaGFuZHMgb3ZlciB0byB0aGUgcm9vdGZzLCAKc28gSSdkIGd1ZXNzIHlvdXIgaXNzdWUg
-bWlnaHQgYmUgZm91bmQgaW4gdGhhdCBhcmVhLiBUaGUgaGRtaSBsb29rcyBpbm5vY2VudCAKcmVn
-YXJkaW5nIHlvdXIgaXNzdWUuCgoKSGVpa28KCgo+IEhlcmUgaXMgdGhlIGZ1bGwgbG9nWzFdIHBs
-ZWFzZSBsZXQgbWUga25vdyBpZiBJIG1pc3MgYW55Pwo+IAo+IExvZzoKPiAtLS0tLQo+IFsgICAg
-MS45ODM4MzJdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY5MzAwMDAu
-dm9wIChvcHMKPiAweGMwZjUzNDE4KQo+IFsgICAgMS45OTIxNzBdIHJvY2tjaGlwLWRybSBkaXNw
-bGF5LXN1YnN5c3RlbTogYm91bmQgZmY5NDAwMDAudm9wIChvcHMKPiAweGMwZjUzNDE4KQo+IFsg
-ICAgMi4wMDA0MTZdIGR3aGRtaS1yb2NrY2hpcCBmZjk4MDAwMC5oZG1pOiBEZXRlY3RlZCBIRE1J
-IFRYCj4gY29udHJvbGxlciB2Mi4wMGEgd2l0aCBIRENQIChEV0MgTUhMIFBIWSkKPiBbICAgIDIu
-MDExMjEwXSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmOTgwMDAwLmhk
-bWkKPiAob3BzIDB4YzBmNTUxZjQpCj4gWyAgICAyLjAxOTQ5MF0gW2RybV0gU3VwcG9ydHMgdmJs
-YW5rIHRpbWVzdGFtcCBjYWNoaW5nIFJldiAyICgyMS4xMC4yMDEzKS4KPiBbICAgIDIuMDI2ODg4
-XSBbZHJtXSBObyBkcml2ZXIgc3VwcG9ydCBmb3IgdmJsYW5rIHRpbWVzdGFtcCBxdWVyeS4KPiBb
-ICAgIDIuMDMzNTE2XSBbZHJtXSBDYW5ub3QgZmluZCBhbnkgY3J0YyBvciBzaXplcwo+IFsgICAg
-Mi4wMzg3MzFdIFtkcm1dIEluaXRpYWxpemVkIHJvY2tjaGlwIDEuMC4wIDIwMTQwODE4IGZvcgo+
-IGRpc3BsYXktc3Vic3lzdGVtIG9uIG1pbm9yIDAKPiBbICAgIDIuMDQ3ODE4XSBoY3Rvc3lzOiB1
-bmFibGUgdG8gb3BlbiBydGMgZGV2aWNlIChydGMwKQo+IFsgICAgMi4wNTM5NThdICBtbWNibGsw
-OiBwMQo+IFsgICAgMi4wNTcwMDldIHR0eVMyIC0gZmFpbGVkIHRvIHJlcXVlc3QgRE1BCj4gCj4g
-WzFdIGh0dHBzOi8vcGFzdGUudWJ1bnR1LmNvbS8yNTQ2NDY3NC8KPiAKPiB0aGFua3MhCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Donnerstag, 31. August 2017, 01:00:44 CEST schrieb jeffy:
+> On 08/30/2017 09:30 PM, Heiko Stübner wrote:
+> >> >-		compatible = "realtek,rt5514";
+> >> >+		compatible = "realtek,rt5514", "realtek,rt5514-i2c";
+> > 
+> > the rt5514-i2c and -spi compatibles should be documented in the
+> > binding-txt
+> > of the chip, but I haven't found any mention of this.
+> > 
+> > 
+> > Heiko
+> 
+> these compatibles are only used for our snd driver to detect rt5514 i2c
+> driver and rt5514 spi driver, suggested by Matthias at
+> https://patchwork.kernel.org/patch/9904731/
+> 
+> should i add it in the rockchip,rk3399-gru-sound.txt or rt5514 binding
+> document?
+
+You're introducing new bindings for the codec, so they should of course
+part of the rt5514 binding.
+
+
+Heiko
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
