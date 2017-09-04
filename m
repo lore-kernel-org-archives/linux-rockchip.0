@@ -1,55 +1,48 @@
-From: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2 3/4] nvmem: rockchip: add support for RK3368
-Date: Mon,  4 Sep 2017 10:51:18 +0200
-Message-ID: <20170904085119.25981-4-romain.perier@collabora.com>
-References: <20170904085119.25981-1-romain.perier@collabora.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170904085119.25981-1-romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Jagan Teki <jagannadh.teki@gmail.com>
+Subject: rk3288: Enable HDMI hang boot and no Linux log
+Date: Mon, 4 Sep 2017 18:14:56 +0530
+Message-ID: <CAD6G_RQqVJbPHosWV1YUf86-pK1YzvEYzy4=WG948iiXqbZw-w@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the necessary function for handling support on RK3368 SoCs
+Hi,
 
-Signed-off-by: Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt | 1 +
- drivers/nvmem/rockchip-efuse.c                             | 4 ++++
- 2 files changed, 5 insertions(+)
+Is linux-next support HDMI on rk3288? I'm trying to enable hdmi (with
+ddc-i2c-bus) statically along with Linux boot logo. Observed an kernel
+boot hang, didn't find whats wrong because DWC MHL PHY as detected
+from the log.
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-index 1ff02afdc55a..60bec4782806 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-@@ -6,6 +6,7 @@ Required properties:
-   - "rockchip,rk3188-efuse" - for RK3188 SoCs.
-   - "rockchip,rk3228-efuse" - for RK3228 SoCs.
-   - "rockchip,rk3288-efuse" - for RK3288 SoCs.
-+  - "rockchip,rk3368-efuse" - for RK3368 SoCs.
-   - "rockchip,rk3399-efuse" - for RK3399 SoCs.
- - reg: Should contain the registers location and exact eFuse size
- - clocks: Should be the clock id of eFuse
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 63e3eb55f3ac..eb4c530c2564 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -178,6 +178,10 @@ static const struct of_device_id rockchip_efuse_match[] = {
- 		.data = (void *)&rockchip_rk3288_efuse_read,
- 	},
- 	{
-+		.compatible = "rockchip,rk3368-efuse",
-+		.data = (void *)&rockchip_rk3288_efuse_read,
-+	},
-+	{
- 		.compatible = "rockchip,rk3399-efuse",
- 		.data = (void *)&rockchip_rk3399_efuse_read,
- 	},
+Here is the full log[1] please let me know if I miss any?
+
+Log:
+-----
+[    1.983832] rockchip-drm display-subsystem: bound ff930000.vop (ops
+0xc0f53418)
+[    1.992170] rockchip-drm display-subsystem: bound ff940000.vop (ops
+0xc0f53418)
+[    2.000416] dwhdmi-rockchip ff980000.hdmi: Detected HDMI TX
+controller v2.00a with HDCP (DWC MHL PHY)
+[    2.011210] rockchip-drm display-subsystem: bound ff980000.hdmi
+(ops 0xc0f551f4)
+[    2.019490] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+[    2.026888] [drm] No driver support for vblank timestamp query.
+[    2.033516] [drm] Cannot find any crtc or sizes
+[    2.038731] [drm] Initialized rockchip 1.0.0 20140818 for
+display-subsystem on minor 0
+[    2.047818] hctosys: unable to open rtc device (rtc0)
+[    2.053958]  mmcblk0: p1
+[    2.057009] ttyS2 - failed to request DMA
+
+[1] https://paste.ubuntu.com/25464674/
+
+thanks!
 -- 
-2.11.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Jagan Teki
+Free Software Engineer | www.openedev.com
+U-Boot, Linux | Upstream Maintainer
+Hyderabad, India.
