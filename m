@@ -1,44 +1,167 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RESENT PATCH v7 3/7] arm64: dts: rockchip: Update rt5514 devices' compatible for Gru
-Date: Tue, 05 Sep 2017 00:33:47 +0200
-Message-ID: <3717071.LIWpZa6hqd@diego>
-References: <20170824045227.15504-1-jeffy.chen@rock-chips.com> <1649093.IvC24TsujL@diego> <59A6EF3C.5090308@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <59A6EF3C.5090308-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] Asoc: rockchip: Init dapm routes dynamically
+Date: Tue,  5 Sep 2017 12:14:01 +0800
+Message-ID: <20170905041401.23866-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 31. August 2017, 01:00:44 CEST schrieb jeffy:
-> On 08/30/2017 09:30 PM, Heiko Stübner wrote:
-> >> >-		compatible = "realtek,rt5514";
-> >> >+		compatible = "realtek,rt5514", "realtek,rt5514-i2c";
-> > 
-> > the rt5514-i2c and -spi compatibles should be documented in the
-> > binding-txt
-> > of the chip, but I haven't found any mention of this.
-> > 
-> > 
-> > Heiko
-> 
-> these compatibles are only used for our snd driver to detect rt5514 i2c
-> driver and rt5514 spi driver, suggested by Matthias at
-> https://patchwork.kernel.org/patch/9904731/
-> 
-> should i add it in the rockchip,rk3399-gru-sound.txt or rt5514 binding
-> document?
+Currently we are using a fixed list of dapm routes.
 
-You're introducing new bindings for the codec, so they should of course
-part of the rt5514 binding.
+Init dapm routes dynamically when parsing dailinks, since we are
+supporting optional codecs.
 
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-Heiko
+ sound/soc/rockchip/rk3399_gru_sound.c | 88 +++++++++++++++++++++++++++++------
+ 1 file changed, 74 insertions(+), 14 deletions(-)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 0513fe480353..c537781f8054 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -47,18 +47,7 @@ static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
+ 	SND_SOC_DAPM_SPK("Speakers", NULL),
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_MIC("Int Mic", NULL),
+-};
+-
+-static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
+-	/* Input Lines */
+-	{"MIC", NULL, "Headset Mic"},
+-	{"DMIC1L", NULL, "Int Mic"},
+-	{"DMIC1R", NULL, "Int Mic"},
+-
+-	/* Output Lines */
+-	{"Headphones", NULL, "HPL"},
+-	{"Headphones", NULL, "HPR"},
+-	{"Speakers", NULL, "Speaker"},
++	SND_SOC_DAPM_LINE("HDMI", NULL),
+ };
+ 
+ static const struct snd_kcontrol_new rockchip_controls[] = {
+@@ -66,6 +55,7 @@ static const struct snd_kcontrol_new rockchip_controls[] = {
+ 	SOC_DAPM_PIN_SWITCH("Speakers"),
+ 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
+ 	SOC_DAPM_PIN_SWITCH("Int Mic"),
++	SOC_DAPM_PIN_SWITCH("HDMI"),
+ };
+ 
+ static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substream,
+@@ -314,8 +304,6 @@ static struct snd_soc_card rockchip_sound_card = {
+ 	.owner = THIS_MODULE,
+ 	.dapm_widgets = rockchip_dapm_widgets,
+ 	.num_dapm_widgets = ARRAY_SIZE(rockchip_dapm_widgets),
+-	.dapm_routes = rockchip_dapm_routes,
+-	.num_dapm_routes = ARRAY_SIZE(rockchip_dapm_routes),
+ 	.controls = rockchip_controls,
+ 	.num_controls = ARRAY_SIZE(rockchip_controls),
+ };
+@@ -391,6 +379,65 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
+ 	},
+ };
+ 
++static const struct snd_soc_dapm_route rockchip_sound_cdndp_routes[] = {
++	/* Output */
++	{"HDMI", NULL, "TX"},
++};
++
++static const struct snd_soc_dapm_route rockchip_sound_da7219_routes[] = {
++	/* Output */
++	{"Headphones", NULL, "HPL"},
++	{"Headphones", NULL, "HPR"},
++
++	/* Input */
++	{"MIC", NULL, "Headset Mic"},
++};
++
++static const struct snd_soc_dapm_route rockchip_sound_dmic_routes[] = {
++	/* Input */
++	{"Dmic", NULL, "Int Mic"},
++};
++
++static const struct snd_soc_dapm_route rockchip_sound_max98357a_routes[] = {
++	/* Output */
++	{"Speakers", NULL, "Speaker"},
++};
++
++static const struct snd_soc_dapm_route rockchip_sound_rt5514_routes[] = {
++	/* Input */
++	{"DMIC1L", NULL, "Int Mic"},
++	{"DMIC1R", NULL, "Int Mic"},
++};
++
++struct rockchip_sound_route {
++	const struct snd_soc_dapm_route *routes;
++	int num_routes;
++};
++
++static const struct rockchip_sound_route rockchip_routes[] = {
++	[DAILINK_CDNDP] = {
++		.routes = rockchip_sound_cdndp_routes,
++		.num_routes = ARRAY_SIZE(rockchip_sound_cdndp_routes),
++	},
++	[DAILINK_DA7219] = {
++		.routes = rockchip_sound_da7219_routes,
++		.num_routes = ARRAY_SIZE(rockchip_sound_da7219_routes),
++	},
++	[DAILINK_DMIC] = {
++		.routes = rockchip_sound_dmic_routes,
++		.num_routes = ARRAY_SIZE(rockchip_sound_dmic_routes),
++	},
++	[DAILINK_MAX98357A] = {
++		.routes = rockchip_sound_max98357a_routes,
++		.num_routes = ARRAY_SIZE(rockchip_sound_max98357a_routes),
++	},
++	[DAILINK_RT5514] = {
++		.routes = rockchip_sound_rt5514_routes,
++		.num_routes = ARRAY_SIZE(rockchip_sound_rt5514_routes),
++	},
++	[DAILINK_RT5514_DSP] = {},
++};
++
+ static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+ {
+ 	int i;
+@@ -408,6 +455,7 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 	struct device_node *np_cpu, *np_cpu0, *np_cpu1;
+ 	struct device_node *np_codec;
+ 	struct snd_soc_dai_link *dai;
++	struct snd_soc_dapm_route *routes;
+ 	int i, index;
+ 
+ 	card->dai_link = devm_kzalloc(dev, sizeof(rockchip_dais),
+@@ -415,9 +463,16 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 	if (!card->dai_link)
+ 		return -ENOMEM;
+ 
++	routes = devm_kzalloc(dev, sizeof(rockchip_routes),
++			      GFP_KERNEL);
++	if (!routes)
++		return -ENOMEM;
++	card->dapm_routes = routes;
++
+ 	np_cpu0 = of_parse_phandle(dev->of_node, "rockchip,cpu", 0);
+ 	np_cpu1 = of_parse_phandle(dev->of_node, "rockchip,cpu", 1);
+ 
++	card->num_dapm_routes = 0;
+ 	card->num_links = 0;
+ 	for (i = 0; i < ARRAY_SIZE(rockchip_dais); i++) {
+ 		np_codec = of_parse_phandle(dev->of_node,
+@@ -445,6 +500,11 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 		dai->codec_of_node = np_codec;
+ 		dai->platform_of_node = np_cpu;
+ 		dai->cpu_of_node = np_cpu;
++
++		memcpy(routes + card->num_dapm_routes,
++		       rockchip_routes[index].routes,
++		       rockchip_routes[index].num_routes * sizeof(*routes));
++		card->num_dapm_routes += rockchip_routes[index].num_routes;
+ 	}
+ 
+ 	return 0;
+-- 
+2.11.0
