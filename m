@@ -1,49 +1,48 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [RESENT PATCH v7 3/7] arm64: dts: rockchip: Update rt5514 devices'
- compatible for Gru
-Date: Tue, 05 Sep 2017 12:26:22 +0800
-Message-ID: <59AE276E.6090100@rock-chips.com>
-References: <20170824045227.15504-1-jeffy.chen@rock-chips.com> <1649093.IvC24TsujL@diego> <59A6EF3C.5090308@rock-chips.com> <3717071.LIWpZa6hqd@diego>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH] ASoC: improve RT5514 dependencies
+Date: Tue, 5 Sep 2017 11:03:04 +0200
+Message-ID: <CAK8P3a1PgN=XmAuKrFGT50f4otXzRsPqjYM3bjjKU3DgY7wWLg@mail.gmail.com>
+References: <20170731083217.4142512-1-arnd@arndb.de>
+ <s5hh8xt0xwy.wl-tiwai@suse.de>
+ <20170801142117.oc3owynj74g5bmyi@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3717071.LIWpZa6hqd@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170801142117.oc3owynj74g5bmyi@sirena.org.uk>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, Ryder Lee <ryder.lee@mediatek.com>, Hsin-yu Chao <hychao@google.com>, Xing Zheng <zhengxing@rock-chips.com>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Takashi Iwai <tiwai@suse.de>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Sugar Zhang <sugar.zhang@rock-chips.com>, Harsha Priya N <harshapriya.n@intel.com>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Naveen M <naveen.m@intel.com>, Charles Keepax <ckeepax@opensource.wolfsonmicro.com>, Vinod Koul <vinod.koul@intel.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Tue, Aug 1, 2017 at 4:21 PM, Mark Brown <broonie@kernel.org> wrote:
+> On Mon, Jul 31, 2017 at 11:15:57AM +0200, Takashi Iwai wrote:
+>
+>> IMO, flipping the dependency looks saner to me.  The SPI function call
+>> is a kind of add-on, after all.
+>
+> Yes, that's definitely the intention of the code.
 
-On 09/05/2017 06:33 AM, Heiko Stübner wrote:
-> Am Donnerstag, 31. August 2017, 01:00:44 CEST schrieb jeffy:
->> On 08/30/2017 09:30 PM, Heiko Stübner wrote:
->>>>> -		compatible = "realtek,rt5514";
->>>>> +		compatible = "realtek,rt5514", "realtek,rt5514-i2c";
->>>
->>> the rt5514-i2c and -spi compatibles should be documented in the
->>> binding-txt
->>> of the chip, but I haven't found any mention of this.
->>>
->>>
->>> Heiko
->>
->> these compatibles are only used for our snd driver to detect rt5514 i2c
->> driver and rt5514 spi driver, suggested by Matthias at
->> https://patchwork.kernel.org/patch/9904731/
->>
->> should i add it in the rockchip,rk3399-gru-sound.txt or rt5514 binding
->> document?
->
-> You're introducing new bindings for the codec, so they should of course
-> part of the rt5514 binding.
-ok, will do that.
-and it looks like there's no binding for rt5514-spi, will add it too :)
->
->
-> Heiko
->
->
->
->
+I just ran into the same problem again on randconfig testing, after
+the bug had been
+gone before my vacation:
+
+    sound/soc/codecs/rt5514.o: In function `rt5514_dsp_voice_wake_up_put':
+    rt5514.c:(.text+0x2068): undefined reference to `rt5514_spi_burst_write'
+    rt5514.c:(.text+0x20c8): undefined reference to `rt5514_spi_burst_write'
+
+Is anyone looking into this? My original patch
+(https://patchwork.kernel.org/patch/9871255/) still fixes it but needs a
+minor change to apply now. When I last looked into changing
+the dependency in the code, I couldn't quite figure out how to
+do it there.
+
+         Arnd
