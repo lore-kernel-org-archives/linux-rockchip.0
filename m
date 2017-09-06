@@ -1,58 +1,53 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 5/7] ARM: dts: rockchip: add rk322x gpu node
-Date: Tue,  5 Sep 2017 12:57:37 +0200
-Message-ID: <20170905105739.8330-6-heiko@sntech.de>
-References: <20170905105739.8330-1-heiko@sntech.de>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RESENT PATCH v9 2/2] arm64: dts: rockchip: Update rt5514 devices' compatible for Gru
+Date: Wed,  6 Sep 2017 10:50:10 +0800
+Message-ID: <20170906025010.10750-2-jeffy.chen@rock-chips.com>
+References: <20170906025010.10750-1-jeffy.chen@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170905105739.8330-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <20170906025010.10750-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3228/3229 uses a Mali400 GPU with two pixel processors.
-This adds the core node for it, which can be enabled
-in board devicetrees.
+Currently the rt5514 i2c driver and rt5514 spi driver are using the same
+compatible string.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Add additional compatible strings to identify them for Gru boards.
+
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 06814421eed2..c97287ebb0ea 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -558,6 +558,27 @@
- 		status = "disabled";
- 	};
+Changes in v9: None
+
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 199a5118b20d..a86afbf09333 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -610,7 +610,7 @@ ap_i2c_mic: &i2c1 {
+ 	i2c-scl-rising-time-ns = <300>;
  
-+	gpu: gpu@20000000 {
-+		compatible = "rockchip,rk3228-mali", "arm,mali-400";
-+		reg = <0x20000000 0x10000>;
-+		interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "gp",
-+				  "gpmmu",
-+				  "pp0",
-+				  "pp0mmu",
-+				  "pp1",
-+				  "pp1mmu";
-+		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
-+		clock-names = "core", "bus";
-+		resets = <&cru SRST_GPU_A>;
-+		status = "disabled";
-+	};
-+
- 	vpu_mmu: iommu@20020800 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20020800 0x100>;
+ 	headsetcodec: rt5514@57 {
+-		compatible = "realtek,rt5514";
++		compatible = "realtek,rt5514", "realtek,rt5514-i2c";
+ 		reg = <0x57>;
+ 		realtek,dmic-init-delay-ms = <20>;
+ 	};
+@@ -819,7 +819,7 @@ ap_i2c_audio: &i2c8 {
+ 	status = "okay";
+ 
+ 	wacky_spi_audio: spi2@0 {
+-		compatible = "realtek,rt5514";
++		compatible = "realtek,rt5514", "realtek,rt5514-spi";
+ 		reg = <0>;
+ 		interrupt-parent = <&gpio1>;
+ 		interrupts = <13 IRQ_TYPE_LEVEL_HIGH>;
 -- 
-2.14.1
+2.11.0
+
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
