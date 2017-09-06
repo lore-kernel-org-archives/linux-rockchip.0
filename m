@@ -1,37 +1,85 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 0/3] phy: rockchip-typec: Set "flip" at the right time; some cleanups
-Date: Wed,  6 Sep 2017 13:51:58 -0700
-Message-ID: <20170906205201.16207-1-dianders@chromium.org>
+Subject: [PATCH 3/3] phy: rockchip-typec: Do the calibration more correctly
+Date: Wed,  6 Sep 2017 13:52:01 -0700
+Message-ID: <20170906205201.16207-4-dianders@chromium.org>
+References: <20170906205201.16207-1-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170906205201.16207-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: kishon@ti.com, heiko@sntech.de, zyw@rock-chips.com
 Cc: shawnn@chromium.org, dnschneid@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When connecting to certain DP monitors it was observed that only one
-of the two orientations of the type C to DP cable would work.
-Debugging showed that the problem was that we needed to set the type C
-"flip" state earlier.  Once we did this, problems went away.
+Calculate the calibration code as per the docs.  The docs talk about
+reading and averaging the pullup and pulldown calibration codes.  They
+also talk about adding in some adjustment codes.  Let's do what the
+docs say.
 
-While trying to dig into this problem and some others, I found that
-the proper documentation for the Type C PHY was available to me.  This
-allowed me to cleanup the magic numbers in the funtion that I was
-touching and also fix a few minor issues that (luckily) haven't caused
-any problems yet.
+In practice this doesn't seem to matter a whole lot.  On a device I
+tested the pullup and pulldown codes were nearly the same (0x23 and
+0x24) and the adjustment codes were 0.
 
-For this series I've added Chris Zhong's Reviewed-by tags since he
-gave a +1 to nearly identical patches on the Chrome OS gerrit and I
-didn't think he'd mind me carrying his tag.  If folks would rather I
-didn't do that, please yell.
+Reviewed-by: Chris Zhong <zyw@rock-chips.com>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
+ drivers/phy/rockchip/phy-rockchip-typec.c | 28 +++++++++++++++++++---------
+ 1 file changed, 19 insertions(+), 9 deletions(-)
 
-Douglas Anderson (3):
-  phy: rockchip-typec: Set the AUX channel flip state earlier
-  phy: rockchip-typec: Avoid magic numbers + add delays in aux calib
-  phy: rockchip-typec: Do the calibration more correctly
-
- drivers/phy/rockchip/phy-rockchip-typec.c | 247 ++++++++++++++++++++++++------
- 1 file changed, 202 insertions(+), 45 deletions(-)
-
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index b8696a7c45fb..e59983a82dcc 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -194,6 +194,7 @@
+ /* Use this for "n" in macros like "_MULT_XXX" to target the aux channel */
+ #define AUX_CH_LANE			8
+ 
++
+ #define TX_ANA_CTRL_REG_1		(0x5020 << 2)
+ 
+ #define TXDA_DP_AUX_EN			BIT(15)
+@@ -560,24 +561,33 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 	u16 val;
+ 	u16 tx_ana_ctrl_reg_1;
+ 	u16 tx_ana_ctrl_reg_2;
+-	s32 pu_calib_code;
+-
+-	/* disable txda_cal_latch_en for rewrite the calibration values */
+-	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+-	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
+-	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
++	s32 pu_calib_code, pd_calib_code;
++	s32 pu_adj, pd_adj;
++	u16 calib;
+ 
+ 	/*
+-	 * read a resistor calibration code from CMN_TXPUCAL_CTRL[5:0] and
+-	 * write it to TX_DIG_CTRL_REG_2[5:0].
++	 * Calculate calibration code as per docs: use an average of the
++	 * pull down and pull up.  Then add in adjustments.
+ 	 */
+ 	val = readl(tcphy->base + CMN_TXPUCAL_CTRL);
+ 	pu_calib_code = CMN_CALIB_CODE_POS(val);
++	val = readl(tcphy->base + CMN_TXPDCAL_CTRL);
++	pd_calib_code = CMN_CALIB_CODE_POS(val);
++	val = readl(tcphy->base + CMN_TXPU_ADJ_CTRL);
++	pu_adj = CMN_CALIB_CODE(val);
++	val = readl(tcphy->base + CMN_TXPD_ADJ_CTRL);
++	pd_adj = CMN_CALIB_CODE(val);
++	calib = (pu_calib_code + pd_calib_code) / 2 + pu_adj + pd_adj;
++
++	/* disable txda_cal_latch_en for rewrite the calibration values */
++	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+ 
+ 	/* write the calibration, then delay 10 ms as sample in docs */
+ 	val = readl(tcphy->base + TX_DIG_CTRL_REG_2);
+ 	val &= ~(TX_RESCAL_CODE_MASK << TX_RESCAL_CODE_OFFSET);
+-	val |= pu_calib_code << TX_RESCAL_CODE_OFFSET;
++	val |= calib << TX_RESCAL_CODE_OFFSET;
+ 	writel(val, tcphy->base + TX_DIG_CTRL_REG_2);
+ 	usleep_range(10000, 10050);
+ 
 -- 
 2.14.1.581.gf28d330327-goog
