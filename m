@@ -1,47 +1,45 @@
-From: Mark yao <mark.yao@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [PATCH v8 3/3] drm/rockchip: Add support for Rockchip Soc LVDS
-Date: Fri, 8 Sep 2017 09:23:09 +0800
-Message-ID: <06e92b85-45f3-b23d-b149-e130c863214b@rock-chips.com>
+Date: Fri, 08 Sep 2017 07:04:05 +0200
+Message-ID: <4080498.FZDnVPY7UJ@phil>
 References: <1504351723-135876-1-git-send-email-hjc@rock-chips.com>
- <1504351737-136042-1-git-send-email-hjc@rock-chips.com>
- <8d36106e-ad19-8b4b-6b90-943cc6ff65aa@rock-chips.com>
  <2057816.0G3n1KPuPZ@diego>
+ <06e92b85-45f3-b23d-b149-e130c863214b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2057816.0G3n1KPuPZ@diego>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <06e92b85-45f3-b23d-b149-e130c863214b@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017年09月07日 20:09, Heiko Stübner wrote:
-> Hi Mark,
->
-> Am Donnerstag, 7. September 2017, 18:16:29 CEST schrieb Mark yao:
->> Looks good for me, so:
->> Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
->>
->> I'd like to apply these lvds patches tomorrow if there is no more doubts.
-> Rob had some minor comments on v7 of the dt-binding, so you may want
-> to give him a bit more time to Ack the hopefully updated binding.
-
-Rob already gave a Reviewed-by on v7 dt-binding, but maybe it has some doubts for his Ack.
-
-Ok, let's wait some more time.
-
-> Otherwise no doubts from me, just a reminder that you should take
-> patches 1+3 and I'll pick patch 2 with the dts changes after that.
->
->
-> Thanks
-> Heiko
->
->
->
->
-
--- 
-Ｍark Yao
+QW0gRnJlaXRhZywgOC4gU2VwdGVtYmVyIDIwMTcsIDA5OjIzOjA5IENFU1Qgc2NocmllYiBNYXJr
+IHlhbzoKPiBPbiAyMDE35bm0MDnmnIgwN+aXpSAyMDowOSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
+Cj4gPiBIaSBNYXJrLAo+ID4KPiA+IEFtIERvbm5lcnN0YWcsIDcuIFNlcHRlbWJlciAyMDE3LCAx
+ODoxNjoyOSBDRVNUIHNjaHJpZWIgTWFyayB5YW86Cj4gPj4gTG9va3MgZ29vZCBmb3IgbWUsIHNv
+Ogo+ID4+IFJldmlld2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4g
+Pj4KPiA+PiBJJ2QgbGlrZSB0byBhcHBseSB0aGVzZSBsdmRzIHBhdGNoZXMgdG9tb3Jyb3cgaWYg
+dGhlcmUgaXMgbm8gbW9yZSBkb3VidHMuCj4gPiBSb2IgaGFkIHNvbWUgbWlub3IgY29tbWVudHMg
+b24gdjcgb2YgdGhlIGR0LWJpbmRpbmcsIHNvIHlvdSBtYXkgd2FudAo+ID4gdG8gZ2l2ZSBoaW0g
+YSBiaXQgbW9yZSB0aW1lIHRvIEFjayB0aGUgaG9wZWZ1bGx5IHVwZGF0ZWQgYmluZGluZy4KPiAK
+PiBSb2IgYWxyZWFkeSBnYXZlIGEgUmV2aWV3ZWQtYnkgb24gdjcgZHQtYmluZGluZywgYnV0IG1h
+eWJlIGl0IGhhcyBzb21lIGRvdWJ0cyBmb3IgaGlzIEFjay4KPiAKPiBPaywgbGV0J3Mgd2FpdCBz
+b21lIG1vcmUgdGltZS4KCmFoLCBJIGxvb2tlZCBhdCB2NiBhbmQgZm91bmQgdGhlIGNvbW1lbnRz
+LCBub3QgdjcgYW5kIHY3IGlzIG5vdCBpbiBteQphcmNoaXZlIGJlY2F1c2UgSSBsaWtlbHkgYWNj
+aWRlbnRpYWxseSBkZWxldGVkIGl0LgpTbyBTYW5keSBqdXN0IGZvcmdvdCB0byBjYXJyeSBvdmVy
+IHRoZSBBY2svUmV2aWV3IHRhZy4gU28gSSBndWVzcyB0aGVyZSBpcwpubyBuZWVkIHRvIHdhaXQg
+YW55bW9yZSBhbmQgeW91IGp1c3QgbmVlZCB0byBwaWNrIHVwIFJvYidzIHRhZyBmcm9tIHY3IHRo
+ZW4uCgoKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
