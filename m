@@ -1,29 +1,52 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v8 2/3] ARM: dts: Add LVDS info for rk3288
-Date: Sat, 09 Sep 2017 01:45:53 +0200
-Message-ID: <35833616.zLl8rNldH8@phil>
-References: <1504351723-135876-1-git-send-email-hjc@rock-chips.com> <1504351732-135989-1-git-send-email-hjc@rock-chips.com>
+From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [U-Boot,v2,2/5] rockchip: rk322x: add sdram driver
+Date: Fri, 8 Sep 2017 22:54:54 -0600
+Message-ID: <CAPnjgZ09V5ZRi9wR2xWDRaLZAJx8=u-qzVTjrosOCBC3+oQmRw@mail.gmail.com>
+References: <1502954257-7256-3-git-send-email-kever.yang@rock-chips.com>
+ <alpine.OSX.2.21.1709051140140.20553@vpn-10-11-0-14.lan>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1504351732-135989-1-git-send-email-hjc@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <alpine.OSX.2.21.1709051140140.20553-P6fm21zUGUcV4DTK6cx7e366tl449arB@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 2. September 2017, 19:28:52 CEST schrieb Sandy Huang:
-> add LVDS info in rk3288.dtsi for LVDS driver
-> This based on the patches from Mark yao and Heiko Stuebner.
-> 
-> Signed-off-by: Mark yao <mark.yao@rock-chips.com>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Sandy Huang <hjc@rock-chips.com>
+Hi Philipp,
 
-applied for 4.15 after moving both the lvds node to its correct
-position (please always sort by address) and fixed the register
-addressing to honor the recent rk3288 64bit conversion.
+On 5 September 2017 at 03:51, Philipp Tomsich
+<philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org> wrote:
+> + Simon
+>
+> Kever,
+>
+> thanks for moving this to the new location, but it doesn't address my
+> concerns that we are duplicating large amounts of code from other SDRAM
+> drivers (and that there's large amounts of #define statements where we
+> usually use enum definitions for Rockchip).
+>
+> You may be able to convince me to apply this to the 'next' branch as-is, if
+> we get a plan in place to clean up the DRAM controller code over during the
+> two merge windows remaining in this year.
+>
+> @Simon: I know the amount of code-duplication across the DRAM controller
+> drivers is a touchy subject for you too --- any additional comments or
+> guidance?
 
+Well I haven't changed my mind. I think it would be good to make a
+start before any more drivers go in.
 
-Heiko
+But I should leave the specifics to you.
+
+Regards,
+Simon
