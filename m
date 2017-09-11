@@ -1,62 +1,39 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v5 3/3] arm64: dts: rockchip: Handle pcie wake in pcie driver for Gru
-Date: Mon, 11 Sep 2017 23:10:29 +0800
-Message-ID: <20170911151029.25185-4-jeffy.chen@rock-chips.com>
-References: <20170911151029.25185-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170911151029.25185-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, bhelgaas@google.com
-Cc: shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v8 1/3] dt-bindings: display: Add Document for Rockchip
+ Soc LVDS
+Date: Mon, 11 Sep 2017 15:13:56 -0500
+Message-ID: <20170911201356.2j65cvq6axqaa6f6@rob-hp-laptop>
+References: <1504351723-135876-1-git-send-email-hjc@rock-chips.com>
+ <1504351729-135932-1-git-send-email-hjc@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1504351729-135932-1-git-send-email-hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently we are handling pcie wake irq in mrvl wifi driver.
-Move it to rockchip pcie driver for Gru boards.
+On Sat, Sep 02, 2017 at 07:28:47PM +0800, Sandy Huang wrote:
+> This patch add Document for Rockchip Soc RK3288 LVDS,
+> This based on the patches from Mark yao and Heiko Stuebner.
+> 
+> Signed-off-by: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> Change the Signed-off order
+> 
+>  .../bindings/display/rockchip/rockchip-lvds.txt    | 99 ++++++++++++++++++++++
+>  1 file changed, 99 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
+I see this is already applied, but in the future please add acks when 
+posting new versions.
 
-Changes in v5:
-Use "wakeup" instead of "wake"
-
-Changes in v3: None
-Changes in v2: None
-
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 199a5118b20d..9e0269a13ced 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -707,7 +707,15 @@ ap_i2c_audio: &i2c8 {
- 
- 	ep-gpios = <&gpio2 27 GPIO_ACTIVE_HIGH>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie_clkreqn_cpm>, <&wifi_perst_l>;
-+	pinctrl-0 = <&pcie_clkreqn_cpm>, <&wlan_host_wake_l>, <&wifi_perst_l>;
-+
-+	interrupts-extended = <&gic GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gic GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gic GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gpio0 8 IRQ_TYPE_LEVEL_LOW>;
-+	interrupt-names = "sys", "legacy", "client", "wakeup";
-+	/delete-property/ interrupts;
-+
- 	vpcie3v3-supply = <&pp3300_wifi_bt>;
- 	vpcie1v8-supply = <&wlan_pd_n>; /* HACK: see &wlan_pd_n */
- 	vpcie0v9-supply = <&pp900_pcie>;
-@@ -722,11 +730,6 @@ ap_i2c_audio: &i2c8 {
- 			compatible = "pci1b4b,2b42";
- 			reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
- 			       0x83010000 0x0 0x00100000 0x0 0x00100000>;
--			interrupt-parent = <&gpio0>;
--			interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
--			pinctrl-names = "default";
--			pinctrl-0 = <&wlan_host_wake_l>;
--			wakeup-source;
- 		};
- 	};
- };
--- 
-2.11.0
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
