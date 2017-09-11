@@ -1,28 +1,77 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 0/3] clk: rockchip: rk3128: fix up some clks
-Date: Sat, 09 Sep 2017 14:22:48 +0200
-Message-ID: <1851166.xyq0T9qeKP@phil>
-References: <1504231306-4450-1-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1504231306-4450-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [PATCH] media: i2c: OV5647: ensure clock lane in LP-11 state before streaming on
+Date: Mon, 11 Sep 2017 09:53:40 +0800
+Message-ID: <1505094820-11958-1-git-send-email-jacob-chen@iotwrt.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, roliveir@synopsys.com, linux-media@vger.kernel.org, mchehab@kernel.org, vladimir_zapolskiy@mentor.com, hans.verkuil@cisco.com, sakari.ailus@linux.intel.com, lolivei@synopsys.com, p.zabel@pengutronix.de, Jacob Chen <jacob-chen@iotwrt.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 1. September 2017, 10:01:43 CEST schrieb Elaine Zhang:
-> Elaine Zhang (3):
->   clk: rockchip: rk3128: add pclk_pmu as critical clock
->   clk: rockchip: rk3128: fix up pvtm and mipi_24m gate regs description
->     error
->   clk: rockchip: rk3126: add sclk_timer5 as critical clock
+When I was supporting Rpi Camera Module on the ASUS Tinker board,
+I found this driver have some issues with rockchip's mipi-csi driver.
+It didn't place clock lane in LP-11 state before performing
+D-PHY initialisation.
 
-applied all 3 as fixes for 4.14
-(with some adjustments on subjects and commit messages)
+From our experience, on some OV sensors,
+LP-11 state is not achieved while BIT(5)-0x4800 is cleared.
 
+So let's set BIT(5) and BIT(0) both while not streaming, in order to
+coax the clock lane into LP-11 state.
 
-Thanks
-Heiko
+0x4800 : MIPI CTRL 00
+	BIT(5) : clock lane gate enable
+		0: continuous
+		1: none-continuous
+	BIT(0) : manually set clock lane
+		0: Not used
+		1: used
+
+Changes in V2:
+	modify commit messages
+
+Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+---
+ drivers/media/i2c/ov5647.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+index 95ce90f..247302d 100644
+--- a/drivers/media/i2c/ov5647.c
++++ b/drivers/media/i2c/ov5647.c
+@@ -253,6 +253,10 @@ static int ov5647_stream_on(struct v4l2_subdev *sd)
+ {
+ 	int ret;
+ 
++	ret = ov5647_write(sd, 0x4800, 0x04);
++	if (ret < 0)
++		return ret;
++
+ 	ret = ov5647_write(sd, 0x4202, 0x00);
+ 	if (ret < 0)
+ 		return ret;
+@@ -264,6 +268,10 @@ static int ov5647_stream_off(struct v4l2_subdev *sd)
+ {
+ 	int ret;
+ 
++	ret = ov5647_write(sd, 0x4800, 0x25);
++	if (ret < 0)
++		return ret;
++
+ 	ret = ov5647_write(sd, 0x4202, 0x0f);
+ 	if (ret < 0)
+ 		return ret;
+@@ -320,7 +328,10 @@ static int __sensor_init(struct v4l2_subdev *sd)
+ 			return ret;
+ 	}
+ 
+-	return ov5647_write(sd, 0x4800, 0x04);
++	/*
++	 * stream off to make the clock lane into LP-11 state.
++	 */
++	return ov5647_stream_off(sd);
+ }
+ 
+ static int ov5647_sensor_power(struct v4l2_subdev *sd, int on)
+-- 
+2.7.4
