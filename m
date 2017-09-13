@@ -1,13 +1,13 @@
 From: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: Re: [U-Boot,4/8] clk: rockchip: Add Saradc clock support for rk3288
+Subject: Re: [U-Boot,3/8] clk: rockchip: Add rv1108 Saradc clock support
 Date: Wed, 13 Sep 2017 22:07:41 +0200
-Message-ID: <E1dsDwj-0004RU-Rr@mail.theobroma-systems.com>
-References: <1505297379-12638-5-git-send-email-david.wu@rock-chips.com>
+Message-ID: <E1dsDwj-0004RU-7b@mail.theobroma-systems.com>
+References: <1505297379-12638-4-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1505297379-12638-5-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1505297379-12638-4-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,11 +21,11 @@ Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM
 List-Id: linux-rockchip.vger.kernel.org
 
 > Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 > ---
->  drivers/clk/rockchip/clk_rk3288.c | 45 +++++++++++++++++++++++++++++++++++++++
->  1 file changed, 45 insertions(+)
+>  arch/arm/include/asm/arch-rockchip/cru_rv1108.h |  5 ++++
+>  drivers/clk/rockchip/clk_rv1108.c               | 35 +++++++++++++++++++++++++
+>  include/dt-bindings/clock/rv1108-cru.h          |  2 ++
+>  3 files changed, 42 insertions(+)
 > 
 
 Acked-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
