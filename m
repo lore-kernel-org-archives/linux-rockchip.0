@@ -1,84 +1,260 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH 3/8] clk: rockchip: Add rv1108 Saradc clock support
-Date: Wed, 13 Sep 2017 18:09:34 +0800
-Message-ID: <1505297379-12638-4-git-send-email-david.wu@rock-chips.com>
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/8] adc: Add driver for Rockchip Saradc
+Date: Wed, 13 Sep 2017 18:09:32 +0800
+Message-ID: <1505297379-12638-2-git-send-email-david.wu@rock-chips.com>
 References: <1505297379-12638-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1505297379-12638-1-git-send-email-david.wu@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: sjg@chromium.org, philipp.tomsich@theobroma-systems.com
-Cc: huangtao@rock-chips.com, u-boot@lists.denx.de, zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org, p.marczak@samsung.com, David Wu <david.wu@rock-chips.com>, andy.yan@rock-chips.com, chenjh@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1505297379-12638-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.marczak-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2lnbmVkLW9mZi1ieTogRGF2aWQgV3UgPGRhdmlkLnd1QHJvY2stY2hpcHMuY29tPgotLS0KIGFy
-Y2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvY3J1X3J2MTEwOC5oIHwgIDUgKysrKwog
-ZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3J2MTEwOC5jICAgICAgICAgICAgICAgfCAzNSArKysr
-KysrKysrKysrKysrKysrKysrKysrCiBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3J2MTEwOC1j
-cnUuaCAgICAgICAgICB8ICAyICsrCiAzIGZpbGVzIGNoYW5nZWQsIDQyIGluc2VydGlvbnMoKykK
-CmRpZmYgLS1naXQgYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL2NydV9ydjEx
-MDguaCBiL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvY3J1X3J2MTEwOC5oCmlu
-ZGV4IDJhMWFlNjkuLmIxMzQ1NTkgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2Fy
-Y2gtcm9ja2NoaXAvY3J1X3J2MTEwOC5oCisrKyBiL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gt
-cm9ja2NoaXAvY3J1X3J2MTEwOC5oCkBAIC05MCw2ICs5MCwxMSBAQCBlbnVtIHsKIAlDT1JFX0NM
-S19ESVZfU0hJRlQJPSAwLAogCUNPUkVfQ0xLX0RJVl9NQVNLCT0gMHgxZiA8PCBDT1JFX0NMS19E
-SVZfU0hJRlQsCiAKKwkvKiBDTEtTRUxfQ09OMjIgKi8KKwlDTEtfU0FSQURDX0RJVl9DT05fU0hJ
-RlQ9IDAsCisJQ0xLX1NBUkFEQ19ESVZfQ09OX01BU0sJPSAweDNmZiA8PCBDTEtfU0FSQURDX0RJ
-Vl9DT05fU0hJRlQsCisJQ0xLX1NBUkFEQ19ESVZfQ09OX1dJRFRIPSAxMCwKKwogCS8qIENMS1NF
-TDI0X0NPTiAqLwogCU1BQ19QTExfU0VMX1NISUZUCT0gMTIsCiAJTUFDX1BMTF9TRUxfTUFTSwk9
-IDEgPDwgTUFDX1BMTF9TRUxfU0hJRlQsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hp
-cC9jbGtfcnYxMTA4LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGtfcnYxMTA4LmMKaW5kZXgg
-Y2Y5NjZiYi4uYWE5ODljNiAxMDA2NDQKLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3J2
-MTEwOC5jCisrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsa19ydjExMDguYwpAQCAtMzYsNiAr
-MzYsMTEgQEAgZW51bSB7CiAJCQkgI2h6ICJIeiBjYW5ub3QgYmUgaGl0IHdpdGggUExMICJcCiAJ
-CQkgImRpdmlzb3JzIG9uIGxpbmUgIiBfX3N0cmluZ2lmeShfX0xJTkVfXykpOwogCitzdGF0aWMg
-aW5saW5lIHUzMiBleHRyYWN0X2JpdHModTMyIHZhbCwgdW5zaWduZWQgd2lkdGgsIHVuc2lnbmVk
-IHNoaWZ0KQoreworCXJldHVybiAodmFsID4+IHNoaWZ0KSAmICgoMSA8PCB3aWR0aCkgLSAxKTsK
-K30KKwogLyogdXNlIGludGVyZ2UgbW9kZSovCiBzdGF0aWMgaW5saW5lIGludCBydjExMDhfcGxs
-X2lkKGVudW0gcmtfY2xrX2lkIGNsa19pZCkKIHsKQEAgLTEzMCw2ICsxMzUsMzEgQEAgc3RhdGlj
-IGludCBydjExMDhfc2ZjX3NldF9jbGsoc3RydWN0IHJ2MTEwOF9jcnUgKmNydSwgdWludCByYXRl
-KQogCXJldHVybiBESVZfVE9fUkFURShwbGxfcmF0ZSwgZGl2KTsKIH0KIAorc3RhdGljIHVsb25n
-IHJ2MTEwOF9zYXJhZGNfZ2V0X2NsayhzdHJ1Y3QgcnYxMTA4X2NydSAqY3J1KQoreworCXUzMiBk
-aXYsIHZhbDsKKworCXZhbCA9IHJlYWRsKCZjcnUtPmNsa3NlbF9jb25bMjJdKTsKKwlkaXYgPSBl
-eHRyYWN0X2JpdHModmFsLCBDTEtfU0FSQURDX0RJVl9DT05fV0lEVEgsCisJCQkgICBDTEtfU0FS
-QURDX0RJVl9DT05fU0hJRlQpOworCisJcmV0dXJuIERJVl9UT19SQVRFKE9TQ19IWiwgZGl2KTsK
-K30KKworc3RhdGljIHVsb25nIHJ2MTEwOF9zYXJhZGNfc2V0X2NsayhzdHJ1Y3QgcnYxMTA4X2Ny
-dSAqY3J1LCB1aW50IGh6KQoreworCWludCBzcmNfY2xrX2RpdjsKKworCXNyY19jbGtfZGl2ID0g
-RElWX1JPVU5EX1VQKE9TQ19IWiwgaHopIC0gMTsKKwlhc3NlcnQoc3JjX2Nsa19kaXYgPCAxMjgp
-OworCisJcmtfY2xyc2V0cmVnKCZjcnUtPmNsa3NlbF9jb25bMjJdLAorCQkgICAgIENMS19TQVJB
-RENfRElWX0NPTl9NQVNLLAorCQkgICAgIHNyY19jbGtfZGl2IDw8IENMS19TQVJBRENfRElWX0NP
-Tl9TSElGVCk7CisKKwlyZXR1cm4gcnYxMTA4X3NhcmFkY19nZXRfY2xrKGNydSk7Cit9CisKIHN0
-YXRpYyB1bG9uZyBydjExMDhfY2xrX2dldF9yYXRlKHN0cnVjdCBjbGsgKmNsaykKIHsKIAlzdHJ1
-Y3QgcnYxMTA4X2Nsa19wcml2ICpwcml2ID0gZGV2X2dldF9wcml2KGNsay0+ZGV2KTsKQEAgLTEz
-Nyw2ICsxNjcsOCBAQCBzdGF0aWMgdWxvbmcgcnYxMTA4X2Nsa19nZXRfcmF0ZShzdHJ1Y3QgY2xr
-ICpjbGspCiAJc3dpdGNoIChjbGstPmlkKSB7CiAJY2FzZSAwIC4uLiA2MzoKIAkJcmV0dXJuIHJr
-Y2xrX3BsbF9nZXRfcmF0ZShwcml2LT5jcnUsIGNsay0+aWQpOworCWNhc2UgU0NMS19TQVJBREM6
-CisJCXJldHVybiBydjExMDhfc2FyYWRjX2dldF9jbGsocHJpdi0+Y3J1KTsKIAlkZWZhdWx0Ogog
-CQlyZXR1cm4gLUVOT0VOVDsKIAl9CkBAIC0xNTQsNiArMTg2LDkgQEAgc3RhdGljIHVsb25nIHJ2
-MTEwOF9jbGtfc2V0X3JhdGUoc3RydWN0IGNsayAqY2xrLCB1bG9uZyByYXRlKQogCWNhc2UgU0NM
-S19TRkM6CiAJCW5ld19yYXRlID0gcnYxMTA4X3NmY19zZXRfY2xrKHByaXYtPmNydSwgcmF0ZSk7
-CiAJCWJyZWFrOworCWNhc2UgU0NMS19TQVJBREM6CisJCW5ld19yYXRlID0gcnYxMTA4X3NhcmFk
-Y19zZXRfY2xrKHByaXYtPmNydSwgcmF0ZSk7CisJCWJyZWFrOwogCWRlZmF1bHQ6CiAJCXJldHVy
-biAtRU5PRU5UOwogCX0KZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svcnYx
-MTA4LWNydS5oIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9ydjExMDgtY3J1LmgKaW5kZXgg
-ZDJhZDNiYi4uN2RlZmM2YiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9y
-djExMDgtY3J1LmgKKysrIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9ydjExMDgtY3J1LmgK
-QEAgLTM5LDYgKzM5LDcgQEAKICNkZWZpbmUgU0NMS19NQUNfVFgJCQk4OAogI2RlZmluZSBTQ0xL
-X01BQ1JFRgkJCTg5CiAjZGVmaW5lIFNDTEtfTUFDUkVGX09VVAkJCTkwCisjZGVmaW5lIFNDTEtf
-U0FSQURDCQkJOTEKIAogCiAvKiBhY2xrIGdhdGVzICovCkBAIC02Nyw2ICs2OCw3IEBACiAjZGVm
-aW5lIFBDTEtfVElNRVIJCQkyNzAKICNkZWZpbmUgUENMS19QRVJJCQkJMjcxCiAjZGVmaW5lIFBD
-TEtfR01BQwkJCTI3MgorI2RlZmluZSBQQ0xLX1NBUkFEQwkJCTI3MwogCiAvKiBoY2xrIGdhdGVz
-ICovCiAjZGVmaW5lIEhDTEtfSTJTMF84Q0gJCQkzMjAKLS0gCjIuNy40CgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApV
-LUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290
-Cg==
+The ADC can support some channels signal-ended some bits Successive Approximation
+Register (SAR) A/D Converter, like 6-channel and 10-bit. It converts the analog
+input signal into some bits binary digital codes.
+
+Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/adc/Kconfig           |   9 ++
+ drivers/adc/Makefile          |   1 +
+ drivers/adc/rockchip-saradc.c | 188 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 198 insertions(+)
+ create mode 100644 drivers/adc/rockchip-saradc.c
+
+diff --git a/drivers/adc/Kconfig b/drivers/adc/Kconfig
+index e5335f7..830fe0f 100644
+--- a/drivers/adc/Kconfig
++++ b/drivers/adc/Kconfig
+@@ -20,6 +20,15 @@ config ADC_EXYNOS
+ 	  - 12-bit resolution
+ 	  - 600 KSPS of sample rate
+ 
++config SARADC_ROCKCHIP
++	bool "Enable Rockchip SARADC driver"
++	help
++	  This enables driver for Rockchip SARADC.
++	  It provides:
++	  - 2~6 analog input channels
++	  - 1O-bit resolution
++	  - 1MSPS of sample rate
++
+ config ADC_SANDBOX
+ 	bool "Enable Sandbox ADC test driver"
+ 	help
+diff --git a/drivers/adc/Makefile b/drivers/adc/Makefile
+index cebf26d..4b5aa69 100644
+--- a/drivers/adc/Makefile
++++ b/drivers/adc/Makefile
+@@ -8,3 +8,4 @@
+ obj-$(CONFIG_ADC) += adc-uclass.o
+ obj-$(CONFIG_ADC_EXYNOS) += exynos-adc.o
+ obj-$(CONFIG_ADC_SANDBOX) += sandbox.o
++obj-$(CONFIG_SARADC_ROCKCHIP) += rockchip-saradc.o
+diff --git a/drivers/adc/rockchip-saradc.c b/drivers/adc/rockchip-saradc.c
+new file mode 100644
+index 0000000..5c7c3d9
+--- /dev/null
++++ b/drivers/adc/rockchip-saradc.c
+@@ -0,0 +1,188 @@
++/*
++ * (C) Copyright 2017, Fuzhou Rockchip Electronics Co., Ltd
++ *
++ * SPDX-License-Identifier:	GPL-2.0+
++ *
++ * Rockchip Saradc driver for U-Boot
++ */
++
++#include <asm/io.h>
++#include <clk.h>
++#include <common.h>
++#include <dm.h>
++#include <errno.h>
++#include <adc.h>
++
++#define SARADC_DATA			0x00
++
++#define SARADC_STAS			0x04
++#define SARADC_STAS_BUSY		BIT(0)
++
++#define SARADC_CTRL			0x08
++#define SARADC_CTRL_POWER_CTRL		BIT(3)
++#define SARADC_CTRL_CHN_MASK		0x7
++#define SARADC_CTRL_IRQ_STATUS		BIT(6)
++#define SARADC_CTRL_IRQ_ENABLE		BIT(5)
++
++#define SARADC_DLY_PU_SOC		0x0c
++
++#define SARADC_TIMEOUT			(100 * 1000)
++
++struct rockchip_saradc_data {
++	int				num_bits;
++	int				num_channels;
++	unsigned long			clk_rate;
++};
++
++struct rockchip_saradc_priv {
++	fdt_addr_t				regs;
++	int 					active_channel;
++	const struct rockchip_saradc_data	*data;
++};
++
++int rockchip_saradc_channel_data(struct udevice *dev, int channel,
++			    unsigned int *data)
++{
++	struct rockchip_saradc_priv *priv = dev_get_priv(dev);
++
++	if (channel != priv->active_channel) {
++		error("Requested channel is not active!");
++		return -EINVAL;
++	}
++
++	if ((readl(priv->regs + SARADC_CTRL) & SARADC_CTRL_IRQ_STATUS) != SARADC_CTRL_IRQ_STATUS)
++		return -EBUSY;
++
++	/* Read value */
++	*data = readl(priv->regs + SARADC_DATA);
++	*data &= (1 << priv->data->num_bits) - 1;
++
++	/* Power down adc */
++	writel(0, priv->regs + SARADC_CTRL);
++
++	return 0;
++}
++
++int rockchip_saradc_start_channel(struct udevice *dev, int channel)
++{
++	struct rockchip_saradc_priv *priv = dev_get_priv(dev);
++
++	if (channel < 0 || channel >= priv->data->num_channels) {
++		error("Requested channel is invalid!");
++		return -EINVAL;
++	}
++
++	/* 8 clock periods as delay between power up and start cmd */
++	writel(8, priv->regs + SARADC_DLY_PU_SOC);
++
++	/* Select the channel to be used and trigger conversion */
++	writel(SARADC_CTRL_POWER_CTRL
++			| (channel & SARADC_CTRL_CHN_MASK) | SARADC_CTRL_IRQ_ENABLE,
++		   priv->regs + SARADC_CTRL);
++
++	priv->active_channel = channel;
++
++	return 0;
++}
++
++int rockchip_saradc_stop(struct udevice *dev)
++{
++	struct rockchip_saradc_priv *priv = dev_get_priv(dev);
++
++	/* Power down adc */
++	writel(0, priv->regs + SARADC_CTRL);
++
++	priv->active_channel = -1;
++
++	return 0;
++}
++
++int rockchip_saradc_probe(struct udevice *dev)
++{
++	struct rockchip_saradc_priv *priv = dev_get_priv(dev);
++	struct clk clk;
++	int ret;
++
++	ret = clk_get_by_index(dev, 0, &clk);
++	if (ret)
++		return ret;
++
++	ret = clk_set_rate(&clk, priv->data->clk_rate);
++	if (IS_ERR_VALUE(ret))
++		return ret;
++
++	priv->active_channel = -1;
++
++	return 0;
++}
++
++int rockchip_saradc_ofdata_to_platdata(struct udevice *dev)
++{
++	struct adc_uclass_platdata *uc_pdata = dev_get_uclass_platdata(dev);
++	struct rockchip_saradc_priv *priv = dev_get_priv(dev);
++	struct rockchip_saradc_data *data =
++					(struct rockchip_saradc_data *)dev_get_driver_data(dev);
++
++	priv->regs = devfdt_get_addr(dev);
++	if (priv->regs == FDT_ADDR_T_NONE) {
++		error("Dev: %s - can't get address!", dev->name);
++		return -ENODATA;
++	}
++
++	priv->data = data;
++	uc_pdata->data_mask = (1 << priv->data->num_bits) - 1;;
++	uc_pdata->data_format = ADC_DATA_FORMAT_BIN;
++	uc_pdata->data_timeout_us = SARADC_TIMEOUT / 5;
++	uc_pdata->channel_mask = (1 << priv->data->num_channels) - 1;
++
++	return 0;
++}
++
++static const struct adc_ops rockchip_saradc_ops = {
++	.start_channel = rockchip_saradc_start_channel,
++	.channel_data = rockchip_saradc_channel_data,
++	.stop = rockchip_saradc_stop,
++};
++
++static const struct rockchip_saradc_data saradc_data = {
++	.num_bits = 10,
++	.num_channels = 3,
++	.clk_rate = 1000000,
++};
++
++static const struct rockchip_saradc_data rk3066_tsadc_data = {
++	.num_bits = 12,
++	.num_channels = 2,
++	.clk_rate = 50000,
++};
++
++static const struct rockchip_saradc_data rk3399_saradc_data = {
++	.num_bits = 10,
++	.num_channels = 6,
++	.clk_rate = 1000000,
++};
++
++static const struct udevice_id rockchip_saradc_ids[] = {
++	{
++		.compatible = "rockchip,saradc",
++		.data = (ulong)&saradc_data,
++	},
++	{
++		.compatible = "rockchip,rk3066-tsadc",
++		.data = (ulong)&rk3066_tsadc_data,
++	}, {
++		.compatible = "rockchip,rk3399-saradc",
++		.data = (ulong)&rk3399_saradc_data,
++	},
++	{ }
++};
++
++U_BOOT_DRIVER(rockchip_saradc) = {
++	.name		= "rockchip_saradc",
++	.id		= UCLASS_ADC,
++	.of_match	= rockchip_saradc_ids,
++	.ops		= &rockchip_saradc_ops,
++	.probe		= rockchip_saradc_probe,
++	.ofdata_to_platdata = rockchip_saradc_ofdata_to_platdata,
++	.priv_auto_alloc_size = sizeof(struct rockchip_saradc_priv),
++};
+-- 
+2.7.4
