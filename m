@@ -1,91 +1,75 @@
-From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [U-Boot,
-	3/8] clk: rockchip: Add rv1108 Saradc clock support
-Date: Wed, 13 Sep 2017 22:45:37 +0200 (CEST)
-Message-ID: <alpine.OSX.2.21.1709132244380.52090@vpn-10-11-0-14.lan>
-References: <1505297379-12638-4-git-send-email-david.wu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1505297379-12638-4-git-send-email-david.wu@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: David Wu <david.wu@rock-chips.com>
-Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, u-boot@lists.denx.de, p.marczak@samsung.com, andy.yan@rock-chips.com, chenjh@rock-chips.com
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [PATCH v9 0/4]  Add Rockchip RGA V4l2 support
+Date: Thu, 14 Sep 2017 09:19:13 +0800
+Message-ID: <1505351957-14479-1-git-send-email-jacob-chen@iotwrt.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, robh+dt@kernel.org, mchehab@kernel.org, linux-media@vger.kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca, Jacob Chen <jacob-chen@iotwrt.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiBXZWQsIDEzIFNlcCAyMDE3LCBEYXZpZCBXdSB3cm90ZToKCj4gU2lnbmVkLW9mZi1ieTog
-RGF2aWQgV3UgPGRhdmlkLnd1QHJvY2stY2hpcHMuY29tPgoKUmV2aWV3ZWQtYnk6IFBoaWxpcHAg
-VG9tc2ljaCA8cGhpbGlwcC50b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KCj4gLS0tCj4g
-YXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9jcnVfcnYxMTA4LmggfCAgNSArKysr
-Cj4gZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3J2MTEwOC5jICAgICAgICAgICAgICAgfCAzNSAr
-KysrKysrKysrKysrKysrKysrKysrKysrCj4gaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9ydjEx
-MDgtY3J1LmggICAgICAgICAgfCAgMiArKwo+IDMgZmlsZXMgY2hhbmdlZCwgNDIgaW5zZXJ0aW9u
-cygrKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAv
-Y3J1X3J2MTEwOC5oIGIvYXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9jcnVfcnYx
-MTA4LmgKPiBpbmRleCAyYTFhZTY5Li5iMTM0NTU5IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL2lu
-Y2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvY3J1X3J2MTEwOC5oCj4gKysrIGIvYXJjaC9hcm0vaW5j
-bHVkZS9hc20vYXJjaC1yb2NrY2hpcC9jcnVfcnYxMTA4LmgKPiBAQCAtOTAsNiArOTAsMTEgQEAg
-ZW51bSB7Cj4gCUNPUkVfQ0xLX0RJVl9TSElGVAk9IDAsCj4gCUNPUkVfQ0xLX0RJVl9NQVNLCT0g
-MHgxZiA8PCBDT1JFX0NMS19ESVZfU0hJRlQsCj4KPiArCS8qIENMS1NFTF9DT04yMiAqLwo+ICsJ
-Q0xLX1NBUkFEQ19ESVZfQ09OX1NISUZUPSAwLAo+ICsJQ0xLX1NBUkFEQ19ESVZfQ09OX01BU0sJ
-PSAweDNmZiA8PCBDTEtfU0FSQURDX0RJVl9DT05fU0hJRlQsCgpDYW4gd2UgdXNlIEdFTk1BU0sg
-aGVyZT8KCj4gKwlDTEtfU0FSQURDX0RJVl9DT05fV0lEVEg9IDEwLAo+ICsKPiAJLyogQ0xLU0VM
-MjRfQ09OICovCj4gCU1BQ19QTExfU0VMX1NISUZUCT0gMTIsCj4gCU1BQ19QTExfU0VMX01BU0sJ
-PSAxIDw8IE1BQ19QTExfU0VMX1NISUZULAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2Nr
-Y2hpcC9jbGtfcnYxMTA4LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGtfcnYxMTA4LmMKPiBp
-bmRleCBjZjk2NmJiLi5hYTk4OWM2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlw
-L2Nsa19ydjExMDguYwo+ICsrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsa19ydjExMDguYwo+
-IEBAIC0zNiw2ICszNiwxMSBAQCBlbnVtIHsKPiAJCQkgI2h6ICJIeiBjYW5ub3QgYmUgaGl0IHdp
-dGggUExMICJcCj4gCQkJICJkaXZpc29ycyBvbiBsaW5lICIgX19zdHJpbmdpZnkoX19MSU5FX18p
-KTsKPgo+ICtzdGF0aWMgaW5saW5lIHUzMiBleHRyYWN0X2JpdHModTMyIHZhbCwgdW5zaWduZWQg
-d2lkdGgsIHVuc2lnbmVkIHNoaWZ0KQo+ICt7Cj4gKwlyZXR1cm4gKHZhbCA+PiBzaGlmdCkgJiAo
-KDEgPDwgd2lkdGgpIC0gMSk7CgpUaGUgY29tbWVudCByZWdhcmRpbmcgYml0ZmllbGQuaCBhcHBs
-aWVzIGFnYWluLgoKPiArfQo+ICsKPiAvKiB1c2UgaW50ZXJnZSBtb2RlKi8KCnR5cG86IGludGVn
-ZXIKCj4gc3RhdGljIGlubGluZSBpbnQgcnYxMTA4X3BsbF9pZChlbnVtIHJrX2Nsa19pZCBjbGtf
-aWQpCj4gewo+IEBAIC0xMzAsNiArMTM1LDMxIEBAIHN0YXRpYyBpbnQgcnYxMTA4X3NmY19zZXRf
-Y2xrKHN0cnVjdCBydjExMDhfY3J1ICpjcnUsIHVpbnQgcmF0ZSkKPiAJcmV0dXJuIERJVl9UT19S
-QVRFKHBsbF9yYXRlLCBkaXYpOwo+IH0KPgo+ICtzdGF0aWMgdWxvbmcgcnYxMTA4X3NhcmFkY19n
-ZXRfY2xrKHN0cnVjdCBydjExMDhfY3J1ICpjcnUpCj4gK3sKPiArCXUzMiBkaXYsIHZhbDsKPiAr
-Cj4gKwl2YWwgPSByZWFkbCgmY3J1LT5jbGtzZWxfY29uWzIyXSk7Cj4gKwlkaXYgPSBleHRyYWN0
-X2JpdHModmFsLCBDTEtfU0FSQURDX0RJVl9DT05fV0lEVEgsCj4gKwkJCSAgIENMS19TQVJBRENf
-RElWX0NPTl9TSElGVCk7Cj4gKwo+ICsJcmV0dXJuIERJVl9UT19SQVRFKE9TQ19IWiwgZGl2KTsK
-PiArfQo+ICsKPiArc3RhdGljIHVsb25nIHJ2MTEwOF9zYXJhZGNfc2V0X2NsayhzdHJ1Y3QgcnYx
-MTA4X2NydSAqY3J1LCB1aW50IGh6KQo+ICt7Cj4gKwlpbnQgc3JjX2Nsa19kaXY7Cj4gKwo+ICsJ
-c3JjX2Nsa19kaXYgPSBESVZfUk9VTkRfVVAoT1NDX0haLCBoeikgLSAxOwo+ICsJYXNzZXJ0KHNy
-Y19jbGtfZGl2IDwgMTI4KTsKPiArCj4gKwlya19jbHJzZXRyZWcoJmNydS0+Y2xrc2VsX2Nvblsy
-Ml0sCj4gKwkJICAgICBDTEtfU0FSQURDX0RJVl9DT05fTUFTSywKPiArCQkgICAgIHNyY19jbGtf
-ZGl2IDw8IENMS19TQVJBRENfRElWX0NPTl9TSElGVCk7Cj4gKwo+ICsJcmV0dXJuIHJ2MTEwOF9z
-YXJhZGNfZ2V0X2NsayhjcnUpOwo+ICt9Cj4gKwo+IHN0YXRpYyB1bG9uZyBydjExMDhfY2xrX2dl
-dF9yYXRlKHN0cnVjdCBjbGsgKmNsaykKPiB7Cj4gCXN0cnVjdCBydjExMDhfY2xrX3ByaXYgKnBy
-aXYgPSBkZXZfZ2V0X3ByaXYoY2xrLT5kZXYpOwo+IEBAIC0xMzcsNiArMTY3LDggQEAgc3RhdGlj
-IHVsb25nIHJ2MTEwOF9jbGtfZ2V0X3JhdGUoc3RydWN0IGNsayAqY2xrKQo+IAlzd2l0Y2ggKGNs
-ay0+aWQpIHsKPiAJY2FzZSAwIC4uLiA2MzoKPiAJCXJldHVybiBya2Nsa19wbGxfZ2V0X3JhdGUo
-cHJpdi0+Y3J1LCBjbGstPmlkKTsKPiArCWNhc2UgU0NMS19TQVJBREM6Cj4gKwkJcmV0dXJuIHJ2
-MTEwOF9zYXJhZGNfZ2V0X2Nsayhwcml2LT5jcnUpOwo+IAlkZWZhdWx0Ogo+IAkJcmV0dXJuIC1F
-Tk9FTlQ7Cj4gCX0KPiBAQCAtMTU0LDYgKzE4Niw5IEBAIHN0YXRpYyB1bG9uZyBydjExMDhfY2xr
-X3NldF9yYXRlKHN0cnVjdCBjbGsgKmNsaywgdWxvbmcgcmF0ZSkKPiAJY2FzZSBTQ0xLX1NGQzoK
-PiAJCW5ld19yYXRlID0gcnYxMTA4X3NmY19zZXRfY2xrKHByaXYtPmNydSwgcmF0ZSk7Cj4gCQli
-cmVhazsKPiArCWNhc2UgU0NMS19TQVJBREM6Cj4gKwkJbmV3X3JhdGUgPSBydjExMDhfc2FyYWRj
-X3NldF9jbGsocHJpdi0+Y3J1LCByYXRlKTsKPiArCQlicmVhazsKPiAJZGVmYXVsdDoKPiAJCXJl
-dHVybiAtRU5PRU5UOwo+IAl9Cj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmluZGluZ3MvY2xv
-Y2svcnYxMTA4LWNydS5oIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9ydjExMDgtY3J1LmgK
-PiBpbmRleCBkMmFkM2JiLi43ZGVmYzZiIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvZHQtYmluZGlu
-Z3MvY2xvY2svcnYxMTA4LWNydS5oCj4gKysrIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9y
-djExMDgtY3J1LmgKPiBAQCAtMzksNiArMzksNyBAQAo+ICNkZWZpbmUgU0NMS19NQUNfVFgJCQk4
-OAo+ICNkZWZpbmUgU0NMS19NQUNSRUYJCQk4OQo+ICNkZWZpbmUgU0NMS19NQUNSRUZfT1VUCQkJ
-OTAKPiArI2RlZmluZSBTQ0xLX1NBUkFEQwkJCTkxCj4KPgo+IC8qIGFjbGsgZ2F0ZXMgKi8KPiBA
-QCAtNjcsNiArNjgsNyBAQAo+ICNkZWZpbmUgUENMS19USU1FUgkJCTI3MAo+ICNkZWZpbmUgUENM
-S19QRVJJCQkJMjcxCj4gI2RlZmluZSBQQ0xLX0dNQUMJCQkyNzIKPiArI2RlZmluZSBQQ0xLX1NB
-UkFEQwkJCTI3Mwo+Cj4gLyogaGNsayBnYXRlcyAqLwo+ICNkZWZpbmUgSENMS19JMlMwXzhDSAkJ
-CTMyMAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUt
-Qm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54
-LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+This patch series add a v4l2 m2m drvier for rockchip RGA direct rendering based 2d graphics acceleration module.
+
+Recently I tried to add protduff support for gstreamer on rockchip platform, and i found that API 
+were not very suitable for my purpose. 
+It shouldn't go upstream until we can figure out what people need, 
+
+change in V9:
+- remove protduff things
+- test with the latest v4l2-compliance
+
+change in V8:
+- remove protduff things
+
+change in V6,V7:
+- correct warning in checkpatch.pl
+
+change in V5:
+- v4l2-compliance: handle invalid pxielformat 
+- v4l2-compliance: add subscribe_event
+- add colorspace support
+
+change in V4:
+- document the controls.
+- change according to Hans's comments
+
+change in V3:
+- rename the controls.
+- add pm_runtime support.
+- enable node by default.
+- correct spelling in documents.
+
+change in V2:
+- generalize the controls.
+- map buffers (10-50 us) in every cmd-run rather than in buffer-import to avoid get_free_pages failed on
+actively used systems.
+- remove status in dt-bindings examples.
+
+Jacob Chen (4):
+  rockchip/rga: v4l2 m2m support
+  ARM: dts: rockchip: add RGA device node for RK3288
+  arm64: dts: rockchip: add RGA device node for RK3399
+  dt-bindings: Document the Rockchip RGA bindings
+
+ .../devicetree/bindings/media/rockchip-rga.txt     |   33 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   11 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   11 +
+ drivers/media/platform/Kconfig                     |   11 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/rockchip-rga/Makefile       |    3 +
+ drivers/media/platform/rockchip-rga/rga-buf.c      |  156 +++
+ drivers/media/platform/rockchip-rga/rga-hw.c       |  435 +++++++++
+ drivers/media/platform/rockchip-rga/rga-hw.h       |  437 +++++++++
+ drivers/media/platform/rockchip-rga/rga.c          | 1030 ++++++++++++++++++++
+ drivers/media/platform/rockchip-rga/rga.h          |  110 +++
+ 11 files changed, 2239 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
+ create mode 100644 drivers/media/platform/rockchip-rga/Makefile
+ create mode 100644 drivers/media/platform/rockchip-rga/rga-buf.c
+ create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.c
+ create mode 100644 drivers/media/platform/rockchip-rga/rga-hw.h
+ create mode 100644 drivers/media/platform/rockchip-rga/rga.c
+ create mode 100644 drivers/media/platform/rockchip-rga/rga.h
+
+-- 
+2.7.4
