@@ -1,44 +1,33 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v1 2/3] cpufreq: rockchip: add support for rk3328 soc
-Date: Thu, 14 Sep 2017 14:24:37 -0700
-Message-ID: <20170914212437.GC11836@ubuntu>
-References: <1503477632-9661-1-git-send-email-cl@rock-chips.com>
- <1503477632-9661-3-git-send-email-cl@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable display subsystem on
+ rk3399-firefly
+Date: Thu, 14 Sep 2017 23:46:17 +0200
+Message-ID: <3392920.sc8iAoP2eY@phil>
+References: <20170824154919.12324-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1503477632-9661-3-git-send-email-cl@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: cl@rock-chips.com
-Cc: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawnguo@kernel.org, rocky.hao@rock-chips.com, afaerber@suse.de, fabio.estevam@nxp.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, rjw@rjwysocki.net, linux-pm@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170824154919.12324-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 23-08-17, 16:40, cl@rock-chips.com wrote:
-> From: Liang Chen <cl@rock-chips.com>
+Am Donnerstag, 24. August 2017, 17:49:19 CEST schrieb Heiko Stuebner:
+> Enable the graphics-related nodes on the rk3399-firefly which makes
+> it possible to see output on the on-board hdmi output.
 > 
-> Add compatible rockchip,rk3328 to the machines table to
-> launch cpufreq-dt driver for rk3328 soc.
-> 
-> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> ---
->  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
-> index 1c26292..f16c3ba 100644
-> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
-> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-> @@ -76,6 +76,7 @@
->  	{ .compatible = "rockchip,rk3188", },
->  	{ .compatible = "rockchip,rk3228", },
->  	{ .compatible = "rockchip,rk3288", },
-> +	{ .compatible = "rockchip,rk3328", },
->  	{ .compatible = "rockchip,rk3366", },
->  	{ .compatible = "rockchip,rk3368", },
->  	{ .compatible = "rockchip,rk3399", },
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-
--- 
-viresh
+applied for 4.15 after dropping the assigned-clock properties.
+We have clock defaults for the vops in rk3399.dtsi now and
+the firefly works nicely without them here.
