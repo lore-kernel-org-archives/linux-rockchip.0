@@ -1,80 +1,44 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: i2s: fix unbalanced
-	clk_disable" to the asoc tree
-Date: Thu, 14 Sep 2017 10:27:17 -0700 (PDT)
-Message-ID: <20170914172717.1B3CE4400D2@finisterre.ee.mobilebroadband>
-References: <20170914155855.28768-1-john@metanate.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v1 2/3] cpufreq: rockchip: add support for rk3328 soc
+Date: Thu, 14 Sep 2017 14:24:37 -0700
+Message-ID: <20170914212437.GC11836@ubuntu>
+References: <1503477632-9661-1-git-send-email-cl@rock-chips.com>
+ <1503477632-9661-3-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170914155855.28768-1-john@metanate.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: John Keeping <john@metanate.com>
-Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1503477632-9661-3-git-send-email-cl@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawnguo@kernel.org, rocky.hao@rock-chips.com, afaerber@suse.de, fabio.estevam@nxp.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, rjw@rjwysocki.net, linux-pm@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On 23-08-17, 16:40, cl@rock-chips.com wrote:
+> From: Liang Chen <cl@rock-chips.com>
+> 
+> Add compatible rockchip,rk3328 to the machines table to
+> launch cpufreq-dt driver for rk3328 soc.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> ---
+>  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
+> index 1c26292..f16c3ba 100644
+> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
+> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
+> @@ -76,6 +76,7 @@
+>  	{ .compatible = "rockchip,rk3188", },
+>  	{ .compatible = "rockchip,rk3228", },
+>  	{ .compatible = "rockchip,rk3288", },
+> +	{ .compatible = "rockchip,rk3328", },
+>  	{ .compatible = "rockchip,rk3366", },
+>  	{ .compatible = "rockchip,rk3368", },
+>  	{ .compatible = "rockchip,rk3399", },
 
-   ASoC: rockchip: i2s: fix unbalanced clk_disable
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-has been applied to the asoc tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 32debfcd3ff0939c93238ddde03ffcc96cca5c60 Mon Sep 17 00:00:00 2001
-From: John Keeping <john@metanate.com>
-Date: Thu, 14 Sep 2017 16:58:55 +0100
-Subject: [PATCH] ASoC: rockchip: i2s: fix unbalanced clk_disable
-
-mclk is enabled and disabled only in i2s_runtime_{resume,suspend}() and
-we ensure that the device is runtime suspended before reaching this
-clk_disable_unprepare() call, so it is wrong to call it again here.
-
-Signed-off-by: John Keeping <john@metanate.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 199338fdeda0..a7972c2d4e7b 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -694,7 +694,6 @@ static int rockchip_i2s_remove(struct platform_device *pdev)
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		i2s_runtime_suspend(&pdev->dev);
- 
--	clk_disable_unprepare(i2s->mclk);
- 	clk_disable_unprepare(i2s->hclk);
- 
- 	return 0;
 -- 
-2.13.2
+viresh
