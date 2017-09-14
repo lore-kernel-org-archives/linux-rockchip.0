@@ -1,108 +1,42 @@
 From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH 1/3] dt-bindings: Add document for rockchip RGB output interface
-Date: Thu, 14 Sep 2017 11:43:18 +0800
-Message-ID: <1505360600-196567-1-git-send-email-hjc@rock-chips.com>
+Subject: [PATCH 3/3] drm/rockchip: vop: Add more RGB output interface type
+Date: Thu, 14 Sep 2017 11:43:28 +0800
+Message-ID: <1505360608-377-1-git-send-email-hjc@rock-chips.com>
 References: <1505360594-196508-1-git-send-email-hjc@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1505360594-196508-1-git-send-email-hjc@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This path add support rv1108 rgb output interface driver.
-
-Signed-off-by: Sandy Huang <hjc@rock-chips.com>
----
- .../bindings/display/rockchip/rockchip-rgb.txt     | 80 ++++++++++++++++++++++
- 1 file changed, 80 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
-new file mode 100644
-index 0000000..4164512
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
-@@ -0,0 +1,80 @@
-+Rockchip RV1108 RGB interface
-+================================
-+
-+Required properties:
-+- compatible: matching the soc type:
-+	- "rockchip,rv1108-rgb";
-+
-+Optional properties:
-+- pinctrl-names: must contain a "lcdc" entry.
-+- pinctrl-0: pin control group to be used for this interface.
-+
-+Required nodes:
-+- rockchip,rgb-mode: should be "p888", "p666", "p565", "s888", "s888-dummy"
-+	- p888: output r8-g8-b8 at each dclk cycle for per-pixel
-+	- p666: output r6-g6-b6 at each dclk cycle for per-pixel
-+	- p565: output r5-g6-b5 at each dclk cycle for per-pixel
-+	- s888: output r8-g8-b8 in three dclk cycle for per-pixel
-+	- s888-dmmy: output r8-g8-b8-dummy in four dclk cycle for per-pixel
-+
-+The rgb has two video ports described by:
-+	Documentation/devicetree/bindings/media/video-interfaces.txt
-+Their connections are modeled using the OF graph bindings specified in
-+	Documentation/devicetree/bindings/graph.txt.
-+
-+- video port 0 for the VOP input, the remote endpoint maybe vopb/vopl/vop
-+- video port 1 for either a panel or subsequent encoder
-+
-+the panel described by:
-+	Documentation/devicetree/bindings/display/panel/simple-panel.txt
-+Panel other required properties:
-+- ports for remote rgb output.
-+
-+Example:
-+
-+panel: panel {
-+	compatible = "auo,b101ean01";
-+	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
-+
-+	ports {
-+		panel_in_rgb: endpoint {
-+			remote-endpoint = <&rgb_out_panel>;
-+		};
-+	};
-+};
-+
-+For Rockchip RV1108:
-+
-+	rgb: rgb {
-+		compatible = "rockchip,rv1108-rgb";
-+		pinctrl-names = "lcdc";
-+		pinctrl-0 = <&lcdc_ctl>;
-+		rockchip,rgb-mode = "p888";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			rgb_in: port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				rgb_in_vop: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vop_out_rgb>;
-+				};
-+			};
-+
-+			rgb_out: port@1 {
-+				reg = <1>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				rgb_out_panel: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&panel_in_rgb>;
-+				};
-+			};
-+		};
-+	};
--- 
-2.7.4
+VGhpcyBwYXRjaCBhZGQgc2VyaWFsIFJHQiBvdXRwdXQgaW50ZXJmYWNlIGZvciByb2NrY2hpcCB2
+b3AsIHRoZQptb3JlIGluZm8gYWJvdXQgc2VyaWFsIFJHQiBvdXRwdXQgaW50ZXJmYWNlIGRlc2Ny
+aWJlZCBhdCB0aGUKZm9sbG93aW5nIGZpbGU6CgpEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC1yZ2IudHh0CgpTaWduZWQtb2ZmLWJ5OiBT
+YW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAyICsrCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
+b25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKaW5k
+ZXggNTZiYmQyZS4uNTlhMDFjMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5oCkBAIC0yMDksNiArMjA5LDggQEAgc3RydWN0IHZvcF9kYXRhIHsKICNkZWZp
+bmUgUk9DS0NISVBfT1VUX01PREVfUDg4OAkwCiAjZGVmaW5lIFJPQ0tDSElQX09VVF9NT0RFX1A2
+NjYJMQogI2RlZmluZSBST0NLQ0hJUF9PVVRfTU9ERV9QNTY1CTIKKyNkZWZpbmUgUk9DS0NISVBf
+T1VUX01PREVfUzg4OAk4CisjZGVmaW5lIFJPQ0tDSElQX09VVF9NT0RFX1M4ODhfRFVNTVkJMTIK
+IC8qIGZvciB1c2Ugc3BlY2lhbCBvdXRmYWNlICovCiAjZGVmaW5lIFJPQ0tDSElQX09VVF9NT0RF
+X0FBQUEJMTUKIAotLSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
