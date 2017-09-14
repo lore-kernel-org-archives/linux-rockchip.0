@@ -1,31 +1,39 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: rk3288-vyasa: Enable vops and hdmi output
-Date: Fri, 15 Sep 2017 00:10:44 +0200
-Message-ID: <6354334.UcDICnMmPf@phil>
-References: <1505118382-6023-1-git-send-email-jteki@openedev.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: cpufreq(-dt) with two clocks but one regulator
+Date: Fri, 15 Sep 2017 00:53:42 +0200
+Message-ID: <1515316.mHJbnBRRvK@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1505118382-6023-1-git-send-email-jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jagan Teki <jagannadh.teki-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, Klaus Goger <klaus.goger@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Viresh,
 
-Am Montag, 11. September 2017, 13:56:21 CEST schrieb Jagan Teki:
-> From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> 
-> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+if possible I'd like a pointer in the right direction for the following
+situation:
 
-I've applied both for 4.15, but folded both patches into one and adjusted
-the commit message.
+The rk3368 has two cpu clusters of 4 Cortex-A53 cores each, with separate
+clock supplies but sharing its supplying regulator. It looks like it was
+originally meant for some switched big-little system, with the little
+cluster maxing out at 1.2GHz while the big cluster can reach 1.5GHz.
+
+This of course fails miserably with current cpufreq, as the two sets
+of operating points fight over control of the regulator and after talking
+with real-life users of the soc it seems most desireable to have all
+8 cores available at 1.2GHz than only 4 at 1.5GHz max.
+
+But as the clock seems to be bound to the opp table itself simply sharing
+the table of course also doesn't work, as only the first clock would be set.
 
 
+I'm currently only seeing somehow hacky options to solve this, so if you
+have some direction on how to solve something like this I would be really
+grateful :-)
+
+
+Thanks
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
