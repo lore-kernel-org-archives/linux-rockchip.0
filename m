@@ -1,39 +1,43 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: cpufreq(-dt) with two clocks but one regulator
-Date: Fri, 15 Sep 2017 00:53:42 +0200
-Message-ID: <1515316.mHJbnBRRvK@phil>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH 1/5] dt-bindings: rockchip-thermal: Support the RV1108 SoC
+ compatible
+Date: Fri, 15 Sep 2017 09:49:11 +0800
+Message-ID: <12073627-41af-3480-6379-839e07f5e8f3@rock-chips.com>
+References: <1503570475-7850-1-git-send-email-rocky.hao@rock-chips.com>
+ <1503570475-7850-2-git-send-email-rocky.hao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1503570475-7850-2-git-send-email-rocky.hao@rock-chips.com>
+Content-Language: en-US
 Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, Klaus Goger <klaus.goger@theobroma-systems.com>
+To: Rocky Hao <rocky.hao@rock-chips.com>
+Cc: rui.zhang@intel.com, edubezval@gmail.com, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, cl@rock-chips.com, william.wu@rock-chips.com, jay.xu@rock-chips.com, xxx@rock-chips.com, linux-arm-kernel@lists.infradead.org, wxt@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Viresh,
+Hi Rocky,
 
-if possible I'd like a pointer in the right direction for the following
-situation:
+在 2017年08月24日 18:27, Rocky Hao 写道:
+> Add a new compatible for thermal founding on RV1108 SoCs.
+>
+> Signed-off-by: Rocky Hao <rocky.hao@rock-chips.com>
+> ---
+>   Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 1 +
+>   1 file changed, 1 insertion(+)
+>
+> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+> index e3a6234fb1ac..43d744e5305e 100644
+> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+> @@ -2,6 +2,7 @@
+>   
+>   Required properties:
+>   - compatible : should be "rockchip,<name>-tsadc"
+> +   "rockchip,rv1108-tsadc": found on RV1108 SoCs
 
-The rk3368 has two cpu clusters of 4 Cortex-A53 cores each, with separate
-clock supplies but sharing its supplying regulator. It looks like it was
-originally meant for some switched big-little system, with the little
-cluster maxing out at 1.2GHz while the big cluster can reach 1.5GHz.
-
-This of course fails miserably with current cpufreq, as the two sets
-of operating points fight over control of the regulator and after talking
-with real-life users of the soc it seems most desireable to have all
-8 cores available at 1.2GHz than only 4 at 1.5GHz max.
-
-But as the clock seems to be bound to the opp table itself simply sharing
-the table of course also doesn't work, as only the first clock would be set.
-
-
-I'm currently only seeing somehow hacky options to solve this, so if you
-have some direction on how to solve something like this I would be really
-grateful :-)
-
-
-Thanks
-Heiko
+According to the order,  we should put the string after the 
+"rockchip,rk3399-tsadc"..., not here.
+>      "rockchip,rk3228-tsadc": found on RK3228 SoCs
+>      "rockchip,rk3288-tsadc": found on RK3288 SoCs
+>      "rockchip,rk3328-tsadc": found on RK3328 SoCs
