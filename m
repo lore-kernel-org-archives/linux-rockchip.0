@@ -1,74 +1,53 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/7] dt-bindings: gpu: mali-utgard: add optional supply regulator
-Date: Fri, 15 Sep 2017 11:01:45 +0200
-Message-ID: <11237143.FSQKKME6IQ@phil>
-References: <20170905105739.8330-1-heiko@sntech.de> <5517832.4TA9c0NYD6@diego> <20170913143415.fcds556hdqwnhsvm@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Subject: [PATCH v2 1/8] dt-bindings: gpu: mali-utgard: Add Rockchip Utgard Malis
+Date: Fri, 15 Sep 2017 11:18:05 +0200
+Message-ID: <20170915091812.13368-2-heiko@sntech.de>
+References: <20170915091812.13368-1-heiko@sntech.de>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170913143415.fcds556hdqwnhsvm@rob-hp-laptop>
+In-Reply-To: <20170915091812.13368-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 13. September 2017, 09:34:15 CEST schrieb Rob Herring:
-> On Wed, Sep 13, 2017 at 12:12:24AM +0200, Heiko Stübner wrote:
-> > Hi Rob,
-> > 
-> > Am Dienstag, 12. September 2017, 17:09:20 CEST schrieb Rob Herring:
-> > > On Tue, Sep 05, 2017 at 12:57:34PM +0200, Heiko Stuebner wrote:
-> > > > Mali GPUs have a separate supplying regulator in a lot of socs,
-> > > > so describe a mali-supply property. The already described
-> > > > operating points will likely also need access to this regulator.
-> > > > 
-> > > > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> > > > ---
-> > > > 
-> > > >  Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 3 +++
-> > > >  1 file changed, 3 insertions(+)
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
-> > > > b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt index
-> > > > 3b7f6f72f032..bcaa640c883f 100644
-> > > > --- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
-> > > > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
-> > > > 
-> > > > @@ -39,6 +39,9 @@ Optional properties:
-> > > >      Memory region to allocate from, as defined in
-> > > >      Documentation/devicetree/bindi/reserved-memory/reserved-memory.txt
-> > > > 
-> > > > +  - mali-supply : Phandle to regulator for the Mali device. Refer to
-> > > > +    Documentation/devicetree/bindings/regulator/regulator.txt for
-> > > > details.
-> > > 
-> > > Wouldn't a power domain be more appropriate?
-> > 
-> > At least on Rockchip socs there is a power-domain, but also the separate 
-> > additional regulator. See the similar mali-midgard binding.
-> 
-> And that regulator's state is independent of the power domain's state? 
->
-> But I guess OPPs need a regulator. Really we should allow OPPs to be 
-> tied to the power domain. Maybe we do, I can't keep up with the ever 
-> evolving PM stuff.
+Some (older or lower power) Rockchip socs use Utgard-based Mali-GPUs.
+So add the necessary compatibles for them. As the setup is the same for
+all of them (needing only the additional reset line), they get added in
+a somewhat condensed form, to not inflate the document unnecessary.
 
-Yep, the external gpu regulator state is completely independent of the
-power-domain inside the soc and is most of the time one of the regulators
-coming from the external pmic or sometimes even a completely separate
-i2c-connected ic.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-It's the same for the cpu cores on Rockchip socs, they have power-domains
-for controlling the actual on/off state and need separate supplying
-i2c-connected regulators that still have to be enabled on their own.
-
-
-> So, given we already have it for midgard,
-> 
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-Thanks, added for v2.
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+index b4ebd56d03f3..24aacafb2594 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt
+@@ -13,6 +13,10 @@ Required properties:
+       + allwinner,sun50i-h5-mali
+       + amlogic,meson-gxbb-mali
+       + amlogic,meson-gxl-mali
++      + rockchip,rk3036-mali
++      + rockchip,rk3066-mali
++      + rockchip,rk3188-mali
++      + rockchip,rk3228-mali
+       + stericsson,db8500-mali
+ 
+   - reg: Physical base address and length of the GPU registers
+@@ -63,6 +67,10 @@ to specify one more vendor-specific compatible, among:
+     Required properties:
+       * resets: phandle to the reset line for the GPU
+ 
++  - Rockchip variants:
++    Required properties:
++      * resets: phandle to the reset line for the GPU
++
+   - stericsson,db8500-mali
+     Required properties:
+       * interrupt-names and interrupts:
+-- 
+2.14.1
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
