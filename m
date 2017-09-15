@@ -1,841 +1,563 @@
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH] gpu: drm: rockchip: Replace dev_* with DRM_DEV_*
-Date: Fri, 15 Sep 2017 00:47:42 -0600
-Message-ID: <20170915064742.GA8367@Haneen>
+From: Julia Lawall <julia.lawall@lip6.fr>
+Subject: Re: [Outreachy kernel] [PATCH] gpu: drm: rockchip: Replace dev_*
+ with DRM_DEV_*
+Date: Fri, 15 Sep 2017 08:58:02 +0200 (CEST)
+Message-ID: <alpine.DEB.2.20.1709150857490.2287@hadrien>
+References: <20170915064742.GA8367@Haneen>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Cc: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, greg <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170915064742.GA8367@Haneen>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Haneen Mohammed <hamohammed.sa@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, greg <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, outreachy-kernel <outreachy-kernel@googlegroups.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch replace instances of dev_info/err/debug with
-DRM_DEV_INFO/ERROR/WARN respectively inorder to use a drm-formatted
-specific log messages. Issue corrected with the help of the following
-Coccinelle script:
-
-@r@
-@@
-
-(
--dev_info
-+DRM_DEV_INFO
-|
--dev_err
-+DRM_DEV_ERROR
-|
--dev_dbg
-+DRM_DEV_DEBUG
-)
-
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 26 +++----
- drivers/gpu/drm/rockchip/cdn-dp-reg.c           |  2 +-
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c          | 90 ++++++++++++++-----------
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     | 19 +++---
- drivers/gpu/drm/rockchip/inno_hdmi.c            | 14 ++--
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c     | 12 ++--
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c      |  8 ++-
- drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c   | 18 +++--
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 32 ++++-----
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c     |  2 +-
- 10 files changed, 125 insertions(+), 98 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 9606121..4d3f6ad 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -88,7 +88,7 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
- 	if (!analogix_dp_psr_supported(dp->dev))
- 		return;
- 
--	dev_dbg(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
-+	DRM_DEV_DEBUG(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
- 
- 	spin_lock_irqsave(&dp->psr_lock, flags);
- 	if (enabled)
-@@ -110,7 +110,7 @@ static void analogix_dp_psr_work(struct work_struct *work)
- 	ret = rockchip_drm_wait_vact_end(dp->encoder.crtc,
- 					 PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
- 	if (ret) {
--		dev_err(dp->dev, "line flag interrupt did not arrive\n");
-+		DRM_DEV_ERROR(dp->dev, "line flag interrupt did not arrive\n");
- 		return;
- 	}
- 
-@@ -140,13 +140,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- 
- 	ret = clk_prepare_enable(dp->pclk);
- 	if (ret < 0) {
--		dev_err(dp->dev, "failed to enable pclk %d\n", ret);
-+		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
- 		return ret;
- 	}
- 
- 	ret = rockchip_dp_pre_init(dp);
- 	if (ret < 0) {
--		dev_err(dp->dev, "failed to dp pre init %d\n", ret);
-+		DRM_DEV_ERROR(dp->dev, "failed to dp pre init %d\n", ret);
- 		clk_disable_unprepare(dp->pclk);
- 		return ret;
- 	}
-@@ -211,17 +211,17 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder)
- 	else
- 		val = dp->data->lcdsel_big;
- 
--	dev_dbg(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
-+	DRM_DEV_DEBUG(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
- 
- 	ret = clk_prepare_enable(dp->grfclk);
- 	if (ret < 0) {
--		dev_err(dp->dev, "failed to enable grfclk %d\n", ret);
-+		DRM_DEV_ERROR(dp->dev, "failed to enable grfclk %d\n", ret);
- 		return;
- 	}
- 
- 	ret = regmap_write(dp->grf, dp->data->lcdsel_grf_reg, val);
- 	if (ret != 0)
--		dev_err(dp->dev, "Could not write to GRF: %d\n", ret);
-+		DRM_DEV_ERROR(dp->dev, "Could not write to GRF: %d\n", ret);
- 
- 	clk_disable_unprepare(dp->grfclk);
- }
-@@ -277,7 +277,7 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
- 
- 	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(dp->grf)) {
--		dev_err(dev, "failed to get rockchip,grf property\n");
-+		DRM_DEV_ERROR(dev, "failed to get rockchip,grf property\n");
- 		return PTR_ERR(dp->grf);
- 	}
- 
-@@ -287,31 +287,31 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
- 	} else if (PTR_ERR(dp->grfclk) == -EPROBE_DEFER) {
- 		return -EPROBE_DEFER;
- 	} else if (IS_ERR(dp->grfclk)) {
--		dev_err(dev, "failed to get grf clock\n");
-+		DRM_DEV_ERROR(dev, "failed to get grf clock\n");
- 		return PTR_ERR(dp->grfclk);
- 	}
- 
- 	dp->pclk = devm_clk_get(dev, "pclk");
- 	if (IS_ERR(dp->pclk)) {
--		dev_err(dev, "failed to get pclk property\n");
-+		DRM_DEV_ERROR(dev, "failed to get pclk property\n");
- 		return PTR_ERR(dp->pclk);
- 	}
- 
- 	dp->rst = devm_reset_control_get(dev, "dp");
- 	if (IS_ERR(dp->rst)) {
--		dev_err(dev, "failed to get dp reset control\n");
-+		DRM_DEV_ERROR(dev, "failed to get dp reset control\n");
- 		return PTR_ERR(dp->rst);
- 	}
- 
- 	ret = clk_prepare_enable(dp->pclk);
- 	if (ret < 0) {
--		dev_err(dp->dev, "failed to enable pclk %d\n", ret);
-+		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
- 		return ret;
- 	}
- 
- 	ret = rockchip_dp_pre_init(dp);
- 	if (ret < 0) {
--		dev_err(dp->dev, "failed to pre init %d\n", ret);
-+		DRM_DEV_ERROR(dp->dev, "failed to pre init %d\n", ret);
- 		clk_disable_unprepare(dp->pclk);
- 		return ret;
- 	}
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-index b14d211..eb3042c 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-@@ -323,7 +323,7 @@ int cdn_dp_load_firmware(struct cdn_dp_device *dp, const u32 *i_mem,
- 	reg = readl(dp->regs + VER_LIB_H_ADDR) & 0xff;
- 	dp->fw_version |= reg << 24;
- 
--	dev_dbg(dp->dev, "firmware version: %x\n", dp->fw_version);
-+	DRM_DEV_DEBUG(dp->dev, "firmware version: %x\n", dp->fw_version);
- 
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 9a20b9d..ad40d15 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -430,9 +430,9 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 
- 	testdin = max_mbps_to_testdin(dsi->lane_mbps);
- 	if (testdin < 0) {
--		dev_err(dsi->dev,
--			"failed to get testdin for %dmbps lane clock\n",
--			dsi->lane_mbps);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "failed to get testdin for %dmbps lane clock\n",
-+			      dsi->lane_mbps);
- 		return testdin;
- 	}
- 
-@@ -443,7 +443,7 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 
- 	ret = clk_prepare_enable(dsi->phy_cfg_clk);
- 	if (ret) {
--		dev_err(dsi->dev, "Failed to enable phy_cfg_clk\n");
-+		DRM_DEV_ERROR(dsi->dev, "Failed to enable phy_cfg_clk\n");
- 		return ret;
- 	}
- 
-@@ -501,7 +501,7 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 	ret = readl_poll_timeout(dsi->base + DSI_PHY_STATUS,
- 				 val, val & LOCK, 1000, PHY_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
--		dev_err(dsi->dev, "failed to wait for phy lock state\n");
-+		DRM_DEV_ERROR(dsi->dev, "failed to wait for phy lock state\n");
- 		goto phy_init_end;
- 	}
- 
-@@ -509,8 +509,8 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
- 				 val, val & STOP_STATE_CLK_LANE, 1000,
- 				 PHY_STATUS_TIMEOUT_US);
- 	if (ret < 0)
--		dev_err(dsi->dev,
--			"failed to wait for phy clk lane stop state\n");
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "failed to wait for phy clk lane stop state\n");
- 
- phy_init_end:
- 	clk_disable_unprepare(dsi->phy_cfg_clk);
-@@ -529,8 +529,9 @@ static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
- 
- 	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
- 	if (bpp < 0) {
--		dev_err(dsi->dev, "failed to get bpp for pixel format %d\n",
--			dsi->format);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "failed to get bpp for pixel format %d\n",
-+			      dsi->format);
- 		return bpp;
- 	}
- 
-@@ -541,7 +542,8 @@ static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
- 		if (tmp < max_mbps)
- 			target_mbps = tmp;
- 		else
--			dev_err(dsi->dev, "DPHY clock frequency is out of range\n");
-+			DRM_DEV_ERROR(dsi->dev,
-+				      "DPHY clock frequency is out of range\n");
- 	}
- 
- 	pllref = DIV_ROUND_UP(clk_get_rate(dsi->pllref_clk), USEC_PER_SEC);
-@@ -582,8 +584,9 @@ static int dw_mipi_dsi_host_attach(struct mipi_dsi_host *host,
- 	struct dw_mipi_dsi *dsi = host_to_dsi(host);
- 
- 	if (device->lanes > dsi->pdata->max_data_lanes) {
--		dev_err(dsi->dev, "the number of data lanes(%u) is too many\n",
--			device->lanes);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "the number of data lanes(%u) is too many\n",
-+			      device->lanes);
- 		return -EINVAL;
- 	}
- 
-@@ -632,7 +635,8 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- 				 val, !(val & GEN_CMD_FULL), 1000,
- 				 CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
--		dev_err(dsi->dev, "failed to get available command FIFO\n");
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "failed to get available command FIFO\n");
- 		return ret;
- 	}
- 
-@@ -643,7 +647,7 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- 				 val, (val & mask) == mask,
- 				 1000, CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret < 0) {
--		dev_err(dsi->dev, "failed to write command FIFO\n");
-+		DRM_DEV_ERROR(dsi->dev, "failed to write command FIFO\n");
- 		return ret;
- 	}
- 
-@@ -663,8 +667,9 @@ static int dw_mipi_dsi_dcs_short_write(struct dw_mipi_dsi *dsi,
- 		data |= tx_buf[1] << 8;
- 
- 	if (msg->tx_len > 2) {
--		dev_err(dsi->dev, "too long tx buf length %zu for short write\n",
--			msg->tx_len);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "too long tx buf length %zu for short write\n",
-+			      msg->tx_len);
- 		return -EINVAL;
- 	}
- 
-@@ -682,8 +687,9 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 	u32 val;
- 
- 	if (msg->tx_len < 3) {
--		dev_err(dsi->dev, "wrong tx buf length %zu for long write\n",
--			msg->tx_len);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "wrong tx buf length %zu for long write\n",
-+			      msg->tx_len);
- 		return -EINVAL;
- 	}
- 
-@@ -704,8 +710,8 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 					 val, !(val & GEN_PLD_W_FULL), 1000,
- 					 CMD_PKT_STATUS_TIMEOUT_US);
- 		if (ret < 0) {
--			dev_err(dsi->dev,
--				"failed to get available write payload FIFO\n");
-+			DRM_DEV_ERROR(dsi->dev,
-+				      "failed to get available write payload FIFO\n");
- 			return ret;
- 		}
- 	}
-@@ -731,8 +737,8 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
- 		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
- 		break;
- 	default:
--		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
--			msg->type);
-+		DRM_DEV_ERROR(dsi->dev, "unsupported message type 0x%02x\n",
-+			      msg->type);
- 		ret = -EINVAL;
- 	}
- 
-@@ -935,7 +941,8 @@ static void dw_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
- 		return;
- 
- 	if (clk_prepare_enable(dsi->pclk)) {
--		dev_err(dsi->dev, "%s: Failed to enable pclk\n", __func__);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "%s: Failed to enable pclk\n", __func__);
- 		return;
- 	}
- 
-@@ -967,7 +974,8 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 		return;
- 
- 	if (clk_prepare_enable(dsi->pclk)) {
--		dev_err(dsi->dev, "%s: Failed to enable pclk\n", __func__);
-+		DRM_DEV_ERROR(dsi->dev,
-+			      "%s: Failed to enable pclk\n", __func__);
- 		return;
- 	}
- 
-@@ -991,7 +999,7 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 	 */
- 	ret = clk_prepare_enable(dsi->grf_clk);
- 	if (ret) {
--		dev_err(dsi->dev, "Failed to enable grf_clk: %d\n", ret);
-+		DRM_DEV_ERROR(dsi->dev, "Failed to enable grf_clk: %d\n", ret);
- 		return;
- 	}
- 
-@@ -1004,7 +1012,7 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 
- 	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_CMD_MODE);
- 	if (drm_panel_prepare(dsi->panel))
--		dev_err(dsi->dev, "failed to prepare panel\n");
-+		DRM_DEV_ERROR(dsi->dev, "failed to prepare panel\n");
- 
- 	dw_mipi_dsi_set_mode(dsi, DW_MIPI_DSI_VID_MODE);
- 	drm_panel_enable(dsi->panel);
-@@ -1017,7 +1025,8 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 		val = pdata->dsi0_en_bit << 16;
- 
- 	regmap_write(dsi->grf_regmap, pdata->grf_switch_reg, val);
--	dev_dbg(dsi->dev, "vop %s output to dsi0\n", (mux) ? "LIT" : "BIG");
-+	DRM_DEV_DEBUG(dsi->dev,
-+		      "vop %s output to dsi0\n", (mux) ? "LIT" : "BIG");
- 	dsi->dpms_mode = DRM_MODE_DPMS_ON;
- 
- 	clk_disable_unprepare(dsi->grf_clk);
-@@ -1111,7 +1120,7 @@ static int dw_mipi_dsi_register(struct drm_device *drm,
- 	ret = drm_encoder_init(drm, &dsi->encoder, &dw_mipi_dsi_encoder_funcs,
- 			       DRM_MODE_ENCODER_DSI, NULL);
- 	if (ret) {
--		dev_err(dev, "Failed to initialize encoder with drm\n");
-+		DRM_DEV_ERROR(dev, "Failed to initialize encoder with drm\n");
- 		return ret;
- 	}
- 
-@@ -1133,7 +1142,7 @@ static int rockchip_mipi_parse_dt(struct dw_mipi_dsi *dsi)
- 
- 	dsi->grf_regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(dsi->grf_regmap)) {
--		dev_err(dsi->dev, "Unable to get rockchip,grf\n");
-+		DRM_DEV_ERROR(dsi->dev, "Unable to get rockchip,grf\n");
- 		return PTR_ERR(dsi->grf_regmap);
- 	}
- 
-@@ -1205,14 +1214,15 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 	dsi->pllref_clk = devm_clk_get(dev, "ref");
- 	if (IS_ERR(dsi->pllref_clk)) {
- 		ret = PTR_ERR(dsi->pllref_clk);
--		dev_err(dev, "Unable to get pll reference clock: %d\n", ret);
-+		DRM_DEV_ERROR(dev,
-+			      "Unable to get pll reference clock: %d\n", ret);
- 		return ret;
- 	}
- 
- 	dsi->pclk = devm_clk_get(dev, "pclk");
- 	if (IS_ERR(dsi->pclk)) {
- 		ret = PTR_ERR(dsi->pclk);
--		dev_err(dev, "Unable to get pclk: %d\n", ret);
-+		DRM_DEV_ERROR(dev, "Unable to get pclk: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -1226,7 +1236,8 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 		if (ret == -ENOENT) {
- 			apb_rst = NULL;
- 		} else {
--			dev_err(dev, "Unable to get reset control: %d\n", ret);
-+			DRM_DEV_ERROR(dev,
-+				      "Unable to get reset control: %d\n", ret);
- 			return ret;
- 		}
- 	}
-@@ -1234,7 +1245,8 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 	if (apb_rst) {
- 		ret = clk_prepare_enable(dsi->pclk);
- 		if (ret) {
--			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
-+			DRM_DEV_ERROR(dev,
-+				      "%s: Failed to enable pclk\n", __func__);
- 			return ret;
- 		}
- 
-@@ -1249,7 +1261,8 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 		dsi->phy_cfg_clk = devm_clk_get(dev, "phy_cfg");
- 		if (IS_ERR(dsi->phy_cfg_clk)) {
- 			ret = PTR_ERR(dsi->phy_cfg_clk);
--			dev_err(dev, "Unable to get phy_cfg_clk: %d\n", ret);
-+			DRM_DEV_ERROR(dev,
-+				      "Unable to get phy_cfg_clk: %d\n", ret);
- 			return ret;
- 		}
- 	}
-@@ -1258,20 +1271,21 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 		dsi->grf_clk = devm_clk_get(dev, "grf");
- 		if (IS_ERR(dsi->grf_clk)) {
- 			ret = PTR_ERR(dsi->grf_clk);
--			dev_err(dev, "Unable to get grf_clk: %d\n", ret);
-+			DRM_DEV_ERROR(dev, "Unable to get grf_clk: %d\n", ret);
- 			return ret;
- 		}
- 	}
- 
- 	ret = clk_prepare_enable(dsi->pllref_clk);
- 	if (ret) {
--		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
-+		DRM_DEV_ERROR(dev,
-+			      "%s: Failed to enable pllref_clk\n", __func__);
- 		return ret;
- 	}
- 
- 	ret = dw_mipi_dsi_register(drm, dsi);
- 	if (ret) {
--		dev_err(dev, "Failed to register mipi_dsi: %d\n", ret);
-+		DRM_DEV_ERROR(dev, "Failed to register mipi_dsi: %d\n", ret);
- 		goto err_pllref;
- 	}
- 
-@@ -1281,7 +1295,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 	dsi->dsi_host.dev = dev;
- 	ret = mipi_dsi_host_register(&dsi->dsi_host);
- 	if (ret) {
--		dev_err(dev, "Failed to register MIPI host: %d\n", ret);
-+		DRM_DEV_ERROR(dev, "Failed to register MIPI host: %d\n", ret);
- 		goto err_cleanup;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index ccd5d59..1eb02a8 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -168,7 +168,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 
- 	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(hdmi->regmap)) {
--		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
-+		DRM_DEV_ERROR(hdmi->dev, "Unable to get rockchip,grf\n");
- 		return PTR_ERR(hdmi->regmap);
- 	}
- 
-@@ -178,7 +178,7 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 	} else if (PTR_ERR(hdmi->vpll_clk) == -EPROBE_DEFER) {
- 		return -EPROBE_DEFER;
- 	} else if (IS_ERR(hdmi->vpll_clk)) {
--		dev_err(hdmi->dev, "failed to get grf clock\n");
-+		DRM_DEV_ERROR(hdmi->dev, "failed to get grf clock\n");
- 		return PTR_ERR(hdmi->vpll_clk);
- 	}
- 
-@@ -188,13 +188,14 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 	} else if (PTR_ERR(hdmi->grf_clk) == -EPROBE_DEFER) {
- 		return -EPROBE_DEFER;
- 	} else if (IS_ERR(hdmi->grf_clk)) {
--		dev_err(hdmi->dev, "failed to get grf clock\n");
-+		DRM_DEV_ERROR(hdmi->dev, "failed to get grf clock\n");
- 		return PTR_ERR(hdmi->grf_clk);
- 	}
- 
- 	ret = clk_prepare_enable(hdmi->vpll_clk);
- 	if (ret) {
--		dev_err(hdmi->dev, "Failed to enable HDMI vpll: %d\n", ret);
-+		DRM_DEV_ERROR(hdmi->dev,
-+			      "Failed to enable HDMI vpll: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -259,17 +260,17 @@ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
- 
- 	ret = clk_prepare_enable(hdmi->grf_clk);
- 	if (ret < 0) {
--		dev_err(hdmi->dev, "failed to enable grfclk %d\n", ret);
-+		DRM_DEV_ERROR(hdmi->dev, "failed to enable grfclk %d\n", ret);
- 		return;
- 	}
- 
- 	ret = regmap_write(hdmi->regmap, hdmi->chip_data->lcdsel_grf_reg, val);
- 	if (ret != 0)
--		dev_err(hdmi->dev, "Could not write to GRF: %d\n", ret);
-+		DRM_DEV_ERROR(hdmi->dev, "Could not write to GRF: %d\n", ret);
- 
- 	clk_disable_unprepare(hdmi->grf_clk);
--	dev_dbg(hdmi->dev, "vop %s output to hdmi\n",
--		ret ? "LIT" : "BIG");
-+	DRM_DEV_DEBUG(hdmi->dev, "vop %s output to hdmi\n",
-+		      ret ? "LIT" : "BIG");
- }
- 
- static int
-@@ -368,7 +369,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 
- 	ret = rockchip_hdmi_parse_dt(hdmi);
- 	if (ret) {
--		dev_err(hdmi->dev, "Unable to parse OF data\n");
-+		DRM_DEV_ERROR(hdmi->dev, "Unable to parse OF data\n");
- 		return ret;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 7a251a5..ee584d8 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -224,7 +224,7 @@ static void inno_hdmi_set_pwr_mode(struct inno_hdmi *hdmi, int mode)
- 		break;
- 
- 	default:
--		dev_err(hdmi->dev, "Unknown power mode %d\n", mode);
-+		DRM_DEV_ERROR(hdmi->dev, "Unknown power mode %d\n", mode);
- 	}
- }
- 
-@@ -742,8 +742,9 @@ static int inno_hdmi_i2c_xfer(struct i2c_adapter *adap,
- 	hdmi_writeb(hdmi, HDMI_INTERRUPT_STATUS1, m_INT_EDID_READY);
- 
- 	for (i = 0; i < num; i++) {
--		dev_dbg(hdmi->dev, "xfer: num: %d/%d, len: %d, flags: %#x\n",
--			i + 1, num, msgs[i].len, msgs[i].flags);
-+		DRM_DEV_DEBUG(hdmi->dev,
-+			      "xfer: num: %d/%d, len: %d, flags: %#x\n",
-+			      i + 1, num, msgs[i].len, msgs[i].flags);
- 
- 		if (msgs[i].flags & I2C_M_RD)
- 			ret = inno_hdmi_i2c_read(hdmi, &msgs[i]);
-@@ -806,7 +807,7 @@ static struct i2c_adapter *inno_hdmi_i2c_adapter(struct inno_hdmi *hdmi)
- 
- 	hdmi->i2c = i2c;
- 
--	dev_info(hdmi->dev, "registered %s I2C bus driver\n", adap->name);
-+	DRM_DEV_INFO(hdmi->dev, "registered %s I2C bus driver\n", adap->name);
- 
- 	return adap;
- }
-@@ -838,13 +839,14 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 
- 	hdmi->pclk = devm_clk_get(hdmi->dev, "pclk");
- 	if (IS_ERR(hdmi->pclk)) {
--		dev_err(hdmi->dev, "Unable to get HDMI pclk clk\n");
-+		DRM_DEV_ERROR(hdmi->dev, "Unable to get HDMI pclk clk\n");
- 		return PTR_ERR(hdmi->pclk);
- 	}
- 
- 	ret = clk_prepare_enable(hdmi->pclk);
- 	if (ret) {
--		dev_err(hdmi->dev, "Cannot enable HDMI pclk clock: %d\n", ret);
-+		DRM_DEV_ERROR(hdmi->dev,
-+			      "Cannot enable HDMI pclk clock: %d\n", ret);
- 		return ret;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index ff3d0f5..698fef1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -58,7 +58,7 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
- 
- 	ret = iommu_attach_device(private->domain, dev);
- 	if (ret) {
--		dev_err(dev, "Failed to attach iommu device\n");
-+		DRM_DEV_ERROR(dev, "Failed to attach iommu device\n");
- 		return ret;
- 	}
- 
-@@ -373,8 +373,9 @@ static int rockchip_drm_platform_of_probe(struct device *dev)
- 
- 		iommu = of_parse_phandle(port->parent, "iommus", 0);
- 		if (!iommu || !of_device_is_available(iommu->parent)) {
--			dev_dbg(dev, "no iommu attached for %pOF, using non-iommu buffers\n",
--				port->parent);
-+			DRM_DEV_DEBUG(dev,
-+				      "no iommu attached for %pOF, using non-iommu buffers\n",
-+				      port->parent);
- 			/*
- 			 * if there is a crtc not support iommu, force set all
- 			 * crtc use non-iommu buffer.
-@@ -389,12 +390,13 @@ static int rockchip_drm_platform_of_probe(struct device *dev)
- 	}
- 
- 	if (i == 0) {
--		dev_err(dev, "missing 'ports' property\n");
-+		DRM_DEV_ERROR(dev, "missing 'ports' property\n");
- 		return -ENODEV;
- 	}
- 
- 	if (!found) {
--		dev_err(dev, "No available vop found for display-subsystem.\n");
-+		DRM_DEV_ERROR(dev,
-+			      "No available vop found for display-subsystem.\n");
- 		return -ENODEV;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index 7077304..cd2ace0 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -100,8 +100,9 @@ rockchip_fb_alloc(struct drm_device *dev, const struct drm_mode_fb_cmd2 *mode_cm
- 	ret = drm_framebuffer_init(dev, &rockchip_fb->fb,
- 				   &rockchip_drm_fb_funcs);
- 	if (ret) {
--		dev_err(dev->dev, "Failed to initialize framebuffer: %d\n",
--			ret);
-+		DRM_DEV_ERROR(dev->dev,
-+			      "Failed to initialize framebuffer: %d\n",
-+			      ret);
- 		kfree(rockchip_fb);
- 		return ERR_PTR(ret);
- 	}
-@@ -134,7 +135,8 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
- 
- 		obj = drm_gem_object_lookup(file_priv, mode_cmd->handles[i]);
- 		if (!obj) {
--			dev_err(dev->dev, "Failed to lookup GEM object\n");
-+			DRM_DEV_ERROR(dev->dev,
-+				      "Failed to lookup GEM object\n");
- 			ret = -ENXIO;
- 			goto err_gem_object_unreference;
- 		}
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-index 724579e..e665055 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-@@ -76,7 +76,7 @@ static int rockchip_drm_fbdev_create(struct drm_fb_helper *helper,
- 
- 	fbi = drm_fb_helper_alloc_fbi(helper);
- 	if (IS_ERR(fbi)) {
--		dev_err(dev->dev, "Failed to create framebuffer info.\n");
-+		DRM_DEV_ERROR(dev->dev, "Failed to create framebuffer info.\n");
- 		ret = PTR_ERR(fbi);
- 		goto out;
- 	}
-@@ -84,7 +84,8 @@ static int rockchip_drm_fbdev_create(struct drm_fb_helper *helper,
- 	helper->fb = rockchip_drm_framebuffer_init(dev, &mode_cmd,
- 						   private->fbdev_bo);
- 	if (IS_ERR(helper->fb)) {
--		dev_err(dev->dev, "Failed to allocate DRM framebuffer.\n");
-+		DRM_DEV_ERROR(dev->dev,
-+			      "Failed to allocate DRM framebuffer.\n");
- 		ret = PTR_ERR(helper->fb);
- 		goto out;
- 	}
-@@ -138,21 +139,24 @@ int rockchip_drm_fbdev_init(struct drm_device *dev)
- 
- 	ret = drm_fb_helper_init(dev, helper, ROCKCHIP_MAX_CONNECTOR);
- 	if (ret < 0) {
--		dev_err(dev->dev, "Failed to initialize drm fb helper - %d.\n",
--			ret);
-+		DRM_DEV_ERROR(dev->dev,
-+			      "Failed to initialize drm fb helper - %d.\n",
-+			      ret);
- 		return ret;
- 	}
- 
- 	ret = drm_fb_helper_single_add_all_connectors(helper);
- 	if (ret < 0) {
--		dev_err(dev->dev, "Failed to add connectors - %d.\n", ret);
-+		DRM_DEV_ERROR(dev->dev,
-+			      "Failed to add connectors - %d.\n", ret);
- 		goto err_drm_fb_helper_fini;
- 	}
- 
- 	ret = drm_fb_helper_initial_config(helper, PREFERRED_BPP);
- 	if (ret < 0) {
--		dev_err(dev->dev, "Failed to set initial hw config - %d.\n",
--			ret);
-+		DRM_DEV_ERROR(dev->dev,
-+			      "Failed to set initial hw config - %d.\n",
-+			      ret);
- 		goto err_drm_fb_helper_fini;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index bf9ed0e..19128b4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -160,7 +160,7 @@ static void vop_reg_set(struct vop *vop, const struct vop_reg *reg,
- 	int offset, mask, shift;
- 
- 	if (!reg || !reg->mask) {
--		dev_dbg(vop->dev, "Warning: not support %s\n", reg_name);
-+		DRM_DEV_DEBUG(vop->dev, "Warning: not support %s\n", reg_name);
- 		return;
- 	}
- 
-@@ -499,7 +499,7 @@ static int vop_enable(struct drm_crtc *crtc)
- 
- 	ret = pm_runtime_get_sync(vop->dev);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
-+		DRM_DEV_ERROR(vop->dev, "failed to get pm runtime: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -523,7 +523,8 @@ static int vop_enable(struct drm_crtc *crtc)
- 	 */
- 	ret = rockchip_drm_dma_attach_device(vop->drm_dev, vop->dev);
- 	if (ret) {
--		dev_err(vop->dev, "failed to attach dma mapping, %d\n", ret);
-+		DRM_DEV_ERROR(vop->dev,
-+			      "failed to attach dma mapping, %d\n", ret);
- 		goto err_disable_aclk;
- 	}
- 
-@@ -1361,42 +1362,42 @@ static int vop_initial(struct vop *vop)
- 
- 	vop->hclk = devm_clk_get(vop->dev, "hclk_vop");
- 	if (IS_ERR(vop->hclk)) {
--		dev_err(vop->dev, "failed to get hclk source\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to get hclk source\n");
- 		return PTR_ERR(vop->hclk);
- 	}
- 	vop->aclk = devm_clk_get(vop->dev, "aclk_vop");
- 	if (IS_ERR(vop->aclk)) {
--		dev_err(vop->dev, "failed to get aclk source\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to get aclk source\n");
- 		return PTR_ERR(vop->aclk);
- 	}
- 	vop->dclk = devm_clk_get(vop->dev, "dclk_vop");
- 	if (IS_ERR(vop->dclk)) {
--		dev_err(vop->dev, "failed to get dclk source\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to get dclk source\n");
- 		return PTR_ERR(vop->dclk);
- 	}
- 
- 	ret = pm_runtime_get_sync(vop->dev);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
-+		DRM_DEV_ERROR(vop->dev, "failed to get pm runtime: %d\n", ret);
- 		return ret;
- 	}
- 
- 	ret = clk_prepare(vop->dclk);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to prepare dclk\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to prepare dclk\n");
- 		goto err_put_pm_runtime;
- 	}
- 
- 	/* Enable both the hclk and aclk to setup the vop */
- 	ret = clk_prepare_enable(vop->hclk);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to prepare/enable hclk\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to prepare/enable hclk\n");
- 		goto err_unprepare_dclk;
- 	}
- 
- 	ret = clk_prepare_enable(vop->aclk);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to prepare/enable aclk\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to prepare/enable aclk\n");
- 		goto err_disable_hclk;
- 	}
- 
-@@ -1405,7 +1406,7 @@ static int vop_initial(struct vop *vop)
- 	 */
- 	ahb_rst = devm_reset_control_get(vop->dev, "ahb");
- 	if (IS_ERR(ahb_rst)) {
--		dev_err(vop->dev, "failed to get ahb reset\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to get ahb reset\n");
- 		ret = PTR_ERR(ahb_rst);
- 		goto err_disable_aclk;
- 	}
-@@ -1434,7 +1435,7 @@ static int vop_initial(struct vop *vop)
- 	 */
- 	vop->dclk_rst = devm_reset_control_get(vop->dev, "dclk");
- 	if (IS_ERR(vop->dclk_rst)) {
--		dev_err(vop->dev, "failed to get dclk reset\n");
-+		DRM_DEV_ERROR(vop->dev, "failed to get dclk reset\n");
- 		ret = PTR_ERR(vop->dclk_rst);
- 		goto err_disable_aclk;
- 	}
-@@ -1511,7 +1512,7 @@ int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
- 	vop_line_flag_irq_disable(vop);
- 
- 	if (jiffies_left == 0) {
--		dev_err(vop->dev, "Timeout waiting for IRQ\n");
-+		DRM_DEV_ERROR(vop->dev, "Timeout waiting for IRQ\n");
- 		return -ETIMEDOUT;
- 	}
- 
-@@ -1558,7 +1559,7 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0) {
--		dev_err(dev, "cannot find irq for vop\n");
-+		DRM_DEV_ERROR(dev, "cannot find irq for vop\n");
- 		return irq;
- 	}
- 	vop->irq = (unsigned int)irq;
-@@ -1584,7 +1585,8 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 
- 	ret = vop_initial(vop);
- 	if (ret < 0) {
--		dev_err(&pdev->dev, "cannot initial vop dev - err %d\n", ret);
-+		DRM_DEV_ERROR(&pdev->dev,
-+			      "cannot initial vop dev - err %d\n", ret);
- 		goto err_disable_pm_runtime;
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 94de7b9..4a39049 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -533,7 +533,7 @@ static int vop_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 
- 	if (!dev->of_node) {
--		dev_err(dev, "can't find vop devices\n");
-+		DRM_DEV_ERROR(dev, "can't find vop devices\n");
- 		return -ENODEV;
- 	}
- 
--- 
-2.7.4
+CgpPbiBGcmksIDE1IFNlcCAyMDE3LCBIYW5lZW4gTW9oYW1tZWQgd3JvdGU6Cgo+IFRoaXMgcGF0
+Y2ggcmVwbGFjZSBpbnN0YW5jZXMgb2YgZGV2X2luZm8vZXJyL2RlYnVnIHdpdGgKPiBEUk1fREVW
+X0lORk8vRVJST1IvV0FSTiByZXNwZWN0aXZlbHkgaW5vcmRlciB0byB1c2UgYSBkcm0tZm9ybWF0
+dGVkCj4gc3BlY2lmaWMgbG9nIG1lc3NhZ2VzLiBJc3N1ZSBjb3JyZWN0ZWQgd2l0aCB0aGUgaGVs
+cCBvZiB0aGUgZm9sbG93aW5nCj4gQ29jY2luZWxsZSBzY3JpcHQ6Cj4KPiBAckAKPiBAQAo+Cj4g
+KAo+IC1kZXZfaW5mbwo+ICtEUk1fREVWX0lORk8KPiB8Cj4gLWRldl9lcnIKPiArRFJNX0RFVl9F
+UlJPUgo+IHwKPiAtZGV2X2RiZwo+ICtEUk1fREVWX0RFQlVHCj4gKQo+Cj4gU2lnbmVkLW9mZi1i
+eTogSGFuZWVuIE1vaGFtbWVkIDxoYW1vaGFtbWVkLnNhQGdtYWlsLmNvbT4KCkFja2VkLWJ5OiBK
+dWxpYSBMYXdhbGwgPGp1bGlhLmxhd2FsbEBsaXA2LmZyPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAyNiArKystLS0tCj4gIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgICAgICAgICAgIHwgIDIgKy0KPiAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgICAgICAgICAgfCA5MCArKysrKysr
+KysrKysrKy0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJv
+Y2tjaGlwLmMgICAgIHwgMTkgKysrLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5v
+X2hkbWkuYyAgICAgICAgICAgIHwgMTQgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2Rydi5jICAgICB8IDEyICsrLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9mYi5jICAgICAgfCAgOCArKy0KPiAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jICAgfCAxOCArKystLQo+ICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICB8IDMyICsrKystLS0tLQo+ICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jICAgICB8ICAyICstCj4gIDEw
+IGZpbGVzIGNoYW5nZWQsIDEyNSBpbnNlcnRpb25zKCspLCA5OCBkZWxldGlvbnMoLSkKPgo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAu
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5k
+ZXggOTYwNjEyMS4uNGQzZjZhZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gQEAgLTg4LDcgKzg4LDcgQEAgc3RhdGljIHZvaWQg
+YW5hbG9naXhfZHBfcHNyX3NldChzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsIGJvb2wgZW5h
+YmxlZCkKPiAgCWlmICghYW5hbG9naXhfZHBfcHNyX3N1cHBvcnRlZChkcC0+ZGV2KSkKPiAgCQly
+ZXR1cm47Cj4KPiAtCWRldl9kYmcoZHAtPmRldiwgIiVzIFBTUi4uLlxuIiwgZW5hYmxlZCA/ICJF
+bnRyeSIgOiAiRXhpdCIpOwo+ICsJRFJNX0RFVl9ERUJVRyhkcC0+ZGV2LCAiJXMgUFNSLi4uXG4i
+LCBlbmFibGVkID8gIkVudHJ5IiA6ICJFeGl0Iik7Cj4KPiAgCXNwaW5fbG9ja19pcnFzYXZlKCZk
+cC0+cHNyX2xvY2ssIGZsYWdzKTsKPiAgCWlmIChlbmFibGVkKQo+IEBAIC0xMTAsNyArMTEwLDcg
+QEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfcHNyX3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3
+b3JrKQo+ICAJcmV0ID0gcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoZHAtPmVuY29kZXIuY3J0
+YywKPiAgCQkJCQkgUFNSX1dBSVRfTElORV9GTEFHX1RJTUVPVVRfTVMpOwo+ICAJaWYgKHJldCkg
+ewo+IC0JCWRldl9lcnIoZHAtPmRldiwgImxpbmUgZmxhZyBpbnRlcnJ1cHQgZGlkIG5vdCBhcnJp
+dmVcbiIpOwo+ICsJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImxpbmUgZmxhZyBpbnRlcnJ1cHQg
+ZGlkIG5vdCBhcnJpdmVcbiIpOwo+ICAJCXJldHVybjsKPiAgCX0KPgo+IEBAIC0xNDAsMTMgKzE0
+MCwxMyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3Bvd2Vyb24oc3RydWN0IGFuYWxvZ2l4X2Rw
+X3BsYXRfZGF0YSAqcGxhdF9kYXRhKQo+Cj4gIAlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHAt
+PnBjbGspOwo+ICAJaWYgKHJldCA8IDApIHsKPiAtCQlkZXZfZXJyKGRwLT5kZXYsICJmYWlsZWQg
+dG8gZW5hYmxlIHBjbGsgJWRcbiIsIHJldCk7Cj4gKwkJRFJNX0RFVl9FUlJPUihkcC0+ZGV2LCAi
+ZmFpbGVkIHRvIGVuYWJsZSBwY2xrICVkXG4iLCByZXQpOwo+ICAJCXJldHVybiByZXQ7Cj4gIAl9
+Cj4KPiAgCXJldCA9IHJvY2tjaGlwX2RwX3ByZV9pbml0KGRwKTsKPiAgCWlmIChyZXQgPCAwKSB7
+Cj4gLQkJZGV2X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRvIGRwIHByZSBpbml0ICVkXG4iLCByZXQp
+Owo+ICsJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImZhaWxlZCB0byBkcCBwcmUgaW5pdCAlZFxu
+IiwgcmV0KTsKPiAgCQljbGtfZGlzYWJsZV91bnByZXBhcmUoZHAtPnBjbGspOwo+ICAJCXJldHVy
+biByZXQ7Cj4gIAl9Cj4gQEAgLTIxMSwxNyArMjExLDE3IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlw
+X2RwX2RybV9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4gIAll
+bHNlCj4gIAkJdmFsID0gZHAtPmRhdGEtPmxjZHNlbF9iaWc7Cj4KPiAtCWRldl9kYmcoZHAtPmRl
+diwgInZvcCAlcyBvdXRwdXQgdG8gZHBcbiIsIChyZXQpID8gIkxJVCIgOiAiQklHIik7Cj4gKwlE
+Uk1fREVWX0RFQlVHKGRwLT5kZXYsICJ2b3AgJXMgb3V0cHV0IHRvIGRwXG4iLCAocmV0KSA/ICJM
+SVQiIDogIkJJRyIpOwo+Cj4gIAlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHAtPmdyZmNsayk7
+Cj4gIAlpZiAocmV0IDwgMCkgewo+IC0JCWRldl9lcnIoZHAtPmRldiwgImZhaWxlZCB0byBlbmFi
+bGUgZ3JmY2xrICVkXG4iLCByZXQpOwo+ICsJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImZhaWxl
+ZCB0byBlbmFibGUgZ3JmY2xrICVkXG4iLCByZXQpOwo+ICAJCXJldHVybjsKPiAgCX0KPgo+ICAJ
+cmV0ID0gcmVnbWFwX3dyaXRlKGRwLT5ncmYsIGRwLT5kYXRhLT5sY2RzZWxfZ3JmX3JlZywgdmFs
+KTsKPiAgCWlmIChyZXQgIT0gMCkKPiAtCQlkZXZfZXJyKGRwLT5kZXYsICJDb3VsZCBub3Qgd3Jp
+dGUgdG8gR1JGOiAlZFxuIiwgcmV0KTsKPiArCQlEUk1fREVWX0VSUk9SKGRwLT5kZXYsICJDb3Vs
+ZCBub3Qgd3JpdGUgdG8gR1JGOiAlZFxuIiwgcmV0KTsKPgo+ICAJY2xrX2Rpc2FibGVfdW5wcmVw
+YXJlKGRwLT5ncmZjbGspOwo+ICB9Cj4gQEAgLTI3Nyw3ICsyNzcsNyBAQCBzdGF0aWMgaW50IHJv
+Y2tjaGlwX2RwX2luaXQoc3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSAqZHApCj4KPiAgCWRwLT5n
+cmYgPSBzeXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAicm9ja2NoaXAsZ3JmIik7
+Cj4gIAlpZiAoSVNfRVJSKGRwLT5ncmYpKSB7Cj4gLQkJZGV2X2VycihkZXYsICJmYWlsZWQgdG8g
+Z2V0IHJvY2tjaGlwLGdyZiBwcm9wZXJ0eVxuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJm
+YWlsZWQgdG8gZ2V0IHJvY2tjaGlwLGdyZiBwcm9wZXJ0eVxuIik7Cj4gIAkJcmV0dXJuIFBUUl9F
+UlIoZHAtPmdyZik7Cj4gIAl9Cj4KPiBAQCAtMjg3LDMxICsyODcsMzEgQEAgc3RhdGljIGludCBy
+b2NrY2hpcF9kcF9pbml0KHN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwKQo+ICAJfSBlbHNl
+IGlmIChQVFJfRVJSKGRwLT5ncmZjbGspID09IC1FUFJPQkVfREVGRVIpIHsKPiAgCQlyZXR1cm4g
+LUVQUk9CRV9ERUZFUjsKPiAgCX0gZWxzZSBpZiAoSVNfRVJSKGRwLT5ncmZjbGspKSB7Cj4gLQkJ
+ZGV2X2VycihkZXYsICJmYWlsZWQgdG8gZ2V0IGdyZiBjbG9ja1xuIik7Cj4gKwkJRFJNX0RFVl9F
+UlJPUihkZXYsICJmYWlsZWQgdG8gZ2V0IGdyZiBjbG9ja1xuIik7Cj4gIAkJcmV0dXJuIFBUUl9F
+UlIoZHAtPmdyZmNsayk7Cj4gIAl9Cj4KPiAgCWRwLT5wY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwg
+InBjbGsiKTsKPiAgCWlmIChJU19FUlIoZHAtPnBjbGspKSB7Cj4gLQkJZGV2X2VycihkZXYsICJm
+YWlsZWQgdG8gZ2V0IHBjbGsgcHJvcGVydHlcbiIpOwo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAi
+ZmFpbGVkIHRvIGdldCBwY2xrIHByb3BlcnR5XG4iKTsKPiAgCQlyZXR1cm4gUFRSX0VSUihkcC0+
+cGNsayk7Cj4gIAl9Cj4KPiAgCWRwLT5yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0KGRldiwg
+ImRwIik7Cj4gIAlpZiAoSVNfRVJSKGRwLT5yc3QpKSB7Cj4gLQkJZGV2X2VycihkZXYsICJmYWls
+ZWQgdG8gZ2V0IGRwIHJlc2V0IGNvbnRyb2xcbiIpOwo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAi
+ZmFpbGVkIHRvIGdldCBkcCByZXNldCBjb250cm9sXG4iKTsKPiAgCQlyZXR1cm4gUFRSX0VSUihk
+cC0+cnN0KTsKPiAgCX0KPgo+ICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRwLT5wY2xrKTsK
+PiAgCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRvIGVuYWJs
+ZSBwY2xrICVkXG4iLCByZXQpOwo+ICsJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImZhaWxlZCB0
+byBlbmFibGUgcGNsayAlZFxuIiwgcmV0KTsKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+Cj4gIAly
+ZXQgPSByb2NrY2hpcF9kcF9wcmVfaW5pdChkcCk7Cj4gIAlpZiAocmV0IDwgMCkgewo+IC0JCWRl
+dl9lcnIoZHAtPmRldiwgImZhaWxlZCB0byBwcmUgaW5pdCAlZFxuIiwgcmV0KTsKPiArCQlEUk1f
+REVWX0VSUk9SKGRwLT5kZXYsICJmYWlsZWQgdG8gcHJlIGluaXQgJWRcbiIsIHJldCk7Cj4gIAkJ
+Y2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5wY2xrKTsKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwo+IGluZGV4IGIxNGQyMTEuLmViMzA0
+MmMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYwo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMKPiBAQCAtMzIzLDcg
+KzMyMyw3IEBAIGludCBjZG5fZHBfbG9hZF9maXJtd2FyZShzdHJ1Y3QgY2RuX2RwX2RldmljZSAq
+ZHAsIGNvbnN0IHUzMiAqaV9tZW0sCj4gIAlyZWcgPSByZWFkbChkcC0+cmVncyArIFZFUl9MSUJf
+SF9BRERSKSAmIDB4ZmY7Cj4gIAlkcC0+ZndfdmVyc2lvbiB8PSByZWcgPDwgMjQ7Cj4KPiAtCWRl
+dl9kYmcoZHAtPmRldiwgImZpcm13YXJlIHZlcnNpb246ICV4XG4iLCBkcC0+ZndfdmVyc2lvbik7
+Cj4gKwlEUk1fREVWX0RFQlVHKGRwLT5kZXYsICJmaXJtd2FyZSB2ZXJzaW9uOiAleFxuIiwgZHAt
+PmZ3X3ZlcnNpb24pOwo+Cj4gIAlyZXR1cm4gMDsKPiAgfQo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9kdy1taXBpLWRzaS5jCj4gaW5kZXggOWEyMGI5ZC4uYWQ0MGQxNSAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gQEAgLTQzMCw5ICs0MzAsOSBAQCBzdGF0aWMg
+aW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+Cj4gIAl0
+ZXN0ZGluID0gbWF4X21icHNfdG9fdGVzdGRpbihkc2ktPmxhbmVfbWJwcyk7Cj4gIAlpZiAodGVz
+dGRpbiA8IDApIHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LAo+IC0JCQkiZmFpbGVkIHRvIGdldCB0
+ZXN0ZGluIGZvciAlZG1icHMgbGFuZSBjbG9ja1xuIiwKPiAtCQkJZHNpLT5sYW5lX21icHMpOwo+
+ICsJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYsCj4gKwkJCSAgICAgICJmYWlsZWQgdG8gZ2V0IHRl
+c3RkaW4gZm9yICVkbWJwcyBsYW5lIGNsb2NrXG4iLAo+ICsJCQkgICAgICBkc2ktPmxhbmVfbWJw
+cyk7Cj4gIAkJcmV0dXJuIHRlc3RkaW47Cj4gIAl9Cj4KPiBAQCAtNDQzLDcgKzQ0Myw3IEBAIHN0
+YXRpYyBpbnQgZHdfbWlwaV9kc2lfcGh5X2luaXQoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4K
+PiAgCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBoeV9jZmdfY2xrKTsKPiAgCWlmIChy
+ZXQpIHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBwaHlfY2ZnX2Ns
+a1xuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUihkc2ktPmRldiwgIkZhaWxlZCB0byBlbmFibGUgcGh5
+X2NmZ19jbGtcbiIpOwo+ICAJCXJldHVybiByZXQ7Cj4gIAl9Cj4KPiBAQCAtNTAxLDcgKzUwMSw3
+IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcGh5X2luaXQoc3RydWN0IGR3X21pcGlfZHNpICpk
+c2kpCj4gIAlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX1BIWV9TVEFU
+VVMsCj4gIAkJCQkgdmFsLCB2YWwgJiBMT0NLLCAxMDAwLCBQSFlfU1RBVFVTX1RJTUVPVVRfVVMp
+Owo+ICAJaWYgKHJldCA8IDApIHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHdh
+aXQgZm9yIHBoeSBsb2NrIHN0YXRlXG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2LCAi
+ZmFpbGVkIHRvIHdhaXQgZm9yIHBoeSBsb2NrIHN0YXRlXG4iKTsKPiAgCQlnb3RvIHBoeV9pbml0
+X2VuZDsKPiAgCX0KPgo+IEBAIC01MDksOCArNTA5LDggQEAgc3RhdGljIGludCBkd19taXBpX2Rz
+aV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgCQkJCSB2YWwsIHZhbCAmIFNU
+T1BfU1RBVEVfQ0xLX0xBTkUsIDEwMDAsCj4gIAkJCQkgUEhZX1NUQVRVU19USU1FT1VUX1VTKTsK
+PiAgCWlmIChyZXQgPCAwKQo+IC0JCWRldl9lcnIoZHNpLT5kZXYsCj4gLQkJCSJmYWlsZWQgdG8g
+d2FpdCBmb3IgcGh5IGNsayBsYW5lIHN0b3Agc3RhdGVcbiIpOwo+ICsJCURSTV9ERVZfRVJST1Io
+ZHNpLT5kZXYsCj4gKwkJCSAgICAgICJmYWlsZWQgdG8gd2FpdCBmb3IgcGh5IGNsayBsYW5lIHN0
+b3Agc3RhdGVcbiIpOwo+Cj4gIHBoeV9pbml0X2VuZDoKPiAgCWNsa19kaXNhYmxlX3VucHJlcGFy
+ZShkc2ktPnBoeV9jZmdfY2xrKTsKPiBAQCAtNTI5LDggKzUyOSw5IEBAIHN0YXRpYyBpbnQgZHdf
+bWlwaV9kc2lfZ2V0X2xhbmVfYnBzKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+Cj4gIAlicHAg
+PSBtaXBpX2RzaV9waXhlbF9mb3JtYXRfdG9fYnBwKGRzaS0+Zm9ybWF0KTsKPiAgCWlmIChicHAg
+PCAwKSB7Cj4gLQkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxlZCB0byBnZXQgYnBwIGZvciBwaXhl
+bCBmb3JtYXQgJWRcbiIsCj4gLQkJCWRzaS0+Zm9ybWF0KTsKPiArCQlEUk1fREVWX0VSUk9SKGRz
+aS0+ZGV2LAo+ICsJCQkgICAgICAiZmFpbGVkIHRvIGdldCBicHAgZm9yIHBpeGVsIGZvcm1hdCAl
+ZFxuIiwKPiArCQkJICAgICAgZHNpLT5mb3JtYXQpOwo+ICAJCXJldHVybiBicHA7Cj4gIAl9Cj4K
+PiBAQCAtNTQxLDcgKzU0Miw4IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2V0X2xhbmVfYnBz
+KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICAJCWlmICh0bXAgPCBtYXhfbWJwcykKPiAgCQkJ
+dGFyZ2V0X21icHMgPSB0bXA7Cj4gIAkJZWxzZQo+IC0JCQlkZXZfZXJyKGRzaS0+ZGV2LCAiRFBI
+WSBjbG9jayBmcmVxdWVuY3kgaXMgb3V0IG9mIHJhbmdlXG4iKTsKPiArCQkJRFJNX0RFVl9FUlJP
+Uihkc2ktPmRldiwKPiArCQkJCSAgICAgICJEUEhZIGNsb2NrIGZyZXF1ZW5jeSBpcyBvdXQgb2Yg
+cmFuZ2VcbiIpOwo+ICAJfQo+Cj4gIAlwbGxyZWYgPSBESVZfUk9VTkRfVVAoY2xrX2dldF9yYXRl
+KGRzaS0+cGxscmVmX2NsayksIFVTRUNfUEVSX1NFQyk7Cj4gQEAgLTU4Miw4ICs1ODQsOSBAQCBz
+dGF0aWMgaW50IGR3X21pcGlfZHNpX2hvc3RfYXR0YWNoKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpo
+b3N0LAo+ICAJc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBob3N0X3RvX2RzaShob3N0KTsKPgo+
+ICAJaWYgKGRldmljZS0+bGFuZXMgPiBkc2ktPnBkYXRhLT5tYXhfZGF0YV9sYW5lcykgewo+IC0J
+CWRldl9lcnIoZHNpLT5kZXYsICJ0aGUgbnVtYmVyIG9mIGRhdGEgbGFuZXMoJXUpIGlzIHRvbyBt
+YW55XG4iLAo+IC0JCQlkZXZpY2UtPmxhbmVzKTsKPiArCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2
+LAo+ICsJCQkgICAgICAidGhlIG51bWJlciBvZiBkYXRhIGxhbmVzKCV1KSBpcyB0b28gbWFueVxu
+IiwKPiArCQkJICAgICAgZGV2aWNlLT5sYW5lcyk7Cj4gIAkJcmV0dXJuIC1FSU5WQUw7Cj4gIAl9
+Cj4KPiBAQCAtNjMyLDcgKzYzNSw4IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2VuX3BrdF9o
+ZHJfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksIHUzMiBoZHJfdmFsKQo+ICAJCQkJIHZh
+bCwgISh2YWwgJiBHRU5fQ01EX0ZVTEwpLCAxMDAwLAo+ICAJCQkJIENNRF9QS1RfU1RBVFVTX1RJ
+TUVPVVRfVVMpOwo+ICAJaWYgKHJldCA8IDApIHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFp
+bGVkIHRvIGdldCBhdmFpbGFibGUgY29tbWFuZCBGSUZPXG4iKTsKPiArCQlEUk1fREVWX0VSUk9S
+KGRzaS0+ZGV2LAo+ICsJCQkgICAgICAiZmFpbGVkIHRvIGdldCBhdmFpbGFibGUgY29tbWFuZCBG
+SUZPXG4iKTsKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+Cj4gQEAgLTY0Myw3ICs2NDcsNyBAQCBz
+dGF0aWMgaW50IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKHN0cnVjdCBkd19taXBpX2Rz
+aSAqZHNpLCB1MzIgaGRyX3ZhbCkKPiAgCQkJCSB2YWwsICh2YWwgJiBtYXNrKSA9PSBtYXNrLAo+
+ICAJCQkJIDEwMDAsIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwo+ICAJaWYgKHJldCA8IDAp
+IHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHdyaXRlIGNvbW1hbmQgRklGT1xu
+Iik7Cj4gKwkJRFJNX0RFVl9FUlJPUihkc2ktPmRldiwgImZhaWxlZCB0byB3cml0ZSBjb21tYW5k
+IEZJRk9cbiIpOwo+ICAJCXJldHVybiByZXQ7Cj4gIAl9Cj4KPiBAQCAtNjYzLDggKzY2Nyw5IEBA
+IHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZGNzX3Nob3J0X3dyaXRlKHN0cnVjdCBkd19taXBpX2Rz
+aSAqZHNpLAo+ICAJCWRhdGEgfD0gdHhfYnVmWzFdIDw8IDg7Cj4KPiAgCWlmIChtc2ctPnR4X2xl
+biA+IDIpIHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAidG9vIGxvbmcgdHggYnVmIGxlbmd0aCAl
+enUgZm9yIHNob3J0IHdyaXRlXG4iLAo+IC0JCQltc2ctPnR4X2xlbik7Cj4gKwkJRFJNX0RFVl9F
+UlJPUihkc2ktPmRldiwKPiArCQkJICAgICAgInRvbyBsb25nIHR4IGJ1ZiBsZW5ndGggJXp1IGZv
+ciBzaG9ydCB3cml0ZVxuIiwKPiArCQkJICAgICAgbXNnLT50eF9sZW4pOwo+ICAJCXJldHVybiAt
+RUlOVkFMOwo+ICAJfQo+Cj4gQEAgLTY4Miw4ICs2ODcsOSBAQCBzdGF0aWMgaW50IGR3X21pcGlf
+ZHNpX2Rjc19sb25nX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICAJdTMyIHZhbDsK
+Pgo+ICAJaWYgKG1zZy0+dHhfbGVuIDwgMykgewo+IC0JCWRldl9lcnIoZHNpLT5kZXYsICJ3cm9u
+ZyB0eCBidWYgbGVuZ3RoICV6dSBmb3IgbG9uZyB3cml0ZVxuIiwKPiAtCQkJbXNnLT50eF9sZW4p
+Owo+ICsJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYsCj4gKwkJCSAgICAgICJ3cm9uZyB0eCBidWYg
+bGVuZ3RoICV6dSBmb3IgbG9uZyB3cml0ZVxuIiwKPiArCQkJICAgICAgbXNnLT50eF9sZW4pOwo+
+ICAJCXJldHVybiAtRUlOVkFMOwo+ICAJfQo+Cj4gQEAgLTcwNCw4ICs3MTAsOCBAQCBzdGF0aWMg
+aW50IGR3X21pcGlfZHNpX2Rjc19sb25nX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+
+ICAJCQkJCSB2YWwsICEodmFsICYgR0VOX1BMRF9XX0ZVTEwpLCAxMDAwLAo+ICAJCQkJCSBDTURf
+UEtUX1NUQVRVU19USU1FT1VUX1VTKTsKPiAgCQlpZiAocmV0IDwgMCkgewo+IC0JCQlkZXZfZXJy
+KGRzaS0+ZGV2LAo+IC0JCQkJImZhaWxlZCB0byBnZXQgYXZhaWxhYmxlIHdyaXRlIHBheWxvYWQg
+RklGT1xuIik7Cj4gKwkJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYsCj4gKwkJCQkgICAgICAiZmFp
+bGVkIHRvIGdldCBhdmFpbGFibGUgd3JpdGUgcGF5bG9hZCBGSUZPXG4iKTsKPiAgCQkJcmV0dXJu
+IHJldDsKPiAgCQl9Cj4gIAl9Cj4gQEAgLTczMSw4ICs3MzcsOCBAQCBzdGF0aWMgc3NpemVfdCBk
+d19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ICAJ
+CXJldCA9IGR3X21pcGlfZHNpX2Rjc19sb25nX3dyaXRlKGRzaSwgbXNnKTsKPiAgCQlicmVhazsK
+PiAgCWRlZmF1bHQ6Cj4gLQkJZGV2X2Vycihkc2ktPmRldiwgInVuc3VwcG9ydGVkIG1lc3NhZ2Ug
+dHlwZSAweCUwMnhcbiIsCj4gLQkJCW1zZy0+dHlwZSk7Cj4gKwkJRFJNX0RFVl9FUlJPUihkc2kt
+PmRldiwgInVuc3VwcG9ydGVkIG1lc3NhZ2UgdHlwZSAweCUwMnhcbiIsCj4gKwkJCSAgICAgIG1z
+Zy0+dHlwZSk7Cj4gIAkJcmV0ID0gLUVJTlZBTDsKPiAgCX0KPgo+IEBAIC05MzUsNyArOTQxLDgg
+QEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5j
+b2RlciAqZW5jb2RlcikKPiAgCQlyZXR1cm47Cj4KPiAgCWlmIChjbGtfcHJlcGFyZV9lbmFibGUo
+ZHNpLT5wY2xrKSkgewo+IC0JCWRldl9lcnIoZHNpLT5kZXYsICIlczogRmFpbGVkIHRvIGVuYWJs
+ZSBwY2xrXG4iLCBfX2Z1bmNfXyk7Cj4gKwkJRFJNX0RFVl9FUlJPUihkc2ktPmRldiwKPiArCQkJ
+ICAgICAgIiVzOiBGYWlsZWQgdG8gZW5hYmxlIHBjbGtcbiIsIF9fZnVuY19fKTsKPiAgCQlyZXR1
+cm47Cj4gIAl9Cj4KPiBAQCAtOTY3LDcgKzk3NCw4IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNp
+X2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiAgCQlyZXR1cm47
+Cj4KPiAgCWlmIChjbGtfcHJlcGFyZV9lbmFibGUoZHNpLT5wY2xrKSkgewo+IC0JCWRldl9lcnIo
+ZHNpLT5kZXYsICIlczogRmFpbGVkIHRvIGVuYWJsZSBwY2xrXG4iLCBfX2Z1bmNfXyk7Cj4gKwkJ
+RFJNX0RFVl9FUlJPUihkc2ktPmRldiwKPiArCQkJICAgICAgIiVzOiBGYWlsZWQgdG8gZW5hYmxl
+IHBjbGtcbiIsIF9fZnVuY19fKTsKPiAgCQlyZXR1cm47Cj4gIAl9Cj4KPiBAQCAtOTkxLDcgKzk5
+OSw3IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1f
+ZW5jb2RlciAqZW5jb2RlcikKPiAgCSAqLwo+ICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRz
+aS0+Z3JmX2Nsayk7Cj4gIAlpZiAocmV0KSB7Cj4gLQkJZGV2X2Vycihkc2ktPmRldiwgIkZhaWxl
+ZCB0byBlbmFibGUgZ3JmX2NsazogJWRcbiIsIHJldCk7Cj4gKwkJRFJNX0RFVl9FUlJPUihkc2kt
+PmRldiwgIkZhaWxlZCB0byBlbmFibGUgZ3JmX2NsazogJWRcbiIsIHJldCk7Cj4gIAkJcmV0dXJu
+Owo+ICAJfQo+Cj4gQEAgLTEwMDQsNyArMTAxMiw3IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNp
+X2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPgo+ICAJZHdfbWlw
+aV9kc2lfc2V0X21vZGUoZHNpLCBEV19NSVBJX0RTSV9DTURfTU9ERSk7Cj4gIAlpZiAoZHJtX3Bh
+bmVsX3ByZXBhcmUoZHNpLT5wYW5lbCkpCj4gLQkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxlZCB0
+byBwcmVwYXJlIHBhbmVsXG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2LCAiZmFpbGVk
+IHRvIHByZXBhcmUgcGFuZWxcbiIpOwo+Cj4gIAlkd19taXBpX2RzaV9zZXRfbW9kZShkc2ksIERX
+X01JUElfRFNJX1ZJRF9NT0RFKTsKPiAgCWRybV9wYW5lbF9lbmFibGUoZHNpLT5wYW5lbCk7Cj4g
+QEAgLTEwMTcsNyArMTAyNSw4IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfZW5h
+YmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiAgCQl2YWwgPSBwZGF0YS0+ZHNpMF9l
+bl9iaXQgPDwgMTY7Cj4KPiAgCXJlZ21hcF93cml0ZShkc2ktPmdyZl9yZWdtYXAsIHBkYXRhLT5n
+cmZfc3dpdGNoX3JlZywgdmFsKTsKPiAtCWRldl9kYmcoZHNpLT5kZXYsICJ2b3AgJXMgb3V0cHV0
+IHRvIGRzaTBcbiIsIChtdXgpID8gIkxJVCIgOiAiQklHIik7Cj4gKwlEUk1fREVWX0RFQlVHKGRz
+aS0+ZGV2LAo+ICsJCSAgICAgICJ2b3AgJXMgb3V0cHV0IHRvIGRzaTBcbiIsIChtdXgpID8gIkxJ
+VCIgOiAiQklHIik7Cj4gIAlkc2ktPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNfT047Cj4KPiAg
+CWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPmdyZl9jbGspOwo+IEBAIC0xMTExLDcgKzExMjAs
+NyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZGV2aWNlICpk
+cm0sCj4gIAlyZXQgPSBkcm1fZW5jb2Rlcl9pbml0KGRybSwgJmRzaS0+ZW5jb2RlciwgJmR3X21p
+cGlfZHNpX2VuY29kZXJfZnVuY3MsCj4gIAkJCSAgICAgICBEUk1fTU9ERV9FTkNPREVSX0RTSSwg
+TlVMTCk7Cj4gIAlpZiAocmV0KSB7Cj4gLQkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gaW5pdGlh
+bGl6ZSBlbmNvZGVyIHdpdGggZHJtXG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxl
+ZCB0byBpbml0aWFsaXplIGVuY29kZXIgd2l0aCBkcm1cbiIpOwo+ICAJCXJldHVybiByZXQ7Cj4g
+IAl9Cj4KPiBAQCAtMTEzMyw3ICsxMTQyLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9taXBpX3Bh
+cnNlX2R0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+Cj4gIAlkc2ktPmdyZl9yZWdtYXAgPSBz
+eXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAicm9ja2NoaXAsZ3JmIik7Cj4gIAlp
+ZiAoSVNfRVJSKGRzaS0+Z3JmX3JlZ21hcCkpIHsKPiAtCQlkZXZfZXJyKGRzaS0+ZGV2LCAiVW5h
+YmxlIHRvIGdldCByb2NrY2hpcCxncmZcbiIpOwo+ICsJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYs
+ICJVbmFibGUgdG8gZ2V0IHJvY2tjaGlwLGdyZlxuIik7Cj4gIAkJcmV0dXJuIFBUUl9FUlIoZHNp
+LT5ncmZfcmVnbWFwKTsKPiAgCX0KPgo+IEBAIC0xMjA1LDE0ICsxMjE0LDE1IEBAIHN0YXRpYyBp
+bnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1h
+c3RlciwKPiAgCWRzaS0+cGxscmVmX2NsayA9IGRldm1fY2xrX2dldChkZXYsICJyZWYiKTsKPiAg
+CWlmIChJU19FUlIoZHNpLT5wbGxyZWZfY2xrKSkgewo+ICAJCXJldCA9IFBUUl9FUlIoZHNpLT5w
+bGxyZWZfY2xrKTsKPiAtCQlkZXZfZXJyKGRldiwgIlVuYWJsZSB0byBnZXQgcGxsIHJlZmVyZW5j
+ZSBjbG9jazogJWRcbiIsIHJldCk7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsCj4gKwkJCSAgICAg
+ICJVbmFibGUgdG8gZ2V0IHBsbCByZWZlcmVuY2UgY2xvY2s6ICVkXG4iLCByZXQpOwo+ICAJCXJl
+dHVybiByZXQ7Cj4gIAl9Cj4KPiAgCWRzaS0+cGNsayA9IGRldm1fY2xrX2dldChkZXYsICJwY2xr
+Iik7Cj4gIAlpZiAoSVNfRVJSKGRzaS0+cGNsaykpIHsKPiAgCQlyZXQgPSBQVFJfRVJSKGRzaS0+
+cGNsayk7Cj4gLQkJZGV2X2VycihkZXYsICJVbmFibGUgdG8gZ2V0IHBjbGs6ICVkXG4iLCByZXQp
+Owo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAiVW5hYmxlIHRvIGdldCBwY2xrOiAlZFxuIiwgcmV0
+KTsKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+Cj4gQEAgLTEyMjYsNyArMTIzNiw4IEBAIHN0YXRp
+YyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2Ug
+Km1hc3RlciwKPiAgCQlpZiAocmV0ID09IC1FTk9FTlQpIHsKPiAgCQkJYXBiX3JzdCA9IE5VTEw7
+Cj4gIAkJfSBlbHNlIHsKPiAtCQkJZGV2X2VycihkZXYsICJVbmFibGUgdG8gZ2V0IHJlc2V0IGNv
+bnRyb2w6ICVkXG4iLCByZXQpOwo+ICsJCQlEUk1fREVWX0VSUk9SKGRldiwKPiArCQkJCSAgICAg
+ICJVbmFibGUgdG8gZ2V0IHJlc2V0IGNvbnRyb2w6ICVkXG4iLCByZXQpOwo+ICAJCQlyZXR1cm4g
+cmV0Owo+ICAJCX0KPiAgCX0KPiBAQCAtMTIzNCw3ICsxMjQ1LDggQEAgc3RhdGljIGludCBkd19t
+aXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+
+ICAJaWYgKGFwYl9yc3QpIHsKPiAgCQlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHNpLT5wY2xr
+KTsKPiAgCQlpZiAocmV0KSB7Cj4gLQkJCWRldl9lcnIoZGV2LCAiJXM6IEZhaWxlZCB0byBlbmFi
+bGUgcGNsa1xuIiwgX19mdW5jX18pOwo+ICsJCQlEUk1fREVWX0VSUk9SKGRldiwKPiArCQkJCSAg
+ICAgICIlczogRmFpbGVkIHRvIGVuYWJsZSBwY2xrXG4iLCBfX2Z1bmNfXyk7Cj4gIAkJCXJldHVy
+biByZXQ7Cj4gIAkJfQo+Cj4gQEAgLTEyNDksNyArMTI2MSw4IEBAIHN0YXRpYyBpbnQgZHdfbWlw
+aV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiAg
+CQlkc2ktPnBoeV9jZmdfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgInBoeV9jZmciKTsKPiAgCQlp
+ZiAoSVNfRVJSKGRzaS0+cGh5X2NmZ19jbGspKSB7Cj4gIAkJCXJldCA9IFBUUl9FUlIoZHNpLT5w
+aHlfY2ZnX2Nsayk7Cj4gLQkJCWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvIGdldCBwaHlfY2ZnX2Ns
+azogJWRcbiIsIHJldCk7Cj4gKwkJCURSTV9ERVZfRVJST1IoZGV2LAo+ICsJCQkJICAgICAgIlVu
+YWJsZSB0byBnZXQgcGh5X2NmZ19jbGs6ICVkXG4iLCByZXQpOwo+ICAJCQlyZXR1cm4gcmV0Owo+
+ICAJCX0KPiAgCX0KPiBAQCAtMTI1OCwyMCArMTI3MSwyMSBAQCBzdGF0aWMgaW50IGR3X21pcGlf
+ZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gIAkJ
+ZHNpLT5ncmZfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgImdyZiIpOwo+ICAJCWlmIChJU19FUlIo
+ZHNpLT5ncmZfY2xrKSkgewo+ICAJCQlyZXQgPSBQVFJfRVJSKGRzaS0+Z3JmX2Nsayk7Cj4gLQkJ
+CWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvIGdldCBncmZfY2xrOiAlZFxuIiwgcmV0KTsKPiArCQkJ
+RFJNX0RFVl9FUlJPUihkZXYsICJVbmFibGUgdG8gZ2V0IGdyZl9jbGs6ICVkXG4iLCByZXQpOwo+
+ICAJCQlyZXR1cm4gcmV0Owo+ICAJCX0KPiAgCX0KPgo+ICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5h
+YmxlKGRzaS0+cGxscmVmX2Nsayk7Cj4gIAlpZiAocmV0KSB7Cj4gLQkJZGV2X2VycihkZXYsICIl
+czogRmFpbGVkIHRvIGVuYWJsZSBwbGxyZWZfY2xrXG4iLCBfX2Z1bmNfXyk7Cj4gKwkJRFJNX0RF
+Vl9FUlJPUihkZXYsCj4gKwkJCSAgICAgICIlczogRmFpbGVkIHRvIGVuYWJsZSBwbGxyZWZfY2xr
+XG4iLCBfX2Z1bmNfXyk7Cj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPgo+ICAJcmV0ID0gZHdfbWlw
+aV9kc2lfcmVnaXN0ZXIoZHJtLCBkc2kpOwo+ICAJaWYgKHJldCkgewo+IC0JCWRldl9lcnIoZGV2
+LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIG1pcGlfZHNpOiAlZFxuIiwgcmV0KTsKPiArCQlEUk1fREVW
+X0VSUk9SKGRldiwgIkZhaWxlZCB0byByZWdpc3RlciBtaXBpX2RzaTogJWRcbiIsIHJldCk7Cj4g
+IAkJZ290byBlcnJfcGxscmVmOwo+ICAJfQo+Cj4gQEAgLTEyODEsNyArMTI5NSw3IEBAIHN0YXRp
+YyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2Ug
+Km1hc3RlciwKPiAgCWRzaS0+ZHNpX2hvc3QuZGV2ID0gZGV2Owo+ICAJcmV0ID0gbWlwaV9kc2lf
+aG9zdF9yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7Cj4gIAlpZiAocmV0KSB7Cj4gLQkJZGV2X2Vy
+cihkZXYsICJGYWlsZWQgdG8gcmVnaXN0ZXIgTUlQSSBob3N0OiAlZFxuIiwgcmV0KTsKPiArCQlE
+Uk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byByZWdpc3RlciBNSVBJIGhvc3Q6ICVkXG4iLCBy
+ZXQpOwo+ICAJCWdvdG8gZXJyX2NsZWFudXA7Cj4gIAl9Cj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPiBpbmRleCBjY2Q1ZDU5Li4xZWIwMmE4IDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gQEAgLTE2
+OCw3ICsxNjgsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2hkbWlfcGFyc2VfZHQoc3RydWN0IHJv
+Y2tjaGlwX2hkbWkgKmhkbWkpCj4KPiAgCWhkbWktPnJlZ21hcCA9IHN5c2Nvbl9yZWdtYXBfbG9v
+a3VwX2J5X3BoYW5kbGUobnAsICJyb2NrY2hpcCxncmYiKTsKPiAgCWlmIChJU19FUlIoaGRtaS0+
+cmVnbWFwKSkgewo+IC0JCWRldl9lcnIoaGRtaS0+ZGV2LCAiVW5hYmxlIHRvIGdldCByb2NrY2hp
+cCxncmZcbiIpOwo+ICsJCURSTV9ERVZfRVJST1IoaGRtaS0+ZGV2LCAiVW5hYmxlIHRvIGdldCBy
+b2NrY2hpcCxncmZcbiIpOwo+ICAJCXJldHVybiBQVFJfRVJSKGhkbWktPnJlZ21hcCk7Cj4gIAl9
+Cj4KPiBAQCAtMTc4LDcgKzE3OCw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfaGRtaV9wYXJzZV9k
+dChzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSAqaGRtaSkKPiAgCX0gZWxzZSBpZiAoUFRSX0VSUihoZG1p
+LT52cGxsX2NsaykgPT0gLUVQUk9CRV9ERUZFUikgewo+ICAJCXJldHVybiAtRVBST0JFX0RFRkVS
+Owo+ICAJfSBlbHNlIGlmIChJU19FUlIoaGRtaS0+dnBsbF9jbGspKSB7Cj4gLQkJZGV2X2Vyciho
+ZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGdyZiBjbG9ja1xuIik7Cj4gKwkJRFJNX0RFVl9FUlJP
+UihoZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGdyZiBjbG9ja1xuIik7Cj4gIAkJcmV0dXJuIFBU
+Ul9FUlIoaGRtaS0+dnBsbF9jbGspOwo+ICAJfQo+Cj4gQEAgLTE4OCwxMyArMTg4LDE0IEBAIHN0
+YXRpYyBpbnQgcm9ja2NoaXBfaGRtaV9wYXJzZV9kdChzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSAqaGRt
+aSkKPiAgCX0gZWxzZSBpZiAoUFRSX0VSUihoZG1pLT5ncmZfY2xrKSA9PSAtRVBST0JFX0RFRkVS
+KSB7Cj4gIAkJcmV0dXJuIC1FUFJPQkVfREVGRVI7Cj4gIAl9IGVsc2UgaWYgKElTX0VSUihoZG1p
+LT5ncmZfY2xrKSkgewo+IC0JCWRldl9lcnIoaGRtaS0+ZGV2LCAiZmFpbGVkIHRvIGdldCBncmYg
+Y2xvY2tcbiIpOwo+ICsJCURSTV9ERVZfRVJST1IoaGRtaS0+ZGV2LCAiZmFpbGVkIHRvIGdldCBn
+cmYgY2xvY2tcbiIpOwo+ICAJCXJldHVybiBQVFJfRVJSKGhkbWktPmdyZl9jbGspOwo+ICAJfQo+
+Cj4gIAlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoaGRtaS0+dnBsbF9jbGspOwo+ICAJaWYgKHJl
+dCkgewo+IC0JCWRldl9lcnIoaGRtaS0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBIRE1JIHZwbGw6
+ICVkXG4iLCByZXQpOwo+ICsJCURSTV9ERVZfRVJST1IoaGRtaS0+ZGV2LAo+ICsJCQkgICAgICAi
+RmFpbGVkIHRvIGVuYWJsZSBIRE1JIHZwbGw6ICVkXG4iLCByZXQpOwo+ICAJCXJldHVybiByZXQ7
+Cj4gIAl9Cj4KPiBAQCAtMjU5LDE3ICsyNjAsMTcgQEAgc3RhdGljIHZvaWQgZHdfaGRtaV9yb2Nr
+Y2hpcF9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4KPiAgCXJl
+dCA9IGNsa19wcmVwYXJlX2VuYWJsZShoZG1pLT5ncmZfY2xrKTsKPiAgCWlmIChyZXQgPCAwKSB7
+Cj4gLQkJZGV2X2VycihoZG1pLT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIGdyZmNsayAlZFxuIiwg
+cmV0KTsKPiArCQlEUk1fREVWX0VSUk9SKGhkbWktPmRldiwgImZhaWxlZCB0byBlbmFibGUgZ3Jm
+Y2xrICVkXG4iLCByZXQpOwo+ICAJCXJldHVybjsKPiAgCX0KPgo+ICAJcmV0ID0gcmVnbWFwX3dy
+aXRlKGhkbWktPnJlZ21hcCwgaGRtaS0+Y2hpcF9kYXRhLT5sY2RzZWxfZ3JmX3JlZywgdmFsKTsK
+PiAgCWlmIChyZXQgIT0gMCkKPiAtCQlkZXZfZXJyKGhkbWktPmRldiwgIkNvdWxkIG5vdCB3cml0
+ZSB0byBHUkY6ICVkXG4iLCByZXQpOwo+ICsJCURSTV9ERVZfRVJST1IoaGRtaS0+ZGV2LCAiQ291
+bGQgbm90IHdyaXRlIHRvIEdSRjogJWRcbiIsIHJldCk7Cj4KPiAgCWNsa19kaXNhYmxlX3VucHJl
+cGFyZShoZG1pLT5ncmZfY2xrKTsKPiAtCWRldl9kYmcoaGRtaS0+ZGV2LCAidm9wICVzIG91dHB1
+dCB0byBoZG1pXG4iLAo+IC0JCXJldCA/ICJMSVQiIDogIkJJRyIpOwo+ICsJRFJNX0RFVl9ERUJV
+RyhoZG1pLT5kZXYsICJ2b3AgJXMgb3V0cHV0IHRvIGhkbWlcbiIsCj4gKwkJICAgICAgcmV0ID8g
+IkxJVCIgOiAiQklHIik7Cj4gIH0KPgo+ICBzdGF0aWMgaW50Cj4gQEAgLTM2OCw3ICszNjksNyBA
+QCBzdGF0aWMgaW50IGR3X2hkbWlfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0
+cnVjdCBkZXZpY2UgKm1hc3RlciwKPgo+ICAJcmV0ID0gcm9ja2NoaXBfaGRtaV9wYXJzZV9kdCho
+ZG1pKTsKPiAgCWlmIChyZXQpIHsKPiAtCQlkZXZfZXJyKGhkbWktPmRldiwgIlVuYWJsZSB0byBw
+YXJzZSBPRiBkYXRhXG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKGhkbWktPmRldiwgIlVuYWJsZSB0
+byBwYXJzZSBPRiBkYXRhXG4iKTsKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+Cj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+IGluZGV4IDdhMjUxYTUuLmVlNTg0ZDggMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jCj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jCj4gQEAgLTIyNCw3ICsyMjQsNyBAQCBzdGF0
+aWMgdm9pZCBpbm5vX2hkbWlfc2V0X3B3cl9tb2RlKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWksIGlu
+dCBtb2RlKQo+ICAJCWJyZWFrOwo+Cj4gIAlkZWZhdWx0Ogo+IC0JCWRldl9lcnIoaGRtaS0+ZGV2
+LCAiVW5rbm93biBwb3dlciBtb2RlICVkXG4iLCBtb2RlKTsKPiArCQlEUk1fREVWX0VSUk9SKGhk
+bWktPmRldiwgIlVua25vd24gcG93ZXIgbW9kZSAlZFxuIiwgbW9kZSk7Cj4gIAl9Cj4gIH0KPgo+
+IEBAIC03NDIsOCArNzQyLDkgQEAgc3RhdGljIGludCBpbm5vX2hkbWlfaTJjX3hmZXIoc3RydWN0
+IGkyY19hZGFwdGVyICphZGFwLAo+ICAJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9JTlRFUlJVUFRf
+U1RBVFVTMSwgbV9JTlRfRURJRF9SRUFEWSk7Cj4KPiAgCWZvciAoaSA9IDA7IGkgPCBudW07IGkr
+Kykgewo+IC0JCWRldl9kYmcoaGRtaS0+ZGV2LCAieGZlcjogbnVtOiAlZC8lZCwgbGVuOiAlZCwg
+ZmxhZ3M6ICUjeFxuIiwKPiAtCQkJaSArIDEsIG51bSwgbXNnc1tpXS5sZW4sIG1zZ3NbaV0uZmxh
+Z3MpOwo+ICsJCURSTV9ERVZfREVCVUcoaGRtaS0+ZGV2LAo+ICsJCQkgICAgICAieGZlcjogbnVt
+OiAlZC8lZCwgbGVuOiAlZCwgZmxhZ3M6ICUjeFxuIiwKPiArCQkJICAgICAgaSArIDEsIG51bSwg
+bXNnc1tpXS5sZW4sIG1zZ3NbaV0uZmxhZ3MpOwo+Cj4gIAkJaWYgKG1zZ3NbaV0uZmxhZ3MgJiBJ
+MkNfTV9SRCkKPiAgCQkJcmV0ID0gaW5ub19oZG1pX2kyY19yZWFkKGhkbWksICZtc2dzW2ldKTsK
+PiBAQCAtODA2LDcgKzgwNyw3IEBAIHN0YXRpYyBzdHJ1Y3QgaTJjX2FkYXB0ZXIgKmlubm9faGRt
+aV9pMmNfYWRhcHRlcihzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+Cj4gIAloZG1pLT5pMmMgPSBp
+MmM7Cj4KPiAtCWRldl9pbmZvKGhkbWktPmRldiwgInJlZ2lzdGVyZWQgJXMgSTJDIGJ1cyBkcml2
+ZXJcbiIsIGFkYXAtPm5hbWUpOwo+ICsJRFJNX0RFVl9JTkZPKGhkbWktPmRldiwgInJlZ2lzdGVy
+ZWQgJXMgSTJDIGJ1cyBkcml2ZXJcbiIsIGFkYXAtPm5hbWUpOwo+Cj4gIAlyZXR1cm4gYWRhcDsK
+PiAgfQo+IEBAIC04MzgsMTMgKzgzOSwxNCBAQCBzdGF0aWMgaW50IGlubm9faGRtaV9iaW5kKHN0
+cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+Cj4gIAloZG1pLT5wY2xr
+ID0gZGV2bV9jbGtfZ2V0KGhkbWktPmRldiwgInBjbGsiKTsKPiAgCWlmIChJU19FUlIoaGRtaS0+
+cGNsaykpIHsKPiAtCQlkZXZfZXJyKGhkbWktPmRldiwgIlVuYWJsZSB0byBnZXQgSERNSSBwY2xr
+IGNsa1xuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUihoZG1pLT5kZXYsICJVbmFibGUgdG8gZ2V0IEhE
+TUkgcGNsayBjbGtcbiIpOwo+ICAJCXJldHVybiBQVFJfRVJSKGhkbWktPnBjbGspOwo+ICAJfQo+
+Cj4gIAlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoaGRtaS0+cGNsayk7Cj4gIAlpZiAocmV0KSB7
+Cj4gLQkJZGV2X2VycihoZG1pLT5kZXYsICJDYW5ub3QgZW5hYmxlIEhETUkgcGNsayBjbG9jazog
+JWRcbiIsIHJldCk7Cj4gKwkJRFJNX0RFVl9FUlJPUihoZG1pLT5kZXYsCj4gKwkJCSAgICAgICJD
+YW5ub3QgZW5hYmxlIEhETUkgcGNsayBjbG9jazogJWRcbiIsIHJldCk7Cj4gIAkJcmV0dXJuIHJl
+dDsKPiAgCX0KPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+Ywo+IGluZGV4IGZmM2QwZjUuLjY5OGZlZjEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBAQCAtNTgsNyArNTgsNyBAQCBpbnQgcm9ja2NoaXBf
+ZHJtX2RtYV9hdHRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAo+Cj4gIAly
+ZXQgPSBpb21tdV9hdHRhY2hfZGV2aWNlKHByaXZhdGUtPmRvbWFpbiwgZGV2KTsKPiAgCWlmIChy
+ZXQpIHsKPiAtCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBhdHRhY2ggaW9tbXUgZGV2aWNlXG4i
+KTsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byBhdHRhY2ggaW9tbXUgZGV2aWNl
+XG4iKTsKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+Cj4gQEAgLTM3Myw4ICszNzMsOSBAQCBzdGF0
+aWMgaW50IHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9vZl9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYp
+Cj4KPiAgCQlpb21tdSA9IG9mX3BhcnNlX3BoYW5kbGUocG9ydC0+cGFyZW50LCAiaW9tbXVzIiwg
+MCk7Cj4gIAkJaWYgKCFpb21tdSB8fCAhb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShpb21tdS0+cGFy
+ZW50KSkgewo+IC0JCQlkZXZfZGJnKGRldiwgIm5vIGlvbW11IGF0dGFjaGVkIGZvciAlcE9GLCB1
+c2luZyBub24taW9tbXUgYnVmZmVyc1xuIiwKPiAtCQkJCXBvcnQtPnBhcmVudCk7Cj4gKwkJCURS
+TV9ERVZfREVCVUcoZGV2LAo+ICsJCQkJICAgICAgIm5vIGlvbW11IGF0dGFjaGVkIGZvciAlcE9G
+LCB1c2luZyBub24taW9tbXUgYnVmZmVyc1xuIiwKPiArCQkJCSAgICAgIHBvcnQtPnBhcmVudCk7
+Cj4gIAkJCS8qCj4gIAkJCSAqIGlmIHRoZXJlIGlzIGEgY3J0YyBub3Qgc3VwcG9ydCBpb21tdSwg
+Zm9yY2Ugc2V0IGFsbAo+ICAJCQkgKiBjcnRjIHVzZSBub24taW9tbXUgYnVmZmVyLgo+IEBAIC0z
+ODksMTIgKzM5MCwxMyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9vZl9wcm9i
+ZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIAl9Cj4KPiAgCWlmIChpID09IDApIHsKPiAtCQlkZXZf
+ZXJyKGRldiwgIm1pc3NpbmcgJ3BvcnRzJyBwcm9wZXJ0eVxuIik7Cj4gKwkJRFJNX0RFVl9FUlJP
+UihkZXYsICJtaXNzaW5nICdwb3J0cycgcHJvcGVydHlcbiIpOwo+ICAJCXJldHVybiAtRU5PREVW
+Owo+ICAJfQo+Cj4gIAlpZiAoIWZvdW5kKSB7Cj4gLQkJZGV2X2VycihkZXYsICJObyBhdmFpbGFi
+bGUgdm9wIGZvdW5kIGZvciBkaXNwbGF5LXN1YnN5c3RlbS5cbiIpOwo+ICsJCURSTV9ERVZfRVJS
+T1IoZGV2LAo+ICsJCQkgICAgICAiTm8gYXZhaWxhYmxlIHZvcCBmb3VuZCBmb3IgZGlzcGxheS1z
+dWJzeXN0ZW0uXG4iKTsKPiAgCQlyZXR1cm4gLUVOT0RFVjsKPiAgCX0KPgo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiBpbmRleCA3MDc3MzA0Li5jZDJhY2Uw
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIu
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+IEBA
+IC0xMDAsOCArMTAwLDkgQEAgcm9ja2NoaXBfZmJfYWxsb2Moc3RydWN0IGRybV9kZXZpY2UgKmRl
+diwgY29uc3Qgc3RydWN0IGRybV9tb2RlX2ZiX2NtZDIgKm1vZGVfY20KPiAgCXJldCA9IGRybV9m
+cmFtZWJ1ZmZlcl9pbml0KGRldiwgJnJvY2tjaGlwX2ZiLT5mYiwKPiAgCQkJCSAgICZyb2NrY2hp
+cF9kcm1fZmJfZnVuY3MpOwo+ICAJaWYgKHJldCkgewo+IC0JCWRldl9lcnIoZGV2LT5kZXYsICJG
+YWlsZWQgdG8gaW5pdGlhbGl6ZSBmcmFtZWJ1ZmZlcjogJWRcbiIsCj4gLQkJCXJldCk7Cj4gKwkJ
+RFJNX0RFVl9FUlJPUihkZXYtPmRldiwKPiArCQkJICAgICAgIkZhaWxlZCB0byBpbml0aWFsaXpl
+IGZyYW1lYnVmZmVyOiAlZFxuIiwKPiArCQkJICAgICAgcmV0KTsKPiAgCQlrZnJlZShyb2NrY2hp
+cF9mYik7Cj4gIAkJcmV0dXJuIEVSUl9QVFIocmV0KTsKPiAgCX0KPiBAQCAtMTM0LDcgKzEzNSw4
+IEBAIHJvY2tjaGlwX3VzZXJfZmJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVj
+dCBkcm1fZmlsZSAqZmlsZV9wcml2LAo+Cj4gIAkJb2JqID0gZHJtX2dlbV9vYmplY3RfbG9va3Vw
+KGZpbGVfcHJpdiwgbW9kZV9jbWQtPmhhbmRsZXNbaV0pOwo+ICAJCWlmICghb2JqKSB7Cj4gLQkJ
+CWRldl9lcnIoZGV2LT5kZXYsICJGYWlsZWQgdG8gbG9va3VwIEdFTSBvYmplY3RcbiIpOwo+ICsJ
+CQlEUk1fREVWX0VSUk9SKGRldi0+ZGV2LAo+ICsJCQkJICAgICAgIkZhaWxlZCB0byBsb29rdXAg
+R0VNIG9iamVjdFxuIik7Cj4gIAkJCXJldCA9IC1FTlhJTzsKPiAgCQkJZ290byBlcnJfZ2VtX29i
+amVjdF91bnJlZmVyZW5jZTsKPiAgCQl9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZmJkZXYuYwo+IGluZGV4IDcyNDU3OWUuLmU2NjUwNTUgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jCj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jCj4gQEAgLTc2LDcg
+Kzc2LDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fZmJkZXZfY3JlYXRlKHN0cnVjdCBkcm1f
+ZmJfaGVscGVyICpoZWxwZXIsCj4KPiAgCWZiaSA9IGRybV9mYl9oZWxwZXJfYWxsb2NfZmJpKGhl
+bHBlcik7Cj4gIAlpZiAoSVNfRVJSKGZiaSkpIHsKPiAtCQlkZXZfZXJyKGRldi0+ZGV2LCAiRmFp
+bGVkIHRvIGNyZWF0ZSBmcmFtZWJ1ZmZlciBpbmZvLlxuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUihk
+ZXYtPmRldiwgIkZhaWxlZCB0byBjcmVhdGUgZnJhbWVidWZmZXIgaW5mby5cbiIpOwo+ICAJCXJl
+dCA9IFBUUl9FUlIoZmJpKTsKPiAgCQlnb3RvIG91dDsKPiAgCX0KPiBAQCAtODQsNyArODQsOCBA
+QCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9mYmRldl9jcmVhdGUoc3RydWN0IGRybV9mYl9oZWxw
+ZXIgKmhlbHBlciwKPiAgCWhlbHBlci0+ZmIgPSByb2NrY2hpcF9kcm1fZnJhbWVidWZmZXJfaW5p
+dChkZXYsICZtb2RlX2NtZCwKPiAgCQkJCQkJICAgcHJpdmF0ZS0+ZmJkZXZfYm8pOwo+ICAJaWYg
+KElTX0VSUihoZWxwZXItPmZiKSkgewo+IC0JCWRldl9lcnIoZGV2LT5kZXYsICJGYWlsZWQgdG8g
+YWxsb2NhdGUgRFJNIGZyYW1lYnVmZmVyLlxuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYtPmRl
+diwKPiArCQkJICAgICAgIkZhaWxlZCB0byBhbGxvY2F0ZSBEUk0gZnJhbWVidWZmZXIuXG4iKTsK
+PiAgCQlyZXQgPSBQVFJfRVJSKGhlbHBlci0+ZmIpOwo+ICAJCWdvdG8gb3V0Owo+ICAJfQo+IEBA
+IC0xMzgsMjEgKzEzOSwyNCBAQCBpbnQgcm9ja2NoaXBfZHJtX2ZiZGV2X2luaXQoc3RydWN0IGRy
+bV9kZXZpY2UgKmRldikKPgo+ICAJcmV0ID0gZHJtX2ZiX2hlbHBlcl9pbml0KGRldiwgaGVscGVy
+LCBST0NLQ0hJUF9NQVhfQ09OTkVDVE9SKTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2Vy
+cihkZXYtPmRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIGRybSBmYiBoZWxwZXIgLSAlZC5cbiIs
+Cj4gLQkJCXJldCk7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYtPmRldiwKPiArCQkJICAgICAgIkZh
+aWxlZCB0byBpbml0aWFsaXplIGRybSBmYiBoZWxwZXIgLSAlZC5cbiIsCj4gKwkJCSAgICAgIHJl
+dCk7Cj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPgo+ICAJcmV0ID0gZHJtX2ZiX2hlbHBlcl9zaW5n
+bGVfYWRkX2FsbF9jb25uZWN0b3JzKGhlbHBlcik7Cj4gIAlpZiAocmV0IDwgMCkgewo+IC0JCWRl
+dl9lcnIoZGV2LT5kZXYsICJGYWlsZWQgdG8gYWRkIGNvbm5lY3RvcnMgLSAlZC5cbiIsIHJldCk7
+Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYtPmRldiwKPiArCQkJICAgICAgIkZhaWxlZCB0byBhZGQg
+Y29ubmVjdG9ycyAtICVkLlxuIiwgcmV0KTsKPiAgCQlnb3RvIGVycl9kcm1fZmJfaGVscGVyX2Zp
+bmk7Cj4gIAl9Cj4KPiAgCXJldCA9IGRybV9mYl9oZWxwZXJfaW5pdGlhbF9jb25maWcoaGVscGVy
+LCBQUkVGRVJSRURfQlBQKTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2VycihkZXYtPmRl
+diwgIkZhaWxlZCB0byBzZXQgaW5pdGlhbCBodyBjb25maWcgLSAlZC5cbiIsCj4gLQkJCXJldCk7
+Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYtPmRldiwKPiArCQkJICAgICAgIkZhaWxlZCB0byBzZXQg
+aW5pdGlhbCBodyBjb25maWcgLSAlZC5cbiIsCj4gKwkJCSAgICAgIHJldCk7Cj4gIAkJZ290byBl
+cnJfZHJtX2ZiX2hlbHBlcl9maW5pOwo+ICAJfQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggYmY5ZWQwZS4uMTkxMjhiNCAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0xNjAsNyAr
+MTYwLDcgQEAgc3RhdGljIHZvaWQgdm9wX3JlZ19zZXQoc3RydWN0IHZvcCAqdm9wLCBjb25zdCBz
+dHJ1Y3Qgdm9wX3JlZyAqcmVnLAo+ICAJaW50IG9mZnNldCwgbWFzaywgc2hpZnQ7Cj4KPiAgCWlm
+ICghcmVnIHx8ICFyZWctPm1hc2spIHsKPiAtCQlkZXZfZGJnKHZvcC0+ZGV2LCAiV2FybmluZzog
+bm90IHN1cHBvcnQgJXNcbiIsIHJlZ19uYW1lKTsKPiArCQlEUk1fREVWX0RFQlVHKHZvcC0+ZGV2
+LCAiV2FybmluZzogbm90IHN1cHBvcnQgJXNcbiIsIHJlZ19uYW1lKTsKPiAgCQlyZXR1cm47Cj4g
+IAl9Cj4KPiBAQCAtNDk5LDcgKzQ5OSw3IEBAIHN0YXRpYyBpbnQgdm9wX2VuYWJsZShzdHJ1Y3Qg
+ZHJtX2NydGMgKmNydGMpCj4KPiAgCXJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmModm9wLT5kZXYp
+Owo+ICAJaWYgKHJldCA8IDApIHsKPiAtCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdl
+dCBwbSBydW50aW1lOiAlZFxuIiwgcmV0KTsKPiArCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAi
+ZmFpbGVkIHRvIGdldCBwbSBydW50aW1lOiAlZFxuIiwgcmV0KTsKPiAgCQlyZXR1cm4gcmV0Owo+
+ICAJfQo+Cj4gQEAgLTUyMyw3ICs1MjMsOCBAQCBzdGF0aWMgaW50IHZvcF9lbmFibGUoc3RydWN0
+IGRybV9jcnRjICpjcnRjKQo+ICAJICovCj4gIAlyZXQgPSByb2NrY2hpcF9kcm1fZG1hX2F0dGFj
+aF9kZXZpY2Uodm9wLT5kcm1fZGV2LCB2b3AtPmRldik7Cj4gIAlpZiAocmV0KSB7Cj4gLQkJZGV2
+X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBhdHRhY2ggZG1hIG1hcHBpbmcsICVkXG4iLCByZXQp
+Owo+ICsJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsCj4gKwkJCSAgICAgICJmYWlsZWQgdG8gYXR0
+YWNoIGRtYSBtYXBwaW5nLCAlZFxuIiwgcmV0KTsKPiAgCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7
+Cj4gIAl9Cj4KPiBAQCAtMTM2MSw0MiArMTM2Miw0MiBAQCBzdGF0aWMgaW50IHZvcF9pbml0aWFs
+KHN0cnVjdCB2b3AgKnZvcCkKPgo+ICAJdm9wLT5oY2xrID0gZGV2bV9jbGtfZ2V0KHZvcC0+ZGV2
+LCAiaGNsa192b3AiKTsKPiAgCWlmIChJU19FUlIodm9wLT5oY2xrKSkgewo+IC0JCWRldl9lcnIo
+dm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGhjbGsgc291cmNlXG4iKTsKPiArCQlEUk1fREVWX0VS
+Uk9SKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdldCBoY2xrIHNvdXJjZVxuIik7Cj4gIAkJcmV0dXJu
+IFBUUl9FUlIodm9wLT5oY2xrKTsKPiAgCX0KPiAgCXZvcC0+YWNsayA9IGRldm1fY2xrX2dldCh2
+b3AtPmRldiwgImFjbGtfdm9wIik7Cj4gIAlpZiAoSVNfRVJSKHZvcC0+YWNsaykpIHsKPiAtCQlk
+ZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdldCBhY2xrIHNvdXJjZVxuIik7Cj4gKwkJRFJN
+X0RFVl9FUlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgYWNsayBzb3VyY2VcbiIpOwo+ICAJ
+CXJldHVybiBQVFJfRVJSKHZvcC0+YWNsayk7Cj4gIAl9Cj4gIAl2b3AtPmRjbGsgPSBkZXZtX2Ns
+a19nZXQodm9wLT5kZXYsICJkY2xrX3ZvcCIpOwo+ICAJaWYgKElTX0VSUih2b3AtPmRjbGspKSB7
+Cj4gLQkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgZGNsayBzb3VyY2VcbiIpOwo+
+ICsJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGRjbGsgc291cmNlXG4i
+KTsKPiAgCQlyZXR1cm4gUFRSX0VSUih2b3AtPmRjbGspOwo+ICAJfQo+Cj4gIAlyZXQgPSBwbV9y
+dW50aW1lX2dldF9zeW5jKHZvcC0+ZGV2KTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2Vy
+cih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgcG0gcnVudGltZTogJWRcbiIsIHJldCk7Cj4gKwkJ
+RFJNX0RFVl9FUlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgcG0gcnVudGltZTogJWRcbiIs
+IHJldCk7Cj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPgo+ICAJcmV0ID0gY2xrX3ByZXBhcmUodm9w
+LT5kY2xrKTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxl
+ZCB0byBwcmVwYXJlIGRjbGtcbiIpOwo+ICsJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJmYWls
+ZWQgdG8gcHJlcGFyZSBkY2xrXG4iKTsKPiAgCQlnb3RvIGVycl9wdXRfcG1fcnVudGltZTsKPiAg
+CX0KPgo+ICAJLyogRW5hYmxlIGJvdGggdGhlIGhjbGsgYW5kIGFjbGsgdG8gc2V0dXAgdGhlIHZv
+cCAqLwo+ICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKHZvcC0+aGNsayk7Cj4gIAlpZiAocmV0
+IDwgMCkgewo+IC0JCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFyZS9lbmFibGUg
+aGNsa1xuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJl
+L2VuYWJsZSBoY2xrXG4iKTsKPiAgCQlnb3RvIGVycl91bnByZXBhcmVfZGNsazsKPiAgCX0KPgo+
+ICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKHZvcC0+YWNsayk7Cj4gIAlpZiAocmV0IDwgMCkg
+ewo+IC0JCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFyZS9lbmFibGUgYWNsa1xu
+Iik7Cj4gKwkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlL2VuYWJs
+ZSBhY2xrXG4iKTsKPiAgCQlnb3RvIGVycl9kaXNhYmxlX2hjbGs7Cj4gIAl9Cj4KPiBAQCAtMTQw
+NSw3ICsxNDA2LDcgQEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4g
+IAkgKi8KPiAgCWFoYl9yc3QgPSBkZXZtX3Jlc2V0X2NvbnRyb2xfZ2V0KHZvcC0+ZGV2LCAiYWhi
+Iik7Cj4gIAlpZiAoSVNfRVJSKGFoYl9yc3QpKSB7Cj4gLQkJZGV2X2Vycih2b3AtPmRldiwgImZh
+aWxlZCB0byBnZXQgYWhiIHJlc2V0XG4iKTsKPiArCQlEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAi
+ZmFpbGVkIHRvIGdldCBhaGIgcmVzZXRcbiIpOwo+ICAJCXJldCA9IFBUUl9FUlIoYWhiX3JzdCk7
+Cj4gIAkJZ290byBlcnJfZGlzYWJsZV9hY2xrOwo+ICAJfQo+IEBAIC0xNDM0LDcgKzE0MzUsNyBA
+QCBzdGF0aWMgaW50IHZvcF9pbml0aWFsKHN0cnVjdCB2b3AgKnZvcCkKPiAgCSAqLwo+ICAJdm9w
+LT5kY2xrX3JzdCA9IGRldm1fcmVzZXRfY29udHJvbF9nZXQodm9wLT5kZXYsICJkY2xrIik7Cj4g
+IAlpZiAoSVNfRVJSKHZvcC0+ZGNsa19yc3QpKSB7Cj4gLQkJZGV2X2Vycih2b3AtPmRldiwgImZh
+aWxlZCB0byBnZXQgZGNsayByZXNldFxuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwg
+ImZhaWxlZCB0byBnZXQgZGNsayByZXNldFxuIik7Cj4gIAkJcmV0ID0gUFRSX0VSUih2b3AtPmRj
+bGtfcnN0KTsKPiAgCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7Cj4gIAl9Cj4gQEAgLTE1MTEsNyAr
+MTUxMiw3IEBAIGludCByb2NrY2hpcF9kcm1fd2FpdF92YWN0X2VuZChzdHJ1Y3QgZHJtX2NydGMg
+KmNydGMsIHVuc2lnbmVkIGludCBtc3RpbWVvdXQpCj4gIAl2b3BfbGluZV9mbGFnX2lycV9kaXNh
+YmxlKHZvcCk7Cj4KPiAgCWlmIChqaWZmaWVzX2xlZnQgPT0gMCkgewo+IC0JCWRldl9lcnIodm9w
+LT5kZXYsICJUaW1lb3V0IHdhaXRpbmcgZm9yIElSUVxuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUih2
+b3AtPmRldiwgIlRpbWVvdXQgd2FpdGluZyBmb3IgSVJRXG4iKTsKPiAgCQlyZXR1cm4gLUVUSU1F
+RE9VVDsKPiAgCX0KPgo+IEBAIC0xNTU4LDcgKzE1NTksNyBAQCBzdGF0aWMgaW50IHZvcF9iaW5k
+KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKQo+
+Cj4gIAlpcnEgPSBwbGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOwo+ICAJaWYgKGlycSA8IDApIHsK
+PiAtCQlkZXZfZXJyKGRldiwgImNhbm5vdCBmaW5kIGlycSBmb3Igdm9wXG4iKTsKPiArCQlEUk1f
+REVWX0VSUk9SKGRldiwgImNhbm5vdCBmaW5kIGlycSBmb3Igdm9wXG4iKTsKPiAgCQlyZXR1cm4g
+aXJxOwo+ICAJfQo+ICAJdm9wLT5pcnEgPSAodW5zaWduZWQgaW50KWlycTsKPiBAQCAtMTU4NCw3
+ICsxNTg1LDggQEAgc3RhdGljIGludCB2b3BfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVj
+dCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPgo+ICAJcmV0ID0gdm9wX2luaXRpYWwodm9w
+KTsKPiAgCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2VycigmcGRldi0+ZGV2LCAiY2Fubm90IGlu
+aXRpYWwgdm9wIGRldiAtIGVyciAlZFxuIiwgcmV0KTsKPiArCQlEUk1fREVWX0VSUk9SKCZwZGV2
+LT5kZXYsCj4gKwkJCSAgICAgICJjYW5ub3QgaW5pdGlhbCB2b3AgZGV2IC0gZXJyICVkXG4iLCBy
+ZXQpOwo+ICAJCWdvdG8gZXJyX2Rpc2FibGVfcG1fcnVudGltZTsKPiAgCX0KPgo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+IGluZGV4IDk0ZGU3YjkuLjRh
+MzkwNDkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3Zv
+cF9yZWcuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVn
+LmMKPiBAQCAtNTMzLDcgKzUzMyw3IEBAIHN0YXRpYyBpbnQgdm9wX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+
+Cj4gIAlpZiAoIWRldi0+b2Zfbm9kZSkgewo+IC0JCWRldl9lcnIoZGV2LCAiY2FuJ3QgZmluZCB2
+b3AgZGV2aWNlc1xuIik7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJjYW4ndCBmaW5kIHZvcCBk
+ZXZpY2VzXG4iKTsKPiAgCQlyZXR1cm4gLUVOT0RFVjsKPiAgCX0KPgo+IC0tCj4gMi43LjQKPgo+
+IC0tCj4gWW91IHJlY2VpdmVkIHRoaXMgbWVzc2FnZSBiZWNhdXNlIHlvdSBhcmUgc3Vic2NyaWJl
+ZCB0byB0aGUgR29vZ2xlIEdyb3VwcyAib3V0cmVhY2h5LWtlcm5lbCIgZ3JvdXAuCj4gVG8gdW5z
+dWJzY3JpYmUgZnJvbSB0aGlzIGdyb3VwIGFuZCBzdG9wIHJlY2VpdmluZyBlbWFpbHMgZnJvbSBp
+dCwgc2VuZCBhbiBlbWFpbCB0byBvdXRyZWFjaHkta2VybmVsK3Vuc3Vic2NyaWJlQGdvb2dsZWdy
+b3Vwcy5jb20uCj4gVG8gcG9zdCB0byB0aGlzIGdyb3VwLCBzZW5kIGVtYWlsIHRvIG91dHJlYWNo
+eS1rZXJuZWxAZ29vZ2xlZ3JvdXBzLmNvbS4KPiBUbyB2aWV3IHRoaXMgZGlzY3Vzc2lvbiBvbiB0
+aGUgd2ViIHZpc2l0IGh0dHBzOi8vZ3JvdXBzLmdvb2dsZS5jb20vZC9tc2dpZC9vdXRyZWFjaHkt
+a2VybmVsLzIwMTcwOTE1MDY0NzQyLkdBODM2NyU0MEhhbmVlbi4KPiBGb3IgbW9yZSBvcHRpb25z
+LCB2aXNpdCBodHRwczovL2dyb3Vwcy5nb29nbGUuY29tL2Qvb3B0b3V0Lgo+Cl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
