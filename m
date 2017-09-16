@@ -1,195 +1,61 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH] Asoc: rockchip: Init dapm routes
-	dynamically
-Date: Fri, 15 Sep 2017 17:54:07 -0700
-Message-ID: <20170916005407.GH173745@google.com>
-References: <20170905041401.23866-1-jeffy.chen@rock-chips.com>
+From: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 5/9] dt-bindings: add compatibles for rk3066/rk3188 power
+ controllers
+Date: Sat, 16 Sep 2017 23:04:48 +0200
+Message-ID: <c2f4f70e-e5e7-9432-035d-fdf885eb53d0@gmail.com>
+References: <20170915083357.11296-1-heiko@sntech.de>
+ <20170915083357.11296-6-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-Content-Disposition: inline
-In-Reply-To: <20170905041401.23866-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: alsa-devel@alsa-project.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170915083357.11296-6-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Language: fr
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-El Tue, Sep 05, 2017 at 12:14:01PM +0800 Jeffy Chen ha dit:
+Hello Heiko,
 
-> Currently we are using a fixed list of dapm routes.
-> 
-> Init dapm routes dynamically when parsing dailinks, since we are
-> supporting optional codecs.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+There are a few copy/paste errors in the documentation.
+
+
+Le 15/09/2017 à 10:33, Heiko Stuebner a écrit :
+> Add the compatible values for the power-domain controllers found on
+> rk3066 and rk3188.
+>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
-> 
->  sound/soc/rockchip/rk3399_gru_sound.c | 88 +++++++++++++++++++++++++++++------
->  1 file changed, 74 insertions(+), 14 deletions(-)
-> 
-> diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-> index 0513fe480353..c537781f8054 100644
-> --- a/sound/soc/rockchip/rk3399_gru_sound.c
-> +++ b/sound/soc/rockchip/rk3399_gru_sound.c
-> @@ -47,18 +47,7 @@ static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
->  	SND_SOC_DAPM_SPK("Speakers", NULL),
->  	SND_SOC_DAPM_MIC("Headset Mic", NULL),
->  	SND_SOC_DAPM_MIC("Int Mic", NULL),
-> -};
-> -
-> -static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
-> -	/* Input Lines */
-> -	{"MIC", NULL, "Headset Mic"},
-> -	{"DMIC1L", NULL, "Int Mic"},
-> -	{"DMIC1R", NULL, "Int Mic"},
-> -
-> -	/* Output Lines */
-> -	{"Headphones", NULL, "HPL"},
-> -	{"Headphones", NULL, "HPR"},
-> -	{"Speakers", NULL, "Speaker"},
-> +	SND_SOC_DAPM_LINE("HDMI", NULL),
-
-The HDMI items are newly added, I think a separate patch would be
-preferable.
-
->  };
->  
->  static const struct snd_kcontrol_new rockchip_controls[] = {
-> @@ -66,6 +55,7 @@ static const struct snd_kcontrol_new rockchip_controls[] = {
->  	SOC_DAPM_PIN_SWITCH("Speakers"),
->  	SOC_DAPM_PIN_SWITCH("Headset Mic"),
->  	SOC_DAPM_PIN_SWITCH("Int Mic"),
-> +	SOC_DAPM_PIN_SWITCH("HDMI"),
->  };
->  
->  static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substream,
-> @@ -314,8 +304,6 @@ static struct snd_soc_card rockchip_sound_card = {
->  	.owner = THIS_MODULE,
->  	.dapm_widgets = rockchip_dapm_widgets,
->  	.num_dapm_widgets = ARRAY_SIZE(rockchip_dapm_widgets),
-> -	.dapm_routes = rockchip_dapm_routes,
-> -	.num_dapm_routes = ARRAY_SIZE(rockchip_dapm_routes),
->  	.controls = rockchip_controls,
->  	.num_controls = ARRAY_SIZE(rockchip_controls),
->  };
-> @@ -391,6 +379,65 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
->  	},
->  };
->  
-> +static const struct snd_soc_dapm_route rockchip_sound_cdndp_routes[] = {
-> +	/* Output */
-> +	{"HDMI", NULL, "TX"},
-> +};
-> +
-> +static const struct snd_soc_dapm_route rockchip_sound_da7219_routes[] = {
-> +	/* Output */
-> +	{"Headphones", NULL, "HPL"},
-> +	{"Headphones", NULL, "HPR"},
-> +
-> +	/* Input */
-> +	{"MIC", NULL, "Headset Mic"},
-> +};
-> +
-> +static const struct snd_soc_dapm_route rockchip_sound_dmic_routes[] = {
-> +	/* Input */
-> +	{"Dmic", NULL, "Int Mic"},
-
-Should be "DMic" as in dmic_dapm_widgets of the dmic codec driver.
-
-This route is also new and would probably be better added in a
-separate patch.
-
-> +};
-> +
-> +static const struct snd_soc_dapm_route rockchip_sound_max98357a_routes[] = {
-> +	/* Output */
-> +	{"Speakers", NULL, "Speaker"},
-> +};
-> +
-> +static const struct snd_soc_dapm_route rockchip_sound_rt5514_routes[] = {
-> +	/* Input */
-> +	{"DMIC1L", NULL, "Int Mic"},
-> +	{"DMIC1R", NULL, "Int Mic"},
-> +};
-> +
-> +struct rockchip_sound_route {
-> +	const struct snd_soc_dapm_route *routes;
-> +	int num_routes;
-> +};
-> +
-> +static const struct rockchip_sound_route rockchip_routes[] = {
-> +	[DAILINK_CDNDP] = {
-> +		.routes = rockchip_sound_cdndp_routes,
-> +		.num_routes = ARRAY_SIZE(rockchip_sound_cdndp_routes),
-> +	},
-> +	[DAILINK_DA7219] = {
-> +		.routes = rockchip_sound_da7219_routes,
-> +		.num_routes = ARRAY_SIZE(rockchip_sound_da7219_routes),
-> +	},
-> +	[DAILINK_DMIC] = {
-> +		.routes = rockchip_sound_dmic_routes,
-> +		.num_routes = ARRAY_SIZE(rockchip_sound_dmic_routes),
-> +	},
-> +	[DAILINK_MAX98357A] = {
-> +		.routes = rockchip_sound_max98357a_routes,
-> +		.num_routes = ARRAY_SIZE(rockchip_sound_max98357a_routes),
-> +	},
-> +	[DAILINK_RT5514] = {
-> +		.routes = rockchip_sound_rt5514_routes,
-> +		.num_routes = ARRAY_SIZE(rockchip_sound_rt5514_routes),
-> +	},
-> +	[DAILINK_RT5514_DSP] = {},
-> +};
-> +
->  static int rockchip_sound_codec_node_match(struct device_node *np_codec)
->  {
->  	int i;
-> @@ -408,6 +455,7 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
->  	struct device_node *np_cpu, *np_cpu0, *np_cpu1;
->  	struct device_node *np_codec;
->  	struct snd_soc_dai_link *dai;
-> +	struct snd_soc_dapm_route *routes;
->  	int i, index;
->  
->  	card->dai_link = devm_kzalloc(dev, sizeof(rockchip_dais),
-> @@ -415,9 +463,16 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
->  	if (!card->dai_link)
->  		return -ENOMEM;
->  
-> +	routes = devm_kzalloc(dev, sizeof(rockchip_routes),
-> +			      GFP_KERNEL);
-> +	if (!routes)
-> +		return -ENOMEM;
-> +	card->dapm_routes = routes;
-> +
->  	np_cpu0 = of_parse_phandle(dev->of_node, "rockchip,cpu", 0);
->  	np_cpu1 = of_parse_phandle(dev->of_node, "rockchip,cpu", 1);
->  
-> +	card->num_dapm_routes = 0;
->  	card->num_links = 0;
->  	for (i = 0; i < ARRAY_SIZE(rockchip_dais); i++) {
->  		np_codec = of_parse_phandle(dev->of_node,
-> @@ -445,6 +500,11 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
->  		dai->codec_of_node = np_codec;
->  		dai->platform_of_node = np_cpu;
->  		dai->cpu_of_node = np_cpu;
-> +
-> +		memcpy(routes + card->num_dapm_routes,
-> +		       rockchip_routes[index].routes,
-> +		       rockchip_routes[index].num_routes * sizeof(*routes));
-> +		card->num_dapm_routes += rockchip_routes[index].num_routes;
->  	}
->  
->  	return 0;
-
-Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
-Tested-by: Matthias Kaehlcke <mka@chromium.org>
+>   Documentation/devicetree/bindings/soc/rockchip/power_domain.txt | 4 ++++
+>   1 file changed, 4 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> index 301d2a9bc1b8..1c42c5b7ca6a 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> @@ -5,6 +5,8 @@ powered up/down by software based on different application scenes to save power.
+>   
+>   Required properties for power domain controller:
+>   - compatible: Should be one of the following.
+> +	"rockchip,rk3066-power-controller" - for RK3288 SoCs.
+> +	"rockchip,rk3188-power-controller" - for RK3288 SoCs.
+These should be for RK3066 and RK3188.
+>   	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+>   	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
+>   	"rockchip,rk3366-power-controller" - for RK3366 SoCs.
+> @@ -17,6 +19,8 @@ Required properties for power domain controller:
+>   
+>   Required properties for power domain sub nodes:
+>   - reg: index of the power domain, should use macros in:
+> +	"include/dt-bindings/power/rk3066-power.h" - for RK3288 type power domain.
+> +	"include/dt-bindings/power/rk3188-power.h" - for RK3288 type power domain.
+Same here.
+>   	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
+>   	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
+>   	"include/dt-bindings/power/rk3366-power.h" - for RK3366 type power domain.
+Julien
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
