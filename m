@@ -1,60 +1,195 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 4/8] ARM: dts: rockchip: add rk3036 gpu node
-Date: Fri, 15 Sep 2017 11:18:08 +0200
-Message-ID: <20170915091812.13368-5-heiko@sntech.de>
-References: <20170915091812.13368-1-heiko@sntech.de>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170915091812.13368-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH] Asoc: rockchip: Init dapm routes
+	dynamically
+Date: Fri, 15 Sep 2017 17:54:07 -0700
+Message-ID: <20170916005407.GH173745@google.com>
+References: <20170905041401.23866-1-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <20170905041401.23866-1-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: alsa-devel@alsa-project.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3036 uses a Mali400 GPU with one pixel processor.
-This adds the core node for it, which can be enabled
-in board devicetrees.
+El Tue, Sep 05, 2017 at 12:14:01PM +0800 Jeffy Chen ha dit:
 
-Rockchip Mali GPUs use only one clock line for both bus and core.
+> Currently we are using a fixed list of dapm routes.
+> 
+> Init dapm routes dynamically when parsing dailinks, since we are
+> supporting optional codecs.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+> 
+>  sound/soc/rockchip/rk3399_gru_sound.c | 88 +++++++++++++++++++++++++++++------
+>  1 file changed, 74 insertions(+), 14 deletions(-)
+> 
+> diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+> index 0513fe480353..c537781f8054 100644
+> --- a/sound/soc/rockchip/rk3399_gru_sound.c
+> +++ b/sound/soc/rockchip/rk3399_gru_sound.c
+> @@ -47,18 +47,7 @@ static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
+>  	SND_SOC_DAPM_SPK("Speakers", NULL),
+>  	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+>  	SND_SOC_DAPM_MIC("Int Mic", NULL),
+> -};
+> -
+> -static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
+> -	/* Input Lines */
+> -	{"MIC", NULL, "Headset Mic"},
+> -	{"DMIC1L", NULL, "Int Mic"},
+> -	{"DMIC1R", NULL, "Int Mic"},
+> -
+> -	/* Output Lines */
+> -	{"Headphones", NULL, "HPL"},
+> -	{"Headphones", NULL, "HPR"},
+> -	{"Speakers", NULL, "Speaker"},
+> +	SND_SOC_DAPM_LINE("HDMI", NULL),
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3036.dtsi | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+The HDMI items are newly added, I think a separate patch would be
+preferable.
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 4916c65e0ace..5b084c0143ce 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -152,6 +152,25 @@
- 		};
- 	};
- 
-+	gpu: gpu@10090000 {
-+		compatible = "rockchip,rk3036-mali", "arm,mali-400";
-+		reg = <0x10090000 0x10000>;
-+		interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "gp",
-+				  "gpmmu",
-+				  "pp0",
-+				  "pp0mmu";
-+		assigned-clocks = <&cru SCLK_GPU>;
-+		assigned-clock-rates = <100000000>;
-+		clocks = <&cru SCLK_GPU>, <&cru SCLK_GPU>;
-+		clock-names = "core", "bus";
-+		resets = <&cru SRST_GPU>;
-+		status = "disabled";
-+	};
-+
- 	vop: vop@10118000 {
- 		compatible = "rockchip,rk3036-vop";
- 		reg = <0x10118000 0x19c>;
--- 
-2.14.1
+>  };
+>  
+>  static const struct snd_kcontrol_new rockchip_controls[] = {
+> @@ -66,6 +55,7 @@ static const struct snd_kcontrol_new rockchip_controls[] = {
+>  	SOC_DAPM_PIN_SWITCH("Speakers"),
+>  	SOC_DAPM_PIN_SWITCH("Headset Mic"),
+>  	SOC_DAPM_PIN_SWITCH("Int Mic"),
+> +	SOC_DAPM_PIN_SWITCH("HDMI"),
+>  };
+>  
+>  static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substream,
+> @@ -314,8 +304,6 @@ static struct snd_soc_card rockchip_sound_card = {
+>  	.owner = THIS_MODULE,
+>  	.dapm_widgets = rockchip_dapm_widgets,
+>  	.num_dapm_widgets = ARRAY_SIZE(rockchip_dapm_widgets),
+> -	.dapm_routes = rockchip_dapm_routes,
+> -	.num_dapm_routes = ARRAY_SIZE(rockchip_dapm_routes),
+>  	.controls = rockchip_controls,
+>  	.num_controls = ARRAY_SIZE(rockchip_controls),
+>  };
+> @@ -391,6 +379,65 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
+>  	},
+>  };
+>  
+> +static const struct snd_soc_dapm_route rockchip_sound_cdndp_routes[] = {
+> +	/* Output */
+> +	{"HDMI", NULL, "TX"},
+> +};
+> +
+> +static const struct snd_soc_dapm_route rockchip_sound_da7219_routes[] = {
+> +	/* Output */
+> +	{"Headphones", NULL, "HPL"},
+> +	{"Headphones", NULL, "HPR"},
+> +
+> +	/* Input */
+> +	{"MIC", NULL, "Headset Mic"},
+> +};
+> +
+> +static const struct snd_soc_dapm_route rockchip_sound_dmic_routes[] = {
+> +	/* Input */
+> +	{"Dmic", NULL, "Int Mic"},
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Should be "DMic" as in dmic_dapm_widgets of the dmic codec driver.
+
+This route is also new and would probably be better added in a
+separate patch.
+
+> +};
+> +
+> +static const struct snd_soc_dapm_route rockchip_sound_max98357a_routes[] = {
+> +	/* Output */
+> +	{"Speakers", NULL, "Speaker"},
+> +};
+> +
+> +static const struct snd_soc_dapm_route rockchip_sound_rt5514_routes[] = {
+> +	/* Input */
+> +	{"DMIC1L", NULL, "Int Mic"},
+> +	{"DMIC1R", NULL, "Int Mic"},
+> +};
+> +
+> +struct rockchip_sound_route {
+> +	const struct snd_soc_dapm_route *routes;
+> +	int num_routes;
+> +};
+> +
+> +static const struct rockchip_sound_route rockchip_routes[] = {
+> +	[DAILINK_CDNDP] = {
+> +		.routes = rockchip_sound_cdndp_routes,
+> +		.num_routes = ARRAY_SIZE(rockchip_sound_cdndp_routes),
+> +	},
+> +	[DAILINK_DA7219] = {
+> +		.routes = rockchip_sound_da7219_routes,
+> +		.num_routes = ARRAY_SIZE(rockchip_sound_da7219_routes),
+> +	},
+> +	[DAILINK_DMIC] = {
+> +		.routes = rockchip_sound_dmic_routes,
+> +		.num_routes = ARRAY_SIZE(rockchip_sound_dmic_routes),
+> +	},
+> +	[DAILINK_MAX98357A] = {
+> +		.routes = rockchip_sound_max98357a_routes,
+> +		.num_routes = ARRAY_SIZE(rockchip_sound_max98357a_routes),
+> +	},
+> +	[DAILINK_RT5514] = {
+> +		.routes = rockchip_sound_rt5514_routes,
+> +		.num_routes = ARRAY_SIZE(rockchip_sound_rt5514_routes),
+> +	},
+> +	[DAILINK_RT5514_DSP] = {},
+> +};
+> +
+>  static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+>  {
+>  	int i;
+> @@ -408,6 +455,7 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+>  	struct device_node *np_cpu, *np_cpu0, *np_cpu1;
+>  	struct device_node *np_codec;
+>  	struct snd_soc_dai_link *dai;
+> +	struct snd_soc_dapm_route *routes;
+>  	int i, index;
+>  
+>  	card->dai_link = devm_kzalloc(dev, sizeof(rockchip_dais),
+> @@ -415,9 +463,16 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+>  	if (!card->dai_link)
+>  		return -ENOMEM;
+>  
+> +	routes = devm_kzalloc(dev, sizeof(rockchip_routes),
+> +			      GFP_KERNEL);
+> +	if (!routes)
+> +		return -ENOMEM;
+> +	card->dapm_routes = routes;
+> +
+>  	np_cpu0 = of_parse_phandle(dev->of_node, "rockchip,cpu", 0);
+>  	np_cpu1 = of_parse_phandle(dev->of_node, "rockchip,cpu", 1);
+>  
+> +	card->num_dapm_routes = 0;
+>  	card->num_links = 0;
+>  	for (i = 0; i < ARRAY_SIZE(rockchip_dais); i++) {
+>  		np_codec = of_parse_phandle(dev->of_node,
+> @@ -445,6 +500,11 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+>  		dai->codec_of_node = np_codec;
+>  		dai->platform_of_node = np_cpu;
+>  		dai->cpu_of_node = np_cpu;
+> +
+> +		memcpy(routes + card->num_dapm_routes,
+> +		       rockchip_routes[index].routes,
+> +		       rockchip_routes[index].num_routes * sizeof(*routes));
+> +		card->num_dapm_routes += rockchip_routes[index].num_routes;
+>  	}
+>  
+>  	return 0;
+
+Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+Tested-by: Matthias Kaehlcke <mka@chromium.org>
