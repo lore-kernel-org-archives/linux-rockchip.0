@@ -1,127 +1,55 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v11 2/2] ASoC: rockchip: Use bus_type to distinguish
- rt5514 dsp from rt5514 codec
-Date: Mon, 18 Sep 2017 12:15:24 -0700
-Message-ID: <20170918191524.GI173745@google.com>
-References: <20170918111435.11411-1-jeffy.chen@rock-chips.com>
- <20170918111435.11411-2-jeffy.chen@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 3/7] dt-bindings: add the rockchip,dual-channel for
+ dw-mipi-dsi
+Date: Mon, 18 Sep 2017 14:56:15 -0700
+Message-ID: <20170918215614.GA106623@google.com>
+References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
+ <1505725539-6309-3-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170918111435.11411-2-jeffy.chen@rock-chips.com>
+In-Reply-To: <1505725539-6309-3-git-send-email-nickey.yang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de, briannorris@chromium.org, broonie@kernel.org, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, hl@rock-chips.com, zyw@rock-chips.com, bivvy.bi@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-El Mon, Sep 18, 2017 at 07:14:35PM +0800 Jeffy Chen ha dit:
+Hi,
 
-> Currently rt5514 dsp and rt5514 codec are sharing the same compatible.
-> Use bus_type to distinguish rt5514 dsp from rt5514 codec.
-
-This is a better solution than the compatible hack, thanks!
-
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+On Mon, Sep 18, 2017 at 05:05:35PM +0800, Nickey Yang wrote:
+> Configure dsi slave channel when driving a panel
+> which needs 2 DSI links.
+> 
+> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
 > ---
+>  .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt       | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> Changes in v11: None
-> Changes in v10: None
-> Changes in v9: None
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+> index 6bb59ab..e13e1a3 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+> @@ -19,6 +19,8 @@ Optional properties:
+>  - power-domains: a phandle to mipi dsi power domain node.
+>  - resets: list of phandle + reset specifier pairs, as described in [3].
+>  - reset-names: string reset name, must be "apb".
+> +- rockchip,dual-channel: configure dsi slave channel when driving a panel
+
+The wording "configure dsi slave channel" doesn't really tell you
+exactly what this *is*; in fact, it's more like a description of the SW
+than the HW (DT is supposed to describe HW).
+
+You probably want something like "phandle to a 2nd DSI channel; useful
+as a slave channel when driving a panel which needs 2 DSI links".
+
+Brian
+
+> +  which needs 2 DSI links.
+>  
+>  [1] Documentation/devicetree/bindings/clock/clock-bindings.txt
+>  [2] Documentation/devicetree/bindings/media/video-interfaces.txt
+> -- 
+> 1.9.1
 > 
->  sound/soc/rockchip/rk3399_gru_sound.c | 57 +++++++++++++++++++++++++++--------
->  1 file changed, 45 insertions(+), 12 deletions(-)
 > 
-> diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-> index 0513fe480353..f8028f1f3266 100644
-> --- a/sound/soc/rockchip/rk3399_gru_sound.c
-> +++ b/sound/soc/rockchip/rk3399_gru_sound.c
-> @@ -23,6 +23,7 @@
->  #include <linux/of_gpio.h>
->  #include <linux/delay.h>
->  #include <linux/spi/spi.h>
-> +#include <linux/i2c.h>
->  #include <linux/input.h>
->  #include <sound/core.h>
->  #include <sound/jack.h>
-> @@ -329,15 +330,6 @@ enum {
->  	DAILINK_RT5514_DSP,
->  };
->  
-> -static const char * const dailink_compat[] = {
-> -	[DAILINK_CDNDP] = "rockchip,rk3399-cdn-dp",
-> -	[DAILINK_DA7219] = "dlg,da7219",
-> -	[DAILINK_DMIC] = "dmic-codec",
-> -	[DAILINK_MAX98357A] = "maxim,max98357a",
-> -	[DAILINK_RT5514] = "realtek,rt5514-i2c",
-> -	[DAILINK_RT5514_DSP] = "realtek,rt5514-spi",
-> -};
-> -
->  static const struct snd_soc_dai_link rockchip_dais[] = {
->  	[DAILINK_CDNDP] = {
->  		.name = "DP",
-> @@ -391,13 +383,54 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
->  	},
->  };
->  
-> +struct dailink_match_data {
-> +	const char *compatible;
-> +	struct bus_type *bus_type;
-> +};
-> +
-> +static const struct dailink_match_data dailink_match[] = {
-> +	[DAILINK_CDNDP] = {
-> +		.compatible = "rockchip,rk3399-cdn-dp",
-> +	},
-> +	[DAILINK_DA7219] = {
-> +		.compatible = "dlg,da7219",
-> +	},
-> +	[DAILINK_DMIC] = {
-> +		.compatible = "dmic-codec",
-> +	},
-> +	[DAILINK_MAX98357A] = {
-> +		.compatible = "maxim,max98357a",
-> +	},
-> +	[DAILINK_RT5514] = {
-> +		.compatible = "realtek,rt5514",
-> +		.bus_type = &i2c_bus_type,
-> +	},
-> +	[DAILINK_RT5514_DSP] = {
-> +		.compatible = "realtek,rt5514",
-> +		.bus_type = &spi_bus_type,
-> +	},
-> +};
-> +
-> +static int of_dev_node_match(struct device *dev, void *data)
-> +{
-> +	return dev->of_node == data;
-> +}
-
-The same is done in different places, even with the same function name
-(drivers/i2c/i2c-core-of.c, drivers/mux/mux-core.c, ...), which
-suggests that we might want to have this function in <linux/of.h>
-
->  static int rockchip_sound_codec_node_match(struct device_node *np_codec)
->  {
->  	int i;
->  
-> -	for (i = 0; i < ARRAY_SIZE(dailink_compat); i++) {
-> -		if (of_device_is_compatible(np_codec, dailink_compat[i]))
-> -			return i;
-> +	for (i = 0; i < ARRAY_SIZE(dailink_match); i++) {
-> +		if (!of_device_is_compatible(np_codec,
-> +					     dailink_match[i].compatible))
-> +			continue;
-> +
-> +		if (dailink_match[i].bus_type
-> +		    && !bus_find_device(dailink_match[i].bus_type,
-> +					NULL, np_codec, of_dev_node_match))
-> +			continue;
-> +
-> +		return i;
->  	}
->  	return -1;
->  }
-
-Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
-Tested-by: Matthias Kaehlcke <mka@chromium.org>
