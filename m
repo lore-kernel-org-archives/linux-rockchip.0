@@ -1,101 +1,127 @@
-From: Sakari Ailus <sakari.ailus@iki.fi>
-Subject: Re: [PATCH] media: i2c: OV5647: ensure clock lane in LP-11 state
- before streaming on
-Date: Mon, 18 Sep 2017 16:08:37 +0300
-Message-ID: <20170918130837.awfb65tj66vkgmxq@valkosipuli.retiisi.org.uk>
-References: <1505094820-11958-1-git-send-email-jacob-chen@iotwrt.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH v11 2/2] ASoC: rockchip: Use bus_type to distinguish
+ rt5514 dsp from rt5514 codec
+Date: Mon, 18 Sep 2017 12:15:24 -0700
+Message-ID: <20170918191524.GI173745@google.com>
+References: <20170918111435.11411-1-jeffy.chen@rock-chips.com>
+ <20170918111435.11411-2-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1505094820-11958-1-git-send-email-jacob-chen@iotwrt.com>
+In-Reply-To: <20170918111435.11411-2-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, roliveir@synopsys.com, linux-media@vger.kernel.org, mchehab@kernel.org, vladimir_zapolskiy@mentor.com, hans.verkuil@cisco.com, sakari.ailus@linux.intel.com, lolivei@synopsys.com, p.zabel@pengutronix.de
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de, briannorris@chromium.org, broonie@kernel.org, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+El Mon, Sep 18, 2017 at 07:14:35PM +0800 Jeffy Chen ha dit:
 
-On Mon, Sep 11, 2017 at 09:53:40AM +0800, Jacob Chen wrote:
-> When I was supporting Rpi Camera Module on the ASUS Tinker board,
-> I found this driver have some issues with rockchip's mipi-csi driver.
-> It didn't place clock lane in LP-11 state before performing
-> D-PHY initialisation.
-> 
-> From our experience, on some OV sensors,
-> LP-11 state is not achieved while BIT(5)-0x4800 is cleared.
-> 
-> So let's set BIT(5) and BIT(0) both while not streaming, in order to
-> coax the clock lane into LP-11 state.
-> 
-> 0x4800 : MIPI CTRL 00
-> 	BIT(5) : clock lane gate enable
-> 		0: continuous
-> 		1: none-continuous
-> 	BIT(0) : manually set clock lane
-> 		0: Not used
-> 		1: used
-> 
-> Changes in V2:
-> 	modify commit messages
+> Currently rt5514 dsp and rt5514 codec are sharing the same compatible.
+> Use bus_type to distinguish rt5514 dsp from rt5514 codec.
 
-Change log doesn't belong to the commit message.
+This is a better solution than the compatible hack, thanks!
 
-> 
-> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 > ---
->  drivers/media/i2c/ov5647.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
-> index 95ce90f..247302d 100644
-> --- a/drivers/media/i2c/ov5647.c
-> +++ b/drivers/media/i2c/ov5647.c
-> @@ -253,6 +253,10 @@ static int ov5647_stream_on(struct v4l2_subdev *sd)
->  {
->  	int ret;
+> Changes in v11: None
+> Changes in v10: None
+> Changes in v9: None
+> 
+>  sound/soc/rockchip/rk3399_gru_sound.c | 57 +++++++++++++++++++++++++++--------
+>  1 file changed, 45 insertions(+), 12 deletions(-)
+> 
+> diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+> index 0513fe480353..f8028f1f3266 100644
+> --- a/sound/soc/rockchip/rk3399_gru_sound.c
+> +++ b/sound/soc/rockchip/rk3399_gru_sound.c
+> @@ -23,6 +23,7 @@
+>  #include <linux/of_gpio.h>
+>  #include <linux/delay.h>
+>  #include <linux/spi/spi.h>
+> +#include <linux/i2c.h>
+>  #include <linux/input.h>
+>  #include <sound/core.h>
+>  #include <sound/jack.h>
+> @@ -329,15 +330,6 @@ enum {
+>  	DAILINK_RT5514_DSP,
+>  };
 >  
-> +	ret = ov5647_write(sd, 0x4800, 0x04);
-
-Could you use macros for the register bits instead of using magic number,
-please, especially now that it appears that the meaning of these bits is
-known?
-
-> +	if (ret < 0)
-> +		return ret;
-> +
->  	ret = ov5647_write(sd, 0x4202, 0x00);
->  	if (ret < 0)
->  		return ret;
-> @@ -264,6 +268,10 @@ static int ov5647_stream_off(struct v4l2_subdev *sd)
->  {
->  	int ret;
+> -static const char * const dailink_compat[] = {
+> -	[DAILINK_CDNDP] = "rockchip,rk3399-cdn-dp",
+> -	[DAILINK_DA7219] = "dlg,da7219",
+> -	[DAILINK_DMIC] = "dmic-codec",
+> -	[DAILINK_MAX98357A] = "maxim,max98357a",
+> -	[DAILINK_RT5514] = "realtek,rt5514-i2c",
+> -	[DAILINK_RT5514_DSP] = "realtek,rt5514-spi",
+> -};
+> -
+>  static const struct snd_soc_dai_link rockchip_dais[] = {
+>  	[DAILINK_CDNDP] = {
+>  		.name = "DP",
+> @@ -391,13 +383,54 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
+>  	},
+>  };
 >  
-> +	ret = ov5647_write(sd, 0x4800, 0x25);
-> +	if (ret < 0)
-> +		return ret;
+> +struct dailink_match_data {
+> +	const char *compatible;
+> +	struct bus_type *bus_type;
+> +};
 > +
->  	ret = ov5647_write(sd, 0x4202, 0x0f);
->  	if (ret < 0)
->  		return ret;
-> @@ -320,7 +328,10 @@ static int __sensor_init(struct v4l2_subdev *sd)
->  			return ret;
+> +static const struct dailink_match_data dailink_match[] = {
+> +	[DAILINK_CDNDP] = {
+> +		.compatible = "rockchip,rk3399-cdn-dp",
+> +	},
+> +	[DAILINK_DA7219] = {
+> +		.compatible = "dlg,da7219",
+> +	},
+> +	[DAILINK_DMIC] = {
+> +		.compatible = "dmic-codec",
+> +	},
+> +	[DAILINK_MAX98357A] = {
+> +		.compatible = "maxim,max98357a",
+> +	},
+> +	[DAILINK_RT5514] = {
+> +		.compatible = "realtek,rt5514",
+> +		.bus_type = &i2c_bus_type,
+> +	},
+> +	[DAILINK_RT5514_DSP] = {
+> +		.compatible = "realtek,rt5514",
+> +		.bus_type = &spi_bus_type,
+> +	},
+> +};
+> +
+> +static int of_dev_node_match(struct device *dev, void *data)
+> +{
+> +	return dev->of_node == data;
+> +}
+
+The same is done in different places, even with the same function name
+(drivers/i2c/i2c-core-of.c, drivers/mux/mux-core.c, ...), which
+suggests that we might want to have this function in <linux/of.h>
+
+>  static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+>  {
+>  	int i;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(dailink_compat); i++) {
+> -		if (of_device_is_compatible(np_codec, dailink_compat[i]))
+> -			return i;
+> +	for (i = 0; i < ARRAY_SIZE(dailink_match); i++) {
+> +		if (!of_device_is_compatible(np_codec,
+> +					     dailink_match[i].compatible))
+> +			continue;
+> +
+> +		if (dailink_match[i].bus_type
+> +		    && !bus_find_device(dailink_match[i].bus_type,
+> +					NULL, np_codec, of_dev_node_match))
+> +			continue;
+> +
+> +		return i;
 >  	}
->  
-> -	return ov5647_write(sd, 0x4800, 0x04);
-> +	/*
-> +	 * stream off to make the clock lane into LP-11 state.
-> +	 */
-> +	return ov5647_stream_off(sd);
+>  	return -1;
 >  }
->  
->  static int ov5647_sensor_power(struct v4l2_subdev *sd, int on)
-> -- 
-> 2.7.4
-> 
 
--- 
-Kind regards,
-
-Sakari Ailus
-e-mail: sakari.ailus@iki.fi
+Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+Tested-by: Matthias Kaehlcke <mka@chromium.org>
