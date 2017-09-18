@@ -1,55 +1,101 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 3/7] dt-bindings: add the rockchip,dual-channel for
- dw-mipi-dsi
-Date: Mon, 18 Sep 2017 14:56:15 -0700
-Message-ID: <20170918215614.GA106623@google.com>
-References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
- <1505725539-6309-3-git-send-email-nickey.yang@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: cpufreq(-dt) with two clocks but one regulator
+Date: Tue, 19 Sep 2017 00:40:23 +0200
+Message-ID: <2224473.GjtbWfbYHk@phil>
+References: <1515316.mHJbnBRRvK@phil> <20170918012416.GB17030@ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1505725539-6309-3-git-send-email-nickey.yang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nickey Yang <nickey.yang@rock-chips.com>
-Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, hl@rock-chips.com, zyw@rock-chips.com, bivvy.bi@rock-chips.com, xbl@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20170918012416.GB17030@ubuntu>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, Klaus Goger <klaus.goger@theobroma-systems.com>, vincent.guittot@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Viresh,
 
-On Mon, Sep 18, 2017 at 05:05:35PM +0800, Nickey Yang wrote:
-> Configure dsi slave channel when driving a panel
-> which needs 2 DSI links.
+Am Sonntag, 17. September 2017, 18:24:16 CEST schrieb Viresh Kumar:
+> On 15-09-17, 00:53, Heiko Stuebner wrote:
+> > if possible I'd like a pointer in the right direction for the following
+> > situation:
+> > 
+> > The rk3368 has two cpu clusters of 4 Cortex-A53 cores each, with separate
+> > clock supplies
 > 
-> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> ---
->  .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt       | 2 ++
->  1 file changed, 2 insertions(+)
+> These must be represented by two cpufreq policies no matter what. That's how the
+> hardware is.
 > 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> index 6bb59ab..e13e1a3 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> @@ -19,6 +19,8 @@ Optional properties:
->  - power-domains: a phandle to mipi dsi power domain node.
->  - resets: list of phandle + reset specifier pairs, as described in [3].
->  - reset-names: string reset name, must be "apb".
-> +- rockchip,dual-channel: configure dsi slave channel when driving a panel
-
-The wording "configure dsi slave channel" doesn't really tell you
-exactly what this *is*; in fact, it's more like a description of the SW
-than the HW (DT is supposed to describe HW).
-
-You probably want something like "phandle to a 2nd DSI channel; useful
-as a slave channel when driving a panel which needs 2 DSI links".
-
-Brian
-
-> +  which needs 2 DSI links.
->  
->  [1] Documentation/devicetree/bindings/clock/clock-bindings.txt
->  [2] Documentation/devicetree/bindings/media/video-interfaces.txt
-> -- 
-> 1.9.1
+> > but sharing its supplying regulator.
 > 
+> That should be fine.
 > 
+> > It looks like it was
+> > originally meant for some switched big-little system, with the little
+> > cluster maxing out at 1.2GHz while the big cluster can reach 1.5GHz.
+> 
+> So, right now all can go to 1.5 GHz?
+
+No, the little cluster of 4 cores is rated at 1.2GHz max, while the big
+cluster of 4 cores is rated at 1.5Ghz
+
+
+> > This of course fails miserably with current cpufreq, as the two sets
+> > of operating points fight over control of the regulator
+> 
+> Why so? I am not sure I understood this part yet. Both the clusters should try
+> to set their constraints and the intersection should be selected by the
+> regulator core? Can you share the OPP tables, so that we can discuss more.
+
+Current submitted OPPs can be found at
+https://patchwork.kernel.org/patch/9908519/
+
+There were still issues with higher frequencies, so they don't list the
+1.2 or 1.5GHz yet.
+
+But opp sets pretty tight constraints. I.e. OPPs have of course one
+preferred voltage, so you end up with u_volt_min = u_volt_max for each
+operating point, thus the regulator also gets set in this way, removing any
+intersection and thus making the regulator framework fail to set a voltage
+for one of the clusters.
+
+So for example, you have one cluster running at 600MHz@0.95V and the
+other cluster running at 1008MHz@1.05V this results in regulator
+constraints being
+	0.95V-0.95V
+and
+	1.05V-1.05V
+thus no intersection and whoever comes second looses.
+
+
+> > and after talking
+> > with real-life users of the soc it seems most desireable to have all
+> > 8 cores available at 1.2GHz than only 4 at 1.5GHz max.
+> 
+> What's wrong with all at 1.5 GHz?
+
+Only one of the two clusters can do that, see above.
+
+
+> > But as the clock seems to be bound to the opp table itself simply sharing
+> > the table of course also doesn't work
+> 
+> No, the OPP table shouldn't be shared at all. Its something to be shared by a
+> cluster only.
+
+Yeah, with dt (and OPPs) being a hardware description that is true.
+
+
+> > as only the first clock would be set.
+> > 
+> > 
+> > I'm currently only seeing somehow hacky options to solve this, so if you
+> > have some direction on how to solve something like this I would be really
+> > grateful :-)
+> 
+> I think it should just work, but otherwise as well we can update some framework
+> to make it work. Lets just get on the same line first and help me understand it
+> better.
+
+
+Heiko
