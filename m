@@ -1,46 +1,101 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 5/7] arm64: dts: rockchip: rk3399: Correct MIPI DPHY PLL clock
-Date: Mon, 18 Sep 2017 13:31:59 +0200
-Message-ID: <1555719.xlEhX7V6v3@diego>
-References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com> <1505725539-6309-5-git-send-email-nickey.yang@rock-chips.com>
+From: Sakari Ailus <sakari.ailus@iki.fi>
+Subject: Re: [PATCH] media: i2c: OV5647: ensure clock lane in LP-11 state
+ before streaming on
+Date: Mon, 18 Sep 2017 16:08:37 +0300
+Message-ID: <20170918130837.awfb65tj66vkgmxq@valkosipuli.retiisi.org.uk>
+References: <1505094820-11958-1-git-send-email-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1505725539-6309-5-git-send-email-nickey.yang@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <1505094820-11958-1-git-send-email-jacob-chen@iotwrt.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nickey Yang <nickey.yang@rock-chips.com>
-Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, briannorris@chromium.org, hl@rock-chips.com, zyw@rock-chips.com, bivvy.bi@rock-chips.com, xbl@rock-chips.com
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, roliveir@synopsys.com, linux-media@vger.kernel.org, mchehab@kernel.org, vladimir_zapolskiy@mentor.com, hans.verkuil@cisco.com, sakari.ailus@linux.intel.com, lolivei@synopsys.com, p.zabel@pengutronix.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Nickey,
+Hi Jacob,
 
-Am Montag, 18. September 2017, 17:05:37 CEST schrieb Nickey Yang:
-> clk_24m --> Gate11[14] --> clk_mipidphy_ref --> Gate21[0] --> clk_dphy_pll
-
-please try to be a bit more verbose in your commit messages :-) .
-
-It looks to me, like this patch does not depend on the other ones and
-I can just pick it directly. Correct?
-
-
-Heiko
-
-> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, Sep 11, 2017 at 09:53:40AM +0800, Jacob Chen wrote:
+> When I was supporting Rpi Camera Module on the ASUS Tinker board,
+> I found this driver have some issues with rockchip's mipi-csi driver.
+> It didn't place clock lane in LP-11 state before performing
+> D-PHY initialisation.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index d79e9b3..6aa43fd 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1629,7 +1629,7 @@
->  		compatible = "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi";
->  		reg = <0x0 0xff960000 0x0 0x8000>;
->  		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH 0>;
-> -		clocks = <&cru SCLK_MIPIDPHY_REF>, <&cru PCLK_MIPI_DSI0>,
-> +		clocks = <&cru SCLK_DPHY_PLL>, <&cru PCLK_MIPI_DSI0>,
->  			 <&cru SCLK_DPHY_TX0_CFG>;
->  		clock-names = "ref", "pclk", "phy_cfg";
->  		power-domains = <&power RK3399_PD_VIO>;
+> From our experience, on some OV sensors,
+> LP-11 state is not achieved while BIT(5)-0x4800 is cleared.
+> 
+> So let's set BIT(5) and BIT(0) both while not streaming, in order to
+> coax the clock lane into LP-11 state.
+> 
+> 0x4800 : MIPI CTRL 00
+> 	BIT(5) : clock lane gate enable
+> 		0: continuous
+> 		1: none-continuous
+> 	BIT(0) : manually set clock lane
+> 		0: Not used
+> 		1: used
+> 
+> Changes in V2:
+> 	modify commit messages
+
+Change log doesn't belong to the commit message.
+
+> 
+> Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+> ---
+>  drivers/media/i2c/ov5647.c | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/i2c/ov5647.c b/drivers/media/i2c/ov5647.c
+> index 95ce90f..247302d 100644
+> --- a/drivers/media/i2c/ov5647.c
+> +++ b/drivers/media/i2c/ov5647.c
+> @@ -253,6 +253,10 @@ static int ov5647_stream_on(struct v4l2_subdev *sd)
+>  {
+>  	int ret;
+>  
+> +	ret = ov5647_write(sd, 0x4800, 0x04);
+
+Could you use macros for the register bits instead of using magic number,
+please, especially now that it appears that the meaning of these bits is
+known?
+
+> +	if (ret < 0)
+> +		return ret;
+> +
+>  	ret = ov5647_write(sd, 0x4202, 0x00);
+>  	if (ret < 0)
+>  		return ret;
+> @@ -264,6 +268,10 @@ static int ov5647_stream_off(struct v4l2_subdev *sd)
+>  {
+>  	int ret;
+>  
+> +	ret = ov5647_write(sd, 0x4800, 0x25);
+> +	if (ret < 0)
+> +		return ret;
+> +
+>  	ret = ov5647_write(sd, 0x4202, 0x0f);
+>  	if (ret < 0)
+>  		return ret;
+> @@ -320,7 +328,10 @@ static int __sensor_init(struct v4l2_subdev *sd)
+>  			return ret;
+>  	}
+>  
+> -	return ov5647_write(sd, 0x4800, 0x04);
+> +	/*
+> +	 * stream off to make the clock lane into LP-11 state.
+> +	 */
+> +	return ov5647_stream_off(sd);
+>  }
+>  
+>  static int ov5647_sensor_power(struct v4l2_subdev *sd, int on)
+> -- 
+> 2.7.4
+> 
+
+-- 
+Kind regards,
+
+Sakari Ailus
+e-mail: sakari.ailus@iki.fi
