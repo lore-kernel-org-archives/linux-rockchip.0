@@ -1,101 +1,164 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: cpufreq(-dt) with two clocks but one regulator
-Date: Tue, 19 Sep 2017 00:40:23 +0200
-Message-ID: <2224473.GjtbWfbYHk@phil>
-References: <1515316.mHJbnBRRvK@phil> <20170918012416.GB17030@ubuntu>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 1/7] drm/rockchip/dsi: correct Feedback divider setting
+Date: Mon, 18 Sep 2017 16:29:21 -0700
+Message-ID: <20170918232920.GB106623@google.com>
+References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20170918012416.GB17030@ubuntu>
-Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, Klaus Goger <klaus.goger@theobroma-systems.com>, vincent.guittot@linaro.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, hl@rock-chips.com, zyw@rock-chips.com, bivvy.bi@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Viresh,
+Hi Nickey,
 
-Am Sonntag, 17. September 2017, 18:24:16 CEST schrieb Viresh Kumar:
-> On 15-09-17, 00:53, Heiko Stuebner wrote:
-> > if possible I'd like a pointer in the right direction for the following
-> > situation:
-> > 
-> > The rk3368 has two cpu clusters of 4 Cortex-A53 cores each, with separate
-> > clock supplies
+On Mon, Sep 18, 2017 at 05:05:33PM +0800, Nickey Yang wrote:
+> This patch correct Feedback divider setting:
+> 1、Set Feedback divider [8:5] when HIGH_PROGRAM_EN
+> 2、Due to the use of a "by 2 pre-scaler," the range of the
+> feedback multiplication Feedback divider is limited to even
+> division numbers, and Feedback divider must be greater than
+> 12, less than 1000.
+> 3、Make the previously configured Feedback divider(LSB)
+> factors effective
 > 
-> These must be represented by two cpufreq policies no matter what. That's how the
-> hardware is.
+> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
+> ---
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 83 ++++++++++++++++++++++------------
+>  1 file changed, 54 insertions(+), 29 deletions(-)
 > 
-> > but sharing its supplying regulator.
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> index 9a20b9d..52698b7 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> @@ -228,7 +228,7 @@
+>  #define LOW_PROGRAM_EN		0
+>  #define HIGH_PROGRAM_EN		BIT(7)
+>  #define LOOP_DIV_LOW_SEL(val)	(((val) - 1) & 0x1f)
+> -#define LOOP_DIV_HIGH_SEL(val)	((((val) - 1) >> 5) & 0x1f)
+> +#define LOOP_DIV_HIGH_SEL(val)	((((val) - 1) >> 5) & 0xf)
+>  #define PLL_LOOP_DIV_EN		BIT(5)
+>  #define PLL_INPUT_DIV_EN	BIT(4)
+>  
+> @@ -461,6 +461,7 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+>  	dw_mipi_dsi_phy_write(dsi, 0x17, INPUT_DIVIDER(dsi->input_div));
+>  	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_LOW_SEL(dsi->feedback_div) |
+>  					 LOW_PROGRAM_EN);
+> +	dw_mipi_dsi_phy_write(dsi, 0x19, PLL_LOOP_DIV_EN | PLL_INPUT_DIV_EN);
+>  	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_HIGH_SEL(dsi->feedback_div) |
+>  					 HIGH_PROGRAM_EN);
+>  	dw_mipi_dsi_phy_write(dsi, 0x19, PLL_LOOP_DIV_EN | PLL_INPUT_DIV_EN);
+> @@ -521,11 +522,16 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+>  static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
+>  				    struct drm_display_mode *mode)
+>  {
+> -	unsigned int i, pre;
+> -	unsigned long mpclk, pllref, tmp;
+> -	unsigned int m = 1, n = 1, target_mbps = 1000;
+> +	unsigned long mpclk, tmp;
+> +	unsigned int target_mbps = 1000;
+>  	unsigned int max_mbps = dptdin_map[ARRAY_SIZE(dptdin_map) - 1].max_mbps;
+>  	int bpp;
+> +	unsigned long best_freq = 0;
+> +	unsigned long fvco_min, fvco_max, fin ,fout;
+> +	unsigned int min_prediv, max_prediv;
+> +	unsigned int _prediv, uninitialized_var(best_prediv);
+> +	unsigned long _fbdiv, uninitialized_var(best_fbdiv);
+> +	unsigned long min_delta = UINT_MAX;
+>  
+>  	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
+>  	if (bpp < 0) {
+> @@ -544,34 +550,53 @@ static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
+>  			dev_err(dsi->dev, "DPHY clock frequency is out of range\n");
+>  	}
+>  
+> -	pllref = DIV_ROUND_UP(clk_get_rate(dsi->pllref_clk), USEC_PER_SEC);
+> -	tmp = pllref;
+> -
+> -	/*
+> -	 * The limits on the PLL divisor are:
+> -	 *
+> -	 *	5MHz <= (pllref / n) <= 40MHz
+> -	 *
+> -	 * we walk over these values in descreasing order so that if we hit
+> -	 * an exact match for target_mbps it is more likely that "m" will be
+> -	 * even.
+> -	 *
+> -	 * TODO: ensure that "m" is even after this loop.
+> -	 */
+> -	for (i = pllref / 5; i > (pllref / 40); i--) {
+> -		pre = pllref / i;
+> -		if ((tmp > (target_mbps % pre)) && (target_mbps / pre < 512)) {
+> -			tmp = target_mbps % pre;
+> -			n = i;
+> -			m = target_mbps / pre;
+> +	fin = clk_get_rate(dsi->pllref_clk);
+> +	fout = target_mbps * USEC_PER_SEC;
+> +
+> +	/* constraint: 5Mhz < Fref / N < 40MHz */
+> +	min_prediv = DIV_ROUND_UP(fin, 40 * USEC_PER_SEC);
+> +	max_prediv = fin / (5 * USEC_PER_SEC);
+> +
+> +	/* constraint: 80MHz < Fvco < 1500Mhz */
+> +	fvco_min = 80 * USEC_PER_SEC;
+> +	fvco_max = 1500 * USEC_PER_SEC;
+> +
+> +	for (_prediv = min_prediv; _prediv <= max_prediv; _prediv++) {
+> +		u32 delta;
+> +		/* Fvco = Fref * M / N */
+> +		tmp = fout * _prediv;
+> +		do_div(tmp, fin);
+> +		_fbdiv = tmp;
+> +		/*
+> +		 * Due to the use of a "by 2 pre-scaler," the range of the
+> +		 * feedback multiplication value M is limited to even division
+> +		 * numbers, and m must be greater than 12, less than 1000.
+> +		 */
+> +		if (_fbdiv < 12 || _fbdiv > 1000)
+> +			continue;
+> +
+> +		if (_fbdiv % 2)
+> +			++_fbdiv;
+> +
+> +		tmp = (u64)_fbdiv * fin;
+
+Are you relying on this being able to handle >32-bit integers? They you
+should declare 'tmp' as a 64-bit type; 'unsigned long' isn't guaranteed
+on 32-bit architectures. Try 'u64'?
+
+Brian
+
+> +		do_div(tmp, _prediv);
+> +		if (tmp < fvco_min || tmp > fvco_max)
+> +			continue;
+> +
+> +		delta = abs(fout - tmp);
+> +		if (delta < min_delta) {
+> +			best_prediv = _prediv;
+> +			best_fbdiv = _fbdiv;
+> +			min_delta = delta;
+> +			best_freq = tmp;
+>  		}
+> -		if (tmp == 0)
+> -			break;
+>  	}
+>  
+> -	dsi->lane_mbps = pllref / n * m;
+> -	dsi->input_div = n;
+> -	dsi->feedback_div = m;
+> +	if (best_freq) {
+> +		dsi->lane_mbps = DIV_ROUND_UP(best_freq, USEC_PER_SEC);
+> +		dsi->input_div = best_prediv;
+> +		dsi->feedback_div = best_fbdiv;
+> +	}
+>  
+>  	return 0;
+>  }
+> -- 
+> 1.9.1
 > 
-> That should be fine.
 > 
-> > It looks like it was
-> > originally meant for some switched big-little system, with the little
-> > cluster maxing out at 1.2GHz while the big cluster can reach 1.5GHz.
-> 
-> So, right now all can go to 1.5 GHz?
-
-No, the little cluster of 4 cores is rated at 1.2GHz max, while the big
-cluster of 4 cores is rated at 1.5Ghz
-
-
-> > This of course fails miserably with current cpufreq, as the two sets
-> > of operating points fight over control of the regulator
-> 
-> Why so? I am not sure I understood this part yet. Both the clusters should try
-> to set their constraints and the intersection should be selected by the
-> regulator core? Can you share the OPP tables, so that we can discuss more.
-
-Current submitted OPPs can be found at
-https://patchwork.kernel.org/patch/9908519/
-
-There were still issues with higher frequencies, so they don't list the
-1.2 or 1.5GHz yet.
-
-But opp sets pretty tight constraints. I.e. OPPs have of course one
-preferred voltage, so you end up with u_volt_min = u_volt_max for each
-operating point, thus the regulator also gets set in this way, removing any
-intersection and thus making the regulator framework fail to set a voltage
-for one of the clusters.
-
-So for example, you have one cluster running at 600MHz@0.95V and the
-other cluster running at 1008MHz@1.05V this results in regulator
-constraints being
-	0.95V-0.95V
-and
-	1.05V-1.05V
-thus no intersection and whoever comes second looses.
-
-
-> > and after talking
-> > with real-life users of the soc it seems most desireable to have all
-> > 8 cores available at 1.2GHz than only 4 at 1.5GHz max.
-> 
-> What's wrong with all at 1.5 GHz?
-
-Only one of the two clusters can do that, see above.
-
-
-> > But as the clock seems to be bound to the opp table itself simply sharing
-> > the table of course also doesn't work
-> 
-> No, the OPP table shouldn't be shared at all. Its something to be shared by a
-> cluster only.
-
-Yeah, with dt (and OPPs) being a hardware description that is true.
-
-
-> > as only the first clock would be set.
-> > 
-> > 
-> > I'm currently only seeing somehow hacky options to solve this, so if you
-> > have some direction on how to solve something like this I would be really
-> > grateful :-)
-> 
-> I think it should just work, but otherwise as well we can update some framework
-> to make it work. Lets just get on the same line first and help me understand it
-> better.
-
-
-Heiko
