@@ -1,71 +1,51 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: cpufreq(-dt) with two clocks but one regulator
-Date: Sun, 17 Sep 2017 18:24:16 -0700
-Message-ID: <20170918012416.GB17030@ubuntu>
-References: <1515316.mHJbnBRRvK@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1515316.mHJbnBRRvK@phil>
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, Klaus Goger <klaus.goger@theobroma-systems.com>, vincent.guittot@linaro.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v2 1/3] Asoc: rockchip: Add dapm route for HDMI
+Date: Mon, 18 Sep 2017 09:44:39 +0800
+Message-ID: <20170918014441.17572-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Add dapm route for DP codec.
 
-On 15-09-17, 00:53, Heiko Stuebner wrote:
-> Hi Viresh,
-> 
-> if possible I'd like a pointer in the right direction for the following
-> situation:
-> 
-> The rk3368 has two cpu clusters of 4 Cortex-A53 cores each, with separate
-> clock supplies
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-These must be represented by two cpufreq policies no matter what. That's how the
-hardware is.
+Changes in v2:
+Separate HDMI/DMIC patches.
 
-> but sharing its supplying regulator.
+ sound/soc/rockchip/rk3399_gru_sound.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-That should be fine.
-
-> It looks like it was
-> originally meant for some switched big-little system, with the little
-> cluster maxing out at 1.2GHz while the big cluster can reach 1.5GHz.
-
-So, right now all can go to 1.5 GHz?
-
-> This of course fails miserably with current cpufreq, as the two sets
-> of operating points fight over control of the regulator
-
-Why so? I am not sure I understood this part yet. Both the clusters should try
-to set their constraints and the intersection should be selected by the
-regulator core? Can you share the OPP tables, so that we can discuss more.
-
-> and after talking
-> with real-life users of the soc it seems most desireable to have all
-> 8 cores available at 1.2GHz than only 4 at 1.5GHz max.
-
-What's wrong with all at 1.5 GHz?
-
-> But as the clock seems to be bound to the opp table itself simply sharing
-> the table of course also doesn't work
-
-No, the OPP table shouldn't be shared at all. Its something to be shared by a
-cluster only.
-
-> as only the first clock would be set.
-> 
-> 
-> I'm currently only seeing somehow hacky options to solve this, so if you
-> have some direction on how to solve something like this I would be really
-> grateful :-)
-
-I think it should just work, but otherwise as well we can update some framework
-to make it work. Lets just get on the same line first and help me understand it
-better.
-
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 0513fe480353..b050510be65f 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -47,6 +47,7 @@ static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
+ 	SND_SOC_DAPM_SPK("Speakers", NULL),
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_MIC("Int Mic", NULL),
++	SND_SOC_DAPM_LINE("HDMI", NULL),
+ };
+ 
+ static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
+@@ -59,6 +60,7 @@ static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
+ 	{"Headphones", NULL, "HPL"},
+ 	{"Headphones", NULL, "HPR"},
+ 	{"Speakers", NULL, "Speaker"},
++	{"HDMI", NULL, "TX"},
+ };
+ 
+ static const struct snd_kcontrol_new rockchip_controls[] = {
+@@ -66,6 +68,7 @@ static const struct snd_kcontrol_new rockchip_controls[] = {
+ 	SOC_DAPM_PIN_SWITCH("Speakers"),
+ 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
+ 	SOC_DAPM_PIN_SWITCH("Int Mic"),
++	SOC_DAPM_PIN_SWITCH("HDMI"),
+ };
+ 
+ static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substream,
 -- 
-viresh
+2.11.0
