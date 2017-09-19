@@ -1,66 +1,84 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: Add dapm route for DMic" to the asoc tree
-Date: Tue, 19 Sep 2017 14:46:47 +0100
-Message-ID: <E1duIrP-0008Ib-8y@debutante>
-References: <20170918014441.17572-2-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170918014441.17572-2-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, briannorris@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, dianders@chromium.org, linux-rockchip@lists.infradead.org, mka@chromium.org, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: Add document for rockchip RGB output
+ interface
+Date: Tue, 19 Sep 2017 09:46:21 -0500
+Message-ID: <20170919144621.eledmglqgn7nf7zp@rob-hp-laptop>
+References: <1505360594-196508-1-git-send-email-hjc@rock-chips.com>
+ <1505360600-196567-1-git-send-email-hjc@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1505360600-196567-1-git-send-email-hjc@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sandy Huang <hjc@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
-
-   ASoC: rockchip: Add dapm route for DMic
-
-has been applied to the asoc tree at
-
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From cc9fee8e1a2088e1853a1ba7b9f91d0629da0807 Mon Sep 17 00:00:00 2001
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Date: Mon, 18 Sep 2017 19:18:00 +0800
-Subject: [PATCH] ASoC: rockchip: Add dapm route for DMic
-
-Add dapm route for DMIC codec.
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rk3399_gru_sound.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 3475c61a5fa0..1ca269ee0b7e 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -54,6 +54,7 @@ static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
- 	{"MIC", NULL, "Headset Mic"},
- 	{"DMIC1L", NULL, "Int Mic"},
- 	{"DMIC1R", NULL, "Int Mic"},
-+	{"DMic", NULL, "Int Mic"},
- 
- 	/* Output Lines */
- 	{"Headphones", NULL, "HPL"},
--- 
-2.14.1
+T24gVGh1LCBTZXAgMTQsIDIwMTcgYXQgMTE6NDM6MThBTSArMDgwMCwgU2FuZHkgSHVhbmcgd3Jv
+dGU6Cj4gVGhpcyBwYXRoIGFkZCBzdXBwb3J0IHJ2MTEwOCByZ2Igb3V0cHV0IGludGVyZmFjZSBk
+cml2ZXIuCj4gCj4gU2lnbmVkLW9mZi1ieTogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNv
+bT4KPiAtLS0KPiAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtcmdiLnR4
+dCAgICAgfCA4MCArKysrKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA4MCBp
+bnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC1yZ2IudHh0Cj4gCj4gZGlmZiAt
+LWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
+L3JvY2tjaGlwLXJnYi50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
+cGxheS9yb2NrY2hpcC9yb2NrY2hpcC1yZ2IudHh0Cj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBp
+bmRleCAwMDAwMDAwLi40MTY0NTEyCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXJnYi50eHQK
+PiBAQCAtMCwwICsxLDgwIEBACj4gK1JvY2tjaGlwIFJWMTEwOCBSR0IgaW50ZXJmYWNlCj4gKz09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gKwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVz
+Ogo+ICstIGNvbXBhdGlibGU6IG1hdGNoaW5nIHRoZSBzb2MgdHlwZToKPiArCS0gInJvY2tjaGlw
+LHJ2MTEwOC1yZ2IiOwo+ICsKPiArT3B0aW9uYWwgcHJvcGVydGllczoKPiArLSBwaW5jdHJsLW5h
+bWVzOiBtdXN0IGNvbnRhaW4gYSAibGNkYyIgZW50cnkuCj4gKy0gcGluY3RybC0wOiBwaW4gY29u
+dHJvbCBncm91cCB0byBiZSB1c2VkIGZvciB0aGlzIGludGVyZmFjZS4KPiArCj4gK1JlcXVpcmVk
+IG5vZGVzOgo+ICstIHJvY2tjaGlwLHJnYi1tb2RlOiBzaG91bGQgYmUgInA4ODgiLCAicDY2NiIs
+ICJwNTY1IiwgInM4ODgiLCAiczg4OC1kdW1teSIKClRoaXMgc2hvdWxkIGJlIGEgc3RhbmRhcmQg
+cHJvcGVydHkuIEFueSBkZXZpY2Ugd2l0aCBhIHBhcmFsbGVsIGludGVyZmFjZSAKaXMgZ29pbmcg
+dG8gbmVlZCBzb21ldGhpbmcgbGlrZSB0aGlzLgoKPiArCS0gcDg4ODogb3V0cHV0IHI4LWc4LWI4
+IGF0IGVhY2ggZGNsayBjeWNsZSBmb3IgcGVyLXBpeGVsCj4gKwktIHA2NjY6IG91dHB1dCByNi1n
+Ni1iNiBhdCBlYWNoIGRjbGsgY3ljbGUgZm9yIHBlci1waXhlbAo+ICsJLSBwNTY1OiBvdXRwdXQg
+cjUtZzYtYjUgYXQgZWFjaCBkY2xrIGN5Y2xlIGZvciBwZXItcGl4ZWwKPiArCS0gczg4ODogb3V0
+cHV0IHI4LWc4LWI4IGluIHRocmVlIGRjbGsgY3ljbGUgZm9yIHBlci1waXhlbAo+ICsJLSBzODg4
+LWRtbXk6IG91dHB1dCByOC1nOC1iOC1kdW1teSBpbiBmb3VyIGRjbGsgY3ljbGUgZm9yIHBlci1w
+aXhlbAo+ICsKPiArVGhlIHJnYiBoYXMgdHdvIHZpZGVvIHBvcnRzIGRlc2NyaWJlZCBieToKPiAr
+CURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2Vz
+LnR4dAo+ICtUaGVpciBjb25uZWN0aW9ucyBhcmUgbW9kZWxlZCB1c2luZyB0aGUgT0YgZ3JhcGgg
+YmluZGluZ3Mgc3BlY2lmaWVkIGluCj4gKwlEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZ3JhcGgudHh0Lgo+ICsKPiArLSB2aWRlbyBwb3J0IDAgZm9yIHRoZSBWT1AgaW5wdXQsIHRo
+ZSByZW1vdGUgZW5kcG9pbnQgbWF5YmUgdm9wYi92b3BsL3ZvcAo+ICstIHZpZGVvIHBvcnQgMSBm
+b3IgZWl0aGVyIGEgcGFuZWwgb3Igc3Vic2VxdWVudCBlbmNvZGVyCj4gKwo+ICt0aGUgcGFuZWwg
+ZGVzY3JpYmVkIGJ5Ogo+ICsJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvcGFuZWwvc2ltcGxlLXBhbmVsLnR4dAo+ICtQYW5lbCBvdGhlciByZXF1aXJlZCBwcm9wZXJ0
+aWVzOgo+ICstIHBvcnRzIGZvciByZW1vdGUgcmdiIG91dHB1dC4KPiArCj4gK0V4YW1wbGU6Cj4g
+Kwo+ICtwYW5lbDogcGFuZWwgewo+ICsJY29tcGF0aWJsZSA9ICJhdW8sYjEwMWVhbjAxIjsKPiAr
+CWVuYWJsZS1ncGlvcyA9IDwmZ3BpbzcgMjEgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwo+ICsJcG9y
+dHMgewo+ICsJCXBhbmVsX2luX3JnYjogZW5kcG9pbnQgewo+ICsJCQlyZW1vdGUtZW5kcG9pbnQg
+PSA8JnJnYl9vdXRfcGFuZWw+Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArRm9yIFJvY2tj
+aGlwIFJWMTEwODoKPiArCj4gKwlyZ2I6IHJnYiB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hp
+cCxydjExMDgtcmdiIjsKPiArCQlwaW5jdHJsLW5hbWVzID0gImxjZGMiOwo+ICsJCXBpbmN0cmwt
+MCA9IDwmbGNkY19jdGw+Owo+ICsJCXJvY2tjaGlwLHJnYi1tb2RlID0gInA4ODgiOwo+ICsKPiAr
+CQlwb3J0cyB7Cj4gKwkJCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ICsJCQkjc2l6ZS1jZWxscyA9
+IDwwPjsKPiArCj4gKwkJCXJnYl9pbjogcG9ydEAwIHsKPiArCQkJCXJlZyA9IDwwPjsKPiArCQkJ
+CSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ICsJCQkJI3NpemUtY2VsbHMgPSA8MD47Cj4gKwo+ICsJ
+CQkJcmdiX2luX3ZvcDogZW5kcG9pbnRAMCB7Cj4gKwkJCQkJcmVnID0gPDA+OwoKRG9uJ3QgbmVl
+ZCByZWcgZm9yIGEgc2luZ2xlIGVuZHBvaW50LgoKPiArCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8
+JnZvcF9vdXRfcmdiPjsKPiArCQkJCX07Cj4gKwkJCX07Cj4gKwo+ICsJCQlyZ2Jfb3V0OiBwb3J0
+QDEgewo+ICsJCQkJcmVnID0gPDE+Owo+ICsJCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkJ
+CQkjc2l6ZS1jZWxscyA9IDwwPjsKPiArCj4gKwkJCQlyZ2Jfb3V0X3BhbmVsOiBlbmRwb2ludEAw
+IHsKPiArCQkJCQlyZWcgPSA8MD47CgpkaXR0by4KCj4gKwkJCQkJcmVtb3RlLWVuZHBvaW50ID0g
+PCZwYW5lbF9pbl9yZ2I+Owo+ICsJCQkJfTsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiAtLSAK
+PiAyLjcuNAo+IAo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
