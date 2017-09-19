@@ -1,101 +1,122 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: cpufreq(-dt) with two clocks but one regulator
-Date: Mon, 18 Sep 2017 16:37:56 -0700
-Message-ID: <CAD=FV=W+rvgJuNO0gEPN02bYkkJt6i6um=YGjUoaKmyrFhhSiw@mail.gmail.com>
-References: <1515316.mHJbnBRRvK@phil> <20170918012416.GB17030@ubuntu> <2224473.GjtbWfbYHk@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <2224473.GjtbWfbYHk@phil>
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Vincent Guittot <vincent.guittot@linaro.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v12 2/2] ASoC: rockchip: Use bus_type to distinguish rt5514 dsp from rt5514 codec
+Date: Tue, 19 Sep 2017 10:54:39 +0800
+Message-ID: <20170919025439.7107-2-jeffy.chen@rock-chips.com>
+References: <20170919025439.7107-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170919025439.7107-1-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de
+Cc: briannorris@chromium.org, broonie@kernel.org, mka@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
+Currently rt5514 dsp and rt5514 codec are sharing the same compatible.
+Use bus_type to distinguish rt5514 dsp from rt5514 codec.
 
-On Mon, Sep 18, 2017 at 3:40 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Current submitted OPPs can be found at
-> https://patchwork.kernel.org/patch/9908519/
->
-> There were still issues with higher frequencies, so they don't list the
-> 1.2 or 1.5GHz yet.
->
-> But opp sets pretty tight constraints. I.e. OPPs have of course one
-> preferred voltage, so you end up with u_volt_min = u_volt_max for each
-> operating point, thus the regulator also gets set in this way, removing any
-> intersection and thus making the regulator framework fail to set a voltage
-> for one of the clusters.
->
-> So for example, you have one cluster running at 600MHz@0.95V and the
-> other cluster running at 1008MHz@1.05V this results in regulator
-> constraints being
->         0.95V-0.95V
-> and
->         1.05V-1.05V
-> thus no intersection and whoever comes second looses.
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+Tested-by: Matthias Kaehlcke <mka@chromium.org>
+---
 
-(Untested) Can't you change the opp table and use the fancier
-operating point descriptions that give <target min max>?
+Changes in v12:
+Fix device leak.
 
-  cluster0_opp: opp-table0 {
-      compatible = "operating-points-v2";
-      opp-shared;
+Changes in v11: None
+Changes in v10: None
+Changes in v9: None
 
-      opp00 {
-          opp-hz = /bits/ 64 <312000000>;
-          opp-microvolt = <950000 950000 1050000>;
-          clock-latency-ns = <40000>;
-      };
-      opp01 {
-          opp-hz = /bits/ 64 <408000000>;
-          opp-microvolt = <950000 950000 1050000>;
-      };
-      opp02 {
-          opp-hz = /bits/ 64 <600000000>;
-          opp-microvolt = <950000 950000 1050000>;
-      };
-      opp03 {
-          opp-hz = /bits/ 64 <816000000>;
-          opp-microvolt = <1025000 1025000 1050000>;
-      };
-      opp04 {
-          opp-hz = /bits/ 64 <1008000000>;
-          opp-microvolt = <1125000 1125000 1050000>;
-      };
-  };
+ sound/soc/rockchip/rk3399_gru_sound.c | 61 ++++++++++++++++++++++++++++-------
+ 1 file changed, 49 insertions(+), 12 deletions(-)
 
-  cluster1_opp: opp-table1 {
-      compatible = "operating-points-v2";
-      opp-shared;
-
-      opp00 {
-          opp-hz = /bits/ 64 <312000000>;
-          opp-microvolt = <950000 950000 1125000>;
-          clock-latency-ns = <40000>;
-      };
-      opp01 {
-          opp-hz = /bits/ 64 <408000000>;
-          opp-microvolt = <950000 950000 1125000>;
-      };
-      opp02 {
-          opp-hz = /bits/ 64 <600000000>;
-          opp-microvolt = <950000 950000 1125000>;
-      };
-      opp03 {
-          opp-hz = /bits/ 64 <816000000>;
-          opp-microvolt = <975000 975000 1125000>;
-      };
-      opp04 {
-          opp-hz = /bits/ 64 <1008000000>;
-          opp-microvolt = <1050000>;
-      };
-  };
-
-
-In theory the above is a more proper hardware description: AKA you're
-describing that it's OK to use the higher voltage even at lower
-operating points.
-
-
--Doug
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 0513fe480353..b7759f3d2aac 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -23,6 +23,7 @@
+ #include <linux/of_gpio.h>
+ #include <linux/delay.h>
+ #include <linux/spi/spi.h>
++#include <linux/i2c.h>
+ #include <linux/input.h>
+ #include <sound/core.h>
+ #include <sound/jack.h>
+@@ -329,15 +330,6 @@ enum {
+ 	DAILINK_RT5514_DSP,
+ };
+ 
+-static const char * const dailink_compat[] = {
+-	[DAILINK_CDNDP] = "rockchip,rk3399-cdn-dp",
+-	[DAILINK_DA7219] = "dlg,da7219",
+-	[DAILINK_DMIC] = "dmic-codec",
+-	[DAILINK_MAX98357A] = "maxim,max98357a",
+-	[DAILINK_RT5514] = "realtek,rt5514-i2c",
+-	[DAILINK_RT5514_DSP] = "realtek,rt5514-spi",
+-};
+-
+ static const struct snd_soc_dai_link rockchip_dais[] = {
+ 	[DAILINK_CDNDP] = {
+ 		.name = "DP",
+@@ -391,13 +383,58 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
+ 	},
+ };
+ 
++struct dailink_match_data {
++	const char *compatible;
++	struct bus_type *bus_type;
++};
++
++static const struct dailink_match_data dailink_match[] = {
++	[DAILINK_CDNDP] = {
++		.compatible = "rockchip,rk3399-cdn-dp",
++	},
++	[DAILINK_DA7219] = {
++		.compatible = "dlg,da7219",
++	},
++	[DAILINK_DMIC] = {
++		.compatible = "dmic-codec",
++	},
++	[DAILINK_MAX98357A] = {
++		.compatible = "maxim,max98357a",
++	},
++	[DAILINK_RT5514] = {
++		.compatible = "realtek,rt5514",
++		.bus_type = &i2c_bus_type,
++	},
++	[DAILINK_RT5514_DSP] = {
++		.compatible = "realtek,rt5514",
++		.bus_type = &spi_bus_type,
++	},
++};
++
++static int of_dev_node_match(struct device *dev, void *data)
++{
++	return dev->of_node == data;
++}
++
+ static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+ {
++	struct device *dev;
+ 	int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(dailink_compat); i++) {
+-		if (of_device_is_compatible(np_codec, dailink_compat[i]))
+-			return i;
++	for (i = 0; i < ARRAY_SIZE(dailink_match); i++) {
++		if (!of_device_is_compatible(np_codec,
++					     dailink_match[i].compatible))
++			continue;
++
++		if (dailink_match[i].bus_type) {
++			dev = bus_find_device(dailink_match[i].bus_type, NULL,
++					      np_codec, of_dev_node_match);
++			if (!dev)
++				continue;
++			put_device(dev);
++		}
++
++		return i;
+ 	}
+ 	return -1;
+ }
+-- 
+2.11.0
