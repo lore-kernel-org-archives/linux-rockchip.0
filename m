@@ -1,49 +1,63 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v11 2/2] ASoC: rockchip: Use bus_type to distinguish rt5514
- dsp from rt5514 codec
-Date: Tue, 19 Sep 2017 11:16:32 +0800
-Message-ID: <59C08C10.7030806@rock-chips.com>
-References: <20170918111435.11411-1-jeffy.chen@rock-chips.com> <20170918111435.11411-2-jeffy.chen@rock-chips.com> <20170918191524.GI173745@google.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: cpufreq(-dt) with two clocks but one regulator
+Date: Tue, 19 Sep 2017 11:19:45 +0200
+Message-ID: <2997079.BKPG7M6LVv@diego>
+References: <1515316.mHJbnBRRvK@phil> <2224473.GjtbWfbYHk@phil> <CAD=FV=W+rvgJuNO0gEPN02bYkkJt6i6um=YGjUoaKmyrFhhSiw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170918191524.GI173745@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dgreid@chromium.org, heiko@sntech.de, briannorris@chromium.org, broonie@kernel.org, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=W+rvgJuNO0gEPN02bYkkJt6i6um=YGjUoaKmyrFhhSiw@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Vincent Guittot <vincent.guittot@linaro.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Matthias,
+Hi Doug,
 
-On 09/19/2017 03:15 AM, Matthias Kaehlcke wrote:
->> >+static int of_dev_node_match(struct device *dev, void *data)
->> >+{
->> >+	return dev->of_node == data;
->> >+}
-> The same is done in different places, even with the same function name
-> (drivers/i2c/i2c-core-of.c, drivers/mux/mux-core.c, ...), which
-> suggests that we might want to have this function in <linux/of.h>
->
+Am Montag, 18. September 2017, 16:37:56 CEST schrieb Doug Anderson:
+> On Mon, Sep 18, 2017 at 3:40 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> > Current submitted OPPs can be found at
+> > https://patchwork.kernel.org/patch/9908519/
+> > 
+> > There were still issues with higher frequencies, so they don't list the
+> > 1.2 or 1.5GHz yet.
+> > 
+> > But opp sets pretty tight constraints. I.e. OPPs have of course one
+> > preferred voltage, so you end up with u_volt_min = u_volt_max for each
+> > operating point, thus the regulator also gets set in this way, removing
+> > any
+> > intersection and thus making the regulator framework fail to set a voltage
+> > for one of the clusters.
+> > 
+> > So for example, you have one cluster running at 600MHz@0.95V and the
+> > other cluster running at 1008MHz@1.05V this results in regulator
+> > constraints being
+> > 
+> >         0.95V-0.95V
+> > 
+> > and
+> > 
+> >         1.05V-1.05V
+> > 
+> > thus no intersection and whoever comes second looses.
+> 
+> (Untested) Can't you change the opp table and use the fancier
+> operating point descriptions that give <target min max>?
 
-right, we are dupping this for bus_find_device in:
-./arch/powerpc/platforms/pseries/ibmebus.c
-./drivers/gpu/drm/drm_mipi_dsi.c
-./drivers/hwtracing/coresight/of_coresight.c
-./drivers/of/of_mdio.c
-./drivers/of/platform.c
-./drivers/i2c/i2c-core-of.c
-./drivers/nvmem/core.c
+funny, that I never noticed that opps are also specified for
+(target, min, max) values.
 
-and for class_find_device in:
-./drivers/spi/spi.c
-./drivers/fpga/fpga-mgr.c
-./drivers/fpga/fpga-region.c
-./drivers/fpga/fpga-bridge.c
-./drivers/regulator/core.c
-./drivers/mux/core.c
-./drivers/net/phy/mdio_bus.c
+Thanks for pointing me to the right direction and this seems to
+actually work. Although I noticed that obviously the max value
+needs to always be the global maximum (1125000 here) for both
+opp tables, to make the regulator framework happy.
 
-and for component_match_add in:
-./drivers/iommu/mtk_iommu.c
-  (and a lot of drm drivers)
+
+> In theory the above is a more proper hardware description: AKA you're
+> describing that it's OK to use the higher voltage even at lower
+> operating points.
+
+
+Thanks
+Heiko
