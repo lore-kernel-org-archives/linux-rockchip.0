@@ -1,48 +1,35 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RESEND PATCH v2 3/3] ASoC: rockchip: Init dapm routes
- dynamically
-Date: Tue, 19 Sep 2017 13:28:03 +0100
-Message-ID: <20170919122803.kybaln43yho3deih@sirena.co.uk>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [RESEND PATCH v2 1/3] ASoC: rockchip: Add dapm
+	route for HDMI
+Date: Tue, 19 Sep 2017 20:37:34 +0800
+Message-ID: <59C10F8E.3000404@rock-chips.com>
 References: <20170918111801.12881-1-jeffy.chen@rock-chips.com>
- <20170918111801.12881-3-jeffy.chen@rock-chips.com>
+ <20170919121907.bsikxtaih2ca3z3o@sirena.co.uk>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="6j2a6xw74ahxd2du"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170918111801.12881-3-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, briannorris@chromium.org, mka@chromium.org, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170919121907.bsikxtaih2ca3z3o@sirena.co.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Mark,
 
---6j2a6xw74ahxd2du
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Sep 18, 2017 at 07:18:01PM +0800, Jeffy Chen wrote:
-> Currently we are using a fixed list of dapm routes.
->=20
-> Init dapm routes dynamically when parsing dailinks, since we are
-> supporting optional codecs.
-
-This doesn't apply against current code, please check and resend.
-
---6j2a6xw74ahxd2du
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlnBDVIACgkQJNaLcl1U
-h9DMHwf/eGQIUDxDdNDi58Ae9/sfoe6JUjlK4SHSTA1OjtHpXJrwko80fjkwCLDl
-WG9IcXYpEAtxNn9cyGmshk+nUZuB7hATeAt0UbjSP+bWtTeOQ0pYJkthpsPuhiuG
-Rh1/M/wgvxTvqZcpz7Ys8xy0DCmoBIp573aD8U488PSZ9x/8MZUZKnL+XmuQss4m
-kwsmhYkDSVAWkuE2JHRnYRWkAEOrmi1euPeEiJN99MhhciiitQYy92FvxKIqtItP
-UR76o2Whaia8zhv2cQBfWcxXBTrj03PGVxfr9bsntPXp+s0sHz91ub5uJ3qKDO6N
-SPRyxyxHoVMKt3wVgHNh3VQ8vGnOug==
-=A8FV
------END PGP SIGNATURE-----
-
---6j2a6xw74ahxd2du--
+On 09/19/2017 08:19 PM, Mark Brown wrote:
+> On Mon, Sep 18, 2017 at 07:17:59PM +0800, Jeffy Chen wrote:
+>> Add dapm route for DP codec.
+>
+> This is a resend of a patch you posted earlier in the same day?
+>
+sorry, this is a resend of yesterday patches, to correct the wrong the 
+wrong patch tag("Asoc") to "ASoC"
