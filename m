@@ -1,72 +1,44 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 1/7] drm/rockchip/dsi: correct Feedback divider setting
-Date: Tue, 19 Sep 2017 11:19:01 -0700
-Message-ID: <20170919181751.GA38656@google.com>
-References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
- <20170919180025.apb4aq7ca3filh6c@art_vandelay>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170919180025.apb4aq7ca3filh6c@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: mark.rutland@arm.com, bivvy.bi@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, robh+dt@kernel.org, zyw@rock-chips.com, xbl@rock-chips.com
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2 0/4] phy: rockchip-typec: Set "flip" properly; some cleanups; fix swing
+Date: Tue, 19 Sep 2017 12:56:26 -0700
+Message-ID: <20170919195630.18747-1-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kishon@ti.com, heiko@sntech.de, zyw@rock-chips.com
+Cc: groeck@chromium.org, shawnn@chromium.org, dnschneid@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2VhbiwKCk9uIFR1ZSwgU2VwIDE5LCAyMDE3IGF0IDExOjAwOjI1QU0gLTA3MDAsIFNlYW4g
-UGF1bCB3cm90ZToKPiBPbiBNb24sIFNlcCAxOCwgMjAxNyBhdCAwNTowNTozM1BNICswODAwLCBO
-aWNrZXkgWWFuZyB3cm90ZToKPiA+IFRoaXMgcGF0Y2ggY29ycmVjdCBGZWVkYmFjayBkaXZpZGVy
-IHNldHRpbmc6Cj4gPiAx44CBU2V0IEZlZWRiYWNrIGRpdmlkZXIgWzg6NV0gd2hlbiBISUdIX1BS
-T0dSQU1fRU4KPiA+IDLjgIFEdWUgdG8gdGhlIHVzZSBvZiBhICJieSAyIHByZS1zY2FsZXIsIiB0
-aGUgcmFuZ2Ugb2YgdGhlCj4gPiBmZWVkYmFjayBtdWx0aXBsaWNhdGlvbiBGZWVkYmFjayBkaXZp
-ZGVyIGlzIGxpbWl0ZWQgdG8gZXZlbgo+ID4gZGl2aXNpb24gbnVtYmVycywgYW5kIEZlZWRiYWNr
-IGRpdmlkZXIgbXVzdCBiZSBncmVhdGVyIHRoYW4KPiA+IDEyLCBsZXNzIHRoYW4gMTAwMC4KPiA+
-IDPjgIFNYWtlIHRoZSBwcmV2aW91c2x5IGNvbmZpZ3VyZWQgRmVlZGJhY2sgZGl2aWRlcihMU0Ip
-Cj4gPiBmYWN0b3JzIGVmZmVjdGl2ZQo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBOaWNrZXkgWWFu
-ZyA8bmlja2V5LnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDgzICsrKysrKysrKysrKysrKysrKysrKystLS0t
-LS0tLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgNTQgaW5zZXJ0aW9ucygrKSwgMjkgZGVsZXRp
-b25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHct
-bWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPiBp
-bmRleCA5YTIwYjlkLi41MjY5OGI3IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
-dy1taXBpLWRzaS5jCj4gPiBAQCAtMjI4LDcgKzIyOCw3IEBACj4gPiAgI2RlZmluZSBMT1dfUFJP
-R1JBTV9FTgkJMAo+ID4gICNkZWZpbmUgSElHSF9QUk9HUkFNX0VOCQlCSVQoNykKPiA+ICAjZGVm
-aW5lIExPT1BfRElWX0xPV19TRUwodmFsKQkoKCh2YWwpIC0gMSkgJiAweDFmKQo+ID4gLSNkZWZp
-bmUgTE9PUF9ESVZfSElHSF9TRUwodmFsKQkoKCgodmFsKSAtIDEpID4+IDUpICYgMHgxZikKPiA+
-ICsjZGVmaW5lIExPT1BfRElWX0hJR0hfU0VMKHZhbCkJKCgoKHZhbCkgLSAxKSA+PiA1KSAmIDB4
-ZikKPiA+ICAjZGVmaW5lIFBMTF9MT09QX0RJVl9FTgkJQklUKDUpCj4gPiAgI2RlZmluZSBQTExf
-SU5QVVRfRElWX0VOCUJJVCg0KQo+ID4gIAo+ID4gQEAgLTQ2MSw2ICs0NjEsNyBAQCBzdGF0aWMg
-aW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ID4gIAlk
-d19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE3LCBJTlBVVF9ESVZJREVSKGRzaS0+aW5wdXRf
-ZGl2KSk7Cj4gPiAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTgsIExPT1BfRElWX0xP
-V19TRUwoZHNpLT5mZWVkYmFja19kaXYpIHwKPiA+ICAJCQkJCSBMT1dfUFJPR1JBTV9FTik7Cj4g
-PiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTksIFBMTF9MT09QX0RJVl9FTiB8IFBM
-TF9JTlBVVF9ESVZfRU4pOwo+IAo+IFlvdSBkbyB0aGUgc2FtZSB3cml0ZSAyIGxpbmVzIGRvd24u
-IEFyZSBib3RoIG5lZWRlZD8gSXQgd291bGQgYmUgbmljZSBpZiB0aGUKPiByZWdpc3RlciBuYW1l
-cyB3ZXJlIGFsc28gZGVmaW5lZCwgc28gdGhpcyBpcyBlYXNpZXIgdG8gcmVhZC4KCklmIEknbSBy
-ZWFkaW5nIGNvcnJlY3RseSwgSSB0aGluayB0aGlzIGlzIHdoYXQgTmlja2V5IG1lYW50IGJ5OgoK
-IjPjgIFNYWtlIHRoZSBwcmV2aW91c2x5IGNvbmZpZ3VyZWQgRmVlZGJhY2sgZGl2aWRlcihMU0Ip
-CmZhY3RvcnMgZWZmZWN0aXZlIgoKLiBNeSByZWFkaW5nIG9mIHRoZSBkYXRhYm9vayBpcyB0aGF0
-IHRoaXMgc3RlcCBmaW5hbGl6ZXMgdGhlIHByZXZpb3VzCnR3byB3cml0ZXMgKHRvIHRlc3QgY29k
-ZSAweDE3IGFuZCAweDE4KS4KCkdpdmVuIHRoaXMgd2FzIGJ1Z2d5ICg/KSBwcmV2aW91c2x5LCBp
-dCBkb2VzIHNlZW0gbGlrZSBoYXZpbmcgc29tZSBleHRyYQpsYW5ndWFnZSB0byBkb2N1bWVudCB0
-aGlzIGNvdWxkIGhlbHAuIFJlZ2lzdGVyIG5hbWVzIChvciAidGVzdCBjb2RlcyIsCnBlciB0aGUg
-ZG9jcz8pIGNvdWxkIGhlbHAsIGJ1dCBhZGRpdGlvbmFsbHksIG1heWJlIGEgZmV3IG1vcmUgY29t
-bWVudHMuCgo+ID4gIAlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE4LCBMT09QX0RJVl9I
-SUdIX1NFTChkc2ktPmZlZWRiYWNrX2RpdikgfAo+ID4gIAkJCQkJIEhJR0hfUFJPR1JBTV9FTik7
-Cj4gPiAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTksIFBMTF9MT09QX0RJVl9FTiB8
-IFBMTF9JTlBVVF9ESVZfRU4pOwoKWy4uLl0KCkJyaWFuCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+When connecting to certain DP monitors it was observed that only one
+of the two orientations of the type C to DP cable would work.
+Debugging showed that the problem was that we needed to set the type C
+"flip" state earlier.  Once we did this, problems went away.
+
+While trying to dig into this problem and some others, I found that
+the proper documentation for the Type C PHY was available to me.  This
+allowed me to cleanup the magic numbers in the funtion that I was
+touching and also fix a few minor issues that (luckily) haven't caused
+any problems yet.
+
+I also found that aux channel communications were flaky on some
+adapters until I adjusted the voltage swing.
+
+For this series I've added Chris Zhong's Reviewed-by tags to some of
+the patches since he gave a +1 to nearly identical patches on the
+Chrome OS gerrit and I didn't think he'd mind me carrying his tag.  If
+folks would rather I didn't do that, please yell.
+
+Changes in v2:
+- Removed extra blank line
+- Voltage swing patch new for v2.
+
+Douglas Anderson (4):
+  phy: rockchip-typec: Set the AUX channel flip state earlier
+  phy: rockchip-typec: Avoid magic numbers + add delays in aux calib
+  phy: rockchip-typec: Do the calibration more correctly
+  phy: rockchip-typec: Don't set the aux voltage swing to 400 mV
+
+ drivers/phy/rockchip/phy-rockchip-typec.c | 246 ++++++++++++++++++++++++------
+ 1 file changed, 201 insertions(+), 45 deletions(-)
+
+-- 
+2.14.1.690.gbb1197296e-goog
