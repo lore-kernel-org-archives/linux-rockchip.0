@@ -1,44 +1,148 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v12 2/2] ASoC: rockchip: Use bus_type to
- distinguish rt5514 dsp from rt5514 codec
-Date: Tue, 19 Sep 2017 21:04:26 +0800
-Message-ID: <59C115DA.4000907@rock-chips.com>
-References: <20170919025439.7107-1-jeffy.chen@rock-chips.com>
- <20170919025439.7107-2-jeffy.chen@rock-chips.com>
- <20170919124613.egvojfhq74vhyvuh@sirena.co.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20170919124613.egvojfhq74vhyvuh@sirena.co.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, Takashi Iwai <tiwai@suse.com>, dgreid@chromium.org, linux-arm-kernel@lists.infradead.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: Use bus_type to distinguish rt5514 dsp from rt5514 codec" to the asoc tree
+Date: Tue, 19 Sep 2017 14:46:17 +0100
+Message-ID: <E1duIqv-0008CA-M5@debutante>
+References: <20170919125800.336-5-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170919125800.336-5-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Matthias Kaehlcke <mka@chromium.org>, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, briannorris@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, dianders@chromium.org, linux-rockchip@lists.infradead.orgmka@chromium.org, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+The patch
 
-On 09/19/2017 08:46 PM, Mark Brown wrote:
-> On Tue, Sep 19, 2017 at 10:54:39AM +0800, Jeffy Chen wrote:
->> Currently rt5514 dsp and rt5514 codec are sharing the same compatible.
->> Use bus_type to distinguish rt5514 dsp from rt5514 codec.
->
-> This doens't apply against current code, please check and resend.
->
+   ASoC: rockchip: Use bus_type to distinguish rt5514 dsp from rt5514 codec
 
-i sent a new series which contains all my patches and base on 
-840cc455c5f5 Add linux-next specific files for 20170919
+has been applied to the asoc tree at
 
-please help to check, thanks :)
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-https://py3.patchwork.dja.id.au/patch/66384/
-...
-https://py3.patchwork.dja.id.au/patch/66389/
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 7e0dc9aeaea3ed130e090e20e9be0fc4877ddc37 Mon Sep 17 00:00:00 2001
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Date: Tue, 19 Sep 2017 20:57:59 +0800
+Subject: [PATCH] ASoC: rockchip: Use bus_type to distinguish rt5514 dsp from
+ rt5514 codec
+
+Currently rt5514 dsp and rt5514 codec are sharing the same compatible.
+Use bus_type to distinguish rt5514 dsp from rt5514 codec.
+
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+Tested-by: Matthias Kaehlcke <mka@chromium.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rk3399_gru_sound.c | 61 ++++++++++++++++++++++++++++-------
+ 1 file changed, 49 insertions(+), 12 deletions(-)
+
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index fab868850d3a..30eed83e8a13 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -23,6 +23,7 @@
+ #include <linux/of_gpio.h>
+ #include <linux/delay.h>
+ #include <linux/spi/spi.h>
++#include <linux/i2c.h>
+ #include <linux/input.h>
+ #include <sound/core.h>
+ #include <sound/jack.h>
+@@ -317,15 +318,6 @@ enum {
+ 	DAILINK_RT5514_DSP,
+ };
+ 
+-static const char * const dailink_compat[] = {
+-	[DAILINK_CDNDP] = "rockchip,rk3399-cdn-dp",
+-	[DAILINK_DA7219] = "dlg,da7219",
+-	[DAILINK_DMIC] = "dmic-codec",
+-	[DAILINK_MAX98357A] = "maxim,max98357a",
+-	[DAILINK_RT5514] = "realtek,rt5514-i2c",
+-	[DAILINK_RT5514_DSP] = "realtek,rt5514-spi",
+-};
+-
+ static const struct snd_soc_dai_link rockchip_dais[] = {
+ 	[DAILINK_CDNDP] = {
+ 		.name = "DP",
+@@ -438,13 +430,58 @@ static const struct rockchip_sound_route rockchip_routes[] = {
+ 	[DAILINK_RT5514_DSP] = {},
+ };
+ 
++struct dailink_match_data {
++	const char *compatible;
++	struct bus_type *bus_type;
++};
++
++static const struct dailink_match_data dailink_match[] = {
++	[DAILINK_CDNDP] = {
++		.compatible = "rockchip,rk3399-cdn-dp",
++	},
++	[DAILINK_DA7219] = {
++		.compatible = "dlg,da7219",
++	},
++	[DAILINK_DMIC] = {
++		.compatible = "dmic-codec",
++	},
++	[DAILINK_MAX98357A] = {
++		.compatible = "maxim,max98357a",
++	},
++	[DAILINK_RT5514] = {
++		.compatible = "realtek,rt5514",
++		.bus_type = &i2c_bus_type,
++	},
++	[DAILINK_RT5514_DSP] = {
++		.compatible = "realtek,rt5514",
++		.bus_type = &spi_bus_type,
++	},
++};
++
++static int of_dev_node_match(struct device *dev, void *data)
++{
++	return dev->of_node == data;
++}
++
+ static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+ {
++	struct device *dev;
+ 	int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(dailink_compat); i++) {
+-		if (of_device_is_compatible(np_codec, dailink_compat[i]))
+-			return i;
++	for (i = 0; i < ARRAY_SIZE(dailink_match); i++) {
++		if (!of_device_is_compatible(np_codec,
++					     dailink_match[i].compatible))
++			continue;
++
++		if (dailink_match[i].bus_type) {
++			dev = bus_find_device(dailink_match[i].bus_type, NULL,
++					      np_codec, of_dev_node_match);
++			if (!dev)
++				continue;
++			put_device(dev);
++		}
++
++		return i;
+ 	}
+ 	return -1;
+ }
+-- 
+2.14.1
