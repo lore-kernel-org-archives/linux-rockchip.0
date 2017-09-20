@@ -1,111 +1,119 @@
-From: John Keeping <john@keeping.me.uk>
+From: hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH 1/7] drm/rockchip/dsi: correct Feedback divider setting
-Date: Wed, 20 Sep 2017 13:07:22 +0100
-Message-ID: <20170920120722.GJ1601@john.keeping.me.uk>
+Date: Wed, 20 Sep 2017 20:27:33 +0800
+Message-ID: <81be0a38-6ffd-c192-07c7-8da855281dc9@rock-chips.com>
 References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
  <20170919180025.apb4aq7ca3filh6c@art_vandelay>
  <20170919181751.GA38656@google.com>
  <20170919202740.2ku56pefrj3wyskw@art_vandelay>
  <20170920100851.GI1601@john.keeping.me.uk>
  <03620f73-29f0-aba4-dcb4-ccb02d5fad9a@rock-chips.com>
+ <20170920120722.GJ1601@john.keeping.me.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <03620f73-29f0-aba4-dcb4-ccb02d5fad9a@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: hl <hl@rock-chips.com>
-Cc: Sean Paul <seanpaul@chromium.org>, mark.rutland@arm.com, bivvy.bi@rock-chips.com, airlied@linux.ie, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, robh+dt@kernel.org, zyw@rock-chips.com, xbl@rock-chips.com, mark.yao@rock-chips.com, heiko@sntech.de
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170920120722.GJ1601-snRDy3YJkXXBvQOv+jgum7VCufUGDwFn@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 20, 2017 at 07:08:11PM +0800, hl wrote:
-> 
-> 
-> On Wednesday, September 20, 2017 06:08 PM, John Keeping wrote:
-> > On Tue, Sep 19, 2017 at 01:27:40PM -0700, Sean Paul wrote:
-> >> On Tue, Sep 19, 2017 at 11:19:01AM -0700, Brian Norris wrote:
-> >>> Hi Sean,
-> >>>
-> >>> On Tue, Sep 19, 2017 at 11:00:25AM -0700, Sean Paul wrote:
-> >>>> On Mon, Sep 18, 2017 at 05:05:33PM +0800, Nickey Yang wrote:
-> >>>>> This patch correct Feedback divider setting:
-> >>>>> 1、Set Feedback divider [8:5] when HIGH_PROGRAM_EN
-> >>>>> 2、Due to the use of a "by 2 pre-scaler," the range of the
-> >>>>> feedback multiplication Feedback divider is limited to even
-> >>>>> division numbers, and Feedback divider must be greater than
-> >>>>> 12, less than 1000.
-> >>>>> 3、Make the previously configured Feedback divider(LSB)
-> >>>>> factors effective
-> >>>>>
-> >>>>> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> >>>>> ---
-> >>>>>   drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 83 ++++++++++++++++++++++------------
-> >>>>>   1 file changed, 54 insertions(+), 29 deletions(-)
-> >>>>>
-> >>>>> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> >>>>> index 9a20b9d..52698b7 100644
-> >>>>> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> >>>>> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> >>>>> @@ -228,7 +228,7 @@
-> >>>>>   #define LOW_PROGRAM_EN		0
-> >>>>>   #define HIGH_PROGRAM_EN		BIT(7)
-> >>>>>   #define LOOP_DIV_LOW_SEL(val)	(((val) - 1) & 0x1f)
-> >>>>> -#define LOOP_DIV_HIGH_SEL(val)	((((val) - 1) >> 5) & 0x1f)
-> >>>>> +#define LOOP_DIV_HIGH_SEL(val)	((((val) - 1) >> 5) & 0xf)
-> >>>>>   #define PLL_LOOP_DIV_EN		BIT(5)
-> >>>>>   #define PLL_INPUT_DIV_EN	BIT(4)
-> >>>>>   
-> >>>>> @@ -461,6 +461,7 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
-> >>>>>   	dw_mipi_dsi_phy_write(dsi, 0x17, INPUT_DIVIDER(dsi->input_div));
-> >>>>>   	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_LOW_SEL(dsi->feedback_div) |
-> >>>>>   					 LOW_PROGRAM_EN);
-> >>>>> +	dw_mipi_dsi_phy_write(dsi, 0x19, PLL_LOOP_DIV_EN | PLL_INPUT_DIV_EN);
-> >>>> You do the same write 2 lines down. Are both needed? It would be nice if the
-> >>>> register names were also defined, so this is easier to read.
-> >>> If I'm reading correctly, I think this is what Nickey meant by:
-> >>>
-> >>> "3、Make the previously configured Feedback divider(LSB)
-> >>> factors effective"
-> >>>
-> >>> . My reading of the databook is that this step finalizes the previous
-> >>> two writes (to test code 0x17 and 0x18).
-> >>>
-> >>> Given this was buggy (?) previously, it does seem like having some extra
-> >>> language to document this could help. Register names (or "test codes",
-> >>> per the docs?) could help, but additionally, maybe a few more comments.
-> >>>
-> >> Ah, yeah, thanks for the explanation. It's not clear that this latches the
-> >> values above. I think register names and comments would be immensely helpful.
-> > According to the databook, 0x19 controls whether the loop/input dividers
-> > are derived from the hsfreqrange configuration or use the values in 0x17
-> > and 0x18.  I can't see why writing the same value to this register
-> > multiple times is necessary.
-> According to databook, set 0x19 to 0x30 make the previously configured 
-> N(0x17) and M(0x18)
-> factors effective, 0x18 need to be setted by twice, since we need to set 
-> 0x18 LSB and MSB separately,
-> As we test, after set 0x18 LSB, if we do not set 0x19 immediately to 
-> make the configrued effective,
-> when we set 0x18 MSB, the 0x18 LSB value will gone, and we will get 
-> wrong pll frequency. Anyway,
-> I think should add some comment here to clear that.
-
-That's surprising, the examples in sections 6.2.1 and 6.2.2 of the
-databook I have both show the high and low parts of 0x18 being written
-before 0x19 is set.
-
-When reading 0x18 are you setting bit 7 in TESTDIN correctly in order to
-select the correct bits of the feedback divider?
-
-> >
-> >>>>>   	dw_mipi_dsi_phy_write(dsi, 0x18, LOOP_DIV_HIGH_SEL(dsi->feedback_div) |
-> >>>>>   					 HIGH_PROGRAM_EN);
-> >>>>>   	dw_mipi_dsi_phy_write(dsi, 0x19, PLL_LOOP_DIV_EN | PLL_INPUT_DIV_EN);
-> >>> [...]
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-> 
+CgpPbiBXZWRuZXNkYXksIFNlcHRlbWJlciAyMCwgMjAxNyAwODowNyBQTSwgSm9obiBLZWVwaW5n
+IHdyb3RlOgo+IE9uIFdlZCwgU2VwIDIwLCAyMDE3IGF0IDA3OjA4OjExUE0gKzA4MDAsIGhsIHdy
+b3RlOgo+Pgo+PiBPbiBXZWRuZXNkYXksIFNlcHRlbWJlciAyMCwgMjAxNyAwNjowOCBQTSwgSm9o
+biBLZWVwaW5nIHdyb3RlOgo+Pj4gT24gVHVlLCBTZXAgMTksIDIwMTcgYXQgMDE6Mjc6NDBQTSAt
+MDcwMCwgU2VhbiBQYXVsIHdyb3RlOgo+Pj4+IE9uIFR1ZSwgU2VwIDE5LCAyMDE3IGF0IDExOjE5
+OjAxQU0gLTA3MDAsIEJyaWFuIE5vcnJpcyB3cm90ZToKPj4+Pj4gSGkgU2VhbiwKPj4+Pj4KPj4+
+Pj4gT24gVHVlLCBTZXAgMTksIDIwMTcgYXQgMTE6MDA6MjVBTSAtMDcwMCwgU2VhbiBQYXVsIHdy
+b3RlOgo+Pj4+Pj4gT24gTW9uLCBTZXAgMTgsIDIwMTcgYXQgMDU6MDU6MzNQTSArMDgwMCwgTmlj
+a2V5IFlhbmcgd3JvdGU6Cj4+Pj4+Pj4gVGhpcyBwYXRjaCBjb3JyZWN0IEZlZWRiYWNrIGRpdmlk
+ZXIgc2V0dGluZzoKPj4+Pj4+PiAx44CBU2V0IEZlZWRiYWNrIGRpdmlkZXIgWzg6NV0gd2hlbiBI
+SUdIX1BST0dSQU1fRU4KPj4+Pj4+PiAy44CBRHVlIHRvIHRoZSB1c2Ugb2YgYSAiYnkgMiBwcmUt
+c2NhbGVyLCIgdGhlIHJhbmdlIG9mIHRoZQo+Pj4+Pj4+IGZlZWRiYWNrIG11bHRpcGxpY2F0aW9u
+IEZlZWRiYWNrIGRpdmlkZXIgaXMgbGltaXRlZCB0byBldmVuCj4+Pj4+Pj4gZGl2aXNpb24gbnVt
+YmVycywgYW5kIEZlZWRiYWNrIGRpdmlkZXIgbXVzdCBiZSBncmVhdGVyIHRoYW4KPj4+Pj4+PiAx
+MiwgbGVzcyB0aGFuIDEwMDAuCj4+Pj4+Pj4gM+OAgU1ha2UgdGhlIHByZXZpb3VzbHkgY29uZmln
+dXJlZCBGZWVkYmFjayBkaXZpZGVyKExTQikKPj4+Pj4+PiBmYWN0b3JzIGVmZmVjdGl2ZQo+Pj4+
+Pj4+Cj4+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogTmlja2V5IFlhbmcgPG5pY2tleS55YW5nQHJvY2st
+Y2hpcHMuY29tPgo+Pj4+Pj4+IC0tLQo+Pj4+Pj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9kdy1taXBpLWRzaS5jIHwgODMgKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLQo+
+Pj4+Pj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCA1NCBpbnNlcnRpb25zKCspLCAyOSBkZWxldGlvbnMo
+LSkKPj4+Pj4+Pgo+Pj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+ZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4+
+Pj4+Pj4gaW5kZXggOWEyMGI5ZC4uNTI2OThiNyAxMDA2NDQKPj4+Pj4+PiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+Pj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4+Pj4+Pj4gQEAgLTIyOCw3ICsyMjgsNyBAQAo+
+Pj4+Pj4+ICAgICNkZWZpbmUgTE9XX1BST0dSQU1fRU4JCTAKPj4+Pj4+PiAgICAjZGVmaW5lIEhJ
+R0hfUFJPR1JBTV9FTgkJQklUKDcpCj4+Pj4+Pj4gICAgI2RlZmluZSBMT09QX0RJVl9MT1dfU0VM
+KHZhbCkJKCgodmFsKSAtIDEpICYgMHgxZikKPj4+Pj4+PiAtI2RlZmluZSBMT09QX0RJVl9ISUdI
+X1NFTCh2YWwpCSgoKCh2YWwpIC0gMSkgPj4gNSkgJiAweDFmKQo+Pj4+Pj4+ICsjZGVmaW5lIExP
+T1BfRElWX0hJR0hfU0VMKHZhbCkJKCgoKHZhbCkgLSAxKSA+PiA1KSAmIDB4ZikKPj4+Pj4+PiAg
+ICAjZGVmaW5lIFBMTF9MT09QX0RJVl9FTgkJQklUKDUpCj4+Pj4+Pj4gICAgI2RlZmluZSBQTExf
+SU5QVVRfRElWX0VOCUJJVCg0KQo+Pj4+Pj4+ICAgIAo+Pj4+Pj4+IEBAIC00NjEsNiArNDYxLDcg
+QEAgc3RhdGljIGludCBkd19taXBpX2RzaV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRz
+aSkKPj4+Pj4+PiAgICAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxNywgSU5QVVRfRElW
+SURFUihkc2ktPmlucHV0X2RpdikpOwo+Pj4+Pj4+ICAgIAlkd19taXBpX2RzaV9waHlfd3JpdGUo
+ZHNpLCAweDE4LCBMT09QX0RJVl9MT1dfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8Cj4+Pj4+Pj4g
+ICAgCQkJCQkgTE9XX1BST0dSQU1fRU4pOwo+Pj4+Pj4+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRl
+KGRzaSwgMHgxOSwgUExMX0xPT1BfRElWX0VOIHwgUExMX0lOUFVUX0RJVl9FTik7Cj4+Pj4+PiBZ
+b3UgZG8gdGhlIHNhbWUgd3JpdGUgMiBsaW5lcyBkb3duLiBBcmUgYm90aCBuZWVkZWQ/IEl0IHdv
+dWxkIGJlIG5pY2UgaWYgdGhlCj4+Pj4+PiByZWdpc3RlciBuYW1lcyB3ZXJlIGFsc28gZGVmaW5l
+ZCwgc28gdGhpcyBpcyBlYXNpZXIgdG8gcmVhZC4KPj4+Pj4gSWYgSSdtIHJlYWRpbmcgY29ycmVj
+dGx5LCBJIHRoaW5rIHRoaXMgaXMgd2hhdCBOaWNrZXkgbWVhbnQgYnk6Cj4+Pj4+Cj4+Pj4+ICIz
+44CBTWFrZSB0aGUgcHJldmlvdXNseSBjb25maWd1cmVkIEZlZWRiYWNrIGRpdmlkZXIoTFNCKQo+
+Pj4+PiBmYWN0b3JzIGVmZmVjdGl2ZSIKPj4+Pj4KPj4+Pj4gLiBNeSByZWFkaW5nIG9mIHRoZSBk
+YXRhYm9vayBpcyB0aGF0IHRoaXMgc3RlcCBmaW5hbGl6ZXMgdGhlIHByZXZpb3VzCj4+Pj4+IHR3
+byB3cml0ZXMgKHRvIHRlc3QgY29kZSAweDE3IGFuZCAweDE4KS4KPj4+Pj4KPj4+Pj4gR2l2ZW4g
+dGhpcyB3YXMgYnVnZ3kgKD8pIHByZXZpb3VzbHksIGl0IGRvZXMgc2VlbSBsaWtlIGhhdmluZyBz
+b21lIGV4dHJhCj4+Pj4+IGxhbmd1YWdlIHRvIGRvY3VtZW50IHRoaXMgY291bGQgaGVscC4gUmVn
+aXN0ZXIgbmFtZXMgKG9yICJ0ZXN0IGNvZGVzIiwKPj4+Pj4gcGVyIHRoZSBkb2NzPykgY291bGQg
+aGVscCwgYnV0IGFkZGl0aW9uYWxseSwgbWF5YmUgYSBmZXcgbW9yZSBjb21tZW50cy4KPj4+Pj4K
+Pj4+PiBBaCwgeWVhaCwgdGhhbmtzIGZvciB0aGUgZXhwbGFuYXRpb24uIEl0J3Mgbm90IGNsZWFy
+IHRoYXQgdGhpcyBsYXRjaGVzIHRoZQo+Pj4+IHZhbHVlcyBhYm92ZS4gSSB0aGluayByZWdpc3Rl
+ciBuYW1lcyBhbmQgY29tbWVudHMgd291bGQgYmUgaW1tZW5zZWx5IGhlbHBmdWwuCj4+PiBBY2Nv
+cmRpbmcgdG8gdGhlIGRhdGFib29rLCAweDE5IGNvbnRyb2xzIHdoZXRoZXIgdGhlIGxvb3AvaW5w
+dXQgZGl2aWRlcnMKPj4+IGFyZSBkZXJpdmVkIGZyb20gdGhlIGhzZnJlcXJhbmdlIGNvbmZpZ3Vy
+YXRpb24gb3IgdXNlIHRoZSB2YWx1ZXMgaW4gMHgxNwo+Pj4gYW5kIDB4MTguICBJIGNhbid0IHNl
+ZSB3aHkgd3JpdGluZyB0aGUgc2FtZSB2YWx1ZSB0byB0aGlzIHJlZ2lzdGVyCj4+PiBtdWx0aXBs
+ZSB0aW1lcyBpcyBuZWNlc3NhcnkuCj4+IEFjY29yZGluZyB0byBkYXRhYm9vaywgc2V0IDB4MTkg
+dG8gMHgzMCBtYWtlIHRoZSBwcmV2aW91c2x5IGNvbmZpZ3VyZWQKPj4gTigweDE3KSBhbmQgTSgw
+eDE4KQo+PiBmYWN0b3JzIGVmZmVjdGl2ZSwgMHgxOCBuZWVkIHRvIGJlIHNldHRlZCBieSB0d2lj
+ZSwgc2luY2Ugd2UgbmVlZCB0byBzZXQKPj4gMHgxOCBMU0IgYW5kIE1TQiBzZXBhcmF0ZWx5LAo+
+PiBBcyB3ZSB0ZXN0LCBhZnRlciBzZXQgMHgxOCBMU0IsIGlmIHdlIGRvIG5vdCBzZXQgMHgxOSBp
+bW1lZGlhdGVseSB0bwo+PiBtYWtlIHRoZSBjb25maWdydWVkIGVmZmVjdGl2ZSwKPj4gd2hlbiB3
+ZSBzZXQgMHgxOCBNU0IsIHRoZSAweDE4IExTQiB2YWx1ZSB3aWxsIGdvbmUsIGFuZCB3ZSB3aWxs
+IGdldAo+PiB3cm9uZyBwbGwgZnJlcXVlbmN5LiBBbnl3YXksCj4+IEkgdGhpbmsgc2hvdWxkIGFk
+ZCBzb21lIGNvbW1lbnQgaGVyZSB0byBjbGVhciB0aGF0Lgo+IFRoYXQncyBzdXJwcmlzaW5nLCB0
+aGUgZXhhbXBsZXMgaW4gc2VjdGlvbnMgNi4yLjEgYW5kIDYuMi4yIG9mIHRoZQo+IGRhdGFib29r
+IEkgaGF2ZSBib3RoIHNob3cgdGhlIGhpZ2ggYW5kIGxvdyBwYXJ0cyBvZiAweDE4IGJlaW5nIHdy
+aXR0ZW4KPiBiZWZvcmUgMHgxOSBpcyBzZXQuCj4KPiBXaGVuIHJlYWRpbmcgMHgxOCBhcmUgeW91
+IHNldHRpbmcgYml0IDcgaW4gVEVTVERJTiBjb3JyZWN0bHkgaW4gb3JkZXIgdG8KPiBzZWxlY3Qg
+dGhlIGNvcnJlY3QgYml0cyBvZiB0aGUgZmVlZGJhY2sgZGl2aWRlcj8KV2Ugc2NvcGUgdGhlIG1p
+cGkgbGFuZSBjbG9jaywgZm91bmQgaXQgZ290IHdyb25nIGNsb2NrIGZyZXF1ZW5jeSB1c2UgZmxv
+dzoKIMKgwqDCoCBzZXQgMHgxNwogwqDCoMKgIHNldCAweDE4IExTQgogwqDCoMKgIHNldCAweDE4
+IE1TQgogwqDCoMKgIHNldCAweDE5ID0gMHgzMAoKYW5kIHdlIGNhbiBnZXQgcmlnaHQgbWlwaSBs
+YW5lIGNsb2NrIHVzZSBmbG93OgogwqDCoMKgIHNldCAweDE3CiDCoMKgwqAgc2V0IDB4MTggTFNC
+CiDCoMKgwqAgc2V0IDB4MTkgPSAweDMwCiDCoMKgwqAgc2V0IDB4MTggTVNCCiDCoMKgwqAgc2V0
+IDB4MTkgPSAweDMwCgo+Cj4+Pj4+Pj4gICAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4
+MTgsIExPT1BfRElWX0hJR0hfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8Cj4+Pj4+Pj4gICAgCQkJ
+CQkgSElHSF9QUk9HUkFNX0VOKTsKPj4+Pj4+PiAgICAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRz
+aSwgMHgxOSwgUExMX0xPT1BfRElWX0VOIHwgUExMX0lOUFVUX0RJVl9FTik7Cj4+Pj4+IFsuLi5d
+Cj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4g
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCj4+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCj4+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
