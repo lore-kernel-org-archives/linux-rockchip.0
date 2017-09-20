@@ -1,51 +1,87 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 0/5] nvmem: some cleanups and sparse warning fixes
-Date: Wed, 20 Sep 2017 19:02:24 +0900
-Message-ID: <CAK7LNAQHoDN=SOLA6AxyeCOUObRwy6nJHizo6xoDEX1gybvqNg@mail.gmail.com>
-References: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
+From: John Keeping <john-HPTTJ/6qucUJ3nxcUk3PyQ@public.gmane.org>
+Subject: Re: [PATCH 1/7] drm/rockchip/dsi: correct Feedback divider setting
+Date: Wed, 20 Sep 2017 11:08:51 +0100
+Message-ID: <20170920100851.GI1601@john.keeping.me.uk>
+References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
+ <20170919180025.apb4aq7ca3filh6c@art_vandelay>
+ <20170919181751.GA38656@google.com>
+ <20170919202740.2ku56pefrj3wyskw@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1505134864-11975-1-git-send-email-yamada.masahiro@socionext.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Keiji Hayashibara <hayashibara.keiji@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, Jassi Brar <jaswinder.singh@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Joachim Eastwood <manabian@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Carlo Caione <carlo@caione.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20170919202740.2ku56pefrj3wyskw@art_vandelay>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, bivvy.bi-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xbl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Srinivas,
-
-
-2017-09-11 22:00 GMT+09:00 Masahiro Yamada <yamada.masahiro@socionext.com>:
->
-> Socionext is trying to add a new nvmem driver.
->
-> Before adding a new one, I'd like to be sure about the preferred
-> coding style in this subsystem, and build-up cleaner code base.
->
-> Please pick up what you like.  Please feel free to throw away
-> what you do not like.
->
-> 1/5, 2/5: convert kzalloc to stack because nvmem_config
-> is small one-time use data.
-> This is what we agreed in the discussion.
->
-> 3/5, 4/5: fix sparse warning
-> For mtk-efuse, qfprom, the base address is the only private data
-> but, assigning (void __iomem *) to ->priv directly causes sparse
-> warnings.
->
-> 5/5: clean-up of owner settings - if the owner field matches
-> nvmem->dev->driver->onwer, we need not set the onwer field
-> explicitly.
-
-
-Does this series look OK?
-
-Thanks.
-
-
-
-
--- 
-Best Regards
-Masahiro Yamada
+T24gVHVlLCBTZXAgMTksIDIwMTcgYXQgMDE6Mjc6NDBQTSAtMDcwMCwgU2VhbiBQYXVsIHdyb3Rl
+Ogo+IE9uIFR1ZSwgU2VwIDE5LCAyMDE3IGF0IDExOjE5OjAxQU0gLTA3MDAsIEJyaWFuIE5vcnJp
+cyB3cm90ZToKPiA+IEhpIFNlYW4sCj4gPiAKPiA+IE9uIFR1ZSwgU2VwIDE5LCAyMDE3IGF0IDEx
+OjAwOjI1QU0gLTA3MDAsIFNlYW4gUGF1bCB3cm90ZToKPiA+ID4gT24gTW9uLCBTZXAgMTgsIDIw
+MTcgYXQgMDU6MDU6MzNQTSArMDgwMCwgTmlja2V5IFlhbmcgd3JvdGU6Cj4gPiA+ID4gVGhpcyBw
+YXRjaCBjb3JyZWN0IEZlZWRiYWNrIGRpdmlkZXIgc2V0dGluZzoKPiA+ID4gPiAx44CBU2V0IEZl
+ZWRiYWNrIGRpdmlkZXIgWzg6NV0gd2hlbiBISUdIX1BST0dSQU1fRU4KPiA+ID4gPiAy44CBRHVl
+IHRvIHRoZSB1c2Ugb2YgYSAiYnkgMiBwcmUtc2NhbGVyLCIgdGhlIHJhbmdlIG9mIHRoZQo+ID4g
+PiA+IGZlZWRiYWNrIG11bHRpcGxpY2F0aW9uIEZlZWRiYWNrIGRpdmlkZXIgaXMgbGltaXRlZCB0
+byBldmVuCj4gPiA+ID4gZGl2aXNpb24gbnVtYmVycywgYW5kIEZlZWRiYWNrIGRpdmlkZXIgbXVz
+dCBiZSBncmVhdGVyIHRoYW4KPiA+ID4gPiAxMiwgbGVzcyB0aGFuIDEwMDAuCj4gPiA+ID4gM+OA
+gU1ha2UgdGhlIHByZXZpb3VzbHkgY29uZmlndXJlZCBGZWVkYmFjayBkaXZpZGVyKExTQikKPiA+
+ID4gPiBmYWN0b3JzIGVmZmVjdGl2ZQo+ID4gPiA+IAo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE5p
+Y2tleSBZYW5nIDxuaWNrZXkueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4gPiAtLS0KPiA+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCA4MyArKysrKysrKysr
+KysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA1NCBpbnNl
+cnRpb25zKCspLCAyOSBkZWxldGlvbnMoLSkKPiA+ID4gPiAKPiA+ID4gPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4gPiA+IGluZGV4IDlhMjBiOWQuLjUyNjk4YjcgMTAw
+NjQ0Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMK
+PiA+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4g
+PiA+IEBAIC0yMjgsNyArMjI4LDcgQEAKPiA+ID4gPiAgI2RlZmluZSBMT1dfUFJPR1JBTV9FTgkJ
+MAo+ID4gPiA+ICAjZGVmaW5lIEhJR0hfUFJPR1JBTV9FTgkJQklUKDcpCj4gPiA+ID4gICNkZWZp
+bmUgTE9PUF9ESVZfTE9XX1NFTCh2YWwpCSgoKHZhbCkgLSAxKSAmIDB4MWYpCj4gPiA+ID4gLSNk
+ZWZpbmUgTE9PUF9ESVZfSElHSF9TRUwodmFsKQkoKCgodmFsKSAtIDEpID4+IDUpICYgMHgxZikK
+PiA+ID4gPiArI2RlZmluZSBMT09QX0RJVl9ISUdIX1NFTCh2YWwpCSgoKCh2YWwpIC0gMSkgPj4g
+NSkgJiAweGYpCj4gPiA+ID4gICNkZWZpbmUgUExMX0xPT1BfRElWX0VOCQlCSVQoNSkKPiA+ID4g
+PiAgI2RlZmluZSBQTExfSU5QVVRfRElWX0VOCUJJVCg0KQo+ID4gPiA+ICAKPiA+ID4gPiBAQCAt
+NDYxLDYgKzQ2MSw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcGh5X2luaXQoc3RydWN0IGR3
+X21pcGlfZHNpICpkc2kpCj4gPiA+ID4gIAlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE3
+LCBJTlBVVF9ESVZJREVSKGRzaS0+aW5wdXRfZGl2KSk7Cj4gPiA+ID4gIAlkd19taXBpX2RzaV9w
+aHlfd3JpdGUoZHNpLCAweDE4LCBMT09QX0RJVl9MT1dfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8
+Cj4gPiA+ID4gIAkJCQkJIExPV19QUk9HUkFNX0VOKTsKPiA+ID4gPiArCWR3X21pcGlfZHNpX3Bo
+eV93cml0ZShkc2ksIDB4MTksIFBMTF9MT09QX0RJVl9FTiB8IFBMTF9JTlBVVF9ESVZfRU4pOwo+
+ID4gPiAKPiA+ID4gWW91IGRvIHRoZSBzYW1lIHdyaXRlIDIgbGluZXMgZG93bi4gQXJlIGJvdGgg
+bmVlZGVkPyBJdCB3b3VsZCBiZSBuaWNlIGlmIHRoZQo+ID4gPiByZWdpc3RlciBuYW1lcyB3ZXJl
+IGFsc28gZGVmaW5lZCwgc28gdGhpcyBpcyBlYXNpZXIgdG8gcmVhZC4KPiA+IAo+ID4gSWYgSSdt
+IHJlYWRpbmcgY29ycmVjdGx5LCBJIHRoaW5rIHRoaXMgaXMgd2hhdCBOaWNrZXkgbWVhbnQgYnk6
+Cj4gPiAKPiA+ICIz44CBTWFrZSB0aGUgcHJldmlvdXNseSBjb25maWd1cmVkIEZlZWRiYWNrIGRp
+dmlkZXIoTFNCKQo+ID4gZmFjdG9ycyBlZmZlY3RpdmUiCj4gPiAKPiA+IC4gTXkgcmVhZGluZyBv
+ZiB0aGUgZGF0YWJvb2sgaXMgdGhhdCB0aGlzIHN0ZXAgZmluYWxpemVzIHRoZSBwcmV2aW91cwo+
+ID4gdHdvIHdyaXRlcyAodG8gdGVzdCBjb2RlIDB4MTcgYW5kIDB4MTgpLgo+ID4gCj4gPiBHaXZl
+biB0aGlzIHdhcyBidWdneSAoPykgcHJldmlvdXNseSwgaXQgZG9lcyBzZWVtIGxpa2UgaGF2aW5n
+IHNvbWUgZXh0cmEKPiA+IGxhbmd1YWdlIHRvIGRvY3VtZW50IHRoaXMgY291bGQgaGVscC4gUmVn
+aXN0ZXIgbmFtZXMgKG9yICJ0ZXN0IGNvZGVzIiwKPiA+IHBlciB0aGUgZG9jcz8pIGNvdWxkIGhl
+bHAsIGJ1dCBhZGRpdGlvbmFsbHksIG1heWJlIGEgZmV3IG1vcmUgY29tbWVudHMuCj4gPiAKPiAK
+PiBBaCwgeWVhaCwgdGhhbmtzIGZvciB0aGUgZXhwbGFuYXRpb24uIEl0J3Mgbm90IGNsZWFyIHRo
+YXQgdGhpcyBsYXRjaGVzIHRoZSAKPiB2YWx1ZXMgYWJvdmUuIEkgdGhpbmsgcmVnaXN0ZXIgbmFt
+ZXMgYW5kIGNvbW1lbnRzIHdvdWxkIGJlIGltbWVuc2VseSBoZWxwZnVsLgoKQWNjb3JkaW5nIHRv
+IHRoZSBkYXRhYm9vaywgMHgxOSBjb250cm9scyB3aGV0aGVyIHRoZSBsb29wL2lucHV0IGRpdmlk
+ZXJzCmFyZSBkZXJpdmVkIGZyb20gdGhlIGhzZnJlcXJhbmdlIGNvbmZpZ3VyYXRpb24gb3IgdXNl
+IHRoZSB2YWx1ZXMgaW4gMHgxNwphbmQgMHgxOC4gIEkgY2FuJ3Qgc2VlIHdoeSB3cml0aW5nIHRo
+ZSBzYW1lIHZhbHVlIHRvIHRoaXMgcmVnaXN0ZXIKbXVsdGlwbGUgdGltZXMgaXMgbmVjZXNzYXJ5
+LgoKPiA+ID4gPiAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTgsIExPT1BfRElWX0hJ
+R0hfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8Cj4gPiA+ID4gIAkJCQkJIEhJR0hfUFJPR1JBTV9F
+Tik7Cj4gPiA+ID4gIAlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE5LCBQTExfTE9PUF9E
+SVZfRU4gfCBQTExfSU5QVVRfRElWX0VOKTsKPiA+IAo+ID4gWy4uLl0KCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
