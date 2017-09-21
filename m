@@ -1,32 +1,56 @@
-From: Thomas Meyer <thomas@m3y3r.de>
-Subject: [PATCH 7/7] drm/rockchip: Cocci spatch "vma_pages"
-Date: Thu, 21 Sep 2017 00:29:36 +0200
-Message-ID: <1505946334393-988165015-7-diffsplit-thomas@m3y3r.de>
-References: <1505946334393-568186305-0-diffsplit-thomas@m3y3r.de>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: [PATCH] drm/rockchip: Fix uninitialized use of ret
+Date: Wed, 20 Sep 2017 17:13:56 -0700
+Message-ID: <20170921001408.1839-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1505946334393-568186305-0-diffsplit-thomas@m3y3r.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Use vma_pages function on vma object instead of explicit computation.
-Found by coccinelle spatch "api/vma_pages.cocci"
-
-Signed-off-by: Thomas Meyer <thomas@m3y3r.de>
----
-
-diff -u -p a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -220,7 +220,7 @@ static int rockchip_drm_gem_object_mmap_
- {
- 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
- 	unsigned int i, count = obj->size >> PAGE_SHIFT;
--	unsigned long user_count = (vma->vm_end - vma->vm_start) >> PAGE_SHIFT;
-+	unsigned long user_count = vma_pages(vma);
- 	unsigned long uaddr = vma->vm_start;
- 	unsigned long offset = vma->vm_pgoff;
- 	unsigned long end = user_count + offset;
+SWYgdGhlcmUgYXJlIG5vIGNoaWxkcmVuIGZvciBsdmRzLCByZXQgaXMgdXNlZCB1bmluaXRpYWxp
+emVkLiBUaGlzIHBhdGNoCmluaXRpYWxpemVzIHJldCBhbmQgcmV0dXJucyBhbiBlcnJvciBpZiB0
+aGUgcG9ydCBoYXMgbm8gY2hpbGRyZW4uCgpGaXhlczogMzRjYzBhYTI1NDU2ICgiZHJtL3JvY2tj
+aGlwOiBBZGQgc3VwcG9ydCBmb3IgUm9ja2NoaXAgU29jIExWRFMiKQpDYzogTWFyayBZYW8gPG1h
+cmsueWFvQHJvY2stY2hpcHMuY29tPgpDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5k
+ZT4KQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CkNjOiBkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5v
+cmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKU2lnbmVkLW9mZi1ieTog
+U2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyB8IDkgKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNyBp
+bnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfbHZkcy5jCmluZGV4IGM1ZmJlNTMzNzk2Yy4uMGNlNjIwNWQ4ZDgwIDEwMDY0NAotLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCisrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKQEAgLTM0Niw3ICszNDYsNyBAQCBzdGF0
+aWMgaW50IHJvY2tjaGlwX2x2ZHNfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZp
+Y2UgKm1hc3RlciwKIAlzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yOwogCXN0cnVjdCBk
+ZXZpY2Vfbm9kZSAqcmVtb3RlID0gTlVMTDsKIAlzdHJ1Y3QgZGV2aWNlX25vZGUgICpwb3J0LCAq
+ZW5kcG9pbnQ7Ci0JaW50IHJldDsKKwlpbnQgcmV0ID0gMCwgY2hpbGRfY291bnQgPSAwOwogCWNv
+bnN0IGNoYXIgKm5hbWU7CiAJdTMyIGVuZHBvaW50X2lkOwogCkBAIC0zNTgsMTMgKzM1OCwxOCBA
+QCBzdGF0aWMgaW50IHJvY2tjaGlwX2x2ZHNfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVj
+dCBkZXZpY2UgKm1hc3RlciwKIAkJcmV0dXJuIC1FSU5WQUw7CiAJfQogCWZvcl9lYWNoX2NoaWxk
+X29mX25vZGUocG9ydCwgZW5kcG9pbnQpIHsKKwkJY2hpbGRfY291bnQrKzsKIAkJb2ZfcHJvcGVy
+dHlfcmVhZF91MzIoZW5kcG9pbnQsICJyZWciLCAmZW5kcG9pbnRfaWQpOwogCQlyZXQgPSBkcm1f
+b2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UoZGV2LT5vZl9ub2RlLCAxLCBlbmRwb2ludF9pZCwKIAkJ
+CQkJCSAgJmx2ZHMtPnBhbmVsLCAmbHZkcy0+YnJpZGdlKTsKIAkJaWYgKCFyZXQpCiAJCQlicmVh
+azsKIAl9Ci0JaWYgKHJldCkgeworCWlmICghY2hpbGRfY291bnQpIHsKKwkJRFJNX0RFVl9FUlJP
+UihkZXYsICJsdmRzIHBvcnQgZG9lcyBub3QgaGF2ZSBhbnkgY2hpbGRyZW5cbiIpOworCQlyZXQg
+ID0gLUVJTlZBTDsKKwkJZ290byBlcnJfcHV0X3BvcnQ7CisJfSBlbHNlIGlmIChyZXQpIHsKIAkJ
+RFJNX0RFVl9FUlJPUihkZXYsICJmYWlsZWQgdG8gZmluZCBwYW5lbCBhbmQgYnJpZGdlIG5vZGVc
+biIpOwogCQlyZXQgID0gLUVQUk9CRV9ERUZFUjsKIAkJZ290byBlcnJfcHV0X3BvcnQ7Ci0tIAoy
+LjE0LjEuODIxLmc4ZmE2ODVkM2I3LWdvb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
