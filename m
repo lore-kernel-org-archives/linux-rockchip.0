@@ -1,14 +1,12 @@
 From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 7/7] drm/rockchip: Cocci spatch "vma_pages"
-Date: Thu, 21 Sep 2017 09:02:22 +0800
-Message-ID: <d2298979-3094-744c-3d28-76a0ba4a1137@rock-chips.com>
-References: <1505946334393-568186305-0-diffsplit-thomas@m3y3r.de>
- <1505946334393-988165015-7-diffsplit-thomas@m3y3r.de>
+Subject: Re: [PATCH] drm/rockchip: Fix uninitialized use of ret
+Date: Thu, 21 Sep 2017 09:03:19 +0800
+Message-ID: <3163442d-356a-4000-f15b-74391b79188f@rock-chips.com>
+References: <20170921001408.1839-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1183353059=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1505946334393-988165015-7-diffsplit-thomas@m3y3r.de>
+In-Reply-To: <20170921001408.1839-1-seanpaul@chromium.org>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
@@ -19,29 +17,178 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thomas Meyer <thomas@m3y3r.de>, airlied@linux.ie, heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDA55pyIMjHml6UgMDY6MjksIFRob21hcyBNZXllciB3cm90ZToKPiBVc2Ugdm1h
-X3BhZ2VzIGZ1bmN0aW9uIG9uIHZtYSBvYmplY3QgaW5zdGVhZCBvZiBleHBsaWNpdCBjb21wdXRh
-dGlvbi4KPiBGb3VuZCBieSBjb2NjaW5lbGxlIHNwYXRjaCAiYXBpL3ZtYV9wYWdlcy5jb2NjaSIK
-Pgo+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBNZXllciA8dGhvbWFzQG0zeTNyLmRlPgo+IC0tLQpM
-b29rcyBnb29kIGZvciBtZToKQWNrZWQtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBz
-LmNvbT4KCj4KPiBkaWZmIC11IC1wIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0yMjAs
-NyArMjIwLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fZ2VtX29iamVjdF9tbWFwXwo+ICAg
-ewo+ICAgCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmogPSB0b19yb2NrY2hpcF9v
-Ymoob2JqKTsKPiAgIAl1bnNpZ25lZCBpbnQgaSwgY291bnQgPSBvYmotPnNpemUgPj4gUEFHRV9T
-SElGVDsKPiAtCXVuc2lnbmVkIGxvbmcgdXNlcl9jb3VudCA9ICh2bWEtPnZtX2VuZCAtIHZtYS0+
-dm1fc3RhcnQpID4+IFBBR0VfU0hJRlQ7Cj4gKwl1bnNpZ25lZCBsb25nIHVzZXJfY291bnQgPSB2
-bWFfcGFnZXModm1hKTsKPiAgIAl1bnNpZ25lZCBsb25nIHVhZGRyID0gdm1hLT52bV9zdGFydDsK
-PiAgIAl1bnNpZ25lZCBsb25nIG9mZnNldCA9IHZtYS0+dm1fcGdvZmY7Cj4gICAJdW5zaWduZWQg
-bG9uZyBlbmQgPSB1c2VyX2NvdW50ICsgb2Zmc2V0Owo+Cj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4KPgoKLS0gCu+8rWFy
-ayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This is a multi-part message in MIME format.
+--===============1183353059==
+Content-Type: multipart/alternative;
+ boundary="------------C5813E38BD1EAE2335E1ED3E"
+Content-Language: en-US
+
+This is a multi-part message in MIME format.
+--------------C5813E38BD1EAE2335E1ED3E
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+On 2017年09月21日 08:13, Sean Paul wrote:
+> If there are no children for lvds, ret is used uninitialized. This patch
+> initializes ret and returns an error if the port has no children.
+>
+> Fixes: 34cc0aa25456 ("drm/rockchip: Add support for Rockchip Soc LVDS")
+> Cc: Mark Yao <mark.yao@rock-chips.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> ---
+>   drivers/gpu/drm/rockchip/rockchip_lvds.c | 9 +++++++--
+>   1 file changed, 7 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> index c5fbe533796c..0ce6205d8d80 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> @@ -346,7 +346,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+>   	struct drm_connector *connector;
+>   	struct device_node *remote = NULL;
+>   	struct device_node  *port, *endpoint;
+> -	int ret;
+> +	int ret = 0, child_count = 0;
+>   	const char *name;
+>   	u32 endpoint_id;
+>   
+> @@ -358,13 +358,18 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+>   		return -EINVAL;
+>   	}
+>   	for_each_child_of_node(port, endpoint) {
+> +		child_count++;
+>   		of_property_read_u32(endpoint, "reg", &endpoint_id);
+>   		ret = drm_of_find_panel_or_bridge(dev->of_node, 1, endpoint_id,
+>   						  &lvds->panel, &lvds->bridge);
+>   		if (!ret)
+>   			break;
+>   	}
+> -	if (ret) {
+> +	if (!child_count) {
+> +		DRM_DEV_ERROR(dev, "lvds port does not have any children\n");
+> +		ret  = -EINVAL;
+
+Double space on "ret  =", except this, looks good for me.
+Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
+
+> +		goto err_put_port;
+> +	} else if (ret) {
+>   		DRM_DEV_ERROR(dev, "failed to find panel and bridge node\n");
+>   		ret  = -EPROBE_DEFER;
+>   		goto err_put_port;
+
+
+-- 
+Ｍark Yao
+
+
+--------------C5813E38BD1EAE2335E1ED3E
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+    <div class="moz-cite-prefix">On 2017年09月21日 08:13, Sean Paul wrote:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:20170921001408.1839-1-seanpaul@chromium.org">
+      <pre wrap="">If there are no children for lvds, ret is used uninitialized. This patch
+initializes ret and returns an error if the port has no children.
+
+Fixes: 34cc0aa25456 ("drm/rockchip: Add support for Rockchip Soc LVDS")
+Cc: Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a>
+Cc: Heiko Stuebner <a class="moz-txt-link-rfc2396E" href="mailto:heiko@sntech.de">&lt;heiko@sntech.de&gt;</a>
+Cc: Sandy Huang <a class="moz-txt-link-rfc2396E" href="mailto:hjc@rock-chips.com">&lt;hjc@rock-chips.com&gt;</a>
+Cc: <a class="moz-txt-link-abbreviated" href="mailto:dri-devel@lists.freedesktop.org">dri-devel@lists.freedesktop.org</a>
+Cc: <a class="moz-txt-link-abbreviated" href="mailto:linux-arm-kernel@lists.infradead.org">linux-arm-kernel@lists.infradead.org</a>
+Cc: <a class="moz-txt-link-abbreviated" href="mailto:linux-rockchip@lists.infradead.org">linux-rockchip@lists.infradead.org</a>
+Signed-off-by: Sean Paul <a class="moz-txt-link-rfc2396E" href="mailto:seanpaul@chromium.org">&lt;seanpaul@chromium.org&gt;</a>
+---
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index c5fbe533796c..0ce6205d8d80 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -346,7 +346,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+ 	struct drm_connector *connector;
+ 	struct device_node *remote = NULL;
+ 	struct device_node  *port, *endpoint;
+-	int ret;
++	int ret = 0, child_count = 0;
+ 	const char *name;
+ 	u32 endpoint_id;
+ 
+@@ -358,13 +358,18 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+ 		return -EINVAL;
+ 	}
+ 	for_each_child_of_node(port, endpoint) {
++		child_count++;
+ 		of_property_read_u32(endpoint, "reg", &amp;endpoint_id);
+ 		ret = drm_of_find_panel_or_bridge(dev-&gt;of_node, 1, endpoint_id,
+ 						  &amp;lvds-&gt;panel, &amp;lvds-&gt;bridge);
+ 		if (!ret)
+ 			break;
+ 	}
+-	if (ret) {
++	if (!child_count) {
++		DRM_DEV_ERROR(dev, "lvds port does not have any children\n");
++		ret  = -EINVAL;</pre>
+    </blockquote>
+    <br>
+    Double space on "ret  =",  <span style="color: rgb(51, 51, 51);
+      font-family: arial; font-size: 18px; font-style: normal;
+      font-variant-ligatures: normal; font-variant-caps: normal;
+      font-weight: normal; letter-spacing: normal; orphans: 2;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; background-color: rgb(255, 255,
+      255); text-decoration-style: initial; text-decoration-color:
+      initial; display: inline !important; float: none;">except this,
+      looks good for me.<br>
+      Reviewed-by: Mark Yao <a class="moz-txt-link-rfc2396E" href="mailto:mark.yao@rock-chips.com">&lt;mark.yao@rock-chips.com&gt;</a><br>
+    </span><br>
+    <blockquote type="cite"
+      cite="mid:20170921001408.1839-1-seanpaul@chromium.org">
+      <pre wrap="">
++		goto err_put_port;
++	} else if (ret) {
+ 		DRM_DEV_ERROR(dev, "failed to find panel and bridge node\n");
+ 		ret  = -EPROBE_DEFER;
+ 		goto err_put_port;
+</pre>
+    </blockquote>
+    <p><br>
+    </p>
+    <pre class="moz-signature" cols="999999">-- 
+Ｍark Yao</pre>
+  </body>
+</html>
+
+--------------C5813E38BD1EAE2335E1ED3E--
+
+
+--===============1183353059==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============1183353059==--
