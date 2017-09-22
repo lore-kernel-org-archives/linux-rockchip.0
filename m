@@ -1,45 +1,189 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 0/4] phy: rockchip-typec: Set "flip" properly; some
- cleanups; fix swing
-Date: Fri, 22 Sep 2017 09:45:11 -0700
-Message-ID: <CAD=FV=W3fHjMjBHqmAT=S47QHzNemXKPtOE9NJ8QhW=otvdXAw@mail.gmail.com>
-References: <20170919195630.18747-1-dianders@chromium.org> <9d892f99-d48d-b034-8f50-2719ef07d0b1@ti.com>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v3 1/4] phy: rockchip-typec: Set the AUX channel flip state
+ earlier
+Date: Fri, 22 Sep 2017 09:44:03 -0700
+Message-ID: <20170922164406.27606-2-dianders@chromium.org>
+References: <20170922164406.27606-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9d892f99-d48d-b034-8f50-2719ef07d0b1@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Chris <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, Shawn Nematbakhsh <shawnn@chromium.org>, David Schneider <dnschneid@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170922164406.27606-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: shawnn-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dnschneid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Kishon,
+On some DP monitors we found that setting the wrong flip state on the
+AUX channel could cause the monitor to stop asserting HotPlug Detect
+(HPD).  Setting the right flip state caused these monitors to start
+asserting HotPlug Detect again.
 
-On Thu, Sep 21, 2017 at 3:36 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> Hi Douglas,
->
-> On Wednesday 20 September 2017 01:26 AM, Douglas Anderson wrote:
->> When connecting to certain DP monitors it was observed that only one
->> of the two orientations of the type C to DP cable would work.
->> Debugging showed that the problem was that we needed to set the type C
->> "flip" state earlier.  Once we did this, problems went away.
->>
->> While trying to dig into this problem and some others, I found that
->> the proper documentation for the Type C PHY was available to me.  This
->> allowed me to cleanup the magic numbers in the funtion that I was
->> touching and also fix a few minor issues that (luckily) haven't caused
->> any problems yet.
->>
->> I also found that aux channel communications were flaky on some
->> adapters until I adjusted the voltage swing.
->
-> From the commit log, looks like only the 1st and 4th patch are fixes. Only
-> those can go in -rc cycle. But I can't apply the 4th patch without the 2nd and
-> 3rd patch.
->
-> Can you resend the series such that 2nd and 3rd patch apply on top of 1st and
-> 4th patch?
+Here's what we believe was happening:
+* We'd plug in the monitor and we'd see HPD assert
+* We'd quickly see HPD deassert
+* The kernel would try to init the type C PHY but would init it in USB
+  mode (because there was a peripheral there but no HPD)
+* Because the kernel never set the flip mode properly we'd never see
+  the HPD come back.
 
-Good point.  Done.  You should have just received v3 of the series.  :)
+With this change, we'll still see HPD disappear (we don't think
+there's anything we can do about that), but then it will come back.
 
--Doug
+Overall we can say that it's sane to set the AUX channel flip state
+even when HPD is not asserted.
+
+NOTE: to make this change possible, I needed to do a bit of cleanup to
+the tcphy_dp_aux_calibration() function so that it doesn't ever
+clobber the FLIP state.  This made it very obvious that a line of code
+documented as "setting bit 12" also did a bunch of other magic,
+undocumented stuff.  For now I'll just break out the bits and add a
+comment that this is black magic and we'll try to document
+tcphy_dp_aux_calibration() better in a future CL.
+
+ALSO NOTE: the old function used to write a bunch of hardcoded
+values in _some_ cases instead of doing a read-modify-write.  One
+could possibly assert that these could have had (beneficial) side
+effects and thus with this new code (which always does
+read-modify-write) we could have a bug.  We shouldn't need to worry,
+though, since in the old code tcphy_dp_aux_calibration() was always
+called following the de-assertion of "reset" the the type C PHY.
+...so the type C PHY was always in default state.  TX_ANA_CTRL_REG_1
+is documented to be 0x0 after reset.  This was also confirmed by
+printk.
+
+Suggested-by: Shawn Nematbakhsh <shawnn-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+
+Changes in v3: None
+Changes in v2: None
+
+ drivers/phy/rockchip/phy-rockchip-typec.c | 62 +++++++++++++++++++++----------
+ 1 file changed, 42 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index 4d2c57f21d76..342a77733207 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -443,14 +443,34 @@ static inline int property_enable(struct rockchip_typec_phy *tcphy,
+ 	return regmap_write(tcphy->grf_regs, reg->offset, val | mask);
+ }
+ 
++static void tcphy_dp_aux_set_flip(struct rockchip_typec_phy *tcphy)
++{
++	u16 tx_ana_ctrl_reg_1;
++
++	/*
++	 * Select the polarity of the xcvr:
++	 * 1, Reverses the polarity (If TYPEC, Pulls ups aux_p and pull
++	 * down aux_m)
++	 * 0, Normal polarity (if TYPEC, pulls up aux_m and pulls down
++	 * aux_p)
++	 */
++	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
++	if (!tcphy->flip)
++		tx_ana_ctrl_reg_1 |= BIT(12);
++	else
++		tx_ana_ctrl_reg_1 &= ~BIT(12);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
++}
++
+ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ {
++	u16 tx_ana_ctrl_reg_1;
+ 	u16 rdata, rdata2, val;
+ 
+ 	/* disable txda_cal_latch_en for rewrite the calibration values */
+-	rdata = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+-	val = rdata & 0xdfff;
+-	writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 &= ~BIT(13);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+ 
+ 	/*
+ 	 * read a resistor calibration code from CMN_TXPUCAL_CTRL[6:0] and
+@@ -472,9 +492,8 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 	 * Activate this signal for 1 clock cycle to sample new calibration
+ 	 * values.
+ 	 */
+-	rdata = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+-	val = rdata | 0x2000;
+-	writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 |= BIT(13);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+ 	usleep_range(150, 200);
+ 
+ 	/* set TX Voltage Level and TX Deemphasis to 0 */
+@@ -482,8 +501,10 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 	/* re-enable decap */
+ 	writel(0x100, tcphy->base + TX_ANA_CTRL_REG_2);
+ 	writel(0x300, tcphy->base + TX_ANA_CTRL_REG_2);
+-	writel(0x2008, tcphy->base + TX_ANA_CTRL_REG_1);
+-	writel(0x2018, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 |= BIT(3);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 |= BIT(4);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+ 
+ 	writel(0, tcphy->base + TX_ANA_CTRL_REG_5);
+ 
+@@ -494,8 +515,10 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 	writel(0x1001, tcphy->base + TX_ANA_CTRL_REG_4);
+ 
+ 	/* re-enables Bandgap reference for LDO */
+-	writel(0x2098, tcphy->base + TX_ANA_CTRL_REG_1);
+-	writel(0x2198, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 |= BIT(7);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 |= BIT(8);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+ 
+ 	/*
+ 	 * re-enables the transmitter pre-driver, driver data selection MUX,
+@@ -505,17 +528,15 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 	writel(0x303, tcphy->base + TX_ANA_CTRL_REG_2);
+ 
+ 	/*
+-	 * BIT 12: Controls auxda_polarity, which selects the polarity of the
+-	 * xcvr:
+-	 * 1, Reverses the polarity (If TYPEC, Pulls ups aux_p and pull
+-	 * down aux_m)
+-	 * 0, Normal polarity (if TYPE_C, pulls up aux_m and pulls down
+-	 * aux_p)
++	 * Do some magic undocumented stuff, some of which appears to
++	 * undo the "re-enables Bandgap reference for LDO" above.
+ 	 */
+-	val = 0xa078;
+-	if (!tcphy->flip)
+-		val |= BIT(12);
+-	writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 |=  BIT(15);
++	tx_ana_ctrl_reg_1 &= ~BIT(8);
++	tx_ana_ctrl_reg_1 &= ~BIT(7);
++	tx_ana_ctrl_reg_1 |=  BIT(6);
++	tx_ana_ctrl_reg_1 |=  BIT(5);
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+ 
+ 	writel(0, tcphy->base + TX_ANA_CTRL_REG_3);
+ 	writel(0, tcphy->base + TX_ANA_CTRL_REG_4);
+@@ -555,6 +576,7 @@ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+ 	reset_control_deassert(tcphy->tcphy_rst);
+ 
+ 	property_enable(tcphy, &cfg->typec_conn_dir, tcphy->flip);
++	tcphy_dp_aux_set_flip(tcphy);
+ 
+ 	tcphy_cfg_24m(tcphy);
+ 
+-- 
+2.14.1.821.g8fa685d3b7-goog
