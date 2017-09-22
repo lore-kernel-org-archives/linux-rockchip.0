@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 2/4] phy: rockchip-typec: Don't set the aux voltage swing to 400 mV
-Date: Fri, 22 Sep 2017 09:44:04 -0700
-Message-ID: <20170922164406.27606-3-dianders@chromium.org>
+Subject: [PATCH v3 4/4] phy: rockchip-typec: Do the calibration more correctly
+Date: Fri, 22 Sep 2017 09:44:06 -0700
+Message-ID: <20170922164406.27606-5-dianders@chromium.org>
 References: <20170922164406.27606-1-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20170922164406.27606-1-dianders@chromium.org>
@@ -10,101 +10,72 @@ To: kishon@ti.com, heiko@sntech.de, zyw@rock-chips.com
 Cc: groeck@chromium.org, shawnn@chromium.org, dnschneid@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On rk3399-gru-kevin there are some cases where we're seeing AUX CH
-failures when trying to do DisplayPort over type C.  Problems are
-intermittent and don't reproduce all the time.  Problems are often
-bursty and failures persist for several seconds before going away.
-The failure case I focused on is:
-* A particular type C to HDMI adapter.
-* One orientation (flip mode) of that adapter.
-* Easier to see failures when something is plugged into the _other
-  type C port at the same time.
-* Problems reproduce on both type C ports (left and right side).
+Calculate the calibration code as per the docs.  The docs talk about
+reading and averaging the pullup and pulldown calibration codes.  They
+also talk about adding in some adjustment codes.  Let's do what the
+docs say.
 
-Ironically problems also stop reproducing when I solder wires onto the
-AUX CH signals on a port (even if no scope is connected to the
-signals).  In this case, problems only stop reproducing on the port
-with the wires connected.
+In practice this doesn't seem to matter a whole lot.  On a device I
+tested the pullup and pulldown codes were nearly the same (0x23 and
+0x24) and the adjustment codes were 0.
 
-From the above it appears that something about the signaling on the
-aux channel is marginal and any slight differences can bring us over
-the edge to failure.
-
-It turns out that we can fix our problems by just increasing the
-voltage swing of the AUX CH, giving us a bunch of extra margin.  In DP
-up to version 1.2 the voltage swing on the aux channel was specced as
-.29 V to 1.38 V.  In DP version 1.3 the aux channel voltage was
-tightened to be between .29 V and .40 V, but it clarifies that it
-really only needs the lower voltage when operating at the highest
-speed (HBR3 mode).  So right now we are trying to use a voltage that
-technically should be valid for all versions of the spec (including
-version 1.3 when transmitting at HBR3).  That would be great to do if
-it worked reliably.  ...but it doesn't seem to.
-
-It turns out that if you continue to read through the DP part of the
-rk3399 TRM and other parts of the type C PHY spec you'll find out that
-while the rk3399 does support DP 1.3, it doesn't support HBR3.  The
-docs specifically say "RBR, HBR and HBR2 data rates only".  Thus there
-is actually no requirement to support an AUX CH swing of .4 V.
-
-Even if there is no actual requirement to support the tighter voltage
-swing, one could possibly argue that we should support it anyway.  The
-DP spec clarifies that the lower voltage on the AUX CH will reduce
-cross talk in some cases and that seems like it could be beneficial
-even at the lower bit rates.  At the moment, though, we are seeing
-problems with the AUX CH and not on the other lines.  Also, checking
-another known working and similar laptop shows that the other laptop
-runs the AUX channel at a higher voltage.
-
-Other notes:
-* Looking at measurements done on the AUX CH we weren't actually
-  compliant with the DP 1.3 spec anyway.  AUX CH peek-to-peek voltage
-  was measured on rk3399-gru-kevin as .466 V which is > .4 V.
-* With this new patch the AUX channel isn't actually 1.0 V, but it has
-  been confirmed that the signal is better and has more margin.  Eye
-  diagram passes.
-* If someone were truly an expert in the Type C PHY and in DisplayPort
-  signaling they might be able to make things work and keep the
-  voltage at < .4 V.  The Type C PHY seems to have a plethora of
-  tuning knobs that could almost certainly improve the signal
-  integrity.  Some of these things (like enabling tx_fcm_full_margin)
-  even seem to fix my problems.  However, lacking expertise I can't
-  say whether this is a better or worse solution.  Tightening signals
-  to give cleaner waveforms can often have adverse affects, like
-  increasing EMI or adding noise to other signals.  I'd rather not
-  tune things like this without a healthy application of expertise
-  that I don't have.
-
+Reviewed-by: Chris Zhong <zyw@rock-chips.com>
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
-Changes in v3:
-- Voltage swing patch now patch 2.
-
+Changes in v3: None
 Changes in v2:
-- Voltage swing patch new for v2.
+- Removed extra blank line.
 
- drivers/phy/rockchip/phy-rockchip-typec.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-typec.c | 27 ++++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 342a77733207..b25c00432f9b 100644
+index 95f8f23676b4..a96635447d48 100644
 --- a/drivers/phy/rockchip/phy-rockchip-typec.c
 +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -543,10 +543,11 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- 	writel(0, tcphy->base + TX_ANA_CTRL_REG_5);
+@@ -560,24 +560,33 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 	u16 val;
+ 	u16 tx_ana_ctrl_reg_1;
+ 	u16 tx_ana_ctrl_reg_2;
+-	s32 pu_calib_code;
+-
+-	/* disable txda_cal_latch_en for rewrite the calibration values */
+-	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+-	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
+-	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
++	s32 pu_calib_code, pd_calib_code;
++	s32 pu_adj, pd_adj;
++	u16 calib;
  
  	/*
--	 * Controls low_power_swing_en, set the voltage swing of the driver
--	 * to 400mv. The values	below are peak to peak (differential) values.
-+	 * Controls low_power_swing_en, don't set the voltage swing of the
-+	 * driver to 400mv. The values below are peak to peak (differential)
-+	 * values.
+-	 * read a resistor calibration code from CMN_TXPUCAL_CTRL[5:0] and
+-	 * write it to TX_DIG_CTRL_REG_2[5:0].
++	 * Calculate calibration code as per docs: use an average of the
++	 * pull down and pull up.  Then add in adjustments.
  	 */
--	writel(4, tcphy->base + TXDA_COEFF_CALC_CTRL);
-+	writel(0, tcphy->base + TXDA_COEFF_CALC_CTRL);
- 	writel(0, tcphy->base + TXDA_CYA_AUXDA_CYA);
+ 	val = readl(tcphy->base + CMN_TXPUCAL_CTRL);
+ 	pu_calib_code = CMN_CALIB_CODE_POS(val);
++	val = readl(tcphy->base + CMN_TXPDCAL_CTRL);
++	pd_calib_code = CMN_CALIB_CODE_POS(val);
++	val = readl(tcphy->base + CMN_TXPU_ADJ_CTRL);
++	pu_adj = CMN_CALIB_CODE(val);
++	val = readl(tcphy->base + CMN_TXPD_ADJ_CTRL);
++	pd_adj = CMN_CALIB_CODE(val);
++	calib = (pu_calib_code + pd_calib_code) / 2 + pu_adj + pd_adj;
++
++	/* disable txda_cal_latch_en for rewrite the calibration values */
++	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
++	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
++	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
  
- 	/* Controls tx_high_z_tm_en */
+ 	/* write the calibration, then delay 10 ms as sample in docs */
+ 	val = readl(tcphy->base + TX_DIG_CTRL_REG_2);
+ 	val &= ~(TX_RESCAL_CODE_MASK << TX_RESCAL_CODE_OFFSET);
+-	val |= pu_calib_code << TX_RESCAL_CODE_OFFSET;
++	val |= calib << TX_RESCAL_CODE_OFFSET;
+ 	writel(val, tcphy->base + TX_DIG_CTRL_REG_2);
+ 	usleep_range(10000, 10050);
+ 
 -- 
 2.14.1.821.g8fa685d3b7-goog
