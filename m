@@ -1,81 +1,45 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 4/4] phy: rockchip-typec: Do the calibration more correctly
-Date: Fri, 22 Sep 2017 09:44:06 -0700
-Message-ID: <20170922164406.27606-5-dianders@chromium.org>
-References: <20170922164406.27606-1-dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 0/4] phy: rockchip-typec: Set "flip" properly; some
+ cleanups; fix swing
+Date: Fri, 22 Sep 2017 09:45:11 -0700
+Message-ID: <CAD=FV=W3fHjMjBHqmAT=S47QHzNemXKPtOE9NJ8QhW=otvdXAw@mail.gmail.com>
+References: <20170919195630.18747-1-dianders@chromium.org> <9d892f99-d48d-b034-8f50-2719ef07d0b1@ti.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170922164406.27606-1-dianders@chromium.org>
+In-Reply-To: <9d892f99-d48d-b034-8f50-2719ef07d0b1@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com, heiko@sntech.de, zyw@rock-chips.com
-Cc: groeck@chromium.org, shawnn@chromium.org, dnschneid@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Chris <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, Shawn Nematbakhsh <shawnn@chromium.org>, David Schneider <dnschneid@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Calculate the calibration code as per the docs.  The docs talk about
-reading and averaging the pullup and pulldown calibration codes.  They
-also talk about adding in some adjustment codes.  Let's do what the
-docs say.
+Kishon,
 
-In practice this doesn't seem to matter a whole lot.  On a device I
-tested the pullup and pulldown codes were nearly the same (0x23 and
-0x24) and the adjustment codes were 0.
+On Thu, Sep 21, 2017 at 3:36 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
+> Hi Douglas,
+>
+> On Wednesday 20 September 2017 01:26 AM, Douglas Anderson wrote:
+>> When connecting to certain DP monitors it was observed that only one
+>> of the two orientations of the type C to DP cable would work.
+>> Debugging showed that the problem was that we needed to set the type C
+>> "flip" state earlier.  Once we did this, problems went away.
+>>
+>> While trying to dig into this problem and some others, I found that
+>> the proper documentation for the Type C PHY was available to me.  This
+>> allowed me to cleanup the magic numbers in the funtion that I was
+>> touching and also fix a few minor issues that (luckily) haven't caused
+>> any problems yet.
+>>
+>> I also found that aux channel communications were flaky on some
+>> adapters until I adjusted the voltage swing.
+>
+> From the commit log, looks like only the 1st and 4th patch are fixes. Only
+> those can go in -rc cycle. But I can't apply the 4th patch without the 2nd and
+> 3rd patch.
+>
+> Can you resend the series such that 2nd and 3rd patch apply on top of 1st and
+> 4th patch?
 
-Reviewed-by: Chris Zhong <zyw@rock-chips.com>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Good point.  Done.  You should have just received v3 of the series.  :)
 
-Changes in v3: None
-Changes in v2:
-- Removed extra blank line.
-
- drivers/phy/rockchip/phy-rockchip-typec.c | 27 ++++++++++++++++++---------
- 1 file changed, 18 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 95f8f23676b4..a96635447d48 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -560,24 +560,33 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- 	u16 val;
- 	u16 tx_ana_ctrl_reg_1;
- 	u16 tx_ana_ctrl_reg_2;
--	s32 pu_calib_code;
--
--	/* disable txda_cal_latch_en for rewrite the calibration values */
--	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
--	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
--	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
-+	s32 pu_calib_code, pd_calib_code;
-+	s32 pu_adj, pd_adj;
-+	u16 calib;
- 
- 	/*
--	 * read a resistor calibration code from CMN_TXPUCAL_CTRL[5:0] and
--	 * write it to TX_DIG_CTRL_REG_2[5:0].
-+	 * Calculate calibration code as per docs: use an average of the
-+	 * pull down and pull up.  Then add in adjustments.
- 	 */
- 	val = readl(tcphy->base + CMN_TXPUCAL_CTRL);
- 	pu_calib_code = CMN_CALIB_CODE_POS(val);
-+	val = readl(tcphy->base + CMN_TXPDCAL_CTRL);
-+	pd_calib_code = CMN_CALIB_CODE_POS(val);
-+	val = readl(tcphy->base + CMN_TXPU_ADJ_CTRL);
-+	pu_adj = CMN_CALIB_CODE(val);
-+	val = readl(tcphy->base + CMN_TXPD_ADJ_CTRL);
-+	pd_adj = CMN_CALIB_CODE(val);
-+	calib = (pu_calib_code + pd_calib_code) / 2 + pu_adj + pd_adj;
-+
-+	/* disable txda_cal_latch_en for rewrite the calibration values */
-+	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
- 
- 	/* write the calibration, then delay 10 ms as sample in docs */
- 	val = readl(tcphy->base + TX_DIG_CTRL_REG_2);
- 	val &= ~(TX_RESCAL_CODE_MASK << TX_RESCAL_CODE_OFFSET);
--	val |= pu_calib_code << TX_RESCAL_CODE_OFFSET;
-+	val |= calib << TX_RESCAL_CODE_OFFSET;
- 	writel(val, tcphy->base + TX_DIG_CTRL_REG_2);
- 	usleep_range(10000, 10050);
- 
--- 
-2.14.1.821.g8fa685d3b7-goog
+-Doug
