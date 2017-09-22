@@ -1,189 +1,116 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v3 1/4] phy: rockchip-typec: Set the AUX channel flip state
- earlier
-Date: Fri, 22 Sep 2017 09:44:03 -0700
-Message-ID: <20170922164406.27606-2-dianders@chromium.org>
-References: <20170922164406.27606-1-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 1/7] drm/rockchip/dsi: correct Feedback divider setting
+Date: Fri, 22 Sep 2017 15:57:45 -0700
+Message-ID: <20170922225745.GJ173745@google.com>
+References: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20170922164406.27606-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: kishon-l0cyMroinI0@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: shawnn-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dnschneid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1505725539-6309-1-git-send-email-nickey.yang@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.rutland@arm.com, bivvy.bi@rock-chips.com, hl@rock-chips.com, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, zyw@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On some DP monitors we found that setting the wrong flip state on the
-AUX channel could cause the monitor to stop asserting HotPlug Detect
-(HPD).  Setting the right flip state caused these monitors to start
-asserting HotPlug Detect again.
-
-Here's what we believe was happening:
-* We'd plug in the monitor and we'd see HPD assert
-* We'd quickly see HPD deassert
-* The kernel would try to init the type C PHY but would init it in USB
-  mode (because there was a peripheral there but no HPD)
-* Because the kernel never set the flip mode properly we'd never see
-  the HPD come back.
-
-With this change, we'll still see HPD disappear (we don't think
-there's anything we can do about that), but then it will come back.
-
-Overall we can say that it's sane to set the AUX channel flip state
-even when HPD is not asserted.
-
-NOTE: to make this change possible, I needed to do a bit of cleanup to
-the tcphy_dp_aux_calibration() function so that it doesn't ever
-clobber the FLIP state.  This made it very obvious that a line of code
-documented as "setting bit 12" also did a bunch of other magic,
-undocumented stuff.  For now I'll just break out the bits and add a
-comment that this is black magic and we'll try to document
-tcphy_dp_aux_calibration() better in a future CL.
-
-ALSO NOTE: the old function used to write a bunch of hardcoded
-values in _some_ cases instead of doing a read-modify-write.  One
-could possibly assert that these could have had (beneficial) side
-effects and thus with this new code (which always does
-read-modify-write) we could have a bug.  We shouldn't need to worry,
-though, since in the old code tcphy_dp_aux_calibration() was always
-called following the de-assertion of "reset" the the type C PHY.
-...so the type C PHY was always in default state.  TX_ANA_CTRL_REG_1
-is documented to be 0x0 after reset.  This was also confirmed by
-printk.
-
-Suggested-by: Shawn Nematbakhsh <shawnn-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Reviewed-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-
-Changes in v3: None
-Changes in v2: None
-
- drivers/phy/rockchip/phy-rockchip-typec.c | 62 +++++++++++++++++++++----------
- 1 file changed, 42 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 4d2c57f21d76..342a77733207 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -443,14 +443,34 @@ static inline int property_enable(struct rockchip_typec_phy *tcphy,
- 	return regmap_write(tcphy->grf_regs, reg->offset, val | mask);
- }
- 
-+static void tcphy_dp_aux_set_flip(struct rockchip_typec_phy *tcphy)
-+{
-+	u16 tx_ana_ctrl_reg_1;
-+
-+	/*
-+	 * Select the polarity of the xcvr:
-+	 * 1, Reverses the polarity (If TYPEC, Pulls ups aux_p and pull
-+	 * down aux_m)
-+	 * 0, Normal polarity (if TYPEC, pulls up aux_m and pulls down
-+	 * aux_p)
-+	 */
-+	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
-+	if (!tcphy->flip)
-+		tx_ana_ctrl_reg_1 |= BIT(12);
-+	else
-+		tx_ana_ctrl_reg_1 &= ~BIT(12);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
-+}
-+
- static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- {
-+	u16 tx_ana_ctrl_reg_1;
- 	u16 rdata, rdata2, val;
- 
- 	/* disable txda_cal_latch_en for rewrite the calibration values */
--	rdata = readl(tcphy->base + TX_ANA_CTRL_REG_1);
--	val = rdata & 0xdfff;
--	writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 &= ~BIT(13);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
- 
- 	/*
- 	 * read a resistor calibration code from CMN_TXPUCAL_CTRL[6:0] and
-@@ -472,9 +492,8 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- 	 * Activate this signal for 1 clock cycle to sample new calibration
- 	 * values.
- 	 */
--	rdata = readl(tcphy->base + TX_ANA_CTRL_REG_1);
--	val = rdata | 0x2000;
--	writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 |= BIT(13);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
- 	usleep_range(150, 200);
- 
- 	/* set TX Voltage Level and TX Deemphasis to 0 */
-@@ -482,8 +501,10 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- 	/* re-enable decap */
- 	writel(0x100, tcphy->base + TX_ANA_CTRL_REG_2);
- 	writel(0x300, tcphy->base + TX_ANA_CTRL_REG_2);
--	writel(0x2008, tcphy->base + TX_ANA_CTRL_REG_1);
--	writel(0x2018, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 |= BIT(3);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 |= BIT(4);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
- 
- 	writel(0, tcphy->base + TX_ANA_CTRL_REG_5);
- 
-@@ -494,8 +515,10 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- 	writel(0x1001, tcphy->base + TX_ANA_CTRL_REG_4);
- 
- 	/* re-enables Bandgap reference for LDO */
--	writel(0x2098, tcphy->base + TX_ANA_CTRL_REG_1);
--	writel(0x2198, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 |= BIT(7);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 |= BIT(8);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
- 
- 	/*
- 	 * re-enables the transmitter pre-driver, driver data selection MUX,
-@@ -505,17 +528,15 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
- 	writel(0x303, tcphy->base + TX_ANA_CTRL_REG_2);
- 
- 	/*
--	 * BIT 12: Controls auxda_polarity, which selects the polarity of the
--	 * xcvr:
--	 * 1, Reverses the polarity (If TYPEC, Pulls ups aux_p and pull
--	 * down aux_m)
--	 * 0, Normal polarity (if TYPE_C, pulls up aux_m and pulls down
--	 * aux_p)
-+	 * Do some magic undocumented stuff, some of which appears to
-+	 * undo the "re-enables Bandgap reference for LDO" above.
- 	 */
--	val = 0xa078;
--	if (!tcphy->flip)
--		val |= BIT(12);
--	writel(val, tcphy->base + TX_ANA_CTRL_REG_1);
-+	tx_ana_ctrl_reg_1 |=  BIT(15);
-+	tx_ana_ctrl_reg_1 &= ~BIT(8);
-+	tx_ana_ctrl_reg_1 &= ~BIT(7);
-+	tx_ana_ctrl_reg_1 |=  BIT(6);
-+	tx_ana_ctrl_reg_1 |=  BIT(5);
-+	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
- 
- 	writel(0, tcphy->base + TX_ANA_CTRL_REG_3);
- 	writel(0, tcphy->base + TX_ANA_CTRL_REG_4);
-@@ -555,6 +576,7 @@ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
- 	reset_control_deassert(tcphy->tcphy_rst);
- 
- 	property_enable(tcphy, &cfg->typec_conn_dir, tcphy->flip);
-+	tcphy_dp_aux_set_flip(tcphy);
- 
- 	tcphy_cfg_24m(tcphy);
- 
--- 
-2.14.1.821.g8fa685d3b7-goog
+SGkgTmlja2V5LAoKRWwgTW9uLCBTZXAgMTgsIDIwMTcgYXQgMDU6MDU6MzNQTSArMDgwMCBOaWNr
+ZXkgWWFuZyBoYSBkaXQ6Cgo+IFRoaXMgcGF0Y2ggY29ycmVjdCBGZWVkYmFjayBkaXZpZGVyIHNl
+dHRpbmc6Cj4gMeOAgVNldCBGZWVkYmFjayBkaXZpZGVyIFs4OjVdIHdoZW4gSElHSF9QUk9HUkFN
+X0VOCj4gMuOAgUR1ZSB0byB0aGUgdXNlIG9mIGEgImJ5IDIgcHJlLXNjYWxlciwiIHRoZSByYW5n
+ZSBvZiB0aGUKPiBmZWVkYmFjayBtdWx0aXBsaWNhdGlvbiBGZWVkYmFjayBkaXZpZGVyIGlzIGxp
+bWl0ZWQgdG8gZXZlbgo+IGRpdmlzaW9uIG51bWJlcnMsIGFuZCBGZWVkYmFjayBkaXZpZGVyIG11
+c3QgYmUgZ3JlYXRlciB0aGFuCj4gMTIsIGxlc3MgdGhhbiAxMDAwLgo+IDPjgIFNYWtlIHRoZSBw
+cmV2aW91c2x5IGNvbmZpZ3VyZWQgRmVlZGJhY2sgZGl2aWRlcihMU0IpCj4gZmFjdG9ycyBlZmZl
+Y3RpdmUKPiAKPiBTaWduZWQtb2ZmLWJ5OiBOaWNrZXkgWWFuZyA8bmlja2V5LnlhbmdAcm9jay1j
+aGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5j
+IHwgODMgKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdl
+ZCwgNTQgaW5zZXJ0aW9ucygrKSwgMjkgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2R3LW1pcGktZHNpLmMKPiBpbmRleCA5YTIwYjlkLi41MjY5OGI3IDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiBAQCAtMjI4LDcgKzIyOCw3IEBACj4g
+ICNkZWZpbmUgTE9XX1BST0dSQU1fRU4JCTAKPiAgI2RlZmluZSBISUdIX1BST0dSQU1fRU4JCUJJ
+VCg3KQo+ICAjZGVmaW5lIExPT1BfRElWX0xPV19TRUwodmFsKQkoKCh2YWwpIC0gMSkgJiAweDFm
+KQo+IC0jZGVmaW5lIExPT1BfRElWX0hJR0hfU0VMKHZhbCkJKCgoKHZhbCkgLSAxKSA+PiA1KSAm
+IDB4MWYpCj4gKyNkZWZpbmUgTE9PUF9ESVZfSElHSF9TRUwodmFsKQkoKCgodmFsKSAtIDEpID4+
+IDUpICYgMHhmKQo+ICAjZGVmaW5lIFBMTF9MT09QX0RJVl9FTgkJQklUKDUpCj4gICNkZWZpbmUg
+UExMX0lOUFVUX0RJVl9FTglCSVQoNCkKPiAgCj4gQEAgLTQ2MSw2ICs0NjEsNyBAQCBzdGF0aWMg
+aW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAJZHdf
+bWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxNywgSU5QVVRfRElWSURFUihkc2ktPmlucHV0X2Rp
+dikpOwo+ICAJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxOCwgTE9PUF9ESVZfTE9XX1NF
+TChkc2ktPmZlZWRiYWNrX2RpdikgfAo+ICAJCQkJCSBMT1dfUFJPR1JBTV9FTik7Cj4gKwlkd19t
+aXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE5LCBQTExfTE9PUF9ESVZfRU4gfCBQTExfSU5QVVRf
+RElWX0VOKTsKPiAgCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4MTgsIExPT1BfRElWX0hJ
+R0hfU0VMKGRzaS0+ZmVlZGJhY2tfZGl2KSB8Cj4gIAkJCQkJIEhJR0hfUFJPR1JBTV9FTik7Cj4g
+IAlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDE5LCBQTExfTE9PUF9ESVZfRU4gfCBQTExf
+SU5QVVRfRElWX0VOKTsKPiBAQCAtNTIxLDExICs1MjIsMTYgQEAgc3RhdGljIGludCBkd19taXBp
+X2RzaV9waHlfaW5pdChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgc3RhdGljIGludCBkd19t
+aXBpX2RzaV9nZXRfbGFuZV9icHMoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gIAkJCQkgICAg
+c3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gIHsKPiAtCXVuc2lnbmVkIGludCBpLCBw
+cmU7Cj4gLQl1bnNpZ25lZCBsb25nIG1wY2xrLCBwbGxyZWYsIHRtcDsKPiAtCXVuc2lnbmVkIGlu
+dCBtID0gMSwgbiA9IDEsIHRhcmdldF9tYnBzID0gMTAwMDsKPiArCXVuc2lnbmVkIGxvbmcgbXBj
+bGssIHRtcDsKPiArCXVuc2lnbmVkIGludCB0YXJnZXRfbWJwcyA9IDEwMDA7Cj4gIAl1bnNpZ25l
+ZCBpbnQgbWF4X21icHMgPSBkcHRkaW5fbWFwW0FSUkFZX1NJWkUoZHB0ZGluX21hcCkgLSAxXS5t
+YXhfbWJwczsKPiAgCWludCBicHA7Cj4gKwl1bnNpZ25lZCBsb25nIGJlc3RfZnJlcSA9IDA7Cj4g
+Kwl1bnNpZ25lZCBsb25nIGZ2Y29fbWluLCBmdmNvX21heCwgZmluICxmb3V0OwoKbml0OiBzaG91
+bGQgYmUgJ2ZpbiwgZm91dCcuCgo+ICsJdW5zaWduZWQgaW50IG1pbl9wcmVkaXYsIG1heF9wcmVk
+aXY7Cj4gKwl1bnNpZ25lZCBpbnQgX3ByZWRpdiwgdW5pbml0aWFsaXplZF92YXIoYmVzdF9wcmVk
+aXYpOwo+ICsJdW5zaWduZWQgbG9uZyBfZmJkaXYsIHVuaW5pdGlhbGl6ZWRfdmFyKGJlc3RfZmJk
+aXYpOwo+ICsJdW5zaWduZWQgbG9uZyBtaW5fZGVsdGEgPSBVSU5UX01BWDsKPiAgCj4gIAlicHAg
+PSBtaXBpX2RzaV9waXhlbF9mb3JtYXRfdG9fYnBwKGRzaS0+Zm9ybWF0KTsKPiAgCWlmIChicHAg
+PCAwKSB7Cj4gQEAgLTU0NCwzNCArNTUwLDUzIEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2V0
+X2xhbmVfYnBzKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICAJCQlkZXZfZXJyKGRzaS0+ZGV2
+LCAiRFBIWSBjbG9jayBmcmVxdWVuY3kgaXMgb3V0IG9mIHJhbmdlXG4iKTsKPiAgCX0KPiAgCj4g
+LQlwbGxyZWYgPSBESVZfUk9VTkRfVVAoY2xrX2dldF9yYXRlKGRzaS0+cGxscmVmX2NsayksIFVT
+RUNfUEVSX1NFQyk7Cj4gLQl0bXAgPSBwbGxyZWY7Cj4gLQo+IC0JLyoKPiAtCSAqIFRoZSBsaW1p
+dHMgb24gdGhlIFBMTCBkaXZpc29yIGFyZToKPiAtCSAqCj4gLQkgKgk1TUh6IDw9IChwbGxyZWYg
+LyBuKSA8PSA0ME1Iego+IC0JICoKPiAtCSAqIHdlIHdhbGsgb3ZlciB0aGVzZSB2YWx1ZXMgaW4g
+ZGVzY3JlYXNpbmcgb3JkZXIgc28gdGhhdCBpZiB3ZSBoaXQKPiAtCSAqIGFuIGV4YWN0IG1hdGNo
+IGZvciB0YXJnZXRfbWJwcyBpdCBpcyBtb3JlIGxpa2VseSB0aGF0ICJtIiB3aWxsIGJlCj4gLQkg
+KiBldmVuLgo+IC0JICoKPiAtCSAqIFRPRE86IGVuc3VyZSB0aGF0ICJtIiBpcyBldmVuIGFmdGVy
+IHRoaXMgbG9vcC4KPiAtCSAqLwo+IC0JZm9yIChpID0gcGxscmVmIC8gNTsgaSA+IChwbGxyZWYg
+LyA0MCk7IGktLSkgewo+IC0JCXByZSA9IHBsbHJlZiAvIGk7Cj4gLQkJaWYgKCh0bXAgPiAodGFy
+Z2V0X21icHMgJSBwcmUpKSAmJiAodGFyZ2V0X21icHMgLyBwcmUgPCA1MTIpKSB7Cj4gLQkJCXRt
+cCA9IHRhcmdldF9tYnBzICUgcHJlOwo+IC0JCQluID0gaTsKPiAtCQkJbSA9IHRhcmdldF9tYnBz
+IC8gcHJlOwo+ICsJZmluID0gY2xrX2dldF9yYXRlKGRzaS0+cGxscmVmX2Nsayk7Cj4gKwlmb3V0
+ID0gdGFyZ2V0X21icHMgKiBVU0VDX1BFUl9TRUM7Cj4gKwo+ICsJLyogY29uc3RyYWludDogNU1o
+eiA8IEZyZWYgLyBOIDwgNDBNSHogKi8KCkFjY29yZGluZyB0byB0aGUgcHJldmlvdXMgY29tbWVu
+dCBhYm92ZSBpdCBzaG91bGQgYmUgJzw9JyBpbnN0ZWFkIG9mCic8Jy4KCj4gKwltaW5fcHJlZGl2
+ID0gRElWX1JPVU5EX1VQKGZpbiwgNDAgKiBVU0VDX1BFUl9TRUMpOwo+ICsJbWF4X3ByZWRpdiA9
+IGZpbiAvICg1ICogVVNFQ19QRVJfU0VDKTsKPiArCj4gKwkvKiBjb25zdHJhaW50OiA4ME1IeiA8
+IEZ2Y28gPCAxNTAwTWh6ICovCgpTYW1lIGhlcmUuCgo+ICsJZnZjb19taW4gPSA4MCAqIFVTRUNf
+UEVSX1NFQzsKPiArCWZ2Y29fbWF4ID0gMTUwMCAqIFVTRUNfUEVSX1NFQzsKPiArCj4gKwlmb3Ig
+KF9wcmVkaXYgPSBtaW5fcHJlZGl2OyBfcHJlZGl2IDw9IG1heF9wcmVkaXY7IF9wcmVkaXYrKykg
+ewo+ICsJCXUzMiBkZWx0YTsKPiArCQkvKiBGdmNvID0gRnJlZiAqIE0gLyBOICovCj4gKwkJdG1w
+ID0gZm91dCAqIF9wcmVkaXY7Cj4gKwkJZG9fZGl2KHRtcCwgZmluKTsKPiArCQlfZmJkaXYgPSB0
+bXA7Cj4gKwkJLyoKPiArCQkgKiBEdWUgdG8gdGhlIHVzZSBvZiBhICJieSAyIHByZS1zY2FsZXIs
+IiB0aGUgcmFuZ2Ugb2YgdGhlCj4gKwkJICogZmVlZGJhY2sgbXVsdGlwbGljYXRpb24gdmFsdWUg
+TSBpcyBsaW1pdGVkIHRvIGV2ZW4gZGl2aXNpb24KPiArCQkgKiBudW1iZXJzLCBhbmQgbSBtdXN0
+IGJlIGdyZWF0ZXIgdGhhbiAxMiwgbGVzcyB0aGFuIDEwMDAuCj4gKwkJICovCgpJIGRpZG4ndCBl
+bmNvdW50ZXIgdGhlIHNlY29uZCBwYXJ0IG9mIHRoZSBjb25zdHJhaW50IGluIG15IHZlcnNpb24g
+b2YKdGhlIGRhdGFib29rLCBqdWRnaW5nIGZyb20gdGhlIGNvZGUgYmVsb3cgaXQgc2VlbXMgdGhl
+IGNvbW1lbnQgc2hvdWxkCmJlICIxMiA8PSBtIDw9IDEwMDAiLgoKPiArCQlpZiAoX2ZiZGl2IDwg
+MTIgfHwgX2ZiZGl2ID4gMTAwMCkKPiArCQkJY29udGludWU7Cj4gKwo+ICsJCWlmIChfZmJkaXYg
+JSAyKQo+ICsJCQkrK19mYmRpdjsKPiArCj4gKwkJdG1wID0gKHU2NClfZmJkaXYgKiBmaW47Cj4g
+KwkJZG9fZGl2KHRtcCwgX3ByZWRpdik7Cj4gKwkJaWYgKHRtcCA8IGZ2Y29fbWluIHx8IHRtcCA+
+IGZ2Y29fbWF4KQo+ICsJCQljb250aW51ZTsKPiArCj4gKwkJZGVsdGEgPSBhYnMoZm91dCAtIHRt
+cCk7Cj4gKwkJaWYgKGRlbHRhIDwgbWluX2RlbHRhKSB7Cj4gKwkJCWJlc3RfcHJlZGl2ID0gX3By
+ZWRpdjsKPiArCQkJYmVzdF9mYmRpdiA9IF9mYmRpdjsKPiArCQkJbWluX2RlbHRhID0gZGVsdGE7
+Cj4gKwkJCWJlc3RfZnJlcSA9IHRtcDsKPiAgCQl9Cj4gLQkJaWYgKHRtcCA9PSAwKQo+IC0JCQli
+cmVhazsKPiAgCX0KPiAgCj4gLQlkc2ktPmxhbmVfbWJwcyA9IHBsbHJlZiAvIG4gKiBtOwo+IC0J
+ZHNpLT5pbnB1dF9kaXYgPSBuOwo+IC0JZHNpLT5mZWVkYmFja19kaXYgPSBtOwo+ICsJaWYgKGJl
+c3RfZnJlcSkgewo+ICsJCWRzaS0+bGFuZV9tYnBzID0gRElWX1JPVU5EX1VQKGJlc3RfZnJlcSwg
+VVNFQ19QRVJfU0VDKTsKPiArCQlkc2ktPmlucHV0X2RpdiA9IGJlc3RfcHJlZGl2Owo+ICsJCWRz
+aS0+ZmVlZGJhY2tfZGl2ID0gYmVzdF9mYmRpdjsKPiArCX0KPiAgCj4gIAlyZXR1cm4gMDsKPiAg
+fQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
