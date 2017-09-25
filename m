@@ -1,69 +1,37 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip dts64 Fixes for 4.14
-Date: Mon, 25 Sep 2017 19:17:12 +0200
-Message-ID: <6990785.aOlALvEuSf@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Jagan Teki <jagannadh.teki@gmail.com>
+Subject: [PATCH] ARM: dts: rk3288-vyasa: Enable mali GPU node
+Date: Tue, 26 Sep 2017 00:19:07 +0530
+Message-ID: <1506365347-18655-1-git-send-email-jteki@openedev.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin, Olof,
+From: Jagan Teki <jagan@amarulasolutions.com>
 
-please find below two fixes for 64bit Rockchip devicetrees.
+Enable mali GPU node for rk3288 vyasa board.
 
-As the tag explains the main change is the revert of the rk3368 opp
-addition, as this cannot safely run on current rk3368 boards and thus
-shouldn't make a kernel release.
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ arch/arm/boot/dts/rk3288-vyasa.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-
-Please pull, thanks
-Heiko
-
-
-The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
-
-  Linux 4.14-rc1 (2017-09-16 15:47:51 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-dts64fixes-1
-
-for you to fetch changes up to bb4e6ff01ac356f82327d980e45fee8a65491328:
-
-  arm64: dts: rockchip: Correct MIPI DPHY PLL clock on rk3399 (2017-09-19 19:25:10 +0200)
-
-----------------------------------------------------------------
-Adding the operating points on rk3368 like they were did not end up well
-for the boards as all of them are missing their cpu supplies, the opps
-actually need to follow the <target min max> format as the regulator is
-shared between both clusters and the one rk3368 board I have, somehow also
-doesn't like the higher opps at all - all of which I only realized after
-I brought my rk3368 board online again, after its bootloader broke.
-
-And a fix for the mipi dsi controller on rk3399, which was referencing
-a clock to high up in the clock-tree so that an intermediate gate could
-be disabled inadvertently.
-rk3368-board I have in my farm did not like the h
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      Revert "arm64: dts: rockchip: Add basic cpu frequencies for RK3368"
-
-Nickey Yang (1):
-      arm64: dts: rockchip: Correct MIPI DPHY PLL clock on rk3399
-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 72 +-------------------------------
- arch/arm64/boot/dts/rockchip/rk3399.dtsi |  2 +-
- 2 files changed, 3 insertions(+), 71 deletions(-)
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index 156193b..932311c 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -82,6 +82,11 @@
+ 	cpu0-supply = <&vdd_cpu>;
+ };
+ 
++&gpu {
++	mali-supply = <&vdd_gpu>;
++	status = "okay";
++};
++
+ &hdmi {
+ 	ddc-i2c-bus = <&i2c2>;
+ 	status = "okay";
+-- 
+2.7.4
