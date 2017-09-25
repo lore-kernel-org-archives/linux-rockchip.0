@@ -1,31 +1,36 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip clock Fixes for 4.14
-Date: Mon, 25 Sep 2017 19:13:47 +0200
-Message-ID: <2374267.IN5p8oW94K@phil>
+Subject: [GIT PULL] Rockchip dts64 Fixes for 4.14
+Date: Mon, 25 Sep 2017 19:17:12 +0200
+Message-ID: <6990785.aOlALvEuSf@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Arnd, Kevin, Olof,
 
-please find below some fixes for the rk3128 clock controller that should
-hopefully be suitable for 4.14. The normal stuff some wrong register bits
-and some clocks that need to be critical for safe operation.
+please find below two fixes for 64bit Rockchip devicetrees.
 
-Otherwise from the main boards I test on, it looks like everything
-survived the merge window, so with a bit of luck this might be the only
-fixes for 4.14.
-
-Please pull.
+As the tag explains the main change is the revert of the rk3368 opp
+addition, as this cannot safely run on current rk3368 boards and thus
+shouldn't make a kernel release.
 
 
-Thanks
+Please pull, thanks
 Heiko
+
 
 The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
 
@@ -33,23 +38,32 @@ The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-clkfixes-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-dts64fixes-1
 
-for you to fetch changes up to 00e6751ffc9e6e0651e514961316fd15f0409683:
+for you to fetch changes up to bb4e6ff01ac356f82327d980e45fee8a65491328:
 
-  clk: rockchip: add sclk_timer5 as critical clock on rk3128 (2017-09-17 01:55:36 +0200)
-
-----------------------------------------------------------------
-Some smallish fixes for the rk3128 clock support including
-some register errors and some clocks that should be critical
-for safe usage.
+  arm64: dts: rockchip: Correct MIPI DPHY PLL clock on rk3399 (2017-09-19 19:25:10 +0200)
 
 ----------------------------------------------------------------
-Elaine Zhang (3):
-      clk: rockchip: add pclk_pmu as critical clock on rk3128
-      clk: rockchip: fix up rk3128 pvtm and mipi_24m gate regs error
-      clk: rockchip: add sclk_timer5 as critical clock on rk3128
+Adding the operating points on rk3368 like they were did not end up well
+for the boards as all of them are missing their cpu supplies, the opps
+actually need to follow the <target min max> format as the regulator is
+shared between both clusters and the one rk3368 board I have, somehow also
+doesn't like the higher opps at all - all of which I only realized after
+I brought my rk3368 board online again, after its bootloader broke.
 
- drivers/clk/rockchip/clk-rk3128.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+And a fix for the mipi dsi controller on rk3399, which was referencing
+a clock to high up in the clock-tree so that an intermediate gate could
+be disabled inadvertently.
+rk3368-board I have in my farm did not like the h
 
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      Revert "arm64: dts: rockchip: Add basic cpu frequencies for RK3368"
+
+Nickey Yang (1):
+      arm64: dts: rockchip: Correct MIPI DPHY PLL clock on rk3399
+
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 72 +-------------------------------
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi |  2 +-
+ 2 files changed, 3 insertions(+), 71 deletions(-)
