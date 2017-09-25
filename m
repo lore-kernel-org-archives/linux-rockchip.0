@@ -1,37 +1,50 @@
-From: Jagan Teki <jagannadh.teki@gmail.com>
-Subject: [PATCH] ARM: dts: rk3288-vyasa: Enable mali GPU node
-Date: Tue, 26 Sep 2017 00:19:07 +0530
-Message-ID: <1506365347-18655-1-git-send-email-jteki@openedev.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 0/3] clocksource: pr_err() strings should end with
+ newlines
+Date: Tue, 26 Sep 2017 01:35:20 +0200
+Message-ID: <f46f1d66-9120-9be3-dd5f-fa26579730eb@linaro.org>
+References: <1506327401-30521-1-git-send-email-arvind.yadav.cs@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1506327401-30521-1-git-send-email-arvind.yadav.cs@gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
+To: Arvind Yadav <arvind.yadav.cs@gmail.com>, tglx@linutronix.de, heiko@sntech.de, afaerber@suse.de
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jagan Teki <jagan@amarulasolutions.com>
+On 25/09/2017 10:16, Arvind Yadav wrote:
+> pr_err() messages should terminated with a new-line to avoid
+> other messages being concatenated onto the end.
+> 
+> Arvind Yadav (3):
+>   [PATCH 1/3] clocksource: fttmr010: pr_err() strings should end with newlines
+>   [PATCH 2/3] clocksource: owl: pr_err() strings should end with newlines
+>   [PATCH 3/3] clocksource: rockchip: pr_err() strings should end with newlines
+> 
+>  drivers/clocksource/owl-timer.c      | 4 ++--
+>  drivers/clocksource/rockchip_timer.c | 2 +-
+>  drivers/clocksource/timer-fttmr010.c | 4 ++--
+>  3 files changed, 5 insertions(+), 5 deletions(-)
 
-Enable mali GPU node for rk3288 vyasa board.
+Applied and slightly changed the commit log to:
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
- arch/arm/boot/dts/rk3288-vyasa.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+pr_err() messages should end with a new-line to avoid other messages
+being concatenated.
 
-diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
-index 156193b..932311c 100644
---- a/arch/arm/boot/dts/rk3288-vyasa.dts
-+++ b/arch/arm/boot/dts/rk3288-vyasa.dts
-@@ -82,6 +82,11 @@
- 	cpu0-supply = <&vdd_cpu>;
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
- &hdmi {
- 	ddc-i2c-bus = <&i2c2>;
- 	status = "okay";
+In the future, please use the subject subsystem format to:
+
+clocksource/drivers/<timer>: ....
+
+Thanks.
+
+  -- Daniel
+
 -- 
-2.7.4
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
