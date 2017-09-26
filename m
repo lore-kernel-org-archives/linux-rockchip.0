@@ -1,50 +1,60 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 0/3] clocksource: pr_err() strings should end with
- newlines
-Date: Tue, 26 Sep 2017 01:35:20 +0200
-Message-ID: <f46f1d66-9120-9be3-dd5f-fa26579730eb@linaro.org>
-References: <1506327401-30521-1-git-send-email-arvind.yadav.cs@gmail.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 7/7] drm/rockchip: Cocci spatch "vma_pages"
+Date: Tue, 26 Sep 2017 07:12:41 +0200
+Message-ID: <20170926051241.rwzpxlk4sfju7ctv@phenom.ffwll.local>
+References: <1505946334393-568186305-0-diffsplit-thomas@m3y3r.de>
+ <1505946334393-988165015-7-diffsplit-thomas@m3y3r.de>
+ <d2298979-3094-744c-3d28-76a0ba4a1137@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1506327401-30521-1-git-send-email-arvind.yadav.cs@gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arvind Yadav <arvind.yadav.cs@gmail.com>, tglx@linutronix.de, heiko@sntech.de, afaerber@suse.de
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <d2298979-3094-744c-3d28-76a0ba4a1137@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Thomas Meyer <thomas@m3y3r.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 25/09/2017 10:16, Arvind Yadav wrote:
-> pr_err() messages should terminated with a new-line to avoid
-> other messages being concatenated onto the end.
-> 
-> Arvind Yadav (3):
->   [PATCH 1/3] clocksource: fttmr010: pr_err() strings should end with newlines
->   [PATCH 2/3] clocksource: owl: pr_err() strings should end with newlines
->   [PATCH 3/3] clocksource: rockchip: pr_err() strings should end with newlines
-> 
->  drivers/clocksource/owl-timer.c      | 4 ++--
->  drivers/clocksource/rockchip_timer.c | 2 +-
->  drivers/clocksource/timer-fttmr010.c | 4 ++--
->  3 files changed, 5 insertions(+), 5 deletions(-)
-
-Applied and slightly changed the commit log to:
-
-pr_err() messages should end with a new-line to avoid other messages
-being concatenated.
-
-In the future, please use the subject subsystem format to:
-
-clocksource/drivers/<timer>: ....
-
-Thanks.
-
-  -- Daniel
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+T24gVGh1LCBTZXAgMjEsIDIwMTcgYXQgMDk6MDI6MjJBTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gT24gMjAxN+W5tDA55pyIMjHml6UgMDY6MjksIFRob21hcyBNZXllciB3cm90ZToKPiA+IFVz
+ZSB2bWFfcGFnZXMgZnVuY3Rpb24gb24gdm1hIG9iamVjdCBpbnN0ZWFkIG9mIGV4cGxpY2l0IGNv
+bXB1dGF0aW9uLgo+ID4gRm91bmQgYnkgY29jY2luZWxsZSBzcGF0Y2ggImFwaS92bWFfcGFnZXMu
+Y29jY2kiCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBNZXllciA8dGhvbWFzQG0zeTNy
+LmRlPgo+ID4gLS0tCj4gTG9va3MgZ29vZCBmb3IgbWU6Cj4gQWNrZWQtYnk6IE1hcmsgWWFvIDxt
+YXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KCk9uY2UgbW9yZSBhIG1haW50YWluZXIgd2hvIGFja3Mg
+YSBwYXRjaCBhbmQgZG9lc24ndCBwdXNoIGl0LiBUaGlzIGlzCnJlYWxseSBjb25mdXNpbmcsIHdo
+byBleGFjdGx5IGRvIHlvdSBleHBlY3QgdG8gaGFuZGxlIHRoaXMgcGF0Y2ggZm9yIHlvdT8KClBs
+ZWFzZSBwdXNoIHRvIGRybS1taXNjLW5leHQgKGFsc28gZm9yIGZ1dHVyZSBwYXRjaGVzKSwgdGhh
+bmtzLgotRGFuaWVsCgo+IAo+ID4gCj4gPiBkaWZmIC11IC1wIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZ2VtLmMKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZ2VtLmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZ2VtLmMKPiA+IEBAIC0yMjAsNyArMjIwLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1f
+Z2VtX29iamVjdF9tbWFwXwo+ID4gICB7Cj4gPiAgIAlzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVj
+dCAqcmtfb2JqID0gdG9fcm9ja2NoaXBfb2JqKG9iaik7Cj4gPiAgIAl1bnNpZ25lZCBpbnQgaSwg
+Y291bnQgPSBvYmotPnNpemUgPj4gUEFHRV9TSElGVDsKPiA+IC0JdW5zaWduZWQgbG9uZyB1c2Vy
+X2NvdW50ID0gKHZtYS0+dm1fZW5kIC0gdm1hLT52bV9zdGFydCkgPj4gUEFHRV9TSElGVDsKPiA+
+ICsJdW5zaWduZWQgbG9uZyB1c2VyX2NvdW50ID0gdm1hX3BhZ2VzKHZtYSk7Cj4gPiAgIAl1bnNp
+Z25lZCBsb25nIHVhZGRyID0gdm1hLT52bV9zdGFydDsKPiA+ICAgCXVuc2lnbmVkIGxvbmcgb2Zm
+c2V0ID0gdm1hLT52bV9wZ29mZjsKPiA+ICAgCXVuc2lnbmVkIGxvbmcgZW5kID0gdXNlcl9jb3Vu
+dCArIG9mZnNldDsKPiA+IAo+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KPiA+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+ID4gTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+ID4gCj4gPiAKPiA+IAo+IAo+IC0tIAo+
+IO+8rWFyayBZYW8KPiAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRl
+bCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
