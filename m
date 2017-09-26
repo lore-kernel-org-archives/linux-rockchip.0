@@ -1,78 +1,90 @@
-From: Daniel Vetter <daniel@ffwll.ch>
+From: Mark yao <mark.yao@rock-chips.com>
 Subject: Re: [PATCH 7/7] drm/rockchip: Cocci spatch "vma_pages"
-Date: Tue, 26 Sep 2017 10:08:19 +0200
-Message-ID: <20170926080819.23ujfvsbsmq4jwtd@phenom.ffwll.local>
+Date: Tue, 26 Sep 2017 17:06:37 +0800
+Message-ID: <f439da01-2632-ffdf-6b2a-9e802ee736d9@rock-chips.com>
 References: <1505946334393-568186305-0-diffsplit-thomas@m3y3r.de>
  <1505946334393-988165015-7-diffsplit-thomas@m3y3r.de>
  <d2298979-3094-744c-3d28-76a0ba4a1137@rock-chips.com>
  <20170926051241.rwzpxlk4sfju7ctv@phenom.ffwll.local>
  <b6f6fb10-d8ef-1b6e-0770-898d7277a983@rock-chips.com>
+ <20170926080819.23ujfvsbsmq4jwtd@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <b6f6fb10-d8ef-1b6e-0770-898d7277a983@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Thomas Meyer <thomas@m3y3r.de>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170926080819.23ujfvsbsmq4jwtd@phenom.ffwll.local>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thomas Meyer <thomas@m3y3r.de>, airlied@linux.ie, heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBTZXAgMjYsIDIwMTcgYXQgMDI6MzM6MDdQTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
-Cj4gT24gMjAxN+W5tDA55pyIMjbml6UgMTM6MTIsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPiBP
-biBUaHUsIFNlcCAyMSwgMjAxNyBhdCAwOTowMjoyMkFNICswODAwLCBNYXJrIHlhbyB3cm90ZToK
-PiA+ID4gT24gMjAxN+W5tDA55pyIMjHml6UgMDY6MjksIFRob21hcyBNZXllciB3cm90ZToKPiA+
-ID4gPiBVc2Ugdm1hX3BhZ2VzIGZ1bmN0aW9uIG9uIHZtYSBvYmplY3QgaW5zdGVhZCBvZiBleHBs
-aWNpdCBjb21wdXRhdGlvbi4KPiA+ID4gPiBGb3VuZCBieSBjb2NjaW5lbGxlIHNwYXRjaCAiYXBp
-L3ZtYV9wYWdlcy5jb2NjaSIKPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBUaG9tYXMg
-TWV5ZXIgPHRob21hc0BtM3kzci5kZT4KPiA+ID4gPiAtLS0KPiA+ID4gTG9va3MgZ29vZCBmb3Ig
-bWU6Cj4gPiA+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4g
-PiBPbmNlIG1vcmUgYSBtYWludGFpbmVyIHdobyBhY2tzIGEgcGF0Y2ggYW5kIGRvZXNuJ3QgcHVz
-aCBpdC4gVGhpcyBpcwo+ID4gcmVhbGx5IGNvbmZ1c2luZywgd2hvIGV4YWN0bHkgZG8geW91IGV4
-cGVjdCB0byBoYW5kbGUgdGhpcyBwYXRjaCBmb3IgeW91Pwo+ID4gCj4gPiBQbGVhc2UgcHVzaCB0
-byBkcm0tbWlzYy1uZXh0IChhbHNvIGZvciBmdXR1cmUgcGF0Y2hlcyksIHRoYW5rcy4KPiA+IC1E
-YW5pZWwKPiAKPiBIaSBEYW5pZWwKPiBJIFNhdyB0aGUgcGF0Y2ggdGl0bGUgaXMgIltQQVRDSCA3
-LzddIiwgSSBndWVzc2VkIGl0J3Mgb25lIG9mIGEgc2VyaWVzIG9mIHBhdGNoZXMgYW5kIG1heWJl
-IGl0IGNhbiBwdXNoZWQgYnkgc2VyaWVzLgo+IAo+IE9rLCBQdXNoZWQgaXQgdG8gZHJtLW1pc2Mt
-bmV4dC4KCkhtIHJpZ2h0LCBidXQgSSBvbmx5IHNlZSA3LzcgaGVyZS4gRWl0aGVyIHdheSwgZXhj
-ZXB0IHdoZW4gdGhlIGF1dGhvciBhc2tzCmZvciBhIHByZWZlcnJlZCB0cmVlIGl0J3MgYmVzdCBp
-ZiB5b3UganVzdCBwaWNrIHRoaW5ncyB1cCByaWdodCBhd2F5LiBBbmQKaWYgeW91J3JlIHVuc3Vy
-ZSwganVzdCBhc2sgaW5zdGVhZCBvZiByaXNraW5nIHRoYXQgYSBwYXRjaCBkcm9wcyB0aHJvdWdo
-CnRoZSBjcmFja3MuCi1EYW5pZWwKCj4gCj4gPiAKPiA+ID4gPiBkaWZmIC11IC1wIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4gPiA+IEBAIC0yMjAsNyArMjIwLDcgQEAg
-c3RhdGljIGludCByb2NrY2hpcF9kcm1fZ2VtX29iamVjdF9tbWFwXwo+ID4gPiA+ICAgIHsKPiA+
-ID4gPiAgICAJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaiA9IHRvX3JvY2tjaGlw
-X29iaihvYmopOwo+ID4gPiA+ICAgIAl1bnNpZ25lZCBpbnQgaSwgY291bnQgPSBvYmotPnNpemUg
-Pj4gUEFHRV9TSElGVDsKPiA+ID4gPiAtCXVuc2lnbmVkIGxvbmcgdXNlcl9jb3VudCA9ICh2bWEt
-PnZtX2VuZCAtIHZtYS0+dm1fc3RhcnQpID4+IFBBR0VfU0hJRlQ7Cj4gPiA+ID4gKwl1bnNpZ25l
-ZCBsb25nIHVzZXJfY291bnQgPSB2bWFfcGFnZXModm1hKTsKPiA+ID4gPiAgICAJdW5zaWduZWQg
-bG9uZyB1YWRkciA9IHZtYS0+dm1fc3RhcnQ7Cj4gPiA+ID4gICAgCXVuc2lnbmVkIGxvbmcgb2Zm
-c2V0ID0gdm1hLT52bV9wZ29mZjsKPiA+ID4gPiAgICAJdW5zaWduZWQgbG9uZyBlbmQgPSB1c2Vy
-X2NvdW50ICsgb2Zmc2V0Owo+ID4gPiA+IAo+ID4gPiA+IF9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCj4gPiA+ID4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0Cj4gPiA+ID4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gPiA+IGh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
-PiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gLS0gCj4gPiA+IO+8rWFyayBZYW8KPiA+
-ID4gCj4gPiA+IAo+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwo+ID4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPiA+IGRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKPiA+ID4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPiAKPiAKPiAtLSAKPiDvvK1hcmsgWWEKPiAKPiAKPiBf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCi0tIApE
-YW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8v
-YmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+On 2017年09月26日 16:08, Daniel Vetter wrote:
+> On Tue, Sep 26, 2017 at 02:33:07PM +0800, Mark yao wrote:
+>> On 2017年09月26日 13:12, Daniel Vetter wrote:
+>>> On Thu, Sep 21, 2017 at 09:02:22AM +0800, Mark yao wrote:
+>>>> On 2017年09月21日 06:29, Thomas Meyer wrote:
+>>>>> Use vma_pages function on vma object instead of explicit computation.
+>>>>> Found by coccinelle spatch "api/vma_pages.cocci"
+>>>>>
+>>>>> Signed-off-by: Thomas Meyer <thomas@m3y3r.de>
+>>>>> ---
+>>>> Looks good for me:
+>>>> Acked-by: Mark Yao <mark.yao@rock-chips.com>
+>>> Once more a maintainer who acks a patch and doesn't push it. This is
+>>> really confusing, who exactly do you expect to handle this patch for you?
+>>>
+>>> Please push to drm-misc-next (also for future patches), thanks.
+>>> -Daniel
+>> Hi Daniel
+>> I Saw the patch title is "[PATCH 7/7]", I guessed it's one of a series of patches and maybe it can pushed by series.
+>>
+>> Ok, Pushed it to drm-misc-next.
+> Hm right, but I only see 7/7 here. Either way, except when the author asks
+> for a preferred tree it's best if you just pick things up right away. And
+> if you're unsure, just ask instead of risking that a patch drops through
+> the cracks.
+> -Daniel
+
+Okay, I'll keep it in mind next time.
+
+Thanks
+Mark
+
+>
+>>>>> diff -u -p a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+>>>>> @@ -220,7 +220,7 @@ static int rockchip_drm_gem_object_mmap_
+>>>>>     {
+>>>>>     	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+>>>>>     	unsigned int i, count = obj->size >> PAGE_SHIFT;
+>>>>> -	unsigned long user_count = (vma->vm_end - vma->vm_start) >> PAGE_SHIFT;
+>>>>> +	unsigned long user_count = vma_pages(vma);
+>>>>>     	unsigned long uaddr = vma->vm_start;
+>>>>>     	unsigned long offset = vma->vm_pgoff;
+>>>>>     	unsigned long end = user_count + offset;
+>>>>>
+>>>>> _______________________________________________
+>>>>> Linux-rockchip mailing list
+>>>>> Linux-rockchip@lists.infradead.org
+>>>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>>>>
+>>>>>
+>>>>>
+>>>> -- 
+>>>> Ｍark Yao
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> dri-devel mailing list
+>>>> dri-devel@lists.freedesktop.org
+>>>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>>
+>> -- 
+>> Ｍark Ya
+>>
+>>
+>> _______________________________________________
+>> dri-devel mailing list
+>> dri-devel@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
