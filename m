@@ -1,27 +1,78 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rk3288-vyasa: Enable mali GPU node
-Date: Tue, 26 Sep 2017 10:01:01 +0200
-Message-ID: <28439781.mnKO5aTto3@phil>
-References: <1506365347-18655-1-git-send-email-jteki@openedev.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 7/7] drm/rockchip: Cocci spatch "vma_pages"
+Date: Tue, 26 Sep 2017 10:08:19 +0200
+Message-ID: <20170926080819.23ujfvsbsmq4jwtd@phenom.ffwll.local>
+References: <1505946334393-568186305-0-diffsplit-thomas@m3y3r.de>
+ <1505946334393-988165015-7-diffsplit-thomas@m3y3r.de>
+ <d2298979-3094-744c-3d28-76a0ba4a1137@rock-chips.com>
+ <20170926051241.rwzpxlk4sfju7ctv@phenom.ffwll.local>
+ <b6f6fb10-d8ef-1b6e-0770-898d7277a983@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1506365347-18655-1-git-send-email-jteki@openedev.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagannadh.teki@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <b6f6fb10-d8ef-1b6e-0770-898d7277a983@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Thomas Meyer <thomas@m3y3r.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 26. September 2017, 00:19:07 CEST schrieb Jagan Teki:
-> From: Jagan Teki <jagan@amarulasolutions.com>
-> 
-> Enable mali GPU node for rk3288 vyasa board.
-> 
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-applied for 4.15 after changing the subject to
-	"ARM: dts: rockchip: Enable mali GPU node on rk3288-vyasa"
-
-
-Heiko
+T24gVHVlLCBTZXAgMjYsIDIwMTcgYXQgMDI6MzM6MDdQTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gT24gMjAxN+W5tDA55pyIMjbml6UgMTM6MTIsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPiBP
+biBUaHUsIFNlcCAyMSwgMjAxNyBhdCAwOTowMjoyMkFNICswODAwLCBNYXJrIHlhbyB3cm90ZToK
+PiA+ID4gT24gMjAxN+W5tDA55pyIMjHml6UgMDY6MjksIFRob21hcyBNZXllciB3cm90ZToKPiA+
+ID4gPiBVc2Ugdm1hX3BhZ2VzIGZ1bmN0aW9uIG9uIHZtYSBvYmplY3QgaW5zdGVhZCBvZiBleHBs
+aWNpdCBjb21wdXRhdGlvbi4KPiA+ID4gPiBGb3VuZCBieSBjb2NjaW5lbGxlIHNwYXRjaCAiYXBp
+L3ZtYV9wYWdlcy5jb2NjaSIKPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBUaG9tYXMg
+TWV5ZXIgPHRob21hc0BtM3kzci5kZT4KPiA+ID4gPiAtLS0KPiA+ID4gTG9va3MgZ29vZCBmb3Ig
+bWU6Cj4gPiA+IEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4g
+PiBPbmNlIG1vcmUgYSBtYWludGFpbmVyIHdobyBhY2tzIGEgcGF0Y2ggYW5kIGRvZXNuJ3QgcHVz
+aCBpdC4gVGhpcyBpcwo+ID4gcmVhbGx5IGNvbmZ1c2luZywgd2hvIGV4YWN0bHkgZG8geW91IGV4
+cGVjdCB0byBoYW5kbGUgdGhpcyBwYXRjaCBmb3IgeW91Pwo+ID4gCj4gPiBQbGVhc2UgcHVzaCB0
+byBkcm0tbWlzYy1uZXh0IChhbHNvIGZvciBmdXR1cmUgcGF0Y2hlcyksIHRoYW5rcy4KPiA+IC1E
+YW5pZWwKPiAKPiBIaSBEYW5pZWwKPiBJIFNhdyB0aGUgcGF0Y2ggdGl0bGUgaXMgIltQQVRDSCA3
+LzddIiwgSSBndWVzc2VkIGl0J3Mgb25lIG9mIGEgc2VyaWVzIG9mIHBhdGNoZXMgYW5kIG1heWJl
+IGl0IGNhbiBwdXNoZWQgYnkgc2VyaWVzLgo+IAo+IE9rLCBQdXNoZWQgaXQgdG8gZHJtLW1pc2Mt
+bmV4dC4KCkhtIHJpZ2h0LCBidXQgSSBvbmx5IHNlZSA3LzcgaGVyZS4gRWl0aGVyIHdheSwgZXhj
+ZXB0IHdoZW4gdGhlIGF1dGhvciBhc2tzCmZvciBhIHByZWZlcnJlZCB0cmVlIGl0J3MgYmVzdCBp
+ZiB5b3UganVzdCBwaWNrIHRoaW5ncyB1cCByaWdodCBhd2F5LiBBbmQKaWYgeW91J3JlIHVuc3Vy
+ZSwganVzdCBhc2sgaW5zdGVhZCBvZiByaXNraW5nIHRoYXQgYSBwYXRjaCBkcm9wcyB0aHJvdWdo
+CnRoZSBjcmFja3MuCi1EYW5pZWwKCj4gCj4gPiAKPiA+ID4gPiBkaWZmIC11IC1wIGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4gPiA+IEBAIC0yMjAsNyArMjIwLDcgQEAg
+c3RhdGljIGludCByb2NrY2hpcF9kcm1fZ2VtX29iamVjdF9tbWFwXwo+ID4gPiA+ICAgIHsKPiA+
+ID4gPiAgICAJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaiA9IHRvX3JvY2tjaGlw
+X29iaihvYmopOwo+ID4gPiA+ICAgIAl1bnNpZ25lZCBpbnQgaSwgY291bnQgPSBvYmotPnNpemUg
+Pj4gUEFHRV9TSElGVDsKPiA+ID4gPiAtCXVuc2lnbmVkIGxvbmcgdXNlcl9jb3VudCA9ICh2bWEt
+PnZtX2VuZCAtIHZtYS0+dm1fc3RhcnQpID4+IFBBR0VfU0hJRlQ7Cj4gPiA+ID4gKwl1bnNpZ25l
+ZCBsb25nIHVzZXJfY291bnQgPSB2bWFfcGFnZXModm1hKTsKPiA+ID4gPiAgICAJdW5zaWduZWQg
+bG9uZyB1YWRkciA9IHZtYS0+dm1fc3RhcnQ7Cj4gPiA+ID4gICAgCXVuc2lnbmVkIGxvbmcgb2Zm
+c2V0ID0gdm1hLT52bV9wZ29mZjsKPiA+ID4gPiAgICAJdW5zaWduZWQgbG9uZyBlbmQgPSB1c2Vy
+X2NvdW50ICsgb2Zmc2V0Owo+ID4gPiA+IAo+ID4gPiA+IF9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCj4gPiA+ID4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0Cj4gPiA+ID4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gPiA+IGh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+PiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gLS0gCj4gPiA+IO+8rWFyayBZYW8KPiA+
+ID4gCj4gPiA+IAo+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+ID4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPiA+IGRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKPiA+ID4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPiAKPiAKPiAtLSAKPiDvvK1hcmsgWWEKPiAKPiAKPiBf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCi0tIApE
+YW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8v
+YmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
