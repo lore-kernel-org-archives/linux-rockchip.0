@@ -1,78 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL v2] Rockchip dts64 Fixes for 4.14
-Date: Wed, 27 Sep 2017 20:11:32 +0200
-Message-ID: <2709130.jIo7eQHvkl@phil>
-References: <6990785.aOlALvEuSf@phil>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v2 1/8] drm/rockchip/dsi: correct Feedback divider setting
+Date: Wed, 27 Sep 2017 15:51:42 -0400
+Message-ID: <20170927195142.mp74x3skue4sfbmm@art_vandelay>
+References: <1506412523-1766-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <6990785.aOlALvEuSf@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1506412523-1766-1-git-send-email-nickey.yang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, briannorris@chromium.org, hl@rock-chips.com, zyw@rock-chips.com, bivvy.bi@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin, Olof,
+On Tue, Sep 26, 2017 at 03:55:16PM +0800, Nickey Yang wrote:
+> This patch correct Feedback divider setting:
+> 1、Set Feedback divider [8:5] when HIGH_PROGRAM_EN
+> 2、Due to the use of a "by 2 pre-scaler," the range of the
+> feedback multiplication Feedback divider is limited to even
+> division numbers, and Feedback divider must be greater than
+> 12, less than 1000.
+> 3、Make the previously configured Feedback divider(LSB)
+> factors effective
+> 4、Add the definition of the MIPI PHY register.
+> 
+> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
+> ---
 
-please find below three fixes for 64bit Rockchip devicetrees.
+Can you please add a changelog to your patches so it's easy to see what's
+changed?
 
-As the tag explains the main change is the revert of the rk3368 opp
-addition, as this cannot safely run on current rk3368 boards and thus
-shouldn't make a kernel release.
+Thanks!
 
+Sean
 
-Please pull, thanks
-Heiko
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 219 ++++++++++++++++++++++-----------
+>  1 file changed, 146 insertions(+), 73 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> index 9a20b9d..c933a3a 100644
 
-changes in v2:
-- remove left over half-sentence at the end of the tag message
-- add rk3399 mipi dsi grf-clock reference (part of the binding already
-  and of course needed on rk3399)
+<snip>
 
+> -- 
+> 1.9.1
+> 
 
-The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
-
-  Linux 4.14-rc1 (2017-09-16 15:47:51 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-dts64fixes-1
-
-for you to fetch changes up to 0bc15d85d97d44e8979ff91d0c1fbafe6fd4172c:
-
-  arm64: dts: rockchip: add the grf clk for dw-mipi-dsi on rk3399 (2017-09-26 15:59:17 +0200)
-
-----------------------------------------------------------------
-Adding the operating points on rk3368 like they were did not end up well
-for the boards as all of them are missing their cpu supplies, the OPPs
-actually need to follow the <target min max> format as the regulator is
-shared between both clusters and the one rk3368 board I have, somehow also
-doesn't like the higher opps at all - all of which I only realized after
-I brought my rk3368 board online again, after its bootloader broke.
-So we revert that OPP addition for now.
-
-And also two fixes for the mipi dsi controller on rk3399, which was
-referencing a clock to high up in the clock-tree so that an intermediate
-gate could be disabled inadvertently and also needs a clock for its area
-in the general register files of the rk3399 soc.
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      Revert "arm64: dts: rockchip: Add basic cpu frequencies for RK3368"
-
-Nickey Yang (2):
-      arm64: dts: rockchip: Correct MIPI DPHY PLL clock on rk3399
-      arm64: dts: rockchip: add the grf clk for dw-mipi-dsi on rk3399
-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 72 +-------------------------------
- arch/arm64/boot/dts/rockchip/rk3399.dtsi |  6 +--
- 2 files changed, 5 insertions(+), 73 deletions(-)
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
