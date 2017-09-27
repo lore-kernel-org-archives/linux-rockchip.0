@@ -1,50 +1,41 @@
-From: SF Markus Elfring <elfring@users.sourceforge.net>
-Subject: [PATCH] clk: rockchip: Delete an error message for a failed memory
- allocation in rockchip_clk_register_cpuclk()
-Date: Wed, 27 Sep 2017 11:44:30 +0200
-Message-ID: <dfcd3f8a-f858-ab71-b08c-e5b2e3005d7c@users.sourceforge.net>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] drm/rockchip: Fix memory leak in rockchip_drm_sys_resume()
+Date: Wed, 27 Sep 2017 20:26:42 +0800
+Message-ID: <20170927122642.18628-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Wed, 27 Sep 2017 11:38:17 +0200
-
-Omit an extra message for a memory allocation failure in this function.
-
-This issue was detected by using the Coccinelle software.
-
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
----
- drivers/clk/rockchip/clk-cpu.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
-index 0e09684d43a5..32c19c0f1e14 100644
---- a/drivers/clk/rockchip/clk-cpu.c
-+++ b/drivers/clk/rockchip/clk-cpu.c
-@@ -322,8 +322,6 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
- 					     sizeof(*rates) * nrates,
- 					     GFP_KERNEL);
- 		if (!cpuclk->rate_table) {
--			pr_err("%s: could not allocate memory for cpuclk rates\n",
--			       __func__);
- 			ret = -ENOMEM;
- 			goto unregister_notifier;
- 		}
--- 
-2.14.1
+RnJlZSB0aGUgZHJtX2F0b21pY19zdGF0ZSBhbGxvY2F0ZWQgYnkgZHJtX2F0b21pY19oZWxwZXJf
+c3VzcGVuZCgpLgoKRml4ZXM6IDVhNTg3MzgzMDk3MiAoImRybS9yb2NrY2hpcDogVXNlIGF0b21p
+YyBQTSBoZWxwZXJzIikKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2Nr
+LWNoaXBzLmNvbT4KLS0tCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9k
+cnYuYyB8IDIgKysKIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwppbmRleCA3NmQ2M2RlNTkyMWQuLjgw
+MjM1YjY3MmRlYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Ry
+di5jCkBAIC0xNSw2ICsxNSw3IEBACiAgKi8KIAogI2luY2x1ZGUgPGRybS9kcm1QLmg+CisjaW5j
+bHVkZSA8ZHJtL2RybV9hdG9taWMuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2NydGNfaGVscGVyLmg+
+CiAjaW5jbHVkZSA8ZHJtL2RybV9mYl9oZWxwZXIuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9j
+bWFfaGVscGVyLmg+CkBAIC0yOTksNiArMzAwLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1f
+c3lzX3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCiAKIAlwcml2ID0gZHJtLT5kZXZfcHJpdmF0
+ZTsKIAlkcm1fYXRvbWljX2hlbHBlcl9yZXN1bWUoZHJtLCBwcml2LT5zdGF0ZSk7CisJZHJtX2F0
+b21pY19zdGF0ZV9wdXQocHJpdi0+c3RhdGUpOwogCXJvY2tjaGlwX2RybV9mYl9yZXN1bWUoZHJt
+KTsKIAlkcm1fa21zX2hlbHBlcl9wb2xsX2VuYWJsZShkcm0pOwogCi0tIAoyLjExLjAKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
