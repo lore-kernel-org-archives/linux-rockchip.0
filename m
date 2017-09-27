@@ -1,51 +1,52 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 1/8] drm/rockchip/dsi: correct Feedback divider setting
-Date: Wed, 27 Sep 2017 15:51:42 -0400
-Message-ID: <20170927195142.mp74x3skue4sfbmm@art_vandelay>
-References: <1506412523-1766-1-git-send-email-nickey.yang@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Fix memory leak in rockchip_drm_sys_resume()
+Date: Wed, 27 Sep 2017 16:27:09 -0400
+Message-ID: <20170927202709.ugbjyi3ktfjssiyp@art_vandelay>
+References: <20170927122642.18628-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1506412523-1766-1-git-send-email-nickey.yang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nickey Yang <nickey.yang@rock-chips.com>
-Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, briannorris@chromium.org, hl@rock-chips.com, zyw@rock-chips.com, bivvy.bi@rock-chips.com, xbl@rock-chips.com
+In-Reply-To: <20170927122642.18628-1-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Sep 26, 2017 at 03:55:16PM +0800, Nickey Yang wrote:
-> This patch correct Feedback divider setting:
-> 1、Set Feedback divider [8:5] when HIGH_PROGRAM_EN
-> 2、Due to the use of a "by 2 pre-scaler," the range of the
-> feedback multiplication Feedback divider is limited to even
-> division numbers, and Feedback divider must be greater than
-> 12, less than 1000.
-> 3、Make the previously configured Feedback divider(LSB)
-> factors effective
-> 4、Add the definition of the MIPI PHY register.
-> 
-> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> ---
-
-Can you please add a changelog to your patches so it's easy to see what's
-changed?
-
-Thanks!
-
-Sean
-
->  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 219 ++++++++++++++++++++++-----------
->  1 file changed, 146 insertions(+), 73 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> index 9a20b9d..c933a3a 100644
-
-<snip>
-
-> -- 
-> 1.9.1
-> 
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+T24gV2VkLCBTZXAgMjcsIDIwMTcgYXQgMDg6MjY6NDJQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
+ZToKPiBGcmVlIHRoZSBkcm1fYXRvbWljX3N0YXRlIGFsbG9jYXRlZCBieSBkcm1fYXRvbWljX2hl
+bHBlcl9zdXNwZW5kKCkuCj4gCj4gRml4ZXM6IDVhNTg3MzgzMDk3MiAoImRybS9yb2NrY2hpcDog
+VXNlIGF0b21pYyBQTSBoZWxwZXJzIikKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZm
+eS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
+b25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
+Cj4gaW5kZXggNzZkNjNkZTU5MjFkLi44MDIzNWI2NzJkZWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBAQCAtMTUsNiArMTUsNyBAQAo+ICAg
+Ki8KPiAgCj4gICNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9hdG9t
+aWMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPiAgI2luY2x1ZGUgPGRy
+bS9kcm1fZmJfaGVscGVyLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9jbWFfaGVscGVyLmg+
+Cj4gQEAgLTI5OSw2ICszMDAsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9zeXNfcmVzdW1l
+KHN0cnVjdCBkZXZpY2UgKmRldikKPiAgCj4gIAlwcml2ID0gZHJtLT5kZXZfcHJpdmF0ZTsKPiAg
+CWRybV9hdG9taWNfaGVscGVyX3Jlc3VtZShkcm0sIHByaXYtPnN0YXRlKTsKPiArCWRybV9hdG9t
+aWNfc3RhdGVfcHV0KHByaXYtPnN0YXRlKTsKCldvbid0IHRoaXMgYmUgZnJlZWQgZm9yIHlvdSBl
+dmVudHVhbGx5IGluIGNvbW1pdF90YWlsKCk/CgpTZWFuCgo+ICAJcm9ja2NoaXBfZHJtX2ZiX3Jl
+c3VtZShkcm0pOwo+ICAJZHJtX2ttc19oZWxwZXJfcG9sbF9lbmFibGUoZHJtKTsKPiAgCj4gLS0g
+Cj4gMi4xMS4wCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8g
+Q2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
