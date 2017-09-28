@@ -1,52 +1,51 @@
-From: Sean Paul <seanpaul@chromium.org>
+From: jeffy <jeffy.chen@rock-chips.com>
 Subject: Re: [PATCH] drm/rockchip: Fix memory leak in rockchip_drm_sys_resume()
-Date: Wed, 27 Sep 2017 16:27:09 -0400
-Message-ID: <20170927202709.ugbjyi3ktfjssiyp@art_vandelay>
-References: <20170927122642.18628-1-jeffy.chen@rock-chips.com>
+Date: Thu, 28 Sep 2017 11:16:38 +0800
+Message-ID: <59CC6996.2000402@rock-chips.com>
+References: <20170927122642.18628-1-jeffy.chen@rock-chips.com> <20170927202709.ugbjyi3ktfjssiyp@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20170927122642.18628-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170927202709.ugbjyi3ktfjssiyp@art_vandelay>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBTZXAgMjcsIDIwMTcgYXQgMDg6MjY6NDJQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBGcmVlIHRoZSBkcm1fYXRvbWljX3N0YXRlIGFsbG9jYXRlZCBieSBkcm1fYXRvbWljX2hl
-bHBlcl9zdXNwZW5kKCkuCj4gCj4gRml4ZXM6IDVhNTg3MzgzMDk3MiAoImRybS9yb2NrY2hpcDog
-VXNlIGF0b21pYyBQTSBoZWxwZXJzIikKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZm
-eS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
-b25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
-Cj4gaW5kZXggNzZkNjNkZTU5MjFkLi44MDIzNWI2NzJkZWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBAQCAtMTUsNiArMTUsNyBAQAo+ICAg
-Ki8KPiAgCj4gICNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9hdG9t
-aWMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPiAgI2luY2x1ZGUgPGRy
-bS9kcm1fZmJfaGVscGVyLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9jbWFfaGVscGVyLmg+
-Cj4gQEAgLTI5OSw2ICszMDAsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9zeXNfcmVzdW1l
-KHN0cnVjdCBkZXZpY2UgKmRldikKPiAgCj4gIAlwcml2ID0gZHJtLT5kZXZfcHJpdmF0ZTsKPiAg
-CWRybV9hdG9taWNfaGVscGVyX3Jlc3VtZShkcm0sIHByaXYtPnN0YXRlKTsKPiArCWRybV9hdG9t
-aWNfc3RhdGVfcHV0KHByaXYtPnN0YXRlKTsKCldvbid0IHRoaXMgYmUgZnJlZWQgZm9yIHlvdSBl
-dmVudHVhbGx5IGluIGNvbW1pdF90YWlsKCk/CgpTZWFuCgo+ICAJcm9ja2NoaXBfZHJtX2ZiX3Jl
-c3VtZShkcm0pOwo+ICAJZHJtX2ttc19oZWxwZXJfcG9sbF9lbmFibGUoZHJtKTsKPiAgCj4gLS0g
-Cj4gMi4xMS4wCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8g
-Q2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+Hi Sean,
+
+On 09/28/2017 04:27 AM, Sean Paul wrote:
+>> >@@ -299,6 +300,7 @@ static int rockchip_drm_sys_resume(struct device *dev)
+>> >
+>> >  	priv = drm->dev_private;
+>> >  	drm_atomic_helper_resume(drm, priv->state);
+>> >+	drm_atomic_state_put(priv->state);
+> Won't this be freed for you eventually in commit_tail()?
+>
+i think the drm_atomic_state_put in commit_tail is paired to the 
+drm_atomic_state_get in drm_atomic_helper_commit.
+
+and the kmemleak shows(after a few suspend/resume):
+
+     unreferenced object 0xffffffc0ce0fa400 (size 256):
+     ...
+       backtrace:
+         [<ffffffc00034a9a8>] __save_stack_trace+0x48/0x6c
+         [<ffffffc00034b088>] create_object+0x138/0x254
+         [<ffffffc0009d5504>] kmemleak_alloc+0x58/0x8c
+         [<ffffffc000345f78>] __kmalloc+0x1d4/0x2a0
+         [<ffffffc0006765bc>] usb_alloc_urb+0x30/0x60
+         [<ffffffbffc128598>] alloc_ctrl_urb+0x38/0x120 [btusb]
+         [<ffffffbffc129e7c>] btusb_send_frame+0x64/0xf8 [btusb]
+
+
+
+
+checking the current code, i saw only i915/intel_display.c has this 
+drm_atomic_state_put for the state allocated by 
+drm_atomic_helper_suspend(), there're many drivers missing that(or maybe 
+they free it in some other way?)
+
+> Sean
+>
