@@ -1,53 +1,42 @@
-From: Algea Cao <algea.cao@rock-chips.com>
-Subject: [PATCH v2 7/7] drm: bridge: dw-hdmi: get phy ops by device type
-Date: Sat, 30 Sep 2017 09:46:16 +0800
-Message-ID: <1506735976-153815-1-git-send-email-algea.cao@rock-chips.com>
-References: <1506735713-147081-0>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1506735713-147081-0>
-Sender: linux-kernel-owner@vger.kernel.org
-To: daniel.vetter@intel.com, jani.nikula@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: kever.yang@rock-chips.com, mark.yao@rock-chips.com, yang.zheng@rock-chips.com, Algea Cao <algea.cao@rock-chips.com>
+From: Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>
+Subject: [PATCH 1/1] arm64: dts: rockchip: default serial for Firefly-RK3399
+Date: Sat, 30 Sep 2017 06:06:40 +0200
+Message-ID: <20170930040640.25526-1-xypron.glpk@gmx.de>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device type to distinguish different chips.Different chips
-use different phy ops, get them by device type.
+The Firefly-RK3399 uses serial2 with 1,500,000 baud by default
+for communication in U-Boot and in the vendor provided distros.
 
-Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+So let us set the same default in the Linux kernel.
+
+Signed-off-by: Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 34eeaf6..b414aef 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -144,6 +144,7 @@ struct dw_hdmi {
- 	const struct dw_hdmi_plat_data *plat_data;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 7fd4bfcaa38e..3bc2863583ce 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -49,6 +49,10 @@
+ 	model = "Firefly-RK3399 Board";
+ 	compatible = "firefly,firefly-rk3399", "rockchip,rk3399";
  
- 	int vic;
-+	enum dw_hdmi_devtype dev_type;
- 
- 	u8 edid[HDMI_EDID_LEN];
- 	bool cable_plugin;
-@@ -2202,7 +2203,9 @@ static int dw_hdmi_detect_phy(struct dw_hdmi *hdmi)
- 
- 	phy_type = hdmi_readb(hdmi, HDMI_CONFIG2_ID);
- 
--	if (phy_type == DW_HDMI_PHY_VENDOR_PHY) {
-+	if (phy_type == DW_HDMI_PHY_VENDOR_PHY ||
-+	    hdmi->dev_type == RK3328_HDMI ||
-+	    hdmi->dev_type == RK3228_HDMI) {
- 		/* Vendor PHYs require support from the glue layer. */
- 		if (!hdmi->plat_data->phy_ops || !hdmi->plat_data->phy_name) {
- 			dev_err(hdmi->dev,
-@@ -2298,6 +2301,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 	if (!hdmi)
- 		return ERR_PTR(-ENOMEM);
- 
-+	hdmi->dev_type = plat_data->dev_type;
- 	hdmi->plat_data = plat_data;
- 	hdmi->dev = dev;
- 	hdmi->sample_rate = 48000;
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+ 		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
 -- 
-2.7.4
+2.14.2
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
