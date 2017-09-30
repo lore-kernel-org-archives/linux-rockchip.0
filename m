@@ -1,57 +1,32 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] phy: rockchip-typec: Check for errors from tcphy_phy_init()
-Date: Fri, 29 Sep 2017 16:58:46 -0700
-Message-ID: <20170929235846.1913-1-dianders@chromium.org>
+From: Algea Cao <algea.cao@rock-chips.com>
+Subject: [PATCH v2 0/7] Add support RK3328 drm hdmi
+Date: Sat, 30 Sep 2017 09:41:53 +0800
+Message-ID: <1506735713-147081-1-git-send-email-algea.cao@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com
-Cc: groeck@chromium.org, zyw@rock-chips.com, wulf@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+To: daniel.vetter@intel.com, jani.nikula@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: kever.yang@rock-chips.com, mark.yao@rock-chips.com, yang.zheng@rock-chips.com, Algea Cao <algea.cao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The function tcphy_phy_init() could return an error but the callers
-weren't checking the return value.  They should.  In at least one case
-while testing I saw the message "wait pma ready timeout" which
-indicates that tcphy_phy_init() really could return an error and we
-should account for it.
+These patches add support drm hdmi in RK3328 and has been tested in RK development
+board. We add dev_type to distinguish different rockchip chips. Hdmi phy or some regs
+configuration can't be switched according to dev_type, that hdmi driver's compatibility
+will be better.
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Algea Cao (7):
+  drm/rockchip: dw_hdmi: update dw_hdmi_rockchip_dt_ids
+  drm/rockchip: dw_hdmi: add device type
+  drm: bridge: dw-hdmi: change hdmi phy hpd read function to export
+  drm/rockchip: dw_hdmi: add inno hdmi phy ops
+  drm/rockchip: dw_hdmi: add hclk_vio
+  drm/rockchip: dw_hdmi: update dw-hdmi encoder enable
+  drm: bridge: dw-hdmi: get phy ops by device type
 
- drivers/phy/rockchip/phy-rockchip-typec.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ .../bindings/display/rockchip/dw_hdmi-rockchip.txt |   1 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  11 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 161 ++++++++++++++++++++-
+ include/drm/bridge/dw_hdmi.h                       |  13 +-
+ 4 files changed, 178 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 4d2c57f21d76..38831eebc934 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -685,8 +685,11 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
- 	if (tcphy->mode == new_mode)
- 		goto unlock_ret;
- 
--	if (tcphy->mode == MODE_DISCONNECT)
--		tcphy_phy_init(tcphy, new_mode);
-+	if (tcphy->mode == MODE_DISCONNECT) {
-+		ret = tcphy_phy_init(tcphy, new_mode);
-+		if (ret)
-+			goto unlock_ret;
-+	}
- 
- 	/* wait TCPHY for pipe ready */
- 	for (timeout = 0; timeout < 100; timeout++) {
-@@ -760,10 +763,12 @@ static int rockchip_dp_phy_power_on(struct phy *phy)
- 	 */
- 	if (new_mode == MODE_DFP_DP && tcphy->mode != MODE_DISCONNECT) {
- 		tcphy_phy_deinit(tcphy);
--		tcphy_phy_init(tcphy, new_mode);
-+		ret = tcphy_phy_init(tcphy, new_mode);
- 	} else if (tcphy->mode == MODE_DISCONNECT) {
--		tcphy_phy_init(tcphy, new_mode);
-+		ret = tcphy_phy_init(tcphy, new_mode);
- 	}
-+	if (ret)
-+		goto unlock_ret;
- 
- 	ret = readx_poll_timeout(readl, tcphy->base + DP_MODE_CTL,
- 				 val, val & DP_MODE_A2, 1000,
 -- 
-2.14.2.822.g60be5d43e6-goog
+2.7.4
