@@ -1,30 +1,34 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] pinctrl: rockchip: Fix the correct routing config for the gmac-m1 pins of rmii and rgmii
-Date: Sat, 30 Sep 2017 17:07:27 +0200
-Message-ID: <1908269.6t3djq65xf@phil>
-References: <1506773601-27315-1-git-send-email-david.wu@rock-chips.com> <1506773601-27315-3-git-send-email-david.wu@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] ASoC: rockchip: Fix wrong allocation size of dapm routes
+Date: Mon, 2 Oct 2017 08:14:50 -0700
+Message-ID: <CAD=FV=V+sVf8E_ka1u5kDBKWS6MY3vMpaVgmjDV1CnVSOkQ3AA@mail.gmail.com>
+References: <20170929035252.19808-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1506773601-27315-3-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, andy.yan@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20170929035252.19808-1-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jaroslav Kysela <perex@perex.cz>, ALSA Development Mailing List <alsa-devel@alsa-project.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+Hi,
 
-Am Samstag, 30. September 2017, 20:13:21 CEST schrieb David Wu:
-> If the gmac-m1 optimization(bit10) is selected, the gpio function
-> of gmac pins is not valid. We may use the rmii mode for gmac interface,
-> the pins such as rx_d2, rx_d3, which the rgmii mode used, but rmii not
-> used could be taken as gpio function. So gmac_rxd0m1 selects the bit2,
-> and gmac_rxd0m3 select bit10 is more correct.
-> 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+On Thu, Sep 28, 2017 at 8:52 PM, Jeffy Chen <jeffy.chen@rock-chips.com> wrote:
+> The allocation size of dapm routes is wrong, correct it.
+>
+> Fixes: d9f9c167edae ("ASoC: rockchip: Init dapm routes dynamically")
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+>
+>  sound/soc/rockchip/rk3399_gru_sound.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 
-the patch subject should mention the the rk3328 whose routing gets fixed
-(like adding a simple "on rk3328" to it), otherwise
+I guess Jeffy and I found this independently.  In
+http://crosreview.com/693319 Jeffy indicated that he thought my patch
+could land, so I guess drop his and take mine from
+<https://patchwork.kernel.org/patch/9978763/>?
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Thanks!
+
+-Doug
