@@ -1,82 +1,63 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v2 2/7] drm/rockchip: dw_hdmi: add device type
-Date: Tue, 3 Oct 2017 11:52:33 +0200
-Message-ID: <7133fdf3-afde-f548-06fa-81b0dc170116@baylibre.com>
-References: <1506735713-147081-0>
- <1506735836-151661-1-git-send-email-algea.cao@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 3/3] mmc: dw_mmc: Add locking to the CTO timer
+Date: Tue, 3 Oct 2017 11:45:50 -0700
+Message-ID: <CAD=FV=U78WfojBJYEObr1M6aR=zxNC1MkOLuREnGXABFoqYXPw@mail.gmail.com>
+References: <20170927205631.31559-1-dianders@chromium.org> <20170927205631.31559-4-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1506735836-151661-1-git-send-email-algea.cao@rock-chips.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Algea Cao <algea.cao@rock-chips.com>, daniel.vetter@intel.com, jani.nikula@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: yang.zheng@rock-chips.com, kever.yang@rock-chips.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <20170927205631.31559-4-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Alexandru M Stan <amstan@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMzAvMDkvMjAxNyAwMzo0MywgQWxnZWEgQ2FvIHdyb3RlOgo+IFRvIGRldGVybWluZSB0eXBl
-IG9mIFNPQywgd2UgYWRkIGEgcGFyYW1ldGVyIGRldl90eXBlLgo+IAo+IFNpZ25lZC1vZmYtYnk6
-IEFsZ2VhIENhbyA8YWxnZWEuY2FvQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgIDUgKysrKysKPiAgaW5jbHVkZS9k
-cm0vYnJpZGdlL2R3X2hkbWkuaCAgICAgICAgICAgICAgICB8IDEwICsrKysrKysrKysKPiAgMiBm
-aWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gaW5kZXggNzE5NDUyZC4uMDljNzdmOSAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+IEBAIC00Niw2
-ICs0Niw3IEBAIHN0cnVjdCByb2NrY2hpcF9oZG1pIHsKPiAgCXN0cnVjdCByZWdtYXAgKnJlZ21h
-cDsKPiAgCXN0cnVjdCBkcm1fZW5jb2RlciBlbmNvZGVyOwo+ICAJY29uc3Qgc3RydWN0IHJvY2tj
-aGlwX2hkbWlfY2hpcF9kYXRhICpjaGlwX2RhdGE7Cj4gKwllbnVtIGR3X2hkbWlfZGV2dHlwZSBk
-ZXZfdHlwZTsKPiAgCXN0cnVjdCBjbGsgKnZwbGxfY2xrOwo+ICAJc3RydWN0IGNsayAqZ3JmX2Ns
-azsKPiAgfTsKPiBAQCAtMzA1LDYgKzMwNiw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHdfaGRt
-aV9wbGF0X2RhdGEgcmszMjg4X2hkbWlfZHJ2X2RhdGEgPSB7Cj4gIAkuY3VyX2N0ciAgICA9IHJv
-Y2tjaGlwX2N1cl9jdHIsCj4gIAkucGh5X2NvbmZpZyA9IHJvY2tjaGlwX3BoeV9jb25maWcsCj4g
-IAkucGh5X2RhdGEgPSAmcmszMjg4X2NoaXBfZGF0YSwKPiArCS5kZXZfdHlwZSAgID0gUkszMjg4
-X0hETUksCj4gIH07Cj4gIAo+ICBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2hkbWlfY2hpcF9kYXRh
-IHJrMzM5OV9jaGlwX2RhdGEgPSB7Cj4gQEAgLTMxNSw2ICszMTcsNyBAQCBzdGF0aWMgc3RydWN0
-IHJvY2tjaGlwX2hkbWlfY2hpcF9kYXRhIHJrMzM5OV9jaGlwX2RhdGEgPSB7Cj4gIAo+ICBzdGF0
-aWMgY29uc3Qgc3RydWN0IGR3X2hkbWlfcGxhdF9kYXRhIHJrMzMyOF9oZG1pX2Rydl9kYXRhID0g
-ewo+ICAJLm1vZGVfdmFsaWQgPSBkd19oZG1pX3JvY2tjaGlwX21vZGVfdmFsaWQsCj4gKwkuZGV2
-X3R5cGUgICA9IFJLMzMyOF9IRE1JLAo+ICB9Owo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X2hk
-bWlfcGxhdF9kYXRhIHJrMzM5OV9oZG1pX2Rydl9kYXRhID0gewo+ICAJLm1vZGVfdmFsaWQgPSBk
-d19oZG1pX3JvY2tjaGlwX21vZGVfdmFsaWQsCj4gQEAgLTMyMiw2ICszMjUsNyBAQCBzdGF0aWMg
-Y29uc3Qgc3RydWN0IGR3X2hkbWlfcGxhdF9kYXRhIHJrMzM5OV9oZG1pX2Rydl9kYXRhID0gewo+
-ICAJLmN1cl9jdHIgICAgPSByb2NrY2hpcF9jdXJfY3RyLAo+ICAJLnBoeV9jb25maWcgPSByb2Nr
-Y2hpcF9waHlfY29uZmlnLAo+ICAJLnBoeV9kYXRhID0gJnJrMzM5OV9jaGlwX2RhdGEsCj4gKwku
-ZGV2X3R5cGUgICA9IFJLMzM5OV9IRE1JLAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVj
-dCBvZl9kZXZpY2VfaWQgZHdfaGRtaV9yb2NrY2hpcF9kdF9pZHNbXSA9IHsKPiBAQCAtMzYwLDYg
-KzM2NCw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2Ug
-KmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJcGxhdF9kYXRhID0gbWF0Y2gtPmRhdGE7
-Cj4gIAloZG1pLT5kZXYgPSAmcGRldi0+ZGV2Owo+ICAJaGRtaS0+Y2hpcF9kYXRhID0gcGxhdF9k
-YXRhLT5waHlfZGF0YTsKPiArCWhkbWktPmRldl90eXBlID0gcGxhdF9kYXRhLT5kZXZfdHlwZTsK
-PiAgCWVuY29kZXIgPSAmaGRtaS0+ZW5jb2RlcjsKPiAgCj4gIAllbmNvZGVyLT5wb3NzaWJsZV9j
-cnRjcyA9IGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKGRybSwgZGV2LT5vZl9ub2RlKTsKPiBk
-aWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaCBiL2luY2x1ZGUvZHJtL2Jy
-aWRnZS9kd19oZG1pLmgKPiBpbmRleCAxODJmODMyLi5mZGIxZjBhIDEwMDY0NAo+IC0tLSBhL2lu
-Y2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmgKPiArKysgYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdf
-aGRtaS5oCj4gQEAgLTkyLDYgKzkyLDE1IEBAIGVudW0gZHdfaGRtaV9waHlfdHlwZSB7Cj4gIAlE
-V19IRE1JX1BIWV9WRU5ET1JfUEhZID0gMHhmZSwKPiAgfTsKPiAgCj4gK2VudW0gZHdfaGRtaV9k
-ZXZ0eXBlIHsKPiArCVJLMzIyOF9IRE1JLAo+ICsJUkszMjg4X0hETUksCj4gKwlSSzMzMjhfSERN
-SSwKPiArCVJLMzM2Nl9IRE1JLAo+ICsJUkszMzY4X0hETUksCj4gKwlSSzMzOTlfSERNSSwKPiAr
-fTsKPiArCj4gIHN0cnVjdCBkd19oZG1pX21wbGxfY29uZmlnIHsKPiAgCXVuc2lnbmVkIGxvbmcg
-bXBpeGVsY2xvY2s7Cj4gIAlzdHJ1Y3Qgewo+IEBAIC0xMjQsNiArMTMzLDcgQEAgc3RydWN0IGR3
-X2hkbWlfcGh5X29wcyB7Cj4gIAo+ICBzdHJ1Y3QgZHdfaGRtaV9wbGF0X2RhdGEgewo+ICAJc3Ry
-dWN0IHJlZ21hcCAqcmVnbTsKPiArCWVudW0gZHdfaGRtaV9kZXZ0eXBlIGRldl90eXBlOwoKUGxl
-YXNlIGRvbid0IGRvIHRoYXQsIGR3LWhkbWkgZHJpdmVyIHNob3VsZCBub3QgaGF2ZSBrbm93bGVk
-Z2Ugb2YgdGhlIGRldmljZSB0eXBlLAppZiB0aGUgdmVuZG9yIFBIWSByZXBvcnRpbmcgaXMgYnJv
-a2VuLCBhZGQgYSB3YXkgdG8gZm9yY2UgcGh5X3R5cGUgdG8gRFdfSERNSV9QSFlfVkVORE9SX1BI
-WS4KCk5laWwKCj4gIAllbnVtIGRybV9tb2RlX3N0YXR1cyAoKm1vZGVfdmFsaWQpKHN0cnVjdCBk
-cm1fY29ubmVjdG9yICpjb25uZWN0b3IsCj4gIAkJCQkJICAgY29uc3Qgc3RydWN0IGRybV9kaXNw
-bGF5X21vZGUgKm1vZGUpOwo+ICAJdW5zaWduZWQgbG9uZyBpbnB1dF9idXNfZm9ybWF0Owo+IAoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+On Wed, Sep 27, 2017 at 1:56 PM, Douglas Anderson <dianders@chromium.org> wrote:
+> This attempts to instill a bit of paranoia to the code dealing with
+> the CTO timer.  It's believed that this will make the CTO timer more
+> robust in the case that we're having very long interrupt latencies.
+>
+> Note that I originally thought that perhaps this patch was being
+> overly paranoid and wasn't really needed, but then while I was running
+> mmc_test on an rk3399 board I saw one instance of the message:
+>   dwmmc_rockchip fe320000.dwmmc: Unexpected interrupt latency
+>
+> I had debug prints in the CTO timer code and I found that it was
+> running CMD 13 at the time.
+>
+> ...so even though this patch seems like it might be overly paranoid,
+> maybe it really isn't?
+>
+> Presumably the bad interrupt latency experienced was due to the fact
+> that I had serial console enabled as serial console is typically where
+> I place blame when I see absurdly large interrupt latencies.  In this
+> particular case there was an (unrelated) printout to the serial
+> console just before I saw the "Unexpected interrupt latency" printout.
+>
+> ...and actually, I managed to even reproduce the problems by running
+> "iw mlan0 scan > /dev/null" while mmc_test was running.  That not only
+> does a bunch of PCIe traffic but it also (on my system) outputs some
+> SELinux log spam.
+>
+> Fixes: 03de19212ea3 ("mmc: dw_mmc: introduce timer for broken command transfer over scheme")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>
+>  drivers/mmc/host/dw_mmc.c | 92 +++++++++++++++++++++++++++++++++++++++++------
+>  1 file changed, 82 insertions(+), 10 deletions(-)
+
+I'm hoping that someone upstream might have some time to test and
+review these three patches since I believe that they fix a regression
+in 4.14.  I pinged Shawn Lin and found that it's a Chinese holiday
+right now so he won't be able to test util next week, but presumably
+others might be noticing problems with SD cards or eMMC using dw_mmc
+on kernel 4.14, especially with serial console enabled?
+
+Adding linux-rockchip to the CC here.  Original patches can be found
+on patchwork.kernel.org...
+
+Thanks!
+
+-Doug
