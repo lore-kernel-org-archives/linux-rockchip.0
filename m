@@ -1,84 +1,82 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH] phy: rockchip-typec: Check for errors from
- tcphy_phy_init()
-Date: Tue, 3 Oct 2017 15:11:04 +0530
-Message-ID: <07d21b93-e58b-c5e3-8b9e-7150c023c452@ti.com>
-References: <20170929235846.1913-1-dianders@chromium.org>
- <CABXOdTdukST-8tRh6Z2mRTFYwseiknEzB7FL+uiz_PxYrYYjgw@mail.gmail.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH v2 2/7] drm/rockchip: dw_hdmi: add device type
+Date: Tue, 3 Oct 2017 11:52:33 +0200
+Message-ID: <7133fdf3-afde-f548-06fa-81b0dc170116@baylibre.com>
+References: <1506735713-147081-0>
+ <1506735836-151661-1-git-send-email-algea.cao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CABXOdTdukST-8tRh6Z2mRTFYwseiknEzB7FL+uiz_PxYrYYjgw@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Guenter Roeck <groeck@google.com>, Douglas Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, Chris <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, wulf <wulf@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1506735836-151661-1-git-send-email-algea.cao@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Algea Cao <algea.cao@rock-chips.com>, daniel.vetter@intel.com, jani.nikula@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: yang.zheng@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On Saturday 30 September 2017 04:08 PM, Guenter Roeck wrote:
-> On Fri, Sep 29, 2017 at 4:58 PM, Douglas Anderson <dianders@chromium.org> wrote:
->> The function tcphy_phy_init() could return an error but the callers
->> weren't checking the return value.  They should.  In at least one case
->> while testing I saw the message "wait pma ready timeout" which
->> indicates that tcphy_phy_init() really could return an error and we
->> should account for it.
->>
->> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> 
-> Reviewed-by: Guenter Roeck <groeck@chromium.org>
-
-merged, thanks!
-
--Kishon
-> 
->> ---
->>
->>  drivers/phy/rockchip/phy-rockchip-typec.c | 13 +++++++++----
->>  1 file changed, 9 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
->> index 4d2c57f21d76..38831eebc934 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
->> @@ -685,8 +685,11 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
->>         if (tcphy->mode == new_mode)
->>                 goto unlock_ret;
->>
->> -       if (tcphy->mode == MODE_DISCONNECT)
->> -               tcphy_phy_init(tcphy, new_mode);
->> +       if (tcphy->mode == MODE_DISCONNECT) {
->> +               ret = tcphy_phy_init(tcphy, new_mode);
->> +               if (ret)
->> +                       goto unlock_ret;
->> +       }
->>
->>         /* wait TCPHY for pipe ready */
->>         for (timeout = 0; timeout < 100; timeout++) {
->> @@ -760,10 +763,12 @@ static int rockchip_dp_phy_power_on(struct phy *phy)
->>          */
->>         if (new_mode == MODE_DFP_DP && tcphy->mode != MODE_DISCONNECT) {
->>                 tcphy_phy_deinit(tcphy);
->> -               tcphy_phy_init(tcphy, new_mode);
->> +               ret = tcphy_phy_init(tcphy, new_mode);
->>         } else if (tcphy->mode == MODE_DISCONNECT) {
->> -               tcphy_phy_init(tcphy, new_mode);
->> +               ret = tcphy_phy_init(tcphy, new_mode);
->>         }
->> +       if (ret)
->> +               goto unlock_ret;
->>
->>         ret = readx_poll_timeout(readl, tcphy->base + DP_MODE_CTL,
->>                                  val, val & DP_MODE_A2, 1000,
->> --
->> 2.14.2.822.g60be5d43e6-goog
->>
+T24gMzAvMDkvMjAxNyAwMzo0MywgQWxnZWEgQ2FvIHdyb3RlOgo+IFRvIGRldGVybWluZSB0eXBl
+IG9mIFNPQywgd2UgYWRkIGEgcGFyYW1ldGVyIGRldl90eXBlLgo+IAo+IFNpZ25lZC1vZmYtYnk6
+IEFsZ2VhIENhbyA8YWxnZWEuY2FvQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgIDUgKysrKysKPiAgaW5jbHVkZS9k
+cm0vYnJpZGdlL2R3X2hkbWkuaCAgICAgICAgICAgICAgICB8IDEwICsrKysrKysrKysKPiAgMiBm
+aWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gaW5kZXggNzE5NDUyZC4uMDljNzdmOSAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+IEBAIC00Niw2
+ICs0Niw3IEBAIHN0cnVjdCByb2NrY2hpcF9oZG1pIHsKPiAgCXN0cnVjdCByZWdtYXAgKnJlZ21h
+cDsKPiAgCXN0cnVjdCBkcm1fZW5jb2RlciBlbmNvZGVyOwo+ICAJY29uc3Qgc3RydWN0IHJvY2tj
+aGlwX2hkbWlfY2hpcF9kYXRhICpjaGlwX2RhdGE7Cj4gKwllbnVtIGR3X2hkbWlfZGV2dHlwZSBk
+ZXZfdHlwZTsKPiAgCXN0cnVjdCBjbGsgKnZwbGxfY2xrOwo+ICAJc3RydWN0IGNsayAqZ3JmX2Ns
+azsKPiAgfTsKPiBAQCAtMzA1LDYgKzMwNiw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHdfaGRt
+aV9wbGF0X2RhdGEgcmszMjg4X2hkbWlfZHJ2X2RhdGEgPSB7Cj4gIAkuY3VyX2N0ciAgICA9IHJv
+Y2tjaGlwX2N1cl9jdHIsCj4gIAkucGh5X2NvbmZpZyA9IHJvY2tjaGlwX3BoeV9jb25maWcsCj4g
+IAkucGh5X2RhdGEgPSAmcmszMjg4X2NoaXBfZGF0YSwKPiArCS5kZXZfdHlwZSAgID0gUkszMjg4
+X0hETUksCj4gIH07Cj4gIAo+ICBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2hkbWlfY2hpcF9kYXRh
+IHJrMzM5OV9jaGlwX2RhdGEgPSB7Cj4gQEAgLTMxNSw2ICszMTcsNyBAQCBzdGF0aWMgc3RydWN0
+IHJvY2tjaGlwX2hkbWlfY2hpcF9kYXRhIHJrMzM5OV9jaGlwX2RhdGEgPSB7Cj4gIAo+ICBzdGF0
+aWMgY29uc3Qgc3RydWN0IGR3X2hkbWlfcGxhdF9kYXRhIHJrMzMyOF9oZG1pX2Rydl9kYXRhID0g
+ewo+ICAJLm1vZGVfdmFsaWQgPSBkd19oZG1pX3JvY2tjaGlwX21vZGVfdmFsaWQsCj4gKwkuZGV2
+X3R5cGUgICA9IFJLMzMyOF9IRE1JLAo+ICB9Owo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X2hk
+bWlfcGxhdF9kYXRhIHJrMzM5OV9oZG1pX2Rydl9kYXRhID0gewo+ICAJLm1vZGVfdmFsaWQgPSBk
+d19oZG1pX3JvY2tjaGlwX21vZGVfdmFsaWQsCj4gQEAgLTMyMiw2ICszMjUsNyBAQCBzdGF0aWMg
+Y29uc3Qgc3RydWN0IGR3X2hkbWlfcGxhdF9kYXRhIHJrMzM5OV9oZG1pX2Rydl9kYXRhID0gewo+
+ICAJLmN1cl9jdHIgICAgPSByb2NrY2hpcF9jdXJfY3RyLAo+ICAJLnBoeV9jb25maWcgPSByb2Nr
+Y2hpcF9waHlfY29uZmlnLAo+ICAJLnBoeV9kYXRhID0gJnJrMzM5OV9jaGlwX2RhdGEsCj4gKwku
+ZGV2X3R5cGUgICA9IFJLMzM5OV9IRE1JLAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVj
+dCBvZl9kZXZpY2VfaWQgZHdfaGRtaV9yb2NrY2hpcF9kdF9pZHNbXSA9IHsKPiBAQCAtMzYwLDYg
+KzM2NCw3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2Ug
+KmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJcGxhdF9kYXRhID0gbWF0Y2gtPmRhdGE7
+Cj4gIAloZG1pLT5kZXYgPSAmcGRldi0+ZGV2Owo+ICAJaGRtaS0+Y2hpcF9kYXRhID0gcGxhdF9k
+YXRhLT5waHlfZGF0YTsKPiArCWhkbWktPmRldl90eXBlID0gcGxhdF9kYXRhLT5kZXZfdHlwZTsK
+PiAgCWVuY29kZXIgPSAmaGRtaS0+ZW5jb2RlcjsKPiAgCj4gIAllbmNvZGVyLT5wb3NzaWJsZV9j
+cnRjcyA9IGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKGRybSwgZGV2LT5vZl9ub2RlKTsKPiBk
+aWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaCBiL2luY2x1ZGUvZHJtL2Jy
+aWRnZS9kd19oZG1pLmgKPiBpbmRleCAxODJmODMyLi5mZGIxZjBhIDEwMDY0NAo+IC0tLSBhL2lu
+Y2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmgKPiArKysgYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdf
+aGRtaS5oCj4gQEAgLTkyLDYgKzkyLDE1IEBAIGVudW0gZHdfaGRtaV9waHlfdHlwZSB7Cj4gIAlE
+V19IRE1JX1BIWV9WRU5ET1JfUEhZID0gMHhmZSwKPiAgfTsKPiAgCj4gK2VudW0gZHdfaGRtaV9k
+ZXZ0eXBlIHsKPiArCVJLMzIyOF9IRE1JLAo+ICsJUkszMjg4X0hETUksCj4gKwlSSzMzMjhfSERN
+SSwKPiArCVJLMzM2Nl9IRE1JLAo+ICsJUkszMzY4X0hETUksCj4gKwlSSzMzOTlfSERNSSwKPiAr
+fTsKPiArCj4gIHN0cnVjdCBkd19oZG1pX21wbGxfY29uZmlnIHsKPiAgCXVuc2lnbmVkIGxvbmcg
+bXBpeGVsY2xvY2s7Cj4gIAlzdHJ1Y3Qgewo+IEBAIC0xMjQsNiArMTMzLDcgQEAgc3RydWN0IGR3
+X2hkbWlfcGh5X29wcyB7Cj4gIAo+ICBzdHJ1Y3QgZHdfaGRtaV9wbGF0X2RhdGEgewo+ICAJc3Ry
+dWN0IHJlZ21hcCAqcmVnbTsKPiArCWVudW0gZHdfaGRtaV9kZXZ0eXBlIGRldl90eXBlOwoKUGxl
+YXNlIGRvbid0IGRvIHRoYXQsIGR3LWhkbWkgZHJpdmVyIHNob3VsZCBub3QgaGF2ZSBrbm93bGVk
+Z2Ugb2YgdGhlIGRldmljZSB0eXBlLAppZiB0aGUgdmVuZG9yIFBIWSByZXBvcnRpbmcgaXMgYnJv
+a2VuLCBhZGQgYSB3YXkgdG8gZm9yY2UgcGh5X3R5cGUgdG8gRFdfSERNSV9QSFlfVkVORE9SX1BI
+WS4KCk5laWwKCj4gIAllbnVtIGRybV9tb2RlX3N0YXR1cyAoKm1vZGVfdmFsaWQpKHN0cnVjdCBk
+cm1fY29ubmVjdG9yICpjb25uZWN0b3IsCj4gIAkJCQkJICAgY29uc3Qgc3RydWN0IGRybV9kaXNw
+bGF5X21vZGUgKm1vZGUpOwo+ICAJdW5zaWduZWQgbG9uZyBpbnB1dF9idXNfZm9ybWF0Owo+IAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
