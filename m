@@ -1,63 +1,131 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 3/3] mmc: dw_mmc: Add locking to the CTO timer
-Date: Tue, 3 Oct 2017 11:45:50 -0700
-Message-ID: <CAD=FV=U78WfojBJYEObr1M6aR=zxNC1MkOLuREnGXABFoqYXPw@mail.gmail.com>
-References: <20170927205631.31559-1-dianders@chromium.org> <20170927205631.31559-4-dianders@chromium.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: Add document for rockchip RGB output
+ interface
+Date: Tue, 3 Oct 2017 16:56:31 -0500
+Message-ID: <20171003215631.rc2jsf2m3qgoltsb@rob-hp-laptop>
+References: <1506049221-117283-1-git-send-email-hjc@rock-chips.com>
+ <1506049229-117376-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20170927205631.31559-4-dianders@chromium.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Brian Norris <briannorris@chromium.org>, Alexandru M Stan <amstan@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1506049229-117376-1-git-send-email-hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Sep 27, 2017 at 1:56 PM, Douglas Anderson <dianders@chromium.org> wrote:
-> This attempts to instill a bit of paranoia to the code dealing with
-> the CTO timer.  It's believed that this will make the CTO timer more
-> robust in the case that we're having very long interrupt latencies.
->
-> Note that I originally thought that perhaps this patch was being
-> overly paranoid and wasn't really needed, but then while I was running
-> mmc_test on an rk3399 board I saw one instance of the message:
->   dwmmc_rockchip fe320000.dwmmc: Unexpected interrupt latency
->
-> I had debug prints in the CTO timer code and I found that it was
-> running CMD 13 at the time.
->
-> ...so even though this patch seems like it might be overly paranoid,
-> maybe it really isn't?
->
-> Presumably the bad interrupt latency experienced was due to the fact
-> that I had serial console enabled as serial console is typically where
-> I place blame when I see absurdly large interrupt latencies.  In this
-> particular case there was an (unrelated) printout to the serial
-> console just before I saw the "Unexpected interrupt latency" printout.
->
-> ...and actually, I managed to even reproduce the problems by running
-> "iw mlan0 scan > /dev/null" while mmc_test was running.  That not only
-> does a bunch of PCIe traffic but it also (on my system) outputs some
-> SELinux log spam.
->
-> Fixes: 03de19212ea3 ("mmc: dw_mmc: introduce timer for broken command transfer over scheme")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+On Fri, Sep 22, 2017 at 11:00:26AM +0800, Sandy Huang wrote:
+> This path add support rv1108 rgb output interface driver.
+> 
+> Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->
->  drivers/mmc/host/dw_mmc.c | 92 +++++++++++++++++++++++++++++++++++++++++------
->  1 file changed, 82 insertions(+), 10 deletions(-)
+> Changes in v2:
+>  1. rename rockchip,rgb-mode to rgb-mode;
 
-I'm hoping that someone upstream might have some time to test and
-review these three patches since I believe that they fix a regression
-in 4.14.  I pinged Shawn Lin and found that it's a Chinese holiday
-right now so he won't be able to test util next week, but presumably
-others might be noticing problems with SD cards or eMMC using dw_mmc
-on kernel 4.14, especially with serial console enabled?
+You can't just drop the vendor. This needs to be documented in a common 
+place that others will find and use. See panel-common.txt or 
+panel-dpi.txt.
 
-Adding linux-rockchip to the CC here.  Original patches can be found
-on patchwork.kernel.org...
+Alternatively, you could just drop it and let the panel compatible imply 
+what the mode is. 
 
-Thanks!
 
--Doug
+>  2. delete reg for signle endpoint;
+> 
+>  .../bindings/display/rockchip/rockchip-rgb.txt     | 78 ++++++++++++++++++++++
+>  1 file changed, 78 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
+> new file mode 100644
+> index 0000000..86bd1ce
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
+> @@ -0,0 +1,78 @@
+> +Rockchip RV1108 RGB interface
+> +================================
+> +
+> +Required properties:
+> +- compatible: matching the soc type:
+> +	- "rockchip,rv1108-rgb";
+> +
+> +Optional properties:
+> +- pinctrl-names: must contain a "lcdc" entry.
+> +- pinctrl-0: pin control group to be used for this interface.
+> +
+> +Required nodes:
+> +- rgb-mode: should be "p888", "p666", "p565", "s888", "s888-dummy"
+> +	- p888: output r8-g8-b8 at each dclk cycle for per-pixel
+> +	- p666: output r6-g6-b6 at each dclk cycle for per-pixel
+> +	- p565: output r5-g6-b5 at each dclk cycle for per-pixel
+> +	- s888: output r8-g8-b8 in three dclk cycle for per-pixel
+> +	- s888-dmmy: output r8-g8-b8-dummy in four dclk cycle for per-pixel
+> +
+> +The rgb has two video ports described by:
+> +	Documentation/devicetree/bindings/media/video-interfaces.txt
+> +Their connections are modeled using the OF graph bindings specified in
+> +	Documentation/devicetree/bindings/graph.txt.
+> +
+> +- video port 0 for the VOP input, the remote endpoint maybe vopb/vopl/vop
+> +- video port 1 for either a panel or subsequent encoder
+> +
+> +the panel described by:
+> +	Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> +Panel other required properties:
+> +- ports for remote rgb output.
+> +
+> +Example:
+> +
+> +panel: panel {
+> +	compatible = "auo,b101ean01";
+> +	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
+> +
+> +	ports {
+> +		panel_in_rgb: endpoint {
+> +			remote-endpoint = <&rgb_out_panel>;
+> +		};
+> +	};
+> +};
+> +
+> +For Rockchip RV1108:
+> +
+> +	rgb: rgb {
+> +		compatible = "rockchip,rv1108-rgb";
+> +		pinctrl-names = "lcdc";
+> +		pinctrl-0 = <&lcdc_ctl>;
+> +		rgb-mode = "p888";
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			rgb_in: port@0 {
+> +				reg = <0>;
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				rgb_in_vop: endpoint {
+> +					remote-endpoint = <&vop_out_rgb>;
+> +				};
+> +			};
+> +
+> +			rgb_out: port@1 {
+> +				reg = <1>;
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				rgb_out_panel: endpoint {
+> +					remote-endpoint = <&panel_in_rgb>;
+> +				};
+> +			};
+> +		};
+> +	};
+> -- 
+> 2.7.4
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
