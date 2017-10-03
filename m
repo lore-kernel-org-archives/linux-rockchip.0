@@ -1,34 +1,64 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] ASoC: rockchip: Fix wrong allocation size of dapm routes
-Date: Mon, 2 Oct 2017 08:14:50 -0700
-Message-ID: <CAD=FV=V+sVf8E_ka1u5kDBKWS6MY3vMpaVgmjDV1CnVSOkQ3AA@mail.gmail.com>
-References: <20170929035252.19808-1-jeffy.chen@rock-chips.com>
+From: Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH] extcon: Split out extcon header file for consumer and
+ provider device
+Date: Tue, 3 Oct 2017 10:32:04 +0800
+Message-ID: <CAGb2v641HBJ0MPZMx0YhOMWZeNKNiUJ48r-2Gh3WE7x41wJy4g@mail.gmail.com>
+References: <CGME20170929000148epcas2p200e56186b067ec626a033c7ae2d4bbdb@epcas2p2.samsung.com>
+ <1506643305-4581-1-git-send-email-cw00.choi@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170929035252.19808-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jaroslav Kysela <perex@perex.cz>, ALSA Development Mailing List <alsa-devel@alsa-project.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <1506643305-4581-1-git-send-email-cw00.choi@samsung.com>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Chanwoo Choi <cw00.choi@samsung.com>
+Cc: Felipe Balbi <balbi@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Sebastian Reichel <sre@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, yoshihiro.shimoda.uh@renesas.com, Krzysztof Kozlowski <krzk@kernel.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, chanwoo@kernel.org, myungjoo.ham@samsung.com, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:THERMAL" <linux-pm@vger.kernel.org>, linux-usb <linux-usb@vger.kernel.org>, "open list:ARM/SHMOBILE ARM..." <linux-renesas-soc@vger.kernel.org>open l
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, Sep 28, 2017 at 8:52 PM, Jeffy Chen <jeffy.chen@rock-chips.com> wrote:
-> The allocation size of dapm routes is wrong, correct it.
+On Fri, Sep 29, 2017 at 8:01 AM, Chanwoo Choi <cw00.choi@samsung.com> wrote:
+> The extcon has two type of extcon devices as following.
+> - 'extcon provider deivce' adds new extcon device and detect the
+>    state/properties of external connector. Also, it notifies the
+>    state/properties to the extcon consumer device.
+> - 'extcon consumer device' gets the change state/properties
+>    from extcon provider device.
+> Prior to that, include/linux/extcon.h contains all exported API for
+> both provider and consumer device driver. To clarify the meaning of
+> header file and to remove the wrong use-case on consumer device,
+> this patch separates into extcon.h and extcon-provider.h.
 >
-> Fixes: d9f9c167edae ("ASoC: rockchip: Init dapm routes dynamically")
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> [Description for include/linux/{extcon.h|extcon-provider.h}]
+> - extcon.h includes the extcon API and data structure for extcon consumer
+>   device driver. This header file contains the following APIs:
+>   : Register/unregister the notifier to catch the change of extcon device
+>   : Get the extcon device instance
+>   : Get the extcon device name
+>   : Get the state of each external connector
+>   : Get the property value of each external connector
+>   : Get the property capability of each external connector
+>
+> - extcon-provider.h includes the extcon API and data structure for extcon
+>   provider device driver. This header file contains the following APIs:
+>   : Include 'include/linux/extcon.h'
+>   : Allocate the memory for extcon device instance
+>   : Register/unregister extcon device
+>   : Set the state of each external connector
+>   : Set the property value of each external connector
+>   : Set the property capability of each external connector
+>
+> Cc: Felipe Balbi <balbi@kernel.org>
+> Cc: Kishon Vijay Abraham I <kishon@ti.com>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Sebastian Reichel <sre@kernel.org>
+> Cc: Lee Jones <lee.jones@linaro.org>
+> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
 > ---
->
->  sound/soc/rockchip/rk3399_gru_sound.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
 
-I guess Jeffy and I found this independently.  In
-http://crosreview.com/693319 Jeffy indicated that he thought my patch
-could land, so I guess drop his and take mine from
-<https://patchwork.kernel.org/patch/9978763/>?
+For
 
-Thanks!
+>  drivers/extcon/extcon-axp288.c                |   2 +-
 
--Doug
+and
+
+>  drivers/phy/allwinner/phy-sun4i-usb.c         |   2 +-
+
+Acked-by: Chen-Yu Tsai <wens@csie.org>
