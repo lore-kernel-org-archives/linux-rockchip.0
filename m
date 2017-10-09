@@ -1,88 +1,91 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Fix memory leak in rockchip_drm_sys_resume()
-Date: Mon, 09 Oct 2017 14:49:08 +0800
-Message-ID: <59DB1BE4.9080907@rock-chips.com>
-References: <20170927122642.18628-1-jeffy.chen@rock-chips.com> <20170927202709.ugbjyi3ktfjssiyp@art_vandelay> <59CC6996.2000402@rock-chips.com>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: Add document for rockchip RGB output
+ interface
+Date: Mon, 9 Oct 2017 16:06:05 +0800
+Message-ID: <2d502a9d-e952-8afb-d2d7-45c21c36da7e@rock-chips.com>
+References: <1506049221-117283-1-git-send-email-hjc@rock-chips.com>
+ <1506049229-117376-1-git-send-email-hjc@rock-chips.com>
+ <20171003215631.rc2jsf2m3qgoltsb@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <59CC6996.2000402@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171003215631.rc2jsf2m3qgoltsb@rob-hp-laptop>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sean,
-
-On 09/28/2017 11:16 AM, jeffy wrote:
-> Hi Sean,
->
-> On 09/28/2017 04:27 AM, Sean Paul wrote:
->>> >@@ -299,6 +300,7 @@ static int rockchip_drm_sys_resume(struct device
->>> *dev)
->>> >
->>> >      priv = drm->dev_private;
->>> >      drm_atomic_helper_resume(drm, priv->state);
->>> >+    drm_atomic_state_put(priv->state);
->> Won't this be freed for you eventually in commit_tail()?
->>
-> i think the drm_atomic_state_put in commit_tail is paired to the
-> drm_atomic_state_get in drm_atomic_helper_commit.
->
-> and the kmemleak shows(after a few suspend/resume):
->
->      unreferenced object 0xffffffc0ce0fa400 (size 256):
->      ...
->        backtrace:
->          [<ffffffc00034a9a8>] __save_stack_trace+0x48/0x6c
->          [<ffffffc00034b088>] create_object+0x138/0x254
->          [<ffffffc0009d5504>] kmemleak_alloc+0x58/0x8c
->          [<ffffffc000345f78>] __kmalloc+0x1d4/0x2a0
->          [<ffffffc0006765bc>] usb_alloc_urb+0x30/0x60
->          [<ffffffbffc128598>] alloc_ctrl_urb+0x38/0x120 [btusb]
->          [<ffffffbffc129e7c>] btusb_send_frame+0x64/0xf8 [btusb]
-
-oops, the log is wrong...
-
-it should be:
-unreferenced object 0xffffffc0c75fe600 (size 256):
-   comm "bash", pid 168, jiffies 4294748032 (age 557.932s)
-   hex dump (first 32 bytes):
-     e0 4a 02 ce c0 ff ff ff 00 98 f2 c8 c0 ff ff ff  .J..............
-     00 98 f2 c8 c0 ff ff ff 00 45 9f cb c0 ff ff ff  .........E......
-   backtrace:
-     [<ffffff9008c76ba0>] kmemleak_alloc+0x58/0x8c
-     [<ffffff900828fe70>] __kmalloc+0x1dc/0x2d4
-     [<ffffff9008647698>] drm_atomic_state_init+0xb8/0x114
-     [<ffffff9008649ed8>] drm_atomic_state_alloc+0x70/0xa4
-     [<ffffff90086209f8>] drm_atomic_helper_duplicate_state+0x94/0x210
-     [<ffffff9008621184>] drm_atomic_helper_suspend+0xb4/0x160
-     [<ffffff9008666f18>] rockchip_drm_sys_suspend+0x5c/0xa0
-     [<ffffff9008697f18>] platform_pm_suspend+0x58/0x74
-     [<ffffff90086a7f98>] dpm_run_callback+0x13c/0x2f0
-     [<ffffff90086a9064>] __device_suspend+0x28c/0x3fc
-     [<ffffff90086ab9ec>] dpm_suspend+0x1cc/0x50c
-     [<ffffff90086ac5a4>] dpm_suspend_start+0x8c/0xa4
-     [<ffffff90081226a0>] suspend_devices_and_enter+0x12c/0xd84
-     [<ffffff9008123d30>] pm_suspend+0xa38/0xb98
-     [<ffffff9008120f94>] state_store+0xe0/0x108
-     [<ffffff9008c63e7c>] kobj_attr_store+0x48/0x58
-
-
-since it's allocated in the drm_atomic_helper_suspend(), maybe it would 
-make more sense to unref it in drm_atomic_helper_resume(), i'll send a 
-v2 patch for it :)
-
->
->
->
->
-> checking the current code, i saw only i915/intel_display.c has this
-> drm_atomic_state_put for the state allocated by
-> drm_atomic_helper_suspend(), there're many drivers missing that(or maybe
-> they free it in some other way?)
->
->> Sean
->>
->
+SGkgcm9iLAogICAgIFRoYW5rcyBmb3IgeW91ciByZXBseS4KCuWcqCAyMDE3LzEwLzQgNTo1Niwg
+Um9iIEhlcnJpbmcg5YaZ6YGTOgo+IE9uIEZyaSwgU2VwIDIyLCAyMDE3IGF0IDExOjAwOjI2QU0g
+KzA4MDAsIFNhbmR5IEh1YW5nIHdyb3RlOgo+PiBUaGlzIHBhdGggYWRkIHN1cHBvcnQgcnYxMTA4
+IHJnYiBvdXRwdXQgaW50ZXJmYWNlIGRyaXZlci4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2FuZHkg
+SHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+IENoYW5nZXMgaW4gdjI6Cj4+ICAg
+MS4gcmVuYW1lIHJvY2tjaGlwLHJnYi1tb2RlIHRvIHJnYi1tb2RlOwo+IAo+IFlvdSBjYW4ndCBq
+dXN0IGRyb3AgdGhlIHZlbmRvci4gVGhpcyBuZWVkcyB0byBiZSBkb2N1bWVudGVkIGluIGEgY29t
+bW9uCj4gcGxhY2UgdGhhdCBvdGhlcnMgd2lsbCBmaW5kIGFuZCB1c2UuIFNlZSBwYW5lbC1jb21t
+b24udHh0IG9yCj4gcGFuZWwtZHBpLnR4dC4KPiAKPiBBbHRlcm5hdGl2ZWx5LCB5b3UgY291bGQg
+anVzdCBkcm9wIGl0IGFuZCBsZXQgdGhlIHBhbmVsIGNvbXBhdGlibGUgaW1wbHkKPiB3aGF0IHRo
+ZSBtb2RlIGlzLgo+IAo+IApvaywgZ2V0IGl0LCBpIHdpbGwgbW92ZSB0aGUgcmdiLW1vZGUgdG8g
+cGFuZWwgYW5kIGRlc2NyaWJlIGl0IGF0IApwYW5lbC1yZ2IudHh0LiB0aGUgcGF0Y2hlcyB3aWxs
+IGJlIHNlbmQgc29vbiBsYXRlci4KCj4+ICAgMi4gZGVsZXRlIHJlZyBmb3Igc2lnbmxlIGVuZHBv
+aW50Owo+Pgo+PiAgIC4uLi9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXJnYi50
+eHQgICAgIHwgNzggKysrKysrKysrKysrKysrKysrKysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA3
+OCBpbnNlcnRpb25zKCspCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXJnYi50eHQKPj4KPj4g
+ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3Jv
+Y2tjaGlwL3JvY2tjaGlwLXJnYi50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC1yZ2IudHh0Cj4+IG5ldyBmaWxlIG1vZGUgMTAw
+NjQ0Cj4+IGluZGV4IDAwMDAwMDAuLjg2YmQxY2UKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hp
+cC1yZ2IudHh0Cj4+IEBAIC0wLDAgKzEsNzggQEAKPj4gK1JvY2tjaGlwIFJWMTEwOCBSR0IgaW50
+ZXJmYWNlCj4+ICs9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQo+PiArCj4+ICtSZXF1
+aXJlZCBwcm9wZXJ0aWVzOgo+PiArLSBjb21wYXRpYmxlOiBtYXRjaGluZyB0aGUgc29jIHR5cGU6
+Cj4+ICsJLSAicm9ja2NoaXAscnYxMTA4LXJnYiI7Cj4+ICsKPj4gK09wdGlvbmFsIHByb3BlcnRp
+ZXM6Cj4+ICstIHBpbmN0cmwtbmFtZXM6IG11c3QgY29udGFpbiBhICJsY2RjIiBlbnRyeS4KPj4g
+Ky0gcGluY3RybC0wOiBwaW4gY29udHJvbCBncm91cCB0byBiZSB1c2VkIGZvciB0aGlzIGludGVy
+ZmFjZS4KPj4gKwo+PiArUmVxdWlyZWQgbm9kZXM6Cj4+ICstIHJnYi1tb2RlOiBzaG91bGQgYmUg
+InA4ODgiLCAicDY2NiIsICJwNTY1IiwgInM4ODgiLCAiczg4OC1kdW1teSIKPj4gKwktIHA4ODg6
+IG91dHB1dCByOC1nOC1iOCBhdCBlYWNoIGRjbGsgY3ljbGUgZm9yIHBlci1waXhlbAo+PiArCS0g
+cDY2Njogb3V0cHV0IHI2LWc2LWI2IGF0IGVhY2ggZGNsayBjeWNsZSBmb3IgcGVyLXBpeGVsCj4+
+ICsJLSBwNTY1OiBvdXRwdXQgcjUtZzYtYjUgYXQgZWFjaCBkY2xrIGN5Y2xlIGZvciBwZXItcGl4
+ZWwKPj4gKwktIHM4ODg6IG91dHB1dCByOC1nOC1iOCBpbiB0aHJlZSBkY2xrIGN5Y2xlIGZvciBw
+ZXItcGl4ZWwKPj4gKwktIHM4ODgtZG1teTogb3V0cHV0IHI4LWc4LWI4LWR1bW15IGluIGZvdXIg
+ZGNsayBjeWNsZSBmb3IgcGVyLXBpeGVsCj4+ICsKPj4gK1RoZSByZ2IgaGFzIHR3byB2aWRlbyBw
+b3J0cyBkZXNjcmliZWQgYnk6Cj4+ICsJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0Cj4+ICtUaGVpciBjb25uZWN0aW9ucyBhcmUgbW9k
+ZWxlZCB1c2luZyB0aGUgT0YgZ3JhcGggYmluZGluZ3Mgc3BlY2lmaWVkIGluCj4+ICsJRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dyYXBoLnR4dC4KPj4gKwo+PiArLSB2aWRlbyBw
+b3J0IDAgZm9yIHRoZSBWT1AgaW5wdXQsIHRoZSByZW1vdGUgZW5kcG9pbnQgbWF5YmUgdm9wYi92
+b3BsL3ZvcAo+PiArLSB2aWRlbyBwb3J0IDEgZm9yIGVpdGhlciBhIHBhbmVsIG9yIHN1YnNlcXVl
+bnQgZW5jb2Rlcgo+PiArCj4+ICt0aGUgcGFuZWwgZGVzY3JpYmVkIGJ5Ogo+PiArCURvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL3NpbXBsZS1wYW5lbC50eHQK
+Pj4gK1BhbmVsIG90aGVyIHJlcXVpcmVkIHByb3BlcnRpZXM6Cj4+ICstIHBvcnRzIGZvciByZW1v
+dGUgcmdiIG91dHB1dC4KPj4gKwo+PiArRXhhbXBsZToKPj4gKwo+PiArcGFuZWw6IHBhbmVsIHsK
+Pj4gKwljb21wYXRpYmxlID0gImF1byxiMTAxZWFuMDEiOwo+PiArCWVuYWJsZS1ncGlvcyA9IDwm
+Z3BpbzcgMjEgR1BJT19BQ1RJVkVfSElHSD47Cj4+ICsKPj4gKwlwb3J0cyB7Cj4+ICsJCXBhbmVs
+X2luX3JnYjogZW5kcG9pbnQgewo+PiArCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZyZ2Jfb3V0X3Bh
+bmVsPjsKPj4gKwkJfTsKPj4gKwl9Owo+PiArfTsKPj4gKwo+PiArRm9yIFJvY2tjaGlwIFJWMTEw
+ODoKPj4gKwo+PiArCXJnYjogcmdiIHsKPj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxydjEx
+MDgtcmdiIjsKPj4gKwkJcGluY3RybC1uYW1lcyA9ICJsY2RjIjsKPj4gKwkJcGluY3RybC0wID0g
+PCZsY2RjX2N0bD47Cj4+ICsJCXJnYi1tb2RlID0gInA4ODgiOwo+PiArCj4+ICsJCXBvcnRzIHsK
+Pj4gKwkJCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+PiArCQkJI3NpemUtY2VsbHMgPSA8MD47Cj4+
+ICsKPj4gKwkJCXJnYl9pbjogcG9ydEAwIHsKPj4gKwkJCQlyZWcgPSA8MD47Cj4+ICsJCQkJI2Fk
+ZHJlc3MtY2VsbHMgPSA8MT47Cj4+ICsJCQkJI3NpemUtY2VsbHMgPSA8MD47Cj4+ICsKPj4gKwkJ
+CQlyZ2JfaW5fdm9wOiBlbmRwb2ludCB7Cj4+ICsJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmdm9w
+X291dF9yZ2I+Owo+PiArCQkJCX07Cj4+ICsJCQl9Owo+PiArCj4+ICsJCQlyZ2Jfb3V0OiBwb3J0
+QDEgewo+PiArCQkJCXJlZyA9IDwxPjsKPj4gKwkJCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPj4g
+KwkJCQkjc2l6ZS1jZWxscyA9IDwwPjsKPj4gKwo+PiArCQkJCXJnYl9vdXRfcGFuZWw6IGVuZHBv
+aW50IHsKPj4gKwkJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZwYW5lbF9pbl9yZ2I+Owo+PiArCQkJ
+CX07Cj4+ICsJCQl9Owo+PiArCQl9Owo+PiArCX07Cj4+IC0tIAo+PiAyLjcuNAo+Pgo+Pgo+IAo+
+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
