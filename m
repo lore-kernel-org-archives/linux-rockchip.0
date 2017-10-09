@@ -1,49 +1,88 @@
-From: "David.Wu" <david.wu@rock-chips.com>
-Subject: Re: [PATCH 2/2] pinctrl: rockchip: Fix the correct routing config for
- the gmac-m1 pins of rmii and rgmii
-Date: Mon, 9 Oct 2017 09:21:22 +0800
-Message-ID: <19faa81c-aebb-0786-54fd-93b0a5a18b9a@rock-chips.com>
-References: <1506773601-27315-1-git-send-email-david.wu@rock-chips.com>
- <1506773601-27315-3-git-send-email-david.wu@rock-chips.com>
- <1908269.6t3djq65xf@phil>
- <CACRpkdYOuf_8_EWg1GtV-75YvmnLkpadKrGMfQZ2v2RRqbYvRw@mail.gmail.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Fix memory leak in rockchip_drm_sys_resume()
+Date: Mon, 09 Oct 2017 14:49:08 +0800
+Message-ID: <59DB1BE4.9080907@rock-chips.com>
+References: <20170927122642.18628-1-jeffy.chen@rock-chips.com> <20170927202709.ugbjyi3ktfjssiyp@art_vandelay> <59CC6996.2000402@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdYOuf_8_EWg1GtV-75YvmnLkpadKrGMfQZ2v2RRqbYvRw@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Tao Huang <huangtao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <59CC6996.2000402@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Linus,
+Hi Sean,
 
-Thanks for you adding it.
-I left the office for a few days due to holiday.
-
-在 2017/10/7 18:32, Linus Walleij 写道:
-> On Sat, Sep 30, 2017 at 5:07 PM, Heiko Stuebner <heiko@sntech.de> wrote:
->> Am Samstag, 30. September 2017, 20:13:21 CEST schrieb David Wu:
->>> If the gmac-m1 optimization(bit10) is selected, the gpio function
->>> of gmac pins is not valid. We may use the rmii mode for gmac interface,
->>> the pins such as rx_d2, rx_d3, which the rgmii mode used, but rmii not
->>> used could be taken as gpio function. So gmac_rxd0m1 selects the bit2,
->>> and gmac_rxd0m3 select bit10 is more correct.
->>>
->>> Signed-off-by: David Wu <david.wu@rock-chips.com>
+On 09/28/2017 11:16 AM, jeffy wrote:
+> Hi Sean,
+>
+> On 09/28/2017 04:27 AM, Sean Paul wrote:
+>>> >@@ -299,6 +300,7 @@ static int rockchip_drm_sys_resume(struct device
+>>> *dev)
+>>> >
+>>> >      priv = drm->dev_private;
+>>> >      drm_atomic_helper_resume(drm, priv->state);
+>>> >+    drm_atomic_state_put(priv->state);
+>> Won't this be freed for you eventually in commit_tail()?
 >>
->> the patch subject should mention the the rk3328 whose routing gets fixed
->> (like adding a simple "on rk3328" to it), otherwise
->>
->> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> 
-> I added rk3328 to it, also assumed this Reviewed-by covers patch 1/2
-> as well and applied both with your tag.
-> 
-> Yours,
-> Linus Walleij
-> 
-> 
-> 
+> i think the drm_atomic_state_put in commit_tail is paired to the
+> drm_atomic_state_get in drm_atomic_helper_commit.
+>
+> and the kmemleak shows(after a few suspend/resume):
+>
+>      unreferenced object 0xffffffc0ce0fa400 (size 256):
+>      ...
+>        backtrace:
+>          [<ffffffc00034a9a8>] __save_stack_trace+0x48/0x6c
+>          [<ffffffc00034b088>] create_object+0x138/0x254
+>          [<ffffffc0009d5504>] kmemleak_alloc+0x58/0x8c
+>          [<ffffffc000345f78>] __kmalloc+0x1d4/0x2a0
+>          [<ffffffc0006765bc>] usb_alloc_urb+0x30/0x60
+>          [<ffffffbffc128598>] alloc_ctrl_urb+0x38/0x120 [btusb]
+>          [<ffffffbffc129e7c>] btusb_send_frame+0x64/0xf8 [btusb]
 
+oops, the log is wrong...
+
+it should be:
+unreferenced object 0xffffffc0c75fe600 (size 256):
+   comm "bash", pid 168, jiffies 4294748032 (age 557.932s)
+   hex dump (first 32 bytes):
+     e0 4a 02 ce c0 ff ff ff 00 98 f2 c8 c0 ff ff ff  .J..............
+     00 98 f2 c8 c0 ff ff ff 00 45 9f cb c0 ff ff ff  .........E......
+   backtrace:
+     [<ffffff9008c76ba0>] kmemleak_alloc+0x58/0x8c
+     [<ffffff900828fe70>] __kmalloc+0x1dc/0x2d4
+     [<ffffff9008647698>] drm_atomic_state_init+0xb8/0x114
+     [<ffffff9008649ed8>] drm_atomic_state_alloc+0x70/0xa4
+     [<ffffff90086209f8>] drm_atomic_helper_duplicate_state+0x94/0x210
+     [<ffffff9008621184>] drm_atomic_helper_suspend+0xb4/0x160
+     [<ffffff9008666f18>] rockchip_drm_sys_suspend+0x5c/0xa0
+     [<ffffff9008697f18>] platform_pm_suspend+0x58/0x74
+     [<ffffff90086a7f98>] dpm_run_callback+0x13c/0x2f0
+     [<ffffff90086a9064>] __device_suspend+0x28c/0x3fc
+     [<ffffff90086ab9ec>] dpm_suspend+0x1cc/0x50c
+     [<ffffff90086ac5a4>] dpm_suspend_start+0x8c/0xa4
+     [<ffffff90081226a0>] suspend_devices_and_enter+0x12c/0xd84
+     [<ffffff9008123d30>] pm_suspend+0xa38/0xb98
+     [<ffffff9008120f94>] state_store+0xe0/0x108
+     [<ffffff9008c63e7c>] kobj_attr_store+0x48/0x58
+
+
+since it's allocated in the drm_atomic_helper_suspend(), maybe it would 
+make more sense to unref it in drm_atomic_helper_resume(), i'll send a 
+v2 patch for it :)
+
+>
+>
+>
+>
+> checking the current code, i saw only i915/intel_display.c has this
+> drm_atomic_state_put for the state allocated by
+> drm_atomic_helper_suspend(), there're many drivers missing that(or maybe
+> they free it in some other way?)
+>
+>> Sean
+>>
+>
