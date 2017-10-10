@@ -1,54 +1,83 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable touchpad button for rk3399-gru-kevin
-Date: Tue, 10 Oct 2017 11:33:49 +0200
-Message-ID: <4174027.Z5MyPRUDcj@phil>
-References: <20171009184028.11829-1-kernel@esmil.dk>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix typo in iommu nodes
+Date: Tue, 10 Oct 2017 11:48:25 +0200
+Message-ID: <4123717.0VmPnCpUOn@diego>
+References: <20171010085648.1339605-1-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171009184028.11829-1-kernel@esmil.dk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Emil Renner Berthing <kernel@esmil.dk>, Doug Anderson <dianders@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Brian Norris <briannorris@chromium.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171010085648.1339605-1-arnd-r2nGTMty4D4@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Emil,
+Hi Arnd,
 
-Am Montag, 9. Oktober 2017, 20:40:28 CEST schrieb Emil Renner Berthing:
-> Adding the linux,gpio-keymap entry also has
-> the side-effect of making the driver register
-> the touchpad as a touchpad rather than another
-> touchscreen.
+Am Dienstag, 10. Oktober 2017, 10:56:01 CEST schrieb Arnd Bergmann:
+> The latest dtc warns about an extraneous cell in the interrupt
+> property of two of the iommu device nodes:
 > 
-> The index for BTN_LEFT was found by trial and error.
+> Warning (interrupts_property): interrupts size is (16), expected multiple of
+> 12 in /iommu@ff373f00 Warning (interrupts_property): interrupts size is
+> (16), expected multiple of 12 in /iommu@ff900800
 > 
-> Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
+> This removes the typo.
+> 
+> Fixes: cede4c79de28 ("arm64: dts: rockchip: add rk3368 iommu nodes")
+> Fixes: 49c82f2b7c5d ("arm64: dts: rockchip: add rk3328 iommu nodes")
+> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
 
-looks good to me. I'll just give the ChromeOS people a chance to
-respond before applying [maybe they can even tell what the other
-keys are :-) ]
+looks like that got copy-pasted from rk3399 where we have 4 elements per irq.
+In any case the change looks good, so if you want to apply it directly to 
+armsoc-fixes here is a
+
+Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+Depending on how you want to handle it I can also merge it, but
+Olof already picked up my 2 fixes for 4.14, so you applying it might
+save us the round-trip for a further 1-patch pull request :-)
 
 
 Heiko
 
 > ---
->  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 4 ++++
->  1 file changed, 4 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> index 5c8621766908..1c58d12551f5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-> @@ -278,6 +278,10 @@ ap_i2c_dig: &i2c2 {
->  		pinctrl-0 = <&trackpad_int_l>;
->  		interrupt-parent = <&gpio1>;
->  		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-> +		linux,gpio-keymap = <KEY_RESERVED
-> +				     KEY_RESERVED
-> +				     KEY_RESERVED
-> +				     BTN_LEFT>;
->  		wakeup-source;
->  	};
->  };
-> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3328.dtsi index 6d615cb6e64d..41d61840fb99
+> 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -582,7 +582,7 @@
+>  	vop_mmu: iommu@ff373f00 {
+>  		compatible = "rockchip,iommu";
+>  		reg = <0x0 0xff373f00 0x0 0x100>;
+> -		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+>  		interrupt-names = "vop_mmu";
+>  		#iommu-cells = <0>;
+>  		status = "disabled";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3368.dtsi index 19fbaa5e7bdd..1070c8264c13
+> 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> @@ -740,7 +740,7 @@
+>  	iep_mmu: iommu@ff900800 {
+>  		compatible = "rockchip,iommu";
+>  		reg = <0x0 0xff900800 0x0 0x100>;
+> -		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+>  		interrupt-names = "iep_mmu";
+>  		#iommu-cells = <0>;
+>  		status = "disabled";
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
