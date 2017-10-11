@@ -1,76 +1,88 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable touchpad button for
- rk3399-gru-kevin
-Date: Tue, 10 Oct 2017 10:25:16 -0700
-Message-ID: <20171010172516.GA1681@dtor-ws>
-References: <20171009184028.11829-1-kernel@esmil.dk>
- <4174027.Z5MyPRUDcj@phil>
- <CANBLGcx187QrX3pgUAjvBmPbyJsX7ZiYdWXhamM-atEe+Mqe3A@mail.gmail.com>
- <20171010170355.GA136735@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20171010170355.GA136735@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH v12 0/5] Add Rockchip RGA V4l2 support
+Date: Wed, 11 Oct 2017 15:29:33 +0800
+Message-ID: <20171011072938.383-1-jacob-chen@iotwrt.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 10, 2017 at 10:03:57AM -0700, Brian Norris wrote:
-> + Dmitry, who can probably answer better than I can
-> 
-> On Tue, Oct 10, 2017 at 01:04:20PM +0200, Emil Renner Berthing wrote:
-> > On 10 October 2017 at 11:33, Heiko Stuebner <heiko@sntech.de> wrote:
-> > > Am Montag, 9. Oktober 2017, 20:40:28 CEST schrieb Emil Renner Berthing:
-> > >> Adding the linux,gpio-keymap entry also has
-> > >> the side-effect of making the driver register
-> > >> the touchpad as a touchpad rather than another
-> > >> touchscreen.
-> > >>
-> > >> The index for BTN_LEFT was found by trial and error.
-> > >>
-> > >> Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
-> > >
-> > > looks good to me. I'll just give the ChromeOS people a chance to
-> > > respond before applying [maybe they can even tell what the other
-> > > keys are :-) ]
+change in V12:
+- adding an entry to MAINTAINERS 
+- fix checkpatch
 
-They are not connected.
+change in V11:
+- fix compile warning
 
-> > 
-> > Good plan. As far as I can tell their kernel doesn't send anything but
-> > BTN_LEFT either. It's just that the controller supports multiple
-> > buttons, but not all are necessarily connected to any button.
-> > Their version of the driver has logic to detect the proper keymap
-> > whereas the mainline driver gets it from this devicetree entry.
-> 
-> I believe Emil is mostly correct. We only are using a BTN_LEFT in our
-> copy of the driver, and I'm not sure the others are connected to
-> anything. As Dmitry has explained to me (when I also wondered about
-> "detect[ing] the proper keymap"), we don't exactly "auto"discover
-> things; we just heuristically determine the configurations we know are
-> used on Chrome devices.
+change in V10:
+- move to rockchip/rga
+- changes according to comments
+- some style changes
 
-Right, we had a "legacy" GPIO/button mapping on original Pixels that
-used T9 multitouch reports, then we switched to a bit different mapping
-for newer devices that use T100 multitouch reports.
+change in V9:
+- remove protduff things
+- test with the latest v4l2-compliance
 
-We should really have explicit map, like we have in upstream driver.
+change in V8:
+- remove protduff things
 
-> 
-> So from the sound of it, this keymap property is reasonable. I haven't
-> actually checked what our driver "auto" detects on gru-kevin, but if
-> this works then I'll bet it's correct :)
-> 
-> IOW, I don't know enough to ACK this patch, but I'm certainly not going
-> to NAK it.
+change in V6,V7:
+- correct warning in checkpatch.pl
 
-I think I can ACK it:
+change in V5:
+- v4l2-compliance: handle invalid pxielformat
+- v4l2-compliance: add subscribe_event
+- add colorspace support
 
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+change in V4:
+- document the controls.
+- change according to Hans's comments
 
-Thanks.
+change in V3:
+- rename the controls.
+- add pm_runtime support.
+- enable node by default.
+- correct spelling in documents.
+
+change in V2:
+- generalize the controls.
+- map buffers (10-50 us) in every cmd-run rather than in buffer-import to avoid get_free_pages failed on
+actively used systems.
+- remove status in dt-bindings examples.
+
+Jacob Chen (5):
+  dt-bindings: Document the Rockchip RGA bindings
+  rockchip/rga: v4l2 m2m support
+  MAINTAINERS: add entry for Rockchip RGA driver
+  ARM: dts: rockchip: add RGA device node for RK3288
+  arm64: dts: rockchip: add RGA device node for RK3399
+
+ .../devicetree/bindings/media/rockchip-rga.txt     |   33 +
+ MAINTAINERS                                        |    7 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   11 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   11 +
+ drivers/media/platform/Kconfig                     |   15 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/rockchip/rga/Makefile       |    3 +
+ drivers/media/platform/rockchip/rga/rga-buf.c      |  154 +++
+ drivers/media/platform/rockchip/rga/rga-hw.c       |  421 ++++++++
+ drivers/media/platform/rockchip/rga/rga-hw.h       |  437 +++++++++
+ drivers/media/platform/rockchip/rga/rga.c          | 1012 ++++++++++++++++++++
+ drivers/media/platform/rockchip/rga/rga.h          |  125 +++
+ 12 files changed, 2231 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
+ create mode 100644 drivers/media/platform/rockchip/rga/Makefile
+ create mode 100644 drivers/media/platform/rockchip/rga/rga-buf.c
+ create mode 100644 drivers/media/platform/rockchip/rga/rga-hw.c
+ create mode 100644 drivers/media/platform/rockchip/rga/rga-hw.h
+ create mode 100644 drivers/media/platform/rockchip/rga/rga.c
+ create mode 100644 drivers/media/platform/rockchip/rga/rga.h
 
 -- 
-Dmitry
+2.14.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
