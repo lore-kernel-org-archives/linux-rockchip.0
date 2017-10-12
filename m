@@ -1,750 +1,401 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH v2] extcon: Split out extcon header file for consumer
- and provider device
-Date: Thu, 12 Oct 2017 12:40:25 +0900
-Message-ID: <59DEE429.2000608@samsung.com>
-References: <CGME20171010101758epcas2p3b3f379076f5be5e81edee2bd00354c28@epcas2p3.samsung.com>
-        <1507630671-23536-1-git-send-email-cw00.choi@samsung.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v2 2/8] drm/rockchip/dsi: add dual mipi channel support
+Date: Thu, 12 Oct 2017 09:53:40 -0400
+Message-ID: <20171012135340.ys6djpmr4vq4g3yw@art_vandelay>
+References: <1506412523-1766-1-git-send-email-nickey.yang@rock-chips.com>
+ <1506412523-1766-2-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1507630671-23536-1-git-send-email-cw00.choi@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com
-Cc: balbi@kernel.org, gregkh@linuxfoundation.org, sre@kernel.org, lee.jones@linaro.org, heiko@sntech.de, yoshihiro.shimoda.uh@renesas.com, krzk@kernel.org, b.zolnierkie@samsung.com, maxime.ripard@free-electrons.com, wens@csie.org, chanwoo@kernel.org, myungjoo.ham@samsung.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1506412523-1766-2-git-send-email-nickey.yang@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.rutland@arm.com, bivvy.bi@rock-chips.com, hl@rock-chips.com, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, zyw@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Kishon,
-
-Could you please review this patch?
-After that, I'll make the immutable brand and then send the pull request
-for power_supply, mfd, phy, usb and extcon framework.
-
-On 2017년 10월 10일 19:17, Chanwoo Choi wrote:
-> The extcon has two type of extcon devices as following.
-> - 'extcon provider deivce' adds new extcon device and detect the
->    state/properties of external connector. Also, it notifies the
->    state/properties to the extcon consumer device.
-> - 'extcon consumer device' gets the change state/properties
->    from extcon provider device.
-> Prior to that, include/linux/extcon.h contains all exported API for
-> both provider and consumer device driver. To clarify the meaning of
-> header file and to remove the wrong use-case on consumer device,
-> this patch separates into extcon.h and extcon-provider.h.
-> 
-> [Description for include/linux/{extcon.h|extcon-provider.h}]
-> - extcon.h includes the extcon API and data structure for extcon consumer
->   device driver. This header file contains the following APIs:
->   : Register/unregister the notifier to catch the change of extcon device
->   : Get the extcon device instance
->   : Get the extcon device name
->   : Get the state of each external connector
->   : Get the property value of each external connector
->   : Get the property capability of each external connector
-> 
-> - extcon-provider.h includes the extcon API and data structure for extcon
->   provider device driver. This header file contains the following APIs:
->   : Include 'include/linux/extcon.h'
->   : Allocate the memory for extcon device instance
->   : Register/unregister extcon device
->   : Set the state of each external connector
->   : Set the property value of each external connector
->   : Set the property capability of each external connector
-> 
-> Cc: Felipe Balbi <balbi@kernel.org>
-> Cc: Kishon Vijay Abraham I <kishon@ti.com>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Acked-by: Sebastian Reichel <sebastian.reichel@collabora.co.uk>
-> Acked-by: Chen-Yu Tsai <wens@csie.org>
-> Acked-by: Charles Keepax <ckeepax@opensource.cirrus.com>
-> Acked-by: Lee Jones <lee.jones@linaro.org>
-> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
-> ---
-> Changes from v1:
-> - Don't touch drivers/usb/renesas_usbhs/common.h.
-> - Add acked-by from Sebastian Reichel (for drivers/power/supply/)
-> - Add acked-by from Chen-Yu Tsai (for phy-sun4i-usb.c & extcon-axp288.c)
-> - Add acked-by from Charles Keepax (for drivers/extcon/extcon-arizona.c)
-> - Add acked-by from Lee Jones (fo include/linux/mfd/palmas.h)
-> 
->  drivers/extcon/extcon-adc-jack.c              |   2 +-
->  drivers/extcon/extcon-arizona.c               |   2 +-
->  drivers/extcon/extcon-axp288.c                |   2 +-
->  drivers/extcon/extcon-gpio.c                  |   2 +-
->  drivers/extcon/extcon-intel-cht-wc.c          |   2 +-
->  drivers/extcon/extcon-intel-int3496.c         |   2 +-
->  drivers/extcon/extcon-max14577.c              |   2 +-
->  drivers/extcon/extcon-max3355.c               |   2 +-
->  drivers/extcon/extcon-max77693.c              |   2 +-
->  drivers/extcon/extcon-max77843.c              |   2 +-
->  drivers/extcon/extcon-max8997.c               |   2 +-
->  drivers/extcon/extcon-qcom-spmi-misc.c        |   2 +-
->  drivers/extcon/extcon-rt8973a.c               |   2 +-
->  drivers/extcon/extcon-sm5502.c                |   2 +-
->  drivers/extcon/extcon-usb-gpio.c              |   2 +-
->  drivers/extcon/extcon-usbc-cros-ec.c          |   2 +-
->  drivers/extcon/extcon.h                       |   2 +-
->  drivers/phy/allwinner/phy-sun4i-usb.c         |   2 +-
->  drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c     |   2 +-
->  drivers/phy/renesas/phy-rcar-gen3-usb2.c      |   2 +-
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c |   2 +-
->  drivers/power/supply/qcom_smbb.c              |   2 +-
->  drivers/usb/gadget/udc/renesas_usb3.c         |   2 +-
->  drivers/usb/phy/phy-tahvo.c                   |   2 +-
->  include/linux/extcon-provider.h               | 142 ++++++++++++++++++++++++++
->  include/linux/extcon.h                        | 109 +-------------------
->  include/linux/mfd/palmas.h                    |   2 +-
->  27 files changed, 172 insertions(+), 129 deletions(-)
->  create mode 100644 include/linux/extcon-provider.h
-> 
-> diff --git a/drivers/extcon/extcon-adc-jack.c b/drivers/extcon/extcon-adc-jack.c
-> index 6f6537ab0a79..3877d86c746a 100644
-> --- a/drivers/extcon/extcon-adc-jack.c
-> +++ b/drivers/extcon/extcon-adc-jack.c
-> @@ -26,7 +26,7 @@
->  #include <linux/workqueue.h>
->  #include <linux/iio/consumer.h>
->  #include <linux/extcon/extcon-adc-jack.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  
->  /**
->   * struct adc_jack_data - internal data for adc_jack device driver
-> diff --git a/drivers/extcon/extcon-arizona.c b/drivers/extcon/extcon-arizona.c
-> index f84da4a17724..da0e9bc4262f 100644
-> --- a/drivers/extcon/extcon-arizona.c
-> +++ b/drivers/extcon/extcon-arizona.c
-> @@ -27,7 +27,7 @@
->  #include <linux/pm_runtime.h>
->  #include <linux/property.h>
->  #include <linux/regulator/consumer.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  
->  #include <sound/soc.h>
->  
-> diff --git a/drivers/extcon/extcon-axp288.c b/drivers/extcon/extcon-axp288.c
-> index f4fd03e58e37..981fba56bc18 100644
-> --- a/drivers/extcon/extcon-axp288.c
-> +++ b/drivers/extcon/extcon-axp288.c
-> @@ -22,7 +22,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/property.h>
->  #include <linux/notifier.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/regmap.h>
->  #include <linux/gpio.h>
->  #include <linux/gpio/consumer.h>
-> diff --git a/drivers/extcon/extcon-gpio.c b/drivers/extcon/extcon-gpio.c
-> index ebed22f22d75..ab770adcca7e 100644
-> --- a/drivers/extcon/extcon-gpio.c
-> +++ b/drivers/extcon/extcon-gpio.c
-> @@ -17,7 +17,7 @@
->   * GNU General Public License for more details.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/extcon/extcon-gpio.h>
->  #include <linux/gpio.h>
->  #include <linux/gpio/consumer.h>
-> diff --git a/drivers/extcon/extcon-intel-cht-wc.c b/drivers/extcon/extcon-intel-cht-wc.c
-> index 91a0023074af..7c4bc8c44c3f 100644
-> --- a/drivers/extcon/extcon-intel-cht-wc.c
-> +++ b/drivers/extcon/extcon-intel-cht-wc.c
-> @@ -15,7 +15,7 @@
->   * more details.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/interrupt.h>
->  #include <linux/kernel.h>
->  #include <linux/mfd/intel_soc_pmic.h>
-> diff --git a/drivers/extcon/extcon-intel-int3496.c b/drivers/extcon/extcon-intel-int3496.c
-> index 1a45e745717d..c8691b5a9cb0 100644
-> --- a/drivers/extcon/extcon-intel-int3496.c
-> +++ b/drivers/extcon/extcon-intel-int3496.c
-> @@ -19,7 +19,7 @@
->   */
->  
->  #include <linux/acpi.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/gpio.h>
->  #include <linux/interrupt.h>
->  #include <linux/module.h>
-> diff --git a/drivers/extcon/extcon-max14577.c b/drivers/extcon/extcon-max14577.c
-> index f6414b7fa5bc..6c2c9996eb71 100644
-> --- a/drivers/extcon/extcon-max14577.c
-> +++ b/drivers/extcon/extcon-max14577.c
-> @@ -23,7 +23,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/mfd/max14577.h>
->  #include <linux/mfd/max14577-private.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  
->  #define	DELAY_MS_DEFAULT		17000		/* unit: millisecond */
->  
-> diff --git a/drivers/extcon/extcon-max3355.c b/drivers/extcon/extcon-max3355.c
-> index 533e16a952b8..0aa410836f4e 100644
-> --- a/drivers/extcon/extcon-max3355.c
-> +++ b/drivers/extcon/extcon-max3355.c
-> @@ -9,7 +9,7 @@
->   * may be copied, distributed, and modified under those terms.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/gpio.h>
->  #include <linux/gpio/consumer.h>
->  #include <linux/interrupt.h>
-> diff --git a/drivers/extcon/extcon-max77693.c b/drivers/extcon/extcon-max77693.c
-> index 7a5856809047..643411066ad9 100644
-> --- a/drivers/extcon/extcon-max77693.c
-> +++ b/drivers/extcon/extcon-max77693.c
-> @@ -26,7 +26,7 @@
->  #include <linux/mfd/max77693.h>
->  #include <linux/mfd/max77693-common.h>
->  #include <linux/mfd/max77693-private.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/regmap.h>
->  #include <linux/irqdomain.h>
->  
-> diff --git a/drivers/extcon/extcon-max77843.c b/drivers/extcon/extcon-max77843.c
-> index 6e722d552cf1..28f251ff0fa2 100644
-> --- a/drivers/extcon/extcon-max77843.c
-> +++ b/drivers/extcon/extcon-max77843.c
-> @@ -11,7 +11,7 @@
->   * (at your option) any later version.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/i2c.h>
->  #include <linux/interrupt.h>
->  #include <linux/kernel.h>
-> diff --git a/drivers/extcon/extcon-max8997.c b/drivers/extcon/extcon-max8997.c
-> index 4a0612fb9c07..8152790d72e1 100644
-> --- a/drivers/extcon/extcon-max8997.c
-> +++ b/drivers/extcon/extcon-max8997.c
-> @@ -25,7 +25,7 @@
->  #include <linux/kobject.h>
->  #include <linux/mfd/max8997.h>
->  #include <linux/mfd/max8997-private.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/irqdomain.h>
->  
->  #define	DEV_NAME			"max8997-muic"
-> diff --git a/drivers/extcon/extcon-qcom-spmi-misc.c b/drivers/extcon/extcon-qcom-spmi-misc.c
-> index b8cde096a808..660bbf163bf5 100644
-> --- a/drivers/extcon/extcon-qcom-spmi-misc.c
-> +++ b/drivers/extcon/extcon-qcom-spmi-misc.c
-> @@ -15,7 +15,7 @@
->   * GNU General Public License for more details.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/init.h>
->  #include <linux/interrupt.h>
->  #include <linux/kernel.h>
-> diff --git a/drivers/extcon/extcon-rt8973a.c b/drivers/extcon/extcon-rt8973a.c
-> index eaa355e7d9e4..e059bd5f2041 100644
-> --- a/drivers/extcon/extcon-rt8973a.c
-> +++ b/drivers/extcon/extcon-rt8973a.c
-> @@ -20,7 +20,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  #include <linux/slab.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  
->  #include "extcon-rt8973a.h"
->  
-> diff --git a/drivers/extcon/extcon-sm5502.c b/drivers/extcon/extcon-sm5502.c
-> index 106ef0297b53..0cfb5a3efdf6 100644
-> --- a/drivers/extcon/extcon-sm5502.c
-> +++ b/drivers/extcon/extcon-sm5502.c
-> @@ -19,7 +19,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  #include <linux/slab.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  
->  #include "extcon-sm5502.h"
->  
-> diff --git a/drivers/extcon/extcon-usb-gpio.c b/drivers/extcon/extcon-usb-gpio.c
-> index 9c925b05b7aa..53762864a9f7 100644
-> --- a/drivers/extcon/extcon-usb-gpio.c
-> +++ b/drivers/extcon/extcon-usb-gpio.c
-> @@ -14,7 +14,7 @@
->   * GNU General Public License for more details.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/gpio.h>
->  #include <linux/gpio/consumer.h>
->  #include <linux/init.h>
-> diff --git a/drivers/extcon/extcon-usbc-cros-ec.c b/drivers/extcon/extcon-usbc-cros-ec.c
-> index 598956f1dcae..6187f731b29d 100644
-> --- a/drivers/extcon/extcon-usbc-cros-ec.c
-> +++ b/drivers/extcon/extcon-usbc-cros-ec.c
-> @@ -14,7 +14,7 @@
->   * GNU General Public License for more details.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/kernel.h>
->  #include <linux/mfd/cros_ec.h>
->  #include <linux/module.h>
-> diff --git a/drivers/extcon/extcon.h b/drivers/extcon/extcon.h
-> index dddddcfa0587..cc1b436eb66a 100644
-> --- a/drivers/extcon/extcon.h
-> +++ b/drivers/extcon/extcon.h
-> @@ -1,7 +1,7 @@
->  #ifndef __LINUX_EXTCON_INTERNAL_H__
->  #define __LINUX_EXTCON_INTERNAL_H__
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  
->  /**
->   * struct extcon_dev - An extcon device represents one external connector.
-> diff --git a/drivers/phy/allwinner/phy-sun4i-usb.c b/drivers/phy/allwinner/phy-sun4i-usb.c
-> index 1161e11fb3cf..ef34f97f214b 100644
-> --- a/drivers/phy/allwinner/phy-sun4i-usb.c
-> +++ b/drivers/phy/allwinner/phy-sun4i-usb.c
-> @@ -24,7 +24,7 @@
->  #include <linux/clk.h>
->  #include <linux/delay.h>
->  #include <linux/err.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/io.h>
->  #include <linux/interrupt.h>
->  #include <linux/kernel.h>
-> diff --git a/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c b/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
-> index d099a0c8cee5..7ceea5ae2704 100644
-> --- a/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
-> +++ b/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
-> @@ -12,7 +12,7 @@
->   */
->  
->  #include <linux/delay.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/gpio.h>
->  #include <linux/gpio/consumer.h>
->  #include <linux/init.h>
-> diff --git a/drivers/phy/renesas/phy-rcar-gen3-usb2.c b/drivers/phy/renesas/phy-rcar-gen3-usb2.c
-> index 54c34298a000..b33e2994ccce 100644
-> --- a/drivers/phy/renesas/phy-rcar-gen3-usb2.c
-> +++ b/drivers/phy/renesas/phy-rcar-gen3-usb2.c
-> @@ -12,7 +12,7 @@
->   * published by the Free Software Foundation.
->   */
->  
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/interrupt.h>
->  #include <linux/io.h>
->  #include <linux/module.h>
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> index ee7ce5ee53f9..5049dac79bd0 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> @@ -17,7 +17,7 @@
->  #include <linux/clk.h>
->  #include <linux/clk-provider.h>
->  #include <linux/delay.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/interrupt.h>
->  #include <linux/io.h>
->  #include <linux/gpio/consumer.h>
-> diff --git a/drivers/power/supply/qcom_smbb.c b/drivers/power/supply/qcom_smbb.c
-> index f6a0d245731d..11de691b9a71 100644
-> --- a/drivers/power/supply/qcom_smbb.c
-> +++ b/drivers/power/supply/qcom_smbb.c
-> @@ -34,7 +34,7 @@
->  #include <linux/power_supply.h>
->  #include <linux/regmap.h>
->  #include <linux/slab.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/regulator/driver.h>
->  
->  #define SMBB_CHG_VMAX		0x040
-> diff --git a/drivers/usb/gadget/udc/renesas_usb3.c b/drivers/usb/gadget/udc/renesas_usb3.c
-> index df37c1e6e9d5..8b4d051fdbed 100644
-> --- a/drivers/usb/gadget/udc/renesas_usb3.c
-> +++ b/drivers/usb/gadget/udc/renesas_usb3.c
-> @@ -12,7 +12,7 @@
->  #include <linux/delay.h>
->  #include <linux/dma-mapping.h>
->  #include <linux/err.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/interrupt.h>
->  #include <linux/io.h>
->  #include <linux/module.h>
-> diff --git a/drivers/usb/phy/phy-tahvo.c b/drivers/usb/phy/phy-tahvo.c
-> index 8babd318c0ed..354e8c98af05 100644
-> --- a/drivers/usb/phy/phy-tahvo.c
-> +++ b/drivers/usb/phy/phy-tahvo.c
-> @@ -23,7 +23,7 @@
->  #include <linux/io.h>
->  #include <linux/clk.h>
->  #include <linux/usb.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/kernel.h>
->  #include <linux/module.h>
->  #include <linux/usb/otg.h>
-> diff --git a/include/linux/extcon-provider.h b/include/linux/extcon-provider.h
-> new file mode 100644
-> index 000000000000..2feca5881fa7
-> --- /dev/null
-> +++ b/include/linux/extcon-provider.h
-> @@ -0,0 +1,142 @@
-> +/*
-> + * External Connector (extcon) framework
-> + * - linux/include/linux/extcon-provider.h for extcon provider device driver.
-> + *
-> + * Copyright (C) 2017 Samsung Electronics
-> + * Author: Chanwoo Choi <cw00.choi@samsung.com>
-> + *
-> + * This software is licensed under the terms of the GNU General Public
-> + * License version 2, as published by the Free Software Foundation, and
-> + * may be copied, distributed, and modified under those terms.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#ifndef __LINUX_EXTCON_PROVIDER_H__
-> +#define __LINUX_EXTCON_PROVIDER_H__
-> +
-> +#include <linux/extcon.h>
-> +
-> +struct extcon_dev;
-> +
-> +#if IS_ENABLED(CONFIG_EXTCON)
-> +
-> +/* Following APIs register/unregister the extcon device. */
-> +extern int extcon_dev_register(struct extcon_dev *edev);
-> +extern void extcon_dev_unregister(struct extcon_dev *edev);
-> +extern int devm_extcon_dev_register(struct device *dev,
-> +				struct extcon_dev *edev);
-> +extern void devm_extcon_dev_unregister(struct device *dev,
-> +				struct extcon_dev *edev);
-> +
-> +/* Following APIs allocate/free the memory of the extcon device. */
-> +extern struct extcon_dev *extcon_dev_allocate(const unsigned int *cable);
-> +extern void extcon_dev_free(struct extcon_dev *edev);
-> +extern struct extcon_dev *devm_extcon_dev_allocate(struct device *dev,
-> +				const unsigned int *cable);
-> +extern void devm_extcon_dev_free(struct device *dev, struct extcon_dev *edev);
-> +
-> +/* Synchronize the state and property value for each external connector. */
-> +extern int extcon_sync(struct extcon_dev *edev, unsigned int id);
-> +
-> +/*
-> + * Following APIs set the connected state of each external connector.
-> + * The 'id' argument indicates the defined external connector.
-> + */
-> +extern int extcon_set_state(struct extcon_dev *edev, unsigned int id,
-> +				bool state);
-> +extern int extcon_set_state_sync(struct extcon_dev *edev, unsigned int id,
-> +				bool state);
-> +
-> +/*
-> + * Following APIs set the property of each external connector.
-> + * The 'id' argument indicates the defined external connector
-> + * and the 'prop' indicates the extcon property.
-> + *
-> + * And extcon_set_property_capability() set the capability of the property
-> + * for each external connector. They are used to set the capability of the
-> + * property of each external connector based on the id and property.
-> + */
-> +extern int extcon_set_property(struct extcon_dev *edev, unsigned int id,
-> +				unsigned int prop,
-> +				union extcon_property_value prop_val);
-> +extern int extcon_set_property_sync(struct extcon_dev *edev, unsigned int id,
-> +				unsigned int prop,
-> +				union extcon_property_value prop_val);
-> +extern int extcon_set_property_capability(struct extcon_dev *edev,
-> +				unsigned int id, unsigned int prop);
-> +
-> +#else /* CONFIG_EXTCON */
-> +static inline int extcon_dev_register(struct extcon_dev *edev)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline void extcon_dev_unregister(struct extcon_dev *edev) { }
-> +
-> +static inline int devm_extcon_dev_register(struct device *dev,
-> +				struct extcon_dev *edev)
-> +{
-> +	return -EINVAL;
-> +}
-> +
-> +static inline void devm_extcon_dev_unregister(struct device *dev,
-> +				struct extcon_dev *edev) { }
-> +
-> +static inline struct extcon_dev *extcon_dev_allocate(const unsigned int *cable)
-> +{
-> +	return ERR_PTR(-ENOSYS);
-> +}
-> +
-> +static inline void extcon_dev_free(struct extcon_dev *edev) { }
-> +
-> +static inline struct extcon_dev *devm_extcon_dev_allocate(struct device *dev,
-> +				const unsigned int *cable)
-> +{
-> +	return ERR_PTR(-ENOSYS);
-> +}
-> +
-> +static inline void devm_extcon_dev_free(struct extcon_dev *edev) { }
-> +
-> +
-> +static inline int extcon_set_state(struct extcon_dev *edev, unsigned int id,
-> +				bool state)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline int extcon_set_state_sync(struct extcon_dev *edev, unsigned int id,
-> +				bool state)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline int extcon_sync(struct extcon_dev *edev, unsigned int id)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline int extcon_set_property(struct extcon_dev *edev, unsigned int id,
-> +				unsigned int prop,
-> +				union extcon_property_value prop_val)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline int extcon_set_property_sync(struct extcon_dev *edev,
-> +				unsigned int id, unsigned int prop,
-> +				union extcon_property_value prop_val)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline int extcon_set_property_capability(struct extcon_dev *edev,
-> +				unsigned int id, unsigned int prop)
-> +{
-> +	return 0;
-> +}
-> +#endif /* CONFIG_EXTCON */
-> +#endif /* __LINUX_EXTCON_PROVIDER_H__ */
-> diff --git a/include/linux/extcon.h b/include/linux/extcon.h
-> index 744d60ca80c3..6d94e82c8ad9 100644
-> --- a/include/linux/extcon.h
-> +++ b/include/linux/extcon.h
-> @@ -1,5 +1,6 @@
->  /*
->   * External Connector (extcon) framework
-> + * - linux/include/linux/extcon.h for extcon consumer device driver.
->   *
->   * Copyright (C) 2015 Samsung Electronics
->   * Author: Chanwoo Choi <cw00.choi@samsung.com>
-> @@ -170,61 +171,29 @@
->  	int intval;	/* type : integer (intval) */
->  };
->  
-> -struct extcon_cable;
->  struct extcon_dev;
->  
->  #if IS_ENABLED(CONFIG_EXTCON)
-> -
-> -/* Following APIs register/unregister the extcon device. */
-> -extern int extcon_dev_register(struct extcon_dev *edev);
-> -extern void extcon_dev_unregister(struct extcon_dev *edev);
-> -extern int devm_extcon_dev_register(struct device *dev,
-> -				struct extcon_dev *edev);
-> -extern void devm_extcon_dev_unregister(struct device *dev,
-> -				struct extcon_dev *edev);
-> -
-> -/* Following APIs allocate/free the memory of the extcon device. */
-> -extern struct extcon_dev *extcon_dev_allocate(const unsigned int *cable);
-> -extern void extcon_dev_free(struct extcon_dev *edev);
-> -extern struct extcon_dev *devm_extcon_dev_allocate(struct device *dev,
-> -				const unsigned int *cable);
-> -extern void devm_extcon_dev_free(struct device *dev, struct extcon_dev *edev);
-> -
-> -/* Synchronize the state and property value for each external connector. */
-> -extern int extcon_sync(struct extcon_dev *edev, unsigned int id);
-> -
->  /*
-> - * Following APIs get/set the connected state of each external connector.
-> + * Following APIs get the connected state of each external connector.
->   * The 'id' argument indicates the defined external connector.
->   */
->  extern int extcon_get_state(struct extcon_dev *edev, unsigned int id);
-> -extern int extcon_set_state(struct extcon_dev *edev, unsigned int id,
-> -				bool state);
-> -extern int extcon_set_state_sync(struct extcon_dev *edev, unsigned int id,
-> -				bool state);
->  
->  /*
-> - * Following APIs get/set the property of each external connector.
-> + * Following APIs get the property of each external connector.
->   * The 'id' argument indicates the defined external connector
->   * and the 'prop' indicates the extcon property.
->   *
-> - * And extcon_get/set_property_capability() set the capability of the property
-> - * for each external connector. They are used to set the capability of the
-> + * And extcon_get_property_capability() get the capability of the property
-> + * for each external connector. They are used to get the capability of the
->   * property of each external connector based on the id and property.
->   */
->  extern int extcon_get_property(struct extcon_dev *edev, unsigned int id,
->  				unsigned int prop,
->  				union extcon_property_value *prop_val);
-> -extern int extcon_set_property(struct extcon_dev *edev, unsigned int id,
-> -				unsigned int prop,
-> -				union extcon_property_value prop_val);
-> -extern int extcon_set_property_sync(struct extcon_dev *edev, unsigned int id,
-> -				unsigned int prop,
-> -				union extcon_property_value prop_val);
->  extern int extcon_get_property_capability(struct extcon_dev *edev,
->  				unsigned int id, unsigned int prop);
-> -extern int extcon_set_property_capability(struct extcon_dev *edev,
-> -				unsigned int id, unsigned int prop);
->  
->  /*
->   * Following APIs register the notifier block in order to detect
-> @@ -268,79 +237,17 @@ extern struct extcon_dev *extcon_get_edev_by_phandle(struct device *dev,
->  extern const char *extcon_get_edev_name(struct extcon_dev *edev);
->  
->  #else /* CONFIG_EXTCON */
-> -static inline int extcon_dev_register(struct extcon_dev *edev)
-> -{
-> -	return 0;
-> -}
-> -
-> -static inline void extcon_dev_unregister(struct extcon_dev *edev) { }
-> -
-> -static inline int devm_extcon_dev_register(struct device *dev,
-> -				struct extcon_dev *edev)
-> -{
-> -	return -EINVAL;
-> -}
-> -
-> -static inline void devm_extcon_dev_unregister(struct device *dev,
-> -				struct extcon_dev *edev) { }
-> -
-> -static inline struct extcon_dev *extcon_dev_allocate(const unsigned int *cable)
-> -{
-> -	return ERR_PTR(-ENOSYS);
-> -}
-> -
-> -static inline void extcon_dev_free(struct extcon_dev *edev) { }
-> -
-> -static inline struct extcon_dev *devm_extcon_dev_allocate(struct device *dev,
-> -				const unsigned int *cable)
-> -{
-> -	return ERR_PTR(-ENOSYS);
-> -}
-> -
-> -static inline void devm_extcon_dev_free(struct extcon_dev *edev) { }
-> -
-> -
->  static inline int extcon_get_state(struct extcon_dev *edev, unsigned int id)
->  {
->  	return 0;
->  }
->  
-> -static inline int extcon_set_state(struct extcon_dev *edev, unsigned int id,
-> -				bool state)
-> -{
-> -	return 0;
-> -}
-> -
-> -static inline int extcon_set_state_sync(struct extcon_dev *edev, unsigned int id,
-> -				bool state)
-> -{
-> -	return 0;
-> -}
-> -
-> -static inline int extcon_sync(struct extcon_dev *edev, unsigned int id)
-> -{
-> -	return 0;
-> -}
-> -
->  static inline int extcon_get_property(struct extcon_dev *edev, unsigned int id,
->  				unsigned int prop,
->  				union extcon_property_value *prop_val)
->  {
->  	return 0;
->  }
-> -static inline int extcon_set_property(struct extcon_dev *edev, unsigned int id,
-> -				unsigned int prop,
-> -				union extcon_property_value prop_val)
-> -{
-> -	return 0;
-> -}
-> -
-> -static inline int extcon_set_property_sync(struct extcon_dev *edev,
-> -				unsigned int id, unsigned int prop,
-> -				union extcon_property_value prop_val)
-> -{
-> -	return 0;
-> -}
->  
->  static inline int extcon_get_property_capability(struct extcon_dev *edev,
->  				unsigned int id, unsigned int prop)
-> @@ -348,12 +255,6 @@ static inline int extcon_get_property_capability(struct extcon_dev *edev,
->  	return 0;
->  }
->  
-> -static inline int extcon_set_property_capability(struct extcon_dev *edev,
-> -				unsigned int id, unsigned int prop)
-> -{
-> -	return 0;
-> -}
-> -
->  static inline int extcon_register_notifier(struct extcon_dev *edev,
->  				unsigned int id, struct notifier_block *nb)
->  {
-> diff --git a/include/linux/mfd/palmas.h b/include/linux/mfd/palmas.h
-> index 6dec43826303..3c8568aa82a5 100644
-> --- a/include/linux/mfd/palmas.h
-> +++ b/include/linux/mfd/palmas.h
-> @@ -20,7 +20,7 @@
->  #include <linux/leds.h>
->  #include <linux/regmap.h>
->  #include <linux/regulator/driver.h>
-> -#include <linux/extcon.h>
-> +#include <linux/extcon-provider.h>
->  #include <linux/of_gpio.h>
->  #include <linux/usb/phy_companion.h>
->  
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+T24gVHVlLCBTZXAgMjYsIDIwMTcgYXQgMDM6NTU6MTdQTSArMDgwMCwgTmlja2V5IFlhbmcgd3Jv
+dGU6Cj4gVGhpcyBwYXRjaCBhZGQgZHVhbCBtaXBpIGNoYW5uZWwgc3VwcG9ydDoKPiAxLmFkZCBk
+ZWZpbml0aW9uIG9mIGRzaTEgcmVnaXN0ZXIgYW5kIGdyZiBvcGVyYXRpb24uCj4gMi5kc2kwIGFu
+ZCBkc2kxIHdpbGwgd29yayBpbiBtYXN0ZXIgYW5kIHNsYXZlIG1vZGUKPiB3aGVuIGRyaXZpbmcg
+ZHVhbCBtaXBpIHBhbmVsLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE5pY2tleSBZYW5nIDxuaWNrZXku
+eWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KCkhpIE5pY2tleSwKUGxlYXNlIGFkZCBwYXRjaCBj
+aGFuZ2Vsb2dzIHRvIG1ha2UgcmV2aWV3ZXJzJyBsaXZlcyBlYXNpZXIuCgoKPiAgZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgICAgICB8IDM5MCArKysrKysrKysrKysrKysr
+KysrKy0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2
+LmggfCAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
+IHwgICAyICsKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCB8
+ICAgMyArCj4gIDQgZmlsZXMgY2hhbmdlZCwgMjkyIGluc2VydGlvbnMoKyksIDEwNCBkZWxldGlv
+bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGM5
+MzNhM2EuLjE5MTAzN2MgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
+LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
+Ywo+IEBAIC0zOSw4ICszOSw1OCBAQAo+ICAjZGVmaW5lIFJLMzM5OV9EU0kxX1NFTF9WT1BfTElU
+CQlCSVQoNCkKPiAgCj4gIC8qIGRpc2FibGUgdHVybnJlcXVlc3QsIHR1cm5kaXNhYmxlLCBmb3Jj
+ZXR4c3RvcG1vZGUsIGZvcmNlcnhtb2RlICovCj4gLSNkZWZpbmUgUkszMzk5X0dSRl9TT0NfQ09O
+MjIJCTB4NjI1OAo+IC0jZGVmaW5lIFJLMzM5OV9HUkZfRFNJX01PREUJCTB4ZmZmZjAwMDAKPiAr
+I2RlZmluZSBSSzMzOTlfR1JGX1NPQ19DT04yMgkJCTB4NjI1OAo+ICsjZGVmaW5lIERQSFlfVFgw
+X1RVUk5SRVFVRVNUX1NFVAkJKCgweGYgPDwgMTIpIDw8IDE2KQoKVGhpcyBpcyBhIGNvbmZ1c2lu
+ZyB3YXkgb2YgZG9pbmcgdGhpcy4gSG93IGFib3V0IG1vdmluZyB0aGlzIGJlbG93ClRVUk5SRVFV
+RVNUX0VOQUJMRSBhbmQgZG9pbmcKCisjZGVmaW5lIERQSFlfVFgwX1RVUk5SRVFVRVNUX1NFVAkJ
+KERQSFlfVFgwX1RVUk5SRVFVRVNUX0VOQUJMRSA8PCAxNikKClRoZSBzYW1lIGdvZXMgZm9yIGFs
+bCBpbnN0YW5jZXMgb2YgKl9TRVQKCgo+ICsjZGVmaW5lIERQSFlfVFgwX1RVUk5SRVFVRVNUX0RJ
+U0FCTEUJCSgweDAgPDwgMTIpCgpObyBuZWVkIHRvIGRlZmluZSBhbGwgb2YgdGhlc2UgKl9ESVNB
+QkxFIHZhbHVlcyB0byAwLCBqdXN0IGxlYXZlIHRoZW0gb3V0LgoKCj4gKyNkZWZpbmUgRFBIWV9U
+WDBfVFVSTlJFUVVFU1RfRU5BQkxFCQkoMHhmIDw8IDEyKQo+ICsjZGVmaW5lIERQSFlfVFgwX1RV
+Uk5ESVNBQkxFX1NFVAkJKCgweGYgPDwgOCkgPDwgMTYpCj4gKyNkZWZpbmUgRFBIWV9UWDBfVFVS
+TkRJU0FCTEVfRElTQUJMRQkJKDB4MCA8PCA4KQo+ICsjZGVmaW5lIERQSFlfVFgwX1RVUk5ESVNB
+QkxFX0VOQUJMRQkJKDB4ZiA8PCA4KQo+ICsjZGVmaW5lIERQSFlfVFgwX0ZPUkNFVFhTVE9QTU9E
+RV9TRVQJCSgoMHhmIDw8IDQpIDw8IDE2KQo+ICsjZGVmaW5lIERQSFlfVFgwX0ZPUkNFVFhTVE9Q
+TU9ERV9ESVNBQkxFCSgweDAgPDwgNCkKPiArI2RlZmluZSBEUEhZX1RYMF9GT1JDRVRYU1RPUE1P
+REVfRU5BQkxFCQkoMHhmIDw8IDQpCj4gKyNkZWZpbmUgRFBIWV9UWDBfRk9SQ0VUUlhNT0RFX1NF
+VAkJKCgweGYgPDwgMCkgPDwgMTYpCj4gKyNkZWZpbmUgRFBIWV9UWDBfRk9SQ0VUUlhNT0RFX0RJ
+U0FCTEUJCTB4MAo+ICsjZGVmaW5lIERQSFlfVFgwX0ZPUkNFVFJYTU9ERV9FTkFCTEUJCTB4Zgo+
+ICsjZGVmaW5lIFJLMzM5OV9HUkZfRFNJX01PREUJCQkoKERQSFlfVFgwX1RVUk5SRVFVRVNUX1NF
+VCB8IFwKPiArCQkJCQkJIERQSFlfVFgwX1RVUk5ESVNBQkxFX1NFVCB8IFwKPiArCQkJCQkJIERQ
+SFlfVFgwX0ZPUkNFVFhTVE9QTU9ERV9TRVQgfCBcCj4gKwkJCQkJCSBEUEhZX1RYMF9GT1JDRVRS
+WE1PREVfU0VUKSB8IFwKPiArCQkJCQkJIChEUEhZX1RYMF9UVVJOUkVRVUVTVF9ESVNBQkxFIHwg
+XAo+ICsJCQkJCQkgRFBIWV9UWDBfVFVSTkRJU0FCTEVfRElTQUJMRSB8IFwKPiArCQkJCQkJIERQ
+SFlfVFgwX0ZPUkNFVFhTVE9QTU9ERV9ESVNBQkxFIHwgXAo+ICsJCQkJCQkgRFBIWV9UWDBfRk9S
+Q0VUUlhNT0RFX0RJU0FCTEUpKQo+ICsKPiArCj4gKy8qIGRpc2FibGUgdHVybmRpc2FibGUsIGZv
+cmNldHhzdG9wbW9kZSwgZm9yY2VyeG1vZGUsIGVuYWJsZSAqLwo+ICsjZGVmaW5lIFJLMzM5OV9H
+UkZfU09DX0NPTjIzCQkJMHg2MjVjCj4gKyNkZWZpbmUgRFBIWV9UWDFSWDFfVFVSTkRJU0FCTEVf
+U0VUCQkoKDB4ZiA8PCAxMikgPDwgMTYpCj4gKyNkZWZpbmUgRFBIWV9UWDFSWDFfVFVSTkRJU0FC
+TEVfRElTQUJMRQkJKDB4MCA8PCAxMikKPiArI2RlZmluZSBEUEhZX1RYMVJYMV9UVVJORElTQUJM
+RV9FTkFCTEUJCSgweGYgPDwgMTIpCj4gKyNkZWZpbmUgRFBIWV9UWDFSWDFfRk9SQ0VUWFNUT1BN
+T0RFX1NFVAkJKCgweGYgPDwgOCkgPDwgMTYpCj4gKyNkZWZpbmUgRFBIWV9UWDFSWDFfRk9SQ0VU
+WFNUT1BNT0RFX0RJU0FCTEUJKDB4MCA8PCA4KQo+ICsjZGVmaW5lIERQSFlfVFgxUlgxX0ZPUkNF
+VFhTVE9QTU9ERV9FTkFCTEUJKDB4ZiA8PCA4KQo+ICsjZGVmaW5lIERQSFlfVFgxUlgxX0ZPUkNF
+UlhNT0RFX1NFVAkJKCgweGYgPDwgNCkgPDwgMTYpCj4gKyNkZWZpbmUgRFBIWV9UWDFSWDFfRk9S
+Q0VSWE1PREVfRElTQUJMRQkJKDB4MCA8PCA0KQo+ICsjZGVmaW5lIERQSFlfVFgxUlgxX0ZPUkNF
+UlhNT0RFX0VOQUJMRQkJKDB4ZiA8PCA0KQo+ICsjZGVmaW5lIERQSFlfVFgxUlgxX0VOQUJMRV9T
+RVQJCQkoKDB4ZiA8PCAwKSA8PCAxNikKPiArI2RlZmluZSBEUEhZX1RYMVJYMV9FTkFCTEVfRElT
+QUJMRQkJMHgwCj4gKyNkZWZpbmUgRFBIWV9UWDFSWDFfRU5BQkxFX0VOQUJMRQkJMHhmCgpTZWVt
+cyBsaWtlIHlvdSBjYW4gc2hhcmUgYSBudW1iZXIgb2YgdGhlc2UgRFBIWSBiaXQgbWFza3MgYmV0
+d2VlbiB0aGUgVFgwIGFuZCBUWDFSWDEuCgo+ICsjZGVmaW5lIFJLMzM5OV9HUkZfRFNJMV9NT0RF
+CQkJKChEUEhZX1RYMVJYMV9UVVJORElTQUJMRV9TRVQgfCBcCj4gKwkJCQkJCSBEUEhZX1RYMVJY
+MV9GT1JDRVRYU1RPUE1PREVfU0VUIHwgXAo+ICsJCQkJCQkgRFBIWV9UWDFSWDFfRk9SQ0VSWE1P
+REVfU0VUIHwgXAo+ICsJCQkJCQkgRFBIWV9UWDFSWDFfRU5BQkxFX1NFVCkgfCBcCj4gKwkJCQkJ
+CSAoRFBIWV9UWDBfVFVSTlJFUVVFU1RfRElTQUJMRSB8IFwKPiArCQkJCQkJIERQSFlfVFgwX1RV
+Uk5ESVNBQkxFX0RJU0FCTEUgfCBcCj4gKwkJCQkJCSBEUEhZX1RYMF9GT1JDRVRYU1RPUE1PREVf
+RElTQUJMRSB8IFwKPiArCQkJCQkJIERQSFlfVFgwX0ZPUkNFVFJYTU9ERV9ESVNBQkxFKSkKPiAr
+I2RlZmluZSBSSzMzOTlfR1JGX0RTSTFfRU5BQkxFCQkJKChEUEhZX1RYMVJYMV9FTkFCTEVfU0VU
+IHwgXAo+ICsJCQkJCQkgIERQSFlfVFgxUlgxX0VOQUJMRV9FTkFCTEUpKQo+ICsKPiArI2RlZmlu
+ZSBSSzMzOTlfR1JGX1NPQ19DT04yNAkJMHg2MjYwCj4gKyNkZWZpbmUgUkszMzk5X1RYUlhfTUFT
+VEVSU0xBVkVaCUJJVCg3KQo+ICsjZGVmaW5lIFJLMzM5OV9UWFJYX0VOQUJMRUNMSwkJQklUKDYp
+Cj4gKyNkZWZpbmUgUkszMzk5X1RYUlhfQkFTRURJUgkJQklUKDUpCj4gIAo+ICAjZGVmaW5lIERT
+SV9WRVJTSU9OCQkJMHgwMAo+ICAjZGVmaW5lIERTSV9QV1JfVVAJCQkweDA0Cj4gQEAgLTMwNCw2
+ICszNTQsMTMgQEAgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSB7Cj4gIAl1MzIgZ3JmX3N3
+aXRjaF9yZWc7Cj4gIAl1MzIgZ3JmX2RzaTBfbW9kZTsKPiAgCXUzMiBncmZfZHNpMF9tb2RlX3Jl
+ZzsKPiArCXUzMiBncmZfZHNpMV9tb2RlOwo+ICsJdTMyIGdyZl9kc2kxX2VuYWJsZTsKPiArCXUz
+MiBncmZfZHNpMV9tb2RlX3JlZzE7Cj4gKwl1MzIgZHNpMV9iYXNlZGlyOwo+ICsJdTMyIGRzaTFf
+bWFzdGVyc2xhdmV6Owo+ICsJdTMyIGRzaTFfZW5hYmxlY2xrOwo+ICsJdTMyIGdyZl9kc2kxX21v
+ZGVfcmVnMjsKPiAgCXVuc2lnbmVkIGludCBmbGFnczsKPiAgCXVuc2lnbmVkIGludCBtYXhfZGF0
+YV9sYW5lczsKPiAgfTsKPiBAQCAtMzIyLDYgKzM3OSwxMCBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2kg
+ewo+ICAJc3RydWN0IGNsayAqcGNsazsKPiAgCXN0cnVjdCBjbGsgKnBoeV9jZmdfY2xrOwo+ICAK
+PiArCS8qIGR1YWwtY2hhbm5lbCAqLwo+ICsJc3RydWN0IGR3X21pcGlfZHNpICptYXN0ZXI7Cj4g
+KwlzdHJ1Y3QgZHdfbWlwaV9kc2kgKnNsYXZlOwo+ICsKPiAgCWludCBkcG1zX21vZGU7Cj4gIAl1
+bnNpZ25lZCBpbnQgbGFuZV9tYnBzOyAvKiBwZXIgbGFuZSAqLwo+ICAJdTMyIGNoYW5uZWw7Cj4g
+QEAgLTU3NCw2ICs2MzUsNyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2dldF9sYW5lX2Jwcyhz
+dHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiAgCXVuc2lnbmVkIGludCBtYXhfbWJwcyA9IGRwdGRp
+bl9tYXBbQVJSQVlfU0laRShkcHRkaW5fbWFwKSAtIDFdLm1heF9tYnBzOwo+ICAJaW50IGJwcDsK
+PiAgCXVuc2lnbmVkIGxvbmcgYmVzdF9mcmVxID0gMDsKPiArCWludCBsYW5lcyA9IGRzaS0+bGFu
+ZXM7Cj4gIAl1bnNpZ25lZCBsb25nIGZ2Y29fbWluLCBmdmNvX21heCwgZmluLCBmb3V0Owo+ICAJ
+dW5zaWduZWQgaW50IG1pbl9wcmVkaXYsIG1heF9wcmVkaXY7Cj4gIAl1bnNpZ25lZCBpbnQgX3By
+ZWRpdiwgdW5pbml0aWFsaXplZF92YXIoYmVzdF9wcmVkaXYpOwo+IEBAIC01ODcsMTAgKzY0OSwx
+MyBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2dldF9sYW5lX2JwcyhzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSwKPiAgCQlyZXR1cm4gYnBwOwo+ICAJfQo+ICAKPiArCWlmIChkc2ktPnNsYXZlIHx8
+IGRzaS0+bWFzdGVyKQo+ICsJCWxhbmVzID0gZHNpLT5sYW5lcyAqIDI7Cj4gKwo+ICAJbXBjbGsg
+PSBESVZfUk9VTkRfVVAobW9kZS0+Y2xvY2ssIE1TRUNfUEVSX1NFQyk7Cj4gIAlpZiAobXBjbGsp
+IHsKPiAgCQkvKiB0YWtlIDEgLyAwLjgsIHNpbmNlIG1icHMgbXVzdCBiaWcgdGhhbiBiYW5kd2lk
+dGggb2YgUkdCICovCj4gLQkJdG1wID0gbXBjbGsgKiAoYnBwIC8gZHNpLT5sYW5lcykgKiAxMCAv
+IDg7Cj4gKwkJdG1wID0gbXBjbGsgKiAoYnBwIC8gbGFuZXMpICogMTAgLyA4Owo+ICAJCWlmICh0
+bXAgPCBtYXhfbWJwcykKPiAgCQkJdGFyZ2V0X21icHMgPSB0bXA7Cj4gIAkJZWxzZQo+IEBAIC02
+NTMsMTcgKzcxOCwyNiBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2hvc3RfYXR0YWNoKHN0cnVj
+dCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ICAJCQkJICAgc3RydWN0IG1pcGlfZHNpX2RldmljZSAq
+ZGV2aWNlKQo+ICB7Cj4gIAlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSA9IGhvc3RfdG9fZHNpKGhv
+c3QpOwo+ICsJaW50IGxhbmVzID0gZHNpLT5zbGF2ZSA/IGRldmljZS0+bGFuZXMgLyAyIDogZGV2
+aWNlLT5sYW5lczsKPiAgCj4gLQlpZiAoZGV2aWNlLT5sYW5lcyA+IGRzaS0+cGRhdGEtPm1heF9k
+YXRhX2xhbmVzKSB7Cj4gKwlpZiAobGFuZXMgPiBkc2ktPnBkYXRhLT5tYXhfZGF0YV9sYW5lcykg
+ewo+ICAJCWRldl9lcnIoZHNpLT5kZXYsICJ0aGUgbnVtYmVyIG9mIGRhdGEgbGFuZXMoJXUpIGlz
+IHRvbyBtYW55XG4iLAo+IC0JCQlkZXZpY2UtPmxhbmVzKTsKPiArCQkJbGFuZXMpOwo+ICAJCXJl
+dHVybiAtRUlOVkFMOwo+ICAJfQo+ICAKPiAtCWRzaS0+bGFuZXMgPSBkZXZpY2UtPmxhbmVzOwo+
+ICsJZHNpLT5sYW5lcyA9IGxhbmVzOwo+ICAJZHNpLT5jaGFubmVsID0gZGV2aWNlLT5jaGFubmVs
+Owo+ICAJZHNpLT5mb3JtYXQgPSBkZXZpY2UtPmZvcm1hdDsKPiAgCWRzaS0+bW9kZV9mbGFncyA9
+IGRldmljZS0+bW9kZV9mbGFnczsKPiArCj4gKwlpZiAoZHNpLT5zbGF2ZSkgewo+ICsJCWRzaS0+
+c2xhdmUtPmxhbmVzID0gbGFuZXM7Cj4gKwkJZHNpLT5zbGF2ZS0+Y2hhbm5lbCA9IGRldmljZS0+
+Y2hhbm5lbDsKPiArCQlkc2ktPnNsYXZlLT5mb3JtYXQgPSBkZXZpY2UtPmZvcm1hdDsKPiArCQlk
+c2ktPnNsYXZlLT5tb2RlX2ZsYWdzID0gZGV2aWNlLT5tb2RlX2ZsYWdzOwo+ICsJfQo+ICsKPiAg
+CWRzaS0+cGFuZWwgPSBvZl9kcm1fZmluZF9wYW5lbChkZXZpY2UtPmRldi5vZl9ub2RlKTsKPiAg
+CWlmIChkc2ktPnBhbmVsKQo+ICAJCXJldHVybiBkcm1fcGFuZWxfYXR0YWNoKGRzaS0+cGFuZWws
+ICZkc2ktPmNvbm5lY3Rvcik7Cj4gQEAgLTc5MywxNSArODY3LDIyIEBAIHN0YXRpYyBzc2l6ZV90
+IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCj4g
+IAlpbnQgcmV0Owo+ICAKPiAgCWR3X21pcGlfbWVzc2FnZV9jb25maWcoZHNpLCBtc2cpOwo+ICsJ
+aWYgKGRzaS0+c2xhdmUpCj4gKwkJZHdfbWlwaV9tZXNzYWdlX2NvbmZpZyhkc2ktPnNsYXZlLCBt
+c2cpOwo+ICAKPiAgCXN3aXRjaCAobXNnLT50eXBlKSB7Cj4gIAljYXNlIE1JUElfRFNJX0RDU19T
+SE9SVF9XUklURToKPiAgCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JUX1dSSVRFX1BBUkFNOgo+ICAJ
+Y2FzZSBNSVBJX0RTSV9TRVRfTUFYSU1VTV9SRVRVUk5fUEFDS0VUX1NJWkU6Cj4gKwljYXNlIE1J
+UElfRFNJX0dFTkVSSUNfU0hPUlRfV1JJVEVfMl9QQVJBTToKPiAgCQlyZXQgPSBkd19taXBpX2Rz
+aV9kY3Nfc2hvcnRfd3JpdGUoZHNpLCBtc2cpOwo+ICsJCWlmIChkc2ktPnNsYXZlKQo+ICsJCQly
+ZXQgPSBkd19taXBpX2RzaV9kY3Nfc2hvcnRfd3JpdGUoZHNpLT5zbGF2ZSwgbXNnKTsKPiAgCQli
+cmVhazsKPiAgCWNhc2UgTUlQSV9EU0lfRENTX0xPTkdfV1JJVEU6Cj4gIAkJcmV0ID0gZHdfbWlw
+aV9kc2lfZGNzX2xvbmdfd3JpdGUoZHNpLCBtc2cpOwo+ICsJCWlmIChkc2ktPnNsYXZlKQo+ICsJ
+CQlyZXQgPSBkd19taXBpX2RzaV9kY3NfbG9uZ193cml0ZShkc2ktPnNsYXZlLCBtc2cpOwo+ICAJ
+CWJyZWFrOwo+ICAJZGVmYXVsdDoKPiAgCQlkZXZfZXJyKGRzaS0+ZGV2LCAidW5zdXBwb3J0ZWQg
+bWVzc2FnZSB0eXBlIDB4JTAyeFxuIiwKPiBAQCAtODc1LDYgKzk1Niw1NSBAQCBzdGF0aWMgdm9p
+ZCBkd19taXBpX2RzaV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAJCSAgVFhfRVND
+X0NMS19ESVZJRFNJT04oZXNjX2Nsa19kaXZpc2lvbikpOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9p
+ZCByb2NrY2hpcF9kc2lfZ3JmX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgaW50IHZv
+cF9pZCkKPiArewo+ICsJY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAqcGRhdGEg
+PSBkc2ktPnBkYXRhOwo+ICsJaW50IHZhbCA9IDA7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCS8qCj4g
+KwkgKiBGb3IgdGhlIFJLMzM5OSwgdGhlIGNsayBvZiBncmYgbXVzdCBiZSBlbmFibGVkIGJlZm9y
+ZSB3cml0aW5nIGdyZgo+ICsJICogcmVnaXN0ZXIuIEFuZCBmb3IgUkszMjg4IG9yIG90aGVyIHNv
+YywgdGhpcyBncmZfY2xrIG11c3QgYmUgTlVMTCwKPiArCSAqIHRoZSBjbGtfcHJlcGFyZV9lbmFi
+bGUgcmV0dXJuIHRydWUgZGlyZWN0bHkuCj4gKwkgKi8KPiArCXJldCA9IGNsa19wcmVwYXJlX2Vu
+YWJsZShkc2ktPmdyZl9jbGspOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl9lcnIoZHNpLT5kZXYs
+ICJGYWlsZWQgdG8gZW5hYmxlIGdyZl9jbGs6ICVkXG4iLCByZXQpOwo+ICsJCXJldHVybjsKPiAr
+CX0KPiArCj4gKwl2YWwgPSBwZGF0YS0+ZHNpMF9lbl9iaXQgPDwgMTY7Cj4gKwlpZiAoZHNpLT5z
+bGF2ZSkKPiArCQl2YWwgfD0gcGRhdGEtPmRzaTFfZW5fYml0IDw8IDE2Owo+ICsJaWYgKHZvcF9p
+ZCkgewo+ICsJCXZhbCB8PSBwZGF0YS0+ZHNpMF9lbl9iaXQ7Cj4gKwkJaWYgKGRzaS0+c2xhdmUp
+Cj4gKwkJCXZhbCB8PSBwZGF0YS0+ZHNpMV9lbl9iaXQ7Cj4gKwl9Cj4gKwlyZWdtYXBfd3JpdGUo
+ZHNpLT5ncmZfcmVnbWFwLCBwZGF0YS0+Z3JmX3N3aXRjaF9yZWcsIHZhbCk7Cj4gKwo+ICsJaWYg
+KHBkYXRhLT5ncmZfZHNpMF9tb2RlX3JlZykKPiArCQlyZWdtYXBfd3JpdGUoZHNpLT5ncmZfcmVn
+bWFwLCBwZGF0YS0+Z3JmX2RzaTBfbW9kZV9yZWcsCj4gKwkJCSAgICAgcGRhdGEtPmdyZl9kc2kw
+X21vZGUpOwo+ICsKPiArCWlmIChkc2ktPnNsYXZlKSB7Cj4gKwkJaWYgKHBkYXRhLT5ncmZfZHNp
+MV9tb2RlX3JlZzEpCj4gKwkJCXJlZ21hcF93cml0ZShkc2ktPmdyZl9yZWdtYXAsIHBkYXRhLT5n
+cmZfZHNpMV9tb2RlX3JlZzEsCj4gKwkJCQkgICAgIHBkYXRhLT5ncmZfZHNpMV9tb2RlKTsKPiAr
+CQl2YWwgPSBwZGF0YS0+ZHNpMV9tYXN0ZXJzbGF2ZXogfAo+ICsJCSAgICAgIChwZGF0YS0+ZHNp
+MV9tYXN0ZXJzbGF2ZXogPDwgMTYpIHwKPiArCQkgICAgICAocGRhdGEtPmRzaTFfYmFzZWRpciA8
+PCAxNik7Cj4gKwkJaWYgKHBkYXRhLT5ncmZfZHNpMV9tb2RlX3JlZzIpCj4gKwkJCXJlZ21hcF93
+cml0ZShkc2ktPmdyZl9yZWdtYXAsIHBkYXRhLT5ncmZfZHNpMV9tb2RlX3JlZzIsCj4gKwkJCQkg
+ICAgIHZhbCk7CgpJIGRvbid0IHRoaW5rIHRoZSB2YWwgYXNzaWdubWVudCBhYm92ZSBnYWlucyB5
+b3UgYW55dGhpbmcuIElNTywgdGhlIGZvbGxvd2luZwp3b3VsZCBiZSBiZXR0ZXI6CgogICAgICAg
+ICAgICAgICAgaWYgKHBkYXRhLT5ncmZfZHNpMV9tb2RlX3JlZzIpCgkJCXJlZ21hcF93cml0ZShk
+c2ktPmdyZl9yZWdtYXAsIHBkYXRhLT5ncmZfZHNpMV9tb2RlX3JlZzIsCiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBwZGF0YS0+ZHNpMV9tYXN0ZXJzbGF2ZXogfAogICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKHBkYXRhLT5kc2kxX21hc3RlcnNsYXZleiA8
+PCAxNikgfAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKHBkYXRhLT5kc2kx
+X2Jhc2VkaXIgPDwgMTYpKTsKCgo+ICsJCWlmIChwZGF0YS0+Z3JmX2RzaTFfbW9kZV9yZWcxKQo+
+ICsJCQlyZWdtYXBfd3JpdGUoZHNpLT5ncmZfcmVnbWFwLCBwZGF0YS0+Z3JmX2RzaTFfbW9kZV9y
+ZWcxLAo+ICsJCQkJICAgICBwZGF0YS0+Z3JmX2RzaTFfZW5hYmxlKTsKPiArCX0KPiArCj4gKwlj
+bGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5ncmZfY2xrKTsKPiArfQo+ICsKPiAgc3RhdGljIHZv
+aWQgZHdfbWlwaV9kc2lfZHBpX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiAgCQkJ
+CSAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+ICB7Cj4gQEAgLTkxNSw3ICsxMDQ1
+LDE0IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3BhY2tldF9oYW5kbGVyX2NvbmZpZyhzdHJ1
+Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfdmlkZW9fcGFj
+a2V0X2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiAgCQkJCQkgICAgc3RydWN0IGRy
+bV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gIHsKPiAtCWRzaV93cml0ZShkc2ksIERTSV9WSURfUEtU
+X1NJWkUsIFZJRF9QS1RfU0laRShtb2RlLT5oZGlzcGxheSkpOwo+ICsJaW50IHBrdF9zaXplOwo+
+ICsKPiArCWlmIChkc2ktPnNsYXZlIHx8IGRzaS0+bWFzdGVyKQo+ICsJCXBrdF9zaXplID0gVklE
+X1BLVF9TSVpFKG1vZGUtPmhkaXNwbGF5IC8gMik7Cj4gKwllbHNlCj4gKwkJcGt0X3NpemUgPSBW
+SURfUEtUX1NJWkUobW9kZS0+aGRpc3BsYXkpOwo+ICsKPiArCWRzaV93cml0ZShkc2ksIERTSV9W
+SURfUEtUX1NJWkUsIHBrdF9zaXplKTsKPiAgfQo+ICAKPiAgc3RhdGljIHZvaWQgZHdfbWlwaV9k
+c2lfY29tbWFuZF9tb2RlX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiBAQCAtMTAy
+MCwyNCArMTE1NywyNiBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2Rpc2FibGUo
+c3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICAJZHdfbWlwaV9kc2lfZGlzYWJsZShkc2kp
+Owo+ICAJcG1fcnVudGltZV9wdXQoZHNpLT5kZXYpOwo+ICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJl
+KGRzaS0+cGNsayk7Cj4gKwo+ICsJaWYgKGRzaS0+c2xhdmUpIHsKPiArCQlpZiAoY2xrX3ByZXBh
+cmVfZW5hYmxlKGRzaS0+c2xhdmUtPnBjbGspKSB7Cj4gKwkJCWRldl9lcnIoZHNpLT5zbGF2ZS0+
+ZGV2LCAiJXM6IEZhaWxlZCB0byBlbmFibGUgcGNsa1xuIiwgX19mdW5jX18pOwoKTXkgY29tbWVu
+dCBmcm9tIHYxIHN0aWxsIGFwcGxpZXMsIHBsZWFzZSB1c2UgRFJNX0RFVl8qIG1lc3NhZ2VzCgo+
+ICsJCQlyZXR1cm47Cj4gKwkJfQo+ICsJCWR3X21pcGlfZHNpX2Rpc2FibGUoZHNpLT5zbGF2ZSk7
+Cj4gKwkJcG1fcnVudGltZV9wdXQoZHNpLT5zbGF2ZS0+ZGV2KTsKPiArCQljbGtfZGlzYWJsZV91
+bnByZXBhcmUoZHNpLT5zbGF2ZS0+cGNsayk7Cj4gKwl9Cj4gKwo+ICAJZHNpLT5kcG1zX21vZGUg
+PSBEUk1fTU9ERV9EUE1TX09GRjsKPiAgfQo+ICAKPiAtc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lf
+ZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICtzdGF0aWMgdm9p
+ZCBkd19taXBpX2RzaV9lbmFibGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksIHN0cnVjdCBkcm1f
+ZGlzcGxheV9tb2RlICptb2RlKQo+ICB7Cj4gLQlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSA9IGVu
+Y29kZXJfdG9fZHNpKGVuY29kZXIpOwo+IC0Jc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUg
+PSAmZW5jb2Rlci0+Y3J0Yy0+c3RhdGUtPmFkanVzdGVkX21vZGU7Cj4gLQljb25zdCBzdHJ1Y3Qg
+ZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwZGF0YSA9IGRzaS0+cGRhdGE7Cj4gLQlpbnQgbXV4ID0g
+ZHJtX29mX2VuY29kZXJfYWN0aXZlX2VuZHBvaW50X2lkKGRzaS0+ZGV2LT5vZl9ub2RlLCBlbmNv
+ZGVyKTsKPiAtCXUzMiB2YWw7Cj4gLQlpbnQgcmV0Owo+IC0KPiAtCXJldCA9IGR3X21pcGlfZHNp
+X2dldF9sYW5lX2Jwcyhkc2ksIG1vZGUpOwo+IC0JaWYgKHJldCA8IDApCj4gLQkJcmV0dXJuOwo+
+IC0KPiAtCWlmIChkc2ktPmRwbXNfbW9kZSA9PSBEUk1fTU9ERV9EUE1TX09OKQo+ICsJaWYgKGR3
+X21pcGlfZHNpX2dldF9sYW5lX2Jwcyhkc2ksIG1vZGUpIDwgMCkgewo+ICsJCWRldl9lcnIoZHNp
+LT5kZXYsICIlczogRmFpbGVkIHRvIGdldCBsYW5lIGJwc1xuIiwgX19mdW5jX18pOwo+ICAJCXJl
+dHVybjsKPiArCX0KPiAgCj4gIAlpZiAoY2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+cGNsaykpIHsK
+PiAgCQlkZXZfZXJyKGRzaS0+ZGV2LCAiJXM6IEZhaWxlZCB0byBlbmFibGUgcGNsa1xuIiwgX19m
+dW5jX18pOwo+IEBAIC0xMDU3LDQzICsxMTk2LDQyIEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNp
+X2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiAgCWR3X21pcGlf
+ZHNpX2RwaHlfaW50ZXJmYWNlX2NvbmZpZyhkc2kpOwo+ICAJZHdfbWlwaV9kc2lfY2xlYXJfZXJy
+KGRzaSk7Cj4gIAo+IC0JLyoKPiAtCSAqIEZvciB0aGUgUkszMzk5LCB0aGUgY2xrIG9mIGdyZiBt
+dXN0IGJlIGVuYWJsZWQgYmVmb3JlIHdyaXRpbmcgZ3JmCj4gLQkgKiByZWdpc3Rlci4gQW5kIGZv
+ciBSSzMyODggb3Igb3RoZXIgc29jLCB0aGlzIGdyZl9jbGsgbXVzdCBiZSBOVUxMLAo+IC0JICog
+dGhlIGNsa19wcmVwYXJlX2VuYWJsZSByZXR1cm4gdHJ1ZSBkaXJlY3RseS4KPiAtCSAqLwo+IC0J
+cmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+Z3JmX2Nsayk7Cj4gLQlpZiAocmV0KSB7Cj4g
+LQkJZGV2X2Vycihkc2ktPmRldiwgIkZhaWxlZCB0byBlbmFibGUgZ3JmX2NsazogJWRcbiIsIHJl
+dCk7Cj4gLQkJcmV0dXJuOwo+IC0JfQo+IC0KPiAtCWlmIChwZGF0YS0+Z3JmX2RzaTBfbW9kZV9y
+ZWcpCj4gLQkJcmVnbWFwX3dyaXRlKGRzaS0+Z3JmX3JlZ21hcCwgcGRhdGEtPmdyZl9kc2kwX21v
+ZGVfcmVnLAo+IC0JCQkgICAgIHBkYXRhLT5ncmZfZHNpMF9tb2RlKTsKPiAtCj4gIAlkd19taXBp
+X2RzaV9waHlfaW5pdChkc2kpOwo+ICAJZHdfbWlwaV9kc2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyht
+b2RlKTsKPiAgCj4gIAlkd19taXBpX2RzaV9zZXRfbW9kZShkc2ksIERXX01JUElfRFNJX0NNRF9N
+T0RFKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUo
+c3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICt7Cj4gKwlzdHJ1Y3QgZHdfbWlwaV9kc2kg
+KmRzaSA9IGVuY29kZXJfdG9fZHNpKGVuY29kZXIpOwo+ICsJc3RydWN0IGRybV9kaXNwbGF5X21v
+ZGUgKm1vZGUgPSAmZW5jb2Rlci0+Y3J0Yy0+c3RhdGUtPmFkanVzdGVkX21vZGU7Cj4gKwlpbnQg
+bXV4ID0gZHJtX29mX2VuY29kZXJfYWN0aXZlX2VuZHBvaW50X2lkKGRzaS0+ZGV2LT5vZl9ub2Rl
+LCBlbmNvZGVyKTsKPiArCj4gKwlpZiAoZHNpLT5kcG1zX21vZGUgPT0gRFJNX01PREVfRFBNU19P
+TikKPiArCQlyZXR1cm47Cj4gKwo+ICsJcm9ja2NoaXBfZHNpX2dyZl9jb25maWcoZHNpLCBtdXgp
+Owo+ICsJZGV2X2RiZyhkc2ktPmRldiwgInZvcCAlcyBvdXRwdXQgdG8gZHNpMFxuIiwgKG11eCkg
+PyAiTElUIiA6ICJCSUciKTsKPiArCj4gKwlkd19taXBpX2RzaV9lbmFibGUoZHNpLCBtb2RlKTsK
+PiArCWlmIChkc2ktPnNsYXZlKQo+ICsJCWR3X21pcGlfZHNpX2VuYWJsZShkc2ktPnNsYXZlLCBt
+b2RlKTsKPiArCj4gIAlpZiAoZHJtX3BhbmVsX3ByZXBhcmUoZHNpLT5wYW5lbCkpCj4gIAkJZGV2
+X2Vycihkc2ktPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIHBhbmVsXG4iKTsKPiAgCj4gIAlkd19t
+aXBpX2RzaV9zZXRfbW9kZShkc2ksIERXX01JUElfRFNJX1ZJRF9NT0RFKTsKPiArCWlmIChkc2kt
+PnNsYXZlKQo+ICsJCWR3X21pcGlfZHNpX3NldF9tb2RlKGRzaS0+c2xhdmUsIERXX01JUElfRFNJ
+X1ZJRF9NT0RFKTsKPiArCj4gIAlkcm1fcGFuZWxfZW5hYmxlKGRzaS0+cGFuZWwpOwo+ICAKPiAg
+CWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBjbGspOwo+ICsJaWYgKGRzaS0+c2xhdmUpCj4g
+KwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+c2xhdmUtPnBjbGspOwo+ICAKPiAtCWlmICht
+dXgpCj4gLQkJdmFsID0gcGRhdGEtPmRzaTBfZW5fYml0IHwgKHBkYXRhLT5kc2kwX2VuX2JpdCA8
+PCAxNik7Cj4gLQllbHNlCj4gLQkJdmFsID0gcGRhdGEtPmRzaTBfZW5fYml0IDw8IDE2Owo+IC0K
+PiAtCXJlZ21hcF93cml0ZShkc2ktPmdyZl9yZWdtYXAsIHBkYXRhLT5ncmZfc3dpdGNoX3JlZywg
+dmFsKTsKPiAtCWRldl9kYmcoZHNpLT5kZXYsICJ2b3AgJXMgb3V0cHV0IHRvIGRzaTBcbiIsICht
+dXgpID8gIkxJVCIgOiAiQklHIik7Cj4gIAlkc2ktPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNf
+T047Cj4gLQo+IC0JY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+Z3JmX2Nsayk7Cj4gIH0KPiAg
+Cj4gIHN0YXRpYyBpbnQKPiBAQCAtMTEyMSw2ICsxMjU5LDkgQEAgc3RhdGljIHZvaWQgZHdfbWlw
+aV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICAKPiAg
+CXMtPm91dHB1dF90eXBlID0gRFJNX01PREVfQ09OTkVDVE9SX0RTSTsKPiAgCj4gKwlpZiAoZHNp
+LT5zbGF2ZSkKPiArCQlzLT5vdXRwdXRfZmxhZ3MgPSBST0NLQ0hJUF9PVVRQVVRfRFNJX0RVQUxf
+Q0hBTk5FTDsKPiArCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiBAQCAtMTIyNiw2ICsxMzY3LDEz
+IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfbWlwaV9wYXJzZV9kdChzdHJ1Y3QgZHdfbWlwaV9kc2kg
+KmRzaSkKPiAgCS5ncmZfc3dpdGNoX3JlZyA9IFJLMzM5OV9HUkZfU09DX0NPTjIwLAo+ICAJLmdy
+Zl9kc2kwX21vZGUgPSBSSzMzOTlfR1JGX0RTSV9NT0RFLAo+ICAJLmdyZl9kc2kwX21vZGVfcmVn
+ID0gUkszMzk5X0dSRl9TT0NfQ09OMjIsCj4gKwkuZ3JmX2RzaTFfbW9kZSA9IFJLMzM5OV9HUkZf
+RFNJMV9NT0RFLAo+ICsJLmdyZl9kc2kxX2VuYWJsZSA9IFJLMzM5OV9HUkZfRFNJMV9FTkFCTEUs
+Cj4gKwkuZ3JmX2RzaTFfbW9kZV9yZWcxID0gUkszMzk5X0dSRl9TT0NfQ09OMjMsCj4gKwkuZHNp
+MV9iYXNlZGlyID0gUkszMzk5X1RYUlhfQkFTRURJUiwKPiArCS5kc2kxX21hc3RlcnNsYXZleiA9
+IFJLMzM5OV9UWFJYX01BU1RFUlNMQVZFWiwKPiArCS5kc2kxX2VuYWJsZWNsayA9IFJLMzM5OV9U
+WFJYX0VOQUJMRUNMSywKPiArCS5ncmZfZHNpMV9tb2RlX3JlZzIgPSBSSzMzOTlfR1JGX1NPQ19D
+T04yNCwKPiAgCS5mbGFncyA9IERXX01JUElfTkVFRFNfUEhZX0NGR19DTEsgfCBEV19NSVBJX05F
+RURTX0dSRl9DTEssCj4gIAkubWF4X2RhdGFfbGFuZXMgPSA0LAo+ICB9Owo+IEBAIC0xMjQyLDE3
+ICsxMzkwLDEwNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX21pcGlfcGFyc2VfZHQoc3RydWN0IGR3
+X21pcGlfZHNpICpkc2kpCj4gIH07Cj4gIE1PRFVMRV9ERVZJQ0VfVEFCTEUob2YsIGR3X21pcGlf
+ZHNpX2R0X2lkcyk7Cj4gIAo+ICsKPiArc3RhdGljIGludCByb2NrY2hpcF9kc2lfZHVhbF9jaGFu
+bmVsX3Byb2JlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNl
+X25vZGUgKm5wOwo+ICsJc3RydWN0IHBsYXRmb3JtX2RldmljZSAqc2Vjb25kYXJ5Owo+ICsKPiAr
+CW5wID0gb2ZfcGFyc2VfcGhhbmRsZShkc2ktPmRldi0+b2Zfbm9kZSwgInJvY2tjaGlwLGR1YWwt
+Y2hhbm5lbCIsIDApOwo+ICsJaWYgKG5wKSB7Cj4gKwkJc2Vjb25kYXJ5ID0gb2ZfZmluZF9kZXZp
+Y2VfYnlfbm9kZShucCk7Cj4gKwkJZHNpLT5zbGF2ZSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHNl
+Y29uZGFyeSk7Cj4gKwkJb2Zfbm9kZV9wdXQobnApOwo+ICsKPiArCQlpZiAoIWRzaS0+c2xhdmUp
+Cj4gKwkJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsKPiArCQlkc2ktPnNsYXZlLT5tYXN0ZXIg
+PSBkc2k7Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgZHdf
+bWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwK
+PiAgCQkJICAgIHZvaWQgKmRhdGEpCj4gIHsKPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBk
+YXRhOwo+ICsJc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsK
+PiArCWludCByZXQ7Cj4gKwo+ICsJcmV0ID0gcm9ja2NoaXBfZHNpX2R1YWxfY2hhbm5lbF9wcm9i
+ZShkc2kpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0Owo+ICsKPiArCXJldCA9IGNsa19w
+cmVwYXJlX2VuYWJsZShkc2ktPnBsbHJlZl9jbGspOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl9l
+cnIoZGV2LCAiJXM6IEZhaWxlZCB0byBlbmFibGUgcGxscmVmX2Nsa1xuIiwgX19mdW5jX18pOwo+
+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4gKwo+ICsJcG1fcnVudGltZV9lbmFibGUoZGV2KTsKPiAr
+Cj4gKwlpZiAoZHNpLT5tYXN0ZXIpCj4gKwkJcmV0dXJuIDA7Cj4gKwo+ICsJcmV0ID0gZHdfbWlw
+aV9kc2lfcmVnaXN0ZXIoZHJtLCBkc2kpOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl9lcnIoZGV2
+LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIG1pcGlfZHNpOiAlZFxuIiwgcmV0KTsKPiArCQlnb3RvIGVy
+cl9wbGxyZWY7Cj4gKwl9Cj4gKwo+ICsJZHNpLT5kc2lfaG9zdC5vcHMgPSAmZHdfbWlwaV9kc2lf
+aG9zdF9vcHM7Cj4gKwlkc2ktPmRzaV9ob3N0LmRldiA9IGRldjsKPiArCXJldCA9IG1pcGlfZHNp
+X2hvc3RfcmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl9l
+cnIoZGV2LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIE1JUEkgaG9zdDogJWRcbiIsIHJldCk7Cj4gKwkJ
+Z290byBlcnJfY2xlYW51cDsKPiArCX0KPiArCj4gKwlpZiAoIWRzaS0+cGFuZWwpIHsKPiArCQly
+ZXQgPSAtRVBST0JFX0RFRkVSOwo+ICsJCWdvdG8gZXJyX21pcGlfZHNpX2hvc3Q7Cj4gKwl9Cj4g
+Kwo+ICsJcmV0dXJuIDA7Cj4gKwo+ICtlcnJfbWlwaV9kc2lfaG9zdDoKPiArCW1pcGlfZHNpX2hv
+c3RfdW5yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7Cj4gK2Vycl9jbGVhbnVwOgo+ICsJZHJtX2Vu
+Y29kZXJfY2xlYW51cCgmZHNpLT5lbmNvZGVyKTsKPiArCWRybV9jb25uZWN0b3JfY2xlYW51cCgm
+ZHNpLT5jb25uZWN0b3IpOwo+ICtlcnJfcGxscmVmOgo+ICsJcG1fcnVudGltZV9kaXNhYmxlKGRl
+dik7Cj4gKwljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKPiArCXJldHVy
+biByZXQ7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3VuYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiArCQkJICAgICAgIHZvaWQgKmRh
+dGEpCj4gK3sKPiArCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpID0gZGV2X2dldF9kcnZkYXRhKGRl
+dik7Cj4gKwo+ICsJbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKPiAr
+CXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOwo+ICsJaWYgKGRzaS0+c2xhdmUpCj4gKwkJcG1fcnVu
+dGltZV9kaXNhYmxlKGRzaS0+c2xhdmUtPmRldik7Cj4gKwljbGtfZGlzYWJsZV91bnByZXBhcmUo
+ZHNpLT5wbGxyZWZfY2xrKTsKPiArfQo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBjb21wb25l
+bnRfb3BzIGR3X21pcGlfZHNpX29wcyA9IHsKPiArCS5iaW5kCT0gZHdfbWlwaV9kc2lfYmluZCwK
+PiArCS51bmJpbmQJPSBkd19taXBpX2RzaV91bmJpbmQsCj4gK307Cj4gKwo+ICtzdGF0aWMgaW50
+IGR3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gK3sKPiAr
+CXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gIAljb25zdCBzdHJ1Y3Qgb2ZfZGV2
+aWNlX2lkICpvZl9pZCA9Cj4gIAkJCW9mX21hdGNoX2RldmljZShkd19taXBpX2RzaV9kdF9pZHMs
+IGRldik7Cj4gIAljb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwZGF0YSA9IG9m
+X2lkLT5kYXRhOwo+IC0Jc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiA9IHRvX3BsYXRmb3Jt
+X2RldmljZShkZXYpOwo+IC0Jc3RydWN0IHJlc2V0X2NvbnRyb2wgKmFwYl9yc3Q7Cj4gLQlzdHJ1
+Y3QgZHJtX2RldmljZSAqZHJtID0gZGF0YTsKPiAgCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpOwo+
+ICAJc3RydWN0IHJlc291cmNlICpyZXM7Cj4gKwlzdHJ1Y3QgcmVzZXRfY29udHJvbCAqYXBiX3Jz
+dDsKPiAgCWludCByZXQ7Cj4gIAo+ICAJZHNpID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpk
+c2kpLCBHRlBfS0VSTkVMKTsKPiBAQCAtMTI2Miw2ICsxNTAwLDcgQEAgc3RhdGljIGludCBkd19t
+aXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+
+ICAJZHNpLT5kZXYgPSBkZXY7Cj4gIAlkc2ktPnBkYXRhID0gcGRhdGE7Cj4gIAlkc2ktPmRwbXNf
+bW9kZSA9IERSTV9NT0RFX0RQTVNfT0ZGOwo+ICsJZGV2X3NldF9kcnZkYXRhKGRldiwgZHNpKTsK
+PiAgCj4gIAlyZXQgPSByb2NrY2hpcF9taXBpX3BhcnNlX2R0KGRzaSk7Cj4gIAlpZiAocmV0KQo+
+IEBAIC0xMzM2LDYzICsxNTc1LDYgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVj
+dCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJCX0KPiAgCX0KPiAgCj4g
+LQlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHNpLT5wbGxyZWZfY2xrKTsKPiAtCWlmIChyZXQp
+IHsKPiAtCQlkZXZfZXJyKGRldiwgIiVzOiBGYWlsZWQgdG8gZW5hYmxlIHBsbHJlZl9jbGtcbiIs
+IF9fZnVuY19fKTsKPiAtCQlyZXR1cm4gcmV0Owo+IC0JfQo+IC0KPiAtCXJldCA9IGR3X21pcGlf
+ZHNpX3JlZ2lzdGVyKGRybSwgZHNpKTsKPiAtCWlmIChyZXQpIHsKPiAtCQlkZXZfZXJyKGRldiwg
+IkZhaWxlZCB0byByZWdpc3RlciBtaXBpX2RzaTogJWRcbiIsIHJldCk7Cj4gLQkJZ290byBlcnJf
+cGxscmVmOwo+IC0JfQo+IC0KPiAtCXBtX3J1bnRpbWVfZW5hYmxlKGRldik7Cj4gLQo+IC0JZHNp
+LT5kc2lfaG9zdC5vcHMgPSAmZHdfbWlwaV9kc2lfaG9zdF9vcHM7Cj4gLQlkc2ktPmRzaV9ob3N0
+LmRldiA9IGRldjsKPiAtCXJldCA9IG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIoJmRzaS0+ZHNpX2hv
+c3QpOwo+IC0JaWYgKHJldCkgewo+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIHJlZ2lzdGVy
+IE1JUEkgaG9zdDogJWRcbiIsIHJldCk7Cj4gLQkJZ290byBlcnJfY2xlYW51cDsKPiAtCX0KPiAt
+Cj4gLQlpZiAoIWRzaS0+cGFuZWwpIHsKPiAtCQlyZXQgPSAtRVBST0JFX0RFRkVSOwo+IC0JCWdv
+dG8gZXJyX21pcGlfZHNpX2hvc3Q7Cj4gLQl9Cj4gLQo+IC0JZGV2X3NldF9kcnZkYXRhKGRldiwg
+ZHNpKTsKPiAtCXJldHVybiAwOwo+IC0KPiAtZXJyX21pcGlfZHNpX2hvc3Q6Cj4gLQltaXBpX2Rz
+aV9ob3N0X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+IC1lcnJfY2xlYW51cDoKPiAtCWRy
+bV9lbmNvZGVyX2NsZWFudXAoJmRzaS0+ZW5jb2Rlcik7Cj4gLQlkcm1fY29ubmVjdG9yX2NsZWFu
+dXAoJmRzaS0+Y29ubmVjdG9yKTsKPiAtZXJyX3BsbHJlZjoKPiAtCWNsa19kaXNhYmxlX3VucHJl
+cGFyZShkc2ktPnBsbHJlZl9jbGspOwo+IC0JcmV0dXJuIHJldDsKPiAtfQo+IC0KPiAtc3RhdGlj
+IHZvaWQgZHdfbWlwaV9kc2lfdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmlj
+ZSAqbWFzdGVyLAo+IC0JCQkgICAgICAgdm9pZCAqZGF0YSkKPiAtewo+IC0Jc3RydWN0IGR3X21p
+cGlfZHNpICpkc2kgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAtCj4gLQltaXBpX2RzaV9ob3N0
+X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+IC0JcG1fcnVudGltZV9kaXNhYmxlKGRldik7
+Cj4gLQljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKPiAtfQo+IC0KPiAt
+c3RhdGljIGNvbnN0IHN0cnVjdCBjb21wb25lbnRfb3BzIGR3X21pcGlfZHNpX29wcyA9IHsKPiAt
+CS5iaW5kCT0gZHdfbWlwaV9kc2lfYmluZCwKPiAtCS51bmJpbmQJPSBkd19taXBpX2RzaV91bmJp
+bmQsCj4gLX07Cj4gLQo+IC1zdGF0aWMgaW50IGR3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYpCj4gLXsKPiAgCXJldHVybiBjb21wb25lbnRfYWRkKCZwZGV2LT5k
+ZXYsICZkd19taXBpX2RzaV9vcHMpOwo+ICB9Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+IGluZGV4IGM3ZTk2YjguLjUxYWQxYzIgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBAQCAtMzYsNiAr
+MzYsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19zdGF0ZSB7Cj4gIAlzdHJ1Y3QgZHJtX2NydGNf
+c3RhdGUgYmFzZTsKPiAgCWludCBvdXRwdXRfdHlwZTsKPiAgCWludCBvdXRwdXRfbW9kZTsKPiAr
+CWludCBvdXRwdXRfZmxhZ3M7Cj4gIH07Cj4gICNkZWZpbmUgdG9fcm9ja2NoaXBfY3J0Y19zdGF0
+ZShzKSBcCj4gIAkJY29udGFpbmVyX29mKHMsIHN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRlLCBi
+YXNlKQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGlu
+ZGV4IGJmOWVkMGUuLmNiNDBjZGQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtOTE3LDYgKzkxNyw4IEBAIHN0YXRpYyB2b2lkIHZvcF9j
+cnRjX2F0b21pY19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAJY2FzZSBEUk1fTU9E
+RV9DT05ORUNUT1JfRFNJOgo+ICAJCVZPUF9SRUdfU0VUKHZvcCwgb3V0cHV0LCBtaXBpX3Bpbl9w
+b2wsIHBpbl9wb2wpOwo+ICAJCVZPUF9SRUdfU0VUKHZvcCwgb3V0cHV0LCBtaXBpX2VuLCAxKTsK
+PiArCQlWT1BfUkVHX1NFVCh2b3AsIG91dHB1dCwgbWlwaV9kdWFsX2NoYW5uZWxfZW4sCj4gKwkJ
+CSEhKHMtPm91dHB1dF9mbGFncyAmIFJPQ0tDSElQX09VVFBVVF9EU0lfRFVBTF9DSEFOTkVMKSk7
+Cj4gIAkJYnJlYWs7Cj4gIAljYXNlIERSTV9NT0RFX0NPTk5FQ1RPUl9EaXNwbGF5UG9ydDoKPiAg
+CQlwaW5fcG9sICY9IH5CSVQoRENMS19JTlZFUlQpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuaAo+IGluZGV4IDU2YmJkMmUuLmQxODQ1MzEgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKPiBAQCAtNjAsNiAr
+NjAsNyBAQCBzdHJ1Y3Qgdm9wX291dHB1dCB7Cj4gIAlzdHJ1Y3Qgdm9wX3JlZyBlZHBfZW47Cj4g
+IAlzdHJ1Y3Qgdm9wX3JlZyBoZG1pX2VuOwo+ICAJc3RydWN0IHZvcF9yZWcgbWlwaV9lbjsKPiAr
+CXN0cnVjdCB2b3BfcmVnIG1pcGlfZHVhbF9jaGFubmVsX2VuOwo+ICAJc3RydWN0IHZvcF9yZWcg
+cmdiX2VuOwo+ICB9Owo+ICAKPiBAQCAtMjEyLDYgKzIxMyw4IEBAIHN0cnVjdCB2b3BfZGF0YSB7
+Cj4gIC8qIGZvciB1c2Ugc3BlY2lhbCBvdXRmYWNlICovCj4gICNkZWZpbmUgUk9DS0NISVBfT1VU
+X01PREVfQUFBQQkxNQo+ICAKPiArI2RlZmluZSBST0NLQ0hJUF9PVVRQVVRfRFNJX0RVQUxfQ0hB
+Tk5FTAlCSVQoMCkKPiArCj4gIGVudW0gYWxwaGFfbW9kZSB7Cj4gIAlBTFBIQV9TVFJBSUdIVCwK
+PiAgCUFMUEhBX0lOVkVSU0UsCj4gLS0gCj4gMS45LjEKPiAKCi0tIApTZWFuIFBhdWwsIFNvZnR3
+YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
