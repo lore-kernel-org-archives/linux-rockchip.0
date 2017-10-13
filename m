@@ -1,38 +1,112 @@
-From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] spi: rockchip: Convert to late and early system PM
- callbacks
-Date: Fri, 13 Oct 2017 18:47:18 +0800
-Message-ID: <59E099B6.1000804@rock-chips.com>
-References: <20171013100116.8271-1-jeffy.chen@rock-chips.com> <20171013101719.bophbiz7qb5wi7n2@sirena.co.uk>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RESEND PATCH 2/2] arm64: dts: rockchip: Enable edp disaplay on kevin
+Date: Fri, 13 Oct 2017 15:25:24 +0200
+Message-ID: <3037285.0MAZvLKA4I@phil>
+References: <20171013104138.3216-1-jeffy.chen@rock-chips.com> <20171013104138.3216-3-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171013101719.bophbiz7qb5wi7n2-7j8lgAiuQgnQXOPxS62xeg@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171013104138.3216-3-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, Sean Paul <seanpaul@chromium.org>
+Cc: linux-kernel@vger.kernel.org, briannorris@chromium.org, broonie@kernel.org, dianders@chromium.org, Matthias Kaehlcke <mka@chromium.org>, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+Hi Jeffy,
 
-On 10/13/2017 06:17 PM, Mark Brown wrote:
-> On Fri, Oct 13, 2017 at 06:01:15PM +0800, Jeffy Chen wrote:
->> Currently we are suspending the spi master in it's ->suspend callback,
->> which is racy as some other drivers may still want to transmit messages
->> on the bus(e.g. spi based pwm backlight).
->
-> I'm missing patch 2/2.
->
-Sorry, i'll resend them...
+Am Freitag, 13. Oktober 2017, 18:41:38 CEST schrieb Jeffy Chen:
+> Add edp panel and enable related nodes on kevin.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-This patch is to defer suspend_spi_master to late suspend.
+does this actually work with mainline kernel sources?
 
-Since we put display-subsystem dt node above spi dt node, which makes 
-spi suspend been called before display driver. Then the display driver 
-would fail to set pwm backlight through spi in it's suspend/resume.
+Sean Paul did look at making the edp work on Chromebooks recently,
+but it seemed there were still parts missing to make it actually display
+something.
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+Heiko
+
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
+>  2 files changed, 45 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> index a3d3cea7dc4f..bc67b19f0af5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> @@ -93,6 +93,18 @@
+>  		pwm-delay-us = <10000>;
+>  	};
+>  
+> +	edp_panel: edp-panel {
+> +		compatible = "sharp,lq123p1jx31", "simple-panel";
+> +		backlight = <&backlight>;
+> +		power-supply = <&pp3300_disp>;
+> +
+> +		ports {
+> +			panel_in_edp: endpoint {
+> +				remote-endpoint = <&edp_out_panel>;
+> +			};
+> +		};
+> +	};
+> +
+>  	thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
+>  		compatible = "murata,ncp15wb473";
+>  		pullup-uv = <1800000>;
+> @@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
+>  	};
+>  };
+>  
+> +&edp {
+> +	status = "okay";
+> +
+> +	ports {
+> +		edp_out: port@1 {
+> +			reg = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			edp_out_panel: endpoint@0 {
+> +				reg = <0>;
+> +				remote-endpoint = <&panel_in_edp>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+>  &ppvar_bigcpu_pwm {
+>  	regulator-min-microvolt = <798674>;
+>  	regulator-max-microvolt = <1302172>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> index 5772c52fbfd3..470105d651c2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> @@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
+>  	dr_mode = "host";
+>  };
+>  
+> +&vopb {
+> +	status = "okay";
+> +};
+> +
+> +&vopb_mmu {
+> +	status = "okay";
+> +};
+> +
+> +&vopl {
+> +	status = "okay";
+> +};
+> +
+> +&vopl_mmu {
+> +	status = "okay";
+> +};
+> +
+>  #include <arm/cros-ec-keyboard.dtsi>
+>  #include <arm/cros-ec-sbs.dtsi>
+>  
+> 
