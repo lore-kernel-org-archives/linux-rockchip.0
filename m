@@ -1,127 +1,127 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [RESEND PATCH 1/2] spi: rockchip: Convert to late and early system
- PM callbacks
-Date: Sat, 14 Oct 2017 03:01:42 +0800
-Message-ID: <59E10D96.90307@rock-chips.com>
-References: <20171013104138.3216-1-jeffy.chen@rock-chips.com> <20171013104138.3216-2-jeffy.chen@rock-chips.com> <CAD=FV=X6pkaY3t=ceh3QEUws+_gqRGMN9zveW0fXR1noF1T6ew@mail.gmail.com> <20171013155120.GA137489@google.com> <20171013164235.thgqha7sl5tdptwv@sirena.co.uk> <59E103B0.8060705@rock-chips.com> <20171013183006.k6pzcr5tcwsxxtmp@dtor-ws> <59E10971.6020200@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Fri, 13 Oct 2017 14:19:06 -0500
+Message-ID: <20171013191906.GF25517@bhelgaas-glaptop.roam.corp.google.com>
+References: <20170911151029.25185-1-jeffy.chen@rock-chips.com>
+ <20170911151029.25185-2-jeffy.chen@rock-chips.com>
+ <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com>
+ <2453698.N4jfPaHx71@aspire.rjw.lan>
+ <59E10709.4020300@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <59E10971.6020200@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <59E10709.4020300@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-spi <linux-spi@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, sean Paul <seanpaul@chromium.org>
+To: jeffy <jeffy.chen@rock-chips.com>
+Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi guys,
+On Sat, Oct 14, 2017 at 02:33:45AM +0800, jeffy wrote:
+> Hi Rafael,
+> 
+> On 10/13/2017 09:21 PM, Rafael J. Wysocki wrote:
+> >>
+> >>I'm a little skeptical about dev_pm_set_dedicated_wake_irq(), not
+> >>because I know anything at all about it, but because there are only
+> >>five callers in the whole tree, three of which are in UART code, and
+> >>none in anything resembling PCI code.
+> >>
+> >>Is Rockchip really that special, or are we going about this the wrong
+> >>way?
+> 
+> we used to put these codes in the wifi driver, but another wifi
+> vendor suggests these should go into the pcie driver.
+> 
+> and as tony said, it could go into pcie common code :)
 
-so what happens here is:
-1/ we put display-subsystem dt node before spi node, which cause 
-rockchip drm driver probed before spi(also before edp driver/vop driver...)
+I guess the implication (I'm speculating here) is that in most
+existing cases, the WAKE# signal is fielded by an ACPI BIOS, which
+knows how it's connected.  I suppose that would end up being turned
+into an SCI that Linux already knows how to handle generically.
 
-2/ rockchip drm driver bound after spi/edp/vop... drivers probed
+And further, that the non-ACPI drivers are relatively new and you're
+the first attempt to use WAKE# with a non-ACPI PCI host driver?
 
-3/ in rockchip drm driver's resume callback, it would try to enable edp 
-panel backlight(through spi), but spi master is still suspended, then we 
-got these errors:
+If this setup could be done somewhere in PCIe common code, that would
+be great.  We have so much copy and pasted code already, it'd be nice
+to avoid adding more.  I don't know if this would fit in
+pci_scan_root_bus_bridge(), doing something like dma_configure() does
+to get hold of a struct platform_device * or a struct device * so you
+could lookup the IRQ?
 
-1970-01-01T08:02:59.607315+08:00 ERR kernel: [  178.754005] cros-ec-spi 
-spi2.0: spi
-  transfer failed: -108
-1970-01-01T08:02:59.607320+08:00 ERR kernel: [  178.760102] cros-ec-spi 
-spi2.0: cs-
-deassert spi transfer failed: -108
-1970-01-01T08:02:59.607325+08:00 ERR kernel: [  178.767380] cros-ec-spi 
-spi2.0: Com
-mand xfer error (err:-108)
-1970-01-01T08:02:59.607331+08:00 ERR kernel: [  178.773963] cros-ec-spi 
-spi2.0: spi
-  transfer failed: -108
-1970-01-01T08:02:59.607336+08:00 ERR kernel: [  178.780066] cros-ec-spi 
-spi2.0: cs-
-deassert spi transfer failed: -108
-1970-01-01T08:02:59.607341+08:00 ERR kernel: [  178.787359] cros-ec-spi 
-spi2.0: Com
-mand xfer error (err:-108)
+> >>> >+		if (err)
+> >>> >+			dev_err(dev, "failed to setup PCIe wakeup IRQ\n");
+> >>> >+	}
+> >>> >+
+> >>> >  	return 0;
+> >>
+> >>The above could be structured as:
+> >>
+> >>  irq = platform_get_irq_byname(pdev, "wakeup");
+> >>  if (irq < 0)
+> >>    return 0;
+> >>
+> >>  device_init_wakeup(dev, true);
+> >>  err = dev_pm_set_dedicated_wake_irq(dev, irq);
+> >>  if (err) {
+> >>    dev_pm_clear_wake_irq(dev);
+> >>    device_init_wakeup(dev, false);
+> >>  }
+> >>
+> there's no need to call dev_pm_clear_wake_irq when
+> dev_pm_set_dedicated_wake_irq failed...and i agree the
+> device_init_wakeup part, i'll add that in the next version(with
+> brian's comment too)
+> >>  return 0;
+> >>
+> >>to unindent the mainline non-error code.
+> >>
+> >>> >  }
+> >>> >
+> >>> >@@ -1542,11 +1552,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+> >>> >
+> >>> >  	err = rockchip_pcie_parse_dt(rockchip);
+> >>> >  	if (err)
+> >>> >-		return err;
+> >>> >+		goto err_disable_wake;
+> >>> >
+> >>> >  	err = rockchip_pcie_enable_clocks(rockchip);
+> >>> >  	if (err)
+> >>> >-		return err;
+> >>> >+		goto err_disable_wake;
+> >>> >
+> >>> >  	err = rockchip_pcie_set_vpcie(rockchip);
+> >>> >  	if (err) {
+> >>> >@@ -1656,6 +1666,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+> >>> >  		regulator_disable(rockchip->vpcie0v9);
+> >>> >  err_set_vpcie:
+> >>> >  	rockchip_pcie_disable_clocks(rockchip);
+> >>> >+err_disable_wake:
+> >>> >+	dev_pm_clear_wake_irq(dev);
+> >>> >+	device_init_wakeup(dev, false);
+> >>
+> >>I think this error cleanup should be done in rockchip_pcie_setup_irq()
+> >>as shown above.  There's no real connection between
+> >>rockchip_pcie_probe() and the wake setup.
+> 
+> this error handling is like inline "rockchip_pcie_cleanup_irq()",
+> and they are harmless to be called even if we don't have the wakeup
+> irq :)
 
-so other than move spi master suspend to late suspend, maybe we could 
-defer rockchip drm driver probe after it's component drivers somehow?
+I'm sure they're harmless.  The point is that the cleanup should be
+done near the failure, not in the caller of the caller of the function
+where the failure was detected.  You have:
 
+  rockchip_pcie_probe
+    rockchip_pcie_parse_dt
+      rockchip_pcie_setup_irq
+        err = dev_pm_set_dedicated_wake_irq
+        if (err)
+          dev_err(...)
 
+So you detect the error in rockchip_pcie_setup_irq(), but you clean up
+from it in rockchip_pcie_probe(), which doesn't make sense because
+rockchip_pcie_probe() doesn't do anything related to wakeup interupts.
 
-On 10/14/2017 02:44 AM, jeffy wrote:
-> Hi Dmitry,
->
-> On 10/14/2017 02:30 AM, Dmitry Torokhov wrote:
->> On Sat, Oct 14, 2017 at 02:19:28AM +0800, jeffy wrote:
->>> Hi guys,
->>>
->>> it looks like the suspend sequence depends on the dt node sequence,
->>> and we
->>> are putting display-subsystem dt node above spi dt node, so it would be
->>> earlier in the device list, then got suspended later than spi device.
->>
->> Would it not get a deferral when trying to get resource reference, which
->> would cause it bumped down to the end of dpm list?
-> hmm, right, check again, the rockchip drm would not depend on spi, but
-> the edp driver does.
->
-> so the drm driver(display-subsystem) would probed before spi, but try to
-> control the backlight in the suspend/resume...
->
-> so i was wrong in the commit message, will fix it in next version.
->>
->>>
->>> the pwm backlight and cros_ec_spi pwm are very interesting, not only
->>> about
->>> suspend dependency... if we unbind cros_ec_spi pwm, the pwm backlight
->>> would
->>> still hold a reference to it, and crash the kernel later.
->>
->> That would be a bug in PWM/cors_ec and it should keep the PWM object
->> until last reference drops and simply error out on all requests.
-> right, and maybe try to refresh the pwm reference when we bind it again
->>
->>>
->>> On 10/14/2017 12:42 AM, Mark Brown wrote:
->>>> On Fri, Oct 13, 2017 at 08:51:21AM -0700, Brian Norris wrote:
->>>>
->>>>> Yes, this does seem odd to me too. This looks like an arms race hack
->>>>> that should be avoided unless we know a legit root cause. Also,
->>>>> "probe order implies suspend order" doesn't quite work for async
->>>>> suspend
->>>>> anyway, so we'd probably want to express the dependency properly
->>>>> anyway.
->>>>
->>>> Yeah, it's the same stuff as we get with initcall ordering.  This sort
->>>> of thing does happen with things like PMICs which tend to have hardware
->>>> that the system wants to manipulate in the IRQs off part of suspend.
->>>> Ideally the dependency annotation stuff would figure things out though
->>>> I'm not sure what the status of that is.
->>
->> I'd say non-existent for resources such as regulators, pwms, clocks,
->> etc. I do not think many places call device_link_add()... I think adding
->> this to devm_* APIs might be easiest to get the ball going as they
->> naturally have consumer device and can easily figure out the supplier
->> side.
->>
->>>>
->>>>> Any chance this is related? Seems like that might break the
->>>>> parent/child
->>>>> relationship for master/slave:
->>>>
->>>>> commit d7e2ee257038baeb03baef602500368a51ee9eef
->>>>> Author: Linus Walleij <linus.walleij@linaro.org>
->>>>> Date:   Mon Apr 11 13:51:03 2016 +0200
->>>>
->>>>>       spi: let SPI masters ignore their children for PM
->>>>
->>>> That's for runtime PM, I'd not expect it to affect system suspend.
->>>>
->>>
->>>
->>
->> Thanks.
->>
->
+Bjorn
