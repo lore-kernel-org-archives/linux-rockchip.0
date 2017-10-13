@@ -1,42 +1,44 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Sat, 14 Oct 2017 03:26:16 +0800
-Message-ID: <59E11358.3090409@rock-chips.com>
-References: <20170911151029.25185-1-jeffy.chen@rock-chips.com> <20170911151029.25185-2-jeffy.chen@rock-chips.com> <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com> <2453698.N4jfPaHx71@aspire.rjw.lan> <59E10709.4020300@rock-chips.com> <20171013191906.GF25517@bhelgaas-glaptop.roam.corp.google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v6 0/3] PCI: rockchip: Move PCIE_WAKE handling into rockchip pcie driver
+Date: Sat, 14 Oct 2017 03:50:55 +0800
+Message-ID: <20171013195059.23865-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171013191906.GF25517@bhelgaas-glaptop.roam.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, Tony Lindgren <tony@atomide.com>
+To: linux-kernel@vger.kernel.org, bhelgaas@google.com
+Cc: shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
 
-On 10/14/2017 03:19 AM, Bjorn Helgaas wrote:
-> I'm sure they're harmless.  The point is that the cleanup should be
-> done near the failure, not in the caller of the caller of the function
-> where the failure was detected.  You have:
->
->    rockchip_pcie_probe
->      rockchip_pcie_parse_dt
->        rockchip_pcie_setup_irq
->          err = dev_pm_set_dedicated_wake_irq
->          if (err)
->            dev_err(...)
->
-> So you detect the error in rockchip_pcie_setup_irq(), but you clean up
-> from it in rockchip_pcie_probe(), which doesn't make sense because
-> rockchip_pcie_probe() doesn't do anything related to wakeup interupts.
->
-right, but if something wrong happens in rockchip_pcie_probe() later 
-than rockchip_pcie_setup_irq(), we may still need to clean it up ;)
+Currently we are handling pcie wake in mrvl wifi driver. But Brian
+suggests to move it into rockchip pcie driver.
 
-i think the error handling is a little like what we do in the remove 
-callback
-> Bjorn
->
->
->
+Tested on my chromebook bob(with cros 4.4 kernel and mrvl wifi).
+
+
+Changes in v6:
+Fix device_init_wake error handling, and add some comments.
+
+Changes in v5:
+Rebase
+Move to pci.txt
+Use "wakeup" instead of "wake"
+
+Changes in v3:
+Fix error handling
+
+Changes in v2:
+Use dev_pm_set_dedicated_wake_irq
+        -- Suggested by Brian Norris <briannorris@chromium.com>
+
+Jeffy Chen (3):
+  PCI: rockchip: Add support for pcie wake irq
+  dt-bindings: PCI: Add definition of pcie wake irq
+  arm64: dts: rockchip: Handle pcie wake in pcie driver for Gru
+
+ Documentation/devicetree/bindings/pci/pci.txt |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 15 +++++++++------
+ drivers/pci/host/pcie-rockchip.c              | 27 +++++++++++++++++++++------
+ 3 files changed, 32 insertions(+), 12 deletions(-)
+
+-- 
+2.11.0
