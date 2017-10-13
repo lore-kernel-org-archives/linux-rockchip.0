@@ -1,133 +1,131 @@
-From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Fri, 13 Oct 2017 15:21:41 +0200
-Message-ID: <2453698.N4jfPaHx71@aspire.rjw.lan>
-References: <20170911151029.25185-1-jeffy.chen@rock-chips.com> <20170911151029.25185-2-jeffy.chen@rock-chips.com> <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com>
+From: Emil Renner Berthing <emil.renner.berthing-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RESEND PATCH 2/2] arm64: dts: rockchip: Enable edp disaplay on kevin
+Date: Fri, 13 Oct 2017 15:42:50 +0200
+Message-ID: <CANBLGcyqbfmVJ75Nu_RtVD2TUJs_pXZ+jZBhQ7J0E9U4DvwtSg@mail.gmail.com>
+References: <20171013104138.3216-1-jeffy.chen@rock-chips.com>
+ <20171013104138.3216-3-jeffy.chen@rock-chips.com> <3037285.0MAZvLKA4I@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, Tony Lindgren <tony@atomide.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <3037285.0MAZvLKA4I@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-[+cc Tony]
+On 13 October 2017 at 15:25, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Am Freitag, 13. Oktober 2017, 18:41:38 CEST schrieb Jeffy Chen:
+>> Add edp panel and enable related nodes on kevin.
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> does this actually work with mainline kernel sources?
+>
+> Sean Paul did look at making the edp work on Chromebooks recently,
+> but it seemed there were still parts missing to make it actually display
+> something.
 
-On Friday, October 13, 2017 5:04:41 AM CEST Bjorn Helgaas wrote:
-> [+cc Rafael, linux-pm]
-> 
-> On Mon, Sep 11, 2017 at 11:10:27PM +0800, Jeffy Chen wrote:
-> > Add support for PCIE_WAKE pin in rockchip pcie driver.
-> > 
-> > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> > ---
-> > 
-> > Changes in v5:
-> > Rebase
-> > 
-> > Changes in v3:
-> > Fix error handling
-> > 
-> > Changes in v2:
-> > Use dev_pm_set_dedicated_wake_irq
-> >         -- Suggested by Brian Norris <briannorris@chromium.com>
-> > 
-> >  drivers/pci/host/pcie-rockchip.c | 19 +++++++++++++++++--
-> >  1 file changed, 17 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> > index 9051c6c8fea4..a8b7272597a7 100644
-> > --- a/drivers/pci/host/pcie-rockchip.c
-> > +++ b/drivers/pci/host/pcie-rockchip.c
-> > @@ -37,6 +37,7 @@
-> >  #include <linux/pci_ids.h>
-> >  #include <linux/phy/phy.h>
-> >  #include <linux/platform_device.h>
-> > +#include <linux/pm_wakeirq.h>
-> >  #include <linux/reset.h>
-> >  #include <linux/regmap.h>
-> >  
-> > @@ -995,6 +996,15 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
-> >  		return err;
-> >  	}
-> >  
-> > +	/* Must init wakeup before setting dedicated wakeup irq. */
-> > +	device_init_wakeup(dev, true);
-> > +	irq = platform_get_irq_byname(pdev, "wakeup");
-> > +	if (irq >= 0) {
-> > +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
-> 
-> I'm a little skeptical about dev_pm_set_dedicated_wake_irq(), not
-> because I know anything at all about it, but because there are only
-> five callers in the whole tree, three of which are in UART code, and
-> none in anything resembling PCI code.
-> 
-> Is Rockchip really that special, or are we going about this the wrong
-> way?
-> 
-> > +		if (err)
-> > +			dev_err(dev, "failed to setup PCIe wakeup IRQ\n");
-> > +	}
-> > +
-> >  	return 0;
-> 
-> The above could be structured as:
-> 
->   irq = platform_get_irq_byname(pdev, "wakeup");
->   if (irq < 0)
->     return 0;
-> 
->   device_init_wakeup(dev, true);
->   err = dev_pm_set_dedicated_wake_irq(dev, irq);
->   if (err) {
->     dev_pm_clear_wake_irq(dev);
->     device_init_wakeup(dev, false);
->   }
-> 
->   return 0;
-> 
-> to unindent the mainline non-error code.
-> 
-> >  }
-> >  
-> > @@ -1542,11 +1552,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> >  
-> >  	err = rockchip_pcie_parse_dt(rockchip);
-> >  	if (err)
-> > -		return err;
-> > +		goto err_disable_wake;
-> >  
-> >  	err = rockchip_pcie_enable_clocks(rockchip);
-> >  	if (err)
-> > -		return err;
-> > +		goto err_disable_wake;
-> >  
-> >  	err = rockchip_pcie_set_vpcie(rockchip);
-> >  	if (err) {
-> > @@ -1656,6 +1666,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> >  		regulator_disable(rockchip->vpcie0v9);
-> >  err_set_vpcie:
-> >  	rockchip_pcie_disable_clocks(rockchip);
-> > +err_disable_wake:
-> > +	dev_pm_clear_wake_irq(dev);
-> > +	device_init_wakeup(dev, false);
-> 
-> I think this error cleanup should be done in rockchip_pcie_setup_irq()
-> as shown above.  There's no real connection between
-> rockchip_pcie_probe() and the wake setup.
-> 
-> >  	return err;
-> >  }
-> >  
-> > @@ -1682,6 +1695,8 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
-> >  	if (!IS_ERR(rockchip->vpcie0v9))
-> >  		regulator_disable(rockchip->vpcie0v9);
-> >  
-> > +	dev_pm_clear_wake_irq(dev);
-> > +	device_init_wakeup(dev, false);
-> >  	return 0;
-> >  }
-> >  
-> 
+That's funny. I've been using your own similar patch on my Chromebook
+Plus for a while now and it works "fine":
+https://github.com/esmil/linux/commits/kevin
+
+..where fine means I can't get the armsoc X11 driver to work, but
+modesetting works and screenblank seems to freeze the kernel.
+
+I'll test this version of the dts changes as soon as I'm near my
+chrombook again.
+
+/Emil
+
+>> ---
+>>
+>>  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
+>>  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
+>>  2 files changed, 45 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+>> index a3d3cea7dc4f..bc67b19f0af5 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+>> @@ -93,6 +93,18 @@
+>>               pwm-delay-us = <10000>;
+>>       };
+>>
+>> +     edp_panel: edp-panel {
+>> +             compatible = "sharp,lq123p1jx31", "simple-panel";
+>> +             backlight = <&backlight>;
+>> +             power-supply = <&pp3300_disp>;
+>> +
+>> +             ports {
+>> +                     panel_in_edp: endpoint {
+>> +                             remote-endpoint = <&edp_out_panel>;
+>> +                     };
+>> +             };
+>> +     };
+>> +
+>>       thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
+>>               compatible = "murata,ncp15wb473";
+>>               pullup-uv = <1800000>;
+>> @@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
+>>       };
+>>  };
+>>
+>> +&edp {
+>> +     status = "okay";
+>> +
+>> +     ports {
+>> +             edp_out: port@1 {
+>> +                     reg = <1>;
+>> +                     #address-cells = <1>;
+>> +                     #size-cells = <0>;
+>> +
+>> +                     edp_out_panel: endpoint@0 {
+>> +                             reg = <0>;
+>> +                             remote-endpoint = <&panel_in_edp>;
+>> +                     };
+>> +             };
+>> +     };
+>> +};
+>> +
+>>  &ppvar_bigcpu_pwm {
+>>       regulator-min-microvolt = <798674>;
+>>       regulator-max-microvolt = <1302172>;
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+>> index 5772c52fbfd3..470105d651c2 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+>> @@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
+>>       dr_mode = "host";
+>>  };
+>>
+>> +&vopb {
+>> +     status = "okay";
+>> +};
+>> +
+>> +&vopb_mmu {
+>> +     status = "okay";
+>> +};
+>> +
+>> +&vopl {
+>> +     status = "okay";
+>> +};
+>> +
+>> +&vopl_mmu {
+>> +     status = "okay";
+>> +};
+>> +
+>>  #include <arm/cros-ec-keyboard.dtsi>
+>>  #include <arm/cros-ec-sbs.dtsi>
+>>
+>>
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
