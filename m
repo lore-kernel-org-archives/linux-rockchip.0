@@ -1,136 +1,51 @@
 From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Thu, 12 Oct 2017 22:04:41 -0500
-Message-ID: <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com>
-References: <20170911151029.25185-1-jeffy.chen@rock-chips.com>
- <20170911151029.25185-2-jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH 0/3] PCI: rockchip: assert PERST# in S3
+Date: Thu, 12 Oct 2017 22:15:23 -0500
+Message-ID: <20171013031523.GB25517@bhelgaas-glaptop.roam.corp.google.com>
+References: <20171012205220.130048-1-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20170911151029.25185-2-jeffy.chen@rock-chips.com>
+In-Reply-To: <20171012205220.130048-1-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-pm@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Rajat Jain <rajatja@google.com>, Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-[+cc Rafael, linux-pm]
-
-On Mon, Sep 11, 2017 at 11:10:27PM +0800, Jeffy Chen wrote:
-> Add support for PCIE_WAKE pin in rockchip pcie driver.
+On Thu, Oct 12, 2017 at 01:52:17PM -0700, Brian Norris wrote:
+> Hi,
 > 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> ---
+> This patch series should mostly be self-descriptive, but it's motivated by the
+> fact that I've found differing requirements from PCIe endpoint makers regarding
+> the state of PERST# when in system suspend (S3). Additionally, some existing
+> boards are not especially well suited for holding PERST# low in S3 (e.g., the
+> pin is driven by a non-PMU GPIO, so it's hard or impossible to keep it
+> asserted). So the solution is...give it a device tree property!
+
+How do ACPI systems solve this problem?
+
+Can you point to any relevant sections in the PCI specs?
+
+Is this a hole in those specs?  Is this something that needs to be
+clarified by the PCI-SIG to improve interoperability?
+
+Why is this problem only showing up now?
+
+> Brian Norris (3):
+>   Documentation/devicetree: Add pcie-reset-suspend property
+>   of/pci: Add of_pci_get_pcie_reset_suspend() to parse
+>     pcie-reset-suspend
+>   PCI: rockchip: Support configuring PERST# state via DT
 > 
-> Changes in v5:
-> Rebase
+>  Documentation/devicetree/bindings/pci/pci.txt | 11 +++++++++++
+>  drivers/of/of_pci.c                           | 25 +++++++++++++++++++++++++
+>  drivers/pci/host/pcie-rockchip.c              |  7 +++++++
+>  include/linux/of_pci.h                        |  7 +++++++
+>  4 files changed, 50 insertions(+)
 > 
-> Changes in v3:
-> Fix error handling
-> 
-> Changes in v2:
-> Use dev_pm_set_dedicated_wake_irq
->         -- Suggested by Brian Norris <briannorris@chromium.com>
-> 
->  drivers/pci/host/pcie-rockchip.c | 19 +++++++++++++++++--
->  1 file changed, 17 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 9051c6c8fea4..a8b7272597a7 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -37,6 +37,7 @@
->  #include <linux/pci_ids.h>
->  #include <linux/phy/phy.h>
->  #include <linux/platform_device.h>
-> +#include <linux/pm_wakeirq.h>
->  #include <linux/reset.h>
->  #include <linux/regmap.h>
->  
-> @@ -995,6 +996,15 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
->  		return err;
->  	}
->  
-> +	/* Must init wakeup before setting dedicated wakeup irq. */
-> +	device_init_wakeup(dev, true);
-> +	irq = platform_get_irq_byname(pdev, "wakeup");
-> +	if (irq >= 0) {
-> +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
-
-I'm a little skeptical about dev_pm_set_dedicated_wake_irq(), not
-because I know anything at all about it, but because there are only
-five callers in the whole tree, three of which are in UART code, and
-none in anything resembling PCI code.
-
-Is Rockchip really that special, or are we going about this the wrong
-way?
-
-> +		if (err)
-> +			dev_err(dev, "failed to setup PCIe wakeup IRQ\n");
-> +	}
-> +
->  	return 0;
-
-The above could be structured as:
-
-  irq = platform_get_irq_byname(pdev, "wakeup");
-  if (irq < 0)
-    return 0;
-
-  device_init_wakeup(dev, true);
-  err = dev_pm_set_dedicated_wake_irq(dev, irq);
-  if (err) {
-    dev_pm_clear_wake_irq(dev);
-    device_init_wakeup(dev, false);
-  }
-
-  return 0;
-
-to unindent the mainline non-error code.
-
->  }
->  
-> @@ -1542,11 +1552,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	err = rockchip_pcie_parse_dt(rockchip);
->  	if (err)
-> -		return err;
-> +		goto err_disable_wake;
->  
->  	err = rockchip_pcie_enable_clocks(rockchip);
->  	if (err)
-> -		return err;
-> +		goto err_disable_wake;
->  
->  	err = rockchip_pcie_set_vpcie(rockchip);
->  	if (err) {
-> @@ -1656,6 +1666,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  		regulator_disable(rockchip->vpcie0v9);
->  err_set_vpcie:
->  	rockchip_pcie_disable_clocks(rockchip);
-> +err_disable_wake:
-> +	dev_pm_clear_wake_irq(dev);
-> +	device_init_wakeup(dev, false);
-
-I think this error cleanup should be done in rockchip_pcie_setup_irq()
-as shown above.  There's no real connection between
-rockchip_pcie_probe() and the wake setup.
-
->  	return err;
->  }
->  
-> @@ -1682,6 +1695,8 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
->  	if (!IS_ERR(rockchip->vpcie0v9))
->  		regulator_disable(rockchip->vpcie0v9);
->  
-> +	dev_pm_clear_wake_irq(dev);
-> +	device_init_wakeup(dev, false);
->  	return 0;
->  }
->  
 > -- 
-> 2.11.0
-> 
+> 2.15.0.rc0.271.g36b669edcc-goog
 > 
 > 
 > _______________________________________________
