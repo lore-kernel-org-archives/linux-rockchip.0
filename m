@@ -1,70 +1,65 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH 1/2] spi: rockchip: Convert to late and early
- system PM callbacks
-Date: Fri, 13 Oct 2017 17:42:35 +0100
-Message-ID: <20171013164235.thgqha7sl5tdptwv@sirena.co.uk>
-References: <20171013104138.3216-1-jeffy.chen@rock-chips.com>
- <20171013104138.3216-2-jeffy.chen@rock-chips.com>
- <CAD=FV=X6pkaY3t=ceh3QEUws+_gqRGMN9zveW0fXR1noF1T6ew@mail.gmail.com>
- <20171013155120.GA137489@google.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 1/3] Documentation/devicetree: Add pcie-reset-suspend
+ property
+Date: Fri, 13 Oct 2017 11:51:52 -0500
+Message-ID: <20171013165152.GE25517@bhelgaas-glaptop.roam.corp.google.com>
+References: <20171012205220.130048-1-briannorris@chromium.org>
+ <20171012205220.130048-2-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="qedpaalsvul4jrza"
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20171013155120.GA137489-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-spi <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20171012205220.130048-2-briannorris@chromium.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rajat Jain <rajatja@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Frank Rowand <frowand.list@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+[+cc Doug]
 
---qedpaalsvul4jrza
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Thu, Oct 12, 2017 at 01:52:18PM -0700, Brian Norris wrote:
+> The patch is self-descriptive. I've found that we may need
+> platform-specific behavior for the PERST# signal in system suspend,
+> depending on the type of PCIe endpoints are attached.
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+>  Documentation/devicetree/bindings/pci/pci.txt | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/pci.txt b/Documentation/devicetree/bindings/pci/pci.txt
+> index c77981c5dd18..91339b6d0652 100644
+> --- a/Documentation/devicetree/bindings/pci/pci.txt
+> +++ b/Documentation/devicetree/bindings/pci/pci.txt
+> @@ -24,3 +24,14 @@ driver implementation may support the following properties:
+>     unsupported link speed, for instance, trying to do training for
+>     unsupported link speed, etc.  Must be '4' for gen4, '3' for gen3, '2'
+>     for gen2, and '1' for gen1. Any other values are invalid.
+> +- pcie-reset-suspend:
+> +   If present this property defines whether the PCIe Reset signal (referred to
+> +   as PERST#) should be asserted when the system enters low-power suspend modes
+> +   (e.g., S3). Depending on the form factor, the associated PCIe
+> +   electromechanical specification may specify a particular behavior (e.g.,
+> +   "PERST# is asserted in advance of the power being switched off in a
+> +   power-managed state like S3") or it may be less clear. The net result is
+> +   that some endpoints perform better (e.g., lower power consumption) with
+> +   PERST# asserted, and others prefer PERST# deasserted. The value must be '0'
+> +   or '1', where '0' means do not assert PERST# and '1' means assert PERST#.
+> +   When absent, behavior may be platform-specific.
 
-On Fri, Oct 13, 2017 at 08:51:21AM -0700, Brian Norris wrote:
+I don't understand this at all.  Are you suggesting that we need
+different "pcie-reset-suspend" values based on what sort of endpoint
+the user plugs in?
 
-> Yes, this does seem odd to me too. This looks like an arms race hack
-> that should be avoided unless we know a legit root cause. Also,
-> "probe order implies suspend order" doesn't quite work for async suspend
-> anyway, so we'd probably want to express the dependency properly
-> anyway.
+If so, I really don't want to get involved in that, because that's an
+issue that needs to be resolved by the vendors and the PCI-SIG.  If we
+put in a tweak like this, I think it would be a band-aid that only
+delays getting a real solution figured out.
 
-Yeah, it's the same stuff as we get with initcall ordering.  This sort
-of thing does happen with things like PMICs which tend to have hardware
-that the system wants to manipulate in the IRQs off part of suspend.
-Ideally the dependency annotation stuff would figure things out though
-I'm not sure what the status of that is.
+If you want a quirk to tune this based on specific devices, that might
+make sense.  It would still sound like an interoperability issue and
+an ongoing maintenance problem, but at least we would have specific
+details about which devices are involved, and we'd have a chance to
+make them work on more controllers than just Rockchip.
 
-> Any chance this is related? Seems like that might break the parent/child
-> relationship for master/slave:
-
-> commit d7e2ee257038baeb03baef602500368a51ee9eef
-> Author: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> Date:   Mon Apr 11 13:51:03 2016 +0200
-
->     spi: let SPI masters ignore their children for PM
-
-That's for runtime PM, I'd not expect it to affect system suspend.
-
---qedpaalsvul4jrza
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlng7PoACgkQJNaLcl1U
-h9Dq1Qf/WlAli0ps/z9plnp+po4947v6VjWtAjMpTToL2RHmfR75ptL+g36BjfLQ
-I/FK2ykCIAcRfiz2AIshjFQMDt6niTenWU1ykzlGl9h4fa0AUJD8qYKRnoesr6C0
-kJHfpcBXcg1J8iD6kr4GhJRJhg547x+DMYrF0mBG1GFp5UAPHuH6D8ruIDwz27Ve
-PmGNuven0Zoxf0GJFooJ+MIWaKd5QdEOukz+ivTZA/5RBNR1U2Rd840C+OfcrNhp
-nUe31/k0XbgOEOXxWYP0LbaqcA3RyKkUgX8XGZju3uM0u6OY37i6JNLdzj0oZSgC
-FbdE3L5e5ur25pySjmutVi+3YC2ccg==
-=EVbi
------END PGP SIGNATURE-----
-
---qedpaalsvul4jrza--
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Bjorn
