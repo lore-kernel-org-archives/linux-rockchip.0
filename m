@@ -1,50 +1,73 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 0/3] PCI: rockchip: assert PERST# in S3
-Date: Thu, 12 Oct 2017 15:27:16 -0700
-Message-ID: <CAD=FV=VyERPq9yGE27Uvj6bs4Mru81gZAiqCOP=yQv3ai6-YDQ@mail.gmail.com>
-References: <20171012205220.130048-1-briannorris@chromium.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 4/5] mmc: dw_mmc: Fix the DTO timeout calculation
+Date: Fri, 13 Oct 2017 09:02:24 +0800
+Message-ID: <90e49214-e7da-8b83-7f45-a0bbb18d6709@rock-chips.com>
+References: <20171012201118.23570-1-dianders@chromium.org>
+ <20171012201118.23570-5-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171012205220.130048-1-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rajat Jain <rajatja-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <20171012201118.23570-5-dianders@chromium.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: jh80.chung@samsung.com, ulf.hansson@linaro.org, shawn.lin@rock-chips.com, xzy.xu@rock-chips.com, amstan@chromium.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, linux-samsung-soc@vger.kernel.org, kernel@esmil.dk, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-On Thu, Oct 12, 2017 at 1:52 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> Hi,
->
-> This patch series should mostly be self-descriptive, but it's motivated by the
-> fact that I've found differing requirements from PCIe endpoint makers regarding
-> the state of PERST# when in system suspend (S3). Additionally, some existing
-> boards are not especially well suited for holding PERST# low in S3 (e.g., the
-> pin is driven by a non-PMU GPIO, so it's hard or impossible to keep it
-> asserted). So the solution is...give it a device tree property!
->
-> Brian
->
-> Brian Norris (3):
->   Documentation/devicetree: Add pcie-reset-suspend property
->   of/pci: Add of_pci_get_pcie_reset_suspend() to parse
->     pcie-reset-suspend
->   PCI: rockchip: Support configuring PERST# state via DT
->
->  Documentation/devicetree/bindings/pci/pci.txt | 11 +++++++++++
->  drivers/of/of_pci.c                           | 25 +++++++++++++++++++++++++
->  drivers/pci/host/pcie-rockchip.c              |  7 +++++++
->  include/linux/of_pci.h                        |  7 +++++++
->  4 files changed, 50 insertions(+)
+On 2017/10/13 4:11, Douglas Anderson wrote:
+> Just like the CTO timeout calculation introduced recently, the DTO
+> timeout calculation was incorrect.  It used "bus_hz" but, as far as I
+> can tell, it's supposed to use the card clock.  Let's account for the
+> div value, which is documented as 2x the value stored in the register,
+> or 1 if the register is 0.
+> 
+> NOTE: This was likely not terribly important until commit 16a34574c6ca
+> ("mmc: dw_mmc: remove the quirks flags") landed because "DIV" is
+> documented on Rockchip SoCs (the ones that used to define the quirk)
+> to always be 0 or 1.  ...and, in fact, it's documented to only be 1
+> with EMMC in 8-bit DDR52 mode.  Thus before the quirk was applied to
+> everyone it was mostly OK to ignore the DIV value.
+> 
+> I haven't personally observed any problems that are fixed by this
+> patch but I also haven't tested this anywhere with a DIV other an 0.
+> AKA: this problem was found simply by code inspection and I have no
+> failing test cases that are fixed by it.  Presumably this could fix
+> real bugs for someone out there, though.
+> 
+> Fixes: 16a34574c6ca ("mmc: dw_mmc: remove the quirks flags")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-I'm nowhere near an expert on PCIe, but overall the series seems sane
-to me.  ...and I'd agree that the discussions I've seen from different
-vendors seem to have different opinions about what we should do with
-this line in S3.  ...so FWIW:
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> ---
+> 
+> Changes in v2:
+> - Fix the DTO timeout calculation new for v2
+> 
+>   drivers/mmc/host/dw_mmc.c | 8 +++++++-
+>   1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 50148991f30e..6bc87b1385a9 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -1936,10 +1936,16 @@ static int dw_mci_data_complete(struct dw_mci *host, struct mmc_data *data)
+>   static void dw_mci_set_drto(struct dw_mci *host)
+>   {
+>   	unsigned int drto_clks;
+> +	unsigned int drto_div;
+>   	unsigned int drto_ms;
+> +	unsigned long irqflags;
+>   
+>   	drto_clks = mci_readl(host, TMOUT) >> 8;
+> -	drto_ms = DIV_ROUND_UP(drto_clks, host->bus_hz / 1000);
+> +	drto_div = (mci_readl(host, CLKDIV) & 0xff) * 2;
+> +	if (drto_div == 0)
+> +		drto_div = 1;
+> +	drto_ms = DIV_ROUND_UP(MSEC_PER_SEC * drto_clks * drto_div,
+> +			       host->bus_hz);
+>   
+>   	/* add a bit spare time */
+>   	drto_ms += 10;
+> 
