@@ -1,56 +1,31 @@
-From: Tony Lindgren <tony@atomide.com>
-Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Fri, 13 Oct 2017 10:58:26 -0700
-Message-ID: <20171013175825.GR4394@atomide.com>
-References: <20170911151029.25185-1-jeffy.chen@rock-chips.com>
- <20170911151029.25185-2-jeffy.chen@rock-chips.com>
- <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com>
- <2453698.N4jfPaHx71@aspire.rjw.lan>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [RESEND PATCH 2/2] arm64: dts: rockchip: Enable edp disaplay
+ on kevin
+Date: Sat, 14 Oct 2017 02:12:41 +0800
+Message-ID: <59E10219.3060009@rock-chips.com>
+References: <20171013104138.3216-1-jeffy.chen@rock-chips.com> <20171013104138.3216-3-jeffy.chen@rock-chips.com> <3037285.0MAZvLKA4I@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <2453698.N4jfPaHx71@aspire.rjw.lan>
-Sender: linux-pci-owner@vger.kernel.org
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3037285.0MAZvLKA4I@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
+Cc: linux-kernel@vger.kernel.org, briannorris@chromium.org, broonie@kernel.org, dianders@chromium.org, Matthias Kaehlcke <mka@chromium.org>, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-* Rafael J. Wysocki <rjw@rjwysocki.net> [171013 06:32]:
-> [+cc Tony]
-> 
-> On Friday, October 13, 2017 5:04:41 AM CEST Bjorn Helgaas wrote:
-> > [+cc Rafael, linux-pm]
-> > On Mon, Sep 11, 2017 at 11:10:27PM +0800, Jeffy Chen wrote:
-> > > Add support for PCIE_WAKE pin in rockchip pcie driver.
-...
-> > > @@ -995,6 +996,15 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
-> > >  		return err;
-> > >  	}
-> > >  
-> > > +	/* Must init wakeup before setting dedicated wakeup irq. */
-> > > +	device_init_wakeup(dev, true);
-> > > +	irq = platform_get_irq_byname(pdev, "wakeup");
-> > > +	if (irq >= 0) {
-> > > +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
-> > 
-> > I'm a little skeptical about dev_pm_set_dedicated_wake_irq(), not
-> > because I know anything at all about it, but because there are only
-> > five callers in the whole tree, three of which are in UART code, and
-> > none in anything resembling PCI code.
+Hi heiko,
 
-Well it should work for any device that can provide an out of band wakeup
-interrupt such as a dedicated GPIO line.
+On 10/13/2017 09:25 PM, Heiko Stuebner wrote:
+> does this actually work with mainline kernel sources?
+>
+> Sean Paul did look at making the edp work on Chromebooks recently,
+> but it seemed there were still parts missing to make it actually display
+> something.
 
-> > Is Rockchip really that special, or are we going about this the wrong
-> > way?
-
-Maybe this can be set up in a generic way somewhere similar to what
-the I2C bus is doing?
-
-See i2c_device_probe() for dev_pm_set_dedicated_wake_irq() in
-drivers/i2c/i2c-core-base.c.
-
-Regards,
-
-Tony
+yes, it works, but only for boot-splash(boot animation). we still need 
+mali gru stuff to bring chrome browser up...i think caesar tried that 
+before(but i don't think he would submit that)
+>
+>
+> Heiko
