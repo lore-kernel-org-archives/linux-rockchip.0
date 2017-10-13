@@ -1,41 +1,89 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [RESEND PATCH 1/2] spi: rockchip: Convert to late and early
- system PM callbacks
-Date: Fri, 13 Oct 2017 11:30:48 -0700
-Message-ID: <20171013183048.dg6wsabnz7qiviwy@dtor-ws>
-References: <20171013104138.3216-1-jeffy.chen@rock-chips.com>
- <20171013104138.3216-2-jeffy.chen@rock-chips.com>
- <CAD=FV=X6pkaY3t=ceh3QEUws+_gqRGMN9zveW0fXR1noF1T6ew@mail.gmail.com>
- <20171013155120.GA137489@google.com>
- <20171013164235.thgqha7sl5tdptwv@sirena.co.uk>
- <59E103B0.8060705@rock-chips.com>
- <59E1052C.3000503@rock-chips.com>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Sat, 14 Oct 2017 02:33:45 +0800
+Message-ID: <59E10709.4020300@rock-chips.com>
+References: <20170911151029.25185-1-jeffy.chen@rock-chips.com> <20170911151029.25185-2-jeffy.chen@rock-chips.com> <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com> <2453698.N4jfPaHx71@aspire.rjw.lan>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <59E1052C.3000503@rock-chips.com>
+In-Reply-To: <2453698.N4jfPaHx71@aspire.rjw.lan>
 Sender: linux-kernel-owner@vger.kernel.org
-To: jeffy <jeffy.chen@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-spi <linux-spi@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 14, 2017 at 02:25:48AM +0800, jeffy wrote:
-> On 10/14/2017 02:19 AM, jeffy wrote:
-> > 
-> > 
-> > it looks like the suspend sequence depends on the dt node sequence, and
-> > we are putting display-subsystem dt node above spi dt node, so it would
-> > be earlier in the device list, then got suspended later than spi device.
-> > 
-> > the pwm backlight and cros_ec_spi pwm are very interesting, not only
-> > about suspend dependency... if we unbind cros_ec_spi pwm, the pwm
-> > backlight would still hold a reference to it, and crash the kernel later.
-> 
-> or maybe we should move device_pm_add() from device_add() to driver_bound()?
+Hi Rafael,
 
-You do not necessarily need to have a driver to power the dveice on and
-off.
+On 10/13/2017 09:21 PM, Rafael J. Wysocki wrote:
+>>
+>>I'm a little skeptical about dev_pm_set_dedicated_wake_irq(), not
+>>because I know anything at all about it, but because there are only
+>>five callers in the whole tree, three of which are in UART code, and
+>>none in anything resembling PCI code.
+>>
+>>Is Rockchip really that special, or are we going about this the wrong
+>>way?
 
--- 
-Dmitry
+we used to put these codes in the wifi driver, but another wifi vendor 
+suggests these should go into the pcie driver.
+
+and as tony said, it could go into pcie common code :)
+>>
+>> > >+		if (err)
+>> > >+			dev_err(dev, "failed to setup PCIe wakeup IRQ\n");
+>> > >+	}
+>> > >+
+>> > >  	return 0;
+>>
+>>The above could be structured as:
+>>
+>>   irq = platform_get_irq_byname(pdev, "wakeup");
+>>   if (irq < 0)
+>>     return 0;
+>>
+>>   device_init_wakeup(dev, true);
+>>   err = dev_pm_set_dedicated_wake_irq(dev, irq);
+>>   if (err) {
+>>     dev_pm_clear_wake_irq(dev);
+>>     device_init_wakeup(dev, false);
+>>   }
+>>
+there's no need to call dev_pm_clear_wake_irq when 
+dev_pm_set_dedicated_wake_irq failed...and i agree the 
+device_init_wakeup part, i'll add that in the next version(with brian's 
+comment too)
+>>   return 0;
+>>
+>>to unindent the mainline non-error code.
+>>
+>> > >  }
+>> > >
+>> > >@@ -1542,11 +1552,11 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>> > >
+>> > >  	err = rockchip_pcie_parse_dt(rockchip);
+>> > >  	if (err)
+>> > >-		return err;
+>> > >+		goto err_disable_wake;
+>> > >
+>> > >  	err = rockchip_pcie_enable_clocks(rockchip);
+>> > >  	if (err)
+>> > >-		return err;
+>> > >+		goto err_disable_wake;
+>> > >
+>> > >  	err = rockchip_pcie_set_vpcie(rockchip);
+>> > >  	if (err) {
+>> > >@@ -1656,6 +1666,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>> > >  		regulator_disable(rockchip->vpcie0v9);
+>> > >  err_set_vpcie:
+>> > >  	rockchip_pcie_disable_clocks(rockchip);
+>> > >+err_disable_wake:
+>> > >+	dev_pm_clear_wake_irq(dev);
+>> > >+	device_init_wakeup(dev, false);
+>>
+>>I think this error cleanup should be done in rockchip_pcie_setup_irq()
+>>as shown above.  There's no real connection between
+>>rockchip_pcie_probe() and the wake setup.
+
+this error handling is like inline "rockchip_pcie_cleanup_irq()", and 
+they are harmless to be called even if we don't have the wakeup irq :)
