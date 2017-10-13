@@ -1,65 +1,44 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 1/3] Documentation/devicetree: Add pcie-reset-suspend
- property
-Date: Fri, 13 Oct 2017 11:51:52 -0500
-Message-ID: <20171013165152.GE25517@bhelgaas-glaptop.roam.corp.google.com>
-References: <20171012205220.130048-1-briannorris@chromium.org>
- <20171012205220.130048-2-briannorris@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20171012205220.130048-2-briannorris@chromium.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Rajat Jain <rajatja@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Frank Rowand <frowand.list@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Doug Anderson <dianders@chromium.org>
+From: Jagan Teki <jagannadh.teki-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: Enable thermal on rk3288-vyasa board
+Date: Fri, 13 Oct 2017 23:03:32 +0530
+Message-ID: <1507916012-3980-1-git-send-email-jagan@amarulasolutions.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-[+cc Doug]
+From: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 
-On Thu, Oct 12, 2017 at 01:52:18PM -0700, Brian Norris wrote:
-> The patch is self-descriptive. I've found that we may need
-> platform-specific behavior for the PERST# signal in system suspend,
-> depending on the type of PCIe endpoints are attached.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->  Documentation/devicetree/bindings/pci/pci.txt | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/pci.txt b/Documentation/devicetree/bindings/pci/pci.txt
-> index c77981c5dd18..91339b6d0652 100644
-> --- a/Documentation/devicetree/bindings/pci/pci.txt
-> +++ b/Documentation/devicetree/bindings/pci/pci.txt
-> @@ -24,3 +24,14 @@ driver implementation may support the following properties:
->     unsupported link speed, for instance, trying to do training for
->     unsupported link speed, etc.  Must be '4' for gen4, '3' for gen3, '2'
->     for gen2, and '1' for gen1. Any other values are invalid.
-> +- pcie-reset-suspend:
-> +   If present this property defines whether the PCIe Reset signal (referred to
-> +   as PERST#) should be asserted when the system enters low-power suspend modes
-> +   (e.g., S3). Depending on the form factor, the associated PCIe
-> +   electromechanical specification may specify a particular behavior (e.g.,
-> +   "PERST# is asserted in advance of the power being switched off in a
-> +   power-managed state like S3") or it may be less clear. The net result is
-> +   that some endpoints perform better (e.g., lower power consumption) with
-> +   PERST# asserted, and others prefer PERST# deasserted. The value must be '0'
-> +   or '1', where '0' means do not assert PERST# and '1' means assert PERST#.
-> +   When absent, behavior may be platform-specific.
+Enable thermal on rk3288-vyasa board, TSHUT is high active.
 
-I don't understand this at all.  Are you suggesting that we need
-different "pcie-reset-suspend" values based on what sort of endpoint
-the user plugs in?
+Signed-off-by: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-vyasa.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-If so, I really don't want to get involved in that, because that's an
-issue that needs to be resolved by the vendors and the PCI-SIG.  If we
-put in a tweak like this, I think it would be a band-aid that only
-delays getting a real solution figured out.
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index 932311c..3546eb8 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -302,6 +302,12 @@
+ 	status = "okay";
+ };
+ 
++&tsadc {
++	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
++	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
++	status = "okay";
++};
++
+ &uart2 {
+ 	status = "okay";
+ };
+-- 
+2.7.4
 
-If you want a quirk to tune this based on specific devices, that might
-make sense.  It would still sound like an interoperability issue and
-an ongoing maintenance problem, but at least we would have specific
-details about which devices are involved, and we'd have a chance to
-make them work on more controllers than just Rockchip.
-
-Bjorn
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
