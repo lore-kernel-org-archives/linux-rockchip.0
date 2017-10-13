@@ -1,44 +1,56 @@
-From: Jagan Teki <jagannadh.teki-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: Enable thermal on rk3288-vyasa board
-Date: Fri, 13 Oct 2017 23:03:32 +0530
-Message-ID: <1507916012-3980-1-git-send-email-jagan@amarulasolutions.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+From: Tony Lindgren <tony@atomide.com>
+Subject: Re: [PATCH v5 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Fri, 13 Oct 2017 10:58:26 -0700
+Message-ID: <20171013175825.GR4394@atomide.com>
+References: <20170911151029.25185-1-jeffy.chen@rock-chips.com>
+ <20170911151029.25185-2-jeffy.chen@rock-chips.com>
+ <20171013030441.GA25517@bhelgaas-glaptop.roam.corp.google.com>
+ <2453698.N4jfPaHx71@aspire.rjw.lan>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <2453698.N4jfPaHx71@aspire.rjw.lan>
+Sender: linux-pci-owner@vger.kernel.org
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+* Rafael J. Wysocki <rjw@rjwysocki.net> [171013 06:32]:
+> [+cc Tony]
+> 
+> On Friday, October 13, 2017 5:04:41 AM CEST Bjorn Helgaas wrote:
+> > [+cc Rafael, linux-pm]
+> > On Mon, Sep 11, 2017 at 11:10:27PM +0800, Jeffy Chen wrote:
+> > > Add support for PCIE_WAKE pin in rockchip pcie driver.
+...
+> > > @@ -995,6 +996,15 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
+> > >  		return err;
+> > >  	}
+> > >  
+> > > +	/* Must init wakeup before setting dedicated wakeup irq. */
+> > > +	device_init_wakeup(dev, true);
+> > > +	irq = platform_get_irq_byname(pdev, "wakeup");
+> > > +	if (irq >= 0) {
+> > > +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
+> > 
+> > I'm a little skeptical about dev_pm_set_dedicated_wake_irq(), not
+> > because I know anything at all about it, but because there are only
+> > five callers in the whole tree, three of which are in UART code, and
+> > none in anything resembling PCI code.
 
-Enable thermal on rk3288-vyasa board, TSHUT is high active.
+Well it should work for any device that can provide an out of band wakeup
+interrupt such as a dedicated GPIO line.
 
-Signed-off-by: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-vyasa.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
+> > Is Rockchip really that special, or are we going about this the wrong
+> > way?
 
-diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
-index 932311c..3546eb8 100644
---- a/arch/arm/boot/dts/rk3288-vyasa.dts
-+++ b/arch/arm/boot/dts/rk3288-vyasa.dts
-@@ -302,6 +302,12 @@
- 	status = "okay";
- };
- 
-+&tsadc {
-+	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
-+	status = "okay";
-+};
-+
- &uart2 {
- 	status = "okay";
- };
--- 
-2.7.4
+Maybe this can be set up in a generic way somewhere similar to what
+the I2C bus is doing?
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+See i2c_device_probe() for dev_pm_set_dedicated_wake_irq() in
+drivers/i2c/i2c-core-base.c.
+
+Regards,
+
+Tony
