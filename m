@@ -1,71 +1,53 @@
-From: Pierre-Hugues Husson <phh@phh.me>
-Subject: [PATCH 1/3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
-Date: Sat, 14 Oct 2017 00:53:35 +0200
-Message-ID: <20171013225337.5196-2-phh@phh.me>
-References: <20171013225337.5196-1-phh@phh.me>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171013225337.5196-1-phh@phh.me>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, Pierre-Hugues Husson <phh@phh.me>
+From: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RESEND PATCH 1/2] spi: rockchip: Convert to late and early
+ system PM callbacks
+Date: Fri, 13 Oct 2017 16:45:11 -0700
+Message-ID: <20171013234511.dxazu5wvvz7sjiiu@dtor-ws>
+References: <20171013104138.3216-1-jeffy.chen@rock-chips.com>
+ <20171013104138.3216-2-jeffy.chen@rock-chips.com>
+ <CAD=FV=X6pkaY3t=ceh3QEUws+_gqRGMN9zveW0fXR1noF1T6ew@mail.gmail.com>
+ <20171013155120.GA137489@google.com>
+ <20171013164235.thgqha7sl5tdptwv@sirena.co.uk>
+ <59E103B0.8060705@rock-chips.com>
+ <20171013183006.k6pzcr5tcwsxxtmp@dtor-ws>
+ <20171013183750.piabs7m3dnpabnkm@sirena.co.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20171013183750.piabs7m3dnpabnkm-7j8lgAiuQgnQXOPxS62xeg@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
+Cc: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-spi <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The documentation already mentions "cec" optional clock, but
-currently the driver doesn't enable it.
+On Fri, Oct 13, 2017 at 07:37:50PM +0100, Mark Brown wrote:
+> On Fri, Oct 13, 2017 at 11:30:06AM -0700, Dmitry Torokhov wrote:
+> > On Sat, Oct 14, 2017 at 02:19:28AM +0800, jeffy wrote:
+> 
+> > > > Yeah, it's the same stuff as we get with initcall ordering.  This sort
+> > > > of thing does happen with things like PMICs which tend to have hardware
+> > > > that the system wants to manipulate in the IRQs off part of suspend.
+> > > > Ideally the dependency annotation stuff would figure things out though
+> > > > I'm not sure what the status of that is.
+> 
+> > I'd say non-existent for resources such as regulators, pwms, clocks,
+> > etc. I do not think many places call device_link_add()... I think adding
+> > this to devm_* APIs might be easiest to get the ball going as they
+> > naturally have consumer device and can easily figure out the supplier
+> > side.
+> 
+> Hrm, are things in a state where we're supposed to be doing that?  I've
+> not seen anyone even trying which is a bit odd, I'd thought there was
+> some core work still ongoing (and it wasn't clear to me if we were going
+> to try to do things like use DT/ACPI cross references to figure this
+> stuff out).
 
-Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Not sure, adding Rafael...
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index bf14214fa464..5007cdf43131 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -138,6 +138,7 @@ struct dw_hdmi {
- 	struct device *dev;
- 	struct clk *isfr_clk;
- 	struct clk *iahb_clk;
-+	struct clk *cec_clk;
- 	struct dw_hdmi_i2c *i2c;
- 
- 	struct hdmi_data_info hdmi_data;
-@@ -2382,6 +2383,18 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		goto err_isfr;
- 	}
- 
-+	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
-+	if (IS_ERR(hdmi->cec_clk)) {
-+		hdmi->cec_clk = NULL;
-+	} else {
-+		ret = clk_prepare_enable(hdmi->cec_clk);
-+		if (ret) {
-+			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
-+					ret);
-+			goto err_res;
-+		}
-+	}
-+
- 	/* Product and revision IDs */
- 	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
- 		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
-@@ -2518,6 +2531,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		cec_notifier_put(hdmi->cec_notifier);
- 
- 	clk_disable_unprepare(hdmi->iahb_clk);
-+	if (hdmi->cec_clk)
-+		clk_disable_unprepare(hdmi->cec_clk);
- err_isfr:
- 	clk_disable_unprepare(hdmi->isfr_clk);
- err_res:
-@@ -2541,6 +2556,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
- 
- 	clk_disable_unprepare(hdmi->iahb_clk);
- 	clk_disable_unprepare(hdmi->isfr_clk);
-+	if (hdmi->cec_clk)
-+		clk_disable_unprepare(hdmi->cec_clk);
- 
- 	if (hdmi->i2c)
- 		i2c_del_adapter(&hdmi->i2c->adap);
 -- 
-2.14.1
+Dmitry
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
