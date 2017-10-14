@@ -1,55 +1,83 @@
-From: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
-Subject: Re: [RESEND PATCH 1/2] spi: rockchip: Convert to late and early system PM callbacks
-Date: Sat, 14 Oct 2017 02:15:34 +0200
-Message-ID: <1617641.TtuYKIH8aZ@aspire.rjw.lan>
-References: <20171013104138.3216-1-jeffy.chen@rock-chips.com> <20171013183750.piabs7m3dnpabnkm@sirena.co.uk> <20171013234511.dxazu5wvvz7sjiiu@dtor-ws>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH 1/3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Sat, 14 Oct 2017 10:16:07 +0200
+Message-ID: <35b9fbe3-9859-03e2-173e-8cff5a90efdd@xs4all.nl>
+References: <20171013225337.5196-1-phh@phh.me>
+ <20171013225337.5196-2-phh@phh.me>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171013234511.dxazu5wvvz7sjiiu@dtor-ws>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-spi <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171013225337.5196-2-phh@phh.me>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Pierre-Hugues Husson <phh@phh.me>, linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Saturday, October 14, 2017 1:45:11 AM CEST Dmitry Torokhov wrote:
-> On Fri, Oct 13, 2017 at 07:37:50PM +0100, Mark Brown wrote:
-> > On Fri, Oct 13, 2017 at 11:30:06AM -0700, Dmitry Torokhov wrote:
-> > > On Sat, Oct 14, 2017 at 02:19:28AM +0800, jeffy wrote:
-> > 
-> > > > > Yeah, it's the same stuff as we get with initcall ordering.  This sort
-> > > > > of thing does happen with things like PMICs which tend to have hardware
-> > > > > that the system wants to manipulate in the IRQs off part of suspend.
-> > > > > Ideally the dependency annotation stuff would figure things out though
-> > > > > I'm not sure what the status of that is.
-> > 
-> > > I'd say non-existent for resources such as regulators, pwms, clocks,
-> > > etc. I do not think many places call device_link_add()... I think adding
-> > > this to devm_* APIs might be easiest to get the ball going as they
-> > > naturally have consumer device and can easily figure out the supplier
-> > > side.
-> > 
-> > Hrm, are things in a state where we're supposed to be doing that?  I've
-> > not seen anyone even trying which is a bit odd, I'd thought there was
-> > some core work still ongoing (and it wasn't clear to me if we were going
-> > to try to do things like use DT/ACPI cross references to figure this
-> > stuff out).
+On 10/14/2017 12:53 AM, Pierre-Hugues Husson wrote:
+> The documentation already mentions "cec" optional clock, but
+> currently the driver doesn't enable it.
 > 
-> Not sure, adding Rafael...
+> Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
 
-The infrastructure in the core is there, the part related to getting that
-information from firmware is (mostly) missing.
+Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
 
-Still, moving system suspend/resume callbacks to the late/early phases may
-be a good idea anyway.
+Thanks!
 
-Thanks,
-Rafael
+	Hans
 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index bf14214fa464..5007cdf43131 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -138,6 +138,7 @@ struct dw_hdmi {
+>  	struct device *dev;
+>  	struct clk *isfr_clk;
+>  	struct clk *iahb_clk;
+> +	struct clk *cec_clk;
+>  	struct dw_hdmi_i2c *i2c;
+>  
+>  	struct hdmi_data_info hdmi_data;
+> @@ -2382,6 +2383,18 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>  		goto err_isfr;
+>  	}
+>  
+> +	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
+> +	if (IS_ERR(hdmi->cec_clk)) {
+> +		hdmi->cec_clk = NULL;
+> +	} else {
+> +		ret = clk_prepare_enable(hdmi->cec_clk);
+> +		if (ret) {
+> +			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
+> +					ret);
+> +			goto err_res;
+> +		}
+> +	}
+> +
+>  	/* Product and revision IDs */
+>  	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
+>  		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
+> @@ -2518,6 +2531,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>  		cec_notifier_put(hdmi->cec_notifier);
+>  
+>  	clk_disable_unprepare(hdmi->iahb_clk);
+> +	if (hdmi->cec_clk)
+> +		clk_disable_unprepare(hdmi->cec_clk);
+>  err_isfr:
+>  	clk_disable_unprepare(hdmi->isfr_clk);
+>  err_res:
+> @@ -2541,6 +2556,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+>  
+>  	clk_disable_unprepare(hdmi->iahb_clk);
+>  	clk_disable_unprepare(hdmi->isfr_clk);
+> +	if (hdmi->cec_clk)
+> +		clk_disable_unprepare(hdmi->cec_clk);
+>  
+>  	if (hdmi->i2c)
+>  		i2c_del_adapter(&hdmi->i2c->adap);
+> 
