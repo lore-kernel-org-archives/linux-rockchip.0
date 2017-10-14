@@ -1,47 +1,21 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 0/3] PCI: rockchip: assert PERST# in S3
-Date: Fri, 13 Oct 2017 17:06:48 -0700
-Message-ID: <CA+ASDXM2UnoGOkyVy=y3XToTvLZ1djLNaDESkB89mf-mzqGHRg@mail.gmail.com>
-References: <20171012205220.130048-1-briannorris@chromium.org>
- <20171013031523.GB25517@bhelgaas-glaptop.roam.corp.google.com> <20171013062728.GA56763@google.com>
+From: Fabio Estevam <festevam@gmail.com>
+Subject: Re: [PATCH 1/3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Fri, 13 Oct 2017 21:18:59 -0300
+Message-ID: <CAOMZO5CtP=A0jF1FimScjSUvv-t6a2ua=ungr0LUHmQvUTKr3Q@mail.gmail.com>
+References: <20171013225337.5196-1-phh@phh.me> <20171013225337.5196-2-phh@phh.me>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171013062728.GA56763@google.com>
+In-Reply-To: <20171013225337.5196-2-phh@phh.me>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-kernel@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Rajat Jain <rajatja@google.com>, Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org, furquan@chromium.org
+To: Pierre-Hugues Husson <phh@phh.me>
+Cc: linux-rockchip@lists.infradead.org, linux-media <linux-media@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+Hi Pierre-Hugues,
 
-One piece of information to add:
+On Fri, Oct 13, 2017 at 7:53 PM, Pierre-Hugues Husson <phh@phh.me> wrote:
+> The documentation already mentions "cec" optional clock, but
+> currently the driver doesn't enable it.
 
-On Thu, Oct 12, 2017 at 11:27 PM, Brian Norris <briannorris@chromium.org> wrote:
-> On Thu, Oct 12, 2017 at 10:15:23PM -0500, Bjorn Helgaas wrote:
-> > Is this a hole in those specs?  Is this something that needs to be
-> > clarified by the PCI-SIG to improve interoperability?
->
-> After re-re-reading the specifications, I'm more convinced that the
-> first Wifi vendor got it wrong. I also don't trust them to get many
-> things right in general, so this is pretty much par for the course.
->
-> The only things I can suggest:
-> * "main power" is never defined, as far as I can tell. So "main" and
->   "auxiliary" power don't have much meaning for many M.2 cards, and so
->   I end up reading much of the spec with a grain of salt
-
-This part is where the first vendor seems to disagree. They claim that
-because power is not switched off, PERST# can remain asserted or
-deasserted -- whichever leads to least power consumption. (i.e., they
-don't consider they need to follow the parts that describe "when
-removing main power" (e.g., in S3) we must assert PERST#.
-
-> * S3 is never defined in the PCIe Card EM spec, but it's thrown around a
->   few times
-> * if possible, the PCIe base spec should mention something about the
->   fundamental reset which is expected with an L2 transition. It's not
->   clear what to do if you don't want to switch off power completely (and
->   so enter L3), but you also don't have "auxiliary" power
-
-Brian
+The cec clock is enabled at dw_hdmi_cec_enable().
