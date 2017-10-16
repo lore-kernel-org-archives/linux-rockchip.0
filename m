@@ -1,99 +1,53 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RESEND PATCH v2 1/5] arm64: dts: rockchip: Enable edp disaplay on kevin
-Date: Mon, 16 Oct 2017 18:06:36 +0800
-Message-ID: <20171016100640.26575-2-jeffy.chen@rock-chips.com>
+Subject: [RESEND PATCH v2 3/5] drm/rockchip: Fix error handling path in
+ rockchip_dp_bind()
+Date: Mon, 16 Oct 2017 18:06:38 +0800
+Message-ID: <20171016100640.26575-4-jeffy.chen@rock-chips.com>
 References: <20171016100640.26575-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20171016100640.26575-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-kernel@vger.kernel.org
-Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
+Cc: dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, broonie@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add edp panel and enable related nodes on kevin.
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
-
-Changes in v2: None
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
- 2 files changed, 45 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index a3d3cea7dc4f..bc67b19f0af5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -93,6 +93,18 @@
- 		pwm-delay-us = <10000>;
- 	};
- 
-+	edp_panel: edp-panel {
-+		compatible = "sharp,lq123p1jx31", "simple-panel";
-+		backlight = <&backlight>;
-+		power-supply = <&pp3300_disp>;
-+
-+		ports {
-+			panel_in_edp: endpoint {
-+				remote-endpoint = <&edp_out_panel>;
-+			};
-+		};
-+	};
-+
- 	thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
- 		compatible = "murata,ncp15wb473";
- 		pullup-uv = <1800000>;
-@@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
- 	};
- };
- 
-+&edp {
-+	status = "okay";
-+
-+	ports {
-+		edp_out: port@1 {
-+			reg = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			edp_out_panel: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&panel_in_edp>;
-+			};
-+		};
-+	};
-+};
-+
- &ppvar_bigcpu_pwm {
- 	regulator-min-microvolt = <798674>;
- 	regulator-max-microvolt = <1302172>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 5772c52fbfd3..470105d651c2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
- 	dr_mode = "host";
- };
- 
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
-+&vopl {
-+	status = "okay";
-+};
-+
-+&vopl_mmu {
-+	status = "okay";
-+};
-+
- #include <arm/cros-ec-keyboard.dtsi>
- #include <arm/cros-ec-sbs.dtsi>
- 
--- 
-2.11.0
+QWRkIG1pc3NpbmcgZXJyb3IgaGFuZGxpbmcgaW4gcm9ja2NoaXBfZHBfYmluZCgpLgoKRml4ZXM6
+IDllMzJlMTZlOWU5OCAoImRybTogcm9ja2NoaXA6IGRwOiBhZGQgcm9ja2NoaXAgcGxhdGZvcm0g
+ZHAgZHJpdmVyIikKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNo
+aXBzLmNvbT4KLS0tCgpDaGFuZ2VzIGluIHYyOiBOb25lCgogZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAxNCArKysrKysrKysrKystLQogMSBmaWxlIGNo
+YW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRleCA0ZDNmNmFkMGFiZGQu
+LmNiODk0MWU4YmNkZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
+Z2l4X2RwLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4
+X2RwLXJvY2tjaGlwLmMKQEAgLTM3MSw3ICszNzEsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2Rw
+X2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJcmV0ID0g
+cm9ja2NoaXBfZHBfZHJtX2NyZWF0ZV9lbmNvZGVyKGRwKTsKIAlpZiAocmV0KSB7CiAJCURSTV9F
+UlJPUigiZmFpbGVkIHRvIGNyZWF0ZSBkcm0gZW5jb2RlclxuIik7Ci0JCXJldHVybiByZXQ7CisJ
+CWdvdG8gZXJyX2RlaW5pdF9kcDsKIAl9CiAKIAlkcC0+cGxhdF9kYXRhLmVuY29kZXIgPSAmZHAt
+PmVuY29kZXI7CkBAIC0zODcsNyArMzg3LDE3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfYmlu
+ZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAogCXJvY2tjaGlw
+X2RybV9wc3JfcmVnaXN0ZXIoJmRwLT5lbmNvZGVyLCBhbmFsb2dpeF9kcF9wc3Jfc2V0KTsKIAot
+CXJldHVybiBhbmFsb2dpeF9kcF9iaW5kKGRldiwgZHAtPmRybV9kZXYsICZkcC0+cGxhdF9kYXRh
+KTsKKwlyZXQgPSBhbmFsb2dpeF9kcF9iaW5kKGRldiwgZHAtPmRybV9kZXYsICZkcC0+cGxhdF9k
+YXRhKTsKKwlpZiAocmV0IDwgMCkKKwkJZ290byBlcnJfdW5yZWdfcHNyOworCXJldHVybiAwOwor
+CitlcnJfdW5yZWdfcHNyOgorCXJvY2tjaGlwX2RybV9wc3JfdW5yZWdpc3RlcigmZHAtPmVuY29k
+ZXIpOworCXJvY2tjaGlwX2RwX2RybV9lbmNvZGVyX2Rlc3Ryb3koJmRwLT5lbmNvZGVyKTsKK2Vy
+cl9kZWluaXRfZHA6CisJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5wY2xrKTsKKwlyZXR1cm4g
+cmV0OwogfQogCiBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcF91bmJpbmQoc3RydWN0IGRldmljZSAq
+ZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCi0tIAoyLjExLjAKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
