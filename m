@@ -1,24 +1,40 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: enable cec pin for rk3399 firefly
-Date: Sun, 15 Oct 2017 14:13:35 +0200
-Message-ID: <3188481.VU1olLilPF@phil>
-References: <20171013225337.5196-1-phh@phh.me> <20171013225337.5196-4-phh@phh.me>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Subject: Re: [PATCH v2 3/4] nvmem: rockchip: add support for RK3368
+Date: Mon, 16 Oct 2017 10:09:34 +0100
+Message-ID: <fb1c4d16-afae-6401-4b4a-75a5aa61c101@linaro.org>
+References: <20170904085119.25981-1-romain.perier@collabora.com>
+ <20170904085119.25981-4-romain.perier@collabora.com>
+ <1634846.UTLyzHzuUI@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171013225337.5196-4-phh@phh.me>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Pierre-Hugues Husson <phh@phh.me>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1634846.UTLyzHzuUI@phil>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Romain Perier <romain.perier@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 14. Oktober 2017, 00:53:37 CEST schrieb Pierre-Hugues Husson:
-> Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
-
-applied for 4.15 after adding a basic commit message.
-It is custom to always provide at least some sort of message there.
 
 
-Thanks
-Heiko
+On 14/10/17 22:31, Heiko Stuebner wrote:
+> Hi Srinivas,
+> 
+> Am Montag, 4. September 2017, 10:51:18 CEST schrieb Romain Perier:
+>> This adds the necessary function for handling support on RK3368 SoCs
+>>
+>> Signed-off-by: Romain Perier <romain.perier@collabora.com>
+>> Acked-by: Rob Herring <robh@kernel.org>
+> 
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> 
+> Srinivas, could you take a look at this patch and maybe pick it up?
+> 
+Its already sent to Greg KH for inclusion in 4.15.
+
+--srini
+> 
+> Thanks
+> Heiko
+> 
