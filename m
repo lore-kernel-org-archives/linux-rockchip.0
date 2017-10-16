@@ -1,45 +1,31 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [RESEND PATCH v2 4/5] drm/bridge/analogix: Do not use device's
- drvdata
-Date: Mon, 16 Oct 2017 12:44:09 +0200
-Message-ID: <be199812-9fc5-11ec-cca4-5b9fcff57070@samsung.com>
-References: <20171016100640.26575-1-jeffy.chen@rock-chips.com>
- <CGME20171016100746epcas2p436f3573bcb862275aea1869aabe4ad17@epcas2p4.samsung.com>
- <20171016100640.26575-5-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20171016100640.26575-5-jeffy.chen@rock-chips.com>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
-Cc: rjw@rjwysocki.net, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-samsung-soc@vger.kernel.org, briannorris@chromium.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Caesar Wang <wxt@rock-chips.com>, broonie@kernel.org, linux-arm-kernel@lists.infradead.org, zain wang <wzz@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, dmitry.torokhov@gmail.com, Seung-Woo Kim <sw0312.kim@samsung.com>, dianders@chromium.org, tfiga@chromium.org, Kyungmin Park <kyungmin.park@samsung.com>, Shawn Guo <shawnguo@kernel.org>
+From: Jagan Teki <jagannadh.teki@gmail.com>
+Subject: [PATCH 0/9] rockchip: rk3288-vyasa: dts fixes/additions
+Date: Mon, 16 Oct 2017 17:46:18 +0530
+Message-ID: <1508156187-27519-1-git-send-email-jagan@amarulasolutions.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTYuMTAuMjAxNyAxMjowNiwgSmVmZnkgQ2hlbiB3cm90ZToKPiBGcm9tOiBUb21hc3ogRmln
-YSA8dGZpZ2FAY2hyb21pdW0ub3JnPgo+Cj4gVGhlIGRyaXZlciB0aGF0IGluc3RhbnRpYXRlcyB0
-aGUgYnJpZGdlIHNob3VsZCBvd24gdGhlIGRydmRhdGEsIGFzIGFsbAo+IGRyaXZlciBtb2RlbCBj
-YWxsYmFja3MgKHByb2JlLCByZW1vdmUsIHNodXRkb3duLCBQTSBvcHMsIGV0Yy4pIGFyZSBhbHNv
-Cj4gb3duZWQgYnkgaXRzIGRyaXZlciBzdHJ1Y3QuIE1vcmVvdmVyLCBzdG9yaW5nIHR3byBkaWZm
-ZXJlbnQgcG9pbnRlcgo+IHR5cGVzIGluIGRyaXZlciBkYXRhIGRlcGVuZGluZyBvbiBkcml2ZXIg
-aW5pdGlhbGl6YXRpb24gc3RhdHVzIGlzIGJhcmVseQo+IGEgZ29vZCBwcmFjdGljZSBhbmQgaW4g
-ZmFjdCBoYXMgbGVkIHRvIG1hbnkgYnVncyBpbiB0aGlzIGRyaXZlci4KPgo+IExldCdzIGNsZWFu
-IHVwIHRoaXMgbWVzcyBhbmQgY2hhbmdlIEFuYWxvZ2l4IGVudHJ5IHBvaW50cyB0byBzaW1wbHkK
-PiBhY2NlcHQgc29tZSBvcGFxdWUgc3RydWN0IHBvaW50ZXIsIGFkanVzdGluZyB0aGVpciB1c2Vy
-cyBhdCB0aGUgc2FtZQo+IHRpbWUgdG8gYXZvaWQgYnJlYWtpbmcgdGhlIGNvbXBpbGF0aW9uLgo+
-Cj4gU2lnbmVkLW9mZi1ieTogVG9tYXN6IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgoKVGhhbmtz
-IGZvciBtYWtpbmcgaXQgYSBiaXQgc2FuZXIuCgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8
-YS5oYWpkYUBzYW1zdW5nLmNvbT4KCsKgLS0KUmVnYXJkcwpBbmRyemVqCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Series add new dts nodes like gmac, usb, io_domains and fixed existing
+regulator, pmic stuff as per schematic. 
+
+Jagan Teki (9):
+  ARM: dts: rockchip: rk3288-vyasa: Remove vdd_log from rk808, DCDC_REG1
+  ARM: dts: rockchip: rk3288-vyasa: Use fixed voltage range for vccio_sd
+  ARM: dts: rockchip: rk3288-vyasa: Use vmmc-supply from PMIC
+  ARM: dts: rockchip: Add regulators for rk3288-vyasa
+  ARM: dts: rockchip: Add gmac support for rk3288-vyasa board
+  ARM: dts: rockchip: Add usb host for rk3288-vyasa
+  ARM: dts: rockchip: Add usb otg for rk3288-vyasa
+  ARM: dts: rockchip: Add io domains for rk3288-vyasa
+  ARM: multi_v7_defconfig: Statically build RTC_DRV_RK808
+
+ arch/arm/boot/dts/rk3288-vyasa.dts     | 181 ++++++++++++++++++++++++++++++---
+ arch/arm/configs/multi_v7_defconfig    |   2 +-
+ include/dt-bindings/pinctrl/rockchip.h |   1 +
+ 3 files changed, 168 insertions(+), 16 deletions(-)
+
+-- 
+2.7.4
