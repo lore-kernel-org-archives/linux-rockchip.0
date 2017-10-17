@@ -1,54 +1,62 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [RFC PATCH v4 4/8] drm/rockchip: dw_hdmi: Fix error handling path
-Date: Tue, 17 Oct 2017 14:10:34 -0400
-Message-ID: <20171017181034.tsplfsmq7vi4uhmo@art_vandelay>
-References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
- <20171017101624.12506-5-jeffy.chen@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip dts64 Fixes for 4.14 part 2
+Date: Tue, 17 Oct 2017 20:17:26 +0200
+Message-ID: <6151423.bSX8Os9Bvg@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20171017101624.12506-5-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBPY3QgMTcsIDIwMTcgYXQgMDY6MTY6MjBQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBBZGQgbWlzc2luZyBjbGtfZGlzYWJsZV91bnByZXBhcmUoKSBpbiBiaW5kKCkncyBlcnJv
-ciBoYW5kbGluZyBwYXRoLgoKVGhpcyBhbHNvIGlzbid0IGRpc2FibGVkIGluIHVuYmluZCgpLCBp
-cyB0aGF0IGludGVudGlvbmFsPwoKPiAKPiBGaXhlczogMTJiOWYyMDRlODA0ICgiZHJtOiBicmlk
-Z2UvZHdfaGRtaTogYWRkIHJvY2tjaGlwIHJrMzI4OCBzdXBwb3J0IikKPiBTaWduZWQtb2ZmLWJ5
-OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+IENoYW5n
-ZXMgaW4gdjQ6IE5vbmUKPiBDaGFuZ2VzIGluIHYzOiBOb25lCj4gQ2hhbmdlcyBpbiB2MjogTm9u
-ZQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgNCAr
-KystCj4gIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPiBpbmRleCAx
-ZWIwMmE4MmZkOTEuLjU4MjI4M2RhNzg2MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+IEBAIC0zODMsOCArMzgzLDEwIEBAIHN0YXRpYyBpbnQg
-ZHdfaGRtaV9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAq
-bWFzdGVyLAo+ICAJICogSWYgZHdfaGRtaV9iaW5kKCkgZmFpbHMgd2UnbGwgbmV2ZXIgY2FsbCBk
-d19oZG1pX3VuYmluZCgpLAo+ICAJICogd2hpY2ggd291bGQgaGF2ZSBjYWxsZWQgdGhlIGVuY29k
-ZXIgY2xlYW51cC4gIERvIGl0IG1hbnVhbGx5Lgo+ICAJICovCj4gLQlpZiAocmV0KQo+ICsJaWYg
-KHJldCkgewo+ICAJCWRybV9lbmNvZGVyX2NsZWFudXAoZW5jb2Rlcik7Cj4gKwkJY2xrX2Rpc2Fi
-bGVfdW5wcmVwYXJlKGhkbWktPnZwbGxfY2xrKTsKClNhbWUgY29tbWVudCB3aXRoIHJlc3BlY3Qg
-dG8gcm9ja2NoaXBfaGRtaV9wYXJzZV9kdCgpLiBUaGlzIGJ1ZyB3b3VsZCBoYXZlCnByb2JhYmx5
-IGJlZW4gYXZvaWRlZCBpZiB0aGUgY29udGVudHMgb2Ygcm9ja2NoaXBfaGRtaV9wYXJzZV9kdCgp
-IHdlcmUgaW5saW5lCndpdGggZHdfaGRtaV9yb2NrY2hpcF9iaW5kKCksIHNpbmNlIHRoZW4gaXQn
-cyBvYnZpb3VzIHdoYXQgbmVlZHMgdG8gYmUgY2xlYW5lZAp1cC4KClNlYW4KCj4gKwl9Cj4gIAo+
-ICAJcmV0dXJuIHJldDsKPiAgfQo+IC0tIAo+IDIuMTEuMAo+IAo+IAoKLS0gClNlYW4gUGF1bCwg
-U29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Arnd, Kevin, Olof,
+
+looks like I need two rounds of fixes this time around.
+But the vqmmc voltage issue warrants that I think, especially
+as 4.14 is going to be a LTS release.
+
+Please pull.
+
+Thanks
+Heiko
+
+The following changes since commit 0bc15d85d97d44e8979ff91d0c1fbafe6fd4172c:
+
+  arm64: dts: rockchip: add the grf clk for dw-mipi-dsi on rk3399 (2017-09-26 15:59:17 +0200)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.14-rockchip-dts64fixes-2
+
+for you to fetch changes up to b521102d935d0501f5d95242ade2988f3f069c77:
+
+  arm64: dts: rockchip: fix typo in iommu nodes (2017-10-17 20:13:52 +0200)
+
+----------------------------------------------------------------
+The vqmmc voltages on rk3399 pose a risk for the chip if they
+exceed 3.0V, so they got fixed to not be at 3.3V
+And Arnd found a typo in the recently added iommu nodes.
+
+----------------------------------------------------------------
+Arnd Bergmann (1):
+      arm64: dts: rockchip: fix typo in iommu nodes
+
+Shawn Lin (1):
+      arm64: dts: rockchip: correct vqmmc voltage for rk3399 platforms
+
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts   | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi     | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 4 ++--
+ 5 files changed, 8 insertions(+), 8 deletions(-)
