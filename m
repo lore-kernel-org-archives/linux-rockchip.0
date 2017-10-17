@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v4 2/8] drm/rockchip: analogix_dp: Fix error handling path
-Date: Tue, 17 Oct 2017 18:16:18 +0800
-Message-ID: <20171017101624.12506-3-jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v4 5/8] drm/rockchip: inno_hdmi: Fix error handling path
+Date: Tue, 17 Oct 2017 18:16:21 +0800
+Message-ID: <20171017101624.12506-6-jeffy.chen@rock-chips.com>
 References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
@@ -10,9 +10,9 @@ To: linux-kernel@vger.kernel.org
 Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add missing error handling in rockchip_dp_bind().
+Add missing error handling in bind().
 
-Fixes: 9e32e16e9e98 ("drm: rockchip: dp: add rockchip platform dp driver")
+Fixes: 412d4ae6b7a5 ("drm/rockchip: hdmi: add Innosilicon HDMI support")
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
@@ -20,40 +20,61 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 4d3f6ad0abdd..4b689c0f3fc1 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -371,7 +371,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	ret = rockchip_dp_drm_create_encoder(dp);
- 	if (ret) {
- 		DRM_ERROR("failed to create drm encoder\n");
--		return ret;
-+		goto err_disable_pclk;
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index ee584d87111f..9c258b05dfa5 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -851,8 +851,10 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
  	}
  
- 	dp->plat_data.encoder = &dp->encoder;
-@@ -387,7 +387,17 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	irq = platform_get_irq(pdev, 0);
+-	if (irq < 0)
+-		return irq;
++	if (irq < 0) {
++		ret = irq;
++		goto err_disable_clk;
++	}
  
- 	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
+ 	inno_hdmi_reset(hdmi);
  
--	return analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
-+	ret = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+@@ -860,7 +862,7 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 	if (IS_ERR(hdmi->ddc)) {
+ 		ret = PTR_ERR(hdmi->ddc);
+ 		hdmi->ddc = NULL;
+-		return ret;
++		goto err_disable_clk;
+ 	}
+ 
+ 	/*
+@@ -874,7 +876,7 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 
+ 	ret = inno_hdmi_register(drm, hdmi);
+ 	if (ret)
+-		return ret;
++		goto err_put_adapter;
+ 
+ 	dev_set_drvdata(dev, hdmi);
+ 
+@@ -884,7 +886,17 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 	ret = devm_request_threaded_irq(dev, irq, inno_hdmi_hardirq,
+ 					inno_hdmi_irq, IRQF_SHARED,
+ 					dev_name(dev), hdmi);
 +	if (ret < 0)
-+		goto err_unreg_psr;
++		goto err_cleanup_hdmi;
+ 
 +	return 0;
-+
-+err_unreg_psr:
-+	rockchip_drm_psr_unregister(&dp->encoder);
-+	rockchip_dp_drm_encoder_destroy(&dp->encoder);
-+err_disable_pclk:
-+	clk_disable_unprepare(dp->pclk);
-+	return ret;
++err_cleanup_hdmi:
++	drm_connector_cleanup(&hdmi->connector);
++	drm_encoder_cleanup(&hdmi->encoder);
++err_put_adapter:
++	i2c_put_adapter(hdmi->ddc);
++err_disable_clk:
++	clk_disable_unprepare(hdmi->pclk);
+ 	return ret;
  }
  
- static void rockchip_dp_unbind(struct device *dev, struct device *master,
 -- 
 2.11.0
