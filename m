@@ -1,51 +1,66 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix typo in iommu nodes
-Date: Tue, 17 Oct 2017 19:52:55 +0200
-Message-ID: <35096146.J7tq43JfW1@phil>
-References: <20171010085648.1339605-1-arnd@arndb.de> <4123717.0VmPnCpUOn@diego>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [RFC PATCH v4 2/8] drm/rockchip: analogix_dp: Fix error handling
+ path
+Date: Tue, 17 Oct 2017 13:57:37 -0400
+Message-ID: <20171017175737.qkqwi2jn6vj2h7ev@art_vandelay>
+References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
+ <20171017101624.12506-3-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4123717.0VmPnCpUOn@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rocky Hao <rocky.hao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20171017101624.12506-3-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 10. Oktober 2017, 11:48:25 CEST schrieb Heiko Stübner:
-> Hi Arnd,
-> 
-> Am Dienstag, 10. Oktober 2017, 10:56:01 CEST schrieb Arnd Bergmann:
-> > The latest dtc warns about an extraneous cell in the interrupt
-> > property of two of the iommu device nodes:
-> > 
-> > Warning (interrupts_property): interrupts size is (16), expected multiple of
-> > 12 in /iommu@ff373f00 Warning (interrupts_property): interrupts size is
-> > (16), expected multiple of 12 in /iommu@ff900800
-> > 
-> > This removes the typo.
-> > 
-> > Fixes: cede4c79de28 ("arm64: dts: rockchip: add rk3368 iommu nodes")
-> > Fixes: 49c82f2b7c5d ("arm64: dts: rockchip: add rk3328 iommu nodes")
-> > Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-> 
-> looks like that got copy-pasted from rk3399 where we have 4 elements per irq.
-> In any case the change looks good, so if you want to apply it directly to 
-> armsoc-fixes here is a
-> 
-> Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> 
-> Depending on how you want to handle it I can also merge it, but
-> Olof already picked up my 2 fixes for 4.14, so you applying it might
-> save us the round-trip for a further 1-patch pull request :-)
-
-as another (somewhat urgent) fix for 64bit dts has come up, I've now also
-picked this change up for the following pull request.
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gVHVlLCBPY3QgMTcsIDIwMTcgYXQgMDY6MTY6MThQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
+ZToKPiBBZGQgbWlzc2luZyBlcnJvciBoYW5kbGluZyBpbiByb2NrY2hpcF9kcF9iaW5kKCkuCj4g
+Cj4gRml4ZXM6IDllMzJlMTZlOWU5OCAoImRybTogcm9ja2NoaXA6IGRwOiBhZGQgcm9ja2NoaXAg
+cGxhdGZvcm0gZHAgZHJpdmVyIikKPiBTaWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5j
+aGVuQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjQ6IE5vbmUKPiBDaGFu
+Z2VzIGluIHYzOiBOb25lCj4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+IAo+ICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDE0ICsrKysrKysrKysrKy0tCj4g
+IDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAu
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5k
+ZXggNGQzZjZhZDBhYmRkLi40YjY4OWMwZjNmYzEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+IEBAIC0zNzEsNyArMzcxLDcgQEAg
+c3RhdGljIGludCByb2NrY2hpcF9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRl
+dmljZSAqbWFzdGVyLAo+ICAJcmV0ID0gcm9ja2NoaXBfZHBfZHJtX2NyZWF0ZV9lbmNvZGVyKGRw
+KTsKPiAgCWlmIChyZXQpIHsKPiAgCQlEUk1fRVJST1IoImZhaWxlZCB0byBjcmVhdGUgZHJtIGVu
+Y29kZXJcbiIpOwo+IC0JCXJldHVybiByZXQ7Cj4gKwkJZ290byBlcnJfZGlzYWJsZV9wY2xrOwo+
+ICAJfQo+ICAKPiAgCWRwLT5wbGF0X2RhdGEuZW5jb2RlciA9ICZkcC0+ZW5jb2RlcjsKPiBAQCAt
+Mzg3LDcgKzM4NywxNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX2JpbmQoc3RydWN0IGRldmlj
+ZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gIAo+ICAJcm9ja2NoaXBfZHJtX3Bzcl9y
+ZWdpc3RlcigmZHAtPmVuY29kZXIsIGFuYWxvZ2l4X2RwX3Bzcl9zZXQpOwo+ICAKPiAtCXJldHVy
+biBhbmFsb2dpeF9kcF9iaW5kKGRldiwgZHAtPmRybV9kZXYsICZkcC0+cGxhdF9kYXRhKTsKPiAr
+CXJldCA9IGFuYWxvZ2l4X2RwX2JpbmQoZGV2LCBkcC0+ZHJtX2RldiwgJmRwLT5wbGF0X2RhdGEp
+Owo+ICsJaWYgKHJldCA8IDApCj4gKwkJZ290byBlcnJfdW5yZWdfcHNyOwo+ICsJcmV0dXJuIDA7
+Cj4gKwo+ICtlcnJfdW5yZWdfcHNyOgo+ICsJcm9ja2NoaXBfZHJtX3Bzcl91bnJlZ2lzdGVyKCZk
+cC0+ZW5jb2Rlcik7Cj4gKwlyb2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9kZXN0cm95KCZkcC0+ZW5j
+b2Rlcik7Cj4gK2Vycl9kaXNhYmxlX3BjbGs6Cj4gKwljbGtfZGlzYWJsZV91bnByZXBhcmUoZHAt
+PnBjbGspOwoKSGkgSmVmZnksClRoaXMgcGFydCBvZiB0aGUgY2xlYW51cCBpcyBoYW5kbGluZyB0
+aGluZ3Mgc2V0dXAgYnkgcm9ja2NoaXBfZHBfaW5pdCgpLgpIb3dldmVyIGlmIHNvbWVvbmUgYWRk
+cyBzb21ldGhpbmcgdG8gcm9ja2NoaXBfZHBfaW5pdCgpLCBpdCdzIG5vdCBvYnZpb3VzIHRoYXQK
+aXQgc2hvdWxkIGJlIGNsZWFuZWQgdXAgaGVyZSBhbmQgaW4gdW5iaW5kKCkuIEknZCBzdWdnZXN0
+IHJlYmFzaW5nIHRoaXMgb24KYSBuZXcgcGF0Y2ggd2hpY2ggZm9sZHMgZXZlcnl0aGluZyByb2Nr
+Y2hpcF9kcF9pbml0KCkgZG9lcyBpbnRvCnJvY2tjaGlwX2RwX2JpbmQoKSwgdGhlbiBpdCB3aWxs
+IGJlIG9idmlvdXMgd2hhdCBuZWVkcyB0byBiZSBjbGVhbmVkIHVwLgoKU2VhbgoKCj4gKwlyZXR1
+cm4gcmV0Owo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcF91bmJpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gLS0gCj4gMi4xMS4wCj4gCj4g
+CgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
