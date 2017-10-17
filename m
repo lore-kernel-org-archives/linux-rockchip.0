@@ -1,54 +1,62 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v4 0/8] rockchip: kevin: Enable edp display
-Date: Tue, 17 Oct 2017 18:16:16 +0800
-Message-ID: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Sender: linux-pwm-owner@vger.kernel.org
+Subject: [RFC PATCH v4 3/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
+Date: Tue, 17 Oct 2017 18:16:19 +0800
+Message-ID: <20171017101624.12506-4-jeffy.chen@rock-chips.com>
+References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-kernel@vger.kernel.org
-Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Arnd Bergmann <arnd@arndb.de>, linux-pwm@vger.kernel.org, dri-devel@lists.freedesktop.org, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, Inki Dae <inki.dae@samsung.com>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will.deacon@arm.com>
+Cc: dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, broonie@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Make edp display works on chromebook kevin(at least for boot animation).
-
-Also solve some issues i meet during the bringup.
-
-Changes in v4:
-Fix compile warning.
-
-Changes in v3:
-Assign orphan pwms to dummy pwmchip instead of adding device link in the
-customer driver.
-
-Changes in v2:
-Use device link to correct the suspend/resume and shutdown ordering,
-instead of converting rockchip spi's suspend/resume PM callbacks to
-late suspend/resume PM callbacks.
-
-Jeffy Chen (7):
-  arm64: dts: rockchip: Enable edp disaplay on kevin
-  drm/rockchip: analogix_dp: Fix error handling path
-  drm/rockchip: dw-mipi-dsi: Fix error handling path
-  drm/rockchip: dw_hdmi: Fix error handling path
-  drm/rockchip: inno_hdmi: Fix error handling path
-  pwm: Add dummy pwmchip for orphan pwms
-  drm/rockchip: Add device links for master and components
-
-Tomasz Figa (1):
-  drm/bridge/analogix: Do not use device's drvdata
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 29 ++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 16 +++++
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 50 ++++++-------
- drivers/gpu/drm/exynos/exynos_dp.c                 | 26 ++++---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 57 +++++++++------
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 17 +++--
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        |  4 +-
- drivers/gpu/drm/rockchip/inno_hdmi.c               | 20 ++++--
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 24 ++++++-
- drivers/pwm/core.c                                 | 81 ++++++++++++++++++++--
- include/drm/bridge/analogix_dp.h                   | 19 ++---
- 11 files changed, 254 insertions(+), 89 deletions(-)
-
--- 
-2.11.0
+QWRkIG1pc3NpbmcgcG1fcnVudGltZV9kaXNhYmxlKCkgaW4gYmluZCgpJ3MgZXJyb3IgaGFuZGxp
+bmcgcGF0aC4KCkFsc28gY2xlYW51cCBlbmNvZGVyICYgY29ubmVjdG9yIGluIHVuYmluZCgpLgoK
+Rml4ZXM6IDgwYTlhMDU5ZDRlNCAoImRybS9yb2NrY2hpcC9kc2k6IGFkZCBkdy1taXBpIHBvd2Vy
+IGRvbWFpbiBzdXBwb3J0IikKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkBy
+b2NrLWNoaXBzLmNvbT4KLS0tCgpDaGFuZ2VzIGluIHY0OiBOb25lCkNoYW5nZXMgaW4gdjM6IE5v
+bmUKQ2hhbmdlcyBpbiB2MjogTm9uZQoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBp
+LWRzaS5jIHwgMTcgKysrKysrKysrKystLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxMSBpbnNlcnRp
+b25zKCspLCA2IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
+LmMKaW5kZXggYjE1NzU1YjYxMjljLi5hMTdmZjBmNmY0ODkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kdy1taXBpLWRzaS5jCkBAIC0xMjgyLDcgKzEyODIsNyBAQCBzdGF0aWMgaW50IGR3X21p
+cGlfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJ
+cmV0ID0gZHdfbWlwaV9kc2lfcmVnaXN0ZXIoZHJtLCBkc2kpOwogCWlmIChyZXQpIHsKIAkJRFJN
+X0RFVl9FUlJPUihkZXYsICJGYWlsZWQgdG8gcmVnaXN0ZXIgbWlwaV9kc2k6ICVkXG4iLCByZXQp
+OwotCQlnb3RvIGVycl9wbGxyZWY7CisJCWdvdG8gZXJyX2Rpc2FibGVfcGxscmVmOwogCX0KIAog
+CXBtX3J1bnRpbWVfZW5hYmxlKGRldik7CkBAIC0xMjkyLDIzICsxMjkyLDI0IEBAIHN0YXRpYyBp
+bnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1h
+c3RlciwKIAlyZXQgPSBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKIAlp
+ZiAocmV0KSB7CiAJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIE1JUEkg
+aG9zdDogJWRcbiIsIHJldCk7Ci0JCWdvdG8gZXJyX2NsZWFudXA7CisJCWdvdG8gZXJyX2Rpc2Fi
+bGVfcG1fcnVudGltZTsKIAl9CiAKIAlpZiAoIWRzaS0+cGFuZWwpIHsKIAkJcmV0ID0gLUVQUk9C
+RV9ERUZFUjsKLQkJZ290byBlcnJfbWlwaV9kc2lfaG9zdDsKKwkJZ290byBlcnJfdW5yZWdfbWlw
+aV9kc2lfaG9zdDsKIAl9CiAKIAlkZXZfc2V0X2RydmRhdGEoZGV2LCBkc2kpOwogCXJldHVybiAw
+OwogCi1lcnJfbWlwaV9kc2lfaG9zdDoKK2Vycl91bnJlZ19taXBpX2RzaV9ob3N0OgogCW1pcGlf
+ZHNpX2hvc3RfdW5yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7Ci1lcnJfY2xlYW51cDoKK2Vycl9k
+aXNhYmxlX3BtX3J1bnRpbWU6CisJcG1fcnVudGltZV9kaXNhYmxlKGRldik7CiAJZHJtX2VuY29k
+ZXJfY2xlYW51cCgmZHNpLT5lbmNvZGVyKTsKIAlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+
+Y29ubmVjdG9yKTsKLWVycl9wbGxyZWY6CitlcnJfZGlzYWJsZV9wbGxyZWY6CiAJY2xrX2Rpc2Fi
+bGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7CiAJcmV0dXJuIHJldDsKIH0KQEAgLTEzMjAs
+NiArMTMyMSwxMCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGRldmlj
+ZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAKIAltaXBpX2RzaV9ob3N0X3VucmVnaXN0
+ZXIoJmRzaS0+ZHNpX2hvc3QpOwogCXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOworCisJZHNpLT5j
+b25uZWN0b3IuZnVuY3MtPmRlc3Ryb3koJmRzaS0+Y29ubmVjdG9yKTsKKwlkc2ktPmVuY29kZXIu
+ZnVuY3MtPmRlc3Ryb3koJmRzaS0+ZW5jb2Rlcik7CisKIAljbGtfZGlzYWJsZV91bnByZXBhcmUo
+ZHNpLT5wbGxyZWZfY2xrKTsKIH0KIAotLSAKMi4xMS4wCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
