@@ -1,87 +1,114 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v4 8/8] drm/rockchip: Add device links for master and components
-Date: Tue, 17 Oct 2017 18:16:24 +0800
-Message-ID: <20171017101624.12506-9-jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v4 1/8] arm64: dts: rockchip: Enable edp disaplay on kevin
+Date: Tue, 17 Oct 2017 18:16:17 +0800
+Message-ID: <20171017101624.12506-2-jeffy.chen@rock-chips.com>
 References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: linux-kernel@vger.kernel.org
-Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, dmitry.torokhov@gmail.com, heiko@sntech.de, Arnd Bergmann <arnd@arndb.de>, Will Deacon <will.deacon@arm.com>, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, Rob Herring <robh+dt@kernel.org>, tfiga@chromium.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, broonie@kernel.org, seanpaul@chromium.org, Catalin Marinas <catalin.marinas@arm.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Since we are trying to access components' resources in the master's
-suspend/resume PM callbacks(e.g. panel), add device links to correct
-the suspend/resume and shutdown ordering.
+Add edp panel and enable related nodes on kevin.
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
+
 ---
 
 Changes in v4: None
 Changes in v3: None
-Changes in v2:
-Use device link to correct the suspend/resume and shutdown ordering,
-instead of converting rockchip spi's suspend/resume PM callbacks to
-late suspend/resume PM callbacks.
+Changes in v2: None
 
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
+ 2 files changed, 45 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 76d63de5921d..af18967f699b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -337,6 +337,8 @@ static struct component_match *rockchip_drm_match_add(struct device *dev)
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index a3d3cea7dc4f..bc67b19f0af5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -93,6 +93,18 @@
+ 		pwm-delay-us = <10000>;
+ 	};
  
- 			if (!d)
- 				break;
++	edp_panel: edp-panel {
++		compatible = "sharp,lq123p1jx31", "simple-panel";
++		backlight = <&backlight>;
++		power-supply = <&pp3300_disp>;
 +
-+			device_link_add(dev, d, DL_FLAG_STATELESS);
- 			component_match_add(dev, &match, compare_dev, d);
- 		} while (true);
- 	}
-@@ -406,6 +408,7 @@ static int rockchip_drm_platform_of_probe(struct device *dev)
- static int rockchip_drm_platform_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-+	struct device_link *link;
- 	struct component_match *match = NULL;
- 	int ret;
- 
-@@ -414,16 +417,31 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	match = rockchip_drm_match_add(dev);
--	if (IS_ERR(match))
--		return PTR_ERR(match);
-+	if (IS_ERR(match)) {
-+		ret = PTR_ERR(match);
-+		goto err_cleanup_dev_links;
-+	}
- 
--	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
-+	ret = component_master_add_with_match(dev, &rockchip_drm_ops, match);
-+	if (ret < 0)
-+		goto err_cleanup_dev_links;
++		ports {
++			panel_in_edp: endpoint {
++				remote-endpoint = <&edp_out_panel>;
++			};
++		};
++	};
 +
-+	return 0;
-+err_cleanup_dev_links:
-+	list_for_each_entry(link, &dev->links.consumers, s_node)
-+		device_link_del(link);
-+	return ret;
- }
+ 	thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
+ 		compatible = "murata,ncp15wb473";
+ 		pullup-uv = <1800000>;
+@@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
+ 	};
+ };
  
- static int rockchip_drm_platform_remove(struct platform_device *pdev)
- {
-+	struct device_link *link;
++&edp {
++	status = "okay";
 +
- 	component_master_del(&pdev->dev, &rockchip_drm_ops);
++	ports {
++		edp_out: port@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			edp_out_panel: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&panel_in_edp>;
++			};
++		};
++	};
++};
++
+ &ppvar_bigcpu_pwm {
+ 	regulator-min-microvolt = <798674>;
+ 	regulator-max-microvolt = <1302172>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 5772c52fbfd3..470105d651c2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
+ 	dr_mode = "host";
+ };
  
-+	list_for_each_entry(link, &pdev->dev.links.consumers, s_node)
-+		device_link_del(link);
++&vopb {
++	status = "okay";
++};
 +
- 	return 0;
- }
++&vopb_mmu {
++	status = "okay";
++};
++
++&vopl {
++	status = "okay";
++};
++
++&vopl_mmu {
++	status = "okay";
++};
++
+ #include <arm/cros-ec-keyboard.dtsi>
+ #include <arm/cros-ec-sbs.dtsi>
  
 -- 
 2.11.0
