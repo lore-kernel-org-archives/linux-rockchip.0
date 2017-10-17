@@ -1,32 +1,54 @@
-From: klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
-Subject: Re: arm64: dts: rockchip: correct vqmmc voltage for rk3399 platforms
-Date: Tue, 17 Oct 2017 11:16:57 +0200
-Message-ID: <50FF2B8E-A24F-444C-80C2-D301D02C9F03@theobroma-systems.com>
-References: <1508211484-210856-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.0 \(3445.1.6\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1508211484-210856-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v4 0/8] rockchip: kevin: Enable edp display
+Date: Tue, 17 Oct 2017 18:16:16 +0800
+Message-ID: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Sender: linux-pwm-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Arnd Bergmann <arnd@arndb.de>, linux-pwm@vger.kernel.org, dri-devel@lists.freedesktop.org, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, Inki Dae <inki.dae@samsung.com>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will.deacon@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2hhd24sCgo+IE9uIDE3LjEwLjIwMTcsIGF0IDA1OjM4LCBTaGF3biBMaW4gPHNoYXduLmxp
-bkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gCj4gVGhlIHZjY19zZCBvciB2Y2Nfc2RpbyB1c2Vk
-IGZvciBJTyB2b2x0YWdlIGZvciBzZG1tYyBhbmQgc2Rpbwo+IGludGVyZmFjZSBvbiByazMzOTkg
-cGxhdGZvcm0gaGF2ZSBhIGxpbWl0YXRpb24gdGhhdCBpdCBjYW4ndCBiZQo+IGxhcmdlciB0aGFu
-IDMuMHYsIG90aGVyd2lzZSBpdCBoYXMgYSBwb3RlbnRpYWwgcmlzayBmb3IgdGhlIGNoaXAuCj4g
-Q29ycmVjdCBhbGwgb2YgdGhlbS4KCkZvciByazMzOTktcHVtYS5kdHNpClRlc3RlZC1ieTogS2xh
-dXMgR29nZXIgPGtsYXVzLmdvZ2VyQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KCuKAlCAKS2xhdXMK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+Make edp display works on chromebook kevin(at least for boot animation).
+
+Also solve some issues i meet during the bringup.
+
+Changes in v4:
+Fix compile warning.
+
+Changes in v3:
+Assign orphan pwms to dummy pwmchip instead of adding device link in the
+customer driver.
+
+Changes in v2:
+Use device link to correct the suspend/resume and shutdown ordering,
+instead of converting rockchip spi's suspend/resume PM callbacks to
+late suspend/resume PM callbacks.
+
+Jeffy Chen (7):
+  arm64: dts: rockchip: Enable edp disaplay on kevin
+  drm/rockchip: analogix_dp: Fix error handling path
+  drm/rockchip: dw-mipi-dsi: Fix error handling path
+  drm/rockchip: dw_hdmi: Fix error handling path
+  drm/rockchip: inno_hdmi: Fix error handling path
+  pwm: Add dummy pwmchip for orphan pwms
+  drm/rockchip: Add device links for master and components
+
+Tomasz Figa (1):
+  drm/bridge/analogix: Do not use device's drvdata
+
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 29 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 16 +++++
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 50 ++++++-------
+ drivers/gpu/drm/exynos/exynos_dp.c                 | 26 ++++---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 57 +++++++++------
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 17 +++--
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        |  4 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c               | 20 ++++--
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        | 24 ++++++-
+ drivers/pwm/core.c                                 | 81 ++++++++++++++++++++--
+ include/drm/bridge/analogix_dp.h                   | 19 ++---
+ 11 files changed, 254 insertions(+), 89 deletions(-)
+
+-- 
+2.11.0
