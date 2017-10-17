@@ -1,62 +1,113 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v3 3/4] drm/rockchip: Add support for Rockchip Soc RGB
- output interface
-Date: Tue, 17 Oct 2017 09:47:24 +0800
-Message-ID: <02a599df-c866-92dc-3aa0-f63c6bc67257@rock-chips.com>
-References: <1507536396-106827-1-git-send-email-hjc@rock-chips.com>
- <1507536416-110807-1-git-send-email-hjc@rock-chips.com>
+From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 1/5] arm64: dts: rockchip: Enable edp disaplay
+ on kevin
+Date: Tue, 17 Oct 2017 09:50:38 +0800
+Message-ID: <5295f622-647a-c6d3-9ead-de8182d008e6@rock-chips.com>
+References: <20171016100640.26575-1-jeffy.chen@rock-chips.com>
+ <20171016100640.26575-2-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1507536416-110807-1-git-send-email-hjc@rock-chips.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171016100640.26575-2-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDEw5pyIMDnml6UgMTY6MDYsIFNhbmR5IEh1YW5nIHdyb3RlOgo+IFNvbWUgUm9j
-a2NoaXAgQ1JUQ3MsIGxpa2UgcnYxMTA4LCBjYW4gZGlyZWN0bHkgb3V0cHV0IHBhcmFsbGVsIGFu
-ZAo+IHNlcmlhbCBSR0IgZGF0YSB0byBwYW5lbCBvciBjb252ZXJzaW9uIGNoaXAsIHNvIHdlIGFk
-ZCB0aGlzIGRyaXZlciB0bwo+IHByb2JlIGVuY29kZXIgYW5kIGNvbm5lY3Rvci4KPgo+IFNpZ25l
-ZC1vZmYtYnk6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gQ2hhbmdl
-cyBpbiB2MzoKPiAgICB1cGRhdGUgZm9yIHJnYi1tb2RlIG1vdmUgdG8gcGFuZWwgbm9kZS4KPiBD
-aGFuZ2VzIGluIHYyOgo+ICAgIDEuIGFkZCBlcnJvciBsb2cgd2hlbiBwcm9iZSBmYWlsZWQ7Cj4g
-ICAgMi4gdXBkYXRlIG5hbWVfdG9fb3V0cHV0X21vZGUoKSBhY2NvcmRpbmcgdG8gc2VhbidzIHN1
-Z2dlc3Q7Cj4gICAgMy4gRml4IHVuaW5pdGlhbGl6ZWQgdXNlIG9mIHJldC4KPgo+ICAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgICAgICAgICAgICB8ICAgOSArCj4gICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgIHwgICAxICsKPiAgIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgIDIgKwo+ICAgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAgMSArCj4gICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmMgICAgIHwgMzQzICsrKysrKysrKysrKysrKysr
-KysrKysrKysrKysKPiAgIDUgZmlsZXMgY2hhbmdlZCwgMzU2IGluc2VydGlvbnMoKykKPiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmMK
-Pgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCj4gaW5kZXggMGMzMWYwYS4uODVjN2NjNSAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCj4gQEAgLTgsNiArOCw3IEBAIGNvbmZpZyBEUk1f
-Uk9DS0NISVAKPiAgIAlzZWxlY3QgRFJNX0FOQUxPR0lYX0RQIGlmIFJPQ0tDSElQX0FOQUxPR0lY
-X0RQCj4gICAJc2VsZWN0IERSTV9EV19IRE1JIGlmIFJPQ0tDSElQX0RXX0hETUkKPiAgIAlzZWxl
-Y3QgRFJNX01JUElfRFNJIGlmIFJPQ0tDSElQX0RXX01JUElfRFNJCj4gKwlzZWxlY3QgRFJNX1JH
-QiBpZiBST0NLQ0hJUF9SR0IKPiAgIAlzZWxlY3QgU05EX1NPQ19IRE1JX0NPREVDIGlmIFJPQ0tD
-SElQX0NETl9EUCAmJiBTTkRfU09DCj4gICAJaGVscAo+ICAgCSAgQ2hvb3NlIHRoaXMgb3B0aW9u
-IGlmIHlvdSBoYXZlIGEgUm9ja2NoaXAgc29jIGNoaXBzZXQuCj4gQEAgLTY1LDQgKzY2LDEyIEBA
-IGNvbmZpZyBST0NLQ0hJUF9MVkRTCj4gICAJICBSb2NrY2hpcCByazMyODggU29DIGhhcyBMVkRT
-IFRYIENvbnRyb2xsZXIgY2FuIGJlIHVzZWQsIGFuZCBpdAo+ICAgCSAgc3VwcG9ydCBMVkRTLCBy
-Z2IsIGR1YWwgTFZEUyBvdXRwdXQgbW9kZS4gc2F5IFkgdG8gZW5hYmxlIGl0cwo+ICAgCSAgZHJp
-dmVyLgo+ICsKPiArY29uZmlnIFJPQ0tDSElQX1JHQgo+ICsJYm9vbCAiUm9ja2NoaXAgUkdCIHN1
-cHBvcnQiCgpTZWUgdGhlIGZpeFswXSBmb3IgbHZkcywgIFJHQiBkcml2ZXIgdXNpbmcgcGluY3Rs
-IGFsc28gbmVlZCAiZGVwZW5kcyBvbiBQSU5DVFJMIi4KClswXWh0dHBzOi8vcGF0Y2h3b3JrLmtl
-cm5lbC5vcmcvcGF0Y2gvOTk4NzAxNy8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+On 2017年10月16日 18:06, Jeffy Chen wrote:
+> Add edp panel and enable related nodes on kevin.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+
+Looks good.
+
+Reviewed-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+> Changes in v2: None
+>
+>   arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
+>   arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
+>   2 files changed, 45 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> index a3d3cea7dc4f..bc67b19f0af5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> @@ -93,6 +93,18 @@
+>   		pwm-delay-us = <10000>;
+>   	};
+>   
+> +	edp_panel: edp-panel {
+> +		compatible = "sharp,lq123p1jx31", "simple-panel";
+> +		backlight = <&backlight>;
+> +		power-supply = <&pp3300_disp>;
+> +
+> +		ports {
+> +			panel_in_edp: endpoint {
+> +				remote-endpoint = <&edp_out_panel>;
+> +			};
+> +		};
+> +	};
+> +
+>   	thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
+>   		compatible = "murata,ncp15wb473";
+>   		pullup-uv = <1800000>;
+> @@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
+>   	};
+>   };
+>   
+> +&edp {
+> +	status = "okay";
+> +
+> +	ports {
+> +		edp_out: port@1 {
+> +			reg = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			edp_out_panel: endpoint@0 {
+> +				reg = <0>;
+> +				remote-endpoint = <&panel_in_edp>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+>   &ppvar_bigcpu_pwm {
+>   	regulator-min-microvolt = <798674>;
+>   	regulator-max-microvolt = <1302172>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> index 5772c52fbfd3..470105d651c2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> @@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
+>   	dr_mode = "host";
+>   };
+>   
+> +&vopb {
+> +	status = "okay";
+> +};
+> +
+> +&vopb_mmu {
+> +	status = "okay";
+> +};
+> +
+> +&vopl {
+> +	status = "okay";
+> +};
+> +
+> +&vopl_mmu {
+> +	status = "okay";
+> +};
+> +
+>   #include <arm/cros-ec-keyboard.dtsi>
+>   #include <arm/cros-ec-sbs.dtsi>
+>   
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
