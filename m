@@ -1,52 +1,251 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 4/4] drm/rockchip: vop: Add more RGB output interface
- type
-Date: Tue, 17 Oct 2017 11:43:31 -0400
-Message-ID: <20171017154331.ti2pnl4gmclbrfmu@art_vandelay>
-References: <1507536396-106827-1-git-send-email-hjc@rock-chips.com>
- <1507536424-110871-1-git-send-email-hjc@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 3/5] mmc: dw_mmc: Add locking to the CTO timer
+Date: Tue, 17 Oct 2017 09:40:03 -0700
+Message-ID: <CAD=FV=W7u0_kr9HXHpKmw=Hgco2P=u3jeSb8v0OoVvD+2kJorw@mail.gmail.com>
+References: <20171012201118.23570-1-dianders@chromium.org> <20171012201118.23570-4-dianders@chromium.org>
+ <41ae1571-4723-2700-1f03-7215e874c42e@rock-chips.com> <CAD=FV=UMuJBKV2-pNo4yiyfxXxYJo_tX6RkxCCzm_UFg9XyjyQ@mail.gmail.com>
+ <d6acce96-b292-ee4e-8f9b-1d524c14e0fc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1507536424-110871-1-git-send-email-hjc@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sandy Huang <hjc@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d6acce96-b292-ee4e-8f9b-1d524c14e0fc@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Emil Renner Berthing <kernel@esmil.dk>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBPY3QgMDksIDIwMTcgYXQgMDQ6MDc6MDRQTSArMDgwMCwgU2FuZHkgSHVhbmcgd3Jv
-dGU6Cj4gVGhpcyBwYXRjaCBhZGQgc2VyaWFsIFJHQiBvdXRwdXQgaW50ZXJmYWNlIGZvciByb2Nr
-Y2hpcCB2b3AsIHRoZQo+IG1vcmUgaW5mbyBhYm91dCBzZXJpYWwgUkdCIG91dHB1dCBpbnRlcmZh
-Y2UgZGVzY3JpYmVkIGF0IHRoZQo+IGZvbGxvd2luZyBmaWxlOgo+IAo+IERvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL3BhbmVsLXJnYi50eHQKPiAKPiBTaWdu
-ZWQtb2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpSZXZpZXdlZC1ieTog
-U2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gQ2hhbmdlcyBpbiB2Mzog
-Tm9uZQo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPiAKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuaCB8IDIgKysKPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9u
-cygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAo+
-IGluZGV4IDU2YmJkMmUuLjU5YTAxYzMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmgKPiBAQCAtMjA5LDYgKzIwOSw4IEBAIHN0cnVjdCB2b3BfZGF0
-YSB7Cj4gICNkZWZpbmUgUk9DS0NISVBfT1VUX01PREVfUDg4OAkwCj4gICNkZWZpbmUgUk9DS0NI
-SVBfT1VUX01PREVfUDY2NgkxCj4gICNkZWZpbmUgUk9DS0NISVBfT1VUX01PREVfUDU2NQkyCj4g
-KyNkZWZpbmUgUk9DS0NISVBfT1VUX01PREVfUzg4OAk4Cj4gKyNkZWZpbmUgUk9DS0NISVBfT1VU
-X01PREVfUzg4OF9EVU1NWQkxMgo+ICAvKiBmb3IgdXNlIHNwZWNpYWwgb3V0ZmFjZSAqLwo+ICAj
-ZGVmaW5lIFJPQ0tDSElQX09VVF9NT0RFX0FBQUEJMTUKPiAgCj4gLS0gCj4gMi43LjQKPiAKPiAK
-PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCi0t
-IApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi,
+
+On Mon, Oct 16, 2017 at 5:54 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> Hi Doug
+>
+>
+> On 2017/10/13 12:20, Doug Anderson wrote:
+>>
+>> Shawn,
+>>
+>> On Thu, Oct 12, 2017 at 6:32 PM, Shawn Lin <shawn.lin@rock-chips.com>
+>> wrote:
+>>>
+>>>
+>>> On 2017/10/13 4:11, Douglas Anderson wrote:
+>>>>
+>>>>
+>>>> This attempts to instill a bit of paranoia to the code dealing with
+>>>> the CTO timer.  It's believed that this will make the CTO timer more
+>>>> robust in the case that we're having very long interrupt latencies.
+>>>>
+>>>
+>>> Ack. It could help fix some problems observed.
+>>>
+>>>
+>>>> Note that I originally thought that perhaps this patch was being
+>>>> overly paranoid and wasn't really needed, but then while I was running
+>>>> mmc_test on an rk3399 board I saw one instance of the message:
+>>>>     dwmmc_rockchip fe320000.dwmmc: Unexpected interrupt latency
+>>>>
+>>>> I had debug prints in the CTO timer code and I found that it was
+>>>> running CMD 13 at the time.
+>>>>
+>>>> ...so even though this patch seems like it might be overly paranoid,
+>>>> maybe it really isn't?
+>>>>
+>>>> Presumably the bad interrupt latency experienced was due to the fact
+>>>> that I had serial console enabled as serial console is typically where
+>>>> I place blame when I see absurdly large interrupt latencies.  In this
+>>>> particular case there was an (unrelated) printout to the serial
+>>>> console just before I saw the "Unexpected interrupt latency" printout.
+>>>>
+>>>> ...and actually, I managed to even reproduce the problems by running
+>>>> "iw mlan0 scan > /dev/null" while mmc_test was running.  That not only
+>>>> does a bunch of PCIe traffic but it also (on my system) outputs some
+>>>> SELinux log spam.
+>>>>>
+>>>>> Fixes: 03de19212ea3 ("mmc: dw_mmc: introduce timer for broken command
+>>>
+>>>
+>>> transfer over scheme")
+>>>>
+>>>>
+>>>> Tested-by: Emil Renner Berthing <kernel@esmil.dk>
+>>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>>> ---
+>>>>
+>>>> Changes in v2:
+>>>> - Removed extra "int i"
+>>>>
+>>>>    drivers/mmc/host/dw_mmc.c | 91
+>>>> +++++++++++++++++++++++++++++++++++++++++------
+>>>>    1 file changed, 81 insertions(+), 10 deletions(-)
+>>>>
+>>>> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+>>>> index 16516c528a88..50148991f30e 100644
+>>>> --- a/drivers/mmc/host/dw_mmc.c
+>>>> +++ b/drivers/mmc/host/dw_mmc.c
+>>>> @@ -403,6 +403,7 @@ static inline void dw_mci_set_cto(struct dw_mci
+>>>> *host)
+>>>>          unsigned int cto_clks;
+>>>>          unsigned int cto_div;
+>>>>          unsigned int cto_ms;
+>>>> +       unsigned long irqflags;
+>>>>          cto_clks = mci_readl(host, TMOUT) & 0xff;
+>>>>          cto_div = (mci_readl(host, CLKDIV) & 0xff) * 2;
+>>>> @@ -413,8 +414,24 @@ static inline void dw_mci_set_cto(struct dw_mci
+>>>> *host)
+>>>>          /* add a bit spare time */
+>>>>          cto_ms += 10;
+>>>>    -     mod_timer(&host->cto_timer,
+>>>> -                 jiffies + msecs_to_jiffies(cto_ms) + 1);
+>>>> +       /*
+>>>> +        * The durations we're working with are fairly short so we have
+>>>> to
+>>>> be
+>>>> +        * extra careful about synchronization here.  Specifically in
+>>>> hardware a
+>>>> +        * command timeout is _at most_ 5.1 ms, so that means we expect
+>>>> an
+>>>> +        * interrupt (either command done or timeout) to come rather
+>>>> quickly
+>>>> +        * after the mci_writel.  ...but just in case we have a long
+>>>> interrupt
+>>>> +        * latency let's add a bit of paranoia.
+>>>> +        *
+>>>> +        * In general we'll assume that at least an interrupt will be
+>>>> asserted
+>>>> +        * in hardware by the time the cto_timer runs.  ...and if it
+>>>> hasn't
+>>>> +        * been asserted in hardware by that time then we'll assume
+>>>> it'll
+>>>> never
+>>>> +        * come.
+>>>> +        */
+>>>> +       spin_lock_irqsave(&host->irq_lock, irqflags);
+>>>> +       if (!test_bit(EVENT_CMD_COMPLETE, &host->pending_events))
+>>>> +               mod_timer(&host->cto_timer,
+>>>> +                       jiffies + msecs_to_jiffies(cto_ms) + 1);
+>>>> +       spin_unlock_irqrestore(&host->irq_lock, irqflags);
+>>>
+>>>
+>>>
+>>> IIUC, this change is beacuse you move
+>>> mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START) before
+>>> setting up the timer, so there is a timing gap that the cmd_done
+>>> already comes and handled by dw_mci_interrupt->dw_mci_cmd_interrupt.
+>>> At this point, we don't need the cto timer at all.
+>>
+>>
+>> As per below, if I don't move the mci_writel() before setting up the
+>> timer then there's still a race.  ...and actually that race was harder
+>> for me to write code for, but I invite you to try to see if it's
+>> somehow cleaner.
+>>
+>>
+>>>>    }
+>>>>      static void dw_mci_start_command(struct dw_mci *host,
+>>>> @@ -429,11 +446,11 @@ static void dw_mci_start_command(struct dw_mci
+>>>> *host,
+>>>>          wmb(); /* drain writebuffer */
+>>>>          dw_mci_wait_while_busy(host, cmd_flags);
+>>>>    +     mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START);
+>>>> +
+>>>>          /* response expected command only */
+>>>>          if (cmd_flags & SDMMC_CMD_RESP_EXP)
+>>>>                  dw_mci_set_cto(host);
+>>>> -
+>>>> -       mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START);
+>>>
+>>>
+>>>
+>>>
+>>> But why? If we still keep the original logic, it's always correct
+>>> that cmd_done comes after setting up the cto timer. So could you
+>>> eleborate a bit more to help me understand the real intention here?
+>>
+>>
+>> No matter which order you put things, there's a race one way or the
+>> other.  You need a lock.
+>>
+>> Let's think about the old code you wrote.  You did this:
+>> 1. Start the CTO timer.
+>> 2. Start the command.
+>>
+>> Now if you (somehow) take 20 ms to handle the interrupt, then this
+>> happens:
+>>
+>> 1. Start the CTO timer.
+>> 2. Start the command.
+>> 3. Interrupt is pending, but interrupt handler doesn't run yet.
+>> 4. CTO timer fires and enqueues CTO timeout.
+>> 5. Interrupt finally fires.
+>
+>
+> OK, got it.
+>
+>
+>>
+>>
+>> Now normally things are pretty bad if you've got an interrupt latency
+>> of 20 ms.  ...and, in fact, I originally wrote up a commit that simply
+>> explained why the race didn't matter and was thinking of posting that
+>> instead of this one.  I wrote up:
+>>
+>>       * Start a timer to detect missing cmd timeout if we expect a
+>> response.
+>>       *
+>>       * Note that we need to be a little careful about race conditions
+>> here
+>>       * since our timer will be racing with the actual hardware interrupt
+>>       * and things would get confused if both of them happened.
+>>       *
+>>       * We end up avoiding races here mostly because of our 10 ms "spare
+>>       * time" buffer above.  That's probably reliable enough because:
+>>       * - There's "guaranteed" "very little" time between setting the
+>> timer
+>>       *   and starting the command.  We're holding a spinlock (host->lock)
+>>       *   in all calls to this function so we won't get preempted.
+>> Possibly
+>>       *   we could get interrupts still, but that shouldn't add up to
+>>       *   anything like the 10 ms spare time.
+>>       * - We expect that when the actual interrupt fires that our
+>> interrupt
+>>       *   routine should get called "relatively quickly" (compared to the
+>>       *   10 ms buffer) and will be able to cancel this timer.
+>>
+>> ...but then I ran a whole bunch of tests and I found that, as far as I
+>> could tell, we actually _were_ getting a super long interrupt latency.
+>> Specifically I saw the printout "Unexpected interrupt latency" in my
+>> patch.  In order to see that printout in my patch (which even starts
+>> the command _before_ the CTO timer), the only explanation is bad
+>> interrupt latency, right?  Also: based on my past experience I believe
+>> it is possible to get upwards of 100 ms interrupt latency if you've
+>> got serial console enabled.  printk, especially printk from an
+>> interrupt context, can do some funny things.
+>>
+>
+> Right! It makes sense to me now.
+>
+>>
+>> ...but this stuff is always hard to get right, so if I messed up the
+>> above please let me know!  I tried to think of all of the cases so it
+>> would work no matter if delays happened in any random place but
+>> concurrency is hard.
+>
+>
+> Yes, it looks hard to get concurrency right. I have a comment for your
+> DRTO case(patch 5). Let's do some brainstorm there.
+
+Since your comments in this patch are positive and you've now added
+your Reviewed-by to patch #5, I'm going to assume that you'd also like
+your Reviewed-by on this patch?
+
+
+Jaehoon: I think I have Shawn's review on all this series.  It would
+be great if you could review them yourself and/or pick them up in your
+tree.  Since they fix a regression on 4.14 we really don't want to
+delay too long.  If you're busy, please yell and we can figure out a
+way to get these in (either through Ulf directly or we should find
+someone else to make a git tree and send a pull request).
+
+Thanks!
+
+-Doug
