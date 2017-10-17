@@ -1,25 +1,25 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dts64 updates for 4.15 part1
-Date: Tue, 17 Oct 2017 19:40:45 +0200
-Message-ID: <5888991.PG7Gbs0CIl@phil>
-References: <5843673.lOC77YXMZV@phil>
+Subject: [GIT PULL] Rockchip clock updates for 4.15 round 1
+Date: Tue, 17 Oct 2017 19:43:31 +0200
+Message-ID: <14384670.j3hM3TuojQ@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5843673.lOC77YXMZV@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
+
+Hi Mike, Stephen,
+
+please find below the (tiny) first round of Rockchip clock changes for 4.15.
+Right now there isn't any more in the pipeline, but who knows that may
+change yet.
+
+Please pull.
+Thanks
+Heiko
 
 The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
 
@@ -27,44 +27,33 @@ The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.15-rockchip-dts64-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.15-rockchip-clk-1
 
-for you to fetch changes up to d85438991874205467f9739d5f3ee771245b4754:
+for you to fetch changes up to 47e3ec0e4dae1714cc76596e38d16913f0e574e2:
 
-  arm64: dts: rockchip: enable cec pin for rk3399 firefly (2017-10-15 14:11:32 +0200)
-
-----------------------------------------------------------------
-The biggest step forward is probably the enablement of display support
-on the rk3399-firefly, which got its default serial set as well and
-got cec support as well.
-Gru boards got their touchpad support refined to actually mark the button
-correctly and also git their rt5514 dsp added.
-And finally the rk3328 eval board got its cpu regulator and mmc nodes.
+  clk: rockchip: use new cif/vdpu clock ids on rk3188 (2017-10-14 21:32:11 +0200)
 
 ----------------------------------------------------------------
-Emil Renner Berthing (1):
-      arm64: dts: rockchip: enable touchpad button for rk3399-gru-kevin
+Some new clock ids for rk3188 and rk3368 as well as removal of a
+superfluous memory allocation error message.
 
-Heiko Stuebner (1):
-      arm64: dts: rockchip: enable display subsystem on rk3399-firefly
+----------------------------------------------------------------
+Heiko Stuebner (3):
+      clk: rockchip: add more rk3188 graphics clock ids
+      Merge branch 'v4.15-shared/clkids' into v4.15-clk/next
+      clk: rockchip: use new cif/vdpu clock ids on rk3188
 
-Heinrich Schuchardt (1):
-      arm64: dts: rockchip: default serial for Firefly-RK3399
+Markus Elfring (1):
+      clk: rockchip: Remove superfluous error message in rockchip_clk_register_cpuclk()
 
-Jeffy Chen (1):
-      arm64: dts: rockchip: Add rt5514 dsp for rk3399 gru
+Romain Perier (2):
+      clk: rockchip: add clock id for PCLK_EFUSE256 of RK3368 SoCs
+      clk: rockchip: export clock pclk_efuse_256 for RK3368 SoCs
 
-Liang Chen (2):
-      arm64: dts: rockchip: add mmc nodes for rk3328 evaluation board
-      arm64: dts: rockchip: add cpu regulator for rk3328 evaluation board
+ drivers/clk/rockchip/clk-cpu.c                |  2 --
+ drivers/clk/rockchip/clk-rk3188.c             | 12 ++++++------
+ drivers/clk/rockchip/clk-rk3368.c             |  2 +-
+ include/dt-bindings/clock/rk3188-cru-common.h |  9 +++++++--
+ include/dt-bindings/clock/rk3368-cru.h        |  1 +
+ 5 files changed, 15 insertions(+), 11 deletions(-)
 
-Pierre-Hugues Husson (2):
-      arm64: dts: rockchip: add the cec clk for dw-mipi-hdmi on rk3399
-      arm64: dts: rockchip: enable cec pin for rk3399 firefly
-
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts       | 72 ++++++++++++++++++++++-
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts   | 27 +++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts |  4 ++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      |  3 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi          |  8 ++-
- 5 files changed, 110 insertions(+), 4 deletions(-)
