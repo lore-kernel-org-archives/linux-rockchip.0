@@ -1,62 +1,59 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v4 3/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
-Date: Tue, 17 Oct 2017 18:16:19 +0800
-Message-ID: <20171017101624.12506-4-jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v4 2/8] drm/rockchip: analogix_dp: Fix error handling path
+Date: Tue, 17 Oct 2017 18:16:18 +0800
+Message-ID: <20171017101624.12506-3-jeffy.chen@rock-chips.com>
 References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, broonie@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIG1pc3NpbmcgcG1fcnVudGltZV9kaXNhYmxlKCkgaW4gYmluZCgpJ3MgZXJyb3IgaGFuZGxp
-bmcgcGF0aC4KCkFsc28gY2xlYW51cCBlbmNvZGVyICYgY29ubmVjdG9yIGluIHVuYmluZCgpLgoK
-Rml4ZXM6IDgwYTlhMDU5ZDRlNCAoImRybS9yb2NrY2hpcC9kc2k6IGFkZCBkdy1taXBpIHBvd2Vy
-IGRvbWFpbiBzdXBwb3J0IikKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkBy
-b2NrLWNoaXBzLmNvbT4KLS0tCgpDaGFuZ2VzIGluIHY0OiBOb25lCkNoYW5nZXMgaW4gdjM6IE5v
-bmUKQ2hhbmdlcyBpbiB2MjogTm9uZQoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBp
-LWRzaS5jIHwgMTcgKysrKysrKysrKystLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxMSBpbnNlcnRp
-b25zKCspLCA2IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
-LmMKaW5kZXggYjE1NzU1YjYxMjljLi5hMTdmZjBmNmY0ODkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9kdy1taXBpLWRzaS5jCkBAIC0xMjgyLDcgKzEyODIsNyBAQCBzdGF0aWMgaW50IGR3X21p
-cGlfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJ
-cmV0ID0gZHdfbWlwaV9kc2lfcmVnaXN0ZXIoZHJtLCBkc2kpOwogCWlmIChyZXQpIHsKIAkJRFJN
-X0RFVl9FUlJPUihkZXYsICJGYWlsZWQgdG8gcmVnaXN0ZXIgbWlwaV9kc2k6ICVkXG4iLCByZXQp
-OwotCQlnb3RvIGVycl9wbGxyZWY7CisJCWdvdG8gZXJyX2Rpc2FibGVfcGxscmVmOwogCX0KIAog
-CXBtX3J1bnRpbWVfZW5hYmxlKGRldik7CkBAIC0xMjkyLDIzICsxMjkyLDI0IEBAIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1h
-c3RlciwKIAlyZXQgPSBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKIAlp
-ZiAocmV0KSB7CiAJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIE1JUEkg
-aG9zdDogJWRcbiIsIHJldCk7Ci0JCWdvdG8gZXJyX2NsZWFudXA7CisJCWdvdG8gZXJyX2Rpc2Fi
-bGVfcG1fcnVudGltZTsKIAl9CiAKIAlpZiAoIWRzaS0+cGFuZWwpIHsKIAkJcmV0ID0gLUVQUk9C
-RV9ERUZFUjsKLQkJZ290byBlcnJfbWlwaV9kc2lfaG9zdDsKKwkJZ290byBlcnJfdW5yZWdfbWlw
-aV9kc2lfaG9zdDsKIAl9CiAKIAlkZXZfc2V0X2RydmRhdGEoZGV2LCBkc2kpOwogCXJldHVybiAw
-OwogCi1lcnJfbWlwaV9kc2lfaG9zdDoKK2Vycl91bnJlZ19taXBpX2RzaV9ob3N0OgogCW1pcGlf
-ZHNpX2hvc3RfdW5yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7Ci1lcnJfY2xlYW51cDoKK2Vycl9k
-aXNhYmxlX3BtX3J1bnRpbWU6CisJcG1fcnVudGltZV9kaXNhYmxlKGRldik7CiAJZHJtX2VuY29k
-ZXJfY2xlYW51cCgmZHNpLT5lbmNvZGVyKTsKIAlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+
-Y29ubmVjdG9yKTsKLWVycl9wbGxyZWY6CitlcnJfZGlzYWJsZV9wbGxyZWY6CiAJY2xrX2Rpc2Fi
-bGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7CiAJcmV0dXJuIHJldDsKIH0KQEAgLTEzMjAs
-NiArMTMyMSwxMCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGRldmlj
-ZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAKIAltaXBpX2RzaV9ob3N0X3VucmVnaXN0
-ZXIoJmRzaS0+ZHNpX2hvc3QpOwogCXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOworCisJZHNpLT5j
-b25uZWN0b3IuZnVuY3MtPmRlc3Ryb3koJmRzaS0+Y29ubmVjdG9yKTsKKwlkc2ktPmVuY29kZXIu
-ZnVuY3MtPmRlc3Ryb3koJmRzaS0+ZW5jb2Rlcik7CisKIAljbGtfZGlzYWJsZV91bnByZXBhcmUo
-ZHNpLT5wbGxyZWZfY2xrKTsKIH0KIAotLSAKMi4xMS4wCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Add missing error handling in rockchip_dp_bind().
+
+Fixes: 9e32e16e9e98 ("drm: rockchip: dp: add rockchip platform dp driver")
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
+
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 4d3f6ad0abdd..4b689c0f3fc1 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -371,7 +371,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	ret = rockchip_dp_drm_create_encoder(dp);
+ 	if (ret) {
+ 		DRM_ERROR("failed to create drm encoder\n");
+-		return ret;
++		goto err_disable_pclk;
+ 	}
+ 
+ 	dp->plat_data.encoder = &dp->encoder;
+@@ -387,7 +387,17 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 
+ 	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
+ 
+-	return analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
++	ret = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
++	if (ret < 0)
++		goto err_unreg_psr;
++	return 0;
++
++err_unreg_psr:
++	rockchip_drm_psr_unregister(&dp->encoder);
++	rockchip_dp_drm_encoder_destroy(&dp->encoder);
++err_disable_pclk:
++	clk_disable_unprepare(dp->pclk);
++	return ret;
+ }
+ 
+ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+-- 
+2.11.0
