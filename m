@@ -1,52 +1,49 @@
-From: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
-Subject: [PATCH] media: rga: make some functions static
-Date: Mon, 16 Oct 2017 16:28:10 -0700
-Message-ID: <ec8df85f312e299e6d92f7cc3446e67e510ccafb.1508196474.git.mchehab@osg.samsung.com>
-Return-path: <linux-doc-owner@vger.kernel.org>
-Sender: linux-doc-owner@vger.kernel.org
-To: Linux Media Mailing List <linux-media@vger.kernel.org>, Jonathan Corbet <corbet@lwn.net>
-Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Mauro Carvalho Chehab <mchehab@infradead.org>, Linux Doc Mailing List <linux-doc@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jacob Chen <jacob-chen@iotwrt.com>, Hans Verkuil <hansverk@cisco.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH 0/5] thermal: rockchip: add tsadc support in thermal
+ driver and IPA thermal control for RV1108 in dts
+Date: Mon, 16 Oct 2017 17:15:37 -0700
+Message-ID: <20171017001535.GA16006@localhost.localdomain>
+References: <1503570475-7850-1-git-send-email-rocky.hao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1503570475-7850-1-git-send-email-rocky.hao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rocky Hao <rocky.hao@rock-chips.com>
+Cc: rui.zhang@intel.com, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, shawn.lin@rock-chips.com, cl@rock-chips.com, william.wu@rock-chips.com, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, xxx@rock-chips.com, jay.xu@rock-chips.com, wxt@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-drivers/media/platform/rockchip/rga/rga-hw.c:383:6: warning: no previous prototype for 'rga_cmd_set' [-Wmissing-prototypes]
- void rga_cmd_set(struct rga_ctx *ctx)
-      ^~~~~~~~~~~
-drivers/media/platform/rockchip/rga/rga.c:359:17: warning: no previous prototype for 'rga_fmt_find' [-Wmissing-prototypes]
- struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
-                 ^~~~~~~~~~~~
+Hello,
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
----
- drivers/media/platform/rockchip/rga/rga-hw.c | 2 +-
- drivers/media/platform/rockchip/rga/rga.c    | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+On Thu, Aug 24, 2017 at 06:27:50PM +0800, Rocky Hao wrote:
+> This series patches add the tsadc support in thermal driver and in devicetree for RV1108.
+> Also add thermal control with Intelligent Power Allocation (IPA) policy by default.  Please
+> refer to https://developer.arm.com/open-source/intelligent-power-allocation for more information
+> about IPA.
+> 
+> Rocky Hao (5):
+>   dt-bindings: rockchip-thermal: Support the RV1108 SoC compatible
+>   thermal: rockchip: Support the RV1108 SoC in thermal driver
 
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-index 0645481c9a5e..96d1b1b3fe8e 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.c
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-@@ -380,7 +380,7 @@ static void rga_cmd_set_mode(struct rga_ctx *ctx)
- 	dest[(RGA_MODE_CTRL - RGA_MODE_BASE_REG) >> 2] = mode.val;
- }
- 
--void rga_cmd_set(struct rga_ctx *ctx)
-+static void rga_cmd_set(struct rga_ctx *ctx)
- {
- 	struct rockchip_rga *rga = ctx->rga;
- 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 2cf3bb29a2b3..e7d1b34baf1c 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -356,7 +356,7 @@ struct rga_fmt formats[] = {
- 
- #define NUM_FORMATS ARRAY_SIZE(formats)
- 
--struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
-+static struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
- {
- 	unsigned int i;
- 
--- 
-2.13.6
+Applied patches 1  and 2.
 
+>   arm: dts: rockchip: add tsadc node for RV1108 SoC
+>   arm: dts: rockchip: add thermal nodes for RV1108 SoC
+>   arm: dts: rockchip: enable tsadc module on RV1108 evaluation board
+> 
+
+Acked-by: Eduardo Valentin <edubezval@gmail.com>
+
+for the DT changes.
+
+>  .../bindings/thermal/rockchip-thermal.txt          |  1 +
+>  arch/arm/boot/dts/rv1108-evb.dts                   |  4 ++
+>  arch/arm/boot/dts/rv1108.dtsi                      | 69 ++++++++++++++++++++++
+>  drivers/thermal/rockchip_thermal.c                 | 67 +++++++++++++++++++++
+>  4 files changed, 141 insertions(+)
+> 
+> -- 
+> 1.9.1
+> 
+> 
