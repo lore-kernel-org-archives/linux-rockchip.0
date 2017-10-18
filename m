@@ -1,64 +1,100 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [RFC PATCH v4 6/8] drm/bridge/analogix: Do not use device's
- drvdata
-Date: Wed, 18 Oct 2017 10:16:08 +0530
-Message-ID: <c11c1115-58fb-f6d4-56f8-05277a9ccea9@codeaurora.org>
-References: <20171017101624.12506-1-jeffy.chen@rock-chips.com>
- <20171017101624.12506-7-jeffy.chen@rock-chips.com>
- <000101d347a1$cd216160$67642420$@gmail.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [PATCH v3 4/4] phy: rockchip-typec: Do the calibration more
+ correctly
+Date: Wed, 18 Oct 2017 16:49:27 +0530
+Message-ID: <e357cfd7-b5a3-29d8-02d7-2bf75a05aa19@ti.com>
+References: <20170922164406.27606-1-dianders@chromium.org>
+ <20170922164406.27606-5-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <000101d347a1$cd216160$67642420$@gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: 'Jeffy Chen' <jeffy.chen@rock-chips.com>
-Cc: 'Daniel Vetter' <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, dianders@chromium.org, 'Laurent Pinchart' <Laurent.pinchart@ideasonboard.com>, 'Marek Szyprowski' <m.szyprowski@samsung.com>, linux-samsung-soc@vger.kernel.org, briannorris@chromium.org, 'Krzysztof Kozlowski' <krzk@kernel.org>, linux-rockchip@lists.infradead.org, 'Kukjin Kim' <kgene@kernel.org>, 'Caesar Wang' <wxt@rock-chips.com>, broonie@kernel.org, 'Vincent Abriou' <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, 'zain wang' <wzz@rock-chips.com>, 'Tomeu Vizoso' <tomeu.vizoso@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, dmitry.torokhov@gmail.com, rjw@rjwysocki.net, linux-kernel@vger.kernel.org, 'Seung-Woo Kim' <sw0312.kim@samsung.com>, tfiga@chromium.org, 'Kyungmin Park' <kyungmin.park@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170922164406.27606-5-dianders@chromium.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Douglas Anderson <dianders@chromium.org>, heiko@sntech.de, zyw@rock-chips.com
+Cc: shawnn@chromium.org, linux-kernel@vger.kernel.org, dnschneid@chromium.org, linux-rockchip@lists.infradead.org, groeck@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAxMC8xOC8yMDE3IDA1OjEzIEFNLCBKaW5nb28gSGFuIHdyb3RlOgo+IE9uIFR1ZXNk
-YXksIE9jdG9iZXIgMTcsIDIwMTcgNjoxNiBBTSwgSmVmZnkgQ2hlbiB3cm90ZToKPj4KPj4gRnJv
-bTogVG9tYXN6IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4KPj4KPj4gVGhlIGRyaXZlciB0aGF0
-IGluc3RhbnRpYXRlcyB0aGUgYnJpZGdlIHNob3VsZCBvd24gdGhlIGRydmRhdGEsIGFzIGFsbAo+
-PiBkcml2ZXIgbW9kZWwgY2FsbGJhY2tzIChwcm9iZSwgcmVtb3ZlLCBzaHV0ZG93biwgUE0gb3Bz
-LCBldGMuKSBhcmUgYWxzbwo+PiBvd25lZCBieSBpdHMgZHJpdmVyIHN0cnVjdC4gTW9yZW92ZXIs
-IHN0b3JpbmcgdHdvIGRpZmZlcmVudCBwb2ludGVyCj4+IHR5cGVzIGluIGRyaXZlciBkYXRhIGRl
-cGVuZGluZyBvbiBkcml2ZXIgaW5pdGlhbGl6YXRpb24gc3RhdHVzIGlzIGJhcmVseQo+PiBhIGdv
-b2QgcHJhY3RpY2UgYW5kIGluIGZhY3QgaGFzIGxlZCB0byBtYW55IGJ1Z3MgaW4gdGhpcyBkcml2
-ZXIuCj4+Cj4+IExldCdzIGNsZWFuIHVwIHRoaXMgbWVzcyBhbmQgY2hhbmdlIEFuYWxvZ2l4IGVu
-dHJ5IHBvaW50cyB0byBzaW1wbHkKPj4gYWNjZXB0IHNvbWUgb3BhcXVlIHN0cnVjdCBwb2ludGVy
-LCBhZGp1c3RpbmcgdGhlaXIgdXNlcnMgYXQgdGhlIHNhbWUKPj4gdGltZSB0byBhdm9pZCBicmVh
-a2luZyB0aGUgY29tcGlsYXRpb24uCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFRvbWFzeiBGaWdhIDx0
-ZmlnYUBjaHJvbWl1bS5vcmc+Cj4+IFNpZ25lZC1vZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNo
-ZW5Acm9jay1jaGlwcy5jb20+Cj4+IFJldmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRh
-QHNhbXN1bmcuY29tPgo+IAoKVGhpcyBkZXBlbmRzIG9uIHByZXZpb3VzIHBhdGNoZXMgb2YgdGhl
-IHNlcmllcy4gSSBndWVzcyBpdCB3b3VsZCBiZSBlYXNpZXIKdG8gcXVldWUgdGhpcyB0byBkcm0t
-bWlzYyBhcyBhIHBhcnQgb2YgdGhlIGVEUCBzdXBwb3J0IHNlcmllcy4gRm9yIHRoYXQ6CgpBY2tl
-ZC1ieTogQXJjaGl0IFRhbmVqYSA8YXJjaGl0dEBjb2RlYXVyb3JhLm9yZz4KCj4gQWNrZWQtYnk6
-IEppbmdvbyBIYW4gPGppbmdvb2hhbjFAZ21haWwuY29tPgo+IAo+IEJlc3QgcmVnYXJkcywKPiBK
-aW5nb28gSGFuCj4gCj4+IC0tLQo+Pgo+PiBDaGFuZ2VzIGluIHY0OiBOb25lCj4+IENoYW5nZXMg
-aW4gdjM6IE5vbmUKPj4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+Pgo+PiAgIGRyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgNTAgKysrKysrKysrLS0tLS0t
-LS0KPj4gLS0tLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAg
-ICAgICAgICAgICB8IDI2ICsrKysrKy0tLS0tCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCA0Nwo+ICsrKysrKysrKysrLS0tLS0tLQo+PiAt
-LQo+PiAgIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAg
-IHwgMTkgKysrKy0tLS0KPj4gICA0IGZpbGVzIGNoYW5nZWQsIDczIGluc2VydGlvbnMoKyksIDY5
-IGRlbGV0aW9ucygtKQo+Pgo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCj4gbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKPiBsaW51eC1h
-cm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKPiAKCi0tIApRdWFsY29tbSBJbm5v
-dmF0aW9uIENlbnRlciwgSW5jLiBpcyBhIG1lbWJlciBvZiBDb2RlIEF1cm9yYSBGb3J1bSwKYSBM
-aW51eCBGb3VuZGF0aW9uIENvbGxhYm9yYXRpdmUgUHJvamVjdApfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+
+On Friday 22 September 2017 10:14 PM, Douglas Anderson wrote:
+> Calculate the calibration code as per the docs.  The docs talk about
+> reading and averaging the pullup and pulldown calibration codes.  They
+> also talk about adding in some adjustment codes.  Let's do what the
+> docs say.
+> 
+> In practice this doesn't seem to matter a whole lot.  On a device I
+> tested the pullup and pulldown codes were nearly the same (0x23 and
+> 0x24) and the adjustment codes were 0.
+> 
+> Reviewed-by: Chris Zhong <zyw@rock-chips.com>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+merged the 3rd and 4th patch to next. Thanks!
+
+-Kishon
+> ---
+> 
+> Changes in v3: None
+> Changes in v2:
+> - Removed extra blank line.
+> 
+>  drivers/phy/rockchip/phy-rockchip-typec.c | 27 ++++++++++++++++++---------
+>  1 file changed, 18 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+> index 95f8f23676b4..a96635447d48 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+> @@ -560,24 +560,33 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+>  	u16 val;
+>  	u16 tx_ana_ctrl_reg_1;
+>  	u16 tx_ana_ctrl_reg_2;
+> -	s32 pu_calib_code;
+> -
+> -	/* disable txda_cal_latch_en for rewrite the calibration values */
+> -	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+> -	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
+> -	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+> +	s32 pu_calib_code, pd_calib_code;
+> +	s32 pu_adj, pd_adj;
+> +	u16 calib;
+>  
+>  	/*
+> -	 * read a resistor calibration code from CMN_TXPUCAL_CTRL[5:0] and
+> -	 * write it to TX_DIG_CTRL_REG_2[5:0].
+> +	 * Calculate calibration code as per docs: use an average of the
+> +	 * pull down and pull up.  Then add in adjustments.
+>  	 */
+>  	val = readl(tcphy->base + CMN_TXPUCAL_CTRL);
+>  	pu_calib_code = CMN_CALIB_CODE_POS(val);
+> +	val = readl(tcphy->base + CMN_TXPDCAL_CTRL);
+> +	pd_calib_code = CMN_CALIB_CODE_POS(val);
+> +	val = readl(tcphy->base + CMN_TXPU_ADJ_CTRL);
+> +	pu_adj = CMN_CALIB_CODE(val);
+> +	val = readl(tcphy->base + CMN_TXPD_ADJ_CTRL);
+> +	pd_adj = CMN_CALIB_CODE(val);
+> +	calib = (pu_calib_code + pd_calib_code) / 2 + pu_adj + pd_adj;
+> +
+> +	/* disable txda_cal_latch_en for rewrite the calibration values */
+> +	tx_ana_ctrl_reg_1 = readl(tcphy->base + TX_ANA_CTRL_REG_1);
+> +	tx_ana_ctrl_reg_1 &= ~TXDA_CAL_LATCH_EN;
+> +	writel(tx_ana_ctrl_reg_1, tcphy->base + TX_ANA_CTRL_REG_1);
+>  
+>  	/* write the calibration, then delay 10 ms as sample in docs */
+>  	val = readl(tcphy->base + TX_DIG_CTRL_REG_2);
+>  	val &= ~(TX_RESCAL_CODE_MASK << TX_RESCAL_CODE_OFFSET);
+> -	val |= pu_calib_code << TX_RESCAL_CODE_OFFSET;
+> +	val |= calib << TX_RESCAL_CODE_OFFSET;
+>  	writel(val, tcphy->base + TX_DIG_CTRL_REG_2);
+>  	usleep_range(10000, 10050);
+>  
+> 
