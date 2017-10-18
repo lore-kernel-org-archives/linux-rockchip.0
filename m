@@ -1,103 +1,64 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v5 2/9] drm/rockchip: analogix_dp: Remove unnecessary init code
-Date: Wed, 18 Oct 2017 20:09:37 +0800
-Message-ID: <20171018120944.7819-3-jeffy.chen@rock-chips.com>
+Subject: [PATCH v5 5/9] drm/rockchip: dw-mipi-dsi: Fix error handling path
+Date: Wed, 18 Oct 2017 20:09:40 +0800
+Message-ID: <20171018120944.7819-6-jeffy.chen@rock-chips.com>
 References: <20171018120944.7819-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20171018120944.7819-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Cc: briannorris@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Remove unnecessary init code, since we would do it in the power_on()
-callback.
-
-Also move of parse code to probe().
-
-Fixes: 9e32e16e9e98 ("drm: rockchip: dp: add rockchip platform dp driver")
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
-
-Changes in v5: None
-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 27 ++++++-------------------
- 1 file changed, 6 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 4d3f6ad0abdd..8cae5ad926cd 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -269,7 +269,7 @@ static struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
- 	.destroy = rockchip_dp_drm_encoder_destroy,
- };
- 
--static int rockchip_dp_init(struct rockchip_dp_device *dp)
-+static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- {
- 	struct device *dev = dp->dev;
- 	struct device_node *np = dev->of_node;
-@@ -303,19 +303,6 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
- 		return PTR_ERR(dp->rst);
- 	}
- 
--	ret = clk_prepare_enable(dp->pclk);
--	if (ret < 0) {
--		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
--		return ret;
--	}
--
--	ret = rockchip_dp_pre_init(dp);
--	if (ret < 0) {
--		DRM_DEV_ERROR(dp->dev, "failed to pre init %d\n", ret);
--		clk_disable_unprepare(dp->pclk);
--		return ret;
--	}
--
- 	return 0;
- }
- 
-@@ -361,10 +348,6 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	if (!dp_data)
- 		return -ENODEV;
- 
--	ret = rockchip_dp_init(dp);
--	if (ret < 0)
--		return ret;
--
- 	dp->data = dp_data;
- 	dp->drm_dev = drm_dev;
- 
-@@ -398,7 +381,6 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
- 	rockchip_drm_psr_unregister(&dp->encoder);
- 
- 	analogix_dp_unbind(dev, master, data);
--	clk_disable_unprepare(dp->pclk);
- }
- 
- static const struct component_ops rockchip_dp_component_ops = {
-@@ -414,7 +396,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 	int ret;
- 
- 	ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel, NULL);
--	if (ret)
-+	if (ret < 0)
- 		return ret;
- 
- 	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
-@@ -422,9 +404,12 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	dp->dev = dev;
--
- 	dp->plat_data.panel = panel;
- 
-+	ret = rockchip_dp_of_probe(dp);
-+	if (ret < 0)
-+		return ret;
-+
- 	/*
- 	 * We just use the drvdata until driver run into component
- 	 * add function, and then we would set drvdata to null, so
--- 
-2.11.0
+QWRkIG1pc3NpbmcgcG1fcnVudGltZV9kaXNhYmxlKCkgaW4gYmluZCgpJ3MgZXJyb3IgaGFuZGxp
+bmcgcGF0aC4KCkFsc28gY2xlYW51cCBlbmNvZGVyICYgY29ubmVjdG9yIGluIHVuYmluZCgpLgoK
+Rml4ZXM6IDgwYTlhMDU5ZDRlNCAoImRybS9yb2NrY2hpcC9kc2k6IGFkZCBkdy1taXBpIHBvd2Vy
+IGRvbWFpbiBzdXBwb3J0IikKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkBy
+b2NrLWNoaXBzLmNvbT4KLS0tCgpDaGFuZ2VzIGluIHY1OgpDYWxsIHRoZSBkZXN0cm95IGhvb2sg
+aW4gdGhlIGVycm9yIGhhbmRsaW5nIHBhdGggbGlrZSBpbiB1bmJpbmQoKS4KCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB8IDIxICsrKysrKysrKysrKystLS0tLS0tLQog
+MSBmaWxlIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwppbmRleCBiMTU3NTViNjEyOWMuLmU3MmQ0ZTJi
+NjFhYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMK
+KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKQEAgLTEyODIsNyAr
+MTI4Miw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYs
+IHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAlyZXQgPSBkd19taXBpX2RzaV9yZWdpc3Rlcihkcm0s
+IGRzaSk7CiAJaWYgKHJldCkgewogCQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byByZWdp
+c3RlciBtaXBpX2RzaTogJWRcbiIsIHJldCk7Ci0JCWdvdG8gZXJyX3BsbHJlZjsKKwkJZ290byBl
+cnJfZGlzYWJsZV9wbGxyZWY7CiAJfQogCiAJcG1fcnVudGltZV9lbmFibGUoZGV2KTsKQEAgLTEy
+OTIsMjMgKzEyOTIsMjQgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBkZXZp
+Y2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAogCXJldCA9IG1pcGlfZHNpX2hvc3RfcmVn
+aXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwogCWlmIChyZXQpIHsKIAkJRFJNX0RFVl9FUlJPUihkZXYs
+ICJGYWlsZWQgdG8gcmVnaXN0ZXIgTUlQSSBob3N0OiAlZFxuIiwgcmV0KTsKLQkJZ290byBlcnJf
+Y2xlYW51cDsKKwkJZ290byBlcnJfZGlzYWJsZV9wbV9ydW50aW1lOwogCX0KIAogCWlmICghZHNp
+LT5wYW5lbCkgewogCQlyZXQgPSAtRVBST0JFX0RFRkVSOwotCQlnb3RvIGVycl9taXBpX2RzaV9o
+b3N0OworCQlnb3RvIGVycl91bnJlZ19taXBpX2RzaV9ob3N0OwogCX0KIAogCWRldl9zZXRfZHJ2
+ZGF0YShkZXYsIGRzaSk7CiAJcmV0dXJuIDA7CiAKLWVycl9taXBpX2RzaV9ob3N0OgorZXJyX3Vu
+cmVnX21pcGlfZHNpX2hvc3Q6CiAJbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9o
+b3N0KTsKLWVycl9jbGVhbnVwOgotCWRybV9lbmNvZGVyX2NsZWFudXAoJmRzaS0+ZW5jb2Rlcik7
+Ci0JZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCZkc2ktPmNvbm5lY3Rvcik7Ci1lcnJfcGxscmVmOgor
+ZXJyX2Rpc2FibGVfcG1fcnVudGltZToKKwlwbV9ydW50aW1lX2Rpc2FibGUoZGV2KTsKKwlkc2kt
+PmNvbm5lY3Rvci5mdW5jcy0+ZGVzdHJveSgmZHNpLT5jb25uZWN0b3IpOworCWRzaS0+ZW5jb2Rl
+ci5mdW5jcy0+ZGVzdHJveSgmZHNpLT5lbmNvZGVyKTsKK2Vycl9kaXNhYmxlX3BsbHJlZjoKIAlj
+bGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKIAlyZXR1cm4gcmV0OwogfQpA
+QCAtMTMyMCw2ICsxMzIxLDEwIEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3VuYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAogCW1pcGlfZHNpX2hvc3Rf
+dW5yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7CiAJcG1fcnVudGltZV9kaXNhYmxlKGRldik7CisK
+Kwlkc2ktPmNvbm5lY3Rvci5mdW5jcy0+ZGVzdHJveSgmZHNpLT5jb25uZWN0b3IpOworCWRzaS0+
+ZW5jb2Rlci5mdW5jcy0+ZGVzdHJveSgmZHNpLT5lbmNvZGVyKTsKKwogCWNsa19kaXNhYmxlX3Vu
+cHJlcGFyZShkc2ktPnBsbHJlZl9jbGspOwogfQogCi0tIAoyLjExLjAKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
