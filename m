@@ -1,117 +1,103 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v5 4/9] drm/bridge: analogix_dp: Fix connector & encoder cleanup
-Date: Wed, 18 Oct 2017 20:09:39 +0800
-Message-ID: <20171018120944.7819-5-jeffy.chen@rock-chips.com>
+Subject: [PATCH v5 2/9] drm/rockchip: analogix_dp: Remove unnecessary init code
+Date: Wed, 18 Oct 2017 20:09:37 +0800
+Message-ID: <20171018120944.7819-3-jeffy.chen@rock-chips.com>
 References: <20171018120944.7819-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171018120944.7819-1-jeffy.chen@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org, Caesar Wang <wxt@rock-chips.com>, David Airlie <airlied@linux.ie>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Seung-Woo Kim <sw0312.kim@samsung.com>, Inki Dae <inki.dae@samsung.com>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, zain wang <wzz@rock-chips.com>, Ar
+Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Since we are initing connector in the core driver and encoder in the
-plat driver, let's clean them up in the right places.
+Remove unnecessary init code, since we would do it in the power_on()
+callback.
 
+Also move of parse code to probe().
+
+Fixes: 9e32e16e9e98 ("drm: rockchip: dp: add rockchip platform dp driver")
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
 Changes in v5: None
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  2 --
- drivers/gpu/drm/exynos/exynos_dp.c                 |  7 +++++--
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 15 ++++++---------
- 3 files changed, 11 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 27 ++++++-------------------
+ 1 file changed, 6 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 74d274b6d31d..3f910ab36ff6 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1409,7 +1409,6 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
- 	ret = analogix_dp_create_bridge(drm_dev, dp);
- 	if (ret) {
- 		DRM_ERROR("failed to create bridge (%d)\n", ret);
--		drm_encoder_cleanup(dp->encoder);
- 		goto err_disable_pm_runtime;
- 	}
- 
-@@ -1432,7 +1431,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
- {
- 	analogix_dp_bridge_disable(dp->bridge);
- 	dp->connector.funcs->destroy(&dp->connector);
--	dp->encoder->funcs->destroy(dp->encoder);
- 
- 	if (dp->plat_data->panel) {
- 		if (drm_panel_unprepare(dp->plat_data->panel))
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index f7e5b2c405ed..33319a858f3a 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -185,8 +185,10 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
- 	dp->plat_data.encoder = encoder;
- 
- 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
--	if (IS_ERR(dp->adp))
-+	if (IS_ERR(dp->adp)) {
-+		dp->encoder.funcs->destroy(&dp->encoder);
- 		return PTR_ERR(dp->adp);
-+	}
- 
- 	return 0;
- }
-@@ -196,7 +198,8 @@ static void exynos_dp_unbind(struct device *dev, struct device *master,
- {
- 	struct exynos_dp_device *dp = dev_get_drvdata(dev);
- 
--	return analogix_dp_unbind(dp->adp);
-+	analogix_dp_unbind(dp->adp);
-+	dp->encoder.funcs->destroy(&dp->encoder);
- }
- 
- static const struct component_ops exynos_dp_ops = {
 diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index fa0365de31d2..c0fb3f3748f4 100644
+index 4d3f6ad0abdd..8cae5ad926cd 100644
 --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -261,13 +261,8 @@ static struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
- 	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
+@@ -269,7 +269,7 @@ static struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
+ 	.destroy = rockchip_dp_drm_encoder_destroy,
  };
  
--static void rockchip_dp_drm_encoder_destroy(struct drm_encoder *encoder)
--{
--	drm_encoder_cleanup(encoder);
--}
+-static int rockchip_dp_init(struct rockchip_dp_device *dp)
++static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+ {
+ 	struct device *dev = dp->dev;
+ 	struct device_node *np = dev->of_node;
+@@ -303,19 +303,6 @@ static int rockchip_dp_init(struct rockchip_dp_device *dp)
+ 		return PTR_ERR(dp->rst);
+ 	}
+ 
+-	ret = clk_prepare_enable(dp->pclk);
+-	if (ret < 0) {
+-		DRM_DEV_ERROR(dp->dev, "failed to enable pclk %d\n", ret);
+-		return ret;
+-	}
 -
- static struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
--	.destroy = rockchip_dp_drm_encoder_destroy,
-+	.destroy = drm_encoder_cleanup,
- };
- 
- static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
-@@ -361,12 +356,13 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
- 	INIT_WORK(&dp->psr_work, analogix_dp_psr_work);
- 
--	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
+-	ret = rockchip_dp_pre_init(dp);
+-	if (ret < 0) {
+-		DRM_DEV_ERROR(dp->dev, "failed to pre init %d\n", ret);
+-		clk_disable_unprepare(dp->pclk);
+-		return ret;
+-	}
 -
- 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
--	if (IS_ERR(dp->adp))
-+	if (IS_ERR(dp->adp)) {
-+		dp->encoder.funcs->destroy(&dp->encoder);
- 		return PTR_ERR(dp->adp);
-+	}
- 
-+	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
  	return 0;
  }
  
-@@ -377,6 +373,7 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+@@ -361,10 +348,6 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	if (!dp_data)
+ 		return -ENODEV;
  
+-	ret = rockchip_dp_init(dp);
+-	if (ret < 0)
+-		return ret;
+-
+ 	dp->data = dp_data;
+ 	dp->drm_dev = drm_dev;
+ 
+@@ -398,7 +381,6 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
  	rockchip_drm_psr_unregister(&dp->encoder);
- 	analogix_dp_unbind(dp->adp);
-+	dp->encoder.funcs->destroy(&dp->encoder);
+ 
+ 	analogix_dp_unbind(dev, master, data);
+-	clk_disable_unprepare(dp->pclk);
  }
  
  static const struct component_ops rockchip_dp_component_ops = {
+@@ -414,7 +396,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 	int ret;
+ 
+ 	ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel, NULL);
+-	if (ret)
++	if (ret < 0)
+ 		return ret;
+ 
+ 	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+@@ -422,9 +404,12 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	dp->dev = dev;
+-
+ 	dp->plat_data.panel = panel;
+ 
++	ret = rockchip_dp_of_probe(dp);
++	if (ret < 0)
++		return ret;
++
+ 	/*
+ 	 * We just use the drvdata until driver run into component
+ 	 * add function, and then we would set drvdata to null, so
 -- 
 2.11.0
