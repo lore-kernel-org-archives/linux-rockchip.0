@@ -1,78 +1,104 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v5 8/9] drm/bridge/synopsys: dw-hdmi: Do not use device's
- drvdata
-Date: Wed, 18 Oct 2017 18:03:03 +0200
-Message-ID: <40e49fc2-fd7d-12ab-fe49-b4d0586b65a1@baylibre.com>
-References: <20171018120944.7819-1-jeffy.chen@rock-chips.com>
- <20171018120944.7819-9-jeffy.chen@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 1/3] Documentation/devicetree: Add pcie-reset-suspend
+ property
+Date: Wed, 18 Oct 2017 11:17:52 -0500
+Message-ID: <20171018161752.GQ5641@bhelgaas-glaptop.roam.corp.google.com>
+References: <20171012205220.130048-1-briannorris@chromium.org>
+ <20171012205220.130048-2-briannorris@chromium.org>
+ <20171013165152.GE25517@bhelgaas-glaptop.roam.corp.google.com>
+ <20171017233904.GA65743@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171018120944.7819-9-jeffy.chen@rock-chips.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
-Cc: dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Romain Perier <romain.perier@collabora.com>, Jonathan Corbet <corbet@lwn.net>, Kevin Hilman <khilman@baylibre.com>, briannorris@chromium.org, linux-rockchip@lists.infradead.org, Jose Abreu <Jose.Abreu@synopsys.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dianders@chromium.org, tfiga@chromium.org, linux-renesas-soc@vger.kernel.org, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Carlo Caione <carlo@caione.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20171017233904.GA65743@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rajat Jain <rajatja@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Frank Rowand <frowand.list@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTgvMTAvMjAxNyAxNDowOSwgSmVmZnkgQ2hlbiB3cm90ZToKPiBMZXQgcGxhdCBkcml2ZXJz
-IG93biB0aGUgZHJ2ZGF0YSwgc28gdGhhdCB0aGV5IGNvdWxkIGNsZWFudXAgcmVzb3VyY2VzCj4g
-aW4gdGhlaXIgdW5iaW5kKCkuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnku
-Y2hlbkByb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiAKPiBDaGFuZ2VzIGluIHY1OiBOb25lCj4gCj4g
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jICAgfCA0MyArKysrKysr
-KysrLS0tLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vaW14L2R3X2hkbWktaW14
-LmMgICAgICAgICAgIHwgMjIgKysrKysrKysrLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZXNv
-bi9tZXNvbl9kd19oZG1pLmMgICAgICAgfCAyMCArKysrKysrKysrLS0tLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vcmNhci1kdS9yY2FyX2R3X2hkbWkuYyAgICAgIHwgMTQgKysrKysrKystLQo+ICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgMjMgKysrKysrKystLS0t
-LS0tCj4gIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmggICAgICAgICAgICAgICAgfCAxNyAr
-KysrKystLS0tLS0KPiAgNiBmaWxlcyBjaGFuZ2VkLCA3NyBpbnNlcnRpb25zKCspLCA2MiBkZWxl
-dGlvbnMoLSkKPiAKClsuLi5dCgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVzb24v
-bWVzb25fZHdfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lc29uL21lc29uX2R3X2hkbWkuYwo+
-IGluZGV4IGNlZjQxNDQ2NmY5Zi4uZmMyOWY2OWY3MTA4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9tZXNvbi9tZXNvbl9kd19oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVz
-b24vbWVzb25fZHdfaGRtaS5jCj4gQEAgLTEzOCw2ICsxMzgsOCBAQCBzdHJ1Y3QgbWVzb25fZHdf
-aGRtaSB7Cj4gIAlzdHJ1Y3QgY2xrICpoZG1pX3BjbGs7Cj4gIAlzdHJ1Y3QgY2xrICp2ZW5jaV9j
-bGs7Cj4gIAl1MzIgaXJxX3N0YXQ7Cj4gKwo+ICsJc3RydWN0IGR3X2hkbWkgKmhkbWk7Cj4gIH07
-Cj4gICNkZWZpbmUgZW5jb2Rlcl90b19tZXNvbl9kd19oZG1pKHgpIFwKPiAgCWNvbnRhaW5lcl9v
-Zih4LCBzdHJ1Y3QgbWVzb25fZHdfaGRtaSwgZW5jb2RlcikKPiBAQCAtNTI2LDcgKzUyOCw3IEBA
-IHN0YXRpYyBpcnFyZXR1cm5fdCBkd19oZG1pX3RvcF90aHJlYWRfaXJxKGludCBpcnEsIHZvaWQg
-KmRldl9pZCkKPiAgCQlpZiAoc3RhdCAmIEhETUlUWF9UT1BfSU5UUl9IUERfUklTRSkKPiAgCQkJ
-aHBkX2Nvbm5lY3RlZCA9IHRydWU7Cj4gIAo+IC0JCWR3X2hkbWlfc2V0dXBfcnhfc2Vuc2UoZHdf
-aGRtaS0+ZGV2LCBocGRfY29ubmVjdGVkLAo+ICsJCWR3X2hkbWlfc2V0dXBfcnhfc2Vuc2UoZHdf
-aGRtaS0+aGRtaSwgaHBkX2Nvbm5lY3RlZCwKPiAgCQkJCSAgICAgICBocGRfY29ubmVjdGVkKTsK
-PiAgCj4gIAkJZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50KGR3X2hkbWktPmVuY29kZXIuZGV2KTsK
-PiBAQCAtODY1LDkgKzg2NywxNCBAQCBzdGF0aWMgaW50IG1lc29uX2R3X2hkbWlfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiAgCWR3X3BsYXRfZGF0YS0+
-aW5wdXRfYnVzX2Zvcm1hdCA9IE1FRElBX0JVU19GTVRfWVVWOF8xWDI0Owo+ICAJZHdfcGxhdF9k
-YXRhLT5pbnB1dF9idXNfZW5jb2RpbmcgPSBWNEwyX1lDQkNSX0VOQ183MDk7Cj4gIAo+IC0JcmV0
-ID0gZHdfaGRtaV9iaW5kKHBkZXYsIGVuY29kZXIsICZtZXNvbl9kd19oZG1pLT5kd19wbGF0X2Rh
-dGEpOwo+IC0JaWYgKHJldCkKPiAtCQlyZXR1cm4gcmV0Owo+ICsJbWVzb25fZHdfaGRtaS0+aGRt
-aSA9IGR3X2hkbWlfYmluZChwZGV2LCBlbmNvZGVyLAo+ICsJCQkJCSAgICZtZXNvbl9kd19oZG1p
-LT5kd19wbGF0X2RhdGEpOwo+ICsJaWYgKElTX0VSUihtZXNvbl9kd19oZG1pLT5oZG1pKSkgewo+
-ICsJCWVuY29kZXItPmZ1bmNzLT5kZXN0cm95KGVuY29kZXIpOwo+ICsJCXJldHVybiBQVFJfRVJS
-KG1lc29uX2R3X2hkbWktPmhkbWkpOwo+ICsJfQo+ICsKPiArCWRldl9zZXRfZHJ2ZGF0YShkZXYs
-IG1lc29uX2R3X2hkbWkpOwo+ICAKPiAgCURSTV9ERUJVR19EUklWRVIoIkhETUkgY29udHJvbGxl
-ciBpbml0aWFsaXplZFxuIik7Cj4gIAo+IEBAIC04NzcsNyArODg0LDEwIEBAIHN0YXRpYyBpbnQg
-bWVzb25fZHdfaGRtaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFz
-dGVyLAo+ICBzdGF0aWMgdm9pZCBtZXNvbl9kd19oZG1pX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiAgCQkJCSAgIHZvaWQgKmRhdGEpCj4gIHsKPiAt
-CWR3X2hkbWlfdW5iaW5kKGRldik7Cj4gKwlzdHJ1Y3QgbWVzb25fZHdfaGRtaSAqbWVzb25fZHdf
-aGRtaSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ICsKPiArCWR3X2hkbWlfdW5iaW5kKG1lc29u
-X2R3X2hkbWktPmhkbWkpOwo+ICsJbWVzb25fZHdfaGRtaS0+ZW5jb2Rlci5mdW5jcy0+ZGVzdHJv
-eSgmbWVzb25fZHdfaGRtaS0+ZW5jb2Rlcik7Cj4gIH0KPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgY29tcG9uZW50X29wcyBtZXNvbl9kd19oZG1pX29wcyA9IHsKClsuLi5dCgpGb3IgbWVzb24v
-bWVzb25fZHdfaGRtaS5jIDoKClJldmlld2VkLWJ5OiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9u
-Z0BiYXlsaWJyZS5jb20+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAo=
+On Tue, Oct 17, 2017 at 04:39:05PM -0700, Brian Norris wrote:
+> On Fri, Oct 13, 2017 at 11:51:52AM -0500, Bjorn Helgaas wrote:
+> > On Thu, Oct 12, 2017 at 01:52:18PM -0700, Brian Norris wrote:
+> > > The patch is self-descriptive. I've found that we may need
+> > > platform-specific behavior for the PERST# signal in system suspend,
+> > > depending on the type of PCIe endpoints are attached.
+> > > 
+> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > > ---
+> > >  Documentation/devicetree/bindings/pci/pci.txt | 11 +++++++++++
+> > >  1 file changed, 11 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/pci/pci.txt b/Documentation/devicetree/bindings/pci/pci.txt
+> > > index c77981c5dd18..91339b6d0652 100644
+> > > --- a/Documentation/devicetree/bindings/pci/pci.txt
+> > > +++ b/Documentation/devicetree/bindings/pci/pci.txt
+> > > @@ -24,3 +24,14 @@ driver implementation may support the following properties:
+> > >     unsupported link speed, for instance, trying to do training for
+> > >     unsupported link speed, etc.  Must be '4' for gen4, '3' for gen3, '2'
+> > >     for gen2, and '1' for gen1. Any other values are invalid.
+> > > +- pcie-reset-suspend:
+> > > +   If present this property defines whether the PCIe Reset signal (referred to
+> > > +   as PERST#) should be asserted when the system enters low-power suspend modes
+> > > +   (e.g., S3). Depending on the form factor, the associated PCIe
+> > > +   electromechanical specification may specify a particular behavior (e.g.,
+> > > +   "PERST# is asserted in advance of the power being switched off in a
+> > > +   power-managed state like S3") or it may be less clear. The net result is
+> > > +   that some endpoints perform better (e.g., lower power consumption) with
+> > > +   PERST# asserted, and others prefer PERST# deasserted. The value must be '0'
+> > > +   or '1', where '0' means do not assert PERST# and '1' means assert PERST#.
+> > > +   When absent, behavior may be platform-specific.
+> > 
+> > I don't understand this at all.  Are you suggesting that we need
+> > different "pcie-reset-suspend" values based on what sort of endpoint
+> > the user plugs in?
+> 
+> Partly. I guess I also failed to mention in this particular text (but I
+> did, in patch 3) that it can be a board-specific problem, related to the
+> fact that the only endpoint used on said board--soldered on, not
+> replaceable--never seemed to require PERST# to be asserted in suspend.
+> On such boards, I believe [1] it is physically impossible to drive this
+> pin low in S3 suspend. So even if we tried to assert PERST#, it would
+> pull back up when we suspend the system. I'm not sure if that's better
+> or worse than not asserting it at all.
+> 
+> So, that's why I settled on a device tree property. It describes the
+> physical ability of the board too, in some cases. (I could document this
+> better, I see.)
+
+It would make sense to me to have a DT property in the PCIe host
+controller object that describes how that controller works, including
+its capabilities with respect to PERST#, assuming there's a reasonable
+way to use that information.
+
+If there's a DT way to describe a hard-wired PCIe endpoint, it might
+make sense to have a second property in the endpoint object that
+describes its preferences.  Obviously this couldn't apply to slots
+where we don't know what might be plugged in.
+
+> > If you want a quirk to tune this based on specific devices, that might
+> > make sense.  It would still sound like an interoperability issue and
+> > an ongoing maintenance problem, but at least we would have specific
+> > details about which devices are involved, and we'd have a chance to
+> > make them work on more controllers than just Rockchip.
+> 
+> (continued) ...I suppose we could do this too. Like, a new entry in enum
+> pci_dev_flags, and code in drivers/pci/quirks.c? And then some helper so
+> that a PCIe root port driver like Rockchip's can walk its children and
+> check for the existence of this quirk? I'll see if I can write that up
+> reasonably.
+
+I'm not sure how this would work out.  I can see the quirk side (e.g.,
+the quirk could set a bit in the root port), but who would consume it?
+Would every host bridge driver have to look at the bit?  This doesn't
+feel like a generic model that works well across vendors.
+
+If devices rely on things not specified by the spec, they will work
+better on some systems than on others.  That feels like an issue for
+the vendors, not for us.
+
+Obviously you want to tweak something for your particular
+configuration, and you can do that either via out-of-tree code or via
+some more generic way that I haven't seen yet.
+
+Bjorn
