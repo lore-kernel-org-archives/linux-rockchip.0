@@ -1,108 +1,73 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v5 4/9] drm/bridge: analogix_dp: Fix connector & encoder
- cleanup
-Date: Wed, 18 Oct 2017 15:22:13 +0200
-Message-ID: <22343b9b-f9fb-200c-45e4-fd3380470864@samsung.com>
-References: <20171018120944.7819-1-jeffy.chen@rock-chips.com>
- <CGME20171018121029epcas3p16c50a5eb912c8553dac9bf1dc0e91bb2@epcas3p1.samsung.com>
- <20171018120944.7819-5-jeffy.chen@rock-chips.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v6 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Wed, 18 Oct 2017 08:29:36 -0500
+Message-ID: <20171018132936.GP5641@bhelgaas-glaptop.roam.corp.google.com>
+References: <20171013195059.23865-1-jeffy.chen@rock-chips.com>
+ <20171013195059.23865-2-jeffy.chen@rock-chips.com>
+ <20171016200350.GH25517@bhelgaas-glaptop.roam.corp.google.com>
+ <20171018010312.GB65743@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20171018120944.7819-5-jeffy.chen@rock-chips.com>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-samsung-soc@vger.kernel.org, briannorris@chromium.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org, zain wang <wzz@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, dianders@chromium.org, tfiga@chromium.org, Kyungmin Park <kyungmin.park@samsung.com>, Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20171018010312.GB65743@google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTguMTAuMjAxNyAxNDowOSwgSmVmZnkgQ2hlbiB3cm90ZToKPiBTaW5jZSB3ZSBhcmUgaW5p
-dGluZyBjb25uZWN0b3IgaW4gdGhlIGNvcmUgZHJpdmVyIGFuZCBlbmNvZGVyIGluIHRoZQo+IHBs
-YXQgZHJpdmVyLCBsZXQncyBjbGVhbiB0aGVtIHVwIGluIHRoZSByaWdodCBwbGFjZXMuCj4KPiBT
-aWduZWQtb2ZmLWJ5OiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IC0t
-LQo+Cj4gQ2hhbmdlcyBpbiB2NTogTm9uZQo+Cj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
-bG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgIDIgLS0KPiAgZHJpdmVycy9ncHUvZHJtL2V4eW5v
-cy9leHlub3NfZHAuYyAgICAgICAgICAgICAgICAgfCAgNyArKysrKy0tCj4gIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jICAgIHwgMTUgKysrKysrLS0tLS0t
-LS0tCj4gIDMgZmlsZXMgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0p
-Cj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X2NvcmUuYwo+IGluZGV4IDc0ZDI3NGI2ZDMxZC4uM2Y5MTBhYjM2ZmY2IDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBA
-QCAtMTQwOSw3ICsxNDA5LDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYs
-IHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAo+ICAJcmV0ID0gYW5hbG9naXhfZHBfY3JlYXRl
-X2JyaWRnZShkcm1fZGV2LCBkcCk7Cj4gIAlpZiAocmV0KSB7Cj4gIAkJRFJNX0VSUk9SKCJmYWls
-ZWQgdG8gY3JlYXRlIGJyaWRnZSAoJWQpXG4iLCByZXQpOwo+IC0JCWRybV9lbmNvZGVyX2NsZWFu
-dXAoZHAtPmVuY29kZXIpOwo+ICAJCWdvdG8gZXJyX2Rpc2FibGVfcG1fcnVudGltZTsKPiAgCX0K
-PiAgCj4gQEAgLTE0MzIsNyArMTQzMSw2IEBAIHZvaWQgYW5hbG9naXhfZHBfdW5iaW5kKHN0cnVj
-dCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+ICB7Cj4gIAlhbmFsb2dpeF9kcF9icmlkZ2VfZGlz
-YWJsZShkcC0+YnJpZGdlKTsKPiAgCWRwLT5jb25uZWN0b3IuZnVuY3MtPmRlc3Ryb3koJmRwLT5j
-b25uZWN0b3IpOwo+IC0JZHAtPmVuY29kZXItPmZ1bmNzLT5kZXN0cm95KGRwLT5lbmNvZGVyKTsK
-PiAgCj4gIAlpZiAoZHAtPnBsYXRfZGF0YS0+cGFuZWwpIHsKPiAgCQlpZiAoZHJtX3BhbmVsX3Vu
-cHJlcGFyZShkcC0+cGxhdF9kYXRhLT5wYW5lbCkpCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9leHlub3MvZXh5bm9zX2RwLmMgYi9kcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19k
-cC5jCj4gaW5kZXggZjdlNWIyYzQwNWVkLi4zMzMxOWE4NThmM2EgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9l
-eHlub3MvZXh5bm9zX2RwLmMKPiBAQCAtMTg1LDggKzE4NSwxMCBAQCBzdGF0aWMgaW50IGV4eW5v
-c19kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lk
-ICpkYXRhKQo+ICAJZHAtPnBsYXRfZGF0YS5lbmNvZGVyID0gZW5jb2RlcjsKPiAgCj4gIAlkcC0+
-YWRwID0gYW5hbG9naXhfZHBfYmluZChkZXYsIGRwLT5kcm1fZGV2LCAmZHAtPnBsYXRfZGF0YSk7
-Cj4gLQlpZiAoSVNfRVJSKGRwLT5hZHApKQo+ICsJaWYgKElTX0VSUihkcC0+YWRwKSkgewo+ICsJ
-CWRwLT5lbmNvZGVyLmZ1bmNzLT5kZXN0cm95KCZkcC0+ZW5jb2Rlcik7Cj4gIAkJcmV0dXJuIFBU
-Ul9FUlIoZHAtPmFkcCk7Cj4gKwl9Cj4gIAo+ICAJcmV0dXJuIDA7Cj4gIH0KPiBAQCAtMTk2LDcg
-KzE5OCw4IEBAIHN0YXRpYyB2b2lkIGV4eW5vc19kcF91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2
-LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gIHsKPiAgCXN0cnVjdCBleHlub3NfZHBfZGV2aWNl
-ICpkcCA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ICAKPiAtCXJldHVybiBhbmFsb2dpeF9kcF91
-bmJpbmQoZHAtPmFkcCk7Cj4gKwlhbmFsb2dpeF9kcF91bmJpbmQoZHAtPmFkcCk7Cj4gKwlkcC0+
-ZW5jb2Rlci5mdW5jcy0+ZGVzdHJveSgmZHAtPmVuY29kZXIpOwo+ICB9Cj4gIAo+ICBzdGF0aWMg
-Y29uc3Qgc3RydWN0IGNvbXBvbmVudF9vcHMgZXh5bm9zX2RwX29wcyA9IHsKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+IGluZGV4IGZhMDM2
-NWRlMzFkMi4uYzBmYjNmMzc0OGY0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiBAQCAtMjYxLDEzICsyNjEsOCBAQCBzdGF0aWMg
-c3RydWN0IGRybV9lbmNvZGVyX2hlbHBlcl9mdW5jcyByb2NrY2hpcF9kcF9lbmNvZGVyX2hlbHBl
-cl9mdW5jcyA9IHsKPiAgCS5hdG9taWNfY2hlY2sgPSByb2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9h
-dG9taWNfY2hlY2ssCj4gIH07Cj4gIAo+IC1zdGF0aWMgdm9pZCByb2NrY2hpcF9kcF9kcm1fZW5j
-b2Rlcl9kZXN0cm95KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiAtewo+IC0JZHJtX2Vu
-Y29kZXJfY2xlYW51cChlbmNvZGVyKTsKPiAtfQo+IC0KPiAgc3RhdGljIHN0cnVjdCBkcm1fZW5j
-b2Rlcl9mdW5jcyByb2NrY2hpcF9kcF9lbmNvZGVyX2Z1bmNzID0gewo+IC0JLmRlc3Ryb3kgPSBy
-b2NrY2hpcF9kcF9kcm1fZW5jb2Rlcl9kZXN0cm95LAo+ICsJLmRlc3Ryb3kgPSBkcm1fZW5jb2Rl
-cl9jbGVhbnVwLAo+ICB9Owo+ICAKPiAgc3RhdGljIGludCByb2NrY2hpcF9kcF9vZl9wcm9iZShz
-dHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCkKPiBAQCAtMzYxLDEyICszNTYsMTMgQEAgc3Rh
-dGljIGludCByb2NrY2hpcF9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmlj
-ZSAqbWFzdGVyLAo+ICAJZHAtPnBzcl9zdGF0ZSA9IH5FRFBfVlNDX1BTUl9TVEFURV9BQ1RJVkU7
-Cj4gIAlJTklUX1dPUksoJmRwLT5wc3Jfd29yaywgYW5hbG9naXhfZHBfcHNyX3dvcmspOwo+ICAK
-PiAtCXJvY2tjaGlwX2RybV9wc3JfcmVnaXN0ZXIoJmRwLT5lbmNvZGVyLCBhbmFsb2dpeF9kcF9w
-c3Jfc2V0KTsKPiAtCj4gIAlkcC0+YWRwID0gYW5hbG9naXhfZHBfYmluZChkZXYsIGRwLT5kcm1f
-ZGV2LCAmZHAtPnBsYXRfZGF0YSk7Cj4gLQlpZiAoSVNfRVJSKGRwLT5hZHApKQo+ICsJaWYgKElT
-X0VSUihkcC0+YWRwKSkgewo+ICsJCWRwLT5lbmNvZGVyLmZ1bmNzLT5kZXN0cm95KCZkcC0+ZW5j
-b2Rlcik7Cj4gIAkJcmV0dXJuIFBUUl9FUlIoZHAtPmFkcCk7Cj4gKwl9Cj4gIAo+ICsJcm9ja2No
-aXBfZHJtX3Bzcl9yZWdpc3RlcigmZHAtPmVuY29kZXIsIGFuYWxvZ2l4X2RwX3Bzcl9zZXQpOwoK
-WW91IGFyZSBjaGFuZ2luZyBoZXJlIG9yZGVyIG9mIGNhbGxzOiBwc3JfcmVnIGFmdGVyIGJpbmQs
-IGl0IGRvZXMgbm90CnNlZW0gdG8gYmUgcmVsYXRlZCB0byBwYXRjaCBzdWJqZWN0LgpBbnl3YXkg
-cHNyX3JlZ2lzdGVyIGNhbiBmYWlsIGFuZCBpdHMgcmVzdWx0IGlzIG5vdCBjaGVja2VkLCBidXQg
-aXQgY2FuCmJlIGFkZHJlc3NlZCBpbiBzZXBhcmF0ZSBwYXRjaC4KU28gbWF5YmUgaXQgd291bGQg
-YmUgYmV0dGVyIHRvIGxlYXZlIHRoZSBvcmRlciBhcyBpcywgdW5sZXNzIHRoZXJlIGlzCnJlYXNv
-biBmb3IgY2hhbmdlIGl0IGluIG9uZSBwYXRjaCwgaW4gc3VjaCBjYXNlIHBsZWFzZSBleHBsYWlu
-IGl0IGluCmNvbW1pdCBtZXNzYWdlLgpCZXNpZGUgdGhpczoKUmV2aWV3ZWQtYnk6IEFuZHJ6ZWog
-SGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+CgrCoC0tClJlZ2FyZHMKQW5kcnplagoKPiAgCXJl
-dHVybiAwOwo+ICB9Cj4gIAo+IEBAIC0zNzcsNiArMzczLDcgQEAgc3RhdGljIHZvaWQgcm9ja2No
-aXBfZHBfdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+
-ICAKPiAgCXJvY2tjaGlwX2RybV9wc3JfdW5yZWdpc3RlcigmZHAtPmVuY29kZXIpOwo+ICAJYW5h
-bG9naXhfZHBfdW5iaW5kKGRwLT5hZHApOwo+ICsJZHAtPmVuY29kZXIuZnVuY3MtPmRlc3Ryb3ko
-JmRwLT5lbmNvZGVyKTsKPiAgfQo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBjb21wb25lbnRf
-b3BzIHJvY2tjaGlwX2RwX2NvbXBvbmVudF9vcHMgPSB7CgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Tue, Oct 17, 2017 at 06:03:14PM -0700, Brian Norris wrote:
+> On Mon, Oct 16, 2017 at 03:03:50PM -0500, Bjorn Helgaas wrote:
+> > On Sat, Oct 14, 2017 at 03:50:56AM +0800, Jeffy Chen wrote:
+> > > Add support for PCIE_WAKE pin in rockchip pcie driver.
+> > > 
+> > > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> > > ---
+> > > 
+> > > Changes in v6:
+> > > Fix device_init_wake error handling, and add some comments.
+> > > 
+> > > Changes in v5:
+> > > Rebase
+> > > 
+> > > Changes in v3:
+> > > Fix error handling
+> > > 
+> > > Changes in v2:
+> > > Use dev_pm_set_dedicated_wake_irq
+> > >         -- Suggested by Brian Norris <briannorris@chromium.com>
+> > > 
+> > >  drivers/pci/host/pcie-rockchip.c | 27 +++++++++++++++++++++------
+> > >  1 file changed, 21 insertions(+), 6 deletions(-)
+> > > 
+> > > diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
+> > > index 9051c6c8fea4..268513b6c9c4 100644
+> > > --- a/drivers/pci/host/pcie-rockchip.c
+> > > +++ b/drivers/pci/host/pcie-rockchip.c
+> ...
+> > > @@ -995,6 +996,17 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
+> > >  		return err;
+> > >  	}
+> > >  
+> > > +	irq = platform_get_irq_byname(pdev, "wakeup");
+> > > +	if (irq >= 0) {
+> > > +		/* Must init wakeup before setting dedicated wakeup irq. */
+> > > +		device_init_wakeup(dev, true);
+> > > +		err = dev_pm_set_dedicated_wake_irq(dev, irq);
+> > > +		if (err) {
+> > > +			dev_err(dev, "failed to setup PCIe wakeup IRQ\n");
+> > > +			device_init_wakeup(dev, false);
+> > > +		}
+> > > +	}
+> > 
+> > There's nothing Rockchip-specific here, so I'm hoping you can explore
+> > putting this support in the PCI core, so any system that describes the
+> > WAKE# connection in the DT can benefit.
+> 
+> I guess it could work to look into pci_create_root_bus(), and
+> do something like the following?
+> 
+> 	if (IS_ENABLED(CONFIG_OF) && parent && parent->of_node)
+> 		... do OF parsing for generic features like WAKE# ...
+
+That's exactly the sort of thing I was thinking.
