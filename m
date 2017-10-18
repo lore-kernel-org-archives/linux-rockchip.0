@@ -1,55 +1,48 @@
-From: "Jingoo Han" <jingoohan1@gmail.com>
-Subject: Re: [RFC PATCH v4 6/8] drm/bridge/analogix: Do not use device's drvdata
-Date: Tue, 17 Oct 2017 19:43:56 -0400
-Message-ID: <000101d347a1$cd216160$67642420$@gmail.com>
-References: <20171017101624.12506-1-jeffy.chen@rock-chips.com> <20171017101624.12506-7-jeffy.chen@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 1/3] Documentation/devicetree: Add pcie-reset-suspend property
+Date: Tue, 17 Oct 2017 17:56:32 -0700
+Message-ID: <CA+ASDXPNcoUE=F+TWsYpxw=e-NcPaqguSRb5fEYC+zoCCdvDvg@mail.gmail.com>
+References: <20171012205220.130048-1-briannorris@chromium.org>
+ <20171012205220.130048-2-briannorris@chromium.org> <20171013165152.GE25517@bhelgaas-glaptop.roam.corp.google.com>
+ <20171017233904.GA65743@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain;
-        charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171017101624.12506-7-jeffy.chen@rock-chips.com>
-Content-language: en-us
+In-Reply-To: <20171017233904.GA65743@google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: 'Jeffy Chen' <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
-Cc: dmitry.torokhov@gmail.com, heiko@sntech.de, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, tfiga@chromium.org, broonie@kernel.org, seanpaul@chromium.org, 'Andrzej Hajda' <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org, 'Caesar Wang' <wxt@rock-chips.com>, 'David Airlie' <airlied@linux.ie>, 'Laurent Pinchart' <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, 'Seung-Woo Kim' <sw0312.kim@samsung.com>, 'Inki Dae' <inki.dae@samsung.com>, linux-rockchip@lists.infradead.org, 'Kyungmin Park' <kyungmin.park@samsung.com>, 'Krzysztof Kozlowski' <krzk@kernel.org>, 'Kukjin Kim' <kgene@kernel.org>, 'Tomeu Vizoso' <tomeu.vizoso@collabora.com>, 'Vincent Abriou' <vincent.abri>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rajat Jain <rajatja@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Frank Rowand <frowand.list@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-kernel@lists.infradead.org, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tuesday, October 17, 2017 6:16 AM, Jeffy Chen wrote:
-> 
-> From: Tomasz Figa <tfiga@chromium.org>
-> 
-> The driver that instantiates the bridge should own the drvdata, as all
-> driver model callbacks (probe, remove, shutdown, PM ops, etc.) are also
-> owned by its driver struct. Moreover, storing two different pointer
-> types in driver data depending on driver initialization status is barely
-> a good practice and in fact has led to many bugs in this driver.
-> 
-> Let's clean up this mess and change Analogix entry points to simply
-> accept some opaque struct pointer, adjusting their users at the same
-> time to avoid breaking the compilation.
-> 
-> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+On Tue, Oct 17, 2017 at 4:39 PM, Brian Norris <briannorris@chromium.org> wrote:
+> On Fri, Oct 13, 2017 at 11:51:52AM -0500, Bjorn Helgaas wrote:
+> > If so, I really don't want to get involved in that, because that's an
+> > issue that needs to be resolved by the vendors and the PCI-SIG.  If we
+>
+> Judging by conversations with these vendors, I can't really imagine them
+> proactively dealing with the PCI-SIG on this. Is that really what you
+> think will work best?
+>
+> I personally believe deferring (i.e., ignoring) the problem will not
+> cause any change; badly behaved vendors will just do whatever suits
+> them, and system designers will have to figure it out somehow -- ACPI
+> systems will have platform-specific behavior hidden in firmware; device
+> tree systems will do whatever they want out of tree; and the rare device
+> tree system that gets upstream support will either have suboptimal power
+> management, or have to have these sorts of conversations again. None of
+> that puts pressure on an endpoint vendor to talk to the PCI-SIG.
 
-Acked-by: Jingoo Han <jingoohan1@gmail.com>
+I'll add a little more to my claim about ACPI systems. I chatted a
+little more with another engineer on my team who has dealt with ACPI
+firmware for a few generations of Intel platforms. Even among the
+latest two platforms he dealt with, there have been two different
+sorts of chipset bugs (at the host/root complex side, not just the
+endpoint) that have yielded different decisions on how to handle
+PERST#. This was opaque to Linux though, since that's how system
+firmware rolls :)
 
-Best regards,
-Jingoo Han
+I expect this will not be the last discrepancy on how to handle
+PERST#. And to my knowledge, none of the above initiated any
+discussion with the PCI-SIG.
 
-> ---
-> 
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 50 +++++++++--------
-> -----
->  drivers/gpu/drm/exynos/exynos_dp.c                 | 26 ++++++-----
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 47
-+++++++++++-------
-> --
->  include/drm/bridge/analogix_dp.h                   | 19 ++++----
->  4 files changed, 73 insertions(+), 69 deletions(-)
-> 
+Brian
