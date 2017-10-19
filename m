@@ -1,28 +1,33 @@
-From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v6 1/3] PCI: rockchip: Add support for pcie wake irq
-Date: Thu, 19 Oct 2017 19:19:57 +0800
-Message-ID: <59E88A5D.8060309@rock-chips.com>
-References: <20171013195059.23865-1-jeffy.chen@rock-chips.com> <20171013195059.23865-2-jeffy.chen@rock-chips.com> <20171016200350.GH25517@bhelgaas-glaptop.roam.corp.google.com> <20171018010312.GB65743@google.com> <20171018132936.GP5641@bhelgaas-glaptop.roam.corp.google.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] Rockchip dts64 Fixes for 4.14 part 2
+Date: Thu, 19 Oct 2017 17:43:15 +0200
+Message-ID: <CAK8P3a0=Rgt7ZgEgOmo5fzkgOW7skn2Pa2B1fkP1HavatLygGQ@mail.gmail.com>
+References: <6151423.bSX8Os9Bvg@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171018132936.GP5641@bhelgaas-glaptop.roam.corp.google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>, Brian Norris <briannorris@chromium.org>
-Cc: linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <6151423.bSX8Os9Bvg@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi guys,
-
-On 10/18/2017 09:29 PM, Bjorn Helgaas wrote:
->> >
->> >I guess it could work to look into pci_create_root_bus(), and
->> >do something like the following?
->> >
->> >	if (IS_ENABLED(CONFIG_OF) && parent && parent->of_node)
->> >		... do OF parsing for generic features like WAKE# ...
-> That's exactly the sort of thing I was thinking.
+On Tue, Oct 17, 2017 at 8:17 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Hi Arnd, Kevin, Olof,
 >
-i was looking at that too, but i'm not very clear about how to handle 
-the platform_ops's set_wakeup...
+> looks like I need two rounds of fixes this time around.
+> But the vqmmc voltage issue warrants that I think, especially
+> as 4.14 is going to be a LTS release.
+
+Pulled into fixes, thanks!
+
+       Arnd
