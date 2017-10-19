@@ -1,78 +1,102 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v6 10/10] drm/rockchip: dw_hdmi: Fix error handling path
-Date: Thu, 19 Oct 2017 11:48:12 +0800
-Message-ID: <20171019034812.13768-11-jeffy.chen@rock-chips.com>
+Subject: [PATCH v6 01/10] arm64: dts: rockchip: Enable edp disaplay on kevin
+Date: Thu, 19 Oct 2017 11:48:03 +0800
+Message-ID: <20171019034812.13768-2-jeffy.chen@rock-chips.com>
 References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, Mark Yao <mark.yao@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add missing clk_disable_unprepare() in bind()'s error handling path and
-unbind().
+Add edp panel and enable related nodes on kevin.
 
-Also inline clk_prepare_enable() with bind().
-
-Fixes: 12b9f204e804 ("drm: bridge/dw_hdmi: add rockchip rk3288 support")
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
+
 ---
 
 Changes in v6: None
-Changes in v5:
-Add disable to unbind(), and inline clk_prepare_enable() with bind().
+Changes in v5: None
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
+ 2 files changed, 45 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 791ab938f998..e936dfe6c03d 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -193,13 +193,6 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 		return PTR_ERR(hdmi->grf_clk);
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index a3d3cea7dc4f..bc67b19f0af5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -93,6 +93,18 @@
+ 		pwm-delay-us = <10000>;
+ 	};
  
--	ret = clk_prepare_enable(hdmi->vpll_clk);
--	if (ret) {
--		DRM_DEV_ERROR(hdmi->dev,
--			      "Failed to enable HDMI vpll: %d\n", ret);
--		return ret;
--	}
--
- 	return 0;
- }
- 
-@@ -374,6 +367,13 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 		return ret;
- 	}
- 
-+	ret = clk_prepare_enable(hdmi->vpll_clk);
-+	if (ret) {
-+		DRM_DEV_ERROR(hdmi->dev,
-+			      "Failed to enable HDMI vpll: %d\n", ret);
-+		return ret;
-+	}
++	edp_panel: edp-panel {
++		compatible = "sharp,lq123p1jx31", "simple-panel";
++		backlight = <&backlight>;
++		power-supply = <&pp3300_disp>;
 +
- 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
- 	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
- 			 DRM_MODE_ENCODER_TMDS, NULL);
-@@ -381,6 +381,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
- 	if (IS_ERR(hdmi->hdmi)) {
- 		encoder->funcs->destroy(encoder);
-+		clk_disable_unprepare(hdmi->vpll_clk);
- 		return PTR_ERR(hdmi->hdmi);
- 	}
++		ports {
++			panel_in_edp: endpoint {
++				remote-endpoint = <&edp_out_panel>;
++			};
++		};
++	};
++
+ 	thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
+ 		compatible = "murata,ncp15wb473";
+ 		pullup-uv = <1800000>;
+@@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
+ 	};
+ };
  
-@@ -396,6 +397,7 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
++&edp {
++	status = "okay";
++
++	ports {
++		edp_out: port@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			edp_out_panel: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&panel_in_edp>;
++			};
++		};
++	};
++};
++
+ &ppvar_bigcpu_pwm {
+ 	regulator-min-microvolt = <798674>;
+ 	regulator-max-microvolt = <1302172>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 5772c52fbfd3..470105d651c2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
+ 	dr_mode = "host";
+ };
  
- 	dw_hdmi_unbind(hdmi->hdmi);
- 	hdmi->encoder.funcs->destroy(&hdmi->encoder);
-+	clk_disable_unprepare(hdmi->vpll_clk);
- }
++&vopb {
++	status = "okay";
++};
++
++&vopb_mmu {
++	status = "okay";
++};
++
++&vopl {
++	status = "okay";
++};
++
++&vopl_mmu {
++	status = "okay";
++};
++
+ #include <arm/cros-ec-keyboard.dtsi>
+ #include <arm/cros-ec-sbs.dtsi>
  
- static const struct component_ops dw_hdmi_rockchip_ops = {
 -- 
 2.11.0
