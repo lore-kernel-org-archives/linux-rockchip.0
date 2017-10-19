@@ -1,102 +1,59 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v6 01/10] arm64: dts: rockchip: Enable edp disaplay on kevin
-Date: Thu, 19 Oct 2017 11:48:03 +0800
-Message-ID: <20171019034812.13768-2-jeffy.chen@rock-chips.com>
-References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, Mark Yao <mark.yao@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] [media] rockchip/rga: annotate PM functions as __maybe_unused
+Date: Thu, 19 Oct 2017 11:30:34 +0200
+Message-ID: <20171019093044.531871-1-arnd@arndb.de>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Jacob chen <jacob2.chen@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Arnd Bergmann <arnd@arndb.de>, Hans Verkuil <hansverk@cisco.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add edp panel and enable related nodes on kevin.
+The newly added driver has incorrect #ifdef annotations on its
+PM functions, leading to a harmless compile-time warning when
+CONFIG_PM is disabled:
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Reviewed-by: Mark Yao <mark.yao@rock-chips.com>
+drivers/media/platform/rockchip/rga/rga.c:760:13: error: 'rga_disable_clocks' defined but not used [-Werror=unused-function]
+ static void rga_disable_clocks(struct rockchip_rga *rga)
+             ^~~~~~~~~~~~~~~~~~
+drivers/media/platform/rockchip/rga/rga.c:728:12: error: 'rga_enable_clocks' defined but not used [-Werror=unused-function]
 
+This removes the #ifdef and marks the functions as __maybe_unused,
+so gcc can silently drop all the unused code.
+
+Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
+ drivers/media/platform/rockchip/rga/rga.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-Changes in v6: None
-Changes in v5: None
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
- 2 files changed, 45 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index a3d3cea7dc4f..bc67b19f0af5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -93,6 +93,18 @@
- 		pwm-delay-us = <10000>;
- 	};
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index e7d1b34baf1c..89296de9cf4a 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -960,8 +960,7 @@ static int rga_remove(struct platform_device *pdev)
+ 	return 0;
+ }
  
-+	edp_panel: edp-panel {
-+		compatible = "sharp,lq123p1jx31", "simple-panel";
-+		backlight = <&backlight>;
-+		power-supply = <&pp3300_disp>;
-+
-+		ports {
-+			panel_in_edp: endpoint {
-+				remote-endpoint = <&edp_out_panel>;
-+			};
-+		};
-+	};
-+
- 	thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
- 		compatible = "murata,ncp15wb473";
- 		pullup-uv = <1800000>;
-@@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
- 	};
- };
+-#ifdef CONFIG_PM
+-static int rga_runtime_suspend(struct device *dev)
++static int __maybe_unused rga_runtime_suspend(struct device *dev)
+ {
+ 	struct rockchip_rga *rga = dev_get_drvdata(dev);
  
-+&edp {
-+	status = "okay";
-+
-+	ports {
-+		edp_out: port@1 {
-+			reg = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			edp_out_panel: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&panel_in_edp>;
-+			};
-+		};
-+	};
-+};
-+
- &ppvar_bigcpu_pwm {
- 	regulator-min-microvolt = <798674>;
- 	regulator-max-microvolt = <1302172>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 5772c52fbfd3..470105d651c2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
- 	dr_mode = "host";
- };
+@@ -970,13 +969,12 @@ static int rga_runtime_suspend(struct device *dev)
+ 	return 0;
+ }
  
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
-+&vopl {
-+	status = "okay";
-+};
-+
-+&vopl_mmu {
-+	status = "okay";
-+};
-+
- #include <arm/cros-ec-keyboard.dtsi>
- #include <arm/cros-ec-sbs.dtsi>
+-static int rga_runtime_resume(struct device *dev)
++static int __maybe_unused rga_runtime_resume(struct device *dev)
+ {
+ 	struct rockchip_rga *rga = dev_get_drvdata(dev);
  
+ 	return rga_enable_clocks(rga);
+ }
+-#endif
+ 
+ static const struct dev_pm_ops rga_pm = {
+ 	SET_RUNTIME_PM_OPS(rga_runtime_suspend,
 -- 
-2.11.0
+2.9.0
