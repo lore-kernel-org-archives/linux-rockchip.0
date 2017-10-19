@@ -1,65 +1,361 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v6 07/10] drm/rockchip: inno_hdmi: Fix error handling path
-Date: Thu, 19 Oct 2017 11:48:09 +0800
-Message-ID: <20171019034812.13768-8-jeffy.chen@rock-chips.com>
+Subject: [PATCH v6 09/10] drm/bridge/synopsys: dw-hdmi: Do not use device's drvdata
+Date: Thu, 19 Oct 2017 11:48:11 +0800
+Message-ID: <20171019034812.13768-10-jeffy.chen@rock-chips.com>
 References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Romain Perier <romain.perier@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Jonathan Corbet <corbet@lwn.net>, dri-devel@lists.freedesktop.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Russell King <rmk+kernel@armlinux.org.uk>, linux-rockchip@lists.infradead.org, Carlo Caione <carlo@caione.org>, Hans Verkuil <hverkuil@xs4all.nl>, Archit Taneja <architt@codeaurora.org>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>, linux-renesas-soc@vger.kern
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIG1pc3NpbmcgZXJyb3IgaGFuZGxpbmcgaW4gYmluZCgpLgoKRml4ZXM6IDQxMmQ0YWU2Yjdh
-NSAoImRybS9yb2NrY2hpcDogaGRtaTogYWRkIElubm9zaWxpY29uIEhETUkgc3VwcG9ydCIpClNp
-Z25lZC1vZmYtYnk6IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Ci0tLQoK
-Q2hhbmdlcyBpbiB2NjogTm9uZQpDaGFuZ2VzIGluIHY1OgpDYWxsIHRoZSBkZXN0cm95IGhvb2sg
-aW4gdGhlIGVycm9yIGhhbmRsaW5nIHBhdGggbGlrZSBpbiB1bmJpbmQoKS4KVXBkYXRlIGNsZWFu
-dXAgb3JkZXIgaW4gdW5iaW5kKCkuCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRt
-aS5jIHwgMjIgKysrKysrKysrKysrKysrKystLS0tLQogMSBmaWxlIGNoYW5nZWQsIDE3IGluc2Vy
-dGlvbnMoKyksIDUgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2lubm9faGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5j
-CmluZGV4IGVlNTg0ZDg3MTExZi4uOWE5NmZmNmIwMjJiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2lubm9faGRtaS5jCkBAIC04NTEsOCArODUxLDEwIEBAIHN0YXRpYyBpbnQgaW5ub19oZG1pX2Jp
-bmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJfQogCiAJaXJx
-ID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKLQlpZiAoaXJxIDwgMCkKLQkJcmV0dXJuIGly
-cTsKKwlpZiAoaXJxIDwgMCkgeworCQlyZXQgPSBpcnE7CisJCWdvdG8gZXJyX2Rpc2FibGVfY2xr
-OworCX0KIAogCWlubm9faGRtaV9yZXNldChoZG1pKTsKIApAQCAtODYwLDcgKzg2Miw3IEBAIHN0
-YXRpYyBpbnQgaW5ub19oZG1pX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNl
-ICptYXN0ZXIsCiAJaWYgKElTX0VSUihoZG1pLT5kZGMpKSB7CiAJCXJldCA9IFBUUl9FUlIoaGRt
-aS0+ZGRjKTsKIAkJaGRtaS0+ZGRjID0gTlVMTDsKLQkJcmV0dXJuIHJldDsKKwkJZ290byBlcnJf
-ZGlzYWJsZV9jbGs7CiAJfQogCiAJLyoKQEAgLTg3NCw3ICs4NzYsNyBAQCBzdGF0aWMgaW50IGlu
-bm9faGRtaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAog
-CiAJcmV0ID0gaW5ub19oZG1pX3JlZ2lzdGVyKGRybSwgaGRtaSk7CiAJaWYgKHJldCkKLQkJcmV0
-dXJuIHJldDsKKwkJZ290byBlcnJfcHV0X2FkYXB0ZXI7CiAKIAlkZXZfc2V0X2RydmRhdGEoZGV2
-LCBoZG1pKTsKIApAQCAtODg0LDcgKzg4NiwxNyBAQCBzdGF0aWMgaW50IGlubm9faGRtaV9iaW5k
-KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAogCXJldCA9IGRldm1f
-cmVxdWVzdF90aHJlYWRlZF9pcnEoZGV2LCBpcnEsIGlubm9faGRtaV9oYXJkaXJxLAogCQkJCQlp
-bm5vX2hkbWlfaXJxLCBJUlFGX1NIQVJFRCwKIAkJCQkJZGV2X25hbWUoZGV2KSwgaGRtaSk7CisJ
-aWYgKHJldCA8IDApCisJCWdvdG8gZXJyX2NsZWFudXBfaGRtaTsKIAorCXJldHVybiAwOworZXJy
-X2NsZWFudXBfaGRtaToKKwloZG1pLT5jb25uZWN0b3IuZnVuY3MtPmRlc3Ryb3koJmhkbWktPmNv
-bm5lY3Rvcik7CisJaGRtaS0+ZW5jb2Rlci5mdW5jcy0+ZGVzdHJveSgmaGRtaS0+ZW5jb2Rlcik7
-CitlcnJfcHV0X2FkYXB0ZXI6CisJaTJjX3B1dF9hZGFwdGVyKGhkbWktPmRkYyk7CitlcnJfZGlz
-YWJsZV9jbGs6CisJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWktPnBjbGspOwogCXJldHVybiBy
-ZXQ7CiB9CiAKQEAgLTg5Niw4ICs5MDgsOCBAQCBzdGF0aWMgdm9pZCBpbm5vX2hkbWlfdW5iaW5k
-KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAogCWhkbWktPmNvbm5l
-Y3Rvci5mdW5jcy0+ZGVzdHJveSgmaGRtaS0+Y29ubmVjdG9yKTsKIAloZG1pLT5lbmNvZGVyLmZ1
-bmNzLT5kZXN0cm95KCZoZG1pLT5lbmNvZGVyKTsKIAotCWNsa19kaXNhYmxlX3VucHJlcGFyZSho
-ZG1pLT5wY2xrKTsKIAlpMmNfcHV0X2FkYXB0ZXIoaGRtaS0+ZGRjKTsKKwljbGtfZGlzYWJsZV91
-bnByZXBhcmUoaGRtaS0+cGNsayk7CiB9CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29tcG9uZW50
-X29wcyBpbm5vX2hkbWlfb3BzID0gewotLSAKMi4xMS4wCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Let plat drivers own the drvdata, so that they could cleanup resources
+in their unbind().
+
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
+---
+
+Changes in v6: None
+Changes in v5: None
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   | 43 ++++++++++-------------------
+ drivers/gpu/drm/imx/dw_hdmi-imx.c           | 22 +++++++++------
+ drivers/gpu/drm/meson/meson_dw_hdmi.c       | 20 ++++++++++----
+ drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c      | 14 ++++++++--
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 23 ++++++++-------
+ include/drm/bridge/dw_hdmi.h                | 17 ++++++------
+ 6 files changed, 77 insertions(+), 62 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index ff1b3d2b5d06..6fbfafc5832b 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -2072,7 +2072,7 @@ static irqreturn_t dw_hdmi_hardirq(int irq, void *dev_id)
+ 	return ret;
+ }
+ 
+-void __dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
++void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
+ {
+ 	mutex_lock(&hdmi->mutex);
+ 
+@@ -2098,13 +2098,6 @@ void __dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
+ 	}
+ 	mutex_unlock(&hdmi->mutex);
+ }
+-
+-void dw_hdmi_setup_rx_sense(struct device *dev, bool hpd, bool rx_sense)
+-{
+-	struct dw_hdmi *hdmi = dev_get_drvdata(dev);
+-
+-	__dw_hdmi_setup_rx_sense(hdmi, hpd, rx_sense);
+-}
+ EXPORT_SYMBOL_GPL(dw_hdmi_setup_rx_sense);
+ 
+ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+@@ -2140,9 +2133,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+ 	 */
+ 	if (intr_stat &
+ 	    (HDMI_IH_PHY_STAT0_RX_SENSE | HDMI_IH_PHY_STAT0_HPD)) {
+-		__dw_hdmi_setup_rx_sense(hdmi,
+-					 phy_stat & HDMI_PHY_HPD,
+-					 phy_stat & HDMI_PHY_RX_SENSE);
++		dw_hdmi_setup_rx_sense(hdmi, phy_stat & HDMI_PHY_HPD,
++				       phy_stat & HDMI_PHY_RX_SENSE);
+ 
+ 		if ((phy_stat & (HDMI_PHY_RX_SENSE | HDMI_PHY_HPD)) == 0)
+ 			cec_notifier_set_phys_addr(hdmi->cec_notifier,
+@@ -2512,8 +2504,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 	if (hdmi->i2c)
+ 		dw_hdmi_i2c_init(hdmi);
+ 
+-	platform_set_drvdata(pdev, hdmi);
+-
+ 	return hdmi;
+ 
+ err_iahb:
+@@ -2559,25 +2549,23 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+ /* -----------------------------------------------------------------------------
+  * Probe/remove API, used from platforms based on the DRM bridge API.
+  */
+-int dw_hdmi_probe(struct platform_device *pdev,
+-		  const struct dw_hdmi_plat_data *plat_data)
++struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
++			      const struct dw_hdmi_plat_data *plat_data)
+ {
+ 	struct dw_hdmi *hdmi;
+ 
+ 	hdmi = __dw_hdmi_probe(pdev, plat_data);
+ 	if (IS_ERR(hdmi))
+-		return PTR_ERR(hdmi);
++		return hdmi;
+ 
+ 	drm_bridge_add(&hdmi->bridge);
+ 
+-	return 0;
++	return hdmi;
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_probe);
+ 
+-void dw_hdmi_remove(struct platform_device *pdev)
++void dw_hdmi_remove(struct dw_hdmi *hdmi)
+ {
+-	struct dw_hdmi *hdmi = platform_get_drvdata(pdev);
+-
+ 	drm_bridge_remove(&hdmi->bridge);
+ 
+ 	__dw_hdmi_remove(hdmi);
+@@ -2587,31 +2575,30 @@ EXPORT_SYMBOL_GPL(dw_hdmi_remove);
+ /* -----------------------------------------------------------------------------
+  * Bind/unbind API, used from platforms based on the component framework.
+  */
+-int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
+-		 const struct dw_hdmi_plat_data *plat_data)
++struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
++			    struct drm_encoder *encoder,
++			    const struct dw_hdmi_plat_data *plat_data)
+ {
+ 	struct dw_hdmi *hdmi;
+ 	int ret;
+ 
+ 	hdmi = __dw_hdmi_probe(pdev, plat_data);
+ 	if (IS_ERR(hdmi))
+-		return PTR_ERR(hdmi);
++		return hdmi;
+ 
+ 	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL);
+ 	if (ret) {
+ 		__dw_hdmi_remove(hdmi);
+ 		DRM_ERROR("Failed to initialize bridge with drm\n");
+-		return ret;
++		return ERR_PTR(ret);
+ 	}
+ 
+-	return 0;
++	return hdmi;
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_bind);
+ 
+-void dw_hdmi_unbind(struct device *dev)
++void dw_hdmi_unbind(struct dw_hdmi *hdmi)
+ {
+-	struct dw_hdmi *hdmi = dev_get_drvdata(dev);
+-
+ 	__dw_hdmi_remove(hdmi);
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_unbind);
+diff --git a/drivers/gpu/drm/imx/dw_hdmi-imx.c b/drivers/gpu/drm/imx/dw_hdmi-imx.c
+index b62763aa8706..b01d03e02ce0 100644
+--- a/drivers/gpu/drm/imx/dw_hdmi-imx.c
++++ b/drivers/gpu/drm/imx/dw_hdmi-imx.c
+@@ -26,6 +26,8 @@ struct imx_hdmi {
+ 	struct device *dev;
+ 	struct drm_encoder encoder;
+ 	struct regmap *regmap;
++
++	struct dw_hdmi *hdmi;
+ };
+ 
+ static inline struct imx_hdmi *enc_to_imx_hdmi(struct drm_encoder *e)
+@@ -239,22 +241,24 @@ static int dw_hdmi_imx_bind(struct device *dev, struct device *master,
+ 	drm_encoder_init(drm, encoder, &dw_hdmi_imx_encoder_funcs,
+ 			 DRM_MODE_ENCODER_TMDS, NULL);
+ 
+-	ret = dw_hdmi_bind(pdev, encoder, plat_data);
++	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
++	if (IS_ERR(hdmi->hdmi)) {
++		encoder->funcs->destroy(encoder);
++		return PTR_ERR(hdmi->hdmi);
++	}
+ 
+-	/*
+-	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
+-	 * which would have called the encoder cleanup.  Do it manually.
+-	 */
+-	if (ret)
+-		drm_encoder_cleanup(encoder);
++	dev_set_drvdata(dev, hdmi);
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ static void dw_hdmi_imx_unbind(struct device *dev, struct device *master,
+ 			       void *data)
+ {
+-	return dw_hdmi_unbind(dev);
++	struct imx_hdmi *hdmi = dev_get_drvdata(dev);
++
++	dw_hdmi_unbind(hdmi->hdmi);
++	hdmi->encoder.funcs->destroy(&hdmi->encoder);
+ }
+ 
+ static const struct component_ops dw_hdmi_imx_ops = {
+diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
+index cef414466f9f..fc29f69f7108 100644
+--- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
++++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
+@@ -138,6 +138,8 @@ struct meson_dw_hdmi {
+ 	struct clk *hdmi_pclk;
+ 	struct clk *venci_clk;
+ 	u32 irq_stat;
++
++	struct dw_hdmi *hdmi;
+ };
+ #define encoder_to_meson_dw_hdmi(x) \
+ 	container_of(x, struct meson_dw_hdmi, encoder)
+@@ -526,7 +528,7 @@ static irqreturn_t dw_hdmi_top_thread_irq(int irq, void *dev_id)
+ 		if (stat & HDMITX_TOP_INTR_HPD_RISE)
+ 			hpd_connected = true;
+ 
+-		dw_hdmi_setup_rx_sense(dw_hdmi->dev, hpd_connected,
++		dw_hdmi_setup_rx_sense(dw_hdmi->hdmi, hpd_connected,
+ 				       hpd_connected);
+ 
+ 		drm_helper_hpd_irq_event(dw_hdmi->encoder.dev);
+@@ -865,9 +867,14 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
+ 	dw_plat_data->input_bus_format = MEDIA_BUS_FMT_YUV8_1X24;
+ 	dw_plat_data->input_bus_encoding = V4L2_YCBCR_ENC_709;
+ 
+-	ret = dw_hdmi_bind(pdev, encoder, &meson_dw_hdmi->dw_plat_data);
+-	if (ret)
+-		return ret;
++	meson_dw_hdmi->hdmi = dw_hdmi_bind(pdev, encoder,
++					   &meson_dw_hdmi->dw_plat_data);
++	if (IS_ERR(meson_dw_hdmi->hdmi)) {
++		encoder->funcs->destroy(encoder);
++		return PTR_ERR(meson_dw_hdmi->hdmi);
++	}
++
++	dev_set_drvdata(dev, meson_dw_hdmi);
+ 
+ 	DRM_DEBUG_DRIVER("HDMI controller initialized\n");
+ 
+@@ -877,7 +884,10 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
+ static void meson_dw_hdmi_unbind(struct device *dev, struct device *master,
+ 				   void *data)
+ {
+-	dw_hdmi_unbind(dev);
++	struct meson_dw_hdmi *meson_dw_hdmi = dev_get_drvdata(dev);
++
++	dw_hdmi_unbind(meson_dw_hdmi->hdmi);
++	meson_dw_hdmi->encoder.funcs->destroy(&meson_dw_hdmi->encoder);
+ }
+ 
+ static const struct component_ops meson_dw_hdmi_ops = {
+diff --git a/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c b/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c
+index dc85b53d58ef..76210ae25094 100644
+--- a/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c
++++ b/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c
+@@ -68,12 +68,22 @@ static const struct dw_hdmi_plat_data rcar_dw_hdmi_plat_data = {
+ 
+ static int rcar_dw_hdmi_probe(struct platform_device *pdev)
+ {
+-	return dw_hdmi_probe(pdev, &rcar_dw_hdmi_plat_data);
++	struct dw_hdmi *hdmi;
++
++	hdmi = dw_hdmi_probe(pdev, &rcar_dw_hdmi_plat_data);
++	if (IS_ERR(hdmi))
++		return PTR_ERR(hdmi);
++
++	platform_set_drvdata(pdev, hdmi);
++
++	return 0;
+ }
+ 
+ static int rcar_dw_hdmi_remove(struct platform_device *pdev)
+ {
+-	dw_hdmi_remove(pdev);
++	struct dw_hdmi *hdmi = platform_get_drvdata(pdev);
++
++	dw_hdmi_remove(hdmi);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 1eb02a82fd91..791ab938f998 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -48,6 +48,8 @@ struct rockchip_hdmi {
+ 	const struct rockchip_hdmi_chip_data *chip_data;
+ 	struct clk *vpll_clk;
+ 	struct clk *grf_clk;
++
++	struct dw_hdmi *hdmi;
+ };
+ 
+ #define to_rockchip_hdmi(x)	container_of(x, struct rockchip_hdmi, x)
+@@ -164,7 +166,6 @@ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
+ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ {
+ 	struct device_node *np = hdmi->dev->of_node;
+-	int ret;
+ 
+ 	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+ 	if (IS_ERR(hdmi->regmap)) {
+@@ -377,22 +378,24 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
+ 			 DRM_MODE_ENCODER_TMDS, NULL);
+ 
+-	ret = dw_hdmi_bind(pdev, encoder, plat_data);
++	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
++	if (IS_ERR(hdmi->hdmi)) {
++		encoder->funcs->destroy(encoder);
++		return PTR_ERR(hdmi->hdmi);
++	}
+ 
+-	/*
+-	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
+-	 * which would have called the encoder cleanup.  Do it manually.
+-	 */
+-	if (ret)
+-		drm_encoder_cleanup(encoder);
++	dev_set_drvdata(dev, hdmi);
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ 				    void *data)
+ {
+-	return dw_hdmi_unbind(dev);
++	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
++
++	dw_hdmi_unbind(hdmi->hdmi);
++	hdmi->encoder.funcs->destroy(&hdmi->encoder);
+ }
+ 
+ static const struct component_ops dw_hdmi_rockchip_ops = {
+diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+index 182f83283e24..29b8900caaf7 100644
+--- a/include/drm/bridge/dw_hdmi.h
++++ b/include/drm/bridge/dw_hdmi.h
+@@ -143,14 +143,15 @@ struct dw_hdmi_plat_data {
+ 			     unsigned long mpixelclock);
+ };
+ 
+-int dw_hdmi_probe(struct platform_device *pdev,
+-		  const struct dw_hdmi_plat_data *plat_data);
+-void dw_hdmi_remove(struct platform_device *pdev);
+-void dw_hdmi_unbind(struct device *dev);
+-int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
+-		 const struct dw_hdmi_plat_data *plat_data);
+-
+-void dw_hdmi_setup_rx_sense(struct device *dev, bool hpd, bool rx_sense);
++struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
++			      const struct dw_hdmi_plat_data *plat_data);
++void dw_hdmi_remove(struct dw_hdmi *hdmi);
++void dw_hdmi_unbind(struct dw_hdmi *hdmi);
++struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
++			     struct drm_encoder *encoder,
++			     const struct dw_hdmi_plat_data *plat_data);
++
++void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
+ 
+ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
+ void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
+-- 
+2.11.0
