@@ -1,116 +1,64 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v6 04/10] drm/bridge: analogix_dp: Fix connector and encoder cleanup
-Date: Thu, 19 Oct 2017 11:48:06 +0800
-Message-ID: <20171019034812.13768-5-jeffy.chen@rock-chips.com>
+Subject: [PATCH v6 06/10] drm/rockchip: dw-mipi-dsi: Fix error handling path
+Date: Thu, 19 Oct 2017 11:48:08 +0800
+Message-ID: <20171019034812.13768-7-jeffy.chen@rock-chips.com>
 References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org, Caesar Wang <wxt@rock-chips.com>, David Airlie <airlied@linux.ie>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Seung-Woo Kim <sw0312.kim@samsung.com>, Inki Dae <inki.dae@samsung.com>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, zain wang <wzz@rock-chips.com>, Archit Taneja <architt@codeaurora.org>
+Cc: briannorris@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Since we are initing connector in the core driver and encoder in the
-plat driver, let's clean them up in the right places.
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
----
-
-Changes in v6:
-Don't change order of rockchip_drm_psr_register().
-
-Changes in v5: None
-
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  2 --
- drivers/gpu/drm/exynos/exynos_dp.c                 |  7 +++++--
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 +++++-------
- 3 files changed, 10 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 74d274b6d31d..3f910ab36ff6 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1409,7 +1409,6 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
- 	ret = analogix_dp_create_bridge(drm_dev, dp);
- 	if (ret) {
- 		DRM_ERROR("failed to create bridge (%d)\n", ret);
--		drm_encoder_cleanup(dp->encoder);
- 		goto err_disable_pm_runtime;
- 	}
- 
-@@ -1432,7 +1431,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
- {
- 	analogix_dp_bridge_disable(dp->bridge);
- 	dp->connector.funcs->destroy(&dp->connector);
--	dp->encoder->funcs->destroy(dp->encoder);
- 
- 	if (dp->plat_data->panel) {
- 		if (drm_panel_unprepare(dp->plat_data->panel))
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index f7e5b2c405ed..33319a858f3a 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -185,8 +185,10 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
- 	dp->plat_data.encoder = encoder;
- 
- 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
--	if (IS_ERR(dp->adp))
-+	if (IS_ERR(dp->adp)) {
-+		dp->encoder.funcs->destroy(&dp->encoder);
- 		return PTR_ERR(dp->adp);
-+	}
- 
- 	return 0;
- }
-@@ -196,7 +198,8 @@ static void exynos_dp_unbind(struct device *dev, struct device *master,
- {
- 	struct exynos_dp_device *dp = dev_get_drvdata(dev);
- 
--	return analogix_dp_unbind(dp->adp);
-+	analogix_dp_unbind(dp->adp);
-+	dp->encoder.funcs->destroy(&dp->encoder);
- }
- 
- static const struct component_ops exynos_dp_ops = {
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index fa0365de31d2..117585df73e1 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -261,13 +261,8 @@ static struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
- 	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
- };
- 
--static void rockchip_dp_drm_encoder_destroy(struct drm_encoder *encoder)
--{
--	drm_encoder_cleanup(encoder);
--}
--
- static struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
--	.destroy = rockchip_dp_drm_encoder_destroy,
-+	.destroy = drm_encoder_cleanup,
- };
- 
- static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
-@@ -364,8 +359,10 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
- 
- 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
--	if (IS_ERR(dp->adp))
-+	if (IS_ERR(dp->adp)) {
-+		dp->encoder.funcs->destroy(&dp->encoder);
- 		return PTR_ERR(dp->adp);
-+	}
- 
- 	return 0;
- }
-@@ -377,6 +374,7 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
- 
- 	rockchip_drm_psr_unregister(&dp->encoder);
- 	analogix_dp_unbind(dp->adp);
-+	dp->encoder.funcs->destroy(&dp->encoder);
- }
- 
- static const struct component_ops rockchip_dp_component_ops = {
--- 
-2.11.0
+QWRkIG1pc3NpbmcgcG1fcnVudGltZV9kaXNhYmxlKCkgaW4gYmluZCgpJ3MgZXJyb3IgaGFuZGxp
+bmcgcGF0aC4KCkFsc28gY2xlYW51cCBlbmNvZGVyICYgY29ubmVjdG9yIGluIHVuYmluZCgpLgoK
+Rml4ZXM6IDgwYTlhMDU5ZDRlNCAoImRybS9yb2NrY2hpcC9kc2k6IGFkZCBkdy1taXBpIHBvd2Vy
+IGRvbWFpbiBzdXBwb3J0IikKU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkBy
+b2NrLWNoaXBzLmNvbT4KLS0tCgpDaGFuZ2VzIGluIHY2OiBOb25lCkNoYW5nZXMgaW4gdjU6CkNh
+bGwgdGhlIGRlc3Ryb3kgaG9vayBpbiB0aGUgZXJyb3IgaGFuZGxpbmcgcGF0aCBsaWtlIGluIHVu
+YmluZCgpLgoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMjEgKysr
+KysrKysrKysrKy0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgOCBk
+ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlw
+aS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCmluZGV4IGIx
+NTc1NWI2MTI5Yy4uZTcyZDRlMmI2MWFhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlw
+aS1kc2kuYwpAQCAtMTI4Miw3ICsxMjgyLDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5k
+KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAogCXJldCA9IGR3X21p
+cGlfZHNpX3JlZ2lzdGVyKGRybSwgZHNpKTsKIAlpZiAocmV0KSB7CiAJCURSTV9ERVZfRVJST1Io
+ZGV2LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIG1pcGlfZHNpOiAlZFxuIiwgcmV0KTsKLQkJZ290byBl
+cnJfcGxscmVmOworCQlnb3RvIGVycl9kaXNhYmxlX3BsbHJlZjsKIAl9CiAKIAlwbV9ydW50aW1l
+X2VuYWJsZShkZXYpOwpAQCAtMTI5MiwyMyArMTI5MiwyNCBAQCBzdGF0aWMgaW50IGR3X21pcGlf
+ZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJcmV0
+ID0gbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigmZHNpLT5kc2lfaG9zdCk7CiAJaWYgKHJldCkgewog
+CQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byByZWdpc3RlciBNSVBJIGhvc3Q6ICVkXG4i
+LCByZXQpOwotCQlnb3RvIGVycl9jbGVhbnVwOworCQlnb3RvIGVycl9kaXNhYmxlX3BtX3J1bnRp
+bWU7CiAJfQogCiAJaWYgKCFkc2ktPnBhbmVsKSB7CiAJCXJldCA9IC1FUFJPQkVfREVGRVI7Ci0J
+CWdvdG8gZXJyX21pcGlfZHNpX2hvc3Q7CisJCWdvdG8gZXJyX3VucmVnX21pcGlfZHNpX2hvc3Q7
+CiAJfQogCiAJZGV2X3NldF9kcnZkYXRhKGRldiwgZHNpKTsKIAlyZXR1cm4gMDsKIAotZXJyX21p
+cGlfZHNpX2hvc3Q6CitlcnJfdW5yZWdfbWlwaV9kc2lfaG9zdDoKIAltaXBpX2RzaV9ob3N0X3Vu
+cmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwotZXJyX2NsZWFudXA6Ci0JZHJtX2VuY29kZXJfY2xl
+YW51cCgmZHNpLT5lbmNvZGVyKTsKLQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubmVj
+dG9yKTsKLWVycl9wbGxyZWY6CitlcnJfZGlzYWJsZV9wbV9ydW50aW1lOgorCXBtX3J1bnRpbWVf
+ZGlzYWJsZShkZXYpOworCWRzaS0+Y29ubmVjdG9yLmZ1bmNzLT5kZXN0cm95KCZkc2ktPmNvbm5l
+Y3Rvcik7CisJZHNpLT5lbmNvZGVyLmZ1bmNzLT5kZXN0cm95KCZkc2ktPmVuY29kZXIpOworZXJy
+X2Rpc2FibGVfcGxscmVmOgogCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGsp
+OwogCXJldHVybiByZXQ7CiB9CkBAIC0xMzIwLDYgKzEzMjEsMTAgQEAgc3RhdGljIHZvaWQgZHdf
+bWlwaV9kc2lfdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVy
+LAogCiAJbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKIAlwbV9ydW50
+aW1lX2Rpc2FibGUoZGV2KTsKKworCWRzaS0+Y29ubmVjdG9yLmZ1bmNzLT5kZXN0cm95KCZkc2kt
+PmNvbm5lY3Rvcik7CisJZHNpLT5lbmNvZGVyLmZ1bmNzLT5kZXN0cm95KCZkc2ktPmVuY29kZXIp
+OworCiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7CiB9CiAKLS0gCjIu
+MTEuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
