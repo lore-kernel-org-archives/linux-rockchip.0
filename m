@@ -1,59 +1,49 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] [media] rockchip/rga: annotate PM functions as __maybe_unused
-Date: Thu, 19 Oct 2017 11:30:34 +0200
-Message-ID: <20171019093044.531871-1-arnd@arndb.de>
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: Jacob chen <jacob2.chen@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Arnd Bergmann <arnd@arndb.de>, Hans Verkuil <hansverk@cisco.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v7 0/3] PCI: rockchip: Move PCIE_WAKE handling into pci core
+Date: Thu, 19 Oct 2017 19:10:04 +0800
+Message-ID: <20171019111007.25234-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, bhelgaas@google.com
+Cc: shawn.lin@rock-chips.com, briannorris@chromium.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Caesar Wang <wxt@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The newly added driver has incorrect #ifdef annotations on its
-PM functions, leading to a harmless compile-time warning when
-CONFIG_PM is disabled:
 
-drivers/media/platform/rockchip/rga/rga.c:760:13: error: 'rga_disable_clocks' defined but not used [-Werror=unused-function]
- static void rga_disable_clocks(struct rockchip_rga *rga)
-             ^~~~~~~~~~~~~~~~~~
-drivers/media/platform/rockchip/rga/rga.c:728:12: error: 'rga_enable_clocks' defined but not used [-Werror=unused-function]
+Currently we are handling wake irq in mrvl wifi driver. Move it into
+pci core.
 
-This removes the #ifdef and marks the functions as __maybe_unused,
-so gcc can silently drop all the unused code.
+Tested on my chromebook bob(with cros 4.4 kernel and mrvl wifi).
 
-Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/media/platform/rockchip/rga/rga.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index e7d1b34baf1c..89296de9cf4a 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -960,8 +960,7 @@ static int rga_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--#ifdef CONFIG_PM
--static int rga_runtime_suspend(struct device *dev)
-+static int __maybe_unused rga_runtime_suspend(struct device *dev)
- {
- 	struct rockchip_rga *rga = dev_get_drvdata(dev);
- 
-@@ -970,13 +969,12 @@ static int rga_runtime_suspend(struct device *dev)
- 	return 0;
- }
- 
--static int rga_runtime_resume(struct device *dev)
-+static int __maybe_unused rga_runtime_resume(struct device *dev)
- {
- 	struct rockchip_rga *rga = dev_get_drvdata(dev);
- 
- 	return rga_enable_clocks(rga);
- }
--#endif
- 
- static const struct dev_pm_ops rga_pm = {
- 	SET_RUNTIME_PM_OPS(rga_runtime_suspend,
+Changes in v7:
+Move PCIE_WAKE handling into pci core.
+
+Changes in v6:
+Fix device_init_wake error handling, and add some comments.
+
+Changes in v5:
+Rebase
+Move to pci.txt
+Use "wakeup" instead of "wake"
+
+Changes in v3:
+Fix error handling
+
+Changes in v2:
+Use dev_pm_set_dedicated_wake_irq
+        -- Suggested by Brian Norris <briannorris@chromium.com>
+
+Jeffy Chen (3):
+  PCI: Add support for wake irq
+  dt-bindings: PCI: Add definition of pcie wake irq
+  arm64: dts: rockchip: Handle pcie wake in pcie driver for Gru
+
+ Documentation/devicetree/bindings/pci/pci.txt |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 15 +++++++-----
+ drivers/pci/pci.c                             | 34 +++++++++++++++++++++++++--
+ drivers/pci/probe.c                           | 32 +++++++++++++++++++++----
+ drivers/pci/remove.c                          |  9 +++++++
+ 5 files changed, 80 insertions(+), 12 deletions(-)
+
 -- 
-2.9.0
+2.11.0
