@@ -1,29 +1,53 @@
-From: Pierre-Hugues Husson <phh@phh.me>
-Subject: Re: [PATCH 1/3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
-Date: Fri, 20 Oct 2017 21:21:14 +0200
-Message-ID: <CAJ-oXjR7OyGjppoGReiaibLaZa6427ppwnbEQ2pvxMV2PKOHjA@mail.gmail.com>
-References: <20171013225337.5196-1-phh@phh.me> <20171013225337.5196-2-phh@phh.me>
- <20171020081203.GD20805@n2100.armlinux.org.uk>
+From: jeffy <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Fix build warning in analogix_dp-rockchip.c
+Date: Sat, 21 Oct 2017 07:14:19 +0800
+Message-ID: <59EA834B.4090807@rock-chips.com>
+References: <20171020172557.54900-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171020081203.GD20805@n2100.armlinux.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: linux-rockchip@lists.infradead.org, linux-media <linux-media@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171020172557.54900-1-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-2017-10-20 10:12 GMT+02:00 Russell King - ARM Linux <linux@armlinux.org.uk>:
-> On Sat, Oct 14, 2017 at 12:53:35AM +0200, Pierre-Hugues Husson wrote:
->> @@ -2382,6 +2383,18 @@ __dw_hdmi_probe(struct platform_device *pdev,
->>               goto err_isfr;
->>       }
->>
->> +     hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
->> +     if (IS_ERR(hdmi->cec_clk)) {
->> +             hdmi->cec_clk = NULL;
->
-> What if devm_clk_get() returns EPROBE_DEFER?  Does that really mean the
-> clock does not exist?
-Should be fixed in v2.
-Thanks
+SGkgU2VhbiwKCk9uIDEwLzIxLzIwMTcgMDE6MjUgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiBJIGRp
+ZG4ndCBjYXRjaCB0aGlzIGJlZm9yZSBhcHBseWluZywganVzdCByaWdodCBhZnRlciAob2YgY291
+cnNlKS4KPgo+IEZpeGVzOgo+IC4uL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9k
+cC1yb2NrY2hpcC5jOiBJbiBmdW5jdGlvbgo+IOKAmHJvY2tjaGlwX2RwX29mX3Byb2Jl4oCZOgo+
+IC4uL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jOjI3Njo2
+OiB3YXJuaW5nOgo+IHVudXNlZCB2YXJpYWJsZSDigJhyZXTigJkgWy1XdW51c2VkLXZhcmlhYmxl
+XQo+ICAgIGludCByZXQ7Cj4gICAgICAgICAgXn5+Cgpzb3JyeSwgaSB0aG91Z2h0IGkgZml4ZWQg
+dGhhdCwgYnV0IGl0IGxvb2tzIGxpa2UgaSBhbWVuZGVkIGl0IHRvIHRoZSAKd3JvbmcgY29tbWl0
+IGJ5IG1pc3Rha2UuLi4KPgo+IEZpeGVzOiAxMDI3MTJhMzJmZjUgKCJkcm0vcm9ja2NoaXA6IGFu
+YWxvZ2l4X2RwOiBSZW1vdmUgdW5uZWNlc3NhcnkgaW5pdAo+IGNvZGUiKQo+IENjOiBKZWZmeSBD
+aGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IENjOiBNYXJrIFlhbyA8bWFyay55YW9A
+cm9jay1jaGlwcy5jb20+Cj4gQ2M6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+
+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gU2lnbmVkLW9m
+Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDEgLQo+ICAgMSBmaWxl
+IGNoYW5nZWQsIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5kZXggOGNhZTVhZDkyNmNkLi4zOTk0NGMwZjFj
+MGIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
+Y2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9j
+a2NoaXAuYwo+IEBAIC0yNzMsNyArMjczLDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcF9vZl9w
+cm9iZShzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCkKPiAgIHsKPiAgIAlzdHJ1Y3QgZGV2
+aWNlICpkZXYgPSBkcC0+ZGV2Owo+ICAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkZXYtPm9m
+X25vZGU7Cj4gLQlpbnQgcmV0Owo+Cj4gICAJZHAtPmdyZiA9IHN5c2Nvbl9yZWdtYXBfbG9va3Vw
+X2J5X3BoYW5kbGUobnAsICJyb2NrY2hpcCxncmYiKTsKPiAgIAlpZiAoSVNfRVJSKGRwLT5ncmYp
+KSB7Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
