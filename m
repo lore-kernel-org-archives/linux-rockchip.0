@@ -1,13 +1,15 @@
 From: jeffy <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Fix build warning in analogix_dp-rockchip.c
-Date: Sat, 21 Oct 2017 07:14:19 +0800
-Message-ID: <59EA834B.4090807@rock-chips.com>
-References: <20171020172557.54900-1-seanpaul@chromium.org>
+Subject: Re: [PATCH v6 03/10] drm/bridge: analogix: Do not use device's drvdata
+Date: Sat, 21 Oct 2017 07:14:39 +0800
+Message-ID: <59EA835F.3090508@rock-chips.com>
+References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
+ <20171019034812.13768-4-jeffy.chen@rock-chips.com>
+ <20171020165226.vqoeldcmreuc73le@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171020172557.54900-1-seanpaul@chromium.org>
+In-Reply-To: <20171020165226.vqoeldcmreuc73le@art_vandelay>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -17,37 +19,15 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-samsung-soc@vger.kernel.org, briannorris@chromium.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org, zain wang <wzz@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, dianders@chromium.org, tfiga@chromium.org, Kyungmin Park <kyungmin.park@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2VhbiwKCk9uIDEwLzIxLzIwMTcgMDE6MjUgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiBJIGRp
-ZG4ndCBjYXRjaCB0aGlzIGJlZm9yZSBhcHBseWluZywganVzdCByaWdodCBhZnRlciAob2YgY291
-cnNlKS4KPgo+IEZpeGVzOgo+IC4uL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9k
-cC1yb2NrY2hpcC5jOiBJbiBmdW5jdGlvbgo+IOKAmHJvY2tjaGlwX2RwX29mX3Byb2Jl4oCZOgo+
-IC4uL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jOjI3Njo2
-OiB3YXJuaW5nOgo+IHVudXNlZCB2YXJpYWJsZSDigJhyZXTigJkgWy1XdW51c2VkLXZhcmlhYmxl
-XQo+ICAgIGludCByZXQ7Cj4gICAgICAgICAgXn5+Cgpzb3JyeSwgaSB0aG91Z2h0IGkgZml4ZWQg
-dGhhdCwgYnV0IGl0IGxvb2tzIGxpa2UgaSBhbWVuZGVkIGl0IHRvIHRoZSAKd3JvbmcgY29tbWl0
-IGJ5IG1pc3Rha2UuLi4KPgo+IEZpeGVzOiAxMDI3MTJhMzJmZjUgKCJkcm0vcm9ja2NoaXA6IGFu
-YWxvZ2l4X2RwOiBSZW1vdmUgdW5uZWNlc3NhcnkgaW5pdAo+IGNvZGUiKQo+IENjOiBKZWZmeSBD
-aGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IENjOiBNYXJrIFlhbyA8bWFyay55YW9A
-cm9jay1jaGlwcy5jb20+Cj4gQ2M6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+
-IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gU2lnbmVkLW9m
-Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyB8IDEgLQo+ICAgMSBmaWxl
-IGNoYW5nZWQsIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gaW5kZXggOGNhZTVhZDkyNmNkLi4zOTk0NGMwZjFj
-MGIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
-Y2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9j
-a2NoaXAuYwo+IEBAIC0yNzMsNyArMjczLDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcF9vZl9w
-cm9iZShzdHJ1Y3Qgcm9ja2NoaXBfZHBfZGV2aWNlICpkcCkKPiAgIHsKPiAgIAlzdHJ1Y3QgZGV2
-aWNlICpkZXYgPSBkcC0+ZGV2Owo+ICAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkZXYtPm9m
-X25vZGU7Cj4gLQlpbnQgcmV0Owo+Cj4gICAJZHAtPmdyZiA9IHN5c2Nvbl9yZWdtYXBfbG9va3Vw
-X2J5X3BoYW5kbGUobnAsICJyb2NrY2hpcCxncmYiKTsKPiAgIAlpZiAoSVNfRVJSKGRwLT5ncmYp
-KSB7Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+SGkgU2VhbiwKCk9uIDEwLzIxLzIwMTcgMTI6NTIgQU0sIFNlYW4gUGF1bCB3cm90ZToKPiBPbiBU
+aHUsIE9jdCAxOSwgMjAxNyBhdCAxMTo0ODowNUFNICswODAwLCBKZWZmeSBDaGVuIHdyb3RlOgo+
+Cj4gVGhpcyBwYXRjaCBoYXMgc29tZWhvdyBsb3N0IGl0J3Mgb3JpZ2luYWwgYXV0aG9yLiBJIGFz
+c3VtZSB0aGlzIGlzIG5vdAo+IGludGVudGlvbmFsLgoKb29wcywgc29ycnksIGd1ZXNzIGkgdXNl
+ZCBzb21lIHdyb25nbHkgY29tbWFuZCBkdXJpbmcgdGhlIHJlYmFzaW5nLi4uIAp3aWxsIGZpeCB0
+aGF0LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
