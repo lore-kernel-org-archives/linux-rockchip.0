@@ -1,35 +1,86 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v6 10/10] drm/rockchip: dw_hdmi: Fix error handling path
-Date: Fri, 20 Oct 2017 09:51:16 +0800
-Message-ID: <bd662144-78c8-b448-6dd0-36d68bacca44@rock-chips.com>
-References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
- <20171019034812.13768-11-jeffy.chen@rock-chips.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH] pinctrl: rockchip: Add iomux-route switching support for
+ rk3288
+Date: Fri, 20 Oct 2017 09:28:58 +0200
+Message-ID: <52d1a9ee-a6c6-5c7f-330f-9b672be9c2c6@xs4all.nl>
+References: <20171013225337.5196-1-phh@phh.me>
+ <CAJ-oXjQ3e1UHVGq=uV=yAK9Bu=ZoiNZaEbnHyvNtyc15RQQSKg@mail.gmail.com>
+ <2009704.s5LEIeT6xV@phil> <13020229.tRmotBUImn@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171019034812.13768-11-jeffy.chen@rock-chips.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
-Cc: briannorris@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <13020229.tRmotBUImn@phil>
+Sender: linux-media-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Pierre-Hugues Husson <phh@phh.me>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxN+W5tDEw5pyIMTnml6UgMTE6NDgsIEplZmZ5IENoZW4gd3JvdGU6Cj4gQWRkIG1pc3Np
-bmcgY2xrX2Rpc2FibGVfdW5wcmVwYXJlKCkgaW4gYmluZCgpJ3MgZXJyb3IgaGFuZGxpbmcgcGF0
-aCBhbmQKPiB1bmJpbmQoKS4KPgo+IEFsc28gaW5saW5lIGNsa19wcmVwYXJlX2VuYWJsZSgpIHdp
-dGggYmluZCgpLgo+Cj4gRml4ZXM6IDEyYjlmMjA0ZTgwNCAoImRybTogYnJpZGdlL2R3X2hkbWk6
-IGFkZCByb2NrY2hpcCByazMyODggc3VwcG9ydCIpCj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hl
-bjxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgoKTG9va3MgZ29vZCBmb3IgbWUKQWNrZWQtYnk6
-IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KCk1hcmsKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On 14/10/17 17:39, Heiko Stuebner wrote:
+> So far only the hdmi cec supports using one of two different pins
+> as source, so add the route switching for it.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+Just tested this on my firefly reload and it works great!
+
+Tested-by: Hans Verkuil <hans.verkuil@cisco.com>
+
+I'll post some dts patches later today to fully bring up the first HDMI
+output on the Firefly Reload.
+
+Will you process this patch further to get it mainlined?
+
+Regards,
+
+	Hans
+
+> ---
+> If I didn't mess up any numbering, the pinctrl change should look like
+> the following patch.
+> 
+> Hope that helps
+> Heiko
+> 
+>  drivers/pinctrl/pinctrl-rockchip.c | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index b5cb7858ffdc..8dd49e2e144b 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -884,6 +884,24 @@ static struct rockchip_mux_route_data rk3228_mux_route_data[] = {
+>  	},
+>  };
+>  
+> +static struct rockchip_mux_route_data rk3288_mux_route_data[] = {
+> +	{
+> +		/* edphdmi_cecinoutt1 */
+> +		.bank_num = 7,
+> +		.pin = 16,
+> +		.func = 2,
+> +		.route_offset = 0x264,
+> +		.route_val = BIT(16 + 12) | BIT(12),
+> +	}, {
+> +		/* edphdmi_cecinout */
+> +		.bank_num = 7,
+> +		.pin = 23,
+> +		.func = 4,
+> +		.route_offset = 0x264,
+> +		.route_val = BIT(16 + 12),
+> +	},
+> +};
+> +
+>  static struct rockchip_mux_route_data rk3328_mux_route_data[] = {
+>  	{
+>  		/* uart2dbg_rxm0 */
+> @@ -3391,6 +3409,8 @@ static struct rockchip_pin_ctrl rk3288_pin_ctrl = {
+>  		.type			= RK3288,
+>  		.grf_mux_offset		= 0x0,
+>  		.pmu_mux_offset		= 0x84,
+> +		.iomux_routes		= rk3288_mux_route_data,
+> +		.niomux_routes		= ARRAY_SIZE(rk3288_mux_route_data),
+>  		.pull_calc_reg		= rk3288_calc_pull_reg_and_bit,
+>  		.drv_calc_reg		= rk3288_calc_drv_reg_and_bit,
+>  };
+> 
