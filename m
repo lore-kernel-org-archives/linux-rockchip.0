@@ -1,86 +1,88 @@
 From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH] pinctrl: rockchip: Add iomux-route switching support for
- rk3288
-Date: Fri, 20 Oct 2017 09:28:58 +0200
-Message-ID: <52d1a9ee-a6c6-5c7f-330f-9b672be9c2c6@xs4all.nl>
+Subject: Re: [PATCH 1/3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Fri, 20 Oct 2017 09:25:09 +0200
+Message-ID: <01c4773b-ec8b-5bdc-11ea-c4816b9c673a@xs4all.nl>
 References: <20171013225337.5196-1-phh@phh.me>
- <CAJ-oXjQ3e1UHVGq=uV=yAK9Bu=ZoiNZaEbnHyvNtyc15RQQSKg@mail.gmail.com>
- <2009704.s5LEIeT6xV@phil> <13020229.tRmotBUImn@phil>
+ <20171013225337.5196-2-phh@phh.me>
+ <35b9fbe3-9859-03e2-173e-8cff5a90efdd@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <13020229.tRmotBUImn@phil>
-Sender: linux-media-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Pierre-Hugues Husson <phh@phh.me>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <35b9fbe3-9859-03e2-173e-8cff5a90efdd@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Pierre-Hugues Husson <phh@phh.me>, linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 14/10/17 17:39, Heiko Stuebner wrote:
-> So far only the hdmi cec supports using one of two different pins
-> as source, so add the route switching for it.
+On 14/10/17 10:16, Hans Verkuil wrote:
+> On 10/14/2017 12:53 AM, Pierre-Hugues Husson wrote:
+>> The documentation already mentions "cec" optional clock, but
+>> currently the driver doesn't enable it.
+>>
+>> Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
 > 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-
-Just tested this on my firefly reload and it works great!
+> Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
 
 Tested-by: Hans Verkuil <hans.verkuil@cisco.com>
 
-I'll post some dts patches later today to fully bring up the first HDMI
-output on the Firefly Reload.
-
-Will you process this patch further to get it mainlined?
-
-Regards,
-
-	Hans
-
-> ---
-> If I didn't mess up any numbering, the pinctrl change should look like
-> the following patch.
 > 
-> Hope that helps
-> Heiko
+> Thanks!
 > 
->  drivers/pinctrl/pinctrl-rockchip.c | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
+> 	Hans
 > 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index b5cb7858ffdc..8dd49e2e144b 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -884,6 +884,24 @@ static struct rockchip_mux_route_data rk3228_mux_route_data[] = {
->  	},
->  };
->  
-> +static struct rockchip_mux_route_data rk3288_mux_route_data[] = {
-> +	{
-> +		/* edphdmi_cecinoutt1 */
-> +		.bank_num = 7,
-> +		.pin = 16,
-> +		.func = 2,
-> +		.route_offset = 0x264,
-> +		.route_val = BIT(16 + 12) | BIT(12),
-> +	}, {
-> +		/* edphdmi_cecinout */
-> +		.bank_num = 7,
-> +		.pin = 23,
-> +		.func = 4,
-> +		.route_offset = 0x264,
-> +		.route_val = BIT(16 + 12),
-> +	},
-> +};
-> +
->  static struct rockchip_mux_route_data rk3328_mux_route_data[] = {
->  	{
->  		/* uart2dbg_rxm0 */
-> @@ -3391,6 +3409,8 @@ static struct rockchip_pin_ctrl rk3288_pin_ctrl = {
->  		.type			= RK3288,
->  		.grf_mux_offset		= 0x0,
->  		.pmu_mux_offset		= 0x84,
-> +		.iomux_routes		= rk3288_mux_route_data,
-> +		.niomux_routes		= ARRAY_SIZE(rk3288_mux_route_data),
->  		.pull_calc_reg		= rk3288_calc_pull_reg_and_bit,
->  		.drv_calc_reg		= rk3288_calc_drv_reg_and_bit,
->  };
+>> ---
+>>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 17 +++++++++++++++++
+>>  1 file changed, 17 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> index bf14214fa464..5007cdf43131 100644
+>> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> @@ -138,6 +138,7 @@ struct dw_hdmi {
+>>  	struct device *dev;
+>>  	struct clk *isfr_clk;
+>>  	struct clk *iahb_clk;
+>> +	struct clk *cec_clk;
+>>  	struct dw_hdmi_i2c *i2c;
+>>  
+>>  	struct hdmi_data_info hdmi_data;
+>> @@ -2382,6 +2383,18 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>>  		goto err_isfr;
+>>  	}
+>>  
+>> +	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
+>> +	if (IS_ERR(hdmi->cec_clk)) {
+>> +		hdmi->cec_clk = NULL;
+>> +	} else {
+>> +		ret = clk_prepare_enable(hdmi->cec_clk);
+>> +		if (ret) {
+>> +			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
+>> +					ret);
+>> +			goto err_res;
+>> +		}
+>> +	}
+>> +
+>>  	/* Product and revision IDs */
+>>  	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
+>>  		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
+>> @@ -2518,6 +2531,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>>  		cec_notifier_put(hdmi->cec_notifier);
+>>  
+>>  	clk_disable_unprepare(hdmi->iahb_clk);
+>> +	if (hdmi->cec_clk)
+>> +		clk_disable_unprepare(hdmi->cec_clk);
+>>  err_isfr:
+>>  	clk_disable_unprepare(hdmi->isfr_clk);
+>>  err_res:
+>> @@ -2541,6 +2556,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+>>  
+>>  	clk_disable_unprepare(hdmi->iahb_clk);
+>>  	clk_disable_unprepare(hdmi->isfr_clk);
+>> +	if (hdmi->cec_clk)
+>> +		clk_disable_unprepare(hdmi->cec_clk);
+>>  
+>>  	if (hdmi->i2c)
+>>  		i2c_del_adapter(&hdmi->i2c->adap);
+>>
 > 
