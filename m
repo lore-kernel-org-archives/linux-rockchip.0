@@ -1,74 +1,48 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v6 00/10] rockchip: kevin: Enable edp display
-Date: Fri, 20 Oct 2017 13:07:35 -0400
-Message-ID: <20171020170735.yahyoshwsewttjvy@art_vandelay>
-References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
+Subject: [PATCH] drm/rockchip: Fix build warning in analogix_dp-rockchip.c
+Date: Fri, 20 Oct 2017 13:25:48 -0400
+Message-ID: <20171020172557.54900-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, briannorris@chromium.org, seanpaul@chromium.org, dianders@chromium.org, heiko@sntech.de, tfiga@chromium.org, Andrzej Hajda <a.hajda@samsung.com>, Arnd Bergmann <arnd@arndb.de>, Romain Perier <romain.perier@collabora.com>, Russell King <rmk+kernel@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Jonathan Corbet <corbet@lwn.net>, dri-devel@lists.freedesktop.org, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>, Kevin Hilman <khilman@baylibre.com>, Catalin Marinas <catalin.marinas@arm.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-samsung-soc@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, Inki Dae <inki.dae@samsung.com>, linux-roc
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Oct 19, 2017 at 11:48:02AM +0800, Jeffy Chen wrote:
-> 
-> Make edp display works on chromebook kevin(at least for boot animation).
-> 
-> Also solve some issues i meet during the bringup.
-> 
-> Changes in v6:
-> Don't change order of rockchip_drm_psr_register().
-> 
-> Changes in v5:
-> Call the destroy hook in the error handling path like in unbind().
-> Call the destroy hook in the error handling path like in unbind().
-> Update cleanup order in unbind().
-> Add disable to unbind(), and inline clk_prepare_enable() with bind().
-> 
-> Jeffy Chen (10):
->   arm64: dts: rockchip: Enable edp disaplay on kevin
->   drm/rockchip: analogix_dp: Remove unnecessary init code
->   drm/bridge: analogix: Do not use device's drvdata
->   drm/bridge: analogix_dp: Fix connector and encoder cleanup
->   drm/rockchip: analogix_dp: Add a sanity check for
->     rockchip_drm_psr_register()
->   drm/rockchip: dw-mipi-dsi: Fix error handling path
->   drm/rockchip: inno_hdmi: Fix error handling path
->   drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
->   drm/bridge/synopsys: dw-hdmi: Do not use device's drvdata
->   drm/rockchip: dw_hdmi: Fix error handling path
-
-Hi Jeffy,
-I've pushed 2/10. Once you fix 3/10, I can push 3-7. I'd like someone familiar
-with synopsys to review 8-9 before pushing those. Since 10 depends on 9, it'll
-be blocked on synopsys review.
-
-Sean
-
-> 
->  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 29 +++++++
->  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 16 ++++
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 52 +++++-------
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          | 53 ++++++------
->  drivers/gpu/drm/exynos/exynos_dp.c                 | 29 ++++---
->  drivers/gpu/drm/imx/dw_hdmi-imx.c                  | 22 +++--
->  drivers/gpu/drm/meson/meson_dw_hdmi.c              | 20 +++--
->  drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c             | 14 +++-
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 95 +++++++++++-----------
->  drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 21 +++--
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 39 +++++----
->  drivers/gpu/drm/rockchip/inno_hdmi.c               | 22 +++--
->  include/drm/bridge/analogix_dp.h                   | 19 +++--
->  include/drm/bridge/dw_hdmi.h                       | 17 ++--
->  14 files changed, 265 insertions(+), 183 deletions(-)
-> 
-> -- 
-> 2.11.0
-> 
-> 
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+SSBkaWRuJ3QgY2F0Y2ggdGhpcyBiZWZvcmUgYXBwbHlpbmcsIGp1c3QgcmlnaHQgYWZ0ZXIgKG9m
+IGNvdXJzZSkuCgpGaXhlczoKLi4vZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
+LXJvY2tjaGlwLmM6IEluIGZ1bmN0aW9uCuKAmHJvY2tjaGlwX2RwX29mX3Byb2Jl4oCZOgouLi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYzoyNzY6Njogd2Fy
+bmluZzoKdW51c2VkIHZhcmlhYmxlIOKAmHJldOKAmSBbLVd1bnVzZWQtdmFyaWFibGVdCiAgaW50
+IHJldDsKICAgICAgICBefn4KCkZpeGVzOiAxMDI3MTJhMzJmZjUgKCJkcm0vcm9ja2NoaXA6IGFu
+YWxvZ2l4X2RwOiBSZW1vdmUgdW5uZWNlc3NhcnkgaW5pdApjb2RlIikKQ2M6IEplZmZ5IENoZW4g
+PGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+CkNjOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1j
+aGlwcy5jb20+CkNjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KQ2M6IEhlaWtv
+IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxz
+ZWFucGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
+Z2l4X2RwLXJvY2tjaGlwLmMgfCAxIC0KIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pCgpk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlw
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRl
+eCA4Y2FlNWFkOTI2Y2QuLjM5OTQ0YzBmMWMwYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKQEAgLTI3Myw3ICsyNzMsNiBAQCBzdGF0aWMg
+aW50IHJvY2tjaGlwX2RwX29mX3Byb2JlKHN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwKQog
+ewogCXN0cnVjdCBkZXZpY2UgKmRldiA9IGRwLT5kZXY7CiAJc3RydWN0IGRldmljZV9ub2RlICpu
+cCA9IGRldi0+b2Zfbm9kZTsKLQlpbnQgcmV0OwogCiAJZHAtPmdyZiA9IHN5c2Nvbl9yZWdtYXBf
+bG9va3VwX2J5X3BoYW5kbGUobnAsICJyb2NrY2hpcCxncmYiKTsKIAlpZiAoSVNfRVJSKGRwLT5n
+cmYpKSB7Ci0tIAoyLjE1LjAucmMwLjI3MS5nMzZiNjY5ZWRjYy1nb29nCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
