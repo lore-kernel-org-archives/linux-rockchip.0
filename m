@@ -1,32 +1,31 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
-Subject: Re: [PATCH 1/3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
-Date: Fri, 20 Oct 2017 09:12:04 +0100
-Message-ID: <20171020081203.GD20805@n2100.armlinux.org.uk>
-References: <20171013225337.5196-1-phh@phh.me>
- <20171013225337.5196-2-phh@phh.me>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: rk3288 Firefly Reload: 'reboot' doesn't work
+Date: Fri, 20 Oct 2017 11:06:21 +0200
+Message-ID: <b88abf6d-d95f-3eca-91d1-65fcb749cb22@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20171013225337.5196-2-phh@phh.me>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Pierre-Hugues Husson <phh@phh.me>
-Cc: linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 14, 2017 at 12:53:35AM +0200, Pierre-Hugues Husson wrote:
-> @@ -2382,6 +2383,18 @@ __dw_hdmi_probe(struct platform_device *pdev,
->  		goto err_isfr;
->  	}
->  
-> +	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
-> +	if (IS_ERR(hdmi->cec_clk)) {
-> +		hdmi->cec_clk = NULL;
+Hi Heiko,
 
-What if devm_clk_get() returns EPROBE_DEFER?  Does that really mean the
-clock does not exist?
+If I run 'reboot' to reboot my Firefly Reload board the last thing I see
+on the serial port is "reboot: Restarting system", but it never actually
+restarts.
 
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 8.8Mbps down 630kbps up
-According to speedtest.net: 8.21Mbps down 510kbps up
+This is really annoying, but I have no idea where to look. Any suggestions?
+
+Regards,
+
+    Hans
