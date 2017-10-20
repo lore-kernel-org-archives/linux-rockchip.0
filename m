@@ -1,48 +1,83 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH] drm/rockchip: Fix build warning in analogix_dp-rockchip.c
-Date: Fri, 20 Oct 2017 13:25:48 -0400
-Message-ID: <20171020172557.54900-1-seanpaul@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Pierre-Hugues Husson <phh@phh.me>
+Subject: [PATCH v2] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Fri, 20 Oct 2017 21:18:38 +0200
+Message-ID: <20171020191838.392-1-phh@phh.me>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux@armlinux.org.uk, Pierre-Hugues Husson <phh@phh.me>
 List-Id: linux-rockchip.vger.kernel.org
 
-SSBkaWRuJ3QgY2F0Y2ggdGhpcyBiZWZvcmUgYXBwbHlpbmcsIGp1c3QgcmlnaHQgYWZ0ZXIgKG9m
-IGNvdXJzZSkuCgpGaXhlczoKLi4vZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
-LXJvY2tjaGlwLmM6IEluIGZ1bmN0aW9uCuKAmHJvY2tjaGlwX2RwX29mX3Byb2Jl4oCZOgouLi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYzoyNzY6Njogd2Fy
-bmluZzoKdW51c2VkIHZhcmlhYmxlIOKAmHJldOKAmSBbLVd1bnVzZWQtdmFyaWFibGVdCiAgaW50
-IHJldDsKICAgICAgICBefn4KCkZpeGVzOiAxMDI3MTJhMzJmZjUgKCJkcm0vcm9ja2NoaXA6IGFu
-YWxvZ2l4X2RwOiBSZW1vdmUgdW5uZWNlc3NhcnkgaW5pdApjb2RlIikKQ2M6IEplZmZ5IENoZW4g
-PGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+CkNjOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1j
-aGlwcy5jb20+CkNjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KQ2M6IEhlaWtv
-IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxz
-ZWFucGF1bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
-Z2l4X2RwLXJvY2tjaGlwLmMgfCAxIC0KIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlw
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRl
-eCA4Y2FlNWFkOTI2Y2QuLjM5OTQ0YzBmMWMwYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKQEAgLTI3Myw3ICsyNzMsNiBAQCBzdGF0aWMg
-aW50IHJvY2tjaGlwX2RwX29mX3Byb2JlKHN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwKQog
-ewogCXN0cnVjdCBkZXZpY2UgKmRldiA9IGRwLT5kZXY7CiAJc3RydWN0IGRldmljZV9ub2RlICpu
-cCA9IGRldi0+b2Zfbm9kZTsKLQlpbnQgcmV0OwogCiAJZHAtPmdyZiA9IHN5c2Nvbl9yZWdtYXBf
-bG9va3VwX2J5X3BoYW5kbGUobnAsICJyb2NrY2hpcCxncmYiKTsKIAlpZiAoSVNfRVJSKGRwLT5n
-cmYpKSB7Ci0tIAoyLjE1LjAucmMwLjI3MS5nMzZiNjY5ZWRjYy1nb29nCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The documentation already mentions "cec" optional clock, but
+currently the driver doesn't enable it.
+
+Changes:
+v2:
+- Separate ENOENT errors from others
+- Propagate other errors (especially -EPROBE_DEFER)
+
+Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index bf14214fa464..b31fc95d5fef 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -138,6 +138,7 @@ struct dw_hdmi {
+ 	struct device *dev;
+ 	struct clk *isfr_clk;
+ 	struct clk *iahb_clk;
++	struct clk *cec_clk;
+ 	struct dw_hdmi_i2c *i2c;
+ 
+ 	struct hdmi_data_info hdmi_data;
+@@ -2382,6 +2383,27 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		goto err_isfr;
+ 	}
+ 
++	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
++	if (PTR_ERR(hdmi->cec_clk) == -ENOENT) {
++		hdmi->cec_clk = NULL;
++	} else if (IS_ERR(hdmi->cec_clk)) {
++		ret = PTR_ERR(hdmi->cec_clk);
++		if (ret != -EPROBE_DEFER) {
++			dev_err(hdmi->dev, "Cannot get HDMI cec clock: %d\n",
++					ret);
++		}
++
++		hdmi->cec_clk = NULL;
++		goto err_iahb;
++	} else {
++		ret = clk_prepare_enable(hdmi->cec_clk);
++		if (ret) {
++			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
++					ret);
++			goto err_iahb;
++		}
++	}
++
+ 	/* Product and revision IDs */
+ 	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
+ 		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
+@@ -2518,6 +2540,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		cec_notifier_put(hdmi->cec_notifier);
+ 
+ 	clk_disable_unprepare(hdmi->iahb_clk);
++	if (hdmi->cec_clk)
++		clk_disable_unprepare(hdmi->cec_clk);
+ err_isfr:
+ 	clk_disable_unprepare(hdmi->isfr_clk);
+ err_res:
+@@ -2541,6 +2565,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+ 
+ 	clk_disable_unprepare(hdmi->iahb_clk);
+ 	clk_disable_unprepare(hdmi->isfr_clk);
++	if (hdmi->cec_clk)
++		clk_disable_unprepare(hdmi->cec_clk);
+ 
+ 	if (hdmi->i2c)
+ 		i2c_del_adapter(&hdmi->i2c->adap);
+-- 
+2.14.1
