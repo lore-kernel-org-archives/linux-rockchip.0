@@ -1,31 +1,38 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: rk3288 Firefly Reload: 'reboot' doesn't work
-Date: Fri, 20 Oct 2017 11:06:21 +0200
-Message-ID: <b88abf6d-d95f-3eca-91d1-65fcb749cb22@xs4all.nl>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: [PATCH 1/4] arm: dts: rockchip: add the cec clk for dw-hdmi on rk3288
+Date: Fri, 20 Oct 2017 12:07:31 +0200
+Message-ID: <20171020100734.17064-2-hverkuil@xs4all.nl>
+References: <20171020100734.17064-1-hverkuil@xs4all.nl>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20171020100734.17064-1-hverkuil@xs4all.nl>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hans.verkuil@cisco.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+From: Hans Verkuil <hans.verkuil@cisco.com>
 
-If I run 'reboot' to reboot my Firefly Reload board the last thing I see
-on the serial port is "reboot: Restarting system", but it never actually
-restarts.
+The dw-hdmi block needs the cec clk for the rk3288. Add it.
 
-This is really annoying, but I have no idea where to look. Any suggestions?
+Signed-off-by: Hans Verkuil <hans.verkuil@cisco.com>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Regards,
-
-    Hans
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 356ed1e62452..a48352aa1591 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1124,8 +1124,8 @@
+ 		reg-io-width = <4>;
+ 		rockchip,grf = <&grf>;
+ 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>;
+-		clock-names = "iahb", "isfr";
++		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
++		clock-names = "iahb", "isfr", "cec";
+ 		power-domains = <&power RK3288_PD_VIO>;
+ 		status = "disabled";
+ 
+-- 
+2.14.1
