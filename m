@@ -1,11 +1,13 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: Fix microSD in Sapphire board
-Date: Mon, 17 Sep 2018 15:47:14 +0200
-Message-ID: <20180917134714.2197-1-vicencb@gmail.com>
+From: Diego Roversi <diegor-IWqWACnzNjyonA0d6jMUrA@public.gmane.org>
+Subject: Re: rk3288 Firefly Reload: 'reboot' doesn't work
+Date: Sat, 21 Oct 2017 16:02:00 +0200
+Message-ID: <20171021160200.095b24b9eb1553f404fd9d5a@tiscali.it>
+References: <b88abf6d-d95f-3eca-91d1-65fcb749cb22@xs4all.nl>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <b88abf6d-d95f-3eca-91d1-65fcb749cb22-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,91 +17,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The microSD card slot in the Sapphire board is not working because of
-several issues:
- 1.- The vmmc power supply is missing in the DTS. It is capable of 3.0V
- and has a GPIO-based enable control.
- 2.- The vqmmc power supply can provide up to 3.3V, but it is capped in
- the DTS to just 3.0V because of the vmmc capability. This results in a
- conflict from the mmc driver requesting an unsupportable voltage range
- from 3.3V to 3.0V (min > max) as reported in dmesg. So, extend the
- range up to 3.3V. The hw should be able to stand this 0.3V tolerance.
- See mmc_regulator_set_vqmmc in drivers/mmc/core/core.c.
- 3.- The card detect signal is non-working. There is a known conflict
- with jtag, but the workaround in drivers/soc/rockchip/grf.c does not
- work. Adding the broken-cd attribute to the DTS fixes the issue.
+On Fri, 20 Oct 2017 11:06:21 +0200
+Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> wrote:
 
-Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- .../boot/dts/rockchip/rk3399-sapphire.dtsi    | 24 ++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+> Hi Heiko,
+> 
+> If I run 'reboot' to reboot my Firefly Reload board the last thing I see
+> on the serial port is "reboot: Restarting system", but it never actually
+> restarts.
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 941b6270..f5ad789e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -130,6 +130,19 @@
- 		vin-supply = <&vcc_1v8>;
- 	};
- 
-+	vcc3v0_sd: vcc3v0-sd {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc0_pwr_h>;
-+		regulator-always-on;
-+		regulator-max-microvolt = <3000000>;
-+		regulator-min-microvolt = <3000000>;
-+		regulator-name = "vcc3v0_sd";
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
- 	vcc3v3_sys: vcc3v3-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_sys";
-@@ -343,7 +356,7 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <3000000>;
-+				regulator-max-microvolt = <3300000>;
- 				regulator-state-mem {
- 					regulator-on-in-suspend;
- 					regulator-suspend-microvolt = <3000000>;
-@@ -503,6 +516,13 @@
- 		};
- 	};
- 
-+	sd {
-+		sdmmc0_pwr_h: sdmmc0-pwr-h {
-+			rockchip,pins =
-+				<RK_GPIO0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb2 {
- 		vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins =
-@@ -533,6 +553,7 @@
- };
- 
- &sdmmc {
-+	broken-cd;
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
-@@ -541,6 +562,7 @@
- 	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
-+	vmmc-supply = <&vcc3v0_sd>;
- 	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
- };
+If I remember well, I was told that reboot was handled through watchdog timer. 
+
+
 -- 
-2.19.0
+Diego Roversi <diegor-IWqWACnzNjyonA0d6jMUrA@public.gmane.org>
