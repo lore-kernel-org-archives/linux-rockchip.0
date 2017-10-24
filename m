@@ -1,45 +1,28 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 3/5] mmc: dw_mmc: Add locking to the CTO timer
-Date: Mon, 23 Oct 2017 10:59:02 -0700
-Message-ID: <CAD=FV=XdWD1dk67yixy+5U7RubxKY2WAh-jhZfTOmb4ndf3b5g@mail.gmail.com>
-References: <20171012201118.23570-1-dianders@chromium.org> <20171012201118.23570-4-dianders@chromium.org>
- <41ae1571-4723-2700-1f03-7215e874c42e@rock-chips.com> <CAD=FV=UMuJBKV2-pNo4yiyfxXxYJo_tX6RkxCCzm_UFg9XyjyQ@mail.gmail.com>
- <d6acce96-b292-ee4e-8f9b-1d524c14e0fc@rock-chips.com> <CAD=FV=W7u0_kr9HXHpKmw=Hgco2P=u3jeSb8v0OoVvD+2kJorw@mail.gmail.com>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: pinctrl: rockchip: Add iomux-route switching support for rk3288
+Date: Tue, 24 Oct 2017 09:23:41 +0800
+Message-ID: <63f59d2b-01f2-3484-f3cc-fec63d546f11@rock-chips.com>
+References: <20171021085310.16246-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=W7u0_kr9HXHpKmw=Hgco2P=u3jeSb8v0OoVvD+2kJorw@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Ziyuan Xu <xzy.xu@rock-chips.com>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Emil Renner Berthing <kernel@esmil.dk>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20171021085310.16246-1-heiko@sntech.de>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linus.walleij@linaro.org
+Cc: linux-gpio@vger.kernel.org, hans.verkuil@cisco.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Heiko,
 
-On Tue, Oct 17, 2017 at 9:40 AM, Doug Anderson <dianders@chromium.org> wrote:
-> ...
-> ...
->> Yes, it looks hard to get concurrency right. I have a comment for your
->> DRTO case(patch 5). Let's do some brainstorm there.
->
-> Since your comments in this patch are positive and you've now added
-> your Reviewed-by to patch #5, I'm going to assume that you'd also like
-> your Reviewed-by on this patch?
->
->
-> Jaehoon: I think I have Shawn's review on all this series.  It would
-> be great if you could review them yourself and/or pick them up in your
-> tree.  Since they fix a regression on 4.14 we really don't want to
-> delay too long.  If you're busy, please yell and we can figure out a
-> way to get these in (either through Ulf directly or we should find
-> someone else to make a git tree and send a pull request).
+在 2017/10/21 16:53, Heiko Stuebner 写道:
+> The rk3288 also has one function that can be routed to one of two pins,
+> the hdmi cec functionality can use either gpio7c0 or gpio7c7.
+> So add the route switching support for it.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Hans Verkuil <hans.verkuil@cisco.com>
 
-Ulf: I still haven't heard anything for Jaehoon.  Do you have any
-interest in landing this series directly to your tree?  I think the
-whole series has been reviewed by Shawn.  I'm happy to re-post with
-collected tags or anything else you'd like.  It would be nice to get
-the regression fixed sooner rather than later...
+Reviewed-by: David Wu <david.wu@rock-chips.com>
+Thanks.
 
-Thanks!  :)
-
--Doug
