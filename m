@@ -1,156 +1,198 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 1/6] drm/rockchip/dsi: Define and use macros for PHY
- register addresses
-Date: Wed, 25 Oct 2017 03:47:49 -0400
-Message-ID: <20171025074749.vzhutgc2infhq3ga@art_vandelay>
+Subject: Re: [PATCH v3 2/6] drm/rockchip/dsi: correct phy parameter setting
+Date: Wed, 25 Oct 2017 03:49:39 -0400
+Message-ID: <20171025074939.4erys47vx6hoe2ms@art_vandelay>
 References: <1508903463-7254-1-git-send-email-nickey.yang@rock-chips.com>
+ <1508903463-7254-2-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1508903463-7254-1-git-send-email-nickey.yang@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1508903463-7254-2-git-send-email-nickey.yang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Nickey Yang <nickey.yang@rock-chips.com>
-Cc: mark.rutland@arm.com, hl@rock-chips.com, zyw@rock-chips.comg, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, xbl@rock-chips.com
+Cc: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, briannorris@chromium.org, hl@rock-chips.com, zyw@rock-chips.comg, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBPY3QgMjUsIDIwMTcgYXQgMTE6NTA6NThBTSArMDgwMCwgTmlja2V5IFlhbmcgd3Jv
-dGU6Cj4gUmVwbGFjZSB0aGUgaGFyZGNvZGVkIHJlZ2lzdGVyIGFkZHJlc3MgbnVtZXJpY2FsIHZh
-bHVlcyB3aXRoIG1hY3JvcyB0bwo+IGNsYXJpZnkgdGhlIGNvZGUuCj4gCj4gU2lnbmVkLW9mZi1i
-eTogTmlja2V5IFlhbmcgPG5pY2tleS55YW5nQHJvY2stY2hpcHMuY29tPgoKUmV2aWV3ZWQtYnk6
-IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAxMjkgKysrKysrKysrKysrKysrKysrKysrKy0t
-LS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA4NSBpbnNlcnRpb25zKCspLCA0NCBkZWxldGlv
-bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGIx
-NTc1NWIuLjk1Y2UyNTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
-LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
-Ywo+IEBAIC0yNTQsNiArMjU0LDI4IEBACj4gICNkZWZpbmUgRFdfTUlQSV9ORUVEU19QSFlfQ0ZH
-X0NMSwlCSVQoMCkKPiAgI2RlZmluZSBEV19NSVBJX05FRURTX0dSRl9DTEsJCUJJVCgxKQo+ICAK
-PiArI2RlZmluZSBQTExfQklBU19DVVJfU0VMX0NBUF9WQ09fQ09OVFJPTAkweDEwCj4gKyNkZWZp
-bmUgUExMX0NQX0NPTlRST0xfUExMX0xPQ0tfQllQQVNTCTB4MTEKPiArI2RlZmluZSBQTExfTFBG
-X0FORF9DUF9DT05UUk9MCTB4MTIKPiArI2RlZmluZSBQTExfSU5QVVRfRElWSURFUl9SQVRJTwkw
-eDE3Cj4gKyNkZWZpbmUgUExMX0xPT1BfRElWSURFUl9SQVRJTwkweDE4Cj4gKyNkZWZpbmUgUExM
-X0lOUFVUX0FORF9MT09QX0RJVklERVJfUkFUSU9TX0NPTlRST0wJMHgxOQo+ICsjZGVmaW5lIEJB
-TkRHQVBfQU5EX0JJQVNfQ09OVFJPTAkweDIwCj4gKyNkZWZpbmUgVEVSTUlOQVRJT05fUkVTSVNU
-RVJfQ09OVFJPTAkweDIxCj4gKyNkZWZpbmUgQUZFX0JJQVNfQkFOREdBUF9BTkFMT0dfUFJPR1JB
-TU1BQklMSVRZCTB4MjIKPiArI2RlZmluZSBIU19SWF9DT05UUk9MX09GX0xBTkVfMAkweDQ0Cj4g
-KyNkZWZpbmUgSFNfVFhfQ0xPQ0tfTEFORV9SRVFVRVNUX1NUQVRFX1RJTUVfQ09OVFJPTAkweDYw
-Cj4gKyNkZWZpbmUgSFNfVFhfQ0xPQ0tfTEFORV9QUkVQQVJFX1NUQVRFX1RJTUVfQ09OVFJPTAkw
-eDYxCj4gKyNkZWZpbmUgSFNfVFhfQ0xPQ0tfTEFORV9IU19aRVJPX1NUQVRFX1RJTUVfQ09OVFJP
-TAkweDYyCj4gKyNkZWZpbmUgSFNfVFhfQ0xPQ0tfTEFORV9UUkFJTF9TVEFURV9USU1FX0NPTlRS
-T0wJMHg2Mwo+ICsjZGVmaW5lIEhTX1RYX0NMT0NLX0xBTkVfRVhJVF9TVEFURV9USU1FX0NPTlRS
-T0wJMHg2NAo+ICsjZGVmaW5lIEhTX1RYX0NMT0NLX0xBTkVfUE9TVF9USU1FX0NPTlRST0wJMHg2
-NQo+ICsjZGVmaW5lIEhTX1RYX0RBVEFfTEFORV9SRVFVRVNUX1NUQVRFX1RJTUVfQ09OVFJPTAkw
-eDcwCj4gKyNkZWZpbmUgSFNfVFhfREFUQV9MQU5FX1BSRVBBUkVfU1RBVEVfVElNRV9DT05UUk9M
-CTB4NzEKPiArI2RlZmluZSBIU19UWF9EQVRBX0xBTkVfSFNfWkVST19TVEFURV9USU1FX0NPTlRS
-T0wJMHg3Mgo+ICsjZGVmaW5lIEhTX1RYX0RBVEFfTEFORV9UUkFJTF9TVEFURV9USU1FX0NPTlRS
-T0wJMHg3Mwo+ICsjZGVmaW5lIEhTX1RYX0RBVEFfTEFORV9FWElUX1NUQVRFX1RJTUVfQ09OVFJP
-TAkweDc0Cj4gKwo+ICBlbnVtIHsKPiAgCUJBTkRHQVBfOTdfMDcsCj4gIAlCQU5ER0FQXzk4XzA1
-LAo+IEBAIC00NDcsNTMgKzQ2OSw3MiBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0
-KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAJCXJldHVybiByZXQ7Cj4gIAl9Cj4gIAo+IC0J
-ZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxMCwgQllQQVNTX1ZDT19SQU5HRSB8Cj4gLQkJ
-CQkJIFZDT19SQU5HRV9DT05fU0VMKHZjbykgfAo+IC0JCQkJCSBWQ09fSU5fQ0FQX0NPTl9MT1cg
-fAo+IC0JCQkJCSBSRUZfQklBU19DVVJfU0VMKTsKPiAtCj4gLQlkd19taXBpX2RzaV9waHlfd3Jp
-dGUoZHNpLCAweDExLCBDUF9DVVJSRU5UXzNNQSk7Cj4gLQlkd19taXBpX2RzaV9waHlfd3JpdGUo
-ZHNpLCAweDEyLCBDUF9QUk9HUkFNX0VOIHwgTFBGX1BST0dSQU1fRU4gfAo+IC0JCQkJCSBMUEZf
-UkVTSVNUT1JTXzIwX0tPSE0pOwo+IC0KPiAtCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4
-NDQsIEhTRlJFUVJBTkdFX1NFTCh0ZXN0ZGluKSk7Cj4gLQo+IC0JZHdfbWlwaV9kc2lfcGh5X3dy
-aXRlKGRzaSwgMHgxNywgSU5QVVRfRElWSURFUihkc2ktPmlucHV0X2RpdikpOwo+IC0JZHdfbWlw
-aV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgxOCwgTE9PUF9ESVZfTE9XX1NFTChkc2ktPmZlZWRiYWNr
-X2RpdikgfAo+IC0JCQkJCSBMT1dfUFJPR1JBTV9FTik7Cj4gLQlkd19taXBpX2RzaV9waHlfd3Jp
-dGUoZHNpLCAweDE4LCBMT09QX0RJVl9ISUdIX1NFTChkc2ktPmZlZWRiYWNrX2RpdikgfAo+IC0J
-CQkJCSBISUdIX1BST0dSQU1fRU4pOwo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgx
-OSwgUExMX0xPT1BfRElWX0VOIHwgUExMX0lOUFVUX0RJVl9FTik7Cj4gLQo+IC0JZHdfbWlwaV9k
-c2lfcGh5X3dyaXRlKGRzaSwgMHgyMiwgTE9XX1BST0dSQU1fRU4gfAo+IC0JCQkJCSBCSUFTRVhU
-Ul9TRUwoQklBU0VYVFJfMTI3XzcpKTsKPiAtCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4
-MjIsIEhJR0hfUFJPR1JBTV9FTiB8Cj4gLQkJCQkJIEJBTkRHQVBfU0VMKEJBTkRHQVBfOTZfMTAp
-KTsKPiAtCj4gLQlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDIwLCBQT1dFUl9DT05UUk9M
-IHwgSU5URVJOQUxfUkVHX0NVUlJFTlQgfAo+IC0JCQkJCSBCSUFTX0JMT0NLX09OIHwgQkFOREdB
-UF9PTik7Cj4gLQo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgyMSwgVEVSX1JFU0lT
-VE9SX0xPVyB8IFRFUl9DQUxfRE9ORSB8Cj4gLQkJCQkJIFNFVFJEX01BWCB8IFRFUl9SRVNJU1RP
-UlNfT04pOwo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHgyMSwgVEVSX1JFU0lTVE9S
-X0hJR0ggfCBMRVZFTF9TSElGVEVSU19PTiB8Cj4gLQkJCQkJIFNFVFJEX01BWCB8IFBPV0VSX01B
-TkFHRSB8Cj4gLQkJCQkJIFRFUl9SRVNJU1RPUlNfT04pOwo+IC0KPiAtCWR3X21pcGlfZHNpX3Bo
-eV93cml0ZShkc2ksIDB4NjAsIFRMUF9QUk9HUkFNX0VOIHwgbnMyYmMoZHNpLCA1MDApKTsKPiAt
-CWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NjEsIFRIU19QUkVfUFJPR1JBTV9FTiB8IG5z
-MnVpKGRzaSwgNDApKTsKPiAtCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NjIsIFRIU19a
-RVJPX1BST0dSQU1fRU4gfCBuczJiYyhkc2ksIDMwMCkpOwo+IC0JZHdfbWlwaV9kc2lfcGh5X3dy
-aXRlKGRzaSwgMHg2MywgVEhTX1BSRV9QUk9HUkFNX0VOIHwgbnMydWkoZHNpLCAxMDApKTsKPiAt
-CWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIDB4NjQsIEJJVCg1KSB8IG5zMmJjKGRzaSwgMTAw
-KSk7Cj4gLQlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCAweDY1LCBCSVQoNSkgfCAobnMyYmMo
-ZHNpLCA2MCkgKyA3KSk7Cj4gLQo+IC0JZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MCwg
-VExQX1BST0dSQU1fRU4gfCBuczJiYyhkc2ksIDUwMCkpOwo+IC0JZHdfbWlwaV9kc2lfcGh5X3dy
-aXRlKGRzaSwgMHg3MSwKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIFBMTF9CSUFTX0NV
-Ul9TRUxfQ0FQX1ZDT19DT05UUk9MLAo+ICsJCQkgICAgICBCWVBBU1NfVkNPX1JBTkdFIHwKPiAr
-CQkJICAgICAgVkNPX1JBTkdFX0NPTl9TRUwodmNvKSB8Cj4gKwkJCSAgICAgIFZDT19JTl9DQVBf
-Q09OX0xPVyB8Cj4gKwkJCSAgICAgIFJFRl9CSUFTX0NVUl9TRUwpOwo+ICsKPiArCWR3X21pcGlf
-ZHNpX3BoeV93cml0ZShkc2ksIFBMTF9DUF9DT05UUk9MX1BMTF9MT0NLX0JZUEFTUywKPiArCQkJ
-ICAgICAgQ1BfQ1VSUkVOVF8zTUEpOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgUExM
-X0xQRl9BTkRfQ1BfQ09OVFJPTCwKPiArCQkJICAgICAgQ1BfUFJPR1JBTV9FTiB8IExQRl9QUk9H
-UkFNX0VOIHwKPiArCQkJICAgICAgTFBGX1JFU0lTVE9SU18yMF9LT0hNKTsKPiArCj4gKwlkd19t
-aXBpX2RzaV9waHlfd3JpdGUoZHNpLCBIU19SWF9DT05UUk9MX09GX0xBTkVfMCwKPiArCQkJICAg
-ICAgSFNGUkVRUkFOR0VfU0VMKHRlc3RkaW4pKTsKPiArCj4gKwlkd19taXBpX2RzaV9waHlfd3Jp
-dGUoZHNpLCBQTExfSU5QVVRfRElWSURFUl9SQVRJTywKPiArCQkJICAgICAgSU5QVVRfRElWSURF
-Uihkc2ktPmlucHV0X2RpdikpOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgUExMX0xP
-T1BfRElWSURFUl9SQVRJTywKPiArCQkJICAgICAgTE9PUF9ESVZfTE9XX1NFTChkc2ktPmZlZWRi
-YWNrX2RpdikgfAo+ICsJCQkgICAgICBMT1dfUFJPR1JBTV9FTik7Cj4gKwlkd19taXBpX2RzaV9w
-aHlfd3JpdGUoZHNpLCBQTExfTE9PUF9ESVZJREVSX1JBVElPLAo+ICsJCQkgICAgICBMT09QX0RJ
-Vl9ISUdIX1NFTChkc2ktPmZlZWRiYWNrX2RpdikgfAo+ICsJCQkgICAgICBISUdIX1BST0dSQU1f
-RU4pOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgUExMX0lOUFVUX0FORF9MT09QX0RJ
-VklERVJfUkFUSU9TX0NPTlRST0wsCj4gKwkJCSAgICAgIFBMTF9MT09QX0RJVl9FTiB8IFBMTF9J
-TlBVVF9ESVZfRU4pOwo+ICsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIEFGRV9CSUFT
-X0JBTkRHQVBfQU5BTE9HX1BST0dSQU1NQUJJTElUWSwKPiArCQkJICAgICAgTE9XX1BST0dSQU1f
-RU4gfCBCSUFTRVhUUl9TRUwoQklBU0VYVFJfMTI3XzcpKTsKPiArCWR3X21pcGlfZHNpX3BoeV93
-cml0ZShkc2ksIEFGRV9CSUFTX0JBTkRHQVBfQU5BTE9HX1BST0dSQU1NQUJJTElUWSwKPiArCQkJ
-ICAgICAgSElHSF9QUk9HUkFNX0VOIHwgQkFOREdBUF9TRUwoQkFOREdBUF85Nl8xMCkpOwo+ICsK
-PiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIEJBTkRHQVBfQU5EX0JJQVNfQ09OVFJPTCwK
-PiArCQkJICAgICAgUE9XRVJfQ09OVFJPTCB8IElOVEVSTkFMX1JFR19DVVJSRU5UIHwKPiArCQkJ
-ICAgICAgQklBU19CTE9DS19PTiB8IEJBTkRHQVBfT04pOwo+ICsKPiArCWR3X21pcGlfZHNpX3Bo
-eV93cml0ZShkc2ksIFRFUk1JTkFUSU9OX1JFU0lTVEVSX0NPTlRST0wsCj4gKwkJCSAgICAgIFRF
-Ul9SRVNJU1RPUl9MT1cgfCBURVJfQ0FMX0RPTkUgfAo+ICsJCQkgICAgICBTRVRSRF9NQVggfCBU
-RVJfUkVTSVNUT1JTX09OKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIFRFUk1JTkFU
-SU9OX1JFU0lTVEVSX0NPTlRST0wsCj4gKwkJCSAgICAgIFRFUl9SRVNJU1RPUl9ISUdIIHwgTEVW
-RUxfU0hJRlRFUlNfT04gfAo+ICsJCQkgICAgICBTRVRSRF9NQVggfCBQT1dFUl9NQU5BR0UgfAo+
-ICsJCQkgICAgICBURVJfUkVTSVNUT1JTX09OKTsKPiArCj4gKwlkd19taXBpX2RzaV9waHlfd3Jp
-dGUoZHNpLCBIU19UWF9DTE9DS19MQU5FX1JFUVVFU1RfU1RBVEVfVElNRV9DT05UUk9MLAo+ICsJ
-CQkgICAgICBUTFBfUFJPR1JBTV9FTiB8IG5zMmJjKGRzaSwgNTAwKSk7Cj4gKwlkd19taXBpX2Rz
-aV9waHlfd3JpdGUoZHNpLCBIU19UWF9DTE9DS19MQU5FX1BSRVBBUkVfU1RBVEVfVElNRV9DT05U
-Uk9MLAo+ICsJCQkgICAgICBUSFNfUFJFX1BST0dSQU1fRU4gfCBuczJ1aShkc2ksIDQwKSk7Cj4g
-Kwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCBIU19UWF9DTE9DS19MQU5FX0hTX1pFUk9fU1RB
-VEVfVElNRV9DT05UUk9MLAo+ICsJCQkgICAgICBUSFNfWkVST19QUk9HUkFNX0VOIHwgbnMyYmMo
-ZHNpLCAzMDApKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIEhTX1RYX0NMT0NLX0xB
-TkVfVFJBSUxfU1RBVEVfVElNRV9DT05UUk9MLAo+ICsJCQkgICAgICBUSFNfUFJFX1BST0dSQU1f
-RU4gfCBuczJ1aShkc2ksIDEwMCkpOwo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwgSFNf
-VFhfQ0xPQ0tfTEFORV9FWElUX1NUQVRFX1RJTUVfQ09OVFJPTCwKPiArCQkJICAgICAgQklUKDUp
-IHwgbnMyYmMoZHNpLCAxMDApKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ksIEhTX1RY
-X0NMT0NLX0xBTkVfUE9TVF9USU1FX0NPTlRST0wsCj4gKwkJCSAgICAgIEJJVCg1KSB8IChuczJi
-Yyhkc2ksIDYwKSArIDcpKTsKPiArCj4gKwlkd19taXBpX2RzaV9waHlfd3JpdGUoZHNpLCBIU19U
-WF9EQVRBX0xBTkVfUkVRVUVTVF9TVEFURV9USU1FX0NPTlRST0wsCj4gKwkJCSAgICAgIFRMUF9Q
-Uk9HUkFNX0VOIHwgbnMyYmMoZHNpLCA1MDApKTsKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShk
-c2ksIEhTX1RYX0RBVEFfTEFORV9QUkVQQVJFX1NUQVRFX1RJTUVfQ09OVFJPTCwKPiAgCQkJICAg
-ICAgVEhTX1BSRV9QUk9HUkFNX0VOIHwgKG5zMnVpKGRzaSwgNTApICsgNSkpOwo+IC0JZHdfbWlw
-aV9kc2lfcGh5X3dyaXRlKGRzaSwgMHg3MiwKPiArCWR3X21pcGlfZHNpX3BoeV93cml0ZShkc2ks
-IEhTX1RYX0RBVEFfTEFORV9IU19aRVJPX1NUQVRFX1RJTUVfQ09OVFJPTCwKPiAgCQkJICAgICAg
-VEhTX1pFUk9fUFJPR1JBTV9FTiB8IChuczJiYyhkc2ksIDE0MCkgKyAyKSk7Cj4gLQlkd19taXBp
-X2RzaV9waHlfd3JpdGUoZHNpLCAweDczLAo+ICsJZHdfbWlwaV9kc2lfcGh5X3dyaXRlKGRzaSwg
-SFNfVFhfREFUQV9MQU5FX1RSQUlMX1NUQVRFX1RJTUVfQ09OVFJPTCwKPiAgCQkJICAgICAgVEhT
-X1BSRV9QUk9HUkFNX0VOIHwgKG5zMnVpKGRzaSwgNjApICsgOCkpOwo+IC0JZHdfbWlwaV9kc2lf
-cGh5X3dyaXRlKGRzaSwgMHg3NCwgQklUKDUpIHwgbnMyYmMoZHNpLCAxMDApKTsKPiArCWR3X21p
-cGlfZHNpX3BoeV93cml0ZShkc2ksIEhTX1RYX0RBVEFfTEFORV9FWElUX1NUQVRFX1RJTUVfQ09O
-VFJPTCwKPiArCQkJICAgICAgQklUKDUpIHwgbnMyYmMoZHNpLCAxMDApKTsKPiAgCj4gIAlkc2lf
-d3JpdGUoZHNpLCBEU0lfUEhZX1JTVFosIFBIWV9FTkZPUkNFUExMIHwgUEhZX0VOQUJMRUNMSyB8
-Cj4gIAkJCQkgICAgIFBIWV9VTlJTVFogfCBQSFlfVU5TSFVURE9XTlopOwo+IC0tIAo+IDEuOS4x
-Cj4gCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0g
-T1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Wed, Oct 25, 2017 at 11:50:59AM +0800, Nickey Yang wrote:
+> As MIPI PHY document show, icpctrl<3..0> and lpfctrl<5..0>
+> should depend on frequency,so fix it.
+> 
+> Reviewed-by: Sean Paul <seanpaul@chromium.org>
+> Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
+> ---
+
+In future, please list the differences between versions. It makes reviewing much
+easier.
+
+Thanks,
+
+Sean
+
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 98 ++++++++++++++++++++++++----------
+>  1 file changed, 70 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> index 95ce253..09e7bfe 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+> @@ -217,10 +217,21 @@
+>  #define VCO_IN_CAP_CON_HIGH	(0x2 << 1)
+>  #define REF_BIAS_CUR_SEL	BIT(0)
+>  
+> -#define CP_CURRENT_3MA		BIT(3)
+> +#define CP_CURRENT_1_5UA	0x1
+> +#define CP_CURRENT_4_5UA	0x2
+> +#define CP_CURRENT_7_5UA	0x6
+> +#define CP_CURRENT_6UA	0x9
+> +#define CP_CURRENT_12UA	0xb
+> +#define CP_CURRENT_SEL(val)	((val) & 0xf)
+>  #define CP_PROGRAM_EN		BIT(7)
+> +
+> +#define LPF_RESISTORS_15_5KOHM	0x1
+> +#define LPF_RESISTORS_13KOHM	0x2
+> +#define LPF_RESISTORS_11_5KOHM	0x4
+> +#define LPF_RESISTORS_10_5KOHM	0x8
+> +#define LPF_RESISTORS_8KOHM	0x10
+>  #define LPF_PROGRAM_EN		BIT(6)
+> -#define LPF_RESISTORS_20_KOHM	0
+> +#define LPF_RESISTORS_SEL(val)	((val) & 0x3f)
+>  
+>  #define HSFREQRANGE_SEL(val)	(((val) & 0x3f) << 1)
+>  
+> @@ -339,32 +350,63 @@ enum dw_mipi_dsi_mode {
+>  	DW_MIPI_DSI_VID_MODE,
+>  };
+>  
+> -struct dphy_pll_testdin_map {
+> +struct dphy_pll_parameter_map {
+>  	unsigned int max_mbps;
+> -	u8 testdin;
+> +	u8 hsfreqrange;
+> +	u8 icpctrl;
+> +	u8 lpfctrl;
+>  };
+>  
+>  /* The table is based on 27MHz DPHY pll reference clock. */
+> -static const struct dphy_pll_testdin_map dptdin_map[] = {
+> -	{  90, 0x00}, { 100, 0x10}, { 110, 0x20}, { 130, 0x01},
+> -	{ 140, 0x11}, { 150, 0x21}, { 170, 0x02}, { 180, 0x12},
+> -	{ 200, 0x22}, { 220, 0x03}, { 240, 0x13}, { 250, 0x23},
+> -	{ 270, 0x04}, { 300, 0x14}, { 330, 0x05}, { 360, 0x15},
+> -	{ 400, 0x25}, { 450, 0x06}, { 500, 0x16}, { 550, 0x07},
+> -	{ 600, 0x17}, { 650, 0x08}, { 700, 0x18}, { 750, 0x09},
+> -	{ 800, 0x19}, { 850, 0x29}, { 900, 0x39}, { 950, 0x0a},
+> -	{1000, 0x1a}, {1050, 0x2a}, {1100, 0x3a}, {1150, 0x0b},
+> -	{1200, 0x1b}, {1250, 0x2b}, {1300, 0x3b}, {1350, 0x0c},
+> -	{1400, 0x1c}, {1450, 0x2c}, {1500, 0x3c}
+> +static const struct dphy_pll_parameter_map dppa_map[] = {
+> +	{  89, 0x00, CP_CURRENT_1_5UA, LPF_RESISTORS_13KOHM},
+> +	{  99, 0x10, CP_CURRENT_1_5UA, LPF_RESISTORS_13KOHM},
+> +	{ 109, 0x20, CP_CURRENT_1_5UA, LPF_RESISTORS_13KOHM},
+> +	{ 129, 0x01, CP_CURRENT_1_5UA, LPF_RESISTORS_15_5KOHM},
+> +	{ 139, 0x11, CP_CURRENT_1_5UA, LPF_RESISTORS_15_5KOHM},
+> +	{ 149, 0x21, CP_CURRENT_1_5UA, LPF_RESISTORS_15_5KOHM},
+> +	{ 169, 0x02, CP_CURRENT_6UA, LPF_RESISTORS_13KOHM},
+> +	{ 179, 0x12, CP_CURRENT_6UA, LPF_RESISTORS_13KOHM},
+> +	{ 199, 0x22, CP_CURRENT_6UA, LPF_RESISTORS_13KOHM},
+> +	{ 219, 0x03, CP_CURRENT_4_5UA, LPF_RESISTORS_13KOHM},
+> +	{ 239, 0x13, CP_CURRENT_4_5UA, LPF_RESISTORS_13KOHM},
+> +	{ 249, 0x23, CP_CURRENT_4_5UA, LPF_RESISTORS_13KOHM},
+> +	{ 269, 0x04, CP_CURRENT_6UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 299, 0x14, CP_CURRENT_6UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 329, 0x05, CP_CURRENT_1_5UA, LPF_RESISTORS_15_5KOHM},
+> +	{ 359, 0x15, CP_CURRENT_1_5UA, LPF_RESISTORS_15_5KOHM},
+> +	{ 399, 0x25, CP_CURRENT_1_5UA, LPF_RESISTORS_15_5KOHM},
+> +	{ 449, 0x06, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 499, 0x16, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 549, 0x07, CP_CURRENT_7_5UA, LPF_RESISTORS_10_5KOHM},
+> +	{ 599, 0x17, CP_CURRENT_7_5UA, LPF_RESISTORS_10_5KOHM},
+> +	{ 649, 0x08, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 699, 0x18, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 749, 0x09, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 799, 0x19, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 849, 0x29, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 899, 0x39, CP_CURRENT_7_5UA, LPF_RESISTORS_11_5KOHM},
+> +	{ 949, 0x0a, CP_CURRENT_12UA, LPF_RESISTORS_8KOHM},
+> +	{ 999, 0x1a, CP_CURRENT_12UA, LPF_RESISTORS_8KOHM},
+> +	{1049, 0x2a, CP_CURRENT_12UA, LPF_RESISTORS_8KOHM},
+> +	{1099, 0x3a, CP_CURRENT_12UA, LPF_RESISTORS_8KOHM},
+> +	{1149, 0x0b, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1199, 0x1b, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1249, 0x2b, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1299, 0x3b, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1349, 0x0c, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1399, 0x1c, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1449, 0x2c, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM},
+> +	{1500, 0x3c, CP_CURRENT_12UA, LPF_RESISTORS_10_5KOHM}
+>  };
+>  
+> -static int max_mbps_to_testdin(unsigned int max_mbps)
+> +static int max_mbps_to_parameter(unsigned int max_mbps)
+>  {
+>  	int i;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++)
+> -		if (dptdin_map[i].max_mbps > max_mbps)
+> -			return dptdin_map[i].testdin;
+> +	for (i = 0; i < ARRAY_SIZE(dppa_map); i++)
+> +		if (dppa_map[i].max_mbps >= max_mbps)
+> +			return i;
+>  
+>  	return -EINVAL;
+>  }
+> @@ -446,16 +488,16 @@ static inline unsigned int ns2ui(struct dw_mipi_dsi *dsi, int ns)
+>  
+>  static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+>  {
+> -	int ret, testdin, vco, val;
+> +	int ret, i, vco, val;
+>  
+>  	vco = (dsi->lane_mbps < 200) ? 0 : (dsi->lane_mbps + 100) / 200;
+>  
+> -	testdin = max_mbps_to_testdin(dsi->lane_mbps);
+> -	if (testdin < 0) {
+> +	i = max_mbps_to_parameter(dsi->lane_mbps);
+> +	if (i < 0) {
+>  		DRM_DEV_ERROR(dsi->dev,
+> -			      "failed to get testdin for %dmbps lane clock\n",
+> +			      "failed to get parameter for %dmbps clock\n",
+>  			      dsi->lane_mbps);
+> -		return testdin;
+> +		return i;
+>  	}
+>  
+>  	/* Start by clearing PHY state */
+> @@ -476,13 +518,13 @@ static int dw_mipi_dsi_phy_init(struct dw_mipi_dsi *dsi)
+>  			      REF_BIAS_CUR_SEL);
+>  
+>  	dw_mipi_dsi_phy_write(dsi, PLL_CP_CONTROL_PLL_LOCK_BYPASS,
+> -			      CP_CURRENT_3MA);
+> +			      CP_CURRENT_SEL(dppa_map[i].icpctrl));
+>  	dw_mipi_dsi_phy_write(dsi, PLL_LPF_AND_CP_CONTROL,
+>  			      CP_PROGRAM_EN | LPF_PROGRAM_EN |
+> -			      LPF_RESISTORS_20_KOHM);
+> +			      LPF_RESISTORS_SEL(dppa_map[i].lpfctrl));
+>  
+>  	dw_mipi_dsi_phy_write(dsi, HS_RX_CONTROL_OF_LANE_0,
+> -			      HSFREQRANGE_SEL(testdin));
+> +			      HSFREQRANGE_SEL(dppa_map[i].hsfreqrange));
+>  
+>  	dw_mipi_dsi_phy_write(dsi, PLL_INPUT_DIVIDER_RATIO,
+>  			      INPUT_DIVIDER(dsi->input_div));
+> @@ -565,7 +607,7 @@ static int dw_mipi_dsi_get_lane_bps(struct dw_mipi_dsi *dsi,
+>  	unsigned int i, pre;
+>  	unsigned long mpclk, pllref, tmp;
+>  	unsigned int m = 1, n = 1, target_mbps = 1000;
+> -	unsigned int max_mbps = dptdin_map[ARRAY_SIZE(dptdin_map) - 1].max_mbps;
+> +	unsigned int max_mbps = dppa_map[ARRAY_SIZE(dppa_map) - 1].max_mbps;
+>  	int bpp;
+>  
+>  	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
+> -- 
+> 1.9.1
+> 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
