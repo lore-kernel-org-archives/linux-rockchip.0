@@ -1,126 +1,67 @@
 From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v3 5/6] dt-bindings: add the rockchip, dual-channel for
- dw-mipi-dsi
-Date: Thu, 26 Oct 2017 10:23:29 +0530
-Message-ID: <816a1d2d-d213-709d-f357-63e7c5248ad3@codeaurora.org>
+Subject: Re: [PATCH v3 4/6] drm/rockchip/dsi: add dual mipi channel support
+Date: Thu, 26 Oct 2017 10:41:26 +0530
+Message-ID: <bfb92284-fa18-ab3e-1f15-6d8344d2a0ee@codeaurora.org>
 References: <1508903463-7254-1-git-send-email-nickey.yang@rock-chips.com>
- <1508903463-7254-5-git-send-email-nickey.yang@rock-chips.com>
+ <1508903463-7254-4-git-send-email-nickey.yang@rock-chips.com>
+ <20171025080448.pa465q5jofxhqdn4@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1508903463-7254-5-git-send-email-nickey.yang@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171025080448.pa465q5jofxhqdn4@art_vandelay>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nickey Yang <nickey.yang@rock-chips.com>, mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
-Cc: hl@rock-chips.com, zyw@rock-chips.comg, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xbl@rock-chips.com
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.rutland@arm.com, hl@rock-chips.com, zyw@rock-chips.comg, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 10/25/2017 09:21 AM, Nickey Yang wrote:
-> Configure dsi slave channel when driving a panel
-> which needs 2 DSI links.
-> 
-> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> ---
->   .../devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt       | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> index 6bb59ab..a2bea22 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> @@ -19,6 +19,8 @@ Optional properties:
->   - power-domains: a phandle to mipi dsi power domain node.
->   - resets: list of phandle + reset specifier pairs, as described in [3].
->   - reset-names: string reset name, must be "apb".
-> +- rockchip,dual-channel: phandle to a 2nd DSI channel, useful as a slave
-> +channel when driving a panel which needs 2 DSI links.
-The example below is how dual DSI bindings could look like. Let me know what
-you think of it.
-
-If both DSI outputs drive the same device (i.e, point to the same panel DT
-node), then I think it's reasonable enough to assume that the DSIs are
-operating in a 'dual-channel' mode. That being said, we still need DT to
-describe which of the DSIs generates the clock for both the channels. This
-is done with the 'clock-master' DT binding.
-
-Thanks,
-Archit
-
-mipi_dsi: mipi@ff960000 {
-	...
-	...
-
-	clock-master;	/* implies that this DSI instance drivers the clock
-			 * for both the DSIs.
-			 */
-
-	ports {
-		mipi_in: port {
-			...
-			...
-		};
-
-		/* add extra output ports for both DSIs */
-		mipi_out: port {
-			mipi_panel_out: endpoint {
-				remote-endpoint = <&panel_in_channel0>;
-			};
-		};
-	};
-
-	panel {
-		...
-		...
-		/*
-		 * panel node can describe its input ports, if both the DSIs output
-		 * ports are connected to the same device (i.e, the same DSI panel),
-		 * we can assume that the DSIs need to operate in dual DSI mode
-		 */
-		ports {
-			...
-			port@0 {
-				panel_in_channel0: endpoint {
-					remote-endpoint = <&mipi_panel_out>;
-				};
-			};
-
-			port@1 {
-				panel_in_channel1: endpoint {
-					remote-endpoint = <&mipi1_panel_out>;
-				};
-	
-			};
-		};
-	};
-};
-
-
-mipi_dsi1: mipi@ff968000 {
-	...
-	...
-
-	ports {
-		mipi1_in: port {
-			...
-			...
-		};
-
-		mipi1_out: port {
-			mipi1_panel_out: endpoint {
-				remote-endpoint = <&panel_in_channel1>;
-			};
-		};
-	};
-};
-
->   
->   [1] Documentation/devicetree/bindings/clock/clock-bindings.txt
->   [2] Documentation/devicetree/bindings/media/video-interfaces.txt
-> 
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+CgpPbiAxMC8yNS8yMDE3IDAxOjM0IFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4gT24gV2VkLCBPY3Qg
+MjUsIDIwMTcgYXQgMTE6NTE6MDFBTSArMDgwMCwgTmlja2V5IFlhbmcgd3JvdGU6Cj4+IFRoaXMg
+cGF0Y2ggYWRkIGR1YWwgbWlwaSBjaGFubmVsIHN1cHBvcnQ6Cj4+IDEuYWRkIGRlZmluaXRpb24g
+b2YgZHNpMSByZWdpc3RlciBhbmQgZ3JmIG9wZXJhdGlvbi4KPj4gMi5kc2kwIGFuZCBkc2kxIHdp
+bGwgd29yayBpbiBtYXN0ZXIgYW5kIHNsYXZlIG1vZGUKPj4gd2hlbiBkcml2aW5nIGR1YWwgbWlw
+aSBwYW5lbC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTmlja2V5IFlhbmcgPG5pY2tleS55YW5nQHJv
+Y2stY2hpcHMuY29tPgo+PiAtLS0KPiAKPiBJbiB0aGUgbGFzdCByZXZpc2lvbiwgSSBhc2tlZCB5
+b3UgdG8gcHJvdmlkZSBjaGFuZ2Vsb2cgYmV0d2VlbiByZXZpc2lvbnMsCj4gKnBsZWFzZSogZG8g
+dGhpcy4gWW91IHJlY2VpdmVkIHJldmlldyBvbiB0aGUgbGFzdCB2ZXJzaW9uIGFuZCBhIGJ1bmNo
+IG9mIHRoZQo+IGZlZWRiYWNrIGhhc24ndCBiZWVuIHRha2VuIGludG8gYWNjb3VudCB3aXRoIG5v
+IGV4cGxhbmF0aW9uIGFzIHRvIHdoeS4gUGxlYXNlIGdvCj4gYmFjayB0byB0aGUgbGFzdCB2ZXJz
+aW9uLCByZWFkIHRoZSByZXZpZXdzIHRoYXQgcGVvcGxlIHdlcmUgZ2VuZXJvdXMgZW5vdWdoIHRv
+Cj4gZ2l2ZSBhbmQgZWl0aGVyIGZpeCB0aGUgY29kZSBvciBleHBsYWluIHdoeSB5b3UncmUgbm90
+Lgo+IAo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jICAgICAgfCAz
+NzcgKysrKysrKysrKysrKysrKysrKystLS0tLS0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgIDEgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgIDIgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAgIDMgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAgIDEgKwo+PiAgIDUgZmlsZXMgY2hhbmdlZCwgMjc5
+IGluc2VydGlvbnMoKyksIDEwNSBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2R3LW1pcGktZHNpLmMKPj4gaW5kZXggNTg5YjQyMC4uMjVlN2I3NyAxMDA2NDQKPj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiAKPiA8c25pcCAvPgo+IAo+PiArc3Rh
+dGljIGludCByb2NrY2hpcF9kc2lfZHVhbF9jaGFubmVsX3Byb2JlKHN0cnVjdCBkd19taXBpX2Rz
+aSAqZHNpKQo+PiArewo+PiArCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnA7Cj4+ICsJc3RydWN0IHBs
+YXRmb3JtX2RldmljZSAqc2Vjb25kYXJ5Owo+PiArCj4+ICsJbnAgPSBvZl9wYXJzZV9waGFuZGxl
+KGRzaS0+ZGV2LT5vZl9ub2RlLCAicm9ja2NoaXAsZHVhbC1jaGFubmVsIiwgMCk7Cj4+ICsJaWYg
+KG5wKSB7Cj4+ICsJCXNlY29uZGFyeSA9IG9mX2ZpbmRfZGV2aWNlX2J5X25vZGUobnApOwo+PiAr
+CQlkc2ktPnNsYXZlID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEoc2Vjb25kYXJ5KTsKPj4gKwkJb2Zf
+bm9kZV9wdXQobnApOwo+PiArCj4+ICsJCWlmICghZHNpLT5zbGF2ZSkKPj4gKwkJCXJldHVybiAt
+RVBST0JFX0RFRkVSOwo+IAo+IEFyY2hpdCBhc2tlZCB5b3Ugbm90IHRvIGRvIHRoaXMgaW4gdGhl
+IHByZXZpb3VzIHJldmlldy4KCkkndmUgcmVwbGllZCB3aXRoIHNvbWUgbW9yZSBkZXRhaWxzIHRv
+IHRoZSBwYXRjaCB3aGljaCBhZGRzIHRoaXMgaW4gdGhlIERUCmJpbmRpbmcgZG9jLgoKVGhhbmtz
+LApBcmNoaXQKCj4gCj4+ICsKPj4gKwkJZHNpLT5zbGF2ZS0+bWFzdGVyID0gZHNpOwo+PiArCX0K
+Pj4gKwo+PiArCXJldHVybiAwOwo+PiArfQo+IAo+IDxzbmlwIC8+Cj4gCj4+IC0tIAo+PiAxLjku
+MQo+Pgo+IAoKLS0gClF1YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVy
+IG9mIENvZGUgQXVyb3JhIEZvcnVtLAphIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQ
+cm9qZWN0Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
