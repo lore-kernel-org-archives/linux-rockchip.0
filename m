@@ -1,109 +1,66 @@
-From: Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH v3 3/6] drm/rockchip/dsi: correct Feedback divider setting
-Date: Thu, 26 Oct 2017 09:44:14 +0000
-Message-ID: <39862e7a-b03f-f5d9-54db-ff9aef294a9c@st.com>
-References: <1508903463-7254-1-git-send-email-nickey.yang@rock-chips.com>
- <1508903463-7254-3-git-send-email-nickey.yang@rock-chips.com>
- <20171025075719.4tt7lomec5x7guon@art_vandelay>
- <20171026010946.GA33225@google.com>
- <c1f17f1e-6e4f-d44d-348e-43157474f3c9@codeaurora.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <c1f17f1e-6e4f-d44d-348e-43157474f3c9-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Content-Language: en-US
-Content-ID: <6B19CD35E9DC7E4FBF0A93E0C88C1C3A-qxv4g6HH51o@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "airlied-cv59FeDIM0c@public.gmane.org" <airlied-cv59FeDIM0c@public.gmane.org>, "zyw-TNX95d0MmH4t7mc0qhOs/Q@public.gmane.org" <zyw-TNX95d0MmH4t7mc0qhOs/Q@public.gmane.org>, Kristian Kristensen <hoegsberg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "xbl-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <xbl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v8 0/7] PCI: rockchip: Move PCIe WAKE# handling into pci core
+Date: Thu, 26 Oct 2017 21:28:33 +0800
+Message-ID: <20171026132840.20946-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, bhelgaas@google.com
+Cc: linux-pm@vger.kernel.org, tony@atomide.com, shawn.lin@rock-chips.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Xinming Hu <huxm@marvell.com>, linux-wireless@vger.kernel.org, linux-pci@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Kalle Valo <kvalo@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, linux-acpi@vger.kernel.org, linux-rockchip@lists.infradead.org, Nishant Sarmukadam <nishants@marvell.com>, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Ganapathi Bhat <gbhat@marvell.com>, Frank Rowand <frowand.list@gmail.com>, Len Brown <lenb@kernel.org>, linux-arm-kernel@lists.infradead.org, netd
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-On 10/26/2017 06:13 AM, Archit Taneja wrote:
-> Hi,
-> 
-> On 10/26/2017 06:39 AM, Brian Norris wrote:
->> On Wed, Oct 25, 2017 at 03:57:19AM -0400, Sean Paul wrote:
->>> Archit asked a question about moving to
->>> dw-mipi-dsi
->>
->> That question made me think though: this approach seems backwards. It
->> seems like someone did copy/paste/fork, and then we're asking the
->> authors of the original driver to un-fork? It seems like this should
->> happen the other way around -- those trying to support a new incarnation
->> should have looked to try to abstract the original driver for their
->> uses first.
-> 
-> Yes, ST wanted to replicate rockchip's version of the mipi DSI driver and
-> put it in their folder. If they did that, their KMS driver would have been
-> the third driver to implement a third instance of the DW DSI controller 
-> driver.
-> Hisilicon and Rockchip being the other 2.
-> 
-> It was either that or attempt at a common DSI DW bridge driver. I suggested
-> the latter.
-> 
-> The ST guys have abstracted out the PHY pieces, which they knew varied 
-> between
-> rockchip and ST. Ideally, they should have also tried to create a RFC 
-> patch to
-> make the rockchip driver use the bridge too. But they didn't do that, and
-> the rockchip or hisilicon people were interested in even looking at it,
-> even after I CC'ed them.
-> 
->>
->> IIUC, that's exactly what Rockchip did for much of their Analogix eDP
->> code -- they reworked the Exynos DP driver to split common Analogix code
->> from any Exynos-specific bits.
-> 
-> I get that. I had hoped either ST or Rockchip guys would have done the 
-> similar
-> thing, but no one volunteered.
-> 
->>
->> And actually, the current stuff in
->> drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c is completely unused. It
->> exports some functions, but I see no users of it. Is that intended? Is
-> 
-> The ST kms driver uses it:
-> 
-> drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> 
+Currently we are handling wake irq in mrvl wifi driver. Move it into
+pci core.
 
-I confirm STM32 chipsets use the Synopsys dw dsi bridge driver.
+Tested on my chromebook bob(with cros 4.4 kernel and mrvl wifi).
 
-I plan to improve this bridge driver by adding new features (see todos + 
-dsi read, command mode with bta & gpio...).
 
-For the first commit, I did my best to keep the source code as close as 
-possible to the Rockchip version, in order to ease the port for Rockchip 
-guys.
+Changes in v8:
+Add optional "pci", and rewrite commit message.
+Rewrite the commit message.
+Add pci-of.c and use platform_pm_ops to handle the PCIe WAKE# signal.
 
->> somebody already working on refactoring existing Rockchip code to use
->> this?
-> 
-> I don't know. If rockchip isn't interested in doing it, we can check with
-> Philippe from ST if he can try creating a RFC that converts the rockchip
-> driver to use the dw-mipi-dsi driver.
+Changes in v7:
+Move PCIE_WAKE handling into pci core.
 
-I am not really interested in doing this port for Rockchip (or Hisilicon 
-or i.MX...) but happy to help anyone that wants to use the dw-mipi-dsi 
-bridge driver :)
+Changes in v6:
+Fix device_init_wake error handling, and add some comments.
 
-Many thanks,
-Philippe :)
+Changes in v5:
+Move to pci.txt
+Use "wakeup" instead of "wake"
+Rebase.
 
-> 
-> Thanks,
-> Archit
-> 
+Changes in v3:
+Fix error handling.
+
+Changes in v2:
+Use dev_pm_set_dedicated_wake_irq.
+
+Jeffy Chen (7):
+  dt-bindings: PCI: Add definition of PCIe WAKE# irq and PCI irq
+  mwifiex: Disable wakeup irq handling for pcie
+  arm64: dts: rockchip: Handle PCIe WAKE# signal in pcie driver for Gru
+  of/irq: Adjust of pci irq parsing for multiple interrupts
+  PCI: Make pci_platform_pm_ops's callbacks optional
+  PCI / PM: Move acpi wakeup code to pci core
+  PCI / PM: Add support for the PCIe WAKE# signal for OF
+
+ Documentation/devicetree/bindings/pci/pci.txt |   3 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  |  15 +--
+ drivers/net/wireless/marvell/mwifiex/main.c   |   4 +
+ drivers/of/of_pci_irq.c                       |  13 ++-
+ drivers/pci/Makefile                          |   2 +-
+ drivers/pci/pci-acpi.c                        | 121 +++++++++++------------
+ drivers/pci/pci-driver.c                      |   9 ++
+ drivers/pci/pci-of.c                          | 136 ++++++++++++++++++++++++++
+ drivers/pci/pci.c                             | 112 +++++++++++++++++----
+ drivers/pci/pci.h                             |  31 ++++--
+ drivers/pci/probe.c                           |  12 ++-
+ drivers/pci/remove.c                          |   2 +
+ include/linux/pci.h                           |   2 +
+ 13 files changed, 365 insertions(+), 97 deletions(-)
+ create mode 100644 drivers/pci/pci-of.c
+
+-- 
+2.11.0
