@@ -1,82 +1,85 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [RFC PATCH v8 3/7] arm64: dts: rockchip: Handle PCIe WAKE# signal in
- pcie driver for Gru
-Date: Thu, 26 Oct 2017 21:28:36 +0800
-Message-ID: <20171026132840.20946-4-jeffy.chen@rock-chips.com>
-References: <20171026132840.20946-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20171026132840.20946-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org, bhelgaas@google.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, tony@atomide.com, Will Deacon <will.deacon@arm.com>, shawn.lin@rock-chips.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+From: Pierre-Hugues Husson <phh@phh.me>
+Subject: [PATCH v3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Thu, 26 Oct 2017 20:19:42 +0200
+Message-ID: <20171026181942.9516-1-phh@phh.me>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux@armlinux.org.uk, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org, Pierre-Hugues Husson <phh@phh.me>
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently we are handling PCIe WAKE# signal in mrvl wifi driver.
-Move it to rockchip pcie driver for Gru boards.
+The documentation already mentions "cec" optional clock, but
+currently the driver doesn't enable it.
 
-Also avoid this irq been considered as the PCI interrupt pin in the
-of_irq_parse_pci().
+Changes:
+v3:
+- Drop useless braces
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+v2:
+- Separate ENOENT errors from others
+- Propagate other errors (especially -EPROBE_DEFER)
+
+Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
 ---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-Changes in v8:
-Rewrite the commit message.
-
-Changes in v7: None
-Changes in v6: None
-Changes in v5:
-Use "wakeup" instead of "wake"
-
-Changes in v3: None
-Changes in v2: None
-
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 5772c52fbfd3..8e37da69f693 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -708,7 +708,15 @@ ap_i2c_audio: &i2c8 {
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index bf14214fa464..d82b9747a979 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -138,6 +138,7 @@ struct dw_hdmi {
+ 	struct device *dev;
+ 	struct clk *isfr_clk;
+ 	struct clk *iahb_clk;
++	struct clk *cec_clk;
+ 	struct dw_hdmi_i2c *i2c;
  
- 	ep-gpios = <&gpio2 27 GPIO_ACTIVE_HIGH>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie_clkreqn_cpm>, <&wifi_perst_l>;
-+	pinctrl-0 = <&pcie_clkreqn_cpm>, <&wlan_host_wake_l>, <&wifi_perst_l>;
+ 	struct hdmi_data_info hdmi_data;
+@@ -2382,6 +2383,26 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		goto err_isfr;
+ 	}
+ 
++	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
++	if (PTR_ERR(hdmi->cec_clk) == -ENOENT) {
++		hdmi->cec_clk = NULL;
++	} else if (IS_ERR(hdmi->cec_clk)) {
++		ret = PTR_ERR(hdmi->cec_clk);
++		if (ret != -EPROBE_DEFER)
++			dev_err(hdmi->dev, "Cannot get HDMI cec clock: %d\n",
++					ret);
 +
-+	interrupts-extended = <&gic GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gic GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gic GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>,
-+			      <&gpio0 8 IRQ_TYPE_LEVEL_LOW>;
-+	interrupt-names = "sys", "legacy", "client", "wakeup";
-+	/delete-property/ interrupts;
++		hdmi->cec_clk = NULL;
++		goto err_iahb;
++	} else {
++		ret = clk_prepare_enable(hdmi->cec_clk);
++		if (ret) {
++			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
++					ret);
++			goto err_iahb;
++		}
++	}
 +
- 	vpcie3v3-supply = <&pp3300_wifi_bt>;
- 	vpcie1v8-supply = <&wlan_pd_n>; /* HACK: see &wlan_pd_n */
- 	vpcie0v9-supply = <&pp900_pcie>;
-@@ -723,11 +731,6 @@ ap_i2c_audio: &i2c8 {
- 			compatible = "pci1b4b,2b42";
- 			reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
- 			       0x83010000 0x0 0x00100000 0x0 0x00100000>;
--			interrupt-parent = <&gpio0>;
--			interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
--			pinctrl-names = "default";
--			pinctrl-0 = <&wlan_host_wake_l>;
--			wakeup-source;
- 		};
- 	};
- };
+ 	/* Product and revision IDs */
+ 	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
+ 		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
+@@ -2518,6 +2539,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		cec_notifier_put(hdmi->cec_notifier);
+ 
+ 	clk_disable_unprepare(hdmi->iahb_clk);
++	if (hdmi->cec_clk)
++		clk_disable_unprepare(hdmi->cec_clk);
+ err_isfr:
+ 	clk_disable_unprepare(hdmi->isfr_clk);
+ err_res:
+@@ -2541,6 +2564,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+ 
+ 	clk_disable_unprepare(hdmi->iahb_clk);
+ 	clk_disable_unprepare(hdmi->isfr_clk);
++	if (hdmi->cec_clk)
++		clk_disable_unprepare(hdmi->cec_clk);
+ 
+ 	if (hdmi->i2c)
+ 		i2c_del_adapter(&hdmi->i2c->adap);
 -- 
-2.11.0
+2.14.2
