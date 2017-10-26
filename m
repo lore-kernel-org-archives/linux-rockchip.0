@@ -1,67 +1,71 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v3 4/6] drm/rockchip/dsi: add dual mipi channel support
-Date: Thu, 26 Oct 2017 10:41:26 +0530
-Message-ID: <bfb92284-fa18-ab3e-1f15-6d8344d2a0ee@codeaurora.org>
-References: <1508903463-7254-1-git-send-email-nickey.yang@rock-chips.com>
- <1508903463-7254-4-git-send-email-nickey.yang@rock-chips.com>
- <20171025080448.pa465q5jofxhqdn4@art_vandelay>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [GIT PULL] Rockchip clock updates for 4.15 round 1
+Date: Thu, 26 Oct 2017 09:18:45 +0200
+Message-ID: <4948420.5FYpQAHkKj@phil>
+References: <14384670.j3hM3TuojQ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171025080448.pa465q5jofxhqdn4@art_vandelay>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>
-Cc: mark.rutland@arm.com, hl@rock-chips.com, zyw@rock-chips.comg, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, xbl@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <14384670.j3hM3TuojQ@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMC8yNS8yMDE3IDAxOjM0IFBNLCBTZWFuIFBhdWwgd3JvdGU6Cj4gT24gV2VkLCBPY3Qg
-MjUsIDIwMTcgYXQgMTE6NTE6MDFBTSArMDgwMCwgTmlja2V5IFlhbmcgd3JvdGU6Cj4+IFRoaXMg
-cGF0Y2ggYWRkIGR1YWwgbWlwaSBjaGFubmVsIHN1cHBvcnQ6Cj4+IDEuYWRkIGRlZmluaXRpb24g
-b2YgZHNpMSByZWdpc3RlciBhbmQgZ3JmIG9wZXJhdGlvbi4KPj4gMi5kc2kwIGFuZCBkc2kxIHdp
-bGwgd29yayBpbiBtYXN0ZXIgYW5kIHNsYXZlIG1vZGUKPj4gd2hlbiBkcml2aW5nIGR1YWwgbWlw
-aSBwYW5lbC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTmlja2V5IFlhbmcgPG5pY2tleS55YW5nQHJv
-Y2stY2hpcHMuY29tPgo+PiAtLS0KPiAKPiBJbiB0aGUgbGFzdCByZXZpc2lvbiwgSSBhc2tlZCB5
-b3UgdG8gcHJvdmlkZSBjaGFuZ2Vsb2cgYmV0d2VlbiByZXZpc2lvbnMsCj4gKnBsZWFzZSogZG8g
-dGhpcy4gWW91IHJlY2VpdmVkIHJldmlldyBvbiB0aGUgbGFzdCB2ZXJzaW9uIGFuZCBhIGJ1bmNo
-IG9mIHRoZQo+IGZlZWRiYWNrIGhhc24ndCBiZWVuIHRha2VuIGludG8gYWNjb3VudCB3aXRoIG5v
-IGV4cGxhbmF0aW9uIGFzIHRvIHdoeS4gUGxlYXNlIGdvCj4gYmFjayB0byB0aGUgbGFzdCB2ZXJz
-aW9uLCByZWFkIHRoZSByZXZpZXdzIHRoYXQgcGVvcGxlIHdlcmUgZ2VuZXJvdXMgZW5vdWdoIHRv
-Cj4gZ2l2ZSBhbmQgZWl0aGVyIGZpeCB0aGUgY29kZSBvciBleHBsYWluIHdoeSB5b3UncmUgbm90
-Lgo+IAo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jICAgICAgfCAz
-NzcgKysrKysrKysrKysrKysrKysrKystLS0tLS0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgIDEgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgIDIgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAgIDMgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAgIDEgKwo+PiAgIDUgZmlsZXMgY2hhbmdlZCwgMjc5
-IGluc2VydGlvbnMoKyksIDEwNSBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3LW1pcGktZHNpLmMKPj4gaW5kZXggNTg5YjQyMC4uMjVlN2I3NyAxMDA2NDQKPj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiAKPiA8c25pcCAvPgo+IAo+PiArc3Rh
-dGljIGludCByb2NrY2hpcF9kc2lfZHVhbF9jaGFubmVsX3Byb2JlKHN0cnVjdCBkd19taXBpX2Rz
-aSAqZHNpKQo+PiArewo+PiArCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnA7Cj4+ICsJc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqc2Vjb25kYXJ5Owo+PiArCj4+ICsJbnAgPSBvZl9wYXJzZV9waGFuZGxl
-KGRzaS0+ZGV2LT5vZl9ub2RlLCAicm9ja2NoaXAsZHVhbC1jaGFubmVsIiwgMCk7Cj4+ICsJaWYg
-KG5wKSB7Cj4+ICsJCXNlY29uZGFyeSA9IG9mX2ZpbmRfZGV2aWNlX2J5X25vZGUobnApOwo+PiAr
-CQlkc2ktPnNsYXZlID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEoc2Vjb25kYXJ5KTsKPj4gKwkJb2Zf
-bm9kZV9wdXQobnApOwo+PiArCj4+ICsJCWlmICghZHNpLT5zbGF2ZSkKPj4gKwkJCXJldHVybiAt
-RVBST0JFX0RFRkVSOwo+IAo+IEFyY2hpdCBhc2tlZCB5b3Ugbm90IHRvIGRvIHRoaXMgaW4gdGhl
-IHByZXZpb3VzIHJldmlldy4KCkkndmUgcmVwbGllZCB3aXRoIHNvbWUgbW9yZSBkZXRhaWxzIHRv
-IHRoZSBwYXRjaCB3aGljaCBhZGRzIHRoaXMgaW4gdGhlIERUCmJpbmRpbmcgZG9jLgoKVGhhbmtz
-LApBcmNoaXQKCj4gCj4+ICsKPj4gKwkJZHNpLT5zbGF2ZS0+bWFzdGVyID0gZHNpOwo+PiArCX0K
-Pj4gKwo+PiArCXJldHVybiAwOwo+PiArfQo+IAo+IDxzbmlwIC8+Cj4gCj4+IC0tIAo+PiAxLjku
-MQo+Pgo+IAoKLS0gClF1YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVy
-IG9mIENvZGUgQXVyb3JhIEZvcnVtLAphIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQ
-cm9qZWN0Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Mike, Stephen,
+
+Am Dienstag, 17. Oktober 2017, 19:43:31 CEST schrieb Heiko Stuebner:
+> Hi Mike, Stephen,
+> 
+> please find below the (tiny) first round of Rockchip clock changes for 4.15.
+> Right now there isn't any more in the pipeline, but who knows that may
+> change yet.
+> 
+> Please pull.
+
+just a little ping for post-conference motivation :-)
+
+Thanks in advance
+Heiko
+
+
+
+> The following changes since commit 2bd6bf03f4c1c59381d62c61d03f6cc3fe71f66e:
+> 
+>   Linux 4.14-rc1 (2017-09-16 15:47:51 -0700)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.15-rockchip-clk-1
+> 
+> for you to fetch changes up to 47e3ec0e4dae1714cc76596e38d16913f0e574e2:
+> 
+>   clk: rockchip: use new cif/vdpu clock ids on rk3188 (2017-10-14 21:32:11 +0200)
+> 
+> ----------------------------------------------------------------
+> Some new clock ids for rk3188 and rk3368 as well as removal of a
+> superfluous memory allocation error message.
+> 
+> ----------------------------------------------------------------
+> Heiko Stuebner (3):
+>       clk: rockchip: add more rk3188 graphics clock ids
+>       Merge branch 'v4.15-shared/clkids' into v4.15-clk/next
+>       clk: rockchip: use new cif/vdpu clock ids on rk3188
+> 
+> Markus Elfring (1):
+>       clk: rockchip: Remove superfluous error message in rockchip_clk_register_cpuclk()
+> 
+> Romain Perier (2):
+>       clk: rockchip: add clock id for PCLK_EFUSE256 of RK3368 SoCs
+>       clk: rockchip: export clock pclk_efuse_256 for RK3368 SoCs
+> 
+>  drivers/clk/rockchip/clk-cpu.c                |  2 --
+>  drivers/clk/rockchip/clk-rk3188.c             | 12 ++++++------
+>  drivers/clk/rockchip/clk-rk3368.c             |  2 +-
+>  include/dt-bindings/clock/rk3188-cru-common.h |  9 +++++++--
+>  include/dt-bindings/clock/rk3368-cru.h        |  1 +
+>  5 files changed, 15 insertions(+), 11 deletions(-)
+> 
+
+
