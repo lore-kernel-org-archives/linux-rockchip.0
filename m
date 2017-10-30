@@ -1,34 +1,68 @@
-From: jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RFC PATCH v10 0/7] PCI: rockchip: Move PCIe WAKE# handling into
- pci core
-Date: Mon, 30 Oct 2017 10:15:28 +0800
-Message-ID: <59F68B40.8050506@rock-chips.com>
-References: <20171027072612.26565-1-jeffy.chen@rock-chips.com> <1872710.P2f02irZl9@aspire.rjw.lan>
+From: Felipe Balbi <balbi@kernel.org>
+Subject: Re: [PATCH v2] usb: dwc2: host: Don't retry NAKed transactions right away
+Date: Mon, 30 Oct 2017 10:32:17 +0200
+Message-ID: <87h8uhdoj2.fsf@linux.intel.com>
+References: <20171026202200.6417-1-dianders@chromium.org> <60370001.40630.1509205907119@email.1und1.de> <CAD=FV=WK_9AsutYhOTh9HMXwac1PJEXtHvXUYnztGmp6H3gbWg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1872710.P2f02irZl9-yvgW3jdyMHm1GS7QM15AGw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Xinming Hu <huxm-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-acpi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Len Brown <lenb-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, net
+Content-Type: multipart/signed; boundary="=-=-=";
+        micalg=pgp-sha512; protocol="application/pgp-signature"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=WK_9AsutYhOTh9HMXwac1PJEXtHvXUYnztGmp6H3gbWg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Stefan Wahren <stefan.wahren@i2se.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, John Youn <johnyoun@synopsys.com>, Matthias Kaehlcke <mka@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, Eric Anholt <eric@anholt.net>, linux-kernel@vger.kernel.org, John Stultz <john.stultz@linaro.org>, linux-usb@vger.kernel.org, Johan Hovold <johan@kernel.org>, Alexandru M Stan <amstan@chromium.org>, linux-rpi-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rafael,
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-thanks for your reply.
 
-On 10/28/2017 05:07 PM, Rafael J. Wysocki wrote:
-> Overall, I don't quite like the direction this is going into, but I need to
-> have a deeper look.  Which may take some time, so please bear with me.
+Hi,
+
+Doug Anderson <dianders@chromium.org> writes:
+> Hi,
 >
-ok, i'll wait for your comments, thanks :)
+> On Sat, Oct 28, 2017 at 8:51 AM, Stefan Wahren <stefan.wahren@i2se.com> w=
+rote:
+>> Hi Doug,
+>>
+>> [add Felipe since this should go through his tree]
+>
+> Ah.  Sorry Felipe!  I know you've landed some dwc2 stuff in the past
 
-> Thanks,
-> Rafael
+No problems :-)
 
+> but for some reason get_maintainer didn't ID you so I thought maybe
+> you weren't doing it anymore.  Please let me know if you'd like me to
+> send this to you again with collected Reviewed-by and Tested-by tags.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Yeah, please resend with all tags collected, however let's wait for a
+week or so and give other people time to catch up. I already sent my
+pull request to Greg, this would, anyway, go into the -rc cycle.
+
+Please add a Cc stable tag too, if necessary.
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAln245MACgkQzL64meEa
+mQagWRAAwXFngTTRMyVAtMMJa8fh2V5At+BMEoUBzoMZfruFWa2l3qO5G3Y8vejA
+YAngvlDNaIHG8FsWA8F2D0yTHwG8cmUV5+yufFRiogGk8i8AfqMzVksFktIA3Pm9
+TLV+9+GJs4L4IVEy7x5t17eo0cDZgQCUhnlquRAk80i1jnr+aIdsOrdI30yxKDvD
+0wTuaYjXr2frFCHiUB69BCujd858LXYwmzBEFD6mL5K3ClDmxYPkR3fRdYNoKc6+
+wktARjwpPTCDeEXsFom/dUXlU05vQPRfe1QdPoZMbBiizU6W6xmG0SLGiTdB9z1H
++69EegszZqCHoa82yhogX0GiqkXMEv0BWpVC1wbvo+xtmmQkd+aEgLExfbJabC/B
+nsf6ta+vJAH0p0TKn43OEpZ/e26X3JTXTYUbiXJdsESsq+rKre4DFTU0kjTzLPiR
+mQTvHQ6FbCqlFOjSgym8CXiGi6K0Pc9I7d71undXOf342lSCummK4gzoPVBNX1JX
+R115R/OiaTZIuu/GvE09fK36eyGSkTOeFqeYqsCGQdasiajprdsB2QpKmkmrrXCA
+EnAfP1cxhJi6MRPDaUDeGrvbu+VMZQDM7ekF7qlTaBzDenGkXhPeiQC+/tIwy1sK
+zKdnMDgPWv/rsWjhHxaYZFetmNTNUlIRResRZRIK5htfQa179bk=
+=dNBh
+-----END PGP SIGNATURE-----
+--=-=-=--
