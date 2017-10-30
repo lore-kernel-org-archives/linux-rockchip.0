@@ -1,75 +1,65 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 2/2] usb: dwc2: host: Convert hcd_queue to timer_setup
-Date: Mon, 30 Oct 2017 10:08:01 -0700
-Message-ID: <20171030170802.14489-2-dianders@chromium.org>
-References: <20171030170802.14489-1-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171030170802.14489-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: balbi@kernel.org, johnyoun@synopsys.com
-Cc: stefan.wahren@i2se.com, amstan@chromium.org, linux-rockchip@lists.infradead.org, gregkh@linuxfoundation.org, johan@kernel.org, eric@anholt.net, mka@chromium.org, john.stultz@linaro.org, linux-rpi-kernel@lists.infradead.org, jwerner@chromium.org, Douglas Anderson <dianders@chromium.org>, Kees Cook <keescook@chromium.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2] usb: dwc2: host: Don't retry NAKed transactions right away
+Date: Mon, 30 Oct 2017 10:14:54 -0700
+Message-ID: <CAD=FV=UsYccsvicnce8wDpt3LaLQE23wdc7a4-m7OOhNS2JKgA@mail.gmail.com>
+References: <20171026202200.6417-1-dianders@chromium.org> <60370001.40630.1509205907119@email.1und1.de>
+ <CAD=FV=WK_9AsutYhOTh9HMXwac1PJEXtHvXUYnztGmp6H3gbWg@mail.gmail.com> <87h8uhdoj2.fsf@linux.intel.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <87h8uhdoj2.fsf-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert the timers in hcd_queue to use the new timer_setup() call
-introduced in commit 686fef928bba ("timer: Prepare to change timer
-callback argument type").
+Hi,
 
-Suggested-by: Stefan Wahren <stefan.wahren@i2se.com>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Cc: Kees Cook <keescook@chromium.org>
----
+On Mon, Oct 30, 2017 at 1:32 AM, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>
+> Hi,
+>
+> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>> Hi,
+>>
+>> On Sat, Oct 28, 2017 at 8:51 AM, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org> wrote:
+>>> Hi Doug,
+>>>
+>>> [add Felipe since this should go through his tree]
+>>
+>> Ah.  Sorry Felipe!  I know you've landed some dwc2 stuff in the past
+>
+> No problems :-)
+>
+>> but for some reason get_maintainer didn't ID you so I thought maybe
+>> you weren't doing it anymore.  Please let me know if you'd like me to
+>> send this to you again with collected Reviewed-by and Tested-by tags.
+>
+> Yeah, please resend with all tags collected, however let's wait for a
+> week or so and give other people time to catch up. I already sent my
+> pull request to Greg, this would, anyway, go into the -rc cycle.
 
-Changes in v3:
-- Convert hcd_queue to timer_setup new for v3
+Doh!  I just re-read this one more time (after sending v3) and
+realized I had read it incorrectly.  I read it as "please send the
+patch with the tags and I'll wait a week before landing", but you
+actually said "please wait a week before re-sending".  Sorry for the
+noise.  In the very least, you should be on the "To" line now so if
+anyone else has any extra tags it should be very easy for you to see
+them.
 
- drivers/usb/dwc2/hcd_queue.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+Right that there's no massive urgency.  It's been broken forever.
 
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index bea0aadd756e..6f5b5c8b0467 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -1275,11 +1275,11 @@ static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
-  * release the reservation.  This worker is called after the appropriate
-  * delay.
-  *
-- * @work: Pointer to a qh unreserve_work.
-+ * @t: Pointer to unreserve_timer in a qh.
-  */
--static void dwc2_unreserve_timer_fn(unsigned long data)
-+static void dwc2_unreserve_timer_fn(struct timer_list *t)
- {
--	struct dwc2_qh *qh = (struct dwc2_qh *)data;
-+	struct dwc2_qh *qh = from_timer(qh, t, unreserve_timer);
- 	struct dwc2_hsotg *hsotg = qh->hsotg;
- 	unsigned long flags;
- 
-@@ -1461,11 +1461,11 @@ static void dwc2_deschedule_periodic(struct dwc2_hsotg *hsotg,
-  * to retry some time later.  This function handles that timer and moves the
-  * qh back to the "inactive" list, then queues transactions.
-  *
-- * @data: Pointer to a qh to re-schedule.
-+ * @t: Pointer to wait_timer in a qh.
-  */
--static void dwc2_wait_timer_fn(unsigned long data)
-+static void dwc2_wait_timer_fn(struct timer_list *t)
- {
--	struct dwc2_qh *qh = (struct dwc2_qh *)data;
-+	struct dwc2_qh *qh = from_timer(qh, t, wait_timer);
- 	struct dwc2_hsotg *hsotg = qh->hsotg;
- 	unsigned long flags;
- 
-@@ -1518,9 +1518,8 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 
- 	/* Initialize QH */
- 	qh->hsotg = hsotg;
--	setup_timer(&qh->unreserve_timer, dwc2_unreserve_timer_fn,
--		    (unsigned long)qh);
--	setup_timer(&qh->wait_timer, dwc2_wait_timer_fn, (unsigned long)qh);
-+	timer_setup(&qh->unreserve_timer, dwc2_unreserve_timer_fn, 0);
-+	timer_setup(&qh->wait_timer, dwc2_wait_timer_fn, 0);
- 	qh->ep_type = ep_type;
- 	qh->ep_is_in = ep_is_in;
- 
--- 
-2.15.0.rc2.357.g7e34df9404-goog
+
+> Please add a Cc stable tag too, if necessary.
+
+Good point.  It's a little weird since it doesn't "fix" any specific
+commit, so I guess it will be up to stable folks to decide how far to
+go back.  The dwc2 devices I work with are actually on 3.14, but we
+have some pretty massive backports related to dwc2 there...
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
