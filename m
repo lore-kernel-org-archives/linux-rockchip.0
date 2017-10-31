@@ -1,57 +1,64 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: rk3288 Firefly Reload: 'reboot' doesn't work
-Date: Tue, 31 Oct 2017 17:31:18 +0100
-Message-ID: <1729506.TeohltKTGL@diego>
-References: <b88abf6d-d95f-3eca-91d1-65fcb749cb22@xs4all.nl>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <b88abf6d-d95f-3eca-91d1-65fcb749cb22-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH v2 4/5] [RFC] soc: rockchip: power-domain: Use GENPD_FLAG_ACTIVE_WAKEUP
+Date: Tue, 31 Oct 2017 19:11:33 +0100
+Message-ID: <1509473494-19740-5-git-send-email-geert+renesas@glider.be>
+References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+Sender: linux-pm-owner@vger.kernel.org
+To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>, Kevin Hilman <khilman@kernel.org>
+Cc: Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Hans,
+Set the newly introduced GENPD_FLAG_ACTIVE_WAKEUP, which allows to
+remove the driver's own flag-based callback.
 
-sorry this took a bit longer,
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+This must not be applied before "PM / Domain: Enable genpd users to
+specify default active wakeup behavior" has landed upstream, hence the
+"RFC".
 
-Am Freitag, 20. Oktober 2017, 11:06:21 CET schrieb Hans Verkuil:
-> If I run 'reboot' to reboot my Firefly Reload board the last thing I see
-> on the serial port is "reboot: Restarting system", but it never actually
-> restarts.
-> 
-> This is really annoying, but I have no idea where to look. Any suggestions?
+Compile-tested only.
 
-I just ran reboot on my original rk3288-firefly with 4.14-rc6 and reboot worked 
-just fine. So it looks like at least on the kernel side it seems to check out.
-Especially, as we do use the cold-reset mode on Rockchip socs so everything
-should get set to its correct reset-state.
+v2:
+  - New.
+---
+ drivers/soc/rockchip/pm_domains.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
--- What bootloader do you use on the board?
-
-I'm using mainline uboot from somewhere last year right now
-[ U-Boot 2016.11-01442-g5699f71-dirty (Nov 29 2016 - 23:23:39 +0100) ]
-
-
--- What happens when you turn off cpufreq in your kernel?
-
-I.e. one possible thing I could think of would be your cpu frequency
-being low and the regulator not having the right voltage for the 600MHz
-boot frequency. 
-
-But that would make me wonder, why it would work at all. I.e. while
-the default for vdd_cpu is 1.0V, the lowest in the opp-table is 0.9V
-which _is_ the correct voltage even for the 600MHz reset frequency.
-
-
-Heiko
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 40b75748835f552c..5c342167b9db7a16 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -358,17 +358,6 @@ static void rockchip_pd_detach_dev(struct generic_pm_domain *genpd,
+ 	pm_clk_destroy(dev);
+ }
+ 
+-static bool rockchip_active_wakeup(struct device *dev)
+-{
+-	struct generic_pm_domain *genpd;
+-	struct rockchip_pm_domain *pd;
+-
+-	genpd = pd_to_genpd(dev->pm_domain);
+-	pd = container_of(genpd, struct rockchip_pm_domain, genpd);
+-
+-	return pd->info->active_wakeup;
+-}
+-
+ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 				      struct device_node *node)
+ {
+@@ -489,8 +478,9 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 	pd->genpd.power_on = rockchip_pd_power_on;
+ 	pd->genpd.attach_dev = rockchip_pd_attach_dev;
+ 	pd->genpd.detach_dev = rockchip_pd_detach_dev;
+-	pd->genpd.dev_ops.active_wakeup = rockchip_active_wakeup;
+ 	pd->genpd.flags = GENPD_FLAG_PM_CLK;
++	if (pd_info->active_wakeup)
++		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
+ 	pm_genpd_init(&pd->genpd, NULL, false);
+ 
+ 	pmu->genpd_data.domains[id] = &pd->genpd;
+-- 
+2.7.4
