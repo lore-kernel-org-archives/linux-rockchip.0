@@ -1,95 +1,57 @@
-From: Felipe Balbi <balbi@kernel.org>
-Subject: Re: [PATCH v2] usb: dwc2: host: Don't retry NAKed transactions right away
-Date: Tue, 31 Oct 2017 12:22:36 +0200
-Message-ID: <87lgjrd3bn.fsf@linux.intel.com>
-References: <20171026202200.6417-1-dianders@chromium.org> <60370001.40630.1509205907119@email.1und1.de> <CAD=FV=WK_9AsutYhOTh9HMXwac1PJEXtHvXUYnztGmp6H3gbWg@mail.gmail.com> <87h8uhdoj2.fsf@linux.intel.com> <CAD=FV=UsYccsvicnce8wDpt3LaLQE23wdc7a4-m7OOhNS2JKgA@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: rk3288 Firefly Reload: 'reboot' doesn't work
+Date: Tue, 31 Oct 2017 17:31:18 +0100
+Message-ID: <1729506.TeohltKTGL@diego>
+References: <b88abf6d-d95f-3eca-91d1-65fcb749cb22@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha512; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=UsYccsvicnce8wDpt3LaLQE23wdc7a4-m7OOhNS2JKgA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Stefan Wahren <stefan.wahren@i2se.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, John Youn <johnyoun@synopsys.com>, Matthias Kaehlcke <mka@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, Eric Anholt <eric@anholt.net>, linux-kernel@vger.kernel.org, John Stultz <john.stultz@linaro.org>, linux-usb@vger.kernel.org, Johan Hovold <johan@kernel.org>, Alexandru M Stan <amstan@chromium.org>, linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <b88abf6d-d95f-3eca-91d1-65fcb749cb22-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Hi Hans,
 
-Doug Anderson <dianders@chromium.org> writes:
+sorry this took a bit longer,
 
-> Hi,
->
-> On Mon, Oct 30, 2017 at 1:32 AM, Felipe Balbi <balbi@kernel.org> wrote:
->>
->> Hi,
->>
->> Doug Anderson <dianders@chromium.org> writes:
->>> Hi,
->>>
->>> On Sat, Oct 28, 2017 at 8:51 AM, Stefan Wahren <stefan.wahren@i2se.com>=
- wrote:
->>>> Hi Doug,
->>>>
->>>> [add Felipe since this should go through his tree]
->>>
->>> Ah.  Sorry Felipe!  I know you've landed some dwc2 stuff in the past
->>
->> No problems :-)
->>
->>> but for some reason get_maintainer didn't ID you so I thought maybe
->>> you weren't doing it anymore.  Please let me know if you'd like me to
->>> send this to you again with collected Reviewed-by and Tested-by tags.
->>
->> Yeah, please resend with all tags collected, however let's wait for a
->> week or so and give other people time to catch up. I already sent my
->> pull request to Greg, this would, anyway, go into the -rc cycle.
->
-> Doh!  I just re-read this one more time (after sending v3) and
-> realized I had read it incorrectly.  I read it as "please send the
+Am Freitag, 20. Oktober 2017, 11:06:21 CET schrieb Hans Verkuil:
+> If I run 'reboot' to reboot my Firefly Reload board the last thing I see
+> on the serial port is "reboot: Restarting system", but it never actually
+> restarts.
+> 
+> This is really annoying, but I have no idea where to look. Any suggestions?
 
-that's okay :-) s**t happens
+I just ran reboot on my original rk3288-firefly with 4.14-rc6 and reboot worked 
+just fine. So it looks like at least on the kernel side it seems to check out.
+Especially, as we do use the cold-reset mode on Rockchip socs so everything
+should get set to its correct reset-state.
 
-> patch with the tags and I'll wait a week before landing", but you
-> actually said "please wait a week before re-sending".  Sorry for the
-> noise.  In the very least, you should be on the "To" line now so if
-> anyone else has any extra tags it should be very easy for you to see
-> them.
->
-> Right that there's no massive urgency.  It's been broken forever.
+-- What bootloader do you use on the board?
 
-alright then :-)
+I'm using mainline uboot from somewhere last year right now
+[ U-Boot 2016.11-01442-g5699f71-dirty (Nov 29 2016 - 23:23:39 +0100) ]
 
->> Please add a Cc stable tag too, if necessary.
->
-> Good point.  It's a little weird since it doesn't "fix" any specific
-> commit, so I guess it will be up to stable folks to decide how far to
-> go back.  The dwc2 devices I work with are actually on 3.14, but we
-> have some pretty massive backports related to dwc2 there...
 
-fair enough
+-- What happens when you turn off cpufreq in your kernel?
 
-=2D-=20
-balbi
+I.e. one possible thing I could think of would be your cpu frequency
+being low and the regulator not having the right voltage for the 600MHz
+boot frequency. 
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+But that would make me wonder, why it would work at all. I.e. while
+the default for vdd_cpu is 1.0V, the lowest in the opp-table is 0.9V
+which _is_ the correct voltage even for the 600MHz reset frequency.
 
------BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAln4TuwACgkQzL64meEa
-mQbzWhAAr6JWjkC6NVKoP0r3VCT3p2FQ/poyvEN2VuAzFDNWTmoiv/GKyUZqR/iT
-VXOAq5+BMnWpIs20kAZ58Z9/qL6wp8mCxJOEKeq9cM1eXqoVJPMB3lNv2R20lihC
-aldgVlOI31UnRyfs2a225uDFuRuMgr+EbEctpaJFMB8t4VKeBpLjFhspoJnSu65N
-rkgdvVeufq0JvPY120a9M3dlHLyPKDDv9x9ml6D/Icym6/6bYrRm0SOHh13pF9NF
-Phr1bIeMAPD72o2XKcRQZdJ7fcSQSHSGqcioPnvK+DEKIBuzLt0r6djoBXyMza95
-zDf9AqCWidWGBP3RMqVLw0wnlfR8m06fW/ZIY7e+I9L9LLHT2x1MAT4QQ2xOfn9r
-qMY5zge5GbeUh5hAJ8xHof5pc7O9o7wUmrMoXpc0yWPiX/Eai66rldpmz11skrS3
-VJLtjVqGDzpasBfRsmJz0r5yyFKTN/TvOnL7LnWoQ4CrwBm0ZOG3oduvO+d4b+id
-YiaJEbwktnXsHpF4qahTmjmj4QqosxUPG6LhE5DqcKS/4dMT2ojfvZMmIPEHWBIC
-QndhmjBTgbGxRNKOl1HRZYpM28G35MkaNv8NubVhWRRvRPKQBlNy51Gsktkq/lva
-xM0iokvdzyCQslujUh4YjzjWaqYjZM7+1t/zaYc4JbUIxBre8vk=
-=gP/K
------END PGP SIGNATURE-----
---=-=-=--
+Heiko
