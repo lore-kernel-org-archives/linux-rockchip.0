@@ -1,53 +1,80 @@
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH v2 2/5] [RFC] ARM: shmobile: pm-rmobile: Use GENPD_FLAG_ACTIVE_WAKEUP
-Date: Tue, 31 Oct 2017 19:11:31 +0100
-Message-ID: <1509473494-19740-3-git-send-email-geert+renesas@glider.be>
-References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 0/5] mmc: dw_mmc: Fix the CTO timer patch, plus the DTO timer
+Date: Tue, 31 Oct 2017 11:14:53 -0700
+Message-ID: <CAD=FV=UFmKBonWJVRT-OPb-FY0GzHgf0HZo=NAZuxSk0e6URWA@mail.gmail.com>
+References: <20171012201118.23570-1-dianders@chromium.org> <CAPDyKFqaZxGJyJRB36-K3zVK_-V637ge1S6bpiQjbfDe_5PhLw@mail.gmail.com>
+ <da14d1a3-c85f-b415-1cb6-b5d1f3a1ed7a@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+In-Reply-To: <da14d1a3-c85f-b415-1cb6-b5d1f3a1ed7a@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>, Kevin Hilman <khilman@kernel.org>
-Cc: Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Emil Renner Berthing <kernel@esmil.dk>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Set the newly introduced GENPD_FLAG_ACTIVE_WAKEUP, which allows to
-remove the driver's own "always true" callback.
+Hi,
 
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
-This must not be applied before "PM / Domain: Enable genpd users to
-specify default active wakeup behavior" has landed upstream, hence the
-"RFC".
+On Tue, Oct 31, 2017 at 12:05 AM, Shawn Lin <shawn.lin@rock-chips.com> wrot=
+e:
+> Hi Ulf,
+>
+>
+> On 2017/10/30 19:40, Ulf Hansson wrote:
+>>
+>> On 12 October 2017 at 22:11, Douglas Anderson <dianders@chromium.org>
+>> wrote:
+>>>
+>>> Recently we landed 03de19212ea3 ("mmc: dw_mmc: introduce timer for
+>>> broken command transfer over scheme").  I found a bunch of problems
+>>> with that patch, so this series attempts to solve some of them.
+>>>
+>>> This also fixes the DTO timer in some of the same ways even though I
+>>> haven't personally seen problems with the DTO timer.
+>>>
+>>> NOTE: this series has only been lighly tested so far.  I can at least
+>>> reproduce the need for the CTO timer on one of my devices and so I can
+>>> confirm that part still works.  As mentioned in the 3rd patch I also
+>>> ran the mmc_test kernel module on this and did manage to see the 3rd
+>>> patch doing something useful.
+>>>
+>>> Changes in v2:
+>>> - Removed extra "int i"
+>>> - Fix the DTO timeout calculation new for v2
+>>> - Cleanup the DTO timer new for v2
+>>>
+>>> Douglas Anderson (5):
+>>>    mmc: dw_mmc: cancel the CTO timer after a voltage switch
+>>>    mmc: dw_mmc: Fix the CTO timeout calculation
+>>>    mmc: dw_mmc: Add locking to the CTO timer
+>>>    mmc: dw_mmc: Fix the DTO timeout calculation
+>>>    mmc: dw_mmc: Cleanup the DTO timer like the CTO one
+>>>
+>>>   drivers/mmc/host/dw_mmc.c | 162
+>>> +++++++++++++++++++++++++++++++++++++++++-----
+>>>   1 file changed, 146 insertions(+), 16 deletions(-)
+>>>
+>>
+>> Douglas, Jaehoon,
+>>
+>> I decided to pick patch 1->4 for fixes and the patch 5 for next, that
+>> should help us to get them more tested, while Jaehoon is still
+>> catching up.
+>>
+>> I can add ack/drop patches for yet a couple of days this week.
+>
+>
+> Patch 4 introduce a warning:
+>
+> warning: unused variable =E2=80=98irqflags=E2=80=99 [-Wunused-variable]
+>
+> irqflags should be introduced in patch 5 in the same place.
+> As it seems patch 5 will be candidate for 4.15, so could you please
+> help fix patch 4 and 5 manually? Or Doug need to resend patch 4 and 5?
 
-v2:
-  - No changes.
----
- arch/arm/mach-shmobile/pm-rmobile.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+Thanks for catching this and sorry for the dumb screwup.  Ulf: I'm
+happy to do do whatever makes it easiest for you.  If you want me to
+re-post it should be very quick.
 
-diff --git a/arch/arm/mach-shmobile/pm-rmobile.c b/arch/arm/mach-shmobile/pm-rmobile.c
-index 3a4ed4c33a68e51e..e348bcfe389da51b 100644
---- a/arch/arm/mach-shmobile/pm-rmobile.c
-+++ b/arch/arm/mach-shmobile/pm-rmobile.c
-@@ -120,18 +120,12 @@ static int rmobile_pd_power_up(struct generic_pm_domain *genpd)
- 	return __rmobile_pd_power_up(to_rmobile_pd(genpd), true);
- }
- 
--static bool rmobile_pd_active_wakeup(struct device *dev)
--{
--	return true;
--}
--
- static void rmobile_init_pm_domain(struct rmobile_pm_domain *rmobile_pd)
- {
- 	struct generic_pm_domain *genpd = &rmobile_pd->genpd;
- 	struct dev_power_governor *gov = rmobile_pd->gov;
- 
--	genpd->flags |= GENPD_FLAG_PM_CLK;
--	genpd->dev_ops.active_wakeup	= rmobile_pd_active_wakeup;
-+	genpd->flags |= GENPD_FLAG_PM_CLK | GENPD_FLAG_ACTIVE_WAKEUP;
- 	genpd->power_off		= rmobile_pd_power_down;
- 	genpd->power_on			= rmobile_pd_power_up;
- 	genpd->attach_dev		= cpg_mstp_attach_dev;
--- 
-2.7.4
+-Doug
