@@ -1,90 +1,84 @@
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 0/5] PM / Domains: Remove gpd_dev_ops.active_wakeup() callback
-Date: Wed, 1 Nov 2017 11:10:21 +0100
-Message-ID: <CAPDyKFoVnWKSGncWD6fxNLgbpuz-weJhqjgptEset2S8F2A6AA@mail.gmail.com>
-References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
+Subject: Re: [PATCH v2 0/5] mmc: dw_mmc: Fix the CTO timer patch, plus the DTO timer
+Date: Wed, 1 Nov 2017 15:18:59 +0100
+Message-ID: <CAPDyKFo68qK3pgnJJsM1TdbxTuKpwYGwWpzYxGXTgAE73878nw@mail.gmail.com>
+References: <20171012201118.23570-1-dianders@chromium.org> <CAPDyKFqaZxGJyJRB36-K3zVK_-V637ge1S6bpiQjbfDe_5PhLw@mail.gmail.com>
+ <da14d1a3-c85f-b415-1cb6-b5d1f3a1ed7a@rock-chips.com> <CAD=FV=UFmKBonWJVRT-OPb-FY0GzHgf0HZo=NAZuxSk0e6URWA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, linux-mediatek@lists.infradead.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UFmKBonWJVRT-OPb-FY0GzHgf0HZo=NAZuxSk0e6URWA@mail.gmail.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Emil Renner Berthing <kernel@esmil.dk>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 31 October 2017 at 19:11, Geert Uytterhoeven <geert+renesas@glider.be> wrote:
->         Hi Rafael, Ulf, Kevin,
+On 31 October 2017 at 19:14, Doug Anderson <dianders@chromium.org> wrote:
+> Hi,
 >
-> It is quite common for PM Domains to require slave devices to be kept
-> active during system suspend if they are to be used as wakeup sources.
-> To enable this, currently each PM Domain or driver has to provide its
-> own gpd_dev_ops.active_wakeup() callback.
+> On Tue, Oct 31, 2017 at 12:05 AM, Shawn Lin <shawn.lin@rock-chips.com> wr=
+ote:
+>> Hi Ulf,
+>>
+>>
+>> On 2017/10/30 19:40, Ulf Hansson wrote:
+>>>
+>>> On 12 October 2017 at 22:11, Douglas Anderson <dianders@chromium.org>
+>>> wrote:
+>>>>
+>>>> Recently we landed 03de19212ea3 ("mmc: dw_mmc: introduce timer for
+>>>> broken command transfer over scheme").  I found a bunch of problems
+>>>> with that patch, so this series attempts to solve some of them.
+>>>>
+>>>> This also fixes the DTO timer in some of the same ways even though I
+>>>> haven't personally seen problems with the DTO timer.
+>>>>
+>>>> NOTE: this series has only been lighly tested so far.  I can at least
+>>>> reproduce the need for the CTO timer on one of my devices and so I can
+>>>> confirm that part still works.  As mentioned in the 3rd patch I also
+>>>> ran the mmc_test kernel module on this and did manage to see the 3rd
+>>>> patch doing something useful.
+>>>>
+>>>> Changes in v2:
+>>>> - Removed extra "int i"
+>>>> - Fix the DTO timeout calculation new for v2
+>>>> - Cleanup the DTO timer new for v2
+>>>>
+>>>> Douglas Anderson (5):
+>>>>    mmc: dw_mmc: cancel the CTO timer after a voltage switch
+>>>>    mmc: dw_mmc: Fix the CTO timeout calculation
+>>>>    mmc: dw_mmc: Add locking to the CTO timer
+>>>>    mmc: dw_mmc: Fix the DTO timeout calculation
+>>>>    mmc: dw_mmc: Cleanup the DTO timer like the CTO one
+>>>>
+>>>>   drivers/mmc/host/dw_mmc.c | 162
+>>>> +++++++++++++++++++++++++++++++++++++++++-----
+>>>>   1 file changed, 146 insertions(+), 16 deletions(-)
+>>>>
+>>>
+>>> Douglas, Jaehoon,
+>>>
+>>> I decided to pick patch 1->4 for fixes and the patch 5 for next, that
+>>> should help us to get them more tested, while Jaehoon is still
+>>> catching up.
+>>>
+>>> I can add ack/drop patches for yet a couple of days this week.
+>>
+>>
+>> Patch 4 introduce a warning:
+>>
+>> warning: unused variable =E2=80=98irqflags=E2=80=99 [-Wunused-variable]
+>>
+>> irqflags should be introduced in patch 5 in the same place.
+>> As it seems patch 5 will be candidate for 4.15, so could you please
+>> help fix patch 4 and 5 manually? Or Doug need to resend patch 4 and 5?
 >
-> All existing callbacks either return always true, or a fixed value
-> depending on the PM Domain.
->
-> Hence this patch series simplifies active wakeup handling by replacing
-> the callback by a flag:
->   - Patch 1 adds a new new flag GENPD_FLAG_ACTIVE_WAKEUP, to be set by
->     PM Domain drivers that want to use the new handling,
->   - Patches 2-4 convert all existing users of the callback to the new
->     flag,
->   - Patch 5 removes the callback.
->
-> This series was extracted from "[PATCH 00/10] PM / Domain: renesas: Fix
-> active wakeup behavior", and retains only PM Domain changes to existing
-> drivers.
-> Changes compared to v1 (most suggested by Ulf):
->   - Use the flag in se instead of setting up an "always true" callback,
->   - Convert the mediatek and rockchip PM Domain drivers,
->   - Remove the callback.
->
-> If this idea is accepted, I think it would be good to still queue the first
-> patch for v4.15.  That would allow the changes to the PM Domain drivers
-> to go in through the respective platform trees in v4.16.
-> Then the final patch has to be postponed until v4.17.
-> Alternatively, everything can go in through the PM tree in one shot.
+> Thanks for catching this and sorry for the dumb screwup.  Ulf: I'm
+> happy to do do whatever makes it easiest for you.  If you want me to
+> re-post it should be very quick.
 
-For the series:
-
-Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
-
-It's easier if everything goes via Rafael's PM tree. Moreover, this
-series is to me rather trivial, so I would actually recommend to pick
-it all for 4.15. Mainly because, moving too slowly forward, allows new
-users to show up of the callback you remove in patch5.
+I fixed it myself, by amending the commits, no worries this time!
 
 Kind regards
 Uffe
-
->
-> Thanks for your comments!
->
-> Geert Uytterhoeven (5):
->   PM / Domains: Allow genpd users to specify default active wakeup
->     behavior
->   [RFC] ARM: shmobile: pm-rmobile: Use GENPD_FLAG_ACTIVE_WAKEUP
->   [RFC] soc: mediatek: Use GENPD_FLAG_ACTIVE_WAKEUP
->   [RFC] soc: rockchip: power-domain: Use GENPD_FLAG_ACTIVE_WAKEUP
->   [RFC] PM / Domains: Remove gpd_dev_ops.active_wakeup() callback
->
->  arch/arm/mach-shmobile/pm-rmobile.c |  8 +-------
->  drivers/base/power/domain.c         | 13 ++++---------
->  drivers/soc/mediatek/mtk-scpsys.c   | 14 ++------------
->  drivers/soc/rockchip/pm_domains.c   | 14 ++------------
->  include/linux/pm_domain.h           |  8 ++++----
->  5 files changed, 13 insertions(+), 44 deletions(-)
->
-> --
-> 2.7.4
->
-> Gr{oetje,eeting}s,
->
->                                                 Geert
->
-> --
-> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
->
-> In personal conversations with technical people, I call myself a hacker. But
-> when I'm talking to journalists I just say "programmer" or something like that.
->                                                             -- Linus Torvalds
