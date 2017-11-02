@@ -1,73 +1,33 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 3/5] [RFC] soc: mediatek: Use GENPD_FLAG_ACTIVE_WAKEUP
-Date: Thu, 2 Nov 2017 12:32:10 +0100
-Message-ID: <81cf254c-66b9-a139-0344-81c5cb560f88@gmail.com>
+From: Kevin Hilman <khilman@baylibre.com>
+Subject: Re: [PATCH v2 1/5] PM / Domains: Allow genpd users to specify default active wakeup behavior
+Date: Thu, 02 Nov 2017 14:59:25 +0100
+Message-ID: <7ha804lr2a.fsf@baylibre.com>
 References: <1509473494-19740-1-git-send-email-geert+renesas@glider.be>
- <1509473494-19740-4-git-send-email-geert+renesas@glider.be>
+        <1509473494-19740-2-git-send-email-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1509473494-19740-4-git-send-email-geert+renesas@glider.be>
-Content-Language: en-US
+In-Reply-To: <1509473494-19740-2-git-send-email-geert+renesas@glider.be>
+        (Geert Uytterhoeven's message of "Tue, 31 Oct 2017 19:11:30 +0100")
 Sender: linux-pm-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert+renesas@glider.be>, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>, Kevin Hilman <khilman@kernel.org>
-Cc: Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>, Simon Horman <horms@verge.net.au>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Geert Uytterhoeven <geert+renesas@glider.be> writes:
 
-
-On 10/31/2017 07:11 PM, Geert Uytterhoeven wrote:
-> Set the newly introduced GENPD_FLAG_ACTIVE_WAKEUP, which allows to
-> remove the driver's own flag-based callback.
-> 
+> It is quite common for PM Domains to require slave devices to be kept
+> active during system suspend if they are to be used as wakeup sources.
+> To enable this, currently each PM Domain or driver has to provide its
+> own gpd_dev_ops.active_wakeup() callback.
+>
+> Introduce a new flag GENPD_FLAG_ACTIVE_WAKEUP to consolidate this.
+> If specified, all slave devices configured as wakeup sources will be
+> kept active during system suspend.
+>
+> PM Domains that need more fine-grained controls, based on the slave
+> device, can still provide their own callbacks, as before.
+>
 > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
-> This must not be applied before "PM / Domain: Enable genpd users to
-> specify default active wakeup behavior" has landed upstream, hence the
-> "RFC".
-> 
-> Compile-tested only.
-> 
-> v2:
->   - New.
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 14 ++------------
->  1 file changed, 2 insertions(+), 12 deletions(-)
-> 
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index e1ce8b1b5090aa0a..e570b6af2e6ffbdd 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -361,17 +361,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  	return ret;
->  }
->  
-> -static bool scpsys_active_wakeup(struct device *dev)
-> -{
-> -	struct generic_pm_domain *genpd;
-> -	struct scp_domain *scpd;
-> -
-> -	genpd = pd_to_genpd(dev->pm_domain);
-> -	scpd = container_of(genpd, struct scp_domain, genpd);
-> -
-> -	return scpd->data->active_wakeup;
-> -}
-> -
->  static void init_clks(struct platform_device *pdev, struct clk **clk)
->  {
->  	int i;
-> @@ -466,7 +455,8 @@ static struct scp *init_scp(struct platform_device *pdev,
->  		genpd->name = data->name;
->  		genpd->power_off = scpsys_power_off;
->  		genpd->power_on = scpsys_power_on;
-> -		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
-> +		if (scpd->data->active_wakeup)
-> +			genpd->flags |= GENPD_FLAG_ACTIVE_WAKEUP;
->  	}
->  
->  	return scp;
-> 
+Reviewed-by: Kevin Hilman <khilman@baylibre.com>
