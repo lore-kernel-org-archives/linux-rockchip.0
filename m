@@ -1,52 +1,142 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: add CONFIG_OF dependency for lvds
-Date: Mon, 6 Nov 2017 10:36:32 -0500
-Message-ID: <20171106153632.nl5av3wnoq632f3o@art_vandelay>
-References: <20171106135852.1355487-1-arnd@arndb.de>
+From: Alan Stern <stern@rowland.harvard.edu>
+Subject: Re: [PATCH] usb: dwc2: host: fix isoc urb actual length
+Date: Mon, 6 Nov 2017 14:17:00 -0500 (EST)
+Message-ID: <Pine.LNX.4.44L0.1711061413380.1454-100000@iolanthe.rowland.org>
+References: <392af079-7805-a22e-d332-cd7615adf6ba@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20171106135852.1355487-1-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Chris Zhong <zyw@rock-chips.com>, Guenter Roeck <groeck@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: TEXT/PLAIN; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <392af079-7805-a22e-d332-cd7615adf6ba@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: wlf <wulf@rock-chips.com>
+Cc: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, William Wu <william.wu@rock-chips.com>, "John.Youn@synopsys.com" <John.Youn@synopsys.com>, "balbi@kernel.org" <balbi@kernel.org>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "heiko@sntech.de" <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "frank.wang@rock-chips.com" <frank.wang@rock-chips.com>, "huangtao@rock-chips.com" <huangtao@rock-chips.com>, "dianders@google.com" <dianders@google.com>, "daniel.meng@rock-chips.com" <daniel.meng@rock-chips.com>, "fml@rock-chips.com" <fml@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBOb3YgMDYsIDIwMTcgYXQgMDI6NTg6NDNQTSArMDEwMCwgQXJuZCBCZXJnbWFubiB3
-cm90ZToKPiBCdWlsZC10ZXN0aW5nIG9uIHJhbmRjb25maWcga2VybmVscyByZXZlYWxlZCBhIGRl
-cGVuZGVuY3kgaW4gdGhlCj4gbmV3bHkgYWRkZWQgbHZkcyBzdWItZHJpdmVyOgo+IAo+IGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmM6IEluIGZ1bmN0aW9uICdyb2NrY2hp
-cF9sdmRzX2JpbmQnOgo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmM6
-MzgwOjI0OiBlcnJvcjogJ3N0cnVjdCBkcm1fYnJpZGdlJyBoYXMgbm8gbWVtYmVyIG5hbWVkICdv
-Zl9ub2RlJwo+ICAgIHJlbW90ZSA9IGx2ZHMtPmJyaWRnZS0+b2Zfbm9kZTsKPiAKPiBXZSBjb3Vs
-ZCB3b3JrIGFyb3VuZCB0aGF0IGluIHRoZSBjb2RlLCBhZGRpbmcgYSBLY29uZmlnIGRlcGVuZGVu
-Y3kKPiBzZWVtcyBlYXNpZXIuCj4gCj4gRml4ZXM6IDM0Y2MwYWEyNTQ1NiAoImRybS9yb2NrY2hp
-cDogQWRkIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFNvYyBMVkRTIikKPiBTaWduZWQtb2ZmLWJ5OiBB
-cm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgoKVGhhbmtzIGZvciB0aGUgcGF0Y2ggQXJuZCwg
-SSd2ZSBwdXNoZWQgdG8gZHJtLW1pc2MtbmV4dC1maXhlcy4KClNlYW4KCj4gLS0tCj4gIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnIHwgMiArLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwo+
-IGluZGV4IDNjNzBjNjIyNGJkMi4uMGNjYzc2MjE3ZWU0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L0tjb25maWcKPiBAQCAtNjAsNyArNjAsNyBAQCBjb25maWcgUk9DS0NISVBfSU5OT19IRE1JCj4g
-IGNvbmZpZyBST0NLQ0hJUF9MVkRTCj4gIAlib29sICJSb2NrY2hpcCBMVkRTIHN1cHBvcnQiCj4g
-IAlkZXBlbmRzIG9uIERSTV9ST0NLQ0hJUAo+IC0JZGVwZW5kcyBvbiBQSU5DVFJMCj4gKwlkZXBl
-bmRzIG9uIFBJTkNUUkwgJiYgT0YKPiAgCWhlbHAKPiAgCSAgQ2hvb3NlIHRoaXMgb3B0aW9uIHRv
-IGVuYWJsZSBzdXBwb3J0IGZvciBSb2NrY2hpcCBMVkRTIGNvbnRyb2xsZXJzLgo+ICAJICBSb2Nr
-Y2hpcCByazMyODggU29DIGhhcyBMVkRTIFRYIENvbnRyb2xsZXIgY2FuIGJlIHVzZWQsIGFuZCBp
-dAo+IC0tIAo+IDIuOS4wCj4gCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29v
-Z2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+On Mon, 6 Nov 2017, wlf wrote:
+
+> Hi Minas,
+> 
+> 在 2017年11月06日 17:28, Minas Harutyunyan 写道:
+> > Hi,
+> >
+> > On 11/6/2017 12:46 PM, William Wu wrote:
+> >> The actual_length in dwc2_hcd_urb structure is used
+> >> to indicate the total data length transferred so far,
+> >> but in dwc2_update_isoc_urb_state(), it just updates
+> >> the actual_length of isoc frame, and don't update the
+> >> urb actual_length at the same time, this will cause
+> >> device drivers working error which depend on the urb
+> >> actual_length.
+> >>
+> >> we can easily find this issue if use an USB camera，
+> >> the userspace use libusb to get USB data from kernel
+> >> via devio driver.In usb devio driver, processcompl()
+> >> function will process urb complete and copy data to
+> >> userspace depending on urb actual_length.
+> >>
+> >> Let's update the urb actual_length if the isoc frame
+> >> is valid.
+> >>
+> >> Signed-off-by: William Wu <william.wu@rock-chips.com>
+> >> ---
+> >>    drivers/usb/dwc2/hcd_intr.c | 2 ++
+> >>    1 file changed, 2 insertions(+)
+> >>
+> >> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+> >> index 28a8210..01b1e13 100644
+> >> --- a/drivers/usb/dwc2/hcd_intr.c
+> >> +++ b/drivers/usb/dwc2/hcd_intr.c
+> >> @@ -580,6 +580,7 @@ static enum dwc2_halt_status dwc2_update_isoc_urb_state(
+> >>    		frame_desc->status = 0;
+> >>    		frame_desc->actual_length = dwc2_get_actual_xfer_length(hsotg,
+> >>    					chan, chnum, qtd, halt_status, NULL);
+> >> +		urb->actual_length += frame_desc->actual_length;
+> >>    		break;
+> >>    	case DWC2_HC_XFER_FRAME_OVERRUN:
+> >>    		urb->error_count++;
+> >> @@ -599,6 +600,7 @@ static enum dwc2_halt_status dwc2_update_isoc_urb_state(
+> >>    		frame_desc->status = -EPROTO;
+> >>    		frame_desc->actual_length = dwc2_get_actual_xfer_length(hsotg,
+> >>    					chan, chnum, qtd, halt_status, NULL);
+> >> +		urb->actual_length += frame_desc->actual_length;
+> >>    
+> >>    		/* Skip whole frame */
+> >>    		if (chan->qh->do_split &&
+> >>
+> > According urb description in usb.h urb->actual_length used for non-iso
+> > transfers:
+> >
+> > "@actual_length: This is read in non-iso completion functions, and ...
+> >
+> >    * ISO transfer status is reported in the status and actual_length fields
+> >    * of the iso_frame_desc array, ...."
+> Yes,  urb->actual_length is used for non-iso transfers.  And for ISO 
+> transfer,  the most
+> usb class drivers can only use iso frame status and actual_length to 
+> handle usb data,
+> like: kernel v4.4 drivers/media/usb/uvc/uvc_video.c
+> 
+> But the usb devio driver really need the urb actual_length in the 
+> processcompl() if
+> handle ISO transfer, just as I mentioned in the commit message.
+> 
+> And I also found the same issue on raspberrypi board:
+> https://github.com/raspberrypi/linux/issues/903
+> 
+> So do you think we need to fix the usb devio driver, rather than fix dwc2?
+> I think maybe we can use urb actual length for ISO transfer, it seems that
+> don't cause any side-effect.
+
+That sounds like a good idea.  Minas, does the following patch fix your 
+problem?
+
+In theory we could do this calculation for every isochronous URB, not 
+just those coming from usbfs.  But I don't think there's any point, 
+since the USB class drivers don't use it.
+
+Alan Stern
+
+
+
+Index: usb-4.x/drivers/usb/core/devio.c
+===================================================================
+--- usb-4.x.orig/drivers/usb/core/devio.c
++++ usb-4.x/drivers/usb/core/devio.c
+@@ -1828,6 +1828,18 @@ static int proc_unlinkurb(struct usb_dev
+ 	return 0;
+ }
+ 
++static void compute_isochronous_actual_length(struct urb *urb)
++{
++	unsigned i;
++
++	if (urb->number_of_packets > 0) {
++		urb->actual_length = 0;
++		for (i = 0; i < urb->number_of_packets; i++)
++			urb->actual_length +=
++					urb->iso_frame_desc[i].actual_length;
++	}
++}
++
+ static int processcompl(struct async *as, void __user * __user *arg)
+ {
+ 	struct urb *urb = as->urb;
+@@ -1835,6 +1847,8 @@ static int processcompl(struct async *as
+ 	void __user *addr = as->userurb;
+ 	unsigned int i;
+ 
++	compute_isochronous_actual_length(urb);
++
+ 	if (as->userbuffer && urb->actual_length) {
+ 		if (copy_urb_data_to_user(as->userbuffer, urb))
+ 			goto err_out;
+@@ -2003,6 +2017,8 @@ static int processcompl_compat(struct as
+ 	void __user *addr = as->userurb;
+ 	unsigned int i;
+ 
++	compute_isochronous_actual_length(urb);
++
+ 	if (as->userbuffer && urb->actual_length) {
+ 		if (copy_urb_data_to_user(as->userbuffer, urb))
+ 			return -EFAULT;
