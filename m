@@ -1,56 +1,57 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dts64 updates for 4.15 part2
-Date: Sat, 04 Nov 2017 21:23:06 +0100
-Message-ID: <1575518.sQZnmpGzTX@phil>
-References: <3824439.LIeQpy2inU@phil>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH] usb: dwc2: host: fix isoc urb actual length
+Date: Mon,  6 Nov 2017 16:45:39 +0800
+Message-ID: <1509957939-31786-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3824439.LIeQpy2inU@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John.Youn@synopsys.com, balbi@kernel.org, gregkh@linuxfoundation.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, daniel.meng@rock-chips.com, william.wu@rock-chips.com, fml@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit d85438991874205467f9739d5f3ee771245b4754:
+The actual_length in dwc2_hcd_urb structure is used
+to indicate the total data length transferred so far,
+but in dwc2_update_isoc_urb_state(), it just updates
+the actual_length of isoc frame, and don't update the
+urb actual_length at the same time, this will cause
+device drivers working error which depend on the urb
+actual_length.
 
-  arm64: dts: rockchip: enable cec pin for rk3399 firefly (2017-10-15 14:11:32 +0200)
+we can easily find this issue if use an USB camera，
+the userspace use libusb to get USB data from kernel
+via devio driver.In usb devio driver, processcompl()
+function will process urb complete and copy data to
+userspace depending on urb actual_length.
 
-are available in the git repository at:
+Let's update the urb actual_length if the isoc frame
+is valid.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.15-rockchip-dts64-2
+Signed-off-by: William Wu <william.wu@rock-chips.com>
+---
+ drivers/usb/dwc2/hcd_intr.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-for you to fetch changes up to 6f8c539313d884f4715b328e1ce4a3987649b97e:
-
-  arm64: dts: rockchip: add efuse for RK3368 SoCs (2017-10-24 15:25:27 +0200)
-
-----------------------------------------------------------------
-Support for the RGA (raster graphics accelerator) on rk3399
-and efuses on rk3368.
-
-----------------------------------------------------------------
-Heiko Stuebner (2):
-      clk: rockchip: add more rk3188 graphics clock ids
-      Merge branch 'v4.15-shared/clkids' into v4.15-armsoc/dts64
-
-Jacob Chen (1):
-      arm64: dts: rockchip: add RGA device node for RK3399
-
-Romain Perier (2):
-      clk: rockchip: add clock id for PCLK_EFUSE256 of RK3368 SoCs
-      arm64: dts: rockchip: add efuse for RK3368 SoCs
-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi      | 16 ++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 11 +++++++++++
- include/dt-bindings/clock/rk3188-cru-common.h |  9 +++++++--
- include/dt-bindings/clock/rk3368-cru.h        |  1 +
- 4 files changed, 35 insertions(+), 2 deletions(-)
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 28a8210..01b1e13 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -580,6 +580,7 @@ static enum dwc2_halt_status dwc2_update_isoc_urb_state(
+ 		frame_desc->status = 0;
+ 		frame_desc->actual_length = dwc2_get_actual_xfer_length(hsotg,
+ 					chan, chnum, qtd, halt_status, NULL);
++		urb->actual_length += frame_desc->actual_length;
+ 		break;
+ 	case DWC2_HC_XFER_FRAME_OVERRUN:
+ 		urb->error_count++;
+@@ -599,6 +600,7 @@ static enum dwc2_halt_status dwc2_update_isoc_urb_state(
+ 		frame_desc->status = -EPROTO;
+ 		frame_desc->actual_length = dwc2_get_actual_xfer_length(hsotg,
+ 					chan, chnum, qtd, halt_status, NULL);
++		urb->actual_length += frame_desc->actual_length;
+ 
+ 		/* Skip whole frame */
+ 		if (chan->qh->do_split &&
+-- 
+2.0.0
