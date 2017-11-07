@@ -1,118 +1,39 @@
-From: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>
-Subject: Re: [PATCH] usb: dwc2: host: fix isoc urb actual length
-Date: Tue, 7 Nov 2017 10:18:41 -0500 (EST)
-Message-ID: <Pine.LNX.4.44L0.1711071014130.1395-100000@iolanthe.rowland.org>
-References: <f2b7e952-8d0f-25dd-4777-efc1e2b9be8a@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL 1/2] Rockchip dts32 updates for 4.15 part2
+Date: Tue, 7 Nov 2017 16:23:29 +0100
+Message-ID: <CAK8P3a3=JRfDa7odOfNyCovYjK6B6EJswetE=sCv33vkMVZziQ@mail.gmail.com>
+References: <3824439.LIeQpy2inU@phil>
 Mime-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <f2b7e952-8d0f-25dd-4777-efc1e2b9be8a-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org" <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "fml-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <fml-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3824439.LIeQpy2inU@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 7 Nov 2017, wlf wrote:
+On Sat, Nov 4, 2017 at 9:22 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Hi Arnd, Kevin, Olof,
+>
+> if there is going to be an -rc8 you could maybe consider still picking up
+> the changes below and in the next mail.
+>
+> Here it is mainly fixups for the Vyasa board added in round1 as well as
+> hdmi and hdmi-cec support for the firefly and some rv1108 additions.
+>
+> If they're to late it's also no problem and I'll move stuff on for 4.16.
 
-> > That sounds like a good idea.  Minas, does the following patch fix your
-> > problem?
-> > 
-> > In theory we could do this calculation for every isochronous URB, not
-> > just those coming from usbfs.  But I don't think there's any point,
-> > since the USB class drivers don't use it.
-> >
-> > Alan Stern
-> >
-> >
-> >
-> > Index: usb-4.x/drivers/usb/core/devio.c
-> > ===================================================================
-> > --- usb-4.x.orig/drivers/usb/core/devio.c
-> > +++ usb-4.x/drivers/usb/core/devio.c
-> > @@ -1828,6 +1828,18 @@ static int proc_unlinkurb(struct usb_dev
-> >   	return 0;
-> >   }
-> >   
-> > +static void compute_isochronous_actual_length(struct urb *urb)
-> > +{
-> > +	unsigned i;
-> > +
-> > +	if (urb->number_of_packets > 0) {
-> > +		urb->actual_length = 0;
-> > +		for (i = 0; i < urb->number_of_packets; i++)
-> > +			urb->actual_length +=
-> > +					urb->iso_frame_desc[i].actual_length;
-> > +	}
-> > +}
-> > +
-> >   static int processcompl(struct async *as, void __user * __user *arg)
-> >   {
-> >   	struct urb *urb = as->urb;
-> > @@ -1835,6 +1847,8 @@ static int processcompl(struct async *as
-> >   	void __user *addr = as->userurb;
-> >   	unsigned int i;
-> >   
-> > +	compute_isochronous_actual_length(urb);
-> > +
-> >   	if (as->userbuffer && urb->actual_length) {
-> >   		if (copy_urb_data_to_user(as->userbuffer, urb))
-> >   			goto err_out;
-> > @@ -2003,6 +2017,8 @@ static int processcompl_compat(struct as
-> >   	void __user *addr = as->userurb;
-> >   	unsigned int i;
-> >   
-> > +	compute_isochronous_actual_length(urb);
-> > +
-> >   	if (as->userbuffer && urb->actual_length) {
-> >   		if (copy_urb_data_to_user(as->userbuffer, urb))
-> >   			return -EFAULT;
-> >
-> >
-> Yeah,  it's a good idea to calculate the urb actual length in the devio 
-> driver.
-> Your patch seems good,  and I think we can do a small optimization base 
-> your patch,
-> like the following patch:
-> 
-> diff --git a/drivers/usb/core/devio.c b/drivers/usb/core/devio.c
-> index bd94192..a2e7b97 100644
-> --- a/drivers/usb/core/devio.c
-> +++ b/drivers/usb/core/devio.c
-> @@ -1664,6 +1664,9 @@ static int processcompl(struct async *as, void 
-> __user * __user *arg)
->          void __user *addr = as->userurb;
->          unsigned int i;
-> 
-> +       if (usb_endpoint_xfer_isoc(&urb->ep->desc))
-> +               compute_isochronous_actual_length(urb);
-> +
->          if (as->userbuffer && urb->actual_length) {
->                  if (copy_urb_data_to_user(as->userbuffer, urb))
->                          goto err_out;
-> @@ -1833,6 +1836,9 @@ static int processcompl_compat(struct async *as, 
-> void __user * __user *arg)
->          void __user *addr = as->userurb;
->          unsigned int i;
-> 
-> +       if (usb_endpoint_xfer_isoc(&urb->ep->desc))
-> +               compute_isochronous_actual_length(urb);
-> +
+No problem, pulled into next/dt as they are mostly fixups. The whole point of
+sending new features early is to have time to fix things up like this later
+and not have to do it during the -rc cycle or live with half-broken files.
 
-Well, this depends on whether you want to optimize for space or for 
-speed.  I've been going for space.  And since usbfs is inherently 
-rather slow, I don't think this will make any significant speed 
-difference.  So I don't think adding the extra tests is worthwhile.
-
-(Besides, if you really wanted to do it this way, you should have moved 
-the test for "urb->number_of_packets > 0" into the callers instead of 
-adding an additional test of the endpoint type.)
-
-However, nobody has answered my original question: Does the patch 
-actually fix the problem?
-
-Alan Stern
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+     Arnd
