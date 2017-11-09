@@ -1,86 +1,86 @@
-From: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+From: Roger Quadros <rogerq@ti.com>
 Subject: Re: [PATCH] ARM: dts: add phy-reset property for rk3066a-rayeager emac
-Date: Thu, 9 Nov 2017 10:20:57 +0200
-Message-ID: <94e38995-e050-db91-0702-bf889e4ff397@ti.com>
+Date: Thu, 9 Nov 2017 10:28:03 +0200
+Message-ID: <a6b2354c-324f-3d22-39d4-8cdc2e8ba97a@ti.com>
 References: <1510022959-19440-1-git-send-email-zyw@rock-chips.com>
  <e6f2393e-cb3b-9006-d0f5-6b30fd2a5192@mentor.com>
+ <e08d8ea2-40c5-a5b3-e570-44c90388fcdd@rock-chips.com>
+ <ac15ef59-3b5e-1752-09db-0a773615f44c@gmail.com>
+ <464f7b9f-1c07-286e-1b7f-bdef0332b4c9@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <e6f2393e-cb3b-9006-d0f5-6b30fd2a5192-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <464f7b9f-1c07-286e-1b7f-bdef0332b4c9@rock-chips.com>
 Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vladimir Zapolskiy <vladimir_zapolskiy-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chris Zhong <zyw@rock-chips.com>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, andrew@lunn.ch
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, heiko@sntech.de, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On 07/11/17 09:54, Vladimir Zapolskiy wrote:
-> Hello Chris,
-> 
-> On 11/07/2017 04:49 AM, Chris Zhong wrote:
->> The ethernet phy of rk3066a-rayeager has a reset pin, it controlled by
->> GPIO1_D6, this pin should be pull down then pull up to reset the phy.
->> Add a phy-reset property in emac, make the phy can be reset when emac
->> power on.
-> 
-> for PHY reset there are properties 'reset-gpios' and 'reset-delay-us',
-> please reference to Documentation/devicetree/bindings/net/mdio.txt
-> 
-> Can you try to reuse them instead of adding new custom properties?
-> 
-> As a side question, which is mainly addressed to Sergei and Roger,
-> I don't quite understand why PHY properties were initially added to
-> MAC/MDIO bus device tree nodes, in my opinion they must be moved under
-> PHY device tree nodes.
-
-The PHY reset *has* to be performed at the MDIO bus driver level so that they
-can be pin-strap configured correctly and be detected during MDIO bus scan.
-
-- We have boards where PHYs won't be detected if RESET is not done before the scan. (due to invalid h/w pin-strapping config)
-- We have boards where a single GPIO line controls reset of all PHYs on the bus.
-
-Due to these reasons the RESET control lies with the MDIO bus driver.
-
-> 
-> --
-> With best wishes,
-> Vladimir
-> 
->>
->> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>  arch/arm/boot/dts/rk3066a-rayeager.dts | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
->> index 570157f..6064a0a 100644
->> --- a/arch/arm/boot/dts/rk3066a-rayeager.dts
->> +++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
->> @@ -173,6 +173,8 @@
->>  	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
->>  	phy = <&phy0>;
->>  	phy-supply = <&vcc_rmii>;
->> +	phy-reset-gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>; /* PHY_RST */
->> +	phy-reset-duration = <10>; /* millisecond */
->>  	status = "okay";
->>  
->>  	phy0: ethernet-phy@0 {
->>
-
--- 
-cheers,
--roger
-
-Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
+T24gMDgvMTEvMTcgMTE6NDksIENocmlzIFpob25nIHdyb3RlOgo+IEhpIEZsb3JpYW4gRmFpbmVs
+bGkKPiAKPiAKPiBPbiAyMDE35bm0MTHmnIgwOOaXpSAwMjoyNiwgRmxvcmlhbiBGYWluZWxsaSB3
+cm90ZToKPj4gT24gMTEvMDcvMjAxNyAwMTo1MSBBTSwgQ2hyaXMgWmhvbmcgd3JvdGU6Cj4+Pgo+
+Pj4gT24gMjAxN+W5tDEx5pyIMDfml6UgMTU6NTQsIFZsYWRpbWlyIFphcG9sc2tpeSB3cm90ZToK
+Pj4+PiBIZWxsbyBDaHJpcywKPj4+Pgo+Pj4+IE9uIDExLzA3LzIwMTcgMDQ6NDkgQU0sIENocmlz
+IFpob25nIHdyb3RlOgo+Pj4+PiBUaGUgZXRoZXJuZXQgcGh5IG9mIHJrMzA2NmEtcmF5ZWFnZXIg
+aGFzIGEgcmVzZXQgcGluLCBpdCBjb250cm9sbGVkIGJ5Cj4+Pj4+IEdQSU8xX0Q2LCB0aGlzIHBp
+biBzaG91bGQgYmUgcHVsbCBkb3duIHRoZW4gcHVsbCB1cCB0byByZXNldCB0aGUgcGh5Lgo+Pj4+
+PiBBZGQgYSBwaHktcmVzZXQgcHJvcGVydHkgaW4gZW1hYywgbWFrZSB0aGUgcGh5IGNhbiBiZSBy
+ZXNldCB3aGVuIGVtYWMKPj4+Pj4gcG93ZXIgb24uCj4+Pj4gZm9yIFBIWSByZXNldCB0aGVyZSBh
+cmUgcHJvcGVydGllcyAncmVzZXQtZ3Bpb3MnIGFuZCAncmVzZXQtZGVsYXktdXMnLAo+Pj4+IHBs
+ZWFzZSByZWZlcmVuY2UgdG8gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9t
+ZGlvLnR4dAo+Pj4+Cj4+Pj4gQ2FuIHlvdSB0cnkgdG8gcmV1c2UgdGhlbSBpbnN0ZWFkIG9mIGFk
+ZGluZyBuZXcgY3VzdG9tIHByb3BlcnRpZXM/Cj4+PiBUaGlzIHBoeS1yZXNldCBpcyBmcm9tIERv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvYXJjX2VtYWMudHh0Lgo+Pj4gQW5k
+IGNvcHkgZnJvbSBhcmNoL2FybS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzLgo+Pj4gQ2FuIHdl
+IGp1c3QgdXNlIHRoZXNlIHByb3BlcnRpZXMsIHRoZXkgYXJlIG5vdCBuZXcuCj4+IEJlY2F1c2Ug
+aXQgYWxyZWFkeSBleGlzdHMgZG9lcyBub3QgbWVhbiBpdCdzIGNvcnJlY3QsIGluIGZhY3QsIGl0
+IGlzIG5vdAo+PiBhdCBhbGwgYmVjYXVzZSBpdCBwbGFjZXMgdGhlIHJlc2V0IHByb3BlcnR5IGZv
+ciBhIFBIWSBpbnRvIHRoZSBNQUMgbm9kZSwKPj4gd2hpY2ggaXMganVzdCBub3Qgd2hhdCB0aGlz
+IGlzLCB3aGF0IHdlIHNob3VsZCBiZSB1c2luZyBpbnN0ZWFkIGlzIHRoZQo+PiBmb2xsb3dpbmcg
+cGF0Y2ggc2VyaWVzOgo+Pgo+PiBodHRwOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcHJvamVjdC9u
+ZXRkZXYvbGlzdC8/c2VyaWVzPTkyNjcKPj4KPj4gaHR0cDovL3BhdGNod29yay5vemxhYnMub3Jn
+L3BhdGNoLzgyODQ5OS8KPj4gaHR0cDovL3BhdGNod29yay5vemxhYnMub3JnL3BhdGNoLzgyODUw
+NS8KPj4gaHR0cDovL3BhdGNod29yay5vemxhYnMub3JnL3BhdGNoLzgyODUwMS8KPj4gaHR0cDov
+L3BhdGNod29yay5vemxhYnMub3JnL3BhdGNoLzgyODUwMi8KPiBPa2F5LCB0aGlzIHNlcmllcyB3
+b3JrcyBmb3IgbWUsIGFuZCBJIHdpbGwgcHVzaCBhIG5ldyB2ZXJzaW9uIHBhdGNoIGZvbGxvd2lu
+ZyBpdCwKPiB3aXRoIGEgcmVzZXQtZ3Bpb3MgcHJvcGVydHkgdW5kZXIgcGh5IG5vZGUuCj4gQW5k
+IGhvcGUgdGhpcyBzZXJpZXMgY2FuIGJlIGFwcGxpZWQgc29vbi4KPiAKCklmICdyZXNldC1ncGlv
+cycgYW5kICdyZXNldC1kZWxheS11cycgYXMgcGVyIFsxXSB3b3JrcyBmb3IgeW91CnRoZW4gd2h5
+IG5vdCB1c2UgdGhhdD8KClsxXSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0
+L21kaW8udHh0Cgo+IFRoYW5rcwo+IENocmlzIFpob25nCj4gCj4gCj4+Pj4gQXMgYSBzaWRlIHF1
+ZXN0aW9uLCB3aGljaCBpcyBtYWlubHkgYWRkcmVzc2VkIHRvIFNlcmdlaSBhbmQgUm9nZXIsCj4+
+Pj4gSSBkb24ndCBxdWl0ZSB1bmRlcnN0YW5kIHdoeSBQSFkgcHJvcGVydGllcyB3ZXJlIGluaXRp
+YWxseSBhZGRlZCB0bwo+Pj4+IE1BQy9NRElPIGJ1cyBkZXZpY2UgdHJlZSBub2RlcywgaW4gbXkg
+b3BpbmlvbiB0aGV5IG11c3QgYmUgbW92ZWQgdW5kZXIKPj4+PiBQSFkgZGV2aWNlIHRyZWUgbm9k
+ZXMuCj4+Pj4KPj4+PiAtLcKgCj4+Pj4gV2l0aCBiZXN0IHdpc2hlcywKPj4+PiBWbGFkaW1pcgo+
+Pj4+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+
+Cj4+Pj4+IC0tLQo+Pj4+Pgo+Pj4+PiDCoMKgIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5
+ZWFnZXIuZHRzIHwgMiArKwo+Pj4+PiDCoMKgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMo
+KykKPj4+Pj4KPj4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5
+ZWFnZXIuZHRzCj4+Pj4+IGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMK
+Pj4+Pj4gaW5kZXggNTcwMTU3Zi4uNjA2NGEwYSAxMDA2NDQKPj4+Pj4gLS0tIGEvYXJjaC9hcm0v
+Ym9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMKPj4+Pj4gKysrIGIvYXJjaC9hcm0vYm9vdC9k
+dHMvcmszMDY2YS1yYXllYWdlci5kdHMKPj4+Pj4gQEAgLTE3Myw2ICsxNzMsOCBAQAo+Pj4+PiDC
+oMKgwqDCoMKgwqAgcGluY3RybC0wID0gPCZlbWFjX3hmZXI+LCA8JmVtYWNfbWRpbz4sIDwmcm1p
+aV9yc3Q+Owo+Pj4+PiDCoMKgwqDCoMKgwqAgcGh5ID0gPCZwaHkwPjsKPj4+Pj4gwqDCoMKgwqDC
+oMKgIHBoeS1zdXBwbHkgPSA8JnZjY19ybWlpPjsKPj4+Pj4gK8KgwqDCoCBwaHktcmVzZXQtZ3Bp
+b3MgPSA8JmdwaW8xIFJLX1BENiBHUElPX0FDVElWRV9MT1c+OyAvKiBQSFlfUlNUICovCj4+Pj4+
+ICvCoMKgwqAgcGh5LXJlc2V0LWR1cmF0aW9uID0gPDEwPjsgLyogbWlsbGlzZWNvbmQgKi8KPj4+
+Pj4gwqDCoMKgwqDCoMKgIHN0YXR1cyA9ICJva2F5IjsKPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoCBw
+aHkwOiBldGhlcm5ldC1waHlAMCB7Cj4+Pj4+Cj4+Pj4KPj4KPiAKCi0tIApjaGVlcnMsCi1yb2dl
+cgoKVGV4YXMgSW5zdHJ1bWVudHMgRmlubGFuZCBPeSwgUG9ya2thbGFua2F0dSAyMiwgMDAxODAg
+SGVsc2lua2kuIFktdHVubnVzL0J1c2luZXNzIElEOiAwNjE1NTIxLTQuIEtvdGlwYWlra2EvRG9t
+aWNpbGU6IEhlbHNpbmtpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1hcm0ta2VybmVsCg==
