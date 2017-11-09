@@ -1,95 +1,58 @@
-From: Roger Quadros <rogerq@ti.com>
-Subject: Re: [PATCH] ARM: dts: add phy-reset property for rk3066a-rayeager emac
-Date: Thu, 9 Nov 2017 10:40:03 +0200
-Message-ID: <7aa6919d-5d46-3469-f195-022c09b0e9c4@ti.com>
-References: <1510022959-19440-1-git-send-email-zyw@rock-chips.com>
- <e6f2393e-cb3b-9006-d0f5-6b30fd2a5192@mentor.com>
- <e08d8ea2-40c5-a5b3-e570-44c90388fcdd@rock-chips.com>
- <ac15ef59-3b5e-1752-09db-0a773615f44c@gmail.com>
- <464f7b9f-1c07-286e-1b7f-bdef0332b4c9@rock-chips.com>
- <a6b2354c-324f-3d22-39d4-8cdc2e8ba97a@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a6b2354c-324f-3d22-39d4-8cdc2e8ba97a@ti.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chris Zhong <zyw@rock-chips.com>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, andrew@lunn.ch
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, heiko@sntech.de, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH] arm: dts: rockchip: fix errors in IOMMU interrupts property cells
+Date: Thu,  9 Nov 2017 16:35:35 -0600
+Message-ID: <20171109223535.17368-1-robh@kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDkvMTEvMTcgMTA6MjgsIFJvZ2VyIFF1YWRyb3Mgd3JvdGU6Cj4gT24gMDgvMTEvMTcgMTE6
-NDksIENocmlzIFpob25nIHdyb3RlOgo+PiBIaSBGbG9yaWFuIEZhaW5lbGxpCj4+Cj4+Cj4+IE9u
-IDIwMTflubQxMeaciDA45pelIDAyOjI2LCBGbG9yaWFuIEZhaW5lbGxpIHdyb3RlOgo+Pj4gT24g
-MTEvMDcvMjAxNyAwMTo1MSBBTSwgQ2hyaXMgWmhvbmcgd3JvdGU6Cj4+Pj4KPj4+PiBPbiAyMDE3
-5bm0MTHmnIgwN+aXpSAxNTo1NCwgVmxhZGltaXIgWmFwb2xza2l5IHdyb3RlOgo+Pj4+PiBIZWxs
-byBDaHJpcywKPj4+Pj4KPj4+Pj4gT24gMTEvMDcvMjAxNyAwNDo0OSBBTSwgQ2hyaXMgWmhvbmcg
-d3JvdGU6Cj4+Pj4+PiBUaGUgZXRoZXJuZXQgcGh5IG9mIHJrMzA2NmEtcmF5ZWFnZXIgaGFzIGEg
-cmVzZXQgcGluLCBpdCBjb250cm9sbGVkIGJ5Cj4+Pj4+PiBHUElPMV9ENiwgdGhpcyBwaW4gc2hv
-dWxkIGJlIHB1bGwgZG93biB0aGVuIHB1bGwgdXAgdG8gcmVzZXQgdGhlIHBoeS4KPj4+Pj4+IEFk
-ZCBhIHBoeS1yZXNldCBwcm9wZXJ0eSBpbiBlbWFjLCBtYWtlIHRoZSBwaHkgY2FuIGJlIHJlc2V0
-IHdoZW4gZW1hYwo+Pj4+Pj4gcG93ZXIgb24uCj4+Pj4+IGZvciBQSFkgcmVzZXQgdGhlcmUgYXJl
-IHByb3BlcnRpZXMgJ3Jlc2V0LWdwaW9zJyBhbmQgJ3Jlc2V0LWRlbGF5LXVzJywKPj4+Pj4gcGxl
-YXNlIHJlZmVyZW5jZSB0byBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L21k
-aW8udHh0Cj4+Pj4+Cj4+Pj4+IENhbiB5b3UgdHJ5IHRvIHJldXNlIHRoZW0gaW5zdGVhZCBvZiBh
-ZGRpbmcgbmV3IGN1c3RvbSBwcm9wZXJ0aWVzPwo+Pj4+IFRoaXMgcGh5LXJlc2V0IGlzIGZyb20g
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9hcmNfZW1hYy50eHQuCj4+Pj4g
-QW5kIGNvcHkgZnJvbSBhcmNoL2FybS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzLgo+Pj4+IENh
-biB3ZSBqdXN0IHVzZSB0aGVzZSBwcm9wZXJ0aWVzLCB0aGV5IGFyZSBub3QgbmV3Lgo+Pj4gQmVj
-YXVzZSBpdCBhbHJlYWR5IGV4aXN0cyBkb2VzIG5vdCBtZWFuIGl0J3MgY29ycmVjdCwgaW4gZmFj
-dCwgaXQgaXMgbm90Cj4+PiBhdCBhbGwgYmVjYXVzZSBpdCBwbGFjZXMgdGhlIHJlc2V0IHByb3Bl
-cnR5IGZvciBhIFBIWSBpbnRvIHRoZSBNQUMgbm9kZSwKPj4+IHdoaWNoIGlzIGp1c3Qgbm90IHdo
-YXQgdGhpcyBpcywgd2hhdCB3ZSBzaG91bGQgYmUgdXNpbmcgaW5zdGVhZCBpcyB0aGUKPj4+IGZv
-bGxvd2luZyBwYXRjaCBzZXJpZXM6Cj4+Pgo+Pj4gaHR0cDovL3BhdGNod29yay5vemxhYnMub3Jn
-L3Byb2plY3QvbmV0ZGV2L2xpc3QvP3Nlcmllcz05MjY3Cj4+Pgo+Pj4gaHR0cDovL3BhdGNod29y
-ay5vemxhYnMub3JnL3BhdGNoLzgyODQ5OS8KPj4+IGh0dHA6Ly9wYXRjaHdvcmsub3psYWJzLm9y
-Zy9wYXRjaC84Mjg1MDUvCj4+PiBodHRwOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcGF0Y2gvODI4
-NTAxLwo+Pj4gaHR0cDovL3BhdGNod29yay5vemxhYnMub3JnL3BhdGNoLzgyODUwMi8KPj4gT2th
-eSwgdGhpcyBzZXJpZXMgd29ya3MgZm9yIG1lLCBhbmQgSSB3aWxsIHB1c2ggYSBuZXcgdmVyc2lv
-biBwYXRjaCBmb2xsb3dpbmcgaXQsCj4+IHdpdGggYSByZXNldC1ncGlvcyBwcm9wZXJ0eSB1bmRl
-ciBwaHkgbm9kZS4KPj4gQW5kIGhvcGUgdGhpcyBzZXJpZXMgY2FuIGJlIGFwcGxpZWQgc29vbi4K
-Pj4KPiAKPiBJZiAncmVzZXQtZ3Bpb3MnIGFuZCAncmVzZXQtZGVsYXktdXMnIGFzIHBlciBbMV0g
-d29ya3MgZm9yIHlvdQo+IHRoZW4gd2h5IG5vdCB1c2UgdGhhdD8KPiAKPiBbMV0gRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9tZGlvLnR4dAoKSSB0YWtlIGJhY2sgbXkgc3Rh
-dGVtZW50LgoKWW91IHNob3VsZCB1c2UgdGhlIGFib3ZlIG9ubHkgaWYgeW91IGhhdmUgYSBzaW5n
-bGUgcmVzZXQgbGluZSBjb25uZWN0ZWQgdG8gbXVsdGlwbGUgUEhZcwpvbiB0aGUgc2FtZSBNRElP
-IGJ1cy4KSW4gYWxsIG90aGVyIGNhc2VzIHRoZSByZXNldCBwcm9wZXJ0aWVzIHNob3VsZCBiZSBw
-YXJ0IG9mIFBIWSBkZXZpY2Ugbm9kZS4KCkhvd2V2ZXIsIHdlIG5lZWQgdG8gc3RpbGwgZW5zdXJl
-IHRoYXQgdGhlIG1kaW9fYnVzIGRyaXZlciBpc3N1ZXMgdGhlIHJlc2V0LiBUaGlzIHBpZWNlCmlz
-IHN0aWxsIG1pc3NpbmcgaW4gdGhlIGNvZGUuCgo+IAo+PiBUaGFua3MKPj4gQ2hyaXMgWmhvbmcK
-Pj4KPj4KPj4+Pj4gQXMgYSBzaWRlIHF1ZXN0aW9uLCB3aGljaCBpcyBtYWlubHkgYWRkcmVzc2Vk
-IHRvIFNlcmdlaSBhbmQgUm9nZXIsCj4+Pj4+IEkgZG9uJ3QgcXVpdGUgdW5kZXJzdGFuZCB3aHkg
-UEhZIHByb3BlcnRpZXMgd2VyZSBpbml0aWFsbHkgYWRkZWQgdG8KPj4+Pj4gTUFDL01ESU8gYnVz
-IGRldmljZSB0cmVlIG5vZGVzLCBpbiBteSBvcGluaW9uIHRoZXkgbXVzdCBiZSBtb3ZlZCB1bmRl
-cgo+Pj4+PiBQSFkgZGV2aWNlIHRyZWUgbm9kZXMuCj4+Pj4+Cj4+Pj4+IC0twqAKPj4+Pj4gV2l0
-aCBiZXN0IHdpc2hlcywKPj4+Pj4gVmxhZGltaXIKPj4+Pj4KPj4+Pj4+IFNpZ25lZC1vZmYtYnk6
-IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4+Pj4+PiAtLS0KPj4+Pj4+Cj4+Pj4+
-PiDCoMKgIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzIHwgMiArKwo+Pj4+
-Pj4gwqDCoCAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCj4+Pj4+Pgo+Pj4+Pj4gZGlm
-ZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4+Pj4+PiBi
-L2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4+Pj4+PiBpbmRleCA1NzAx
-NTdmLi42MDY0YTBhIDEwMDY0NAo+Pj4+Pj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2
-YS1yYXllYWdlci5kdHMKPj4+Pj4+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5
-ZWFnZXIuZHRzCj4+Pj4+PiBAQCAtMTczLDYgKzE3Myw4IEBACj4+Pj4+PiDCoMKgwqDCoMKgwqAg
-cGluY3RybC0wID0gPCZlbWFjX3hmZXI+LCA8JmVtYWNfbWRpbz4sIDwmcm1paV9yc3Q+Owo+Pj4+
-Pj4gwqDCoMKgwqDCoMKgIHBoeSA9IDwmcGh5MD47Cj4+Pj4+PiDCoMKgwqDCoMKgwqAgcGh5LXN1
-cHBseSA9IDwmdmNjX3JtaWk+Owo+Pj4+Pj4gK8KgwqDCoCBwaHktcmVzZXQtZ3Bpb3MgPSA8Jmdw
-aW8xIFJLX1BENiBHUElPX0FDVElWRV9MT1c+OyAvKiBQSFlfUlNUICovCj4+Pj4+PiArwqDCoMKg
-IHBoeS1yZXNldC1kdXJhdGlvbiA9IDwxMD47IC8qIG1pbGxpc2Vjb25kICovCj4+Pj4+PiDCoMKg
-wqDCoMKgwqAgc3RhdHVzID0gIm9rYXkiOwo+Pj4+Pj4gwqDCoMKgwqDCoMKgwqDCoCBwaHkwOiBl
-dGhlcm5ldC1waHlAMCB7Cj4+Pj4+Pgo+Pj4+Pgo+Pj4KPj4KPiAKCi0tIApjaGVlcnMsCi1yb2dl
-cgoKVGV4YXMgSW5zdHJ1bWVudHMgRmlubGFuZCBPeSwgUG9ya2thbGFua2F0dSAyMiwgMDAxODAg
-SGVsc2lua2kuIFktdHVubnVzL0J1c2luZXNzIElEOiAwNjE1NTIxLTQuIEtvdGlwYWlra2EvRG9t
-aWNpbGU6IEhlbHNpbmtpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1hcm0ta2VybmVsCg==
+The interrupts property in the IOMMU node for Rockchip dts file has a
+spurious extra cell causing a dtc warning:
+
+Warning (interrupts_property): interrupts size is (16), expected multiple of 12 in /iommu@ff900800
+
+Remove the extra cell.
+
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288.dtsi            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 356ed1e62452..cd43235ca16f 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -956,7 +956,7 @@
+ 	iep_mmu: iommu@ff900800 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff900800 0x0 0x40>;
+-		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "iep_mmu";
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index e0518b4bc6c2..7a63279a85c5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -808,7 +808,7 @@
+ 	iep_mmu: iommu@ff900800 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff900800 0x0 0x100>;
+-		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "iep_mmu";
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+-- 
+2.14.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
