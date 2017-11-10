@@ -1,127 +1,96 @@
 From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH] drm/rockchip: analogix_dp: Use mutex rather than spinlock
-Date: Fri, 10 Nov 2017 13:07:06 +0100
-Message-ID: <CAFqH_533DthnJxbFOG9kXdfM9d6i2x7A_CbpwQHmZ2r6_TeaVw@mail.gmail.com>
-References: <20171004175346.11956-1-kernel@esmil.dk>
+Subject: Re: [PATCH v6 00/10] rockchip: kevin: Enable edp display
+Date: Fri, 10 Nov 2017 13:15:30 +0100
+Message-ID: <CAFqH_501Zvpw+dthWg5Pze5R=T6grVHqz6isy5u+a8R3D7vr1g@mail.gmail.com>
+References: <20171019034812.13768-1-jeffy.chen@rock-chips.com>
+ <2449324.8EdsLz1NaV@phil> <59F7FE17.80405@rock-chips.com> <20171101193307.4pnn6u5keo7o5yut@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171004175346.11956-1-kernel@esmil.dk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Emil Renner Berthing <kernel@esmil.dk>
-Cc: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <20171101193307.4pnn6u5keo7o5yut@art_vandelay>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: JeffyChen <jeffy.chen@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Romain Perier <romain.perier@collabora.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Kevin Hilman <khilman@baylibre.com>, Brian Norris <briannorris@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matt
 List-Id: linux-rockchip.vger.kernel.org
 
-2017-10-04 19:53 GMT+02:00 Emil Renner Berthing <kernel@esmil.dk>:
-> On the Samsung Chromebook Plus I get this error with 4.14-rc3:
+Dear all,
+
+2017-11-01 20:33 GMT+01:00 Sean Paul <seanpaul@chromium.org>:
+> On Tue, Oct 31, 2017 at 12:37:43PM +0800, JeffyChen wrote:
+>> Hi Heiko,
+>>
+>> On 10/31/2017 07:01 AM, Heiko Stuebner wrote:
+>> > As I was just looking at the edp dts change in patch1 again, does this
+>> > series also contain a fix for the issue below [0] ?
+>> >
+>> > I'm still seeing this on 4.14-rc6 with the most recent drm tree merged in.
+>> >
+>> i saw that too, it should due to our psr code...i think Zain has solved
+>> these in chromeos kernel, i will ask Zain if he have time to upstream them,
+>> or maybe i'll try to upstream them.
 >
-> BUG: scheduling while atomic: kworker/3:1/50/0x00000002
-> Modules linked in:
-> CPU: 3 PID: 50 Comm: kworker/3:1 Not tainted 4.14.0-0.rc3-kevin #2
-> Hardware name: Google Kevin (DT)
-> Workqueue: events analogix_dp_psr_work
-> Call trace:
-> [<ffffff80080873b0>] dump_backtrace+0x0/0x320
-> [<ffffff80080876e4>] show_stack+0x14/0x20
-> [<ffffff8008606d38>] dump_stack+0x9c/0xbc
-> [<ffffff80080c6b5c>] __schedule_bug+0x4c/0x70
-> [<ffffff80086188c0>] __schedule+0x3f0/0x458
-> [<ffffff8008618960>] schedule+0x38/0xa0
-> [<ffffff800861c20c>] schedule_hrtimeout_range_clock+0x84/0xe8
-> [<ffffff800861c2a0>] schedule_hrtimeout_range+0x10/0x18
-> [<ffffff800861bcec>] usleep_range+0x64/0x78
-> [<ffffff8008415a6c>] analogix_dp_transfer+0x16c/0x340
-> [<ffffff8008412550>] analogix_dpaux_transfer+0x10/0x18
-> [<ffffff80083ceb14>] drm_dp_dpcd_access+0x4c/0xf0
-> [<ffffff80083cf614>] drm_dp_dpcd_write+0x1c/0x28
-> [<ffffff8008413b98>] analogix_dp_disable_psr+0x60/0xa8
-> [<ffffff800840da3c>] analogix_dp_psr_work+0x4c/0x90
-> [<ffffff80080bb09c>] process_one_work+0x1d4/0x348
-> [<ffffff80080bb258>] worker_thread+0x48/0x478
-> [<ffffff80080c11fc>] kthread+0x12c/0x130
-> [<ffffff8008084290>] ret_from_fork+0x10/0x18
+> You need the patchset where I've refactored the psr locking/workers. I have a
+> version of it based on Heiko's tree at
+> https://cgit.freedesktop.org/~seanpaul/dogwood/log/?h=rk3399-display
 >
-> Changing rockchip_dp_device::psr_lock to a mutex rather
-> than spinlock seems to fix the issue.
+> With this kernel, the backlight comes on, but I don't have anything on the
+> display (which is why I didn't post it). I'll try putting this set on top and
+> see what happens.
 >
-> Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
-> ---
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 14 ++++++--------
->  1 file changed, 6 insertions(+), 8 deletions(-)
+
+There is a patch in the ML sent by Emil [1], similar to the Sean
+patch, that solves the issue.
+
+And I can confirm that the Jeffy's patches + Emil patch makes the
+display work on kevin or current rc8
+
+[1] https://patchwork.kernel.org/patch/9985237/
+
+Enric
+
+> Sean
 >
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 9606121fa185..d8f72d87ef08 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -72,7 +72,7 @@ struct rockchip_dp_device {
->         struct reset_control     *rst;
->
->         struct work_struct       psr_work;
-> -       spinlock_t               psr_lock;
-> +       struct mutex             psr_lock;
->         unsigned int             psr_state;
->
->         const struct rockchip_dp_chip_data *data;
-> @@ -83,21 +83,20 @@ struct rockchip_dp_device {
->  static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
->  {
->         struct rockchip_dp_device *dp = to_dp(encoder);
-> -       unsigned long flags;
->
->         if (!analogix_dp_psr_supported(dp->dev))
->                 return;
->
->         dev_dbg(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
->
-> -       spin_lock_irqsave(&dp->psr_lock, flags);
-> +       mutex_lock(&dp->psr_lock);
->         if (enabled)
->                 dp->psr_state = EDP_VSC_PSR_STATE_ACTIVE;
->         else
->                 dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
->
->         schedule_work(&dp->psr_work);
-> -       spin_unlock_irqrestore(&dp->psr_lock, flags);
-> +       mutex_unlock(&dp->psr_lock);
->  }
->
->  static void analogix_dp_psr_work(struct work_struct *work)
-> @@ -105,7 +104,6 @@ static void analogix_dp_psr_work(struct work_struct *work)
->         struct rockchip_dp_device *dp =
->                                 container_of(work, typeof(*dp), psr_work);
->         int ret;
-> -       unsigned long flags;
->
->         ret = rockchip_drm_wait_vact_end(dp->encoder.crtc,
->                                          PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
-> @@ -114,12 +112,12 @@ static void analogix_dp_psr_work(struct work_struct *work)
->                 return;
->         }
->
-> -       spin_lock_irqsave(&dp->psr_lock, flags);
-> +       mutex_lock(&dp->psr_lock);
->         if (dp->psr_state == EDP_VSC_PSR_STATE_ACTIVE)
->                 analogix_dp_enable_psr(dp->dev);
->         else
->                 analogix_dp_disable_psr(dp->dev);
-> -       spin_unlock_irqrestore(&dp->psr_lock, flags);
-> +       mutex_unlock(&dp->psr_lock);
->  }
->
->  static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
-> @@ -381,7 +379,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
->         dp->plat_data.power_off = rockchip_dp_powerdown;
->         dp->plat_data.get_modes = rockchip_dp_get_modes;
->
-> -       spin_lock_init(&dp->psr_lock);
-> +       mutex_init(&dp->psr_lock);
->         dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
->         INIT_WORK(&dp->psr_work, analogix_dp_psr_work);
+>> >
+>> > Heiko
+>> >
+>> > [0]
+>> >
+>> > [   27.960120] BUG: scheduling while atomic: kworker/1:1/68/0x00000002
+>> > [   27.974429] Modules linked in: rockchipdrm dw_hdmi analogix_dp drm_kms_helper panel_simple crc32_ce drm crct10dif_ce rockchip_saradc pwm_bl pwm_cros_ec rockchip_thermal ip_tables x_tabl
+>> > es ipv6 smsc95xx smsc75xx ax88179_178a asix usbnet phy_rockchip_pcie pcie_rockchip
+>> > [   28.008769] CPU: 1 PID: 68 Comm: kworker/1:1 Tainted: G        W       4.14.0-rc7-03201-g12490811b353 #559
+>> > [   28.008774] Hardware name: Google Kevin (DT)
+>> > [   28.008825] Workqueue: events analogix_dp_psr_work [rockchipdrm]
+>> > [   28.008828] Call trace:
+>> > [   28.008838] [<ffff000008088d60>] dump_backtrace+0x0/0x378
+>> > [   28.008842] [<ffff0000080890ec>] show_stack+0x14/0x20
+>> > [   28.008847] [<ffff0000089b04d8>] dump_stack+0x9c/0xbc
+>> > [   28.008852] [<ffff0000080ec4b4>] __schedule_bug+0x4c/0x70
+>> > [   28.008856] [<ffff0000089c4828>] __schedule+0x558/0x5e8
+>> > [   28.008859] [<ffff0000089c48f0>] schedule+0x38/0xa0
+>> > [   28.008864] [<ffff0000089c8194>] schedule_hrtimeout_range_clock+0x84/0xe8
+>> > [   28.008867] [<ffff0000089c8208>] schedule_hrtimeout_range+0x10/0x18
+>> > [   28.008870] [<ffff0000089c7c74>] usleep_range+0x64/0x78
+>> > [   28.008882] [<ffff000000ef56e4>] analogix_dp_transfer+0x16c/0xa88 [analogix_dp]
+>> > [   28.008891] [<ffff000000ef2190>] analogix_dpaux_transfer+0x10/0x18 [analogix_dp]
+>> > [   28.008950] [<ffff000000ddbb1c>] drm_dp_dpcd_access+0x4c/0xf8 [drm_kms_helper]
+>> > [   28.008994] [<ffff000000ddbbe4>] drm_dp_dpcd_write+0x1c/0x28 [drm_kms_helper]
+>> > [   28.009002] [<ffff000000ef2130>] analogix_dp_disable_psr+0x60/0xb0 [analogix_dp]
+>> > [   28.009036] [<ffff000000f8398c>] analogix_dp_psr_work+0x4c/0xc0 [rockchipdrm]
+>> > [   28.009040] [<ffff0000080dff44>] process_one_work+0x1d4/0x348
+>> > [   28.009043] [<ffff0000080e0100>] worker_thread+0x48/0x470
+>> > [   28.009048] [<ffff0000080e63d4>] kthread+0x12c/0x130
+>> > [   28.009052] [<ffff000008084b88>] ret_from_fork+0x10/0x18
+>> >
+>> >
+>> >
+>> >
+>>
+>>
 >
 > --
-> 2.14.2
->
-
-Right this patch fixes the issue for me too.
-
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Sean Paul, Software Engineer, Google / Chromium OS
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
