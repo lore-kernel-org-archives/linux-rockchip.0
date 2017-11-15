@@ -1,11 +1,9 @@
 From: Jacob Chen <jacob-chen@iotwrt.com>
 Subject: [RFC PATCH 1/5] media: videodev2.h, v4l2-ioctl: add rkisp1 meta buffer format
-Date: Wed, 15 Nov 2017 15:29:23 +0800
-Message-ID: <20171115072927.29367-2-jacob-chen@iotwrt.com>
-References: <20171115072927.29367-1-jacob-chen@iotwrt.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171115072927.29367-1-jacob-chen@iotwrt.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Date: Wed, 15 Nov 2017 15:31:28 +0800
+Message-ID: <20171115073132.30123-1-jacob-chen@iotwrt.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
 Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, mchehab@kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca, sakari.ailus@linux.intel.com, zhengsq@rock-chips.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, allon.huang@rock-chips.com, p.zabel@pengutronix.de, slongerbeam@gmail.com, linux@armlinux.org.uk, Jacob Chen <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
