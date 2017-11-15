@@ -1,77 +1,130 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH 2/2] drm/rockchip: vop: add rk3126 vop support
-Date: Tue, 14 Nov 2017 19:27:37 +0800
-Message-ID: <1510658857-90299-1-git-send-email-hjc@rock-chips.com>
-References: <1510658851-90160-1-git-send-email-hjc@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1510658851-90160-1-git-send-email-hjc@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [RFC PATCH 0/5] Rockchip ISP1 Driver
+Date: Wed, 15 Nov 2017 15:29:22 +0800
+Message-ID: <20171115072927.29367-1-jacob-chen@iotwrt.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de, mchehab@kernel.org, laurent.pinchart+renesas@ideasonboard.com, hans.verkuil@cisco.com, tfiga@chromium.org, nicolas@ndufresne.ca, sakari.ailus@linux.intel.com, zhengsq@rock-chips.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, allon.huang@rock-chips.com, p.zabel@pengutronix.de, slongerbeam@gmail.com, linux@armlinux.org.uk, Jacob Chen <jacob-chen@iotwrt.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-UkszMTI2IHZvcCByZWdpc3RlciBsYXlvdXQgaXMgc2ltaWxhciB3aXRoIHJrMzAzNiwgc28gc29t
-ZSBmZWF0dXJlCmNhbiByZXVzZSB3aXRoIHJrMzAzNi4KClJLMzEyNiBzdXBwb3J0IHR3byBvdmVy
-bGF5IHBsYW5lIGFuZCBvbmUgaHdjIHBsYW5lLCBtYXggb3V0cHV0CnJlc29sdXRpb24gaXMgMTA4
-MHAuIGl0IHN1cHBvcnQgSU9NTVUsIGFuZCBpdHMgSU9NTVUgc2FtZSBhcwpyazMyODgncwoKU2ln
-bmVkLW9mZi1ieTogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgMzAgKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVn
-LmggfCAgNiArKysrKysKIDIgZmlsZXMgY2hhbmdlZCwgMzYgaW5zZXJ0aW9ucygrKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCmluZGV4IDRhMzkwNDkuLjJl
-NGVlYTMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3Bf
-cmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwpA
-QCAtMTQ5LDYgKzE0OSwzNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9kYXRhIHJrMzAzNl92
-b3AgPSB7CiAJLndpbl9zaXplID0gQVJSQVlfU0laRShyazMwMzZfdm9wX3dpbl9kYXRhKSwKIH07
-CiAKK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgcmszMTI2X3dpbjFfZGF0YSA9IHsK
-KwkuZGF0YV9mb3JtYXRzID0gZm9ybWF0c193aW5fbGl0ZSwKKwkubmZvcm1hdHMgPSBBUlJBWV9T
-SVpFKGZvcm1hdHNfd2luX2xpdGUpLAorCS5lbmFibGUgPSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RS
-TCwgMHgxLCAxKSwKKwkuZm9ybWF0ID0gVk9QX1JFRyhSSzMwMzZfU1lTX0NUUkwsIDB4NywgNiks
-CisJLnJiX3N3YXAgPSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RSTCwgMHgxLCAxOSksCisJLmRzcF9p
-bmZvID0gVk9QX1JFRyhSSzMxMjZfV0lOMV9EU1BfSU5GTywgMHgwZmZmMGZmZiwgMCksCisJLmRz
-cF9zdCA9IFZPUF9SRUcoUkszMTI2X1dJTjFfRFNQX1NULCAweDFmZmYxZmZmLCAwKSwKKwkueXJn
-Yl9tc3QgPSBWT1BfUkVHKFJLMzEyNl9XSU4xX01TVCwgMHhmZmZmZmZmZiwgMCksCisJLnlyZ2Jf
-dmlyID0gVk9QX1JFRyhSSzMwMzZfV0lOMV9WSVIsIDB4ZmZmZiwgMCksCit9OworCitzdGF0aWMg
-Y29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSByazMxMjZfdm9wX3dpbl9kYXRhW10gPSB7CisJeyAu
-YmFzZSA9IDB4MDAsIC5waHkgPSAmcmszMDM2X3dpbjBfZGF0YSwKKwkgIC50eXBlID0gRFJNX1BM
-QU5FX1RZUEVfUFJJTUFSWSB9LAorCXsgLmJhc2UgPSAweDAwLCAucGh5ID0gJnJrMzEyNl93aW4x
-X2RhdGEsCisJICAudHlwZSA9IERSTV9QTEFORV9UWVBFX0NVUlNPUiB9LAorfTsKKworc3RhdGlj
-IGNvbnN0IHN0cnVjdCB2b3BfZGF0YSByazMxMjZfdm9wID0geworCS5pbnRyID0gJnJrMzAzNl9p
-bnRyLAorCS5jb21tb24gPSAmcmszMDM2X2NvbW1vbiwKKwkubW9kZXNldCA9ICZyazMwMzZfbW9k
-ZXNldCwKKwkub3V0cHV0ID0gJnJrMzAzNl9vdXRwdXQsCisJLndpbiA9IHJrMzEyNl92b3Bfd2lu
-X2RhdGEsCisJLndpbl9zaXplID0gQVJSQVlfU0laRShyazMxMjZfdm9wX3dpbl9kYXRhKSwKK307
-CisKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3NjbF9leHRlbnNpb24gcmszMjg4X3dpbl9mdWxs
-X3NjbF9leHQgPSB7CiAJLmNiY3JfdnNkX21vZGUgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwx
-LCAweDEsIDMxKSwKIAkuY2Jjcl92c3VfbW9kZSA9IFZPUF9SRUcoUkszMjg4X1dJTjBfQ1RSTDEs
-IDB4MSwgMzApLApAQCAtNTEwLDYgKzUzOCw4IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX2Rh
-dGEgcmszMzI4X3ZvcCA9IHsKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHZvcF9k
-cml2ZXJfZHRfbWF0Y2hbXSA9IHsKIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzAzNi12
-b3AiLAogCSAgLmRhdGEgPSAmcmszMDM2X3ZvcCB9LAorCXsgLmNvbXBhdGlibGUgPSAicm9ja2No
-aXAscmszMTI2LXZvcCIsCisJICAuZGF0YSA9ICZyazMxMjZfdm9wIH0sCiAJeyAuY29tcGF0aWJs
-ZSA9ICJyb2NrY2hpcCxyazMyODgtdm9wIiwKIAkgIC5kYXRhID0gJnJrMzI4OF92b3AgfSwKIAl7
-IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM2OC12b3AiLApkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuaCBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmgKaW5kZXggNGE0Nzk5Zi4uZjgxYjUxMCAxMDA2NDQK
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuaAorKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5oCkBAIC04NzgsNCArODc4
-LDEwIEBACiAjZGVmaW5lIFJLMzAzNl9IV0NfTFVUX0FERFIJCTB4ODAwCiAvKiByazMwMzYgcmVn
-aXN0ZXIgZGVmaW5pdGlvbiBlbmQgKi8KIAorLyogcmszMTI2IHJlZ2lzdGVyIGRlZmluaXRpb24g
-Ki8KKyNkZWZpbmUgUkszMTI2X1dJTjFfTVNUCQkJMHg0YworI2RlZmluZSBSSzMxMjZfV0lOMV9E
-U1BfSU5GTwkJMHg1MAorI2RlZmluZSBSSzMxMjZfV0lOMV9EU1BfU1QJCTB4NTQKKy8qIHJrMzEy
-NiByZWdpc3RlciBkZWZpbml0aW9uIGVuZCAqLworCiAjZW5kaWYgLyogX1JPQ0tDSElQX1ZPUF9S
-RUdfSCAqLwotLSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+This patch series add a ISP(Camera) v4l2 driver for rockchip rk3288/rk3399 SoC.
+
+TODO:
+  - Thomas is rewriting the binding code between isp, phy, sensors, i hope we could get suggestions.
+        https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/768633/2
+    rules:
+      - There are many mipi interfaces("rx0", "dxrx0")(actually it also could be parallel interface) in SoC and isp can decide which one will be used.
+      - Sometimes there will be more than one senor in a mipi phy, the sofrware should decide which one is used(media link).
+      - rk3399 have two isp.
+  - Add a dummy buffer(dma_alloc_coherent) so drvier won't hold buffer.
+  - Finish all TODO comments(mostly about hardware) in driver.
+
+To help do a quick review, i have push source code to my Github.
+  https://github.com/wzyy2/linux/tree/rkisp1/drivers/media/platform/rockchip/isp1
+
+Below are some infomations about driver/hardware:
+
+Rockchip ISP1 have many Hardware Blocks(simplied):
+
+  MIPI      --> ISP --> DCrop(Mainpath) --> RSZ(Mainpath) --> DMA(Mainpath)
+  DMA-Input -->     --> DCrop(Selfpath) --> RSZ(Selfpath) --> DMA(Selfpath);)
+
+(Acutally the TRM(rk3288, isp) could be found online...... which contains a more detailed block diagrams ;-P)
+
+The funcitons of each hardware block:
+
+  Mainpath : up to 4k resolution, support raw/yuv format
+  Selfpath : up tp 1080p, support rotate, support rgb/yuv format
+  RSZ: scaling 
+  DCrop: crop
+  ISP: 3A, Color processing, Crop
+  MIPI: MIPI Camera interface
+
+Media pipelines:
+
+  Mainpath, Selfpath <-- ISP subdev <-- MIPI  <-- Sensor
+  3A stats           <--            <-- 3A parms
+
+Code struct:
+
+  capture.c : Mainpath, Selfpath, RSZ, DCROP : capture device.
+  rkisp1.c : ISP : v4l2 sub-device.
+  isp_params.c : 3A parms : output device.
+  isp_stats.c : 3A stats : capture device.
+  mipi_dphy_sy.c : MIPI : sperated v4l2 sub-device.
+
+Usage:
+  ChromiumOS:
+    use below v4l2-ctl command to capture frames.
+
+      v4l2-ctl --verbose -d /dev/video4 --stream-mmap=2
+      --stream-to=/tmp/stream.out --stream-count=60 --stream-poll
+
+    use below command to playback the video on your PC.
+
+      mplayer /tmp/stream.out -loop 0 --demuxer=rawvideo
+      --rawvideo=w=800:h=600:size=$((800*600*2)):format=yuy2
+    or
+      mplayer ./stream.out -loop 0 -demuxer rawvideo -rawvideo
+      w=800:h=600:size=$((800*600*2)):format=yuy2
+
+  Linux:
+    use rkcamsrc gstreamer plugin(just a modified v4l2src) to preview.
+
+      gst-launch-1.0 rkcamsrc device=/dev/video0 io-mode=4 disable-3A=true
+      videoconvert ! video/x-raw,format=NV12,width=640,height=480 ! kmssink
+
+Jacob Chen (2):
+  media: rkisp1: add rockchip isp1 driver
+  ARM: dts: rockchip: add isp node for rk3288
+
+Jeffy Chen (1):
+  media: rkisp1: Add user space ABI definitions
+
+Shunqian Zheng (2):
+  media: videodev2.h, v4l2-ioctl: add rkisp1 meta buffer format
+  arm64: dts: rockchip: add isp0 node for rk3399
+
+ arch/arm/boot/dts/rk3288.dtsi                      |   24 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   26 +
+ drivers/media/platform/Kconfig                     |   10 +
+ drivers/media/platform/Makefile                    |    1 +
+ drivers/media/platform/rockchip/isp1/Makefile      |    9 +
+ drivers/media/platform/rockchip/isp1/capture.c     | 1678 ++++++++++++++++++++
+ drivers/media/platform/rockchip/isp1/capture.h     |   46 +
+ drivers/media/platform/rockchip/isp1/common.h      |  327 ++++
+ drivers/media/platform/rockchip/isp1/dev.c         |  728 +++++++++
+ drivers/media/platform/rockchip/isp1/isp_params.c  | 1556 ++++++++++++++++++
+ drivers/media/platform/rockchip/isp1/isp_params.h  |   81 +
+ drivers/media/platform/rockchip/isp1/isp_stats.c   |  537 +++++++
+ drivers/media/platform/rockchip/isp1/isp_stats.h   |   81 +
+ .../media/platform/rockchip/isp1/mipi_dphy_sy.c    |  619 ++++++++
+ .../media/platform/rockchip/isp1/mipi_dphy_sy.h    |   42 +
+ drivers/media/platform/rockchip/isp1/regs.c        |  251 +++
+ drivers/media/platform/rockchip/isp1/regs.h        | 1578 ++++++++++++++++++
+ drivers/media/platform/rockchip/isp1/rkisp1.c      | 1132 +++++++++++++
+ drivers/media/platform/rockchip/isp1/rkisp1.h      |  130 ++
+ drivers/media/v4l2-core/v4l2-ioctl.c               |    2 +
+ include/uapi/linux/rkisp1-config.h                 |  554 +++++++
+ include/uapi/linux/videodev2.h                     |    4 +
+ 22 files changed, 9416 insertions(+)
+ create mode 100644 drivers/media/platform/rockchip/isp1/Makefile
+ create mode 100644 drivers/media/platform/rockchip/isp1/capture.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/capture.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/common.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/dev.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_params.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_params.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_stats.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_stats.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/mipi_dphy_sy.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/regs.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/regs.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/rkisp1.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/rkisp1.h
+ create mode 100644 include/uapi/linux/rkisp1-config.h
+
+-- 
+2.14.2
