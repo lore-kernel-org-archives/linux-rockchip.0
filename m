@@ -1,12 +1,14 @@
 From: Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 1/1 v2] drm/rockchip: dw-mipi-dsi: fix possible un-balanced
+Subject: Re: [PATCH 1/1] drm/rockchip: dw-mipi-dsi: fix possible un-balanced
  runtime PM enable
-Date: Wed, 15 Nov 2017 08:24:46 +0000
-Message-ID: <1510734286-37434-1-git-send-email-mirza.krak@endian.se>
+Date: Wed, 15 Nov 2017 09:27:24 +0100
+Message-ID: <CAOgw+cnsD--h6JKBL68U7+8f7w_QFOftr5kgYkN5T3yY7XYWmg@mail.gmail.com>
+References: <1510733873-37358-1-git-send-email-mirza.krak@endian.se>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1510733873-37358-1-git-send-email-mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,45 +18,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+To: long jacob <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, airlied-cv59FeDIM0c@public.gmane.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In the case where the bind gets deferred we would end up with a
-un-balanced runtime PM enable call.
+2017-11-15 9:17 GMT+01:00 Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>:
+> In the case of the the binds gets defered we would end up with a
+> un-balanced runtime PM enable call.
+>
+> Fix this by simply moving the pm_runtime_enable call to the end of
+> the bind function when all paths have succeeded.
+>
+> Signed-off-by: Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
+> ---
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Fix this by simply moving the pm_runtime_enable call to the end of
-the bind function when all paths have succeeded.
+Re-sent the patch due to initial typos in commit message. Sorry.
 
-Signed-off-by: Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
----
-
-Changes in v2:
-- typos in commit message
-
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index 9a20b9d..f7fc652 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -1275,8 +1275,6 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 		goto err_pllref;
- 	}
- 
--	pm_runtime_enable(dev);
--
- 	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
- 	dsi->dsi_host.dev = dev;
- 	ret = mipi_dsi_host_register(&dsi->dsi_host);
-@@ -1291,6 +1289,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 	}
- 
- 	dev_set_drvdata(dev, dsi);
-+	pm_runtime_enable(dev);
- 	return 0;
- 
- err_mipi_dsi_host:
--- 
-2.1.4
+Best Regards
+Mirza
