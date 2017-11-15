@@ -1,8 +1,8 @@
 From: Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 1/1] drm/rockchip: dw-mipi-dsi: fix possible un-balanced
+Subject: [PATCH 1/1 v2] drm/rockchip: dw-mipi-dsi: fix possible un-balanced
  runtime PM enable
-Date: Wed, 15 Nov 2017 08:17:53 +0000
-Message-ID: <1510733873-37358-1-git-send-email-mirza.krak@endian.se>
+Date: Wed, 15 Nov 2017 08:24:46 +0000
+Message-ID: <1510734286-37434-1-git-send-email-mirza.krak@endian.se>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -20,7 +20,7 @@ To: mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In the case of the the binds gets defered we would end up with a
+In the case where the bind gets deferred we would end up with a
 un-balanced runtime PM enable call.
 
 Fix this by simply moving the pm_runtime_enable call to the end of
@@ -28,6 +28,10 @@ the bind function when all paths have succeeded.
 
 Signed-off-by: Mirza Krak <mirza.krak-MHOZLiH8ODazQB+pC5nmwQ@public.gmane.org>
 ---
+
+Changes in v2:
+- typos in commit message
+
  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
