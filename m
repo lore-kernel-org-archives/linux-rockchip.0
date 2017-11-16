@@ -1,28 +1,83 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] dt-bindings: add document for rk3126-vop
-Date: Wed, 15 Nov 2017 22:36:09 -0600
-Message-ID: <20171116043609.2pmh6uggbxz7fc7p@rob-hp-laptop>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 2/2] drm/rockchip: vop: add rk3126 vop support
+Date: Thu, 16 Nov 2017 13:59:45 +0800
+Message-ID: <5cea095e-41fe-32de-2b01-5c03f267b65e@rock-chips.com>
 References: <1510658851-90160-1-git-send-email-hjc@rock-chips.com>
- <1510658855-90223-1-git-send-email-hjc@rock-chips.com>
+ <1510658857-90299-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1510658855-90223-1-git-send-email-hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1510658857-90299-1-git-send-email-hjc@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 14, 2017 at 07:27:34PM +0800, Sandy Huang wrote:
-> Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt | 1 +
->  1 file changed, 1 insertion(+)
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxN+W5tDEx5pyIMTTml6UgMTk6MjcsIFNhbmR5IEh1YW5nIHdyb3RlOgo+IFJLMzEyNiB2
+b3AgcmVnaXN0ZXIgbGF5b3V0IGlzIHNpbWlsYXIgd2l0aCByazMwMzYsIHNvIHNvbWUgZmVhdHVy
+ZQo+IGNhbiByZXVzZSB3aXRoIHJrMzAzNi4KPgo+IFJLMzEyNiBzdXBwb3J0IHR3byBvdmVybGF5
+IHBsYW5lIGFuZCBvbmUgaHdjIHBsYW5lLCBtYXggb3V0cHV0Cj4gcmVzb2x1dGlvbiBpcyAxMDgw
+cC4gaXQgc3VwcG9ydCBJT01NVSwgYW5kIGl0cyBJT01NVSBzYW1lIGFzCj4gcmszMjg4J3MKPgo+
+IFNpZ25lZC1vZmYtYnk6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CgpMb29rcyBn
+b29kLgoKUmV2aWV3ZWQtYnk6wqAgTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoK
+PiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAz
+MCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX3ZvcF9yZWcuaCB8ICA2ICsrKysrKwo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAz
+NiBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX3ZvcF9yZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92
+b3BfcmVnLmMKPiBpbmRleCA0YTM5MDQ5Li4yZTRlZWEzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gQEAgLTE0OSw2ICsxNDksMzQgQEAgc3Rh
+dGljIGNvbnN0IHN0cnVjdCB2b3BfZGF0YSByazMwMzZfdm9wID0gewo+ICAgCS53aW5fc2l6ZSA9
+IEFSUkFZX1NJWkUocmszMDM2X3ZvcF93aW5fZGF0YSksCj4gICB9Owo+ICAgCj4gK3N0YXRpYyBj
+b25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgcmszMTI2X3dpbjFfZGF0YSA9IHsKPiArCS5kYXRhX2Zv
+cm1hdHMgPSBmb3JtYXRzX3dpbl9saXRlLAo+ICsJLm5mb3JtYXRzID0gQVJSQVlfU0laRShmb3Jt
+YXRzX3dpbl9saXRlKSwKPiArCS5lbmFibGUgPSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RSTCwgMHgx
+LCAxKSwKPiArCS5mb3JtYXQgPSBWT1BfUkVHKFJLMzAzNl9TWVNfQ1RSTCwgMHg3LCA2KSwKPiAr
+CS5yYl9zd2FwID0gVk9QX1JFRyhSSzMwMzZfU1lTX0NUUkwsIDB4MSwgMTkpLAo+ICsJLmRzcF9p
+bmZvID0gVk9QX1JFRyhSSzMxMjZfV0lOMV9EU1BfSU5GTywgMHgwZmZmMGZmZiwgMCksCj4gKwku
+ZHNwX3N0ID0gVk9QX1JFRyhSSzMxMjZfV0lOMV9EU1BfU1QsIDB4MWZmZjFmZmYsIDApLAo+ICsJ
+LnlyZ2JfbXN0ID0gVk9QX1JFRyhSSzMxMjZfV0lOMV9NU1QsIDB4ZmZmZmZmZmYsIDApLAo+ICsJ
+LnlyZ2JfdmlyID0gVk9QX1JFRyhSSzMwMzZfV0lOMV9WSVIsIDB4ZmZmZiwgMCksCj4gK307Cj4g
+Kwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSByazMxMjZfdm9wX3dpbl9kYXRh
+W10gPSB7Cj4gKwl7IC5iYXNlID0gMHgwMCwgLnBoeSA9ICZyazMwMzZfd2luMF9kYXRhLAo+ICsJ
+ICAudHlwZSA9IERSTV9QTEFORV9UWVBFX1BSSU1BUlkgfSwKPiArCXsgLmJhc2UgPSAweDAwLCAu
+cGh5ID0gJnJrMzEyNl93aW4xX2RhdGEsCj4gKwkgIC50eXBlID0gRFJNX1BMQU5FX1RZUEVfQ1VS
+U09SIH0sCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9kYXRhIHJrMzEyNl92
+b3AgPSB7Cj4gKwkuaW50ciA9ICZyazMwMzZfaW50ciwKPiArCS5jb21tb24gPSAmcmszMDM2X2Nv
+bW1vbiwKPiArCS5tb2Rlc2V0ID0gJnJrMzAzNl9tb2Rlc2V0LAo+ICsJLm91dHB1dCA9ICZyazMw
+MzZfb3V0cHV0LAo+ICsJLndpbiA9IHJrMzEyNl92b3Bfd2luX2RhdGEsCj4gKwkud2luX3NpemUg
+PSBBUlJBWV9TSVpFKHJrMzEyNl92b3Bfd2luX2RhdGEpLAo+ICt9Owo+ICsKPiAgIHN0YXRpYyBj
+b25zdCBzdHJ1Y3Qgdm9wX3NjbF9leHRlbnNpb24gcmszMjg4X3dpbl9mdWxsX3NjbF9leHQgPSB7
+Cj4gICAJLmNiY3JfdnNkX21vZGUgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwxLCAweDEsIDMx
+KSwKPiAgIAkuY2Jjcl92c3VfbW9kZSA9IFZPUF9SRUcoUkszMjg4X1dJTjBfQ1RSTDEsIDB4MSwg
+MzApLAo+IEBAIC01MTAsNiArNTM4LDggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfZGF0YSBy
+azMzMjhfdm9wID0gewo+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgdm9wX2Ry
+aXZlcl9kdF9tYXRjaFtdID0gewo+ICAgCXsgLmNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMDM2
+LXZvcCIsCj4gICAJICAuZGF0YSA9ICZyazMwMzZfdm9wIH0sCj4gKwl7IC5jb21wYXRpYmxlID0g
+InJvY2tjaGlwLHJrMzEyNi12b3AiLAo+ICsJICAuZGF0YSA9ICZyazMxMjZfdm9wIH0sCj4gICAJ
+eyAuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMyODgtdm9wIiwKPiAgIAkgIC5kYXRhID0gJnJr
+MzI4OF92b3AgfSwKPiAgIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM2OC12b3AiLAo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5o
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuaAo+IGluZGV4IDRh
+NDc5OWYuLmY4MWI1MTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX3ZvcF9yZWcuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF92b3BfcmVnLmgKPiBAQCAtODc4LDQgKzg3OCwxMCBAQAo+ICAgI2RlZmluZSBSSzMwMzZfSFdD
+X0xVVF9BRERSCQkweDgwMAo+ICAgLyogcmszMDM2IHJlZ2lzdGVyIGRlZmluaXRpb24gZW5kICov
+Cj4gICAKPiArLyogcmszMTI2IHJlZ2lzdGVyIGRlZmluaXRpb24gKi8KPiArI2RlZmluZSBSSzMx
+MjZfV0lOMV9NU1QJCQkweDRjCj4gKyNkZWZpbmUgUkszMTI2X1dJTjFfRFNQX0lORk8JCTB4NTAK
+PiArI2RlZmluZSBSSzMxMjZfV0lOMV9EU1BfU1QJCTB4NTQKPiArLyogcmszMTI2IHJlZ2lzdGVy
+IGRlZmluaXRpb24gZW5kICovCj4gKwo+ICAgI2VuZGlmIC8qIF9ST0NLQ0hJUF9WT1BfUkVHX0gg
+Ki8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
