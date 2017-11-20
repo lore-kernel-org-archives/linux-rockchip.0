@@ -1,71 +1,47 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
-Date: Mon, 20 Nov 2017 13:30:27 +0100
-Message-ID: <75adf743-18a2-2c55-b4bb-95d83bd26f03@xs4all.nl>
-References: <20171026181942.9516-1-phh@phh.me>
+From: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH][RFC] 8250_dw: unregister dw8250_set_termios for rk3188 chip
+Date: Mon, 20 Nov 2017 22:49:21 +0800
+Message-ID: <20171120144920.k4fbzidwus5t2kwa@home.dogben.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171026181942.9516-1-phh@phh.me>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Pierre-Hugues Husson <phh@phh.me>, linux-rockchip@lists.infradead.org
-Cc: linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SSBkaWRuJ3Qgc2VlIHRoaXMgbWVyZ2VkIGZvciA0LjE1LCBpcyBpdCB0b28gbGF0ZSB0byBpbmNs
-dWRlIHRoaXM/CkFsbCBvdGhlciBjaGFuZ2VzIG5lZWRlZCB0byBnZXQgQ0VDIHRvIHdvcmsgb24g
-cmszMjg4IGFuZCByazMzOTkgYXJlIGFsbCBtZXJnZWQuCgpSZWdhcmRzLAoKCUhhbnMKCk9uIDEw
-LzI2LzIwMTcgMDg6MTkgUE0sIFBpZXJyZS1IdWd1ZXMgSHVzc29uIHdyb3RlOgo+IFRoZSBkb2N1
-bWVudGF0aW9uIGFscmVhZHkgbWVudGlvbnMgImNlYyIgb3B0aW9uYWwgY2xvY2ssIGJ1dAo+IGN1
-cnJlbnRseSB0aGUgZHJpdmVyIGRvZXNuJ3QgZW5hYmxlIGl0Lgo+IAo+IENoYW5nZXM6Cj4gdjM6
-Cj4gLSBEcm9wIHVzZWxlc3MgYnJhY2VzCj4gCj4gdjI6Cj4gLSBTZXBhcmF0ZSBFTk9FTlQgZXJy
-b3JzIGZyb20gb3RoZXJzCj4gLSBQcm9wYWdhdGUgb3RoZXIgZXJyb3JzIChlc3BlY2lhbGx5IC1F
-UFJPQkVfREVGRVIpCj4gCj4gU2lnbmVkLW9mZi1ieTogUGllcnJlLUh1Z3VlcyBIdXNzb24gPHBo
-aEBwaGgubWU+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRt
-aS5jIHwgMjUgKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMjUg
-aW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
-bm9wc3lzL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRt
-aS5jCj4gaW5kZXggYmYxNDIxNGZhNDY0Li5kODJiOTc0N2E5NzkgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IEBAIC0xMzgsNiArMTM4LDcgQEAgc3Ry
-dWN0IGR3X2hkbWkgewo+ICAJc3RydWN0IGRldmljZSAqZGV2Owo+ICAJc3RydWN0IGNsayAqaXNm
-cl9jbGs7Cj4gIAlzdHJ1Y3QgY2xrICppYWhiX2NsazsKPiArCXN0cnVjdCBjbGsgKmNlY19jbGs7
-Cj4gIAlzdHJ1Y3QgZHdfaGRtaV9pMmMgKmkyYzsKPiAgCj4gIAlzdHJ1Y3QgaGRtaV9kYXRhX2lu
-Zm8gaGRtaV9kYXRhOwo+IEBAIC0yMzgyLDYgKzIzODMsMjYgQEAgX19kd19oZG1pX3Byb2JlKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAkJZ290byBlcnJfaXNmcjsKPiAgCX0KPiAg
-Cj4gKwloZG1pLT5jZWNfY2xrID0gZGV2bV9jbGtfZ2V0KGhkbWktPmRldiwgImNlYyIpOwo+ICsJ
-aWYgKFBUUl9FUlIoaGRtaS0+Y2VjX2NsaykgPT0gLUVOT0VOVCkgewo+ICsJCWhkbWktPmNlY19j
-bGsgPSBOVUxMOwo+ICsJfSBlbHNlIGlmIChJU19FUlIoaGRtaS0+Y2VjX2NsaykpIHsKPiArCQly
-ZXQgPSBQVFJfRVJSKGhkbWktPmNlY19jbGspOwo+ICsJCWlmIChyZXQgIT0gLUVQUk9CRV9ERUZF
-UikKPiArCQkJZGV2X2VycihoZG1pLT5kZXYsICJDYW5ub3QgZ2V0IEhETUkgY2VjIGNsb2NrOiAl
-ZFxuIiwKPiArCQkJCQlyZXQpOwo+ICsKPiArCQloZG1pLT5jZWNfY2xrID0gTlVMTDsKPiArCQln
-b3RvIGVycl9pYWhiOwo+ICsJfSBlbHNlIHsKPiArCQlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUo
-aGRtaS0+Y2VjX2Nsayk7Cj4gKwkJaWYgKHJldCkgewo+ICsJCQlkZXZfZXJyKGhkbWktPmRldiwg
-IkNhbm5vdCBlbmFibGUgSERNSSBjZWMgY2xvY2s6ICVkXG4iLAo+ICsJCQkJCXJldCk7Cj4gKwkJ
-CWdvdG8gZXJyX2lhaGI7Cj4gKwkJfQo+ICsJfQo+ICsKPiAgCS8qIFByb2R1Y3QgYW5kIHJldmlz
-aW9uIElEcyAqLwo+ICAJaGRtaS0+dmVyc2lvbiA9IChoZG1pX3JlYWRiKGhkbWksIEhETUlfREVT
-SUdOX0lEKSA8PCA4KQo+ICAJCSAgICAgIHwgKGhkbWlfcmVhZGIoaGRtaSwgSERNSV9SRVZJU0lP
-Tl9JRCkgPDwgMCk7Cj4gQEAgLTI1MTgsNiArMjUzOSw4IEBAIF9fZHdfaGRtaV9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAJCWNlY19ub3RpZmllcl9wdXQoaGRtaS0+Y2Vj
-X25vdGlmaWVyKTsKPiAgCj4gIAljbGtfZGlzYWJsZV91bnByZXBhcmUoaGRtaS0+aWFoYl9jbGsp
-Owo+ICsJaWYgKGhkbWktPmNlY19jbGspCj4gKwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWkt
-PmNlY19jbGspOwo+ICBlcnJfaXNmcjoKPiAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShoZG1pLT5p
-c2ZyX2Nsayk7Cj4gIGVycl9yZXM6Cj4gQEAgLTI1NDEsNiArMjU2NCw4IEBAIHN0YXRpYyB2b2lk
-IF9fZHdfaGRtaV9yZW1vdmUoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gIAo+ICAJY2xrX2Rpc2Fi
-bGVfdW5wcmVwYXJlKGhkbWktPmlhaGJfY2xrKTsKPiAgCWNsa19kaXNhYmxlX3VucHJlcGFyZSho
-ZG1pLT5pc2ZyX2Nsayk7Cj4gKwlpZiAoaGRtaS0+Y2VjX2NsaykKPiArCQljbGtfZGlzYWJsZV91
-bnByZXBhcmUoaGRtaS0+Y2VjX2Nsayk7Cj4gIAo+ICAJaWYgKGhkbWktPmkyYykKPiAgCQlpMmNf
-ZGVsX2FkYXB0ZXIoJmhkbWktPmkyYy0+YWRhcCk7Cj4gCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+dw8250_set_termios is causing problems for rk3188 on my radxa board.
+It's using a fixed clock at 24M, not baud*16 in dw8250_set_termios.
+I'm not sure if other rk3xxx chips are facing the same problem.
+
+Signed-off-by Wei Shuyu <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/tty/serial/8250/8250_dw.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/tty/serial/8250/8250_dw.c b/drivers/tty/serial/8250/8250_dw.c
+index 5bb0c42c88dd..e760a5c1f3f6 100644
+--- a/drivers/tty/serial/8250/8250_dw.c
++++ b/drivers/tty/serial/8250/8250_dw.c
+@@ -340,6 +340,9 @@ static void dw8250_quirks(struct uart_port *p, struct dw8250_data *data)
+ 			data->skip_autocfg = true;
+ 		}
+ #endif
++		if (of_device_is_compatible(np, "rockchip,rk3188-uart")) {
++			p->set_termios = NULL;
++		}
+ 		if (of_device_is_big_endian(p->dev->of_node)) {
+ 			p->iotype = UPIO_MEM32BE;
+ 			p->serial_in = dw8250_serial_in32be;
+-- 
+2.15.0
