@@ -1,65 +1,53 @@
-From: SF Markus Elfring <elfring-Rn4VEauK+AKRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
-Subject: [PATCH 2/2] ASoC: rockchip: Delete an unnecessary variable
- initialisation in rk_aif1_hw_params()
-Date: Sun, 19 Nov 2017 13:44:45 +0100
-Message-ID: <ad5a1eaa-cc97-6d53-f71c-17f43cbd5b25@users.sourceforge.net>
-References: <255fa488-a5f1-2ea3-dd48-b10ad8b2c18c@users.sourceforge.net>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] MAINTAINERS: change maintainer for Rockchip drm drivers
+Date: Mon, 20 Nov 2017 08:48:48 +0100
+Message-ID: <20171120074848.cg22qkved232pxxf@phenom.ffwll.local>
+References: <1510568131-28838-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <255fa488-a5f1-2ea3-dd48-b10ad8b2c18c-Rn4VEauK+AKRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>
-Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1510568131-28838-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Markus Elfring <elfring-Rn4VEauK+AKRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
-Date: Sun, 19 Nov 2017 13:26:06 +0100
-
-The variable "ret" will eventually be set to an appropriate value
-a bit later. Thus omit the explicit initialisation at the beginning.
-
-Signed-off-by: Markus Elfring <elfring-Rn4VEauK+AKRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
----
- sound/soc/rockchip/rockchip_max98090.c | 2 +-
- sound/soc/rockchip/rockchip_rt5645.c   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index 419fa6ef14bb..6d661a93588f 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -76,7 +76,7 @@ static const struct snd_kcontrol_new rk_mc_controls[] = {
- static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 			     struct snd_pcm_hw_params *params)
- {
--	int ret = 0;
-+	int ret;
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
- 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
-index 7f763d0963d3..d032d8bd15b9 100644
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -70,7 +70,7 @@ static const struct snd_kcontrol_new rk_mc_controls[] = {
- static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 			     struct snd_pcm_hw_params *params)
- {
--	int ret = 0;
-+	int ret;
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
- 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
--- 
-2.15.0
+T24gTW9uLCBOb3YgMTMsIDIwMTcgYXQgMDY6MTU6MzFQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
+Cj4gRm9yIHBlcnNvbmFsIHJlYXNvbnMsIE1hcmsgWWFvIHdpbGwgbGVhdmUgcm9ja2NoaXAsCj4g
+Y2FuIG5vdCBjb250aW51ZSBtYWludGFpbiBkcm0vcm9ja2NoaXAsIFNhbmR5IEh1YW5nCj4gd2ls
+bCB0YWtlIG92ZXIgdGhlIGRybS9yb2NrY2hpcC4KPiAKPiBDYzogU2FuZHkgSHVhbmcgPGhqY0By
+b2NrLWNoaXBzLmNvbT4KPiBDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAK
+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+CgpTaW5j
+ZSByb2NrY2hpcCBpcyBpbiBkcm0tbWlzYyB0aGF0IG1lYW5zIHdlIG5lZWQgYSBuZXcgbWFpbnRh
+aW5lciB3aG8gYWxzbwpoYXMgZHJtLW1pc2MgY29tbWl0IHJpZ2h0cy4gU2FuZHkgZG9lc24ndCB5
+ZXQsIHNvIGlmIFNhbmR5IGlzIGdvaW5nIHRvIGJlCnRoZSBuZXcgbWFpbnRhaW5lciB3ZSBuZWVk
+IHRvIGZpeCB0aGF0LgoKQWxzbywgSGVpa28sIGFyZSB5b3UgaW50ZXJlc3RlZCBpbiBiZWNvbWlu
+ZyBjby1tYWludGFpbmVyPyBXaXRoIGNvbW1pdApyaWdodHMgYW5kIGFsbC4KLURhbmllbAoKPiAt
+LS0KPiAgTUFJTlRBSU5FUlMgfCAyICstCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
+KSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9NQUlOVEFJTkVSUyBiL01BSU5UQUlO
+RVJTCj4gaW5kZXggMGQ3N2YyMi4uMzFiZjA4MCAxMDA2NDQKPiAtLS0gYS9NQUlOVEFJTkVSUwo+
+ICsrKyBiL01BSU5UQUlORVJTCj4gQEAgLTQ2MjcsNyArNDYyNyw3IEBAIEY6CURvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9yZW5lc2FzLGR3LWhkbWkudHh0
+Cj4gIEY6CURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JlbmVzYXMs
+ZHUudHh0Cj4gIAo+ICBEUk0gRFJJVkVSUyBGT1IgUk9DS0NISVAKPiAtTToJTWFyayBZYW8gPG1h
+cmsueWFvQHJvY2stY2hpcHMuY29tPgo+ICtNOglTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMu
+Y29tPgo+ICBMOglkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gIFM6CU1haW50YWlu
+ZWQKPiAgRjoJZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwLwo+IC0tIAo+IDIuNy40Cj4gCj4gCj4g
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAK
+RGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDov
+L2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
