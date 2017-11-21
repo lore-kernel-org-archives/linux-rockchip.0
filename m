@@ -1,61 +1,81 @@
-From: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH][RFC] 8250_dw: unregister dw8250_set_termios for rk3188
- chip
-Date: Tue, 21 Nov 2017 11:09:50 +0800
-Message-ID: <20171121030949.a6bsapueiicdbonj@home.dogben.com>
-References: <20171120144045.juwm64m2j736h5ps@home.dogben.com>
- <20171120161455.orvooleyzfsslon3@home.dogben.com>
- <0a4ce349-d386-0f1b-e973-e77af7f75d23@sondrel.com>
- <1854299.UNFOX8ncyA@diego>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] ASoC: rockchip: Use dummy_dai for rt5514 dsp
+	dailink
+Date: Tue, 21 Nov 2017 16:25:17 +0800
+Message-ID: <20171121082517.17233-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1854299.UNFOX8ncyA@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Ed Blake <ed.blake-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: linux-kernel@vger.kernel.org
+Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, linux-arm-kernel@lists.infradead.org, cychiang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 20, 2017 at 06:51:37PM +0100, Heiko St=FCbner wrote:
- =
+The rt5514 dsp captures pcm data through spi directly, so we should not
+use rockchip-i2s as it's cpu dai like other codecs.
 
-> Also, the rk3188 uarts are definitly not fixed at 24MHz and can use other =
+Use dummy_dai for rt5514 dsp dailink to make voice wakeup work again.
 
-> sources as well. So I'm puzzled because at least the serial console on my =
+Reported-by: Jimmy Cheng-Yi Chiang <cychiang@google.com>
+Fixes: (72cfb0f20c75 ASoC: rockchip: Use codec of_node and dai_name for rt5514 dsp)
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-> rk3188 radxarock works without issues.
-> =
+ sound/soc/rockchip/rk3399_gru_sound.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
 
-> Can you tell us which uart you are failing to control correctly?
-> =
-
-> =
-
-> I do remember that I ran into problems when the set_termios change
-> was introduced originally, resulting in the patch
-> 	"serial: 8250_dw: Honor clk_round_rate errors in dw8250_set_termios" [0]
-> but that is in mainline for quite some time now.
-> =
-
-> [0] https://patchwork.kernel.org/patch/9594657/
-> =
-
-> =
-
-> Heiko
-
-Hi Heiko,
-
-I'm using ttyS2(uart2).
-My board starts to fail on mainline since the exact commit 37c8596,
-that's why I try to remove dw8250_set_termios() and it worked.
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index d64fbbd50544..aa8ffd035377 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -367,7 +367,8 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
+ 	[DAILINK_RT5514_DSP] = {
+ 		.name = "RT5514 DSP",
+ 		.stream_name = "Wake on Voice",
+-		.codec_dai_name = "rt5514-dsp-cpu-dai",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
+ 	},
+ };
+ 
+@@ -528,7 +529,18 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 		if (index < 0)
+ 			continue;
+ 
+-		np_cpu = (index == DAILINK_CDNDP) ? np_cpu1 : np_cpu0;
++		switch (index) {
++		case DAILINK_CDNDP:
++			np_cpu = np_cpu1;
++			break;
++		case DAILINK_RT5514_DSP:
++			np_cpu = np_codec;
++			break;
++		default:
++			np_cpu = np_cpu0;
++			break;
++		}
++
+ 		if (!np_cpu) {
+ 			dev_err(dev, "Missing 'rockchip,cpu' for %s\n",
+ 				rockchip_dais[index].name);
+@@ -538,7 +550,8 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 		dai = &card->dai_link[card->num_links++];
+ 		*dai = rockchip_dais[index];
+ 
+-		dai->codec_of_node = np_codec;
++		if (!dai->codec_name)
++			dai->codec_of_node = np_codec;
+ 		dai->platform_of_node = np_cpu;
+ 		dai->cpu_of_node = np_cpu;
+ 
+-- 
+2.11.0
