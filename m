@@ -1,18 +1,20 @@
-From: Ed Blake <ed.blake-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
+From: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
 Subject: Re: [PATCH][RFC] 8250_dw: unregister dw8250_set_termios for rk3188
  chip
-Date: Tue, 21 Nov 2017 10:23:17 +0000
-Message-ID: <4010bd84-7c88-5410-820f-bd3d04f1fbb5@sondrel.com>
+Date: Wed, 22 Nov 2017 01:17:13 +0800
+Message-ID: <20171121171712.GA4462@home.dogben.com>
 References: <20171120144045.juwm64m2j736h5ps@home.dogben.com>
  <20171120161455.orvooleyzfsslon3@home.dogben.com>
- <0a4ce349-d386-0f1b-e973-e77af7f75d23@sondrel.com> <1854299.UNFOX8ncyA@diego>
+ <0a4ce349-d386-0f1b-e973-e77af7f75d23@sondrel.com>
+ <1854299.UNFOX8ncyA@diego>
  <20171121030949.a6bsapueiicdbonj@home.dogben.com>
+ <4010bd84-7c88-5410-820f-bd3d04f1fbb5@sondrel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20171121030949.a6bsapueiicdbonj-ZQaglsx1qnHXWvwwbwmGMg@public.gmane.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <4010bd84-7c88-5410-820f-bd3d04f1fbb5-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,30 +24,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ed Blake <ed.blake-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
+Cc: wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjEvMTEvMTcgMDM6MDksIFNodXl1IFdlaSB3cm90ZToKPiBPbiBNb24sIE5vdiAyMCwgMjAx
-NyBhdCAwNjo1MTozN1BNICswMTAwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiAgCj4+IEFsc28s
-IHRoZSByazMxODggdWFydHMgYXJlIGRlZmluaXRseSBub3QgZml4ZWQgYXQgMjRNSHogYW5kIGNh
-biB1c2Ugb3RoZXIgCj4+IHNvdXJjZXMgYXMgd2VsbC4gU28gSSdtIHB1enpsZWQgYmVjYXVzZSBh
-dCBsZWFzdCB0aGUgc2VyaWFsIGNvbnNvbGUgb24gbXkgCj4+IHJrMzE4OCByYWR4YXJvY2sgd29y
-a3Mgd2l0aG91dCBpc3N1ZXMuCj4+Cj4+IENhbiB5b3UgdGVsbCB1cyB3aGljaCB1YXJ0IHlvdSBh
-cmUgZmFpbGluZyB0byBjb250cm9sIGNvcnJlY3RseT8KPj4KPj4KPj4gSSBkbyByZW1lbWJlciB0
-aGF0IEkgcmFuIGludG8gcHJvYmxlbXMgd2hlbiB0aGUgc2V0X3Rlcm1pb3MgY2hhbmdlCj4+IHdh
-cyBpbnRyb2R1Y2VkIG9yaWdpbmFsbHksIHJlc3VsdGluZyBpbiB0aGUgcGF0Y2gKPj4gCSJzZXJp
-YWw6IDgyNTBfZHc6IEhvbm9yIGNsa19yb3VuZF9yYXRlIGVycm9ycyBpbiBkdzgyNTBfc2V0X3Rl
-cm1pb3MiIFswXQo+PiBidXQgdGhhdCBpcyBpbiBtYWlubGluZSBmb3IgcXVpdGUgc29tZSB0aW1l
-IG5vdy4KPj4KPj4gWzBdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTU5NDY1
-Ny8KPj4KPj4KPj4gSGVpa28KPiBIaSBIZWlrbywKPgo+IEknbSB1c2luZyB0dHlTMih1YXJ0Miku
-Cj4gTXkgYm9hcmQgc3RhcnRzIHRvIGZhaWwgb24gbWFpbmxpbmUgc2luY2UgdGhlIGV4YWN0IGNv
-bW1pdCAzN2M4NTk2LAo+IHRoYXQncyB3aHkgSSB0cnkgdG8gcmVtb3ZlIGR3ODI1MF9zZXRfdGVy
-bWlvcygpIGFuZCBpdCB3b3JrZWQuCgpJcyB0aGlzIG9uIDQuMTQgb3IgbmV4dD8KCldoYXQgYmF1
-ZCByYXRlIGlzIGJlaW5nIHNldCwgYW5kIHdoYXQgcmF0ZSBkb2VzIGNsa19yb3VuZF9yYXRlKCkg
-cmV0dXJuCmluIGR3ODI1MF9zZXRfdGVybWlvcygpPwoKQ2FuIHlvdSB0cnkgYXBwbHlpbmcgdGhp
-cyBwYXRjaCBzZXJpZXMgYW5kIHNlZSBpZiBpdCBmaXhlcyB0aGUgcHJvYmxlbT8KCmh0dHBzOi8v
-d3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LXNlcmlhbC9tc2cyNzY3Mi5odG1sCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Nov 21, 2017 at 10:23:17AM +0000, Ed Blake wrote:
+
+> Is this on 4.14 or next?
+> Can you try applying this patch series and see if it fixes the problem?
+> https://www.spinics.net/lists/linux-serial/msg27672.html
+
+I'm working on the mainline, which already has this patch applied, so it
+doesn't fix the problem.
+
+The breaking commit I mentioned is a merge on mainline, the
+underlying commit is 6a171b on 2017-01-19.
+
+
+> What baud rate is being set, and what rate does clk_round_rate() return
+> in dw8250_set_termios()?
+
+I'm using baud 115200, clk_round_rate() returns 1843200.
