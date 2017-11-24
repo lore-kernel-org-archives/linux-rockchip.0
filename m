@@ -1,159 +1,83 @@
-From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v2 00/11] Rockchip ISP1 Driver
-Date: Fri, 24 Nov 2017 14:15:51 +0800
-Message-ID: <CAFLEztQaQf2EHGEkZN-KT-SF-xoB+MCz0+P2T=4bQwHp0YEqgA@mail.gmail.com>
-References: <20171124023706.5702-1-jacob-chen@iotwrt.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Fri, 24 Nov 2017 13:34:06 +0530
+Message-ID: <0cf328e7-772b-f634-e1b1-6653b513f2ec@codeaurora.org>
+References: <20171026181942.9516-1-phh@phh.me>
+ <75adf743-18a2-2c55-b4bb-95d83bd26f03@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171124023706.5702-1-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Allon Huang <allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <75adf743-18a2-2c55-b4bb-95d83bd26f03@xs4all.nl>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Pierre-Hugues Husson <phh@phh.me>, linux-rockchip@lists.infradead.org
+Cc: linux@armlinux.org.uk, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-HI all,
-
-2017-11-24 10:36 GMT+08:00 Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>:
-> This patch series add a ISP(Camera) v4l2 driver for rockchip rk3288/rk3399 SoC.
->
-> Kernel Branch:
-> https://github.com/wzyy2/linux/tree/rkisp1/drivers/media/platform/rockchip/isp1
->
-> Below are some infomations about driver/hardware:
->
-> Rockchip ISP1 have many Hardware Blocks(simplied):
->
->   MIPI      --> ISP --> DCrop(Mainpath) --> RSZ(Mainpath) --> DMA(Mainpath)
->   DMA-Input -->     --> DCrop(Selfpath) --> RSZ(Selfpath) --> DMA(Selfpath);)
->
-> (Acutally the TRM(rk3288, isp) could be found online...... which contains a more detailed block diagrams ;-P)
->
-> The funcitons of each hardware block:
->
->   Mainpath : up to 4k resolution, support raw/yuv format
->   Selfpath : up tp 1080p, support rotate, support rgb/yuv format
->   RSZ: scaling
->   DCrop: crop
->   ISP: 3A, Color processing, Crop
->   MIPI: MIPI Camera interface
->
-> Media pipelines:
->
->   Mainpath, Selfpath <-- ISP subdev <-- MIPI  <-- Sensor
->   3A stats           <--            <-- 3A parms
->
-> Code struct:
->
->   capture.c : Mainpath, Selfpath, RSZ, DCROP : capture device.
->   rkisp1.c : ISP : v4l2 sub-device.
->   isp_params.c : 3A parms : output device.
->   isp_stats.c : 3A stats : capture device.
->   mipi_dphy_sy.c : MIPI : sperated v4l2 sub-device.
->
-> Usage:
->   ChromiumOS:
->     use below v4l2-ctl command to capture frames.
->
->       v4l2-ctl --verbose -d /dev/video4 --stream-mmap=2
->       --stream-to=/tmp/stream.out --stream-count=60 --stream-poll
->
->     use below command to playback the video on your PC.
->
->       mplayer /tmp/stream.out -loop 0 --demuxer=rawvideo
->       --rawvideo=w=800:h=600:size=$((800*600*2)):format=yuy2
->     or
->       mplayer ./stream.out -loop 0 -demuxer rawvideo -rawvideo
->       w=800:h=600:size=$((800*600*2)):format=yuy2
->
->   Linux:
->     use rkcamsrc gstreamer plugin(just a modified v4l2src) to preview.
->
->       gst-launch-1.0 rkcamsrc device=/dev/video0 io-mode=4 disable-3A=true
->       videoconvert ! video/x-raw,format=NV12,width=640,height=480 ! kmssink
->
-> Jacob Chen (7):
->   media: rkisp1: add rockchip isp1 driver
->   media: rkisp1: add Rockchip MIPI Synopsys DPHY driver
->   dt-bindings: Document the Rockchip ISP1 bindings
->   dt-bindings: Document the Rockchip MIPI RX D-PHY bindings
->   ARM: dts: rockchip: add isp node for rk3288
->   ARM: dts: rockchip: add rx0 mipi-phy for rk3288
->   MAINTAINERS: add entry for Rockchip ISP1 driver
->
-> Jeffy Chen (1):
->   media: rkisp1: Add user space ABI definitions
->
-> Shunqian Zheng (3):
->   media: videodev2.h, v4l2-ioctl: add rkisp1 meta buffer format
->   arm64: dts: rockchip: add isp0 node for rk3399
->   arm64: dts: rockchip: add rx0 mipi-phy for rk3399
->
->  .../devicetree/bindings/media/rockchip-isp1.txt    |   61 +
->  .../bindings/media/rockchip-mipi-dphy.txt          |   77 +
->  MAINTAINERS                                        |   10 +
->  arch/arm/boot/dts/rk3288.dtsi                      |   24 +
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   26 +
->  drivers/media/platform/Kconfig                     |   10 +
->  drivers/media/platform/Makefile                    |    1 +
->  drivers/media/platform/rockchip/isp1/Makefile      |    8 +
->  drivers/media/platform/rockchip/isp1/capture.c     | 1691 ++++++++++++++++++++
->  drivers/media/platform/rockchip/isp1/capture.h     |   46 +
->  drivers/media/platform/rockchip/isp1/common.h      |  330 ++++
->  drivers/media/platform/rockchip/isp1/dev.c         |  632 ++++++++
->  drivers/media/platform/rockchip/isp1/isp_params.c  | 1556 ++++++++++++++++++
->  drivers/media/platform/rockchip/isp1/isp_params.h  |   81 +
->  drivers/media/platform/rockchip/isp1/isp_stats.c   |  537 +++++++
->  drivers/media/platform/rockchip/isp1/isp_stats.h   |   81 +
->  .../media/platform/rockchip/isp1/mipi_dphy_sy.c    |  805 ++++++++++
->  drivers/media/platform/rockchip/isp1/regs.c        |  251 +++
->  drivers/media/platform/rockchip/isp1/regs.h        | 1578 ++++++++++++++++++
->  drivers/media/platform/rockchip/isp1/rkisp1.c      | 1230 ++++++++++++++
->  drivers/media/platform/rockchip/isp1/rkisp1.h      |  130 ++
->  drivers/media/v4l2-core/v4l2-ioctl.c               |    2 +
->  include/uapi/linux/rkisp1-config.h                 |  554 +++++++
->  include/uapi/linux/videodev2.h                     |    4 +
->  24 files changed, 9725 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-isp1.txt
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
->  create mode 100644 drivers/media/platform/rockchip/isp1/Makefile
->  create mode 100644 drivers/media/platform/rockchip/isp1/capture.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/capture.h
->  create mode 100644 drivers/media/platform/rockchip/isp1/common.h
->  create mode 100644 drivers/media/platform/rockchip/isp1/dev.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/isp_params.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/isp_params.h
->  create mode 100644 drivers/media/platform/rockchip/isp1/isp_stats.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/isp_stats.h
->  create mode 100644 drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/regs.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/regs.h
->  create mode 100644 drivers/media/platform/rockchip/isp1/rkisp1.c
->  create mode 100644 drivers/media/platform/rockchip/isp1/rkisp1.h
->  create mode 100644 include/uapi/linux/rkisp1-config.h
->
-> --
-> 2.15.0
->
-
-
-Sorry, i forget to add a changelog.
-
-changes in V2:
-  mipi-phy:
-    - use async probing
-    - make it be a child device of the GRF
-
-  isp:
-    - add dummy buffer
-    - change the way to get bus configuration, which make it possible to
-            add parallel sensor support in the future(without mipi-phy driver).
-
-
-I resend it for now because i think v2 patch looks more clearly than
-the old one,
-the v1 patch could just be superseded.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGksCgpPbiAxMS8yMC8yMDE3IDA2OjAwIFBNLCBIYW5zIFZlcmt1aWwgd3JvdGU6Cj4gSSBkaWRu
+J3Qgc2VlIHRoaXMgbWVyZ2VkIGZvciA0LjE1LCBpcyBpdCB0b28gbGF0ZSB0byBpbmNsdWRlIHRo
+aXM/Cj4gQWxsIG90aGVyIGNoYW5nZXMgbmVlZGVkIHRvIGdldCBDRUMgdG8gd29yayBvbiByazMy
+ODggYW5kIHJrMzM5OSBhcmUgYWxsIG1lcmdlZC4KClNvcnJ5IGZvciB0aGUgbGF0ZSByZXBseS4g
+SSB3YXMgb3V0IGxhc3Qgd2Vlay4KCkRhdmUgcmVjZW50bHkgc2VudCB0aGUgc2Vjb25kIHB1bGwg
+cmVxdWVzdCBmb3IgNC4xNSwgc28gSSB0aGluayBpdCB3b3VsZCBiZSBoYXJkIHRvIGdldCBpdApp
+biB0aGUgbWVyZ2Ugd2luZG93IG5vdy4gV2UgY291bGQgdGFyZ2V0IGl0IGZvciB0aGUgNC4xNS1y
+Y3Mgc2luY2UgaXQgaXMgcHJldmVudGluZyB0aGUKZmVhdHVyZSBmcm9tIHdvcmtpbmcuIElzIGl0
+IHBvc3NpYmxlIHRvIHJlcGhyYXNlIHRoZSBjb21taXQgbWVzc2FnZSBhIGJpdCBzbyB0aGF0IGl0
+J3MgY2xlYXIKdGhhdCB3ZSBuZWVkIGl0IGZvciBDRUMgdG8gd29yaz8KClRoYW5rcywKQXJjaGl0
+Cgo+IAo+IFJlZ2FyZHMsCj4gCj4gCUhhbnMKPiAKPiBPbiAxMC8yNi8yMDE3IDA4OjE5IFBNLCBQ
+aWVycmUtSHVndWVzIEh1c3NvbiB3cm90ZToKPj4gVGhlIGRvY3VtZW50YXRpb24gYWxyZWFkeSBt
+ZW50aW9ucyAiY2VjIiBvcHRpb25hbCBjbG9jaywgYnV0Cj4+IGN1cnJlbnRseSB0aGUgZHJpdmVy
+IGRvZXNuJ3QgZW5hYmxlIGl0Lgo+Pgo+PiBDaGFuZ2VzOgo+PiB2MzoKPj4gLSBEcm9wIHVzZWxl
+c3MgYnJhY2VzCj4+Cj4+IHYyOgo+PiAtIFNlcGFyYXRlIEVOT0VOVCBlcnJvcnMgZnJvbSBvdGhl
+cnMKPj4gLSBQcm9wYWdhdGUgb3RoZXIgZXJyb3JzIChlc3BlY2lhbGx5IC1FUFJPQkVfREVGRVIp
+Cj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFBpZXJyZS1IdWd1ZXMgSHVzc29uIDxwaGhAcGhoLm1lPgo+
+PiAtLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDI1
+ICsrKysrKysrKysrKysrKysrKysrKysrKysKPj4gICAxIGZpbGUgY2hhbmdlZCwgMjUgaW5zZXJ0
+aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
+cy9kdy1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+
+PiBpbmRleCBiZjE0MjE0ZmE0NjQuLmQ4MmI5NzQ3YTk3OSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4gKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4gQEAgLTEzOCw2ICsxMzgsNyBAQCBzdHJ1
+Y3QgZHdfaGRtaSB7Cj4+ICAgCXN0cnVjdCBkZXZpY2UgKmRldjsKPj4gICAJc3RydWN0IGNsayAq
+aXNmcl9jbGs7Cj4+ICAgCXN0cnVjdCBjbGsgKmlhaGJfY2xrOwo+PiArCXN0cnVjdCBjbGsgKmNl
+Y19jbGs7Cj4+ICAgCXN0cnVjdCBkd19oZG1pX2kyYyAqaTJjOwo+PiAgIAo+PiAgIAlzdHJ1Y3Qg
+aGRtaV9kYXRhX2luZm8gaGRtaV9kYXRhOwo+PiBAQCAtMjM4Miw2ICsyMzgzLDI2IEBAIF9fZHdf
+aGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+PiAgIAkJZ290byBlcnJf
+aXNmcjsKPj4gICAJfQo+PiAgIAo+PiArCWhkbWktPmNlY19jbGsgPSBkZXZtX2Nsa19nZXQoaGRt
+aS0+ZGV2LCAiY2VjIik7Cj4+ICsJaWYgKFBUUl9FUlIoaGRtaS0+Y2VjX2NsaykgPT0gLUVOT0VO
+VCkgewo+PiArCQloZG1pLT5jZWNfY2xrID0gTlVMTDsKPj4gKwl9IGVsc2UgaWYgKElTX0VSUiho
+ZG1pLT5jZWNfY2xrKSkgewo+PiArCQlyZXQgPSBQVFJfRVJSKGhkbWktPmNlY19jbGspOwo+PiAr
+CQlpZiAocmV0ICE9IC1FUFJPQkVfREVGRVIpCj4+ICsJCQlkZXZfZXJyKGhkbWktPmRldiwgIkNh
+bm5vdCBnZXQgSERNSSBjZWMgY2xvY2s6ICVkXG4iLAo+PiArCQkJCQlyZXQpOwo+PiArCj4+ICsJ
+CWhkbWktPmNlY19jbGsgPSBOVUxMOwo+PiArCQlnb3RvIGVycl9pYWhiOwo+PiArCX0gZWxzZSB7
+Cj4+ICsJCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShoZG1pLT5jZWNfY2xrKTsKPj4gKwkJaWYg
+KHJldCkgewo+PiArCQkJZGV2X2VycihoZG1pLT5kZXYsICJDYW5ub3QgZW5hYmxlIEhETUkgY2Vj
+IGNsb2NrOiAlZFxuIiwKPj4gKwkJCQkJcmV0KTsKPj4gKwkJCWdvdG8gZXJyX2lhaGI7Cj4+ICsJ
+CX0KPj4gKwl9Cj4+ICsKPj4gICAJLyogUHJvZHVjdCBhbmQgcmV2aXNpb24gSURzICovCj4+ICAg
+CWhkbWktPnZlcnNpb24gPSAoaGRtaV9yZWFkYihoZG1pLCBIRE1JX0RFU0lHTl9JRCkgPDwgOCkK
+Pj4gICAJCSAgICAgIHwgKGhkbWlfcmVhZGIoaGRtaSwgSERNSV9SRVZJU0lPTl9JRCkgPDwgMCk7
+Cj4+IEBAIC0yNTE4LDYgKzI1MzksOCBAQCBfX2R3X2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldiwKPj4gICAJCWNlY19ub3RpZmllcl9wdXQoaGRtaS0+Y2VjX25vdGlmaWVy
+KTsKPj4gICAKPj4gICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWktPmlhaGJfY2xrKTsKPj4g
+KwlpZiAoaGRtaS0+Y2VjX2NsaykKPj4gKwkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWktPmNl
+Y19jbGspOwo+PiAgIGVycl9pc2ZyOgo+PiAgIAljbGtfZGlzYWJsZV91bnByZXBhcmUoaGRtaS0+
+aXNmcl9jbGspOwo+PiAgIGVycl9yZXM6Cj4+IEBAIC0yNTQxLDYgKzI1NjQsOCBAQCBzdGF0aWMg
+dm9pZCBfX2R3X2hkbWlfcmVtb3ZlKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+PiAgIAo+PiAgIAlj
+bGtfZGlzYWJsZV91bnByZXBhcmUoaGRtaS0+aWFoYl9jbGspOwo+PiAgIAljbGtfZGlzYWJsZV91
+bnByZXBhcmUoaGRtaS0+aXNmcl9jbGspOwo+PiArCWlmIChoZG1pLT5jZWNfY2xrKQo+PiArCQlj
+bGtfZGlzYWJsZV91bnByZXBhcmUoaGRtaS0+Y2VjX2Nsayk7Cj4+ICAgCj4+ICAgCWlmIChoZG1p
+LT5pMmMpCj4+ICAgCQlpMmNfZGVsX2FkYXB0ZXIoJmhkbWktPmkyYy0+YWRhcCk7Cj4+Cj4gCgot
+LSAKUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2YgQ29kZSBB
+dXJvcmEgRm9ydW0sCmEgTGludXggRm91bmRhdGlvbiBDb2xsYWJvcmF0aXZlIFByb2plY3QKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
