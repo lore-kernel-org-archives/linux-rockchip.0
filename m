@@ -1,44 +1,64 @@
-From: Pierre-Hugues Husson <phh@phh.me>
-Subject: Re: [PATCH v3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
-Date: Fri, 24 Nov 2017 14:57:33 +0100
-Message-ID: <CAJ-oXjQgf7EBuxx84uG0heY3ebxc23GV4KRh=CuNM8eEALVqqQ@mail.gmail.com>
-References: <20171026181942.9516-1-phh@phh.me> <75adf743-18a2-2c55-b4bb-95d83bd26f03@xs4all.nl>
- <0cf328e7-772b-f634-e1b1-6653b513f2ec@codeaurora.org> <861b94c4-9ee2-322a-19de-17c7c866faf3@xs4all.nl>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] MAINTAINERS: change maintainer for Rockchip drm drivers
+Date: Fri, 24 Nov 2017 15:51:06 +0100
+Message-ID: <20171124145106.hdtybw3hgizlg6gs@phenom.ffwll.local>
+References: <1510568131-28838-1-git-send-email-mark.yao@rock-chips.com>
+ <20171120074848.cg22qkved232pxxf@phenom.ffwll.local>
+ <83984459.7UdiCfbSkg@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <861b94c4-9ee2-322a-19de-17c7c866faf3@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Archit Taneja <architt@codeaurora.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media <linux-media@vger.kernel.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <83984459.7UdiCfbSkg@phil>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
->> On 11/20/2017 06:00 PM, Hans Verkuil wrote:
->>> I didn't see this merged for 4.15, is it too late to include this?
->>> All other changes needed to get CEC to work on rk3288 and rk3399 are all merged.
->>
->> Sorry for the late reply. I was out last week.
->>
->> Dave recently sent the second pull request for 4.15, so I think it would be hard to get it
->> in the merge window now. We could target it for the 4.15-rcs since it is preventing the
->> feature from working. Is it possible to rephrase the commit message a bit so that it's clear
->> that we need it for CEC to work?
->
-> While it is not my patch I would propose something like this:
->
-> "Support the "cec" optional clock. The documentation already mentions "cec"
-> optional clock and it is used by several boards, but currently the driver
-> doesn't enable it, thus preventing cec from working on those boards.
->
-> And even worse: a /dev/cecX device will appear for those boards, but it
-> won't be functioning without configuring this clock."
->
-> I hadn't realized that last sentence until I started thinking about it,
-> but this patch is really needed.
-This change looks good to me.
-
-Archit, I can send this as a new version of the patch tomorrow if you need it.
-
-Regards,
+T24gRnJpLCBOb3YgMjQsIDIwMTcgYXQgMDk6Mjg6NTlBTSArMDEwMCwgSGVpa28gU3R1ZWJuZXIg
+d3JvdGU6Cj4gSGkgRGFuaWVsLAo+IAo+IFtzb21laG93IG15IGVtYWlsIGFkZHJlc3Mgc2VlbXMg
+dG8gaGF2ZSBnb3R0ZW4gbG9zdCwgc28KPiBvbmx5IHNhdyB0aGlzIGJ5IGNoYW5jZSBvbiB0aGUg
+bGlzdCBpdHNlbGYgbm93Lgo+IEkndmUgYWxzbyByZS1hZGRlZCBTYW5keSB0byB0aGUgcmVjaXBp
+ZW50c10KPiAKPiBBbSBNb250YWcsIDIwLiBOb3ZlbWJlciAyMDE3LCAwODo0ODo0OCBDRVQgc2No
+cmllYiBEYW5pZWwgVmV0dGVyOgo+ID4gT24gTW9uLCBOb3YgMTMsIDIwMTcgYXQgMDY6MTU6MzFQ
+TSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4gPiA+IEZvciBwZXJzb25hbCByZWFzb25zLCBNYXJr
+IFlhbyB3aWxsIGxlYXZlIHJvY2tjaGlwLAo+ID4gPiBjYW4gbm90IGNvbnRpbnVlIG1haW50YWlu
+IGRybS9yb2NrY2hpcCwgU2FuZHkgSHVhbmcKPiA+ID4gd2lsbCB0YWtlIG92ZXIgdGhlIGRybS9y
+b2NrY2hpcC4KPiA+ID4gCj4gPiA+IENjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29t
+Pgo+ID4gPiBDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+ID4gCj4gPiA+
+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiA+IAo+
+ID4gU2luY2Ugcm9ja2NoaXAgaXMgaW4gZHJtLW1pc2MgdGhhdCBtZWFucyB3ZSBuZWVkIGEgbmV3
+IG1haW50YWluZXIgd2hvIGFsc28KPiA+IGhhcyBkcm0tbWlzYyBjb21taXQgcmlnaHRzLiBTYW5k
+eSBkb2Vzbid0IHlldCwgc28gaWYgU2FuZHkgaXMgZ29pbmcgdG8gYmUKPiA+IHRoZSBuZXcgbWFp
+bnRhaW5lciB3ZSBuZWVkIHRvIGZpeCB0aGF0Lgo+ID4gCj4gPiBBbHNvLCBIZWlrbywgYXJlIHlv
+dSBpbnRlcmVzdGVkIGluIGJlY29taW5nIGNvLW1haW50YWluZXI/IFdpdGggY29tbWl0Cj4gPiBy
+aWdodHMgYW5kIGFsbC4KPiAKPiBJIGFsd2F5cyBmZWVsIHNvbWV3aGF0IGluYWRlcXVhdGUganVk
+Z2luZyB0aGUgZmFzdC1wYWNlZCBkcm0gc3R1ZmYsIGFzIGluCj4gdGhlIHBhc3Qgb25jZSBJIGdv
+dCBteSBoZWFkIHdyYXBwZWQgYXJvdW5kIHNvbWV0aGluZywgZHJtIGFsd2F5cwo+IHNvbWVob3cg
+bW92ZWQgYW5vdGhlciBtaWxlIGFscmVhZHkgOy0pIC4KPiAKPiBCdXQgc29tZXdoZXJlIEkgcmVh
+ZCB0aGF0IGRybS1wYWNlIGZvciBiaWcgY2hhbmdlcyBpcyBzdXBwb3NlZCB0byBzbG93IGEKPiBi
+aXQgbm93IHRoYXQgYXRvbWljIG1vZGVzZXR0aW5nIGlzIGRvbmUgaW4gYSBsb3Qgb2YgcGxhY2Vz
+LCBzbyB3ZSBjb3VsZCBnaXZlCj4gY28tbWFpbnRhaW5lcnNoaXAgZm9yIHRoZSBSb2NrY2hpcC1k
+cm0gYSB0cnkgLSB3aXRoIFNhbmR5IHdlYXJpbmcgdGhlCj4gYWN0dWFsIGhhdCBmb3IgYmlnIGNo
+YW5nZXMgdGhvdWdoIDstKSAuCgpZZWFoIEkgdGhpbmsgb24gdGhlIG1vZGVzZXQgc2lkZSBpdCBj
+YWxtZWQgZG93biBhIGxvdC4gV2UncmUgc3RpbGwKZmluZS10dW5pbmcgdGhlIGhlbHBlciBsaWJy
+YXJpZXMgYXMgd2UncmUgZmlndXJpbmcgb3V0IGJldHRlciB3YXlzIHRvCndyaXRlIGRyaXZlcnMu
+IEJ1dCByaWdodCBub3cgSSB0aGluayBhIGxvdCBvZiB0aGUgYWN0aW9uIGlzIGFsbCBpbiBkZXRh
+aWxzCm5vdCByZWxldmFudCBmb3IgbWFueSBkcml2ZXJzLgoKSWYgU2FuZHkncyBvayB3aXRoIHRo
+YXQgdG9vIHBscyByZXF1ZXN0IGFuIGZkLm8gYWNjb3VudCBmb3IgZHJtLW1pc2MgYW5kCnNldCB1
+cCB0aGUgdG9vbGluZyBwZXIgb3VyIHF1aWNrc3RhcnQgZ3VpZGU6CgpodHRwczovLzAxLm9yZy9s
+aW51eGdyYXBoaWNzL2dmeC1kb2NzL21haW50YWluZXItdG9vbHMvZGltLmh0bWwjcXVpY2tzdGFy
+dAoKVGhhbmtzLCBEYW5pZWwKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIElu
+dGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
