@@ -1,64 +1,102 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] MAINTAINERS: change maintainer for Rockchip drm drivers
-Date: Fri, 24 Nov 2017 15:51:06 +0100
-Message-ID: <20171124145106.hdtybw3hgizlg6gs@phenom.ffwll.local>
-References: <1510568131-28838-1-git-send-email-mark.yao@rock-chips.com>
- <20171120074848.cg22qkved232pxxf@phenom.ffwll.local>
- <83984459.7UdiCfbSkg@phil>
+From: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH][RFC] 8250_dw: unregister dw8250_set_termios for rk3188
+ chip
+Date: Sat, 25 Nov 2017 01:06:06 +0800
+Message-ID: <20171124170606.GA10317@home.dogben.com>
+References: <20171120144045.juwm64m2j736h5ps@home.dogben.com>
+ <2890515.ZR3BzkItWh@phil> <20171123153922.GA23503@home.dogben.com>
+ <6443393.PFOXghLreO@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <83984459.7UdiCfbSkg@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <6443393.PFOXghLreO@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Ed Blake <ed.blake-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBOb3YgMjQsIDIwMTcgYXQgMDk6Mjg6NTlBTSArMDEwMCwgSGVpa28gU3R1ZWJuZXIg
-d3JvdGU6Cj4gSGkgRGFuaWVsLAo+IAo+IFtzb21laG93IG15IGVtYWlsIGFkZHJlc3Mgc2VlbXMg
-dG8gaGF2ZSBnb3R0ZW4gbG9zdCwgc28KPiBvbmx5IHNhdyB0aGlzIGJ5IGNoYW5jZSBvbiB0aGUg
-bGlzdCBpdHNlbGYgbm93Lgo+IEkndmUgYWxzbyByZS1hZGRlZCBTYW5keSB0byB0aGUgcmVjaXBp
-ZW50c10KPiAKPiBBbSBNb250YWcsIDIwLiBOb3ZlbWJlciAyMDE3LCAwODo0ODo0OCBDRVQgc2No
-cmllYiBEYW5pZWwgVmV0dGVyOgo+ID4gT24gTW9uLCBOb3YgMTMsIDIwMTcgYXQgMDY6MTU6MzFQ
-TSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4gPiA+IEZvciBwZXJzb25hbCByZWFzb25zLCBNYXJr
-IFlhbyB3aWxsIGxlYXZlIHJvY2tjaGlwLAo+ID4gPiBjYW4gbm90IGNvbnRpbnVlIG1haW50YWlu
-IGRybS9yb2NrY2hpcCwgU2FuZHkgSHVhbmcKPiA+ID4gd2lsbCB0YWtlIG92ZXIgdGhlIGRybS9y
-b2NrY2hpcC4KPiA+ID4gCj4gPiA+IENjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29t
-Pgo+ID4gPiBDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+ID4gCj4gPiA+
-IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiA+IAo+
-ID4gU2luY2Ugcm9ja2NoaXAgaXMgaW4gZHJtLW1pc2MgdGhhdCBtZWFucyB3ZSBuZWVkIGEgbmV3
-IG1haW50YWluZXIgd2hvIGFsc28KPiA+IGhhcyBkcm0tbWlzYyBjb21taXQgcmlnaHRzLiBTYW5k
-eSBkb2Vzbid0IHlldCwgc28gaWYgU2FuZHkgaXMgZ29pbmcgdG8gYmUKPiA+IHRoZSBuZXcgbWFp
-bnRhaW5lciB3ZSBuZWVkIHRvIGZpeCB0aGF0Lgo+ID4gCj4gPiBBbHNvLCBIZWlrbywgYXJlIHlv
-dSBpbnRlcmVzdGVkIGluIGJlY29taW5nIGNvLW1haW50YWluZXI/IFdpdGggY29tbWl0Cj4gPiBy
-aWdodHMgYW5kIGFsbC4KPiAKPiBJIGFsd2F5cyBmZWVsIHNvbWV3aGF0IGluYWRlcXVhdGUganVk
-Z2luZyB0aGUgZmFzdC1wYWNlZCBkcm0gc3R1ZmYsIGFzIGluCj4gdGhlIHBhc3Qgb25jZSBJIGdv
-dCBteSBoZWFkIHdyYXBwZWQgYXJvdW5kIHNvbWV0aGluZywgZHJtIGFsd2F5cwo+IHNvbWVob3cg
-bW92ZWQgYW5vdGhlciBtaWxlIGFscmVhZHkgOy0pIC4KPiAKPiBCdXQgc29tZXdoZXJlIEkgcmVh
-ZCB0aGF0IGRybS1wYWNlIGZvciBiaWcgY2hhbmdlcyBpcyBzdXBwb3NlZCB0byBzbG93IGEKPiBi
-aXQgbm93IHRoYXQgYXRvbWljIG1vZGVzZXR0aW5nIGlzIGRvbmUgaW4gYSBsb3Qgb2YgcGxhY2Vz
-LCBzbyB3ZSBjb3VsZCBnaXZlCj4gY28tbWFpbnRhaW5lcnNoaXAgZm9yIHRoZSBSb2NrY2hpcC1k
-cm0gYSB0cnkgLSB3aXRoIFNhbmR5IHdlYXJpbmcgdGhlCj4gYWN0dWFsIGhhdCBmb3IgYmlnIGNo
-YW5nZXMgdGhvdWdoIDstKSAuCgpZZWFoIEkgdGhpbmsgb24gdGhlIG1vZGVzZXQgc2lkZSBpdCBj
-YWxtZWQgZG93biBhIGxvdC4gV2UncmUgc3RpbGwKZmluZS10dW5pbmcgdGhlIGhlbHBlciBsaWJy
-YXJpZXMgYXMgd2UncmUgZmlndXJpbmcgb3V0IGJldHRlciB3YXlzIHRvCndyaXRlIGRyaXZlcnMu
-IEJ1dCByaWdodCBub3cgSSB0aGluayBhIGxvdCBvZiB0aGUgYWN0aW9uIGlzIGFsbCBpbiBkZXRh
-aWxzCm5vdCByZWxldmFudCBmb3IgbWFueSBkcml2ZXJzLgoKSWYgU2FuZHkncyBvayB3aXRoIHRo
-YXQgdG9vIHBscyByZXF1ZXN0IGFuIGZkLm8gYWNjb3VudCBmb3IgZHJtLW1pc2MgYW5kCnNldCB1
-cCB0aGUgdG9vbGluZyBwZXIgb3VyIHF1aWNrc3RhcnQgZ3VpZGU6CgpodHRwczovLzAxLm9yZy9s
-aW51eGdyYXBoaWNzL2dmeC1kb2NzL21haW50YWluZXItdG9vbHMvZGltLmh0bWwjcXVpY2tzdGFy
-dAoKVGhhbmtzLCBEYW5pZWwKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIElu
-dGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Fri, Nov 24, 2017 at 12:34:59AM +0100, Heiko Stuebner wrote:
+> Hi,
+> 
+> Am Donnerstag, 23. November 2017, 23:40:31 CET schrieb Shuyu Wei:
+> > On Thu, Nov 23, 2017 at 04:11:12PM +0100, Heiko Stuebner wrote:
+> > > 
+> > > you actually omitted the output part where sclk_uart2 is actually shown :-) .
+> > > 
+> > > On my rk3188 radxarock with a kernel build this morning from
+> > > the middle of this merge-window, the relevant part of the clock-tree
+> > > looks like the following and my serial console works like a charm:
+> > > 
+> > > xin24m                                   6            6    24000000          0 0
+> > > [...]
+> > >     pll_gpll                              1            1   594000000          0 0
+> > >        gpll                               5            5   594000000          0 0
+> > > [...]
+> > >          uart_src                        1            1   594000000          0 0
+> > >              uart3_pre                    0            0   594000000          0 0
+> > >                 uart3_frac                0            0    29700000          0 0
+> > >              uart2_pre                    1            1   594000000          0 0
+> > >                 uart2_frac                1            1     1843200          0 0
+> > >                    sclk_uart2             1            1     1843200          0 0
+> > >  [			^^ the important clock]
+> > > 
+> > > In your dump the sclk_uart2 clock is not muxed to the uart2_frac clock
+> > > but to something else but that part is missing from you dump.
+> > > 
+> > > So clk_round_rate is definitly correct in that it can reach this rate
+> > > using the fractional divider and also can sucessfully set this in the
+> > > clock framework.
+> > > 
+> > > Can you show where sclk_uart2 is for you please, as I guess your dump
+> > > is with the settermios patch disabled, right?
+> > > 
+> > > 
+> > > Thanks
+> > > Heiko
+> > 
+> > You are right, here is the complete clk_summary from the latest
+> > mainline, and my console is now filled with strange characters :-(
+> > 
+> >    clock                         enable_cnt  prepare_cnt        rate   accuracy   phase
+> > ----------------------------------------------------------------------------------------
+> >  xin24m                                  11           11    24000000          0 0
+> [...]
+> >     pll_gpll                              1            1   891000000          0 0
+> >        gpll                               3            3   891000000          0 0
+> [...]
+> >           uart_src                        1            1   891000000          0 0
+> >              uart3_pre                    0            0   891000000          0 0
+> >                 uart3_frac                0            0    44550000          0 0
+> >              uart2_pre                    1            1   891000000          0 0
+> >                 uart2_frac                1            1     1843200          0 0
+> >                    sclk_uart2             1            1     1843200          0 0
+> 
+> Just to make sure, I did boot-tests on a lot of different Rockchip socs
+> (rk3036, rk3188, rk3288, rk3328, rk3399) with the serial console using
+> 8250_dw and working normally on all of them with the most recent
+> torvalds kernel (and everything I tested in the past)
+> 
+> The only difference I see between our two clock dumps is the higher
+> gpll clock on your board, but I cannot really imagine that this could be
+> and issue.
+> 
+> So I'm really puzzled by what you see on your board, but don't have
+> any specific idea what to test right now.
+> 
+> 
+> Heiko
+
+Good news! I found the cause. It's the barebox bootloader that set the
+pll_gpll to the weired 891000000. By manually setting the clock back to
+594000000, it worked again! It's time to find the root cause in barebox
+:-)
