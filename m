@@ -1,61 +1,134 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] MAINTAINERS: change maintainer for Rockchip drm drivers
-Date: Fri, 24 Nov 2017 09:28:59 +0100
-Message-ID: <83984459.7UdiCfbSkg@phil>
-References: <1510568131-28838-1-git-send-email-mark.yao@rock-chips.com>
- <20171120074848.cg22qkved232pxxf@phenom.ffwll.local>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v3] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Fri, 24 Nov 2017 09:41:16 +0100
+Message-ID: <861b94c4-9ee2-322a-19de-17c7c866faf3@xs4all.nl>
+References: <20171026181942.9516-1-phh@phh.me>
+ <75adf743-18a2-2c55-b4bb-95d83bd26f03@xs4all.nl>
+ <0cf328e7-772b-f634-e1b1-6653b513f2ec@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171120074848.cg22qkved232pxxf@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <0cf328e7-772b-f634-e1b1-6653b513f2ec@codeaurora.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Pierre-Hugues Husson <phh@phh.me>, linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux@armlinux.org.uk, Andrzej Hajda <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAoKW3NvbWVob3cgbXkgZW1haWwgYWRkcmVzcyBzZWVtcyB0byBoYXZlIGdvdHRl
-biBsb3N0LCBzbwpvbmx5IHNhdyB0aGlzIGJ5IGNoYW5jZSBvbiB0aGUgbGlzdCBpdHNlbGYgbm93
-LgpJJ3ZlIGFsc28gcmUtYWRkZWQgU2FuZHkgdG8gdGhlIHJlY2lwaWVudHNdCgpBbSBNb250YWcs
-IDIwLiBOb3ZlbWJlciAyMDE3LCAwODo0ODo0OCBDRVQgc2NocmllYiBEYW5pZWwgVmV0dGVyOgo+
-IE9uIE1vbiwgTm92IDEzLCAyMDE3IGF0IDA2OjE1OjMxUE0gKzA4MDAsIE1hcmsgWWFvIHdyb3Rl
-Ogo+ID4gRm9yIHBlcnNvbmFsIHJlYXNvbnMsIE1hcmsgWWFvIHdpbGwgbGVhdmUgcm9ja2NoaXAs
-Cj4gPiBjYW4gbm90IGNvbnRpbnVlIG1haW50YWluIGRybS9yb2NrY2hpcCwgU2FuZHkgSHVhbmcK
-PiA+IHdpbGwgdGFrZSBvdmVyIHRoZSBkcm0vcm9ja2NoaXAuCj4gPiAKPiA+IENjOiBTYW5keSBI
-dWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+ID4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
-bnRlY2guZGU+Cj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2Nr
-LWNoaXBzLmNvbT4KPiAKPiBTaW5jZSByb2NrY2hpcCBpcyBpbiBkcm0tbWlzYyB0aGF0IG1lYW5z
-IHdlIG5lZWQgYSBuZXcgbWFpbnRhaW5lciB3aG8gYWxzbwo+IGhhcyBkcm0tbWlzYyBjb21taXQg
-cmlnaHRzLiBTYW5keSBkb2Vzbid0IHlldCwgc28gaWYgU2FuZHkgaXMgZ29pbmcgdG8gYmUKPiB0
-aGUgbmV3IG1haW50YWluZXIgd2UgbmVlZCB0byBmaXggdGhhdC4KPiAKPiBBbHNvLCBIZWlrbywg
-YXJlIHlvdSBpbnRlcmVzdGVkIGluIGJlY29taW5nIGNvLW1haW50YWluZXI/IFdpdGggY29tbWl0
-Cj4gcmlnaHRzIGFuZCBhbGwuCgpJIGFsd2F5cyBmZWVsIHNvbWV3aGF0IGluYWRlcXVhdGUganVk
-Z2luZyB0aGUgZmFzdC1wYWNlZCBkcm0gc3R1ZmYsIGFzIGluCnRoZSBwYXN0IG9uY2UgSSBnb3Qg
-bXkgaGVhZCB3cmFwcGVkIGFyb3VuZCBzb21ldGhpbmcsIGRybSBhbHdheXMKc29tZWhvdyBtb3Zl
-ZCBhbm90aGVyIG1pbGUgYWxyZWFkeSA7LSkgLgoKQnV0IHNvbWV3aGVyZSBJIHJlYWQgdGhhdCBk
-cm0tcGFjZSBmb3IgYmlnIGNoYW5nZXMgaXMgc3VwcG9zZWQgdG8gc2xvdyBhCmJpdCBub3cgdGhh
-dCBhdG9taWMgbW9kZXNldHRpbmcgaXMgZG9uZSBpbiBhIGxvdCBvZiBwbGFjZXMsIHNvIHdlIGNv
-dWxkIGdpdmUKY28tbWFpbnRhaW5lcnNoaXAgZm9yIHRoZSBSb2NrY2hpcC1kcm0gYSB0cnkgLSB3
-aXRoIFNhbmR5IHdlYXJpbmcgdGhlCmFjdHVhbCBoYXQgZm9yIGJpZyBjaGFuZ2VzIHRob3VnaCA7
-LSkgLgoKCkhlaWtvCgoKPiAtRGFuaWVsCj4gCj4gPiAtLS0KPiA+ICBNQUlOVEFJTkVSUyB8IDIg
-Ky0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiA+
-IAo+ID4gZGlmZiAtLWdpdCBhL01BSU5UQUlORVJTIGIvTUFJTlRBSU5FUlMKPiA+IGluZGV4IDBk
-NzdmMjIuLjMxYmYwODAgMTAwNjQ0Cj4gPiAtLS0gYS9NQUlOVEFJTkVSUwo+ID4gKysrIGIvTUFJ
-TlRBSU5FUlMKPiA+IEBAIC00NjI3LDcgKzQ2MjcsNyBAQCBGOglEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvcmVuZXNhcyxkdy1oZG1pLnR4dAo+ID4gIEY6
-CURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JlbmVzYXMsZHUudHh0
-Cj4gPiAgCj4gPiAgRFJNIERSSVZFUlMgRk9SIFJPQ0tDSElQCj4gPiAtTToJTWFyayBZYW8gPG1h
-cmsueWFvQHJvY2stY2hpcHMuY29tPgo+ID4gK006CVNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlw
-cy5jb20+Cj4gPiAgTDoJZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+ID4gIFM6CU1h
-aW50YWluZWQKPiA+ICBGOglkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvCj4gCj4gCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 11/24/2017 09:04 AM, Archit Taneja wrote:
+> Hi,
+> 
+> On 11/20/2017 06:00 PM, Hans Verkuil wrote:
+>> I didn't see this merged for 4.15, is it too late to include this?
+>> All other changes needed to get CEC to work on rk3288 and rk3399 are all merged.
+> 
+> Sorry for the late reply. I was out last week.
+> 
+> Dave recently sent the second pull request for 4.15, so I think it would be hard to get it
+> in the merge window now. We could target it for the 4.15-rcs since it is preventing the
+> feature from working. Is it possible to rephrase the commit message a bit so that it's clear
+> that we need it for CEC to work?
+
+While it is not my patch I would propose something like this:
+
+"Support the "cec" optional clock. The documentation already mentions "cec"
+optional clock and it is used by several boards, but currently the driver
+doesn't enable it, thus preventing cec from working on those boards.
+
+And even worse: a /dev/cecX device will appear for those boards, but it
+won't be functioning without configuring this clock."
+
+I hadn't realized that last sentence until I started thinking about it,
+but this patch is really needed.
+
+Regards,
+
+	Hans
+
+> 
+> Thanks,
+> Archit
+> 
+>>
+>> Regards,
+>>
+>> 	Hans
+>>
+>> On 10/26/2017 08:19 PM, Pierre-Hugues Husson wrote:
+>>> The documentation already mentions "cec" optional clock, but
+>>> currently the driver doesn't enable it.
+>>>
+>>> Changes:
+>>> v3:
+>>> - Drop useless braces
+>>>
+>>> v2:
+>>> - Separate ENOENT errors from others
+>>> - Propagate other errors (especially -EPROBE_DEFER)
+>>>
+>>> Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
+>>> ---
+>>>   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 25 +++++++++++++++++++++++++
+>>>   1 file changed, 25 insertions(+)
+>>>
+>>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>>> index bf14214fa464..d82b9747a979 100644
+>>> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>>> @@ -138,6 +138,7 @@ struct dw_hdmi {
+>>>   	struct device *dev;
+>>>   	struct clk *isfr_clk;
+>>>   	struct clk *iahb_clk;
+>>> +	struct clk *cec_clk;
+>>>   	struct dw_hdmi_i2c *i2c;
+>>>   
+>>>   	struct hdmi_data_info hdmi_data;
+>>> @@ -2382,6 +2383,26 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>>>   		goto err_isfr;
+>>>   	}
+>>>   
+>>> +	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
+>>> +	if (PTR_ERR(hdmi->cec_clk) == -ENOENT) {
+>>> +		hdmi->cec_clk = NULL;
+>>> +	} else if (IS_ERR(hdmi->cec_clk)) {
+>>> +		ret = PTR_ERR(hdmi->cec_clk);
+>>> +		if (ret != -EPROBE_DEFER)
+>>> +			dev_err(hdmi->dev, "Cannot get HDMI cec clock: %d\n",
+>>> +					ret);
+>>> +
+>>> +		hdmi->cec_clk = NULL;
+>>> +		goto err_iahb;
+>>> +	} else {
+>>> +		ret = clk_prepare_enable(hdmi->cec_clk);
+>>> +		if (ret) {
+>>> +			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
+>>> +					ret);
+>>> +			goto err_iahb;
+>>> +		}
+>>> +	}
+>>> +
+>>>   	/* Product and revision IDs */
+>>>   	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
+>>>   		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
+>>> @@ -2518,6 +2539,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>>>   		cec_notifier_put(hdmi->cec_notifier);
+>>>   
+>>>   	clk_disable_unprepare(hdmi->iahb_clk);
+>>> +	if (hdmi->cec_clk)
+>>> +		clk_disable_unprepare(hdmi->cec_clk);
+>>>   err_isfr:
+>>>   	clk_disable_unprepare(hdmi->isfr_clk);
+>>>   err_res:
+>>> @@ -2541,6 +2564,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+>>>   
+>>>   	clk_disable_unprepare(hdmi->iahb_clk);
+>>>   	clk_disable_unprepare(hdmi->isfr_clk);
+>>> +	if (hdmi->cec_clk)
+>>> +		clk_disable_unprepare(hdmi->cec_clk);
+>>>   
+>>>   	if (hdmi->i2c)
+>>>   		i2c_del_adapter(&hdmi->i2c->adap);
+>>>
+>>
+> 
