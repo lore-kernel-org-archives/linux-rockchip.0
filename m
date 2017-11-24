@@ -1,94 +1,134 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH][RFC] 8250_dw: unregister dw8250_set_termios for rk3188
- chip
-Date: Fri, 24 Nov 2017 00:34:59 +0100
-Message-ID: <6443393.PFOXghLreO@phil>
-References: <20171120144045.juwm64m2j736h5ps@home.dogben.com>
- <2890515.ZR3BzkItWh@phil> <20171123153922.GA23503@home.dogben.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20171123153922.GA23503-ZQaglsx1qnHXWvwwbwmGMg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
-Cc: wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Ed Blake <ed.blake-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH v2 00/11] Rockchip ISP1 Driver
+Date: Fri, 24 Nov 2017 10:36:55 +0800
+Message-ID: <20171124023706.5702-1-jacob-chen@iotwrt.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+This patch series add a ISP(Camera) v4l2 driver for rockchip rk3288/rk3399 SoC.
 
-Am Donnerstag, 23. November 2017, 23:40:31 CET schrieb Shuyu Wei:
-> On Thu, Nov 23, 2017 at 04:11:12PM +0100, Heiko Stuebner wrote:
-> > 
-> > you actually omitted the output part where sclk_uart2 is actually shown :-) .
-> > 
-> > On my rk3188 radxarock with a kernel build this morning from
-> > the middle of this merge-window, the relevant part of the clock-tree
-> > looks like the following and my serial console works like a charm:
-> > 
-> > xin24m                                   6            6    24000000          0 0
-> > [...]
-> >     pll_gpll                              1            1   594000000          0 0
-> >        gpll                               5            5   594000000          0 0
-> > [...]
-> >          uart_src                        1            1   594000000          0 0
-> >              uart3_pre                    0            0   594000000          0 0
-> >                 uart3_frac                0            0    29700000          0 0
-> >              uart2_pre                    1            1   594000000          0 0
-> >                 uart2_frac                1            1     1843200          0 0
-> >                    sclk_uart2             1            1     1843200          0 0
-> >  [			^^ the important clock]
-> > 
-> > In your dump the sclk_uart2 clock is not muxed to the uart2_frac clock
-> > but to something else but that part is missing from you dump.
-> > 
-> > So clk_round_rate is definitly correct in that it can reach this rate
-> > using the fractional divider and also can sucessfully set this in the
-> > clock framework.
-> > 
-> > Can you show where sclk_uart2 is for you please, as I guess your dump
-> > is with the settermios patch disabled, right?
-> > 
-> > 
-> > Thanks
-> > Heiko
-> 
-> You are right, here is the complete clk_summary from the latest
-> mainline, and my console is now filled with strange characters :-(
-> 
->    clock                         enable_cnt  prepare_cnt        rate   accuracy   phase
-> ----------------------------------------------------------------------------------------
->  xin24m                                  11           11    24000000          0 0
-[...]
->     pll_gpll                              1            1   891000000          0 0
->        gpll                               3            3   891000000          0 0
-[...]
->           uart_src                        1            1   891000000          0 0
->              uart3_pre                    0            0   891000000          0 0
->                 uart3_frac                0            0    44550000          0 0
->              uart2_pre                    1            1   891000000          0 0
->                 uart2_frac                1            1     1843200          0 0
->                    sclk_uart2             1            1     1843200          0 0
+Kernel Branch:
+https://github.com/wzyy2/linux/tree/rkisp1/drivers/media/platform/rockchip/isp1
 
-Just to make sure, I did boot-tests on a lot of different Rockchip socs
-(rk3036, rk3188, rk3288, rk3328, rk3399) with the serial console using
-8250_dw and working normally on all of them with the most recent
-torvalds kernel (and everything I tested in the past)
+Below are some infomations about driver/hardware:
 
-The only difference I see between our two clock dumps is the higher
-gpll clock on your board, but I cannot really imagine that this could be
-and issue.
+Rockchip ISP1 have many Hardware Blocks(simplied):
 
-So I'm really puzzled by what you see on your board, but don't have
-any specific idea what to test right now.
+  MIPI      --> ISP --> DCrop(Mainpath) --> RSZ(Mainpath) --> DMA(Mainpath)
+  DMA-Input -->     --> DCrop(Selfpath) --> RSZ(Selfpath) --> DMA(Selfpath);)
 
+(Acutally the TRM(rk3288, isp) could be found online...... which contains a more detailed block diagrams ;-P)
 
-Heiko
+The funcitons of each hardware block:
+
+  Mainpath : up to 4k resolution, support raw/yuv format
+  Selfpath : up tp 1080p, support rotate, support rgb/yuv format
+  RSZ: scaling 
+  DCrop: crop
+  ISP: 3A, Color processing, Crop
+  MIPI: MIPI Camera interface
+
+Media pipelines:
+
+  Mainpath, Selfpath <-- ISP subdev <-- MIPI  <-- Sensor
+  3A stats           <--            <-- 3A parms
+
+Code struct:
+
+  capture.c : Mainpath, Selfpath, RSZ, DCROP : capture device.
+  rkisp1.c : ISP : v4l2 sub-device.
+  isp_params.c : 3A parms : output device.
+  isp_stats.c : 3A stats : capture device.
+  mipi_dphy_sy.c : MIPI : sperated v4l2 sub-device.
+
+Usage:
+  ChromiumOS:
+    use below v4l2-ctl command to capture frames.
+
+      v4l2-ctl --verbose -d /dev/video4 --stream-mmap=2
+      --stream-to=/tmp/stream.out --stream-count=60 --stream-poll
+
+    use below command to playback the video on your PC.
+
+      mplayer /tmp/stream.out -loop 0 --demuxer=rawvideo
+      --rawvideo=w=800:h=600:size=$((800*600*2)):format=yuy2
+    or
+      mplayer ./stream.out -loop 0 -demuxer rawvideo -rawvideo
+      w=800:h=600:size=$((800*600*2)):format=yuy2
+
+  Linux:
+    use rkcamsrc gstreamer plugin(just a modified v4l2src) to preview.
+
+      gst-launch-1.0 rkcamsrc device=/dev/video0 io-mode=4 disable-3A=true
+      videoconvert ! video/x-raw,format=NV12,width=640,height=480 ! kmssink
+
+Jacob Chen (7):
+  media: rkisp1: add rockchip isp1 driver
+  media: rkisp1: add Rockchip MIPI Synopsys DPHY driver
+  dt-bindings: Document the Rockchip ISP1 bindings
+  dt-bindings: Document the Rockchip MIPI RX D-PHY bindings
+  ARM: dts: rockchip: add isp node for rk3288
+  ARM: dts: rockchip: add rx0 mipi-phy for rk3288
+  MAINTAINERS: add entry for Rockchip ISP1 driver
+
+Jeffy Chen (1):
+  media: rkisp1: Add user space ABI definitions
+
+Shunqian Zheng (3):
+  media: videodev2.h, v4l2-ioctl: add rkisp1 meta buffer format
+  arm64: dts: rockchip: add isp0 node for rk3399
+  arm64: dts: rockchip: add rx0 mipi-phy for rk3399
+
+ .../devicetree/bindings/media/rockchip-isp1.txt    |   61 +
+ .../bindings/media/rockchip-mipi-dphy.txt          |   77 +
+ MAINTAINERS                                        |   10 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   24 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   26 +
+ drivers/media/platform/Kconfig                     |   10 +
+ drivers/media/platform/Makefile                    |    1 +
+ drivers/media/platform/rockchip/isp1/Makefile      |    8 +
+ drivers/media/platform/rockchip/isp1/capture.c     | 1691 ++++++++++++++++++++
+ drivers/media/platform/rockchip/isp1/capture.h     |   46 +
+ drivers/media/platform/rockchip/isp1/common.h      |  330 ++++
+ drivers/media/platform/rockchip/isp1/dev.c         |  632 ++++++++
+ drivers/media/platform/rockchip/isp1/isp_params.c  | 1556 ++++++++++++++++++
+ drivers/media/platform/rockchip/isp1/isp_params.h  |   81 +
+ drivers/media/platform/rockchip/isp1/isp_stats.c   |  537 +++++++
+ drivers/media/platform/rockchip/isp1/isp_stats.h   |   81 +
+ .../media/platform/rockchip/isp1/mipi_dphy_sy.c    |  805 ++++++++++
+ drivers/media/platform/rockchip/isp1/regs.c        |  251 +++
+ drivers/media/platform/rockchip/isp1/regs.h        | 1578 ++++++++++++++++++
+ drivers/media/platform/rockchip/isp1/rkisp1.c      | 1230 ++++++++++++++
+ drivers/media/platform/rockchip/isp1/rkisp1.h      |  130 ++
+ drivers/media/v4l2-core/v4l2-ioctl.c               |    2 +
+ include/uapi/linux/rkisp1-config.h                 |  554 +++++++
+ include/uapi/linux/videodev2.h                     |    4 +
+ 24 files changed, 9725 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-isp1.txt
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+ create mode 100644 drivers/media/platform/rockchip/isp1/Makefile
+ create mode 100644 drivers/media/platform/rockchip/isp1/capture.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/capture.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/common.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/dev.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_params.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_params.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_stats.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/isp_stats.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/regs.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/regs.h
+ create mode 100644 drivers/media/platform/rockchip/isp1/rkisp1.c
+ create mode 100644 drivers/media/platform/rockchip/isp1/rkisp1.h
+ create mode 100644 include/uapi/linux/rkisp1-config.h
+
+-- 
+2.15.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
