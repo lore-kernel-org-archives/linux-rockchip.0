@@ -1,102 +1,92 @@
-From: Shuyu Wei <wsy-flSAGy4ZnMjQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH][RFC] 8250_dw: unregister dw8250_set_termios for rk3188
- chip
-Date: Sat, 25 Nov 2017 01:06:06 +0800
-Message-ID: <20171124170606.GA10317@home.dogben.com>
-References: <20171120144045.juwm64m2j736h5ps@home.dogben.com>
- <2890515.ZR3BzkItWh@phil> <20171123153922.GA23503@home.dogben.com>
- <6443393.PFOXghLreO@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <6443393.PFOXghLreO@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: wangkefeng.wang-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Ed Blake <ed.blake-56FIPCJpnYtBDgjK7y7TUQ@public.gmane.org>
+From: Pierre-Hugues Husson <phh@phh.me>
+Subject: [PATCH v4] drm: bridge: synopsys/dw-hdmi: Enable cec clock
+Date: Sat, 25 Nov 2017 21:18:44 +0100
+Message-ID: <20171125201844.11353-1-phh@phh.me>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux@armlinux.org.uk, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, dri-devel@lists.freedesktop.org, Pierre-Hugues Husson <phh@phh.me>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 24, 2017 at 12:34:59AM +0100, Heiko Stuebner wrote:
-> Hi,
-> 
-> Am Donnerstag, 23. November 2017, 23:40:31 CET schrieb Shuyu Wei:
-> > On Thu, Nov 23, 2017 at 04:11:12PM +0100, Heiko Stuebner wrote:
-> > > 
-> > > you actually omitted the output part where sclk_uart2 is actually shown :-) .
-> > > 
-> > > On my rk3188 radxarock with a kernel build this morning from
-> > > the middle of this merge-window, the relevant part of the clock-tree
-> > > looks like the following and my serial console works like a charm:
-> > > 
-> > > xin24m                                   6            6    24000000          0 0
-> > > [...]
-> > >     pll_gpll                              1            1   594000000          0 0
-> > >        gpll                               5            5   594000000          0 0
-> > > [...]
-> > >          uart_src                        1            1   594000000          0 0
-> > >              uart3_pre                    0            0   594000000          0 0
-> > >                 uart3_frac                0            0    29700000          0 0
-> > >              uart2_pre                    1            1   594000000          0 0
-> > >                 uart2_frac                1            1     1843200          0 0
-> > >                    sclk_uart2             1            1     1843200          0 0
-> > >  [			^^ the important clock]
-> > > 
-> > > In your dump the sclk_uart2 clock is not muxed to the uart2_frac clock
-> > > but to something else but that part is missing from you dump.
-> > > 
-> > > So clk_round_rate is definitly correct in that it can reach this rate
-> > > using the fractional divider and also can sucessfully set this in the
-> > > clock framework.
-> > > 
-> > > Can you show where sclk_uart2 is for you please, as I guess your dump
-> > > is with the settermios patch disabled, right?
-> > > 
-> > > 
-> > > Thanks
-> > > Heiko
-> > 
-> > You are right, here is the complete clk_summary from the latest
-> > mainline, and my console is now filled with strange characters :-(
-> > 
-> >    clock                         enable_cnt  prepare_cnt        rate   accuracy   phase
-> > ----------------------------------------------------------------------------------------
-> >  xin24m                                  11           11    24000000          0 0
-> [...]
-> >     pll_gpll                              1            1   891000000          0 0
-> >        gpll                               3            3   891000000          0 0
-> [...]
-> >           uart_src                        1            1   891000000          0 0
-> >              uart3_pre                    0            0   891000000          0 0
-> >                 uart3_frac                0            0    44550000          0 0
-> >              uart2_pre                    1            1   891000000          0 0
-> >                 uart2_frac                1            1     1843200          0 0
-> >                    sclk_uart2             1            1     1843200          0 0
-> 
-> Just to make sure, I did boot-tests on a lot of different Rockchip socs
-> (rk3036, rk3188, rk3288, rk3328, rk3399) with the serial console using
-> 8250_dw and working normally on all of them with the most recent
-> torvalds kernel (and everything I tested in the past)
-> 
-> The only difference I see between our two clock dumps is the higher
-> gpll clock on your board, but I cannot really imagine that this could be
-> and issue.
-> 
-> So I'm really puzzled by what you see on your board, but don't have
-> any specific idea what to test right now.
-> 
-> 
-> Heiko
+Support the "cec" optional clock. The documentation already mentions "cec"
+optional clock and it is used by several boards, but currently the driver
+doesn't enable it, thus preventing cec from working on those boards.
 
-Good news! I found the cause. It's the barebox bootloader that set the
-pll_gpll to the weired 891000000. By manually setting the clock back to
-594000000, it worked again! It's time to find the root cause in barebox
-:-)
+And even worse: a /dev/cecX device will appear for those boards, but it
+won't be functioning without configuring this clock.
+
+Changes:
+v4:
+- Change commit message to stress the importance of this patch
+
+v3:
+- Drop useless braces
+
+v2:
+- Separate ENOENT errors from others
+- Propagate other errors (especially -EPROBE_DEFER)
+
+Signed-off-by: Pierre-Hugues Husson <phh@phh.me>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index bf14214fa464..d82b9747a979 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -138,6 +138,7 @@ struct dw_hdmi {
+ 	struct device *dev;
+ 	struct clk *isfr_clk;
+ 	struct clk *iahb_clk;
++	struct clk *cec_clk;
+ 	struct dw_hdmi_i2c *i2c;
+ 
+ 	struct hdmi_data_info hdmi_data;
+@@ -2382,6 +2383,26 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		goto err_isfr;
+ 	}
+ 
++	hdmi->cec_clk = devm_clk_get(hdmi->dev, "cec");
++	if (PTR_ERR(hdmi->cec_clk) == -ENOENT) {
++		hdmi->cec_clk = NULL;
++	} else if (IS_ERR(hdmi->cec_clk)) {
++		ret = PTR_ERR(hdmi->cec_clk);
++		if (ret != -EPROBE_DEFER)
++			dev_err(hdmi->dev, "Cannot get HDMI cec clock: %d\n",
++					ret);
++
++		hdmi->cec_clk = NULL;
++		goto err_iahb;
++	} else {
++		ret = clk_prepare_enable(hdmi->cec_clk);
++		if (ret) {
++			dev_err(hdmi->dev, "Cannot enable HDMI cec clock: %d\n",
++					ret);
++			goto err_iahb;
++		}
++	}
++
+ 	/* Product and revision IDs */
+ 	hdmi->version = (hdmi_readb(hdmi, HDMI_DESIGN_ID) << 8)
+ 		      | (hdmi_readb(hdmi, HDMI_REVISION_ID) << 0);
+@@ -2518,6 +2539,8 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		cec_notifier_put(hdmi->cec_notifier);
+ 
+ 	clk_disable_unprepare(hdmi->iahb_clk);
++	if (hdmi->cec_clk)
++		clk_disable_unprepare(hdmi->cec_clk);
+ err_isfr:
+ 	clk_disable_unprepare(hdmi->isfr_clk);
+ err_res:
+@@ -2541,6 +2564,8 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
+ 
+ 	clk_disable_unprepare(hdmi->iahb_clk);
+ 	clk_disable_unprepare(hdmi->isfr_clk);
++	if (hdmi->cec_clk)
++		clk_disable_unprepare(hdmi->cec_clk);
+ 
+ 	if (hdmi->i2c)
+ 		i2c_del_adapter(&hdmi->i2c->adap);
+-- 
+2.15.0
