@@ -1,20 +1,21 @@
 From: kbuild test robot <lkp@intel.com>
-Subject: Re: [PATCH v2 03/11] media: rkisp1: add rockchip isp1 driver
-Date: Mon, 27 Nov 2017 01:32:57 +0800
-Message-ID: <201711270005.B4X2tZ0p%fengguang.wu@intel.com>
-References: <20171124023706.5702-4-jacob-chen@iotwrt.com>
+Subject: Re: [PATCH v2 04/11] media: rkisp1: add Rockchip MIPI Synopsys DPHY
+ driver
+Date: Mon, 27 Nov 2017 02:13:16 +0800
+Message-ID: <201711270219.rDGPDfrf%fengguang.wu@intel.com>
+References: <20171124023706.5702-5-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="CE+1k2dSO48ffgeK"
+Content-Type: multipart/mixed; boundary="9amGYk9869ThD9tj"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20171124023706.5702-4-jacob-chen@iotwrt.com>
+In-Reply-To: <20171124023706.5702-5-jacob-chen@iotwrt.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: kbuild-all@01.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, allon.huang@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <cc@rock-chips.com>
+Cc: kbuild-all@01.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, allon.huang@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, Jacob Chen <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 
---CE+1k2dSO48ffgeK
+--9amGYk9869ThD9tj
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -37,110 +38,128 @@ reproduce:
         # save the attached .config to linux build tree
         make.cross ARCH=mips 
 
-All error/warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   drivers/media//platform/rockchip/isp1/rkisp1.c: In function 'rkisp1_isp_sd_s_stream':
->> drivers/media//platform/rockchip/isp1/rkisp1.c:136:6: warning: 'isp_ctrl' may be used uninitialized in this function [-Wmaybe-uninitialized]
-     u32 isp_ctrl;
-         ^~~~~~~~
->> drivers/media//platform/rockchip/isp1/rkisp1.c:209:2: warning: 'acq_mult' may be used uninitialized in this function [-Wmaybe-uninitialized]
-     writel(acq_mult * in_frm->width, base + CIF_ISP_ACQ_H_SIZE);
-     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/media//platform/rockchip/isp1/rkisp1.c:139:6: note: 'acq_mult' was declared here
-     u32 acq_mult;
-         ^~~~~~~~
---
-   drivers/media//platform/rockchip/isp1/dev.c: In function 'rkisp1_runtime_suspend':
-   drivers/media//platform/rockchip/isp1/dev.c:597:9: error: implicit declaration of function 'pinctrl_pm_select_sleep_state' [-Werror=implicit-function-declaration]
-     return pinctrl_pm_select_sleep_state(dev);
-            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/media//platform/rockchip/isp1/dev.c: In function 'rkisp1_runtime_resume':
->> drivers/media//platform/rockchip/isp1/dev.c:605:8: error: implicit declaration of function 'pinctrl_pm_select_default_state'; did you mean 'irq_set_default_host'? [-Werror=implicit-function-declaration]
-     ret = pinctrl_pm_select_default_state(dev);
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           irq_set_default_host
-   cc1: some warnings being treated as errors
---
->> drivers/media//platform/rockchip/isp1/isp_params.c:1350:3: error: 'const struct v4l2_ioctl_ops' has no member named 'vidioc_enum_fmt_meta_out'; did you mean 'vidioc_enum_fmt_meta_cap'?
-     .vidioc_enum_fmt_meta_out = rkisp1_params_enum_fmt_meta_out,
-      ^~~~~~~~~~~~~~~~~~~~~~~~
-      vidioc_enum_fmt_meta_cap
-   drivers/media//platform/rockchip/isp1/isp_params.c:1350:30: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
-     .vidioc_enum_fmt_meta_out = rkisp1_params_enum_fmt_meta_out,
-                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/media//platform/rockchip/isp1/isp_params.c:1350:30: note: (near initialization for 'rkisp1_params_ioctl.vidioc_g_std')
->> drivers/media//platform/rockchip/isp1/isp_params.c:1351:3: error: 'const struct v4l2_ioctl_ops' has no member named 'vidioc_g_fmt_meta_out'; did you mean 'vidioc_g_fmt_meta_cap'?
-     .vidioc_g_fmt_meta_out = rkisp1_params_g_fmt_meta_out,
-      ^~~~~~~~~~~~~~~~~~~~~
-      vidioc_g_fmt_meta_cap
-   drivers/media//platform/rockchip/isp1/isp_params.c:1351:27: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
-     .vidioc_g_fmt_meta_out = rkisp1_params_g_fmt_meta_out,
-                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/media//platform/rockchip/isp1/isp_params.c:1351:27: note: (near initialization for 'rkisp1_params_ioctl.vidioc_s_std')
->> drivers/media//platform/rockchip/isp1/isp_params.c:1352:3: error: 'const struct v4l2_ioctl_ops' has no member named 'vidioc_s_fmt_meta_out'; did you mean 'vidioc_s_fmt_meta_cap'?
-     .vidioc_s_fmt_meta_out = rkisp1_params_g_fmt_meta_out,
-      ^~~~~~~~~~~~~~~~~~~~~
-      vidioc_s_fmt_meta_cap
-   drivers/media//platform/rockchip/isp1/isp_params.c:1352:27: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
-     .vidioc_s_fmt_meta_out = rkisp1_params_g_fmt_meta_out,
-                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/media//platform/rockchip/isp1/isp_params.c:1352:27: note: (near initialization for 'rkisp1_params_ioctl.vidioc_querystd')
->> drivers/media//platform/rockchip/isp1/isp_params.c:1353:3: error: 'const struct v4l2_ioctl_ops' has no member named 'vidioc_try_fmt_meta_out'; did you mean 'vidioc_try_fmt_meta_cap'?
-     .vidioc_try_fmt_meta_out = rkisp1_params_g_fmt_meta_out,
-      ^~~~~~~~~~~~~~~~~~~~~~~
-      vidioc_try_fmt_meta_cap
-   drivers/media//platform/rockchip/isp1/isp_params.c:1353:29: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
-     .vidioc_try_fmt_meta_out = rkisp1_params_g_fmt_meta_out,
-                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/media//platform/rockchip/isp1/isp_params.c:1353:29: note: (near initialization for 'rkisp1_params_ioctl.vidioc_enum_input')
-   drivers/media//platform/rockchip/isp1/isp_params.c: In function 'rkisp1_params_init_vb2_queue':
->> drivers/media//platform/rockchip/isp1/isp_params.c:1478:12: error: 'V4L2_BUF_TYPE_META_OUTPUT' undeclared (first use in this function); did you mean 'V4L2_BUF_TYPE_SDR_OUTPUT'?
-     q->type = V4L2_BUF_TYPE_META_OUTPUT;
-               ^~~~~~~~~~~~~~~~~~~~~~~~~
-               V4L2_BUF_TYPE_SDR_OUTPUT
-   drivers/media//platform/rockchip/isp1/isp_params.c:1478:12: note: each undeclared identifier is reported only once for each function it appears in
-   drivers/media//platform/rockchip/isp1/isp_params.c: In function 'rkisp1_register_params_vdev':
->> drivers/media//platform/rockchip/isp1/isp_params.c:1523:43: error: 'V4L2_CAP_META_OUTPUT' undeclared (first use in this function); did you mean 'V4L2_CAP_RDS_OUTPUT'?
-     vdev->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_META_OUTPUT;
-                                              ^~~~~~~~~~~~~~~~~~~~
-                                              V4L2_CAP_RDS_OUTPUT
-   cc1: some warnings being treated as errors
+   drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c:634:66: error: expected identifier or '(' before '=' token
+    struct v4l2_async_notifier_operationsrockchip_mipidphy_async_ops = {
+                                                                     ^
+   drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c: In function 'rockchip_mipidphy_media_init':
+>> drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c:707:24: error: 'rockchip_mipidphy_async_ops' undeclared (first use in this function); did you mean 'rockchip_mipidphy_match_id'?
+     priv->notifier.ops = &rockchip_mipidphy_async_ops;
+                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                           rockchip_mipidphy_match_id
+   drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c:707:24: note: each undeclared identifier is reported only once for each function it appears in
+   At top level:
+   drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c:593:1: warning: 'rockchip_mipidphy_notifier_complete' defined but not used [-Wunused-function]
+    rockchip_mipidphy_notifier_complete(struct v4l2_async_notifier *notifier)
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c:579:1: warning: 'rockchip_mipidphy_notifier_unbind' defined but not used [-Wunused-function]
+    rockchip_mipidphy_notifier_unbind(struct v4l2_async_notifier *notifier,
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c:555:1: warning: 'rockchip_mipidphy_notifier_bound' defined but not used [-Wunused-function]
+    rockchip_mipidphy_notifier_bound(struct v4l2_async_notifier *notifier,
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-vim +605 drivers/media//platform/rockchip/isp1/dev.c
+vim +707 drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c
 
-   591	
-   592	static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
-   593	{
-   594		struct rkisp1_device *isp_dev = dev_get_drvdata(dev);
-   595	
-   596		rkisp1_disable_sys_clk(isp_dev);
- > 597		return pinctrl_pm_select_sleep_state(dev);
-   598	}
-   599	
-   600	static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
-   601	{
-   602		struct rkisp1_device *isp_dev = dev_get_drvdata(dev);
-   603		int ret;
-   604	
- > 605		ret = pinctrl_pm_select_default_state(dev);
-   606		if (ret < 0)
-   607			return ret;
-   608		rkisp1_enable_sys_clk(isp_dev);
-   609	
-   610		return 0;
-   611	}
-   612	
+   632	
+   633	static const
+ > 634	struct v4l2_async_notifier_operationsrockchip_mipidphy_async_ops = {
+   635		.bound = rockchip_mipidphy_notifier_bound,
+   636		.unbind = rockchip_mipidphy_notifier_unbind,
+   637		.complete = rockchip_mipidphy_notifier_complete,
+   638	};
+   639	
+   640	static int rockchip_mipidphy_fwnode_parse(struct device *dev,
+   641				     struct v4l2_fwnode_endpoint *vep,
+   642				     struct v4l2_async_subdev *asd)
+   643	{
+   644		struct sensor_async_subdev *s_asd =
+   645				container_of(asd, struct sensor_async_subdev, asd);
+   646		struct v4l2_mbus_config *config = &s_asd->mbus;
+   647	
+   648		if (vep->bus_type != V4L2_MBUS_CSI2) {
+   649			dev_err(dev, "Only CSI2 bus type is currently supported\n");
+   650			return -EINVAL;
+   651		}
+   652	
+   653		if (vep->base.port != 0) {
+   654			dev_err(dev, "The PHY has only port 0\n");
+   655			return -EINVAL;
+   656		}
+   657	
+   658		config->type = V4L2_MBUS_CSI2;
+   659		config->flags = vep->bus.mipi_csi2.flags;
+   660		s_asd->lanes = vep->bus.mipi_csi2.num_data_lanes;
+   661	
+   662		switch (vep->bus.mipi_csi2.num_data_lanes) {
+   663		case 1:
+   664			config->flags |= V4L2_MBUS_CSI2_1_LANE;
+   665			break;
+   666		case 2:
+   667			config->flags |= V4L2_MBUS_CSI2_2_LANE;
+   668			break;
+   669		case 3:
+   670			config->flags |= V4L2_MBUS_CSI2_3_LANE;
+   671			break;
+   672		case 4:
+   673			config->flags |= V4L2_MBUS_CSI2_4_LANE;
+   674			break;
+   675		default:
+   676			return -EINVAL;
+   677		}
+   678	
+   679		return 0;
+   680	}
+   681	
+   682	static int rockchip_mipidphy_media_init(struct mipidphy_priv *priv)
+   683	{
+   684		int ret;
+   685	
+   686		priv->pads[MIPI_DPHY_SY_PAD_SOURCE].flags =
+   687			MEDIA_PAD_FL_SOURCE | MEDIA_PAD_FL_MUST_CONNECT;
+   688		priv->pads[MIPI_DPHY_SY_PAD_SINK].flags =
+   689			MEDIA_PAD_FL_SINK | MEDIA_PAD_FL_MUST_CONNECT;
+   690	
+   691		ret = media_entity_pads_init(&priv->sd.entity,
+   692					 MIPI_DPHY_SY_PADS_NUM, priv->pads);
+   693		if (ret < 0)
+   694			return ret;
+   695	
+   696		ret = v4l2_async_notifier_parse_fwnode_endpoints_by_port(
+   697			priv->dev, &priv->notifier,
+   698			sizeof(struct sensor_async_subdev), 0,
+   699			rockchip_mipidphy_fwnode_parse);
+   700		if (ret < 0)
+   701			return ret;
+   702	
+   703		if (!priv->notifier.num_subdevs)
+   704			return -ENODEV;	/* no endpoint */
+   705	
+   706		priv->sd.subdev_notifier = &priv->notifier;
+ > 707		priv->notifier.ops = &rockchip_mipidphy_async_ops;
+   708		ret = v4l2_async_subdev_notifier_register(&priv->sd, &priv->notifier);
+   709		if (ret) {
+   710			dev_err(priv->dev,
+   711				"failed to register async notifier : %d\n", ret);
+   712			v4l2_async_notifier_cleanup(&priv->notifier);
+   713			return ret;
+   714		}
+   715	
+   716		return v4l2_async_register_subdev(&priv->sd);
+   717	}
+   718	
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---CE+1k2dSO48ffgeK
+--9amGYk9869ThD9tj
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICOrjGloAAy5jb25maWcAjDxLc9w20vf8iinnO+xWJbE0ksZOfaUDCIIz8JAEBYDz0IUl
+H4sICCr/GloAAy5jb25maWcAjDxLc9w20vf8iinnO+xWJbE0ksZOfaUDCIIz8JAEBYDz0IUl
 yxNHFWnkkuTd+N9vN/gCQJCTPWTF7kYDaPQbGP/8088z8v3t+enu7eH+7vHxx+zr4Xh4uXs7
 fJn98fB4+P9ZLGa50DMWc/0bEKcPx+9/v396+PY6u/zt/PK3s19f7hez9eHleHic0efjHw9f
 v8Pwh+fjTz//REWe8GWV8UJd//gJAD/Psrv7Px+Oh9nr4fFw35D9PLMIqyXLmeR09vA6Oz6/
@@ -1023,4 +1042,4 @@ Lt3yTXjZEYMWR28L/rRuC6GmgC6O346J/NAYEJLRDRSNedVNcIkb24IDU+NgUmkxF8cYxRUN
 4dF9RNakz7JoKlCn8rgrQIY6gV99QJi/tuEgb1WWXrO8Gtt1CRIBdKGpDAthBgqObbWTA8SA
 nAdvm9F9Pp0+8wa87f8B0uGGj7bmAgA=
 
---CE+1k2dSO48ffgeK--
+--9amGYk9869ThD9tj--
