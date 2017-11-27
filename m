@@ -1,64 +1,71 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH] MAINTAINERS: change maintainer for Rockchip drm drivers
-Date: Mon, 27 Nov 2017 10:22:11 +0800
-Message-ID: <f69c94b4-f9d7-ac35-4d88-261f27d84d17@rock-chips.com>
-References: <1510568131-28838-1-git-send-email-mark.yao@rock-chips.com>
- <20171120074848.cg22qkved232pxxf@phenom.ffwll.local>
- <83984459.7UdiCfbSkg@phil>
- <20171124145106.hdtybw3hgizlg6gs@phenom.ffwll.local>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v2 01/11] media: videodev2.h, v4l2-ioctl: add rkisp1 meta
+ buffer format
+Date: Mon, 27 Nov 2017 11:17:50 +0100
+Message-ID: <cae70249-d558-0e6d-19d4-1289630d20e7@xs4all.nl>
+References: <20171124023706.5702-1-jacob-chen@iotwrt.com>
+ <20171124023706.5702-2-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20171124145106.hdtybw3hgizlg6gs@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171124023706.5702-2-jacob-chen@iotwrt.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, allon.huang@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, Jacob Chen <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAogICAgIEkgcmVnaXN0ZXIgdGhlIGFjY291bnQgYW5kIGdldCB0aGUgZHJtLW1p
-c2MgY29tbWl0IHJpZ2h0cyBub3csIHRoYW5rcy4KCuWcqCAyMDE3LzExLzI0IDIyOjUxLCBEYW5p
-ZWwgVmV0dGVyIOWGmemBkzoKPiBPbiBGcmksIE5vdiAyNCwgMjAxNyBhdCAwOToyODo1OUFNICsw
-MTAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4gSGkgRGFuaWVsLAo+Pgo+PiBbc29tZWhvdyBt
-eSBlbWFpbCBhZGRyZXNzIHNlZW1zIHRvIGhhdmUgZ290dGVuIGxvc3QsIHNvCj4+IG9ubHkgc2F3
-IHRoaXMgYnkgY2hhbmNlIG9uIHRoZSBsaXN0IGl0c2VsZiBub3cuCj4+IEkndmUgYWxzbyByZS1h
-ZGRlZCBTYW5keSB0byB0aGUgcmVjaXBpZW50c10KPj4KPj4gQW0gTW9udGFnLCAyMC4gTm92ZW1i
-ZXIgMjAxNywgMDg6NDg6NDggQ0VUIHNjaHJpZWIgRGFuaWVsIFZldHRlcjoKPj4+IE9uIE1vbiwg
-Tm92IDEzLCAyMDE3IGF0IDA2OjE1OjMxUE0gKzA4MDAsIE1hcmsgWWFvIHdyb3RlOgo+Pj4+IEZv
-ciBwZXJzb25hbCByZWFzb25zLCBNYXJrIFlhbyB3aWxsIGxlYXZlIHJvY2tjaGlwLAo+Pj4+IGNh
-biBub3QgY29udGludWUgbWFpbnRhaW4gZHJtL3JvY2tjaGlwLCBTYW5keSBIdWFuZwo+Pj4+IHdp
-bGwgdGFrZSBvdmVyIHRoZSBkcm0vcm9ja2NoaXAuCj4+Pj4KPj4+PiBDYzogU2FuZHkgSHVhbmcg
-PGhqY0Byb2NrLWNoaXBzLmNvbT4KPj4+PiBDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVj
-aC5kZT4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNo
-aXBzLmNvbT4KPj4+Cj4+PiBTaW5jZSByb2NrY2hpcCBpcyBpbiBkcm0tbWlzYyB0aGF0IG1lYW5z
-IHdlIG5lZWQgYSBuZXcgbWFpbnRhaW5lciB3aG8gYWxzbwo+Pj4gaGFzIGRybS1taXNjIGNvbW1p
-dCByaWdodHMuIFNhbmR5IGRvZXNuJ3QgeWV0LCBzbyBpZiBTYW5keSBpcyBnb2luZyB0byBiZQo+
-Pj4gdGhlIG5ldyBtYWludGFpbmVyIHdlIG5lZWQgdG8gZml4IHRoYXQuCj4+Pgo+Pj4gQWxzbywg
-SGVpa28sIGFyZSB5b3UgaW50ZXJlc3RlZCBpbiBiZWNvbWluZyBjby1tYWludGFpbmVyPyBXaXRo
-IGNvbW1pdAo+Pj4gcmlnaHRzIGFuZCBhbGwuCj4+Cj4+IEkgYWx3YXlzIGZlZWwgc29tZXdoYXQg
-aW5hZGVxdWF0ZSBqdWRnaW5nIHRoZSBmYXN0LXBhY2VkIGRybSBzdHVmZiwgYXMgaW4KPj4gdGhl
-IHBhc3Qgb25jZSBJIGdvdCBteSBoZWFkIHdyYXBwZWQgYXJvdW5kIHNvbWV0aGluZywgZHJtIGFs
-d2F5cwo+PiBzb21laG93IG1vdmVkIGFub3RoZXIgbWlsZSBhbHJlYWR5IDstKSAuCj4+Cj4+IEJ1
-dCBzb21ld2hlcmUgSSByZWFkIHRoYXQgZHJtLXBhY2UgZm9yIGJpZyBjaGFuZ2VzIGlzIHN1cHBv
-c2VkIHRvIHNsb3cgYQo+PiBiaXQgbm93IHRoYXQgYXRvbWljIG1vZGVzZXR0aW5nIGlzIGRvbmUg
-aW4gYSBsb3Qgb2YgcGxhY2VzLCBzbyB3ZSBjb3VsZCBnaXZlCj4+IGNvLW1haW50YWluZXJzaGlw
-IGZvciB0aGUgUm9ja2NoaXAtZHJtIGEgdHJ5IC0gd2l0aCBTYW5keSB3ZWFyaW5nIHRoZQo+PiBh
-Y3R1YWwgaGF0IGZvciBiaWcgY2hhbmdlcyB0aG91Z2ggOy0pIC4KPiAKPiBZZWFoIEkgdGhpbmsg
-b24gdGhlIG1vZGVzZXQgc2lkZSBpdCBjYWxtZWQgZG93biBhIGxvdC4gV2UncmUgc3RpbGwKPiBm
-aW5lLXR1bmluZyB0aGUgaGVscGVyIGxpYnJhcmllcyBhcyB3ZSdyZSBmaWd1cmluZyBvdXQgYmV0
-dGVyIHdheXMgdG8KPiB3cml0ZSBkcml2ZXJzLiBCdXQgcmlnaHQgbm93IEkgdGhpbmsgYSBsb3Qg
-b2YgdGhlIGFjdGlvbiBpcyBhbGwgaW4gZGV0YWlscwo+IG5vdCByZWxldmFudCBmb3IgbWFueSBk
-cml2ZXJzLgo+IAo+IElmIFNhbmR5J3Mgb2sgd2l0aCB0aGF0IHRvbyBwbHMgcmVxdWVzdCBhbiBm
-ZC5vIGFjY291bnQgZm9yIGRybS1taXNjIGFuZAo+IHNldCB1cCB0aGUgdG9vbGluZyBwZXIgb3Vy
-IHF1aWNrc3RhcnQgZ3VpZGU6Cj4gCj4gaHR0cHM6Ly8wMS5vcmcvbGludXhncmFwaGljcy9nZngt
-ZG9jcy9tYWludGFpbmVyLXRvb2xzL2RpbS5odG1sI3F1aWNrc3RhcnQKPiAKPiBUaGFua3MsIERh
-bmllbAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 11/24/2017 03:36 AM, Jacob Chen wrote:
+> From: Shunqian Zheng <zhengsq@rock-chips.com>
+> 
+> Add the Rockchip ISP1 specific processing parameter format
+> V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
+> V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
+
+These formats are not documented in the V4L2 spec. I think it is documented in
+rkisp1-config.h, so you need to add something to meta-formats.rst. It's OK to
+refer to that header, as long as it is clear where the documentation of the
+format can be found.
+
+Regards,
+
+	Hans
+
+> 
+> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+> ---
+>  drivers/media/v4l2-core/v4l2-ioctl.c | 2 ++
+>  include/uapi/linux/videodev2.h       | 4 ++++
+>  2 files changed, 6 insertions(+)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index d6587b3ec33e..0604ae9ea444 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -1252,6 +1252,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+>  	case V4L2_TCH_FMT_TU08:		descr = "8-bit unsigned touch data"; break;
+>  	case V4L2_META_FMT_VSP1_HGO:	descr = "R-Car VSP1 1-D Histogram"; break;
+>  	case V4L2_META_FMT_VSP1_HGT:	descr = "R-Car VSP1 2-D Histogram"; break;
+> +	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A params"; break;
+> +	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A statistics"; break;
+>  
+>  	default:
+>  		/* Compressed formats */
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 7c871291c1fa..961545e64c12 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -691,6 +691,10 @@ struct v4l2_pix_format {
+>  #define V4L2_META_FMT_VSP1_HGO    v4l2_fourcc('V', 'S', 'P', 'H') /* R-Car VSP1 1-D Histogram */
+>  #define V4L2_META_FMT_VSP1_HGT    v4l2_fourcc('V', 'S', 'P', 'T') /* R-Car VSP1 2-D Histogram */
+>  
+> +/* Vendor specific - used for IPU3 camera sub-system */
+> +#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
+> +#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
+> +
+>  /* priv field value to indicates that subsequent fields are valid. */
+>  #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
+>  
+> 
