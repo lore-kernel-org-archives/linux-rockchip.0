@@ -1,27 +1,50 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 06/11] dt-bindings: Document the Rockchip MIPI RX
- D-PHY bindings
-Date: Sun, 26 Nov 2017 16:16:50 -0600
-Message-ID: <20171126221650.wbmiuva3qp3r3ke7@rob-hp-laptop>
-References: <20171124023706.5702-1-jacob-chen@iotwrt.com>
- <20171124023706.5702-7-jacob-chen@iotwrt.com>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: dma-mapping: Use vma_pages helper
+Date: Mon, 27 Nov 2017 10:20:20 +0800
+Message-ID: <c46d16ef-2def-a623-798f-667eacd9d13f@rock-chips.com>
+References: <1511364247-8581-1-git-send-email-gomonovych@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20171124023706.5702-7-jacob-chen@iotwrt.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, allon.huang@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1511364247-8581-1-git-send-email-gomonovych@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Vasyl Gomonovych <gomonovych@gmail.com>
+Cc: airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 24, 2017 at 10:37:01AM +0800, Jacob Chen wrote:
-> Add DT bindings documentation for Rockchip MIPI D-PHY RX
-> 
-> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
-> ---
->  .../bindings/media/rockchip-mipi-dphy.txt          | 77 ++++++++++++++++++++++
->  1 file changed, 77 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
-
-Same comments apply to this one.
+VGhhbmtzLCB0aGlzIHVwZGF0ZSBoYXMgbWVyZ2VkIHRvIGRybS1taXNjLW5leHQgbW9udGhzIGFn
+bzoKCmh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9wYXRjaC8xNzgyNTUvCgoK5Zyo
+IDIwMTcvMTEvMjIgMjM6MjQsIFZhc3lsIEdvbW9ub3Z5Y2gg5YaZ6YGTOgo+IFVzZSB2bWFfcGFn
+ZXMgZnVuY3Rpb24gb24gdm1hIG9iamVjdCBpbnN0ZWFkIG9mIGV4cGxpY2l0IGNvbXB1dGF0aW9u
+Lgo+IC4vZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYzoyMjM6MzQt
+NDA6IFdBUk5JTkc6IENvbnNpZGVyIHVzaW5nIHZtYV9wYWdlcyBoZWxwZXIgb24gdm1hCj4gR2Vu
+ZXJhdGVkIGJ5OiBzY3JpcHRzL2NvY2NpbmVsbGUvYXBpL3ZtYV9wYWdlcy5jb2NjaQo+Cj4gU2ln
+bmVkLW9mZi1ieTogVmFzeWwgR29tb25vdnljaCA8Z29tb25vdnljaEBnbWFpbC5jb20+Cj4gLS0t
+Cj4gwqAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDIgKy0K
+PiDCoCAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPgo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IGluZGV4IDE4Njlj
+OGJiNzZjOC4uMWQ5NjU1NTc2YjZlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2dlbS5jCj4gQEAgLTIyMCw3ICsyMjAsNyBAQCBzdGF0aWMgaW50IHJvY2tj
+aGlwX2RybV9nZW1fb2JqZWN0X21tYXBfaW9tbXUoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmos
+Cj4gwqAgewo+IMKgIMKgwqAgwqBzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqID0g
+dG9fcm9ja2NoaXBfb2JqKG9iaik7Cj4gwqAgwqDCoCDCoHVuc2lnbmVkIGludCBpLCBjb3VudCA9
+IG9iai0+c2l6ZSA+PiBQQUdFX1NISUZUOwo+IC3CoMKgIMKgdW5zaWduZWQgbG9uZyB1c2VyX2Nv
+dW50ID0gKHZtYS0+dm1fZW5kIC0gdm1hLT52bV9zdGFydCkgPj4gUEFHRV9TSElGVDsKPiArwqDC
+oCDCoHVuc2lnbmVkIGxvbmcgdXNlcl9jb3VudCA9IHZtYV9wYWdlcyh2bWEpOwo+IMKgIMKgwqAg
+wqB1bnNpZ25lZCBsb25nIHVhZGRyID0gdm1hLT52bV9zdGFydDsKPiDCoCDCoMKgIMKgdW5zaWdu
+ZWQgbG9uZyBvZmZzZXQgPSB2bWEtPnZtX3Bnb2ZmOwo+IMKgIMKgwqAgwqB1bnNpZ25lZCBsb25n
+IGVuZCA9IHVzZXJfY291bnQgKyBvZmZzZXQ7Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
