@@ -1,82 +1,60 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2] usb: dwc2: host: Don't retry NAKed transactions right away
-Date: Tue, 28 Nov 2017 08:07:44 -0800
-Message-ID: <CAD=FV=UT91tA-10PH1AttwJKU-4EL=qaVmQhT7K3oExg8y9omA@mail.gmail.com>
-References: <20171026202200.6417-1-dianders@chromium.org> <60370001.40630.1509205907119@email.1und1.de>
- <CAD=FV=WK_9AsutYhOTh9HMXwac1PJEXtHvXUYnztGmp6H3gbWg@mail.gmail.com>
- <87h8uhdoj2.fsf@linux.intel.com> <CAD=FV=UsYccsvicnce8wDpt3LaLQE23wdc7a4-m7OOhNS2JKgA@mail.gmail.com>
- <1555993677.606646.1511879848977@email.1und1.de>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] drm/bridge/synopsis: stop clobbering drvdata
+Date: Tue, 28 Nov 2017 10:21:23 -0800
+Message-ID: <20171128182121.GA116479@google.com>
+References: <20171128010538.119114-1-briannorris@chromium.org>
+ <1743921.AofnJoQ8Rz@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1555993677.606646.1511879848977-7tX72C7vayboQLBSYMtkGA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-Cc: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1743921.AofnJoQ8Rz@avalon>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Doug Anderson <dianders@chromium.org>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, Vincent Abriou <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, Nov 28, 2017 at 6:37 AM, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org> wrote:
-> Hi Doug,
->
-> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> hat am 30. Oktober 2017 um 18:14
-> geschrieben:
->
-> Hi,
->
-> On Mon, Oct 30, 2017 at 1:32 AM, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->>
->
-> Hi,
->
-> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
->
-> Hi,
->
-> On Sat, Oct 28, 2017 at 8:51 AM, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-> wrote:
->
-> Hi Doug,
->
-> [add Felipe since this should go through his tree]
->
-> Ah. Sorry Felipe! I know you've landed some dwc2 stuff in the past
->
-> No problems :-)
->
-> but for some reason get_maintainer didn't ID you so I thought maybe
-> you weren't doing it anymore. Please let me know if you'd like me to
-> send this to you again with collected Reviewed-by and Tested-by tags.
->
-> Yeah, please resend with all tags collected, however let's wait for a
-> week or so and give other people time to catch up. I already sent my
-> pull request to Greg, this would, anyway, go into the -rc cycle.
->
-> Doh! I just re-read this one more time (after sending v3) and
-> realized I had read it incorrectly. I read it as "please send the
-> patch with the tags and I'll wait a week before landing", but you
-> actually said "please wait a week before re-sending". Sorry for the
-> noise. In the very least, you should be on the "To" line now so if
-> anyone else has any extra tags it should be very easy for you to see
-> them.
->
-> Right that there's no massive urgency. It's been broken forever.
->
-> since 4.15rc1 is out, how are your plans for the next Patch version?
-
-Yeah, I was going to wait a week or so before pestering Felipe since
-some people are still in Thanksgiving holiday mode and rc1 _just_ came
-out...  My understanding is that the existing v3 patch is OK as-is and
-I wasn't planning to send another one.  patchwork.kernel.org IDs for
-the most recent version:
-
-10032939 New          [v3,1/2] usb: dwc2: host: Don't retry NAKed
-transactions right away
-10032935 New          [v3,2/2] usb: dwc2: host: Convert hcd_queue to timer_setup
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTGF1cmVudCwKCk9uIFR1ZSwgTm92IDI4LCAyMDE3IGF0IDAyOjUxOjQ2UE0gKzAyMDAsIExh
+dXJlbnQgUGluY2hhcnQgd3JvdGU6Cj4gSGkgQnJpYW4sCj4gCj4gVGhhbmsgeW91IGZvciB0aGUg
+cGF0Y2guCj4gCj4gSSdkIG1lbnRpb24gZHctbWlwaS1kc2kgaW4gdGhlIHN1YmplY3QgbGluZSBh
+cyB0aGUgZGlyZWN0b3J5IGNvbnRhaW5zIHRoZSBkdy0KPiBoZG1pIGRyaXZlciBhcyB3ZWxsIHRo
+YXQgdGhpcyBwYXRjaCBkb2Vzbid0IHRvdWNoLgoKWWVwLiBEb2VzIGl0IG5lZWQgYW5vdGhlciB0
+YWcgaW4gdGhlIHN1YmplY3Q/IGUuZy4sICcuLi4vZHctbWlwaS1kc2k6Jz8KCj4gT24gVHVlc2Rh
+eSwgMjggTm92ZW1iZXIgMjAxNyAwMzowNTozOCBFRVQgQnJpYW4gTm9ycmlzIHdyb3RlOgo+ID4g
+QnJpZGdlIGRyaXZlcnMvaGVscGVycyBzaG91bGRuJ3QgYmUgY2xvYmJlcmluZyB0aGUgZHJ2ZGF0
+YSwgc2luY2UgYQo+ID4gcGFyZW50IGRyaXZlciBtaWdodCBuZWVkIHRvIG93biB0aGlzLgo+IAo+
+IEJ5IHBhcmVudCBkcml2ZXIgSSBhc3N1bWUgeW91IG1lYW4gYSBnbHVlIGRyaXZlciB0aGF0IGJp
+bmRzIHRvIHRoZSBTb0MtCj4gc3BlY2lmaWMgY29tcGF0aWJsZSBzdHJpbmcgZm9yIHRoZSBEU0kg
+dHJhbnNtaXR0ZXIuCgpJbmRlZWQuIE5pY2tleSBwaWNrZWQgdGhpcyB1cCBmb3IgaGlzIFJvY2tj
+aGlwIGRyaXZlciBzdWJtaXNzaW9uLCBidXQKbWF5YmUgd2Ugc2hvdWxkIHJld29yZCB0aGUgY29t
+bWl0IG1lc3NhZ2UgYSBiaXQuCgo+ID4gSW5zdGVhZCwgbGV0J3MgcmV0dXJuIG91cgo+ID4gJ2R3
+X21pcGlfZHNpJyBvYmplY3QgYW5kIGhhdmUgY2FsbGVycyBwYXNzIHRoYXQgYmFjayB0byB1cyBm
+b3IgcmVtb3ZhbC4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzIDxicmlhbm5v
+cnJpc0BjaHJvbWl1bS5vcmc+Cj4gCj4gV291bGRuJ3QgaXQgYmUgY2xlYW5lciB0byBlbWJlZCB0
+aGUgZHdfbWlwaV9kc2kgc3RydWN0dXJlIGluIHRoZSBwYXJlbnQtCj4gc3BlY2lmaWMgZGF0YSBz
+dHJ1Y3R1cmUgKHN0cnVjdCBkd19taXBpX2RzaV9zdG0gYW5kIHN0cnVjdCAKPiBkd19taXBpX2Rz
+aV9yb2NrY2hpcCB3aGVuIHRoZSAiW1BBVENIIHYzIDAvNV0gVXBkYXRlIFJPQ0tDSElQIERTSSBk
+cml2ZXIgdGhhdCAKPiB1c2VzIGR3LW1pcGktZHNpIGJyaWRnZSIgcGF0Y2ggc2VyaWVzIHdpbGwg
+bGFuZCkgaW5zdGVhZCBvZiBhbGxvY2F0aW5nIGl0IAo+IGR5bmFtaWNhbGx5ID8gV2Ugd291bGQg
+dGhlbiBoYXZlIGEgc2luZ2xlIG9iamVjdCB0byB0cmFjay4KCkkgc3VwcG9zZSB3ZSBjb3VsZCBk
+byB0aGF0IHRvby4gQnV0IHRoYXQgd291bGQgcmVxdWlyZSBleHBvc2luZyB0aGUKd2hvbGUgbGF5
+b3V0IG9mICdzdHJ1Y3QgZHdfbWlwaV9kc2knIHRvIHVzZXJzLiBEbyB3ZSB3YW50IHRvIHNhY3Jp
+ZmljZQp0aGUgZW5mb3JjZWQgc2VwYXJhdGlvbiBmb3IgYSBsaXR0bGUgYml0IG9mIG5pY2VyIG9i
+amVjdCBoYW5kbGluZz8KCkFsc28sIHRoaXMgd2FzIG1vZGVsZWQgYSBiaXQgYWZ0ZXIgdGhlIHNp
+bWlsYXIgcmV3b3JrIG5lZWRlZCB0byB1bnRhbmdsZQp0aGUgZHJ2ZGF0YSBoYW5kbGluZyBpbiB0
+aGUgUm9ja2NoaXAgYW5hbG9naXggRFAgZHJpdmVyIHZzLiB0aGUgYW5hbG9naXgKYnJpZGdlIERQ
+IGNvZGU6CgpbUEFUQ0ggdjYgMDMvMTBdIGRybS9icmlkZ2U6IGFuYWxvZ2l4OiBEbyBub3QgdXNl
+IGRldmljZSdzIGRydmRhdGEKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDAx
+NTg3NS8KCkJyaWFuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
