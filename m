@@ -1,211 +1,82 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] drm/bridge/synopsis: stop clobbering drvdata
-Date: Tue, 28 Nov 2017 14:51:46 +0200
-Message-ID: <1743921.AofnJoQ8Rz@avalon>
-References: <20171128010538.119114-1-briannorris@chromium.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2] usb: dwc2: host: Don't retry NAKed transactions right away
+Date: Tue, 28 Nov 2017 08:07:44 -0800
+Message-ID: <CAD=FV=UT91tA-10PH1AttwJKU-4EL=qaVmQhT7K3oExg8y9omA@mail.gmail.com>
+References: <20171026202200.6417-1-dianders@chromium.org> <60370001.40630.1509205907119@email.1und1.de>
+ <CAD=FV=WK_9AsutYhOTh9HMXwac1PJEXtHvXUYnztGmp6H3gbWg@mail.gmail.com>
+ <87h8uhdoj2.fsf@linux.intel.com> <CAD=FV=UsYccsvicnce8wDpt3LaLQE23wdc7a4-m7OOhNS2JKgA@mail.gmail.com>
+ <1555993677.606646.1511879848977@email.1und1.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171128010538.119114-1-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1555993677.606646.1511879848977-7tX72C7vayboQLBSYMtkGA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Cc: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
+Hi,
 
-Thank you for the patch.
+On Tue, Nov 28, 2017 at 6:37 AM, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org> wrote:
+> Hi Doug,
+>
+> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> hat am 30. Oktober 2017 um 18:14
+> geschrieben:
+>
+> Hi,
+>
+> On Mon, Oct 30, 2017 at 1:32 AM, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>>
+>
+> Hi,
+>
+> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>
+> Hi,
+>
+> On Sat, Oct 28, 2017 at 8:51 AM, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+> wrote:
+>
+> Hi Doug,
+>
+> [add Felipe since this should go through his tree]
+>
+> Ah. Sorry Felipe! I know you've landed some dwc2 stuff in the past
+>
+> No problems :-)
+>
+> but for some reason get_maintainer didn't ID you so I thought maybe
+> you weren't doing it anymore. Please let me know if you'd like me to
+> send this to you again with collected Reviewed-by and Tested-by tags.
+>
+> Yeah, please resend with all tags collected, however let's wait for a
+> week or so and give other people time to catch up. I already sent my
+> pull request to Greg, this would, anyway, go into the -rc cycle.
+>
+> Doh! I just re-read this one more time (after sending v3) and
+> realized I had read it incorrectly. I read it as "please send the
+> patch with the tags and I'll wait a week before landing", but you
+> actually said "please wait a week before re-sending". Sorry for the
+> noise. In the very least, you should be on the "To" line now so if
+> anyone else has any extra tags it should be very easy for you to see
+> them.
+>
+> Right that there's no massive urgency. It's been broken forever.
+>
+> since 4.15rc1 is out, how are your plans for the next Patch version?
 
-I'd mention dw-mipi-dsi in the subject line as the directory contains the dw-
-hdmi driver as well that this patch doesn't touch.
+Yeah, I was going to wait a week or so before pestering Felipe since
+some people are still in Thanksgiving holiday mode and rc1 _just_ came
+out...  My understanding is that the existing v3 patch is OK as-is and
+I wasn't planning to send another one.  patchwork.kernel.org IDs for
+the most recent version:
 
-On Tuesday, 28 November 2017 03:05:38 EET Brian Norris wrote:
-> Bridge drivers/helpers shouldn't be clobbering the drvdata, since a
-> parent driver might need to own this.
+10032939 New          [v3,1/2] usb: dwc2: host: Don't retry NAKed
+transactions right away
+10032935 New          [v3,2/2] usb: dwc2: host: Convert hcd_queue to timer_setup
 
-By parent driver I assume you mean a glue driver that binds to the SoC-
-specific compatible string for the DSI transmitter.
-
-> Instead, let's return our
-> 'dw_mipi_dsi' object and have callers pass that back to us for removal.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-
-Wouldn't it be cleaner to embed the dw_mipi_dsi structure in the parent-
-specific data structure (struct dw_mipi_dsi_stm and struct 
-dw_mipi_dsi_rockchip when the "[PATCH v3 0/5] Update ROCKCHIP DSI driver that 
-uses dw-mipi-dsi bridge" patch series will land) instead of allocating it 
-dynamically ? We would then have a single object to track.
-
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 36 ++++++++++--------------
->  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         | 14 +++++++----
->  include/drm/bridge/dw_mipi_dsi.h              | 17 ++++++++-----
->  3 files changed, 33 insertions(+), 34 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c index
-> d9cca4fd66ec..c39c7dce20ed 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -922,8 +922,6 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
->  	dsi->bridge.of_node = pdev->dev.of_node;
->  #endif
-> 
-> -	dev_set_drvdata(dev, dsi);
-> -
->  	return dsi;
->  }
-> 
-> @@ -935,23 +933,16 @@ static void __dw_mipi_dsi_remove(struct dw_mipi_dsi
-> *dsi) /*
->   * Probe/remove API, used from platforms based on the DRM bridge API.
->   */
-> -int dw_mipi_dsi_probe(struct platform_device *pdev,
-> -		      const struct dw_mipi_dsi_plat_data *plat_data)
-> +struct dw_mipi_dsi *
-> +dw_mipi_dsi_probe(struct platform_device *pdev,
-> +		  const struct dw_mipi_dsi_plat_data *plat_data)
->  {
-> -	struct dw_mipi_dsi *dsi;
-> -
-> -	dsi = __dw_mipi_dsi_probe(pdev, plat_data);
-> -	if (IS_ERR(dsi))
-> -		return PTR_ERR(dsi);
-> -
-> -	return 0;
-> +	return __dw_mipi_dsi_probe(pdev, plat_data);
->  }
->  EXPORT_SYMBOL_GPL(dw_mipi_dsi_probe);
-> 
-> -void dw_mipi_dsi_remove(struct platform_device *pdev)
-> +void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi)
->  {
-> -	struct dw_mipi_dsi *dsi = platform_get_drvdata(pdev);
-> -
->  	mipi_dsi_host_unregister(&dsi->dsi_host);
-> 
->  	__dw_mipi_dsi_remove(dsi);
-> @@ -961,31 +952,30 @@ EXPORT_SYMBOL_GPL(dw_mipi_dsi_remove);
->  /*
->   * Bind/unbind API, used from platforms based on the component framework.
->   */
-> -int dw_mipi_dsi_bind(struct platform_device *pdev, struct drm_encoder
-> *encoder, -		     const struct dw_mipi_dsi_plat_data *plat_data)
-> +struct dw_mipi_dsi *
-> +dw_mipi_dsi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
-> +		 const struct dw_mipi_dsi_plat_data *plat_data)
->  {
->  	struct dw_mipi_dsi *dsi;
->  	int ret;
-> 
->  	dsi = __dw_mipi_dsi_probe(pdev, plat_data);
->  	if (IS_ERR(dsi))
-> -		return PTR_ERR(dsi);
-> +		return dsi;
-> 
->  	ret = drm_bridge_attach(encoder, &dsi->bridge, NULL);
->  	if (ret) {
-> -		dw_mipi_dsi_remove(pdev);
-> +		dw_mipi_dsi_remove(dsi);
->  		DRM_ERROR("Failed to initialize bridge with drm\n");
-> -		return ret;
-> +		return ERR_PTR(ret);
->  	}
-> 
-> -	return 0;
-> +	return dsi;
->  }
->  EXPORT_SYMBOL_GPL(dw_mipi_dsi_bind);
-> 
-> -void dw_mipi_dsi_unbind(struct device *dev)
-> +void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi)
->  {
-> -	struct dw_mipi_dsi *dsi = dev_get_drvdata(dev);
-> -
->  	__dw_mipi_dsi_remove(dsi);
->  }
->  EXPORT_SYMBOL_GPL(dw_mipi_dsi_unbind);
-> diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c index e5b6310240fe..7ed0ef7f6ec2
-> 100644
-> --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> @@ -66,6 +66,7 @@ enum dsi_color {
->  struct dw_mipi_dsi_stm {
->  	void __iomem *base;
->  	struct clk *pllref_clk;
-> +	struct dw_mipi_dsi *dsi;
->  };
-> 
->  static inline void dsi_write(struct dw_mipi_dsi_stm *dsi, u32 reg, u32 val)
-> @@ -318,21 +319,24 @@ static int dw_mipi_dsi_stm_probe(struct
-> platform_device *pdev) dw_mipi_dsi_stm_plat_data.base = dsi->base;
->  	dw_mipi_dsi_stm_plat_data.priv_data = dsi;
-> 
-> -	ret = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
-> -	if (ret) {
-> +	platform_set_drvdata(pdev, dsi);
-> +
-> +	dsi->dsi = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
-> +	if (IS_ERR(dsi->dsi)) {
->  		DRM_ERROR("Failed to initialize mipi dsi host\n");
->  		clk_disable_unprepare(dsi->pllref_clk);
-> +		return PTR_ERR(dsi->dsi);
->  	}
-> 
-> -	return ret;
-> +	return 0;
->  }
-> 
->  static int dw_mipi_dsi_stm_remove(struct platform_device *pdev)
->  {
-> -	struct dw_mipi_dsi_stm *dsi = dw_mipi_dsi_stm_plat_data.priv_data;
-> +	struct dw_mipi_dsi_stm *dsi = platform_get_drvdata(pdev);
-> 
->  	clk_disable_unprepare(dsi->pllref_clk);
-> -	dw_mipi_dsi_remove(pdev);
-> +	dw_mipi_dsi_remove(dsi->dsi);
-> 
->  	return 0;
->  }
-> diff --git a/include/drm/bridge/dw_mipi_dsi.h
-> b/include/drm/bridge/dw_mipi_dsi.h index 9b30fec302c8..d9c6d549f971 100644
-> --- a/include/drm/bridge/dw_mipi_dsi.h
-> +++ b/include/drm/bridge/dw_mipi_dsi.h
-> @@ -10,6 +10,8 @@
->  #ifndef __DW_MIPI_DSI__
->  #define __DW_MIPI_DSI__
-> 
-> +struct dw_mipi_dsi;
-> +
->  struct dw_mipi_dsi_phy_ops {
->  	int (*init)(void *priv_data);
->  	int (*get_lane_mbps)(void *priv_data, struct drm_display_mode *mode,
-> @@ -29,11 +31,14 @@ struct dw_mipi_dsi_plat_data {
->  	void *priv_data;
->  };
-> 
-> -int dw_mipi_dsi_probe(struct platform_device *pdev,
-> -		      const struct dw_mipi_dsi_plat_data *plat_data);
-> -void dw_mipi_dsi_remove(struct platform_device *pdev);
-> -int dw_mipi_dsi_bind(struct platform_device *pdev, struct drm_encoder
-> *encoder, -		     const struct dw_mipi_dsi_plat_data *plat_data);
-> -void dw_mipi_dsi_unbind(struct device *dev);
-> +struct dw_mipi_dsi *dw_mipi_dsi_probe(struct platform_device *pdev,
-> +				      const struct dw_mipi_dsi_plat_data
-> +				      *plat_data);
-> +void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi);
-> +struct dw_mipi_dsi *dw_mipi_dsi_bind(struct platform_device *pdev,
-> +				     struct drm_encoder *encoder,
-> +				     const struct dw_mipi_dsi_plat_data
-> +				     *plat_data);
-> +void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi);
-> 
->  #endif /* __DW_MIPI_DSI__ */
-
--- 
-Regards,
-
-Laurent Pinchart
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
