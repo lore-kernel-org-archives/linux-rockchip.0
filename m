@@ -1,196 +1,141 @@
-From: Archit Taneja <architt@codeaurora.org>
+From: Philippe CORNU <philippe.cornu@st.com>
 Subject: Re: [PATCH] drm/bridge/synopsis: stop clobbering drvdata
-Date: Tue, 28 Nov 2017 11:57:50 +0530
-Message-ID: <c0172a34-ebd5-bbd0-c531-c46392ac698f@codeaurora.org>
+Date: Tue, 28 Nov 2017 09:34:01 +0000
+Message-ID: <348421ad-a6f5-0943-f38d-d9a6de60e32e@st.com>
 References: <20171128010538.119114-1-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20171128010538.119114-1-briannorris@chromium.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org
+Content-ID: <26CCB192B379764BA4B2AB6F46F43D76@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent
+ Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: "hl@rock-chips.com" <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Vincent ABRIOU <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 11/28/2017 06:35 AM, Brian Norris wrote:
-> Bridge drivers/helpers shouldn't be clobbering the drvdata, since a
-> parent driver might need to own this. Instead, let's return our
-> 'dw_mipi_dsi' object and have callers pass that back to us for removal.
-> 
-
-Reviewed-by: Archit Taneja <architt@codeaurora.org>
-
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 36 ++++++++++-----------------
->   drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         | 14 +++++++----
->   include/drm/bridge/dw_mipi_dsi.h              | 17 ++++++++-----
->   3 files changed, 33 insertions(+), 34 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index d9cca4fd66ec..c39c7dce20ed 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -922,8 +922,6 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
->   	dsi->bridge.of_node = pdev->dev.of_node;
->   #endif
->   
-> -	dev_set_drvdata(dev, dsi);
-> -
->   	return dsi;
->   }
->   
-> @@ -935,23 +933,16 @@ static void __dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi)
->   /*
->    * Probe/remove API, used from platforms based on the DRM bridge API.
->    */
-> -int dw_mipi_dsi_probe(struct platform_device *pdev,
-> -		      const struct dw_mipi_dsi_plat_data *plat_data)
-> +struct dw_mipi_dsi *
-> +dw_mipi_dsi_probe(struct platform_device *pdev,
-> +		  const struct dw_mipi_dsi_plat_data *plat_data)
->   {
-> -	struct dw_mipi_dsi *dsi;
-> -
-> -	dsi = __dw_mipi_dsi_probe(pdev, plat_data);
-> -	if (IS_ERR(dsi))
-> -		return PTR_ERR(dsi);
-> -
-> -	return 0;
-> +	return __dw_mipi_dsi_probe(pdev, plat_data);
->   }
->   EXPORT_SYMBOL_GPL(dw_mipi_dsi_probe);
->   
-> -void dw_mipi_dsi_remove(struct platform_device *pdev)
-> +void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi)
->   {
-> -	struct dw_mipi_dsi *dsi = platform_get_drvdata(pdev);
-> -
->   	mipi_dsi_host_unregister(&dsi->dsi_host);
->   
->   	__dw_mipi_dsi_remove(dsi);
-> @@ -961,31 +952,30 @@ EXPORT_SYMBOL_GPL(dw_mipi_dsi_remove);
->   /*
->    * Bind/unbind API, used from platforms based on the component framework.
->    */
-> -int dw_mipi_dsi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
-> -		     const struct dw_mipi_dsi_plat_data *plat_data)
-> +struct dw_mipi_dsi *
-> +dw_mipi_dsi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
-> +		 const struct dw_mipi_dsi_plat_data *plat_data)
->   {
->   	struct dw_mipi_dsi *dsi;
->   	int ret;
->   
->   	dsi = __dw_mipi_dsi_probe(pdev, plat_data);
->   	if (IS_ERR(dsi))
-> -		return PTR_ERR(dsi);
-> +		return dsi;
->   
->   	ret = drm_bridge_attach(encoder, &dsi->bridge, NULL);
->   	if (ret) {
-> -		dw_mipi_dsi_remove(pdev);
-> +		dw_mipi_dsi_remove(dsi);
->   		DRM_ERROR("Failed to initialize bridge with drm\n");
-> -		return ret;
-> +		return ERR_PTR(ret);
->   	}
->   
-> -	return 0;
-> +	return dsi;
->   }
->   EXPORT_SYMBOL_GPL(dw_mipi_dsi_bind);
->   
-> -void dw_mipi_dsi_unbind(struct device *dev)
-> +void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi)
->   {
-> -	struct dw_mipi_dsi *dsi = dev_get_drvdata(dev);
-> -
->   	__dw_mipi_dsi_remove(dsi);
->   }
->   EXPORT_SYMBOL_GPL(dw_mipi_dsi_unbind);
-> diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> index e5b6310240fe..7ed0ef7f6ec2 100644
-> --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> @@ -66,6 +66,7 @@ enum dsi_color {
->   struct dw_mipi_dsi_stm {
->   	void __iomem *base;
->   	struct clk *pllref_clk;
-> +	struct dw_mipi_dsi *dsi;
->   };
->   
->   static inline void dsi_write(struct dw_mipi_dsi_stm *dsi, u32 reg, u32 val)
-> @@ -318,21 +319,24 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
->   	dw_mipi_dsi_stm_plat_data.base = dsi->base;
->   	dw_mipi_dsi_stm_plat_data.priv_data = dsi;
->   
-> -	ret = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
-> -	if (ret) {
-> +	platform_set_drvdata(pdev, dsi);
-> +
-> +	dsi->dsi = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
-> +	if (IS_ERR(dsi->dsi)) {
->   		DRM_ERROR("Failed to initialize mipi dsi host\n");
->   		clk_disable_unprepare(dsi->pllref_clk);
-> +		return PTR_ERR(dsi->dsi);
->   	}
->   
-> -	return ret;
-> +	return 0;
->   }
->   
->   static int dw_mipi_dsi_stm_remove(struct platform_device *pdev)
->   {
-> -	struct dw_mipi_dsi_stm *dsi = dw_mipi_dsi_stm_plat_data.priv_data;
-> +	struct dw_mipi_dsi_stm *dsi = platform_get_drvdata(pdev);
->   
->   	clk_disable_unprepare(dsi->pllref_clk);
-> -	dw_mipi_dsi_remove(pdev);
-> +	dw_mipi_dsi_remove(dsi->dsi);
->   
->   	return 0;
->   }
-> diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
-> index 9b30fec302c8..d9c6d549f971 100644
-> --- a/include/drm/bridge/dw_mipi_dsi.h
-> +++ b/include/drm/bridge/dw_mipi_dsi.h
-> @@ -10,6 +10,8 @@
->   #ifndef __DW_MIPI_DSI__
->   #define __DW_MIPI_DSI__
->   
-> +struct dw_mipi_dsi;
-> +
->   struct dw_mipi_dsi_phy_ops {
->   	int (*init)(void *priv_data);
->   	int (*get_lane_mbps)(void *priv_data, struct drm_display_mode *mode,
-> @@ -29,11 +31,14 @@ struct dw_mipi_dsi_plat_data {
->   	void *priv_data;
->   };
->   
-> -int dw_mipi_dsi_probe(struct platform_device *pdev,
-> -		      const struct dw_mipi_dsi_plat_data *plat_data);
-> -void dw_mipi_dsi_remove(struct platform_device *pdev);
-> -int dw_mipi_dsi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
-> -		     const struct dw_mipi_dsi_plat_data *plat_data);
-> -void dw_mipi_dsi_unbind(struct device *dev);
-> +struct dw_mipi_dsi *dw_mipi_dsi_probe(struct platform_device *pdev,
-> +				      const struct dw_mipi_dsi_plat_data
-> +				      *plat_data);
-> +void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi);
-> +struct dw_mipi_dsi *dw_mipi_dsi_bind(struct platform_device *pdev,
-> +				     struct drm_encoder *encoder,
-> +				     const struct dw_mipi_dsi_plat_data
-> +				     *plat_data);
-> +void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi);
->   
->   #endif /* __DW_MIPI_DSI__ */
-> 
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+SGkgQnJpYW4sDQoNCk9uIDExLzI4LzIwMTcgMDI6MDUgQU0sIEJyaWFuIE5vcnJpcyB3cm90ZToN
+Cj4gQnJpZGdlIGRyaXZlcnMvaGVscGVycyBzaG91bGRuJ3QgYmUgY2xvYmJlcmluZyB0aGUgZHJ2
+ZGF0YSwgc2luY2UgYQ0KPiBwYXJlbnQgZHJpdmVyIG1pZ2h0IG5lZWQgdG8gb3duIHRoaXMuIElu
+c3RlYWQsIGxldCdzIHJldHVybiBvdXINCj4gJ2R3X21pcGlfZHNpJyBvYmplY3QgYW5kIGhhdmUg
+Y2FsbGVycyBwYXNzIHRoYXQgYmFjayB0byB1cyBmb3IgcmVtb3ZhbC4NCg0KQW5kIG1hbnkgdGhh
+bmtzIGZvciB0aGlzIGNsZWFudXAuDQoocGxlYXNlIHVwZGF0ZSB0aGUgaGVhZGxpbmUgd2l0aCAi
+c3lub3BzeXMiKQ0KDQpTdWNjZXNzZnVsbHkgdGVzdGVkIG9uIHN0bS4NCg0KQWNrZWQtYnk6IFBo
+aWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+DQoNCk1hbnkgdGhhbmtzLA0KUGhp
+bGlwcGUgOi0pDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlz
+QGNocm9taXVtLm9yZz4NCj4gLS0tDQo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
+cy9kdy1taXBpLWRzaS5jIHwgMzYgKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tDQo+ICAgZHJp
+dmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0uYyAgICAgICAgIHwgMTQgKysrKysrKy0t
+LS0NCj4gICBpbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaCAgICAgICAgICAgICAgfCAx
+NyArKysrKysrKy0tLS0tDQo+ICAgMyBmaWxlcyBjaGFuZ2VkLCAzMyBpbnNlcnRpb25zKCspLCAz
+NCBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
+L2R3LW1pcGktZHNpLmMNCj4gaW5kZXggZDljY2E0ZmQ2NmVjLi5jMzljN2RjZTIwZWQgMTAwNjQ0
+DQo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0K
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMNCj4g
+QEAgLTkyMiw4ICs5MjIsNiBAQCBfX2R3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9k
+ZXZpY2UgKnBkZXYsDQo+ICAgCWRzaS0+YnJpZGdlLm9mX25vZGUgPSBwZGV2LT5kZXYub2Zfbm9k
+ZTsNCj4gICAjZW5kaWYNCj4gICANCj4gLQlkZXZfc2V0X2RydmRhdGEoZGV2LCBkc2kpOw0KPiAt
+DQo+ICAgCXJldHVybiBkc2k7DQo+ICAgfQ0KPiAgIA0KPiBAQCAtOTM1LDIzICs5MzMsMTYgQEAg
+c3RhdGljIHZvaWQgX19kd19taXBpX2RzaV9yZW1vdmUoc3RydWN0IGR3X21pcGlfZHNpICpkc2kp
+DQo+ICAgLyoNCj4gICAgKiBQcm9iZS9yZW1vdmUgQVBJLCB1c2VkIGZyb20gcGxhdGZvcm1zIGJh
+c2VkIG9uIHRoZSBEUk0gYnJpZGdlIEFQSS4NCj4gICAgKi8NCj4gLWludCBkd19taXBpX2RzaV9w
+cm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LA0KPiAtCQkgICAgICBjb25zdCBzdHJ1
+Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpDQo+ICtzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKg0KPiArZHdfbWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwN
+Cj4gKwkJICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpDQo+
+ICAgew0KPiAtCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpOw0KPiAtDQo+IC0JZHNpID0gX19kd19t
+aXBpX2RzaV9wcm9iZShwZGV2LCBwbGF0X2RhdGEpOw0KPiAtCWlmIChJU19FUlIoZHNpKSkNCj4g
+LQkJcmV0dXJuIFBUUl9FUlIoZHNpKTsNCj4gLQ0KPiAtCXJldHVybiAwOw0KPiArCXJldHVybiBf
+X2R3X21pcGlfZHNpX3Byb2JlKHBkZXYsIHBsYXRfZGF0YSk7DQo+ICAgfQ0KPiAgIEVYUE9SVF9T
+WU1CT0xfR1BMKGR3X21pcGlfZHNpX3Byb2JlKTsNCj4gICANCj4gLXZvaWQgZHdfbWlwaV9kc2lf
+cmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+ICt2b2lkIGR3X21pcGlfZHNp
+X3JlbW92ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkNCj4gICB7DQo+IC0Jc3RydWN0IGR3X21p
+cGlfZHNpICpkc2kgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsNCj4gLQ0KPiAgIAltaXBp
+X2RzaV9ob3N0X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOw0KPiAgIA0KPiAgIAlfX2R3X21p
+cGlfZHNpX3JlbW92ZShkc2kpOw0KPiBAQCAtOTYxLDMxICs5NTIsMzAgQEAgRVhQT1JUX1NZTUJP
+TF9HUEwoZHdfbWlwaV9kc2lfcmVtb3ZlKTsNCj4gICAvKg0KPiAgICAqIEJpbmQvdW5iaW5kIEFQ
+SSwgdXNlZCBmcm9tIHBsYXRmb3JtcyBiYXNlZCBvbiB0aGUgY29tcG9uZW50IGZyYW1ld29yay4N
+Cj4gICAgKi8NCj4gLWludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
+KnBkZXYsIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwNCj4gLQkJICAgICBjb25zdCBzdHJ1
+Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpDQo+ICtzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKg0KPiArZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LCBz
+dHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsDQo+ICsJCSBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9k
+c2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpDQo+ICAgew0KPiAgIAlzdHJ1Y3QgZHdfbWlwaV9kc2kg
+KmRzaTsNCj4gICAJaW50IHJldDsNCj4gICANCj4gICAJZHNpID0gX19kd19taXBpX2RzaV9wcm9i
+ZShwZGV2LCBwbGF0X2RhdGEpOw0KPiAgIAlpZiAoSVNfRVJSKGRzaSkpDQo+IC0JCXJldHVybiBQ
+VFJfRVJSKGRzaSk7DQo+ICsJCXJldHVybiBkc2k7DQo+ICAgDQo+ICAgCXJldCA9IGRybV9icmlk
+Z2VfYXR0YWNoKGVuY29kZXIsICZkc2ktPmJyaWRnZSwgTlVMTCk7DQo+ICAgCWlmIChyZXQpIHsN
+Cj4gLQkJZHdfbWlwaV9kc2lfcmVtb3ZlKHBkZXYpOw0KPiArCQlkd19taXBpX2RzaV9yZW1vdmUo
+ZHNpKTsNCj4gICAJCURSTV9FUlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgYnJpZGdlIHdpdGgg
+ZHJtXG4iKTsNCj4gLQkJcmV0dXJuIHJldDsNCj4gKwkJcmV0dXJuIEVSUl9QVFIocmV0KTsNCj4g
+ICAJfQ0KPiAgIA0KPiAtCXJldHVybiAwOw0KPiArCXJldHVybiBkc2k7DQo+ICAgfQ0KPiAgIEVY
+UE9SVF9TWU1CT0xfR1BMKGR3X21pcGlfZHNpX2JpbmQpOw0KPiAgIA0KPiAtdm9pZCBkd19taXBp
+X2RzaV91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2KQ0KPiArdm9pZCBkd19taXBpX2RzaV91bmJp
+bmQoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpDQo+ICAgew0KPiAtCXN0cnVjdCBkd19taXBpX2Rz
+aSAqZHNpID0gZGV2X2dldF9kcnZkYXRhKGRldik7DQo+IC0NCj4gICAJX19kd19taXBpX2RzaV9y
+ZW1vdmUoZHNpKTsNCj4gICB9DQo+ICAgRVhQT1JUX1NZTUJPTF9HUEwoZHdfbWlwaV9kc2lfdW5i
+aW5kKTsNCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3Rt
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jDQo+IGluZGV4IGU1YjYz
+MTAyNDBmZS4uN2VkMGVmN2Y2ZWMyIDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vc3Rt
+L2R3X21pcGlfZHNpLXN0bS5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9k
+c2ktc3RtLmMNCj4gQEAgLTY2LDYgKzY2LDcgQEAgZW51bSBkc2lfY29sb3Igew0KPiAgIHN0cnVj
+dCBkd19taXBpX2RzaV9zdG0gew0KPiAgIAl2b2lkIF9faW9tZW0gKmJhc2U7DQo+ICAgCXN0cnVj
+dCBjbGsgKnBsbHJlZl9jbGs7DQo+ICsJc3RydWN0IGR3X21pcGlfZHNpICpkc2k7DQo+ICAgfTsN
+Cj4gICANCj4gICBzdGF0aWMgaW5saW5lIHZvaWQgZHNpX3dyaXRlKHN0cnVjdCBkd19taXBpX2Rz
+aV9zdG0gKmRzaSwgdTMyIHJlZywgdTMyIHZhbCkNCj4gQEAgLTMxOCwyMSArMzE5LDI0IEBAIHN0
+YXRpYyBpbnQgZHdfbWlwaV9kc2lfc3RtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
+ZXYpDQo+ICAgCWR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEuYmFzZSA9IGRzaS0+YmFzZTsNCj4g
+ICAJZHdfbWlwaV9kc2lfc3RtX3BsYXRfZGF0YS5wcml2X2RhdGEgPSBkc2k7DQo+ICAgDQo+IC0J
+cmV0ID0gZHdfbWlwaV9kc2lfcHJvYmUocGRldiwgJmR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEp
+Ow0KPiAtCWlmIChyZXQpIHsNCj4gKwlwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBkc2kpOw0K
+PiArDQo+ICsJZHNpLT5kc2kgPSBkd19taXBpX2RzaV9wcm9iZShwZGV2LCAmZHdfbWlwaV9kc2lf
+c3RtX3BsYXRfZGF0YSk7DQo+ICsJaWYgKElTX0VSUihkc2ktPmRzaSkpIHsNCj4gICAJCURSTV9F
+UlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgbWlwaSBkc2kgaG9zdFxuIik7DQo+ICAgCQljbGtf
+ZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsNCj4gKwkJcmV0dXJuIFBUUl9FUlIo
+ZHNpLT5kc2kpOw0KPiAgIAl9DQo+ICAgDQo+IC0JcmV0dXJuIHJldDsNCj4gKwlyZXR1cm4gMDsN
+Cj4gICB9DQo+ICAgDQo+ICAgc3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcmVtb3ZlKHN0cnVj
+dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+ICAgew0KPiAtCXN0cnVjdCBkd19taXBpX2RzaV9z
+dG0gKmRzaSA9IGR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEucHJpdl9kYXRhOw0KPiArCXN0cnVj
+dCBkd19taXBpX2RzaV9zdG0gKmRzaSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOw0KPiAg
+IA0KPiAgIAljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsNCj4gLQlkd19t
+aXBpX2RzaV9yZW1vdmUocGRldik7DQo+ICsJZHdfbWlwaV9kc2lfcmVtb3ZlKGRzaS0+ZHNpKTsN
+Cj4gICANCj4gICAJcmV0dXJuIDA7DQo+ICAgfQ0KPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0v
+YnJpZGdlL2R3X21pcGlfZHNpLmggYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaA0K
+PiBpbmRleCA5YjMwZmVjMzAyYzguLmQ5YzZkNTQ5Zjk3MSAxMDA2NDQNCj4gLS0tIGEvaW5jbHVk
+ZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgNCj4gKysrIGIvaW5jbHVkZS9kcm0vYnJpZGdlL2R3
+X21pcGlfZHNpLmgNCj4gQEAgLTEwLDYgKzEwLDggQEANCj4gICAjaWZuZGVmIF9fRFdfTUlQSV9E
+U0lfXw0KPiAgICNkZWZpbmUgX19EV19NSVBJX0RTSV9fDQo+ICAgDQo+ICtzdHJ1Y3QgZHdfbWlw
+aV9kc2k7DQo+ICsNCj4gICBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGh5X29wcyB7DQo+ICAgCWludCAo
+KmluaXQpKHZvaWQgKnByaXZfZGF0YSk7DQo+ICAgCWludCAoKmdldF9sYW5lX21icHMpKHZvaWQg
+KnByaXZfZGF0YSwgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsDQo+IEBAIC0yOSwxMSAr
+MzEsMTQgQEAgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSB7DQo+ICAgCXZvaWQgKnByaXZf
+ZGF0YTsNCj4gICB9Ow0KPiAgIA0KPiAtaW50IGR3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYsDQo+IC0JCSAgICAgIGNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9w
+bGF0X2RhdGEgKnBsYXRfZGF0YSk7DQo+IC12b2lkIGR3X21pcGlfZHNpX3JlbW92ZShzdHJ1Y3Qg
+cGxhdGZvcm1fZGV2aWNlICpwZGV2KTsNCj4gLWludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYsIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwNCj4gLQkJ
+ICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpOw0KPiAt
+dm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2KTsNCj4gK3N0cnVjdCBk
+d19taXBpX2RzaSAqZHdfbWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
+diwNCj4gKwkJCQkgICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhDQo+ICsJ
+CQkJICAgICAgKnBsYXRfZGF0YSk7DQo+ICt2b2lkIGR3X21pcGlfZHNpX3JlbW92ZShzdHJ1Y3Qg
+ZHdfbWlwaV9kc2kgKmRzaSk7DQo+ICtzdHJ1Y3QgZHdfbWlwaV9kc2kgKmR3X21pcGlfZHNpX2Jp
+bmQoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwNCj4gKwkJCQkgICAgIHN0cnVjdCBkcm1f
+ZW5jb2RlciAqZW5jb2RlciwNCj4gKwkJCQkgICAgIGNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9w
+bGF0X2RhdGENCj4gKwkJCQkgICAgICpwbGF0X2RhdGEpOw0KPiArdm9pZCBkd19taXBpX2RzaV91
+bmJpbmQoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpOw0KPiAgIA0KPiAgICNlbmRpZiAvKiBfX0RX
+X01JUElfRFNJX18gKi8NCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
