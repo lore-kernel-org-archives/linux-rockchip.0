@@ -1,44 +1,60 @@
 From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: [PATCH v2 0/3] Update ROCKCHIP DSI driver that uses dw-mipi-dsi bridge
-Date: Tue, 28 Nov 2017 09:55:22 +0800
-Message-ID: <1511834125-7756-1-git-send-email-nickey.yang@rock-chips.com>
+Subject: [PATCH v2 1/3] dt-bindings: display: rockchip: update DSI controller
+Date: Tue, 28 Nov 2017 09:55:23 +0800
+Message-ID: <1511834125-7756-2-git-send-email-nickey.yang@rock-chips.com>
+References: <1511834125-7756-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=y
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1511834125-7756-1-git-send-email-nickey.yang@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: mark.yao@rock-chips.com, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, briannorris@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com, nickey.yang@rock-chips.com
+Cc: hl@rock-chips.com, briannorris@chromium.org, hoegsberg@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, mka@chromium.org, zyw@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-We now have a generic dw-mipi-dsi bridge driver.So we send
-this patchs to moving rockchip dw-mipi-dsi driver to that
-in order to add new features(dual mipi support).
-Update ROCKCHIP DSI controller driver that uses the Synopsys
-DesignWare MIPI DSI host controller bridge.
-
-ChangeLog:
-v2:
-   add err_pllref、remove unnecessary encoder.enable & disable
-   correct spelling mistakes
-
-
-Nickey Yang (3):
-  dt-bindings: display: rockchip: update DSI controller
-  drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver
-  arm64: dts: rockchip: update mipi node for RK3399
-
- .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   23 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |    8 +-
- drivers/gpu/drm/rockchip/Kconfig                   |    2 +-
- drivers/gpu/drm/rockchip/Makefile                  |    2 +-
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 1349 --------------------
- drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c    |  756 +++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |    2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |    2 +-
- 8 files changed, 784 insertions(+), 1360 deletions(-)
- delete mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi.c
- create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c
-
--- 
-1.9.1
+VGhpcyBwYXRjaCB1cGRhdGUgZG9jdW1lbnRhdGlvbiBvZiBkZXZpY2UgdHJlZSBiaW5kaW5ncyBm
+b3IgdGhlIHJvY2tjaGlwCkRTSSBjb250cm9sbGVyIGJhc2VkIG9uIHRoZSBTeW5vcHN5cyBEZXNp
+Z25XYXJlIE1JUEkgRFNJIGhvc3QgY29udHJvbGxlci4KClNpZ25lZC1vZmYtYnk6IE5pY2tleSBZ
+YW5nIDxuaWNrZXkueWFuZ0Byb2NrLWNoaXBzLmNvbT4KLS0tCiAuLi4vZGlzcGxheS9yb2NrY2hp
+cC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQgICAgICB8IDIzICsrKysrKysrKysrKysrKysrKy0t
+LS0KIDEgZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQoKZGlm
+ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tj
+aGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dAppbmRleCA2
+YmI1OWFiLi4zMzY5MDlkIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQKKysrIGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9k
+c2lfcm9ja2NoaXAudHh0CkBAIC0xNCw2ICsxNCw4IEBAIFJlcXVpcmVkIHByb3BlcnRpZXM6CiAt
+IHJvY2tjaGlwLGdyZjogdGhpcyBzb2Mgc2hvdWxkIHNldCBHUkYgcmVncyB0byBtdXggdm9wbC92
+b3BiLgogLSBwb3J0czogY29udGFpbiBhIHBvcnQgbm9kZSB3aXRoIGVuZHBvaW50IGRlZmluaXRp
+b25zIGFzIGRlZmluZWQgaW4gWzJdLgogICBGb3Igdm9wYixzZXQgdGhlIHJlZyA9IDwwPiBhbmQg
+c2V0IHRoZSByZWcgPSA8MT4gZm9yIHZvcGwuCistIHZpZGVvIHBvcnQgMCBmb3IgdGhlIFZPUCBp
+bnB1dCwgdGhlIHJlbW90ZSBlbmRwb2ludCBtYXliZSB2b3BiIG9yIHZvcGwKKy0gdmlkZW8gcG9y
+dCAxIGZvciBlaXRoZXIgYSBwYW5lbCBvciBzdWJzZXF1ZW50IGVuY29kZXIKIAogT3B0aW9uYWwg
+cHJvcGVydGllczoKIC0gcG93ZXItZG9tYWluczogYSBwaGFuZGxlIHRvIG1pcGkgZHNpIHBvd2Vy
+IGRvbWFpbiBub2RlLgpAQCAtNDAsMTEgKzQyLDEwIEBAIEV4YW1wbGU6CiAJCXBvcnRzIHsKIAkJ
+CSNhZGRyZXNzLWNlbGxzID0gPDE+OwogCQkJI3NpemUtY2VsbHMgPSA8MD47Ci0JCQlyZWcgPSA8
+MT47CiAKLQkJCW1pcGlfaW46IHBvcnQgewotCQkJCSNhZGRyZXNzLWNlbGxzID0gPDE+OwotCQkJ
+CSNzaXplLWNlbGxzID0gPDA+OworCQkJbWlwaV9pbjogcG9ydEAwIHsKKwkJCQlyZWcgPSA8MD47
+CisKIAkJCQltaXBpX2luX3ZvcGI6IGVuZHBvaW50QDAgewogCQkJCQlyZWcgPSA8MD47CiAJCQkJ
+CXJlbW90ZS1lbmRwb2ludCA9IDwmdm9wYl9vdXRfbWlwaT47CkBAIC01NCw2ICs1NSwxNCBAQCBF
+eGFtcGxlOgogCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JnZvcGxfb3V0X21pcGk+OwogCQkJCX07
+CiAJCQl9OworCisJCQltaXBpX291dDogcG9ydEAxIHsKKwkJCQlyZWcgPSA8MT47CisKKwkJCQlt
+aXBpX291dF9wYW5lbDogZW5kcG9pbnQgeworCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JnBhbmVs
+X2luX21pcGk+OworCQkJCX07CisJCQl9OwogCQl9OwogCiAJCXBhbmVsIHsKQEAgLTY0LDUgKzcz
+LDExIEBAIEV4YW1wbGU6CiAJCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCQkJcGluY3Ry
+bC0wID0gPCZsY2RfZW4+OwogCQkJYmFja2xpZ2h0ID0gPCZiYWNrbGlnaHQ+OworCisJCQlwb3J0
+IHsKKwkJCQlwYW5lbF9pbl9taXBpOiBlbmRwb2ludCB7CisJCQkJCXJlbW90ZS1lbmRwb2ludCA9
+IDwmbWlwaV9vdXRfcGFuZWw+OworCQkJCX07CisJCQl9OwogCQl9OwogCX07Ci0tIAoxLjkuMQoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
