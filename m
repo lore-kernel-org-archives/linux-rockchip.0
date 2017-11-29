@@ -1,172 +1,131 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v3 4/5] drm/rockchip: Add ROCKCHIP DW MIPI DSI controller
- driver
-Date: Tue, 28 Nov 2017 21:02:27 -0500
-Message-ID: <20171129020227.ydqu7vxqw6mqond3@art_vandelay>
+Subject: Re: [PATCH v3 2/5] drm/stm: dsi: Adjust dw_mipi_dsi_probe and remove
+Date: Tue, 28 Nov 2017 21:10:17 -0500
+Message-ID: <20171129021017.76wbflr4w5dqhxsl@art_vandelay>
 References: <1511868006-27130-1-git-send-email-nickey.yang@rock-chips.com>
- <1511868006-27130-5-git-send-email-nickey.yang@rock-chips.com>
- <20171128204843.GB58379@google.com>
- <20171128225540.GA23117@google.com>
+ <1511868006-27130-3-git-send-email-nickey.yang@rock-chips.com>
+ <20171128184129.GB116479@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20171128225540.GA23117@google.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171128184129.GB116479@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
-Cc: mark.rutland@arm.com, airlied@linux.ie, hoegsberg@gmail.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, dri-devel@lists.freedesktop.org, zyw@rock-chips.com, xbl@rock-chips.com, hl@rock-chips.com
+Cc: Nickey Yang <nickey.yang@rock-chips.com>, robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, seanpaul@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBOb3YgMjgsIDIwMTcgYXQgMDI6NTU6NDFQTSAtMDgwMCwgQnJpYW4gTm9ycmlzIHdy
-b3RlOgo+IEhpIE5pY2tleSwKPiAKPiBPbiBUdWUsIE5vdiAyOCwgMjAxNyBhdCAxMjo0ODo0M1BN
-IC0wODAwLCBNYXR0aGlhcyBLYWVobGNrZSB3cm90ZToKPiA+IEVsIFR1ZSwgTm92IDI4LCAyMDE3
-IGF0IDA3OjIwOjA1UE0gKzA4MDAgTmlja2V5IFlhbmcgaGEgZGl0Ogo+ID4gCj4gPiA+IEFkZCB0
-aGUgUk9DS0NISVAgRFNJIGNvbnRyb2xsZXIgZHJpdmVyIHRoYXQgdXNlcyB0aGUgU3lub3BzeXMg
-RGVzaWduV2FyZQo+ID4gPiBNSVBJIERTSSBob3N0IGNvbnRyb2xsZXIgYnJpZGdlLgo+ID4gPiAK
-PiA+ID4gdjI6Cj4gPiA+ICAgIGFkZCBlcnJfcGxscmVmLCByZW1vdmUgdW5uZWNlc3NhcnkgZW5j
-b2Rlci5lbmFibGUgJiBkaXNhYmxlCj4gPiA+ICAgIGNvcnJlY3Qgc3BlbGxpbmcgbWlzdGFrZXMK
-PiA+ID4gdjM6Cj4gPiA+ICAgIGNhbGwgZHdfbWlwaV9kc2lfdW5iaW5kKCkgaW4gZHdfbWlwaV9k
-c2lfcm9ja2NoaXBfdW5iaW5kKCkKPiA+ID4gICAgZml4IHR5cG8sIHVzZSBvZl9kZXZpY2VfZ2V0
-X21hdGNoX2RhdGEoKSwKPiA+ID4gICAgY2hhbmdlIHNvbWUg4oCYYmluZCgp4oCZIGxvZ2ljIGlu
-dG8gJ3Byb2JlKCknCj4gPiA+ICAgIGFkZCAnZGV2X3NldF9kcnZkYXRhKCknCj4gCj4gSSBiZWxp
-ZXZlIHRoZSBjaGFuZ2Vsb2cgbm9ybWFsbHkgZ29lcyBiZWxvdyB0aGUgIi0tLSIsIHNvIGl0IGdl
-dHMKPiBkcm9wcGVkIHdoZW4gYSBtYWludGFpbmVyIGFwcGxpZXMgYSBmaW5hbCB2ZXJzaW9uLgo+
-IAoKV2UncmUga2luZCBvZiBkaWZmZXJlbnQgaW4gZHJtIGxhbmQuIFNvbWUgcHJlZmVyIHRvIGtl
-ZXAgdGhlIGNoYW5nZWxvZyBhYm92ZSB0aGUKZm9sZCBhbmQgYXR0cmlidXRlIHRoZSBjaGFuZ2Vz
-IHRvIHJldmlld2VycyBzbyB0aGV5IGdldCByZWNvZ25pdGlvbiBmb3IgdGhlaXIKZWZmb3J0cy4K
-CkF0IGFueSByYXRlLCBJJ20ganVzdCBoYXBweSB0byBzZWUgY2hhbmdlbG9ncy4KCj4gPiA+IAo+
-ID4gPiBTaWduZWQtb2ZmLWJ5OiBOaWNrZXkgWWFuZyA8bmlja2V5LnlhbmdAcm9jay1jaGlwcy5j
-b20+Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgICAg
-ICAgICAgICAgICAgfCAgICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFr
-ZWZpbGUgICAgICAgICAgICAgICB8ICAgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9kdy1taXBpLWRzaS5jICAgICAgICAgIHwgMTM0OSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpX3JvY2tjaGlwLmMg
-fCAgNzY0ICsrKysrKysrKysrKysKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fZHJ2LmMgICAgIHwgICAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9kcnYuaCAgICAgfCAgICAyICstCj4gPiA+ICA2IGZpbGVzIGNoYW5n
-ZWQsIDc2OCBpbnNlcnRpb25zKCspLCAxMzUzIGRlbGV0aW9ucygtKQo+ID4gPiAgZGVsZXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gPiA+ICBj
-cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpX3Jv
-Y2tjaGlwLmMKPiA+ID4gCj4gCj4gLi4uCj4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
-dy1taXBpLWRzaS5jCj4gPiA+IGRlbGV0ZWQgZmlsZSBtb2RlIDEwMDY0NAo+ID4gPiBpbmRleCBi
-MTU3NTViLi4wMDAwMDAwCj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1t
-aXBpLWRzaS5jCj4gPiA+ICsrKyAvZGV2L251bGwKPiA+ID4gQEAgLTEsMTM0OSArMCwwIEBACj4g
-Cj4gLi4uCj4gCj4gPiA+IC1zdGF0aWMgaW50IGR3X21pcGlfZHNpX2hvc3RfYXR0YWNoKHN0cnVj
-dCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ID4gPiAtCQkJCSAgIHN0cnVjdCBtaXBpX2RzaV9kZXZp
-Y2UgKmRldmljZSkKPiA+ID4gLXsKPiA+ID4gLQlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSA9IGhv
-c3RfdG9fZHNpKGhvc3QpOwo+ID4gPiAtCj4gPiA+IC0JaWYgKGRldmljZS0+bGFuZXMgPiBkc2kt
-PnBkYXRhLT5tYXhfZGF0YV9sYW5lcykgewo+ID4gPiAtCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2
-LAo+ID4gPiAtCQkJICAgICAgInRoZSBudW1iZXIgb2YgZGF0YSBsYW5lcygldSkgaXMgdG9vIG1h
-bnlcbiIsCj4gPiA+IC0JCQkgICAgICBkZXZpY2UtPmxhbmVzKTsKPiA+ID4gLQkJcmV0dXJuIC1F
-SU5WQUw7Cj4gPiA+IC0JfQo+ID4gPiAtCj4gPiA+IC0JZHNpLT5sYW5lcyA9IGRldmljZS0+bGFu
-ZXM7Cj4gPiA+IC0JZHNpLT5jaGFubmVsID0gZGV2aWNlLT5jaGFubmVsOwo+ID4gPiAtCWRzaS0+
-Zm9ybWF0ID0gZGV2aWNlLT5mb3JtYXQ7Cj4gPiA+IC0JZHNpLT5tb2RlX2ZsYWdzID0gZGV2aWNl
-LT5tb2RlX2ZsYWdzOwo+ID4gPiAtCWRzaS0+cGFuZWwgPSBvZl9kcm1fZmluZF9wYW5lbChkZXZp
-Y2UtPmRldi5vZl9ub2RlKTsKPiAKPiBJSVVDLCB5b3UncmUgaW1wbGljaXRseSBtYWtpbmcgYSBk
-ZXZpY2UgdHJlZSBiaW5kaW5nIGNoYW5nZSwgYmVjYXVzZSB0aGUKPiBvcmlnaW5hbCBkcml2ZXIg
-dXNlcyBqdXN0IG9mX2RybV9maW5kX3BhbmVsKCksIGFzIGFib3ZlLCBidXQgdGhlIGNvbW1vbgo+
-IGJyaWRnZSBkcml2ZXIgaXMgdXNpbmcgZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdlKCksIHdo
-aWNoIHB1dHMgYQo+IGxpdHRsZSBtb3JlIHN0cmluZ2VudCByZXF1aXJlbWVudHMgb24gdGhlIGRl
-dmljZSB0cmVlLgo+IAo+IEkgZG9uJ3QgdGhpbmsgdGhhdCdzIG5lY2Vzc2FyaWx5IGEgYmFkIHRo
-aW5nLCBhbmQgdGhlcmUgaXNuJ3QgbXVjaCBpbgo+IHRoZSB3YXkgb2YgInJlYWwiIGRldmljZSB0
-cmVlcyB0aGF0IGFjdHVhbGx5IHVzZWQgdGhlIGV4aXN0aW5nIGRyaXZlcgo+IGFuZCBiaW5kaW5n
-IChwcm9iYWJseSBtb3N0bHkgdGVzdCBkZXZpY2VzIGFuZCBwcm90b3R5cGVzKSwgc28gbWF5YmUg
-aXQncwo+IGJldHRlciB0byBqdXN0IG1ha2UgdGhlIHN3aXRjaCBhbmQgbm90IHdvcnJ5IGFib3V0
-IGNvbXBhdGliaWxpdHkuIEJ1dCBJCj4ganVzdCB3YW50ZWQgdG8gcG9pbnQgdGhhdCBvdXQsIGlu
-IGNhc2UgYW55b25lIGVsc2Ugd2FzIGludGVyZXN0ZWQgb3IKPiBjb25jZXJuZWQuCj4gCj4gPiA+
-IC0JaWYgKGRzaS0+cGFuZWwpCj4gPiA+IC0JCXJldHVybiBkcm1fcGFuZWxfYXR0YWNoKGRzaS0+
-cGFuZWwsICZkc2ktPmNvbm5lY3Rvcik7Cj4gPiA+IC0KPiA+ID4gLQlyZXR1cm4gLUVJTlZBTDsK
-PiA+ID4gLX0KPiA+ID4gLQo+IAo+IC4uLgo+IAo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpX3JvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHctbWlwaS1kc2lfcm9ja2NoaXAuYwo+ID4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0
-NAo+ID4gPiBpbmRleCAwMDAwMDAwLi5jNjgyZWQyCj4gPiA+IC0tLSAvZGV2L251bGwKPiA+ID4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpX3JvY2tjaGlwLmMKPiA+
-ID4gQEAgLTAsMCArMSw3NjQgQEAKPiAKPiAuLi4KPiAKPiA+ID4gK3N0YXRpYyBpbnQgZHdfbWlw
-aV9kc2lfcGh5X2luaXQodm9pZCAqcHJpdl9kYXRhKQo+ID4gPiArewo+ID4gPiArCXN0cnVjdCBk
-d19taXBpX2RzaV9yb2NrY2hpcCAqZHNpID0gcHJpdl9kYXRhOwo+ID4gPiArCWludCByZXQsIGks
-IHZjbzsKPiA+ID4gKwo+ID4gPiArCXZjbyA9IChkc2ktPmxhbmVfbWJwcyA8IDIwMCkgPyAwIDog
-KGRzaS0+bGFuZV9tYnBzICsgMTAwKSAvIDIwMDsKPiA+IAo+ID4gUGxlYXNlIGFkZCBhIGNsYXJp
-ZnlpbmcgY29tbWVudCBhcyByZXF1ZXN0ZWQgYnkgU2VhbiBvbgo+ID4gaHR0cHM6Ly9jaHJvbWl1
-bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8jL2MvY2hyb21pdW1vcy90aGlyZF9wYXJ0eS9rZXJu
-ZWwvKy83ODAxMjAvCj4gCj4gRldJVywgdGhhdCBjb2RlIHdhcyBhbHJlYWR5IGluIHRoZSBleGlz
-dGluZyBkcml2ZXIuIFdvdWxkIGJlIG5pY2UgdG8KPiBpbXByb3ZlIGFueXdheSwgb2YgY291cnNl
-Lgo+IAoKWWVhaCwgbm90IGEgc2hvd3N0b3BwZXIsIGJ1dCBpdCdkIGJlIG5pY2UgdG8ga25vdyB3
-aGF0J3MgZ29pbmcgb24gaGVyZS4KCj4gLi4uCj4gCj4gPiA+ICtzdGF0aWMgaW50Cj4gPiA+ICtk
-d19taXBpX2RzaV9nZXRfbGFuZV9tYnBzKHZvaWQgKnByaXZfZGF0YSwgc3RydWN0IGRybV9kaXNw
-bGF5X21vZGUgKm1vZGUsCj4gPiA+ICsJCQkgIHVuc2lnbmVkIGxvbmcgbW9kZV9mbGFncywgdTMy
-IGxhbmVzLCB1MzIgZm9ybWF0LAo+ID4gPiArCQkJICB1bnNpZ25lZCBpbnQgKmxhbmVfbWJwcykK
-PiA+ID4gK3sKPiA+ID4gKwlzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgKmRzaSA9IHByaXZf
-ZGF0YTsKPiA+ID4gKwlpbnQgYnBwOwo+ID4gPiArCXVuc2lnbmVkIGxvbmcgbXBjbGssIHRtcDsK
-PiA+ID4gKwl1bnNpZ25lZCBpbnQgdGFyZ2V0X21icHMgPSAxMDAwOwo+ID4gPiArCXVuc2lnbmVk
-IGludCBtYXhfbWJwcyA9IGRwcGFfbWFwW0FSUkFZX1NJWkUoZHBwYV9tYXApIC0gMV0ubWF4X21i
-cHM7Cj4gPiA+ICsJdW5zaWduZWQgbG9uZyBiZXN0X2ZyZXEgPSAwOwo+ID4gPiArCXVuc2lnbmVk
-IGxvbmcgZnZjb19taW4sIGZ2Y29fbWF4LCBmaW4sIGZvdXQ7Cj4gPiA+ICsJdW5zaWduZWQgaW50
-IG1pbl9wcmVkaXYsIG1heF9wcmVkaXY7Cj4gPiA+ICsJdW5zaWduZWQgaW50IF9wcmVkaXYsIHVu
-aW5pdGlhbGl6ZWRfdmFyKGJlc3RfcHJlZGl2KTsKPiA+ID4gKwl1bnNpZ25lZCBsb25nIF9mYmRp
-diwgdW5pbml0aWFsaXplZF92YXIoYmVzdF9mYmRpdik7Cj4gPiA+ICsJdW5zaWduZWQgbG9uZyBt
-aW5fZGVsdGEgPSBVTE9OR19NQVg7Cj4gPiA+ICsKPiA+ID4gKwlkc2ktPmZvcm1hdCA9IGZvcm1h
-dDsKPiA+ID4gKwlicHAgPSBtaXBpX2RzaV9waXhlbF9mb3JtYXRfdG9fYnBwKGRzaS0+Zm9ybWF0
-KTsKPiA+ID4gKwlpZiAoYnBwIDwgMCkgewo+ID4gPiArCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2
-LAo+ID4gPiArCQkJICAgICAgImZhaWxlZCB0byBnZXQgYnBwIGZvciBwaXhlbCBmb3JtYXQgJWRc
-biIsCj4gPiA+ICsJCQkgICAgICBkc2ktPmZvcm1hdCk7Cj4gPiA+ICsJCXJldHVybiBicHA7Cj4g
-PiA+ICsJfQo+ID4gPiArCj4gPiA+ICsJbXBjbGsgPSBESVZfUk9VTkRfVVAobW9kZS0+Y2xvY2ss
-IE1TRUNfUEVSX1NFQyk7Cj4gPiA+ICsJaWYgKG1wY2xrKSB7Cj4gPiA+ICsJCS8qIHRha2UgMSAv
-IDAuOCwgc2luY2UgbWJwcyBtdXN0IGJpZyB0aGFuIGJhbmR3aWR0aCBvZiBSR0IgKi8KPiA+ID4g
-KwkJdG1wID0gbXBjbGsgKiAoYnBwIC8gbGFuZXMpICogMTAgLyA4Owo+ID4gPiArCQlpZiAodG1w
-IDwgbWF4X21icHMpCj4gPiA+ICsJCQl0YXJnZXRfbWJwcyA9IHRtcDsKPiA+ID4gKwkJZWxzZQo+
-ID4gPiArCQkJRFJNX0RFVl9FUlJPUihkc2ktPmRldiwKPiA+ID4gKwkJCQkgICAgICAiRFBIWSBj
-bG9jayBmcmVxdWVuY3kgaXMgb3V0IG9mIHJhbmdlXG4iKTsKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+
-ID4gKwlmaW4gPSBjbGtfZ2V0X3JhdGUoZHNpLT5wbGxyZWZfY2xrKTsKPiA+ID4gKwlmb3V0ID0g
-dGFyZ2V0X21icHMgKiBVU0VDX1BFUl9TRUM7Cj4gPiA+ICsKPiA+ID4gKwkvKiBjb25zdHJhaW50
-OiA1TWh6IDw9IEZyZWYgLyBOIDw9IDQwTUh6ICovCj4gPiA+ICsJbWluX3ByZWRpdiA9IERJVl9S
-T1VORF9VUChmaW4sIDQwICogVVNFQ19QRVJfU0VDKTsKPiA+ID4gKwltYXhfcHJlZGl2ID0gZmlu
-IC8gKDUgKiBVU0VDX1BFUl9TRUMpOwo+ID4gPiArCj4gPiA+ICsJLyogY29uc3RyYWludDogODBN
-SHogPD0gRnZjbyA8PSAxNTAwTWh6ICovCj4gPiA+ICsJZnZjb19taW4gPSA4MCAqIFVTRUNfUEVS
-X1NFQzsKPiA+ID4gKwlmdmNvX21heCA9IDE1MDAgKiBVU0VDX1BFUl9TRUM7Cj4gPiA+ICsKPiA+
-ID4gKwlmb3IgKF9wcmVkaXYgPSBtaW5fcHJlZGl2OyBfcHJlZGl2IDw9IG1heF9wcmVkaXY7IF9w
-cmVkaXYrKykgewo+ID4gPiArCQl1NjQgdG1wOwo+ID4gPiArCQl1MzIgZGVsdGE7Cj4gPiA+ICsJ
-CS8qIEZ2Y28gPSBGcmVmICogTSAvIE4gKi8KPiA+ID4gKwkJdG1wID0gKHU2NClmb3V0ICogX3By
-ZWRpdjsKPiA+ID4gKwkJZG9fZGl2KHRtcCwgZmluKTsKPiA+ID4gKwkJX2ZiZGl2ID0gdG1wOwo+
-ID4gPiArCQkvKgo+ID4gPiArCQkgKiBEdWUgdG8gdGhlIHVzZSBvZiBhICJieSAyIHByZS1zY2Fs
-ZXIsIiB0aGUgcmFuZ2Ugb2YgdGhlCj4gPiA+ICsJCSAqIGZlZWRiYWNrIG11bHRpcGxpY2F0aW9u
-IHZhbHVlIE0gaXMgbGltaXRlZCB0byBldmVuIGRpdmlzaW9uCj4gPiA+ICsJCSAqIG51bWJlcnMs
-IGFuZCBtIG11c3QgYmUgZ3JlYXRlciB0aGFuIDYsIGxlc3MgdGhhbiA1MTIuCj4gPiA+ICsJCSAq
-Lwo+ID4gCj4gPiBJdCBzZWVtcyB0aGlzIHNob3VsZCBiZSAibm90IGJpZ2dlciB0aGFuIDUxMiIg
-b3Igc29tZXRoaW5nIHNpbWlsYXIuCj4gPiAKPiA+ID4gKwkJaWYgKF9mYmRpdiA8IDYgfHwgX2Zi
-ZGl2ID4gNTEyKQo+ID4gPiArCQkJY29udGludWU7Cj4gPiA+ICsKPiA+ID4gKwkJX2ZiZGl2ICs9
-IF9mYmRpdiAlIDI7Cj4gPiA+ICsKPiA+ID4gKwkJdG1wID0gKHU2NClfZmJkaXYgKiBmaW47Cj4g
-PiA+ICsJCWRvX2Rpdih0bXAsIF9wcmVkaXYpOwo+ID4gCj4gPiBTaG91bGQgd2UgYmFpbCBvdXQg
-ZWFybHkgaWYgbWluX3ByZWRpdiA9PSAwIGR1ZSB0byBzb21lIGJvZ3VzCj4gPiBjb25maWd1cmF0
-aW9uIG9mIHBsbHJlZl9jbGs/Cj4gPiAKPiA+ID4gKwkJaWYgKHRtcCA8IGZ2Y29fbWluIHx8IHRt
-cCA+IGZ2Y29fbWF4KQo+ID4gPiArCQkJY29udGludWU7Cj4gPiA+ICsKPiA+ID4gKwkJZGVsdGEg
-PSBhYnMoZm91dCAtIHRtcCk7Cj4gPiA+ICsJCWlmIChkZWx0YSA8IG1pbl9kZWx0YSkgewo+ID4g
-PiArCQkJYmVzdF9wcmVkaXYgPSBfcHJlZGl2Owo+ID4gPiArCQkJYmVzdF9mYmRpdiA9IF9mYmRp
-djsKPiA+ID4gKwkJCW1pbl9kZWx0YSA9IGRlbHRhOwo+ID4gPiArCQkJYmVzdF9mcmVxID0gdG1w
-Owo+ID4gPiArCQl9Cj4gPiA+ICsJfQo+ID4gPiArCj4gPiA+ICsJaWYgKGJlc3RfZnJlcSkgewo+
-ID4gPiArCQlkc2ktPmxhbmVfbWJwcyA9IERJVl9ST1VORF9VUChiZXN0X2ZyZXEsIFVTRUNfUEVS
-X1NFQyk7Cj4gPiA+ICsJCSpsYW5lX21icHMgPSBkc2ktPmxhbmVfbWJwczsKPiA+ID4gKwkJZHNp
-LT5pbnB1dF9kaXYgPSBiZXN0X3ByZWRpdjsKPiA+ID4gKwkJZHNpLT5mZWVkYmFja19kaXYgPSBi
-ZXN0X2ZiZGl2Owo+ID4gPiArCX0gZWxzZSB7Cj4gPiA+ICsJCURSTV9ERVZfRVJST1IoZHNpLT5k
-ZXYsICJDYW4gbm90IGZpbmQgYmVzdF9mcmVxIGZvciBEUEhZXG4iKTsKPiA+IAo+ID4gcmV0dXJu
-IC0xOwo+IAo+IE9yIGEgcmVhbCBlcnJvciBjb2RlIHdvdWxkIGJlIG5pY2VyLiAtRUlOVkFMPwoK
-KzEKPiAKPiA+ID4gKwl9Cj4gPiA+ICsKPiA+ID4gKwlyZXR1cm4gMDsKPiA+ID4gK30KPiA+ID4g
-Kwo+IAo+IC4uLgo+IAo+IE90aGVyIHRoYW4gdGhlc2UgcmVsYXRpdmVseSBzbWFsbCB0aGluZ3Ms
-IHRoaXMgaXMgbG9va2luZyBwcmV0dHkgZ29vZCB0bwo+IG15IChub3Qtd2VsbC12ZXJzZWQtaW4t
-ZHJtKSBleWU6Cj4gCj4gUmV2aWV3ZWQtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3JyaXNAY2hy
-b21pdW0ub3JnPgoKSSBjZXJ0YWlubHkgdGhpbmsgdGhpcyBtb3ZlcyB0aGUgbmVlZGxlIGluIGEg
-cG9zaXRpdmUgZGlyZWN0aW9uLiBTbyB3aXRoIHRoZQpuaXRzIGFkZHJlc3NlZDoKClJldmlld2Vk
-LWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KCi0tIApTZWFuIFBhdWwsIFNv
-ZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Nov 28, 2017 at 10:41:29AM -0800, Brian Norris wrote:
+> Hi Nickey,
+> 
+> On Tue, Nov 28, 2017 at 07:20:03PM +0800, Nickey Yang wrote:
+> > Bridge drivers/helpers shouldn't be clobbering the drvdata, since a
+> > parent driver might need to own this. Instead, let's return our
+> 
+> Other reviews have suggested this might be described as "SoC glue
+> driver", not "parent driver". Also, the subject probably should include
+> either "mipi" or "dw-mipi-dsi".
+> 
+> > 'dw_mipi_dsi' object and have callers pass that back to us for removal.
+> > So adjust it.
+> > 
+> > Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
+> > ---
+> >  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c | 8 +++++---
+> >  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> So, you've split my patch in 2 and called it your own (see patch 1,
+> which still has the 'From' (i.e., author) line as "Nickey Yang", not
+> "Brian Norris"). You need to keep the author accurate. (It's good to add
+> an additional 'Signed-off-by' of your own, but keep the author.)
+> 
+
+Also cc everyone who commented on the previous version of the patch so they
+can review the new version. Laurent had questions about the patch, and was
+not cc'd here.
+
+Sean
+
+> When developing in your local git tree, make sure that the 'Author' line
+> is accurate in 'git log'. Then 'git format-patch + git send-email' will
+> format things correctly, such that your email headers will say "From:
+> Nickey Yang", but then git-send-email will make sure there's an
+> additional line within the body of the email to attribute the author.
+> 
+> For example, see how this patch was sent by Doug in a later series, but has my
+> authorship:
+> 
+> https://patchwork.kernel.org/patch/9188419/
+> 
+> The email header says:
+> 
+> From: Douglas Anderson <dianders@chromium.org>
+> 
+> but the body of the mail includes:
+> 
+> From: Brian Norris <briannorris@chromium.org>
+> 
+> This ends up correctly-attributed in the mainline git tree:
+> 
+> commit 36b5d460261f16563f9196c49c936b3e17d237e3
+> Author: Brian Norris <briannorris@chromium.org>
+> Date:   Mon Jun 20 10:56:42 2016 -0700
+> 
+>     phy: rockchip-emmc: configure default output tap delay
+> ...
+>     Signed-off-by: Brian Norris <briannorris@chromium.org>
+>     Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> 
+> 
+> But more importantly: you can't split my patch in 2, because it makes
+> the series non-bisectable. As you split it, patch 1 is making an API
+> change, but it doesn't update the drivers that use that API. So the STM
+> DSI driver doesn't compile if you apply only patch 1. That's discouraged
+> within the Linux kernel.
+> 
+> So, let's make sure to keep this patch in 1 piece.
+> 
+> Brian
+> 
+> > 
+> > diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> > index e5b6310..80f9950 100644
+> > --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> > +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> > @@ -66,6 +66,7 @@ enum dsi_color {
+> >  struct dw_mipi_dsi_stm {
+> >  	void __iomem *base;
+> >  	struct clk *pllref_clk;
+> > +	struct dw_mipi_dsi *dmd;
+> >  };
+> >  
+> >  static inline void dsi_write(struct dw_mipi_dsi_stm *dsi, u32 reg, u32 val)
+> > @@ -318,10 +319,11 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
+> >  	dw_mipi_dsi_stm_plat_data.base = dsi->base;
+> >  	dw_mipi_dsi_stm_plat_data.priv_data = dsi;
+> >  
+> > -	ret = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
+> > -	if (ret) {
+> > +	dsi->dmd = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
+> > +	if (IS_ERR(dsi->dmd)) {
+> >  		DRM_ERROR("Failed to initialize mipi dsi host\n");
+> >  		clk_disable_unprepare(dsi->pllref_clk);
+> > +		return PTR_ERR(dsi->dmd);
+> >  	}
+> >  
+> >  	return ret;
+> > @@ -332,7 +334,7 @@ static int dw_mipi_dsi_stm_remove(struct platform_device *pdev)
+> >  	struct dw_mipi_dsi_stm *dsi = dw_mipi_dsi_stm_plat_data.priv_data;
+> >  
+> >  	clk_disable_unprepare(dsi->pllref_clk);
+> > -	dw_mipi_dsi_remove(pdev);
+> > +	dw_mipi_dsi_remove(dsi->dmd);
+> >  
+> >  	return 0;
+> >  }
+> > -- 
+> > 1.9.1
+> > 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
