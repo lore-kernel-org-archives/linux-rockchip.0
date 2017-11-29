@@ -1,47 +1,67 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH v2] MAINTAINERS: change maintainer for Rockchip drm drivers
-Date: Wed, 29 Nov 2017 09:24:42 -0500
-Message-ID: <20171129142459.32351-1-seanpaul@chromium.org>
+Subject: Re: [PATCH v2] MAINTAINERS: change maintainer for Rockchip drm
+ drivers
+Date: Wed, 29 Nov 2017 09:27:10 -0500
+Message-ID: <20171129142709.c6aj6tgmkhjiaeec@art_vandelay>
 References: <19897082.KH862Wxx3L@diego>
+ <20171129142459.32351-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <19897082.KH862Wxx3L@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20171129142459.32351-1-seanpaul@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org
-Cc: David Airlie <airlied@linux.ie>, Doug Anderson <dianders@chromium.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Mark Yao <mark.yao@rock-chips.com>
+Cc: Doug Anderson <dianders@chromium.org>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Mark Yao <mark.yao@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKRm9yIHBlcnNvbmFsIHJl
-YXNvbnMsIE1hcmsgWWFvIHdpbGwgbGVhdmUgcm9ja2NoaXAsCmNhbiBub3QgY29udGludWUgbWFp
-bnRhaW4gZHJtL3JvY2tjaGlwLCBTYW5keSBIdWFuZwphbmQgSGVpa28gU3TDvGJuZXIgd2lsbCB0
-YWtlIG92ZXIgZHJtL3JvY2tjaGlwLgoKQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5j
-b20+CkNjOiBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPgoKU2lnbmVkLW9mZi1ieTog
-TWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgpBY2tlZC1ieTogSGVpa28gU3R1ZWJu
-ZXIgPGhlaWtvQHNudGVjaC5kZT4KW3NlYW5wYXVsIGFkZGVkIEhlaWtvXQpTaWduZWQtb2ZmLWJ5
-OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KTGluazogaHR0cHM6Ly9wYXRjaHdv
-cmsuZnJlZWRlc2t0b3Aub3JnL3BhdGNoL21zZ2lkLzE1MTA1NjgxMzEtMjg4MzgtMS1naXQtc2Vu
-ZC1lbWFpbC1tYXJrLnlhb0Byb2NrLWNoaXBzLmNvbQotLS0KCkNoYW5nZWQgaW4gdjI6Ci0gQWRk
-ZWQgSGVpa28gYXMgY28tbWFpbnRhaW5lcgoKCiBNQUlOVEFJTkVSUyB8IDMgKystCiAxIGZpbGUg
-Y2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvTUFJ
-TlRBSU5FUlMgYi9NQUlOVEFJTkVSUwppbmRleCBkNGI2M2M3ZmZiMGUuLjRmMDc1NmE0ZmYxYSAx
-MDA2NDQKLS0tIGEvTUFJTlRBSU5FUlMKKysrIGIvTUFJTlRBSU5FUlMKQEAgLTQ2MjUsNyArNDYy
-NSw4IEBAIEY6CURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRn
-ZS9yZW5lc2FzLGR3LWhkbWkudHh0CiBGOglEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvZGlzcGxheS9yZW5lc2FzLGR1LnR4dAogCiBEUk0gRFJJVkVSUyBGT1IgUk9DS0NISVAKLU06
-CU1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KK006CVNhbmR5IEh1YW5nIDxoamNA
-cm9jay1jaGlwcy5jb20+CitNOglIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPgogTDoJ
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwogUzoJTWFpbnRhaW5lZAogRjoJZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwLwotLSAKMi4xNS4wLjQxNy5nNDY2YmZmYjNhYy1nb29nCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Wed, Nov 29, 2017 at 09:24:42AM -0500, Sean Paul wrote:
+> From: Mark Yao <mark.yao@rock-chips.com>
+> 
+> For personal reasons, Mark Yao will leave rockchip,
+> can not continue maintain drm/rockchip, Sandy Huang
+> and Heiko Stübner will take over drm/rockchip.
+> 
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: Heiko Stübner <heiko@sntech.de>
+> 
+> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> [seanpaul added Heiko]
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Link: https://patchwork.freedesktop.org/patch/msgid/1510568131-28838-1-git-send-email-mark.yao@rock-chips.com
+
+Applied to drm-misc-next (with the correct Link)
+
+Sean
+
+> ---
+> 
+> Changed in v2:
+> - Added Heiko as co-maintainer
+> 
+> 
+>  MAINTAINERS | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d4b63c7ffb0e..4f0756a4ff1a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -4625,7 +4625,8 @@ F:	Documentation/devicetree/bindings/display/bridge/renesas,dw-hdmi.txt
+>  F:	Documentation/devicetree/bindings/display/renesas,du.txt
+>  
+>  DRM DRIVERS FOR ROCKCHIP
+> -M:	Mark Yao <mark.yao@rock-chips.com>
+> +M:	Sandy Huang <hjc@rock-chips.com>
+> +M:	Heiko Stübner <heiko@sntech.de>
+>  L:	dri-devel@lists.freedesktop.org
+>  S:	Maintained
+>  F:	drivers/gpu/drm/rockchip/
+> -- 
+> 2.15.0.417.g466bffb3ac-goog
+> 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
