@@ -1,131 +1,117 @@
-From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 3/5] pwm-backlight: add support for PWM delays proprieties.
-Date: Fri,  1 Dec 2017 13:06:49 +0100
-Message-ID: <20171201120651.29633-3-enric.balletbo@collabora.com>
-References: <20171201120651.29633-1-enric.balletbo@collabora.com>
+From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v6 01/10] arm64: dts: rockchip: Enable edp disaplay on kevin
+Date: Fri, 1 Dec 2017 13:28:06 +0100
+Message-ID: <CAFqH_52_Wkm5uY35Y+Ngh8+uVP03nDYaMgNq1rn2EDkNuaiXHg@mail.gmail.com>
+References: <20171019034812.13768-1-jeffy.chen@rock-chips.com> <20171019034812.13768-2-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20171201120651.29633-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171019034812.13768-2-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some panels (i.e. N116BGE-L41), in their power sequence specifications,
-request a delay between set the PWM signal and enable the backlight and
-between clear the PWM signal and disable the backlight. Add support for
-the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
-the timings.
+Hi all,
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
-Acked-by: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Acked-by: Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
-Changes since v4:
- - Rebased on top of mainline.
- - Added the acks from Pavel Machek, Daniel thompson and Jingoo Han
-Changes since v3:
- - Use two named members instead of pwm_delay[] (Daniel and Pavel)
- - Use msleep instead of usleep_range. (Pavel)
-Changes since v2:
- - Move the pwm/enable sequence to another patch (Thierry Reding)
-Changes since v1:
- - As suggested by Daniel Thompson
-   - Do not assume power-on delay and power-off delay will be the same
- - Move the check of dt property to the parse dt function.
+2017-10-19 5:48 GMT+02:00 Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
+> Add edp panel and enable related nodes on kevin.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> ---
+>
+> Changes in v6: None
+> Changes in v5: None
+>
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 29 +++++++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi      | 16 +++++++++++++
+>  2 files changed, 45 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> index a3d3cea7dc4f..bc67b19f0af5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> @@ -93,6 +93,18 @@
+>                 pwm-delay-us = <10000>;
+>         };
+>
+> +       edp_panel: edp-panel {
+> +               compatible = "sharp,lq123p1jx31", "simple-panel";
+> +               backlight = <&backlight>;
+> +               power-supply = <&pp3300_disp>;
+> +
+> +               ports {
+> +                       panel_in_edp: endpoint {
+> +                               remote-endpoint = <&edp_out_panel>;
+> +                       };
+> +               };
+> +       };
+> +
+>         thermistor_ppvar_bigcpu: thermistor-ppvar-bigcpu {
+>                 compatible = "murata,ncp15wb473";
+>                 pullup-uv = <1800000>;
+> @@ -264,6 +276,23 @@ ap_i2c_dig: &i2c2 {
+>         };
+>  };
+>
+> +&edp {
+> +       status = "okay";
+> +
+> +       ports {
+> +               edp_out: port@1 {
+> +                       reg = <1>;
+> +                       #address-cells = <1>;
+> +                       #size-cells = <0>;
+> +
+> +                       edp_out_panel: endpoint@0 {
+> +                               reg = <0>;
+> +                               remote-endpoint = <&panel_in_edp>;
+> +                       };
+> +               };
+> +       };
+> +};
+> +
+>  &ppvar_bigcpu_pwm {
+>         regulator-min-microvolt = <798674>;
+>         regulator-max-microvolt = <1302172>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> index 5772c52fbfd3..470105d651c2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> @@ -927,6 +927,22 @@ ap_i2c_audio: &i2c8 {
+>         dr_mode = "host";
+>  };
+>
+> +&vopb {
+> +       status = "okay";
+> +};
+> +
+> +&vopb_mmu {
+> +       status = "okay";
+> +};
+> +
+> +&vopl {
+> +       status = "okay";
+> +};
+> +
+> +&vopl_mmu {
+> +       status = "okay";
+> +};
+> +
+>  #include <arm/cros-ec-keyboard.dtsi>
+>  #include <arm/cros-ec-sbs.dtsi>
+>
+> --
+> 2.11.0
+>
+>
 
- drivers/video/backlight/pwm_bl.c | 19 +++++++++++++++++++
- include/linux/pwm_backlight.h    |  2 ++
- 2 files changed, 21 insertions(+)
+I just tested this patch on top of current mainline (4.15-rc1+) and works so,
 
-diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
-index 698ec68..8e3f124 100644
---- a/drivers/video/backlight/pwm_bl.c
-+++ b/drivers/video/backlight/pwm_bl.c
-@@ -10,6 +10,7 @@
-  * published by the Free Software Foundation.
-  */
- 
-+#include <linux/delay.h>
- #include <linux/gpio/consumer.h>
- #include <linux/gpio.h>
- #include <linux/module.h>
-@@ -35,6 +36,8 @@ struct pwm_bl_data {
- 	struct gpio_desc	*enable_gpio;
- 	unsigned int		scale;
- 	bool			legacy;
-+	unsigned int		post_pwm_on_delay;
-+	unsigned int		pwm_off_delay;
- 	int			(*notify)(struct device *,
- 					  int brightness);
- 	void			(*notify_after)(struct device *,
-@@ -56,6 +59,9 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
- 
- 	pwm_enable(pb->pwm);
- 
-+	if (pb->post_pwm_on_delay)
-+		msleep(pb->post_pwm_on_delay);
-+
- 	if (pb->enable_gpio)
- 		gpiod_set_value_cansleep(pb->enable_gpio, 1);
- 
-@@ -70,6 +76,9 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
- 	if (pb->enable_gpio)
- 		gpiod_set_value_cansleep(pb->enable_gpio, 0);
- 
-+	if (pb->pwm_off_delay)
-+		msleep(pb->pwm_off_delay);
-+
- 	pwm_config(pb->pwm, 0, pb->period);
- 	pwm_disable(pb->pwm);
- 
-@@ -178,6 +187,14 @@ static int pwm_backlight_parse_dt(struct device *dev,
- 		data->max_brightness--;
- 	}
- 
-+	/*
-+	 * These values are optional and set as 0 by default, the out values
-+	 * are modified only if a valid u32 value can be decoded.
-+	 */
-+	of_property_read_u32(node, "post-pwm-on-delay-ms",
-+			     &data->post_pwm_on_delay);
-+	of_property_read_u32(node, "pwm-off-delay-ms", &data->pwm_off_delay);
-+
- 	data->enable_gpio = -EINVAL;
- 	return 0;
- }
-@@ -276,6 +293,8 @@ static int pwm_backlight_probe(struct platform_device *pdev)
- 	pb->exit = data->exit;
- 	pb->dev = &pdev->dev;
- 	pb->enabled = false;
-+	pb->post_pwm_on_delay = data->post_pwm_on_delay;
-+	pb->pwm_off_delay = data->pwm_off_delay;
- 
- 	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
- 						  GPIOD_ASIS);
-diff --git a/include/linux/pwm_backlight.h b/include/linux/pwm_backlight.h
-index e8afbd7..8ea265a 100644
---- a/include/linux/pwm_backlight.h
-+++ b/include/linux/pwm_backlight.h
-@@ -14,6 +14,8 @@ struct platform_pwm_backlight_data {
- 	unsigned int lth_brightness;
- 	unsigned int pwm_period_ns;
- 	unsigned int *levels;
-+	unsigned int post_pwm_on_delay;
-+	unsigned int pwm_off_delay;
- 	/* TODO remove once all users are switched to gpiod_* API */
- 	int enable_gpio;
- 	int (*init)(struct device *dev);
--- 
-2.9.3
+Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
