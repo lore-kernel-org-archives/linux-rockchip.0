@@ -1,45 +1,46 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v4] arm64: dts: rockchip: update mipi cells for RK3399
-Date: Mon, 04 Dec 2017 18:36:29 +0200
-Message-ID: <5503141.MyG7QBLnyH@avalon>
-References: <20171129184755.77187-1-briannorris@chromium.org>
- <13507001.EQOuo8KY2k@avalon> <3618913.yW60MBkMvd@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: fix trailing 0 in rk3328 tsadc
+ interrupts
+Date: Mon,  4 Dec 2017 18:38:50 +0100
+Message-ID: <20171204173850.9976-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <3618913.yW60MBkMvd@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, Doug Anderson <dianders@chromium.org>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, zyw@rock-chips.com, Brian Norris <briannorris@chromium.org>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, robh+dt@kernel.org, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiBNb25kYXksIDQgRGVjZW1iZXIgMjAxNyAxNTo0NjozMiBFRVQgSGVpa28g
-U3R1ZWJuZXIgd3JvdGU6Cj4gQW0gTW9udGFnLCA0LiBEZXplbWJlciAyMDE3LCAxNToyMjowNyBD
-RVQgc2NocmllYiBMYXVyZW50IFBpbmNoYXJ0Ogo+ID4gT24gV2VkbmVzZGF5LCAyOSBOb3ZlbWJl
-ciAyMDE3IDIwOjQ3OjU1IEVFVCBCcmlhbiBOb3JyaXMgd3JvdGU6Cj4gPiA+IEZyb206IE5pY2tl
-eSBZYW5nIDxuaWNrZXkueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4gCj4gPiA+IFdlIG1pZ2h0
-IGluY2x1ZGUgYWRkaXRpb25hbCBwb3J0cyBpbiBkZXJpdmF0aXZlIGRldmljZSB0cmVlcywgc28g
-dGhlCj4gPiA+ICdwb3J0JyBub2RlIHNob3VsZCBoYXZlIGFuIGFkZHJlc3MsIGFuZCB0aGUgcGFy
-ZW50ICdwb3J0cycgbm9kZSBuZWVkcwo+ID4gPiAvI3thZGRyZXMsc2l6ZX0tY2VsbHMuCj4gPiA+
-IAo+ID4gPiB2NDoKPiA+ID4gICoga2VlcCAje2FkZHJlc3Msc2l6ZX0tY2VsbHMgaW4gYm90aCAn
-cG9ydHMnIGFuZCAncG9ydEAwJyBub2Rlcwo+ID4gPiAgKiBzZXBhcmF0ZSBmcm9tIHRoZSByZXN0
-IG9mIHRoZSBzZXJpZXMsIHNpbmNlIHRoaXMgaXMgbW9zdGx5Cj4gPiA+ICAKPiA+ID4gICAgaW5k
-ZXBlbmRlbnQgb2YgdGhlIGRyaXZlciByZWZhY3RvcmluZwo+ID4gPiAKPiA+ID4gU2lnbmVkLW9m
-Zi1ieTogTmlja2V5IFlhbmcgPG5pY2tleS55YW5nQHJvY2stY2hpcHMuY29tPgo+ID4gPiBTaWdu
-ZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KPiA+IAo+
-ID4gUmV2aWV3ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNv
-bmJvYXJkLmNvbT4KPiAKPiBBcyBJIGhhZG4ndCBwdXNoZWQgdGhhdCBvbmUgeWV0LCBJJ3ZlIGFt
-ZW5kZWQgaXQgd2l0aCB5b3VyIFJldmlldy10YWcgOi0pCgpUaGFuayB5b3UgOi0pCgotLSAKUmVn
-YXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+Probably due to some copy-paste mistake, the tsadc of rk3328 ended up
+with a 0 as 4th element that shouldn't be there, as interrupts on the
+rk3328 only have multiples of 3, making dtc complain. So remove it.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 41d61840fb99..2426da631938 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -514,7 +514,7 @@
+ 	tsadc: tsadc@ff250000 {
+ 		compatible = "rockchip,rk3328-tsadc";
+ 		reg = <0x0 0xff250000 0x0 0x100>;
+-		interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>;
+ 		assigned-clocks = <&cru SCLK_TSADC>;
+ 		assigned-clock-rates = <50000>;
+ 		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
+-- 
+2.14.2
