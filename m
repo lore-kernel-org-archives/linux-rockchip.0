@@ -1,34 +1,47 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4] arm64: dts: rockchip: update mipi cells for RK3399
-Date: Mon, 04 Dec 2017 11:05:56 +0100
-Message-ID: <1731157.IgmvaAa2Kc@phil>
-References: <20171129184755.77187-1-briannorris@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: add cpu0-regulator on rk3066a-marsboard
+Date: Mon,  4 Dec 2017 11:45:20 +0100
+Message-ID: <20171204104520.29385-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171129184755.77187-1-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org, Doug Anderson <dianders@chromium.org>, robh+dt@kernel.org, mark.rutland@arm.com, hoegsberg@gmail.com, zyw@rock-chips.com, xbl@rock-chips.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 29. November 2017, 10:47:55 CET schrieb Brian Norris:
-> From: Nickey Yang <nickey.yang@rock-chips.com>
-> 
-> We might include additional ports in derivative device trees, so the
-> 'port' node should have an address, and the parent 'ports' node needs
-> /#{addres,size}-cells.
-> 
-> v4:
->  * keep #{address,size}-cells in both 'ports' and 'port@0' nodes
->  * separate from the rest of the series, since this is mostly
->    independent of the driver refactoring
-> 
-> Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+The rk3066 also has operating points now, but without adjusting
+the cpu-regulator will break once higher voltages are needed for
+a specific frequency, so add the needed cpu0-regulator.
 
-applied for 4.16 with Doug's Review
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3066a-marsboard.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Thanks
-Heiko
+diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
+index c6d92c25df42..d23ee6d911ac 100644
+--- a/arch/arm/boot/dts/rk3066a-marsboard.dts
++++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
+@@ -83,6 +83,10 @@
+ 	};
+ };
+ 
++&cpu0 {
++	cpu0-supply = <&vdd_arm>;
++};
++
+ &i2c1 {
+ 	status = "okay";
+ 	clock-frequency = <400000>;
+-- 
+2.14.2
