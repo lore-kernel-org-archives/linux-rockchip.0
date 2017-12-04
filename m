@@ -1,103 +1,93 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH 0/4] Move DP phy switch to PHY driver
-Date: Mon, 4 Dec 2017 10:47:08 +0800
-Message-ID: <8042d73f-c1de-da41-9066-2377de1f521c@rock-chips.com>
+Date: Mon, 04 Dec 2017 08:46:18 +0100
+Message-ID: <4091462.xo23GTqF41@diego>
 References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
- <c6fb4d29-6c6d-7f39-3cdd-3bc42c4519a2@rock-chips.com>
- <CAD=FV=Vk0fOfYXc2gGDpvoVuT8m9WGT-eJ4hOM=G5MY_Bzzpwg@mail.gmail.com>
  <1941891.vosvJnn3h1@phil>
+ <8042d73f-c1de-da41-9066-2377de1f521c@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gb18030; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1941891.vosvJnn3h1@phil>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux ARM <linux-arm-kernel@list>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <8042d73f-c1de-da41-9066-2377de1f521c@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Doug Anderson <dianders@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Jianqun Xu <jay.xu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, William wu <wulf@rock-chips.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, David Wu <david.wu@rock-chips.com>, Enric Balletbo i Serra <enric.ba>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko
-
-
-On 2017Äê12ÔÂ02ÈÕ 05:58, Heiko Stuebner wrote:
-> Am Freitag, 1. Dezember 2017, 13:42:46 CET schrieb Doug Anderson:
->> Hi,
->>
->> On Wed, Nov 29, 2017 at 6:27 PM, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->>> Hi Doug
->>>
->>> Thank you for mentioning this patch.
->>>
->>> I think the focus of the discussion is: can we put the grf control bit to
->>> dts.
->>>
->>> The RK3399 has 2 Type-C phy, but only one DP controller, this "uphy_dp_sel"
->>>
->>> can help to switch these 2 phy. So I think this bit can be considered as a
->>> part of
->>>
->>> Type-C phy, these 2 phy have different bits, just similar to other bits
->>> (such as "pipe-status").
->>>
->>> Put them to DTS file might be a accepted practice.
->> I guess the first step would be finding the person to make a decision.
->> Is that Heiko?  Olof?  Kishon?  Rob?.  As I see it there are a few
->> options:
->>
->> 1. Land this series as-is.  This makes the new bit work just like all
->> the other ones next to it.  If anyone happens to try to use an old
->> device tree on a new kernel they'll break.  Seems rather unlikely
->> given that the whole type C PHY is not really fully functional
->> upstream, but technically this is a no-no from a device tree
->> perspective.
->>
->> 2. Change the series to make this property optional.  If it's not
->> there then the code behaves like it always did.  This would address
->> the "compatibility" problem but likely wouldn't actually help any real
->> people, and it would be extra work.
->>
->> 3. Redo the driver to deprecate all the old offsets / bits and just
->> put the table in the driver, keyed off the compatible string and base
->> address if the IO memory.
->>
->>
->> I can't make this decision.  It's up to those folks who would be
->> landing the patch and I'd be happy with any of them.  What I'm less
->> happy with, however, is the indecision preventing forward progress.
->> We should pick one of the above things and land it.  My own personal
->> bias is #1: just land the series.  No real people will be hurt and
->> it's just adding another property that matches the ones next to it.
-> I'd second that #1 . That whole type-c phy thingy never fully worked in
-> the past (some for the never used dp output), so personally I don't have
-> issues with going that route.
->
->
->>  From a long term perspective (AKA how I'd write the next driver like
->> this) I personally lean towards to "tables in the driver, not in the
->> device tree" but quite honestly I'm happy to take whatever direction
->> the maintainers give.
-> It looks like we're in agreement here :-) . GRF stuff should not leak into
-> the devicetree, as it causes endless headaches later. But I guess we'll
-> need to live with the ones that happened so far.
->
-So, the first step is: move all the private property of tcphy to 
-drivers/phy/rockchip/phy-rockchip-typec.c.
-Second step: new a member: uphy-dp-sel.
-In my mind, we should have discussed these properties before, and then I 
-moved them all into DTS.
-
-
->
->
->
->
-
--- 
-Chris Zhong
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgQ2hyaXMsCgpBbSBNb250YWcsIDQuIERlemVtYmVyIDIwMTcsIDEwOjQ3OjA4IENFVCBzY2hy
+aWViIENocmlzIFpob25nOgo+IE9uIDIwMTflubQxMuaciDAy5pelIDA1OjU4LCBIZWlrbyBTdHVl
+Ym5lciB3cm90ZToKPiA+IEFtIEZyZWl0YWcsIDEuIERlemVtYmVyIDIwMTcsIDEzOjQyOjQ2IENF
+VCBzY2hyaWViIERvdWcgQW5kZXJzb246Cj4gPj4gSGksCj4gPj4gCj4gPj4gT24gV2VkLCBOb3Yg
+MjksIDIwMTcgYXQgNjoyNyBQTSwgQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4gd3Jv
+dGU6Cj4gPj4+IEhpIERvdWcKPiA+Pj4gCj4gPj4+IFRoYW5rIHlvdSBmb3IgbWVudGlvbmluZyB0
+aGlzIHBhdGNoLgo+ID4+PiAKPiA+Pj4gSSB0aGluayB0aGUgZm9jdXMgb2YgdGhlIGRpc2N1c3Np
+b24gaXM6IGNhbiB3ZSBwdXQgdGhlIGdyZiBjb250cm9sIGJpdAo+ID4+PiB0bwo+ID4+PiBkdHMu
+Cj4gPj4+IAo+ID4+PiBUaGUgUkszMzk5IGhhcyAyIFR5cGUtQyBwaHksIGJ1dCBvbmx5IG9uZSBE
+UCBjb250cm9sbGVyLCB0aGlzCj4gPj4+ICJ1cGh5X2RwX3NlbCIKPiA+Pj4gCj4gPj4+IGNhbiBo
+ZWxwIHRvIHN3aXRjaCB0aGVzZSAyIHBoeS4gU28gSSB0aGluayB0aGlzIGJpdCBjYW4gYmUgY29u
+c2lkZXJlZCBhcwo+ID4+PiBhCj4gPj4+IHBhcnQgb2YKPiA+Pj4gCj4gPj4+IFR5cGUtQyBwaHks
+IHRoZXNlIDIgcGh5IGhhdmUgZGlmZmVyZW50IGJpdHMsIGp1c3Qgc2ltaWxhciB0byBvdGhlciBi
+aXRzCj4gPj4+IChzdWNoIGFzICJwaXBlLXN0YXR1cyIpLgo+ID4+PiAKPiA+Pj4gUHV0IHRoZW0g
+dG8gRFRTIGZpbGUgbWlnaHQgYmUgYSBhY2NlcHRlZCBwcmFjdGljZS4KPiA+PiAKPiA+PiBJIGd1
+ZXNzIHRoZSBmaXJzdCBzdGVwIHdvdWxkIGJlIGZpbmRpbmcgdGhlIHBlcnNvbiB0byBtYWtlIGEg
+ZGVjaXNpb24uCj4gPj4gSXMgdGhhdCBIZWlrbz8gIE9sb2Y/ICBLaXNob24/ICBSb2I/LiAgQXMg
+SSBzZWUgaXQgdGhlcmUgYXJlIGEgZmV3Cj4gPj4gb3B0aW9uczoKPiA+PiAKPiA+PiAxLiBMYW5k
+IHRoaXMgc2VyaWVzIGFzLWlzLiAgVGhpcyBtYWtlcyB0aGUgbmV3IGJpdCB3b3JrIGp1c3QgbGlr
+ZSBhbGwKPiA+PiB0aGUgb3RoZXIgb25lcyBuZXh0IHRvIGl0LiAgSWYgYW55b25lIGhhcHBlbnMg
+dG8gdHJ5IHRvIHVzZSBhbiBvbGQKPiA+PiBkZXZpY2UgdHJlZSBvbiBhIG5ldyBrZXJuZWwgdGhl
+eSdsbCBicmVhay4gIFNlZW1zIHJhdGhlciB1bmxpa2VseQo+ID4+IGdpdmVuIHRoYXQgdGhlIHdo
+b2xlIHR5cGUgQyBQSFkgaXMgbm90IHJlYWxseSBmdWxseSBmdW5jdGlvbmFsCj4gPj4gdXBzdHJl
+YW0sIGJ1dCB0ZWNobmljYWxseSB0aGlzIGlzIGEgbm8tbm8gZnJvbSBhIGRldmljZSB0cmVlCj4g
+Pj4gcGVyc3BlY3RpdmUuCj4gPj4gCj4gPj4gMi4gQ2hhbmdlIHRoZSBzZXJpZXMgdG8gbWFrZSB0
+aGlzIHByb3BlcnR5IG9wdGlvbmFsLiAgSWYgaXQncyBub3QKPiA+PiB0aGVyZSB0aGVuIHRoZSBj
+b2RlIGJlaGF2ZXMgbGlrZSBpdCBhbHdheXMgZGlkLiAgVGhpcyB3b3VsZCBhZGRyZXNzCj4gPj4g
+dGhlICJjb21wYXRpYmlsaXR5IiBwcm9ibGVtIGJ1dCBsaWtlbHkgd291bGRuJ3QgYWN0dWFsbHkg
+aGVscCBhbnkgcmVhbAo+ID4+IHBlb3BsZSwgYW5kIGl0IHdvdWxkIGJlIGV4dHJhIHdvcmsuCj4g
+Pj4gCj4gPj4gMy4gUmVkbyB0aGUgZHJpdmVyIHRvIGRlcHJlY2F0ZSBhbGwgdGhlIG9sZCBvZmZz
+ZXRzIC8gYml0cyBhbmQganVzdAo+ID4+IHB1dCB0aGUgdGFibGUgaW4gdGhlIGRyaXZlciwga2V5
+ZWQgb2ZmIHRoZSBjb21wYXRpYmxlIHN0cmluZyBhbmQgYmFzZQo+ID4+IGFkZHJlc3MgaWYgdGhl
+IElPIG1lbW9yeS4KPiA+PiAKPiA+PiAKPiA+PiBJIGNhbid0IG1ha2UgdGhpcyBkZWNpc2lvbi4g
+IEl0J3MgdXAgdG8gdGhvc2UgZm9sa3Mgd2hvIHdvdWxkIGJlCj4gPj4gbGFuZGluZyB0aGUgcGF0
+Y2ggYW5kIEknZCBiZSBoYXBweSB3aXRoIGFueSBvZiB0aGVtLiAgV2hhdCBJJ20gbGVzcwo+ID4+
+IGhhcHB5IHdpdGgsIGhvd2V2ZXIsIGlzIHRoZSBpbmRlY2lzaW9uIHByZXZlbnRpbmcgZm9yd2Fy
+ZCBwcm9ncmVzcy4KPiA+PiBXZSBzaG91bGQgcGljayBvbmUgb2YgdGhlIGFib3ZlIHRoaW5ncyBh
+bmQgbGFuZCBpdC4gIE15IG93biBwZXJzb25hbAo+ID4+IGJpYXMgaXMgIzE6IGp1c3QgbGFuZCB0
+aGUgc2VyaWVzLiAgTm8gcmVhbCBwZW9wbGUgd2lsbCBiZSBodXJ0IGFuZAo+ID4+IGl0J3MganVz
+dCBhZGRpbmcgYW5vdGhlciBwcm9wZXJ0eSB0aGF0IG1hdGNoZXMgdGhlIG9uZXMgbmV4dCB0byBp
+dC4KPiA+IAo+ID4gSSdkIHNlY29uZCB0aGF0ICMxIC4gVGhhdCB3aG9sZSB0eXBlLWMgcGh5IHRo
+aW5neSBuZXZlciBmdWxseSB3b3JrZWQgaW4KPiA+IHRoZSBwYXN0IChzb21lIGZvciB0aGUgbmV2
+ZXIgdXNlZCBkcCBvdXRwdXQpLCBzbyBwZXJzb25hbGx5IEkgZG9uJ3QgaGF2ZQo+ID4gaXNzdWVz
+IHdpdGggZ29pbmcgdGhhdCByb3V0ZS4KPiA+IAo+ID4+ICBGcm9tIGEgbG9uZyB0ZXJtIHBlcnNw
+ZWN0aXZlIChBS0EgaG93IEknZCB3cml0ZSB0aGUgbmV4dCBkcml2ZXIgbGlrZQo+ID4+IAo+ID4+
+IHRoaXMpIEkgcGVyc29uYWxseSBsZWFuIHRvd2FyZHMgdG8gInRhYmxlcyBpbiB0aGUgZHJpdmVy
+LCBub3QgaW4gdGhlCj4gPj4gZGV2aWNlIHRyZWUiIGJ1dCBxdWl0ZSBob25lc3RseSBJJ20gaGFw
+cHkgdG8gdGFrZSB3aGF0ZXZlciBkaXJlY3Rpb24KPiA+PiB0aGUgbWFpbnRhaW5lcnMgZ2l2ZS4K
+PiA+IAo+ID4gSXQgbG9va3MgbGlrZSB3ZSdyZSBpbiBhZ3JlZW1lbnQgaGVyZSA6LSkgLiBHUkYg
+c3R1ZmYgc2hvdWxkIG5vdCBsZWFrIGludG8KPiA+IHRoZSBkZXZpY2V0cmVlLCBhcyBpdCBjYXVz
+ZXMgZW5kbGVzcyBoZWFkYWNoZXMgbGF0ZXIuIEJ1dCBJIGd1ZXNzIHdlJ2xsCj4gPiBuZWVkIHRv
+IGxpdmUgd2l0aCB0aGUgb25lcyB0aGF0IGhhcHBlbmVkIHNvIGZhci4KPiAKPiBTbywgdGhlIGZp
+cnN0IHN0ZXAgaXM6IG1vdmUgYWxsIHRoZSBwcml2YXRlIHByb3BlcnR5IG9mIHRjcGh5IHRvCj4g
+ZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVjLmMuCj4gU2Vjb25kIHN0ZXA6
+IG5ldyBhIG1lbWJlcjogdXBoeS1kcC1zZWwuCj4gSW4gbXkgbWluZCwgd2Ugc2hvdWxkIGhhdmUg
+ZGlzY3Vzc2VkIHRoZXNlIHByb3BlcnRpZXMgYmVmb3JlLCBhbmQgdGhlbiBJCj4gbW92ZWQgdGhl
+bSBhbGwgaW50byBEVFMuCgpBY3R1YWxseSwgSSB3YXMgYWdyZWVpbmcgd2l0aCBEb3VnLCB0aGF0
+IHdlIHByb2JhYmx5IGRvbid0IG5lZWQgdG8gcmV3b3JrIHRoZSAKdHlwZS1jIHBoeSBkcml2ZXIu
+IEFzIG1vc3QgcHJvcGVydGllcyBmb3IgaXQgYXJlIGluIHRoZSBkZXZpY2V0cmVlIHJpZ2h0IG5v
+dwp3ZSdsbCBuZWVkIHRvIHN1cHBvcnQgdGhlbSBmb3IgYmFja3dhcmRzLWNvbXBhdGlibGl0eSBh
+bnl3YXkuCgpBbmQgeWVzLCB0aGVyZSBwcm9iYWJseSB3YXMgZGlzY3Vzc2lvbiBvdmVyIGR0cyB2
+cy4gZHJpdmVyLXRhYmxlIHdoZW4gdGhlCnR5cGUtYyBkcml2ZXIgd2FzIGludHJvZHVjZWQsIGJ1
+dCBJIGVpdGhlciBtaXNzZWQgaXQgb3Igd2Fzbid0IGZpcm0gZW5vdWdoCmJhY2sgdGhlbiA7LSkg
+LgoKSGVuY2UgdGhlICJ3ZSdsbCBuZWVkIHRvIGxpdmUgd2l0aCBpdCIgZm9yIHRoZSB0eXBlLWMg
+cGh5LCBidXQgc2hvdWxkIG5vdApkbyBzaW1pbGFyIHRoaW5ncyBpbiBmdXR1cmUgZHJpdmVycy4K
+CgpIZWlrbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
