@@ -1,47 +1,41 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: add cpu0-regulator on rk3066a-marsboard
-Date: Mon,  4 Dec 2017 11:45:20 +0100
-Message-ID: <20171204104520.29385-1-heiko@sntech.de>
+Subject: Re: [PATCH] arm: dts: rockchip: fix errors in IOMMU interrupts property cells
+Date: Mon, 04 Dec 2017 11:46:30 +0100
+Message-ID: <1650017.SLWRlyvIpe@phil>
+References: <20171109223535.17368-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171109223535.17368-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3066 also has operating points now, but without adjusting
-the cpu-regulator will break once higher voltages are needed for
-a specific frequency, so add the needed cpu0-regulator.
+Am Donnerstag, 9. November 2017, 16:35:35 CET schrieb Rob Herring:
+> The interrupts property in the IOMMU node for Rockchip dts file has a
+> spurious extra cell causing a dtc warning:
+> 
+> Warning (interrupts_property): interrupts size is (16), expected multiple of 12 in /iommu@ff900800
+> 
+> Remove the extra cell.
+> 
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3288.dtsi            | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 +-
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3066a-marsboard.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+Arnd fixed the rk3368 variant in a patch already, so I've dropped that
+and applied the rk3288 fix as fix for 4.15.
 
-diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
-index c6d92c25df42..d23ee6d911ac 100644
---- a/arch/arm/boot/dts/rk3066a-marsboard.dts
-+++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
-@@ -83,6 +83,10 @@
- 	};
- };
- 
-+&cpu0 {
-+	cpu0-supply = <&vdd_arm>;
-+};
-+
- &i2c1 {
- 	status = "okay";
- 	clock-frequency = <400000>;
--- 
-2.14.2
+
+Thanks
+Heiko
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
