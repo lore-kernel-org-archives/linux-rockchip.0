@@ -1,93 +1,73 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 0/4] Move DP phy switch to PHY driver
-Date: Mon, 04 Dec 2017 08:46:18 +0100
-Message-ID: <4091462.xo23GTqF41@diego>
-References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
- <1941891.vosvJnn3h1@phil>
- <8042d73f-c1de-da41-9066-2377de1f521c@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <8042d73f-c1de-da41-9066-2377de1f521c@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Doug Anderson <dianders@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Jianqun Xu <jay.xu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, William wu <wulf@rock-chips.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, David Wu <david.wu@rock-chips.com>, Enric Balletbo i Serra <enric.ba>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2 2/4] arm64: dts: rockchip: add usb3 controller node for RK3328 SoCs
+Date: Mon,  4 Dec 2017 10:40:39 +0100
+Message-ID: <20171204094041.25439-2-heiko@sntech.de>
+References: <20171204094041.25439-1-heiko@sntech.de>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171204094041.25439-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2hyaXMsCgpBbSBNb250YWcsIDQuIERlemVtYmVyIDIwMTcsIDEwOjQ3OjA4IENFVCBzY2hy
-aWViIENocmlzIFpob25nOgo+IE9uIDIwMTflubQxMuaciDAy5pelIDA1OjU4LCBIZWlrbyBTdHVl
-Ym5lciB3cm90ZToKPiA+IEFtIEZyZWl0YWcsIDEuIERlemVtYmVyIDIwMTcsIDEzOjQyOjQ2IENF
-VCBzY2hyaWViIERvdWcgQW5kZXJzb246Cj4gPj4gSGksCj4gPj4gCj4gPj4gT24gV2VkLCBOb3Yg
-MjksIDIwMTcgYXQgNjoyNyBQTSwgQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4gd3Jv
-dGU6Cj4gPj4+IEhpIERvdWcKPiA+Pj4gCj4gPj4+IFRoYW5rIHlvdSBmb3IgbWVudGlvbmluZyB0
-aGlzIHBhdGNoLgo+ID4+PiAKPiA+Pj4gSSB0aGluayB0aGUgZm9jdXMgb2YgdGhlIGRpc2N1c3Np
-b24gaXM6IGNhbiB3ZSBwdXQgdGhlIGdyZiBjb250cm9sIGJpdAo+ID4+PiB0bwo+ID4+PiBkdHMu
-Cj4gPj4+IAo+ID4+PiBUaGUgUkszMzk5IGhhcyAyIFR5cGUtQyBwaHksIGJ1dCBvbmx5IG9uZSBE
-UCBjb250cm9sbGVyLCB0aGlzCj4gPj4+ICJ1cGh5X2RwX3NlbCIKPiA+Pj4gCj4gPj4+IGNhbiBo
-ZWxwIHRvIHN3aXRjaCB0aGVzZSAyIHBoeS4gU28gSSB0aGluayB0aGlzIGJpdCBjYW4gYmUgY29u
-c2lkZXJlZCBhcwo+ID4+PiBhCj4gPj4+IHBhcnQgb2YKPiA+Pj4gCj4gPj4+IFR5cGUtQyBwaHks
-IHRoZXNlIDIgcGh5IGhhdmUgZGlmZmVyZW50IGJpdHMsIGp1c3Qgc2ltaWxhciB0byBvdGhlciBi
-aXRzCj4gPj4+IChzdWNoIGFzICJwaXBlLXN0YXR1cyIpLgo+ID4+PiAKPiA+Pj4gUHV0IHRoZW0g
-dG8gRFRTIGZpbGUgbWlnaHQgYmUgYSBhY2NlcHRlZCBwcmFjdGljZS4KPiA+PiAKPiA+PiBJIGd1
-ZXNzIHRoZSBmaXJzdCBzdGVwIHdvdWxkIGJlIGZpbmRpbmcgdGhlIHBlcnNvbiB0byBtYWtlIGEg
-ZGVjaXNpb24uCj4gPj4gSXMgdGhhdCBIZWlrbz8gIE9sb2Y/ICBLaXNob24/ICBSb2I/LiAgQXMg
-SSBzZWUgaXQgdGhlcmUgYXJlIGEgZmV3Cj4gPj4gb3B0aW9uczoKPiA+PiAKPiA+PiAxLiBMYW5k
-IHRoaXMgc2VyaWVzIGFzLWlzLiAgVGhpcyBtYWtlcyB0aGUgbmV3IGJpdCB3b3JrIGp1c3QgbGlr
-ZSBhbGwKPiA+PiB0aGUgb3RoZXIgb25lcyBuZXh0IHRvIGl0LiAgSWYgYW55b25lIGhhcHBlbnMg
-dG8gdHJ5IHRvIHVzZSBhbiBvbGQKPiA+PiBkZXZpY2UgdHJlZSBvbiBhIG5ldyBrZXJuZWwgdGhl
-eSdsbCBicmVhay4gIFNlZW1zIHJhdGhlciB1bmxpa2VseQo+ID4+IGdpdmVuIHRoYXQgdGhlIHdo
-b2xlIHR5cGUgQyBQSFkgaXMgbm90IHJlYWxseSBmdWxseSBmdW5jdGlvbmFsCj4gPj4gdXBzdHJl
-YW0sIGJ1dCB0ZWNobmljYWxseSB0aGlzIGlzIGEgbm8tbm8gZnJvbSBhIGRldmljZSB0cmVlCj4g
-Pj4gcGVyc3BlY3RpdmUuCj4gPj4gCj4gPj4gMi4gQ2hhbmdlIHRoZSBzZXJpZXMgdG8gbWFrZSB0
-aGlzIHByb3BlcnR5IG9wdGlvbmFsLiAgSWYgaXQncyBub3QKPiA+PiB0aGVyZSB0aGVuIHRoZSBj
-b2RlIGJlaGF2ZXMgbGlrZSBpdCBhbHdheXMgZGlkLiAgVGhpcyB3b3VsZCBhZGRyZXNzCj4gPj4g
-dGhlICJjb21wYXRpYmlsaXR5IiBwcm9ibGVtIGJ1dCBsaWtlbHkgd291bGRuJ3QgYWN0dWFsbHkg
-aGVscCBhbnkgcmVhbAo+ID4+IHBlb3BsZSwgYW5kIGl0IHdvdWxkIGJlIGV4dHJhIHdvcmsuCj4g
-Pj4gCj4gPj4gMy4gUmVkbyB0aGUgZHJpdmVyIHRvIGRlcHJlY2F0ZSBhbGwgdGhlIG9sZCBvZmZz
-ZXRzIC8gYml0cyBhbmQganVzdAo+ID4+IHB1dCB0aGUgdGFibGUgaW4gdGhlIGRyaXZlciwga2V5
-ZWQgb2ZmIHRoZSBjb21wYXRpYmxlIHN0cmluZyBhbmQgYmFzZQo+ID4+IGFkZHJlc3MgaWYgdGhl
-IElPIG1lbW9yeS4KPiA+PiAKPiA+PiAKPiA+PiBJIGNhbid0IG1ha2UgdGhpcyBkZWNpc2lvbi4g
-IEl0J3MgdXAgdG8gdGhvc2UgZm9sa3Mgd2hvIHdvdWxkIGJlCj4gPj4gbGFuZGluZyB0aGUgcGF0
-Y2ggYW5kIEknZCBiZSBoYXBweSB3aXRoIGFueSBvZiB0aGVtLiAgV2hhdCBJJ20gbGVzcwo+ID4+
-IGhhcHB5IHdpdGgsIGhvd2V2ZXIsIGlzIHRoZSBpbmRlY2lzaW9uIHByZXZlbnRpbmcgZm9yd2Fy
-ZCBwcm9ncmVzcy4KPiA+PiBXZSBzaG91bGQgcGljayBvbmUgb2YgdGhlIGFib3ZlIHRoaW5ncyBh
-bmQgbGFuZCBpdC4gIE15IG93biBwZXJzb25hbAo+ID4+IGJpYXMgaXMgIzE6IGp1c3QgbGFuZCB0
-aGUgc2VyaWVzLiAgTm8gcmVhbCBwZW9wbGUgd2lsbCBiZSBodXJ0IGFuZAo+ID4+IGl0J3MganVz
-dCBhZGRpbmcgYW5vdGhlciBwcm9wZXJ0eSB0aGF0IG1hdGNoZXMgdGhlIG9uZXMgbmV4dCB0byBp
-dC4KPiA+IAo+ID4gSSdkIHNlY29uZCB0aGF0ICMxIC4gVGhhdCB3aG9sZSB0eXBlLWMgcGh5IHRo
-aW5neSBuZXZlciBmdWxseSB3b3JrZWQgaW4KPiA+IHRoZSBwYXN0IChzb21lIGZvciB0aGUgbmV2
-ZXIgdXNlZCBkcCBvdXRwdXQpLCBzbyBwZXJzb25hbGx5IEkgZG9uJ3QgaGF2ZQo+ID4gaXNzdWVz
-IHdpdGggZ29pbmcgdGhhdCByb3V0ZS4KPiA+IAo+ID4+ICBGcm9tIGEgbG9uZyB0ZXJtIHBlcnNw
-ZWN0aXZlIChBS0EgaG93IEknZCB3cml0ZSB0aGUgbmV4dCBkcml2ZXIgbGlrZQo+ID4+IAo+ID4+
-IHRoaXMpIEkgcGVyc29uYWxseSBsZWFuIHRvd2FyZHMgdG8gInRhYmxlcyBpbiB0aGUgZHJpdmVy
-LCBub3QgaW4gdGhlCj4gPj4gZGV2aWNlIHRyZWUiIGJ1dCBxdWl0ZSBob25lc3RseSBJJ20gaGFw
-cHkgdG8gdGFrZSB3aGF0ZXZlciBkaXJlY3Rpb24KPiA+PiB0aGUgbWFpbnRhaW5lcnMgZ2l2ZS4K
-PiA+IAo+ID4gSXQgbG9va3MgbGlrZSB3ZSdyZSBpbiBhZ3JlZW1lbnQgaGVyZSA6LSkgLiBHUkYg
-c3R1ZmYgc2hvdWxkIG5vdCBsZWFrIGludG8KPiA+IHRoZSBkZXZpY2V0cmVlLCBhcyBpdCBjYXVz
-ZXMgZW5kbGVzcyBoZWFkYWNoZXMgbGF0ZXIuIEJ1dCBJIGd1ZXNzIHdlJ2xsCj4gPiBuZWVkIHRv
-IGxpdmUgd2l0aCB0aGUgb25lcyB0aGF0IGhhcHBlbmVkIHNvIGZhci4KPiAKPiBTbywgdGhlIGZp
-cnN0IHN0ZXAgaXM6IG1vdmUgYWxsIHRoZSBwcml2YXRlIHByb3BlcnR5IG9mIHRjcGh5IHRvCj4g
-ZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVjLmMuCj4gU2Vjb25kIHN0ZXA6
-IG5ldyBhIG1lbWJlcjogdXBoeS1kcC1zZWwuCj4gSW4gbXkgbWluZCwgd2Ugc2hvdWxkIGhhdmUg
-ZGlzY3Vzc2VkIHRoZXNlIHByb3BlcnRpZXMgYmVmb3JlLCBhbmQgdGhlbiBJCj4gbW92ZWQgdGhl
-bSBhbGwgaW50byBEVFMuCgpBY3R1YWxseSwgSSB3YXMgYWdyZWVpbmcgd2l0aCBEb3VnLCB0aGF0
-IHdlIHByb2JhYmx5IGRvbid0IG5lZWQgdG8gcmV3b3JrIHRoZSAKdHlwZS1jIHBoeSBkcml2ZXIu
-IEFzIG1vc3QgcHJvcGVydGllcyBmb3IgaXQgYXJlIGluIHRoZSBkZXZpY2V0cmVlIHJpZ2h0IG5v
-dwp3ZSdsbCBuZWVkIHRvIHN1cHBvcnQgdGhlbSBmb3IgYmFja3dhcmRzLWNvbXBhdGlibGl0eSBh
-bnl3YXkuCgpBbmQgeWVzLCB0aGVyZSBwcm9iYWJseSB3YXMgZGlzY3Vzc2lvbiBvdmVyIGR0cyB2
-cy4gZHJpdmVyLXRhYmxlIHdoZW4gdGhlCnR5cGUtYyBkcml2ZXIgd2FzIGludHJvZHVjZWQsIGJ1
-dCBJIGVpdGhlciBtaXNzZWQgaXQgb3Igd2Fzbid0IGZpcm0gZW5vdWdoCmJhY2sgdGhlbiA7LSkg
-LgoKSGVuY2UgdGhlICJ3ZSdsbCBuZWVkIHRvIGxpdmUgd2l0aCBpdCIgZm9yIHRoZSB0eXBlLWMg
-cGh5LCBidXQgc2hvdWxkIG5vdApkbyBzaW1pbGFyIHRoaW5ncyBpbiBmdXR1cmUgZHJpdmVycy4K
-CgpIZWlrbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+RK3328 has one USB 3.0 OTG controller which uses DWC_USB3
+core's general architecture. It can act as static xHCI host
+controller, static device controller, USB 3.0/2.0 OTG basing
+on ID of USB3.0 PHY.
+
+Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+changes in v2:
+none
+
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 41d61840fb99..cafc572a68e0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -805,6 +805,33 @@
+ 		status = "disabled";
+ 	};
+ 
++	usbdrd3: usb@ff600000 {
++		compatible = "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3";
++		clocks = <&cru SCLK_USB3OTG_REF>, <&cru SCLK_USB3OTG_SUSPEND>,
++			 <&cru ACLK_USB3OTG>;
++		clock-names = "ref_clk", "suspend_clk",
++			      "bus_clk";
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		status = "disabled";
++
++		usbdrd_dwc3: dwc3@ff600000 {
++			compatible = "snps,dwc3";
++			reg = <0x0 0xff600000 0x0 0x100000>;
++			interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
++			dr_mode = "otg";
++			phy_type = "utmi_wide";
++			snps,dis_enblslpm_quirk;
++			snps,dis-u2-freeclk-exists-quirk;
++			snps,dis_u2_susphy_quirk;
++			snps,dis_u3_susphy_quirk;
++			snps,dis-del-phy-power-chg-quirk;
++			snps,dis-tx-ipgap-linecheck-quirk;
++			status = "disabled";
++		};
++	};
++
+ 	gic: interrupt-controller@ff811000 {
+ 		compatible = "arm,gic-400";
+ 		#interrupt-cells = <3>;
+-- 
+2.14.2
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
