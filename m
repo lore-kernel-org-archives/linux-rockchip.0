@@ -1,180 +1,82 @@
-From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: Re: [PATCH v4 1/3] drm/bridge/synopsys: dsi: stop clobbering drvdata
-Date: Tue, 5 Dec 2017 17:14:11 +0800
-Message-ID: <206b071f-2b57-c4a2-31b3-2f469091e5e2@rock-chips.com>
-References: <1512100685-4015-1-git-send-email-nickey.yang@rock-chips.com>
- <1512100685-4015-2-git-send-email-nickey.yang@rock-chips.com>
- <5605c3c2-56ad-2289-c3c0-78cde1152123@st.com>
- <c6a53132-1ee3-00be-d52d-218560c07975@rock-chips.com>
- <1700743e-04b0-90ea-d393-dbfebf93742f@st.com>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Subject: Re: [PATCH v3 1/2] usb: dwc2: host: Don't retry NAKed transactions
+ right away
+Date: Tue, 5 Dec 2017 17:18:37 +0100
+Message-ID: <dcee1898-a952-dcd3-8206-ab7c15eb589a@i2se.com>
+References: <20171030170802.14489-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1700743e-04b0-90ea-d393-dbfebf93742f@st.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20171030170802.14489-1-dianders@chromium.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philippe CORNU <philippe.cornu@st.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "airlied@linux.ie" <airlied@linux.ie>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, "briannorris@chromium.org" <briannorris@chromium.org>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "mka@chromium.org" <mka@chromium.org>, "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>
+Sender: stable-owner@vger.kernel.org
+To: balbi@kernel.org, johnyoun@synopsys.com
+Cc: Douglas Anderson <dianders@chromium.org>, amstan@chromium.org, linux-rockchip@lists.infradead.org, gregkh@linuxfoundation.org, johan@kernel.org, eric@anholt.net, mka@chromium.org, john.stultz@linaro.org, linux-rpi-kernel@lists.infradead.org, jwerner@chromium.org, stable@vger.kernel.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGhpbGlwcGUsCgoKT24gMjAxN+W5tDEy5pyIMDHml6UgMTg6MDcsIFBoaWxpcHBlIENPUk5V
-IHdyb3RlOgo+IEhpIE5pY2tleSwKPgo+IE9uIDEyLzAxLzIwMTcgMTA6MTEgQU0sIE5pY2tleSBZ
-YW5nIHdyb3RlOgo+PiBIaSBQaGlsaXBwZSwKPj4KPj4KPj4gT24gMjAxN+W5tDEy5pyIMDHml6Ug
-MTY6MzIsIFBoaWxpcHBlIENPUk5VIHdyb3RlOgo+Pj4gRGVhciBOaWNrZXksCj4+Pgo+Pj4gTWFu
-eSB0aGFua3MgZm9yIHlvdXIgcGF0Y2guCj4+Pgo+Pj4gSSBhbSBzb3JyeSB0byBzYXkgdGhhdCBi
-dXQgeW91IGNhbiBub3QgYWRkIG15ICJBY2tlZC1ieSIgdG8gdGhpcyBwYXRjaAo+Pj4gYmVjYXVz
-ZSB0aGlzIGNvZGUgaXMgZGlmZmVyZW50IGZyb20gdGhlICJvcmlnaW5hbCIgb25lIGZyb20gQnJp
-YW4gKHdoaWNoCj4+PiBnb3QgbXkgIkFja2VkLWJ5IikuCj4+IEknbSBzb3JyeSBJIGRpZG4ndCB0
-aGluayBtdWNoIGFib3V0IGl0LCBUaGFuayB5b3UgZm9yIGNvcnJlY3RpbmcgbWUuCj4+PiBTb21l
-dGltZXMgaXQgaXMgbm90IGFuIGlzc3VlIGJlY2F1c2UgZGlmZmVyZW5jZXMgYXJlIG5vdCBpbXBv
-cnRhbnQgYnV0Cj4+PiBpbiB0aGlzIHBhcnRpY3VsYXIgY2FzZSwgdGhlIGNvZGUgaXMgcmVhbGx5
-IGRpZmZlcmVudDogeW91IGhhdmUgcmVtb3ZlCj4+PiBwbGF0Zm9ybV9zZXRfZHJ2ZGF0YSgpICYg
-cGxhdGZvcm1fZ2V0X2RydmRhdGEoKSBpbiB0aGUgc3RtIHBhcnQuCj4+Pgo+Pj4gQ291bGQgeW91
-IHBsZWFzZSBnbyBiYWNrIHRvIHRoZSBvcmlnaW5hbCBjb2RlIG9yIHByb3Bvc2UgbWUgYW4gdXBk
-YXRlZAo+Pj4gdmVyc2lvbiBvZiB0aGlzIGNvZGUuCj4+IENvdWxkIHlvdSBoZWxwIHVwZGF0ZSBu
-ZXcgdmVyc2lvbiBvZiB0aGlzIGNvZGUoc3RtIHBhcnQpIGFuZCB0aGVuIHRlc3Qgb24KPj4gc3Rt
-IHBsYXRmb3JtPwo+IEkgdGhpbmsgeW91IGNhbiBzaW1wbHkgZ29lcyBiYWNrIHRvIHRoZSBvcmln
-aW5hbCB2ZXJzaW9uIGZyb20gQnJpYW4gKHNlZQo+IHRoZSBkaXNjdXNzaW9uIHRocmVhZCBpbiBo
-dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMDc4NDkzLykKPiB1bmxlc3MgeW91
-IGhhdmUgc3BlY2lmaWMvZ29vZCByZWFzb25zIGZvciBtb2RpZnlpbmcgdGhlIGNvZGUgYXMgeW91
-IGRpZC4KbW1tLEknbSBzb3JyeSwgSSBmZWVsIGEgbGl0dGxlIHB1enpsZWQuIERvIHlvdSBtZWFu
-cyB3ZSBzaG91bGQgYWJhbmRvbgpCcmlhbidzIHBhdGNoIChodHRwczovL3BhdGNod29yay5rZXJu
-ZWwub3JnL3BhdGNoLzEwMDc4NDkzLyk/CkkgdGhpbmsgd2UgbmVlZCB0byBhZGp1c3Qgc3RtIHBh
-cnQgYmVjYXVzZcKgIGR3X21pcGlfZHNpX3N0bS5jIGNhbGxzCmJyaWRnZSdzIGRyaXZlcnMgaWYg
-d2Ugd2FudCBtZXJnZSBCcmlhbidzIHBhdGNoLgoKClRoYW5rcwo+IE1hbnkgdGhhbmtzLAo+IFBo
-aWxpcHBlIDopCj4KPj4gVGhhbmtzLAo+PiBOaWNrZXkuCj4+PiBNYW55IHRoYW5rcywKPj4+Cj4+
-PiBQaGlsaXBwZSA6LSkKPj4+Cj4+Pgo+Pj4gT24gMTIvMDEvMjAxNyAwNDo1OCBBTSwgTmlja2V5
-IFlhbmcgd3JvdGU6Cj4+Pj4gRnJvbTogQnJpYW4gTm9ycmlzPGJyaWFubm9ycmlzQGNocm9taXVt
-Lm9yZz4KPj4+Pgo+Pj4+IEJyaWRnZSBkcml2ZXJzL2hlbHBlcnMgc2hvdWxkbid0IGJlIGNsb2Ji
-ZXJpbmcgdGhlIGRydmRhdGEsIHNpbmNlIGEKPj4+PiBwYXJlbnQgZHJpdmVyIG1pZ2h0IG5lZWQg
-dG8gb3duIHRoaXMuIEluc3RlYWQsIGxldCdzIHJldHVybiBvdXIKPj4+PiAnZHdfbWlwaV9kc2kn
-IG9iamVjdCBhbmQgaGF2ZSBjYWxsZXJzIHBhc3MgdGhhdCBiYWNrIHRvIHVzIGZvciByZW1vdmFs
-Lgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzPGJyaWFubm9ycmlzQGNocm9t
-aXVtLm9yZz4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBOaWNrZXkgWWFuZzxuaWNrZXkueWFuZ0Byb2Nr
-LWNoaXBzLmNvbT4KPj4+PiBSZXZpZXdlZC1ieTogTWF0dGhpYXMgS2FlaGxja2U8bWthQGNocm9t
-aXVtLm9yZz4KPj4+PiBSZXZpZXdlZC1ieTogQXJjaGl0IFRhbmVqYTxhcmNoaXR0QGNvZGVhdXJv
-cmEub3JnPgo+Pj4+IEFja2VkLWJ5OiBQaGlsaXBwZSBDb3JudTxwaGlsaXBwZS5jb3JudUBzdC5j
-b20+Cj4+Pj4gTGluazpodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMDc4NDkz
-Lwo+Pj4+Cj4+Pj4gLS0tCj4+Pj4gQ2hhbmdlcyBpbiB2NDoKPj4+PiAtIEFkZCBGcm9tIHRhZyx1
-cGRhdGUgc3ViamVjdCBsaW5lCj4+Pj4gLSBrZWVwIHBhdGNoICJkcm0vc3RtOiBkc2k6IEFkanVz
-dCBkd19taXBpX2RzaV9wcm9iZSBhbmQgcmVtb3ZlIgo+Pj4+ICAgICAgaW4gdGhpcyBwaWVjZSB0
-b2dldGhlci4KPj4+Pgo+Pj4+ICAgICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
-LW1pcGktZHNpLmMgfCAzNiArKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0KPj4+PiAgICAgZHJp
-dmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0uYyAgICAgICAgIHwgIDggKysrLS0tCj4+
-Pj4gICAgIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19taXBpX2RzaS5oICAgICAgICAgICAgICB8IDE3
-ICsrKysrKysrLS0tLS0KPj4+PiAgICAgMyBmaWxlcyBjaGFuZ2VkLCAyOSBpbnNlcnRpb25zKCsp
-LCAzMiBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
-bm9wc3lzL2R3LW1pcGktZHNpLmMKPj4+PiBpbmRleCBkOWNjYTRmLi5jMzljN2RjIDEwMDY0NAo+
-Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwo+
-Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwo+
-Pj4+IEBAIC05MjIsOCArOTIyLDYgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9icmlkZ2VfYXR0
-YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4+Pj4gICAgIAlkc2ktPmJyaWRnZS5vZl9u
-b2RlID0gcGRldi0+ZGV2Lm9mX25vZGU7Cj4+Pj4gICAgICNlbmRpZgo+Pj4+ICAgICAKPj4+PiAt
-CWRldl9zZXRfZHJ2ZGF0YShkZXYsIGRzaSk7Cj4+Pj4gLQo+Pj4+ICAgICAJcmV0dXJuIGRzaTsK
-Pj4+PiAgICAgfQo+Pj4+ICAgICAKPj4+PiBAQCAtOTM1LDIzICs5MzMsMTYgQEAgc3RhdGljIHZv
-aWQgX19kd19taXBpX2RzaV9yZW1vdmUoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4+Pj4gICAg
-IC8qCj4+Pj4gICAgICAqIFByb2JlL3JlbW92ZSBBUEksIHVzZWQgZnJvbSBwbGF0Zm9ybXMgYmFz
-ZWQgb24gdGhlIERSTSBicmlkZ2UgQVBJLgo+Pj4+ICAgICAgKi8KPj4+PiAtaW50IGR3X21pcGlf
-ZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4+Pj4gLQkJICAgICAgY29u
-c3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQo+Pj4+ICtzdHJ1Y3Qg
-ZHdfbWlwaV9kc2kgKgo+Pj4+ICtkd19taXBpX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
-aWNlICpwZGV2LAo+Pj4+ICsJCSAgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAq
-cGxhdF9kYXRhKQo+Pj4+ICAgICB7Cj4+Pj4gLQlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaTsKPj4+
-PiAtCj4+Pj4gLQlkc2kgPSBfX2R3X21pcGlfZHNpX3Byb2JlKHBkZXYsIHBsYXRfZGF0YSk7Cj4+
-Pj4gLQlpZiAoSVNfRVJSKGRzaSkpCj4+Pj4gLQkJcmV0dXJuIFBUUl9FUlIoZHNpKTsKPj4+PiAt
-Cj4+Pj4gLQlyZXR1cm4gMDsKPj4+PiArCXJldHVybiBfX2R3X21pcGlfZHNpX3Byb2JlKHBkZXYs
-IHBsYXRfZGF0YSk7Cj4+Pj4gICAgIH0KPj4+PiAgICAgRVhQT1JUX1NZTUJPTF9HUEwoZHdfbWlw
-aV9kc2lfcHJvYmUpOwo+Pj4+ICAgICAKPj4+PiAtdm9pZCBkd19taXBpX2RzaV9yZW1vdmUoc3Ry
-dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+PiArdm9pZCBkd19taXBpX2RzaV9yZW1vdmUo
-c3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4+Pj4gICAgIHsKPj4+PiAtCXN0cnVjdCBkd19taXBp
-X2RzaSAqZHNpID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4+Pj4gLQo+Pj4+ICAgICAJ
-bWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKPj4+PiAgICAgCj4+Pj4g
-ICAgIAlfX2R3X21pcGlfZHNpX3JlbW92ZShkc2kpOwo+Pj4+IEBAIC05NjEsMzEgKzk1MiwzMCBA
-QCB2b2lkIGR3X21pcGlfZHNpX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+
-Pj4+ICAgICAvKgo+Pj4+ICAgICAgKiBCaW5kL3VuYmluZCBBUEksIHVzZWQgZnJvbSBwbGF0Zm9y
-bXMgYmFzZWQgb24gdGhlIGNvbXBvbmVudCBmcmFtZXdvcmsuCj4+Pj4gICAgICAqLwo+Pj4+IC1p
-bnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LCBzdHJ1Y3Qg
-ZHJtX2VuY29kZXIgKmVuY29kZXIsCj4+Pj4gLQkJICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9k
-c2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpCj4+Pj4gK3N0cnVjdCBkd19taXBpX2RzaSAqCj4+Pj4g
-K2R3X21pcGlfZHNpX2JpbmQoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwgc3RydWN0IGRy
-bV9lbmNvZGVyICplbmNvZGVyLAo+Pj4+ICsJCSBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxh
-dF9kYXRhICpwbGF0X2RhdGEpCj4+Pj4gICAgIHsKPj4+PiAgICAgCXN0cnVjdCBkd19taXBpX2Rz
-aSAqZHNpOwo+Pj4+ICAgICAJaW50IHJldDsKPj4+PiAgICAgCj4+Pj4gICAgIAlkc2kgPSBfX2R3
-X21pcGlfZHNpX3Byb2JlKHBkZXYsIHBsYXRfZGF0YSk7Cj4+Pj4gICAgIAlpZiAoSVNfRVJSKGRz
-aSkpCj4+Pj4gLQkJcmV0dXJuIFBUUl9FUlIoZHNpKTsKPj4+PiArCQlyZXR1cm4gZHNpOwo+Pj4+
-ICAgICAKPj4+PiAgICAgCXJldCA9IGRybV9icmlkZ2VfYXR0YWNoKGVuY29kZXIsICZkc2ktPmJy
-aWRnZSwgTlVMTCk7Cj4+Pj4gICAgIAlpZiAocmV0KSB7Cj4+Pj4gLQkJZHdfbWlwaV9kc2lfcmVt
-b3ZlKHBkZXYpOwo+Pj4+ICsJCWR3X21pcGlfZHNpX3JlbW92ZShkc2kpOwo+Pj4+ICAgICAJCURS
-TV9FUlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgYnJpZGdlIHdpdGggZHJtXG4iKTsKPj4+PiAt
-CQlyZXR1cm4gcmV0Owo+Pj4+ICsJCXJldHVybiBFUlJfUFRSKHJldCk7Cj4+Pj4gICAgIAl9Cj4+
-Pj4gICAgIAo+Pj4+IC0JcmV0dXJuIDA7Cj4+Pj4gKwlyZXR1cm4gZHNpOwo+Pj4+ICAgICB9Cj4+
-Pj4gICAgIEVYUE9SVF9TWU1CT0xfR1BMKGR3X21pcGlfZHNpX2JpbmQpOwo+Pj4+ICAgICAKPj4+
-PiAtdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2KQo+Pj4+ICt2b2lk
-IGR3X21pcGlfZHNpX3VuYmluZChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPj4+PiAgICAgewo+
-Pj4+IC0Jc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPj4+
-PiAtCj4+Pj4gICAgIAlfX2R3X21pcGlfZHNpX3JlbW92ZShkc2kpOwo+Pj4+ICAgICB9Cj4+Pj4g
-ICAgIEVYUE9SVF9TWU1CT0xfR1BMKGR3X21pcGlfZHNpX3VuYmluZCk7Cj4+Pj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3RtLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jCj4+Pj4gaW5kZXggZTViNjMxMC4uODBmOTk1MCAxMDA2
-NDQKPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jCj4+Pj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0uYwo+Pj4+IEBAIC02Niw2
-ICs2Niw3IEBAIGVudW0gZHNpX2NvbG9yIHsKPj4+PiAgICAgc3RydWN0IGR3X21pcGlfZHNpX3N0
-bSB7Cj4+Pj4gICAgIAl2b2lkIF9faW9tZW0gKmJhc2U7Cj4+Pj4gICAgIAlzdHJ1Y3QgY2xrICpw
-bGxyZWZfY2xrOwo+Pj4+ICsJc3RydWN0IGR3X21pcGlfZHNpICpkbWQ7Cj4+Pj4gICAgIH07Cj4+
-Pj4gICAgIAo+Pj4+ICAgICBzdGF0aWMgaW5saW5lIHZvaWQgZHNpX3dyaXRlKHN0cnVjdCBkd19t
-aXBpX2RzaV9zdG0gKmRzaSwgdTMyIHJlZywgdTMyIHZhbCkKPj4+PiBAQCAtMzE4LDEwICszMTks
-MTEgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldikKPj4+PiAgICAgCWR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEuYmFzZSA9IGRz
-aS0+YmFzZTsKPj4+PiAgICAgCWR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEucHJpdl9kYXRhID0g
-ZHNpOwo+Pj4+ICAgICAKPj4+PiAtCXJldCA9IGR3X21pcGlfZHNpX3Byb2JlKHBkZXYsICZkd19t
-aXBpX2RzaV9zdG1fcGxhdF9kYXRhKTsKPj4+PiAtCWlmIChyZXQpIHsKPj4+PiArCWRzaS0+ZG1k
-ID0gZHdfbWlwaV9kc2lfcHJvYmUocGRldiwgJmR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEpOwo+
-Pj4+ICsJaWYgKElTX0VSUihkc2ktPmRtZCkpIHsKPj4+PiAgICAgCQlEUk1fRVJST1IoIkZhaWxl
-ZCB0byBpbml0aWFsaXplIG1pcGkgZHNpIGhvc3RcbiIpOwo+Pj4+ICAgICAJCWNsa19kaXNhYmxl
-X3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGspOwo+Pj4+ICsJCXJldHVybiBQVFJfRVJSKGRzaS0+
-ZG1kKTsKPj4+PiAgICAgCX0KPj4+PiAgICAgCj4+Pj4gICAgIAlyZXR1cm4gcmV0Owo+Pj4+IEBA
-IC0zMzIsNyArMzM0LDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcmVtb3ZlKHN0cnVj
-dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+Pj4gICAgIAlzdHJ1Y3QgZHdfbWlwaV9kc2lfc3Rt
-ICpkc2kgPSBkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhLnByaXZfZGF0YTsKPj4+PiAgICAgCj4+
-Pj4gICAgIAljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKPj4+PiAtCWR3
-X21pcGlfZHNpX3JlbW92ZShwZGV2KTsKPj4+PiArCWR3X21pcGlfZHNpX3JlbW92ZShkc2ktPmRt
-ZCk7Cj4+Pj4gICAgIAo+Pj4+ICAgICAJcmV0dXJuIDA7Cj4+Pj4gICAgIH0KPj4+PiBkaWZmIC0t
-Z2l0IGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmggYi9pbmNsdWRlL2RybS9icmlk
-Z2UvZHdfbWlwaV9kc2kuaAo+Pj4+IGluZGV4IDliMzBmZWMuLmQ5YzZkNTQgMTAwNjQ0Cj4+Pj4g
-LS0tIGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKPj4+PiArKysgYi9pbmNsdWRl
-L2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaAo+Pj4+IEBAIC0xMCw2ICsxMCw4IEBACj4+Pj4gICAg
-ICNpZm5kZWYgX19EV19NSVBJX0RTSV9fCj4+Pj4gICAgICNkZWZpbmUgX19EV19NSVBJX0RTSV9f
-Cj4+Pj4gICAgIAo+Pj4+ICtzdHJ1Y3QgZHdfbWlwaV9kc2k7Cj4+Pj4gKwo+Pj4+ICAgICBzdHJ1
-Y3QgZHdfbWlwaV9kc2lfcGh5X29wcyB7Cj4+Pj4gICAgIAlpbnQgKCppbml0KSh2b2lkICpwcml2
-X2RhdGEpOwo+Pj4+ICAgICAJaW50ICgqZ2V0X2xhbmVfbWJwcykodm9pZCAqcHJpdl9kYXRhLCBz
-dHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKPj4+PiBAQCAtMjksMTEgKzMxLDE0IEBAIHN0
-cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgewo+Pj4+ICAgICAJdm9pZCAqcHJpdl9kYXRhOwo+
-Pj4+ICAgICB9Owo+Pj4+ICAgICAKPj4+PiAtaW50IGR3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBw
-bGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4+Pj4gLQkJICAgICAgY29uc3Qgc3RydWN0IGR3X21pcGlf
-ZHNpX3BsYXRfZGF0YSAqcGxhdF9kYXRhKTsKPj4+PiAtdm9pZCBkd19taXBpX2RzaV9yZW1vdmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldik7Cj4+Pj4gLWludCBkd19taXBpX2RzaV9iaW5k
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
-ciwKPj4+PiAtCQkgICAgIGNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRf
-ZGF0YSk7Cj4+Pj4gLXZvaWQgZHdfbWlwaV9kc2lfdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldik7
-Cj4+Pj4gK3N0cnVjdCBkd19taXBpX2RzaSAqZHdfbWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRm
-b3JtX2RldmljZSAqcGRldiwKPj4+PiArCQkJCSAgICAgIGNvbnN0IHN0cnVjdCBkd19taXBpX2Rz
-aV9wbGF0X2RhdGEKPj4+PiArCQkJCSAgICAgICpwbGF0X2RhdGEpOwo+Pj4+ICt2b2lkIGR3X21p
-cGlfZHNpX3JlbW92ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSk7Cj4+Pj4gK3N0cnVjdCBkd19t
-aXBpX2RzaSAqZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+
-Pj4+ICsJCQkJICAgICBzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4+Pj4gKwkJCQkgICAg
-IGNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEKPj4+PiArCQkJCSAgICAgKnBsYXRf
-ZGF0YSk7Cj4+Pj4gK3ZvaWQgZHdfbWlwaV9kc2lfdW5iaW5kKHN0cnVjdCBkd19taXBpX2RzaSAq
-ZHNpKTsKPj4+PiAgICAgCj4+Pj4gICAgICNlbmRpZiAvKiBfX0RXX01JUElfRFNJX18gKi8KCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Felipe,
+Hi John,
+
+
+Am 30.10.2017 um 18:08 schrieb Douglas Anderson:
+> On rk3288-veyron devices on Chrome OS it was found that plugging in an
+> Arduino-based USB device could cause the system to lockup, especially
+> if the CPU Frequency was at one of the slower operating points (like
+> 100 MHz / 200 MHz).
+>
+> Upon tracing, I found that the following was happening:
+> * The USB device (full speed) was connected to a high speed hub and
+>    then to the rk3288.  Thus, we were dealing with split transactions,
+>    which is all handled in software on dwc2.
+> * Userspace was initiating a BULK IN transfer
+> * When we sent the SSPLIT (to start the split transaction), we got an
+>    ACK.  Good.  Then we issued the CSPLIT.
+> * When we sent the CSPLIT, we got back a NAK.  We immediately (from
+>    the interrupt handler) started to retry and sent another SSPLIT.
+> * The device kept NAKing our CSPLIT, so we kept ping-ponging between
+>    sending a SSPLIT and a CSPLIT, each time sending from the interrupt
+>    handler.
+> * The handling of the interrupts was (because of the low CPU speed and
+>    the inefficiency of the dwc2 interrupt handler) was actually taking
+>    _longer_ than it took the other side to send the ACK/NAK.  Thus we
+>    were _always_ in the USB interrupt routine.
+> * The fact that USB interrupts were always going off was preventing
+>    other things from happening in the system.  This included preventing
+>    the system from being able to transition to a higher CPU frequency.
+>
+> As I understand it, there is no requirement to retry super quickly
+> after a NAK, we just have to retry sometime in the future.  Thus one
+> solution to the above is to just add a delay between getting a NAK and
+> retrying the transmission.  If this delay is sufficiently long to get
+> out of the interrupt routine then the rest of the system will be able
+> to make forward progress.  Even a 25 us delay would probably be
+> enough, but we'll be extra conservative and try to delay 1 ms (the
+> exact amount depends on HZ and the accuracy of the jiffy and how close
+> the current jiffy is to ticking, but could be as much as 20 ms or as
+> little as 1 ms).
+>
+> Presumably adding a delay like this could impact the USB throughput,
+> so we only add the delay with repeated NAKs.
+>
+> NOTE: Upon further testing of a pl2303 serial adapter, I found that
+> this fix may help with problems there.  Specifically I found that the
+> pl2303 serial adapters tend to respond with a NAK when they have
+> nothing to say and thus we end with this same sequence.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Cc: stable@vger.kernel.org
+> Reviewed-by: Julius Werner <jwerner@chromium.org>
+> Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
+> ---
+>
+> Changes in v3:
+> - Add tested-by for Stefan Wahren
+> - Sent to Felipe Balbi as candiate to land this.
+> - Add Cc for stable (it's always been broken so go as far is as easy)
+>
+> Changes in v2:
+> - Address http://crosreview.com/737520 feedback
+>
+
+does it need a resend?
