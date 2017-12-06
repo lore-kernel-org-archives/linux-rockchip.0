@@ -1,93 +1,92 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add usb3-phy phandle for dwc3.
-Date: Wed, 6 Dec 2017 12:27:34 +0100
-Message-ID: <1c672b68-5f7f-e8ec-e5a9-901d4b53e2ad@collabora.com>
-References: <20171206111008.3079-1-enric.balletbo@collabora.com>
- <20171206111008.3079-2-enric.balletbo@collabora.com>
- <1756641.7q7fHBPi13@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1756641.7q7fHBPi13@diego>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, dianders@google.com, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, groeck@chromium.org, briannorris@google.com, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH v3 06/12] dt-bindings: Document the Rockchip ISP1 bindings
+Date: Wed,  6 Dec 2017 19:19:33 +0800
+Message-ID: <20171206111939.1153-7-jacob-chen@iotwrt.com>
+References: <20171206111939.1153-1-jacob-chen@iotwrt.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171206111939.1153-1-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiAwNi8xMi8xNyAxMjoyMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0g
-TWl0dHdvY2gsIDYuIERlemVtYmVyIDIwMTcsIDEyOjEwOjA3IENFVCBzY2hyaWViIEVucmljIEJh
-bGxldGJvIGkgU2VycmE6Cj4+IFRoaXMgcGF0Y2ggYWRkcyB0aGUgdXNiMy1waHkgZm9yIGJvdGgg
-b2YgdGhlIHR3byBkd2MzIGNvbnRyb2xsZXJzIG9uCj4+IHJrMzM5OS4KPiAKPiBUaGlzIHBhdGNo
-IGFkZHMgcXVpdGUgYSBiaXQgbW9yZSB0aGFuIHRoZSBwaHkgcGhhbmRsZXMgdGhvdWdoLgo+IAo+
-IFRoZSBwb3dlcmRvbWFpbiBhZGRpdGlvbiBzaG91bGQgZGVmaW5pdGx5IGJlIGEgc2VwYXJhdGUg
-cGF0Y2gKPiBhbmQgdGhlIHVzYjMtZ3JmIGNsb2NrIGFzIHdlbGwuCj4gCgpPaywgSSdsbCBzcGxp
-dCB0aGVzZSBwYXJ0cyBhbmQgc2VuZCBpbiBhIHNlcGFyYXRlIHBhdGNoIGluIHYyLiBUaGFua3Mg
-Zm9yIHRoZQpmZWVkYmFjay4KCkVucmljCgo+IAo+IEhlaWtvCj4gCj4gCj4+IFNpZ25lZC1vZmYt
-Ynk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+
-Cj4+IC0tLQo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSB8IDI4
-ICsrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAyMCBpbnNl
-cnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LmR0c2kgaW5kZXggMTdlNWUxYS4uYzE4ZmY4OCAxMDA2NDQKPj4gLS0tIGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+PiArKysgYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+IEBAIC0zOTcsOSArMzk3LDExIEBA
-Cj4+ICAJCSNzaXplLWNlbGxzID0gPDI+Owo+PiAgCQlyYW5nZXM7Cj4+ICAJCWNsb2NrcyA9IDwm
-Y3J1IFNDTEtfVVNCM09URzBfUkVGPiwgPCZjcnUgU0NMS19VU0IzT1RHMF9TVVNQRU5EPiwKPj4g
-LQkJCSA8JmNydSBBQ0xLX1VTQjNPVEcwPiwgPCZjcnUgQUNMS19VU0IzX0dSRj47Cj4+ICsJCQkg
-PCZjcnUgQUNMS19VU0IzT1RHMD4sIDwmY3J1IEFDTEtfVVNCM19SS1NPQ19BWElfUEVSRj4sCj4+
-ICsJCQkgPCZjcnUgQUNMS19VU0IzPiwgPCZjcnUgQUNMS19VU0IzX0dSRj47Cj4+ICAJCWNsb2Nr
-LW5hbWVzID0gInJlZl9jbGsiLCAic3VzcGVuZF9jbGsiLAo+PiAtCQkJICAgICAgImJ1c19jbGsi
-LCAiZ3JmX2NsayI7Cj4+ICsJCQkgICAgICAiYnVzX2NsayIsICJhY2xrX3VzYjNfcmtzb2NfYXhp
-X3BlcmYiLAo+PiArCQkJICAgICAgImFjbGtfdXNiMyIsICJncmZfY2xrIjsKPj4gIAkJc3RhdHVz
-ID0gImRpc2FibGVkIjsKPj4KPj4gIAkJdXNiZHJkX2R3YzNfMDogZHdjMyB7Cj4+IEBAIC00MDcs
-MTQgKzQwOSwxNSBAQAo+PiAgCQkJcmVnID0gPDB4MCAweGZlODAwMDAwIDB4MCAweDEwMDAwMD47
-Cj4+ICAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTA1IElSUV9UWVBFX0xFVkVMX0hJR0ggMD47
-Cj4+ICAJCQlkcl9tb2RlID0gIm90ZyI7Cj4+IC0JCQlwaHlzID0gPCZ1MnBoeTBfb3RnPjsKPj4g
-LQkJCXBoeS1uYW1lcyA9ICJ1c2IyLXBoeSI7Cj4+ICsJCQlwaHlzID0gPCZ1MnBoeTBfb3RnPiwg
-PCZ0Y3BoeTBfdXNiMz47Cj4+ICsJCQlwaHktbmFtZXMgPSAidXNiMi1waHkiLCAidXNiMy1waHki
-Owo+PiAgCQkJcGh5X3R5cGUgPSAidXRtaV93aWRlIjsKPj4gIAkJCXNucHMsZGlzX2VuYmxzbHBt
-X3F1aXJrOwo+PiAgCQkJc25wcyxkaXMtdTItZnJlZWNsay1leGlzdHMtcXVpcms7Cj4+ICAJCQlz
-bnBzLGRpc191Ml9zdXNwaHlfcXVpcms7Cj4+ICAJCQlzbnBzLGRpcy1kZWwtcGh5LXBvd2VyLWNo
-Zy1xdWlyazsKPj4gIAkJCXNucHMsZGlzLXR4LWlwZ2FwLWxpbmVjaGVjay1xdWlyazsKPj4gKwkJ
-CXBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9VU0IzPjsKPj4gIAkJCXN0YXR1cyA9
-ICJkaXNhYmxlZCI7Cj4+ICAJCX07Cj4+ICAJfTsKPj4gQEAgLTQyNSw5ICs0MjgsMTEgQEAKPj4g
-IAkJI3NpemUtY2VsbHMgPSA8Mj47Cj4+ICAJCXJhbmdlczsKPj4gIAkJY2xvY2tzID0gPCZjcnUg
-U0NMS19VU0IzT1RHMV9SRUY+LCA8JmNydSBTQ0xLX1VTQjNPVEcxX1NVU1BFTkQ+LAo+PiAtCQkJ
-IDwmY3J1IEFDTEtfVVNCM09URzE+LCA8JmNydSBBQ0xLX1VTQjNfR1JGPjsKPj4gKwkJCSA8JmNy
-dSBBQ0xLX1VTQjNPVEcxPiwgPCZjcnUgQUNMS19VU0IzX1JLU09DX0FYSV9QRVJGPiwKPj4gKwkJ
-CSA8JmNydSBBQ0xLX1VTQjM+LCA8JmNydSBBQ0xLX1VTQjNfR1JGPjsKPj4gIAkJY2xvY2stbmFt
-ZXMgPSAicmVmX2NsayIsICJzdXNwZW5kX2NsayIsCj4+IC0JCQkgICAgICAiYnVzX2NsayIsICJn
-cmZfY2xrIjsKPj4gKwkJCSAgICAgICJidXNfY2xrIiwgImFjbGtfdXNiM19ya3NvY19heGlfcGVy
-ZiIsCj4+ICsJCQkgICAgICAiYWNsa191c2IzIiwgImdyZl9jbGsiOwo+PiAgCQlzdGF0dXMgPSAi
-ZGlzYWJsZWQiOwo+Pgo+PiAgCQl1c2JkcmRfZHdjM18xOiBkd2MzIHsKPj4gQEAgLTQzNSwxNCAr
-NDQwLDE1IEBACj4+ICAJCQlyZWcgPSA8MHgwIDB4ZmU5MDAwMDAgMHgwIDB4MTAwMDAwPjsKPj4g
-IAkJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxMTAgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPj4g
-IAkJCWRyX21vZGUgPSAib3RnIjsKPj4gLQkJCXBoeXMgPSA8JnUycGh5MV9vdGc+Owo+PiAtCQkJ
-cGh5LW5hbWVzID0gInVzYjItcGh5IjsKPj4gKwkJCXBoeXMgPSA8JnUycGh5MV9vdGc+LCA8JnRj
-cGh5MV91c2IzPjsKPj4gKwkJCXBoeS1uYW1lcyA9ICJ1c2IyLXBoeSIsICJ1c2IzLXBoeSI7Cj4+
-ICAJCQlwaHlfdHlwZSA9ICJ1dG1pX3dpZGUiOwo+PiAgCQkJc25wcyxkaXNfZW5ibHNscG1fcXVp
-cms7Cj4+ICAJCQlzbnBzLGRpcy11Mi1mcmVlY2xrLWV4aXN0cy1xdWlyazsKPj4gIAkJCXNucHMs
-ZGlzX3UyX3N1c3BoeV9xdWlyazsKPj4gIAkJCXNucHMsZGlzLWRlbC1waHktcG93ZXItY2hnLXF1
-aXJrOwo+PiAgCQkJc25wcyxkaXMtdHgtaXBnYXAtbGluZWNoZWNrLXF1aXJrOwo+PiArCQkJcG93
-ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszMzk5X1BEX1VTQjM+Owo+PiAgCQkJc3RhdHVzID0gImRp
-c2FibGVkIjsKPj4gIAkJfTsKPj4gIAl9Owo+PiBAQCAtOTkxLDYgKzk5NywxMiBAQAo+PiAgCQkJ
-CWNsb2NrcyA9IDwmY3J1IEhDTEtfU0RJTz47Cj4+ICAJCQkJcG1fcW9zID0gPCZxb3Nfc2Rpb2F1
-ZGlvPjsKPj4gIAkJCX07Cj4+ICsJCQlwZF91c2IzQFJLMzM5OV9QRF9VU0IzIHsKPj4gKwkJCQly
-ZWcgPSA8UkszMzk5X1BEX1VTQjM+Owo+PiArCQkJCWNsb2NrcyA9IDwmY3J1IEFDTEtfVVNCMz47
-Cj4+ICsJCQkJcG1fcW9zID0gPCZxb3NfdXNiX290ZzA+LAo+PiArCQkJCQkgPCZxb3NfdXNiX290
-ZzE+Owo+PiArCQkJfTsKPj4gIAkJCXBkX3Zpb0BSSzMzOTlfUERfVklPIHsKPj4gIAkJCQlyZWcg
-PSA8UkszMzk5X1BEX1ZJTz47Cj4+ICAJCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gCj4gCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0t
-a2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2Vy
-bmVsCg==
+From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Add DT bindings documentation for Rockchip ISP1
+
+Signed-off-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ .../devicetree/bindings/media/rockchip-isp1.txt    | 57 ++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-isp1.txt
+
+diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.txt b/Documentation/devicetree/bindings/media/rockchip-isp1.txt
+new file mode 100644
+index 000000000000..0971ed94ed69
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip-isp1.txt
+@@ -0,0 +1,57 @@
++Rockchip SoC Image Signal Processing unit v1
++----------------------------------------------
++
++Rockchip ISP1 is the Camera interface for the Rockchip series of SoCs
++which contains image processing, scaling, and compression funcitons.
++
++Required properties:
++  - compatible: value should be one of the following
++      "rockchip,rk3288-cif-isp";
++      "rockchip,rk3399-cif-isp";
++  - reg : offset and length of the register set for the device.
++  - interrupts: should contain ISP interrupt.
++  - clocks: phandle to the required clocks.
++  - clock-names: required clock name.
++  - iommus: required a iommu node.
++
++The device node should contain one 'port' child node with child 'endpoint'
++nodes, according to the bindings defined in Documentation/devicetree/bindings/
++media/video-interfaces.txt.
++
++For sensor with a parallel video bus, it could be linked directly to the isp.
++For sensor with a MIPI CSI-2 video bus, it should be linked through the
++MIPI-DPHY, which is defined in rockchip-mipi-dphy.txt.
++
++Device node example
++-------------------
++
++	isp0: isp0@ff910000 {
++		compatible = "rockchip,rk3399-cif-isp";
++		reg = <0x0 0xff910000 0x0 0x4000>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_ISP0>,
++			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
++			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
++		clock-names = "clk_isp",
++			      "aclk_isp", "aclk_isp_wrap",
++			      "hclk_isp", "hclk_isp_wrap";
++		power-domains = <&power RK3399_PD_ISP0>;
++		iommus = <&isp0_mmu>;
++	
++		port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			/* mipi */
++			isp0_mipi_in: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&dphy_rx0_out>;
++			};
++
++			/* parallel */
++			isp0_parallel_in: endpoint@1 {
++				reg = <1>;
++				remote-endpoint = <&ov5640_out>;
++			};
++		};
++	};
+-- 
+2.15.0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
