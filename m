@@ -1,44 +1,77 @@
 From: Stefan Potyra <Stefan.Potyra@elektrobit.com>
-Subject: [PATCH] phy: rockchip-inno-usb2: disable clock on error
-Date: Wed, 6 Dec 2017 15:26:11 +0100
-Message-ID: <20171206142611.qmbxbx5pxpwubhj6@agrajag.zerfleddert.de>
+Subject: [PATCH] SoC: rockchip: disable clock on error
+Date: Wed, 6 Dec 2017 16:03:24 +0100
+Message-ID: <20171206150324.va4ph66ohjt3v7r3@agrajag.zerfleddert.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Cc: ldv-project@linuxtesting.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In devm_of_phy_provider_register, the previously enabled clock rphy->clk
-is now disabled, if devm_of_phy_provider_register() failed.
+Disable the clocks in  rk_spdif_probe when an error occurs after one
+of the clocks has been enabled previously.
 
 Found by Linux Driver Verification project (linuxtesting.org).
 
-Fixes: e08d2a727e6 phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+Fixes: f874b80e1571 ASoC: rockchip: Add rockchip SPDIF transceiver driver
 Signed-off-by: Stefan Potyra <Stefan.Potyra@elektrobit.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ sound/soc/rockchip/rockchip_spdif.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 5049dac79bd0..06827f4f49b3 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1202,10 +1202,11 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index ee5055d47d13..a89fe9b6463b 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -322,26 +322,30 @@ static int rk_spdif_probe(struct platform_device *pdev)
+ 	spdif->mclk = devm_clk_get(&pdev->dev, "mclk");
+ 	if (IS_ERR(spdif->mclk)) {
+ 		dev_err(&pdev->dev, "Can't retrieve rk_spdif master clock\n");
+-		return PTR_ERR(spdif->mclk);
++		ret = PTR_ERR(spdif->mclk);
++		goto err_disable_hclk;
  	}
  
- 	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
--	return PTR_ERR_OR_ZERO(provider);
-+	ret = PTR_ERR_OR_ZERO(provider);
+ 	ret = clk_prepare_enable(spdif->mclk);
+ 	if (ret) {
+ 		dev_err(spdif->dev, "clock enable failed %d\n", ret);
+-		return ret;
++		goto err_disable_clocks;
+ 	}
  
- put_child:
--	of_node_put(child_np);
-+	if (child_np)
-+		of_node_put(child_np);
- disable_clks:
- 	if (rphy->clk) {
- 		clk_disable_unprepare(rphy->clk);
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	regs = devm_ioremap_resource(&pdev->dev, res);
+-	if (IS_ERR(regs))
+-		return PTR_ERR(regs);
++	if (IS_ERR(regs)) {
++		ret = PTR_ERR(regs);
++		goto err_disable_clocks;
++	}
+ 
+ 	spdif->regmap = devm_regmap_init_mmio_clk(&pdev->dev, "hclk", regs,
+ 						  &rk_spdif_regmap_config);
+ 	if (IS_ERR(spdif->regmap)) {
+ 		dev_err(&pdev->dev,
+ 			"Failed to initialise managed register map\n");
+-		return PTR_ERR(spdif->regmap);
++		ret = PTR_ERR(spdif->regmap);
++		goto err_disable_clocks;
+ 	}
+ 
+ 	spdif->playback_dma_data.addr = res->start + SPDIF_SMPDR;
+@@ -373,6 +377,10 @@ static int rk_spdif_probe(struct platform_device *pdev)
+ 
+ err_pm_runtime:
+ 	pm_runtime_disable(&pdev->dev);
++err_disable_clocks:
++	clk_disable_unprepare(spdif->mclk);
++err_disable_hclk:
++	clk_disable_unprepare(spdif->hclk);
+ 
+ 	return ret;
+ }
 -- 
 2.15.1
