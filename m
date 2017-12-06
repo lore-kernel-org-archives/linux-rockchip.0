@@ -1,13 +1,13 @@
-From: Jacob Chen <jacob-chen@iotwrt.com>
-Subject: [PATCH v3 09/12] ARM: dts: rockchip: add rx0 mipi-phy for rk3288
-Date: Wed,  6 Dec 2017 19:19:36 +0800
-Message-ID: <20171206111939.1153-10-jacob-chen@iotwrt.com>
-References: <20171206111939.1153-1-jacob-chen@iotwrt.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH 2/3] arm64: dts: rockchip: add usb3-phy phandle for dwc3.
+Date: Wed,  6 Dec 2017 12:10:07 +0100
+Message-ID: <20171206111008.3079-2-enric.balletbo@collabora.com>
+References: <20171206111008.3079-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20171206111939.1153-1-jacob-chen@iotwrt.com>
+In-Reply-To: <20171206111008.3079-1-enric.balletbo@collabora.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,36 +17,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org
-Cc: Jose.Abreu@synopsys.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, Joao.Pinto@synopsys.com, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, Luis.Oliveira@synopsys.com, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, allon.huang@rock-chips.com, mchehab@kernel.org, zhengsq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dianders@google.com, linux-rockchip@lists.infradead.org, groeck@chromium.org, briannorris@google.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jacob Chen <jacob2.chen@rock-chips.com>
+This patch adds the usb3-phy for both of the two dwc3 controllers on
+rk3399.
 
-It's a Designware MIPI D-PHY, used by ISP in rk3288.
-
-Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 28 ++++++++++++++++++++--------
+ 1 file changed, 20 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index ea1dda001043..baeedd2cb351 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -864,6 +864,13 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 17e5e1a..c18ff88 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -397,9 +397,11 @@
+ 		#size-cells = <2>;
+ 		ranges;
+ 		clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
+-			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_GRF>;
++			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_RKSOC_AXI_PERF>,
++			 <&cru ACLK_USB3>, <&cru ACLK_USB3_GRF>;
+ 		clock-names = "ref_clk", "suspend_clk",
+-			      "bus_clk", "grf_clk";
++			      "bus_clk", "aclk_usb3_rksoc_axi_perf",
++			      "aclk_usb3", "grf_clk";
+ 		status = "disabled";
+ 
+ 		usbdrd_dwc3_0: dwc3 {
+@@ -407,14 +409,15 @@
+ 			reg = <0x0 0xfe800000 0x0 0x100000>;
+ 			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			dr_mode = "otg";
+-			phys = <&u2phy0_otg>;
+-			phy-names = "usb2-phy";
++			phys = <&u2phy0_otg>, <&tcphy0_usb3>;
++			phy-names = "usb2-phy", "usb3-phy";
+ 			phy_type = "utmi_wide";
+ 			snps,dis_enblslpm_quirk;
+ 			snps,dis-u2-freeclk-exists-quirk;
+ 			snps,dis_u2_susphy_quirk;
+ 			snps,dis-del-phy-power-chg-quirk;
+ 			snps,dis-tx-ipgap-linecheck-quirk;
++			power-domains = <&power RK3399_PD_USB3>;
  			status = "disabled";
  		};
+ 	};
+@@ -425,9 +428,11 @@
+ 		#size-cells = <2>;
+ 		ranges;
+ 		clocks = <&cru SCLK_USB3OTG1_REF>, <&cru SCLK_USB3OTG1_SUSPEND>,
+-			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_GRF>;
++			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_RKSOC_AXI_PERF>,
++			 <&cru ACLK_USB3>, <&cru ACLK_USB3_GRF>;
+ 		clock-names = "ref_clk", "suspend_clk",
+-			      "bus_clk", "grf_clk";
++			      "bus_clk", "aclk_usb3_rksoc_axi_perf",
++			      "aclk_usb3", "grf_clk";
+ 		status = "disabled";
  
-+		mipi_phy_rx0: mipi-phy-rx0 {
-+			compatible = "rockchip,rk3288-mipi-dphy";
-+			clocks = <&cru SCLK_MIPIDSI_24M>, <&cru PCLK_MIPI_CSI>;
-+			clock-names = "dphy-ref", "pclk";
-+			status = "disabled";
-+		};
-+
- 		io_domains: io-domains {
- 			compatible = "rockchip,rk3288-io-voltage-domain";
+ 		usbdrd_dwc3_1: dwc3 {
+@@ -435,14 +440,15 @@
+ 			reg = <0x0 0xfe900000 0x0 0x100000>;
+ 			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			dr_mode = "otg";
+-			phys = <&u2phy1_otg>;
+-			phy-names = "usb2-phy";
++			phys = <&u2phy1_otg>, <&tcphy1_usb3>;
++			phy-names = "usb2-phy", "usb3-phy";
+ 			phy_type = "utmi_wide";
+ 			snps,dis_enblslpm_quirk;
+ 			snps,dis-u2-freeclk-exists-quirk;
+ 			snps,dis_u2_susphy_quirk;
+ 			snps,dis-del-phy-power-chg-quirk;
+ 			snps,dis-tx-ipgap-linecheck-quirk;
++			power-domains = <&power RK3399_PD_USB3>;
  			status = "disabled";
+ 		};
+ 	};
+@@ -991,6 +997,12 @@
+ 				clocks = <&cru HCLK_SDIO>;
+ 				pm_qos = <&qos_sdioaudio>;
+ 			};
++			pd_usb3@RK3399_PD_USB3 {
++				reg = <RK3399_PD_USB3>;
++				clocks = <&cru ACLK_USB3>;
++				pm_qos = <&qos_usb_otg0>,
++					 <&qos_usb_otg1>;
++			};
+ 			pd_vio@RK3399_PD_VIO {
+ 				reg = <RK3399_PD_VIO>;
+ 				#address-cells = <1>;
 -- 
-2.15.0
+2.9.3
