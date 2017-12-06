@@ -1,63 +1,84 @@
-From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: [PATCH v5 0/3] Update ROCKCHIP DSI driver that uses dw-mipi-dsi bridge
-Date: Wed,  6 Dec 2017 16:33:23 +0800
-Message-ID: <1512549206-25638-1-git-send-email-nickey.yang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, briannorris@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com, nickey.yang@rock-chips.com
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 3/3] arm64: dts: rockchip: add extcon nodes and enable tcphy.
+Date: Wed,  6 Dec 2017 12:10:08 +0100
+Message-ID: <20171206111008.3079-3-enric.balletbo@collabora.com>
+References: <20171206111008.3079-1-enric.balletbo@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171206111008.3079-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: MyungJoo Ham <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We now have a generic dw-mipi-dsi bridge driver.So we send
-this patchs to moving rockchip dw-mipi-dsi driver to that
-in order to add new features(dual mipi support).
-Update ROCKCHIP DSI controller driver that uses the Synopsys
-DesignWare MIPI DSI host controller bridge.
+Enable tcphy and create the cros-ec's extcon node for the USB Type-C port.
 
-ChangeLog:
-v2:
-   add err_pllref、remove unnecessary encoder.enable & disable
-   correct spelling mistakes
-v3:
-   add Brian's patch "drm/bridge/synopsys: stop clobbering drvdata"
-   (Link:https://patchwork.kernel.org/patch/10078493/)
-   adjust drm/stm/dsi code for above
-   drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver:
-       call dw_mipi_dsi_unbind() in dw_mipi_dsi_rockchip_unbind()
-       fix typo, use of_device_get_match_data(),
-       change some ‘bind()’ logic into 'probe()'
-       add 'dev_set_drvdata()'
-v4:
-   keep "drm/stm: dsi: Adjust dw_mipi_dsi_probe and remove"
-   into Brians "drm/bridge/synopsys: stop clobbering drvdata"
-   add review tag and add some comments 
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-v5:
-  1/3: fix stm part remove() directly referencing the static
-  dw_mipi_dsi_stm_plat_data struct.
-  3/3: keep our power domain enabled while touching GRF
-   
-Nickey Yang (3):
-  drm/bridge/synopsys: dsi: stop clobbering drvdata
-  dt-bindings: display: rockchip: update DSI controller
-  drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver
-
- .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   23 +-
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |   36 +-
- drivers/gpu/drm/rockchip/Kconfig                   |    2 +-
- drivers/gpu/drm/rockchip/Makefile                  |    2 +-
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 1349 --------------------
- drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c    |  786 ++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |    2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |    2 +-
- drivers/gpu/drm/stm/dw_mipi_dsi-stm.c              |   10 +-
- include/drm/bridge/dw_mipi_dsi.h                   |   17 +-
- 10 files changed, 841 insertions(+), 1388 deletions(-)
- delete mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi.c
- create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 470105d..03f1950 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -855,6 +855,20 @@ ap_i2c_audio: &i2c8 {
+ 			compatible = "google,cros-ec-pwm";
+ 			#pwm-cells = <1>;
+ 		};
++
++		usbc_extcon0: extcon@0 {
++			compatible = "google,extcon-usbc-cros-ec";
++			google,usb-port-id = <0>;
++
++			#extcon-cells = <0>;
++		};
++
++		usbc_extcon1: extcon@1 {
++			compatible = "google,extcon-usbc-cros-ec";
++			google,usb-port-id = <1>;
++
++			#extcon-cells = <0>;
++		};
+ 	};
+ };
+ 
+@@ -865,6 +879,16 @@ ap_i2c_audio: &i2c8 {
+ 	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
+ };
+ 
++&tcphy0 {
++	status = "okay";
++	extcon = <&usbc_extcon0>;
++};
++
++&tcphy1 {
++	status = "okay";
++	extcon = <&usbc_extcon1>;
++};
++
+ &u2phy0 {
+ 	status = "okay";
+ };
+@@ -911,6 +935,7 @@ ap_i2c_audio: &i2c8 {
+ 
+ &usbdrd3_0 {
+ 	status = "okay";
++	extcon = <&usbc_extcon0>;
+ };
+ 
+ &usbdrd_dwc3_0 {
+@@ -920,6 +945,7 @@ ap_i2c_audio: &i2c8 {
+ 
+ &usbdrd3_1 {
+ 	status = "okay";
++	extcon = <&usbc_extcon1>;
+ };
+ 
+ &usbdrd_dwc3_1 {
 -- 
-1.9.1
+2.9.3
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
