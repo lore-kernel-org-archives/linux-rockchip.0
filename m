@@ -1,51 +1,44 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: limit rk3328-rock64 gmac speed to
- 100MBit for now
-Date: Wed,  6 Dec 2017 01:14:46 +0100
-Message-ID: <20171206001446.26810-1-heiko@sntech.de>
+From: Stefan Potyra <Stefan.Potyra@elektrobit.com>
+Subject: [PATCH] phy: rockchip-inno-usb2: disable clock on error
+Date: Wed, 6 Dec 2017 15:26:11 +0100
+Message-ID: <20171206142611.qmbxbx5pxpwubhj6@agrajag.zerfleddert.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: ldv-project@linuxtesting.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It looks like either the current kernel or the hardware has reliability
-issues when the gmac is actually running at 1GBit. In my test-case
-it is not able to boot on a nfsroot at this speed, as the system
-will always lose the connection to the nfs-server during boot, before
-reaching any login prompt and not recover from this.
+In devm_of_phy_provider_register, the previously enabled clock rphy->clk
+is now disabled, if devm_of_phy_provider_register() failed.
 
-So until this is solved, limit the speed to 100MBit as with this the
-nfsroot survives stress tests like an apt-get upgrade without problems.
+Found by Linux Driver Verification project (linuxtesting.org).
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Fixes: e08d2a727e6 phy: rockchip-inno-usb2: add a new driver for Rockchip usb2phy
+Signed-off-by: Stefan Potyra <Stefan.Potyra@elektrobit.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index d4f80786e7c2..3890468678ce 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -132,6 +132,8 @@
- 	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
- 	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
- 	clock_in_out = "input";
-+	/* shows instability at 1GBit right now */
-+	max-speed = <100>;
- 	phy-supply = <&vcc_io>;
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 5049dac79bd0..06827f4f49b3 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1202,10 +1202,11 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+-	return PTR_ERR_OR_ZERO(provider);
++	ret = PTR_ERR_OR_ZERO(provider);
+ 
+ put_child:
+-	of_node_put(child_np);
++	if (child_np)
++		of_node_put(child_np);
+ disable_clks:
+ 	if (rphy->clk) {
+ 		clk_disable_unprepare(rphy->clk);
 -- 
-2.14.2
+2.15.1
