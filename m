@@ -1,15 +1,11 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH 1/3] extcon: usbc-cros-ec: add support to notify USB type
- cables.
-Date: Wed, 6 Dec 2017 15:43:40 +0000
-Message-ID: <20171206154340.nzvk4svwliqxjk5u@dell>
-References: <20171206111008.3079-1-enric.balletbo@collabora.com>
+From: Branislav Radocaj <branislav@radocaj.org>
+Subject: [PATCH] net: ethernet: arc: fix error handling in emac_rockchip_probe
+Date: Wed,  6 Dec 2017 18:24:33 +0100
+Message-ID: <20171206172433.3457-1-branislav@radocaj.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20171206111008.3079-1-enric.balletbo@collabora.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,48 +15,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, dianders@google.com, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, groeck@chromium.org, briannorris@google.com, Benson Leung <bleung@chromium.org>, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de, netdev@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Branislav Radocaj <branislav@radocaj.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCAwNiBEZWMgMjAxNywgRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSB3cm90ZToKCj4gRnJv
-bTogQmVuc29uIExldW5nIDxibGV1bmdAY2hyb21pdW0ub3JnPgo+IAo+IEV4dGVuZCB0aGUgZHJp
-dmVyIHRvIG5vdGlmeSBob3N0IGFuZCBkZXZpY2UgdHlwZSBjYWJsZXMgYW5kIHRoZSBwcmVzZW5j
-ZQo+IG9mIHBvd2VyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEJlbnNvbiBMZXVuZyA8YmxldW5nQGNo
-cm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJp
-Yy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2V4dGNvbi9leHRjb24t
-dXNiYy1jcm9zLWVjLmMgfCAxNDIgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0K
-PiAgaW5jbHVkZS9saW51eC9tZmQvY3Jvc19lY19jb21tYW5kcy5oIHwgIDE3ICsrKysrCj4gIDIg
-ZmlsZXMgY2hhbmdlZCwgMTU1IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpbLi4uXQoK
-PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9tZmQvY3Jvc19lY19jb21tYW5kcy5oIGIvaW5j
-bHVkZS9saW51eC9tZmQvY3Jvc19lY19jb21tYW5kcy5oCj4gaW5kZXggMmIxNmU5NS4uYzkwNzM1
-MyAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2xpbnV4L21mZC9jcm9zX2VjX2NvbW1hbmRzLmgKPiAr
-KysgYi9pbmNsdWRlL2xpbnV4L21mZC9jcm9zX2VjX2NvbW1hbmRzLmgKPiBAQCAtMjkwNCwxNiAr
-MjkwNCwzMyBAQCBlbnVtIHVzYl9wZF9jb250cm9sX211eCB7Cj4gIAlVU0JfUERfQ1RSTF9NVVhf
-QVVUTyA9IDUsCj4gIH07Cj4gIAo+ICtlbnVtIHVzYl9wZF9jb250cm9sX3N3YXAgewo+ICsJVVNC
-X1BEX0NUUkxfU1dBUF9OT05FID0gMCwKPiArCVVTQl9QRF9DVFJMX1NXQVBfREFUQSA9IDEsCj4g
-KwlVU0JfUERfQ1RSTF9TV0FQX1BPV0VSID0gMiwKPiArCVVTQl9QRF9DVFJMX1NXQVBfVkNPTk4g
-PSAzLAo+ICsJVVNCX1BEX0NUUkxfU1dBUF9DT1VOVAo+ICt9Owo+ICsKPiAgc3RydWN0IGVjX3Bh
-cmFtc191c2JfcGRfY29udHJvbCB7Cj4gIAl1aW50OF90IHBvcnQ7Cj4gIAl1aW50OF90IHJvbGU7
-Cj4gIAl1aW50OF90IG11eDsKPiArCXVpbnQ4X3Qgc3dhcDsKPiAgfSBfX3BhY2tlZDsKPiAgCj4g
-ICNkZWZpbmUgUERfQ1RSTF9SRVNQX0VOQUJMRURfQ09NTVMgICAgICAoMSA8PCAwKSAvKiBDb21t
-dW5pY2F0aW9uIGVuYWJsZWQgKi8KPiAgI2RlZmluZSBQRF9DVFJMX1JFU1BfRU5BQkxFRF9DT05O
-RUNURUQgICgxIDw8IDEpIC8qIERldmljZSBjb25uZWN0ZWQgKi8KPiAgI2RlZmluZSBQRF9DVFJM
-X1JFU1BfRU5BQkxFRF9QRF9DQVBBQkxFICgxIDw8IDIpIC8qIFBhcnRuZXIgaXMgUEQgY2FwYWJs
-ZSAqLwo+ICAKPiArI2RlZmluZSBQRF9DVFJMX1JFU1BfUk9MRV9QT1dFUiAgICAgICAgICgxIDw8
-IDApIC8qIDA9U05LLzE9U1JDICovCj4gKyNkZWZpbmUgUERfQ1RSTF9SRVNQX1JPTEVfREFUQSAg
-ICAgICAgICAoMSA8PCAxKSAvKiAwPVVGUC8xPURGUCAqLwo+ICsjZGVmaW5lIFBEX0NUUkxfUkVT
-UF9ST0xFX1ZDT05OICAgICAgICAgKDEgPDwgMikgLyogVmNvbm4gc3RhdHVzICovCj4gKyNkZWZp
-bmUgUERfQ1RSTF9SRVNQX1JPTEVfRFJfUE9XRVIgICAgICAoMSA8PCAzKSAvKiBQYXJ0bmVyIGlz
-IGR1YWxyb2xlIHBvd2VyICovCj4gKyNkZWZpbmUgUERfQ1RSTF9SRVNQX1JPTEVfRFJfREFUQSAg
-ICAgICAoMSA8PCA0KSAvKiBQYXJ0bmVyIGlzIGR1YWxyb2xlIGRhdGEgKi8KPiArI2RlZmluZSBQ
-RF9DVFJMX1JFU1BfUk9MRV9VU0JfQ09NTSAgICAgICgxIDw8IDUpIC8qIFBhcnRuZXIgVVNCIGNv
-bW0gY2FwYWJsZSAqLwo+ICsjZGVmaW5lIFBEX0NUUkxfUkVTUF9ST0xFX0VYVF9QT1dFUkVEICAg
-KDEgPDwgNikgLyogUGFydG5lciBleHRlcm5hbGx5IHBvd2VyZCAqLwoKTG9va3MgbGlrZSB0aGUg
-QklUKCkgbWFjcm8gd291bGQgc2VydmUgeW91IHdlbGwgaGVyZS4KCi0tIApMZWUgSm9uZXMKTGlu
-YXJvIFNlcnZpY2VzIFRlY2huaWNhbCBMZWFkCkxpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNv
-ZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBC
-bG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
-cm0ta2VybmVsCg==
+    If clk_set_rate() fails, we should disable clk
+    before return.
+
+    Found by Linux Driver Verification project (linuxtesting.org).
+
+    Signed-off-by: Branislav Radocaj <branislav@radocaj.org>
+---
+ drivers/net/ethernet/arc/emac_rockchip.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
+index e278e3d96ee0..c6163874e4e7 100644
+--- a/drivers/net/ethernet/arc/emac_rockchip.c
++++ b/drivers/net/ethernet/arc/emac_rockchip.c
+@@ -220,9 +220,11 @@ static int emac_rockchip_probe(struct platform_device *pdev)
+ 
+ 		/* RMII TX/RX needs always a rate of 25MHz */
+ 		err = clk_set_rate(priv->macclk, 25000000);
+-		if (err)
++		if (err) {
+ 			dev_err(dev,
+ 				"failed to change mac clock rate (%d)\n", err);
++			goto out_clk_disable_macclk;
++		}
+ 	}
+ 
+ 	err = arc_emac_probe(ndev, interface);
+@@ -232,7 +234,8 @@ static int emac_rockchip_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	return 0;
+-
++out_clk_disable_macclk:
++	clk_disable_unprepare(priv->macclk);
+ out_regulator_disable:
+ 	if (priv->regulator)
+ 		regulator_disable(priv->regulator);
+-- 
+2.11.0
