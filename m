@@ -1,110 +1,88 @@
 From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: Re: [PATCH v4 1/3] drm/bridge/synopsys: dsi: stop clobbering drvdata
-Date: Wed, 6 Dec 2017 15:16:28 +0800
-Message-ID: <f1bd1246-98d1-3d48-ae9f-657eff39d3a2@rock-chips.com>
-References: <1512100685-4015-1-git-send-email-nickey.yang@rock-chips.com>
- <1512100685-4015-2-git-send-email-nickey.yang@rock-chips.com>
- <5605c3c2-56ad-2289-c3c0-78cde1152123@st.com>
- <c6a53132-1ee3-00be-d52d-218560c07975@rock-chips.com>
- <1700743e-04b0-90ea-d393-dbfebf93742f@st.com>
- <206b071f-2b57-c4a2-31b3-2f469091e5e2@rock-chips.com>
- <20171205185651.GA136446@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH v5 2/3] dt-bindings: display: rockchip: update DSI controller
+Date: Wed,  6 Dec 2017 16:33:25 +0800
+Message-ID: <1512549206-25638-3-git-send-email-nickey.yang@rock-chips.com>
+References: <1512549206-25638-1-git-send-email-nickey.yang@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171205185651.GA136446@google.com>
-Content-Language: en-US
+In-Reply-To: <1512549206-25638-1-git-send-email-nickey.yang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Philippe CORNU <philippe.cornu@st.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "airlied@linux.ie" <airlied@linux.ie>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, "seanpaul@chromium.org" <seanpaul@chromium.org>, "mka@chromium.org" <mka@chromium.org>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "architt@codeaurora.org" <architt@codeaurora.org>, Yannick FERTRE <yannick.fertre@st.com>, "hl@rock-chips.com" <hl@rock-chips.com>, zyw@ro
+To: robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, briannorris@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com, nickey.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
+This patch update describe panel/port links, including
+unit addresses in documentation of device tree bindings
+for the rockchip DSI controller based on the Synopsys
+DesignWare MIPI DSI host controller.
 
+Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
+Reviewed-by: Brian Norris <briannorris@chromium.org>
 
-On 2017年12月06日 02:56, Brian Norris wrote:
-> Hi Nickey,
->
-> On Tue, Dec 05, 2017 at 05:14:11PM +0800, Nickey Yang wrote:
->> On 2017年12月01日 18:07, Philippe CORNU wrote:
->>> On 12/01/2017 10:11 AM, Nickey Yang wrote:
->>>> On 2017年12月01日 16:32, Philippe CORNU wrote:
->>>>> I am sorry to say that but you can not add my "Acked-by" to this patch
->>>>> because this code is different from the "original" one from Brian (which
->>>>> got my "Acked-by").
->>>> I'm sorry I didn't think much about it, Thank you for correcting me.
->>>>> Sometimes it is not an issue because differences are not important but
->>>>> in this particular case, the code is really different: you have remove
->>>>> platform_set_drvdata() & platform_get_drvdata() in the stm part.
->>>>>
->>>>> Could you please go back to the original code or propose me an updated
->>>>> version of this code.
->>>> Could you help update new version of this code(stm part) and then test on
->>>> stm platform?
->>> I think you can simply goes back to the original version from Brian (see
->>> the discussion thread in https://patchwork.kernel.org/patch/10078493/)
->>> unless you have specific/good reasons for modifying the code as you did.
->> mmm,I'm sorry, I feel a little puzzled. Do you means we should abandon
->> Brian's patch (https://patchwork.kernel.org/patch/10078493/)?
->> I think we need to adjust stm part because  dw_mipi_dsi_stm.c calls
->> bridge's drivers if we want merge Brian's patch.
-> It's really simple. Your code is different from the patch I sent, and in
-> a way that Philippe did not like. I'll highlight it again below:
->
->>>>>> diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
->>>>>> index e5b6310..80f9950 100644
->>>>>> --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
->>>>>> +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
->>>>>> @@ -66,6 +66,7 @@ enum dsi_color {
->>>>>>     struct dw_mipi_dsi_stm {
->>>>>>     	void __iomem *base;
->>>>>>     	struct clk *pllref_clk;
->>>>>> +	struct dw_mipi_dsi *dmd;
->>>>>>     };
->>>>>>     static inline void dsi_write(struct dw_mipi_dsi_stm *dsi, u32 reg, u32 val)
->>>>>> @@ -318,10 +319,11 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
->>>>>>     	dw_mipi_dsi_stm_plat_data.base = dsi->base;
->>>>>>     	dw_mipi_dsi_stm_plat_data.priv_data = dsi;
->>>>>> -	ret = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
->>>>>> -	if (ret) {
->>>>>> +	dsi->dmd = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
->>>>>> +	if (IS_ERR(dsi->dmd)) {
->>>>>>     		DRM_ERROR("Failed to initialize mipi dsi host\n");
->>>>>>     		clk_disable_unprepare(dsi->pllref_clk);
->>>>>> +		return PTR_ERR(dsi->dmd);
->>>>>>     	}
->>>>>>     	return ret;
->>>>>> @@ -332,7 +334,7 @@ static int dw_mipi_dsi_stm_remove(struct platform_device *pdev)
->>>>>>     	struct dw_mipi_dsi_stm *dsi = dw_mipi_dsi_stm_plat_data.priv_data;
->>>>>>     	clk_disable_unprepare(dsi->pllref_clk);
->>>>>> -	dw_mipi_dsi_remove(pdev);
->>>>>> +	dw_mipi_dsi_remove(dsi->dmd);
->>>>>>     	return 0;
->>>>>>     }
->   
-> Above is your diff for dw_mipi_dsi-stm.c. Particularly, notice that
-> remove() is directly referencing the static dw_mipi_dsi_stm_plat_data
-> struct.
->
-> If you look back at my patch [1] you'll see that you're missing hunks
-> like this:
->
-Thank you for pointing out my mistake.
-I will fix this in next version.
+---
+Changes
 
-Nickey.
->   static int dw_mipi_dsi_stm_remove(struct platform_device *pdev)
->   {
-> -	struct dw_mipi_dsi_stm *dsi = dw_mipi_dsi_stm_plat_data.priv_data;
-> +	struct dw_mipi_dsi_stm *dsi = platform_get_drvdata(pdev);
->   
->   	clk_disable_unprepare(dsi->pllref_clk);
-> [...]
->
-> Brian
->
-> [1] https://patchwork.kernel.org/patch/10078493/
->
->
->
+v5:
+-  add review tag
+
+ .../display/rockchip/dw_mipi_dsi_rockchip.txt      | 23 ++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+index 6bb59ab..ce4c1fc 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
++++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+@@ -14,6 +14,8 @@ Required properties:
+ - rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
+ - ports: contain a port node with endpoint definitions as defined in [2].
+   For vopb,set the reg = <0> and set the reg = <1> for vopl.
++- video port 0 for the VOP input, the remote endpoint maybe vopb or vopl
++- video port 1 for either a panel or subsequent encoder
+ 
+ Optional properties:
+ - power-domains: a phandle to mipi dsi power domain node.
+@@ -40,11 +42,12 @@ Example:
+ 		ports {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+-			reg = <1>;
+ 
+-			mipi_in: port {
++			mipi_in: port@0 {
++				reg = <0>;
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
++
+ 				mipi_in_vopb: endpoint@0 {
+ 					reg = <0>;
+ 					remote-endpoint = <&vopb_out_mipi>;
+@@ -54,6 +57,16 @@ Example:
+ 					remote-endpoint = <&vopl_out_mipi>;
+ 				};
+ 			};
++
++			mipi_out: port@1 {
++				reg = <1>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				mipi_out_panel: endpoint {
++					remote-endpoint = <&panel_in_mipi>;
++				};
++			};
+ 		};
+ 
+ 		panel {
+@@ -64,5 +77,11 @@ Example:
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&lcd_en>;
+ 			backlight = <&backlight>;
++
++			port {
++				panel_in_mipi: endpoint {
++					remote-endpoint = <&mipi_out_panel>;
++				};
++			};
+ 		};
+ 	};
+-- 
+1.9.1
