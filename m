@@ -1,13 +1,13 @@
 From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: [PATCH v6 3/3] drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver
-Date: Wed,  6 Dec 2017 17:08:21 +0800
-Message-ID: <1512551301-12946-4-git-send-email-nickey.yang@rock-chips.com>
-References: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
+Subject: [PATCH v5 3/3] drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver
+Date: Wed,  6 Dec 2017 16:33:26 +0800
+Message-ID: <1512549206-25638-4-git-send-email-nickey.yang@rock-chips.com>
+References: <1512549206-25638-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
+In-Reply-To: <1512549206-25638-1-git-send-email-nickey.yang@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, briannorris@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com, nickey.yang@rock-chips.com
@@ -21,7 +21,7 @@ Signed-off-by: Brian Norris <briannorris@chromium.org>
 Reviewed-by: Brian Norris <briannorris@chromium.org>
 Reviewed-by: Sean Paul <seanpaul@chromium.org>
 ---
-change:
+Changes:
 
 v2:
    add err_pllref, remove unnecessary encoder.enable & disable
@@ -37,9 +37,6 @@ v4:
   add review tag
 v5:
   keep our power domain enabled while touching GRF
-v6:
-  change func dw_mipi_encoder_disable name to
-  dw_mipi_dsi_encoder_disable
 
  drivers/gpu/drm/rockchip/Kconfig                |    2 +-
  drivers/gpu/drm/rockchip/Makefile               |    2 +-
@@ -1434,7 +1431,7 @@ index b15755b..0000000
 -};
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c
 new file mode 100644
-index 0000000..66ab6fe
+index 0000000..33cb75c
 --- /dev/null
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c
 @@ -0,0 +1,785 @@
@@ -2020,7 +2017,7 @@ index 0000000..66ab6fe
 +	return 0;
 +}
 +
-+static void dw_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
++static void dw_mipi_encoder_disable(struct drm_encoder *encoder)
 +{
 +	struct dw_mipi_dsi_rockchip *dsi = to_dsi(encoder);
 +
@@ -2031,7 +2028,7 @@ index 0000000..66ab6fe
 +dw_mipi_dsi_encoder_helper_funcs = {
 +	.mode_set = dw_mipi_dsi_encoder_mode_set,
 +	.atomic_check = dw_mipi_dsi_encoder_atomic_check,
-+	.disable = dw_mipi_dsi_encoder_disable,
++	.disable = dw_mipi_encoder_disable,
 +};
 +
 +static const struct drm_encoder_funcs dw_mipi_dsi_encoder_funcs = {
