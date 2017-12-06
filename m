@@ -1,30 +1,57 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net: ethernet: arc: fix error handling in
- emac_rockchip_probe
-Date: Wed, 06 Dec 2017 15:46:22 -0500 (EST)
-Message-ID: <20171206.154622.1837920620671638254.davem@davemloft.net>
-References: <20171206172433.3457-1-branislav@radocaj.org>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v6 1/3] drm/bridge/synopsys: dsi: stop clobbering drvdata
+Date: Wed, 6 Dec 2017 13:39:00 -0800
+Message-ID: <20171206213858.GA14257@google.com>
+References: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
+ <1512551301-12946-2-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171206172433.3457-1-branislav@radocaj.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: branislav@radocaj.org
-Cc: heiko@sntech.de, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1512551301-12946-2-git-send-email-nickey.yang@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Nickey Yang <nickey.yang@rock-chips.com>
+Cc: mark.rutland@arm.com, airlied@linux.ie, hoegsberg@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, laurent.pinchart@ideasonboard.com, zyw@rock-chips.com, xbl@rock-chips.com, mka@chromium.org, hl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Branislav Radocaj <branislav@radocaj.org>
-Date: Wed,  6 Dec 2017 18:24:33 +0100
-
->     If clk_set_rate() fails, we should disable clk
->     before return.
-> 
->     Found by Linux Driver Verification project (linuxtesting.org).
-> 
->     Signed-off-by: Branislav Radocaj <branislav@radocaj.org>
-
-Please eliminate this indentation of your commit message and
-resubmit.
-
-Thank you.
+T24gV2VkLCBEZWMgMDYsIDIwMTcgYXQgMDU6MDg6MTlQTSArMDgwMCwgTmlja2V5IFlhbmcgd3Jv
+dGU6Cj4gRnJvbTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+Cj4gCj4g
+QnJpZGdlIGRyaXZlcnMvaGVscGVycyBzaG91bGRuJ3QgYmUgY2xvYmJlcmluZyB0aGUgZHJ2ZGF0
+YSwgc2luY2UgYQo+IHBhcmVudCBkcml2ZXIgbWlnaHQgbmVlZCB0byBvd24gdGhpcy4gSW5zdGVh
+ZCwgbGV0J3MgcmV0dXJuIG91cgo+ICdkd19taXBpX2RzaScgb2JqZWN0IGFuZCBoYXZlIGNhbGxl
+cnMgcGFzcyB0aGF0IGJhY2sgdG8gdXMgZm9yIHJlbW92YWwuCj4gCj4gU2lnbmVkLW9mZi1ieTog
+QnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTog
+Tmlja2V5IFlhbmcgPG5pY2tleS55YW5nQHJvY2stY2hpcHMuY29tPgo+IExpbms6aHR0cHM6Ly9w
+YXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDA3ODQ5My8KPiAKPiAtLS0KPiBDaGFuZ2VzCj4g
+Cj4gdjQ6Cj4gLSBBZGQgRnJvbSB0YWcsdXBkYXRlIHN1YmplY3QgbGluZQo+IC0ga2VlcCBwYXRj
+aCAiZHJtL3N0bTogZHNpOiBBZGp1c3QgZHdfbWlwaV9kc2lfcHJvYmUgYW5kIHJlbW92ZSIKPiAg
+IGluIHRoaXMgcGllY2UgdG9nZXRoZXIuCj4gCj4gdjU6Cj4gLSByZW1vdmUgUmV2aWV3ICYgQWNr
+IHRhZwo+IC0gZml4IHJlbW92ZSgpIGRpcmVjdGx5IHJlZmVyZW5jaW5nIHRoZSBzdGF0aWMKPiAg
+IGR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEgc3RydWN0LgoKWW91J3ZlIGdvdHRlbiB0aGlzIGJh
+Y2sgaW50byBiYXNpY2FsbHkgdGhlIHNoYXBlIEkgc2VudCB2MSBpbiwgc28gSQpndWVzcyB0aGlz
+IGRlc2VydmVzIGFuOgoKQWNrZWQtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3JyaXNAY2hyb21p
+dW0ub3JnPgoKOikKCk9ubHkgbmV0IGNoYW5nZXM6IHlvdSByZW5hbWVkIHRoZSAnZHNpJyBmaWVs
+ZCB0byAnZG1kJyAoRHdjIE1pcGkKRGV2aWNlPyksIGFuZCBteSAncmV0dXJuIDAnIGNoYW5nZWQg
+YmFjayB0byB0aGUgb3JpZ2luYWwgJ3JldHVybiByZXQnIGF0CnRoZSBlbmQgb2YgcHJvYmUoKS4g
+RG9lc24ndCBtYWtlIGFueSBmdW5jdGlvbmFsIGRpZmZlcmVuY2UsIHNvIGZpbmUgd2l0aAptZS4K
+CklmIGV2ZXJ5Ym9keSdzIGp1c3QgYXMgaGFwcHkgd2l0aCB0aGlzIGFzIHdpdGggdGhlIGZpcnN0
+CnZlcnNpb24uLi5zaG91bGQgaXQganVzdCBiZSBhcHBsaWVkIG5vdywgcmVnYXJkbGVzcyBvZiB0
+aGUgc3RhdHVzIG9mIHRoZQpuZXh0IDIgcGF0Y2hlcz8gQ291bGQgaGVscCByZWR1Y2UgdGhlIGRp
+c2N1c3Npb24gKGFuZCBjb25mdXNpb24pCnN1cmZhY2UuCgpSZWdhcmRzLApCcmlhbgoKPiAgZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIHwgMzYgKysrKysrKysr
+Ky0tLS0tLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3Rt
+LmMgICAgICAgICB8IDEwICsrKysrLS0tCj4gIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19taXBpX2Rz
+aS5oICAgICAgICAgICAgICB8IDE3ICsrKysrKysrLS0tLS0KPiAgMyBmaWxlcyBjaGFuZ2VkLCAz
+MCBpbnNlcnRpb25zKCspLCAzMyBkZWxldGlvbnMoLSkKLi4uCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
