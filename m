@@ -1,93 +1,96 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v4 1/3] drm/bridge/synopsys: dsi: stop clobbering drvdata
-Date: Tue, 5 Dec 2017 10:56:52 -0800
-Message-ID: <20171205185651.GA136446@google.com>
-References: <1512100685-4015-1-git-send-email-nickey.yang@rock-chips.com>
- <1512100685-4015-2-git-send-email-nickey.yang@rock-chips.com>
- <5605c3c2-56ad-2289-c3c0-78cde1152123@st.com>
- <c6a53132-1ee3-00be-d52d-218560c07975@rock-chips.com>
- <1700743e-04b0-90ea-d393-dbfebf93742f@st.com>
- <206b071f-2b57-c4a2-31b3-2f469091e5e2@rock-chips.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] usb: dwc2: host: Don't retry NAKed transactions
+ right away
+Date: Wed, 6 Dec 2017 06:06:35 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE300772909026A0246C8@US01WEMBX2.internal.synopsys.com>
+References: <20171030170802.14489-1-dianders@chromium.org>
+ <dcee1898-a952-dcd3-8206-ab7c15eb589a@i2se.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <206b071f-2b57-c4a2-31b3-2f469091e5e2@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Nickey Yang <nickey.yang@rock-chips.com>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "airlied@linux.ie" <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, Philippe CORNU <philippe.cornu@st.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "hl@rock-chips.com" <hl@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Language: en-US
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, "balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org" <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, "mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org" <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTmlja2V5LAoKT24gVHVlLCBEZWMgMDUsIDIwMTcgYXQgMDU6MTQ6MTFQTSArMDgwMCwgTmlj
-a2V5IFlhbmcgd3JvdGU6Cj4gT24gMjAxN+W5tDEy5pyIMDHml6UgMTg6MDcsIFBoaWxpcHBlIENP
-Uk5VIHdyb3RlOgo+ID5PbiAxMi8wMS8yMDE3IDEwOjExIEFNLCBOaWNrZXkgWWFuZyB3cm90ZToK
-PiA+Pk9uIDIwMTflubQxMuaciDAx5pelIDE2OjMyLCBQaGlsaXBwZSBDT1JOVSB3cm90ZToKPiA+
-Pj5JIGFtIHNvcnJ5IHRvIHNheSB0aGF0IGJ1dCB5b3UgY2FuIG5vdCBhZGQgbXkgIkFja2VkLWJ5
-IiB0byB0aGlzIHBhdGNoCj4gPj4+YmVjYXVzZSB0aGlzIGNvZGUgaXMgZGlmZmVyZW50IGZyb20g
-dGhlICJvcmlnaW5hbCIgb25lIGZyb20gQnJpYW4gKHdoaWNoCj4gPj4+Z290IG15ICJBY2tlZC1i
-eSIpLgo+ID4+SSdtIHNvcnJ5IEkgZGlkbid0IHRoaW5rIG11Y2ggYWJvdXQgaXQsIFRoYW5rIHlv
-dSBmb3IgY29ycmVjdGluZyBtZS4KPiA+Pj5Tb21ldGltZXMgaXQgaXMgbm90IGFuIGlzc3VlIGJl
-Y2F1c2UgZGlmZmVyZW5jZXMgYXJlIG5vdCBpbXBvcnRhbnQgYnV0Cj4gPj4+aW4gdGhpcyBwYXJ0
-aWN1bGFyIGNhc2UsIHRoZSBjb2RlIGlzIHJlYWxseSBkaWZmZXJlbnQ6IHlvdSBoYXZlIHJlbW92
-ZQo+ID4+PnBsYXRmb3JtX3NldF9kcnZkYXRhKCkgJiBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YSgpIGlu
-IHRoZSBzdG0gcGFydC4KPiA+Pj4KPiA+Pj5Db3VsZCB5b3UgcGxlYXNlIGdvIGJhY2sgdG8gdGhl
-IG9yaWdpbmFsIGNvZGUgb3IgcHJvcG9zZSBtZSBhbiB1cGRhdGVkCj4gPj4+dmVyc2lvbiBvZiB0
-aGlzIGNvZGUuCj4gPj5Db3VsZCB5b3UgaGVscCB1cGRhdGUgbmV3IHZlcnNpb24gb2YgdGhpcyBj
-b2RlKHN0bSBwYXJ0KSBhbmQgdGhlbiB0ZXN0IG9uCj4gPj5zdG0gcGxhdGZvcm0/Cj4gPkkgdGhp
-bmsgeW91IGNhbiBzaW1wbHkgZ29lcyBiYWNrIHRvIHRoZSBvcmlnaW5hbCB2ZXJzaW9uIGZyb20g
-QnJpYW4gKHNlZQo+ID50aGUgZGlzY3Vzc2lvbiB0aHJlYWQgaW4gaHR0cHM6Ly9wYXRjaHdvcmsu
-a2VybmVsLm9yZy9wYXRjaC8xMDA3ODQ5My8pCj4gPnVubGVzcyB5b3UgaGF2ZSBzcGVjaWZpYy9n
-b29kIHJlYXNvbnMgZm9yIG1vZGlmeWluZyB0aGUgY29kZSBhcyB5b3UgZGlkLgo+IG1tbSxJJ20g
-c29ycnksIEkgZmVlbCBhIGxpdHRsZSBwdXp6bGVkLiBEbyB5b3UgbWVhbnMgd2Ugc2hvdWxkIGFi
-YW5kb24KPiBCcmlhbidzIHBhdGNoIChodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNo
-LzEwMDc4NDkzLyk/Cj4gSSB0aGluayB3ZSBuZWVkIHRvIGFkanVzdCBzdG0gcGFydCBiZWNhdXNl
-wqAgZHdfbWlwaV9kc2lfc3RtLmMgY2FsbHMKPiBicmlkZ2UncyBkcml2ZXJzIGlmIHdlIHdhbnQg
-bWVyZ2UgQnJpYW4ncyBwYXRjaC4KCkl0J3MgcmVhbGx5IHNpbXBsZS4gWW91ciBjb2RlIGlzIGRp
-ZmZlcmVudCBmcm9tIHRoZSBwYXRjaCBJIHNlbnQsIGFuZCBpbgphIHdheSB0aGF0IFBoaWxpcHBl
-IGRpZCBub3QgbGlrZS4gSSdsbCBoaWdobGlnaHQgaXQgYWdhaW4gYmVsb3c6Cgo+ID4+Pj5kaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0uYyBiL2RyaXZlcnMv
-Z3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3RtLmMKPiA+Pj4+aW5kZXggZTViNjMxMC4uODBmOTk1
-MCAxMDA2NDQKPiA+Pj4+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0u
-Ywo+ID4+Pj4rKysgYi9kcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jCj4gPj4+
-PkBAIC02Niw2ICs2Niw3IEBAIGVudW0gZHNpX2NvbG9yIHsKPiA+Pj4+ICAgIHN0cnVjdCBkd19t
-aXBpX2RzaV9zdG0gewo+ID4+Pj4gICAgCXZvaWQgX19pb21lbSAqYmFzZTsKPiA+Pj4+ICAgIAlz
-dHJ1Y3QgY2xrICpwbGxyZWZfY2xrOwo+ID4+Pj4rCXN0cnVjdCBkd19taXBpX2RzaSAqZG1kOwo+
-ID4+Pj4gICAgfTsKPiA+Pj4+ICAgIHN0YXRpYyBpbmxpbmUgdm9pZCBkc2lfd3JpdGUoc3RydWN0
-IGR3X21pcGlfZHNpX3N0bSAqZHNpLCB1MzIgcmVnLCB1MzIgdmFsKQo+ID4+Pj5AQCAtMzE4LDEw
-ICszMTksMTEgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcHJvYmUoc3RydWN0IHBsYXRm
-b3JtX2RldmljZSAqcGRldikKPiA+Pj4+ICAgIAlkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhLmJh
-c2UgPSBkc2ktPmJhc2U7Cj4gPj4+PiAgICAJZHdfbWlwaV9kc2lfc3RtX3BsYXRfZGF0YS5wcml2
-X2RhdGEgPSBkc2k7Cj4gPj4+Pi0JcmV0ID0gZHdfbWlwaV9kc2lfcHJvYmUocGRldiwgJmR3X21p
-cGlfZHNpX3N0bV9wbGF0X2RhdGEpOwo+ID4+Pj4tCWlmIChyZXQpIHsKPiA+Pj4+Kwlkc2ktPmRt
-ZCA9IGR3X21pcGlfZHNpX3Byb2JlKHBkZXYsICZkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhKTsK
-PiA+Pj4+KwlpZiAoSVNfRVJSKGRzaS0+ZG1kKSkgewo+ID4+Pj4gICAgCQlEUk1fRVJST1IoIkZh
-aWxlZCB0byBpbml0aWFsaXplIG1pcGkgZHNpIGhvc3RcbiIpOwo+ID4+Pj4gICAgCQljbGtfZGlz
-YWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKPiA+Pj4+KwkJcmV0dXJuIFBUUl9FUlIo
-ZHNpLT5kbWQpOwo+ID4+Pj4gICAgCX0KPiA+Pj4+ICAgIAlyZXR1cm4gcmV0Owo+ID4+Pj5AQCAt
-MzMyLDcgKzMzNCw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfc3RtX3JlbW92ZShzdHJ1Y3Qg
-cGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+Pj4gICAgCXN0cnVjdCBkd19taXBpX2RzaV9zdG0g
-KmRzaSA9IGR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEucHJpdl9kYXRhOwo+ID4+Pj4gICAgCWNs
-a19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGspOwo+ID4+Pj4tCWR3X21pcGlfZHNp
-X3JlbW92ZShwZGV2KTsKPiA+Pj4+Kwlkd19taXBpX2RzaV9yZW1vdmUoZHNpLT5kbWQpOwo+ID4+
-Pj4gICAgCXJldHVybiAwOwo+ID4+Pj4gICAgfQogCkFib3ZlIGlzIHlvdXIgZGlmZiBmb3IgZHdf
-bWlwaV9kc2ktc3RtLmMuIFBhcnRpY3VsYXJseSwgbm90aWNlIHRoYXQKcmVtb3ZlKCkgaXMgZGly
-ZWN0bHkgcmVmZXJlbmNpbmcgdGhlIHN0YXRpYyBkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhCnN0
-cnVjdC4KCklmIHlvdSBsb29rIGJhY2sgYXQgbXkgcGF0Y2ggWzFdIHlvdSdsbCBzZWUgdGhhdCB5
-b3UncmUgbWlzc2luZyBodW5rcwpsaWtlIHRoaXM6Cgogc3RhdGljIGludCBkd19taXBpX2RzaV9z
-dG1fcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiB7Ci0Jc3RydWN0IGR3X21p
-cGlfZHNpX3N0bSAqZHNpID0gZHdfbWlwaV9kc2lfc3RtX3BsYXRfZGF0YS5wcml2X2RhdGE7CisJ
-c3RydWN0IGR3X21pcGlfZHNpX3N0bSAqZHNpID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7
-CiAKIAljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKWy4uLl0KCkJyaWFu
-CgpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDA3ODQ5My8KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 12/05/2017 08:18 AM, Stefan Wahren wrote:
+> Hi Felipe,
+> Hi John,
+>
+>
+> Am 30.10.2017 um 18:08 schrieb Douglas Anderson:
+>> On rk3288-veyron devices on Chrome OS it was found that plugging in an
+>> Arduino-based USB device could cause the system to lockup, especially
+>> if the CPU Frequency was at one of the slower operating points (like
+>> 100 MHz / 200 MHz).
+>>
+>> Upon tracing, I found that the following was happening:
+>> * The USB device (full speed) was connected to a high speed hub and
+>>    then to the rk3288.  Thus, we were dealing with split transactions,
+>>    which is all handled in software on dwc2.
+>> * Userspace was initiating a BULK IN transfer
+>> * When we sent the SSPLIT (to start the split transaction), we got an
+>>    ACK.  Good.  Then we issued the CSPLIT.
+>> * When we sent the CSPLIT, we got back a NAK.  We immediately (from
+>>    the interrupt handler) started to retry and sent another SSPLIT.
+>> * The device kept NAKing our CSPLIT, so we kept ping-ponging between
+>>    sending a SSPLIT and a CSPLIT, each time sending from the interrupt
+>>    handler.
+>> * The handling of the interrupts was (because of the low CPU speed and
+>>    the inefficiency of the dwc2 interrupt handler) was actually taking
+>>    _longer_ than it took the other side to send the ACK/NAK.  Thus we
+>>    were _always_ in the USB interrupt routine.
+>> * The fact that USB interrupts were always going off was preventing
+>>    other things from happening in the system.  This included preventing
+>>    the system from being able to transition to a higher CPU frequency.
+>>
+>> As I understand it, there is no requirement to retry super quickly
+>> after a NAK, we just have to retry sometime in the future.  Thus one
+>> solution to the above is to just add a delay between getting a NAK and
+>> retrying the transmission.  If this delay is sufficiently long to get
+>> out of the interrupt routine then the rest of the system will be able
+>> to make forward progress.  Even a 25 us delay would probably be
+>> enough, but we'll be extra conservative and try to delay 1 ms (the
+>> exact amount depends on HZ and the accuracy of the jiffy and how close
+>> the current jiffy is to ticking, but could be as much as 20 ms or as
+>> little as 1 ms).
+>>
+>> Presumably adding a delay like this could impact the USB throughput,
+>> so we only add the delay with repeated NAKs.
+>>
+>> NOTE: Upon further testing of a pl2303 serial adapter, I found that
+>> this fix may help with problems there.  Specifically I found that the
+>> pl2303 serial adapters tend to respond with a NAK when they have
+>> nothing to say and thus we end with this same sequence.
+>>
+>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> Cc: stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> Reviewed-by: Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+>> ---
+>>
+>> Changes in v3:
+>> - Add tested-by for Stefan Wahren
+>> - Sent to Felipe Balbi as candiate to land this.
+>> - Add Cc for stable (it's always been broken so go as far is as easy)
+>>
+>> Changes in v2:
+>> - Address https://urldefense.proofpoint.com/v2/url?u=http-3A__crosreview.com_737520&d=DwICaQ&c=DPL6_X_6JkXFx7AXWqB0tg&r=U3o8uKoKhWme5_V9D-eeCkB11BFwt4KvWztBgdE9ZpA&m=Y_xpJ6Ks0XAK5_bQgmeQEvgKThZtPBQJ3cejNCGfEvM&s=olyPwyYvn_072esVwYxrCduKOKKJPUgc1YHX-CNhM1s&e= feedback
+>>
+>
+> does it need a resend?
+>
+
+You can add my acked-by:
+
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+
+Regards,
+John
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
