@@ -1,131 +1,65 @@
 From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: [PATCH v6 1/3] drm/bridge/synopsys: dsi: stop clobbering drvdata
-Date: Wed,  6 Dec 2017 17:08:19 +0800
-Message-ID: <1512551301-12946-2-git-send-email-nickey.yang@rock-chips.com>
-References: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
+Subject: [PATCH v6 0/3] Update ROCKCHIP DSI driver that uses dw-mipi-dsi bridge
+Date: Wed,  6 Dec 2017 17:08:18 +0800
+Message-ID: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
-Cc: hl@rock-chips.com, briannorris@chromium.org, hoegsberg@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, mka@chromium.org, laurent.pinchart@ideasonboard.com, zyw@rock-chips.com, xbl@rock-chips.com
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, briannorris@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com, nickey.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJvbWl1bS5vcmc+CgpCcmlkZ2UgZHJp
-dmVycy9oZWxwZXJzIHNob3VsZG4ndCBiZSBjbG9iYmVyaW5nIHRoZSBkcnZkYXRhLCBzaW5jZSBh
-CnBhcmVudCBkcml2ZXIgbWlnaHQgbmVlZCB0byBvd24gdGhpcy4gSW5zdGVhZCwgbGV0J3MgcmV0
-dXJuIG91cgonZHdfbWlwaV9kc2knIG9iamVjdCBhbmQgaGF2ZSBjYWxsZXJzIHBhc3MgdGhhdCBi
-YWNrIHRvIHVzIGZvciByZW1vdmFsLgoKU2lnbmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzIDxicmlh
-bm5vcnJpc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IE5pY2tleSBZYW5nIDxuaWNrZXku
-eWFuZ0Byb2NrLWNoaXBzLmNvbT4KTGluazpodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Bh
-dGNoLzEwMDc4NDkzLwoKLS0tCkNoYW5nZXMKCnY0OgotIEFkZCBGcm9tIHRhZyx1cGRhdGUgc3Vi
-amVjdCBsaW5lCi0ga2VlcCBwYXRjaCAiZHJtL3N0bTogZHNpOiBBZGp1c3QgZHdfbWlwaV9kc2lf
-cHJvYmUgYW5kIHJlbW92ZSIKICBpbiB0aGlzIHBpZWNlIHRvZ2V0aGVyLgoKdjU6Ci0gcmVtb3Zl
-IFJldmlldyAmIEFjayB0YWcKLSBmaXggcmVtb3ZlKCkgZGlyZWN0bHkgcmVmZXJlbmNpbmcgdGhl
-IHN0YXRpYwogIGR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEgc3RydWN0LgoKIGRyaXZlcnMvZ3B1
-L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDM2ICsrKysrKysrKystLS0tLS0t
-LS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0uYyAgICAgICAg
-IHwgMTAgKysrKystLS0KIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19taXBpX2RzaS5oICAgICAgICAg
-ICAgICB8IDE3ICsrKysrKysrLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygr
-KSwgMzMgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
-eW5vcHN5cy9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
-dy1taXBpLWRzaS5jCmluZGV4IGQ5Y2NhNGYuLmMzOWM3ZGMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKQEAgLTkyMiw4ICs5MjIsNiBAQCBzdGF0
-aWMgaW50IGR3X21pcGlfZHNpX2JyaWRnZV9hdHRhY2goc3RydWN0IGRybV9icmlkZ2UgKmJyaWRn
-ZSkKIAlkc2ktPmJyaWRnZS5vZl9ub2RlID0gcGRldi0+ZGV2Lm9mX25vZGU7CiAjZW5kaWYKIAot
-CWRldl9zZXRfZHJ2ZGF0YShkZXYsIGRzaSk7Ci0KIAlyZXR1cm4gZHNpOwogfQogCkBAIC05MzUs
-MjMgKzkzMywxNiBAQCBzdGF0aWMgdm9pZCBfX2R3X21pcGlfZHNpX3JlbW92ZShzdHJ1Y3QgZHdf
-bWlwaV9kc2kgKmRzaSkKIC8qCiAgKiBQcm9iZS9yZW1vdmUgQVBJLCB1c2VkIGZyb20gcGxhdGZv
-cm1zIGJhc2VkIG9uIHRoZSBEUk0gYnJpZGdlIEFQSS4KICAqLwotaW50IGR3X21pcGlfZHNpX3By
-b2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCi0JCSAgICAgIGNvbnN0IHN0cnVjdCBk
-d19taXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKK3N0cnVjdCBkd19taXBpX2RzaSAqCitk
-d19taXBpX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAorCQkgIGNvbnN0
-IHN0cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKIHsKLQlzdHJ1Y3QgZHdf
-bWlwaV9kc2kgKmRzaTsKLQotCWRzaSA9IF9fZHdfbWlwaV9kc2lfcHJvYmUocGRldiwgcGxhdF9k
-YXRhKTsKLQlpZiAoSVNfRVJSKGRzaSkpCi0JCXJldHVybiBQVFJfRVJSKGRzaSk7Ci0KLQlyZXR1
-cm4gMDsKKwlyZXR1cm4gX19kd19taXBpX2RzaV9wcm9iZShwZGV2LCBwbGF0X2RhdGEpOwogfQog
-RVhQT1JUX1NZTUJPTF9HUEwoZHdfbWlwaV9kc2lfcHJvYmUpOwogCi12b2lkIGR3X21pcGlfZHNp
-X3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQordm9pZCBkd19taXBpX2RzaV9y
-ZW1vdmUoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCiB7Ci0Jc3RydWN0IGR3X21pcGlfZHNpICpk
-c2kgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsKLQogCW1pcGlfZHNpX2hvc3RfdW5yZWdp
-c3RlcigmZHNpLT5kc2lfaG9zdCk7CiAKIAlfX2R3X21pcGlfZHNpX3JlbW92ZShkc2kpOwpAQCAt
-OTYxLDMxICs5NTIsMzAgQEAgdm9pZCBkd19taXBpX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3Jt
-X2RldmljZSAqcGRldikKIC8qCiAgKiBCaW5kL3VuYmluZCBBUEksIHVzZWQgZnJvbSBwbGF0Zm9y
-bXMgYmFzZWQgb24gdGhlIGNvbXBvbmVudCBmcmFtZXdvcmsuCiAgKi8KLWludCBkd19taXBpX2Rz
-aV9iaW5kKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsIHN0cnVjdCBkcm1fZW5jb2RlciAq
-ZW5jb2RlciwKLQkJICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0
-X2RhdGEpCitzdHJ1Y3QgZHdfbWlwaV9kc2kgKgorZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgcGxh
-dGZvcm1fZGV2aWNlICpwZGV2LCBzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCisJCSBjb25z
-dCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpCiB7CiAJc3RydWN0IGR3
-X21pcGlfZHNpICpkc2k7CiAJaW50IHJldDsKIAogCWRzaSA9IF9fZHdfbWlwaV9kc2lfcHJvYmUo
-cGRldiwgcGxhdF9kYXRhKTsKIAlpZiAoSVNfRVJSKGRzaSkpCi0JCXJldHVybiBQVFJfRVJSKGRz
-aSk7CisJCXJldHVybiBkc2k7CiAKIAlyZXQgPSBkcm1fYnJpZGdlX2F0dGFjaChlbmNvZGVyLCAm
-ZHNpLT5icmlkZ2UsIE5VTEwpOwogCWlmIChyZXQpIHsKLQkJZHdfbWlwaV9kc2lfcmVtb3ZlKHBk
-ZXYpOworCQlkd19taXBpX2RzaV9yZW1vdmUoZHNpKTsKIAkJRFJNX0VSUk9SKCJGYWlsZWQgdG8g
-aW5pdGlhbGl6ZSBicmlkZ2Ugd2l0aCBkcm1cbiIpOwotCQlyZXR1cm4gcmV0OworCQlyZXR1cm4g
-RVJSX1BUUihyZXQpOwogCX0KIAotCXJldHVybiAwOworCXJldHVybiBkc2k7CiB9CiBFWFBPUlRf
-U1lNQk9MX0dQTChkd19taXBpX2RzaV9iaW5kKTsKIAotdm9pZCBkd19taXBpX2RzaV91bmJpbmQo
-c3RydWN0IGRldmljZSAqZGV2KQordm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGR3X21p
-cGlfZHNpICpkc2kpCiB7Ci0Jc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBkZXZfZ2V0X2RydmRh
-dGEoZGV2KTsKLQogCV9fZHdfbWlwaV9kc2lfcmVtb3ZlKGRzaSk7CiB9CiBFWFBPUlRfU1lNQk9M
-X0dQTChkd19taXBpX2RzaV91bmJpbmQpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0
-bS9kd19taXBpX2RzaS1zdG0uYyBiL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3Rt
-LmMKaW5kZXggZTViNjMxMC4uMDU3ODdmYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0
-bS9kd19taXBpX2RzaS1zdG0uYworKysgYi9kcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNp
-LXN0bS5jCkBAIC02Niw2ICs2Niw3IEBAIGVudW0gZHNpX2NvbG9yIHsKIHN0cnVjdCBkd19taXBp
-X2RzaV9zdG0gewogCXZvaWQgX19pb21lbSAqYmFzZTsKIAlzdHJ1Y3QgY2xrICpwbGxyZWZfY2xr
-OworCXN0cnVjdCBkd19taXBpX2RzaSAqZG1kOwogfTsKIAogc3RhdGljIGlubGluZSB2b2lkIGRz
-aV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2lfc3RtICpkc2ksIHUzMiByZWcsIHUzMiB2YWwpCkBA
-IC0zMTgsMTAgKzMxOSwxMSBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3N0bV9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCWR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEuYmFz
-ZSA9IGRzaS0+YmFzZTsKIAlkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhLnByaXZfZGF0YSA9IGRz
-aTsKIAotCXJldCA9IGR3X21pcGlfZHNpX3Byb2JlKHBkZXYsICZkd19taXBpX2RzaV9zdG1fcGxh
-dF9kYXRhKTsKLQlpZiAocmV0KSB7CisJZHNpLT5kbWQgPSBkd19taXBpX2RzaV9wcm9iZShwZGV2
-LCAmZHdfbWlwaV9kc2lfc3RtX3BsYXRfZGF0YSk7CisJaWYgKElTX0VSUihkc2ktPmRtZCkpIHsK
-IAkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gaW5pdGlhbGl6ZSBtaXBpIGRzaSBob3N0XG4iKTsKIAkJ
-Y2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7CisJCXJldHVybiBQVFJfRVJS
-KGRzaS0+ZG1kKTsKIAl9CiAKIAlyZXR1cm4gcmV0OwpAQCAtMzI5LDEwICszMzEsMTAgQEAgc3Rh
-dGljIGludCBkd19taXBpX2RzaV9zdG1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-dikKIAogc3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYpCiB7Ci0Jc3RydWN0IGR3X21pcGlfZHNpX3N0bSAqZHNpID0gZHdfbWlwaV9k
-c2lfc3RtX3BsYXRfZGF0YS5wcml2X2RhdGE7CisJc3RydWN0IGR3X21pcGlfZHNpX3N0bSAqZHNp
-ID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7CiAKIAljbGtfZGlzYWJsZV91bnByZXBhcmUo
-ZHNpLT5wbGxyZWZfY2xrKTsKLQlkd19taXBpX2RzaV9yZW1vdmUocGRldik7CisJZHdfbWlwaV9k
-c2lfcmVtb3ZlKGRzaS0+ZG1kKTsKIAogCXJldHVybiAwOwogfQpkaWZmIC0tZ2l0IGEvaW5jbHVk
-ZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmggYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9k
-c2kuaAppbmRleCA5YjMwZmVjLi5kOWM2ZDU0IDEwMDY0NAotLS0gYS9pbmNsdWRlL2RybS9icmlk
-Z2UvZHdfbWlwaV9kc2kuaAorKysgYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaApA
-QCAtMTAsNiArMTAsOCBAQAogI2lmbmRlZiBfX0RXX01JUElfRFNJX18KICNkZWZpbmUgX19EV19N
-SVBJX0RTSV9fCiAKK3N0cnVjdCBkd19taXBpX2RzaTsKKwogc3RydWN0IGR3X21pcGlfZHNpX3Bo
-eV9vcHMgewogCWludCAoKmluaXQpKHZvaWQgKnByaXZfZGF0YSk7CiAJaW50ICgqZ2V0X2xhbmVf
-bWJwcykodm9pZCAqcHJpdl9kYXRhLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKQEAg
-LTI5LDExICszMSwxNCBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhIHsKIAl2b2lkICpw
-cml2X2RhdGE7CiB9OwogCi1pbnQgZHdfbWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldiwKLQkJICAgICAgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAq
-cGxhdF9kYXRhKTsKLXZvaWQgZHdfbWlwaV9kc2lfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpOwotaW50IGR3X21pcGlfZHNpX2JpbmQoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
-cGRldiwgc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAotCQkgICAgIGNvbnN0IHN0cnVjdCBk
-d19taXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSk7Ci12b2lkIGR3X21pcGlfZHNpX3VuYmlu
-ZChzdHJ1Y3QgZGV2aWNlICpkZXYpOworc3RydWN0IGR3X21pcGlfZHNpICpkd19taXBpX2RzaV9w
-cm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAorCQkJCSAgICAgIGNvbnN0IHN0cnVj
-dCBkd19taXBpX2RzaV9wbGF0X2RhdGEKKwkJCQkgICAgICAqcGxhdF9kYXRhKTsKK3ZvaWQgZHdf
-bWlwaV9kc2lfcmVtb3ZlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKTsKK3N0cnVjdCBkd19taXBp
-X2RzaSAqZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAorCQkJ
-CSAgICAgc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAorCQkJCSAgICAgY29uc3Qgc3RydWN0
-IGR3X21pcGlfZHNpX3BsYXRfZGF0YQorCQkJCSAgICAgKnBsYXRfZGF0YSk7Cit2b2lkIGR3X21p
-cGlfZHNpX3VuYmluZChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSk7CiAKICNlbmRpZiAvKiBfX0RX
-X01JUElfRFNJX18gKi8KLS0gCjEuOS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+We now have a generic dw-mipi-dsi bridge driver.So we send
+this patchs to moving rockchip dw-mipi-dsi driver to that
+in order to add new features(dual mipi support).
+Update ROCKCHIP DSI controller driver that uses the Synopsys
+DesignWare MIPI DSI host controller bridge.
+
+ChangeLog:
+v2:
+   add err_pllref、remove unnecessary encoder.enable & disable
+   correct spelling mistakes
+v3:
+   add Brian's patch "drm/bridge/synopsys: stop clobbering drvdata"
+   (Link:https://patchwork.kernel.org/patch/10078493/)
+   adjust drm/stm/dsi code for above
+   drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver:
+   call dw_mipi_dsi_unbind() in dw_mipi_dsi_rockchip_unbind()
+   fix typo, use of_device_get_match_data(),
+   change some ‘bind()’ logic into 'probe()'
+   add 'dev_set_drvdata()'
+v4:
+   keep "drm/stm: dsi: Adjust dw_mipi_dsi_probe and remove"
+   into Brians "drm/bridge/synopsys: stop clobbering drvdata"
+   add review tag and add some comments 
+v5:
+  1/3: fix stm part remove() directly referencing the static
+       dw_mipi_dsi_stm_plat_data struct.
+  3/3: keep our power domain enabled while touching GRF
+v6:
+  3/3: just change func dw_mipi_encoder_disable name to
+       dw_mipi_dsi_encoder_disable
+
+Nickey Yang (3):
+  drm/bridge/synopsys: dsi: stop clobbering drvdata
+  dt-bindings: display: rockchip: update DSI controller
+  drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver
+
+ .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   23 +-
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |   36 +-
+ drivers/gpu/drm/rockchip/Kconfig                   |    2 +-
+ drivers/gpu/drm/rockchip/Makefile                  |    2 +-
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 1349 --------------------
+ drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c    |  785 ++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |    2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |    2 +-
+ drivers/gpu/drm/stm/dw_mipi_dsi-stm.c              |   10 +-
+ include/drm/bridge/dw_mipi_dsi.h                   |   17 +-
+ 10 files changed, 840 insertions(+), 1388 deletions(-)
+ delete mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+ create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c
+
+-- 
+1.9.1
