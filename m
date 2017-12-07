@@ -1,318 +1,64 @@
-From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] extcon: usbc-cros-ec: add support to notify USB
- type cables.
-Date: Thu, 07 Dec 2017 11:12:56 +0900
-Message-ID: <5A28A3A8.4020302@samsung.com>
-References: <CGME20171206111048epcas3p2b412288717b0f8197c85edaab5c9a242@epcas3p2.samsung.com>
-        <20171206111008.3079-1-enric.balletbo@collabora.com>
+From: Philippe CORNU <philippe.cornu@st.com>
+Subject: Re: [PATCH v6 1/3] drm/bridge/synopsys: dsi: stop clobbering drvdata
+Date: Thu, 7 Dec 2017 11:41:17 +0000
+Message-ID: <e24ca009-6ac2-94f8-2f9d-53d339da1e8d@st.com>
+References: <1512551301-12946-1-git-send-email-nickey.yang@rock-chips.com>
+ <1512551301-12946-2-git-send-email-nickey.yang@rock-chips.com>
+ <20171206213858.GA14257@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-reply-to: <20171206111008.3079-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, MyungJoo Ham <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20171206213858.GA14257@google.com>
+Content-Language: en-US
+Content-ID: <829467ED1C4E88438CBB5BF9AF17962D@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "airlied@linux.ie" <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "hl@rock-chips.com" <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Enric,
-
-On 2017년 12월 06일 20:10, Enric Balletbo i Serra wrote:
-> From: Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> Extend the driver to notify host and device type cables and the presence
-> of power.
-> 
-> Signed-off-by: Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->  drivers/extcon/extcon-usbc-cros-ec.c | 142 ++++++++++++++++++++++++++++++++++-
->  include/linux/mfd/cros_ec_commands.h |  17 +++++
->  2 files changed, 155 insertions(+), 4 deletions(-)
-
-Looks good to me.
-After you uses the BIT() macro as the Lee's comment on v2,
-I'll merge this patch.
-
-Reviewed-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-
-> 
-> diff --git a/drivers/extcon/extcon-usbc-cros-ec.c b/drivers/extcon/extcon-usbc-cros-ec.c
-> index 6187f73..6721ab0 100644
-> --- a/drivers/extcon/extcon-usbc-cros-ec.c
-> +++ b/drivers/extcon/extcon-usbc-cros-ec.c
-> @@ -34,16 +34,26 @@ struct cros_ec_extcon_info {
->  
->  	struct notifier_block notifier;
->  
-> +	unsigned int dr; /* data role */
-> +	bool pr; /* power role (true if VBUS enabled) */
->  	bool dp; /* DisplayPort enabled */
->  	bool mux; /* SuperSpeed (usb3) enabled */
->  	unsigned int power_type;
->  };
->  
->  static const unsigned int usb_type_c_cable[] = {
-> +	EXTCON_USB,
-> +	EXTCON_USB_HOST,
->  	EXTCON_DISP_DP,
->  	EXTCON_NONE,
->  };
->  
-> +enum usb_data_roles {
-> +	DR_NONE,
-> +	DR_HOST,
-> +	DR_DEVICE,
-> +};
-> +
->  /**
->   * cros_ec_pd_command() - Send a command to the EC.
->   * @info: pointer to struct cros_ec_extcon_info
-> @@ -150,6 +160,7 @@ static int cros_ec_usb_get_role(struct cros_ec_extcon_info *info,
->  	pd_control.port = info->port_id;
->  	pd_control.role = USB_PD_CTRL_ROLE_NO_CHANGE;
->  	pd_control.mux = USB_PD_CTRL_MUX_NO_CHANGE;
-> +	pd_control.swap = USB_PD_CTRL_SWAP_NONE;
->  	ret = cros_ec_pd_command(info, EC_CMD_USB_PD_CONTROL, 1,
->  				 &pd_control, sizeof(pd_control),
->  				 &resp, sizeof(resp));
-> @@ -183,11 +194,72 @@ static int cros_ec_pd_get_num_ports(struct cros_ec_extcon_info *info)
->  	return resp.num_ports;
->  }
->  
-> +static const char *cros_ec_usb_role_string(unsigned int role)
-> +{
-> +	return role == DR_NONE ? "DISCONNECTED" :
-> +		(role == DR_HOST ? "DFP" : "UFP");
-> +}
-> +
-> +static const char *cros_ec_usb_power_type_string(unsigned int type)
-> +{
-> +	switch (type) {
-> +	case USB_CHG_TYPE_NONE:
-> +		return "USB_CHG_TYPE_NONE";
-> +	case USB_CHG_TYPE_PD:
-> +		return "USB_CHG_TYPE_PD";
-> +	case USB_CHG_TYPE_PROPRIETARY:
-> +		return "USB_CHG_TYPE_PROPRIETARY";
-> +	case USB_CHG_TYPE_C:
-> +		return "USB_CHG_TYPE_C";
-> +	case USB_CHG_TYPE_BC12_DCP:
-> +		return "USB_CHG_TYPE_BC12_DCP";
-> +	case USB_CHG_TYPE_BC12_CDP:
-> +		return "USB_CHG_TYPE_BC12_CDP";
-> +	case USB_CHG_TYPE_BC12_SDP:
-> +		return "USB_CHG_TYPE_BC12_SDP";
-> +	case USB_CHG_TYPE_OTHER:
-> +		return "USB_CHG_TYPE_OTHER";
-> +	case USB_CHG_TYPE_VBUS:
-> +		return "USB_CHG_TYPE_VBUS";
-> +	case USB_CHG_TYPE_UNKNOWN:
-> +		return "USB_CHG_TYPE_UNKNOWN";
-> +	default:
-> +		return "USB_CHG_TYPE_UNKNOWN";
-> +	}
-> +}
-> +
-> +static bool cros_ec_usb_power_type_is_wall_wart(unsigned int type,
-> +						unsigned int role)
-> +{
-> +	switch (type) {
-> +	/* FIXME : Guppy, Donnettes, and other chargers will be miscategorized
-> +	 * because they identify with USB_CHG_TYPE_C, but we can't return true
-> +	 * here from that code because that breaks Suzy-Q and other kinds of
-> +	 * USB Type-C cables and peripherals.
-> +	 */
-> +	case USB_CHG_TYPE_PROPRIETARY:
-> +	case USB_CHG_TYPE_BC12_DCP:
-> +		return true;
-> +	case USB_CHG_TYPE_PD:
-> +	case USB_CHG_TYPE_C:
-> +	case USB_CHG_TYPE_BC12_CDP:
-> +	case USB_CHG_TYPE_BC12_SDP:
-> +	case USB_CHG_TYPE_OTHER:
-> +	case USB_CHG_TYPE_VBUS:
-> +	case USB_CHG_TYPE_UNKNOWN:
-> +	case USB_CHG_TYPE_NONE:
-> +	default:
-> +		return false;
-> +	}
-> +}
-> +
->  static int extcon_cros_ec_detect_cable(struct cros_ec_extcon_info *info,
->  				       bool force)
->  {
->  	struct device *dev = info->dev;
->  	int role, power_type;
-> +	unsigned int dr = DR_NONE;
-> +	bool pr = false;
->  	bool polarity = false;
->  	bool dp = false;
->  	bool mux = false;
-> @@ -206,9 +278,12 @@ static int extcon_cros_ec_detect_cable(struct cros_ec_extcon_info *info,
->  			dev_err(dev, "failed getting role err = %d\n", role);
->  			return role;
->  		}
-> +		dev_dbg(dev, "disconnected\n");
->  	} else {
->  		int pd_mux_state;
->  
-> +		dr = (role & PD_CTRL_RESP_ROLE_DATA) ? DR_HOST : DR_DEVICE;
-> +		pr = (role & PD_CTRL_RESP_ROLE_POWER);
->  		pd_mux_state = cros_ec_usb_get_pd_mux_state(info);
->  		if (pd_mux_state < 0)
->  			pd_mux_state = USB_PD_MUX_USB_ENABLED;
-> @@ -216,20 +291,62 @@ static int extcon_cros_ec_detect_cable(struct cros_ec_extcon_info *info,
->  		dp = pd_mux_state & USB_PD_MUX_DP_ENABLED;
->  		mux = pd_mux_state & USB_PD_MUX_USB_ENABLED;
->  		hpd = pd_mux_state & USB_PD_MUX_HPD_IRQ;
-> -	}
->  
-> -	if (force || info->dp != dp || info->mux != mux ||
-> -		info->power_type != power_type) {
-> +		dev_dbg(dev,
-> +			"connected role 0x%x pwr type %d dr %d pr %d pol %d mux %d dp %d hpd %d\n",
-> +			role, power_type, dr, pr, polarity, mux, dp, hpd);
-> +	}
->  
-> +	/*
-> +	 * When there is no USB host (e.g. USB PD charger),
-> +	 * we are not really a UFP for the AP.
-> +	 */
-> +	if (dr == DR_DEVICE &&
-> +	    cros_ec_usb_power_type_is_wall_wart(power_type, role))
-> +		dr = DR_NONE;
-> +
-> +	if (force || info->dr != dr || info->pr != pr || info->dp != dp ||
-> +	    info->mux != mux || info->power_type != power_type) {
-> +		bool host_connected = false, device_connected = false;
-> +
-> +		dev_dbg(dev, "Type/Role switch! type = %s role = %s\n",
-> +			cros_ec_usb_power_type_string(power_type),
-> +			cros_ec_usb_role_string(dr));
-> +		info->dr = dr;
-> +		info->pr = pr;
->  		info->dp = dp;
->  		info->mux = mux;
->  		info->power_type = power_type;
->  
-> -		extcon_set_state(info->edev, EXTCON_DISP_DP, dp);
-> +		if (dr == DR_DEVICE)
-> +			device_connected = true;
-> +		else if (dr == DR_HOST)
-> +			host_connected = true;
->  
-> +		extcon_set_state(info->edev, EXTCON_USB, device_connected);
-> +		extcon_set_state(info->edev, EXTCON_USB_HOST, host_connected);
-> +		extcon_set_state(info->edev, EXTCON_DISP_DP, dp);
-> +		extcon_set_property(info->edev, EXTCON_USB,
-> +				    EXTCON_PROP_USB_VBUS,
-> +				    (union extcon_property_value)(int)pr);
-> +		extcon_set_property(info->edev, EXTCON_USB_HOST,
-> +				    EXTCON_PROP_USB_VBUS,
-> +				    (union extcon_property_value)(int)pr);
-> +		extcon_set_property(info->edev, EXTCON_USB,
-> +				    EXTCON_PROP_USB_TYPEC_POLARITY,
-> +				    (union extcon_property_value)(int)polarity);
-> +		extcon_set_property(info->edev, EXTCON_USB_HOST,
-> +				    EXTCON_PROP_USB_TYPEC_POLARITY,
-> +				    (union extcon_property_value)(int)polarity);
->  		extcon_set_property(info->edev, EXTCON_DISP_DP,
->  				    EXTCON_PROP_USB_TYPEC_POLARITY,
->  				    (union extcon_property_value)(int)polarity);
-> +		extcon_set_property(info->edev, EXTCON_USB,
-> +				    EXTCON_PROP_USB_SS,
-> +				    (union extcon_property_value)(int)mux);
-> +		extcon_set_property(info->edev, EXTCON_USB_HOST,
-> +				    EXTCON_PROP_USB_SS,
-> +				    (union extcon_property_value)(int)mux);
->  		extcon_set_property(info->edev, EXTCON_DISP_DP,
->  				    EXTCON_PROP_USB_SS,
->  				    (union extcon_property_value)(int)mux);
-> @@ -237,6 +354,8 @@ static int extcon_cros_ec_detect_cable(struct cros_ec_extcon_info *info,
->  				    EXTCON_PROP_DISP_HPD,
->  				    (union extcon_property_value)(int)hpd);
->  
-> +		extcon_sync(info->edev, EXTCON_USB);
-> +		extcon_sync(info->edev, EXTCON_USB_HOST);
->  		extcon_sync(info->edev, EXTCON_DISP_DP);
->  
->  	} else if (hpd) {
-> @@ -322,13 +441,28 @@ static int extcon_cros_ec_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	extcon_set_property_capability(info->edev, EXTCON_USB,
-> +				       EXTCON_PROP_USB_VBUS);
-> +	extcon_set_property_capability(info->edev, EXTCON_USB_HOST,
-> +				       EXTCON_PROP_USB_VBUS);
-> +	extcon_set_property_capability(info->edev, EXTCON_USB,
-> +				       EXTCON_PROP_USB_TYPEC_POLARITY);
-> +	extcon_set_property_capability(info->edev, EXTCON_USB_HOST,
-> +				       EXTCON_PROP_USB_TYPEC_POLARITY);
->  	extcon_set_property_capability(info->edev, EXTCON_DISP_DP,
->  				       EXTCON_PROP_USB_TYPEC_POLARITY);
-> +	extcon_set_property_capability(info->edev, EXTCON_USB,
-> +				       EXTCON_PROP_USB_SS);
-> +	extcon_set_property_capability(info->edev, EXTCON_USB_HOST,
-> +				       EXTCON_PROP_USB_SS);
->  	extcon_set_property_capability(info->edev, EXTCON_DISP_DP,
->  				       EXTCON_PROP_USB_SS);
->  	extcon_set_property_capability(info->edev, EXTCON_DISP_DP,
->  				       EXTCON_PROP_DISP_HPD);
->  
-> +	info->dr = DR_NONE;
-> +	info->pr = false;
-> +
->  	platform_set_drvdata(pdev, info);
->  
->  	/* Get PD events from the EC */
-> diff --git a/include/linux/mfd/cros_ec_commands.h b/include/linux/mfd/cros_ec_commands.h
-> index 2b16e95..c907353 100644
-> --- a/include/linux/mfd/cros_ec_commands.h
-> +++ b/include/linux/mfd/cros_ec_commands.h
-> @@ -2904,16 +2904,33 @@ enum usb_pd_control_mux {
->  	USB_PD_CTRL_MUX_AUTO = 5,
->  };
->  
-> +enum usb_pd_control_swap {
-> +	USB_PD_CTRL_SWAP_NONE = 0,
-> +	USB_PD_CTRL_SWAP_DATA = 1,
-> +	USB_PD_CTRL_SWAP_POWER = 2,
-> +	USB_PD_CTRL_SWAP_VCONN = 3,
-> +	USB_PD_CTRL_SWAP_COUNT
-> +};
-> +
->  struct ec_params_usb_pd_control {
->  	uint8_t port;
->  	uint8_t role;
->  	uint8_t mux;
-> +	uint8_t swap;
->  } __packed;
->  
->  #define PD_CTRL_RESP_ENABLED_COMMS      (1 << 0) /* Communication enabled */
->  #define PD_CTRL_RESP_ENABLED_CONNECTED  (1 << 1) /* Device connected */
->  #define PD_CTRL_RESP_ENABLED_PD_CAPABLE (1 << 2) /* Partner is PD capable */
->  
-> +#define PD_CTRL_RESP_ROLE_POWER         (1 << 0) /* 0=SNK/1=SRC */
-> +#define PD_CTRL_RESP_ROLE_DATA          (1 << 1) /* 0=UFP/1=DFP */
-> +#define PD_CTRL_RESP_ROLE_VCONN         (1 << 2) /* Vconn status */
-> +#define PD_CTRL_RESP_ROLE_DR_POWER      (1 << 3) /* Partner is dualrole power */
-> +#define PD_CTRL_RESP_ROLE_DR_DATA       (1 << 4) /* Partner is dualrole data */
-> +#define PD_CTRL_RESP_ROLE_USB_COMM      (1 << 5) /* Partner USB comm capable */
-> +#define PD_CTRL_RESP_ROLE_EXT_POWERED   (1 << 6) /* Partner externally powerd */
-> +
->  struct ec_response_usb_pd_control_v1 {
->  	uint8_t enabled;
->  	uint8_t role;
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTmlja2V5LA0KDQpwbGF0Zm9ybV9zZXRfZHJ2ZGF0YSgpIGlzIHN0aWxsIG1pc3NpbmcgaW4g
+eW91ciB2ZXJzaW9uLg0KDQpUaGFua3MsDQpQaGlsaXBwZSA6LSkNCg0KT24gMTIvMDYvMjAxNyAx
+MDozOSBQTSwgQnJpYW4gTm9ycmlzIHdyb3RlOg0KPiBPbiBXZWQsIERlYyAwNiwgMjAxNyBhdCAw
+NTowODoxOVBNICswODAwLCBOaWNrZXkgWWFuZyB3cm90ZToNCj4+IEZyb206IEJyaWFuIE5vcnJp
+cyA8YnJpYW5ub3JyaXNAY2hyb21pdW0ub3JnPg0KPj4NCj4+IEJyaWRnZSBkcml2ZXJzL2hlbHBl
+cnMgc2hvdWxkbid0IGJlIGNsb2JiZXJpbmcgdGhlIGRydmRhdGEsIHNpbmNlIGENCj4+IHBhcmVu
+dCBkcml2ZXIgbWlnaHQgbmVlZCB0byBvd24gdGhpcy4gSW5zdGVhZCwgbGV0J3MgcmV0dXJuIG91
+cg0KPj4gJ2R3X21pcGlfZHNpJyBvYmplY3QgYW5kIGhhdmUgY2FsbGVycyBwYXNzIHRoYXQgYmFj
+ayB0byB1cyBmb3IgcmVtb3ZhbC4NCj4+DQo+PiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMg
+PGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4NCj4+IFNpZ25lZC1vZmYtYnk6IE5pY2tleSBZYW5n
+IDxuaWNrZXkueWFuZ0Byb2NrLWNoaXBzLmNvbT4NCj4+IExpbms6aHR0cHM6Ly9wYXRjaHdvcmsu
+a2VybmVsLm9yZy9wYXRjaC8xMDA3ODQ5My8NCj4+DQo+PiAtLS0NCj4+IENoYW5nZXMNCj4+DQo+
+PiB2NDoNCj4+IC0gQWRkIEZyb20gdGFnLHVwZGF0ZSBzdWJqZWN0IGxpbmUNCj4+IC0ga2VlcCBw
+YXRjaCAiZHJtL3N0bTogZHNpOiBBZGp1c3QgZHdfbWlwaV9kc2lfcHJvYmUgYW5kIHJlbW92ZSIN
+Cj4+ICAgIGluIHRoaXMgcGllY2UgdG9nZXRoZXIuDQo+Pg0KPj4gdjU6DQo+PiAtIHJlbW92ZSBS
+ZXZpZXcgJiBBY2sgdGFnDQo+PiAtIGZpeCByZW1vdmUoKSBkaXJlY3RseSByZWZlcmVuY2luZyB0
+aGUgc3RhdGljDQo+PiAgICBkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhIHN0cnVjdC4NCj4gDQo+
+IFlvdSd2ZSBnb3R0ZW4gdGhpcyBiYWNrIGludG8gYmFzaWNhbGx5IHRoZSBzaGFwZSBJIHNlbnQg
+djEgaW4sIHNvIEkNCj4gZ3Vlc3MgdGhpcyBkZXNlcnZlcyBhbjoNCj4gDQo+IEFja2VkLWJ5OiBC
+cmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4NCj4gDQo+IDopDQo+IA0KPiBP
+bmx5IG5ldCBjaGFuZ2VzOiB5b3UgcmVuYW1lZCB0aGUgJ2RzaScgZmllbGQgdG8gJ2RtZCcgKER3
+YyBNaXBpDQo+IERldmljZT8pLCBhbmQgbXkgJ3JldHVybiAwJyBjaGFuZ2VkIGJhY2sgdG8gdGhl
+IG9yaWdpbmFsICdyZXR1cm4gcmV0JyBhdA0KPiB0aGUgZW5kIG9mIHByb2JlKCkuIERvZXNuJ3Qg
+bWFrZSBhbnkgZnVuY3Rpb25hbCBkaWZmZXJlbmNlLCBzbyBmaW5lIHdpdGgNCj4gbWUuDQo+IA0K
+PiBJZiBldmVyeWJvZHkncyBqdXN0IGFzIGhhcHB5IHdpdGggdGhpcyBhcyB3aXRoIHRoZSBmaXJz
+dA0KPiB2ZXJzaW9uLi4uc2hvdWxkIGl0IGp1c3QgYmUgYXBwbGllZCBub3csIHJlZ2FyZGxlc3Mg
+b2YgdGhlIHN0YXR1cyBvZiB0aGUNCj4gbmV4dCAyIHBhdGNoZXM/IENvdWxkIGhlbHAgcmVkdWNl
+IHRoZSBkaXNjdXNzaW9uIChhbmQgY29uZnVzaW9uKQ0KPiBzdXJmYWNlLg0KPiANCj4gUmVnYXJk
+cywNCj4gQnJpYW4NCj4gDQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
+bWlwaS1kc2kuYyB8IDM2ICsrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLQ0KPj4gICBkcml2ZXJz
+L2dwdS9kcm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jICAgICAgICAgfCAxMCArKysrKy0tLQ0KPj4g
+ICBpbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaCAgICAgICAgICAgICAgfCAxNyArKysr
+KysrKy0tLS0tDQo+PiAgIDMgZmlsZXMgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMzMgZGVs
+ZXRpb25zKC0pDQo+IC4uLg0KPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
