@@ -1,71 +1,139 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 5/7] drm/rockchip: dw_hdmi: add hclk_vio
-Date: Sun, 10 Dec 2017 18:08:45 +0100
-Message-ID: <4016321.4tnllylE8d@phil>
-References: <1506735912-152263-1-git-send-email-algea.cao@rock-chips.com>
+From: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Subject: Re: [PATCH v3 07/12] dt-bindings: Document the Rockchip MIPI RX D-PHY bindings
+Date: Mon, 11 Dec 2017 18:45:50 +0200
+Message-ID: <2576683.vP2aWnt5jG@avalon>
+References: <20171206111939.1153-1-jacob-chen@iotwrt.com> <20171206111939.1153-8-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1506735912-152263-1-git-send-email-algea.cao@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: Algea Cao <algea.cao@rock-chips.com>, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, kever.yang@rock-chips.com, daniel.vetter@intel.com, yang.zheng@rock-chips.com, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171206111939.1153-8-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQWxnZWEsCgpBbSBTYW1zdGFnLCAzMC4gU2VwdGVtYmVyIDIwMTcsIDA5OjQ1OjEyIENFVCBz
-Y2hyaWViIEFsZ2VhIENhbzoKPiBBZGQgY2xrIGhjbGtfdmlvIGFuZCBlbmFibGUgaXQgd2hlbiBo
-ZG1pIGJpbmQuCgpDb3VsZCB5b3UgZXhwbGFpbiB3aGF0IHRoZSBoY2xrX3ZpbyByZWZlcmVuY2Ug
-aXMgbmVlZGVkIGZvciBwbGVhc2U/CgpCZWNhdXNlIGZyb20gZnJvbSB3aGF0IEkgdHJhY2tlZCBk
-b3duIGluIHRoZSBUUk0gYW5kIGNvZGUsIHRoaXMgaGNsa192aW8KaXMgZGVmaW5lZCB3cm9uZyBp
-biB0aGUgY2xvY2stZHJpdmVyLgoKQWNjb3JkaW5nIHRvIHRoZSBUUk0sIHRoYXQgaGNsa192aW8g
-KGdhdGUyMlsxXSkgaXMgYWN0dWFsbHkgaGNsa192aW9fbml1IGFuZApoZW5jZSB0aGUgY2xvY2sg
-Zm9yIHRoZSBpbnRlcmNvbm5lY3QgPC0+IGhkbWkgIGNvbm5lY3Rpb24uCkFzIHRoaXMgY2xvY2sg
-aXMgYSBwcm9wZXJ0eSBvZiB0aGUgaW50ZXJjb25uZWN0LCB3aGljaCB3ZSBkb24ndCBtb2RlbCBz
-byBmYXIsCmFsbCBuaXUgY2xvY2tzIGFyZSBzaW1wbHkgZGVmaW5lZCBhcyBjcml0aWNhbCBpbiB0
-aGUgY2xvY2sgZHJpdmVyIGl0c2VsZiwgYXMgY2FuCmJlIHNlZW4gaW4gbW9zdCBjbG9jayBkcml2
-ZXJzLgoKU28gSSdkIHN1Z2dlc3QgZml4aW5nIHRoZSBjbG9jay1kcml2ZXIgYWNjb3JkaW5nbHkg
-YW5kIGRyb3BwaW5nIHRoaXMgcGF0Y2guCgoKSGVpa28KCgo+IFNpZ25lZC1vZmYtYnk6IEFsZ2Vh
-IENhbyA8YWxnZWEuY2FvQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgMjEgKysrKysrKysrKysrKysrKysrKysrCj4g
-IDEgZmlsZSBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gaW5kZXggNzY1OGIyZi4uZTFhOTk0MSAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+IEBAIC02
-MSw2ICs2MSw3IEBAIHN0cnVjdCByb2NrY2hpcF9oZG1pIHsKPiAgCWVudW0gZHdfaGRtaV9kZXZ0
-eXBlIGRldl90eXBlOwo+ICAJc3RydWN0IGNsayAqdnBsbF9jbGs7Cj4gIAlzdHJ1Y3QgY2xrICpn
-cmZfY2xrOwo+ICsJc3RydWN0IGNsayAqaGNsa192aW87Cj4gIAlzdHJ1Y3QgcGh5ICpwaHk7Cj4g
-IH07Cj4gIAo+IEBAIC0yNzcsMTIgKzI3OCwyNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2hkbWlf
-cGFyc2VfZHQoc3RydWN0IHJvY2tjaGlwX2hkbWkgKmhkbWkpCj4gIAkJcmV0dXJuIFBUUl9FUlIo
-aGRtaS0+Z3JmX2Nsayk7Cj4gIAl9Cj4gIAo+ICsJaGRtaS0+aGNsa192aW8gPSBkZXZtX2Nsa19n
-ZXQoaGRtaS0+ZGV2LCAiaGNsa192aW8iKTsKPiArCWlmIChQVFJfRVJSKGhkbWktPmhjbGtfdmlv
-KSA9PSAtRU5PRU5UKSB7Cj4gKwkJaGRtaS0+aGNsa192aW8gPSBOVUxMOwo+ICsJfSBlbHNlIGlm
-IChQVFJfRVJSKGhkbWktPmhjbGtfdmlvKSA9PSAtRVBST0JFX0RFRkVSKSB7Cj4gKwkJcmV0dXJu
-IC1FUFJPQkVfREVGRVI7Cj4gKwl9IGVsc2UgaWYgKElTX0VSUihoZG1pLT5oY2xrX3ZpbykpIHsK
-PiArCQlkZXZfZGJnKGhkbWktPmRldiwgImZhaWxlZCB0byBnZXQgaGNsa192aW8gY2xvY2tcbiIp
-Owo+ICsJCXJldHVybiBQVFJfRVJSKGhkbWktPmhjbGtfdmlvKTsKPiArCX0KPiAgCXJldCA9IGNs
-a19wcmVwYXJlX2VuYWJsZShoZG1pLT52cGxsX2Nsayk7Cj4gIAlpZiAocmV0KSB7Cj4gIAkJZGV2
-X2VycihoZG1pLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIEhETUkgdnBsbDogJWRcbiIsIHJldCk7
-Cj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUo
-aGRtaS0+aGNsa192aW8pOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl9kYmcoaGRtaS0+ZGV2LCAi
-RmFpbGVkIHRvIGVhbmJsZSBIRE1JIGhjbGtfdmlvOiAlZFxuIiwKPiArCQkJcmV0KTsKPiArCQly
-ZXR1cm4gcmV0Owo+ICsJfQo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gQEAgLTUwNiw2ICs1MjIs
-MTEgQEAgc3RhdGljIGludCBkd19oZG1pX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2
-LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gIHN0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBf
-dW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJCQkJ
-ICAgIHZvaWQgKmRhdGEpCj4gIHsKPiArCXN0cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pID0gY29u
-dGFpbmVyX29mKCZkZXYsIHN0cnVjdCByb2NrY2hpcF9oZG1pLAo+ICsJCQkJCQkgIGRldik7Cj4g
-Kwo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGhkbWktPmhjbGtfdmlvKTsKPiArCj4gIAlyZXR1
-cm4gZHdfaGRtaV91bmJpbmQoZGV2KTsKPiAgfQo+ICAKPiAKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hello Jacob,
+
+Thank you for the patch.
+
+On Wednesday, 6 December 2017 13:19:34 EET Jacob Chen wrote:
+> From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Add DT bindings documentation for Rockchip MIPI D-PHY RX
+> 
+> Signed-off-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  .../bindings/media/rockchip-mipi-dphy.txt          | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+> b/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt new file
+> mode 100644
+> index 000000000000..cef9450db051
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+> @@ -0,0 +1,71 @@
+> +Rockchip SoC MIPI RX D-PHY
+> +-------------------------------------------------------------
+> +
+> +Required properties:
+> +
+> +- compatible: value should be one of the following
+> +    "rockchip,rk3288-mipi-dphy";
+> +    "rockchip,rk3399-mipi-dphy";
+> +- rockchip,grf: GRF regs.
+> +- bus-width : maximum number of data lanes supported (SoC specific);
+
+Bus width isn't a standard property, should this be rockchip,data-lanes or 
+rockchip,#data-lanes ?
+
+> +- clocks : list of clock specifiers, corresponding to entries in
+> +		    clock-names property;
+> +- clock-names: required clock name.
+> +
+> +The device node should contain two 'port' child node, according to the
+
+s/child node/child nodes/
+
+> bindings
+> +defined in Documentation/devicetree/bindings/media/video-interfaces.txt.
+> +The first port should be connected to sensor nodes, and the second port
+> should be
+> +connected to isp node. The following are properties specific to those
+> nodes.
+> +
+> +endpoint node
+> +-------------
+> +
+> +- data-lanes : (required) an array specifying active physical MIPI-CSI2
+> +		data input lanes and their mapping to logical lanes; the
+> +		array's content is unused, only its length is meaningful;
+
+I assume this means that the D-PHY can't reroute lanes. I would mention that 
+explicitly, and require that the data-lanes values start at one at are 
+consecutive instead of ignoring them.
+
+> +Device node example
+> +-------------------
+> +
+> +    mipi_dphy_rx0: mipi-dphy-rx0 {
+> +        compatible = "rockchip,rk3399-mipi-dphy";
+> +        clocks = <&cru SCLK_MIPIDPHY_REF>,
+> +            <&cru SCLK_DPHY_RX0_CFG>,
+> +            <&cru PCLK_VIO_GRF>;
+> +        clock-names = "dphy-ref", "dphy-cfg", "grf";
+> +        power-domains = <&power RK3399_PD_VIO>;
+> +        bus-width = <4>;
+> +
+> +        ports {
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +
+> +            port@0 {
+> +                reg = <0>;
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                mipi_in_wcam: endpoint@0 {
+> +                    reg = <0>;
+> +                    remote-endpoint = <&wcam_out>;
+> +                    data-lanes = <1 2>;
+> +                };
+> +                mipi_in_ucam: endpoint@1 {
+> +                    reg = <1>;
+> +                    remote-endpoint = <&ucam_out>;
+> +                    data-lanes = <1>;
+> +                };
+
+What do those two camera correspond to ? Can they be active at the same time, 
+or do they use the same data lanes ? If they use the same data lanes, how does 
+this work, is there a multiplexer on the board ?
+
+> +            };
+> +
+> +            port@1 {
+> +                reg = <1>;
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                dphy_rx0_out: endpoint@0 {
+> +                    reg = <0>;
+> +                    remote-endpoint = <&isp0_mipi_in>;
+> +                };
+> +            };
+> +        };
+> +    };
+> \ No newline at end of file
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
