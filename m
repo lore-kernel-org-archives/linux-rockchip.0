@@ -1,107 +1,64 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] phy: rockchip-typec: Try to turn the PHY on several times
-Date: Mon, 11 Dec 2017 13:45:53 -0800
-Message-ID: <20171211214553.118337-1-dianders@chromium.org>
+From: Branislav Radocaj <branislav@radocaj.org>
+Subject: [PATCH v3] net: ethernet: arc: fix error handling in emac_rockchip_probe
+Date: Tue, 12 Dec 2017 00:13:38 +0100
+Message-ID: <20171211231338.5207-1-branislav@radocaj.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com
-Cc: balbi@kernel.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, enric.balletbo@collabora.com, groeck@chromium.org, mka@chromium.org, zyw@rock-chips.com, wulf@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de, netdev@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Branislav Radocaj <branislav@radocaj.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Bind / unbind stress testing of the USB controller on rk3399 found
-that we'd often end up with lots of failures that looked like this:
+If clk_set_rate() fails, we should disable clk before return.
+Found by Linux Driver Verification project (linuxtesting.org).
 
-  phy phy-ff800000.phy.9: phy poweron failed --> -110
-  dwc3 fe900000.dwc3: failed to initialize core
-  dwc3: probe of fe900000.dwc3 failed with error -110
+Changes since v2 [1]:
+* Merged with latest code changes
 
-Those errors were sometimes seen at bootup too, in which case USB
-peripherals wouldn't work until unplugged and re-plugged in.
+Changes since v1:
+Update made thanks to David's review, much appreciated David.
+* Improved inconsistent failure handling of clock rate setting
+* For completeness of usecase, added arc_emac_probe error handling
 
-I spent some time trying to figure out why the PHY was failing to
-power on but I wasn't able to.  Possibly this has to do with the fact
-that the PHY docs say that the USB controller "needs to be held in
-reset to hold pipe power state in P2 before initializing the Type C
-PHY" but that doesn't appear to be easy to do with the dwc3 driver
-today.  Messing around with the ordering of the reset vs. the PHY
-initialization in the dwc3 driver didn't seem to fix things.
-
-I did, however, find that if I simply retry the power on it seems to
-have a good chance of working.  So let's add some retries.  I ran a
-pretty tight bind/unbind loop overnight.  When I did so, I found that
-I need to retry between 1% and 2% of the time.  Overnight I found only
-a small handful of times where I needed 2 retries.  I never found a
-case where I needed 3 retries.
-
-I'm completely aware of the fact that this is quite an ugly hack and I
-wish I didn't have to resort to it, but I have no other real idea how
-to make this hardware reliable.  If Rockchip in the future can come up
-with a solution we can always revert this hack.  Until then, let's at
-least have something that works.
-
-This patch is tested atop Enric's latest dwc3 patch series ending at:
-  https://patchwork.kernel.org/patch/10095527/
-...but it could be applied independently of that series without any
-bad effects.
-
-For some more details on this bug, you can refer to:
-  https://bugs.chromium.org/p/chromium/issues/detail?id=783464
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Branislav Radocaj <branislav@radocaj.org>
 ---
+[1] https://marc.info/?l=linux-netdev&m=151301239802445&w=2
+---
+ drivers/net/ethernet/arc/emac_rockchip.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
- drivers/phy/rockchip/phy-rockchip-typec.c | 24 ++++++++++++++++++++++--
- 1 file changed, 22 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index ee85fa0ca4b0..5c2157156ce1 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -349,6 +349,8 @@
- #define MODE_DFP_USB			BIT(1)
- #define MODE_DFP_DP			BIT(2)
+diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
+index c6163874e4e7..16f9bee992fe 100644
+--- a/drivers/net/ethernet/arc/emac_rockchip.c
++++ b/drivers/net/ethernet/arc/emac_rockchip.c
+@@ -199,9 +199,11 @@ static int emac_rockchip_probe(struct platform_device *pdev)
  
-+#define POWER_ON_TRIES			5
-+
- struct usb3phy_reg {
- 	u32 offset;
- 	u32 enable_bit;
-@@ -818,9 +820,8 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
- 	return mode;
- }
- 
--static int rockchip_usb3_phy_power_on(struct phy *phy)
-+static int _rockchip_usb3_phy_power_on(struct rockchip_typec_phy *tcphy)
- {
--	struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
- 	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
- 	const struct usb3phy_reg *reg = &cfg->pipe_status;
- 	int timeout, new_mode, ret = 0;
-@@ -867,6 +868,25 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
- 	return ret;
- }
- 
-+static int rockchip_usb3_phy_power_on(struct phy *phy)
-+{
-+	struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
-+	int ret;
-+	int tries;
-+
-+	for (tries = 0; tries < POWER_ON_TRIES; tries++) {
-+		ret = _rockchip_usb3_phy_power_on(tcphy);
-+		if (!ret)
-+			break;
+ 	/* RMII interface needs always a rate of 50MHz */
+ 	err = clk_set_rate(priv->refclk, 50000000);
+-	if (err)
++	if (err) {
+ 		dev_err(dev,
+ 			"failed to change reference clock rate (%d)\n", err);
++		goto out_regulator_disable;
 +	}
+ 
+ 	if (priv->soc_data->need_div_macclk) {
+ 		priv->macclk = devm_clk_get(dev, "macclk");
+@@ -230,12 +232,14 @@ static int emac_rockchip_probe(struct platform_device *pdev)
+ 	err = arc_emac_probe(ndev, interface);
+ 	if (err) {
+ 		dev_err(dev, "failed to probe arc emac (%d)\n", err);
+-		goto out_regulator_disable;
++		goto out_clk_disable_macclk;
+ 	}
+ 
+ 	return 0;
 +
-+	if (tries && !ret)
-+		dev_info(tcphy->dev, "Needed %d loops to turn on\n", tries);
-+
-+	return ret;
-+}
-+
-+
- static int rockchip_usb3_phy_power_off(struct phy *phy)
- {
- 	struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+ out_clk_disable_macclk:
+-	clk_disable_unprepare(priv->macclk);
++	if (priv->soc_data->need_div_macclk)
++		clk_disable_unprepare(priv->macclk);
+ out_regulator_disable:
+ 	if (priv->regulator)
+ 		regulator_disable(priv->regulator);
 -- 
-2.15.1.424.g9478a66081-goog
+2.11.0
