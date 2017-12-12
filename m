@@ -1,99 +1,58 @@
-From: Felipe Balbi <balbi@kernel.org>
-Subject: Re: [PATCH v3 1/2] usb: dwc2: host: Don't retry NAKed transactions right away
-Date: Tue, 12 Dec 2017 13:06:01 +0200
-Message-ID: <87mv2onr3a.fsf@linux.intel.com>
-References: <20171030170802.14489-1-dianders@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 02/41] drm/rockchip: Get rid of some unnecessary code
+Date: Tue, 12 Dec 2017 13:25:14 +0100
+Message-ID: <6912304.Ixds0LLa6k@phil>
+References: <20170310043305.17216-1-seanpaul@chromium.org>
+ <20170310043305.17216-3-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha512; protocol="application/pgp-signature"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20171030170802.14489-1-dianders@chromium.org>
-Sender: stable-owner@vger.kernel.org
-To: johnyoun@synopsys.com
-Cc: stefan.wahren@i2se.com, amstan@chromium.org, linux-rockchip@lists.infradead.org, gregkh@linuxfoundation.org, johan@kernel.org, eric@anholt.net, mka@chromium.org, john.stultz@linaro.org, linux-rpi-kernel@lists.infradead.org, jwerner@chromium.org, Douglas Anderson <dianders@chromium.org>, stable@vger.kernel.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20170310043305.17216-3-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-
-Hi,
-
-Douglas Anderson <dianders@chromium.org> writes:
-> On rk3288-veyron devices on Chrome OS it was found that plugging in an
-> Arduino-based USB device could cause the system to lockup, especially
-> if the CPU Frequency was at one of the slower operating points (like
-> 100 MHz / 200 MHz).
->
-> Upon tracing, I found that the following was happening:
-> * The USB device (full speed) was connected to a high speed hub and
->   then to the rk3288.  Thus, we were dealing with split transactions,
->   which is all handled in software on dwc2.
-> * Userspace was initiating a BULK IN transfer
-> * When we sent the SSPLIT (to start the split transaction), we got an
->   ACK.  Good.  Then we issued the CSPLIT.
-> * When we sent the CSPLIT, we got back a NAK.  We immediately (from
->   the interrupt handler) started to retry and sent another SSPLIT.
-> * The device kept NAKing our CSPLIT, so we kept ping-ponging between
->   sending a SSPLIT and a CSPLIT, each time sending from the interrupt
->   handler.
-> * The handling of the interrupts was (because of the low CPU speed and
->   the inefficiency of the dwc2 interrupt handler) was actually taking
->   _longer_ than it took the other side to send the ACK/NAK.  Thus we
->   were _always_ in the USB interrupt routine.
-> * The fact that USB interrupts were always going off was preventing
->   other things from happening in the system.  This included preventing
->   the system from being able to transition to a higher CPU frequency.
->
-> As I understand it, there is no requirement to retry super quickly
-> after a NAK, we just have to retry sometime in the future.  Thus one
-> solution to the above is to just add a delay between getting a NAK and
-> retrying the transmission.  If this delay is sufficiently long to get
-> out of the interrupt routine then the rest of the system will be able
-> to make forward progress.  Even a 25 us delay would probably be
-> enough, but we'll be extra conservative and try to delay 1 ms (the
-> exact amount depends on HZ and the accuracy of the jiffy and how close
-> the current jiffy is to ticking, but could be as much as 20 ms or as
-> little as 1 ms).
->
-> Presumably adding a delay like this could impact the USB throughput,
-> so we only add the delay with repeated NAKs.
->
-> NOTE: Upon further testing of a pl2303 serial adapter, I found that
-> this fix may help with problems there.  Specifically I found that the
-> pl2303 serial adapters tend to respond with a NAK when they have
-> nothing to say and thus we end with this same sequence.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Cc: stable@vger.kernel.org
-> Reviewed-by: Julius Werner <jwerner@chromium.org>
-> Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
-
-This seems too big for -rc or -stable inclusion. In any case, this
-doesn't apply to my testing/next branch. Care to rebase and collect acks
-you received while doing that?
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAlovuBkACgkQzL64meEa
-mQYFGBAA2J/ZC5L1GMf3BKe6dkzqYzjdSA/CMRW8ngX9BsD6Ju+xcc5T9NB9Ysv8
-viAm2e93jdAXrhsSGnjSTNL+v91GA/KR2eEWX0zWiE2YyPaYAg+GEaepED35mU7p
-AaDL9RBgCbYiW1t9CMHQl2y3qJupaUjfI5M8KylzpHMLpgMSTLR0gMUl0swU06QN
-9HP8oM2XY1+Cllrs/yk4MyRsbcWwBW4dmdzPQGP8yYJNKh4UnuQrwu3CcniD98AC
-1e1biE/68kTjxoyT8X/11+2QQi8WSxCa6ua+acfXuZfweJOfTr9IegBruPvbBeju
-6VmZYy9NSt0X9Z61vuxnHaZbMoa3qqtn88rjkxqonmUts112bkrqwCwuK8oSx5lN
-RBLNBVgPxTj0YYpNy8OO7N+1i8pXY+MftLOr5+LaDT9ed3iO4db0nEI5e6YYwTnn
-WwQooev9PY5/Ty1NmQEP7RIEk8VLsH5oR/RPIhoMZxNLRMLmhmxQSwADFHlEfXAH
-D6tLhUCXn4cE3ttNtvMzJih0eMMlR0qtqTTKAfZ8XHeCB+d6cL1uzAhal349vdzq
-+gwNzMtNRMRAOdox0ts0hkPr/fsioUOBfO/I9aMtcbSe3+BDoS5Mz2maHGnrCPLA
-VV7v3cSu3rQSehxrFMSgYDa1SpS2InILHH1J2z0LuJ8Kuu01XT8=
-=myDI
------END PGP SIGNATURE-----
---=-=-=--
+QW0gRG9ubmVyc3RhZywgOS4gTcOkcnogMjAxNywgMjM6MzI6MTcgQ0VUIHNjaHJpZWIgU2VhbiBQ
+YXVsOgo+IEZyb206IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+Cj4gCj4gQ3VycmVu
+dCBjb2RlIGltcGxlbWVudHMgcHJlcGFyZV9mYiBhbmQgY2xlYW51cF9mYiBjYWxsYmFja3Mgb25s
+eSB0bwo+IGdyYWIvcmVsZWFzZSBmYiByZWZlcmVuY2VzLCB3aGljaCBpcyBhbHJlYWR5IGRvbmUg
+YnkgYXRvbWljIGZyYW1ld29yawo+IHdoZW4gY3JlYXRpbmcvZGVzdHJ5b2luZyBwbGFuZSBzdGF0
+ZS4gQWxzbyB0aGVyZSBhcmUgc29tZSB1bnVzZWQgZmllbGRzCj4gdm9wIGFuZCB2b3Bfd2luIHN0
+cnVjdHMuIExldCdzIHJlbW92ZSB0aGVzZSB1bnVzZWQgYml0cy4KPiAKPiBTaWduZWQtb2ZmLWJ5
+OiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoKVGhlcmUgc2VlbXMgdG8gYmUgYSBzbGlnaHQg
+ZGlzY3JlcGFuY3kgYmV0d2VlbiBwYXRjaCBtZXNzYWdlIGFuZCBjb2RlLgpUaGUgY29tbWl0IG1l
+c3NhZ2UgdGFsa3MgYWJvdXQgKl9mYi1jYWxsYmFja3MsIHdoaWxlIHRoZSBwYXRjaCByZW1vdmVz
+CmEgc2VlbWluZ2x5IHVuc3VzZWQgbXV0ZXgsIHdoaWNoIEkgZ3Vlc3MgZmFsbHMgdW5kZXIgdGhl
+ICJzb21lIHVudXNlZCBmaWVsZHMiCnBhcnQuCgpJbiBhbnkgY2FzZSwgSSBkaWRuJ3Qgc2VlIGFu
+eSBpbGwgZWZmZWN0cyB3aGVuIHRlc3RpbmcgdGhpcyBwYXRjaCwgc28KVGVzdGVkLWJ5OiBIZWlr
+byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDUgLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDUg
+ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jCj4gaW5kZXggMjE1MWUxY2VlNGI0Li4wNTM5YWZiNmI3YzggMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTA4LDkgKzEwOCw2
+IEBAIHN0cnVjdCB2b3Agewo+ICAJc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXY7Cj4gIAlib29s
+IGlzX2VuYWJsZWQ7Cj4gIAo+IC0JLyogbXV0ZXggdnN5bmNfIHdvcmsgKi8KPiAtCXN0cnVjdCBt
+dXRleCB2c3luY19tdXRleDsKPiAtCWJvb2wgdnN5bmNfd29ya19wZW5kaW5nOwo+ICAJc3RydWN0
+IGNvbXBsZXRpb24gZHNwX2hvbGRfY29tcGxldGlvbjsKPiAgCj4gIAkvKiBwcm90ZWN0ZWQgYnkg
+ZGV2LT5ldmVudF9sb2NrICovCj4gQEAgLTE1OTIsOCArMTU4OSw2IEBAIHN0YXRpYyBpbnQgdm9w
+X2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRh
+dGEpCj4gIAlzcGluX2xvY2tfaW5pdCgmdm9wLT5yZWdfbG9jayk7Cj4gIAlzcGluX2xvY2tfaW5p
+dCgmdm9wLT5pcnFfbG9jayk7Cj4gIAo+IC0JbXV0ZXhfaW5pdCgmdm9wLT52c3luY19tdXRleCk7
+Cj4gLQo+ICAJcmV0ID0gZGV2bV9yZXF1ZXN0X2lycShkZXYsIHZvcC0+aXJxLCB2b3BfaXNyLAo+
+ICAJCQkgICAgICAgSVJRRl9TSEFSRUQsIGRldl9uYW1lKGRldiksIHZvcCk7Cj4gIAlpZiAocmV0
+KQo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
