@@ -1,52 +1,35 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] pinctrl: rockchip: enable clock when reading pin direction register
-Date: Tue, 12 Dec 2017 09:43:43 -0800
-Message-ID: <20171212174343.192017-1-briannorris@chromium.org>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] pinctrl: rockchip: enable clock when reading pin direction register
+Date: Tue, 12 Dec 2017 19:19:19 +0100
+Message-ID: <2334693.oO4CeGnqou@phil>
+References: <20171212174343.192017-1-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171212174343.192017-1-briannorris@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We generally leave the GPIO clock disabled, unless an interrupt is
-requested or we're accessing IO registers. We forgot to do this for the
-->get_direction() callback, which means we can sometimes [1] get
-incorrect results [2] from, e.g., /sys/kernel/debug/gpio.
+Hi Brian,
 
-Enable the clock, so we get the right results!
+Am Dienstag, 12. Dezember 2017, 09:43:43 CET schrieb Brian Norris:
+> We generally leave the GPIO clock disabled, unless an interrupt is
+> requested or we're accessing IO registers. We forgot to do this for the
+> ->get_direction() callback, which means we can sometimes [1] get
+> incorrect results [2] from, e.g., /sys/kernel/debug/gpio.
+> 
+> Enable the clock, so we get the right results!
+> 
+> [1] Sometimes, because many systems have 1 or mor interrupt requested on
+> each GPIO bank, so they always leave their clock on.
+> 
+> [2] Incorrect, meaning the register returns 0, and so we interpret that
+> as "input".
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-[1] Sometimes, because many systems have 1 or mor interrupt requested on
-each GPIO bank, so they always leave their clock on.
-
-[2] Incorrect, meaning the register returns 0, and so we interpret that
-as "input".
-
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
- drivers/pinctrl/pinctrl-rockchip.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 2ba17548ad5b..073de6a9ed34 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2014,8 +2014,16 @@ static int rockchip_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
- {
- 	struct rockchip_pin_bank *bank = gpiochip_get_data(chip);
- 	u32 data;
-+	int ret;
- 
-+	ret = clk_enable(bank->clk);
-+	if (ret < 0) {
-+		dev_err(bank->drvdata->dev,
-+			"failed to enable clock for bank %s\n", bank->name);
-+		return ret;
-+	}
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-+	clk_disable(bank->clk);
- 
- 	return !(data & BIT(offset));
- }
--- 
-2.15.1.424.g9478a66081-goog
-
+thanks for catching this and it looks good to me, so
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
