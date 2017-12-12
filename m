@@ -1,64 +1,67 @@
-From: Branislav Radocaj <branislav@radocaj.org>
-Subject: [PATCH v3] net: ethernet: arc: fix error handling in emac_rockchip_probe
-Date: Tue, 12 Dec 2017 00:13:38 +0100
-Message-ID: <20171211231338.5207-1-branislav@radocaj.org>
+From: Nickey Yang <nickey.yang@rock-chips.com>
+Subject: [PATCH v7 0/3] Update ROCKCHIP DSI driver that uses dw-mipi-dsi bridge
+Date: Tue, 12 Dec 2017 09:10:42 +0800
+Message-ID: <1513041045-12808-1-git-send-email-nickey.yang@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Branislav Radocaj <branislav@radocaj.org>
+To: robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, airlied@linux.ie
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, briannorris@chromium.org, mka@chromium.org, hoegsberg@gmail.com, architt@codeaurora.org, philippe.cornu@st.com, yannick.fertre@st.com, hl@rock-chips.com, zyw@rock-chips.com, xbl@rock-chips.com, nickey.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-If clk_set_rate() fails, we should disable clk before return.
-Found by Linux Driver Verification project (linuxtesting.org).
+We now have a generic dw-mipi-dsi bridge driver.So we send
+this patchs to moving rockchip dw-mipi-dsi driver to that
+in order to add new features(dual mipi support).
+Update ROCKCHIP DSI controller driver that uses the Synopsys
+DesignWare MIPI DSI host controller bridge.
 
-Changes since v2 [1]:
-* Merged with latest code changes
+ChangeLog:
+v2:
+   add err_pllref、remove unnecessary encoder.enable & disable
+   correct spelling mistakes
+v3:
+   add Brian's patch "drm/bridge/synopsys: stop clobbering drvdata"
+   (Link:https://patchwork.kernel.org/patch/10078493/)
+   adjust drm/stm/dsi code for above
+   drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver:
+   call dw_mipi_dsi_unbind() in dw_mipi_dsi_rockchip_unbind()
+   fix typo, use of_device_get_match_data(),
+   change some ‘bind()’ logic into 'probe()'
+   add 'dev_set_drvdata()'
+v4:
+   keep "drm/stm: dsi: Adjust dw_mipi_dsi_probe and remove"
+   into Brians "drm/bridge/synopsys: stop clobbering drvdata"
+   add review tag and add some comments 
+v5:
+  1/3: fix stm part remove() directly referencing the static
+       dw_mipi_dsi_stm_plat_data struct.
+  3/3: keep our power domain enabled while touching GRF
+v6:
+  3/3: just change func dw_mipi_encoder_disable name to
+       dw_mipi_dsi_encoder_disable
+v7:
+  1/3: add missing platform_set_drvdata in stm part.
 
-Changes since v1:
-Update made thanks to David's review, much appreciated David.
-* Improved inconsistent failure handling of clock rate setting
-* For completeness of usecase, added arc_emac_probe error handling
+Nickey Yang (3):
+  drm/bridge/synopsys: dsi: stop clobbering drvdata
+  dt-bindings: display: rockchip: update DSI controller
+  drm/rockchip: Add ROCKCHIP DW MIPI DSI controller driver
 
-Signed-off-by: Branislav Radocaj <branislav@radocaj.org>
----
-[1] https://marc.info/?l=linux-netdev&m=151301239802445&w=2
----
- drivers/net/ethernet/arc/emac_rockchip.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   23 +-
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |   36 +-
+ drivers/gpu/drm/rockchip/Kconfig                   |    2 +-
+ drivers/gpu/drm/rockchip/Makefile                  |    2 +-
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 1349 --------------------
+ drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c    |  785 ++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |    2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |    2 +-
+ drivers/gpu/drm/stm/dw_mipi_dsi-stm.c              |   12 +-
+ include/drm/bridge/dw_mipi_dsi.h                   |   17 +-
+ 10 files changed, 842 insertions(+), 1388 deletions(-)
+ delete mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+ create mode 100644 drivers/gpu/drm/rockchip/dw-mipi-dsi_rockchip.c
 
-diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
-index c6163874e4e7..16f9bee992fe 100644
---- a/drivers/net/ethernet/arc/emac_rockchip.c
-+++ b/drivers/net/ethernet/arc/emac_rockchip.c
-@@ -199,9 +199,11 @@ static int emac_rockchip_probe(struct platform_device *pdev)
- 
- 	/* RMII interface needs always a rate of 50MHz */
- 	err = clk_set_rate(priv->refclk, 50000000);
--	if (err)
-+	if (err) {
- 		dev_err(dev,
- 			"failed to change reference clock rate (%d)\n", err);
-+		goto out_regulator_disable;
-+	}
- 
- 	if (priv->soc_data->need_div_macclk) {
- 		priv->macclk = devm_clk_get(dev, "macclk");
-@@ -230,12 +232,14 @@ static int emac_rockchip_probe(struct platform_device *pdev)
- 	err = arc_emac_probe(ndev, interface);
- 	if (err) {
- 		dev_err(dev, "failed to probe arc emac (%d)\n", err);
--		goto out_regulator_disable;
-+		goto out_clk_disable_macclk;
- 	}
- 
- 	return 0;
-+
- out_clk_disable_macclk:
--	clk_disable_unprepare(priv->macclk);
-+	if (priv->soc_data->need_div_macclk)
-+		clk_disable_unprepare(priv->macclk);
- out_regulator_disable:
- 	if (priv->regulator)
- 		regulator_disable(priv->regulator);
 -- 
-2.11.0
+1.9.1
