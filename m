@@ -1,49 +1,66 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH] arm64: rockchip: enable Rockchip IO domain support
-Date: Fri, 15 Dec 2017 16:33:47 +0100
-Message-ID: <2479039.bQBttOkD7L@diego>
-References: <20171215122010.34160-1-klaus.goger@theobroma-systems.com>
+Date: Fri, 15 Dec 2017 16:55:17 +0100
+Message-ID: <8456682.qhFfChmmK7@diego>
+References: <20171215122010.34160-1-klaus.goger@theobroma-systems.com> <2479039.bQBttOkD7L@diego> <DB44D3E4-2CB5-452E-BE79-982225CB9E8F@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171215122010.34160-1-klaus.goger@theobroma-systems.com>
+In-Reply-To: <DB44D3E4-2CB5-452E-BE79-982225CB9E8F@theobroma-systems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Klaus Goger <klaus.goger@theobroma-systems.com>
+To: klaus.goger@theobroma-systems.com
 Cc: linux-rockchip@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 15. Dezember 2017, 13:20:10 CET schrieb Klaus Goger:
-> Make sure the IO domain support is active. This requires to enable
-> Adaptive Voltage Scaling class support too.
+Am Freitag, 15. Dezember 2017, 16:51:39 CET schrieb klaus.goger@theobroma-
+systems.com:
+> > On 15.12.2017, at 16:33, Heiko Stübner <heiko@sntech.de> wrote:
+> > 
+> > Am Freitag, 15. Dezember 2017, 13:20:10 CET schrieb Klaus Goger:
+> >> Make sure the IO domain support is active. This requires to enable
+> >> Adaptive Voltage Scaling class support too.
+> >> 
+> >> Without Rockchip IO domain support the internal level shifter on the
+> >> RK3399
+> >> will be misconfigured if used in the other voltage domain then the
+> >> default.
+> >> 
+> >> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
+> >> 
+> >> ---
+> >> 
+> >> arch/arm64/Kconfig.platforms | 2 ++
+> >> 1 file changed, 2 insertions(+)
+> >> 
+> >> diff --git a/arch/arm64/Kconfig.platforms b/arch/arm64/Kconfig.platforms
+> >> index 2401373565ff..7c0b0ab12f18 100644
+> >> --- a/arch/arm64/Kconfig.platforms
+> >> +++ b/arch/arm64/Kconfig.platforms
+> >> @@ -150,6 +150,8 @@ config ARCH_ROCKCHIP
+> >> 
+> >> 	select GPIOLIB
+> >> 	select PINCTRL
+> >> 	select PINCTRL_ROCKCHIP
+> >> 
+> >> +	select POWER_AVS
+> >> +	select ROCKCHIP_IODOMAIN
+> > 
+> > I'm not sure if we really want this in the default arch Kconfig or if
+> > there
+> > are cases where the iodomain driver is not necessary.
+> > 
+> > On arm32 it just gets selected in the regular defconfig [0]
 > 
-> Without Rockchip IO domain support the internal level shifter on the RK3399
-> will be misconfigured if used in the other voltage domain then the default.
-> 
-> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
-> 
-> ---
-> 
->  arch/arm64/Kconfig.platforms | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/Kconfig.platforms b/arch/arm64/Kconfig.platforms
-> index 2401373565ff..7c0b0ab12f18 100644
-> --- a/arch/arm64/Kconfig.platforms
-> +++ b/arch/arm64/Kconfig.platforms
-> @@ -150,6 +150,8 @@ config ARCH_ROCKCHIP
->  	select GPIOLIB
->  	select PINCTRL
->  	select PINCTRL_ROCKCHIP
-> +	select POWER_AVS
-> +	select ROCKCHIP_IODOMAIN
+> At least all currently supported 64bit Rockchip SoCs do have matching VSEL
+> GRF settings. For me it looked essential enough to enable for all as not
+> setting the correct I/O voltage will result in no output signal at all.
+> But I’m fine with a defconfig change if that’s the way to go.
+> Should I resend a patch or wait for other opinions?
 
-I'm not sure if we really want this in the default arch Kconfig or if there
-are cases where the iodomain driver is not necessary.
-
-On arm32 it just gets selected in the regular defconfig [0]
+Personally I would go with a defconfig change. I'd really like to keep the 
+kconfig stuff minimal and at least all arm64 Rockchip boards can at least
+boot without the iodomain driver.
 
 
 Heiko
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/configs/multi_v7_defconfig#n452
