@@ -1,101 +1,35 @@
-From: klaus.goger@theobroma-systems.com
-Subject: Re: [PATCH 0/2] Use SPDX-License-Identifier for rockchip devicetree
- files
-Date: Fri, 15 Dec 2017 17:27:52 +0100
-Message-ID: <24788EB1-9868-41E9-B97C-7D85D8C3761D@theobroma-systems.com>
-References: <20171215114427.32059-1-klaus.goger@theobroma-systems.com>
- <21020918.S4038j3A1a@diego>
- <CAOFm3uHuwmU1nCcU1MQ9qgGZ0A70ycuoo8XpWcDzgPQFzFRnRA@mail.gmail.com>
- <63058496.Aj9cacRib9@diego>
-Mime-Version: 1.0 (Mac OS X Mail 11.1 \(3445.4.7\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <63058496.Aj9cacRib9@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Huibin Hong <huibin.hong@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>, Joseph Chen <chenjh@rock-chips.com>, Romain Perier <romain.perier@collabora.com>, Randy Li <ayaka@soulik.info>, Matthias Kaehlcke <mka@chromium.org>, Sugar Zhang <sugar.zhang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, Heinrich Schuchardt <xypron.glpk@gmx.de>, Brian Norris <briannorris@chromium.org>, Russell King <linux@armlinux.org.uk>, FUKAUMI Naoki <naobsd@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Jacob Chen <jacob-chen@iotwrt.com>, Jagan
+From: Klaus Goger <klaus.goger@theobroma-systems.com>
+Subject: [PATCH] arm64: defconfig: enable Rockchip IO domain support
+Date: Fri, 15 Dec 2017 18:23:20 +0100
+Message-ID: <20171215172320.17288-1-klaus.goger@theobroma-systems.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-PiBPbiAxNS4xMi4yMDE3LCBhdCAxNjoyMCwgSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT4gd3JvdGU6Cj4gCj4gQW0gRnJlaXRhZywgMTUuIERlemVtYmVyIDIwMTcsIDE1OjQyOjQ4IENF
-VCBzY2hyaWViIFBoaWxpcHBlIE9tYnJlZGFubmU6Cj4+IE9uIEZyaSwgRGVjIDE1LCAyMDE3IGF0
-IDM6MjggUE0sIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+Pj4gQW0g
-RnJlaXRhZywgMTUuIERlemVtYmVyIDIwMTcsIDE0OjQ1OjM0IENFVCBzY2hyaWViIFBoaWxpcHBl
-IE9tYnJlZGFubmU6Cj4+Pj4gS2xhdXMsCj4+Pj4gCj4+Pj4gT24gRnJpLCBEZWMgMTUsIDIwMTcg
-YXQgMTI6NDQgUE0sIEtsYXVzIEdvZ2VyCj4+Pj4gCj4+Pj4gPGtsYXVzLmdvZ2VyQHRoZW9icm9t
-YS1zeXN0ZW1zLmNvbT4gd3JvdGU6Cj4+Pj4+IFRoaXMgcGF0Y2ggc2VyaWVzIHJlcGxhY2VzIGFs
-bCB0aGUgbGljZW5zZSB0ZXh0IGluIHJvY2tjaGlwIGRldmljZXRyZWUKPj4+Pj4gZmlsZXMgdGV4
-dCB3aXRoIGEgcHJvcGVyIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyLgo+Pj4+PiBJdCBmb2xsb3dz
-IHRoZSBndWlkZWxpbmVzIHN1Ym1pdHRlZFsxXSBieSBUaG9tYXMgR2xlaXhuZXIgdGhhdCBhcmUg
-bm90Cj4+Pj4+IHlldCBtZXJnZWQuCj4+Pj4+IAo+Pj4+PiBUaGVzZSBzZXJpZXMgYWxzbyBmaXhl
-cyB0aGUgaXNzdWUgd2l0aCBjb250cmFkaWN0aW5nIHN0YXRlbWVudHMgaW4gbW9zdAo+Pj4+PiBs
-aWNlbnNlcy4gVGhlIGludHJvZHVjdGlvbiB0ZXh0IGNsYWltcyB0byBiZSBHUEwgb3IgWDExWzJd
-IGJ1dCB0aGUKPj4+Pj4gZm9sbG93aW5nIHZlcmJhdGltIGNvcHkgb2YgdGhlIGxpY2Vuc2UgaXMg
-YWN0dWFsbHkgYSBNSVRbM10gbGljZW5zZS4KPj4+Pj4gVGhlIFgxMSBsaWNlbnNlIGluY2x1ZGVz
-IGEgYWR2ZXJ0aXNlIGNsYXVzZSBhbmQgdHJhZGVtYXJrIGluZm9ybWF0aW9uCj4+Pj4+IHJlbGF0
-ZWQgdG8gdGhlIFggQ29uc29ydGl1bS4gQXMgdGhlc2UgWCBDb25zb3J0aXVtIHNwZWNmaWMgcG9p
-bnRzIGFyZQo+Pj4+PiBpcnJlbGV2YW50IGZvciB1cyB3ZSBzdGljayB3aXRoIHRoZSBhY3R1YWxs
-IGxpY2Vuc2UgdGV4dC4KPj4+Pj4gCj4+Pj4+IFsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwu
-b3JnL3BhdGNoLzEwMDkxNjA3Lwo+Pj4+PiBbMl0gaHR0cHM6Ly9zcGR4Lm9yZy9saWNlbnNlcy9Y
-MTEuaHRtbAo+Pj4+PiBbM10gaHR0cHM6Ly9zcGR4Lm9yZy9saWNlbnNlcy9NSVQuaHRtbAo+Pj4+
-IAo+Pj4+IEZXSVcsIHRoZSBYMTEgbGljZW5zZSBuYW1lIHdhcyBub3QgYWx3YXlzIHNvbWV0aGlu
-ZyBjbGVhcmx5IGRlZmluZWQuCj4+Pj4gU1BEWCBjYWxscyBpdCBjbGVhcmx5IE1JVCB3aGljaCBp
-cyB0aGUgbW9zdCB3aWRlbHkgYWNjZXB0ZWQgbmFtZSBmb3IKPj4+PiB0aGUgY29ycmVzcG9uZGlu
-ZyB0ZXh0LiBBbmQgdGhpcyBpcyBhbHNvIHdoYXQgd2UgaGF2ZSBpbiBUaG9tYXMgZG9jCj4+Pj4g
-cGF0Y2hlcyB0aGF0IHNob3VsZCBiZSB0aGUga2VybmVsIHJlZmVyZW5jZS4KPj4+PiAKPj4+PiBB
-bHNvLCBhcyBhIGdlbmVyYWwgbm90ZSwgeW91IHdhbnQgdG8gbWFrZSBzdXJlIHRoYXQgc3VjaCBh
-cyBwYXRjaCBzZXQKPj4+PiBpcyBub3QgbWVyZ2VkIGJ5IG1pc3Rha2UgdW50aWwgeW91IGhhdmUg
-Y29sbGVjdGVkIGFuIGV4cGxpY2l0IHJldmlldwo+Pj4+IG9yIGFjayBmcm9tIGFsbCB0aGUgY29w
-eXJpZ2h0IGhvbGRlcnMgaW52b2x2ZWQuCj4+PiAKPj4+IEp1c3QgZm9yIG15IHVuZGVyc3RhbmRp
-bmcsIGlzIGl0IHJlYWxseSBuZWNlc3NhcnkgdG8gZ2V0IEFja3MgZnJvbSBfYWxsXwo+Pj4gcHJl
-dmlvdXMgY29udHJpYnV0b3JzPwo+Pj4gCj4+PiBJIHNlZSB0aGF0IFRob21hcyBwYXRjaGVzIG1v
-dmluZyBsaWNlbnNlIHRleHRzIGludG8gdGhlIGtlcm5lbCBpdHNlbGYgZG8KPj4+IG5vdCBzZWVt
-IHRvIGhhdmUgbGFuZGVkIHlldCwgYnV0IHdoZW4gdGhlIGFjdHVhbCBsaWNlbnNlIHRleHQgZG9l
-cyBfbm90Xwo+Pj4gY2hhbmdlIGFuZCBvbmx5IGl0cyBsb2NhdGlvbiB0byBhIGNvbW1vbiBwbGFj
-ZSBpbnNpZGUgdGhlIGtlcm5lbCBzb3VyY2VzLAo+Pj4gaXQgZmVlbHMgYSBiaXQgb3ZlcmtpbGwg
-dHJ5aW5nIHRvIGdldCBBY2tzIGZyb20gX2V2ZXJ5Ym9keV8gdGhhdAo+Pj4gY29udHJpYnV0ZWQg
-dG8gUm9ja2NoaXAgZGV2aWNldHJlZXMgZm9yIHRoZSBsYXN0IDQgeWVhcnMuCj4+PiAKPj4+IElm
-IHdlIHdvdWxkIGFjdHVhbGx5IHdhbnQgdG8gY2hhbmdlIHRoZSBsaWNlbnNlIEkgd291bGQgZGVm
-aW5pdGx5IGZlZWwKPj4+IGRpZmZlcmVudGx5LCBidXQgdGhlIGxpY2Vuc2UgdGV4dCBkb2VzIG5v
-dCBjaGFuZ2UuCj4+IAo+PiBXZWxsIHlvdSBhcmUgdGVjaG5pY2FsbHkgcmlnaHQuIEJ1dCB0aGVy
-ZSBpcyBhIHNvY2lhbCBhbmQgcG9saXRlbmVzcwo+PiBhbmdsZSB0byB0aGlzIHRvby4gU28gbWF5
-IGJlIGdldHRpbmcgdGhlIGFjayBvZiBhbGwgY29udHJpYnV0b3JzIGlzCj4+IG5vdCBhbHdheXMg
-bmVlZGVkLCBidXQgZ2V0dGluZyBpdCBpcyBiZXN0IGFuZCB0aGUgcmlnaHQgdG8gZG8gYW5kIGF0
-Cj4+IGxlYXN0IGdldHRpbmcgZm9yIHRoZSBuYW1lZCBjb3B5cmlnaHQgaG9sZGVycyBzaG91bGQg
-YmUgdGhlcmUuCj4+IAo+PiBUaGF0J3Mgb25seSBvbmx5IG15IHRha2U6IGxlYXZpbmcgYXNpZGUg
-YW55IHRlY2huaWNhbCBsZWdhbCBpc3N1ZSwgc2F5Cj4+IEkgd291bGQgYmUgb24gdGhlIHJlY2Vp
-dmluZyBlbmQgYXMgb25lIG9mIHRoZSBob2xkZXIgb3IgY29udHJpYnV0b3JzOgo+PiBJIHdvdWxk
-IGZpbmQgaXQgcmVhbGx5IGdyZWF0IGFuZCBuaWNlIHRvIGhhdmUgbXkgYWNrIHJlcXVlc3RlZC4g
-QW5kIEkKPj4gd291bGQgYmUgYSBkb3JrIG5vdCB0byBnaXZlIGl0LiBTbyBJIGxpa2UgdG8gZG8g
-dG8gb3RoZXJzIHRoZSBzYW1lIEkKPj4gd291bGQgYXBwcmVjaWF0ZSBkb25lIHRvIG1lICh3aXRo
-aW4gcmVhc29uLCBhcyBJIHNvbWV0aW1lcyBzaG9vdAo+PiBteXNlbGYgaW4gdGhlIGZvb3QgOykg
-KQo+IAo+IEhlaGUgLi4uIEkgZGlkbid0IHBsYW4gb24gbWVyZ2luZyB0aGlzIHdpdGhvdXQgYW1w
-bGUgdGltZSBmb3IgcGVvcGxlCj4gdG8gZWl0aGVyIEFDSyBvciBOQUsgdGhlIGNoYW5nZSwgc28g
-d2FzIHBsYW5uaW5nIG9uIGtlZXBpbmcgdG8gc29jaWFsCj4gcHJvdG9jb2wgOy0pIC4gSnVzdCB0
-aGUgImFsbCIgdGhyZXcgbWUgZm9yIGEgbG9vcC4KPiAKPiBBbmQgaGF2aW5nIHRoYXQgYXMgUEFU
-Q0ggd2l0aG91dCBSRkMgYWxzbyBjb21tdW5pY2F0ZXMgdGhhdCBwZW9wbGUKPiBzaG91bGQgdGFr
-ZSBhIGxvb2ssIGFzIFJGQyBwYXRjaGVzIGFyZSBvZnRlbiBvdmVybG9va2VkLgo+IAo+IEFzIEts
-YXVzIHNlZW1zIHRvIGhhdmUgaW5jbHVkZWQgbW9zdCBwZW9wbGUgdGhhdCBoYXZlIGNvbnRyaWJ1
-dGVkIGluIHRoZQo+IHBhc3QsIEkgd291bGQgZ3Vlc3Mgd2Ugc2hvdWxkIHJlY2VpdmUgYW55IGV4
-aXN0aW5nIGNvbXBsYWludHMgYWJvdXQgdGhhdAo+IGNoYW5nZSA6LSkgLgoKSSBhZGRlZCB0aGUg
-ZnVsbCBsaXN0IGZyb20gdGhlIGdldF9tYWludGFpbmVycyBzY3JpcHQuIFNvbWUgb2YgdGhlIG9y
-aWdpbmFsIGF1dGhvcnMKZ290IGRyb3BwZWQgYXMgdGhlIGN1cnJlbnQgY29udHJpYnV0aW9uIGxl
-dmVsIGRyb3BwZWQgYmVsb3cgdGhlIHNjcmlwdHMgbGltaXQuCkkgYWRkZWQgdGhlIG1pc3Npbmcg
-ZW1haWwgYWRkcmVzc2VzIGZyb20gdGhlIGNvcHlyaWdodCBoZWFkZXJzIHRvIHRoZSBDQyBsaXN0
-LiAKCkNvbnZlbmllbmNlIGxpbmtzIHRvIHRoZSBvcmlnaW5hbCBwYXRjaGVzIGZvciB0aGUgYWRk
-ZWQgcGVvcGxlOgoKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDExNDg0NS8K
-aHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDExNDg0My8KCj4gU28gSSdsbCBk
-ZWZpbml0bHkgbGV0IHRoaXMgc2ltbWVyIGZvciBxdWl0ZSBhIGJpdCBhbmQgZG8gYSBiZXN0LWVm
-Zm9ydCBBY2sgCj4gY29sbGVjdGlvbi4KClRoYW5rcywKS2xhdXMKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcg
-bGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+Without Rockchip IO domain support the internal level shifters will
+be misconfigured if used with other voltage domains then the default.
+
+Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
+
+---
+
+ arch/arm64/configs/defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 6356c6da34ea..cad81b1723d8 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -311,6 +311,8 @@ CONFIG_GPIO_XGENE_SB=y
+ CONFIG_GPIO_PCA953X=y
+ CONFIG_GPIO_PCA953X_IRQ=y
+ CONFIG_GPIO_MAX77620=y
++CONFIG_POWER_AVS=y
++CONFIG_ROCKCHIP_IODOMAIN=y
+ CONFIG_POWER_RESET_MSM=y
+ CONFIG_POWER_RESET_XGENE=y
+ CONFIG_POWER_RESET_SYSCON=y
+-- 
+2.11.0
