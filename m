@@ -1,76 +1,143 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 0/2] Use SPDX-License-Identifier for rockchip devicetree
- files
-Date: Fri, 15 Dec 2017 11:19:54 -0800
-Message-ID: <20171215191953.GA50973@google.com>
-References: <20171215114427.32059-1-klaus.goger@theobroma-systems.com>
- <21020918.S4038j3A1a@diego>
- <CAOFm3uHuwmU1nCcU1MQ9qgGZ0A70ycuoo8XpWcDzgPQFzFRnRA@mail.gmail.com>
- <63058496.Aj9cacRib9@diego>
- <24788EB1-9868-41E9-B97C-7D85D8C3761D@theobroma-systems.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: Why do we check for "link-up" in *_pcie_valid_device()?
+Date: Fri, 15 Dec 2017 14:11:00 -0600
+Message-ID: <20171215201100.GX30595@bhelgaas-glaptop.roam.corp.google.com>
+References: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
+ <000f01d375d4$17e9c830$47bd5890$@gmail.com>
+ <20171215190426.GW30595@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <24788EB1-9868-41E9-B97C-7D85D8C3761D@theobroma-systems.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: klaus.goger@theobroma-systems.com
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Huibin Hong <huibin.hong@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>, Joseph Chen <chenjh@rock-chips.com>, Romain Perier <romain.perier@collabora.com>, Randy Li <ayaka@soulik.info>, Matthias Kaehlcke <mka@chromium.org>, Emil Renner Berthing <kernel@esmil.dk>, Sugar Zhang <sugar.zhang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, Heinrich Schuchardt <xypron.glpk@gmx.de>, Russell King <linux@armlinux.org.uk>, FUKAUMI Naoki <naobsd@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Jacob Chen <jacob-chen@iotwrt>
+In-Reply-To: <20171215190426.GW30595@bhelgaas-glaptop.roam.corp.google.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Jingoo Han <jingoohan1@gmail.com>
+Cc: 'Joao Pinto' <Joao.Pinto@synopsys.com>, 'Ley Foon Tan' <lftan@altera.com>, 'Shawn Lin' <shawn.lin@rock-chips.com>, 'Michal Simek' <michal.simek@xilinx.com>, 'Jim Quinlan' <jim2101024@gmail.com>, 'Lorenzo Pieralisi' <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org, rfi@lists.rocketboards.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Dec 15, 2017 at 05:27:52PM +0100, klaus.goger@theobroma-systems.com=
- wrote:
-> > On 15.12.2017, at 16:20, Heiko St=FCbner <heiko@sntech.de> wrote:
-> > Am Freitag, 15. Dezember 2017, 15:42:48 CET schrieb Philippe Ombredanne:
-> >> On Fri, Dec 15, 2017 at 3:28 PM, Heiko St=FCbner <heiko@sntech.de> wro=
-te:
-> >>> Am Freitag, 15. Dezember 2017, 14:45:34 CET schrieb Philippe Ombredan=
-ne:
-> >>>> On Fri, Dec 15, 2017 at 12:44 PM, Klaus Goger
-> >>>> <klaus.goger@theobroma-systems.com> wrote:
-> >>>>> This patch series replaces all the license text in rockchip devicet=
-ree
-> >>>>> files text with a proper SPDX-License-Identifier.
-> >>>>> It follows the guidelines submitted[1] by Thomas Gleixner that are =
-not
-> >>>>> yet merged.
+On Fri, Dec 15, 2017 at 01:04:26PM -0600, Bjorn Helgaas wrote:
+> On Fri, Dec 15, 2017 at 01:39:50PM -0500, Jingoo Han wrote:
+> > On Thursday, December 14, 2017 5:58 PM, Bjorn Helgaas wrote:
+> > > In the PCI config access path, the *_pcie_valid_device() functions in
+> > > the dwc, altera, rockchip, and xilinx drivers all check whether the
+> > > link is up.
 
-[...]
+Sorry, Shawn, I included rockchip by mistake; it doesn't actually check for
+link-up.  I'll try to remember to remove you and linux-rockchip from
+the cc list of future emails.
 
-> I added the full list from the get_maintainers script. Some of the origin=
-al authors
-> got dropped as the current contribution level dropped below the scripts l=
-imit.
-> I added the missing email addresses from the copyright headers to the CC =
-list. =
+> > > I think this is racy because the link may go down after we check but
+> > > before we perform the config access.
+> > > 
+> > > What would blow up if we removed the *_pcie_link_up() checks?
+> > 
+> > The original intention is to avoid config access before link up.
+> > 
+> > Also, I did not find any racy condition as you mentioned.
+> > However, if you think that we need to prevent the racy condition,
+> > someone can send a patch or add comments.
+> 
+> Here's the race:
+> 
+>   pci_read_config_word
+>     ...
+>       dw_pcie_rd_conf
+>         dw_pcie_valid_device
+>           dw_pcie_link_up        # returns true; link currently up
+>                                  <-- link goes down for unrelated reason
+>         dw_pcie_rd_other_conf
+>           dw_pcie_read
+>             readl                # issue config read
+> 
+> The readl() that issues the config read in the PCIe domain races with
+> the link-down event.  If the readl() completes first, everything works
+> as expected.  If the link-down happens first, I don't know what
+> happens.  This is the core of my question.
+> 
+> The hardware *should* do something sane because link-down is an
+> asynchronous event that is unrelated to the config read and may happen
+> at any time.  It's just part of the PCIe environment and the spec
+> defines mechanisms for dealing with and reporting the situation.
 
-> =
+To make this concrete, the patch I would propose is below.  This isn't
+for merging yet; just for discussion and testing.
 
-> Convenience links to the original patches for the added people:
-> =
+Jim mentioned that the Broadcom STB host controller effects a
+synchronous or asynchronous abort when doing a config access when the
+link or power has gone down on the Endpoint.  Possibly there's a
+similar issue on DesignWare, Altera, and Xilinx.
 
-> https://patchwork.kernel.org/patch/10114845/
-> https://patchwork.kernel.org/patch/10114843/
+I think the best way to handle that is to figure out how to deal with
+the abort cleanly.  Using a test like *_pcie_link_up() to try to avoid
+it is a 99% solution that means we'll see rare failures that are very
+difficult to reproduce and debug.
 
-I can't possibly miss my chance to spam dozens of people! I don't really
-care at all about this change, so pick whichever of the following will
-get these patches out of my mailbox quicker (choice is at the
-maintainers' discretion):
-
-Acked-by: Brian Norris <briannorris@chromium.org>
-Nacked-by: Brian Norris <briannorris@chromium.org>
-Viewed-with-strong-indifference-by: Brian Norris <briannorris@chromium.org>
-
-for both patches. (I was CC'd only on 1, but I contributed to both
-sets.)
-
-Brian
+diff --git a/drivers/pci/dwc/pcie-designware-host.c b/drivers/pci/dwc/pcie-designware-host.c
+index 81e2157a7cfb..3dcdcdd6aa37 100644
+--- a/drivers/pci/dwc/pcie-designware-host.c
++++ b/drivers/pci/dwc/pcie-designware-host.c
+@@ -524,14 +524,6 @@ static int dw_pcie_wr_other_conf(struct pcie_port *pp, struct pci_bus *bus,
+ static int dw_pcie_valid_device(struct pcie_port *pp, struct pci_bus *bus,
+ 				int dev)
+ {
+-	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+-
+-	/* If there is no link, then there is no device */
+-	if (bus->number != pp->root_bus_nr) {
+-		if (!dw_pcie_link_up(pci))
+-			return 0;
+-	}
+-
+ 	/* access only one slot on each root port */
+ 	if (bus->number == pp->root_bus_nr && dev > 0)
+ 		return 0;
+diff --git a/drivers/pci/host/pcie-altera.c b/drivers/pci/host/pcie-altera.c
+index 5cc4f594d79a..17ba6cce9bd0 100644
+--- a/drivers/pci/host/pcie-altera.c
++++ b/drivers/pci/host/pcie-altera.c
+@@ -140,12 +140,6 @@ static void tlp_write_tx(struct altera_pcie *pcie,
+ static bool altera_pcie_valid_device(struct altera_pcie *pcie,
+ 				     struct pci_bus *bus, int dev)
+ {
+-	/* If there is no link, then there is no device */
+-	if (bus->number != pcie->root_bus_nr) {
+-		if (!altera_pcie_link_up(pcie))
+-			return false;
+-	}
+-
+ 	/* access only one slot on each root port */
+ 	if (bus->number == pcie->root_bus_nr && dev > 0)
+ 		return false;
+diff --git a/drivers/pci/host/pcie-xilinx-nwl.c b/drivers/pci/host/pcie-xilinx-nwl.c
+index 65dea98b2643..db94df5db148 100644
+--- a/drivers/pci/host/pcie-xilinx-nwl.c
++++ b/drivers/pci/host/pcie-xilinx-nwl.c
+@@ -218,12 +218,6 @@ static bool nwl_pcie_valid_device(struct pci_bus *bus, unsigned int devfn)
+ {
+ 	struct nwl_pcie *pcie = bus->sysdata;
+ 
+-	/* Check link before accessing downstream ports */
+-	if (bus->number != pcie->root_busno) {
+-		if (!nwl_pcie_link_up(pcie))
+-			return false;
+-	}
+-
+ 	/* Only one device down on each root port */
+ 	if (bus->number == pcie->root_busno && devfn > 0)
+ 		return false;
+diff --git a/drivers/pci/host/pcie-xilinx.c b/drivers/pci/host/pcie-xilinx.c
+index 7b5325990f5e..3cdb99708342 100644
+--- a/drivers/pci/host/pcie-xilinx.c
++++ b/drivers/pci/host/pcie-xilinx.c
+@@ -163,11 +163,6 @@ static bool xilinx_pcie_valid_device(struct pci_bus *bus, unsigned int devfn)
+ {
+ 	struct xilinx_pcie_port *port = bus->sysdata;
+ 
+-	/* Check if link is up when trying to access downstream ports */
+-	if (bus->number != port->root_busno)
+-		if (!xilinx_pcie_link_up(port))
+-			return false;
+-
+ 	/* Only one device down on each root port */
+ 	if (bus->number == port->root_busno && devfn > 0)
+ 		return false;
