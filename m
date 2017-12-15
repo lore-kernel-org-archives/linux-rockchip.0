@@ -1,44 +1,38 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: [PATCH] PCI: rockchip: Remove redundant "valid device" check
-Date: Fri, 15 Dec 2017 14:29:35 -0600
-Message-ID: <20171215202935.157396.74423.stgit@bhelgaas-glaptop.roam.corp.google.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: gpu: mali-utgard: add
+ rockchip,rk3328-mali compatible
+Date: Fri, 15 Dec 2017 14:30:41 -0600
+Message-ID: <20171215203041.lm22qrdt2dojoae3@rob-hp-laptop>
+References: <20171209000738.32187-1-heiko@sntech.de>
+ <20171209000738.32187-2-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20171209000738.32187-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Bjorn Helgaas <bhelgaas@google.com>
+On Sat, Dec 09, 2017 at 01:07:36AM +0100, Heiko Stuebner wrote:
+> The rk3328 quad-core Cortex A53 uses a Mali-450MP2 with 2 PPs, so
+> add a compatible for it.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/gpu/arm,mali-utgard.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-In rockchip_pcie_valid_device(), we do the exact same test twice:
+For the series,
 
-  if (bus->number == rockchip->root_bus_nr && dev > 0)
-    return 0;
-  if (bus->number == rockchip->root_bus_nr && dev > 0)
-    return 0;
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-We only need to do it once, so remove one of them.
+Though I don't think it's really necessary to enable the gpu per board 
+as it has no pinout. Default enabled would be better IMO.
 
-Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
----
- drivers/pci/host/pcie-rockchip.c |    4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-index 9051c6c8fea4..dd9c7ea69e0b 100644
---- a/drivers/pci/host/pcie-rockchip.c
-+++ b/drivers/pci/host/pcie-rockchip.c
-@@ -293,10 +293,6 @@ static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
- static int rockchip_pcie_valid_device(struct rockchip_pcie *rockchip,
- 				      struct pci_bus *bus, int dev)
- {
--	/* access only one slot on each root port */
--	if (bus->number == rockchip->root_bus_nr && dev > 0)
--		return 0;
--
- 	/*
- 	 * do not read more than one device on the bus directly attached
- 	 * to RC's downstream side.
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
