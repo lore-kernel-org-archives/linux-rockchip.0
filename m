@@ -1,85 +1,54 @@
-From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] extcon: usbc-cros-ec: add support to notify USB
- type cables.
-Date: Fri, 15 Dec 2017 17:33:41 +0900
-Message-ID: <5A3388E5.9030100@samsung.com>
-References: <CGME20171213103241epcas2p412031074459fa3893388ffca4f894abc@epcas2p4.samsung.com>
-        <20171213103219.1464-1-enric.balletbo@collabora.com>
-        <5A33702D.60004@samsung.com> <20171215081453.6jwjdetwe655imqo@dell>
-        <5A3385D0.2050308@samsung.com>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH v5 5/5] ARM: dts: rockchip: set PWM delay backlight
+ settings for Minnie
+Date: Fri, 15 Dec 2017 11:57:21 +0100
+Message-ID: <20171215105721.GB12950@amd>
+References: <20171201120651.29633-1-enric.balletbo@collabora.com>
+ <20171201120651.29633-5-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-reply-to: <5A3385D0.2050308-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, MyungJoo Ham <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+        protocol="application/pgp-signature"; boundary="tsOsTdHNUZQcU9Ye"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20171201120651.29633-5-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2017년 12월 15일 17:20, Chanwoo Choi wrote:
-> On 2017년 12월 15일 17:14, Lee Jones wrote:
->>> On 2017년 12월 13일 19:32, Enric Balletbo i Serra wrote:
->>>> From: Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>>
->>>> Extend the driver to notify host and device type cables and the presence
->>>> of power.
->>>>
->>>> Signed-off-by: Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>>> Reviewed-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
->>>> ---
->>>> Changes since v1:
->>>>  - Use the BIT macro. Requested by Lee Jones.
->>>>  - Add the Reviewed-by: Chanwoo Choi.
->>>>
->>>>  drivers/extcon/extcon-usbc-cros-ec.c | 142 ++++++++++++++++++++++++++++++++++-
->>>>  include/linux/mfd/cros_ec_commands.h |  17 +++++
->>>>  2 files changed, 155 insertions(+), 4 deletions(-)
->>
->>> Looks good to me. After reviewing the Lee Jones,
->>> I'll take it on next branch.
->>
->> If you take it, you need to send me a pull-request to an immutable
->> branch.
->>
->> Acked-by: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
->>
-> 
-> Sure. I'll send the immutable branch. Thanks.
-> 
 
-Dear Lee,
+--tsOsTdHNUZQcU9Ye
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I make the immutable branch (ib-extcon-mfd-4.16)
-and send the following pull request.
+On Fri 2017-12-01 13:06:51, Enric Balletbo i Serra wrote:
+> The minnie devices comes with an AUO B101EAN01 panel which is different
+> from default veyron devices, thus the power on/off timing sequence is
+> slightly different. The datasheet specifies a pwm delay of 200 ms, so
+> update the PMW delay proprieties accordingly.
+>=20
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-The following changes since commit 4fbd8d194f06c8a3fd2af1ce560ddb31f7ec8323:
+Patches 4,5:
 
-  Linux 4.15-rc1 (2017-11-26 16:01:47 -0800)
+Acked-by: Pavel Machek <pavel@ucw.cz>
 
-are available in the git repository at:
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/extcon.git ib-extcon-mfd-4.16
+--tsOsTdHNUZQcU9Ye
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
-for you to fetch changes up to c7eb47f9e45226571be31212f6efd4b307d3b59d:
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
 
-  extcon: usbc-cros-ec: add support to notify USB type cables. (2017-12-15 17:21:49 +0900)
+iEYEARECAAYFAlozqpEACgkQMOfwapXb+vJy5wCgka6qvAz/LVTaluCFA53oLoGM
+T6wAnjaPqYrbPCLVq26+Mw030/oW2klN
+=Q6aG
+-----END PGP SIGNATURE-----
 
-----------------------------------------------------------------
-Benson Leung (1):
-      extcon: usbc-cros-ec: add support to notify USB type cables.
-
- drivers/extcon/extcon-usbc-cros-ec.c | 142 ++++++++++++++++++++++++++++++++++-
- include/linux/mfd/cros_ec_commands.h |  17 +++++
- 2 files changed, 155 insertions(+), 4 deletions(-)
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--tsOsTdHNUZQcU9Ye--
