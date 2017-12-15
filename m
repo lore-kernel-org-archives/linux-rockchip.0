@@ -1,68 +1,115 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v2 1/5] extcon: usbc-cros-ec: add support to notify USB
- type cables.
-Date: Fri, 15 Dec 2017 11:38:00 +0000
-Message-ID: <20171215113800.36vomqjngea5p4dr@dell>
-References: <CGME20171213103241epcas2p412031074459fa3893388ffca4f894abc@epcas2p4.samsung.com>
- <20171213103219.1464-1-enric.balletbo@collabora.com>
- <5A33702D.60004@samsung.com>
- <20171215081453.6jwjdetwe655imqo@dell>
- <5A3385D0.2050308@samsung.com>
- <5A3388E5.9030100@samsung.com>
+From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Subject: [PATCH 0/2] Use SPDX-License-Identifier for rockchip devicetree files
+Date: Fri, 15 Dec 2017 12:44:25 +0100
+Message-ID: <20171215114427.32059-1-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5A3388E5.9030100@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, groeck@chromium.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Benson Leung <bleung@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>, Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin@rock-chips.c>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 15 Dec 2017, Chanwoo Choi wrote:
+This patch series replaces all the license text in rockchip devicetree
+files text with a proper SPDX-License-Identifier.
+It follows the guidelines submitted[1] by Thomas Gleixner that are not
+yet merged.
 
-> On 2017년 12월 15일 17:20, Chanwoo Choi wrote:
-> > On 2017년 12월 15일 17:14, Lee Jones wrote:
-> >>> On 2017년 12월 13일 19:32, Enric Balletbo i Serra wrote:
-> >>>> From: Benson Leung <bleung@chromium.org>
-> >>>>
-> >>>> Extend the driver to notify host and device type cables and the presence
-> >>>> of power.
-> >>>>
-> >>>> Signed-off-by: Benson Leung <bleung@chromium.org>
-> >>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> >>>> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
-> >>>> ---
-> >>>> Changes since v1:
-> >>>>  - Use the BIT macro. Requested by Lee Jones.
-> >>>>  - Add the Reviewed-by: Chanwoo Choi.
-> >>>>
-> >>>>  drivers/extcon/extcon-usbc-cros-ec.c | 142 ++++++++++++++++++++++++++++++++++-
-> >>>>  include/linux/mfd/cros_ec_commands.h |  17 +++++
-> >>>>  2 files changed, 155 insertions(+), 4 deletions(-)
-> >>
-> >>> Looks good to me. After reviewing the Lee Jones,
-> >>> I'll take it on next branch.
-> >>
-> >> If you take it, you need to send me a pull-request to an immutable
-> >> branch.
-> >>
-> >> Acked-by: Lee Jones <lee.jones@linaro.org>
-> >>
-> > 
-> > Sure. I'll send the immutable branch. Thanks.
-> > 
-> 
-> Dear Lee,
-> 
-> I make the immutable branch (ib-extcon-mfd-4.16)
-> and send the following pull request.
+These series also fixes the issue with contradicting statements in most
+licenses. The introduction text claims to be GPL or X11[2] but the
+following verbatim copy of the license is actually a MIT[3] license.
+The X11 license includes a advertise clause and trademark information
+related to the X Consortium. As these X Consortium specfic points are
+irrelevant for us we stick with the actuall license text.
 
-Nicely done.  Pulled, thanks.
+[1] https://patchwork.kernel.org/patch/10091607/
+[2] https://spdx.org/licenses/X11.html
+[3] https://spdx.org/licenses/MIT.html
+
+
+Klaus Goger (2):
+  arm64: dts: rockchip: use SPDX-License-Identifier
+  ARM: dts: rockchip: use SPDX-License-Identifier
+
+ arch/arm/boot/dts/rk3036-evb.dts                   | 40 +---------------------
+ arch/arm/boot/dts/rk3036-kylin.dts                 | 40 +---------------------
+ arch/arm/boot/dts/rk3036.dtsi                      | 40 +---------------------
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts             | 39 +--------------------
+ arch/arm/boot/dts/rk3066a-marsboard.dts            | 39 +--------------------
+ arch/arm/boot/dts/rk3066a-mk808.dts                | 39 +--------------------
+ arch/arm/boot/dts/rk3066a-rayeager.dts             | 39 +--------------------
+ arch/arm/boot/dts/rk3066a.dtsi                     | 39 +--------------------
+ arch/arm/boot/dts/rk3188-px3-evb.dts               | 39 +--------------------
+ arch/arm/boot/dts/rk3188-radxarock.dts             | 39 +--------------------
+ arch/arm/boot/dts/rk3188.dtsi                      | 39 +--------------------
+ arch/arm/boot/dts/rk3228-evb.dts                   | 40 +---------------------
+ arch/arm/boot/dts/rk3229-evb.dts                   | 40 +---------------------
+ arch/arm/boot/dts/rk3229.dtsi                      | 39 +--------------------
+ arch/arm/boot/dts/rk322x.dtsi                      | 40 +---------------------
+ arch/arm/boot/dts/rk3288-evb-act8846.dts           | 40 +---------------------
+ arch/arm/boot/dts/rk3288-evb-rk808.dts             | 40 +---------------------
+ arch/arm/boot/dts/rk3288-evb.dtsi                  | 40 +---------------------
+ arch/arm/boot/dts/rk3288-fennec.dts                | 40 +---------------------
+ arch/arm/boot/dts/rk3288-firefly-beta.dts          | 39 +--------------------
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi  | 39 +--------------------
+ arch/arm/boot/dts/rk3288-firefly-reload.dts        | 39 +--------------------
+ arch/arm/boot/dts/rk3288-firefly.dts               | 39 +--------------------
+ arch/arm/boot/dts/rk3288-firefly.dtsi              | 39 +--------------------
+ arch/arm/boot/dts/rk3288-miqi.dts                  | 39 +--------------------
+ arch/arm/boot/dts/rk3288-phycore-rdk.dts           | 39 +--------------------
+ arch/arm/boot/dts/rk3288-phycore-som.dtsi          | 39 +--------------------
+ arch/arm/boot/dts/rk3288-popmetal.dts              | 39 +--------------------
+ arch/arm/boot/dts/rk3288-r89.dts                   | 39 +--------------------
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            | 40 +---------------------
+ arch/arm/boot/dts/rk3288-rock2-square.dts          | 40 +---------------------
+ arch/arm/boot/dts/rk3288-tinker.dts                | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi  |  5 +--
+ arch/arm/boot/dts/rk3288-veyron-brain.dts          | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi    | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts            | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-jerry.dts          | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts         | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts         | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts          | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi         | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 39 +--------------------
+ arch/arm/boot/dts/rk3288-veyron.dtsi               | 39 +--------------------
+ arch/arm/boot/dts/rk3288-vyasa.dts                 | 39 +--------------------
+ arch/arm/boot/dts/rk3288.dtsi                      | 40 +---------------------
+ arch/arm/boot/dts/rk3xxx.dtsi                      | 39 +--------------------
+ arch/arm/boot/dts/rv1108-evb.dts                   | 40 +---------------------
+ arch/arm/boot/dts/rv1108.dtsi                      | 40 +---------------------
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 39 +--------------------
+ .../arm64/boot/dts/rockchip/rk3368-evb-act8846.dts | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    | 39 +--------------------
+ .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi   | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       | 39 +--------------------
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 39 +--------------------
+ .../dts/rockchip/rk3399-sapphire-excavator.dts     | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  | 39 +--------------------
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 39 +--------------------
+ 69 files changed, 69 insertions(+), 2603 deletions(-)
 
 -- 
-Lee Jones
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+2.11.0
