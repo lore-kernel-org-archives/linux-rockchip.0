@@ -1,103 +1,105 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: [PATCH] drm/rockchip: analogix_dp: Ensure that the bridge is powered
- before poking it
-Date: Mon, 18 Dec 2017 11:28:31 +0000
-Message-ID: <20171218112831.7990-1-marc.zyngier@arm.com>
+From: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
+Subject: Re: [PATCH 0/2] Use SPDX-License-Identifier for rockchip devicetree
+ files
+Date: Mon, 18 Dec 2017 12:43:30 +0100
+Message-ID: <75deea05-b819-c6b9-6e97-860644f907a5@suse.com>
+References: <20171215114427.32059-1-klaus.goger@theobroma-systems.com>
+ <21020918.S4038j3A1a@diego>
+ <CAOFm3uHuwmU1nCcU1MQ9qgGZ0A70ycuoo8XpWcDzgPQFzFRnRA@mail.gmail.com>
+ <63058496.Aj9cacRib9@diego>
+ <24788EB1-9868-41E9-B97C-7D85D8C3761D@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <24788EB1-9868-41E9-B97C-7D85D8C3761D-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, FUKAUMI Naoki <naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Jagan
 List-Id: linux-rockchip.vger.kernel.org
 
-Stopping the X display manager on a kevin platform results in the
-following crash:
-
-[  674.833536] Synchronous External Abort: synchronous external abort (0x96000010) at 0xffff00000c970640
-[  674.843886] Internal error: : 96000010 [#1] PREEMPT SMP
-[  674.849744] Modules linked in:
-[  674.849755] CPU: 1 PID: 86 Comm: kworker/1:1 Not tainted 4.15.0-rc3-00057-gff24f8cf492d-dirty #3
-[  674.849760] detected fb_set_par error, error code: -16
-[  674.849761] Hardware name: Google Kevin (DT)
-[  674.849773] Workqueue: events analogix_dp_psr_work
-[  674.849778] pstate: 60000005 (nZCv daif -PAN -UAO)
-[  674.849784] pc : analogix_dp_send_psr_spd+0x8/0x168
-[  674.849788] lr : analogix_dp_enable_psr+0x54/0x60
-[  674.849789] sp : ffff000009b2bd60
-[  674.849790] x29: ffff000009b2bd60 x28: 0000000000000000
-[  674.849794] x27: ffff000009913d20 x26: ffff00000900fbf0
-[  674.849797] x25: ffff8000f1b30000 x24: ffff8000f0c21d98
-[  674.849800] x23: 0000000000000000 x22: ffff8000f7d3aa00
-[  674.849803] x21: ffff8000f7d36980 x20: ffff8000f0c21c18
-[  674.849806] x19: ffff8000f0c21db8 x18: 0000000000000001
-[  674.849809] x17: 0000ffff89f2ed58 x16: ffff000008222908
-[  674.849812] x15: 0000000000000000 x14: 0000000000000400
-[  674.849815] x13: 0000000000000400 x12: 0000000000000000
-[  674.849817] x11: 0000000000001414 x10: 0000000000000a00
-[  674.849820] x9 : ffff000009b2bbb0 x8 : ffff8000f1b30a60
-[  674.849823] x7 : 0000000000080000 x6 : 0000000000000001
-[  674.849826] x5 : 0000000000000010 x4 : 0000000000000007
-[  674.849829] x3 : 0000000000000002 x2 : ffff00000c970640
-[  674.849832] x1 : ffff000009b2bd78 x0 : ffff8000f1624018
-[  674.849836] Process kworker/1:1 (pid: 86, stack limit = 0x0000000083e5f7c3)
-[  674.849838] Call trace:
-[  674.849842]  analogix_dp_send_psr_spd+0x8/0x168
-[  674.849844]  analogix_dp_psr_work+0x9c/0xa0
-[  674.849849]  process_one_work+0x1cc/0x328
-[  674.849852]  worker_thread+0x50/0x450
-[  674.849856]  kthread+0xf8/0x128
-[  674.849860]  ret_from_fork+0x10/0x18
-[  674.849864] Code: b9000001 d65f03c0 f9445802 91190042 (b9400042)
-
-Further investigation show that this happens because the the workqueue
-races with the analogix_dp_bridge_disable() call from the core DRM code,
-and end up trying to write to the DP bridge that has already been powered
-down. This result is a very black screen, and a hard reset.
-
-Instead of counting on luck to keep the bridge alive, let's use the
-pm_runtime framework and take a reference on the device when we're about
-to poke it. That is a fairly big hammer, but one that allows the system
-to stay alive across dozens of X start/stop sequences.
-
-Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 08743ad96cb9..7f2c190f75e7 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -14,6 +14,7 @@
- 
- #include <linux/component.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/pm_runtime.h>
- #include <linux/of_device.h>
- #include <linux/of_graph.h>
- #include <linux/regmap.h>
-@@ -113,10 +114,12 @@ static void analogix_dp_psr_work(struct work_struct *work)
- 	}
- 
- 	mutex_lock(&dp->psr_lock);
-+	pm_runtime_get_sync(dp->dev);
- 	if (dp->psr_state == EDP_VSC_PSR_STATE_ACTIVE)
- 		analogix_dp_enable_psr(dp->dev);
- 	else
- 		analogix_dp_disable_psr(dp->dev);
-+	pm_runtime_put_sync(dp->dev);
- 	mutex_unlock(&dp->psr_lock);
- }
- 
--- 
-2.14.2
+CgpPbiAxMi8xNS8yMDE3IDA1OjI3IFBNLCBrbGF1cy5nb2dlckB0aGVvYnJvbWEtc3lzdGVtcy5j
+b20gd3JvdGU6Cj4+IE9uIDE1LjEyLjIwMTcsIGF0IDE2OjIwLCBIZWlrbyBTdMO8Ym5lciA8aGVp
+a29Ac250ZWNoLmRlPiB3cm90ZToKPj4KPj4gQW0gRnJlaXRhZywgMTUuIERlemVtYmVyIDIwMTcs
+IDE1OjQyOjQ4IENFVCBzY2hyaWViIFBoaWxpcHBlIE9tYnJlZGFubmU6Cj4+PiBPbiBGcmksIERl
+YyAxNSwgMjAxNyBhdCAzOjI4IFBNLCBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3
+cm90ZToKPj4+PiBBbSBGcmVpdGFnLCAxNS4gRGV6ZW1iZXIgMjAxNywgMTQ6NDU6MzQgQ0VUIHNj
+aHJpZWIgUGhpbGlwcGUgT21icmVkYW5uZToKPj4+Pj4gS2xhdXMsCj4+Pj4+Cj4+Pj4+IE9uIEZy
+aSwgRGVjIDE1LCAyMDE3IGF0IDEyOjQ0IFBNLCBLbGF1cyBHb2dlcgo+Pj4+Pgo+Pj4+PiA8a2xh
+dXMuZ29nZXJAdGhlb2Jyb21hLXN5c3RlbXMuY29tPiB3cm90ZToKPj4+Pj4+IFRoaXMgcGF0Y2gg
+c2VyaWVzIHJlcGxhY2VzIGFsbCB0aGUgbGljZW5zZSB0ZXh0IGluIHJvY2tjaGlwIGRldmljZXRy
+ZWUKPj4+Pj4+IGZpbGVzIHRleHQgd2l0aCBhIHByb3BlciBTUERYLUxpY2Vuc2UtSWRlbnRpZmll
+ci4KPj4+Pj4+IEl0IGZvbGxvd3MgdGhlIGd1aWRlbGluZXMgc3VibWl0dGVkWzFdIGJ5IFRob21h
+cyBHbGVpeG5lciB0aGF0IGFyZSBub3QKPj4+Pj4+IHlldCBtZXJnZWQuCj4+Pj4+Pgo+Pj4+Pj4g
+VGhlc2Ugc2VyaWVzIGFsc28gZml4ZXMgdGhlIGlzc3VlIHdpdGggY29udHJhZGljdGluZyBzdGF0
+ZW1lbnRzIGluIG1vc3QKPj4+Pj4+IGxpY2Vuc2VzLiBUaGUgaW50cm9kdWN0aW9uIHRleHQgY2xh
+aW1zIHRvIGJlIEdQTCBvciBYMTFbMl0gYnV0IHRoZQo+Pj4+Pj4gZm9sbG93aW5nIHZlcmJhdGlt
+IGNvcHkgb2YgdGhlIGxpY2Vuc2UgaXMgYWN0dWFsbHkgYSBNSVRbM10gbGljZW5zZS4KPj4+Pj4+
+IFRoZSBYMTEgbGljZW5zZSBpbmNsdWRlcyBhIGFkdmVydGlzZSBjbGF1c2UgYW5kIHRyYWRlbWFy
+ayBpbmZvcm1hdGlvbgo+Pj4+Pj4gcmVsYXRlZCB0byB0aGUgWCBDb25zb3J0aXVtLiBBcyB0aGVz
+ZSBYIENvbnNvcnRpdW0gc3BlY2ZpYyBwb2ludHMgYXJlCj4+Pj4+PiBpcnJlbGV2YW50IGZvciB1
+cyB3ZSBzdGljayB3aXRoIHRoZSBhY3R1YWxsIGxpY2Vuc2UgdGV4dC4KPj4+Pj4+Cj4+Pj4+PiBb
+MV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDA5MTYwNy8KPj4+Pj4+IFsy
+XSBodHRwczovL3NwZHgub3JnL2xpY2Vuc2VzL1gxMS5odG1sCj4+Pj4+PiBbM10gaHR0cHM6Ly9z
+cGR4Lm9yZy9saWNlbnNlcy9NSVQuaHRtbAo+Pj4+Pgo+Pj4+PiBGV0lXLCB0aGUgWDExIGxpY2Vu
+c2UgbmFtZSB3YXMgbm90IGFsd2F5cyBzb21ldGhpbmcgY2xlYXJseSBkZWZpbmVkLgo+Pj4+PiBT
+UERYIGNhbGxzIGl0IGNsZWFybHkgTUlUIHdoaWNoIGlzIHRoZSBtb3N0IHdpZGVseSBhY2NlcHRl
+ZCBuYW1lIGZvcgo+Pj4+PiB0aGUgY29ycmVzcG9uZGluZyB0ZXh0LiBBbmQgdGhpcyBpcyBhbHNv
+IHdoYXQgd2UgaGF2ZSBpbiBUaG9tYXMgZG9jCj4+Pj4+IHBhdGNoZXMgdGhhdCBzaG91bGQgYmUg
+dGhlIGtlcm5lbCByZWZlcmVuY2UuCj4+Pj4+Cj4+Pj4+IEFsc28sIGFzIGEgZ2VuZXJhbCBub3Rl
+LCB5b3Ugd2FudCB0byBtYWtlIHN1cmUgdGhhdCBzdWNoIGFzIHBhdGNoIHNldAo+Pj4+PiBpcyBu
+b3QgbWVyZ2VkIGJ5IG1pc3Rha2UgdW50aWwgeW91IGhhdmUgY29sbGVjdGVkIGFuIGV4cGxpY2l0
+IHJldmlldwo+Pj4+PiBvciBhY2sgZnJvbSBhbGwgdGhlIGNvcHlyaWdodCBob2xkZXJzIGludm9s
+dmVkLgo+Pj4+Cj4+Pj4gSnVzdCBmb3IgbXkgdW5kZXJzdGFuZGluZywgaXMgaXQgcmVhbGx5IG5l
+Y2Vzc2FyeSB0byBnZXQgQWNrcyBmcm9tIF9hbGxfCj4+Pj4gcHJldmlvdXMgY29udHJpYnV0b3Jz
+Pwo+Pj4+Cj4+Pj4gSSBzZWUgdGhhdCBUaG9tYXMgcGF0Y2hlcyBtb3ZpbmcgbGljZW5zZSB0ZXh0
+cyBpbnRvIHRoZSBrZXJuZWwgaXRzZWxmIGRvCj4+Pj4gbm90IHNlZW0gdG8gaGF2ZSBsYW5kZWQg
+eWV0LCBidXQgd2hlbiB0aGUgYWN0dWFsIGxpY2Vuc2UgdGV4dCBkb2VzIF9ub3RfCj4+Pj4gY2hh
+bmdlIGFuZCBvbmx5IGl0cyBsb2NhdGlvbiB0byBhIGNvbW1vbiBwbGFjZSBpbnNpZGUgdGhlIGtl
+cm5lbCBzb3VyY2VzLAo+Pj4+IGl0IGZlZWxzIGEgYml0IG92ZXJraWxsIHRyeWluZyB0byBnZXQg
+QWNrcyBmcm9tIF9ldmVyeWJvZHlfIHRoYXQKPj4+PiBjb250cmlidXRlZCB0byBSb2NrY2hpcCBk
+ZXZpY2V0cmVlcyBmb3IgdGhlIGxhc3QgNCB5ZWFycy4KPj4+Pgo+Pj4+IElmIHdlIHdvdWxkIGFj
+dHVhbGx5IHdhbnQgdG8gY2hhbmdlIHRoZSBsaWNlbnNlIEkgd291bGQgZGVmaW5pdGx5IGZlZWwK
+Pj4+PiBkaWZmZXJlbnRseSwgYnV0IHRoZSBsaWNlbnNlIHRleHQgZG9lcyBub3QgY2hhbmdlLgo+
+Pj4KPj4+IFdlbGwgeW91IGFyZSB0ZWNobmljYWxseSByaWdodC4gQnV0IHRoZXJlIGlzIGEgc29j
+aWFsIGFuZCBwb2xpdGVuZXNzCj4+PiBhbmdsZSB0byB0aGlzIHRvby4gU28gbWF5IGJlIGdldHRp
+bmcgdGhlIGFjayBvZiBhbGwgY29udHJpYnV0b3JzIGlzCj4+PiBub3QgYWx3YXlzIG5lZWRlZCwg
+YnV0IGdldHRpbmcgaXQgaXMgYmVzdCBhbmQgdGhlIHJpZ2h0IHRvIGRvIGFuZCBhdAo+Pj4gbGVh
+c3QgZ2V0dGluZyBmb3IgdGhlIG5hbWVkIGNvcHlyaWdodCBob2xkZXJzIHNob3VsZCBiZSB0aGVy
+ZS4KPj4+Cj4+PiBUaGF0J3Mgb25seSBvbmx5IG15IHRha2U6IGxlYXZpbmcgYXNpZGUgYW55IHRl
+Y2huaWNhbCBsZWdhbCBpc3N1ZSwgc2F5Cj4+PiBJIHdvdWxkIGJlIG9uIHRoZSByZWNlaXZpbmcg
+ZW5kIGFzIG9uZSBvZiB0aGUgaG9sZGVyIG9yIGNvbnRyaWJ1dG9yczoKPj4+IEkgd291bGQgZmlu
+ZCBpdCByZWFsbHkgZ3JlYXQgYW5kIG5pY2UgdG8gaGF2ZSBteSBhY2sgcmVxdWVzdGVkLiBBbmQg
+SQo+Pj4gd291bGQgYmUgYSBkb3JrIG5vdCB0byBnaXZlIGl0LiBTbyBJIGxpa2UgdG8gZG8gdG8g
+b3RoZXJzIHRoZSBzYW1lIEkKPj4+IHdvdWxkIGFwcHJlY2lhdGUgZG9uZSB0byBtZSAod2l0aGlu
+IHJlYXNvbiwgYXMgSSBzb21ldGltZXMgc2hvb3QKPj4+IG15c2VsZiBpbiB0aGUgZm9vdCA7KSAp
+Cj4+Cj4+IEhlaGUgLi4uIEkgZGlkbid0IHBsYW4gb24gbWVyZ2luZyB0aGlzIHdpdGhvdXQgYW1w
+bGUgdGltZSBmb3IgcGVvcGxlCj4+IHRvIGVpdGhlciBBQ0sgb3IgTkFLIHRoZSBjaGFuZ2UsIHNv
+IHdhcyBwbGFubmluZyBvbiBrZWVwaW5nIHRvIHNvY2lhbAo+PiBwcm90b2NvbCA7LSkgLiBKdXN0
+IHRoZSAiYWxsIiB0aHJldyBtZSBmb3IgYSBsb29wLgo+Pgo+PiBBbmQgaGF2aW5nIHRoYXQgYXMg
+UEFUQ0ggd2l0aG91dCBSRkMgYWxzbyBjb21tdW5pY2F0ZXMgdGhhdCBwZW9wbGUKPj4gc2hvdWxk
+IHRha2UgYSBsb29rLCBhcyBSRkMgcGF0Y2hlcyBhcmUgb2Z0ZW4gb3Zlcmxvb2tlZC4KPj4KPj4g
+QXMgS2xhdXMgc2VlbXMgdG8gaGF2ZSBpbmNsdWRlZCBtb3N0IHBlb3BsZSB0aGF0IGhhdmUgY29u
+dHJpYnV0ZWQgaW4gdGhlCj4+IHBhc3QsIEkgd291bGQgZ3Vlc3Mgd2Ugc2hvdWxkIHJlY2VpdmUg
+YW55IGV4aXN0aW5nIGNvbXBsYWludHMgYWJvdXQgdGhhdAo+PiBjaGFuZ2UgOi0pIC4KPiAKPiBJ
+IGFkZGVkIHRoZSBmdWxsIGxpc3QgZnJvbSB0aGUgZ2V0X21haW50YWluZXJzIHNjcmlwdC4gU29t
+ZSBvZiB0aGUgb3JpZ2luYWwgYXV0aG9ycwo+IGdvdCBkcm9wcGVkIGFzIHRoZSBjdXJyZW50IGNv
+bnRyaWJ1dGlvbiBsZXZlbCBkcm9wcGVkIGJlbG93IHRoZSBzY3JpcHRzIGxpbWl0Lgo+IEkgYWRk
+ZWQgdGhlIG1pc3NpbmcgZW1haWwgYWRkcmVzc2VzIGZyb20gdGhlIGNvcHlyaWdodCBoZWFkZXJz
+IHRvIHRoZSBDQyBsaXN0LiAKPiAKPiBDb252ZW5pZW5jZSBsaW5rcyB0byB0aGUgb3JpZ2luYWwg
+cGF0Y2hlcyBmb3IgdGhlIGFkZGVkIHBlb3BsZToKPiAKPiBodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3BhdGNoLzEwMTE0ODQ1Lwo+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
+Y2gvMTAxMTQ4NDMvCj4gCgpGb3IgYm90aCBwYXRjaGVzOgpBY2tlZC1ieTogTWF0dGhpYXMgQnJ1
+Z2dlciA8bWJydWdnZXJAc3VzZS5jb20+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
