@@ -1,88 +1,45 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH for-4.15] ASoC: rt5514: don't assume rt5514
-	component was "attached"
-Date: Mon, 18 Dec 2017 12:23:18 +0800
-Message-ID: <CAFv8Nw+qiWedqZeVsPn17WiSyc_zwOP3bEnxn2Wc-oQ3ntgq2g@mail.gmail.com>
-References: <20171216011230.107527-1-briannorris@chromium.org>
- <20171216031738.GA220575@google.com>
+From: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: usb: add DT binding for RK3328 dwc3 controller
+Date: Mon, 18 Dec 2017 11:00:41 +0200
+Message-ID: <87fu88jtqe.fsf@linux.intel.com>
+References: <20171204094041.25439-1-heiko@sntech.de> <1863083.H0I2rMmhUr@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20171216031738.GA220575@google.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Oder Chiou <oder_chiou@realtek.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Bard Liao <bardliao@realtek.com>, Matthias Kaehlcke <mka@chromium.org>
+Content-Type: text/plain
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1863083.H0I2rMmhUr@phil>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
-  Oder has posted the same fix : https://patchwork.kernel.org/
-patch/10066257/ and it has been applied.
-Perhaps you can cherry-pick it to v4.15 ?
 
-Thanks!
+Hi,
 
-On Sat, Dec 16, 2017 at 11:17 AM, Brian Norris <briannorris@chromium.org>
-wrote:
+Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> writes:
 
-> + others
+> Hi Greg, Felipe,
 >
-> On Fri, Dec 15, 2017 at 05:12:30PM -0800, Brian Norris wrote:
-> > I've found that on Google's "Kevin" Chromebook, the rt5514 codec might
-> > not be set up completely, yet its device is still present, and therefore
-> > its PM suspend/resume is called. This hits a NULL pointer exception,
-> > since we never had the chance to set our drvdata pointer.
-> >
-> > This resolves crashes seen when trying to resume my system.
-> >
-> > Fixes: e9c50aa6bd39 ("ASoC: rt5514-spi: check irq status to schedule
-> data copy in resume function")
-> > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > ---
-> > This is a v4.15-rc1 regression
+> Am Montag, 4. Dezember 2017, 10:40:38 CET schrieb Heiko Stuebner:
+>> From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> 
+>> Adds the device tree bindings description for RK3328 and
+>> compatible USB DWC3 controller.
+>> 
+>> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 >
-> I see that this is probably a bug on its own, which should be fixed on
-> its own (e.g., with the $subject patch), but FYI I was also pointed at
-> this patch, which also "resolves" this problem by fixing the rt5514 DAI
-> setup:
->
-> https://patchwork.kernel.org/patch/10067725/
-> [PATCH] ASoC: rockchip: Use dummy_dai for rt5514 dsp dailink
->
-> Would be nice to see it get handled too, possibly in 4.15 as well (I
-> think that's a regression too?).
->
-> Brian
->
-> >
-> >  sound/soc/codecs/rt5514-spi.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/sound/soc/codecs/rt5514-spi.c
-> b/sound/soc/codecs/rt5514-spi.c
-> > index 2df91db765ac..9255afcf2c3a 100644
-> > --- a/sound/soc/codecs/rt5514-spi.c
-> > +++ b/sound/soc/codecs/rt5514-spi.c
-> > @@ -482,7 +482,7 @@ static int __maybe_unused rt5514_resume(struct
-> device *dev)
-> >       if (device_may_wakeup(dev))
-> >               disable_irq_wake(irq);
-> >
-> > -     if (rt5514_dsp->substream) {
-> > +     if (rt5514_dsp && rt5514_dsp->substream) {
-> >               rt5514_spi_burst_read(RT5514_IRQ_CTRL, (u8 *)&buf,
-> sizeof(buf));
-> >               if (buf[0] & RT5514_IRQ_STATUS_BIT)
-> >                       rt5514_schedule_copy(rt5514_dsp);
-> > --
-> > 2.15.1.504.g5279b80103-goog
-> >
->
+> do you want to pick this patch with only the small dt-binding
+> change or Ack it for me to pick up together with the actual
+> devicetree changes in the other patches?
+
+it seems best if you carry this one:
+
+Acked-by: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+
+-- 
+balbi
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
