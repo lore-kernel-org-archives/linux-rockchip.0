@@ -1,97 +1,39 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH] drm/rockchip: analogix_dp: Ensure that the bridge is
- powered before poking it
-Date: Tue, 19 Dec 2017 08:55:59 +0100
-Message-ID: <5842af4d-8dc0-d7bf-8eef-991656b71f49@samsung.com>
-References: <20171218112831.7990-1-marc.zyngier@arm.com>
- <CGME20171219075600eucas1p1b740ca3c833ee90a2680d4b03891f6f2@eucas1p1.samsung.com>
+From: Arnaud Patard (Rtp) <arnaud.patard-dQbF7i+pzddAfugRpC6u6w@public.gmane.org>
+Subject: rk3399 evb and sapphire board
+Date: Tue, 19 Dec 2017 11:40:32 +0100
+Message-ID: <87efnratlr.fsf@lechat.rtp-net.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20171218112831.7990-1-marc.zyngier@arm.com>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marc Zyngier <marc.zyngier@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTguMTIuMjAxNyAxMjoyOCwgTWFyYyBaeW5naWVyIHdyb3RlOgo+IFN0b3BwaW5nIHRoZSBY
-IGRpc3BsYXkgbWFuYWdlciBvbiBhIGtldmluIHBsYXRmb3JtIHJlc3VsdHMgaW4gdGhlCj4gZm9s
-bG93aW5nIGNyYXNoOgo+IAo+IFsgIDY3NC44MzM1MzZdIFN5bmNocm9ub3VzIEV4dGVybmFsIEFi
-b3J0OiBzeW5jaHJvbm91cyBleHRlcm5hbCBhYm9ydCAoMHg5NjAwMDAxMCkgYXQgMHhmZmZmMDAw
-MDBjOTcwNjQwCj4gWyAgNjc0Ljg0Mzg4Nl0gSW50ZXJuYWwgZXJyb3I6IDogOTYwMDAwMTAgWyMx
-XSBQUkVFTVBUIFNNUAo+IFsgIDY3NC44NDk3NDRdIE1vZHVsZXMgbGlua2VkIGluOgo+IFsgIDY3
-NC44NDk3NTVdIENQVTogMSBQSUQ6IDg2IENvbW06IGt3b3JrZXIvMToxIE5vdCB0YWludGVkIDQu
-MTUuMC1yYzMtMDAwNTctZ2ZmMjRmOGNmNDkyZC1kaXJ0eSAjMwo+IFsgIDY3NC44NDk3NjBdIGRl
-dGVjdGVkIGZiX3NldF9wYXIgZXJyb3IsIGVycm9yIGNvZGU6IC0xNgo+IFsgIDY3NC44NDk3NjFd
-IEhhcmR3YXJlIG5hbWU6IEdvb2dsZSBLZXZpbiAoRFQpCj4gWyAgNjc0Ljg0OTc3M10gV29ya3F1
-ZXVlOiBldmVudHMgYW5hbG9naXhfZHBfcHNyX3dvcmsKPiBbICA2NzQuODQ5Nzc4XSBwc3RhdGU6
-IDYwMDAwMDA1IChuWkN2IGRhaWYgLVBBTiAtVUFPKQo+IFsgIDY3NC44NDk3ODRdIHBjIDogYW5h
-bG9naXhfZHBfc2VuZF9wc3Jfc3BkKzB4OC8weDE2OAo+IFsgIDY3NC44NDk3ODhdIGxyIDogYW5h
-bG9naXhfZHBfZW5hYmxlX3BzcisweDU0LzB4NjAKPiBbICA2NzQuODQ5Nzg5XSBzcCA6IGZmZmYw
-MDAwMDliMmJkNjAKPiBbICA2NzQuODQ5NzkwXSB4Mjk6IGZmZmYwMDAwMDliMmJkNjAgeDI4OiAw
-MDAwMDAwMDAwMDAwMDAwCj4gWyAgNjc0Ljg0OTc5NF0geDI3OiBmZmZmMDAwMDA5OTEzZDIwIHgy
-NjogZmZmZjAwMDAwOTAwZmJmMAo+IFsgIDY3NC44NDk3OTddIHgyNTogZmZmZjgwMDBmMWIzMDAw
-MCB4MjQ6IGZmZmY4MDAwZjBjMjFkOTgKPiBbICA2NzQuODQ5ODAwXSB4MjM6IDAwMDAwMDAwMDAw
-MDAwMDAgeDIyOiBmZmZmODAwMGY3ZDNhYTAwCj4gWyAgNjc0Ljg0OTgwM10geDIxOiBmZmZmODAw
-MGY3ZDM2OTgwIHgyMDogZmZmZjgwMDBmMGMyMWMxOAo+IFsgIDY3NC44NDk4MDZdIHgxOTogZmZm
-ZjgwMDBmMGMyMWRiOCB4MTg6IDAwMDAwMDAwMDAwMDAwMDEKPiBbICA2NzQuODQ5ODA5XSB4MTc6
-IDAwMDBmZmZmODlmMmVkNTggeDE2OiBmZmZmMDAwMDA4MjIyOTA4Cj4gWyAgNjc0Ljg0OTgxMl0g
-eDE1OiAwMDAwMDAwMDAwMDAwMDAwIHgxNDogMDAwMDAwMDAwMDAwMDQwMAo+IFsgIDY3NC44NDk4
-MTVdIHgxMzogMDAwMDAwMDAwMDAwMDQwMCB4MTI6IDAwMDAwMDAwMDAwMDAwMDAKPiBbICA2NzQu
-ODQ5ODE3XSB4MTE6IDAwMDAwMDAwMDAwMDE0MTQgeDEwOiAwMDAwMDAwMDAwMDAwYTAwCj4gWyAg
-Njc0Ljg0OTgyMF0geDkgOiBmZmZmMDAwMDA5YjJiYmIwIHg4IDogZmZmZjgwMDBmMWIzMGE2MAo+
-IFsgIDY3NC44NDk4MjNdIHg3IDogMDAwMDAwMDAwMDA4MDAwMCB4NiA6IDAwMDAwMDAwMDAwMDAw
-MDEKPiBbICA2NzQuODQ5ODI2XSB4NSA6IDAwMDAwMDAwMDAwMDAwMTAgeDQgOiAwMDAwMDAwMDAw
-MDAwMDA3Cj4gWyAgNjc0Ljg0OTgyOV0geDMgOiAwMDAwMDAwMDAwMDAwMDAyIHgyIDogZmZmZjAw
-MDAwYzk3MDY0MAo+IFsgIDY3NC44NDk4MzJdIHgxIDogZmZmZjAwMDAwOWIyYmQ3OCB4MCA6IGZm
-ZmY4MDAwZjE2MjQwMTgKPiBbICA2NzQuODQ5ODM2XSBQcm9jZXNzIGt3b3JrZXIvMToxIChwaWQ6
-IDg2LCBzdGFjayBsaW1pdCA9IDB4MDAwMDAwMDA4M2U1ZjdjMykKPiBbICA2NzQuODQ5ODM4XSBD
-YWxsIHRyYWNlOgo+IFsgIDY3NC44NDk4NDJdICBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQrMHg4
-LzB4MTY4Cj4gWyAgNjc0Ljg0OTg0NF0gIGFuYWxvZ2l4X2RwX3Bzcl93b3JrKzB4OWMvMHhhMAo+
-IFsgIDY3NC44NDk4NDldICBwcm9jZXNzX29uZV93b3JrKzB4MWNjLzB4MzI4Cj4gWyAgNjc0Ljg0
-OTg1Ml0gIHdvcmtlcl90aHJlYWQrMHg1MC8weDQ1MAo+IFsgIDY3NC44NDk4NTZdICBrdGhyZWFk
-KzB4ZjgvMHgxMjgKPiBbICA2NzQuODQ5ODYwXSAgcmV0X2Zyb21fZm9yaysweDEwLzB4MTgKPiBb
-ICA2NzQuODQ5ODY0XSBDb2RlOiBiOTAwMDAwMSBkNjVmMDNjMCBmOTQ0NTgwMiA5MTE5MDA0MiAo
-Yjk0MDAwNDIpCj4gCj4gRnVydGhlciBpbnZlc3RpZ2F0aW9uIHNob3cgdGhhdCB0aGlzIGhhcHBl
-bnMgYmVjYXVzZSB0aGUgdGhlIHdvcmtxdWV1ZQo+IHJhY2VzIHdpdGggdGhlIGFuYWxvZ2l4X2Rw
-X2JyaWRnZV9kaXNhYmxlKCkgY2FsbCBmcm9tIHRoZSBjb3JlIERSTSBjb2RlLAo+IGFuZCBlbmQg
-dXAgdHJ5aW5nIHRvIHdyaXRlIHRvIHRoZSBEUCBicmlkZ2UgdGhhdCBoYXMgYWxyZWFkeSBiZWVu
-IHBvd2VyZWQKPiBkb3duLiBUaGlzIHJlc3VsdCBpcyBhIHZlcnkgYmxhY2sgc2NyZWVuLCBhbmQg
-YSBoYXJkIHJlc2V0Lgo+IAo+IEluc3RlYWQgb2YgY291bnRpbmcgb24gbHVjayB0byBrZWVwIHRo
-ZSBicmlkZ2UgYWxpdmUsIGxldCdzIHVzZSB0aGUKPiBwbV9ydW50aW1lIGZyYW1ld29yayBhbmQg
-dGFrZSBhIHJlZmVyZW5jZSBvbiB0aGUgZGV2aWNlIHdoZW4gd2UncmUgYWJvdXQKPiB0byBwb2tl
-IGl0LiBUaGF0IGlzIGEgZmFpcmx5IGJpZyBoYW1tZXIsIGJ1dCBvbmUgdGhhdCBhbGxvd3MgdGhl
-IHN5c3RlbQo+IHRvIHN0YXkgYWxpdmUgYWNyb3NzIGRvemVucyBvZiBYIHN0YXJ0L3N0b3Agc2Vx
-dWVuY2VzLgoKV291bGRuJ3QgYmUgYmV0dGVyIHRvIGNhbmNlbCB0aGUgd29yayBpbiBhbmFsb2dp
-eF9kcF9icmlkZ2VfZGlzYWJsZSwgaXQKbG9va3Mgc2FmZXIuCgpSZWdhcmRzCkFuZHJ6ZWoKCj4g
-Cj4gU2lnbmVkLW9mZi1ieTogTWFyYyBaeW5naWVyIDxtYXJjLnp5bmdpZXJAYXJtLmNvbT4KPiAt
-LS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAz
-ICsrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKPiBpbmRleCAwODc0M2Fk
-OTZjYjkuLjdmMmMxOTBmNzVlNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gQEAgLTE0LDYgKzE0LDcgQEAKPiAgCj4gICNpbmNs
-dWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4K
-PiArI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2Rl
-dmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfZ3JhcGguaD4KPiAgI2luY2x1ZGUgPGxpbnV4
-L3JlZ21hcC5oPgo+IEBAIC0xMTMsMTAgKzExNCwxMiBAQCBzdGF0aWMgdm9pZCBhbmFsb2dpeF9k
-cF9wc3Jfd29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCj4gIAl9Cj4gIAo+ICAJbXV0ZXhf
-bG9jaygmZHAtPnBzcl9sb2NrKTsKPiArCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZHAtPmRldik7Cj4g
-IAlpZiAoZHAtPnBzcl9zdGF0ZSA9PSBFRFBfVlNDX1BTUl9TVEFURV9BQ1RJVkUpCj4gIAkJYW5h
-bG9naXhfZHBfZW5hYmxlX3BzcihkcC0+ZGV2KTsKPiAgCWVsc2UKPiAgCQlhbmFsb2dpeF9kcF9k
-aXNhYmxlX3BzcihkcC0+ZGV2KTsKPiArCXBtX3J1bnRpbWVfcHV0X3N5bmMoZHAtPmRldik7Cj4g
-IAltdXRleF91bmxvY2soJmRwLT5wc3JfbG9jayk7Cj4gIH0KPiAgCj4gCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi,
+
+[ I've asked the question on irc but nobody seemed to know, so I'm asking
+to a wider audience. ]
+
+I've bought a sapphire board from vamrs, without the excavator. I was
+looking for the device tree to use and found a rk3399-sapphire.dtsi and a
+rk3399-evb.dts. I've booted the kernel with the later, given that it's
+the only dts file but there are missing things in it. The
+rk3399-sapphire.dtsi looks way more complete.
+
+So, are the rk3399 evb board and sapphire really the same board ? If so,
+why the rk3399-evb.dts doesn't only include the rk3399-sapphire.dtsi ?
+If not, should I use a device tree file including the
+rk3399-sapphire.dtsi instead of the rk3399-evb.dts ? Would a patch
+adding it would be accepted ?
+
+Thanks,
+Arnaud
