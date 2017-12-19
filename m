@@ -1,78 +1,87 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH for-4.15] ASoC: rt5514: don't assume rt5514
- component was "attached"
-Date: Tue, 19 Dec 2017 10:58:18 +0000
-Message-ID: <20171219105818.GH8563@sirena.org.uk>
-References: <20171216011230.107527-1-briannorris@chromium.org>
- <20171216031738.GA220575@google.com>
- <CAFv8Nw+qiWedqZeVsPn17WiSyc_zwOP3bEnxn2Wc-oQ3ntgq2g@mail.gmail.com>
- <20171218174235.GA113663@google.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0222313224140738456=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20171218174235.GA113663@google.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
+Subject: Applied "ASoC: rt5514-spi: only enable wakeup when fully initialized" to the asoc tree
+Date: Tue, 19 Dec 2017 11:09:24 +0000
+Message-ID: <E1eRFm0-0002Rg-Dj@debutante>
+References: <20171216040723.11710-1-briannorris@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171216040723.11710-1-briannorris@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
-Cc: Oder Chiou <oder_chiou@realtek.com>, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, Bard Liao <bardliao@realtek.com>, Cheng-yi Chiang <cychiang@chromium.org>
+Cc: Mark Brown <broonie@kernel.org>, Oder Chiou <oder_chiou@realtek.com>, Bard Liao <bardliao@realtek.com>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Jimmy Cheng-Yi Chiang <cychiang@google.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The patch
 
---===============0222313224140738456==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="it/zdz3K1bH9Y8/E"
-Content-Disposition: inline
+   ASoC: rt5514-spi: only enable wakeup when fully initialized
 
+has been applied to the asoc tree at
 
---it/zdz3K1bH9Y8/E
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-On Mon, Dec 18, 2017 at 09:42:36AM -0800, Brian Norris wrote:
-> On Mon, Dec 18, 2017 at 12:23:18PM +0800, Cheng-yi Chiang wrote:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-> >    Hi Brian,
-> >      Oder has posted the same fix : [1]https://patchwork.kernel.org/
-> >    patch/10066257/ and it has been applied.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-> >    Perhaps you can cherry-pick it to v4.15 ?
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-> I have no say in that; that would be up to Mark, I think. It's most
-> certainly a regression in 4.15-rc1, so IMO it should be given a proper
-> 'Fixes: e9c50aa6bd39 ("ASoC: rt5514-spi: check irq status to schedule
-> data copy in resume function")' tag and sent for 4.15, not 4.16.
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-It's been applied as a fix for some time.
+Thanks,
+Mark
 
---it/zdz3K1bH9Y8/E
-Content-Type: application/pgp-signature; name="signature.asc"
+From 20220945b1a8e77c789dd4bb9aa1471b6e8695cc Mon Sep 17 00:00:00 2001
+From: Brian Norris <briannorris@chromium.org>
+Date: Fri, 15 Dec 2017 20:07:23 -0800
+Subject: [PATCH] ASoC: rt5514-spi: only enable wakeup when fully initialized
 
------BEGIN PGP SIGNATURE-----
+If an rt5514-spi device is probed but the platform hasn't linked it in,
+we might never fully request the SPI IRQ, nor configure the rt5514 DSP,
+but we still might try to enable the SPI IRQ (enable_irq_wake()). This
+is bad, and among other things, can cause the interrupt to trigger every
+time we try to suspend the system (e.g., because the interrupt trigger
+setting was never set properly).
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlo48MkACgkQJNaLcl1U
-h9CrgQf+IsTiMtYnxPlq6jz/mox6voRxWTE4NpiOctD4HmGVbt4WVBQkiIl+xtd0
-t6+EcxgKzrhfIBVUU7VXF8JeBEy5OgUqfA3D+T/ftHs2Xd0VeZ7h9CbwnQ4S4UCt
-ZrG1w6L10ltzy2iolNhAjISYqR96Ad303HBIH+2d4g4zu9qGtrWbsckLvY2WZBdd
-cuXr38LODZPtjpgA5k2msatUQ0UOfLTljb1Sw3Oz5zIQHmojWErK+kydfXV9HgoR
-Y3QBa+XjeSHR6L+vi5pXFq2B4lQqbvfkVV5WcAiw/n71fo8Y/kUv+0cqMh0j02rI
-FHqrQJTnUS0NNhCMLWiXK3e9QB5gaA==
-=KMzf
------END PGP SIGNATURE-----
+Instead of setting our wakeup capabilities in the SPI driver probe
+routine, let's wait until we've actually requested the IRQ.
 
---it/zdz3K1bH9Y8/E--
+Fixes issues seen on the "kevin" Chromebook (Samsung Chromebook Plus).
 
---===============0222313224140738456==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Fixes: 58f1c07d23cd ("ASoC: rt5514: Voice wakeup support.")
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/codecs/rt5514-spi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
---===============0222313224140738456==--
+diff --git a/sound/soc/codecs/rt5514-spi.c b/sound/soc/codecs/rt5514-spi.c
+index ca6a90d8fc39..64bf26cec20d 100644
+--- a/sound/soc/codecs/rt5514-spi.c
++++ b/sound/soc/codecs/rt5514-spi.c
+@@ -289,6 +289,8 @@ static int rt5514_spi_pcm_probe(struct snd_soc_platform *platform)
+ 			dev_err(&rt5514_spi->dev,
+ 				"%s Failed to reguest IRQ: %d\n", __func__,
+ 				ret);
++		else
++			device_init_wakeup(rt5514_dsp->dev, true);
+ 	}
+ 
+ 	return 0;
+@@ -456,8 +458,6 @@ static int rt5514_spi_probe(struct spi_device *spi)
+ 		return ret;
+ 	}
+ 
+-	device_init_wakeup(&spi->dev, true);
+-
+ 	return 0;
+ }
+ 
+-- 
+2.15.1
