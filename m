@@ -1,100 +1,48 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v4] usb: dwc2: host: Don't retry NAKed transactions right away
-Date: Tue, 19 Dec 2017 07:57:00 -0800
-Message-ID: <CAD=FV=WksZcVY1fu-KX9E-cPvBEA6LaOMrAoAgh=GDWDtjCWFw@mail.gmail.com>
+From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Subject: Re: [PATCH v4] usb: dwc2: host: Don't retry NAKed transactions
+ right away
+Date: Tue, 19 Dec 2017 17:56:40 +0100 (CET)
+Message-ID: <581796864.256888.1513702600488@email.1und1.de>
 References: <20171212183031.46772-1-dianders@chromium.org>
+ <CAD=FV=WksZcVY1fu-KX9E-cPvBEA6LaOMrAoAgh=GDWDtjCWFw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171212183031.46772-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=WksZcVY1fu-KX9E-cPvBEA6LaOMrAoAgh=GDWDtjCWFw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Felipe,
+Hi Doug,
 
-On Tue, Dec 12, 2017 at 10:30 AM, Douglas Anderson
-<dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> On rk3288-veyron devices on Chrome OS it was found that plugging in an
-> Arduino-based USB device could cause the system to lockup, especially
-> if the CPU Frequency was at one of the slower operating points (like
-> 100 MHz / 200 MHz).
->
-> Upon tracing, I found that the following was happening:
-> * The USB device (full speed) was connected to a high speed hub and
->   then to the rk3288.  Thus, we were dealing with split transactions,
->   which is all handled in software on dwc2.
-> * Userspace was initiating a BULK IN transfer
-> * When we sent the SSPLIT (to start the split transaction), we got an
->   ACK.  Good.  Then we issued the CSPLIT.
-> * When we sent the CSPLIT, we got back a NAK.  We immediately (from
->   the interrupt handler) started to retry and sent another SSPLIT.
-> * The device kept NAKing our CSPLIT, so we kept ping-ponging between
->   sending a SSPLIT and a CSPLIT, each time sending from the interrupt
->   handler.
-> * The handling of the interrupts was (because of the low CPU speed and
->   the inefficiency of the dwc2 interrupt handler) was actually taking
->   _longer_ than it took the other side to send the ACK/NAK.  Thus we
->   were _always_ in the USB interrupt routine.
-> * The fact that USB interrupts were always going off was preventing
->   other things from happening in the system.  This included preventing
->   the system from being able to transition to a higher CPU frequency.
->
-> As I understand it, there is no requirement to retry super quickly
-> after a NAK, we just have to retry sometime in the future.  Thus one
-> solution to the above is to just add a delay between getting a NAK and
-> retrying the transmission.  If this delay is sufficiently long to get
-> out of the interrupt routine then the rest of the system will be able
-> to make forward progress.  Even a 25 us delay would probably be
-> enough, but we'll be extra conservative and try to delay 1 ms (the
-> exact amount depends on HZ and the accuracy of the jiffy and how close
-> the current jiffy is to ticking, but could be as much as 20 ms or as
-> little as 1 ms).
->
-> Presumably adding a delay like this could impact the USB throughput,
-> so we only add the delay with repeated NAKs.
->
-> NOTE: Upon further testing of a pl2303 serial adapter, I found that
-> this fix may help with problems there.  Specifically I found that the
-> pl2303 serial adapters tend to respond with a NAK when they have
-> nothing to say and thus we end with this same sequence.
->
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-> Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-> ---
->
-> Changes in v4:
-> - Removed Cc for stable as per Felipe's request in v3
-> - Rebased and squashed the two patches since Kees' timer stuff landed
-> - Add John Youn's Ack.
->
-> Changes in v3:
-> - Add tested-by for Stefan Wahren
-> - Sent to Felipe Balbi as candiate to land this.
-> - Add Cc for stable (it's always been broken so go as far is as easy)
->
-> Changes in v2:
-> - Address http://crosreview.com/737520 feedback
->
->  drivers/usb/dwc2/core.h      |  1 +
->  drivers/usb/dwc2/hcd.c       |  7 ++++
->  drivers/usb/dwc2/hcd.h       |  9 +++++
->  drivers/usb/dwc2/hcd_intr.c  | 20 +++++++++++
->  drivers/usb/dwc2/hcd_queue.c | 81 +++++++++++++++++++++++++++++++++++++++++---
->  5 files changed, 114 insertions(+), 4 deletions(-)
+> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> hat am 19. Dezember 2017 um 16:57 geschrieben:
+> 
+> 
+> Felipe,
+> 
+> On Tue, Dec 12, 2017 at 10:30 AM, Douglas Anderson
+> <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> ...
+> 
+> I don't mean to be a pest, but I'm hoping that we can land this
+> somewhere (if nothing else in your /next tree) just so it doesn't miss
+> another release cycle.  If you're not so keen on collecting dwc2 host
+> patches these days, I can also see if Greg KH is willing to take this
+> directly into his tree.  Please let me know.  Thanks for your time!
+> :)
+> 
+> -Doug
 
-I don't mean to be a pest, but I'm hoping that we can land this
-somewhere (if nothing else in your /next tree) just so it doesn't miss
-another release cycle.  If you're not so keen on collecting dwc2 host
-patches these days, I can also see if Greg KH is willing to take this
-directly into his tree.  Please let me know.  Thanks for your time!
-:)
+it's applied to next:
 
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+https://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git/commit/?h=next&id=38d2b5fb75c15923fb89c32134516a623515bce4
