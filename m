@@ -1,102 +1,29 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH] drm/rockchip: analogix_dp: Ensure that the bridge is
- powered before poking it
-Date: Wed, 20 Dec 2017 12:25:34 +0100
-Message-ID: <9dfad424-fa77-80a3-e9a2-78d789e683cd@samsung.com>
-References: <20171218112831.7990-1-marc.zyngier@arm.com>
- <CGME20171219075600eucas1p1b740ca3c833ee90a2680d4b03891f6f2@eucas1p1.samsung.com>
- <5842af4d-8dc0-d7bf-8eef-991656b71f49@samsung.com>
- <17fd8819-2771-7dd2-03c1-ba23326961d8@arm.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add efuse device node for RK3328 SoC
+Date: Wed, 20 Dec 2017 13:13:07 +0100
+Message-ID: <2396742.bPnmP3xQc2@phil>
+References: <1501817618-65504-1-git-send-email-finley.xiao@rock-chips.com> <1501817618-65504-3-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <17fd8819-2771-7dd2-03c1-ba23326961d8@arm.com>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marc Zyngier <marc.zyngier@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1501817618-65504-3-git-send-email-finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTkuMTIuMjAxNyAxMjo0MiwgTWFyYyBaeW5naWVyIHdyb3RlOgo+IE9uIDE5LzEyLzE3IDA3
-OjU1LCBBbmRyemVqIEhhamRhIHdyb3RlOgo+PiBPbiAxOC4xMi4yMDE3IDEyOjI4LCBNYXJjIFp5
-bmdpZXIgd3JvdGU6Cj4+PiBTdG9wcGluZyB0aGUgWCBkaXNwbGF5IG1hbmFnZXIgb24gYSBrZXZp
-biBwbGF0Zm9ybSByZXN1bHRzIGluIHRoZQo+Pj4gZm9sbG93aW5nIGNyYXNoOgo+Pj4KPj4+IFsg
-IDY3NC44MzM1MzZdIFN5bmNocm9ub3VzIEV4dGVybmFsIEFib3J0OiBzeW5jaHJvbm91cyBleHRl
-cm5hbCBhYm9ydCAoMHg5NjAwMDAxMCkgYXQgMHhmZmZmMDAwMDBjOTcwNjQwCj4+PiBbICA2NzQu
-ODQzODg2XSBJbnRlcm5hbCBlcnJvcjogOiA5NjAwMDAxMCBbIzFdIFBSRUVNUFQgU01QCj4+PiBb
-ICA2NzQuODQ5NzQ0XSBNb2R1bGVzIGxpbmtlZCBpbjoKPj4+IFsgIDY3NC44NDk3NTVdIENQVTog
-MSBQSUQ6IDg2IENvbW06IGt3b3JrZXIvMToxIE5vdCB0YWludGVkIDQuMTUuMC1yYzMtMDAwNTct
-Z2ZmMjRmOGNmNDkyZC1kaXJ0eSAjMwo+Pj4gWyAgNjc0Ljg0OTc2MF0gZGV0ZWN0ZWQgZmJfc2V0
-X3BhciBlcnJvciwgZXJyb3IgY29kZTogLTE2Cj4+PiBbICA2NzQuODQ5NzYxXSBIYXJkd2FyZSBu
-YW1lOiBHb29nbGUgS2V2aW4gKERUKQo+Pj4gWyAgNjc0Ljg0OTc3M10gV29ya3F1ZXVlOiBldmVu
-dHMgYW5hbG9naXhfZHBfcHNyX3dvcmsKPj4+IFsgIDY3NC44NDk3NzhdIHBzdGF0ZTogNjAwMDAw
-MDUgKG5aQ3YgZGFpZiAtUEFOIC1VQU8pCj4+PiBbICA2NzQuODQ5Nzg0XSBwYyA6IGFuYWxvZ2l4
-X2RwX3NlbmRfcHNyX3NwZCsweDgvMHgxNjgKPj4+IFsgIDY3NC44NDk3ODhdIGxyIDogYW5hbG9n
-aXhfZHBfZW5hYmxlX3BzcisweDU0LzB4NjAKPj4+IFsgIDY3NC44NDk3ODldIHNwIDogZmZmZjAw
-MDAwOWIyYmQ2MAo+Pj4gWyAgNjc0Ljg0OTc5MF0geDI5OiBmZmZmMDAwMDA5YjJiZDYwIHgyODog
-MDAwMDAwMDAwMDAwMDAwMAo+Pj4gWyAgNjc0Ljg0OTc5NF0geDI3OiBmZmZmMDAwMDA5OTEzZDIw
-IHgyNjogZmZmZjAwMDAwOTAwZmJmMAo+Pj4gWyAgNjc0Ljg0OTc5N10geDI1OiBmZmZmODAwMGYx
-YjMwMDAwIHgyNDogZmZmZjgwMDBmMGMyMWQ5OAo+Pj4gWyAgNjc0Ljg0OTgwMF0geDIzOiAwMDAw
-MDAwMDAwMDAwMDAwIHgyMjogZmZmZjgwMDBmN2QzYWEwMAo+Pj4gWyAgNjc0Ljg0OTgwM10geDIx
-OiBmZmZmODAwMGY3ZDM2OTgwIHgyMDogZmZmZjgwMDBmMGMyMWMxOAo+Pj4gWyAgNjc0Ljg0OTgw
-Nl0geDE5OiBmZmZmODAwMGYwYzIxZGI4IHgxODogMDAwMDAwMDAwMDAwMDAwMQo+Pj4gWyAgNjc0
-Ljg0OTgwOV0geDE3OiAwMDAwZmZmZjg5ZjJlZDU4IHgxNjogZmZmZjAwMDAwODIyMjkwOAo+Pj4g
-WyAgNjc0Ljg0OTgxMl0geDE1OiAwMDAwMDAwMDAwMDAwMDAwIHgxNDogMDAwMDAwMDAwMDAwMDQw
-MAo+Pj4gWyAgNjc0Ljg0OTgxNV0geDEzOiAwMDAwMDAwMDAwMDAwNDAwIHgxMjogMDAwMDAwMDAw
-MDAwMDAwMAo+Pj4gWyAgNjc0Ljg0OTgxN10geDExOiAwMDAwMDAwMDAwMDAxNDE0IHgxMDogMDAw
-MDAwMDAwMDAwMGEwMAo+Pj4gWyAgNjc0Ljg0OTgyMF0geDkgOiBmZmZmMDAwMDA5YjJiYmIwIHg4
-IDogZmZmZjgwMDBmMWIzMGE2MAo+Pj4gWyAgNjc0Ljg0OTgyM10geDcgOiAwMDAwMDAwMDAwMDgw
-MDAwIHg2IDogMDAwMDAwMDAwMDAwMDAwMQo+Pj4gWyAgNjc0Ljg0OTgyNl0geDUgOiAwMDAwMDAw
-MDAwMDAwMDEwIHg0IDogMDAwMDAwMDAwMDAwMDAwNwo+Pj4gWyAgNjc0Ljg0OTgyOV0geDMgOiAw
-MDAwMDAwMDAwMDAwMDAyIHgyIDogZmZmZjAwMDAwYzk3MDY0MAo+Pj4gWyAgNjc0Ljg0OTgzMl0g
-eDEgOiBmZmZmMDAwMDA5YjJiZDc4IHgwIDogZmZmZjgwMDBmMTYyNDAxOAo+Pj4gWyAgNjc0Ljg0
-OTgzNl0gUHJvY2VzcyBrd29ya2VyLzE6MSAocGlkOiA4Niwgc3RhY2sgbGltaXQgPSAweDAwMDAw
-MDAwODNlNWY3YzMpCj4+PiBbICA2NzQuODQ5ODM4XSBDYWxsIHRyYWNlOgo+Pj4gWyAgNjc0Ljg0
-OTg0Ml0gIGFuYWxvZ2l4X2RwX3NlbmRfcHNyX3NwZCsweDgvMHgxNjgKPj4+IFsgIDY3NC44NDk4
-NDRdICBhbmFsb2dpeF9kcF9wc3Jfd29yaysweDljLzB4YTAKPj4+IFsgIDY3NC44NDk4NDldICBw
-cm9jZXNzX29uZV93b3JrKzB4MWNjLzB4MzI4Cj4+PiBbICA2NzQuODQ5ODUyXSAgd29ya2VyX3Ro
-cmVhZCsweDUwLzB4NDUwCj4+PiBbICA2NzQuODQ5ODU2XSAga3RocmVhZCsweGY4LzB4MTI4Cj4+
-PiBbICA2NzQuODQ5ODYwXSAgcmV0X2Zyb21fZm9yaysweDEwLzB4MTgKPj4+IFsgIDY3NC44NDk4
-NjRdIENvZGU6IGI5MDAwMDAxIGQ2NWYwM2MwIGY5NDQ1ODAyIDkxMTkwMDQyIChiOTQwMDA0MikK
-Pj4+Cj4+PiBGdXJ0aGVyIGludmVzdGlnYXRpb24gc2hvdyB0aGF0IHRoaXMgaGFwcGVucyBiZWNh
-dXNlIHRoZSB0aGUgd29ya3F1ZXVlCj4+PiByYWNlcyB3aXRoIHRoZSBhbmFsb2dpeF9kcF9icmlk
-Z2VfZGlzYWJsZSgpIGNhbGwgZnJvbSB0aGUgY29yZSBEUk0gY29kZSwKPj4+IGFuZCBlbmQgdXAg
-dHJ5aW5nIHRvIHdyaXRlIHRvIHRoZSBEUCBicmlkZ2UgdGhhdCBoYXMgYWxyZWFkeSBiZWVuIHBv
-d2VyZWQKPj4+IGRvd24uIFRoaXMgcmVzdWx0IGlzIGEgdmVyeSBibGFjayBzY3JlZW4sIGFuZCBh
-IGhhcmQgcmVzZXQuCj4+Pgo+Pj4gSW5zdGVhZCBvZiBjb3VudGluZyBvbiBsdWNrIHRvIGtlZXAg
-dGhlIGJyaWRnZSBhbGl2ZSwgbGV0J3MgdXNlIHRoZQo+Pj4gcG1fcnVudGltZSBmcmFtZXdvcmsg
-YW5kIHRha2UgYSByZWZlcmVuY2Ugb24gdGhlIGRldmljZSB3aGVuIHdlJ3JlIGFib3V0Cj4+PiB0
-byBwb2tlIGl0LiBUaGF0IGlzIGEgZmFpcmx5IGJpZyBoYW1tZXIsIGJ1dCBvbmUgdGhhdCBhbGxv
-d3MgdGhlIHN5c3RlbQo+Pj4gdG8gc3RheSBhbGl2ZSBhY3Jvc3MgZG96ZW5zIG9mIFggc3RhcnQv
-c3RvcCBzZXF1ZW5jZXMuCj4+IFdvdWxkbid0IGJlIGJldHRlciB0byBjYW5jZWwgdGhlIHdvcmsg
-aW4gYW5hbG9naXhfZHBfYnJpZGdlX2Rpc2FibGUsIGl0Cj4+IGxvb2tzIHNhZmVyLgo+IE5vdCBz
-dXJlLiBUaGF0IHdvdWxkIG9ubHkgY2FuY2VsIGEgc2luZ2xlIHdvcmsgdGhhdCB3b3VsZCBiZSBp
-biBmbGlnaHQKPiByaWdodCB3aGVuIHdlIGhpdCBkaXNhYmxlLCBidXQgd29uJ3QgcHJldmVudCB0
-aGUgd29yayBmcm9tIGJlaW5nIHF1ZXVlZAo+IHJpZ2h0IGFmdGVyIHRoZSBjYW5jZWwuCj4KPiBJ
-biBzdW1tYXJ5LCBJIHRoaW5rIHlvdSdyZSB0cmFkaW5nIGEgcmFjZSBiZXR3ZWVuIHBtX3J1bnRp
-bWVfcHV0X3N5bmMKPiBhbmQgYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkIGZvciBhbm90aGVyIGJl
-dHdlZW4gY2FuY2VsX3dvcmtfc3luYyBhbmQKPiBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQuIEFs
-c28sIEkgc2VlbSB0byByZW1lbWJlciB0aGF0IHRoZSBkaXNhYmxlIGNhbgo+IG9jY3VyIGluIGl0
-cyBvd24gd29yayBxdWV1ZToKPgo+IGNvbW1pdF90YWlsIC0+IGRybV9hdG9taWNfaGVscGVyX2Nv
-bW1pdF9tb2Rlc2V0X2Rpc2FibGVzIC0+Cj4gZGlzYWJsZV9vdXRwdXRzIC0+IGRybV9icmlkZ2Vf
-ZGlzYWJsZSAtPiBhbmFsb2dpeF9kcF9icmlkZ2VfZGlzYWJsZQo+Cj4gbWFraW5nIGl0IHJhY3kg
-YnkgbmF0dXJlLiBCdXQgSSdtIG5vIERSTSBleHBlcnQgKGFzIHlvdSBjYW4gcHJvYmFibHkgdGVs
-bCkuCj4KPiBNeSBhcHByb2FjaCBpcyB0byBndWFyYW50ZWUgdGhhdCBhbmFsb2dpeF9kcF9zZW5k
-X3Bzcl9zcGQgY2Fubm90IGZhdWx0Cj4gZHVlIHRvIHRoZSBJUCBiZWluZyBwb3dlcmVkIG9mZiwg
-d2hpY2ggZmVlbHMgYSBiaXQgbW9yZSBidWxsZXQgcHJvb2YuCgpJIHN1c3BlY3QgdGhlIHdvcmtl
-ciBzaG91bGQgbm90IGJlIGV4ZWN1dGVkIGR1cmluZy9hZnRlciBkaXNhYmxlLCBhdApsZWFzdCBp
-dHMgYm9keSBzdWdnZXN0cyBpdC4KQW5kIGlmIGl0IHdpbGwgYmUgZ3VhcmFudGVlZCwgcnVudGlt
-ZSBkYW5jZSBpbiB0aGUgd29ya2VyIGlzIHBvaW50bGVzcy4KClJlZ2FyZHMKQW5kcnplagoKPgo+
-IFBsZWFzZSBzaG9vdCBtZSBkb3duIGlmIEkgZ290IGl0IHdyb25nIQo+Cj4gVGhhbmtzLAo+Cj4g
-CU0uCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Freitag, 4. August 2017, 11:33:38 CET schrieb Finley Xiao:
+> This patch adds an efuse node in the device tree for rk3228 SoC.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+applied for 4.16, after the driver change landed now.
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
