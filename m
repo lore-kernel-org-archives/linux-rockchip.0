@@ -1,61 +1,255 @@
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 0/2] drm/rockchip: Fix sleeping function called from invalid context
-Date: Wed, 20 Dec 2017 19:20:42 +0100
-Message-ID: <20171220182044.20331-1-enric.balletbo@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH 1/2] drm/rockchip: Don't use atomic constructs for psr
+Date: Wed, 20 Dec 2017 19:20:43 +0100
+Message-ID: <20171220182044.20331-2-enric.balletbo@collabora.com>
+References: <20171220182044.20331-1-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20171220182044.20331-1-enric.balletbo@collabora.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wzz@rock-chips.com, marcheu@chromium.org
+Cc: wzz@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, marcheu@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear all,
+From: Sean Paul <seanpaul@chromium.org>
 
-After enable the debug option to check sleep inside atomic section I got
-lots of messages from the drm/rockchip driver using current 4.15-rc4
+Instead of using timer and spinlocks, use delayed_work and
+mutexes for rockchip psr. This allows us to make blocking
+calls when enabling/disabling psr (which is sort of important
+given we're talking over dpcd to the display).
 
- BUG: sleeping function called from invalid context at kernel/locking/mutex.c:238
- in_atomic(): 1, irqs_disabled(): 128, pid: 3457, name: Xorg
- CPU: 3 PID: 3457 Comm: Xorg Tainted: G        W        4.15.0-rc4+ #56
- Hardware name: Google Kevin (DT)
- Call trace:
-  dump_backtrace+0x0/0x1a8
-  show_stack+0x24/0x30
-  dump_stack+0xb8/0xf0
-  ___might_sleep+0x110/0x140
-  __might_sleep+0x58/0x90
-  mutex_lock+0x2c/0x68
-  analogix_dp_psr_set+0x78/0x100
-  rockchip_drm_do_flush+0x6c/0x88
-  rockchip_drm_psr_flush_all+0x48/0x70
-  rockchip_drm_fb_dirty+0x20/0x30
-  drm_mode_dirtyfb_ioctl+0x1c4/0x1f8
-  drm_ioctl_kernel+0x74/0xd0
-  drm_ioctl+0x2b8/0x3c0
-  do_vfs_ioctl+0xb0/0x818
-  SyS_ioctl+0x94/0xa8
-  el0_svc_naked+0x20/0x24
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 63 +++++++++++++----------------
+ 3 files changed, 29 insertions(+), 38 deletions(-)
 
-The two patches in this patchset were sent by Sean Paul some time ago
-([1][2]) but never landed in mainline, the patches in question can fix the
-issue reported and I think that could be interesting include both in this
-release cycle, hence I'm resending it. The patches were rebased on top of
-mainline.
-
-[1] https://patchwork.kernel.org/patch/9382847/
-[2] https://patchwork.kernel.org/patch/9614679/
-
-Best regards,
- Enric
-
-Sean Paul (2):
-  drm/rockchip: Don't use atomic constructs for psr
-  drm/rockchip: Remove analogix psr worker.
-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 30 +-----------
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h     |  2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 63 +++++++++++--------------
- 4 files changed, 31 insertions(+), 66 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 76d63de..cd7ae12 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -134,7 +134,7 @@ static int rockchip_drm_bind(struct device *dev)
+ 	drm_dev->dev_private = private;
+ 
+ 	INIT_LIST_HEAD(&private->psr_list);
+-	spin_lock_init(&private->psr_list_lock);
++	mutex_init(&private->psr_list_lock);
+ 
+ 	ret = rockchip_drm_init_iommu(drm_dev);
+ 	if (ret)
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index 498dfbc..9c064a4 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -55,7 +55,7 @@ struct rockchip_drm_private {
+ 	struct mutex mm_lock;
+ 	struct drm_mm mm;
+ 	struct list_head psr_list;
+-	spinlock_t psr_list_lock;
++	struct mutex psr_list_lock;
+ };
+ 
+ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index 3acfd57..a3f6ec0 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -18,7 +18,7 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_psr.h"
+ 
+-#define PSR_FLUSH_TIMEOUT	msecs_to_jiffies(100)
++#define PSR_FLUSH_TIMEOUT_MS	100
+ 
+ enum psr_state {
+ 	PSR_FLUSH,
+@@ -30,11 +30,11 @@ struct psr_drv {
+ 	struct list_head	list;
+ 	struct drm_encoder	*encoder;
+ 
+-	spinlock_t		lock;
++	struct mutex		lock;
+ 	bool			active;
+ 	enum psr_state		state;
+ 
+-	struct timer_list	flush_timer;
++	struct delayed_work	flush_work;
+ 
+ 	void (*set)(struct drm_encoder *encoder, bool enable);
+ };
+@@ -43,9 +43,8 @@ static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
+ {
+ 	struct rockchip_drm_private *drm_drv = crtc->dev->dev_private;
+ 	struct psr_drv *psr;
+-	unsigned long flags;
+ 
+-	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
++	mutex_lock(&drm_drv->psr_list_lock);
+ 	list_for_each_entry(psr, &drm_drv->psr_list, list) {
+ 		if (psr->encoder->crtc == crtc)
+ 			goto out;
+@@ -53,7 +52,7 @@ static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
+ 	psr = ERR_PTR(-ENODEV);
+ 
+ out:
+-	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
++	mutex_unlock(&drm_drv->psr_list_lock);
+ 	return psr;
+ }
+ 
+@@ -94,23 +93,21 @@ static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
+ 
+ static void psr_set_state(struct psr_drv *psr, enum psr_state state)
+ {
+-	unsigned long flags;
+-
+-	spin_lock_irqsave(&psr->lock, flags);
++	mutex_lock(&psr->lock);
+ 	psr_set_state_locked(psr, state);
+-	spin_unlock_irqrestore(&psr->lock, flags);
++	mutex_unlock(&psr->lock);
+ }
+ 
+-static void psr_flush_handler(struct timer_list *t)
++static void psr_flush_handler(struct work_struct *work)
+ {
+-	struct psr_drv *psr = from_timer(psr, t, flush_timer);
+-	unsigned long flags;
++	struct psr_drv *psr = container_of(to_delayed_work(work),
++					   struct psr_drv, flush_work);
+ 
+ 	/* If the state has changed since we initiated the flush, do nothing */
+-	spin_lock_irqsave(&psr->lock, flags);
++	mutex_lock(&psr->lock);
+ 	if (psr->state == PSR_FLUSH)
+ 		psr_set_state_locked(psr, PSR_ENABLE);
+-	spin_unlock_irqrestore(&psr->lock, flags);
++	mutex_unlock(&psr->lock);
+ }
+ 
+ /**
+@@ -123,14 +120,13 @@ static void psr_flush_handler(struct timer_list *t)
+ int rockchip_drm_psr_activate(struct drm_crtc *crtc)
+ {
+ 	struct psr_drv *psr = find_psr_by_crtc(crtc);
+-	unsigned long flags;
+ 
+ 	if (IS_ERR(psr))
+ 		return PTR_ERR(psr);
+ 
+-	spin_lock_irqsave(&psr->lock, flags);
++	mutex_lock(&psr->lock);
+ 	psr->active = true;
+-	spin_unlock_irqrestore(&psr->lock, flags);
++	mutex_unlock(&psr->lock);
+ 
+ 	return 0;
+ }
+@@ -146,15 +142,14 @@ EXPORT_SYMBOL(rockchip_drm_psr_activate);
+ int rockchip_drm_psr_deactivate(struct drm_crtc *crtc)
+ {
+ 	struct psr_drv *psr = find_psr_by_crtc(crtc);
+-	unsigned long flags;
+ 
+ 	if (IS_ERR(psr))
+ 		return PTR_ERR(psr);
+ 
+-	spin_lock_irqsave(&psr->lock, flags);
++	mutex_lock(&psr->lock);
+ 	psr->active = false;
+-	spin_unlock_irqrestore(&psr->lock, flags);
+-	del_timer_sync(&psr->flush_timer);
++	mutex_unlock(&psr->lock);
++	cancel_delayed_work_sync(&psr->flush_work);
+ 
+ 	return 0;
+ }
+@@ -162,8 +157,7 @@ EXPORT_SYMBOL(rockchip_drm_psr_deactivate);
+ 
+ static void rockchip_drm_do_flush(struct psr_drv *psr)
+ {
+-	mod_timer(&psr->flush_timer,
+-		  round_jiffies_up(jiffies + PSR_FLUSH_TIMEOUT));
++	schedule_delayed_work(&psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
+ 	psr_set_state(psr, PSR_FLUSH);
+ }
+ 
+@@ -201,12 +195,11 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev)
+ {
+ 	struct rockchip_drm_private *drm_drv = dev->dev_private;
+ 	struct psr_drv *psr;
+-	unsigned long flags;
+ 
+-	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
++	mutex_lock(&drm_drv->psr_list_lock);
+ 	list_for_each_entry(psr, &drm_drv->psr_list, list)
+ 		rockchip_drm_do_flush(psr);
+-	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
++	mutex_unlock(&drm_drv->psr_list_lock);
+ }
+ EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
+ 
+@@ -223,7 +216,6 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ {
+ 	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+ 	struct psr_drv *psr;
+-	unsigned long flags;
+ 
+ 	if (!encoder || !psr_set)
+ 		return -EINVAL;
+@@ -232,17 +224,17 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ 	if (!psr)
+ 		return -ENOMEM;
+ 
+-	timer_setup(&psr->flush_timer, psr_flush_handler, 0);
+-	spin_lock_init(&psr->lock);
++	INIT_DELAYED_WORK(&psr->flush_work, psr_flush_handler);
++	mutex_init(&psr->lock);
+ 
+ 	psr->active = true;
+ 	psr->state = PSR_DISABLE;
+ 	psr->encoder = encoder;
+ 	psr->set = psr_set;
+ 
+-	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
++	mutex_lock(&drm_drv->psr_list_lock);
+ 	list_add_tail(&psr->list, &drm_drv->psr_list);
+-	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
++	mutex_unlock(&drm_drv->psr_list_lock);
+ 
+ 	return 0;
+ }
+@@ -260,16 +252,15 @@ void rockchip_drm_psr_unregister(struct drm_encoder *encoder)
+ {
+ 	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+ 	struct psr_drv *psr, *n;
+-	unsigned long flags;
+ 
+-	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
++	mutex_lock(&drm_drv->psr_list_lock);
+ 	list_for_each_entry_safe(psr, n, &drm_drv->psr_list, list) {
+ 		if (psr->encoder == encoder) {
+-			del_timer(&psr->flush_timer);
++			cancel_delayed_work_sync(&psr->flush_work);
+ 			list_del(&psr->list);
+ 			kfree(psr);
+ 		}
+ 	}
+-	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
++	mutex_unlock(&drm_drv->psr_list_lock);
+ }
+ EXPORT_SYMBOL(rockchip_drm_psr_unregister);
 -- 
 2.9.3
