@@ -1,72 +1,36 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dts64 changes for 4.16
-Date: Thu, 21 Dec 2017 19:31:00 +0100
-Message-ID: <2062410.Qz0JYku65n@phil>
-References: <2013174.TmhWXT9G0E@phil>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 1/2] clk: rename clk_core_get_boundaries() to
+ clk_hw_get_boundaries() and expose
+Date: Thu, 21 Dec 2017 12:07:43 -0800
+Message-ID: <20171221200743.GM7997@codeaurora.org>
+References: <1513872282-5370-1-git-send-email-al.kochet@gmail.com>
+ <1513872282-5370-2-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2013174.TmhWXT9G0E@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1513872282-5370-2-git-send-email-al.kochet@gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 4fbd8d194f06c8a3fd2af1ce560ddb31f7ec8323:
+On 12/21, Alexander Kochetkov wrote:
+> In order to provide a way to know clock limits to clock providers.
+> 
+> The patch is needed for fixing commit 5d890c2df900 ("clk: rockchip:
+> add special approximation to fix up fractional clk's jitter").
+> Custom approximation function introduced by the patch, can
+> select frequency rate larger than one configured using
+> clk_set_max_rate().
+> 
+> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+> ---
 
-  Linux 4.15-rc1 (2017-11-26 16:01:47 -0800)
+Can you convert to the determine_rate op instead of round_rate?
+That function should tell you the min/max limits so that you
+don't need to query that information from the core.
 
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.16-rockchip-dts64-1
-
-for you to fetch changes up to 13bc2c0a6a14f430abaa6a859792418644b7febd:
-
-  arm64: dts: rockchip: Add efuse device node for RK3328 SoC (2017-12-20 13:12:13 +0100)
-
-----------------------------------------------------------------
-General RK3399 gets Mipi nodes, fixes for usb3 support and better support
-for the type-c phys. The Kevin Chromebooks based on rk3399 now can use their
-internal edp displays. RK3328 gets its efuse node and Mali450 gpu node,
-which actually produces already some nice results with the WIP Lima driver.
-
-----------------------------------------------------------------
-Brian Norris (1):
-      arm64: dts: rockchip: add rk3399 DSI0 reset
-
-Enric Balletbo i Serra (5):
-      arm64: dts: rockchip: add pd_usb3 power-domain node for rk3399
-      arm64: dts: rockchip: add the aclk_usb3 clocks for USB3 on rk3399
-      arm64: dts: rockchip: add reset property for dwc3 controllers on rk3399
-      arm64: dts: rockchip: add usb3-phy otg-port support for rk3399
-      arm64: dts: rockchip: add extcon nodes and enable tcphy rk3399-gru
-
-Finley Xiao (1):
-      arm64: dts: rockchip: Add efuse device node for RK3328 SoC
-
-Heiko Stuebner (2):
-      dt-bindings: gpu: mali-utgard: add rockchip,rk3328-mali compatible
-      arm64: dts: rockchip: add rk3328 mali gpu node
-
-Jeffy Chen (1):
-      arm64: dts: rockchip: Enable edp disaplay on kevin
-
-Nickey Yang (2):
-      arm64: dts: rockchip: add mipi_dsi1 support for rk3399
-      arm64: dts: rockchip: update mipi cells for RK3399
-
- .../devicetree/bindings/gpu/arm,mali-utgard.txt    |  1 +
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           | 47 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 29 ++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 42 +++++++++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 85 +++++++++++++++++++---
- 5 files changed, 195 insertions(+), 9 deletions(-)
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
