@@ -1,45 +1,63 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: Why do we check for "link-up" in *_pcie_valid_device()?
-Date: Fri, 22 Dec 2017 11:28:15 -0600
-Message-ID: <20171222172815.GA55396@bhelgaas-glaptop.roam.corp.google.com>
-References: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
- <BLUPR0201MB1505F95E1BE417834E847EE6A5020@BLUPR0201MB1505.namprd02.prod.outlook.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [RFC PATCH v2 1/3] PCI: rockchip: Add support for pcie wake irq
+Date: Fri, 22 Dec 2017 15:20:44 -0800
+Message-ID: <20171222232043.GA158981@google.com>
+References: <20170817120431.12398-1-jeffy.chen@rock-chips.com>
+ <20170817120431.12398-2-jeffy.chen@rock-chips.com>
+ <20170818170107.GA119461@google.com>
+ <20170818181416.GF6008@atomide.com>
+ <5997486D.4040803@rock-chips.com>
+ <20170822172653.GJ6008@atomide.com>
+ <599CDB37.3070307@rock-chips.com>
+ <20171219004811.GA216620@google.com>
+ <20171220191912.GM3875@atomide.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <BLUPR0201MB1505F95E1BE417834E847EE6A5020@BLUPR0201MB1505.namprd02.prod.outlook.com>
+In-Reply-To: <20171220191912.GM3875@atomide.com>
 Sender: linux-pci-owner@vger.kernel.org
-To: Bharat Kumar Gogada <bharatku@xilinx.com>
-Cc: Jingoo Han <jingoohan1@gmail.com>, "joao.pinto@synopsys.com" <joao.pinto@synopsys.com>, Ley Foon Tan <lftan@altera.com>, Shawn Lin <shawn.lin@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>, Jim Quinlan <jim2101024@gmail.com>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "rfi@lists.rocketboards.org" <rfi@lists.rocketboards.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+To: Tony Lindgren <tony@atomide.com>
+Cc: jeffy <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, bhelgaas@google.com, shawn.lin@rock-chips.com, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Dec 22, 2017 at 01:02:28PM +0000, Bharat Kumar Gogada wrote:
-> Bjorn wrote:
->> In the PCI config access path, the *_pcie_valid_device() functions
->> in the dwc, altera, rockchip, and xilinx drivers all check whether
->> the link is up.
->> 
->> I think this is racy because the link may go down after we check but
->> before we perform the config access.
->> 
->> What would blow up if we removed the *_pcie_link_up() checks?
->> 
->> I'd like to either remove the checks or add comments about why the
->> race is acceptable.  If we've covered this before, I apologize.
->> Adding a comment will keep me from pestering you about this again in
->> the future.
++ Rafael to this thread
 
-> In both Xilinx driver cases when link is down, hardware responds by
-> AXI DECERR/SLVERR status which causes an exception, synchronous
-> external abort to CPU.  This causes system to hang, so we need this
-> check for both of our drivers.  We will add comments. 
+On Wed, Dec 20, 2017 at 11:19:12AM -0800, Tony Lindgren wrote:
+> * Brian Norris <briannorris@chromium.org> [171219 00:50]:
+> > On Wed, Aug 23, 2017 at 09:32:39AM +0800, Jeffy Chen wrote:
+> > 
+> > Did this problem ever get resolved? To be clear, I believe the problem
+> > at hand is:
+> > 
+> > (a) in suspend/resume (not runtime PM; we may not even have runtime PM
+> > support for most PCI devices)
+> 
+> It seems it should be enough to implement runtime PM in the PCI
+> controller. Isn't each PCI WAKE# line is wired from each PCI device
+> to the PCI controller?
 
-This is a problem, and checking whether the link is up is a workaround
-but not a real solution.  That means your system may hang if the link
-happens to go down at the wrong time.
+No, not really. As discussed in later versions of this thread already,
+the WAKE# hierarchy is orthogonal to the PCI hierarchy, and I think we
+settled that it's reasonable to just consider this as a 1-per-device
+thing, with each device "directly" attached to the PM controller. While
+sharing could happen, that's something we decided to punt on...didn't
+we?
 
-A real solution would be to handle the synchronous external abort
-so it doesn't cause a system hang.
+> Then the PCI controller can figure out from which PCI device the
+> WAKE# came from.
 
-Bjorn
+I'm not completely sure of the details, but I believe this *can* be
+determined by PME. But I'm not sure it's guaranteed to be supported,
+especially in cases where we already have 1:1 WAKE#. So we should be
+*trying* to report this wakeirq info from the device, if possible.
+
+> > Options I can think of:
+> > (1) implement runtime PM callbacks for all PCI devices, where we clear
+> > any PME status and ensure WAKE# stops asserting [1]
+> 
+> I don't think this is needed, it should be enough to have just
+> the PCI controller implement runtime PM :)
+
+
+Brian
