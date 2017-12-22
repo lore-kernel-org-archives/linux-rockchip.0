@@ -1,95 +1,43 @@
-From: Philippe Ombredanne <pombredanne@nexb.com>
-Subject: Re: [PATCH 1/2] [media] Add Rockchip RK1608 driver
-Date: Fri, 22 Dec 2017 09:45:42 +0100
-Message-ID: <CAOFm3uGWgYs06NRrrjJSrvDG5ebR_K0y2e_qQeOALMSsNnpXsQ@mail.gmail.com>
-References: <1513060095-29588-1-git-send-email-leo.wen@rock-chips.com>
- <1513060095-29588-2-git-send-email-leo.wen@rock-chips.com> <CAFLEztTxXRQu-VJ2FzYbA_vkYZtkDur1nQ6goftdZdnbn63aQQ@mail.gmail.com>
+From: Bharat Kumar Gogada <bharatku@xilinx.com>
+Subject: RE: Why do we check for "link-up" in *_pcie_valid_device()?
+Date: Fri, 22 Dec 2017 13:02:28 +0000
+Message-ID: <BLUPR0201MB1505F95E1BE417834E847EE6A5020@BLUPR0201MB1505.namprd02.prod.outlook.com>
+References: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <CAFLEztTxXRQu-VJ2FzYbA_vkYZtkDur1nQ6goftdZdnbn63aQQ@mail.gmail.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Leo Wen <leo.wen@rock-chips.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "David S. Miller" <davem@davemloft.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Eddie Cai <eddie.cai@rock-chips.com>, Jacob Chen <jacobchen110@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
+Content-Language: en-US
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>, Jingoo Han <jingoohan1@gmail.com>, "joao.pinto@synopsys.com" <joao.pinto@synopsys.com>, Ley Foon Tan <lftan@altera.com>, Shawn Lin <shawn.lin@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>
+Cc: Jim Quinlan <jim2101024@gmail.com>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "rfi@lists.rocketboards.org" <rfi@lists.rocketboards.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Leo,
+Hi all,
 
-On Fri, Dec 22, 2017 at 5:33 AM, Jacob Chen <jacobchen110@gmail.com> wrote:
-> Hi leo,
->
->
-> 2017-12-12 14:28 GMT+08:00 Leo Wen <leo.wen@rock-chips.com>:
->> Rk1608 is used as a PreISP to link on Soc, which mainly has two functions.
->> One is to download the firmware of RK1608, and the other is to match the
->> extra sensor such as camera and enable sensor by calling sensor's s_power.
->>
->> use below v4l2-ctl command to capture frames.
->>
->>     v4l2-ctl --verbose -d /dev/video1 --stream-mmap=2
->>     --stream-to=/tmp/stream.out --stream-count=60 --stream-poll
->>
->> use below command to playback the video on your PC.
->>
->>     mplayer ./stream.out -loop 0 -demuxer rawvideo -rawvideo
->>     w=640:h=480:size=$((640*480*3/2)):format=NV12
->>
->> Signed-off-by: Leo Wen <leo.wen@rock-chips.com>
+In the PCI config access path, the *_pcie_valid_device() functions in the d=
+wc, altera, rockchip, and xilinx drivers all check whether the link is up.
 
-<snip>
+I think this is racy because the link may go down after we check but before=
+ we perform the config access.
 
->> --- /dev/null
->> +++ b/drivers/media/spi/rk1608.c
->> @@ -0,0 +1,1165 @@
->> +/**
->> + * Rockchip rk1608 driver
->> + *
->> + * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
->> + *
->> + * This software is available to you under a choice of one of two
->> + * licenses.  You may choose to be licensed under the terms of the GNU
->> + * General Public License (GPL) Version 2, available from the file
->> + * COPYING in the main directory of this source tree, or the
->> + * OpenIB.org BSD license below:
->> + *
->> + *     Redistribution and use in source and binary forms, with or
->> + *     without modification, are permitted provided that the following
->> + *     conditions are met:
->> + *
->> + *      - Redistributions of source code must retain the above
->> + *        copyright notice, this list of conditions and the following
->> + *        disclaimer.
->> + *
->> + *      - Redistributions in binary form must reproduce the above
->> + *        copyright notice, this list of conditions and the following
->> + *        disclaimer in the documentation and/or other materials
->> + *        provided with the distribution.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> + * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
->> + * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
->> + * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
->> + * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
->> + * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
->> + * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
->> + * SOFTWARE.
->> + */
+What would blow up if we removed the *_pcie_link_up() checks?
 
-Have you considered using the new SPDX tags instead of this fine but
-long legalese?
-I know what you are about to say: everyone loves legalese so much that
-it is hard to let go of so much of it and replace all this only with a
-single SPDX tag line ;)
-But then everyone loves code much more than legalese too! so you would
-be making the world a service anyway.
+I'd like to either remove the checks or add comments about why the race is =
+acceptable.  If we've covered this before, I apologize.
+Adding a comment will keep me from pestering you about this again in the fu=
+ture.
 
-And if other contributors in your team could follow suit and you could
-spread the word that would be even better!
+Hi Bjorn,
 
-See Thomas doc patches [1] for details.
+In both Xilinx driver cases when link is down, hardware responds by AXI DEC=
+ERR/SLVERR status which=20
+causes an exception, synchronous external abort to CPU.=20
+This causes system to hang, so we need this check for both of our drivers.
+We will add comments.=20
 
-[1] https://lkml.org/lkml/2017/12/4/934
+We have shutdown, Please expect delay in response till 1st Jan, 2018.
 
--- 
-Cordially
-Philippe Ombredanne
+Regards,
+Bharat
