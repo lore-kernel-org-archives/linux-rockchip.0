@@ -1,144 +1,85 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: Re: [PATCH 1/2] clk: rename clk_core_get_boundaries() to clk_hw_get_boundaries() and expose
-Date: Mon, 25 Dec 2017 12:38:10 +0300
-Message-ID: <8EC4D15B-4A89-43FA-953E-95AF81417067@gmail.com>
-References: <1513872282-5370-1-git-send-email-al.kochet@gmail.com> <1513872282-5370-2-git-send-email-al.kochet@gmail.com> <20171221200743.GM7997@codeaurora.org>
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20171221200743.GM7997@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: linux-clk@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [RFC PATCH v11 0/5] PCI: rockchip: Move PCIe WAKE# handling into pci
+ core
+Date: Mon, 25 Dec 2017 19:47:37 +0800
+Message-ID: <20171225114742.18920-1-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kernel@vger.kernel.org, bhelgaas@google.com
+Cc: Mark Rutland <mark.rutland@arm.com>, linux-wireless@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, tony@atomide.com, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, Will Deacon <will.deacon@arm.com>, Amitkumar Karwar <amitkarwar@gmail.com>, Frank Rowand <frowand.list@gmail.com>, briannorris@chromium.org, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org, Catalin Marinas <catalin.marinas@arm.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Xinming Hu <huxm@marvell.com>, linux-pm@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Kalle Valo <kvalo@codeaurora.org>, Ganapathi Bhat <gbhat@marvell.com>, netdev@vger.kernel.org, rjw@rjwysocki.net, dianders@chromium.org, Enric Balletbo i Serra <enric.balletbo@co>
 List-Id: linux-rockchip.vger.kernel.org
 
 
-> 21 =D0=B4=D0=B5=D0=BA. 2017 =D0=B3., =D0=B2 23:07, Stephen Boyd =
-<sboyd@codeaurora.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0):=
+Currently we are handling wake irq in mrvl wifi driver. Move it into
+pci core.
 
->=20
-> Can you convert to the determine_rate op instead of round_rate?
-> That function should tell you the min/max limits so that you
-> don't need to query that information from the core.
+Tested on my chromebook bob(with cros 4.4 kernel and mrvl wifi).
 
-I converted rockchip_fractional_approximation() to =
-rockchip_determine_rate() (see the patch attached).
-If it increase parent=E2=80=99s clock for out of limits value, than =
-clock request will fail with -EINVAL, like
-with round_rate() approach.
 
-The problem is that min/max limits provided to determine_rate() is for =
-clock for which the determine_rate()
-was called. While rockchip_determine_rate() =
-(rockchip_fractional_approximation()) requires information
-about parent clock limits.
+Changes in v11:
+Only add irq definitions for PCI devices and rewrite the commit message.
+Address Brian's comments.
+Only support 1-per-device PCIe WAKE# pin as suggested.
+Move to pcie port as Brian suggested.
 
-How can I know parents clock limits for current clock? Implement =
-determine_rate() for each parent clocks
-the same way I did for this one clock?
+Changes in v10:
+Use device_set_wakeup_capable() instead of device_set_wakeup_enable(),
+since dedicated wakeirq will be lost in device_set_wakeup_enable(false).
 
-Regards,
-Alexander.
+Changes in v9:
+Add section for PCI devices and rewrite the commit message.
+Fix check error in .cleanup().
+Move dedicated wakeirq setup to setup() callback and use
+device_set_wakeup_enable() to enable/disable.
+Rewrite the commit message.
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 3c1fb0d..1e0c701 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -174,23 +174,9 @@ static void =
-rockchip_fractional_approximation(struct clk_hw *hw,
- 		unsigned long *m, unsigned long *n)
- {
- 	struct clk_fractional_divider *fd =3D to_clk_fd(hw);
--	unsigned long p_rate, p_parent_rate;
--	unsigned long min_rate =3D 0, max_rate =3D 0;
--	struct clk_hw *p_parent;
- 	unsigned long scale;
--
--	p_rate =3D clk_hw_get_rate(clk_hw_get_parent(hw));
--	if ((rate * 20 > p_rate) && (p_rate % rate !=3D 0)) {
--		p_parent =3D clk_hw_get_parent(clk_hw_get_parent(hw));
--		p_parent_rate =3D clk_hw_get_rate(p_parent);
--		clk_hw_get_boundaries(clk_hw_get_parent(hw),
--			&min_rate, &max_rate);
--		if (p_parent_rate < min_rate)
--			p_parent_rate =3D min_rate;
--		if (p_parent_rate > max_rate)
--			p_parent_rate =3D max_rate;
--		*parent_rate =3D p_parent_rate;
--	}
-+	unsigned long rate_orig =3D rate;
-+	unsigned long parent_rate_orig =3D *parent_rate;
-=20
- 	/*
- 	 * Get rate closer to *parent_rate to guarantee there is no =
-overflow
-@@ -204,8 +190,36 @@ static void =
-rockchip_fractional_approximation(struct clk_hw *hw,
- 	rational_best_approximation(rate, *parent_rate,
- 			GENMASK(fd->mwidth - 1, 0), GENMASK(fd->nwidth - =
-1, 0),
- 			m, n);
-+
-+	pr_info("%s: %s: rate:%lu -> %lu parent_rate:%lu -> %lu m:%lu =
-n:%lu\n",
-+		__func__, clk_hw_get_name(hw), rate_orig,  rate,
-+		parent_rate_orig, *parent_rate,
-+		*m, *n);
- }
-=20
-+static int rockchip_determine_rate(struct clk_hw *hw,
-+				   struct clk_rate_request *req)
-+{
-+	unsigned long p_rate, p_parent_rate;
-+	struct clk_hw *p_parent;
-+	unsigned long best_parent_rate =3D req->best_parent_rate;
-+
-+	p_rate =3D clk_hw_get_rate(clk_hw_get_parent(hw));
-+	if ((req->rate * 20 > p_rate) && (p_rate % req->rate !=3D 0)) {
-+		p_parent =3D clk_hw_get_parent(clk_hw_get_parent(hw));
-+		p_parent_rate =3D clk_hw_get_rate(p_parent);
-+		req->best_parent_rate =3D p_parent_rate;
-+	}
-+
-+	pr_info("%s: %s: rate:%lu min_rate:%lu max_rate:%lu =
-best_parent_rate:%lu -> %lu best_parent_hw:%s\n",
-+		__func__, clk_hw_get_name(hw), req->rate, req->min_rate, =
-req->max_rate, best_parent_rate, req->best_parent_rate,
-+		req->best_parent_hw ? =
-clk_hw_get_name(req->best_parent_hw) : "<null>");
-+
-+	return 0;
-+}
-+
-+static struct clk_ops rockchip_clk_fractional_divider_ops;
-+
- static struct clk *rockchip_clk_register_frac_branch(
- 		struct rockchip_clk_provider *ctx, const char *name,
- 		const char *const *parent_names, u8 num_parents,
-@@ -253,7 +267,8 @@ static struct clk =
-*rockchip_clk_register_frac_branch(
- 	div->nmask =3D GENMASK(div->nwidth - 1, 0) << div->nshift;
- 	div->lock =3D lock;
- 	div->approximation =3D rockchip_fractional_approximation;
--	div_ops =3D &clk_fractional_divider_ops;
-+	div_ops =3D &rockchip_clk_fractional_divider_ops;
-+
-=20
- 	clk =3D clk_register_composite(NULL, name, parent_names, =
-num_parents,
- 				     NULL, NULL,
-@@ -392,6 +407,9 @@ struct rockchip_clk_provider * __init =
-rockchip_clk_init(struct device_node *np,
- 	ctx->grf =3D syscon_regmap_lookup_by_phandle(ctx->cru_node,
- 						   "rockchip,grf");
-=20
-+	rockchip_clk_fractional_divider_ops =3D =
-clk_fractional_divider_ops;
-+	rockchip_clk_fractional_divider_ops.determine_rate =3D =
-rockchip_determine_rate;
-+
- 	return ctx;
-=20
- err_free:
+Changes in v8:
+Add optional "pci", and rewrite commit message.
+Add pci-of.c and use platform_pm_ops to handle the PCIe WAKE# signal.
+Rewrite the commit message.
 
+Changes in v7:
+Move PCIE_WAKE handling into pci core.
+
+Changes in v6:
+Fix device_init_wake error handling, and add some comments.
+
+Changes in v5:
+Move to pci.txt
+Rebase.
+Use "wakeup" instead of "wake"
+
+Changes in v3:
+Fix error handling.
+
+Changes in v2:
+Use dev_pm_set_dedicated_wake_irq.
+
+Jeffy Chen (5):
+  dt-bindings: PCI: Add definition of PCIe WAKE# irq and PCI irq
+  of/irq: Adjust of_pci_irq parsing for multiple interrupts
+  mwifiex: Disable wakeup irq handling for pcie
+  PCI / PM: Add support for the PCIe WAKE# signal for OF
+  arm64: dts: rockchip: Move PCIe WAKE# irq to pcie port for Gru
+
+ Documentation/devicetree/bindings/pci/pci.txt | 10 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 11 +++--
+ drivers/net/wireless/marvell/mwifiex/main.c   |  4 ++
+ drivers/of/of_pci_irq.c                       | 71 +++++++++++++++++++++++++--
+ drivers/pci/pci-driver.c                      | 10 ++++
+ include/linux/of_pci.h                        |  9 ++++
+ 6 files changed, 107 insertions(+), 8 deletions(-)
+
+-- 
+2.11.0
