@@ -1,65 +1,30 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH 1/2] clk: rename clk_core_get_boundaries() to
- clk_hw_get_boundaries() and expose
-Date: Tue, 26 Dec 2017 17:06:38 -0800
-Message-ID: <20171227010638.GP7997@codeaurora.org>
-References: <1513872282-5370-1-git-send-email-al.kochet@gmail.com>
- <1513872282-5370-2-git-send-email-al.kochet@gmail.com>
- <20171221200743.GM7997@codeaurora.org>
- <8EC4D15B-4A89-43FA-953E-95AF81417067@gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: usb: add DT binding for RK3328 dwc3 controller
+Date: Wed, 27 Dec 2017 19:22:19 +0100
+Message-ID: <1547931.Auro76k3dK@phil>
+References: <20171204094041.25439-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <8EC4D15B-4A89-43FA-953E-95AF81417067@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Alexander Kochetkov <al.kochet@gmail.com>
-Cc: linux-clk@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20171204094041.25439-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/25, Alexander Kochetkov wrote:
+Am Montag, 4. Dezember 2017, 10:40:38 CET schrieb Heiko Stuebner:
+> From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
-> > 21 дек. 2017 г., в 23:07, Stephen Boyd <sboyd@codeaurora.org> написал(а):
-> > 
-> > Can you convert to the determine_rate op instead of round_rate?
-> > That function should tell you the min/max limits so that you
-> > don't need to query that information from the core.
+> Adds the device tree bindings description for RK3328 and
+> compatible USB DWC3 controller.
 > 
-> I converted rockchip_fractional_approximation() to rockchip_determine_rate() (see the patch attached).
-> If it increase parent’s clock for out of limits value, than clock request will fail with -EINVAL, like
-> with round_rate() approach.
-> 
-> The problem is that min/max limits provided to determine_rate() is for clock for which the determine_rate()
-> was called. While rockchip_determine_rate() (rockchip_fractional_approximation()) requires information
-> about parent clock limits.
+> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-Are these limits the min/max limits that the parent clk can
-output at? Or the min/max limits that software has constrained on
-the clk?
-
-> 
-> How can I know parents clock limits for current clock? Implement determine_rate() for each parent clocks
-> the same way I did for this one clock?
-
-If the parent can change rate, then the idea is that the child
-will calculate the limits that it can handle based on what it can
-do with the incoming min/max constraints, and then call
-__clk_determine_rate() on its parent with a request structure
-that has limits for whatever the child clk is able to handle. The
-parent can then determine a rate it can output that's within that
-range and tell the child clk if it will satisfy the constraints
-or not along with the resulting rate it will output when the
-__clk_determine_rate() function returns. I would expect the
-constraints to get closer together the higher in the tree we go.
-
-I haven't looked in detail at this
-rockchip_fractional_approximation() code, but it shouldn't be
-doing the work of both the child rate determination and the
-parent rate determination in one place. It should work with the
-parent to figure out the rate the parent can provide and then
-figure out how to achieve the desired rate from there.
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+applied all 4 with Felipe's Ack on patch1
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
