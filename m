@@ -1,30 +1,68 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: usb: add DT binding for RK3328 dwc3 controller
-Date: Wed, 27 Dec 2017 19:22:19 +0100
-Message-ID: <1547931.Auro76k3dK@phil>
-References: <20171204094041.25439-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171204094041.25439-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH 00/20] Verbatim device names and devm_nvmem_(un)register()
+Date: Wed, 27 Dec 2017 14:59:36 -0800
+Message-ID: <20171227225956.14442-1-andrew.smirnov@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 4. Dezember 2017, 10:40:38 CET schrieb Heiko Stuebner:
-> From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> Adds the device tree bindings description for RK3328 and
-> compatible USB DWC3 controller.
-> 
-> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Srinivas, all:
 
-applied all 4 with Felipe's Ack on patch1
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This patchset contains various small changes that I recently made to
+NVMEM, more specifically:
+
+ - Patches 1 and 2 are two changes I am hoping are acceptable upstream
+
+ - Patches 3 to 14 are a follow up to patch 2
+
+ - Patches 15 to 20 are just trivial fixups and I am more than happy
+   to drop them if they seem to add more pointless churn rather then
+   value.
+
+Feedback is appreciated!
+
+Thanks,
+Andrey Smirnov
+
+Andrey Smirnov (20):
+  nvmem: core: Allow specifying device name verbatim
+  nvmem: Introduce devm_nvmem_(un)register()
+  nvmem: vf610-ocotp: Convert to use devm_nvmem_register()
+  nvmem: imx-ocotp: Convert to use devm_nvmem_register()
+  nvmem: uniphier-efuse: Convert to use devm_nvmem_register()
+  nvmem: snvs_lgpr: Convert to use devm_nvmem_register()
+  nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
+  nvmem: qfprom: Convert to use devm_nvmem_register()
+  nvmem: mtk-efuse: Convert to use devm_nvmem_register()
+  nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
+  nvmem: meson-efuse: Convert to use devm_nvmem_register()
+  nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
+  nvmem: imx-iim: Convert to use devm_nvmem_register()
+  nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
+  nvmem: snvs_lpgpr: Convert commas to semicolons
+  nvmem: rockchip-efuse: Make use of of_device_get_match_data()
+  nvmem: vf610-ocotp: Do not use "&pdev->dev" explicitly
+  nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
+  nvmem: imx-iim: Do not use "&pdev->dev" explicitly
+  nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
+
+ drivers/nvmem/bcm-ocotp.c      | 15 ++----------
+ drivers/nvmem/core.c           | 52 +++++++++++++++++++++++++++++++++++++++---
+ drivers/nvmem/imx-iim.c        | 14 ++----------
+ drivers/nvmem/imx-ocotp.c      | 12 +---------
+ drivers/nvmem/lpc18xx_otp.c    | 12 +---------
+ drivers/nvmem/meson-efuse.c    | 11 +--------
+ drivers/nvmem/meson-mx-efuse.c | 12 +---------
+ drivers/nvmem/mtk-efuse.c      | 12 +---------
+ drivers/nvmem/qfprom.c         | 12 +---------
+ drivers/nvmem/rockchip-efuse.c | 28 ++++++++---------------
+ drivers/nvmem/snvs_lpgpr.c     | 26 +++++++--------------
+ drivers/nvmem/uniphier-efuse.c | 12 +---------
+ drivers/nvmem/vf610-ocotp.c    | 15 ++----------
+ include/linux/nvmem-provider.h | 17 ++++++++++++++
+ 14 files changed, 96 insertions(+), 154 deletions(-)
+
+-- 
+2.14.3
