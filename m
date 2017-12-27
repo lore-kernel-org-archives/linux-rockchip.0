@@ -1,97 +1,65 @@
-From: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
-Subject: Re: [RFC PATCH v12 0/5] PCI: rockchip: Move PCIe WAKE# handling into pci core
-Date: Wed, 27 Dec 2017 01:44:03 +0100
-Message-ID: <1979156.HCZ09VA8ni@aspire.rjw.lan>
-References: <20171226023646.17722-1-jeffy.chen@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 1/2] clk: rename clk_core_get_boundaries() to
+ clk_hw_get_boundaries() and expose
+Date: Tue, 26 Dec 2017 17:06:38 -0800
+Message-ID: <20171227010638.GP7997@codeaurora.org>
+References: <1513872282-5370-1-git-send-email-al.kochet@gmail.com>
+ <1513872282-5370-2-git-send-email-al.kochet@gmail.com>
+ <20171221200743.GM7997@codeaurora.org>
+ <8EC4D15B-4A89-43FA-953E-95AF81417067@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20171226023646.17722-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Xinming Hu <huxm-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <8EC4D15B-4A89-43FA-953E-95AF81417067@gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: linux-clk@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tuesday, December 26, 2017 3:36:41 AM CET Jeffy Chen wrote:
+On 12/25, Alexander Kochetkov wrote:
 > 
-> Currently we are handling wake irq in mrvl wifi driver. Move it into
-> pci core.
+> > 21 дек. 2017 г., в 23:07, Stephen Boyd <sboyd@codeaurora.org> написал(а):
+> > 
+> > Can you convert to the determine_rate op instead of round_rate?
+> > That function should tell you the min/max limits so that you
+> > don't need to query that information from the core.
 > 
-> Tested on my chromebook bob(with cros 4.4 kernel and mrvl wifi).
+> I converted rockchip_fractional_approximation() to rockchip_determine_rate() (see the patch attached).
+> If it increase parent’s clock for out of limits value, than clock request will fail with -EINVAL, like
+> with round_rate() approach.
 > 
-> 
-> Changes in v13:
-> Fix compiler error reported by kbuild test robot <fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-> 
-> Changes in v12:
-> Only add irq definitions for PCI devices and rewrite the commit message.
-> Enable the wake irq in noirq stage to avoid possible irq storm.
-> 
-> Changes in v11:
-> Address Brian's comments.
-> Only support 1-per-device PCIe WAKE# pin as suggested.
-> Move to pcie port as Brian suggested.
-> 
-> Changes in v10:
-> Use device_set_wakeup_capable() instead of device_set_wakeup_enable(),
-> since dedicated wakeirq will be lost in device_set_wakeup_enable(false).
-> 
-> Changes in v9:
-> Add section for PCI devices and rewrite the commit message.
-> Fix check error in .cleanup().
-> Move dedicated wakeirq setup to setup() callback and use
-> device_set_wakeup_enable() to enable/disable.
-> Rewrite the commit message.
-> 
-> Changes in v8:
-> Add optional "pci", and rewrite commit message.
-> Add pci-of.c and use platform_pm_ops to handle the PCIe WAKE# signal.
-> Rewrite the commit message.
-> 
-> Changes in v7:
-> Move PCIE_WAKE handling into pci core.
-> 
-> Changes in v6:
-> Fix device_init_wake error handling, and add some comments.
-> 
-> Changes in v5:
-> Move to pci.txt
-> Rebase.
-> Use "wakeup" instead of "wake"
-> 
-> Changes in v3:
-> Fix error handling.
-> 
-> Changes in v2:
-> Use dev_pm_set_dedicated_wake_irq.
-> 
-> Jeffy Chen (5):
->   dt-bindings: PCI: Add definition of PCIe WAKE# irq and PCI irq
->   of/irq: Adjust of_pci_irq parsing for multiple interrupts
->   mwifiex: Disable wakeup irq handling for pcie
->   PCI / PM: Add support for the PCIe WAKE# signal for OF
->   arm64: dts: rockchip: Move PCIe WAKE# irq to pcie port for Gru
-> 
->  Documentation/devicetree/bindings/pci/pci.txt | 10 ++++
->  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 11 ++--
->  drivers/net/wireless/marvell/mwifiex/main.c   |  4 ++
->  drivers/of/of_pci_irq.c                       | 71 +++++++++++++++++++++++--
->  drivers/pci/Makefile                          |  1 +
->  drivers/pci/pci-driver.c                      | 10 ++++
->  drivers/pci/pci-of.c                          | 75 +++++++++++++++++++++++++++
->  include/linux/of_pci.h                        |  9 ++++
->  8 files changed, 183 insertions(+), 8 deletions(-)
->  create mode 100644 drivers/pci/pci-of.c
+> The problem is that min/max limits provided to determine_rate() is for clock for which the determine_rate()
+> was called. While rockchip_determine_rate() (rockchip_fractional_approximation()) requires information
+> about parent clock limits.
 
-I'm going to ignore this version till the discussion on the previous one is
-over.
+Are these limits the min/max limits that the parent clk can
+output at? Or the min/max limits that software has constrained on
+the clk?
 
-Thanks,
-Rafael
+> 
+> How can I know parents clock limits for current clock? Implement determine_rate() for each parent clocks
+> the same way I did for this one clock?
 
+If the parent can change rate, then the idea is that the child
+will calculate the limits that it can handle based on what it can
+do with the incoming min/max constraints, and then call
+__clk_determine_rate() on its parent with a request structure
+that has limits for whatever the child clk is able to handle. The
+parent can then determine a rate it can output that's within that
+range and tell the child clk if it will satisfy the constraints
+or not along with the resulting rate it will output when the
+__clk_determine_rate() function returns. I would expect the
+constraints to get closer together the higher in the tree we go.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I haven't looked in detail at this
+rockchip_fractional_approximation() code, but it shouldn't be
+doing the work of both the child rate determination and the
+parent rate determination in one place. It should work with the
+parent to figure out the rate the parent can provide and then
+figure out how to achieve the desired rate from there.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
