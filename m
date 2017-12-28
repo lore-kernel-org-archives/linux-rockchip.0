@@ -1,66 +1,87 @@
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Subject: [PATCH 07/20] nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
-Date: Wed, 27 Dec 2017 14:59:43 -0800
-Message-ID: <20171227225956.14442-8-andrew.smirnov@gmail.com>
-References: <20171227225956.14442-1-andrew.smirnov@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171227225956.14442-1-andrew.smirnov@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joachim Eastwood <manabian@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: Re: [PATCH 1/2] clk: rename clk_core_get_boundaries() to clk_hw_get_boundaries() and expose
+Date: Thu, 28 Dec 2017 15:41:20 +0300
+Message-ID: <4B1BB338-F1F9-4231-BDCA-5FBB1F61BC44@gmail.com>
+References: <1513872282-5370-1-git-send-email-al.kochet@gmail.com> <1513872282-5370-2-git-send-email-al.kochet@gmail.com> <20171221200743.GM7997@codeaurora.org> <8EC4D15B-4A89-43FA-953E-95AF81417067@gmail.com> <20171227010638.GP7997@codeaurora.org>
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20171227010638.GP7997@codeaurora.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-clk@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
+Initial thread here:
+https://www.spinics.net/lists/linux-clk/msg21682.html
 
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Carlo Caione <carlo@caione.org>
-Cc: Kevin Hilman <khilman@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Joachim Eastwood <manabian@gmail.com>
-Cc: cphealy@gmail.com
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-amlogic@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
----
- drivers/nvmem/rockchip-efuse.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-index 123de77ca5d6..d6dc1330f895 100644
---- a/drivers/nvmem/rockchip-efuse.c
-+++ b/drivers/nvmem/rockchip-efuse.c
-@@ -221,25 +221,15 @@ static int rockchip_efuse_probe(struct platform_device *pdev)
- 	econfig.reg_read = match->data;
- 	econfig.priv = efuse;
- 	econfig.dev = efuse->dev;
--	nvmem = nvmem_register(&econfig);
-+	nvmem = devm_nvmem_register(dev, &econfig);
- 	if (IS_ERR(nvmem))
- 		return PTR_ERR(nvmem);
- 
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
- }
- 
--static int rockchip_efuse_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static struct platform_driver rockchip_efuse_driver = {
- 	.probe = rockchip_efuse_probe,
--	.remove = rockchip_efuse_remove,
- 	.driver = {
- 		.name = "rockchip-efuse",
- 		.of_match_table = rockchip_efuse_match,
--- 
-2.14.3
+> 27 =D0=B4=D0=B5=D0=BA. 2017 =D0=B3., =D0=B2 4:06, Stephen Boyd =
+<sboyd@codeaurora.org> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0):=
+
+>=20
+> Are these limits the min/max limits that the parent clk can
+> output at? Or the min/max limits that software has constrained on
+> the clk?
+>=20
+
+Don=E2=80=99t know how to answer. For example, parent can output 768MHz,
+but some IP work unstable with that parent rate. This issues was =
+observed by
+me and I didn=E2=80=99t get official confirmation from rockchip. So, I =
+limit
+such clock to 192MHz using clk_set_max_rate(). May be I have to limit =
+clk rate
+using another approach.
+
+Anybody from rockchip can confirm that? Or may be contact me clarifying =
+details?
+
+> I haven't looked in detail at this
+> rockchip_fractional_approximation() code, but it shouldn't be
+> doing the work of both the child rate determination and the
+> parent rate determination in one place. It should work with the
+> parent to figure out the rate the parent can provide and then
+> figure out how to achieve the desired rate from there.
+
+Here is clock tree:
+
+        clock                       rate
+        -----                       ----
+        xin24m                      24000000
+          pll_gpll                    768000000
+             gpll                       768000000
+                i2s_src              768000000
+                   i2s0_pre         192000000
+                      i2s0_frac     16384000
+                         sclk_i2s0  16384000
+
+I limit i2s0_pre rate to 192MHz in order to I2S IP work properly.
+rockchip_fractional_approximation() get called for i2s0_frac.
+if i2s0_pre rate is 20x times less than i2s0_frac, than =
+rockchip_fractional_approximation()
+tries to set i2s0_pre rate to i2s_src rate. It tries to increase it=E2=80=99=
+s parent rate in order
+to maximise relation between nominator and denominator.
+
+If I convert rockchip_fractional_approximation() to =
+rockchip_determine_rate(), than I get
+min=3D0, max=3D192MHz limits inside rockchip_determine_rate(). May be =
+there should be
+new logic inside clk framework based on some new clk flags, that will =
+provide max=3D768MHz
+for rockchip_determine_rate().
+
+Also found, that rockchip_fractional_approximation() increase parents =
+rate unconditionally
+without taking into account CLK_SET_RATE_PARENT flag.
+
+Stephen, thanks a lot for deep description of determine_rate() =
+background. I=E2=80=99ll taking some
+time thinking about possible solutions.
+
+Regards,
+Alexander.
+
+
