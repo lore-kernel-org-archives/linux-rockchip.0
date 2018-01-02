@@ -1,88 +1,49 @@
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 07/12] i2c: rk3x: account for const type of of_device_id.data
-Date: Tue,  2 Jan 2018 14:28:03 +0100
-Message-ID: <1514899688-27844-8-git-send-email-Julia.Lawall@lip6.fr>
-References: <1514899688-27844-1-git-send-email-Julia.Lawall@lip6.fr>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: Re: [PATCH v2 01/21] nvmem: core: Allow specifying device name verbatim
+Date: Tue, 2 Jan 2018 10:40:22 -0800
+Message-ID: <CAHQ1cqEnRL=Lwk_35NVR9r-mQ8giJ=mku+WGxp8gAMm_1Wi__w@mail.gmail.com>
+References: <20180101232310.30420-1-andrew.smirnov@gmail.com>
+ <20180101232310.30420-2-andrew.smirnov@gmail.com> <ba0b8125-6094-d042-a391-edcc2f68a114@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1514899688-27844-1-git-send-email-Julia.Lawall@lip6.fr>
+In-Reply-To: <ba0b8125-6094-d042-a391-edcc2f68a114@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: kernel-janitors@vger.kernel.org, Wolfram Sang <wsa@the-dreams.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Healy <cphealy@gmail.com>, linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This driver creates a number of const structures that it stores in
-the data field of an of_device_id array.
+On Tue, Jan 2, 2018 at 3:44 AM, Srinivas Kandagatla
+<srinivas.kandagatla@linaro.org> wrote:
+> Thanks for the Patch,
+>
+> On 01/01/18 23:22, Andrey Smirnov wrote:
+>>
+>> Add code to allow avoid having nvmem core append a numeric suffix to
+>> the end of the name by passing config->id of -1.
+>>
+>> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+>> Cc: Heiko Stuebner <heiko@sntech.de>
+>> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+>> Cc: Carlo Caione <carlo@caione.org>
+>> Cc: Kevin Hilman <khilman@baylibre.com>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: cphealy@gmail.com
+>> Cc: linux-kernel@vger.kernel.org
+>> Cc: linux-mediatek@lists.infradead.org
+>> Cc: linux-rockchip@lists.infradead.org
+>> Cc: linux-amlogic@lists.infradead.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>> ---
+>>   drivers/nvmem/core.c | 11 ++++++++---
+>>   1 file changed, 8 insertions(+), 3 deletions(-)
+>>
+> This looks fine for me, Can you also add a line in kernel doc about this
+> behavior.
+>
 
-The data field of an of_device_id structure has type const void *, so
-there is no need for a const-discarding cast when putting const values
-into such a structure.
+Sure, will do in v3.
 
-Furthermore, adding const to the declaration of the location that
-receives a const value from such a field ensures that the compiler
-will continue to check that the value is not modified.  The
-const-discarding cast on the extraction from the data field is thus
-no longer needed.
-
-Done using Coccinelle.
-
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-
----
- drivers/i2c/busses/i2c-rk3x.c |   16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff -u -p a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -194,7 +194,7 @@ struct rk3x_i2c_soc_data {
- struct rk3x_i2c {
- 	struct i2c_adapter adap;
- 	struct device *dev;
--	struct rk3x_i2c_soc_data *soc_data;
-+	const struct rk3x_i2c_soc_data *soc_data;
- 
- 	/* Hardware resources */
- 	void __iomem *regs;
-@@ -1164,27 +1164,27 @@ static const struct rk3x_i2c_soc_data rk
- static const struct of_device_id rk3x_i2c_match[] = {
- 	{
- 		.compatible = "rockchip,rv1108-i2c",
--		.data = (void *)&rv1108_soc_data
-+		.data = &rv1108_soc_data
- 	},
- 	{
- 		.compatible = "rockchip,rk3066-i2c",
--		.data = (void *)&rk3066_soc_data
-+		.data = &rk3066_soc_data
- 	},
- 	{
- 		.compatible = "rockchip,rk3188-i2c",
--		.data = (void *)&rk3188_soc_data
-+		.data = &rk3188_soc_data
- 	},
- 	{
- 		.compatible = "rockchip,rk3228-i2c",
--		.data = (void *)&rk3228_soc_data
-+		.data = &rk3228_soc_data
- 	},
- 	{
- 		.compatible = "rockchip,rk3288-i2c",
--		.data = (void *)&rk3288_soc_data
-+		.data = &rk3288_soc_data
- 	},
- 	{
- 		.compatible = "rockchip,rk3399-i2c",
--		.data = (void *)&rk3399_soc_data
-+		.data = &rk3399_soc_data
- 	},
- 	{},
- };
-@@ -1207,7 +1207,7 @@ static int rk3x_i2c_probe(struct platfor
- 		return -ENOMEM;
- 
- 	match = of_match_node(rk3x_i2c_match, np);
--	i2c->soc_data = (struct rk3x_i2c_soc_data *)match->data;
-+	i2c->soc_data = match->data;
- 
- 	/* use common interface to get I2C timing properties */
- 	i2c_parse_fw_timings(&pdev->dev, &i2c->t, true);
+Thanks,
+Andrey Smirnov
