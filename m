@@ -1,49 +1,66 @@
-From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: Re: [PATCH v3 01/34] clk_ops: change round_rate() to return
- unsigned long
-Date: Wed, 3 Jan 2018 08:07:42 -0200
-Message-ID: <20180103080742.6ad76c2d@vento.lan>
-References: <1514835793-1104-1-git-send-email-pure.logic@nexus-software.ie>
-        <1514835793-1104-2-git-send-email-pure.logic@nexus-software.ie>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-In-Reply-To: <1514835793-1104-2-git-send-email-pure.logic@nexus-software.ie>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Bryan O'Donoghue <pure.logic@nexus-software.ie>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@linux-mips.org, linux-rpi-kernel@lists.infradead.org, patches@opensource.cirrus.com, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, linux-media@vger.kernel.org, linux-rtc@vger.kernel.org
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH v3 01/22] nvmem: Document struct nvmem_config
+Date: Wed,  3 Jan 2018 12:00:53 -0800
+Message-ID: <20180103200114.23922-2-andrew.smirnov@gmail.com>
+References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Em Mon,  1 Jan 2018 19:42:40 +0000
-Bryan O'Donoghue <pure.logic@nexus-software.ie> escreveu:
+Add a simple description of struct nvmem_config and its fields.
 
-> Right now it is not possible to return a value larger than LONG_MAX on 32
-> bit systems. You can pass a rate of ULONG_MAX but can't return anything
-> past LONG_MAX due to the fact both the rounded_rate and negative error
-> codes are represented in the return value of round_rate().
-> 
-> Most implementations either return zero on error or don't return error
-> codes at all. A minority of implementations do return a negative number -
-> typically -EINVAL or -ENODEV.
-> 
-> At the higher level then callers of round_rate() typically and rightly
-> check for a value of <= 0.
-> 
-> It is possible then to convert round_rate() to an unsigned long return
-> value and change error code indication for the minority from -ERRORCODE to
-> a simple 0.
-> 
-> This patch is the first step in making it possible to scale round_rate past
-> LONG_MAX, later patches will change the previously mentioned minority of
-> round_rate() implementations to return zero only on error if those
-> implementations currently return a negative error number. Implementations
-> that do not return an error code of < 0 will be left as-is.
-> 
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Carlo Caione <carlo@caione.org>
+Cc: Kevin Hilman <khilman@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: cphealy@gmail.com
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+---
+ include/linux/nvmem-provider.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
->  drivers/media/platform/omap3isp/isp.c           |  4 ++--
-
-Acked-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-
-Thanks,
-Mauro
+diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+index 497706f5adca..27e599222ec1 100644
+--- a/include/linux/nvmem-provider.h
++++ b/include/linux/nvmem-provider.h
+@@ -22,6 +22,28 @@ typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+ typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+ 				 void *val, size_t bytes);
+ 
++/**
++ * struct nvmem_config - NVMEM device configuration
++ *
++ * @dev:	Parent device.
++ * @name:	Optional name.
++ * @id:		Optional device ID used in full name. Ignored if name is NULL.
++ * @owner:	Pointer to exporter module. Used for refcounting.
++ * @cells:	Optional array of pre-defined NVMEM cells.
++ * @ncells:	Number of elements in cells.
++ * @read_only:	Device is read-only.
++ * @root_only:	Device is accessibly to root only.
++ * @reg_read:	Callback to read data.
++ * @reg_write:	Callback to write data.
++ * @size:	Device size.
++ * @word_size:	Minimum read/write access granularity.
++ * @stride:	Minimum read/write access stide.
++ * @priv:	User context passed to read/write callbacks.
++ *
++ * Note: A default "nvmem<id>" name will be assigned to the device if
++ * no name is specified in its configuration. In such case "<id>" is
++ * generated with ida_simple_get() and provided id field is ignored.
++ */
+ struct nvmem_config {
+ 	struct device		*dev;
+ 	const char		*name;
+-- 
+2.14.3
