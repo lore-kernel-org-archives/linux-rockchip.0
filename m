@@ -1,94 +1,68 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 2/2] phy: rockchip-emmc: use regmap_read_poll_timeout to
- poll dllrdy
-Date: Thu, 4 Jan 2018 18:16:37 -0800
-Message-ID: <20180105021637.GB168398@google.com>
-References: <1514859720-151161-2-git-send-email-shawn.lin@rock-chips.com>
- <20180105020749.GA166692@google.com>
+From: Bharat Kumar Gogada <bharatku@xilinx.com>
+Subject: RE: Why do we check for "link-up" in *_pcie_valid_device()?
+Date: Fri, 5 Jan 2018 14:26:34 +0000
+Message-ID: <BLUPR0201MB1505659A7B1DDA658EFB7049A51C0@BLUPR0201MB1505.namprd02.prod.outlook.com>
+References: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
+ <BLUPR0201MB1505F95E1BE417834E847EE6A5020@BLUPR0201MB1505.namprd02.prod.outlook.com>
+ <20171222172815.GA55396@bhelgaas-glaptop.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180105020749.GA166692@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20171222172815.GA55396@bhelgaas-glaptop.roam.corp.google.com>
+Content-Language: en-US
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>, "joao.pinto@synopsys.com" <joao.pinto@synopsys.com>, Ley Foon Tan <lftan@altera.com>, Shawn Lin <shawn.lin@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>, Jim Quinlan <jim2101024@gmail.com>, "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "rfi@lists.rocketboards.org" <rfi@lists.rocketboards.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Sorry for the spam...one more thought:
+On Fri, Dec 22, 2017 at 01:02:28PM +0000, Bharat Kumar Gogada wrote:
+> Bjorn wrote:
+>> In the PCI config access path, the *_pcie_valid_device() functions in=20
+>> the dwc, altera, rockchip, and xilinx drivers all check whether the=20
+>> link is up.
+>>=20
+>> I think this is racy because the link may go down after we check but=20
+>> before we perform the config access.
+>>=20
+>> What would blow up if we removed the *_pcie_link_up() checks?
+>>=20
+>> I'd like to either remove the checks or add comments about why the=20
+>> race is acceptable.  If we've covered this before, I apologize.
+>> Adding a comment will keep me from pestering you about this again in=20
+>> the future.
 
-On Thu, Jan 04, 2018 at 06:07:51PM -0800, Brian Norris wrote:
-> On Tue, Jan 02, 2018 at 10:22:00AM +0800, Shawn Lin wrote:
-> > Just use the API instead of open-coding it, no functional change
-> > intended.
-> > 
-> > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> > ---
-> > 
-> >  drivers/phy/rockchip/phy-rockchip-emmc.c | 21 +++++++--------------
-> >  1 file changed, 7 insertions(+), 14 deletions(-)
-> > 
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> > index 512a6ef..c65979b 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> > @@ -79,6 +79,9 @@
-> >  #define PHYCTRL_IS_CALDONE(x) \
-> >  	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
-> >  	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
-> > +#define PHYCTRL_IS_DLLRDY(x) \
-> > +	((((x) >> PHYCTRL_DLLRDY_SHIFT) & \
-> > +	  PHYCTRL_DLLRDY_MASK) == PHYCTRL_DLLRDY_DONE)
-> >  
-> >  struct rockchip_emmc_phy {
-> >  	unsigned int	reg_offset;
-> > @@ -93,7 +96,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
-> >  	unsigned int dllrdy;
-> >  	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
-> >  	unsigned long rate;
-> > -	unsigned long timeout;
-> >  
-> >  	/*
-> >  	 * Keep phyctrl_pdb and phyctrl_endll low to allow
-> > @@ -222,19 +224,10 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
-> >  	 *   only at boot / resume.  In both cases, eMMC is probably on the
-> >  	 *   critical path so busy waiting a little extra time should be OK.
-> 
-> ^^ The above comments talk about busy-waiting, keeping this short, and
-> critical paths. With a sleeping implementation (like
-> regmap_read_poll_timeout()) that doesn't quite match, does it? I'd think
-> you might at least change the wording a little to avoid calling it "busy wait".
-> 
-> Brian
-> 
-> >  	 */
-> > -	timeout = jiffies + msecs_to_jiffies(50);
-> > -	do {
-> > -		udelay(1);
-> > -
-> > -		regmap_read(rk_phy->reg_base,
-> > -			rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-> > -			&dllrdy);
-> > -		dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
-> > -		if (dllrdy == PHYCTRL_DLLRDY_DONE)
-> > -			break;
-> > -	} while (!time_after(jiffies, timeout));
-> > -
-> > -	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
-> > +	if (regmap_read_poll_timeout(rk_phy->reg_base,
+> In both Xilinx driver cases when link is down, hardware responds by=20
+> AXI DECERR/SLVERR status which causes an exception, synchronous=20
+> external abort to CPU.  This causes system to hang, so we need this=20
+> check for both of our drivers.  We will add comments.
 
-regmap_read_poll_timeout() checks for regmap_read() errors and aborts on
-error, so it's misleading to just report ETIMEDOUT below. Why don't you
-save 'ret', print it in the pr_err() message, and propagate the error
-code?
+This is a problem, and checking whether the link is up is a workaround but =
+not a real solution.  That means your system may hang if the link happens t=
+o go down at the wrong time.
 
-Same for patch 1.
+A real solution would be to handle the synchronous external abort so it doe=
+sn't cause a system hang.
 
-Brian
+Yes, I agree that this is workaround. For pcie-xilinx.c for arm32, we can h=
+ave fault handling similar to "imx6q_pcie_abort_handler" in drivers/pci/dwc=
+/pci-imx6.c.
+Since this driver is same for Microblaze architecture also, it requires sep=
+arate handling.
 
-> > +				     rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-> > +				     dllrdy, PHYCTRL_IS_DLLRDY(dllrdy),
-> > +				     1, 50 * USEC_PER_MSEC)) {
-> >  		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
-> >  		return -ETIMEDOUT;
-> >  	}
+For pcie-xilinx-nwl.c ARM64 as per link [1], linux kernel will hang for the=
+ above AXI responses.=20
+As of now arm64 RAS is still work in progress [2]. =20
+
+[1] https://www.spinics.net/lists/arm-kernel/msg624203.html
+
+[2] https://patchwork.kernel.org/patch/9973967/
+
+The check can be removed, if above issues were addressed.
+
+Regards,
+Bharat
+
+
+
+=20
