@@ -1,88 +1,82 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH 1/2] phy: rockchip-emmc: retry calpad busy trimming
-Date: Fri, 5 Jan 2018 09:32:30 +0800
-Message-ID: <7fd47a8b-d254-6336-ced4-82b2a44a0e9d@rock-chips.com>
-References: <1514859720-151161-1-git-send-email-shawn.lin@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 2/2] phy: rockchip-emmc: use regmap_read_poll_timeout to
+ poll dllrdy
+Date: Thu, 4 Jan 2018 18:07:52 -0800
+Message-ID: <20180105020749.GA166692@google.com>
+References: <1514859720-151161-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1514859720-151161-1-git-send-email-shawn.lin@rock-chips.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1514859720-151161-2-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon & Shawn,
+Hi,
 
-As the bug had tracked on https://issuetracker.google.com/71561742.
-
-In some cases, the mmc phy power on failed during booting up.
-The log as below:
-...
-[   2.375333] rockchip_emmc_phy_power: caldone timeout.
-[    2.377815] phy phy-ff770000.syscon:phy@f780.4: phy poweron failed 
---> -110
-...
-[    2.489295] mmc0: mmc_select_hs400es failed, error -110
-[    2.489302] mmc0: error -110 whilst initialising MMC card
-..
-
-
-在 2018年01月02日 10:21, Shawn Lin 写道:
-> It turns out that 5us isn't enough for all cases, so let's
-> retry some more times to wait for caldone.
->
+On Tue, Jan 02, 2018 at 10:22:00AM +0800, Shawn Lin wrote:
+> Just use the API instead of open-coding it, no functional change
+> intended.
+> 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-Tested-by: Caesar Wang <wxt@rock-chips.com>
-
-I had tested on rk3399 chromebook, so feel free to add my tag.
-
--Caesar
 > ---
->
->   drivers/phy/rockchip/phy-rockchip-emmc.c | 21 +++++++++++++--------
->   1 file changed, 13 insertions(+), 8 deletions(-)
->
+> 
+>  drivers/phy/rockchip/phy-rockchip-emmc.c | 21 +++++++--------------
+>  1 file changed, 7 insertions(+), 14 deletions(-)
+> 
 > diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> index f1b24f1..512a6ef 100644
+> index 512a6ef..c65979b 100644
 > --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
 > +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> @@ -76,6 +76,10 @@
->   #define PHYCTRL_OTAPDLYSEL_MASK		0xf
->   #define PHYCTRL_OTAPDLYSEL_SHIFT	0x7
->   
-> +#define PHYCTRL_IS_CALDONE(x) \
-> +	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
-> +	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
-> +
->   struct rockchip_emmc_phy {
->   	unsigned int	reg_offset;
->   	struct regmap	*reg_base;
-> @@ -160,15 +164,16 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
->   				   PHYCTRL_PDB_SHIFT));
->   
->   	/*
-> -	 * According to the user manual, it asks driver to
-> -	 * wait 5us for calpad busy trimming
-> +	 * According to the user manual, it asks driver to wait 5us for
-> +	 * calpad busy trimming. However it is documented that this value is
-> +	 * PVT(A.K.A process,voltage and temperature) relevant, so some
-> +	 * failure cases are found which indicates we should be more tolerant
-> +	 * to calpad busy trimming.
->   	 */
-> -	udelay(5);
-> -	regmap_read(rk_phy->reg_base,
-> -		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-> -		    &caldone);
-> -	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
-> -	if (caldone != PHYCTRL_CALDONE_DONE) {
+> @@ -79,6 +79,9 @@
+>  #define PHYCTRL_IS_CALDONE(x) \
+>  	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
+>  	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
+> +#define PHYCTRL_IS_DLLRDY(x) \
+> +	((((x) >> PHYCTRL_DLLRDY_SHIFT) & \
+> +	  PHYCTRL_DLLRDY_MASK) == PHYCTRL_DLLRDY_DONE)
+>  
+>  struct rockchip_emmc_phy {
+>  	unsigned int	reg_offset;
+> @@ -93,7 +96,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>  	unsigned int dllrdy;
+>  	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+>  	unsigned long rate;
+> -	unsigned long timeout;
+>  
+>  	/*
+>  	 * Keep phyctrl_pdb and phyctrl_endll low to allow
+> @@ -222,19 +224,10 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>  	 *   only at boot / resume.  In both cases, eMMC is probably on the
+>  	 *   critical path so busy waiting a little extra time should be OK.
+
+^^ The above comments talk about busy-waiting, keeping this short, and
+critical paths. With a sleeping implementation (like
+regmap_read_poll_timeout()) that doesn't quite match, does it? I'd think
+you might at least change the wording a little to avoid calling it "busy wait".
+
+Brian
+
+>  	 */
+> -	timeout = jiffies + msecs_to_jiffies(50);
+> -	do {
+> -		udelay(1);
+> -
+> -		regmap_read(rk_phy->reg_base,
+> -			rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+> -			&dllrdy);
+> -		dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
+> -		if (dllrdy == PHYCTRL_DLLRDY_DONE)
+> -			break;
+> -	} while (!time_after(jiffies, timeout));
+> -
+> -	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
 > +	if (regmap_read_poll_timeout(rk_phy->reg_base,
 > +				     rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-> +				     caldone, PHYCTRL_IS_CALDONE(caldone),
-> +				     5, 50)) {
->   		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
->   		return -ETIMEDOUT;
->   	}
+> +				     dllrdy, PHYCTRL_IS_DLLRDY(dllrdy),
+> +				     1, 50 * USEC_PER_MSEC)) {
+>  		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
+>  		return -ETIMEDOUT;
+>  	}
