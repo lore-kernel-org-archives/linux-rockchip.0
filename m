@@ -1,61 +1,52 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: Why do we check for "link-up" in *_pcie_valid_device()?
-Date: Fri, 5 Jan 2018 15:43:03 +0000
-Message-ID: <20180105154303.GB24933@red-moon>
-References: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
- <BLUPR0201MB1505F95E1BE417834E847EE6A5020@BLUPR0201MB1505.namprd02.prod.outlook.com>
- <20171222172815.GA55396@bhelgaas-glaptop.roam.corp.google.com>
- <BLUPR0201MB1505659A7B1DDA658EFB7049A51C0@BLUPR0201MB1505.namprd02.prod.outlook.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <BLUPR0201MB1505659A7B1DDA658EFB7049A51C0@BLUPR0201MB1505.namprd02.prod.outlook.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Bharat Kumar Gogada <bharatku@xilinx.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Jingoo Han <jingoohan1@gmail.com>, "joao.pinto@synopsys.com" <joao.pinto@synopsys.com>, Ley Foon Tan <lftan@altera.com>, Shawn Lin <shawn.lin@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>, Jim Quinlan <jim2101024@gmail.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "rfi@lists.rocketboards.org" <rfi@lists.rocketboards.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH] ASoC: rockchip: i2s: Support mono capture
+Date: Fri,  5 Jan 2018 14:12:42 -0800
+Message-ID: <20180105221242.22083-1-mka@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Dylan Reid <dgreid@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 05, 2018 at 02:26:34PM +0000, Bharat Kumar Gogada wrote:
-> On Fri, Dec 22, 2017 at 01:02:28PM +0000, Bharat Kumar Gogada wrote:
-> > Bjorn wrote:
-> >> In the PCI config access path, the *_pcie_valid_device() functions in 
-> >> the dwc, altera, rockchip, and xilinx drivers all check whether the 
-> >> link is up.
-> >> 
-> >> I think this is racy because the link may go down after we check but 
-> >> before we perform the config access.
-> >> 
-> >> What would blow up if we removed the *_pcie_link_up() checks?
-> >> 
-> >> I'd like to either remove the checks or add comments about why the 
-> >> race is acceptable.  If we've covered this before, I apologize.
-> >> Adding a comment will keep me from pestering you about this again in 
-> >> the future.
-> 
-> > In both Xilinx driver cases when link is down, hardware responds by 
-> > AXI DECERR/SLVERR status which causes an exception, synchronous 
-> > external abort to CPU.  This causes system to hang, so we need this 
-> > check for both of our drivers.  We will add comments.
-> 
-> This is a problem, and checking whether the link is up is a workaround but not a real solution.  That means your system may hang if the link happens to go down at the wrong time.
-> 
-> A real solution would be to handle the synchronous external abort so it doesn't cause a system hang.
-> 
-> Yes, I agree that this is workaround. For pcie-xilinx.c for arm32, we can have fault handling similar to "imx6q_pcie_abort_handler" in drivers/pci/dwc/pci-imx6.c.
-> Since this driver is same for Microblaze architecture also, it requires separate handling.
-> 
-> For pcie-xilinx-nwl.c ARM64 as per link [1], linux kernel will hang for the above AXI responses. 
-> As of now arm64 RAS is still work in progress [2].  
-> 
-> [1] https://www.spinics.net/lists/arm-kernel/msg624203.html
-> 
-> [2] https://patchwork.kernel.org/patch/9973967/
-> 
-> The check can be removed, if above issues were addressed.
+The Rockchip I2S controller only allows to configure even numbers of
+capture channels. It is still possible to capture monophonic audio by
+using dual-channel mode and ignoring the 'data' from the second
+channel.
 
-I do not see why the above "issues" should be addressed in order to
-remove that check - as it was pointed out in this thread it just does
-not solve anything, so what's the reason for keeping it ?
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Lorenzo
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 908211e1d6fc..cc22ab3d10dd 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -328,6 +328,7 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 		val |= I2S_CHN_4;
+ 		break;
+ 	case 2:
++	case 1:
+ 		val |= I2S_CHN_2;
+ 		break;
+ 	default:
+@@ -460,7 +461,7 @@ static struct snd_soc_dai_driver rockchip_i2s_dai = {
+ 	},
+ 	.capture = {
+ 		.stream_name = "Capture",
+-		.channels_min = 2,
++		.channels_min = 1,
+ 		.channels_max = 2,
+ 		.rates = SNDRV_PCM_RATE_8000_192000,
+ 		.formats = (SNDRV_PCM_FMTBIT_S8 |
+@@ -654,7 +655,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	if (!of_property_read_u32(node, "rockchip,capture-channels", &val)) {
+-		if (val >= 2 && val <= 8)
++		if (val >= 1 && val <= 8)
+ 			soc_dai->capture.channels_max = val;
+ 	}
+ 
+-- 
+2.16.0.rc0.223.g4a4ac83678-goog
