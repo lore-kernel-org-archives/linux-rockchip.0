@@ -1,107 +1,83 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: i2s: fix playback after runtime resume" to the asoc tree
-Date: Mon, 08 Jan 2018 16:22:53 +0000
-Message-ID: <E1eYaCL-0002AW-D7@debutante>
-References: <20180108160104.6307-1-john@metanate.com>
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20180108160104.6307-1-john@metanate.com>
-Sender: stable-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Mark Brown <broonie@kernel.org>, stable@vger.kernel.org, alsa-devel@alsa-project.org, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>alsa-devel@alsa-project.org
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add cif test clocks for rk3399
+Date: Mon, 8 Jan 2018 11:17:35 -0800
+Message-ID: <20180108191733.GA59523@google.com>
+References: <1515390531-13147-1-git-send-email-zhengsq@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1515390531-13147-1-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Hi Shunqian,
 
-   ASoC: rockchip: i2s: fix playback after runtime resume
+On Mon, Jan 08, 2018 at 01:48:51PM +0800, Shunqian Zheng wrote:
+> There are three pins can act as cif test clock for rk3399.
+> They're sourced from 24M and output 24M by default and some boards
+> may use them as camera 24M xvclk.
+> 
+> Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 7aa2144..daad42f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -2293,6 +2293,23 @@
+>  			};
+>  		};
+>  
+> +		test {
 
-has been applied to the asoc tree at
+Doesn't really matter much, but 'test' is a weird group name to me. I
+think 'testclk' or 'test-clk' might be a more descriptive name?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+> +			test_clkout0: test-clkout0 {
+> +				rockchip,pins =
+> +					<0 0 RK_FUNC_1 &pcfg_pull_none>;
+> +			};
+> +
+> +			test_clkout1: test-clkout1 {
+> +				rockchip,pins =
+> +					<2 25 RK_FUNC_2 &pcfg_pull_none>;
+> +			};
+> +
+> +			test_clkout2: test-clkout2 {
+> +				rockchip,pins =
+> +					<0 8 RK_FUNC_3 &pcfg_pull_none>;
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+Your function indexing is a little confusing to me, but one or more of
+your datasheet, TRM, or patch are incorrect here. The datasheet says
+"Func 3" (which is 1-indexed, so really means RK_FUNC_2) should be
+TEST_CLKOUT2, but your TRM agrees with the patch, saying
+2'b11=test_clkout2. So I think your patch is correct, but the datasheet
+needs updated?
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+All in all, I think the patch looks good though:
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From c66234cfedfc3e6e3b62563a5f2c1562be09a35d Mon Sep 17 00:00:00 2001
-From: John Keeping <john@metanate.com>
-Date: Mon, 8 Jan 2018 16:01:04 +0000
-Subject: [PATCH] ASoC: rockchip: i2s: fix playback after runtime resume
-
-When restoring registers during runtime resume, we must not write to
-I2S_TXDR which is the transmit FIFO as this queues up a sample to be
-output and pushes all of the output channels down by one.
-
-This can be demonstrated with the speaker-test utility:
-
-	for i in a b c; do speaker-test -c 2 -s 1; done
-
-which should play a test through the left speaker three times but if the
-I2S hardware starts runtime suspended the first sample will be played
-through the right speaker.
-
-Fix this by marking I2S_TXDR as volatile (which also requires marking it
-as readble, even though it technically isn't).  This seems to be the
-most robust fix, the alternative of giving I2S_TXDR a default value is
-more fragile since it does not prevent regcache writing to the register
-in all circumstances.
-
-While here, also fix the configuration of I2S_RXDR and I2S_FIFOLR; these
-are not writable so they do not suffer from the same problem as I2S_TXDR
-but reading from I2S_RXDR does suffer from a similar problem.
-
-Fixes: f0447f6cbb20 ("ASoC: rockchip: i2s: restore register during runtime_suspend/resume cycle", 2016-09-07)
-Signed-off-by: John Keeping <john@metanate.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Cc: stable@vger.kernel.org
----
- sound/soc/rockchip/rockchip_i2s.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 908211e1d6fc..eb27f6c24bf7 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -504,6 +504,7 @@ static bool rockchip_i2s_rd_reg(struct device *dev, unsigned int reg)
- 	case I2S_INTCR:
- 	case I2S_XFER:
- 	case I2S_CLR:
-+	case I2S_TXDR:
- 	case I2S_RXDR:
- 	case I2S_FIFOLR:
- 	case I2S_INTSR:
-@@ -518,6 +519,9 @@ static bool rockchip_i2s_volatile_reg(struct device *dev, unsigned int reg)
- 	switch (reg) {
- 	case I2S_INTSR:
- 	case I2S_CLR:
-+	case I2S_FIFOLR:
-+	case I2S_TXDR:
-+	case I2S_RXDR:
- 		return true;
- 	default:
- 		return false;
-@@ -527,6 +531,8 @@ static bool rockchip_i2s_volatile_reg(struct device *dev, unsigned int reg)
- static bool rockchip_i2s_precious_reg(struct device *dev, unsigned int reg)
- {
- 	switch (reg) {
-+	case I2S_RXDR:
-+		return true;
- 	default:
- 		return false;
- 	}
--- 
-2.15.1
+> +			};
+> +		};
+> +
+>  		tsadc {
+>  			otp_gpio: otp-gpio {
+>  				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
+> -- 
+> 1.9.1
+> 
