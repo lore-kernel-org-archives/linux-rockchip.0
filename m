@@ -1,13 +1,15 @@
-From: Mark Brown <broonie@kernel.org>
+From: John Keeping <john@metanate.com>
 Subject: Re: [PATCH] ASoC: rockchip: i2s: fix playback after
 	runtime resume
-Date: Mon, 8 Jan 2018 15:26:41 +0000
-Message-ID: <20180108152641.GF11698@sirena.org.uk>
+Date: Mon, 8 Jan 2018 15:59:06 +0000
+Message-ID: <20180108155906.19fe98a2.john@metanate.com>
 References: <20180108122301.18255-1-john@metanate.com>
+ <20180108152641.GF11698@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3562364147575516600=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20180108122301.18255-1-john@metanate.com>
+In-Reply-To: <20180108152641.GF11698@sirena.org.uk>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -17,56 +19,23 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: John Keeping <john@metanate.com>
+To: Mark Brown <broonie@kernel.org>
 Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, 8 Jan 2018 15:26:41 +0000, Mark Brown wrote:
 
---===============3562364147575516600==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="A9z/3b/E4MkkD+7G"
-Content-Disposition: inline
+> On Mon, Jan 08, 2018 at 12:23:01PM +0000, John Keeping wrote:
+> 
+> > @@ -527,6 +531,7 @@ static bool rockchip_i2s_volatile_reg(struct device *dev, unsigned int reg)
+> >  static bool rockchip_i2s_precious_reg(struct device *dev, unsigned int reg)
+> >  {
+> >  	switch (reg) {
+> > +	case I2S_RXDR:
+> >  	default:
+> >  		return false;
+> >  	}  
+> 
+> This doesn't look right?
 
-
---A9z/3b/E4MkkD+7G
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Jan 08, 2018 at 12:23:01PM +0000, John Keeping wrote:
-
-> @@ -527,6 +531,7 @@ static bool rockchip_i2s_volatile_reg(struct device *dev, unsigned int reg)
->  static bool rockchip_i2s_precious_reg(struct device *dev, unsigned int reg)
->  {
->  	switch (reg) {
-> +	case I2S_RXDR:
->  	default:
->  		return false;
->  	}
-
-This doesn't look right?
-
---A9z/3b/E4MkkD+7G
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlpTjbAACgkQJNaLcl1U
-h9DZNgf/UkNTJsa9Ncd9Ks1DbbntTX+dcWdGBdcPHuuV3EfBeokxtnt4+JBCrmcn
-r1lHhRrgo4CtLN+oOss6JhWidPXppqPUR6YLzKEjciaTFwNNTVfsazCFm0Mdk8Iv
-5mRGg2NEcsqieLLmk03So1xibiyz+mL35fwa4mgCL1bVd+IUIsMp/L7kJygEzeXO
-cPOgrl10wmt83Zys2QNEdw7vFjWqVk5JFWpXolGGtT2lU3EL37kbFI3Zb7j/tDdI
-NDpUf9KdSoDwi5hXfOqBgM0eHaZfIr8xJ++nkDSOsRFN6OFIlIDVd6sKA9WqOuAJ
-RutBnqW++ktq70M6V6Q0IWmG4VG8/w==
-=jsEB
------END PGP SIGNATURE-----
-
---A9z/3b/E4MkkD+7G--
-
---===============3562364147575516600==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============3562364147575516600==--
+No, it's not, it should be "return true;" for I2S_RXDR.
