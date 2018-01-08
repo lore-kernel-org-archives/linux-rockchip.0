@@ -1,26 +1,46 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v2] ASoC: rockchip: i2s: fix playback after
-	runtime resume
-Date: Mon,  8 Jan 2018 16:01:04 +0000
-Message-ID: <20180108160104.6307-1-john@metanate.com>
-References: <20180108122301.18255-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20180108122301.18255-1-john@metanate.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: alsa-devel@alsa-project.org
-Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, John Keeping <john@metanate.com>, Liam Girdwood <lgirdwood@gmail.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: i2s: fix playback after runtime resume" to the asoc tree
+Date: Mon, 08 Jan 2018 16:22:53 +0000
+Message-ID: <E1eYaCL-0002AW-D7@debutante>
+References: <20180108160104.6307-1-john@metanate.com>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20180108160104.6307-1-john@metanate.com>
+Sender: stable-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Mark Brown <broonie@kernel.org>, stable@vger.kernel.org, alsa-devel@alsa-project.org, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
+
+The patch
+
+   ASoC: rockchip: i2s: fix playback after runtime resume
+
+has been applied to the asoc tree at
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From c66234cfedfc3e6e3b62563a5f2c1562be09a35d Mon Sep 17 00:00:00 2001
+From: John Keeping <john@metanate.com>
+Date: Mon, 8 Jan 2018 16:01:04 +0000
+Subject: [PATCH] ASoC: rockchip: i2s: fix playback after runtime resume
 
 When restoring registers during runtime resume, we must not write to
 I2S_TXDR which is the transmit FIFO as this queues up a sample to be
@@ -46,10 +66,9 @@ but reading from I2S_RXDR does suffer from a similar problem.
 
 Fixes: f0447f6cbb20 ("ASoC: rockchip: i2s: restore register during runtime_suspend/resume cycle", 2016-09-07)
 Signed-off-by: John Keeping <john@metanate.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Cc: stable@vger.kernel.org
 ---
-v2 changes:
-- Fix rockchip_i2s_precious_reg to return true for I2S_RXDR
-
  sound/soc/rockchip/rockchip_i2s.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
