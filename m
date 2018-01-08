@@ -1,60 +1,87 @@
-From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: Add cif test clocks for rk3399
-Date: Mon,  8 Jan 2018 13:48:51 +0800
-Message-ID: <1515390531-13147-1-git-send-email-zhengsq@rock-chips.com>
+From: Lucas Stach <l.stach@pengutronix.de>
+Subject: Re: Why do we check for "link-up" in *_pcie_valid_device()?
+Date: Mon, 08 Jan 2018 12:03:34 +0100
+Message-ID: <1515409414.12538.12.camel@pengutronix.de>
+References: <20171214225821.GN30595@bhelgaas-glaptop.roam.corp.google.com>
+         <BLUPR0201MB1505F95E1BE417834E847EE6A5020@BLUPR0201MB1505.namprd02.prod.outlook.com>
+         <20171222172815.GA55396@bhelgaas-glaptop.roam.corp.google.com>
+         <BLUPR0201MB1505659A7B1DDA658EFB7049A51C0@BLUPR0201MB1505.namprd02.prod.outlook.com>
+         <20180105154303.GB24933@red-moon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20180105154303.GB24933@red-moon>
+Sender: linux-pci-owner@vger.kernel.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bharat Kumar Gogada <bharatku@xilinx.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Jingoo Han <jingoohan1@gmail.com>, "joao.pinto@synopsys.com" <joao.pinto@synopsys.com>, Ley Foon Tan <lftan@altera.com>, Shawn Lin <shawn.lin@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>, Jim Quinlan <jim2101024@gmail.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "rfi@lists.rocketboards.org" <rfi@lists.rocketboards.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-There are three pins can act as cif test clock for rk3399.
-They're sourced from 24M and output 24M by default and some boards
-may use them as camera 24M xvclk.
+Am Freitag, den 05.01.2018, 15:43 +0000 schrieb Lorenzo Pieralisi:
+> On Fri, Jan 05, 2018 at 02:26:34PM +0000, Bharat Kumar Gogada wrote:
+> > On Fri, Dec 22, 2017 at 01:02:28PM +0000, Bharat Kumar Gogada
+> > wrote:
+> > > Bjorn wrote:
+> > > > In the PCI config access path, the *_pcie_valid_device()
+> > > > functions in 
+> > > > the dwc, altera, rockchip, and xilinx drivers all check whether
+> > > > the 
+> > > > link is up.
+> > > > 
+> > > > I think this is racy because the link may go down after we
+> > > > check but 
+> > > > before we perform the config access.
+> > > > 
+> > > > What would blow up if we removed the *_pcie_link_up() checks?
+> > > > 
+> > > > I'd like to either remove the checks or add comments about why
+> > > > the 
+> > > > race is acceptable.  If we've covered this before, I apologize.
+> > > > Adding a comment will keep me from pestering you about this
+> > > > again in 
+> > > > the future.
+> > > In both Xilinx driver cases when link is down, hardware responds
+> > > by 
+> > > AXI DECERR/SLVERR status which causes an exception, synchronous 
+> > > external abort to CPU.  This causes system to hang, so we need
+> > > this 
+> > > check for both of our drivers.  We will add comments.
+> > 
+> > This is a problem, and checking whether the link is up is a
+> > workaround but not a real solution.  That means your system may
+> > hang if the link happens to go down at the wrong time.
+> > 
+> > A real solution would be to handle the synchronous external abort
+> > so it doesn't cause a system hang.
+> > 
+> > Yes, I agree that this is workaround. For pcie-xilinx.c for arm32,
+> > we can have fault handling similar to "imx6q_pcie_abort_handler" in
+> > drivers/pci/dwc/pci-imx6.c.
+> > Since this driver is same for Microblaze architecture also, it
+> > requires separate handling.
+> > 
+> > For pcie-xilinx-nwl.c ARM64 as per link [1], linux kernel will hang
+> > for the above AXI responses. 
+> > As of now arm64 RAS is still work in progress [2].  
+> > 
+> > [1] https://www.spinics.net/lists/arm-kernel/msg624203.html
+> > 
+> > [2] https://patchwork.kernel.org/patch/9973967/
+> > 
+> > The check can be removed, if above issues were addressed.
+> 
+> I do not see why the above "issues" should be addressed in order to
+> remove that check - as it was pointed out in this thread it just does
+> not solve anything, so what's the reason for keeping it ?
 
-Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+I solves the issue that you hang the system on PCIe enumeration in 100%
+of the cases when the link is down and you don't have the abort handler
+in place.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 7aa2144..daad42f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2293,6 +2293,23 @@
- 			};
- 		};
- 
-+		test {
-+			test_clkout0: test-clkout0 {
-+				rockchip,pins =
-+					<0 0 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+
-+			test_clkout1: test-clkout1 {
-+				rockchip,pins =
-+					<2 25 RK_FUNC_2 &pcfg_pull_none>;
-+			};
-+
-+			test_clkout2: test-clkout2 {
-+				rockchip,pins =
-+					<0 8 RK_FUNC_3 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		tsadc {
- 			otp_gpio: otp-gpio {
- 				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-1.9.1
+It doesn't solve the race issue, but that is a lot less likely to be
+hit in the real world. I guess it's not a good idea to remove something
+that covers 98% of the problem just because it doesn't cover the
+remaining 2%, right?
+
+Regards,
+Lucas
