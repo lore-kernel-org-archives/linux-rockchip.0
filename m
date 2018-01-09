@@ -1,7 +1,7 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v7 5/8] drm/rockchip: inno_hdmi: Fix error handling path
-Date: Tue,  9 Jan 2018 15:48:50 +0100
-Message-ID: <20180109144853.32536-6-thierry.escande@collabora.com>
+Subject: [PATCH v7 6/8] drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
+Date: Tue,  9 Jan 2018 15:48:51 +0100
+Message-ID: <20180109144853.32536-7-thierry.escande@collabora.com>
 References: <20180109144853.32536-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset = "utf-8"
@@ -15,77 +15,50 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-Add missing error handling in bind().
+We inited connector in attach(), so need a detach() to cleanup.
 
-Fixes: 412d4ae6b7a5 ("drm/rockchip: hdmi: add Innosilicon HDMI support")
+Also fix wrong use of dw_hdmi_remove() in bind().
+
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 22 +++++++++++++++++-----
- 1 file changed, 17 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index fab30927a889..b775283d7363 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -852,8 +852,10 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 	}
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq < 0)
--		return irq;
-+	if (irq < 0) {
-+		ret = irq;
-+		goto err_disable_clk;
-+	}
- 
- 	inno_hdmi_reset(hdmi);
- 
-@@ -861,7 +863,7 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 	if (IS_ERR(hdmi->ddc)) {
- 		ret = PTR_ERR(hdmi->ddc);
- 		hdmi->ddc = NULL;
--		return ret;
-+		goto err_disable_clk;
- 	}
- 
- 	/*
-@@ -875,7 +877,7 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 
- 	ret = inno_hdmi_register(drm, hdmi);
- 	if (ret)
--		return ret;
-+		goto err_put_adapter;
- 
- 	dev_set_drvdata(dev, hdmi);
- 
-@@ -885,7 +887,17 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 	ret = devm_request_threaded_irq(dev, irq, inno_hdmi_hardirq,
- 					inno_hdmi_irq, IRQF_SHARED,
- 					dev_name(dev), hdmi);
-+	if (ret < 0)
-+		goto err_cleanup_hdmi;
- 
-+	return 0;
-+err_cleanup_hdmi:
-+	hdmi->connector.funcs->destroy(&hdmi->connector);
-+	hdmi->encoder.funcs->destroy(&hdmi->encoder);
-+err_put_adapter:
-+	i2c_put_adapter(hdmi->ddc);
-+err_disable_clk:
-+	clk_disable_unprepare(hdmi->pclk);
- 	return ret;
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index a38db40ce990..1cc63a18b7d5 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -1967,6 +1967,13 @@ static int dw_hdmi_bridge_attach(struct drm_bridge *bridge)
+ 	return 0;
  }
  
-@@ -897,8 +909,8 @@ static void inno_hdmi_unbind(struct device *dev, struct device *master,
- 	hdmi->connector.funcs->destroy(&hdmi->connector);
- 	hdmi->encoder.funcs->destroy(&hdmi->encoder);
++static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
++{
++	struct dw_hdmi *hdmi = bridge->driver_private;
++
++	drm_connector_cleanup(&hdmi->connector);
++}
++
+ static enum drm_mode_status
+ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+ 			  const struct drm_display_mode *mode)
+@@ -2023,6 +2030,7 @@ static void dw_hdmi_bridge_enable(struct drm_bridge *bridge)
  
--	clk_disable_unprepare(hdmi->pclk);
- 	i2c_put_adapter(hdmi->ddc);
-+	clk_disable_unprepare(hdmi->pclk);
- }
+ static const struct drm_bridge_funcs dw_hdmi_bridge_funcs = {
+ 	.attach = dw_hdmi_bridge_attach,
++	.detach = dw_hdmi_bridge_detach,
+ 	.enable = dw_hdmi_bridge_enable,
+ 	.disable = dw_hdmi_bridge_disable,
+ 	.mode_set = dw_hdmi_bridge_mode_set,
+@@ -2616,7 +2624,7 @@ int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
  
- static const struct component_ops inno_hdmi_ops = {
+ 	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL);
+ 	if (ret) {
+-		dw_hdmi_remove(pdev);
++		__dw_hdmi_remove(hdmi);
+ 		DRM_ERROR("Failed to initialize bridge with drm\n");
+ 		return ret;
+ 	}
 -- 
 2.14.1
