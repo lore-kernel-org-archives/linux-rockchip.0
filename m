@@ -1,373 +1,116 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v7 7/8] drm/bridge/synopsys: dw-hdmi: Do not use device's
- drvdata
-Date: Tue,  9 Jan 2018 15:48:52 +0100
-Message-ID: <20180109144853.32536-8-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v7 2/8] drm/bridge: analogix_dp: Fix connector and encoder cleanup
+Date: Tue,  9 Jan 2018 15:48:47 +0100
+Message-ID: <20180109144853.32536-3-thierry.escande@collabora.com>
 References: <20180109144853.32536-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180109144853.32536-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180109144853.32536-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-Let plat drivers own the drvdata, so that they could cleanup resources
-in their unbind().
+Since we are initing connector in the core driver and encoder in the
+plat driver, let's clean them up in the right places.
 
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Reviewed-by: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   | 43 ++++++++++-------------------
- drivers/gpu/drm/imx/dw_hdmi-imx.c           | 22 +++++++++------
- drivers/gpu/drm/meson/meson_dw_hdmi.c       | 20 ++++++++++----
- drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c      | 14 ++++++++--
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 23 ++++++++-------
- include/drm/bridge/dw_hdmi.h                | 17 ++++++------
- 6 files changed, 77 insertions(+), 62 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  2 --
+ drivers/gpu/drm/exynos/exynos_dp.c                 |  7 +++++--
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 +++++-------
+ 3 files changed, 10 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 1cc63a18b7d5..f0380bcae513 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2073,7 +2073,7 @@ static irqreturn_t dw_hdmi_hardirq(int irq, void *dev_id)
- 	return ret;
- }
- 
--void __dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
-+void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
- {
- 	mutex_lock(&hdmi->mutex);
- 
-@@ -2099,13 +2099,6 @@ void __dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
- 	}
- 	mutex_unlock(&hdmi->mutex);
- }
--
--void dw_hdmi_setup_rx_sense(struct device *dev, bool hpd, bool rx_sense)
--{
--	struct dw_hdmi *hdmi = dev_get_drvdata(dev);
--
--	__dw_hdmi_setup_rx_sense(hdmi, hpd, rx_sense);
--}
- EXPORT_SYMBOL_GPL(dw_hdmi_setup_rx_sense);
- 
- static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
-@@ -2141,9 +2134,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
- 	 */
- 	if (intr_stat &
- 	    (HDMI_IH_PHY_STAT0_RX_SENSE | HDMI_IH_PHY_STAT0_HPD)) {
--		__dw_hdmi_setup_rx_sense(hdmi,
--					 phy_stat & HDMI_PHY_HPD,
--					 phy_stat & HDMI_PHY_RX_SENSE);
-+		dw_hdmi_setup_rx_sense(hdmi, phy_stat & HDMI_PHY_HPD,
-+				       phy_stat & HDMI_PHY_RX_SENSE);
- 
- 		if ((phy_stat & (HDMI_PHY_RX_SENSE | HDMI_PHY_HPD)) == 0)
- 			cec_notifier_set_phys_addr(hdmi->cec_notifier,
-@@ -2533,8 +2525,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 	if (hdmi->i2c)
- 		dw_hdmi_i2c_init(hdmi);
- 
--	platform_set_drvdata(pdev, hdmi);
--
- 	return hdmi;
- 
- err_iahb:
-@@ -2584,25 +2574,23 @@ static void __dw_hdmi_remove(struct dw_hdmi *hdmi)
- /* -----------------------------------------------------------------------------
-  * Probe/remove API, used from platforms based on the DRM bridge API.
-  */
--int dw_hdmi_probe(struct platform_device *pdev,
--		  const struct dw_hdmi_plat_data *plat_data)
-+struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
-+			      const struct dw_hdmi_plat_data *plat_data)
- {
- 	struct dw_hdmi *hdmi;
- 
- 	hdmi = __dw_hdmi_probe(pdev, plat_data);
- 	if (IS_ERR(hdmi))
--		return PTR_ERR(hdmi);
-+		return hdmi;
- 
- 	drm_bridge_add(&hdmi->bridge);
- 
--	return 0;
-+	return hdmi;
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_probe);
- 
--void dw_hdmi_remove(struct platform_device *pdev)
-+void dw_hdmi_remove(struct dw_hdmi *hdmi)
- {
--	struct dw_hdmi *hdmi = platform_get_drvdata(pdev);
--
- 	drm_bridge_remove(&hdmi->bridge);
- 
- 	__dw_hdmi_remove(hdmi);
-@@ -2612,31 +2600,30 @@ EXPORT_SYMBOL_GPL(dw_hdmi_remove);
- /* -----------------------------------------------------------------------------
-  * Bind/unbind API, used from platforms based on the component framework.
-  */
--int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
--		 const struct dw_hdmi_plat_data *plat_data)
-+struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
-+			     struct drm_encoder *encoder,
-+			     const struct dw_hdmi_plat_data *plat_data)
- {
- 	struct dw_hdmi *hdmi;
- 	int ret;
- 
- 	hdmi = __dw_hdmi_probe(pdev, plat_data);
- 	if (IS_ERR(hdmi))
--		return PTR_ERR(hdmi);
-+		return hdmi;
- 
- 	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 878f61b65cb2..cb5e18d6ba04 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1411,7 +1411,6 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+ 	ret = analogix_dp_create_bridge(drm_dev, dp);
  	if (ret) {
- 		__dw_hdmi_remove(hdmi);
- 		DRM_ERROR("Failed to initialize bridge with drm\n");
--		return ret;
-+		return ERR_PTR(ret);
+ 		DRM_ERROR("failed to create bridge (%d)\n", ret);
+-		drm_encoder_cleanup(dp->encoder);
+ 		goto err_disable_pm_runtime;
  	}
  
--	return 0;
-+	return hdmi;
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_bind);
- 
--void dw_hdmi_unbind(struct device *dev)
-+void dw_hdmi_unbind(struct dw_hdmi *hdmi)
+@@ -1434,7 +1433,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
  {
--	struct dw_hdmi *hdmi = dev_get_drvdata(dev);
--
- 	__dw_hdmi_remove(hdmi);
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_unbind);
-diff --git a/drivers/gpu/drm/imx/dw_hdmi-imx.c b/drivers/gpu/drm/imx/dw_hdmi-imx.c
-index b62763aa8706..b01d03e02ce0 100644
---- a/drivers/gpu/drm/imx/dw_hdmi-imx.c
-+++ b/drivers/gpu/drm/imx/dw_hdmi-imx.c
-@@ -26,6 +26,8 @@ struct imx_hdmi {
- 	struct device *dev;
- 	struct drm_encoder encoder;
- 	struct regmap *regmap;
-+
-+	struct dw_hdmi *hdmi;
- };
+ 	analogix_dp_bridge_disable(dp->bridge);
+ 	dp->connector.funcs->destroy(&dp->connector);
+-	dp->encoder->funcs->destroy(dp->encoder);
  
- static inline struct imx_hdmi *enc_to_imx_hdmi(struct drm_encoder *e)
-@@ -239,22 +241,24 @@ static int dw_hdmi_imx_bind(struct device *dev, struct device *master,
- 	drm_encoder_init(drm, encoder, &dw_hdmi_imx_encoder_funcs,
- 			 DRM_MODE_ENCODER_TMDS, NULL);
+ 	if (dp->plat_data->panel) {
+ 		if (drm_panel_unprepare(dp->plat_data->panel))
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index f7e5b2c405ed..33319a858f3a 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -185,8 +185,10 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
+ 	dp->plat_data.encoder = encoder;
  
--	ret = dw_hdmi_bind(pdev, encoder, plat_data);
-+	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
-+	if (IS_ERR(hdmi->hdmi)) {
-+		encoder->funcs->destroy(encoder);
-+		return PTR_ERR(hdmi->hdmi);
+ 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+-	if (IS_ERR(dp->adp))
++	if (IS_ERR(dp->adp)) {
++		dp->encoder.funcs->destroy(&dp->encoder);
+ 		return PTR_ERR(dp->adp);
 +	}
- 
--	/*
--	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
--	 * which would have called the encoder cleanup.  Do it manually.
--	 */
--	if (ret)
--		drm_encoder_cleanup(encoder);
-+	dev_set_drvdata(dev, hdmi);
- 
--	return ret;
-+	return 0;
- }
- 
- static void dw_hdmi_imx_unbind(struct device *dev, struct device *master,
- 			       void *data)
- {
--	return dw_hdmi_unbind(dev);
-+	struct imx_hdmi *hdmi = dev_get_drvdata(dev);
-+
-+	dw_hdmi_unbind(hdmi->hdmi);
-+	hdmi->encoder.funcs->destroy(&hdmi->encoder);
- }
- 
- static const struct component_ops dw_hdmi_imx_ops = {
-diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-index 17de3afd98f6..3f1ec9a5cbfb 100644
---- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
-+++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-@@ -140,6 +140,8 @@ struct meson_dw_hdmi {
- 	struct clk *venci_clk;
- 	struct regulator *hdmi_supply;
- 	u32 irq_stat;
-+
-+	struct dw_hdmi *hdmi;
- };
- #define encoder_to_meson_dw_hdmi(x) \
- 	container_of(x, struct meson_dw_hdmi, encoder)
-@@ -528,7 +530,7 @@ static irqreturn_t dw_hdmi_top_thread_irq(int irq, void *dev_id)
- 		if (stat & HDMITX_TOP_INTR_HPD_RISE)
- 			hpd_connected = true;
- 
--		dw_hdmi_setup_rx_sense(dw_hdmi->dev, hpd_connected,
-+		dw_hdmi_setup_rx_sense(dw_hdmi->hdmi, hpd_connected,
- 				       hpd_connected);
- 
- 		drm_helper_hpd_irq_event(dw_hdmi->encoder.dev);
-@@ -878,9 +880,14 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
- 	dw_plat_data->input_bus_format = MEDIA_BUS_FMT_YUV8_1X24;
- 	dw_plat_data->input_bus_encoding = V4L2_YCBCR_ENC_709;
- 
--	ret = dw_hdmi_bind(pdev, encoder, &meson_dw_hdmi->dw_plat_data);
--	if (ret)
--		return ret;
-+	meson_dw_hdmi->hdmi = dw_hdmi_bind(pdev, encoder,
-+					   &meson_dw_hdmi->dw_plat_data);
-+	if (IS_ERR(meson_dw_hdmi->hdmi)) {
-+		encoder->funcs->destroy(encoder);
-+		return PTR_ERR(meson_dw_hdmi->hdmi);
-+	}
-+
-+	dev_set_drvdata(dev, meson_dw_hdmi);
- 
- 	DRM_DEBUG_DRIVER("HDMI controller initialized\n");
- 
-@@ -890,7 +897,10 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
- static void meson_dw_hdmi_unbind(struct device *dev, struct device *master,
- 				   void *data)
- {
--	dw_hdmi_unbind(dev);
-+	struct meson_dw_hdmi *meson_dw_hdmi = dev_get_drvdata(dev);
-+
-+	dw_hdmi_unbind(meson_dw_hdmi->hdmi);
-+	meson_dw_hdmi->encoder.funcs->destroy(&meson_dw_hdmi->encoder);
- }
- 
- static const struct component_ops meson_dw_hdmi_ops = {
-diff --git a/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c b/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c
-index dc85b53d58ef..76210ae25094 100644
---- a/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c
-+++ b/drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c
-@@ -68,12 +68,22 @@ static const struct dw_hdmi_plat_data rcar_dw_hdmi_plat_data = {
- 
- static int rcar_dw_hdmi_probe(struct platform_device *pdev)
- {
--	return dw_hdmi_probe(pdev, &rcar_dw_hdmi_plat_data);
-+	struct dw_hdmi *hdmi;
-+
-+	hdmi = dw_hdmi_probe(pdev, &rcar_dw_hdmi_plat_data);
-+	if (IS_ERR(hdmi))
-+		return PTR_ERR(hdmi);
-+
-+	platform_set_drvdata(pdev, hdmi);
-+
-+	return 0;
- }
- 
- static int rcar_dw_hdmi_remove(struct platform_device *pdev)
- {
--	dw_hdmi_remove(pdev);
-+	struct dw_hdmi *hdmi = platform_get_drvdata(pdev);
-+
-+	dw_hdmi_remove(hdmi);
  
  	return 0;
  }
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 1eb02a82fd91..791ab938f998 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -48,6 +48,8 @@ struct rockchip_hdmi {
- 	const struct rockchip_hdmi_chip_data *chip_data;
- 	struct clk *vpll_clk;
- 	struct clk *grf_clk;
-+
-+	struct dw_hdmi *hdmi;
+@@ -196,7 +198,8 @@ static void exynos_dp_unbind(struct device *dev, struct device *master,
+ {
+ 	struct exynos_dp_device *dp = dev_get_drvdata(dev);
+ 
+-	return analogix_dp_unbind(dp->adp);
++	analogix_dp_unbind(dp->adp);
++	dp->encoder.funcs->destroy(&dp->encoder);
+ }
+ 
+ static const struct component_ops exynos_dp_ops = {
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 8a58ad80f509..37250ab63bd7 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -259,13 +259,8 @@ static struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
+ 	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
  };
  
- #define to_rockchip_hdmi(x)	container_of(x, struct rockchip_hdmi, x)
-@@ -164,7 +166,6 @@ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
- static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- {
- 	struct device_node *np = hdmi->dev->of_node;
--	int ret;
+-static void rockchip_dp_drm_encoder_destroy(struct drm_encoder *encoder)
+-{
+-	drm_encoder_cleanup(encoder);
+-}
+-
+ static struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
+-	.destroy = rockchip_dp_drm_encoder_destroy,
++	.destroy = drm_encoder_cleanup,
+ };
  
- 	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(hdmi->regmap)) {
-@@ -377,22 +378,24 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
- 			 DRM_MODE_ENCODER_TMDS, NULL);
+ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+@@ -362,8 +357,10 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
  
--	ret = dw_hdmi_bind(pdev, encoder, plat_data);
-+	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
-+	if (IS_ERR(hdmi->hdmi)) {
-+		encoder->funcs->destroy(encoder);
-+		return PTR_ERR(hdmi->hdmi);
+ 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+-	if (IS_ERR(dp->adp))
++	if (IS_ERR(dp->adp)) {
++		dp->encoder.funcs->destroy(&dp->encoder);
+ 		return PTR_ERR(dp->adp);
 +	}
  
--	/*
--	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
--	 * which would have called the encoder cleanup.  Do it manually.
--	 */
--	if (ret)
--		drm_encoder_cleanup(encoder);
-+	dev_set_drvdata(dev, hdmi);
+ 	return 0;
+ }
+@@ -375,6 +372,7 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
  
--	return ret;
-+	return 0;
+ 	rockchip_drm_psr_unregister(&dp->encoder);
+ 	analogix_dp_unbind(dp->adp);
++	dp->encoder.funcs->destroy(&dp->encoder);
  }
  
- static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
- 				    void *data)
- {
--	return dw_hdmi_unbind(dev);
-+	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
-+
-+	dw_hdmi_unbind(hdmi->hdmi);
-+	hdmi->encoder.funcs->destroy(&hdmi->encoder);
- }
- 
- static const struct component_ops dw_hdmi_rockchip_ops = {
-diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
-index 182f83283e24..29b8900caaf7 100644
---- a/include/drm/bridge/dw_hdmi.h
-+++ b/include/drm/bridge/dw_hdmi.h
-@@ -143,14 +143,15 @@ struct dw_hdmi_plat_data {
- 			     unsigned long mpixelclock);
- };
- 
--int dw_hdmi_probe(struct platform_device *pdev,
--		  const struct dw_hdmi_plat_data *plat_data);
--void dw_hdmi_remove(struct platform_device *pdev);
--void dw_hdmi_unbind(struct device *dev);
--int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
--		 const struct dw_hdmi_plat_data *plat_data);
--
--void dw_hdmi_setup_rx_sense(struct device *dev, bool hpd, bool rx_sense);
-+struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
-+			      const struct dw_hdmi_plat_data *plat_data);
-+void dw_hdmi_remove(struct dw_hdmi *hdmi);
-+void dw_hdmi_unbind(struct dw_hdmi *hdmi);
-+struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
-+			     struct drm_encoder *encoder,
-+			     const struct dw_hdmi_plat_data *plat_data);
-+
-+void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
- 
- void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
- void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
+ static const struct component_ops rockchip_dp_component_ops = {
 -- 
 2.14.1
