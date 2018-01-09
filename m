@@ -1,166 +1,57 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH] drm/bridge/synopsis: stop clobbering drvdata
-Date: Tue, 09 Jan 2018 14:45:26 +0100
-Message-ID: <1446c2ab-cedb-cd8a-adfc-79bcef99c134@samsung.com>
-References: <20171128010538.119114-1-briannorris@chromium.org>
- <348421ad-a6f5-0943-f38d-d9a6de60e32e@st.com>
- <ce4cfe70-49b0-7d01-756c-d20f39a3e40f@st.com>
- <CGME20180109133704epcas5p4a64298ac65ecfc30dbb87470c95428d8@epcas5p4.samsung.com>
- <2473674.qmHiHju6p6@avalon>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v7 00/10] rockchip: kevin: Enable edp display
+Date: Tue,  9 Jan 2018 15:48:45 +0100
+Message-ID: <20180109144853.32536-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <2473674.qmHiHju6p6@avalon>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Philippe CORNU <philippe.cornu@st.com>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Vincent ABRIOU <vincent.abriou@st.com>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Transfert-Encoding: 8bit
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDkuMDEuMjAxOCAxNDozNywgTGF1cmVudCBQaW5jaGFydCB3cm90ZToKPiBIaSBQaGlsaXBw
-ZSwKPgo+IE9uIFR1ZXNkYXksIDkgSmFudWFyeSAyMDE4IDE1OjAxOjAyIEVFVCBQaGlsaXBwZSBD
-T1JOVSB3cm90ZToKPj4gSGkgQXJjaGl0LCBBbmRyemVqICYgTGF1cmVudCwKPj4KPj4gUmVnYXJk
-aW5nIHRoaXMgcGF0Y2ggZnJvbSBCcmlhbiwgSSB0aGluayBpdCBjb3VsZCBiZSBuaWNlIHRvIG1l
-cmdlIGl0IAo+PiAoMXhBY2tlZC1ieSwgMnhSZXZpZXdlZC1ieSkuCj4+Cj4+IENvdWxkIHlvdSBw
-bGVhc2UgaGF2ZSBhIGxvb2s/Cj4+Cj4+IE9ubHkgdGhlIHNtYWxsICJ0eXBvIiBpbiB0aGUgaGVh
-ZGxpbmUgbmVlZHMgdG8gYmUgY2hhbmdlZC4KPj4KPj4gTWFueSB0aGFua3MsCj4gSSd2ZSBqdXN0
-IHJlcGxpZWQgdG8gQnJpYW4gaW4gdGhpcyBtYWlsIHRocmVhZC4gU29ycnkgZm9yIHRoZSBkZWxh
-eSwgaXQgCj4gc2xpcHBlZCB0aHJvdWdoIHRoZSBjcmFja3MuIFRoYW5rIHlvdSBmb3IgcGluZ2lu
-ZyBtZS4KCkkgaGF2ZSBqdXN0IHB1c2hlZCB0aGUgcGF0Y2ggdG8gZHJtLW1pc2MtbmV4dC4gSSBh
-bSBzb3JyeSwgaWYgeW91IHdhbnRlZAp0byBwb2xpc2ggaXQgbW9yZSwgZnJvbSB0aGUgdGhyZWFk
-IGl0IGxvb2tlZCBpdCBjYW4gYmUgbWVyZ2VkIGFzIGlzLgoKUmVnYXJkcwpBbmRyemVqCgoKPj4g
-T24gMTEvMjgvMjAxNyAxMDozNCBBTSwgUGhpbGlwcGUgQ09STlUgd3JvdGU6Cj4+Cj4+PiBIaSBC
-cmlhbiwKPj4+Cj4+PiBPbiAxMS8yOC8yMDE3IDAyOjA1IEFNLCBCcmlhbiBOb3JyaXMgd3JvdGU6
-Cj4+Pgo+Pj4+IEJyaWRnZSBkcml2ZXJzL2hlbHBlcnMgc2hvdWxkbid0IGJlIGNsb2JiZXJpbmcg
-dGhlIGRydmRhdGEsIHNpbmNlIGEKPj4+PiBwYXJlbnQgZHJpdmVyIG1pZ2h0IG5lZWQgdG8gb3du
-IHRoaXMuIEluc3RlYWQsIGxldCdzIHJldHVybiBvdXIKPj4+PiAnZHdfbWlwaV9kc2knIG9iamVj
-dCBhbmQgaGF2ZSBjYWxsZXJzIHBhc3MgdGhhdCBiYWNrIHRvIHVzIGZvciByZW1vdmFsLgo+Pj4K
-Pj4+IEFuZCBtYW55IHRoYW5rcyBmb3IgdGhpcyBjbGVhbnVwLgo+Pj4gKHBsZWFzZSB1cGRhdGUg
-dGhlIGhlYWRsaW5lIHdpdGggInN5bm9wc3lzIikKPj4+Cj4+PiBTdWNjZXNzZnVsbHkgdGVzdGVk
-IG9uIHN0bS4KPj4+Cj4+PiBBY2tlZC1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51
-QHN0LmNvbT4KPj4+Cj4+PiBNYW55IHRoYW5rcywKPj4+IFBoaWxpcHBlIDotKQo+Pj4KPj4+Pgo+
-Pj4+IFNpZ25lZC1vZmYtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3JyaXNAY2hyb21pdW0ub3Jn
-Pgo+Pj4+IC0tLQo+Pj4+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBp
-LWRzaS5jIHwgMzYgCj4+Pj4gKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tCj4+Pj4gICBkcml2
-ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jICAgICAgICAgfCAxNCArKysrKysrLS0t
-LQo+Pj4+ICAgaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmggICAgICAgICAgICAgIHwg
-MTcgKysrKysrKystLS0tLQo+Pj4+ICAgMyBmaWxlcyBjaGFuZ2VkLCAzMyBpbnNlcnRpb25zKCsp
-LCAzNCBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+Cj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIAo+Pj4+IGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4+Pj4gaW5kZXggZDljY2E0ZmQ2
-NmVjLi5jMzljN2RjZTIwZWQgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4+Pj4gQEAgLTkyMiw4ICs5MjIsNiBAQCBfX2R3X21p
-cGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4+Pj4gICAgICAgZHNp
-LT5icmlkZ2Uub2Zfbm9kZSA9IHBkZXYtPmRldi5vZl9ub2RlOwo+Pj4+ICAgI2VuZGlmCj4+Pj4g
-LSAgICBkZXZfc2V0X2RydmRhdGEoZGV2LCBkc2kpOwo+Pj4+IC0KPj4+PiAgICAgICByZXR1cm4g
-ZHNpOwo+Pj4+ICAgfQo+Pj4+IEBAIC05MzUsMjMgKzkzMywxNiBAQCBzdGF0aWMgdm9pZCBfX2R3
-X21pcGlfZHNpX3JlbW92ZShzdHJ1Y3QgCj4+Pj4gZHdfbWlwaV9kc2kgKmRzaSkKPj4+PiAgIC8q
-Cj4+Pj4gICAgKiBQcm9iZS9yZW1vdmUgQVBJLCB1c2VkIGZyb20gcGxhdGZvcm1zIGJhc2VkIG9u
-IHRoZSBEUk0gYnJpZGdlIEFQSS4KPj4+PiAgICAqLwo+Pj4+IC1pbnQgZHdfbWlwaV9kc2lfcHJv
-YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPj4+PiAtICAgICAgICAgICAgICBjb25z
-dCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpCj4+Pj4gK3N0cnVjdCBk
-d19taXBpX2RzaSAqCj4+Pj4gK2R3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYsCj4+Pj4gKyAgICAgICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9k
-YXRhICpwbGF0X2RhdGEpCj4+Pj4gICB7Cj4+Pj4gLSAgICBzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRz
-aTsKPj4+PiAtCj4+Pj4gLSAgICBkc2kgPSBfX2R3X21pcGlfZHNpX3Byb2JlKHBkZXYsIHBsYXRf
-ZGF0YSk7Cj4+Pj4gLSAgICBpZiAoSVNfRVJSKGRzaSkpCj4+Pj4gLSAgICAgICAgcmV0dXJuIFBU
-Ul9FUlIoZHNpKTsKPj4+PiAtCj4+Pj4gLSAgICByZXR1cm4gMDsKPj4+PiArICAgIHJldHVybiBf
-X2R3X21pcGlfZHNpX3Byb2JlKHBkZXYsIHBsYXRfZGF0YSk7Cj4+Pj4gICB9Cj4+Pj4gICBFWFBP
-UlRfU1lNQk9MX0dQTChkd19taXBpX2RzaV9wcm9iZSk7Cj4+Pj4gLXZvaWQgZHdfbWlwaV9kc2lf
-cmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+Pj4gK3ZvaWQgZHdfbWlwaV9k
-c2lfcmVtb3ZlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+Pj4+ICAgewo+Pj4+IC0gICAgc3Ry
-dWN0IGR3X21pcGlfZHNpICpkc2kgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsKPj4+PiAt
-Cj4+Pj4gICAgICAgbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmRzaV9ob3N0KTsKPj4+
-PiAgICAgICBfX2R3X21pcGlfZHNpX3JlbW92ZShkc2kpOwo+Pj4+IEBAIC05NjEsMzEgKzk1Miwz
-MCBAQCBFWFBPUlRfU1lNQk9MX0dQTChkd19taXBpX2RzaV9yZW1vdmUpOwo+Pj4+ICAgLyoKPj4+
-PiAgICAqIEJpbmQvdW5iaW5kIEFQSSwgdXNlZCBmcm9tIHBsYXRmb3JtcyBiYXNlZCBvbiB0aGUg
-Y29tcG9uZW50IAo+Pj4+IGZyYW1ld29yay4KPj4+PiAgICAqLwo+Pj4+IC1pbnQgZHdfbWlwaV9k
-c2lfYmluZChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LCBzdHJ1Y3QgZHJtX2VuY29kZXIg
-Cj4+Pj4gKmVuY29kZXIsCj4+Pj4gLSAgICAgICAgICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9k
-c2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpCj4+Pj4gK3N0cnVjdCBkd19taXBpX2RzaSAqCj4+Pj4g
-K2R3X21pcGlfZHNpX2JpbmQoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwgc3RydWN0IGRy
-bV9lbmNvZGVyIAo+Pj4+ICplbmNvZGVyLAo+Pj4+ICsgICAgICAgICBjb25zdCBzdHJ1Y3QgZHdf
-bWlwaV9kc2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpCj4+Pj4gICB7Cj4+Pj4gICAgICAgc3RydWN0
-IGR3X21pcGlfZHNpICpkc2k7Cj4+Pj4gICAgICAgaW50IHJldDsKPj4+PiAgICAgICBkc2kgPSBf
-X2R3X21pcGlfZHNpX3Byb2JlKHBkZXYsIHBsYXRfZGF0YSk7Cj4+Pj4gICAgICAgaWYgKElTX0VS
-Uihkc2kpKQo+Pj4+IC0gICAgICAgIHJldHVybiBQVFJfRVJSKGRzaSk7Cj4+Pj4gKyAgICAgICAg
-cmV0dXJuIGRzaTsKPj4+PiAgICAgICByZXQgPSBkcm1fYnJpZGdlX2F0dGFjaChlbmNvZGVyLCAm
-ZHNpLT5icmlkZ2UsIE5VTEwpOwo+Pj4+ICAgICAgIGlmIChyZXQpIHsKPj4+PiAtICAgICAgICBk
-d19taXBpX2RzaV9yZW1vdmUocGRldik7Cj4+Pj4gKyAgICAgICAgZHdfbWlwaV9kc2lfcmVtb3Zl
-KGRzaSk7Cj4+Pj4gICAgICAgICAgIERSTV9FUlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgYnJp
-ZGdlIHdpdGggZHJtXG4iKTsKPj4+PiAtICAgICAgICByZXR1cm4gcmV0Owo+Pj4+ICsgICAgICAg
-IHJldHVybiBFUlJfUFRSKHJldCk7Cj4+Pj4gICAgICAgfQo+Pj4+IC0gICAgcmV0dXJuIDA7Cj4+
-Pj4gKyAgICByZXR1cm4gZHNpOwo+Pj4+ICAgfQo+Pj4+ICAgRVhQT1JUX1NZTUJPTF9HUEwoZHdf
-bWlwaV9kc2lfYmluZCk7Cj4+Pj4gLXZvaWQgZHdfbWlwaV9kc2lfdW5iaW5kKHN0cnVjdCBkZXZp
-Y2UgKmRldikKPj4+PiArdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGR3X21pcGlfZHNp
-ICpkc2kpCj4+Pj4gICB7Cj4+Pj4gLSAgICBzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSA9IGRldl9n
-ZXRfZHJ2ZGF0YShkZXYpOwo+Pj4+IC0KPj4+PiAgICAgICBfX2R3X21pcGlfZHNpX3JlbW92ZShk
-c2kpOwo+Pj4+ICAgfQo+Pj4+ICAgRVhQT1JUX1NZTUJPTF9HUEwoZHdfbWlwaV9kc2lfdW5iaW5k
-KTsKPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0u
-YyAKPj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3RtLmMKPj4+PiBpbmRl
-eCBlNWI2MzEwMjQwZmUuLjdlZDBlZjdmNmVjMiAxMDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vc3RtL2R3X21pcGlfZHNpLXN0bS5jCj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3N0
-bS9kd19taXBpX2RzaS1zdG0uYwo+Pj4+IEBAIC02Niw2ICs2Niw3IEBAIGVudW0gZHNpX2NvbG9y
-IHsKPj4+PiAgIHN0cnVjdCBkd19taXBpX2RzaV9zdG0gewo+Pj4+ICAgICAgIHZvaWQgX19pb21l
-bSAqYmFzZTsKPj4+PiAgICAgICBzdHJ1Y3QgY2xrICpwbGxyZWZfY2xrOwo+Pj4+ICsgICAgc3Ry
-dWN0IGR3X21pcGlfZHNpICpkc2k7Cj4+Pj4gICB9Owo+Pj4+ICAgc3RhdGljIGlubGluZSB2b2lk
-IGRzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2lfc3RtICpkc2ksIHUzMiByZWcsIAo+Pj4+IHUz
-MiB2YWwpCj4+Pj4gQEAgLTMxOCwyMSArMzE5LDI0IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lf
-c3RtX3Byb2JlKHN0cnVjdCAKPj4+PiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+Pj4gICAgICAg
-ZHdfbWlwaV9kc2lfc3RtX3BsYXRfZGF0YS5iYXNlID0gZHNpLT5iYXNlOwo+Pj4+ICAgICAgIGR3
-X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEucHJpdl9kYXRhID0gZHNpOwo+Pj4+IC0gICAgcmV0ID0g
-ZHdfbWlwaV9kc2lfcHJvYmUocGRldiwgJmR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEpOwo+Pj4+
-IC0gICAgaWYgKHJldCkgewo+Pj4+ICsgICAgcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgZHNp
-KTsKPj4+PiArCj4+Pj4gKyAgICBkc2ktPmRzaSA9IGR3X21pcGlfZHNpX3Byb2JlKHBkZXYsICZk
-d19taXBpX2RzaV9zdG1fcGxhdF9kYXRhKTsKPj4+PiArICAgIGlmIChJU19FUlIoZHNpLT5kc2kp
-KSB7Cj4+Pj4gICAgICAgICAgIERSTV9FUlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgbWlwaSBk
-c2kgaG9zdFxuIik7Cj4+Pj4gICAgICAgICAgIGNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBs
-bHJlZl9jbGspOwo+Pj4+ICsgICAgICAgIHJldHVybiBQVFJfRVJSKGRzaS0+ZHNpKTsKPj4+PiAg
-ICAgICB9Cj4+Pj4gLSAgICByZXR1cm4gcmV0Owo+Pj4+ICsgICAgcmV0dXJuIDA7Cj4+Pj4gICB9
-Cj4+Pj4gICBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3N0bV9yZW1vdmUoc3RydWN0IHBsYXRmb3Jt
-X2RldmljZSAqcGRldikKPj4+PiAgIHsKPj4+PiAtICAgIHN0cnVjdCBkd19taXBpX2RzaV9zdG0g
-KmRzaSA9IGR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEucHJpdl9kYXRhOwo+Pj4+ICsgICAgc3Ry
-dWN0IGR3X21pcGlfZHNpX3N0bSAqZHNpID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4+
-Pj4gICAgICAgY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7Cj4+Pj4gLSAg
-ICBkd19taXBpX2RzaV9yZW1vdmUocGRldik7Cj4+Pj4gKyAgICBkd19taXBpX2RzaV9yZW1vdmUo
-ZHNpLT5kc2kpOwo+Pj4+ICAgICAgIHJldHVybiAwOwo+Pj4+ICAgfQo+Pj4+IGRpZmYgLS1naXQg
-YS9pbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaCAKPj4+PiBiL2luY2x1ZGUvZHJtL2Jy
-aWRnZS9kd19taXBpX2RzaS5oCj4+Pj4gaW5kZXggOWIzMGZlYzMwMmM4Li5kOWM2ZDU0OWY5NzEg
-MTAwNjQ0Cj4+Pj4gLS0tIGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKPj4+PiAr
-KysgYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaAo+Pj4+IEBAIC0xMCw2ICsxMCw4
-IEBACj4+Pj4gICAjaWZuZGVmIF9fRFdfTUlQSV9EU0lfXwo+Pj4+ICAgI2RlZmluZSBfX0RXX01J
-UElfRFNJX18KPj4+PiArc3RydWN0IGR3X21pcGlfZHNpOwo+Pj4+ICsKPj4+PiAgIHN0cnVjdCBk
-d19taXBpX2RzaV9waHlfb3BzIHsKPj4+PiAgICAgICBpbnQgKCppbml0KSh2b2lkICpwcml2X2Rh
-dGEpOwo+Pj4+ICAgICAgIGludCAoKmdldF9sYW5lX21icHMpKHZvaWQgKnByaXZfZGF0YSwgc3Ry
-dWN0IGRybV9kaXNwbGF5X21vZGUgCj4+Pj4gKm1vZGUsCj4+Pj4gQEAgLTI5LDExICszMSwxNCBA
-QCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhIHsKPj4+PiAgICAgICB2b2lkICpwcml2X2Rh
-dGE7Cj4+Pj4gICB9Owo+Pj4+IC1pbnQgZHdfbWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3Jt
-X2RldmljZSAqcGRldiwKPj4+PiAtICAgICAgICAgICAgICBjb25zdCBzdHJ1Y3QgZHdfbWlwaV9k
-c2lfcGxhdF9kYXRhICpwbGF0X2RhdGEpOwo+Pj4+IC12b2lkIGR3X21pcGlfZHNpX3JlbW92ZShz
-dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KTsKPj4+PiAtaW50IGR3X21pcGlfZHNpX2JpbmQo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwgc3RydWN0IGRybV9lbmNvZGVyIAo+Pj4+ICpl
-bmNvZGVyLAo+Pj4+IC0gICAgICAgICAgICAgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRf
-ZGF0YSAqcGxhdF9kYXRhKTsKPj4+PiAtdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0IGRl
-dmljZSAqZGV2KTsKPj4+PiArc3RydWN0IGR3X21pcGlfZHNpICpkd19taXBpX2RzaV9wcm9iZShz
-dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAg
-Y29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YQo+Pj4+ICsgICAgICAgICAgICAgICAg
-ICAgICAgKnBsYXRfZGF0YSk7Cj4+Pj4gK3ZvaWQgZHdfbWlwaV9kc2lfcmVtb3ZlKHN0cnVjdCBk
-d19taXBpX2RzaSAqZHNpKTsKPj4+PiArc3RydWN0IGR3X21pcGlfZHNpICpkd19taXBpX2RzaV9i
-aW5kKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4+Pj4gKyAgICAgICAgICAgICAgICAg
-ICAgIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPj4+PiArICAgICAgICAgICAgICAgICAg
-ICAgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YQo+Pj4+ICsgICAgICAgICAgICAg
-ICAgICAgICAqcGxhdF9kYXRhKTsKPj4+PiArdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0
-IGR3X21pcGlfZHNpICpkc2kpOwo+Pj4+ICAgI2VuZGlmIC8qIF9fRFdfTUlQSV9EU0lfXyAqLwo+
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi,
+
+This patchset makes edp display work on Chromebook kevin.
+
+This patchset has been originally posted by Jeffy Chen and the 2 first
+commits from the previous version (v6) are already merged in mainline.
+This v7 has been rebased on top of next-20180108 and a few conflicts
+have been fixed as well.
+
+v7:
+Rebased on top of next-20180108 and fixed conflicts
+Fixed a few warnings reported by checkpatch
+
+Jeffy Chen (10):
+  arm64: dts: rockchip: Enable edp disaplay on kevin
+  drm/rockchip: analogix_dp: Remove unnecessary init code
+  drm/bridge: analogix: Do not use device's drvdata
+  drm/bridge: analogix_dp: Fix connector and encoder cleanup
+  drm/rockchip: analogix_dp: Add a sanity check for
+    rockchip_drm_psr_register()
+  drm/rockchip: dw-mipi-dsi: Fix error handling path
+  drm/rockchip: inno_hdmi: Fix error handling path
+  drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
+  drm/bridge/synopsys: dw-hdmi: Do not use device's drvdata
+  drm/rockchip: dw_hdmi: Fix error handling path
+
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 29 +++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 16 ++++
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 52 +++++-------
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          | 53 ++++++------
+ drivers/gpu/drm/exynos/exynos_dp.c                 | 29 ++++---
+ drivers/gpu/drm/imx/dw_hdmi-imx.c                  | 22 +++--
+ drivers/gpu/drm/meson/meson_dw_hdmi.c              | 20 +++--
+ drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c             | 14 +++-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 95 +++++++++++-----------
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 21 +++--
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 39 +++++----
+ drivers/gpu/drm/rockchip/inno_hdmi.c               | 22 +++--
+ include/drm/bridge/analogix_dp.h                   | 19 +++--
+ include/drm/bridge/dw_hdmi.h                       | 17 ++--
+ 14 files changed, 265 insertions(+), 183 deletions(-)
+
+-- 
+2.7.4
