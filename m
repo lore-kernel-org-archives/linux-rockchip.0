@@ -1,57 +1,69 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v7 00/10] rockchip: kevin: Enable edp display
-Date: Tue,  9 Jan 2018 15:48:45 +0100
-Message-ID: <20180109144853.32536-1-thierry.escande@collabora.com>
+Subject: [PATCH v7 3/8] drm/rockchip: analogix_dp: Add a sanity check for rockchip_drm_psr_register()
+Date: Tue,  9 Jan 2018 15:48:48 +0100
+Message-ID: <20180109144853.32536-4-thierry.escande@collabora.com>
+References: <20180109144853.32536-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset = "utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180109144853.32536-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
 Sender: linux-kernel-owner@vger.kernel.org
 To: Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>
 Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-This patchset makes edp display work on Chromebook kevin.
+The rockchip_drm_psr_register() can fail, so add a sanity check for that.
 
-This patchset has been originally posted by Jeffy Chen and the 2 first
-commits from the previous version (v6) are already merged in mainline.
-This v7 has been rebased on top of next-20180108 and a few conflicts
-have been fixed as well.
+Also reorder the calls in unbind() to match bind().
 
-v7:
-Rebased on top of next-20180108 and fixed conflicts
-Fixed a few warnings reported by checkpatch
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
-Jeffy Chen (10):
-  arm64: dts: rockchip: Enable edp disaplay on kevin
-  drm/rockchip: analogix_dp: Remove unnecessary init code
-  drm/bridge: analogix: Do not use device's drvdata
-  drm/bridge: analogix_dp: Fix connector and encoder cleanup
-  drm/rockchip: analogix_dp: Add a sanity check for
-    rockchip_drm_psr_register()
-  drm/rockchip: dw-mipi-dsi: Fix error handling path
-  drm/rockchip: inno_hdmi: Fix error handling path
-  drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
-  drm/bridge/synopsys: dw-hdmi: Do not use device's drvdata
-  drm/rockchip: dw_hdmi: Fix error handling path
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 29 +++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 16 ++++
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 52 +++++-------
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          | 53 ++++++------
- drivers/gpu/drm/exynos/exynos_dp.c                 | 29 ++++---
- drivers/gpu/drm/imx/dw_hdmi-imx.c                  | 22 +++--
- drivers/gpu/drm/meson/meson_dw_hdmi.c              | 20 +++--
- drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c             | 14 +++-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 95 +++++++++++-----------
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 21 +++--
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 39 +++++----
- drivers/gpu/drm/rockchip/inno_hdmi.c               | 22 +++--
- include/drm/bridge/analogix_dp.h                   | 19 +++--
- include/drm/bridge/dw_hdmi.h                       | 17 ++--
- 14 files changed, 265 insertions(+), 183 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 37250ab63bd7..eb88c52336a7 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -354,15 +354,22 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
+ 	INIT_WORK(&dp->psr_work, analogix_dp_psr_work);
+ 
+-	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
++	ret = rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
++	if (ret < 0)
++		goto err_cleanup_encoder;
+ 
+ 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+ 	if (IS_ERR(dp->adp)) {
+-		dp->encoder.funcs->destroy(&dp->encoder);
+-		return PTR_ERR(dp->adp);
++		ret = PTR_ERR(dp->adp);
++		goto err_unreg_psr;
+ 	}
+ 
+ 	return 0;
++err_unreg_psr:
++	rockchip_drm_psr_unregister(&dp->encoder);
++err_cleanup_encoder:
++	dp->encoder.funcs->destroy(&dp->encoder);
++	return ret;
+ }
+ 
+ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+@@ -370,8 +377,8 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+ {
+ 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+ 
+-	rockchip_drm_psr_unregister(&dp->encoder);
+ 	analogix_dp_unbind(dp->adp);
++	rockchip_drm_psr_unregister(&dp->encoder);
+ 	dp->encoder.funcs->destroy(&dp->encoder);
+ }
+ 
 -- 
-2.7.4
+2.14.1
