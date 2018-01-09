@@ -1,11 +1,16 @@
 From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: Add cif test clocks for rk3399
-Date: Tue,  9 Jan 2018 09:42:21 +0800
-Message-ID: <1515462141-26694-1-git-send-email-zhengsq@rock-chips.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add cif test clocks for rk3399
+Date: Tue, 9 Jan 2018 09:45:05 +0800
+Message-ID: <d8aef67f-1de0-0216-7b22-4e7990855353@rock-chips.com>
+References: <1515390531-13147-1-git-send-email-zhengsq@rock-chips.com>
+ <20180108191733.GA59523@google.com>
+Reply-To: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180108191733.GA59523-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,47 +20,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are three pins can act as cif test clock for rk3399.
-They're sourced from 24M and output 24M by default and some boards
-may use them as camera 24M xvclk.
-
-Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 7aa2144..85b30c9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2293,6 +2293,23 @@
- 			};
- 		};
- 
-+		testclk {
-+			test_clkout0: test-clkout0 {
-+				rockchip,pins =
-+					<0 0 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+
-+			test_clkout1: test-clkout1 {
-+				rockchip,pins =
-+					<2 25 RK_FUNC_2 &pcfg_pull_none>;
-+			};
-+
-+			test_clkout2: test-clkout2 {
-+				rockchip,pins =
-+					<0 8 RK_FUNC_3 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		tsadc {
- 			otp_gpio: otp-gpio {
- 				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-1.9.1
+SGkgQnJpYW4sCgoKT24gMjAxOOW5tDAx5pyIMDnml6UgMDM6MTcsIEJyaWFuIE5vcnJpcyB3cm90
+ZToKPiBIaSBTaHVucWlhbiwKPgo+IE9uIE1vbiwgSmFuIDA4LCAyMDE4IGF0IDAxOjQ4OjUxUE0g
+KzA4MDAsIFNodW5xaWFuIFpoZW5nIHdyb3RlOgo+PiBUaGVyZSBhcmUgdGhyZWUgcGlucyBjYW4g
+YWN0IGFzIGNpZiB0ZXN0IGNsb2NrIGZvciByazMzOTkuCj4+IFRoZXkncmUgc291cmNlZCBmcm9t
+IDI0TSBhbmQgb3V0cHV0IDI0TSBieSBkZWZhdWx0IGFuZCBzb21lIGJvYXJkcwo+PiBtYXkgdXNl
+IHRoZW0gYXMgY2FtZXJhIDI0TSB4dmNsay4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2h1bnFpYW4g
+WmhlbmcgPHpoZW5nc3FAcm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+PiAgIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgfCAxNyArKysrKysrKysrKysrKysrKwo+PiAgIDEg
+ZmlsZSBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazMzOTkuZHRzaQo+PiBpbmRleCA3YWEyMTQ0Li5kYWFkNDJmIDEwMDY0NAo+PiAt
+LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+ICsrKyBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gQEAgLTIyOTMsNiArMjI5
+MywyMyBAQAo+PiAgIAkJCX07Cj4+ICAgCQl9Owo+PiAgIAo+PiArCQl0ZXN0IHsKPiBEb2Vzbid0
+IHJlYWxseSBtYXR0ZXIgbXVjaCwgYnV0ICd0ZXN0JyBpcyBhIHdlaXJkIGdyb3VwIG5hbWUgdG8g
+bWUuIEkKPiB0aGluayAndGVzdGNsaycgb3IgJ3Rlc3QtY2xrJyBtaWdodCBiZSBhIG1vcmUgZGVz
+Y3JpcHRpdmUgbmFtZT8KUmVuYW1lIHRvIHRlc3RjbGsgaW4gdjIuCj4KPj4gKwkJCXRlc3RfY2xr
+b3V0MDogdGVzdC1jbGtvdXQwIHsKPj4gKwkJCQlyb2NrY2hpcCxwaW5zID0KPj4gKwkJCQkJPDAg
+MCBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCXRlc3Rf
+Y2xrb3V0MTogdGVzdC1jbGtvdXQxIHsKPj4gKwkJCQlyb2NrY2hpcCxwaW5zID0KPj4gKwkJCQkJ
+PDIgMjUgUktfRlVOQ18yICZwY2ZnX3B1bGxfbm9uZT47Cj4+ICsJCQl9Owo+PiArCj4+ICsJCQl0
+ZXN0X2Nsa291dDI6IHRlc3QtY2xrb3V0MiB7Cj4+ICsJCQkJcm9ja2NoaXAscGlucyA9Cj4+ICsJ
+CQkJCTwwIDggUktfRlVOQ18zICZwY2ZnX3B1bGxfbm9uZT47Cj4gWW91ciBmdW5jdGlvbiBpbmRl
+eGluZyBpcyBhIGxpdHRsZSBjb25mdXNpbmcgdG8gbWUsIGJ1dCBvbmUgb3IgbW9yZSBvZgo+IHlv
+dXIgZGF0YXNoZWV0LCBUUk0sIG9yIHBhdGNoIGFyZSBpbmNvcnJlY3QgaGVyZS4gVGhlIGRhdGFz
+aGVldCBzYXlzCj4gIkZ1bmMgMyIgKHdoaWNoIGlzIDEtaW5kZXhlZCwgc28gcmVhbGx5IG1lYW5z
+IFJLX0ZVTkNfMikgc2hvdWxkIGJlCj4gVEVTVF9DTEtPVVQyLCBidXQgeW91ciBUUk0gYWdyZWVz
+IHdpdGggdGhlIHBhdGNoLCBzYXlpbmcKPiAyJ2IxMT10ZXN0X2Nsa291dDIuIFNvIEkgdGhpbmsg
+eW91ciBwYXRjaCBpcyBjb3JyZWN0LCBidXQgdGhlIGRhdGFzaGVldAo+IG5lZWRzIHVwZGF0ZWQ/
+ClllYWgsIHBsZWFzZSBmb2xsb3cgdGhlIFRSTS4KPgo+IEFsbCBpbiBhbGwsIEkgdGhpbmsgdGhl
+IHBhdGNoIGxvb2tzIGdvb2QgdGhvdWdoOgo+Cj4gUmV2aWV3ZWQtYnk6IEJyaWFuIE5vcnJpcyA8
+YnJpYW5ub3JyaXNAY2hyb21pdW0ub3JnPgpUaGFua3MuCj4KPj4gKwkJCX07Cj4+ICsJCX07Cj4+
+ICsKPj4gICAJCXRzYWRjIHsKPj4gICAJCQlvdHBfZ3Bpbzogb3RwLWdwaW8gewo+PiAgIAkJCQly
+b2NrY2hpcCxwaW5zID0gPDEgNiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPj4gLS0g
+Cj4+IDEuOS4xCj4+Cj4KPgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
