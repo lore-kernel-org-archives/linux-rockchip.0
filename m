@@ -1,161 +1,67 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2 1/2] drm/bridge/synopsys: dsi: use common mipi_dsi_create_packet()
-Date: Tue,  9 Jan 2018 12:32:47 -0800
-Message-ID: <20180109203248.139249-1-briannorris@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH v2 2/2] drm/bridge/synopsys: dsi: handle endianness correctly
+ in dw_mipi_dsi_write()
+Date: Tue,  9 Jan 2018 12:32:48 -0800
+Message-ID: <20180109203248.139249-2-briannorris@chromium.org>
+References: <20180109203248.139249-1-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180109203248.139249-1-briannorris@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org, hoegsberg@gmail.com, zyw@rock-chips.com, xbl@rock-chips.com, Brian Norris <briannorris@chromium.org>
+Cc: hl@rock-chips.com, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This takes care of 2 TODOs in this driver, by using the common DSI
-packet-marshalling code instead of our custom short/long write code.
-This both saves us some duplicated code and gets us free support for
-command types that weren't already part of our switch block (e.g.,
-MIPI_DSI_GENERIC_LONG_WRITE).
-
-The code logic stays mostly intact, except that it becomes unnecessary
-to split the short/long write functions, and we have to copy data a bit
-more.
-
-Along the way, I noticed that loop bounds were a little odd:
-
-	while (DIV_ROUND_UP(len, pld_data_bytes))
-
-This really was just supposed to be 'len != 0', so I made that more
-clear.
-
-Tested on RK3399 with some pending refactoring patches by Nickey Yang,
-to make the Rockchip DSI driver wrap this common driver.
-
-Signed-off-by: Brian Norris <briannorris@chromium.org>
-Reviewed-by: Philippe Cornu <philippe.cornu@st.com>
-Tested-by: Philippe Cornu <philippe.cornu@st.com>
----
-v2:
- * remove "dcs" naming, since these commands handle generic DSI too, not
-   just DCS (thanks Philippe)
- * add Philippe's {Tested,Reviewed}-by
----
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 78 ++++++---------------------
- 1 file changed, 16 insertions(+), 62 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index d9cca4fd66ec..ed91e32ee43a 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -136,10 +136,6 @@
- 					 GEN_SW_0P_TX_LP)
- 
- #define DSI_GEN_HDR			0x6c
--/* TODO These 2 defines will be reworked thanks to mipi_dsi_create_packet() */
--#define GEN_HDATA(data)			(((data) & 0xffff) << 8)
--#define GEN_HTYPE(type)			(((type) & 0xff) << 0)
--
- #define DSI_GEN_PLD_DATA		0x70
- 
- #define DSI_CMD_PKT_STATUS		0x74
-@@ -359,44 +355,15 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- 	return 0;
- }
- 
--static int dw_mipi_dsi_dcs_short_write(struct dw_mipi_dsi *dsi,
--				       const struct mipi_dsi_msg *msg)
--{
--	const u8 *tx_buf = msg->tx_buf;
--	u16 data = 0;
--	u32 val;
--
--	if (msg->tx_len > 0)
--		data |= tx_buf[0];
--	if (msg->tx_len > 1)
--		data |= tx_buf[1] << 8;
--
--	if (msg->tx_len > 2) {
--		dev_err(dsi->dev, "too long tx buf length %zu for short write\n",
--			msg->tx_len);
--		return -EINVAL;
--	}
--
--	val = GEN_HDATA(data) | GEN_HTYPE(msg->type);
--	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, val);
--}
--
--static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
--				      const struct mipi_dsi_msg *msg)
-+static int dw_mipi_dsi_write(struct dw_mipi_dsi *dsi,
-+			     const struct mipi_dsi_packet *packet)
- {
--	const u8 *tx_buf = msg->tx_buf;
--	int len = msg->tx_len, pld_data_bytes = sizeof(u32), ret;
--	u32 hdr_val = GEN_HDATA(msg->tx_len) | GEN_HTYPE(msg->type);
-+	const u8 *tx_buf = packet->payload;
-+	int len = packet->payload_length, pld_data_bytes = sizeof(u32), ret;
- 	u32 remainder;
- 	u32 val;
- 
--	if (msg->tx_len < 3) {
--		dev_err(dsi->dev, "wrong tx buf length %zu for long write\n",
--			msg->tx_len);
--		return -EINVAL;
--	}
--
--	while (DIV_ROUND_UP(len, pld_data_bytes)) {
-+	while (len) {
- 		if (len < pld_data_bytes) {
- 			remainder = 0;
- 			memcpy(&remainder, tx_buf, len);
-@@ -419,40 +386,27 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
- 		}
- 	}
- 
--	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
-+	remainder = 0;
-+	memcpy(&remainder, packet->header, sizeof(packet->header));
-+	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, remainder);
- }
- 
- static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
- 					 const struct mipi_dsi_msg *msg)
- {
- 	struct dw_mipi_dsi *dsi = host_to_dsi(host);
-+	struct mipi_dsi_packet packet;
- 	int ret;
- 
--	/*
--	 * TODO dw drv improvements
--	 * use mipi_dsi_create_packet() instead of all following
--	 * functions and code (no switch cases, no
--	 * dw_mipi_dsi_dcs_short_write(), only the loop in long_write...)
--	 * and use packet.header...
--	 */
--	dw_mipi_message_config(dsi, msg);
--
--	switch (msg->type) {
--	case MIPI_DSI_DCS_SHORT_WRITE:
--	case MIPI_DSI_DCS_SHORT_WRITE_PARAM:
--	case MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE:
--		ret = dw_mipi_dsi_dcs_short_write(dsi, msg);
--		break;
--	case MIPI_DSI_DCS_LONG_WRITE:
--		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
--		break;
--	default:
--		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
--			msg->type);
--		ret = -EINVAL;
-+	ret = mipi_dsi_create_packet(&packet, msg);
-+	if (ret) {
-+		dev_err(dsi->dev, "failed to create packet: %d\n", ret);
-+		return ret;
- 	}
- 
--	return ret;
-+	dw_mipi_message_config(dsi, msg);
-+
-+	return dw_mipi_dsi_write(dsi, &packet);
- }
- 
- static const struct mipi_dsi_host_ops dw_mipi_dsi_host_ops = {
--- 
-2.16.0.rc1.238.g530d649a79-goog
+V2UncmUgZmlsbGluZyB0aGUgInJlbWFpbmRlciIgd29yZCB3aXRoIGxpdHRsZS1lbmRpYW4gZGF0
+YSwgdGhlbiB3cml0aW5nCml0IG91dCB0byBJTyByZWdpc3RlcnMgd2l0aCBlbmRpYW4tY29ycmVj
+dGluZyB3cml0ZWwoKS4gVGhhdCBwcm9iYWJseQp3b24ndCB3b3JrIG9uIGJpZy1lbmRpYW4gc3lz
+dGVtcy4KCkxldCdzIG1hcmsgdGhlICJyZW1haW5kZXIiIHZhcmlhYmxlIGFzIExFMzIgKHNpbmNl
+IHdlIGZpbGwgaXQgd2l0aAptZW1jcHkoKSkgYW5kIGRvIHRoZSBzd2FwcGluZyBleHBsaWNpdGx5
+LgoKU29tZSBvZiB0aGlzIGZ1bmN0aW9uIGNvdWxkIGJlIGRvbmUgbW9yZSBlYXNpbHkgd2l0aG91
+dCBtZW1jcHkoKSwgYnV0CnRoZSB1bmFsaWduZWQgInJlbWFpbmRlciIgY2FzZSBpcyBhIGxpdHRs
+ZSBoYXJkIHRvIGRvIHdpdGhvdXQKcG90ZW50aWFsbHkgb3ZlcnJ1bm5pbmcgJ3R4X2J1ZicsIHNv
+IEkganVzdCBhcHBsaWVkIHRoZSBzYW1lIHNvbHV0aW9uIGluCmFsbCBjYXNlcyAobWVtY3B5KCkg
+KyBsZTMyX3RvX2NwdSgpKS4KClRlc3RlZCBvbmx5IG9uIGEgbGl0dGxlLWVuZGlhbiBzeXN0ZW0u
+CgpTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4K
+LS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCAxOCAr
+KysrKysrKystLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKyksIDkgZGVs
+ZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
+dy1taXBpLWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRz
+aS5jCmluZGV4IGVkOTFlMzJlZTQzYS4uOTBmMTNkZjZmMTA2IDEwMDY0NAotLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCkBAIC0zNjAsMTggKzM2MCwxOCBAQCBz
+dGF0aWMgaW50IGR3X21pcGlfZHNpX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAogewog
+CWNvbnN0IHU4ICp0eF9idWYgPSBwYWNrZXQtPnBheWxvYWQ7CiAJaW50IGxlbiA9IHBhY2tldC0+
+cGF5bG9hZF9sZW5ndGgsIHBsZF9kYXRhX2J5dGVzID0gc2l6ZW9mKHUzMiksIHJldDsKLQl1MzIg
+cmVtYWluZGVyOworCV9fbGUzMiB3b3JkOwogCXUzMiB2YWw7CiAKIAl3aGlsZSAobGVuKSB7CiAJ
+CWlmIChsZW4gPCBwbGRfZGF0YV9ieXRlcykgewotCQkJcmVtYWluZGVyID0gMDsKLQkJCW1lbWNw
+eSgmcmVtYWluZGVyLCB0eF9idWYsIGxlbik7Ci0JCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BM
+RF9EQVRBLCByZW1haW5kZXIpOworCQkJd29yZCA9IDA7CisJCQltZW1jcHkoJndvcmQsIHR4X2J1
+ZiwgbGVuKTsKKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJfdG9fY3B1
+KHdvcmQpKTsKIAkJCWxlbiA9IDA7CiAJCX0gZWxzZSB7Ci0JCQltZW1jcHkoJnJlbWFpbmRlciwg
+dHhfYnVmLCBwbGRfZGF0YV9ieXRlcyk7Ci0JCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9E
+QVRBLCByZW1haW5kZXIpOworCQkJbWVtY3B5KCZ3b3JkLCB0eF9idWYsIHBsZF9kYXRhX2J5dGVz
+KTsKKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJfdG9fY3B1KHdvcmQp
+KTsKIAkJCXR4X2J1ZiArPSBwbGRfZGF0YV9ieXRlczsKIAkJCWxlbiAtPSBwbGRfZGF0YV9ieXRl
+czsKIAkJfQpAQCAtMzg2LDkgKzM4Niw5IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfd3JpdGUo
+c3RydWN0IGR3X21pcGlfZHNpICpkc2ksCiAJCX0KIAl9CiAKLQlyZW1haW5kZXIgPSAwOwotCW1l
+bWNweSgmcmVtYWluZGVyLCBwYWNrZXQtPmhlYWRlciwgc2l6ZW9mKHBhY2tldC0+aGVhZGVyKSk7
+Ci0JcmV0dXJuIGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgcmVtYWluZGVyKTsK
+Kwl3b3JkID0gMDsKKwltZW1jcHkoJndvcmQsIHBhY2tldC0+aGVhZGVyLCBzaXplb2YocGFja2V0
+LT5oZWFkZXIpKTsKKwlyZXR1cm4gZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoZHNpLCBs
+ZTMyX3RvX2NwdSh3b3JkKSk7CiB9CiAKIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3Rf
+dHJhbnNmZXIoc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCi0tIAoyLjE2LjAucmMxLjIzOC5n
+NTMwZDY0OWE3OS1nb29nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
