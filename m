@@ -1,156 +1,161 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use common
- mipi_dsi_create_packet()
-Date: Tue, 9 Jan 2018 10:55:13 -0800
-Message-ID: <20180109185512.GA73309@google.com>
-References: <20180106003813.4816-1-briannorris@chromium.org>
- <715bb58c-efa6-7944-f186-c186d7fae569@st.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <715bb58c-efa6-7944-f186-c186d7fae569@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philippe CORNU <philippe.cornu@st.com>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, Vincent ABRIOU <vincent.abriou@st.com>
+Subject: [PATCH v2 1/2] drm/bridge/synopsys: dsi: use common mipi_dsi_create_packet()
+Date: Tue,  9 Jan 2018 12:32:47 -0800
+Message-ID: <20180109203248.139249-1-briannorris@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org, hoegsberg@gmail.com, zyw@rock-chips.com, xbl@rock-chips.com, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGhpbGlwcGUsCgpPbiBUdWUsIEphbiAwOSwgMjAxOCBhdCAxMDo0ODo0M0FNICswMDAwLCBQ
-aGlsaXBwZSBDT1JOVSB3cm90ZToKPiBIaSBCcmlhbiwKPiAKPiBBbmQgbWFueSB0aGFua3MgZm9y
-IGltcGxlbWVudGluZyB0aGVzZSBUT0RPcy4KCkFuZCB0aGFua3MgZm9yIGFkZGluZyB0aGVtOyBp
-dCBnYXZlIG1lIGEgYmV0dGVyIG9wdGlvbiB0aGFuIGp1c3QgYWRkaW5nCnlldCBhbm90aGVyIHN3
-aXRjaCBjYXNlIChNSVBJX0RTSV9HRU5FUklDX0xPTkdfV1JJVEUpIDspCgo+IE9uIDAxLzA2LzIw
-MTggMDE6MzggQU0sIEJyaWFuIE5vcnJpcyB3cm90ZToKPiA+IFRoaXMgdGFrZXMgY2FyZSBvZiAy
-IFRPRE9zIGluIHRoaXMgZHJpdmVyLCBieSB1c2luZyB0aGUgY29tbW9uIERTSQo+ID4gcGFja2V0
-LW1hcnNoYWxsaW5nIGNvZGUgaW5zdGVhZCBvZiBvdXIgY3VzdG9tIHNob3J0L2xvbmcgd3JpdGUg
-Y29kZS4KPiA+IFRoaXMgYm90aCBzYXZlcyB1cyBzb21lIGR1cGxpY2F0ZWQgY29kZSBhbmQgZ2V0
-cyB1cyBmcmVlIHN1cHBvcnQgZm9yCj4gPiBjb21tYW5kIHR5cGVzIHRoYXQgd2VyZW4ndCBhbHJl
-YWR5IHBhcnQgb2Ygb3VyIHN3aXRjaCBibG9jayAoZS5nLiwKPiA+IE1JUElfRFNJX0dFTkVSSUNf
-TE9OR19XUklURSkuCj4gPiAKPiA+IFRoZSBjb2RlIGxvZ2ljIHN0YXlzIG1vc3RseSBpbnRhY3Qs
-IGV4Y2VwdCB0aGF0IGl0IGJlY29tZXMgdW5uZWNlc3NhcnkKPiA+IHRvIHNwbGl0IHRoZSBzaG9y
-dC9sb25nIHdyaXRlIGZ1bmN0aW9ucywgYW5kIHdlIGhhdmUgdG8gY29weSBkYXRhIGEgYml0Cj4g
-PiBtb3JlLgo+ID4gCj4gPiBBbG9uZyB0aGUgd2F5LCBJIG5vdGljZWQgdGhhdCBsb29wIGJvdW5k
-cyB3ZXJlIGEgbGl0dGxlIG9kZDoKPiA+IAo+ID4gCXdoaWxlIChESVZfUk9VTkRfVVAobGVuLCBw
-bGRfZGF0YV9ieXRlcykpCj4gPiAKPiA+IFRoaXMgcmVhbGx5IHdhcyBqdXN0IHN1cHBvc2VkIHRv
-IGJlICdsZW4gIT0gMCcsIHNvIEkgbWFkZSB0aGF0IG1vcmUKPiA+IGNsZWFyLgo+ID4gCj4gPiBU
-ZXN0ZWQgb24gUkszMzk5IHdpdGggc29tZSBwZW5kaW5nIHJlZmFjdG9yaW5nIHBhdGNoZXMgYnkg
-Tmlja2V5IFlhbmcsCj4gPiB0byBtYWtlIHRoZSBSb2NrY2hpcCBEU0kgZHJpdmVyIHdyYXAgdGhp
-cyBjb21tb24gZHJpdmVyLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJy
-aWFubm9ycmlzQGNocm9taXVtLm9yZz4KPiA+IC0tLQo+ID4gQ291bGQgdXNlIGFuIGV4dHJhIGxv
-b2sgZnJvbSBmb2xrcy4gVGhpcyBsb29rcyBsaWtlIHRoZSBjb3JyZWN0IHRyaXZpYWwKPiA+IHRy
-YW5zZm9ybWF0aW9uLCBidXQgSSdtIG5vdCB0aGF0IGZhbWlsaWFyIHdpdGggRFNJLgo+ID4gCj4g
-PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDc4ICsr
-KysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0
-aW9ucygrKSwgNjIgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKPiA+IGluZGV4IGQ5Y2NhNGZkNjZlYy4uMmZlZDIw
-ZTQ0ZGZlIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
-dy1taXBpLWRzaS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
-LW1pcGktZHNpLmMKPiA+IEBAIC0xMzYsMTAgKzEzNiw2IEBACj4gPiAgIAkJCQkJIEdFTl9TV18w
-UF9UWF9MUCkKPiA+ICAgCj4gPiAgICNkZWZpbmUgRFNJX0dFTl9IRFIJCQkweDZjCj4gPiAtLyog
-VE9ETyBUaGVzZSAyIGRlZmluZXMgd2lsbCBiZSByZXdvcmtlZCB0aGFua3MgdG8gbWlwaV9kc2lf
-Y3JlYXRlX3BhY2tldCgpICovCj4gPiAtI2RlZmluZSBHRU5fSERBVEEoZGF0YSkJCQkoKChkYXRh
-KSAmIDB4ZmZmZikgPDwgOCkKPiA+IC0jZGVmaW5lIEdFTl9IVFlQRSh0eXBlKQkJCSgoKHR5cGUp
-ICYgMHhmZikgPDwgMCkKPiA+IC0KPiA+ICAgI2RlZmluZSBEU0lfR0VOX1BMRF9EQVRBCQkweDcw
-Cj4gPiAgIAo+ID4gICAjZGVmaW5lIERTSV9DTURfUEtUX1NUQVRVUwkJMHg3NAo+ID4gQEAgLTM1
-OSw0NCArMzU1LDE1IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUo
-c3RydWN0IGR3X21pcGlfZHNpICpkc2ksIHUzMiBoZHJfdmFsKQo+ID4gICAJcmV0dXJuIDA7Cj4g
-PiAgIH0KPiA+ICAgCj4gPiAtc3RhdGljIGludCBkd19taXBpX2RzaV9kY3Nfc2hvcnRfd3JpdGUo
-c3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4gPiAtCQkJCSAgICAgICBjb25zdCBzdHJ1Y3QgbWlw
-aV9kc2lfbXNnICptc2cpCj4gPiAtewo+ID4gLQljb25zdCB1OCAqdHhfYnVmID0gbXNnLT50eF9i
-dWY7Cj4gPiAtCXUxNiBkYXRhID0gMDsKPiA+IC0JdTMyIHZhbDsKPiA+IC0KPiA+IC0JaWYgKG1z
-Zy0+dHhfbGVuID4gMCkKPiA+IC0JCWRhdGEgfD0gdHhfYnVmWzBdOwo+ID4gLQlpZiAobXNnLT50
-eF9sZW4gPiAxKQo+ID4gLQkJZGF0YSB8PSB0eF9idWZbMV0gPDwgODsKPiA+IC0KPiA+IC0JaWYg
-KG1zZy0+dHhfbGVuID4gMikgewo+ID4gLQkJZGV2X2Vycihkc2ktPmRldiwgInRvbyBsb25nIHR4
-IGJ1ZiBsZW5ndGggJXp1IGZvciBzaG9ydCB3cml0ZVxuIiwKPiA+IC0JCQltc2ctPnR4X2xlbik7
-Cj4gPiAtCQlyZXR1cm4gLUVJTlZBTDsKPiA+IC0JfQo+ID4gLQo+ID4gLQl2YWwgPSBHRU5fSERB
-VEEoZGF0YSkgfCBHRU5fSFRZUEUobXNnLT50eXBlKTsKPiA+IC0JcmV0dXJuIGR3X21pcGlfZHNp
-X2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgdmFsKTsKPiA+IC19Cj4gPiAtCj4gPiAtc3RhdGljIGlu
-dCBkd19taXBpX2RzaV9kY3NfbG9uZ193cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiA+
-IC0JCQkJICAgICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21zZyAqbXNnKQo+ID4gK3N0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfZGNzX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ID4gKwkJ
-CQkgY29uc3Qgc3RydWN0IG1pcGlfZHNpX3BhY2tldCAqcGFja2V0KQo+IAo+IEJvdGggRENTIGFu
-ZCBHZW5lcmljIGRzaSB0cmFuc2ZlcnMgYXJlIG1hbmFnZWQgYnkgZHJtX21pcGlfZHNpLmMgCj4g
-aGVscGVycy4gU28gbWF5YmUgZHdfbWlwaV9kc2lfZGNzX3dyaXRlKCkgc2hvdWxkIGJlIHJlbmFt
-ZWQgCj4gZHdfbWlwaV9kc2lfd3JpdGUoKS4uLgoKQWgsIGdvb2QgcG9pbnQuIEkgcmVhbGx5IG1l
-YW50IHRvIHJlbW92ZSB0aGUgX2RjcyBuYW1pbmcgdG9vLCBidXQgSQpndWVzcyBJIG1pc3NlZCBp
-dC4gV2lsbCBmb2xsb3cgdXAuCgo+ID4gICB7Cj4gPiAtCWNvbnN0IHU4ICp0eF9idWYgPSBtc2ct
-PnR4X2J1ZjsKPiA+IC0JaW50IGxlbiA9IG1zZy0+dHhfbGVuLCBwbGRfZGF0YV9ieXRlcyA9IHNp
-emVvZih1MzIpLCByZXQ7Cj4gPiAtCXUzMiBoZHJfdmFsID0gR0VOX0hEQVRBKG1zZy0+dHhfbGVu
-KSB8IEdFTl9IVFlQRShtc2ctPnR5cGUpOwo+ID4gKwljb25zdCB1OCAqdHhfYnVmID0gcGFja2V0
-LT5wYXlsb2FkOwo+ID4gKwlpbnQgbGVuID0gcGFja2V0LT5wYXlsb2FkX2xlbmd0aCwgcGxkX2Rh
-dGFfYnl0ZXMgPSBzaXplb2YodTMyKSwgcmV0Owo+ID4gICAJdTMyIHJlbWFpbmRlcjsKPiA+ICAg
-CXUzMiB2YWw7Cj4gPiAgIAo+ID4gLQlpZiAobXNnLT50eF9sZW4gPCAzKSB7Cj4gPiAtCQlkZXZf
-ZXJyKGRzaS0+ZGV2LCAid3JvbmcgdHggYnVmIGxlbmd0aCAlenUgZm9yIGxvbmcgd3JpdGVcbiIs
-Cj4gPiAtCQkJbXNnLT50eF9sZW4pOwo+ID4gLQkJcmV0dXJuIC1FSU5WQUw7Cj4gPiAtCX0KPiA+
-IC0KPiA+IC0Jd2hpbGUgKERJVl9ST1VORF9VUChsZW4sIHBsZF9kYXRhX2J5dGVzKSkgewo+ID4g
-Kwl3aGlsZSAobGVuKSB7Cj4gPiAgIAkJaWYgKGxlbiA8IHBsZF9kYXRhX2J5dGVzKSB7Cj4gPiAg
-IAkJCXJlbWFpbmRlciA9IDA7Cj4gPiAgIAkJCW1lbWNweSgmcmVtYWluZGVyLCB0eF9idWYsIGxl
-bik7Cj4gPiBAQCAtNDE5LDQwICszODYsMjcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9kY3Nf
-bG9uZ193cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiA+ICAgCQl9Cj4gPiAgIAl9Cj4g
-PiAgIAo+ID4gLQlyZXR1cm4gZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoZHNpLCBoZHJf
-dmFsKTsKPiA+ICsJcmVtYWluZGVyID0gMDsKPiA+ICsJbWVtY3B5KCZyZW1haW5kZXIsIHBhY2tl
-dC0+aGVhZGVyLCBzaXplb2YocGFja2V0LT5oZWFkZXIpKTsKCkJ5IHRoZSB3YXk6IEkgZG9uJ3Qg
-dGhpbmsgaXQncyBhbiBpc3N1ZSB0aGF0IHNob3VsZCBibG9jayB0aGlzIHBhdGNoLApzaW5jZSBp
-ZiBJJ20gcmlnaHQsIHRoaXMgZnVuY3Rpb24gYWxyZWFkeSBpcyAiYnJva2VuIiwgYnV0IGlzbid0
-IHRoaXMKYWN0dWFsbHkgYSBiYWQgd2F5IHRvIGhhbmRsZSBieXRlLXRvLXdvcmQgbWFyc2hhbGxp
-bmc/IFBhcnRpY3VsYXJseSwKd2UncmUgY29weWluZyBieXRlcyBpbnRvIGEgd29yZCBpbiBMRSBv
-cmRlcmluZywgYnV0IHRoZW4gd2UgbGF0ZXIgd3JpdGUKdGhlbSB0byBJTyByZWdpc3RlcnMgd2l0
-aCB3cml0ZWwoKSAod2hpY2ggZG9lcyBlbmRpYW4gc3dhcHBpbmcpLgoKU28gSSB0aGluayB3ZSBo
-YXZlIGFuIGVuZGlhbm5lc3MgcHJvYmxlbSBvbiBCRSBzeXN0ZW1zLgoKT25lIHNvbHV0aW9uIHdv
-dWxkIGJlIHRvIHdyaXRlIHRoZXNlIHRvIElPIHJlZ2lzdGVycyB3aXRoIGEgbm9uLXN3YXBwZWQK
-d3JpdGVsKCkgKGUuZy4sIF9fcmF3X3dyaXRlbCgpPyBidXQgdGhhdCdzIG5vdCB2ZXJ5IG5pY2Uu
-Li4pLiBBbm90aGVyCndvdWxkIGJlIHRvIGF2b2lkIG1lbWNweSwgYW5kIGp1c3QgcmVhZCB0aGlz
-IG91dCBhIHdvcmQgYXQgYSB0aW1lIC0tCnRoYXQgd29ya3MgZmluZSBmb3IgdGhlIGFsaWduZWQg
-cGllY2VzLCBidXQgbm90IHNvIHdlbGwgZm9yIGFueQpub24tYWxpZ25lZCBiaXRzICgnaWYgKGxl
-biA8IHBsZF9kYXRhX2J5dGVzKScgYWJvdmUpIEkgdGhpbms/CgpXRFlUPwoKPiA+ICsJcmV0dXJu
-IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgcmVtYWluZGVyKTsKPiA+ICAgfQo+
-ID4gICAKPiA+ICAgc3RhdGljIHNzaXplX3QgZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1
-Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwKPiA+ICAgCQkJCQkgY29uc3Qgc3RydWN0IG1pcGlfZHNp
-X21zZyAqbXNnKQo+ID4gICB7Cj4gPiAgIAlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSA9IGhvc3Rf
-dG9fZHNpKGhvc3QpOwo+ID4gKwlzdHJ1Y3QgbWlwaV9kc2lfcGFja2V0IHBhY2tldDsKPiA+ICAg
-CWludCByZXQ7Cj4gPiAgIAo+ID4gLQkvKgo+ID4gLQkgKiBUT0RPIGR3IGRydiBpbXByb3ZlbWVu
-dHMKPiA+IC0JICogdXNlIG1pcGlfZHNpX2NyZWF0ZV9wYWNrZXQoKSBpbnN0ZWFkIG9mIGFsbCBm
-b2xsb3dpbmcKPiA+IC0JICogZnVuY3Rpb25zIGFuZCBjb2RlIChubyBzd2l0Y2ggY2FzZXMsIG5v
-Cj4gPiAtCSAqIGR3X21pcGlfZHNpX2Rjc19zaG9ydF93cml0ZSgpLCBvbmx5IHRoZSBsb29wIGlu
-IGxvbmdfd3JpdGUuLi4pCj4gPiAtCSAqIGFuZCB1c2UgcGFja2V0LmhlYWRlci4uLgo+ID4gLQkg
-Ki8KPiA+IC0JZHdfbWlwaV9tZXNzYWdlX2NvbmZpZyhkc2ksIG1zZyk7Cj4gPiAtCj4gPiAtCXN3
-aXRjaCAobXNnLT50eXBlKSB7Cj4gPiAtCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JUX1dSSVRFOgo+
-ID4gLQljYXNlIE1JUElfRFNJX0RDU19TSE9SVF9XUklURV9QQVJBTToKPiA+IC0JY2FzZSBNSVBJ
-X0RTSV9TRVRfTUFYSU1VTV9SRVRVUk5fUEFDS0VUX1NJWkU6Cj4gPiAtCQlyZXQgPSBkd19taXBp
-X2RzaV9kY3Nfc2hvcnRfd3JpdGUoZHNpLCBtc2cpOwo+ID4gLQkJYnJlYWs7Cj4gPiAtCWNhc2Ug
-TUlQSV9EU0lfRENTX0xPTkdfV1JJVEU6Cj4gPiAtCQlyZXQgPSBkd19taXBpX2RzaV9kY3NfbG9u
-Z193cml0ZShkc2ksIG1zZyk7Cj4gPiAtCQlicmVhazsKPiA+IC0JZGVmYXVsdDoKPiA+IC0JCWRl
-dl9lcnIoZHNpLT5kZXYsICJ1bnN1cHBvcnRlZCBtZXNzYWdlIHR5cGUgMHglMDJ4XG4iLAo+ID4g
-LQkJCW1zZy0+dHlwZSk7Cj4gPiAtCQlyZXQgPSAtRUlOVkFMOwo+ID4gKwlyZXQgPSBtaXBpX2Rz
-aV9jcmVhdGVfcGFja2V0KCZwYWNrZXQsIG1zZyk7Cj4gPiArCWlmIChyZXQpIHsKPiA+ICsJCWRl
-dl9lcnIoZHNpLT5kZXYsICJmYWlsZWQgdG8gY3JlYXRlIHBhY2tldDogJWRcbiIsIHJldCk7Cj4g
-PiArCQlyZXR1cm4gcmV0Owo+ID4gICAJfQo+ID4gICAKPiA+IC0JcmV0dXJuIHJldDsKPiA+ICsJ
-ZHdfbWlwaV9tZXNzYWdlX2NvbmZpZyhkc2ksIG1zZyk7Cj4gPiArCj4gPiArCXJldHVybiBkd19t
-aXBpX2RzaV9kY3Nfd3JpdGUoZHNpLCAmcGFja2V0KTsKPiA+ICAgfQo+ID4gICAKPiA+ICAgc3Rh
-dGljIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9ob3N0X29wcyBkd19taXBpX2RzaV9ob3N0X29wcyA9
-IHsKPiA+IAo+IAo+IEkgcGVyZm9ybWVkIHNvbWUgdGVzdHMgdHJhY2luZyBhbGwgRFNJX0dFTl9I
-RFIgJiBEU0lfR0VOX1BMRF9EQVRBIHJlZyAKPiB3cml0ZXMgd2l0aCBwYW5lbC9wYW5lbC1vcmlz
-ZXRlY2gtb3RtODAwOWEuYyAodXNpbmcgbG9uZyBkY3MgY29tbWFuZHMpIAo+IGJlZm9yZSBhbmQg
-YWZ0ZXIgeW91ciBwYXRjaCBhbmQgdGhpcyBpcyAiMTAwJSBwZXJmZWN0IiEKPiAKPiBTbywgYXBh
-cnQgdGhlIHVuLWltcG9ydGFudCAiZGNzIiBpbiBkd19taXBpX2RzaV9kY3Nfd3JpdGUoKSBmdW5j
-dGlvbiBuYW1lOgo+IAo+IFJldmlld2VkLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29y
-bnVAc3QuY29tPgo+IFRlc3RlZC1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51QHN0
-LmNvbT4KPiAKPiBUaGlzIGNsZWFuLXVwIHdpbGwgaGVscCBhIGxvdCB0byBhZGQgdGhlIGRzaSBy
-ZWFkIGZlYXR1cmUgaW4gdGhlIGZ1dHVyZS4KPiAKPiBWZXJ5IGdvb2QgcGF0Y2ggQnJpYW4gYW5k
-IGJpZyAidGhhbmsgeW91IiAhCgpUaGFua3MgZm9yIHRoZSByZXZpZXcgYW5kIHRlc3QhIEknbGwg
-bGlrZWx5IHNlbmQgYSB2MiB3aXRoIG9ubHkgdGhlCm5hbWluZyBjaGFuZ2UgKyB5b3VyIHRhZ3Ms
-IGFuZCBJJ2xsIHNlZSBhYm91dCB3aGF0IGRvIGFib3V0IHRoZQplbmRpYW5uZXNzIGlzc3VlcyBJ
-IG5vdGljZWQgYXMgYSBmb2xsb3ctdXAuCgpCcmlhbgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+This takes care of 2 TODOs in this driver, by using the common DSI
+packet-marshalling code instead of our custom short/long write code.
+This both saves us some duplicated code and gets us free support for
+command types that weren't already part of our switch block (e.g.,
+MIPI_DSI_GENERIC_LONG_WRITE).
+
+The code logic stays mostly intact, except that it becomes unnecessary
+to split the short/long write functions, and we have to copy data a bit
+more.
+
+Along the way, I noticed that loop bounds were a little odd:
+
+	while (DIV_ROUND_UP(len, pld_data_bytes))
+
+This really was just supposed to be 'len != 0', so I made that more
+clear.
+
+Tested on RK3399 with some pending refactoring patches by Nickey Yang,
+to make the Rockchip DSI driver wrap this common driver.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Reviewed-by: Philippe Cornu <philippe.cornu@st.com>
+Tested-by: Philippe Cornu <philippe.cornu@st.com>
+---
+v2:
+ * remove "dcs" naming, since these commands handle generic DSI too, not
+   just DCS (thanks Philippe)
+ * add Philippe's {Tested,Reviewed}-by
+---
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 78 ++++++---------------------
+ 1 file changed, 16 insertions(+), 62 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+index d9cca4fd66ec..ed91e32ee43a 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+@@ -136,10 +136,6 @@
+ 					 GEN_SW_0P_TX_LP)
+ 
+ #define DSI_GEN_HDR			0x6c
+-/* TODO These 2 defines will be reworked thanks to mipi_dsi_create_packet() */
+-#define GEN_HDATA(data)			(((data) & 0xffff) << 8)
+-#define GEN_HTYPE(type)			(((type) & 0xff) << 0)
+-
+ #define DSI_GEN_PLD_DATA		0x70
+ 
+ #define DSI_CMD_PKT_STATUS		0x74
+@@ -359,44 +355,15 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
+ 	return 0;
+ }
+ 
+-static int dw_mipi_dsi_dcs_short_write(struct dw_mipi_dsi *dsi,
+-				       const struct mipi_dsi_msg *msg)
+-{
+-	const u8 *tx_buf = msg->tx_buf;
+-	u16 data = 0;
+-	u32 val;
+-
+-	if (msg->tx_len > 0)
+-		data |= tx_buf[0];
+-	if (msg->tx_len > 1)
+-		data |= tx_buf[1] << 8;
+-
+-	if (msg->tx_len > 2) {
+-		dev_err(dsi->dev, "too long tx buf length %zu for short write\n",
+-			msg->tx_len);
+-		return -EINVAL;
+-	}
+-
+-	val = GEN_HDATA(data) | GEN_HTYPE(msg->type);
+-	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, val);
+-}
+-
+-static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+-				      const struct mipi_dsi_msg *msg)
++static int dw_mipi_dsi_write(struct dw_mipi_dsi *dsi,
++			     const struct mipi_dsi_packet *packet)
+ {
+-	const u8 *tx_buf = msg->tx_buf;
+-	int len = msg->tx_len, pld_data_bytes = sizeof(u32), ret;
+-	u32 hdr_val = GEN_HDATA(msg->tx_len) | GEN_HTYPE(msg->type);
++	const u8 *tx_buf = packet->payload;
++	int len = packet->payload_length, pld_data_bytes = sizeof(u32), ret;
+ 	u32 remainder;
+ 	u32 val;
+ 
+-	if (msg->tx_len < 3) {
+-		dev_err(dsi->dev, "wrong tx buf length %zu for long write\n",
+-			msg->tx_len);
+-		return -EINVAL;
+-	}
+-
+-	while (DIV_ROUND_UP(len, pld_data_bytes)) {
++	while (len) {
+ 		if (len < pld_data_bytes) {
+ 			remainder = 0;
+ 			memcpy(&remainder, tx_buf, len);
+@@ -419,40 +386,27 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+ 		}
+ 	}
+ 
+-	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
++	remainder = 0;
++	memcpy(&remainder, packet->header, sizeof(packet->header));
++	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, remainder);
+ }
+ 
+ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+ 					 const struct mipi_dsi_msg *msg)
+ {
+ 	struct dw_mipi_dsi *dsi = host_to_dsi(host);
++	struct mipi_dsi_packet packet;
+ 	int ret;
+ 
+-	/*
+-	 * TODO dw drv improvements
+-	 * use mipi_dsi_create_packet() instead of all following
+-	 * functions and code (no switch cases, no
+-	 * dw_mipi_dsi_dcs_short_write(), only the loop in long_write...)
+-	 * and use packet.header...
+-	 */
+-	dw_mipi_message_config(dsi, msg);
+-
+-	switch (msg->type) {
+-	case MIPI_DSI_DCS_SHORT_WRITE:
+-	case MIPI_DSI_DCS_SHORT_WRITE_PARAM:
+-	case MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE:
+-		ret = dw_mipi_dsi_dcs_short_write(dsi, msg);
+-		break;
+-	case MIPI_DSI_DCS_LONG_WRITE:
+-		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
+-		break;
+-	default:
+-		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
+-			msg->type);
+-		ret = -EINVAL;
++	ret = mipi_dsi_create_packet(&packet, msg);
++	if (ret) {
++		dev_err(dsi->dev, "failed to create packet: %d\n", ret);
++		return ret;
+ 	}
+ 
+-	return ret;
++	dw_mipi_message_config(dsi, msg);
++
++	return dw_mipi_dsi_write(dsi, &packet);
+ }
+ 
+ static const struct mipi_dsi_host_ops dw_mipi_dsi_host_ops = {
+-- 
+2.16.0.rc1.238.g530d649a79-goog
