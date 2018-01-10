@@ -1,72 +1,77 @@
-From: Marc Dietrich <marvin24@gmx.de>
-Subject: Re: [PATCH 2/3] ARM: tegra: paz00: drop nonstandard 'backlight-boot-off'
-Date: Wed, 10 Jan 2018 12:31:31 +0100
-Message-ID: <27065017.X8cFkIFnZg@fb07-iapwap2>
-References: <20180106004757.8239-1-briannorris@chromium.org> <20180106004757.8239-2-briannorris@chromium.org>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2 2/2] drm/bridge/synopsys: dsi: handle endianness
+ correctly in dw_mipi_dsi_write()
+Date: Wed, 10 Jan 2018 15:33:41 +0100
+Message-ID: <199f9097-736e-afe8-2093-bb28fba8b308@samsung.com>
+References: <20180109203248.139249-1-briannorris@chromium.org>
+ <CGME20180109203308epcas1p17226c8b3b3a0474adcd51b87b70084bf@epcas1p1.samsung.com>
+ <20180109203248.139249-2-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="nextPart2399094.HeAjPAVIu4"; micalg="pgp-sha256"; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180106004757.8239-2-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-tegra@vger.kernel.org, Lin Huang <hl@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20180109203248.139249-2-briannorris@chromium.org>
+Content-language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: hl@rock-chips.com, David Airlie <airlied@linux.ie>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---nextPart2399094.HeAjPAVIu4
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="ISO-8859-1"
-
-Hi,
-
-Am Samstag, 6. Januar 2018, 01:47:56 CET schrieb Brian Norris:
-> This was used out-of-tree as a hack for resolving issues where some
-> systems expect the backlight to turn on automatically at boot, while
-> others expect to manage the backlight status via a DRM/panel driver.
-> Those issues have since been fixed upstream in pwm_bl.c without device
-> tree hacks, and so this un-documented property should no longer be
-> useful.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-
-seems to work again. Thanks!
-
-Reviewed-by: Marc Dietrich <marvin24@gmx.de>
-
-> ---
->  arch/arm/boot/dts/tegra20-paz00.dts | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/tegra20-paz00.dts
-> b/arch/arm/boot/dts/tegra20-paz00.dts index 30436969adc0..12c63b23ed5e
-> 100644
-> --- a/arch/arm/boot/dts/tegra20-paz00.dts
-> +++ b/arch/arm/boot/dts/tegra20-paz00.dts
-> @@ -504,8 +504,6 @@
-> 
->  		brightness-levels = <0 16 32 48 64 80 96 112 128 144 160 176 192 208 224
-> 240 255>; default-brightness-level = <10>;
-> -
-> -		backlight-boot-off;
->  	};
-> 
->  	clocks {
-
-
---nextPart2399094.HeAjPAVIu4
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEySF+t0C8+8jyqfBvrJ5Hf0cUG2gFAlpV+ZMACgkQrJ5Hf0cU
-G2h0ywgAhPmeR2Lc4M0SYhpOv6r+s2TQoqfB55bqHyJT662DMi++jSMno7H/7zLo
-kNdubWhadXe2mUcW0QfzaRdRFUMh5YHx0oeE0Rxln/CPywQHXOVHtFhull72beMQ
-sAzctL+cDpLYeNI255QUKbvXwQ8yVk9AGinm3KgDo92b6xPITUcmUZdOCyWWiPml
-fmJ1jcbU14X4FuwNrA3QCiuylZaB07dhglK9QpV/4TMAj7wZrV1pEAx5IcwL6S/U
-O/7H2UmTK3SNmYjOAEZFa+N8Br8FEQTQNy78iCwMB6vbmnJtTHne6UQ3RRarOyNf
-zgGNTlqgISpxq3V8QvcyO4jehoGkkg==
-=gTu9
------END PGP SIGNATURE-----
-
---nextPart2399094.HeAjPAVIu4--
+T24gMDkuMDEuMjAxOCAyMTozMiwgQnJpYW4gTm9ycmlzIHdyb3RlOgo+IFdlJ3JlIGZpbGxpbmcg
+dGhlICJyZW1haW5kZXIiIHdvcmQgd2l0aCBsaXR0bGUtZW5kaWFuIGRhdGEsIHRoZW4gd3JpdGlu
+Zwo+IGl0IG91dCB0byBJTyByZWdpc3RlcnMgd2l0aCBlbmRpYW4tY29ycmVjdGluZyB3cml0ZWwo
+KS4gVGhhdCBwcm9iYWJseQo+IHdvbid0IHdvcmsgb24gYmlnLWVuZGlhbiBzeXN0ZW1zLgo+Cj4g
+TGV0J3MgbWFyayB0aGUgInJlbWFpbmRlciIgdmFyaWFibGUgYXMgTEUzMiAoc2luY2Ugd2UgZmls
+bCBpdCB3aXRoCj4gbWVtY3B5KCkpIGFuZCBkbyB0aGUgc3dhcHBpbmcgZXhwbGljaXRseS4KPgo+
+IFNvbWUgb2YgdGhpcyBmdW5jdGlvbiBjb3VsZCBiZSBkb25lIG1vcmUgZWFzaWx5IHdpdGhvdXQg
+bWVtY3B5KCksIGJ1dAo+IHRoZSB1bmFsaWduZWQgInJlbWFpbmRlciIgY2FzZSBpcyBhIGxpdHRs
+ZSBoYXJkIHRvIGRvIHdpdGhvdXQKPiBwb3RlbnRpYWxseSBvdmVycnVubmluZyAndHhfYnVmJywg
+c28gSSBqdXN0IGFwcGxpZWQgdGhlIHNhbWUgc29sdXRpb24gaW4KPiBhbGwgY2FzZXMgKG1lbWNw
+eSgpICsgbGUzMl90b19jcHUoKSkuCj4KPiBUZXN0ZWQgb25seSBvbiBhIGxpdHRsZS1lbmRpYW4g
+c3lzdGVtLgo+Cj4gU2lnbmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJv
+bWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlw
+aS1kc2kuYyB8IDE4ICsrKysrKysrKy0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNl
+cnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+c3lub3BzeXMvZHctbWlwaS1kc2kuYwo+IGluZGV4IGVkOTFlMzJlZTQzYS4uOTBmMTNkZjZmMTA2
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1k
+c2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2ku
+Ywo+IEBAIC0zNjAsMTggKzM2MCwxOCBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3dyaXRlKHN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICB7Cj4gIAljb25zdCB1OCAqdHhfYnVmID0gcGFja2V0
+LT5wYXlsb2FkOwo+ICAJaW50IGxlbiA9IHBhY2tldC0+cGF5bG9hZF9sZW5ndGgsIHBsZF9kYXRh
+X2J5dGVzID0gc2l6ZW9mKHUzMiksIHJldDsKPiAtCXUzMiByZW1haW5kZXI7Cj4gKwlfX2xlMzIg
+d29yZDsKPiAgCXUzMiB2YWw7Cj4gIAo+ICAJd2hpbGUgKGxlbikgewo+ICAJCWlmIChsZW4gPCBw
+bGRfZGF0YV9ieXRlcykgewo+IC0JCQlyZW1haW5kZXIgPSAwOwo+IC0JCQltZW1jcHkoJnJlbWFp
+bmRlciwgdHhfYnVmLCBsZW4pOwo+IC0JCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRB
+LCByZW1haW5kZXIpOwo+ICsJCQl3b3JkID0gMDsKPiArCQkJbWVtY3B5KCZ3b3JkLCB0eF9idWYs
+IGxlbik7Cj4gKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJfdG9fY3B1
+KHdvcmQpKTsKPiAgCQkJbGVuID0gMDsKPiAgCQl9IGVsc2Ugewo+IC0JCQltZW1jcHkoJnJlbWFp
+bmRlciwgdHhfYnVmLCBwbGRfZGF0YV9ieXRlcyk7Cj4gLQkJCWRzaV93cml0ZShkc2ksIERTSV9H
+RU5fUExEX0RBVEEsIHJlbWFpbmRlcik7Cj4gKwkJCW1lbWNweSgmd29yZCwgdHhfYnVmLCBwbGRf
+ZGF0YV9ieXRlcyk7Cj4gKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJf
+dG9fY3B1KHdvcmQpKTsKPiAgCQkJdHhfYnVmICs9IHBsZF9kYXRhX2J5dGVzOwo+ICAJCQlsZW4g
+LT0gcGxkX2RhdGFfYnl0ZXM7Cj4gIAkJfQo+IEBAIC0zODYsOSArMzg2LDkgQEAgc3RhdGljIGlu
+dCBkd19taXBpX2RzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiAgCQl9Cj4gIAl9
+Cj4gIAo+IC0JcmVtYWluZGVyID0gMDsKPiAtCW1lbWNweSgmcmVtYWluZGVyLCBwYWNrZXQtPmhl
+YWRlciwgc2l6ZW9mKHBhY2tldC0+aGVhZGVyKSk7Cj4gLQlyZXR1cm4gZHdfbWlwaV9kc2lfZ2Vu
+X3BrdF9oZHJfd3JpdGUoZHNpLCByZW1haW5kZXIpOwo+ICsJd29yZCA9IDA7Cj4gKwltZW1jcHko
+JndvcmQsIHBhY2tldC0+aGVhZGVyLCBzaXplb2YocGFja2V0LT5oZWFkZXIpKTsKPiArCXJldHVy
+biBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIGxlMzJfdG9fY3B1KHdvcmQpKTsK
+CllvdSBjb3VsZCBjcmVhdGUgYW5kIHVzZSBhcHByb3ByaWF0ZSBoZWxwZXIsIGxldHMgc2F5OgoK
+dTMyIGxlX3RvX2NwdXAoY29uc3QgdTggKnAsIGludCBjb3VudCkKewrCoMKgwqAgX19sZTMyIHIg
+PSAwOwoKwqDCoMKgIG1lbWNweSgmciwgcCwgY291bnQpOwrCoMKgwqAgcmV0dXJuIGxlMzJfdG9f
+Y3B1KHIpOwp9CgpXaXRoIG9yIHdpdGhvdXQgdGhpcyBjaGFuZ2U6ClJldmlld2VkLWJ5OiBBbmRy
+emVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKwqAtLQpSZWdhcmRzCkFuZHJ6ZWoKCgo+
+ICB9Cj4gIAo+ICBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVj
+dCBtaXBpX2RzaV9ob3N0ICpob3N0LAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
