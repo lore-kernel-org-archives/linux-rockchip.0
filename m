@@ -1,41 +1,42 @@
 From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [PATCH v2 1/2] phy: rockchip-emmc: retry calpad busy trimming
-Date: Wed, 10 Jan 2018 11:36:34 -0800
-Message-ID: <CAD=FV=WGw7i+=S0JLSmAEnG8t_oT5gWwYn4e1TJ4LkHUVYp6Cw@mail.gmail.com>
-References: <1515581362-181200-1-git-send-email-shawn.lin@rock-chips.com>
+Date: Wed, 10 Jan 2018 11:36:51 -0800
+Message-ID: <CAD=FV=XhRvzOVHNniCNJon-7MuKss2BDG4fDSDLEohHR-beu0g@mail.gmail.com>
+References: <1515569879-31808-1-git-send-email-wxt@rock-chips.com> <1515569879-31808-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1515581362-181200-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1515569879-31808-2-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Ziyuan Xu <xzy.xu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, LKML <linux-kernel@vger.kernel.org>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-This seems like a good idea to me.  The fact that there was no polling
-loop here always seemed strange to me, but that's how the original
-code was structured and I personally never saw any problems with it.
-
-On Wed, Jan 10, 2018 at 2:49 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+On Tue, Jan 9, 2018 at 11:37 PM, Caesar Wang <wxt@rock-chips.com> wrote:
+> From: Shawn Lin <shawn.lin@rock-chips.com>
+>
 > It turns out that 5us isn't enough for all cases, so let's
 > retry some more times to wait for caldone.
 >
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Reviewed-by: Brian Norris <briannorris@chromium.org>
-> Tested-by: Caesar Wang <wxt@rock-chips.com>
 > Tested-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 > ---
 >
 > Changes in v2:
-> - propagate the error and print it
->
+> - print the return valut with regmap_read_poll_timeout failing.
+
+I agree with Brian that it was quite confusing to see a v2 from both
+you and Shawn.
+
+
 >  drivers/phy/rockchip/phy-rockchip-emmc.c | 27 +++++++++++++++++----------
 >  1 file changed, 17 insertions(+), 10 deletions(-)
 >
 > diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> index f1b24f1..547b746 100644
+> index f1b24f1..574838f 100644
 > --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
 > +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
 > @@ -76,6 +76,10 @@
@@ -81,14 +82,10 @@ On Wed, Jan 10, 2018 at 2:49 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
 > +                                      rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
 > +                                      caldone, PHYCTRL_IS_CALDONE(caldone),
 > +                                      5, 50);
-
-See comments in part 2 of this series, AKA
-<https://patchwork.kernel.org/patch/10154797/>.  I think this should
-be "0, 50", not "5, 50".  ...or, if you insist, "10, 50"
-
-
+>
 > +       if (ret) {
-> +               pr_err("%s: caldone failed %d.\n", __func__, ret);
+> +               pr_err("%s: caldone timeout, ret=%d\n", __func__, ret);
 
-I like this v2 slightly better than Caesar's v2 because you changed
-the word "timeout" to "failed".
+In Shawn's v2, AKA <https://patchwork.kernel.org/patch/10154795/>,
+this says "caldone failed", which I like better since not all failures
+will be timeouts.
