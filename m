@@ -1,46 +1,83 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] drm/bridge/synopsys: dsi: make dw_mipi_dsi_bridge_mode_set()
- static
-Date: Tue,  9 Jan 2018 12:33:19 -0800
-Message-ID: <20180109203319.139520-1-briannorris@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: hl@rock-chips.com, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v2 1/2] phy: rockchip-emmc: retry calpad busy trimming
+Date: Wed, 10 Jan 2018 15:37:58 +0800
+Message-ID: <1515569879-31808-2-git-send-email-wxt@rock-chips.com>
+References: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-c3BhcnNlIGNvbXBsYWluczoKCmRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlw
-aS1kc2kuYzo3MDM6Njogd2FybmluZzogc3ltYm9sCidkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9z
-ZXQnIHdhcyBub3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/CgpTaWduZWQtb2ZmLWJ5
-OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KLS0tCiBkcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCA2ICsrKy0tLQogMSBmaWxlIGNo
-YW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKaW5kZXggOTBmMTNkZjZmMTA2Li5kNjBh
-NzdlOThiNTcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
-bWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
-ZHNpLmMKQEAgLTcwMCw5ICs3MDAsOSBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9icmlkZ2Vf
-cG9zdF9kaXNhYmxlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCiAJcG1fcnVudGltZV9wdXQo
-ZHNpLT5kZXYpOwogfQogCi12b2lkIGR3X21pcGlfZHNpX2JyaWRnZV9tb2RlX3NldChzdHJ1Y3Qg
-ZHJtX2JyaWRnZSAqYnJpZGdlLAotCQkJCSBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwK
-LQkJCQkgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUpCitzdGF0aWMgdm9p
-ZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwK
-KwkJCQkJc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsCisJCQkJCXN0cnVjdCBkcm1fZGlz
-cGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQogewogCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpID0g
-YnJpZGdlX3RvX2RzaShicmlkZ2UpOwogCWNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9waHlfb3Bz
-ICpwaHlfb3BzID0gZHNpLT5wbGF0X2RhdGEtPnBoeV9vcHM7Ci0tIAoyLjE2LjAucmMxLjIzOC5n
-NTMwZDY0OWE3OS1nb29nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+From: Shawn Lin <shawn.lin@rock-chips.com>
+
+It turns out that 5us isn't enough for all cases, so let's
+retry some more times to wait for caldone.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Tested-by: Ziyuan Xu <xzy.xu@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+---
+
+Changes in v2:
+- print the return valut with regmap_read_poll_timeout failing.
+
+ drivers/phy/rockchip/phy-rockchip-emmc.c | 27 +++++++++++++++++----------
+ 1 file changed, 17 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+index f1b24f1..574838f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-emmc.c
++++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+@@ -76,6 +76,10 @@
+ #define PHYCTRL_OTAPDLYSEL_MASK		0xf
+ #define PHYCTRL_OTAPDLYSEL_SHIFT	0x7
+ 
++#define PHYCTRL_IS_CALDONE(x) \
++	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
++	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
++
+ struct rockchip_emmc_phy {
+ 	unsigned int	reg_offset;
+ 	struct regmap	*reg_base;
+@@ -90,6 +94,7 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+ 	unsigned long rate;
+ 	unsigned long timeout;
++	int ret;
+ 
+ 	/*
+ 	 * Keep phyctrl_pdb and phyctrl_endll low to allow
+@@ -160,17 +165,19 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 				   PHYCTRL_PDB_SHIFT));
+ 
+ 	/*
+-	 * According to the user manual, it asks driver to
+-	 * wait 5us for calpad busy trimming
++	 * According to the user manual, it asks driver to wait 5us for
++	 * calpad busy trimming. However it is documented that this value is
++	 * PVT(A.K.A process,voltage and temperature) relevant, so some
++	 * failure cases are found which indicates we should be more tolerant
++	 * to calpad busy trimming.
+ 	 */
+-	udelay(5);
+-	regmap_read(rk_phy->reg_base,
+-		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+-		    &caldone);
+-	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
+-	if (caldone != PHYCTRL_CALDONE_DONE) {
+-		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
+-		return -ETIMEDOUT;
++	ret = regmap_read_poll_timeout(rk_phy->reg_base,
++				       rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
++				       caldone, PHYCTRL_IS_CALDONE(caldone),
++				       5, 50);
++	if (ret) {
++		pr_err("%s: caldone timeout, ret=%d\n", __func__, ret);
++		return ret;
+ 	}
+ 
+ 	/* Set the frequency of the DLL operation */
+-- 
+2.7.4
