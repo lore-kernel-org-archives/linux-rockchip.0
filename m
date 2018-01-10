@@ -1,104 +1,64 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 2/2] phy: rockchip-emmc: use regmap_read_poll_timeout to
- poll dllrdy
-Date: Wed, 10 Jan 2018 15:37:59 +0800
-Message-ID: <1515569879-31808-3-git-send-email-wxt@rock-chips.com>
-References: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v7 6/8] drm/bridge/synopsys: dw-hdmi: Add missing bridge
+ detach
+Date: Wed, 10 Jan 2018 14:44:40 +0530
+Message-ID: <7002caef-7b73-763a-22eb-4a526cf854b9@codeaurora.org>
+References: <20180109144853.32536-1-thierry.escande@collabora.com>
+ <20180109144853.32536-7-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180109144853.32536-7-thierry.escande@collabora.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Escande <thierry.escande@collabora.com>, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Shawn Lin <shawn.lin@rock-chips.com>
-
-Just use the API instead of open-coding it, no functional change
-intended.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-Reviewed-by: Brian Norris <briannorris@chromium.org>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
----
-
-Changes in v2:
-- As Brian commented on https://patchwork.kernel.org/patch/10139891/,
-  changed the note and added to print error value with
-  regmap_read_poll_timeout API.
-
- drivers/phy/rockchip/phy-rockchip-emmc.c | 33 +++++++++++---------------------
- 1 file changed, 11 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index 574838f..343c623 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -79,6 +79,9 @@
- #define PHYCTRL_IS_CALDONE(x) \
- 	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
- 	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
-+#define PHYCTRL_IS_DLLRDY(x) \
-+	((((x) >> PHYCTRL_DLLRDY_SHIFT) & \
-+	  PHYCTRL_DLLRDY_MASK) == PHYCTRL_DLLRDY_DONE)
- 
- struct rockchip_emmc_phy {
- 	unsigned int	reg_offset;
-@@ -93,7 +96,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
- 	unsigned int dllrdy;
- 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
- 	unsigned long rate;
--	unsigned long timeout;
- 	int ret;
- 
- 	/*
-@@ -217,28 +219,15 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
- 	 * NOTE: There appear to be corner cases where the DLL seems to take
- 	 * extra long to lock for reasons that aren't understood.  In some
- 	 * extreme cases we've seen it take up to over 10ms (!).  We'll be
--	 * generous and give it 50ms.  We still busy wait here because:
--	 * - In most cases it should be super fast.
--	 * - This is not called lots during normal operation so it shouldn't
--	 *   be a power or performance problem to busy wait.  We expect it
--	 *   only at boot / resume.  In both cases, eMMC is probably on the
--	 *   critical path so busy waiting a little extra time should be OK.
-+	 * generous and give it 50ms.
- 	 */
--	timeout = jiffies + msecs_to_jiffies(50);
--	do {
--		udelay(1);
--
--		regmap_read(rk_phy->reg_base,
--			rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
--			&dllrdy);
--		dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
--		if (dllrdy == PHYCTRL_DLLRDY_DONE)
--			break;
--	} while (!time_after(jiffies, timeout));
--
--	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
--		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
--		return -ETIMEDOUT;
-+	ret = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-+				       dllrdy, PHYCTRL_IS_DLLRDY(dllrdy),
-+				       1, 50 * USEC_PER_MSEC);
-+	if (ret) {
-+		pr_err("%s: dllrdy timeout. ret=%d\n", __func__, ret);
-+		return ret;
- 	}
- 
- 	return 0;
--- 
-2.7.4
+CgpPbiAwMS8wOS8yMDE4IDA4OjE4IFBNLCBUaGllcnJ5IEVzY2FuZGUgd3JvdGU6Cj4gRnJvbTog
+SmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiAKPiBXZSBpbml0ZWQgY29u
+bmVjdG9yIGluIGF0dGFjaCgpLCBzbyBuZWVkIGEgZGV0YWNoKCkgdG8gY2xlYW51cC4KPiAKPiBB
+bHNvIGZpeCB3cm9uZyB1c2Ugb2YgZHdfaGRtaV9yZW1vdmUoKSBpbiBiaW5kKCkuCj4gCj4gU2ln
+bmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29t
+PgoKUmV2aWV3ZWQtYnk6IEFyY2hpdCBUYW5lamEgPGFyY2hpdHRAY29kZWF1cm9yYS5vcmc+Cgo+
+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCAxMCAr
+KysrKysrKystCj4gICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9u
+KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
+aGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiBpbmRl
+eCBhMzhkYjQwY2U5OTAuLjFjYzYzYTE4YjdkNSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gQEAgLTE5NjcsNiArMTk2NywxMyBAQCBzdGF0aWMgaW50
+IGR3X2hkbWlfYnJpZGdlX2F0dGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICAgCXJl
+dHVybiAwOwo+ICAgfQo+ICAgCj4gK3N0YXRpYyB2b2lkIGR3X2hkbWlfYnJpZGdlX2RldGFjaChz
+dHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICt7Cj4gKwlzdHJ1Y3QgZHdfaGRtaSAqaGRtaSA9
+IGJyaWRnZS0+ZHJpdmVyX3ByaXZhdGU7Cj4gKwo+ICsJZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCZo
+ZG1pLT5jb25uZWN0b3IpOwo+ICt9Cj4gKwo+ICAgc3RhdGljIGVudW0gZHJtX21vZGVfc3RhdHVz
+Cj4gICBkd19oZG1pX2JyaWRnZV9tb2RlX3ZhbGlkKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2Us
+Cj4gICAJCQkgIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+IEBAIC0yMDIz
+LDYgKzIwMzAsNyBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX2JyaWRnZV9lbmFibGUoc3RydWN0IGRy
+bV9icmlkZ2UgKmJyaWRnZSkKPiAgIAo+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdl
+X2Z1bmNzIGR3X2hkbWlfYnJpZGdlX2Z1bmNzID0gewo+ICAgCS5hdHRhY2ggPSBkd19oZG1pX2Jy
+aWRnZV9hdHRhY2gsCj4gKwkuZGV0YWNoID0gZHdfaGRtaV9icmlkZ2VfZGV0YWNoLAo+ICAgCS5l
+bmFibGUgPSBkd19oZG1pX2JyaWRnZV9lbmFibGUsCj4gICAJLmRpc2FibGUgPSBkd19oZG1pX2Jy
+aWRnZV9kaXNhYmxlLAo+ICAgCS5tb2RlX3NldCA9IGR3X2hkbWlfYnJpZGdlX21vZGVfc2V0LAo+
+IEBAIC0yNjE2LDcgKzI2MjQsNyBAQCBpbnQgZHdfaGRtaV9iaW5kKHN0cnVjdCBwbGF0Zm9ybV9k
+ZXZpY2UgKnBkZXYsIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPiAgIAo+ICAgCXJldCA9
+IGRybV9icmlkZ2VfYXR0YWNoKGVuY29kZXIsICZoZG1pLT5icmlkZ2UsIE5VTEwpOwo+ICAgCWlm
+IChyZXQpIHsKPiAtCQlkd19oZG1pX3JlbW92ZShwZGV2KTsKPiArCQlfX2R3X2hkbWlfcmVtb3Zl
+KGhkbWkpOwo+ICAgCQlEUk1fRVJST1IoIkZhaWxlZCB0byBpbml0aWFsaXplIGJyaWRnZSB3aXRo
+IGRybVxuIik7Cj4gICAJCXJldHVybiByZXQ7Cj4gICAJfQo+IAoKLS0gClF1YWxjb21tIElubm92
+YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIENvZGUgQXVyb3JhIEZvcnVtLAphIExp
+bnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9qZWN0Cl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
