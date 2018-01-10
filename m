@@ -1,91 +1,72 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 1/2] phy: rockchip-emmc: retry calpad busy trimming
-Date: Wed, 10 Jan 2018 18:49:21 +0800
-Message-ID: <1515581362-181200-1-git-send-email-shawn.lin@rock-chips.com>
+From: Marc Dietrich <marvin24@gmx.de>
+Subject: Re: [PATCH 2/3] ARM: tegra: paz00: drop nonstandard 'backlight-boot-off'
+Date: Wed, 10 Jan 2018 12:31:31 +0100
+Message-ID: <27065017.X8cFkIFnZg@fb07-iapwap2>
+References: <20180106004757.8239-1-briannorris@chromium.org> <20180106004757.8239-2-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; boundary="nextPart2399094.HeAjPAVIu4"; micalg="pgp-sha256"; protocol="application/pgp-signature"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180106004757.8239-2-briannorris@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-tegra@vger.kernel.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-It turns out that 5us isn't enough for all cases, so let's
-retry some more times to wait for caldone.
+--nextPart2399094.HeAjPAVIu4
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="ISO-8859-1"
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Tested-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Hi,
 
-Changes in v2:
-- propagate the error and print it
+Am Samstag, 6. Januar 2018, 01:47:56 CET schrieb Brian Norris:
+> This was used out-of-tree as a hack for resolving issues where some
+> systems expect the backlight to turn on automatically at boot, while
+> others expect to manage the backlight status via a DRM/panel driver.
+> Those issues have since been fixed upstream in pwm_bl.c without device
+> tree hacks, and so this un-documented property should no longer be
+> useful.
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
- drivers/phy/rockchip/phy-rockchip-emmc.c | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
+seems to work again. Thanks!
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index f1b24f1..547b746 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -76,6 +76,10 @@
- #define PHYCTRL_OTAPDLYSEL_MASK		0xf
- #define PHYCTRL_OTAPDLYSEL_SHIFT	0x7
- 
-+#define PHYCTRL_IS_CALDONE(x) \
-+	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
-+	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
-+
- struct rockchip_emmc_phy {
- 	unsigned int	reg_offset;
- 	struct regmap	*reg_base;
-@@ -90,6 +94,7 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
- 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
- 	unsigned long rate;
- 	unsigned long timeout;
-+	int ret;
- 
- 	/*
- 	 * Keep phyctrl_pdb and phyctrl_endll low to allow
-@@ -160,17 +165,19 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
- 				   PHYCTRL_PDB_SHIFT));
- 
- 	/*
--	 * According to the user manual, it asks driver to
--	 * wait 5us for calpad busy trimming
-+	 * According to the user manual, it asks driver to wait 5us for
-+	 * calpad busy trimming. However it is documented that this value is
-+	 * PVT(A.K.A process,voltage and temperature) relevant, so some
-+	 * failure cases are found which indicates we should be more tolerant
-+	 * to calpad busy trimming.
- 	 */
--	udelay(5);
--	regmap_read(rk_phy->reg_base,
--		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
--		    &caldone);
--	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
--	if (caldone != PHYCTRL_CALDONE_DONE) {
--		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
--		return -ETIMEDOUT;
-+	ret = regmap_read_poll_timeout(rk_phy->reg_base,
-+				       rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-+				       caldone, PHYCTRL_IS_CALDONE(caldone),
-+				       5, 50);
-+	if (ret) {
-+		pr_err("%s: caldone failed %d.\n", __func__, ret);
-+		return ret;
- 	}
- 
- 	/* Set the frequency of the DLL operation */
--- 
-1.9.1
+Reviewed-by: Marc Dietrich <marvin24@gmx.de>
+
+> ---
+>  arch/arm/boot/dts/tegra20-paz00.dts | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/tegra20-paz00.dts
+> b/arch/arm/boot/dts/tegra20-paz00.dts index 30436969adc0..12c63b23ed5e
+> 100644
+> --- a/arch/arm/boot/dts/tegra20-paz00.dts
+> +++ b/arch/arm/boot/dts/tegra20-paz00.dts
+> @@ -504,8 +504,6 @@
+> 
+>  		brightness-levels = <0 16 32 48 64 80 96 112 128 144 160 176 192 208 224
+> 240 255>; default-brightness-level = <10>;
+> -
+> -		backlight-boot-off;
+>  	};
+> 
+>  	clocks {
+
+
+--nextPart2399094.HeAjPAVIu4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEySF+t0C8+8jyqfBvrJ5Hf0cUG2gFAlpV+ZMACgkQrJ5Hf0cU
+G2h0ywgAhPmeR2Lc4M0SYhpOv6r+s2TQoqfB55bqHyJT662DMi++jSMno7H/7zLo
+kNdubWhadXe2mUcW0QfzaRdRFUMh5YHx0oeE0Rxln/CPywQHXOVHtFhull72beMQ
+sAzctL+cDpLYeNI255QUKbvXwQ8yVk9AGinm3KgDo92b6xPITUcmUZdOCyWWiPml
+fmJ1jcbU14X4FuwNrA3QCiuylZaB07dhglK9QpV/4TMAj7wZrV1pEAx5IcwL6S/U
+O/7H2UmTK3SNmYjOAEZFa+N8Br8FEQTQNy78iCwMB6vbmnJtTHne6UQ3RRarOyNf
+zgGNTlqgISpxq3V8QvcyO4jehoGkkg==
+=gTu9
+-----END PGP SIGNATURE-----
+
+--nextPart2399094.HeAjPAVIu4--
