@@ -1,7 +1,8 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v8 4/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
-Date: Wed, 10 Jan 2018 17:23:44 +0100
-Message-ID: <20180110162348.22765-5-thierry.escande@collabora.com>
+Subject: [PATCH v8 3/8] drm/rockchip: analogix_dp: Add a sanity check for
+ rockchip_drm_psr_register()
+Date: Wed, 10 Jan 2018 17:23:43 +0100
+Message-ID: <20180110162348.22765-4-thierry.escande@collabora.com>
 References: <20180110162348.22765-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,72 +25,54 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Add missing pm_runtime_disable() in bind()'s error handling path.
+The rockchip_drm_psr_register() can fail, so add a sanity check for that.
 
-Also cleanup encoder & connector in unbind().
+Also reorder the calls in unbind() to match bind().
 
-Fixes: 80a9a059d4e4 ("drm/rockchip/dsi: add dw-mipi power domain support")
 Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-index b1fe0639227e..78e6b7919bf7 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-@@ -1282,7 +1282,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 	ret = dw_mipi_dsi_register(drm, dsi);
- 	if (ret) {
- 		DRM_DEV_ERROR(dev, "Failed to register mipi_dsi: %d\n", ret);
--		goto err_pllref;
-+		goto err_disable_pllref;
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 37250ab63bd7..eb88c52336a7 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -354,15 +354,22 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
+ 	INIT_WORK(&dp->psr_work, analogix_dp_psr_work);
+ 
+-	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
++	ret = rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
++	if (ret < 0)
++		goto err_cleanup_encoder;
+ 
+ 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+ 	if (IS_ERR(dp->adp)) {
+-		dp->encoder.funcs->destroy(&dp->encoder);
+-		return PTR_ERR(dp->adp);
++		ret = PTR_ERR(dp->adp);
++		goto err_unreg_psr;
  	}
  
- 	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
-@@ -1290,24 +1290,25 @@ static int dw_mipi_dsi_bind(struct device *dev, struct device *master,
- 	ret = mipi_dsi_host_register(&dsi->dsi_host);
- 	if (ret) {
- 		DRM_DEV_ERROR(dev, "Failed to register MIPI host: %d\n", ret);
--		goto err_cleanup;
-+		goto err_disable_pm_runtime;
- 	}
- 
- 	if (!dsi->panel) {
- 		ret = -EPROBE_DEFER;
--		goto err_mipi_dsi_host;
-+		goto err_unreg_mipi_dsi_host;
- 	}
- 
- 	dev_set_drvdata(dev, dsi);
- 	pm_runtime_enable(dev);
  	return 0;
- 
--err_mipi_dsi_host:
-+err_unreg_mipi_dsi_host:
- 	mipi_dsi_host_unregister(&dsi->dsi_host);
--err_cleanup:
--	drm_encoder_cleanup(&dsi->encoder);
--	drm_connector_cleanup(&dsi->connector);
--err_pllref:
-+err_disable_pm_runtime:
-+	pm_runtime_disable(dev);
-+	dsi->connector.funcs->destroy(&dsi->connector);
-+	dsi->encoder.funcs->destroy(&dsi->encoder);
-+err_disable_pllref:
- 	clk_disable_unprepare(dsi->pllref_clk);
- 	return ret;
++err_unreg_psr:
++	rockchip_drm_psr_unregister(&dp->encoder);
++err_cleanup_encoder:
++	dp->encoder.funcs->destroy(&dp->encoder);
++	return ret;
  }
-@@ -1319,6 +1320,10 @@ static void dw_mipi_dsi_unbind(struct device *dev, struct device *master,
  
- 	mipi_dsi_host_unregister(&dsi->dsi_host);
- 	pm_runtime_disable(dev);
-+
-+	dsi->connector.funcs->destroy(&dsi->connector);
-+	dsi->encoder.funcs->destroy(&dsi->encoder);
-+
- 	clk_disable_unprepare(dsi->pllref_clk);
+ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+@@ -370,8 +377,8 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+ {
+ 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+ 
+-	rockchip_drm_psr_unregister(&dp->encoder);
+ 	analogix_dp_unbind(dp->adp);
++	rockchip_drm_psr_unregister(&dp->encoder);
+ 	dp->encoder.funcs->destroy(&dp->encoder);
  }
  
 -- 
