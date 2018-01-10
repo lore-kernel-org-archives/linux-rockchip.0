@@ -1,50 +1,104 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 0/2] phy: rockchip-emmc: fixes emmc-phy power on failed with rk3399 SoCs
-Date: Wed, 10 Jan 2018 15:37:57 +0800
-Message-ID: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH v2 2/2] phy: rockchip-emmc: use regmap_read_poll_timeout to
+ poll dllrdy
+Date: Wed, 10 Jan 2018 15:37:59 +0800
+Message-ID: <1515569879-31808-3-git-send-email-wxt@rock-chips.com>
+References: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1515569879-31808-1-git-send-email-wxt@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
+From: Shawn Lin <shawn.lin@rock-chips.com>
 
-Since the Shawn isn't available, I take over this series patches for now.
+Just use the API instead of open-coding it, no functional change
+intended.
 
-As the original bug had tracked on https://issuetracker.google.com/71561742.
-In some cases, the mmc phy power on failed during booting up.
-The log as below:
-...
-[   2.375333] rockchip_emmc_phy_power: caldone timeout.
-[    2.377815] phy phy-ff770000.syscon:phy@f780.4: phy poweron failed --> -110
-...
-[    2.489295] mmc0: mmc_select_hs400es failed, error -110
-[    2.489302] mmc0: error -110 whilst initialising MMC card
-..
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-The actual emulate, the wait 5us for calpad busy trimming, that's no enough.
-We need give the enough margin for it.
-
-Verified on url =
-        https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
-This series patches can apply and bring up with kernel-next on rk3399 chromebook.
-
--Caesar
-
+---
 
 Changes in v2:
-- print the return valut with regmap_read_poll_timeout failing.
 - As Brian commented on https://patchwork.kernel.org/patch/10139891/,
   changed the note and added to print error value with
   regmap_read_poll_timeout API.
 
-Shawn Lin (2):
-  phy: rockchip-emmc: retry calpad busy trimming
-  phy: rockchip-emmc: use regmap_read_poll_timeout to poll dllrdy
+ drivers/phy/rockchip/phy-rockchip-emmc.c | 33 +++++++++++---------------------
+ 1 file changed, 11 insertions(+), 22 deletions(-)
 
- drivers/phy/rockchip/phy-rockchip-emmc.c | 60 +++++++++++++++-----------------
- 1 file changed, 28 insertions(+), 32 deletions(-)
-
+diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+index 574838f..343c623 100644
+--- a/drivers/phy/rockchip/phy-rockchip-emmc.c
++++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+@@ -79,6 +79,9 @@
+ #define PHYCTRL_IS_CALDONE(x) \
+ 	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
+ 	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
++#define PHYCTRL_IS_DLLRDY(x) \
++	((((x) >> PHYCTRL_DLLRDY_SHIFT) & \
++	  PHYCTRL_DLLRDY_MASK) == PHYCTRL_DLLRDY_DONE)
+ 
+ struct rockchip_emmc_phy {
+ 	unsigned int	reg_offset;
+@@ -93,7 +96,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 	unsigned int dllrdy;
+ 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+ 	unsigned long rate;
+-	unsigned long timeout;
+ 	int ret;
+ 
+ 	/*
+@@ -217,28 +219,15 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 	 * NOTE: There appear to be corner cases where the DLL seems to take
+ 	 * extra long to lock for reasons that aren't understood.  In some
+ 	 * extreme cases we've seen it take up to over 10ms (!).  We'll be
+-	 * generous and give it 50ms.  We still busy wait here because:
+-	 * - In most cases it should be super fast.
+-	 * - This is not called lots during normal operation so it shouldn't
+-	 *   be a power or performance problem to busy wait.  We expect it
+-	 *   only at boot / resume.  In both cases, eMMC is probably on the
+-	 *   critical path so busy waiting a little extra time should be OK.
++	 * generous and give it 50ms.
+ 	 */
+-	timeout = jiffies + msecs_to_jiffies(50);
+-	do {
+-		udelay(1);
+-
+-		regmap_read(rk_phy->reg_base,
+-			rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+-			&dllrdy);
+-		dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
+-		if (dllrdy == PHYCTRL_DLLRDY_DONE)
+-			break;
+-	} while (!time_after(jiffies, timeout));
+-
+-	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
+-		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
+-		return -ETIMEDOUT;
++	ret = regmap_read_poll_timeout(rk_phy->reg_base,
++				       rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
++				       dllrdy, PHYCTRL_IS_DLLRDY(dllrdy),
++				       1, 50 * USEC_PER_MSEC);
++	if (ret) {
++		pr_err("%s: dllrdy timeout. ret=%d\n", __func__, ret);
++		return ret;
+ 	}
+ 
+ 	return 0;
 -- 
 2.7.4
