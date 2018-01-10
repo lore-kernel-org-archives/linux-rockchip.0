@@ -1,77 +1,54 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2 2/2] drm/bridge/synopsys: dsi: handle endianness
- correctly in dw_mipi_dsi_write()
-Date: Wed, 10 Jan 2018 15:33:41 +0100
-Message-ID: <199f9097-736e-afe8-2093-bb28fba8b308@samsung.com>
-References: <20180109203248.139249-1-briannorris@chromium.org>
- <CGME20180109203308epcas1p17226c8b3b3a0474adcd51b87b70084bf@epcas1p1.samsung.com>
- <20180109203248.139249-2-briannorris@chromium.org>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v8 0/8] rockchip: kevin: Enable edp display
+Date: Wed, 10 Jan 2018 17:23:40 +0100
+Message-ID: <20180110162348.22765-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20180109203248.139249-2-briannorris@chromium.org>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: hl@rock-chips.com, David Airlie <airlied@linux.ie>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Transfert-Encoding: 8bit
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDkuMDEuMjAxOCAyMTozMiwgQnJpYW4gTm9ycmlzIHdyb3RlOgo+IFdlJ3JlIGZpbGxpbmcg
-dGhlICJyZW1haW5kZXIiIHdvcmQgd2l0aCBsaXR0bGUtZW5kaWFuIGRhdGEsIHRoZW4gd3JpdGlu
-Zwo+IGl0IG91dCB0byBJTyByZWdpc3RlcnMgd2l0aCBlbmRpYW4tY29ycmVjdGluZyB3cml0ZWwo
-KS4gVGhhdCBwcm9iYWJseQo+IHdvbid0IHdvcmsgb24gYmlnLWVuZGlhbiBzeXN0ZW1zLgo+Cj4g
-TGV0J3MgbWFyayB0aGUgInJlbWFpbmRlciIgdmFyaWFibGUgYXMgTEUzMiAoc2luY2Ugd2UgZmls
-bCBpdCB3aXRoCj4gbWVtY3B5KCkpIGFuZCBkbyB0aGUgc3dhcHBpbmcgZXhwbGljaXRseS4KPgo+
-IFNvbWUgb2YgdGhpcyBmdW5jdGlvbiBjb3VsZCBiZSBkb25lIG1vcmUgZWFzaWx5IHdpdGhvdXQg
-bWVtY3B5KCksIGJ1dAo+IHRoZSB1bmFsaWduZWQgInJlbWFpbmRlciIgY2FzZSBpcyBhIGxpdHRs
-ZSBoYXJkIHRvIGRvIHdpdGhvdXQKPiBwb3RlbnRpYWxseSBvdmVycnVubmluZyAndHhfYnVmJywg
-c28gSSBqdXN0IGFwcGxpZWQgdGhlIHNhbWUgc29sdXRpb24gaW4KPiBhbGwgY2FzZXMgKG1lbWNw
-eSgpICsgbGUzMl90b19jcHUoKSkuCj4KPiBUZXN0ZWQgb25seSBvbiBhIGxpdHRsZS1lbmRpYW4g
-c3lzdGVtLgo+Cj4gU2lnbmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJv
-bWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlw
-aS1kc2kuYyB8IDE4ICsrKysrKysrKy0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNl
-cnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-c3lub3BzeXMvZHctbWlwaS1kc2kuYwo+IGluZGV4IGVkOTFlMzJlZTQzYS4uOTBmMTNkZjZmMTA2
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1k
-c2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2ku
-Ywo+IEBAIC0zNjAsMTggKzM2MCwxOCBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3dyaXRlKHN0
-cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+ICB7Cj4gIAljb25zdCB1OCAqdHhfYnVmID0gcGFja2V0
-LT5wYXlsb2FkOwo+ICAJaW50IGxlbiA9IHBhY2tldC0+cGF5bG9hZF9sZW5ndGgsIHBsZF9kYXRh
-X2J5dGVzID0gc2l6ZW9mKHUzMiksIHJldDsKPiAtCXUzMiByZW1haW5kZXI7Cj4gKwlfX2xlMzIg
-d29yZDsKPiAgCXUzMiB2YWw7Cj4gIAo+ICAJd2hpbGUgKGxlbikgewo+ICAJCWlmIChsZW4gPCBw
-bGRfZGF0YV9ieXRlcykgewo+IC0JCQlyZW1haW5kZXIgPSAwOwo+IC0JCQltZW1jcHkoJnJlbWFp
-bmRlciwgdHhfYnVmLCBsZW4pOwo+IC0JCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRB
-LCByZW1haW5kZXIpOwo+ICsJCQl3b3JkID0gMDsKPiArCQkJbWVtY3B5KCZ3b3JkLCB0eF9idWYs
-IGxlbik7Cj4gKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJfdG9fY3B1
-KHdvcmQpKTsKPiAgCQkJbGVuID0gMDsKPiAgCQl9IGVsc2Ugewo+IC0JCQltZW1jcHkoJnJlbWFp
-bmRlciwgdHhfYnVmLCBwbGRfZGF0YV9ieXRlcyk7Cj4gLQkJCWRzaV93cml0ZShkc2ksIERTSV9H
-RU5fUExEX0RBVEEsIHJlbWFpbmRlcik7Cj4gKwkJCW1lbWNweSgmd29yZCwgdHhfYnVmLCBwbGRf
-ZGF0YV9ieXRlcyk7Cj4gKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJf
-dG9fY3B1KHdvcmQpKTsKPiAgCQkJdHhfYnVmICs9IHBsZF9kYXRhX2J5dGVzOwo+ICAJCQlsZW4g
-LT0gcGxkX2RhdGFfYnl0ZXM7Cj4gIAkJfQo+IEBAIC0zODYsOSArMzg2LDkgQEAgc3RhdGljIGlu
-dCBkd19taXBpX2RzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPiAgCQl9Cj4gIAl9
-Cj4gIAo+IC0JcmVtYWluZGVyID0gMDsKPiAtCW1lbWNweSgmcmVtYWluZGVyLCBwYWNrZXQtPmhl
-YWRlciwgc2l6ZW9mKHBhY2tldC0+aGVhZGVyKSk7Cj4gLQlyZXR1cm4gZHdfbWlwaV9kc2lfZ2Vu
-X3BrdF9oZHJfd3JpdGUoZHNpLCByZW1haW5kZXIpOwo+ICsJd29yZCA9IDA7Cj4gKwltZW1jcHko
-JndvcmQsIHBhY2tldC0+aGVhZGVyLCBzaXplb2YocGFja2V0LT5oZWFkZXIpKTsKPiArCXJldHVy
-biBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIGxlMzJfdG9fY3B1KHdvcmQpKTsK
-CllvdSBjb3VsZCBjcmVhdGUgYW5kIHVzZSBhcHByb3ByaWF0ZSBoZWxwZXIsIGxldHMgc2F5OgoK
-dTMyIGxlX3RvX2NwdXAoY29uc3QgdTggKnAsIGludCBjb3VudCkKewrCoMKgwqAgX19sZTMyIHIg
-PSAwOwoKwqDCoMKgIG1lbWNweSgmciwgcCwgY291bnQpOwrCoMKgwqAgcmV0dXJuIGxlMzJfdG9f
-Y3B1KHIpOwp9CgpXaXRoIG9yIHdpdGhvdXQgdGhpcyBjaGFuZ2U6ClJldmlld2VkLWJ5OiBBbmRy
-emVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKwqAtLQpSZWdhcmRzCkFuZHJ6ZWoKCgo+
-ICB9Cj4gIAo+ICBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVj
-dCBtaXBpX2RzaV9ob3N0ICpob3N0LAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+Hi,
+
+This patchset makes edp display work on Chromebook kevin.
+
+This patchset has been originally posted by Jeffy Chen and the 2 first
+commits from a previous version (v6) are already merged in mainline.
+
+v8:
+Fixed compilation issue between patches #7 and #8 reported by Archit.
+
+v7:
+Rebased on top of next-20180108 and fixed conflicts
+Fixed a few warnings reported by checkpatch
+
+Jeffy Chen (8):
+  drm/bridge: analogix: Do not use device's drvdata
+  drm/bridge: analogix_dp: Fix connector and encoder cleanup
+  drm/rockchip: analogix_dp: Add a sanity check for
+    rockchip_drm_psr_register()
+  drm/rockchip: dw-mipi-dsi: Fix error handling path
+  drm/rockchip: inno_hdmi: Fix error handling path
+  drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
+  drm/bridge/synopsys: dw-hdmi: Do not use device's drvdata
+  drm/rockchip: dw_hdmi: Fix error handling path
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 52 +++++++----------
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          | 53 ++++++++---------
+ drivers/gpu/drm/exynos/exynos_dp.c                 | 29 ++++++----
+ drivers/gpu/drm/imx/dw_hdmi-imx.c                  | 22 ++++---
+ drivers/gpu/drm/meson/meson_dw_hdmi.c              | 20 +++++--
+ drivers/gpu/drm/rcar-du/rcar_dw_hdmi.c             | 14 ++++-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 67 +++++++++++++---------
+ drivers/gpu/drm/rockchip/dw-mipi-dsi.c             | 21 ++++---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 39 +++++++------
+ drivers/gpu/drm/rockchip/inno_hdmi.c               | 22 +++++--
+ include/drm/bridge/analogix_dp.h                   | 19 +++---
+ include/drm/bridge/dw_hdmi.h                       | 17 +++---
+ 12 files changed, 214 insertions(+), 161 deletions(-)
+
+-- 
+2.14.1
