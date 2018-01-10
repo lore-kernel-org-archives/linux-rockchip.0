@@ -1,75 +1,103 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v7 4/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
-Date: Wed, 10 Jan 2018 15:28:55 +0530
-Message-ID: <3878b65a-2a44-dc9a-64d9-ca29229fa987@codeaurora.org>
-References: <20180109144853.32536-1-thierry.escande@collabora.com>
- <20180109144853.32536-5-thierry.escande@collabora.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 2/2] phy: rockchip-emmc: use regmap_read_poll_timeout to
+ poll dllrdy
+Date: Wed, 10 Jan 2018 18:49:22 +0800
+Message-ID: <1515581362-181200-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1515581362-181200-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180109144853.32536-5-thierry.escande@collabora.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Escande <thierry.escande@collabora.com>, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1515581362-181200-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwMS8wOS8yMDE4IDA4OjE4IFBNLCBUaGllcnJ5IEVzY2FuZGUgd3JvdGU6Cj4gRnJvbTog
-SmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiAKPiBBZGQgbWlzc2luZyBw
-bV9ydW50aW1lX2Rpc2FibGUoKSBpbiBiaW5kKCkncyBlcnJvciBoYW5kbGluZyBwYXRoLgo+IAo+
-IEFsc28gY2xlYW51cCBlbmNvZGVyICYgY29ubmVjdG9yIGluIHVuYmluZCgpLgoKSSBndWVzcyB5
-b3UnbGwgbmVlZCB0byBkcm9wIHRoaXMgY29tbWl0IGlmIHRoaXMgcGF0Y2ggZ29lcyBpbiBmaXJz
-dDoKCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAxMDYxMDUvCgpUaGFua3Ms
-CkFyY2hpdAoKPiAKPiBGaXhlczogODBhOWEwNTlkNGU0ICgiZHJtL3JvY2tjaGlwL2RzaTogYWRk
-IGR3LW1pcGkgcG93ZXIgZG9tYWluIHN1cHBvcnQiKQo+IFNpZ25lZC1vZmYtYnk6IEplZmZ5IENo
-ZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogVGhpZXJyeSBF
-c2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgMjEgKysrKysrKysrKysrKy0tLS0tLS0t
-Cj4gICAxIGZpbGUgY2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgOCBkZWxldGlvbnMoLSkKPiAK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IGIxZmUwNjM5MjI3
-ZS4uNzhlNmI3OTE5YmY3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9k
-dy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
-LmMKPiBAQCAtMTI4Miw3ICsxMjgyLDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAgCXJldCA9IGR3X21p
-cGlfZHNpX3JlZ2lzdGVyKGRybSwgZHNpKTsKPiAgIAlpZiAocmV0KSB7Cj4gICAJCURSTV9ERVZf
-RVJST1IoZGV2LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIG1pcGlfZHNpOiAlZFxuIiwgcmV0KTsKPiAt
-CQlnb3RvIGVycl9wbGxyZWY7Cj4gKwkJZ290byBlcnJfZGlzYWJsZV9wbGxyZWY7Cj4gICAJfQo+
-ICAgCj4gICAJZHNpLT5kc2lfaG9zdC5vcHMgPSAmZHdfbWlwaV9kc2lfaG9zdF9vcHM7Cj4gQEAg
-LTEyOTAsMjQgKzEyOTAsMjUgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9iaW5kKHN0cnVjdCBk
-ZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAgCXJldCA9IG1pcGlfZHNpX2hv
-c3RfcmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+ICAgCWlmIChyZXQpIHsKPiAgIAkJRFJNX0RF
-Vl9FUlJPUihkZXYsICJGYWlsZWQgdG8gcmVnaXN0ZXIgTUlQSSBob3N0OiAlZFxuIiwgcmV0KTsK
-PiAtCQlnb3RvIGVycl9jbGVhbnVwOwo+ICsJCWdvdG8gZXJyX2Rpc2FibGVfcG1fcnVudGltZTsK
-PiAgIAl9Cj4gICAKPiAgIAlpZiAoIWRzaS0+cGFuZWwpIHsKPiAgIAkJcmV0ID0gLUVQUk9CRV9E
-RUZFUjsKPiAtCQlnb3RvIGVycl9taXBpX2RzaV9ob3N0Owo+ICsJCWdvdG8gZXJyX3VucmVnX21p
-cGlfZHNpX2hvc3Q7Cj4gICAJfQo+ICAgCj4gICAJZGV2X3NldF9kcnZkYXRhKGRldiwgZHNpKTsK
-PiAgIAlwbV9ydW50aW1lX2VuYWJsZShkZXYpOwo+ICAgCXJldHVybiAwOwo+ICAgCj4gLWVycl9t
-aXBpX2RzaV9ob3N0Ogo+ICtlcnJfdW5yZWdfbWlwaV9kc2lfaG9zdDoKPiAgIAltaXBpX2RzaV9o
-b3N0X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+IC1lcnJfY2xlYW51cDoKPiAtCWRybV9l
-bmNvZGVyX2NsZWFudXAoJmRzaS0+ZW5jb2Rlcik7Cj4gLQlkcm1fY29ubmVjdG9yX2NsZWFudXAo
-JmRzaS0+Y29ubmVjdG9yKTsKPiAtZXJyX3BsbHJlZjoKPiArZXJyX2Rpc2FibGVfcG1fcnVudGlt
-ZToKPiArCXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOwo+ICsJZHNpLT5jb25uZWN0b3IuZnVuY3Mt
-PmRlc3Ryb3koJmRzaS0+Y29ubmVjdG9yKTsKPiArCWRzaS0+ZW5jb2Rlci5mdW5jcy0+ZGVzdHJv
-eSgmZHNpLT5lbmNvZGVyKTsKPiArZXJyX2Rpc2FibGVfcGxscmVmOgo+ICAgCWNsa19kaXNhYmxl
-X3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGspOwo+ICAgCXJldHVybiByZXQ7Cj4gICB9Cj4gQEAg
-LTEzMTksNiArMTMyMCwxMCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV91bmJpbmQoc3RydWN0
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gICAKPiAgIAltaXBpX2RzaV9o
-b3N0X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+ICAgCXBtX3J1bnRpbWVfZGlzYWJsZShk
-ZXYpOwo+ICsKPiArCWRzaS0+Y29ubmVjdG9yLmZ1bmNzLT5kZXN0cm95KCZkc2ktPmNvbm5lY3Rv
-cik7Cj4gKwlkc2ktPmVuY29kZXIuZnVuY3MtPmRlc3Ryb3koJmRzaS0+ZW5jb2Rlcik7Cj4gKwo+
-ICAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGspOwo+ICAgfQo+ICAgCj4g
-CgotLSAKUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2YgQ29k
-ZSBBdXJvcmEgRm9ydW0sCmEgTGludXggRm91bmRhdGlvbiBDb2xsYWJvcmF0aXZlIFByb2plY3QK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Just use the API instead of open-coding it, no functional change
+intended.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Tested-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Tested-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+Changes in v2:
+- propagate the error and print it
+- avoid using busy wait
+
+ drivers/phy/rockchip/phy-rockchip-emmc.c | 32 +++++++++++++-------------------
+ 1 file changed, 13 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+index 547b746..e54e78f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-emmc.c
++++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+@@ -79,6 +79,9 @@
+ #define PHYCTRL_IS_CALDONE(x) \
+ 	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
+ 	  PHYCTRL_CALDONE_MASK) == PHYCTRL_CALDONE_DONE)
++#define PHYCTRL_IS_DLLRDY(x) \
++	((((x) >> PHYCTRL_DLLRDY_SHIFT) & \
++	  PHYCTRL_DLLRDY_MASK) == PHYCTRL_DLLRDY_DONE)
+ 
+ struct rockchip_emmc_phy {
+ 	unsigned int	reg_offset;
+@@ -93,7 +96,6 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 	unsigned int dllrdy;
+ 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+ 	unsigned long rate;
+-	unsigned long timeout;
+ 	int ret;
+ 
+ 	/*
+@@ -217,28 +219,20 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 	 * NOTE: There appear to be corner cases where the DLL seems to take
+ 	 * extra long to lock for reasons that aren't understood.  In some
+ 	 * extreme cases we've seen it take up to over 10ms (!).  We'll be
+-	 * generous and give it 50ms.  We still busy wait here because:
++	 * generous and give it 50ms.  We still wait here because:
+ 	 * - In most cases it should be super fast.
+ 	 * - This is not called lots during normal operation so it shouldn't
+-	 *   be a power or performance problem to busy wait.  We expect it
++	 *   be a power or performance problem to wait.  We expect it
+ 	 *   only at boot / resume.  In both cases, eMMC is probably on the
+-	 *   critical path so busy waiting a little extra time should be OK.
++	 *   critical path so waiting a little extra time should be OK.
+ 	 */
+-	timeout = jiffies + msecs_to_jiffies(50);
+-	do {
+-		udelay(1);
+-
+-		regmap_read(rk_phy->reg_base,
+-			rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+-			&dllrdy);
+-		dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
+-		if (dllrdy == PHYCTRL_DLLRDY_DONE)
+-			break;
+-	} while (!time_after(jiffies, timeout));
+-
+-	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
+-		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
+-		return -ETIMEDOUT;
++	ret = regmap_read_poll_timeout(rk_phy->reg_base,
++				       rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
++				       dllrdy, PHYCTRL_IS_DLLRDY(dllrdy),
++				       1, 50 * USEC_PER_MSEC);
++	if (ret) {
++		pr_err("%s: dllrdy failed %d.\n", __func__, ret);
++		return ret;
+ 	}
+ 
+ 	return 0;
+-- 
+1.9.1
