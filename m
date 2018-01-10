@@ -1,8 +1,7 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v8 3/8] drm/rockchip: analogix_dp: Add a sanity check for
- rockchip_drm_psr_register()
-Date: Wed, 10 Jan 2018 17:23:43 +0100
-Message-ID: <20180110162348.22765-4-thierry.escande@collabora.com>
+Subject: [PATCH v8 6/8] drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
+Date: Wed, 10 Jan 2018 17:23:46 +0100
+Message-ID: <20180110162348.22765-7-thierry.escande@collabora.com>
 References: <20180110162348.22765-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -25,55 +24,50 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-The rockchip_drm_psr_register() can fail, so add a sanity check for that.
+We inited connector in attach(), so need a detach() to cleanup.
 
-Also reorder the calls in unbind() to match bind().
+Also fix wrong use of dw_hdmi_remove() in bind().
 
 Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 37250ab63bd7..eb88c52336a7 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -354,15 +354,22 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	dp->psr_state = ~EDP_VSC_PSR_STATE_ACTIVE;
- 	INIT_WORK(&dp->psr_work, analogix_dp_psr_work);
- 
--	rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
-+	ret = rockchip_drm_psr_register(&dp->encoder, analogix_dp_psr_set);
-+	if (ret < 0)
-+		goto err_cleanup_encoder;
- 
- 	dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
- 	if (IS_ERR(dp->adp)) {
--		dp->encoder.funcs->destroy(&dp->encoder);
--		return PTR_ERR(dp->adp);
-+		ret = PTR_ERR(dp->adp);
-+		goto err_unreg_psr;
- 	}
- 
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index a38db40ce990..1cc63a18b7d5 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -1967,6 +1967,13 @@ static int dw_hdmi_bridge_attach(struct drm_bridge *bridge)
  	return 0;
-+err_unreg_psr:
-+	rockchip_drm_psr_unregister(&dp->encoder);
-+err_cleanup_encoder:
-+	dp->encoder.funcs->destroy(&dp->encoder);
-+	return ret;
  }
  
- static void rockchip_dp_unbind(struct device *dev, struct device *master,
-@@ -370,8 +377,8 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
- {
- 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
++static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
++{
++	struct dw_hdmi *hdmi = bridge->driver_private;
++
++	drm_connector_cleanup(&hdmi->connector);
++}
++
+ static enum drm_mode_status
+ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+ 			  const struct drm_display_mode *mode)
+@@ -2023,6 +2030,7 @@ static void dw_hdmi_bridge_enable(struct drm_bridge *bridge)
  
--	rockchip_drm_psr_unregister(&dp->encoder);
- 	analogix_dp_unbind(dp->adp);
-+	rockchip_drm_psr_unregister(&dp->encoder);
- 	dp->encoder.funcs->destroy(&dp->encoder);
- }
+ static const struct drm_bridge_funcs dw_hdmi_bridge_funcs = {
+ 	.attach = dw_hdmi_bridge_attach,
++	.detach = dw_hdmi_bridge_detach,
+ 	.enable = dw_hdmi_bridge_enable,
+ 	.disable = dw_hdmi_bridge_disable,
+ 	.mode_set = dw_hdmi_bridge_mode_set,
+@@ -2616,7 +2624,7 @@ int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
  
+ 	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL);
+ 	if (ret) {
+-		dw_hdmi_remove(pdev);
++		__dw_hdmi_remove(hdmi);
+ 		DRM_ERROR("Failed to initialize bridge with drm\n");
+ 		return ret;
+ 	}
 -- 
 2.14.1
