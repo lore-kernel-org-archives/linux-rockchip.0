@@ -1,68 +1,104 @@
-From: Dinh Nguyen <dinguyen@kernel.org>
-Subject: Re: [PATCH 12/25] arm: socfpga: dts: Remove leading 0x and 0s from
- bindings notation
-Date: Thu, 11 Jan 2018 08:38:42 -0600
-Message-ID: <a175eb79-56a1-5bad-9cc0-12fdbbadbaa5@kernel.org>
-References: <20171214165350.27850-1-malat@debian.org>
- <20171215111620.20379-1-malat@debian.org>
- <20171215111620.20379-12-malat@debian.org>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 2/9] iommu/rockchip: Fix error handling in attach
+Date: Thu, 11 Jan 2018 15:47:27 +0000
+Message-ID: <427ecf29-2024-b746-c567-903c1ce02e75@arm.com>
+References: <20180111082229.24011-1-jeffy.chen@rock-chips.com>
+	<20180111082229.24011-3-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20171215111620.20379-12-malat@debian.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mathieu Malaterre <malat@debian.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-arm-kernel@axis.com, Baoyou Xie <baoyou.xie@linaro.org>, Jason Cooper <jason@lakedaemon.net>, Jesper Nilsson <jesper.nilsson@axis.com>, Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Alexandre Torgue <alexandre.torgue@st.com>, Kukjin Kim <kgene@kernel.org>, bcm-kernel-feedback-list@broadcom.com, Niklas Cassel <niklas.cassel@axis.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, devicetree
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180111082229.24011-3-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 12/15/2017 05:16 AM, Mathieu Malaterre wrote:
-> Improve the DTS files by removing all the leading "0x" and zeros to fix the
-> following dtc warnings:
+On 11/01/18 08:22, Jeffy Chen wrote:
+> From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > 
-> Warning (unit_address_format): Node /XXX unit name should not have leading "0x"
+> Currently if the driver encounters an error while attaching device, it
+> will leave the IOMMU in an inconsistent state. Even though it shouldn't
+> really happen in reality, let's just add proper error path to keep
+> things consistent.
 > 
-> and
-> 
-> Warning (unit_address_format): Node /XXX unit name should not have leading 0s
-> 
-> Converted using the following command:
-> 
-> find . -type f \( -iname *.dts -o -iname *.dtsi \) -exec sed -i -e "s/@\([0-9a-fA-FxX\.;:#]+\)\s*{/@\L\1 {/g" -e "s/@0x\(.*\) {/@\1 {/g" -e "s/@0+\(.*\) {/@\1 {/g" {} +^C
-> 
-> For simplicity, two sed expressions were used to solve each warnings separately.
-> 
-> To make the regex expression more robust a few other issues were resolved,
-> namely setting unit-address to lower case, and adding a whitespace before the
-> the opening curly brace:
-> 
-> https://elinux.org/Device_Tree_Linux#Linux_conventions
-> 
-> This will solve as a side effect warning:
-> 
-> Warning (simple_bus_reg): Node /XXX@<UPPER> simple-bus unit address format error, expected "<lower>"
-> 
-> This is a follow up to commit 4c9847b7375a ("dt-bindings: Remove leading 0x from bindings notation")
-> 
-> Reported-by: David Daney <ddaney@caviumnetworks.com>
-> Suggested-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Mathieu Malaterre <malat@debian.org>
+> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  arch/arm/boot/dts/socfpga.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
+>   drivers/iommu/rockchip-iommu.c | 26 +++++++++++++++++---------
+>   1 file changed, 17 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 9d991c2d8767..ee805e1dfba7 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -826,17 +826,10 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+>   
+>   	ret = rk_iommu_force_reset(iommu);
+>   	if (ret)
+> -		return ret;
+> +		goto err_disable_stall;
+>   
+>   	iommu->domain = domain;
+>   
+> -	for (i = 0; i < iommu->num_irq; i++) {
+> -		ret = devm_request_irq(iommu->dev, iommu->irq[i], rk_iommu_irq,
+> -				       IRQF_SHARED, dev_name(dev), iommu);
+> -		if (ret)
+> -			return ret;
+> -	}
+> -
+>   	for (i = 0; i < iommu->num_mmu; i++) {
+>   		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
+>   			       rk_domain->dt_dma);
+> @@ -844,9 +837,16 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+>   		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
+>   	}
+>   
+> +	for (i = 0; i < iommu->num_irq; i++) {
+> +		ret = devm_request_irq(iommu->dev, iommu->irq[i], rk_iommu_irq,
+> +				       IRQF_SHARED, dev_name(dev), iommu);
 
-Acked-by: Dinh Nguyen <dinguyen@kernel.org>
+Why aren't we simply requesting the IRQ once in rk_iommu_probe()? Given 
+that the hardware doesn't handle multiple translation contexts, there 
+doesn't seem to be much point in being this dynamic about it.
 
-Dinh
+Robin.
+
+> +		if (ret)
+> +			goto err_free_irq;
+> +	}
+> +
+>   	ret = rk_iommu_enable_paging(iommu);
+>   	if (ret)
+> -		return ret;
+> +		goto err_free_irq;
+>   
+>   	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
+>   	list_add_tail(&iommu->node, &rk_domain->iommus);
+> @@ -857,6 +857,14 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+>   	rk_iommu_disable_stall(iommu);
+>   
+>   	return 0;
+> +
+> +err_free_irq:
+> +	while (i--)
+> +		devm_free_irq(iommu->dev, iommu->irq[i], iommu);
+> +err_disable_stall:
+> +	rk_iommu_disable_stall(iommu);
+> +
+> +	return ret;
+>   }
+>   
+>   static void rk_iommu_detach_device(struct iommu_domain *domain,
+> 
