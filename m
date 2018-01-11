@@ -1,144 +1,68 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH v2 1/2] drm/bridge/synopsys: dsi: use common
- mipi_dsi_create_packet()
-Date: Thu, 11 Jan 2018 13:51:35 +0000
-Message-ID: <e9a46fa1-e934-169b-6fe3-1035a2823039@st.com>
-References: <20180109203248.139249-1-briannorris@chromium.org>
+From: Dinh Nguyen <dinguyen@kernel.org>
+Subject: Re: [PATCH 12/25] arm: socfpga: dts: Remove leading 0x and 0s from
+ bindings notation
+Date: Thu, 11 Jan 2018 08:38:42 -0600
+Message-ID: <a175eb79-56a1-5bad-9cc0-12fdbbadbaa5@kernel.org>
+References: <20171214165350.27850-1-malat@debian.org>
+ <20171215111620.20379-1-malat@debian.org>
+ <20171215111620.20379-12-malat@debian.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180109203248.139249-1-briannorris@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20171215111620.20379-12-malat@debian.org>
 Content-Language: en-US
-Content-ID: <7E988B0C851489488CC20F2650FCBA4A@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, Vincent ABRIOU <vincent.abriou@st.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Mathieu Malaterre <malat@debian.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-arm-kernel@axis.com, Baoyou Xie <baoyou.xie@linaro.org>, Jason Cooper <jason@lakedaemon.net>, Jesper Nilsson <jesper.nilsson@axis.com>, Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Russell King <linux@armlinux.org.uk>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Alexandre Torgue <alexandre.torgue@st.com>, Kukjin Kim <kgene@kernel.org>, bcm-kernel-feedback-list@broadcom.com, Niklas Cassel <niklas.cassel@axis.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, devicetree
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQnJpYW4gJiBBbGwgKkRTSSBEUk0gZXhwZXJ0cyosDQoNCjEpIFJlLXJlYWRpbmcgdGhpcyBw
-YXRjaCwgSSByZWFsaXplIHRoYXQgdGhlIHJldHVybmVkIHZhbHVlIG9mIA0KZHdfbWlwaV9kc2lf
-aG9zdF90cmFuc2ZlcigpIGlzIG5vdCBjb3JyZWN0OiB3ZSBzaG91bGQgcmV0dXJuIHRoZSBudW1i
-ZXIgDQpvZiB0cmFuc2ZlcmVkL3JlY2VpdmVkIGJ5dGVzLi4uDQoNCnNvIEkgdGhpbmsgdGhlcmUg
-YXJlIHR3byBzb2x1dGlvbnM6IGZpeCB0aGlzIGluIHRoaXMgc2VyaWUgb3IgYWRkIGEgVE9ETyAN
-CmZvciBsYXRlciAoYm90aCBzb2x1dGlvbnMgYXJlIGZpbmUgdG8gbWUgOi0pDQoNCg0KMikgRGln
-Z2luZyBtb3JlIGludG8gdGhlIGRybSBjb2RlLCB0aGUgZnVuY3Rpb24gDQptaXBpX2RzaV9kZXZp
-Y2VfdHJhbnNmZXIoKSBpbiBkcm1fbWlwaV9kc2kuYyBpcyBjYWxsZWQgaW4gdGhlIHNhbWUgZmls
-ZSANCmJ5IHRoZSAzIGZvbGxvd2luZyBmdW5jdGlvbnM6IG1pcGlfZHNpX3NodXRkb3duX3Blcmlw
-aGVyYWwoKSwgDQptaXBpX2RzaV90dXJuX29uX3BlcmlwaGVyYWwoKSAmIA0KbWlwaV9kc2lfc2V0
-X21heGltdW1fcmV0dXJuX3BhY2tldF9zaXplKCkuIEFsbCB0aGVzZSAzIGZ1bmN0aW9ucyBhcmUg
-DQpleHBlY3RpbmcgIlJldHVybjogMCBvbiBzdWNjZXNzIG9yIGEgbmVnYXRpdmUgZXJyb3IgY29k
-ZSBvbiBmYWlsdXJlLiIgDQp0aGF0IGlzIG5vdCBpbiBsaW5lIHdpdGggdGhlIHRyYW5zZmVyIGZ1
-bmN0aW9uLg0KDQpTbyB0aGVuLCB3ZSBjYW4gY2hhbmdlIHRoZSBkb2N1bWVudGF0aW9uIGluIHRo
-aXMgZmlsZSBhbmQgaGF2ZSBpbnN0ZWFkIA0KIiogUmV0dXJuOiBUaGUgbnVtYmVyIG9mIGJ5dGVz
-IHRyYW5zbWl0dGVkIG9uIHN1Y2Nlc3Mgb3IgYSBuZWdhdGl2ZSANCmVycm9yIGNvZGUgb24gZmFp
-bHVyZS4iIGFzIGZvciBtaXBpX2RzaV9nZW5lcmljX3dyaXRlKCkuLi4NCk9yIHdlIGNhbiBjaGFu
-Z2UgdGhlIHNvdXJjZSBjb2RlIG9mIHRoZXNlIDMgZnVuY3Rpb25zIHRvIG1hdGNoIHdpdGggdGhl
-IA0KZG9jdW1lbnRhdGlvbiAiUmV0dXJuOiAwIG9uIHN1Y2Nlc3MuLi4iLg0KDQpub3RlOiBIb3Bl
-ZnVsbHksICJ1c2VycyIgb2YgdGhlc2UgMyBmdW5jdGlvbnMgdGVzdCB0aGUgc2lnbiBvZiB0aGUg
-DQpyZXR1cm4gdmFsdWUgKG9yIGRvIG5vdCB1c2UgaXQpLg0KDQpEb2VzIGFueW9uZSBoYXZlIGEg
-cHJlZmVycmVkIHNvbHV0aW9ucz8NCg0KTWFueSB0aGFua3MNClBoaWxpcHBlIDotKQ0KDQpPbiAw
-MS8wOS8yMDE4IDA5OjMyIFBNLCBCcmlhbiBOb3JyaXMgd3JvdGU6DQo+IFRoaXMgdGFrZXMgY2Fy
-ZSBvZiAyIFRPRE9zIGluIHRoaXMgZHJpdmVyLCBieSB1c2luZyB0aGUgY29tbW9uIERTSQ0KPiBw
-YWNrZXQtbWFyc2hhbGxpbmcgY29kZSBpbnN0ZWFkIG9mIG91ciBjdXN0b20gc2hvcnQvbG9uZyB3
-cml0ZSBjb2RlLg0KPiBUaGlzIGJvdGggc2F2ZXMgdXMgc29tZSBkdXBsaWNhdGVkIGNvZGUgYW5k
-IGdldHMgdXMgZnJlZSBzdXBwb3J0IGZvcg0KPiBjb21tYW5kIHR5cGVzIHRoYXQgd2VyZW4ndCBh
-bHJlYWR5IHBhcnQgb2Ygb3VyIHN3aXRjaCBibG9jayAoZS5nLiwNCj4gTUlQSV9EU0lfR0VORVJJ
-Q19MT05HX1dSSVRFKS4NCj4gDQo+IFRoZSBjb2RlIGxvZ2ljIHN0YXlzIG1vc3RseSBpbnRhY3Qs
-IGV4Y2VwdCB0aGF0IGl0IGJlY29tZXMgdW5uZWNlc3NhcnkNCj4gdG8gc3BsaXQgdGhlIHNob3J0
-L2xvbmcgd3JpdGUgZnVuY3Rpb25zLCBhbmQgd2UgaGF2ZSB0byBjb3B5IGRhdGEgYSBiaXQNCj4g
-bW9yZS4NCj4gDQo+IEFsb25nIHRoZSB3YXksIEkgbm90aWNlZCB0aGF0IGxvb3AgYm91bmRzIHdl
-cmUgYSBsaXR0bGUgb2RkOg0KPiANCj4gCXdoaWxlIChESVZfUk9VTkRfVVAobGVuLCBwbGRfZGF0
-YV9ieXRlcykpDQo+IA0KPiBUaGlzIHJlYWxseSB3YXMganVzdCBzdXBwb3NlZCB0byBiZSAnbGVu
-ICE9IDAnLCBzbyBJIG1hZGUgdGhhdCBtb3JlDQo+IGNsZWFyLg0KPiANCj4gVGVzdGVkIG9uIFJL
-MzM5OSB3aXRoIHNvbWUgcGVuZGluZyByZWZhY3RvcmluZyBwYXRjaGVzIGJ5IE5pY2tleSBZYW5n
-LA0KPiB0byBtYWtlIHRoZSBSb2NrY2hpcCBEU0kgZHJpdmVyIHdyYXAgdGhpcyBjb21tb24gZHJp
-dmVyLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogQnJpYW4gTm9ycmlzIDxicmlhbm5vcnJpc0BjaHJv
-bWl1bS5vcmc+DQo+IFJldmlld2VkLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVA
-c3QuY29tPg0KPiBUZXN0ZWQtYnk6IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5j
-b20+DQo+IC0tLQ0KPiB2MjoNCj4gICAqIHJlbW92ZSAiZGNzIiBuYW1pbmcsIHNpbmNlIHRoZXNl
-IGNvbW1hbmRzIGhhbmRsZSBnZW5lcmljIERTSSB0b28sIG5vdA0KPiAgICAganVzdCBEQ1MgKHRo
-YW5rcyBQaGlsaXBwZSkNCj4gICAqIGFkZCBQaGlsaXBwZSdzIHtUZXN0ZWQsUmV2aWV3ZWR9LWJ5
-DQo+IC0tLQ0KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2ku
-YyB8IDc4ICsrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAx
-NiBpbnNlcnRpb25zKCspLCA2MiBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMNCj4gaW5kZXggZDljY2E0ZmQ2NmVjLi5l
-ZDkxZTMyZWU0M2EgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
-eXMvZHctbWlwaS1kc2kuYw0KPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
-L2R3LW1pcGktZHNpLmMNCj4gQEAgLTEzNiwxMCArMTM2LDYgQEANCj4gICAJCQkJCSBHRU5fU1df
-MFBfVFhfTFApDQo+ICAgDQo+ICAgI2RlZmluZSBEU0lfR0VOX0hEUgkJCTB4NmMNCj4gLS8qIFRP
-RE8gVGhlc2UgMiBkZWZpbmVzIHdpbGwgYmUgcmV3b3JrZWQgdGhhbmtzIHRvIG1pcGlfZHNpX2Ny
-ZWF0ZV9wYWNrZXQoKSAqLw0KPiAtI2RlZmluZSBHRU5fSERBVEEoZGF0YSkJCQkoKChkYXRhKSAm
-IDB4ZmZmZikgPDwgOCkNCj4gLSNkZWZpbmUgR0VOX0hUWVBFKHR5cGUpCQkJKCgodHlwZSkgJiAw
-eGZmKSA8PCAwKQ0KPiAtDQo+ICAgI2RlZmluZSBEU0lfR0VOX1BMRF9EQVRBCQkweDcwDQo+ICAg
-DQo+ICAgI2RlZmluZSBEU0lfQ01EX1BLVF9TVEFUVVMJCTB4NzQNCj4gQEAgLTM1OSw0NCArMzU1
-LDE1IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoc3RydWN0IGR3
-X21pcGlfZHNpICpkc2ksIHUzMiBoZHJfdmFsKQ0KPiAgIAlyZXR1cm4gMDsNCj4gICB9DQo+ICAg
-DQo+IC1zdGF0aWMgaW50IGR3X21pcGlfZHNpX2Rjc19zaG9ydF93cml0ZShzdHJ1Y3QgZHdfbWlw
-aV9kc2kgKmRzaSwNCj4gLQkJCQkgICAgICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21zZyAqbXNn
-KQ0KPiAtew0KPiAtCWNvbnN0IHU4ICp0eF9idWYgPSBtc2ctPnR4X2J1ZjsNCj4gLQl1MTYgZGF0
-YSA9IDA7DQo+IC0JdTMyIHZhbDsNCj4gLQ0KPiAtCWlmIChtc2ctPnR4X2xlbiA+IDApDQo+IC0J
-CWRhdGEgfD0gdHhfYnVmWzBdOw0KPiAtCWlmIChtc2ctPnR4X2xlbiA+IDEpDQo+IC0JCWRhdGEg
-fD0gdHhfYnVmWzFdIDw8IDg7DQo+IC0NCj4gLQlpZiAobXNnLT50eF9sZW4gPiAyKSB7DQo+IC0J
-CWRldl9lcnIoZHNpLT5kZXYsICJ0b28gbG9uZyB0eCBidWYgbGVuZ3RoICV6dSBmb3Igc2hvcnQg
-d3JpdGVcbiIsDQo+IC0JCQltc2ctPnR4X2xlbik7DQo+IC0JCXJldHVybiAtRUlOVkFMOw0KPiAt
-CX0NCj4gLQ0KPiAtCXZhbCA9IEdFTl9IREFUQShkYXRhKSB8IEdFTl9IVFlQRShtc2ctPnR5cGUp
-Ow0KPiAtCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIHZhbCk7DQo+
-IC19DQo+IC0NCj4gLXN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZGNzX2xvbmdfd3JpdGUoc3RydWN0
-IGR3X21pcGlfZHNpICpkc2ksDQo+IC0JCQkJICAgICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21z
-ZyAqbXNnKQ0KPiArc3RhdGljIGludCBkd19taXBpX2RzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9k
-c2kgKmRzaSwNCj4gKwkJCSAgICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX3BhY2tldCAqcGFja2V0
-KQ0KPiAgIHsNCj4gLQljb25zdCB1OCAqdHhfYnVmID0gbXNnLT50eF9idWY7DQo+IC0JaW50IGxl
-biA9IG1zZy0+dHhfbGVuLCBwbGRfZGF0YV9ieXRlcyA9IHNpemVvZih1MzIpLCByZXQ7DQo+IC0J
-dTMyIGhkcl92YWwgPSBHRU5fSERBVEEobXNnLT50eF9sZW4pIHwgR0VOX0hUWVBFKG1zZy0+dHlw
-ZSk7DQo+ICsJY29uc3QgdTggKnR4X2J1ZiA9IHBhY2tldC0+cGF5bG9hZDsNCj4gKwlpbnQgbGVu
-ID0gcGFja2V0LT5wYXlsb2FkX2xlbmd0aCwgcGxkX2RhdGFfYnl0ZXMgPSBzaXplb2YodTMyKSwg
-cmV0Ow0KPiAgIAl1MzIgcmVtYWluZGVyOw0KPiAgIAl1MzIgdmFsOw0KPiAgIA0KPiAtCWlmICht
-c2ctPnR4X2xlbiA8IDMpIHsNCj4gLQkJZGV2X2Vycihkc2ktPmRldiwgIndyb25nIHR4IGJ1ZiBs
-ZW5ndGggJXp1IGZvciBsb25nIHdyaXRlXG4iLA0KPiAtCQkJbXNnLT50eF9sZW4pOw0KPiAtCQly
-ZXR1cm4gLUVJTlZBTDsNCj4gLQl9DQo+IC0NCj4gLQl3aGlsZSAoRElWX1JPVU5EX1VQKGxlbiwg
-cGxkX2RhdGFfYnl0ZXMpKSB7DQo+ICsJd2hpbGUgKGxlbikgew0KPiAgIAkJaWYgKGxlbiA8IHBs
-ZF9kYXRhX2J5dGVzKSB7DQo+ICAgCQkJcmVtYWluZGVyID0gMDsNCj4gICAJCQltZW1jcHkoJnJl
-bWFpbmRlciwgdHhfYnVmLCBsZW4pOw0KPiBAQCAtNDE5LDQwICszODYsMjcgQEAgc3RhdGljIGlu
-dCBkd19taXBpX2RzaV9kY3NfbG9uZ193cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwNCj4g
-ICAJCX0NCj4gICAJfQ0KPiAgIA0KPiAtCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93
-cml0ZShkc2ksIGhkcl92YWwpOw0KPiArCXJlbWFpbmRlciA9IDA7DQo+ICsJbWVtY3B5KCZyZW1h
-aW5kZXIsIHBhY2tldC0+aGVhZGVyLCBzaXplb2YocGFja2V0LT5oZWFkZXIpKTsNCj4gKwlyZXR1
-cm4gZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoZHNpLCByZW1haW5kZXIpOw0KPiAgIH0N
-Cj4gICANCj4gICBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVj
-dCBtaXBpX2RzaV9ob3N0ICpob3N0LA0KPiAgIAkJCQkJIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9t
-c2cgKm1zZykNCj4gICB7DQo+ICAgCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpID0gaG9zdF90b19k
-c2koaG9zdCk7DQo+ICsJc3RydWN0IG1pcGlfZHNpX3BhY2tldCBwYWNrZXQ7DQo+ICAgCWludCBy
-ZXQ7DQo+ICAgDQo+IC0JLyoNCj4gLQkgKiBUT0RPIGR3IGRydiBpbXByb3ZlbWVudHMNCj4gLQkg
-KiB1c2UgbWlwaV9kc2lfY3JlYXRlX3BhY2tldCgpIGluc3RlYWQgb2YgYWxsIGZvbGxvd2luZw0K
-PiAtCSAqIGZ1bmN0aW9ucyBhbmQgY29kZSAobm8gc3dpdGNoIGNhc2VzLCBubw0KPiAtCSAqIGR3
-X21pcGlfZHNpX2Rjc19zaG9ydF93cml0ZSgpLCBvbmx5IHRoZSBsb29wIGluIGxvbmdfd3JpdGUu
-Li4pDQo+IC0JICogYW5kIHVzZSBwYWNrZXQuaGVhZGVyLi4uDQo+IC0JICovDQo+IC0JZHdfbWlw
-aV9tZXNzYWdlX2NvbmZpZyhkc2ksIG1zZyk7DQo+IC0NCj4gLQlzd2l0Y2ggKG1zZy0+dHlwZSkg
-ew0KPiAtCWNhc2UgTUlQSV9EU0lfRENTX1NIT1JUX1dSSVRFOg0KPiAtCWNhc2UgTUlQSV9EU0lf
-RENTX1NIT1JUX1dSSVRFX1BBUkFNOg0KPiAtCWNhc2UgTUlQSV9EU0lfU0VUX01BWElNVU1fUkVU
-VVJOX1BBQ0tFVF9TSVpFOg0KPiAtCQlyZXQgPSBkd19taXBpX2RzaV9kY3Nfc2hvcnRfd3JpdGUo
-ZHNpLCBtc2cpOw0KPiAtCQlicmVhazsNCj4gLQljYXNlIE1JUElfRFNJX0RDU19MT05HX1dSSVRF
-Og0KPiAtCQlyZXQgPSBkd19taXBpX2RzaV9kY3NfbG9uZ193cml0ZShkc2ksIG1zZyk7DQo+IC0J
-CWJyZWFrOw0KPiAtCWRlZmF1bHQ6DQo+IC0JCWRldl9lcnIoZHNpLT5kZXYsICJ1bnN1cHBvcnRl
-ZCBtZXNzYWdlIHR5cGUgMHglMDJ4XG4iLA0KPiAtCQkJbXNnLT50eXBlKTsNCj4gLQkJcmV0ID0g
-LUVJTlZBTDsNCj4gKwlyZXQgPSBtaXBpX2RzaV9jcmVhdGVfcGFja2V0KCZwYWNrZXQsIG1zZyk7
-DQo+ICsJaWYgKHJldCkgew0KPiArCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIGNyZWF0
-ZSBwYWNrZXQ6ICVkXG4iLCByZXQpOw0KPiArCQlyZXR1cm4gcmV0Ow0KPiAgIAl9DQo+ICAgDQo+
-IC0JcmV0dXJuIHJldDsNCj4gKwlkd19taXBpX21lc3NhZ2VfY29uZmlnKGRzaSwgbXNnKTsNCj4g
-Kw0KPiArCXJldHVybiBkd19taXBpX2RzaV93cml0ZShkc2ksICZwYWNrZXQpOw0KPiAgIH0NCj4g
-ICANCj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IG1pcGlfZHNpX2hvc3Rfb3BzIGR3X21pcGlfZHNp
-X2hvc3Rfb3BzID0gew0KPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+
+
+On 12/15/2017 05:16 AM, Mathieu Malaterre wrote:
+> Improve the DTS files by removing all the leading "0x" and zeros to fix the
+> following dtc warnings:
+> 
+> Warning (unit_address_format): Node /XXX unit name should not have leading "0x"
+> 
+> and
+> 
+> Warning (unit_address_format): Node /XXX unit name should not have leading 0s
+> 
+> Converted using the following command:
+> 
+> find . -type f \( -iname *.dts -o -iname *.dtsi \) -exec sed -i -e "s/@\([0-9a-fA-FxX\.;:#]+\)\s*{/@\L\1 {/g" -e "s/@0x\(.*\) {/@\1 {/g" -e "s/@0+\(.*\) {/@\1 {/g" {} +^C
+> 
+> For simplicity, two sed expressions were used to solve each warnings separately.
+> 
+> To make the regex expression more robust a few other issues were resolved,
+> namely setting unit-address to lower case, and adding a whitespace before the
+> the opening curly brace:
+> 
+> https://elinux.org/Device_Tree_Linux#Linux_conventions
+> 
+> This will solve as a side effect warning:
+> 
+> Warning (simple_bus_reg): Node /XXX@<UPPER> simple-bus unit address format error, expected "<lower>"
+> 
+> This is a follow up to commit 4c9847b7375a ("dt-bindings: Remove leading 0x from bindings notation")
+> 
+> Reported-by: David Daney <ddaney@caviumnetworks.com>
+> Suggested-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Mathieu Malaterre <malat@debian.org>
+> ---
+>  arch/arm/boot/dts/socfpga.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+
+Acked-by: Dinh Nguyen <dinguyen@kernel.org>
+
+Dinh
