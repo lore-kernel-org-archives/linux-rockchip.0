@@ -1,87 +1,56 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v2 2/2] phy: rockchip-emmc: use regmap_read_poll_timeout
- to poll dllrdy
-Date: Thu, 11 Jan 2018 09:32:15 +0800
-Message-ID: <d9061fdd-254b-81bf-c3e6-4bb60ca22b50@rock-chips.com>
-References: <1515581362-181200-1-git-send-email-shawn.lin@rock-chips.com>
- <1515581362-181200-2-git-send-email-shawn.lin@rock-chips.com>
- <20180110174615.GA30753@google.com>
- <CAD=FV=V2Kb5rxf3daY9Vu_FzK4_5HRDgpSNDk5SbuOFHw1nC-g@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH v3 0/2] phy: rockchip-emmc: fixes emmc-phy power on failed with rk3399 SoCs
+Date: Thu, 11 Jan 2018 10:40:25 +0800
+Message-ID: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=V2Kb5rxf3daY9Vu_FzK4_5HRDgpSNDk5SbuOFHw1nC-g@mail.gmail.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Ziyuan Xu <xzy.xu@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-在 2018年01月11日 03:36, Doug Anderson 写道:
-> Hi,
->
-> On Wed, Jan 10, 2018 at 9:46 AM, Brian Norris <briannorris@chromium.org> wrote:
->>>         */
->>> -     timeout = jiffies + msecs_to_jiffies(50);
->>> -     do {
->>> -             udelay(1);
->>> -
->>> -             regmap_read(rk_phy->reg_base,
->>> -                     rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
->>> -                     &dllrdy);
->>> -             dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
->>> -             if (dllrdy == PHYCTRL_DLLRDY_DONE)
->>> -                     break;
->>> -     } while (!time_after(jiffies, timeout));
->>> -
->>> -     if (dllrdy != PHYCTRL_DLLRDY_DONE) {
->>> -             pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
->>> -             return -ETIMEDOUT;
->>> +     ret = regmap_read_poll_timeout(rk_phy->reg_base,
->>> +                                    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
->>> +                                    dllrdy, PHYCTRL_IS_DLLRDY(dllrdy),
->>> +                                    1, 50 * USEC_PER_MSEC);
-> It seems a bit schizophrenic that one of our delay loops sleeps 1 us
-> between loops and the other sleeps 5 us between loops.
->
-> ...and, in fact, both of these numbers seem a little on the silly side
-> of things.  Assuming that the timer docs are up to date, usleep_range
-> is intended for sleeping "10us - 20ms".  Both 1 us and 5 us below that
-> range and "1 us" is an order of magnitude below that range.  ...your 1
-> and 5 actually translate to usleep_range(1, 1) and usleep_range(3, 5).
->
-> It seems like trying to do a sleep (the whole idea that some other
-> process will get to run for some fraction of the 1 us) is just wasting
-> cycles.
->
-> So I'd say either:
->
-> 1. Accept that we really expect this to be a long delay and change
-> your delay to 10 us
->
-> 2. Change the delay to 0 us and accept that you're busy waiting.
->
-> I'd vote for #2 unless you have some evidence that we often need long
-> delays and we've started calling this code all the time.
+Hi Kishon,
 
-Agreed with #2
+Since the Shawn isn't available, I take over this series patches for now.
 
+As the original bug had tracked on https://issuetracker.google.com/71561742.
+In some cases, the mmc phy power on failed during booting up.
+The log as below:
+...
+[   2.375333] rockchip_emmc_phy_power: caldone timeout.
+[    2.377815] phy phy-ff770000.syscon:phy@f780.4: phy poweron failed --> -110
+...
+[    2.489295] mmc0: mmc_select_hs400es failed, error -110
+[    2.489302] mmc0: error -110 whilst initialising MMC card
+..
+
+The actual emulate, the wait 5us for calpad busy trimming, that's no enough.
+We need give the enough margin for it.
+
+Verified on url =
+        https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
+This series patches can apply and bring up with kernel-next on rk3399 chromebook.
 
 -Caesar
->
->
->>> +     if (ret) {
->>> +             pr_err("%s: dllrdy failed %d.\n", __func__, ret);
->>> +             return ret;
->>>        }
->>>
->>>        return 0;
->>> --
->>> 1.9.1
->>>
->>>
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+Changes in v3:
+- As Doug commented on both upstream and gerrit.
+  Change "5, 50" to "0, 50", and the message of print.
+- As Doug commented on https://patchwork.kernel.org/patch/10154797,
+  Change "1, 50" to "0, 50".
+
+Changes in v2:
+- print the return valut with regmap_read_poll_timeout failing.
+- As Brian commented on https://patchwork.kernel.org/patch/10139891/,
+  changed the note and added to print error value with
+  regmap_read_poll_timeout API.
+
+Shawn Lin (2):
+  phy: rockchip-emmc: retry calpad busy trimming
+  phy: rockchip-emmc: use regmap_read_poll_timeout to poll dllrdy
+
+ drivers/phy/rockchip/phy-rockchip-emmc.c | 60 +++++++++++++++-----------------
+ 1 file changed, 28 insertions(+), 32 deletions(-)
+
+-- 
+2.7.4
