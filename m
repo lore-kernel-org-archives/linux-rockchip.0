@@ -1,134 +1,205 @@
-From: Mirza Krak <mirza.krak@gmail.com>
-Subject: Re: Bad PCM stream after a suspend/resume cycle
-Date: Fri, 12 Jan 2018 14:36:45 +0100
-Message-ID: <CALw8SCX8XmVeLncD3GNHtt32MW26EGW=XFG=2iuK7vvREzj8Dw@mail.gmail.com>
-References: <CALw8SCXUpeUv8433Rd9is6eNd9ztd6soEOoDMkVSLue6qT6wKg@mail.gmail.com>
- <s5h7esnpe3z.wl-tiwai@suse.de>
+From: Claudiu Beznea <claudiu.beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
+Subject: [PATCH v2 00/16] extend PWM framework to support PWM modes
+Date: Fri, 12 Jan 2018 16:22:47 +0200
+Message-ID: <1515766983-15151-1-git-send-email-claudiu.beznea@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <s5h7esnpe3z.wl-tiwai@suse.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Takashi Iwai <tiwai@suse.de>
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org, haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robert.jarzmik-GANU6spQydw@public.gmane.org, corbet-T1hC0tSOHrs@public.gmane.org, nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Claudiu Beznea <claudiu.beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTIgSmFudWFyeSAyMDE4IGF0IDExOjI2LCBUYWthc2hpIEl3YWkgPHRpd2FpQHN1c2UuZGU+
-IHdyb3RlOgo+IE9uIFRodSwgMTEgSmFuIDIwMTggMTA6MDY6MTIgKzAxMDAsCj4gTWlyemEgS3Jh
-ayB3cm90ZToKPj4KPj4gSGkuCj4+Cj4+IEkgaGF2ZSBhIHF1aXRlIHNpbXBsZSBwcm9ibGVtIHJl
-YWxseSAoc2ltcGxlIHRlc3QtY2FzZSBhdCBsZWFzdCkuCj4+Cj4+IEZvbGxvd2luZyBkZXNjcmli
-ZXMgdGhlIHRlc3QgY2FzZToKPj4KPj4gJCBhcGxheSB0ZXN0Lndhdgo+Pgo+PiAjIFdoaWxlIHRo
-ZSAud2F2IGlzIHBsYXlpbmcgc3VzcGVuZCB0aGUgc3lzdGVtCj4+ICQgc3lzdGVtY3RsIHN1c3Bl
-bmQKPj4KPj4gIyBXaGVuIHN5c3RlbSBpcyByZXN1bWVkIEkgZ2V0IHRoZSBmb2xsb3dpbmcgZXJy
-b3Igb24gbXkgYXBsYXkgY29tbWFuZAo+PiBhcGxheTogcGNtX3dyaXRlOjIwMzA6IHdyaXRlIGVy
-cm9yOiBGaWxlIGRlc2NyaXB0b3IgaW4gYmFkIHN0YXRlCj4+Cj4+IEkgd2FzIGV4cGVjdGluZyBm
-b3IgdGhlIHBsYXliYWNrIHRvIHJlc3VtZS4KPj4KPj4gSSBkaWQgc29tZSBkZWJ1Z2dpbmcgdXNp
-bmcgImFwbGF5IiBhbmQgd2hhdCBJIGNhbiBzZWUgdGhhdCBoYXBwZW5zCj4+IGJlZm9yZSB0aGUg
-RUJBREZEIGVycm9yIGlzIHRoYXQgdGhlICJ3cml0ZWlfZnVuYygpIiByZXR1cm5zIGEgcG9zaXRp
-dmUKPj4gdmFsdWUgb25jZSB3aGljaCByZXN1bHRzIGluIGEgY2FsbCB0byAic25kX3BjbV93YWl0
-KCkiIGFuZCBvbiB0aGUgbmV4dAo+PiAid3JpdGVpX2Z1bmMoKSIgY2FsbCAtRUJBREZEIGlzIHJl
-dHVybmVkLgo+Pgo+PiBJIHdvdWxkIGV4cGVjdCBhIC1FU1RSUElQRSBlcnJvciB3aGljaCBzaG91
-bGQgdGhlbiByZXN1bHQgaW4gdGhhdCB0aGUKPj4gUENNIHN0cmVhbSB0byBiZSAicmVzdW1lZCIg
-KGFjY29yZGluZyB0byBkb2N1bWVudGF0aW9uIGF0IGxlYXN0KS4gSQo+PiBoYXZlIHRyaWVkICJm
-b3JjaW5nIiBhIGNhbGwgdG8gInN1c3BlbmQoKSIgb24gdGhlIGZpcnN0IHdyaXRlIGVycm9yIGlu
-Cj4+IGFwbGF5IGFmdGVyIHN5c3RlbSBpcyByZXN1bWVkIGFuZCBpdCBhY3R1YWxseSB3b3Jrcywg
-a2luZGEuIFRoZQo+PiBwbGF5YmFjayBpcyByZXN1bWVkIGV2ZW4tdGhvdWdoIHRoZSAic25kX3Bj
-bV9yZXN1bWUoKSIgY2FsbCByZXR1cm5zIGFuCj4+IGVycm9yLgo+Pgo+PiBJIGhhdmUgbm90IHdv
-cmtlZCBtdWNoIHdpdGggdGhlIHNvdW5kIHN1YnN5c3RlbSBiZWZvcmUgYW5kIEkgYW0gaGF2aW5n
-Cj4+IGEgaGFyZCB0aW1lIGZvbGxvd2luZyBhbGwgdGhlIGNhbGwgcGF0aHMgdG8gc2VlIHdoby93
-aGF0IGlzIHRvIGJsYW1lCj4+IGZvciB0aGlzIGJlaGF2aW9yLiBNYXliZSBpdCBleHBlY3RlZCB0
-byB3b3JrIGxpa2UgdGhpcz8gQW5kIEkgZG8gbm90Cj4+IGtub3cgaWYgdGhpcyBpcyBvbmx5IG9u
-IG15IFNvQyBvciBpZiB0aGlzIGlzIGEgZ2VuZXJpYyBzb3VuZCBwcm9ibGVtLgo+Cj4gSXQncyBu
-byBnZW5lcmljIGlzc3VlIGJ1dCBzcGVjaWZpYyB0byBwbGF0Zm9ybSAvIFNvQyBkcml2ZXIKPiBp
-bXBsZW1lbnRhdGlvbi4KClRoYW5rIHlvdSBmb3IgdGhlIGFuc3dlci4KCkkgaGF2ZSBkb25lIHNv
-bWUgbW9yZSBkaWdnaW5nLgoKV2l0aCB0aGUgaGVscCBvZiB0aGUgYW1hemluZyAicHJpbnRmIiBJ
-IHdhcyBhYmxlIHRvIGNhcHR1cmUgdGhlIGJlbG93IHNlcXVlbmNlCgpbICAxMjQuMTMzMzA2XSBz
-bmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg3M106IGNvbW1hbmQ9MHhjMDg0NDEyMwpbICAxMjQuMTMz
-MzA3XSBzbmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg3NV0KWyAgMTI0LjEzMzMwOF0gc25kX3BjbV9j
-b21tb25faW9jdGwgWzI4ODBdClsgIDEyNC4xMzMzMDldIHNuZF9wY21fY29tbW9uX2lvY3RsIFsy
-ODg2XQpbICAxMjQuMTMzMzEzXSBzbmRfcGNtX2lvY3RsClsgIDEyNC4xMzMzMTRdIHNuZF9wY21f
-Y29tbW9uX2lvY3RsIFsyODczXTogY29tbWFuZD0weDQwMGM0MTUwClsgIDEyNC4xMzMzMTVdIHNu
-ZF9wY21fY29tbW9uX2lvY3RsIFsyODc1XQpbICAxMjQuMTMzMzE3XSBzbmRfcGNtX2NvbW1vbl9p
-b2N0bCBbMjg4MF0KWyAgMTI0LjEzMzMxOF0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4ODZdClsg
-IDEyNC4xMzMzMTldIHNuZF9wY21feGZlcmlfZnJhbWVzX2lvY3RsClsgIDEyNC4xMzMzMjBdIF9f
-c25kX3BjbV9saWJfeGZlcgpbICAxMjQuMTMzMzIyXSBfX3NuZF9wY21fbGliX3hmZXIgWzIxODZd
-ClsgIDEyNC4xMzMzMjZdIF9fc25kX3BjbV9saWJfeGZlciBbMjE5NV0KWyAgMTI0LjEzMzM2N10g
-d2FpdF9mb3JfYXZhaWwgWzE4NTFdClsgIDEyNC4xODg4MDVdIEZyZWV6aW5nIHVzZXIgc3BhY2Ug
-cHJvY2Vzc2VzIC4uLgpbICAxMjQuMTg4OTE1XSB3YWl0X2Zvcl9hdmFpbCBbMTkwNl0KWyAgMTI0
-LjE4ODkxN10gX19zbmRfcGNtX2xpYl94ZmVyIFsyMjU3XQpbICAxMjQuMTg4OTE5XSBfX3NuZF9w
-Y21fbGliX3hmZXIgWzIyNjJdOiB4ZmVyOiAxNTIzClsgIDEyNC4yNzQwMDhdIChlbGFwc2VkIDAu
-MDg1IHNlY29uZHMpIGRvbmUuClsgIDEyNC4yODM3MzNdIE9PTSBraWxsZXIgZGlzYWJsZWQuClsg
-IDEyNC4yODczMjNdIEZyZWV6aW5nIHJlbWFpbmluZyBmcmVlemFibGUgdGFza3MgLi4uIChlbGFw
-c2VkIDAuMDAxCnNlY29uZHMpIGRvbmUuClsgIDEyNC4zODI0MzhdIFJvY2tjaGlwIEkyUyBzdXNw
-ZW5kL3N0b3AvcGF1c2UgY2FsbGVkClsgIDEyNC41ODg5MjldIHZkZF9jcHU6IE5vIGNvbmZpZ3Vy
-YXRpb24KWyAgMTI0LjU5MzAyOF0gdmRkX2dwdTogTm8gY29uZmlndXJhdGlvbgpbICAxMjQuNTk4
-NDQxXSBEaXNhYmxpbmcgbm9uLWJvb3QgQ1BVcyAuLi4KWyAgMTI0Ljc2MzMzN10gRW5hYmxpbmcg
-bm9uLWJvb3QgQ1BVcyAuLi4KWyAgMTI0Ljc2ODg2OV0gQ1BVMSBpcyB1cApbICAxMjQuNzcyNzg4
-XSBDUFUyIGlzIHVwClsgIDEyNC43NzY3MjJdIENQVTMgaXMgdXAKWyAgMTI1LjQ5Njg3NV0gcmtf
-Z21hYy1kd21hYyBmZjI5MDAwMC5ldGhlcm5ldDogaW5pdCBmb3IgUkdNSUkKWyAgMTI1Ljc3MTY5
-M10gdXNiIDEtMTogcmVzZXQgaGlnaC1zcGVlZCBVU0IgZGV2aWNlIG51bWJlciAyIHVzaW5nIGR3
-YzIKWyAgMTI2LjE0MjE3NV0gT09NIGtpbGxlciBlbmFibGVkLgpbICAxMjYuMTQ1Njc5XSBSZXN0
-YXJ0aW5nIHRhc2tzIC4uLgpbICAxMjYuMTQ1ODk3XSBzbmRfcGNtX2lvY3RsClsgIDEyNi4xNDgy
-MDRdIGRvbmUuClsgIDEyNi4xNTQ2NjddIHNuZF9wY21fY29tbW9uX2lvY3RsIFsyODczXTogY29t
-bWFuZD0weGMwODQ0MTIzCmFwbGF5OiByZXR1cm4gd3JpdGVpX2Z1bmM6IDE1MjMKWyAgMTI2LjE1
-NDY2OV0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4NzVdCmFwbGF5OiBwY21fd3JpdGU6MjAyNTog
-WyAgMTI2LjE1NDY3MV0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4ODBdCkVBR0FJTjogMTUyMwph
-cGxheTogY2FsbCB3cml0ZWlfZnVuYwphcGxheTogcmV0dXJuIHdyaXRlaV9mdW5jWyAgMTI2LjE1
-NDY3Ml0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4ODZdCjogLTc3CmFwbGF5OiBwY21fd3JpdGU6
-MjAzNTogd3JpdGUgZXJyb3I6IEZpbGUgZGVzY3JpcHRvciBpbiBiYVsKMTI2LjE2ODQyMF0gc25k
-X3BjbV9pb2N0bApkIHN0YXRlClsgIDEyNi4xNjg0MjJdIHNuZF9wY21fY29tbW9uX2lvY3RsIFsy
-ODczXTogY29tbWFuZD0weGMwODQ0MTIzClsgIDEyNi4xNjg0MjNdIHNuZF9wY21fY29tbW9uX2lv
-Y3RsIFsyODc1XQpbICAxMjYuMTY4NDI0XSBzbmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg4MF0KWyAg
-MTI2LjE2ODQyNV0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4ODZdClsgIDEyNi4xNjg0MzVdIHNu
-ZF9wY21faW9jdGwKWyAgMTI2LjE2ODQzN10gc25kX3BjbV9jb21tb25faW9jdGwgWzI4NzNdOiBj
-b21tYW5kPTB4YzA4NDQxMjMKWyAgMTI2LjE2ODQzOF0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4
-NzVdClsgIDEyNi4xNjg0MzldIHNuZF9wY21fY29tbW9uX2lvY3RsIFsyODgwXQpbICAxMjYuMTY4
-NDQwXSBzbmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg4Nl0KWyAgMTI2LjE2ODQ3MF0gc25kX3BjbV9p
-b2N0bApbICAxMjYuMTY4NDcyXSBzbmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg3M106IGNvbW1hbmQ9
-MHhjMDg0NDEyMwpbICAxMjYuMTY4NDczXSBzbmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg3NV0KWyAg
-MTI2LjE2ODQ3NF0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4ODBdClsgIDEyNi4xNjg0NzZdIHNu
-ZF9wY21fY29tbW9uX2lvY3RsIFsyODg2XQpbICAxMjYuMTY4NDc4XSBzbmRfcGNtX2lvY3RsClsg
-IDEyNi4xNjg0ODBdIHNuZF9wY21fY29tbW9uX2lvY3RsIFsyODczXTogY29tbWFuZD0weDAwMDA0
-MTQzClsgIDEyNi4xNjg0ODFdIHNuZF9wY21fY29tbW9uX2lvY3RsIFsyODc1XQpbICAxMjYuMTY4
-NDgyXSBzbmRfcGNtX2NvbW1vbl9pb2N0bCBbMjg4MF0KWyAgMTI2LjE2ODQ4M10gc25kX3BjbV9j
-b21tb25faW9jdGwgWzI4ODZdClsgIDEyNi4xNjg0OTFdIHNuZF9wY21faW9jdGwKWyAgMTI2LjE2
-ODQ5M10gc25kX3BjbV9jb21tb25faW9jdGwgWzI4NzNdOiBjb21tYW5kPTB4MDAwMDQxMTIKWyAg
-MTI2LjE2ODQ5NF0gc25kX3BjbV9jb21tb25faW9jdGwgWzI4NzVdClsgIDEyNi4xNjg0OTVdIHNu
-ZF9wY21fY29tbW9uX2lvY3RsIFsyODgwXQpbICAxMjYuMTY4NDk2XSBzbmRfcGNtX2NvbW1vbl9p
-b2N0bCBbMjg4Nl0KWyAgMTI2LjE2ODg3MF0gc25kX3BjbV9zZXRfc3RhdGU6IHN0YXRlOiAwClsg
-IDEyNi4zMDM5NjNdIFBNOiBzdXNwZW5kIGV4aXQKClRoZSBpbnRlcmVzdGluZyB0YWtlYXdheXMg
-aGVyZSBhcmU6CgotIEl0IHNlZW1zIHRoYXQgaXQgYWx3YXlzICJmcmVlemVzIiBpbiB0aGUgX19z
-bmRfcGNtX2xpYl94ZmVyIChJIGd1ZXNzCnRoYXQgaXMgZXhwZWN0ZWQgYXMgbXkgc3lzdGVtIGN1
-cnJlbnRseSBvbmx5IGRvZXMgYSBhdWRpbyBwbGF5YmFjayBhbmQKdGhlIHJlc3QgaXMgaWRsZSkK
-ICAgIC0gVGhpcyBtZWFucyB0aGF0IGFwbGF5IGhhcyBhIHdyaXRlIGluIHByb2dyZXNzIHRoYXQg
-aXQgd2lsbApyZXN1bWUgd2hlbiBzeXN0ZW0gaXMgd29rZW4KICAgIC0gTXkgaGFyZHdhcmUgZG9l
-cyBub3Qgc3VwcG9ydCAicGF1c2UiLCBiZWNhdXNlIHRoZSBETUEgZG9lcyBub3QKc3VwcG9ydCB0
-aGlzCiAgICAtICJfX3NuZF9wY21fbGliX3hmZXIiIHdpbGwgcmV0dXJuIGEgcG9zaXRpdmUgdmFs
-dWUgaW5kaWNhdGluZwoicGFydGlhbCB3cml0ZSIgd2hlbiBzeXN0ZW0gaXMgc3VzcGVuZGVkLCBn
-dWVzc2luZyBkdWUgdG8gRE1BIGJlaW5nCnRvcm4gZG93bi4KLSBXaGVuICJhcGxheSIgcmVzdW1l
-cyBpdCB3aWxsIGdldCBhbiBwb3NpdGl2ZSByZXR1cm4gdmFsdWUgb24gdGhlCndyaXRlIGNvbW1h
-bmQgd2hpY2ggd2lsbCB0cmlnZ2VyIGEgcmUtd3JpdGUgd2l0aCB0aGUgY2h1bmsgcmVtYWluaW5n
-CnRvIHdyaXRlCiAgICAtIEFuZCBoZXJlIGlzIG15IHByb2JsZW0gSSBiZWxpZXZlLCBiZWNhdXNl
-IHRoZSBzdHJlYW0gaGFzIGJlZW4Kc3VzcGVuZGVkIEkgYW0gbm90IGFsbG93ZWQgdG8gd3JpdGUg
-dG8gaXQgYWdhaW4gdW50aWwgaXQgaGFzIGJlZW4KcmVzdG9yZWQvcmVjb3ZlcmVkLCB3aGljaCBp
-biB0dXJuIHRyaWdnZXJzIHRoZSAtRUJBREZEIGVycm9yLgoKQWJvdmUgbWF5YmUgaXMgd2hhdCBp
-cyBleHBlY3RlZCBzaW5jZSB0aGVyZSBzZWVtIHRvIGJlIHNvbWUgbGltaXRhdGlvbgppbiBoYXJk
-d2FyZSwgYnV0IEkgd291bGQgZ3JlYXRseSBhcHByb3ByaWF0ZSBhbnkgcG9pbnRlcnMgaW4gaG93
-IHRoaXMKc2hvdWxkIGJlIGhhbmRsZWQuIElzIHRoZXJlIHNvbWV0aGluZyB0aGF0IGNhbiBiZSBk
-b25lIGluIHBsYXRmb3JtIC8KU29DIGNvZGUgdG8gbm90aWZ5IHRoZSBzb3VuZC9jb3JlIHRvIGhh
-bmRsZSB0aGlzICJtb3JlCnNtb290aGx5Iih1bmRlcnJ1biBlcnJvcj8pCgpvciBpcyBteSBvbmx5
-IG9wdGlvbiBvbmx5IHRvIGNhdGNoIHRoZSAtRUJBREZEIGVycm9yIGFuZCByZXN0YXJ0IHRoZQpw
-bGF5YmFjayAibWFudWFsbHkiLgoKLS0gCk1lZCBWw6RubGlnYSBIw6Rsc25pbmdhciAvIEJlc3Qg
-UmVnYXJkcwoKTWlyemEgS3JhawpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpBbHNhLWRldmVsIG1haWxpbmcgbGlzdApBbHNhLWRldmVsQGFsc2EtcHJvamVj
-dC5vcmcKaHR0cDovL21haWxtYW4uYWxzYS1wcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Fs
-c2EtZGV2ZWwK
+Hi all,
+
+Please give feedback on these patches which extends the PWM framework in order
+to support multiple PWM modes of operations. This series is a rework of [1].
+
+The current patch series add the following PWM modes:
+- PWM mode normal
+- PWM mode complementary
+- PWM mode push-pull
+
+Normal mode - for PWM chips with one output per PWM channel; output
+waveforms looks like this:
+             __    __    __    __
+    PWM   __|  |__|  |__|  |__|  |__
+            <--T-->
+
+Complementary mode - for PWM chips with more than one output per PWM
+channel; output waveforms for a PWM controller with 2 outputs per PWM
+channel may looks line this:
+             __    __    __    __
+    PWMH1 __|  |__|  |__|  |__|  |__
+          __    __    __    __    __
+    PWML1   |__|  |__|  |__|  |__|
+            <--T-->
+
+    Where T is the signal period.
+
+Push-pull mode - for PWM chips with mode than one output per PWM channel;
+output waveform for a PWM controller with 2 outputs per PWM channel, in
+push-pull mode, with normal polarity looks like this:
+            __          __
+    PWMH __|  |________|  |________
+                  __          __
+    PWML ________|  |________|  |__
+           <--T-->
+
+    If polarity is inversed:
+         __    ________    ________
+    PWMH   |__|        |__|
+         ________    ________    __
+    PWML         |__|        |__|
+           <--T-->
+
+    Where T is the signal period.
+
+Every PWM device from a PWM chip could be configured in the modes registered
+by PWM chip. For this, the PWM chip structure contains a field called caps which
+keeps the PWM modes. At probe time the PWM chip registers the supported modes
+and PWM devices could switch to the modes registered by PWM chips. For the moment,
+in my opinion, it is not neccessary to add a new hook in pwm_ops to go through
+the driver to check the capabilities of a single PWM device (as was proposed
+in [1]).
+
+I choosed to consider that a PWM controller with 2 outputs to also be capable to
+work in normal mode, since the outputs could be connected independently to other
+devices.
+
+If the drivers doesn't register any PWM capabilities the default capabilities
+will be used (currently, these includes PWM mode normal). 
+ 
+These PWM mode could be configured via sysfs, or pwm_set_mode() +
+pwm_apply_state() (for driver clients), or via DT.
+
+In sysfs, user could check the PWM controller capabilities by reading modes file
+of PWM chip:
+root@sama5d2-xplained:/sys/class/pwm/pwmchip0# ls -l
+total 0
+lrwxrwxrwx 1 root root    0 Oct  7 03:18 device -> ../../../f802c000.pwm
+--w------- 1 root root 4096 Oct  7 03:18 export
+-r--r--r-- 1 root root 4096 Oct  7 03:18 modes
+-r--r--r-- 1 root root 4096 Oct  7 03:18 npwm
+drwxr-xr-x 2 root root    0 Oct  7 03:18 power
+lrwxrwxrwx 1 root root    0 Oct  7 03:18 subsystem -> ../../../../../../../class/pwm
+-rw-r--r-- 1 root root 4096 Oct  7 01:20 uevent
+--w------- 1 root root 4096 Oct  7 03:18 unexport
+root@sama5d2-xplained:/sys/class/pwm/pwmchip0# cat modes
+normal complementary push-pull 
+
+And the current capability of the PWM device could be checked as follows:
+root@sama5d2-xplained:/sys/class/pwm/pwmchip0/pwm1# ls -l
+-r--r--r--    1 root     root          4096 Feb  9 10:54 capture
+-rw-r--r--    1 root     root          4096 Feb  9 10:54 duty_cycle
+-rw-r--r--    1 root     root          4096 Feb  9 10:54 enable
+-rw-r--r--    1 root     root          4096 Feb  9 10:54 mode
+-rw-r--r--    1 root     root          4096 Feb  9 10:54 period
+-rw-r--r--    1 root     root          4096 Feb  9 10:55 polarity
+drwxr-xr-x    2 root     root             0 Feb  9 10:54 power
+-rw-r--r--    1 root     root          4096 Feb  9 10:54 uevent
+
+root@sama5d2-xplained:/sys/class/pwm/pwmchip0/pwm1# cat mode
+normal
+
+The PWM push-pull mode could be usefull in applications like
+half bridge converters.
+
+This series also add support for PWM modes on atmel SAMA5D2 SoC.
+
+Thank you,
+Claudiu Beznea
+
+[1] https://www.spinics.net/lists/arm-kernel/msg580275.html
+
+Changes in v2:
+- remove of_xlate and of_pwm_n_cells and use generic functions to pharse DT
+  inputs; this is done in patches 1, 2, 3, 4, 5, 6, 7 of this series; this will
+  make easy the addition of PWM mode support from DT
+- add PWM mode normal
+- register PWM modes as capabilities of PWM chips at driver probe and, in case
+  driver doesn't provide these capabilities use default ones
+- change the way PWM mode is pharsed via DT by using a new input for pwms
+  binding property
+
+Claudiu Beznea (16):
+  drivers: pwm: core: use a single of xlate function
+  pwm: pxa: update documentation regarding pwm-cells
+  pwm: cros-ec: update documentation regarding pwm-cells
+  pwm: clps711x: update documentation regarding pwm-cells
+  ARM: dts: clps711x: update pwm-cells
+  ARM: dts: pxa: update pwm-cells
+  arm64: dts: rockchip: update pwm-cells
+  drivers: pwm: core: extend PWM framework with PWM modes
+  drivers: pwm: core: add PWM mode to pwm_config()
+  pwm: Add PWM modes
+  pwm: add documentation for PWM modes
+  pwm: atmel: add pwm capabilities
+  drivers: pwm: core: add push-pull mode support
+  pwm: add push-pull mode
+  pwm: add documentation for pwm push-pull mode
+  pwm: atmel: add push-pull mode support
+
+ .../bindings/pwm/cirrus,clps711x-pwm.txt           |   4 +-
+ .../devicetree/bindings/pwm/google,cros-ec-pwm.txt |   4 +-
+ Documentation/devicetree/bindings/pwm/pwm.txt      |  23 ++++-
+ Documentation/devicetree/bindings/pwm/pxa-pwm.txt  |   6 +-
+ Documentation/pwm.txt                              |  47 ++++++++-
+ arch/arm/boot/dts/ep7209.dtsi                      |   2 +-
+ arch/arm/boot/dts/pxa25x.dtsi                      |   4 +-
+ arch/arm/boot/dts/pxa27x.dtsi                      |   8 +-
+ arch/arm/boot/dts/pxa3xx.dtsi                      |   8 +-
+ arch/arm/mach-s3c24xx/mach-rx1950.c                |   5 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |   2 +-
+ drivers/bus/ts-nbus.c                              |   2 +-
+ drivers/clk/clk-pwm.c                              |   3 +-
+ drivers/gpu/drm/i915/intel_panel.c                 |   8 +-
+ drivers/hwmon/pwm-fan.c                            |   2 +-
+ drivers/input/misc/max77693-haptic.c               |   2 +-
+ drivers/input/misc/max8997_haptic.c                |   3 +-
+ drivers/leds/leds-pwm.c                            |   2 +-
+ drivers/media/rc/ir-rx51.c                         |   2 +-
+ drivers/media/rc/pwm-ir-tx.c                       |   2 +-
+ drivers/pwm/core.c                                 | 112 ++++++++++++++-------
+ drivers/pwm/pwm-atmel-hlcdc.c                      |   2 -
+ drivers/pwm/pwm-atmel-tcb.c                        |   2 -
+ drivers/pwm/pwm-atmel.c                            | 100 ++++++++++++------
+ drivers/pwm/pwm-bcm-iproc.c                        |   2 -
+ drivers/pwm/pwm-bcm-kona.c                         |   2 -
+ drivers/pwm/pwm-bcm2835.c                          |   2 -
+ drivers/pwm/pwm-berlin.c                           |   2 -
+ drivers/pwm/pwm-clps711x.c                         |  11 --
+ drivers/pwm/pwm-cros-ec.c                          |  20 ----
+ drivers/pwm/pwm-fsl-ftm.c                          |   2 -
+ drivers/pwm/pwm-hibvt.c                            |   2 -
+ drivers/pwm/pwm-imx.c                              |   8 --
+ drivers/pwm/pwm-lpc18xx-sct.c                      |   2 -
+ drivers/pwm/pwm-meson.c                            |   2 -
+ drivers/pwm/pwm-omap-dmtimer.c                     |   2 -
+ drivers/pwm/pwm-pxa.c                              |  19 ----
+ drivers/pwm/pwm-renesas-tpu.c                      |   2 -
+ drivers/pwm/pwm-rockchip.c                         |   5 -
+ drivers/pwm/pwm-samsung.c                          |   3 -
+ drivers/pwm/pwm-sun4i.c                            |   2 -
+ drivers/pwm/pwm-tiecap.c                           |   2 -
+ drivers/pwm/pwm-tiehrpwm.c                         |   2 -
+ drivers/pwm/pwm-vt8500.c                           |   2 -
+ drivers/pwm/pwm-zx.c                               |   2 -
+ drivers/pwm/sysfs.c                                |  64 ++++++++++++
+ drivers/video/backlight/lm3630a_bl.c               |   2 +-
+ drivers/video/backlight/lp855x_bl.c                |   2 +-
+ drivers/video/backlight/lp8788_bl.c                |   2 +-
+ drivers/video/backlight/pwm_bl.c                   |   4 +-
+ drivers/video/fbdev/ssd1307fb.c                    |   3 +-
+ include/dt-bindings/pwm/pwm.h                      |   4 +
+ include/linux/pwm.h                                |  90 +++++++++++++++--
+ 54 files changed, 402 insertions(+), 222 deletions(-)
+
+-- 
+2.7.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
