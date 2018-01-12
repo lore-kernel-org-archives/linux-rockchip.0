@@ -1,144 +1,27 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add roc-rk3328-cc board
-Date: Fri, 12 Jan 2018 09:33:25 +0100
-Message-ID: <10243464.nJpoDBzbVB@phil>
-References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180111203033.mnap7tijbfsvr5pa@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180111203033.mnap7tijbfsvr5pa@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH 0/3] Reset USB3 controller before initializing Type-C PHY on rk3399
+Date: Fri, 12 Jan 2018 18:08:21 +0800
+Message-ID: <1515751704-13213-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kishon@ti.com
+Cc: robh+dt@kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, briannorris@google.com, groeck@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, william.wu@rock-chips.com, lin.huang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+This series adds USB3 OTG controller reset for rk3399 Type-C PHY, and use the
+reset to hold the whole USB3 OTG controller in reset state to keep the PIPE
+power state in P2 before initializing Type-C PHY, it's useful to avoid waiting
+for PHY PMA and PIPE ready timeout.
 
-Am Donnerstag, 11. Januar 2018, 14:30:33 CET schrieb Rob Herring:
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> > new file mode 100644
-> > index 0000000..2134baf
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> > @@ -0,0 +1,313 @@
-> > +/*
-> > + * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
-> > + *
-> > + * This file is dual-licensed: you can use it either under the terms
-> > + * of the GPL or the X11 license, at your option. Note that this dual
-> > + * licensing only applies to this file, and not this project as a
-> > + * whole.
-> > + *
-> > + *  a) This library is free software; you can redistribute it and/or
-> > + *     modify it under the terms of the GNU General Public License as
-> > + *     published by the Free Software Foundation; either version 2 of the
-> > + *     License, or (at your option) any later version.
-> > + *
-> > + *     This library is distributed in the hope that it will be useful,
-> > + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + *     GNU General Public License for more details.
-> > + *
-> > + * Or, alternatively,
-> > + *
-> > + *  b) Permission is hereby granted, free of charge, to any person
-> > + *     obtaining a copy of this software and associated documentation
-> > + *     files (the "Software"), to deal in the Software without
-> > + *     restriction, including without limitation the rights to use,
-> > + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> > + *     sell copies of the Software, and to permit persons to whom the
-> > + *     Software is furnished to do so, subject to the following
-> > + *     conditions:
-> > + *
-> > + *     The above copyright notice and this permission notice shall be
-> > + *     included in all copies or substantial portions of the Software.
-> > + *
-> > + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> > + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> > + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> > + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> > + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> > + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> > + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> > + *     OTHER DEALINGS IN THE SOFTWARE.
-> > + */
-> 
-> Use SPDX license tag.
+William Wu (3):
+  dt-bindings: phy: phy-rockchip-typec: add usb3 otg reset
+  arm64: dts: rockchip: add USB3 OTG reset for Type-C PHY on rk3399
+  phy: rockchip-typec: reset USB3 controller before initializing PHY
 
-It looks like Thomas' SPDX documentation patches are not yet merged
-and there were smaller protests about SPDX information only being
-available on some external website, so just for my understanding, SPDX
-is the agreed standard now, right?
+ .../devicetree/bindings/phy/phy-rockchip-typec.txt | 12 +++++++-----
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 10 ++++++----
+ drivers/phy/rockchip/phy-rockchip-typec.c          | 22 ++++++++++++++++++++--
+ 3 files changed, 33 insertions(+), 11 deletions(-)
 
-And judging by the SPDX conversion for Rockchip dts I have in my inbox
-the correct tags should probably be
-	// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-
-due to the
-"All devicetrees claim to be either GPL or X11 while the actual license
-text is MIT. Therefore we use MIT for the SPDX tag as X11 is clearly
-wrong."
-
-
-> > +
-> > +/dts-v1/;
-> > +#include "rk3328.dtsi"
-> > +
-> > +/ {
-> > +	model = "Firefly roc-rk3328-cc";
-> > +	compatible = "firefly,roc-rk3328-cc", "rockchip,rk3328";
-> > +
-> > +	chosen {
-> > +		stdout-path = "serial2:1500000n8";
-> 
-> Just checking, 1.5Mbps for console?
-
-yep, that's correct. Most newer Rockchip socs drive the debug uart
-with 1.5MBps as default these days.
-
-
-> > +&i2c1 {
-> > +	status = "okay";
-> > +
-> > +	rk805: rk805@18 {
-> 
-> pmic@18
-> 
-> > +		compatible = "rockchip,rk805";
-> > +		reg = <0x18>;
-> > +		interrupt-parent = <&gpio1>;
-> > +		interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
-> > +		#clock-cells = <1>;
-> > +		clock-output-names = "xin32k", "rk805-clkout2";
-> > +		gpio-controller;
-> > +		#gpio-cells = <2>;
-> > +		pinctrl-names = "default";
-> > +		pinctrl-0 = <&pmic_int_l>;
-> > +		rockchip,system-power-controller;
-> > +		wakeup-source;
-> > +
-> > +		vcc1-supply = <&vcc_sys>;
-> > +		vcc2-supply = <&vcc_sys>;
-> > +		vcc3-supply = <&vcc_sys>;
-> > +		vcc4-supply = <&vcc_sys>;
-> > +		vcc5-supply = <&vcc_io>;
-> > +		vcc6-supply = <&vcc_io>;
-> > +
-> > +		regulators {
-> > +			vdd_logic: DCDC_REG1 {
-> 
-> Don't use '_' in node names.
-
-The driver binds against the node names including the underscores.
-(with regulator-compatible being deprecated)
-
-See drivers/regulator/rk808-regulator.c and
-Documentation/devicetree/bindings/mfd/rk808.txt
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+2.0.0
