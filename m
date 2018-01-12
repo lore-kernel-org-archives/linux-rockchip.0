@@ -1,31 +1,62 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH 2/9] iommu/rockchip: Fix error handling in attach
-Date: Fri, 12 Jan 2018 08:33:17 +0800
-Message-ID: <5A58024D.2010402@rock-chips.com>
-References: <20180111082229.24011-1-jeffy.chen@rock-chips.com> <20180111082229.24011-3-jeffy.chen@rock-chips.com> <427ecf29-2024-b746-c567-903c1ce02e75@arm.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 2/3] ARM: tegra: paz00: drop nonstandard
+ 'backlight-boot-off'
+Date: Thu, 11 Jan 2018 18:18:02 -0800
+Message-ID: <20180112021801.GA243980@google.com>
+References: <20180106004757.8239-1-briannorris@chromium.org>
+ <20180106004757.8239-2-briannorris@chromium.org>
+ <27065017.X8cFkIFnZg@fb07-iapwap2>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <427ecf29-2024-b746-c567-903c1ce02e75@arm.com>
+Content-Disposition: inline
+In-Reply-To: <27065017.X8cFkIFnZg@fb07-iapwap2>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, linux-kernel@vger.kernel.org
-Cc: jcliang@chromium.org, tfiga@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org
+To: Marc Dietrich <marvin24@gmx.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-tegra@vger.kernel.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
+On Wed, Jan 10, 2018 at 12:31:31PM +0100, Marc Dietrich wrote:
+> Hi,
+> 
+> Am Samstag, 6. Januar 2018, 01:47:56 CET schrieb Brian Norris:
+> > This was used out-of-tree as a hack for resolving issues where some
+> > systems expect the backlight to turn on automatically at boot, while
+> > others expect to manage the backlight status via a DRM/panel driver.
+> > Those issues have since been fixed upstream in pwm_bl.c without device
+> > tree hacks, and so this un-documented property should no longer be
+> > useful.
+> > 
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> 
+> seems to work again. Thanks!
 
-thanks for your reply.
+BTW, I guess I could have put this in the commit message, but the
+problem that this out-of-tree property was trying to resolve was fixed
+by this (and some other related patches):
 
-On 01/11/2018 11:47 PM, Robin Murphy wrote:
->>
->> +    for (i = 0; i < iommu->num_irq; i++) {
->> +        ret = devm_request_irq(iommu->dev, iommu->irq[i], rk_iommu_irq,
->> +                       IRQF_SHARED, dev_name(dev), iommu);
->
-> Why aren't we simply requesting the IRQ once in rk_iommu_probe()? Given
-> that the hardware doesn't handle multiple translation contexts, there
-> doesn't seem to be much point in being this dynamic about it.
->
-it make sense, will do it in next version:)
-> Robin.
+d1b812945750 backlight: pwm_bl: Check the PWM state for initial backlight power state
+
+Brian
+
+> Reviewed-by: Marc Dietrich <marvin24@gmx.de>
+> 
+> > ---
+> >  arch/arm/boot/dts/tegra20-paz00.dts | 2 --
+> >  1 file changed, 2 deletions(-)
+> > 
+> > diff --git a/arch/arm/boot/dts/tegra20-paz00.dts
+> > b/arch/arm/boot/dts/tegra20-paz00.dts index 30436969adc0..12c63b23ed5e
+> > 100644
+> > --- a/arch/arm/boot/dts/tegra20-paz00.dts
+> > +++ b/arch/arm/boot/dts/tegra20-paz00.dts
+> > @@ -504,8 +504,6 @@
+> > 
+> >  		brightness-levels = <0 16 32 48 64 80 96 112 128 144 160 176 192 208 224
+> > 240 255>; default-brightness-level = <10>;
+> > -
+> > -		backlight-boot-off;
+> >  	};
+> > 
+> >  	clocks {
+> 
