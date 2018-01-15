@@ -1,11 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 10/40] drm/rockchip: add mutex vop lock
-Date: Mon, 15 Jan 2018 18:15:44 +0100
-Message-ID: <20180115171614.14474-11-thierry.escande@collabora.com>
+Subject: [PATCH 05/40] drm/bridge: analogix_dp: Don't power bridge in
+ analogix_dp_bind
+Date: Mon, 15 Jan 2018 18:15:39 +0100
+Message-ID: <20180115171614.14474-6-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -22,119 +23,35 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Add a lock to vop to avoid disabling the crtc while waiting for a line
-flag while enabling psr. If we disable in the middle of waiting for the
-line flag, we'll end up timing out or worse.
-
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 30 +++++++++++++++++++++++------
- 1 file changed, 24 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 31304434847a..bf4b1a2f3fa4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -117,6 +117,8 @@ struct vop {
- 	spinlock_t reg_lock;
- 	/* lock vop irq reg */
- 	spinlock_t irq_lock;
-+	/* protects crtc enable/disable */
-+	struct mutex vop_lock;
- 
- 	unsigned int irq;
- 
-@@ -577,6 +579,7 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 
- 	WARN_ON(vop->event);
- 
-+	mutex_lock(&vop->vop_lock);
- 	drm_crtc_vblank_off(crtc);
- 
- 	/*
-@@ -612,6 +615,7 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 	clk_disable(vop->aclk);
- 	clk_disable(vop->hclk);
- 	pm_runtime_put(vop->dev);
-+	mutex_unlock(&vop->vop_lock);
- 
- 	if (crtc->state->event && !crtc->state->active) {
- 		spin_lock_irq(&crtc->dev->event_lock);
-@@ -882,10 +886,13 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	uint32_t pin_pol, val;
- 	int ret;
- 
-+	mutex_lock(&vop->vop_lock);
-+
- 	WARN_ON(vop->event);
- 
- 	ret = vop_enable(crtc);
- 	if (ret) {
-+		mutex_unlock(&vop->vop_lock);
- 		DRM_DEV_ERROR(vop->dev, "Failed to enable vop (%d)\n", ret);
- 		return;
- 	}
-@@ -949,6 +956,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
- 
- 	VOP_REG_SET(vop, common, standby, 0);
-+	mutex_unlock(&vop->vop_lock);
- }
- 
- static bool vop_fs_irq_is_pending(struct vop *vop)
-@@ -1487,15 +1495,21 @@ int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
- {
- 	struct vop *vop = to_vop(crtc);
- 	unsigned long jiffies_left;
-+	int ret = 0;
- 
- 	if (!crtc || !vop->is_enabled)
- 		return -ENODEV;
- 
--	if (mstimeout <= 0)
--		return -EINVAL;
-+	mutex_lock(&vop->vop_lock);
-+	if (mstimeout <= 0) {
-+		ret = -EINVAL;
-+		goto out;
-+	}
- 
--	if (vop_line_flag_irq_is_enabled(vop))
--		return -EBUSY;
-+	if (vop_line_flag_irq_is_enabled(vop)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
- 
- 	reinit_completion(&vop->line_flag_completion);
- 	vop_line_flag_irq_enable(vop);
-@@ -1506,10 +1520,13 @@ int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
- 
- 	if (jiffies_left == 0) {
- 		DRM_DEV_ERROR(vop->dev, "Timeout waiting for IRQ\n");
--		return -ETIMEDOUT;
-+		ret = -ETIMEDOUT;
-+		goto out;
- 	}
- 
--	return 0;
-+out:
-+	mutex_unlock(&vop->vop_lock);
-+	return ret;
- }
- EXPORT_SYMBOL(rockchip_drm_wait_vact_end);
- 
-@@ -1559,6 +1576,7 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 
- 	spin_lock_init(&vop->reg_lock);
- 	spin_lock_init(&vop->irq_lock);
-+	mutex_init(&vop->vop_lock);
- 
- 	ret = devm_request_irq(dev, vop->irq, vop_isr,
- 			       IRQF_SHARED, dev_name(dev), vop);
--- 
-2.14.1
+RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpUaGUgYnJpZGdlIGRvZXMgbm90
+IG5lZWQgdG8gYmUgcG93ZXJlZCBpbiBhbmFsb2dpeF9kcF9iaW5kKCksIHNvCnJlbW92ZSB0aGUg
+Y2FsbHMgdG8gcG1fcnVudGltZV9nZXQoKS9waHlfcG93ZXJfb24oKS9hbmFsb2dpeF9kcF9pbml0
+X2RwKCkKYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291bnRlcnBhcnRzLgoKQ2M6IFN0w6lw
+aGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWlu
+IHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4
+dEByb2NrLWNoaXBzLmNvbT4KW3RoZSBwYXRjaCBvcmlnaW5hbGx5IGp1c3QgcmVtb3ZlZCB0aGUg
+cG93ZXJfb24gcG9ydGlvbiwgc2VhbnBhdWwgcmVtb3ZlZAp0aGUgcG93ZXIgb2ZmIGNvZGUgYXMg
+d2VsbCBhcyBpbXByb3ZlZCB0aGUgY29tbWl0IG1lc3NhZ2VdClNpZ25lZC1vZmYtYnk6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
+ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgMTAgLS0tLS0tLS0tLQogMSBmaWxl
+IGNoYW5nZWQsIDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKaW5kZXggY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5
+YmE4NWQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
+aXhfZHBfY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
+aXhfZHBfY29yZS5jCkBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCiAJcG1fcnVudGlt
+ZV9lbmFibGUoZGV2KTsKIAotCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZGV2KTsKLQlwaHlfcG93ZXJf
+b24oZHAtPnBoeSk7Ci0KLQlhbmFsb2dpeF9kcF9pbml0X2RwKGRwKTsKLQogCXJldCA9IGRldm1f
+cmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmlycSwKIAkJCQkJYW5hbG9naXhf
+ZHBfaGFyZGlycSwKIAkJCQkJYW5hbG9naXhfZHBfaXJxX3RocmVhZCwKQEAgLTE0MTQsMTUgKzE0
+MDksMTAgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm1fZGV2LAogCQlnb3RvIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU7CiAJfQogCi0J
+cGh5X3Bvd2VyX29mZihkcC0+cGh5KTsKLQlwbV9ydW50aW1lX3B1dChkZXYpOwotCiAJcmV0dXJu
+IGRwOwogCiBlcnJfZGlzYWJsZV9wbV9ydW50aW1lOgogCi0JcGh5X3Bvd2VyX29mZihkcC0+cGh5
+KTsKLQlwbV9ydW50aW1lX3B1dChkZXYpOwogCXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOwogCiAJ
+cmV0dXJuIEVSUl9QVFIocmV0KTsKLS0gCjIuMTQuMQoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
