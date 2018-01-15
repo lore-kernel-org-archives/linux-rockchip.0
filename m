@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 19/40] drm/bridge: analogix_dp: Ensure edp is disabled when
- shutting down the panel
-Date: Mon, 15 Jan 2018 18:15:53 +0100
-Message-ID: <20180115171614.14474-20-thierry.escande@collabora.com>
+Subject: [PATCH 34/40] drm/bridge: analogix_dp: Reorder plat_data->power_off
+ to happen sooner
+Date: Mon, 15 Jan 2018 18:16:08 +0100
+Message-ID: <20180115171614.14474-35-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,39 +23,67 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCldoZW4gcGFuZWwgaXMgc2h1dCBk
-b3duLCB3ZSBzaG91bGQgbWFrZSBzdXJlIGVkcCBjYW4gYmUgZGlzYWJsZWQgdG8gYXZvaWQKdW5k
-ZWZpbmVkIGJlaGF2aW9yLgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21p
-dW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgpTaWdu
-ZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTog
-U2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFRoaWVycnkg
-RXNjYW5kZSA8dGhpZXJyeS5lc2NhbmRlQGNvbGxhYm9yYS5jb20+ClJldmlld2VkLWJ5OiBBbmRy
-emVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgMTEgKysrKysrKysrKysKIDEgZmlsZSBj
-aGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
-L2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwppbmRleCBjOTQwYTViYjgwYWMuLmZhNGVmMjhl
-Mjg2ZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKQEAgLTExNjEsNiArMTE2MSwxMiBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2Rw
-X3NldF9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAKIAlwbV9ydW50aW1l
-X2dldF9zeW5jKGRwLT5kZXYpOwogCisJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGRwLT5jbG9j
-ayk7CisJaWYgKHJldCA8IDApIHsKKwkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gcHJlcGFyZV9lbmFi
-bGUgdGhlIGNsb2NrIGNsayBbJWRdXG4iLCByZXQpOworCQlnb3RvIG91dF9kcF9jbGtfcHJlOwor
-CX0KKwogCWlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vbikKIAkJZHAtPnBsYXRfZGF0YS0+cG93
-ZXJfb24oZHAtPnBsYXRfZGF0YSk7CiAKQEAgLTExOTIsNiArMTE5OCw4IEBAIHN0YXRpYyBpbnQg
-YW5hbG9naXhfZHBfc2V0X2JyaWRnZShzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAlw
-aHlfcG93ZXJfb2ZmKGRwLT5waHkpOwogCWlmIChkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYpCiAJ
-CWRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZihkcC0+cGxhdF9kYXRhKTsKKwljbGtfZGlzYWJsZV91
-bnByZXBhcmUoZHAtPmNsb2NrKTsKK291dF9kcF9jbGtfcHJlOgogCXBtX3J1bnRpbWVfcHV0X3N5
-bmMoZHAtPmRldik7CiAKIAlyZXR1cm4gcmV0OwpAQCAtMTIzNSwxMCArMTI0MywxMyBAQCBzdGF0
-aWMgdm9pZCBhbmFsb2dpeF9kcF9icmlkZ2VfZGlzYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJp
-ZGdlKQogCiAJZGlzYWJsZV9pcnEoZHAtPmlycSk7CiAJcGh5X3Bvd2VyX29mZihkcC0+cGh5KTsK
-KwlhbmFsb2dpeF9kcF9zZXRfYW5hbG9nX3Bvd2VyX2Rvd24oZHAsIFBPV0VSX0FMTCwgMSk7CiAK
-IAlpZiAoZHAtPnBsYXRfZGF0YS0+cG93ZXJfb2ZmKQogCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9v
-ZmYoZHAtPnBsYXRfZGF0YSk7CiAKKwljbGtfZGlzYWJsZV91bnByZXBhcmUoZHAtPmNsb2NrKTsK
-KwogCXBtX3J1bnRpbWVfcHV0X3N5bmMoZHAtPmRldik7CiAKIAlyZXQgPSBhbmFsb2dpeF9kcF9w
-cmVwYXJlX3BhbmVsKGRwLCBmYWxzZSwgdHJ1ZSk7Ci0tIAoyLjE0LjEKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+The current user of the analogix power_off is "analogix_dp-rockchip".
+That driver does this:
+- deactivate PSR
+- turn off a clock
+
+Both of these things (especially deactive PSR) should be done before
+we turn the PHY power off and turn off analog power.  Let's move the
+callback up.
+
+Note that without this patch (and with
+https://patchwork.kernel.org/patch/9553349/ [seanpaul: this patch was
+not applied, but it seems like the race can still occur]), I experienced
+an error in reboot testing where one thread was at:
+
+  rockchip_drm_psr_deactivate
+  rockchip_dp_powerdown
+  analogix_dp_bridge_disable
+  drm_bridge_disable
+
+...and the other thread was at:
+
+  analogix_dp_send_psr_spd
+  analogix_dp_enable_psr
+  analogix_dp_psr_set
+  psr_flush_handler
+
+The flush handler thread was finding AUX channel errors and eventually
+reported "Failed to apply PSR", where I had a kgdb breakpoint. Presumably
+the device would have eventually given up and shut down anyway, but it
+seems better to fix the order to be more correct.
+
+Cc: Kristian H. Kristensen <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index a83140fa3448..12c97e0a8dcd 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1335,12 +1335,13 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
+ 	}
+ 
+ 	disable_irq(dp->irq);
+-	phy_power_off(dp->phy);
+-	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
+ 
+ 	if (dp->plat_data->power_off)
+ 		dp->plat_data->power_off(dp->plat_data);
+ 
++	phy_power_off(dp->phy);
++	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
++
+ 	clk_disable_unprepare(dp->clock);
+ 
+ 	pm_runtime_put_sync(dp->dev);
+-- 
+2.14.1
