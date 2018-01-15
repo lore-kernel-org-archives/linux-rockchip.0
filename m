@@ -1,7 +1,7 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH 31/40] drm/bridge: analogix_dp: Allow master driver to cleanup in unbind
-Date: Mon, 15 Jan 2018 18:16:05 +0100
-Message-ID: <20180115171614.14474-32-thierry.escande@collabora.com>
+Subject: [PATCH 23/40] drm/bridge: analogix_dp: Fix AUX_PD bit for Rockchip
+Date: Mon, 15 Jan 2018 18:15:57 +0100
+Message-ID: <20180115171614.14474-24-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset = "utf-8"
@@ -13,51 +13,178 @@ To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thi
 Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga@chromium.org>
+From: zain wang <wzz@rock-chips.com>
 
-Since we take the ownership of drvdata, the master driver does not have
-any means of accessing its own data from unbind callback and all it can
-do is calling the analogix unbind callback. However it might be
-necessary to do some clean up in the master driver before we really
-unbind the analogix part (such as PSR unregister in Rockchip case), so
-this patch provides a plat_data->cleanup() callback which is called at
-the beginning of analogix_dp_unbind().
+There are some different bits between Rockchip and Exynos in register
+"AUX_PD". This patch fixes the incorrect operations about it.
 
-Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
-Cc: Brian Norris <briannorris@chromium.org>
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Cc: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: zain wang <wzz@rock-chips.com>
 Signed-off-by: Sean Paul <seanpaul@chromium.org>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 3 +++
- include/drm/bridge/analogix_dp.h                   | 1 +
- 2 files changed, 4 insertions(+)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 117 ++++++++++++----------
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h |   2 +
+ 2 files changed, 65 insertions(+), 54 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index bee0f7aa5c23..2d44ef2fc3d2 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1652,6 +1652,9 @@ EXPORT_SYMBOL_GPL(analogix_dp_bind);
- 
- void analogix_dp_unbind(struct analogix_dp_device *dp)
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index bb72f8b0e603..dee1ba109b5f 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -248,76 +248,85 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
  {
-+	if (dp->plat_data->cleanup)
-+		dp->plat_data->cleanup(dp->plat_data);
+ 	u32 reg;
+ 	u32 phy_pd_addr = ANALOGIX_DP_PHY_PD;
++	u32 mask;
+ 
+ 	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
+ 		phy_pd_addr = ANALOGIX_DP_PD;
+ 
+ 	switch (block) {
+ 	case AUX_BLOCK:
+-		if (enable) {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg |= AUX_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		} else {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg &= ~AUX_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		}
++		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
++			mask = RK_AUX_PD;
++		else
++			mask = AUX_PD;
 +
- 	analogix_dp_bridge_disable(dp->bridge);
- 	dp->connector.funcs->destroy(&dp->connector);
- 
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index c2788483c882..96a6af0823aa 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -38,6 +38,7 @@ struct analogix_dp_plat_data {
- 		      struct drm_connector *);
- 	int (*get_modes)(struct analogix_dp_plat_data *,
- 			 struct drm_connector *);
-+	void (*cleanup)(struct analogix_dp_plat_data *);
- };
- 
- int analogix_dp_psr_enabled(struct analogix_dp_device *dp);
++		reg = readl(dp->reg_base + phy_pd_addr);
++		if (enable)
++			reg |= mask;
++		else
++			reg &= ~mask;
++		writel(reg, dp->reg_base + phy_pd_addr);
+ 		break;
+ 	case CH0_BLOCK:
+-		if (enable) {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg |= CH0_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		} else {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg &= ~CH0_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		}
++		mask = CH0_PD;
++		reg = readl(dp->reg_base + phy_pd_addr);
++
++		if (enable)
++			reg |= mask;
++		else
++			reg &= ~mask;
++		writel(reg, dp->reg_base + phy_pd_addr);
+ 		break;
+ 	case CH1_BLOCK:
+-		if (enable) {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg |= CH1_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		} else {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg &= ~CH1_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		}
++		mask = CH1_PD;
++		reg = readl(dp->reg_base + phy_pd_addr);
++
++		if (enable)
++			reg |= mask;
++		else
++			reg &= ~mask;
++		writel(reg, dp->reg_base + phy_pd_addr);
+ 		break;
+ 	case CH2_BLOCK:
+-		if (enable) {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg |= CH2_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		} else {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg &= ~CH2_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		}
++		mask = CH2_PD;
++		reg = readl(dp->reg_base + phy_pd_addr);
++
++		if (enable)
++			reg |= mask;
++		else
++			reg &= ~mask;
++		writel(reg, dp->reg_base + phy_pd_addr);
+ 		break;
+ 	case CH3_BLOCK:
+-		if (enable) {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg |= CH3_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		} else {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg &= ~CH3_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		}
++		mask = CH3_PD;
++		reg = readl(dp->reg_base + phy_pd_addr);
++
++		if (enable)
++			reg |= mask;
++		else
++			reg &= ~mask;
++		writel(reg, dp->reg_base + phy_pd_addr);
+ 		break;
+ 	case ANALOG_TOTAL:
+-		if (enable) {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg |= DP_PHY_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		} else {
+-			reg = readl(dp->reg_base + phy_pd_addr);
+-			reg &= ~DP_PHY_PD;
+-			writel(reg, dp->reg_base + phy_pd_addr);
+-		}
++		/*
++		 * There is no bit named DP_PHY_PD, so We used DP_INC_BG
++		 * to power off everything instead of DP_PHY_PD in
++		 * Rockchip
++		 */
++		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
++			mask = DP_INC_BG;
++		else
++			mask = DP_PHY_PD;
++
++		reg = readl(dp->reg_base + phy_pd_addr);
++		if (enable)
++			reg |= mask;
++		else
++			reg &= ~mask;
++
++		writel(reg, dp->reg_base + phy_pd_addr);
++		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
++			usleep_range(10, 15);
+ 		break;
+ 	case POWER_ALL:
+ 		if (enable) {
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+index 9602668669f4..b633a4a5082a 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+@@ -345,7 +345,9 @@
+ #define DP_INC_BG				(0x1 << 7)
+ #define DP_EXP_BG				(0x1 << 6)
+ #define DP_PHY_PD				(0x1 << 5)
++#define RK_AUX_PD				(0x1 << 5)
+ #define AUX_PD					(0x1 << 4)
++#define RK_PLL_PD				(0x1 << 4)
+ #define CH3_PD					(0x1 << 3)
+ #define CH2_PD					(0x1 << 2)
+ #define CH1_PD					(0x1 << 1)
 -- 
 2.14.1
