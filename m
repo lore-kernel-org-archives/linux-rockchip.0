@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 36/40] drm/bridge: analogix_dp: Properly disable aux chan
- retries on rockchip
-Date: Mon, 15 Jan 2018 18:16:10 +0100
-Message-ID: <20180115171614.14474-37-thierry.escande@collabora.com>
+Subject: [PATCH 25/40] drm/rockchip: Restore psr->state when enable/disable
+ psr failed
+Date: Mon, 15 Jan 2018 18:15:59 +0100
+Message-ID: <20180115171614.14474-26-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,39 +23,141 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgoKVGhlIGNvbW1l
-bnRzIGluIGFuYWxvZ2l4X2RwX2luaXRfYXV4KCkgY2xhaW0gdGhhdCB3ZSdyZSBkaXNhYmxpbmcg
-YXV4CmNoYW5uZWwgcmV0cmllcywgYnV0IHRoZW4gcmlnaHQgYmVsb3cgaXQgZm9yIFJvY2tjaGlw
-IGl0IHNldHMgdGhlbSB0bwozLiAgSWYgd2UgYWN0dWFsbHkgbmVlZCAzIHJldHJpZXMgZm9yIFJv
-Y2tjaGlwIHRoZW4gd2UgY291bGQgYWRqdXN0CnRoZSBjb21tZW50LCBidXQgaXQgc2VlbXMgbW9y
-ZSBsaWtlbHkgdGhhdCB3ZSB3YW50IHRoZSBzYW1lIHJldHJ5CmJlaGF2aW9yIGFjcm9zcyBhbGwg
-cGxhdGZvcm1zLgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3Jn
-PgpDYzog5b6B5aKeIOeOiyA8d3p6QHJvY2stY2hpcHMuY29tPgpTaWduZWQtb2ZmLWJ5OiBEb3Vn
-bGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgfCAxNSArKysrKysrKy0tLS0tLS0KIDEg
-ZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyBiL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKaW5kZXggNThl
-OGEyOGU5OWFhLi5hNWYyNzYzZDcyZTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtNDgxLDE1ICs0ODEsMTYgQEAgdm9pZCBh
-bmFsb2dpeF9kcF9pbml0X2F1eChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAogCWFu
-YWxvZ2l4X2RwX3Jlc2V0X2F1eChkcCk7CiAKLQkvKiBEaXNhYmxlIEFVWCB0cmFuc2FjdGlvbiBI
-L1cgcmV0cnkgKi8KKwkvKiBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxBWSBkb2Vzbid0IGFw
-cGx5IHRvIFJvY2tjaGlwIElQICovCiAJaWYgKGRwLT5wbGF0X2RhdGEgJiYgaXNfcm9ja2NoaXAo
-ZHAtPnBsYXRfZGF0YS0+ZGV2X3R5cGUpKQotCQlyZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RF
-RF9ERUxBWSgwKSB8Ci0JCSAgICAgIEFVWF9IV19SRVRSWV9DT1VOVF9TRUwoMykgfAotCQkgICAg
-ICBBVVhfSFdfUkVUUllfSU5URVJWQUxfNjAwX01JQ1JPU0VDT05EUzsKKwkJcmVnID0gMDsKIAll
-bHNlCi0JCXJlZyA9IEFVWF9CSVRfUEVSSU9EX0VYUEVDVEVEX0RFTEFZKDMpIHwKLQkJICAgICAg
-QVVYX0hXX1JFVFJZX0NPVU5UX1NFTCgwKSB8Ci0JCSAgICAgIEFVWF9IV19SRVRSWV9JTlRFUlZB
-TF82MDBfTUlDUk9TRUNPTkRTOworCQlyZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxB
-WSgzKTsKKworCS8qIERpc2FibGUgQVVYIHRyYW5zYWN0aW9uIEgvVyByZXRyeSAqLworCXJlZyB8
-PSBBVVhfSFdfUkVUUllfQ09VTlRfU0VMKDApIHwKKwkgICAgICAgQVVYX0hXX1JFVFJZX0lOVEVS
-VkFMXzYwMF9NSUNST1NFQ09ORFM7CisKIAl3cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBBTkFM
-T0dJWF9EUF9BVVhfSFdfUkVUUllfQ1RMKTsKIAogCS8qIFJlY2VpdmUgQVVYIENoYW5uZWwgREVG
-RVIgY29tbWFuZHMgZXF1YWwgdG8gREVGRkVSX0NPVU5UKjY0ICovCi0tIAoyLjE0LjEKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+If we failed disable psr, it would hang the display until next psr
+cycle coming. So we should restore psr->state when it failed.
+
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  4 +++-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 10 +++++-----
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c        | 20 +++++++++++++-------
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h        |  2 +-
+ 4 files changed, 22 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 501f7b4a23d6..b2e369073854 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -153,8 +153,10 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
+ 	psr_vsc.DB1 = 0;
+ 
+ 	ret = drm_dp_dpcd_writeb(&dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+-	if (ret != 1)
++	if (ret != 1) {
+ 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
++		return ret;
++	}
+ 
+ 	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
+ }
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 3e8bf79bea58..8c884f9ce713 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -77,13 +77,13 @@ struct rockchip_dp_device {
+ 	struct analogix_dp_plat_data plat_data;
+ };
+ 
+-static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
++static int analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
+ {
+ 	struct rockchip_dp_device *dp = to_dp(encoder);
+ 	int ret;
+ 
+ 	if (!analogix_dp_psr_enabled(dp->adp))
+-		return;
++		return 0;
+ 
+ 	DRM_DEV_DEBUG(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
+ 
+@@ -91,13 +91,13 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
+ 					 PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
+ 	if (ret) {
+ 		DRM_DEV_ERROR(dp->dev, "line flag interrupt did not arrive\n");
+-		return;
++		return -ETIMEDOUT;
+ 	}
+ 
+ 	if (enabled)
+-		analogix_dp_enable_psr(dp->adp);
++		return analogix_dp_enable_psr(dp->adp);
+ 	else
+-		analogix_dp_disable_psr(dp->adp);
++		return analogix_dp_disable_psr(dp->adp);
+ }
+ 
+ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index b339ca943139..9376f4396b6b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -36,7 +36,7 @@ struct psr_drv {
+ 
+ 	struct delayed_work	flush_work;
+ 
+-	void (*set)(struct drm_encoder *encoder, bool enable);
++	int (*set)(struct drm_encoder *encoder, bool enable);
+ };
+ 
+ static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
+@@ -93,19 +93,25 @@ static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
+ 		return;
+ 	}
+ 
+-	psr->state = state;
+-
+ 	/* Actually commit the state change to hardware */
+-	switch (psr->state) {
++	switch (state) {
+ 	case PSR_ENABLE:
+-		psr->set(psr->encoder, true);
++		if (psr->set(psr->encoder, true))
++			return;
+ 		break;
+ 
+ 	case PSR_DISABLE:
+ 	case PSR_FLUSH:
+-		psr->set(psr->encoder, false);
++		if (psr->set(psr->encoder, false))
++			return;
+ 		break;
++
++	default:
++		pr_err("%s: Unknown state %d\n", __func__, state);
++		return;
+ 	}
++
++	psr->state = state;
+ }
+ 
+ static void psr_set_state(struct psr_drv *psr, enum psr_state state)
+@@ -229,7 +235,7 @@ EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
+  * Zero on success, negative errno on failure.
+  */
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+-			void (*psr_set)(struct drm_encoder *, bool enable))
++			int (*psr_set)(struct drm_encoder *, bool enable))
+ {
+ 	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+ 	struct psr_drv *psr;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+index b1ea0155e57c..06537ee27565 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+@@ -22,7 +22,7 @@ int rockchip_drm_psr_activate(struct drm_encoder *encoder);
+ int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
+ 
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+-			void (*psr_set)(struct drm_encoder *, bool enable));
++			int (*psr_set)(struct drm_encoder *, bool enable));
+ void rockchip_drm_psr_unregister(struct drm_encoder *encoder);
+ 
+ #endif /* __ROCKCHIP_DRM_PSR__ */
+-- 
+2.14.1
