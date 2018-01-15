@@ -1,134 +1,127 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add roc-rk3328-cc board
-Date: Mon, 15 Jan 2018 12:09:53 -0600
-Message-ID: <CAL_JsqKSvyi0HRFkwYfr2HS_xBuQfTYphUYP7ass1nQn3EKLgw@mail.gmail.com>
-References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180111203033.mnap7tijbfsvr5pa@rob-hp-laptop>
- <10243464.nJpoDBzbVB@phil>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH 07/12] i2c: rk3x: account for const type of
+ of_device_id.data
+Date: Mon, 15 Jan 2018 19:24:56 +0100
+Message-ID: <20180115182456.zkx2ehdlxzrc2scu@ninjato>
+References: <1514899688-27844-1-git-send-email-Julia.Lawall@lip6.fr>
+ <1514899688-27844-8-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <10243464.nJpoDBzbVB@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="emwm4gsssaxoraj4"
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1514899688-27844-8-git-send-email-Julia.Lawall@lip6.fr>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: Heiko Stuebner <heiko@sntech.de>, kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 12, 2018 at 2:33 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Hi Rob,
->
-> Am Donnerstag, 11. Januar 2018, 14:30:33 CET schrieb Rob Herring:
->> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
->> > new file mode 100644
->> > index 0000000..2134baf
->> > --- /dev/null
->> > +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
->> > @@ -0,0 +1,313 @@
->> > +/*
->> > + * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
->> > + *
->> > + * This file is dual-licensed: you can use it either under the terms
->> > + * of the GPL or the X11 license, at your option. Note that this dual
->> > + * licensing only applies to this file, and not this project as a
->> > + * whole.
->> > + *
->> > + *  a) This library is free software; you can redistribute it and/or
->> > + *     modify it under the terms of the GNU General Public License as
->> > + *     published by the Free Software Foundation; either version 2 of the
->> > + *     License, or (at your option) any later version.
->> > + *
->> > + *     This library is distributed in the hope that it will be useful,
->> > + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
->> > + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> > + *     GNU General Public License for more details.
->> > + *
->> > + * Or, alternatively,
->> > + *
->> > + *  b) Permission is hereby granted, free of charge, to any person
->> > + *     obtaining a copy of this software and associated documentation
->> > + *     files (the "Software"), to deal in the Software without
->> > + *     restriction, including without limitation the rights to use,
->> > + *     copy, modify, merge, publish, distribute, sublicense, and/or
->> > + *     sell copies of the Software, and to permit persons to whom the
->> > + *     Software is furnished to do so, subject to the following
->> > + *     conditions:
->> > + *
->> > + *     The above copyright notice and this permission notice shall be
->> > + *     included in all copies or substantial portions of the Software.
->> > + *
->> > + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> > + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
->> > + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
->> > + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
->> > + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
->> > + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
->> > + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
->> > + *     OTHER DEALINGS IN THE SOFTWARE.
->> > + */
->>
->> Use SPDX license tag.
->
-> It looks like Thomas' SPDX documentation patches are not yet merged
-> and there were smaller protests about SPDX information only being
-> available on some external website, so just for my understanding, SPDX
-> is the agreed standard now, right?
 
-His series adds the license text for all the tags which Russell said
-addressed his concerns.
+--emwm4gsssaxoraj4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I think it is not yet merged mainly because Thomas has been busy with
-Spectre and Meltdown.
+On Tue, Jan 02, 2018 at 02:28:03PM +0100, Julia Lawall wrote:
+> This driver creates a number of const structures that it stores in
+> the data field of an of_device_id array.
+>=20
+> The data field of an of_device_id structure has type const void *, so
+> there is no need for a const-discarding cast when putting const values
+> into such a structure.
+>=20
+> Furthermore, adding const to the declaration of the location that
+> receives a const value from such a field ensures that the compiler
+> will continue to check that the value is not modified.  The
+> const-discarding cast on the extraction from the data field is thus
+> no longer needed.
+>=20
+> Done using Coccinelle.
+>=20
+> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
 
-> And judging by the SPDX conversion for Rockchip dts I have in my inbox
-> the correct tags should probably be
->         // SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->
-> due to the
-> "All devicetrees claim to be either GPL or X11 while the actual license
-> text is MIT. Therefore we use MIT for the SPDX tag as X11 is clearly
-> wrong."
+Heiko, you okay with the patch?
 
-Right.
+>=20
+> ---
+>  drivers/i2c/busses/i2c-rk3x.c |   16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff -u -p a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+> --- a/drivers/i2c/busses/i2c-rk3x.c
+> +++ b/drivers/i2c/busses/i2c-rk3x.c
+> @@ -194,7 +194,7 @@ struct rk3x_i2c_soc_data {
+>  struct rk3x_i2c {
+>  	struct i2c_adapter adap;
+>  	struct device *dev;
+> -	struct rk3x_i2c_soc_data *soc_data;
+> +	const struct rk3x_i2c_soc_data *soc_data;
+> =20
+>  	/* Hardware resources */
+>  	void __iomem *regs;
+> @@ -1164,27 +1164,27 @@ static const struct rk3x_i2c_soc_data rk
+>  static const struct of_device_id rk3x_i2c_match[] =3D {
+>  	{
+>  		.compatible =3D "rockchip,rv1108-i2c",
+> -		.data =3D (void *)&rv1108_soc_data
+> +		.data =3D &rv1108_soc_data
+>  	},
+>  	{
+>  		.compatible =3D "rockchip,rk3066-i2c",
+> -		.data =3D (void *)&rk3066_soc_data
+> +		.data =3D &rk3066_soc_data
+>  	},
+>  	{
+>  		.compatible =3D "rockchip,rk3188-i2c",
+> -		.data =3D (void *)&rk3188_soc_data
+> +		.data =3D &rk3188_soc_data
+>  	},
+>  	{
+>  		.compatible =3D "rockchip,rk3228-i2c",
+> -		.data =3D (void *)&rk3228_soc_data
+> +		.data =3D &rk3228_soc_data
+>  	},
+>  	{
+>  		.compatible =3D "rockchip,rk3288-i2c",
+> -		.data =3D (void *)&rk3288_soc_data
+> +		.data =3D &rk3288_soc_data
+>  	},
+>  	{
+>  		.compatible =3D "rockchip,rk3399-i2c",
+> -		.data =3D (void *)&rk3399_soc_data
+> +		.data =3D &rk3399_soc_data
+>  	},
+>  	{},
+>  };
+> @@ -1207,7 +1207,7 @@ static int rk3x_i2c_probe(struct platfor
+>  		return -ENOMEM;
+> =20
+>  	match =3D of_match_node(rk3x_i2c_match, np);
+> -	i2c->soc_data =3D (struct rk3x_i2c_soc_data *)match->data;
+> +	i2c->soc_data =3D match->data;
+> =20
+>  	/* use common interface to get I2C timing properties */
+>  	i2c_parse_fw_timings(&pdev->dev, &i2c->t, true);
+>=20
 
+--emwm4gsssaxoraj4
+Content-Type: application/pgp-signature; name="signature.asc"
 
->> > +&i2c1 {
->> > +   status = "okay";
->> > +
->> > +   rk805: rk805@18 {
->>
->> pmic@18
->>
->> > +           compatible = "rockchip,rk805";
->> > +           reg = <0x18>;
->> > +           interrupt-parent = <&gpio1>;
->> > +           interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
->> > +           #clock-cells = <1>;
->> > +           clock-output-names = "xin32k", "rk805-clkout2";
->> > +           gpio-controller;
->> > +           #gpio-cells = <2>;
->> > +           pinctrl-names = "default";
->> > +           pinctrl-0 = <&pmic_int_l>;
->> > +           rockchip,system-power-controller;
->> > +           wakeup-source;
->> > +
->> > +           vcc1-supply = <&vcc_sys>;
->> > +           vcc2-supply = <&vcc_sys>;
->> > +           vcc3-supply = <&vcc_sys>;
->> > +           vcc4-supply = <&vcc_sys>;
->> > +           vcc5-supply = <&vcc_io>;
->> > +           vcc6-supply = <&vcc_io>;
->> > +
->> > +           regulators {
->> > +                   vdd_logic: DCDC_REG1 {
->>
->> Don't use '_' in node names.
->
-> The driver binds against the node names including the underscores.
-> (with regulator-compatible being deprecated)
+-----BEGIN PGP SIGNATURE-----
 
-Okay. You've probably told me that before (and will again next time I forget).
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlpc8fgACgkQFA3kzBSg
+KbZhJxAAoy2fQHMfVVvlwVplaox+UGqMx/gpuWRW1MwhXiSz/e01BWeWyM0bCKgt
+IYRsphQkJaRKU+92K/wHtRgNNDZLfRnzkinbNMFBH62PXls6Qo7i0gqB08xBxUsp
+vbpVwPxDTvJ36lelY5rcK2/ysrRIx5j097GIcLAv6f0EIgiei34OPBw9rYSIkT1n
+C1nNXc734fCwfaIGxqGiaseZsg97l0rqJ7vKmFtve0XRU9kCNQG7vQ4eNhI6y4n0
+h3JkjZyuAtDEybMP5omMZqx6GwGmnJKtbNzHpcPvrMxN2KZ2clmzeWuK6rlF52Wo
+b7KHBLrC7OGdzUJrZvUY9QKA/tcxoI1ipyXHG60K6sACtLJSBNcoMn9jK/I6kS2Y
+obeaXrqtHZE4gfrOY5/QwPcAdGmXMrE4aoAfz0sJUqSXYMb5sc7tk6pcCjxU0gLl
+m6p4cclaVmEBNxsBd/r8CRKWJL/sJH+KGd5LKtVLKi9X3jdjBbBcbkGDxVb8rkZJ
+XAh2TMu5PFnwLOZwR00/CQDKQvN34msfFgs65ISQ9DwtSZ08hiNYqhA95N4BfimF
+5IZ0GKpcbg7MwFV8AK31qUagg0YCVQDQOVQS/qwPoJoId9S46syjGsJX6Lt8DdSC
+tFKe38lR3GeH1mNZtjeKoMPwvDLISFME1NGGUrmf24VLL8D5Rjc=
+=RPfk
+-----END PGP SIGNATURE-----
 
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--emwm4gsssaxoraj4--
