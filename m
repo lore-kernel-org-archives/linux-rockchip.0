@@ -1,81 +1,64 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 08/40] drm/rockchip: Remove analogix psr worker
-Date: Mon, 15 Jan 2018 18:15:42 +0100
-Message-ID: <20180115171614.14474-9-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH 32/40] drm/bridge: analogix_dp: Add analogix_dp_shutdown
+Date: Mon, 15 Jan 2018 18:16:06 +0100
+Message-ID: <20180115171614.14474-33-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
+Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpOb3cgdGhhdCB0aGUgc3Bp
-bmxvY2tzIGFuZCB0aW1lcnMgYXJlIGdvbmUsIHdlIGNhbiByZW1vdmUgdGhlIHBzcgp3b3JrZXIg
-bG9jYXRlZCBpbiByb2NrY2hpcCdzIGFuYWxvZ2l4IGRyaXZlciBhbmQgZG8gdGhlIGVuYWJsZS9k
-aXNhYmxlCmRpcmVjdGx5LiBUaGlzIHNob3VsZCBzaW1wbGlmeSB0aGUgY29kZSBhbmQgcmVtb3Zl
-IHJhY2VzIG9uIGRpc2FibGUuCgpDYzog5b6B5aKeIOeOiyA8d3p6QHJvY2stY2hpcHMuY29tPgpD
-YzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYt
-Ynk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGll
-cnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jIHwgMzEgKystLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMjkgZGVsZXRp
-b25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
-LXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2No
-aXAuYwppbmRleCA3ZDc2ZmY0NzAyOGQuLjM2MzM0ODM5YTNmOCAxMDA2NDQKLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMKQEAgLTcxLDEwICs3MSw2IEBA
-IHN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgewogCXN0cnVjdCByZWdtYXAgICAgICAgICAgICAq
-Z3JmOwogCXN0cnVjdCByZXNldF9jb250cm9sICAgICAqcnN0OwogCi0Jc3RydWN0IHdvcmtfc3Ry
-dWN0CSBwc3Jfd29yazsKLQlzdHJ1Y3QgbXV0ZXggICAgICAgICAgICAgcHNyX2xvY2s7Ci0JdW5z
-aWduZWQgaW50ICAgICAgICAgICAgIHBzcl9zdGF0ZTsKLQogCWNvbnN0IHN0cnVjdCByb2NrY2hp
-cF9kcF9jaGlwX2RhdGEgKmRhdGE7CiAKIAlzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICphZHA7
-CkBAIC04NCwyOCArODAsMTMgQEAgc3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSB7CiBzdGF0aWMg
-dm9pZCBhbmFsb2dpeF9kcF9wc3Jfc2V0KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwgYm9v
-bCBlbmFibGVkKQogewogCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0gdG9fZHAoZW5j
-b2Rlcik7CisJaW50IHJldDsKIAogCWlmICghYW5hbG9naXhfZHBfcHNyX3N1cHBvcnRlZChkcC0+
-YWRwKSkKIAkJcmV0dXJuOwogCiAJRFJNX0RFVl9ERUJVRyhkcC0+ZGV2LCAiJXMgUFNSLi4uXG4i
-LCBlbmFibGVkID8gIkVudHJ5IiA6ICJFeGl0Iik7CiAKLQltdXRleF9sb2NrKCZkcC0+cHNyX2xv
-Y2spOwotCWlmIChlbmFibGVkKQotCQlkcC0+cHNyX3N0YXRlID0gRURQX1ZTQ19QU1JfU1RBVEVf
-QUNUSVZFOwotCWVsc2UKLQkJZHAtPnBzcl9zdGF0ZSA9IH5FRFBfVlNDX1BTUl9TVEFURV9BQ1RJ
-VkU7Ci0KLQlzY2hlZHVsZV93b3JrKCZkcC0+cHNyX3dvcmspOwotCW11dGV4X3VubG9jaygmZHAt
-PnBzcl9sb2NrKTsKLX0KLQotc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfcHNyX3dvcmsoc3RydWN0
-IHdvcmtfc3RydWN0ICp3b3JrKQotewotCXN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0K
-LQkJCQljb250YWluZXJfb2Yod29yaywgdHlwZW9mKCpkcCksIHBzcl93b3JrKTsKLQlpbnQgcmV0
-OwotCiAJcmV0ID0gcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoZHAtPmVuY29kZXIuY3J0YywK
-IAkJCQkJIFBTUl9XQUlUX0xJTkVfRkxBR19USU1FT1VUX01TKTsKIAlpZiAocmV0KSB7CkBAIC0x
-MTMsMTIgKzk0LDEwIEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX3Bzcl93b3JrKHN0cnVjdCB3
-b3JrX3N0cnVjdCAqd29yaykKIAkJcmV0dXJuOwogCX0KIAotCW11dGV4X2xvY2soJmRwLT5wc3Jf
-bG9jayk7Ci0JaWYgKGRwLT5wc3Jfc3RhdGUgPT0gRURQX1ZTQ19QU1JfU1RBVEVfQUNUSVZFKQor
-CWlmIChlbmFibGVkKQogCQlhbmFsb2dpeF9kcF9lbmFibGVfcHNyKGRwLT5hZHApOwogCWVsc2UK
-IAkJYW5hbG9naXhfZHBfZGlzYWJsZV9wc3IoZHAtPmFkcCk7Ci0JbXV0ZXhfdW5sb2NrKCZkcC0+
-cHNyX2xvY2spOwogfQogCiBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3ByZV9pbml0KHN0cnVjdCBy
-b2NrY2hpcF9kcF9kZXZpY2UgKmRwKQpAQCAtMTM1LDggKzExNCw2IEBAIHN0YXRpYyBpbnQgcm9j
-a2NoaXBfZHBfcG93ZXJvbihzdHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhICpwbGF0X2RhdGEp
-CiAJc3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSAqZHAgPSB0b19kcChwbGF0X2RhdGEpOwogCWlu
-dCByZXQ7CiAKLQljYW5jZWxfd29ya19zeW5jKCZkcC0+cHNyX3dvcmspOwotCiAJcmV0ID0gY2xr
-X3ByZXBhcmVfZW5hYmxlKGRwLT5wY2xrKTsKIAlpZiAocmV0IDwgMCkgewogCQlEUk1fREVWX0VS
-Uk9SKGRwLT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIHBjbGsgJWRcbiIsIHJldCk7CkBAIC0zNTUs
-MTAgKzMzMiw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAlkcC0+cGxhdF9kYXRhLnBvd2VyX29mZiA9IHJv
-Y2tjaGlwX2RwX3Bvd2VyZG93bjsKIAlkcC0+cGxhdF9kYXRhLmdldF9tb2RlcyA9IHJvY2tjaGlw
-X2RwX2dldF9tb2RlczsKIAotCW11dGV4X2luaXQoJmRwLT5wc3JfbG9jayk7Ci0JZHAtPnBzcl9z
-dGF0ZSA9IH5FRFBfVlNDX1BTUl9TVEFURV9BQ1RJVkU7Ci0JSU5JVF9XT1JLKCZkcC0+cHNyX3dv
-cmssIGFuYWxvZ2l4X2RwX3Bzcl93b3JrKTsKLQogCXJldCA9IHJvY2tjaGlwX2RybV9wc3JfcmVn
-aXN0ZXIoJmRwLT5lbmNvZGVyLCBhbmFsb2dpeF9kcF9wc3Jfc2V0KTsKIAlpZiAocmV0IDwgMCkK
-IAkJZ290byBlcnJfY2xlYW51cF9lbmNvZGVyOwotLSAKMi4xNC4xCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Tomasz Figa <tfiga@chromium.org>
+
+This patch adds a function that master driver can call at shutdown time
+in case there is some cleanup work to do. The function will then call
+back to platform_data .cleanup() callback to let the master driver do
+the platform-specific work.
+
+Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
+Cc: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 7 +++++++
+ include/drm/bridge/analogix_dp.h                   | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 2d44ef2fc3d2..a83140fa3448 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1671,6 +1671,13 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_unbind);
+ 
++void analogix_dp_shutdown(struct analogix_dp_device *dp)
++{
++	if (dp->plat_data->cleanup)
++		dp->plat_data->cleanup(dp->plat_data);
++}
++EXPORT_SYMBOL_GPL(analogix_dp_shutdown);
++
+ #ifdef CONFIG_PM
+ int analogix_dp_suspend(struct analogix_dp_device *dp)
+ {
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index 96a6af0823aa..ed3ae1b5bb65 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -52,6 +52,7 @@ struct analogix_dp_device *
+ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+ 		 struct analogix_dp_plat_data *plat_data);
+ void analogix_dp_unbind(struct analogix_dp_device *dp);
++void analogix_dp_shutdown(struct analogix_dp_device *dp);
+ 
+ int analogix_dp_start_crc(struct drm_connector *connector);
+ int analogix_dp_stop_crc(struct drm_connector *connector);
+-- 
+2.14.1
