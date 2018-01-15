@@ -1,12 +1,11 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 09/40] drm/bridge: analogix_dp: Don't change psr while bridge
- is disabled
-Date: Mon, 15 Jan 2018 18:15:43 +0100
-Message-ID: <20180115171614.14474-10-thierry.escande@collabora.com>
+Subject: [PATCH 06/40] drm/rockchip: Don't use atomic constructs for psr
+Date: Mon, 15 Jan 2018 18:15:40 +0100
+Message-ID: <20180115171614.14474-7-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,119 +22,149 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-There is a race between AUX CH bring-up and enabling bridge which will
-cause link training to fail. To avoid hitting it, don't change psr state
-while enabling the bridge.
-
-Cc: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-[seanpaul fixed up the commit message a bit and renamed *_supported to *_enabled]
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 15 ++++++++-------
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  2 +-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  2 +-
- include/drm/bridge/analogix_dp.h                   |  2 +-
- 4 files changed, 11 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index b52de046f5f1..84141571e960 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -98,18 +98,18 @@ static int analogix_dp_detect_hpd(struct analogix_dp_device *dp)
- 	return 0;
- }
- 
--int analogix_dp_psr_supported(struct analogix_dp_device *dp)
-+int analogix_dp_psr_enabled(struct analogix_dp_device *dp)
- {
- 
--	return dp->psr_support;
-+	return dp->psr_enable;
- }
--EXPORT_SYMBOL_GPL(analogix_dp_psr_supported);
-+EXPORT_SYMBOL_GPL(analogix_dp_psr_enabled);
- 
- int analogix_dp_enable_psr(struct analogix_dp_device *dp)
- {
- 	struct edp_vsc_psr psr_vsc;
- 
--	if (!dp->psr_support)
-+	if (!dp->psr_enable)
- 		return 0;
- 
- 	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
-@@ -131,7 +131,7 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
- 	struct edp_vsc_psr psr_vsc;
- 	int ret;
- 
--	if (!dp->psr_support)
-+	if (!dp->psr_enable)
- 		return 0;
- 
- 	/* Prepare VSC packet as per EDP 1.4 spec, Table 6.9 */
-@@ -875,8 +875,8 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
- 	/* Enable video */
- 	analogix_dp_start_video(dp);
- 
--	dp->psr_support = analogix_dp_detect_sink_psr(dp);
--	if (dp->psr_support)
-+	dp->psr_enable = analogix_dp_detect_sink_psr(dp);
-+	if (dp->psr_enable)
- 		analogix_dp_enable_sink_psr(dp);
- }
- 
-@@ -1118,6 +1118,7 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- 	if (ret)
- 		DRM_ERROR("failed to setup the panel ret = %d\n", ret);
- 
-+	dp->psr_enable = false;
- 	dp->dpms_mode = DRM_MODE_DPMS_OFF;
- }
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index b039b28d8fcc..e135a42cb19e 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -170,7 +170,7 @@ struct analogix_dp_device {
- 	int			dpms_mode;
- 	int			hpd_gpio;
- 	bool                    force_hpd;
--	bool			psr_support;
-+	bool			psr_enable;
- 
- 	struct mutex		panel_lock;
- 	bool			panel_is_modeset;
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 36334839a3f8..3e8bf79bea58 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -82,7 +82,7 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
- 	struct rockchip_dp_device *dp = to_dp(encoder);
- 	int ret;
- 
--	if (!analogix_dp_psr_supported(dp->adp))
-+	if (!analogix_dp_psr_enabled(dp->adp))
- 		return;
- 
- 	DRM_DEV_DEBUG(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 5518fc75dd6e..c2788483c882 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -40,7 +40,7 @@ struct analogix_dp_plat_data {
- 			 struct drm_connector *);
- };
- 
--int analogix_dp_psr_supported(struct analogix_dp_device *dp);
-+int analogix_dp_psr_enabled(struct analogix_dp_device *dp);
- int analogix_dp_enable_psr(struct analogix_dp_device *dp);
- int analogix_dp_disable_psr(struct analogix_dp_device *dp);
- 
--- 
-2.14.1
+RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpJbnN0ZWFkIG9mIHVzaW5n
+IHRpbWVyIGFuZCBzcGlubG9ja3MsIHVzZSBkZWxheWVkX3dvcmsgYW5kCm11dGV4ZXMgZm9yIHJv
+Y2tjaGlwIHBzci4gVGhpcyBhbGxvd3MgdXMgdG8gbWFrZSBibG9ja2luZwpjYWxscyB3aGVuIGVu
+YWJsaW5nL2Rpc2FibGluZyBwc3IgKHdoaWNoIGlzIHNvcnQgb2YgaW1wb3J0YW50CmdpdmVuIHdl
+J3JlIHRhbGtpbmcgb3ZlciBkcGNkIHRvIHRoZSBkaXNwbGF5KS4KCkNjOiBDYWVzYXIgV2FuZyA8
+d3h0QHJvY2stY2hpcHMuY29tPgpDYzog5b6B5aKeIOeOiyA8d3p6QHJvY2stY2hpcHMuY29tPgpD
+YzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYt
+Ynk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGll
+cnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgMiArLQogZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jIHwgNjggKysrKysrKysrKysrLS0tLS0tLS0tLS0t
+LS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKSwgNDEgZGVsZXRpb25zKC0p
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKaW5kZXggODgw
+ODRjYTE1MTE1Li4wNjA5MTEzZDZhNzEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9kcnYuYwpAQCAtMTM0LDcgKzEzNCw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
+ZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQogCWRybV9kZXYtPmRldl9wcml2YXRlID0gcHJp
+dmF0ZTsKIAogCUlOSVRfTElTVF9IRUFEKCZwcml2YXRlLT5wc3JfbGlzdCk7Ci0Jc3Bpbl9sb2Nr
+X2luaXQoJnByaXZhdGUtPnBzcl9saXN0X2xvY2spOworCW11dGV4X2luaXQoJnByaXZhdGUtPnBz
+cl9saXN0X2xvY2spOwogCiAJcmV0ID0gcm9ja2NoaXBfZHJtX2luaXRfaW9tbXUoZHJtX2Rldik7
+CiAJaWYgKHJldCkKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5o
+CmluZGV4IDQ5OGRmYmM1MmNlYy4uOWMwNjRhNDA0NThiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKQEAgLTU1LDcgKzU1LDcgQEAgc3RydWN0IHJvY2tj
+aGlwX2RybV9wcml2YXRlIHsKIAlzdHJ1Y3QgbXV0ZXggbW1fbG9jazsKIAlzdHJ1Y3QgZHJtX21t
+IG1tOwogCXN0cnVjdCBsaXN0X2hlYWQgcHNyX2xpc3Q7Ci0Jc3BpbmxvY2tfdCBwc3JfbGlzdF9s
+b2NrOworCXN0cnVjdCBtdXRleCBwc3JfbGlzdF9sb2NrOwogfTsKIAogaW50IHJvY2tjaGlwX2Ry
+bV9kbWFfYXR0YWNoX2RldmljZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jCmluZGV4IGIzZmI5OWM1YjFmZC4u
+YjMzOWNhOTQzMTM5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3Bzci5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+cHNyLmMKQEAgLTE4LDcgKzE4LDcgQEAKICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiCiAj
+aW5jbHVkZSAicm9ja2NoaXBfZHJtX3Bzci5oIgogCi0jZGVmaW5lIFBTUl9GTFVTSF9USU1FT1VU
+CW1zZWNzX3RvX2ppZmZpZXMoMTAwKQorI2RlZmluZSBQU1JfRkxVU0hfVElNRU9VVF9NUwkxMDAK
+IAogZW51bSBwc3Jfc3RhdGUgewogCVBTUl9GTFVTSCwKQEAgLTMwLDExICszMCwxMSBAQCBzdHJ1
+Y3QgcHNyX2RydiB7CiAJc3RydWN0IGxpc3RfaGVhZAlsaXN0OwogCXN0cnVjdCBkcm1fZW5jb2Rl
+cgkqZW5jb2RlcjsKIAotCXNwaW5sb2NrX3QJCWxvY2s7CisJc3RydWN0IG11dGV4CQlsb2NrOwog
+CWJvb2wJCQlhY3RpdmU7CiAJZW51bSBwc3Jfc3RhdGUJCXN0YXRlOwogCi0Jc3RydWN0IHRpbWVy
+X2xpc3QJZmx1c2hfdGltZXI7CisJc3RydWN0IGRlbGF5ZWRfd29yawlmbHVzaF93b3JrOwogCiAJ
+dm9pZCAoKnNldCkoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLCBib29sIGVuYWJsZSk7CiB9
+OwpAQCAtNDMsOSArNDMsOCBAQCBzdGF0aWMgc3RydWN0IHBzcl9kcnYgKmZpbmRfcHNyX2J5X2Ny
+dGMoc3RydWN0IGRybV9jcnRjICpjcnRjKQogewogCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0
+ZSAqZHJtX2RydiA9IGNydGMtPmRldi0+ZGV2X3ByaXZhdGU7CiAJc3RydWN0IHBzcl9kcnYgKnBz
+cjsKLQl1bnNpZ25lZCBsb25nIGZsYWdzOwogCi0Jc3Bpbl9sb2NrX2lycXNhdmUoJmRybV9kcnYt
+PnBzcl9saXN0X2xvY2ssIGZsYWdzKTsKKwltdXRleF9sb2NrKCZkcm1fZHJ2LT5wc3JfbGlzdF9s
+b2NrKTsKIAlsaXN0X2Zvcl9lYWNoX2VudHJ5KHBzciwgJmRybV9kcnYtPnBzcl9saXN0LCBsaXN0
+KSB7CiAJCWlmIChwc3ItPmVuY29kZXItPmNydGMgPT0gY3J0YykKIAkJCWdvdG8gb3V0OwpAQCAt
+NTMsNyArNTIsNyBAQCBzdGF0aWMgc3RydWN0IHBzcl9kcnYgKmZpbmRfcHNyX2J5X2NydGMoc3Ry
+dWN0IGRybV9jcnRjICpjcnRjKQogCXBzciA9IEVSUl9QVFIoLUVOT0RFVik7CiAKIG91dDoKLQlz
+cGluX3VubG9ja19pcnFyZXN0b3JlKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJ
+bXV0ZXhfdW5sb2NrKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrKTsKIAlyZXR1cm4gcHNyOwogfQog
+CkBAIC02MSw5ICs2MCw4IEBAIHN0YXRpYyBzdHJ1Y3QgcHNyX2RydiAqZmluZF9wc3JfYnlfZW5j
+b2RlcihzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCiB7CiAJc3RydWN0IHJvY2tjaGlwX2Ry
+bV9wcml2YXRlICpkcm1fZHJ2ID0gZW5jb2Rlci0+ZGV2LT5kZXZfcHJpdmF0ZTsKIAlzdHJ1Y3Qg
+cHNyX2RydiAqcHNyOwotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7CiAKLQlzcGluX2xvY2tfaXJxc2F2
+ZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxhZ3MpOworCW11dGV4X2xvY2soJmRybV9kcnYt
+PnBzcl9saXN0X2xvY2spOwogCWxpc3RfZm9yX2VhY2hfZW50cnkocHNyLCAmZHJtX2Rydi0+cHNy
+X2xpc3QsIGxpc3QpIHsKIAkJaWYgKHBzci0+ZW5jb2RlciA9PSBlbmNvZGVyKQogCQkJZ290byBv
+dXQ7CkBAIC03MSw3ICs2OSw3IEBAIHN0YXRpYyBzdHJ1Y3QgcHNyX2RydiAqZmluZF9wc3JfYnlf
+ZW5jb2RlcihzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCiAJcHNyID0gRVJSX1BUUigtRU5P
+REVWKTsKIAogb3V0OgotCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmRybV9kcnYtPnBzcl9saXN0
+X2xvY2ssIGZsYWdzKTsKKwltdXRleF91bmxvY2soJmRybV9kcnYtPnBzcl9saXN0X2xvY2spOwog
+CXJldHVybiBwc3I7CiB9CiAKQEAgLTExMiwyMyArMTEwLDIxIEBAIHN0YXRpYyB2b2lkIHBzcl9z
+ZXRfc3RhdGVfbG9ja2VkKHN0cnVjdCBwc3JfZHJ2ICpwc3IsIGVudW0gcHNyX3N0YXRlIHN0YXRl
+KQogCiBzdGF0aWMgdm9pZCBwc3Jfc2V0X3N0YXRlKHN0cnVjdCBwc3JfZHJ2ICpwc3IsIGVudW0g
+cHNyX3N0YXRlIHN0YXRlKQogewotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7Ci0KLQlzcGluX2xvY2tf
+aXJxc2F2ZSgmcHNyLT5sb2NrLCBmbGFncyk7CisJbXV0ZXhfbG9jaygmcHNyLT5sb2NrKTsKIAlw
+c3Jfc2V0X3N0YXRlX2xvY2tlZChwc3IsIHN0YXRlKTsKLQlzcGluX3VubG9ja19pcnFyZXN0b3Jl
+KCZwc3ItPmxvY2ssIGZsYWdzKTsKKwltdXRleF91bmxvY2soJnBzci0+bG9jayk7CiB9CiAKLXN0
+YXRpYyB2b2lkIHBzcl9mbHVzaF9oYW5kbGVyKHN0cnVjdCB0aW1lcl9saXN0ICp0KQorc3RhdGlj
+IHZvaWQgcHNyX2ZsdXNoX2hhbmRsZXIoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQogewotCXN0
+cnVjdCBwc3JfZHJ2ICpwc3IgPSBmcm9tX3RpbWVyKHBzciwgdCwgZmx1c2hfdGltZXIpOwotCXVu
+c2lnbmVkIGxvbmcgZmxhZ3M7CisJc3RydWN0IHBzcl9kcnYgKnBzciA9IGNvbnRhaW5lcl9vZih0
+b19kZWxheWVkX3dvcmsod29yayksCisJCQkJCSAgIHN0cnVjdCBwc3JfZHJ2LCBmbHVzaF93b3Jr
+KTsKIAogCS8qIElmIHRoZSBzdGF0ZSBoYXMgY2hhbmdlZCBzaW5jZSB3ZSBpbml0aWF0ZWQgdGhl
+IGZsdXNoLCBkbyBub3RoaW5nICovCi0Jc3Bpbl9sb2NrX2lycXNhdmUoJnBzci0+bG9jaywgZmxh
+Z3MpOworCW11dGV4X2xvY2soJnBzci0+bG9jayk7CiAJaWYgKHBzci0+c3RhdGUgPT0gUFNSX0ZM
+VVNIKQogCQlwc3Jfc2V0X3N0YXRlX2xvY2tlZChwc3IsIFBTUl9FTkFCTEUpOwotCXNwaW5fdW5s
+b2NrX2lycXJlc3RvcmUoJnBzci0+bG9jaywgZmxhZ3MpOworCW11dGV4X3VubG9jaygmcHNyLT5s
+b2NrKTsKIH0KIAogLyoqCkBAIC0xNDEsMTQgKzEzNywxMyBAQCBzdGF0aWMgdm9pZCBwc3JfZmx1
+c2hfaGFuZGxlcihzdHJ1Y3QgdGltZXJfbGlzdCAqdCkKIGludCByb2NrY2hpcF9kcm1fcHNyX2Fj
+dGl2YXRlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIHsKIAlzdHJ1Y3QgcHNyX2RydiAq
+cHNyID0gZmluZF9wc3JfYnlfZW5jb2RlcihlbmNvZGVyKTsKLQl1bnNpZ25lZCBsb25nIGZsYWdz
+OwogCiAJaWYgKElTX0VSUihwc3IpKQogCQlyZXR1cm4gUFRSX0VSUihwc3IpOwogCi0Jc3Bpbl9s
+b2NrX2lycXNhdmUoJnBzci0+bG9jaywgZmxhZ3MpOworCW11dGV4X2xvY2soJnBzci0+bG9jayk7
+CiAJcHNyLT5hY3RpdmUgPSB0cnVlOwotCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnBzci0+bG9j
+aywgZmxhZ3MpOworCW11dGV4X3VubG9jaygmcHNyLT5sb2NrKTsKIAogCXJldHVybiAwOwogfQpA
+QCAtMTY0LDE1ICsxNTksMTQgQEAgRVhQT1JUX1NZTUJPTChyb2NrY2hpcF9kcm1fcHNyX2FjdGl2
+YXRlKTsKIGludCByb2NrY2hpcF9kcm1fcHNyX2RlYWN0aXZhdGUoc3RydWN0IGRybV9lbmNvZGVy
+ICplbmNvZGVyKQogewogCXN0cnVjdCBwc3JfZHJ2ICpwc3IgPSBmaW5kX3Bzcl9ieV9lbmNvZGVy
+KGVuY29kZXIpOwotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7CiAKIAlpZiAoSVNfRVJSKHBzcikpCiAJ
+CXJldHVybiBQVFJfRVJSKHBzcik7CiAKLQlzcGluX2xvY2tfaXJxc2F2ZSgmcHNyLT5sb2NrLCBm
+bGFncyk7CisJbXV0ZXhfbG9jaygmcHNyLT5sb2NrKTsKIAlwc3ItPmFjdGl2ZSA9IGZhbHNlOwot
+CXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnBzci0+bG9jaywgZmxhZ3MpOwotCWRlbF90aW1lcl9z
+eW5jKCZwc3ItPmZsdXNoX3RpbWVyKTsKKwltdXRleF91bmxvY2soJnBzci0+bG9jayk7CisJY2Fu
+Y2VsX2RlbGF5ZWRfd29ya19zeW5jKCZwc3ItPmZsdXNoX3dvcmspOwogCiAJcmV0dXJuIDA7CiB9
+CkBAIC0xODAsOSArMTc0LDggQEAgRVhQT1JUX1NZTUJPTChyb2NrY2hpcF9kcm1fcHNyX2RlYWN0
+aXZhdGUpOwogCiBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fZG9fZmx1c2goc3RydWN0IHBzcl9k
+cnYgKnBzcikKIHsKLQltb2RfdGltZXIoJnBzci0+Zmx1c2hfdGltZXIsCi0JCSAgcm91bmRfamlm
+Zmllc191cChqaWZmaWVzICsgUFNSX0ZMVVNIX1RJTUVPVVQpKTsKIAlwc3Jfc2V0X3N0YXRlKHBz
+ciwgUFNSX0ZMVVNIKTsKKwltb2RfZGVsYXllZF93b3JrKHN5c3RlbV93cSwgJnBzci0+Zmx1c2hf
+d29yaywgUFNSX0ZMVVNIX1RJTUVPVVRfTVMpOwogfQogCiAvKioKQEAgLTIxOSwxMiArMjEyLDEx
+IEBAIHZvaWQgcm9ja2NoaXBfZHJtX3Bzcl9mbHVzaF9hbGwoc3RydWN0IGRybV9kZXZpY2UgKmRl
+dikKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKmRybV9kcnYgPSBkZXYtPmRldl9w
+cml2YXRlOwogCXN0cnVjdCBwc3JfZHJ2ICpwc3I7Ci0JdW5zaWduZWQgbG9uZyBmbGFnczsKIAot
+CXNwaW5fbG9ja19pcnFzYXZlKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJbXV0
+ZXhfbG9jaygmZHJtX2Rydi0+cHNyX2xpc3RfbG9jayk7CiAJbGlzdF9mb3JfZWFjaF9lbnRyeShw
+c3IsICZkcm1fZHJ2LT5wc3JfbGlzdCwgbGlzdCkKIAkJcm9ja2NoaXBfZHJtX2RvX2ZsdXNoKHBz
+cik7Ci0Jc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxh
+Z3MpOworCW11dGV4X3VubG9jaygmZHJtX2Rydi0+cHNyX2xpc3RfbG9jayk7CiB9CiBFWFBPUlRf
+U1lNQk9MKHJvY2tjaGlwX2RybV9wc3JfZmx1c2hfYWxsKTsKIApAQCAtMjQxLDcgKzIzMyw2IEBA
+IGludCByb2NrY2hpcF9kcm1fcHNyX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
+ciwKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKmRybV9kcnYgPSBlbmNvZGVyLT5k
+ZXYtPmRldl9wcml2YXRlOwogCXN0cnVjdCBwc3JfZHJ2ICpwc3I7Ci0JdW5zaWduZWQgbG9uZyBm
+bGFnczsKIAogCWlmICghZW5jb2RlciB8fCAhcHNyX3NldCkKIAkJcmV0dXJuIC1FSU5WQUw7CkBA
+IC0yNTAsMTcgKzI0MSwxNyBAQCBpbnQgcm9ja2NoaXBfZHJtX3Bzcl9yZWdpc3RlcihzdHJ1Y3Qg
+ZHJtX2VuY29kZXIgKmVuY29kZXIsCiAJaWYgKCFwc3IpCiAJCXJldHVybiAtRU5PTUVNOwogCi0J
+dGltZXJfc2V0dXAoJnBzci0+Zmx1c2hfdGltZXIsIHBzcl9mbHVzaF9oYW5kbGVyLCAwKTsKLQlz
+cGluX2xvY2tfaW5pdCgmcHNyLT5sb2NrKTsKKwlJTklUX0RFTEFZRURfV09SSygmcHNyLT5mbHVz
+aF93b3JrLCBwc3JfZmx1c2hfaGFuZGxlcik7CisJbXV0ZXhfaW5pdCgmcHNyLT5sb2NrKTsKIAog
+CXBzci0+YWN0aXZlID0gdHJ1ZTsKIAlwc3ItPnN0YXRlID0gUFNSX0RJU0FCTEU7CiAJcHNyLT5l
+bmNvZGVyID0gZW5jb2RlcjsKIAlwc3ItPnNldCA9IHBzcl9zZXQ7CiAKLQlzcGluX2xvY2tfaXJx
+c2F2ZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxhZ3MpOworCW11dGV4X2xvY2soJmRybV9k
+cnYtPnBzcl9saXN0X2xvY2spOwogCWxpc3RfYWRkX3RhaWwoJnBzci0+bGlzdCwgJmRybV9kcnYt
+PnBzcl9saXN0KTsKLQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZkcm1fZHJ2LT5wc3JfbGlzdF9s
+b2NrLCBmbGFncyk7CisJbXV0ZXhfdW5sb2NrKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrKTsKIAog
+CXJldHVybiAwOwogfQpAQCAtMjc4LDE2ICsyNjksMTUgQEAgdm9pZCByb2NrY2hpcF9kcm1fcHNy
+X3VucmVnaXN0ZXIoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogewogCXN0cnVjdCByb2Nr
+Y2hpcF9kcm1fcHJpdmF0ZSAqZHJtX2RydiA9IGVuY29kZXItPmRldi0+ZGV2X3ByaXZhdGU7CiAJ
+c3RydWN0IHBzcl9kcnYgKnBzciwgKm47Ci0JdW5zaWduZWQgbG9uZyBmbGFnczsKIAotCXNwaW5f
+bG9ja19pcnFzYXZlKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJbXV0ZXhfbG9j
+aygmZHJtX2Rydi0+cHNyX2xpc3RfbG9jayk7CiAJbGlzdF9mb3JfZWFjaF9lbnRyeV9zYWZlKHBz
+ciwgbiwgJmRybV9kcnYtPnBzcl9saXN0LCBsaXN0KSB7CiAJCWlmIChwc3ItPmVuY29kZXIgPT0g
+ZW5jb2RlcikgewotCQkJZGVsX3RpbWVyKCZwc3ItPmZsdXNoX3RpbWVyKTsKKwkJCWNhbmNlbF9k
+ZWxheWVkX3dvcmtfc3luYygmcHNyLT5mbHVzaF93b3JrKTsKIAkJCWxpc3RfZGVsKCZwc3ItPmxp
+c3QpOwogCQkJa2ZyZWUocHNyKTsKIAkJfQogCX0KLQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZk
+cm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJbXV0ZXhfdW5sb2NrKCZkcm1fZHJ2LT5w
+c3JfbGlzdF9sb2NrKTsKIH0KIEVYUE9SVF9TWU1CT0wocm9ja2NoaXBfZHJtX3Bzcl91bnJlZ2lz
+dGVyKTsKLS0gCjIuMTQuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
