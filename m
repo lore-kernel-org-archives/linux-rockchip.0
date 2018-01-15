@@ -1,92 +1,111 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH 30/40] drm/rockchip: Flush PSR before committing modeset disables/enables
-Date: Mon, 15 Jan 2018 18:16:04 +0100
-Message-ID: <20180115171614.14474-31-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 07/40] drm/bridge: analogix_dp: detect Sink PSR state after
+ configuring the PSR
+Date: Mon, 15 Jan 2018 18:15:41 +0100
+Message-ID: <20180115171614.14474-8-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset = "utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
-Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga@chromium.org>
-
-Currently PSR flush is triggered from CRTC's .atomic_begin() callback,
-which is executed after modeset disables and enables and before plane
-updates are committed. Since PSR flush and re-enable can be triggered
-asynchronously by external sources (input event, delayed work), it can
-race with hardware programming done in the aforementioned stages.
-
-To avoid the race, we can trigger PSR flush before committing modeset
-disables/enables. This also has the advantage of removing some
-PSR-specific knowledge from the VOP driver.
-
-Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c  | 21 ++++++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  7 -------
- 2 files changed, 20 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index e266539e04e5..aaeb38ada2ba 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -167,8 +167,27 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
- 	return ERR_PTR(ret);
- }
- 
-+static void
-+rockchip_drm_psr_flush_state(struct drm_atomic_state *state)
-+{
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_crtc *crtc;
-+	int i;
-+
-+	for_each_new_crtc_in_state(state, crtc, crtc_state, i)
-+		rockchip_drm_psr_flush(crtc);
-+}
-+
-+static void
-+rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
-+{
-+	rockchip_drm_psr_flush_state(old_state);
-+
-+	drm_atomic_helper_commit_tail_rpm(old_state);
-+}
-+
- static const struct drm_mode_config_helper_funcs rockchip_mode_config_helpers = {
--	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
-+	.atomic_commit_tail = rockchip_atomic_helper_commit_tail_rpm,
- };
- 
- static const struct drm_mode_config_funcs rockchip_drm_mode_config_funcs = {
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index bf4b1a2f3fa4..ba9913961273 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1035,16 +1035,9 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 	}
- }
- 
--static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
--				  struct drm_crtc_state *old_crtc_state)
--{
--	rockchip_drm_psr_flush(crtc);
--}
--
- static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
- 	.mode_fixup = vop_crtc_mode_fixup,
- 	.atomic_flush = vop_crtc_atomic_flush,
--	.atomic_begin = vop_crtc_atomic_begin,
- 	.atomic_enable = vop_crtc_atomic_enable,
- 	.atomic_disable = vop_crtc_atomic_disable,
- };
--- 
-2.14.1
+RnJvbTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgoKTWFrZSBzdXJlIHRoZSByZXF1
+ZXN0IFBTUiBzdGF0ZSB0YWtlcyBlZmZlY3QgaW4gYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKCkK
+ZnVuY3Rpb24sIG9yIHByaW50IHRoZSBzaW5rIFBTUiBlcnJvciBzdGF0ZSBpZiB3ZSBmYWlsZWQg
+dG8gYXBwbHkgdGhlCnJlcXVlc3RlZCBQU1Igc2V0dGluZy4KCkNjOiDlvoHlop4g546LIDx3enpA
+cm9jay1jaGlwcy5jb20+CkNjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVt
+Lm9yZz4KU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgpbc2Vh
+bnBhdWwgY2hhbmdlZCB0aW1lb3V0IGxvb3AgdG8gYSByZWFkeCBwb2xsXQpTaWduZWQtb2ZmLWJ5
+OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KU2lnbmVkLW9mZi1ieTogVGhpZXJy
+eSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3JhLmNvbT4KLS0tCiBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8ICA2ICsrLS0KIGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIHwgIDYgKystLQog
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyAgfCAzNSAr
+KysrKysrKysrKysrKysrKysrLS0tCiAzIGZpbGVzIGNoYW5nZWQsIDM3IGluc2VydGlvbnMoKyks
+IDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
+bG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
+eC9hbmFsb2dpeF9kcF9jb3JlLmMKaW5kZXggMTQ3N2VhOWJhODVkLi5iNTJkZTA0NmY1ZjEgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
+ZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
+ZS5jCkBAIC0xMjIsOCArMTIyLDcgQEAgaW50IGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3Ioc3RydWN0
+IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJcHNyX3ZzYy5EQjAgPSAwOwogCXBzcl92c2MuREIx
+ID0gRURQX1ZTQ19QU1JfU1RBVEVfQUNUSVZFIHwgRURQX1ZTQ19QU1JfQ1JDX1ZBTFVFU19WQUxJ
+RDsKIAotCWFuYWxvZ2l4X2RwX3NlbmRfcHNyX3NwZChkcCwgJnBzcl92c2MpOwotCXJldHVybiAw
+OworCXJldHVybiBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoZHAsICZwc3JfdnNjKTsKIH0KIEVY
+UE9SVF9TWU1CT0xfR1BMKGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3IpOwogCkBAIC0xNDksOCArMTQ4
+LDcgQEAgaW50IGFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
+Y2UgKmRwKQogCWlmIChyZXQgIT0gMSkKIAkJZGV2X2VycihkcC0+ZGV2LCAiRmFpbGVkIHRvIHNl
+dCBEUCBQb3dlcjAgJWRcbiIsIHJldCk7CiAKLQlhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoZHAs
+ICZwc3JfdnNjKTsKLQlyZXR1cm4gMDsKKwlyZXR1cm4gYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3Bk
+KGRwLCAmcHNyX3ZzYyk7CiB9CiBFWFBPUlRfU1lNQk9MX0dQTChhbmFsb2dpeF9kcF9kaXNhYmxl
+X3Bzcik7CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5h
+bG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
+eF9kcF9jb3JlLmgKaW5kZXggNWM2YTI4ODA2MTI5Li5iMDM5YjI4ZDhmY2MgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCisrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCkBAIC0y
+MCw2ICsyMCw4IEBACiAjZGVmaW5lIE1BWF9DUl9MT09QIDUKICNkZWZpbmUgTUFYX0VRX0xPT1Ag
+NQogCisjZGVmaW5lIERQX1RJTUVPVVRfUFNSX0xPT1BfTVMJCQkzMDAKKwogLyogRFBfTUFYX0xB
+TkVfQ09VTlQgKi8KICNkZWZpbmUgRFBDRF9FTkhBTkNFRF9GUkFNRV9DQVAoeCkJCSgoKHgpID4+
+IDcpICYgMHgxKQogI2RlZmluZSBEUENEX01BWF9MQU5FX0NPVU5UKHgpCQkJKCh4KSAmIDB4MWYp
+CkBAIC0yNDcsOCArMjQ5LDggQEAgdm9pZCBhbmFsb2dpeF9kcF9jb25maWdfdmlkZW9fc2xhdmVf
+bW9kZShzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCk7CiB2b2lkIGFuYWxvZ2l4X2RwX2Vu
+YWJsZV9zY3JhbWJsaW5nKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKTsKIHZvaWQgYW5h
+bG9naXhfZHBfZGlzYWJsZV9zY3JhbWJsaW5nKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRw
+KTsKIHZvaWQgYW5hbG9naXhfZHBfZW5hYmxlX3Bzcl9jcmMoc3RydWN0IGFuYWxvZ2l4X2RwX2Rl
+dmljZSAqZHApOwotdm9pZCBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoc3RydWN0IGFuYWxvZ2l4
+X2RwX2RldmljZSAqZHAsCi0JCQkgICAgICBzdHJ1Y3QgZWRwX3ZzY19wc3IgKnZzYyk7CitpbnQg
+YW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAor
+CQkJICAgICBzdHJ1Y3QgZWRwX3ZzY19wc3IgKnZzYyk7CiBzc2l6ZV90IGFuYWxvZ2l4X2RwX3Ry
+YW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCQkJICAgICBzdHJ1Y3QgZHJt
+X2RwX2F1eF9tc2cgKm1zZyk7CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+YW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxv
+Z2l4L2FuYWxvZ2l4X2RwX3JlZy5jCmluZGV4IDMwMzA4M2FkMjhlMy4uMDA1YTNmNzAwNWQyIDEw
+MDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3Jl
+Zy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVn
+LmMKQEAgLTEwLDEwICsxMCwxMSBAQAogICogb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4KICAq
+LwogCi0jaW5jbHVkZSA8bGludXgvZGV2aWNlLmg+Ci0jaW5jbHVkZSA8bGludXgvaW8uaD4KICNp
+bmNsdWRlIDxsaW51eC9kZWxheS5oPgorI2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgogI2luY2x1
+ZGUgPGxpbnV4L2dwaW8uaD4KKyNpbmNsdWRlIDxsaW51eC9pby5oPgorI2luY2x1ZGUgPGxpbnV4
+L2lvcG9sbC5oPgogCiAjaW5jbHVkZSA8ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oPgogCkBAIC05
+OTIsMTAgKzk5MywyNSBAQCB2b2lkIGFuYWxvZ2l4X2RwX2VuYWJsZV9wc3JfY3JjKHN0cnVjdCBh
+bmFsb2dpeF9kcF9kZXZpY2UgKmRwKQogCXdyaXRlbChQU1JfVklEX0NSQ19FTkFCTEUsIGRwLT5y
+ZWdfYmFzZSArIEFOQUxPR0lYX0RQX0NSQ19DT04pOwogfQogCi12b2lkIGFuYWxvZ2l4X2RwX3Nl
+bmRfcHNyX3NwZChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKLQkJCSAgICAgIHN0cnVj
+dCBlZHBfdnNjX3BzciAqdnNjKQorc3RhdGljIHNzaXplX3QgYW5hbG9naXhfZHBfZ2V0X3Bzcl9z
+dGF0dXMoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCit7CisJc3NpemVfdCB2YWw7CisJ
+dTggc3RhdHVzOworCisJdmFsID0gZHJtX2RwX2RwY2RfcmVhZGIoJmRwLT5hdXgsIERQX1BTUl9T
+VEFUVVMsICZzdGF0dXMpOworCWlmICh2YWwgPCAwKSB7CisJCWRldl9lcnIoZHAtPmRldiwgIlBT
+Ul9TVEFUVVMgcmVhZCBmYWlsZWQgcmV0PSV6ZCIsIHZhbCk7CisJCXJldHVybiB2YWw7CisJfQor
+CXJldHVybiBzdGF0dXM7Cit9CisKK2ludCBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQoc3RydWN0
+IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCisJCQkgICAgIHN0cnVjdCBlZHBfdnNjX3BzciAqdnNj
+KQogewogCXVuc2lnbmVkIGludCB2YWw7CisJaW50IHJldDsKKwlzc2l6ZV90IHBzcl9zdGF0dXM7
+CiAKIAkvKiBkb24ndCBzZW5kIGluZm8gZnJhbWUgKi8KIAl2YWwgPSByZWFkbChkcC0+cmVnX2Jh
+c2UgKyBBTkFMT0dJWF9EUF9QS1RfU0VORF9DVEwpOwpAQCAtMTAzNiw2ICsxMDUyLDE3IEBAIHZv
+aWQgYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRw
+LAogCXZhbCA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX1BLVF9TRU5EX0NUTCk7
+CiAJdmFsIHw9IElGX0VOOwogCXdyaXRlbCh2YWwsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQ
+X1BLVF9TRU5EX0NUTCk7CisKKwlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQoYW5hbG9naXhfZHBf
+Z2V0X3Bzcl9zdGF0dXMsIGRwLCBwc3Jfc3RhdHVzLAorCQlwc3Jfc3RhdHVzID49IDAgJiYKKwkJ
+KCh2c2MtPkRCMSAmJiBwc3Jfc3RhdHVzID09IERQX1BTUl9TSU5LX0FDVElWRV9SRkIpIHx8CisJ
+CSghdnNjLT5EQjEgJiYgcHNyX3N0YXR1cyA9PSBEUF9QU1JfU0lOS19JTkFDVElWRSkpLCAxNTAw
+LAorCQlEUF9USU1FT1VUX1BTUl9MT09QX01TICogMTAwMCk7CisJaWYgKHJldCkgeworCQlkZXZf
+d2FybihkcC0+ZGV2LCAiRmFpbGVkIHRvIGFwcGx5IFBTUiAlZFxuIiwgcmV0KTsKKwkJcmV0dXJu
+IHJldDsKKwl9CisJcmV0dXJuIDA7CiB9CiAKIHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIo
+c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCi0tIAoyLjE0LjEKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
