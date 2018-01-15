@@ -1,127 +1,41 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 07/12] i2c: rk3x: account for const type of
- of_device_id.data
-Date: Mon, 15 Jan 2018 19:24:56 +0100
-Message-ID: <20180115182456.zkx2ehdlxzrc2scu@ninjato>
-References: <1514899688-27844-1-git-send-email-Julia.Lawall@lip6.fr>
- <1514899688-27844-8-git-send-email-Julia.Lawall@lip6.fr>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v2 01/16] drivers: pwm: core: use a single of xlate function
+Date: Mon, 15 Jan 2018 22:27:31 +0200
+Message-ID: <CAHp75VcaFDEQ1cBzeU2eBj_vf19ok6EWLC07SOTQLRH8BQSbzA@mail.gmail.com>
+References: <1515766983-15151-1-git-send-email-claudiu.beznea@microchip.com>
+ <1515766983-15151-2-git-send-email-claudiu.beznea@microchip.com>
+ <20180112183512.GB102880@google.com> <6441df76-fb4a-ce00-1019-f7ff9143b75e@microchip.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="emwm4gsssaxoraj4"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1514899688-27844-8-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: Heiko Stuebner <heiko@sntech.de>, kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6441df76-fb4a-ce00-1019-f7ff9143b75e@microchip.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
+Cc: Brian Norris <briannorris@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Jonathan Corbet <corbet@lwn.net>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-pwm@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, devicetree <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, Jan 15, 2018 at 10:41 AM, Claudiu Beznea
+<Claudiu.Beznea@microchip.com> wrote:
 
---emwm4gsssaxoraj4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> For this driver, the PWM bindings were changed (I did a grep by "google,cros-ec-pwm"
+> and located only:
+> arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> files) and changed the bindings in this series, as follows, patch 7 from this series:
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> index 0384e3121f18..0c790ec387eb 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+> @@ -77,7 +77,7 @@
+>
+>         backlight: backlight {
+>                 compatible = "pwm-backlight";
+> -               pwms = <&cros_ec_pwm 1>;
+> +               pwms = <&cros_ec_pwm 1 65535>;
 
-On Tue, Jan 02, 2018 at 02:28:03PM +0100, Julia Lawall wrote:
-> This driver creates a number of const structures that it stores in
-> the data field of an of_device_id array.
->=20
-> The data field of an of_device_id structure has type const void *, so
-> there is no need for a const-discarding cast when putting const values
-> into such a structure.
->=20
-> Furthermore, adding const to the declaration of the location that
-> receives a const value from such a field ensures that the compiler
-> will continue to check that the value is not modified.  The
-> const-discarding cast on the extraction from the data field is thus
-> no longer needed.
->=20
-> Done using Coccinelle.
->=20
-> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+This shows an breakage for user. The old PWM device tree sources or
+binaries should work independently on what changes you did to kernel.
 
-Heiko, you okay with the patch?
-
->=20
-> ---
->  drivers/i2c/busses/i2c-rk3x.c |   16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
->=20
-> diff -u -p a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -194,7 +194,7 @@ struct rk3x_i2c_soc_data {
->  struct rk3x_i2c {
->  	struct i2c_adapter adap;
->  	struct device *dev;
-> -	struct rk3x_i2c_soc_data *soc_data;
-> +	const struct rk3x_i2c_soc_data *soc_data;
-> =20
->  	/* Hardware resources */
->  	void __iomem *regs;
-> @@ -1164,27 +1164,27 @@ static const struct rk3x_i2c_soc_data rk
->  static const struct of_device_id rk3x_i2c_match[] =3D {
->  	{
->  		.compatible =3D "rockchip,rv1108-i2c",
-> -		.data =3D (void *)&rv1108_soc_data
-> +		.data =3D &rv1108_soc_data
->  	},
->  	{
->  		.compatible =3D "rockchip,rk3066-i2c",
-> -		.data =3D (void *)&rk3066_soc_data
-> +		.data =3D &rk3066_soc_data
->  	},
->  	{
->  		.compatible =3D "rockchip,rk3188-i2c",
-> -		.data =3D (void *)&rk3188_soc_data
-> +		.data =3D &rk3188_soc_data
->  	},
->  	{
->  		.compatible =3D "rockchip,rk3228-i2c",
-> -		.data =3D (void *)&rk3228_soc_data
-> +		.data =3D &rk3228_soc_data
->  	},
->  	{
->  		.compatible =3D "rockchip,rk3288-i2c",
-> -		.data =3D (void *)&rk3288_soc_data
-> +		.data =3D &rk3288_soc_data
->  	},
->  	{
->  		.compatible =3D "rockchip,rk3399-i2c",
-> -		.data =3D (void *)&rk3399_soc_data
-> +		.data =3D &rk3399_soc_data
->  	},
->  	{},
->  };
-> @@ -1207,7 +1207,7 @@ static int rk3x_i2c_probe(struct platfor
->  		return -ENOMEM;
-> =20
->  	match =3D of_match_node(rk3x_i2c_match, np);
-> -	i2c->soc_data =3D (struct rk3x_i2c_soc_data *)match->data;
-> +	i2c->soc_data =3D match->data;
-> =20
->  	/* use common interface to get I2C timing properties */
->  	i2c_parse_fw_timings(&pdev->dev, &i2c->t, true);
->=20
-
---emwm4gsssaxoraj4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlpc8fgACgkQFA3kzBSg
-KbZhJxAAoy2fQHMfVVvlwVplaox+UGqMx/gpuWRW1MwhXiSz/e01BWeWyM0bCKgt
-IYRsphQkJaRKU+92K/wHtRgNNDZLfRnzkinbNMFBH62PXls6Qo7i0gqB08xBxUsp
-vbpVwPxDTvJ36lelY5rcK2/ysrRIx5j097GIcLAv6f0EIgiei34OPBw9rYSIkT1n
-C1nNXc734fCwfaIGxqGiaseZsg97l0rqJ7vKmFtve0XRU9kCNQG7vQ4eNhI6y4n0
-h3JkjZyuAtDEybMP5omMZqx6GwGmnJKtbNzHpcPvrMxN2KZ2clmzeWuK6rlF52Wo
-b7KHBLrC7OGdzUJrZvUY9QKA/tcxoI1ipyXHG60K6sACtLJSBNcoMn9jK/I6kS2Y
-obeaXrqtHZE4gfrOY5/QwPcAdGmXMrE4aoAfz0sJUqSXYMb5sc7tk6pcCjxU0gLl
-m6p4cclaVmEBNxsBd/r8CRKWJL/sJH+KGd5LKtVLKi9X3jdjBbBcbkGDxVb8rkZJ
-XAh2TMu5PFnwLOZwR00/CQDKQvN34msfFgs65ISQ9DwtSZ08hiNYqhA95N4BfimF
-5IZ0GKpcbg7MwFV8AK31qUagg0YCVQDQOVQS/qwPoJoId9S46syjGsJX6Lt8DdSC
-tFKe38lR3GeH1mNZtjeKoMPwvDLISFME1NGGUrmf24VLL8D5Rjc=
-=RPfk
------END PGP SIGNATURE-----
-
---emwm4gsssaxoraj4--
+-- 
+With Best Regards,
+Andy Shevchenko
