@@ -1,12 +1,14 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH 23/40] drm/bridge: analogix_dp: Fix AUX_PD bit for Rockchip
-Date: Mon, 15 Jan 2018 18:15:57 +0100
-Message-ID: <20180115171614.14474-24-thierry.escande@collabora.com>
+Subject: [PATCH 12/40] drm/rockchip: Only wait for panel ACK on PSR entry
+Date: Mon, 15 Jan 2018 18:15:46 +0100
+Message-ID: <20180115171614.14474-13-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset = "utf-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset = "utf-8"
 Content-Transfert-Encoding: 8bit
 Sender: linux-kernel-owner@vger.kernel.org
 To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
@@ -15,176 +17,84 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: zain wang <wzz@rock-chips.com>
 
-There are some different bits between Rockchip and Exynos in register
-"AUX_PD". This patch fixes the incorrect operations about it.
+We currently wait for the panel to mirror our intended PSR state
+before continuing on both PSR enter and PSR exit. This is really
+only important to do when we're entering PSR, since we want to
+be sure the last frame we pushed is being served from the panel's
+internal fb before shutting down the soc blocks (vop/analogix).
 
-Cc: Douglas Anderson <dianders@chromium.org>
+This patch changes the behavior such that we only wait for the
+panel to complete the PSR transition when we're entering PSR, and
+to skip verification when we're exiting.
+
+Cc: Stéphane Marchesin <marcheu@chromium.org>
+Cc: Sonny Rao <sonnyrao@chromium.org>
 Signed-off-by: zain wang <wzz@rock-chips.com>
 Signed-off-by: Sean Paul <seanpaul@chromium.org>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 117 ++++++++++++----------
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h |   2 +
- 2 files changed, 65 insertions(+), 54 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 5 ++++-
+ 3 files changed, 7 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index e0775adf80b3..49a05eac41c1 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -125,7 +125,7 @@ int analogix_dp_enable_psr(struct analogix_dp_device *dp)
+ 	psr_vsc.DB0 = 0;
+ 	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
+ 
+-	return analogix_dp_send_psr_spd(dp, &psr_vsc);
++	return analogix_dp_send_psr_spd(dp, &psr_vsc, true);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
+ 
+@@ -151,7 +151,7 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
+ 	if (ret != 1)
+ 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
+ 
+-	return analogix_dp_send_psr_spd(dp, &psr_vsc);
++	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 920607d7eb3e..6a96ef7e6934 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -253,7 +253,7 @@ void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
+ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			     struct edp_vsc_psr *vsc);
++			     struct edp_vsc_psr *vsc, bool blocking);
+ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+ 			     struct drm_dp_aux_msg *msg);
+ 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index bb72f8b0e603..dee1ba109b5f 100644
+index 005a3f7005d2..9df2f3ef000c 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -248,76 +248,85 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
+@@ -1007,7 +1007,7 @@ static ssize_t analogix_dp_get_psr_status(struct analogix_dp_device *dp)
+ }
+ 
+ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			     struct edp_vsc_psr *vsc)
++			     struct edp_vsc_psr *vsc, bool blocking)
  {
- 	u32 reg;
- 	u32 phy_pd_addr = ANALOGIX_DP_PHY_PD;
-+	u32 mask;
+ 	unsigned int val;
+ 	int ret;
+@@ -1053,6 +1053,9 @@ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+ 	val |= IF_EN;
+ 	writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
  
- 	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
- 		phy_pd_addr = ANALOGIX_DP_PD;
- 
- 	switch (block) {
- 	case AUX_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= AUX_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~AUX_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+			mask = RK_AUX_PD;
-+		else
-+			mask = AUX_PD;
++	if (!blocking)
++		return 0;
 +
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH0_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH0_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH0_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH0_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH1_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH1_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH1_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH1_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH2_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH2_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH2_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH2_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH3_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH3_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH3_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH3_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case ANALOG_TOTAL:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= DP_PHY_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~DP_PHY_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		/*
-+		 * There is no bit named DP_PHY_PD, so We used DP_INC_BG
-+		 * to power off everything instead of DP_PHY_PD in
-+		 * Rockchip
-+		 */
-+		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+			mask = DP_INC_BG;
-+		else
-+			mask = DP_PHY_PD;
-+
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+
-+		writel(reg, dp->reg_base + phy_pd_addr);
-+		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+			usleep_range(10, 15);
- 		break;
- 	case POWER_ALL:
- 		if (enable) {
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-index 9602668669f4..b633a4a5082a 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-@@ -345,7 +345,9 @@
- #define DP_INC_BG				(0x1 << 7)
- #define DP_EXP_BG				(0x1 << 6)
- #define DP_PHY_PD				(0x1 << 5)
-+#define RK_AUX_PD				(0x1 << 5)
- #define AUX_PD					(0x1 << 4)
-+#define RK_PLL_PD				(0x1 << 4)
- #define CH3_PD					(0x1 << 3)
- #define CH2_PD					(0x1 << 2)
- #define CH1_PD					(0x1 << 1)
+ 	ret = readx_poll_timeout(analogix_dp_get_psr_status, dp, psr_status,
+ 		psr_status >= 0 &&
+ 		((vsc->DB1 && psr_status == DP_PSR_SINK_ACTIVE_RFB) ||
 -- 
 2.14.1
