@@ -1,111 +1,134 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH 29/40] drm/bridge: analogix_dp: Move fast link training detect to set_bridge
-Date: Mon, 15 Jan 2018 18:16:03 +0100
-Message-ID: <20180115171614.14474-30-thierry.escande@collabora.com>
-References: <20180115171614.14474-1-thierry.escande@collabora.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add roc-rk3328-cc board
+Date: Mon, 15 Jan 2018 12:09:53 -0600
+Message-ID: <CAL_JsqKSvyi0HRFkwYfr2HS_xBuQfTYphUYP7ass1nQn3EKLgw@mail.gmail.com>
+References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180111203033.mnap7tijbfsvr5pa@rob-hp-laptop>
+ <10243464.nJpoDBzbVB@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset = "utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
-Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
-Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <10243464.nJpoDBzbVB@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz@rock-chips.com>
+On Fri, Jan 12, 2018 at 2:33 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Hi Rob,
+>
+> Am Donnerstag, 11. Januar 2018, 14:30:33 CET schrieb Rob Herring:
+>> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+>> > new file mode 100644
+>> > index 0000000..2134baf
+>> > --- /dev/null
+>> > +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+>> > @@ -0,0 +1,313 @@
+>> > +/*
+>> > + * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
+>> > + *
+>> > + * This file is dual-licensed: you can use it either under the terms
+>> > + * of the GPL or the X11 license, at your option. Note that this dual
+>> > + * licensing only applies to this file, and not this project as a
+>> > + * whole.
+>> > + *
+>> > + *  a) This library is free software; you can redistribute it and/or
+>> > + *     modify it under the terms of the GNU General Public License as
+>> > + *     published by the Free Software Foundation; either version 2 of the
+>> > + *     License, or (at your option) any later version.
+>> > + *
+>> > + *     This library is distributed in the hope that it will be useful,
+>> > + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> > + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> > + *     GNU General Public License for more details.
+>> > + *
+>> > + * Or, alternatively,
+>> > + *
+>> > + *  b) Permission is hereby granted, free of charge, to any person
+>> > + *     obtaining a copy of this software and associated documentation
+>> > + *     files (the "Software"), to deal in the Software without
+>> > + *     restriction, including without limitation the rights to use,
+>> > + *     copy, modify, merge, publish, distribute, sublicense, and/or
+>> > + *     sell copies of the Software, and to permit persons to whom the
+>> > + *     Software is furnished to do so, subject to the following
+>> > + *     conditions:
+>> > + *
+>> > + *     The above copyright notice and this permission notice shall be
+>> > + *     included in all copies or substantial portions of the Software.
+>> > + *
+>> > + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+>> > + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+>> > + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+>> > + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+>> > + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+>> > + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+>> > + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+>> > + *     OTHER DEALINGS IN THE SOFTWARE.
+>> > + */
+>>
+>> Use SPDX license tag.
+>
+> It looks like Thomas' SPDX documentation patches are not yet merged
+> and there were smaller protests about SPDX information only being
+> available on some external website, so just for my understanding, SPDX
+> is the agreed standard now, right?
 
-It's too early to detect fast link training, if other step after it
-failed, we will set fast_link flag to 1, and retry set_bridge again. In
-this case we will power down and power up panel power supply, and we
-will do fast link training since we have set fast_link flag to 1. In
-fact, we should do full link training now, not the fast link training.
-So we should move the fast link detection at the end of set_bridge.
+His series adds the license text for all the tags which Russell said
+addressed his concerns.
 
-Cc: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 42 +++++++++++++---------
- 1 file changed, 26 insertions(+), 16 deletions(-)
+I think it is not yet merged mainly because Thomas has been busy with
+Spectre and Meltdown.
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index e7ab871e62b5..bee0f7aa5c23 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -599,7 +599,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- {
- 	int lane, lane_count, retval;
- 	u32 reg;
--	u8 link_align, link_status[2], adjust_request[2], spread;
-+	u8 link_align, link_status[2], adjust_request[2];
- 
- 	usleep_range(400, 401);
- 
-@@ -643,20 +643,6 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- 		dev_dbg(dp->dev, "final lane count = %.2x\n",
- 			dp->link_train.lane_count);
- 
--		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
--					   &spread);
--		if (retval != 1) {
--			dev_err(dp->dev, "failed to read downspread %d\n",
--				retval);
--			dp->fast_train_enable = false;
--		} else {
--			dp->fast_train_enable =
--				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
--					true : false;
--		}
--		dev_dbg(dp->dev, "fast link training %s\n",
--			dp->fast_train_enable ? "supported" : "unsupported");
--
- 		dp->link_train.lt_state = FINISHED;
- 
- 		return 0;
-@@ -997,6 +983,22 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
- 
-+static int analogix_dp_fast_link_train_detection(struct analogix_dp_device *dp)
-+{
-+	int ret;
-+	u8 spread;
-+
-+	ret = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD, &spread);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to read downspread %d\n", ret);
-+		return ret;
-+	}
-+	dp->fast_train_enable = !!(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING);
-+	dev_dbg(dp->dev, "fast link training %s\n",
-+		dp->fast_train_enable ? "supported" : "unsupported");
-+	return 0;
-+}
-+
- static int analogix_dp_commit(struct analogix_dp_device *dp)
- {
- 	int ret;
-@@ -1039,8 +1041,16 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
- 	if (ret)
- 		return ret;
- 
--	if (dp->psr_enable)
-+	if (dp->psr_enable) {
- 		ret = analogix_dp_enable_sink_psr(dp);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	/* Check whether panel supports fast training */
-+	ret =  analogix_dp_fast_link_train_detection(dp);
-+	if (ret)
-+		dp->psr_enable = false;
- 
- 	return ret;
- }
--- 
-2.14.1
+> And judging by the SPDX conversion for Rockchip dts I have in my inbox
+> the correct tags should probably be
+>         // SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>
+> due to the
+> "All devicetrees claim to be either GPL or X11 while the actual license
+> text is MIT. Therefore we use MIT for the SPDX tag as X11 is clearly
+> wrong."
+
+Right.
+
+
+>> > +&i2c1 {
+>> > +   status = "okay";
+>> > +
+>> > +   rk805: rk805@18 {
+>>
+>> pmic@18
+>>
+>> > +           compatible = "rockchip,rk805";
+>> > +           reg = <0x18>;
+>> > +           interrupt-parent = <&gpio1>;
+>> > +           interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
+>> > +           #clock-cells = <1>;
+>> > +           clock-output-names = "xin32k", "rk805-clkout2";
+>> > +           gpio-controller;
+>> > +           #gpio-cells = <2>;
+>> > +           pinctrl-names = "default";
+>> > +           pinctrl-0 = <&pmic_int_l>;
+>> > +           rockchip,system-power-controller;
+>> > +           wakeup-source;
+>> > +
+>> > +           vcc1-supply = <&vcc_sys>;
+>> > +           vcc2-supply = <&vcc_sys>;
+>> > +           vcc3-supply = <&vcc_sys>;
+>> > +           vcc4-supply = <&vcc_sys>;
+>> > +           vcc5-supply = <&vcc_io>;
+>> > +           vcc6-supply = <&vcc_io>;
+>> > +
+>> > +           regulators {
+>> > +                   vdd_logic: DCDC_REG1 {
+>>
+>> Don't use '_' in node names.
+>
+> The driver binds against the node names including the underscores.
+> (with regulator-compatible being deprecated)
+
+Okay. You've probably told me that before (and will again next time I forget).
+
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
