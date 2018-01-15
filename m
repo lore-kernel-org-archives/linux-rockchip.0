@@ -1,117 +1,63 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 04/40] drm/bridge: analogix_dp: set psr activate/deactivate
- when enable/disable bridge
-Date: Mon, 15 Jan 2018 18:15:38 +0100
-Message-ID: <20180115171614.14474-5-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH 31/40] drm/bridge: analogix_dp: Allow master driver to cleanup in unbind
+Date: Mon, 15 Jan 2018 18:16:05 +0100
+Message-ID: <20180115171614.14474-32-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
+Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpUaGVyZSdzIGEgcmFjZSBiZXR3
-ZWVuIHdoZW4gYnJpZGdlX2Rpc2FibGUgYW5kIHdoZW4gdm9wX2NydGNfZGlzYWJsZQphcmUgY2Fs
-bGVkLiBJZiB0aGUgZmx1c2ggdGltZXIgdHJpZ2dlcnMgYSBuZXcgcHNyIHdvcmsgYmV0d2VlbiB0
-aGVzZSwKd2Ugd2lsbCBvcGVyYXRlIGVEUCB3aXRob3V0IHBvd2VyIHNodXRkb3duZWQgYnkgYnJp
-ZGdlX2Rpc2FibGUuIEluIHRoaXMKY2FzZSwgbW92aW5nIGFjdGl2YXRlL2RlYWN0aXZhdGUgdG8g
-ZW5hYmxlL2Rpc2FibGUgYnJpZGdlIHRvIGF2b2lkIGl0LgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVz
-aW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekBy
-b2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBz
-LmNvbT4KU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+ClNp
-Z25lZC1vZmYtYnk6IFRoaWVycnkgRXNjYW5kZSA8dGhpZXJyeS5lc2NhbmRlQGNvbGxhYm9yYS5j
-b20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMg
-fCAgNyArKysrKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMg
-ICAgIHwgMzAgKysrKysrKysrKysrKysrKysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9wc3IuaCAgICAgfCAgNCArKy0tCiBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICB8ICA0IC0tLS0KIDQgZmlsZXMgY2hhbmdlZCwg
-MzIgaW5zZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwppbmRleCBlYjg4YzUyMzM2YTcuLjdkNzZm
-ZjQ3MDI4ZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
-LXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
-Y2tjaGlwLmMKQEAgLTE1MCwxMiArMTUwLDE3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfcG93
-ZXJvbihzdHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhICpwbGF0X2RhdGEpCiAJCXJldHVybiBy
-ZXQ7CiAJfQogCi0JcmV0dXJuIDA7CisJcmV0dXJuIHJvY2tjaGlwX2RybV9wc3JfYWN0aXZhdGUo
-JmRwLT5lbmNvZGVyKTsKIH0KIAogc3RhdGljIGludCByb2NrY2hpcF9kcF9wb3dlcmRvd24oc3Ry
-dWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQogewogCXN0cnVjdCByb2NrY2hp
-cF9kcF9kZXZpY2UgKmRwID0gdG9fZHAocGxhdF9kYXRhKTsKKwlpbnQgcmV0OworCisJcmV0ID0g
-cm9ja2NoaXBfZHJtX3Bzcl9kZWFjdGl2YXRlKCZkcC0+ZW5jb2Rlcik7CisJaWYgKHJldCAhPSAw
-KQorCQlyZXR1cm4gcmV0OwogCiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5wY2xrKTsKIApk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMKaW5kZXggM2FjZmQ1
-NzZiN2RmLi5iM2ZiOTljNWIxZmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fcHNyLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9wc3IuYwpAQCAtNTcsNiArNTcsMjQgQEAgc3RhdGljIHN0cnVjdCBwc3JfZHJ2ICpm
-aW5kX3Bzcl9ieV9jcnRjKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIAlyZXR1cm4gcHNyOwogfQog
-CitzdGF0aWMgc3RydWN0IHBzcl9kcnYgKmZpbmRfcHNyX2J5X2VuY29kZXIoc3RydWN0IGRybV9l
-bmNvZGVyICplbmNvZGVyKQoreworCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqZHJtX2Ry
-diA9IGVuY29kZXItPmRldi0+ZGV2X3ByaXZhdGU7CisJc3RydWN0IHBzcl9kcnYgKnBzcjsKKwl1
-bnNpZ25lZCBsb25nIGZsYWdzOworCisJc3Bpbl9sb2NrX2lycXNhdmUoJmRybV9kcnYtPnBzcl9s
-aXN0X2xvY2ssIGZsYWdzKTsKKwlsaXN0X2Zvcl9lYWNoX2VudHJ5KHBzciwgJmRybV9kcnYtPnBz
-cl9saXN0LCBsaXN0KSB7CisJCWlmIChwc3ItPmVuY29kZXIgPT0gZW5jb2RlcikKKwkJCWdvdG8g
-b3V0OworCX0KKwlwc3IgPSBFUlJfUFRSKC1FTk9ERVYpOworCitvdXQ6CisJc3Bpbl91bmxvY2tf
-aXJxcmVzdG9yZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxhZ3MpOworCXJldHVybiBwc3I7
-Cit9CisKIHN0YXRpYyB2b2lkIHBzcl9zZXRfc3RhdGVfbG9ja2VkKHN0cnVjdCBwc3JfZHJ2ICpw
-c3IsIGVudW0gcHNyX3N0YXRlIHN0YXRlKQogewogCS8qCkBAIC0xMTUsMTQgKzEzMywxNCBAQCBz
-dGF0aWMgdm9pZCBwc3JfZmx1c2hfaGFuZGxlcihzdHJ1Y3QgdGltZXJfbGlzdCAqdCkKIAogLyoq
-CiAgKiByb2NrY2hpcF9kcm1fcHNyX2FjdGl2YXRlIC0gYWN0aXZhdGUgUFNSIG9uIHRoZSBnaXZl
-biBwaXBlCi0gKiBAY3J0YzogQ1JUQyB0byBvYnRhaW4gdGhlIFBTUiBlbmNvZGVyCisgKiBAZW5j
-b2RlcjogZW5jb2RlciB0byBvYnRhaW4gdGhlIFBTUiBlbmNvZGVyCiAgKgogICogUmV0dXJuczoK
-ICAqIFplcm8gb24gc3VjY2VzcywgbmVnYXRpdmUgZXJybm8gb24gZmFpbHVyZS4KICAqLwotaW50
-IHJvY2tjaGlwX2RybV9wc3JfYWN0aXZhdGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQoraW50IHJv
-Y2tjaGlwX2RybV9wc3JfYWN0aXZhdGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogewot
-CXN0cnVjdCBwc3JfZHJ2ICpwc3IgPSBmaW5kX3Bzcl9ieV9jcnRjKGNydGMpOworCXN0cnVjdCBw
-c3JfZHJ2ICpwc3IgPSBmaW5kX3Bzcl9ieV9lbmNvZGVyKGVuY29kZXIpOwogCXVuc2lnbmVkIGxv
-bmcgZmxhZ3M7CiAKIAlpZiAoSVNfRVJSKHBzcikpCkBAIC0xMzgsMTQgKzE1NiwxNCBAQCBFWFBP
-UlRfU1lNQk9MKHJvY2tjaGlwX2RybV9wc3JfYWN0aXZhdGUpOwogCiAvKioKICAqIHJvY2tjaGlw
-X2RybV9wc3JfZGVhY3RpdmF0ZSAtIGRlYWN0aXZhdGUgUFNSIG9uIHRoZSBnaXZlbiBwaXBlCi0g
-KiBAY3J0YzogQ1JUQyB0byBvYnRhaW4gdGhlIFBTUiBlbmNvZGVyCisgKiBAZW5jb2RlcjogZW5j
-b2RlciB0byBvYnRhaW4gdGhlIFBTUiBlbmNvZGVyCiAgKgogICogUmV0dXJuczoKICAqIFplcm8g
-b24gc3VjY2VzcywgbmVnYXRpdmUgZXJybm8gb24gZmFpbHVyZS4KICAqLwotaW50IHJvY2tjaGlw
-X2RybV9wc3JfZGVhY3RpdmF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCitpbnQgcm9ja2NoaXBf
-ZHJtX3Bzcl9kZWFjdGl2YXRlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIHsKLQlzdHJ1
-Y3QgcHNyX2RydiAqcHNyID0gZmluZF9wc3JfYnlfY3J0YyhjcnRjKTsKKwlzdHJ1Y3QgcHNyX2Ry
-diAqcHNyID0gZmluZF9wc3JfYnlfZW5jb2RlcihlbmNvZGVyKTsKIAl1bnNpZ25lZCBsb25nIGZs
-YWdzOwogCiAJaWYgKElTX0VSUihwc3IpKQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fcHNyLmgKaW5kZXggYjQyMGNmMWJmOTAyLi5iMWVhMDE1NWU1N2MgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmgKKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuaApAQCAtMTgsOCArMTgsOCBA
-QAogdm9pZCByb2NrY2hpcF9kcm1fcHNyX2ZsdXNoX2FsbChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2
-KTsKIGludCByb2NrY2hpcF9kcm1fcHNyX2ZsdXNoKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7CiAK
-LWludCByb2NrY2hpcF9kcm1fcHNyX2FjdGl2YXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7Ci1p
-bnQgcm9ja2NoaXBfZHJtX3Bzcl9kZWFjdGl2YXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7Citp
-bnQgcm9ja2NoaXBfZHJtX3Bzcl9hY3RpdmF0ZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIp
-OworaW50IHJvY2tjaGlwX2RybV9wc3JfZGVhY3RpdmF0ZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVu
-Y29kZXIpOwogCiBpbnQgcm9ja2NoaXBfZHJtX3Bzcl9yZWdpc3RlcihzdHJ1Y3QgZHJtX2VuY29k
-ZXIgKmVuY29kZXIsCiAJCQl2b2lkICgqcHNyX3NldCkoc3RydWN0IGRybV9lbmNvZGVyICosIGJv
-b2wgZW5hYmxlKSk7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-YwppbmRleCA3YTEzN2JjNTcwOGMuLjMxMzA0NDM0ODQ3YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC01NzcsOCArNTc3LDYgQEAgc3RhdGljIHZv
-aWQgdm9wX2NydGNfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAogCiAJV0FS
-Tl9PTih2b3AtPmV2ZW50KTsKIAotCXJvY2tjaGlwX2RybV9wc3JfZGVhY3RpdmF0ZSgmdm9wLT5j
-cnRjKTsKLQogCWRybV9jcnRjX3ZibGFua19vZmYoY3J0Yyk7CiAKIAkvKgpAQCAtOTUxLDggKzk0
-OSw2IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19lbmFibGUoc3RydWN0IGRybV9jcnRj
-ICpjcnRjLAogCWNsa19zZXRfcmF0ZSh2b3AtPmRjbGssIGFkanVzdGVkX21vZGUtPmNsb2NrICog
-MTAwMCk7CiAKIAlWT1BfUkVHX1NFVCh2b3AsIGNvbW1vbiwgc3RhbmRieSwgMCk7Ci0KLQlyb2Nr
-Y2hpcF9kcm1fcHNyX2FjdGl2YXRlKCZ2b3AtPmNydGMpOwogfQogCiBzdGF0aWMgYm9vbCB2b3Bf
-ZnNfaXJxX2lzX3BlbmRpbmcoc3RydWN0IHZvcCAqdm9wKQotLSAKMi4xNC4xCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Tomasz Figa <tfiga@chromium.org>
+
+Since we take the ownership of drvdata, the master driver does not have
+any means of accessing its own data from unbind callback and all it can
+do is calling the analogix unbind callback. However it might be
+necessary to do some clean up in the master driver before we really
+unbind the analogix part (such as PSR unregister in Rockchip case), so
+this patch provides a plat_data->cleanup() callback which is called at
+the beginning of analogix_dp_unbind().
+
+Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
+Cc: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 3 +++
+ include/drm/bridge/analogix_dp.h                   | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index bee0f7aa5c23..2d44ef2fc3d2 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1652,6 +1652,9 @@ EXPORT_SYMBOL_GPL(analogix_dp_bind);
+ 
+ void analogix_dp_unbind(struct analogix_dp_device *dp)
+ {
++	if (dp->plat_data->cleanup)
++		dp->plat_data->cleanup(dp->plat_data);
++
+ 	analogix_dp_bridge_disable(dp->bridge);
+ 	dp->connector.funcs->destroy(&dp->connector);
+ 
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index c2788483c882..96a6af0823aa 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -38,6 +38,7 @@ struct analogix_dp_plat_data {
+ 		      struct drm_connector *);
+ 	int (*get_modes)(struct analogix_dp_plat_data *,
+ 			 struct drm_connector *);
++	void (*cleanup)(struct analogix_dp_plat_data *);
+ };
+ 
+ int analogix_dp_psr_enabled(struct analogix_dp_device *dp);
+-- 
+2.14.1
