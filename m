@@ -1,100 +1,63 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH 12/40] drm/rockchip: Only wait for panel ACK on PSR entry
-Date: Mon, 15 Jan 2018 18:15:46 +0100
-Message-ID: <20180115171614.14474-13-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 01/40] drm/rockchip: Get rid of some unnecessary code
+Date: Mon, 15 Jan 2018 18:15:35 +0100
+Message-ID: <20180115171614.14474-2-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
-Content-Type: text/plain; charset = "utf-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
-Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz@rock-chips.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-We currently wait for the panel to mirror our intended PSR state
-before continuing on both PSR enter and PSR exit. This is really
-only important to do when we're entering PSR, since we want to
-be sure the last frame we pushed is being served from the panel's
-internal fb before shutting down the soc blocks (vop/analogix).
+Current code implements prepare_fb and cleanup_fb callbacks only to
+grab/release fb references, which is already done by atomic framework
+when creating/destryoing plane state. Also there are some unused fields
+vop and vop_win structs. Let's remove these unused bits.
 
-This patch changes the behavior such that we only wait for the
-panel to complete the PSR transition when we're entering PSR, and
-to skip verification when we're exiting.
-
-Cc: Stéphane Marchesin <marcheu@chromium.org>
-Cc: Sonny Rao <sonnyrao@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 2 +-
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 5 ++++-
- 3 files changed, 7 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index e0775adf80b3..49a05eac41c1 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -125,7 +125,7 @@ int analogix_dp_enable_psr(struct analogix_dp_device *dp)
- 	psr_vsc.DB0 = 0;
- 	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index ba7505292b78..7a137bc5708c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -95,9 +95,6 @@ struct vop {
+ 	struct drm_device *drm_dev;
+ 	bool is_enabled;
  
--	return analogix_dp_send_psr_spd(dp, &psr_vsc);
-+	return analogix_dp_send_psr_spd(dp, &psr_vsc, true);
- }
- EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
+-	/* mutex vsync_ work */
+-	struct mutex vsync_mutex;
+-	bool vsync_work_pending;
+ 	struct completion dsp_hold_completion;
  
-@@ -151,7 +151,7 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
- 	if (ret != 1)
- 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
+ 	/* protected by dev->event_lock */
+@@ -1567,8 +1564,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	spin_lock_init(&vop->reg_lock);
+ 	spin_lock_init(&vop->irq_lock);
  
--	return analogix_dp_send_psr_spd(dp, &psr_vsc);
-+	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
- }
- EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index 920607d7eb3e..6a96ef7e6934 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -253,7 +253,7 @@ void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
- void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
- void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
- int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
--			     struct edp_vsc_psr *vsc);
-+			     struct edp_vsc_psr *vsc, bool blocking);
- ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 			     struct drm_dp_aux_msg *msg);
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 005a3f7005d2..9df2f3ef000c 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -1007,7 +1007,7 @@ static ssize_t analogix_dp_get_psr_status(struct analogix_dp_device *dp)
- }
- 
- int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
--			     struct edp_vsc_psr *vsc)
-+			     struct edp_vsc_psr *vsc, bool blocking)
- {
- 	unsigned int val;
- 	int ret;
-@@ -1053,6 +1053,9 @@ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
- 	val |= IF_EN;
- 	writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
- 
-+	if (!blocking)
-+		return 0;
-+
- 	ret = readx_poll_timeout(analogix_dp_get_psr_status, dp, psr_status,
- 		psr_status >= 0 &&
- 		((vsc->DB1 && psr_status == DP_PSR_SINK_ACTIVE_RFB) ||
+-	mutex_init(&vop->vsync_mutex);
+-
+ 	ret = devm_request_irq(dev, vop->irq, vop_isr,
+ 			       IRQF_SHARED, dev_name(dev), vop);
+ 	if (ret)
 -- 
 2.14.1
