@@ -1,76 +1,128 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 24/40] drm/bridge: analogix_dp: Reset aux channel if an error
- occurred
-Date: Mon, 15 Jan 2018 18:15:58 +0100
-Message-ID: <20180115171614.14474-25-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH 40/40] drm/bridge: analogix_dp: Split the platform-specific poweron in two parts
+Date: Mon, 15 Jan 2018 18:16:14 +0100
+Message-ID: <20180115171614.14474-41-thierry.escande@collabora.com>
 References: <20180115171614.14474-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180115171614.14474-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180115171614.14474-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
-Cc: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>
+Cc: Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCkFVWCBlcnJvcnMgYXJlIGNhdXNl
-ZCBieSBtYW55IGRpZmZlcmVudCByZWFzb25zLiBXZSBtYXkgbm90IGtub3cgd2hhdApoYXBwZW5l
-ZCBpbiBhdXggY2hhbm5lbCBvbiBmYWlsdXJlLCBzbyBsZXQncyByZXNldCBhdXggY2hhbm5lbCBp
-ZiBzb21lCmVycm9ycyBvY2N1cnJlZC4KCkNjOiDlvoHlop4g546LIDx3enpAcm9jay1jaGlwcy5j
-b20+CkNjOiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1v
-ZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogQW5kcnplaiBI
-YWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
-YWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIHwgMTggKysrKysrKysrKysrKystLS0tCiAxIGZpbGUg
-Y2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwppbmRleCBkZWUxYmEx
-MDliNWYuLjdiN2ZkMjI3ZTFmOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
-bmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
-YWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCkBAIC00NjYsNiArNDY2LDEwIEBAIHZvaWQgYW5hbG9n
-aXhfZHBfaW5pdF9hdXgoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJcmVnID0gUlBM
-WV9SRUNFSVYgfCBBVVhfRVJSOwogCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lY
-X0RQX0lOVF9TVEEpOwogCisJYW5hbG9naXhfZHBfc2V0X2FuYWxvZ19wb3dlcl9kb3duKGRwLCBB
-VVhfQkxPQ0ssIHRydWUpOworCXVzbGVlcF9yYW5nZSgxMCwgMTEpOworCWFuYWxvZ2l4X2RwX3Nl
-dF9hbmFsb2dfcG93ZXJfZG93bihkcCwgQVVYX0JMT0NLLCBmYWxzZSk7CisKIAlhbmFsb2dpeF9k
-cF9yZXNldF9hdXgoZHApOwogCiAJLyogRGlzYWJsZSBBVVggdHJhbnNhY3Rpb24gSC9XIHJldHJ5
-ICovCkBAIC0xMTU5LDcgKzExNjMsNyBAQCBzc2l6ZV90IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0
-cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCQkJCSByZWcsICEocmVnICYgQVVYX0VOKSwg
-MjUsIDUwMCAqIDEwMDApOwogCWlmIChyZXQpIHsKIAkJZGV2X2VycihkcC0+ZGV2LCAiQVVYIENI
-IGVuYWJsZSB0aW1lb3V0IVxuIik7Ci0JCXJldHVybiAtRVRJTUVET1VUOworCQlnb3RvIGF1eF9l
-cnJvcjsKIAl9CiAKIAkvKiBUT0RPOiBXYWl0IGZvciBhbiBpbnRlcnJ1cHQgaW5zdGVhZCBvZiBs
-b29waW5nPyAqLwpAQCAtMTE2OCw3ICsxMTcyLDcgQEAgc3NpemVfdCBhbmFsb2dpeF9kcF90cmFu
-c2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIAkJCQkgcmVnLCByZWcgJiBSUExZ
-X1JFQ0VJViwgMTAsIDIwICogMTAwMCk7CiAJaWYgKHJldCkgewogCQlkZXZfZXJyKGRwLT5kZXYs
-ICJBVVggQ0ggY21kIHJlcGx5IHRpbWVvdXQhXG4iKTsKLQkJcmV0dXJuIC1FVElNRURPVVQ7CisJ
-CWdvdG8gYXV4X2Vycm9yOwogCX0KIAogCS8qIENsZWFyIGludGVycnVwdCBzb3VyY2UgZm9yIEFV
-WCBDSCBjb21tYW5kIHJlcGx5ICovCkBAIC0xMTc4LDcgKzExODIsNyBAQCBzc2l6ZV90IGFuYWxv
-Z2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCXJlZyA9IHJl
-YWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0lOVF9TVEEpOwogCWlmIChyZWcgJiBBVVhf
-RVJSKSB7CiAJCXdyaXRlbChBVVhfRVJSLCBkcC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9JTlRf
-U1RBKTsKLQkJcmV0dXJuIC1FUkVNT1RFSU87CisJCWdvdG8gYXV4X2Vycm9yOwogCX0KIAogCS8q
-IENoZWNrIEFVWCBDSCBlcnJvciBhY2Nlc3Mgc3RhdHVzICovCkBAIC0xMTg2LDcgKzExOTAsNyBA
-QCBzc2l6ZV90IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ug
-KmRwLAogCWlmICgocmVnICYgQVVYX1NUQVRVU19NQVNLKSkgewogCQlkZXZfZXJyKGRwLT5kZXYs
-ICJBVVggQ0ggZXJyb3IgaGFwcGVuZWQ6ICVkXG5cbiIsCiAJCQlyZWcgJiBBVVhfU1RBVFVTX01B
-U0spOwotCQlyZXR1cm4gLUVSRU1PVEVJTzsKKwkJZ290byBhdXhfZXJyb3I7CiAJfQogCiAJaWYg
-KG1zZy0+cmVxdWVzdCAmIERQX0FVWF9JMkNfUkVBRCkgewpAQCAtMTIxMiw0ICsxMjE2LDEwIEBA
-IHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAq
-ZHAsCiAJCW1zZy0+cmVwbHkgPSBEUF9BVVhfTkFUSVZFX1JFUExZX0FDSzsKIAogCXJldHVybiBu
-dW1fdHJhbnNmZXJyZWQgPiAwID8gbnVtX3RyYW5zZmVycmVkIDogLUVCVVNZOworCithdXhfZXJy
-b3I6CisJLyogaWYgYXV4IGVyciBoYXBwZW4sIHJlc2V0IGF1eCAqLworCWFuYWxvZ2l4X2RwX2lu
-aXRfYXV4KGRwKTsKKworCXJldHVybiAtRVJFTU9URUlPOwogfQotLSAKMi4xNC4xCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Douglas Anderson <dianders@chromium.org>
+
+Some of the platform-specific stuff in rockchip_dp_poweron() needs to
+happen before the generic code.  Some needs to happen after.  Let's
+split the callback in two.
+
+Specifically we can't start doing PSR work until _after_ the whole
+controller is up, so don't set the enable until the end.
+
+Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+[seanpaul added exynos change]
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  7 +++++--
+ drivers/gpu/drm/exynos/exynos_dp.c                 |  2 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 ++++++++++--
+ include/drm/bridge/analogix_dp.h                   |  3 ++-
+ 4 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 12c97e0a8dcd..870569193719 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1258,8 +1258,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+ 		goto out_dp_clk_pre;
+ 	}
+ 
+-	if (dp->plat_data->power_on)
+-		dp->plat_data->power_on(dp->plat_data);
++	if (dp->plat_data->power_on_start)
++		dp->plat_data->power_on_start(dp->plat_data);
+ 
+ 	phy_power_on(dp->phy);
+ 
+@@ -1284,6 +1284,9 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+ 		goto out_dp_init;
+ 	}
+ 
++	if (dp->plat_data->power_on_end)
++		dp->plat_data->power_on_end(dp->plat_data);
++
+ 	enable_irq(dp->irq);
+ 	return 0;
+ 
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index 33319a858f3a..b316249a3f89 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -162,7 +162,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
+ 	dp->drm_dev = drm_dev;
+ 
+ 	dp->plat_data.dev_type = EXYNOS_DP;
+-	dp->plat_data.power_on = exynos_dp_poweron;
++	dp->plat_data.power_on_start = exynos_dp_poweron;
+ 	dp->plat_data.power_off = exynos_dp_poweroff;
+ 	dp->plat_data.attach = exynos_dp_bridge_attach;
+ 	dp->plat_data.get_modes = exynos_dp_get_modes;
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index eaa025730c28..3b406a55d2a5 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -109,7 +109,7 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
+ 	return 0;
+ }
+ 
+-static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
++static int rockchip_dp_poweron_start(struct analogix_dp_plat_data *plat_data)
+ {
+ 	struct rockchip_dp_device *dp = to_dp(plat_data);
+ 	int ret;
+@@ -127,6 +127,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
+ 		return ret;
+ 	}
+ 
++	return ret;
++}
++
++static int rockchip_dp_poweron_end(struct analogix_dp_plat_data *plat_data)
++{
++	struct rockchip_dp_device *dp = to_dp(plat_data);
++
+ 	return rockchip_drm_psr_activate(&dp->encoder);
+ }
+ 
+@@ -337,7 +344,8 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	dp->plat_data.encoder = &dp->encoder;
+ 
+ 	dp->plat_data.dev_type = dp->data->chip_type;
+-	dp->plat_data.power_on = rockchip_dp_poweron;
++	dp->plat_data.power_on_start = rockchip_dp_poweron_start;
++	dp->plat_data.power_on_end = rockchip_dp_poweron_end;
+ 	dp->plat_data.power_off = rockchip_dp_powerdown;
+ 	dp->plat_data.get_modes = rockchip_dp_get_modes;
+ 	dp->plat_data.cleanup = rockchip_dp_cleanup;
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index ed3ae1b5bb65..05e7e7ffc1c3 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -32,7 +32,8 @@ struct analogix_dp_plat_data {
+ 	struct drm_encoder *encoder;
+ 	struct drm_connector *connector;
+ 
+-	int (*power_on)(struct analogix_dp_plat_data *);
++	int (*power_on_start)(struct analogix_dp_plat_data *);
++	int (*power_on_end)(struct analogix_dp_plat_data *);
+ 	int (*power_off)(struct analogix_dp_plat_data *);
+ 	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
+ 		      struct drm_connector *);
+-- 
+2.14.1
