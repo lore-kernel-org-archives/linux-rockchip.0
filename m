@@ -1,43 +1,84 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH 30/40] drm/rockchip: Flush PSR before committing modeset disables/enables
-Date: Tue, 16 Jan 2018 13:02:40 +0900
-Message-ID: <CAAFQd5ACj_haeXpr4vrBYimk+yiGZKYR6HTvuL1K1gDSGFBhsA@mail.gmail.com>
-References: <20180115171614.14474-1-thierry.escande@collabora.com> <20180115171614.14474-31-thierry.escande@collabora.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v2 2/2] drm/bridge/synopsys: dsi: handle endianness
+ correctly in dw_mipi_dsi_write()
+Date: Tue, 16 Jan 2018 12:22:52 +0530
+Message-ID: <e4d9d6d6-76c4-4914-d800-c007a6e8938b@codeaurora.org>
+References: <20180109203248.139249-1-briannorris@chromium.org>
+ <CGME20180109203308epcas1p17226c8b3b3a0474adcd51b87b70084bf@epcas1p1.samsung.com>
+ <20180109203248.139249-2-briannorris@chromium.org>
+ <199f9097-736e-afe8-2093-bb28fba8b308@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180115171614.14474-31-thierry.escande@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Escande <thierry.escande@collabora.com>
-Cc: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Haixia Shi <hshi@chromium.org>, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, zain wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <199f9097-736e-afe8-2093-bb28fba8b308@samsung.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>, Brian Norris <briannorris@chromium.org>
+Cc: hl@rock-chips.com, David Airlie <airlied@linux.ie>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, linux-rockchip@lists.infradead.org, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
-
-On Tue, Jan 16, 2018 at 2:16 AM, Thierry Escande
-<thierry.escande@collabora.com> wrote:
-> From: Tomasz Figa <tfiga@chromium.org>
->
-> Currently PSR flush is triggered from CRTC's .atomic_begin() callback,
-> which is executed after modeset disables and enables and before plane
-> updates are committed. Since PSR flush and re-enable can be triggered
-> asynchronously by external sources (input event, delayed work), it can
-> race with hardware programming done in the aforementioned stages.
->
-> To avoid the race, we can trigger PSR flush before committing modeset
-> disables/enables. This also has the advantage of removing some
-> PSR-specific knowledge from the VOP driver.
-
-FYI, this patch was eventually found to still leave few unsolved races
-and was later replaced with a more comprehensive redesign of Rockchip
-PSR code. Please refer to the following Chromium patches:
-
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/430429/
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/436571/
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/438228/
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/438229/
-<- This one effectively replaces all the code added in this patch.
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/438230/
-
-Best regards,
-Tomasz
+CgpPbiAwMS8xMC8yMDE4IDA4OjAzIFBNLCBBbmRyemVqIEhhamRhIHdyb3RlOgo+IE9uIDA5LjAx
+LjIwMTggMjE6MzIsIEJyaWFuIE5vcnJpcyB3cm90ZToKPj4gV2UncmUgZmlsbGluZyB0aGUgInJl
+bWFpbmRlciIgd29yZCB3aXRoIGxpdHRsZS1lbmRpYW4gZGF0YSwgdGhlbiB3cml0aW5nCj4+IGl0
+IG91dCB0byBJTyByZWdpc3RlcnMgd2l0aCBlbmRpYW4tY29ycmVjdGluZyB3cml0ZWwoKS4gVGhh
+dCBwcm9iYWJseQo+PiB3b24ndCB3b3JrIG9uIGJpZy1lbmRpYW4gc3lzdGVtcy4KPj4KPj4gTGV0
+J3MgbWFyayB0aGUgInJlbWFpbmRlciIgdmFyaWFibGUgYXMgTEUzMiAoc2luY2Ugd2UgZmlsbCBp
+dCB3aXRoCj4+IG1lbWNweSgpKSBhbmQgZG8gdGhlIHN3YXBwaW5nIGV4cGxpY2l0bHkuCj4+Cj4+
+IFNvbWUgb2YgdGhpcyBmdW5jdGlvbiBjb3VsZCBiZSBkb25lIG1vcmUgZWFzaWx5IHdpdGhvdXQg
+bWVtY3B5KCksIGJ1dAo+PiB0aGUgdW5hbGlnbmVkICJyZW1haW5kZXIiIGNhc2UgaXMgYSBsaXR0
+bGUgaGFyZCB0byBkbyB3aXRob3V0Cj4+IHBvdGVudGlhbGx5IG92ZXJydW5uaW5nICd0eF9idWYn
+LCBzbyBJIGp1c3QgYXBwbGllZCB0aGUgc2FtZSBzb2x1dGlvbiBpbgo+PiBhbGwgY2FzZXMgKG1l
+bWNweSgpICsgbGUzMl90b19jcHUoKSkuCj4+Cj4+IFRlc3RlZCBvbmx5IG9uIGEgbGl0dGxlLWVu
+ZGlhbiBzeXN0ZW0uCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3Jy
+aXNAY2hyb21pdW0ub3JnPgo+PiAtLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
+c3lzL2R3LW1pcGktZHNpLmMgfCAxOCArKysrKysrKystLS0tLS0tLS0KPj4gICAxIGZpbGUgY2hh
+bmdlZCwgOSBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4+IGluZGV4IGVkOTFlMzJlZTQz
+YS4uOTBmMTNkZjZmMTA2IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
+bm9wc3lzL2R3LW1pcGktZHNpLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
+cHN5cy9kdy1taXBpLWRzaS5jCj4+IEBAIC0zNjAsMTggKzM2MCwxOCBAQCBzdGF0aWMgaW50IGR3
+X21pcGlfZHNpX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLAo+PiAgIHsKPj4gICAJY29u
+c3QgdTggKnR4X2J1ZiA9IHBhY2tldC0+cGF5bG9hZDsKPj4gICAJaW50IGxlbiA9IHBhY2tldC0+
+cGF5bG9hZF9sZW5ndGgsIHBsZF9kYXRhX2J5dGVzID0gc2l6ZW9mKHUzMiksIHJldDsKPj4gLQl1
+MzIgcmVtYWluZGVyOwo+PiArCV9fbGUzMiB3b3JkOwo+PiAgIAl1MzIgdmFsOwo+PiAgIAo+PiAg
+IAl3aGlsZSAobGVuKSB7Cj4+ICAgCQlpZiAobGVuIDwgcGxkX2RhdGFfYnl0ZXMpIHsKPj4gLQkJ
+CXJlbWFpbmRlciA9IDA7Cj4+IC0JCQltZW1jcHkoJnJlbWFpbmRlciwgdHhfYnVmLCBsZW4pOwo+
+PiAtCQkJZHNpX3dyaXRlKGRzaSwgRFNJX0dFTl9QTERfREFUQSwgcmVtYWluZGVyKTsKPj4gKwkJ
+CXdvcmQgPSAwOwo+PiArCQkJbWVtY3B5KCZ3b3JkLCB0eF9idWYsIGxlbik7Cj4+ICsJCQlkc2lf
+d3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRBLCBsZTMyX3RvX2NwdSh3b3JkKSk7Cj4+ICAgCQkJ
+bGVuID0gMDsKPj4gICAJCX0gZWxzZSB7Cj4+IC0JCQltZW1jcHkoJnJlbWFpbmRlciwgdHhfYnVm
+LCBwbGRfZGF0YV9ieXRlcyk7Cj4+IC0JCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRB
+LCByZW1haW5kZXIpOwo+PiArCQkJbWVtY3B5KCZ3b3JkLCB0eF9idWYsIHBsZF9kYXRhX2J5dGVz
+KTsKPj4gKwkJCWRzaV93cml0ZShkc2ksIERTSV9HRU5fUExEX0RBVEEsIGxlMzJfdG9fY3B1KHdv
+cmQpKTsKPj4gICAJCQl0eF9idWYgKz0gcGxkX2RhdGFfYnl0ZXM7Cj4+ICAgCQkJbGVuIC09IHBs
+ZF9kYXRhX2J5dGVzOwo+PiAgIAkJfQo+PiBAQCAtMzg2LDkgKzM4Niw5IEBAIHN0YXRpYyBpbnQg
+ZHdfbWlwaV9kc2lfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCj4+ICAgCQl9Cj4+ICAg
+CX0KPj4gICAKPj4gLQlyZW1haW5kZXIgPSAwOwo+PiAtCW1lbWNweSgmcmVtYWluZGVyLCBwYWNr
+ZXQtPmhlYWRlciwgc2l6ZW9mKHBhY2tldC0+aGVhZGVyKSk7Cj4+IC0JcmV0dXJuIGR3X21pcGlf
+ZHNpX2dlbl9wa3RfaGRyX3dyaXRlKGRzaSwgcmVtYWluZGVyKTsKPj4gKwl3b3JkID0gMDsKPj4g
+KwltZW1jcHkoJndvcmQsIHBhY2tldC0+aGVhZGVyLCBzaXplb2YocGFja2V0LT5oZWFkZXIpKTsK
+Pj4gKwlyZXR1cm4gZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoZHNpLCBsZTMyX3RvX2Nw
+dSh3b3JkKSk7Cj4gCj4gWW91IGNvdWxkIGNyZWF0ZSBhbmQgdXNlIGFwcHJvcHJpYXRlIGhlbHBl
+ciwgbGV0cyBzYXk6Cj4gCj4gdTMyIGxlX3RvX2NwdXAoY29uc3QgdTggKnAsIGludCBjb3VudCkK
+PiB7Cj4gIMKgwqDCoCBfX2xlMzIgciA9IDA7Cj4gCj4gIMKgwqDCoCBtZW1jcHkoJnIsIHAsIGNv
+dW50KTsKPiAgwqDCoMKgIHJldHVybiBsZTMyX3RvX2NwdShyKTsKPiB9Cj4gCj4gV2l0aCBvciB3
+aXRob3V0IHRoaXMgY2hhbmdlOgo+IFJldmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRh
+QHNhbXN1bmcuY29tPgoKUXVldWVkIHRvIGRybS1taXNjLW5leHQgYXMgaXMuCgpUaGFua3MsCkFy
+Y2hpdAoKPiAKPiAgwqAtLQo+IFJlZ2FyZHMKPiBBbmRyemVqCj4gCj4gCj4+ICAgfQo+PiAgIAo+
+PiAgIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlf
+ZHNpX2hvc3QgKmhvc3QsCj4gCj4gCgotLSAKUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIElu
+Yy4gaXMgYSBtZW1iZXIgb2YgQ29kZSBBdXJvcmEgRm9ydW0sCmEgTGludXggRm91bmRhdGlvbiBD
+b2xsYWJvcmF0aXZlIFByb2plY3QKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
