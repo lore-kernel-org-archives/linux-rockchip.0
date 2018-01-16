@@ -1,50 +1,120 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2 2/2] drm/bridge/synopsys: dsi: handle endianness
- correctly in dw_mipi_dsi_write()
-Date: Tue, 16 Jan 2018 10:57:37 -0800
-Message-ID: <20180116185736.GA149565@google.com>
+Subject: Re: [PATCH v2 1/2] drm/bridge/synopsys: dsi: use common
+ mipi_dsi_create_packet()
+Date: Tue, 16 Jan 2018 11:04:55 -0800
+Message-ID: <20180116190454.GB149565@google.com>
 References: <20180109203248.139249-1-briannorris@chromium.org>
- <CGME20180109203308epcas1p17226c8b3b3a0474adcd51b87b70084bf@epcas1p1.samsung.com>
- <20180109203248.139249-2-briannorris@chromium.org>
- <199f9097-736e-afe8-2093-bb28fba8b308@samsung.com>
- <e4d9d6d6-76c4-4914-d800-c007a6e8938b@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <e4d9d6d6-76c4-4914-d800-c007a6e8938b@codeaurora.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>
-Cc: hl@rock-chips.com, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
+In-Reply-To: <20180109203248.139249-1-briannorris@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org, hoegsberg@gmail.com, zyw@rock-chips.com, xbl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKYW4gMTYsIDIwMTggYXQgMTI6MjI6NTJQTSArMDUzMCwgQXJjaGl0IFRhbmVqYSB3
-cm90ZToKPiBPbiAwMS8xMC8yMDE4IDA4OjAzIFBNLCBBbmRyemVqIEhhamRhIHdyb3RlOgo+ID5P
-biAwOS4wMS4yMDE4IDIxOjMyLCBCcmlhbiBOb3JyaXMgd3JvdGU6Cj4gPj5AQCAtMzg2LDkgKzM4
-Niw5IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpk
-c2ksCj4gPj4gIAkJfQo+ID4+ICAJfQo+ID4+LQlyZW1haW5kZXIgPSAwOwo+ID4+LQltZW1jcHko
-JnJlbWFpbmRlciwgcGFja2V0LT5oZWFkZXIsIHNpemVvZihwYWNrZXQtPmhlYWRlcikpOwo+ID4+
-LQlyZXR1cm4gZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoZHNpLCByZW1haW5kZXIpOwo+
-ID4+Kwl3b3JkID0gMDsKPiA+PisJbWVtY3B5KCZ3b3JkLCBwYWNrZXQtPmhlYWRlciwgc2l6ZW9m
-KHBhY2tldC0+aGVhZGVyKSk7Cj4gPj4rCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93
-cml0ZShkc2ksIGxlMzJfdG9fY3B1KHdvcmQpKTsKPiA+Cj4gPllvdSBjb3VsZCBjcmVhdGUgYW5k
-IHVzZSBhcHByb3ByaWF0ZSBoZWxwZXIsIGxldHMgc2F5Ogo+ID4KPiA+dTMyIGxlX3RvX2NwdXAo
-Y29uc3QgdTggKnAsIGludCBjb3VudCkKPiA+ewo+ID4gwqDCoMKgIF9fbGUzMiByID0gMDsKPiA+
-Cj4gPiDCoMKgwqAgbWVtY3B5KCZyLCBwLCBjb3VudCk7Cj4gPiDCoMKgwqAgcmV0dXJuIGxlMzJf
-dG9fY3B1KHIpOwo+ID59CgpJIHN1cHBvc2UgdGhhdCBjb3VsZCBiZSBhIHNtYWxsIGltcHJvdmVt
-ZW50LCBmb3IgZnV0dXJlIGNvbnNpZGVyYXRpb24sCmlmIHRoaXMgZ2V0cyB0b28gb3V0IG9mIGhh
-bmQuCgo+ID5XaXRoIG9yIHdpdGhvdXQgdGhpcyBjaGFuZ2U6Cj4gPlJldmlld2VkLWJ5OiBBbmRy
-emVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKVGhhbmtzIQoKPiBRdWV1ZWQgdG8gZHJt
-LW1pc2MtbmV4dCBhcyBpcy4KClRoYW5rcyEKCkJyaWFuCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi all,
+
+I believe Philippe's comments about return values have been addressed
+separately, and this patch was applied to drm-misc-next. But I have one
+additional thought below.
+
+On Tue, Jan 09, 2018 at 12:32:47PM -0800, Brian Norris wrote:
+> This takes care of 2 TODOs in this driver, by using the common DSI
+> packet-marshalling code instead of our custom short/long write code.
+> This both saves us some duplicated code and gets us free support for
+> command types that weren't already part of our switch block (e.g.,
+> MIPI_DSI_GENERIC_LONG_WRITE).
+> 
+> The code logic stays mostly intact, except that it becomes unnecessary
+> to split the short/long write functions, and we have to copy data a bit
+> more.
+> 
+> Along the way, I noticed that loop bounds were a little odd:
+> 
+> 	while (DIV_ROUND_UP(len, pld_data_bytes))
+> 
+> This really was just supposed to be 'len != 0', so I made that more
+> clear.
+> 
+> Tested on RK3399 with some pending refactoring patches by Nickey Yang,
+> to make the Rockchip DSI driver wrap this common driver.
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> Reviewed-by: Philippe Cornu <philippe.cornu@st.com>
+> Tested-by: Philippe Cornu <philippe.cornu@st.com>
+
+...
+
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index d9cca4fd66ec..ed91e32ee43a 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+
+...
+
+> @@ -419,40 +386,27 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
+>  		}
+>  	}
+>  
+> -	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
+> +	remainder = 0;
+> +	memcpy(&remainder, packet->header, sizeof(packet->header));
+> +	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, remainder);
+>  }
+>  
+>  static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+>  					 const struct mipi_dsi_msg *msg)
+>  {
+>  	struct dw_mipi_dsi *dsi = host_to_dsi(host);
+> +	struct mipi_dsi_packet packet;
+>  	int ret;
+>  
+> -	/*
+> -	 * TODO dw drv improvements
+> -	 * use mipi_dsi_create_packet() instead of all following
+> -	 * functions and code (no switch cases, no
+> -	 * dw_mipi_dsi_dcs_short_write(), only the loop in long_write...)
+> -	 * and use packet.header...
+> -	 */
+> -	dw_mipi_message_config(dsi, msg);
+> -
+> -	switch (msg->type) {
+> -	case MIPI_DSI_DCS_SHORT_WRITE:
+> -	case MIPI_DSI_DCS_SHORT_WRITE_PARAM:
+> -	case MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE:
+> -		ret = dw_mipi_dsi_dcs_short_write(dsi, msg);
+> -		break;
+> -	case MIPI_DSI_DCS_LONG_WRITE:
+> -		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
+> -		break;
+> -	default:
+> -		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
+> -			msg->type);
+> -		ret = -EINVAL;
+
+By removing this default case, I'm hiding the fact that this driver
+doesn't currently implement RX support at all -- only TX. (Previously,
+if presented with, e.g., a MIPI_DSI_GENERIC_READ_REQUEST_0_PARAM, the
+driver would reject it. Now it will silently fail to return it.)
+
+I believe some Rockchip folks have preliminary RX support implemented
+somewhere, so we might consider merging that, or else re-introducing a
+failure case to catch the unimplemented RX support.
+
+Brian
+
+> +	ret = mipi_dsi_create_packet(&packet, msg);
+> +	if (ret) {
+> +		dev_err(dsi->dev, "failed to create packet: %d\n", ret);
+> +		return ret;
+>  	}
+>  
+> -	return ret;
+> +	dw_mipi_message_config(dsi, msg);
+> +
+> +	return dw_mipi_dsi_write(dsi, &packet);
+>  }
+>  
+>  static const struct mipi_dsi_host_ops dw_mipi_dsi_host_ops = {
