@@ -1,383 +1,50 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 12/13] iommu/rockchip: Add runtime PM support
-Date: Tue, 16 Jan 2018 21:25:39 +0800
-Message-ID: <20180116132540.18939-13-jeffy.chen@rock-chips.com>
-References: <20180116132540.18939-1-jeffy.chen@rock-chips.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v2 2/2] drm/bridge/synopsys: dsi: handle endianness
+ correctly in dw_mipi_dsi_write()
+Date: Tue, 16 Jan 2018 10:57:37 -0800
+Message-ID: <20180116185736.GA149565@google.com>
+References: <20180109203248.139249-1-briannorris@chromium.org>
+ <CGME20180109203308epcas1p17226c8b3b3a0474adcd51b87b70084bf@epcas1p1.samsung.com>
+ <20180109203248.139249-2-briannorris@chromium.org>
+ <199f9097-736e-afe8-2093-bb28fba8b308@samsung.com>
+ <e4d9d6d6-76c4-4914-d800-c007a6e8938b@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180116132540.18939-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <e4d9d6d6-76c4-4914-d800-c007a6e8938b@codeaurora.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Archit Taneja <architt@codeaurora.org>
+Cc: hl@rock-chips.com, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, hoegsberg@gmail.com, Philippe Cornu <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick Fertre <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, mka@chromium.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, zyw@rock-chips.com, xbl@rock-chips.com, Vincent Abriou <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-When the power domain is powered off, the IOMMU cannot be accessed and
-register programming must be deferred until the power domain becomes
-enabled.
-
-Add runtime PM support, and use runtime PM device link from IOMMU to
-master to startup and shutdown IOMMU.
-
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
-Changes in v2: None
-
- drivers/iommu/rockchip-iommu.c | 191 ++++++++++++++++++++++++++++++-----------
- 1 file changed, 143 insertions(+), 48 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index c2d3ac82184e..c8de1456a016 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -18,11 +18,13 @@
- #include <linux/list.h>
- #include <linux/mm.h>
- #include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_iommu.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- 
-@@ -98,6 +100,12 @@ struct rk_iommu {
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-+	struct mutex pm_mutex; /* serializes power transitions */
-+};
-+
-+struct rk_iommudata {
-+	struct device_link *link; /* runtime PM link from IOMMU to master */
-+	struct rk_iommu *iommu;
- };
- 
- static struct device *dma_dev;
-@@ -675,9 +683,15 @@ static void rk_iommu_zap_iova(struct rk_iommu_domain *rk_domain,
- 	list_for_each(pos, &rk_domain->iommus) {
- 		struct rk_iommu *iommu;
- 		iommu = list_entry(pos, struct rk_iommu, node);
--		rk_iommu_enable_clocks(iommu);
--		rk_iommu_zap_lines(iommu, iova, size);
--		rk_iommu_disable_clocks(iommu);
-+
-+		/* Only zap TLBs of IOMMUs that are powered on. */
-+		if (pm_runtime_get_if_in_use(iommu->dev) > 0) {
-+			rk_iommu_enable_clocks(iommu);
-+			rk_iommu_zap_lines(iommu, iova, size);
-+			rk_iommu_disable_clocks(iommu);
-+
-+			pm_runtime_put(iommu->dev);
-+		}
- 	}
- 	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
- }
-@@ -875,28 +889,19 @@ static size_t rk_iommu_unmap(struct iommu_domain *domain, unsigned long _iova,
- 
- static struct rk_iommu *rk_iommu_from_dev(struct device *dev)
- {
--	return dev->archdata.iommu;
-+	struct rk_iommudata *data = dev->archdata.iommu;
-+
-+	return data ? data->iommu : NULL;
- }
- 
--static void rk_iommu_detach_device(struct iommu_domain *domain,
--				   struct device *dev)
-+static void rk_iommu_shutdown(struct rk_iommu *iommu)
- {
--	struct rk_iommu *iommu;
--	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
--	unsigned long flags;
- 	int i;
- 
--	/* Allow 'virtual devices' (eg drm) to detach from domain */
--	iommu = rk_iommu_from_dev(dev);
--	if (!iommu)
--		return;
--
--	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
--	list_del_init(&iommu->node);
--	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
--
- 	/* Ignore error while disabling, just keep going */
- 	WARN_ON(rk_iommu_enable_clocks(iommu));
-+
-+	mutex_lock(&iommu->pm_mutex);
- 	rk_iommu_enable_stall(iommu);
- 	rk_iommu_disable_paging(iommu);
- 	for (i = 0; i < iommu->num_mmu; i++) {
-@@ -904,46 +909,30 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
- 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, 0);
- 	}
- 	rk_iommu_disable_stall(iommu);
--	rk_iommu_disable_clocks(iommu);
-+	mutex_unlock(&iommu->pm_mutex);
- 
--	iommu->domain = NULL;
--
--	dev_dbg(dev, "Detached from iommu domain\n");
-+	rk_iommu_disable_clocks(iommu);
- }
- 
--static int rk_iommu_attach_device(struct iommu_domain *domain,
--				  struct device *dev)
-+static int rk_iommu_startup(struct rk_iommu *iommu)
- {
--	struct rk_iommu *iommu;
-+	struct iommu_domain *domain = iommu->domain;
- 	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
--	unsigned long flags;
- 	int ret, i;
- 
--	/*
--	 * Allow 'virtual devices' (e.g., drm) to attach to domain.
--	 * Such a device does not belong to an iommu group.
--	 */
--	iommu = rk_iommu_from_dev(dev);
--	if (!iommu)
--		return 0;
--
--	if (iommu->domain)
--		rk_iommu_detach_device(iommu->domain, dev);
--
- 	ret = rk_iommu_enable_clocks(iommu);
- 	if (ret)
- 		return ret;
- 
-+	mutex_lock(&iommu->pm_mutex);
- 	ret = rk_iommu_enable_stall(iommu);
- 	if (ret)
--		goto err_disable_clocks;
-+		goto err_unlock_mutex;
- 
- 	ret = rk_iommu_force_reset(iommu);
- 	if (ret)
- 		goto err_disable_stall;
- 
--	iommu->domain = domain;
--
- 	for (i = 0; i < iommu->num_mmu; i++) {
- 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
- 			       rk_domain->dt_dma);
-@@ -955,21 +944,90 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
- 	if (ret)
- 		goto err_disable_stall;
- 
--	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
--	list_add_tail(&iommu->node, &rk_domain->iommus);
--	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
--
--	dev_dbg(dev, "Attached to iommu domain\n");
--
- 	rk_iommu_disable_stall(iommu);
-+	mutex_unlock(&iommu->pm_mutex);
-+
- 	rk_iommu_disable_clocks(iommu);
- 
- 	return 0;
- 
- err_disable_stall:
- 	rk_iommu_disable_stall(iommu);
--err_disable_clocks:
-+err_unlock_mutex:
-+	mutex_unlock(&iommu->pm_mutex);
- 	rk_iommu_disable_clocks(iommu);
-+	return ret;
-+}
-+
-+static void rk_iommu_detach_device(struct iommu_domain *domain,
-+				   struct device *dev)
-+{
-+	struct rk_iommu *iommu;
-+	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-+	unsigned long flags;
-+
-+	/* Allow 'virtual devices' (eg drm) to detach from domain */
-+	iommu = rk_iommu_from_dev(dev);
-+	if (!iommu)
-+		return;
-+
-+	dev_dbg(dev, "Detaching from iommu domain\n");
-+
-+	/* iommu already detached */
-+	if (iommu->domain != domain)
-+		return;
-+
-+	iommu->domain = NULL;
-+
-+	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
-+	list_del_init(&iommu->node);
-+	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
-+
-+	if (pm_runtime_get_if_in_use(iommu->dev) > 0) {
-+		rk_iommu_shutdown(iommu);
-+		pm_runtime_put(iommu->dev);
-+	}
-+}
-+
-+static int rk_iommu_attach_device(struct iommu_domain *domain,
-+		struct device *dev)
-+{
-+	struct rk_iommu *iommu;
-+	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-+	unsigned long flags;
-+	int ret;
-+
-+	/*
-+	 * Allow 'virtual devices' (e.g., drm) to attach to domain.
-+	 * Such a device does not belong to an iommu group.
-+	 */
-+	iommu = rk_iommu_from_dev(dev);
-+	if (!iommu)
-+		return 0;
-+
-+	dev_dbg(dev, "Attaching to iommu domain\n");
-+
-+	/* iommu already attached */
-+	if (iommu->domain == domain)
-+		return 0;
-+
-+	if (iommu->domain)
-+		rk_iommu_detach_device(iommu->domain, dev);
-+
-+	iommu->domain = domain;
-+
-+	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
-+	list_add_tail(&iommu->node, &rk_domain->iommus);
-+	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
-+
-+	if (pm_runtime_get_if_in_use(iommu->dev) <= 0)
-+		return 0;
-+
-+	ret = rk_iommu_startup(iommu);
-+	if (ret)
-+		rk_iommu_detach_device(data->domain, dev);
-+
-+	pm_runtime_put(iommu->dev);
- 
- 	return ret;
- }
-@@ -1059,6 +1117,7 @@ static int rk_iommu_add_device(struct device *dev)
- {
- 	struct iommu_group *group;
- 	struct rk_iommu *iommu;
-+	struct rk_iommudata *data = dev->archdata.iommu;
- 
- 	iommu = rk_iommu_from_dev(dev);
- 	if (!iommu)
-@@ -1070,6 +1129,7 @@ static int rk_iommu_add_device(struct device *dev)
- 	iommu_group_put(group);
- 
- 	iommu_device_link(&iommu->iommu, dev);
-+	data->link = device_link_add(dev, iommu->dev, DL_FLAG_PM_RUNTIME);
- 
- 	return 0;
- }
-@@ -1077,11 +1137,13 @@ static int rk_iommu_add_device(struct device *dev)
- static void rk_iommu_remove_device(struct device *dev)
- {
- 	struct rk_iommu *iommu;
-+	struct rk_iommudata *data = dev->archdata.iommu;
- 
- 	iommu = rk_iommu_from_dev(dev);
- 	if (!iommu)
- 		return;
- 
-+	device_link_del(data->link);
- 	iommu_device_unlink(&iommu->iommu, dev);
- 	iommu_group_remove_device(dev);
- }
-@@ -1101,6 +1163,11 @@ static int rk_iommu_of_xlate(struct device *dev,
- 			     struct of_phandle_args *args)
- {
- 	struct platform_device *iommu_dev;
-+	struct rk_iommudata *data;
-+
-+	data = devm_kzalloc(dma_dev, sizeof(*data), GFP_KERNEL);
-+	if (!data)
-+		return -ENOMEM;
- 
- 	iommu_dev = of_find_device_by_node(args->np);
- 	if (!iommu_dev) {
-@@ -1108,7 +1175,9 @@ static int rk_iommu_of_xlate(struct device *dev,
- 		return -ENODEV;
- 	}
- 
--	dev->archdata.iommu = platform_get_drvdata(iommu_dev);
-+	data->iommu = platform_get_drvdata(iommu_dev);
-+	dev->archdata.iommu = data;
-+
- 	of_dev_put(iommu_dev);
- 
- 	return 0;
-@@ -1204,6 +1273,8 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 
- 	bus_set_iommu(&platform_bus_type, &rk_iommu_ops);
- 
-+	pm_runtime_enable(dev);
-+
- 	return 0;
- err_remove_sysfs:
- 	iommu_device_sysfs_remove(&iommu->iommu);
-@@ -1216,6 +1287,8 @@ static int rk_iommu_remove(struct platform_device *pdev)
- {
- 	struct rk_iommu *iommu = platform_get_drvdata(pdev);
- 
-+	pm_runtime_disable(&pdev->dev);
-+
- 	iommu_device_unregister(&iommu->iommu);
- 	iommu_device_sysfs_remove(&iommu->iommu);
- 	rk_iommu_put_clocks(iommu);
-@@ -1223,6 +1296,27 @@ static int rk_iommu_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static int __maybe_unused rk_iommu_suspend(struct device *dev)
-+{
-+	struct rk_iommu *iommu = dev_get_drvdata(dev);
-+
-+	rk_iommu_shutdown(iommu);
-+	return 0;
-+}
-+
-+static int __maybe_unused rk_iommu_resume(struct device *dev)
-+{
-+	struct rk_iommu *iommu = dev_get_drvdata(dev);
-+
-+	return rk_iommu_startup(iommu);
-+}
-+
-+static const struct dev_pm_ops rk_iommu_pm_ops = {
-+	SET_RUNTIME_PM_OPS(rk_iommu_suspend, rk_iommu_resume, NULL)
-+	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-+				pm_runtime_force_resume)
-+};
-+
- static const struct of_device_id rk_iommu_dt_ids[] = {
- 	{ .compatible = "rockchip,iommu" },
- 	{ /* sentinel */ }
-@@ -1235,6 +1329,7 @@ static struct platform_driver rk_iommu_driver = {
- 	.driver = {
- 		   .name = "rk_iommu",
- 		   .of_match_table = rk_iommu_dt_ids,
-+		   .pm = &rk_iommu_pm_ops,
- 		   .suppress_bind_attrs = true,
- 	},
- };
--- 
-2.11.0
+T24gVHVlLCBKYW4gMTYsIDIwMTggYXQgMTI6MjI6NTJQTSArMDUzMCwgQXJjaGl0IFRhbmVqYSB3
+cm90ZToKPiBPbiAwMS8xMC8yMDE4IDA4OjAzIFBNLCBBbmRyemVqIEhhamRhIHdyb3RlOgo+ID5P
+biAwOS4wMS4yMDE4IDIxOjMyLCBCcmlhbiBOb3JyaXMgd3JvdGU6Cj4gPj5AQCAtMzg2LDkgKzM4
+Niw5IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpk
+c2ksCj4gPj4gIAkJfQo+ID4+ICAJfQo+ID4+LQlyZW1haW5kZXIgPSAwOwo+ID4+LQltZW1jcHko
+JnJlbWFpbmRlciwgcGFja2V0LT5oZWFkZXIsIHNpemVvZihwYWNrZXQtPmhlYWRlcikpOwo+ID4+
+LQlyZXR1cm4gZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoZHNpLCByZW1haW5kZXIpOwo+
+ID4+Kwl3b3JkID0gMDsKPiA+PisJbWVtY3B5KCZ3b3JkLCBwYWNrZXQtPmhlYWRlciwgc2l6ZW9m
+KHBhY2tldC0+aGVhZGVyKSk7Cj4gPj4rCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93
+cml0ZShkc2ksIGxlMzJfdG9fY3B1KHdvcmQpKTsKPiA+Cj4gPllvdSBjb3VsZCBjcmVhdGUgYW5k
+IHVzZSBhcHByb3ByaWF0ZSBoZWxwZXIsIGxldHMgc2F5Ogo+ID4KPiA+dTMyIGxlX3RvX2NwdXAo
+Y29uc3QgdTggKnAsIGludCBjb3VudCkKPiA+ewo+ID4gwqDCoMKgIF9fbGUzMiByID0gMDsKPiA+
+Cj4gPiDCoMKgwqAgbWVtY3B5KCZyLCBwLCBjb3VudCk7Cj4gPiDCoMKgwqAgcmV0dXJuIGxlMzJf
+dG9fY3B1KHIpOwo+ID59CgpJIHN1cHBvc2UgdGhhdCBjb3VsZCBiZSBhIHNtYWxsIGltcHJvdmVt
+ZW50LCBmb3IgZnV0dXJlIGNvbnNpZGVyYXRpb24sCmlmIHRoaXMgZ2V0cyB0b28gb3V0IG9mIGhh
+bmQuCgo+ID5XaXRoIG9yIHdpdGhvdXQgdGhpcyBjaGFuZ2U6Cj4gPlJldmlld2VkLWJ5OiBBbmRy
+emVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKVGhhbmtzIQoKPiBRdWV1ZWQgdG8gZHJt
+LW1pc2MtbmV4dCBhcyBpcy4KClRoYW5rcyEKCkJyaWFuCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
