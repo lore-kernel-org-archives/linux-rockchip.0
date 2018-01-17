@@ -1,82 +1,67 @@
-From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 13/13] iommu/rockchip: Support sharing IOMMU between
-	masters
-Date: Wed, 17 Jan 2018 21:32:00 +0800
-Message-ID: <5A5F5050.5040308@rock-chips.com>
-References: <20180116132540.18939-1-jeffy.chen@rock-chips.com>
-	<20180116132540.18939-14-jeffy.chen@rock-chips.com>
-	<1bd5378d-8285-e0d9-8105-f9dd9f8cfdcb@arm.com>
+From: Mirza Krak <mirza.krak@gmail.com>
+Subject: Re: Bad PCM stream after a suspend/resume cycle
+Date: Wed, 17 Jan 2018 15:08:27 +0100
+Message-ID: <CALw8SCV8penDHKxTjrg0Z7k6dTFxEq79G8fK74iPz+3vix1fcQ@mail.gmail.com>
+References: <CALw8SCXUpeUv8433Rd9is6eNd9ztd6soEOoDMkVSLue6qT6wKg@mail.gmail.com>
+ <s5h7esnpe3z.wl-tiwai@suse.de>
+ <CALw8SCX8XmVeLncD3GNHtt32MW26EGW=XFG=2iuK7vvREzj8Dw@mail.gmail.com>
+ <s5hwp0ndkcm.wl-tiwai@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1bd5378d-8285-e0d9-8105-f9dd9f8cfdcb-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <s5hwp0ndkcm.wl-tiwai@suse.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Takashi Iwai <tiwai@suse.de>
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
-
-On 01/17/2018 09:00 PM, Robin Murphy wrote:
-> On 16/01/18 13:25, Jeffy Chen wrote:
->> There would be some masters sharing the same IOMMU device. Put them in
->> the same iommu group and share the same iommu domain.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->> Changes in v2: None
->>
->>   drivers/iommu/rockchip-iommu.c | 39
->> +++++++++++++++++++++++++++++++--------
->>   1 file changed, 31 insertions(+), 8 deletions(-)
->>
->> diff --git a/drivers/iommu/rockchip-iommu.c
->> b/drivers/iommu/rockchip-iommu.c
->> index c8de1456a016..6c316dd0dd2d 100644
->> --- a/drivers/iommu/rockchip-iommu.c
->> +++ b/drivers/iommu/rockchip-iommu.c
->> @@ -100,11 +100,13 @@ struct rk_iommu {
->>       struct iommu_device iommu;
->>       struct list_head node; /* entry in rk_iommu_domain.iommus */
->>       struct iommu_domain *domain; /* domain to which iommu is
->> attached */
->> +    struct iommu_group *group;
->>       struct mutex pm_mutex; /* serializes power transitions */
->>   };
->>   struct rk_iommudata {
->>       struct device_link *link; /* runtime PM link from IOMMU to
->> master */
->> +    struct iommu_domain *domain; /* domain to which device is
->> attached */
->
-> I don't see why this is needed - for example, mtk_iommu does the same
-> thing without needing to track the active domain in more than one place.
->
-> Fundamentally, for this kind of IOMMU without the notion of multiple
-> translation contexts, the logic should look like:
->
->      iommudrv_attach_device(dev, domain) {
->          iommu = dev_get_iommu(dev);
->          if (iommu->curr_domain != domain) {
->              update_hw_state(iommu, domain);
->              iommu->curr_domain = domain;
->          }
->      }
->
-> which I think is essentially what you have anyway. When a group contains
-> multiple devices, you update the IOMMU state for the first device, then
-> calls for subsequent devices in the group do nothing since they see the
-> IOMMU state is already up-to-date with the new domain.
->
-right, will remove it.
-> Robin.
+T24gMTIgSmFudWFyeSAyMDE4IGF0IDE5OjA0LCBUYWthc2hpIEl3YWkgPHRpd2FpQHN1c2UuZGU+
+IHdyb3RlOgo+IE9uIEZyaSwgMTIgSmFuIDIwMTggMTQ6MzY6NDUgKzAxMDAsCj4gTWlyemEgS3Jh
+ayB3cm90ZToKPj4KCjwgc25pcCA+Cgo+Cj4gVGhlIEVCQURGRCBpcyBhbHJlYWR5IGluZGljYXRp
+bmcgYSBmYXRhbCBlcnJvciwgYW5kIHNvbWV0aGluZyBpcyB3cm9uZwo+IGluIHRoZSBkcml2ZXIu
+ICBCYXNpY2FsbHkgdGhlIGRyaXZlciBzaG91bGQgc3VzcGVuZCB0aGUgc3RyZWFtIHZpYQo+IHNu
+ZF9wY21fc3VzcGVuZCooKSBjYWxsIGluIHRoZSBQTSByZXN1bWUgb3BzLiAgTW9zdCBsaWtlbHkg
+eW91ciBkcml2ZXIKPiBtaXNzZXMgdGhhdC4KPgo+IFRoYXQgc2FpZCwgaXQncyBzcGVjaWZpYyB0
+byB5b3VyIHVzaW5nIGRyaXZlciwgYW5kIHlvdSdkIG5lZWQgdG8gdGFrZQo+IGEgbG9vayBhdCB0
+aGF0IGNvZGUgdGhlcmUuCgpUaGFuayB5b3UgZm9yIHlvdSBwYXRpZW5jZSB3aXRoIG1lLgoKSSBo
+YXZlIGxvb2tlZCBmdXJ0aGVyIGluIHRvIG15IGhhcmR3YXJlIGRyaXZlcnMgYW5kIEkgY2FuIG5v
+dCByZWFsbHkKc2VlIGFueSBmYXVsdHMgaGVyZS4KCkJ1dCBJIGRpZCBzb21lIGZ1cnRoZXIgdGVz
+dGluZyBhbmQgYXBwbHlpbmcgdGhlIGZvbGxvd2luZyBkaWZmIG9uCmFwbGF5ICJyZXNvbHZlcyIg
+dGhlIHByb2JsZW0gKHYxLjEuNCBvZiBhbHNhLXV0aWxzKToKCmRpZmYgLS1naXQgYS9hcGxheS9h
+cGxheS5jIGIvYXBsYXkvYXBsYXkuYwppbmRleCBmNzkzYzgyLi4wNDBjZWMxIDEwMDY0NAotLS0g
+YS9hcGxheS9hcGxheS5jCisrKyBiL2FwbGF5L2FwbGF5LmMKQEAgLTIwMjAsNiArMjAyMCw4IEBA
+IHN0YXRpYyBzc2l6ZV90IHBjbV93cml0ZSh1X2NoYXIgKmRhdGEsIHNpemVfdCBjb3VudCkKICAg
+ICAgICAgICAgICAgIGlmICh0ZXN0X3Bvc2l0aW9uKQogICAgICAgICAgICAgICAgICAgICAgICBk
+b190ZXN0X3Bvc2l0aW9uKCk7CiAgICAgICAgICAgICAgICBpZiAociA9PSAtRUFHQUlOIHx8IChy
+ID49IDAgJiYgKHNpemVfdClyIDwgY291bnQpKSB7CisgICAgICAgICAgICAgICAgICAgICAgIGlm
+IChzbmRfcGNtX3N0YXRlKGhhbmRsZSkgPT0gU05EX1BDTV9TVEFURV9TVVNQRU5ERUQpCisgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgc3VzcGVuZCgpOwogICAgICAgICAgICAgICAgICAg
+ICAgICBpZiAoIXRlc3Rfbm93YWl0KQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNu
+ZF9wY21fd2FpdChoYW5kbGUsIDEwMCk7CiAgICAgICAgICAgICAgICB9IGVsc2UgaWYgKHIgPT0g
+LUVQSVBFKSB7CgpXaGljaCBtZWFucyB0aGF0IHRoZXJlIGlzIG5vIGVycm9yIGluIHJlZ2FyZCB0
+byBzdXNwZW5kaW5nIHRoZSBzdHJlYW0KYXMgaXQgcHJvcGVybHkgcmVwb3J0cyB0aGlzIHdoZW4g
+Y2hlY2tlZC4KCk15IHByb2JsZW0gaXMgdGhhdCB0aGlzIGNvbmRpdGlvbjoKCiAgICAociA+PSAw
+ICYmIChzaXplX3QpciA8IGNvdW50KQoKSXMgYWx3YXlzIHRydWUgYWZ0ZXIgYSBzdXNwZW5kL3Jl
+c3VtZSBjeWNsZS4gV2hpY2ggbm9ybWFsbHkgZG9lcyBub3QKcmVzdWx0IGluIGEgInJlc3VtZSIg
+Y2FsbCBmcm9tIGFwbGF5IG5vciBmcm9tIHNuZF9wY21fcmVjb3Zlciwgd2hpY2gKbWVhbnMgdGhh
+dCBpdCB3aWxsIHRyeSB0byB3cml0ZSBkYXRhIHRvIGEgc3VzcGVuZGVkIHN0cmVhbSB3aGljaApy
+ZXN1bHRzIGluIC1FQkFERkQgZHVlIHRvIHRoaXMgKGZyb20gYWxzYS1saWIpOgoKc25kX3BjbV9z
+ZnJhbWVzX3Qgc25kX3BjbV93cml0ZWkoc25kX3BjbV90ICpwY20sIGNvbnN0IHZvaWQgKmJ1ZmZl
+ciwKc25kX3BjbV91ZnJhbWVzX3Qgc2l6ZSkKewogICAgPCBzbmlwID4KCiAgICBpZiAoYmFkX3Bj
+bV9zdGF0ZShwY20sIFBfU1RBVEVfUlVOTkFCTEUpKQogICAgICAgIHJldHVybiAtRUJBREZEOwog
+ICAgcmV0dXJuIF9zbmRfcGNtX3dyaXRlaShwY20sIGJ1ZmZlciwgc2l6ZSk7Cn0KCkJlY2F1c2Ug
+U1VTUEVOREVEIGlzIG5vdCBwYXJ0IG9mIHRoZSBQX1NUQVRFX1JVTk5BQkxFLCB3aGljaCBtYXli
+ZSBpdCBzaG91bGQgYmU/CgotLSAKTWVkIFbDpG5saWdhIEjDpGxzbmluZ2FyIC8gQmVzdCBSZWdh
+cmRzCgpNaXJ6YSBLcmFrCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0CkFsc2EtZGV2ZWxAYWxzYS1wcm9qZWN0Lm9y
+ZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vYWxzYS1k
+ZXZlbAo=
