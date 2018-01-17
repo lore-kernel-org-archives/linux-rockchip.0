@@ -1,29 +1,44 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2 01/16] drivers: pwm: core: use a single of xlate
- function
-Date: Wed, 17 Jan 2018 15:14:19 -0800
-Message-ID: <20180117231357.GC112833@google.com>
-References: <1515766983-15151-1-git-send-email-claudiu.beznea@microchip.com>
- <1515766983-15151-2-git-send-email-claudiu.beznea@microchip.com>
- <20180112183512.GB102880@google.com>
- <6441df76-fb4a-ce00-1019-f7ff9143b75e@microchip.com>
- <CAHp75VcaFDEQ1cBzeU2eBj_vf19ok6EWLC07SOTQLRH8BQSbzA@mail.gmail.com>
- <9a130c0b-572d-be0b-8ac7-596714208d41@microchip.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <9a130c0b-572d-be0b-8ac7-596714208d41@microchip.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
-Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Jonathan Corbet <corbet@lwn.net>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-pwm@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, devicetree <devicetree@vger.kernel.org>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: [PATCH] i2c: rk3x: add proper kerneldoc header
+Date: Thu, 18 Jan 2018 00:18:17 +0100
+Message-ID: <20180117231817.26955-1-wsa@the-dreams.de>
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: linux-i2c@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jan 16, 2018 at 10:24:59AM +0200, Claudiu Beznea wrote:
-> Please explain me further. From this I understand, as a general rule,
-> that the device tree binaries from, e.g. 3 years ago, should be
-> compatible with, e.g. the current version of kernel?
+gcc noticed the kerneldoc was wrongly formatted. Fix it!
 
-Yes.
+drivers/i2c/busses/i2c-rk3x.c:164: warning:
+  Cannot understand  * @grf_offset: ...
+  on line 164 - I thought it was a doc line
 
-https://www.kernel.org/doc/Documentation/devicetree/bindings/ABI.txt
+Signed-off-by: Wolfram Sang <wsa@the-dreams.de>
+---
+
+It also found this, but I leave this for now. Maybe someone else is interested:
+
+drivers/i2c/busses/i2c-rk3x.c:247: warning: No description found for parameter 'i2c'
+drivers/i2c/busses/i2c-rk3x.c:268: warning: No description found for parameter 'i2c'
+drivers/i2c/busses/i2c-rk3x.c:306: warning: No description found for parameter 'i2c'
+drivers/i2c/busses/i2c-rk3x.c:337: warning: No description found for parameter 'i2c'
+drivers/i2c/busses/i2c-rk3x.c:975: warning: No description found for parameter 'i2c'
+
+ drivers/i2c/busses/i2c-rk3x.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 1f80960c5ae1c8..e1a18d989f8307 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -161,6 +161,7 @@ enum rk3x_i2c_state {
+ };
+ 
+ /**
++ * struct rk3x_i2c_soc_data:
+  * @grf_offset: offset inside the grf regmap for setting the i2c type
+  * @calc_timings: Callback function for i2c timing information calculated
+  */
+-- 
+2.11.0
