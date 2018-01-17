@@ -1,97 +1,47 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 01/13] iommu/rockchip: Request irqs in rk_iommu_probe()
-Date: Wed, 17 Jan 2018 16:16:49 +0900
-Message-ID: <CAAFQd5Bnv3cLJ0wWY4+LJ+0GzDcm0F9QArY+QfFg692hd6UPjQ@mail.gmail.com>
+From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 02/13] iommu/rockchip: Suppress unbinding
+Date: Wed, 17 Jan 2018 15:16:38 +0800
+Message-ID: <5A5EF856.3090605@rock-chips.com>
 References: <20180116132540.18939-1-jeffy.chen@rock-chips.com>
- <20180116132540.18939-2-jeffy.chen@rock-chips.com> <CAAFQd5AO6_GYMs0xac-4ECFH9pn_ssg8jsFVoif0WDQ-daSuRA@mail.gmail.com>
- <5A5EF672.6040304@rock-chips.com>
+	<20180116132540.18939-3-jeffy.chen@rock-chips.com>
+	<CAAFQd5C_d2JW6kPQOMQ=mB6kHMdNZQGFvamjaDhexoPD_4W7+A@mail.gmail.com>
+	<CAAFQd5CXH_20649oZNrzFjHoKfpDi6gHF91jd3uCyjyOkH+Ohw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5A5EF672.6040304@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: JeffyChen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, Robin Murphy <robin.murphy@arm.com>, simon xue <xxm@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, open@263.net, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <CAAFQd5CXH_20649oZNrzFjHoKfpDi6gHF91jd3uCyjyOkH+Ohw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, open-Y9sIeH5OGRo@public.gmane.org, list-Y9sIeH5OGRo@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jan 17, 2018 at 4:08 PM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
-> Hi Tomasz,
->
-> Thanks for your reply.
->
-> On 01/17/2018 12:21 PM, Tomasz Figa wrote:
->>
->> Hi Jeffy,
->>
->> Thanks for the patch. Please see my comments inline.
->>
->> On Tue, Jan 16, 2018 at 10:25 PM, Jeffy Chen <jeffy.chen@rock-chips.com>
->> wrote:
->>
->> Please add patch description.
->
->
-> ok, will do.
->>
->>
->>> Suggested-by: Robin Murphy <robin.murphy@arm.com>
->>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>> ---
->>
->> [snip]
->>>
->>> -       for (i = 0; i < iommu->num_irq; i++) {
->>> -               iommu->irq[i] = platform_get_irq(pdev, i);
->>> -               if (iommu->irq[i] < 0) {
->>> -                       dev_err(dev, "Failed to get IRQ, %d\n",
->>> iommu->irq[i]);
->>> +       num_irq = of_irq_count(dev->of_node);
->>> +       for (i = 0; i < num_irq; i++) {
->>> +               irq = platform_get_irq(pdev, i);
->>
->>
->> This lacks consistency. of_irq_count() is used for counting, but
->> platform_get_irq() is used for getting. Either platform_ or of_ API
->> should be used for both and I'd lean for platform_, since it's more
->> general.
->
-> hmmm, right, i was thinking of removing num_irq, and do something like:
-> while (nr++) {
->   err = platform_get_irq(dev, nr);
->   if (err == -EPROBE_DEFER)
->      break;
->   if (err < 0)
->      return err;
->   ....
-> }
->
-> but forgot to do that..
+Hi Tomasz,
 
-Was there anything wrong with platform_irq_count() used by existing code?
-
+On 01/17/2018 01:32 PM, Tomasz Figa wrote:
+> On Wed, Jan 17, 2018 at 1:23 PM, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>> On Tue, Jan 16, 2018 at 10:25 PM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>> It's not safe to unbind rockchip IOMMU driver.
+>>
+>> Might be good to explain why it is not safe and actually add that it
+>> does not make any sense for such low level devices.
 >
->>
->>> +               if (irq < 0) {
->>> +                       dev_err(dev, "Failed to get IRQ, %d\n", irq);
->>>                          return -ENXIO;
->>>                  }
->>> +               err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
->>> +                                      IRQF_SHARED, dev_name(dev),
->>> iommu);
->>> +               if (err)
->>> +                       return err;
->>>          }
->>
->>
->> Looks like there is some more initialization below. Is the driver okay
->> with the IRQ being potentially fired right here? (Shared IRQ handlers
->> might be run at request_irq() time for testing.)
->>
-> right, forget about that. maybe we can check iommu->domain not NULL in
-> rk_iommu_irq()
-
-Maybe we could just move IRQ requesting to the end of probe?
-
-Best regards,
-Tomasz
+> Actually, shouldn't we also remove support for .remove() and module
+> exit? I don't think it's actually feasible to unload this driver. We
+> actually even have ROCKCHIP_IOMMU Kconfig entry defined as bool, so
+> the driver can be only built-in.
+>
+right, will do it in the next version.
+> Best regards,
+> Tomasz
+>
+>
+>
