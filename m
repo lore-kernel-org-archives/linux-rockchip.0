@@ -1,47 +1,44 @@
-From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 02/13] iommu/rockchip: Suppress unbinding
-Date: Wed, 17 Jan 2018 15:16:38 +0800
-Message-ID: <5A5EF856.3090605@rock-chips.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 05/13] iommu/rockchip: Fix error handling in init
+Date: Wed, 17 Jan 2018 16:19:16 +0900
+Message-ID: <CAAFQd5D2YE+5g5r4-1cnqeThSVJBCg78mozCTuFfpwnifaGcwg@mail.gmail.com>
 References: <20180116132540.18939-1-jeffy.chen@rock-chips.com>
-	<20180116132540.18939-3-jeffy.chen@rock-chips.com>
-	<CAAFQd5C_d2JW6kPQOMQ=mB6kHMdNZQGFvamjaDhexoPD_4W7+A@mail.gmail.com>
-	<CAAFQd5CXH_20649oZNrzFjHoKfpDi6gHF91jd3uCyjyOkH+Ohw@mail.gmail.com>
+ <20180116132540.18939-6-jeffy.chen@rock-chips.com> <CAAFQd5AFHheE+5Dx=0=BeL2W1EYd=Kmcb8fKcCBFRgP8ViuxgQ@mail.gmail.com>
+ <5A5EF7D3.90405@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <CAAFQd5CXH_20649oZNrzFjHoKfpDi6gHF91jd3uCyjyOkH+Ohw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, open-Y9sIeH5OGRo@public.gmane.org, list-Y9sIeH5OGRo@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5A5EF7D3.90405@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: JeffyChen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, Robin Murphy <robin.murphy@arm.com>, simon xue <xxm@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, open@263.net, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomasz,
-
-On 01/17/2018 01:32 PM, Tomasz Figa wrote:
-> On Wed, Jan 17, 2018 at 1:23 PM, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->> On Tue, Jan 16, 2018 at 10:25 PM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->>> It's not safe to unbind rockchip IOMMU driver.
+On Wed, Jan 17, 2018 at 4:14 PM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
+> Hi Tomasz,
+>
+> On 01/17/2018 01:26 PM, Tomasz Figa wrote:
 >>
->> Might be good to explain why it is not safe and actually add that it
->> does not make any sense for such low level devices.
->
-> Actually, shouldn't we also remove support for .remove() and module
-> exit? I don't think it's actually feasible to unload this driver. We
-> actually even have ROCKCHIP_IOMMU Kconfig entry defined as bool, so
-> the driver can be only built-in.
->
-right, will do it in the next version.
-> Best regards,
-> Tomasz
->
->
->
+>> On Tue, Jan 16, 2018 at 10:25 PM, Jeffy Chen <jeffy.chen@rock-chips.com>
+>> wrote:
+>>>
+>>> It's hard to undo bus_set_iommu() in the error path, so move it to the
+>>> end of rk_iommu_probe().
+>>
+>>
+>> Does this work fine now? I remember we used to need this called in an
+>> early initcall for all the ARM/ARM64 DMA stuff to work.
+>>
+> yes, i think it works now, i saw there are some other iommu drivers also do
+> this(arm-smmu-v3, mtk_iommu) :)
+
+Okay, if so:
+
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+
+Best regards,
+Tomasz
+
+P.S. Looks like your email client is set to HTML messages. Your
+messages might end up dropped from the mailing list.
