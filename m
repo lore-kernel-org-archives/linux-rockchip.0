@@ -1,120 +1,70 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v2 1/2] drm/bridge/synopsys: dsi: use common
- mipi_dsi_create_packet()
-Date: Tue, 16 Jan 2018 11:04:55 -0800
-Message-ID: <20180116190454.GB149565@google.com>
-References: <20180109203248.139249-1-briannorris@chromium.org>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 01/13] iommu/rockchip: Request irqs in rk_iommu_probe()
+Date: Wed, 17 Jan 2018 13:21:44 +0900
+Message-ID: <CAAFQd5AO6_GYMs0xac-4ECFH9pn_ssg8jsFVoif0WDQ-daSuRA@mail.gmail.com>
+References: <20180116132540.18939-1-jeffy.chen@rock-chips.com>
+	<20180116132540.18939-2-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180109203248.139249-1-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: David Airlie <airlied@linux.ie>, Yannick Fertre <yannick.fertre@st.com>, Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>, Nickey Yang <nickey.yang@rock-chips.com>, hl@rock-chips.com, linux-rockchip@lists.infradead.org, mka@chromium.org, hoegsberg@gmail.com, zyw@rock-chips.com, xbl@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180116132540.18939-2-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
+Hi Jeffy,
 
-I believe Philippe's comments about return values have been addressed
-separately, and this patch was applied to drm-misc-next. But I have one
-additional thought below.
+Thanks for the patch. Please see my comments inline.
 
-On Tue, Jan 09, 2018 at 12:32:47PM -0800, Brian Norris wrote:
-> This takes care of 2 TODOs in this driver, by using the common DSI
-> packet-marshalling code instead of our custom short/long write code.
-> This both saves us some duplicated code and gets us free support for
-> command types that weren't already part of our switch block (e.g.,
-> MIPI_DSI_GENERIC_LONG_WRITE).
-> 
-> The code logic stays mostly intact, except that it becomes unnecessary
-> to split the short/long write functions, and we have to copy data a bit
-> more.
-> 
-> Along the way, I noticed that loop bounds were a little odd:
-> 
-> 	while (DIV_ROUND_UP(len, pld_data_bytes))
-> 
-> This really was just supposed to be 'len != 0', so I made that more
-> clear.
-> 
-> Tested on RK3399 with some pending refactoring patches by Nickey Yang,
-> to make the Rockchip DSI driver wrap this common driver.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> Reviewed-by: Philippe Cornu <philippe.cornu@st.com>
-> Tested-by: Philippe Cornu <philippe.cornu@st.com>
+On Tue, Jan 16, 2018 at 10:25 PM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
 
-...
+Please add patch description.
 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index d9cca4fd66ec..ed91e32ee43a 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> Suggested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+[snip]
+> -       for (i = 0; i < iommu->num_irq; i++) {
+> -               iommu->irq[i] = platform_get_irq(pdev, i);
+> -               if (iommu->irq[i] < 0) {
+> -                       dev_err(dev, "Failed to get IRQ, %d\n", iommu->irq[i]);
+> +       num_irq = of_irq_count(dev->of_node);
+> +       for (i = 0; i < num_irq; i++) {
+> +               irq = platform_get_irq(pdev, i);
 
-...
+This lacks consistency. of_irq_count() is used for counting, but
+platform_get_irq() is used for getting. Either platform_ or of_ API
+should be used for both and I'd lean for platform_, since it's more
+general.
 
-> @@ -419,40 +386,27 @@ static int dw_mipi_dsi_dcs_long_write(struct dw_mipi_dsi *dsi,
->  		}
->  	}
->  
-> -	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, hdr_val);
-> +	remainder = 0;
-> +	memcpy(&remainder, packet->header, sizeof(packet->header));
-> +	return dw_mipi_dsi_gen_pkt_hdr_write(dsi, remainder);
->  }
->  
->  static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
->  					 const struct mipi_dsi_msg *msg)
->  {
->  	struct dw_mipi_dsi *dsi = host_to_dsi(host);
-> +	struct mipi_dsi_packet packet;
->  	int ret;
->  
-> -	/*
-> -	 * TODO dw drv improvements
-> -	 * use mipi_dsi_create_packet() instead of all following
-> -	 * functions and code (no switch cases, no
-> -	 * dw_mipi_dsi_dcs_short_write(), only the loop in long_write...)
-> -	 * and use packet.header...
-> -	 */
-> -	dw_mipi_message_config(dsi, msg);
-> -
-> -	switch (msg->type) {
-> -	case MIPI_DSI_DCS_SHORT_WRITE:
-> -	case MIPI_DSI_DCS_SHORT_WRITE_PARAM:
-> -	case MIPI_DSI_SET_MAXIMUM_RETURN_PACKET_SIZE:
-> -		ret = dw_mipi_dsi_dcs_short_write(dsi, msg);
-> -		break;
-> -	case MIPI_DSI_DCS_LONG_WRITE:
-> -		ret = dw_mipi_dsi_dcs_long_write(dsi, msg);
-> -		break;
-> -	default:
-> -		dev_err(dsi->dev, "unsupported message type 0x%02x\n",
-> -			msg->type);
-> -		ret = -EINVAL;
+> +               if (irq < 0) {
+> +                       dev_err(dev, "Failed to get IRQ, %d\n", irq);
+>                         return -ENXIO;
+>                 }
+> +               err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
+> +                                      IRQF_SHARED, dev_name(dev), iommu);
+> +               if (err)
+> +                       return err;
+>         }
 
-By removing this default case, I'm hiding the fact that this driver
-doesn't currently implement RX support at all -- only TX. (Previously,
-if presented with, e.g., a MIPI_DSI_GENERIC_READ_REQUEST_0_PARAM, the
-driver would reject it. Now it will silently fail to return it.)
+Looks like there is some more initialization below. Is the driver okay
+with the IRQ being potentially fired right here? (Shared IRQ handlers
+might be run at request_irq() time for testing.)
 
-I believe some Rockchip folks have preliminary RX support implemented
-somewhere, so we might consider merging that, or else re-introducing a
-failure case to catch the unimplemented RX support.
+>
+>         iommu->reset_disabled = device_property_read_bool(dev,
 
-Brian
+^^
 
-> +	ret = mipi_dsi_create_packet(&packet, msg);
-> +	if (ret) {
-> +		dev_err(dsi->dev, "failed to create packet: %d\n", ret);
-> +		return ret;
->  	}
->  
-> -	return ret;
-> +	dw_mipi_message_config(dsi, msg);
-> +
-> +	return dw_mipi_dsi_write(dsi, &packet);
->  }
->  
->  static const struct mipi_dsi_host_ops dw_mipi_dsi_host_ops = {
+Best regards,
+Tomasz
