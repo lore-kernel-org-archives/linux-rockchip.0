@@ -1,73 +1,63 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 06/13] iommu/rockchip: Fix TLB flush of secondary IOMMUs
-Date: Thu, 18 Jan 2018 19:52:44 +0800
-Message-ID: <20180118115251.5542-7-jeffy.chen@rock-chips.com>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v4 07/13] ARM: dts: rockchip: add clocks in vop iommu nodes
+Date: Thu, 18 Jan 2018 19:52:45 +0800
+Message-ID: <20180118115251.5542-8-jeffy.chen@rock-chips.com>
 References: <20180118115251.5542-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180118115251.5542-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180118115251.5542-1-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: jcliang@chromium.org, robin.murphy@arm.com, xxm@rock-chips.com, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Add clocks in vop iommu nodes, since we are going to control clocks in
+rockchip iommu driver.
 
-Due to the bug in current code, only first IOMMU has the TLB lines
-flushed in rk_iommu_zap_lines. This patch fixes the inner loop to
-execute for all IOMMUs and properly flush the TLB.
-
-Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
 
 Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/iommu/rockchip-iommu.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ arch/arm/boot/dts/rk3036.dtsi | 2 ++
+ arch/arm/boot/dts/rk3288.dtsi | 4 ++++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4a1c710408af..1914ac52042c 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -272,19 +272,21 @@ static void rk_iommu_base_command(void __iomem *base, u32 command)
- {
- 	writel(command, base + RK_MMU_COMMAND);
- }
--static void rk_iommu_zap_lines(struct rk_iommu *iommu, dma_addr_t iova,
-+static void rk_iommu_zap_lines(struct rk_iommu *iommu, dma_addr_t iova_start,
- 			       size_t size)
- {
- 	int i;
--
--	dma_addr_t iova_end = iova + size;
-+	dma_addr_t iova_end = iova_start + size;
- 	/*
- 	 * TODO(djkurtz): Figure out when it is more efficient to shootdown the
- 	 * entire iotlb rather than iterate over individual iovas.
- 	 */
--	for (i = 0; i < iommu->num_mmu; i++)
--		for (; iova < iova_end; iova += SPAGE_SIZE)
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		dma_addr_t iova;
-+
-+		for (iova = iova_start; iova < iova_end; iova += SPAGE_SIZE)
- 			rk_iommu_write(iommu->bases[i], RK_MMU_ZAP_ONE_LINE, iova);
-+	}
- }
- 
- static bool rk_iommu_is_stall_active(struct rk_iommu *iommu)
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 3b704cfed69a..95b0ebc7a40f 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -197,6 +197,8 @@
+ 		reg = <0x10118300 0x100>;
+ 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "vop_mmu";
++		clocks = <&cru ACLK_LCDC>, <&cru SCLK_LCDC>, <&cru HCLK_LCDC>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 6102e4e7f35c..5132dd887297 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1026,6 +1026,8 @@
+ 		reg = <0x0 0xff930300 0x0 0x100>;
+ 		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "vopb_mmu";
++		clocks = <&cru ACLK_VOP0>, <&cru DCLK_VOP0>, <&cru HCLK_VOP0>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
+ 		power-domains = <&power RK3288_PD_VIO>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+@@ -1074,6 +1076,8 @@
+ 		reg = <0x0 0xff940300 0x0 0x100>;
+ 		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "vopl_mmu";
++		clocks = <&cru ACLK_VOP1>, <&cru DCLK_VOP1>, <&cru HCLK_VOP1>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
+ 		power-domains = <&power RK3288_PD_VIO>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
 -- 
 2.11.0
