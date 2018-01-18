@@ -1,107 +1,74 @@
-From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 3/3] phy: rockchip-typec: reset USB3 controller before
- initializing PHY
-Date: Thu, 18 Jan 2018 18:22:17 +0100
-Message-ID: <CAFqH_52U32FpykKPmXXUcdK=fGm+yLcXgDZ4qC2NKz2na2yg3Q@mail.gmail.com>
-References: <1515751704-13213-1-git-send-email-william.wu@rock-chips.com> <1515751704-13213-4-git-send-email-william.wu@rock-chips.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: phy: phy-rockchip-typec: add usb3 otg
+ reset
+Date: Thu, 18 Jan 2018 09:47:50 -0800
+Message-ID: <20180118174748.GA63108@google.com>
+References: <1515751704-13213-1-git-send-email-william.wu@rock-chips.com>
+ <1515751704-13213-2-git-send-email-william.wu@rock-chips.com>
+ <20180117220715.GA112833@google.com>
+ <CAFqH_52KiHQzEeaX5rFN66pMqAuVVKeWJhxnS5L4hY4XiVG8mw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1515751704-13213-4-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Brian Norris <briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAFqH_52KiHQzEeaX5rFN66pMqAuVVKeWJhxnS5L4hY4XiVG8mw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-2018-01-12 11:08 GMT+01:00 William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
-> According to the RK3399 TRM, for Type-C USB start-up sequence,
-> we need to hold the whole USB 3.0 OTG controller in reset state
-> to keep the PIPE power state in P2 while initializing PHY. This
-> is because when initialize the Type-C PHY for USB3, we need to
-> configure the PHY and PMA for the selected mode of operation,
-> and wait for the PMA and PIPE ready, if the USB3 OTG controller
-> isn't in P2 state, it may cause waiting timeout.
->
-> Without this patch, waiting for the PMA and PIPE ready timeout
-> issue easily happens when we shutdown the Logic on RK3399 and
-> do the suspend/resume stress test.
->
-> Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  drivers/phy/rockchip/phy-rockchip-typec.c | 22 ++++++++++++++++++++--
->  1 file changed, 20 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-> index ee85fa0..68a5840 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-> @@ -372,6 +372,7 @@ struct rockchip_typec_phy {
->         struct reset_control *uphy_rst;
->         struct reset_control *pipe_rst;
->         struct reset_control *tcphy_rst;
-> +       struct reset_control *otg_rst;
->         struct rockchip_usb3phy_port_cfg port_cfgs;
->         /* mutex to protect access to individual PHYs */
->         struct mutex lock;
-> @@ -841,10 +842,16 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
->         if (tcphy->mode == new_mode)
->                 goto unlock_ret;
->
-> +       ret = reset_control_assert(tcphy->otg_rst);
-> +       if (ret < 0) {
-> +               dev_err(tcphy->dev, "failed to assert otg reset: %d\n", ret);
-> +               goto unlock_ret;
-> +       }
-> +
->         if (tcphy->mode == MODE_DISCONNECT) {
->                 ret = tcphy_phy_init(tcphy, new_mode);
->                 if (ret)
-> -                       goto unlock_ret;
-> +                       goto unlock_deassert;
->         }
->
->         /* wait TCPHY for pipe ready */
-> @@ -852,7 +859,7 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
->                 regmap_read(tcphy->grf_regs, reg->offset, &val);
->                 if (!(val & BIT(reg->enable_bit))) {
->                         tcphy->mode |= new_mode & (MODE_DFP_USB | MODE_UFP_USB);
-> -                       goto unlock_ret;
-> +                       goto unlock_deassert;
->                 }
->                 usleep_range(10, 20);
->         }
-> @@ -862,6 +869,11 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
->
->         ret = -ETIMEDOUT;
->
-> +unlock_deassert:
-> +       ret = reset_control_deassert(tcphy->otg_rst);
-> +       if (ret < 0)
-> +               dev_err(tcphy->dev, "failed to deassert otg reset: %d\n", ret);
-> +
->  unlock_ret:
->         mutex_unlock(&tcphy->lock);
->         return ret;
-> @@ -1066,6 +1078,12 @@ static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
->                 return PTR_ERR(tcphy->tcphy_rst);
->         }
->
-> +       tcphy->otg_rst = devm_reset_control_get(dev, "usb3-otg");
-> +       if (IS_ERR(tcphy->otg_rst)) {
-> +               dev_err(dev, "no otg_rst reset control found\n");
-> +               return PTR_ERR(tcphy->otg_rst);
-> +       }
-> +
->         return 0;
->  }
->
-> --
-> 2.0.0
->
->
+On Thu, Jan 18, 2018 at 06:20:09PM +0100, Enric Balletbo Serra wrote:
+> As Brian said commit 06c47e6286d5 'usb: dwc3: of-simple: Add support
+> to get resets for the device' introduced the support to get the resets
+> from dwc3-of-simple and the queued commit 'b7e63d95c14d arm64: dts:
+> rockchip: add reset property for dwc3 controllers on rk3399' started
+> using it. Without the latest I get errors like this doing bind/unbind
+> tests.
+> 
+>    dwc3: probe of fe900000.dwc3 failed with error -110
+> 
+> I just tested these series on top of mainline, I reverted my patch
+> because otherwise two drivers are requesting the same reset and fails,
+> and I did some of the bind/unbind test. They just worked fine, and
+> seems that this is right way, so this makes me think some questions.
 
-Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Actually, this was intended to coexist with DWC3 optionally controlling
+the same reset. It was written before the reset framework was rewritten
+to have shared and exclusive resets. Should this be rewritten to use
+shared resets? We'd have to modify both dwc3 core and the PHY driver.
+
+> Should 'b7e63d95c14d arm64: dts: rockchip: add reset property for dwc3
+> controllers on rk3399' removed for 4.16? That's a question for Heiko I
+> guess, if it's removed we will have usb broken meanwhile these patches
+> doesn't land. If we don't remove the patch we will need to introduce a
+> new patch in this series that reverts the first patch.
+
+If we don't make this shared, I suppose Rockchip should rewrite this
+series and rebase on Heiko's tree, where the DTSI change should just
+remove the reset from DWC3 and add it to the PHY node at the same time.
+That would be an atomic, non-breaking change.
+
+> Is commit 06c47e6286d5 'usb: dwc3: of-simple: Add support to get
+> resets for the device'  really needed ? Seems that I was the only user
+> of it.
+
+I don't personally know the history of this one. I just noticed that you
+started using it to resolve a problem that was implemented differently
+in our downstream tree.
+
+> Anyway, these patches looks good to me and are
+> 
+> Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+
+Awesome.
+
+Brian
