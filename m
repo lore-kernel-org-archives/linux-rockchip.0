@@ -1,55 +1,43 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH] i2c: rk3x: add proper kerneldoc header
-Date: Thu, 18 Jan 2018 00:31:47 +0100
-Message-ID: <20180117233147.ualmz5q2z5eygemx@ninjato>
-References: <20180117231817.26955-1-wsa@the-dreams.de>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v3 01/12] iommu/rockchip: Prohibiat unbind and remove
+Date: Thu, 18 Jan 2018 13:17:52 +0900
+Message-ID: <CAAFQd5B24j6OSStpYWiO-xfhH131mwNRk3=cEBakMpvsEkQ7wg@mail.gmail.com>
+References: <20180117152542.26429-1-jeffy.chen@rock-chips.com> <20180117152542.26429-2-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="uyo6khwj3c6qpdy4"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180117231817.26955-1-wsa@the-dreams.de>
-Sender: linux-i2c-owner@vger.kernel.org
-To: linux-i2c@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180117152542.26429-2-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, Robin Murphy <robin.murphy@arm.com>, simon xue <xxm@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <iommu@lists.linux-foundation.org>Joerg Roedel <joro@8bytes.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Thu, Jan 18, 2018 at 12:25 AM, Jeffy Chen <jeffy.chen@rock-chips.com> wrote:
+> Removal the IOMMUs cannot be done reliably.
 
---uyo6khwj3c6qpdy4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+nit: Perhaps "Removal of IOMMUs"?
 
-On Thu, Jan 18, 2018 at 12:18:17AM +0100, Wolfram Sang wrote:
-> gcc noticed the kerneldoc was wrongly formatted. Fix it!
->=20
-> drivers/i2c/busses/i2c-rk3x.c:164: warning:
->   Cannot understand  * @grf_offset: ...
->   on line 164 - I thought it was a doc line
->=20
-> Signed-off-by: Wolfram Sang <wsa@the-dreams.de>
+>
+> This is similar to exynos iommu driver.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+>
+> Changes in v3:
+> Also remove remove() and module_exit() as Tomasz suggested.
+>
+> Changes in v2: None
+>
+>  drivers/iommu/rockchip-iommu.c | 21 +--------------------
+>  1 file changed, 1 insertion(+), 20 deletions(-)
 
-Applied to for-next, thanks!
+nit: Typo in subject: s/Prohibiat/Prohibit/
 
+Otherwise,
 
---uyo6khwj3c6qpdy4
-Content-Type: application/pgp-signature; name="signature.asc"
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlpf3OMACgkQFA3kzBSg
-Kba90g//dJVqPkmtiRwRbf7nAHiOPxlx+HLhzXOZjAv+txbJR5bnsE06T0m5GMwb
-QVnaaJm/4WgsQ+1UosFgdmgWdgJMsNOCQBk7+YCeWOzevl+hGmSDGVxvpoWRaoW6
-Pl8dtQ7gODCt1eK3BwmJNM8gHH+0UNbfbMe8TlT3/Igri6hOhCunh7nBvWIs/eEB
-2WvjWVgZIIOw4za4uYSBaXysAAqsLAOA6APlOEw7n+RUjiNRRP8ufHbP1EHKWhgU
-PKcWwSzAkzWl7Tg1zuCuS33IZ21ZM7mtjb6Qvmkln3Hh93l3zabBGzF2jo/cTKTx
-iuZJB+IU6YmCG06MnJZhP3d4YHrVf+mYEXEIzOUYMYSWa2c6PYt3ayVtXYwF3Kx1
-pBCjtwZaSRaB3O3foxVJCezMtUkxfL2uy3Av9LXZ2xfvXIggVBiS0U+pVypk/n5H
-GWVnetiU3kEcHhgnFkdsjjBnyn4kfinXZK59nN9SP6gCD4h3mbrZvWwcppACmxqx
-hmH3YS5UYCNOrwd0roxea9KN0yiHtMO4KpqdSK0T5l4/l+WtNGn829NamPrtlAmN
-AH3b3wE4FmLP+xwAPH/h0LTqormgbJWpkKDKJK3Yg3XsaMleWAUDDjEZvfVwjkeI
-UZHnG0bb1BMk/ZmeUK7SY3nRw6Jt0wNOFmMKz3TrFKZbU/zkNdQ=
-=+lFi
------END PGP SIGNATURE-----
-
---uyo6khwj3c6qpdy4--
+Best regards,
+Tomasz
