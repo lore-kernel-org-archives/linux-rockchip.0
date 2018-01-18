@@ -1,82 +1,39 @@
-From: Mirza Krak <mirza.krak@gmail.com>
-Subject: Re: Bad PCM stream after a suspend/resume cycle
-Date: Thu, 18 Jan 2018 09:49:53 +0100
-Message-ID: <CALw8SCV4-6G24B1=kykv65+C7X7OfqY9LKGbZj5Di1s7SFxdVw@mail.gmail.com>
-References: <CALw8SCXUpeUv8433Rd9is6eNd9ztd6soEOoDMkVSLue6qT6wKg@mail.gmail.com>
- <s5h7esnpe3z.wl-tiwai@suse.de>
- <CALw8SCX8XmVeLncD3GNHtt32MW26EGW=XFG=2iuK7vvREzj8Dw@mail.gmail.com>
- <s5hwp0ndkcm.wl-tiwai@suse.de>
- <CALw8SCV8penDHKxTjrg0Z7k6dTFxEq79G8fK74iPz+3vix1fcQ@mail.gmail.com>
- <s5h7esgwmno.wl-tiwai@suse.de>
+From: Claudiu Beznea <Claudiu.Beznea@microchip.com>
+Subject: Re: [PATCH v2 01/16] drivers: pwm: core: use a single of xlate
+ function
+Date: Thu, 18 Jan 2018 11:11:16 +0200
+Message-ID: <b928d56f-8eb6-c23e-99bd-c4089e80f923@microchip.com>
+References: <1515766983-15151-1-git-send-email-claudiu.beznea@microchip.com>
+ <1515766983-15151-2-git-send-email-claudiu.beznea@microchip.com>
+ <20180112183512.GB102880@google.com>
+ <6441df76-fb4a-ce00-1019-f7ff9143b75e@microchip.com>
+ <CAHp75VcaFDEQ1cBzeU2eBj_vf19ok6EWLC07SOTQLRH8BQSbzA@mail.gmail.com>
+ <9a130c0b-572d-be0b-8ac7-596714208d41@microchip.com>
+ <20180117231357.GC112833@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <s5h7esgwmno.wl-tiwai@suse.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Takashi Iwai <tiwai@suse.de>
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <20180117231357.GC112833@google.com>
+Content-Language: en-US
+Sender: linux-pwm-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Jonathan Corbet <corbet@lwn.net>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-pwm@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, devicetree <devicetree@vger.kern>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTcgSmFudWFyeSAyMDE4IGF0IDE2OjA1LCBUYWthc2hpIEl3YWkgPHRpd2FpQHN1c2UuZGU+
-IHdyb3RlOgo+IE9uIFdlZCwgMTcgSmFuIDIwMTggMTU6MDg6MjcgKzAxMDAsCj4gTWlyemEgS3Jh
-ayB3cm90ZToKPj4KPj4gT24gMTIgSmFudWFyeSAyMDE4IGF0IDE5OjA0LCBUYWthc2hpIEl3YWkg
-PHRpd2FpQHN1c2UuZGU+IHdyb3RlOgo+PiA+IE9uIEZyaSwgMTIgSmFuIDIwMTggMTQ6MzY6NDUg
-KzAxMDAsCj4+ID4gTWlyemEgS3JhayB3cm90ZToKPj4gPj4KPj4KPj4gPCBzbmlwID4KPj4KPj4g
-Pgo+PiA+IFRoZSBFQkFERkQgaXMgYWxyZWFkeSBpbmRpY2F0aW5nIGEgZmF0YWwgZXJyb3IsIGFu
-ZCBzb21ldGhpbmcgaXMgd3JvbmcKPj4gPiBpbiB0aGUgZHJpdmVyLiAgQmFzaWNhbGx5IHRoZSBk
-cml2ZXIgc2hvdWxkIHN1c3BlbmQgdGhlIHN0cmVhbSB2aWEKPj4gPiBzbmRfcGNtX3N1c3BlbmQq
-KCkgY2FsbCBpbiB0aGUgUE0gcmVzdW1lIG9wcy4gIE1vc3QgbGlrZWx5IHlvdXIgZHJpdmVyCj4+
-ID4gbWlzc2VzIHRoYXQuCj4+ID4KPj4gPiBUaGF0IHNhaWQsIGl0J3Mgc3BlY2lmaWMgdG8geW91
-ciB1c2luZyBkcml2ZXIsIGFuZCB5b3UnZCBuZWVkIHRvIHRha2UKPj4gPiBhIGxvb2sgYXQgdGhh
-dCBjb2RlIHRoZXJlLgo+Pgo+PiBUaGFuayB5b3UgZm9yIHlvdSBwYXRpZW5jZSB3aXRoIG1lLgo+
-Pgo+PiBJIGhhdmUgbG9va2VkIGZ1cnRoZXIgaW4gdG8gbXkgaGFyZHdhcmUgZHJpdmVycyBhbmQg
-SSBjYW4gbm90IHJlYWxseQo+PiBzZWUgYW55IGZhdWx0cyBoZXJlLgo+Pgo+PiBCdXQgSSBkaWQg
-c29tZSBmdXJ0aGVyIHRlc3RpbmcgYW5kIGFwcGx5aW5nIHRoZSBmb2xsb3dpbmcgZGlmZiBvbgo+
-PiBhcGxheSAicmVzb2x2ZXMiIHRoZSBwcm9ibGVtICh2MS4xLjQgb2YgYWxzYS11dGlscyk6Cj4+
-Cj4+IGRpZmYgLS1naXQgYS9hcGxheS9hcGxheS5jIGIvYXBsYXkvYXBsYXkuYwo+PiBpbmRleCBm
-NzkzYzgyLi4wNDBjZWMxIDEwMDY0NAo+PiAtLS0gYS9hcGxheS9hcGxheS5jCj4+ICsrKyBiL2Fw
-bGF5L2FwbGF5LmMKPj4gQEAgLTIwMjAsNiArMjAyMCw4IEBAIHN0YXRpYyBzc2l6ZV90IHBjbV93
-cml0ZSh1X2NoYXIgKmRhdGEsIHNpemVfdCBjb3VudCkKPj4gICAgICAgICAgICAgICAgIGlmICh0
-ZXN0X3Bvc2l0aW9uKQo+PiAgICAgICAgICAgICAgICAgICAgICAgICBkb190ZXN0X3Bvc2l0aW9u
-KCk7Cj4+ICAgICAgICAgICAgICAgICBpZiAociA9PSAtRUFHQUlOIHx8IChyID49IDAgJiYgKHNp
-emVfdClyIDwgY291bnQpKSB7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIGlmIChzbmRfcGNt
-X3N0YXRlKGhhbmRsZSkgPT0gU05EX1BDTV9TVEFURV9TVVNQRU5ERUQpCj4+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgc3VzcGVuZCgpOwo+PiAgICAgICAgICAgICAgICAgICAgICAg
-ICBpZiAoIXRlc3Rfbm93YWl0KQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNu
-ZF9wY21fd2FpdChoYW5kbGUsIDEwMCk7Cj4+ICAgICAgICAgICAgICAgICB9IGVsc2UgaWYgKHIg
-PT0gLUVQSVBFKSB7Cj4+Cj4+IFdoaWNoIG1lYW5zIHRoYXQgdGhlcmUgaXMgbm8gZXJyb3IgaW4g
-cmVnYXJkIHRvIHN1c3BlbmRpbmcgdGhlIHN0cmVhbQo+PiBhcyBpdCBwcm9wZXJseSByZXBvcnRz
-IHRoaXMgd2hlbiBjaGVja2VkLgo+Pgo+PiBNeSBwcm9ibGVtIGlzIHRoYXQgdGhpcyBjb25kaXRp
-b246Cj4+Cj4+ICAgICAociA+PSAwICYmIChzaXplX3QpciA8IGNvdW50KQo+Pgo+PiBJcyBhbHdh
-eXMgdHJ1ZSBhZnRlciBhIHN1c3BlbmQvcmVzdW1lIGN5Y2xlLiBXaGljaCBub3JtYWxseSBkb2Vz
-IG5vdAo+PiByZXN1bHQgaW4gYSAicmVzdW1lIiBjYWxsIGZyb20gYXBsYXkgbm9yIGZyb20gc25k
-X3BjbV9yZWNvdmVyLCB3aGljaAo+PiBtZWFucyB0aGF0IGl0IHdpbGwgdHJ5IHRvIHdyaXRlIGRh
-dGEgdG8gYSBzdXNwZW5kZWQgc3RyZWFtIHdoaWNoCj4+IHJlc3VsdHMgaW4gLUVCQURGRCBkdWUg
-dG8gdGhpcyAoZnJvbSBhbHNhLWxpYik6Cj4+Cj4+IHNuZF9wY21fc2ZyYW1lc190IHNuZF9wY21f
-d3JpdGVpKHNuZF9wY21fdCAqcGNtLCBjb25zdCB2b2lkICpidWZmZXIsCj4+IHNuZF9wY21fdWZy
-YW1lc190IHNpemUpCj4+IHsKPj4gICAgIDwgc25pcCA+Cj4+Cj4+ICAgICBpZiAoYmFkX3BjbV9z
-dGF0ZShwY20sIFBfU1RBVEVfUlVOTkFCTEUpKQo+PiAgICAgICAgIHJldHVybiAtRUJBREZEOwo+
-PiAgICAgcmV0dXJuIF9zbmRfcGNtX3dyaXRlaShwY20sIGJ1ZmZlciwgc2l6ZSk7Cj4+IH0KPj4K
-Pj4gQmVjYXVzZSBTVVNQRU5ERUQgaXMgbm90IHBhcnQgb2YgdGhlIFBfU1RBVEVfUlVOTkFCTEUs
-IHdoaWNoIG1heWJlIGl0IHNob3VsZCBiZT8KPgo+IE9LLCB0aGF0J3MgYSBidWcgaW4gYWxzYS1s
-aWIsIHRoZW4uICBUaGUgc2FuaXR5IGNoZWNrIGlzIGdvb2QsIGJ1dCBpdAo+IHJldHVybnMgdGhl
-IGluY29uc2lzdGVudCBlcnJvciBjb2RlIHRoYXQgZG9lc24ndCBtYXRjaCB3aXRoIHRoZSBQQ00K
-PiBzdGF0ZS4KPgo+IENvdWxkIHlvdSB0cnkgdGhlIHBhdGNoIGJlbG93PwoKWWVhaCwgdGhlIHBh
-dGNoIHJlc29sdmVkIG15IGlzc3VlcyBhbmQgdGhlIHN0cmVhbSBpcyByZXN1bWVkL3Jlc2V0CmFm
-dGVyIHN1c3BlbmQgcHJvcGVybHkuIFRlc3RlZCB3aXRoIGFwbGF5IGFuZCB3aXRoIGN1c3RvbSBh
-cHBsaWNhdGlvbgp0aGF0IHVzZXMgc25kX3BjbV9yZWNvdmVyIHRvIGhhbmRsZSByZXR1cm4gdmFs
-dWVzIGZyb20gd3JpdGUuCgpZb3UgY2FuIGFkZCBteToKClRlc3RlZC1ieTogTWlyemEgS3JhayA8
-bWlyemEua3Jha0BnbWFpbC5jb20+CgpJZiB5b3UgbGlrZS4KCi0tIApNZWQgVsOkbmxpZ2EgSMOk
-bHNuaW5nYXIgLyBCZXN0IFJlZ2FyZHMKCk1pcnphIEtyYWsKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KQWxzYS1kZXZlbCBtYWlsaW5nIGxpc3QKQWxzYS1k
-ZXZlbEBhbHNhLXByb2plY3Qub3JnCmh0dHA6Ly9tYWlsbWFuLmFsc2EtcHJvamVjdC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9hbHNhLWRldmVsCg==
+
+
+On 18.01.2018 01:14, Brian Norris wrote:
+> On Tue, Jan 16, 2018 at 10:24:59AM +0200, Claudiu Beznea wrote:
+>> Please explain me further. From this I understand, as a general rule,
+>> that the device tree binaries from, e.g. 3 years ago, should be
+>> compatible with, e.g. the current version of kernel?
+> 
+> Yes.
+> 
+> https://www.kernel.org/doc/Documentation/devicetree/bindings/ABI.txt
+> 
+I agree, I found that after some research.
+
+Thanks,
+Claudiu
