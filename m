@@ -1,65 +1,82 @@
-From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 01/12] iommu/rockchip: Prohibiat unbind and remove
-Date: Thu, 18 Jan 2018 16:28:58 +0800
-Message-ID: <5A605ACA.7030207@rock-chips.com>
-References: <20180117152542.26429-1-jeffy.chen@rock-chips.com>
-	<20180117152542.26429-2-jeffy.chen@rock-chips.com>
-	<CAAFQd5B24j6OSStpYWiO-xfhH131mwNRk3=cEBakMpvsEkQ7wg@mail.gmail.com>
+From: Mirza Krak <mirza.krak@gmail.com>
+Subject: Re: Bad PCM stream after a suspend/resume cycle
+Date: Thu, 18 Jan 2018 09:49:53 +0100
+Message-ID: <CALw8SCV4-6G24B1=kykv65+C7X7OfqY9LKGbZj5Di1s7SFxdVw@mail.gmail.com>
+References: <CALw8SCXUpeUv8433Rd9is6eNd9ztd6soEOoDMkVSLue6qT6wKg@mail.gmail.com>
+ <s5h7esnpe3z.wl-tiwai@suse.de>
+ <CALw8SCX8XmVeLncD3GNHtt32MW26EGW=XFG=2iuK7vvREzj8Dw@mail.gmail.com>
+ <s5hwp0ndkcm.wl-tiwai@suse.de>
+ <CALw8SCV8penDHKxTjrg0Z7k6dTFxEq79G8fK74iPz+3vix1fcQ@mail.gmail.com>
+ <s5h7esgwmno.wl-tiwai@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <CAAFQd5B24j6OSStpYWiO-xfhH131mwNRk3=cEBakMpvsEkQ7wg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <s5h7esgwmno.wl-tiwai@suse.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Takashi Iwai <tiwai@suse.de>
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomasz,
-
-Thanks for your reply.
-
-and just found i forgot to add iommu clocks for other rockchip 
-platforms(rk3399 already has that)...will also do that in the next version.
-
-On 01/18/2018 12:17 PM, Tomasz Figa wrote:
-> On Thu, Jan 18, 2018 at 12:25 AM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> Removal the IOMMUs cannot be done reliably.
->
-> nit: Perhaps "Removal of IOMMUs"?
->
-ok
->>
->> This is similar to exynos iommu driver.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->> Changes in v3:
->> Also remove remove() and module_exit() as Tomasz suggested.
->>
->> Changes in v2: None
->>
->>   drivers/iommu/rockchip-iommu.c | 21 +--------------------
->>   1 file changed, 1 insertion(+), 20 deletions(-)
->
-> nit: Typo in subject: s/Prohibiat/Prohibit/
->
-ok, will do that.
-> Otherwise,
->
-> Reviewed-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->
-> Best regards,
-> Tomasz
->
->
->
+T24gMTcgSmFudWFyeSAyMDE4IGF0IDE2OjA1LCBUYWthc2hpIEl3YWkgPHRpd2FpQHN1c2UuZGU+
+IHdyb3RlOgo+IE9uIFdlZCwgMTcgSmFuIDIwMTggMTU6MDg6MjcgKzAxMDAsCj4gTWlyemEgS3Jh
+ayB3cm90ZToKPj4KPj4gT24gMTIgSmFudWFyeSAyMDE4IGF0IDE5OjA0LCBUYWthc2hpIEl3YWkg
+PHRpd2FpQHN1c2UuZGU+IHdyb3RlOgo+PiA+IE9uIEZyaSwgMTIgSmFuIDIwMTggMTQ6MzY6NDUg
+KzAxMDAsCj4+ID4gTWlyemEgS3JhayB3cm90ZToKPj4gPj4KPj4KPj4gPCBzbmlwID4KPj4KPj4g
+Pgo+PiA+IFRoZSBFQkFERkQgaXMgYWxyZWFkeSBpbmRpY2F0aW5nIGEgZmF0YWwgZXJyb3IsIGFu
+ZCBzb21ldGhpbmcgaXMgd3JvbmcKPj4gPiBpbiB0aGUgZHJpdmVyLiAgQmFzaWNhbGx5IHRoZSBk
+cml2ZXIgc2hvdWxkIHN1c3BlbmQgdGhlIHN0cmVhbSB2aWEKPj4gPiBzbmRfcGNtX3N1c3BlbmQq
+KCkgY2FsbCBpbiB0aGUgUE0gcmVzdW1lIG9wcy4gIE1vc3QgbGlrZWx5IHlvdXIgZHJpdmVyCj4+
+ID4gbWlzc2VzIHRoYXQuCj4+ID4KPj4gPiBUaGF0IHNhaWQsIGl0J3Mgc3BlY2lmaWMgdG8geW91
+ciB1c2luZyBkcml2ZXIsIGFuZCB5b3UnZCBuZWVkIHRvIHRha2UKPj4gPiBhIGxvb2sgYXQgdGhh
+dCBjb2RlIHRoZXJlLgo+Pgo+PiBUaGFuayB5b3UgZm9yIHlvdSBwYXRpZW5jZSB3aXRoIG1lLgo+
+Pgo+PiBJIGhhdmUgbG9va2VkIGZ1cnRoZXIgaW4gdG8gbXkgaGFyZHdhcmUgZHJpdmVycyBhbmQg
+SSBjYW4gbm90IHJlYWxseQo+PiBzZWUgYW55IGZhdWx0cyBoZXJlLgo+Pgo+PiBCdXQgSSBkaWQg
+c29tZSBmdXJ0aGVyIHRlc3RpbmcgYW5kIGFwcGx5aW5nIHRoZSBmb2xsb3dpbmcgZGlmZiBvbgo+
+PiBhcGxheSAicmVzb2x2ZXMiIHRoZSBwcm9ibGVtICh2MS4xLjQgb2YgYWxzYS11dGlscyk6Cj4+
+Cj4+IGRpZmYgLS1naXQgYS9hcGxheS9hcGxheS5jIGIvYXBsYXkvYXBsYXkuYwo+PiBpbmRleCBm
+NzkzYzgyLi4wNDBjZWMxIDEwMDY0NAo+PiAtLS0gYS9hcGxheS9hcGxheS5jCj4+ICsrKyBiL2Fw
+bGF5L2FwbGF5LmMKPj4gQEAgLTIwMjAsNiArMjAyMCw4IEBAIHN0YXRpYyBzc2l6ZV90IHBjbV93
+cml0ZSh1X2NoYXIgKmRhdGEsIHNpemVfdCBjb3VudCkKPj4gICAgICAgICAgICAgICAgIGlmICh0
+ZXN0X3Bvc2l0aW9uKQo+PiAgICAgICAgICAgICAgICAgICAgICAgICBkb190ZXN0X3Bvc2l0aW9u
+KCk7Cj4+ICAgICAgICAgICAgICAgICBpZiAociA9PSAtRUFHQUlOIHx8IChyID49IDAgJiYgKHNp
+emVfdClyIDwgY291bnQpKSB7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIGlmIChzbmRfcGNt
+X3N0YXRlKGhhbmRsZSkgPT0gU05EX1BDTV9TVEFURV9TVVNQRU5ERUQpCj4+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgc3VzcGVuZCgpOwo+PiAgICAgICAgICAgICAgICAgICAgICAg
+ICBpZiAoIXRlc3Rfbm93YWl0KQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNu
+ZF9wY21fd2FpdChoYW5kbGUsIDEwMCk7Cj4+ICAgICAgICAgICAgICAgICB9IGVsc2UgaWYgKHIg
+PT0gLUVQSVBFKSB7Cj4+Cj4+IFdoaWNoIG1lYW5zIHRoYXQgdGhlcmUgaXMgbm8gZXJyb3IgaW4g
+cmVnYXJkIHRvIHN1c3BlbmRpbmcgdGhlIHN0cmVhbQo+PiBhcyBpdCBwcm9wZXJseSByZXBvcnRz
+IHRoaXMgd2hlbiBjaGVja2VkLgo+Pgo+PiBNeSBwcm9ibGVtIGlzIHRoYXQgdGhpcyBjb25kaXRp
+b246Cj4+Cj4+ICAgICAociA+PSAwICYmIChzaXplX3QpciA8IGNvdW50KQo+Pgo+PiBJcyBhbHdh
+eXMgdHJ1ZSBhZnRlciBhIHN1c3BlbmQvcmVzdW1lIGN5Y2xlLiBXaGljaCBub3JtYWxseSBkb2Vz
+IG5vdAo+PiByZXN1bHQgaW4gYSAicmVzdW1lIiBjYWxsIGZyb20gYXBsYXkgbm9yIGZyb20gc25k
+X3BjbV9yZWNvdmVyLCB3aGljaAo+PiBtZWFucyB0aGF0IGl0IHdpbGwgdHJ5IHRvIHdyaXRlIGRh
+dGEgdG8gYSBzdXNwZW5kZWQgc3RyZWFtIHdoaWNoCj4+IHJlc3VsdHMgaW4gLUVCQURGRCBkdWUg
+dG8gdGhpcyAoZnJvbSBhbHNhLWxpYik6Cj4+Cj4+IHNuZF9wY21fc2ZyYW1lc190IHNuZF9wY21f
+d3JpdGVpKHNuZF9wY21fdCAqcGNtLCBjb25zdCB2b2lkICpidWZmZXIsCj4+IHNuZF9wY21fdWZy
+YW1lc190IHNpemUpCj4+IHsKPj4gICAgIDwgc25pcCA+Cj4+Cj4+ICAgICBpZiAoYmFkX3BjbV9z
+dGF0ZShwY20sIFBfU1RBVEVfUlVOTkFCTEUpKQo+PiAgICAgICAgIHJldHVybiAtRUJBREZEOwo+
+PiAgICAgcmV0dXJuIF9zbmRfcGNtX3dyaXRlaShwY20sIGJ1ZmZlciwgc2l6ZSk7Cj4+IH0KPj4K
+Pj4gQmVjYXVzZSBTVVNQRU5ERUQgaXMgbm90IHBhcnQgb2YgdGhlIFBfU1RBVEVfUlVOTkFCTEUs
+IHdoaWNoIG1heWJlIGl0IHNob3VsZCBiZT8KPgo+IE9LLCB0aGF0J3MgYSBidWcgaW4gYWxzYS1s
+aWIsIHRoZW4uICBUaGUgc2FuaXR5IGNoZWNrIGlzIGdvb2QsIGJ1dCBpdAo+IHJldHVybnMgdGhl
+IGluY29uc2lzdGVudCBlcnJvciBjb2RlIHRoYXQgZG9lc24ndCBtYXRjaCB3aXRoIHRoZSBQQ00K
+PiBzdGF0ZS4KPgo+IENvdWxkIHlvdSB0cnkgdGhlIHBhdGNoIGJlbG93PwoKWWVhaCwgdGhlIHBh
+dGNoIHJlc29sdmVkIG15IGlzc3VlcyBhbmQgdGhlIHN0cmVhbSBpcyByZXN1bWVkL3Jlc2V0CmFm
+dGVyIHN1c3BlbmQgcHJvcGVybHkuIFRlc3RlZCB3aXRoIGFwbGF5IGFuZCB3aXRoIGN1c3RvbSBh
+cHBsaWNhdGlvbgp0aGF0IHVzZXMgc25kX3BjbV9yZWNvdmVyIHRvIGhhbmRsZSByZXR1cm4gdmFs
+dWVzIGZyb20gd3JpdGUuCgpZb3UgY2FuIGFkZCBteToKClRlc3RlZC1ieTogTWlyemEgS3JhayA8
+bWlyemEua3Jha0BnbWFpbC5jb20+CgpJZiB5b3UgbGlrZS4KCi0tIApNZWQgVsOkbmxpZ2EgSMOk
+bHNuaW5nYXIgLyBCZXN0IFJlZ2FyZHMKCk1pcnphIEtyYWsKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KQWxzYS1kZXZlbCBtYWlsaW5nIGxpc3QKQWxzYS1k
+ZXZlbEBhbHNhLXByb2plY3Qub3JnCmh0dHA6Ly9tYWlsbWFuLmFsc2EtcHJvamVjdC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9hbHNhLWRldmVsCg==
