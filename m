@@ -1,42 +1,46 @@
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 0/3] Use of_clk_get_parent_count() instead of open coding
-Date: Fri, 19 Jan 2018 16:18:18 +0100
-Message-ID: <1516375101-29836-1-git-send-email-geert+renesas@glider.be>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-clk@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: phy: phy-rockchip-typec: add usb3 otg
+ reset
+Date: Fri, 19 Jan 2018 15:49:16 -0600
+Message-ID: <20180119214916.fegrzgcmbbdiesyz@rob-hp-laptop>
+References: <1515751704-13213-1-git-send-email-william.wu@rock-chips.com>
+ <1515751704-13213-2-git-send-email-william.wu@rock-chips.com>
+ <20180117220715.GA112833@google.com>
+ <CAFqH_52KiHQzEeaX5rFN66pMqAuVVKeWJhxnS5L4hY4XiVG8mw@mail.gmail.com>
+ <20180118174748.GA63108@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180118174748.GA63108@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Enric Balletbo Serra <eballetbo@gmail.com>, William Wu <william.wu@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Frank Wang <frank.wang@rock-chips.com>, huangtao@rock-chips.com, Doug Anderson <dianders@google.com>, Guenter Roeck <groeck@google.com>, daniel.meng@rock-chips.com, John.Youn@synopsys.com, lin.huang@rock-chips.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-	Hi all,
+On Thu, Jan 18, 2018 at 09:47:50AM -0800, Brian Norris wrote:
+> On Thu, Jan 18, 2018 at 06:20:09PM +0100, Enric Balletbo Serra wrote:
+> > As Brian said commit 06c47e6286d5 'usb: dwc3: of-simple: Add support
+> > to get resets for the device' introduced the support to get the resets
+> > from dwc3-of-simple and the queued commit 'b7e63d95c14d arm64: dts:
+> > rockchip: add reset property for dwc3 controllers on rk3399' started
+> > using it. Without the latest I get errors like this doing bind/unbind
+> > tests.
+> > 
+> >    dwc3: probe of fe900000.dwc3 failed with error -110
+> > 
+> > I just tested these series on top of mainline, I reverted my patch
+> > because otherwise two drivers are requesting the same reset and fails,
+> > and I did some of the bind/unbind test. They just worked fine, and
+> > seems that this is right way, so this makes me think some questions.
+> 
+> Actually, this was intended to coexist with DWC3 optionally controlling
+> the same reset. It was written before the reset framework was rewritten
+> to have shared and exclusive resets. Should this be rewritten to use
+> shared resets? We'd have to modify both dwc3 core and the PHY driver.
 
-This patch series replaces open-coded versions of
-of_clk_get_parent_count() by calls to the helper function.
+Seems like abuse of DT to me. If you need to control the controller's 
+reset from the phy driver, then get the reset out of the controller 
+node. The phy node should describe the connections to the phy.
 
-These patches are independent, so they can be applied where appropriate.
-Thanks!
-
-Geert Uytterhoeven (3):
-  pinctrl: sunxi: Use of_clk_get_parent_count() instead of open coding
-  soc: rockchip: power-domain: Use of_clk_get_parent_count() instead of
-    open coding
-  soc/tegra: pmc: Use of_clk_get_parent_count() instead of open coding
-
- drivers/pinctrl/sunxi/pinctrl-sunxi.c | 3 ++-
- drivers/soc/rockchip/pm_domains.c     | 3 ++-
- drivers/soc/tegra/pmc.c               | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
-
--- 
-2.7.4
-
-Gr{oetje,eeting}s,
-
-						Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-							    -- Linus Torvalds
+Rob
