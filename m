@@ -1,46 +1,42 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/3] dt-bindings: phy: phy-rockchip-typec: add usb3 otg
- reset
-Date: Fri, 19 Jan 2018 15:49:16 -0600
-Message-ID: <20180119214916.fegrzgcmbbdiesyz@rob-hp-laptop>
-References: <1515751704-13213-1-git-send-email-william.wu@rock-chips.com>
- <1515751704-13213-2-git-send-email-william.wu@rock-chips.com>
- <20180117220715.GA112833@google.com>
- <CAFqH_52KiHQzEeaX5rFN66pMqAuVVKeWJhxnS5L4hY4XiVG8mw@mail.gmail.com>
- <20180118174748.GA63108@google.com>
+Subject: Re: [PATCH v2 02/16] pwm: pxa: update documentation regarding
+ pwm-cells
+Date: Fri, 19 Jan 2018 16:30:24 -0600
+Message-ID: <20180119223024.m5kuc6467xmgkgac@rob-hp-laptop>
+References: <1515766983-15151-1-git-send-email-claudiu.beznea@microchip.com>
+ <1515766983-15151-3-git-send-email-claudiu.beznea@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-pwm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180118174748.GA63108@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>, William Wu <william.wu@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Frank Wang <frank.wang@rock-chips.com>, huangtao@rock-chips.com, Doug Anderson <dianders@google.com>, Guenter Roeck <groeck@google.com>, daniel.meng@rock-chips.com, John.Youn@synopsys.com, lin.huang@rock-chips.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+In-Reply-To: <1515766983-15151-3-git-send-email-claudiu.beznea@microchip.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Claudiu Beznea <claudiu.beznea@microchip.com>
+Cc: thierry.reding@gmail.com, mark.rutland@arm.com, linux@armlinux.org.uk, daniel@zonque.org, haojian.zhuang@gmail.com, robert.jarzmik@free.fr, corbet@lwn.net, nicolas.ferre@microchip.com, alexandre.belloni@free-electrons.com, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, devicetree@vger.kernel.org, Mike Dunn <mikedunn@newsguy.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 18, 2018 at 09:47:50AM -0800, Brian Norris wrote:
-> On Thu, Jan 18, 2018 at 06:20:09PM +0100, Enric Balletbo Serra wrote:
-> > As Brian said commit 06c47e6286d5 'usb: dwc3: of-simple: Add support
-> > to get resets for the device' introduced the support to get the resets
-> > from dwc3-of-simple and the queued commit 'b7e63d95c14d arm64: dts:
-> > rockchip: add reset property for dwc3 controllers on rk3399' started
-> > using it. Without the latest I get errors like this doing bind/unbind
-> > tests.
-> > 
-> >    dwc3: probe of fe900000.dwc3 failed with error -110
-> > 
-> > I just tested these series on top of mainline, I reverted my patch
-> > because otherwise two drivers are requesting the same reset and fails,
-> > and I did some of the bind/unbind test. They just worked fine, and
-> > seems that this is right way, so this makes me think some questions.
+On Fri, Jan 12, 2018 at 04:22:49PM +0200, Claudiu Beznea wrote:
+> pwm-cells should be at least 2 to provide channel number and period value.
 > 
-> Actually, this was intended to coexist with DWC3 optionally controlling
-> the same reset. It was written before the reset framework was rewritten
-> to have shared and exclusive resets. Should this be rewritten to use
-> shared resets? We'd have to modify both dwc3 core and the PHY driver.
+> Cc: Mike Dunn <mikedunn@newsguy.com>
+> Signed-off-by: Claudiu Beznea <claudiu.beznea@microchip.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/pxa-pwm.txt | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/pxa-pwm.txt b/Documentation/devicetree/bindings/pwm/pxa-pwm.txt
+> index 5ae9f1e3c338..a0e20edeeebc 100644
+> --- a/Documentation/devicetree/bindings/pwm/pxa-pwm.txt
+> +++ b/Documentation/devicetree/bindings/pwm/pxa-pwm.txt
+> @@ -10,7 +10,7 @@ Required properties:
+>    Note that one device instance must be created for each PWM that is used, so the
+>    length covers only the register window for one PWM output, not that of the
+>    entire PWM controller.  Currently length is 0x10 for all supported devices.
+> -- #pwm-cells: Should be 1.  This cell is used to specify the period in
+> +- #pwm-cells: Should be 2.  This cell is used to specify the period in
+>    nanoseconds.
 
-Seems like abuse of DT to me. If you need to control the controller's 
-reset from the phy driver, then get the reset out of the controller 
-node. The phy node should describe the connections to the phy.
+What's the new cell? channel? Does the PXA PWM have more than one 
+channel? If not, then you shouldn't add a cell.
 
 Rob
