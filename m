@@ -1,99 +1,55 @@
-From: Philippe Cornu <philippe.cornu@st.com>
-Subject: [PATCH] drm/bridge/synopsys: dsi: Add 1.31 version support
-Date: Mon, 22 Jan 2018 16:08:19 +0100
-Message-ID: <20180122150819.22066-1-philippe.cornu@st.com>
+From: =?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>
+Subject: [PATCH] rock64: dts: fix gmac2io stability issues
+Date: Mon, 22 Jan 2018 18:46:22 +0100
+Message-ID: <20180122174628.15613-1-ayufan@ayufan.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: =?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>, "David S. Miller" <davem@davemloft.net>, Joseph Chen <chenjh@rock-chips.com>, Liang Chen <cl@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogUGhpbGlwcGUgQ09STlUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4KCkFkZCBzdXBwb3J0
-IGZvciB0aGUgU3lub3BzeXMgRGVzaWduV2FyZSBNSVBJIERTSSB2ZXJzaW9uIDEuMzEKVHdvIHJl
-Z2lzdGVycyBuZWVkIHRvIGJlIHVwZGF0ZWQvYWRkZWQgZm9yIHN1cHBvcnRpbmcgMS4zMToKKiBQ
-SFlfVE1SX0NGRyAweDljICh1cGRhdGVkKQogIDEuMzAgWzMxOjI0XSBwaHlfaHMybHBfdGltZQog
-ICAgICAgWzIzOjE2XSBwaHlfbHAyaHNfdGltZQogICAgICAgWzE0OiAwXSBtYXhfcmRfdGltZQoK
-ICAxLjMxIFsyNToxNl0gcGh5X2hzMmxwX3RpbWUKICAgICAgIFsgOTogMF0gcGh5X2xwMmhzX3Rp
-bWUKCiogUEhZX1RNUl9SRF9DRkcgMHhmNCAobmV3KQogIDEuMzEgWzE0OiAwXSBtYXhfcmRfdGlt
-ZQoKU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4K
-LS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCA1MiAr
-KysrKysrKysrKysrKysrKysrKysrKy0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA0NiBpbnNlcnRpb25z
-KCspLCA2IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-c3lub3BzeXMvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMv
-ZHctbWlwaS1kc2kuYwppbmRleCA3MzVmMzg0MjljMDYuLjIwYTJjYTE0YTdhZCAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCisrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwpAQCAtMjUsNyArMjUs
-MTMgQEAKICNpbmNsdWRlIDxkcm0vYnJpZGdlL2R3X21pcGlfZHNpLmg+CiAjaW5jbHVkZSA8dmlk
-ZW8vbWlwaV9kaXNwbGF5Lmg+CiAKKyNkZWZpbmUgSFdWRVJfMTMwCQkJMHgzMTMzMzAwMAkvKiBJ
-UCB2ZXJzaW9uIDEuMzAgKi8KKyNkZWZpbmUgSFdWRVJfMTMxCQkJMHgzMTMzMzEwMAkvKiBJUCB2
-ZXJzaW9uIDEuMzEgKi8KKyNkZWZpbmUgSFdWRVJfT0xERVNUCQkJSFdWRVJfMTMwCisjZGVmaW5l
-IEhXVkVSX05FV0VTVAkJCUhXVkVSXzEzMQorCiAjZGVmaW5lIERTSV9WRVJTSU9OCQkJMHgwMAor
-I2RlZmluZSBWRVJTSU9OCQkJCUdFTk1BU0soMzEsIDgpCiAKICNkZWZpbmUgRFNJX1BXUl9VUAkJ
-CTB4MDQKICNkZWZpbmUgUkVTRVQJCQkJMApAQCAtMTYxLDExICsxNjcsMTIgQEAKICNkZWZpbmUg
-UEhZX0NMS0hTMkxQX1RJTUUobGJjYykJCSgoKGxiY2MpICYgMHgzZmYpIDw8IDE2KQogI2RlZmlu
-ZSBQSFlfQ0xLTFAySFNfVElNRShsYmNjKQkJKChsYmNjKSAmIDB4M2ZmKQogCi0vKiBUT0RPIE5l
-eHQgcmVnaXN0ZXIgaXMgc2xpZ2h0bHkgZGlmZmVyZW50IGJldHdlZW4gMS4zMCAmIDEuMzEgSVAg
-dmVyc2lvbiAqLwogI2RlZmluZSBEU0lfUEhZX1RNUl9DRkcJCQkweDljCi0jZGVmaW5lIFBIWV9I
-UzJMUF9USU1FKGxiY2MpCQkoKChsYmNjKSAmIDB4ZmYpIDw8IDI0KQotI2RlZmluZSBQSFlfTFAy
-SFNfVElNRShsYmNjKQkJKCgobGJjYykgJiAweGZmKSA8PCAxNikKLSNkZWZpbmUgTUFYX1JEX1RJ
-TUUobGJjYykJCSgobGJjYykgJiAweDdmZmYpCisjZGVmaW5lIFBIWV9IUzJMUF9USU1FX1YxMzAo
-bGJjYykJKCgobGJjYykgJiAweGZmKSA8PCAyNCkKKyNkZWZpbmUgUEhZX0xQMkhTX1RJTUVfVjEz
-MChsYmNjKQkoKChsYmNjKSAmIDB4ZmYpIDw8IDE2KQorI2RlZmluZSBNQVhfUkRfVElNRV9WMTMw
-KGxiY2MpCQkoKGxiY2MpICYgMHg3ZmZmKQorI2RlZmluZSBQSFlfSFMyTFBfVElNRV9WMTMxKGxi
-Y2MpCSgoKGxiY2MpICYgMHgzZmYpIDw8IDE2KQorI2RlZmluZSBQSFlfTFAySFNfVElNRV9WMTMx
-KGxiY2MpCSgobGJjYykgJiAweDNmZikKIAogI2RlZmluZSBEU0lfUEhZX1JTVFoJCQkweGEwCiAj
-ZGVmaW5lIFBIWV9ESVNGT1JDRVBMTAkJCTAKQEAgLTIwNCw3ICsyMTEsOSBAQAogI2RlZmluZSBE
-U0lfSU5UX1NUMQkJCTB4YzAKICNkZWZpbmUgRFNJX0lOVF9NU0swCQkJMHhjNAogI2RlZmluZSBE
-U0lfSU5UX01TSzEJCQkweGM4CisKICNkZWZpbmUgRFNJX1BIWV9UTVJfUkRfQ0ZHCQkweGY0Cisj
-ZGVmaW5lIE1BWF9SRF9USU1FX1YxMzEobGJjYykJCSgobGJjYykgJiAweDdmZmYpCiAKICNkZWZp
-bmUgUEhZX1NUQVRVU19USU1FT1VUX1VTCQkxMDAwMAogI2RlZmluZSBDTURfUEtUX1NUQVRVU19U
-SU1FT1VUX1VTCTIwMDAwCkBAIC0yMTUsNiArMjI0LDcgQEAgc3RydWN0IGR3X21pcGlfZHNpIHsK
-IAlzdHJ1Y3QgZHJtX2JyaWRnZSAqcGFuZWxfYnJpZGdlOwogCXN0cnVjdCBkZXZpY2UgKmRldjsK
-IAl2b2lkIF9faW9tZW0gKmJhc2U7CisJdTMyIGh3X3ZlcnNpb247CiAKIAlzdHJ1Y3QgY2xrICpw
-Y2xrOwogCXN0cnVjdCBjbGsgKnB4X2NsazsKQEAgLTYxNiw4ICs2MjYsMTQgQEAgc3RhdGljIHZv
-aWQgZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNp
-KQogCSAqIG5vdGU6IERTSV9QSFlfVE1SX0NGRy5NQVhfUkRfVElNRSBzaG91bGQgYmUgaW4gbGlu
-ZSB3aXRoCiAJICogRFNJX0NNRF9NT0RFX0NGRy5NQVhfUkRfUEtUX1NJWkVfTFAgKHNlZSBDTURf
-TU9ERV9BTExfTFApCiAJICovCi0JZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UTVJfQ0ZHLCBQSFlf
-SFMyTFBfVElNRSgweDQwKQotCQkgIHwgUEhZX0xQMkhTX1RJTUUoMHg0MCkgfCBNQVhfUkRfVElN
-RSgxMDAwMCkpOworCWlmIChkc2ktPmh3X3ZlcnNpb24gPT0gSFdWRVJfMTMxKSB7CisJCWRzaV93
-cml0ZShkc2ksIERTSV9QSFlfVE1SX0NGRywgUEhZX0hTMkxQX1RJTUVfVjEzMSgweDQwKSB8CisJ
-CQkgIFBIWV9MUDJIU19USU1FX1YxMzEoMHg0MCkpOworCQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZ
-X1RNUl9SRF9DRkcsIE1BWF9SRF9USU1FX1YxMzEoMTAwMDApKTsKKwl9IGVsc2UgeworCQlkc2lf
-d3JpdGUoZHNpLCBEU0lfUEhZX1RNUl9DRkcsIFBIWV9IUzJMUF9USU1FX1YxMzAoMHg0MCkgfAor
-CQkJICBQSFlfTFAySFNfVElNRV9WMTMwKDB4NDApIHwgTUFYX1JEX1RJTUVfVjEzMCgxMDAwMCkp
-OworCX0KIAogCWRzaV93cml0ZShkc2ksIERTSV9QSFlfVE1SX0xQQ0xLX0NGRywgUEhZX0NMS0hT
-MkxQX1RJTUUoMHg0MCkKIAkJICB8IFBIWV9DTEtMUDJIU19USU1FKDB4NDApKTsKQEAgLTc5MSw2
-ICs4MDcsMjggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGR3X21pcGlf
-ZHNpX2JyaWRnZV9mdW5jcyA9IHsKIAkuYXR0YWNoCSAgICAgID0gZHdfbWlwaV9kc2lfYnJpZGdl
-X2F0dGFjaCwKIH07CiAKK3N0YXRpYyB2b2lkIGRzaV9nZXRfdmVyc2lvbihzdHJ1Y3QgZHdfbWlw
-aV9kc2kgKmRzaSkKK3sKKwl1MzIgaHdfdmVyc2lvbjsKKworCWNsa19wcmVwYXJlX2VuYWJsZShk
-c2ktPnBjbGspOworCWh3X3ZlcnNpb24gPSBkc2lfcmVhZChkc2ksIERTSV9WRVJTSU9OKSAmIFZF
-UlNJT047CisJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGNsayk7CisKKwlpZiAoaHdfdmVy
-c2lvbiA+IEhXVkVSX05FV0VTVCkgeworCQlEUk1fREVCVUcoImh3IHZlcnNpb246IHVzZSAweCUw
-OHggZm9yIHRoaXMgcmVjZW50IDB4JTA4eFxuIiwKKwkJCSAgSFdWRVJfTkVXRVNULCBod192ZXJz
-aW9uKTsKKwkJaHdfdmVyc2lvbiA9IEhXVkVSX05FV0VTVDsKKworCX0gZWxzZSBpZiAoaHdfdmVy
-c2lvbiA8IEhXVkVSX09MREVTVCkgeworCQlEUk1fREVCVUcoImh3IHZlcnNpb246IHVzZSAweCUw
-OHggZm9yIHRoaXMgb2xkIDB4JTA4eFxuIiwKKwkJCSAgSFdWRVJfT0xERVNULCBod192ZXJzaW9u
-KTsKKwkJaHdfdmVyc2lvbiA9IEhXVkVSX09MREVTVDsKKwl9CisKKwlkc2ktPmh3X3ZlcnNpb24g
-PSBod192ZXJzaW9uOworfQorCiBzdGF0aWMgc3RydWN0IGR3X21pcGlfZHNpICoKIF9fZHdfbWlw
-aV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKIAkJICAgIGNvbnN0IHN0
-cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKQEAgLTg3MCw2ICs5MDgsOCBA
-QCBfX2R3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCiAJCWNs
-a19kaXNhYmxlX3VucHJlcGFyZShkc2ktPnBjbGspOwogCX0KIAorCWRzaV9nZXRfdmVyc2lvbihk
-c2kpOworCiAJcG1fcnVudGltZV9lbmFibGUoZGV2KTsKIAogCWRzaS0+ZHNpX2hvc3Qub3BzID0g
-JmR3X21pcGlfZHNpX2hvc3Rfb3BzOwotLSAKMi4xNS4xCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This commit enables thresh dma mode as this forces to disable checksuming,
+and chooses delay values which make the interface stable.
+
+These changes are needed, because ROCK64 is faced with two problems:
+1. tx checksuming does not work with packets larger than 1498,
+2. the default delays for tx/rx are not stable when using 1Gbps connection.
+
+Delays were found out with:
+https://github.com/ayufan-rock64/linux-build/tree/master/recipes/gmac-delays-test
+
+Change-Id: Ie894df4b52122988da683c02e3a05d635a5c7b84
+Signed-off-by: Kamil Trzciński <ayufan@ayufan.eu>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 5602ec01fed9..bcc0bb35d840 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -132,8 +132,6 @@
+ 	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+ 	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+ 	clock_in_out = "input";
+-	/* shows instability at 1GBit right now */
+-	max-speed = <100>;
+ 	phy-supply = <&vcc_io>;
+ 	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+@@ -141,8 +139,9 @@
+ 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+-	tx_delay = <0x26>;
+-	rx_delay = <0x11>;
++	snps,force_thresh_dma_mode;
++	tx_delay = <0x24>;
++	rx_delay = <0x18>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.14.1
