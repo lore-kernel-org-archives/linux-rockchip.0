@@ -1,51 +1,28 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add roc-rk3328-cc board
-Date: Mon, 22 Jan 2018 11:40:47 +0100
-Message-ID: <1977166.SIloaIvObo@phil>
-References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180120095404.32117-1-djw@t-chip.com.cn>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 02/40] drm/rockchip: support prime import sg table
+Date: Mon, 22 Jan 2018 11:44:06 +0100
+Message-ID: <1548424.6SePbG5DsY@phil>
+References: <20180115171614.14474-1-thierry.escande@collabora.com> <20180115171614.14474-3-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180120095404.32117-1-djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180115171614.14474-3-thierry.escande@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Haixia Shi <hshi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Levin,
-
-Am Samstag, 20. Januar 2018, 17:54:04 CET schrieb djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org:
-> From: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Am Montag, 15. Januar 2018, 18:15:36 CET schrieb Thierry Escande:
+> From: Haixia Shi <hshi@chromium.org>
 > 
-> Hi all,
->   This version uses SPDX license tag.
+> The prime fd to handle ioctl was not used with rockchip before. Support
+> was added in order to pass graphics_Gbm and to support potential uses
+> within Chrome OS (e.g. zero-copy video decode, camera).
 > 
-> The roc-rk3328-cc is a credit card size single board computer using the
-> Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
-> up to 2GB 2133MHz LPDDR4 memory. It provides eMMC module socket, MicroSD
-> Card slot, USB 2.0/3.0, Gigabit Ethernet, HDMI/CVBS, Infrared Receiver,
-> SPDIF/I2S, and SPI/I2C/UART/PWM interfaces.
-> 
-> The devicetree currently supports basic peripherals.
-> 
-> Signed-off-by: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+> Signed-off-by: Haixia Shi <hshi@chromium.org>
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 
-> +&i2c1 {
-> +	status = "okay";
-> +
-> +	rk805: rk805@18 {
-
-As noted by Rob in his review, this should be
-	rk805: pmic@18 {
-
-While I'd normally just change that myself when applying it looks like
-you also got comments from Andy to address, so you could change this too.
-
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On rk3036 + lima and rk3328 + lima
+Tested-by: Heiko Stuebner <heiko@sntech.de>
