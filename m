@@ -1,44 +1,51 @@
-From: Philippe Cornu <philippe.cornu@st.com>
-Subject: [PATCH] drm/bridge/synopsys: dsi: Adopt SPDX identifiers
-Date: Mon, 22 Jan 2018 11:26:08 +0100
-Message-ID: <20180122102608.12565-1-philippe.cornu@st.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add roc-rk3328-cc board
+Date: Mon, 22 Jan 2018 11:40:47 +0100
+Message-ID: <1977166.SIloaIvObo@phil>
+References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180120095404.32117-1-djw@t-chip.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180120095404.32117-1-djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIFNQRFggaWRlbnRpZmllcnMgdG8gdGhlIFN5bm9wc3lzIERlc2lnbldhcmUgTUlQSSBEU0kK
-aG9zdCBjb250cm9sbGVyIGRyaXZlci4KClNpZ25lZC1vZmYtYnk6IFBoaWxpcHBlIENvcm51IDxw
-aGlsaXBwZS5jb3JudUBzdC5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
-cy9kdy1taXBpLWRzaS5jIHwgNiArLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
-KSwgNSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
-bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
-LW1pcGktZHNpLmMKaW5kZXggNDZiMGU3MzQwNGQxLi5lMDY4MzZkZWM3N2MgMTAwNjQ0Ci0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYworKysgYi9kcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKQEAgLTEsMTIgKzEsOCBA
-QAorLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAKIC8qCiAgKiBDb3B5cmlnaHQg
-KGMpIDIwMTYsIEZ1emhvdSBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4sIEx0ZAogICogQ29weXJp
-Z2h0IChDKSBTVE1pY3JvZWxlY3Ryb25pY3MgU0EgMjAxNwogICoKLSAqIFRoaXMgcHJvZ3JhbSBp
-cyBmcmVlIHNvZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IgbW9kaWZ5Ci0g
-KiBpdCB1bmRlciB0aGUgdGVybXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGFz
-IHB1Ymxpc2hlZCBieQotICogdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbjsgZWl0aGVyIHZl
-cnNpb24gMiBvZiB0aGUgTGljZW5zZSwgb3IKLSAqIChhdCB5b3VyIG9wdGlvbikgYW55IGxhdGVy
-IHZlcnNpb24uCi0gKgogICogTW9kaWZpZWQgYnkgUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNv
-cm51QHN0LmNvbT4KICAqIFRoaXMgZ2VuZXJpYyBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJ
-IGhvc3QgZHJpdmVyIGlzIGJhc2VkIG9uIHRoZQogICogUm9ja2NoaXAgdmVyc2lvbiBmcm9tIHJv
-Y2tjaGlwL2R3LW1pcGktZHNpLmMgd2l0aCBwaHkgJiBicmlkZ2UgQVBJcy4KLS0gCjIuMTUuMQoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Levin,
+
+Am Samstag, 20. Januar 2018, 17:54:04 CET schrieb djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org:
+> From: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+> 
+> Hi all,
+>   This version uses SPDX license tag.
+> 
+> The roc-rk3328-cc is a credit card size single board computer using the
+> Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
+> up to 2GB 2133MHz LPDDR4 memory. It provides eMMC module socket, MicroSD
+> Card slot, USB 2.0/3.0, Gigabit Ethernet, HDMI/CVBS, Infrared Receiver,
+> SPDIF/I2S, and SPI/I2C/UART/PWM interfaces.
+> 
+> The devicetree currently supports basic peripherals.
+> 
+> Signed-off-by: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+
+> +&i2c1 {
+> +	status = "okay";
+> +
+> +	rk805: rk805@18 {
+
+As noted by Rob in his review, this should be
+	rk805: pmic@18 {
+
+While I'd normally just change that myself when applying it looks like
+you also got comments from Andy to address, so you could change this too.
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
