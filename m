@@ -1,85 +1,69 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v1 2/2] drm/bridge/synopsys: dsi: Add a warning msg on dsi
- read operations
-Date: Tue, 23 Jan 2018 13:28:20 -0800
-Message-ID: <CA+ASDXPJ9uPDwRhP2WbazjeT6o=6L0ttffWXjwjkD3KxB+1cuQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] drm/bridge/synopsys: dsi: Fix dsi_host_transfer()
+ return value
+Date: Tue, 23 Jan 2018 13:38:25 -0800
+Message-ID: <CA+ASDXNDpmVdARLCD-A6nfADgmomuscpwekb8M-j=MFJhpeC4Q@mail.gmail.com>
 References: <20180123142618.28384-1-philippe.cornu@st.com>
- <20180123142618.28384-3-philippe.cornu@st.com>
+ <20180123142618.28384-2-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180123142618.28384-3-philippe.cornu@st.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180123142618.28384-2-philippe.cornu@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Philippe Cornu <philippe.cornu@st.com>
-Cc: linux-arm-kernel@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Archit Taneja <architt@codeaurora.org>, Heiko Stubner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, Yannick Fertre <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>
+Cc: linux-arm-kernel@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Yannick Fertre <yannick.fertre@st.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Philippe,
-
-I see you sent this out already today, while I only just responded
-(late) to your questions about it... oh well :)
-
-On Tue, Jan 23, 2018 at 6:26 AM, Philippe Cornu <philippe.cornu@st.com> wrote:
-> The DCS/GENERIC DSI read feature is not yet implemented so it
-> is important to warn the host_transfer() caller in case of
-> read operation requests.
->
-> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index 096cf5e5bb30..e46ddff8601c 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -417,7 +417,14 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
->         if (ret)
->                 return ret;
->
-> -       nb_bytes = packet.size;
-> +       if (msg->rx_buf && msg->rx_len > 0) {
-
-It feels like you should do this check *before* you start writing
-anything. It's possible to have a combination TX/RX command, and it
-would be counterintuitive to only do half the operation then return
-with an argument error.
-
-> +               /* TODO dw drv improvements: implement read feature */
-> +               dev_warn(dsi->dev, "read operations not yet implemented\n");
-> +               return -EPERM;
-
-I'm not sure -EPERM is right. Feels like -EINVAL, -ENOSYS, or
--EOPNOTSUPP. I think -ENOSYS actually has been abused somewhat, so
-maybe one of the other two.
-
-> +
-
-Spurious blank line?
-
-> +       } else {
-> +               nb_bytes = packet.size;
-> +       }
-
-You don't actually need to put this sort of thing in the 'else' case.
-The other branch is an error-handling case, which definitely 'return's
-early, and it's pretty standard coding style to avoid indenting the
-"good" path like this.
-
-Brian
-
->
->         return nb_bytes;
->  }
-> --
-> 2.15.1
->
+SGkgUGhpbGlwcGUsCgpPbiBUdWUsIEphbiAyMywgMjAxOCBhdCA2OjI2IEFNLCBQaGlsaXBwZSBD
+b3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPiB3cm90ZToKPiBUaGUgZHdfbWlwaV9kc2lfaG9z
+dF90cmFuc2ZlcigpIG11c3QgcmV0dXJuIHRoZSBudW1iZXIgb2YKPiBieXRlcyB0cmFuc21pdHRl
+ZC9yZWNlaXZlZCBvbiBzdWNjZXNzIGluc3RlYWQgb2YgMC4KCkknbSBhIGxpdHRsZSBjb25mdXNl
+ZC4gQXMgb2YgdGhlIGxhdGVzdCBkcm0tbWlzYy1uZXh0IEknbSBsb29raW5nIGF0LAp0aGlzIHN0
+aWxsIGhhcyBjb25mbGljdGluZyBkb2N1bWVudGF0aW9uLgoKRm9yIC0+dHJhbnNmZXIoKToKCk9u
+IHN1Y2Nlc3MgaXQgc2hhbGwgcmV0dXJuIHRoZSBudW1iZXIgb2YgYnl0ZXMKICogdHJhbnNtaXR0
+ZWQgZm9yIHdyaXRlIHBhY2tldHMgb3IgdGhlIG51bWJlciBvZiBieXRlcyByZWNlaXZlZCBmb3Ig
+cmVhZAogKiBwYWNrZXRzLgoKV2hpbGUgbWlwaV9kc2lfZ2VuZXJpY19yZWFkKCkgc2F5czoKCiAq
+IFJldHVybjogVGhlIG51bWJlciBvZiBieXRlcyBzdWNjZXNzZnVsbHkgcmVhZCBvciBhIG5lZ2F0
+aXZlIGVycm9yIGNvZGUgb24KICogZmFpbHVyZS4KCkJ1dCBpdCBqdXN0IHJldHVybnMgdGhlIHZh
+bHVlIHRoYXQgLT50cmFuc2ZlcigpIHJldHVybnMuCgpTbyBJJ20gbm90IHN1cmUgd2hldGhlciB0
+aGUgZG9jdW1lbnRhdGlvbiBpcyBzdGlsbCB3cm9uZywgb3IgaWYgdGhlCmltcGxlbWVudGF0aW9u
+IGlzLgoKQW55d2F5LCBJIGd1ZXNzIG1heWJlIHRoYXQgaXNuJ3Qgc3VwZXItY3JpdGljYWwgdG8g
+KnRoaXMqIHBhdGNoLCBzaW5jZQp3ZSBkb24ndCBoYXZlIFJYIHN1cHBvcnQgeWV0Li4uCgo+IE5v
+dGU6IG5iX2J5dGVzIGlzIGludHJvZHVjZWQgaW4gdGhpcyBwYXRjaCBhcyBpdCB3aWxsIGJlCj4g
+cmUtdXNlZCB3aXRoIHRoZSBmdXR1cmUgZGNzL2dlbmVyaWMgZHNpIHJlYWQgZmVhdHVyZS4KCkl0
+IGZlZWxzIGxpa2UgeW91IGNvdWxkIGp1c3Qgd2FpdCB0byBhZGQgdGhhdCB3aGVuIHlvdSBuZWVk
+IGl0PyBJdApyZWFsbHkgZmVlbHMgdHJpdmlhbCBhbmQgdXNlbGVzcyByaWdodCBub3cgOikKCkJy
+aWFuCgo+Cj4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51QHN0
+LmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRz
+aS5jIHwgMTAgKysrKysrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAy
+IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lu
+b3BzeXMvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
+bWlwaS1kc2kuYwo+IGluZGV4IGY0NTg3OThhZjc4OC4uMDk2Y2Y1ZTViYjMwIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwo+IEBAIC00MDMs
+NyArNDAzLDcgQEAgc3RhdGljIHNzaXplX3QgZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1
+Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwKPiAgewo+ICAgICAgICAgc3RydWN0IGR3X21pcGlfZHNp
+ICpkc2kgPSBob3N0X3RvX2RzaShob3N0KTsKPiAgICAgICAgIHN0cnVjdCBtaXBpX2RzaV9wYWNr
+ZXQgcGFja2V0Owo+IC0gICAgICAgaW50IHJldDsKPiArICAgICAgIGludCByZXQsIG5iX2J5dGVz
+Owo+Cj4gICAgICAgICByZXQgPSBtaXBpX2RzaV9jcmVhdGVfcGFja2V0KCZwYWNrZXQsIG1zZyk7
+Cj4gICAgICAgICBpZiAocmV0KSB7Cj4gQEAgLTQxMyw3ICs0MTMsMTMgQEAgc3RhdGljIHNzaXpl
+X3QgZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwK
+Pgo+ICAgICAgICAgZHdfbWlwaV9tZXNzYWdlX2NvbmZpZyhkc2ksIG1zZyk7Cj4KPiAtICAgICAg
+IHJldHVybiBkd19taXBpX2RzaV93cml0ZShkc2ksICZwYWNrZXQpOwo+ICsgICAgICAgcmV0ID0g
+ZHdfbWlwaV9kc2lfd3JpdGUoZHNpLCAmcGFja2V0KTsKPiArICAgICAgIGlmIChyZXQpCj4gKyAg
+ICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gKwo+ICsgICAgICAgbmJfYnl0ZXMgPSBwYWNrZXQu
+c2l6ZTsKPiArCj4gKyAgICAgICByZXR1cm4gbmJfYnl0ZXM7Cj4gIH0KPgo+ICBzdGF0aWMgY29u
+c3Qgc3RydWN0IG1pcGlfZHNpX2hvc3Rfb3BzIGR3X21pcGlfZHNpX2hvc3Rfb3BzID0gewo+IC0t
+Cj4gMi4xNS4xCj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
