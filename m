@@ -1,80 +1,50 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] rock64: dts: fix gmac2io stability issues
-Date: Tue, 23 Jan 2018 13:52:56 +0100
-Message-ID: <26154377.eZ6VsJ1LtB@diego>
-References: <20180122174628.15613-1-ayufan@ayufan.eu>
+From: Philippe Cornu <philippe.cornu@st.com>
+Subject: [PATCH v1 1/2] drm/bridge/synopsys: dsi: Fix dsi_host_transfer()
+ return value
+Date: Tue, 23 Jan 2018 15:26:17 +0100
+Message-ID: <20180123142618.28384-2-philippe.cornu@st.com>
+References: <20180123142618.28384-1-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180122174628.15613-1-ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kamil =?utf-8?B?VHJ6Y2nFhHNraQ==?= <ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180123142618.28384-1-philippe.cornu@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kamil,
-
-Thanks for figuring out the source of the gmac instability :-) .
-
-I've applied the patch as fix for 4.16 but corrected some small issues while 
-doing so:
-- The subject should be something like
-	"arm64: dts: rockchip: fix rock64 gmac2io stability issues"
-  The prefixes to use vary per subsystem, so it's best to use git log to
-  look at previous commits
-
-Am Montag, 22. Januar 2018, 18:46:22 CET schrieb Kamil Trzciński:
-> This commit enables thresh dma mode as this forces to disable checksuming,
-> and chooses delay values which make the interface stable.
-> 
-> These changes are needed, because ROCK64 is faced with two problems:
-> 1. tx checksuming does not work with packets larger than 1498,
-> 2. the default delays for tx/rx are not stable when using 1Gbps connection.
-> 
-> Delays were found out with:
-> https://github.com/ayufan-rock64/linux-build/tree/master/recipes/gmac-delays
-> -test
-> 
-> Change-Id: Ie894df4b52122988da683c02e3a05d635a5c7b84
-
-That is some gerrit thingy which should not be part when sending patches 
-upstream.
-
-> Signed-off-by: Kamil Trzciński <ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts index
-> 5602ec01fed9..bcc0bb35d840 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> @@ -132,8 +132,6 @@
->  	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
->  	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
->  	clock_in_out = "input";
-> -	/* shows instability at 1GBit right now */
-> -	max-speed = <100>;
->  	phy-supply = <&vcc_io>;
->  	phy-mode = "rgmii";
->  	pinctrl-names = "default";
-> @@ -141,8 +139,9 @@
->  	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
->  	snps,reset-active-low;
->  	snps,reset-delays-us = <0 10000 50000>;
-> -	tx_delay = <0x26>;
-> -	rx_delay = <0x11>;
-> +	snps,force_thresh_dma_mode;
-
-With the exception of compatible, reg, interrupts and status, I try to keep
-other properties alphabetically sorted in Rockchip dts, so I've moved the
-snps,force_thres_dma_mode up between pinctrl-0 and snps-reset-gpio.
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+VGhlIGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoKSBtdXN0IHJldHVybiB0aGUgbnVtYmVyIG9m
+CmJ5dGVzIHRyYW5zbWl0dGVkL3JlY2VpdmVkIG9uIHN1Y2Nlc3MgaW5zdGVhZCBvZiAwLgpOb3Rl
+OiBuYl9ieXRlcyBpcyBpbnRyb2R1Y2VkIGluIHRoaXMgcGF0Y2ggYXMgaXQgd2lsbCBiZQpyZS11
+c2VkIHdpdGggdGhlIGZ1dHVyZSBkY3MvZ2VuZXJpYyBkc2kgcmVhZCBmZWF0dXJlLgoKU2lnbmVk
+LW9mZi1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4KLS0tCiBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCAxMCArKysrKysrKy0t
+CiAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwppbmRleCBmNDU4Nzk4
+YWY3ODguLjA5NmNmNWU1YmIzMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
+eW5vcHN5cy9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
+eXMvZHctbWlwaS1kc2kuYwpAQCAtNDAzLDcgKzQwMyw3IEBAIHN0YXRpYyBzc2l6ZV90IGR3X21p
+cGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCiB7CiAJc3Ry
+dWN0IGR3X21pcGlfZHNpICpkc2kgPSBob3N0X3RvX2RzaShob3N0KTsKIAlzdHJ1Y3QgbWlwaV9k
+c2lfcGFja2V0IHBhY2tldDsKLQlpbnQgcmV0OworCWludCByZXQsIG5iX2J5dGVzOwogCiAJcmV0
+ID0gbWlwaV9kc2lfY3JlYXRlX3BhY2tldCgmcGFja2V0LCBtc2cpOwogCWlmIChyZXQpIHsKQEAg
+LTQxMyw3ICs0MTMsMTMgQEAgc3RhdGljIHNzaXplX3QgZHdfbWlwaV9kc2lfaG9zdF90cmFuc2Zl
+cihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwKIAogCWR3X21pcGlfbWVzc2FnZV9jb25maWco
+ZHNpLCBtc2cpOwogCi0JcmV0dXJuIGR3X21pcGlfZHNpX3dyaXRlKGRzaSwgJnBhY2tldCk7CisJ
+cmV0ID0gZHdfbWlwaV9kc2lfd3JpdGUoZHNpLCAmcGFja2V0KTsKKwlpZiAocmV0KQorCQlyZXR1
+cm4gcmV0OworCisJbmJfYnl0ZXMgPSBwYWNrZXQuc2l6ZTsKKworCXJldHVybiBuYl9ieXRlczsK
+IH0KIAogc3RhdGljIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9ob3N0X29wcyBkd19taXBpX2RzaV9o
+b3N0X29wcyA9IHsKLS0gCjIuMTUuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
