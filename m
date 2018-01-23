@@ -1,80 +1,115 @@
-From: Philippe Cornu <philippe.cornu@st.com>
-Subject: [PATCH v3] drm/bridge/synopsys: dsi: add optional pixel clock
-Date: Tue, 23 Jan 2018 18:08:06 +0100
-Message-ID: <20180123170806.5282-1-philippe.cornu@st.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v3] drm/bridge/synopsys: dsi: add optional pixel clock
+Date: Tue, 23 Jan 2018 12:49:40 -0800
+Message-ID: <20180123204939.qirvr34mlwgiwmqz@ban.mtv.corp.google.com>
+References: <20180123170806.5282-1-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180123170806.5282-1-philippe.cornu@st.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Philippe Cornu <philippe.cornu@st.com>
+Cc: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Yannick Fertre <yannick.fertre@st.com>, Vincent Abriou <vincent.abriou@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>, hl@rock-chips.com, Chris Zhong <zyw@rock-chips.com>nick
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIHBpeGVsIGNsb2NrIGlzIG9wdGlvbmFsLiBXaGVuIGF2YWlsYWJsZSwgaXQgb2ZmZXJzIGEg
-YmV0dGVyCnByZWNpc2VuZXNzIGZvciB0aW1pbmcgY29tcHV0YXRpb25zIGFuZCBhbGxvd3MgdG8g
-cmVkdWNlIHRoZSBleHRyYSBkc2kKYmFuZHdpZHRoIGluIGJ1cnN0IG1vZGUgKGZyb20gfjIwJSB0
-byB+MTAtMTIlLCBodyBwbGF0Zm9ybSBkZXBlbmRhbnQpLgoKUmV2aWV3ZWQtYnk6IEFuZHJ6ZWog
-SGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+ClNpZ25lZC1vZmYtYnk6IFBoaWxpcHBlIENvcm51
-IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+Ci0tLQpDaGFuZ2VzIGluIHYzOiBTaW1wbGlmeSBweF9j
-bGsgcHJvYmluZyB0aGFua3MgdG8gQW5kcnplaiBIYWpkYSBjb21tZW50cwoKQ2hhbmdlcyBpbiB2
-MjogSW1wcm92ZSBweF9jbGsgcHJvYmluZyBpbiBjYXNlIG9mIEVOT0VOVCBkdCByZXR1cm5lZCB2
-YWx1ZQoodGhhbmtzIHRvIFBoaWxpcHAgWmFiZWwgJiBBbmRyemVqIEhhamRhIGNvbW1lbnRzKQoK
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDI1ICsrKysr
-KysrKysrKysrKysrKystLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCA2
-IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
-eXMvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlw
-aS1kc2kuYwppbmRleCBlZDhhZjMyZjhlNTIuLjlmYjM1Mzg1YzM0OCAxMDA2NDQKLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwpAQCAtMjE3LDYgKzIxNyw3IEBA
-IHN0cnVjdCBkd19taXBpX2RzaSB7CiAJdm9pZCBfX2lvbWVtICpiYXNlOwogCiAJc3RydWN0IGNs
-ayAqcGNsazsKKwlzdHJ1Y3QgY2xrICpweF9jbGs7CiAKIAl1bnNpZ25lZCBpbnQgbGFuZV9tYnBz
-OyAvKiBwZXIgbGFuZSAqLwogCXUzMiBjaGFubmVsOwpAQCAtNzAzLDI0ICs3MDQsMjggQEAgc3Rh
-dGljIHZvaWQgZHdfbWlwaV9kc2lfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpi
-cmlkZ2UsCiAJc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBicmlkZ2VfdG9fZHNpKGJyaWRnZSk7
-CiAJY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BoeV9vcHMgKnBoeV9vcHMgPSBkc2ktPnBsYXRf
-ZGF0YS0+cGh5X29wczsKIAl2b2lkICpwcml2X2RhdGEgPSBkc2ktPnBsYXRfZGF0YS0+cHJpdl9k
-YXRhOworCXN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIHB4X2Nsa19tb2RlID0gKm1vZGU7CiAJaW50
-IHJldDsKIAogCWNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBjbGspOwogCi0JcmV0ID0gcGh5X29w
-cy0+Z2V0X2xhbmVfbWJwcyhwcml2X2RhdGEsIG1vZGUsIGRzaS0+bW9kZV9mbGFncywKKwlpZiAo
-ZHNpLT5weF9jbGspCisJCXB4X2Nsa19tb2RlLmNsb2NrID0gY2xrX2dldF9yYXRlKGRzaS0+cHhf
-Y2xrKSAvIDEwMDA7CisKKwlyZXQgPSBwaHlfb3BzLT5nZXRfbGFuZV9tYnBzKHByaXZfZGF0YSwg
-JnB4X2Nsa19tb2RlLCBkc2ktPm1vZGVfZmxhZ3MsCiAJCQkJICAgICBkc2ktPmxhbmVzLCBkc2kt
-PmZvcm1hdCwgJmRzaS0+bGFuZV9tYnBzKTsKIAlpZiAocmV0KQogCQlEUk1fREVCVUdfRFJJVkVS
-KCJQaHkgZ2V0X2xhbmVfbWJwcygpIGZhaWxlZFxuIik7CiAKIAlwbV9ydW50aW1lX2dldF9zeW5j
-KGRzaS0+ZGV2KTsKIAlkd19taXBpX2RzaV9pbml0KGRzaSk7Ci0JZHdfbWlwaV9kc2lfZHBpX2Nv
-bmZpZyhkc2ksIG1vZGUpOworCWR3X21pcGlfZHNpX2RwaV9jb25maWcoZHNpLCAmcHhfY2xrX21v
-ZGUpOwogCWR3X21pcGlfZHNpX3BhY2tldF9oYW5kbGVyX2NvbmZpZyhkc2kpOwogCWR3X21pcGlf
-ZHNpX3ZpZGVvX21vZGVfY29uZmlnKGRzaSk7Ci0JZHdfbWlwaV9kc2lfdmlkZW9fcGFja2V0X2Nv
-bmZpZyhkc2ksIG1vZGUpOworCWR3X21pcGlfZHNpX3ZpZGVvX3BhY2tldF9jb25maWcoZHNpLCAm
-cHhfY2xrX21vZGUpOwogCWR3X21pcGlfZHNpX2NvbW1hbmRfbW9kZV9jb25maWcoZHNpKTsKLQlk
-d19taXBpX2RzaV9saW5lX3RpbWVyX2NvbmZpZyhkc2ksIG1vZGUpOwotCWR3X21pcGlfZHNpX3Zl
-cnRpY2FsX3RpbWluZ19jb25maWcoZHNpLCBtb2RlKTsKKwlkd19taXBpX2RzaV9saW5lX3RpbWVy
-X2NvbmZpZyhkc2ksICZweF9jbGtfbW9kZSk7CisJZHdfbWlwaV9kc2lfdmVydGljYWxfdGltaW5n
-X2NvbmZpZyhkc2ksICZweF9jbGtfbW9kZSk7CiAKIAlkd19taXBpX2RzaV9kcGh5X2luaXQoZHNp
-KTsKIAlkd19taXBpX2RzaV9kcGh5X3RpbWluZ19jb25maWcoZHNpKTsKQEAgLTczNCw3ICs3Mzks
-NyBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0IGRybV9i
-cmlkZ2UgKmJyaWRnZSwKIAogCWR3X21pcGlfZHNpX2RwaHlfZW5hYmxlKGRzaSk7CiAKLQlkd19t
-aXBpX2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKG1vZGUpOworCWR3X21pcGlfZHNpX3dhaXRfZm9y
-X3R3b19mcmFtZXMoJnB4X2Nsa19tb2RlKTsKIAogCS8qIFN3aXRjaCB0byBjbWQgbW9kZSBmb3Ig
-cGFuZWwtYnJpZGdlIHByZV9lbmFibGUgJiBwYW5lbCBwcmVwYXJlICovCiAJZHdfbWlwaV9kc2lf
-c2V0X21vZGUoZHNpLCAwKTsKQEAgLTgyOCw2ICs4MzMsMTQgQEAgX19kd19taXBpX2RzaV9wcm9i
-ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAogCQlyZXR1cm4gRVJSX1BUUihyZXQpOwog
-CX0KIAorCWRzaS0+cHhfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgInB4X2NsayIpOworCWlmIChJ
-U19FUlIoZHNpLT5weF9jbGspKSB7CisJCXJldCA9IFBUUl9FUlIoZHNpLT5weF9jbGspOworCQlp
-ZiAocmV0ICE9IEVOT0VOVCkKKwkJCWRldl9lcnIoZGV2LCAiVW5hYmxlIHRvIGdldCBvcHQuIHB4
-X2NsazogJWRcbiIsIHJldCk7CisJCWRzaS0+cHhfY2xrID0gTlVMTDsKKwl9CisKIAkvKgogCSAq
-IE5vdGUgdGhhdCB0aGUgcmVzZXQgd2FzIG5vdCBkZWZpbmVkIGluIHRoZSBpbml0aWFsIGRldmlj
-ZSB0cmVlLCBzbwogCSAqIHdlIGhhdmUgdG8gYmUgcHJlcGFyZWQgZm9yIGl0IG5vdCBiZWluZyBm
-b3VuZC4KLS0gCjIuMTUuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Hi,
+
+Philippe asked me to review the last version. I'm not sure I have a lot
+to contribute. Maybe Rockchip folks who wrote this stuff in the first
+place might. I've CC'd some.
+
+On Tue, Jan 23, 2018 at 06:08:06PM +0100, Philippe Cornu wrote:
+> The pixel clock is optional. When available, it offers a better
+> preciseness for timing computations and allows to reduce the extra dsi
+> bandwidth in burst mode (from ~20% to ~10-12%, hw platform dependant).
+> 
+> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
+> ---
+> Changes in v3: Simplify px_clk probing thanks to Andrzej Hajda comments
+> 
+> Changes in v2: Improve px_clk probing in case of ENOENT dt returned value
+> (thanks to Philipp Zabel & Andrzej Hajda comments)
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 25 +++++++++++++++++++------
+>  1 file changed, 19 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index ed8af32f8e52..9fb35385c348 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -217,6 +217,7 @@ struct dw_mipi_dsi {
+>  	void __iomem *base;
+>  
+>  	struct clk *pclk;
+> +	struct clk *px_clk;
+>  
+>  	unsigned int lane_mbps; /* per lane */
+>  	u32 channel;
+> @@ -703,24 +704,28 @@ static void dw_mipi_dsi_bridge_mode_set(struct drm_bridge *bridge,
+>  	struct dw_mipi_dsi *dsi = bridge_to_dsi(bridge);
+>  	const struct dw_mipi_dsi_phy_ops *phy_ops = dsi->plat_data->phy_ops;
+>  	void *priv_data = dsi->plat_data->priv_data;
+> +	struct drm_display_mode px_clk_mode = *mode;
+>  	int ret;
+>  
+>  	clk_prepare_enable(dsi->pclk);
+>  
+> -	ret = phy_ops->get_lane_mbps(priv_data, mode, dsi->mode_flags,
+> +	if (dsi->px_clk)
+> +		px_clk_mode.clock = clk_get_rate(dsi->px_clk) / 1000;
+> +
+> +	ret = phy_ops->get_lane_mbps(priv_data, &px_clk_mode, dsi->mode_flags,
+>  				     dsi->lanes, dsi->format, &dsi->lane_mbps);
+>  	if (ret)
+>  		DRM_DEBUG_DRIVER("Phy get_lane_mbps() failed\n");
+>  
+>  	pm_runtime_get_sync(dsi->dev);
+>  	dw_mipi_dsi_init(dsi);
+> -	dw_mipi_dsi_dpi_config(dsi, mode);
+> +	dw_mipi_dsi_dpi_config(dsi, &px_clk_mode);
+>  	dw_mipi_dsi_packet_handler_config(dsi);
+>  	dw_mipi_dsi_video_mode_config(dsi);
+> -	dw_mipi_dsi_video_packet_config(dsi, mode);
+> +	dw_mipi_dsi_video_packet_config(dsi, &px_clk_mode);
+>  	dw_mipi_dsi_command_mode_config(dsi);
+> -	dw_mipi_dsi_line_timer_config(dsi, mode);
+> -	dw_mipi_dsi_vertical_timing_config(dsi, mode);
+> +	dw_mipi_dsi_line_timer_config(dsi, &px_clk_mode);
+> +	dw_mipi_dsi_vertical_timing_config(dsi, &px_clk_mode);
+>  
+>  	dw_mipi_dsi_dphy_init(dsi);
+>  	dw_mipi_dsi_dphy_timing_config(dsi);
+> @@ -734,7 +739,7 @@ static void dw_mipi_dsi_bridge_mode_set(struct drm_bridge *bridge,
+>  
+>  	dw_mipi_dsi_dphy_enable(dsi);
+>  
+> -	dw_mipi_dsi_wait_for_two_frames(mode);
+> +	dw_mipi_dsi_wait_for_two_frames(&px_clk_mode);
+>  
+>  	/* Switch to cmd mode for panel-bridge pre_enable & panel prepare */
+>  	dw_mipi_dsi_set_mode(dsi, 0);
+> @@ -828,6 +833,14 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
+>  		return ERR_PTR(ret);
+>  	}
+>  
+> +	dsi->px_clk = devm_clk_get(dev, "px_clk");
+
+Did you write a device tree binding document update for this anywhere?
+
+Brian
+
+> +	if (IS_ERR(dsi->px_clk)) {
+> +		ret = PTR_ERR(dsi->px_clk);
+> +		if (ret != ENOENT)
+> +			dev_err(dev, "Unable to get opt. px_clk: %d\n", ret);
+> +		dsi->px_clk = NULL;
+> +	}
+> +
+>  	/*
+>  	 * Note that the reset was not defined in the initial device tree, so
+>  	 * we have to be prepared for it not being found.
+> -- 
+> 2.15.1
+> 
