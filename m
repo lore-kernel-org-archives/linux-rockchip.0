@@ -1,86 +1,85 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use common
- mipi_dsi_create_packet()
-Date: Tue, 23 Jan 2018 13:15:10 -0800
-Message-ID: <20180123211505.xvpu3putjjbqnl2b@ban.mtv.corp.google.com>
-References: <20180106003813.4816-1-briannorris@chromium.org>
- <715bb58c-efa6-7944-f186-c186d7fae569@st.com>
- <20180109185512.GA73309@google.com>
- <c680f230-393f-8bfa-cc9c-3b8db87bd5fb@st.com>
- <023c159e-0a7f-7d1b-a2d8-8ef19033a1b3@st.com>
+Subject: Re: [PATCH v1 2/2] drm/bridge/synopsys: dsi: Add a warning msg on dsi
+ read operations
+Date: Tue, 23 Jan 2018 13:28:20 -0800
+Message-ID: <CA+ASDXPJ9uPDwRhP2WbazjeT6o=6L0ttffWXjwjkD3KxB+1cuQ@mail.gmail.com>
+References: <20180123142618.28384-1-philippe.cornu@st.com>
+ <20180123142618.28384-3-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <023c159e-0a7f-7d1b-a2d8-8ef19033a1b3@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philippe CORNU <philippe.cornu@st.com>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, Vincent ABRIOU <vincent.abriou@st.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180123142618.28384-3-philippe.cornu@st.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Philippe Cornu <philippe.cornu@st.com>
+Cc: linux-arm-kernel@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Archit Taneja <architt@codeaurora.org>, Heiko Stubner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, Yannick Fertre <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGhpbGlwcGUsCgpPbiBUaHUsIEphbiAxOCwgMjAxOCBhdCAxMTo0MDo0OEFNICswMDAwLCBQ
-aGlsaXBwZSBDT1JOVSB3cm90ZToKPiBPbiAwMS8xMS8yMDE4IDEyOjE2IFBNLCBQaGlsaXBwZSBD
-T1JOVSB3cm90ZToKPiA+IFRvIGJlIGhvbmVzdCwgSSBkbyBub3QgcmVhbGx5IGxpa2UgdGhlIG1l
-bWNweSBoZXJlIHRvbyBhbmQgSSBhZ3JlZSB3aXRoIAo+ID4geW91IHJlZ2FyZGluZyB0aGUgQkUg
-aXNzdWUuCj4gPiAKPiA+IE15IGZpcnN0ICJzdG0iIGRyaXZlciAoaWUuIGJlZm9yZSB1c2luZyB0
-aGlzICJmcmVlc2NhbGUvcm9ja2NoaXAiIAo+ID4gZHctbWlwaS1kc2kgZHJpdmVyIHdpdGggdGhl
-IG1lbWNweSkgdXNlZCB0aGUgImV4YWN0IiBzYW1lIGNvZGUgYXMgdGhlIAo+ID4gVGVncmEgZHNp
-IHRlZ3JhX2RzaV93cml0ZXNsKCkgZnVuY3Rpb24gd2l0aCB0aGUgMiBsb29wcy4KPiA+IAo+ID4g
-aHR0cHM6Ly9lbGl4aXIuZnJlZS1lbGVjdHJvbnMuY29tL2xpbnV4L3Y0LjE0L3NvdXJjZS9kcml2
-ZXJzL2dwdS9kcm0vdGVncmEvZHNpLmMjTDEyNDggCj4gPiAKPiA+IAo+ID4gSU1ITywgaXQgaXMg
-YmV0dGVyIHRoYW4gbWVtY3B5Li4uCj4gPiBJIGFkZGVkIHRoZXNlIDMgImRvY3VtZW50YXRpb24i
-IGxpbmVzLCBtYXliZSB3ZSBtYXkgcmV1c2UgdGhlbSBvciAKPiA+IHNvbWV0aGluZyBzaW1pbGFy
-Li4uCj4gPiAKPiA+IC8qCj4gPiAgwqAqIFdyaXRlIDgtYml0IHBheWxvYWQgZGF0YSBpbnRvIHRo
-ZSAzMi1iaXQgcGF5bG9hZCBkYXRhIHJlZ2lzdGVyLgo+ID4gIMKgKiBleDogcGF5bG9hZCBkYXRh
-ICIweDAxLCAweDAyLCAweDAzLCAweDA0LCAweDA1LCAweDA2IiB3aWxsIGJlY29tZQo+ID4gIMKg
-KiAiMHgwNDAzMDIwMSAweDAwMDAwNjA1IiAzMi1iaXQgd3JpdGVzCj4gPiAgwqAqLwo+ID4gCj4g
-PiBOb3Qgc3VyZSBpdCBoZWxwcyB0byBmaXggdGhlIEJFIGlzc3VlIGJ1dCB3ZSBtYXkgYWRkIGEg
-VE9ETyBzdGF0aW5nIHRoYXQgCj4gPiAidGhpcyBsb29wIGhhcyBub3QgYmVlbiB0ZXN0ZWQgb24g
-QkUiLi4uCj4gPiAKPiA+IFdoYXQgaXMgeW91ciBvcGluaW9uPwoKSSdtIHNvcnJ5LCBJIGRvbid0
-IHRoaW5rIEkgbm90aWNlZCB5b3VyIHJlcGx5IGhlcmUuIEknbSB0cnlpbmcgdG8gdW5idXJ5CnNv
-bWUgZW1haWwsIGJ1dCB0aGF0J3Mgc29tZXRpbWVzIGEgbG9zaW5nIGJhdHRsZS4uLgoKVGhhdCBj
-b2RlIGFjdHVhbGx5IGRvZXMgbG9vayBjb3JyZWN0LCBhbmQgaXQncyBwZXJoYXBzIG1hcmdpbmFs
-bHkKYmV0dGVyLWxvb2tpbmcgaW4gbXkgb3Bpbmlvbi4gSXQncyB1cCB0byB5b3UgaWYgeW91IHdh
-bnQgdG8gcHJvcG9zZQphbm90aGVyIHBhdGNoIDopIEF0IHRoaXMgcG9pbnQsIGl0J3Mgb25seSBh
-IG1hdHRlciBvZiBuaWNlIGNvZGUsIG5vdApjb3JyZWN0bmVzcyBJIGJlbGlldmUuCgo+IEFzIHlv
-dXIgcGF0Y2ggaGFzIGJlZW4gbWVyZ2VkLCBJIGhhdmUgZmV3IHNob3J0IHF1ZXN0aW9ucyBhbmQg
-Zm9yIGVhY2ggCj4gcmVsYXRlZCBuZXcgcGF0Y2gsIEkgd291bGQgbGlrZSB0byBrbm93IGlmIHlv
-dSBwcmVmZXIgdGhhdCBJIGltcGxlbWVudCAKPiBpdCBvciBpZiB5b3UgcHJlZmVyIHRvIGRvIGl0
-IGJ5IHlvdXJzZWxmLCBpdCdzIHJlYWxseSBsaWtlIHlvdSB3YW50LCBvbiAKPiBteSBzaWRlLCBu
-byBwcm9ibGVtIHRvIG1ha2UgdGhlbSBhbGwsIHNvbWUgb3Igbm9uZSwgSSBkb24ndCB3YW50IHVz
-IHRvIAo+IGltcGxlbWVudCB0aGVzZSBpbiBwYXJhbGxlbCA6LSkKPiAKPiAqIERvIHlvdSBoYXZl
-IGFueSBvcGluaW9uIHJlZ2FyZGluZyBUZWdyYS1saWtlIGxvb3BzIHZzIHRoZSBtZW1jcHk/IChz
-ZWUgCj4gbXkgY29tbWVudCBhYm92ZSkgSWYgeW91IHRoaW5rIHRoZSBUZWdyYS1saWtlIGxvb3Bz
-IGlzIGEgYmV0dGVyIGFwcHJvYWNoIAo+IHRoYW4gbWVtY3B5LCB0aGVyZSBpcyBhIHNtYWxsIHBh
-dGNoIHRvIHdyaXRlLgoKTXkgb3BpbmlvbiBpcyBhYm92ZS4KCj4gKiBSZXR1cm5lZCB2YWx1ZSB3
-aXRoIG51bWJlciBvZiBieXRlcyByZWNlaXZlZC90cmFuc2ZlcnJlZDogdGhlcmUgaXMgYSAKPiBz
-bWFsbCBwYXRjaCB0byB3cml0ZQoKSSBkb24ndCB0aGluayBJIGZvbGxvd2VkIHRoYXQgb25lIHZl
-cnkgd2VsbC4gSSdtIG5vdCBzdXJlIG15IG9waW5pb24KcmVhbGx5IG1hdHRlcnMsIGFzIGxvbmcg
-YXMgeW91IGdldCBzb21lb25lIGVsc2UgdG8gYWdyZWUuIEkgZG8gbm90IHBsYW4KdG8gd3JpdGUg
-YW55IHN1Y2ggcGF0Y2ggaW4gdGhlIG5lYXIgdGVybS4KCj4gKiBSZWdhcmRpbmcgcmVhZCBvcGVy
-YXRpb25zOiBJIHByb3Bvc2UgdG8gYWRkIGEgVE9ETyArIERSTV9XQVJOIGluIGNhc2UgCj4gc29t
-ZW9uZSB3YW50IHRvIHVzZSB0aGUgQVBJIGZvciByZWFkIG9wZXJhdGlvbnMuIE5vdGUgdGhhdCBJ
-IHBsYW4gdG8gCj4gaW1wbGVtZW50IHRoZSByZWFkIGZlYXR1cmUgYnV0IEkgZG8gbm90IGtub3cg
-eWV0IHdoZW4gYW5kIG1heWJlIFJvY2tjaGlwIAo+IHBlb3BsZSBhbHJlYWR5IGhhdmUgc29tZXRo
-aW5nIH5yZWFkeT8KClRoZSB3YXJuaW5nIHdvdWxkIGJlIG5pY2UgdG8gZG8gbm93LCByZWdhcmRs
-ZXNzLgoKUm9ja2NoaXAgZm9sa3Mgd3JvdGUgdXAgc29tZXRoaW5nIGZvciByZWFkIHN1cHBvcnQg
-aGVyZSBbMV0sIGJ1dCBpdCdzCmJhc2VkIG9uIGEgc2VtaS1mb3JrZWQgdmVyc2lvbiBvZiB0aGUg
-ZHJpdmVyICh3ZSdyZSB0cnlpbmcgdG8gY2xlYW4gdXAKdGhlIGRpdmVyZ2VuY2UsIGJ1dCBpdCdz
-IG5vdCB0aGVyZSB5ZXQpLiBQZXJoYXBzIGl0IHdvdWxkIHByb3ZpZGUgdXNlZnVsCmZvZGRlciBm
-b3IgeW91ciB3b3JrLiBJIGRvbid0IHRoaW5rIFJvY2tjaGlwIGlzIGltbWVkaWF0ZWx5IHdvcmtp
-bmcgb24KdXBzdHJlYW1pbmcgdGhpcyBwYXJ0aWN1bGFyIHBhdGNoLCBzbyBpdCdzIHRvdGFsbHkg
-ZmFpciB0byBoYW5kbGUgaXQKeW91cnNlbGYuIEl0J3MgZ290IHRoZSBHUEwgc2lnbi1vZmYgOykK
-CkJyaWFuCgpbMV0gaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS9jL2No
-cm9taXVtb3MvdGhpcmRfcGFydHkva2VybmVsLysvODYzMzQ3Cl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Philippe,
+
+I see you sent this out already today, while I only just responded
+(late) to your questions about it... oh well :)
+
+On Tue, Jan 23, 2018 at 6:26 AM, Philippe Cornu <philippe.cornu@st.com> wrote:
+> The DCS/GENERIC DSI read feature is not yet implemented so it
+> is important to warn the host_transfer() caller in case of
+> read operation requests.
+>
+> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index 096cf5e5bb30..e46ddff8601c 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -417,7 +417,14 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+>         if (ret)
+>                 return ret;
+>
+> -       nb_bytes = packet.size;
+> +       if (msg->rx_buf && msg->rx_len > 0) {
+
+It feels like you should do this check *before* you start writing
+anything. It's possible to have a combination TX/RX command, and it
+would be counterintuitive to only do half the operation then return
+with an argument error.
+
+> +               /* TODO dw drv improvements: implement read feature */
+> +               dev_warn(dsi->dev, "read operations not yet implemented\n");
+> +               return -EPERM;
+
+I'm not sure -EPERM is right. Feels like -EINVAL, -ENOSYS, or
+-EOPNOTSUPP. I think -ENOSYS actually has been abused somewhat, so
+maybe one of the other two.
+
+> +
+
+Spurious blank line?
+
+> +       } else {
+> +               nb_bytes = packet.size;
+> +       }
+
+You don't actually need to put this sort of thing in the 'else' case.
+The other branch is an error-handling case, which definitely 'return's
+early, and it's pretty standard coding style to avoid indenting the
+"good" path like this.
+
+Brian
+
+>
+>         return nb_bytes;
+>  }
+> --
+> 2.15.1
+>
