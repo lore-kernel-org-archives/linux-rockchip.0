@@ -1,109 +1,79 @@
-From: Claudiu Beznea <Claudiu.Beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
-Subject: Re: [PATCH v2 10/16] pwm: Add PWM modes
-Date: Tue, 23 Jan 2018 12:40:20 +0200
-Message-ID: <759435bf-764f-68ea-de51-c878ceec28e2@microchip.com>
-References: <1515766983-15151-1-git-send-email-claudiu.beznea@microchip.com>
- <1515766983-15151-11-git-send-email-claudiu.beznea@microchip.com>
- <20180119223452.doeqfd4aewkf5fla@rob-hp-laptop>
- <c5aeb8df-6aa8-cde4-9305-08777cac2f45@microchip.com>
- <CAL_JsqJho2OrdnHwRPpYsbNB4RFTq5qSLA=36D2zy=Mi7B8XwQ@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] rock64: dts: fix gmac2io stability issues
+Date: Tue, 23 Jan 2018 13:52:56 +0100
+Message-ID: <26154377.eZ6VsJ1LtB@diego>
+References: <20180122174628.15613-1-ayufan@ayufan.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAL_JsqJho2OrdnHwRPpYsbNB4RFTq5qSLA=36D2zy=Mi7B8XwQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20180122174628.15613-1-ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Linux PWM List <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel-IAPFreCvJWOunwaRDDq4rA@public.gmane.org>
+To: Kamil =?utf-8?B?VHJ6Y2nFhHNraQ==?= <ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Joseph Chen <chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Kamil,
+
+Thanks for figuring out the source of the gmac instability :-) .
+
+I've applied the patch as fix for 4.16 but corrected some small issues while 
+doing so:
+- The subject should be something like
+	"arm64: dts: rockchip: fix rock64 gmac2io stability issues"
+  The prefixes to use vary per subsystem, so it's best to use git log to
+  look at previous commits
+
+Am Montag, 22. Januar 2018, 18:46:22 CET schrieb Kamil Trzciński:
+> This commit enables thresh dma mode as this forces to disable checksuming,
+> and chooses delay values which make the interface stable.
+> 
+> These changes are needed, because ROCK64 is faced with two problems:
+> 1. tx checksuming does not work with packets larger than 1498,
+> 2. the default delays for tx/rx are not stable when using 1Gbps connection.
+> 
+> Delays were found out with:
+> https://github.com/ayufan-rock64/linux-build/tree/master/recipes/gmac-delays
+> -test
+> 
+> Change-Id: Ie894df4b52122988da683c02e3a05d635a5c7b84
+
+That is some gerrit thingy which should not be part when sending patches 
+upstream.
+
+> Signed-off-by: Kamil Trzciński <ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts index
+> 5602ec01fed9..bcc0bb35d840 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -132,8 +132,6 @@
+>  	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+>  	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+>  	clock_in_out = "input";
+> -	/* shows instability at 1GBit right now */
+> -	max-speed = <100>;
+>  	phy-supply = <&vcc_io>;
+>  	phy-mode = "rgmii";
+>  	pinctrl-names = "default";
+> @@ -141,8 +139,9 @@
+>  	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+>  	snps,reset-active-low;
+>  	snps,reset-delays-us = <0 10000 50000>;
+> -	tx_delay = <0x26>;
+> -	rx_delay = <0x11>;
+> +	snps,force_thresh_dma_mode;
+
+With the exception of compatible, reg, interrupts and status, I try to keep
+other properties alphabetically sorted in Rockchip dts, so I've moved the
+snps,force_thres_dma_mode up between pinctrl-0 and snps-reset-gpio.
 
 
-On 22.01.2018 20:12, Rob Herring wrote:
-> On Mon, Jan 22, 2018 at 2:54 AM, Claudiu Beznea
-> <Claudiu.Beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org> wrote:
->>
->>
->> On 20.01.2018 00:34, Rob Herring wrote:
->>> On Fri, Jan 12, 2018 at 04:22:57PM +0200, Claudiu Beznea wrote:
->>>> Define a macros for PWM modes to be used by device tree sources.
->>>>
->>>> Signed-off-by: Claudiu Beznea <claudiu.beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
->>>> ---
->>>>  include/dt-bindings/pwm/pwm.h | 3 +++
->>>>  1 file changed, 3 insertions(+)
->>>>
->>>> diff --git a/include/dt-bindings/pwm/pwm.h b/include/dt-bindings/pwm/pwm.h
->>>> index ab9a077e3c7d..b8617431f8ec 100644
->>>> --- a/include/dt-bindings/pwm/pwm.h
->>>> +++ b/include/dt-bindings/pwm/pwm.h
->>>> @@ -12,4 +12,7 @@
->>>>
->>>>  #define PWM_POLARITY_INVERTED                       (1 << 0)
->>>>
->>>> +#define PWM_DTMODE_NORMAL                   (1 << 0)
->>>
->>> Bit 0 is already taken. I think you mean (0 << 1)?
->> I wanted to have the PWM modes in a new cell, so that the pwms binding to be
->> something like:
->> pwms=<pwm-controller pwm-channel pwm-period pwm-flags pwm-mode>
->>
->> If you think it is mode feasible to also include PWM mode in the cell for
->> PWM flags, please let me know.
-> 
-> Yes, but you have to make "normal" be no bit set to be compatible with
-> everything already out there.
-I'm thinking having it separately is more clear and modular.
-
-> 
->>> Personally, I'd just drop this define. A define for a 0 value makes more
->>> sense when each state is equally used (like active high or low), but if
->>> 0 is the more common case, then I don't the need for a define.
->> I want it to have these defines like bit defines:
->> PWM_DTMODE_NORMAL=0x1
->> PWM_DTMODE_COMPLEMENTARY=0x2
->> PWM_DTMODE_PUSH_PULL=0x4
-> 
-> Thinking about this some more, shouldn't the new modes just be
-> implied? A client is going to require one of these modes or it won't
-> work right.
-The clients could or could not request the mode via DT. Every PWM chip registers
-supported modes at driver probe (default, if no PWM mode support is added
-to the PWM chip driver the PWM chip will supports only normal mode). If a
-PWM channel is requested by a PWM client via DT, and there is no PWM mode setting
-in DT bindings, e.g. requested with these bindings:
-pwms=<pwm-controller pwm-channel pwm-period> or
-pwms=<pwm-controller pwm-channel pwm-period pwm-flags>
-the first available mode of PWM chip will be used to instantiate the mode.
-If the defined modes are:
-PWM_DTMODE_NORMAL=0x1
-PWM_DTMODE_COMPLEMENTARY=0x2
-PWM_DTMODE_PUSH_PULL=0x4
-and the PWM chip driver registers itself, at probe, with (PWM_DTMODE_COMPLEMENTARY | PWM_DTMODE_PUSH_PULL)
-then the first available mode will be PWM_DTMODE_COMPLEMENTARY (first LSB bit
-of the variable that keeps the available modes).
-  
-> 
-> Also complementary mode could be accomplished with a single pwm output
-> and a board level inverter, right?
-Yes, I think this could be accomplished. Here I took into account only PWM controller
-capabilities. Having this, I think will involve having extra PWM bindings describing
-extra capabilities per-channel. And to change a little bit the implementation in order
-to have these capabilities per channel nor per PWM controller. What do you think? 
-
-I think push-pull mode could also be accomplished having board inverter and delay
-modules. So, in these cases make sense to have per channel capabilities, as per my
-understanding. 
-
-Thank you,
-Claudiu Beznea
-
-How would that be handled when the
-> PWM driver doesn't support that mode?
-> 
-> Rob
-> 
+Heiko
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
