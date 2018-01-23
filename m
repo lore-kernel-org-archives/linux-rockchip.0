@@ -1,115 +1,86 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v3] drm/bridge/synopsys: dsi: add optional pixel clock
-Date: Tue, 23 Jan 2018 12:49:40 -0800
-Message-ID: <20180123204939.qirvr34mlwgiwmqz@ban.mtv.corp.google.com>
-References: <20180123170806.5282-1-philippe.cornu@st.com>
+Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use common
+ mipi_dsi_create_packet()
+Date: Tue, 23 Jan 2018 13:15:10 -0800
+Message-ID: <20180123211505.xvpu3putjjbqnl2b@ban.mtv.corp.google.com>
+References: <20180106003813.4816-1-briannorris@chromium.org>
+ <715bb58c-efa6-7944-f186-c186d7fae569@st.com>
+ <20180109185512.GA73309@google.com>
+ <c680f230-393f-8bfa-cc9c-3b8db87bd5fb@st.com>
+ <023c159e-0a7f-7d1b-a2d8-8ef19033a1b3@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20180123170806.5282-1-philippe.cornu@st.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philippe Cornu <philippe.cornu@st.com>
-Cc: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Yannick Fertre <yannick.fertre@st.com>, Vincent Abriou <vincent.abriou@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>, hl@rock-chips.com, Chris Zhong <zyw@rock-chips.com>nick
+In-Reply-To: <023c159e-0a7f-7d1b-a2d8-8ef19033a1b3@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philippe CORNU <philippe.cornu@st.com>
+Cc: "hl@rock-chips.com" <hl@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, Vincent ABRIOU <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Philippe asked me to review the last version. I'm not sure I have a lot
-to contribute. Maybe Rockchip folks who wrote this stuff in the first
-place might. I've CC'd some.
-
-On Tue, Jan 23, 2018 at 06:08:06PM +0100, Philippe Cornu wrote:
-> The pixel clock is optional. When available, it offers a better
-> preciseness for timing computations and allows to reduce the extra dsi
-> bandwidth in burst mode (from ~20% to ~10-12%, hw platform dependant).
-> 
-> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
-> ---
-> Changes in v3: Simplify px_clk probing thanks to Andrzej Hajda comments
-> 
-> Changes in v2: Improve px_clk probing in case of ENOENT dt returned value
-> (thanks to Philipp Zabel & Andrzej Hajda comments)
-> 
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 25 +++++++++++++++++++------
->  1 file changed, 19 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index ed8af32f8e52..9fb35385c348 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -217,6 +217,7 @@ struct dw_mipi_dsi {
->  	void __iomem *base;
->  
->  	struct clk *pclk;
-> +	struct clk *px_clk;
->  
->  	unsigned int lane_mbps; /* per lane */
->  	u32 channel;
-> @@ -703,24 +704,28 @@ static void dw_mipi_dsi_bridge_mode_set(struct drm_bridge *bridge,
->  	struct dw_mipi_dsi *dsi = bridge_to_dsi(bridge);
->  	const struct dw_mipi_dsi_phy_ops *phy_ops = dsi->plat_data->phy_ops;
->  	void *priv_data = dsi->plat_data->priv_data;
-> +	struct drm_display_mode px_clk_mode = *mode;
->  	int ret;
->  
->  	clk_prepare_enable(dsi->pclk);
->  
-> -	ret = phy_ops->get_lane_mbps(priv_data, mode, dsi->mode_flags,
-> +	if (dsi->px_clk)
-> +		px_clk_mode.clock = clk_get_rate(dsi->px_clk) / 1000;
-> +
-> +	ret = phy_ops->get_lane_mbps(priv_data, &px_clk_mode, dsi->mode_flags,
->  				     dsi->lanes, dsi->format, &dsi->lane_mbps);
->  	if (ret)
->  		DRM_DEBUG_DRIVER("Phy get_lane_mbps() failed\n");
->  
->  	pm_runtime_get_sync(dsi->dev);
->  	dw_mipi_dsi_init(dsi);
-> -	dw_mipi_dsi_dpi_config(dsi, mode);
-> +	dw_mipi_dsi_dpi_config(dsi, &px_clk_mode);
->  	dw_mipi_dsi_packet_handler_config(dsi);
->  	dw_mipi_dsi_video_mode_config(dsi);
-> -	dw_mipi_dsi_video_packet_config(dsi, mode);
-> +	dw_mipi_dsi_video_packet_config(dsi, &px_clk_mode);
->  	dw_mipi_dsi_command_mode_config(dsi);
-> -	dw_mipi_dsi_line_timer_config(dsi, mode);
-> -	dw_mipi_dsi_vertical_timing_config(dsi, mode);
-> +	dw_mipi_dsi_line_timer_config(dsi, &px_clk_mode);
-> +	dw_mipi_dsi_vertical_timing_config(dsi, &px_clk_mode);
->  
->  	dw_mipi_dsi_dphy_init(dsi);
->  	dw_mipi_dsi_dphy_timing_config(dsi);
-> @@ -734,7 +739,7 @@ static void dw_mipi_dsi_bridge_mode_set(struct drm_bridge *bridge,
->  
->  	dw_mipi_dsi_dphy_enable(dsi);
->  
-> -	dw_mipi_dsi_wait_for_two_frames(mode);
-> +	dw_mipi_dsi_wait_for_two_frames(&px_clk_mode);
->  
->  	/* Switch to cmd mode for panel-bridge pre_enable & panel prepare */
->  	dw_mipi_dsi_set_mode(dsi, 0);
-> @@ -828,6 +833,14 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
->  		return ERR_PTR(ret);
->  	}
->  
-> +	dsi->px_clk = devm_clk_get(dev, "px_clk");
-
-Did you write a device tree binding document update for this anywhere?
-
-Brian
-
-> +	if (IS_ERR(dsi->px_clk)) {
-> +		ret = PTR_ERR(dsi->px_clk);
-> +		if (ret != ENOENT)
-> +			dev_err(dev, "Unable to get opt. px_clk: %d\n", ret);
-> +		dsi->px_clk = NULL;
-> +	}
-> +
->  	/*
->  	 * Note that the reset was not defined in the initial device tree, so
->  	 * we have to be prepared for it not being found.
-> -- 
-> 2.15.1
-> 
+SGkgUGhpbGlwcGUsCgpPbiBUaHUsIEphbiAxOCwgMjAxOCBhdCAxMTo0MDo0OEFNICswMDAwLCBQ
+aGlsaXBwZSBDT1JOVSB3cm90ZToKPiBPbiAwMS8xMS8yMDE4IDEyOjE2IFBNLCBQaGlsaXBwZSBD
+T1JOVSB3cm90ZToKPiA+IFRvIGJlIGhvbmVzdCwgSSBkbyBub3QgcmVhbGx5IGxpa2UgdGhlIG1l
+bWNweSBoZXJlIHRvbyBhbmQgSSBhZ3JlZSB3aXRoIAo+ID4geW91IHJlZ2FyZGluZyB0aGUgQkUg
+aXNzdWUuCj4gPiAKPiA+IE15IGZpcnN0ICJzdG0iIGRyaXZlciAoaWUuIGJlZm9yZSB1c2luZyB0
+aGlzICJmcmVlc2NhbGUvcm9ja2NoaXAiIAo+ID4gZHctbWlwaS1kc2kgZHJpdmVyIHdpdGggdGhl
+IG1lbWNweSkgdXNlZCB0aGUgImV4YWN0IiBzYW1lIGNvZGUgYXMgdGhlIAo+ID4gVGVncmEgZHNp
+IHRlZ3JhX2RzaV93cml0ZXNsKCkgZnVuY3Rpb24gd2l0aCB0aGUgMiBsb29wcy4KPiA+IAo+ID4g
+aHR0cHM6Ly9lbGl4aXIuZnJlZS1lbGVjdHJvbnMuY29tL2xpbnV4L3Y0LjE0L3NvdXJjZS9kcml2
+ZXJzL2dwdS9kcm0vdGVncmEvZHNpLmMjTDEyNDggCj4gPiAKPiA+IAo+ID4gSU1ITywgaXQgaXMg
+YmV0dGVyIHRoYW4gbWVtY3B5Li4uCj4gPiBJIGFkZGVkIHRoZXNlIDMgImRvY3VtZW50YXRpb24i
+IGxpbmVzLCBtYXliZSB3ZSBtYXkgcmV1c2UgdGhlbSBvciAKPiA+IHNvbWV0aGluZyBzaW1pbGFy
+Li4uCj4gPiAKPiA+IC8qCj4gPiAgwqAqIFdyaXRlIDgtYml0IHBheWxvYWQgZGF0YSBpbnRvIHRo
+ZSAzMi1iaXQgcGF5bG9hZCBkYXRhIHJlZ2lzdGVyLgo+ID4gIMKgKiBleDogcGF5bG9hZCBkYXRh
+ICIweDAxLCAweDAyLCAweDAzLCAweDA0LCAweDA1LCAweDA2IiB3aWxsIGJlY29tZQo+ID4gIMKg
+KiAiMHgwNDAzMDIwMSAweDAwMDAwNjA1IiAzMi1iaXQgd3JpdGVzCj4gPiAgwqAqLwo+ID4gCj4g
+PiBOb3Qgc3VyZSBpdCBoZWxwcyB0byBmaXggdGhlIEJFIGlzc3VlIGJ1dCB3ZSBtYXkgYWRkIGEg
+VE9ETyBzdGF0aW5nIHRoYXQgCj4gPiAidGhpcyBsb29wIGhhcyBub3QgYmVlbiB0ZXN0ZWQgb24g
+QkUiLi4uCj4gPiAKPiA+IFdoYXQgaXMgeW91ciBvcGluaW9uPwoKSSdtIHNvcnJ5LCBJIGRvbid0
+IHRoaW5rIEkgbm90aWNlZCB5b3VyIHJlcGx5IGhlcmUuIEknbSB0cnlpbmcgdG8gdW5idXJ5CnNv
+bWUgZW1haWwsIGJ1dCB0aGF0J3Mgc29tZXRpbWVzIGEgbG9zaW5nIGJhdHRsZS4uLgoKVGhhdCBj
+b2RlIGFjdHVhbGx5IGRvZXMgbG9vayBjb3JyZWN0LCBhbmQgaXQncyBwZXJoYXBzIG1hcmdpbmFs
+bHkKYmV0dGVyLWxvb2tpbmcgaW4gbXkgb3Bpbmlvbi4gSXQncyB1cCB0byB5b3UgaWYgeW91IHdh
+bnQgdG8gcHJvcG9zZQphbm90aGVyIHBhdGNoIDopIEF0IHRoaXMgcG9pbnQsIGl0J3Mgb25seSBh
+IG1hdHRlciBvZiBuaWNlIGNvZGUsIG5vdApjb3JyZWN0bmVzcyBJIGJlbGlldmUuCgo+IEFzIHlv
+dXIgcGF0Y2ggaGFzIGJlZW4gbWVyZ2VkLCBJIGhhdmUgZmV3IHNob3J0IHF1ZXN0aW9ucyBhbmQg
+Zm9yIGVhY2ggCj4gcmVsYXRlZCBuZXcgcGF0Y2gsIEkgd291bGQgbGlrZSB0byBrbm93IGlmIHlv
+dSBwcmVmZXIgdGhhdCBJIGltcGxlbWVudCAKPiBpdCBvciBpZiB5b3UgcHJlZmVyIHRvIGRvIGl0
+IGJ5IHlvdXJzZWxmLCBpdCdzIHJlYWxseSBsaWtlIHlvdSB3YW50LCBvbiAKPiBteSBzaWRlLCBu
+byBwcm9ibGVtIHRvIG1ha2UgdGhlbSBhbGwsIHNvbWUgb3Igbm9uZSwgSSBkb24ndCB3YW50IHVz
+IHRvIAo+IGltcGxlbWVudCB0aGVzZSBpbiBwYXJhbGxlbCA6LSkKPiAKPiAqIERvIHlvdSBoYXZl
+IGFueSBvcGluaW9uIHJlZ2FyZGluZyBUZWdyYS1saWtlIGxvb3BzIHZzIHRoZSBtZW1jcHk/IChz
+ZWUgCj4gbXkgY29tbWVudCBhYm92ZSkgSWYgeW91IHRoaW5rIHRoZSBUZWdyYS1saWtlIGxvb3Bz
+IGlzIGEgYmV0dGVyIGFwcHJvYWNoIAo+IHRoYW4gbWVtY3B5LCB0aGVyZSBpcyBhIHNtYWxsIHBh
+dGNoIHRvIHdyaXRlLgoKTXkgb3BpbmlvbiBpcyBhYm92ZS4KCj4gKiBSZXR1cm5lZCB2YWx1ZSB3
+aXRoIG51bWJlciBvZiBieXRlcyByZWNlaXZlZC90cmFuc2ZlcnJlZDogdGhlcmUgaXMgYSAKPiBz
+bWFsbCBwYXRjaCB0byB3cml0ZQoKSSBkb24ndCB0aGluayBJIGZvbGxvd2VkIHRoYXQgb25lIHZl
+cnkgd2VsbC4gSSdtIG5vdCBzdXJlIG15IG9waW5pb24KcmVhbGx5IG1hdHRlcnMsIGFzIGxvbmcg
+YXMgeW91IGdldCBzb21lb25lIGVsc2UgdG8gYWdyZWUuIEkgZG8gbm90IHBsYW4KdG8gd3JpdGUg
+YW55IHN1Y2ggcGF0Y2ggaW4gdGhlIG5lYXIgdGVybS4KCj4gKiBSZWdhcmRpbmcgcmVhZCBvcGVy
+YXRpb25zOiBJIHByb3Bvc2UgdG8gYWRkIGEgVE9ETyArIERSTV9XQVJOIGluIGNhc2UgCj4gc29t
+ZW9uZSB3YW50IHRvIHVzZSB0aGUgQVBJIGZvciByZWFkIG9wZXJhdGlvbnMuIE5vdGUgdGhhdCBJ
+IHBsYW4gdG8gCj4gaW1wbGVtZW50IHRoZSByZWFkIGZlYXR1cmUgYnV0IEkgZG8gbm90IGtub3cg
+eWV0IHdoZW4gYW5kIG1heWJlIFJvY2tjaGlwIAo+IHBlb3BsZSBhbHJlYWR5IGhhdmUgc29tZXRo
+aW5nIH5yZWFkeT8KClRoZSB3YXJuaW5nIHdvdWxkIGJlIG5pY2UgdG8gZG8gbm93LCByZWdhcmRs
+ZXNzLgoKUm9ja2NoaXAgZm9sa3Mgd3JvdGUgdXAgc29tZXRoaW5nIGZvciByZWFkIHN1cHBvcnQg
+aGVyZSBbMV0sIGJ1dCBpdCdzCmJhc2VkIG9uIGEgc2VtaS1mb3JrZWQgdmVyc2lvbiBvZiB0aGUg
+ZHJpdmVyICh3ZSdyZSB0cnlpbmcgdG8gY2xlYW4gdXAKdGhlIGRpdmVyZ2VuY2UsIGJ1dCBpdCdz
+IG5vdCB0aGVyZSB5ZXQpLiBQZXJoYXBzIGl0IHdvdWxkIHByb3ZpZGUgdXNlZnVsCmZvZGRlciBm
+b3IgeW91ciB3b3JrLiBJIGRvbid0IHRoaW5rIFJvY2tjaGlwIGlzIGltbWVkaWF0ZWx5IHdvcmtp
+bmcgb24KdXBzdHJlYW1pbmcgdGhpcyBwYXJ0aWN1bGFyIHBhdGNoLCBzbyBpdCdzIHRvdGFsbHkg
+ZmFpciB0byBoYW5kbGUgaXQKeW91cnNlbGYuIEl0J3MgZ290IHRoZSBHUEwgc2lnbi1vZmYgOykK
+CkJyaWFuCgpbMV0gaHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS9jL2No
+cm9taXVtb3MvdGhpcmRfcGFydHkva2VybmVsLysvODYzMzQ3Cl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
