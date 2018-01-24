@@ -1,62 +1,85 @@
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Subject: Re: [PATCH v3 00/22] Verbatim device names and devm_nvmem_(un)register()
-Date: Wed, 24 Jan 2018 12:13:42 +0100
-Message-ID: <CAMRc=Mct60LMcr-CGJue1dTK+XNwz=dmkm2arTGeN1czeN9JoA@mail.gmail.com>
-References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+From: Philippe CORNU <philippe.cornu@st.com>
+Subject: Re: [PATCH v1 2/2] drm/bridge/synopsys: dsi: Add a warning msg on dsi
+ read operations
+Date: Wed, 24 Jan 2018 13:22:04 +0000
+Message-ID: <369181f6-1bb4-0559-86c9-5528be7fc459@st.com>
+References: <20180123142618.28384-1-philippe.cornu@st.com>
+ <20180123142618.28384-3-philippe.cornu@st.com>
+ <CA+ASDXPJ9uPDwRhP2WbazjeT6o=6L0ttffWXjwjkD3KxB+1cuQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CA+ASDXPJ9uPDwRhP2WbazjeT6o=6L0ttffWXjwjkD3KxB+1cuQ@mail.gmail.com>
+Content-Language: en-US
+Content-ID: <00BEAF5332774E43805BEA12DB48CD41@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-2018-01-03 21:00 GMT+01:00 Andrey Smirnov <andrew.smirnov@gmail.com>:
-> Srinivas, all:
->
-> This patchset contains various small changes that I recently made to
-> NVMEM, more specifically:
->
->  - Patches 1 and 3 are two changes I am hoping are acceptable upstream
->
->  - Patches 4 to 15 are a follow up to patch 2
->
->  - Patches 16 to 22 are just trivial fixups and I am more than happy
->    to drop them if they seem to add more pointless churn rather then
->    value.
->
-> Feedback is appreciated!
->
-> Thanks,
-> Andrey Smirnov
->
-> Changes since [v2]:
->
->  - Added a patch with kerenl doc for struct nvmem_config as a
->    prerequsite for patch #2
->
->  - Documented behaviour of nvmem_register() when id is set to -1
->
->  - Added kernel doc for devm_nvmem_(un)register()
->
->
-> Changes since [v1]:
->
->  - Fixed a build break detected by kbuild test robot
->
->  - Added a patch to unconditionally enable COMPILE_TEST for meson-efuse
->
->  - Dropped Joachim Eastwood from CC list due to bouncing e-mail
->
-> [v2] lkml.kernel.org/r/20180101232310.30420-1-andrew.smirnov@gmail.com
-> [v1] lkml.kernel.org/r/20171227225956.14442-1-andrew.smirnov@gmail.com
->
->
-
-Hi Srinivas,
-
-I don't see this series in next - is it going to miss this merge window?
-
-Thanks,
-Bartosz
+SGkgQnJpYW4sDQoNCg0KT24gMDEvMjMvMjAxOCAxMDoyOCBQTSwgQnJpYW4gTm9ycmlzIHdyb3Rl
+Og0KPiBIaSBQaGlsaXBwZSwNCj4gDQo+IEkgc2VlIHlvdSBzZW50IHRoaXMgb3V0IGFscmVhZHkg
+dG9kYXksIHdoaWxlIEkgb25seSBqdXN0IHJlc3BvbmRlZA0KPiAobGF0ZSkgdG8geW91ciBxdWVz
+dGlvbnMgYWJvdXQgaXQuLi4gb2ggd2VsbCA6KQ0KPiANCg0KSSBnb3QgYSBzaG9ydCBwZXJpb2Qg
+dG8gY2xlYW4tdXAgYW5kIGFkZHMgZmVhdHVyZXMgdG8gdGhpcyBkcml2ZXIgKDEuMzEgDQppcCB2
+ZXJzaW9uICsgbWF5YmUgdGhlIHJlYWQgZmVhdHVyZSksIHNvcnJ5IHRvIGhhdmUgbm90IHdhaXQg
+YSBzaW5nbGUgDQpkYXkgbW9yZS4NCg0KPiBPbiBUdWUsIEphbiAyMywgMjAxOCBhdCA2OjI2IEFN
+LCBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPiB3cm90ZToNCj4+IFRoZSBE
+Q1MvR0VORVJJQyBEU0kgcmVhZCBmZWF0dXJlIGlzIG5vdCB5ZXQgaW1wbGVtZW50ZWQgc28gaXQN
+Cj4+IGlzIGltcG9ydGFudCB0byB3YXJuIHRoZSBob3N0X3RyYW5zZmVyKCkgY2FsbGVyIGluIGNh
+c2Ugb2YNCj4+IHJlYWQgb3BlcmF0aW9uIHJlcXVlc3RzLg0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6
+IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+DQo+PiAtLS0NCj4+ICAgZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIHwgOSArKysrKysrKy0N
+Cj4+ICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPj4N
+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
+ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMNCj4+
+IGluZGV4IDA5NmNmNWU1YmIzMC4uZTQ2ZGRmZjg2MDFjIDEwMDY0NA0KPj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+PiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMNCj4+IEBAIC00MTcsNyArNDE3
+LDE0IEBAIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1p
+cGlfZHNpX2hvc3QgKmhvc3QsDQo+PiAgICAgICAgICBpZiAocmV0KQ0KPj4gICAgICAgICAgICAg
+ICAgICByZXR1cm4gcmV0Ow0KPj4NCj4+IC0gICAgICAgbmJfYnl0ZXMgPSBwYWNrZXQuc2l6ZTsN
+Cj4+ICsgICAgICAgaWYgKG1zZy0+cnhfYnVmICYmIG1zZy0+cnhfbGVuID4gMCkgew0KPiANCj4g
+SXQgZmVlbHMgbGlrZSB5b3Ugc2hvdWxkIGRvIHRoaXMgY2hlY2sgKmJlZm9yZSogeW91IHN0YXJ0
+IHdyaXRpbmcNCj4gYW55dGhpbmcuIEl0J3MgcG9zc2libGUgdG8gaGF2ZSBhIGNvbWJpbmF0aW9u
+IFRYL1JYIGNvbW1hbmQsIGFuZCBpdA0KPiB3b3VsZCBiZSBjb3VudGVyaW50dWl0aXZlIHRvIG9u
+bHkgZG8gaGFsZiB0aGUgb3BlcmF0aW9uIHRoZW4gcmV0dXJuDQo+IHdpdGggYW4gYXJndW1lbnQg
+ZXJyb3IuDQo+IA0KDQpNYW55IHRoYW5rcyBmb3IgeW91ciByZXZpZXcuDQoNCkkgYWdyZWUgd2l0
+aCB5b3VyIGNvbW1lbnRzLg0KDQpXZWxsLCBteSBwYXRjaCBpcyBub3QgZ29vZCBhdCBhbGwgYmVj
+YXVzZSBpdCBjb250YWlucyBhIHNtYWxsIHBhcnQgb2YgDQp0aGUgcmVhZCBmZWF0dXJlIEkgYW0g
+d3JpdGluZy4uLiBidXQgaXQgaXMgbm90IHRoZSBwdXJwb3NlIG9mIHRoaXMgcGF0Y2guDQoNCk5v
+IGV4Y3VzZSwgc29ycnkgZ3V5cyBmb3IgbWFraW5nIHlvdSB3YXN0ZSB0aW1lLg0KDQpJIHdpbGwg
+cmUtd3JpdGUgYSBuZXcgcGF0Y2ggMTAwJSBkZWNvcnJlbGF0ZWQgZnJvbSBhIHBvc3NpYmxlIGZ1
+dHVyZSANCnJlYWQgZmVhdHVyZS4NCg0KSSBjb3VsZCBhbHNvIHdhaXQgdW50aWwgSSBoYXZlIGEg
+d29ya2luZyByZWFkIGZlYXR1cmUgYnV0IGFzIGl0IGNvdWxkIA0KdGFrZSBzb21lIHRpbWVzLCBJ
+IHByZWZlciB3YXJuaW5nIHVzZXJzIGFzYXAuDQoNCj4+ICsgICAgICAgICAgICAgICAvKiBUT0RP
+IGR3IGRydiBpbXByb3ZlbWVudHM6IGltcGxlbWVudCByZWFkIGZlYXR1cmUgKi8NCj4+ICsgICAg
+ICAgICAgICAgICBkZXZfd2Fybihkc2ktPmRldiwgInJlYWQgb3BlcmF0aW9ucyBub3QgeWV0IGlt
+cGxlbWVudGVkXG4iKTsNCj4+ICsgICAgICAgICAgICAgICByZXR1cm4gLUVQRVJNOw0KPiANCj4g
+SSdtIG5vdCBzdXJlIC1FUEVSTSBpcyByaWdodC4gRmVlbHMgbGlrZSAtRUlOVkFMLCAtRU5PU1lT
+LCBvcg0KPiAtRU9QTk9UU1VQUC4gSSB0aGluayAtRU5PU1lTIGFjdHVhbGx5IGhhcyBiZWVuIGFi
+dXNlZCBzb21ld2hhdCwgc28NCj4gbWF5YmUgb25lIG9mIHRoZSBvdGhlciB0d28uDQo+IA0KDQpu
+b3QgZWFzeSB0byBwaWNrIHRoZSByaWdodCBvbmUuIEkgd2lsbCB1c2UgLUVJTlZBTC4NCg0KPj4g
+Kw0KPiANCj4gU3B1cmlvdXMgYmxhbmsgbGluZT8NCj4gDQp0aGFua3MNCg0KPj4gKyAgICAgICB9
+IGVsc2Ugew0KPj4gKyAgICAgICAgICAgICAgIG5iX2J5dGVzID0gcGFja2V0LnNpemU7DQo+PiAr
+ICAgICAgIH0NCj4gDQo+IFlvdSBkb24ndCBhY3R1YWxseSBuZWVkIHRvIHB1dCB0aGlzIHNvcnQg
+b2YgdGhpbmcgaW4gdGhlICdlbHNlJyBjYXNlLg0KPiBUaGUgb3RoZXIgYnJhbmNoIGlzIGFuIGVy
+cm9yLWhhbmRsaW5nIGNhc2UsIHdoaWNoIGRlZmluaXRlbHkgJ3JldHVybidzDQo+IGVhcmx5LCBh
+bmQgaXQncyBwcmV0dHkgc3RhbmRhcmQgY29kaW5nIHN0eWxlIHRvIGF2b2lkIGluZGVudGluZyB0
+aGUNCj4gImdvb2QiIHBhdGggbGlrZSB0aGlzLg0KPiANCj4gQnJpYW4NCj4gDQoNClRoZSBlbHNl
+IHBhcnQgaXMgbGlua2VkIHRvIG15ICJyZWFkIGZlYXR1cmUiIHRvbywgc29ycnkgZm9yIHRoYXQu
+IEkgd2lsbCANCmRvIGl0IHNpbXBsZXIgaW4gbmV4dCB2ZXJzaW9uLg0KDQpUaGFuayB5b3UsDQpQ
+aGlsaXBwZSA6LSkNCg0KPj4NCj4+ICAgICAgICAgIHJldHVybiBuYl9ieXRlczsNCj4+ICAgfQ0K
+Pj4gLS0NCj4+IDIuMTUuMQ0KPj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
