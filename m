@@ -1,105 +1,66 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use common
- mipi_dsi_create_packet()
-Date: Wed, 24 Jan 2018 09:51:18 +0000
-Message-ID: <a5c00d22-1df6-fe9c-d333-12a6b689acb3@st.com>
-References: <20180106003813.4816-1-briannorris@chromium.org>
- <715bb58c-efa6-7944-f186-c186d7fae569@st.com>
- <20180109185512.GA73309@google.com>
- <c680f230-393f-8bfa-cc9c-3b8db87bd5fb@st.com>
- <023c159e-0a7f-7d1b-a2d8-8ef19033a1b3@st.com>
- <20180123211505.xvpu3putjjbqnl2b@ban.mtv.corp.google.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v4 08/13] iommu/rockchip: Control clocks needed to access
+	the IOMMU
+Date: Wed, 24 Jan 2018 18:51:39 +0900
+Message-ID: <CAAFQd5AjisfRTefYthLgecRYroi4gVunEwX2DzhD0ywMOO5Yzg@mail.gmail.com>
+References: <20180118115251.5542-1-jeffy.chen@rock-chips.com>
+	<20180118115251.5542-9-jeffy.chen@rock-chips.com>
+	<c188e6a9-744c-d984-545c-408607f35cc9@arm.com>
+	<5A60AE41.2050101@rock-chips.com>
+	<1f4b3c0d-1414-0012-a072-f4a11f432c21@rock-chips.com>
+	<5A654925.9020203@rock-chips.com> <5A6563FA.8080602@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180123211505.xvpu3putjjbqnl2b@ban.mtv.corp.google.com>
-Content-Language: en-US
-Content-ID: <C37E1390092FCA479EBAD78A69E1CD12@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, Vincent ABRIOU <vincent.abriou@st.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <5A6563FA.8080602-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQnJpYW4sDQoNCk9uIDAxLzIzLzIwMTggMTA6MTUgUE0sIEJyaWFuIE5vcnJpcyB3cm90ZToN
-Cj4gSGkgUGhpbGlwcGUsDQo+IA0KPiBPbiBUaHUsIEphbiAxOCwgMjAxOCBhdCAxMTo0MDo0OEFN
-ICswMDAwLCBQaGlsaXBwZSBDT1JOVSB3cm90ZToNCj4+IE9uIDAxLzExLzIwMTggMTI6MTYgUE0s
-IFBoaWxpcHBlIENPUk5VIHdyb3RlOg0KPj4+IFRvIGJlIGhvbmVzdCwgSSBkbyBub3QgcmVhbGx5
-IGxpa2UgdGhlIG1lbWNweSBoZXJlIHRvbyBhbmQgSSBhZ3JlZSB3aXRoDQo+Pj4geW91IHJlZ2Fy
-ZGluZyB0aGUgQkUgaXNzdWUuDQo+Pj4NCj4+PiBNeSBmaXJzdCAic3RtIiBkcml2ZXIgKGllLiBi
-ZWZvcmUgdXNpbmcgdGhpcyAiZnJlZXNjYWxlL3JvY2tjaGlwIg0KPj4+IGR3LW1pcGktZHNpIGRy
-aXZlciB3aXRoIHRoZSBtZW1jcHkpIHVzZWQgdGhlICJleGFjdCIgc2FtZSBjb2RlIGFzIHRoZQ0K
-Pj4+IFRlZ3JhIGRzaSB0ZWdyYV9kc2lfd3JpdGVzbCgpIGZ1bmN0aW9uIHdpdGggdGhlIDIgbG9v
-cHMuDQo+Pj4NCj4+PiBodHRwczovL2VsaXhpci5mcmVlLWVsZWN0cm9ucy5jb20vbGludXgvdjQu
-MTQvc291cmNlL2RyaXZlcnMvZ3B1L2RybS90ZWdyYS9kc2kuYyNMMTI0OA0KPj4+DQo+Pj4NCj4+
-PiBJTUhPLCBpdCBpcyBiZXR0ZXIgdGhhbiBtZW1jcHkuLi4NCj4+PiBJIGFkZGVkIHRoZXNlIDMg
-ImRvY3VtZW50YXRpb24iIGxpbmVzLCBtYXliZSB3ZSBtYXkgcmV1c2UgdGhlbSBvcg0KPj4+IHNv
-bWV0aGluZyBzaW1pbGFyLi4uDQo+Pj4NCj4+PiAvKg0KPj4+ICAgwqAqIFdyaXRlIDgtYml0IHBh
-eWxvYWQgZGF0YSBpbnRvIHRoZSAzMi1iaXQgcGF5bG9hZCBkYXRhIHJlZ2lzdGVyLg0KPj4+ICAg
-wqAqIGV4OiBwYXlsb2FkIGRhdGEgIjB4MDEsIDB4MDIsIDB4MDMsIDB4MDQsIDB4MDUsIDB4MDYi
-IHdpbGwgYmVjb21lDQo+Pj4gICDCoCogIjB4MDQwMzAyMDEgMHgwMDAwMDYwNSIgMzItYml0IHdy
-aXRlcw0KPj4+ICAgwqAqLw0KPj4+DQo+Pj4gTm90IHN1cmUgaXQgaGVscHMgdG8gZml4IHRoZSBC
-RSBpc3N1ZSBidXQgd2UgbWF5IGFkZCBhIFRPRE8gc3RhdGluZyB0aGF0DQo+Pj4gInRoaXMgbG9v
-cCBoYXMgbm90IGJlZW4gdGVzdGVkIG9uIEJFIi4uLg0KPj4+DQo+Pj4gV2hhdCBpcyB5b3VyIG9w
-aW5pb24/DQo+IA0KPiBJJ20gc29ycnksIEkgZG9uJ3QgdGhpbmsgSSBub3RpY2VkIHlvdXIgcmVw
-bHkgaGVyZS4gSSdtIHRyeWluZyB0byB1bmJ1cnkNCj4gc29tZSBlbWFpbCwgYnV0IHRoYXQncyBz
-b21ldGltZXMgYSBsb3NpbmcgYmF0dGxlLi4uDQo+IA0KPiBUaGF0IGNvZGUgYWN0dWFsbHkgZG9l
-cyBsb29rIGNvcnJlY3QsIGFuZCBpdCdzIHBlcmhhcHMgbWFyZ2luYWxseQ0KPiBiZXR0ZXItbG9v
-a2luZyBpbiBteSBvcGluaW9uLiBJdCdzIHVwIHRvIHlvdSBpZiB5b3Ugd2FudCB0byBwcm9wb3Nl
-DQo+IGFub3RoZXIgcGF0Y2ggOikgQXQgdGhpcyBwb2ludCwgaXQncyBvbmx5IGEgbWF0dGVyIG9m
-IG5pY2UgY29kZSwgbm90DQo+IGNvcnJlY3RuZXNzIEkgYmVsaWV2ZS4NCj4gDQo+PiBBcyB5b3Vy
-IHBhdGNoIGhhcyBiZWVuIG1lcmdlZCwgSSBoYXZlIGZldyBzaG9ydCBxdWVzdGlvbnMgYW5kIGZv
-ciBlYWNoDQo+PiByZWxhdGVkIG5ldyBwYXRjaCwgSSB3b3VsZCBsaWtlIHRvIGtub3cgaWYgeW91
-IHByZWZlciB0aGF0IEkgaW1wbGVtZW50DQo+PiBpdCBvciBpZiB5b3UgcHJlZmVyIHRvIGRvIGl0
-IGJ5IHlvdXJzZWxmLCBpdCdzIHJlYWxseSBsaWtlIHlvdSB3YW50LCBvbg0KPj4gbXkgc2lkZSwg
-bm8gcHJvYmxlbSB0byBtYWtlIHRoZW0gYWxsLCBzb21lIG9yIG5vbmUsIEkgZG9uJ3Qgd2FudCB1
-cyB0bw0KPj4gaW1wbGVtZW50IHRoZXNlIGluIHBhcmFsbGVsIDotKQ0KPj4NCj4+ICogRG8geW91
-IGhhdmUgYW55IG9waW5pb24gcmVnYXJkaW5nIFRlZ3JhLWxpa2UgbG9vcHMgdnMgdGhlIG1lbWNw
-eT8gKHNlZQ0KPj4gbXkgY29tbWVudCBhYm92ZSkgSWYgeW91IHRoaW5rIHRoZSBUZWdyYS1saWtl
-IGxvb3BzIGlzIGEgYmV0dGVyIGFwcHJvYWNoDQo+PiB0aGFuIG1lbWNweSwgdGhlcmUgaXMgYSBz
-bWFsbCBwYXRjaCB0byB3cml0ZS4NCj4gDQo+IE15IG9waW5pb24gaXMgYWJvdmUuDQo+IA0KDQpJ
-IGRvIG5vdCBrbm93IHlldCBpZiBJIHdpbGwgc2VuZCBhIHBhdGNoIGJ1dCBzZXZlcmFsIHJlYXNv
-bnMgbWF5IHB1c2ggbWUgDQp0byBkbyBpdDoNCiogQW5kcnplaiBwcm9wb3NlZCBhIG5pY2VyIGNv
-ZGUgaW4gaGlzIGxhc3QgcmV2aWV3IHNvIGl0IG1lYW5zIHRoZSANCmFjdHVhbCBjb2RlIHdpdGgg
-bWVtY3B5J3MgaXMgIm5vdCBzbyBuaWNlIiAoZXZlbiBpZiBpdCB3b3JrcyBmaW5lKQ0KKiBTZXZl
-cmFsIGRzaSBkcml2ZXJzIHVzZSB0aGUgVGVncmEtbGlrZSBsb29wcyAoVGVncmEsIGludGVsLC4u
-LiApIGFuZCANCmluIHZjNC9leHlub3MvbXRrIGRyaXZlcnMgbWVtY3B5IGlzIG5vdCB1c2VkLCBt
-c20gdXNlcyBtZW1jcHkuLi4gd2VsbCwgDQpub3Qgc3VyZSBpdCBpcyB0aGVuIGEgZ29vZCBhcmd1
-bWVudCwgZGlmZmVyZW50IHNvbHV0aW9ucyBmb3IgZGlmZmVyZW50IGh3Li4uDQoqIENvbWluZyBj
-YWRlbmNlIGRzaSBicmlkZ2UgZHJpdmVyIHVzZXMgVGVncmEtbGlrZSBsb29wcy4NCiogSSB0aGlu
-ayBteSByZWFkIGZ1bmN0aW9uIHdpbGwgYWxzbyBoYXZlIFRlZ3JhLWxpa2UgbG9vcHMsIGlmIGl0
-IGlzIHRoZSANCmNhc2UsIGl0IGNvdWxkIGJlIG5pY2UgdG8gaGF2ZSBzb21ldGhpbmcgaG9tb2dl
-bmVvdXMuLi4NCg0KQW55d2F5LCBpdCBpcyBub3QgYW4gaW1wb3J0YW50IHBvaW50IDogKQ0KDQo+
-PiAqIFJldHVybmVkIHZhbHVlIHdpdGggbnVtYmVyIG9mIGJ5dGVzIHJlY2VpdmVkL3RyYW5zZmVy
-cmVkOiB0aGVyZSBpcyBhDQo+PiBzbWFsbCBwYXRjaCB0byB3cml0ZQ0KPiANCj4gSSBkb24ndCB0
-aGluayBJIGZvbGxvd2VkIHRoYXQgb25lIHZlcnkgd2VsbC4gSSdtIG5vdCBzdXJlIG15IG9waW5p
-b24NCj4gcmVhbGx5IG1hdHRlcnMsIGFzIGxvbmcgYXMgeW91IGdldCBzb21lb25lIGVsc2UgdG8g
-YWdyZWUuIEkgZG8gbm90IHBsYW4NCj4gdG8gd3JpdGUgYW55IHN1Y2ggcGF0Y2ggaW4gdGhlIG5l
-YXIgdGVybS4NCj4gDQo+PiAqIFJlZ2FyZGluZyByZWFkIG9wZXJhdGlvbnM6IEkgcHJvcG9zZSB0
-byBhZGQgYSBUT0RPICsgRFJNX1dBUk4gaW4gY2FzZQ0KPj4gc29tZW9uZSB3YW50IHRvIHVzZSB0
-aGUgQVBJIGZvciByZWFkIG9wZXJhdGlvbnMuIE5vdGUgdGhhdCBJIHBsYW4gdG8NCj4+IGltcGxl
-bWVudCB0aGUgcmVhZCBmZWF0dXJlIGJ1dCBJIGRvIG5vdCBrbm93IHlldCB3aGVuIGFuZCBtYXli
-ZSBSb2NrY2hpcA0KPj4gcGVvcGxlIGFscmVhZHkgaGF2ZSBzb21ldGhpbmcgfnJlYWR5Pw0KPiAN
-Cj4gVGhlIHdhcm5pbmcgd291bGQgYmUgbmljZSB0byBkbyBub3csIHJlZ2FyZGxlc3MuDQo+IA0K
-PiBSb2NrY2hpcCBmb2xrcyB3cm90ZSB1cCBzb21ldGhpbmcgZm9yIHJlYWQgc3VwcG9ydCBoZXJl
-IFsxXSwgYnV0IGl0J3MNCj4gYmFzZWQgb24gYSBzZW1pLWZvcmtlZCB2ZXJzaW9uIG9mIHRoZSBk
-cml2ZXIgKHdlJ3JlIHRyeWluZyB0byBjbGVhbiB1cA0KPiB0aGUgZGl2ZXJnZW5jZSwgYnV0IGl0
-J3Mgbm90IHRoZXJlIHlldCkuIFBlcmhhcHMgaXQgd291bGQgcHJvdmlkZSB1c2VmdWwNCj4gZm9k
-ZGVyIGZvciB5b3VyIHdvcmsuIEkgZG9uJ3QgdGhpbmsgUm9ja2NoaXAgaXMgaW1tZWRpYXRlbHkg
-d29ya2luZyBvbg0KPiB1cHN0cmVhbWluZyB0aGlzIHBhcnRpY3VsYXIgcGF0Y2gsIHNvIGl0J3Mg
-dG90YWxseSBmYWlyIHRvIGhhbmRsZSBpdA0KPiB5b3Vyc2VsZi4gSXQncyBnb3QgdGhlIEdQTCBz
-aWduLW9mZiA7KQ0KPiANCj4gQnJpYW4NCj4gDQo+IFsxXSBodHRwczovL2Nocm9taXVtLXJldmll
-dy5nb29nbGVzb3VyY2UuY29tL2MvY2hyb21pdW1vcy90aGlyZF9wYXJ0eS9rZXJuZWwvKy84NjMz
-NDcNCj4gDQoNClZlcnkgZ29vZCBpbmZvcm1hdGlvbiwgSSB3aWxsIGhhdmUgYSBsb29rLA0KbWFu
-eSB0aGFua3MNClBoaWxpcHBlIDotKQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+On Mon, Jan 22, 2018 at 1:09 PM, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Hi Randy,
+>
+>
+> On 01/22/2018 10:15 AM, JeffyChen wrote:
+>>
+>> Hi Randy,
+>>
+>> On 01/22/2018 09:18 AM, Randy Li wrote:
+>>>>
+>>>>
+>>> Also the power domain driver could manage the clocks as well, I would
+>>> suggest to use pm_runtime_*.
+>>
+>>
+>> actually the clocks required by pm domain may not be the same as what we
+>> want to control here, there might be some clocks only be needed when
+>> accessing mmu registers.
+>>
+>> but i'm not very sure about that, will confirm it with Simon Xue.
+>
+>
+> confirmed with Simon, there might be some iommus don't have a pd, and the
+> CONFIG_PM could be disabled.
+>
+> so it might be better to control clocks in iommu driver itself.
+>
+
+Agreed with Jeffy.
+
+I'd give Reviewed-by, but this is my own patch reposted by Jeffy
+(thanks!), so it wouldn't have any value. :)
+
+Best regards,
+Tomasz
