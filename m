@@ -1,105 +1,62 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 13/13] iommu/rockchip: Support sharing IOMMU between masters
-Date: Wed, 24 Jan 2018 18:35:16 +0800
-Message-ID: <20180124103516.2571-14-jeffy.chen@rock-chips.com>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: Re: [PATCH v3 00/22] Verbatim device names and devm_nvmem_(un)register()
+Date: Wed, 24 Jan 2018 12:13:42 +0100
+Message-ID: <CAMRc=Mct60LMcr-CGJue1dTK+XNwz=dmkm2arTGeN1czeN9JoA@mail.gmail.com>
+References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180124103516.2571-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There would be some masters sharing the same IOMMU device. Put them in
-the same iommu group and share the same iommu domain.
+2018-01-03 21:00 GMT+01:00 Andrey Smirnov <andrew.smirnov@gmail.com>:
+> Srinivas, all:
+>
+> This patchset contains various small changes that I recently made to
+> NVMEM, more specifically:
+>
+>  - Patches 1 and 3 are two changes I am hoping are acceptable upstream
+>
+>  - Patches 4 to 15 are a follow up to patch 2
+>
+>  - Patches 16 to 22 are just trivial fixups and I am more than happy
+>    to drop them if they seem to add more pointless churn rather then
+>    value.
+>
+> Feedback is appreciated!
+>
+> Thanks,
+> Andrey Smirnov
+>
+> Changes since [v2]:
+>
+>  - Added a patch with kerenl doc for struct nvmem_config as a
+>    prerequsite for patch #2
+>
+>  - Documented behaviour of nvmem_register() when id is set to -1
+>
+>  - Added kernel doc for devm_nvmem_(un)register()
+>
+>
+> Changes since [v1]:
+>
+>  - Fixed a build break detected by kbuild test robot
+>
+>  - Added a patch to unconditionally enable COMPILE_TEST for meson-efuse
+>
+>  - Dropped Joachim Eastwood from CC list due to bouncing e-mail
+>
+> [v2] lkml.kernel.org/r/20180101232310.30420-1-andrew.smirnov@gmail.com
+> [v1] lkml.kernel.org/r/20171227225956.14442-1-andrew.smirnov@gmail.com
+>
+>
 
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
----
+Hi Srinivas,
 
-Changes in v5: None
-Changes in v4: None
-Changes in v3:
-Remove rk_iommudata->domain.
+I don't see this series in next - is it going to miss this merge window?
 
-Changes in v2: None
-
- drivers/iommu/rockchip-iommu.c | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index f2a0f06d0a5f..eaa91108a4b0 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -99,6 +99,7 @@ struct rk_iommu {
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-+	struct iommu_group *group;
- };
- 
- struct rk_iommudata {
-@@ -1110,6 +1111,15 @@ static void rk_iommu_remove_device(struct device *dev)
- 	iommu_group_remove_device(dev);
- }
- 
-+static struct iommu_group *rk_iommu_device_group(struct device *dev)
-+{
-+	struct rk_iommu *iommu;
-+
-+	iommu = rk_iommu_from_dev(dev);
-+
-+	return iommu->group;
-+}
-+
- static int rk_iommu_of_xlate(struct device *dev,
- 			     struct of_phandle_args *args)
- {
-@@ -1141,7 +1151,7 @@ static const struct iommu_ops rk_iommu_ops = {
- 	.add_device = rk_iommu_add_device,
- 	.remove_device = rk_iommu_remove_device,
- 	.iova_to_phys = rk_iommu_iova_to_phys,
--	.device_group = generic_device_group,
-+	.device_group = rk_iommu_device_group,
- 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
- 	.of_xlate = rk_iommu_of_xlate,
- };
-@@ -1201,9 +1211,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	if (err)
- 		goto err_put_clocks;
- 
-+	iommu->group = iommu_group_alloc();
-+	if (IS_ERR(iommu->group)) {
-+		err = PTR_ERR(iommu->group);
-+		goto err_unprepare_clocks;
-+	}
-+
- 	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
- 	if (err)
--		goto err_unprepare_clocks;
-+		goto err_put_group;
- 
- 	iommu_device_set_ops(&iommu->iommu, &rk_iommu_ops);
- 	iommu_device_set_fwnode(&iommu->iommu, &dev->of_node->fwnode);
-@@ -1227,6 +1243,8 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	return 0;
- err_remove_sysfs:
- 	iommu_device_sysfs_remove(&iommu->iommu);
-+err_put_group:
-+	iommu_group_put(iommu->group);
- err_unprepare_clocks:
- 	clk_bulk_unprepare(iommu->num_clocks, iommu->clocks);
- err_put_clocks:
--- 
-2.11.0
+Thanks,
+Bartosz
