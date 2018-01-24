@@ -1,35 +1,74 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v7 00/10] rockchip: kevin: Enable edp display
-Date: Wed, 24 Jan 2018 15:38:36 +0800
-Message-ID: <5A6837FC.3010604@rock-chips.com>
-References: <20180109144853.32536-1-thierry.escande@collabora.com> <cb3385c9-8f8d-33fd-8329-0af47490ee46@codeaurora.org>
+From: Benjamin Gaignard <benjamin.gaignard@linaro.org>
+Subject: Re: [PATCH] drm/bridge/synopsys: dsi: Adopt SPDX identifiers
+Date: Wed, 24 Jan 2018 09:57:30 +0100
+Message-ID: <CA+M3ks4kCpcNfd1NyVLDtPOKmDniteXw2-iUqUikeicRdRAa6A@mail.gmail.com>
+References: <20180122102608.12565-1-philippe.cornu@st.com>
+ <3169703.7pajs7FEnH@avalon>
+ <2bf185e2-9b02-3632-dc9a-baf8f4109b44@st.com> <2205915.z0ubSpqczI@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cb3385c9-8f8d-33fd-8329-0af47490ee46@codeaurora.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Thierry Escande <thierry.escande@collabora.com>, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, =?UTF-8?B?6buE5a626ZKX?= <hjc@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <2205915.z0ubSpqczI@avalon>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Philippe Ombredanne <pombredanne@nexb.com>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Philippe CORNU <philippe.cornu@st.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
-
-Thanks for posting these :)
-
-Hi Archit,
-
-Thanks for your reply.
-
-On 01/10/2018 05:46 PM, Archit Taneja wrote:
->
-> I don't know if the rest of the rockchip patches in the series
-> depend on the 4 bridge patches. If they do, the rockchip maintainer
-> can queue both rockchip and bridge patches. If not, I can pick up
-> the bridge patches.
-
-Mark is no longer maintain rockchip drm driver, i will ask Sandy Huang 
-to check these, thanks.
->
-> Thanks,
-> Archit
+MjAxOC0wMS0yNCAwOjMyIEdNVCswMTowMCBMYXVyZW50IFBpbmNoYXJ0IDxsYXVyZW50LnBpbmNo
+YXJ0QGlkZWFzb25ib2FyZC5jb20+Ogo+IEhpIFBoaWxpcHBlLAo+Cj4gT24gVHVlc2RheSwgMjMg
+SmFudWFyeSAyMDE4IDEyOjI1OjUxIEVFVCBQaGlsaXBwZSBDT1JOVSB3cm90ZToKPj4gT24gMDEv
+MjMvMjAxOCAxMjozMCBBTSwgTGF1cmVudCBQaW5jaGFydCB3cm90ZToKPj4gPiBPbiBNb25kYXks
+IDIyIEphbnVhcnkgMjAxOCAxMjoyNjowOCBFRVQgUGhpbGlwcGUgQ29ybnUgd3JvdGU6Cj4+ID4+
+IEFkZCBTUERYIGlkZW50aWZpZXJzIHRvIHRoZSBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJ
+Cj4+ID4+IGhvc3QgY29udHJvbGxlciBkcml2ZXIuCj4+ID4+Cj4+ID4+IFNpZ25lZC1vZmYtYnk6
+IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+Cj4+ID4+IC0tLQo+PiA+Pgo+
+PiA+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDYg
+Ky0tLS0tCj4+ID4+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCA1IGRlbGV0aW9u
+cygtKQo+PiA+Pgo+PiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
+cHN5cy9kdy1taXBpLWRzaS5jCj4+ID4+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
+cy9kdy1taXBpLWRzaS5jIGluZGV4Cj4+ID4+IDQ2YjBlNzM0MDRkMS4uZTA2ODM2ZGVjNzdjIDEw
+MDY0NAo+PiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
+ZHNpLmMKPj4gPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBp
+LWRzaS5jCj4+ID4+IEBAIC0xLDEyICsxLDggQEAKPj4gPj4gKy8vIFNQRFgtTGljZW5zZS1JZGVu
+dGlmaWVyOiBHUEwtMi4wCj4+ID4KPj4gPiBBY2NvcmRpbmcgdG8gRG9jdW1lbnRhdGlvbi9wcm9j
+ZXNzL2xpY2Vuc2UtcnVsZXMudHh0IHRoaXMgd291bGQgY2hhbmdlCj4+ID4gdGhlIGV4aXN0aW5n
+IGxpY2Vuc2UuIFRoZSBjb3JyZWN0IGlkZW50aWZpZXIgaXMgR1BMLTIuMCsuCj4+Cj4+IFlvdSBh
+cmUgcmlnaHQsIEkgZGlkIG5vdCBwdXQgdGhlIGNvcnJlY3QgaWRlbnRpZmllciA6KAo+Pgo+PiBB
+ZnRlciByZWFkaW5nIG1vcmUgc3BkeC5vcmcsIEkgd29uZGVyIGlmIHRoZSBjb3JyZWN0IHZhbHVl
+IHNob3VsZCBiZQo+PiBHUEwtMi4wLW9yLWxhdGVyIGluc3RlYWQgb2YgR1BMLTIuMCsKPj4KPj4g
+aHR0cHM6Ly9zcGR4Lm9yZy9saWNlbnNlcy9HUEwtMi4wLW9yLWxhdGVyLmh0bWwKPj4gaHR0cHM6
+Ly9zcGR4Lm9yZy9saWNlbnNlcy9HUEwtMi4wKy5odG1sCj4+Cj4+IFdoYXQgaXMgeW91ciBvcGlu
+aW9uPwo+Cj4gSSBhZ3JlZSBpbiBwcmluY2lwbGUsIGFuZCBJJ3ZlIGV2ZW4gYXNrZWQgZm9yIHRo
+YXQgYmVmb3JlLCBidXQgSSd2ZSBiZWVuIHRvbGQKPiB0aGF0IHdlIHNob3VsZCBzdGljayB0byB0
+aGUgbGljZW5zZSBpZGVudGlmaWVycyBkZWZpbmVkIGluIERvY3VtZW50YXRpb24vCj4gcHJvY2Vz
+cy9saWNlbnNlLXJ1bGVzLnR4dC4gVGhlIGZpbGUgbWlnaHQgZ2V0IHVwZGF0ZWQgdG8gdXNlIEdQ
+TC0yLjAtb3ItbGF0ZXIKPiBhbmQgR1BMLTIuMC1vbmx5IGxhdGVyLCBhbmQga2VybmVsIHNvdXJj
+ZXMgd2lsbCBsaWtlbHkgdGhlbiBnZXQgcGF0Y2hlZCBpbiBvbmUKPiBnby4KCisgUGhpbGlwcGUg
+Ty4gdG8gY2hlY2sgd2hhdCBJJ20gd3JpdGluZyBqdXN0IGJlbG93LgoKSW4gLW5leHQgYnJhbmNo
+IEkgb25seSBzZWUgcmVmZXJlbmNlIHRvIEdQTC0yLjArIGlkZW50aWZpZXIgc28gZm9yIG1lCml0
+IGZpbmUgdG8gdXNlIGl0IGhlcmUuCklzIHRoYXQgcmlnaHQgPyBvciBzaG91bGQgd2UgdXNlIEdQ
+TC0yLjAtb3ItbGF0ZXIga2V5d29yZCA/CgpCZW5qYW1pbgoKPgo+PiA+PiAgLyoKPj4gPj4gICAq
+IENvcHlyaWdodCAoYykgMjAxNiwgRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRk
+Cj4+ID4+ICAgKiBDb3B5cmlnaHQgKEMpIFNUTWljcm9lbGVjdHJvbmljcyBTQSAyMDE3Cj4+ID4+
+ICAgKgo+PiA+PiAtICogVGhpcyBwcm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVk
+aXN0cmlidXRlIGl0IGFuZC9vciBtb2RpZnkKPj4gPj4gLSAqIGl0IHVuZGVyIHRoZSB0ZXJtcyBv
+ZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgYXMgcHVibGlzaGVkIGJ5Cj4+ID4+IC0g
+KiB0aGUgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uOyBlaXRoZXIgdmVyc2lvbiAyIG9mIHRoZSBM
+aWNlbnNlLCBvcgo+PiA+PiAtICogKGF0IHlvdXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4K
+Pj4gPj4gLSAqCj4+ID4+ICAgKiBNb2RpZmllZCBieSBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUu
+Y29ybnVAc3QuY29tPgo+PiA+PiAgICogVGhpcyBnZW5lcmljIFN5bm9wc3lzIERlc2lnbldhcmUg
+TUlQSSBEU0kgaG9zdCBkcml2ZXIgaXMgYmFzZWQgb24gdGhlCj4+ID4+ICAgKiBSb2NrY2hpcCB2
+ZXJzaW9uIGZyb20gcm9ja2NoaXAvZHctbWlwaS1kc2kuYyB3aXRoIHBoeSAmIGJyaWRnZSBBUElz
+Lgo+Cj4gLS0KPiBSZWdhcmRzLAo+Cj4gTGF1cmVudCBQaW5jaGFydApfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
