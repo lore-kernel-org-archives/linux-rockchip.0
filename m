@@ -1,90 +1,268 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH v1 1/2] drm/bridge/synopsys: dsi: Fix dsi_host_transfer()
- return value
-Date: Wed, 24 Jan 2018 13:33:54 +0000
-Message-ID: <4a1b0208-3187-2f08-69fe-ca3b77ee88a8@st.com>
-References: <20180123142618.28384-1-philippe.cornu@st.com>
- <20180123142618.28384-2-philippe.cornu@st.com>
- <CA+ASDXNDpmVdARLCD-A6nfADgmomuscpwekb8M-j=MFJhpeC4Q@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
+ the IOMMU
+Date: Wed, 24 Jan 2018 13:49:38 +0000
+Message-ID: <f06d2d9f-3869-ed02-43f4-f4ea4a104a57@arm.com>
+References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
+ <20180124103516.2571-9-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CA+ASDXNDpmVdARLCD-A6nfADgmomuscpwekb8M-j=MFJhpeC4Q@mail.gmail.com>
-Content-Language: en-US
-Content-ID: <644CBF932DDAC04788F95DF19A191F58@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180124103516.2571-9-jeffy.chen@rock-chips.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: jcliang@chromium.org, xxm@rock-chips.com, tfiga@chromium.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQnJpYW4sDQoNCkFuZCBtYW55IHRoYW5rcyBmb3IgeW91ciByZXZpZXcuDQoNCk9uIDAxLzIz
-LzIwMTggMTA6MzggUE0sIEJyaWFuIE5vcnJpcyB3cm90ZToNCj4gSGkgUGhpbGlwcGUsDQo+IA0K
-PiBPbiBUdWUsIEphbiAyMywgMjAxOCBhdCA2OjI2IEFNLCBQaGlsaXBwZSBDb3JudSA8cGhpbGlw
-cGUuY29ybnVAc3QuY29tPiB3cm90ZToNCj4+IFRoZSBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVy
-KCkgbXVzdCByZXR1cm4gdGhlIG51bWJlciBvZg0KPj4gYnl0ZXMgdHJhbnNtaXR0ZWQvcmVjZWl2
-ZWQgb24gc3VjY2VzcyBpbnN0ZWFkIG9mIDAuDQo+IA0KPiBJJ20gYSBsaXR0bGUgY29uZnVzZWQu
-IEFzIG9mIHRoZSBsYXRlc3QgZHJtLW1pc2MtbmV4dCBJJ20gbG9va2luZyBhdCwNCj4gdGhpcyBz
-dGlsbCBoYXMgY29uZmxpY3RpbmcgZG9jdW1lbnRhdGlvbi4NCj4gDQo+IEZvciAtPnRyYW5zZmVy
-KCk6DQo+IA0KPiBPbiBzdWNjZXNzIGl0IHNoYWxsIHJldHVybiB0aGUgbnVtYmVyIG9mIGJ5dGVz
-DQo+ICAgKiB0cmFuc21pdHRlZCBmb3Igd3JpdGUgcGFja2V0cyBvciB0aGUgbnVtYmVyIG9mIGJ5
-dGVzIHJlY2VpdmVkIGZvciByZWFkDQo+ICAgKiBwYWNrZXRzLg0KPiANCj4gV2hpbGUgbWlwaV9k
-c2lfZ2VuZXJpY19yZWFkKCkgc2F5czoNCj4gDQo+ICAgKiBSZXR1cm46IFRoZSBudW1iZXIgb2Yg
-Ynl0ZXMgc3VjY2Vzc2Z1bGx5IHJlYWQgb3IgYSBuZWdhdGl2ZSBlcnJvciBjb2RlIG9uDQo+ICAg
-KiBmYWlsdXJlLg0KPiANCj4gQnV0IGl0IGp1c3QgcmV0dXJucyB0aGUgdmFsdWUgdGhhdCAtPnRy
-YW5zZmVyKCkgcmV0dXJucy4NCj4gDQoNCk5vdCBzdXJlIHRvIGZvbGxvdyB5b3UgaGVyZTogbWlw
-aV9kc2lfZ2VuZXJpY19yZWFkKCkgd2lsbCB0cmlnIGEgZHNpIA0KZ2VuZXJpYyByZWFkIHNvIGl0
-IGhhcyB0byByZXR1cm4gInRoZSBudW1iZXIgb2YgYnl0ZXMgcmVjZWl2ZWQgZm9yIHJlYWQgDQpw
-YWNrZXRzIiBhcyBleHBsYWluZWQgZm9yIHRoZSAtPnRyYW5zZmVyKCkgZnVuY3Rpb24uLi4gc28g
-aXQgbG9va3MgDQoiY29oZXJlbnQiLi4uDQoNCkJ1dCBtYXliZSB5b3Ugd2FudCB0byBwb2ludCBv
-dXQgc29tZXRoaW5nIGRpZmZlcmVudD8NCg0KPiBTbyBJJ20gbm90IHN1cmUgd2hldGhlciB0aGUg
-ZG9jdW1lbnRhdGlvbiBpcyBzdGlsbCB3cm9uZywgb3IgaWYgdGhlDQo+IGltcGxlbWVudGF0aW9u
-IGlzLg0KPiANCj4gQW55d2F5LCBJIGd1ZXNzIG1heWJlIHRoYXQgaXNuJ3Qgc3VwZXItY3JpdGlj
-YWwgdG8gKnRoaXMqIHBhdGNoLCBzaW5jZQ0KPiB3ZSBkb24ndCBoYXZlIFJYIHN1cHBvcnQgeWV0
-Li4uDQo+IA0KDQpUaGUgbWFpbiByZWFzb24gd2h5IEkgd2FudCB0byAiZml4IiB0aGlzIGlzIGJl
-Y2F1c2UgSSBkbyBub3Qgd2FudCB0byANCmV4cGxhaW4gdG8gb3VyIGN1c3RvbWVycyAod3JpdGlu
-ZyBkc2kgcGFuZWwgZHJpdmVycykgd2h5IHdlIGhhdmUgYSANCmRpZmZlcmVudCByZXR1cm5lZCB2
-YWx1ZSBjb21wYXJlIHRvIG90aGVyIHBsYXRmb3JtcyA6ICkNCg0KPj4gTm90ZTogbmJfYnl0ZXMg
-aXMgaW50cm9kdWNlZCBpbiB0aGlzIHBhdGNoIGFzIGl0IHdpbGwgYmUNCj4+IHJlLXVzZWQgd2l0
-aCB0aGUgZnV0dXJlIGRjcy9nZW5lcmljIGRzaSByZWFkIGZlYXR1cmUuDQo+IA0KPiBJdCBmZWVs
-cyBsaWtlIHlvdSBjb3VsZCBqdXN0IHdhaXQgdG8gYWRkIHRoYXQgd2hlbiB5b3UgbmVlZCBpdD8g
-SXQNCj4gcmVhbGx5IGZlZWxzIHRyaXZpYWwgYW5kIHVzZWxlc3MgcmlnaHQgbm93IDopDQo+IA0K
-PiBCcmlhbg0KPiANCg0KVGhhbmtzLCBJIGFncmVlLCBJIHdpbGwgd3JpdGUgJiBzZW5kIGEgc2lt
-cGxlciB2ZXJzaW9uLg0KUGhpbGlwcGUgOi0pDQoNCj4+DQo+PiBTaWduZWQtb2ZmLWJ5OiBQaGls
-aXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPg0KPj4gLS0tDQo+PiAgIGRyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDEwICsrKysrKysrLS0NCj4+
-ICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4+DQo+
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRz
-aS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+PiBp
-bmRleCBmNDU4Nzk4YWY3ODguLjA5NmNmNWU1YmIzMCAxMDA2NDQNCj4+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+PiBAQCAtNDAzLDcgKzQwMyw3
-IEBAIHN0YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlf
-ZHNpX2hvc3QgKmhvc3QsDQo+PiAgIHsNCj4+ICAgICAgICAgIHN0cnVjdCBkd19taXBpX2RzaSAq
-ZHNpID0gaG9zdF90b19kc2koaG9zdCk7DQo+PiAgICAgICAgICBzdHJ1Y3QgbWlwaV9kc2lfcGFj
-a2V0IHBhY2tldDsNCj4+IC0gICAgICAgaW50IHJldDsNCj4+ICsgICAgICAgaW50IHJldCwgbmJf
-Ynl0ZXM7DQo+Pg0KPj4gICAgICAgICAgcmV0ID0gbWlwaV9kc2lfY3JlYXRlX3BhY2tldCgmcGFj
-a2V0LCBtc2cpOw0KPj4gICAgICAgICAgaWYgKHJldCkgew0KPj4gQEAgLTQxMyw3ICs0MTMsMTMg
-QEAgc3RhdGljIHNzaXplX3QgZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1Y3QgbWlwaV9k
-c2lfaG9zdCAqaG9zdCwNCj4+DQo+PiAgICAgICAgICBkd19taXBpX21lc3NhZ2VfY29uZmlnKGRz
-aSwgbXNnKTsNCj4+DQo+PiAtICAgICAgIHJldHVybiBkd19taXBpX2RzaV93cml0ZShkc2ksICZw
-YWNrZXQpOw0KPj4gKyAgICAgICByZXQgPSBkd19taXBpX2RzaV93cml0ZShkc2ksICZwYWNrZXQp
-Ow0KPj4gKyAgICAgICBpZiAocmV0KQ0KPj4gKyAgICAgICAgICAgICAgIHJldHVybiByZXQ7DQo+
-PiArDQo+PiArICAgICAgIG5iX2J5dGVzID0gcGFja2V0LnNpemU7DQo+PiArDQo+PiArICAgICAg
-IHJldHVybiBuYl9ieXRlczsNCj4+ICAgfQ0KPj4NCj4+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBt
-aXBpX2RzaV9ob3N0X29wcyBkd19taXBpX2RzaV9ob3N0X29wcyA9IHsNCj4+IC0tDQo+PiAyLjE1
-LjENCj4+DQo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-DQo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QNCj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZw0KPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA0KPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+On 24/01/18 10:35, Jeffy Chen wrote:
+> From: Tomasz Figa <tfiga@chromium.org>
+> 
+> Current code relies on master driver enabling necessary clocks before
+> IOMMU is accessed, however there are cases when the IOMMU should be
+> accessed while the master is not running yet, for example allocating
+> V4L2 videobuf2 buffers, which is done by the VB2 framework using DMA
+> mapping API and doesn't engage the master driver at all.
+> 
+> This patch fixes the problem by letting clocks needed for IOMMU
+> operation to be listed in Device Tree and making the driver enable them
+> for the time of accessing the hardware.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+> ---
+> 
+> Changes in v5:
+> Use clk_bulk APIs.
+> 
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> 
+>   .../devicetree/bindings/iommu/rockchip,iommu.txt   |  8 +++
+>   drivers/iommu/rockchip-iommu.c                     | 74 ++++++++++++++++++++--
+>   2 files changed, 76 insertions(+), 6 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+> index 2098f7732264..33dd853359fa 100644
+> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+> @@ -14,6 +14,13 @@ Required properties:
+>                       "single-master" device, and needs no additional information
+>                       to associate with its master device.  See:
+>                       Documentation/devicetree/bindings/iommu/iommu.txt
+> +Optional properties:
+> +- clocks : A list of master clocks requires for the IOMMU to be accessible
+
+s/requires/required/
+
+> +           by the host CPU. The number of clocks depends on the master
+> +           block and might as well be zero. See [1] for generic clock
+
+Oops, some subtleties of English here :)
+
+To say "the number of clocks ... might as well be zero" effectively 
+implies "there's no point ever specifying any clocks". I guess what you 
+really mean here is "...might well be...", i.e. it is both valid and 
+reasonably likely to require zero clocks.
+
+> +           bindings description.
+> +
+> +[1] Documentation/devicetree/bindings/clock/clock-bindings.txt
+>   
+>   Optional properties:
+>   - rockchip,disable-mmu-reset : Don't use the mmu reset operation.
+> @@ -27,5 +34,6 @@ Example:
+>   		reg = <0xff940300 0x100>;
+>   		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+>   		interrupt-names = "vopl_mmu";
+> +		clocks = <&cru ACLK_VOP1>, <&cru DCLK_VOP1>, <&cru HCLK_VOP1>;
+>   		#iommu-cells = <0>;
+>   	};
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index c4131ca792e0..8a5e2a659b67 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -4,6 +4,7 @@
+>    * published by the Free Software Foundation.
+>    */
+>   
+> +#include <linux/clk.h>
+>   #include <linux/compiler.h>
+>   #include <linux/delay.h>
+>   #include <linux/device.h>
+> @@ -91,6 +92,8 @@ struct rk_iommu {
+>   	struct device *dev;
+>   	void __iomem **bases;
+>   	int num_mmu;
+> +	struct clk_bulk_data *clocks;
+> +	int num_clocks;
+>   	bool reset_disabled;
+>   	struct iommu_device iommu;
+>   	struct list_head node; /* entry in rk_iommu_domain.iommus */
+> @@ -450,6 +453,38 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
+>   	return 0;
+>   }
+>   
+> +static int rk_iommu_of_get_clocks(struct rk_iommu *iommu)
+> +{
+> +	struct device_node *np = iommu->dev->of_node;
+> +	int ret;
+> +	int i;
+> +
+> +	ret = of_count_phandle_with_args(np, "clocks", "#clock-cells");
+> +	if (ret == -ENOENT)
+> +		return 0;
+> +	else if (ret < 0)
+> +		return ret;
+> +
+> +	iommu->num_clocks = ret;
+> +	iommu->clocks = devm_kcalloc(iommu->dev, iommu->num_clocks,
+> +				     sizeof(*iommu->clocks), GFP_KERNEL);
+> +	if (!iommu->clocks)
+> +		return -ENOMEM;
+> +
+> +	for (i = 0; i < iommu->num_clocks; ++i) {
+> +		iommu->clocks[i].clk = of_clk_get(np, i);
+> +		if (IS_ERR(iommu->clocks[i].clk)) {
+> +			ret = PTR_ERR(iommu->clocks[i].clk);
+> +			goto err_clk_put;
+> +		}
+> +	}
+
+Just to confirm my understanding from a quick scan through the code, the 
+reason we can't use clk_bulk_get() here is that currently, clocks[i].id 
+being NULL means we'd end up just getting the first clock multiple 
+times, right?
+
+I guess there could be other users who also want "just get whatever 
+clocks I have" functionality, so it might be worth proposing that for 
+the core API as a separate/follow-up patch, but it definitely doesn't 
+need to be part of this series.
+
+I really don't know enough about correct clk API usage, but modulo the 
+binding comments it certainly looks nice and tidy now;
+
+Acked-by: Robin Murphy <robin.murphy@arm.com>
+
+Thanks,
+Robin.
+
+> +
+> +	return 0;
+> +err_clk_put:
+> +	clk_bulk_put(i, iommu->clocks);
+> +	return ret;
+> +}
+> +
+>   static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
+>   {
+>   	void __iomem *base = iommu->bases[index];
+> @@ -506,6 +541,8 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
+>   	irqreturn_t ret = IRQ_NONE;
+>   	int i;
+>   
+> +	WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
+> +
+>   	for (i = 0; i < iommu->num_mmu; i++) {
+>   		int_status = rk_iommu_read(iommu->bases[i], RK_MMU_INT_STATUS);
+>   		if (int_status == 0)
+> @@ -552,6 +589,8 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
+>   		rk_iommu_write(iommu->bases[i], RK_MMU_INT_CLEAR, int_status);
+>   	}
+>   
+> +	clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+> +
+>   	return ret;
+>   }
+>   
+> @@ -594,7 +633,9 @@ static void rk_iommu_zap_iova(struct rk_iommu_domain *rk_domain,
+>   	list_for_each(pos, &rk_domain->iommus) {
+>   		struct rk_iommu *iommu;
+>   		iommu = list_entry(pos, struct rk_iommu, node);
+> +		WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
+>   		rk_iommu_zap_lines(iommu, iova, size);
+> +		clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+>   	}
+>   	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
+>   }
+> @@ -823,10 +864,14 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+>   	if (!iommu)
+>   		return 0;
+>   
+> -	ret = rk_iommu_enable_stall(iommu);
+> +	ret = clk_bulk_enable(iommu->num_clocks, iommu->clocks);
+>   	if (ret)
+>   		return ret;
+>   
+> +	ret = rk_iommu_enable_stall(iommu);
+> +	if (ret)
+> +		goto out_disable_clocks;
+> +
+>   	ret = rk_iommu_force_reset(iommu);
+>   	if (ret)
+>   		goto out_disable_stall;
+> @@ -852,6 +897,8 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+>   
+>   out_disable_stall:
+>   	rk_iommu_disable_stall(iommu);
+> +out_disable_clocks:
+> +	clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+>   	return ret;
+>   }
+>   
+> @@ -873,6 +920,7 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
+>   	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
+>   
+>   	/* Ignore error while disabling, just keep going */
+> +	WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
+>   	rk_iommu_enable_stall(iommu);
+>   	rk_iommu_disable_paging(iommu);
+>   	for (i = 0; i < iommu->num_mmu; i++) {
+> @@ -880,6 +928,7 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
+>   		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, 0);
+>   	}
+>   	rk_iommu_disable_stall(iommu);
+> +	clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+>   
+>   	iommu->domain = NULL;
+>   
+> @@ -1172,18 +1221,31 @@ static int rk_iommu_probe(struct platform_device *pdev)
+>   	iommu->reset_disabled = device_property_read_bool(dev,
+>   					"rockchip,disable-mmu-reset");
+>   
+> -	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
+> +	err = rk_iommu_of_get_clocks(iommu);
+>   	if (err)
+>   		return err;
+>   
+> +	err = clk_bulk_prepare(iommu->num_clocks, iommu->clocks);
+> +	if (err)
+> +		goto err_put_clocks;
+> +
+> +	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
+> +	if (err)
+> +		goto err_unprepare_clocks;
+> +
+>   	iommu_device_set_ops(&iommu->iommu, &rk_iommu_ops);
+>   	err = iommu_device_register(&iommu->iommu);
+> -	if (err) {
+> -		iommu_device_sysfs_remove(&iommu->iommu);
+> -		return err;
+> -	}
+> +	if (err)
+> +		goto err_remove_sysfs;
+>   
+>   	return 0;
+> +err_remove_sysfs:
+> +	iommu_device_sysfs_remove(&iommu->iommu);
+> +err_unprepare_clocks:
+> +	clk_bulk_unprepare(iommu->num_clocks, iommu->clocks);
+> +err_put_clocks:
+> +	clk_bulk_put(iommu->num_clocks, iommu->clocks);
+> +	return err;
+>   }
+>   
+>   static const struct of_device_id rk_iommu_dt_ids[] = {
+> 
