@@ -1,96 +1,37 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH v3] drm/bridge/synopsys: dsi: add optional pixel clock
-Date: Thu, 25 Jan 2018 16:06:18 +0000
-Message-ID: <9a37839b-f3bc-2c69-94b8-2fe52ea14965@st.com>
-References: <20180123170806.5282-1-philippe.cornu@st.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
+Date: Thu, 25 Jan 2018 14:47:21 -0800
+Message-ID: <CA+ASDXOLYaL1zT-K0FvVTFGQ2BA12eHkrZw_mau50aUBdy=vhA@mail.gmail.com>
+References: <20180125155504.8611-1-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180123170806.5282-1-philippe.cornu@st.com>
-Content-Language: en-US
-Content-ID: <E119E10B7D70EE4AA4BC5D9D1EC6BB73@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko
- Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Alexandre TORGUE <alexandre.torgue@st.com>, Yannick FERTRE <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Ludovic BARRE <ludovic.barre@st.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180125155504.8611-1-philippe.cornu-qxv4g6HH51o@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philippe Cornu <philippe.cornu-qxv4g6HH51o@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <mcoquelin.stm32-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Yannick Fertre <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ludovic Barre <ludovic.barre-qxv4g6HH51o@public.gmane.org>, Mickael Reulier <mickael.reulier-qxv4g6HH51o@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Bhumika Goyal <bhumirks-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksDQoNCmluIHNob3J0OiB0aGlzIHBhdGNoIGlzICJDQU5DRUxMRUQiIDogKQ0KDQpUaGFua3Mg
-dG8gY29tbWVudHMgZnJvbSBzb21lIG9mIHlvdSwgSSBtYW5hZ2VkIHRvIHVzZSBhZGp1c3RlZF9t
-b2RlLg0KDQpQbGVhc2UgaGF2ZSBhIGxvb2sgdG8gdGhlIHBhdGNoICJkcm0vYnJpZGdlL3N5bm9w
-c3lzOiBkc2k6IHVzZSANCmFkanVzdGVkX21vZGUgaW4gbW9kZV9zZXQiLg0KDQpIb3BlIGl0IGlz
-IGJldHRlciwgY29tbWVudHMgYXJlIHdlbGNvbWUNCg0KTWFueSB0aGFua3MsDQpQaGlsaXBwZSA6
-LSkNCg0KT24gMDEvMjMvMjAxOCAwNjowOCBQTSwgUGhpbGlwcGUgQ29ybnUgd3JvdGU6DQo+IFRo
-ZSBwaXhlbCBjbG9jayBpcyBvcHRpb25hbC4gV2hlbiBhdmFpbGFibGUsIGl0IG9mZmVycyBhIGJl
-dHRlcg0KPiBwcmVjaXNlbmVzcyBmb3IgdGltaW5nIGNvbXB1dGF0aW9ucyBhbmQgYWxsb3dzIHRv
-IHJlZHVjZSB0aGUgZXh0cmEgZHNpDQo+IGJhbmR3aWR0aCBpbiBidXJzdCBtb2RlIChmcm9tIH4y
-MCUgdG8gfjEwLTEyJSwgaHcgcGxhdGZvcm0gZGVwZW5kYW50KS4NCj4gDQo+IFJldmlld2VkLWJ5
-OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBQ
-aGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPg0KPiAtLS0NCj4gQ2hhbmdlcyBp
-biB2MzogU2ltcGxpZnkgcHhfY2xrIHByb2JpbmcgdGhhbmtzIHRvIEFuZHJ6ZWogSGFqZGEgY29t
-bWVudHMNCj4gDQo+IENoYW5nZXMgaW4gdjI6IEltcHJvdmUgcHhfY2xrIHByb2JpbmcgaW4gY2Fz
-ZSBvZiBFTk9FTlQgZHQgcmV0dXJuZWQgdmFsdWUNCj4gKHRoYW5rcyB0byBQaGlsaXBwIFphYmVs
-ICYgQW5kcnplaiBIYWpkYSBjb21tZW50cykNCj4gDQo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIHwgMjUgKysrKysrKysrKysrKysrKysrKy0tLS0tLQ0K
-PiAgIDEgZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQ0KPiAN
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1k
-c2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPiBp
-bmRleCBlZDhhZjMyZjhlNTIuLjlmYjM1Mzg1YzM0OCAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPiBAQCAtMjE3LDYgKzIxNyw3IEBA
-IHN0cnVjdCBkd19taXBpX2RzaSB7DQo+ICAgCXZvaWQgX19pb21lbSAqYmFzZTsNCj4gICANCj4g
-ICAJc3RydWN0IGNsayAqcGNsazsNCj4gKwlzdHJ1Y3QgY2xrICpweF9jbGs7DQo+ICAgDQo+ICAg
-CXVuc2lnbmVkIGludCBsYW5lX21icHM7IC8qIHBlciBsYW5lICovDQo+ICAgCXUzMiBjaGFubmVs
-Ow0KPiBAQCAtNzAzLDI0ICs3MDQsMjggQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfYnJpZGdl
-X21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsDQo+ICAgCXN0cnVjdCBkd19taXBp
-X2RzaSAqZHNpID0gYnJpZGdlX3RvX2RzaShicmlkZ2UpOw0KPiAgIAljb25zdCBzdHJ1Y3QgZHdf
-bWlwaV9kc2lfcGh5X29wcyAqcGh5X29wcyA9IGRzaS0+cGxhdF9kYXRhLT5waHlfb3BzOw0KPiAg
-IAl2b2lkICpwcml2X2RhdGEgPSBkc2ktPnBsYXRfZGF0YS0+cHJpdl9kYXRhOw0KPiArCXN0cnVj
-dCBkcm1fZGlzcGxheV9tb2RlIHB4X2Nsa19tb2RlID0gKm1vZGU7DQo+ICAgCWludCByZXQ7DQo+
-ICAgDQo+ICAgCWNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBjbGspOw0KPiAgIA0KPiAtCXJldCA9
-IHBoeV9vcHMtPmdldF9sYW5lX21icHMocHJpdl9kYXRhLCBtb2RlLCBkc2ktPm1vZGVfZmxhZ3Ms
-DQo+ICsJaWYgKGRzaS0+cHhfY2xrKQ0KPiArCQlweF9jbGtfbW9kZS5jbG9jayA9IGNsa19nZXRf
-cmF0ZShkc2ktPnB4X2NsaykgLyAxMDAwOw0KPiArDQo+ICsJcmV0ID0gcGh5X29wcy0+Z2V0X2xh
-bmVfbWJwcyhwcml2X2RhdGEsICZweF9jbGtfbW9kZSwgZHNpLT5tb2RlX2ZsYWdzLA0KPiAgIAkJ
-CQkgICAgIGRzaS0+bGFuZXMsIGRzaS0+Zm9ybWF0LCAmZHNpLT5sYW5lX21icHMpOw0KPiAgIAlp
-ZiAocmV0KQ0KPiAgIAkJRFJNX0RFQlVHX0RSSVZFUigiUGh5IGdldF9sYW5lX21icHMoKSBmYWls
-ZWRcbiIpOw0KPiAgIA0KPiAgIAlwbV9ydW50aW1lX2dldF9zeW5jKGRzaS0+ZGV2KTsNCj4gICAJ
-ZHdfbWlwaV9kc2lfaW5pdChkc2kpOw0KPiAtCWR3X21pcGlfZHNpX2RwaV9jb25maWcoZHNpLCBt
-b2RlKTsNCj4gKwlkd19taXBpX2RzaV9kcGlfY29uZmlnKGRzaSwgJnB4X2Nsa19tb2RlKTsNCj4g
-ICAJZHdfbWlwaV9kc2lfcGFja2V0X2hhbmRsZXJfY29uZmlnKGRzaSk7DQo+ICAgCWR3X21pcGlf
-ZHNpX3ZpZGVvX21vZGVfY29uZmlnKGRzaSk7DQo+IC0JZHdfbWlwaV9kc2lfdmlkZW9fcGFja2V0
-X2NvbmZpZyhkc2ksIG1vZGUpOw0KPiArCWR3X21pcGlfZHNpX3ZpZGVvX3BhY2tldF9jb25maWco
-ZHNpLCAmcHhfY2xrX21vZGUpOw0KPiAgIAlkd19taXBpX2RzaV9jb21tYW5kX21vZGVfY29uZmln
-KGRzaSk7DQo+IC0JZHdfbWlwaV9kc2lfbGluZV90aW1lcl9jb25maWcoZHNpLCBtb2RlKTsNCj4g
-LQlkd19taXBpX2RzaV92ZXJ0aWNhbF90aW1pbmdfY29uZmlnKGRzaSwgbW9kZSk7DQo+ICsJZHdf
-bWlwaV9kc2lfbGluZV90aW1lcl9jb25maWcoZHNpLCAmcHhfY2xrX21vZGUpOw0KPiArCWR3X21p
-cGlfZHNpX3ZlcnRpY2FsX3RpbWluZ19jb25maWcoZHNpLCAmcHhfY2xrX21vZGUpOw0KPiAgIA0K
-PiAgIAlkd19taXBpX2RzaV9kcGh5X2luaXQoZHNpKTsNCj4gICAJZHdfbWlwaV9kc2lfZHBoeV90
-aW1pbmdfY29uZmlnKGRzaSk7DQo+IEBAIC03MzQsNyArNzM5LDcgQEAgc3RhdGljIHZvaWQgZHdf
-bWlwaV9kc2lfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsDQo+ICAg
-DQo+ICAgCWR3X21pcGlfZHNpX2RwaHlfZW5hYmxlKGRzaSk7DQo+ICAgDQo+IC0JZHdfbWlwaV9k
-c2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyhtb2RlKTsNCj4gKwlkd19taXBpX2RzaV93YWl0X2Zvcl90
-d29fZnJhbWVzKCZweF9jbGtfbW9kZSk7DQo+ICAgDQo+ICAgCS8qIFN3aXRjaCB0byBjbWQgbW9k
-ZSBmb3IgcGFuZWwtYnJpZGdlIHByZV9lbmFibGUgJiBwYW5lbCBwcmVwYXJlICovDQo+ICAgCWR3
-X21pcGlfZHNpX3NldF9tb2RlKGRzaSwgMCk7DQo+IEBAIC04MjgsNiArODMzLDE0IEBAIF9fZHdf
-bWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwNCj4gICAJCXJldHVy
-biBFUlJfUFRSKHJldCk7DQo+ICAgCX0NCj4gICANCj4gKwlkc2ktPnB4X2NsayA9IGRldm1fY2xr
-X2dldChkZXYsICJweF9jbGsiKTsNCj4gKwlpZiAoSVNfRVJSKGRzaS0+cHhfY2xrKSkgew0KPiAr
-CQlyZXQgPSBQVFJfRVJSKGRzaS0+cHhfY2xrKTsNCj4gKwkJaWYgKHJldCAhPSBFTk9FTlQpDQo+
-ICsJCQlkZXZfZXJyKGRldiwgIlVuYWJsZSB0byBnZXQgb3B0LiBweF9jbGs6ICVkXG4iLCByZXQp
-Ow0KPiArCQlkc2ktPnB4X2NsayA9IE5VTEw7DQo+ICsJfQ0KPiArDQo+ICAgCS8qDQo+ICAgCSAq
-IE5vdGUgdGhhdCB0aGUgcmVzZXQgd2FzIG5vdCBkZWZpbmVkIGluIHRoZSBpbml0aWFsIGRldmlj
-ZSB0cmVlLCBzbw0KPiAgIAkgKiB3ZSBoYXZlIHRvIGJlIHByZXBhcmVkIGZvciBpdCBub3QgYmVp
-bmcgZm91bmQuDQo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+On Thu, Jan 25, 2018 at 7:55 AM, Philippe Cornu <philippe.cornu-qxv4g6HH51o@public.gmane.org> wrote:
+> The "adjusted_mode" clock value (ie the real pixel clock) is more
+> accurate than "mode" clock value (ie the panel/bridge requested
+> clock value). It offers a better preciseness for timing
+> computations and allows to reduce the extra dsi bandwidth in
+> burst mode (from ~20% to ~10-12%, hw platform dependant).
+>
+> Signed-off-by: Philippe Cornu <philippe.cornu-qxv4g6HH51o@public.gmane.org>
+> ---
+> Note: This patch replaces "drm/bridge/synopsys: dsi: add optional pixel clock"
+
+These two appear to be the same for my cases, but at least nothing breaks:
+
+Tested-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
