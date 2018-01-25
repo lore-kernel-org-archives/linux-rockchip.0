@@ -1,121 +1,104 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use common
- mipi_dsi_create_packet()
-Date: Thu, 25 Jan 2018 11:38:48 +0000
-Message-ID: <59c4c3b3-3561-362f-16e7-a5d31769c536@st.com>
-References: <20180106003813.4816-1-briannorris@chromium.org>
- <715bb58c-efa6-7944-f186-c186d7fae569@st.com>
- <20180109185512.GA73309@google.com>
- <c680f230-393f-8bfa-cc9c-3b8db87bd5fb@st.com>
- <023c159e-0a7f-7d1b-a2d8-8ef19033a1b3@st.com>
- <20180123211505.xvpu3putjjbqnl2b@ban.mtv.corp.google.com>
- <CGME20180124095152epcas2p3c1ece403435d3b6093b46954da8cd66e@epcas2p3.samsung.com>
- <a5c00d22-1df6-fe9c-d333-12a6b689acb3@st.com>
- <7dd644f0-697d-1545-cdc3-30e0708c93df@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <7dd644f0-697d-1545-cdc3-30e0708c93df@samsung.com>
-Content-Language: en-US
-Content-ID: <3FE6805E924A6140AA5B550678EB3113@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>, Brian Norris <briannorris@chromium.org>
-Cc: "hl@rock-chips.com" <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, "hoegsberg@gmail.com" <hoegsberg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Nickey Yang <nickey.yang@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "xbl@rock-chips.com" <xbl@rock-chips.com>, Vincent ABRIOU <vincent.abriou@st.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: Use dummy_dai for rt5514 dsp dailink" to the asoc tree
+Date: Thu, 25 Jan 2018 12:15:22 +0000
+Message-ID: <E1eegR8-0006Sc-0T@debutante>
+References: <20171121082517.17233-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20171121082517.17233-1-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Jimmy Cheng-Yi Chiang <cychiang@google.com>, Brian Norris <briannorris@chromium.org>, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, linux-arm-kernel@lists.infradead.orgcychiang@google.comalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwNCg0KDQpPbiAwMS8yNS8yMDE4IDEyOjA3IFBNLCBBbmRyemVqIEhhamRhIHdy
-b3RlOg0KPiBPbiAyNC4wMS4yMDE4IDEwOjUxLCBQaGlsaXBwZSBDT1JOVSB3cm90ZToNCj4+IEhp
-IEJyaWFuLA0KPj4NCj4+IE9uIDAxLzIzLzIwMTggMTA6MTUgUE0sIEJyaWFuIE5vcnJpcyB3cm90
-ZToNCj4+PiBIaSBQaGlsaXBwZSwNCj4+Pg0KPj4+IE9uIFRodSwgSmFuIDE4LCAyMDE4IGF0IDEx
-OjQwOjQ4QU0gKzAwMDAsIFBoaWxpcHBlIENPUk5VIHdyb3RlOg0KPj4+PiBPbiAwMS8xMS8yMDE4
-IDEyOjE2IFBNLCBQaGlsaXBwZSBDT1JOVSB3cm90ZToNCj4+Pj4+IFRvIGJlIGhvbmVzdCwgSSBk
-byBub3QgcmVhbGx5IGxpa2UgdGhlIG1lbWNweSBoZXJlIHRvbyBhbmQgSSBhZ3JlZSB3aXRoDQo+
-Pj4+PiB5b3UgcmVnYXJkaW5nIHRoZSBCRSBpc3N1ZS4NCj4+Pj4+DQo+Pj4+PiBNeSBmaXJzdCAi
-c3RtIiBkcml2ZXIgKGllLiBiZWZvcmUgdXNpbmcgdGhpcyAiZnJlZXNjYWxlL3JvY2tjaGlwIg0K
-Pj4+Pj4gZHctbWlwaS1kc2kgZHJpdmVyIHdpdGggdGhlIG1lbWNweSkgdXNlZCB0aGUgImV4YWN0
-IiBzYW1lIGNvZGUgYXMgdGhlDQo+Pj4+PiBUZWdyYSBkc2kgdGVncmFfZHNpX3dyaXRlc2woKSBm
-dW5jdGlvbiB3aXRoIHRoZSAyIGxvb3BzLg0KPj4+Pj4NCj4+Pj4+IGh0dHBzOi8vZWxpeGlyLmZy
-ZWUtZWxlY3Ryb25zLmNvbS9saW51eC92NC4xNC9zb3VyY2UvZHJpdmVycy9ncHUvZHJtL3RlZ3Jh
-L2RzaS5jI0wxMjQ4DQo+Pj4+Pg0KPj4+Pj4NCj4+Pj4+IElNSE8sIGl0IGlzIGJldHRlciB0aGFu
-IG1lbWNweS4uLg0KPj4+Pj4gSSBhZGRlZCB0aGVzZSAzICJkb2N1bWVudGF0aW9uIiBsaW5lcywg
-bWF5YmUgd2UgbWF5IHJldXNlIHRoZW0gb3INCj4+Pj4+IHNvbWV0aGluZyBzaW1pbGFyLi4uDQo+
-Pj4+Pg0KPj4+Pj4gLyoNCj4+Pj4+ICAgIMKgKiBXcml0ZSA4LWJpdCBwYXlsb2FkIGRhdGEgaW50
-byB0aGUgMzItYml0IHBheWxvYWQgZGF0YSByZWdpc3Rlci4NCj4+Pj4+ICAgIMKgKiBleDogcGF5
-bG9hZCBkYXRhICIweDAxLCAweDAyLCAweDAzLCAweDA0LCAweDA1LCAweDA2IiB3aWxsIGJlY29t
-ZQ0KPj4+Pj4gICAgwqAqICIweDA0MDMwMjAxIDB4MDAwMDA2MDUiIDMyLWJpdCB3cml0ZXMNCj4+
-Pj4+ICAgIMKgKi8NCj4+Pj4+DQo+Pj4+PiBOb3Qgc3VyZSBpdCBoZWxwcyB0byBmaXggdGhlIEJF
-IGlzc3VlIGJ1dCB3ZSBtYXkgYWRkIGEgVE9ETyBzdGF0aW5nIHRoYXQNCj4+Pj4+ICJ0aGlzIGxv
-b3AgaGFzIG5vdCBiZWVuIHRlc3RlZCBvbiBCRSIuLi4NCj4+Pj4+DQo+Pj4+PiBXaGF0IGlzIHlv
-dXIgb3Bpbmlvbj8NCj4+PiBJJ20gc29ycnksIEkgZG9uJ3QgdGhpbmsgSSBub3RpY2VkIHlvdXIg
-cmVwbHkgaGVyZS4gSSdtIHRyeWluZyB0byB1bmJ1cnkNCj4+PiBzb21lIGVtYWlsLCBidXQgdGhh
-dCdzIHNvbWV0aW1lcyBhIGxvc2luZyBiYXR0bGUuLi4NCj4+Pg0KPj4+IFRoYXQgY29kZSBhY3R1
-YWxseSBkb2VzIGxvb2sgY29ycmVjdCwgYW5kIGl0J3MgcGVyaGFwcyBtYXJnaW5hbGx5DQo+Pj4g
-YmV0dGVyLWxvb2tpbmcgaW4gbXkgb3Bpbmlvbi4gSXQncyB1cCB0byB5b3UgaWYgeW91IHdhbnQg
-dG8gcHJvcG9zZQ0KPj4+IGFub3RoZXIgcGF0Y2ggOikgQXQgdGhpcyBwb2ludCwgaXQncyBvbmx5
-IGEgbWF0dGVyIG9mIG5pY2UgY29kZSwgbm90DQo+Pj4gY29ycmVjdG5lc3MgSSBiZWxpZXZlLg0K
-Pj4+DQo+Pj4+IEFzIHlvdXIgcGF0Y2ggaGFzIGJlZW4gbWVyZ2VkLCBJIGhhdmUgZmV3IHNob3J0
-IHF1ZXN0aW9ucyBhbmQgZm9yIGVhY2gNCj4+Pj4gcmVsYXRlZCBuZXcgcGF0Y2gsIEkgd291bGQg
-bGlrZSB0byBrbm93IGlmIHlvdSBwcmVmZXIgdGhhdCBJIGltcGxlbWVudA0KPj4+PiBpdCBvciBp
-ZiB5b3UgcHJlZmVyIHRvIGRvIGl0IGJ5IHlvdXJzZWxmLCBpdCdzIHJlYWxseSBsaWtlIHlvdSB3
-YW50LCBvbg0KPj4+PiBteSBzaWRlLCBubyBwcm9ibGVtIHRvIG1ha2UgdGhlbSBhbGwsIHNvbWUg
-b3Igbm9uZSwgSSBkb24ndCB3YW50IHVzIHRvDQo+Pj4+IGltcGxlbWVudCB0aGVzZSBpbiBwYXJh
-bGxlbCA6LSkNCj4+Pj4NCj4+Pj4gKiBEbyB5b3UgaGF2ZSBhbnkgb3BpbmlvbiByZWdhcmRpbmcg
-VGVncmEtbGlrZSBsb29wcyB2cyB0aGUgbWVtY3B5PyAoc2VlDQo+Pj4+IG15IGNvbW1lbnQgYWJv
-dmUpIElmIHlvdSB0aGluayB0aGUgVGVncmEtbGlrZSBsb29wcyBpcyBhIGJldHRlciBhcHByb2Fj
-aA0KPj4+PiB0aGFuIG1lbWNweSwgdGhlcmUgaXMgYSBzbWFsbCBwYXRjaCB0byB3cml0ZS4NCj4+
-PiBNeSBvcGluaW9uIGlzIGFib3ZlLg0KPj4+DQo+PiBJIGRvIG5vdCBrbm93IHlldCBpZiBJIHdp
-bGwgc2VuZCBhIHBhdGNoIGJ1dCBzZXZlcmFsIHJlYXNvbnMgbWF5IHB1c2ggbWUNCj4+IHRvIGRv
-IGl0Og0KPj4gKiBBbmRyemVqIHByb3Bvc2VkIGEgbmljZXIgY29kZSBpbiBoaXMgbGFzdCByZXZp
-ZXcgc28gaXQgbWVhbnMgdGhlDQo+PiBhY3R1YWwgY29kZSB3aXRoIG1lbWNweSdzIGlzICJub3Qg
-c28gbmljZSIgKGV2ZW4gaWYgaXQgd29ya3MgZmluZSkNCj4gDQo+IEkgd2FzIG5vdCBhZ2FpbnN0
-IG1lbWNweSwgSSBoYXZlIGp1c3Qgc3VnZ2VzdGVkIHRvIGFic3RyYWN0IHRoZSBjb2RlIG91dA0K
-PiB0byBzb21lIGhlbHBlciBmdW5jdGlvbi4NCj4gUmVnYXJkaW5nIG1lbWNweSB2cyBsb29wIEkg
-d291bGQgcHJlZmVyIG1lbWNweSAtIHNpbXBsZXIgY29kZSwgYnV0IGl0IGlzDQo+IGxvb2tzIGxl
-c3MgaW1wb3J0YW50IHRoYXQgYWJzdHJhY3Rpbmcgb3V0Lg0KPiANCj4gUmVnYXJkcw0KPiBBbmRy
-emVqDQo+IA0KPiANCk1hbnkgdGhhbmtzIGZvciB0aGUgY2xhcmlmaWNhdGlvbi4gR29vZCB0byBr
-bm93IHlvdXIgcHJlZmVyZW5jZSBoZXJlIGZvciANCm1lbWNweS4gU28gdGhlbiBpZiBzb21lb25l
-IGRlY2lkZXMgdG8gcmV3b3JrIHRoaXMgcGllY2Ugb2YgY29kZSwgYWxsIA0KdGhlc2UgYXJndW1l
-bnRzIGluIHRoaXMgZW1haWwgdGhyZWFkIHdpbGwgaGVscC4NCg0KTWFueSB0aGFua3MNClBoaWxp
-cHBlIDotKQ0KDQo+PiAqIFNldmVyYWwgZHNpIGRyaXZlcnMgdXNlIHRoZSBUZWdyYS1saWtlIGxv
-b3BzIChUZWdyYSwgaW50ZWwsLi4uICkgYW5kDQo+PiBpbiB2YzQvZXh5bm9zL210ayBkcml2ZXJz
-IG1lbWNweSBpcyBub3QgdXNlZCwgbXNtIHVzZXMgbWVtY3B5Li4uIHdlbGwsDQo+PiBub3Qgc3Vy
-ZSBpdCBpcyB0aGVuIGEgZ29vZCBhcmd1bWVudCwgZGlmZmVyZW50IHNvbHV0aW9ucyBmb3IgZGlm
-ZmVyZW50IGh3Li4uDQo+PiAqIENvbWluZyBjYWRlbmNlIGRzaSBicmlkZ2UgZHJpdmVyIHVzZXMg
-VGVncmEtbGlrZSBsb29wcy4NCj4+ICogSSB0aGluayBteSByZWFkIGZ1bmN0aW9uIHdpbGwgYWxz
-byBoYXZlIFRlZ3JhLWxpa2UgbG9vcHMsIGlmIGl0IGlzIHRoZQ0KPj4gY2FzZSwgaXQgY291bGQg
-YmUgbmljZSB0byBoYXZlIHNvbWV0aGluZyBob21vZ2VuZW91cy4uLg0KPj4NCj4+IEFueXdheSwg
-aXQgaXMgbm90IGFuIGltcG9ydGFudCBwb2ludCA6ICkNCj4+DQo+Pj4+ICogUmV0dXJuZWQgdmFs
-dWUgd2l0aCBudW1iZXIgb2YgYnl0ZXMgcmVjZWl2ZWQvdHJhbnNmZXJyZWQ6IHRoZXJlIGlzIGEN
-Cj4+Pj4gc21hbGwgcGF0Y2ggdG8gd3JpdGUNCj4+PiBJIGRvbid0IHRoaW5rIEkgZm9sbG93ZWQg
-dGhhdCBvbmUgdmVyeSB3ZWxsLiBJJ20gbm90IHN1cmUgbXkgb3Bpbmlvbg0KPj4+IHJlYWxseSBt
-YXR0ZXJzLCBhcyBsb25nIGFzIHlvdSBnZXQgc29tZW9uZSBlbHNlIHRvIGFncmVlLiBJIGRvIG5v
-dCBwbGFuDQo+Pj4gdG8gd3JpdGUgYW55IHN1Y2ggcGF0Y2ggaW4gdGhlIG5lYXIgdGVybS4NCj4+
-Pg0KPj4+PiAqIFJlZ2FyZGluZyByZWFkIG9wZXJhdGlvbnM6IEkgcHJvcG9zZSB0byBhZGQgYSBU
-T0RPICsgRFJNX1dBUk4gaW4gY2FzZQ0KPj4+PiBzb21lb25lIHdhbnQgdG8gdXNlIHRoZSBBUEkg
-Zm9yIHJlYWQgb3BlcmF0aW9ucy4gTm90ZSB0aGF0IEkgcGxhbiB0bw0KPj4+PiBpbXBsZW1lbnQg
-dGhlIHJlYWQgZmVhdHVyZSBidXQgSSBkbyBub3Qga25vdyB5ZXQgd2hlbiBhbmQgbWF5YmUgUm9j
-a2NoaXANCj4+Pj4gcGVvcGxlIGFscmVhZHkgaGF2ZSBzb21ldGhpbmcgfnJlYWR5Pw0KPj4+IFRo
-ZSB3YXJuaW5nIHdvdWxkIGJlIG5pY2UgdG8gZG8gbm93LCByZWdhcmRsZXNzLg0KPj4+DQo+Pj4g
-Um9ja2NoaXAgZm9sa3Mgd3JvdGUgdXAgc29tZXRoaW5nIGZvciByZWFkIHN1cHBvcnQgaGVyZSBb
-MV0sIGJ1dCBpdCdzDQo+Pj4gYmFzZWQgb24gYSBzZW1pLWZvcmtlZCB2ZXJzaW9uIG9mIHRoZSBk
-cml2ZXIgKHdlJ3JlIHRyeWluZyB0byBjbGVhbiB1cA0KPj4+IHRoZSBkaXZlcmdlbmNlLCBidXQg
-aXQncyBub3QgdGhlcmUgeWV0KS4gUGVyaGFwcyBpdCB3b3VsZCBwcm92aWRlIHVzZWZ1bA0KPj4+
-IGZvZGRlciBmb3IgeW91ciB3b3JrLiBJIGRvbid0IHRoaW5rIFJvY2tjaGlwIGlzIGltbWVkaWF0
-ZWx5IHdvcmtpbmcgb24NCj4+PiB1cHN0cmVhbWluZyB0aGlzIHBhcnRpY3VsYXIgcGF0Y2gsIHNv
-IGl0J3MgdG90YWxseSBmYWlyIHRvIGhhbmRsZSBpdA0KPj4+IHlvdXJzZWxmLiBJdCdzIGdvdCB0
-aGUgR1BMIHNpZ24tb2ZmIDspDQo+Pj4NCj4+PiBCcmlhbg0KPj4+DQo+Pj4gWzFdIGh0dHBzOi8v
-Y2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vYy9jaHJvbWl1bW9zL3RoaXJkX3BhcnR5
-L2tlcm5lbC8rLzg2MzM0Nw0KPj4+DQo+PiBWZXJ5IGdvb2QgaW5mb3JtYXRpb24sIEkgd2lsbCBo
-YXZlIGEgbG9vaywNCj4+IG1hbnkgdGhhbmtzDQo+PiBQaGlsaXBwZSA6LSkNCj4gDQo+IApfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The patch
+
+   ASoC: rockchip: Use dummy_dai for rt5514 dsp dailink
+
+has been applied to the asoc tree at
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From fde7f9dbc71365230eeb8c8ea97ce9b552c8e5bd Mon Sep 17 00:00:00 2001
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Date: Tue, 21 Nov 2017 16:25:17 +0800
+Subject: [PATCH] ASoC: rockchip: Use dummy_dai for rt5514 dsp dailink
+
+The rt5514 dsp captures pcm data through spi directly, so we should not
+use rockchip-i2s as it's cpu dai like other codecs.
+
+Use dummy_dai for rt5514 dsp dailink to make voice wakeup work again.
+
+Reported-by: Jimmy Cheng-Yi Chiang <cychiang@google.com>
+Fixes: (72cfb0f20c75 ASoC: rockchip: Use codec of_node and dai_name for rt5514 dsp)
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Tested-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rk3399_gru_sound.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index d64fbbd50544..aa8ffd035377 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -367,7 +367,8 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
+ 	[DAILINK_RT5514_DSP] = {
+ 		.name = "RT5514 DSP",
+ 		.stream_name = "Wake on Voice",
+-		.codec_dai_name = "rt5514-dsp-cpu-dai",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
+ 	},
+ };
+ 
+@@ -528,7 +529,18 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 		if (index < 0)
+ 			continue;
+ 
+-		np_cpu = (index == DAILINK_CDNDP) ? np_cpu1 : np_cpu0;
++		switch (index) {
++		case DAILINK_CDNDP:
++			np_cpu = np_cpu1;
++			break;
++		case DAILINK_RT5514_DSP:
++			np_cpu = np_codec;
++			break;
++		default:
++			np_cpu = np_cpu0;
++			break;
++		}
++
+ 		if (!np_cpu) {
+ 			dev_err(dev, "Missing 'rockchip,cpu' for %s\n",
+ 				rockchip_dais[index].name);
+@@ -538,7 +550,8 @@ static int rockchip_sound_of_parse_dais(struct device *dev,
+ 		dai = &card->dai_link[card->num_links++];
+ 		*dai = rockchip_dais[index];
+ 
+-		dai->codec_of_node = np_codec;
++		if (!dai->codec_name)
++			dai->codec_of_node = np_codec;
+ 		dai->platform_of_node = np_cpu;
+ 		dai->cpu_of_node = np_cpu;
+ 
+-- 
+2.15.1
