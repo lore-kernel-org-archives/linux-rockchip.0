@@ -1,54 +1,45 @@
-From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4 08/13] iommu/rockchip: Control clocks needed to access
-	the IOMMU
-Date: Thu, 25 Jan 2018 18:24:37 +0800
-Message-ID: <5A69B065.30501@rock-chips.com>
-References: <20180118115251.5542-1-jeffy.chen@rock-chips.com>
-	<20180118115251.5542-9-jeffy.chen@rock-chips.com>
-	<c188e6a9-744c-d984-545c-408607f35cc9@arm.com>
-	<5A60AE41.2050101@rock-chips.com>
-	<1f4b3c0d-1414-0012-a072-f4a11f432c21@rock-chips.com>
-	<5A654925.9020203@rock-chips.com> <5A6563FA.8080602@rock-chips.com>
-	<c05d4794-b76d-cfaa-d7ed-c44108117ee2@rock-chips.com>
+From: Philippe Cornu <philippe.cornu@st.com>
+Subject: [PATCH v2 1/2] drm/bridge/synopsys: dsi: Add a warning msg on dsi
+ read requests
+Date: Thu, 25 Jan 2018 11:37:59 +0100
+Message-ID: <20180125103800.1999-2-philippe.cornu@st.com>
+References: <20180125103800.1999-1-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <c05d4794-b76d-cfaa-d7ed-c44108117ee2-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180125103800.1999-1-philippe.cornu@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/25/2018 05:42 PM, Randy Li wrote:
->>>
->>
->> confirmed with Simon, there might be some iommus don't have a pd, and
-> We use the pd to control the NIU node(not on upstream), without a pd or
-> fake pd, none of the platform would work.
-after talked offline, it's possible to have iommu without pd in upstream 
-kernel(and chromeos kernel), but on our internal kernel, the drivers 
-would require pd(or fake pd) to reset modules when error happens.
-
-anyway, i think that means we do need clock control here.
-
->> the CONFIG_PM could be disabled.I am hard to believe a modern platform
->> can work without that.
->>
->> so it might be better to control clocks in iommu driver itself.
->I won't
-> insist how the version of the iommu patch on the upstream, I
-> just post an idea here.
-> The version for kernel 4.4 is under internal review, the implementation
-> has been modified many times.
->
-> I would suggest the managing clocks in pd is a more easy way and don't
-> need to spare those thing in two places.
+VGhlIGRjcy9nZW5lcmljIGRzaSByZWFkIGZlYXR1cmUgaXMgbm90IHlldCBpbXBsZW1lbnRlZCBz
+byBpdAppcyBpbXBvcnRhbnQgdG8gd2FybiB0aGUgaG9zdF90cmFuc2ZlcigpIGNhbGxlciBpbiBj
+YXNlIG9mCnJlYWQgb3BlcmF0aW9uIHJlcXVlc3RzLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUg
+Q29ybnUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCA2ICsrKysrKwogMSBmaWxlIGNoYW5nZWQsIDYgaW5z
+ZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMv
+ZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1k
+c2kuYwppbmRleCBkYWVjNzg4MWJlNmQuLjcyZWNhZWI0MDgyMiAxMDA2NDQKLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwpAQCAtNDA1LDYgKzQwNSwxMiBAQCBz
+dGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2RzaV9o
+b3N0ICpob3N0LAogCXN0cnVjdCBtaXBpX2RzaV9wYWNrZXQgcGFja2V0OwogCWludCByZXQ7CiAK
+KwlpZiAobXNnLT5yeF9idWYgfHwgbXNnLT5yeF9sZW4pIHsKKwkJLyogVE9ETyBkdyBkcnYgaW1w
+cm92ZW1lbnRzOiBpbXBsZW1lbnQgcmVhZCBmZWF0dXJlICovCisJCWRldl93YXJuKGRzaS0+ZGV2
+LCAicmVhZCBvcGVyYXRpb25zIG5vdCB5ZXQgaW1wbGVtZW50ZWRcbiIpOworCQlyZXR1cm4gLUVJ
+TlZBTDsKKwl9CisKIAlyZXQgPSBtaXBpX2RzaV9jcmVhdGVfcGFja2V0KCZwYWNrZXQsIG1zZyk7
+CiAJaWYgKHJldCkgewogCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIGNyZWF0ZSBwYWNr
+ZXQ6ICVkXG4iLCByZXQpOwotLSAKMi4xNS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
