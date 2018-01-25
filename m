@@ -1,122 +1,62 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v1 1/2] drm/bridge/synopsys: dsi: Fix
- dsi_host_transfer() return value
-Date: Thu, 25 Jan 2018 13:16:10 +0100
-Message-ID: <61a3e22a-811b-53e5-f735-534dfd9f67da@samsung.com>
-References: <20180123142618.28384-1-philippe.cornu@st.com>
-        <20180123142618.28384-2-philippe.cornu@st.com>
-        <CA+ASDXNDpmVdARLCD-A6nfADgmomuscpwekb8M-j=MFJhpeC4Q@mail.gmail.com>
-        <4a1b0208-3187-2f08-69fe-ca3b77ee88a8@st.com>
-        <CGME20180124183757epcas5p2e8296b5712fc0f2004eb81111693e166@epcas5p2.samsung.com>
-        <20180124183748.l5iqoiyqxy4o2pyk@ban.mtv.corp.google.com>
+From: Philippe Cornu <philippe.cornu@st.com>
+Subject: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
+Date: Thu, 25 Jan 2018 16:55:04 +0100
+Message-ID: <20180125155504.8611-1-philippe.cornu@st.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <20180124183748.l5iqoiyqxy4o2pyk@ban.mtv.corp.google.com>
-Content-language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Philippe CORNU <philippe.cornu@st.com>
-Cc: Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24.01.2018 19:37, Brian Norris wrote:
-> Hi Philippe,
->
-> On Wed, Jan 24, 2018 at 01:33:54PM +0000, Philippe CORNU wrote:
->> On 01/23/2018 10:38 PM, Brian Norris wrote:
->>> Hi Philippe,
->>>
->>> On Tue, Jan 23, 2018 at 6:26 AM, Philippe Cornu <philippe.cornu@st.com> wrote:
->>>> The dw_mipi_dsi_host_transfer() must return the number of
->>>> bytes transmitted/received on success instead of 0.
->>> I'm a little confused. As of the latest drm-misc-next I'm looking at,
->>> this still has conflicting documentation.
->>>
->>> For ->transfer():
->>>
->>> On success it shall return the number of bytes
->>>   * transmitted for write packets or the number of bytes received for read
->>>   * packets.
->>>
->>> While mipi_dsi_generic_read() says:
->>>
->>>   * Return: The number of bytes successfully read or a negative error code on
->>>   * failure.
->>>
->>> But it just returns the value that ->transfer() returns.
->>>
->> Not sure to follow you here: mipi_dsi_generic_read() will trig a dsi 
->> generic read so it has to return "the number of bytes received for read 
->> packets" as explained for the ->transfer() function... so it looks 
->> "coherent"...
->>
->> But maybe you want to point out something different?
-> Actually, reading back what I wrote, I'm not sure it made sense. I think
-> *I* was confusing "supporting TX only" with "supporting TX and RX". I
-> believe the documentation isn't conflicting, but your current patch is a
-> little misleading.
->
-> With your current patch, you're returning the 'mipi_dsi_packet::size',
-> which is the sum of both TX and RX.
-
-I did not found docs saying mipi_dsi_packet::size is a sum of tx and rx.
-tx and rx packets are two different packets, so they do not sum up.
-But thanks for bringing it up, it shows docs are incomplete/misleading.
-
-
->  Since we only support TX right now,
-> I suppose that actually is fine (because 'rx_len == 0'). But if we start
-> supporting RX too, then this field is not the right one to return.
->
-> Anyway, maybe this patch was fine as it was. But when you get RX
-> support, this will have to be something like:
->
-> 	if (msg->rx_len)
-> 		return msg->rx_len;
-> 	else
-> 		return packet.size;
->
-> BTW, does anyone actually care about seeing the number of TX bytes
-> returned? That seems weird, because I wouldn't expect you'd get a good
-> result from a partial TX (dunno about partial RX). And I also see that
-> there are other drivers that get this all wrong too. See
-> mtk_dsi_host_transfer(), which only returns 0 for TX and 'recv_cnt' for
-> RX.
-
-As far as I remember MIPI DSI standard does not allow partial TX, it is
-all-or-nothing operation.
-
->
-> So all-in-all, maybe my problem isn't that the documentation is
-> conflicting, exactly, but that the requirements are somewhat odd, such
-> that either implementations get it wrong (2 of 3 that I've looked at!),
-> or they have to write somewhat odd special-casing.
-
-mipi_dsi_host_ops::transfer in case of write sends only tx packet, in
-case of read it sends tx packets and receives rx packet, so it
-can be confusing what it should return in case of read.
-IMO changing mipi_dsi_host_ops::transfer to always return number of
-bytes RECEIVED or error should make it clearer and simpler.
-
-+CC Thierry
-
-Regards
-Andrzej
-
-
->
->>> So I'm not sure whether the documentation is still wrong, or if the
->>> implementation is.
->>>
->>> Anyway, I guess maybe that isn't super-critical to *this* patch, since
->>> we don't have RX support yet...
->>>
->> The main reason why I want to "fix" this is because I do not want to 
->> explain to our customers (writing dsi panel drivers) why we have a 
->> different returned value compare to other platforms : )
-> Brian
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+VGhlICJhZGp1c3RlZF9tb2RlIiBjbG9jayB2YWx1ZSAoaWUgdGhlIHJlYWwgcGl4ZWwgY2xvY2sp
+IGlzIG1vcmUKYWNjdXJhdGUgdGhhbiAibW9kZSIgY2xvY2sgdmFsdWUgKGllIHRoZSBwYW5lbC9i
+cmlkZ2UgcmVxdWVzdGVkCmNsb2NrIHZhbHVlKS4gSXQgb2ZmZXJzIGEgYmV0dGVyIHByZWNpc2Vu
+ZXNzIGZvciB0aW1pbmcKY29tcHV0YXRpb25zIGFuZCBhbGxvd3MgdG8gcmVkdWNlIHRoZSBleHRy
+YSBkc2kgYmFuZHdpZHRoIGluCmJ1cnN0IG1vZGUgKGZyb20gfjIwJSB0byB+MTAtMTIlLCBodyBw
+bGF0Zm9ybSBkZXBlbmRhbnQpLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxp
+cHBlLmNvcm51QHN0LmNvbT4KLS0tCk5vdGU6IFRoaXMgcGF0Y2ggcmVwbGFjZXMgImRybS9icmlk
+Z2Uvc3lub3BzeXM6IGRzaTogYWRkIG9wdGlvbmFsIHBpeGVsIGNsb2NrIgoKIGRyaXZlcnMvZ3B1
+L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDEyICsrKysrKy0tLS0tLQogMSBm
+aWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKaW5kZXggZWQ4YWYzMmY4ZTUy
+Li5iOTI2YjYyZTllMzMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
+eXMvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
+LW1pcGktZHNpLmMKQEAgLTcwNywyMCArNzA3LDIwIEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNp
+X2JyaWRnZV9tb2RlX3NldChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAogCiAJY2xrX3ByZXBh
+cmVfZW5hYmxlKGRzaS0+cGNsayk7CiAKLQlyZXQgPSBwaHlfb3BzLT5nZXRfbGFuZV9tYnBzKHBy
+aXZfZGF0YSwgbW9kZSwgZHNpLT5tb2RlX2ZsYWdzLAorCXJldCA9IHBoeV9vcHMtPmdldF9sYW5l
+X21icHMocHJpdl9kYXRhLCBhZGp1c3RlZF9tb2RlLCBkc2ktPm1vZGVfZmxhZ3MsCiAJCQkJICAg
+ICBkc2ktPmxhbmVzLCBkc2ktPmZvcm1hdCwgJmRzaS0+bGFuZV9tYnBzKTsKIAlpZiAocmV0KQog
+CQlEUk1fREVCVUdfRFJJVkVSKCJQaHkgZ2V0X2xhbmVfbWJwcygpIGZhaWxlZFxuIik7CiAKIAlw
+bV9ydW50aW1lX2dldF9zeW5jKGRzaS0+ZGV2KTsKIAlkd19taXBpX2RzaV9pbml0KGRzaSk7Ci0J
+ZHdfbWlwaV9kc2lfZHBpX2NvbmZpZyhkc2ksIG1vZGUpOworCWR3X21pcGlfZHNpX2RwaV9jb25m
+aWcoZHNpLCBhZGp1c3RlZF9tb2RlKTsKIAlkd19taXBpX2RzaV9wYWNrZXRfaGFuZGxlcl9jb25m
+aWcoZHNpKTsKIAlkd19taXBpX2RzaV92aWRlb19tb2RlX2NvbmZpZyhkc2kpOwotCWR3X21pcGlf
+ZHNpX3ZpZGVvX3BhY2tldF9jb25maWcoZHNpLCBtb2RlKTsKKwlkd19taXBpX2RzaV92aWRlb19w
+YWNrZXRfY29uZmlnKGRzaSwgYWRqdXN0ZWRfbW9kZSk7CiAJZHdfbWlwaV9kc2lfY29tbWFuZF9t
+b2RlX2NvbmZpZyhkc2kpOwotCWR3X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKGRzaSwgbW9k
+ZSk7Ci0JZHdfbWlwaV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ksIG1vZGUpOworCWR3
+X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKGRzaSwgYWRqdXN0ZWRfbW9kZSk7CisJZHdfbWlw
+aV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ksIGFkanVzdGVkX21vZGUpOwogCiAJZHdf
+bWlwaV9kc2lfZHBoeV9pbml0KGRzaSk7CiAJZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29uZmln
+KGRzaSk7CkBAIC03MzQsNyArNzM0LDcgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfYnJpZGdl
+X21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCiAKIAlkd19taXBpX2RzaV9kcGh5
+X2VuYWJsZShkc2kpOwogCi0JZHdfbWlwaV9kc2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyhtb2RlKTsK
+Kwlkd19taXBpX2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKGFkanVzdGVkX21vZGUpOwogCiAJLyog
+U3dpdGNoIHRvIGNtZCBtb2RlIGZvciBwYW5lbC1icmlkZ2UgcHJlX2VuYWJsZSAmIHBhbmVsIHBy
+ZXBhcmUgKi8KIAlkd19taXBpX2RzaV9zZXRfbW9kZShkc2ksIDApOwotLSAKMi4xNS4xCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
