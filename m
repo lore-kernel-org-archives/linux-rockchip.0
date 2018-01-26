@@ -1,12 +1,11 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2 05/43] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Fri, 26 Jan 2018 14:16:32 +0100
-Message-ID: <20180126131710.7622-6-thierry.escande@collabora.com>
+Subject: [PATCH v2 02/43] drm/rockchip: support prime import sg table
+Date: Fri, 26 Jan 2018 14:16:29 +0100
+Message-ID: <20180126131710.7622-3-thierry.escande@collabora.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180126131710.7622-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,35 +22,210 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpUaGUgYnJpZGdlIGRvZXMgbm90
-IG5lZWQgdG8gYmUgcG93ZXJlZCBpbiBhbmFsb2dpeF9kcF9iaW5kKCksIHNvCnJlbW92ZSB0aGUg
-Y2FsbHMgdG8gcG1fcnVudGltZV9nZXQoKS9waHlfcG93ZXJfb24oKS9hbmFsb2dpeF9kcF9pbml0
-X2RwKCkKYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291bnRlcnBhcnRzLgoKQ2M6IFN0w6lw
-aGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWlu
-IHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4
-dEByb2NrLWNoaXBzLmNvbT4KW3RoZSBwYXRjaCBvcmlnaW5hbGx5IGp1c3QgcmVtb3ZlZCB0aGUg
-cG93ZXJfb24gcG9ydGlvbiwgc2VhbnBhdWwgcmVtb3ZlZAp0aGUgcG93ZXIgb2ZmIGNvZGUgYXMg
-d2VsbCBhcyBpbXByb3ZlZCB0aGUgY29tbWl0IG1lc3NhZ2VdClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgMTAgLS0tLS0tLS0tLQogMSBmaWxl
-IGNoYW5nZWQsIDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKaW5kZXggY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5
-YmE4NWQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5jCkBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCiAJcG1fcnVudGlt
-ZV9lbmFibGUoZGV2KTsKIAotCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZGV2KTsKLQlwaHlfcG93ZXJf
-b24oZHAtPnBoeSk7Ci0KLQlhbmFsb2dpeF9kcF9pbml0X2RwKGRwKTsKLQogCXJldCA9IGRldm1f
-cmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmlycSwKIAkJCQkJYW5hbG9naXhf
-ZHBfaGFyZGlycSwKIAkJCQkJYW5hbG9naXhfZHBfaXJxX3RocmVhZCwKQEAgLTE0MTQsMTUgKzE0
-MDksMTAgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1f
-ZGV2aWNlICpkcm1fZGV2LAogCQlnb3RvIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU7CiAJfQogCi0J
-cGh5X3Bvd2VyX29mZihkcC0+cGh5KTsKLQlwbV9ydW50aW1lX3B1dChkZXYpOwotCiAJcmV0dXJu
-IGRwOwogCiBlcnJfZGlzYWJsZV9wbV9ydW50aW1lOgogCi0JcGh5X3Bvd2VyX29mZihkcC0+cGh5
-KTsKLQlwbV9ydW50aW1lX3B1dChkZXYpOwogCXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOwogCiAJ
-cmV0dXJuIEVSUl9QVFIocmV0KTsKLS0gCjIuMTQuMQoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+The prime fd to handle ioctl was not used with rockchip before. Support
+was added in order to pass graphics_Gbm and to support potential uses
+within Chrome OS (e.g. zero-copy video decode, camera).
+
+Signed-off-by: Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c |   1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 118 ++++++++++++++++++++++++++--
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h |   5 +-
+ 3 files changed, 115 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index d85431400a0d..88084ca15115 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -230,6 +230,7 @@ static struct drm_driver rockchip_drm_driver = {
+ 	.gem_prime_import	= drm_gem_prime_import,
+ 	.gem_prime_export	= drm_gem_prime_export,
+ 	.gem_prime_get_sg_table	= rockchip_gem_prime_get_sg_table,
++	.gem_prime_import_sg_table	= rockchip_gem_prime_import_sg_table,
+ 	.gem_prime_vmap		= rockchip_gem_prime_vmap,
+ 	.gem_prime_vunmap	= rockchip_gem_prime_vunmap,
+ 	.gem_prime_mmap		= rockchip_gem_mmap_buf,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index 1d9655576b6e..5d52020deca1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -16,6 +16,8 @@
+ #include <drm/drmP.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_vma_manager.h>
++
++#include <linux/dma-buf.h>
+ #include <linux/iommu.h>
+ 
+ #include "rockchip_drm_drv.h"
+@@ -309,12 +311,10 @@ static void rockchip_gem_release_object(struct rockchip_gem_object *rk_obj)
+ }
+ 
+ struct rockchip_gem_object *
+-	rockchip_gem_create_object(struct drm_device *drm, unsigned int size,
+-				   bool alloc_kmap)
++	rockchip_gem_alloc_object(struct drm_device *drm, unsigned int size)
+ {
+ 	struct rockchip_gem_object *rk_obj;
+ 	struct drm_gem_object *obj;
+-	int ret;
+ 
+ 	size = round_up(size, PAGE_SIZE);
+ 
+@@ -326,6 +326,20 @@ struct rockchip_gem_object *
+ 
+ 	drm_gem_object_init(drm, obj, size);
+ 
++	return rk_obj;
++}
++
++struct rockchip_gem_object *
++rockchip_gem_create_object(struct drm_device *drm, unsigned int size,
++			   bool alloc_kmap)
++{
++	struct rockchip_gem_object *rk_obj;
++	int ret;
++
++	rk_obj = rockchip_gem_alloc_object(drm, size);
++	if (IS_ERR(rk_obj))
++		return rk_obj;
++
+ 	ret = rockchip_gem_alloc_buf(rk_obj, alloc_kmap);
+ 	if (ret)
+ 		goto err_free_rk_obj;
+@@ -343,11 +357,21 @@ struct rockchip_gem_object *
+  */
+ void rockchip_gem_free_object(struct drm_gem_object *obj)
+ {
+-	struct rockchip_gem_object *rk_obj;
+-
+-	rk_obj = to_rockchip_obj(obj);
++	struct drm_device *drm = obj->dev;
++	struct rockchip_drm_private *private = drm->dev_private;
++	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+ 
+-	rockchip_gem_free_buf(rk_obj);
++	if (obj->import_attach) {
++		if (private->domain) {
++			rockchip_gem_iommu_unmap(rk_obj);
++		} else {
++			dma_unmap_sg(drm->dev, rk_obj->sgt->sgl,
++				     rk_obj->sgt->nents, DMA_BIDIRECTIONAL);
++		}
++		drm_prime_gem_destroy(obj, rk_obj->sgt);
++	} else {
++		rockchip_gem_free_buf(rk_obj);
++	}
+ 
+ 	rockchip_gem_release_object(rk_obj);
+ }
+@@ -451,6 +475,86 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
+ 	return sgt;
+ }
+ 
++static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
++						     int count)
++{
++	struct scatterlist *s;
++	dma_addr_t expected = sg_dma_address(sgt->sgl);
++	unsigned int i;
++	unsigned long size = 0;
++
++	for_each_sg(sgt->sgl, s, count, i) {
++		if (sg_dma_address(s) != expected)
++			break;
++		expected = sg_dma_address(s) + sg_dma_len(s);
++		size += sg_dma_len(s);
++	}
++	return size;
++}
++
++static int
++rockchip_gem_iommu_map_sg(struct drm_device *drm,
++			  struct dma_buf_attachment *attach,
++			  struct sg_table *sg,
++			  struct rockchip_gem_object *rk_obj)
++{
++	rk_obj->sgt = sg;
++	return rockchip_gem_iommu_map(rk_obj);
++}
++
++static int
++rockchip_gem_dma_map_sg(struct drm_device *drm,
++			struct dma_buf_attachment *attach,
++			struct sg_table *sg,
++			struct rockchip_gem_object *rk_obj)
++{
++	int count = dma_map_sg(drm->dev, sg->sgl, sg->nents,
++			       DMA_BIDIRECTIONAL);
++	if (!count)
++		return -EINVAL;
++
++	if (rockchip_sg_get_contiguous_size(sg, count) < attach->dmabuf->size) {
++		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
++		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
++			     DMA_BIDIRECTIONAL);
++		return -EINVAL;
++	}
++
++	rk_obj->dma_addr = sg_dma_address(sg->sgl);
++	rk_obj->sgt = sg;
++	return 0;
++}
++
++struct drm_gem_object *
++rockchip_gem_prime_import_sg_table(struct drm_device *drm,
++				   struct dma_buf_attachment *attach,
++				   struct sg_table *sg)
++{
++	struct rockchip_drm_private *private = drm->dev_private;
++	struct rockchip_gem_object *rk_obj;
++	int ret;
++
++	rk_obj = rockchip_gem_alloc_object(drm, attach->dmabuf->size);
++	if (IS_ERR(rk_obj))
++		return ERR_CAST(rk_obj);
++
++	if (private->domain)
++		ret = rockchip_gem_iommu_map_sg(drm, attach, sg, rk_obj);
++	else
++		ret = rockchip_gem_dma_map_sg(drm, attach, sg, rk_obj);
++
++	if (ret < 0) {
++		DRM_ERROR("failed to import sg table: %d\n", ret);
++		goto err_free_rk_obj;
++	}
++
++	return &rk_obj->base;
++
++err_free_rk_obj:
++	rockchip_gem_release_object(rk_obj);
++	return ERR_PTR(ret);
++}
++
+ void *rockchip_gem_prime_vmap(struct drm_gem_object *obj)
+ {
+ 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
+index f237375582fb..d41fa65219d2 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
+@@ -36,8 +36,9 @@ struct rockchip_gem_object {
+ 
+ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj);
+ struct drm_gem_object *
+-rockchip_gem_prime_import_sg_table(struct drm_device *dev, size_t size,
+-				   struct sg_table *sgt);
++rockchip_gem_prime_import_sg_table(struct drm_device *dev,
++				   struct dma_buf_attachment *attach,
++				   struct sg_table *sg);
+ void *rockchip_gem_prime_vmap(struct drm_gem_object *obj);
+ void rockchip_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
+ 
+-- 
+2.14.1
