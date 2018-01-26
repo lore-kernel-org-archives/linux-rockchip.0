@@ -1,60 +1,132 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2 01/43] drm/rockchip: Get rid of unnecessary struct fields
-Date: Fri, 26 Jan 2018 14:16:28 +0100
-Message-ID: <20180126131710.7622-2-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v2 42/43] drm/rockchip: Disallow PSR for the whole atomic commit
+Date: Fri, 26 Jan 2018 14:17:09 +0100
+Message-ID: <20180126131710.7622-43-thierry.escande@collabora.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180126131710.7622-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180126131710.7622-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>
+Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Tomasz Figa <tfiga@chromium.org>
 
-This patch removes unused fields from vop structure.
+Currently PSR flush is triggered from CRTC's .atomic_begin() callback,
+which is executed after modeset disables and enables and before plane
+updates are committed. Since PSR flush and re-enable can be triggered
+asynchronously by external sources (input event, delayed work), it can
+race with hardware programming done in the aforementioned stages.
 
-Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+This patch blocks the PSR completely before hardware programming part
+begins and unblock after it ends. This relies on reference counted PSR
+disable introduced with previous patch.
+
+Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c  | 61 ++++++++++++++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  7 ----
+ 2 files changed, 60 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index e266539e04e5..d4f4118b482d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -167,8 +167,67 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
+ 	return ERR_PTR(ret);
+ }
+ 
++static void
++rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state)
++{
++	struct drm_crtc *crtc;
++	struct drm_crtc_state *crtc_state;
++	struct drm_encoder *encoder;
++	u32 encoder_mask = 0;
++	int i;
++
++	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
++		encoder_mask |= crtc_state->encoder_mask;
++		encoder_mask |= crtc->state->encoder_mask;
++	}
++
++	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
++		rockchip_drm_psr_inhibit_get(encoder);
++}
++
++static void
++rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state)
++{
++	struct drm_crtc *crtc;
++	struct drm_crtc_state *crtc_state;
++	struct drm_encoder *encoder;
++	u32 encoder_mask = 0;
++	int i;
++
++	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
++		encoder_mask |= crtc_state->encoder_mask;
++		encoder_mask |= crtc->state->encoder_mask;
++	}
++
++	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
++		rockchip_drm_psr_inhibit_put(encoder);
++}
++
++static void
++rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
++{
++	struct drm_device *dev = old_state->dev;
++
++	rockchip_drm_psr_inhibit_get_state(old_state);
++
++	drm_atomic_helper_commit_modeset_disables(dev, old_state);
++
++	drm_atomic_helper_commit_modeset_enables(dev, old_state);
++
++	drm_atomic_helper_commit_planes(dev, old_state,
++					DRM_PLANE_COMMIT_ACTIVE_ONLY);
++
++	rockchip_drm_psr_inhibit_put_state(old_state);
++
++	drm_atomic_helper_commit_hw_done(old_state);
++
++	drm_atomic_helper_wait_for_vblanks(dev, old_state);
++
++	drm_atomic_helper_cleanup_planes(dev, old_state);
++}
++
+ static const struct drm_mode_config_helper_funcs rockchip_mode_config_helpers = {
+-	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
++	.atomic_commit_tail = rockchip_atomic_helper_commit_tail_rpm,
+ };
+ 
+ static const struct drm_mode_config_funcs rockchip_drm_mode_config_funcs = {
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index ba7505292b78..7a137bc5708c 100644
+index 4abb9d72d814..8c11a4dc436e 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -95,9 +95,6 @@ struct vop {
- 	struct drm_device *drm_dev;
- 	bool is_enabled;
+@@ -1041,16 +1041,9 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	}
+ }
  
--	/* mutex vsync_ work */
--	struct mutex vsync_mutex;
--	bool vsync_work_pending;
- 	struct completion dsp_hold_completion;
- 
- 	/* protected by dev->event_lock */
-@@ -1567,8 +1564,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 	spin_lock_init(&vop->reg_lock);
- 	spin_lock_init(&vop->irq_lock);
- 
--	mutex_init(&vop->vsync_mutex);
+-static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
+-				  struct drm_crtc_state *old_crtc_state)
+-{
+-	rockchip_drm_psr_flush(crtc);
+-}
 -
- 	ret = devm_request_irq(dev, vop->irq, vop_isr,
- 			       IRQF_SHARED, dev_name(dev), vop);
- 	if (ret)
+ static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
+ 	.mode_fixup = vop_crtc_mode_fixup,
+ 	.atomic_flush = vop_crtc_atomic_flush,
+-	.atomic_begin = vop_crtc_atomic_begin,
+ 	.atomic_enable = vop_crtc_atomic_enable,
+ 	.atomic_disable = vop_crtc_atomic_disable,
+ };
 -- 
 2.14.1
