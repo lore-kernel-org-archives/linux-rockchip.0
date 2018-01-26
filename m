@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2 14/43] drm/bridge: analogix_dp: Check AUX_EN status when
- doing AUX transfer
-Date: Fri, 26 Jan 2018 14:16:41 +0100
-Message-ID: <20180126131710.7622-15-thierry.escande@collabora.com>
+Subject: [PATCH v2 28/43] drm/bridge: analogix_dp: Fix incorrect operations
+ with register ANALOGIX_DP_FUNC_EN_1
+Date: Fri, 26 Jan 2018 14:16:55 +0100
+Message-ID: <20180126131710.7622-29-thierry.escande@collabora.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180126131710.7622-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,44 +23,83 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCldlIHNob3VsZCBjaGVjayBBVVhf
-RU4gYml0IHRvIGNvbmZpcm0gdGhlIEFVWCBDSCBvcGVyYXRpb24gaXMgY29tcGxldGVkLgoKQ2M6
-IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5
-OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgpTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcg
-PHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBj
-aHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFRoaWVycnkgRXNjYW5kZSA8dGhpZXJyeS5lc2Nh
-bmRlQGNvbGxhYm9yYS5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
-bmFsb2dpeF9kcF9yZWcuYyB8IDI1ICsrKysrKysrKysrKystLS0tLS0tLS0tCiAxIGZpbGUgY2hh
-bmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKaW5kZXggOWRmMmYzZWYw
-MDBjLi5lNzhjODYxYjllMDYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
-bG9naXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtMTA3Myw5ICsxMDczLDkgQEAgc3NpemVfdCBhbmFs
-b2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIHsKIAl1MzIg
-cmVnOwogCXU4ICpidWZmZXIgPSBtc2ctPmJ1ZmZlcjsKLQlpbnQgdGltZW91dF9sb29wID0gMDsK
-IAl1bnNpZ25lZCBpbnQgaTsKIAlpbnQgbnVtX3RyYW5zZmVycmVkID0gMDsKKwlpbnQgcmV0Owog
-CiAJLyogQnVmZmVyIHNpemUgb2YgQVVYIENIIGlzIDE2IGJ5dGVzICovCiAJaWYgKFdBUk5fT04o
-bXNnLT5zaXplID4gMTYpKQpAQCAtMTEzOSwxNyArMTEzOSwyMCBAQCBzc2l6ZV90IGFuYWxvZ2l4
-X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCiAJd3JpdGVsKHJl
-ZywgZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfQVVYX0NIX0NUTF8yKTsKIAotCS8qIElzIEFV
-WCBDSCBjb21tYW5kIHJlcGx5IHJlY2VpdmVkPyAqLworCXJldCA9IHJlYWR4X3BvbGxfdGltZW91
-dChyZWFkbCwgZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfQVVYX0NIX0NUTF8yLAorCQkJCSBy
-ZWcsICEocmVnICYgQVVYX0VOKSwgMjUsIDUwMCAqIDEwMDApOworCWlmIChyZXQpIHsKKwkJZGV2
-X2VycihkcC0+ZGV2LCAiQVVYIENIIGVuYWJsZSB0aW1lb3V0IVxuIik7CisJCXJldHVybiAtRVRJ
-TUVET1VUOworCX0KKwogCS8qIFRPRE86IFdhaXQgZm9yIGFuIGludGVycnVwdCBpbnN0ZWFkIG9m
-IGxvb3Bpbmc/ICovCi0JcmVnID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfSU5U
-X1NUQSk7Ci0Jd2hpbGUgKCEocmVnICYgUlBMWV9SRUNFSVYpKSB7Ci0JCXRpbWVvdXRfbG9vcCsr
-OwotCQlpZiAodGltZW91dF9sb29wID4gRFBfVElNRU9VVF9MT09QX0NPVU5UKSB7Ci0JCQlkZXZf
-ZXJyKGRwLT5kZXYsICJBVVggQ0ggY29tbWFuZCByZXBseSBmYWlsZWQhXG4iKTsKLQkJCXJldHVy
-biAtRVRJTUVET1VUOwotCQl9Ci0JCXJlZyA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lY
-X0RQX0lOVF9TVEEpOwotCQl1c2xlZXBfcmFuZ2UoMTAsIDExKTsKKwkvKiBJcyBBVVggQ0ggY29t
-bWFuZCByZXBseSByZWNlaXZlZD8gKi8KKwlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocmVhZGws
-IGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0lOVF9TVEEsCisJCQkJIHJlZywgcmVnICYgUlBM
-WV9SRUNFSVYsIDEwLCAyMCAqIDEwMDApOworCWlmIChyZXQpIHsKKwkJZGV2X2VycihkcC0+ZGV2
-LCAiQVVYIENIIGNtZCByZXBseSB0aW1lb3V0IVxuIik7CisJCXJldHVybiAtRVRJTUVET1VUOwog
-CX0KIAogCS8qIENsZWFyIGludGVycnVwdCBzb3VyY2UgZm9yIEFVWCBDSCBjb21tYW5kIHJlcGx5
-ICovCi0tIAoyLjE0LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Register ANALOGIX_DP_FUNC_EN_1(offset 0x18), Rockchip is different to
+Exynos:
+
+on Exynos edp phy,
+BIT 7		MASTER_VID_FUNC_EN_N
+BIT 6		reserved
+BIT 5		SLAVE_VID_FUNC_EN_N
+
+on Rockchip edp phy,
+BIT 7		reserved
+BIT 6		RK_VID_CAP_FUNC_EN_N
+BIT 5		RK_VID_FIFO_FUNC_EN_N
+
+So, we should do some private operations to Rockchip.
+
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 19 ++++++++++++++-----
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h |  2 ++
+ 2 files changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 02ab1aaa9993..4eae206ec31b 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -126,9 +126,14 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
+ 	analogix_dp_stop_video(dp);
+ 	analogix_dp_enable_video_mute(dp, 0);
+ 
+-	reg = MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N |
+-		AUD_FIFO_FUNC_EN_N | AUD_FUNC_EN_N |
+-		HDCP_FUNC_EN_N | SW_FUNC_EN_N;
++	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
++		reg = RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N |
++			SW_FUNC_EN_N;
++	else
++		reg = MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N |
++			AUD_FIFO_FUNC_EN_N | AUD_FUNC_EN_N |
++			HDCP_FUNC_EN_N | SW_FUNC_EN_N;
++
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
+ 
+ 	reg = SSC_FUNC_EN_N | AUX_FUNC_EN_N |
+@@ -971,8 +976,12 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp)
+ 	u32 reg;
+ 
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
+-	reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
+-	reg |= MASTER_VID_FUNC_EN_N;
++	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
++		reg &= ~(RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N);
++	} else {
++		reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
++		reg |= MASTER_VID_FUNC_EN_N;
++	}
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
+ 
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_VIDEO_CTL_10);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+index b633a4a5082a..0cf27c731727 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+@@ -127,7 +127,9 @@
+ 
+ /* ANALOGIX_DP_FUNC_EN_1 */
+ #define MASTER_VID_FUNC_EN_N			(0x1 << 7)
++#define RK_VID_CAP_FUNC_EN_N			(0x1 << 6)
+ #define SLAVE_VID_FUNC_EN_N			(0x1 << 5)
++#define RK_VID_FIFO_FUNC_EN_N			(0x1 << 5)
+ #define AUD_FIFO_FUNC_EN_N			(0x1 << 4)
+ #define AUD_FUNC_EN_N				(0x1 << 3)
+ #define HDCP_FUNC_EN_N				(0x1 << 2)
+-- 
+2.14.1
