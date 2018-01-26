@@ -1,12 +1,11 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2 29/43] drm/bridge: analogix_dp: Move fast link training
- detect to set_bridge
-Date: Fri, 26 Jan 2018 14:16:56 +0100
-Message-ID: <20180126131710.7622-30-thierry.escande@collabora.com>
+Subject: [PATCH v2 12/43] drm/rockchip: Only wait for panel ACK on PSR entry
+Date: Fri, 26 Jan 2018 14:16:39 +0100
+Message-ID: <20180126131710.7622-13-thierry.escande@collabora.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180126131710.7622-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,99 +22,69 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-It's too early to detect fast link training, if other step after it
-failed, we will set fast_link flag to 1, and retry set_bridge again. In
-this case we will power down and power up panel power supply, and we
-will do fast link training since we have set fast_link flag to 1. In
-fact, we should do full link training now, not the fast link training.
-So we should move the fast link detection at the end of set_bridge.
-
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 42 +++++++++++++---------
- 1 file changed, 26 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index e7ab871e62b5..bee0f7aa5c23 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -599,7 +599,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- {
- 	int lane, lane_count, retval;
- 	u32 reg;
--	u8 link_align, link_status[2], adjust_request[2], spread;
-+	u8 link_align, link_status[2], adjust_request[2];
- 
- 	usleep_range(400, 401);
- 
-@@ -643,20 +643,6 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- 		dev_dbg(dp->dev, "final lane count = %.2x\n",
- 			dp->link_train.lane_count);
- 
--		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
--					   &spread);
--		if (retval != 1) {
--			dev_err(dp->dev, "failed to read downspread %d\n",
--				retval);
--			dp->fast_train_enable = false;
--		} else {
--			dp->fast_train_enable =
--				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
--					true : false;
--		}
--		dev_dbg(dp->dev, "fast link training %s\n",
--			dp->fast_train_enable ? "supported" : "unsupported");
--
- 		dp->link_train.lt_state = FINISHED;
- 
- 		return 0;
-@@ -997,6 +983,22 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
- 
-+static int analogix_dp_fast_link_train_detection(struct analogix_dp_device *dp)
-+{
-+	int ret;
-+	u8 spread;
-+
-+	ret = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD, &spread);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to read downspread %d\n", ret);
-+		return ret;
-+	}
-+	dp->fast_train_enable = !!(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING);
-+	dev_dbg(dp->dev, "fast link training %s\n",
-+		dp->fast_train_enable ? "supported" : "unsupported");
-+	return 0;
-+}
-+
- static int analogix_dp_commit(struct analogix_dp_device *dp)
- {
- 	int ret;
-@@ -1039,8 +1041,16 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
- 	if (ret)
- 		return ret;
- 
--	if (dp->psr_enable)
-+	if (dp->psr_enable) {
- 		ret = analogix_dp_enable_sink_psr(dp);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	/* Check whether panel supports fast training */
-+	ret =  analogix_dp_fast_link_train_detection(dp);
-+	if (ret)
-+		dp->psr_enable = false;
- 
- 	return ret;
- }
--- 
-2.14.1
+RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpXZSBjdXJyZW50bHkgd2FpdCBm
+b3IgdGhlIHBhbmVsIHRvIG1pcnJvciBvdXIgaW50ZW5kZWQgUFNSIHN0YXRlCmJlZm9yZSBjb250
+aW51aW5nIG9uIGJvdGggUFNSIGVudGVyIGFuZCBQU1IgZXhpdC4gVGhpcyBpcyByZWFsbHkKb25s
+eSBpbXBvcnRhbnQgdG8gZG8gd2hlbiB3ZSdyZSBlbnRlcmluZyBQU1IsIHNpbmNlIHdlIHdhbnQg
+dG8KYmUgc3VyZSB0aGUgbGFzdCBmcmFtZSB3ZSBwdXNoZWQgaXMgYmVpbmcgc2VydmVkIGZyb20g
+dGhlIHBhbmVsJ3MKaW50ZXJuYWwgZmIgYmVmb3JlIHNodXR0aW5nIGRvd24gdGhlIHNvYyBibG9j
+a3MgKHZvcC9hbmFsb2dpeCkuCgpUaGlzIHBhdGNoIGNoYW5nZXMgdGhlIGJlaGF2aW9yIHN1Y2gg
+dGhhdCB3ZSBvbmx5IHdhaXQgZm9yIHRoZQpwYW5lbCB0byBjb21wbGV0ZSB0aGUgUFNSIHRyYW5z
+aXRpb24gd2hlbiB3ZSdyZSBlbnRlcmluZyBQU1IsIGFuZAp0byBza2lwIHZlcmlmaWNhdGlvbiB3
+aGVuIHdlJ3JlIGV4aXRpbmcuCgpDYzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJv
+bWl1bS5vcmc+CkNjOiBTb25ueSBSYW8gPHNvbm55cmFvQGNocm9taXVtLm9yZz4KU2lnbmVkLW9m
+Zi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
+ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgNCArKy0tCiBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaCB8IDIgKy0KIGRyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgNSArKysrLQogMyBmaWxl
+cyBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwppbmRleCBlMDc3
+NWFkZjgwYjMuLjQ5YTA1ZWFjNDFjMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKQEAgLTEyNSw3ICsxMjUsNyBAQCBpbnQgYW5h
+bG9naXhfZHBfZW5hYmxlX3BzcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAlwc3Jf
+dnNjLkRCMCA9IDA7CiAJcHNyX3ZzYy5EQjEgPSBFRFBfVlNDX1BTUl9TVEFURV9BQ1RJVkUgfCBF
+RFBfVlNDX1BTUl9DUkNfVkFMVUVTX1ZBTElEOwogCi0JcmV0dXJuIGFuYWxvZ2l4X2RwX3NlbmRf
+cHNyX3NwZChkcCwgJnBzcl92c2MpOworCXJldHVybiBhbmFsb2dpeF9kcF9zZW5kX3Bzcl9zcGQo
+ZHAsICZwc3JfdnNjLCB0cnVlKTsKIH0KIEVYUE9SVF9TWU1CT0xfR1BMKGFuYWxvZ2l4X2RwX2Vu
+YWJsZV9wc3IpOwogCkBAIC0xNTEsNyArMTUxLDcgQEAgaW50IGFuYWxvZ2l4X2RwX2Rpc2FibGVf
+cHNyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQogCWlmIChyZXQgIT0gMSkKIAkJZGV2
+X2VycihkcC0+ZGV2LCAiRmFpbGVkIHRvIHNldCBEUCBQb3dlcjAgJWRcbiIsIHJldCk7CiAKLQly
+ZXR1cm4gYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKGRwLCAmcHNyX3ZzYyk7CisJcmV0dXJuIGFu
+YWxvZ2l4X2RwX3NlbmRfcHNyX3NwZChkcCwgJnBzcl92c2MsIGZhbHNlKTsKIH0KIEVYUE9SVF9T
+WU1CT0xfR1BMKGFuYWxvZ2l4X2RwX2Rpc2FibGVfcHNyKTsKIApkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmggYi9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaAppbmRleCA5MjA2MDdkN2Vi
+M2UuLjZhOTZlZjdlNjkzNCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKQEAgLTI1Myw3ICsyNTMsNyBAQCB2b2lkIGFuYWxvZ2l4
+X2RwX2VuYWJsZV9zY3JhbWJsaW5nKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKTsKIHZv
+aWQgYW5hbG9naXhfZHBfZGlzYWJsZV9zY3JhbWJsaW5nKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
+Y2UgKmRwKTsKIHZvaWQgYW5hbG9naXhfZHBfZW5hYmxlX3Bzcl9jcmMoc3RydWN0IGFuYWxvZ2l4
+X2RwX2RldmljZSAqZHApOwogaW50IGFuYWxvZ2l4X2RwX3NlbmRfcHNyX3NwZChzdHJ1Y3QgYW5h
+bG9naXhfZHBfZGV2aWNlICpkcCwKLQkJCSAgICAgc3RydWN0IGVkcF92c2NfcHNyICp2c2MpOwor
+CQkJICAgICBzdHJ1Y3QgZWRwX3ZzY19wc3IgKnZzYywgYm9vbCBibG9ja2luZyk7CiBzc2l6ZV90
+IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCQkJ
+ICAgICBzdHJ1Y3QgZHJtX2RwX2F1eF9tc2cgKm1zZyk7CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCmluZGV4IDAwNWEzZjcwMDVkMi4u
+OWRmMmYzZWYwMDBjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
+L2FuYWxvZ2l4X2RwX3JlZy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgv
+YW5hbG9naXhfZHBfcmVnLmMKQEAgLTEwMDcsNyArMTAwNyw3IEBAIHN0YXRpYyBzc2l6ZV90IGFu
+YWxvZ2l4X2RwX2dldF9wc3Jfc3RhdHVzKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQog
+fQogCiBpbnQgYW5hbG9naXhfZHBfc2VuZF9wc3Jfc3BkKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
+Y2UgKmRwLAotCQkJICAgICBzdHJ1Y3QgZWRwX3ZzY19wc3IgKnZzYykKKwkJCSAgICAgc3RydWN0
+IGVkcF92c2NfcHNyICp2c2MsIGJvb2wgYmxvY2tpbmcpCiB7CiAJdW5zaWduZWQgaW50IHZhbDsK
+IAlpbnQgcmV0OwpAQCAtMTA1Myw2ICsxMDUzLDkgQEAgaW50IGFuYWxvZ2l4X2RwX3NlbmRfcHNy
+X3NwZChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIAl2YWwgfD0gSUZfRU47CiAJd3Jp
+dGVsKHZhbCwgZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfUEtUX1NFTkRfQ1RMKTsKIAorCWlm
+ICghYmxvY2tpbmcpCisJCXJldHVybiAwOworCiAJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KGFu
+YWxvZ2l4X2RwX2dldF9wc3Jfc3RhdHVzLCBkcCwgcHNyX3N0YXR1cywKIAkJcHNyX3N0YXR1cyA+
+PSAwICYmCiAJCSgodnNjLT5EQjEgJiYgcHNyX3N0YXR1cyA9PSBEUF9QU1JfU0lOS19BQ1RJVkVf
+UkZCKSB8fAotLSAKMi4xNC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
