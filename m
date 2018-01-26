@@ -1,59 +1,149 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
-Date: Fri, 26 Jan 2018 09:54:01 +0000
-Message-ID: <5f9d5de7-4597-b9e9-64fe-666230b12bce@st.com>
-References: <20180125155504.8611-1-philippe.cornu@st.com>
- <CA+ASDXOLYaL1zT-K0FvVTFGQ2BA12eHkrZw_mau50aUBdy=vhA@mail.gmail.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v2 07/43] drm/bridge: analogix_dp: detect Sink PSR state after configuring the PSR
+Date: Fri, 26 Jan 2018 14:16:34 +0100
+Message-ID: <20180126131710.7622-8-thierry.escande@collabora.com>
+References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CA+ASDXOLYaL1zT-K0FvVTFGQ2BA12eHkrZw_mau50aUBdy=vhA@mail.gmail.com>
-Content-Language: en-US
-Content-ID: <8DBC162521B2F94081BD4B73F57094BB@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180126131710.7622-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset = "utf-8"
+Content-Transfert-Encoding: 8bit
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>
+Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQnJpYW4sDQpBbmQgYSBiaWcgdGhhbmtzIGZvciB5b3VyIFRlc3RlZC1ieQ0KDQpPbiAwMS8y
-NS8yMDE4IDExOjQ3IFBNLCBCcmlhbiBOb3JyaXMgd3JvdGU6DQo+IE9uIFRodSwgSmFuIDI1LCAy
-MDE4IGF0IDc6NTUgQU0sIFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+IHdy
-b3RlOg0KPj4gVGhlICJhZGp1c3RlZF9tb2RlIiBjbG9jayB2YWx1ZSAoaWUgdGhlIHJlYWwgcGl4
-ZWwgY2xvY2spIGlzIG1vcmUNCj4+IGFjY3VyYXRlIHRoYW4gIm1vZGUiIGNsb2NrIHZhbHVlIChp
-ZSB0aGUgcGFuZWwvYnJpZGdlIHJlcXVlc3RlZA0KPj4gY2xvY2sgdmFsdWUpLiBJdCBvZmZlcnMg
-YSBiZXR0ZXIgcHJlY2lzZW5lc3MgZm9yIHRpbWluZw0KPj4gY29tcHV0YXRpb25zIGFuZCBhbGxv
-d3MgdG8gcmVkdWNlIHRoZSBleHRyYSBkc2kgYmFuZHdpZHRoIGluDQo+PiBidXJzdCBtb2RlIChm
-cm9tIH4yMCUgdG8gfjEwLTEyJSwgaHcgcGxhdGZvcm0gZGVwZW5kYW50KS4NCj4+DQo+PiBTaWdu
-ZWQtb2ZmLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPg0KPj4gLS0t
-DQo+PiBOb3RlOiBUaGlzIHBhdGNoIHJlcGxhY2VzICJkcm0vYnJpZGdlL3N5bm9wc3lzOiBkc2k6
-IGFkZCBvcHRpb25hbCBwaXhlbCBjbG9jayINCj4gDQo+IFRoZXNlIHR3byBhcHBlYXIgdG8gYmUg
-dGhlIHNhbWUgZm9yIG15IGNhc2VzLCBidXQgYXQgbGVhc3Qgbm90aGluZyBicmVha3M6DQo+IA0K
-DQpJbiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGZ1bmN0aW9u
-IA0Kdm9wX2NydGNfbW9kZV9maXh1cCgpLCB0aGUgYWRqdXN0ZWRfbW9kZS0+Y2xvY2sgKGllLiB2
-b3AgcHggY2xrIG91dHB1dCA9IA0KZHcgZHNpIHB4IGNsayBpbnB1dCkgaXMgdXBkYXRlZCBhY2Nv
-cmRpbmcgdG8gcm9ja2NoaXAgaHcgcGxsL2RpdmlkZXJzLi4uDQoNClNvIHlvdSAibWF5IiBoYXZl
-IGEgZGlmZmVyZW50IHZhbHVlIGluIGFkanVzdGVkX21vZGUtPmNsb2NrIGNvbXBhcmUgdG8gDQpt
-b2RlLT5jbG9jay4gTWF5YmUgdGhlcmUgaXMgbm8gZGlmZmVyZW5jZSBmb3IgdGhlIHBhbmVsIHlv
-dSBhcmUgdXNpbmcgDQpiZWNhdXNlIGl0cyBweCBjbG9jayBtYXRjaGVzIHBlcmZlY3RseSB3aXRo
-IHJvY2tjaGlwIGh3IHBsbC9kaXZpZGVycy4uLiANCm9yIGhhcyBiZWVuIHNldCB0byBtYXRjaCB3
-aXRoIDstKQ0KDQpJIGRpZCBhIHNpbWlsYXIgcGF0Y2ggKHNlZSBbMV0pIGFuZCBpdCB3b3JrcyAi
-ZmluZSIgb24gc3RtLCB0aGUgb25seSANCmRpZmZlcmVuY2Ugd2l0aCB0aGUgcm9ja2NoaXAgdm9w
-IGlzIHRoYXQgY2xrX3JvdW5kX3JhdGUoKSByZXR1cm5zIG9kZCANCnZhbHVlcyBvbiBzdG0gc28g
-SSB1c2VkIHNldC9nZXRfcmF0ZSBpbnN0ZWFkLg0KDQpTbyBub3csIGJvdGggcm9ja2NoaXAgJiBz
-dG0gY3J0YyBoYXZlIGFuICJhZGp1c3RlZF9tb2RlLT5jbG9jayIgc28gaXQgDQptYWtlcyBzZW5z
-ZSB0byB1c2UgaXQgaW4gZHcgZHNpIDopDQoNClBoaWxpcHBlIDotKQ0KDQpbMV0gaHR0cHM6Ly9w
-YXRjaHdvcmsuZnJlZWRlc2t0b3Aub3JnL3BhdGNoLzIwMDcyMC8NCiJbUEFUQ0hdIGRybS9zdG06
-IGx0ZGM6IHVzZSBjcnRjX21vZGVfZml4dXAgdG8gdXBkYXRlIGFkanVzdGVkX21vZGUgY2xvY2si
-DQoNCg0KPiBUZXN0ZWQtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3JyaXNAY2hyb21pdW0ub3Jn
-Pg0KPiANCg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Yakir Yang <ykk@rock-chips.com>
+
+Make sure the request PSR state takes effect in analogix_dp_send_psr_spd()
+function, or print the sink PSR error state if we failed to apply the
+requested PSR setting.
+
+Cc: 征增 王 <wzz@rock-chips.com>
+Cc: Stéphane Marchesin <marcheu@chromium.org>
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+[seanpaul changed timeout loop to a readx poll]
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  6 ++--
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  6 ++--
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 35 +++++++++++++++++++---
+ 3 files changed, 37 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 1477ea9ba85d..b52de046f5f1 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -122,8 +122,7 @@ int analogix_dp_enable_psr(struct analogix_dp_device *dp)
+ 	psr_vsc.DB0 = 0;
+ 	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
+ 
+-	analogix_dp_send_psr_spd(dp, &psr_vsc);
+-	return 0;
++	return analogix_dp_send_psr_spd(dp, &psr_vsc);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
+ 
+@@ -149,8 +148,7 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
+ 	if (ret != 1)
+ 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
+ 
+-	analogix_dp_send_psr_spd(dp, &psr_vsc);
+-	return 0;
++	return analogix_dp_send_psr_spd(dp, &psr_vsc);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 5c6a28806129..b039b28d8fcc 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -20,6 +20,8 @@
+ #define MAX_CR_LOOP 5
+ #define MAX_EQ_LOOP 5
+ 
++#define DP_TIMEOUT_PSR_LOOP_MS			300
++
+ /* DP_MAX_LANE_COUNT */
+ #define DPCD_ENHANCED_FRAME_CAP(x)		(((x) >> 7) & 0x1)
+ #define DPCD_MAX_LANE_COUNT(x)			((x) & 0x1f)
+@@ -247,8 +249,8 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp);
+ void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
+-void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			      struct edp_vsc_psr *vsc);
++int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
++			     struct edp_vsc_psr *vsc);
+ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+ 			     struct drm_dp_aux_msg *msg);
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 303083ad28e3..005a3f7005d2 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -10,10 +10,11 @@
+  * option) any later version.
+  */
+ 
+-#include <linux/device.h>
+-#include <linux/io.h>
+ #include <linux/delay.h>
++#include <linux/device.h>
+ #include <linux/gpio.h>
++#include <linux/io.h>
++#include <linux/iopoll.h>
+ 
+ #include <drm/bridge/analogix_dp.h>
+ 
+@@ -992,10 +993,25 @@ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp)
+ 	writel(PSR_VID_CRC_ENABLE, dp->reg_base + ANALOGIX_DP_CRC_CON);
+ }
+ 
+-void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			      struct edp_vsc_psr *vsc)
++static ssize_t analogix_dp_get_psr_status(struct analogix_dp_device *dp)
++{
++	ssize_t val;
++	u8 status;
++
++	val = drm_dp_dpcd_readb(&dp->aux, DP_PSR_STATUS, &status);
++	if (val < 0) {
++		dev_err(dp->dev, "PSR_STATUS read failed ret=%zd", val);
++		return val;
++	}
++	return status;
++}
++
++int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
++			     struct edp_vsc_psr *vsc)
+ {
+ 	unsigned int val;
++	int ret;
++	ssize_t psr_status;
+ 
+ 	/* don't send info frame */
+ 	val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
+@@ -1036,6 +1052,17 @@ void analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+ 	val = readl(dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
+ 	val |= IF_EN;
+ 	writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
++
++	ret = readx_poll_timeout(analogix_dp_get_psr_status, dp, psr_status,
++		psr_status >= 0 &&
++		((vsc->DB1 && psr_status == DP_PSR_SINK_ACTIVE_RFB) ||
++		(!vsc->DB1 && psr_status == DP_PSR_SINK_INACTIVE)), 1500,
++		DP_TIMEOUT_PSR_LOOP_MS * 1000);
++	if (ret) {
++		dev_warn(dp->dev, "Failed to apply PSR %d\n", ret);
++		return ret;
++	}
++	return 0;
+ }
+ 
+ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+-- 
+2.14.1
