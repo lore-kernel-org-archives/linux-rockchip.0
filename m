@@ -1,8 +1,8 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v2 36/43] drm/rockchip: analogix_dp: Do not call Analogix code
- before bind
-Date: Fri, 26 Jan 2018 14:17:03 +0100
-Message-ID: <20180126131710.7622-37-thierry.escande@collabora.com>
+Subject: [PATCH v2 35/43] drm/bridge: analogix_dp: Split the platform-specific
+ poweron in two parts
+Date: Fri, 26 Jan 2018 14:17:02 +0100
+Message-ID: <20180126131710.7622-36-thierry.escande@collabora.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,59 +23,116 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Driver callbacks, such as system suspend or resume can be called any
-time, specifically they can be called before the component bind
-callback. Let's use dp->adp pointer as a safeguard and skip calling
-Analogix entry points if it is an ERR_PTR().
+Some of the platform-specific stuff in rockchip_dp_poweron() needs to
+happen before the generic code.  Some needs to happen after.  Let's
+split the callback in two.
 
-Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Specifically we can't start doing PSR work until _after_ the whole
+controller is up, so don't set the enable until the end.
+
+Cc: Kristian H. Kristensen <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+[seanpaul added exynos change]
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  7 +++++--
+ drivers/gpu/drm/exynos/exynos_dp.c                 |  2 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 ++++++++++--
+ include/drm/bridge/analogix_dp.h                   |  3 ++-
+ 4 files changed, 18 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 3ee1f533a6ad..60998bd842f3 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1258,8 +1258,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+ 		goto out_dp_clk_pre;
+ 	}
+ 
+-	if (dp->plat_data->power_on)
+-		dp->plat_data->power_on(dp->plat_data);
++	if (dp->plat_data->power_on_start)
++		dp->plat_data->power_on_start(dp->plat_data);
+ 
+ 	phy_power_on(dp->phy);
+ 
+@@ -1284,6 +1284,9 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+ 		goto out_dp_init;
+ 	}
+ 
++	if (dp->plat_data->power_on_end)
++		dp->plat_data->power_on_end(dp->plat_data);
++
+ 	enable_irq(dp->irq);
+ 	return 0;
+ 
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index 33319a858f3a..b316249a3f89 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -162,7 +162,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
+ 	dp->drm_dev = drm_dev;
+ 
+ 	dp->plat_data.dev_type = EXYNOS_DP;
+-	dp->plat_data.power_on = exynos_dp_poweron;
++	dp->plat_data.power_on_start = exynos_dp_poweron;
+ 	dp->plat_data.power_off = exynos_dp_poweroff;
+ 	dp->plat_data.attach = exynos_dp_bridge_attach;
+ 	dp->plat_data.get_modes = exynos_dp_get_modes;
 diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 23317a2269e1..6d45d62466b3 100644
+index b3f46ed24cdc..23317a2269e1 100644
 --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -368,6 +368,8 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
- 	analogix_dp_unbind(dp->adp);
- 	rockchip_drm_psr_unregister(&dp->encoder);
- 	dp->encoder.funcs->destroy(&dp->encoder);
-+
-+	dp->adp = ERR_PTR(-ENODEV);
+@@ -109,7 +109,7 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
+ 	return 0;
  }
  
- static const struct component_ops rockchip_dp_component_ops = {
-@@ -391,6 +393,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	dp->dev = dev;
-+	dp->adp = ERR_PTR(-ENODEV);
- 	dp->plat_data.panel = panel;
- 
- 	ret = rockchip_dp_of_probe(dp);
-@@ -414,6 +417,9 @@ static int rockchip_dp_suspend(struct device *dev)
+-static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
++static int rockchip_dp_poweron_start(struct analogix_dp_plat_data *plat_data)
  {
- 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+ 	struct rockchip_dp_device *dp = to_dp(plat_data);
+ 	int ret;
+@@ -127,6 +127,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
+ 		return ret;
+ 	}
  
-+	if (IS_ERR(dp->adp))
-+		return 0;
++	return ret;
++}
 +
- 	return analogix_dp_suspend(dp->adp);
++static int rockchip_dp_poweron_end(struct analogix_dp_plat_data *plat_data)
++{
++	struct rockchip_dp_device *dp = to_dp(plat_data);
++
+ 	return rockchip_drm_psr_activate(&dp->encoder);
  }
  
-@@ -421,6 +427,9 @@ static int rockchip_dp_resume(struct device *dev)
- {
- 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+@@ -330,7 +337,8 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+ 	dp->plat_data.encoder = &dp->encoder;
  
-+	if (IS_ERR(dp->adp))
-+		return 0;
-+
- 	return analogix_dp_resume(dp->adp);
- }
- #endif
+ 	dp->plat_data.dev_type = dp->data->chip_type;
+-	dp->plat_data.power_on = rockchip_dp_poweron;
++	dp->plat_data.power_on_start = rockchip_dp_poweron_start;
++	dp->plat_data.power_on_end = rockchip_dp_poweron_end;
+ 	dp->plat_data.power_off = rockchip_dp_powerdown;
+ 	dp->plat_data.get_modes = rockchip_dp_get_modes;
+ 
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index c2788483c882..b384f7e8d14a 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -32,7 +32,8 @@ struct analogix_dp_plat_data {
+ 	struct drm_encoder *encoder;
+ 	struct drm_connector *connector;
+ 
+-	int (*power_on)(struct analogix_dp_plat_data *);
++	int (*power_on_start)(struct analogix_dp_plat_data *);
++	int (*power_on_end)(struct analogix_dp_plat_data *);
+ 	int (*power_off)(struct analogix_dp_plat_data *);
+ 	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
+ 		      struct drm_connector *);
 -- 
 2.14.1
