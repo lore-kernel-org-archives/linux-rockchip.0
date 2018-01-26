@@ -1,7 +1,7 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v2 42/43] drm/rockchip: Disallow PSR for the whole atomic commit
-Date: Fri, 26 Jan 2018 14:17:09 +0100
-Message-ID: <20180126131710.7622-43-thierry.escande@collabora.com>
+Subject: [PATCH v2 38/43] drm/rockchip: Cancel PSR enable work before changing the state
+Date: Fri, 26 Jan 2018 14:17:05 +0100
+Message-ID: <20180126131710.7622-39-thierry.escande@collabora.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset = "utf-8"
@@ -15,118 +15,63 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Tomasz Figa <tfiga@chromium.org>
 
-Currently PSR flush is triggered from CRTC's .atomic_begin() callback,
-which is executed after modeset disables and enables and before plane
-updates are committed. Since PSR flush and re-enable can be triggered
-asynchronously by external sources (input event, delayed work), it can
-race with hardware programming done in the aforementioned stages.
+If we change the state first and reschedule later, we might have the
+work executed according to previous scheduled time and end up with PSR
+re-enabled instantly. Let's cancel the work before changing the state.
 
-This patch blocks the PSR completely before hardware programming part
-begins and unblock after it ends. This relies on reference counted PSR
-disable introduced with previous patch.
+While at it, consolidate psr_disable_handler() to just call
+rockchip_drm_do_flush(), as they are both supposed to do the same.
 
-Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
 Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c  | 61 ++++++++++++++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  7 ----
- 2 files changed, 60 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index e266539e04e5..d4f4118b482d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -167,8 +167,67 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
- 	return ERR_PTR(ret);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index a107845ba97c..c8655e625ba2 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -138,18 +138,6 @@ static void psr_flush_handler(struct work_struct *work)
+ 	mutex_unlock(&psr->lock);
  }
  
-+static void
-+rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state)
-+{
-+	struct drm_crtc *crtc;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_encoder *encoder;
-+	u32 encoder_mask = 0;
-+	int i;
-+
-+	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
-+		encoder_mask |= crtc_state->encoder_mask;
-+		encoder_mask |= crtc->state->encoder_mask;
-+	}
-+
-+	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
-+		rockchip_drm_psr_inhibit_get(encoder);
-+}
-+
-+static void
-+rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state)
-+{
-+	struct drm_crtc *crtc;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_encoder *encoder;
-+	u32 encoder_mask = 0;
-+	int i;
-+
-+	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
-+		encoder_mask |= crtc_state->encoder_mask;
-+		encoder_mask |= crtc->state->encoder_mask;
-+	}
-+
-+	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
-+		rockchip_drm_psr_inhibit_put(encoder);
-+}
-+
-+static void
-+rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
-+{
-+	struct drm_device *dev = old_state->dev;
-+
-+	rockchip_drm_psr_inhibit_get_state(old_state);
-+
-+	drm_atomic_helper_commit_modeset_disables(dev, old_state);
-+
-+	drm_atomic_helper_commit_modeset_enables(dev, old_state);
-+
-+	drm_atomic_helper_commit_planes(dev, old_state,
-+					DRM_PLANE_COMMIT_ACTIVE_ONLY);
-+
-+	rockchip_drm_psr_inhibit_put_state(old_state);
-+
-+	drm_atomic_helper_commit_hw_done(old_state);
-+
-+	drm_atomic_helper_wait_for_vblanks(dev, old_state);
-+
-+	drm_atomic_helper_cleanup_planes(dev, old_state);
-+}
-+
- static const struct drm_mode_config_helper_funcs rockchip_mode_config_helpers = {
--	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
-+	.atomic_commit_tail = rockchip_atomic_helper_commit_tail_rpm,
- };
- 
- static const struct drm_mode_config_funcs rockchip_drm_mode_config_funcs = {
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 4abb9d72d814..8c11a4dc436e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1041,16 +1041,9 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 	}
- }
- 
--static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
--				  struct drm_crtc_state *old_crtc_state)
+-static void psr_disable_handler(struct work_struct *work)
 -{
--	rockchip_drm_psr_flush(crtc);
+-	struct psr_drv *psr = container_of(work, struct psr_drv, disable_work);
+-
+-	/* If the state has changed since we initiated the flush, do nothing */
+-	mutex_lock(&psr->lock);
+-	if (psr->state == PSR_ENABLE)
+-		psr_set_state_locked(psr, PSR_FLUSH);
+-	mutex_unlock(&psr->lock);
+-	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
 -}
 -
- static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
- 	.mode_fixup = vop_crtc_mode_fixup,
- 	.atomic_flush = vop_crtc_atomic_flush,
--	.atomic_begin = vop_crtc_atomic_begin,
- 	.atomic_enable = vop_crtc_atomic_enable,
- 	.atomic_disable = vop_crtc_atomic_disable,
- };
+ /**
+  * rockchip_drm_psr_activate - activate PSR on the given pipe
+  * @encoder: encoder to obtain the PSR encoder
+@@ -198,6 +186,7 @@ EXPORT_SYMBOL(rockchip_drm_psr_deactivate);
+ 
+ static void rockchip_drm_do_flush(struct psr_drv *psr)
+ {
++	cancel_delayed_work_sync(&psr->flush_work);
+ 	psr_set_state(psr, PSR_FLUSH);
+ 	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
+ }
+@@ -244,6 +233,13 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev)
+ }
+ EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
+ 
++static void psr_disable_handler(struct work_struct *work)
++{
++	struct psr_drv *psr = container_of(work, struct psr_drv, disable_work);
++
++	rockchip_drm_do_flush(psr);
++}
++
+ static void psr_input_event(struct input_handle *handle,
+ 			    unsigned int type, unsigned int code,
+ 			    int value)
 -- 
 2.14.1
