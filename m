@@ -1,59 +1,105 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v2 33/43] drm/panel: simple: Change mode for Sharp lq123p1jx31
-Date: Fri, 26 Jan 2018 14:17:00 +0100
-Message-ID: <20180126131710.7622-34-thierry.escande@collabora.com>
-References: <20180126131710.7622-1-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2 00/43] DRM Rockchip rk3399 (Kevin)
+Date: Fri, 26 Jan 2018 14:16:27 +0100
+Message-ID: <20180126131710.7622-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180126131710.7622-1-thierry.escande@collabora.com>
-Content-Type: text/plain; charset = "utf-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>
-Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sean Paul <seanpaul@chromium.org>
-
-Change the mode for Sharp lq123p1jx31 panel to something more
-rockchip-friendly such that we can use the fixed PLLs to
-generate the pixel clock
-
-Cc: Chris Zhong <zyw@rock-chips.com>
-Cc: Stéphane Marchesin <marcheu@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
----
- drivers/gpu/drm/panel/panel-simple.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 5591984a392b..a4a6ea3ca0e6 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -1742,17 +1742,18 @@ static const struct panel_desc sharp_lq101k1ly04 = {
- };
- 
- static const struct drm_display_mode sharp_lq123p1jx31_mode = {
--	.clock = 252750,
-+	.clock = 266667,
- 	.hdisplay = 2400,
- 	.hsync_start = 2400 + 48,
- 	.hsync_end = 2400 + 48 + 32,
--	.htotal = 2400 + 48 + 32 + 80,
-+	.htotal = 2400 + 48 + 32 + 139,
- 	.vdisplay = 1600,
- 	.vsync_start = 1600 + 3,
- 	.vsync_end = 1600 + 3 + 10,
--	.vtotal = 1600 + 3 + 10 + 33,
-+	.vtotal = 1600 + 3 + 10 + 84,
- 	.vrefresh = 60,
- 	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
-+	.type = DRM_MODE_TYPE_PREFERRED | DRM_MODE_TYPE_DRIVER,
- };
- 
- static const struct panel_desc sharp_lq123p1jx31 = {
--- 
-2.14.1
+SGksCgpUaGlzIHBhdGNoc2V0IGluY2x1ZGVzIGNsZWFudXBzLCBpbXByb3ZlbWVudHMsIGFuZCBi
+dWcgZml4ZXMgZm9yClJvY2tjaGlwIERSTSBkcml2ZXIgYW5kIFBTUiBzdXBwb3J0LgoKdGhpcyBw
+YXRjaHNldCBkZXBlbmRzIGFuZCBuZWVkcyB0byBiZSBhcHBsaWVkIG9uIHRvcCBvZiBSb2NrY2hp
+cCByazMzOTkKZURQIHN1cHBvcnQgWzFdLgoKWzFdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE4
+LzEvMTAvNjgyCgpSZWdhcmRzLApUaGllcnJ5CgpDaGFuZ2VzIGluIHYyOgotIEEgZmV3IHBhdGNo
+ZXMgaGF2ZSBiZWVuIHJlcGxhY2VkIGJ5IG5ld2VyIGFuZCBjbGVhbmVyIHZlcnNpb25zIGZyb20K
+ICB0aGUgQ2hyb21lT1Mga2VybmVsIGdlcnJpdCwgZXNwZWNpYWxseSBhYm91dCBkaXNhbGxvd2lu
+ZyBQU1IgZm9yIHRoZQogIHdob2xlIGF0b21pYyBjb21taXQuCgpEb3VnbGFzIEFuZGVyc29uICg0
+KToKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmVvcmRlciBwbGF0X2RhdGEtPnBvd2VyX29m
+ZiB0byBoYXBwZW4gc29vbmVyCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Blcmx5IGxv
+ZyBBVVggQ0ggZXJyb3JzCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Blcmx5IGRpc2Fi
+bGUgYXV4IGNoYW4gcmV0cmllcyBvbiByb2NrY2hpcAogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2Rw
+OiBTcGxpdCB0aGUgcGxhdGZvcm0tc3BlY2lmaWMgcG93ZXJvbiBpbiB0d28KICAgIHBhcnRzCgpI
+YWl4aWEgU2hpICgxKToKICBkcm0vcm9ja2NoaXA6IHN1cHBvcnQgcHJpbWUgaW1wb3J0IHNnIHRh
+YmxlCgpLcmlzdGlhbiBILiBLcmlzdGVuc2VuICgxKToKICBkcm0vcm9ja2NoaXA6IERpc2FibGUg
+UFNSIG9uIGlucHV0IGV2ZW50cwoKTGluIEh1YW5nICg2KToKICBkcm0vYnJpZGdlOiBhbmFsb2dp
+eF9kcDogTW92ZSBlbmFibGUgdmlkZW8gaW50byBjb25maWdfdmlkZW8oKQogIGRybS9icmlkZ2U6
+IGFuYWxvZ2l4X2RwOiBDaGVjayBBVVhfRU4gc3RhdHVzIHdoZW4gZG9pbmcgQVVYIHRyYW5zZmVy
+CiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEVuc3VyZSBlZHAgaXMgZGlzYWJsZWQgd2hlbiBz
+aHV0dGluZyBkb3duIHRoZQogICAgcGFuZWwKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRXh0
+ZW5kIGhwZCBjaGVjayB0aW1lIHRvIDEwMG1zCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IENo
+ZWNrIGRwY2Qgd3JpdGUvcmVhZCBzdGF0dXMKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmVz
+ZXQgYXV4IGNoYW5uZWwgaWYgYW4gZXJyb3Igb2NjdXJyZWQKCk1hcmsgWWFvICgxKToKICBkcm0v
+cm9ja2NoaXA6IHByZSBkaXRoZXIgZG93biB3aGVuIG91dHB1dCBicGMgaXMgOGJpdAoKU2VhbiBQ
+YXVsICgzKToKICBkcm0vcm9ja2NoaXA6IERvbid0IHVzZSBhdG9taWMgY29uc3RydWN0cyBmb3Ig
+cHNyCiAgZHJtL3JvY2tjaGlwOiBSZW1vdmUgYW5hbG9naXggcHNyIHdvcmtlcgogIGRybS9wYW5l
+bDogc2ltcGxlOiBDaGFuZ2UgbW9kZSBmb3IgU2hhcnAgbHExMjNwMWp4MzEKClRvbWFzeiBGaWdh
+ICg4KToKICBkcm0vcm9ja2NoaXA6IEdldCByaWQgb2Ygc29tZSB1bm5lY2Vzc2FyeSBjb2RlCiAg
+ZHJtL3JvY2tjaGlwOiBhbmFsb2dpeF9kcDogRG8gbm90IGNhbGwgQW5hbG9naXggY29kZSBiZWZv
+cmUgYmluZAogIGRybS9yb2NrY2hpcDogQ2FuY2VsIFBTUiBlbmFibGUgd29yayBiZWZvcmUgY2hh
+bmdpbmcgdGhlIHN0YXRlCiAgZHJtL3JvY2tjaGlwOiBwc3I6IEF2b2lkIHJlZHVuZGFudCBjYWxs
+cyB0byAuc2V0KCkgY2FsbGJhY2sKICBkcm0vcm9ja2NoaXA6IHBzcjogU2FuaXRpemUgc2VtYW50
+aWNzIG9mIGFsbG93L2Rpc2FsbG93IEFQSQogIGRybS9yb2NrY2hpcDogRGlzYWJsZSBQU1IgZnJv
+bSByZWJvb3Qgbm90aWZpZXIKICBkcm0vcm9ja2NoaXA6IERpc2FsbG93IFBTUiBmb3IgdGhlIHdo
+b2xlIGF0b21pYyBjb21taXQKICBkcm0vcm9ja2NoaXA6IHBzcjogUmVtb3ZlIGZsdXNoIGJ5IENS
+VEMKCllha2lyIFlhbmcgKDEpOgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBkZXRlY3QgU2lu
+ayBQU1Igc3RhdGUgYWZ0ZXIgY29uZmlndXJpbmcgdGhlCiAgICBQU1IKCnphaW4gd2FuZyAoMTcp
+OgogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBzZXQgcHNyIGFjdGl2YXRlL2RlYWN0aXZhdGUg
+d2hlbgogICAgZW5hYmxlL2Rpc2FibGUgYnJpZGdlCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6
+IERvbid0IHBvd2VyIGJyaWRnZSBpbiBhbmFsb2dpeF9kcF9iaW5kCiAgZHJtL2JyaWRnZTogYW5h
+bG9naXhfZHA6IERvbid0IGNoYW5nZSBwc3Igd2hpbGUgYnJpZGdlIGlzIGRpc2FibGVkCiAgZHJt
+L3JvY2tjaGlwOiBhZGQgbXV0ZXggdm9wIGxvY2sKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDog
+YWRkIGZhc3QgbGluayB0cmFpbiBmb3IgZURQCiAgZHJtL3JvY2tjaGlwOiBPbmx5IHdhaXQgZm9y
+IHBhbmVsIEFDSyBvbiBQU1IgZW50cnkKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRG9uJ3Qg
+dXNlIGZhc3QgbGluayB0cmFpbmluZyB3aGVuIHBhbmVsIGp1c3QKICAgIHBvd2VyZWQgdXAKICBk
+cm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmV0cnkgYnJpZGdlIGVuYWJsZSB3aGVuIGl0IGZhaWxl
+ZAogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBXYWl0IGZvciBIUEQgc2lnbmFsIGJlZm9yZSBj
+b25maWd1cmluZyBsaW5rCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFNldCBQRF9JTkNfQkcg
+Zmlyc3Qgd2hlbiBwb3dlcmluZyB1cCBlZHAgcGh5CiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6
+IEZpeCBpbmNvcnJlY3QgdXNhZ2Ugb2YgZW5oYW5jZWQgbW9kZQogIGRybS9icmlkZ2U6IGFuYWxv
+Z2l4X2RwOiBGaXggQVVYX1BEIGJpdCBmb3IgUm9ja2NoaXAKICBkcm0vcm9ja2NoaXA6IFJlc3Rv
+cmUgcHNyLT5zdGF0ZSB3aGVuIGVuYWJsZS9kaXNhYmxlIHBzciBmYWlsZWQKICBkcm0vYnJpZGdl
+OiBhbmFsb2dpeF9kcDogRG9uJ3QgdXNlIEFOQUxPR0lYX0RQX1BMTF9DVEwgdG8gY29udHJvbCBw
+bGwKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRml4IHRpbWVvdXQgb2YgdmlkZW8gc3RyZWFt
+Y2xrIGNvbmZpZwogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBGaXggaW5jb3JyZWN0IG9wZXJh
+dGlvbnMgd2l0aCByZWdpc3RlcgogICAgQU5BTE9HSVhfRFBfRlVOQ19FTl8xCiAgZHJtL2JyaWRn
+ZTogYW5hbG9naXhfZHA6IE1vdmUgZmFzdCBsaW5rIHRyYWluaW5nIGRldGVjdCB0byBzZXRfYnJp
+ZGdlCgrDmHJqYW4gRWlkZSAoMSk6CiAgZHJtL3JvY2tjaGlwOiBSZXNwZWN0IHBhZ2Ugb2Zmc2V0
+IGZvciBQUklNRSBtbWFwIGNhbGxzCgogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9jb3JlLmMgfCA0NjkgKysrKysrKysrKysrKysrLS0tLS0tCiBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaCB8ICAxNCArLQogZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyAgfCAyNzQgKysrKysr
+Ky0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5o
+ICB8ICAgNyArCiBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAgICAgICAg
+ICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jICAgICAg
+ICAgICAgICAgfCAgIDcgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1y
+b2NrY2hpcC5jICAgIHwgIDczICsrLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZHJ2LmMgICAgICAgIHwgICAzICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX2Rydi5oICAgICAgICB8ICAgMyArLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9mYi5jICAgICAgICAgfCAgNjEgKystCiBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jICAgICAgICB8IDEyNSArKysrKy0KIGRyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmggICAgICAgIHwgICA1ICstCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jICAgICAgICB8IDM2MSArKysrKysr
+KysrKy0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5oICAg
+ICAgICB8ICAgNyArLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YyAgICAgICAgfCAgNTIgKystCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5oICAgICAgICB8ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+dm9wX3JlZy5jICAgICAgICB8ICAgMSArCiBpbmNsdWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAu
+aCAgICAgICAgICAgICAgICAgICB8ICAgNSArLQogMTggZmlsZXMgY2hhbmdlZCwgMTA0MiBpbnNl
+cnRpb25zKCspLCA0MjggZGVsZXRpb25zKC0pCgotLSAKMi4xNC4xCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
