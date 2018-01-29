@@ -1,144 +1,118 @@
-From: Philippe CORNU <philippe.cornu@st.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
-Date: Mon, 29 Jan 2018 10:17:37 +0000
-Message-ID: <114a9fc1-3f31-decd-6bdc-803dc88b3b3c@st.com>
+Date: Mon, 29 Jan 2018 12:40:01 +0200
+Message-ID: <108376394.4I4zMjzv2j@avalon>
 References: <20180125155504.8611-1-philippe.cornu@st.com>
- <2782155.lsFkNecG25@avalon>
+ <2782155.lsFkNecG25@avalon> <114a9fc1-3f31-decd-6bdc-803dc88b3b3c@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2782155.lsFkNecG25@avalon>
-Content-Language: en-US
-Content-ID: <4FE1ED423339364A865855891BD9CF44@st.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>, Archit Taneja <architt@codeaurora.org>, Heiko Stubner <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "daniel.vetter@ffwll.ch" <daniel.vetter@ffwll.ch>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Sandy Huang <hjc@rock-chips.com>, Yannick FERTRE <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@s>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <114a9fc1-3f31-decd-6bdc-803dc88b3b3c@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philippe CORNU <philippe.cornu@st.com>
+Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "daniel.vetter@ffwll.ch" <daniel.vetter@ffwll.ch>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Laurent,
-
-And many thanks for your comments :)
-
-
-On 01/29/2018 10:46 AM, Laurent Pinchart wrote:
-> Hi Philippe,
-> 
-> (CC'ing Daniel Vetter)
-> 
-> Thank you for the patch.
-> 
-> On Thursday, 25 January 2018 17:55:04 EET Philippe Cornu wrote:
->> The "adjusted_mode" clock value (ie the real pixel clock) is more
->> accurate than "mode" clock value (ie the panel/bridge requested
->> clock value). It offers a better preciseness for timing
->> computations and allows to reduce the extra dsi bandwidth in
->> burst mode (from ~20% to ~10-12%, hw platform dependant).
->>
->> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
-> 
-> The adjusted mode is documented as
-> 
->      /**
->       * @adjusted_mode:
->       *
->       * Internal display timings which can be used by the driver to handle
->       * differences between the mode requested by userspace in @mode and what
->       * is actually programmed into the hardware. It is purely driver
->       * implementation defined what exactly this adjusted mode means. Usually
->       * it is used to store the hardware display timings used between the
->       * CRTC and encoder blocks.
->       */
-> 
-> This is easy to handle when the CRTC and encoder are controlled by the same
-> driver, as the field is "implementation defined" by a single driver . However,
-> when using bridges, there are two drivers involved, and they must both agree
-> to meaningfully use the adjusted mode. I can't see how to do so without
-> standardizing the meaning of the adjusted mode field.
-
-This is exactly the reason why my first implementation used the dsi 
-bridge "optional pixel clock" instead of the adjusted_mode (see [1])
-
-But after digging more into the drm source code, I think using 
-adjusted_mode instead of the pixel clock here brings more advantages 
-because:
-* adjusted_mode is an argument of bridge mode_set() probably for being 
-used in any manner, maybe like this :)
-* if the bridge "user" (crtc or a master bridge drivers) does not need 
-to modify its adjusted_mode then mode & adjusted_mode mode_set() 
-arguments will have the same values so "no consequence" for the bridge.
-* if the bridge "user" (crtc or master bridge drivers) needs to adjust 
-any value of the mode then this adjustment is available for the bridge.
-* rockchip crtc updates a part of the mode (the clock), stm is doing the 
-same (see [2]) but any future "user" of the dw_mipi_dsi bridge can 
-adjust something else (blankings...) and the dw_mipi_dsi bridge will be 
-then aware of...
-
-But maybe it is a wrong usage of the "adjusted_mode offer"...
-
-Many thanks,
-Philippe :-)
-[1] https://patchwork.freedesktop.org/patch/200240/
-[2] https://patchwork.freedesktop.org/patch/200720/
-
-> 
-> Daniel, what's your opinion on this ?
-> 
->> ---
->> Note: This patch replaces "drm/bridge/synopsys: dsi: add optional pixel
->> clock"
->>
->>   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 12 ++++++------
->>   1 file changed, 6 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
->> b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c index
->> ed8af32f8e52..b926b62e9e33 100644
->> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
->> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
->> @@ -707,20 +707,20 @@ static void dw_mipi_dsi_bridge_mode_set(struct
->> drm_bridge *bridge,
->>
->>   	clk_prepare_enable(dsi->pclk);
->>
->> -	ret = phy_ops->get_lane_mbps(priv_data, mode, dsi->mode_flags,
->> +	ret = phy_ops->get_lane_mbps(priv_data, adjusted_mode, dsi->mode_flags,
->>   				     dsi->lanes, dsi->format, &dsi->lane_mbps);
->>   	if (ret)
->>   		DRM_DEBUG_DRIVER("Phy get_lane_mbps() failed\n");
->>
->>   	pm_runtime_get_sync(dsi->dev);
->>   	dw_mipi_dsi_init(dsi);
->> -	dw_mipi_dsi_dpi_config(dsi, mode);
->> +	dw_mipi_dsi_dpi_config(dsi, adjusted_mode);
->>   	dw_mipi_dsi_packet_handler_config(dsi);
->>   	dw_mipi_dsi_video_mode_config(dsi);
->> -	dw_mipi_dsi_video_packet_config(dsi, mode);
->> +	dw_mipi_dsi_video_packet_config(dsi, adjusted_mode);
->>   	dw_mipi_dsi_command_mode_config(dsi);
->> -	dw_mipi_dsi_line_timer_config(dsi, mode);
->> -	dw_mipi_dsi_vertical_timing_config(dsi, mode);
->> +	dw_mipi_dsi_line_timer_config(dsi, adjusted_mode);
->> +	dw_mipi_dsi_vertical_timing_config(dsi, adjusted_mode);
->>
->>   	dw_mipi_dsi_dphy_init(dsi);
->>   	dw_mipi_dsi_dphy_timing_config(dsi);
->> @@ -734,7 +734,7 @@ static void dw_mipi_dsi_bridge_mode_set(struct
->> drm_bridge *bridge,
->>
->>   	dw_mipi_dsi_dphy_enable(dsi);
->>
->> -	dw_mipi_dsi_wait_for_two_frames(mode);
->> +	dw_mipi_dsi_wait_for_two_frames(adjusted_mode);
->>
->>   	/* Switch to cmd mode for panel-bridge pre_enable & panel prepare */
->>   	dw_mipi_dsi_set_mode(dsi, 0);
-> 
+SGkgUGhpbGlwcGUsCgpPbiBNb25kYXksIDI5IEphbnVhcnkgMjAxOCAxMjoxNzozNyBFRVQgUGhp
+bGlwcGUgQ09STlUgd3JvdGU6Cj4gT24gMDEvMjkvMjAxOCAxMDo0NiBBTSwgTGF1cmVudCBQaW5j
+aGFydCB3cm90ZToKPiA+IE9uIFRodXJzZGF5LCAyNSBKYW51YXJ5IDIwMTggMTc6NTU6MDQgRUVU
+IFBoaWxpcHBlIENvcm51IHdyb3RlOgo+ID4gCj4gPj4gVGhlICJhZGp1c3RlZF9tb2RlIiBjbG9j
+ayB2YWx1ZSAoaWUgdGhlIHJlYWwgcGl4ZWwgY2xvY2spIGlzIG1vcmUKPiA+PiBhY2N1cmF0ZSB0
+aGFuICJtb2RlIiBjbG9jayB2YWx1ZSAoaWUgdGhlIHBhbmVsL2JyaWRnZSByZXF1ZXN0ZWQKPiA+
+PiBjbG9jayB2YWx1ZSkuIEl0IG9mZmVycyBhIGJldHRlciBwcmVjaXNlbmVzcyBmb3IgdGltaW5n
+Cj4gPj4gY29tcHV0YXRpb25zIGFuZCBhbGxvd3MgdG8gcmVkdWNlIHRoZSBleHRyYSBkc2kgYmFu
+ZHdpZHRoIGluCj4gPj4gYnVyc3QgbW9kZSAoZnJvbSB+MjAlIHRvIH4xMC0xMiUsIGh3IHBsYXRm
+b3JtIGRlcGVuZGFudCkuCj4gPj4KPiA+PiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBDb3JudSA8
+cGhpbGlwcGUuY29ybnVAc3QuY29tPgo+ID4gCj4gPiBUaGUgYWRqdXN0ZWQgbW9kZSBpcyBkb2N1
+bWVudGVkIGFzCj4gPiAKPiA+ICAvKioKPiA+ICAgKiBAYWRqdXN0ZWRfbW9kZToKPiA+ICAgKgo+
+ID4gICAqIEludGVybmFsIGRpc3BsYXkgdGltaW5ncyB3aGljaCBjYW4gYmUgdXNlZCBieSB0aGUg
+ZHJpdmVyIHRvIGhhbmRsZQo+ID4gICAqIGRpZmZlcmVuY2VzIGJldHdlZW4gdGhlIG1vZGUgcmVx
+dWVzdGVkIGJ5IHVzZXJzcGFjZSBpbiBAbW9kZSBhbmQgd2hhdAo+ID4gICAqIGlzIGFjdHVhbGx5
+IHByb2dyYW1tZWQgaW50byB0aGUgaGFyZHdhcmUuIEl0IGlzIHB1cmVseSBkcml2ZXIKPiA+ICAg
+KiBpbXBsZW1lbnRhdGlvbiBkZWZpbmVkIHdoYXQgZXhhY3RseSB0aGlzIGFkanVzdGVkIG1vZGUg
+bWVhbnMuIFVzdWFsbHkKPiA+ICAgKiBpdCBpcyB1c2VkIHRvIHN0b3JlIHRoZSBoYXJkd2FyZSBk
+aXNwbGF5IHRpbWluZ3MgdXNlZCBiZXR3ZWVuIHRoZQo+ID4gICAqIENSVEMgYW5kIGVuY29kZXIg
+YmxvY2tzLgo+ID4gICAqLwo+ID4gCj4gPiBUaGlzIGlzIGVhc3kgdG8gaGFuZGxlIHdoZW4gdGhl
+IENSVEMgYW5kIGVuY29kZXIgYXJlIGNvbnRyb2xsZWQgYnkgdGhlCj4gPiBzYW1lIGRyaXZlciwg
+YXMgdGhlIGZpZWxkIGlzICJpbXBsZW1lbnRhdGlvbiBkZWZpbmVkIiBieSBhIHNpbmdsZSBkcml2
+ZXIKPiA+IC4gSG93ZXZlciwgd2hlbiB1c2luZyBicmlkZ2VzLCB0aGVyZSBhcmUgdHdvIGRyaXZl
+cnMgaW52b2x2ZWQsIGFuZCB0aGV5Cj4gPiBtdXN0IGJvdGggYWdyZWUgdG8gbWVhbmluZ2Z1bGx5
+IHVzZSB0aGUgYWRqdXN0ZWQgbW9kZS4gSSBjYW4ndCBzZWUgaG93IHRvCj4gPiBkbyBzbyB3aXRo
+b3V0IHN0YW5kYXJkaXppbmcgdGhlIG1lYW5pbmcgb2YgdGhlIGFkanVzdGVkIG1vZGUgZmllbGQu
+Cj4gCj4gVGhpcyBpcyBleGFjdGx5IHRoZSByZWFzb24gd2h5IG15IGZpcnN0IGltcGxlbWVudGF0
+aW9uIHVzZWQgdGhlIGRzaSAKPiBicmlkZ2UgIm9wdGlvbmFsIHBpeGVsIGNsb2NrIiBpbnN0ZWFk
+IG9mIHRoZSBhZGp1c3RlZF9tb2RlIChzZWUgWzFdKQo+IAo+IEJ1dCBhZnRlciBkaWdnaW5nIG1v
+cmUgaW50byB0aGUgZHJtIHNvdXJjZSBjb2RlLCBJIHRoaW5rIHVzaW5nIAo+IGFkanVzdGVkX21v
+ZGUgaW5zdGVhZCBvZiB0aGUgcGl4ZWwgY2xvY2sgaGVyZSBicmluZ3MgbW9yZSBhZHZhbnRhZ2Vz
+IAo+IGJlY2F1c2U6Cj4gKiBhZGp1c3RlZF9tb2RlIGlzIGFuIGFyZ3VtZW50IG9mIGJyaWRnZSBt
+b2RlX3NldCgpIHByb2JhYmx5IGZvciBiZWluZyAKPiB1c2VkIGluIGFueSBtYW5uZXIsIG1heWJl
+IGxpa2UgdGhpcyA6KQo+ICogaWYgdGhlIGJyaWRnZSAidXNlciIgKGNydGMgb3IgYSBtYXN0ZXIg
+YnJpZGdlIGRyaXZlcnMpIGRvZXMgbm90IG5lZWQgCj4gdG8gbW9kaWZ5IGl0cyBhZGp1c3RlZF9t
+b2RlIHRoZW4gbW9kZSAmIGFkanVzdGVkX21vZGUgbW9kZV9zZXQoKSAKPiBhcmd1bWVudHMgd2ls
+bCBoYXZlIHRoZSBzYW1lIHZhbHVlcyBzbyAibm8gY29uc2VxdWVuY2UiIGZvciB0aGUgYnJpZGdl
+Lgo+ICogaWYgdGhlIGJyaWRnZSAidXNlciIgKGNydGMgb3IgbWFzdGVyIGJyaWRnZSBkcml2ZXJz
+KSBuZWVkcyB0byBhZGp1c3QgCj4gYW55IHZhbHVlIG9mIHRoZSBtb2RlIHRoZW4gdGhpcyBhZGp1
+c3RtZW50IGlzIGF2YWlsYWJsZSBmb3IgdGhlIGJyaWRnZS4KClJlbWVtYmVyIHRoYXQgdGhlcmUg
+Y2FuIGJlIG11bHRpcGxlIGNoYWluZWQgYnJpZGdlcywgYW5kIGEgc2luZ2xlIGFkanVzdGVkIApt
+b2RlIGZpZWxkLgoKPiAqIHJvY2tjaGlwIGNydGMgdXBkYXRlcyBhIHBhcnQgb2YgdGhlIG1vZGUg
+KHRoZSBjbG9jayksIHN0bSBpcyBkb2luZyB0aGUgCj4gc2FtZSAoc2VlIFsyXSkgYnV0IGFueSBm
+dXR1cmUgInVzZXIiIG9mIHRoZSBkd19taXBpX2RzaSBicmlkZ2UgY2FuIAo+IGFkanVzdCBzb21l
+dGhpbmcgZWxzZSAoYmxhbmtpbmdzLi4uKSBhbmQgdGhlIGR3X21pcGlfZHNpIGJyaWRnZSB3aWxs
+IGJlIAo+IHRoZW4gYXdhcmUgb2YuLi4KPiAKPiBCdXQgbWF5YmUgaXQgaXMgYSB3cm9uZyB1c2Fn
+ZSBvZiB0aGUgImFkanVzdGVkX21vZGUgb2ZmZXIiLi4uCgpJIGRvbid0IGRpc2FncmVlIHRoYXQg
+dGhlcmUncyBhIG5lZWQgZm9yIHVzaW5nIGFkanVzdGVkIHZhbHVlcywgYnV0IEkgYmVsaWV2ZSAK
+d2UgbmVlZCB0byBjcmVhdGUgYSBjbGVhciBBUEkgdG8gZG8gc28uIFVzaW5nIHRoZSBhZGp1c3Rf
+bW9kZSBmaWVsZCBhcy1pcyB3aGVuIAppdCdzIGNsZWFybHkgZG9jdW1lbnRlZCBhcyBiZWluZyBp
+bXBsZW1lbnRhdGlvbi1kZWZpbmVkIGlzIGFza2luZyBmb3IgdHJvdWJsZS4KCj4gTWFueSB0aGFu
+a3MsCj4gUGhpbGlwcGUgOi0pCj4gWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9y
+Zy9wYXRjaC8yMDAyNDAvCj4gWzJdIGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9w
+YXRjaC8yMDA3MjAvCj4gCj4gPiBEYW5pZWwsIHdoYXQncyB5b3VyIG9waW5pb24gb24gdGhpcyA/
+Cj4gPiAKPiA+PiAtLS0KPiA+PiBOb3RlOiBUaGlzIHBhdGNoIHJlcGxhY2VzICJkcm0vYnJpZGdl
+L3N5bm9wc3lzOiBkc2k6IGFkZCBvcHRpb25hbCBwaXhlbAo+ID4+IGNsb2NrIgo+ID4+Cj4gPj4g
+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCAxMiArKysr
+KystLS0tLS0KPiA+PiAgIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDYgZGVsZXRp
+b25zKC0pCj4gPj4KPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
+cHN5cy9kdy1taXBpLWRzaS5jCj4gPj4gYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
+L2R3LW1pcGktZHNpLmMgaW5kZXgKPiA+PiBlZDhhZjMyZjhlNTIuLmI5MjZiNjJlOWUzMyAxMDA2
+NDQKPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNp
+LmMKPiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNp
+LmMKPiA+PiBAQCAtNzA3LDIwICs3MDcsMjAgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfYnJp
+ZGdlX21vZGVfc2V0KHN0cnVjdAo+ID4+IGRybV9icmlkZ2UgKmJyaWRnZSwKPiA+Pgo+ID4+ICAg
+CWNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBjbGspOwo+ID4+Cj4gPj4gLQlyZXQgPSBwaHlfb3Bz
+LT5nZXRfbGFuZV9tYnBzKHByaXZfZGF0YSwgbW9kZSwgZHNpLT5tb2RlX2ZsYWdzLAo+ID4+ICsJ
+cmV0ID0gcGh5X29wcy0+Z2V0X2xhbmVfbWJwcyhwcml2X2RhdGEsIGFkanVzdGVkX21vZGUsCj4g
+Pj4gZHNpLT5tb2RlX2ZsYWdzLAo+ID4+ICAgCQkJCSAgICAgZHNpLT5sYW5lcywgZHNpLT5mb3Jt
+YXQsICZkc2ktPmxhbmVfbWJwcyk7Cj4gPj4gICBpZiAocmV0KQo+ID4+ICAgCURSTV9ERUJVR19E
+UklWRVIoIlBoeSBnZXRfbGFuZV9tYnBzKCkgZmFpbGVkXG4iKTsKPiA+Pgo+ID4+ICAgcG1fcnVu
+dGltZV9nZXRfc3luYyhkc2ktPmRldik7Cj4gPj4gICBkd19taXBpX2RzaV9pbml0KGRzaSk7Cj4g
+Pj4gCj4gPj4gLQlkd19taXBpX2RzaV9kcGlfY29uZmlnKGRzaSwgbW9kZSk7Cj4gPj4gKwlkd19t
+aXBpX2RzaV9kcGlfY29uZmlnKGRzaSwgYWRqdXN0ZWRfbW9kZSk7Cj4gPj4gICBkd19taXBpX2Rz
+aV9wYWNrZXRfaGFuZGxlcl9jb25maWcoZHNpKTsKPiA+PiAgIGR3X21pcGlfZHNpX3ZpZGVvX21v
+ZGVfY29uZmlnKGRzaSk7Cj4gPj4gLQlkd19taXBpX2RzaV92aWRlb19wYWNrZXRfY29uZmlnKGRz
+aSwgbW9kZSk7Cj4gPj4gKwlkd19taXBpX2RzaV92aWRlb19wYWNrZXRfY29uZmlnKGRzaSwgYWRq
+dXN0ZWRfbW9kZSk7Cj4gPj4gICBkd19taXBpX2RzaV9jb21tYW5kX21vZGVfY29uZmlnKGRzaSk7
+Cj4gPj4gLQlkd19taXBpX2RzaV9saW5lX3RpbWVyX2NvbmZpZyhkc2ksIG1vZGUpOwo+ID4+IC0J
+ZHdfbWlwaV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ksIG1vZGUpOwo+ID4+ICsJZHdf
+bWlwaV9kc2lfbGluZV90aW1lcl9jb25maWcoZHNpLCBhZGp1c3RlZF9tb2RlKTsKPiA+PiArCWR3
+X21pcGlfZHNpX3ZlcnRpY2FsX3RpbWluZ19jb25maWcoZHNpLCBhZGp1c3RlZF9tb2RlKTsKPiA+
+PiAgIGR3X21pcGlfZHNpX2RwaHlfaW5pdChkc2kpOwo+ID4+ICAgZHdfbWlwaV9kc2lfZHBoeV90
+aW1pbmdfY29uZmlnKGRzaSk7Cj4gPj4gCj4gPj4gQEAgLTczNCw3ICs3MzQsNyBAQCBzdGF0aWMg
+dm9pZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0Cj4gPj4gZHJtX2JyaWRnZSAq
+YnJpZGdlLAo+ID4+Cj4gPj4gICBkd19taXBpX2RzaV9kcGh5X2VuYWJsZShkc2kpOwo+ID4+Cj4g
+Pj4gLQlkd19taXBpX2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKG1vZGUpOwo+ID4+ICsJZHdfbWlw
+aV9kc2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyhhZGp1c3RlZF9tb2RlKTsKPiA+Pgo+ID4+ICAgLyog
+U3dpdGNoIHRvIGNtZCBtb2RlIGZvciBwYW5lbC1icmlkZ2UgcHJlX2VuYWJsZSAmIHBhbmVsIHBy
+ZXBhcmUgKi8KPiA+PiAgIGR3X21pcGlfZHNpX3NldF9tb2RlKGRzaSwgMCk7CgotLSAKUmVnYXJk
+cywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
