@@ -1,93 +1,254 @@
 From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH v2 29/43] drm/bridge: analogix_dp: Move fast link
- training detect to set_bridge
-Date: Mon, 29 Jan 2018 16:38:24 -0500
-Message-ID: <20180129213824.6jzjxz4gfoyytq7w@art_vandelay>
+Subject: Re: [PATCH v2 37/43] drm/rockchip: Disable PSR on input events
+Date: Mon, 29 Jan 2018 16:44:36 -0500
+Message-ID: <20180129214436.zcxxnyzjjsvd5rfu@art_vandelay>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
- <20180126131710.7622-30-thierry.escande@collabora.com>
+ <20180126131710.7622-38-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180126131710.7622-30-thierry.escande@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180126131710.7622-38-thierry.escande@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Thierry Escande <thierry.escande@collabora.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Haixia Shi <hshi@chromium.org>
+Cc: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Haixia Shi <hshi@chromium.org>, =?iso-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKYW4gMjYsIDIwMTggYXQgMDI6MTY6NTZQTSArMDEwMCwgVGhpZXJyeSBFc2NhbmRl
-IHdyb3RlOgo+IEZyb206IHphaW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IEl0J3Mg
-dG9vIGVhcmx5IHRvIGRldGVjdCBmYXN0IGxpbmsgdHJhaW5pbmcsIGlmIG90aGVyIHN0ZXAgYWZ0
-ZXIgaXQKPiBmYWlsZWQsIHdlIHdpbGwgc2V0IGZhc3RfbGluayBmbGFnIHRvIDEsIGFuZCByZXRy
-eSBzZXRfYnJpZGdlIGFnYWluLiBJbgo+IHRoaXMgY2FzZSB3ZSB3aWxsIHBvd2VyIGRvd24gYW5k
-IHBvd2VyIHVwIHBhbmVsIHBvd2VyIHN1cHBseSwgYW5kIHdlCj4gd2lsbCBkbyBmYXN0IGxpbmsg
-dHJhaW5pbmcgc2luY2Ugd2UgaGF2ZSBzZXQgZmFzdF9saW5rIGZsYWcgdG8gMS4gSW4KPiBmYWN0
-LCB3ZSBzaG91bGQgZG8gZnVsbCBsaW5rIHRyYWluaW5nIG5vdywgbm90IHRoZSBmYXN0IGxpbmsg
-dHJhaW5pbmcuCj4gU28gd2Ugc2hvdWxkIG1vdmUgdGhlIGZhc3QgbGluayBkZXRlY3Rpb24gYXQg
-dGhlIGVuZCBvZiBzZXRfYnJpZGdlLgo+IAo+IENjOiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21p
-dW0ub3JnPgo+IFNpZ25lZC1vZmYtYnk6IHphaW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+
-IFNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4K
-PiBTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29t
-Pgo+IFJldmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgo+IC0t
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8
-IDQyICsrKysrKysrKysrKystLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDI2IGluc2VydGlv
-bnMoKyksIDE2IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gaW5kZXggZTdhYjg3MWU2MmI1Li5iZWUw
-ZjdhYTVjMjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
-bmFsb2dpeF9kcF9jb3JlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
-L2FuYWxvZ2l4X2RwX2NvcmUuYwo+IEBAIC01OTksNyArNTk5LDcgQEAgc3RhdGljIGludCBhbmFs
-b2dpeF9kcF9wcm9jZXNzX2VxdWFsaXplcl90cmFpbmluZyhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2
-aWNlICpkcCkKPiAgewo+ICAJaW50IGxhbmUsIGxhbmVfY291bnQsIHJldHZhbDsKPiAgCXUzMiBy
-ZWc7Cj4gLQl1OCBsaW5rX2FsaWduLCBsaW5rX3N0YXR1c1syXSwgYWRqdXN0X3JlcXVlc3RbMl0s
-IHNwcmVhZDsKPiArCXU4IGxpbmtfYWxpZ24sIGxpbmtfc3RhdHVzWzJdLCBhZGp1c3RfcmVxdWVz
-dFsyXTsKPiAgCj4gIAl1c2xlZXBfcmFuZ2UoNDAwLCA0MDEpOwo+ICAKPiBAQCAtNjQzLDIwICs2
-NDMsNiBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX3Byb2Nlc3NfZXF1YWxpemVyX3RyYWluaW5n
-KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+ICAJCWRldl9kYmcoZHAtPmRldiwgImZp
-bmFsIGxhbmUgY291bnQgPSAlLjJ4XG4iLAo+ICAJCQlkcC0+bGlua190cmFpbi5sYW5lX2NvdW50
-KTsKPiAgCj4gLQkJcmV0dmFsID0gZHJtX2RwX2RwY2RfcmVhZGIoJmRwLT5hdXgsIERQX01BWF9E
-T1dOU1BSRUFELAo+IC0JCQkJCSAgICZzcHJlYWQpOwo+IC0JCWlmIChyZXR2YWwgIT0gMSkgewo+
-IC0JCQlkZXZfZXJyKGRwLT5kZXYsICJmYWlsZWQgdG8gcmVhZCBkb3duc3ByZWFkICVkXG4iLAo+
-IC0JCQkJcmV0dmFsKTsKPiAtCQkJZHAtPmZhc3RfdHJhaW5fZW5hYmxlID0gZmFsc2U7Cj4gLQkJ
-fSBlbHNlIHsKPiAtCQkJZHAtPmZhc3RfdHJhaW5fZW5hYmxlID0KPiAtCQkJCShzcHJlYWQgJiBE
-UF9OT19BVVhfSEFORFNIQUtFX0xJTktfVFJBSU5JTkcpID8KPiAtCQkJCQl0cnVlIDogZmFsc2U7
-Cj4gLQkJfQo+IC0JCWRldl9kYmcoZHAtPmRldiwgImZhc3QgbGluayB0cmFpbmluZyAlc1xuIiwK
-PiAtCQkJZHAtPmZhc3RfdHJhaW5fZW5hYmxlID8gInN1cHBvcnRlZCIgOiAidW5zdXBwb3J0ZWQi
-KTsKPiAtCj4gIAkJZHAtPmxpbmtfdHJhaW4ubHRfc3RhdGUgPSBGSU5JU0hFRDsKPiAgCj4gIAkJ
-cmV0dXJuIDA7Cj4gQEAgLTk5Nyw2ICs5ODMsMjIgQEAgc3RhdGljIGlycXJldHVybl90IGFuYWxv
-Z2l4X2RwX2lycV90aHJlYWQoaW50IGlycSwgdm9pZCAqYXJnKQo+ICAJcmV0dXJuIElSUV9IQU5E
-TEVEOwo+ICB9Cj4gIAo+ICtzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX2Zhc3RfbGlua190cmFpbl9k
-ZXRlY3Rpb24oc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4gK3sKPiArCWludCByZXQ7
-Cj4gKwl1OCBzcHJlYWQ7Cj4gKwo+ICsJcmV0ID0gZHJtX2RwX2RwY2RfcmVhZGIoJmRwLT5hdXgs
-IERQX01BWF9ET1dOU1BSRUFELCAmc3ByZWFkKTsKPiArCWlmIChyZXQgIT0gMSkgewo+ICsJCWRl
-dl9lcnIoZHAtPmRldiwgImZhaWxlZCB0byByZWFkIGRvd25zcHJlYWQgJWRcbiIsIHJldCk7Cj4g
-KwkJcmV0dXJuIHJldDsKPiArCX0KPiArCWRwLT5mYXN0X3RyYWluX2VuYWJsZSA9ICEhKHNwcmVh
-ZCAmIERQX05PX0FVWF9IQU5EU0hBS0VfTElOS19UUkFJTklORyk7Cj4gKwlkZXZfZGJnKGRwLT5k
-ZXYsICJmYXN0IGxpbmsgdHJhaW5pbmcgJXNcbiIsCj4gKwkJZHAtPmZhc3RfdHJhaW5fZW5hYmxl
-ID8gInN1cHBvcnRlZCIgOiAidW5zdXBwb3J0ZWQiKTsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+
-ICBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX2NvbW1pdChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNl
-ICpkcCkKPiAgewo+ICAJaW50IHJldDsKPiBAQCAtMTAzOSw4ICsxMDQxLDE2IEBAIHN0YXRpYyBp
-bnQgYW5hbG9naXhfZHBfY29tbWl0KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+ICAJ
-aWYgKHJldCkKPiAgCQlyZXR1cm4gcmV0Owo+ICAKPiAtCWlmIChkcC0+cHNyX2VuYWJsZSkKPiAr
-CWlmIChkcC0+cHNyX2VuYWJsZSkgewo+ICAJCXJldCA9IGFuYWxvZ2l4X2RwX2VuYWJsZV9zaW5r
-X3BzcihkcCk7Cj4gKwkJaWYgKHJldCkKPiArCQkJcmV0dXJuIHJldDsKPiArCX0KPiArCj4gKwkv
-KiBDaGVjayB3aGV0aGVyIHBhbmVsIHN1cHBvcnRzIGZhc3QgdHJhaW5pbmcgKi8KPiArCXJldCA9
-ICBhbmFsb2dpeF9kcF9mYXN0X2xpbmtfdHJhaW5fZGV0ZWN0aW9uKGRwKTsKPiArCWlmIChyZXQp
-Cj4gKwkJZHAtPnBzcl9lbmFibGUgPSBmYWxzZTsKCllvdSBjb3VsZCBwcm9iYWJseSBmbGlwIHRo
-aXMgd2l0aCBwc3JfZW5hYmxlIGFuZCBqdXN0IHJldHVybiBvbiBlcnJvciBpbnN0ZWFkIG9mCmZs
-aXBwaW5nIHBzcl9lbmFibGUgYmFjay4gTm90IGEgYmlnIGRlYWwgZWl0aGVyIHdheS4KClNlYW4K
-Cj4gIAo+ICAJcmV0dXJuIHJldDsKPiAgfQo+IC0tIAo+IDIuMTQuMQo+IAoKLS0gClNlYW4gUGF1
-bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Fri, Jan 26, 2018 at 02:17:04PM +0100, Thierry Escande wrote:
+> From: "Kristian H. Kristensen" <hoegsberg@google.com>
+> 
+> To improve PSR exit latency, we speculatively start exiting when we
+> receive input events. Occasionally, this may lead to false positives,
+> but most of the time we get a head start on coming out of PSR. Depending
+> on how userspace takes to produce a new frame in response to the event,
+> this can completely hide the exit latency. In case of Chrome OS, we
+> typically get the input notifier 50ms or more before the dirty_fb
+> triggered exit.
+> 
+
+I think this is something that ideally would happen in userspace, since it has a
+better idea of when to exit psr. IMO, this is something that should probably
+stay in the CrOS tree.
+
+Sean
+
+> Signed-off-by: Kristian H. Kristensen <hoegsberg@google.com>
+> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 134 ++++++++++++++++++++++++++++
+>  1 file changed, 134 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+> index 9376f4396b6b..a107845ba97c 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+> @@ -12,6 +12,8 @@
+>   * GNU General Public License for more details.
+>   */
+>  
+> +#include <linux/input.h>
+> +
+>  #include <drm/drmP.h>
+>  #include <drm/drm_crtc_helper.h>
+>  
+> @@ -35,6 +37,9 @@ struct psr_drv {
+>  	enum psr_state		state;
+>  
+>  	struct delayed_work	flush_work;
+> +	struct work_struct	disable_work;
+> +
+> +	struct input_handler    input_handler;
+>  
+>  	int (*set)(struct drm_encoder *encoder, bool enable);
+>  };
+> @@ -133,6 +138,18 @@ static void psr_flush_handler(struct work_struct *work)
+>  	mutex_unlock(&psr->lock);
+>  }
+>  
+> +static void psr_disable_handler(struct work_struct *work)
+> +{
+> +	struct psr_drv *psr = container_of(work, struct psr_drv, disable_work);
+> +
+> +	/* If the state has changed since we initiated the flush, do nothing */
+> +	mutex_lock(&psr->lock);
+> +	if (psr->state == PSR_ENABLE)
+> +		psr_set_state_locked(psr, PSR_FLUSH);
+> +	mutex_unlock(&psr->lock);
+> +	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
+> +}
+> +
+>  /**
+>   * rockchip_drm_psr_activate - activate PSR on the given pipe
+>   * @encoder: encoder to obtain the PSR encoder
+> @@ -173,6 +190,7 @@ int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
+>  	psr->active = false;
+>  	mutex_unlock(&psr->lock);
+>  	cancel_delayed_work_sync(&psr->flush_work);
+> +	cancel_work_sync(&psr->disable_work);
+>  
+>  	return 0;
+>  }
+> @@ -226,6 +244,95 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev)
+>  }
+>  EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
+>  
+> +static void psr_input_event(struct input_handle *handle,
+> +			    unsigned int type, unsigned int code,
+> +			    int value)
+> +{
+> +	struct psr_drv *psr = handle->handler->private;
+> +
+> +	schedule_work(&psr->disable_work);
+> +}
+> +
+> +static int psr_input_connect(struct input_handler *handler,
+> +			     struct input_dev *dev,
+> +			     const struct input_device_id *id)
+> +{
+> +	struct input_handle *handle;
+> +	int error;
+> +
+> +	handle = kzalloc(sizeof(struct input_handle), GFP_KERNEL);
+> +	if (!handle)
+> +		return -ENOMEM;
+> +
+> +	handle->dev = dev;
+> +	handle->handler = handler;
+> +	handle->name = "rockchip-psr";
+> +
+> +	error = input_register_handle(handle);
+> +	if (error)
+> +		goto err2;
+> +
+> +	error = input_open_device(handle);
+> +	if (error)
+> +		goto err1;
+> +
+> +	return 0;
+> +
+> +err1:
+> +	input_unregister_handle(handle);
+> +err2:
+> +	kfree(handle);
+> +	return error;
+> +}
+> +
+> +static void psr_input_disconnect(struct input_handle *handle)
+> +{
+> +	input_close_device(handle);
+> +	input_unregister_handle(handle);
+> +	kfree(handle);
+> +}
+> +
+> +/* Same device ids as cpu-boost */
+> +static const struct input_device_id psr_ids[] = {
+> +	{
+> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
+> +			 INPUT_DEVICE_ID_MATCH_ABSBIT,
+> +		.evbit = { BIT_MASK(EV_ABS) },
+> +		.absbit = { [BIT_WORD(ABS_MT_POSITION_X)] =
+> +			    BIT_MASK(ABS_MT_POSITION_X) |
+> +			    BIT_MASK(ABS_MT_POSITION_Y) },
+> +	}, /* multi-touch touchscreen */
+> +	{
+> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
+> +		.evbit = { BIT_MASK(EV_ABS) },
+> +		.absbit = { [BIT_WORD(ABS_X)] = BIT_MASK(ABS_X) }
+> +
+> +	}, /* stylus or joystick device */
+> +	{
+> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
+> +		.evbit = { BIT_MASK(EV_KEY) },
+> +		.keybit = { [BIT_WORD(BTN_LEFT)] = BIT_MASK(BTN_LEFT) },
+> +	}, /* pointer (e.g. trackpad, mouse) */
+> +	{
+> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
+> +		.evbit = { BIT_MASK(EV_KEY) },
+> +		.keybit = { [BIT_WORD(KEY_ESC)] = BIT_MASK(KEY_ESC) },
+> +	}, /* keyboard */
+> +	{
+> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
+> +				INPUT_DEVICE_ID_MATCH_KEYBIT,
+> +		.evbit = { BIT_MASK(EV_KEY) },
+> +		.keybit = {[BIT_WORD(BTN_JOYSTICK)] = BIT_MASK(BTN_JOYSTICK) },
+> +	}, /* joysticks not caught by ABS_X above */
+> +	{
+> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
+> +				INPUT_DEVICE_ID_MATCH_KEYBIT,
+> +		.evbit = { BIT_MASK(EV_KEY) },
+> +		.keybit = { [BIT_WORD(BTN_GAMEPAD)] = BIT_MASK(BTN_GAMEPAD) },
+> +	}, /* gamepad */
+> +	{ },
+> +};
+> +
+>  /**
+>   * rockchip_drm_psr_register - register encoder to psr driver
+>   * @encoder: encoder that obtain the PSR function
+> @@ -239,6 +346,7 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+>  {
+>  	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+>  	struct psr_drv *psr;
+> +	int error;
+>  
+>  	if (!encoder || !psr_set)
+>  		return -EINVAL;
+> @@ -248,6 +356,7 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+>  		return -ENOMEM;
+>  
+>  	INIT_DELAYED_WORK(&psr->flush_work, psr_flush_handler);
+> +	INIT_WORK(&psr->disable_work, psr_disable_handler);
+>  	mutex_init(&psr->lock);
+>  
+>  	psr->active = true;
+> @@ -255,11 +364,33 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+>  	psr->encoder = encoder;
+>  	psr->set = psr_set;
+>  
+> +	psr->input_handler.event = psr_input_event;
+> +	psr->input_handler.connect = psr_input_connect;
+> +	psr->input_handler.disconnect = psr_input_disconnect;
+> +	psr->input_handler.name =
+> +		kasprintf(GFP_KERNEL, "rockchip-psr-%s", encoder->name);
+> +	if (!psr->input_handler.name) {
+> +		error = -ENOMEM;
+> +		goto err2;
+> +	}
+> +	psr->input_handler.id_table = psr_ids;
+> +	psr->input_handler.private = psr;
+> +
+> +	error = input_register_handler(&psr->input_handler);
+> +	if (error)
+> +		goto err1;
+> +
+>  	mutex_lock(&drm_drv->psr_list_lock);
+>  	list_add_tail(&psr->list, &drm_drv->psr_list);
+>  	mutex_unlock(&drm_drv->psr_list_lock);
+>  
+>  	return 0;
+> +
+> + err1:
+> +	kfree(psr->input_handler.name);
+> + err2:
+> +	kfree(psr);
+> +	return error;
+>  }
+>  EXPORT_SYMBOL(rockchip_drm_psr_register);
+>  
+> @@ -279,8 +410,11 @@ void rockchip_drm_psr_unregister(struct drm_encoder *encoder)
+>  	mutex_lock(&drm_drv->psr_list_lock);
+>  	list_for_each_entry_safe(psr, n, &drm_drv->psr_list, list) {
+>  		if (psr->encoder == encoder) {
+> +			input_unregister_handler(&psr->input_handler);
+>  			cancel_delayed_work_sync(&psr->flush_work);
+> +			cancel_work_sync(&psr->disable_work);
+>  			list_del(&psr->list);
+> +			kfree(psr->input_handler.name);
+>  			kfree(psr);
+>  		}
+>  	}
+> -- 
+> 2.14.1
+> 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
