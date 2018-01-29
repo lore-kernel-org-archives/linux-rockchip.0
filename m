@@ -1,81 +1,84 @@
-From: Archit Taneja <architt@codeaurora.org>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
-Date: Mon, 29 Jan 2018 09:44:21 +0530
-Message-ID: <075514d0-ff00-606e-4616-e2db4fb75d0d@codeaurora.org>
+Date: Mon, 29 Jan 2018 11:46:35 +0200
+Message-ID: <2782155.lsFkNecG25@avalon>
 References: <20180125155504.8611-1-philippe.cornu@st.com>
- <CA+ASDXOLYaL1zT-K0FvVTFGQ2BA12eHkrZw_mau50aUBdy=vhA@mail.gmail.com>
- <5f9d5de7-4597-b9e9-64fe-666230b12bce@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5f9d5de7-4597-b9e9-64fe-666230b12bce@st.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philippe CORNU <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Heiko Stubner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Linux Kernel <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Sandy Huang <hjc@rock-chips.com>, Yannick FERTRE <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Ludovic BARRE <ludovic.barre@st.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180125155504.8611-1-philippe.cornu@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philippe Cornu <philippe.cornu@st.com>
+Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Yannick Fertre <yannick.fertre@st.com>, linux-arm-kernel@lists.infradead.org, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 01/26/2018 03:24 PM, Philippe CORNU wrote:
-> Hi Brian,
-> And a big thanks for your Tested-by
-> 
-> On 01/25/2018 11:47 PM, Brian Norris wrote:
->> On Thu, Jan 25, 2018 at 7:55 AM, Philippe Cornu <philippe.cornu@st.com> wrote:
->>> The "adjusted_mode" clock value (ie the real pixel clock) is more
->>> accurate than "mode" clock value (ie the panel/bridge requested
->>> clock value). It offers a better preciseness for timing
->>> computations and allows to reduce the extra dsi bandwidth in
->>> burst mode (from ~20% to ~10-12%, hw platform dependant).
->>>
->>> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
->>> ---
->>> Note: This patch replaces "drm/bridge/synopsys: dsi: add optional pixel clock"
->>
->> These two appear to be the same for my cases, but at least nothing breaks:
->>
-> 
-> In drivers/gpu/drm/rockchip/rockchip_drm_vop.c function
-> vop_crtc_mode_fixup(), the adjusted_mode->clock (ie. vop px clk output =
-> dw dsi px clk input) is updated according to rockchip hw pll/dividers...
-> 
-> So you "may" have a different value in adjusted_mode->clock compare to
-> mode->clock. Maybe there is no difference for the panel you are using
-> because its px clock matches perfectly with rockchip hw pll/dividers...
-> or has been set to match with ;-)
-> 
-> I did a similar patch (see [1]) and it works "fine" on stm, the only
-> difference with the rockchip vop is that clk_round_rate() returns odd
-> values on stm so I used set/get_rate instead.
-> 
-> So now, both rockchip & stm crtc have an "adjusted_mode->clock" so it
-> makes sense to use it in dw dsi :)
-
-Could you get the patch [1] queued on drm-misc-next? I can queue this patch
-after it.
-
-Thanks,
-Archit
-
-> 
-> Philippe :-)
-> 
-> [1] https://patchwork.freedesktop.org/patch/200720/
-> "[PATCH] drm/stm: ltdc: use crtc_mode_fixup to update adjusted_mode clock"
-> 
-> 
->> Tested-by: Brian Norris <briannorris@chromium.org>
->>
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> 
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+SGkgUGhpbGlwcGUsCgooQ0MnaW5nIERhbmllbCBWZXR0ZXIpCgpUaGFuayB5b3UgZm9yIHRoZSBw
+YXRjaC4KCk9uIFRodXJzZGF5LCAyNSBKYW51YXJ5IDIwMTggMTc6NTU6MDQgRUVUIFBoaWxpcHBl
+IENvcm51IHdyb3RlOgo+IFRoZSAiYWRqdXN0ZWRfbW9kZSIgY2xvY2sgdmFsdWUgKGllIHRoZSBy
+ZWFsIHBpeGVsIGNsb2NrKSBpcyBtb3JlCj4gYWNjdXJhdGUgdGhhbiAibW9kZSIgY2xvY2sgdmFs
+dWUgKGllIHRoZSBwYW5lbC9icmlkZ2UgcmVxdWVzdGVkCj4gY2xvY2sgdmFsdWUpLiBJdCBvZmZl
+cnMgYSBiZXR0ZXIgcHJlY2lzZW5lc3MgZm9yIHRpbWluZwo+IGNvbXB1dGF0aW9ucyBhbmQgYWxs
+b3dzIHRvIHJlZHVjZSB0aGUgZXh0cmEgZHNpIGJhbmR3aWR0aCBpbgo+IGJ1cnN0IG1vZGUgKGZy
+b20gfjIwJSB0byB+MTAtMTIlLCBodyBwbGF0Zm9ybSBkZXBlbmRhbnQpLgo+IAo+IFNpZ25lZC1v
+ZmYtYnk6IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+CgpUaGUgYWRqdXN0
+ZWQgbW9kZSBpcyBkb2N1bWVudGVkIGFzCgogICAgLyoqCiAgICAgKiBAYWRqdXN0ZWRfbW9kZToK
+ICAgICAqCiAgICAgKiBJbnRlcm5hbCBkaXNwbGF5IHRpbWluZ3Mgd2hpY2ggY2FuIGJlIHVzZWQg
+YnkgdGhlIGRyaXZlciB0byBoYW5kbGUKICAgICAqIGRpZmZlcmVuY2VzIGJldHdlZW4gdGhlIG1v
+ZGUgcmVxdWVzdGVkIGJ5IHVzZXJzcGFjZSBpbiBAbW9kZSBhbmQgd2hhdAogICAgICogaXMgYWN0
+dWFsbHkgcHJvZ3JhbW1lZCBpbnRvIHRoZSBoYXJkd2FyZS4gSXQgaXMgcHVyZWx5IGRyaXZlcgog
+ICAgICogaW1wbGVtZW50YXRpb24gZGVmaW5lZCB3aGF0IGV4YWN0bHkgdGhpcyBhZGp1c3RlZCBt
+b2RlIG1lYW5zLiBVc3VhbGx5CiAgICAgKiBpdCBpcyB1c2VkIHRvIHN0b3JlIHRoZSBoYXJkd2Fy
+ZSBkaXNwbGF5IHRpbWluZ3MgdXNlZCBiZXR3ZWVuIHRoZQogICAgICogQ1JUQyBhbmQgZW5jb2Rl
+ciBibG9ja3MuCiAgICAgKi8KClRoaXMgaXMgZWFzeSB0byBoYW5kbGUgd2hlbiB0aGUgQ1JUQyBh
+bmQgZW5jb2RlciBhcmUgY29udHJvbGxlZCBieSB0aGUgc2FtZSAKZHJpdmVyLCBhcyB0aGUgZmll
+bGQgaXMgImltcGxlbWVudGF0aW9uIGRlZmluZWQiIGJ5IGEgc2luZ2xlIGRyaXZlciAuIEhvd2V2
+ZXIsIAp3aGVuIHVzaW5nIGJyaWRnZXMsIHRoZXJlIGFyZSB0d28gZHJpdmVycyBpbnZvbHZlZCwg
+YW5kIHRoZXkgbXVzdCBib3RoIGFncmVlIAp0byBtZWFuaW5nZnVsbHkgdXNlIHRoZSBhZGp1c3Rl
+ZCBtb2RlLiBJIGNhbid0IHNlZSBob3cgdG8gZG8gc28gd2l0aG91dCAKc3RhbmRhcmRpemluZyB0
+aGUgbWVhbmluZyBvZiB0aGUgYWRqdXN0ZWQgbW9kZSBmaWVsZC4KCkRhbmllbCwgd2hhdCdzIHlv
+dXIgb3BpbmlvbiBvbiB0aGlzID8KCj4gLS0tCj4gTm90ZTogVGhpcyBwYXRjaCByZXBsYWNlcyAi
+ZHJtL2JyaWRnZS9zeW5vcHN5czogZHNpOiBhZGQgb3B0aW9uYWwgcGl4ZWwKPiBjbG9jayIKPiAK
+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIHwgMTIgKysr
+KysrLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25z
+KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
+bWlwaS1kc2kuYwo+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRz
+aS5jIGluZGV4Cj4gZWQ4YWYzMmY4ZTUyLi5iOTI2YjYyZTllMzMgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4gQEAgLTcwNywyMCArNzA3
+LDIwIEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2JyaWRnZV9tb2RlX3NldChzdHJ1Y3QKPiBk
+cm1fYnJpZGdlICpicmlkZ2UsCj4gCj4gIAljbGtfcHJlcGFyZV9lbmFibGUoZHNpLT5wY2xrKTsK
+PiAKPiAtCXJldCA9IHBoeV9vcHMtPmdldF9sYW5lX21icHMocHJpdl9kYXRhLCBtb2RlLCBkc2kt
+Pm1vZGVfZmxhZ3MsCj4gKwlyZXQgPSBwaHlfb3BzLT5nZXRfbGFuZV9tYnBzKHByaXZfZGF0YSwg
+YWRqdXN0ZWRfbW9kZSwgZHNpLT5tb2RlX2ZsYWdzLAo+ICAJCQkJICAgICBkc2ktPmxhbmVzLCBk
+c2ktPmZvcm1hdCwgJmRzaS0+bGFuZV9tYnBzKTsKPiAgCWlmIChyZXQpCj4gIAkJRFJNX0RFQlVH
+X0RSSVZFUigiUGh5IGdldF9sYW5lX21icHMoKSBmYWlsZWRcbiIpOwo+IAo+ICAJcG1fcnVudGlt
+ZV9nZXRfc3luYyhkc2ktPmRldik7Cj4gIAlkd19taXBpX2RzaV9pbml0KGRzaSk7Cj4gLQlkd19t
+aXBpX2RzaV9kcGlfY29uZmlnKGRzaSwgbW9kZSk7Cj4gKwlkd19taXBpX2RzaV9kcGlfY29uZmln
+KGRzaSwgYWRqdXN0ZWRfbW9kZSk7Cj4gIAlkd19taXBpX2RzaV9wYWNrZXRfaGFuZGxlcl9jb25m
+aWcoZHNpKTsKPiAgCWR3X21pcGlfZHNpX3ZpZGVvX21vZGVfY29uZmlnKGRzaSk7Cj4gLQlkd19t
+aXBpX2RzaV92aWRlb19wYWNrZXRfY29uZmlnKGRzaSwgbW9kZSk7Cj4gKwlkd19taXBpX2RzaV92
+aWRlb19wYWNrZXRfY29uZmlnKGRzaSwgYWRqdXN0ZWRfbW9kZSk7Cj4gIAlkd19taXBpX2RzaV9j
+b21tYW5kX21vZGVfY29uZmlnKGRzaSk7Cj4gLQlkd19taXBpX2RzaV9saW5lX3RpbWVyX2NvbmZp
+Zyhkc2ksIG1vZGUpOwo+IC0JZHdfbWlwaV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ks
+IG1vZGUpOwo+ICsJZHdfbWlwaV9kc2lfbGluZV90aW1lcl9jb25maWcoZHNpLCBhZGp1c3RlZF9t
+b2RlKTsKPiArCWR3X21pcGlfZHNpX3ZlcnRpY2FsX3RpbWluZ19jb25maWcoZHNpLCBhZGp1c3Rl
+ZF9tb2RlKTsKPiAKPiAgCWR3X21pcGlfZHNpX2RwaHlfaW5pdChkc2kpOwo+ICAJZHdfbWlwaV9k
+c2lfZHBoeV90aW1pbmdfY29uZmlnKGRzaSk7Cj4gQEAgLTczNCw3ICs3MzQsNyBAQCBzdGF0aWMg
+dm9pZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0Cj4gZHJtX2JyaWRnZSAqYnJp
+ZGdlLAo+IAo+ICAJZHdfbWlwaV9kc2lfZHBoeV9lbmFibGUoZHNpKTsKPiAKPiAtCWR3X21pcGlf
+ZHNpX3dhaXRfZm9yX3R3b19mcmFtZXMobW9kZSk7Cj4gKwlkd19taXBpX2RzaV93YWl0X2Zvcl90
+d29fZnJhbWVzKGFkanVzdGVkX21vZGUpOwo+IAo+ICAJLyogU3dpdGNoIHRvIGNtZCBtb2RlIGZv
+ciBwYW5lbC1icmlkZ2UgcHJlX2VuYWJsZSAmIHBhbmVsIHByZXBhcmUgKi8KPiAgCWR3X21pcGlf
+ZHNpX3NldF9tb2RlKGRzaSwgMCk7CgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
