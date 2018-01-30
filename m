@@ -1,47 +1,183 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 20/43] drm/bridge: analogix_dp: Extend hpd check time to
- 100ms
-Date: Tue, 30 Jan 2018 21:28:50 +0100
-Message-ID: <20180130202913.28724-21-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v3 39/43] drm/rockchip: psr: Avoid redundant calls to .set() callback
+Date: Tue, 30 Jan 2018 21:29:09 +0100
+Message-ID: <20180130202913.28724-40-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180130202913.28724-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KClRoZXJlIHdhcyBhIDFtcyBkZWxh
-eSB0byBkZXRlY3QgdGhlIGhwZCBzaWduYWwsIHdoaWNoIGlzIHRvbyBzaG9ydCB0bwpkZXRlY3Qg
-YSBzaG9ydCBwdWxzZS4gVGhpcyBwYXRjaCBleHRlbmRzIHRoaXMgZGVsYXkgdG8gMTAwbXMuCgpD
-YzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+CkNjOiDlvoHlop4g
-546LIDx3enpAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9j
-ay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0u
-b3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xs
-YWJvcmEuY29tPgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNv
-bT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUu
-YyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-Y29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
-LmMKaW5kZXggZmE0ZWYyOGUyODZmLi45ZGY5MmRjNTRkYmUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCisrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCkBAIC03Niw3ICs3Niw3
-IEBAIHN0YXRpYyBpbnQgYW5hbG9naXhfZHBfZGV0ZWN0X2hwZChzdHJ1Y3QgYW5hbG9naXhfZHBf
-ZGV2aWNlICpkcCkKIAkJCXJldHVybiAwOwogCiAJCXRpbWVvdXRfbG9vcCsrOwotCQl1c2xlZXBf
-cmFuZ2UoMTAsIDExKTsKKwkJdXNsZWVwX3JhbmdlKDEwMDAsIDExMDApOwogCX0KIAogCS8qCi0t
-IAoyLjE0LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+From: Tomasz Figa <tfiga@chromium.org>
+
+The first time after we call rockchip_drm_do_flush() after
+rockchip_drm_psr_register(), we go from PSR_DISABLE to PSR_FLUSH. The
+difference between PSR_DISABLE and PSR_FLUSH is whether or not we have a
+delayed work pending - PSR is off in either state.  However
+psr_set_state() only catches the transition from PSR_FLUSH to
+PSR_DISABLE (which never happens), while going from PSR_DISABLE to
+PSR_FLUSH triggers a call to psr->set() to disable PSR while it's
+already disabled. This triggers the eDP PHY power-on sequence without
+being shut down first and this seems to occasionally leave the encoder
+unable to later enable PSR. Let's just simplify the state machine and
+simply consider PSR_DISABLE and PSR_FLUSH the same state. This lets us
+represent the hardware state by a simple boolean called "enabled" and,
+while at it, rename the misleading "active" boolean to "inhibit", which
+represents the purpose much better.
+
+Also, userspace can (and does) trigger the rockchip_drm_do_flush() path
+from drmModeDirtyFB() at any time, whether or the encoder is active. If
+no mode is set, we call into analogix_dp_psr_set() which returns -EINVAL
+because encoder->crtc is NULL. Avoid this by starting out with
+psr->allowed set to false.
+
+Signed-off-by: Kristian H. Kristensen <hoegsberg@chromium.org>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 79 +++++++++--------------------
+ 1 file changed, 23 insertions(+), 56 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index c8655e625ba2..448c5fde241c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -22,19 +22,13 @@
+ 
+ #define PSR_FLUSH_TIMEOUT_MS	100
+ 
+-enum psr_state {
+-	PSR_FLUSH,
+-	PSR_ENABLE,
+-	PSR_DISABLE,
+-};
+-
+ struct psr_drv {
+ 	struct list_head	list;
+ 	struct drm_encoder	*encoder;
+ 
+ 	struct mutex		lock;
+ 	bool			active;
+-	enum psr_state		state;
++	bool			enabled;
+ 
+ 	struct delayed_work	flush_work;
+ 	struct work_struct	disable_work;
+@@ -78,52 +72,22 @@ static struct psr_drv *find_psr_by_encoder(struct drm_encoder *encoder)
+ 	return psr;
+ }
+ 
+-static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
++static int psr_set_state_locked(struct psr_drv *psr, bool enable)
+ {
+-	/*
+-	 * Allowed finite state machine:
+-	 *
+-	 *   PSR_ENABLE  < = = = = = >  PSR_FLUSH
+-	 *       | ^                        |
+-	 *       | |                        |
+-	 *       v |                        |
+-	 *   PSR_DISABLE < - - - - - - - - -
+-	 */
+-	if (state == psr->state || !psr->active)
+-		return;
+-
+-	/* Already disabled in flush, change the state, but not the hardware */
+-	if (state == PSR_DISABLE && psr->state == PSR_FLUSH) {
+-		psr->state = state;
+-		return;
+-	}
++	int ret;
+ 
+-	/* Actually commit the state change to hardware */
+-	switch (state) {
+-	case PSR_ENABLE:
+-		if (psr->set(psr->encoder, true))
+-			return;
+-		break;
+-
+-	case PSR_DISABLE:
+-	case PSR_FLUSH:
+-		if (psr->set(psr->encoder, false))
+-			return;
+-		break;
+-
+-	default:
+-		pr_err("%s: Unknown state %d\n", __func__, state);
+-		return;
+-	}
++	if (!psr->active)
++		return -EINVAL;
+ 
+-	psr->state = state;
+-}
++	if (enable == psr->enabled)
++		return 0;
+ 
+-static void psr_set_state(struct psr_drv *psr, enum psr_state state)
+-{
+-	mutex_lock(&psr->lock);
+-	psr_set_state_locked(psr, state);
+-	mutex_unlock(&psr->lock);
++	ret = psr->set(psr->encoder, enable);
++	if (ret)
++		return ret;
++
++	psr->enabled = enable;
++	return 0;
+ }
+ 
+ static void psr_flush_handler(struct work_struct *work)
+@@ -131,10 +95,8 @@ static void psr_flush_handler(struct work_struct *work)
+ 	struct psr_drv *psr = container_of(to_delayed_work(work),
+ 					   struct psr_drv, flush_work);
+ 
+-	/* If the state has changed since we initiated the flush, do nothing */
+ 	mutex_lock(&psr->lock);
+-	if (psr->state == PSR_FLUSH)
+-		psr_set_state_locked(psr, PSR_ENABLE);
++	psr_set_state_locked(psr, true);
+ 	mutex_unlock(&psr->lock);
+ }
+ 
+@@ -176,6 +138,7 @@ int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
+ 
+ 	mutex_lock(&psr->lock);
+ 	psr->active = false;
++	psr->enabled = false;
+ 	mutex_unlock(&psr->lock);
+ 	cancel_delayed_work_sync(&psr->flush_work);
+ 	cancel_work_sync(&psr->disable_work);
+@@ -187,8 +150,12 @@ EXPORT_SYMBOL(rockchip_drm_psr_deactivate);
+ static void rockchip_drm_do_flush(struct psr_drv *psr)
+ {
+ 	cancel_delayed_work_sync(&psr->flush_work);
+-	psr_set_state(psr, PSR_FLUSH);
+-	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
++
++	mutex_lock(&psr->lock);
++	if (!psr_set_state_locked(psr, false))
++		mod_delayed_work(system_wq, &psr->flush_work,
++				 PSR_FLUSH_TIMEOUT_MS);
++	mutex_unlock(&psr->lock);
+ }
+ 
+ /**
+@@ -355,8 +322,8 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ 	INIT_WORK(&psr->disable_work, psr_disable_handler);
+ 	mutex_init(&psr->lock);
+ 
+-	psr->active = true;
+-	psr->state = PSR_DISABLE;
++	psr->active = false;
++	psr->enabled = false;
+ 	psr->encoder = encoder;
+ 	psr->set = psr_set;
+ 
+-- 
+2.14.1
