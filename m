@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 32/43] drm/bridge: analogix_dp: Properly disable aux chan
- retries on rockchip
-Date: Tue, 30 Jan 2018 21:29:02 +0100
-Message-ID: <20180130202913.28724-33-thierry.escande@collabora.com>
+Subject: [PATCH v3 27/43] drm/bridge: analogix_dp: Fix timeout of video
+ streamclk config
+Date: Tue, 30 Jan 2018 21:28:57 +0100
+Message-ID: <20180130202913.28724-28-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,39 +23,39 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgoKVGhlIGNvbW1l
-bnRzIGluIGFuYWxvZ2l4X2RwX2luaXRfYXV4KCkgY2xhaW0gdGhhdCB3ZSdyZSBkaXNhYmxpbmcg
-YXV4CmNoYW5uZWwgcmV0cmllcywgYnV0IHRoZW4gcmlnaHQgYmVsb3cgaXQgZm9yIFJvY2tjaGlw
-IGl0IHNldHMgdGhlbSB0bwozLiAgSWYgd2UgYWN0dWFsbHkgbmVlZCAzIHJldHJpZXMgZm9yIFJv
-Y2tjaGlwIHRoZW4gd2UgY291bGQgYWRqdXN0CnRoZSBjb21tZW50LCBidXQgaXQgc2VlbXMgbW9y
-ZSBsaWtlbHkgdGhhdCB3ZSB3YW50IHRoZSBzYW1lIHJldHJ5CmJlaGF2aW9yIGFjcm9zcyBhbGwg
-cGxhdGZvcm1zLgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3Jn
-PgpDYzog5b6B5aKeIOeOiyA8d3p6QHJvY2stY2hpcHMuY29tPgpTaWduZWQtb2ZmLWJ5OiBEb3Vn
-bGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgfCAxNSArKysrKysrKy0tLS0tLS0KIDEg
-ZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyBiL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKaW5kZXggNThl
-OGEyOGU5OWFhLi5hNWYyNzYzZDcyZTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtNDgxLDE1ICs0ODEsMTYgQEAgdm9pZCBh
-bmFsb2dpeF9kcF9pbml0X2F1eChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAogCWFu
-YWxvZ2l4X2RwX3Jlc2V0X2F1eChkcCk7CiAKLQkvKiBEaXNhYmxlIEFVWCB0cmFuc2FjdGlvbiBI
-L1cgcmV0cnkgKi8KKwkvKiBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxBWSBkb2Vzbid0IGFw
-cGx5IHRvIFJvY2tjaGlwIElQICovCiAJaWYgKGRwLT5wbGF0X2RhdGEgJiYgaXNfcm9ja2NoaXAo
-ZHAtPnBsYXRfZGF0YS0+ZGV2X3R5cGUpKQotCQlyZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RF
-RF9ERUxBWSgwKSB8Ci0JCSAgICAgIEFVWF9IV19SRVRSWV9DT1VOVF9TRUwoMykgfAotCQkgICAg
-ICBBVVhfSFdfUkVUUllfSU5URVJWQUxfNjAwX01JQ1JPU0VDT05EUzsKKwkJcmVnID0gMDsKIAll
-bHNlCi0JCXJlZyA9IEFVWF9CSVRfUEVSSU9EX0VYUEVDVEVEX0RFTEFZKDMpIHwKLQkJICAgICAg
-QVVYX0hXX1JFVFJZX0NPVU5UX1NFTCgwKSB8Ci0JCSAgICAgIEFVWF9IV19SRVRSWV9JTlRFUlZB
-TF82MDBfTUlDUk9TRUNPTkRTOworCQlyZWcgPSBBVVhfQklUX1BFUklPRF9FWFBFQ1RFRF9ERUxB
-WSgzKTsKKworCS8qIERpc2FibGUgQVVYIHRyYW5zYWN0aW9uIEgvVyByZXRyeSAqLworCXJlZyB8
-PSBBVVhfSFdfUkVUUllfQ09VTlRfU0VMKDApIHwKKwkgICAgICAgQVVYX0hXX1JFVFJZX0lOVEVS
-VkFMXzYwMF9NSUNST1NFQ09ORFM7CisKIAl3cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBBTkFM
-T0dJWF9EUF9BVVhfSFdfUkVUUllfQ1RMKTsKIAogCS8qIFJlY2VpdmUgQVVYIENoYW5uZWwgREVG
-RVIgY29tbWFuZHMgZXF1YWwgdG8gREVGRkVSX0NPVU5UKjY0ICovCi0tIAoyLjE0LjEKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+The STRM_VALID bit in register ANALOGIX_DP_SYS_CTL_3 may be unstable,
+so we may hit the error log "Timeout of video streamclk ok" since
+checked this unstable bit.
+In fact, we can go continue and the streamclk is ok if we wait enough time,
+it does no effect on display.
+Let's change this error to warn.
+
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index e925c62eaadb..a64f0c3e795c 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -921,8 +921,9 @@ static int analogix_dp_config_video(struct analogix_dp_device *dp)
+ 			done_count = 0;
+ 		}
+ 		if (timeout_loop > DP_TIMEOUT_LOOP_COUNT) {
+-			dev_err(dp->dev, "Timeout of video streamclk ok\n");
+-			return -ETIMEDOUT;
++			dev_warn(dp->dev,
++				 "Ignoring timeout of video streamclk ok\n");
++			break;
+ 		}
+ 
+ 		usleep_range(1000, 1001);
+-- 
+2.14.1
