@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Tue, 30 Jan 2018 21:28:35 +0100
-Message-ID: <20180130202913.28724-6-thierry.escande@collabora.com>
+Subject: [PATCH v3 26/43] drm/bridge: analogix_dp: Don't use
+ ANALOGIX_DP_PLL_CTL to control pll
+Date: Tue, 30 Jan 2018 21:28:56 +0100
+Message-ID: <20180130202913.28724-27-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,35 +23,53 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpUaGUgYnJpZGdlIGRvZXMgbm90
-IG5lZWQgdG8gYmUgcG93ZXJlZCBpbiBhbmFsb2dpeF9kcF9iaW5kKCksIHNvCnJlbW92ZSB0aGUg
-Y2FsbHMgdG8gcG1fcnVudGltZV9nZXQoKS9waHlfcG93ZXJfb24oKS9hbmFsb2dpeF9kcF9pbml0
-X2RwKCkKYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291bnRlcnBhcnRzLgoKQ2M6IFN0w6lw
-aGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWlu
-IHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4
-dEByb2NrLWNoaXBzLmNvbT4KW3RoZSBwYXRjaCBvcmlnaW5hbGx5IGp1c3QgcmVtb3ZlZCB0aGUg
-cG93ZXJfb24gcG9ydGlvbiwgc2VhbnBhdWwgcmVtb3ZlZAp0aGUgcG93ZXIgb2ZmIGNvZGUgYXMg
-d2VsbCBhcyBpbXByb3ZlZCB0aGUgY29tbWl0IG1lc3NhZ2VdClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgMTAgLS0tLS0tLS0tLQogMSBmaWxl
-IGNoYW5nZWQsIDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKaW5kZXggY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5
-YmE4NWQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5jCkBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCiAJcG1fcnVudGlt
-ZV9lbmFibGUoZGV2KTsKIAotCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZGV2KTsKLQlwaHlfcG93ZXJf
-b24oZHAtPnBoeSk7Ci0KLQlhbmFsb2dpeF9kcF9pbml0X2RwKGRwKTsKLQogCXJldCA9IGRldm1f
-cmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmlycSwKIAkJCQkJYW5hbG9naXhf
-ZHBfaGFyZGlycSwKIAkJCQkJYW5hbG9naXhfZHBfaXJxX3RocmVhZCwKQEAgLTE0MTQsMTUgKzE0
-MDksMTAgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1f
-ZGV2aWNlICpkcm1fZGV2LAogCQlnb3RvIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU7CiAJfQogCi0J
-cGh5X3Bvd2VyX29mZihkcC0+cGh5KTsKLQlwbV9ydW50aW1lX3B1dChkZXYpOwotCiAJcmV0dXJu
-IGRwOwogCiBlcnJfZGlzYWJsZV9wbV9ydW50aW1lOgogCi0JcGh5X3Bvd2VyX29mZihkcC0+cGh5
-KTsKLQlwbV9ydW50aW1lX3B1dChkZXYpOwogCXBtX3J1bnRpbWVfZGlzYWJsZShkZXYpOwogCiAJ
-cmV0dXJuIEVSUl9QVFIocmV0KTsKLS0gCjIuMTQuMQoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+There is no register named ANALOGIX_DP_PLL_CTL in Rockchip edp phy reg
+list.  We should use BIT_4 in ANALOGIX_DP_PD to control the pll power
+instead of ANALOGIX_DP_PLL_CTL.
+
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 7b7fd227e1f9..02ab1aaa9993 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -230,16 +230,20 @@ enum pll_status analogix_dp_get_pll_lock_status(struct analogix_dp_device *dp)
+ void analogix_dp_set_pll_power_down(struct analogix_dp_device *dp, bool enable)
+ {
+ 	u32 reg;
++	u32 mask = DP_PLL_PD;
++	u32 pd_addr = ANALOGIX_DP_PLL_CTL;
+ 
+-	if (enable) {
+-		reg = readl(dp->reg_base + ANALOGIX_DP_PLL_CTL);
+-		reg |= DP_PLL_PD;
+-		writel(reg, dp->reg_base + ANALOGIX_DP_PLL_CTL);
+-	} else {
+-		reg = readl(dp->reg_base + ANALOGIX_DP_PLL_CTL);
+-		reg &= ~DP_PLL_PD;
+-		writel(reg, dp->reg_base + ANALOGIX_DP_PLL_CTL);
++	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
++		pd_addr = ANALOGIX_DP_PD;
++		mask = RK_PLL_PD;
+ 	}
++
++	reg = readl(dp->reg_base + pd_addr);
++	if (enable)
++		reg |= mask;
++	else
++		reg &= ~mask;
++	writel(reg, dp->reg_base + pd_addr);
+ }
+ 
+ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
+-- 
+2.14.1
