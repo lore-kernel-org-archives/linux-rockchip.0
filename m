@@ -1,70 +1,91 @@
 From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v2 03/43] drm/rockchip: Respect page offset for PRIME mmap
- calls
-Date: Tue, 30 Jan 2018 10:42:41 +0800
-Message-ID: <8c3724a2-868d-8dad-6ba7-a66e30cc94f0@rock-chips.com>
+Subject: Re: [PATCH v2 10/43] drm/rockchip: add mutex vop lock
+Date: Tue, 30 Jan 2018 10:55:36 +0800
+Message-ID: <0545286d-cbd7-d24b-bb83-315029a20836@rock-chips.com>
 References: <20180126131710.7622-1-thierry.escande@collabora.com>
- <20180126131710.7622-4-thierry.escande@collabora.com>
+ <20180126131710.7622-11-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180126131710.7622-4-thierry.escande@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180126131710.7622-11-thierry.escande@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>
-Cc: Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, =?UTF-8?Q?=c3=98rjan_Eide?= <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>
+Cc: Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, =?UTF-8?Q?=c3=98rjan_Eide?= <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-在 2018/1/26 21:16, Thierry Escande 写道:
-> From: Ørjan Eide <orjan.eide@arm.com>
-> 
-> When mapping external DMA-bufs through the PRIME mmap call, we might be
-> given an offset which has to be respected. However for the internal DRM
-> GEM mmap path, we have to ignore the fake mmap offset used to identify
-> the buffer only. Currently the code always zeroes out vma->vm_pgoff,
-> which breaks the former.
-> 
-> This patch fixes the problem by moving the vm_pgoff assignment to a
-> function that is used only for GEM mmap path, so that the PRIME path
-> retains the original offset.
-> 
-> Cc: Daniel Kurtz <djkurtz@chromium.org>
-> Signed-off-by: Ørjan Eide <orjan.eide@arm.com>
-> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 7 ++++++-
->   1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> index 5d52020deca1..074db7a92809 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -264,7 +264,6 @@ static int rockchip_drm_gem_object_mmap(struct drm_gem_object *obj,
->   	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
->   	 */
->   	vma->vm_flags &= ~VM_PFNMAP;
-> -	vma->vm_pgoff = 0;
->   
->   	if (rk_obj->pages)
->   		ret = rockchip_drm_gem_object_mmap_iommu(obj, vma);
-> @@ -299,6 +298,12 @@ int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma)
->   	if (ret)
->   		return ret;
->   
-> +	/*
-> +	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
-> +	 * whole buffer from the start.
-> +	 */
-> +	vma->vm_pgoff = 0;
-> +
->   	obj = vma->vm_private_data;
->   
->   	return rockchip_drm_gem_object_mmap(obj, vma);
-> 
-
-Reviewed-by: Sandy huang <hjc@rock-chips.com>
+CgrlnKggMjAxOC8xLzI2IDIxOjE2LCBUaGllcnJ5IEVzY2FuZGUg5YaZ6YGTOgo+IEZyb206IHph
+aW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IEFkZCBhIGxvY2sgdG8gdm9wIHRvIGF2
+b2lkIGRpc2FibGluZyB0aGUgY3J0YyB3aGlsZSB3YWl0aW5nIGZvciBhIGxpbmUKPiBmbGFnIHdo
+aWxlIGVuYWJsaW5nIHBzci4gSWYgd2UgZGlzYWJsZSBpbiB0aGUgbWlkZGxlIG9mIHdhaXRpbmcg
+Zm9yIHRoZQo+IGxpbmUgZmxhZywgd2UnbGwgZW5kIHVwIHRpbWluZyBvdXQgb3Igd29yc2UuCj4g
+Cj4gU2lnbmVkLW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVk
+LW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gU2lnbmVkLW9mZi1i
+eTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3JhLmNvbT4KPiAtLS0K
+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAzMCArKysr
+KysrKysrKysrKysrKysrKysrKy0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDI0IGluc2VydGlv
+bnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggMzEzMDQ0MzQ4NDdhLi5iZjRiMWEyZjNmYTQgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTE3
+LDYgKzExNyw4IEBAIHN0cnVjdCB2b3Agewo+ICAgCXNwaW5sb2NrX3QgcmVnX2xvY2s7Cj4gICAJ
+LyogbG9jayB2b3AgaXJxIHJlZyAqLwo+ICAgCXNwaW5sb2NrX3QgaXJxX2xvY2s7Cj4gKwkvKiBw
+cm90ZWN0cyBjcnRjIGVuYWJsZS9kaXNhYmxlICovCj4gKwlzdHJ1Y3QgbXV0ZXggdm9wX2xvY2s7
+Cj4gICAKPiAgIAl1bnNpZ25lZCBpbnQgaXJxOwo+ICAgCj4gQEAgLTU3Nyw2ICs1NzksNyBAQCBz
+dGF0aWMgdm9pZCB2b3BfY3J0Y19hdG9taWNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
+Cj4gICAKPiAgIAlXQVJOX09OKHZvcC0+ZXZlbnQpOwo+ICAgCj4gKwltdXRleF9sb2NrKCZ2b3At
+PnZvcF9sb2NrKTsKPiAgIAlkcm1fY3J0Y192Ymxhbmtfb2ZmKGNydGMpOwo+ICAgCj4gICAJLyoK
+PiBAQCAtNjEyLDYgKzYxNSw3IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19kaXNhYmxl
+KHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgIAljbGtfZGlzYWJsZSh2b3AtPmFjbGspOwo+ICAg
+CWNsa19kaXNhYmxlKHZvcC0+aGNsayk7Cj4gICAJcG1fcnVudGltZV9wdXQodm9wLT5kZXYpOwo+
+ICsJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZvcF9sb2NrKTsKPiAgIAo+ICAgCWlmIChjcnRjLT5zdGF0
+ZS0+ZXZlbnQgJiYgIWNydGMtPnN0YXRlLT5hY3RpdmUpIHsKPiAgIAkJc3Bpbl9sb2NrX2lycSgm
+Y3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKPiBAQCAtODgyLDEwICs4ODYsMTMgQEAgc3RhdGljIHZv
+aWQgdm9wX2NydGNfYXRvbWljX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gICAJdWlu
+dDMyX3QgcGluX3BvbCwgdmFsOwo+ICAgCWludCByZXQ7Cj4gICAKPiArCW11dGV4X2xvY2soJnZv
+cC0+dm9wX2xvY2spOwo+ICsKPiAgIAlXQVJOX09OKHZvcC0+ZXZlbnQpOwo+ICAgCj4gICAJcmV0
+ID0gdm9wX2VuYWJsZShjcnRjKTsKPiAgIAlpZiAocmV0KSB7Cj4gKwkJbXV0ZXhfdW5sb2NrKCZ2
+b3AtPnZvcF9sb2NrKTsKPiAgIAkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIkZhaWxlZCB0byBl
+bmFibGUgdm9wICglZClcbiIsIHJldCk7Cj4gICAJCXJldHVybjsKPiAgIAl9Cj4gQEAgLTk0OSw2
+ICs5NTYsNyBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19hdG9taWNfZW5hYmxlKHN0cnVjdCBkcm1f
+Y3J0YyAqY3J0YywKPiAgIAljbGtfc2V0X3JhdGUodm9wLT5kY2xrLCBhZGp1c3RlZF9tb2RlLT5j
+bG9jayAqIDEwMDApOwo+ICAgCj4gICAJVk9QX1JFR19TRVQodm9wLCBjb21tb24sIHN0YW5kYnks
+IDApOwo+ICsJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZvcF9sb2NrKTsKPiAgIH0KPiAgIAo+ICAgc3Rh
+dGljIGJvb2wgdm9wX2ZzX2lycV9pc19wZW5kaW5nKHN0cnVjdCB2b3AgKnZvcCkKPiBAQCAtMTQ4
+NywxNSArMTQ5NSwyMSBAQCBpbnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoc3RydWN0IGRy
+bV9jcnRjICpjcnRjLCB1bnNpZ25lZCBpbnQgbXN0aW1lb3V0KQo+ICAgewo+ICAgCXN0cnVjdCB2
+b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPiAgIAl1bnNpZ25lZCBsb25nIGppZmZpZXNfbGVmdDsK
+PiArCWludCByZXQgPSAwOwo+ICAgCj4gICAJaWYgKCFjcnRjIHx8ICF2b3AtPmlzX2VuYWJsZWQp
+Cj4gICAJCXJldHVybiAtRU5PREVWOwo+ICAgCj4gLQlpZiAobXN0aW1lb3V0IDw9IDApCj4gLQkJ
+cmV0dXJuIC1FSU5WQUw7Cj4gKwltdXRleF9sb2NrKCZ2b3AtPnZvcF9sb2NrKTsKPiArCWlmICht
+c3RpbWVvdXQgPD0gMCkgewo+ICsJCXJldCA9IC1FSU5WQUw7Cj4gKwkJZ290byBvdXQ7Cj4gKwl9
+Cj4gICAKPiAtCWlmICh2b3BfbGluZV9mbGFnX2lycV9pc19lbmFibGVkKHZvcCkpCj4gLQkJcmV0
+dXJuIC1FQlVTWTsKPiArCWlmICh2b3BfbGluZV9mbGFnX2lycV9pc19lbmFibGVkKHZvcCkpIHsK
+PiArCQlyZXQgPSAtRUJVU1k7Cj4gKwkJZ290byBvdXQ7Cj4gKwl9Cj4gICAKPiAgIAlyZWluaXRf
+Y29tcGxldGlvbigmdm9wLT5saW5lX2ZsYWdfY29tcGxldGlvbik7Cj4gICAJdm9wX2xpbmVfZmxh
+Z19pcnFfZW5hYmxlKHZvcCk7Cj4gQEAgLTE1MDYsMTAgKzE1MjAsMTMgQEAgaW50IHJvY2tjaGlw
+X2RybV93YWl0X3ZhY3RfZW5kKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywgdW5zaWduZWQgaW50IG1z
+dGltZW91dCkKPiAgIAo+ICAgCWlmIChqaWZmaWVzX2xlZnQgPT0gMCkgewo+ICAgCQlEUk1fREVW
+X0VSUk9SKHZvcC0+ZGV2LCAiVGltZW91dCB3YWl0aW5nIGZvciBJUlFcbiIpOwo+IC0JCXJldHVy
+biAtRVRJTUVET1VUOwo+ICsJCXJldCA9IC1FVElNRURPVVQ7Cj4gKwkJZ290byBvdXQ7Cj4gICAJ
+fQo+ICAgCj4gLQlyZXR1cm4gMDsKPiArb3V0Ogo+ICsJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZvcF9s
+b2NrKTsKPiArCXJldHVybiByZXQ7Cj4gICB9Cj4gICBFWFBPUlRfU1lNQk9MKHJvY2tjaGlwX2Ry
+bV93YWl0X3ZhY3RfZW5kKTsKPiAgIAo+IEBAIC0xNTU5LDYgKzE1NzYsNyBAQCBzdGF0aWMgaW50
+IHZvcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lk
+ICpkYXRhKQo+ICAgCj4gICAJc3Bpbl9sb2NrX2luaXQoJnZvcC0+cmVnX2xvY2spOwo+ICAgCXNw
+aW5fbG9ja19pbml0KCZ2b3AtPmlycV9sb2NrKTsKPiArCW11dGV4X2luaXQoJnZvcC0+dm9wX2xv
+Y2spOwo+ICAgCj4gICAJcmV0ID0gZGV2bV9yZXF1ZXN0X2lycShkZXYsIHZvcC0+aXJxLCB2b3Bf
+aXNyLAo+ICAgCQkJICAgICAgIElSUUZfU0hBUkVELCBkZXZfbmFtZShkZXYpLCB2b3ApOwo+IAoK
+ClJldmlld2VkLWJ5OiBTYW5keSBodWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
