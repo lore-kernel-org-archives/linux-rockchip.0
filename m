@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 18/43] drm/bridge: analogix_dp: Set PD_INC_BG first when
- powering up edp phy
-Date: Tue, 30 Jan 2018 21:28:48 +0100
-Message-ID: <20180130202913.28724-19-thierry.escande@collabora.com>
+Subject: [PATCH v3 36/43] drm/rockchip: analogix_dp: Do not call Analogix code
+ before bind
+Date: Tue, 30 Jan 2018 21:29:06 +0100
+Message-ID: <20180130202913.28724-37-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,42 +23,59 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpGb2xsb3dpbmcgdGhlIGNvcnJl
-Y3QgcG93ZXIgdXAgc2VxdWVuY2U6CmRwX3BkPWZmID0+IGRwX3BkPTdmID0+IHdhaXQgMTB1cyA9
-PiBkcF9wZD0wMAoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3Jn
-PgpTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9m
-Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFRo
-aWVycnkgRXNjYW5kZSA8dGhpZXJyeS5lc2NhbmRlQGNvbGxhYm9yYS5jb20+Ci0tLQogZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyB8IDEwICsrKysrKysr
-LS0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmggfCAg
-MyArKysKIDIgZmlsZXMgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkK
-CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcu
-YwppbmRleCBiNDdjNWFmNDM1NjAuLmJiNzJmOGIwZTYwMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYworKysgYi9kcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCkBAIC0zMjEsMTAgKzMyMSwx
-NiBAQCB2b2lkIGFuYWxvZ2l4X2RwX3NldF9hbmFsb2dfcG93ZXJfZG93bihzdHJ1Y3QgYW5hbG9n
-aXhfZHBfZGV2aWNlICpkcCwKIAkJYnJlYWs7CiAJY2FzZSBQT1dFUl9BTEw6CiAJCWlmIChlbmFi
-bGUpIHsKLQkJCXJlZyA9IERQX1BIWV9QRCB8IEFVWF9QRCB8IENIM19QRCB8IENIMl9QRCB8Ci0J
-CQkJQ0gxX1BEIHwgQ0gwX1BEOworCQkJcmVnID0gRFBfQUxMX1BEOwogCQkJd3JpdGVsKHJlZywg
-ZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwogCQl9IGVsc2UgeworCQkJcmVnID0gRFBfQUxM
-X1BEOworCQkJd3JpdGVsKHJlZywgZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOworCQkJdXNs
-ZWVwX3JhbmdlKDEwLCAxNSk7CisJCQlyZWcgJj0gfkRQX0lOQ19CRzsKKwkJCXdyaXRlbChyZWcs
-IGRwLT5yZWdfYmFzZSArIHBoeV9wZF9hZGRyKTsKKwkJCXVzbGVlcF9yYW5nZSgxMCwgMTUpOwor
-CiAJCQl3cml0ZWwoMHgwMCwgZHAtPnJlZ19iYXNlICsgcGh5X3BkX2FkZHIpOwogCQl9CiAJCWJy
-ZWFrOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9yZWcuaCBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-cmVnLmgKaW5kZXggNDAyMDBjNjUyNTMzLi45NjAyNjY4NjY5ZjQgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmgKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuaApAQCAtMzQyLDEyICsz
-NDIsMTUgQEAKICNkZWZpbmUgRFBfUExMX1JFRl9CSVRfMV8yNTAwVgkJCSgweDcgPDwgMCkKIAog
-LyogQU5BTE9HSVhfRFBfUEhZX1BEICovCisjZGVmaW5lIERQX0lOQ19CRwkJCQkoMHgxIDw8IDcp
-CisjZGVmaW5lIERQX0VYUF9CRwkJCQkoMHgxIDw8IDYpCiAjZGVmaW5lIERQX1BIWV9QRAkJCQko
-MHgxIDw8IDUpCiAjZGVmaW5lIEFVWF9QRAkJCQkJKDB4MSA8PCA0KQogI2RlZmluZSBDSDNfUEQJ
-CQkJCSgweDEgPDwgMykKICNkZWZpbmUgQ0gyX1BECQkJCQkoMHgxIDw8IDIpCiAjZGVmaW5lIENI
-MV9QRAkJCQkJKDB4MSA8PCAxKQogI2RlZmluZSBDSDBfUEQJCQkJCSgweDEgPDwgMCkKKyNkZWZp
-bmUgRFBfQUxMX1BECQkJCSgweGZmKQogCiAvKiBBTkFMT0dJWF9EUF9QSFlfVEVTVCAqLwogI2Rl
-ZmluZSBNQUNST19SU1QJCQkJKDB4MSA8PCA1KQotLSAKMi4xNC4xCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Driver callbacks, such as system suspend or resume can be called any
+time, specifically they can be called before the component bind
+callback. Let's use dp->adp pointer as a safeguard and skip calling
+Analogix entry points if it is an ERR_PTR().
+
+Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 23317a2269e1..6d45d62466b3 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -368,6 +368,8 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
+ 	analogix_dp_unbind(dp->adp);
+ 	rockchip_drm_psr_unregister(&dp->encoder);
+ 	dp->encoder.funcs->destroy(&dp->encoder);
++
++	dp->adp = ERR_PTR(-ENODEV);
+ }
+ 
+ static const struct component_ops rockchip_dp_component_ops = {
+@@ -391,6 +393,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	dp->dev = dev;
++	dp->adp = ERR_PTR(-ENODEV);
+ 	dp->plat_data.panel = panel;
+ 
+ 	ret = rockchip_dp_of_probe(dp);
+@@ -414,6 +417,9 @@ static int rockchip_dp_suspend(struct device *dev)
+ {
+ 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+ 
++	if (IS_ERR(dp->adp))
++		return 0;
++
+ 	return analogix_dp_suspend(dp->adp);
+ }
+ 
+@@ -421,6 +427,9 @@ static int rockchip_dp_resume(struct device *dev)
+ {
+ 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+ 
++	if (IS_ERR(dp->adp))
++		return 0;
++
+ 	return analogix_dp_resume(dp->adp);
+ }
+ #endif
+-- 
+2.14.1
