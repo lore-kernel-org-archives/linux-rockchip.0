@@ -1,60 +1,95 @@
-From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 01/43] drm/rockchip: Get rid of unnecessary struct fields
-Date: Tue, 30 Jan 2018 21:28:31 +0100
-Message-ID: <20180130202913.28724-2-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v3 41/43] drm/rockchip: Disable PSR from reboot notifier
+Date: Tue, 30 Jan 2018 21:29:11 +0100
+Message-ID: <20180130202913.28724-42-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset = "utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180130202913.28724-1-thierry.escande@collabora.com>
 Content-Transfert-Encoding: 8bit
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Tomasz Figa <tfiga@chromium.org>
 
-This patch removes unused fields from vop structure.
+It looks like the driver subsystem detaches devices from power domains
+at shutdown without consent of the drivers. This means that we might have
+our power domain turned off behind our back and the only way to avoid
+problems is to stop doing any hardware programming at some point before
+the power is cut. A reboot notifier, despite being a misnomer and
+handling shutdowns as well, is a good place to do it.
 
-Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index ba7505292b78..7a137bc5708c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -95,9 +95,6 @@ struct vop {
- 	struct drm_device *drm_dev;
- 	bool is_enabled;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index e7e16d92d5a1..1bf5cba9a64d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -13,6 +13,7 @@
+  */
  
--	/* mutex vsync_ work */
--	struct mutex vsync_mutex;
--	bool vsync_work_pending;
- 	struct completion dsp_hold_completion;
+ #include <linux/input.h>
++#include <linux/reboot.h>
  
- 	/* protected by dev->event_lock */
-@@ -1567,8 +1564,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 	spin_lock_init(&vop->reg_lock);
- 	spin_lock_init(&vop->irq_lock);
+ #include <drm/drmP.h>
+ #include <drm/drm_crtc_helper.h>
+@@ -33,6 +34,7 @@ struct psr_drv {
+ 	struct delayed_work	flush_work;
+ 	struct work_struct	disable_work;
  
--	mutex_init(&vop->vsync_mutex);
--
- 	ret = devm_request_irq(dev, vop->irq, vop_isr,
- 			       IRQF_SHARED, dev_name(dev), vop);
- 	if (ret)
++	struct notifier_block	reboot_nb;
+ 	struct input_handler    input_handler;
+ 
+ 	int (*set)(struct drm_encoder *encoder, bool enable);
+@@ -309,6 +311,24 @@ static const struct input_device_id psr_ids[] = {
+ 	{ },
+ };
+ 
++static int rockchip_drm_psr_reboot_notifier(struct notifier_block *nb,
++					    unsigned long action, void *data)
++{
++	struct psr_drv *psr = container_of(nb, struct psr_drv, reboot_nb);
++
++	/*
++	 * It looks like the driver subsystem detaches devices from power
++	 * domains at shutdown without consent of the drivers. This means
++	 * that we might have our power domain turned off behind our back
++	 * and the only way to avoid problems is to stop doing any hardware
++	 * programming after this point, which is achieved by the unbalanced
++	 * call below.
++	 */
++	rockchip_drm_psr_inhibit_get(psr->encoder);
++
++	return 0;
++}
++
+ /**
+  * rockchip_drm_psr_register - register encoder to psr driver
+  * @encoder: encoder that obtain the PSR function
+@@ -361,6 +381,9 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ 	if (error)
+ 		goto err1;
+ 
++	psr->reboot_nb.notifier_call = rockchip_drm_psr_reboot_notifier;
++	register_reboot_notifier(&psr->reboot_nb);
++
+ 	mutex_lock(&drm_drv->psr_list_lock);
+ 	list_add_tail(&psr->list, &drm_drv->psr_list);
+ 	mutex_unlock(&drm_drv->psr_list_lock);
+@@ -403,6 +426,7 @@ void rockchip_drm_psr_unregister(struct drm_encoder *encoder)
+ 			WARN_ON(psr->inhibit_count != 1);
+ 
+ 			list_del(&psr->list);
++			unregister_reboot_notifier(&psr->reboot_nb);
+ 			input_unregister_handler(&psr->input_handler);
+ 			kfree(psr->input_handler.name);
+ 			kfree(psr);
 -- 
 2.14.1
