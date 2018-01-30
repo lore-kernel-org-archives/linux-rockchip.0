@@ -1,7 +1,7 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v3 10/43] drm/rockchip: add mutex vop lock
-Date: Tue, 30 Jan 2018 21:28:40 +0100
-Message-ID: <20180130202913.28724-11-thierry.escande@collabora.com>
+Subject: [PATCH v3 25/43] drm/rockchip: Restore psr->state when enable/disable psr failed
+Date: Tue, 30 Jan 2018 21:28:55 +0100
+Message-ID: <20180130202913.28724-26-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset = "utf-8"
@@ -15,117 +15,139 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: zain wang <wzz@rock-chips.com>
 
-Add a lock to vop to avoid disabling the crtc while waiting for a line
-flag while enabling psr. If we disable in the middle of waiting for the
-line flag, we'll end up timing out or worse.
+If we failed disable psr, it would hang the display until next psr
+cycle coming. So we should restore psr->state when it failed.
 
+Cc: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: zain wang <wzz@rock-chips.com>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
 Signed-off-by: Sean Paul <seanpaul@chromium.org>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 30 +++++++++++++++++++++++------
- 1 file changed, 24 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  4 +++-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 10 +++++-----
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c        | 20 +++++++++++++-------
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h        |  2 +-
+ 4 files changed, 22 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 31304434847a..bf4b1a2f3fa4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -117,6 +117,8 @@ struct vop {
- 	spinlock_t reg_lock;
- 	/* lock vop irq reg */
- 	spinlock_t irq_lock;
-+	/* protects crtc enable/disable */
-+	struct mutex vop_lock;
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 082b4e024052..e925c62eaadb 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -153,8 +153,10 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
+ 	psr_vsc.DB1 = 0;
  
- 	unsigned int irq;
+ 	ret = drm_dp_dpcd_writeb(&dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+-	if (ret != 1)
++	if (ret != 1) {
+ 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
++		return ret;
++	}
  
-@@ -577,6 +579,7 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
+ 	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
+ }
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 3e8bf79bea58..8c884f9ce713 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -77,13 +77,13 @@ struct rockchip_dp_device {
+ 	struct analogix_dp_plat_data plat_data;
+ };
  
- 	WARN_ON(vop->event);
- 
-+	mutex_lock(&vop->vop_lock);
- 	drm_crtc_vblank_off(crtc);
- 
- 	/*
-@@ -612,6 +615,7 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 	clk_disable(vop->aclk);
- 	clk_disable(vop->hclk);
- 	pm_runtime_put(vop->dev);
-+	mutex_unlock(&vop->vop_lock);
- 
- 	if (crtc->state->event && !crtc->state->active) {
- 		spin_lock_irq(&crtc->dev->event_lock);
-@@ -882,10 +886,13 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	uint32_t pin_pol, val;
+-static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
++static int analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
+ {
+ 	struct rockchip_dp_device *dp = to_dp(encoder);
  	int ret;
  
-+	mutex_lock(&vop->vop_lock);
-+
- 	WARN_ON(vop->event);
+ 	if (!analogix_dp_psr_enabled(dp->adp))
+-		return;
++		return 0;
  
- 	ret = vop_enable(crtc);
+ 	DRM_DEV_DEBUG(dp->dev, "%s PSR...\n", enabled ? "Entry" : "Exit");
+ 
+@@ -91,13 +91,13 @@ static void analogix_dp_psr_set(struct drm_encoder *encoder, bool enabled)
+ 					 PSR_WAIT_LINE_FLAG_TIMEOUT_MS);
  	if (ret) {
-+		mutex_unlock(&vop->vop_lock);
- 		DRM_DEV_ERROR(vop->dev, "Failed to enable vop (%d)\n", ret);
+ 		DRM_DEV_ERROR(dp->dev, "line flag interrupt did not arrive\n");
+-		return;
++		return -ETIMEDOUT;
+ 	}
+ 
+ 	if (enabled)
+-		analogix_dp_enable_psr(dp->adp);
++		return analogix_dp_enable_psr(dp->adp);
+ 	else
+-		analogix_dp_disable_psr(dp->adp);
++		return analogix_dp_disable_psr(dp->adp);
+ }
+ 
+ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index b339ca943139..9376f4396b6b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -36,7 +36,7 @@ struct psr_drv {
+ 
+ 	struct delayed_work	flush_work;
+ 
+-	void (*set)(struct drm_encoder *encoder, bool enable);
++	int (*set)(struct drm_encoder *encoder, bool enable);
+ };
+ 
+ static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
+@@ -93,19 +93,25 @@ static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
  		return;
  	}
-@@ -949,6 +956,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
  
- 	VOP_REG_SET(vop, common, standby, 0);
-+	mutex_unlock(&vop->vop_lock);
- }
+-	psr->state = state;
+-
+ 	/* Actually commit the state change to hardware */
+-	switch (psr->state) {
++	switch (state) {
+ 	case PSR_ENABLE:
+-		psr->set(psr->encoder, true);
++		if (psr->set(psr->encoder, true))
++			return;
+ 		break;
  
- static bool vop_fs_irq_is_pending(struct vop *vop)
-@@ -1487,15 +1495,21 @@ int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
- {
- 	struct vop *vop = to_vop(crtc);
- 	unsigned long jiffies_left;
-+	int ret = 0;
- 
- 	if (!crtc || !vop->is_enabled)
- 		return -ENODEV;
- 
--	if (mstimeout <= 0)
--		return -EINVAL;
-+	mutex_lock(&vop->vop_lock);
-+	if (mstimeout <= 0) {
-+		ret = -EINVAL;
-+		goto out;
-+	}
- 
--	if (vop_line_flag_irq_is_enabled(vop))
--		return -EBUSY;
-+	if (vop_line_flag_irq_is_enabled(vop)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
- 
- 	reinit_completion(&vop->line_flag_completion);
- 	vop_line_flag_irq_enable(vop);
-@@ -1506,10 +1520,13 @@ int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout)
- 
- 	if (jiffies_left == 0) {
- 		DRM_DEV_ERROR(vop->dev, "Timeout waiting for IRQ\n");
--		return -ETIMEDOUT;
-+		ret = -ETIMEDOUT;
-+		goto out;
+ 	case PSR_DISABLE:
+ 	case PSR_FLUSH:
+-		psr->set(psr->encoder, false);
++		if (psr->set(psr->encoder, false))
++			return;
+ 		break;
++
++	default:
++		pr_err("%s: Unknown state %d\n", __func__, state);
++		return;
  	}
- 
--	return 0;
-+out:
-+	mutex_unlock(&vop->vop_lock);
-+	return ret;
++
++	psr->state = state;
  }
- EXPORT_SYMBOL(rockchip_drm_wait_vact_end);
  
-@@ -1559,6 +1576,7 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ static void psr_set_state(struct psr_drv *psr, enum psr_state state)
+@@ -229,7 +235,7 @@ EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
+  * Zero on success, negative errno on failure.
+  */
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+-			void (*psr_set)(struct drm_encoder *, bool enable))
++			int (*psr_set)(struct drm_encoder *, bool enable))
+ {
+ 	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
+ 	struct psr_drv *psr;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+index b1ea0155e57c..06537ee27565 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+@@ -22,7 +22,7 @@ int rockchip_drm_psr_activate(struct drm_encoder *encoder);
+ int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
  
- 	spin_lock_init(&vop->reg_lock);
- 	spin_lock_init(&vop->irq_lock);
-+	mutex_init(&vop->vop_lock);
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+-			void (*psr_set)(struct drm_encoder *, bool enable));
++			int (*psr_set)(struct drm_encoder *, bool enable));
+ void rockchip_drm_psr_unregister(struct drm_encoder *encoder);
  
- 	ret = devm_request_irq(dev, vop->irq, vop_isr,
- 			       IRQF_SHARED, dev_name(dev), vop);
+ #endif /* __ROCKCHIP_DRM_PSR__ */
 -- 
 2.14.1
