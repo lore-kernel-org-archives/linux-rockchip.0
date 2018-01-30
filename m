@@ -1,93 +1,148 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH v5 1/5] pwm-backlight: enable/disable the PWM before/after
- LCD enable toggle.
-Date: Tue, 30 Jan 2018 10:30:36 +0100
-Message-ID: <CAFqH_531DL3DYp4kn_Gjxprp7NNoAnP4MMD4-PRN=yJ+mXJNnA@mail.gmail.com>
-References: <20171201120651.29633-1-enric.balletbo@collabora.com>
+From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: enable I2S codec on rk3399-puma-haikou
+Date: Tue, 30 Jan 2018 11:15:31 +0100
+Message-ID: <20180130101531.41411-1-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <20171201120651.29633-1-enric.balletbo@collabora.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Enable the NXP SGTL5000 audio codec on the RK3399-Q7 EVK baseboard
+Haikou.
 
-2017-12-01 13:06 GMT+01:00 Enric Balletbo i Serra
-<enric.balletbo@collabora.com>:
-> Before this patch the enable signal was set before the PWM signal and
-> vice-versa on power off. This sequence is wrong, at least, it is on
-> the different panels datasheets that I checked, so I inverted the sequence
-> to follow the specs.
->
-> For reference the following panels have the mentioned sequence:
->   - N133HSE-EA1 (Innolux)
->   - N116BGE (Innolux)
->   - N156BGE-L21 (Innolux)
->   - B101EAN0 (Auo)
->   - B101AW03 (Auo)
->   - LTN101NT05 (Samsung)
->   - CLAA101WA01A (Chunghwa)
->
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-> Acked-by: Jingoo Han <jingoohan1@gmail.com>
-> ---
-> Changes since v4:
->  - Rebase on top of mainline.
->  - Add the acks from Daniel Thompson and Jingoo Han.
-> Changes since v3:
->  - List the part numbers for the panel checked (Daniel Thompson)
-> Changes since v2:
->  - Add this as a separate patch (Thierry Reding)
-> Changes since v1:
->  - None
->
->  drivers/video/backlight/pwm_bl.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
-> index 1c2289d..698ec68 100644
-> --- a/drivers/video/backlight/pwm_bl.c
-> +++ b/drivers/video/backlight/pwm_bl.c
-> @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
->         if (err < 0)
->                 dev_err(pb->dev, "failed to enable power supply\n");
->
-> +       pwm_enable(pb->pwm);
-> +
->         if (pb->enable_gpio)
->                 gpiod_set_value_cansleep(pb->enable_gpio, 1);
->
-> -       pwm_enable(pb->pwm);
->         pb->enabled = true;
->  }
->
-> @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
->         if (!pb->enabled)
->                 return;
->
-> -       pwm_config(pb->pwm, 0, pb->period);
-> -       pwm_disable(pb->pwm);
-> -
->         if (pb->enable_gpio)
->                 gpiod_set_value_cansleep(pb->enable_gpio, 0);
->
-> +       pwm_config(pb->pwm, 0, pb->period);
-> +       pwm_disable(pb->pwm);
-> +
->         regulator_disable(pb->power_supply);
->         pb->enabled = false;
->  }
-> --
-> 2.9.3
->
+The i2s0_2ch_bus definition is only done in the SoM dtsi as it is
+missing the LRCK_RX pin (that is used otherwise) and therefore not
+generic enough for the SoC dtsi.
 
-A gentle ping, It's been nearly two months since I sent this patchset,
-there is anything else that prevents these patches to land or
-incorporate in linux-next?
+Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 
-Thanks,
- Enric
+---
+
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 49 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 18 ++++++++
+ 2 files changed, 67 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 9a7486058455..060c6be7d7e3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -61,6 +61,22 @@
+ 		};
+ 	};
+ 
++	i2s0_sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,name = "Haikou,I2S-codec";
++		simple-audio-card,mclk-fs = <512>;
++		simple-audio-card,cpu {
++			sound-dai = <&i2s0>;
++			frame-master;
++			bitclock-master;
++		};
++		simple-audio-card,codec {
++			sound-dai = <&sgtl5000>;
++			clocks = <&sgtl5000_clk>;
++		};
++	};
++
+ 	dc_12v: dc-12v {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "dc_12v";
+@@ -89,6 +105,28 @@
+ 		regulator-name = "vcc5v0_otg";
+ 		regulator-always-on;
+ 	};
++
++	vdda_codec: vdda-codec {
++		compatible = "regulator-fixed";
++		regulator-name = "vdda_codec";
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++	};
++
++	vddd_codec: vddd-codec {
++		compatible = "regulator-fixed";
++		regulator-name = "vddd_codec";
++		regulator-boot-on;
++		regulator-min-microvolt = <1600000>;
++		regulator-max-microvolt = <1600000>;
++	};
++
++	sgtl5000_clk: sgtl5000-oscillator  {
++			compatible = "fixed-clock";
++			#clock-cells = <0>;
++			clock-frequency  = <24576000>;
++	};
+ };
+ 
+ &i2c1 {
+@@ -110,6 +148,17 @@
+ &i2c4 {
+ 	status = "okay";
+ 	clock-frequency = <400000>;
++
++	sgtl5000: codec@0a {
++		#sound-dai-cells = <0>;
++		compatible = "fsl,sgtl5000";
++		reg = <0x0a>;
++		VDDA-supply = <&vdda_codec>;
++		VDDIO-supply = <&vdda_codec>;
++		VDDD-supply = <&vddd_codec>;
++		clocks = <&sgtl5000_clk>;
++		status = "okay";
++	};
+ };
+ 
+ &i2c6 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index 1fc5060d7027..a3fcb803ff69 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -435,6 +435,14 @@
+ 	};
+ };
+ 
++&i2s0 {
++	#sound-dai-cells = <0>;
++	status = "okay";
++	pinctrl-0 = <&i2s0_2ch_bus>;
++	rockchip,playback-channels = <2>;
++	rockchip,capture-channels = <2>;
++};
++
+ &io_domains {
+ 	status = "okay";
+ 	bt656-supply = <&vcc_1v8>;
+@@ -461,6 +469,16 @@
+ 		};
+ 	};
+ 
++	i2s0 {
++		i2s0_2ch_bus: i2s0_2ch_bus {
++			rockchip,pins =
++				<RK_GPIO3 RK_PD0 RK_FUNC_1 &pcfg_pull_none>,
++				<RK_GPIO3 RK_PD2 RK_FUNC_1 &pcfg_pull_none>,
++				<RK_GPIO3 RK_PD3 RK_FUNC_1 &pcfg_pull_none>,
++				<RK_GPIO3 RK_PD7 RK_FUNC_1 &pcfg_pull_none>;
++		};
++	};
++
+ 	leds {
+ 		led_pin_module: led-module-gpio {
+ 			rockchip,pins =
+-- 
+2.11.0
