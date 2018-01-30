@@ -1,87 +1,163 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
-	the IOMMU
-Date: Tue, 30 Jan 2018 11:05:15 -0600
-Message-ID: <20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
-	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
+From: Thierry Escande <thierry.escande@collabora.com>
+Subject: [PATCH v3 04/43] drm/bridge: analogix_dp: set psr activate/deactivate when enable/disable bridge
+Date: Tue, 30 Jan 2018 21:28:34 +0100
+Message-ID: <20180130202913.28724-5-thierry.escande@collabora.com>
+References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180124103516.2571-9-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180130202913.28724-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset = "utf-8"
+Content-Transfert-Encoding: 8bit
+Sender: linux-kernel-owner@vger.kernel.org
+To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jan 24, 2018 at 06:35:11PM +0800, Jeffy Chen wrote:
-> From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> Current code relies on master driver enabling necessary clocks before
-> IOMMU is accessed, however there are cases when the IOMMU should be
-> accessed while the master is not running yet, for example allocating
-> V4L2 videobuf2 buffers, which is done by the VB2 framework using DMA
-> mapping API and doesn't engage the master driver at all.
-> 
-> This patch fixes the problem by letting clocks needed for IOMMU
-> operation to be listed in Device Tree and making the driver enable them
-> for the time of accessing the hardware.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> 
-> Changes in v5:
-> Use clk_bulk APIs.
-> 
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  .../devicetree/bindings/iommu/rockchip,iommu.txt   |  8 +++
+From: zain wang <wzz@rock-chips.com>
 
-Please split binding patches to a separate patch.
+There's a race between when bridge_disable and when vop_crtc_disable
+are called. If the flush timer triggers a new psr work between these,
+we will operate eDP without power shutdowned by bridge_disable. In this
+case, moving activate/deactivate to enable/disable bridge to avoid it.
 
->  drivers/iommu/rockchip-iommu.c                     | 74 ++++++++++++++++++++--
->  2 files changed, 76 insertions(+), 6 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-> index 2098f7732264..33dd853359fa 100644
-> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-> @@ -14,6 +14,13 @@ Required properties:
->                      "single-master" device, and needs no additional information
->                      to associate with its master device.  See:
->                      Documentation/devicetree/bindings/iommu/iommu.txt
-> +Optional properties:
-> +- clocks : A list of master clocks requires for the IOMMU to be accessible
-> +           by the host CPU. The number of clocks depends on the master
-> +           block and might as well be zero. See [1] for generic clock
-> +           bindings description.
+Cc: Stéphane Marchesin <marcheu@chromium.org>
+Signed-off-by: zain wang <wzz@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  7 +++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 30 ++++++++++++++++++++-----
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h     |  4 ++--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |  4 ----
+ 4 files changed, 32 insertions(+), 13 deletions(-)
 
-Hardware blocks don't have a variable number of clock connections. This 
-needs to be a defined number of clocks (per compatible string if there 
-are different implementations with different # of clocks).
-
-> +
-> +[1] Documentation/devicetree/bindings/clock/clock-bindings.txt
->  
->  Optional properties:
->  - rockchip,disable-mmu-reset : Don't use the mmu reset operation.
-> @@ -27,5 +34,6 @@ Example:
->  		reg = <0xff940300 0x100>;
->  		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vopl_mmu";
-> +		clocks = <&cru ACLK_VOP1>, <&cru DCLK_VOP1>, <&cru HCLK_VOP1>;
->  		#iommu-cells = <0>;
->  	};
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index eb88c52336a7..7d76ff47028d 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -150,12 +150,17 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
+ 		return ret;
+ 	}
+ 
+-	return 0;
++	return rockchip_drm_psr_activate(&dp->encoder);
+ }
+ 
+ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+ {
+ 	struct rockchip_dp_device *dp = to_dp(plat_data);
++	int ret;
++
++	ret = rockchip_drm_psr_deactivate(&dp->encoder);
++	if (ret != 0)
++		return ret;
+ 
+ 	clk_disable_unprepare(dp->pclk);
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index 3acfd576b7df..b3fb99c5b1fd 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -57,6 +57,24 @@ static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
+ 	return psr;
+ }
+ 
++static struct psr_drv *find_psr_by_encoder(struct drm_encoder *encoder)
++{
++	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
++	struct psr_drv *psr;
++	unsigned long flags;
++
++	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
++	list_for_each_entry(psr, &drm_drv->psr_list, list) {
++		if (psr->encoder == encoder)
++			goto out;
++	}
++	psr = ERR_PTR(-ENODEV);
++
++out:
++	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
++	return psr;
++}
++
+ static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
+ {
+ 	/*
+@@ -115,14 +133,14 @@ static void psr_flush_handler(struct timer_list *t)
+ 
+ /**
+  * rockchip_drm_psr_activate - activate PSR on the given pipe
+- * @crtc: CRTC to obtain the PSR encoder
++ * @encoder: encoder to obtain the PSR encoder
+  *
+  * Returns:
+  * Zero on success, negative errno on failure.
+  */
+-int rockchip_drm_psr_activate(struct drm_crtc *crtc)
++int rockchip_drm_psr_activate(struct drm_encoder *encoder)
+ {
+-	struct psr_drv *psr = find_psr_by_crtc(crtc);
++	struct psr_drv *psr = find_psr_by_encoder(encoder);
+ 	unsigned long flags;
+ 
+ 	if (IS_ERR(psr))
+@@ -138,14 +156,14 @@ EXPORT_SYMBOL(rockchip_drm_psr_activate);
+ 
+ /**
+  * rockchip_drm_psr_deactivate - deactivate PSR on the given pipe
+- * @crtc: CRTC to obtain the PSR encoder
++ * @encoder: encoder to obtain the PSR encoder
+  *
+  * Returns:
+  * Zero on success, negative errno on failure.
+  */
+-int rockchip_drm_psr_deactivate(struct drm_crtc *crtc)
++int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
+ {
+-	struct psr_drv *psr = find_psr_by_crtc(crtc);
++	struct psr_drv *psr = find_psr_by_encoder(encoder);
+ 	unsigned long flags;
+ 
+ 	if (IS_ERR(psr))
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+index b420cf1bf902..b1ea0155e57c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+@@ -18,8 +18,8 @@
+ void rockchip_drm_psr_flush_all(struct drm_device *dev);
+ int rockchip_drm_psr_flush(struct drm_crtc *crtc);
+ 
+-int rockchip_drm_psr_activate(struct drm_crtc *crtc);
+-int rockchip_drm_psr_deactivate(struct drm_crtc *crtc);
++int rockchip_drm_psr_activate(struct drm_encoder *encoder);
++int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
+ 
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ 			void (*psr_set)(struct drm_encoder *, bool enable));
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 7a137bc5708c..31304434847a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -577,8 +577,6 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
+ 
+ 	WARN_ON(vop->event);
+ 
+-	rockchip_drm_psr_deactivate(&vop->crtc);
+-
+ 	drm_crtc_vblank_off(crtc);
+ 
+ 	/*
+@@ -951,8 +949,6 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
+ 
+ 	VOP_REG_SET(vop, common, standby, 0);
+-
+-	rockchip_drm_psr_activate(&vop->crtc);
+ }
+ 
+ static bool vop_fs_irq_is_pending(struct vop *vop)
+-- 
+2.14.1
