@@ -1,91 +1,93 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v2 10/43] drm/rockchip: add mutex vop lock
-Date: Tue, 30 Jan 2018 10:55:36 +0800
-Message-ID: <0545286d-cbd7-d24b-bb83-315029a20836@rock-chips.com>
-References: <20180126131710.7622-1-thierry.escande@collabora.com>
- <20180126131710.7622-11-thierry.escande@collabora.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v5 1/5] pwm-backlight: enable/disable the PWM before/after
+ LCD enable toggle.
+Date: Tue, 30 Jan 2018 10:30:36 +0100
+Message-ID: <CAFqH_531DL3DYp4kn_Gjxprp7NNoAnP4MMD4-PRN=yJ+mXJNnA@mail.gmail.com>
+References: <20171201120651.29633-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180126131710.7622-11-thierry.escande@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>
-Cc: Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, =?UTF-8?Q?=c3=98rjan_Eide?= <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <20171201120651.29633-1-enric.balletbo@collabora.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxOC8xLzI2IDIxOjE2LCBUaGllcnJ5IEVzY2FuZGUg5YaZ6YGTOgo+IEZyb206IHph
-aW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IEFkZCBhIGxvY2sgdG8gdm9wIHRvIGF2
-b2lkIGRpc2FibGluZyB0aGUgY3J0YyB3aGlsZSB3YWl0aW5nIGZvciBhIGxpbmUKPiBmbGFnIHdo
-aWxlIGVuYWJsaW5nIHBzci4gSWYgd2UgZGlzYWJsZSBpbiB0aGUgbWlkZGxlIG9mIHdhaXRpbmcg
-Zm9yIHRoZQo+IGxpbmUgZmxhZywgd2UnbGwgZW5kIHVwIHRpbWluZyBvdXQgb3Igd29yc2UuCj4g
-Cj4gU2lnbmVkLW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVk
-LW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gU2lnbmVkLW9mZi1i
-eTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3JhLmNvbT4KPiAtLS0K
-PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAzMCArKysr
-KysrKysrKysrKysrKysrKysrKy0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDI0IGluc2VydGlv
-bnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggMzEzMDQ0MzQ4NDdhLi5iZjRiMWEyZjNmYTQgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTE3
-LDYgKzExNyw4IEBAIHN0cnVjdCB2b3Agewo+ICAgCXNwaW5sb2NrX3QgcmVnX2xvY2s7Cj4gICAJ
-LyogbG9jayB2b3AgaXJxIHJlZyAqLwo+ICAgCXNwaW5sb2NrX3QgaXJxX2xvY2s7Cj4gKwkvKiBw
-cm90ZWN0cyBjcnRjIGVuYWJsZS9kaXNhYmxlICovCj4gKwlzdHJ1Y3QgbXV0ZXggdm9wX2xvY2s7
-Cj4gICAKPiAgIAl1bnNpZ25lZCBpbnQgaXJxOwo+ICAgCj4gQEAgLTU3Nyw2ICs1NzksNyBAQCBz
-dGF0aWMgdm9pZCB2b3BfY3J0Y19hdG9taWNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
-Cj4gICAKPiAgIAlXQVJOX09OKHZvcC0+ZXZlbnQpOwo+ICAgCj4gKwltdXRleF9sb2NrKCZ2b3At
-PnZvcF9sb2NrKTsKPiAgIAlkcm1fY3J0Y192Ymxhbmtfb2ZmKGNydGMpOwo+ICAgCj4gICAJLyoK
-PiBAQCAtNjEyLDYgKzYxNSw3IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19kaXNhYmxl
-KHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgIAljbGtfZGlzYWJsZSh2b3AtPmFjbGspOwo+ICAg
-CWNsa19kaXNhYmxlKHZvcC0+aGNsayk7Cj4gICAJcG1fcnVudGltZV9wdXQodm9wLT5kZXYpOwo+
-ICsJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZvcF9sb2NrKTsKPiAgIAo+ICAgCWlmIChjcnRjLT5zdGF0
-ZS0+ZXZlbnQgJiYgIWNydGMtPnN0YXRlLT5hY3RpdmUpIHsKPiAgIAkJc3Bpbl9sb2NrX2lycSgm
-Y3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsKPiBAQCAtODgyLDEwICs4ODYsMTMgQEAgc3RhdGljIHZv
-aWQgdm9wX2NydGNfYXRvbWljX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gICAJdWlu
-dDMyX3QgcGluX3BvbCwgdmFsOwo+ICAgCWludCByZXQ7Cj4gICAKPiArCW11dGV4X2xvY2soJnZv
-cC0+dm9wX2xvY2spOwo+ICsKPiAgIAlXQVJOX09OKHZvcC0+ZXZlbnQpOwo+ICAgCj4gICAJcmV0
-ID0gdm9wX2VuYWJsZShjcnRjKTsKPiAgIAlpZiAocmV0KSB7Cj4gKwkJbXV0ZXhfdW5sb2NrKCZ2
-b3AtPnZvcF9sb2NrKTsKPiAgIAkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIkZhaWxlZCB0byBl
-bmFibGUgdm9wICglZClcbiIsIHJldCk7Cj4gICAJCXJldHVybjsKPiAgIAl9Cj4gQEAgLTk0OSw2
-ICs5NTYsNyBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19hdG9taWNfZW5hYmxlKHN0cnVjdCBkcm1f
-Y3J0YyAqY3J0YywKPiAgIAljbGtfc2V0X3JhdGUodm9wLT5kY2xrLCBhZGp1c3RlZF9tb2RlLT5j
-bG9jayAqIDEwMDApOwo+ICAgCj4gICAJVk9QX1JFR19TRVQodm9wLCBjb21tb24sIHN0YW5kYnks
-IDApOwo+ICsJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZvcF9sb2NrKTsKPiAgIH0KPiAgIAo+ICAgc3Rh
-dGljIGJvb2wgdm9wX2ZzX2lycV9pc19wZW5kaW5nKHN0cnVjdCB2b3AgKnZvcCkKPiBAQCAtMTQ4
-NywxNSArMTQ5NSwyMSBAQCBpbnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoc3RydWN0IGRy
-bV9jcnRjICpjcnRjLCB1bnNpZ25lZCBpbnQgbXN0aW1lb3V0KQo+ICAgewo+ICAgCXN0cnVjdCB2
-b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPiAgIAl1bnNpZ25lZCBsb25nIGppZmZpZXNfbGVmdDsK
-PiArCWludCByZXQgPSAwOwo+ICAgCj4gICAJaWYgKCFjcnRjIHx8ICF2b3AtPmlzX2VuYWJsZWQp
-Cj4gICAJCXJldHVybiAtRU5PREVWOwo+ICAgCj4gLQlpZiAobXN0aW1lb3V0IDw9IDApCj4gLQkJ
-cmV0dXJuIC1FSU5WQUw7Cj4gKwltdXRleF9sb2NrKCZ2b3AtPnZvcF9sb2NrKTsKPiArCWlmICht
-c3RpbWVvdXQgPD0gMCkgewo+ICsJCXJldCA9IC1FSU5WQUw7Cj4gKwkJZ290byBvdXQ7Cj4gKwl9
-Cj4gICAKPiAtCWlmICh2b3BfbGluZV9mbGFnX2lycV9pc19lbmFibGVkKHZvcCkpCj4gLQkJcmV0
-dXJuIC1FQlVTWTsKPiArCWlmICh2b3BfbGluZV9mbGFnX2lycV9pc19lbmFibGVkKHZvcCkpIHsK
-PiArCQlyZXQgPSAtRUJVU1k7Cj4gKwkJZ290byBvdXQ7Cj4gKwl9Cj4gICAKPiAgIAlyZWluaXRf
-Y29tcGxldGlvbigmdm9wLT5saW5lX2ZsYWdfY29tcGxldGlvbik7Cj4gICAJdm9wX2xpbmVfZmxh
-Z19pcnFfZW5hYmxlKHZvcCk7Cj4gQEAgLTE1MDYsMTAgKzE1MjAsMTMgQEAgaW50IHJvY2tjaGlw
-X2RybV93YWl0X3ZhY3RfZW5kKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywgdW5zaWduZWQgaW50IG1z
-dGltZW91dCkKPiAgIAo+ICAgCWlmIChqaWZmaWVzX2xlZnQgPT0gMCkgewo+ICAgCQlEUk1fREVW
-X0VSUk9SKHZvcC0+ZGV2LCAiVGltZW91dCB3YWl0aW5nIGZvciBJUlFcbiIpOwo+IC0JCXJldHVy
-biAtRVRJTUVET1VUOwo+ICsJCXJldCA9IC1FVElNRURPVVQ7Cj4gKwkJZ290byBvdXQ7Cj4gICAJ
-fQo+ICAgCj4gLQlyZXR1cm4gMDsKPiArb3V0Ogo+ICsJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZvcF9s
-b2NrKTsKPiArCXJldHVybiByZXQ7Cj4gICB9Cj4gICBFWFBPUlRfU1lNQk9MKHJvY2tjaGlwX2Ry
-bV93YWl0X3ZhY3RfZW5kKTsKPiAgIAo+IEBAIC0xNTU5LDYgKzE1NzYsNyBAQCBzdGF0aWMgaW50
-IHZvcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lk
-ICpkYXRhKQo+ICAgCj4gICAJc3Bpbl9sb2NrX2luaXQoJnZvcC0+cmVnX2xvY2spOwo+ICAgCXNw
-aW5fbG9ja19pbml0KCZ2b3AtPmlycV9sb2NrKTsKPiArCW11dGV4X2luaXQoJnZvcC0+dm9wX2xv
-Y2spOwo+ICAgCj4gICAJcmV0ID0gZGV2bV9yZXF1ZXN0X2lycShkZXYsIHZvcC0+aXJxLCB2b3Bf
-aXNyLAo+ICAgCQkJICAgICAgIElSUUZfU0hBUkVELCBkZXZfbmFtZShkZXYpLCB2b3ApOwo+IAoK
-ClJldmlld2VkLWJ5OiBTYW5keSBodWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+2017-12-01 13:06 GMT+01:00 Enric Balletbo i Serra
+<enric.balletbo@collabora.com>:
+> Before this patch the enable signal was set before the PWM signal and
+> vice-versa on power off. This sequence is wrong, at least, it is on
+> the different panels datasheets that I checked, so I inverted the sequence
+> to follow the specs.
+>
+> For reference the following panels have the mentioned sequence:
+>   - N133HSE-EA1 (Innolux)
+>   - N116BGE (Innolux)
+>   - N156BGE-L21 (Innolux)
+>   - B101EAN0 (Auo)
+>   - B101AW03 (Auo)
+>   - LTN101NT05 (Samsung)
+>   - CLAA101WA01A (Chunghwa)
+>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+> Acked-by: Jingoo Han <jingoohan1@gmail.com>
+> ---
+> Changes since v4:
+>  - Rebase on top of mainline.
+>  - Add the acks from Daniel Thompson and Jingoo Han.
+> Changes since v3:
+>  - List the part numbers for the panel checked (Daniel Thompson)
+> Changes since v2:
+>  - Add this as a separate patch (Thierry Reding)
+> Changes since v1:
+>  - None
+>
+>  drivers/video/backlight/pwm_bl.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
+> index 1c2289d..698ec68 100644
+> --- a/drivers/video/backlight/pwm_bl.c
+> +++ b/drivers/video/backlight/pwm_bl.c
+> @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
+>         if (err < 0)
+>                 dev_err(pb->dev, "failed to enable power supply\n");
+>
+> +       pwm_enable(pb->pwm);
+> +
+>         if (pb->enable_gpio)
+>                 gpiod_set_value_cansleep(pb->enable_gpio, 1);
+>
+> -       pwm_enable(pb->pwm);
+>         pb->enabled = true;
+>  }
+>
+> @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
+>         if (!pb->enabled)
+>                 return;
+>
+> -       pwm_config(pb->pwm, 0, pb->period);
+> -       pwm_disable(pb->pwm);
+> -
+>         if (pb->enable_gpio)
+>                 gpiod_set_value_cansleep(pb->enable_gpio, 0);
+>
+> +       pwm_config(pb->pwm, 0, pb->period);
+> +       pwm_disable(pb->pwm);
+> +
+>         regulator_disable(pb->power_supply);
+>         pb->enabled = false;
+>  }
+> --
+> 2.9.3
+>
+
+A gentle ping, It's been nearly two months since I sent this patchset,
+there is anything else that prevents these patches to land or
+incorporate in linux-next?
+
+Thanks,
+ Enric
