@@ -1,7 +1,7 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 22/43] drm/bridge: analogix_dp: Check dpcd write/read status
-Date: Tue, 30 Jan 2018 21:28:52 +0100
-Message-ID: <20180130202913.28724-23-thierry.escande@collabora.com>
+Subject: [PATCH v3 34/43] drm/rockchip: pre dither down when output bpc is 8bit
+Date: Tue, 30 Jan 2018 21:29:04 +0100
+Message-ID: <20180130202913.28724-35-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,332 +22,101 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-We need to check the dpcd write/read return value to see whether the
-write/read was successful
+Some encoder have a crc verification check, crc check fail if
+input and output data is not equal.
 
-Cc: Kristian H. Kristensen <hoegsberg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+That means encoder input and output need use same color depth,
+vop can output 10bit data to encoder, but some panel only support
+8bit depth, that would make crc check die.
+
+So pre dither down vop data to 8bit if panel's bpc is 8.
+
+Signed-off-by: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+[seanpaul resolved conflict in rockchip_drm_vop.c]
 Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 182 +++++++++++++++------
- 1 file changed, 135 insertions(+), 47 deletions(-)
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h     | 1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 6 ++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h     | 1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c     | 1 +
+ 5 files changed, 11 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 846574d0dcb0..082b4e024052 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -160,80 +160,137 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
- }
- EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
- 
--static bool analogix_dp_detect_sink_psr(struct analogix_dp_device *dp)
-+static int analogix_dp_detect_sink_psr(struct analogix_dp_device *dp)
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 8c884f9ce713..b3f46ed24cdc 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -218,6 +218,7 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
+ 				      struct drm_connector_state *conn_state)
  {
- 	unsigned char psr_version;
-+	int ret;
-+
-+	ret = drm_dp_dpcd_readb(&dp->aux, DP_PSR_SUPPORT, &psr_version);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to get PSR version, disable it\n");
-+		return ret;
-+	}
+ 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
++	struct drm_display_info *di = &conn_state->connector->display_info;
  
--	drm_dp_dpcd_readb(&dp->aux, DP_PSR_SUPPORT, &psr_version);
- 	dev_dbg(dp->dev, "Panel PSR version : %x\n", psr_version);
+ 	/*
+ 	 * The hardware IC designed that VOP must output the RGB10 video
+@@ -229,6 +230,7 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
  
--	return (psr_version & DP_PSR_IS_SUPPORTED) ? true : false;
-+	dp->psr_enable = (psr_version & DP_PSR_IS_SUPPORTED) ? true : false;
-+
-+	return 0;
- }
+ 	s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
+ 	s->output_type = DRM_MODE_CONNECTOR_eDP;
++	s->output_bpc = di->bpc;
  
--static void analogix_dp_enable_sink_psr(struct analogix_dp_device *dp)
-+static int analogix_dp_enable_sink_psr(struct analogix_dp_device *dp)
- {
- 	unsigned char psr_en;
-+	int ret;
- 
- 	/* Disable psr function */
--	drm_dp_dpcd_readb(&dp->aux, DP_PSR_EN_CFG, &psr_en);
-+	ret = drm_dp_dpcd_readb(&dp->aux, DP_PSR_EN_CFG, &psr_en);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to get psr config\n");
-+		goto end;
-+	}
-+
- 	psr_en &= ~DP_PSR_ENABLE;
--	drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
-+	ret = drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to disable panel psr\n");
-+		goto end;
-+	}
- 
- 	/* Main-Link transmitter remains active during PSR active states */
- 	psr_en = DP_PSR_MAIN_LINK_ACTIVE | DP_PSR_CRC_VERIFICATION;
--	drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
-+	ret = drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to set panel psr\n");
-+		goto end;
-+	}
- 
- 	/* Enable psr function */
- 	psr_en = DP_PSR_ENABLE | DP_PSR_MAIN_LINK_ACTIVE |
- 		 DP_PSR_CRC_VERIFICATION;
--	drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
-+	ret = drm_dp_dpcd_writeb(&dp->aux, DP_PSR_EN_CFG, psr_en);
-+	if (ret != 1) {
-+		dev_err(dp->dev, "failed to set panel psr\n");
-+		goto end;
-+	}
- 
- 	analogix_dp_enable_psr_crc(dp);
-+
-+	return 0;
-+end:
-+	dev_err(dp->dev, "enable psr fail, force to disable psr\n");
-+	dp->psr_enable = false;
-+
-+	return ret;
- }
- 
--static void
-+static int
- analogix_dp_enable_rx_to_enhanced_mode(struct analogix_dp_device *dp,
- 				       bool enable)
- {
- 	u8 data;
-+	int ret;
- 
--	drm_dp_dpcd_readb(&dp->aux, DP_LANE_COUNT_SET, &data);
-+	ret = drm_dp_dpcd_readb(&dp->aux, DP_LANE_COUNT_SET, &data);
-+	if (ret != 1)
-+		return ret;
- 
- 	if (enable)
--		drm_dp_dpcd_writeb(&dp->aux, DP_LANE_COUNT_SET,
--				   DP_LANE_COUNT_ENHANCED_FRAME_EN |
--					DPCD_LANE_COUNT_SET(data));
-+		ret = drm_dp_dpcd_writeb(&dp->aux, DP_LANE_COUNT_SET,
-+					 DP_LANE_COUNT_ENHANCED_FRAME_EN |
-+					 DPCD_LANE_COUNT_SET(data));
- 	else
--		drm_dp_dpcd_writeb(&dp->aux, DP_LANE_COUNT_SET,
--				   DPCD_LANE_COUNT_SET(data));
-+		ret = drm_dp_dpcd_writeb(&dp->aux, DP_LANE_COUNT_SET,
-+					 DPCD_LANE_COUNT_SET(data));
-+
-+	return ret < 0 ? ret : 0;
- }
- 
--static int analogix_dp_is_enhanced_mode_available(struct analogix_dp_device *dp)
-+static int analogix_dp_is_enhanced_mode_available(struct analogix_dp_device *dp,
-+						  u8 *enhanced_mode_support)
- {
- 	u8 data;
--	int retval;
-+	int ret;
- 
--	drm_dp_dpcd_readb(&dp->aux, DP_MAX_LANE_COUNT, &data);
--	retval = DPCD_ENHANCED_FRAME_CAP(data);
-+	ret = drm_dp_dpcd_readb(&dp->aux, DP_MAX_LANE_COUNT, &data);
-+	if (ret != 1) {
-+		*enhanced_mode_support = 0;
-+		return ret;
-+	}
- 
--	return retval;
-+	*enhanced_mode_support = DPCD_ENHANCED_FRAME_CAP(data);
-+
-+	return 0;
- }
- 
--static void analogix_dp_set_enhanced_mode(struct analogix_dp_device *dp)
-+static int analogix_dp_set_enhanced_mode(struct analogix_dp_device *dp)
- {
- 	u8 data;
-+	int ret;
-+
-+	ret = analogix_dp_is_enhanced_mode_available(dp, &data);
-+	if (ret < 0)
-+		return ret;
-+
-+	ret = analogix_dp_enable_rx_to_enhanced_mode(dp, data);
-+	if (ret < 0)
-+		return ret;
- 
--	data = analogix_dp_is_enhanced_mode_available(dp);
--	analogix_dp_enable_rx_to_enhanced_mode(dp, data);
- 	analogix_dp_enable_enhanced_mode(dp, data);
-+
-+	return 0;
- }
- 
--static void analogix_dp_training_pattern_dis(struct analogix_dp_device *dp)
-+static int analogix_dp_training_pattern_dis(struct analogix_dp_device *dp)
- {
-+	int ret;
-+
- 	analogix_dp_set_training_pattern(dp, DP_NONE);
- 
--	drm_dp_dpcd_writeb(&dp->aux, DP_TRAINING_PATTERN_SET,
--			   DP_TRAINING_PATTERN_DISABLE);
-+	ret = drm_dp_dpcd_writeb(&dp->aux, DP_TRAINING_PATTERN_SET,
-+				 DP_TRAINING_PATTERN_DISABLE);
-+
-+	return ret < 0 ? ret : 0;
- }
- 
- static void
-@@ -282,7 +339,11 @@ static int analogix_dp_link_start(struct analogix_dp_device *dp)
- 	if (retval < 0)
- 		return retval;
- 	/* set enhanced mode if available */
--	analogix_dp_set_enhanced_mode(dp);
-+	retval = analogix_dp_set_enhanced_mode(dp);
-+	if (retval < 0) {
-+		dev_err(dp->dev, "failed to set enhance mode\n");
-+		return retval;
-+	}
- 
- 	/* Set TX pre-emphasis to minimum */
- 	for (lane = 0; lane < lane_count; lane++)
-@@ -567,10 +628,11 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- 
- 	if (!analogix_dp_channel_eq_ok(link_status, link_align, lane_count)) {
- 		/* traing pattern Set to Normal */
--		analogix_dp_training_pattern_dis(dp);
-+		retval = analogix_dp_training_pattern_dis(dp);
-+		if (retval < 0)
-+			return retval;
- 
- 		dev_info(dp->dev, "Link Training success!\n");
--
- 		analogix_dp_get_link_bandwidth(dp, &reg);
- 		dp->link_train.link_rate = reg;
- 		dev_dbg(dp->dev, "final bandwidth = %.2x\n",
-@@ -807,7 +869,6 @@ static int analogix_dp_train_link(struct analogix_dp_device *dp)
- 
- static int analogix_dp_config_video(struct analogix_dp_device *dp)
- {
--	int retval = 0;
- 	int timeout_loop = 0;
- 	int done_count = 0;
- 
-@@ -865,30 +926,42 @@ static int analogix_dp_config_video(struct analogix_dp_device *dp)
- 		usleep_range(1000, 1001);
- 	}
- 
--	if (retval != 0)
--		dev_err(dp->dev, "Video stream is not detected!\n");
--
--	return retval;
-+	return 0;
- }
- 
--static void analogix_dp_enable_scramble(struct analogix_dp_device *dp,
--					bool enable)
-+static int analogix_dp_enable_scramble(struct analogix_dp_device *dp,
-+				       bool enable)
- {
- 	u8 data;
-+	int ret;
- 
- 	if (enable) {
- 		analogix_dp_enable_scrambling(dp);
- 
--		drm_dp_dpcd_readb(&dp->aux, DP_TRAINING_PATTERN_SET, &data);
--		drm_dp_dpcd_writeb(&dp->aux, DP_TRAINING_PATTERN_SET,
-+		ret = drm_dp_dpcd_readb(&dp->aux, DP_TRAINING_PATTERN_SET,
-+					&data);
-+		if (ret != 1)
-+			return ret;
-+
-+		ret = drm_dp_dpcd_writeb(&dp->aux, DP_TRAINING_PATTERN_SET,
- 				   (u8)(data & ~DP_LINK_SCRAMBLING_DISABLE));
-+		if (ret < 0)
-+			return ret;
- 	} else {
- 		analogix_dp_disable_scrambling(dp);
- 
--		drm_dp_dpcd_readb(&dp->aux, DP_TRAINING_PATTERN_SET, &data);
--		drm_dp_dpcd_writeb(&dp->aux, DP_TRAINING_PATTERN_SET,
-+		ret = drm_dp_dpcd_readb(&dp->aux, DP_TRAINING_PATTERN_SET,
-+					&data);
-+		if (ret != 1)
-+			return ret;
-+
-+		ret = drm_dp_dpcd_writeb(&dp->aux, DP_TRAINING_PATTERN_SET,
- 				   (u8)(data | DP_LINK_SCRAMBLING_DISABLE));
-+		if (ret < 0)
-+			return ret;
- 	}
-+
-+	return 0;
- }
- 
- static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
-@@ -943,23 +1016,36 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
- 		return ret;
- 	}
- 
--	analogix_dp_enable_scramble(dp, 1);
-+	ret = analogix_dp_enable_scramble(dp, 1);
-+	if (ret < 0) {
-+		dev_err(dp->dev, "can not enable scramble\n");
-+		return ret;
-+	}
- 
- 	analogix_dp_init_video(dp);
- 	ret = analogix_dp_config_video(dp);
--	if (ret)
-+	if (ret) {
- 		dev_err(dp->dev, "unable to config video\n");
-+		return ret;
-+	}
- 
- 	/* Safe to enable the panel now */
- 	if (dp->plat_data->panel) {
--		if (drm_panel_enable(dp->plat_data->panel))
-+		ret = drm_panel_enable(dp->plat_data->panel);
-+		if (ret) {
- 			DRM_ERROR("failed to enable the panel\n");
-+			return ret;
-+		}
- 	}
- 
--	dp->psr_enable = analogix_dp_detect_sink_psr(dp);
-+	ret = analogix_dp_detect_sink_psr(dp);
-+	if (ret)
-+		return ret;
-+
- 	if (dp->psr_enable)
--		analogix_dp_enable_sink_psr(dp);
--	return 0;
-+		ret = analogix_dp_enable_sink_psr(dp);
-+
-+	return ret;
- }
- 
- /*
-@@ -1186,8 +1272,10 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 	}
- 
- 	ret = analogix_dp_commit(dp);
--	if (ret)
-+	if (ret) {
-+		DRM_ERROR("dp commit error, ret = %d\n", ret);
- 		goto out_dp_init;
-+	}
- 
- 	enable_irq(dp->irq);
  	return 0;
+ }
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index 9c064a40458b..3a6ebfc26036 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -36,6 +36,7 @@ struct rockchip_crtc_state {
+ 	struct drm_crtc_state base;
+ 	int output_type;
+ 	int output_mode;
++	int output_bpc;
+ };
+ #define to_rockchip_crtc_state(s) \
+ 		container_of(s, struct rockchip_crtc_state, base)
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index bf4b1a2f3fa4..4abb9d72d814 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -937,6 +937,12 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA &&
+ 	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
+ 		s->output_mode = ROCKCHIP_OUT_MODE_P888;
++
++	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
++		VOP_REG_SET(vop, common, pre_dither_down, 1);
++	else
++		VOP_REG_SET(vop, common, pre_dither_down, 0);
++
+ 	VOP_REG_SET(vop, common, out_mode, s->output_mode);
+ 
+ 	VOP_REG_SET(vop, modeset, htotal_pw, (htotal << 16) | hsync_len);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 56bbd2e2a8ef..084acdd0019a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -67,6 +67,7 @@ struct vop_common {
+ 	struct vop_reg cfg_done;
+ 	struct vop_reg dsp_blank;
+ 	struct vop_reg data_blank;
++	struct vop_reg pre_dither_down;
+ 	struct vop_reg dither_down;
+ 	struct vop_reg dither_up;
+ 	struct vop_reg gate_en;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 2e4eea3459fe..08023d3ecb76 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -264,6 +264,7 @@ static const struct vop_common rk3288_common = {
+ 	.standby = VOP_REG_SYNC(RK3288_SYS_CTRL, 0x1, 22),
+ 	.gate_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 23),
+ 	.mmu_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 20),
++	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
+ 	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
+ 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
+ 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
 -- 
 2.14.1
