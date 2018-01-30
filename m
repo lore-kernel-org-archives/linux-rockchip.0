@@ -1,95 +1,60 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v3 43/43] drm/rockchip: psr: Remove flush by CRTC
-Date: Tue, 30 Jan 2018 21:29:13 +0100
-Message-ID: <20180130202913.28724-44-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 01/43] drm/rockchip: Get rid of unnecessary struct fields
+Date: Tue, 30 Jan 2018 21:28:31 +0100
+Message-ID: <20180130202913.28724-2-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset = "utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180130202913.28724-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga@chromium.org>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-It is not used anymore after last changes and it was not even correct to
-begin with as it assumed a 1:1 relation between a CRTC and encoder,
-while in fact a CRTC can be attached to multiple encoders.
+This patch removes unused fields from vop structure.
 
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 35 -----------------------------
- drivers/gpu/drm/rockchip/rockchip_drm_psr.h |  1 -
- 2 files changed, 36 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-index 1bf5cba9a64d..b1988ac758d5 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-@@ -40,23 +40,6 @@ struct psr_drv {
- 	int (*set)(struct drm_encoder *encoder, bool enable);
- };
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index ba7505292b78..7a137bc5708c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -95,9 +95,6 @@ struct vop {
+ 	struct drm_device *drm_dev;
+ 	bool is_enabled;
  
--static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
--{
--	struct rockchip_drm_private *drm_drv = crtc->dev->dev_private;
--	struct psr_drv *psr;
--
--	mutex_lock(&drm_drv->psr_list_lock);
--	list_for_each_entry(psr, &drm_drv->psr_list, list) {
--		if (psr->encoder->crtc == crtc)
--			goto out;
--	}
--	psr = ERR_PTR(-ENODEV);
--
--out:
--	mutex_unlock(&drm_drv->psr_list_lock);
--	return psr;
--}
--
- static struct psr_drv *find_psr_by_encoder(struct drm_encoder *encoder)
- {
- 	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
-@@ -173,24 +156,6 @@ static void rockchip_drm_do_flush(struct psr_drv *psr)
- 	mutex_unlock(&psr->lock);
- }
+-	/* mutex vsync_ work */
+-	struct mutex vsync_mutex;
+-	bool vsync_work_pending;
+ 	struct completion dsp_hold_completion;
  
--/**
-- * rockchip_drm_psr_flush - flush a single pipe
-- * @crtc: CRTC of the pipe to flush
-- *
-- * Returns:
-- * 0 on success, -errno on fail
-- */
--int rockchip_drm_psr_flush(struct drm_crtc *crtc)
--{
--	struct psr_drv *psr = find_psr_by_crtc(crtc);
--	if (IS_ERR(psr))
--		return PTR_ERR(psr);
--
--	rockchip_drm_do_flush(psr);
--	return 0;
--}
--EXPORT_SYMBOL(rockchip_drm_psr_flush);
--
- /**
-  * rockchip_drm_psr_flush_all - force to flush all registered PSR encoders
-  * @dev: drm device
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-index 40e026c14168..860c62494496 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-@@ -16,7 +16,6 @@
- #define __ROCKCHIP_DRM_PSR___
+ 	/* protected by dev->event_lock */
+@@ -1567,8 +1564,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	spin_lock_init(&vop->reg_lock);
+ 	spin_lock_init(&vop->irq_lock);
  
- void rockchip_drm_psr_flush_all(struct drm_device *dev);
--int rockchip_drm_psr_flush(struct drm_crtc *crtc);
- 
- int rockchip_drm_psr_inhibit_put(struct drm_encoder *encoder);
- int rockchip_drm_psr_inhibit_get(struct drm_encoder *encoder);
+-	mutex_init(&vop->vsync_mutex);
+-
+ 	ret = devm_request_irq(dev, vop->irq, vop_isr,
+ 			       IRQF_SHARED, dev_name(dev), vop);
+ 	if (ret)
 -- 
 2.14.1
