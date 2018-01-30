@@ -1,7 +1,7 @@
 From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v3 04/43] drm/bridge: analogix_dp: set psr activate/deactivate when enable/disable bridge
-Date: Tue, 30 Jan 2018 21:28:34 +0100
-Message-ID: <20180130202913.28724-5-thierry.escande@collabora.com>
+Subject: [PATCH v3 12/43] drm/rockchip: Only wait for panel ACK on PSR entry
+Date: Tue, 30 Jan 2018 21:28:42 +0100
+Message-ID: <20180130202913.28724-13-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -17,147 +17,84 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: zain wang <wzz@rock-chips.com>
 
-There's a race between when bridge_disable and when vop_crtc_disable
-are called. If the flush timer triggers a new psr work between these,
-we will operate eDP without power shutdowned by bridge_disable. In this
-case, moving activate/deactivate to enable/disable bridge to avoid it.
+We currently wait for the panel to mirror our intended PSR state
+before continuing on both PSR enter and PSR exit. This is really
+only important to do when we're entering PSR, since we want to
+be sure the last frame we pushed is being served from the panel's
+internal fb before shutting down the soc blocks (vop/analogix).
+
+This patch changes the behavior such that we only wait for the
+panel to complete the PSR transition when we're entering PSR, and
+to skip verification when we're exiting.
 
 Cc: Stéphane Marchesin <marcheu@chromium.org>
+Cc: Sonny Rao <sonnyrao@chromium.org>
 Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 Signed-off-by: Sean Paul <seanpaul@chromium.org>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  7 +++++-
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c     | 30 ++++++++++++++++++++-----
- drivers/gpu/drm/rockchip/rockchip_drm_psr.h     |  4 ++--
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |  4 ----
- 4 files changed, 32 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 5 ++++-
+ 3 files changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index eb88c52336a7..7d76ff47028d 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -150,12 +150,17 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- 		return ret;
- 	}
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index e0775adf80b3..49a05eac41c1 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -125,7 +125,7 @@ int analogix_dp_enable_psr(struct analogix_dp_device *dp)
+ 	psr_vsc.DB0 = 0;
+ 	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
  
--	return 0;
-+	return rockchip_drm_psr_activate(&dp->encoder);
+-	return analogix_dp_send_psr_spd(dp, &psr_vsc);
++	return analogix_dp_send_psr_spd(dp, &psr_vsc, true);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
+ 
+@@ -151,7 +151,7 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
+ 	if (ret != 1)
+ 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
+ 
+-	return analogix_dp_send_psr_spd(dp, &psr_vsc);
++	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 920607d7eb3e..6a96ef7e6934 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -253,7 +253,7 @@ void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
+ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			     struct edp_vsc_psr *vsc);
++			     struct edp_vsc_psr *vsc, bool blocking);
+ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+ 			     struct drm_dp_aux_msg *msg);
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 005a3f7005d2..9df2f3ef000c 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -1007,7 +1007,7 @@ static ssize_t analogix_dp_get_psr_status(struct analogix_dp_device *dp)
  }
  
- static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			     struct edp_vsc_psr *vsc)
++			     struct edp_vsc_psr *vsc, bool blocking)
  {
- 	struct rockchip_dp_device *dp = to_dp(plat_data);
-+	int ret;
+ 	unsigned int val;
+ 	int ret;
+@@ -1053,6 +1053,9 @@ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+ 	val |= IF_EN;
+ 	writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
+ 
++	if (!blocking)
++		return 0;
 +
-+	ret = rockchip_drm_psr_deactivate(&dp->encoder);
-+	if (ret != 0)
-+		return ret;
- 
- 	clk_disable_unprepare(dp->pclk);
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-index 3acfd576b7df..b3fb99c5b1fd 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-@@ -57,6 +57,24 @@ static struct psr_drv *find_psr_by_crtc(struct drm_crtc *crtc)
- 	return psr;
- }
- 
-+static struct psr_drv *find_psr_by_encoder(struct drm_encoder *encoder)
-+{
-+	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
-+	struct psr_drv *psr;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&drm_drv->psr_list_lock, flags);
-+	list_for_each_entry(psr, &drm_drv->psr_list, list) {
-+		if (psr->encoder == encoder)
-+			goto out;
-+	}
-+	psr = ERR_PTR(-ENODEV);
-+
-+out:
-+	spin_unlock_irqrestore(&drm_drv->psr_list_lock, flags);
-+	return psr;
-+}
-+
- static void psr_set_state_locked(struct psr_drv *psr, enum psr_state state)
- {
- 	/*
-@@ -115,14 +133,14 @@ static void psr_flush_handler(struct timer_list *t)
- 
- /**
-  * rockchip_drm_psr_activate - activate PSR on the given pipe
-- * @crtc: CRTC to obtain the PSR encoder
-+ * @encoder: encoder to obtain the PSR encoder
-  *
-  * Returns:
-  * Zero on success, negative errno on failure.
-  */
--int rockchip_drm_psr_activate(struct drm_crtc *crtc)
-+int rockchip_drm_psr_activate(struct drm_encoder *encoder)
- {
--	struct psr_drv *psr = find_psr_by_crtc(crtc);
-+	struct psr_drv *psr = find_psr_by_encoder(encoder);
- 	unsigned long flags;
- 
- 	if (IS_ERR(psr))
-@@ -138,14 +156,14 @@ EXPORT_SYMBOL(rockchip_drm_psr_activate);
- 
- /**
-  * rockchip_drm_psr_deactivate - deactivate PSR on the given pipe
-- * @crtc: CRTC to obtain the PSR encoder
-+ * @encoder: encoder to obtain the PSR encoder
-  *
-  * Returns:
-  * Zero on success, negative errno on failure.
-  */
--int rockchip_drm_psr_deactivate(struct drm_crtc *crtc)
-+int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
- {
--	struct psr_drv *psr = find_psr_by_crtc(crtc);
-+	struct psr_drv *psr = find_psr_by_encoder(encoder);
- 	unsigned long flags;
- 
- 	if (IS_ERR(psr))
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-index b420cf1bf902..b1ea0155e57c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-@@ -18,8 +18,8 @@
- void rockchip_drm_psr_flush_all(struct drm_device *dev);
- int rockchip_drm_psr_flush(struct drm_crtc *crtc);
- 
--int rockchip_drm_psr_activate(struct drm_crtc *crtc);
--int rockchip_drm_psr_deactivate(struct drm_crtc *crtc);
-+int rockchip_drm_psr_activate(struct drm_encoder *encoder);
-+int rockchip_drm_psr_deactivate(struct drm_encoder *encoder);
- 
- int rockchip_drm_psr_register(struct drm_encoder *encoder,
- 			void (*psr_set)(struct drm_encoder *, bool enable));
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 7a137bc5708c..31304434847a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -577,8 +577,6 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 
- 	WARN_ON(vop->event);
- 
--	rockchip_drm_psr_deactivate(&vop->crtc);
--
- 	drm_crtc_vblank_off(crtc);
- 
- 	/*
-@@ -951,8 +949,6 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
- 
- 	VOP_REG_SET(vop, common, standby, 0);
--
--	rockchip_drm_psr_activate(&vop->crtc);
- }
- 
- static bool vop_fs_irq_is_pending(struct vop *vop)
+ 	ret = readx_poll_timeout(analogix_dp_get_psr_status, dp, psr_status,
+ 		psr_status >= 0 &&
+ 		((vsc->DB1 && psr_status == DP_PSR_SINK_ACTIVE_RFB) ||
 -- 
 2.14.1
