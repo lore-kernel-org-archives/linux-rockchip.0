@@ -1,12 +1,12 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 15/43] drm/bridge: analogix_dp: Don't use fast link
- training when panel just powered up
-Date: Tue, 30 Jan 2018 21:28:45 +0100
-Message-ID: <20180130202913.28724-16-thierry.escande@collabora.com>
+Subject: [PATCH v3 29/43] drm/bridge: analogix_dp: Move fast link training
+ detect to set_bridge
+Date: Tue, 30 Jan 2018 21:28:59 +0100
+Message-ID: <20180130202913.28724-30-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -23,54 +23,99 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpQYW5lbCB3b3VsZCByZXNldCBp
-dHMgc2V0dGluZyB3aGVuIGl0IHBvd2VycyBkb3duLiBJdCB3b3VsZCBmb3JnZXQgdGhlIGxhc3QK
-c3VjY2VlZGVkIGxpbmsgdHJhaW5pbmcgc2V0dGluZy4gU28gd2UgY2FuJ3QgdXNlIHRoZSBsYXN0
-IHN1Y2Nlc3NmdWwgbGluawp0cmFpbmluZyBzZXR0aW5nIHRvIGRvIGZhc3QgbGluayB0cmFpbmlu
-Zy4gTGV0J3MgcmVzZXQgZmFzdF90cmFpbl9lbmFibGUgaW4KYW5hbG9naXhfZHBfYnJpZGdlX2Rp
-c2FibGUoKTsKCkNjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9yZz4K
-U2lnbmVkLW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYt
-Ynk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGll
-cnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgOSArKysrKy0tLS0K
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIHwgMiAr
-LQogMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0pCgpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwpp
-bmRleCA4ZWY5ZTMxYzY3MTMuLjE3OWMyMTA2YjhhMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKQEAgLTU3OSwxNCArNTc5LDE0
-IEBAIHN0YXRpYyBpbnQgYW5hbG9naXhfZHBfcHJvY2Vzc19lcXVhbGl6ZXJfdHJhaW5pbmcoc3Ry
-dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJCWlmIChyZXR2YWwgIT0gMSkgewogCQkJZGV2
-X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRvIHJlYWQgZG93bnNwcmVhZCAlZFxuIiwKIAkJCQlyZXR2
-YWwpOwotCQkJZHAtPmZhc3RfdHJhaW5fc3VwcG9ydCA9IGZhbHNlOworCQkJZHAtPmZhc3RfdHJh
-aW5fZW5hYmxlID0gZmFsc2U7CiAJCX0gZWxzZSB7Ci0JCQlkcC0+ZmFzdF90cmFpbl9zdXBwb3J0
-ID0KKwkJCWRwLT5mYXN0X3RyYWluX2VuYWJsZSA9CiAJCQkJKHNwcmVhZCAmIERQX05PX0FVWF9I
-QU5EU0hBS0VfTElOS19UUkFJTklORykgPwogCQkJCQl0cnVlIDogZmFsc2U7CiAJCX0KIAkJZGV2
-X2RiZyhkcC0+ZGV2LCAiZmFzdCBsaW5rIHRyYWluaW5nICVzXG4iLAotCQkJZHAtPmZhc3RfdHJh
-aW5fc3VwcG9ydCA/ICJzdXBwb3J0ZWQiIDogInVuc3VwcG9ydGVkIik7CisJCQlkcC0+ZmFzdF90
-cmFpbl9lbmFibGUgPyAic3VwcG9ydGVkIiA6ICJ1bnN1cHBvcnRlZCIpOwogCiAJCS8qIHNldCBl
-bmhhbmNlZCBtb2RlIGlmIGF2YWlsYWJsZSAqLwogCQlhbmFsb2dpeF9kcF9zZXRfZW5oYW5jZWRf
-bW9kZShkcCk7CkBAIC03OTMsNyArNzkzLDcgQEAgc3RhdGljIGludCBhbmFsb2dpeF9kcF9mYXN0
-X2xpbmtfdHJhaW4oc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAKIHN0YXRpYyBpbnQg
-YW5hbG9naXhfZHBfdHJhaW5fbGluayhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIHsK
-LQlpZiAoZHAtPmZhc3RfdHJhaW5fc3VwcG9ydCkKKwlpZiAoZHAtPmZhc3RfdHJhaW5fZW5hYmxl
-KQogCQlyZXR1cm4gYW5hbG9naXhfZHBfZmFzdF9saW5rX3RyYWluKGRwKTsKIAogCXJldHVybiBh
-bmFsb2dpeF9kcF9mdWxsX2xpbmtfdHJhaW4oZHAsIGRwLT52aWRlb19pbmZvLm1heF9sYW5lX2Nv
-dW50LApAQCAtMTE5OCw2ICsxMTk4LDcgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfYnJpZGdl
-X2Rpc2FibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKIAkJRFJNX0VSUk9SKCJmYWlsZWQg
-dG8gc2V0dXAgdGhlIHBhbmVsIHJldCA9ICVkXG4iLCByZXQpOwogCiAJZHAtPnBzcl9lbmFibGUg
-PSBmYWxzZTsKKwlkcC0+ZmFzdF90cmFpbl9lbmFibGUgPSBmYWxzZTsKIAlkcC0+ZHBtc19tb2Rl
-ID0gRFJNX01PREVfRFBNU19PRkY7CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRn
-ZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKaW5kZXggNmE5NmVmN2U2OTM0Li40MDNmZjg1
-MzQ2NGIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9n
-aXhfZHBfY29yZS5oCkBAIC0xNzMsNyArMTczLDcgQEAgc3RydWN0IGFuYWxvZ2l4X2RwX2Rldmlj
-ZSB7CiAJaW50CQkJaHBkX2dwaW87CiAJYm9vbCAgICAgICAgICAgICAgICAgICAgZm9yY2VfaHBk
-OwogCWJvb2wJCQlwc3JfZW5hYmxlOwotCWJvb2wJCQlmYXN0X3RyYWluX3N1cHBvcnQ7CisJYm9v
-bAkJCWZhc3RfdHJhaW5fZW5hYmxlOwogCiAJc3RydWN0IG11dGV4CQlwYW5lbF9sb2NrOwogCWJv
-b2wJCQlwYW5lbF9pc19tb2Rlc2V0OwotLSAKMi4xNC4xCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+It's too early to detect fast link training, if other step after it
+failed, we will set fast_link flag to 1, and retry set_bridge again. In
+this case we will power down and power up panel power supply, and we
+will do fast link training since we have set fast_link flag to 1. In
+fact, we should do full link training now, not the fast link training.
+So we should move the fast link detection at the end of set_bridge.
+
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 42 +++++++++++++---------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index a64f0c3e795c..f82e2a3d13bf 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -601,7 +601,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ {
+ 	int lane, lane_count, retval;
+ 	u32 reg;
+-	u8 link_align, link_status[2], adjust_request[2], spread;
++	u8 link_align, link_status[2], adjust_request[2];
+ 
+ 	usleep_range(400, 401);
+ 
+@@ -645,20 +645,6 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ 		dev_dbg(dp->dev, "final lane count = %.2x\n",
+ 			dp->link_train.lane_count);
+ 
+-		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
+-					   &spread);
+-		if (retval != 1) {
+-			dev_err(dp->dev, "failed to read downspread %d\n",
+-				retval);
+-			dp->fast_train_enable = false;
+-		} else {
+-			dp->fast_train_enable =
+-				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
+-					true : false;
+-		}
+-		dev_dbg(dp->dev, "fast link training %s\n",
+-			dp->fast_train_enable ? "supported" : "unsupported");
+-
+ 		dp->link_train.lt_state = FINISHED;
+ 
+ 		return 0;
+@@ -1003,6 +989,22 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
++static int analogix_dp_fast_link_train_detection(struct analogix_dp_device *dp)
++{
++	int ret;
++	u8 spread;
++
++	ret = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD, &spread);
++	if (ret != 1) {
++		dev_err(dp->dev, "failed to read downspread %d\n", ret);
++		return ret;
++	}
++	dp->fast_train_enable = !!(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING);
++	dev_dbg(dp->dev, "fast link training %s\n",
++		dp->fast_train_enable ? "supported" : "unsupported");
++	return 0;
++}
++
+ static int analogix_dp_commit(struct analogix_dp_device *dp)
+ {
+ 	int ret;
+@@ -1045,8 +1047,16 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (dp->psr_enable)
++	if (dp->psr_enable) {
+ 		ret = analogix_dp_enable_sink_psr(dp);
++		if (ret)
++			return ret;
++	}
++
++	/* Check whether panel supports fast training */
++	ret =  analogix_dp_fast_link_train_detection(dp);
++	if (ret)
++		dp->psr_enable = false;
+ 
+ 	return ret;
+ }
+-- 
+2.14.1
