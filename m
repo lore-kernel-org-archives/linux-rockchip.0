@@ -1,11 +1,11 @@
 From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 06/43] drm/rockchip: Don't use atomic constructs for psr
-Date: Tue, 30 Jan 2018 21:28:36 +0100
-Message-ID: <20180130202913.28724-7-thierry.escande@collabora.com>
+Subject: [PATCH v3 11/43] drm/bridge: analogix_dp: add fast link train for eDP
+Date: Tue, 30 Jan 2018 21:28:41 +0100
+Message-ID: <20180130202913.28724-12-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
@@ -22,149 +22,259 @@ To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <i
 Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpJbnN0ZWFkIG9mIHVzaW5n
-IHRpbWVyIGFuZCBzcGlubG9ja3MsIHVzZSBkZWxheWVkX3dvcmsgYW5kCm11dGV4ZXMgZm9yIHJv
-Y2tjaGlwIHBzci4gVGhpcyBhbGxvd3MgdXMgdG8gbWFrZSBibG9ja2luZwpjYWxscyB3aGVuIGVu
-YWJsaW5nL2Rpc2FibGluZyBwc3IgKHdoaWNoIGlzIHNvcnQgb2YgaW1wb3J0YW50CmdpdmVuIHdl
-J3JlIHRhbGtpbmcgb3ZlciBkcGNkIHRvIHRoZSBkaXNwbGF5KS4KCkNjOiBDYWVzYXIgV2FuZyA8
-d3h0QHJvY2stY2hpcHMuY29tPgpDYzog5b6B5aKeIOeOiyA8d3p6QHJvY2stY2hpcHMuY29tPgpD
-YzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYt
-Ynk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGll
-cnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgMiArLQogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jIHwgNjggKysrKysrKysrKysrLS0tLS0tLS0tLS0t
-LS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKSwgNDEgZGVsZXRpb25zKC0p
-CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKaW5kZXggODgw
-ODRjYTE1MTE1Li4wNjA5MTEzZDZhNzEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuYwpAQCAtMTM0LDcgKzEzNCw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
-ZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQogCWRybV9kZXYtPmRldl9wcml2YXRlID0gcHJp
-dmF0ZTsKIAogCUlOSVRfTElTVF9IRUFEKCZwcml2YXRlLT5wc3JfbGlzdCk7Ci0Jc3Bpbl9sb2Nr
-X2luaXQoJnByaXZhdGUtPnBzcl9saXN0X2xvY2spOworCW11dGV4X2luaXQoJnByaXZhdGUtPnBz
-cl9saXN0X2xvY2spOwogCiAJcmV0ID0gcm9ja2NoaXBfZHJtX2luaXRfaW9tbXUoZHJtX2Rldik7
-CiAJaWYgKHJldCkKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5o
-CmluZGV4IDQ5OGRmYmM1MmNlYy4uOWMwNjRhNDA0NThiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKQEAgLTU1LDcgKzU1LDcgQEAgc3RydWN0IHJvY2tj
-aGlwX2RybV9wcml2YXRlIHsKIAlzdHJ1Y3QgbXV0ZXggbW1fbG9jazsKIAlzdHJ1Y3QgZHJtX21t
-IG1tOwogCXN0cnVjdCBsaXN0X2hlYWQgcHNyX2xpc3Q7Ci0Jc3BpbmxvY2tfdCBwc3JfbGlzdF9s
-b2NrOworCXN0cnVjdCBtdXRleCBwc3JfbGlzdF9sb2NrOwogfTsKIAogaW50IHJvY2tjaGlwX2Ry
-bV9kbWFfYXR0YWNoX2RldmljZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Bzci5jCmluZGV4IGIzZmI5OWM1YjFmZC4u
-YjMzOWNhOTQzMTM5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3Bzci5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-cHNyLmMKQEAgLTE4LDcgKzE4LDcgQEAKICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiCiAj
-aW5jbHVkZSAicm9ja2NoaXBfZHJtX3Bzci5oIgogCi0jZGVmaW5lIFBTUl9GTFVTSF9USU1FT1VU
-CW1zZWNzX3RvX2ppZmZpZXMoMTAwKQorI2RlZmluZSBQU1JfRkxVU0hfVElNRU9VVF9NUwkxMDAK
-IAogZW51bSBwc3Jfc3RhdGUgewogCVBTUl9GTFVTSCwKQEAgLTMwLDExICszMCwxMSBAQCBzdHJ1
-Y3QgcHNyX2RydiB7CiAJc3RydWN0IGxpc3RfaGVhZAlsaXN0OwogCXN0cnVjdCBkcm1fZW5jb2Rl
-cgkqZW5jb2RlcjsKIAotCXNwaW5sb2NrX3QJCWxvY2s7CisJc3RydWN0IG11dGV4CQlsb2NrOwog
-CWJvb2wJCQlhY3RpdmU7CiAJZW51bSBwc3Jfc3RhdGUJCXN0YXRlOwogCi0Jc3RydWN0IHRpbWVy
-X2xpc3QJZmx1c2hfdGltZXI7CisJc3RydWN0IGRlbGF5ZWRfd29yawlmbHVzaF93b3JrOwogCiAJ
-dm9pZCAoKnNldCkoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLCBib29sIGVuYWJsZSk7CiB9
-OwpAQCAtNDMsOSArNDMsOCBAQCBzdGF0aWMgc3RydWN0IHBzcl9kcnYgKmZpbmRfcHNyX2J5X2Ny
-dGMoc3RydWN0IGRybV9jcnRjICpjcnRjKQogewogCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0
-ZSAqZHJtX2RydiA9IGNydGMtPmRldi0+ZGV2X3ByaXZhdGU7CiAJc3RydWN0IHBzcl9kcnYgKnBz
-cjsKLQl1bnNpZ25lZCBsb25nIGZsYWdzOwogCi0Jc3Bpbl9sb2NrX2lycXNhdmUoJmRybV9kcnYt
-PnBzcl9saXN0X2xvY2ssIGZsYWdzKTsKKwltdXRleF9sb2NrKCZkcm1fZHJ2LT5wc3JfbGlzdF9s
-b2NrKTsKIAlsaXN0X2Zvcl9lYWNoX2VudHJ5KHBzciwgJmRybV9kcnYtPnBzcl9saXN0LCBsaXN0
-KSB7CiAJCWlmIChwc3ItPmVuY29kZXItPmNydGMgPT0gY3J0YykKIAkJCWdvdG8gb3V0OwpAQCAt
-NTMsNyArNTIsNyBAQCBzdGF0aWMgc3RydWN0IHBzcl9kcnYgKmZpbmRfcHNyX2J5X2NydGMoc3Ry
-dWN0IGRybV9jcnRjICpjcnRjKQogCXBzciA9IEVSUl9QVFIoLUVOT0RFVik7CiAKIG91dDoKLQlz
-cGluX3VubG9ja19pcnFyZXN0b3JlKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJ
-bXV0ZXhfdW5sb2NrKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrKTsKIAlyZXR1cm4gcHNyOwogfQog
-CkBAIC02MSw5ICs2MCw4IEBAIHN0YXRpYyBzdHJ1Y3QgcHNyX2RydiAqZmluZF9wc3JfYnlfZW5j
-b2RlcihzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCiB7CiAJc3RydWN0IHJvY2tjaGlwX2Ry
-bV9wcml2YXRlICpkcm1fZHJ2ID0gZW5jb2Rlci0+ZGV2LT5kZXZfcHJpdmF0ZTsKIAlzdHJ1Y3Qg
-cHNyX2RydiAqcHNyOwotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7CiAKLQlzcGluX2xvY2tfaXJxc2F2
-ZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxhZ3MpOworCW11dGV4X2xvY2soJmRybV9kcnYt
-PnBzcl9saXN0X2xvY2spOwogCWxpc3RfZm9yX2VhY2hfZW50cnkocHNyLCAmZHJtX2Rydi0+cHNy
-X2xpc3QsIGxpc3QpIHsKIAkJaWYgKHBzci0+ZW5jb2RlciA9PSBlbmNvZGVyKQogCQkJZ290byBv
-dXQ7CkBAIC03MSw3ICs2OSw3IEBAIHN0YXRpYyBzdHJ1Y3QgcHNyX2RydiAqZmluZF9wc3JfYnlf
-ZW5jb2RlcihzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCiAJcHNyID0gRVJSX1BUUigtRU5P
-REVWKTsKIAogb3V0OgotCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmRybV9kcnYtPnBzcl9saXN0
-X2xvY2ssIGZsYWdzKTsKKwltdXRleF91bmxvY2soJmRybV9kcnYtPnBzcl9saXN0X2xvY2spOwog
-CXJldHVybiBwc3I7CiB9CiAKQEAgLTExMiwyMyArMTEwLDIxIEBAIHN0YXRpYyB2b2lkIHBzcl9z
-ZXRfc3RhdGVfbG9ja2VkKHN0cnVjdCBwc3JfZHJ2ICpwc3IsIGVudW0gcHNyX3N0YXRlIHN0YXRl
-KQogCiBzdGF0aWMgdm9pZCBwc3Jfc2V0X3N0YXRlKHN0cnVjdCBwc3JfZHJ2ICpwc3IsIGVudW0g
-cHNyX3N0YXRlIHN0YXRlKQogewotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7Ci0KLQlzcGluX2xvY2tf
-aXJxc2F2ZSgmcHNyLT5sb2NrLCBmbGFncyk7CisJbXV0ZXhfbG9jaygmcHNyLT5sb2NrKTsKIAlw
-c3Jfc2V0X3N0YXRlX2xvY2tlZChwc3IsIHN0YXRlKTsKLQlzcGluX3VubG9ja19pcnFyZXN0b3Jl
-KCZwc3ItPmxvY2ssIGZsYWdzKTsKKwltdXRleF91bmxvY2soJnBzci0+bG9jayk7CiB9CiAKLXN0
-YXRpYyB2b2lkIHBzcl9mbHVzaF9oYW5kbGVyKHN0cnVjdCB0aW1lcl9saXN0ICp0KQorc3RhdGlj
-IHZvaWQgcHNyX2ZsdXNoX2hhbmRsZXIoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQogewotCXN0
-cnVjdCBwc3JfZHJ2ICpwc3IgPSBmcm9tX3RpbWVyKHBzciwgdCwgZmx1c2hfdGltZXIpOwotCXVu
-c2lnbmVkIGxvbmcgZmxhZ3M7CisJc3RydWN0IHBzcl9kcnYgKnBzciA9IGNvbnRhaW5lcl9vZih0
-b19kZWxheWVkX3dvcmsod29yayksCisJCQkJCSAgIHN0cnVjdCBwc3JfZHJ2LCBmbHVzaF93b3Jr
-KTsKIAogCS8qIElmIHRoZSBzdGF0ZSBoYXMgY2hhbmdlZCBzaW5jZSB3ZSBpbml0aWF0ZWQgdGhl
-IGZsdXNoLCBkbyBub3RoaW5nICovCi0Jc3Bpbl9sb2NrX2lycXNhdmUoJnBzci0+bG9jaywgZmxh
-Z3MpOworCW11dGV4X2xvY2soJnBzci0+bG9jayk7CiAJaWYgKHBzci0+c3RhdGUgPT0gUFNSX0ZM
-VVNIKQogCQlwc3Jfc2V0X3N0YXRlX2xvY2tlZChwc3IsIFBTUl9FTkFCTEUpOwotCXNwaW5fdW5s
-b2NrX2lycXJlc3RvcmUoJnBzci0+bG9jaywgZmxhZ3MpOworCW11dGV4X3VubG9jaygmcHNyLT5s
-b2NrKTsKIH0KIAogLyoqCkBAIC0xNDEsMTQgKzEzNywxMyBAQCBzdGF0aWMgdm9pZCBwc3JfZmx1
-c2hfaGFuZGxlcihzdHJ1Y3QgdGltZXJfbGlzdCAqdCkKIGludCByb2NrY2hpcF9kcm1fcHNyX2Fj
-dGl2YXRlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIHsKIAlzdHJ1Y3QgcHNyX2RydiAq
-cHNyID0gZmluZF9wc3JfYnlfZW5jb2RlcihlbmNvZGVyKTsKLQl1bnNpZ25lZCBsb25nIGZsYWdz
-OwogCiAJaWYgKElTX0VSUihwc3IpKQogCQlyZXR1cm4gUFRSX0VSUihwc3IpOwogCi0Jc3Bpbl9s
-b2NrX2lycXNhdmUoJnBzci0+bG9jaywgZmxhZ3MpOworCW11dGV4X2xvY2soJnBzci0+bG9jayk7
-CiAJcHNyLT5hY3RpdmUgPSB0cnVlOwotCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnBzci0+bG9j
-aywgZmxhZ3MpOworCW11dGV4X3VubG9jaygmcHNyLT5sb2NrKTsKIAogCXJldHVybiAwOwogfQpA
-QCAtMTY0LDE1ICsxNTksMTQgQEAgRVhQT1JUX1NZTUJPTChyb2NrY2hpcF9kcm1fcHNyX2FjdGl2
-YXRlKTsKIGludCByb2NrY2hpcF9kcm1fcHNyX2RlYWN0aXZhdGUoc3RydWN0IGRybV9lbmNvZGVy
-ICplbmNvZGVyKQogewogCXN0cnVjdCBwc3JfZHJ2ICpwc3IgPSBmaW5kX3Bzcl9ieV9lbmNvZGVy
-KGVuY29kZXIpOwotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7CiAKIAlpZiAoSVNfRVJSKHBzcikpCiAJ
-CXJldHVybiBQVFJfRVJSKHBzcik7CiAKLQlzcGluX2xvY2tfaXJxc2F2ZSgmcHNyLT5sb2NrLCBm
-bGFncyk7CisJbXV0ZXhfbG9jaygmcHNyLT5sb2NrKTsKIAlwc3ItPmFjdGl2ZSA9IGZhbHNlOwot
-CXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnBzci0+bG9jaywgZmxhZ3MpOwotCWRlbF90aW1lcl9z
-eW5jKCZwc3ItPmZsdXNoX3RpbWVyKTsKKwltdXRleF91bmxvY2soJnBzci0+bG9jayk7CisJY2Fu
-Y2VsX2RlbGF5ZWRfd29ya19zeW5jKCZwc3ItPmZsdXNoX3dvcmspOwogCiAJcmV0dXJuIDA7CiB9
-CkBAIC0xODAsOSArMTc0LDggQEAgRVhQT1JUX1NZTUJPTChyb2NrY2hpcF9kcm1fcHNyX2RlYWN0
-aXZhdGUpOwogCiBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fZG9fZmx1c2goc3RydWN0IHBzcl9k
-cnYgKnBzcikKIHsKLQltb2RfdGltZXIoJnBzci0+Zmx1c2hfdGltZXIsCi0JCSAgcm91bmRfamlm
-Zmllc191cChqaWZmaWVzICsgUFNSX0ZMVVNIX1RJTUVPVVQpKTsKIAlwc3Jfc2V0X3N0YXRlKHBz
-ciwgUFNSX0ZMVVNIKTsKKwltb2RfZGVsYXllZF93b3JrKHN5c3RlbV93cSwgJnBzci0+Zmx1c2hf
-d29yaywgUFNSX0ZMVVNIX1RJTUVPVVRfTVMpOwogfQogCiAvKioKQEAgLTIxOSwxMiArMjEyLDEx
-IEBAIHZvaWQgcm9ja2NoaXBfZHJtX3Bzcl9mbHVzaF9hbGwoc3RydWN0IGRybV9kZXZpY2UgKmRl
-dikKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKmRybV9kcnYgPSBkZXYtPmRldl9w
-cml2YXRlOwogCXN0cnVjdCBwc3JfZHJ2ICpwc3I7Ci0JdW5zaWduZWQgbG9uZyBmbGFnczsKIAot
-CXNwaW5fbG9ja19pcnFzYXZlKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJbXV0
-ZXhfbG9jaygmZHJtX2Rydi0+cHNyX2xpc3RfbG9jayk7CiAJbGlzdF9mb3JfZWFjaF9lbnRyeShw
-c3IsICZkcm1fZHJ2LT5wc3JfbGlzdCwgbGlzdCkKIAkJcm9ja2NoaXBfZHJtX2RvX2ZsdXNoKHBz
-cik7Ci0Jc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxh
-Z3MpOworCW11dGV4X3VubG9jaygmZHJtX2Rydi0+cHNyX2xpc3RfbG9jayk7CiB9CiBFWFBPUlRf
-U1lNQk9MKHJvY2tjaGlwX2RybV9wc3JfZmx1c2hfYWxsKTsKIApAQCAtMjQxLDcgKzIzMyw2IEBA
-IGludCByb2NrY2hpcF9kcm1fcHNyX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
-ciwKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKmRybV9kcnYgPSBlbmNvZGVyLT5k
-ZXYtPmRldl9wcml2YXRlOwogCXN0cnVjdCBwc3JfZHJ2ICpwc3I7Ci0JdW5zaWduZWQgbG9uZyBm
-bGFnczsKIAogCWlmICghZW5jb2RlciB8fCAhcHNyX3NldCkKIAkJcmV0dXJuIC1FSU5WQUw7CkBA
-IC0yNTAsMTcgKzI0MSwxNyBAQCBpbnQgcm9ja2NoaXBfZHJtX3Bzcl9yZWdpc3RlcihzdHJ1Y3Qg
-ZHJtX2VuY29kZXIgKmVuY29kZXIsCiAJaWYgKCFwc3IpCiAJCXJldHVybiAtRU5PTUVNOwogCi0J
-dGltZXJfc2V0dXAoJnBzci0+Zmx1c2hfdGltZXIsIHBzcl9mbHVzaF9oYW5kbGVyLCAwKTsKLQlz
-cGluX2xvY2tfaW5pdCgmcHNyLT5sb2NrKTsKKwlJTklUX0RFTEFZRURfV09SSygmcHNyLT5mbHVz
-aF93b3JrLCBwc3JfZmx1c2hfaGFuZGxlcik7CisJbXV0ZXhfaW5pdCgmcHNyLT5sb2NrKTsKIAog
-CXBzci0+YWN0aXZlID0gdHJ1ZTsKIAlwc3ItPnN0YXRlID0gUFNSX0RJU0FCTEU7CiAJcHNyLT5l
-bmNvZGVyID0gZW5jb2RlcjsKIAlwc3ItPnNldCA9IHBzcl9zZXQ7CiAKLQlzcGluX2xvY2tfaXJx
-c2F2ZSgmZHJtX2Rydi0+cHNyX2xpc3RfbG9jaywgZmxhZ3MpOworCW11dGV4X2xvY2soJmRybV9k
-cnYtPnBzcl9saXN0X2xvY2spOwogCWxpc3RfYWRkX3RhaWwoJnBzci0+bGlzdCwgJmRybV9kcnYt
-PnBzcl9saXN0KTsKLQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZkcm1fZHJ2LT5wc3JfbGlzdF9s
-b2NrLCBmbGFncyk7CisJbXV0ZXhfdW5sb2NrKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrKTsKIAog
-CXJldHVybiAwOwogfQpAQCAtMjc4LDE2ICsyNjksMTUgQEAgdm9pZCByb2NrY2hpcF9kcm1fcHNy
-X3VucmVnaXN0ZXIoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogewogCXN0cnVjdCByb2Nr
-Y2hpcF9kcm1fcHJpdmF0ZSAqZHJtX2RydiA9IGVuY29kZXItPmRldi0+ZGV2X3ByaXZhdGU7CiAJ
-c3RydWN0IHBzcl9kcnYgKnBzciwgKm47Ci0JdW5zaWduZWQgbG9uZyBmbGFnczsKIAotCXNwaW5f
-bG9ja19pcnFzYXZlKCZkcm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJbXV0ZXhfbG9j
-aygmZHJtX2Rydi0+cHNyX2xpc3RfbG9jayk7CiAJbGlzdF9mb3JfZWFjaF9lbnRyeV9zYWZlKHBz
-ciwgbiwgJmRybV9kcnYtPnBzcl9saXN0LCBsaXN0KSB7CiAJCWlmIChwc3ItPmVuY29kZXIgPT0g
-ZW5jb2RlcikgewotCQkJZGVsX3RpbWVyKCZwc3ItPmZsdXNoX3RpbWVyKTsKKwkJCWNhbmNlbF9k
-ZWxheWVkX3dvcmtfc3luYygmcHNyLT5mbHVzaF93b3JrKTsKIAkJCWxpc3RfZGVsKCZwc3ItPmxp
-c3QpOwogCQkJa2ZyZWUocHNyKTsKIAkJfQogCX0KLQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZk
-cm1fZHJ2LT5wc3JfbGlzdF9sb2NrLCBmbGFncyk7CisJbXV0ZXhfdW5sb2NrKCZkcm1fZHJ2LT5w
-c3JfbGlzdF9sb2NrKTsKIH0KIEVYUE9SVF9TWU1CT0wocm9ja2NoaXBfZHJtX3Bzcl91bnJlZ2lz
-dGVyKTsKLS0gCjIuMTQuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+We would meet a short black screen when exit PSR with the full link
+training, In this case, we should use fast link train instead of full
+link training.
+
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 142 ++++++++++++++++-----
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   3 +
+ 2 files changed, 114 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 84141571e960..e0775adf80b3 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -10,17 +10,18 @@
+ * option) any later version.
+ */
+ 
+-#include <linux/module.h>
+-#include <linux/platform_device.h>
+-#include <linux/err.h>
+ #include <linux/clk.h>
+-#include <linux/io.h>
++#include <linux/component.h>
++#include <linux/err.h>
++#include <linux/gpio.h>
+ #include <linux/interrupt.h>
++#include <linux/io.h>
++#include <linux/iopoll.h>
++#include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_gpio.h>
+-#include <linux/gpio.h>
+-#include <linux/component.h>
+ #include <linux/phy/phy.h>
++#include <linux/platform_device.h>
+ 
+ #include <drm/drmP.h>
+ #include <drm/drm_atomic_helper.h>
+@@ -35,6 +36,8 @@
+ 
+ #define to_dp(nm)	container_of(nm, struct analogix_dp_device, nm)
+ 
++static const bool verify_fast_training;
++
+ struct bridge_init {
+ 	struct i2c_client *client;
+ 	struct device_node *node;
+@@ -528,7 +531,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ {
+ 	int lane, lane_count, retval;
+ 	u32 reg;
+-	u8 link_align, link_status[2], adjust_request[2];
++	u8 link_align, link_status[2], adjust_request[2], spread;
+ 
+ 	usleep_range(400, 401);
+ 
+@@ -571,6 +574,20 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ 		dev_dbg(dp->dev, "final lane count = %.2x\n",
+ 			dp->link_train.lane_count);
+ 
++		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
++					   &spread);
++		if (retval != 1) {
++			dev_err(dp->dev, "failed to read downspread %d\n",
++				retval);
++			dp->fast_train_support = false;
++		} else {
++			dp->fast_train_support =
++				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
++					true : false;
++		}
++		dev_dbg(dp->dev, "fast link training %s\n",
++			dp->fast_train_support ? "supported" : "unsupported");
++
+ 		/* set enhanced mode if available */
+ 		analogix_dp_set_enhanced_mode(dp);
+ 		dp->link_train.lt_state = FINISHED;
+@@ -627,10 +644,12 @@ static void analogix_dp_get_max_rx_lane_count(struct analogix_dp_device *dp,
+ 	*lane_count = DPCD_MAX_LANE_COUNT(data);
+ }
+ 
+-static void analogix_dp_init_training(struct analogix_dp_device *dp,
+-				      enum link_lane_count_type max_lane,
+-				      int max_rate)
++static int analogix_dp_full_link_train(struct analogix_dp_device *dp,
++				       u32 max_lanes, u32 max_rate)
+ {
++	int retval = 0;
++	bool training_finished = false;
++
+ 	/*
+ 	 * MACRO_RST must be applied after the PLL_LOCK to avoid
+ 	 * the DP inter pair skew issue for at least 10 us
+@@ -656,18 +675,13 @@ static void analogix_dp_init_training(struct analogix_dp_device *dp,
+ 	}
+ 
+ 	/* Setup TX lane count & rate */
+-	if (dp->link_train.lane_count > max_lane)
+-		dp->link_train.lane_count = max_lane;
++	if (dp->link_train.lane_count > max_lanes)
++		dp->link_train.lane_count = max_lanes;
+ 	if (dp->link_train.link_rate > max_rate)
+ 		dp->link_train.link_rate = max_rate;
+ 
+ 	/* All DP analog module power up */
+ 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 0);
+-}
+-
+-static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
+-{
+-	int retval = 0, training_finished = 0;
+ 
+ 	dp->link_train.lt_state = START;
+ 
+@@ -702,22 +716,88 @@ static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
+ 	return retval;
+ }
+ 
+-static int analogix_dp_set_link_train(struct analogix_dp_device *dp,
+-				      u32 count, u32 bwtype)
++static int analogix_dp_fast_link_train(struct analogix_dp_device *dp)
+ {
+-	int i;
+-	int retval;
++	int i, ret;
++	u8 link_align, link_status[2];
++	enum pll_status status;
+ 
+-	for (i = 0; i < DP_TIMEOUT_LOOP_COUNT; i++) {
+-		analogix_dp_init_training(dp, count, bwtype);
+-		retval = analogix_dp_sw_link_training(dp);
+-		if (retval == 0)
+-			break;
++	analogix_dp_reset_macro(dp);
+ 
+-		usleep_range(100, 110);
++	analogix_dp_set_link_bandwidth(dp, dp->link_train.link_rate);
++	analogix_dp_set_lane_count(dp, dp->link_train.lane_count);
++
++	for (i = 0; i < dp->link_train.lane_count; i++) {
++		analogix_dp_set_lane_link_training(dp,
++			dp->link_train.training_lane[i], i);
+ 	}
+ 
+-	return retval;
++	ret = readx_poll_timeout(analogix_dp_get_pll_lock_status, dp, status,
++				 status != PLL_UNLOCKED, 120,
++				 120 * DP_TIMEOUT_LOOP_COUNT);
++	if (ret) {
++		DRM_DEV_ERROR(dp->dev, "Wait for pll lock failed %d\n", ret);
++		return ret;
++	}
++
++	/* source Set training pattern 1 */
++	analogix_dp_set_training_pattern(dp, TRAINING_PTN1);
++	/* From DP spec, pattern must be on-screen for a minimum 500us */
++	usleep_range(500, 600);
++
++	analogix_dp_set_training_pattern(dp, TRAINING_PTN2);
++	/* From DP spec, pattern must be on-screen for a minimum 500us */
++	usleep_range(500, 600);
++
++	/* TODO: enhanced_mode?*/
++	analogix_dp_set_training_pattern(dp, DP_NONE);
++
++	/*
++	 * Useful for debugging issues with fast link training, disable for more
++	 * speed
++	 */
++	if (verify_fast_training) {
++		ret = drm_dp_dpcd_readb(&dp->aux, DP_LANE_ALIGN_STATUS_UPDATED,
++					&link_align);
++		if (ret < 0) {
++			DRM_DEV_ERROR(dp->dev, "Read align status failed %d\n",
++				      ret);
++			return ret;
++		}
++
++		ret = drm_dp_dpcd_read(&dp->aux, DP_LANE0_1_STATUS, link_status,
++				       2);
++		if (ret < 0) {
++			DRM_DEV_ERROR(dp->dev, "Read link status failed %d\n",
++				      ret);
++			return ret;
++		}
++
++		if (analogix_dp_clock_recovery_ok(link_status,
++						  dp->link_train.lane_count)) {
++			DRM_DEV_ERROR(dp->dev, "Clock recovery failed\n");
++			analogix_dp_reduce_link_rate(dp);
++			return -EIO;
++		}
++
++		if (analogix_dp_channel_eq_ok(link_status, link_align,
++					      dp->link_train.lane_count)) {
++			DRM_DEV_ERROR(dp->dev, "Channel EQ failed\n");
++			analogix_dp_reduce_link_rate(dp);
++			return -EIO;
++		}
++	}
++
++	return 0;
++}
++
++static int analogix_dp_train_link(struct analogix_dp_device *dp)
++{
++	if (dp->fast_train_support)
++		return analogix_dp_fast_link_train(dp);
++
++	return analogix_dp_full_link_train(dp, dp->video_info.max_lane_count,
++					   dp->video_info.max_link_rate);
+ }
+ 
+ static int analogix_dp_config_video(struct analogix_dp_device *dp)
+@@ -850,10 +930,10 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
+ 			DRM_ERROR("failed to disable the panel\n");
+ 	}
+ 
+-	ret = analogix_dp_set_link_train(dp, dp->video_info.max_lane_count,
+-					 dp->video_info.max_link_rate);
++	ret = readx_poll_timeout(analogix_dp_train_link, dp, ret, !ret, 100,
++				 DP_TIMEOUT_TRAINING_US * 5);
+ 	if (ret) {
+-		dev_err(dp->dev, "unable to do link train\n");
++		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
+ 		return;
+ 	}
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index e135a42cb19e..920607d7eb3e 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -20,6 +20,8 @@
+ #define MAX_CR_LOOP 5
+ #define MAX_EQ_LOOP 5
+ 
++/* Training takes 22ms if AUX channel comm fails. Use this as retry interval */
++#define DP_TIMEOUT_TRAINING_US			22000
+ #define DP_TIMEOUT_PSR_LOOP_MS			300
+ 
+ /* DP_MAX_LANE_COUNT */
+@@ -171,6 +173,7 @@ struct analogix_dp_device {
+ 	int			hpd_gpio;
+ 	bool                    force_hpd;
+ 	bool			psr_enable;
++	bool			fast_train_support;
+ 
+ 	struct mutex		panel_lock;
+ 	bool			panel_is_modeset;
+-- 
+2.14.1
