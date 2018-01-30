@@ -1,39 +1,375 @@
-From: Klaus Goger <klaus.goger@theobroma-systems.com>
-Subject: [PATCH 0/4] add RK3368-uQ7 SoM
-Date: Tue, 30 Jan 2018 13:39:27 +0100
-Message-ID: <20180130123931.50781-1-klaus.goger@theobroma-systems.com>
+From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Subject: [PATCH 2/4] arm64: dts: rockchip: add RK3368-uQ7 (Lion) SoM
+Date: Tue, 30 Jan 2018 13:39:29 +0100
+Message-ID: <20180130123931.50781-3-klaus.goger@theobroma-systems.com>
+References: <20180130123931.50781-1-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Klaus Goger <klaus.goger@theobroma-systems.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180130123931.50781-1-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch series adds devicetree files for Theobroma Systems RK3368-uQ
-module and the corresponding evaluation kit baseboard.
+The RK3368-uQ7 SoM is a uQseven-compatible (40mm x 70mm, MXM-230
+connector) system-on-module from Theobroma Systems, featuring the
+Rockchip RK3368.
 
-See https://www.theobroma-systems.com/rk3368-uq7/ for more information
-about the module and devkit.
+It provides the following feature set:
+ * up to 4GB DDR3
+ * on-module SPI-NOR flash
+ * on-module eMMC (with 8-bit 1.8V interface)
+ * SD card (on a baseboad) via edge connector
+ * Gigabit Ethernet with on-module Micrel KSZ9031 GbE PHY
+ * HDMI/eDP/MIPI-DSI/LVDS
+ * MIPI-CSI
+ * USB
+   - 1x USB 2.0 dual-role
+   - 1x USB 2.0 host
+ * on-module STM32 Cortex-M0 companion controller, implementing:
+   - low-power RTC functionality (ISL1208 emulation)
+   - fan controller (AMC6821 emulation)
+   - USB<->CAN bridge controller
 
-@Heiko: I added the OPP points I use as a seperate patch so you
-can decide if you want to merge it or not as i noticed your reverts
-in the last cycle.
+Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+---
 
-
-Klaus Goger (4):
-  dt-bindings: add RK3368-uQ7 SoM and EVK base board
-  arm64: dts: rockchip: add RK3368-uQ7 (Lion) SoM
-  arm64: dts: rockchip: add Haikou baseboard with RK3368-uQ7 SoM
-  arm64: dts: rockchip: add OPPs for rk3368-lion
-
- Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
- .../arm64/boot/dts/rockchip/rk3368-lion-haikou.dts | 146 ++++++++
- arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi      | 397 +++++++++++++++++++++
- 3 files changed, 547 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
+ arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi | 317 ++++++++++++++++++++++++++
+ 1 file changed, 317 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
+new file mode 100644
+index 000000000000..72be1ae0854f
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
+@@ -0,0 +1,317 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2018 Theobroma Systems Design und Consulting GmbH
++ */
++
++/dts-v1/;
++#include "rk3368.dtsi"
++
++/ {
++	chosen {
++		stdout-path = "serial0:115200n8";
++	};
++
++	ext_gmac: gmac-clk {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "ext_gmac";
++		#clock-cells = <0>;
++	};
++
++	i2cmux1 {
++		compatible = "i2c-mux-gpio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		mux-gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
++		i2c-parent = <&i2c1>;
++
++		/* Q7_GPO_I2C */
++		i2c@0 {
++			reg = <0>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++
++		/* Q7_SMB */
++		i2c@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++	};
++
++	i2cmux2 {
++		compatible = "i2c-mux-gpio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		mux-gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_HIGH>;
++		i2c-parent = <&i2c2>;
++
++		/* Q7_LVDS_BLC_I2C */
++		i2c@0 {
++			reg = <0>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++				fan: fan@18 {
++					compatible = "ti,amc6821";
++					reg = <0x18>;
++					cooling-min-state = <0>;
++					cooling-max-state = <9>;
++					#cooling-cells = <2>;
++				};
++
++				rtc_twi: rtc@6f {
++					compatible = "isil,isl1208";
++					reg = <0x6f>;
++				};
++		};
++
++		/* Q7_GP2_I2C */
++		i2c@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++	};
++
++	leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 = <&led_pins_module>;
++
++		module_led1 {
++			label = "module_led1";
++			gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
++			panic-indicator;
++		};
++
++		module_led2 {
++			label = "module_led2";
++			gpios = <&gpio3 RK_PA3 GPIO_ACTIVE_HIGH>;
++			default-state = "off";
++		};
++	};
++
++	vcc_sys: vcc-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_sys";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-always-on;
++		regulator-boot-on;
++	};
++};
++
++&emmc {
++	bus-width = <8>;
++	mmc-hs200-1_8v;
++	clock-frequency = <150000000>;
++	disable-wp;
++	non-removable;
++	vmmc-supply = <&vcc33_io>;
++	vqmmc-supply = <&vcc18_io>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_clk>, <&emmc_cmd>, <&emmc_bus8>;
++	status = "okay";
++};
++
++&gmac {
++	phy-supply = <&vcc33_io>;
++	phy-mode = "rgmii";
++	clock_in_out = "input";
++	assigned-clocks = <&cru SCLK_MAC>;
++	assigned-clock-parents = <&ext_gmac>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&rgmii_pins>;
++	snps,reset-gpio = <&gpio3 RK_PB3 GPIO_ACTIVE_HIGH>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 10000 50000>;
++	tx_delay = <0x10>;
++	rx_delay = <0x10>;
++	status = "okay";
++};
++
++&i2c0 {
++	status = "okay";
++
++	rk808: pmic@1b {
++		compatible = "rockchip,rk808";
++		reg = <0x1b>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int_l>, <&pmic_sleep>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA5 IRQ_TYPE_LEVEL_LOW>;
++		rockchip,system-power-controller;
++		vcc1-supply = <&vcc_sys>;
++		vcc2-supply = <&vcc_sys>;
++		vcc3-supply = <&vcc_sys>;
++		vcc4-supply = <&vcc_sys>;
++		vcc6-supply = <&vcc_sys>;
++		vcc7-supply = <&vcc_sys>;
++		vcc8-supply = <&vcc_sys>;
++		vcc9-supply = <&vcc_sys>;
++		vcc10-supply = <&vcc_sys>;
++		vcc11-supply = <&vcc_sys>;
++		vcc12-supply = <&vcc_sys>;
++		clock-output-names = "xin32k", "rk808-clkout2";
++		#clock-cells = <1>;
++
++		regulators {
++			vdd_cpu: DCDC_REG1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <700000>;
++				regulator-max-microvolt = <1500000>;
++				regulator-name = "vdd_cpu";
++			};
++
++			vdd_log: DCDC_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <700000>;
++				regulator-max-microvolt = <1500000>;
++				regulator-name = "vdd_log";
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vcc_ddr";
++			};
++
++			vcc33_io: DCDC_REG4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc33_io";
++			};
++
++			vcc33_video: LDO_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc33_video";
++			};
++
++			vdd10_pll: LDO_REG3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
++				regulator-name = "vdd10_pll";
++			};
++
++			vcc18_io: LDO_REG4 {
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc18_io";
++			};
++
++			vdd10_video: LDO_REG6 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
++				regulator-name = "vdd10_video";
++			};
++
++			vcc18_video: LDO_REG8 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc18_video";
++			};
++		};
++	};
++};
++
++&i2c1 {
++	status = "okay";
++};
++
++&i2c2 {
++	status = "okay";
++};
++
++&cpu_l0 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_l1 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_l2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_l3 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_b0 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_b1 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_b2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu_b3 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&pinctrl {
++	leds {
++		led_pins_module: led-module-gpio {
++			rockchip,pins =
++				<RK_GPIO2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>,
++				<RK_GPIO3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <RK_GPIO0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		pmic_sleep: pmic-sleep {
++			rockchip,pins = <RK_GPIO0 RK_PA0 RK_FUNC_2 &pcfg_pull_none>;
++		};
++	};
++};
++
++&spi1 {
++	status = "okay";
++
++	norflash: flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <50000000>;
++	};
++};
++
++&uart1 {
++	status = "okay";
++};
++
++&uart3 {
++	status = "okay";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&wdt {
++	status = "okay";
++};
 -- 
 2.11.0
