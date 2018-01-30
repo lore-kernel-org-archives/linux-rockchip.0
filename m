@@ -1,77 +1,76 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v3 38/43] drm/rockchip: Cancel PSR enable work before changing the state
-Date: Tue, 30 Jan 2018 21:29:08 +0100
-Message-ID: <20180130202913.28724-39-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 24/43] drm/bridge: analogix_dp: Reset aux channel if an
+ error occurred
+Date: Tue, 30 Jan 2018 21:28:54 +0100
+Message-ID: <20180130202913.28724-25-thierry.escande@collabora.com>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset = "utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180130202913.28724-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180130202913.28724-1-thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga@chromium.org>
-
-If we change the state first and reschedule later, we might have the
-work executed according to previous scheduled time and end up with PSR
-re-enabled instantly. Let's cancel the work before changing the state.
-
-While at it, consolidate psr_disable_handler() to just call
-rockchip_drm_do_flush(), as they are both supposed to do the same.
-
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 20 ++++++++------------
- 1 file changed, 8 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-index a107845ba97c..c8655e625ba2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-@@ -138,18 +138,6 @@ static void psr_flush_handler(struct work_struct *work)
- 	mutex_unlock(&psr->lock);
- }
- 
--static void psr_disable_handler(struct work_struct *work)
--{
--	struct psr_drv *psr = container_of(work, struct psr_drv, disable_work);
--
--	/* If the state has changed since we initiated the flush, do nothing */
--	mutex_lock(&psr->lock);
--	if (psr->state == PSR_ENABLE)
--		psr_set_state_locked(psr, PSR_FLUSH);
--	mutex_unlock(&psr->lock);
--	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
--}
--
- /**
-  * rockchip_drm_psr_activate - activate PSR on the given pipe
-  * @encoder: encoder to obtain the PSR encoder
-@@ -198,6 +186,7 @@ EXPORT_SYMBOL(rockchip_drm_psr_deactivate);
- 
- static void rockchip_drm_do_flush(struct psr_drv *psr)
- {
-+	cancel_delayed_work_sync(&psr->flush_work);
- 	psr_set_state(psr, PSR_FLUSH);
- 	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
- }
-@@ -244,6 +233,13 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev)
- }
- EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
- 
-+static void psr_disable_handler(struct work_struct *work)
-+{
-+	struct psr_drv *psr = container_of(work, struct psr_drv, disable_work);
-+
-+	rockchip_drm_do_flush(psr);
-+}
-+
- static void psr_input_event(struct input_handle *handle,
- 			    unsigned int type, unsigned int code,
- 			    int value)
--- 
-2.14.1
+RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCkFVWCBlcnJvcnMgYXJlIGNhdXNl
+ZCBieSBtYW55IGRpZmZlcmVudCByZWFzb25zLiBXZSBtYXkgbm90IGtub3cgd2hhdApoYXBwZW5l
+ZCBpbiBhdXggY2hhbm5lbCBvbiBmYWlsdXJlLCBzbyBsZXQncyByZXNldCBhdXggY2hhbm5lbCBp
+ZiBzb21lCmVycm9ycyBvY2N1cnJlZC4KCkNjOiDlvoHlop4g546LIDx3enpAcm9jay1jaGlwcy5j
+b20+CkNjOiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1v
+ZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
+ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogQW5kcnplaiBI
+YWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
+YWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIHwgMTggKysrKysrKysrKysrKystLS0tCiAxIGZpbGUg
+Y2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIGIvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwppbmRleCBkZWUxYmEx
+MDliNWYuLjdiN2ZkMjI3ZTFmOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
+bmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
+YWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCkBAIC00NjYsNiArNDY2LDEwIEBAIHZvaWQgYW5hbG9n
+aXhfZHBfaW5pdF9hdXgoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJcmVnID0gUlBM
+WV9SRUNFSVYgfCBBVVhfRVJSOwogCXdyaXRlbChyZWcsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lY
+X0RQX0lOVF9TVEEpOwogCisJYW5hbG9naXhfZHBfc2V0X2FuYWxvZ19wb3dlcl9kb3duKGRwLCBB
+VVhfQkxPQ0ssIHRydWUpOworCXVzbGVlcF9yYW5nZSgxMCwgMTEpOworCWFuYWxvZ2l4X2RwX3Nl
+dF9hbmFsb2dfcG93ZXJfZG93bihkcCwgQVVYX0JMT0NLLCBmYWxzZSk7CisKIAlhbmFsb2dpeF9k
+cF9yZXNldF9hdXgoZHApOwogCiAJLyogRGlzYWJsZSBBVVggdHJhbnNhY3Rpb24gSC9XIHJldHJ5
+ICovCkBAIC0xMTU5LDcgKzExNjMsNyBAQCBzc2l6ZV90IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0
+cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCQkJCSByZWcsICEocmVnICYgQVVYX0VOKSwg
+MjUsIDUwMCAqIDEwMDApOwogCWlmIChyZXQpIHsKIAkJZGV2X2VycihkcC0+ZGV2LCAiQVVYIENI
+IGVuYWJsZSB0aW1lb3V0IVxuIik7Ci0JCXJldHVybiAtRVRJTUVET1VUOworCQlnb3RvIGF1eF9l
+cnJvcjsKIAl9CiAKIAkvKiBUT0RPOiBXYWl0IGZvciBhbiBpbnRlcnJ1cHQgaW5zdGVhZCBvZiBs
+b29waW5nPyAqLwpAQCAtMTE2OCw3ICsxMTcyLDcgQEAgc3NpemVfdCBhbmFsb2dpeF9kcF90cmFu
+c2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIAkJCQkgcmVnLCByZWcgJiBSUExZ
+X1JFQ0VJViwgMTAsIDIwICogMTAwMCk7CiAJaWYgKHJldCkgewogCQlkZXZfZXJyKGRwLT5kZXYs
+ICJBVVggQ0ggY21kIHJlcGx5IHRpbWVvdXQhXG4iKTsKLQkJcmV0dXJuIC1FVElNRURPVVQ7CisJ
+CWdvdG8gYXV4X2Vycm9yOwogCX0KIAogCS8qIENsZWFyIGludGVycnVwdCBzb3VyY2UgZm9yIEFV
+WCBDSCBjb21tYW5kIHJlcGx5ICovCkBAIC0xMTc4LDcgKzExODIsNyBAQCBzc2l6ZV90IGFuYWxv
+Z2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCXJlZyA9IHJl
+YWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0lOVF9TVEEpOwogCWlmIChyZWcgJiBBVVhf
+RVJSKSB7CiAJCXdyaXRlbChBVVhfRVJSLCBkcC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9JTlRf
+U1RBKTsKLQkJcmV0dXJuIC1FUkVNT1RFSU87CisJCWdvdG8gYXV4X2Vycm9yOwogCX0KIAogCS8q
+IENoZWNrIEFVWCBDSCBlcnJvciBhY2Nlc3Mgc3RhdHVzICovCkBAIC0xMTg2LDcgKzExOTAsNyBA
+QCBzc2l6ZV90IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2Ug
+KmRwLAogCWlmICgocmVnICYgQVVYX1NUQVRVU19NQVNLKSkgewogCQlkZXZfZXJyKGRwLT5kZXYs
+ICJBVVggQ0ggZXJyb3IgaGFwcGVuZWQ6ICVkXG5cbiIsCiAJCQlyZWcgJiBBVVhfU1RBVFVTX01B
+U0spOwotCQlyZXR1cm4gLUVSRU1PVEVJTzsKKwkJZ290byBhdXhfZXJyb3I7CiAJfQogCiAJaWYg
+KG1zZy0+cmVxdWVzdCAmIERQX0FVWF9JMkNfUkVBRCkgewpAQCAtMTIxMiw0ICsxMjE2LDEwIEBA
+IHNzaXplX3QgYW5hbG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAq
+ZHAsCiAJCW1zZy0+cmVwbHkgPSBEUF9BVVhfTkFUSVZFX1JFUExZX0FDSzsKIAogCXJldHVybiBu
+dW1fdHJhbnNmZXJyZWQgPiAwID8gbnVtX3RyYW5zZmVycmVkIDogLUVCVVNZOworCithdXhfZXJy
+b3I6CisJLyogaWYgYXV4IGVyciBoYXBwZW4sIHJlc2V0IGF1eCAqLworCWFuYWxvZ2l4X2RwX2lu
+aXRfYXV4KGRwKTsKKworCXJldHVybiAtRVJFTU9URUlPOwogfQotLSAKMi4xNC4xCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
