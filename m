@@ -1,94 +1,80 @@
-From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: [PATCH 3/4] arm64: dts: rockchip: add Haikou baseboard with
- RK3368-uQ7 SoM
-Date: Tue, 30 Jan 2018 13:39:30 +0100
-Message-ID: <20180130123931.50781-4-klaus.goger@theobroma-systems.com>
-References: <20180130123931.50781-1-klaus.goger@theobroma-systems.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v2 2/2] drm/bridge/synopsys: dsi: Fix dsi_host_transfer()
+ return value
+Date: Tue, 30 Jan 2018 19:39:26 +0530
+Message-ID: <70cae8dd-ee9e-0313-6518-504ee5ec32ca@codeaurora.org>
+References: <20180125103800.1999-1-philippe.cornu@st.com>
+ <20180125103800.1999-3-philippe.cornu@st.com>
+ <20180126004628.fbrady7twf7ys2qx@ban.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180130123931.50781-1-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180126004628.fbrady7twf7ys2qx@ban.mtv.corp.google.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>, Philippe Cornu <philippe.cornu@st.com>
+Cc: Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Yannick Fertre <yannick.fertre@st.com>, Vincent Abriou <vincent.abriou@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Ludovic Barre <ludovic.barre@st.com>, Mickael Reulier <mickael.reulier@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGFpa291IGlzIGEgUXNldmVuIGFuZCDOvFFzZXZlbiBiYXNlYm9hcmQgdXNlZCBpbiBUaGVvYnJv
-bWEgU3lzdGVtcwpldmFsdWF0aW9uIGtpdHMuIFRoaXMgZHRzIGFkZHMgYSB2ZXJzaW9uIGZvciB1
-c2Ugd2l0aCBhIFJLMzM2OC11UTcgU29NCmNhbGxlZCBMaW9uLgoKU2lnbmVkLW9mZi1ieTogS2xh
-dXMgR29nZXIgPGtsYXVzLmdvZ2VyQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KLS0tCgogLi4uL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1saW9uLWhhaWtvdS5kdHMgfCAxNDYgKysrKysr
-KysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMTQ2IGluc2VydGlvbnMoKykKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1saW9uLWhh
-aWtvdS5kdHMKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2
-OC1saW9uLWhhaWtvdS5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1s
-aW9uLWhhaWtvdS5kdHMKbmV3IGZpbGUgbW9kZSAxMDA2NDQKaW5kZXggMDAwMDAwMDAwMDAwLi43
-OTVmNWY1ZWVhZjQKLS0tIC9kZXYvbnVsbAorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzM2OC1saW9uLWhhaWtvdS5kdHMKQEAgLTAsMCArMSwxNDYgQEAKKy8vIFNQRFgtTGlj
-ZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQorLyoKKyAqIENvcHlyaWdodCAoYykg
-MjAxOCBUaGVvYnJvbWEgU3lzdGVtcyBEZXNpZ24gdW5kIENvbnN1bHRpbmcgR21iSAorICovCisK
-Ky9kdHMtdjEvOworI2luY2x1ZGUgInJrMzM2OC1saW9uLmR0c2kiCisKKy8geworCW1vZGVsID0g
-IlRoZW9icm9tYSBTeXN0ZW1zIFJLMzM2OC11UTcgQmFzZWJvYXJkIjsKKwljb21wYXRpYmxlID0g
-InRzZCxyazMzNjgtbGlvbi1oYWlrb3UiLCAicm9ja2NoaXAscmszMzY4IjsKKworCWNob3NlbiB7
-CisJCXN0ZG91dC1wYXRoID0gInNlcmlhbDA6MTE1MjAwbjgiOworCX07CisKKwlpMmNtdXgyIHsK
-KwkJaTJjQDAgeworCQkJZWVwcm9tOiBlZXByb21ANTAgeworCQkJCWNvbXBhdGlibGUgPSAiYXRt
-ZWwsMjRjMDEiOworCQkJCXBhZ2VzaXplID0gPDg+OworCQkJCXJlZyA9IDwweDUwPjsKKwkJCX07
-CisJCX07CisJfTsKKworCWxlZHMgeworCQlwaW5jdHJsLTAgPSA8JmxlZF9waW5zX21vZHVsZT4s
-IDwmbGVkX3NkX2hhaWtvdT47CisKKwkJc2QtY2FyZC1sZWQgeworCQkJbGFiZWwgPSAic2RfY2Fy
-ZF9sZWQiOworCQkJZ3Bpb3MgPSA8JmdwaW8wIFJLX1BEMiBHUElPX0FDVElWRV9ISUdIPjsKKwkJ
-CWxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJtbWMwIjsKKwkJfTsKKwl9OworCisJZGNfMTJ2OiBk
-Yy0xMnYgeworCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7CisJCXJlZ3VsYXRvci1u
-YW1lID0gImRjXzEydiI7CisJCXJlZ3VsYXRvci1hbHdheXMtb247CisJCXJlZ3VsYXRvci1ib290
-LW9uOworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxMjAwMDAwMD47CisJCXJlZ3VsYXRv
-ci1tYXgtbWljcm92b2x0ID0gPDEyMDAwMDAwPjsKKwl9OworCisJdmNjM3YzX2Jhc2Vib2FyZDog
-dmNjM3YzLWJhc2Vib2FyZCB7CisJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKKwkJ
-cmVndWxhdG9yLW5hbWUgPSAidmNjM3YzX2Jhc2Vib2FyZCI7CisJCXJlZ3VsYXRvci1hbHdheXMt
-b247CisJCXJlZ3VsYXRvci1ib290LW9uOworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwz
-MzAwMDAwPjsKKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47CisJCXZpbi1z
-dXBwbHkgPSA8JmRjXzEydj47CisJfTsKKworCXZjYzV2MF9vdGc6IHZjYzV2MC1vdGctcmVndWxh
-dG9yIHsKKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOworCQllbmFibGUtYWN0aXZl
-LWhpZ2g7CisJCWdwaW8gPSA8JmdwaW8wIFJLX1BENCBHUElPX0FDVElWRV9ISUdIPjsKKwkJcGlu
-Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKKwkJcGluY3RybC0wID0gPCZvdGdfdmJ1c19kcnY+Owor
-CQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2M1djBfb3RnIjsKKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsK
-Kwl9OworfTsKKworJnNkbW1jIHsKKwlidXMtd2lkdGggPSA8ND47CisJY2FwLW1tYy1oaWdoc3Bl
-ZWQ7CisJY2FwLXNkLWhpZ2hzcGVlZDsKKwljZC1ncGlvcyA9IDwmZ3BpbzIgUktfUEIzIEdQSU9f
-QUNUSVZFX0xPVz47CisJZGlzYWJsZS13cDsKKwltYXgtZnJlcXVlbmN5ID0gPDI1MDAwMDAwPjsK
-KwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCXBpbmN0cmwtMCA9IDwmc2RtbWNfY2xrICZz
-ZG1tY19jbWQgJnNkbW1jX2J1czQ+OworCXJvY2tjaGlwLGRlZmF1bHQtc2FtcGxlLXBoYXNlID0g
-PDkwPjsKKwl2bW1jLXN1cHBseSA9IDwmdmNjM3YzX2Jhc2Vib2FyZD47CisJc3RhdHVzID0gIm9r
-YXkiOworfTsKKworJnNwaTIgeworCQljcy1ncGlvcyA9IDwwPiwgPCZncGlvMiBSS19QQzMgR1BJ
-T19BQ1RJVkVfTE9XPjsKKwkJc3RhdHVzID0gIm9rYXkiOworfTsKKworJnVhcnQwIHsKKwlwaW5j
-dHJsLW5hbWVzID0gImRlZmF1bHQiOworCXBpbmN0cmwtMCA9IDwmdWFydDBfeGZlciAmdWFydDBf
-Y3RzICZ1YXJ0MF9ydHM+OworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZ1c2Jfb3RnIHsKKwlk
-cl9tb2RlID0gIm90ZyI7CisJc3RhdHVzID0gIm9rYXkiOworfTsKKworJnVhcnQwIHsKKwlwaW5j
-dHJsLW5hbWVzID0gImRlZmF1bHQiOworCXBpbmN0cmwtMCA9IDwmdWFydDBfeGZlciAmdWFydDBf
-Y3RzICZ1YXJ0MF9ydHM+OworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZ1YXJ0MSB7CisJLyog
-YWx0ZXJuYXRlIGZ1bmN0aW9uIG9mIEdQSU81LzYgKi8KKwlzdGF0dXMgPSAiZGlzYWJsZWQiOwor
-fTsKKworJnBpbmN0cmwgeworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisJcGluY3RybC0w
-ID0gPCZoYWlrb3VfcGluX2hvZz47CisKKwlob2cgeworCQloYWlrb3VfcGluX2hvZzogaGFpa291
-LXBpbi1ob2cgeworCQkJcm9ja2NoaXAscGlucyA9CisJCQkgIC8qIExJRF9CVE4gKi8KKwkJCSAg
-PFJLX0dQSU8zIFJLX1BBNiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD4sCisJCQkgIC8qIEJB
-VExPVyMgKi8KKwkJCSAgPFJLX0dQSU8wIFJLX1BENiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91
-cD4sCisJCQkgIC8qIFNMUF9CVE4jICovCisJCQkgIDxSS19HUElPMyBSS19QQTIgUktfRlVOQ19H
-UElPICZwY2ZnX3B1bGxfdXA+LAorCQkJICAvKiBCSU9TX0RJU0FCTEUjICovCisJCQkgIDxSS19H
-UElPMyBSS19QQTAgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+OworCQl9OworCX07CisKKwls
-ZWRzIHsKKwkJbGVkX3NkX2hhaWtvdTogbGVkLXNkLWdwaW8geworCQkJcm9ja2NoaXAscGlucyA9
-CisJCQkgIDxSS19HUElPMCBSS19QRDIgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47CisJ
-CX07CisJfTsKKworCXNkbW1jIHsKKwkJc2RtbWNfY2RfZ3Bpbzogc2RtbWMtY2QtZ3BpbyB7CisJ
-CQlyb2NrY2hpcCxwaW5zID0KKwkJCSAgPFJLX0dQSU8yIFJLX1BCMyBSS19GVU5DX0dQSU8gJnBj
-ZmdfcHVsbF9ub25lPjsKKwkJfTsKKwl9OworCisJdXNiX290ZyB7CisJCW90Z192YnVzX2Rydjog
-b3RnLXZidXMtZHJ2IHsKKwkJCXJvY2tjaGlwLHBpbnMgPQorCQkJICA8UktfR1BJTzAgUktfUEQ0
-IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OworCQl9OworCX07Cit9OwotLSAKMi4xMS4w
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+
+
+On 01/26/2018 06:16 AM, Brian Norris wrote:
+> On Thu, Jan 25, 2018 at 11:38:00AM +0100, Philippe Cornu wrote:
+>> The dw_mipi_dsi_host_transfer() must return the number of
+>> bytes transmitted/received on success instead of 0.
+>> Note: As the read feature is not implemented, only the
+>> transmitted number of bytes is returned for the moment.
+>>
+>> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
+> 
+> Assuming we're going with the current documented semantics (where we
+> return # of TX bytes for writes), then:
+> 
+> Reviewed-by: Brian Norris <briannorris@chromium.org>
+> 
+> I believe Archit was suggesting maybe changing that sometime, but that's
+> no excuse for not matching documentation now.
+
+Queued to drm-misc-next.
+
+Thanks,
+Archit
+
+> 
+>> ---
+>>   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 11 ++++++++++-
+>>   1 file changed, 10 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+>> index 72ecaeb40822..090bf62d1ea8 100644
+>> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+>> @@ -419,7 +419,16 @@ static ssize_t dw_mipi_dsi_host_transfer(struct mipi_dsi_host *host,
+>>   
+>>   	dw_mipi_message_config(dsi, msg);
+>>   
+>> -	return dw_mipi_dsi_write(dsi, &packet);
+>> +	ret = dw_mipi_dsi_write(dsi, &packet);
+>> +	if (ret)
+>> +		return ret;
+>> +
+>> +	/*
+>> +	 * TODO Only transmitted size is returned as actual driver does
+>> +	 * not support dcs/generic reads. Please update return value when
+>> +	 * delivering the read feature.
+>> +	 */
+>> +	return packet.size;
+> 
+> You're really holding my hand here, I see :) Thanks I guess.
+> 
+>>   }
+>>   
+>>   static const struct mipi_dsi_host_ops dw_mipi_dsi_host_ops = {
+>> -- 
+>> 2.15.1
+>>
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
