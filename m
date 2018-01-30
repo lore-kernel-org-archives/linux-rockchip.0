@@ -1,128 +1,106 @@
-From: Thierry Escande <thierry.escande@collabora.com>
-Subject: [PATCH v3 35/43] drm/bridge: analogix_dp: Split the platform-specific poweron in two parts
-Date: Tue, 30 Jan 2018 21:29:05 +0100
-Message-ID: <20180130202913.28724-36-thierry.escande@collabora.com>
-References: <20180130202913.28724-1-thierry.escande@collabora.com>
+From: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 00/43] DRM Rockchip rk3399 (Kevin)
+Date: Tue, 30 Jan 2018 21:28:30 +0100
+Message-ID: <20180130202913.28724-1-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset = "utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180130202913.28724-1-thierry.escande@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Transfert-Encoding: 8bit
-Sender: linux-kernel-owner@vger.kernel.org
-To: Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Haixia Shi <hshi@chromium.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide@arm.com>, Zain Wang <wzz@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?=C3=98rjan=20Eide?= <orjan.eide-5wv7dgnIgG8@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Haixia Shi <hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Douglas Anderson <dianders@chromium.org>
-
-Some of the platform-specific stuff in rockchip_dp_poweron() needs to
-happen before the generic code.  Some needs to happen after.  Let's
-split the callback in two.
-
-Specifically we can't start doing PSR work until _after_ the whole
-controller is up, so don't set the enable until the end.
-
-Cc: Kristian H. Kristensen <hoegsberg@chromium.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-[seanpaul added exynos change]
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  7 +++++--
- drivers/gpu/drm/exynos/exynos_dp.c                 |  2 +-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 12 ++++++++++--
- include/drm/bridge/analogix_dp.h                   |  3 ++-
- 4 files changed, 18 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 23404de7ffc9..8217c106c72b 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1264,8 +1264,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 		goto out_dp_clk_pre;
- 	}
- 
--	if (dp->plat_data->power_on)
--		dp->plat_data->power_on(dp->plat_data);
-+	if (dp->plat_data->power_on_start)
-+		dp->plat_data->power_on_start(dp->plat_data);
- 
- 	phy_power_on(dp->phy);
- 
-@@ -1290,6 +1290,9 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 		goto out_dp_init;
- 	}
- 
-+	if (dp->plat_data->power_on_end)
-+		dp->plat_data->power_on_end(dp->plat_data);
-+
- 	enable_irq(dp->irq);
- 	return 0;
- 
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 33319a858f3a..b316249a3f89 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -162,7 +162,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
- 	dp->drm_dev = drm_dev;
- 
- 	dp->plat_data.dev_type = EXYNOS_DP;
--	dp->plat_data.power_on = exynos_dp_poweron;
-+	dp->plat_data.power_on_start = exynos_dp_poweron;
- 	dp->plat_data.power_off = exynos_dp_poweroff;
- 	dp->plat_data.attach = exynos_dp_bridge_attach;
- 	dp->plat_data.get_modes = exynos_dp_get_modes;
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index b3f46ed24cdc..23317a2269e1 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -109,7 +109,7 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
- 	return 0;
- }
- 
--static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
-+static int rockchip_dp_poweron_start(struct analogix_dp_plat_data *plat_data)
- {
- 	struct rockchip_dp_device *dp = to_dp(plat_data);
- 	int ret;
-@@ -127,6 +127,13 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- 		return ret;
- 	}
- 
-+	return ret;
-+}
-+
-+static int rockchip_dp_poweron_end(struct analogix_dp_plat_data *plat_data)
-+{
-+	struct rockchip_dp_device *dp = to_dp(plat_data);
-+
- 	return rockchip_drm_psr_activate(&dp->encoder);
- }
- 
-@@ -330,7 +337,8 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
- 	dp->plat_data.encoder = &dp->encoder;
- 
- 	dp->plat_data.dev_type = dp->data->chip_type;
--	dp->plat_data.power_on = rockchip_dp_poweron;
-+	dp->plat_data.power_on_start = rockchip_dp_poweron_start;
-+	dp->plat_data.power_on_end = rockchip_dp_poweron_end;
- 	dp->plat_data.power_off = rockchip_dp_powerdown;
- 	dp->plat_data.get_modes = rockchip_dp_get_modes;
- 
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index c2788483c882..b384f7e8d14a 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -32,7 +32,8 @@ struct analogix_dp_plat_data {
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
- 
--	int (*power_on)(struct analogix_dp_plat_data *);
-+	int (*power_on_start)(struct analogix_dp_plat_data *);
-+	int (*power_on_end)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
- 	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
- 		      struct drm_connector *);
--- 
-2.14.1
+SGksCgpUaGlzIHBhdGNoc2V0IGluY2x1ZGVzIGNsZWFudXBzLCBpbXByb3ZlbWVudHMsIGFuZCBi
+dWcgZml4ZXMgZm9yClJvY2tjaGlwIERSTSBkcml2ZXIgYW5kIFBTUiBzdXBwb3J0LgoKdGhpcyBw
+YXRjaHNldCBkZXBlbmRzIGFuZCBuZWVkcyB0byBiZSBhcHBsaWVkIG9uIHRvcCBvZiBSb2NrY2hp
+cCByazMzOTkKZURQIHN1cHBvcnQgWzFdLgoKWzFdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE4
+LzEvMTAvNjgyCgpSZWdhcmRzLApUaGllcnJ5CgpDaGFuZ2VzIGluIHYzOgotIEFkZHJlc3NlZCBz
+b21lIG9mIHRoZSBjb21tZW50cyBmcm9tIFNlYW4gb24gdGhlIHYyCgpDaGFuZ2VzIGluIHYyOgot
+IEEgZmV3IHBhdGNoZXMgaGF2ZSBiZWVuIHJlcGxhY2VkIGJ5IG5ld2VyIGFuZCBjbGVhbmVyIHZl
+cnNpb25zIGZyb20KICB0aGUgQ2hyb21lT1Mga2VybmVsIGdlcnJpdCwgZXNwZWNpYWxseSBhYm91
+dCBkaXNhbGxvd2luZyBQU1IgZm9yIHRoZQogIHdob2xlIGF0b21pYyBjb21taXQuCgpEb3VnbGFz
+IEFuZGVyc29uICg0KToKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmVvcmRlciBwbGF0X2Rh
+dGEtPnBvd2VyX29mZiB0byBoYXBwZW4gc29vbmVyCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6
+IFByb3Blcmx5IGxvZyBBVVggQ0ggZXJyb3JzCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFBy
+b3Blcmx5IGRpc2FibGUgYXV4IGNoYW4gcmV0cmllcyBvbiByb2NrY2hpcAogIGRybS9icmlkZ2U6
+IGFuYWxvZ2l4X2RwOiBTcGxpdCB0aGUgcGxhdGZvcm0tc3BlY2lmaWMgcG93ZXJvbiBpbiB0d28K
+ICAgIHBhcnRzCgpIYWl4aWEgU2hpICgxKToKICBkcm0vcm9ja2NoaXA6IHN1cHBvcnQgcHJpbWUg
+aW1wb3J0IHNnIHRhYmxlCgpLcmlzdGlhbiBILiBLcmlzdGVuc2VuICgxKToKICBkcm0vcm9ja2No
+aXA6IERpc2FibGUgUFNSIG9uIGlucHV0IGV2ZW50cwoKTGluIEh1YW5nICg2KToKICBkcm0vYnJp
+ZGdlOiBhbmFsb2dpeF9kcDogTW92ZSBlbmFibGUgdmlkZW8gaW50byBjb25maWdfdmlkZW8oKQog
+IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBDaGVjayBBVVhfRU4gc3RhdHVzIHdoZW4gZG9pbmcg
+QVVYIHRyYW5zZmVyCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEVuc3VyZSBlZHAgaXMgZGlz
+YWJsZWQgd2hlbiBzaHV0dGluZyBkb3duIHRoZQogICAgcGFuZWwKICBkcm0vYnJpZGdlOiBhbmFs
+b2dpeF9kcDogRXh0ZW5kIGhwZCBjaGVjayB0aW1lIHRvIDEwMG1zCiAgZHJtL2JyaWRnZTogYW5h
+bG9naXhfZHA6IENoZWNrIGRwY2Qgd3JpdGUvcmVhZCBzdGF0dXMKICBkcm0vYnJpZGdlOiBhbmFs
+b2dpeF9kcDogUmVzZXQgYXV4IGNoYW5uZWwgaWYgYW4gZXJyb3Igb2NjdXJyZWQKCk1hcmsgWWFv
+ICgxKToKICBkcm0vcm9ja2NoaXA6IHByZSBkaXRoZXIgZG93biB3aGVuIG91dHB1dCBicGMgaXMg
+OGJpdAoKU2VhbiBQYXVsICgzKToKICBkcm0vcm9ja2NoaXA6IERvbid0IHVzZSBhdG9taWMgY29u
+c3RydWN0cyBmb3IgcHNyCiAgZHJtL3JvY2tjaGlwOiBSZW1vdmUgYW5hbG9naXggcHNyIHdvcmtl
+cgogIGRybS9wYW5lbDogc2ltcGxlOiBDaGFuZ2UgbW9kZSBmb3IgU2hhcnAgbHExMjNwMWp4MzEK
+ClRvbWFzeiBGaWdhICg4KToKICBkcm0vcm9ja2NoaXA6IEdldCByaWQgb2YgdW5uZWNlc3Nhcnkg
+c3RydWN0IGZpZWxkcwogIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IERvIG5vdCBjYWxsIEFu
+YWxvZ2l4IGNvZGUgYmVmb3JlIGJpbmQKICBkcm0vcm9ja2NoaXA6IENhbmNlbCBQU1IgZW5hYmxl
+IHdvcmsgYmVmb3JlIGNoYW5naW5nIHRoZSBzdGF0ZQogIGRybS9yb2NrY2hpcDogcHNyOiBBdm9p
+ZCByZWR1bmRhbnQgY2FsbHMgdG8gLnNldCgpIGNhbGxiYWNrCiAgZHJtL3JvY2tjaGlwOiBwc3I6
+IFNhbml0aXplIHNlbWFudGljcyBvZiBhbGxvdy9kaXNhbGxvdyBBUEkKICBkcm0vcm9ja2NoaXA6
+IERpc2FibGUgUFNSIGZyb20gcmVib290IG5vdGlmaWVyCiAgZHJtL3JvY2tjaGlwOiBEaXNhbGxv
+dyBQU1IgZm9yIHRoZSB3aG9sZSBhdG9taWMgY29tbWl0CiAgZHJtL3JvY2tjaGlwOiBwc3I6IFJl
+bW92ZSBmbHVzaCBieSBDUlRDCgpZYWtpciBZYW5nICgxKToKICBkcm0vYnJpZGdlOiBhbmFsb2dp
+eF9kcDogZGV0ZWN0IFNpbmsgUFNSIHN0YXRlIGFmdGVyIGNvbmZpZ3VyaW5nIHRoZQogICAgUFNS
+Cgp6YWluIHdhbmcgKDE3KToKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogc2V0IHBzciBhY3Rp
+dmF0ZS9kZWFjdGl2YXRlIHdoZW4KICAgIGVuYWJsZS9kaXNhYmxlIGJyaWRnZQogIGRybS9icmlk
+Z2U6IGFuYWxvZ2l4X2RwOiBEb24ndCBwb3dlciBicmlkZ2UgaW4gYW5hbG9naXhfZHBfYmluZAog
+IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24ndCBjaGFuZ2UgcHNyIHdoaWxlIGJyaWRnZSBp
+cyBkaXNhYmxlZAogIGRybS9yb2NrY2hpcDogYWRkIG11dGV4IHZvcCBsb2NrCiAgZHJtL2JyaWRn
+ZTogYW5hbG9naXhfZHA6IGFkZCBmYXN0IGxpbmsgdHJhaW4gZm9yIGVEUAogIGRybS9yb2NrY2hp
+cDogT25seSB3YWl0IGZvciBwYW5lbCBBQ0sgb24gUFNSIGVudHJ5CiAgZHJtL2JyaWRnZTogYW5h
+bG9naXhfZHA6IERvbid0IHVzZSBmYXN0IGxpbmsgdHJhaW5pbmcgd2hlbiBwYW5lbCBqdXN0CiAg
+ICBwb3dlcmVkIHVwCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFJldHJ5IGJyaWRnZSBlbmFi
+bGUgd2hlbiBpdCBmYWlsZWQKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogV2FpdCBmb3IgSFBE
+IHNpZ25hbCBiZWZvcmUgY29uZmlndXJpbmcgbGluawogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2Rw
+OiBTZXQgUERfSU5DX0JHIGZpcnN0IHdoZW4gcG93ZXJpbmcgdXAgZWRwIHBoeQogIGRybS9icmlk
+Z2U6IGFuYWxvZ2l4X2RwOiBGaXggaW5jb3JyZWN0IHVzYWdlIG9mIGVuaGFuY2VkIG1vZGUKICBk
+cm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRml4IEFVWF9QRCBiaXQgZm9yIFJvY2tjaGlwCiAgZHJt
+L3JvY2tjaGlwOiBSZXN0b3JlIHBzci0+c3RhdGUgd2hlbiBlbmFibGUvZGlzYWJsZSBwc3IgZmFp
+bGVkCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IERvbid0IHVzZSBBTkFMT0dJWF9EUF9QTExf
+Q1RMIHRvIGNvbnRyb2wgcGxsCiAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEZpeCB0aW1lb3V0
+IG9mIHZpZGVvIHN0cmVhbWNsayBjb25maWcKICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRml4
+IGluY29ycmVjdCBvcGVyYXRpb25zIHdpdGggcmVnaXN0ZXIKICAgIEFOQUxPR0lYX0RQX0ZVTkNf
+RU5fMQogIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBNb3ZlIGZhc3QgbGluayB0cmFpbmluZyBk
+ZXRlY3QgdG8gc2V0X2JyaWRnZQoKw5hyamFuIEVpZGUgKDEpOgogIGRybS9yb2NrY2hpcDogUmVz
+cGVjdCBwYWdlIG9mZnNldCBmb3IgUFJJTUUgbW1hcCBjYWxscwoKIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgNDc1ICsrKysrKysrKysrKysrKy0t
+LS0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgg
+fCAgMTQgKy0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVn
+LmMgIHwgMjc0ICsrKysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9yZWcuaCAgfCAgIDcgKwogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3Nf
+ZHAuYyAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5l
+bC1zaW1wbGUuYyAgICAgICAgICAgICAgIHwgICA3ICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAgICB8ICA3MyArKy0tCiBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jICAgICAgICB8ICAgMyArLQogZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCAgICAgICAgfCAgIDMgKy0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyAgICAgICAgIHwgIDYxICsrLQogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyAgICAgICAgfCAxMjUgKysr
+KystCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oICAgICAgICB8
+ICAgNSArLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9wc3IuYyAgICAg
+ICAgfCAzNjEgKysrKysrKysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9wc3IuaCAgICAgICAgfCAgIDcgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMgICAgICAgIHwgIDUyICsrLQogZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuaCAgICAgICAgfCAgIDEgKwogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyAgICAgICAgfCAgIDEgKwogaW5jbHVkZS9kcm0vYnJp
+ZGdlL2FuYWxvZ2l4X2RwLmggICAgICAgICAgICAgICAgICAgfCAgIDUgKy0KIDE4IGZpbGVzIGNo
+YW5nZWQsIDEwNDggaW5zZXJ0aW9ucygrKSwgNDI4IGRlbGV0aW9ucygtKQoKLS0gCjIuMTQuMQoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
