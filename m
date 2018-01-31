@@ -1,99 +1,69 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
-	the IOMMU
-Date: Wed, 31 Jan 2018 07:50:59 -0600
-Message-ID: <CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
-	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
-	<20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
-	<CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg@mail.gmail.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH v3 33/43] drm/panel: simple: Change mode for Sharp
+ lq123p1jx31
+Date: Wed, 31 Jan 2018 10:16:37 -0500
+Message-ID: <CAOw6vbKsG=B7vV5_NcwgeAc-=guRN1Xh-dCxKytkDeOjayatLw@mail.gmail.com>
+References: <20180130202913.28724-1-thierry.escande@collabora.com>
+ <20180130202913.28724-34-thierry.escande@collabora.com>
+ <1517403243.14302.1.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
-	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
-	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1517403243.14302.1.camel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Lucas Stach <l.stach@pengutronix.de>
+Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jan 31, 2018 at 1:52 AM, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> Hi Rob,
->
-> On Wed, Jan 31, 2018 at 2:05 AM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->> On Wed, Jan 24, 2018 at 06:35:11PM +0800, Jeffy Chen wrote:
->>> From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>
->>> Current code relies on master driver enabling necessary clocks before
->>> IOMMU is accessed, however there are cases when the IOMMU should be
->>> accessed while the master is not running yet, for example allocating
->>> V4L2 videobuf2 buffers, which is done by the VB2 framework using DMA
->>> mapping API and doesn't engage the master driver at all.
->>>
->>> This patch fixes the problem by letting clocks needed for IOMMU
->>> operation to be listed in Device Tree and making the driver enable them
->>> for the time of accessing the hardware.
->>>
->>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>> ---
->>>
->>> Changes in v5:
->>> Use clk_bulk APIs.
->>>
->>> Changes in v4: None
->>> Changes in v3: None
->>> Changes in v2: None
->>>
->>>  .../devicetree/bindings/iommu/rockchip,iommu.txt   |  8 +++
->>
->> Please split binding patches to a separate patch.
->>
->>>  drivers/iommu/rockchip-iommu.c                     | 74 ++++++++++++++++++++--
->>>  2 files changed, 76 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>> index 2098f7732264..33dd853359fa 100644
->>> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>> @@ -14,6 +14,13 @@ Required properties:
->>>                      "single-master" device, and needs no additional information
->>>                      to associate with its master device.  See:
->>>                      Documentation/devicetree/bindings/iommu/iommu.txt
->>> +Optional properties:
->>> +- clocks : A list of master clocks requires for the IOMMU to be accessible
->>> +           by the host CPU. The number of clocks depends on the master
->>> +           block and might as well be zero. See [1] for generic clock
->>> +           bindings description.
->>
->> Hardware blocks don't have a variable number of clock connections.
->
-> I think you underestimate the imagination of hardware designers. :)
-
-Learned long ago to never do that. If there are 2 ways to do
-something, they will find a 3rd way.
-
-> For Rockchip IOMMU, there is a set of clocks, which all need to be
-> enabled for IOMMU register access to succeed. The clocks are not
-> directly fed to the IOMMU, but they are needed for the various buses
-> and intermediate blocks on the way to the IOMMU to work.
-
-The binding should describe the clock connections, not what clocks a
-driver needs (currently). It sounds like a lack of managing bus clocks
-to me.
-
-In any case, the binding must be written so it can be verified. If you
-can have any number of clocks with any names, there's no point in
-documenting.
-
-Rob
+T24gV2VkLCBKYW4gMzEsIDIwMTggYXQgNzo1NCBBTSwgTHVjYXMgU3RhY2ggPGwuc3RhY2hAcGVu
+Z3V0cm9uaXguZGU+IHdyb3RlOgo+IEFtIERpZW5zdGFnLCBkZW4gMzAuMDEuMjAxOCwgMjE6Mjkg
+KzAxMDAgc2NocmllYiBUaGllcnJ5IEVzY2FuZGU6Cj4+IEZyb206IFNlYW4gUGF1bCA8c2VhbnBh
+dWxAY2hyb21pdW0ub3JnPgo+Pgo+PiBDaGFuZ2UgdGhlIG1vZGUgZm9yIFNoYXJwIGxxMTIzcDFq
+eDMxIHBhbmVsIHRvIHNvbWV0aGluZyBtb3JlCj4+IHJvY2tjaGlwLWZyaWVuZGx5IHN1Y2ggdGhh
+dCB3ZSBjYW4gdXNlIHRoZSBmaXhlZCBQTExzIHRvCj4+IGdlbmVyYXRlIHRoZSBwaXhlbCBjbG9j
+awo+Cj4gVGhpcyBzaG91bGQgcmVhbGx5IHN3aXRjaCB0byBhIGRpc3BsYXkgdGltaW5nIGluc3Rl
+YWQgb2YgZXhwb3NpbmcgYQo+IHNpbmdsZSBtb2RlLiBUaGUgZGlzcGxheSB0aW1pbmcgaGFzIG1p
+biwgdHlwaWNhbCwgbWF4IHR1cGxlcyBmb3IgYWxsCj4gdGhlIHRpbWluZ3MgdmFsdWVzLCB3aGlj
+aCB3b3VsZCBhbGxvdyB0aGUgYXR0YWNoZWQgZHJpdmVyIHRvIHZhcnkgdGhlCj4gdGltaW5ncyBp
+bnNpZGUgdGhlIGFsbG93ZWQgYm91bmRzIGlmIGl0IG1ha2VzIHNlbnNlLgo+Cj4gVHJ5aW5nIHRv
+IGhpdCBhIHNwZWNpZmljIHBpeGVsIGNsb2NrIHRvIGZyZWUgdXAgYSBQTEwgaXMgZXhhY3RseSBv
+bmUgb2YKPiB0aGUgdXNlIGNhc2VzIGVudmlzaW9uZWQgZm9yIHRoZSBkaXNwbGF5IHRpbWluZ3Mg
+c3R1ZmYuCj4KCkFncmVlZCwgSSB0aGluayB3ZSBoYWQgdGhpcyBkaXNjdXNzaW9uIHRoZSBmaXJz
+dCB0aW1lIGFyb3VuZC4gV2UKc2hvdWxkIGRyb3AgdGhpcyBwYXRjaC4KClRoYW5rcyBmb3IgY2F0
+Y2hpbmcgdGhpcyEKClNlYW4KCj4gUmVnYXJkcywKPiBMdWNhcwo+Cj4+IENjOiBDaHJpcyBaaG9u
+ZyA8enl3QHJvY2stY2hpcHMuY29tPgo+PiBDYzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hl
+dUBjaHJvbWl1bS5vcmc+Cj4+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hy
+b21pdW0ub3JnPgo+PiBTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNj
+YW5kZUBjb2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5l
+bC1zaW1wbGUuYyB8IDcgKysrKy0tLQo+PiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygr
+KSwgMyBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5l
+bC9wYW5lbC1zaW1wbGUuYwo+PiBiL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUu
+Ywo+PiBpbmRleCA1NTkxOTg0YTM5MmIuLmE0YTZlYTNjYTBlNiAxMDA2NDQKPj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9wYW5lbC9wYW5lbC1zaW1wbGUuYwo+PiBAQCAtMTc0MiwxNyArMTc0MiwxOCBAQCBzdGF0aWMg
+Y29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MKPj4gc2hhcnBfbHExMDFrMWx5MDQgPSB7Cj4+ICB9Owo+
+Pgo+PiAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIHNoYXJwX2xxMTIzcDFq
+eDMxX21vZGUgPSB7Cj4+IC0gICAgIC5jbG9jayA9IDI1Mjc1MCwKPj4gKyAgICAgLmNsb2NrID0g
+MjY2NjY3LAo+PiAgICAgICAuaGRpc3BsYXkgPSAyNDAwLAo+PiAgICAgICAuaHN5bmNfc3RhcnQg
+PSAyNDAwICsgNDgsCj4+ICAgICAgIC5oc3luY19lbmQgPSAyNDAwICsgNDggKyAzMiwKPj4gLSAg
+ICAgLmh0b3RhbCA9IDI0MDAgKyA0OCArIDMyICsgODAsCj4+ICsgICAgIC5odG90YWwgPSAyNDAw
+ICsgNDggKyAzMiArIDEzOSwKPj4gICAgICAgLnZkaXNwbGF5ID0gMTYwMCwKPj4gICAgICAgLnZz
+eW5jX3N0YXJ0ID0gMTYwMCArIDMsCj4+ICAgICAgIC52c3luY19lbmQgPSAxNjAwICsgMyArIDEw
+LAo+PiAtICAgICAudnRvdGFsID0gMTYwMCArIDMgKyAxMCArIDMzLAo+PiArICAgICAudnRvdGFs
+ID0gMTYwMCArIDMgKyAxMCArIDg0LAo+PiAgICAgICAudnJlZnJlc2ggPSA2MCwKPj4gICAgICAg
+LmZsYWdzID0gRFJNX01PREVfRkxBR19OVlNZTkMgfCBEUk1fTU9ERV9GTEFHX05IU1lOQywKPj4g
+KyAgICAgLnR5cGUgPSBEUk1fTU9ERV9UWVBFX1BSRUZFUlJFRCB8IERSTV9NT0RFX1RZUEVfRFJJ
+VkVSLAo+PiAgfTsKPj4KPj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGFuZWxfZGVzYyBzaGFycF9s
+cTEyM3AxangzMSA9IHsKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
