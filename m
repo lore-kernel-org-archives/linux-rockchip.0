@@ -1,68 +1,120 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 33/43] drm/panel: simple: Change mode for Sharp
- lq123p1jx31
-Date: Wed, 31 Jan 2018 08:52:59 -0800
-Message-ID: <CAD=FV=UB+ovYFSi2aB_qe3igX3K7BxMWaEEoNPx1UMdscKwQtQ@mail.gmail.com>
-References: <20180130202913.28724-1-thierry.escande@collabora.com>
- <20180130202913.28724-34-thierry.escande@collabora.com>
- <1517403243.14302.1.camel@pengutronix.de>
- <CAOw6vbKsG=B7vV5_NcwgeAc-=guRN1Xh-dCxKytkDeOjayatLw@mail.gmail.com>
+From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
+	the IOMMU
+Date: Thu, 01 Feb 2018 19:19:46 +0800
+Message-ID: <5A72F7D2.1050201@rock-chips.com>
+References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
+	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
+	<20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
+	<CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg@mail.gmail.com>
+	<CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAOw6vbKsG=B7vV5_NcwgeAc-=guRN1Xh-dCxKytkDeOjayatLw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Haixia Shi <hshi@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, list-Y9sIeH5OGRo@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, open-Y9sIeH5OGRo@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgoKT24gV2VkLCBKYW4gMzEsIDIwMTggYXQgNzoxNiBBTSwgU2VhbiBQYXVsIDxzZWFucGF1
-bEBjaHJvbWl1bS5vcmc+IHdyb3RlOgo+IE9uIFdlZCwgSmFuIDMxLCAyMDE4IGF0IDc6NTQgQU0s
-IEx1Y2FzIFN0YWNoIDxsLnN0YWNoQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPj4gQW0gRGllbnN0
-YWcsIGRlbiAzMC4wMS4yMDE4LCAyMToyOSArMDEwMCBzY2hyaWViIFRoaWVycnkgRXNjYW5kZToK
-Pj4+IEZyb206IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+Pj4KPj4+IENoYW5n
-ZSB0aGUgbW9kZSBmb3IgU2hhcnAgbHExMjNwMWp4MzEgcGFuZWwgdG8gc29tZXRoaW5nIG1vcmUK
-Pj4+IHJvY2tjaGlwLWZyaWVuZGx5IHN1Y2ggdGhhdCB3ZSBjYW4gdXNlIHRoZSBmaXhlZCBQTExz
-IHRvCj4+PiBnZW5lcmF0ZSB0aGUgcGl4ZWwgY2xvY2sKPj4KPj4gVGhpcyBzaG91bGQgcmVhbGx5
-IHN3aXRjaCB0byBhIGRpc3BsYXkgdGltaW5nIGluc3RlYWQgb2YgZXhwb3NpbmcgYQo+PiBzaW5n
-bGUgbW9kZS4gVGhlIGRpc3BsYXkgdGltaW5nIGhhcyBtaW4sIHR5cGljYWwsIG1heCB0dXBsZXMg
-Zm9yIGFsbAo+PiB0aGUgdGltaW5ncyB2YWx1ZXMsIHdoaWNoIHdvdWxkIGFsbG93IHRoZSBhdHRh
-Y2hlZCBkcml2ZXIgdG8gdmFyeSB0aGUKPj4gdGltaW5ncyBpbnNpZGUgdGhlIGFsbG93ZWQgYm91
-bmRzIGlmIGl0IG1ha2VzIHNlbnNlLgo+Pgo+PiBUcnlpbmcgdG8gaGl0IGEgc3BlY2lmaWMgcGl4
-ZWwgY2xvY2sgdG8gZnJlZSB1cCBhIFBMTCBpcyBleGFjdGx5IG9uZSBvZgo+PiB0aGUgdXNlIGNh
-c2VzIGVudmlzaW9uZWQgZm9yIHRoZSBkaXNwbGF5IHRpbWluZ3Mgc3R1ZmYuCj4+Cj4KPiBBZ3Jl
-ZWQsIEkgdGhpbmsgd2UgaGFkIHRoaXMgZGlzY3Vzc2lvbiB0aGUgZmlyc3QgdGltZSBhcm91bmQu
-IFdlCj4gc2hvdWxkIGRyb3AgdGhpcyBwYXRjaC4KPgo+IFRoYW5rcyBmb3IgY2F0Y2hpbmcgdGhp
-cyEKCkFyZSB5b3Ugc3VyZSB3ZSBzaG91bGQgZHJvcCB0aGlzPyAgSW4gb3JkZXIgZm9yIHRoaW5n
-cyB0byB3b3JrCnByb3Blcmx5IChub3QgZ2VuZXJhdGUgbm9pc2Ugb24gdGhlIGRpZ2l0aXplciBv
-ciBvdGhlciBFTUkpLCB0aGlzCm5lZWRzIHRvIHJ1biBhdCBhIHZlcnkgc3BlY2lmaWMgcGl4ZWwg
-Y2xvY2sgd2l0aCB2ZXJ5IHNwZWNpZmljCmJsYW5raW5nIHRpbWVzLiAgSSBrbm93IHRoYXQgZWFy
-bGllciB3ZSBoYWQgc2xpZ2h0bHkgZGlmZmVyZW50CmJsYW5raW5nIHRpbWVzIGFuZCBTYW1zdW5n
-IGNhbWUgYmFjayBhbmQgc2FpZCB0aGF0IHRoZXJlIHdhcyBub2lzZSBvbgp0aGUgZGlnaXRpemVy
-LiAgSSBjb3VsZCBiZSB3cm9uZywgYnV0IEkgZG9uJ3QgdGhpbmsgdGhlcmUncyBhbnkgd2F5CmN1
-cnJlbnRseSB0byBiZSBhYmxlIHRvIHNwZWNpZnkgZXhhY3RseSB3aGF0IHRpbWluZ3Mgc2hvdWxk
-IGJlIHVzZWQgb24KYSBwYXJ0aWN1bGFyIGJvYXJkLgoKRG9uJ3QgZ2V0IGJlIHdyb25nLS1JIHRo
-aW5rIGEgcGF0Y2ggc3VjaCBhcyB0aGlzIG9uZSB0aGF0IGNsYWltcyBhCnNpbmdsZSBib2FyZCdz
-IHRpbWluZ3MgYXMgdGhlICJyaWdodCIgb25lcyBmb3IgYSBnZW5lcmljIHBhbmVsIGlzIGEKYml0
-IG9mIGEgaGFjay4gIC4uLmJ1dCBhdCB0aGUgc2FtZSB0aW1lIHRoZXJlIGFyZSBubyBvdGhlciB1
-c2VycyBvZgp0aGlzIHBhbmVsICh0aGF0IEkga25vdyBvZikgaW4gbWFpbmxpbmUgYW5kIHRoZSB0
-aW1pbmdzIHByZXNlbnRlZCBoZXJlCmFyZSBjZXJ0YWlubHkgc2FuZSB0aW1pbmdzIGZvciB0aGlz
-IHBhbmVsLgoKSW4gYW55IGNhc2UsIHByZXZpb3VzIGRpc2N1c3Npb24gYXQ6IGh0dHBzOi8vcGF0
-Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTYxNDYwMy8KCgouLi5vaCwgYW5kIGxvb2tpbmcgYXQg
-dGhlIHByZXZpb3VzIGRpc2N1c3Npb24gcmVtaW5kcyBtZSB0aGF0IHRoZQp0aW1pbmdzIHByZXNl
-bnRlZCBpbiB0aGlzIGhlcmUgcGF0Y2ggYXJlIGFjdHVhbGx5IG5vdCB0aGUgcmlnaHQgb25lcwoo
-dGhleSBoYXZlIHRoZSByaWdodCBQTEwsIGJ1dCB0aGUgd3JvbmcgYmxhbmtpbmdzIHRvIGF2b2lk
-IHRoZSBub2lzZQppc3N1ZXMpLiAgU2VlIDwvL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2Uu
-Y29tLzM4MTAxNT4KCgoKLURvdWcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVsCg==
+Hi Rob,
+
+Thanks for your reply.
+
+On 01/31/2018 09:50 PM, Rob Herring wrote:
+> On Wed, Jan 31, 2018 at 1:52 AM, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>> Hi Rob,
+>>
+>> On Wed, Jan 31, 2018 at 2:05 AM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>>> On Wed, Jan 24, 2018 at 06:35:11PM +0800, Jeffy Chen wrote:
+>>>> From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>>>
+>>>> Current code relies on master driver enabling necessary clocks before
+>>>> IOMMU is accessed, however there are cases when the IOMMU should be
+>>>> accessed while the master is not running yet, for example allocating
+>>>> V4L2 videobuf2 buffers, which is done by the VB2 framework using DMA
+>>>> mapping API and doesn't engage the master driver at all.
+>>>>
+>>>> This patch fixes the problem by letting clocks needed for IOMMU
+>>>> operation to be listed in Device Tree and making the driver enable them
+>>>> for the time of accessing the hardware.
+>>>>
+>>>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>>> ---
+>>>>
+>>>> Changes in v5:
+>>>> Use clk_bulk APIs.
+>>>>
+>>>> Changes in v4: None
+>>>> Changes in v3: None
+>>>> Changes in v2: None
+>>>>
+>>>>   .../devicetree/bindings/iommu/rockchip,iommu.txt   |  8 +++
+>>>
+>>> Please split binding patches to a separate patch.
+right, i'll do that in the next version.
+>>>
+>>>>   drivers/iommu/rockchip-iommu.c                     | 74 ++++++++++++++++++++--
+>>>>   2 files changed, 76 insertions(+), 6 deletions(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+>>>> index 2098f7732264..33dd853359fa 100644
+>>>> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+>>>> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+>>>> @@ -14,6 +14,13 @@ Required properties:
+>>>>                       "single-master" device, and needs no additional information
+>>>>                       to associate with its master device.  See:
+>>>>                       Documentation/devicetree/bindings/iommu/iommu.txt
+>>>> +Optional properties:
+>>>> +- clocks : A list of master clocks requires for the IOMMU to be accessible
+>>>> +           by the host CPU. The number of clocks depends on the master
+>>>> +           block and might as well be zero. See [1] for generic clock
+>>>> +           bindings description.
+>>>
+>>> Hardware blocks don't have a variable number of clock connections.
+>>
+>> I think you underestimate the imagination of hardware designers. :)
+>
+> Learned long ago to never do that. If there are 2 ways to do
+> something, they will find a 3rd way.
+>
+>> For Rockchip IOMMU, there is a set of clocks, which all need to be
+>> enabled for IOMMU register access to succeed. The clocks are not
+>> directly fed to the IOMMU, but they are needed for the various buses
+>> and intermediate blocks on the way to the IOMMU to work.
+>
+> The binding should describe the clock connections, not what clocks a
+> driver needs (currently). It sounds like a lack of managing bus clocks
+> to me.
+>
+> In any case, the binding must be written so it can be verified. If you
+> can have any number of clocks with any names, there's no point in
+> documenting.
+
+the rockchip IOMMU is part of the master block in hardware, so it needs 
+to control the master's power domain and some of the master's clocks 
+when access it's registers.
+
+and the number of clocks needed here, might be different between each 
+IOMMUs(according to which master block it belongs), it's a little like 
+our power domain:
+https://elixir.free-electrons.com/linux/latest/source/arch/arm64/boot/dts/rockchip/rk3399.dtsi#L935
+
+i'm not sure how to describe this correctly, is it ok use something like 
+"the same as it's master block"?
+
+>
+> Rob
+>
+>
+>
