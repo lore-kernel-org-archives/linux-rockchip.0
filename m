@@ -1,70 +1,58 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v5 1/5] pwm-backlight: enable/disable the PWM
- before/after LCD enable toggle.
-Date: Thu, 1 Feb 2018 12:06:43 +0000
-Message-ID: <20180201120643.3spdhgvudjk3eb3b@dell>
-References: <20171201120651.29633-1-enric.balletbo@collabora.com>
- <CAFqH_531DL3DYp4kn_Gjxprp7NNoAnP4MMD4-PRN=yJ+mXJNnA@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3] arm64: dts: rockchip: add roc-rk3328-cc board
+Date: Fri, 02 Feb 2018 22:47:23 +0100
+Message-ID: <3332426.dR0IG2DWyn@phil>
+References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180123021017.24110-1-djw@t-chip.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAFqH_531DL3DYp4kn_Gjxprp7NNoAnP4MMD4-PRN=yJ+mXJNnA@mail.gmail.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180123021017.24110-1-djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 30 Jan 2018, Enric Balletbo Serra wrote:
+Hi Levin,
 
-> Hi,
+Am Dienstag, 23. Januar 2018, 03:10:17 CET schrieb djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org:
+> From: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
 > 
-> 2017-12-01 13:06 GMT+01:00 Enric Balletbo i Serra <enric.balletbo@collabora.com>:
-> > Before this patch the enable signal was set before the PWM signal and
-> > vice-versa on power off. This sequence is wrong, at least, it is on
-> > the different panels datasheets that I checked, so I inverted the sequence
-> > to follow the specs.
-> >
-> > For reference the following panels have the mentioned sequence:
-> >   - N133HSE-EA1 (Innolux)
-> >   - N116BGE (Innolux)
-> >   - N156BGE-L21 (Innolux)
-> >   - B101EAN0 (Auo)
-> >   - B101AW03 (Auo)
-> >   - LTN101NT05 (Samsung)
-> >   - CLAA101WA01A (Chunghwa)
-> >
-> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-> > Acked-by: Jingoo Han <jingoohan1@gmail.com>
-> > ---
-> > Changes since v4:
-> >  - Rebase on top of mainline.
-> >  - Add the acks from Daniel Thompson and Jingoo Han.
-> > Changes since v3:
-> >  - List the part numbers for the panel checked (Daniel Thompson)
-> > Changes since v2:
-> >  - Add this as a separate patch (Thierry Reding)
-> > Changes since v1:
-> >  - None
-> >
-> >  drivers/video/backlight/pwm_bl.c | 9 +++++----
-> >  1 file changed, 5 insertions(+), 4 deletions(-)
+> Hi all,
 > 
-> A gentle ping, It's been nearly two months since I sent this patchset,
-> there is anything else that prevents these patches to land or
-> incorporate in linux-next?
+> v3:
+> Use pmic@18 instead of rk805@18
+> Use macro definition RK_Pxx in gpio number
+> 
+> v2:
+> Use SPDX license tag
+> 
+> Thanks.
+> 
+> The roc-rk3328-cc is a credit card size single board computer using the
+> Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
+> up to 2GB 2133MHz LPDDR4 memory. It provides eMMC module socket, MicroSD
+> Card slot, USB 2.0/3.0, Gigabit Ethernet, HDMI/CVBS, Infrared Receiver,
+> SPDIF/I2S, and SPI/I2C/UART/PWM interfaces.
+> 
+> The devicetree currently supports basic peripherals.
+> 
+> Signed-off-by: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
 
-Looks like Daniel should Ack 2/5 since he had comments on it before
-and it still lacks a Backlight Ack.
+I've applied the patch for 4.17 with some changes:
+- dropped the version prose in the commit message as noted by Rob
+- dropped the usbdrd3 elements for the time being.
+  Definitly not your fault and I did pick up the core usb3 enablement
+  for the rk3328, but it looks like this needs a bit more time as the phy
+  has this issue of not recognizing device unpluggs, making the controller
+  not taking any plug events after that at all.
+  So I want to make that actually work, before I bind myself to the binding
+  using the dwc3-of-simple stuff.
+  We can readd the dwc3 nodes to the roc-3328-cc once that works correctly.
 
-With regards to -next, the merge-window is open (should close in a
-little over a week), so the chances are, you'll get a long soak before
-the next merge-window opens.
+Heiko
 
--- 
-Lee Jones
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
