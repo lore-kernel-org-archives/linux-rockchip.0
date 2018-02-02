@@ -1,58 +1,161 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: add roc-rk3328-cc board
-Date: Fri, 02 Feb 2018 22:47:23 +0100
-Message-ID: <3332426.dR0IG2DWyn@phil>
-References: <20180106094538.15568-1-djw@t-chip.com.cn> <20180123021017.24110-1-djw@t-chip.com.cn>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable I2S codec on rk3399-puma-haikou
+Date: Fri, 02 Feb 2018 23:00:37 +0100
+Message-ID: <1896849.q5MJicbXVp@phil>
+References: <20180130101531.41411-1-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180123021017.24110-1-djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Levin Du <zslevin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180130101531.41411-1-klaus.goger@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Klaus Goger <klaus.goger@theobroma-systems.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Levin,
+Hi Klaus,
 
-Am Dienstag, 23. Januar 2018, 03:10:17 CET schrieb djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org:
-> From: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Am Dienstag, 30. Januar 2018, 11:15:31 CET schrieb Klaus Goger:
+> Enable the NXP SGTL5000 audio codec on the RK3399-Q7 EVK baseboard
+> Haikou.
 > 
-> Hi all,
+> The i2s0_2ch_bus definition is only done in the SoM dtsi as it is
+> missing the LRCK_RX pin (that is used otherwise) and therefore not
+> generic enough for the SoC dtsi.
 > 
-> v3:
-> Use pmic@18 instead of rk805@18
-> Use macro definition RK_Pxx in gpio number
-> 
-> v2:
-> Use SPDX license tag
-> 
-> Thanks.
-> 
-> The roc-rk3328-cc is a credit card size single board computer using the
-> Rockchip RK3328 Quad-Core ARM Cortex A53 64-Bit Processor and supporting
-> up to 2GB 2133MHz LPDDR4 memory. It provides eMMC module socket, MicroSD
-> Card slot, USB 2.0/3.0, Gigabit Ethernet, HDMI/CVBS, Infrared Receiver,
-> SPDIF/I2S, and SPI/I2C/UART/PWM interfaces.
-> 
-> The devicetree currently supports basic peripherals.
-> 
-> Signed-off-by: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
 
-I've applied the patch for 4.17 with some changes:
-- dropped the version prose in the commit message as noted by Rob
-- dropped the usbdrd3 elements for the time being.
-  Definitly not your fault and I did pick up the core usb3 enablement
-  for the rk3328, but it looks like this needs a bit more time as the phy
-  has this issue of not recognizing device unpluggs, making the controller
-  not taking any plug events after that at all.
-  So I want to make that actually work, before I bind myself to the binding
-  using the dwc3-of-simple stuff.
-  We can readd the dwc3 nodes to the roc-3328-cc once that works correctly.
+I did fix up the small ordering issues already but then found the i2s
+pinctrl issue below, which will need a slightly bigger change and thus
+a respin please.
 
+
+>  .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 49 ++++++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 18 ++++++++
+>  2 files changed, 67 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+> index 9a7486058455..060c6be7d7e3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+> @@ -61,6 +61,22 @@
+>  		};
+>  	};
+>  
+> +	i2s0_sound {
+> +		compatible = "simple-audio-card";
+> +		simple-audio-card,format = "i2s";
+> +		simple-audio-card,name = "Haikou,I2S-codec";
+> +		simple-audio-card,mclk-fs = <512>;
+> +		simple-audio-card,cpu {
+> +			sound-dai = <&i2s0>;
+> +			frame-master;
+> +			bitclock-master;
+> +		};
+> +		simple-audio-card,codec {
+> +			sound-dai = <&sgtl5000>;
+> +			clocks = <&sgtl5000_clk>;
+> +		};
+> +	};
+> +
+
+odering and a bit of spacing:
+
++	i2s0_sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,name = "Haikou,I2S-codec";
++		simple-audio-card,mclk-fs = <512>;
++
++		simple-audio-card,codec {
++			clocks = <&sgtl5000_clk>;
++			sound-dai = <&sgtl5000>;
++		};
++
++		simple-audio-card,cpu {
++			bitclock-master;
++			frame-master;
++			sound-dai = <&i2s0>;
++		};
++	};
+
+>  	dc_12v: dc-12v {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "dc_12v";
+
+> @@ -110,6 +148,17 @@
+>  &i2c4 {
+>  	status = "okay";
+>  	clock-frequency = <400000>;
+> +
+> +	sgtl5000: codec@0a {
+> +		#sound-dai-cells = <0>;
+> +		compatible = "fsl,sgtl5000";
+> +		reg = <0x0a>;
+> +		VDDA-supply = <&vdda_codec>;
+> +		VDDIO-supply = <&vdda_codec>;
+> +		VDDD-supply = <&vddd_codec>;
+> +		clocks = <&sgtl5000_clk>;
+> +		status = "okay";
+> +	};
+
+ordering again
+
++	sgtl5000: codec@0a {
++		compatible = "fsl,sgtl5000";
++		reg = <0x0a>;
++		clocks = <&sgtl5000_clk>;
++		#sound-dai-cells = <0>;
++		VDDA-supply = <&vdda_codec>;
++		VDDIO-supply = <&vdda_codec>;
++		VDDD-supply = <&vddd_codec>;
++		status = "okay";
++	};
+
+>  };
+>  
+>  &i2c6 {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> index 1fc5060d7027..a3fcb803ff69 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> @@ -435,6 +435,14 @@
+>  	};
+>  };
+>  
+> +&i2s0 {
+> +	#sound-dai-cells = <0>;
+> +	status = "okay";
+> +	pinctrl-0 = <&i2s0_2ch_bus>;
+> +	rockchip,playback-channels = <2>;
+> +	rockchip,capture-channels = <2>;
+> +};
+
+ordering
+
++&i2s0 {
++	pinctrl-0 = <&i2s0_2ch_bus>;
++	rockchip,playback-channels = <2>;
++	rockchip,capture-channels = <2>;
++	#sound-dai-cells = <0>;
++	status = "okay";
++};
+
+
+> @@ -461,6 +469,16 @@
+>  		};
+>  	};
+>  
+> +	i2s0 {
+> +		i2s0_2ch_bus: i2s0_2ch_bus {
+
+node names should use dashes, so
+		i2s0_2ch_bus: i2s0-2ch-bus
+
+But also, could you define the generic i2s0-2ch-bus (incl the phandle)
+in rk3399.dtsi in a first patch and just override it here to not use that
+LRCK_RX pin please?
+
+
+Thanks
 Heiko
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
