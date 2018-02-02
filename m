@@ -1,161 +1,34 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable I2S codec on rk3399-puma-haikou
-Date: Fri, 02 Feb 2018 23:00:37 +0100
-Message-ID: <1896849.q5MJicbXVp@phil>
-References: <20180130101531.41411-1-klaus.goger@theobroma-systems.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable tsadc on rk3399-puma
+Date: Fri, 02 Feb 2018 23:01:57 +0100
+Message-ID: <9265333.RCTiQi6s6y@phil>
+References: <20180130101555.41475-1-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180130101531.41411-1-klaus.goger@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Klaus Goger <klaus.goger@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180130101555.41475-1-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Klaus,
-
-Am Dienstag, 30. Januar 2018, 11:15:31 CET schrieb Klaus Goger:
-> Enable the NXP SGTL5000 audio codec on the RK3399-Q7 EVK baseboard
-> Haikou.
+Am Dienstag, 30. Januar 2018, 11:15:55 CET schrieb Klaus Goger:
+> Enable the SoC thermal sensor on RK3399-Q7 (Puma).
+> As we want to do do a full board reset instead of just a SoC one, set
+> hw-tshut-mode to GPIO.
 > 
-> The i2s0_2ch_bus definition is only done in the SoM dtsi as it is
-> missing the LRCK_RX pin (that is used otherwise) and therefore not
-> generic enough for the SoC dtsi.
-> 
-> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
+> Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 
-I did fix up the small ordering issues already but then found the i2s
-pinctrl issue below, which will need a slightly bigger change and thus
-a respin please.
-
-
->  .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 49 ++++++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 18 ++++++++
->  2 files changed, 67 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-> index 9a7486058455..060c6be7d7e3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-> @@ -61,6 +61,22 @@
->  		};
->  	};
->  
-> +	i2s0_sound {
-> +		compatible = "simple-audio-card";
-> +		simple-audio-card,format = "i2s";
-> +		simple-audio-card,name = "Haikou,I2S-codec";
-> +		simple-audio-card,mclk-fs = <512>;
-> +		simple-audio-card,cpu {
-> +			sound-dai = <&i2s0>;
-> +			frame-master;
-> +			bitclock-master;
-> +		};
-> +		simple-audio-card,codec {
-> +			sound-dai = <&sgtl5000>;
-> +			clocks = <&sgtl5000_clk>;
-> +		};
-> +	};
-> +
-
-odering and a bit of spacing:
-
-+	i2s0_sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "Haikou,I2S-codec";
-+		simple-audio-card,mclk-fs = <512>;
-+
-+		simple-audio-card,codec {
-+			clocks = <&sgtl5000_clk>;
-+			sound-dai = <&sgtl5000>;
-+		};
-+
-+		simple-audio-card,cpu {
-+			bitclock-master;
-+			frame-master;
-+			sound-dai = <&i2s0>;
-+		};
-+	};
-
->  	dc_12v: dc-12v {
->  		compatible = "regulator-fixed";
->  		regulator-name = "dc_12v";
-
-> @@ -110,6 +148,17 @@
->  &i2c4 {
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +
-> +	sgtl5000: codec@0a {
-> +		#sound-dai-cells = <0>;
-> +		compatible = "fsl,sgtl5000";
-> +		reg = <0x0a>;
-> +		VDDA-supply = <&vdda_codec>;
-> +		VDDIO-supply = <&vdda_codec>;
-> +		VDDD-supply = <&vddd_codec>;
-> +		clocks = <&sgtl5000_clk>;
-> +		status = "okay";
-> +	};
-
-ordering again
-
-+	sgtl5000: codec@0a {
-+		compatible = "fsl,sgtl5000";
-+		reg = <0x0a>;
-+		clocks = <&sgtl5000_clk>;
-+		#sound-dai-cells = <0>;
-+		VDDA-supply = <&vdda_codec>;
-+		VDDIO-supply = <&vdda_codec>;
-+		VDDD-supply = <&vddd_codec>;
-+		status = "okay";
-+	};
-
->  };
->  
->  &i2c6 {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> index 1fc5060d7027..a3fcb803ff69 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> @@ -435,6 +435,14 @@
->  	};
->  };
->  
-> +&i2s0 {
-> +	#sound-dai-cells = <0>;
-> +	status = "okay";
-> +	pinctrl-0 = <&i2s0_2ch_bus>;
-> +	rockchip,playback-channels = <2>;
-> +	rockchip,capture-channels = <2>;
-> +};
-
-ordering
-
-+&i2s0 {
-+	pinctrl-0 = <&i2s0_2ch_bus>;
-+	rockchip,playback-channels = <2>;
-+	rockchip,capture-channels = <2>;
-+	#sound-dai-cells = <0>;
-+	status = "okay";
-+};
-
-
-> @@ -461,6 +469,16 @@
->  		};
->  	};
->  
-> +	i2s0 {
-> +		i2s0_2ch_bus: i2s0_2ch_bus {
-
-node names should use dashes, so
-		i2s0_2ch_bus: i2s0-2ch-bus
-
-But also, could you define the generic i2s0-2ch-bus (incl the phandle)
-in rk3399.dtsi in a first patch and just override it here to not use that
-LRCK_RX pin please?
-
+applied for 4.17
 
 Thanks
 Heiko
