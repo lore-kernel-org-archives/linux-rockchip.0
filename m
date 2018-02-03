@@ -1,129 +1,32 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
-Date: Fri, 2 Feb 2018 22:41:26 +0000
-Message-ID: <7ec671c2-a777-5dcd-dcc9-e026fff89900@st.com>
-References: <20180125155504.8611-1-philippe.cornu@st.com>
- <2782155.lsFkNecG25@avalon> <114a9fc1-3f31-decd-6bdc-803dc88b3b3c@st.com>
- <108376394.4I4zMjzv2j@avalon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <108376394.4I4zMjzv2j@avalon>
-Content-Language: en-US
-Content-ID: <DE17521205D3BE4BB12E8A8016605CA7@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "daniel.vetter@ffwll.ch" <daniel.vetter@ffwll.ch>
-Cc: Bhumika Goyal <bhumirks@gmail.com>, Alexandre TORGUE <alexandre.torgue@st.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Ludovic BARRE <ludovic.barre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: Klaus Goger <klaus.goger@theobroma-systems.com>
+Subject: [PATCH v2 0/2] arm64: dts: rockchip: enable I2S codec on rk3399-puma-haikou
+Date: Sat,  3 Feb 2018 16:50:14 +0100
+Message-ID: <20180203155016.51909-1-klaus.goger@theobroma-systems.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Klaus Goger <klaus.goger@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTGF1cmVudCAmIERhbmllbCA6LSkNCg0KT24gMDEvMjkvMjAxOCAxMTo0MCBBTSwgTGF1cmVu
-dCBQaW5jaGFydCB3cm90ZToNCj4gSGkgUGhpbGlwcGUsDQo+IA0KPiBPbiBNb25kYXksIDI5IEph
-bnVhcnkgMjAxOCAxMjoxNzozNyBFRVQgUGhpbGlwcGUgQ09STlUgd3JvdGU6DQo+PiBPbiAwMS8y
-OS8yMDE4IDEwOjQ2IEFNLCBMYXVyZW50IFBpbmNoYXJ0IHdyb3RlOg0KPj4+IE9uIFRodXJzZGF5
-LCAyNSBKYW51YXJ5IDIwMTggMTc6NTU6MDQgRUVUIFBoaWxpcHBlIENvcm51IHdyb3RlOg0KPj4+
-DQo+Pj4+IFRoZSAiYWRqdXN0ZWRfbW9kZSIgY2xvY2sgdmFsdWUgKGllIHRoZSByZWFsIHBpeGVs
-IGNsb2NrKSBpcyBtb3JlDQo+Pj4+IGFjY3VyYXRlIHRoYW4gIm1vZGUiIGNsb2NrIHZhbHVlIChp
-ZSB0aGUgcGFuZWwvYnJpZGdlIHJlcXVlc3RlZA0KPj4+PiBjbG9jayB2YWx1ZSkuIEl0IG9mZmVy
-cyBhIGJldHRlciBwcmVjaXNlbmVzcyBmb3IgdGltaW5nDQo+Pj4+IGNvbXB1dGF0aW9ucyBhbmQg
-YWxsb3dzIHRvIHJlZHVjZSB0aGUgZXh0cmEgZHNpIGJhbmR3aWR0aCBpbg0KPj4+PiBidXJzdCBt
-b2RlIChmcm9tIH4yMCUgdG8gfjEwLTEyJSwgaHcgcGxhdGZvcm0gZGVwZW5kYW50KS4NCj4+Pj4N
-Cj4+Pj4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51QHN0LmNv
-bT4NCj4+Pg0KPj4+IFRoZSBhZGp1c3RlZCBtb2RlIGlzIGRvY3VtZW50ZWQgYXMNCj4+Pg0KPj4+
-ICAgLyoqDQo+Pj4gICAgKiBAYWRqdXN0ZWRfbW9kZToNCj4+PiAgICAqDQo+Pj4gICAgKiBJbnRl
-cm5hbCBkaXNwbGF5IHRpbWluZ3Mgd2hpY2ggY2FuIGJlIHVzZWQgYnkgdGhlIGRyaXZlciB0byBo
-YW5kbGUNCj4+PiAgICAqIGRpZmZlcmVuY2VzIGJldHdlZW4gdGhlIG1vZGUgcmVxdWVzdGVkIGJ5
-IHVzZXJzcGFjZSBpbiBAbW9kZSBhbmQgd2hhdA0KPj4+ICAgICogaXMgYWN0dWFsbHkgcHJvZ3Jh
-bW1lZCBpbnRvIHRoZSBoYXJkd2FyZS4gSXQgaXMgcHVyZWx5IGRyaXZlcg0KPj4+ICAgICogaW1w
-bGVtZW50YXRpb24gZGVmaW5lZCB3aGF0IGV4YWN0bHkgdGhpcyBhZGp1c3RlZCBtb2RlIG1lYW5z
-LiBVc3VhbGx5DQo+Pj4gICAgKiBpdCBpcyB1c2VkIHRvIHN0b3JlIHRoZSBoYXJkd2FyZSBkaXNw
-bGF5IHRpbWluZ3MgdXNlZCBiZXR3ZWVuIHRoZQ0KPj4+ICAgICogQ1JUQyBhbmQgZW5jb2RlciBi
-bG9ja3MuDQo+Pj4gICAgKi8NCj4+Pg0KPj4+IFRoaXMgaXMgZWFzeSB0byBoYW5kbGUgd2hlbiB0
-aGUgQ1JUQyBhbmQgZW5jb2RlciBhcmUgY29udHJvbGxlZCBieSB0aGUNCj4+PiBzYW1lIGRyaXZl
-ciwgYXMgdGhlIGZpZWxkIGlzICJpbXBsZW1lbnRhdGlvbiBkZWZpbmVkIiBieSBhIHNpbmdsZSBk
-cml2ZXINCj4+PiAuIEhvd2V2ZXIsIHdoZW4gdXNpbmcgYnJpZGdlcywgdGhlcmUgYXJlIHR3byBk
-cml2ZXJzIGludm9sdmVkLCBhbmQgdGhleQ0KPj4+IG11c3QgYm90aCBhZ3JlZSB0byBtZWFuaW5n
-ZnVsbHkgdXNlIHRoZSBhZGp1c3RlZCBtb2RlLiBJIGNhbid0IHNlZSBob3cgdG8NCj4+PiBkbyBz
-byB3aXRob3V0IHN0YW5kYXJkaXppbmcgdGhlIG1lYW5pbmcgb2YgdGhlIGFkanVzdGVkIG1vZGUg
-ZmllbGQuDQo+Pg0KPj4gVGhpcyBpcyBleGFjdGx5IHRoZSByZWFzb24gd2h5IG15IGZpcnN0IGlt
-cGxlbWVudGF0aW9uIHVzZWQgdGhlIGRzaQ0KPj4gYnJpZGdlICJvcHRpb25hbCBwaXhlbCBjbG9j
-ayIgaW5zdGVhZCBvZiB0aGUgYWRqdXN0ZWRfbW9kZSAoc2VlIFsxXSkNCj4+DQo+PiBCdXQgYWZ0
-ZXIgZGlnZ2luZyBtb3JlIGludG8gdGhlIGRybSBzb3VyY2UgY29kZSwgSSB0aGluayB1c2luZw0K
-Pj4gYWRqdXN0ZWRfbW9kZSBpbnN0ZWFkIG9mIHRoZSBwaXhlbCBjbG9jayBoZXJlIGJyaW5ncyBt
-b3JlIGFkdmFudGFnZXMNCj4+IGJlY2F1c2U6DQo+PiAqIGFkanVzdGVkX21vZGUgaXMgYW4gYXJn
-dW1lbnQgb2YgYnJpZGdlIG1vZGVfc2V0KCkgcHJvYmFibHkgZm9yIGJlaW5nDQo+PiB1c2VkIGlu
-IGFueSBtYW5uZXIsIG1heWJlIGxpa2UgdGhpcyA6KQ0KPj4gKiBpZiB0aGUgYnJpZGdlICJ1c2Vy
-IiAoY3J0YyBvciBhIG1hc3RlciBicmlkZ2UgZHJpdmVycykgZG9lcyBub3QgbmVlZA0KPj4gdG8g
-bW9kaWZ5IGl0cyBhZGp1c3RlZF9tb2RlIHRoZW4gbW9kZSAmIGFkanVzdGVkX21vZGUgbW9kZV9z
-ZXQoKQ0KPj4gYXJndW1lbnRzIHdpbGwgaGF2ZSB0aGUgc2FtZSB2YWx1ZXMgc28gIm5vIGNvbnNl
-cXVlbmNlIiBmb3IgdGhlIGJyaWRnZS4NCj4+ICogaWYgdGhlIGJyaWRnZSAidXNlciIgKGNydGMg
-b3IgbWFzdGVyIGJyaWRnZSBkcml2ZXJzKSBuZWVkcyB0byBhZGp1c3QNCj4+IGFueSB2YWx1ZSBv
-ZiB0aGUgbW9kZSB0aGVuIHRoaXMgYWRqdXN0bWVudCBpcyBhdmFpbGFibGUgZm9yIHRoZSBicmlk
-Z2UuDQo+IA0KPiBSZW1lbWJlciB0aGF0IHRoZXJlIGNhbiBiZSBtdWx0aXBsZSBjaGFpbmVkIGJy
-aWRnZXMsIGFuZCBhIHNpbmdsZSBhZGp1c3RlZA0KPiBtb2RlIGZpZWxkLg0KPiANCj4+ICogcm9j
-a2NoaXAgY3J0YyB1cGRhdGVzIGEgcGFydCBvZiB0aGUgbW9kZSAodGhlIGNsb2NrKSwgc3RtIGlz
-IGRvaW5nIHRoZQ0KPj4gc2FtZSAoc2VlIFsyXSkgYnV0IGFueSBmdXR1cmUgInVzZXIiIG9mIHRo
-ZSBkd19taXBpX2RzaSBicmlkZ2UgY2FuDQo+PiBhZGp1c3Qgc29tZXRoaW5nIGVsc2UgKGJsYW5r
-aW5ncy4uLikgYW5kIHRoZSBkd19taXBpX2RzaSBicmlkZ2Ugd2lsbCBiZQ0KPj4gdGhlbiBhd2Fy
-ZSBvZi4uLg0KPj4NCj4+IEJ1dCBtYXliZSBpdCBpcyBhIHdyb25nIHVzYWdlIG9mIHRoZSAiYWRq
-dXN0ZWRfbW9kZSBvZmZlciIuLi4NCj4gDQo+IEkgZG9uJ3QgZGlzYWdyZWUgdGhhdCB0aGVyZSdz
-IGEgbmVlZCBmb3IgdXNpbmcgYWRqdXN0ZWQgdmFsdWVzLCBidXQgSSBiZWxpZXZlDQo+IHdlIG5l
-ZWQgdG8gY3JlYXRlIGEgY2xlYXIgQVBJIHRvIGRvIHNvLiBVc2luZyB0aGUgYWRqdXN0X21vZGUg
-ZmllbGQgYXMtaXMgd2hlbg0KPiBpdCdzIGNsZWFybHkgZG9jdW1lbnRlZCBhcyBiZWluZyBpbXBs
-ZW1lbnRhdGlvbi1kZWZpbmVkIGlzIGFza2luZyBmb3IgdHJvdWJsZS4NCj4gDQoNCkxhdXJlbnQs
-IGRvIHlvdSB0aGluayB3ZSBjYW4gdXNlICJhZGp1c3RlZCBtb2RlIiBoZXJlIGluIHRoaXMgc21h
-bGwgDQpwYXRjaCBhcyB0aGUgYWN0dWFsIDIgInVzZXJzIiBvZiB0aGlzIGJyaWRnZSAocm9ja2No
-aXAgJiBzdG0pIHVzZSBib3RoIA0KImFkanVzdGVkIG1vZGUiIGluIHRoZWlyIGNydGM/DQoNCj4+
-IE1hbnkgdGhhbmtzLA0KPj4gUGhpbGlwcGUgOi0pDQo+PiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsu
-ZnJlZWRlc2t0b3Aub3JnL3BhdGNoLzIwMDI0MC8NCj4+IFsyXSBodHRwczovL3BhdGNod29yay5m
-cmVlZGVza3RvcC5vcmcvcGF0Y2gvMjAwNzIwLw0KPj4NCj4+PiBEYW5pZWwsIHdoYXQncyB5b3Vy
-IG9waW5pb24gb24gdGhpcyA/DQo+Pj4NCg0KRGFuaWVsLCBhbnkgb3BpbmlvbiBvbiB0aGUgYWRq
-dXN0ZWRfbW9kZSB1c2FnZT8NCg0KTWFueSB0aGFua3MgdG8gYm90aCBvZiB5b3UsDQpQaGlsaXBw
-ZSA6LSkNCg0KPj4+PiAtLS0NCj4+Pj4gTm90ZTogVGhpcyBwYXRjaCByZXBsYWNlcyAiZHJtL2Jy
-aWRnZS9zeW5vcHN5czogZHNpOiBhZGQgb3B0aW9uYWwgcGl4ZWwNCj4+Pj4gY2xvY2siDQo+Pj4+
-DQo+Pj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8
-IDEyICsrKysrKy0tLS0tLQ0KPj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCsp
-LCA2IGRlbGV0aW9ucygtKQ0KPj4+Pg0KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+Pj4+IGIvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIGluZGV4DQo+Pj4+IGVkOGFmMzJmOGU1Mi4uYjky
-NmI2MmU5ZTMzIDEwMDY0NA0KPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
-c3lzL2R3LW1pcGktZHNpLmMNCj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
-cHN5cy9kdy1taXBpLWRzaS5jDQo+Pj4+IEBAIC03MDcsMjAgKzcwNywyMCBAQCBzdGF0aWMgdm9p
-ZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0DQo+Pj4+IGRybV9icmlkZ2UgKmJy
-aWRnZSwNCj4+Pj4NCj4+Pj4gICAgCWNsa19wcmVwYXJlX2VuYWJsZShkc2ktPnBjbGspOw0KPj4+
-Pg0KPj4+PiAtCXJldCA9IHBoeV9vcHMtPmdldF9sYW5lX21icHMocHJpdl9kYXRhLCBtb2RlLCBk
-c2ktPm1vZGVfZmxhZ3MsDQo+Pj4+ICsJcmV0ID0gcGh5X29wcy0+Z2V0X2xhbmVfbWJwcyhwcml2
-X2RhdGEsIGFkanVzdGVkX21vZGUsDQo+Pj4+IGRzaS0+bW9kZV9mbGFncywNCj4+Pj4gICAgCQkJ
-CSAgICAgZHNpLT5sYW5lcywgZHNpLT5mb3JtYXQsICZkc2ktPmxhbmVfbWJwcyk7DQo+Pj4+ICAg
-IGlmIChyZXQpDQo+Pj4+ICAgIAlEUk1fREVCVUdfRFJJVkVSKCJQaHkgZ2V0X2xhbmVfbWJwcygp
-IGZhaWxlZFxuIik7DQo+Pj4+DQo+Pj4+ICAgIHBtX3J1bnRpbWVfZ2V0X3N5bmMoZHNpLT5kZXYp
-Ow0KPj4+PiAgICBkd19taXBpX2RzaV9pbml0KGRzaSk7DQo+Pj4+DQo+Pj4+IC0JZHdfbWlwaV9k
-c2lfZHBpX2NvbmZpZyhkc2ksIG1vZGUpOw0KPj4+PiArCWR3X21pcGlfZHNpX2RwaV9jb25maWco
-ZHNpLCBhZGp1c3RlZF9tb2RlKTsNCj4+Pj4gICAgZHdfbWlwaV9kc2lfcGFja2V0X2hhbmRsZXJf
-Y29uZmlnKGRzaSk7DQo+Pj4+ICAgIGR3X21pcGlfZHNpX3ZpZGVvX21vZGVfY29uZmlnKGRzaSk7
-DQo+Pj4+IC0JZHdfbWlwaV9kc2lfdmlkZW9fcGFja2V0X2NvbmZpZyhkc2ksIG1vZGUpOw0KPj4+
-PiArCWR3X21pcGlfZHNpX3ZpZGVvX3BhY2tldF9jb25maWcoZHNpLCBhZGp1c3RlZF9tb2RlKTsN
-Cj4+Pj4gICAgZHdfbWlwaV9kc2lfY29tbWFuZF9tb2RlX2NvbmZpZyhkc2kpOw0KPj4+PiAtCWR3
-X21pcGlfZHNpX2xpbmVfdGltZXJfY29uZmlnKGRzaSwgbW9kZSk7DQo+Pj4+IC0JZHdfbWlwaV9k
-c2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ksIG1vZGUpOw0KPj4+PiArCWR3X21pcGlfZHNp
-X2xpbmVfdGltZXJfY29uZmlnKGRzaSwgYWRqdXN0ZWRfbW9kZSk7DQo+Pj4+ICsJZHdfbWlwaV9k
-c2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhkc2ksIGFkanVzdGVkX21vZGUpOw0KPj4+PiAgICBk
-d19taXBpX2RzaV9kcGh5X2luaXQoZHNpKTsNCj4+Pj4gICAgZHdfbWlwaV9kc2lfZHBoeV90aW1p
-bmdfY29uZmlnKGRzaSk7DQo+Pj4+DQo+Pj4+IEBAIC03MzQsNyArNzM0LDcgQEAgc3RhdGljIHZv
-aWQgZHdfbWlwaV9kc2lfYnJpZGdlX21vZGVfc2V0KHN0cnVjdA0KPj4+PiBkcm1fYnJpZGdlICpi
-cmlkZ2UsDQo+Pj4+DQo+Pj4+ICAgIGR3X21pcGlfZHNpX2RwaHlfZW5hYmxlKGRzaSk7DQo+Pj4+
-DQo+Pj4+IC0JZHdfbWlwaV9kc2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyhtb2RlKTsNCj4+Pj4gKwlk
-d19taXBpX2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKGFkanVzdGVkX21vZGUpOw0KPj4+Pg0KPj4+
-PiAgICAvKiBTd2l0Y2ggdG8gY21kIG1vZGUgZm9yIHBhbmVsLWJyaWRnZSBwcmVfZW5hYmxlICYg
-cGFuZWwgcHJlcGFyZSAqLw0KPj4+PiAgICBkd19taXBpX2RzaV9zZXRfbW9kZShkc2ksIDApOw0K
-PiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Enables the audio codec on the Haikou Baseboard when used with a RK3399-Q7.
+
+Changes in v2:
+- reordered entries as suggested in review
+- removed a conflicting i2s definition in rk3399-puma-haikou.dts
+  i2s0 was already enabled in rk3399-puma.dtsi as it should be,
+  so reuse it and fix the incorrect rockchip,*-channels values
+- add a patch to the series that definies a generic i2s0-2ch-bus
+- overwrite the generic pin definition of i2s0-2ch-bus with a specific
+  one used in the Haikou with RK3399-Q7 setup.
+
+Klaus Goger (2):
+  arm64: dts: rockchip: add i2s0-2ch-bus pins on rk3399
+  arm64: dts: rockchip: enable I2S codec on rk3399-puma-haikou
+
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 59 +++++++++++++++++++---
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 25 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 10 ++++
+ 3 files changed, 86 insertions(+), 8 deletions(-)
+
+-- 
+2.11.0
