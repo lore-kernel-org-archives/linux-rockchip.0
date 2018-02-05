@@ -1,115 +1,92 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH] usb: gadget: f_fs: get the correct address of comp_desc
-Date: Mon,  5 Feb 2018 19:33:38 +0800
-Message-ID: <1517830418-2648-1-git-send-email-william.wu@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com
-Cc: linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com, william.wu@rock-chips.com, fml@rock-chips.com
+From: Philippe CORNU <philippe.cornu@st.com>
+Subject: Re: [PATCH] drm/bridge/synopsys: dsi: Add read feature
+Date: Mon, 5 Feb 2018 12:52:19 +0000
+Message-ID: <1fce104e-7cab-86a1-db49-5306e04d10b7@st.com>
+References: <CGME20180204213219epcas2p429434ba0c87a0544dc5294facd80529b@epcas2p4.samsung.com>
+ <20180204213104.17834-1-philippe.cornu@st.com>
+ <81cb1f26-96f0-bdc6-28bc-4a7bda5a9459@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <81cb1f26-96f0-bdc6-28bc-4a7bda5a9459@samsung.com>
+Content-Language: en-US
+Content-ID: <EB18DECED86AE341A86E13D9C95CDA2E@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: Yannick FERTRE <yannick.fertre@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Alexandre TORGUE <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Refer to the USB 3.0 spec '9.6.7 SuperSpeed Endpoint Companion',
-the companion descriptor follows the standard endpoint descriptor.
-This descriptor is only defined for SuperSpeed endpoints. The
-f_fs driver gets the address of the companion descriptor via
-'ds + USB_DT_ENDPOINT_SIZE', and actually, the ds variable is
-a pointer to the struct usb_endpoint_descriptor, so the offset
-of the companion descriptor which we get is USB_DT_ENDPOINT_SIZE *
-sizeof(struct usb_endpoint_descriptor), the wrong offset is 63
-bytes. This cause out-of-bound with the following error log if
-CONFIG_KASAN and CONFIG_SLUB_DEBUG is enabled on Rockchip RK3399
-Evaluation Board.
-
-android_work: sent uevent USB_STATE=CONNECTED
-configfs-gadget gadget: super-speed config #1: b
-==================================================================
-BUG: KASAN: slab-out-of-bounds in ffs_func_set_alt+0x230/0x398
-Read of size 1 at addr ffffffc0ce2d0b10 by task irq/224-dwc3/364
-
-CPU: 4 PID: 364 Comm: irq/224-dwc3 Not tainted 4.4.112 #6
-Hardware name: Rockchip RK3399 Evaluation Board v3 (Android) (DT)
-Call trace:
-[<ffffff900808c4a4>] dump_backtrace+0x0/0x244
-[<ffffff900808c6fc>] show_stack+0x14/0x1c
-[<ffffff90084f0ff4>] dump_stack+0xa4/0xcc
-[<ffffff900822d054>] print_address_description+0xa4/0x308
-[<ffffff900822d5bc>] kasan_report+0x258/0x29c
-[<ffffff900822bb28>] __asan_load1+0x44/0x4c
-[<ffffff9008b6eec4>] ffs_func_set_alt+0x230/0x398
-[<ffffff9008b56e5c>] composite_setup+0xdcc/0x1ac8
-[<ffffff9008b5aaa4>] android_setup+0x124/0x1a0
-[<ffffff9008aa22b4>] dwc3_ep0_delegate_req+0x48/0x68
-[<ffffff9008aa3248>] dwc3_ep0_interrupt+0x758/0x1174
-[<ffffff9008a9f688>] dwc3_thread_interrupt+0x204/0xe68
-[<ffffff9008126c04>] irq_thread_fn+0x44/0x94
-[<ffffff9008126e44>] irq_thread+0x128/0x22c
-[<ffffff90080d39c4>] kthread+0x11c/0x130
-[<ffffff90080832a0>] ret_from_fork+0x10/0x30
-
-Allocated by task 1:
-[<ffffff900808bf0c>] save_stack_trace_tsk+0x0/0x134
-[<ffffff900808c054>] save_stack_trace+0x14/0x1c
-[<ffffff900822c188>] kasan_kmalloc.part.3+0x48/0xf4
-[<ffffff900822c3c8>] kasan_kmalloc+0x8c/0xa0
-[<ffffff9008229990>] __kmalloc+0x208/0x268
-[<ffffff9008b71258>] ffs_func_bind+0x4b4/0x918
-[<ffffff9008b55168>] usb_add_function+0xd8/0x1d4
-[<ffffff9008b5b204>] configfs_composite_bind+0x48c/0x570
-[<ffffff9008b5dc80>] udc_bind_to_driver+0x6c/0x170
-[<ffffff9008b5de28>] usb_udc_attach_driver+0xa4/0xd0
-[<ffffff9008b5c110>] gadget_dev_desc_UDC_store+0xd4/0x120
-[<ffffff90082d6014>] configfs_write_file+0x1a0/0x1f8
-[<ffffff9008237960>] __vfs_write+0x64/0x174
-[<ffffff9008238560>] vfs_write+0xe4/0x1e8
-[<ffffff90082392fc>] SyS_write+0x68/0xc8
-[<ffffff90080832f0>] el0_svc_naked+0x24/0x28
-
-Freed by task 0:
-(stack is not available)
-
-The buggy address belongs to the object at ffffffc0ce2d0900
-which belongs to the cache kmalloc-1024 of size 1024
-The buggy address is located 528 bytes inside of
- 1024-byte region [ffffffc0ce2d0900, ffffffc0ce2d0d00)
-The buggy address belongs to the page:
-page:ffffffbdc338b400 count:1 mapcount:-2145648611 mapping:          (null) index:0x0
-flags: 0x4080(slab|head)
-page dumped because: kasan: bad access detected
-
-Memory state around the buggy address:
- ffffffc0ce2d0a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
- ffffffc0ce2d0a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
- >ffffffc0ce2d0b00: 00 04 fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-                         ^
- ffffffc0ce2d0b80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
- ffffffc0ce2d0c00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-==================================================================
-Disabling lock debugging due to kernel taint
-android_work: sent uevent USB_STATE=CONFIGURED
-
-This patch adds struct usb_endpoint_descriptor * -> u8 * type conversion
-for ds variable, then we can get the correct address of comp_desc
-with offset USB_DT_ENDPOINT_SIZE bytes.
-
-Signed-off-by: William Wu <william.wu@rock-chips.com>
----
- drivers/usb/gadget/function/f_fs.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
-index 6756472..f13ead0 100644
---- a/drivers/usb/gadget/function/f_fs.c
-+++ b/drivers/usb/gadget/function/f_fs.c
-@@ -1882,8 +1882,8 @@ static int ffs_func_eps_enable(struct ffs_function *func)
- 		ep->ep->desc = ds;
- 
- 		if (needs_comp_desc) {
--			comp_desc = (struct usb_ss_ep_comp_descriptor *)(ds +
--					USB_DT_ENDPOINT_SIZE);
-+			comp_desc = (struct usb_ss_ep_comp_descriptor *)
-+				     ((u8 *)ds + USB_DT_ENDPOINT_SIZE);
- 			ep->ep->maxburst = comp_desc->bMaxBurst + 1;
- 			ep->ep->comp_desc = comp_desc;
- 		}
--- 
-2.0.0
+SGkgQW5kcnplaiwNCg0KQW5kIG1hbnkgdGhhbmtzDQpQaGlsaXBwZSA6LSkNCg0KT24gMDIvMDUv
+MjAxOCAxMTowNyBBTSwgQW5kcnplaiBIYWpkYSB3cm90ZToNCj4gT24gMDQuMDIuMjAxOCAyMjoz
+MSwgUGhpbGlwcGUgQ29ybnUgd3JvdGU6DQo+PiBUaGlzIHBhdGNoIGFkZHMgdGhlIERDUy9HRU5F
+UklDIERTSSByZWFkIGZlYXR1cmUuDQo+Pg0KPj4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgQ29y
+bnUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4NCj4gDQo+IFJldmlld2VkLWJ5OiBBbmRyemVqIEhh
+amRhIDxhLmhhamRhQHNhbXN1bmcuY29tPg0KPiANCj4gSWYgdGhlcmUgd2lsbCBiZSBubyBvYmpl
+Y3Rpb25zIEkgd2lsbCBtZXJnZSBpdCBhdCB0aGUgZW5kIG9mIHRoZSB3ZWVrLg0KPiANCj4gIMKg
+LS0NCj4gUmVnYXJkcw0KPiBBbmRyemVqDQo+IA0KPj4gLS0tDQo+PiBFeHRyYSBub3RlczoNCj4+
+IERTSSByZWFkIHRlc3RzIGhhdmUgYmVlbiBwZXJmb3JtZWQgd2l0aCBEQ1MgJiBHRU5FUklDLCBz
+aG9ydCAmIGxvbmcNCj4+IGNvbW1hbmRzLCBvbiB0d28gZGlmZmVyZW50IHBhbmVscy4NCj4+IFRo
+ZSBtYXhpbXVtIGZpZm8gc2l6ZSAoMzIqMzItYml0ID0gMTI4IGJ5dGVzIG9uIHN0bTMyKSBoYXMg
+YmVlbg0KPj4gdmVyaWZpZWQgdG9vLg0KPj4NCj4+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
+eW5vcHN5cy9kdy1taXBpLWRzaS5jIHwgNTggKysrKysrKysrKysrKysrKysrKysrLS0tLS0tDQo+
+PiAgIDEgZmlsZSBjaGFuZ2VkLCA0NSBpbnNlcnRpb25zKCspLCAxMyBkZWxldGlvbnMoLSkNCj4+
+DQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBp
+LWRzaS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+
+PiBpbmRleCBlOTQyMmQwNWU4OTcuLjY1YWViM2Y3OGI0OCAxMDA2NDQNCj4+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+PiBAQCAtMzk3LDE4ICsz
+OTcsNDYgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kg
+KmRzaSwNCj4+ICAgCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIGxl
+MzJfdG9fY3B1KHdvcmQpKTsNCj4+ICAgfQ0KPj4gICANCj4+ICtzdGF0aWMgaW50IGR3X21pcGlf
+ZHNpX3JlYWQoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksDQo+PiArCQkJICAgIGNvbnN0IHN0cnVj
+dCBtaXBpX2RzaV9tc2cgKm1zZykNCj4+ICt7DQo+PiArCWludCBpLCBqLCByZXQsIGxlbiA9IG1z
+Zy0+cnhfbGVuOw0KPj4gKwl1OCAqYnVmID0gbXNnLT5yeF9idWY7DQo+PiArCXUzMiB2YWw7DQo+
+PiArDQo+PiArCS8qIFdhaXQgZW5kIG9mIHRoZSByZWFkIG9wZXJhdGlvbiAqLw0KPj4gKwlyZXQg
+PSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX0NNRF9QS1RfU1RBVFVTLA0KPj4g
+KwkJCQkgdmFsLCAhKHZhbCAmIEdFTl9SRF9DTURfQlVTWSksDQo+PiArCQkJCSAxMDAwLCBDTURf
+UEtUX1NUQVRVU19USU1FT1VUX1VTKTsNCj4+ICsJaWYgKHJldCkgew0KPj4gKwkJZGV2X2Vycihk
+c2ktPmRldiwgIlRpbWVvdXQgZHVyaW5nIHJlYWQgb3BlcmF0aW9uXG4iKTsNCj4+ICsJCXJldHVy
+biByZXQ7DQo+PiArCX0NCj4+ICsNCj4+ICsJZm9yIChpID0gMDsgaSA8IGxlbjsgaSArPSA0KSB7
+DQo+PiArCQkvKiBSZWFkIGZpZm8gbXVzdCBub3QgYmUgZW1wdHkgYmVmb3JlIGFsbCBieXRlcyBh
+cmUgcmVhZCAqLw0KPj4gKwkJcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+YmFzZSArIERT
+SV9DTURfUEtUX1NUQVRVUywNCj4+ICsJCQkJCSB2YWwsICEodmFsICYgR0VOX1BMRF9SX0VNUFRZ
+KSwNCj4+ICsJCQkJCSAxMDAwLCBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsNCj4+ICsJCWlm
+IChyZXQpIHsNCj4+ICsJCQlkZXZfZXJyKGRzaS0+ZGV2LCAiUmVhZCBwYXlsb2FkIEZJRk8gaXMg
+ZW1wdHlcbiIpOw0KPj4gKwkJCXJldHVybiByZXQ7DQo+PiArCQl9DQo+PiArDQo+PiArCQl2YWwg
+PSBkc2lfcmVhZChkc2ksIERTSV9HRU5fUExEX0RBVEEpOw0KPj4gKwkJZm9yIChqID0gMDsgaiA8
+IDQgJiYgaiArIGkgPCBsZW47IGorKykNCj4+ICsJCQlidWZbaSArIGpdID0gdmFsID4+ICg4ICog
+aik7DQo+PiArCX0NCj4+ICsNCj4+ICsJcmV0dXJuIHJldDsNCj4+ICt9DQo+PiArDQo+PiAgIHN0
+YXRpYyBzc2l6ZV90IGR3X21pcGlfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlfZHNpX2hv
+c3QgKmhvc3QsDQo+PiAgIAkJCQkJIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykNCj4+
+ICAgew0KPj4gICAJc3RydWN0IGR3X21pcGlfZHNpICpkc2kgPSBob3N0X3RvX2RzaShob3N0KTsN
+Cj4+ICAgCXN0cnVjdCBtaXBpX2RzaV9wYWNrZXQgcGFja2V0Ow0KPj4gLQlpbnQgcmV0Ow0KPj4g
+LQ0KPj4gLQlpZiAobXNnLT5yeF9idWYgfHwgbXNnLT5yeF9sZW4pIHsNCj4+IC0JCS8qIFRPRE8g
+ZHcgZHJ2IGltcHJvdmVtZW50czogaW1wbGVtZW50IHJlYWQgZmVhdHVyZSAqLw0KPj4gLQkJZGV2
+X3dhcm4oZHNpLT5kZXYsICJyZWFkIG9wZXJhdGlvbnMgbm90IHlldCBpbXBsZW1lbnRlZFxuIik7
+DQo+PiAtCQlyZXR1cm4gLUVJTlZBTDsNCj4+IC0JfQ0KPj4gKwlpbnQgcmV0LCBuYl9ieXRlczsN
+Cj4+ICAgDQo+PiAgIAlyZXQgPSBtaXBpX2RzaV9jcmVhdGVfcGFja2V0KCZwYWNrZXQsIG1zZyk7
+DQo+PiAgIAlpZiAocmV0KSB7DQo+PiBAQCAtNDIyLDEyICs0NTAsMTYgQEAgc3RhdGljIHNzaXpl
+X3QgZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwN
+Cj4+ICAgCWlmIChyZXQpDQo+PiAgIAkJcmV0dXJuIHJldDsNCj4+ICAgDQo+PiAtCS8qDQo+PiAt
+CSAqIFRPRE8gT25seSB0cmFuc21pdHRlZCBzaXplIGlzIHJldHVybmVkIGFzIGFjdHVhbCBkcml2
+ZXIgZG9lcw0KPj4gLQkgKiBub3Qgc3VwcG9ydCBkY3MvZ2VuZXJpYyByZWFkcy4gUGxlYXNlIHVw
+ZGF0ZSByZXR1cm4gdmFsdWUgd2hlbg0KPj4gLQkgKiBkZWxpdmVyaW5nIHRoZSByZWFkIGZlYXR1
+cmUuDQo+PiAtCSAqLw0KPj4gLQlyZXR1cm4gcGFja2V0LnNpemU7DQo+PiArCWlmIChtc2ctPnJ4
+X2J1ZiAmJiBtc2ctPnJ4X2xlbikgew0KPj4gKwkJcmV0ID0gZHdfbWlwaV9kc2lfcmVhZChkc2ks
+IG1zZyk7DQo+PiArCQlpZiAocmV0KQ0KPj4gKwkJCXJldHVybiByZXQ7DQo+PiArCQluYl9ieXRl
+cyA9IG1zZy0+cnhfbGVuOw0KPj4gKwl9IGVsc2Ugew0KPj4gKwkJbmJfYnl0ZXMgPSBwYWNrZXQu
+c2l6ZTsNCj4+ICsJfQ0KPj4gKw0KPj4gKwlyZXR1cm4gbmJfYnl0ZXM7DQo+PiAgIH0NCj4+ICAg
+DQo+PiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbWlwaV9kc2lfaG9zdF9vcHMgZHdfbWlwaV9kc2lf
+aG9zdF9vcHMgPSB7DQo+IA0KPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
