@@ -1,81 +1,57 @@
-From: Jack Pham <jackp@codeaurora.org>
-Subject: Re: [PATCH] usb: gadget: f_fs: get the correct address of comp_desc
-Date: Mon, 5 Feb 2018 10:17:58 -0800
-Message-ID: <20180205181758.GA22738@usblab-sd-06.qualcomm.com>
-References: <1517830418-2648-1-git-send-email-william.wu@rock-chips.com>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: [PATCH v2 0/8] use 64-bit arithmetic instead of 32-bit
+Date: Mon, 5 Feb 2018 14:06:18 -0600
+Message-ID: <cover.1517856716.git.gustavo@embeddedor.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-media-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1517830418-2648-1-git-send-email-william.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: William Wu <william.wu@rock-chips.com>
-Cc: gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com, fml@rock-chips.com
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Jacob chen <jacob2.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Antti Palosaari <crope@iki.fi>, Ramesh Shanmugasundaram <ramesh.shanmugasundaram@bp.renesas.com>, "Gustavo A. R. Silva" <garsilva@embeddedor.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi William,
+Add suffix LL and ULL to various constants in order to give the compiler
+complete information about the proper arithmetic to use. Such constants
+are used in contexts that expect expressions of type u64 (64 bits, unsigned)
+and s64 (64 bits, signed).
 
-On Mon, Feb 05, 2018 at 07:33:38PM +0800, William Wu wrote:
-> Refer to the USB 3.0 spec '9.6.7 SuperSpeed Endpoint Companion',
-> the companion descriptor follows the standard endpoint descriptor.
-> This descriptor is only defined for SuperSpeed endpoints. The
-> f_fs driver gets the address of the companion descriptor via
-> 'ds + USB_DT_ENDPOINT_SIZE', and actually, the ds variable is
-> a pointer to the struct usb_endpoint_descriptor, so the offset
-> of the companion descriptor which we get is USB_DT_ENDPOINT_SIZE *
-> sizeof(struct usb_endpoint_descriptor), the wrong offset is 63
-> bytes. This cause out-of-bound with the following error log if
-> CONFIG_KASAN and CONFIG_SLUB_DEBUG is enabled on Rockchip RK3399
-> Evaluation Board.
-> 
-> android_work: sent uevent USB_STATE=CONNECTED
-> configfs-gadget gadget: super-speed config #1: b
-> ==================================================================
-> BUG: KASAN: slab-out-of-bounds in ffs_func_set_alt+0x230/0x398
-> Read of size 1 at addr ffffffc0ce2d0b10 by task irq/224-dwc3/364
+The mentioned expressions are currently being evaluated using 32-bit
+arithmetic, wich is some cases can lead to unintentional integer
+overflows.
 
-> Memory state around the buggy address:
->  ffffffc0ce2d0a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->  ffffffc0ce2d0a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->  >ffffffc0ce2d0b00: 00 04 fc fc fc fc fc fc fc fc fc fc fc fc fc fc
->                          ^
->  ffffffc0ce2d0b80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
->  ffffffc0ce2d0c00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
-> ==================================================================
-> Disabling lock debugging due to kernel taint
-> android_work: sent uevent USB_STATE=CONFIGURED
-> 
-> This patch adds struct usb_endpoint_descriptor * -> u8 * type conversion
-> for ds variable, then we can get the correct address of comp_desc
-> with offset USB_DT_ENDPOINT_SIZE bytes.
-> 
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
-> ---
->  drivers/usb/gadget/function/f_fs.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
-> index 6756472..f13ead0 100644
-> --- a/drivers/usb/gadget/function/f_fs.c
-> +++ b/drivers/usb/gadget/function/f_fs.c
-> @@ -1882,8 +1882,8 @@ static int ffs_func_eps_enable(struct ffs_function *func)
->  		ep->ep->desc = ds;
->  
->  		if (needs_comp_desc) {
-> -			comp_desc = (struct usb_ss_ep_comp_descriptor *)(ds +
-> -					USB_DT_ENDPOINT_SIZE);
-> +			comp_desc = (struct usb_ss_ep_comp_descriptor *)
-> +				     ((u8 *)ds + USB_DT_ENDPOINT_SIZE);
->  			ep->ep->maxburst = comp_desc->bMaxBurst + 1;
->  			ep->ep->comp_desc = comp_desc;
->  		}
+This patchset addresses the following Coverity IDs:
+CIDs: 200604, 1056807, 1056808, 1271223, 1324146
+CIDs: 1392628, 1392630, 1446589, 1454996, 1458347
 
-Please see my alternative fix for this. I proposed changing this
-function to use config_ep_by_speed() instead.
+Thank you
 
-https://www.spinics.net/lists/linux-usb/msg165149.html
+Changes in v2:
+ - Update subject and changelog to better reflect the proposed code changes.
+ - Add suffix ULL and LL to constants instead of casting variables.
+ - Extend the proposed code changes to other similar cases that had not
+   previously been considered in v1 of this patchset.
 
-Jack
+Gustavo A. R. Silva (8):
+  rtl2832: use 64-bit arithmetic instead of 32-bit in
+    rtl2832_set_frontend
+  dvb-frontends: ves1820: use 64-bit arithmetic instead of 32-bit
+  i2c: max2175: use 64-bit arithmetic instead of 32-bit
+  i2c: ov9650: use 64-bit arithmetic instead of 32-bit
+  pci: cx88-input: use 64-bit arithmetic instead of 32-bit
+  rockchip/rga: use 64-bit arithmetic instead of 32-bit
+  platform: sh_veu: use 64-bit arithmetic instead of 32-bit
+  platform: vivid-cec: use 64-bit arithmetic instead of 32-bit
+
+ drivers/media/dvb-frontends/rtl2832.c         |  4 ++--
+ drivers/media/dvb-frontends/ves1820.c         |  2 +-
+ drivers/media/i2c/max2175.c                   |  2 +-
+ drivers/media/i2c/ov9650.c                    |  9 +++++----
+ drivers/media/pci/cx88/cx88-input.c           |  4 ++--
+ drivers/media/platform/rockchip/rga/rga-buf.c |  3 ++-
+ drivers/media/platform/sh_veu.c               |  4 ++--
+ drivers/media/platform/vivid/vivid-cec.c      | 11 +++++++++--
+ 8 files changed, 24 insertions(+), 15 deletions(-)
+
 -- 
-The Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+2.7.4
