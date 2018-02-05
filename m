@@ -1,14 +1,14 @@
-From: "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
-Subject: [PATCH v2 6/8] rockchip/rga: use 64-bit arithmetic instead of 32-bit
-Date: Mon, 5 Feb 2018 14:27:37 -0600
-Message-ID: <94fd0993cde02e18ee5d7f54707f8ce0d0341a0c.1517856716.git.gustavo@embeddedor.com>
-References: <cover.1517856716.git.gustavo@embeddedor.com>
+From: Martin Cerveny <martin-TMGNAR36iXmlVyrhU4qvOw@public.gmane.org>
+Subject: Re: [2/9] phy: add Rockchip Innosilicon hdmi phy
+Date: Mon, 5 Feb 2018 22:32:08 +0100 (CET)
+Message-ID: <alpine.GSO.2.00.1802052159530.23549@dmz.c-home.cz>
+References: <20180205143435.4723-3-heiko@sntech.de>
+Reply-To: Martin Cerveny <M.Cerveny-bdq14YP6qtRg9hUCZPvPmw@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1517856716.git.gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+In-Reply-To: <20180205143435.4723-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,39 +18,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Gustavo A. R. Silva" <garsilva-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Cast p to dma_addr_t in order to avoid a potential integer overflow.
-This variable is being used in a context that expects an expression
-of type dma_addr_t (u64).
+Hello.
 
-The expression p << PAGE_SHIFT is currently being evaluated
-using 32-bit arithmetic.
+On Mon, 5 Feb 2018, Heiko Stuebner wrote:
+> From: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> Add a driver for the Innosilicon hdmi phy used on rk3228/rk3229
+> and rk3328 socs from Rockchip.
+>
+> Signed-off-by: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+> +static u32 inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy *inno, int rate)
+> +{
+> +	int bus_width = phy_get_bus_width(inno->phy);
+> +	u32 tmdsclk;
+> +
+> +	switch (bus_width) {
+> +	case 4:
+> +		tmdsclk = rate / 2;
+> +		break;
+> +	case 5:
+> +		tmdsclk = rate * 5 / 8;
+> +		break;
+> +	case 6:
+> +		tmdsclk = rate * 3 / 4;
+> +		break;
+> +	case 10:
+> +		tmdsclk = rate * 5 / 4;
+> +		break;
+> +	case 12:
+> +		tmdsclk = rate * 3 / 2;
+> +		break;
+> +	case 16:
+> +		tmdsclk = rate * 2;
+> +		break;
+> +	default:
+> +		tmdsclk = rate;
+> +	}
+> +
+> +	return tmdsclk;
+> +}
 
-Addresses-Coverity-ID: 1458347
-Signed-off-by: Gustavo A. R. Silva <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
----
-Changes in v2:
- - Update subject and changelog to better reflect the proposed code change.
+Please corrects integer overflow 
+like https://github.com/mcerveny/rockchip-linux/commit/b4bc703f2dca4e5115b22155920d2277671a9f00
 
- drivers/media/platform/rockchip/rga/rga-buf.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-index 49cacc7..a43b57a 100644
---- a/drivers/media/platform/rockchip/rga/rga-buf.c
-+++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-@@ -140,7 +140,8 @@ void rga_buf_map(struct vb2_buffer *vb)
- 		address = sg_phys(sgl);
- 
- 		for (p = 0; p < len; p++) {
--			dma_addr_t phys = address + (p << PAGE_SHIFT);
-+			dma_addr_t phys = address +
-+					  ((dma_addr_t)p << PAGE_SHIFT);
- 
- 			pages[mapped_size + p] = phys;
- 		}
--- 
-2.7.4
+M.C>
