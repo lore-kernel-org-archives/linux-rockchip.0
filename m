@@ -1,78 +1,137 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 1/9] dt-bindings: add binding for Rockchip hdmi phy using an Innosilicon IP
-Date: Mon,  5 Feb 2018 15:34:27 +0100
-Message-ID: <20180205143435.4723-2-heiko@sntech.de>
-References: <20180205143435.4723-1-heiko@sntech.de>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180205143435.4723-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Philippe CORNU <philippe.cornu@st.com>
+Subject: Re: [PATCH] drm/bridge/synopsys: dsi: Add 1.31 version support
+Date: Mon, 5 Feb 2018 14:59:30 +0000
+Message-ID: <4c69e41e-4f80-41ec-94f9-556baadfe8a8@st.com>
+References: <CGME20180122150916epcas5p14fc276bc3320d82685b3c19dd62f5273@epcas5p1.samsung.com>
+ <20180122150819.22066-1-philippe.cornu@st.com>
+ <61f522e7-bdb7-7eba-ffb2-7dbb77ffa09e@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <61f522e7-bdb7-7eba-ffb2-7dbb77ffa09e@samsung.com>
+Content-Language: en-US
+Content-ID: <C8E6F5444EB9E04087F8794B85F3F361@st.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: Alexandre TORGUE <alexandre.torgue@st.com>, Yannick FERTRE <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Ludovic BARRE <ludovic.barre@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-The phy is used so far in two Rockchip socs the rk3228 and the rk3328.
-
-Signed-off-by: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- .../bindings/phy/phy-rockchip-inno-hdmi.txt        | 42 ++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
-
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
-new file mode 100644
-index 000000000000..7d36fd8d5d94
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
-@@ -0,0 +1,42 @@
-+ROCKCHIP HDMI PHY WITH INNO IP BLOCK
-+
-+Required properties:
-+ - compatible : should be one of the listed compatibles:
-+	* "rockchip,rk3228-hdmi-phy",
-+	* "rockchip,rk3328-hdmi-phy";
-+ - reg : Address and length of the hdmi phy control register set
-+ - clocks : phandle + clock specifier for the phy clocks
-+ - clock-names : string, clock name, must contain "sysclk" for system
-+	  control and register configuration and "refclk" for reference
-+	  crystal oscillator clock input to PLL
-+ - #clock-cells: should be 0.
-+ - clock-output-names : shall be the name for the output clock.
-+ - interrupts : phandle + interrupt specified for the hdmiphy interrupt
-+ - #phy-cells : must be 0. See ./phy-bindings.txt for details.
-+
-+Optional properties for rk3328-hdmi-phy:
-+ - nvmem-cells = phandle + nvmem specifier for the cpu-version efuse
-+ - nvmem-cell-names : "cpu-version" to read the chip version, required
-+	  for adjustment to some frequency settings
-+
-+Example:
-+	hdmi_phy: hdmi-phy@12030000 {
-+		compatible = "rockchip,rk3228-hdmi-phy";
-+		reg = <0x12030000 0x10000>;
-+		#phy-cells = <0>;
-+		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>;
-+		clock-names = "sysclk", "refclk";
-+		#clock-cells = <0>;
-+		clock-output-names = "hdmi_phy";
-+		status = "disabled";
-+	};
-+
-+Then the PHY can be used in other nodes such as:
-+
-+	hdmi: hdmi@200a0000 {
-+		compatible = "rockchip,rk3228-dw-hdmi";
-+		...
-+		phys = <&hdmi_phy>;
-+		phy-names = "hdmi";
-+		...
-+	};
--- 
-2.15.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgQW5kcnplaiwNCg0KQW5kIG1hbnkgdGhhbmtzIGZvciB5b3VyIGdvb2QgY29tbWVudHMNCg0K
+T24gMDIvMDUvMjAxOCAwMjowMyBQTSwgQW5kcnplaiBIYWpkYSB3cm90ZToNCj4gT24gMjIuMDEu
+MjAxOCAxNjowOCwgUGhpbGlwcGUgQ29ybnUgd3JvdGU6DQo+PiBGcm9tOiBQaGlsaXBwZSBDT1JO
+VSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPg0KPj4NCj4+IEFkZCBzdXBwb3J0IGZvciB0aGUgU3lu
+b3BzeXMgRGVzaWduV2FyZSBNSVBJIERTSSB2ZXJzaW9uIDEuMzENCj4+IFR3byByZWdpc3RlcnMg
+bmVlZCB0byBiZSB1cGRhdGVkL2FkZGVkIGZvciBzdXBwb3J0aW5nIDEuMzE6DQo+PiAqIFBIWV9U
+TVJfQ0ZHIDB4OWMgKHVwZGF0ZWQpDQo+PiAgICAxLjMwIFszMToyNF0gcGh5X2hzMmxwX3RpbWUN
+Cj4+ICAgICAgICAgWzIzOjE2XSBwaHlfbHAyaHNfdGltZQ0KPj4gICAgICAgICBbMTQ6IDBdIG1h
+eF9yZF90aW1lDQo+Pg0KPj4gICAgMS4zMSBbMjU6MTZdIHBoeV9oczJscF90aW1lDQo+PiAgICAg
+ICAgIFsgOTogMF0gcGh5X2xwMmhzX3RpbWUNCj4+DQo+PiAqIFBIWV9UTVJfUkRfQ0ZHIDB4ZjQg
+KG5ldykNCj4+ICAgIDEuMzEgWzE0OiAwXSBtYXhfcmRfdGltZQ0KPj4NCj4+IFNpZ25lZC1vZmYt
+Ynk6IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+DQo+PiAtLS0NCj4+ICAg
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIHwgNTIgKysrKysr
+KysrKysrKysrKysrKysrKystLS0tDQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA0NiBpbnNlcnRpb25z
+KCspLCA2IGRlbGV0aW9ucygtKQ0KPj4NCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
+bm9wc3lzL2R3LW1pcGktZHNpLmMNCj4+IGluZGV4IDczNWYzODQyOWMwNi4uMjBhMmNhMTRhN2Fk
+IDEwMDY0NA0KPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBp
+LWRzaS5jDQo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
+ZHNpLmMNCj4+IEBAIC0yNSw3ICsyNSwxMyBAQA0KPj4gICAjaW5jbHVkZSA8ZHJtL2JyaWRnZS9k
+d19taXBpX2RzaS5oPg0KPj4gICAjaW5jbHVkZSA8dmlkZW8vbWlwaV9kaXNwbGF5Lmg+DQo+PiAg
+IA0KPj4gKyNkZWZpbmUgSFdWRVJfMTMwCQkJMHgzMTMzMzAwMAkvKiBJUCB2ZXJzaW9uIDEuMzAg
+Ki8NCj4+ICsjZGVmaW5lIEhXVkVSXzEzMQkJCTB4MzEzMzMxMDAJLyogSVAgdmVyc2lvbiAxLjMx
+ICovDQo+PiArI2RlZmluZSBIV1ZFUl9PTERFU1QJCQlIV1ZFUl8xMzANCj4+ICsjZGVmaW5lIEhX
+VkVSX05FV0VTVAkJCUhXVkVSXzEzMQ0KPj4gKw0KPj4gICAjZGVmaW5lIERTSV9WRVJTSU9OCQkJ
+MHgwMA0KPj4gKyNkZWZpbmUgVkVSU0lPTgkJCQlHRU5NQVNLKDMxLCA4KQ0KPj4gICANCj4+ICAg
+I2RlZmluZSBEU0lfUFdSX1VQCQkJMHgwNA0KPj4gICAjZGVmaW5lIFJFU0VUCQkJCTANCj4+IEBA
+IC0xNjEsMTEgKzE2NywxMiBAQA0KPj4gICAjZGVmaW5lIFBIWV9DTEtIUzJMUF9USU1FKGxiY2Mp
+CQkoKChsYmNjKSAmIDB4M2ZmKSA8PCAxNikNCj4+ICAgI2RlZmluZSBQSFlfQ0xLTFAySFNfVElN
+RShsYmNjKQkJKChsYmNjKSAmIDB4M2ZmKQ0KPj4gICANCj4+IC0vKiBUT0RPIE5leHQgcmVnaXN0
+ZXIgaXMgc2xpZ2h0bHkgZGlmZmVyZW50IGJldHdlZW4gMS4zMCAmIDEuMzEgSVAgdmVyc2lvbiAq
+Lw0KPj4gICAjZGVmaW5lIERTSV9QSFlfVE1SX0NGRwkJCTB4OWMNCj4+IC0jZGVmaW5lIFBIWV9I
+UzJMUF9USU1FKGxiY2MpCQkoKChsYmNjKSAmIDB4ZmYpIDw8IDI0KQ0KPj4gLSNkZWZpbmUgUEhZ
+X0xQMkhTX1RJTUUobGJjYykJCSgoKGxiY2MpICYgMHhmZikgPDwgMTYpDQo+PiAtI2RlZmluZSBN
+QVhfUkRfVElNRShsYmNjKQkJKChsYmNjKSAmIDB4N2ZmZikNCj4+ICsjZGVmaW5lIFBIWV9IUzJM
+UF9USU1FX1YxMzAobGJjYykJKCgobGJjYykgJiAweGZmKSA8PCAyNCkNCj4+ICsjZGVmaW5lIFBI
+WV9MUDJIU19USU1FX1YxMzAobGJjYykJKCgobGJjYykgJiAweGZmKSA8PCAxNikNCj4+ICsjZGVm
+aW5lIE1BWF9SRF9USU1FX1YxMzAobGJjYykJCSgobGJjYykgJiAweDdmZmYpDQo+PiArI2RlZmlu
+ZSBQSFlfSFMyTFBfVElNRV9WMTMxKGxiY2MpCSgoKGxiY2MpICYgMHgzZmYpIDw8IDE2KQ0KPj4g
+KyNkZWZpbmUgUEhZX0xQMkhTX1RJTUVfVjEzMShsYmNjKQkoKGxiY2MpICYgMHgzZmYpDQo+PiAg
+IA0KPj4gICAjZGVmaW5lIERTSV9QSFlfUlNUWgkJCTB4YTANCj4+ICAgI2RlZmluZSBQSFlfRElT
+Rk9SQ0VQTEwJCQkwDQo+PiBAQCAtMjA0LDcgKzIxMSw5IEBADQo+PiAgICNkZWZpbmUgRFNJX0lO
+VF9TVDEJCQkweGMwDQo+PiAgICNkZWZpbmUgRFNJX0lOVF9NU0swCQkJMHhjNA0KPj4gICAjZGVm
+aW5lIERTSV9JTlRfTVNLMQkJCTB4YzgNCj4+ICsNCj4+ICAgI2RlZmluZSBEU0lfUEhZX1RNUl9S
+RF9DRkcJCTB4ZjQNCj4+ICsjZGVmaW5lIE1BWF9SRF9USU1FX1YxMzEobGJjYykJCSgobGJjYykg
+JiAweDdmZmYpDQo+PiAgIA0KPj4gICAjZGVmaW5lIFBIWV9TVEFUVVNfVElNRU9VVF9VUwkJMTAw
+MDANCj4+ICAgI2RlZmluZSBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTCTIwMDAwDQo+PiBAQCAt
+MjE1LDYgKzIyNCw3IEBAIHN0cnVjdCBkd19taXBpX2RzaSB7DQo+PiAgIAlzdHJ1Y3QgZHJtX2Jy
+aWRnZSAqcGFuZWxfYnJpZGdlOw0KPj4gICAJc3RydWN0IGRldmljZSAqZGV2Ow0KPj4gICAJdm9p
+ZCBfX2lvbWVtICpiYXNlOw0KPj4gKwl1MzIgaHdfdmVyc2lvbjsNCj4+ICAgDQo+PiAgIAlzdHJ1
+Y3QgY2xrICpwY2xrOw0KPj4gICAJc3RydWN0IGNsayAqcHhfY2xrOw0KPj4gQEAgLTYxNiw4ICs2
+MjYsMTQgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29uZmlnKHN0cnVj
+dCBkd19taXBpX2RzaSAqZHNpKQ0KPj4gICAJICogbm90ZTogRFNJX1BIWV9UTVJfQ0ZHLk1BWF9S
+RF9USU1FIHNob3VsZCBiZSBpbiBsaW5lIHdpdGgNCj4+ICAgCSAqIERTSV9DTURfTU9ERV9DRkcu
+TUFYX1JEX1BLVF9TSVpFX0xQIChzZWUgQ01EX01PREVfQUxMX0xQKQ0KPj4gICAJICovDQo+PiAt
+CWRzaV93cml0ZShkc2ksIERTSV9QSFlfVE1SX0NGRywgUEhZX0hTMkxQX1RJTUUoMHg0MCkNCj4+
+IC0JCSAgfCBQSFlfTFAySFNfVElNRSgweDQwKSB8IE1BWF9SRF9USU1FKDEwMDAwKSk7DQo+PiAr
+CWlmIChkc2ktPmh3X3ZlcnNpb24gPT0gSFdWRVJfMTMxKSB7DQo+PiArCQlkc2lfd3JpdGUoZHNp
+LCBEU0lfUEhZX1RNUl9DRkcsIFBIWV9IUzJMUF9USU1FX1YxMzEoMHg0MCkgfA0KPj4gKwkJCSAg
+UEhZX0xQMkhTX1RJTUVfVjEzMSgweDQwKSk7DQo+PiArCQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZ
+X1RNUl9SRF9DRkcsIE1BWF9SRF9USU1FX1YxMzEoMTAwMDApKTsNCj4+ICsJfSBlbHNlIHsNCj4+
+ICsJCWRzaV93cml0ZShkc2ksIERTSV9QSFlfVE1SX0NGRywgUEhZX0hTMkxQX1RJTUVfVjEzMCgw
+eDQwKSB8DQo+PiArCQkJICBQSFlfTFAySFNfVElNRV9WMTMwKDB4NDApIHwgTUFYX1JEX1RJTUVf
+VjEzMCgxMDAwMCkpOw0KPj4gKwl9DQo+PiAgIA0KPj4gICAJZHNpX3dyaXRlKGRzaSwgRFNJX1BI
+WV9UTVJfTFBDTEtfQ0ZHLCBQSFlfQ0xLSFMyTFBfVElNRSgweDQwKQ0KPj4gICAJCSAgfCBQSFlf
+Q0xLTFAySFNfVElNRSgweDQwKSk7DQo+PiBAQCAtNzkxLDYgKzgwNywyOCBAQCBzdGF0aWMgY29u
+c3Qgc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgZHdfbWlwaV9kc2lfYnJpZGdlX2Z1bmNzID0gew0K
+Pj4gICAJLmF0dGFjaAkgICAgICA9IGR3X21pcGlfZHNpX2JyaWRnZV9hdHRhY2gsDQo+PiAgIH07
+DQo+PiAgIA0KPj4gK3N0YXRpYyB2b2lkIGRzaV9nZXRfdmVyc2lvbihzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSkNCj4+ICt7DQo+PiArCXUzMiBod192ZXJzaW9uOw0KPj4gKw0KPj4gKwljbGtfcHJl
+cGFyZV9lbmFibGUoZHNpLT5wY2xrKTsNCj4+ICsJaHdfdmVyc2lvbiA9IGRzaV9yZWFkKGRzaSwg
+RFNJX1ZFUlNJT04pICYgVkVSU0lPTjsNCj4+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+
+cGNsayk7DQo+PiArDQo+PiArCWlmIChod192ZXJzaW9uID4gSFdWRVJfTkVXRVNUKSB7DQo+PiAr
+CQlEUk1fREVCVUcoImh3IHZlcnNpb246IHVzZSAweCUwOHggZm9yIHRoaXMgcmVjZW50IDB4JTA4
+eFxuIiwNCj4+ICsJCQkgIEhXVkVSX05FV0VTVCwgaHdfdmVyc2lvbik7DQo+PiArCQlod192ZXJz
+aW9uID0gSFdWRVJfTkVXRVNUOw0KPj4gKw0KPj4gKwl9IGVsc2UgaWYgKGh3X3ZlcnNpb24gPCBI
+V1ZFUl9PTERFU1QpIHsNCj4+ICsJCURSTV9ERUJVRygiaHcgdmVyc2lvbjogdXNlIDB4JTA4eCBm
+b3IgdGhpcyBvbGQgMHglMDh4XG4iLA0KPj4gKwkJCSAgSFdWRVJfT0xERVNULCBod192ZXJzaW9u
+KTsNCj4+ICsJCWh3X3ZlcnNpb24gPSBIV1ZFUl9PTERFU1Q7DQo+PiArCX0NCj4+ICsNCj4+ICsJ
+ZHNpLT5od192ZXJzaW9uID0gaHdfdmVyc2lvbjsNCj4+ICt9DQo+PiArDQo+PiAgIHN0YXRpYyBz
+dHJ1Y3QgZHdfbWlwaV9kc2kgKg0KPj4gICBfX2R3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYsDQo+PiAgIAkJICAgIGNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9w
+bGF0X2RhdGEgKnBsYXRfZGF0YSkNCj4+IEBAIC04NzAsNiArOTA4LDggQEAgX19kd19taXBpX2Rz
+aV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LA0KPj4gICAJCWNsa19kaXNhYmxl
+X3VucHJlcGFyZShkc2ktPnBjbGspOw0KPj4gICAJfQ0KPj4gICANCj4+ICsJZHNpX2dldF92ZXJz
+aW9uKGRzaSk7DQo+PiArDQo+PiAgIAlwbV9ydW50aW1lX2VuYWJsZShkZXYpOw0KPiANCj4gVHdv
+IHF1ZXN0aW9uczoNCj4gMS4gWW91IGhhdmUgZ2VuZXJhbGx5IHR3byB2YXJpYW50czoNCj4gLSBv
+bGRlciB0aGFuIDEzMSwNCj4gLSBub3Qgb2xkZXIgdGhhbiAxMzEuDQo+IFdvdWxkbid0IGJlIGJl
+dHRlciB0byBqdXN0IGFzc3VtZSB0aGF0IHNpbmNlIDEzMSByZWdpc3RlcnMgc2xpZ2h0bHkgZGlm
+ZmVyPw0KPiBTbyB5b3UganVzdCBzdG9yZXM6DQo+ICDCoMKgwqAgZHNpLT5od192ZXJzaW9uID0g
+ZHNpX3JlYWQoZHNpLCBEU0lfVkVSU0lPTikgJiBWRVJTSU9OOw0KPiBBbmQgaWYgbmVjY2Vzc2Fy
+eSBwZXJmb3JtcyBjb21wYXJpc29uOg0KPiAgwqDCoMKgIGlmIChkc2ktPmh3X3ZlcnNpb24gPj0g
+SFdWRVJfMTMxKQ0KPiAgwqDCoMKgIMKgwqDCoCAuLi4NCj4gIMKgwqDCoCBlbHNlDQo+ICDCoMKg
+wqAgwqDCoMKgIC4uLg0KPiANCj4gVGhpcyB3YXkgeW91IGNhbiByZW1vdmUgdGhlc2UgSFdWRVJf
+KE5FV0VTVHxPTERFU1QpLg0KPiANCg0KQXJjaGl0ICYgeW91IGFyZSByaWdodCwgbXkgY29kZSBp
+cyB0b28gY29tcGxleCBmb3IgYXQgdGhlIGVuZCBvbmx5IDIgDQpkaWZmZXJlbnQgcmVnIHdyaXRl
+cyBmb3IgdGhlIDEuMzEgdmVyc2lvbiA6KQ0KDQpJIHdpbGwgZm9sbG93IGFsbCB5b3VyIGdvb2Qg
+dGlwcyB0byBzaW1wbGlmeSB0aGUgY29kZS4NCg0KPiAyLiBZb3UgYXJlIHVzaW5nIHBtX3J1bnRp
+bWUsIGJ1dCBub3QgaW4gZHNpX2dldF92ZXJzaW9uLiBJIGd1ZXNzIGl0IGlzDQo+IFNvQyBkZXBl
+bmRhbnTCoCBidXQgSSBzdXBwb3NlIHBlcmZvcm1pbmcgcmVnaXN0cnkgcmVhZCBzaG91bGQgYmUg
+c2FmZXINCj4gYWZ0ZXIgcnVudGltZV9nZXQuDQo+IA0KPiBSZWdhcmRzDQo+IEFuZHJ6ZWoNCj4g
+DQoNCmRzaV9nZXRfdmVyc2lvbigpIGlzIGNhbGxlZCBvbmx5IG9uY2UgYW5kIGp1c3QgYmVmb3Jl
+IHBtX3J1bnRpbWVfZW5hYmxlKCkuDQpBbnl3YXksIEkgdGhpbmsgdGhpcyBmdW5jdGlvbiBpcyBu
+b3QgcmVxdWlyZWQgYW55bW9yZSBhcyB0aGVyZSBpcyBvbmx5IA0Kb25lIHBsYWNlIHdoZXJlIHdl
+IG5lZWQgdG8gdGFrZSBjYXJlIG9mIHRoZSAxLjMxIHZlcnNpb24uDQoNCk1hbnkgdGhhbmtzLA0K
+UGhpbGlwcGUgOi0pDQoNCj4+ICAgDQo+PiAgIAlkc2ktPmRzaV9ob3N0Lm9wcyA9ICZkd19taXBp
+X2RzaV9ob3N0X29wczsNCj4gDQo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
