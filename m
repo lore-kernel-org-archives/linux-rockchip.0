@@ -1,119 +1,93 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: Add 1.31 version support
-Date: Mon, 05 Feb 2018 14:03:34 +0100
-Message-ID: <61f522e7-bdb7-7eba-ffb2-7dbb77ffa09e@samsung.com>
-References: <CGME20180122150916epcas5p14fc276bc3320d82685b3c19dd62f5273@epcas5p1.samsung.com>
- <20180122150819.22066-1-philippe.cornu@st.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20180122150819.22066-1-philippe.cornu@st.com>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philippe Cornu <philippe.cornu@st.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Alexandre Torgue <alexandre.torgue@st.com>, Yannick Fertre <yannick.fertre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael Reulier <mickael.reulier@st.com>, Vincent Abriou <vincent.abriou@st.com>, Ludovic Barre <ludovic.barre@st.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 4/9] drm/bridge: dw-hdmi: export hotplug functions
+Date: Mon,  5 Feb 2018 15:34:30 +0100
+Message-ID: <20180205143435.4723-5-heiko@sntech.de>
+References: <20180205143435.4723-1-heiko@sntech.de>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180205143435.4723-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjIuMDEuMjAxOCAxNjowOCwgUGhpbGlwcGUgQ29ybnUgd3JvdGU6Cj4gRnJvbTogUGhpbGlw
-cGUgQ09STlUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4KPgo+IEFkZCBzdXBwb3J0IGZvciB0aGUg
-U3lub3BzeXMgRGVzaWduV2FyZSBNSVBJIERTSSB2ZXJzaW9uIDEuMzEKPiBUd28gcmVnaXN0ZXJz
-IG5lZWQgdG8gYmUgdXBkYXRlZC9hZGRlZCBmb3Igc3VwcG9ydGluZyAxLjMxOgo+ICogUEhZX1RN
-Ul9DRkcgMHg5YyAodXBkYXRlZCkKPiAgIDEuMzAgWzMxOjI0XSBwaHlfaHMybHBfdGltZQo+ICAg
-ICAgICBbMjM6MTZdIHBoeV9scDJoc190aW1lCj4gICAgICAgIFsxNDogMF0gbWF4X3JkX3RpbWUK
-Pgo+ICAgMS4zMSBbMjU6MTZdIHBoeV9oczJscF90aW1lCj4gICAgICAgIFsgOTogMF0gcGh5X2xw
-MmhzX3RpbWUKPgo+ICogUEhZX1RNUl9SRF9DRkcgMHhmNCAobmV3KQo+ICAgMS4zMSBbMTQ6IDBd
-IG1heF9yZF90aW1lCj4KPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUu
-Y29ybnVAc3QuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
-LW1pcGktZHNpLmMgfCA1MiArKysrKysrKysrKysrKysrKysrKysrKy0tLS0KPiAgMSBmaWxlIGNo
-YW5nZWQsIDQ2IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4gaW5kZXggNzM1ZjM4NDI5YzA2
-Li4yMGEyY2ExNGE3YWQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
-cHN5cy9kdy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
-cy9kdy1taXBpLWRzaS5jCj4gQEAgLTI1LDcgKzI1LDEzIEBACj4gICNpbmNsdWRlIDxkcm0vYnJp
-ZGdlL2R3X21pcGlfZHNpLmg+Cj4gICNpbmNsdWRlIDx2aWRlby9taXBpX2Rpc3BsYXkuaD4KPiAg
-Cj4gKyNkZWZpbmUgSFdWRVJfMTMwCQkJMHgzMTMzMzAwMAkvKiBJUCB2ZXJzaW9uIDEuMzAgKi8K
-PiArI2RlZmluZSBIV1ZFUl8xMzEJCQkweDMxMzMzMTAwCS8qIElQIHZlcnNpb24gMS4zMSAqLwo+
-ICsjZGVmaW5lIEhXVkVSX09MREVTVAkJCUhXVkVSXzEzMAo+ICsjZGVmaW5lIEhXVkVSX05FV0VT
-VAkJCUhXVkVSXzEzMQo+ICsKPiAgI2RlZmluZSBEU0lfVkVSU0lPTgkJCTB4MDAKPiArI2RlZmlu
-ZSBWRVJTSU9OCQkJCUdFTk1BU0soMzEsIDgpCj4gIAo+ICAjZGVmaW5lIERTSV9QV1JfVVAJCQkw
-eDA0Cj4gICNkZWZpbmUgUkVTRVQJCQkJMAo+IEBAIC0xNjEsMTEgKzE2NywxMiBAQAo+ICAjZGVm
-aW5lIFBIWV9DTEtIUzJMUF9USU1FKGxiY2MpCQkoKChsYmNjKSAmIDB4M2ZmKSA8PCAxNikKPiAg
-I2RlZmluZSBQSFlfQ0xLTFAySFNfVElNRShsYmNjKQkJKChsYmNjKSAmIDB4M2ZmKQo+ICAKPiAt
-LyogVE9ETyBOZXh0IHJlZ2lzdGVyIGlzIHNsaWdodGx5IGRpZmZlcmVudCBiZXR3ZWVuIDEuMzAg
-JiAxLjMxIElQIHZlcnNpb24gKi8KPiAgI2RlZmluZSBEU0lfUEhZX1RNUl9DRkcJCQkweDljCj4g
-LSNkZWZpbmUgUEhZX0hTMkxQX1RJTUUobGJjYykJCSgoKGxiY2MpICYgMHhmZikgPDwgMjQpCj4g
-LSNkZWZpbmUgUEhZX0xQMkhTX1RJTUUobGJjYykJCSgoKGxiY2MpICYgMHhmZikgPDwgMTYpCj4g
-LSNkZWZpbmUgTUFYX1JEX1RJTUUobGJjYykJCSgobGJjYykgJiAweDdmZmYpCj4gKyNkZWZpbmUg
-UEhZX0hTMkxQX1RJTUVfVjEzMChsYmNjKQkoKChsYmNjKSAmIDB4ZmYpIDw8IDI0KQo+ICsjZGVm
-aW5lIFBIWV9MUDJIU19USU1FX1YxMzAobGJjYykJKCgobGJjYykgJiAweGZmKSA8PCAxNikKPiAr
-I2RlZmluZSBNQVhfUkRfVElNRV9WMTMwKGxiY2MpCQkoKGxiY2MpICYgMHg3ZmZmKQo+ICsjZGVm
-aW5lIFBIWV9IUzJMUF9USU1FX1YxMzEobGJjYykJKCgobGJjYykgJiAweDNmZikgPDwgMTYpCj4g
-KyNkZWZpbmUgUEhZX0xQMkhTX1RJTUVfVjEzMShsYmNjKQkoKGxiY2MpICYgMHgzZmYpCj4gIAo+
-ICAjZGVmaW5lIERTSV9QSFlfUlNUWgkJCTB4YTAKPiAgI2RlZmluZSBQSFlfRElTRk9SQ0VQTEwJ
-CQkwCj4gQEAgLTIwNCw3ICsyMTEsOSBAQAo+ICAjZGVmaW5lIERTSV9JTlRfU1QxCQkJMHhjMAo+
-ICAjZGVmaW5lIERTSV9JTlRfTVNLMAkJCTB4YzQKPiAgI2RlZmluZSBEU0lfSU5UX01TSzEJCQkw
-eGM4Cj4gKwo+ICAjZGVmaW5lIERTSV9QSFlfVE1SX1JEX0NGRwkJMHhmNAo+ICsjZGVmaW5lIE1B
-WF9SRF9USU1FX1YxMzEobGJjYykJCSgobGJjYykgJiAweDdmZmYpCj4gIAo+ICAjZGVmaW5lIFBI
-WV9TVEFUVVNfVElNRU9VVF9VUwkJMTAwMDAKPiAgI2RlZmluZSBDTURfUEtUX1NUQVRVU19USU1F
-T1VUX1VTCTIwMDAwCj4gQEAgLTIxNSw2ICsyMjQsNyBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2kgewo+
-ICAJc3RydWN0IGRybV9icmlkZ2UgKnBhbmVsX2JyaWRnZTsKPiAgCXN0cnVjdCBkZXZpY2UgKmRl
-djsKPiAgCXZvaWQgX19pb21lbSAqYmFzZTsKPiArCXUzMiBod192ZXJzaW9uOwo+ICAKPiAgCXN0
-cnVjdCBjbGsgKnBjbGs7Cj4gIAlzdHJ1Y3QgY2xrICpweF9jbGs7Cj4gQEAgLTYxNiw4ICs2MjYs
-MTQgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29uZmlnKHN0cnVjdCBk
-d19taXBpX2RzaSAqZHNpKQo+ICAJICogbm90ZTogRFNJX1BIWV9UTVJfQ0ZHLk1BWF9SRF9USU1F
-IHNob3VsZCBiZSBpbiBsaW5lIHdpdGgKPiAgCSAqIERTSV9DTURfTU9ERV9DRkcuTUFYX1JEX1BL
-VF9TSVpFX0xQIChzZWUgQ01EX01PREVfQUxMX0xQKQo+ICAJICovCj4gLQlkc2lfd3JpdGUoZHNp
-LCBEU0lfUEhZX1RNUl9DRkcsIFBIWV9IUzJMUF9USU1FKDB4NDApCj4gLQkJICB8IFBIWV9MUDJI
-U19USU1FKDB4NDApIHwgTUFYX1JEX1RJTUUoMTAwMDApKTsKPiArCWlmIChkc2ktPmh3X3ZlcnNp
-b24gPT0gSFdWRVJfMTMxKSB7Cj4gKwkJZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UTVJfQ0ZHLCBQ
-SFlfSFMyTFBfVElNRV9WMTMxKDB4NDApIHwKPiArCQkJICBQSFlfTFAySFNfVElNRV9WMTMxKDB4
-NDApKTsKPiArCQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZX1RNUl9SRF9DRkcsIE1BWF9SRF9USU1F
-X1YxMzEoMTAwMDApKTsKPiArCX0gZWxzZSB7Cj4gKwkJZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9U
-TVJfQ0ZHLCBQSFlfSFMyTFBfVElNRV9WMTMwKDB4NDApIHwKPiArCQkJICBQSFlfTFAySFNfVElN
-RV9WMTMwKDB4NDApIHwgTUFYX1JEX1RJTUVfVjEzMCgxMDAwMCkpOwo+ICsJfQo+ICAKPiAgCWRz
-aV93cml0ZShkc2ksIERTSV9QSFlfVE1SX0xQQ0xLX0NGRywgUEhZX0NMS0hTMkxQX1RJTUUoMHg0
-MCkKPiAgCQkgIHwgUEhZX0NMS0xQMkhTX1RJTUUoMHg0MCkpOwo+IEBAIC03OTEsNiArODA3LDI4
-IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2JyaWRnZV9mdW5jcyBkd19taXBpX2RzaV9icmlk
-Z2VfZnVuY3MgPSB7Cj4gIAkuYXR0YWNoCSAgICAgID0gZHdfbWlwaV9kc2lfYnJpZGdlX2F0dGFj
-aCwKPiAgfTsKPiAgCj4gK3N0YXRpYyB2b2lkIGRzaV9nZXRfdmVyc2lvbihzdHJ1Y3QgZHdfbWlw
-aV9kc2kgKmRzaSkKPiArewo+ICsJdTMyIGh3X3ZlcnNpb247Cj4gKwo+ICsJY2xrX3ByZXBhcmVf
-ZW5hYmxlKGRzaS0+cGNsayk7Cj4gKwlod192ZXJzaW9uID0gZHNpX3JlYWQoZHNpLCBEU0lfVkVS
-U0lPTikgJiBWRVJTSU9OOwo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGNsayk7Cj4g
-Kwo+ICsJaWYgKGh3X3ZlcnNpb24gPiBIV1ZFUl9ORVdFU1QpIHsKPiArCQlEUk1fREVCVUcoImh3
-IHZlcnNpb246IHVzZSAweCUwOHggZm9yIHRoaXMgcmVjZW50IDB4JTA4eFxuIiwKPiArCQkJICBI
-V1ZFUl9ORVdFU1QsIGh3X3ZlcnNpb24pOwo+ICsJCWh3X3ZlcnNpb24gPSBIV1ZFUl9ORVdFU1Q7
-Cj4gKwo+ICsJfSBlbHNlIGlmIChod192ZXJzaW9uIDwgSFdWRVJfT0xERVNUKSB7Cj4gKwkJRFJN
-X0RFQlVHKCJodyB2ZXJzaW9uOiB1c2UgMHglMDh4IGZvciB0aGlzIG9sZCAweCUwOHhcbiIsCj4g
-KwkJCSAgSFdWRVJfT0xERVNULCBod192ZXJzaW9uKTsKPiArCQlod192ZXJzaW9uID0gSFdWRVJf
-T0xERVNUOwo+ICsJfQo+ICsKPiArCWRzaS0+aHdfdmVyc2lvbiA9IGh3X3ZlcnNpb247Cj4gK30K
-PiArCj4gIHN0YXRpYyBzdHJ1Y3QgZHdfbWlwaV9kc2kgKgo+ICBfX2R3X21pcGlfZHNpX3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAkJICAgIGNvbnN0IHN0cnVjdCBkd19t
-aXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKPiBAQCAtODcwLDYgKzkwOCw4IEBAIF9fZHdf
-bWlwaV9kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPiAgCQljbGtfZGlz
-YWJsZV91bnByZXBhcmUoZHNpLT5wY2xrKTsKPiAgCX0KPiAgCj4gKwlkc2lfZ2V0X3ZlcnNpb24o
-ZHNpKTsKPiArCj4gIAlwbV9ydW50aW1lX2VuYWJsZShkZXYpOwoKVHdvIHF1ZXN0aW9uczoKMS4g
-WW91IGhhdmUgZ2VuZXJhbGx5IHR3byB2YXJpYW50czoKLSBvbGRlciB0aGFuIDEzMSwKLSBub3Qg
-b2xkZXIgdGhhbiAxMzEuCldvdWxkbid0IGJlIGJldHRlciB0byBqdXN0IGFzc3VtZSB0aGF0IHNp
-bmNlIDEzMSByZWdpc3RlcnMgc2xpZ2h0bHkgZGlmZmVyPwpTbyB5b3UganVzdCBzdG9yZXM6CsKg
-wqDCoCBkc2ktPmh3X3ZlcnNpb24gPSBkc2lfcmVhZChkc2ksIERTSV9WRVJTSU9OKSAmIFZFUlNJ
-T047CkFuZCBpZiBuZWNjZXNzYXJ5IHBlcmZvcm1zIGNvbXBhcmlzb246CsKgwqDCoCBpZiAoZHNp
-LT5od192ZXJzaW9uID49IEhXVkVSXzEzMSkKwqDCoMKgIMKgwqDCoCAuLi4KwqDCoMKgIGVsc2UK
-wqDCoMKgIMKgwqDCoCAuLi4KClRoaXMgd2F5IHlvdSBjYW4gcmVtb3ZlIHRoZXNlIEhXVkVSXyhO
-RVdFU1R8T0xERVNUKS4KCjIuIFlvdSBhcmUgdXNpbmcgcG1fcnVudGltZSwgYnV0IG5vdCBpbiBk
-c2lfZ2V0X3ZlcnNpb24uIEkgZ3Vlc3MgaXQgaXMKU29DIGRlcGVuZGFudMKgIGJ1dCBJIHN1cHBv
-c2UgcGVyZm9ybWluZyByZWdpc3RyeSByZWFkIHNob3VsZCBiZSBzYWZlcgphZnRlciBydW50aW1l
-X2dldC4KClJlZ2FyZHMKQW5kcnplagoKPiAgCj4gIAlkc2ktPmRzaV9ob3N0Lm9wcyA9ICZkd19t
-aXBpX2RzaV9ob3N0X29wczsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+From: Algea Cao <algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+External phys may not provide their own hotplug-related
+routines but instead rely on the dw-hdmi ones.
+Export these functions so that external hdmi-phys can
+use them if necessary.
+
+Signed-off-by: Algea Cao <algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+[export all 3 hotplug-related functions]
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 11 +++++++----
+ include/drm/bridge/dw_hdmi.h              |  6 +++++-
+ 2 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index 7255fafce089..2760e1b51422 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -1251,14 +1251,15 @@ static void dw_hdmi_phy_disable(struct dw_hdmi *hdmi, void *data)
+ 	dw_hdmi_phy_power_off(hdmi);
+ }
+ 
+-static enum drm_connector_status dw_hdmi_phy_read_hpd(struct dw_hdmi *hdmi,
+-						      void *data)
++enum drm_connector_status dw_hdmi_phy_read_hpd(struct dw_hdmi *hdmi,
++					       void *data)
+ {
+ 	return hdmi_readb(hdmi, HDMI_PHY_STAT0) & HDMI_PHY_HPD ?
+ 		connector_status_connected : connector_status_disconnected;
+ }
++EXPORT_SYMBOL_GPL(dw_hdmi_phy_read_hpd);
+ 
+-static void dw_hdmi_phy_update_hpd(struct dw_hdmi *hdmi, void *data,
++void dw_hdmi_phy_update_hpd(struct dw_hdmi *hdmi, void *data,
+ 				   bool force, bool disabled, bool rxsense)
+ {
+ 	u8 old_mask = hdmi->phy_mask;
+@@ -1271,8 +1272,9 @@ static void dw_hdmi_phy_update_hpd(struct dw_hdmi *hdmi, void *data,
+ 	if (old_mask != hdmi->phy_mask)
+ 		hdmi_writeb(hdmi, hdmi->phy_mask, HDMI_PHY_MASK0);
+ }
++EXPORT_SYMBOL_GPL(dw_hdmi_phy_update_hpd);
+ 
+-static void dw_hdmi_phy_setup_hpd(struct dw_hdmi *hdmi, void *data)
++void dw_hdmi_phy_setup_hpd(struct dw_hdmi *hdmi, void *data)
+ {
+ 	/*
+ 	 * Configure the PHY RX SENSE and HPD interrupts polarities and clear
+@@ -1291,6 +1293,7 @@ static void dw_hdmi_phy_setup_hpd(struct dw_hdmi *hdmi, void *data)
+ 	hdmi_writeb(hdmi, ~(HDMI_IH_PHY_STAT0_HPD | HDMI_IH_PHY_STAT0_RX_SENSE),
+ 		    HDMI_IH_MUTE_PHY_STAT0);
+ }
++EXPORT_SYMBOL_GPL(dw_hdmi_phy_setup_hpd);
+ 
+ static const struct dw_hdmi_phy_ops dw_hdmi_synopsys_phy_ops = {
+ 	.init = dw_hdmi_phy_init,
+diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+index c5bc2804b29e..d9d7c75b3bfb 100644
+--- a/include/drm/bridge/dw_hdmi.h
++++ b/include/drm/bridge/dw_hdmi.h
+@@ -152,7 +152,11 @@ int dw_hdmi_bind(struct platform_device *pdev, struct drm_encoder *encoder,
+ 		 const struct dw_hdmi_plat_data *plat_data);
+ 
+ void dw_hdmi_setup_rx_sense(struct device *dev, bool hpd, bool rx_sense);
+-
++enum drm_connector_status dw_hdmi_phy_read_hpd(struct dw_hdmi *hdmi,
++					       void *data);
++void dw_hdmi_phy_update_hpd(struct dw_hdmi *hdmi, void *data,
++				   bool force, bool disabled, bool rxsense);
++void dw_hdmi_phy_setup_hpd(struct dw_hdmi *hdmi, void *data);
+ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
+ void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
+ void dw_hdmi_audio_disable(struct dw_hdmi *hdmi);
+-- 
+2.15.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
