@@ -1,114 +1,39 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v5 02/16] media: doc: add document for rkisp1 meta buffer
- format
-Date: Tue, 6 Feb 2018 13:55:54 +0100
-Message-ID: <5286472f-81c9-0093-ded1-0031c5ce8e43@xs4all.nl>
-References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
- <1514533978-20408-3-git-send-email-zhengsq@rock-chips.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2] drm/bridge/synopsys: dsi: Add 1.31 version support
+Date: Tue, 06 Feb 2018 14:06:58 +0100
+Message-ID: <ec4a4255-38f1-6747-4dc4-09ea9f06126d@samsung.com>
+References: <CGME20180206084357epcas1p32e11d1e3c84de7da9d5ba150ded77cdf@epcas1p3.samsung.com>
+ <20180206084251.303-1-philippe.cornu@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1514533978-20408-3-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20180206084251.303-1-philippe.cornu@st.com>
+Content-language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philippe Cornu <philippe.cornu@st.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Yannick Fertre <yannick.fertre@st.com>, Vincent Abriou <vincent.abriou@st.com>, Alexandre Torgue <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/29/17 08:52, Shunqian Zheng wrote:
-> From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This commit add docuemnt for rkisp1 meta buffer format
-> 
-> Signed-off-by: Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/media/uapi/v4l/meta-formats.rst          |  2 ++
->  .../media/uapi/v4l/pixfmt-meta-rkisp1-params.rst       | 17 +++++++++++++++++
->  .../media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst         | 18 ++++++++++++++++++
->  3 files changed, 37 insertions(+)
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-> 
-> diff --git a/Documentation/media/uapi/v4l/meta-formats.rst b/Documentation/media/uapi/v4l/meta-formats.rst
-> index 01e24e3..1b82814 100644
-> --- a/Documentation/media/uapi/v4l/meta-formats.rst
-> +++ b/Documentation/media/uapi/v4l/meta-formats.rst
-> @@ -14,3 +14,5 @@ These formats are used for the :ref:`metadata` interface only.
->  
->      pixfmt-meta-vsp1-hgo
->      pixfmt-meta-vsp1-hgt
-> +    pixfmt-meta-rkisp1-params
-> +    pixfmt-meta-rkisp1-stat
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-> new file mode 100644
-> index 0000000..ed344d4
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-> @@ -0,0 +1,17 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-meta-fmt-rkisp1-params:
-> +
-> +*******************************
-> +V4L2_META_FMT_RK_ISP1_PARAMS
-> +*******************************
-> +
-> +Rockchip ISP1 Parameters Data
-> +
-> +Description
-> +===========
-> +
-> +This format describes input parameters for the Rockchip ISP1.
-> +
-> +The data use c-struct :c:type:`rkisp1_isp_params_cfg`, which is defined in
-
-The data use -> It uses
-
-> +the ``linux/rkisp1-config.h`` header file, See it for details.
-
-See -> see
-
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-> new file mode 100644
-> index 0000000..5ecc403
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-> @@ -0,0 +1,18 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-meta-fmt-rkisp1-stat:
-> +
-> +*******************************
-> +V4L2_META_FMT_RK_ISP1_STAT_3A
-> +*******************************
-> +
-> +Rockchip ISP1 Statistics Data
-> +
-> +Description
-> +===========
-> +
-> +This format describes image color statistics information generated by the Rockchip
-> +ISP1.
-> +
-> +The data use c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
-
-The data use -> It uses
-
-> +the ``linux/cifisp_stat.h`` header file, See it for details.
-> 
-
-See -> see
-
-After those trivial changes you can add my:
-
-Acked-by: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-
-Thanks!
-
-	Hans
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMDYuMDIuMjAxOCAwOTo0MiwgUGhpbGlwcGUgQ29ybnUgd3JvdGU6Cj4gQWRkIHN1cHBvcnQg
+Zm9yIHRoZSBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJIHZlcnNpb24gMS4zMQo+IFR3byBy
+ZWdpc3RlcnMgbmVlZCB0byBiZSB1cGRhdGVkL2FkZGVkIGZvciBzdXBwb3J0aW5nIDEuMzE6Cj4g
+KiBQSFlfVE1SX0NGRyAweDljICh1cGRhdGVkKQo+ICAgMS4zMCBbMzE6MjRdIHBoeV9oczJscF90
+aW1lCj4gICAgICAgIFsyMzoxNl0gcGh5X2xwMmhzX3RpbWUKPiAgICAgICAgWzE0OiAwXSBtYXhf
+cmRfdGltZQo+Cj4gICAxLjMxIFsyNToxNl0gcGh5X2hzMmxwX3RpbWUKPiAgICAgICAgWyA5OiAw
+XSBwaHlfbHAyaHNfdGltZQo+Cj4gKiBQSFlfVE1SX1JEX0NGRyAweGY0IChuZXcpCj4gICAxLjMx
+IFsxNDogMF0gbWF4X3JkX3RpbWUKPgo+IFNpZ25lZC1vZmYtYnk6IFBoaWxpcHBlIENvcm51IDxw
+aGlsaXBwZS5jb3JudUBzdC5jb20+CgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpk
+YUBzYW1zdW5nLmNvbT4KCklmIHRoZXJlIHdpbGwgYmUgbm8gb2JqZWN0aW9ucyBJIHdpbGwgbWVy
+Z2UgaXQgdGhpcyB3ZWVrLgoKwqAtLQpSZWdhcmRzCkFuZHJ6ZWoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
