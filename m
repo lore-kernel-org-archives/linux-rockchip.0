@@ -1,54 +1,102 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: [PATCH 3/3] arm64: dts: rockchip: Specify override mode for kevin
- panel
-Date: Tue,  6 Feb 2018 11:56:22 -0500
-Message-ID: <20180206165626.37692-4-seanpaul@chromium.org>
-References: <20180206165626.37692-1-seanpaul@chromium.org>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/3] drm/panel: simple: Add ability to override typical timing
+Date: Tue, 6 Feb 2018 14:19:34 -0600
+Message-ID: <CAL_JsqJer8ZrLyPHz=hBo9smSv7aXhtP3hOJzQojt7ofUiHo=w@mail.gmail.com>
+References: <20180206165626.37692-1-seanpaul@chromium.org> <20180206165626.37692-2-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180206165626.37692-1-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Brian Norris <briannorris@chromium.org>, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org, Emil Renner Berthing <kernel@esmil.dk>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180206165626.37692-2-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBwYXRjaCBhZGRzIGFuIG92ZXJyaWRlIG1vZGUgZm9yIGtldmluIGRldmljZXMuIFRoZSBt
-b2RlIGluY3JlYXNlcwpib3RoIGJhY2sgcG9yY2hlcyB0byBhbGxvdyBhIHBpeGVsIGNsb2NrIG9m
-IDI2NjY2a0h6IGFzIG9wcG9zZWQgdG8gdGhlCid0eXBpY2FsJyB2YWx1ZSBvZiAyNTI3NTBrSHou
-IFRoaXMgaXMgbmVlZGVkIHRvIGF2b2lkIGludGVyZmVyZW5jZSB3aXRoCnRoZSB0b3VjaCBkaWdp
-dGl6ZXIgb24gdGhlc2UgbGFwdG9wcy4KCkNjOiBEb3VnIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJv
-bWl1bS5vcmc+CkNjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgpDYzogSmVmZnkg
-Q2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KQ2M6IFJvYiBIZXJyaW5nIDxyb2JoK2R0
-QGtlcm5lbC5vcmc+CkNjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9y
-Zz4KQ2M6IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+CkNjOiBkZXZp
-Y2V0cmVlQHZnZXIua2VybmVsLm9yZwpDYzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpTaWduZWQtb2ZmLWJ5OiBT
-ZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KLS0tCiBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM5OS1ncnUta2V2aW4uZHRzIHwgMTQgKysrKysrKysrKysrKysKIDEgZmls
-ZSBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWtldmluLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzk5LWdydS1rZXZpbi5kdHMKaW5kZXggMTkxYTZiY2IxNzA0Li4yNDQzMGU2
-ODliY2YgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdy
-dS1rZXZpbi5kdHMKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1
-LWtldmluLmR0cwpAQCAtOTgsNiArOTgsMjAgQEAKIAkJYmFja2xpZ2h0ID0gPCZiYWNrbGlnaHQ+
-OwogCQlwb3dlci1zdXBwbHkgPSA8JnBwMzMwMF9kaXNwPjsKIAorCQlvdmVycmlkZS1tb2RlIHsK
-KwkJCWNsb2NrLWZyZXF1ZW5jeSA9IDwyNjY2MDQ3MjA+OworCQkJaGFjdGl2ZSA9IDwyNDAwPjsK
-KwkJCWhmcm9udC1wb3JjaCA9IDw0OD47CisJCQloYmFjay1wb3JjaCA9IDw4ND47CisJCQloc3lu
-Yy1sZW4gPSA8MzI+OworCQkJaHN5bmMtYWN0aXZlID0gPDA+OworCQkJdmFjdGl2ZSA9IDwxNjAw
-PjsKKwkJCXZmcm9udC1wb3JjaCA9IDwzPjsKKwkJCXZiYWNrLXBvcmNoID0gPDEyMD47CisJCQl2
-c3luYy1sZW4gPSA8MTA+OworCQkJdnN5bmMtYWN0aXZlID0gPDA+OworCQl9OworCiAJCXBvcnRz
-IHsKIAkJCXBhbmVsX2luX2VkcDogZW5kcG9pbnQgewogCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwm
-ZWRwX291dF9wYW5lbD47Ci0tIAoyLjE2LjAucmMxLjIzOC5nNTMwZDY0OWE3OS1nb29nCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, Feb 6, 2018 at 10:56 AM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> This patch adds the ability to override the typical display timing for a
+> given panel. This is useful for devices which have timing constraints
+> that do not apply across the entire display driver (eg: to avoid
+> crosstalk between panel and digitizer on certain laptops). The rules are
+> as follows:
+>
+> - panel must not specify fixed mode (since the override mode will
+>   either be the same as the fixed mode, or we'll be unable to
+>   check the bounds of the overried)
+> - panel must specify at least one display_timing range which will be
+>   used to ensure the override mode fits within its bounds
+>
+> Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Cc: Stéphane Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  .../bindings/display/panel/simple-panel.txt        | 20 +++++++
+
+The binding should be a separate patch.
+
+>  drivers/gpu/drm/panel/panel-simple.c               | 69 +++++++++++++++++++++-
+>  2 files changed, 88 insertions(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> index 16d8ff088b7d..590bbff6fc90 100644
+> --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> @@ -7,6 +7,14 @@ Optional properties:
+>  - ddc-i2c-bus: phandle of an I2C controller used for DDC EDID probing
+>  - enable-gpios: GPIO pin to enable or disable the panel
+>  - backlight: phandle of the backlight device attached to the panel
+> +- override-mode: For devices which require a mode which differs from the
+
+This is not a property, but a node so it needs its own section.
+
+Also, it's not real clear from display-timing.txt, but the modes
+should be grouped under a display-timings node. Looks like we haven't
+been good at enforcing that as "panel-timing" is also common when
+there's a single mode. I'd rather not have another way. With a
+standard node name, we can validate the node more easily.
+
+We'd lose the fact that this is explicitly an override, but I'd doubt
+Thierry is going to start letting in panels with no timings.
+
+Finally, since this is an override, is it valid to only override the
+parameters that need overriding? I don't really have an opinion either
+way. It just needs to be explicitly documented.
+
+> +                display_timing's "typical" mode, and whose restrictions cannot
+> +                be applied across the entire platform. The mode must fall
+> +                within the bounds of the panel's specified display_timing, and
+> +                cannot be used if the panel already specifies a single fixed
+> +                mode. The format is specified under "timing subnode" in
+> +                display-timing.txt
+> +
+>
+>  Example:
+>
+> @@ -18,4 +26,16 @@ Example:
+>                 enable-gpios = <&gpio 90 0>;
+>
+>                 backlight = <&backlight>;
+> +
+> +               override-mode {
+> +                       clock-frequency = <266604720>;
+> +                       hactive = <2400>;
+> +                       hfront-porch = <48>;
+> +                       hback-porch = <84>;
+> +                       hsync-len = <32>;
+> +                       vactive = <1600>;
+> +                       vfront-porch = <3>;
+> +                       vback-porch = <120>;
+> +                       vsync-len = <10>;
+> +               }
+>         };
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
