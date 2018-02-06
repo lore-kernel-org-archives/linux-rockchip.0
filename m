@@ -1,111 +1,61 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v5 02/16] media: doc: add document for rkisp1 meta buffer
- format
-Date: Tue, 6 Feb 2018 15:27:10 +0100
-Message-ID: <917c22c0-773e-5fe5-5625-86678f7c8521@xs4all.nl>
-References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
- <1514533978-20408-3-git-send-email-zhengsq@rock-chips.com>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: [PATCH v3 0/8] use 64-bit arithmetic instead of 32-bit
+Date: Tue, 6 Feb 2018 10:46:49 -0600
+Message-ID: <cover.1517929336.git.gustavo@embeddedor.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1514533978-20408-3-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Jacob chen <jacob2.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Antti Palosaari <crope@iki.fi>, Ramesh Shanmugasundaram <ramesh.shanmugasundaram@bp.renesas.com>, "Gustavo A. R. Silva" <garsilva@embeddedor.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/29/17 08:52, Shunqian Zheng wrote:
-> From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This commit add docuemnt for rkisp1 meta buffer format
-> 
-> Signed-off-by: Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/media/uapi/v4l/meta-formats.rst          |  2 ++
->  .../media/uapi/v4l/pixfmt-meta-rkisp1-params.rst       | 17 +++++++++++++++++
->  .../media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst         | 18 ++++++++++++++++++
->  3 files changed, 37 insertions(+)
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-> 
-> diff --git a/Documentation/media/uapi/v4l/meta-formats.rst b/Documentation/media/uapi/v4l/meta-formats.rst
-> index 01e24e3..1b82814 100644
-> --- a/Documentation/media/uapi/v4l/meta-formats.rst
-> +++ b/Documentation/media/uapi/v4l/meta-formats.rst
-> @@ -14,3 +14,5 @@ These formats are used for the :ref:`metadata` interface only.
->  
->      pixfmt-meta-vsp1-hgo
->      pixfmt-meta-vsp1-hgt
-> +    pixfmt-meta-rkisp1-params
-> +    pixfmt-meta-rkisp1-stat
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-> new file mode 100644
-> index 0000000..ed344d4
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-> @@ -0,0 +1,17 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-meta-fmt-rkisp1-params:
-> +
-> +*******************************
-> +V4L2_META_FMT_RK_ISP1_PARAMS
-> +*******************************
-> +
-> +Rockchip ISP1 Parameters Data
-> +
-> +Description
-> +===========
-> +
-> +This format describes input parameters for the Rockchip ISP1.
-> +
-> +The data use c-struct :c:type:`rkisp1_isp_params_cfg`, which is defined in
-> +the ``linux/rkisp1-config.h`` header file, See it for details.
+Add suffix LL and ULL to various constants in order to give the compiler
+complete information about the proper arithmetic to use. Such constants
+are used in contexts that expect expressions of type u64 (64 bits, unsigned)
+and s64 (64 bits, signed).
 
-One more question: does the ISP produce a reasonable picture if it doesn't
-receive these params? If not (i.e. you always need to provide params), then
-I think you should provide a default rkisp1_isp_params_cfg struct that
-can be used as a template for application writers.
+The mentioned expressions are currently being evaluated using 32-bit
+arithmetic, wich in some cases can lead to unintentional integer
+overflows.
 
-Perhaps it can be part of the driver as the initial params config.
+This patchset addresses the following "Unintentional integer overflow"
+Coverity reports:
+CIDs: 200604, 1056807, 1056808, 1271223, 1324146
+CIDs: 1392628, 1392630, 1446589, 1454996, 1458347
 
-I think even if the ISP does work without params it is still worthwhile
-doing this. The params are complex and having an example on how to initialize
-it would be helpful.
+Thank you
 
-Regards,
+Changes in v2:
+ - Update subject and changelog to better reflect the proposed code changes.
+ - Add suffix ULL and LL to constants instead of casting variables.
+ - Extend the proposed code changes to other similar cases that had not
+   previously been considered in v1 of this patchset.
 
-	Hans
+Changes in v3:
+ - Mention the specific Coverity report in all commit messages.
 
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-> new file mode 100644
-> index 0000000..5ecc403
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-> @@ -0,0 +1,18 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-meta-fmt-rkisp1-stat:
-> +
-> +*******************************
-> +V4L2_META_FMT_RK_ISP1_STAT_3A
-> +*******************************
-> +
-> +Rockchip ISP1 Statistics Data
-> +
-> +Description
-> +===========
-> +
-> +This format describes image color statistics information generated by the Rockchip
-> +ISP1.
-> +
-> +The data use c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
-> +the ``linux/cifisp_stat.h`` header file, See it for details.
-> 
+Gustavo A. R. Silva (8):
+  rtl2832: use 64-bit arithmetic instead of 32-bit in
+    rtl2832_set_frontend
+  dvb-frontends: ves1820: use 64-bit arithmetic instead of 32-bit
+  i2c: max2175: use 64-bit arithmetic instead of 32-bit
+  i2c: ov9650: use 64-bit arithmetic instead of 32-bit
+  pci: cx88-input: use 64-bit arithmetic instead of 32-bit
+  rockchip/rga: use 64-bit arithmetic instead of 32-bit
+  platform: sh_veu: use 64-bit arithmetic instead of 32-bit
+  platform: vivid-cec: use 64-bit arithmetic instead of 32-bit
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+ drivers/media/dvb-frontends/rtl2832.c         |  4 ++--
+ drivers/media/dvb-frontends/ves1820.c         |  2 +-
+ drivers/media/i2c/max2175.c                   |  2 +-
+ drivers/media/i2c/ov9650.c                    |  9 +++++----
+ drivers/media/pci/cx88/cx88-input.c           |  4 ++--
+ drivers/media/platform/rockchip/rga/rga-buf.c |  3 ++-
+ drivers/media/platform/sh_veu.c               |  4 ++--
+ drivers/media/platform/vivid/vivid-cec.c      | 11 +++++++++--
+ 8 files changed, 24 insertions(+), 15 deletions(-)
+
+-- 
+2.7.4
