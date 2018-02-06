@@ -1,78 +1,71 @@
-From: Philippe Cornu <philippe.cornu@st.com>
-Subject: [PATCH v2] drm/bridge/synopsys: dsi: Add 1.31 version support
-Date: Tue, 6 Feb 2018 09:42:51 +0100
-Message-ID: <20180206084251.303-1-philippe.cornu@st.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v5 01/16] media: videodev2.h, v4l2-ioctl: add rkisp1 meta
+ buffer format
+Date: Tue, 6 Feb 2018 13:54:02 +0100
+Message-ID: <72af4cf9-64a5-7f3a-2179-23077d3812b3@xs4all.nl>
+References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
+ <1514533978-20408-2-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Philippe Cornu <philippe.cornu@st.com>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Yannick Fertre <yannick.fertre@st.com>, Vincent Abriou <vincent.abriou@st.com>, Alexandre Torgue <alexandre.torgue@st.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1514533978-20408-2-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIHN1cHBvcnQgZm9yIHRoZSBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJIHZlcnNpb24g
-MS4zMQpUd28gcmVnaXN0ZXJzIG5lZWQgdG8gYmUgdXBkYXRlZC9hZGRlZCBmb3Igc3VwcG9ydGlu
-ZyAxLjMxOgoqIFBIWV9UTVJfQ0ZHIDB4OWMgKHVwZGF0ZWQpCiAgMS4zMCBbMzE6MjRdIHBoeV9o
-czJscF90aW1lCiAgICAgICBbMjM6MTZdIHBoeV9scDJoc190aW1lCiAgICAgICBbMTQ6IDBdIG1h
-eF9yZF90aW1lCgogIDEuMzEgWzI1OjE2XSBwaHlfaHMybHBfdGltZQogICAgICAgWyA5OiAwXSBw
-aHlfbHAyaHNfdGltZQoKKiBQSFlfVE1SX1JEX0NGRyAweGY0IChuZXcpCiAgMS4zMSBbMTQ6IDBd
-IG1heF9yZF90aW1lCgpTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29y
-bnVAc3QuY29tPgotLS0KTW9kaWZpZWQgaW4gdjI6IFNpbXBsaWZ5IHRoZSBjb2RlIHRoYW5rcyB0
-byBjb21tZW50cyBmcm9tIEFuZHJ6ZWogSGFqZGEgJgpBcmNoaXQgVGFuZWphLgoKIGRyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDIzICsrKysrKysrKysrKysr
-KysrKysrLS0tCiAxIGZpbGUgY2hhbmdlZCwgMjAgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMo
-LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
-ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKaW5k
-ZXggZDJlNWMwMjZjZDhjLi40NDk2Njg3ZTZlNjcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKQEAgLTI1LDcgKzI1LDEwIEBACiAjaW5jbHVkZSA8
-ZHJtL2JyaWRnZS9kd19taXBpX2RzaS5oPgogI2luY2x1ZGUgPHZpZGVvL21pcGlfZGlzcGxheS5o
-PgogCisjZGVmaW5lIEhXVkVSXzEzMQkJCTB4MzEzMzMxMDAJLyogSVAgdmVyc2lvbiAxLjMxICov
-CisKICNkZWZpbmUgRFNJX1ZFUlNJT04JCQkweDAwCisjZGVmaW5lIFZFUlNJT04JCQkJR0VOTUFT
-SygzMSwgOCkKIAogI2RlZmluZSBEU0lfUFdSX1VQCQkJMHgwNAogI2RlZmluZSBSRVNFVAkJCQkw
-CkBAIC0xNjEsMTEgKzE2NCwxMiBAQAogI2RlZmluZSBQSFlfQ0xLSFMyTFBfVElNRShsYmNjKQkJ
-KCgobGJjYykgJiAweDNmZikgPDwgMTYpCiAjZGVmaW5lIFBIWV9DTEtMUDJIU19USU1FKGxiY2Mp
-CQkoKGxiY2MpICYgMHgzZmYpCiAKLS8qIFRPRE8gTmV4dCByZWdpc3RlciBpcyBzbGlnaHRseSBk
-aWZmZXJlbnQgYmV0d2VlbiAxLjMwICYgMS4zMSBJUCB2ZXJzaW9uICovCiAjZGVmaW5lIERTSV9Q
-SFlfVE1SX0NGRwkJCTB4OWMKICNkZWZpbmUgUEhZX0hTMkxQX1RJTUUobGJjYykJCSgoKGxiY2Mp
-ICYgMHhmZikgPDwgMjQpCiAjZGVmaW5lIFBIWV9MUDJIU19USU1FKGxiY2MpCQkoKChsYmNjKSAm
-IDB4ZmYpIDw8IDE2KQogI2RlZmluZSBNQVhfUkRfVElNRShsYmNjKQkJKChsYmNjKSAmIDB4N2Zm
-ZikKKyNkZWZpbmUgUEhZX0hTMkxQX1RJTUVfVjEzMShsYmNjKQkoKChsYmNjKSAmIDB4M2ZmKSA8
-PCAxNikKKyNkZWZpbmUgUEhZX0xQMkhTX1RJTUVfVjEzMShsYmNjKQkoKGxiY2MpICYgMHgzZmYp
-CiAKICNkZWZpbmUgRFNJX1BIWV9SU1RaCQkJMHhhMAogI2RlZmluZSBQSFlfRElTRk9SQ0VQTEwJ
-CQkwCkBAIC0yMDQsNyArMjA4LDkgQEAKICNkZWZpbmUgRFNJX0lOVF9TVDEJCQkweGMwCiAjZGVm
-aW5lIERTSV9JTlRfTVNLMAkJCTB4YzQKICNkZWZpbmUgRFNJX0lOVF9NU0sxCQkJMHhjOAorCiAj
-ZGVmaW5lIERTSV9QSFlfVE1SX1JEX0NGRwkJMHhmNAorI2RlZmluZSBNQVhfUkRfVElNRV9WMTMx
-KGxiY2MpCQkoKGxiY2MpICYgMHg3ZmZmKQogCiAjZGVmaW5lIFBIWV9TVEFUVVNfVElNRU9VVF9V
-UwkJMTAwMDAKICNkZWZpbmUgQ01EX1BLVF9TVEFUVVNfVElNRU9VVF9VUwkyMDAwMApAQCAtNjIz
-LDYgKzYyOSw4IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3ZlcnRpY2FsX3RpbWluZ19jb25m
-aWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCiAKIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2Rw
-aHlfdGltaW5nX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKIHsKKwl1MzIgaHdfdmVy
-c2lvbjsKKwogCS8qCiAJICogVE9ETyBkdyBkcnYgaW1wcm92ZW1lbnRzCiAJICogZGF0YSAmIGNs
-b2NrIGxhbmUgdGltZXJzIHNob3VsZCBiZSBjb21wdXRlZCBhY2NvcmRpbmcgdG8gcGFuZWwKQEAg
-LTYzMCw4ICs2MzgsMTcgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29u
-ZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQogCSAqIG5vdGU6IERTSV9QSFlfVE1SX0NGRy5N
-QVhfUkRfVElNRSBzaG91bGQgYmUgaW4gbGluZSB3aXRoCiAJICogRFNJX0NNRF9NT0RFX0NGRy5N
-QVhfUkRfUEtUX1NJWkVfTFAgKHNlZSBDTURfTU9ERV9BTExfTFApCiAJICovCi0JZHNpX3dyaXRl
-KGRzaSwgRFNJX1BIWV9UTVJfQ0ZHLCBQSFlfSFMyTFBfVElNRSgweDQwKQotCQkgIHwgUEhZX0xQ
-MkhTX1RJTUUoMHg0MCkgfCBNQVhfUkRfVElNRSgxMDAwMCkpOworCisJaHdfdmVyc2lvbiA9IGRz
-aV9yZWFkKGRzaSwgRFNJX1ZFUlNJT04pICYgVkVSU0lPTjsKKworCWlmIChod192ZXJzaW9uID49
-IEhXVkVSXzEzMSkgeworCQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZX1RNUl9DRkcsIFBIWV9IUzJM
-UF9USU1FX1YxMzEoMHg0MCkgfAorCQkJICBQSFlfTFAySFNfVElNRV9WMTMxKDB4NDApKTsKKwkJ
-ZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UTVJfUkRfQ0ZHLCBNQVhfUkRfVElNRV9WMTMxKDEwMDAw
-KSk7CisJfSBlbHNlIHsKKwkJZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UTVJfQ0ZHLCBQSFlfSFMy
-TFBfVElNRSgweDQwKSB8CisJCQkgIFBIWV9MUDJIU19USU1FKDB4NDApIHwgTUFYX1JEX1RJTUUo
-MTAwMDApKTsKKwl9CiAKIAlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZX1RNUl9MUENMS19DRkcsIFBI
-WV9DTEtIUzJMUF9USU1FKDB4NDApCiAJCSAgfCBQSFlfQ0xLTFAySFNfVElNRSgweDQwKSk7Ci0t
-IAoyLjE1LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 12/29/17 08:52, Shunqian Zheng wrote:
+> Add the Rockchip ISP1 specific processing parameter format
+> V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
+> V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
+> 
+> Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Acked-by: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+
+Thanks!
+
+	Hans
+
+> ---
+>  drivers/media/v4l2-core/v4l2-ioctl.c | 2 ++
+>  include/uapi/linux/videodev2.h       | 4 ++++
+>  2 files changed, 6 insertions(+)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index 7961499..035fd22 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -1246,6 +1246,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+>  	case V4L2_TCH_FMT_TU08:		descr = "8-bit unsigned touch data"; break;
+>  	case V4L2_META_FMT_VSP1_HGO:	descr = "R-Car VSP1 1-D Histogram"; break;
+>  	case V4L2_META_FMT_VSP1_HGT:	descr = "R-Car VSP1 2-D Histogram"; break;
+> +	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A params"; break;
+> +	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A statistics"; break;
+>  
+>  	default:
+>  		/* Compressed formats */
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 1c095b5..c023c3a 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -689,6 +689,10 @@ struct v4l2_pix_format {
+>  #define V4L2_META_FMT_VSP1_HGO    v4l2_fourcc('V', 'S', 'P', 'H') /* R-Car VSP1 1-D Histogram */
+>  #define V4L2_META_FMT_VSP1_HGT    v4l2_fourcc('V', 'S', 'P', 'T') /* R-Car VSP1 2-D Histogram */
+>  
+> +/* Vendor specific - used for IPU3 camera sub-system */
+> +#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
+> +#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
+> +
+>  /* priv field value to indicates that subsequent fields are valid. */
+>  #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
+>  
+> 
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
