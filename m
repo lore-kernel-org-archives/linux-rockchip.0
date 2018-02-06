@@ -1,61 +1,59 @@
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: [PATCH v3 0/8] use 64-bit arithmetic instead of 32-bit
-Date: Tue, 6 Feb 2018 10:46:49 -0600
-Message-ID: <cover.1517929336.git.gustavo@embeddedor.com>
+From: "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+Subject: [PATCH v3 6/8] rockchip/rga: use 64-bit arithmetic instead of 32-bit
+Date: Tue, 6 Feb 2018 10:51:18 -0600
+Message-ID: <94fd0993cde02e18ee5d7f54707f8ce0d0341a0c.1517929336.git.gustavo@embeddedor.com>
+References: <cover.1517929336.git.gustavo@embeddedor.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Jacob chen <jacob2.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Antti Palosaari <crope@iki.fi>, Ramesh Shanmugasundaram <ramesh.shanmugasundaram@bp.renesas.com>, "Gustavo A. R. Silva" <garsilva@embeddedor.com>
+In-Reply-To: <cover.1517929336.git.gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Gustavo A. R. Silva" <garsilva-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add suffix LL and ULL to various constants in order to give the compiler
-complete information about the proper arithmetic to use. Such constants
-are used in contexts that expect expressions of type u64 (64 bits, unsigned)
-and s64 (64 bits, signed).
+Cast p to dma_addr_t in order to avoid a potential integer overflow.
+This variable is being used in a context that expects an expression
+of type dma_addr_t (u64).
 
-The mentioned expressions are currently being evaluated using 32-bit
-arithmetic, wich in some cases can lead to unintentional integer
-overflows.
+The expression p << PAGE_SHIFT is currently being evaluated
+using 32-bit arithmetic.
 
-This patchset addresses the following "Unintentional integer overflow"
-Coverity reports:
-CIDs: 200604, 1056807, 1056808, 1271223, 1324146
-CIDs: 1392628, 1392630, 1446589, 1454996, 1458347
-
-Thank you
-
+Addresses-Coverity-ID: 1458347 ("Unintentional integer overflow")
+Signed-off-by: Gustavo A. R. Silva <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+---
 Changes in v2:
- - Update subject and changelog to better reflect the proposed code changes.
- - Add suffix ULL and LL to constants instead of casting variables.
- - Extend the proposed code changes to other similar cases that had not
-   previously been considered in v1 of this patchset.
+ - Update subject and changelog to better reflect the proposed code change.
 
 Changes in v3:
- - Mention the specific Coverity report in all commit messages.
+ - Mention the specific Coverity report in the commit message.
 
-Gustavo A. R. Silva (8):
-  rtl2832: use 64-bit arithmetic instead of 32-bit in
-    rtl2832_set_frontend
-  dvb-frontends: ves1820: use 64-bit arithmetic instead of 32-bit
-  i2c: max2175: use 64-bit arithmetic instead of 32-bit
-  i2c: ov9650: use 64-bit arithmetic instead of 32-bit
-  pci: cx88-input: use 64-bit arithmetic instead of 32-bit
-  rockchip/rga: use 64-bit arithmetic instead of 32-bit
-  platform: sh_veu: use 64-bit arithmetic instead of 32-bit
-  platform: vivid-cec: use 64-bit arithmetic instead of 32-bit
+ drivers/media/platform/rockchip/rga/rga-buf.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
- drivers/media/dvb-frontends/rtl2832.c         |  4 ++--
- drivers/media/dvb-frontends/ves1820.c         |  2 +-
- drivers/media/i2c/max2175.c                   |  2 +-
- drivers/media/i2c/ov9650.c                    |  9 +++++----
- drivers/media/pci/cx88/cx88-input.c           |  4 ++--
- drivers/media/platform/rockchip/rga/rga-buf.c |  3 ++-
- drivers/media/platform/sh_veu.c               |  4 ++--
- drivers/media/platform/vivid/vivid-cec.c      | 11 +++++++++--
- 8 files changed, 24 insertions(+), 15 deletions(-)
-
+diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
+index 49cacc7..a43b57a 100644
+--- a/drivers/media/platform/rockchip/rga/rga-buf.c
++++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+@@ -140,7 +140,8 @@ void rga_buf_map(struct vb2_buffer *vb)
+ 		address = sg_phys(sgl);
+ 
+ 		for (p = 0; p < len; p++) {
+-			dma_addr_t phys = address + (p << PAGE_SHIFT);
++			dma_addr_t phys = address +
++					  ((dma_addr_t)p << PAGE_SHIFT);
+ 
+ 			pages[mapped_size + p] = phys;
+ 		}
 -- 
 2.7.4
