@@ -1,86 +1,111 @@
-From: wlf <wulf@rock-chips.com>
-Subject: Re: [PATCH] usb: gadget: f_fs: get the correct address of comp_desc
-Date: Tue, 6 Feb 2018 22:10:30 +0800
-Message-ID: <9d809068-1100-0ffc-6508-43e029543949@rock-chips.com>
-References: <1517830418-2648-1-git-send-email-william.wu@rock-chips.com>
- <20180205181758.GA22738@usblab-sd-06.qualcomm.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v5 02/16] media: doc: add document for rkisp1 meta buffer
+ format
+Date: Tue, 6 Feb 2018 15:27:10 +0100
+Message-ID: <917c22c0-773e-5fe5-5625-86678f7c8521@xs4all.nl>
+References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
+ <1514533978-20408-3-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180205181758.GA22738@usblab-sd-06.qualcomm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1514533978-20408-3-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jack Pham <jackp@codeaurora.org>, William Wu <william.wu@rock-chips.com>
-Cc: gregkh@linuxfoundation.org, felipe.balbi@linux.intel.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, daniel.meng@rock-chips.com, fml@rock-chips.com
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jack,
+On 12/29/17 08:52, Shunqian Zheng wrote:
+> From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> This commit add docuemnt for rkisp1 meta buffer format
+> 
+> Signed-off-by: Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  Documentation/media/uapi/v4l/meta-formats.rst          |  2 ++
+>  .../media/uapi/v4l/pixfmt-meta-rkisp1-params.rst       | 17 +++++++++++++++++
+>  .../media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst         | 18 ++++++++++++++++++
+>  3 files changed, 37 insertions(+)
+>  create mode 100644 Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+>  create mode 100644 Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+> 
+> diff --git a/Documentation/media/uapi/v4l/meta-formats.rst b/Documentation/media/uapi/v4l/meta-formats.rst
+> index 01e24e3..1b82814 100644
+> --- a/Documentation/media/uapi/v4l/meta-formats.rst
+> +++ b/Documentation/media/uapi/v4l/meta-formats.rst
+> @@ -14,3 +14,5 @@ These formats are used for the :ref:`metadata` interface only.
+>  
+>      pixfmt-meta-vsp1-hgo
+>      pixfmt-meta-vsp1-hgt
+> +    pixfmt-meta-rkisp1-params
+> +    pixfmt-meta-rkisp1-stat
+> diff --git a/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+> new file mode 100644
+> index 0000000..ed344d4
+> --- /dev/null
+> +++ b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+> @@ -0,0 +1,17 @@
+> +.. -*- coding: utf-8; mode: rst -*-
+> +
+> +.. _v4l2-meta-fmt-rkisp1-params:
+> +
+> +*******************************
+> +V4L2_META_FMT_RK_ISP1_PARAMS
+> +*******************************
+> +
+> +Rockchip ISP1 Parameters Data
+> +
+> +Description
+> +===========
+> +
+> +This format describes input parameters for the Rockchip ISP1.
+> +
+> +The data use c-struct :c:type:`rkisp1_isp_params_cfg`, which is defined in
+> +the ``linux/rkisp1-config.h`` header file, See it for details.
 
-在 2018年02月06日 02:17, Jack Pham 写道:
-> Hi William,
->
-> On Mon, Feb 05, 2018 at 07:33:38PM +0800, William Wu wrote:
->> Refer to the USB 3.0 spec '9.6.7 SuperSpeed Endpoint Companion',
->> the companion descriptor follows the standard endpoint descriptor.
->> This descriptor is only defined for SuperSpeed endpoints. The
->> f_fs driver gets the address of the companion descriptor via
->> 'ds + USB_DT_ENDPOINT_SIZE', and actually, the ds variable is
->> a pointer to the struct usb_endpoint_descriptor, so the offset
->> of the companion descriptor which we get is USB_DT_ENDPOINT_SIZE *
->> sizeof(struct usb_endpoint_descriptor), the wrong offset is 63
->> bytes. This cause out-of-bound with the following error log if
->> CONFIG_KASAN and CONFIG_SLUB_DEBUG is enabled on Rockchip RK3399
->> Evaluation Board.
->>
->> android_work: sent uevent USB_STATE=CONNECTED
->> configfs-gadget gadget: super-speed config #1: b
->> ==================================================================
->> BUG: KASAN: slab-out-of-bounds in ffs_func_set_alt+0x230/0x398
->> Read of size 1 at addr ffffffc0ce2d0b10 by task irq/224-dwc3/364
->> Memory state around the buggy address:
->>   ffffffc0ce2d0a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->>   ffffffc0ce2d0a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
->>   >ffffffc0ce2d0b00: 00 04 fc fc fc fc fc fc fc fc fc fc fc fc fc fc
->>                           ^
->>   ffffffc0ce2d0b80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
->>   ffffffc0ce2d0c00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
->> ==================================================================
->> Disabling lock debugging due to kernel taint
->> android_work: sent uevent USB_STATE=CONFIGURED
->>
->> This patch adds struct usb_endpoint_descriptor * -> u8 * type conversion
->> for ds variable, then we can get the correct address of comp_desc
->> with offset USB_DT_ENDPOINT_SIZE bytes.
->>
->> Signed-off-by: William Wu <william.wu@rock-chips.com>
->> ---
->>   drivers/usb/gadget/function/f_fs.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
->> index 6756472..f13ead0 100644
->> --- a/drivers/usb/gadget/function/f_fs.c
->> +++ b/drivers/usb/gadget/function/f_fs.c
->> @@ -1882,8 +1882,8 @@ static int ffs_func_eps_enable(struct ffs_function *func)
->>   		ep->ep->desc = ds;
->>   
->>   		if (needs_comp_desc) {
->> -			comp_desc = (struct usb_ss_ep_comp_descriptor *)(ds +
->> -					USB_DT_ENDPOINT_SIZE);
->> +			comp_desc = (struct usb_ss_ep_comp_descriptor *)
->> +				     ((u8 *)ds + USB_DT_ENDPOINT_SIZE);
->>   			ep->ep->maxburst = comp_desc->bMaxBurst + 1;
->>   			ep->ep->comp_desc = comp_desc;
->>   		}
-> Please see my alternative fix for this. I proposed changing this
-> function to use config_ep_by_speed() instead.
->
-> https://www.spinics.net/lists/linux-usb/msg165149.html
-Thanks for your great job!
-  Your patch seems good, I will test your patch on my RK3399-EVB board.
+One more question: does the ISP produce a reasonable picture if it doesn't
+receive these params? If not (i.e. you always need to provide params), then
+I think you should provide a default rkisp1_isp_params_cfg struct that
+can be used as a template for application writers.
 
-William
+Perhaps it can be part of the driver as the initial params config.
 
->
-> Jack
+I think even if the ISP does work without params it is still worthwhile
+doing this. The params are complex and having an example on how to initialize
+it would be helpful.
+
+Regards,
+
+	Hans
+
+> diff --git a/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+> new file mode 100644
+> index 0000000..5ecc403
+> --- /dev/null
+> +++ b/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+> @@ -0,0 +1,18 @@
+> +.. -*- coding: utf-8; mode: rst -*-
+> +
+> +.. _v4l2-meta-fmt-rkisp1-stat:
+> +
+> +*******************************
+> +V4L2_META_FMT_RK_ISP1_STAT_3A
+> +*******************************
+> +
+> +Rockchip ISP1 Statistics Data
+> +
+> +Description
+> +===========
+> +
+> +This format describes image color statistics information generated by the Rockchip
+> +ISP1.
+> +
+> +The data use c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
+> +the ``linux/cifisp_stat.h`` header file, See it for details.
+> 
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
