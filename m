@@ -1,64 +1,45 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH v3 0/2] phy: rockchip-emmc: fixes emmc-phy power on failed
- with rk3399 SoCs
-Date: Wed, 7 Feb 2018 11:01:12 +0530
-Message-ID: <64bd750a-16b9-95ca-fa53-b7c1ab727a29@ti.com>
-References: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
- <e67da623-d6fe-92d9-e6b3-79b8290405c9@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: add "rockchip,
+ rk3288-grf" compatible for grf node
+Date: Wed,  7 Feb 2018 14:20:02 +0800
+Message-ID: <1517984403-195765-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <e67da623-d6fe-92d9-e6b3-79b8290405c9@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiBXZWRuZXNkYXkgMDcgRmVicnVhcnkgMjAxOCAwNjo0NyBBTSwgQ2Flc2FyIFdhbmcgd3Jv
-dGU6Cj4gS2lzaG9uLAo+IAo+IENhbiB5b3UgaGVscCBtZXJnZSB0aGlzIGluIHlvdXIgIG9yIG5l
-eHQgdHJlZT8gIEknbSBob3BpbmcgdGhhdCB3ZSBjYW4gbGFuZAo+IHRoaXMgc29tZXdoZXJlLjot
-KQoKc3VyZSwgSSdsbCBtZXJnZSBvbmNlIC1yYzEgaXMgdGFnZ2VkLgoKVGhhbmtzCktpc2hvbgoK
-PiAKPiAKPiBUaGFua3MsCj4gLUNhZXNhcgo+IOWcqCAyMDE45bm0MDHmnIgxMeaXpSAxMDo0MCwg
-Q2Flc2FyIFdhbmcg5YaZ6YGTOgo+PiBIaSBLaXNob24sCj4+Cj4+IFNpbmNlIHRoZSBTaGF3biBp
-c24ndCBhdmFpbGFibGUsIEkgdGFrZSBvdmVyIHRoaXMgc2VyaWVzIHBhdGNoZXMgZm9yIG5vdy4K
-Pj4KPj4gQXMgdGhlIG9yaWdpbmFsIGJ1ZyBoYWQgdHJhY2tlZCBvbiBodHRwczovL2lzc3VldHJh
-Y2tlci5nb29nbGUuY29tLzcxNTYxNzQyLgo+PiBJbiBzb21lIGNhc2VzLCB0aGUgbW1jIHBoeSBw
-b3dlciBvbiBmYWlsZWQgZHVyaW5nIGJvb3RpbmcgdXAuCj4+IFRoZSBsb2cgYXMgYmVsb3c6Cj4+
-IC4uLgo+PiBbICAgMi4zNzUzMzNdIHJvY2tjaGlwX2VtbWNfcGh5X3Bvd2VyOiBjYWxkb25lIHRp
-bWVvdXQuCj4+IFsgICAgMi4zNzc4MTVdIHBoeSBwaHktZmY3NzAwMDAuc3lzY29uOnBoeUBmNzgw
-LjQ6IHBoeSBwb3dlcm9uIGZhaWxlZCAtLT4gLTExMAo+PiAuLi4KPj4gWyAgICAyLjQ4OTI5NV0g
-bW1jMDogbW1jX3NlbGVjdF9oczQwMGVzIGZhaWxlZCwgZXJyb3IgLTExMAo+PiBbICAgIDIuNDg5
-MzAyXSBtbWMwOiBlcnJvciAtMTEwIHdoaWxzdCBpbml0aWFsaXNpbmcgTU1DIGNhcmQKPj4gLi4K
-Pj4KPj4gVGhlIGFjdHVhbCBlbXVsYXRlLCB0aGUgd2FpdCA1dXMgZm9yIGNhbHBhZCBidXN5IHRy
-aW1taW5nLCB0aGF0J3Mgbm8gZW5vdWdoLgo+PiBXZSBuZWVkIGdpdmUgdGhlIGVub3VnaCBtYXJn
-aW4gZm9yIGl0Lgo+Pgo+PiBWZXJpZmllZCBvbiB1cmwgPQo+PiAgICAgICAgIAo+PiBodHRwczov
-L2Nocm9taXVtLmdvb2dsZXNvdXJjZS5jb20vY2hyb21pdW1vcy90aGlyZF9wYXJ0eS9rZXJuZWwv
-Ky9jaHJvbWVvcy00LjQKPj4gVGhpcyBzZXJpZXMgcGF0Y2hlcyBjYW4gYXBwbHkgYW5kIGJyaW5n
-IHVwIHdpdGgga2VybmVsLW5leHQgb24gcmszMzk5Cj4+IGNocm9tZWJvb2suCj4+Cj4+IC1DYWVz
-YXIKPj4KPj4KPj4gQ2hhbmdlcyBpbiB2MzoKPj4gLSBBcyBEb3VnIGNvbW1lbnRlZCBvbiBib3Ro
-IHVwc3RyZWFtIGFuZCBnZXJyaXQuCj4+ICAgIENoYW5nZSAiNSwgNTAiIHRvICIwLCA1MCIsIGFu
-ZCB0aGUgbWVzc2FnZSBvZiBwcmludC4KPj4gLSBBcyBEb3VnIGNvbW1lbnRlZCBvbiBodHRwczov
-L3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMTU0Nzk3LAo+PiAgICBDaGFuZ2UgIjEsIDUw
-IiB0byAiMCwgNTAiLgo+Pgo+PiBDaGFuZ2VzIGluIHYyOgo+PiAtIHByaW50IHRoZSByZXR1cm4g
-dmFsdXQgd2l0aCByZWdtYXBfcmVhZF9wb2xsX3RpbWVvdXQgZmFpbGluZy4KPj4gLSBBcyBCcmlh
-biBjb21tZW50ZWQgb24gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDEzOTg5
-MS8sCj4+ICAgIGNoYW5nZWQgdGhlIG5vdGUgYW5kIGFkZGVkIHRvIHByaW50IGVycm9yIHZhbHVl
-IHdpdGgKPj4gICAgcmVnbWFwX3JlYWRfcG9sbF90aW1lb3V0IEFQSS4KPj4KPj4gU2hhd24gTGlu
-ICgyKToKPj4gICAgcGh5OiByb2NrY2hpcC1lbW1jOiByZXRyeSBjYWxwYWQgYnVzeSB0cmltbWlu
-Zwo+PiAgICBwaHk6IHJvY2tjaGlwLWVtbWM6IHVzZSByZWdtYXBfcmVhZF9wb2xsX3RpbWVvdXQg
-dG8gcG9sbCBkbGxyZHkKPj4KPj4gICBkcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAt
-ZW1tYy5jIHwgNjAgKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0KPj4gICAxIGZpbGUg
-Y2hhbmdlZCwgMjggaW5zZXJ0aW9ucygrKSwgMzIgZGVsZXRpb25zKC0pCj4+Cj4gCj4gCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
-bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
-Cg==
+rockchip,rk3288-grf is used both for rk3228 and rk3229.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ arch/arm/boot/dts/rk322x.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 780ec3a..3dd2e12 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -233,7 +233,7 @@
+ 	};
+ 
+ 	grf: syscon@11000000 {
+-		compatible = "syscon", "simple-mfd";
++		compatible = "rockchip,rk3228-grf", "syscon", "simple-mfd";
+ 		reg = <0x11000000 0x1000>;
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+-- 
+1.9.1
