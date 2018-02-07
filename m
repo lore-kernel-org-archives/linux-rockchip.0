@@ -1,70 +1,65 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v3 0/2] phy: rockchip-emmc: fixes emmc-phy power on failed
- with rk3399 SoCs
-Date: Wed, 7 Feb 2018 09:17:44 +0800
-Message-ID: <e67da623-d6fe-92d9-e6b3-79b8290405c9@rock-chips.com>
-References: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 0/6] Add endpoint driver for Rockchip PCIe controller
+Date: Wed,  7 Feb 2018 10:47:24 +0800
+Message-ID: <1517971650-61555-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Kishon,
 
-Can you help merge this in your  or next tree?  I'm hoping that we can 
-land this somewhere.:-)
+Patch 1 firstly moves the whole Rockchip PCIe host driver from
+drivers/pci/host to a new folder, driver/pci/rockchip/, and renames
+pcie-rockchip.c to pcie-rockchip-host.c. It also updates the
+Kconfig/Makefile etc, to repect this change.
+
+Then patch 2 and patch 3 are trying to spilt out some common code in
+preparation for adding endponit controller driver support.
+
+Patch 4 rename rockchip-pcie.txt to rockchip-pcie-host.txt and update
+the compatible of_device_id. To keep the backward compatibility for
+old dtb, we add new "rockchip,rk3399-pcie-host". That means DT uses
+"rockchip,rk3399-pcie" would be bound to host controller driver by
+default.
+
+Patch 5 adds endpoint controller driver support as well as the new
+documentation, rockchip-pcie-ep.txt, introduced by patch 6.
 
 
-Thanks,
--Caesar
-在 2018年01月11日 10:40, Caesar Wang 写道:
-> Hi Kishon,
->
-> Since the Shawn isn't available, I take over this series patches for now.
->
-> As the original bug had tracked on https://issuetracker.google.com/71561742.
-> In some cases, the mmc phy power on failed during booting up.
-> The log as below:
-> ...
-> [   2.375333] rockchip_emmc_phy_power: caldone timeout.
-> [    2.377815] phy phy-ff770000.syscon:phy@f780.4: phy poweron failed --> -110
-> ...
-> [    2.489295] mmc0: mmc_select_hs400es failed, error -110
-> [    2.489302] mmc0: error -110 whilst initialising MMC card
-> ..
->
-> The actual emulate, the wait 5us for calpad busy trimming, that's no enough.
-> We need give the enough margin for it.
->
-> Verified on url =
->          https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
-> This series patches can apply and bring up with kernel-next on rk3399 chromebook.
->
-> -Caesar
->
->
-> Changes in v3:
-> - As Doug commented on both upstream and gerrit.
->    Change "5, 50" to "0, 50", and the message of print.
-> - As Doug commented on https://patchwork.kernel.org/patch/10154797,
->    Change "1, 50" to "0, 50".
->
-> Changes in v2:
-> - print the return valut with regmap_read_poll_timeout failing.
-> - As Brian commented on https://patchwork.kernel.org/patch/10139891/,
->    changed the note and added to print error value with
->    regmap_read_poll_timeout API.
->
-> Shawn Lin (2):
->    phy: rockchip-emmc: retry calpad busy trimming
->    phy: rockchip-emmc: use regmap_read_poll_timeout to poll dllrdy
->
->   drivers/phy/rockchip/phy-rockchip-emmc.c | 60 +++++++++++++++-----------------
->   1 file changed, 28 insertions(+), 32 deletions(-)
->
+
+Shawn Lin (6):
+  PCI: rockchip: Create individual folder for rockchip drivers
+  PCI: rockchip: Split out common function to parse DT
+  PCI: rockchip: Spilt out common function to init controller
+  PCI: rockchip: Add rockchip,rk3399-pcie-host compatible
+  PCI: rockchip: Add Endpoint controller driver for Rockchip PCIe
+    controller
+  dt-bindings: PCI: rockchip: Add DT bindings for Rockchip PCIe endpoint
+    controller
+
+ .../devicetree/bindings/pci/rockchip-pcie-ep.txt   |  60 ++
+ .../{rockchip-pcie.txt => rockchip-pcie-host.txt}  |   3 +-
+ MAINTAINERS                                        |   4 +-
+ drivers/pci/Kconfig                                |   1 +
+ drivers/pci/Makefile                               |   2 +
+ drivers/pci/host/Kconfig                           |  11 -
+ drivers/pci/host/Makefile                          |   1 -
+ drivers/pci/rockchip/Kconfig                       |  32 ++
+ drivers/pci/rockchip/Makefile                      |   4 +
+ drivers/pci/rockchip/pcie-rockchip-ep.c            | 629 +++++++++++++++++++++
+ .../pcie-rockchip-host.c}                          | 595 +------------------
+ drivers/pci/rockchip/pcie-rockchip.c               | 418 ++++++++++++++
+ drivers/pci/rockchip/pcie-rockchip.h               | 343 +++++++++++
+ 13 files changed, 1507 insertions(+), 596 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
+ rename Documentation/devicetree/bindings/pci/{rockchip-pcie.txt => rockchip-pcie-host.txt} (98%)
+ create mode 100644 drivers/pci/rockchip/Kconfig
+ create mode 100644 drivers/pci/rockchip/Makefile
+ create mode 100644 drivers/pci/rockchip/pcie-rockchip-ep.c
+ rename drivers/pci/{host/pcie-rockchip.c => rockchip/pcie-rockchip-host.c} (61%)
+ create mode 100644 drivers/pci/rockchip/pcie-rockchip.c
+ create mode 100644 drivers/pci/rockchip/pcie-rockchip.h
+
+-- 
+1.9.1
