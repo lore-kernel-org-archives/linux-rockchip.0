@@ -1,88 +1,107 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/3] drm/panel: simple: Add ability to override typical timing
-Date: Wed, 7 Feb 2018 11:41:49 -0600
-Message-ID: <CAL_JsqJDvPN3CtKtj980egDRuC-ZjiKOAWe5ECYVBSv4hVOnYw@mail.gmail.com>
-References: <20180206165626.37692-1-seanpaul@chromium.org> <20180206165626.37692-2-seanpaul@chromium.org>
- <CAL_JsqJer8ZrLyPHz=hBo9smSv7aXhtP3hOJzQojt7ofUiHo=w@mail.gmail.com> <20180206214812.fzh3tr3zflzunw6n@art_vandelay>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180206214812.fzh3tr3zflzunw6n@art_vandelay>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v5] drm/rockchip: Add device links for master and components
+Date: Wed,  7 Feb 2018 18:53:09 +0100
+Message-ID: <20180207175309.21095-1-enric.balletbo@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BC=20bner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Feb 6, 2018 at 3:48 PM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> On Tue, Feb 06, 2018 at 02:19:34PM -0600, Rob Herring wrote:
->> On Tue, Feb 6, 2018 at 10:56 AM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->> > This patch adds the ability to override the typical display timing for a
->> > given panel. This is useful for devices which have timing constraints
->> > that do not apply across the entire display driver (eg: to avoid
->> > crosstalk between panel and digitizer on certain laptops). The rules are
->> > as follows:
->> >
->> > - panel must not specify fixed mode (since the override mode will
->> >   either be the same as the fixed mode, or we'll be unable to
->> >   check the bounds of the overried)
->> > - panel must specify at least one display_timing range which will be
->> >   used to ensure the override mode fits within its bounds
->> >
->> > Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> > Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->> > Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> > Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->> > Cc: Stéphane Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> > Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> > Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->> > Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
->> > Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> > Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> > ---
->> >  .../bindings/display/panel/simple-panel.txt        | 20 +++++++
->>
->> The binding should be a separate patch.
->>
->
-> Ack, will split.
->
->
->> >  drivers/gpu/drm/panel/panel-simple.c               | 69 +++++++++++++++++++++-
->> >  2 files changed, 88 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
->> > index 16d8ff088b7d..590bbff6fc90 100644
->> > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
->> > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
->> > @@ -7,6 +7,14 @@ Optional properties:
->> >  - ddc-i2c-bus: phandle of an I2C controller used for DDC EDID probing
->> >  - enable-gpios: GPIO pin to enable or disable the panel
->> >  - backlight: phandle of the backlight device attached to the panel
->> > +- override-mode: For devices which require a mode which differs from the
->>
->> This is not a property, but a node so it needs its own section.
->>
->> Also, it's not real clear from display-timing.txt, but the modes
->> should be grouped under a display-timings node. Looks like we haven't
->> been good at enforcing that as "panel-timing" is also common when
->> there's a single mode. I'd rather not have another way. With a
->> standard node name, we can validate the node more easily.
->>
->> We'd lose the fact that this is explicitly an override, but I'd doubt
->> Thierry is going to start letting in panels with no timings.
->>
->
-> Yeah, I noticed that the timing subnode was specified as nestled in
-> display-timings. I figured since there can only be one override mode, and the
-> of_get_display_timing function was exported, it would be Ok to just reuse the
-> format of the subnode. I'll respin with the full thing.
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-TBC, I'm fine if you use panel-timing as that's already established
-for cases were only 1 mode exists.
+Since we are trying to access components' resources in the master's
+suspend/resume PM callbacks(e.g. panel), add device links to correct
+the suspend/resume and shutdown ordering.
 
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+Hi,
+
+This is an attempt to revive a patch [1] that was sent last October. Sean
+Paul requested some changes but I think that never was send a v5 version.
+The patch fixes and issue where backlight panel is not correctly recoved
+after a resume. This was tested on top of current linux-next plus the
+latest series of Thierry's patches [2]
+
+[1] https://patchwork.kernel.org/patch/10011595/
+[2] https://lkml.org/lkml/2018/1/30/621
+
+Changes in v5:
+Address the comments from Sean.
+- Create a helper to do the cleanup.
+- Call the helper in rockchip_drm_match_add and where needed.
+Changes in v4: None
+Changes in v3: None
+Changes in v2:
+Use device link to correct the suspend/resume and shutdown ordering,
+instead of converting rockchip spi's suspend/resume PM callbacks to
+late suspend/resume PM callbacks.
+
+Thanks,
+ Enric
+
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 0609113d6a71..f814d37b1db2 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -314,6 +314,14 @@ static int compare_dev(struct device *dev, void *data)
+ 	return dev == (struct device *)data;
+ }
+ 
++static void rockchip_drm_match_remove(struct device *dev)
++{
++	struct device_link *link;
++
++	list_for_each_entry(link, &dev->links.consumers, s_node)
++		device_link_del(link);
++}
++
+ static struct component_match *rockchip_drm_match_add(struct device *dev)
+ {
+ 	struct component_match *match = NULL;
+@@ -331,10 +339,15 @@ static struct component_match *rockchip_drm_match_add(struct device *dev)
+ 
+ 			if (!d)
+ 				break;
++
++			device_link_add(dev, d, DL_FLAG_STATELESS);
+ 			component_match_add(dev, &match, compare_dev, d);
+ 		} while (true);
+ 	}
+ 
++	if (IS_ERR(match))
++		rockchip_drm_match_remove(dev);
++
+ 	return match ?: ERR_PTR(-ENODEV);
+ }
+ 
+@@ -411,13 +424,21 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
+ 	if (IS_ERR(match))
+ 		return PTR_ERR(match);
+ 
+-	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
++	ret = component_master_add_with_match(dev, &rockchip_drm_ops, match);
++	if (ret < 0) {
++		rockchip_drm_match_remove(dev);
++		return ret;
++	}
++
++	return 0;
+ }
+ 
+ static int rockchip_drm_platform_remove(struct platform_device *pdev)
+ {
+ 	component_master_del(&pdev->dev, &rockchip_drm_ops);
+ 
++	rockchip_drm_match_remove(&pdev->dev);
++
+ 	return 0;
+ }
+ 
+-- 
+2.15.1
