@@ -1,71 +1,87 @@
-From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v2 5/5] arm64: dts: rockchip: Specify override mode for kevin panel
-Date: Wed,  7 Feb 2018 12:23:59 -0500
-Message-ID: <20180207172404.107358-6-seanpaul@chromium.org>
-References: <20180207172404.107358-1-seanpaul@chromium.org>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/3] drm/panel: simple: Add ability to override typical timing
+Date: Wed, 7 Feb 2018 11:41:49 -0600
+Message-ID: <CAL_JsqJDvPN3CtKtj980egDRuC-ZjiKOAWe5ECYVBSv4hVOnYw@mail.gmail.com>
+References: <20180206165626.37692-1-seanpaul@chromium.org> <20180206165626.37692-2-seanpaul@chromium.org>
+ <CAL_JsqJer8ZrLyPHz=hBo9smSv7aXhtP3hOJzQojt7ofUiHo=w@mail.gmail.com> <20180206214812.fzh3tr3zflzunw6n@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180207172404.107358-1-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <20180206214812.fzh3tr3zflzunw6n@art_vandelay>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds an override mode for kevin devices. The mode increases
-both back porches to allow a pixel clock of 26666kHz as opposed to the
-'typical' value of 252750kHz. This is needed to avoid interference with
-the touch digitizer on these laptops.
+On Tue, Feb 6, 2018 at 3:48 PM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> On Tue, Feb 06, 2018 at 02:19:34PM -0600, Rob Herring wrote:
+>> On Tue, Feb 6, 2018 at 10:56 AM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>> > This patch adds the ability to override the typical display timing for a
+>> > given panel. This is useful for devices which have timing constraints
+>> > that do not apply across the entire display driver (eg: to avoid
+>> > crosstalk between panel and digitizer on certain laptops). The rules are
+>> > as follows:
+>> >
+>> > - panel must not specify fixed mode (since the override mode will
+>> >   either be the same as the fixed mode, or we'll be unable to
+>> >   check the bounds of the overried)
+>> > - panel must specify at least one display_timing range which will be
+>> >   used to ensure the override mode fits within its bounds
+>> >
+>> > Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> > Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> > Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> > Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>> > Cc: Stéphane Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> > Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> > Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> > Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+>> > Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>> > Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> > ---
+>> >  .../bindings/display/panel/simple-panel.txt        | 20 +++++++
+>>
+>> The binding should be a separate patch.
+>>
+>
+> Ack, will split.
+>
+>
+>> >  drivers/gpu/drm/panel/panel-simple.c               | 69 +++++++++++++++++++++-
+>> >  2 files changed, 88 insertions(+), 1 deletion(-)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+>> > index 16d8ff088b7d..590bbff6fc90 100644
+>> > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+>> > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+>> > @@ -7,6 +7,14 @@ Optional properties:
+>> >  - ddc-i2c-bus: phandle of an I2C controller used for DDC EDID probing
+>> >  - enable-gpios: GPIO pin to enable or disable the panel
+>> >  - backlight: phandle of the backlight device attached to the panel
+>> > +- override-mode: For devices which require a mode which differs from the
+>>
+>> This is not a property, but a node so it needs its own section.
+>>
+>> Also, it's not real clear from display-timing.txt, but the modes
+>> should be grouped under a display-timings node. Looks like we haven't
+>> been good at enforcing that as "panel-timing" is also common when
+>> there's a single mode. I'd rather not have another way. With a
+>> standard node name, we can validate the node more easily.
+>>
+>> We'd lose the fact that this is explicitly an override, but I'd doubt
+>> Thierry is going to start letting in panels with no timings.
+>>
+>
+> Yeah, I noticed that the timing subnode was specified as nestled in
+> display-timings. I figured since there can only be one override mode, and the
+> of_get_display_timing function was exported, it would be Ok to just reuse the
+> format of the subnode. I'll respin with the full thing.
 
-Changes in v2:
- - Wrap the timing in display-timings node to match binding (Rob/Thierry)
+TBC, I'm fine if you use panel-timing as that's already established
+for cases were only 1 mode exists.
 
-Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Stéphane Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 191a6bcb1704..800eabd39076 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -98,6 +98,22 @@
- 		backlight = <&backlight>;
- 		power-supply = <&pp3300_disp>;
- 
-+		display-timings {
-+			timing0: override {
-+				clock-frequency = <266604720>;
-+				hactive = <2400>;
-+				hfront-porch = <48>;
-+				hback-porch = <84>;
-+				hsync-len = <32>;
-+				hsync-active = <0>;
-+				vactive = <1600>;
-+				vfront-porch = <3>;
-+				vback-porch = <120>;
-+				vsync-len = <10>;
-+				vsync-active = <0>;
-+			};
-+		};
-+
- 		ports {
- 			panel_in_edp: endpoint {
- 				remote-endpoint = <&edp_out_panel>;
--- 
-2.16.0.rc1.238.g530d649a79-goog
-
+Rob
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
