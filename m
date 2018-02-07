@@ -1,130 +1,70 @@
-From: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/3] drm/panel: simple: Add ability to override typical
- timing
-Date: Tue, 6 Feb 2018 16:48:12 -0500
-Message-ID: <20180206214812.fzh3tr3zflzunw6n@art_vandelay>
-References: <20180206165626.37692-1-seanpaul@chromium.org>
- <20180206165626.37692-2-seanpaul@chromium.org>
- <CAL_JsqJer8ZrLyPHz=hBo9smSv7aXhtP3hOJzQojt7ofUiHo=w@mail.gmail.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v3 0/2] phy: rockchip-emmc: fixes emmc-phy power on failed
+ with rk3399 SoCs
+Date: Wed, 7 Feb 2018 09:17:44 +0800
+Message-ID: <e67da623-d6fe-92d9-e6b3-79b8290405c9@rock-chips.com>
+References: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqJer8ZrLyPHz=hBo9smSv7aXhtP3hOJzQojt7ofUiHo=w@mail.gmail.com>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?iso-8859-1?Q?St=E9phane?= Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Feb 06, 2018 at 02:19:34PM -0600, Rob Herring wrote:
-> On Tue, Feb 6, 2018 at 10:56 AM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > This patch adds the ability to override the typical display timing for a
-> > given panel. This is useful for devices which have timing constraints
-> > that do not apply across the entire display driver (eg: to avoid
-> > crosstalk between panel and digitizer on certain laptops). The rules are
-> > as follows:
-> >
-> > - panel must not specify fixed mode (since the override mode will
-> >   either be the same as the fixed mode, or we'll be unable to
-> >   check the bounds of the overried)
-> > - panel must specify at least one display_timing range which will be
-> >   used to ensure the override mode fits within its bounds
-> >
-> > Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> > Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> > Cc: St�phane Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> > Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-> > Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> > Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > ---
-> >  .../bindings/display/panel/simple-panel.txt        | 20 +++++++
-> 
-> The binding should be a separate patch.
-> 
+Kishon,
 
-Ack, will split.
+Can you help merge this in your  or next tree?  I'm hoping that we can 
+land this somewhere.:-)
 
 
-> >  drivers/gpu/drm/panel/panel-simple.c               | 69 +++++++++++++++++++++-
-> >  2 files changed, 88 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> > index 16d8ff088b7d..590bbff6fc90 100644
-> > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> > @@ -7,6 +7,14 @@ Optional properties:
-> >  - ddc-i2c-bus: phandle of an I2C controller used for DDC EDID probing
-> >  - enable-gpios: GPIO pin to enable or disable the panel
-> >  - backlight: phandle of the backlight device attached to the panel
-> > +- override-mode: For devices which require a mode which differs from the
-> 
-> This is not a property, but a node so it needs its own section.
-> 
-> Also, it's not real clear from display-timing.txt, but the modes
-> should be grouped under a display-timings node. Looks like we haven't
-> been good at enforcing that as "panel-timing" is also common when
-> there's a single mode. I'd rather not have another way. With a
-> standard node name, we can validate the node more easily.
-> 
-> We'd lose the fact that this is explicitly an override, but I'd doubt
-> Thierry is going to start letting in panels with no timings.
-> 
-
-Yeah, I noticed that the timing subnode was specified as nestled in
-display-timings. I figured since there can only be one override mode, and the
-of_get_display_timing function was exported, it would be Ok to just reuse the
-format of the subnode. I'll respin with the full thing.
-
-
-> Finally, since this is an override, is it valid to only override the
-> parameters that need overriding? I don't really have an opinion either
-> way. It just needs to be explicitly documented.
-
-I'll pimp the documentation. My gut reaction is to specify everything, since
-this should be a very conscious decision, and having to fully specify the mode
-seems like the right thing to do.
-
-Thanks for your review!
-
-Sean
-
-> 
-> > +                display_timing's "typical" mode, and whose restrictions cannot
-> > +                be applied across the entire platform. The mode must fall
-> > +                within the bounds of the panel's specified display_timing, and
-> > +                cannot be used if the panel already specifies a single fixed
-> > +                mode. The format is specified under "timing subnode" in
-> > +                display-timing.txt
-> > +
-> >
-> >  Example:
-> >
-> > @@ -18,4 +26,16 @@ Example:
-> >                 enable-gpios = <&gpio 90 0>;
-> >
-> >                 backlight = <&backlight>;
-> > +
-> > +               override-mode {
-> > +                       clock-frequency = <266604720>;
-> > +                       hactive = <2400>;
-> > +                       hfront-porch = <48>;
-> > +                       hback-porch = <84>;
-> > +                       hsync-len = <32>;
-> > +                       vactive = <1600>;
-> > +                       vfront-porch = <3>;
-> > +                       vback-porch = <120>;
-> > +                       vsync-len = <10>;
-> > +               }
-> >         };
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks,
+-Caesar
+在 2018年01月11日 10:40, Caesar Wang 写道:
+> Hi Kishon,
+>
+> Since the Shawn isn't available, I take over this series patches for now.
+>
+> As the original bug had tracked on https://issuetracker.google.com/71561742.
+> In some cases, the mmc phy power on failed during booting up.
+> The log as below:
+> ...
+> [   2.375333] rockchip_emmc_phy_power: caldone timeout.
+> [    2.377815] phy phy-ff770000.syscon:phy@f780.4: phy poweron failed --> -110
+> ...
+> [    2.489295] mmc0: mmc_select_hs400es failed, error -110
+> [    2.489302] mmc0: error -110 whilst initialising MMC card
+> ..
+>
+> The actual emulate, the wait 5us for calpad busy trimming, that's no enough.
+> We need give the enough margin for it.
+>
+> Verified on url =
+>          https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
+> This series patches can apply and bring up with kernel-next on rk3399 chromebook.
+>
+> -Caesar
+>
+>
+> Changes in v3:
+> - As Doug commented on both upstream and gerrit.
+>    Change "5, 50" to "0, 50", and the message of print.
+> - As Doug commented on https://patchwork.kernel.org/patch/10154797,
+>    Change "1, 50" to "0, 50".
+>
+> Changes in v2:
+> - print the return valut with regmap_read_poll_timeout failing.
+> - As Brian commented on https://patchwork.kernel.org/patch/10139891/,
+>    changed the note and added to print error value with
+>    regmap_read_poll_timeout API.
+>
+> Shawn Lin (2):
+>    phy: rockchip-emmc: retry calpad busy trimming
+>    phy: rockchip-emmc: use regmap_read_poll_timeout to poll dllrdy
+>
+>   drivers/phy/rockchip/phy-rockchip-emmc.c | 60 +++++++++++++++-----------------
+>   1 file changed, 28 insertions(+), 32 deletions(-)
+>
