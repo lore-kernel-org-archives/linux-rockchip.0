@@ -1,35 +1,55 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v5 03/16] media: rkisp1: Add user space ABI definitions
-Date: Wed, 7 Feb 2018 12:38:50 +0000
-Message-ID: <d29bc615-2359-86c6-db5a-27cc111bc275@arm.com>
-References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
- <1514533978-20408-4-git-send-email-zhengsq@rock-chips.com>
- <5b29d890-8c6b-18ff-ade1-1923c25143a0@xs4all.nl>
+From: gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: Re: High CPU load produced by USB (DW2)
+Date: Wed, 7 Feb 2018 06:27:49 -0800
+Message-ID: <20180207142749.GD29606@kroah.com>
+References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5b29d890-8c6b-18ff-ade1-1923c25143a0@xs4all.nl>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, Shunqian Zheng <zhengsq@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
-Cc: Jose.Abreu@synopsys.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, Joao.Pinto@synopsys.com, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, Luis.Oliveira@synopsys.com, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, allon.huang@rock-chips.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/02/18 13:14, Hans Verkuil wrote:
-[...]
-> The one thing that I worry about is if these structs are the same for
-> 32 and 64 bit arm.
+On Wed, Feb 07, 2018 at 10:48:57AM +0100, Mirza Krak wrote:
+> Hi.
+> 
+> I initially started a thread on a different mailing list [1], and you
+> can take look there for some additional background.
+> 
+> I am using a 4.14.15 stable kernel on a RK3288 SoC (FireFly RK3288
+> board) which uses the DW2 USB core. I have noticed that when
+> connecting a USB device there is unreasonable high CPU load produced
+> by the USB interrupts.
 
-I see some enums and bools in there - in general the storage size of 
-those isn't even guaranteed to be consistent between different compiler 
-implementations on the same platform, let alone across multiple 
-platforms (especially WRT things like GCC's -fshort-enums).
+That's a normal problem with that kind of hardware.  I've seen devices
+with that type of USB core take a 30% cpu usage just when you plug a USB
+keyboard into the device.
 
-In practice, under the standard ABIs for 32-bit and 64-bit Arm[1], I'd 
-expect basic types other than longs and pointers to be pretty much the 
-same; it's the imp-def C stuff I'd be a lot less confident about.
+There's not much the kernel can do about horrible hardware, sorry, go
+complain to the device manufacturer :(
 
-Robin.
+> Here is one example with a MIDI keyboard connected on USB (not really
+> doing anything on it)
+> 
+>    79     2 root     SW       0   0%  19% [irq/45-dwc2_hso]
+>    78     2 root     SW       0   0%  11% [irq/45-ff540000]
 
-[1]:http://infocenter.arm.com/help/topic/com.arm.doc.subset.swdev.abi/index.html
+It doesn't matter if anything is happening on the device, USB goes and
+polls the device all the time, that's just the way that the protocol
+works.  With hardware like this, that polling is done by the kernel
+driver/CPU and does not have offload capability to the USB controller to
+handle this type of housekeeping.  Because of that, you see tons of CPU
+interrupts and a high load.
+
+Again, not much we can do about that, sorry :(
+
+good luck!
+
+greg k-h
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
