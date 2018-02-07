@@ -1,39 +1,35 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+From: Robin Murphy <robin.murphy@arm.com>
 Subject: Re: [PATCH v5 03/16] media: rkisp1: Add user space ABI definitions
-Date: Wed, 7 Feb 2018 13:00:23 +0100
-Message-ID: <e6160bef-29af-3905-6535-a18cb0caa601@xs4all.nl>
+Date: Wed, 7 Feb 2018 12:38:50 +0000
+Message-ID: <d29bc615-2359-86c6-db5a-27cc111bc275@arm.com>
 References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
  <1514533978-20408-4-git-send-email-zhengsq@rock-chips.com>
+ <5b29d890-8c6b-18ff-ade1-1923c25143a0@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1514533978-20408-4-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Joao.Pinto-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Luis.Oliveira-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5b29d890-8c6b-18ff-ade1-1923c25143a0@xs4all.nl>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, Shunqian Zheng <zhengsq@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Jose.Abreu@synopsys.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, Joao.Pinto@synopsys.com, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, Luis.Oliveira@synopsys.com, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, allon.huang@rock-chips.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/29/17 08:52, Shunqian Zheng wrote:
-> From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> Add the header for userspace
+On 06/02/18 13:14, Hans Verkuil wrote:
+[...]
+> The one thing that I worry about is if these structs are the same for
+> 32 and 64 bit arm.
 
-General note: I saw four cases where this documentation referred to the
-datasheet. Three comments on that:
+I see some enums and bools in there - in general the storage size of 
+those isn't even guaranteed to be consistent between different compiler 
+implementations on the same platform, let alone across multiple 
+platforms (especially WRT things like GCC's -fshort-enums).
 
-1) You don't say which datasheet.
-2) I assume the datasheet is under NDA?
-3) You do need to give enough information so a reasonable default can be
-   used. I mentioned in an earlier review that creating an initial params
-   struct that can be used as a templete would be helpful (or even
-   required), and that would be a good place to put such defaults.
+In practice, under the standard ABIs for 32-bit and 64-bit Arm[1], I'd 
+expect basic types other than longs and pointers to be pretty much the 
+same; it's the imp-def C stuff I'd be a lot less confident about.
 
-Regards,
+Robin.
 
-	Hans
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+[1]:http://infocenter.arm.com/help/topic/com.arm.doc.subset.swdev.abi/index.html
