@@ -1,60 +1,101 @@
-From: Philippe Ombredanne <pombredanne@nexb.com>
-Subject: Re: [PATCH v2] drm/bridge/synopsys: dsi: Adopt SPDX identifiers
-Date: Thu, 8 Feb 2018 16:14:28 +0100
-Message-ID: <CAOFm3uFQYjTZxX7Ozf7CJMDof=pretbk4cKGFf0BtwWh0SXrfw@mail.gmail.com>
-References: <20180208145805.24762-1-philippe.cornu@st.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180208145805.24762-1-philippe.cornu@st.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Philippe Cornu <philippe.cornu@st.com>
-Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Archit Taneja <architt@codeaurora.org>, Heiko Stubner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Sandy Huang <hjc@rock-chips.com>, Yannick Fertre <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 1/3] phy: rockchip-typec: enable usb3 host during usb3 phy power on
+Date: Thu,  8 Feb 2018 16:20:26 +0100
+Message-ID: <20180208152028.9997-1-enric.balletbo@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 8, 2018 at 3:58 PM, Philippe Cornu <philippe.cornu@st.com> wrote:
-> Add SPDX identifiers to the Synopsys DesignWare MIPI DSI
-> host controller driver.
->
-> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
-> ---
-> Changes in v2: Update to "GPL-2.0+" following comments from Laurent
-> Pinchart, Benjamin Gaignard & Philippe Ombredanne.
->
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index 7bac101c285c..99f0e4f51716 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -1,12 +1,8 @@
-> +// SPDX-License-Identifier: GPL-2.0+
->  /*
->   * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
->   * Copyright (C) STMicroelectronics SA 2017
->   *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License as published by
-> - * the Free Software Foundation; either version 2 of the License, or
-> - * (at your option) any later version.
-> - *
->   * Modified by Philippe Cornu <philippe.cornu@st.com>
->   * This generic Synopsys DesignWare MIPI DSI host driver is based on the
->   * Rockchip version from rockchip/dw-mipi-dsi.c with phy & bridge APIs.
-> --
-> 2.15.1
->
+From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Thank you.
+We have forced usb3 to work in usb2 only mode in firmware by setting
+usb3tousb2_en (bit3 of GRF_USB3PHY0/1_CON0) to 1, and setting
+host_u3_port_disable (bit0 of GRF_USB3OTG0/1_CON1) to 1 and host_u3_port
+(bit15~12 of GRF_USB3OTG0/1_CON1) to 0. So we need to re-enable usb3
+host.
 
-Acked-by: Philippe Ombredanne <pombredanne@nexB.com>
+Note that the RK3399 TRM suggests that we should keep the whole usb3
+controller in reset for the duration of the Type-C PHY initialization.
+However, it's hard to assert the reset in the current framework of
+reset. And according to the TRM, it doesn't require that we should
+clear the usb3tousb2 bit before pipe ready. So let's enable the usb3
+host after pipe ready to avoid the Type-C PHY initialization failure.
+
+Signed-off-by: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi  |  4 ++++
+ drivers/phy/rockchip/phy-rockchip-typec.c | 15 +++++++++++++++
+ 2 files changed, 19 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 2f2dee0e2f3c..6c72f8aca74c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1438,6 +1438,8 @@
+ 		rockchip,grf = <&grf>;
+ 		rockchip,typec-conn-dir = <0xe580 0 16>;
+ 		rockchip,usb3tousb2-en = <0xe580 3 19>;
++		rockchip,usb3-host-disable = <0x2434 0 16>;
++		rockchip,usb3-host-port = <0x2434 12 28>;
+ 		rockchip,external-psm = <0xe588 14 30>;
+ 		rockchip,pipe-status = <0xe5c0 0 0>;
+ 		rockchip,uphy-dp-sel = <0x6268 19 19>;
+@@ -1468,6 +1470,8 @@
+ 		rockchip,grf = <&grf>;
+ 		rockchip,typec-conn-dir = <0xe58c 0 16>;
+ 		rockchip,usb3tousb2-en = <0xe58c 3 19>;
++		rockchip,usb3-host-disable = <0x2444 0 16>;
++		rockchip,usb3-host-port = <0x2444 12 28>;
+ 		rockchip,external-psm = <0xe594 14 30>;
+ 		rockchip,pipe-status = <0xe5c0 16 16>;
+ 		rockchip,uphy-dp-sel = <0x6268 3 19>;
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index 3ed44bee0fdc..cc07f528cc48 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -358,6 +358,8 @@ struct usb3phy_reg {
+ struct rockchip_usb3phy_port_cfg {
+ 	struct usb3phy_reg typec_conn_dir;
+ 	struct usb3phy_reg usb3tousb2_en;
++	struct usb3phy_reg usb3_host_disable;
++	struct usb3phy_reg usb3_host_port;
+ 	struct usb3phy_reg external_psm;
+ 	struct usb3phy_reg pipe_status;
+ 	struct usb3phy_reg uphy_dp_sel;
+@@ -853,6 +855,9 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
+ 		regmap_read(tcphy->grf_regs, reg->offset, &val);
+ 		if (!(val & BIT(reg->enable_bit))) {
+ 			tcphy->mode |= new_mode & (MODE_DFP_USB | MODE_UFP_USB);
++			/* enable usb3 host */
++			property_enable(tcphy, &cfg->usb3_host_disable, 0);
++			property_enable(tcphy, &cfg->usb3_host_port, 1);
+ 			goto unlock_ret;
+ 		}
+ 		usleep_range(10, 20);
+@@ -1023,6 +1028,16 @@ static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
+ 	if (ret)
+ 		return ret;
+ 
++	ret = tcphy_get_param(dev, &cfg->usb3_host_disable,
++			      "rockchip,usb3-host-disable");
++	if (ret)
++		return ret;
++
++	ret = tcphy_get_param(dev, &cfg->usb3_host_port,
++			      "rockchip,usb3-host-port");
++	if (ret)
++		return ret;
++
+ 	ret = tcphy_get_param(dev, &cfg->external_psm,
+ 			      "rockchip,external-psm");
+ 	if (ret)
+-- 
+2.15.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
