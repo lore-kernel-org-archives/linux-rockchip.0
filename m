@@ -1,44 +1,44 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v3 1/6] dt-bindings: Clarify timing subnode use as
- panel-timing
-Date: Thu, 8 Feb 2018 12:43:58 -0600
-Message-ID: <CAL_JsqKwEDo+1=NLY2zMSs3aPFzRBTbVFRr_YwWTLKeyk4dKOw@mail.gmail.com>
-References: <20180208174855.55620-1-seanpaul@chromium.org>
- <20180208174855.55620-2-seanpaul@chromium.org>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/6] dt-bindings: Add headings to simple-panel bindings
+Date: Thu, 8 Feb 2018 12:44:53 -0600
+Message-ID: <CAL_JsqLWYPD2v9s98LAq88CeFaYTBP3OKH7CZejeT0Cv1a1PJQ@mail.gmail.com>
+References: <20180208174855.55620-1-seanpaul@chromium.org> <20180208174855.55620-3-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180208174855.55620-2-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180208174855.55620-3-seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBGZWIgOCwgMjAxOCBhdCAxMTo0OCBBTSwgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJv
-bWl1bS5vcmc+IHdyb3RlOgo+IEFkZCBhIG5vdGUgaW4gdGhlIGRvY3VtZW50YXRpb24gZXhwbGFp
-bmluZyB3aGVuIGl0J3MgYXBwcm9wcmlhdGUgdG8gdXNlCj4gdGhlIGRpc3BsYXktdGltaW5ncyBz
-dWJub2RlIG9uIGl0cyBvd24sIGFzIHdlbGwgYXMgdGhlIHByZWZlcnJlZCBuYW1lIHRvCj4gdXNl
-IChwYW5lbC10aW1pbmcpLgo+Cj4gQ2hhbmdlcyBpbiB2MzoKPiAgLSBBZGRlZAo+Cj4gQ2M6IERv
-dWcgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiBDYzogRXJpYyBBbmhvbHQgPGVy
-aWNAYW5ob2x0Lm5ldD4KPiBDYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBD
-YzogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiBDYzogUm9iIEhlcnJp
-bmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPiBDYzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hl
-dUBjaHJvbWl1bS5vcmc+Cj4gQ2M6IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFp
-bC5jb20+Cj4gQ2M6IGRldmljZXRyZWVAdmdlci5rZXJuZWwub3JnCj4gQ2M6IGRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+
-IC0tLQo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9k
-aXNwbGF5LXRpbWluZy50eHQgfCA1ICsrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlv
-bnMoKykKClJldmlld2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Thu, Feb 8, 2018 at 11:48 AM, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> In preparation for a new subnode section in a follow-on patch, add
+> explicit headings to the existings sections for simple-panel.
+>
+> Changes in v2:
+>  - Added
+> Changes in v3:
+>  - None
+>
+> Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Cc: Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Cc: Stéphane Marchesin <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/display/panel/simple-panel.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
+
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
