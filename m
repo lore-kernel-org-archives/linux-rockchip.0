@@ -1,42 +1,59 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 2/3] Documentation: bindings: add usb3-host-disable and usb3-host-port for Rockchip USB Type-C PHY
-Date: Thu,  8 Feb 2018 16:20:27 +0100
-Message-ID: <20180208152028.9997-2-enric.balletbo@collabora.com>
-References: <20180208152028.9997-1-enric.balletbo@collabora.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v2] drm/bridge/synopsys: dsi: Adopt SPDX identifiers
+Date: Thu, 08 Feb 2018 18:46:34 +0200
+Message-ID: <101210971.aHjggv2rq0@avalon>
+References: <20180208145805.24762-1-philippe.cornu@st.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180208152028.9997-1-enric.balletbo@collabora.com>
+In-Reply-To: <20180208145805.24762-1-philippe.cornu@st.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, Chris Zhong <zyw@rock-chips.com>, William wu <wulf@rock-chips.com>, hl@rock-chips.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+To: Philippe Cornu <philippe.cornu@st.com>
+Cc: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Yannick Fertre <yannick.fertre@st.com>, Vincent Abriou <vincent.abriou@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Philippe Ombredanne <pombredanne@nexb.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: William wu <wulf@rock-chips.com>
+Hi Philippe,
 
-rockchip,usb3-host-disable is the register of type-c phy disable usb3 host
-rockchip,usb3-host-port is the register of type-c phy usb3 port number
+Thank you for the patch.
 
-Signed-off-by: William wu <wulf@rock-chips.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
- Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt | 6 ++++++
- 1 file changed, 6 insertions(+)
+On Thursday, 8 February 2018 16:58:05 EET Philippe Cornu wrote:
+> Add SPDX identifiers to the Synopsys DesignWare MIPI DSI
+> host controller driver.
+> 
+> Signed-off-by: Philippe Cornu <philippe.cornu@st.com>
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-index c3be83be9615..9085d95d0079 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-@@ -36,6 +36,12 @@ offset, enable bit, write mask bit.
-  - rockchip,uphy-dp-sel : the register of type-c phy enable DP function
-    for type-c phy0, it must be <0x6268 19 19>;
-    for type-c phy1, it must be <0x6268 3 19>;
-+ - rockchip,usb3-host-disable : the register of type-c phy disable usb3 host
-+   for type-c phy0, it must be <0x2434 0 16>;
-+   for type-c phy1, it must be <0x2444 0 16>;
-+ - rockchip,usb3-host-port : the register of type-c phy usb3 port number
-+   for type-c phy0, it must be <0x2434 12 28>;
-+   for type-c phy1, it must be <0x2444 12 28>;
- 
- Required nodes : a sub-node is required for each port the phy provides.
- 		 The sub-node name is used to identify dp or usb3 port,
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> ---
+> Changes in v2: Update to "GPL-2.0+" following comments from Laurent
+> Pinchart, Benjamin Gaignard & Philippe Ombredanne.
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c index
+> 7bac101c285c..99f0e4f51716 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -1,12 +1,8 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+>  /*
+>   * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>   * Copyright (C) STMicroelectronics SA 2017
+>   *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License as published by
+> - * the Free Software Foundation; either version 2 of the License, or
+> - * (at your option) any later version.
+> - *
+>   * Modified by Philippe Cornu <philippe.cornu@st.com>
+>   * This generic Synopsys DesignWare MIPI DSI host driver is based on the
+>   * Rockchip version from rockchip/dw-mipi-dsi.c with phy & bridge APIs.
+
+
 -- 
-2.15.1
+Regards,
+
+Laurent Pinchart
