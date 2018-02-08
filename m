@@ -1,36 +1,75 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: Add read feature
-Date: Thu, 8 Feb 2018 08:35:29 +0000
-Message-ID: <e187ceb1-ceba-916f-45da-fe999197ff9b@st.com>
-References: <CGME20180204213219epcas2p429434ba0c87a0544dc5294facd80529b@epcas2p4.samsung.com>
- <20180204213104.17834-1-philippe.cornu@st.com>
- <a1a17a6e-8389-e04f-716e-29b10b295b54@samsung.com>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: High CPU load produced by USB (DW2)
+Date: Thu, 8 Feb 2018 08:50:19 +0000
+Message-ID: <410670D7E743164D87FA6160E7907A560113A67EBD@am04wembxa.internal.synopsys.com>
+References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
+ <20180207142749.GD29606@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <a1a17a6e-8389-e04f-716e-29b10b295b54@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Language: en-US
-Content-ID: <EA3D01FF21CB7E4BA6C6C01FC4A22BB8@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Yannick FERTRE <yannick.fertre@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Alexandre TORGUE <alexandre.torgue@st.com>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-TWFueSB0aGFua3MNClBoaWxpcHBlIDotKQ0KDQpPbiAwMi8wOC8yMDE4IDA4OjM5IEFNLCBBbmRy
-emVqIEhhamRhIHdyb3RlOg0KPiBPbiAwNC4wMi4yMDE4IDIyOjMxLCBQaGlsaXBwZSBDb3JudSB3
-cm90ZToNCj4+IFRoaXMgcGF0Y2ggYWRkcyB0aGUgRENTL0dFTkVSSUMgRFNJIHJlYWQgZmVhdHVy
-ZS4NCj4+DQo+PiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVA
-c3QuY29tPg0KPj4gLS0tDQo+IFF1ZXVlZCB0byBkcm0tbWlzYy1uZXh0Lg0KPiAtLQ0KPiBSZWdh
-cmRzDQo+IEFuZHJ6ZWoNCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+On 2/7/2018 6:28 PM, gregkh wrote:
+> On Wed, Feb 07, 2018 at 10:48:57AM +0100, Mirza Krak wrote:
+>> Hi.
+>>
+>> I initially started a thread on a different mailing list [1], and you
+>> can take look there for some additional background.
+>>
+>> I am using a 4.14.15 stable kernel on a RK3288 SoC (FireFly RK3288
+>> board) which uses the DW2 USB core. I have noticed that when
+>> connecting a USB device there is unreasonable high CPU load produced
+>> by the USB interrupts.
+> 
+> That's a normal problem with that kind of hardware.  I've seen devices
+> with that type of USB core take a 30% cpu usage just when you plug a USB
+> keyboard into the device.
+> 
+> There's not much the kernel can do about horrible hardware, sorry, go
+> complain to the device manufacturer :(
+> 
+>> Here is one example with a MIDI keyboard connected on USB (not really
+>> doing anything on it)
+>>
+>>     79     2 root     SW       0   0%  19% [irq/45-dwc2_hso]
+>>     78     2 root     SW       0   0%  11% [irq/45-ff540000]
+> 
+> It doesn't matter if anything is happening on the device, USB goes and
+> polls the device all the time, that's just the way that the protocol
+> works.  With hardware like this, that polling is done by the kernel
+> driver/CPU and does not have offload capability to the USB controller to
+> handle this type of housekeeping.  Because of that, you see tons of CPU
+> interrupts and a high load.
+> 
+> Again, not much we can do about that, sorry :(
+> 
+> good luck!
+> 
+> greg k-h
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  https://urldefense.proofpoint.com/v2/url?u=http-3A__vger.kernel.org_majordomo-2Dinfo.html&d=DwIBAg&c=DPL6_X_6JkXFx7AXWqB0tg&r=6z9Al9FrHR_ZqbbtSAsD16pvOL2S3XHxQnSzq8kusyI&m=mnEzj_Q87pyYPBxV3CbMXuG55KNzxqhYf7tuz517xjg&s=eftxO7ffuUu2L87Mqwa6K8p7s1mpI__boRvzDI70HvY&e=
+> 
+dwc2 HW doesn't track (u)frames internally. SW forced to track (u)frames 
+by unmasking SOF interrupts. This is why when any device with periodic 
+EP connected to port require to unmask SOF's as result seen high CPU 
+load. dwc2 SW dynamically mask/unmask SOF interrupts depend on using 
+periodic EP by connected device.
+There are no any polling in SW.
+
+Lot of HW functionality delegated to dwc2 driver to reduce gate count in HW.
+This "horrible" core very small and cheap.
+
+good luck!
+
+Minas
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
