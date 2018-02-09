@@ -1,104 +1,75 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: enable I2S codec on rk3399-puma-haikou
-Date: Fri, 09 Feb 2018 19:52:59 +0100
-Message-ID: <2448065.tRKBKgXtGg@phil>
-References: <20180203155016.51909-1-klaus.goger@theobroma-systems.com> <20180203155016.51909-3-klaus.goger@theobroma-systems.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 4/6] PCI: rockchip: Add rockchip,rk3399-pcie-host
+ compatible
+Date: Fri, 9 Feb 2018 17:38:57 -0600
+Message-ID: <20180209233857.osoyfvst3waa54b3@rob-hp-laptop>
+References: <1517971650-61555-1-git-send-email-shawn.lin@rock-chips.com>
+ <1517971650-61555-5-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180203155016.51909-3-klaus.goger@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Klaus Goger <klaus.goger@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1517971650-61555-5-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Klaus,
+On Wed, Feb 07, 2018 at 10:47:28AM +0800, Shawn Lin wrote:
+> To avoid confusion when folks use this controller as endponint
 
-Am Samstag, 3. Februar 2018, 16:50:16 CET schrieb Klaus Goger:
-> Enable the NXP SGTL5000 audio codec on the RK3399-Q7 EVK baseboard
-> Haikou.
+s/endponint/endpoint/
+
+> mode, we add rockchip,rk3399-pcie-host to clearly state that
+> it's driver for host here. And rename/update the document to
+> reflect this fact.
 > 
-> The i2s0_2ch_bus definition is only done in the SoM dtsi as it is
-> missing the LRCK_RX pin (that is used otherwise) and therefore not
-> generic enough for the SoC dtsi.
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
 > 
-> Signed-off-by: Klaus Goger <klaus.goger@theobroma-systems.com>
+>  .../bindings/pci/{rockchip-pcie.txt => rockchip-pcie-host.txt}         | 3 ++-
+>  drivers/pci/rockchip/pcie-rockchip-host.c                              | 1 +
+>  2 files changed, 3 insertions(+), 1 deletion(-)
+>  rename Documentation/devicetree/bindings/pci/{rockchip-pcie.txt => rockchip-pcie-host.txt} (98%)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
+> similarity index 98%
+> rename from Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> rename to Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
+> index af34c65..f2f3091 100644
+> --- a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
+> @@ -5,7 +5,8 @@ Required properties:
+>  - #size-cells: Size representation for root ports, set to <2>
+>  - #interrupt-cells: specifies the number of cells needed to encode an
+>  		interrupt source. The value must be 1.
+> -- compatible: Should contain "rockchip,rk3399-pcie"
+> +- compatible: Should contain "rockchip,rk3399-pcie" or
+> +	"rockchip,rk3399-pcie-host"
 
-as we talked about today at Fosdem, please add the changes as below
+I don't think this is necessary. Endpoint is generally the exception and 
+having "endpoint" or "ep" in the endpoint compatible should be enough.
 
-> +	i2s0_sound {
-
-nit: is20-sound
-
-[...]
-
->  		regulator-name = "vcc5v0_otg";
->  		regulator-always-on;
->  	};
-> +
-> +	vdda_codec: vdda-codec {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vdda_codec";
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-
-vin-supply, so that the regulator-tree becomes an actual tree?
-
-> +	};
-> +
-> +	vddd_codec: vddd-codec {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vddd_codec";
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <1600000>;
-> +		regulator-max-microvolt = <1600000>;
-
-vin-supply?
-
-
-> -&i2s0 {
-> -	status = "okay";
-> -	rockchip,playback-channels = <8>;
-> -	rockchip,capture-channels = <8>;
-> -	#sound-dai-cells = <0>;
-> -	status = "okay";
-> -};
-> -
-
-please do the move of the &i2s0 block in a separate patch
-
-> @@ -461,6 +469,23 @@
->  		};
->  	};
+>  - reg: Two register ranges as listed in the reg-names property
+>  - reg-names: Must include the following names
+>  	- "axi-base"
+> diff --git a/drivers/pci/rockchip/pcie-rockchip-host.c b/drivers/pci/rockchip/pcie-rockchip-host.c
+> index f5b0492..efb740d 100644
+> --- a/drivers/pci/rockchip/pcie-rockchip-host.c
+> +++ b/drivers/pci/rockchip/pcie-rockchip-host.c
+> @@ -1120,6 +1120,7 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
 >  
-> +	i2s0 {
-> +		/*
-> +		 * As Q7 does not specify neither a global nor a RX clock for I2S these
-> +		 * signals are not used. Furthermore I2S0_LRCK_RX is used as GPIO.
-> +		 * Therefore we have to redefine the i2s0_2ch_bus definition to prevent
-> +		 * conflicts.
-> +		 */
-> +		/delete-node/ i2s0_2ch_bus;
-> +		i2s0_2ch_bus: i2s0-2ch-bus {
-> +			rockchip,pins =
-> +				<RK_GPIO3 RK_PD0 RK_FUNC_1 &pcfg_pull_none>,
-> +				<RK_GPIO3 RK_PD2 RK_FUNC_1 &pcfg_pull_none>,
-> +				<RK_GPIO3 RK_PD3 RK_FUNC_1 &pcfg_pull_none>,
-> +				<RK_GPIO3 RK_PD7 RK_FUNC_1 &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-
-please keep the comment but make this an
-&i2s0_2ch_bus {
-	rockchip,pins =
-}
-
-as overriding only a single property doesn't require the /delete-node/
-magic.
-
-
-Thanks
-Heiko
+>  static const struct of_device_id rockchip_pcie_of_match[] = {
+>  	{ .compatible = "rockchip,rk3399-pcie", },
+> +	{ .compatible = "rockchip,rk3399-pcie-host", },
+>  	{}
+>  };
+>  MODULE_DEVICE_TABLE(of, rockchip_pcie_of_match);
+> -- 
+> 1.9.1
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
