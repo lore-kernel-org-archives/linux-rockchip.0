@@ -1,63 +1,33 @@
-From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/3] Documentation: bindings: add usb3-host-disable and
- usb3-host-port for Rockchip USB Type-C PHY
-Date: Thu, 8 Feb 2018 22:23:33 +0100
-Message-ID: <CAFqH_53-iN9m=U+WdQh6_rKyxE5c9RUQO9qD1QaY0QePM_pOZA@mail.gmail.com>
-References: <20180208152028.9997-1-enric.balletbo@collabora.com>
- <20180208152028.9997-2-enric.balletbo@collabora.com> <CABGGisyaqV5HtTUL5LdjH3ZcU3_RTPmzMvEAhv5wZjCD_XCujg@mail.gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/9] dt-bindings: add binding for Rockchip hdmi phy using
+ an Innosilicon IP
+Date: Thu, 8 Feb 2018 20:34:33 -0600
+Message-ID: <20180209023433.fgumy7ic6ol45x45@rob-hp-laptop>
+References: <20180205143435.4723-1-heiko@sntech.de>
+ <20180205143435.4723-2-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CABGGisyaqV5HtTUL5LdjH3ZcU3_RTPmzMvEAhv5wZjCD_XCujg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180205143435.4723-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+On Mon, Feb 05, 2018 at 03:34:27PM +0100, Heiko Stuebner wrote:
+> From: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> The phy is used so far in two Rockchip socs the rk3228 and the rk3328.
+> 
+> Signed-off-by: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  .../bindings/phy/phy-rockchip-inno-hdmi.txt        | 42 ++++++++++++++++++++++
+>  1 file changed, 42 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
 
-2018-02-08 18:52 GMT+01:00 Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>:
-> On Thu, Feb 8, 2018 at 9:20 AM, Enric Balletbo i Serra
-> <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->> From: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> rockchip,usb3-host-disable is the register of type-c phy disable usb3 host
->> rockchip,usb3-host-port is the register of type-c phy usb3 port number
->>
->> Signed-off-by: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->> ---
->>  Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt | 6 ++++++
->>  1 file changed, 6 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->> index c3be83be9615..9085d95d0079 100644
->> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->> @@ -36,6 +36,12 @@ offset, enable bit, write mask bit.
->>   - rockchip,uphy-dp-sel : the register of type-c phy enable DP function
->>     for type-c phy0, it must be <0x6268 19 19>;
->>     for type-c phy1, it must be <0x6268 3 19>;
->> + - rockchip,usb3-host-disable : the register of type-c phy disable usb3 host
->> +   for type-c phy0, it must be <0x2434 0 16>;
->> +   for type-c phy1, it must be <0x2444 0 16>;
->> + - rockchip,usb3-host-port : the register of type-c phy usb3 port number
->> +   for type-c phy0, it must be <0x2434 12 28>;
->> +   for type-c phy1, it must be <0x2444 12 28>;
->
-> When does this list stop? Adding properties for various register
-> fields doesn't scale. This information should be in the driver and
-> based on the compatible string if necessary.
->
-
-I see, seams reasonable to me, is this applicable to the new ones only
-or I should get rid of all the proprieties like this from the DT
-(including the old ones)?
-
-Thanks,
-  Enric
-
-> Rob
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
