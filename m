@@ -1,30 +1,36 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH 0/3] gpio-keys: Add support for specifying wakeup interrupt trigger type
-Date: Fri,  9 Feb 2018 19:55:07 +0800
-Message-ID: <20180209115510.11868-1-jeffy.chen@rock-chips.com>
+Subject: [PATCH 3/3] arm64: dts: rockchip: Avoid wakeup when inserting the pen
+Date: Fri,  9 Feb 2018 19:55:10 +0800
+Message-ID: <20180209115510.11868-4-jeffy.chen@rock-chips.com>
+References: <20180209115510.11868-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180209115510.11868-1-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: briannorris@google.com, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: briannorris@google.com, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Add wakeup interrupt trigger type for Pen Insert gpio key, to avoid
+wakeup when inserting the pen.
 
-On chromebook kevin, we are using gpio-keys for pen insert event. But
-we only want it to wakeup the system when ejecting the pen.
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-So we may need to change the interrupt trigger type during suspending.
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
-
-Jeffy Chen (3):
-  Input: gpio-keys - add support for wakeup interrupt trigger type
-  Input: gpio-keys - allow setting wakeup interrupt trigger type in DT
-  arm64: dts: rockchip: Avoid wakeup when inserting the pen
-
- .../devicetree/bindings/input/gpio-keys.txt          |  9 +++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts    |  2 ++
- drivers/input/keyboard/gpio_keys.c                   | 20 ++++++++++++++++++--
- include/linux/gpio_keys.h                            |  2 ++
- 4 files changed, 31 insertions(+), 2 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index 191a6bcb1704..5edfbd288b2f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -134,6 +134,8 @@
+ 		gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+ 		linux,code = <SW_PEN_INSERTED>;
+ 		linux,input-type = <EV_SW>;
++		/* Wakeup only when ejecting */
++		wakeup-trigger-type = <IRQ_TYPE_EDGE_RISING>;
+ 		wakeup-source;
+ 	};
+ };
 -- 
 2.11.0
