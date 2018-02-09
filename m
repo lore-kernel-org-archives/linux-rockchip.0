@@ -1,41 +1,96 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: introduce pclk_vio_grf in eDP device node
-Date: Fri, 09 Feb 2018 10:45:03 +0100
-Message-ID: <2524920.mM517gbyb6@phil>
-References: <20180207163150.16332-1-enric.balletbo@collabora.com>
+From: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [2/9] phy: add Rockchip Innosilicon hdmi phy
+Date: Fri, 09 Feb 2018 11:06:49 +0100
+Message-ID: <313a1fb7-9ecf-ff94-d9b8-6ec63e80b058@samsung.com>
+References: <20180205143435.4723-3-heiko@sntech.de>
+        <alpine.GSO.2.00.1802052159530.23549@dmz.c-home.cz>
+        <CGME20180209092427epcas3p2f7e08f595f0326c25484c6943237a0e6@epcas3p2.samsung.com>
+        <2860925.eKDKvHpOYg@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180207163150.16332-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-reply-to: <2860925.eKDKvHpOYg@phil>
+Content-language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Martin Cerveny <M.Cerveny-bdq14YP6qtRg9hUCZPvPmw@public.gmane.org>
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 7. Februar 2018, 17:31:48 CET schrieb Enric Balletbo i Serra:
-> From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> The pclk_vio_grf supply power for VIO GRF IOs, if it is disabled,
-> driver would failed to operate the VIO GRF registers.
-> 
-> The clock is optional but one of the side effects of don't have this clk
-> is that the Samsung Chromebook Plus fails to recover display after a
-> suspend/resume with following errors:
-> 
->     rockchip-dp ff970000.edp: Input stream clock not detected.
->     rockchip-dp ff970000.edp: Timeout of video streamclk ok
->     rockchip-dp ff970000.edp: unable to config video
-> 
-> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+On 09.02.2018 10:24, Heiko Stuebner wrote:
+> Hi Martin,
+>
+> Am Montag, 5. Februar 2018, 22:32:08 CET schrieb Martin Cerveny:
+>> On Mon, 5 Feb 2018, Heiko Stuebner wrote:
+>>> From: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>
+>>> Add a driver for the Innosilicon hdmi phy used on rk3228/rk3229
+>>> and rk3328 socs from Rockchip.
+>>>
+>>> Signed-off-by: Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>>> ---
+>>> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+>>> +static u32 inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy *inno, int rate)
+>>> +{
+>>> +	int bus_width = phy_get_bus_width(inno->phy);
+>>> +	u32 tmdsclk;
+>>> +
+>>> +	switch (bus_width) {
+>>> +	case 4:
+>>> +		tmdsclk = rate / 2;
+>>> +		break;
+>>> +	case 5:
+>>> +		tmdsclk = rate * 5 / 8;
+>>> +		break;
+>>> +	case 6:
+>>> +		tmdsclk = rate * 3 / 4;
+>>> +		break;
+>>> +	case 10:
+>>> +		tmdsclk = rate * 5 / 4;
+>>> +		break;
+>>> +	case 12:
+>>> +		tmdsclk = rate * 3 / 2;
+>>> +		break;
+>>> +	case 16:
+>>> +		tmdsclk = rate * 2;
+>>> +		break;
+>>> +	default:
+>>> +		tmdsclk = rate;
+>>> +	}
+>>> +
+>>> +	return tmdsclk;
+>>> +}
+>> Please corrects integer overflow 
+>> like https://github.com/mcerveny/rockchip-linux/commit/b4bc703f2dca4e5115b22155920d2277671a9f00
+> thanks for finding that possible issue. I've adapted the phy driver
+> in a similar way (using u64 though) and will include that change in the
+> next version.
 
-as you said in IRC that his should also fix the failures when rockchip-drm
-is build as module, I've applied this patch as fix for 4.16
+Btw, wouldn't be simpler to just use:
+switch (bus_width) {
+case 4:
+case 5:
+case 6:
+case 10:
+case 12:
+case 16:
+    return (u64)rate * bus_width / 8;
+default:
+    return rate;
+}
 
+Regards
+Andrzej
 
-Thanks
-Heiko
+>
+>
+> Thanks
+> Heiko
+>
+>
+>
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
