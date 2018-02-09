@@ -1,61 +1,30 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [2/9] phy: add Rockchip Innosilicon hdmi phy
-Date: Fri, 09 Feb 2018 11:10:49 +0100
-Message-ID: <1776656.PJyHqu906x@phil>
-References: <20180205143435.4723-3-heiko@sntech.de> <2860925.eKDKvHpOYg@phil>
- <313a1fb7-9ecf-ff94-d9b8-6ec63e80b058@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <313a1fb7-9ecf-ff94-d9b8-6ec63e80b058@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, kishon@ti.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Laurent.pinchart@ideasonboard.com, Martin Cerveny <M.Cerveny@computer.org>, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH 0/3] gpio-keys: Add support for specifying wakeup interrupt trigger type
+Date: Fri,  9 Feb 2018 19:55:07 +0800
+Message-ID: <20180209115510.11868-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@google.com, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgOS4gRmVicnVhciAyMDE4LCAxMTowNjo0OSBDRVQgc2NocmllYiBBbmRyemVq
-IEhhamRhOgo+IE9uIDA5LjAyLjIwMTggMTA6MjQsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4g
-SGkgTWFydGluLAo+ID4KPiA+IEFtIE1vbnRhZywgNS4gRmVicnVhciAyMDE4LCAyMjozMjowOCBD
-RVQgc2NocmllYiBNYXJ0aW4gQ2VydmVueToKPiA+PiBPbiBNb24sIDUgRmViIDIwMTgsIEhlaWtv
-IFN0dWVibmVyIHdyb3RlOgo+ID4+PiBGcm9tOiBaaGVuZyBZYW5nIDx6aGVuZ3lhbmdAcm9jay1j
-aGlwcy5jb20+Cj4gPj4+Cj4gPj4+IEFkZCBhIGRyaXZlciBmb3IgdGhlIElubm9zaWxpY29uIGhk
-bWkgcGh5IHVzZWQgb24gcmszMjI4L3JrMzIyOQo+ID4+PiBhbmQgcmszMzI4IHNvY3MgZnJvbSBS
-b2NrY2hpcC4KPiA+Pj4KPiA+Pj4gU2lnbmVkLW9mZi1ieTogWmhlbmcgWWFuZyA8emhlbmd5YW5n
-QHJvY2stY2hpcHMuY29tPgo+ID4+PiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
-a29Ac250ZWNoLmRlPgo+ID4+PiAtLS0KPiA+Pj4gKysrIGIvZHJpdmVycy9waHkvcm9ja2NoaXAv
-cGh5LXJvY2tjaGlwLWlubm8taGRtaS5jCj4gPj4+ICtzdGF0aWMgdTMyIGlubm9faGRtaV9waHlf
-Z2V0X3RtZHNjbGsoc3RydWN0IGlubm9faGRtaV9waHkgKmlubm8sIGludCByYXRlKQo+ID4+PiAr
-ewo+ID4+PiArCWludCBidXNfd2lkdGggPSBwaHlfZ2V0X2J1c193aWR0aChpbm5vLT5waHkpOwo+
-ID4+PiArCXUzMiB0bWRzY2xrOwo+ID4+PiArCj4gPj4+ICsJc3dpdGNoIChidXNfd2lkdGgpIHsK
-PiA+Pj4gKwljYXNlIDQ6Cj4gPj4+ICsJCXRtZHNjbGsgPSByYXRlIC8gMjsKPiA+Pj4gKwkJYnJl
-YWs7Cj4gPj4+ICsJY2FzZSA1Ogo+ID4+PiArCQl0bWRzY2xrID0gcmF0ZSAqIDUgLyA4Owo+ID4+
-PiArCQlicmVhazsKPiA+Pj4gKwljYXNlIDY6Cj4gPj4+ICsJCXRtZHNjbGsgPSByYXRlICogMyAv
-IDQ7Cj4gPj4+ICsJCWJyZWFrOwo+ID4+PiArCWNhc2UgMTA6Cj4gPj4+ICsJCXRtZHNjbGsgPSBy
-YXRlICogNSAvIDQ7Cj4gPj4+ICsJCWJyZWFrOwo+ID4+PiArCWNhc2UgMTI6Cj4gPj4+ICsJCXRt
-ZHNjbGsgPSByYXRlICogMyAvIDI7Cj4gPj4+ICsJCWJyZWFrOwo+ID4+PiArCWNhc2UgMTY6Cj4g
-Pj4+ICsJCXRtZHNjbGsgPSByYXRlICogMjsKPiA+Pj4gKwkJYnJlYWs7Cj4gPj4+ICsJZGVmYXVs
-dDoKPiA+Pj4gKwkJdG1kc2NsayA9IHJhdGU7Cj4gPj4+ICsJfQo+ID4+PiArCj4gPj4+ICsJcmV0
-dXJuIHRtZHNjbGs7Cj4gPj4+ICt9Cj4gPj4gUGxlYXNlIGNvcnJlY3RzIGludGVnZXIgb3ZlcmZs
-b3cgCj4gPj4gbGlrZSBodHRwczovL2dpdGh1Yi5jb20vbWNlcnZlbnkvcm9ja2NoaXAtbGludXgv
-Y29tbWl0L2I0YmM3MDNmMmRjYTRlNTExNWIyMjE1NTkyMGQyMjc3NjcxYTlmMDAKPiA+IHRoYW5r
-cyBmb3IgZmluZGluZyB0aGF0IHBvc3NpYmxlIGlzc3VlLiBJJ3ZlIGFkYXB0ZWQgdGhlIHBoeSBk
-cml2ZXIKPiA+IGluIGEgc2ltaWxhciB3YXkgKHVzaW5nIHU2NCB0aG91Z2gpIGFuZCB3aWxsIGlu
-Y2x1ZGUgdGhhdCBjaGFuZ2UgaW4gdGhlCj4gPiBuZXh0IHZlcnNpb24uCj4gCj4gQnR3LCB3b3Vs
-ZG4ndCBiZSBzaW1wbGVyIHRvIGp1c3QgdXNlOgo+IHN3aXRjaCAoYnVzX3dpZHRoKSB7Cj4gY2Fz
-ZSA0Ogo+IGNhc2UgNToKPiBjYXNlIDY6Cj4gY2FzZSAxMDoKPiBjYXNlIDEyOgo+IGNhc2UgMTY6
-Cj4gICAgIHJldHVybiAodTY0KXJhdGUgKiBidXNfd2lkdGggLyA4Owo+IGRlZmF1bHQ6Cj4gICAg
-IHJldHVybiByYXRlOwo+IH0KCnlvdSdyZSBhIGdlbml1cyA7LSkgLgpJIG11c3QgYmUgbG9va2lu
-ZyBhdCB0aGlzIGNvZGUgZm9yIHdheSB0byBsb25nIHRvIG5vdCBzZWUgdGhpcyByZWxhdGlvbi4K
-CgpUaGFua3MKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+
+On chromebook kevin, we are using gpio-keys for pen insert event. But
+we only want it to wakeup the system when ejecting the pen.
+
+So we may need to change the interrupt trigger type during suspending.
+
+
+Jeffy Chen (3):
+  Input: gpio-keys - add support for wakeup interrupt trigger type
+  Input: gpio-keys - allow setting wakeup interrupt trigger type in DT
+  arm64: dts: rockchip: Avoid wakeup when inserting the pen
+
+ .../devicetree/bindings/input/gpio-keys.txt          |  9 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts    |  2 ++
+ drivers/input/keyboard/gpio_keys.c                   | 20 ++++++++++++++++++--
+ include/linux/gpio_keys.h                            |  2 ++
+ 4 files changed, 31 insertions(+), 2 deletions(-)
+
+-- 
+2.11.0
