@@ -1,36 +1,34 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH 3/3] arm64: dts: rockchip: Avoid wakeup when inserting the pen
-Date: Fri,  9 Feb 2018 19:55:10 +0800
-Message-ID: <20180209115510.11868-4-jeffy.chen@rock-chips.com>
-References: <20180209115510.11868-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180209115510.11868-1-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: briannorris@google.com, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: add "rockchip,
+ rk3288-grf" compatible for grf node
+Date: Fri, 09 Feb 2018 19:17:29 +0100
+Message-ID: <2107088.B0969acGXp@phil>
+References: <1517984403-195765-1-git-send-email-shawn.lin@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1517984403-195765-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add wakeup interrupt trigger type for Pen Insert gpio key, to avoid
-wakeup when inserting the pen.
-
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 191a6bcb1704..5edfbd288b2f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -134,6 +134,8 @@
- 		gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
- 		linux,code = <SW_PEN_INSERTED>;
- 		linux,input-type = <EV_SW>;
-+		/* Wakeup only when ejecting */
-+		wakeup-trigger-type = <IRQ_TYPE_EDGE_RISING>;
- 		wakeup-source;
- 	};
- };
--- 
-2.11.0
+SGkgU2hhd24sCgpBbSBNaXR0d29jaCwgNy4gRmVicnVhciAyMDE4LCAwNzoyMDowMiBDRVQgc2No
+cmllYiBTaGF3biBMaW46Cj4gcm9ja2NoaXAscmszMjg4LWdyZiBpcyB1c2VkIGJvdGggZm9yIHJr
+MzIyOCBhbmQgcmszMjI5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGlu
+QHJvY2stY2hpcHMuY29tPgoKYXBwbGllZCBmb3IgNC4xNyBhZnRlciByZXBsYWNpbmcgdGhlIHJr
+MzI4OCBvY2N1cmVuY2VzIHdpdGggcmszMjI4IGluIHRoZQpjb21taXQgbWVzc2FnZSA6LSkKCkFs
+c28gcGxlYXNlIGluY2x1ZGUgdGhlIGdlbmVyYWwgbGludXgtYXJtLWtlcm5lxLogbGlzdCBpbiBm
+dXR1cmUgcGF0Y2hlcy4KCgpUaGFua3MKSGVpa28KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
