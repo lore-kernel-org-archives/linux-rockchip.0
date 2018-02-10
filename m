@@ -1,68 +1,67 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/3] soc: rockchip: power-domain: Use of_clk_get_parent_count() instead of open coding
-Date: Sat, 10 Feb 2018 17:35:01 +0100
-Message-ID: <11171053.oOJPuGlHoK@phil>
-References: <1516375101-29836-1-git-send-email-geert+renesas@glider.be> <1516375101-29836-3-git-send-email-geert+renesas@glider.be>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: phy: phy-rockchip-typec: add usb3 otg reset
+Date: Sat, 10 Feb 2018 20:55:45 +0100
+Message-ID: <1907466.pgqOKPpIkg@phil>
+References: <1515751704-13213-1-git-send-email-william.wu@rock-chips.com> <20180119214916.fegrzgcmbbdiesyz@rob-hp-laptop> <d05fb977-cd6c-4875-25be-9212e75b7e39@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1516375101-29836-3-git-send-email-geert+renesas@glider.be>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert+renesas@glider.be>, Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
-Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Linus Walleij <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <d05fb977-cd6c-4875-25be-9212e75b7e39-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, lin.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Geert,
+Hi Wulf,
 
-Am Freitag, 19. Januar 2018, 16:18:20 CET schrieb Geert Uytterhoeven:
-> As of_clk_get_parent_count() returns zero on failure, while
-> of_count_phandle_with_args() might return a negative error code, this
-> also fixes the issue of possibly using a negative number in the
-> allocation below.
-> 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
->  drivers/soc/rockchip/pm_domains.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-> index 5c342167b9db7a16..9936038d38771784 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -16,6 +16,7 @@
->  #include <linux/of_address.h>
->  #include <linux/of_platform.h>
->  #include <linux/clk.h>
-> +#include <linux/clk-provider.h>
+Am Montag, 22. Januar 2018, 12:33:05 CET schrieb wlf:
+> 在 2018年01月20日 05:49, Rob Herring 写道:
+> > On Thu, Jan 18, 2018 at 09:47:50AM -0800, Brian Norris wrote:
+> >> On Thu, Jan 18, 2018 at 06:20:09PM +0100, Enric Balletbo Serra wrote:
+> >>> As Brian said commit 06c47e6286d5 'usb: dwc3: of-simple: Add support
+> >>> to get resets for the device' introduced the support to get the resets
+> >>> from dwc3-of-simple and the queued commit 'b7e63d95c14d arm64: dts:
+> >>> rockchip: add reset property for dwc3 controllers on rk3399' started
+> >>> using it. Without the latest I get errors like this doing bind/unbind
+> >>> tests.
+> >>>
+> >>>     dwc3: probe of fe900000.dwc3 failed with error -110
+> >>>
+> >>> I just tested these series on top of mainline, I reverted my patch
+> >>> because otherwise two drivers are requesting the same reset and fails,
+> >>> and I did some of the bind/unbind test. They just worked fine, and
+> >>> seems that this is right way, so this makes me think some questions.
+> >> Actually, this was intended to coexist with DWC3 optionally controlling
+> >> the same reset. It was written before the reset framework was rewritten
+> >> to have shared and exclusive resets. Should this be rewritten to use
+> >> shared resets? We'd have to modify both dwc3 core and the PHY driver.
+> > Seems like abuse of DT to me. If you need to control the controller's
+> > reset from the phy driver, then get the reset out of the controller
+> > node. The phy node should describe the connections to the phy.
+> I try to get the reset out of the controller, but I don't find a good
+> way to get the reset ofthe controller associated with the given phy
+> device node.  Is there an API like theof_usb_get_dr_mode_by_phy() to
+> get 'dr_mode' of the controller?
 
-not wanting to be to nitpicky, but clk-provider.h seems that it should be
-used from drivers exposing clocks to the system, not from clock users.
+I guess the easiest way would be taking the of_usb_get_dr_mode_by_phy()
+function move the part above the "finish" label into a separate function
+like of_usb_get_node_by_phy (or possibly move that to an even more general
+place as it is not usb-related at all) and use that function in
+of_usb_get_dr_mode_by_phy() and also use it to get the reset you want via
+something like:
 
-I just remember that in the past clk maintainers tried to keep their
-layering intact, so I've included them for clarification.
+node = of_usb_get_node_by_phy(...);
+rst = of_reset_control_get(node, ...);
 
-Mike, Stephen: the power-domain driver of Rockchip socs needs
-to toggle all clocks of domain peripherals when turning a domain
-on or off, so has a variable list of clocks in the clocks property in dt.
-Hence the of_count_... call which could be replaced with
-of_clk_get_parent_count to not open-code this.
+> And we're trying to find another method to fix the RK3399 tcphy power
+> on fail issue.If we get another proper method, we may not need these
+> phy patch series.
 
+Did you find any different solution for that yet?
 
 Heiko
-
->  #include <linux/regmap.h>
->  #include <linux/mfd/syscon.h>
->  #include <dt-bindings/power/rk3288-power.h>
-> @@ -391,7 +392,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
->  		return -EINVAL;
->  	}
->  
-> -	clk_cnt = of_count_phandle_with_args(node, "clocks", "#clock-cells");
-> +	clk_cnt = of_clk_get_parent_count(node);
->  	pd = devm_kzalloc(pmu->dev,
->  			  sizeof(*pd) + clk_cnt * sizeof(pd->clks[0]),
->  			  GFP_KERNEL);
-> 
-
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
