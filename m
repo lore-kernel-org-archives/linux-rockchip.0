@@ -1,37 +1,34 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: add "rockchip,rk3288-grf"
- compatible for grf node
-Date: Sat, 10 Feb 2018 16:12:22 +0800
-Message-ID: <d6d92f7d-205e-ba06-a7f5-ba72a6f0541d@rock-chips.com>
-References: <1517984403-195765-1-git-send-email-shawn.lin@rock-chips.com>
- <2107088.B0969acGXp@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2107088.B0969acGXp@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v2 0/3] gpio-keys: Add support for specifying wakeup event action
+Date: Sat, 10 Feb 2018 19:09:04 +0800
+Message-ID: <20180210110907.5504-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@google.com, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@lin>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAyMDE4LzIvMTAgMjoxNywgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gSGkgU2hhd24sCj4g
-Cj4gQW0gTWl0dHdvY2gsIDcuIEZlYnJ1YXIgMjAxOCwgMDc6MjA6MDIgQ0VUIHNjaHJpZWIgU2hh
-d24gTGluOgo+PiByb2NrY2hpcCxyazMyODgtZ3JmIGlzIHVzZWQgYm90aCBmb3IgcmszMjI4IGFu
-ZCByazMyMjkuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2st
-Y2hpcHMuY29tPgo+IAo+IGFwcGxpZWQgZm9yIDQuMTcgYWZ0ZXIgcmVwbGFjaW5nIHRoZSByazMy
-ODggb2NjdXJlbmNlcyB3aXRoIHJrMzIyOCBpbiB0aGUKPiBjb21taXQgbWVzc2FnZSA6LSkKPiAK
-Cldvb3BzLCBTb3JyeSBmb3IgdGhhdC4KCj4gQWxzbyBwbGVhc2UgaW5jbHVkZSB0aGUgZ2VuZXJh
-bCBsaW51eC1hcm0ta2VybmXEuiBsaXN0IGluIGZ1dHVyZSBwYXRjaGVzLgoKU3VyZS4KCj4gCj4g
-Cj4gVGhhbmtzCj4gSGVpa28KPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On chromebook kevin, we are using gpio-keys for pen insert event. But
+we only want it to wakeup the system when ejecting the pen.
+
+So we may need to change the interrupt trigger type during suspending.
+
+Changes in v2:
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+
+Jeffy Chen (3):
+  Input: gpio-keys - add support for wakeup event action
+  Input: gpio-keys - allow setting wakeup event action in DT
+  arm64: dts: rockchip: Avoid wakeup when inserting the pen
+
+ .../devicetree/bindings/input/gpio-keys.txt        |  8 +++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  2 ++
+ drivers/input/keyboard/gpio_keys.c                 | 27 ++++++++++++++++++++++
+ include/linux/gpio_keys.h                          |  2 ++
+ include/uapi/linux/input-event-codes.h             |  9 ++++++++
+ 5 files changed, 48 insertions(+)
+
+-- 
+2.11.0
