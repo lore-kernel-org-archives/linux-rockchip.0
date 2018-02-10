@@ -1,34 +1,46 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v2 0/3] gpio-keys: Add support for specifying wakeup event action
-Date: Sat, 10 Feb 2018 19:09:04 +0800
-Message-ID: <20180210110907.5504-1-jeffy.chen@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: briannorris@google.com, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@lin>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: Avoid wakeup when inserting the pen
+Date: Sat, 10 Feb 2018 19:09:07 +0800
+Message-ID: <20180210110907.5504-4-jeffy.chen@rock-chips.com>
+References: <20180210110907.5504-1-jeffy.chen@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180210110907.5504-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dtor-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Add wakeup event action for Pen Insert gpio key, to avoid wakeup when
+inserting the pen.
 
-On chromebook kevin, we are using gpio-keys for pen insert event. But
-we only want it to wakeup the system when ejecting the pen.
-
-So we may need to change the interrupt trigger type during suspending.
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
 Changes in v2:
 Specify wakeup event action instead of irq trigger type as Brian
 suggested.
 
-Jeffy Chen (3):
-  Input: gpio-keys - add support for wakeup event action
-  Input: gpio-keys - allow setting wakeup event action in DT
-  arm64: dts: rockchip: Avoid wakeup when inserting the pen
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
- .../devicetree/bindings/input/gpio-keys.txt        |  8 +++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  2 ++
- drivers/input/keyboard/gpio_keys.c                 | 27 ++++++++++++++++++++++
- include/linux/gpio_keys.h                          |  2 ++
- include/uapi/linux/input-event-codes.h             |  9 ++++++++
- 5 files changed, 48 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index 191a6bcb1704..ef2de0057c5c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -134,6 +134,8 @@
+ 		gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+ 		linux,code = <SW_PEN_INSERTED>;
+ 		linux,input-type = <EV_SW>;
++		/* Wakeup only when ejecting */
++		wakeup-event-action = <EV_ACT_DEASSERTED>;
+ 		wakeup-source;
+ 	};
+ };
 -- 
 2.11.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
