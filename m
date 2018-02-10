@@ -1,44 +1,68 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: Don't use spin_lock_irqsave in interrupt
- context
-Date: Sat, 10 Feb 2018 17:23:06 +0100
-Message-ID: <1742402.LPvxsQ5ymm@phil>
-References: <20180210143501.30407-1-marc.zyngier@arm.com>
+Subject: Re: [PATCH 2/3] soc: rockchip: power-domain: Use of_clk_get_parent_count() instead of open coding
+Date: Sat, 10 Feb 2018 17:35:01 +0100
+Message-ID: <11171053.oOJPuGlHoK@phil>
+References: <1516375101-29836-1-git-send-email-geert+renesas@glider.be> <1516375101-29836-3-git-send-email-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180210143501.30407-1-marc.zyngier@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, Mark Yao <markyao0591@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1516375101-29836-3-git-send-email-geert+renesas@glider.be>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert+renesas@glider.be>, Stephen Boyd <sboyd@codeaurora.org>, mturquette@baylibre.com
+Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Linus Walleij <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyYywKCkFtIFNhbXN0YWcsIDEwLiBGZWJydWFyIDIwMTgsIDE1OjM1OjAxIENFVCBzY2hy
-aWViIE1hcmMgWnluZ2llcjoKPiBUaGUgcm9ja2NoaXAgRFJNIGRyaXZlciBpcyBxdWl0ZSBjYXJl
-ZnVsIHRvIGRpc2FibGUgaW50ZXJydXB0cwo+IHdoZW4gdGFraW5nIGEgbG9jayB0aGF0IGlzIGFs
-c28gdGFrZW4gaW4gaW50ZXJydXB0IGNvbnRleHQsCj4gd2hpY2ggaXMgYSBnb29kIHRoaW5nLgo+
-IAo+IFdoYXQgaXMgYSBiaXQgb3ZlciB0aGUgdG9wIGlzIHRvIHVzZSBzcGluX2xvY2tfaXJxc2F2
-ZSB3aGVuCj4gYWxyZWFkeSBpbiBpbnRlcnJ1cHQgY29udGV4dCwgYXMgeW91IGNhbm5vdCB0YWtl
-IGFub3RoZXIKPiBpbnRlcnJ1cHQgYWdhaW4sIGFuZCBkaXNhYmxpbmcgaW50ZXJydXB0IGlzIGp1
-c3QgcHVyZQo+IG92ZXJoZWFkLgo+IAo+IFN3aXRjaGluZyB0byB0aGUgbm9uIF9pcnFzYXZlIHZl
-cnNpb24gaW4gaW50ZXJydXB0IGNvbnRleHQgaXMKPiBtb3JlIGxvZ2ljYWwsIGFuZCBsZXNzIGhl
-YXZ5IGhhbmRlZC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXJjIFp5bmdpZXIgPG1hcmMuenluZ2ll
-ckBhcm0uY29tPgoKcGxlYXNlIG5vdGUsIHRoYXQgd2UgaGFkIGEgbWFpbnRhaW5lciBzd2FwIGZv
-ciB0aGUgUm9ja2NoaXAgZHJtLWNvbXBvbmVudCwKd2hlcmUgU2FuZHkgcmVwbGFjZWQgTWFyayBb
-MF0gLi4uIHdpdGggbWUgYWN0aW5nIGFzIHNvcnQtb2YgKGFuZCBub3QgeWV0CnVwIHRvIHNwZWVk
-KSBiYWNrdXAuCgpTbyBJIGd1ZXNzIFJvY2tjaGlwIGRybSBwYXRjaGVzIHNob3VsZCBhbHNvIGlu
-Y2x1ZGUKCVNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CgoKSGVpa28KClswXSBodHRw
-czovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51
-eC5naXQvY29tbWl0Lz9pZD1iNDE1Yjc5NTI5MzkxYWJkMjliNmEzMGI5MzY5NzgyMWYwMWUwODJm
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Geert,
+
+Am Freitag, 19. Januar 2018, 16:18:20 CET schrieb Geert Uytterhoeven:
+> As of_clk_get_parent_count() returns zero on failure, while
+> of_count_phandle_with_args() might return a negative error code, this
+> also fixes the issue of possibly using a negative number in the
+> allocation below.
+> 
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> ---
+>  drivers/soc/rockchip/pm_domains.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+> index 5c342167b9db7a16..9936038d38771784 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -16,6 +16,7 @@
+>  #include <linux/of_address.h>
+>  #include <linux/of_platform.h>
+>  #include <linux/clk.h>
+> +#include <linux/clk-provider.h>
+
+not wanting to be to nitpicky, but clk-provider.h seems that it should be
+used from drivers exposing clocks to the system, not from clock users.
+
+I just remember that in the past clk maintainers tried to keep their
+layering intact, so I've included them for clarification.
+
+Mike, Stephen: the power-domain driver of Rockchip socs needs
+to toggle all clocks of domain peripherals when turning a domain
+on or off, so has a variable list of clocks in the clocks property in dt.
+Hence the of_count_... call which could be replaced with
+of_clk_get_parent_count to not open-code this.
+
+
+Heiko
+
+>  #include <linux/regmap.h>
+>  #include <linux/mfd/syscon.h>
+>  #include <dt-bindings/power/rk3288-power.h>
+> @@ -391,7 +392,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+>  		return -EINVAL;
+>  	}
+>  
+> -	clk_cnt = of_count_phandle_with_args(node, "clocks", "#clock-cells");
+> +	clk_cnt = of_clk_get_parent_count(node);
+>  	pd = devm_kzalloc(pmu->dev,
+>  			  sizeof(*pd) + clk_cnt * sizeof(pd->clks[0]),
+>  			  GFP_KERNEL);
+> 
+
+
