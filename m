@@ -1,86 +1,50 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: [PATCH] drm/rockchip: Don't use spin_lock_irqsave in interrupt context
-Date: Sat, 10 Feb 2018 14:35:01 +0000
-Message-ID: <20180210143501.30407-1-marc.zyngier@arm.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add cdn-dp node for rk3399.
+Date: Sat, 10 Feb 2018 17:16:45 +0100
+Message-ID: <6229682.fDmaELEjz4@phil>
+References: <20180207163150.16332-1-enric.balletbo@collabora.com>
+ <20180207163150.16332-2-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Yao <markyao0591@gmail.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180207163150.16332-2-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rockchip DRM driver is quite careful to disable interrupts
-when taking a lock that is also taken in interrupt context,
-which is a good thing.
+Hi Enric,
 
-What is a bit over the top is to use spin_lock_irqsave when
-already in interrupt context, as you cannot take another
-interrupt again, and disabling interrupt is just pure
-overhead.
+Am Mittwoch, 7. Februar 2018, 17:31:49 CET schrieb Enric Balletbo i Serra:
+> From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Add a node for the cdn DP controller which is embedded in the rk3399
+> SoC.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 50 ++++++++++++++++++++++++++++++++
 
-Switching to the non _irqsave version in interrupt context is
-more logical, and less heavy handed.
+It looks like there is no binding document at all for cdn-dp? At least
+I couldn't find one and the original series also didn't seem to include one.
 
-Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+And while I don't see anything problematic right with the used properties
+right now, I'd think we should really have a binding and give dt-maintainers
+a chance to complain, before adding devicetree nodes based on it.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 72554f404b7e..e23877e72c43 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1159,15 +1159,14 @@ static void vop_handle_vblank(struct vop *vop)
- {
- 	struct drm_device *drm = vop->drm_dev;
- 	struct drm_crtc *crtc = &vop->crtc;
--	unsigned long flags;
- 
--	spin_lock_irqsave(&drm->event_lock, flags);
-+	spin_lock(&drm->event_lock);
- 	if (vop->event) {
- 		drm_crtc_send_vblank_event(crtc, vop->event);
- 		drm_crtc_vblank_put(crtc);
- 		vop->event = NULL;
- 	}
--	spin_unlock_irqrestore(&drm->event_lock, flags);
-+	spin_unlock(&drm->event_lock);
- 
- 	if (test_and_clear_bit(VOP_PENDING_FB_UNREF, &vop->pending))
- 		drm_flip_work_commit(&vop->fb_unref_work, system_unbound_wq);
-@@ -1178,21 +1177,20 @@ static irqreturn_t vop_isr(int irq, void *data)
- 	struct vop *vop = data;
- 	struct drm_crtc *crtc = &vop->crtc;
- 	uint32_t active_irqs;
--	unsigned long flags;
- 	int ret = IRQ_NONE;
- 
- 	/*
- 	 * interrupt register has interrupt status, enable and clear bits, we
- 	 * must hold irq_lock to avoid a race with enable/disable_vblank().
- 	*/
--	spin_lock_irqsave(&vop->irq_lock, flags);
-+	spin_lock(&vop->irq_lock);
- 
- 	active_irqs = VOP_INTR_GET_TYPE(vop, status, INTR_MASK);
- 	/* Clear all active interrupt sources */
- 	if (active_irqs)
- 		VOP_INTR_SET_TYPE(vop, clear, active_irqs, 1);
- 
--	spin_unlock_irqrestore(&vop->irq_lock, flags);
-+	spin_unlock(&vop->irq_lock);
- 
- 	/* This is expected for vop iommu irqs, since the irq is shared */
- 	if (!active_irqs)
--- 
-2.14.2
+I'd guess a mostly usable binding doc should already sit in the chromeos
+tree, which you could base a v2 of this series on?
+
+
+Thanks
+Heiko
