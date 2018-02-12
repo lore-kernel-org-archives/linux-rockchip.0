@@ -1,34 +1,33 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 0/7] clk: rockchip: rk3328 fixes in preparation of graphics support
-Date: Mon, 12 Feb 2018 15:02:29 +0100
-Message-ID: <4164196.RnrTvLKjBY@phil>
-References: <20180122141530.12398-1-heiko@sntech.de>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 6/6] dt-bindings: PCI: rockchip: Add DT bindings for
+ Rockchip PCIe endpoint controller
+Date: Mon, 12 Feb 2018 08:17:42 -0600
+Message-ID: <20180212141742.ism3xnohyonp6pi3@rob-hp-laptop>
+References: <1517971650-61555-1-git-send-email-shawn.lin@rock-chips.com>
+ <1517971826-65350-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20180122141530.12398-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1517971826-65350-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, yang.zheng-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 22. Januar 2018, 15:15:23 CET schrieb Heiko Stuebner:
-> Fix some clock issues on rk3328 to make way for the upcoming graphics
-> support on rk3328.
+On Wed, Feb 07, 2018 at 10:50:26AM +0800, Shawn Lin wrote:
+> This patch documents the DT bindings for the Rockchip PCIe controller
+> when configured in endpoint mode.
 > 
-> Heiko Stuebner (6):
->   clk: rockchip: fix hclk_vio_niu on rk3328
->   clk: rockchip: remove HCLK_VIO from rk3328 dt header
->   clk: rockchip: export sclk_hdmi_sfc on rk3328
->   clk: rockchip: protect all remaining rk3328 interconnect clocks
->   clk: rockchip: remove ignore_unused flag from rk3328 vio_h2p clocks
->   clk: rockchip: document hdmi_phy external input for rk3328
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
-> Zheng Yang (1):
->   clk: rockchip: add flags for rk3328 dclk_lcdc
+> ---
+> 
+>  .../devicetree/bindings/pci/rockchip-pcie-ep.txt   | 60 ++++++++++++++++++++++
+>  1 file changed, 60 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
 
-applied for 4.17
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
