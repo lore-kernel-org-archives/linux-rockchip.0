@@ -1,72 +1,57 @@
-From: Daniel Schultz <d.schultz@phytec.de>
-Subject: [PATCH 3/3] ARM: dts: rockchip: phycore: Support UHS mode for SD card
- on phyCORE-RK3288 RDK
-Date: Tue, 13 Feb 2018 10:44:34 +0100
-Message-ID: <1518515074-22526-3-git-send-email-d.schultz@phytec.de>
-References: <1518515074-22526-1-git-send-email-d.schultz@phytec.de>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add cdn-dp node for rk3399.
+Date: Tue, 13 Feb 2018 11:42:59 +0100
+Message-ID: <d8ec2613-b773-9bab-cb4c-1f58eb1c1356@collabora.com>
+References: <20180207163150.16332-1-enric.balletbo@collabora.com>
+ <20180207163150.16332-2-enric.balletbo@collabora.com>
+ <6229682.fDmaELEjz4@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1518515074-22526-1-git-send-email-d.schultz@phytec.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <6229682.fDmaELEjz4@phil>
+Content-Language: en-GB
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Wadim Egorov <w.egorov@phytec.de>
+Hi Heiko,
 
-The phyCORE-RK3288 RDK could enable SD3.0 card but need vdd_io_sd to
-support the voltage range from 1.8V to 3.3V.
-And we have also to add relevant UHS modes to the sdmmc node.
-Let's also turn off the vdd_io_sd regulator in suspend state.
+On 10/02/18 17:16, Heiko Stuebner wrote:
+> Hi Enric,
+> 
+> Am Mittwoch, 7. Februar 2018, 17:31:49 CET schrieb Enric Balletbo i Serra:
+>> From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> Add a node for the cdn DP controller which is embedded in the rk3399
+>> SoC.
+>>
+>> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 50 ++++++++++++++++++++++++++++++++
+> 
+> It looks like there is no binding document at all for cdn-dp? At least
+> I couldn't find one and the original series also didn't seem to include one.
+> 
+> And while I don't see anything problematic right with the used properties
+> right now, I'd think we should really have a binding and give dt-maintainers
+> a chance to complain, before adding devicetree nodes based on it.
+> 
+> I'd guess a mostly usable binding doc should already sit in the chromeos
+> tree, which you could base a v2 of this series on?
+> 
+> 
 
-Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
-Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
----
- arch/arm/boot/dts/rk3288-phycore-rdk.dts  | 4 ++++
- arch/arm/boot/dts/rk3288-phycore-som.dtsi | 5 ++---
- 2 files changed, 6 insertions(+), 3 deletions(-)
+Sure, I'll send a v2 for this series. Thanks.
 
-diff --git a/arch/arm/boot/dts/rk3288-phycore-rdk.dts b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
-index ecb26f0..985743f 100644
---- a/arch/arm/boot/dts/rk3288-phycore-rdk.dts
-+++ b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
-@@ -265,6 +265,10 @@
- 	disable-wp;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
- 	vmmc-supply = <&vdd_sd>;
- 	vqmmc-supply = <&vdd_io_sd>;
- 	status = "okay";
-diff --git a/arch/arm/boot/dts/rk3288-phycore-som.dtsi b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
-index 5eae477..f13bcb1 100644
---- a/arch/arm/boot/dts/rk3288-phycore-som.dtsi
-+++ b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
-@@ -336,11 +336,10 @@
- 				regulator-name = "vdd_io_sd";
- 				regulator-always-on;
- 				regulator-boot-on;
--				regulator-min-microvolt = <3300000>;
-+				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <3300000>;
- 				regulator-state-mem {
--					regulator-on-in-suspend;
--					regulator-suspend-microvolt = <3300000>;
-+					regulator-off-in-suspend;
- 				};
- 			};
- 		};
--- 
-2.7.4
+  Enric
+
+> Thanks
+> Heiko
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
