@@ -1,94 +1,37 @@
-From: Emil Renner Berthing <emil.renner.berthing-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/3] Documentation: bindings: add usb3-host-disable and
- usb3-host-port for Rockchip USB Type-C PHY
-Date: Tue, 13 Feb 2018 10:18:35 +0100
-Message-ID: <CANBLGcykb99SntD=C67_-iUoZZLeFfMw8jZWdF9fmFss3u24iA@mail.gmail.com>
-References: <20180208152028.9997-1-enric.balletbo@collabora.com>
- <20180208152028.9997-2-enric.balletbo@collabora.com>
- <CABGGisyaqV5HtTUL5LdjH3ZcU3_RTPmzMvEAhv5wZjCD_XCujg@mail.gmail.com>
- <CAFqH_53-iN9m=U+WdQh6_rKyxE5c9RUQO9qD1QaY0QePM_pOZA@mail.gmail.com>
- <CAL_JsqLvkPEm1mZaEfEVFEYMoGvOsbSQb8c35UvjmRTCwrCF8Q@mail.gmail.com>
- <20180212212643.GA37044@ban.mtv.corp.google.com>
- <CAL_Jsq+iqc8SB-=8mRbsvBg6XB+hjUcRrbEtUhDWiXVNZetcrA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAL_Jsq+iqc8SB-=8mRbsvBg6XB+hjUcRrbEtUhDWiXVNZetcrA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Daniel Schultz <d.schultz@phytec.de>
+Subject: [PATCH 2/3] ARM: dts: rockchip: phycore: Fix supply node for card's power
+Date: Tue, 13 Feb 2018 10:44:33 +0100
+Message-ID: <1518515074-22526-2-git-send-email-d.schultz@phytec.de>
+References: <1518515074-22526-1-git-send-email-d.schultz@phytec.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1518515074-22526-1-git-send-email-d.schultz@phytec.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12 February 2018 at 23:29, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> On Mon, Feb 12, 2018 at 3:26 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->> Hi,
->>
->> On Mon, Feb 12, 2018 at 10:43:41AM -0600, Rob Herring wrote:
->>> On Thu, Feb 8, 2018 at 3:23 PM, Enric Balletbo Serra
->>> <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->>> > 2018-02-08 18:52 GMT+01:00 Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>:
->>> >> On Thu, Feb 8, 2018 at 9:20 AM, Enric Balletbo i Serra
->>> >> <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->>> >>> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->>> >>> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->>> >>> @@ -36,6 +36,12 @@ offset, enable bit, write mask bit.
->>> >>>   - rockchip,uphy-dp-sel : the register of type-c phy enable DP function
->>> >>>     for type-c phy0, it must be <0x6268 19 19>;
->>> >>>     for type-c phy1, it must be <0x6268 3 19>;
->>> >>> + - rockchip,usb3-host-disable : the register of type-c phy disable usb3 host
->>> >>> +   for type-c phy0, it must be <0x2434 0 16>;
->>> >>> +   for type-c phy1, it must be <0x2444 0 16>;
->>> >>> + - rockchip,usb3-host-port : the register of type-c phy usb3 port number
->>> >>> +   for type-c phy0, it must be <0x2434 12 28>;
->>> >>> +   for type-c phy1, it must be <0x2444 12 28>;
->>> >>
->>> >> When does this list stop? Adding properties for various register
->>> >> fields doesn't scale. This information should be in the driver and
->>> >> based on the compatible string if necessary.
->>> >>
->>> >
->>> > I see, seams reasonable to me, is this applicable to the new ones only
->>> > or I should get rid of all the proprieties like this from the DT
->>> > (including the old ones)?
->>>
->>> We're already kind of stuck with the existing ones. So it depends if
->>> people want to phase them out or not.
->>
->> FWIW, any Chrome{device} using these sort of bindings is perfectly
->> capable of handling changed bindings (we ship DTBs with the kernel). But
->> that's not typically how mainline covers binding deprecation.
->
-> If it's CrOS only that's using these, then it's really up to you all.
-> I guess it depends if many folks are trying to run mainline on CrOS
-> devices and don't necessarily keep things in sync.
+From: Wadim Egorov <w.egorov@phytec.de>
 
-For what it's worth I run mainline on my Chromebook Plus (rk3399-gru-kevin),
-but in order to have a somewhat working setup you need to run
-4.16-rc1 + various patches from the rockchip mailing list which means
-you have to keep up with the latest mainline (both kernel and devicetree)
-anyway. So I'm all in favour of cleaning up the devicetree.
+The card is powered by the RK818 switch vdd_sd which is supplied
+by VCC9 (VDD_3V3_IO).
 
->> If we're going to start recommending not putting these offsets in the
->> DT, I'd vote for deprecating them, for consistency. (Otherwise, we'll
->> keep running into this same question.) We only documented the RK3399
->> ("rockchip,rk3399-typec-phy") binding, so all users should have the same
->> offsets. I dunno if/how we pick a time for eventually removing the
->> bindings entirely.
->
-> Yes, makes sense.
->
-> Rob
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
+Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
+---
+ arch/arm/boot/dts/rk3288-phycore-rdk.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk3288-phycore-rdk.dts b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
+index 1241cbc..ecb26f0 100644
+--- a/arch/arm/boot/dts/rk3288-phycore-rdk.dts
++++ b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
+@@ -265,7 +265,7 @@
+ 	disable-wp;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
+-	vmmc-supply = <&vdd_io_sd>;
++	vmmc-supply = <&vdd_sd>;
+ 	vqmmc-supply = <&vdd_io_sd>;
+ 	status = "okay";
+ };
+-- 
+2.7.4
