@@ -1,43 +1,41 @@
-From: Daniel Schultz <d.schultz-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] ARM: dts: rockchip: phycore: Remove 1.8 GHz operation
- point
-Date: Wed, 14 Feb 2018 16:32:44 +0100
-Message-ID: <a8de3d85-c4e6-eed6-d2e3-6d9b7318a9c2@phytec.de>
-References: <1518515074-22526-1-git-send-email-d.schultz@phytec.de>
- <7871181.EPqc8gR4GV@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <7871181.EPqc8gR4GV@diego>
-Content-Language: de-DE
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+From: Jagan Teki <jagannadh.teki@gmail.com>
+Subject: [PATCH] ARM: dts: rockchip: Add eMMC node for rk3288-vyasa
+Date: Wed, 14 Feb 2018 21:17:31 +0530
+Message-ID: <1518623251-21562-1-git-send-email-jagan@amarulasolutions.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, Michael Trimarchi <michael@amarulasolutions.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+RK3288 Vyasa has eMMC, add dts node to support it.
 
-On 02/14/2018 09:07 AM, Heiko Stübner wrote:
-> Am Dienstag, 13. Februar 2018, 10:44:32 CET schrieb Daniel Schultz:
->> Rockchip recommends to run the CPU cores only with operations points of
->> 1.6 GHz or lower.
->>
->> Removed the cpu0 node with too high operation points and use the default
->> values instead.
->>
->> Signed-off-by: Daniel Schultz <d.schultz-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-> applied all 3 for 4.17
->
-Thanks! I think I should have mentioned this earlier, but can you please add
-     ARM: dts: rockchip: phycore: Remove 1.8 GHz operation point
-to the stable tree v4.14?
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ arch/arm/boot/dts/rk3288-vyasa.dts | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index 9842a00..14c896bf 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -155,6 +155,17 @@
+ 	cpu0-supply = <&vdd_cpu>;
+ };
+ 
++&emmc {
++	bus-width = <8>;
++	cap-mmc-highspeed;
++	disable-wp;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
++	vmmc-supply = <&vcc_io>;
++	status = "okay";
++};
++
+ &gmac {
+ 	assigned-clocks = <&cru SCLK_MAC>;
+ 	assigned-clock-parents = <&ext_gmac>;
 -- 
-Mit freundlichen Grüßen,
-With best regards,
-   Daniel Schultz
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.7.4
