@@ -1,40 +1,38 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/3] Documentation: bindings: add dt documentation for cdn DP controller
-Date: Wed, 14 Feb 2018 10:13:31 +0100
-Message-ID: <2259273.IWOZNSGJqo@diego>
-References: <20180213143549.15197-1-enric.balletbo@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: add cdn-dp node for rk3399.
+Date: Wed, 14 Feb 2018 10:29:26 +0100
+Message-ID: <1603021.5cKYStphhr@diego>
+References: <20180213143549.15197-1-enric.balletbo@collabora.com> <20180213143549.15197-2-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180213143549.15197-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Brian Norris <briannorris@chromium.org>, groeck@chromium.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Chris Zhong <zyw@rock-chips.com>, kernel@collabora.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180213143549.15197-2-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 13. Februar 2018, 15:35:47 CET schrieb Enric Balletbo i Serra:
-> From: Chris Zhong <zyw@rock-chips.com>
+Am Dienstag, 13. Februar 2018, 15:35:48 CET schrieb Enric Balletbo i Serra:
+> From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
-> This patch adds a binding that describes the cdn DP controller for
-> rk3399.
+> Add a node for the cdn DP controller which is embedded in the rk3399
+> SoC.
 > 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> Acked-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> Changes since v1:
-> - Add the cdn-dp bindings as requested by Heiko
->   - The bindingis were sent already and acked by Rob but for some reason
->     never landed. So as these series are related I incorporated this
->     patch again [1].
-> 
-> [1] https://patchwork.kernel.org/patch/9278077/
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-applied for 4.17 (into drm-misc).
+applied for 4.17 after some fixups:
 
-The driver uses 3 additional resets now, which I just added to the
-reset-names.
+- the patch used whitespaces instead of tabs for indentation
+- address+size-cells are only necessary above the endpoint nodes
+  (see the hdmi node for example)
+- the interrupts property had the wrong number of elements
+  dtc should have warned about that
 
 
 Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
