@@ -1,75 +1,62 @@
-From: Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: High CPU load produced by USB (DW2)
-Date: Thu, 15 Feb 2018 14:20:35 +0100
-Message-ID: <CALw8SCVzqAPx56hEDWWtvijeXz9g3roWDyithKYZENnfNDcRvQ@mail.gmail.com>
-References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
- <410670D7E743164D87FA6160E7907A560113A67F86@am04wembxa.internal.synopsys.com>
- <CALw8SCVALfRZiF5sZKn0AcXaF6m6GSXXxKAGj2O+ndbgpeCiqw@mail.gmail.com>
- <410670D7E743164D87FA6160E7907A560113A68287@am04wembxa.internal.synopsys.com>
- <CALw8SCX2SrR=ukfz1vn_wiTbyTv7_6xyLSPRQhkTdSQ=Y8MA3g@mail.gmail.com> <410670D7E743164D87FA6160E7907A560113A6B365@am04wembxa.internal.synopsys.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <410670D7E743164D87FA6160E7907A560113A6B365-ouFQeoKRuQ8bQ7k9MBbv4fufCSb+aD3WLzEdoUbNIic@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: Fix RK3328 UART DMAs
+Date: Thu, 15 Feb 2018 13:46:50 +0000
+Message-ID: <564d3e93476ae7480f927b1137ec4d0301938f16.1518702332.git.robin.murphy@arm.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 14 February 2018 at 13:07, Minas Harutyunyan
-<Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
-> On 2/14/2018 12:57 PM, Mirza Krak wrote:
->> On 8 February 2018 at 14:53, Minas Harutyunyan
->> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+Using a serial console on RK3328 provokes an error from
+of_dma_request_slave_channel() since the UART nodes have a "dmas"
+property but are missing the mandatory "dma-names" to go with it.
 
-< snip >
+Replace the bogus "#dma-cells" - these UARTs are DMA channel consumers,
+not providers - with the appropriate names instead. DMA still doesn't
+actually work, since the PL330 driver doesn't quite implement everything
+the 8250 driver demands, but at least it makes the DT correct.
 
->
-> I reviewed your interrupt count log again. About 140,000 interrupts in 2
-> seconds, obviously it's not SOF only interrupts. More probably, its NAK
-> respond interrupts to SSPLIT/CSPLIT transactions. For this case I can
-> recommend you to apply patch from Douglas Anderson: "[PATCH v2] usb:
-> dwc2: host: Don't retry NAKed transactions right away" which already
-> merged to 4.16-rc1.
->
-> In your setups you see different behavior on different HUBs. Your HUBs
-> have different "TT think time": 8 and 32. In USB2.0 spec "TT think time"
-> described as follow "TT requires at most 8/32 FS bit times of inter
-> transaction gap on a full-/low-speed downstream bus". So, your "worst"
-> HUB with "TT think time"=3D8 sending more frequently SSPLIT/CSPLIT
-> transactions which replied by NAK. As result you see about 4 time more
-> interrupts comparing to "good" HUB. Could you please check interrupts
-> count for "good" HUB and check "4 time" hypothesis.
+Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Did some further testing. The "good" HUB is actually as bad as the
-"bad" HUB, and it was my setup that caused the different behavior. Did
-not use the same devices etc.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index a037ee56fead..822488bdf364 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -318,7 +318,7 @@
+ 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		dmas = <&dmac 2>, <&dmac 3>;
+-		#dma-cells = <2>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+ 		reg-io-width = <4>;
+@@ -333,7 +333,7 @@
+ 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+ 		clock-names = "sclk_uart", "pclk_uart";
+ 		dmas = <&dmac 4>, <&dmac 5>;
+-		#dma-cells = <2>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart1_xfer &uart1_cts &uart1_rts>;
+ 		reg-io-width = <4>;
+@@ -348,7 +348,7 @@
+ 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		dmas = <&dmac 6>, <&dmac 7>;
+-		#dma-cells = <2>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart2m1_xfer>;
+ 		reg-io-width = <4>;
+-- 
+2.16.1.dirty
 
-Once I made sure that the configuration and setup was the same on both
-board I could see that the behaved similarly. And that is the
-following interrupt load:
-
-- BT USB (FS) =3D ~80k interrupts / second
-- Keyboard (FS) =3D ~80k interrupts / second
-- WiFI USB (HS) =3D ~8k interrupts / second
-
-After applying the suggested patch [1], it is steady around 8k
-interrupts / second no matter what device I connect (HS/FS,
-HUB/NO-HUB). Which is acceptable and usable.
-
-Should this patch be a candidate for stable? Because in the current
-state, this combination DWC2 + HS HUB + FS device, is not "usable".
-
-[1]. https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/com=
-mit/drivers/usb/dwc2?h=3Dv4.16-rc1&id=3D38d2b5fb75c15923fb89c32134516a62351=
-5bce4
-
---=20
-Med V=C3=A4nliga H=C3=A4lsningar / Best Regards
-
-Mirza Krak
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
