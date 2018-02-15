@@ -1,40 +1,75 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] ARM: dts: rockchip: phycore: Remove 1.8 GHz operation point
-Date: Thu, 15 Feb 2018 10:29:52 +0100
-Message-ID: <2724471.chboOZt3hh@diego>
-References: <1518515074-22526-1-git-send-email-d.schultz@phytec.de> <7871181.EPqc8gR4GV@diego> <a8de3d85-c4e6-eed6-d2e3-6d9b7318a9c2@phytec.de>
+From: Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: High CPU load produced by USB (DW2)
+Date: Thu, 15 Feb 2018 14:20:35 +0100
+Message-ID: <CALw8SCVzqAPx56hEDWWtvijeXz9g3roWDyithKYZENnfNDcRvQ@mail.gmail.com>
+References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A67F86@am04wembxa.internal.synopsys.com>
+ <CALw8SCVALfRZiF5sZKn0AcXaF6m6GSXXxKAGj2O+ndbgpeCiqw@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A68287@am04wembxa.internal.synopsys.com>
+ <CALw8SCX2SrR=ukfz1vn_wiTbyTv7_6xyLSPRQhkTdSQ=Y8MA3g@mail.gmail.com> <410670D7E743164D87FA6160E7907A560113A6B365@am04wembxa.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a8de3d85-c4e6-eed6-d2e3-6d9b7318a9c2@phytec.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Schultz <d.schultz@phytec.de>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Wadim Egorov <w.egorov@phytec.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <410670D7E743164D87FA6160E7907A560113A6B365-ouFQeoKRuQ8bQ7k9MBbv4fufCSb+aD3WLzEdoUbNIic@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Daniel,
+On 14 February 2018 at 13:07, Minas Harutyunyan
+<Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+> On 2/14/2018 12:57 PM, Mirza Krak wrote:
+>> On 8 February 2018 at 14:53, Minas Harutyunyan
+>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
 
-Am Mittwoch, 14. Februar 2018, 16:32:44 CET schrieb Daniel Schultz:
-> On 02/14/2018 09:07 AM, Heiko Stübner wrote:
-> > Am Dienstag, 13. Februar 2018, 10:44:32 CET schrieb Daniel Schultz:
-> >> Rockchip recommends to run the CPU cores only with operations points of
-> >> 1.6 GHz or lower.
-> >> 
-> >> Removed the cpu0 node with too high operation points and use the default
-> >> values instead.
-> >> 
-> >> Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
-> > 
-> > applied all 3 for 4.17
-> 
-> Thanks! I think I should have mentioned this earlier, but can you please add
-> ARM: dts: rockchip: phycore: Remove 1.8 GHz operation point
-> to the stable tree v4.14?
+< snip >
 
-I've moved that patch to the fixes branch and added the necessary
-Fixes and cc-stable tags, so it should eventually reach stable kernels
-as well.
+>
+> I reviewed your interrupt count log again. About 140,000 interrupts in 2
+> seconds, obviously it's not SOF only interrupts. More probably, its NAK
+> respond interrupts to SSPLIT/CSPLIT transactions. For this case I can
+> recommend you to apply patch from Douglas Anderson: "[PATCH v2] usb:
+> dwc2: host: Don't retry NAKed transactions right away" which already
+> merged to 4.16-rc1.
+>
+> In your setups you see different behavior on different HUBs. Your HUBs
+> have different "TT think time": 8 and 32. In USB2.0 spec "TT think time"
+> described as follow "TT requires at most 8/32 FS bit times of inter
+> transaction gap on a full-/low-speed downstream bus". So, your "worst"
+> HUB with "TT think time"=3D8 sending more frequently SSPLIT/CSPLIT
+> transactions which replied by NAK. As result you see about 4 time more
+> interrupts comparing to "good" HUB. Could you please check interrupts
+> count for "good" HUB and check "4 time" hypothesis.
 
+Did some further testing. The "good" HUB is actually as bad as the
+"bad" HUB, and it was my setup that caused the different behavior. Did
+not use the same devices etc.
 
-Heiko
+Once I made sure that the configuration and setup was the same on both
+board I could see that the behaved similarly. And that is the
+following interrupt load:
+
+- BT USB (FS) =3D ~80k interrupts / second
+- Keyboard (FS) =3D ~80k interrupts / second
+- WiFI USB (HS) =3D ~8k interrupts / second
+
+After applying the suggested patch [1], it is steady around 8k
+interrupts / second no matter what device I connect (HS/FS,
+HUB/NO-HUB). Which is acceptable and usable.
+
+Should this patch be a candidate for stable? Because in the current
+state, this combination DWC2 + HS HUB + FS device, is not "usable".
+
+[1]. https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/com=
+mit/drivers/usb/dwc2?h=3Dv4.16-rc1&id=3D38d2b5fb75c15923fb89c32134516a62351=
+5bce4
+
+--=20
+Med V=C3=A4nliga H=C3=A4lsningar / Best Regards
+
+Mirza Krak
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
