@@ -1,78 +1,54 @@
-From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: High CPU load produced by USB (DW2)
-Date: Fri, 16 Feb 2018 21:07:18 +0100
-Message-ID: <ec690b89-2c90-7f1d-86cd-582cef96baf3@gmail.com>
-References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
- <410670D7E743164D87FA6160E7907A560113A67F86@am04wembxa.internal.synopsys.com>
- <CALw8SCVALfRZiF5sZKn0AcXaF6m6GSXXxKAGj2O+ndbgpeCiqw@mail.gmail.com>
- <410670D7E743164D87FA6160E7907A560113A68287@am04wembxa.internal.synopsys.com>
- <CALw8SCX2SrR=ukfz1vn_wiTbyTv7_6xyLSPRQhkTdSQ=Y8MA3g@mail.gmail.com>
- <410670D7E743164D87FA6160E7907A560113A6B365@am04wembxa.internal.synopsys.com>
- <CALw8SCVzqAPx56hEDWWtvijeXz9g3roWDyithKYZENnfNDcRvQ@mail.gmail.com>
- <410670D7E743164D87FA6160E7907A560113A6C4CA@am04wembxa.internal.synopsys.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <410670D7E743164D87FA6160E7907A560113A6C4CA-ouFQeoKRuQ8bQ7k9MBbv4fufCSb+aD3WLzEdoUbNIic@public.gmane.org>
-Content-Language: en-US
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2 4/8] drm/rockchip: dw_hdmi: Allow outputs that don't need output switching
+Date: Fri, 16 Feb 2018 21:41:54 +0100
+Message-ID: <20180216204158.29839-5-heiko@sntech.de>
+References: <20180216204158.29839-1-heiko@sntech.de>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20180216204158.29839-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jose.Abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, algea.cao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 02/16/2018 06:59 AM, Minas Harutyunyan wrote:
-> On 2/15/2018 5:20 PM, Mirza Krak wrote:
->> On 14 February 2018 at 13:07, Minas Harutyunyan
->> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
->>> On 2/14/2018 12:57 PM, Mirza Krak wrote:
->>>> On 8 February 2018 at 14:53, Minas Harutyunyan
->>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
->>
->> < snip >
->>
->>>
->>> I reviewed your interrupt count log again. About 140,000 interrupts in 2
->>> seconds, obviously it's not SOF only interrupts. More probably, its NAK
->>> respond interrupts to SSPLIT/CSPLIT transactions. For this case I can
->>> recommend you to apply patch from Douglas Anderson: "[PATCH v2] usb:
->>> dwc2: host: Don't retry NAKed transactions right away" which already
->>> merged to 4.16-rc1.
->>>
->>> In your setups you see different behavior on different HUBs. Your HUBs
->>> have different "TT think time": 8 and 32. In USB2.0 spec "TT think time"
->>> described as follow "TT requires at most 8/32 FS bit times of inter
->>> transaction gap on a full-/low-speed downstream bus". So, your "worst"
->>> HUB with "TT think time"=8 sending more frequently SSPLIT/CSPLIT
->>> transactions which replied by NAK. As result you see about 4 time more
->>> interrupts comparing to "good" HUB. Could you please check interrupts
->>> count for "good" HUB and check "4 time" hypothesis.
->>
->> Did some further testing. The "good" HUB is actually as bad as the
->> "bad" HUB, and it was my setup that caused the different behavior. Did
->> not use the same devices etc.
->>
->> Once I made sure that the configuration and setup was the same on both
->> board I could see that the behaved similarly. And that is the
->> following interrupt load:
->>
->> - BT USB (FS) = ~80k interrupts / second
->> - Keyboard (FS) = ~80k interrupts / second
->> - WiFI USB (HS) = ~8k interrupts / second
->>
->> After applying the suggested patch [1], it is steady around 8k
->> interrupts / second no matter what device I connect (HS/FS,
->> HUB/NO-HUB). Which is acceptable and usable.
-> 
-> Great!
+So far we always encountered socs with 2 output crtcs needing the driver
+to tell the hdmi block which output to connect to. But there also exist
+socs with only one crtc like the rk3228, rk3328 and rk3368.
 
-So 8k IRQs per second is what I should expect from this HW with HS
-device attached, that's normal and cannot be reduced ?
+So adapt the register field to simply carry a negative value to signal
+that now output-switching is necessary.
 
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 3574b0ae2ad1..6dc03f1a5709 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -36,7 +36,7 @@
+  * @lcdsel_lit: reg value of selecting vop little for HDMI
+  */
+ struct rockchip_hdmi_chip_data {
+-	u32	lcdsel_grf_reg;
++	int	lcdsel_grf_reg;
+ 	u32	lcdsel_big;
+ 	u32	lcdsel_lit;
+ };
+@@ -253,6 +253,9 @@ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
+ 	u32 val;
+ 	int ret;
+ 
++	if (hdmi->chip_data->lcdsel_grf_reg < 0)
++		return;
++
+ 	ret = drm_of_encoder_active_endpoint_id(hdmi->dev->of_node, encoder);
+ 	if (ret)
+ 		val = hdmi->chip_data->lcdsel_lit;
 -- 
-Best regards,
-Marek Vasut
+2.15.1
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
