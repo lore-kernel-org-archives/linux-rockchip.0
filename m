@@ -1,75 +1,252 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH v3 0/2] phy: rockchip-emmc: fixes emmc-phy power on failed
- with rk3399 SoCs
-Date: Fri, 16 Feb 2018 17:33:48 +0530
-Message-ID: <56548710-6b9a-85bc-85de-221ae748d83c@ti.com>
-References: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1515638427-15117-1-git-send-email-wxt@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 1/6] phy: rockchip-typec: deprecate some DT properties for various register fields.
+Date: Fri, 16 Feb 2018 13:09:51 +0100
+Message-ID: <20180216120956.19034-1-enric.balletbo@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Adding properties for various register fields in the DT doesn't scale and
+this information should be in the driver instead.
 
+Before this patch these registers (description below) were specified in
+the DT, every register node contained 3 sections: offset, enable bit,
+write mask bit.
 
-On Thursday 11 January 2018 08:10 AM, Caesar Wang wrote:
-> Hi Kishon,
-> 
-> Since the Shawn isn't available, I take over this series patches for now.
-> 
-> As the original bug had tracked on https://issuetracker.google.com/71561742.
-> In some cases, the mmc phy power on failed during booting up.
-> The log as below:
-> ...
-> [   2.375333] rockchip_emmc_phy_power: caldone timeout.
-> [    2.377815] phy phy-ff770000.syscon:phy@f780.4: phy poweron failed --> -110
-> ...
-> [    2.489295] mmc0: mmc_select_hs400es failed, error -110
-> [    2.489302] mmc0: error -110 whilst initialising MMC card
-> ..
-> 
-> The actual emulate, the wait 5us for calpad busy trimming, that's no enough.
-> We need give the enough margin for it.
-> 
-> Verified on url =
->         https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
-> This series patches can apply and bring up with kernel-next on rk3399 chromebook.
+ - rockchip,typec-conn-dir : the register of type-c connector direction,
+   for type-c phy0, it must be <0xe580 0 16>;
+   for type-c phy1, it must be <0xe58c 0 16>;
+ - rockchip,usb3tousb2-en : the register of type-c force usb3 to usb2 enable
+   control.
+   for type-c phy0, it must be <0xe580 3 19>;
+   for type-c phy1, it must be <0xe58c 3 19>;
+ - rockchip,external-psm : the register of type-c phy external psm clock
+   selection.
+   for type-c phy0, it must be <0xe588 14 30>;
+   for type-c phy1, it must be <0xe594 14 30>;
+ - rockchip,pipe-status : the register of type-c phy pipe status.
+   for type-c phy0, it must be <0xe5c0 0 0>;
+   for type-c phy1, it must be <0xe5c0 16 16>;
 
-merged now, thanks!
+After this patch these register definitions are in the driver. So can be
+removed from the DT. Note that there are 2 type-c phys for RK3399 with
+different offsets, the driver checks the phy base address of the running
+instance and applies the right offsets.
 
--Kishon
-> 
-> -Caesar
-> 
-> 
-> Changes in v3:
-> - As Doug commented on both upstream and gerrit.
->   Change "5, 50" to "0, 50", and the message of print.
-> - As Doug commented on https://patchwork.kernel.org/patch/10154797,
->   Change "1, 50" to "0, 50".
-> 
-> Changes in v2:
-> - print the return valut with regmap_read_poll_timeout failing.
-> - As Brian commented on https://patchwork.kernel.org/patch/10139891/,
->   changed the note and added to print error value with
->   regmap_read_poll_timeout API.
-> 
-> Shawn Lin (2):
->   phy: rockchip-emmc: retry calpad busy trimming
->   phy: rockchip-emmc: use regmap_read_poll_timeout to poll dllrdy
-> 
->  drivers/phy/rockchip/phy-rockchip-emmc.c | 60 +++++++++++++++-----------------
->  1 file changed, 28 insertions(+), 32 deletions(-)
-> 
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+Changes since v2:
+- Suggested by Heiko Stuebner:
+  - Prefix phy config struct with rk3399_ as is rk3399-specific.
+  - Create a new struct similar to things like the inno-usb2-phy
+  - Select phy config according to the compatible and remove the
+    specific constants.
+Changes since v1:
+- This patch is new in this series to accomplish the purpose of get rid
+  of some registers from the DT. Suggested by Rob Herring.
+
+ drivers/phy/rockchip/phy-rockchip-typec.c | 112 +++++++++++++++++-------------
+ 1 file changed, 63 insertions(+), 49 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index 7492c8978217..5f660f6b9f95 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -355,7 +355,16 @@ struct usb3phy_reg {
+ 	u32 write_enable;
+ };
+ 
++/**
++ * struct rockchip_usb3phy_port_cfg: usb3-phy port configuration.
++ * @reg: the base address for usb3-phy config.
++ * @typec_conn_dir: the register of type-c connector direction.
++ * @usb3tousb2_en: the register of type-c force usb2 to usb2 enable.
++ * @external_psm: the register of type-c phy external psm clock.
++ * @pipe_status: the register of type-c phy pipe status.
++ */
+ struct rockchip_usb3phy_port_cfg {
++	unsigned int reg;
+ 	struct usb3phy_reg typec_conn_dir;
+ 	struct usb3phy_reg usb3tousb2_en;
+ 	struct usb3phy_reg external_psm;
+@@ -372,7 +381,7 @@ struct rockchip_typec_phy {
+ 	struct reset_control *uphy_rst;
+ 	struct reset_control *pipe_rst;
+ 	struct reset_control *tcphy_rst;
+-	struct rockchip_usb3phy_port_cfg port_cfgs;
++	const struct rockchip_usb3phy_port_cfg *port_cfgs;
+ 	/* mutex to protect access to individual PHYs */
+ 	struct mutex lock;
+ 
+@@ -424,6 +433,24 @@ struct phy_reg dp_pll_cfg[] = {
+ 	{ 0x4,		CMN_DIAG_PLL1_INCLK_CTRL },
+ };
+ 
++static const struct rockchip_usb3phy_port_cfg rk3399_usb3phy_port_cfgs[] = {
++	{
++		.reg = 0xff7c0000,
++		.typec_conn_dir	= { 0xe580, 0, 16 },
++		.usb3tousb2_en	= { 0xe580, 3, 19 },
++		.external_psm	= { 0xe588, 14, 30 },
++		.pipe_status	= { 0xe5c0, 0, 0 },
++	},
++	{
++		.reg = 0xff800000,
++		.typec_conn_dir	= { 0xe58c, 0, 16 },
++		.usb3tousb2_en	= { 0xe58c, 3, 19 },
++		.external_psm	= { 0xe594, 14, 30 },
++		.pipe_status	= { 0xe5c0, 16, 16 },
++	},
++	{ /* sentinel */ }
++};
++
+ static void tcphy_cfg_24m(struct rockchip_typec_phy *tcphy)
+ {
+ 	u32 i, rdata;
+@@ -691,7 +718,7 @@ static void tcphy_dp_aux_calibration(struct rockchip_typec_phy *tcphy)
+ 
+ static int tcphy_phy_init(struct rockchip_typec_phy *tcphy, u8 mode)
+ {
+-	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
++	const struct rockchip_usb3phy_port_cfg *cfg = tcphy->port_cfgs;
+ 	int ret, i;
+ 	u32 val;
+ 
+@@ -821,7 +848,7 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
+ static int rockchip_usb3_phy_power_on(struct phy *phy)
+ {
+ 	struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
+-	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
++	const struct rockchip_usb3phy_port_cfg *cfg = tcphy->port_cfgs;
+ 	const struct usb3phy_reg *reg = &cfg->pipe_status;
+ 	int timeout, new_mode, ret = 0;
+ 	u32 val;
+@@ -984,51 +1011,9 @@ static const struct phy_ops rockchip_dp_phy_ops = {
+ 	.owner		= THIS_MODULE,
+ };
+ 
+-static int tcphy_get_param(struct device *dev,
+-			   struct usb3phy_reg *reg,
+-			   const char *name)
+-{
+-	u32 buffer[3];
+-	int ret;
+-
+-	ret = of_property_read_u32_array(dev->of_node, name, buffer, 3);
+-	if (ret) {
+-		dev_err(dev, "Can not parse %s\n", name);
+-		return ret;
+-	}
+-
+-	reg->offset = buffer[0];
+-	reg->enable_bit = buffer[1];
+-	reg->write_enable = buffer[2];
+-	return 0;
+-}
+-
+ static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
+ 			  struct device *dev)
+ {
+-	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
+-	int ret;
+-
+-	ret = tcphy_get_param(dev, &cfg->typec_conn_dir,
+-			      "rockchip,typec-conn-dir");
+-	if (ret)
+-		return ret;
+-
+-	ret = tcphy_get_param(dev, &cfg->usb3tousb2_en,
+-			      "rockchip,usb3tousb2-en");
+-	if (ret)
+-		return ret;
+-
+-	ret = tcphy_get_param(dev, &cfg->external_psm,
+-			      "rockchip,external-psm");
+-	if (ret)
+-		return ret;
+-
+-	ret = tcphy_get_param(dev, &cfg->pipe_status,
+-			      "rockchip,pipe-status");
+-	if (ret)
+-		return ret;
+-
+ 	tcphy->grf_regs = syscon_regmap_lookup_by_phandle(dev->of_node,
+ 							  "rockchip,grf");
+ 	if (IS_ERR(tcphy->grf_regs)) {
+@@ -1071,7 +1056,7 @@ static int tcphy_parse_dt(struct rockchip_typec_phy *tcphy,
+ 
+ static void typec_phy_pre_init(struct rockchip_typec_phy *tcphy)
+ {
+-	struct rockchip_usb3phy_port_cfg *cfg = &tcphy->port_cfgs;
++	const struct rockchip_usb3phy_port_cfg *cfg = tcphy->port_cfgs;
+ 
+ 	reset_control_assert(tcphy->tcphy_rst);
+ 	reset_control_assert(tcphy->uphy_rst);
+@@ -1092,17 +1077,43 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+ 	struct rockchip_typec_phy *tcphy;
+ 	struct phy_provider *phy_provider;
+ 	struct resource *res;
+-	int ret;
++	const struct rockchip_usb3phy_port_cfg *phy_cfgs;
++	const struct of_device_id *match;
++	int index, ret;
+ 
+ 	tcphy = devm_kzalloc(dev, sizeof(*tcphy), GFP_KERNEL);
+ 	if (!tcphy)
+ 		return -ENOMEM;
+ 
++	match = of_match_device(dev->driver->of_match_table, dev);
++	if (!match || !match->data) {
++		dev_err(dev, "phy configs are not assigned!\n");
++		return -EINVAL;
++	}
++
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	tcphy->base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(tcphy->base))
+ 		return PTR_ERR(tcphy->base);
+ 
++	phy_cfgs = match->data;
++	/* find out a proper config which can be matched with dt. */
++	index = 0;
++	while (phy_cfgs[index].reg) {
++		if (phy_cfgs[index].reg == res->start) {
++			tcphy->port_cfgs = &phy_cfgs[index];
++			break;
++		}
++
++		++index;
++	}
++
++	if (!tcphy->port_cfgs) {
++		dev_err(dev, "no phy-config can be matched with %s node\n",
++			np->name);
++		return -EINVAL;
++	}
++
+ 	ret = tcphy_parse_dt(tcphy, dev);
+ 	if (ret)
+ 		return ret;
+@@ -1162,8 +1173,11 @@ static int rockchip_typec_phy_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id rockchip_typec_phy_dt_ids[] = {
+-	{ .compatible = "rockchip,rk3399-typec-phy" },
+-	{}
++	{
++		.compatible = "rockchip,rk3399-typec-phy",
++		.data = &rk3399_usb3phy_port_cfgs
++	},
++	{ /* sentinel */ }
+ };
+ 
+ MODULE_DEVICE_TABLE(of, rockchip_typec_phy_dt_ids);
+-- 
+2.15.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
