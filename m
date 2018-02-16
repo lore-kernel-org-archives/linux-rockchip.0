@@ -1,19 +1,19 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix DWMMC clocks
-Date: Fri, 16 Feb 2018 10:31:18 +0100
-Message-ID: <4734191.1zOSGruJ4r@diego>
-References: <74be71477b800f8a7b93a9e92ffeff9bf38c52ce.1518703554.git.robin.murphy@arm.com>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Fix DWMMC clocks
+Date: Fri, 16 Feb 2018 11:02:19 +0100
+Message-ID: <2207128.qcrQYv86Pa@diego>
+References: <74be71477b800f8a7b93a9e92ffeff9bf38c52ce.1518703554.git.robin.murphy@arm.com> <cccc5187b9925bb7f025326220f75f9919d562c2.1518703554.git.robin.murphy@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <74be71477b800f8a7b93a9e92ffeff9bf38c52ce.1518703554.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <cccc5187b9925bb7f025326220f75f9919d562c2.1518703554.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 15. Februar 2018, 15:05:53 CET schrieb Robin Murphy:
+Am Donnerstag, 15. Februar 2018, 15:05:54 CET schrieb Robin Murphy:
 > Trying to boot an RK3328 box with an HS200-capable eMMC, I see said eMMC
 > fail to initialise as it can't run its tuning procedure, because the
 > sample clock is missing. Upon closer inspection, whilst the clock is
@@ -21,7 +21,7 @@ Am Donnerstag, 15. Februar 2018, 15:05:53 CET schrieb Robin Murphy:
 > __of_clk_get_by_name() never finds it. By inspection, the drive clock
 > suffers from a similar problem, so has never worked properly either.
 > 
-> Fix up all instances of the incorrect clock names across the 64-bit DTs.
+> This error has propagated across the 32-bit DTs too, so fix those up.
 > 
 > Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 
