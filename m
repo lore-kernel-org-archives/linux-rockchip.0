@@ -1,72 +1,48 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH 0/4] Move DP phy switch to PHY driver
-Date: Fri, 16 Feb 2018 19:29:15 +0530
-Message-ID: <5d20a7bf-f96a-f030-1350-aea2c5cd8153@ti.com>
-References: <1486712654-15431-1-git-send-email-zyw@rock-chips.com>
- <a9eac594-33d5-6171-51ca-66204008fc1f@ti.com> <1752563.I66u68YxnT@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1752563.I66u68YxnT@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, groeck@chromium.org, Chris Zhong <zyw@rock-chips.com>, robh@kernel.org, Brian Norris <briannorris@chromium.org>, linux-rockchip@lists.infradead.org, Jianqun Xu <jay.xu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, seanpaul@chromium.org, William wu <wulf@rock-chips.com>, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, Douglas Anderson <dianders@chromium.org>, Tomasz Figa <tfiga@chromium.org>, David Wu <david.wu@rock-chips.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [RESEND PATCH v5 5/5] ARM: dts: rockchip: set PWM delay backlight settings for Minnie
+Date: Fri, 16 Feb 2018 18:40:34 +0100
+Message-ID: <20180216174034.15936-5-enric.balletbo@collabora.com>
+References: <20180216174034.15936-1-enric.balletbo@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180216174034.15936-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
+The minnie devices comes with an AUO B101EAN01 panel which is different
+from default veyron devices, thus the power on/off timing sequence is
+slightly different. The datasheet specifies a pwm delay of 200 ms, so
+update the PMW delay proprieties accordingly.
 
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Acked-by: Pavel Machek <pavel@ucw.cz>
+---
+Changes since v4:
+ - Rebase on top of mainline.
+Changes since v3:
+ - Use new -ms names for proprieties.
+ - Fix the delay, should be 200ms instead of 20ms (Pavel)
+Changes since v2:
+ - Use new names for proprieties.
+Changes since v1:
+ - Add this new patch as minnie has differents timings
 
-On Friday 16 February 2018 06:35 PM, Heiko St=FCbner wrote:
-> Hi Kishon,
-> =
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> Am Freitag, 16. Februar 2018, 12:04:42 CET schrieb Kishon Vijay Abraham I:
->> On Friday 10 February 2017 01:14 PM, Chris Zhong wrote:
->>> There are 2 Type-c PHYs in RK3399, but only one DP controller. Hence
->>> only one PHY can connect to DP controller at one time, the other should
->>> be disconnected. The GRF_SOC_CON26 register has a switch bit to do it,
->>> set this bit means enable PHY 1, clear this bit means enable PHY 0.
->>>
->>> If the board has 2 Type-C ports, the DP driver get the phy id from
->>> devm_of_phy_get_by_index, and then control this switch according to
->>> this id. But some others board only has one Type-C port, it may be PHY 0
->>> or PHY 1. The dts node id can not tell us the correct PHY id. Hence move
->>> this switch to PHY driver, the PHY driver can distinguish between PHY 0
->>> and PHY 1, and then write the correct register bit.
->>
->> Changed subject of "Documentation: bindings: add uphy-dp-sel for Rockchip
->> USB Type-C PHY" as suggested by Rob, rebased "phy: rockchip-typec: suppo=
-rt
->> DP phy switch" to the latest kernel and merged.
-> =
-
-> I'm not sure how far along you are with your merging, but you might want =
-to =
-
-> revert this one.
-> =
-
-> In your inbox you should find more recent threads about the type-c phy
-> where Rob strongly suggested moving the whole grf registers out of the
-> dt and into the driver.
-> =
-
-> Enric Balletbo did just that and posted a series (including the dp-move)
-> yesterday (refined in a v2 from today).
-> =
-
-> Alternatively Enric could rebase his series on top of that recent change.
-
-I can drop this series and take Enric's series. All of them are still in my
-local system.
-
-Thanks
-Kishon
+diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+index 544de6027aaa..4c5307e62001 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+@@ -123,6 +123,8 @@
+ 			240 241 242 243 244 245 246 247
+ 			248 249 250 251 252 253 254 255>;
+ 	power-supply = <&backlight_regulator>;
++	post-pwm-on-delay-ms = <200>;
++	pwm-off-delay-ms = <200>;
+ };
+ 
+ &emmc {
+-- 
+2.15.1
