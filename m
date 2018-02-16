@@ -1,98 +1,85 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v3 5/6] phy: rockchip-typec: support DP phy switch
-Date: Fri, 16 Feb 2018 13:09:55 +0100
-Message-ID: <20180216120956.19034-5-enric.balletbo@collabora.com>
-References: <20180216120956.19034-1-enric.balletbo@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180216120956.19034-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, Chris Zhong <zyw@rock-chips.com>, William wu <wulf@rock-chips.com>, hl@rock-chips.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v3 33/43] drm/panel: simple: Change mode for Sharp
+ lq123p1jx31
+Date: Fri, 16 Feb 2018 13:34:49 +0100
+Message-ID: <CAFqH_50OxDDfXjGPyNgtyu-qFn3zGqrLYprLtPJyHDYRDEczGQ@mail.gmail.com>
+References: <20180130202913.28724-1-thierry.escande@collabora.com>
+ <20180130202913.28724-34-thierry.escande@collabora.com>
+ <1517403243.14302.1.camel@pengutronix.de>
+ <CAOw6vbKsG=B7vV5_NcwgeAc-=guRN1Xh-dCxKytkDeOjayatLw@mail.gmail.com>
+ <CAD=FV=UB+ovYFSi2aB_qe3igX3K7BxMWaEEoNPx1UMdscKwQtQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAD=FV=UB+ovYFSi2aB_qe3igX3K7BxMWaEEoNPx1UMdscKwQtQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Haixia Shi <hshi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Chris Zhong <zyw@rock-chips.com>
-
-There are 2 Type-c PHYs in RK3399, but only one DP controller. Hence
-only one PHY can connect to DP controller at one time, the other should
-be disconnected. The GRF_SOC_CON26 register has a switch bit to do it,
-set this bit means enable PHY 1, clear this bit means enable PHY 0.
-
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-Changes since v2:
-- None.
-Changes since v1:
-- This patch is new on these series but as a consequence of the work
-  done need to be reworked. The patch was send some time ago [1] but
-  got stuck, so it's also and attempt to revive it.
-
-[1] https://lkml.org/lkml/2017/2/10/74
-
- drivers/phy/rockchip/phy-rockchip-typec.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index 9bc4d4bd46d3..1c79785a5439 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -364,6 +364,7 @@ struct usb3phy_reg {
-  * @pipe_status: the register of type-c phy pipe status.
-  * @usb3_host_disable: the register of type-c usb3 host disable.
-  * @usb3_host_port: the register of type-c usb3 host port.
-+ * @uphy_dp_sel: the register of type-c phy DP select control.
-  */
- struct rockchip_usb3phy_port_cfg {
- 	unsigned int reg;
-@@ -373,6 +374,7 @@ struct rockchip_usb3phy_port_cfg {
- 	struct usb3phy_reg pipe_status;
- 	struct usb3phy_reg usb3_host_disable;
- 	struct usb3phy_reg usb3_host_port;
-+	struct usb3phy_reg uphy_dp_sel;
- };
- 
- struct rockchip_typec_phy {
-@@ -446,6 +448,7 @@ static const struct rockchip_usb3phy_port_cfg rk3399_usb3phy_port_cfgs[] = {
- 		.pipe_status	= { 0xe5c0, 0, 0 },
- 		.usb3_host_disable = { 0x2434, 0, 16 },
- 		.usb3_host_port = { 0x2434, 12, 28 },
-+		.uphy_dp_sel	= { 0x6268, 19, 19 },
- 	},
- 	{
- 		.reg = 0xff800000,
-@@ -455,6 +458,7 @@ static const struct rockchip_usb3phy_port_cfg rk3399_usb3phy_port_cfgs[] = {
- 		.pipe_status	= { 0xe5c0, 16, 16 },
- 		.usb3_host_disable = { 0x2444, 0, 16 },
- 		.usb3_host_port = { 0x2444, 12, 28 },
-+		.uphy_dp_sel	= { 0x6268, 3, 19 },
- 	},
- 	{ /* sentinel */ }
- };
-@@ -856,7 +860,7 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
- static int tcphy_cfg_usb3_to_usb2_only(struct rockchip_typec_phy *tcphy,
- 				       bool value)
- {
--	struct rockchip_usb3phy_port_cfg *cfg = tcphy->port_cfgs;
-+	const struct rockchip_usb3phy_port_cfg *cfg = tcphy->port_cfgs;
- 
- 	property_enable(tcphy, &cfg->usb3tousb2_en, value);
- 	property_enable(tcphy, &cfg->usb3_host_disable, value);
-@@ -947,6 +951,7 @@ static const struct phy_ops rockchip_usb3_phy_ops = {
- static int rockchip_dp_phy_power_on(struct phy *phy)
- {
- 	struct rockchip_typec_phy *tcphy = phy_get_drvdata(phy);
-+	const struct rockchip_usb3phy_port_cfg *cfg = tcphy->port_cfgs;
- 	int new_mode, ret = 0;
- 	u32 val;
- 
-@@ -979,6 +984,8 @@ static int rockchip_dp_phy_power_on(struct phy *phy)
- 	if (ret)
- 		goto unlock_ret;
- 
-+	property_enable(tcphy, &cfg->uphy_dp_sel, 1);
-+
- 	ret = readx_poll_timeout(readl, tcphy->base + DP_MODE_CTL,
- 				 val, val & DP_MODE_A2, 1000,
- 				 PHY_MODE_SET_TIMEOUT);
--- 
-2.15.1
+SGksCgoyMDE4LTAxLTMxIDE3OjUyIEdNVCswMTowMCBEb3VnIEFuZGVyc29uIDxkaWFuZGVyc0Bj
+aHJvbWl1bS5vcmc+Ogo+IEhpLAo+Cj4KPiBPbiBXZWQsIEphbiAzMSwgMjAxOCBhdCA3OjE2IEFN
+LCBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4gd3JvdGU6Cj4+IE9uIFdlZCwgSmFu
+IDMxLCAyMDE4IGF0IDc6NTQgQU0sIEx1Y2FzIFN0YWNoIDxsLnN0YWNoQHBlbmd1dHJvbml4LmRl
+PiB3cm90ZToKPj4+IEFtIERpZW5zdGFnLCBkZW4gMzAuMDEuMjAxOCwgMjE6MjkgKzAxMDAgc2No
+cmllYiBUaGllcnJ5IEVzY2FuZGU6Cj4+Pj4gRnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJv
+bWl1bS5vcmc+Cj4+Pj4KPj4+PiBDaGFuZ2UgdGhlIG1vZGUgZm9yIFNoYXJwIGxxMTIzcDFqeDMx
+IHBhbmVsIHRvIHNvbWV0aGluZyBtb3JlCj4+Pj4gcm9ja2NoaXAtZnJpZW5kbHkgc3VjaCB0aGF0
+IHdlIGNhbiB1c2UgdGhlIGZpeGVkIFBMTHMgdG8KPj4+PiBnZW5lcmF0ZSB0aGUgcGl4ZWwgY2xv
+Y2sKPj4+Cj4+PiBUaGlzIHNob3VsZCByZWFsbHkgc3dpdGNoIHRvIGEgZGlzcGxheSB0aW1pbmcg
+aW5zdGVhZCBvZiBleHBvc2luZyBhCj4+PiBzaW5nbGUgbW9kZS4gVGhlIGRpc3BsYXkgdGltaW5n
+IGhhcyBtaW4sIHR5cGljYWwsIG1heCB0dXBsZXMgZm9yIGFsbAo+Pj4gdGhlIHRpbWluZ3MgdmFs
+dWVzLCB3aGljaCB3b3VsZCBhbGxvdyB0aGUgYXR0YWNoZWQgZHJpdmVyIHRvIHZhcnkgdGhlCj4+
+PiB0aW1pbmdzIGluc2lkZSB0aGUgYWxsb3dlZCBib3VuZHMgaWYgaXQgbWFrZXMgc2Vuc2UuCj4+
+Pgo+Pj4gVHJ5aW5nIHRvIGhpdCBhIHNwZWNpZmljIHBpeGVsIGNsb2NrIHRvIGZyZWUgdXAgYSBQ
+TEwgaXMgZXhhY3RseSBvbmUgb2YKPj4+IHRoZSB1c2UgY2FzZXMgZW52aXNpb25lZCBmb3IgdGhl
+IGRpc3BsYXkgdGltaW5ncyBzdHVmZi4KPj4+Cj4+Cj4+IEFncmVlZCwgSSB0aGluayB3ZSBoYWQg
+dGhpcyBkaXNjdXNzaW9uIHRoZSBmaXJzdCB0aW1lIGFyb3VuZC4gV2UKPj4gc2hvdWxkIGRyb3Ag
+dGhpcyBwYXRjaC4KPj4KPj4gVGhhbmtzIGZvciBjYXRjaGluZyB0aGlzIQo+Cj4gQXJlIHlvdSBz
+dXJlIHdlIHNob3VsZCBkcm9wIHRoaXM/ICBJbiBvcmRlciBmb3IgdGhpbmdzIHRvIHdvcmsKPiBw
+cm9wZXJseSAobm90IGdlbmVyYXRlIG5vaXNlIG9uIHRoZSBkaWdpdGl6ZXIgb3Igb3RoZXIgRU1J
+KSwgdGhpcwo+IG5lZWRzIHRvIHJ1biBhdCBhIHZlcnkgc3BlY2lmaWMgcGl4ZWwgY2xvY2sgd2l0
+aCB2ZXJ5IHNwZWNpZmljCj4gYmxhbmtpbmcgdGltZXMuICBJIGtub3cgdGhhdCBlYXJsaWVyIHdl
+IGhhZCBzbGlnaHRseSBkaWZmZXJlbnQKPiBibGFua2luZyB0aW1lcyBhbmQgU2Ftc3VuZyBjYW1l
+IGJhY2sgYW5kIHNhaWQgdGhhdCB0aGVyZSB3YXMgbm9pc2Ugb24KPiB0aGUgZGlnaXRpemVyLiAg
+SSBjb3VsZCBiZSB3cm9uZywgYnV0IEkgZG9uJ3QgdGhpbmsgdGhlcmUncyBhbnkgd2F5Cj4gY3Vy
+cmVudGx5IHRvIGJlIGFibGUgdG8gc3BlY2lmeSBleGFjdGx5IHdoYXQgdGltaW5ncyBzaG91bGQg
+YmUgdXNlZCBvbgo+IGEgcGFydGljdWxhciBib2FyZC4KPgo+IERvbid0IGdldCBiZSB3cm9uZy0t
+SSB0aGluayBhIHBhdGNoIHN1Y2ggYXMgdGhpcyBvbmUgdGhhdCBjbGFpbXMgYQo+IHNpbmdsZSBi
+b2FyZCdzIHRpbWluZ3MgYXMgdGhlICJyaWdodCIgb25lcyBmb3IgYSBnZW5lcmljIHBhbmVsIGlz
+IGEKPiBiaXQgb2YgYSBoYWNrLiAgLi4uYnV0IGF0IHRoZSBzYW1lIHRpbWUgdGhlcmUgYXJlIG5v
+IG90aGVyIHVzZXJzIG9mCj4gdGhpcyBwYW5lbCAodGhhdCBJIGtub3cgb2YpIGluIG1haW5saW5l
+IGFuZCB0aGUgdGltaW5ncyBwcmVzZW50ZWQgaGVyZQo+IGFyZSBjZXJ0YWlubHkgc2FuZSB0aW1p
+bmdzIGZvciB0aGlzIHBhbmVsLgo+Cj4gSW4gYW55IGNhc2UsIHByZXZpb3VzIGRpc2N1c3Npb24g
+YXQ6IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTYxNDYwMy8KPgo+Cj4gLi4u
+b2gsIGFuZCBsb29raW5nIGF0IHRoZSBwcmV2aW91cyBkaXNjdXNzaW9uIHJlbWluZHMgbWUgdGhh
+dCB0aGUKPiB0aW1pbmdzIHByZXNlbnRlZCBpbiB0aGlzIGhlcmUgcGF0Y2ggYXJlIGFjdHVhbGx5
+IG5vdCB0aGUgcmlnaHQgb25lcwo+ICh0aGV5IGhhdmUgdGhlIHJpZ2h0IFBMTCwgYnV0IHRoZSB3
+cm9uZyBibGFua2luZ3MgdG8gYXZvaWQgdGhlIG5vaXNlCj4gaXNzdWVzKS4gIFNlZSA8Ly9jaHJv
+bWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8zODEwMTU+Cj4KCkFzIFRoaWVycnkgbm8gbG9u
+Z2VyIGhhcyB0aGUgaGFyZHdhcmUgdG8gdGVzdCB0aGVzZSBwYXRjaCBzZXJpZXMsIEknbGwKdGFr
+ZSBjYXJlIG9mIHRoZXNlIGFuZCBmb2xsb3cgdGhlIHVwc3RyZWFtaW5nIHByb2Nlc3MuIEkgdGhp
+bmsgdGhhdApkb2Vzbid0IG1ha2Ugc2Vuc2Ugc2VuZCBhIHY0IHZlcnNpb24gb2YgYWxsIDQzIHBh
+dGNoZXMgZm9yIHRoaXMKY2hhbmdlLiBSaWdodCBub3csIG9ubHkgdGhpcyBwYXRjaCByZWNlaXZl
+ZCBjb21tZW50cyBzbyBJJ2xsIHdhaXQgYQpiaXQgbW9yZSBmb3IgaWYgd2UgY2FuIGdldCB0aGUg
+b3RoZXIgcGF0Y2hlcyByZXZpZXdlZC4gSWYgdGhlIG90aGVycwphcmUgZmluZSBqdXN0IGFuZCBJ
+IGRvbid0IG5lZWQgdG8gc2VuZCBhIG5ldyB2ZXJzaW9uIGp1c3QgZG9uJ3QgYXBwbHkKdGhpcyBv
+bmUgYW5kIEkgd2lsbCBzZW5kIGEgc2Vjb25kIHZlcnNpb24gb2YgdGhhdCBzcGVjaWZpYyBwYXRj
+aC4gT3IKZXZlbiBiZXR0ZXIsIGlzIHJlYWxseSB0cml2aWFsIHdoYXQgbmVlZHMgdG8gYmUgY2hh
+bmdlZCwgc28gbWF5YmUgdGhlCm1haW50YWluZXIgY2FuIGRvIGl0PyA7KQoKUmVnYXJkcywKIEVu
+cmljCgo+Cj4KPiAtRG91Zwo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
