@@ -1,126 +1,29 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v5] drm/rockchip: Add device links for master and components
-Date: Sun, 18 Feb 2018 11:12:07 +0100
-Message-ID: <7759612.uKiIP4CCLT@phil>
-References: <20180207175309.21095-1-enric.balletbo@collabora.com>
+Subject: Re: [PATCH v3 01/43] drm/rockchip: Get rid of unnecessary struct fields
+Date: Sun, 18 Feb 2018 11:50:21 +0100
+Message-ID: <2079289.Shqmx2Dqx8@phil>
+References: <20180130202913.28724-1-thierry.escande@collabora.com> <20180130202913.28724-2-thierry.escande@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180207175309.21095-1-enric.balletbo@collabora.com>
+In-Reply-To: <20180130202913.28724-2-thierry.escande@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, broonie@kernel.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
+Cc: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yakir Yang <ykk@rock-chips.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Haixia Shi <hshi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Mittwoch, 7. Februar 2018, 18:53:09 CET schrieb Enric Balletbo i Serra:
-> From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Am Dienstag, 30. Januar 2018, 21:28:31 CET schrieb Thierry Escande:
+> From: Tomasz Figa <tfiga@chromium.org>
 > 
-> Since we are trying to access components' resources in the master's
-> suspend/resume PM callbacks(e.g. panel), add device links to correct
-> the suspend/resume and shutdown ordering.
+> This patch removes unused fields from vop structure.
 > 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 
-looks good to me right now. So if anybody else wants to apply it,
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-@Sean: does this address the issue you saw with the previous version?
-It looks like it, but I'd like to make sure before I apply it to drm-misc
-myself :-)
+applied to drm-misc
 
 
 Thanks
 Heiko
-
-> ---
-> Hi,
-> 
-> This is an attempt to revive a patch [1] that was sent last October. Sean
-> Paul requested some changes but I think that never was send a v5 version.
-> The patch fixes and issue where backlight panel is not correctly recoved
-> after a resume. This was tested on top of current linux-next plus the
-> latest series of Thierry's patches [2]
-> 
-> [1] https://patchwork.kernel.org/patch/10011595/
-> [2] https://lkml.org/lkml/2018/1/30/621
-> 
-> Changes in v5:
-> Address the comments from Sean.
-> - Create a helper to do the cleanup.
-> - Call the helper in rockchip_drm_match_add and where needed.
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2:
-> Use device link to correct the suspend/resume and shutdown ordering,
-> instead of converting rockchip spi's suspend/resume PM callbacks to
-> late suspend/resume PM callbacks.
-> 
-> Thanks,
->  Enric
-> 
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 23 ++++++++++++++++++++++-
->  1 file changed, 22 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> index 0609113d6a71..f814d37b1db2 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -314,6 +314,14 @@ static int compare_dev(struct device *dev, void *data)
->  	return dev == (struct device *)data;
->  }
->  
-> +static void rockchip_drm_match_remove(struct device *dev)
-> +{
-> +	struct device_link *link;
-> +
-> +	list_for_each_entry(link, &dev->links.consumers, s_node)
-> +		device_link_del(link);
-> +}
-> +
->  static struct component_match *rockchip_drm_match_add(struct device *dev)
->  {
->  	struct component_match *match = NULL;
-> @@ -331,10 +339,15 @@ static struct component_match *rockchip_drm_match_add(struct device *dev)
->  
->  			if (!d)
->  				break;
-> +
-> +			device_link_add(dev, d, DL_FLAG_STATELESS);
->  			component_match_add(dev, &match, compare_dev, d);
->  		} while (true);
->  	}
->  
-> +	if (IS_ERR(match))
-> +		rockchip_drm_match_remove(dev);
-> +
->  	return match ?: ERR_PTR(-ENODEV);
->  }
->  
-> @@ -411,13 +424,21 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->  	if (IS_ERR(match))
->  		return PTR_ERR(match);
->  
-> -	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
-> +	ret = component_master_add_with_match(dev, &rockchip_drm_ops, match);
-> +	if (ret < 0) {
-> +		rockchip_drm_match_remove(dev);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
->  }
->  
->  static int rockchip_drm_platform_remove(struct platform_device *pdev)
->  {
->  	component_master_del(&pdev->dev, &rockchip_drm_ops);
->  
-> +	rockchip_drm_match_remove(&pdev->dev);
-> +
->  	return 0;
->  }
->  
-> 
