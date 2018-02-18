@@ -1,42 +1,126 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: move rk3399-sapphire i2s2 to
- daughterboard
-Date: Tue, 20 Feb 2018 10:37:53 +0100
-Message-ID: <3889511.1jBm3mb7Ca@phil>
-References: <3840224.sEPfbROKII@phil> <20180219231102.9090-1-vicencb@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5] drm/rockchip: Add device links for master and components
+Date: Sun, 18 Feb 2018 11:12:07 +0100
+Message-ID: <7759612.uKiIP4CCLT@phil>
+References: <20180207175309.21095-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180219231102.9090-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180207175309.21095-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, dmitry.torokhov@gmail.com, briannorris@chromium.org, rjw@rjwysocki.net, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, broonie@kernel.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 20. Februar 2018, 00:11:01 CET schrieb Vicente Bergas:
-> The i2s2 drives the HDMI audio, which has the connector on the daughterboard.
+Hi,
+
+Am Mittwoch, 7. Februar 2018, 18:53:09 CET schrieb Enric Balletbo i Serra:
+> From: Jeffy Chen <jeffy.chen@rock-chips.com>
 > 
-> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
-> Hi Heiko,
+> Since we are trying to access components' resources in the master's
+> suspend/resume PM callbacks(e.g. panel), add device links to correct
+> the suspend/resume and shutdown ordering.
 > 
-> I have tested your patches on stable Linux 4.15.4 and worked fine.
-> There are only two missing bits: the power-button and the HDMI audio.
-> With this two extra patches, I have been able to test the power button
-> and it worked fine.
-> The HDMI audio was not working before nor after, but, the TRM says that
-> i2s2 is the audio source for the HDMI port.
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-I've applied all 4 patches for 4.17 now.
+looks good to me right now. So if anybody else wants to apply it,
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+@Sean: does this address the issue you saw with the previous version?
+It looks like it, but I'd like to make sure before I apply it to drm-misc
+myself :-)
 
 
+Thanks
 Heiko
+
+> ---
+> Hi,
+> 
+> This is an attempt to revive a patch [1] that was sent last October. Sean
+> Paul requested some changes but I think that never was send a v5 version.
+> The patch fixes and issue where backlight panel is not correctly recoved
+> after a resume. This was tested on top of current linux-next plus the
+> latest series of Thierry's patches [2]
+> 
+> [1] https://patchwork.kernel.org/patch/10011595/
+> [2] https://lkml.org/lkml/2018/1/30/621
+> 
+> Changes in v5:
+> Address the comments from Sean.
+> - Create a helper to do the cleanup.
+> - Call the helper in rockchip_drm_match_add and where needed.
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2:
+> Use device link to correct the suspend/resume and shutdown ordering,
+> instead of converting rockchip spi's suspend/resume PM callbacks to
+> late suspend/resume PM callbacks.
+> 
+> Thanks,
+>  Enric
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 23 ++++++++++++++++++++++-
+>  1 file changed, 22 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> index 0609113d6a71..f814d37b1db2 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> @@ -314,6 +314,14 @@ static int compare_dev(struct device *dev, void *data)
+>  	return dev == (struct device *)data;
+>  }
+>  
+> +static void rockchip_drm_match_remove(struct device *dev)
+> +{
+> +	struct device_link *link;
+> +
+> +	list_for_each_entry(link, &dev->links.consumers, s_node)
+> +		device_link_del(link);
+> +}
+> +
+>  static struct component_match *rockchip_drm_match_add(struct device *dev)
+>  {
+>  	struct component_match *match = NULL;
+> @@ -331,10 +339,15 @@ static struct component_match *rockchip_drm_match_add(struct device *dev)
+>  
+>  			if (!d)
+>  				break;
+> +
+> +			device_link_add(dev, d, DL_FLAG_STATELESS);
+>  			component_match_add(dev, &match, compare_dev, d);
+>  		} while (true);
+>  	}
+>  
+> +	if (IS_ERR(match))
+> +		rockchip_drm_match_remove(dev);
+> +
+>  	return match ?: ERR_PTR(-ENODEV);
+>  }
+>  
+> @@ -411,13 +424,21 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
+>  	if (IS_ERR(match))
+>  		return PTR_ERR(match);
+>  
+> -	return component_master_add_with_match(dev, &rockchip_drm_ops, match);
+> +	ret = component_master_add_with_match(dev, &rockchip_drm_ops, match);
+> +	if (ret < 0) {
+> +		rockchip_drm_match_remove(dev);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+>  }
+>  
+>  static int rockchip_drm_platform_remove(struct platform_device *pdev)
+>  {
+>  	component_master_del(&pdev->dev, &rockchip_drm_ops);
+>  
+> +	rockchip_drm_match_remove(&pdev->dev);
+> +
+>  	return 0;
+>  }
+>  
+> 
