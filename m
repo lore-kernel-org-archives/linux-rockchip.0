@@ -1,80 +1,60 @@
-From: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH v5 2/5] dt-bindings: pwm-backlight: add PWM delay
- proprieties.
-Date: Mon, 19 Feb 2018 11:11:36 +0000
-Message-ID: <20180219111136.jpv4wtcm6h2hfwac@oak.lan>
-References: <20180216174034.15936-1-enric.balletbo@collabora.com>
- <20180216174034.15936-2-enric.balletbo@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v2 4/8] drm/rockchip: dw_hdmi: Allow outputs that don't
+ need output switching
+Date: Mon, 19 Feb 2018 11:43:11 +0000
+Message-ID: <f1104948-5b95-968c-edc4-7a4d5212bae0@arm.com>
+References: <20180216204158.29839-1-heiko@sntech.de>
+ <20180216204158.29839-5-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20180216174034.15936-2-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180216204158.29839-5-heiko@sntech.de>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, hjc@rock-chips.com, architt@codeaurora.org, a.hajda@samsung.com, kishon@ti.com
+Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Feb 16, 2018 at 06:40:31PM +0100, Enric Balletbo i Serra wrote:
-> Hardware needs a delay between setting an initial (non-zero) PWM and
-> enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
-> this delay in milli seconds. Hardware also needs a delay between disabing
-> the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
-> is this delay in milli seconds.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
-
-Acked-by: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-
-> ---
-> Based on the original Huang Lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org> work.
-> 
-> Changes since v4:
->  - Rebase on top of mainline.
-> Changes since v3:
->  - Replace us for ms.
->  - Add Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
-> Changes since v2:
->  - Use separate properties (Rob Herring)
-> Changes since v1:
->  - As suggested by Daniel Thompson
->    - Do not assume power-on delay and power-off delay will be the same
-> 
->  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
-> index 764db86d441a..310810906613 100644
-> --- a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
-> +++ b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
-> @@ -17,6 +17,10 @@ Optional properties:
->                 "pwms" property (see PWM binding[0])
->    - enable-gpios: contains a single GPIO specifier for the GPIO which enables
->                    and disables the backlight (see GPIO binding[1])
-> +  - post-pwm-on-delay-ms: Delay in ms between setting an initial (non-zero) PWM
-> +                          and enabling the backlight using GPIO.
-> +  - pwm-off-delay-ms: Delay in ms between disabling the backlight using GPIO
-> +                      and setting PWM value to 0.
->  
->  [0]: Documentation/devicetree/bindings/pwm/pwm.txt
->  [1]: Documentation/devicetree/bindings/gpio/gpio.txt
-> @@ -32,4 +36,6 @@ Example:
->  
->  		power-supply = <&vdd_bl_reg>;
->  		enable-gpios = <&gpio 58 0>;
-> +		post-pwm-on-delay-ms = <10>;
-> +		pwm-off-delay-ms = <10>;
->  	};
-> -- 
-> 2.15.1
-> 
+SGkgSGVpa28sCgpPbiAxNi8wMi8xOCAyMDo0MSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gU28g
+ZmFyIHdlIGFsd2F5cyBlbmNvdW50ZXJlZCBzb2NzIHdpdGggMiBvdXRwdXQgY3J0Y3MgbmVlZGlu
+ZyB0aGUgZHJpdmVyCj4gdG8gdGVsbCB0aGUgaGRtaSBibG9jayB3aGljaCBvdXRwdXQgdG8gY29u
+bmVjdCB0by4gQnV0IHRoZXJlIGFsc28gZXhpc3QKPiBzb2NzIHdpdGggb25seSBvbmUgY3J0YyBs
+aWtlIHRoZSByazMyMjgsIHJrMzMyOCBhbmQgcmszMzY4Lgo+IAo+IFNvIGFkYXB0IHRoZSByZWdp
+c3RlciBmaWVsZCB0byBzaW1wbHkgY2FycnkgYSBuZWdhdGl2ZSB2YWx1ZSB0byBzaWduYWwKPiB0
+aGF0IG5vdyBvdXRwdXQtc3dpdGNoaW5nIGlzIG5lY2Vzc2FyeS4KCk5pdDogcy9ub3cvbm8vID8g
+KEhvb3JheSBmb3IgZ3JhbW1hdGljYWxseS1jb3JyZWN0IHR5cG9zIHdoaWNoIGludmVydCAKdGhl
+IGVudGlyZSBtZWFuaW5nIG9mIHRoZSBzZW50ZW5jZSEpCgpXaGF0IGFyZSB0aGUgbmVjZXNzYXJ5
+IGRlcGVuZGVuY2llcyBmb3IgdGhlc2UgcGF0Y2hlcz8gSSB0cmllZCBhcHBseWluZyAKdGhlIHNl
+cmllcyBvbiA0LjE2LXJjMSB0byB0ZXN0LCBidXQgaXQgZmFpbGVkIGF0IHBhdGNoICM2IHdpdGgg
+c29tZSAKbWlzc2luZyBjb250ZXh0IChJIHRyaWVkIGNoZWNraW5nIGRybS1uZXh0IGZvciB3aGVy
+ZSByb2NrY2hpcF9oZG1pOjpoZG1pIAptaWdodCBoYXZlIGNvbWUgZnJvbSwgYnV0IGRpZG4ndCBz
+ZWUgYW55dGhpbmcgb2J2aW91cykKClRoYW5rcywKUm9iaW4uCgo+IFNpZ25lZC1vZmYtYnk6IEhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgNSArKysrLQo+ICAgMSBmaWxlIGNoYW5nZWQs
+IDQgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwo+IGluZGV4IDM1NzRiMGFlMmFkMS4uNmRjMDNmMWE1
+NzA5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tj
+aGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5j
+Cj4gQEAgLTM2LDcgKzM2LDcgQEAKPiAgICAqIEBsY2RzZWxfbGl0OiByZWcgdmFsdWUgb2Ygc2Vs
+ZWN0aW5nIHZvcCBsaXR0bGUgZm9yIEhETUkKPiAgICAqLwo+ICAgc3RydWN0IHJvY2tjaGlwX2hk
+bWlfY2hpcF9kYXRhIHsKPiAtCXUzMglsY2RzZWxfZ3JmX3JlZzsKPiArCWludAlsY2RzZWxfZ3Jm
+X3JlZzsKPiAgIAl1MzIJbGNkc2VsX2JpZzsKPiAgIAl1MzIJbGNkc2VsX2xpdDsKPiAgIH07Cj4g
+QEAgLTI1Myw2ICsyNTMsOSBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJf
+ZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiAgIAl1MzIgdmFsOwo+ICAgCWlu
+dCByZXQ7Cj4gICAKPiArCWlmIChoZG1pLT5jaGlwX2RhdGEtPmxjZHNlbF9ncmZfcmVnIDwgMCkK
+PiArCQlyZXR1cm47Cj4gKwo+ICAgCXJldCA9IGRybV9vZl9lbmNvZGVyX2FjdGl2ZV9lbmRwb2lu
+dF9pZChoZG1pLT5kZXYtPm9mX25vZGUsIGVuY29kZXIpOwo+ICAgCWlmIChyZXQpCj4gICAJCXZh
+bCA9IGhkbWktPmNoaXBfZGF0YS0+bGNkc2VsX2xpdDsKPiAKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
