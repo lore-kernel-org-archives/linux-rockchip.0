@@ -1,105 +1,72 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH v3 33/43] drm/panel: simple: Change mode for Sharp
- lq123p1jx31
-Date: Mon, 19 Feb 2018 10:42:45 +0100
-Message-ID: <CAFqH_53DVTc4+EWTcMDMW5Fxg59GMgX=UCSO++ovNHCL=E2t0g@mail.gmail.com>
-References: <20180130202913.28724-1-thierry.escande@collabora.com>
- <20180130202913.28724-34-thierry.escande@collabora.com>
- <1517403243.14302.1.camel@pengutronix.de>
- <CAOw6vbKsG=B7vV5_NcwgeAc-=guRN1Xh-dCxKytkDeOjayatLw@mail.gmail.com>
- <CAD=FV=UB+ovYFSi2aB_qe3igX3K7BxMWaEEoNPx1UMdscKwQtQ@mail.gmail.com>
- <CAFqH_50OxDDfXjGPyNgtyu-qFn3zGqrLYprLtPJyHDYRDEczGQ@mail.gmail.com>
- <CAD=FV=UqPt5d=Kw4JBFZVgSNwvDZDCNd_ORV66MwWMxMJpW-eQ@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [RESEND PATCH v5 2/5] dt-bindings: pwm-backlight: add PWM delay
+ proprieties.
+Date: Mon, 19 Feb 2018 10:56:04 +0100
+Message-ID: <4692672.MjQUXlf6O3@phil>
+References: <20180216174034.15936-1-enric.balletbo@collabora.com>
+ <20180216174034.15936-2-enric.balletbo@collabora.com>
+ <20180219092247.estv4d2v6cbopx6z@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAD=FV=UqPt5d=Kw4JBFZVgSNwvDZDCNd_ORV66MwWMxMJpW-eQ@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180219092247.estv4d2v6cbopx6z@dell>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgoyMDE4LTAyLTE2IDIxOjU0IEdNVCswMTowMCBEb3VnIEFuZGVyc29uIDxkaWFuZGVyc0Bj
-aHJvbWl1bS5vcmc+Ogo+IEhpLAo+Cj4gT24gRnJpLCBGZWIgMTYsIDIwMTggYXQgNDozNCBBTSwg
-RW5yaWMgQmFsbGV0Ym8gU2VycmEKPiA8ZWJhbGxldGJvQGdtYWlsLmNvbT4gd3JvdGU6Cj4+IEhp
-LAo+Pgo+PiAyMDE4LTAxLTMxIDE3OjUyIEdNVCswMTowMCBEb3VnIEFuZGVyc29uIDxkaWFuZGVy
-c0BjaHJvbWl1bS5vcmc+Ogo+Pj4gSGksCj4+Pgo+Pj4KPj4+IE9uIFdlZCwgSmFuIDMxLCAyMDE4
-IGF0IDc6MTYgQU0sIFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPiB3cm90ZToKPj4+
-PiBPbiBXZWQsIEphbiAzMSwgMjAxOCBhdCA3OjU0IEFNLCBMdWNhcyBTdGFjaCA8bC5zdGFjaEBw
-ZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4+Pj4+IEFtIERpZW5zdGFnLCBkZW4gMzAuMDEuMjAxOCwg
-MjE6MjkgKzAxMDAgc2NocmllYiBUaGllcnJ5IEVzY2FuZGU6Cj4+Pj4+PiBGcm9tOiBTZWFuIFBh
-dWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPj4+Pj4+Cj4+Pj4+PiBDaGFuZ2UgdGhlIG1vZGUg
-Zm9yIFNoYXJwIGxxMTIzcDFqeDMxIHBhbmVsIHRvIHNvbWV0aGluZyBtb3JlCj4+Pj4+PiByb2Nr
-Y2hpcC1mcmllbmRseSBzdWNoIHRoYXQgd2UgY2FuIHVzZSB0aGUgZml4ZWQgUExMcyB0bwo+Pj4+
-Pj4gZ2VuZXJhdGUgdGhlIHBpeGVsIGNsb2NrCj4+Pj4+Cj4+Pj4+IFRoaXMgc2hvdWxkIHJlYWxs
-eSBzd2l0Y2ggdG8gYSBkaXNwbGF5IHRpbWluZyBpbnN0ZWFkIG9mIGV4cG9zaW5nIGEKPj4+Pj4g
-c2luZ2xlIG1vZGUuIFRoZSBkaXNwbGF5IHRpbWluZyBoYXMgbWluLCB0eXBpY2FsLCBtYXggdHVw
-bGVzIGZvciBhbGwKPj4+Pj4gdGhlIHRpbWluZ3MgdmFsdWVzLCB3aGljaCB3b3VsZCBhbGxvdyB0
-aGUgYXR0YWNoZWQgZHJpdmVyIHRvIHZhcnkgdGhlCj4+Pj4+IHRpbWluZ3MgaW5zaWRlIHRoZSBh
-bGxvd2VkIGJvdW5kcyBpZiBpdCBtYWtlcyBzZW5zZS4KPj4+Pj4KPj4+Pj4gVHJ5aW5nIHRvIGhp
-dCBhIHNwZWNpZmljIHBpeGVsIGNsb2NrIHRvIGZyZWUgdXAgYSBQTEwgaXMgZXhhY3RseSBvbmUg
-b2YKPj4+Pj4gdGhlIHVzZSBjYXNlcyBlbnZpc2lvbmVkIGZvciB0aGUgZGlzcGxheSB0aW1pbmdz
-IHN0dWZmLgo+Pj4+Pgo+Pj4+Cj4+Pj4gQWdyZWVkLCBJIHRoaW5rIHdlIGhhZCB0aGlzIGRpc2N1
-c3Npb24gdGhlIGZpcnN0IHRpbWUgYXJvdW5kLiBXZQo+Pj4+IHNob3VsZCBkcm9wIHRoaXMgcGF0
-Y2guCj4+Pj4KPj4+PiBUaGFua3MgZm9yIGNhdGNoaW5nIHRoaXMhCj4+Pgo+Pj4gQXJlIHlvdSBz
-dXJlIHdlIHNob3VsZCBkcm9wIHRoaXM/ICBJbiBvcmRlciBmb3IgdGhpbmdzIHRvIHdvcmsKPj4+
-IHByb3Blcmx5IChub3QgZ2VuZXJhdGUgbm9pc2Ugb24gdGhlIGRpZ2l0aXplciBvciBvdGhlciBF
-TUkpLCB0aGlzCj4+PiBuZWVkcyB0byBydW4gYXQgYSB2ZXJ5IHNwZWNpZmljIHBpeGVsIGNsb2Nr
-IHdpdGggdmVyeSBzcGVjaWZpYwo+Pj4gYmxhbmtpbmcgdGltZXMuICBJIGtub3cgdGhhdCBlYXJs
-aWVyIHdlIGhhZCBzbGlnaHRseSBkaWZmZXJlbnQKPj4+IGJsYW5raW5nIHRpbWVzIGFuZCBTYW1z
-dW5nIGNhbWUgYmFjayBhbmQgc2FpZCB0aGF0IHRoZXJlIHdhcyBub2lzZSBvbgo+Pj4gdGhlIGRp
-Z2l0aXplci4gIEkgY291bGQgYmUgd3JvbmcsIGJ1dCBJIGRvbid0IHRoaW5rIHRoZXJlJ3MgYW55
-IHdheQo+Pj4gY3VycmVudGx5IHRvIGJlIGFibGUgdG8gc3BlY2lmeSBleGFjdGx5IHdoYXQgdGlt
-aW5ncyBzaG91bGQgYmUgdXNlZCBvbgo+Pj4gYSBwYXJ0aWN1bGFyIGJvYXJkLgo+Pj4KPj4+IERv
-bid0IGdldCBiZSB3cm9uZy0tSSB0aGluayBhIHBhdGNoIHN1Y2ggYXMgdGhpcyBvbmUgdGhhdCBj
-bGFpbXMgYQo+Pj4gc2luZ2xlIGJvYXJkJ3MgdGltaW5ncyBhcyB0aGUgInJpZ2h0IiBvbmVzIGZv
-ciBhIGdlbmVyaWMgcGFuZWwgaXMgYQo+Pj4gYml0IG9mIGEgaGFjay4gIC4uLmJ1dCBhdCB0aGUg
-c2FtZSB0aW1lIHRoZXJlIGFyZSBubyBvdGhlciB1c2VycyBvZgo+Pj4gdGhpcyBwYW5lbCAodGhh
-dCBJIGtub3cgb2YpIGluIG1haW5saW5lIGFuZCB0aGUgdGltaW5ncyBwcmVzZW50ZWQgaGVyZQo+
-Pj4gYXJlIGNlcnRhaW5seSBzYW5lIHRpbWluZ3MgZm9yIHRoaXMgcGFuZWwuCj4+Pgo+Pj4gSW4g
-YW55IGNhc2UsIHByZXZpb3VzIGRpc2N1c3Npb24gYXQ6IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5l
-bC5vcmcvcGF0Y2gvOTYxNDYwMy8KPj4+Cj4+Pgo+Pj4gLi4ub2gsIGFuZCBsb29raW5nIGF0IHRo
-ZSBwcmV2aW91cyBkaXNjdXNzaW9uIHJlbWluZHMgbWUgdGhhdCB0aGUKPj4+IHRpbWluZ3MgcHJl
-c2VudGVkIGluIHRoaXMgaGVyZSBwYXRjaCBhcmUgYWN0dWFsbHkgbm90IHRoZSByaWdodCBvbmVz
-Cj4+PiAodGhleSBoYXZlIHRoZSByaWdodCBQTEwsIGJ1dCB0aGUgd3JvbmcgYmxhbmtpbmdzIHRv
-IGF2b2lkIHRoZSBub2lzZQo+Pj4gaXNzdWVzKS4gIFNlZSA8Ly9jaHJvbWl1bS1yZXZpZXcuZ29v
-Z2xlc291cmNlLmNvbS8zODEwMTU+Cj4+Pgo+Pgo+PiBBcyBUaGllcnJ5IG5vIGxvbmdlciBoYXMg
-dGhlIGhhcmR3YXJlIHRvIHRlc3QgdGhlc2UgcGF0Y2ggc2VyaWVzLCBJJ2xsCj4+IHRha2UgY2Fy
-ZSBvZiB0aGVzZSBhbmQgZm9sbG93IHRoZSB1cHN0cmVhbWluZyBwcm9jZXNzLiBJIHRoaW5rIHRo
-YXQKPj4gZG9lc24ndCBtYWtlIHNlbnNlIHNlbmQgYSB2NCB2ZXJzaW9uIG9mIGFsbCA0MyBwYXRj
-aGVzIGZvciB0aGlzCj4+IGNoYW5nZS4gUmlnaHQgbm93LCBvbmx5IHRoaXMgcGF0Y2ggcmVjZWl2
-ZWQgY29tbWVudHMgc28gSSdsbCB3YWl0IGEKPj4gYml0IG1vcmUgZm9yIGlmIHdlIGNhbiBnZXQg
-dGhlIG90aGVyIHBhdGNoZXMgcmV2aWV3ZWQuIElmIHRoZSBvdGhlcnMKPj4gYXJlIGZpbmUganVz
-dCBhbmQgSSBkb24ndCBuZWVkIHRvIHNlbmQgYSBuZXcgdmVyc2lvbiBqdXN0IGRvbid0IGFwcGx5
-Cj4+IHRoaXMgb25lIGFuZCBJIHdpbGwgc2VuZCBhIHNlY29uZCB2ZXJzaW9uIG9mIHRoYXQgc3Bl
-Y2lmaWMgcGF0Y2guIE9yCj4+IGV2ZW4gYmV0dGVyLCBpcyByZWFsbHkgdHJpdmlhbCB3aGF0IG5l
-ZWRzIHRvIGJlIGNoYW5nZWQsIHNvIG1heWJlIHRoZQo+PiBtYWludGFpbmVyIGNhbiBkbyBpdD8g
-OykKPgo+IEp1c3QgYXMgYSBoZWFkcyB1cCwgU2VhbiBQYXVsIGhhcyBhIHNlcmllcyBvZiBwYXRj
-aGVzIHRvIHJlcGxhY2UgdGhpcwo+IHBhdGNoLiAgVGhlIGZvbGxvd2luZyBhcmUgSURzIGZyb20g
-cGF0Y2h3b3JrLmtlcm5lbC5vcmc6Cj4KPiAxMDIwNzU4MyBOZXcgICAgICAgICAgW3YzLDEvNl0g
-ZHQtYmluZGluZ3M6IENsYXJpZnkgdGltaW5nIHN1Ym5vZGUgdXNlCj4gYXMgcGFuZWwtdGltaW5n
-Cj4gMTAyMDc1ODUgTmV3ICAgICAgICAgIFt2MywyLzZdIGR0LWJpbmRpbmdzOiBBZGQgaGVhZGlu
-Z3MgdG8KPiBzaW1wbGUtcGFuZWwgYmluZGluZ3MKPiAxMDIwNzU5MSBOZXcgICAgICAgICAgW3Yz
-LDMvNl0gZHQtYmluZGluZ3M6IEFkZCBwYW5lbC10aW1pbmcgc3Vibm9kZQo+IHRvIHNpbXBsZS1w
-YW5lbAo+IDEwMjA3NTkzIE5ldyAgICAgICAgICBbdjMsNC82XSBkcm0vcGFuZWw6IHNpbXBsZTog
-QWRkIGFiaWxpdHkgdG8KPiBvdmVycmlkZSB0eXBpY2FsIHRpbWluZwo+IDEwMjA3NTk1IE5ldyAg
-ICAgICAgICBbdjMsNS82XSBkcm0vcGFuZWw6IHNpbXBsZTogVXNlIGRpc3BsYXlfdGltaW5nCj4g
-Zm9yIGxxMTIzcDFqeDMxCj4gMTAyMDc2MDMgTmV3ICAgICAgICAgIFt2Myw2LzZdIGFybTY0OiBk
-dHM6IHJvY2tjaGlwOiBTcGVjaWZ5IG92ZXJyaWRlCj4gbW9kZSBmb3Iga2V2aW4gcGFuZWwKPgo+
-IC1Eb3VnCgpOaWNlLCBJIHdhcyBub3QgYXdhcmUgb2YgdGhlc2UsIEknbGwgdGVzdC4gVGhhdCBt
-ZWFucyB0aGF0IHRoaXMgcGF0Y2gKY2FuIGJlIHJlbW92ZWQgZnJvbSB0aGVzZSBzZXJpZXMgYXMg
-dGhlIFNlYW4gc29sdXRpb24gaXMgYSBsb3QgYmV0dGVyLgpKdXN0IGEgbm90ZSB0aGF0IHRoaXMg
-cGF0Y2ggY2FuIGJlIHJlbW92ZWQgd2l0aG91dCBhbnkgY29sbGF0ZXJhbAppbXBhY3Qgb24gdGhl
-IG90aGVyIHBhdGNoZXMsIHNvIGp1c3QgaWdub3JlIGl0LgoKUmVnYXJkcywKIEVucmljCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Lee,
+
+Am Montag, 19. Februar 2018, 10:22:47 CET schrieb Lee Jones:
+> On Fri, 16 Feb 2018, Enric Balletbo i Serra wrote:
+> 
+> > Hardware needs a delay between setting an initial (non-zero) PWM and
+> > enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
+> > this delay in milli seconds. Hardware also needs a delay between disabing
+> > the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
+> > is this delay in milli seconds.
+> > 
+> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
+> > ---
+> > Based on the original Huang Lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org> work.
+> > 
+> > Changes since v4:
+> >  - Rebase on top of mainline.
+> > Changes since v3:
+> >  - Replace us for ms.
+> >  - Add Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
+> > Changes since v2:
+> >  - Use separate properties (Rob Herring)
+> > Changes since v1:
+> >  - As suggested by Daniel Thompson
+> >    - Do not assume power-on delay and power-off delay will be the same
+> > 
+> >  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> 
+> Looks like this still needs an Ack.
+> 
+> Also, you didn't supply a 0th (cover-letter) patch, so I have no idea
+> of patch history or your future intentions.
+> 
+> Are there build-time dependencies between them or can each patch be
+> merged via their respective trees without the fear of merge/build
+> failure?
+
+When looking at the patches, there do not seem to be any build-time
+dependencies between the patch 1-3 (backlight) and 4+5 devicetree,
+so after Rob hopefully has time to look at the binding change, I'd suspect
+you take the code changes and I'll take the dts changes.
+
+
+Heiko
