@@ -1,15 +1,14 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH v3 6/6] arm64: dts: rockchip: Specify override mode for
- kevin panel
-Date: Mon, 19 Feb 2018 15:34:51 +0100
-Message-ID: <CAFqH_53Z7qTi8jKcjBpEawFQW3imzOks+qFh5dqMuD4XGETv+w@mail.gmail.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v3 1/6] dt-bindings: Clarify timing subnode use as
+ panel-timing
+Date: Mon, 19 Feb 2018 15:59:33 +0100
+Message-ID: <20180219145933.GL11455@ulmo>
 References: <20180208174855.55620-1-seanpaul@chromium.org>
- <20180208174855.55620-7-seanpaul@chromium.org>
+ <20180208174855.55620-2-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0434547176=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180208174855.55620-7-seanpaul@chromium.org>
+In-Reply-To: <20180208174855.55620-2-seanpaul@chromium.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -20,54 +19,60 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Emil Renner Berthing <kernel@esmil.dk>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, =?utf-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-MjAxOC0wMi0wOCAxODo0OCBHTVQrMDE6MDAgU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5v
-cmc+Ogo+IFRoaXMgcGF0Y2ggYWRkcyBhbiBvdmVycmlkZSBtb2RlIGZvciBrZXZpbiBkZXZpY2Vz
-LiBUaGUgbW9kZSBpbmNyZWFzZXMKPiBib3RoIGJhY2sgcG9yY2hlcyB0byBhbGxvdyBhIHBpeGVs
-IGNsb2NrIG9mIDI2NjY2a0h6IGFzIG9wcG9zZWQgdG8gdGhlCj4gJ3R5cGljYWwnIHZhbHVlIG9m
-IDI1Mjc1MGtIei4gVGhpcyBpcyBuZWVkZWQgdG8gYXZvaWQgaW50ZXJmZXJlbmNlIHdpdGgKPiB0
-aGUgdG91Y2ggZGlnaXRpemVyIG9uIHRoZXNlIGxhcHRvcHMuCj4KPiBDaGFuZ2VzIGluIHYyOgo+
-ICAtIFdyYXAgdGhlIHRpbWluZyBpbiBkaXNwbGF5LXRpbWluZ3Mgbm9kZSB0byBtYXRjaCBiaW5k
-aW5nIChSb2IvVGhpZXJyeSkKPiBDaGFuZ2VzIGluIHYzOgo+ICAtIFVud3JhcCB0aGUgdGltaW5n
-IGZyb20gZGlzcGxheS10aW1pbmdzIGFuZCByZW5hbWUgcGFuZWwtdGltaW5nIChSb2IpCj4KPiBD
-YzogRG91ZyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+IENjOiBFcmljIEFuaG9s
-dCA8ZXJpY0BhbmhvbHQubmV0Pgo+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRl
-Pgo+IENjOiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IENjOiBSb2Ig
-SGVycmluZyA8cm9iaCtkdEBrZXJuZWwub3JnPgo+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxt
-YXJjaGV1QGNocm9taXVtLm9yZz4KPiBDYzogVGhpZXJyeSBSZWRpbmcgPHRoaWVycnkucmVkaW5n
-QGdtYWlsLmNvbT4KPiBDYzogZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKPiBDYzogZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5v
-cmc+Cj4gLS0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS1rZXZp
-bi5kdHMgfCAxNCArKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9u
-cygrKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
-LWdydS1rZXZpbi5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUt
-a2V2aW4uZHRzCj4gaW5kZXggMTkxYTZiY2IxNzA0Li42NTg0MTFjZTM3ZWEgMTAwNjQ0Cj4gLS0t
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWtldmluLmR0cwo+ICsr
-KyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS1rZXZpbi5kdHMKPiBA
-QCAtOTgsNiArOTgsMjAgQEAKPiAgICAgICAgICAgICAgICAgYmFja2xpZ2h0ID0gPCZiYWNrbGln
-aHQ+Owo+ICAgICAgICAgICAgICAgICBwb3dlci1zdXBwbHkgPSA8JnBwMzMwMF9kaXNwPjsKPgo+
-ICsgICAgICAgICAgICAgICBwYW5lbC10aW1pbmcgewo+ICsgICAgICAgICAgICAgICAgICAgICAg
-IGNsb2NrLWZyZXF1ZW5jeSA9IDwyNjY2MDQ3MjA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAg
-IGhhY3RpdmUgPSA8MjQwMD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgaGZyb250LXBvcmNo
-ID0gPDQ4PjsKPiArICAgICAgICAgICAgICAgICAgICAgICBoYmFjay1wb3JjaCA9IDw4ND47Cj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgaHN5bmMtbGVuID0gPDMyPjsKPiArICAgICAgICAgICAg
-ICAgICAgICAgICBoc3luYy1hY3RpdmUgPSA8MD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-dmFjdGl2ZSA9IDwxNjAwPjsKPiArICAgICAgICAgICAgICAgICAgICAgICB2ZnJvbnQtcG9yY2gg
-PSA8Mz47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgdmJhY2stcG9yY2ggPSA8MTIwPjsKPiAr
-ICAgICAgICAgICAgICAgICAgICAgICB2c3luYy1sZW4gPSA8MTA+Owo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgIHZzeW5jLWFjdGl2ZSA9IDwwPjsKPiArICAgICAgICAgICAgICAgfTsKPiArCj4g
-ICAgICAgICAgICAgICAgIHBvcnRzIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBwYW5lbF9p
-bl9lZHA6IGVuZHBvaW50IHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlbW90
-ZS1lbmRwb2ludCA9IDwmZWRwX291dF9wYW5lbD47Cj4gLS0KCgpUZXN0ZWQgb24gdG9wIG9mIGxp
-bnV4LW5leHQgb24gYSBTYW1zdW5nIENocm9tZWJvb2sgUGx1cy4KClRlc3RlZC1ieTogRW5yaWMg
-QmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KCgo+IDIuMTYu
-MC5yYzEuMjM4Lmc1MzBkNjQ5YTc5LWdvb2cKPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+
+--===============0434547176==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Swj79WlilW4BQYVz"
+Content-Disposition: inline
+
+
+--Swj79WlilW4BQYVz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Feb 08, 2018 at 12:48:48PM -0500, Sean Paul wrote:
+> Add a note in the documentation explaining when it's appropriate to use
+> the display-timings subnode on its own, as well as the preferred name to
+> use (panel-timing).
+
+panel-timing seems rather redundant, but I guess that's the de facto
+standard, so:
+
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--Swj79WlilW4BQYVz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlqK5lUACgkQ3SOs138+
+s6Fq1xAApels5m4VvPRbJzkGf6k07e8urhqjpucf55zP7cccqWI1yfkk9P4ujTXF
+X5UOfKrHlBFtDstAJtrkhVcT9FMBi9HSv4AJcO1SdspTZR3C8LjDFT+suY1WevNK
+B5BY+Tjp7aGflj8flNqA1TerhFgvpQyhbctdWEljcPck4XJ/cG6i3fuSPxqbw/NQ
+BZ7xLRiQSgNhcnBzR/LD1JnhsWcxs74hdmJDuAnqw9K+3LNLJJimvfeNXzOeym80
+dM6tXG1/A6y61ru8Fd9hssvYvj500CVmAhkN7DH27AeV7iVBCyI+Fz3WDhuPg8HP
+4HS7y207jHUQdLOlkiNh0YPtHQtunOvkcLy5MG1u6RmRp+zFZ/jbMUh08Y4qkxMQ
+5enufVyj1RY1g/tCEYJAeEvoKZCc3lDNiA2xppKfA68wJf8wBsfb3HhzoPFvJlPq
+LdN+8t/W3fwWPihNiVKeo0Iukv70LNSZVCDdihVI1tJXeokb8860vWCZt2fVBfnB
+Fy/msaNXWk0ehhstj6AWdJh90XbIlWJ+No0fvD2mDihcsGOMZcJPxp/MPQjnCS1F
+HebwdinuSsRx8zrY2wA93WDvkiaGmkjd/xcC3tze/W5Fbk7X6GuOoSckTr3umq5J
+9QdNr3VyG+uPed0LwiB53BtG2vqy9lU6keav6Rn4QNr7FeOSgI8=
+=6Pqs
+-----END PGP SIGNATURE-----
+
+--Swj79WlilW4BQYVz--
+
+--===============0434547176==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0434547176==--
