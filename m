@@ -1,14 +1,14 @@
 From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v3 3/6] dt-bindings: Add panel-timing subnode to
- simple-panel
-Date: Mon, 19 Feb 2018 16:09:30 +0100
-Message-ID: <20180219150930.GM11455@ulmo>
+Subject: Re: [PATCH v3 4/6] drm/panel: simple: Add ability to override
+ typical timing
+Date: Mon, 19 Feb 2018 16:25:55 +0100
+Message-ID: <20180219152555.GN11455@ulmo>
 References: <20180208174855.55620-1-seanpaul@chromium.org>
- <20180208174855.55620-4-seanpaul@chromium.org>
+ <20180208174855.55620-5-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0865176954=="
+Content-Type: multipart/mixed; boundary="===============1180069235=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180208174855.55620-4-seanpaul@chromium.org>
+In-Reply-To: <20180208174855.55620-5-seanpaul@chromium.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -19,33 +19,38 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, =?utf-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, =?utf-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============0865176954==
+--===============1180069235==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="hdhkc9EpVJoq6PQ6"
+	protocol="application/pgp-signature"; boundary="57SHPaztv6dlLu/a"
 Content-Disposition: inline
 
 
---hdhkc9EpVJoq6PQ6
+--57SHPaztv6dlLu/a
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Feb 08, 2018 at 12:48:50PM -0500, Sean Paul wrote:
-> This patch adds a new subnode to simple-panel allowing us to override
-> the typical timing expressed in the panel's display_timing.
+On Thu, Feb 08, 2018 at 12:48:51PM -0500, Sean Paul wrote:
+> This patch adds the ability to override the typical display timing for a
+> given panel. This is useful for devices which have timing constraints
+> that do not apply across the entire display driver (eg: to avoid
+> crosstalk between panel and digitizer on certain laptops). The rules are
+> as follows:
+>=20
+> - panel must not specify fixed mode (since the override mode will
+>   either be the same as the fixed mode, or we'll be unable to
+>   check the bounds of the overried)
+> - panel must specify at least one display_timing range which will be
+>   used to ensure the override mode fits within its bounds
 >=20
 > Changes in v2:
->  - Split out the binding into a new patch (Rob)
->  - display-timings is a new section (Rob)
->  - Use the full display-timings subnode instead of picking the timing
->    out (Rob/Thierry)
+>  - Parse the full display-timings node (using the native-mode) (Rob)
 > Changes in v3:
->  - Go back to using the timing subnode directly, but rename to
->    panel-timing (Rob)
+>  - No longer parse display-timings subnode, use panel-timing (Rob)
 >=20
 > Cc: Doug Anderson <dianders@chromium.org>
 > Cc: Eric Anholt <eric@anholt.net>
@@ -56,91 +61,197 @@ On Thu, Feb 08, 2018 at 12:48:50PM -0500, Sean Paul wrote:
 > Cc: Thierry Reding <thierry.reding@gmail.com>
 > Cc: devicetree@vger.kernel.org
 > Cc: dri-devel@lists.freedesktop.org
-> Cc: linux-rockchip@lists.infradead.org
 > Signed-off-by: Sean Paul <seanpaul@chromium.org>
 > ---
->  .../bindings/display/panel/simple-panel.txt        | 30 ++++++++++++++++=
-++++++
->  1 file changed, 30 insertions(+)
+>  drivers/gpu/drm/panel/panel-simple.c | 67 ++++++++++++++++++++++++++++++=
++++++-
+>  1 file changed, 66 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel=
-=2Etxt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> index 45a457ad38f0..7788b9ce160b 100644
-> --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> @@ -12,6 +12,24 @@ Optional properties:
->  - enable-gpios: GPIO pin to enable or disable the panel
->  - backlight: phandle of the backlight device attached to the panel
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel=
+/panel-simple.c
+> index 5591984a392b..87488392bca1 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -34,6 +34,7 @@
+>  #include <drm/drm_panel.h>
 > =20
-> +panel-timing subnode
-> +--------------------
+>  #include <video/display_timing.h>
+> +#include <video/of_display_timing.h>
+>  #include <video/videomode.h>
+> =20
+>  struct panel_desc {
+> @@ -87,6 +88,8 @@ struct panel_simple {
+>  	struct i2c_adapter *ddc;
+> =20
+>  	struct gpio_desc *enable_gpio;
 > +
-> +This optional subnode is for devices which require a mode differing from=
- the
-> +panel's "typical" display timing as programmed in the simple-panel drive=
-r.
-> +Overriding the driver mode must only be done in the following scenario:
-> + - The restrictions motivating the override cannot be applied to the pla=
-tform's
-> +   display driver (ie: it must be specific to the device not the platfor=
-m)
-> + - The panel must not have a fixed mode attributed to it in the driver
+> +	struct drm_display_mode override_mode;
+>  };
+> =20
+>  static inline struct panel_simple *to_panel_simple(struct drm_panel *pan=
+el)
+> @@ -99,11 +102,22 @@ static int panel_simple_get_fixed_modes(struct panel=
+_simple *panel)
+>  	struct drm_connector *connector =3D panel->base.connector;
+>  	struct drm_device *drm =3D panel->base.drm;
+>  	struct drm_display_mode *mode;
+> +	bool has_override =3D panel->override_mode.type;
+>  	unsigned int i, num =3D 0;
+> =20
+>  	if (!panel->desc)
+>  		return 0;
+> =20
+> +	if (has_override) {
+> +		mode =3D drm_mode_duplicate(drm, &panel->override_mode);
+> +		if (mode) {
+> +			drm_mode_probed_add(connector, mode);
+> +			num++;
+> +		} else {
+> +			dev_err(drm->dev, "failed to add override mode\n");
+> +		}
+> +	}
 
-I think this is somewhat ambiguous. One could argue that panels only
-have a fixed mode. What you means if obviously the fixed DRM display
-mode, but that's not something that should go into the binding. I'd
-simply drop this requirement.
+Do we really want to continue after this? Shouldn't the override mode
+simply override everything else? That is, if users do override the mode,
+do we want to give them additional modes to potentially choose from?
+Presumably the reason why the user had to override is because the fixed
+one didn't work.
 
-> + - The panel must provide at list one display_timing range by which the =
-override
-> +   mode can be validated against
+Actually, we should only ever have either the display timings specified
+or a fixed mode. Anything else is rather bogus.
 
-This is the important bit and kind of obsoletes the above anyway. Oh,
-and you probably meant "... provide at _least_ one..."
+> +
+>  	for (i =3D 0; i < panel->desc->num_timings; i++) {
+>  		const struct display_timing *dt =3D &panel->desc->timings[i];
+>  		struct videomode vm;
+> @@ -120,7 +134,7 @@ static int panel_simple_get_fixed_modes(struct panel_=
+simple *panel)
+> =20
+>  		mode->type |=3D DRM_MODE_TYPE_DRIVER;
+> =20
+> -		if (panel->desc->num_timings =3D=3D 1)
+> +		if (panel->desc->num_timings =3D=3D 1 && !has_override)
+>  			mode->type |=3D DRM_MODE_TYPE_PREFERRED;
+> =20
+>  		drm_mode_probed_add(connector, mode);
+> @@ -291,10 +305,58 @@ static const struct drm_panel_funcs panel_simple_fu=
+ncs =3D {
+>  	.get_timings =3D panel_simple_get_timings,
+>  };
+> =20
+> +#define PANEL_SIMPLE_BOUNDS_CHECK(to_check, bounds, field) \
+> +	(to_check->field.typ >=3D bounds->field.min && \
+> +	 to_check->field.typ <=3D bounds->field.max)
+> +static void panel_simple_add_override_mode(struct device *dev,
+> +					   struct panel_simple *panel,
+> +					   const struct display_timing *ot)
+> +{
+> +	const struct panel_desc *desc =3D panel->desc;
+> +	struct videomode vm;
+> +	int i;
 
-> + - The override mode will use the 'typ' values from the panel-timings su=
-bnode
+unsigned int, please.
 
-The properties for display timings in DT don't list anything other than
-the 'typ' values, right? I'm not sure I understand this requirement.
+> +
+> +	if (desc->num_modes) {
+> +		dev_err(dev, "Reject override mode: panel has a fixed mode\n");
+> +		return;
+> +	}
+> +	if (!desc->num_timings) {
+> +		dev_err(dev, "Reject override mode: no timings specified\n");
+> +		return;
+> +	}
 
-> + - You must provide all required properties for the panel-timing subnode
+Perhaps these should be WARN_ON() to be annoying, but let the driver
+continue with the override mode? Again, this is something that we should
+catch during review (when a new compatible is added, or a new driver, we
+should make sure that it always comes with a timing).
 
-Isn't this redundant? required properties are always required.
+WARN_ON() is probably enough to let people know when they test that they
+forgot something.
 
-Other than the unclarities, the above does reflect what we had discussed
-on IRC. I wonder, though, how much of this really belongs in the device
-tree bindings. The above are almost all restrictions that apply to the
-driver, and are very specific to Linux. Perhaps this is something that
-belongs in the GPU documentation rather than DT bindings. They are more
-like guidelines for what panel drivers should look like rather than what
-the DT should look like.
+> +
+> +	for (i =3D 0; i < panel->desc->num_timings; i++) {
+> +		const struct display_timing *dt =3D &panel->desc->timings[i];
+> +
+> +		if (!PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hactive) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hfront_porch) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hback_porch) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hsync_len) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vactive) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vfront_porch) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vback_porch) ||
+> +		    !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vsync_len))
+> +			continue;
+> +
+> +		if (ot->flags !=3D dt->flags)
+> +			continue;
+> +
+> +		videomode_from_timing(ot, &vm);
+> +		drm_display_mode_from_videomode(&vm, &panel->override_mode);
+> +		panel->override_mode.type |=3D DRM_MODE_TYPE_DRIVER |
+> +					     DRM_MODE_TYPE_PREFERRED;
+> +		return;
+> +	}
+> +
+> +	dev_err(dev, "Reject override mode: No display_timing found\n");
+
+Perhaps something like this, to simplify the code flow:
+
+	if (!panel->override_mode.type)
+		dev_err(dev, ...);
+
+Then turn the above return into a break and leave out the below return.
+
+> +	return;
+> +}
+> +
+>  static int panel_simple_probe(struct device *dev, const struct panel_des=
+c *desc)
+>  {
+>  	struct device_node *backlight, *ddc;
+>  	struct panel_simple *panel;
+> +	struct display_timing dt;
+>  	int err;
+> =20
+>  	panel =3D devm_kzalloc(dev, sizeof(*panel), GFP_KERNEL);
+> @@ -338,6 +400,9 @@ static int panel_simple_probe(struct device *dev, con=
+st struct panel_desc *desc)
+>  		}
+>  	}
+> =20
+> +	if (!of_get_display_timing(dev->of_node, "panel-timing", &dt))
+> +		panel_simple_add_override_mode(dev, panel, &dt);
+
+Perahps "panel_simple_parse_override_mode()"? To clarify what exactly
+this does. This doesn't actually "add" the mode yet, that's only done
+in panel_simple_get_fixed_modes().
 
 Thierry
 
---hdhkc9EpVJoq6PQ6
+--57SHPaztv6dlLu/a
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlqK6KoACgkQ3SOs138+
-s6EasQ//TXaKOcEATrKdv49bi0O4g5yl44ADHE+++3Q0Ussc2J+HSk/4nyUV9s9p
-qTirUqihhxMcH0g7llm2PBB7yr25oJzDzJ8yQiW2oIbE6B3GhNwTpJNi8mIVRDt0
-wn1IN0l/69ZGS429FdG6CqHQJwRRDiI9Ks7ARUAHb2U0bp5SqSeXZ55Zgiat21k0
-3KCF2NMZd9mSNz/sR1m4vpkNTuRi4BFVoUC78ebTknGNnjrqzJjUYzCrpXJOjJlY
-7AjWKRYAcATfJ0AIn7acQjSCywh0yk+4iAb0quZ+bg1DUo4/doeV/JgNezhTXSYq
-jpM1PqpUo/eXGswOzCMzRazjjvkdRUd+23K+PCj4k5muG0xlSIS3dDbBv2Z+wB3L
-Zxxdr6XpoXwkHfN9uOQKA6rWtHDgO9HEUjUMQGh/bzXv9yd7YRJgEwOKK7zBbFF1
-KHYsAASpu+ezFd5J7jmnkiafn1kBgOn3Ugvx/Q2KsyjflE+IYC8PzQ1qWmupLLIi
-Ut2WjE1vo6ulYH0iJYgWUfF5ge3uvdO/4uhgrdDBShBmhOfh3esCXjSufJvLME29
-QfqtxNmSQN5kP88mlLy4qaEoxtiBzeY7INca3KEggvpsaSpf4mgPZMCb0Uj7MP8U
-iGHRMAqhSzS1SjocDx2vJxonIKrSJcIvNqG2IPkwvVbIAlnmuMY=
-=/lNv
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlqK7IEACgkQ3SOs138+
+s6Ezsg//TIKrt34EjRNkroILHDq8GDHiYCmx6/Wa2ncC0foRK01z/qyRkcDCWWro
+LdXyZYiUYYAFRRKWhfwUkwDmPYWdulFE4NGBy/zmQTpEUvUPxqISxr1lFcumomh1
+JjCOI8LiGWxsyvcTPuNwh9B8o2mPl9o6YBa0pVdP1zegJLN/Xxqg9rBkpdPRhi/9
+xW9EjcDB3tIUHeBVIjOuNOjkundtDPizuNlO5Ewu0xhgKGJU5ipD2ErAzcacQRA9
+zpVsNyfEMgEWlKNkAYoTIeS4prKNAUxLgYfI1MQuGmwWN7XAGvbDqRHhgJQmMsc8
+R3DbYNJE2j8bCo/vYutfkWN9alsZK54r59E0FYoEr/e3bzND8j8Hw9mLJv0nwya+
+iTlBtpWYxfH7XW5iFCok5bhd2K8zQuPo5S+gDvmmlXpi6BR8g3TRaSfKxZitoLva
+tKKnhWg2X5KQ9yvRG+VL8aQ+3i0ZyAAiKYVUjVR+JrP8/U8zZN/sxAUSrsym/5Bb
+5m/65Ik/jow+YDe5cdb6wwl1a3ugmMrELaxdIPXZOC/cpHGO+C5YdPeAGARq4WOe
+pd8QONiNFWRhknFCV2SV/ZcswrRqn4S8+ryd+NQOdYTzVKgMdu4hOjuu8d9sn+ML
+g1rvoAGELIYV6H1uK2AK9AUlKes8S1VsBYoL2/jN0+OGJAxm9vA=
+=2rcc
 -----END PGP SIGNATURE-----
 
---hdhkc9EpVJoq6PQ6--
+--57SHPaztv6dlLu/a--
 
---===============0865176954==
+--===============1180069235==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -150,4 +261,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
 IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
 dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
 
---===============0865176954==--
+--===============1180069235==--
