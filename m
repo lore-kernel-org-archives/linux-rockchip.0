@@ -1,14 +1,14 @@
-From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: enable I2S codec on
- rk3399-puma-haikou
-Date: Mon, 19 Feb 2018 09:18:54 +0100
-Message-ID: <20180219081855.34400-3-klaus.goger@theobroma-systems.com>
-References: <20180219081855.34400-1-klaus.goger@theobroma-systems.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 1/2] arm64: dts: rockchip: move rk3399-sapphire sdio to
+ excavator baseboard
+Date: Mon, 19 Feb 2018 09:15:16 +0100
+Message-ID: <3840224.sEPfbROKII@phil>
+References: <CAAMcf8CY1m+998+GpD2wOfAZb=oZNkL2GqYu_o5piGEh76uoYw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180219081855.34400-1-klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+In-Reply-To: <CAAMcf8CY1m+998+GpD2wOfAZb=oZNkL2GqYu_o5piGEh76uoYw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,84 +18,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RW5hYmxlIHRoZSBOWFAgU0dUTDUwMDAgYXVkaW8gY29kZWMgb24gdGhlIFJLMzM5OS1RNyBFVksg
-YmFzZWJvYXJkCkhhaWtvdS4KClNpZ25lZC1vZmYtYnk6IEtsYXVzIEdvZ2VyIDxrbGF1cy5nb2dl
-ckB0aGVvYnJvbWEtc3lzdGVtcy5jb20+CgotLS0KCkNoYW5nZXMgaW4gdjM6Ci0gc3BsaXQgaTJz
-MCBtb3ZlIGZyb20gcmszMzk5LXB1bWEtaGFpa291LmR0cyB0byByazMzOTktcHVtYS5kdHNpIGlu
-dG8gaXQncwogIG93biBwYXRjaAotIHVzZSBkYXNoZdGVIGluIG5vZGUgbmFtZXMKLSBhZGRlZCBt
-aXNzaW5nIHZpbi1zdXBwbHkgcHJvcGVydGllcyB0byByZWd1bGF0b3JzCiAgaGFkIHRvIGFkZCBh
-biBhZGRpdGlvbmFsIHJlZ3VsYXRvciB0byBtb2RlbCB0aGlzIGNvcnJlY3RseQotIHNpbXBsZSBv
-dmVyd3JpdGUgcGlucyBpbiBpMnMwXzJjaF9idXMgaW5zdGVhZCBvZiBkZWxldGluZyBhbmQgcmVk
-ZWZpbmluZwogIHRoZSBub2RlCgpDaGFuZ2VzIGluIHYyOgotIHJlb3JkZXJlZCBlbnRyaWVzIGFz
-IHN1Z2dlc3RlZCBpbiByZXZpZXcKLSByZW1vdmVkIGEgY29uZmxpY3RpbmcgaTJzIGRlZmluaXRp
-b24gaW4gcmszMzk5LXB1bWEtaGFpa291LmR0cwogIGkyczAgd2FzIGFscmVhZHkgZW5hYmxlZCBp
-biByazMzOTktcHVtYS5kdHNpIGFzIGl0IHNob3VsZCBiZSwKICBzbyByZXVzZSBpdCBhbmQgZml4
-IHRoZSBpbmNvcnJlY3Qgcm9ja2NoaXAsKi1jaGFubmVscyB2YWx1ZXMKLSBhZGQgYSBwYXRjaCB0
-byB0aGUgc2VyaWVzIHRoYXQgZGVmaW5pZXMgYSBnZW5lcmljIGkyczAtMmNoLWJ1cwotIG92ZXJ3
-cml0ZSB0aGUgZ2VuZXJpYyBwaW4gZGVmaW5pdGlvbiBvZiBpMnMwLTJjaC1idXMgd2l0aCBhIHNw
-ZWNpZmljCiAgb25lIHVzZWQgaW4gdGhlIEhhaWtvdSB3aXRoIFJLMzM5OS1RNyBzZXR1cAoKIC4u
-Li9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcHVtYS1oYWlrb3UuZHRzIHwgNjMgKysr
-KysrKysrKysrKysrKysrKysrKwogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkt
-cHVtYS5kdHNpICAgICAgfCAxNCArKysrKwogMiBmaWxlcyBjaGFuZ2VkLCA3NyBpbnNlcnRpb25z
-KCspCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcHVt
-YS1oYWlrb3UuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcHVtYS1o
-YWlrb3UuZHRzCmluZGV4IDhmZDBkN2JhMWRjOS4uNzk2NmY3ODI4NTA0IDEwMDY0NAotLS0gYS9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLWhhaWtvdS5kdHMKKysrIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcHVtYS1oYWlrb3UuZHRzCkBAIC02
-MSw2ICs2MSwyNCBAQAogCQl9OwogCX07CiAKKwlpMnMwLXNvdW5kIHsKKwkJY29tcGF0aWJsZSA9
-ICJzaW1wbGUtYXVkaW8tY2FyZCI7CisJCXNpbXBsZS1hdWRpby1jYXJkLGZvcm1hdCA9ICJpMnMi
-OworCQlzaW1wbGUtYXVkaW8tY2FyZCxuYW1lID0gIkhhaWtvdSxJMlMtY29kZWMiOworCQlzaW1w
-bGUtYXVkaW8tY2FyZCxtY2xrLWZzID0gPDUxMj47CisKKwkJc2ltcGxlLWF1ZGlvLWNhcmQsY29k
-ZWMgeworCQkJY2xvY2tzID0gPCZzZ3RsNTAwMF9jbGs+OworCQkJc291bmQtZGFpID0gPCZzZ3Rs
-NTAwMD47CisJCX07CisKKwkJc2ltcGxlLWF1ZGlvLWNhcmQsY3B1IHsKKwkJCWJpdGNsb2NrLW1h
-c3RlcjsKKwkJCWZyYW1lLW1hc3RlcjsKKwkJCXNvdW5kLWRhaSA9IDwmaTJzMD47CisJCX07CisJ
-fTsKKwogCWRjXzEydjogZGMtMTJ2IHsKIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQi
-OwogCQlyZWd1bGF0b3ItbmFtZSA9ICJkY18xMnYiOwpAQCAtODAsNiArOTgsMTYgQEAKIAkJdmlu
-LXN1cHBseSA9IDwmZGNfMTJ2PjsKIAl9OwogCisJdmNjNXYwX2Jhc2Vib2FyZDogdmNjNXYwLWJh
-c2Vib2FyZCB7CisJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKKwkJcmVndWxhdG9y
-LW5hbWUgPSAidmNjNXYwX2Jhc2Vib2FyZCI7CisJCXJlZ3VsYXRvci1hbHdheXMtb247CisJCXJl
-Z3VsYXRvci1ib290LW9uOworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsK
-KwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8NTAwMDAwMD47CisJCXZpbi1zdXBwbHkgPSA8
-JmRjXzEydj47CisJfTsKKwogCXZjYzV2MF9vdGc6IHZjYzV2MC1vdGctcmVndWxhdG9yIHsKIAkJ
-Y29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwogCQllbmFibGUtYWN0aXZlLWhpZ2g7CkBA
-IC04OSw2ICsxMTcsMzAgQEAKIAkJcmVndWxhdG9yLW5hbWUgPSAidmNjNXYwX290ZyI7CiAJCXJl
-Z3VsYXRvci1hbHdheXMtb247CiAJfTsKKworCXZkZGFfY29kZWM6IHZkZGEtY29kZWMgeworCQlj
-b21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7CisJCXJlZ3VsYXRvci1uYW1lID0gInZkZGFf
-Y29kZWMiOworCQlyZWd1bGF0b3ItYm9vdC1vbjsKKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQg
-PSA8MzMwMDAwMD47CisJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+OworCQl2
-aW4tc3VwcGx5ID0gPCZ2Y2M1djBfYmFzZWJvYXJkPjsKKwl9OworCisJdmRkZF9jb2RlYzogdmRk
-ZC1jb2RlYyB7CisJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKKwkJcmVndWxhdG9y
-LW5hbWUgPSAidmRkZF9jb2RlYyI7CisJCXJlZ3VsYXRvci1ib290LW9uOworCQlyZWd1bGF0b3It
-bWluLW1pY3Jvdm9sdCA9IDwxNjAwMDAwPjsKKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8
-MTYwMDAwMD47CisJCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9iYXNlYm9hcmQ+OworCX07CisKKwlz
-Z3RsNTAwMF9jbGs6IHNndGw1MDAwLW9zY2lsbGF0b3IgIHsKKwkJCWNvbXBhdGlibGUgPSAiZml4
-ZWQtY2xvY2siOworCQkJI2Nsb2NrLWNlbGxzID0gPDA+OworCQkJY2xvY2stZnJlcXVlbmN5ICA9
-IDwyNDU3NjAwMD47CisJfTsKIH07CiAKICZpMmMxIHsKQEAgLTExMCw2ICsxNjIsMTcgQEAKICZp
-MmM0IHsKIAlzdGF0dXMgPSAib2theSI7CiAJY2xvY2stZnJlcXVlbmN5ID0gPDQwMDAwMD47CisK
-KwlzZ3RsNTAwMDogY29kZWNAMGEgeworCQljb21wYXRpYmxlID0gImZzbCxzZ3RsNTAwMCI7CisJ
-CXJlZyA9IDwweDBhPjsKKwkJY2xvY2tzID0gPCZzZ3RsNTAwMF9jbGs+OworCQkjc291bmQtZGFp
-LWNlbGxzID0gPDA+OworCQlWRERBLXN1cHBseSA9IDwmdmRkYV9jb2RlYz47CisJCVZERElPLXN1
-cHBseSA9IDwmdmRkYV9jb2RlYz47CisJCVZEREQtc3VwcGx5ID0gPCZ2ZGRkX2NvZGVjPjsKKwkJ
-c3RhdHVzID0gIm9rYXkiOworCX07CiB9OwogCiAmaTJjNiB7CmRpZmYgLS1naXQgYS9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLmR0c2kKaW5kZXggZmM5MTNlMmQ5NjJmLi40YTJkMDZh
-YmU5YzEgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1
-bWEuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLmR0
-c2kKQEAgLTQ0Myw2ICs0NDMsMjAgQEAKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCisvKgorICog
-QXMgUTcgZG9lcyBub3Qgc3BlY2lmeSBuZWl0aGVyIGEgZ2xvYmFsIG5vciBhIFJYIGNsb2NrIGZv
-ciBJMlMgdGhlc2UKKyAqIHNpZ25hbHMgYXJlIG5vdCB1c2VkLiBGdXJ0aGVybW9yZSBJMlMwX0xS
-Q0tfUlggaXMgdXNlZCBhcyBHUElPLgorICogVGhlcmVmb3JlIHdlIGhhdmUgdG8gcmVkZWZpbmUg
-dGhlIGkyczBfMmNoX2J1cyBkZWZpbml0aW9uIHRvIHByZXZlbnQKKyAqIGNvbmZsaWN0cy4KKyAq
-LworJmkyczBfMmNoX2J1cyB7CisJcm9ja2NoaXAscGlucyA9CisJCTxSS19HUElPMyBSS19QRDAg
-UktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCisJCTxSS19HUElPMyBSS19QRDIgUktfRlVOQ18x
-ICZwY2ZnX3B1bGxfbm9uZT4sCisJCTxSS19HUElPMyBSS19QRDMgUktfRlVOQ18xICZwY2ZnX3B1
-bGxfbm9uZT4sCisJCTxSS19HUElPMyBSS19QRDcgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT47
-Cit9OworCiAmaW9fZG9tYWlucyB7CiAJc3RhdHVzID0gIm9rYXkiOwogCWJ0NjU2LXN1cHBseSA9
-IDwmdmNjXzF2OD47Ci0tIAoyLjExLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+The sdio signals are routed through the connector to the baseboard,
+where the wifi module is also located. So move the sdio node to
+the excavator as well.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+Hi Vicente,
+
+after looking at the issue, I guess something like this and the following
+patch should help your situation?
+I've heared about the sapphire being used standalone some times and
+thus think it can be justified to add that standalone version.
+
+
+Heiko
+
+ .../boot/dts/rockchip/rk3399-sapphire-excavator.dts      | 16 ++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi        | 16 ----------------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index b7bd88fb3ae3..68416fae4fea 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -232,6 +232,22 @@
+ 	};
+ };
+ 
++&sdio0 {
++	bus-width = <4>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	clock-frequency = <50000000>;
++	disable-wp;
++	keep-power-in-suspend;
++	max-frequency = <50000000>;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
++	sd-uhs-sdr104;
++	status = "okay";
++};
++
+ &spdif {
+ 	i2c-scl-rising-time-ns = <450>;
+ 	i2c-scl-falling-time-ns = <15>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+index 46c95ccfd5cb..31568b4e8aa1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+@@ -520,22 +520,6 @@
+ 	status = "okay";
+ };
+ 
+-&sdio0 {
+-	bus-width = <4>;
+-	cap-sd-highspeed;
+-	cap-sdio-irq;
+-	clock-frequency = <50000000>;
+-	disable-wp;
+-	keep-power-in-suspend;
+-	max-frequency = <50000000>;
+-	mmc-pwrseq = <&sdio_pwrseq>;
+-	non-removable;
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+-	sd-uhs-sdr104;
+-	status = "okay";
+-};
+-
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+-- 
+2.15.1
