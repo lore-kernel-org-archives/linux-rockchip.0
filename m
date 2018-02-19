@@ -1,10 +1,11 @@
 From: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: add OPPs for rk3368-lion
-Date: Mon, 19 Feb 2018 08:26:26 +0100
-Message-ID: <20180219072626.31874-1-klaus.goger@theobroma-systems.com>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: enable I2S codec on
+ rk3399-puma-haikou
+Date: Mon, 19 Feb 2018 09:18:52 +0100
+Message-ID: <20180219081855.34400-1-klaus.goger@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -19,145 +20,27 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds CPU operation points for the RK3368. We only add them to the
-the RK3368-uQ7 SoM (Lion) because patches for the SoC where reverted
-in the past.
-commit 6354a06cbaa8 ("Revert "arm64: dts: rockchip: Add basic cpu
-frequencies for RK3368"")
-
-Signed-off-by: Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-
----
-
- arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi | 80 +++++++++++++++++++++++++++
- 1 file changed, 80 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-index 1315972412df..a0bcf35b1605 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-@@ -11,6 +11,70 @@
- 		stdout-path = "serial0:115200n8";
- 	};
- 
-+	cluster0_opp: opp-table0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp00 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <950000 950000 1350000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <950000 950000 1350000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <975000 975000 1350000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <1050000 1050000 1350000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <1150000 1150000 1350000>;
-+		};
-+		opp05 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <1300000 1300000 1350000>;
-+			turbo-mode;
-+		};
-+		opp06 {
-+			opp-hz = /bits/ 64 <1512000000>;
-+			opp-microvolt = <1300000 1300000 1350000>;
-+			turbo-mode;
-+		};
-+	};
-+
-+	cluster1_opp: opp-table1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp00 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <950000 950000 1350000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <950000 950000 1350000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <1025000 1025000 1350000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <1125000 1125000 1350000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <1225000 1225000 1350000>;
-+		};
-+	};
-+
- 	ext_gmac: gmac-clk {
- 		compatible = "fixed-clock";
- 		clock-frequency = <125000000>;
-@@ -105,35 +169,51 @@
- };
- 
- &cpu_l0 {
-+	clocks = <&cru ARMCLKL>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster1_opp>;
- };
- 
- &cpu_l1 {
-+	clocks = <&cru ARMCLKL>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster1_opp>;
- };
- 
- &cpu_l2 {
-+	clocks = <&cru ARMCLKL>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster1_opp>;
- };
- 
- &cpu_l3 {
-+	clocks = <&cru ARMCLKL>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster1_opp>;
- };
- 
- &cpu_b0 {
-+	clocks = <&cru ARMCLKB>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster0_opp>;
- };
- 
- &cpu_b1 {
-+	clocks = <&cru ARMCLKB>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster0_opp>;
- };
- 
- &cpu_b2 {
-+	clocks = <&cru ARMCLKB>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster0_opp>;
- };
- 
- &cpu_b3 {
-+	clocks = <&cru ARMCLKB>;
- 	cpu-supply = <&vdd_cpu>;
-+	operating-points-v2 = <&cluster0_opp>;
- };
- 
- &emmc {
--- 
-2.11.0
+RW5hYmxlcyB0aGUgYXVkaW8gY29kZWMgb24gdGhlIEhhaWtvdSBCYXNlYm9hcmQgd2hlbiB1c2Vk
+IHdpdGggYSBSSzMzOTktUTcuCgpDaGFuZ2VzIGluIHYzOgotIHNwbGl0IGkyczAgbW92ZSBmcm9t
+IHJrMzM5OS1wdW1hLWhhaWtvdS5kdHMgdG8gcmszMzk5LXB1bWEuZHRzaSBpbnRvIGl0J3MKICBv
+d24gcGF0Y2gKLSB1c2UgZGFzaGXRlSBpbiBub2RlIG5hbWVzCi0gYWRkZWQgbWlzc2luZyB2aW4t
+c3VwcGx5IHByb3BlcnRpZXMgdG8gcmVndWxhdG9ycwogIGhhZCB0byBhZGQgYW4gYWRkaXRpb25h
+bCByZWd1bGF0b3IgdG8gbW9kZWwgdGhpcyBjb3JyZWN0bHkKLSBzaW1wbGUgb3ZlcndyaXRlIHBp
+bnMgaW4gaTJzMF8yY2hfYnVzIGluc3RlYWQgb2YgZGVsZXRpbmcgYW5kIHJlZGVmaW5pbmcKICB0
+aGUgbm9kZQoKQ2hhbmdlcyBpbiB2MjoKLSByZW9yZGVyZWQgZW50cmllcyBhcyBzdWdnZXN0ZWQg
+aW4gcmV2aWV3Ci0gcmVtb3ZlZCBhIGNvbmZsaWN0aW5nIGkycyBkZWZpbml0aW9uIGluIHJrMzM5
+OS1wdW1hLWhhaWtvdS5kdHMKICBpMnMwIHdhcyBhbHJlYWR5IGVuYWJsZWQgaW4gcmszMzk5LXB1
+bWEuZHRzaSBhcyBpdCBzaG91bGQgYmUsCiAgc28gcmV1c2UgaXQgYW5kIGZpeCB0aGUgaW5jb3Jy
+ZWN0IHJvY2tjaGlwLCotY2hhbm5lbHMgdmFsdWVzCi0gYWRkIGEgcGF0Y2ggdG8gdGhlIHNlcmll
+cyB0aGF0IGRlZmluaWVzIGEgZ2VuZXJpYyBpMnMwLTJjaC1idXMKLSBvdmVyd3JpdGUgdGhlIGdl
+bmVyaWMgcGluIGRlZmluaXRpb24gb2YgaTJzMC0yY2gtYnVzIHdpdGggYSBzcGVjaWZpYwogIG9u
+ZSB1c2VkIGluIHRoZSBIYWlrb3Ugd2l0aCBSSzMzOTktUTcgc2V0dXAKCktsYXVzIEdvZ2VyICgy
+KToKICBhcm02NDogZHRzOiByb2NrY2hpcDogbW92ZSBpMnMwIG5vZGUgZnJvbSBiYXNlYm9hcmQg
+dG8gU29NCiAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGVuYWJsZSBJMlMgY29kZWMgb24gcmszMzk5
+LXB1bWEtaGFpa291CgogLi4uL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1wdW1hLWhh
+aWtvdS5kdHMgfCA3MSArKysrKysrKysrKysrKysrKysrLS0tCiBhcmNoL2FybTY0L2Jvb3QvZHRz
+L3JvY2tjaGlwL3JrMzM5OS1wdW1hLmR0c2kgICAgICB8IDIyICsrKysrKysKIDIgZmlsZXMgY2hh
+bmdlZCwgODUgaW5zZXJ0aW9ucygrKSwgOCBkZWxldGlvbnMoLSkKCi0tIAoyLjExLjAKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
