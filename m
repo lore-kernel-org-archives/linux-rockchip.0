@@ -1,16 +1,23 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RESEND PATCH v5 2/5] dt-bindings: pwm-backlight: add PWM delay
- proprieties.
-Date: Mon, 19 Feb 2018 10:56:04 +0100
-Message-ID: <4692672.MjQUXlf6O3@phil>
-References: <20180216174034.15936-1-enric.balletbo@collabora.com>
- <20180216174034.15936-2-enric.balletbo@collabora.com>
- <20180219092247.estv4d2v6cbopx6z@dell>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: High CPU load produced by USB (DW2)
+Date: Mon, 19 Feb 2018 10:11:45 +0000
+Message-ID: <410670D7E743164D87FA6160E7907A560113A6EB2B@am04wembxa.internal.synopsys.com>
+References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A67F86@am04wembxa.internal.synopsys.com>
+ <CALw8SCVALfRZiF5sZKn0AcXaF6m6GSXXxKAGj2O+ndbgpeCiqw@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A68287@am04wembxa.internal.synopsys.com>
+ <CALw8SCX2SrR=ukfz1vn_wiTbyTv7_6xyLSPRQhkTdSQ=Y8MA3g@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6B365@am04wembxa.internal.synopsys.com>
+ <CALw8SCVzqAPx56hEDWWtvijeXz9g3roWDyithKYZENnfNDcRvQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6C4CA@am04wembxa.internal.synopsys.com>
+ <ec690b89-2c90-7f1d-86cd-582cef96baf3@gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6E9E6@am04wembxa.internal.synopsys.com>
+ <be95c74c-5706-df34-b83a-45c9df149f5e@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180219092247.estv4d2v6cbopx6z@dell>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,53 +27,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+To: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Lee,
-
-Am Montag, 19. Februar 2018, 10:22:47 CET schrieb Lee Jones:
-> On Fri, 16 Feb 2018, Enric Balletbo i Serra wrote:
+On 2/19/2018 12:51 PM, Marek Vasut wrote:
+> On 02/19/2018 09:19 AM, Minas Harutyunyan wrote:
+>> On 2/17/2018 12:07 AM, Marek Vasut wrote:
+>>> On 02/16/2018 06:59 AM, Minas Harutyunyan wrote:
+>>>> On 2/15/2018 5:20 PM, Mirza Krak wrote:
+>>>>> On 14 February 2018 at 13:07, Minas Harutyunyan
+>>>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+>>>>>> On 2/14/2018 12:57 PM, Mirza Krak wrote:
+>>>>>>> On 8 February 2018 at 14:53, Minas Harutyunyan
+>>>>>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+>>>>>
+>>>>> < snip >
+>>>>>
+>>>>>>
+>>>>>> I reviewed your interrupt count log again. About 140,000 interrupts in 2
+>>>>>> seconds, obviously it's not SOF only interrupts. More probably, its NAK
+>>>>>> respond interrupts to SSPLIT/CSPLIT transactions. For this case I can
+>>>>>> recommend you to apply patch from Douglas Anderson: "[PATCH v2] usb:
+>>>>>> dwc2: host: Don't retry NAKed transactions right away" which already
+>>>>>> merged to 4.16-rc1.
+>>>>>>
+>>>>>> In your setups you see different behavior on different HUBs. Your HUBs
+>>>>>> have different "TT think time": 8 and 32. In USB2.0 spec "TT think time"
+>>>>>> described as follow "TT requires at most 8/32 FS bit times of inter
+>>>>>> transaction gap on a full-/low-speed downstream bus". So, your "worst"
+>>>>>> HUB with "TT think time"=8 sending more frequently SSPLIT/CSPLIT
+>>>>>> transactions which replied by NAK. As result you see about 4 time more
+>>>>>> interrupts comparing to "good" HUB. Could you please check interrupts
+>>>>>> count for "good" HUB and check "4 time" hypothesis.
+>>>>>
+>>>>> Did some further testing. The "good" HUB is actually as bad as the
+>>>>> "bad" HUB, and it was my setup that caused the different behavior. Did
+>>>>> not use the same devices etc.
+>>>>>
+>>>>> Once I made sure that the configuration and setup was the same on both
+>>>>> board I could see that the behaved similarly. And that is the
+>>>>> following interrupt load:
+>>>>>
+>>>>> - BT USB (FS) = ~80k interrupts / second
+>>>>> - Keyboard (FS) = ~80k interrupts / second
+>>>>> - WiFI USB (HS) = ~8k interrupts / second
+>>>>>
+>>>>> After applying the suggested patch [1], it is steady around 8k
+>>>>> interrupts / second no matter what device I connect (HS/FS,
+>>>>> HUB/NO-HUB). Which is acceptable and usable.
+>>>>
+>>>> Great!
+>>>
+>>> So 8k IRQs per second is what I should expect from this HW with HS
+>>> device attached, that's normal and cannot be reduced ?
+>>>
+>> If core acting as Host in Buffer DMA mode then 8k IRQs per second (SOF
+>> interrupts) is expected if connected device(s) has periodic endpoint.
 > 
-> > Hardware needs a delay between setting an initial (non-zero) PWM and
-> > enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
-> > this delay in milli seconds. Hardware also needs a delay between disabing
-> > the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
-> > is this delay in milli seconds.
-> > 
-> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
-> > ---
-> > Based on the original Huang Lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org> work.
-> > 
-> > Changes since v4:
-> >  - Rebase on top of mainline.
-> > Changes since v3:
-> >  - Replace us for ms.
-> >  - Add Acked-by: Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>
-> > Changes since v2:
-> >  - Use separate properties (Rob Herring)
-> > Changes since v1:
-> >  - As suggested by Daniel Thompson
-> >    - Do not assume power-on delay and power-off delay will be the same
-> > 
-> >  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
-> >  1 file changed, 6 insertions(+)
+> Is there a way to reduce that or is that the absolute minimum in HS mode?
 > 
-> Looks like this still needs an Ack.
-> 
-> Also, you didn't supply a 0th (cover-letter) patch, so I have no idea
-> of patch history or your future intentions.
-> 
-> Are there build-time dependencies between them or can each patch be
-> merged via their respective trees without the fear of merge/build
-> failure?
-
-When looking at the patches, there do not seem to be any build-time
-dependencies between the patch 1-3 (backlight) and 4+5 devicetree,
-so after Rob hopefully has time to look at the binding change, I'd suspect
-you take the code changes and I'll take the dts changes.
-
-
-Heiko
+We already discussed, in this email thread earlier, why SOF interrupts 
+required and unmasked.
+Only in case when connected device with CTRL+BLK EP's only (like flash 
+drive) and directly connected to cores root HUB, SOF's will be masked.
+Thanks,
+Minas
