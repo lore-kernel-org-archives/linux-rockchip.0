@@ -1,16 +1,16 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 5/8] dt-bindings: allow optional phys in Rockchip
- dw_hdmi binding
-Date: Mon, 19 Feb 2018 14:26:43 -0600
-Message-ID: <20180219202643.mmngucoajdc6kiis@rob-hp-laptop>
-References: <20180216204158.29839-1-heiko@sntech.de>
- <20180216204158.29839-6-heiko@sntech.de>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add a standalone version of
+ the  rk3399 sapphire
+Date: Mon, 19 Feb 2018 14:42:55 -0600
+Message-ID: <20180219204255.cvn2z5dw5ritjkod@rob-hp-laptop>
+References: <CAAMcf8CY1m+998+GpD2wOfAZb=oZNkL2GqYu_o5piGEh76uoYw@mail.gmail.com>
+ <3840224.sEPfbROKII@phil> <7102557.xWtZfjvKIZ@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20180216204158.29839-6-heiko@sntech.de>
+In-Reply-To: <7102557.xWtZfjvKIZ@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,17 +21,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, architt@codeaurora.org, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, kishon@ti.com, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Cc: mark.rutland@arm.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Vicente Bergas <vicencb@gmail.com>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Feb 16, 2018 at 09:41:55PM +0100, Heiko Stuebner wrote:
-> Some newer Rockchip SoCs use an Innosilicon hdmiphy accessed via general
-> mmio, so allow these to be referenced via the regular phy interfaces
-> and therefore add optional phy-related properties to the binding.
+On Mon, Feb 19, 2018 at 09:16:17AM +0100, Heiko Stuebner wrote:
+> While the sapphire board is a system-on-module and mostly used with the
+> excavator baseboard, it is also possible to use it standalone without
+> any base. So add a board-variant for this type.
 > 
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->  Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt | 2 ++
->  1 file changed, 2 insertions(+)
+>  Documentation/devicetree/bindings/arm/rockchip.txt |  4 ++++
+>  arch/arm64/boot/dts/rockchip/Makefile              |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts   | 12 ++++++++++++
+>  3 files changed, 17 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
 
 Reviewed-by: Rob Herring <robh@kernel.org>
