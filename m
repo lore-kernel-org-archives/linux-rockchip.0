@@ -1,60 +1,77 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: vdd_log is not an i2c slave
-Date: Mon, 19 Feb 2018 18:34:17 +0100
-Message-ID: <CAAMcf8A=rYuhk4LoWbTYUb9t7ePfvaWm3nd07uLcODQhvN5P=w@mail.gmail.com>
-References: <20180218154359.9362-1-vicencb@gmail.com> <1705208.FSornk7tld@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 3/8] drm/bridge: dw-hdmi: allow overriding of phy-type
+ reading
+Date: Mon, 19 Feb 2018 19:46:46 +0100
+Message-ID: <3104429.3dFhngZnWQ@phil>
+References: <20180216204158.29839-1-heiko@sntech.de>
+ <20180216204158.29839-4-heiko@sntech.de> <3905607.btOD7ERYi5@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1705208.FSornk7tld@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <3905607.btOD7ERYi5@avalon>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, kishon@ti.com, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 19, 2018 at 7:01 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Sonntag, 18. Februar 2018, 16:43:59 CET schrieb Vicente Bergas:
->> The vdd_log power supply is controlled by a PWM pin, not by i2c register access.
->> There is a boot message that reports an error about not being able to bring that supply up.
->> Also, the eMMC is not detected and /dev/mmcblk2 does not exist.
->>
->> References:
->> [1]
->> Schematic page 16, search for LOG_DVS_PWM
->> https://dl.vamrs.com/products/sapphire_excavator/RK_SAPPHIRE_SOCBOARD_RK3399_LPDDR3D178P232SD8_V12_20161109HXS.pdf
->> (alternate link)
->> http://opensource.rock-chips.com/images/f/f0/RK_Sapphire_RK3399.rar
->>
->> [2]
->> arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
->>
->> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->
-> I've adapted the commit message a bit and applied the patch
-> for 4.17
->
-> For the emmc, that is a separate issue and you'll need to look at the logs
-> to see if there is anything shown. Especially device-numbering
-> (your mmcblk2) is not guaranteed, so this could very well also be
-> mmcblk0 or mmcblk1
->
->
-> Thanks
-> Heiko
-
-Sorry, I did not mention it because I thought it was implicit:
- both issues, the one related to the vdd_log and the other related to
-eMMC, are fixed with this patch.
-Anyways, thanks for applying it!
-
-Regards,
-  Vicente.
+SGkgTGF1cmVudCwKCkFtIE1vbnRhZywgMTkuIEZlYnJ1YXIgMjAxOCwgMTc6NTk6MDIgQ0VUIHNj
+aHJpZWIgTGF1cmVudCBQaW5jaGFydDoKPiBPbiBGcmlkYXksIDE2IEZlYnJ1YXJ5IDIwMTggMjI6
+NDE6NTMgRUVUIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4gSW4gc29tZSBJUCBpbXBsZW1lbnRh
+dGlvbnMgdGhlIHJlYWRpbmcgb2YgdGhlIHBoeS10eXBlIG1heSBiZSBicm9rZW4uCj4gPiBPbmUg
+ZXhhbXBsZSBhcmUgdGhlIFJvY2tjaGlwIHJrMzIyOCBhbmQgcmszMzI4IHNvY3MgdGhhdCB1c2Ug
+YSBzZXBhcmF0ZQo+ID4gcGh5IGZyb20gSW5ub3NpbGljb24gYnV0IHN0aWxsIHJlcG9ydCB0aGUg
+SERNSTIwX1RYIHR5cGUuCj4gPiAKPiA+IFNvIGFsbG93IHRoZSBnbHVlIGRyaXZlciB0byBmb3Jj
+ZSBhIHNwZWNpZmljIHR5cGUsIGxpa2UgdGhlIHZlbmRvci1waHkKPiA+IGZvciB0aGVzZSBjYXNl
+cy4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5k
+ZT4KPiAKPiBUZXN0ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRl
+YXNvbmJvYXJkLmNvbT4KCnRoYW5rcyBmb3IgdGVzdGluZyA6LSkKCj4gPiAtLS0KPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDQgKysrLQo+ID4gIGluY2x1
+ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmggICAgICAgICAgICAgIHwgMSArCj4gPiAgMiBmaWxlcyBj
+aGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gPiBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jIGluZGV4Cj4gPiBmOTgwMjM5OWNj
+MGQuLjUwZDIzMTYyNmM0ZCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+c3lub3BzeXMvZHctaGRtaS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
+c3lzL2R3LWhkbWkuYwo+ID4gQEAgLTIyMTgsNyArMjIxOCw5IEBAIHN0YXRpYyBpbnQgZHdfaGRt
+aV9kZXRlY3RfcGh5KHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ID4gIAl1bnNpZ25lZCBpbnQgaTsK
+PiA+ICAJdTggcGh5X3R5cGU7Cj4gPiAKPiA+IC0JcGh5X3R5cGUgPSBoZG1pX3JlYWRiKGhkbWks
+IEhETUlfQ09ORklHMl9JRCk7Cj4gPiArCXBoeV90eXBlID0gKGhkbWktPnBsYXRfZGF0YS0+cGh5
+X2ZvcmNlX3R5cGUpID8KPiA+ICsJCQkJaGRtaS0+cGxhdF9kYXRhLT5waHlfZm9yY2VfdHlwZSA6
+Cj4gPiArCQkJCWhkbWlfcmVhZGIoaGRtaSwgSERNSV9DT05GSUcyX0lEKTsKPiAKPiBObyBuZWVk
+IGZvciBwYXJlbnRoZXNlcy4gWW91IGNvdWxkIGV2ZW4gd3JpdGUgdGhpcwo+IAo+ICAgICAgICAg
+cGh5X3R5cGUgPSBoZG1pLT5wbGF0X2RhdGEtPnBoeV9mb3JjZV90eXBlID8gCj4gICAgICAgICAg
+ICAgICAgICA6IGhkbWlfcmVhZGIoaGRtaSwgSERNSV9DT05GSUcyX0lEKTsKPiAKPiBidXQgdGhh
+dCdzIHVwIHRvIHlvdS4KPiAKPiBXaGF0IGlmIGEgZHJpdmVyIHdhbnRzIHRvIGZvcmNlIHRoZSBQ
+SFkgdHlwZSB0byBEV19IRE1JX1BIWV9EV0NfSERNSV9UWF9QSFkgPyAKPiBPciBkbyB5b3UgZXhw
+ZWN0IG9ubHkgdGhlIERXX0hETUlfUEhZX1ZFTkRPUl9QSFkgdHlwZSB0byBiZSBmb3JjZWQgPyBJ
+ZiBzbywgd2UgCj4gY291bGQgYWxzbyB1c2UgYSBmb3JjZV92ZW5kb3JfcGh5IGJvb2xlYW4gZmll
+bGQgaW5zdGVhZCBvZiBwaHlfZm9yY2VfdHlwZS4KCkluaXRpYWxseSBJIHRob3VnaHQgb2YgaW1w
+bGljaXRseSBvdmVycmlkaW5nIHRoZSBwaHktdHlwZSB3aGVuIHRoZSBleHRlcm5hbApwaHktb3Bz
+IGFyZSBzZXQsIGJ1dCBkZWNpZGVkIGFnYWluc3QgaXQgYmVjYXVzZSB0aGF0IG1pZ2h0IGJyZWFr
+Cih0aGVvcmV0aWNhbCkgY2FzZXMgd2hlcmUgcGh5LW9wcyBtYXkgYmUgYWx3YXlzIHNldCBidXQg
+b25seSB1c2VkIHdoZW4KdGhlIGlwIHJldHVybnMgYSBtYXRjaGluZyBwaHktdHlwZSBhbmQgdGh1
+cyBjYW1lIHRvIGp1c3QgYWxsb3cgb3ZlcnJpZGluZwp0aGF0IHR5cGUgcmVhZGluZy4KCkFzIGZv
+ciBsaW1pdGluZyB0byBvbmx5IGFsbG93IGZvcmNpbmcgdGhlIHZlbmRvciB0eXBlLCBteSBwZXJz
+b25hbCBmZWVsaW5nCndvdWxkIGJlIHRvIGFsbG93IGdsdWUgZHJpdmVycyB0byBqdXN0IG92ZXJy
+aWRlIHRoZSB0eXBlIGFzIG5lZWRlZApsaWtlIGRvbmUgaW4gdGhlIHBhdGNoLiBBcyBjYW4gYmUg
+c2VlbiBvbiB0aGUgcmszMzI4LCB0aGUgZHctaGRtaQpyZXBvcnRzIG9uZSBvZiB0aGUgcmVndWxh
+ciBwaHlzIChmb3Jnb3Qgd2hpY2ggb25lKSBidXQgaW5zdGVhZCBoYXMgYQpjb21wbGV0ZWx5IHNl
+cGFyYXRlIGlwIGZvciBpdCwgc28gSSdkIGd1ZXNzIHdlIG1heSB2ZXJ5IHdlbGwgc2VlCmltcGxl
+bWVudGF0aW9ucyB0aGF0IGp1c3QgcmVwb3J0IGEgd3JvbmcgdHlwZSAobm8gdmVuZG9yLXR5cGUp
+LgoKU28gSSBkb24ndCBzZWUgYW4gaXNzdWUgd2l0aCBkcml2ZXJzIGJlaW5nIGFsbG93ZWQgdG8g
+c2V0IHRoZSB0eXBlIHRvCkRXX0hETUlfUEhZX0RXQ19IRE1JX1RYX1BIWSwgYmVjYXVzZSBzdWNo
+IGNhc2VzIG1heSBleGlzdCBpbiB0aGUKZnV0dXJlIGFuZCBJJ2QgZXhwZWN0IGRyaXZlciBhdXRo
+b3JzIHRvIHNvbWV3aGF0IGtub3cgd2hhdCB0aGV5J3JlIGRvaW5nLgoKQnV0IEknbSBub3QgdGll
+ZCB0byB0aGF0LCBzbyB3aWxsIGdvIHdpdGggdGhlIG1ham9yaXR5IG9waW5pb24gOi1EIC4KCgpI
+ZWlrbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
