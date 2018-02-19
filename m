@@ -1,67 +1,102 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v2 3/8] drm/bridge: dw-hdmi: allow overriding of phy-type
- reading
-Date: Mon, 19 Feb 2018 18:59:02 +0200
-Message-ID: <3905607.btOD7ERYi5@avalon>
-References: <20180216204158.29839-1-heiko@sntech.de>
- <20180216204158.29839-4-heiko@sntech.de>
+From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: High CPU load produced by USB (DW2)
+Date: Mon, 19 Feb 2018 18:02:48 +0100
+Message-ID: <56a951cc-dfdc-46c8-18e5-b8b8a2a5a0d0@gmail.com>
+References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A67F86@am04wembxa.internal.synopsys.com>
+ <CALw8SCVALfRZiF5sZKn0AcXaF6m6GSXXxKAGj2O+ndbgpeCiqw@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A68287@am04wembxa.internal.synopsys.com>
+ <CALw8SCX2SrR=ukfz1vn_wiTbyTv7_6xyLSPRQhkTdSQ=Y8MA3g@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6B365@am04wembxa.internal.synopsys.com>
+ <CALw8SCVzqAPx56hEDWWtvijeXz9g3roWDyithKYZENnfNDcRvQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6C4CA@am04wembxa.internal.synopsys.com>
+ <ec690b89-2c90-7f1d-86cd-582cef96baf3@gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6E9E6@am04wembxa.internal.synopsys.com>
+ <be95c74c-5706-df34-b83a-45c9df149f5e@gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6EB2B@am04wembxa.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180216204158.29839-4-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, kishon@ti.com, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <410670D7E743164D87FA6160E7907A560113A6EB2B-ouFQeoKRuQ8bQ7k9MBbv4fufCSb+aD3WLzEdoUbNIic@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4KCk9uIEZyaWRheSwgMTYgRmVicnVh
-cnkgMjAxOCAyMjo0MTo1MyBFRVQgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gSW4gc29tZSBJUCBp
-bXBsZW1lbnRhdGlvbnMgdGhlIHJlYWRpbmcgb2YgdGhlIHBoeS10eXBlIG1heSBiZSBicm9rZW4u
-Cj4gT25lIGV4YW1wbGUgYXJlIHRoZSBSb2NrY2hpcCByazMyMjggYW5kIHJrMzMyOCBzb2NzIHRo
-YXQgdXNlIGEgc2VwYXJhdGUKPiBwaHkgZnJvbSBJbm5vc2lsaWNvbiBidXQgc3RpbGwgcmVwb3J0
-IHRoZSBIRE1JMjBfVFggdHlwZS4KPiAKPiBTbyBhbGxvdyB0aGUgZ2x1ZSBkcml2ZXIgdG8gZm9y
-Y2UgYSBzcGVjaWZpYyB0eXBlLCBsaWtlIHRoZSB2ZW5kb3ItcGh5Cj4gZm9yIHRoZXNlIGNhc2Vz
-Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpU
-ZXN0ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJk
-LmNvbT4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
-IHwgNCArKystCj4gIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmggICAgICAgICAgICAgIHwg
-MSArCj4gIDIgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4g
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
-Cj4gYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyBpbmRleAo+IGY5
-ODAyMzk5Y2MwZC4uNTBkMjMxNjI2YzRkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
-eW5vcHN5cy9kdy1oZG1pLmMKPiBAQCAtMjIxOCw3ICsyMjE4LDkgQEAgc3RhdGljIGludCBkd19o
-ZG1pX2RldGVjdF9waHkoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gIAl1bnNpZ25lZCBpbnQgaTsK
-PiAgCXU4IHBoeV90eXBlOwo+IAo+IC0JcGh5X3R5cGUgPSBoZG1pX3JlYWRiKGhkbWksIEhETUlf
-Q09ORklHMl9JRCk7Cj4gKwlwaHlfdHlwZSA9IChoZG1pLT5wbGF0X2RhdGEtPnBoeV9mb3JjZV90
-eXBlKSA/Cj4gKwkJCQloZG1pLT5wbGF0X2RhdGEtPnBoeV9mb3JjZV90eXBlIDoKPiArCQkJCWhk
-bWlfcmVhZGIoaGRtaSwgSERNSV9DT05GSUcyX0lEKTsKCk5vIG5lZWQgZm9yIHBhcmVudGhlc2Vz
-LiBZb3UgY291bGQgZXZlbiB3cml0ZSB0aGlzCgogICAgICAgIHBoeV90eXBlID0gaGRtaS0+cGxh
-dF9kYXRhLT5waHlfZm9yY2VfdHlwZSA/IAogICAgICAgICAgICAgICAgIDogaGRtaV9yZWFkYiho
-ZG1pLCBIRE1JX0NPTkZJRzJfSUQpOwoKYnV0IHRoYXQncyB1cCB0byB5b3UuCgpXaGF0IGlmIGEg
-ZHJpdmVyIHdhbnRzIHRvIGZvcmNlIHRoZSBQSFkgdHlwZSB0byBEV19IRE1JX1BIWV9EV0NfSERN
-SV9UWF9QSFkgPyAKT3IgZG8geW91IGV4cGVjdCBvbmx5IHRoZSBEV19IRE1JX1BIWV9WRU5ET1Jf
-UEhZIHR5cGUgdG8gYmUgZm9yY2VkID8gSWYgc28sIHdlIApjb3VsZCBhbHNvIHVzZSBhIGZvcmNl
-X3ZlbmRvcl9waHkgYm9vbGVhbiBmaWVsZCBpbnN0ZWFkIG9mIHBoeV9mb3JjZV90eXBlLgoKPiAg
-CWlmIChwaHlfdHlwZSA9PSBEV19IRE1JX1BIWV9WRU5ET1JfUEhZKSB7Cj4gIAkJLyogVmVuZG9y
-IFBIWXMgcmVxdWlyZSBzdXBwb3J0IGZyb20gdGhlIGdsdWUgbGF5ZXIuICovCj4gZGlmZiAtLWdp
-dCBhL2luY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmggYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdf
-aGRtaS5oCj4gaW5kZXggZGQyYThjZjdkMjBiLi4zYzFkZGRiMDliOTUgMTAwNjQ0Cj4gLS0tIGEv
-aW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaAo+ICsrKyBiL2luY2x1ZGUvZHJtL2JyaWRnZS9k
-d19oZG1pLmgKPiBAQCAtMTMzLDYgKzEzMyw3IEBAIHN0cnVjdCBkd19oZG1pX3BsYXRfZGF0YSB7
-Cj4gIAljb25zdCBzdHJ1Y3QgZHdfaGRtaV9waHlfb3BzICpwaHlfb3BzOwo+ICAJY29uc3QgY2hh
-ciAqcGh5X25hbWU7Cj4gIAl2b2lkICpwaHlfZGF0YTsKPiArCXU4IHBoeV9mb3JjZV90eXBlOwo+
-IAo+ICAJLyogU3lub3BzeXMgUEhZIHN1cHBvcnQgKi8KPiAgCWNvbnN0IHN0cnVjdCBkd19oZG1p
-X21wbGxfY29uZmlnICptcGxsX2NmZzsKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 02/19/2018 11:11 AM, Minas Harutyunyan wrote:
+> On 2/19/2018 12:51 PM, Marek Vasut wrote:
+>> On 02/19/2018 09:19 AM, Minas Harutyunyan wrote:
+>>> On 2/17/2018 12:07 AM, Marek Vasut wrote:
+>>>> On 02/16/2018 06:59 AM, Minas Harutyunyan wrote:
+>>>>> On 2/15/2018 5:20 PM, Mirza Krak wrote:
+>>>>>> On 14 February 2018 at 13:07, Minas Harutyunyan
+>>>>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+>>>>>>> On 2/14/2018 12:57 PM, Mirza Krak wrote:
+>>>>>>>> On 8 February 2018 at 14:53, Minas Harutyunyan
+>>>>>>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+>>>>>>
+>>>>>> < snip >
+>>>>>>
+>>>>>>>
+>>>>>>> I reviewed your interrupt count log again. About 140,000 interrupts in 2
+>>>>>>> seconds, obviously it's not SOF only interrupts. More probably, its NAK
+>>>>>>> respond interrupts to SSPLIT/CSPLIT transactions. For this case I can
+>>>>>>> recommend you to apply patch from Douglas Anderson: "[PATCH v2] usb:
+>>>>>>> dwc2: host: Don't retry NAKed transactions right away" which already
+>>>>>>> merged to 4.16-rc1.
+>>>>>>>
+>>>>>>> In your setups you see different behavior on different HUBs. Your HUBs
+>>>>>>> have different "TT think time": 8 and 32. In USB2.0 spec "TT think time"
+>>>>>>> described as follow "TT requires at most 8/32 FS bit times of inter
+>>>>>>> transaction gap on a full-/low-speed downstream bus". So, your "worst"
+>>>>>>> HUB with "TT think time"=8 sending more frequently SSPLIT/CSPLIT
+>>>>>>> transactions which replied by NAK. As result you see about 4 time more
+>>>>>>> interrupts comparing to "good" HUB. Could you please check interrupts
+>>>>>>> count for "good" HUB and check "4 time" hypothesis.
+>>>>>>
+>>>>>> Did some further testing. The "good" HUB is actually as bad as the
+>>>>>> "bad" HUB, and it was my setup that caused the different behavior. Did
+>>>>>> not use the same devices etc.
+>>>>>>
+>>>>>> Once I made sure that the configuration and setup was the same on both
+>>>>>> board I could see that the behaved similarly. And that is the
+>>>>>> following interrupt load:
+>>>>>>
+>>>>>> - BT USB (FS) = ~80k interrupts / second
+>>>>>> - Keyboard (FS) = ~80k interrupts / second
+>>>>>> - WiFI USB (HS) = ~8k interrupts / second
+>>>>>>
+>>>>>> After applying the suggested patch [1], it is steady around 8k
+>>>>>> interrupts / second no matter what device I connect (HS/FS,
+>>>>>> HUB/NO-HUB). Which is acceptable and usable.
+>>>>>
+>>>>> Great!
+>>>>
+>>>> So 8k IRQs per second is what I should expect from this HW with HS
+>>>> device attached, that's normal and cannot be reduced ?
+>>>>
+>>> If core acting as Host in Buffer DMA mode then 8k IRQs per second (SOF
+>>> interrupts) is expected if connected device(s) has periodic endpoint.
+>>
+>> Is there a way to reduce that or is that the absolute minimum in HS mode?
+>>
+> We already discussed, in this email thread earlier, why SOF interrupts 
+> required and unmasked.
+> Only in case when connected device with CTRL+BLK EP's only (like flash 
+> drive) and directly connected to cores root HUB, SOF's will be masked.
+
+That's the setup I have on Altera SoCFPGA, yet the SOFs are still present.
+
+-- 
+Best regards,
+Marek Vasut
