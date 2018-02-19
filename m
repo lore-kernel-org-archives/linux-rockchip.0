@@ -1,16 +1,16 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 8/8] drm/rockchip: dw_hdmi: add dw-hdmi support for the
- rk3328
-Date: Mon, 19 Feb 2018 21:46:04 +0100
-Message-ID: <6129590.ZtzF0TqO4l@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 5/8] dt-bindings: allow optional phys in Rockchip
+ dw_hdmi binding
+Date: Mon, 19 Feb 2018 14:26:43 -0600
+Message-ID: <20180219202643.mmngucoajdc6kiis@rob-hp-laptop>
 References: <20180216204158.29839-1-heiko@sntech.de>
- <20180216204158.29839-9-heiko@sntech.de>
- <20180219202853.eovn6onxtk7p7f4p@rob-hp-laptop>
+ <20180216204158.29839-6-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180219202853.eovn6onxtk7p7f4p@rob-hp-laptop>
+Content-Disposition: inline
+In-Reply-To: <20180216204158.29839-6-heiko@sntech.de>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,38 +20,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
 Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, architt@codeaurora.org, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, kishon@ti.com, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
-
-Am Montag, 19. Februar 2018, 21:28:53 CET schrieb Rob Herring:
-> On Fri, Feb 16, 2018 at 09:41:58PM +0100, Heiko Stuebner wrote:
-> > The rk3328 uses an external hdmi phy from Innosilicon which uses
-> > the generic phy framework for access. Add the necessary data
-> > and the compatible for it.
-> > 
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> >  .../bindings/display/rockchip/dw_hdmi-rockchip.txt |   1 +
-> >  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 106 +++++++++++++++++++++
-> >  2 files changed, 107 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
-> > index 937bfb472e1d..39143424a474 100644
-> > --- a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
-> > +++ b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
-> > @@ -13,6 +13,7 @@ Required properties:
-> >  
-> >  - compatible: should be one of the following:
-> >  		"rockchip,rk3288-dw-hdmi"
-> > +		"rockchip,rk3328-dw-hdmi"
+On Fri, Feb 16, 2018 at 09:41:55PM +0100, Heiko Stuebner wrote:
+> Some newer Rockchip SoCs use an Innosilicon hdmiphy accessed via general
+> mmio, so allow these to be referenced via the regular phy interfaces
+> and therefore add optional phy-related properties to the binding.
 > 
-> Is Designware (Synopsys) now Innosilicon?
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Nope :-) .
-
-The rk3328 just combines the Designware dw-hdmi with an (external)
-hdmi-phy from Innosilicon, where the hdmi-phy otherwise was was
-integrated into the hdmi ip-block.
+Reviewed-by: Rob Herring <robh@kernel.org>
