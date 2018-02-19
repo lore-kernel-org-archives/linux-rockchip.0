@@ -1,15 +1,21 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: add a standalone version of the
- rk3399 sapphire
-Date: Mon, 19 Feb 2018 09:16:17 +0100
-Message-ID: <7102557.xWtZfjvKIZ@phil>
-References: <CAAMcf8CY1m+998+GpD2wOfAZb=oZNkL2GqYu_o5piGEh76uoYw@mail.gmail.com>
- <3840224.sEPfbROKII@phil>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: High CPU load produced by USB (DW2)
+Date: Mon, 19 Feb 2018 08:19:40 +0000
+Message-ID: <410670D7E743164D87FA6160E7907A560113A6E9E6@am04wembxa.internal.synopsys.com>
+References: <CALw8SCXuOCpndakFBRbP7FpJKOSH+nzNStkszWD4XTXVSK1zyQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A67F86@am04wembxa.internal.synopsys.com>
+ <CALw8SCVALfRZiF5sZKn0AcXaF6m6GSXXxKAGj2O+ndbgpeCiqw@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A68287@am04wembxa.internal.synopsys.com>
+ <CALw8SCX2SrR=ukfz1vn_wiTbyTv7_6xyLSPRQhkTdSQ=Y8MA3g@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6B365@am04wembxa.internal.synopsys.com>
+ <CALw8SCVzqAPx56hEDWWtvijeXz9g3roWDyithKYZENnfNDcRvQ@mail.gmail.com>
+ <410670D7E743164D87FA6160E7907A560113A6C4CA@am04wembxa.internal.synopsys.com>
+ <ec690b89-2c90-7f1d-86cd-582cef96baf3@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3840224.sEPfbROKII@phil>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,64 +25,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Mirza Krak <mirza.krak-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: gregkh <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-usb <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-While the sapphire board is a system-on-module and mostly used with the
-excavator baseboard, it is also possible to use it standalone without
-any base. So add a board-variant for this type.
+On 2/17/2018 12:07 AM, Marek Vasut wrote:
+> On 02/16/2018 06:59 AM, Minas Harutyunyan wrote:
+>> On 2/15/2018 5:20 PM, Mirza Krak wrote:
+>>> On 14 February 2018 at 13:07, Minas Harutyunyan
+>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+>>>> On 2/14/2018 12:57 PM, Mirza Krak wrote:
+>>>>> On 8 February 2018 at 14:53, Minas Harutyunyan
+>>>>> <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+>>>
+>>> < snip >
+>>>
+>>>>
+>>>> I reviewed your interrupt count log again. About 140,000 interrupts in 2
+>>>> seconds, obviously it's not SOF only interrupts. More probably, its NAK
+>>>> respond interrupts to SSPLIT/CSPLIT transactions. For this case I can
+>>>> recommend you to apply patch from Douglas Anderson: "[PATCH v2] usb:
+>>>> dwc2: host: Don't retry NAKed transactions right away" which already
+>>>> merged to 4.16-rc1.
+>>>>
+>>>> In your setups you see different behavior on different HUBs. Your HUBs
+>>>> have different "TT think time": 8 and 32. In USB2.0 spec "TT think time"
+>>>> described as follow "TT requires at most 8/32 FS bit times of inter
+>>>> transaction gap on a full-/low-speed downstream bus". So, your "worst"
+>>>> HUB with "TT think time"=8 sending more frequently SSPLIT/CSPLIT
+>>>> transactions which replied by NAK. As result you see about 4 time more
+>>>> interrupts comparing to "good" HUB. Could you please check interrupts
+>>>> count for "good" HUB and check "4 time" hypothesis.
+>>>
+>>> Did some further testing. The "good" HUB is actually as bad as the
+>>> "bad" HUB, and it was my setup that caused the different behavior. Did
+>>> not use the same devices etc.
+>>>
+>>> Once I made sure that the configuration and setup was the same on both
+>>> board I could see that the behaved similarly. And that is the
+>>> following interrupt load:
+>>>
+>>> - BT USB (FS) = ~80k interrupts / second
+>>> - Keyboard (FS) = ~80k interrupts / second
+>>> - WiFI USB (HS) = ~8k interrupts / second
+>>>
+>>> After applying the suggested patch [1], it is steady around 8k
+>>> interrupts / second no matter what device I connect (HS/FS,
+>>> HUB/NO-HUB). Which is acceptable and usable.
+>>
+>> Great!
+> 
+> So 8k IRQs per second is what I should expect from this HW with HS
+> device attached, that's normal and cannot be reduced ?
+> 
+If core acting as Host in Buffer DMA mode then 8k IRQs per second (SOF 
+interrupts) is expected if connected device(s) has periodic endpoint.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- Documentation/devicetree/bindings/arm/rockchip.txt |  4 ++++
- arch/arm64/boot/dts/rockchip/Makefile              |  1 +
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts   | 12 ++++++++++++
- 3 files changed, 17 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 9a3e98356b1e..1c1d62d03c4f 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -185,6 +185,10 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-       - compatible = "rockchip,rk3399-evb", "rockchip,rk3399";
- 
-+- Rockchip RK3399 Sapphire board standalone:
-+    Required root node properties:
-+      - compatible = "rockchip,rk3399-sapphire", "rockchip,rk3399";
-+
- - Rockchip RK3399 Sapphire Excavator board:
-     Required root node properties:
-       - compatible = "rockchip,rk3399-sapphire-excavator", "rockchip,rk3399";
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 1e57f87f30c4..48a83f882947 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -12,4 +12,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-firefly.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-kevin.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-new file mode 100644
-index 000000000000..5a58060447cf
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-@@ -0,0 +1,12 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2018 Fuzhou Rockchip Electronics Co., Ltd.
-+ */
-+
-+/dts-v1/;
-+#include "rk3399-sapphire.dtsi"
-+
-+/ {
-+	model = "Sapphire-RK3399 Board";
-+	compatible = "rockchip,rk3399-sapphire", "rockchip,rk3399";
-+};
--- 
-2.15.1
+Thanks,
+Minas
