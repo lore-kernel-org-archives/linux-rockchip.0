@@ -1,47 +1,100 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 03/43] drm/rockchip: Respect page offset for PRIME mmap calls
-Date: Sun, 18 Feb 2018 11:53:49 +0100
-Message-ID: <3167776.tAZEmiy1TT@phil>
-References: <20180130202913.28724-1-thierry.escande@collabora.com> <20180130202913.28724-4-thierry.escande@collabora.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: [PATCH 1/3] drm/rockchip: Clear all interrupts before requesting the
+ IRQ
+Date: Tue, 20 Feb 2018 13:01:18 +0000
+Message-ID: <20180220130120.5254-2-marc.zyngier@arm.com>
+References: <20180220130120.5254-1-marc.zyngier@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180130202913.28724-4-thierry.escande@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yakir Yang <ykk@rock-chips.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Haixia Shi <hshi@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180220130120.5254-1-marc.zyngier@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+Cc: David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 30. Januar 2018, 21:28:33 CET schrieb Thierry Escande:
-> From: Ørjan Eide <orjan.eide@arm.com>
-> 
-> When mapping external DMA-bufs through the PRIME mmap call, we might be
-> given an offset which has to be respected. However for the internal DRM
-> GEM mmap path, we have to ignore the fake mmap offset used to identify
-> the buffer only. Currently the code always zeroes out vma->vm_pgoff,
-> which breaks the former.
-> 
-> This patch fixes the problem by moving the vm_pgoff assignment to a
-> function that is used only for GEM mmap path, so that the PRIME path
-> retains the original offset.
-> 
-> Cc: Daniel Kurtz <djkurtz@chromium.org>
-> Signed-off-by: Ørjan Eide <orjan.eide@arm.com>
-> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
+Calling request_irq() followed by disable_irq() is usually a bad idea,
+specially if the interrupt can be pending, and you're not yet in a
+position to handle it.
 
-applied to drm-misc.
+This is exactly what happens on my kevin system when rebooting in a
+second kernel using kexec: Some interrupt is left pending from
+the previous kernel, and we take it too early, before disable_irq()
+could do anything.
 
-So I've picked up the "easy" patches that I have read somewhat often
-and also tested myself using the lima driver on some Rockchip socs
-(rk3036 + mali400 and rk3328 + mali450).
+Let's clear the pending interrupts as we initialize the HW, and move
+the interrupt request after that point. This ensures that we're in
+a sane state when the interrupt is requested.
 
-I'll try to also look at the rest but no guarantees on timing as they
-look a lot more involved in real graphics-related stuff :-)
+Cc: stable@vger.kernel.org
+Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
 
-
-Thanks
-Heiko
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index ba7505292b78..7b224e08cbf1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1414,6 +1414,9 @@ static int vop_initial(struct vop *vop)
+ 	usleep_range(10, 20);
+ 	reset_control_deassert(ahb_rst);
+ 
++	VOP_INTR_SET_TYPE(vop, clear, INTR_MASK, 1);
++	VOP_INTR_SET_TYPE(vop, enable, INTR_MASK, 0);
++
+ 	memcpy(vop->regsbak, vop->regs, vop->len);
+ 
+ 	VOP_REG_SET(vop, misc, global_regdone_en, 1);
+@@ -1569,17 +1572,9 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 
+ 	mutex_init(&vop->vsync_mutex);
+ 
+-	ret = devm_request_irq(dev, vop->irq, vop_isr,
+-			       IRQF_SHARED, dev_name(dev), vop);
+-	if (ret)
+-		return ret;
+-
+-	/* IRQ is initially disabled; it gets enabled in power_on */
+-	disable_irq(vop->irq);
+-
+ 	ret = vop_create_crtc(vop);
+ 	if (ret)
+-		goto err_enable_irq;
++		return ret;
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 
+@@ -1590,13 +1585,19 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 		goto err_disable_pm_runtime;
+ 	}
+ 
++	ret = devm_request_irq(dev, vop->irq, vop_isr,
++			       IRQF_SHARED, dev_name(dev), vop);
++	if (ret)
++		goto err_disable_pm_runtime;
++
++	/* IRQ is initially disabled; it gets enabled in power_on */
++	disable_irq(vop->irq);
++
+ 	return 0;
+ 
+ err_disable_pm_runtime:
+ 	pm_runtime_disable(&pdev->dev);
+ 	vop_destroy_crtc(vop);
+-err_enable_irq:
+-	enable_irq(vop->irq); /* To balance out the disable_irq above */
+ 	return ret;
+ }
+ 
+-- 
+2.14.2
