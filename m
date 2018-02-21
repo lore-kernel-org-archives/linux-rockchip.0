@@ -1,104 +1,122 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v2 3/8] drm/bridge: dw-hdmi: allow overriding of phy-type
- reading
-Date: Wed, 21 Feb 2018 21:15:26 +0200
-Message-ID: <4888467.l85TM0qZuY@avalon>
-References: <20180216204158.29839-1-heiko@sntech.de>
- <16512170.VqSpgYmDPS@avalon> <3085916.UFWCNBIZfU@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add rk3328 display nodes
+Date: Wed, 21 Feb 2018 22:57:47 +0100
+Message-ID: <2909171.GCRVT3W7gj@phil>
+References: <20180216223817.2821-1-heiko@sntech.de> <2712253.IuLOJ454Fc@phil>
+ <ca7e8c5d-55e3-0dc9-1132-f542cb577693@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <3085916.UFWCNBIZfU@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, kishon@ti.com, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <ca7e8c5d-55e3-0dc9-1132-f542cb577693-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiBXZWRuZXNkYXksIDIxIEZlYnJ1YXJ5IDIwMTggMjA6NTU6MTIgRUVUIEhl
-aWtvIFN0dWVibmVyIHdyb3RlOgo+IEFtIE1vbnRhZywgMTkuIEZlYnJ1YXIgMjAxOCwgMjA6MDY6
-NDAgQ0VUIHNjaHJpZWIgTGF1cmVudCBQaW5jaGFydDoKPiA+IE9uIE1vbmRheSwgMTkgRmVicnVh
-cnkgMjAxOCAyMDo0Njo0NiBFRVQgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiA+IEFtIE1vbnRh
-ZywgMTkuIEZlYnJ1YXIgMjAxOCwgMTc6NTk6MDIgQ0VUIHNjaHJpZWIgTGF1cmVudCBQaW5jaGFy
-dDoKPiA+ID4gPiBPbiBGcmlkYXksIDE2IEZlYnJ1YXJ5IDIwMTggMjI6NDE6NTMgRUVUIEhlaWtv
-IFN0dWVibmVyIHdyb3RlOgo+ID4gPiA+PiBJbiBzb21lIElQIGltcGxlbWVudGF0aW9ucyB0aGUg
-cmVhZGluZyBvZiB0aGUgcGh5LXR5cGUgbWF5IGJlIGJyb2tlbi4KPiA+ID4gPj4gT25lIGV4YW1w
-bGUgYXJlIHRoZSBSb2NrY2hpcCByazMyMjggYW5kIHJrMzMyOCBzb2NzIHRoYXQgdXNlIGEKPiA+
-ID4gPj4gc2VwYXJhdGUKPiA+ID4gPj4gcGh5IGZyb20gSW5ub3NpbGljb24gYnV0IHN0aWxsIHJl
-cG9ydCB0aGUgSERNSTIwX1RYIHR5cGUuCj4gPiA+ID4+IAo+ID4gPiA+PiBTbyBhbGxvdyB0aGUg
-Z2x1ZSBkcml2ZXIgdG8gZm9yY2UgYSBzcGVjaWZpYyB0eXBlLCBsaWtlIHRoZQo+ID4gPiA+PiB2
-ZW5kb3ItcGh5Cj4gPiA+ID4+IGZvciB0aGVzZSBjYXNlcy4KPiA+ID4gPj4gCj4gPiA+ID4+IFNp
-Z25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gPiA+ID4gCj4g
-PiA+ID4gVGVzdGVkLWJ5OiBMYXVyZW50IFBpbmNoYXJ0IDxsYXVyZW50LnBpbmNoYXJ0QGlkZWFz
-b25ib2FyZC5jb20+Cj4gPiA+IAo+ID4gPiB0aGFua3MgZm9yIHRlc3RpbmcgOi0pCj4gPiA+IAo+
-ID4gPiA+PiAtLS0KPiA+ID4gPj4gCj4gPiA+ID4+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
-bm9wc3lzL2R3LWhkbWkuYyB8IDQgKysrLQo+ID4gPiA+PiAgaW5jbHVkZS9kcm0vYnJpZGdlL2R3
-X2hkbWkuaCAgICAgICAgICAgICAgfCAxICsKPiA+ID4gPj4gIDIgZmlsZXMgY2hhbmdlZCwgNCBp
-bnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gPiA+ID4+IAo+ID4gPiA+PiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiA+ID4gPj4gYi9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyBpbmRleAo+ID4gPiA+PiBm
-OTgwMjM5OWNjMGQuLjUwZDIzMTYyNmM0ZCAxMDA2NDQKPiA+ID4gPj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiA+ID4gPj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiA+ID4gPj4gQEAgLTIyMTgsNyArMjIx
-OCw5IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9kZXRlY3RfcGh5KHN0cnVjdCBkd19oZG1pCj4gPiA+
-ID4+ICpoZG1pKQo+ID4gPiA+PiAKPiA+ID4gPj4gIAl1bnNpZ25lZCBpbnQgaTsKPiA+ID4gPj4g
-IAl1OCBwaHlfdHlwZTsKPiA+ID4gPj4gCj4gPiA+ID4+IC0JcGh5X3R5cGUgPSBoZG1pX3JlYWRi
-KGhkbWksIEhETUlfQ09ORklHMl9JRCk7Cj4gPiA+ID4+ICsJcGh5X3R5cGUgPSAoaGRtaS0+cGxh
-dF9kYXRhLT5waHlfZm9yY2VfdHlwZSkgPwo+ID4gPiA+PiArCQkJCWhkbWktPnBsYXRfZGF0YS0+
-cGh5X2ZvcmNlX3R5cGUgOgo+ID4gPiA+PiArCQkJCWhkbWlfcmVhZGIoaGRtaSwgSERNSV9DT05G
-SUcyX0lEKTsKPiA+ID4gPiAKPiA+ID4gPiBObyBuZWVkIGZvciBwYXJlbnRoZXNlcy4gWW91IGNv
-dWxkIGV2ZW4gd3JpdGUgdGhpcwo+ID4gPiA+IAo+ID4gPiA+ICAgICAgICAgcGh5X3R5cGUgPSBo
-ZG1pLT5wbGF0X2RhdGEtPnBoeV9mb3JjZV90eXBlID8KPiA+ID4gPiAgICAgICAgIAo+ID4gPiA+
-ICAgICAgICAgICAgICAgICAgOiBoZG1pX3JlYWRiKGhkbWksIEhETUlfQ09ORklHMl9JRCk7Cj4g
-PiA+ID4gCj4gPiA+ID4gYnV0IHRoYXQncyB1cCB0byB5b3UuCj4gPiA+ID4gCj4gPiA+ID4gV2hh
-dCBpZiBhIGRyaXZlciB3YW50cyB0byBmb3JjZSB0aGUgUEhZIHR5cGUgdG8KPiA+ID4gPiBEV19I
-RE1JX1BIWV9EV0NfSERNSV9UWF9QSFkgPyBPciBkbyB5b3UgZXhwZWN0IG9ubHkgdGhlCj4gPiA+
-ID4gRFdfSERNSV9QSFlfVkVORE9SX1BIWSB0eXBlIHRvIGJlIGZvcmNlZCA/IElmIHNvLCB3ZSBj
-b3VsZCBhbHNvIHVzZSBhCj4gPiA+ID4gZm9yY2VfdmVuZG9yX3BoeSBib29sZWFuIGZpZWxkIGlu
-c3RlYWQgb2YgcGh5X2ZvcmNlX3R5cGUuCj4gPiA+IAo+ID4gPiBJbml0aWFsbHkgSSB0aG91Z2h0
-IG9mIGltcGxpY2l0bHkgb3ZlcnJpZGluZyB0aGUgcGh5LXR5cGUgd2hlbiB0aGUKPiA+ID4gZXh0
-ZXJuYWwKPiA+ID4gcGh5LW9wcyBhcmUgc2V0LCBidXQgZGVjaWRlZCBhZ2FpbnN0IGl0IGJlY2F1
-c2UgdGhhdCBtaWdodCBicmVhawo+ID4gPiAodGhlb3JldGljYWwpIGNhc2VzIHdoZXJlIHBoeS1v
-cHMgbWF5IGJlIGFsd2F5cyBzZXQgYnV0IG9ubHkgdXNlZCB3aGVuCj4gPiA+IHRoZSBpcCByZXR1
-cm5zIGEgbWF0Y2hpbmcgcGh5LXR5cGUgYW5kIHRodXMgY2FtZSB0byBqdXN0IGFsbG93Cj4gPiA+
-IG92ZXJyaWRpbmcKPiA+ID4gdGhhdCB0eXBlIHJlYWRpbmcuCj4gPiA+IAo+ID4gPiBBcyBmb3Ig
-bGltaXRpbmcgdG8gb25seSBhbGxvdyBmb3JjaW5nIHRoZSB2ZW5kb3IgdHlwZSwgbXkgcGVyc29u
-YWwKPiA+ID4gZmVlbGluZwo+ID4gPiB3b3VsZCBiZSB0byBhbGxvdyBnbHVlIGRyaXZlcnMgdG8g
-anVzdCBvdmVycmlkZSB0aGUgdHlwZSBhcyBuZWVkZWQKPiA+ID4gbGlrZSBkb25lIGluIHRoZSBw
-YXRjaC4gQXMgY2FuIGJlIHNlZW4gb24gdGhlIHJrMzMyOCwgdGhlIGR3LWhkbWkKPiA+ID4gcmVw
-b3J0cyBvbmUgb2YgdGhlIHJlZ3VsYXIgcGh5cyAoZm9yZ290IHdoaWNoIG9uZSkgYnV0IGluc3Rl
-YWQgaGFzIGEKPiA+ID4gY29tcGxldGVseSBzZXBhcmF0ZSBpcCBmb3IgaXQsIHNvIEknZCBndWVz
-cyB3ZSBtYXkgdmVyeSB3ZWxsIHNlZQo+ID4gPiBpbXBsZW1lbnRhdGlvbnMgdGhhdCBqdXN0IHJl
-cG9ydCBhIHdyb25nIHR5cGUgKG5vIHZlbmRvci10eXBlKS4KPiA+ID4gCj4gPiA+IFNvIEkgZG9u
-J3Qgc2VlIGFuIGlzc3VlIHdpdGggZHJpdmVycyBiZWluZyBhbGxvd2VkIHRvIHNldCB0aGUgdHlw
-ZSB0bwo+ID4gPiBEV19IRE1JX1BIWV9EV0NfSERNSV9UWF9QSFksIGJlY2F1c2Ugc3VjaCBjYXNl
-cyBtYXkgZXhpc3QgaW4gdGhlCj4gPiA+IGZ1dHVyZSBhbmQgSSdkIGV4cGVjdCBkcml2ZXIgYXV0
-aG9ycyB0byBzb21ld2hhdCBrbm93IHdoYXQgdGhleSdyZQo+ID4gPiBkb2luZy4KPiA+IAo+ID4g
-TXkgcG9pbnQgd2FzIHRoYXQgRFdfSERNSV9QSFlfRFdDX0hETUlfVFhfUEhZID09IDAsIHNvIHRy
-eWluZyB0byBmb3JjZQo+ID4gRFdfSERNSV9QSFlfRFdDX0hETUlfVFhfUEhZIHRocm91Z2ggcGh5
-X2ZvcmNlX3R5cGUgd29uJ3Qgd29yay4KPiAKPiBBcmdoLCBvayBub3cgSSBnZXQgaXQuCj4gCj4g
-U28gaXQgd2lsbCBuZWVkIHNvbWUgYWRhcHRpb24gZm9yIHRoYXQsIGJlY2F1c2UgYWxsb3dpbmcg
-ZXZlcnl0aGluZyBidXQKPiBEV19IRE1JX1BIWV9EV0NfSERNSV9UWF9QSFkgd291bGQgYmUgcXVp
-dGUgY291bnRlci1pbnR1aXRpdmUgOi0pIC4KPiAKPiBFeHBlY3RpbmcgcGh5X2ZvcmNlX3R5cGUg
-PT0gLTEgZm9yIHJlZ3VsYXIgcmVhZHMgc291bmRzIGJhZCBhcyB3ZWxsLAo+IGJlY2F1c2UgdGhl
-biBldmVyeSBnbHVlIGRyaXZlciB3b3VsZCBuZWVkIHRvIHNldCB0aGF0LCB3aGljaCBjdXJyZW50
-bHkKPiBnZXRzIHNvbHZlcyBhdXRvbWF0aWNhbGx5IHdoZW4gdGhlIGZpZWxkIGlzIG5vdCBleHBs
-aWNpdGx5IHNldC4KPiAKPiBTbyBnb2luZyB3aXRoIHlvdXIgZm9yY2VfdmVuZG9yX3BoeSBpZGVh
-IHNvdW5kcyBsZXNzIGludHJ1c2l2ZSBmb3IgdGhlCj4gdGltZSBiZWluZyBhbmQgdW50aWwgdGhl
-cmUgaXMgYW4gYWN0dWFsIGNhc2Ugd2hlcmUgdGhlcmUgaXMgYSBkaWZmZXJlbnQKPiBpbnRlcm5h
-bCBwaHktdHlwZSBuZWNlc3Nhcnk/CgpUaGF0J3MgYXQgbGVhc3Qgd2hhdCBJJ2QgcmVjb21tZW5k
-LCBhcyBJIGRvbid0IHNlZSBhbnkgdXNlIGNhc2Ugbm93IGZvciAKb3ZlcnJpZGluZyB0aGUgaGFy
-ZHdhcmUtcmVwb3J0ZWQgUEhZIHR5cGUgdG8gYSBzdGFuZGFyZCBQSFkgdHlwZS4gSWYgd2UgZXZl
-ciAKZW5kIHVwIG5lZWRpbmcgdGhhdCBpbiB0aGUgZnV0dXJlIHdlIHdpbGwgb2YgY291cnNlIHN1
-cHBvcnQgaXQuCgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Mittwoch, 21. Februar 2018, 13:04:11 CET schrieb Robin Murphy:
+> On 20/02/18 22:08, Heiko Stuebner wrote:
+> > Hi Robin,
+> > 
+> > Am Dienstag, 20. Februar 2018, 14:14:31 CET schrieb Robin Murphy:
+> >> On 16/02/18 22:38, Heiko Stuebner wrote:
+> >>> Add the chain of display nodes from the core display-subsystem
+> >>> through the one vop to the dw-hdmi output.
+> >>>
+> >>> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> >>> ---
+> >>>    arch/arm64/boot/dts/rockchip/rk3328.dtsi | 56 ++++++++++++++++++++++++++++++++
+> >>>    1 file changed, 56 insertions(+)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> >>> index 1615effcc191..65b7d460a044 100644
+> >>> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> >>> @@ -185,6 +185,11 @@
+> >>>    		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
+> >>>    	};
+> >>>    
+> >>> +	display_subsystem: display-subsystem {
+> >>> +		compatible = "rockchip,display-subsystem";
+> >>> +		ports = <&vop_out>;
+> >>> +	};
+> >>> +
+> >>>    	psci {
+> >>>    		compatible = "arm,psci-1.0", "arm,psci-0.2";
+> >>>    		method = "smc";
+> >>> @@ -626,6 +631,28 @@
+> >>>    		status = "disabled";
+> >>>    	};
+> >>>    
+> >>> +	vop: vop@ff370000 {
+> >>> +		compatible = "rockchip,rk3328-vop";
+> >>> +		reg = <0x0 0xff370000 0x0 0x3efc>;
+> >>> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH 0>;
+> >>
+> >> Another of those rogue trailing zero cells has snuck in here.
+> > 
+> > Oh great.
+> > Either they are missing when needed or trailing when not needed :-) .
+> > 
+> > 
+> >> <digression>
+> >> Unfortunately, even having learned the difference between drm-next and
+> >> drm-misc-next (thanks for the pointer!) so I could apply this and the
+> >> other series, I only managed to get it to not-quite-work on the box I'm
+> >> currently reverse-engineering a mainline DT for (Beelink A1).
+> >>
+> >> I've got a monitor connected via HDMI-DVI (which the stock 3.10 Android
+> >> kernel *does* drive happily) - it appears to be detected, but when the
+> >> virtual console tries to come up I just see a handful of timeout splats
+> >> from drm_atomic_helper_wait_for_vblanks() and no signal at the monitor.
+> >>
+> >> Any idea where to start debugging? (I'm 99% certain I had your clk/next
+> >> branch pulled in as well since it looked significant, but I'll
+> >> double-check tonight)
+> > 
+> > I guess first interesting point would be to check if the edid of the monitor
+> > got read correctly. There are a bunch of funny GRF options related to i2c
+> > voltages and such that get wiggled on hotplug events and they're not
+> > really documented at all. (see all the *_5V_* constants in the dw-hdmi).
+> 
+> Cheers, that was indeed a fruitful starting point - EDID wasn't exactly 
+> the problem, but having decoded the blob dumped out of sysfs to check 
+> validity it appears the only native resolution mode my ancient Iiyama is 
+> advertising is 1280x1024@75Hz. That prompted me to go and faff with the 
+> TV (the only actual HDMI endpoint I own), and sure enough a 'regular' 
+> 1920x1080@60Hz works just fine. So, for patches 1 and 2 (fixed up to 
+> avoid the DTC warning):
+> 
+> Tested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+
+Nice :-)
+
+> I guess it might just be a case of the VOP and/or HDMI clocks struggling 
+> to attain an appropriate pixel clock, but the failure mode is really 
+> non-obvious - if the monitor is plugged in at boot I get 4 or 5 of the 
+> DRM_WARNs at various points, about 160 VOP interrupts somewhere along 
+> the line, and HDMI interrupts at a constant rate of around two per 
+> second; plugging it in after boot, however, just seems to silently do 
+> nothing (IIRC hotplugging the TV similarly did work as expected). If I 
+> find the time I might go back and try forcing a 60Hz mode to narrow 
+> things down a bit more.
+
+As I only have a standard 1080p display it's hard to check those edge cases,
+but the struggle for display frequencies follows us for quite some time
+already.
+
+The current default is to source the display clock from the hdmi-phy
+which contains its own pll, so I guess first order of business should
+probably be to determine which rate gets requested for your display
+and which rate gets set - as I'm guessing that we're missing rates.
+
+DRM_WARNS would be interesting I guess, can you post them?
+As for your hdmi-interrupts, from the dw-hdmi or the hdmi-phy?
