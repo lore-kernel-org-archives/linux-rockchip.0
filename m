@@ -1,14 +1,11 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add rk3328 display nodes
-Date: Wed, 21 Feb 2018 22:57:47 +0100
-Message-ID: <2909171.GCRVT3W7gj@phil>
-References: <20180216223817.2821-1-heiko@sntech.de> <2712253.IuLOJ454Fc@phil>
- <ca7e8c5d-55e3-0dc9-1132-f542cb577693@arm.com>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: USB3 regression in RK3399
+Date: Wed, 21 Feb 2018 22:58:35 +0100
+Message-ID: <CAAMcf8B5zpgbTsCu9t0rs9+jWkwRdO2C+KbF+NOt3ZTQx36aZA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ca7e8c5d-55e3-0dc9-1132-f542cb577693-5wv7dgnIgG8@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,105 +15,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 21. Februar 2018, 13:04:11 CET schrieb Robin Murphy:
-> On 20/02/18 22:08, Heiko Stuebner wrote:
-> > Hi Robin,
-> > 
-> > Am Dienstag, 20. Februar 2018, 14:14:31 CET schrieb Robin Murphy:
-> >> On 16/02/18 22:38, Heiko Stuebner wrote:
-> >>> Add the chain of display nodes from the core display-subsystem
-> >>> through the one vop to the dw-hdmi output.
-> >>>
-> >>> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> >>> ---
-> >>>    arch/arm64/boot/dts/rockchip/rk3328.dtsi | 56 ++++++++++++++++++++++++++++++++
-> >>>    1 file changed, 56 insertions(+)
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> >>> index 1615effcc191..65b7d460a044 100644
-> >>> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> >>> @@ -185,6 +185,11 @@
-> >>>    		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
-> >>>    	};
-> >>>    
-> >>> +	display_subsystem: display-subsystem {
-> >>> +		compatible = "rockchip,display-subsystem";
-> >>> +		ports = <&vop_out>;
-> >>> +	};
-> >>> +
-> >>>    	psci {
-> >>>    		compatible = "arm,psci-1.0", "arm,psci-0.2";
-> >>>    		method = "smc";
-> >>> @@ -626,6 +631,28 @@
-> >>>    		status = "disabled";
-> >>>    	};
-> >>>    
-> >>> +	vop: vop@ff370000 {
-> >>> +		compatible = "rockchip,rk3328-vop";
-> >>> +		reg = <0x0 0xff370000 0x0 0x3efc>;
-> >>> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH 0>;
-> >>
-> >> Another of those rogue trailing zero cells has snuck in here.
-> > 
-> > Oh great.
-> > Either they are missing when needed or trailing when not needed :-) .
-> > 
-> > 
-> >> <digression>
-> >> Unfortunately, even having learned the difference between drm-next and
-> >> drm-misc-next (thanks for the pointer!) so I could apply this and the
-> >> other series, I only managed to get it to not-quite-work on the box I'm
-> >> currently reverse-engineering a mainline DT for (Beelink A1).
-> >>
-> >> I've got a monitor connected via HDMI-DVI (which the stock 3.10 Android
-> >> kernel *does* drive happily) - it appears to be detected, but when the
-> >> virtual console tries to come up I just see a handful of timeout splats
-> >> from drm_atomic_helper_wait_for_vblanks() and no signal at the monitor.
-> >>
-> >> Any idea where to start debugging? (I'm 99% certain I had your clk/next
-> >> branch pulled in as well since it looked significant, but I'll
-> >> double-check tonight)
-> > 
-> > I guess first interesting point would be to check if the edid of the monitor
-> > got read correctly. There are a bunch of funny GRF options related to i2c
-> > voltages and such that get wiggled on hotplug events and they're not
-> > really documented at all. (see all the *_5V_* constants in the dw-hdmi).
-> 
-> Cheers, that was indeed a fruitful starting point - EDID wasn't exactly 
-> the problem, but having decoded the blob dumped out of sysfs to check 
-> validity it appears the only native resolution mode my ancient Iiyama is 
-> advertising is 1280x1024@75Hz. That prompted me to go and faff with the 
-> TV (the only actual HDMI endpoint I own), and sure enough a 'regular' 
-> 1920x1080@60Hz works just fine. So, for patches 1 and 2 (fixed up to 
-> avoid the DTC warning):
-> 
-> Tested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Hello,
+testing on the Sapphire board, which uses the RK3399 SoC, a regression
+has been found in v4.16-rc2 wrt v4.15.4 regarding the USB3 type-A port:
+In v4.15.4 it works in USB2-only mode.
+In v4.16-rc2 it does not work.
 
-Nice :-)
+It has been tested with a USB2 hub with 3 devices connected:
+a keyboard (USB1.1), a mouse (USB2) and a rtlwifi dongle (USB2).
 
-> I guess it might just be a case of the VOP and/or HDMI clocks struggling 
-> to attain an appropriate pixel clock, but the failure mode is really 
-> non-obvious - if the monitor is plugged in at boot I get 4 or 5 of the 
-> DRM_WARNs at various points, about 160 VOP interrupts somewhere along 
-> the line, and HDMI interrupts at a constant rate of around two per 
-> second; plugging it in after boot, however, just seems to silently do 
-> nothing (IIRC hotplugging the TV similarly did work as expected). If I 
-> find the time I might go back and try forcing a 60Hz mode to narrow 
-> things down a bit more.
+It has also been tested with a USB3-to-SATA converter. This one is not
+working in v4.15.4 nor in v4.16-rc2.
 
-As I only have a standard 1080p display it's hard to check those edge cases,
-but the struggle for display frequencies follows us for quite some time
-already.
+I have also tried the 6-patch series from Enric Balletbo i Serra
+"[PATCH v3 3/6] phy: rockchip-typec: enable usb3 host during usb3 phy power on"
+with the same result.
 
-The current default is to source the display clock from the hdmi-phy
-which contains its own pll, so I guess first order of business should
-probably be to determine which rate gets requested for your display
-and which rate gets set - as I'm guessing that we're missing rates.
+During boot, the following message appears a few times:
+"dwc3: failed to initialize core"
 
-DRM_WARNS would be interesting I guess, can you post them?
-As for your hdmi-interrupts, from the dw-hdmi or the hdmi-phy?
+The kernel configuration is:
+https://archlinuxarm.org/packages/aarch64/linux-aarch64-rc/files/config
+
+Is that a configuration issue, a bug in the kernel or something else?
+If it is a configuration issue, what should be changed?
+If it is a bug, can it be fixed?
+
+Regards,
+  Vicente.
