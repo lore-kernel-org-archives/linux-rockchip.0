@@ -1,59 +1,35 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add rk3328 display nodes
-Date: Thu, 22 Feb 2018 13:01:13 +0000
-Message-ID: <51423eea-c127-4922-bd90-5b05bb5aef48@arm.com>
-References: <20180216223817.2821-1-heiko@sntech.de> <2712253.IuLOJ454Fc@phil>
- <ca7e8c5d-55e3-0dc9-1132-f542cb577693@arm.com>
- <2909171.GCRVT3W7gj@phil>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL 1/2] Rockchip dts32 fixes for 4.16
+Date: Thu, 22 Feb 2018 17:47:17 +0100
+Message-ID: <CAK8P3a3nDL01+AX=Kf6s2mdOZq2c1=Jh1VDQizEZNfzJkihbVg@mail.gmail.com>
+References: <2137280.MWbT8y5lbZ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2909171.GCRVT3W7gj@phil>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2137280.MWbT8y5lbZ@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 21/02/18 21:57, Heiko Stuebner wrote:
-[...]
->> I guess it might just be a case of the VOP and/or HDMI clocks struggling
->> to attain an appropriate pixel clock, but the failure mode is really
->> non-obvious - if the monitor is plugged in at boot I get 4 or 5 of the
->> DRM_WARNs at various points, about 160 VOP interrupts somewhere along
->> the line, and HDMI interrupts at a constant rate of around two per
->> second; plugging it in after boot, however, just seems to silently do
->> nothing (IIRC hotplugging the TV similarly did work as expected). If I
->> find the time I might go back and try forcing a 60Hz mode to narrow
->> things down a bit more.
-> 
-> As I only have a standard 1080p display it's hard to check those edge cases,
-> but the struggle for display frequencies follows us for quite some time
-> already.
-> 
-> The current default is to source the display clock from the hdmi-phy
-> which contains its own pll, so I guess first order of business should
-> probably be to determine which rate gets requested for your display
-> and which rate gets set - as I'm guessing that we're missing rates.
-> 
-> DRM_WARNS would be interesting I guess, can you post them?
-> As for your hdmi-interrupts, from the dw-hdmi or the hdmi-phy?
+On Sun, Feb 18, 2018 at 4:40 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+>
+>   ARM: dts: rockchip: Fix DWMMC clocks (2018-02-16 10:45:16 +0100)
+>
+> ----------------------------------------------------------------
+> Fix wrong dwmmc tuning clocks that may make probing HS cards fail to
+> probe and removal of special opps from the phycore boards that may
+> run the cpu outside the soc-vendor specs.
 
-Oops, my mistake, it's just a regular WARN() at 
-drivers/gpu/drm/drm_atomic_helper.c:1348 - the IRQs I'm 99% sure were 
-from dw-hdmi (I really should stop doing this way past bedtime then 
-trying to remember the details days later...)
+Pulled into fixes, thanks!
 
-I'll turn on all the debug options and do some more digging over the 
-weekend (and actually save some logs this time!)
-
-Robin.
+      Arnd
