@@ -1,19 +1,21 @@
 From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
+Subject: Re: [PATCH v4 08/13] iommu/rockchip: Control clocks needed to access
 	the IOMMU
-Date: Fri, 23 Feb 2018 18:24:06 +0800
-Message-ID: <5A8FEBC6.4000408@rock-chips.com>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
-	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
-	<20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
-	<CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg@mail.gmail.com>
-	<CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
-	<5A72F7D2.1050201@rock-chips.com>
+Date: Fri, 23 Feb 2018 18:36:49 +0800
+Message-ID: <5A8FEEC1.5040303@rock-chips.com>
+References: <20180118115251.5542-1-jeffy.chen@rock-chips.com>
+	<20180118115251.5542-9-jeffy.chen@rock-chips.com>
+	<c188e6a9-744c-d984-545c-408607f35cc9@arm.com>
+	<5A60AE41.2050101@rock-chips.com>
+	<1f4b3c0d-1414-0012-a072-f4a11f432c21@rock-chips.com>
+	<5A654925.9020203@rock-chips.com> <5A6563FA.8080602@rock-chips.com>
+	<c05d4794-b76d-cfaa-d7ed-c44108117ee2@rock-chips.com>
+	<5A69B065.30501@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <5A72F7D2.1050201-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <5A69B065.30501-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
 	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
@@ -23,73 +25,59 @@ List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
 	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
 Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
 Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, list-Y9sIeH5OGRo@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, open-Y9sIeH5OGRo@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi guys,
 
-On 02/01/2018 07:19 PM, JeffyChen wrote:
->>>>>
->>>>>
->>>>> diff --git
->>>>> a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>>>> b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>>>> index 2098f7732264..33dd853359fa 100644
->>>>> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>>>> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
->>>>> @@ -14,6 +14,13 @@ Required properties:
->>>>>                       "single-master" device, and needs no
->>>>> additional information
->>>>>                       to associate with its master device.  See:
->>>>>
->>>>> Documentation/devicetree/bindings/iommu/iommu.txt
->>>>> +Optional properties:
->>>>> +- clocks : A list of master clocks requires for the IOMMU to be
->>>>> accessible
->>>>> +           by the host CPU. The number of clocks depends on the
->>>>> master
->>>>> +           block and might as well be zero. See [1] for generic clock
->>>>> +           bindings description.
+On 01/25/2018 06:24 PM, JeffyChen wrote:
+> On 01/25/2018 05:42 PM, Randy Li wrote:
 >>>>
->>>> Hardware blocks don't have a variable number of clock connections.
 >>>
->>> I think you underestimate the imagination of hardware designers. :)
->>
->> Learned long ago to never do that. If there are 2 ways to do
->> something, they will find a 3rd way.
->>
->>> For Rockchip IOMMU, there is a set of clocks, which all need to be
->>> enabled for IOMMU register access to succeed. The clocks are not
->>> directly fed to the IOMMU, but they are needed for the various buses
->>> and intermediate blocks on the way to the IOMMU to work.
->>
->> The binding should describe the clock connections, not what clocks a
->> driver needs (currently). It sounds like a lack of managing bus clocks
->> to me.
->>
->> In any case, the binding must be written so it can be verified. If you
->> can have any number of clocks with any names, there's no point in
->> documenting.
+>>> confirmed with Simon, there might be some iommus don't have a pd, and
+>> We use the pd to control the NIU node(not on upstream), without a pd or
+>> fake pd, none of the platform would work.
+> after talked offline, it's possible to have iommu without pd in upstream
+> kernel(and chromeos kernel), but on our internal kernel, the drivers
+> would require pd(or fake pd) to reset modules when error happens.
 >
-> the rockchip IOMMU is part of the master block in hardware, so it needs
-> to control the master's power domain and some of the master's clocks
-> when access it's registers.
->
-> and the number of clocks needed here, might be different between each
-> IOMMUs(according to which master block it belongs), it's a little like
-> our power domain:
-> https://elixir.free-electrons.com/linux/latest/source/arch/arm64/boot/dts/rockchip/rk3399.dtsi#L935
->
->
-> i'm not sure how to describe this correctly, is it ok use something like
-> "the same as it's master block"?
+> anyway, i think that means we do need clock control here.
 
-would it make sense to add a property to specify the master who owns the 
-iommu, and we can get all clocks(only some of those clocks are actually 
-needed) from it in the of_xlate()? and we can also reuse the clock-names 
-of that master to build clk_bulk_data and log errors in clk_bulk_get.
+found another reason to not depend on pd to control clocks.
+
+currently we are using pd's pm_clk to keep clocks enabled during power 
+on. but in our pd binding doc, that is not needed:
+- clocks (optional): phandles to clocks which need to be enabled while 
+power domain
+         switches state.
+
+confirmed with Caesar, the pm_clk only required for some old 
+chips(rk3288 for example) due to hardware issue.
+
+and i tested my chromebook kevin(rk3399), it works well after remove the 
+pm_clk:
+
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -478,7 +478,6 @@ static int rockchip_pm_add_one_domain(struct 
+rockchip_pmu *pmu,
+         pd->genpd.power_on = rockchip_pd_power_on;
+         pd->genpd.attach_dev = rockchip_pd_attach_dev;
+         pd->genpd.detach_dev = rockchip_pd_detach_dev;
+-       pd->genpd.flags = GENPD_FLAG_PM_CLK;
+
+will do more tests and send patch tomorrow.
 
 >
+>>> the CONFIG_PM could be disabled.I am hard to believe a modern platform
+>>> can work without that.
+>>>
+>>> so it might be better to control clocks in iommu driver itself.
+>> I won't
+>> insist how the version of the iommu patch on the upstream, I
+>> just post an idea here.
+>> The version for kernel 4.4 is under internal review, the implementation
+>> has been modified many times.
 >>
->> Rob
+>> I would suggest the managing clocks in pd is a more easy way and don't
+>> need to spare those thing in two places.
