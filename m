@@ -1,85 +1,53 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add rk3328 display nodes
-Date: Fri, 23 Feb 2018 13:35:36 +0100
-Message-ID: <4622499.nYCCa0LjWm@phil>
-References: <20180216223817.2821-1-heiko@sntech.de>
- <51423eea-c127-4922-bd90-5b05bb5aef48@arm.com>
- <318d8cd4-7da5-929a-fc01-41558aa12040@arm.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: vop: Init vskiplines in scl_vop_cal_scale()
+Date: Fri, 23 Feb 2018 09:09:39 -0500
+Message-ID: <20180223140939.GI223881@art_vandelay>
+References: <20180223062250.10470-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <318d8cd4-7da5-929a-fc01-41558aa12040-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20180223062250.10470-1-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hoegsberg@google.com, dcastagna@google.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
-
-Am Freitag, 23. Februar 2018, 13:27:55 CET schrieb Robin Murphy:
-> On 22/02/18 13:01, Robin Murphy wrote:
-> > On 21/02/18 21:57, Heiko Stuebner wrote:
-> > [...]
-> >>> I guess it might just be a case of the VOP and/or HDMI clocks struggling
-> >>> to attain an appropriate pixel clock, but the failure mode is really
-> >>> non-obvious - if the monitor is plugged in at boot I get 4 or 5 of the
-> >>> DRM_WARNs at various points, about 160 VOP interrupts somewhere along
-> >>> the line, and HDMI interrupts at a constant rate of around two per
-> >>> second; plugging it in after boot, however, just seems to silently do
-> >>> nothing (IIRC hotplugging the TV similarly did work as expected). If I
-> >>> find the time I might go back and try forcing a 60Hz mode to narrow
-> >>> things down a bit more.
-> >>
-> >> As I only have a standard 1080p display it's hard to check those edge 
-> >> cases,
-> >> but the struggle for display frequencies follows us for quite some time
-> >> already.
-> >>
-> >> The current default is to source the display clock from the hdmi-phy
-> >> which contains its own pll, so I guess first order of business should
-> >> probably be to determine which rate gets requested for your display
-> >> and which rate gets set - as I'm guessing that we're missing rates.
-> >>
-> >> DRM_WARNS would be interesting I guess, can you post them?
-> >> As for your hdmi-interrupts, from the dw-hdmi or the hdmi-phy?
-> > 
-> > Oops, my mistake, it's just a regular WARN() at 
-> > drivers/gpu/drm/drm_atomic_helper.c:1348 - the IRQs I'm 99% sure were 
-> > from dw-hdmi (I really should stop doing this way past bedtime then 
-> > trying to remember the details days later...)
-> > 
-> > I'll turn on all the debug options and do some more digging over the 
-> > weekend (and actually save some logs this time!)
-> 
-> OK, I found time to do some quick testing last night (verbose log 
-> attached) - it does indeed look like pretty much all the modes are being 
-> rejected. Of all the various overrides I tried, "video=800x600@60" does 
-> actually work, but it's the only one (not even plain old 640x480 VGA!)
-> 
-> Interestingly, the vblank timeouts only happen for 1280x1024 modes - 
-> lower resolutions (e.g. 1024x768) still don't produce an output signal, 
-> but don't provoke the warning either.
-> 
-> FWIW, the above behaviours also seem reproducible with 
-> "drm.edid_firmware=edid/{1024x768,1280x1024}.bin" if that helps with 
-> testing. Otherwise, let me know where to start hacking on drivers ;)
-
-I'm in the middle of the Netherlands right now on vacation, so I'm
-probably not doing any display hacking till the middle of next week.
-
-So depending on your spare time, I'd guess it might be interesting to
-also activate the debug output in the hdmiphy driver itself to see
-requested and actually set rates for the pll inside the hdmiphy.
-
-Because that is my current theory of where the issue might sit.
-
-Heiko
+T24gRnJpLCBGZWIgMjMsIDIwMTggYXQgMDI6MjI6NTBQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
+ZToKPiBDdXJyZW50bHkgd2UgYXJlIGNhbGxpbmcgc2NsX3ZvcF9jYWxfc2NhbGUoKSB0byBnZXQg
+dnNraXBsaW5lcyBmb3IgeXJnYgo+IGFuZCBjYmNyLiBTbyB0aGUgY2JjcidzIHZza2lwbGluZXMg
+bWlnaHQgYmUgYW4gdW5leHBlY3RlZCB2YWx1ZSBpZiB0aGUKPiBzZWNvbmQgc2NsX3ZvcF9jYWxf
+c2NhbGUoKSBkaWRuJ3QgdXBkYXRlIGl0Lgo+IAo+IEluaXQgdnNraXBsaW5lcyBpbiBzY2xfdm9w
+X2NhbF9zY2FsZSgpIHRvIGF2b2lkIHRoYXQuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hl
+biA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KClJldmlld2VkLWJ5OiBTZWFuIFBhdWwgPHNl
+YW5wYXVsQGNocm9taXVtLm9yZz4KCj4gLS0tCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA1ICsrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2Vy
+dGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCA3NzE1ODUzZWY5MGEuLjliMDNjNTE5MDNhYiAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0y
+NTksNiArMjU5LDkgQEAgc3RhdGljIHVpbnQxNl90IHNjbF92b3BfY2FsX3NjYWxlKGVudW0gc2Nh
+bGVfbW9kZSBtb2RlLCB1aW50MzJfdCBzcmMsCj4gIHsKPiAgCXVpbnQxNl90IHZhbCA9IDEgPDwg
+U0NMX0ZUX0RFRkFVTFRfRklYUE9JTlRfU0hJRlQ7Cj4gIAo+ICsJaWYgKHZza2lwbGluZXMpCj4g
+KwkJKnZza2lwbGluZXMgPSAwOwo+ICsKPiAgCWlmIChpc19ob3Jpem9udGFsKSB7Cj4gIAkJaWYg
+KG1vZGUgPT0gU0NBTEVfVVApCj4gIAkJCXZhbCA9IEdFVF9TQ0xfRlRfQklDKHNyYywgZHN0KTsK
+PiBAQCAtMjk5LDcgKzMwMiw3IEBAIHN0YXRpYyB2b2lkIHNjbF92b3BfY2FsX3NjbF9mYWMoc3Ry
+dWN0IHZvcCAqdm9wLCBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4sCj4gIAl1aW50MTZf
+dCB2c3VfbW9kZTsKPiAgCXVpbnQxNl90IGxiX21vZGU7Cj4gIAl1aW50MzJfdCB2YWw7Cj4gLQlp
+bnQgdnNraXBsaW5lcyA9IDA7Cj4gKwlpbnQgdnNraXBsaW5lczsKPiAgCj4gIAlpZiAoZHN0X3cg
+PiAzODQwKSB7Cj4gIAkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIk1heGltdW0gZHN0IHdpZHRo
+ICgzODQwKSBleGNlZWRlZFxuIik7Cj4gLS0gCj4gMi4xMS4wCj4gCj4gCgotLSAKU2VhbiBQYXVs
+LCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
