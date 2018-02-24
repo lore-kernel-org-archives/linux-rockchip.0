@@ -1,53 +1,103 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: vop: Init vskiplines in scl_vop_cal_scale()
-Date: Fri, 23 Feb 2018 09:09:39 -0500
-Message-ID: <20180223140939.GI223881@art_vandelay>
-References: <20180223062250.10470-1-jeffy.chen@rock-chips.com>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: [PATCH] pinctrl/rockchip: Don't call pinctrl_force_* for nothing
+Date: Sat, 24 Feb 2018 20:07:31 +0000
+Message-ID: <20180224200732.6116-1-marc.zyngier@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20180223062250.10470-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hoegsberg@google.com, dcastagna@google.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBGZWIgMjMsIDIwMTggYXQgMDI6MjI6NTBQTSArMDgwMCwgSmVmZnkgQ2hlbiB3cm90
-ZToKPiBDdXJyZW50bHkgd2UgYXJlIGNhbGxpbmcgc2NsX3ZvcF9jYWxfc2NhbGUoKSB0byBnZXQg
-dnNraXBsaW5lcyBmb3IgeXJnYgo+IGFuZCBjYmNyLiBTbyB0aGUgY2JjcidzIHZza2lwbGluZXMg
-bWlnaHQgYmUgYW4gdW5leHBlY3RlZCB2YWx1ZSBpZiB0aGUKPiBzZWNvbmQgc2NsX3ZvcF9jYWxf
-c2NhbGUoKSBkaWRuJ3QgdXBkYXRlIGl0Lgo+IAo+IEluaXQgdnNraXBsaW5lcyBpbiBzY2xfdm9w
-X2NhbF9zY2FsZSgpIHRvIGF2b2lkIHRoYXQuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hl
-biA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KClJldmlld2VkLWJ5OiBTZWFuIFBhdWwgPHNl
-YW5wYXVsQGNocm9taXVtLm9yZz4KCj4gLS0tCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA1ICsrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2Vy
-dGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCA3NzE1ODUzZWY5MGEuLjliMDNjNTE5MDNhYiAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0y
-NTksNiArMjU5LDkgQEAgc3RhdGljIHVpbnQxNl90IHNjbF92b3BfY2FsX3NjYWxlKGVudW0gc2Nh
-bGVfbW9kZSBtb2RlLCB1aW50MzJfdCBzcmMsCj4gIHsKPiAgCXVpbnQxNl90IHZhbCA9IDEgPDwg
-U0NMX0ZUX0RFRkFVTFRfRklYUE9JTlRfU0hJRlQ7Cj4gIAo+ICsJaWYgKHZza2lwbGluZXMpCj4g
-KwkJKnZza2lwbGluZXMgPSAwOwo+ICsKPiAgCWlmIChpc19ob3Jpem9udGFsKSB7Cj4gIAkJaWYg
-KG1vZGUgPT0gU0NBTEVfVVApCj4gIAkJCXZhbCA9IEdFVF9TQ0xfRlRfQklDKHNyYywgZHN0KTsK
-PiBAQCAtMjk5LDcgKzMwMiw3IEBAIHN0YXRpYyB2b2lkIHNjbF92b3BfY2FsX3NjbF9mYWMoc3Ry
-dWN0IHZvcCAqdm9wLCBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4sCj4gIAl1aW50MTZf
-dCB2c3VfbW9kZTsKPiAgCXVpbnQxNl90IGxiX21vZGU7Cj4gIAl1aW50MzJfdCB2YWw7Cj4gLQlp
-bnQgdnNraXBsaW5lcyA9IDA7Cj4gKwlpbnQgdnNraXBsaW5lczsKPiAgCj4gIAlpZiAoZHN0X3cg
-PiAzODQwKSB7Cj4gIAkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIk1heGltdW0gZHN0IHdpZHRo
-ICgzODQwKSBleGNlZWRlZFxuIik7Cj4gLS0gCj4gMi4xMS4wCj4gCj4gCgotLSAKU2VhbiBQYXVs
-LCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+The rockchip pinctl driver calls pinctrl_force_default and
+pinctrl_force_sleep on suspend resume, but seems to expect
+that the outcome of these calls will be that nothing happens,
+as the core code checks whether we're already in the right
+state or not.
+
+Or at least, that was what the core code was doing until
+981ed1bfbc ("pinctrl: Really force states during suspend/resume"),
+which gives the "force" qualifier its actual meaning.
+
+In turn, this breaks suspend/resume on the rk3399. So let's
+change the rockchip code to do what it should have done from
+the very begining, which is exactly *nothing*.
+
+We take this opportunity to tidy-up the RK3288 GPIO6_C6 mux
+resume workaround, making it symetrical to the suspend path.
+
+Tested on a rk3399-based kevin Chromebook.
+
+Fixes: 9198f509c888 ("pinctrl: rockchip: add suspend/resume functions")
+Signed-off-by: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 3924779f5578..a3a503e684dc 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -3114,22 +3114,18 @@ static u32 rk3288_grf_gpio6c_iomux;
+ static int __maybe_unused rockchip_pinctrl_suspend(struct device *dev)
+ {
+ 	struct rockchip_pinctrl *info = dev_get_drvdata(dev);
+-	int ret = pinctrl_force_sleep(info->pctl_dev);
+-
+-	if (ret)
+-		return ret;
+ 
+ 	/*
+ 	 * RK3288 GPIO6_C6 mux would be modified by Maskrom when resume, so save
+ 	 * the setting here, and restore it at resume.
+ 	 */
+ 	if (info->ctrl->type == RK3288) {
++		int ret;
++
+ 		ret = regmap_read(info->regmap_base, RK3288_GRF_GPIO6C_IOMUX,
+ 				  &rk3288_grf_gpio6c_iomux);
+-		if (ret) {
+-			pinctrl_force_default(info->pctl_dev);
++		if (ret)
+ 			return ret;
+-		}
+ 	}
+ 
+ 	return 0;
+@@ -3138,14 +3134,18 @@ static int __maybe_unused rockchip_pinctrl_suspend(struct device *dev)
+ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
+ {
+ 	struct rockchip_pinctrl *info = dev_get_drvdata(dev);
+-	int ret = regmap_write(info->regmap_base, RK3288_GRF_GPIO6C_IOMUX,
+-			       rk3288_grf_gpio6c_iomux |
+-			       GPIO6C6_SEL_WRITE_ENABLE);
+ 
+-	if (ret)
+-		return ret;
++	if (info->ctrl->type == RK3288) {
++		int ret;
+ 
+-	return pinctrl_force_default(info->pctl_dev);
++		ret = regmap_write(info->regmap_base, RK3288_GRF_GPIO6C_IOMUX,
++				   rk3288_grf_gpio6c_iomux |
++				   GPIO6C6_SEL_WRITE_ENABLE);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
+ }
+ 
+ static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
+-- 
+2.14.2
