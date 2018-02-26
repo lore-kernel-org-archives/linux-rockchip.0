@@ -1,136 +1,108 @@
-From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: USB3 regression in RK3399
-Date: Mon, 26 Feb 2018 13:26:54 +0100
-Message-ID: <2e9f6efc-4ced-9bcb-0399-993208cce8d3@collabora.com>
-References: <CAAMcf8B5zpgbTsCu9t0rs9+jWkwRdO2C+KbF+NOt3ZTQx36aZA@mail.gmail.com>
- <14336855.DpIqxNeK64@phil>
- <CAAMcf8B5ffH-5Q3+PcjWwu5UeDk4ESZR0BNczaED+vnPLwge0w@mail.gmail.com>
- <c8e1bd5a-19ff-9d1c-7e78-b7e605fd1e6b@collabora.com>
- <CAAMcf8C7Px_mC=dex3TqejBNYYUyJxrZHa1c7CbKXj6g==Cbyg@mail.gmail.com>
- <CAAMcf8DX4Mjuubnvwz9paMJ9oDYaNX-EKwFpsP9a-RfhHgO5Hg@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: add rk3328 display nodes
+Date: Mon, 26 Feb 2018 14:31:01 +0000
+Message-ID: <59ba23a2-7b0d-9fd8-6a3c-f01e830ad619@arm.com>
+References: <20180216223817.2821-1-heiko@sntech.de>
+ <51423eea-c127-4922-bd90-5b05bb5aef48@arm.com>
+ <318d8cd4-7da5-929a-fc01-41558aa12040@arm.com> <4622499.nYCCa0LjWm@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAAMcf8DX4Mjuubnvwz9paMJ9oDYaNX-EKwFpsP9a-RfhHgO5Hg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <4622499.nYCCa0LjWm@phil>
 Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vicente,
 
-On 25/02/18 11:03, Vicente Bergas wrote:
-> (cut)
->>>>>> testing on the Sapphire board, which uses the RK3399 SoC, a regression
->>>>>> has been found in v4.16-rc2 wrt v4.15.4 regarding the USB3 type-A port:
->>>>>> In v4.15.4 it works in USB2-only mode.
->>>>>> In v4.16-rc2 it does not work.
-> (cut)
->>>>> Hmm, I'd guess the main issue would be a missing typec-phy driver
->>>>> in your kernel (see drivers/phy/rockchip/phy-rockchip-typec.c
-> (cut)
->>> I suspect that what Heiko says is right and typec-phy fails probing. Could you
-> (cut)
+
+On 23/02/18 12:35, Heiko Stuebner wrote:
+> Hi Robin,
 > 
-> Hello,
-> this is the patch to blame for the regression:
+> Am Freitag, 23. Februar 2018, 13:27:55 CET schrieb Robin Murphy:
+>> On 22/02/18 13:01, Robin Murphy wrote:
+>>> On 21/02/18 21:57, Heiko Stuebner wrote:
+>>> [...]
+>>>>> I guess it might just be a case of the VOP and/or HDMI clocks struggling
+>>>>> to attain an appropriate pixel clock, but the failure mode is really
+>>>>> non-obvious - if the monitor is plugged in at boot I get 4 or 5 of the
+>>>>> DRM_WARNs at various points, about 160 VOP interrupts somewhere along
+>>>>> the line, and HDMI interrupts at a constant rate of around two per
+>>>>> second; plugging it in after boot, however, just seems to silently do
+>>>>> nothing (IIRC hotplugging the TV similarly did work as expected). If I
+>>>>> find the time I might go back and try forcing a 60Hz mode to narrow
+>>>>> things down a bit more.
+>>>>
+>>>> As I only have a standard 1080p display it's hard to check those edge
+>>>> cases,
+>>>> but the struggle for display frequencies follows us for quite some time
+>>>> already.
+>>>>
+>>>> The current default is to source the display clock from the hdmi-phy
+>>>> which contains its own pll, so I guess first order of business should
+>>>> probably be to determine which rate gets requested for your display
+>>>> and which rate gets set - as I'm guessing that we're missing rates.
+>>>>
+>>>> DRM_WARNS would be interesting I guess, can you post them?
+>>>> As for your hdmi-interrupts, from the dw-hdmi or the hdmi-phy?
+>>>
+>>> Oops, my mistake, it's just a regular WARN() at
+>>> drivers/gpu/drm/drm_atomic_helper.c:1348 - the IRQs I'm 99% sure were
+>>> from dw-hdmi (I really should stop doing this way past bedtime then
+>>> trying to remember the details days later...)
+>>>
+>>> I'll turn on all the debug options and do some more digging over the
+>>> weekend (and actually save some logs this time!)
+>>
+>> OK, I found time to do some quick testing last night (verbose log
+>> attached) - it does indeed look like pretty much all the modes are being
+>> rejected. Of all the various overrides I tried, "video=800x600@60" does
+>> actually work, but it's the only one (not even plain old 640x480 VGA!)
+>>
+>> Interestingly, the vblank timeouts only happen for 1280x1024 modes -
+>> lower resolutions (e.g. 1024x768) still don't produce an output signal,
+>> but don't provoke the warning either.
+>>
+>> FWIW, the above behaviours also seem reproducible with
+>> "drm.edid_firmware=edid/{1024x768,1280x1024}.bin" if that helps with
+>> testing. Otherwise, let me know where to start hacking on drivers ;)
 > 
-> From c301b327aea898af558b2387252a2f5fc0117dee Mon Sep 17 00:00:00 2001
-> From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Date: Fri, 15 Dec 2017 12:00:03 +0100
-> Subject: [PATCH] arm64: dts: rockchip: add usb3-phy otg-port support for rk3399
+> I'm in the middle of the Netherlands right now on vacation, so I'm
+> probably not doing any display hacking till the middle of next week.
 > 
-> Add the usb3 phyter for the USB3.0 OTG controller.
+> So depending on your spare time, I'd guess it might be interesting to
+> also activate the debug output in the hdmiphy driver itself to see
+> requested and actually set rates for the pll inside the hdmiphy.
 > 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index b4511503878b..7aa2144e0d47 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -411,8 +411,8 @@
->              reg = <0x0 0xfe800000 0x0 0x100000>;
->              interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
->              dr_mode = "otg";
-> -            phys = <&u2phy0_otg>;
-> -            phy-names = "usb2-phy";
-> +            phys = <&u2phy0_otg>, <&tcphy0_usb3>;
-> +            phy-names = "usb2-phy", "usb3-phy";
->              phy_type = "utmi_wide";
->              snps,dis_enblslpm_quirk;
->              snps,dis-u2-freeclk-exists-quirk;
-> @@ -444,8 +444,8 @@
->              reg = <0x0 0xfe900000 0x0 0x100000>;
->              interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
->              dr_mode = "otg";
-> -            phys = <&u2phy1_otg>;
-> -            phy-names = "usb2-phy";
-> +            phys = <&u2phy1_otg>, <&tcphy1_usb3>;
-> +            phy-names = "usb2-phy", "usb3-phy";
->              phy_type = "utmi_wide";
->              snps,dis_enblslpm_quirk;
->              snps,dis-u2-freeclk-exists-quirk;
-> 
+> Because that is my current theory of where the issue might sit.
 
-(cut)
+I think I managed to get a fairly good idea of what's going on here.
 
-> An usb3 phy is not found because no usb3 phy is being registered.
-> No usb3 phy is being registered because no usb3 phy is being probed at all.
-> I do not know why it is not being probed.
-> In the configuration file, CONFIG_PHY_ROCKCHIP_TYPEC is set to y.
->
+Firstly, the modes are still being validated against rockchip_mpll_cfg 
+in dw_hdmi_rockchip_mode_valid() - I'm slightly suspicious of that given 
+the implication that the HDMI TX block takes a clock from the external 
+phy in this case, but I don't know the details of the DesignWare IP 
+either way, and the clock tree is also absent from the public RK3328 
+TRM, so I'm only guessing.
 
-Probably the problem here is that the phyter is disabled in the DT, if you apply
-the following patch it will probably pass but then there is the problem that
-Heiko pointed, we'll be missing the extcon driver telling the driver about the
-cable state. I suspect that is the fusb302 who should implement the extcon
-interface.
+Modes that don't find an appropriate rate in dw_hdmi (e.g. 1024x768) get 
+thrown out there and then and that's that. Otherwise, things then depend 
+on the clock setting in the phy driver - when all the stars line up and 
+there is a matching rate there too (e.g. 1080p or 800x600@60), the phy 
+clock gets set correctly and everything works; when there is no 
+appropriate phy rate (e.g. 1280x1024), inno_hdmi_phy_clk_round_rate() 
+fails such that inno_hdmi_phy_rk3328_clk_set_rate() never even gets 
+called - that would seem to explain the vblank timeouts, if the hardware 
+ends up unclocked but someone somewhere along the line doesn't realise.
 
-I'll try to look a bit on this.
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index f7157c1d768b..617d362eb8af 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -569,6 +569,14 @@
-        status = "okay";
- };
-
-+&tcphy0 {
-+       status = "okay";
-+};
-+
-+&tcphy1 {
-+       status = "okay";
-+};
-+
- &u2phy0 {
-        status = "okay";
-
-Cheers,
- Enric
-
-
-> So, all in all, there are two bugs:
->  1.- The regression: usb3 mode is new and does not work, BUT this
->     makes the usb2 mode to be discarded.
->  2.- The new feature: usb3 mode does not work.
->
-> Regards,
->   Vicente.
+Robin.
