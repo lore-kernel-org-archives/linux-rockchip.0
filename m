@@ -1,85 +1,157 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 6/6] arm64: dts: rockchip: Specify override mode for
- kevin panel
-Date: Mon, 26 Feb 2018 10:23:00 -0800
-Message-ID: <CAD=FV=WGU+s015DQbNeWHkpqpHLFz+9AjHKAd0N3HWag0p5FWA@mail.gmail.com>
-References: <20180208174855.55620-1-seanpaul@chromium.org>
- <20180208174855.55620-7-seanpaul@chromium.org>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: USB3 regression in RK3399
+Date: Mon, 26 Feb 2018 19:38:12 +0100
+Message-ID: <CAAMcf8Dk_DPuNfLz-v0LvZ-rRmn6om=7OUkVMYygqU6emnF6HA@mail.gmail.com>
+References: <CAAMcf8B5zpgbTsCu9t0rs9+jWkwRdO2C+KbF+NOt3ZTQx36aZA@mail.gmail.com>
+ <14336855.DpIqxNeK64@phil>
+ <CAAMcf8B5ffH-5Q3+PcjWwu5UeDk4ESZR0BNczaED+vnPLwge0w@mail.gmail.com>
+ <c8e1bd5a-19ff-9d1c-7e78-b7e605fd1e6b@collabora.com>
+ <CAAMcf8C7Px_mC=dex3TqejBNYYUyJxrZHa1c7CbKXj6g==Cbyg@mail.gmail.com>
+ <CAAMcf8DX4Mjuubnvwz9paMJ9oDYaNX-EKwFpsP9a-RfhHgO5Hg@mail.gmail.com>
+ <9e64e878-07c8-912c-c597-7da7b3f96dd6@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180208174855.55620-7-seanpaul@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <seanpaul@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Arnd Bergmann <arnd@arndb.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Catalin Marinas <catalin.marinas@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Will Deacon <will.deacon@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>, Rob Herring <robh+dt@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, hoegsberg@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Emil Renner Berthing <kernel@esmil.dk>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <9e64e878-07c8-912c-c597-7da7b3f96dd6-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBUaHUsIEZlYiA4LCAyMDE4IGF0IDk6NDggQU0sIFNlYW4gUGF1bCA8c2VhbnBhdWxA
-Y2hyb21pdW0ub3JnPiB3cm90ZToKPiBUaGlzIHBhdGNoIGFkZHMgYW4gb3ZlcnJpZGUgbW9kZSBm
-b3Iga2V2aW4gZGV2aWNlcy4gVGhlIG1vZGUgaW5jcmVhc2VzCj4gYm90aCBiYWNrIHBvcmNoZXMg
-dG8gYWxsb3cgYSBwaXhlbCBjbG9jayBvZiAyNjY2NmtIeiBhcyBvcHBvc2VkIHRvIHRoZQo+ICd0
-eXBpY2FsJyB2YWx1ZSBvZiAyNTI3NTBrSHouIFRoaXMgaXMgbmVlZGVkIHRvIGF2b2lkIGludGVy
-ZmVyZW5jZSB3aXRoCj4gdGhlIHRvdWNoIGRpZ2l0aXplciBvbiB0aGVzZSBsYXB0b3BzLgo+Cj4g
-Q2hhbmdlcyBpbiB2MjoKPiAgLSBXcmFwIHRoZSB0aW1pbmcgaW4gZGlzcGxheS10aW1pbmdzIG5v
-ZGUgdG8gbWF0Y2ggYmluZGluZyAoUm9iL1RoaWVycnkpCj4gQ2hhbmdlcyBpbiB2MzoKPiAgLSBV
-bndyYXAgdGhlIHRpbWluZyBmcm9tIGRpc3BsYXktdGltaW5ncyBhbmQgcmVuYW1lIHBhbmVsLXRp
-bWluZyAoUm9iKQo+Cj4gQ2M6IERvdWcgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4K
-PiBDYzogRXJpYyBBbmhvbHQgPGVyaWNAYW5ob2x0Lm5ldD4KPiBDYzogSGVpa28gU3R1ZWJuZXIg
-PGhlaWtvQHNudGVjaC5kZT4KPiBDYzogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBz
-LmNvbT4KPiBDYzogUm9iIEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPiBDYzogU3TDqXBo
-YW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4gQ2M6IFRoaWVycnkgUmVkaW5n
-IDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+Cj4gQ2M6IGRldmljZXRyZWVAdmdlci5rZXJuZWwu
-b3JnCj4gQ2M6IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBDYzogbGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2Vh
-bnBhdWxAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM5OS1ncnUta2V2aW4uZHRzIHwgMTQgKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5n
-ZWQsIDE0IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM5OS1ncnUta2V2aW4uZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMzOTktZ3J1LWtldmluLmR0cwo+IGluZGV4IDE5MWE2YmNiMTcwNC4uNjU4NDExY2Uz
-N2VhIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdy
-dS1rZXZpbi5kdHMKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1n
-cnUta2V2aW4uZHRzCj4gQEAgLTk4LDYgKzk4LDIwIEBACj4gICAgICAgICAgICAgICAgIGJhY2ts
-aWdodCA9IDwmYmFja2xpZ2h0PjsKPiAgICAgICAgICAgICAgICAgcG93ZXItc3VwcGx5ID0gPCZw
-cDMzMDBfZGlzcD47Cj4KPiArICAgICAgICAgICAgICAgcGFuZWwtdGltaW5nIHsKPiArICAgICAg
-ICAgICAgICAgICAgICAgICBjbG9jay1mcmVxdWVuY3kgPSA8MjY2NjA0NzIwPjsKPiArICAgICAg
-ICAgICAgICAgICAgICAgICBoYWN0aXZlID0gPDI0MDA+Owo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgIGhmcm9udC1wb3JjaCA9IDw0OD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgaGJhY2st
-cG9yY2ggPSA8ODQ+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgIGhzeW5jLWxlbiA9IDwzMj47
-Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgaHN5bmMtYWN0aXZlID0gPDA+Owo+ICsgICAgICAg
-ICAgICAgICAgICAgICAgIHZhY3RpdmUgPSA8MTYwMD47Cj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgdmZyb250LXBvcmNoID0gPDM+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgIHZiYWNrLXBv
-cmNoID0gPDEyMD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgdnN5bmMtbGVuID0gPDEwPjsK
-PiArICAgICAgICAgICAgICAgICAgICAgICB2c3luYy1hY3RpdmUgPSA8MD47Cj4gKyAgICAgICAg
-ICAgICAgIH07Cj4gKwo+ICAgICAgICAgICAgICAgICBwb3J0cyB7Cj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgcGFuZWxfaW5fZWRwOiBlbmRwb2ludCB7Cj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JmVkcF9vdXRfcGFuZWw+OwoKS3Jpc3RpYW4g
-YnJvdWdodCBhbiBvbGQgYnVnIHRvIG15IGF0dGVudGlvbgo8aHR0cHM6Ly9idWdzLmNocm9taXVt
-Lm9yZy9wL2Nocm9taXVtL2lzc3Vlcy9kZXRhaWw/aWQ9NzUwMzU0PiBhbmQgaXQKbWFkZSBtZSB0
-aGluay4gIFNob3VsZCB3ZSBzb21laG93IGFkanVzdCB0aGUgYmluZGluZ3MgaGVyZSB0byBhY2Nv
-dW50CmZvciB0aGUgZmFjdCB0aGF0IGEgYm9hcmQgbWF5IHNvdXJjZSBzZXZlcmFsIGRpZmZlcmVu
-dCBwYW5lbHM/CgpBS0E6IG9uIHNvbWUgYm9hcmRzIGFuIE9ETSBtYXkgd2FudCB0byBzZWNvbmQg
-c291cmNlIChvciB0aGlyZCBzb3VyY2UsCm9yIC4uLikgdGhlIHBhbmVsLiAgVGhleSdsbCByYW5k
-b21seSBjb25uZWN0IHNldmVyYWwgZGlmZmVyZW50IHBhbmVscwp0byB0aGUgYm9hcmQgYW5kIHNo
-aXAgdGhlIGJvYXJkcyBvdXQuICBUaGUgcGFuZWxzIGFyZSBhbGwgY29tcGF0aWJsZQplbGVjdHJp
-Y2FsbHkgKHNhbWUgcG93ZXIgc2VxdWVuY2luZykgYnV0IG1pZ2h0IG5lZWQgc2xpZ2h0bHkgZGlm
-ZmVyZW50CnRpbWluZ3MuICBJbiB0aGlzIHBhcnRpY3VsYXIgY2FzZSB0aGVyZSdzIG5vIGJvYXJk
-LWxldmVsIHN0cmFwcGluZ3MKZm9yIHRoZSBkaWZmZXJlbnQgcGFuZWxzLS1pdCdzIGFzc3VtZWQg
-dGhhdCB0aGUgRURJRCBvbiB0aGUgcGFuZWxzIGNhbgpiZSB1c2VkIHRvIGRpc3Rpbmd1aXNoIHRo
-ZW0uCgpJbiB0aGF0IGNhc2UgaXQgc2VlbXMgbGlrZSBpdCB3b3VsZCBiZSBuaWNlIHRvIGFsbG93
-IHNwZWNpZnlpbmcgbW9yZQp0aGFuIG9uZSAicGFuZWwtdGltaW5nIiBub2Rlcy4gIE1heWJlIGtl
-eWVkIG9mZiBzb21lIHR5cGUgb2YgSUQgdGhhdCdzCnByZXNlbnQgaW4gdGhlIEVESUQ/CgoKSXMg
-dGhhdCBzb21ldGhpbmcgd2UnZCB3YW50IHRvIGFjY291bnQgZm9yIGJlZm9yZSB3ZSBsYW5kIHRo
-aXMgc2VyaWVzPwogSXQgc2VlbXMgbGlrZSBpdCB3b3VsZCBqdXN0IGJlIGFkZGluZyBhbiBleHRy
-YSBsZXZlbCBvZiBub2Rlcz8KCgotRG91ZwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+On Mon, Feb 26, 2018 at 5:34 PM, Enric Balletbo i Serra
+<enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+> Hi Vicente,
+>
+> On 25/02/18 11:03, Vicente Bergas wrote:
+>> (cut)
+>>>>>>> testing on the Sapphire board, which uses the RK3399 SoC, a regression
+>>>>>>> has been found in v4.16-rc2 wrt v4.15.4 regarding the USB3 type-A port:
+>>>>>>> In v4.15.4 it works in USB2-only mode.
+>>>>>>> In v4.16-rc2 it does not work.
+>> (cut)
+>>>>>> Hmm, I'd guess the main issue would be a missing typec-phy driver
+>>>>>> in your kernel (see drivers/phy/rockchip/phy-rockchip-typec.c
+>> (cut)
+>>>> I suspect that what Heiko says is right and typec-phy fails probing. Could you
+>> (cut)
+>>
+>> Hello,
+>> this is the patch to blame for the regression:
+>>
+>> From c301b327aea898af558b2387252a2f5fc0117dee Mon Sep 17 00:00:00 2001
+>> From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> Date: Fri, 15 Dec 2017 12:00:03 +0100
+>> Subject: [PATCH] arm64: dts: rockchip: add usb3-phy otg-port support for rk3399
+>>
+>> Add the usb3 phyter for the USB3.0 OTG controller.
+>>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index b4511503878b..7aa2144e0d47 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -411,8 +411,8 @@
+>>              reg = <0x0 0xfe800000 0x0 0x100000>;
+>>              interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+>>              dr_mode = "otg";
+>> -            phys = <&u2phy0_otg>;
+>> -            phy-names = "usb2-phy";
+>> +            phys = <&u2phy0_otg>, <&tcphy0_usb3>;
+>> +            phy-names = "usb2-phy", "usb3-phy";
+>>              phy_type = "utmi_wide";
+>>              snps,dis_enblslpm_quirk;
+>>              snps,dis-u2-freeclk-exists-quirk;
+>> @@ -444,8 +444,8 @@
+>>              reg = <0x0 0xfe900000 0x0 0x100000>;
+>>              interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+>>              dr_mode = "otg";
+>> -            phys = <&u2phy1_otg>;
+>> -            phy-names = "usb2-phy";
+>> +            phys = <&u2phy1_otg>, <&tcphy1_usb3>;
+>> +            phy-names = "usb2-phy", "usb3-phy";
+>>              phy_type = "utmi_wide";
+>>              snps,dis_enblslpm_quirk;
+>>              snps,dis-u2-freeclk-exists-quirk;
+>>
+>
+> Can you try if the following patch solves the issue for you?
+
+Hi Enric,
+with this patch the usb3 type-A port works fine in both usb2-mode and
+usb-3 mode!
+Now I am getting 350Mbytes/s read bandwidth to the SSD, that's a big
+improvement.
+
+Type-C not tested.
+
+Regards,
+  Vicente.
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> index f7157c1d768b..617d362eb8af 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> @@ -569,6 +569,14 @@
+>         status = "okay";
+>  };
+>
+> +&tcphy0 {
+> +       status = "okay";
+> +};
+> +
+> +&tcphy1 {
+> +       status = "okay";
+> +};
+> +
+>  &u2phy0 {
+>         status = "okay";
+>
+> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c
+> b/drivers/phy/rockchip/phy-rockchip-typec.c
+> index 1c79785a5439..6af1ec262fcb 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+> @@ -821,6 +821,9 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
+>         u8 mode;
+>         int ret;
+>
+> +       if (!edev)
+> +               return MODE_DFP_USB;
+> +
+>         ufp = extcon_get_state(edev, EXTCON_USB);
+>         dp = extcon_get_state(edev, EXTCON_DISP_DP);
+>
+> @@ -1159,9 +1162,9 @@ static int rockchip_typec_phy_probe(struct platform_device
+> *pdev)
+>
+>         tcphy->extcon = extcon_get_edev_by_phandle(dev, 0);
+>         if (IS_ERR(tcphy->extcon)) {
+> -               if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
+> -                       dev_err(dev, "Invalid or missing extcon\n");
+> -               return PTR_ERR(tcphy->extcon);
+> +               if (PTR_ERR(tcphy->extcon) == -EPROBE_DEFER)
+> +                       return PTR_ERR(tcphy->extcon);
+> +               tcphy->extcon = NULL;
+>         }
+>
+>         pm_runtime_enable(dev);
+>
+>
+> Best regards,
+>  Enric
