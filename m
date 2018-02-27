@@ -1,95 +1,50 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
-	the IOMMU
-Date: Tue, 27 Feb 2018 16:59:13 +0000
-Message-ID: <33d1d6bd-3455-5cad-6990-a9ca94063f3a@arm.com>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
-	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
-	<20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
-	<CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg@mail.gmail.com>
-	<CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
-	<5A72F7D2.1050201@rock-chips.com> <5A8FEBC6.4000408@rock-chips.com>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: remove PCIe assigned-clocks in
+ excavator baseboard
+Date: Tue, 27 Feb 2018 19:28:22 +0100
+Message-ID: <20180227182822.5048-1-vicencb@gmail.com>
+References: <86b701f0-899f-acf6-ad32-541dc888ddfe@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <5A8FEBC6.4000408-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, open-Y9sIeH5OGRo@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "263.netOPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS
-	devicetree"@vger.kernel.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <86b701f0-899f-acf6-ad32-541dc888ddfe-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjMvMDIvMTggMTA6MjQsIEplZmZ5Q2hlbiB3cm90ZToKPiBIaSBndXlzLAo+IAo+IE9uIDAy
-LzAxLzIwMTggMDc6MTkgUE0sIEplZmZ5Q2hlbiB3cm90ZToKPj4+Pj4+Cj4+Pj4+Pgo+Pj4+Pj4g
-ZGlmZiAtLWdpdAo+Pj4+Pj4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvaW9t
-bXUvcm9ja2NoaXAsaW9tbXUudHh0Cj4+Pj4+PiBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9pb21tdS9yb2NrY2hpcCxpb21tdS50eHQKPj4+Pj4+IGluZGV4IDIwOThmNzczMjI2
-NC4uMzNkZDg1MzM1OWZhIDEwMDY0NAo+Pj4+Pj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2lvbW11L3JvY2tjaGlwLGlvbW11LnR4dAo+Pj4+Pj4gKysrIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2lvbW11L3JvY2tjaGlwLGlvbW11LnR4dAo+Pj4+
-Pj4gQEAgLTE0LDYgKzE0LDEzIEBAIFJlcXVpcmVkIHByb3BlcnRpZXM6Cj4+Pj4+PiDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgInNpbmdsZS1tYXN0ZXIiIGRldmlj
-ZSwgYW5kIG5lZWRzIG5vCj4+Pj4+PiBhZGRpdGlvbmFsIGluZm9ybWF0aW9uCj4+Pj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdG8gYXNzb2NpYXRlIHdpdGgg
-aXRzIG1hc3RlciBkZXZpY2UuwqAgU2VlOgo+Pj4+Pj4KPj4+Pj4+IERvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9pb21tdS9pb21tdS50eHQKPj4+Pj4+ICtPcHRpb25hbCBwcm9wZXJ0
-aWVzOgo+Pj4+Pj4gKy0gY2xvY2tzIDogQSBsaXN0IG9mIG1hc3RlciBjbG9ja3MgcmVxdWlyZXMg
-Zm9yIHRoZSBJT01NVSB0byBiZQo+Pj4+Pj4gYWNjZXNzaWJsZQo+Pj4+Pj4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgIGJ5IHRoZSBob3N0IENQVS4gVGhlIG51bWJlciBvZiBjbG9ja3MgZGVwZW5kcyBv
-biB0aGUKPj4+Pj4+IG1hc3Rlcgo+Pj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgIGJsb2NrIGFu
-ZCBtaWdodCBhcyB3ZWxsIGJlIHplcm8uIFNlZSBbMV0gZm9yIGdlbmVyaWMgCj4+Pj4+PiBjbG9j
-awo+Pj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgIGJpbmRpbmdzIGRlc2NyaXB0aW9uLgo+Pj4+
-Pgo+Pj4+PiBIYXJkd2FyZSBibG9ja3MgZG9uJ3QgaGF2ZSBhIHZhcmlhYmxlIG51bWJlciBvZiBj
-bG9jayBjb25uZWN0aW9ucy4KPj4+Pgo+Pj4+IEkgdGhpbmsgeW91IHVuZGVyZXN0aW1hdGUgdGhl
-IGltYWdpbmF0aW9uIG9mIGhhcmR3YXJlIGRlc2lnbmVycy4gOikKPj4+Cj4+PiBMZWFybmVkIGxv
-bmcgYWdvIHRvIG5ldmVyIGRvIHRoYXQuIElmIHRoZXJlIGFyZSAyIHdheXMgdG8gZG8KPj4+IHNv
-bWV0aGluZywgdGhleSB3aWxsIGZpbmQgYSAzcmQgd2F5Lgo+Pj4KPj4+PiBGb3IgUm9ja2NoaXAg
-SU9NTVUsIHRoZXJlIGlzIGEgc2V0IG9mIGNsb2Nrcywgd2hpY2ggYWxsIG5lZWQgdG8gYmUKPj4+
-PiBlbmFibGVkIGZvciBJT01NVSByZWdpc3RlciBhY2Nlc3MgdG8gc3VjY2VlZC4gVGhlIGNsb2Nr
-cyBhcmUgbm90Cj4+Pj4gZGlyZWN0bHkgZmVkIHRvIHRoZSBJT01NVSwgYnV0IHRoZXkgYXJlIG5l
-ZWRlZCBmb3IgdGhlIHZhcmlvdXMgYnVzZXMKPj4+PiBhbmQgaW50ZXJtZWRpYXRlIGJsb2NrcyBv
-biB0aGUgd2F5IHRvIHRoZSBJT01NVSB0byB3b3JrLgo+Pj4KPj4+IFRoZSBiaW5kaW5nIHNob3Vs
-ZCBkZXNjcmliZSB0aGUgY2xvY2sgY29ubmVjdGlvbnMsIG5vdCB3aGF0IGNsb2NrcyBhCj4+PiBk
-cml2ZXIgbmVlZHMgKGN1cnJlbnRseSkuIEl0IHNvdW5kcyBsaWtlIGEgbGFjayBvZiBtYW5hZ2lu
-ZyBidXMgY2xvY2tzCj4+PiB0byBtZS4KPj4+Cj4+PiBJbiBhbnkgY2FzZSwgdGhlIGJpbmRpbmcg
-bXVzdCBiZSB3cml0dGVuIHNvIGl0IGNhbiBiZSB2ZXJpZmllZC4gSWYgeW91Cj4+PiBjYW4gaGF2
-ZSBhbnkgbnVtYmVyIG9mIGNsb2NrcyB3aXRoIGFueSBuYW1lcywgdGhlcmUncyBubyBwb2ludCBp
-bgo+Pj4gZG9jdW1lbnRpbmcuCj4+Cj4+IHRoZSByb2NrY2hpcCBJT01NVSBpcyBwYXJ0IG9mIHRo
-ZSBtYXN0ZXIgYmxvY2sgaW4gaGFyZHdhcmUsIHNvIGl0IG5lZWRzCj4+IHRvIGNvbnRyb2wgdGhl
-IG1hc3RlcidzIHBvd2VyIGRvbWFpbiBhbmQgc29tZSBvZiB0aGUgbWFzdGVyJ3MgY2xvY2tzCj4+
-IHdoZW4gYWNjZXNzIGl0J3MgcmVnaXN0ZXJzLgo+Pgo+PiBhbmQgdGhlIG51bWJlciBvZiBjbG9j
-a3MgbmVlZGVkIGhlcmUsIG1pZ2h0IGJlIGRpZmZlcmVudCBiZXR3ZWVuIGVhY2gKPj4gSU9NTVVz
-KGFjY29yZGluZyB0byB3aGljaCBtYXN0ZXIgYmxvY2sgaXQgYmVsb25ncyksIGl0J3MgYSBsaXR0
-bGUgbGlrZQo+PiBvdXIgcG93ZXIgZG9tYWluOgo+PiBodHRwczovL2VsaXhpci5mcmVlLWVsZWN0
-cm9ucy5jb20vbGludXgvbGF0ZXN0L3NvdXJjZS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM5OS5kdHNpI0w5MzUgCj4+Cj4+Cj4+Cj4+IGknbSBub3Qgc3VyZSBob3cgdG8gZGVzY3Jp
-YmUgdGhpcyBjb3JyZWN0bHksIGlzIGl0IG9rIHVzZSBzb21ldGhpbmcgbGlrZQo+PiAidGhlIHNh
-bWUgYXMgaXQncyBtYXN0ZXIgYmxvY2siPwo+IAo+IHdvdWxkIGl0IG1ha2Ugc2Vuc2UgdG8gYWRk
-IGEgcHJvcGVydHkgdG8gc3BlY2lmeSB0aGUgbWFzdGVyIHdobyBvd25zIHRoZSAKPiBpb21tdSwg
-YW5kIHdlIGNhbiBnZXQgYWxsIGNsb2Nrcyhvbmx5IHNvbWUgb2YgdGhvc2UgY2xvY2tzIGFyZSBh
-Y3R1YWxseSAKPiBuZWVkZWQpIGZyb20gaXQgaW4gdGhlIG9mX3hsYXRlKCk/IGFuZCB3ZSBjYW4g
-YWxzbyByZXVzZSB0aGUgY2xvY2stbmFtZXMgCj4gb2YgdGhhdCBtYXN0ZXIgdG8gYnVpbGQgY2xr
-X2J1bGtfZGF0YSBhbmQgbG9nIGVycm9ycyBpbiBjbGtfYnVsa19nZXQuCgpJJ20gaW5jbGluZWQg
-dG8gYWdyZWUgd2l0aCBSb2IgaGVyZSAtIGlmIHdlJ3JlIHRvIGFkZCBhbnl0aGluZyB0byB0aGUg
-CmJpbmRpbmcsIGl0IHNob3VsZCBvbmx5IGJlIHdoYXRldmVyIGNsb2NrIGlucHV0cyBhcmUgZGVm
-aW5lZCBmb3IgdGhlIApJT01NVSBJUCBibG9jayBpdHNlbGYuIElmIExpbnV4IGRvZXNuJ3QgcHJv
-cGVybHkgaGFuZGxlIHRoZSBpbnRlcmNvbm5lY3QgCmNsb2NrIGhpZXJhcmNoeSBleHRlcm5hbCB0
-byBhIHBhcnRpY3VsYXIgaW50ZWdyYXRpb24sIHRoYXQncyBhIHNlcGFyYXRlIAppc3N1ZSBhbmQg
-aXQncyBub3QgdGhlIGJpbmRpbmcncyBwcm9ibGVtLgoKSSBhY3R1YWxseSBxdWl0ZSBsaWtlIHRo
-ZSBoYWNrIG9mICJib3Jyb3dpbmciIHRoZSBjbG9ja3MgZnJvbSAKZGV2LT5vZl9ub2RlIGluIG9m
-X3hsYXRlKCkgLSB5b3Ugc2hvdWxkbid0IG5lZWQgYW55IERUIGNoYW5nZXMgZm9yIHRoYXQsIApi
-ZWNhdXNlIHlvdSBhbHJlYWR5IGtub3cgdGhhdCBlYWNoIElPTU1VIGluc3RhbmNlIG9ubHkgaGFz
-IHRoZSBvbmUgCm1hc3RlciBkZXZpY2UgYW55d2F5LgoKUm9iaW4uCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmlvbW11IG1haWxpbmcgbGlzdAppb21tdUBs
-aXN0cy5saW51eC1mb3VuZGF0aW9uLm9yZwpodHRwczovL2xpc3RzLmxpbnV4Zm91bmRhdGlvbi5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pb21tdQ==
+Reference clock is needed for pcie_phy, not pcie controller.
+Actually pcie_phy doesn't need this since rk3399 clock driver
+already take care of this.
+
+Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Suggested-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index 4d47150d6862..3d7179aba3fb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -195,9 +195,6 @@
+ };
+ 
+ &pcie0 {
+-	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+-	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+-	assigned-clock-rates = <100000000>;
+ 	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+ 	num-lanes = <4>;
+ 	pinctrl-names = "default";
+-- 
+2.16.2
