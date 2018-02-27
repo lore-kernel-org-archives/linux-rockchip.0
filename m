@@ -1,13 +1,14 @@
-From: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] pinctrl/rockchip: Don't call pinctrl_force_* for nothing
-Date: Mon, 26 Feb 2018 19:37:38 -0800
-Message-ID: <A60B94B7-5A04-476E-A752-3CB990390D19@gmail.com>
-References: <20180224200732.6116-1-marc.zyngier@arm.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: move rk3399-sapphire PCIe to
+ excavator baseboard
+Date: Tue, 27 Feb 2018 14:23:58 +0800
+Message-ID: <86b701f0-899f-acf6-ad32-541dc888ddfe@rock-chips.com>
+References: <3840224.sEPfbROKII@phil> <20180226185721.2582-1-vicencb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180224200732.6116-1-marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <20180226185721.2582-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,33 +18,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On February 24, 2018 12:07:31 PM PST, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org> wrote:
->The rockchip pinctl driver calls pinctrl_force_default and
->pinctrl_force_sleep on suspend resume, but seems to expect
->that the outcome of these calls will be that nothing happens,
->as the core code checks whether we're already in the right
->state or not.
->
->Or at least, that was what the core code was doing until
->981ed1bfbc ("pinctrl: Really force states during suspend/resume"),
->which gives the "force" qualifier its actual meaning.
->
->In turn, this breaks suspend/resume on the rk3399. So let's
->change the rockchip code to do what it should have done from
->the very begining, which is exactly *nothing*.
->
->We take this opportunity to tidy-up the RK3288 GPIO6_C6 mux
->resume workaround, making it symetrical to the suspend path.
->
->Tested on a rk3399-based kevin Chromebook.
+On 2018/2/27 2:57, Vicente Bergas wrote:
+> The PCIe signals are routed through the connector to the baseboard.
+> 
+> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Tested-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>   .../arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 15 +++++++++++++++
+>   arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi         | 15 ---------------
+>   2 files changed, 15 insertions(+), 15 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> index 56952d1a3fb8..4d47150d6862 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> @@ -190,6 +190,21 @@
+>   	status = "okay";
+>   };
+>   
+> +&pcie_phy {
+> +	status = "okay";
+> +};
+> +
+> +&pcie0 {
+> +	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+> +	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+> +	assigned-clock-rates = <100000000>;
 
-Glad you are not reverting the changes I did, but I can't comment whether this is the right think to do on such a Chromebook, FWIW:
+Ah, could you remove these assigned-clock* as well?
+reference clock is needed for pcie_phy, not pcie controller.
+Actually pcie_phy doesn't need this since rk3399 clock driver
+already take care of this.
 
-Reviewed-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Otherwise,
+Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
--- 
-Florian
+
+> +	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+> +	num-lanes = <4>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_clkreqn_cpm>;
+> +	status = "okay";
+> +};
+> +
+>   &pinctrl {
+>   	sdio-pwrseq {
+>   		wifi_enable_h: wifi-enable-h {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> index e5b0369e197f..8c7db887f2cf 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> @@ -471,21 +471,6 @@
+>   	gpio1830-supply = <&vcc_3v0>;
+>   };
+>   
+> -&pcie_phy {
+> -	status = "okay";
+> -};
+> -
+> -&pcie0 {
+> -	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+> -	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+> -	assigned-clock-rates = <100000000>;
+> -	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+> -	num-lanes = <4>;
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie_clkreqn_cpm>;
+> -	status = "okay";
+> -};
+> -
+>   &pmu_io_domains {
+>   	pmu1830-supply = <&vcc_3v0>;
+>   	status = "okay";
+> 
