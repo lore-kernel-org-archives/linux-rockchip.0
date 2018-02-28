@@ -1,61 +1,97 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Wed, 28 Feb 2018 15:37:40 +0100
-Message-ID: <2776489.2p7NH6SBud@diego>
-References: <20180130202913.28724-1-thierry.escande@collabora.com>
- <20180130202913.28724-6-thierry.escande@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180130202913.28724-6-thierry.escande@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH v4 00/22] Verbatim device names and devm_nvmem_(un)register()
+Date: Wed, 28 Feb 2018 06:40:44 -0800
+Message-ID: <20180228144106.16363-1-andrew.smirnov@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, cphealy@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDMwLiBKYW51YXIgMjAxOCwgMjE6Mjg6MzUgQ0VUIHNjaHJpZWIgVGhpZXJy
-eSBFc2NhbmRlOgo+IEZyb206IHphaW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IFRo
-ZSBicmlkZ2UgZG9lcyBub3QgbmVlZCB0byBiZSBwb3dlcmVkIGluIGFuYWxvZ2l4X2RwX2JpbmQo
-KSwgc28KPiByZW1vdmUgdGhlIGNhbGxzIHRvIHBtX3J1bnRpbWVfZ2V0KCkvcGh5X3Bvd2VyX29u
-KCkvYW5hbG9naXhfZHBfaW5pdF9kcCgpCj4gYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291
-bnRlcnBhcnRzLgo+IAo+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVt
-Lm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiBT
-aWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+IFt0aGUgcGF0
-Y2ggb3JpZ2luYWxseSBqdXN0IHJlbW92ZWQgdGhlIHBvd2VyX29uIHBvcnRpb24sIHNlYW5wYXVs
-IHJlbW92ZWQKPiB0aGUgcG93ZXIgb2ZmIGNvZGUgYXMgd2VsbCBhcyBpbXByb3ZlZCB0aGUgY29t
-bWl0IG1lc3NhZ2VdCj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1
-bS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVA
-Y29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
-bmFsb2dpeF9kcF9jb3JlLmMgfCAxMCAtLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBk
-ZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jIGluZGV4Cj4gY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5YmE4NWQg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
-cF9jb3JlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
-X2RwX2NvcmUuYwo+IEBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gCj4gIAlwbV9y
-dW50aW1lX2VuYWJsZShkZXYpOwo+IAo+IC0JcG1fcnVudGltZV9nZXRfc3luYyhkZXYpOwo+IC0J
-cGh5X3Bvd2VyX29uKGRwLT5waHkpOwo+IC0KPiAtCWFuYWxvZ2l4X2RwX2luaXRfZHAoZHApOwo+
-IC0KPiAgCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmly
-cSwKPiAgCQkJCQlhbmFsb2dpeF9kcF9oYXJkaXJxLAo+ICAJCQkJCWFuYWxvZ2l4X2RwX2lycV90
-aHJlYWQsCgpOb3QgMTAwJSBzdXJlIGhlcmUsIGFzIHRoZSBkcml2ZXIgaGFzIHRoZSByZXF1ZXN0
-LWlycSArIGRpc2FibGUtaXJxIGhhY2sKaGVyZS4gU28gYSBwZW5kaW5nIGludGVycnVwdCBjb3Vs
-ZCBwb3NzaWJseSBmaXJlIGJldHdlZW4gcmVxdWVzdCBhbmQKZGlzYWJsZS4KClJpZ2h0IG5vdyB0
-aGUgYmxvY2sgc2hvdWxkIGJlIG9uLCBidXQgY2FuIGl0IHN0aWxsIGhhbmRsZSBzdWNoIGFuIGly
-cQp3aGVuIHRoZSBwb3dlciBpcyByZW1vdmVkPwoKU28gYmVmb3JlIHJlbW92aW5nIHRoZSBwb3dl
-ciBoZXJlLCB3ZSBtaWdodCB3YW50IHNvbWV0aGluZwpzaW1pbGFyIHRvIHdoYXQgTWFyYyBwb3N0
-ZWQgZm9yIHRoZSB2b3AgWzBdIGZvciB0aGUgYW5hbG9naXgtZHA/CgoKSGVpa28KClswXSBodHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMjEwNTEzLwoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Srinivas, all:
+
+This patchset contains various small changes that I recently made to
+ppNVMEM, more specifically:
+
+ - Patches 1 and 3 are two changes I am hoping are acceptable upstream
+
+ - Patches 4 to 15 are a follow up to patch 2
+
+ - Patches 16 to 22 are just trivial fixups and I am more than happy
+   to drop them if they seem to add more pointless churn rather then
+   value.
+
+Feedback is appreciated!
+
+Thanks,
+Andrey Smirnov
+
+Changes since [v3]:
+
+ - Patchset rebased on post 4.16-rc1 master from Linus
+
+Changes since [v2]:
+
+ - Added a patch with kerenl doc for struct nvmem_config as a
+   prerequsite for patch #2
+
+ - Documented behaviour of nvmem_register() when id is set to -1
+
+ - Added kernel doc for devm_nvmem_(un)register()
+
+
+Changes since [v1]:
+
+ - Fixed a build break detected by kbuild test robot
+
+ - Added a patch to unconditionally enable COMPILE_TEST for meson-efuse
+
+ - Dropped Joachim Eastwood from CC list due to bouncing e-mail
+
+[v3] lkml.kernel.org/r/20180103200114.23922-1-andrew.smirnov@gmail.com
+[v2] lkml.kernel.org/r/20180101232310.30420-1-andrew.smirnov@gmail.com
+[v1] lkml.kernel.org/r/20171227225956.14442-1-andrew.smirnov@gmail.com
+
+Andrey Smirnov (22):
+  nvmem: Document struct nvmem_config
+  nvmem: core: Allow specifying device name verbatim
+  nvmem: Introduce devm_nvmem_(un)register()
+  nvmem: vf610-ocotp: Convert to use devm_nvmem_register()
+  nvmem: imx-ocotp: Convert to use devm_nvmem_register()
+  nvmem: uniphier-efuse: Convert to use devm_nvmem_register()
+  nvmem: snvs_lgpr: Convert to use devm_nvmem_register()
+  nvmem: qfprom: Convert to use devm_nvmem_register()
+  nvmem: rockchip-efuse: Convert to use devm_nvmem_register()
+  nvmem: mtk-efuse: Convert to use devm_nvmem_register()
+  nvmem: meson-mx-efuse: Convert to use devm_nvmem_register()
+  nvmem: meson-efuse: Convert to use devm_nvmem_register()
+  nvmem: lpc18xx_otp: Convert to use devm_nvmem_register()
+  nvmem: imx-iim: Convert to use devm_nvmem_register()
+  nvmem: bcm-ocotp: Convert to use devm_nvmem_register()
+  nvmem: meson-efuse: Do no gate COMPILE_TEST with MESON_SM
+  nvmem: snvs_lpgpr: Convert commas to semicolons
+  nvmem: rockchip-efuse: Make use of of_device_get_match_data()
+  nvmem: vf610-ocotp: Do not use "&pdev->dev" explicitly
+  nvmem: rockchip-efuse: Do not use "&pdev->dev" explicitly
+  nvmem: imx-iim: Do not use "&pdev->dev" explicitly
+  nvmem: bcm-ocotp: Do not use "&pdev->dev" explicitly
+
+ drivers/nvmem/Kconfig          |  2 +-
+ drivers/nvmem/bcm-ocotp.c      | 15 ++--------
+ drivers/nvmem/core.c           | 68 ++++++++++++++++++++++++++++++++++++++++--
+ drivers/nvmem/imx-iim.c        | 14 ++-------
+ drivers/nvmem/imx-ocotp.c      | 12 +-------
+ drivers/nvmem/lpc18xx_otp.c    | 12 +-------
+ drivers/nvmem/meson-efuse.c    | 12 +-------
+ drivers/nvmem/meson-mx-efuse.c | 12 +-------
+ drivers/nvmem/mtk-efuse.c      | 12 +-------
+ drivers/nvmem/qfprom.c         | 12 +-------
+ drivers/nvmem/rockchip-efuse.c | 28 ++++++-----------
+ drivers/nvmem/snvs_lpgpr.c     | 26 +++++-----------
+ drivers/nvmem/uniphier-efuse.c | 12 +-------
+ drivers/nvmem/vf610-ocotp.c    | 15 ++--------
+ include/linux/nvmem-provider.h | 42 ++++++++++++++++++++++++++
+ 15 files changed, 138 insertions(+), 156 deletions(-)
+
+-- 
+2.14.3
