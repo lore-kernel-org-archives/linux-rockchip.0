@@ -1,16 +1,15 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 5/6] PCI: rockchip: Add Endpoint controller driver for
- Rockchip PCIe controller
-Date: Wed, 28 Feb 2018 09:40:36 +0800
-Message-ID: <8244c52c-73d3-5b20-eb39-ddc37968163a@rock-chips.com>
-References: <1519348503-243259-1-git-send-email-shawn.lin@rock-chips.com>
- <1519348654-243597-1-git-send-email-shawn.lin@rock-chips.com>
- <20180227153202.GB7184@e107981-ln.cambridge.arm.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: remove PCIe assigned-clocks in
+ excavator baseboard
+Date: Wed, 28 Feb 2018 09:47:53 +0800
+Message-ID: <bcb83fae-7bda-8ac5-325c-74e49cdde21c@rock-chips.com>
+References: <86b701f0-899f-acf6-ad32-541dc888ddfe@rock-chips.com>
+ <20180227182822.5048-1-vicencb@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180227153202.GB7184-4tUPXFaYRHv6sAKXYmQ0tx/iLCjYCKR+VpNB7YpNyf8@public.gmane.org>
+In-Reply-To: <20180227182822.5048-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,57 +19,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Lorenzo,
-
-On 2018/2/27 23:32, Lorenzo Pieralisi wrote:
-> On Fri, Feb 23, 2018 at 09:17:33AM +0800, Shawn Lin wrote:
->> This patch adds support to the Rockchip PCIe controller in endpoint mode
->> which currently supports up to 32 regions, and each regions should at
->> least be 1MB per TRM.
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
-
+On 2018/2/28 2:28, Vicente Bergas wrote:
+> Reference clock is needed for pcie_phy, not pcie controller.
+> Actually pcie_phy doesn't need this since rk3399 clock driver
+> already take care of this.
 > 
-> I reviewed this patch and I then realized that it is not bits, it is
-> that the drivers are almost identical. Are we talking about the same IP
-> (possibly with some HW wrapper of sorts) ?
+> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Suggested-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 3 ---
+>   1 file changed, 3 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> index 4d47150d6862..3d7179aba3fb 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> @@ -195,9 +195,6 @@
+>   };
+>   
+>   &pcie0 {
+> -	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+> -	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+> -	assigned-clock-rates = <100000000>;
+>   	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+>   	num-lanes = <4>;
+>   	pinctrl-names = "default";
 > 
 
-Nope, I would seriouly say they are not the same IP legally :)
-If we take about IP, it's referred to a functional entity designed
-and licensed by the provider, but it's not the case here since
-
-(1) There is nothing about cadence throughout the TRM when upstreamed
-it in 2016, and actually it was designed much earlier than 2016.
-(2) Much of the flow was different, and even some of the bit offset is
-different per my reading of cadence's driver, though most registers
-looks much similar.
-
-So my best guess was HW guys referenced to cadence's register layout(or
-the reverse), so they are much partially compatible from the
-register level POV, but the backend design are different leading to the
-quite different control flow and also rockchip controller have lots of
-HW bugs that I didn't see them when reviewing cadence's driver which do
-the same flow using similar register. That's very common if you search
-drivers/mmc/host/sdhci*, which means all of them share the *same*
-register layout and control flow, so it makes software guys' life easy,
-but still they are different IPs. But it's sightly different here as
-the pcie registers aren't the totally same and the flow control is
-different.
-
-Also historically that happened for other controllers designed from 
-rockchip, for instance, SPI controller looks much like designware one,
-but the flow control was totally differnt preventing SW guys to
-refactor the designware driver to fit for rockchip one.
-
-This is all I could guess here, hope that help for you.
-
-
-> 
-> 
-> 
+Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
