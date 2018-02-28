@@ -1,66 +1,80 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: move rk3399-sapphire PCIe to
- excavator baseboard
-Date: Wed, 28 Feb 2018 14:18:53 +0100
-Message-ID: <18314211.o2LdInmNjp@diego>
-References: <3840224.sEPfbROKII@phil> <20180226185721.2582-1-vicencb@gmail.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3399-gru-* s2r (pinctrl hogs,
+ wifi reset)
+Date: Wed, 28 Feb 2018 13:51:32 +0000
+Message-ID: <8ea0415b-6069-a548-0272-67fcdbc08d39@arm.com>
+References: <20180227204711.29357-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180226185721.2582-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180227204711.29357-1-dianders@chromium.org>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 26. Februar 2018, 19:57:21 CET schrieb Vicente Bergas:
-> The PCIe signals are routed through the connector to the baseboard.
+On 27/02/18 20:47, Douglas Anderson wrote:
+> Back in the early days when gru devices were still under development
+> we found an issue where the WiFi reset line needed to be configured as
+> early as possible during the boot process to avoid the WiFi module
+> being in a bad state.
 > 
-> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Tested-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  .../arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 15
-> +++++++++++++++ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi         |
-> 15 --------------- 2 files changed, 15 insertions(+), 15 deletions(-)
+> We found that the way to get the kernel to do this in the earliest
+> possible place was to configure this line in the pinctrl hogs, so
+> that's what we did.  For some history here you can see
+> <http://crosreview.com/368770>.  After the time that change landed in
+> the kernel, we landed a firmware change to configure this line even
+> earlier.  See <http://crosreview.com/399919>.  However, even after the
+> firmware change landed we kept the kernel change to deal with the fact
+> that some people working on devices might take a little while to
+> update their firmware.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-> b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts index
-> 56952d1a3fb8..4d47150d6862 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-> @@ -190,6 +190,21 @@
->  	status = "okay";
->  };
+> At this there are definitely zero devices out in the wild that have
+> firmware without the fix in it.  Specifically looking in the firmware
+> branch several critically important fixes for memory stability landed
+> after the patch in coreboot and I know we didn't ship without those.
+> Thus, by now, everyone should have the new firmware and it's safe to
+> not have the kernel set this up in a pinctrl hog.
 > 
-> +&pcie_phy {
-> +	status = "okay";
-> +};
-> +
-> +&pcie0 {
-> +	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
-> +	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
-> +	assigned-clock-rates = <100000000>;
-> +	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+> Historically, even though it wasn't needed to have this in a pinctrl
+> hog, we still kept it since it didn't hurt.  Pinctrl would apply the
+> default hog at bootup and then would never touch things again.  That
+> all changed with commit 981ed1bfbc6c ("pinctrl: Really force states
+> during suspend/resume").  After that commit then we'll re-apply the
+> default hog at resume time and that can screw up the reset state of
+> WiFi.  ...and on rk3399 if you touch a device on PCIe in the wrong way
+> then the whole system can go haywire.  That's what was happening.
+> Specifically you'd resume a rk3399-gru-* device and it would mostly
+> resume, then would crash with some crazy weird crash.
+> 
+> One could say, perhaps, that the recent pinctrl change was at fault
+> (and should be fixed) since it changed behavior.  ...but that's not
+> really true.  The device tree for rk3399-gru is really to blame.
+> Specifically since the pinctrl is defined in the hog and not in the
+> "wlan-pd-n" node then the actual user of this pin doesn't have a
+> pinctrl entry for it.  That's bad.
+> 
+> Let's fix our problems by just moving the control of
+> "wlan_module_reset_l pinctrl" out of the hog and put them in the
+> proper place.
+> 
+> NOTE: in theory, I think it should actually be possible to have a pin
+> controlled _both_ by the hog and by an actual device.  Once the device
+> claims the pin I think the hog is supposed to let go.  I'm not 100%
+> sure that this works and in any case this solution would be more
+> complex than is necessary.
+> 
+> Reported-by: Marc Zyngier <marc.zyngier@arm.com>
+> Fixes: 48f4d9796d99 ("arm64: dts: rockchip: add Gru/Kevin DTS")
+> Fixes: 981ed1bfbc6c ("pinctrl: Really force states during suspend/resume")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-I've applied both patches into a temporary branch for likely 4.18 now
-with the tags from Shawn.
+Tested-by: Marc Zyngier <marc.zyngier@arm.com>
 
-Reason is that we also have a fix for 4.16 in a different branch fixing
-the ep-gpios property on sapphire and having these things conflict
-will end up in a lot of chaos, as that fix is not yet in the mainline kernel
-but only in an intermediate state.
+Thanks,
 
-So likely the pcie move will have to wait for 4.18 to make it easier
-on everybody.
-
-
-Heiko
+	M.
+-- 
+Jazz is not dead. It just smells funny...
