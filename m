@@ -1,85 +1,35 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v2 5/6] PCI: rockchip: Add Endpoint controller driver for
- Rockchip PCIe controller
-Date: Wed, 28 Feb 2018 11:22:29 +0000
-Message-ID: <20180228112229.GB18879@e107981-ln.cambridge.arm.com>
-References: <1519348503-243259-1-git-send-email-shawn.lin@rock-chips.com>
- <1519348654-243597-1-git-send-email-shawn.lin@rock-chips.com>
- <20180227153202.GB7184@e107981-ln.cambridge.arm.com>
- <8244c52c-73d3-5b20-eb39-ddc37968163a@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
+Date: Wed, 28 Feb 2018 12:59:14 +0100
+Message-ID: <4580848.piTrlVmp9H@diego>
+References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <8244c52c-73d3-5b20-eb39-ddc37968163a-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, wxt@rock-chips.com
+Cc: linux-kernel@vger.kernel.org, tfiga@chromium.org, dmitry.torokhov@gmail.com, robin.murphy@arm.com, Elaine Zhang <zhangqing@rock-chips.com>, linux-rockchip@lists.infradead.org, Geert Uytterhoeven <geert+renesas@glider.be>, linux-arm-kernel@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Feb 28, 2018 at 09:40:36AM +0800, Shawn Lin wrote:
-> Dear Lorenzo,
-> 
-> On 2018/2/27 23:32, Lorenzo Pieralisi wrote:
-> >On Fri, Feb 23, 2018 at 09:17:33AM +0800, Shawn Lin wrote:
-> >>This patch adds support to the Rockchip PCIe controller in endpoint mode
-> >>which currently supports up to 32 regions, and each regions should at
-> >>least be 1MB per TRM.
-> >>
-> >>Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >>
-> 
-> >
-> >I reviewed this patch and I then realized that it is not bits, it is
-> >that the drivers are almost identical. Are we talking about the same IP
-> >(possibly with some HW wrapper of sorts) ?
-> >
-> 
-> Nope, I would seriouly say they are not the same IP legally :)
-> If we take about IP, it's referred to a functional entity designed
-> and licensed by the provider, but it's not the case here since
-> 
-> (1) There is nothing about cadence throughout the TRM when upstreamed
-> it in 2016, and actually it was designed much earlier than 2016.
-> (2) Much of the flow was different, and even some of the bit offset is
-> different per my reading of cadence's driver, though most registers
-> looks much similar.
-> 
-> So my best guess was HW guys referenced to cadence's register layout(or
-> the reverse), so they are much partially compatible from the
-> register level POV, but the backend design are different leading to the
-> quite different control flow and also rockchip controller have lots of
-> HW bugs that I didn't see them when reviewing cadence's driver which do
-> the same flow using similar register. That's very common if you search
-> drivers/mmc/host/sdhci*, which means all of them share the *same*
-> register layout and control flow, so it makes software guys' life easy,
-> but still they are different IPs. But it's sightly different here as
-> the pcie registers aren't the totally same and the flow control is
-> different.
-> 
-> Also historically that happened for other controllers designed from
-> rockchip, for instance, SPI controller looks much like designware one,
-> but the flow control was totally differnt preventing SW guys to
-> refactor the designware driver to fit for rockchip one.
-> 
-> This is all I could guess here, hope that help for you.
+Hi Jeffy,
 
-Well - there is still lots of duplicated code there, which may mean
-duplicate bugs to fix, that's not ideal at all. It would be great if
-we manage to separate common code and glue code (you call it "flow"
-which I have no idea what it refers to) around it.
+Am Mittwoch, 28. Februar 2018, 12:11:13 CET schrieb Jeffy Chen:
+> Currently we are adding all of the attached devices' clocks as pm clocks
+> and enable them when powering on the power domain.
+> 
+> This seems unnecessary, because those clocks are already controlled in
+> the devices' drivers with better error handling.
+> 
+> Tested on my chromebook minnie(rk3288) and chromebook kevin(rk3399).
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-I will review this patch anyway but this driver and cadence's are pretty
-much indentical, there is not much doubt about that.
+Looks ok to me and does not seem to interfere with the synchronous
+reset that still stays intact.
 
-Thanks,
-Lorenzo
+@Ceasar: any objections?
+
+
+Heiko
