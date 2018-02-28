@@ -1,51 +1,66 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
-Date: Wed, 28 Feb 2018 14:11:13 +0100
-Message-ID: <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
-References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
- <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
- <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
- <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com> <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: move rk3399-sapphire PCIe to
+ excavator baseboard
+Date: Wed, 28 Feb 2018 14:18:53 +0100
+Message-ID: <18314211.o2LdInmNjp@diego>
+References: <3840224.sEPfbROKII@phil> <20180226185721.2582-1-vicencb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180226185721.2582-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomasz,
+Am Montag, 26. Februar 2018, 19:57:21 CET schrieb Vicente Bergas:
+> The PCIe signals are routed through the connector to the baseboard.
+> 
+> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Tested-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  .../arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 15
+> +++++++++++++++ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi         |
+> 15 --------------- 2 files changed, 15 insertions(+), 15 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts index
+> 56952d1a3fb8..4d47150d6862 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> @@ -190,6 +190,21 @@
+>  	status = "okay";
+>  };
+> 
+> +&pcie_phy {
+> +	status = "okay";
+> +};
+> +
+> +&pcie0 {
+> +	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
+> +	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
+> +	assigned-clock-rates = <100000000>;
+> +	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
 
-On Wed, Feb 28, 2018 at 1:49 PM, Tomasz Figa <tfiga@chromium.org> wrote:
-> On Wed, Feb 28, 2018 at 9:32 PM, Geert Uytterhoeven
-> <geert@linux-m68k.org> wrote:
->> On Wed, Feb 28, 2018 at 1:29 PM, Tomasz Figa <tfiga@chromium.org> wrote:
->>> Also, how about systems where runtime PM is disabled? I think that's
->>> one of the reasons we control the clocks explicitly in the drivers
->>> anyway.
->>
->> On many platforms, Runtime PM is always enabled.
->
-> Can we make such assumption? If so, could we just make an explicit
-> "select PM_RUNTIME" in Kconfig of the SoC?
+I've applied both patches into a temporary branch for likely 4.18 now
+with the tags from Shawn.
 
-Note that the PM_RUNTIME symbol was removed in commit 464ed18ebdb6236f
-("PM: Eliminate CONFIG_PM_RUNTIME"), in favor of plain PM.
+Reason is that we also have a fix for 4.16 in a different branch fixing
+the ep-gpios property on sapphire and having these things conflict
+will end up in a lot of chaos, as that fix is not yet in the mainline kernel
+but only in an intermediate state.
 
-The following already select PM unconditionally:
-  - ARCH_OMAP2PLUS_TYPICAL
-  - ARCH_RENESAS (except EMEV2)
-  - ARCH_TEGRA
-  - ARCH_VEXPRESS
+So likely the pcie move will have to wait for 4.18 to make it easier
+on everybody.
 
-Gr{oetje,eeting}s,
 
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Heiko
