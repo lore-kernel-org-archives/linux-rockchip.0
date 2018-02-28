@@ -1,63 +1,72 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Wed, 28 Feb 2018 16:20:57 +0100
-Message-ID: <19741148.ZWsFISTM5I@diego>
-References: <20180130202913.28724-1-thierry.escande@collabora.com>
- <20180130202913.28724-6-thierry.escande@collabora.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v3 01/22] nvmem: Document struct nvmem_config
+Date: Thu, 1 Mar 2018 02:34:48 +0800
+Message-ID: <1519842888.8089.88.camel@mtkswgap22>
+References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+         <20180103200114.23922-2-andrew.smirnov@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180130202913.28724-6-thierry.escande@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180103200114.23922-2-andrew.smirnov@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Carlo Caione <carlo@caione.org>, cphealy@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDMwLiBKYW51YXIgMjAxOCwgMjE6Mjg6MzUgQ0VUIHNjaHJpZWIgVGhpZXJy
-eSBFc2NhbmRlOgo+IEZyb206IHphaW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IFRo
-ZSBicmlkZ2UgZG9lcyBub3QgbmVlZCB0byBiZSBwb3dlcmVkIGluIGFuYWxvZ2l4X2RwX2JpbmQo
-KSwgc28KPiByZW1vdmUgdGhlIGNhbGxzIHRvIHBtX3J1bnRpbWVfZ2V0KCkvcGh5X3Bvd2VyX29u
-KCkvYW5hbG9naXhfZHBfaW5pdF9kcCgpCj4gYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291
-bnRlcnBhcnRzLgo+IAo+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVt
-Lm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiBT
-aWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+IFt0aGUgcGF0
-Y2ggb3JpZ2luYWxseSBqdXN0IHJlbW92ZWQgdGhlIHBvd2VyX29uIHBvcnRpb24sIHNlYW5wYXVs
-IHJlbW92ZWQKPiB0aGUgcG93ZXIgb2ZmIGNvZGUgYXMgd2VsbCBhcyBpbXByb3ZlZCB0aGUgY29t
-bWl0IG1lc3NhZ2VdCj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1
-bS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVA
-Y29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
-bmFsb2dpeF9kcF9jb3JlLmMgfCAxMCAtLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBk
-ZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
-aXgvYW5hbG9naXhfZHBfY29yZS5jIGluZGV4Cj4gY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5YmE4NWQg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
-cF9jb3JlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
-X2RwX2NvcmUuYwo+IEBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gCj4gIAlwbV9y
-dW50aW1lX2VuYWJsZShkZXYpOwo+IAo+IC0JcG1fcnVudGltZV9nZXRfc3luYyhkZXYpOwo+IC0J
-cGh5X3Bvd2VyX29uKGRwLT5waHkpOwo+IC0KPiAtCWFuYWxvZ2l4X2RwX2luaXRfZHAoZHApOwo+
-IC0KPiAgCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmly
-cSwKPiAgCQkJCQlhbmFsb2dpeF9kcF9oYXJkaXJxLAo+ICAJCQkJCWFuYWxvZ2l4X2RwX2lycV90
-aHJlYWQsCj4gQEAgLTE0MTQsMTUgKzE0MDksMTAgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1Y3Qg
-ZGV2aWNlICpkZXYsIHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybV9kZXYsIGdvdG8gZXJyX2Rpc2Fi
-bGVfcG1fcnVudGltZTsKPiAgCX0KPiAKPiAtCXBoeV9wb3dlcl9vZmYoZHAtPnBoeSk7Cj4gLQlw
-bV9ydW50aW1lX3B1dChkZXYpOwo+IC0KPiAgCXJldHVybiBkcDsKPiAKPiAgZXJyX2Rpc2FibGVf
-cG1fcnVudGltZToKPiAKPiAtCXBoeV9wb3dlcl9vZmYoZHAtPnBoeSk7Cj4gLQlwbV9ydW50aW1l
-X3B1dChkZXYpOwo+ICAJcG1fcnVudGltZV9kaXNhYmxlKGRldik7Cj4gCj4gIAlyZXR1cm4gRVJS
-X1BUUihyZXQpOwoKSW4gZ2VuZXJhbCwgdGhpcyBwYXRjaCBzZWVtcyB0byBhbHNvIGNyZWF0ZSB0
-aGUgb3Bwb3NpdGUgdGhhbgoiZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEtlZXAgUEhZIHBvd2Vy
-ZWQgYmV0d2VlbiBkcml2ZXIgYmluZC91bmJpbmQiIFswXQoKcG9zdGVkIG9uIG1vbmRheT8KClsw
-XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMjQyNDkzLwpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Wed, 2018-01-03 at 12:00 -0800, Andrey Smirnov wrote:
+> Add a simple description of struct nvmem_config and its fields.
+> 
+> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Cc: Carlo Caione <carlo@caione.org>
+> Cc: Kevin Hilman <khilman@baylibre.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: cphealy@gmail.com
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-amlogic@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+> ---
+>  include/linux/nvmem-provider.h | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+> index 497706f5adca..27e599222ec1 100644
+> --- a/include/linux/nvmem-provider.h
+> +++ b/include/linux/nvmem-provider.h
+> @@ -22,6 +22,28 @@ typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+>  typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+>  				 void *val, size_t bytes);
+>  
+> +/**
+> + * struct nvmem_config - NVMEM device configuration
+> + *
+> + * @dev:	Parent device.
+> + * @name:	Optional name.
+> + * @id:		Optional device ID used in full name. Ignored if name is NULL.
+> + * @owner:	Pointer to exporter module. Used for refcounting.
+> + * @cells:	Optional array of pre-defined NVMEM cells.
+> + * @ncells:	Number of elements in cells.
+> + * @read_only:	Device is read-only.
+> + * @root_only:	Device is accessibly to root only.
+> + * @reg_read:	Callback to read data.
+> + * @reg_write:	Callback to write data.
+> + * @size:	Device size.
+> + * @word_size:	Minimum read/write access granularity.
+> + * @stride:	Minimum read/write access stide.
+
+typo on stide ?
+
+> + * @priv:	User context passed to read/write callbacks.
+> + *
+> + * Note: A default "nvmem<id>" name will be assigned to the device if
+> + * no name is specified in its configuration. In such case "<id>" is
+> + * generated with ida_simple_get() and provided id field is ignored.
+> + */
+>  struct nvmem_config {
+>  	struct device		*dev;
+>  	const char		*name;
