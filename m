@@ -1,85 +1,82 @@
-From: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v4 08/22] nvmem: qfprom: Convert to use devm_nvmem_register()
-Date: Wed, 28 Feb 2018 06:40:52 -0800
-Message-ID: <20180228144106.16363-9-andrew.smirnov@gmail.com>
-References: <20180228144106.16363-1-andrew.smirnov@gmail.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
+ analogix_dp_bind
+Date: Wed, 28 Feb 2018 14:54:30 +0000
+Message-ID: <2c89da60-3c54-a8db-db9d-6079c51ed29d@arm.com>
+References: <20180130202913.28724-1-thierry.escande@collabora.com>
+ <20180130202913.28724-6-thierry.escande@collabora.com>
+ <2776489.2p7NH6SBud@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180228144106.16363-1-andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>, cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2776489.2p7NH6SBud@diego>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?=c3=98rjan_Eide?= <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Haixia Shi <hshi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Drop all of the code related to .remove hook and make use of
-devm_nvmem_register() instead.
+On 28/02/18 14:37, Heiko Stübner wrote:
+> Am Dienstag, 30. Januar 2018, 21:28:35 CET schrieb Thierry Escande:
+>> From: zain wang <wzz@rock-chips.com>
+>>
+>> The bridge does not need to be powered in analogix_dp_bind(), so
+>> remove the calls to pm_runtime_get()/phy_power_on()/analogix_dp_init_dp()
+>> as well as their power-off counterparts.
+>>
+>> Cc: Stéphane Marchesin <marcheu@chromium.org>
+>> Signed-off-by: zain wang <wzz@rock-chips.com>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>> [the patch originally just removed the power_on portion, seanpaul removed
+>> the power off code as well as improved the commit message]
+>> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+>> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+>> ---
+>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 10 ----------
+>>  1 file changed, 10 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c index
+>> cb5e18d6ba04..1477ea9ba85d 100644
+>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> @@ -1382,11 +1382,6 @@ analogix_dp_bind(struct device *dev, struct
+>> drm_device *drm_dev,
+>>
+>>  	pm_runtime_enable(dev);
+>>
+>> -	pm_runtime_get_sync(dev);
+>> -	phy_power_on(dp->phy);
+>> -
+>> -	analogix_dp_init_dp(dp);
+>> -
+>>  	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
+>>  					analogix_dp_hardirq,
+>>  					analogix_dp_irq_thread,
+> 
+> Not 100% sure here, as the driver has the request-irq + disable-irq hack
+> here. So a pending interrupt could possibly fire between request and
+> disable.
+> 
+> Right now the block should be on, but can it still handle such an irq
+> when the power is removed?
 
-Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Carlo Caione <carlo-KA+7E9HrN00dnm+yROfE0A@public.gmane.org>
-Cc: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Andrey Smirnov <andrew.smirnov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- drivers/nvmem/qfprom.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+Probably not (see below).
 
-diff --git a/drivers/nvmem/qfprom.c b/drivers/nvmem/qfprom.c
-index cb3b48b47d64..13bf43c84bd4 100644
---- a/drivers/nvmem/qfprom.c
-+++ b/drivers/nvmem/qfprom.c
-@@ -47,13 +47,6 @@ static int qfprom_reg_write(void *context,
- 	return 0;
- }
- 
--static int qfprom_remove(struct platform_device *pdev)
--{
--	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
--
--	return nvmem_unregister(nvmem);
--}
--
- static struct nvmem_config econfig = {
- 	.name = "qfprom",
- 	.stride = 1,
-@@ -82,12 +75,10 @@ static int qfprom_probe(struct platform_device *pdev)
- 	econfig.dev = dev;
- 	econfig.priv = priv;
- 
--	nvmem = nvmem_register(&econfig);
-+	nvmem = devm_nvmem_register(dev, &econfig);
- 	if (IS_ERR(nvmem))
- 		return PTR_ERR(nvmem);
- 
--	platform_set_drvdata(pdev, nvmem);
--
- 	return 0;
- }
- 
-@@ -99,7 +90,6 @@ MODULE_DEVICE_TABLE(of, qfprom_of_match);
- 
- static struct platform_driver qfprom_driver = {
- 	.probe = qfprom_probe,
--	.remove = qfprom_remove,
- 	.driver = {
- 		.name = "qcom,qfprom",
- 		.of_match_table = qfprom_of_match,
+> So before removing the power here, we might want something
+> similar to what Marc posted for the vop [0] for the analogix-dp?
+
+You can do that trick only if the interrupt is not shared. In the VOP
+case, it is shared with the IOMMU, which makes it more... interesting.
+
+And when it comes to power and the analogix-dp driver, I've been
+carrying this[1] for a while. Fully exploitable from userspace. I know
+it is about to be replaced by this series, but at least 4.15 and 4.16
+are affected.
+
+	M.
+
+[1] https://www.spinics.net/lists/arm-kernel/msg623892.html
 -- 
-2.14.3
+Jazz is not dead. It just smells funny...
