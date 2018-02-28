@@ -1,82 +1,70 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
  analogix_dp_bind
-Date: Wed, 28 Feb 2018 14:54:30 +0000
-Message-ID: <2c89da60-3c54-a8db-db9d-6079c51ed29d@arm.com>
+Date: Wed, 28 Feb 2018 15:56:12 +0100
+Message-ID: <7345252.P7zEYUIqsL@diego>
 References: <20180130202913.28724-1-thierry.escande@collabora.com>
- <20180130202913.28724-6-thierry.escande@collabora.com>
- <2776489.2p7NH6SBud@diego>
+ <2776489.2p7NH6SBud@diego> <2c89da60-3c54-a8db-db9d-6079c51ed29d@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2776489.2p7NH6SBud@diego>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: Thierry Escande <thierry.escande@collabora.com>, Archit Taneja <architt@codeaurora.org>, Inki Dae <inki.dae@samsung.com>, Thierry Reding <thierry.reding@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zain Wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?Q?=c3=98rjan_Eide?= <orjan.eide@arm.com>, Mark Yao <mark.yao@rock-chips.com>, Haixia Shi <hshi@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <2c89da60-3c54-a8db-db9d-6079c51ed29d@arm.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 28/02/18 14:37, Heiko Stübner wrote:
-> Am Dienstag, 30. Januar 2018, 21:28:35 CET schrieb Thierry Escande:
->> From: zain wang <wzz@rock-chips.com>
->>
->> The bridge does not need to be powered in analogix_dp_bind(), so
->> remove the calls to pm_runtime_get()/phy_power_on()/analogix_dp_init_dp()
->> as well as their power-off counterparts.
->>
->> Cc: Stéphane Marchesin <marcheu@chromium.org>
->> Signed-off-by: zain wang <wzz@rock-chips.com>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> [the patch originally just removed the power_on portion, seanpaul removed
->> the power off code as well as improved the commit message]
->> Signed-off-by: Sean Paul <seanpaul@chromium.org>
->> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
->> ---
->>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 10 ----------
->>  1 file changed, 10 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c index
->> cb5e18d6ba04..1477ea9ba85d 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -1382,11 +1382,6 @@ analogix_dp_bind(struct device *dev, struct
->> drm_device *drm_dev,
->>
->>  	pm_runtime_enable(dev);
->>
->> -	pm_runtime_get_sync(dev);
->> -	phy_power_on(dp->phy);
->> -
->> -	analogix_dp_init_dp(dp);
->> -
->>  	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
->>  					analogix_dp_hardirq,
->>  					analogix_dp_irq_thread,
-> 
-> Not 100% sure here, as the driver has the request-irq + disable-irq hack
-> here. So a pending interrupt could possibly fire between request and
-> disable.
-> 
-> Right now the block should be on, but can it still handle such an irq
-> when the power is removed?
-
-Probably not (see below).
-
-> So before removing the power here, we might want something
-> similar to what Marc posted for the vop [0] for the analogix-dp?
-
-You can do that trick only if the interrupt is not shared. In the VOP
-case, it is shared with the IOMMU, which makes it more... interesting.
-
-And when it comes to power and the analogix-dp driver, I've been
-carrying this[1] for a while. Fully exploitable from userspace. I know
-it is about to be replaced by this series, but at least 4.15 and 4.16
-are affected.
-
-	M.
-
-[1] https://www.spinics.net/lists/arm-kernel/msg623892.html
--- 
-Jazz is not dead. It just smells funny...
+QW0gTWl0dHdvY2gsIDI4LiBGZWJydWFyIDIwMTgsIDE1OjU0OjMwIENFVCBzY2hyaWViIE1hcmMg
+WnluZ2llcjoKPiBPbiAyOC8wMi8xOCAxNDozNywgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gPiBB
+bSBEaWVuc3RhZywgMzAuIEphbnVhciAyMDE4LCAyMToyODozNSBDRVQgc2NocmllYiBUaGllcnJ5
+IEVzY2FuZGU6Cj4gPj4gRnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4gPj4g
+Cj4gPj4gVGhlIGJyaWRnZSBkb2VzIG5vdCBuZWVkIHRvIGJlIHBvd2VyZWQgaW4gYW5hbG9naXhf
+ZHBfYmluZCgpLCBzbwo+ID4+IHJlbW92ZSB0aGUgY2FsbHMgdG8gcG1fcnVudGltZV9nZXQoKS9w
+aHlfcG93ZXJfb24oKS9hbmFsb2dpeF9kcF9pbml0X2RwKCkKPiA+PiBhcyB3ZWxsIGFzIHRoZWly
+IHBvd2VyLW9mZiBjb3VudGVycGFydHMuCj4gPj4gCj4gPj4gQ2M6IFN0w6lwaGFuZSBNYXJjaGVz
+aW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgo+ID4+IFNpZ25lZC1vZmYtYnk6IHphaW4gd2FuZyA8
+d3p6QHJvY2stY2hpcHMuY29tPgo+ID4+IFNpZ25lZC1vZmYtYnk6IENhZXNhciBXYW5nIDx3eHRA
+cm9jay1jaGlwcy5jb20+Cj4gPj4gW3RoZSBwYXRjaCBvcmlnaW5hbGx5IGp1c3QgcmVtb3ZlZCB0
+aGUgcG93ZXJfb24gcG9ydGlvbiwgc2VhbnBhdWwgcmVtb3ZlZAo+ID4+IHRoZSBwb3dlciBvZmYg
+Y29kZSBhcyB3ZWxsIGFzIGltcHJvdmVkIHRoZSBjb21taXQgbWVzc2FnZV0KPiA+PiBTaWduZWQt
+b2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiA+PiBTaWduZWQtb2Zm
+LWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgo+ID4+
+IC0tLQo+ID4+IAo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
+X2RwX2NvcmUuYyB8IDEwIC0tLS0tLS0tLS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDEwIGRlbGV0
+aW9ucygtKQo+ID4+IAo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
+YWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+ID4+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
+bmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgaW5kZXgKPiA+PiBjYjVlMThkNmJhMDQuLjE0Nzdl
+YTliYTg1ZCAxMDA2NDQKPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
+L2FuYWxvZ2l4X2RwX2NvcmUuYwo+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
+bG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gPj4gQEAgLTEzODIsMTEgKzEzODIsNiBAQCBhbmFs
+b2dpeF9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0Cj4gPj4gZHJtX2RldmljZSAq
+ZHJtX2RldiwKPiA+PiAKPiA+PiAgCXBtX3J1bnRpbWVfZW5hYmxlKGRldik7Cj4gPj4gCj4gPj4g
+LQlwbV9ydW50aW1lX2dldF9zeW5jKGRldik7Cj4gPj4gLQlwaHlfcG93ZXJfb24oZHAtPnBoeSk7
+Cj4gPj4gLQo+ID4+IC0JYW5hbG9naXhfZHBfaW5pdF9kcChkcCk7Cj4gPj4gLQo+ID4+IAo+ID4+
+ICAJcmV0ID0gZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2lycSgmcGRldi0+ZGV2LCBkcC0+aXJxLAo+
+ID4+ICAJCj4gPj4gIAkJCQkJYW5hbG9naXhfZHBfaGFyZGlycSwKPiA+PiAgCQkJCQlhbmFsb2dp
+eF9kcF9pcnFfdGhyZWFkLAo+ID4gCj4gPiBOb3QgMTAwJSBzdXJlIGhlcmUsIGFzIHRoZSBkcml2
+ZXIgaGFzIHRoZSByZXF1ZXN0LWlycSArIGRpc2FibGUtaXJxIGhhY2sKPiA+IGhlcmUuIFNvIGEg
+cGVuZGluZyBpbnRlcnJ1cHQgY291bGQgcG9zc2libHkgZmlyZSBiZXR3ZWVuIHJlcXVlc3QgYW5k
+Cj4gPiBkaXNhYmxlLgo+ID4gCj4gPiBSaWdodCBub3cgdGhlIGJsb2NrIHNob3VsZCBiZSBvbiwg
+YnV0IGNhbiBpdCBzdGlsbCBoYW5kbGUgc3VjaCBhbiBpcnEKPiA+IHdoZW4gdGhlIHBvd2VyIGlz
+IHJlbW92ZWQ/Cj4gCj4gUHJvYmFibHkgbm90IChzZWUgYmVsb3cpLgo+IAo+ID4gU28gYmVmb3Jl
+IHJlbW92aW5nIHRoZSBwb3dlciBoZXJlLCB3ZSBtaWdodCB3YW50IHNvbWV0aGluZwo+ID4gc2lt
+aWxhciB0byB3aGF0IE1hcmMgcG9zdGVkIGZvciB0aGUgdm9wIFswXSBmb3IgdGhlIGFuYWxvZ2l4
+LWRwPwo+IAo+IFlvdSBjYW4gZG8gdGhhdCB0cmljayBvbmx5IGlmIHRoZSBpbnRlcnJ1cHQgaXMg
+bm90IHNoYXJlZC4gSW4gdGhlIFZPUAo+IGNhc2UsIGl0IGlzIHNoYXJlZCB3aXRoIHRoZSBJT01N
+VSwgd2hpY2ggbWFrZXMgaXQgbW9yZS4uLiBpbnRlcmVzdGluZy4KClllcCwgd2hpY2ggaXMgd2h5
+IEkgbWVudGlvbmVkIGl0LCBhcyB0aGUgZHAtaXJxIHNob3VsZCBub3QgYmUgc2hhcmVkCkknZCB0
+aGluayA6LSkKCgpIZWlrbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCg==
