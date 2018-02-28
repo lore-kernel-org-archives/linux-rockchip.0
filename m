@@ -1,95 +1,63 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
-	the IOMMU
-Date: Wed, 28 Feb 2018 15:06:19 +0000
-Message-ID: <34a60ab2-a3af-3302-6612-740cba5460db@arm.com>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
-	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
-	<20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
-	<CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg@mail.gmail.com>
-	<CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
-	<5A72F7D2.1050201@rock-chips.com> <5A8FEBC6.4000408@rock-chips.com>
-	<33d1d6bd-3455-5cad-6990-a9ca94063f3a@arm.com>
-	<5A96A809.2020509@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
+ analogix_dp_bind
+Date: Wed, 28 Feb 2018 16:20:57 +0100
+Message-ID: <19741148.ZWsFISTM5I@diego>
+References: <20180130202913.28724-1-thierry.escande@collabora.com>
+ <20180130202913.28724-6-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <5A96A809.2020509-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180130202913.28724-6-thierry.escande@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 28/02/18 13:00, JeffyChen wrote:
-> Hi Robin,
-> 
-> Thanks for your reply.
-> 
-> On 02/28/2018 12:59 AM, Robin Murphy wrote:
->>>> the rockchip IOMMU is part of the master block in hardware, so it needs
->>>> to control the master's power domain and some of the master's clocks
->>>> when access it's registers.
->>>>
->>>> and the number of clocks needed here, might be different between each
->>>> IOMMUs(according to which master block it belongs), it's a little like
->>>> our power domain:
->>>> https://elixir.free-electrons.com/linux/latest/source/arch/arm64/boot/dts/rockchip/rk3399.dtsi#L935 
->>>>
->>>>
->>>>
->>>>
->>>> i'm not sure how to describe this correctly, is it ok use something 
->>>> like
->>>> "the same as it's master block"?
->>>
->>> would it make sense to add a property to specify the master who owns
->>> the iommu, and we can get all clocks(only some of those clocks are
->>> actually needed) from it in the of_xlate()? and we can also reuse the
->>> clock-names of that master to build clk_bulk_data and log errors in
->>> clk_bulk_get.
->>
->> I'm inclined to agree with Rob here - if we're to add anything to the
->> binding, it should only be whatever clock inputs are defined for the
->> IOMMU IP block itself. If Linux doesn't properly handle the interconnect
->> clock hierarchy external to a particular integration, that's a separate
->> issue and it's not the binding's problem.
->>
->> I actually quite like the hack of "borrowing" the clocks from
->> dev->of_node in of_xlate() - you shouldn't need any DT changes for that,
->> because you already know that each IOMMU instance only has the one
->> master device anyway.
-> 
-> Thanks:) but actually we are going to support sharing IOMMU between 
-> multiple masters(one of them is the main master i think) in the newer 
-> chips(not yet supported on upstream kernel)...
-
-Ha! OK, fair enough, back to the first point then...
-
-> So we might have to get all clocks from all masters, or find a way to 
-> specify the main master...and for the multiple masters case, do it in 
-> of_xlate() turns out to be a little racy...maybe we can add a property 
-> to specify main master, and get it's clocks in probe()?
-
-I notice that the 4.4 BSP kernel consistently specifies "aclk" and 
-"hclk" for the IOMMU instances - it feels unusual to say "why don't we 
-follow the downstream binding?", but it does look a lot like what I 
-would expect (I'd guess at one for the register slave interface and one 
-for the master interface/general operation?)
-
-If we can implement conceptually-correct clock handling based on an 
-accurate binding, which should cover most cases, and *then* look at 
-hacking around those where it doesn't quite work in practice due to 
-shortcomings elsewhere, that would be ideal, and of course a lot nicer 
-than just jumping straight into piles of hacks.
-
-Robin.
+QW0gRGllbnN0YWcsIDMwLiBKYW51YXIgMjAxOCwgMjE6Mjg6MzUgQ0VUIHNjaHJpZWIgVGhpZXJy
+eSBFc2NhbmRlOgo+IEZyb206IHphaW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IFRo
+ZSBicmlkZ2UgZG9lcyBub3QgbmVlZCB0byBiZSBwb3dlcmVkIGluIGFuYWxvZ2l4X2RwX2JpbmQo
+KSwgc28KPiByZW1vdmUgdGhlIGNhbGxzIHRvIHBtX3J1bnRpbWVfZ2V0KCkvcGh5X3Bvd2VyX29u
+KCkvYW5hbG9naXhfZHBfaW5pdF9kcCgpCj4gYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291
+bnRlcnBhcnRzLgo+IAo+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVt
+Lm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiBT
+aWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+IFt0aGUgcGF0
+Y2ggb3JpZ2luYWxseSBqdXN0IHJlbW92ZWQgdGhlIHBvd2VyX29uIHBvcnRpb24sIHNlYW5wYXVs
+IHJlbW92ZWQKPiB0aGUgcG93ZXIgb2ZmIGNvZGUgYXMgd2VsbCBhcyBpbXByb3ZlZCB0aGUgY29t
+bWl0IG1lc3NhZ2VdCj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1
+bS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVA
+Y29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9jb3JlLmMgfCAxMCAtLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBk
+ZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
+aXgvYW5hbG9naXhfZHBfY29yZS5jIGluZGV4Cj4gY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5YmE4NWQg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
+cF9jb3JlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
+X2RwX2NvcmUuYwo+IEBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gCj4gIAlwbV9y
+dW50aW1lX2VuYWJsZShkZXYpOwo+IAo+IC0JcG1fcnVudGltZV9nZXRfc3luYyhkZXYpOwo+IC0J
+cGh5X3Bvd2VyX29uKGRwLT5waHkpOwo+IC0KPiAtCWFuYWxvZ2l4X2RwX2luaXRfZHAoZHApOwo+
+IC0KPiAgCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmly
+cSwKPiAgCQkJCQlhbmFsb2dpeF9kcF9oYXJkaXJxLAo+ICAJCQkJCWFuYWxvZ2l4X2RwX2lycV90
+aHJlYWQsCj4gQEAgLTE0MTQsMTUgKzE0MDksMTAgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybV9kZXYsIGdvdG8gZXJyX2Rpc2Fi
+bGVfcG1fcnVudGltZTsKPiAgCX0KPiAKPiAtCXBoeV9wb3dlcl9vZmYoZHAtPnBoeSk7Cj4gLQlw
+bV9ydW50aW1lX3B1dChkZXYpOwo+IC0KPiAgCXJldHVybiBkcDsKPiAKPiAgZXJyX2Rpc2FibGVf
+cG1fcnVudGltZToKPiAKPiAtCXBoeV9wb3dlcl9vZmYoZHAtPnBoeSk7Cj4gLQlwbV9ydW50aW1l
+X3B1dChkZXYpOwo+ICAJcG1fcnVudGltZV9kaXNhYmxlKGRldik7Cj4gCj4gIAlyZXR1cm4gRVJS
+X1BUUihyZXQpOwoKSW4gZ2VuZXJhbCwgdGhpcyBwYXRjaCBzZWVtcyB0byBhbHNvIGNyZWF0ZSB0
+aGUgb3Bwb3NpdGUgdGhhbgoiZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEtlZXAgUEhZIHBvd2Vy
+ZWQgYmV0d2VlbiBkcml2ZXIgYmluZC91bmJpbmQiIFswXQoKcG9zdGVkIG9uIG1vbmRheT8KClsw
+XSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMjQyNDkzLwpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
