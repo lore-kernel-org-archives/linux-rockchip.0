@@ -1,49 +1,61 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
-Date: Wed, 28 Feb 2018 23:07:44 +0900
-Message-ID: <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com>
-References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
- <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
- <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
- <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com>
- <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com> <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
+ analogix_dp_bind
+Date: Wed, 28 Feb 2018 15:37:40 +0100
+Message-ID: <2776489.2p7NH6SBud@diego>
+References: <20180130202913.28724-1-thierry.escande@collabora.com>
+ <20180130202913.28724-6-thierry.escande@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180130202913.28724-6-thierry.escande@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Feb 28, 2018 at 10:11 PM, Geert Uytterhoeven
-<geert@linux-m68k.org> wrote:
-> Hi Tomasz,
->
-> On Wed, Feb 28, 2018 at 1:49 PM, Tomasz Figa <tfiga@chromium.org> wrote:
->> On Wed, Feb 28, 2018 at 9:32 PM, Geert Uytterhoeven
->> <geert@linux-m68k.org> wrote:
->>> On Wed, Feb 28, 2018 at 1:29 PM, Tomasz Figa <tfiga@chromium.org> wrote:
->>>> Also, how about systems where runtime PM is disabled? I think that's
->>>> one of the reasons we control the clocks explicitly in the drivers
->>>> anyway.
->>>
->>> On many platforms, Runtime PM is always enabled.
->>
->> Can we make such assumption? If so, could we just make an explicit
->> "select PM_RUNTIME" in Kconfig of the SoC?
->
-> Note that the PM_RUNTIME symbol was removed in commit 464ed18ebdb6236f
-> ("PM: Eliminate CONFIG_PM_RUNTIME"), in favor of plain PM.
->
-> The following already select PM unconditionally:
->   - ARCH_OMAP2PLUS_TYPICAL
->   - ARCH_RENESAS (except EMEV2)
->   - ARCH_TEGRA
->   - ARCH_VEXPRESS
-
-Thanks! Sounds like we might be able to simplify a lot of things with
-doing the same for Rockchip.
-
-Best regards,
-Tomasz
+QW0gRGllbnN0YWcsIDMwLiBKYW51YXIgMjAxOCwgMjE6Mjg6MzUgQ0VUIHNjaHJpZWIgVGhpZXJy
+eSBFc2NhbmRlOgo+IEZyb206IHphaW4gd2FuZyA8d3p6QHJvY2stY2hpcHMuY29tPgo+IAo+IFRo
+ZSBicmlkZ2UgZG9lcyBub3QgbmVlZCB0byBiZSBwb3dlcmVkIGluIGFuYWxvZ2l4X2RwX2JpbmQo
+KSwgc28KPiByZW1vdmUgdGhlIGNhbGxzIHRvIHBtX3J1bnRpbWVfZ2V0KCkvcGh5X3Bvd2VyX29u
+KCkvYW5hbG9naXhfZHBfaW5pdF9kcCgpCj4gYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291
+bnRlcnBhcnRzLgo+IAo+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVt
+Lm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KPiBT
+aWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+IFt0aGUgcGF0
+Y2ggb3JpZ2luYWxseSBqdXN0IHJlbW92ZWQgdGhlIHBvd2VyX29uIHBvcnRpb24sIHNlYW5wYXVs
+IHJlbW92ZWQKPiB0aGUgcG93ZXIgb2ZmIGNvZGUgYXMgd2VsbCBhcyBpbXByb3ZlZCB0aGUgY29t
+bWl0IG1lc3NhZ2VdCj4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1
+bS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVA
+Y29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9jb3JlLmMgfCAxMCAtLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBk
+ZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9n
+aXgvYW5hbG9naXhfZHBfY29yZS5jIGluZGV4Cj4gY2I1ZTE4ZDZiYTA0Li4xNDc3ZWE5YmE4NWQg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
+cF9jb3JlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
+X2RwX2NvcmUuYwo+IEBAIC0xMzgyLDExICsxMzgyLDYgQEAgYW5hbG9naXhfZHBfYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybV9kZXYsCj4gCj4gIAlwbV9y
+dW50aW1lX2VuYWJsZShkZXYpOwo+IAo+IC0JcG1fcnVudGltZV9nZXRfc3luYyhkZXYpOwo+IC0J
+cGh5X3Bvd2VyX29uKGRwLT5waHkpOwo+IC0KPiAtCWFuYWxvZ2l4X2RwX2luaXRfZHAoZHApOwo+
+IC0KPiAgCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYtPmRldiwgZHAtPmly
+cSwKPiAgCQkJCQlhbmFsb2dpeF9kcF9oYXJkaXJxLAo+ICAJCQkJCWFuYWxvZ2l4X2RwX2lycV90
+aHJlYWQsCgpOb3QgMTAwJSBzdXJlIGhlcmUsIGFzIHRoZSBkcml2ZXIgaGFzIHRoZSByZXF1ZXN0
+LWlycSArIGRpc2FibGUtaXJxIGhhY2sKaGVyZS4gU28gYSBwZW5kaW5nIGludGVycnVwdCBjb3Vs
+ZCBwb3NzaWJseSBmaXJlIGJldHdlZW4gcmVxdWVzdCBhbmQKZGlzYWJsZS4KClJpZ2h0IG5vdyB0
+aGUgYmxvY2sgc2hvdWxkIGJlIG9uLCBidXQgY2FuIGl0IHN0aWxsIGhhbmRsZSBzdWNoIGFuIGly
+cQp3aGVuIHRoZSBwb3dlciBpcyByZW1vdmVkPwoKU28gYmVmb3JlIHJlbW92aW5nIHRoZSBwb3dl
+ciBoZXJlLCB3ZSBtaWdodCB3YW50IHNvbWV0aGluZwpzaW1pbGFyIHRvIHdoYXQgTWFyYyBwb3N0
+ZWQgZm9yIHRoZSB2b3AgWzBdIGZvciB0aGUgYW5hbG9naXgtZHA/CgoKSGVpa28KClswXSBodHRw
+czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwMjEwNTEzLwoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
