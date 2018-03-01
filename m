@@ -1,314 +1,126 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v6 07/14] ARM: dts: rockchip: add clocks in iommu nodes
-Date: Thu,  1 Mar 2018 18:08:17 +0800
-Message-ID: <20180301100824.14887-8-jeffy.chen@rock-chips.com>
-References: <20180301100824.14887-1-jeffy.chen@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
+Date: Thu, 1 Mar 2018 11:18:10 +0100
+Message-ID: <CAPDyKFq_hwao0hZCYmO-VrsW3vDJJboa1RG-TMLRQRgbt+YhpQ@mail.gmail.com>
+References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
+ <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
+ <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
+ <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com>
+ <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
+ <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
+ <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com>
+ <5A977638.8010506@rock-chips.com> <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180301100824.14887-1-jeffy.chen@rock-chips.com>
+In-Reply-To: <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: jcliang@chromium.org, robin.murphy@arm.com, xxm@rock-chips.com, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Romain Perier <romain.perier@collabora.com>, Arnd Bergmann <arnd@arndb.de>, Liang Chen <cl@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Huibin Hong <huibin.hong@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-rockchip@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Nickey Yang <nic>
+To: Geert Uytterhoeven <geert@linux-m68k.org>, JeffyChen <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Linux PM <linux-pm@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add clocks in iommu nodes, since we are going to control clocks in
-rockchip iommu driver.
++linux-pm
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
----
+Geert, Jeffry, Tomasz,
 
-Changes in v6:
-Add clk names, and modify all iommu nodes in all existing rockchip dts
+Apologize for side-tracking the discussion. Just wanted to add a few
+comments, whatever it's worth to you.
 
-Changes in v5:
-Remove clk names.
+On 1 March 2018 at 09:33, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+> Hi Jeffy,
+>
+> On Thu, Mar 1, 2018 at 4:40 AM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
+>> if i'm reading the code right, the PM clk means:
+>> 1/ the clocks which would be enabled while power on
+>> 2/ these clocks are optional, it's ok if anything wrong with them
+>> 3/ controlled by pm_domain(or USE_PM_CLK_RUNTIME_OPS & pm_clk_add_notifier)
+>>
+>> and currently we're adding all clocks of the attached device as PM clk in
+>> rockchip PM domain driver, which seems wrong. because we might have these
+>> kinds of clocks:
+>> 1/ critical, should block power on if anything wrong with it(failed to get/
+>> prepare/ enable)
+>> 2/ optional, could ignore it if anything wrong
+>> 3/ only required in some special cases, for example register r/w, and
+>> doesn't need to stay enabled while power on
+>>
+>> so maybe we can:
+>> 1/ let the device(dts) or driver decide which clock is PM clk, and add it
+>> using *pm_clk_add* APIs (even of_pm_clk_add_clks() if all clocks are pm clk)
 
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+We have already tried adding DT binding for this. Those got correctly
+nacked, as this seems like a SW config and not HW config, at least in
+my opinion.
 
- arch/arm/boot/dts/rk3036.dtsi            |  2 ++
- arch/arm/boot/dts/rk322x.dtsi            |  8 ++++++++
- arch/arm/boot/dts/rk3288.dtsi            | 12 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 10 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 10 ++++++++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 14 ++++++++++++--
- 6 files changed, 54 insertions(+), 2 deletions(-)
+>>
+>> 2/ add support for critical PM clk, which would return error to the driver
+>> if anything wrong
+>>
+>> 3/ make sure PM clk always be controlled(otherwise it might be unexpected
+>> disabled by other clocks under the same clk parent?):
+>>  a) make sure Runtime PM is always enabled. and as discussed, we can select
+>> PM in ARCH_ROCKCHIP
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index a97458112ff6..567a6a725f9c 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -197,6 +197,8 @@
- 		reg = <0x10118300 0x100>;
- 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vop_mmu";
-+		clocks = <&cru ACLK_LCDC>, <&cru HCLK_LCDC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index df1e47858675..be80e9a2c9af 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -584,6 +584,8 @@
- 		reg = <0x20020800 0x100>;
- 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vpu_mmu";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "iface";
- 		iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -593,6 +595,8 @@
- 		reg = <0x20030480 0x40>, <0x200304c0 0x40>;
- 		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vdec_mmu";
-+		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
-+		clock-names = "aclk", "iface";
- 		iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -602,6 +606,8 @@
- 		reg = <0x20053f00 0x100>;
- 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vop_mmu";
-+		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-+		clock-names = "aclk", "iface";
- 		iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -611,6 +617,8 @@
- 		reg = <0x20070800 0x100>;
- 		interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "iep_mmu";
-+		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-+		clock-names = "aclk", "iface";
- 		iommu-cells = <0>;
- 		status = "disabled";
- 	};
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 6102e4e7f35c..ad77c8eb3c38 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -958,6 +958,8 @@
- 		reg = <0x0 0xff900800 0x0 0x40>;
- 		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "iep_mmu";
-+		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -967,6 +969,8 @@
- 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
- 		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "isp_mmu";
-+		clocks = <&cru ACLK_ISP>, <&cru HCLK_ISP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		rockchip,disable-mmu-reset;
- 		status = "disabled";
-@@ -1026,6 +1030,8 @@
- 		reg = <0x0 0xff930300 0x0 0x100>;
- 		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vopb_mmu";
-+		clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
-+		clock-names = "aclk", "iface";
- 		power-domains = <&power RK3288_PD_VIO>;
- 		#iommu-cells = <0>;
- 		status = "disabled";
-@@ -1074,6 +1080,8 @@
- 		reg = <0x0 0xff940300 0x0 0x100>;
- 		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vopl_mmu";
-+		clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
-+		clock-names = "aclk", "iface";
- 		power-domains = <&power RK3288_PD_VIO>;
- 		#iommu-cells = <0>;
- 		status = "disabled";
-@@ -1204,6 +1212,8 @@
- 		reg = <0x0 0xff9a0800 0x0 0x100>;
- 		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vpu_mmu";
-+		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -1213,6 +1223,8 @@
- 		reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
- 		interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "hevc_mmu";
-+		clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index be2bfbc6b483..b8e9da15e00c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -595,6 +595,8 @@
- 		reg = <0x0 0xff330200 0 0x100>;
- 		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "h265e_mmu";
-+		clocks = <&cru ACLK_H265>, <&cru PCLK_H265>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -604,6 +606,8 @@
- 		reg = <0x0 0xff340800 0x0 0x40>;
- 		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vepu_mmu";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -613,6 +617,8 @@
- 		reg = <0x0 0xff350800 0x0 0x40>;
- 		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vpu_mmu";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -622,6 +628,8 @@
- 		reg = <0x0 0xff360480 0x0 0x40>, <0x0 0xff3604c0 0x0 0x40>;
- 		interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "rkvdec_mmu";
-+		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -631,6 +639,8 @@
- 		reg = <0x0 0xff373f00 0x0 0x100>;
- 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vop_mmu";
-+		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 03458ac44201..ad91ced78649 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -742,6 +742,8 @@
- 		reg = <0x0 0xff900800 0x0 0x100>;
- 		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "iep_mmu";
-+		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -752,6 +754,8 @@
- 		      <0x0 0xff915000 0x0 0x100>;
- 		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "isp_mmu";
-+		clocks = <&cru ACLK_ISP>, <&cru HCLK_ISP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		rockchip,disable-mmu-reset;
- 		status = "disabled";
-@@ -762,6 +766,8 @@
- 		reg = <0x0 0xff930300 0x0 0x100>;
- 		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vop_mmu";
-+		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -772,6 +778,8 @@
- 		      <0x0 0xff9a0480 0x0 0x40>;
- 		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "hevc_mmu";
-+		clocks = <&cru ACLK_VIDEO>, <&cru HCLK_VIDEO>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -782,6 +790,8 @@
- 		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
- 			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vepu_mmu", "vdpu_mmu";
-+		clocks = <&cru ACLK_VIDEO>, <&cru HCLK_VIDEO>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index da0078eda485..8cb4ed5d43cc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1234,6 +1234,8 @@
- 		reg = <0x0 0xff650800 0x0 0x40>;
- 		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "vpu_mmu";
-+		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -1243,6 +1245,8 @@
- 		reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
- 		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "vdec_mmu";
-+		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -1252,6 +1256,8 @@
- 		reg = <0x0 0xff670800 0x0 0x40>;
- 		interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "iep_mmu";
-+		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -1597,7 +1603,7 @@
- 		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "vopl_mmu";
- 		clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
--		clock-names = "aclk", "hclk";
-+		clock-names = "aclk", "iface";
- 		power-domains = <&power RK3399_PD_VOPL>;
- 		#iommu-cells = <0>;
- 		status = "disabled";
-@@ -1654,7 +1660,7 @@
- 		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "vopb_mmu";
- 		clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
--		clock-names = "aclk", "hclk";
-+		clock-names = "aclk", "iface";
- 		power-domains = <&power RK3399_PD_VOPB>;
- 		#iommu-cells = <0>;
- 		status = "disabled";
-@@ -1665,6 +1671,8 @@
- 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
- 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "isp0_mmu";
-+		clocks = <&cru ACLK_ISP0_NOC>, <&cru HCLK_ISP0_NOC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		rockchip,disable-mmu-reset;
- 		status = "disabled";
-@@ -1675,6 +1683,8 @@
- 		reg = <0x0 0xff924000 0x0 0x100>, <0x0 0xff925000 0x0 0x100>;
- 		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH 0>;
- 		interrupt-names = "isp1_mmu";
-+		clocks = <&cru ACLK_ISP1_NOC>, <&cru HCLK_ISP1_NOC>;
-+		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
- 		rockchip,disable-mmu-reset;
- 		status = "disabled";
--- 
-2.11.0
+I am fine enabling PM for ARCH_ROCKCHIP, if needed.
+
+However, what I don't agree with in general, is to make a generic
+driver to rely on having CONFIG_PM to be set to be functional. That's
+to me, bad practice.
+
+I understand, this approach exists in drivers today. I assume it
+works, because those drivers are being used on SoCs which always has
+CONFIG_PM set.
+
+>
+> On Renesas SoCs, we only add the device's module clock with pm_clk_add().
+> Drivers that don't care about properties of the module clock just call
+> pm_runtime_*(). That way the same driver works on different SoCs using
+> the same device, with and without power and/or clock domains.
+
+I understand your point and I accept your view.
+
+However, I think this is more a mindset of which way one want
+implement things. This has been discussed several times in the mailing
+list as well.
+
+Surely we can cope with SoC specific constraints in drivers as well,
+we already do that.
+
+In principle I think this boils done to comparing a centralized
+method, where the PM domain deals with clocks vs a decentralized
+method, where the driver deals with clocks. Both works, both have
+positive and negative consequences.
+
+In my experience for ARM SoCs, I have found that centralized method
+doesn't work well, when one need flexibility. For example, if there
+are strict constraints on the order of how to put device's PM
+resources (clocks, pinctrl, etc) in low power states. For example, to
+avoid clock glitches.
+
+Another problem with the PM clk is, more exactly with
+pm_clk_suspend|resume(), that those invokes only clk_enable|disable().
+pm_clk_suspend|resume() can't call clk_prepare|unprepare(), because we
+don't know if we running in atomic context when those are executed.
+Potentially this means leaving the clocks ungated - all the time.
+
+I have though about how to fix the above, several times, but I always
+ends up with thinking that's it more easy, to let the driver deal with
+the clocks, as then the problem goes away.
+
+>
+> Drivers that care about properties of the module clock (mainly frequency)
+> can still use the clk_*() API for that. Other (optional) clocks must be
+> handled by the device driver itself.
+
+A comment on that;
+
+Before we the PM clk was introduced, we didn't have the clk_bulk_*()
+interface. To me, using clk_bulk_*() in drivers could help to simplify
+the code in regards to manage clocks (including SoC specific clocks)
+during runtime PM.
+
+Perhaps this could be an option to using PM clk, as it provides both
+flexibility and could manage SoC specific clocks.
+
+Kind regards
+Uffe
