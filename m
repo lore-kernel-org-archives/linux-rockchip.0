@@ -1,8 +1,8 @@
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 3/6] arm64: dts: rockchip: enable typec-phy for
- rk3399-sapphire.
-Date: Thu,  1 Mar 2018 10:24:17 +0100
-Message-ID: <20180301092420.1191-4-enric.balletbo@collabora.com>
+Subject: [PATCH 1/6] phy: rockchip-typec: fall back to working in host-mode if
+ extcon is missing.
+Date: Thu,  1 Mar 2018 10:24:15 +0100
+Message-ID: <20180301092420.1191-2-enric.balletbo@collabora.com>
 References: <20180301092420.1191-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,44 +19,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: kishon@ti.com, heiko@sntech.de
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, gwendal@chromium.org, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, vicencb@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>, groeck@chromium.org, kernel@collabora.com, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: gwendal@chromium.org, linux-kernel@vger.kernel.org, vicencb@gmail.com, linux-rockchip@lists.infradead.org, groeck@chromium.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
-support for rk3399") caused a regression regarding the USB3 type-A port.
-During boot, the following message appears a few times:
-
-  dwc3: failed to initialize core
-
-The driver is deferred waiting for the typec-phy, but this never happens
-bceause is disabled. So, enable it.
+Right now the rockchip typec-phy does fail probing when no extcon is
+detected. Some boards get the cable-state via the extcon interface and
+have this supported, other boards seem to use the fusb302 chip or
+another but the driver currently does not seem to utilize the extcon
+interface to report the cable-state. That's required to detect
+cable-state changes but a missing extcon shouldn't fail to probe,
+instead, should just fall back to working in host-mode if it cannot get
+the extcon.
 
 Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port support for rk3399")
 Reported-by: Vicente Bergas <vicencb@gmail.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-typec.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index ce592a4c0c4c..9c685eab4748 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -557,6 +557,14 @@
- 	status = "okay";
- };
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index 7492c8978217..3741afab5cd2 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -782,6 +782,9 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
+ 	u8 mode;
+ 	int ret;
  
-+&tcphy0 {
-+	status = "okay";
-+};
++	if (!edev)
++		return MODE_DFP_USB;
 +
-+&tcphy1 {
-+	status = "okay";
-+};
-+
- &u2phy0 {
- 	status = "okay";
+ 	ufp = extcon_get_state(edev, EXTCON_USB);
+ 	dp = extcon_get_state(edev, EXTCON_DISP_DP);
  
+@@ -1115,9 +1118,9 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+ 
+ 	tcphy->extcon = extcon_get_edev_by_phandle(dev, 0);
+ 	if (IS_ERR(tcphy->extcon)) {
+-		if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
+-			dev_err(dev, "Invalid or missing extcon\n");
+-		return PTR_ERR(tcphy->extcon);
++		if (PTR_ERR(tcphy->extcon) == -EPROBE_DEFER)
++			return PTR_ERR(tcphy->extcon);
++		tcphy->extcon = NULL;
+ 	}
+ 
+ 	pm_runtime_enable(dev);
 -- 
 2.16.1
