@@ -1,68 +1,76 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
-Date: Thu, 1 Mar 2018 09:33:22 +0100
-Message-ID: <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
-References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
- <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
- <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
- <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com>
- <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
- <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
- <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com> <5A977638.8010506@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3399-gru-* s2r (pinctrl hogs, wifi reset)
+Date: Thu, 01 Mar 2018 09:43:55 +0100
+Message-ID: <3831527.HjPPvuL6zK@diego>
+References: <20180227204711.29357-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5A977638.8010506@rock-chips.com>
+In-Reply-To: <20180227204711.29357-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: JeffyChen <jeffy.chen@rock-chips.com>
-Cc: Tomasz Figa <tfiga@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Brian Norris <briannorris@chromium.org>, Marc Zyngier <marc.zyngier@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Florian Fainelli <f.fainelli@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+Am Dienstag, 27. Februar 2018, 21:47:11 CET schrieb Douglas Anderson:
+> Back in the early days when gru devices were still under development
+> we found an issue where the WiFi reset line needed to be configured as
+> early as possible during the boot process to avoid the WiFi module
+> being in a bad state.
+> 
+> We found that the way to get the kernel to do this in the earliest
+> possible place was to configure this line in the pinctrl hogs, so
+> that's what we did.  For some history here you can see
+> <http://crosreview.com/368770>.  After the time that change landed in
+> the kernel, we landed a firmware change to configure this line even
+> earlier.  See <http://crosreview.com/399919>.  However, even after the
+> firmware change landed we kept the kernel change to deal with the fact
+> that some people working on devices might take a little while to
+> update their firmware.
+> 
+> At this there are definitely zero devices out in the wild that have
+> firmware without the fix in it.  Specifically looking in the firmware
+> branch several critically important fixes for memory stability landed
+> after the patch in coreboot and I know we didn't ship without those.
+> Thus, by now, everyone should have the new firmware and it's safe to
+> not have the kernel set this up in a pinctrl hog.
+> 
+> Historically, even though it wasn't needed to have this in a pinctrl
+> hog, we still kept it since it didn't hurt.  Pinctrl would apply the
+> default hog at bootup and then would never touch things again.  That
+> all changed with commit 981ed1bfbc6c ("pinctrl: Really force states
+> during suspend/resume").  After that commit then we'll re-apply the
+> default hog at resume time and that can screw up the reset state of
+> WiFi.  ...and on rk3399 if you touch a device on PCIe in the wrong way
+> then the whole system can go haywire.  That's what was happening.
+> Specifically you'd resume a rk3399-gru-* device and it would mostly
+> resume, then would crash with some crazy weird crash.
+> 
+> One could say, perhaps, that the recent pinctrl change was at fault
+> (and should be fixed) since it changed behavior.  ...but that's not
+> really true.  The device tree for rk3399-gru is really to blame.
+> Specifically since the pinctrl is defined in the hog and not in the
+> "wlan-pd-n" node then the actual user of this pin doesn't have a
+> pinctrl entry for it.  That's bad.
+> 
+> Let's fix our problems by just moving the control of
+> "wlan_module_reset_l pinctrl" out of the hog and put them in the
+> proper place.
+> 
+> NOTE: in theory, I think it should actually be possible to have a pin
+> controlled _both_ by the hog and by an actual device.  Once the device
+> claims the pin I think the hog is supposed to let go.  I'm not 100%
+> sure that this works and in any case this solution would be more
+> complex than is necessary.
+> 
+> Reported-by: Marc Zyngier <marc.zyngier@arm.com>
+> Fixes: 48f4d9796d99 ("arm64: dts: rockchip: add Gru/Kevin DTS")
+> Fixes: 981ed1bfbc6c ("pinctrl: Really force states during suspend/resume")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-On Thu, Mar 1, 2018 at 4:40 AM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
-> if i'm reading the code right, the PM clk means:
-> 1/ the clocks which would be enabled while power on
-> 2/ these clocks are optional, it's ok if anything wrong with them
-> 3/ controlled by pm_domain(or USE_PM_CLK_RUNTIME_OPS & pm_clk_add_notifier)
->
-> and currently we're adding all clocks of the attached device as PM clk in
-> rockchip PM domain driver, which seems wrong. because we might have these
-> kinds of clocks:
-> 1/ critical, should block power on if anything wrong with it(failed to get/
-> prepare/ enable)
-> 2/ optional, could ignore it if anything wrong
-> 3/ only required in some special cases, for example register r/w, and
-> doesn't need to stay enabled while power on
->
-> so maybe we can:
-> 1/ let the device(dts) or driver decide which clock is PM clk, and add it
-> using *pm_clk_add* APIs (even of_pm_clk_add_clks() if all clocks are pm clk)
->
-> 2/ add support for critical PM clk, which would return error to the driver
-> if anything wrong
->
-> 3/ make sure PM clk always be controlled(otherwise it might be unexpected
-> disabled by other clocks under the same clk parent?):
->  a) make sure Runtime PM is always enabled. and as discussed, we can select
-> PM in ARCH_ROCKCHIP
+applied as fix for 4.16 with the 2 Tested-tags
 
-On Renesas SoCs, we only add the device's module clock with pm_clk_add().
-Drivers that don't care about properties of the module clock just call
-pm_runtime_*(). That way the same driver works on different SoCs using
-the same device, with and without power and/or clock domains.
 
-Drivers that care about properties of the module clock (mainly frequency)
-can still use the clk_*() API for that. Other (optional) clocks must be
-handled by the device driver itself.
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Thanks
+Heiko
