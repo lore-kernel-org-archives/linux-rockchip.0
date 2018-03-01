@@ -1,73 +1,104 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: readl_poll_timeout return value
- clean up
-Date: Thu, 1 Mar 2018 09:00:22 +0000
-Message-ID: <172e7f68-8f4b-7e5f-3e9f-7aaf10a51dc9@st.com>
-References: <20180204213624.18288-1-philippe.cornu@st.com>
+From: JeffyChen <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
+Date: Thu, 01 Mar 2018 17:09:25 +0800
+Message-ID: <5A97C345.3060205@rock-chips.com>
+References: <20180228111113.13639-1-jeffy.chen@rock-chips.com> <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com> <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com> <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com> <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com> <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com> <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com> <5A977638.8010506@rock-chips.com> <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180204213624.18288-1-philippe.cornu@st.com>
-Content-Language: en-US
-Content-ID: <EFB7B5CB99F2654995995F876AAF03C1@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko
- Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Yannick FERTRE <yannick.fertre@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Alexandre TORGUE <alexandre.torgue@st.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Tomasz Figa <tfiga@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQXJjaGl0LCBBbmRyemVqICYgTGF1cmVudCwNCg0KTWF5IEkgYXNrIHlvdSBwbGVhc2UgeW91
-ciBmZWVkYmFjayBvbiB0aGlzIHNtYWxsIHBhdGNoPw0KTWFueSB0aGFua3MsDQoNClBoaWxpcHBl
-IDotKQ0KDQpPbiAwMi8wNC8yMDE4IDEwOjM2IFBNLCBQaGlsaXBwZSBDb3JudSB3cm90ZToNCj4g
-VGhlIHJlYWRsX3BvbGxfdGltZW91dCgpIHJldHVybiB2YWx1ZSBpcyAwIGluIGNhc2Ugb2Ygc3Vj
-Y2Vzcw0KPiBzbyBpdCBpcyBiZXR0ZXIgdG8gZGV0ZWN0IGVycm9ycyB3aXRob3V0IHRha2luZyBj
-YXJlIG9mIHRoZQ0KPiByZXR1cm4gdmFsdWUgc2lnbi4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IFBo
-aWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+DQo+IC0tLQ0KPiAgIGRyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDEwICsrKysrLS0tLS0NCj4g
-ICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQ0KPiANCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2ku
-YyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPiBpbmRl
-eCA2NWFlYjNmNzhiNDguLjRkMGU4NDcxYTE1YyAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPiBAQCAtMzQyLDcgKzM0Miw3IEBAIHN0
-YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNp
-ICpkc2ksIHUzMiBoZHJfdmFsKQ0KPiAgIAlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5i
-YXNlICsgRFNJX0NNRF9QS1RfU1RBVFVTLA0KPiAgIAkJCQkgdmFsLCAhKHZhbCAmIEdFTl9DTURf
-RlVMTCksIDEwMDAsDQo+ICAgCQkJCSBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsNCj4gLQlp
-ZiAocmV0IDwgMCkgew0KPiArCWlmIChyZXQpIHsNCj4gICAJCWRldl9lcnIoZHNpLT5kZXYsICJm
-YWlsZWQgdG8gZ2V0IGF2YWlsYWJsZSBjb21tYW5kIEZJRk9cbiIpOw0KPiAgIAkJcmV0dXJuIHJl
-dDsNCj4gICAJfQ0KPiBAQCAtMzUzLDcgKzM1Myw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lf
-Z2VuX3BrdF9oZHJfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksIHUzMiBoZHJfdmFsKQ0K
-PiAgIAlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX0NNRF9QS1RfU1RB
-VFVTLA0KPiAgIAkJCQkgdmFsLCAodmFsICYgbWFzaykgPT0gbWFzaywNCj4gICAJCQkJIDEwMDAs
-IENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOw0KPiAtCWlmIChyZXQgPCAwKSB7DQo+ICsJaWYg
-KHJldCkgew0KPiAgIAkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxlZCB0byB3cml0ZSBjb21tYW5k
-IEZJRk9cbiIpOw0KPiAgIAkJcmV0dXJuIHJldDsNCj4gICAJfQ0KPiBAQCAtMzg1LDcgKzM4NSw3
-IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfd3JpdGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ks
-DQo+ICAgCQlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX0NNRF9QS1Rf
-U1RBVFVTLA0KPiAgIAkJCQkJIHZhbCwgISh2YWwgJiBHRU5fUExEX1dfRlVMTCksIDEwMDAsDQo+
-ICAgCQkJCQkgQ01EX1BLVF9TVEFUVVNfVElNRU9VVF9VUyk7DQo+IC0JCWlmIChyZXQgPCAwKSB7
-DQo+ICsJCWlmIChyZXQpIHsNCj4gICAJCQlkZXZfZXJyKGRzaS0+ZGV2LA0KPiAgIAkJCQkiZmFp
-bGVkIHRvIGdldCBhdmFpbGFibGUgd3JpdGUgcGF5bG9hZCBGSUZPXG4iKTsNCj4gICAJCQlyZXR1
-cm4gcmV0Ow0KPiBAQCAtNzE2LDEzICs3MTYsMTMgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lf
-ZHBoeV9lbmFibGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpDQo+ICAgDQo+ICAgCXJldCA9IHJl
-YWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2UgKyBEU0lfUEhZX1NUQVRVUywgdmFsLA0KPiAgIAkJ
-CQkgdmFsICYgUEhZX0xPQ0ssIDEwMDAsIFBIWV9TVEFUVVNfVElNRU9VVF9VUyk7DQo+IC0JaWYg
-KHJldCA8IDApDQo+ICsJaWYgKHJldCkNCj4gICAJCURSTV9ERUJVR19EUklWRVIoImZhaWxlZCB0
-byB3YWl0IHBoeSBsb2NrIHN0YXRlXG4iKTsNCj4gICANCj4gICAJcmV0ID0gcmVhZGxfcG9sbF90
-aW1lb3V0KGRzaS0+YmFzZSArIERTSV9QSFlfU1RBVFVTLA0KPiAgIAkJCQkgdmFsLCB2YWwgJiBQ
-SFlfU1RPUF9TVEFURV9DTEtfTEFORSwgMTAwMCwNCj4gICAJCQkJIFBIWV9TVEFUVVNfVElNRU9V
-VF9VUyk7DQo+IC0JaWYgKHJldCA8IDApDQo+ICsJaWYgKHJldCkNCj4gICAJCURSTV9ERUJVR19E
-UklWRVIoImZhaWxlZCB0byB3YWl0IHBoeSBjbGsgbGFuZSBzdG9wIHN0YXRlXG4iKTsNCj4gICB9
-DQo+ICAgDQo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Geert,
+
+Thanks for your reply.
+
+On 03/01/2018 04:33 PM, Geert Uytterhoeven wrote:
+>> >so maybe we can:
+>> >1/ let the device(dts) or driver decide which clock is PM clk, and add it
+>> >using*pm_clk_add*  APIs (even of_pm_clk_add_clks() if all clocks are pm clk)
+>> >
+>> >2/ add support for critical PM clk, which would return error to the driver
+>> >if anything wrong
+>> >
+>> >3/ make sure PM clk always be controlled(otherwise it might be unexpected
+>> >disabled by other clocks under the same clk parent?):
+>> >  a) make sure Runtime PM is always enabled. and as discussed, we can select
+>> >PM in ARCH_ROCKCHIP
+> On Renesas SoCs, we only add the device's module clock with pm_clk_add().
+> Drivers that don't care about properties of the module clock just call
+> pm_runtime_*(). That way the same driver works on different SoCs using
+> the same device, with and without power and/or clock domains.
+
+well, i think we may need to check:
+1/ so the driver might not know is the clock really enabled(currently):
+
+static void pm_clk_acquire(struct device *dev, struct pm_clock_entry *ce)
+{
+     if (!ce->clk)
+         ce->clk = clk_get(dev, ce->con_id);
+     if (IS_ERR(ce->clk)) {
+         ce->status = PCE_STATUS_ERROR;
+
+static inline void __pm_clk_enable(struct device *dev, struct 
+pm_clock_entry *ce)
+{
+     int ret;
+
+     if (ce->status < PCE_STATUS_ERROR) {
+         ret = clk_enable(ce->clk);
+         if (!ret)
+             ce->status = PCE_STATUS_ENABLED;
+
+it seems the status is private.
+
+2/ the pm_clk_resume/suspend seems only be called in the domain's 
+suspend/resume ops(or USE_PM_CLK_RUNTIME_OPS, or called directly in the 
+drivers for example tegra-aconnect):
+
+# cgrep pm_clk_resume -w
+./include/linux/pm_clock.h:50:extern int pm_clk_resume(struct device *dev);
+./include/linux/pm_clock.h:83:#define pm_clk_resume     NULL
+./drivers/bus/tegra-aconnect.c:62:      return pm_clk_resume(dev);
+./drivers/dma/tegra210-adma.c:649:      ret = pm_clk_resume(dev);
+./drivers/base/power/clock_ops.c:421: * pm_clk_resume - Enable clocks in 
+a device's PM clock list.
+./drivers/base/power/clock_ops.c:424:int pm_clk_resume(struct device *dev)
+./drivers/base/power/clock_ops.c:444:EXPORT_SYMBOL_GPL(pm_clk_resume);
+./drivers/base/power/clock_ops.c:533:   ret = pm_clk_resume(dev);
+./drivers/base/power/domain.c:1685:             genpd->dev_ops.start = 
+pm_clk_resume;
+./drivers/irqchip/irq-gic-pm.c:36:      ret = pm_clk_resume(dev);
+
+so if the device doesn't have a power domain, the PM clks could be 
+unmanaged right?
+
+by the way, the tegra drivers(tegra-aconnect/tegra210-adma) seems like 
+good examples of using current PM clks...
+
+
+but anyway, force adding all clocks as PM clks in the rockchip power 
+domain driver seems wrong...
+
+>
+> Drivers that care about properties of the module clock (mainly frequency)
+> can still use the clk_*() API for that. Other (optional) clocks must be
+> handled by the device driver itself.
+>
+> Gr{oetje,eeting}s,
+>
+>                          Geert
+>
+> --
+> Geert Uytterhoeven -- There's lots of Linux beyond ia32 --geert@linux-m68k.org
+>
+> In personal conversations with technical people, I call myself a hacker. But
+> when I'm talking to journalists I just say "programmer" or something like that.
+>                                  -- Linus Torvalds
+>
+>
+>
