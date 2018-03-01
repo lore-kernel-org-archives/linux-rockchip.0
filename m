@@ -1,104 +1,45 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
-Date: Thu, 01 Mar 2018 17:09:25 +0800
-Message-ID: <5A97C345.3060205@rock-chips.com>
-References: <20180228111113.13639-1-jeffy.chen@rock-chips.com> <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com> <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com> <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com> <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com> <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com> <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com> <5A977638.8010506@rock-chips.com> <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH 0/6] phy: rockchip-typec: fix boards that does not report cable-state.
+Date: Thu,  1 Mar 2018 10:24:14 +0100
+Message-ID: <20180301092420.1191-1-enric.balletbo@collabora.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Tomasz Figa <tfiga@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
+To: kishon@ti.com, heiko@sntech.de
+Cc: groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, Andre Przywara <andre.przywara@arm.com>, Rob Herring <robh+dt@kernel.org>, Icenowy Zheng <icenowy@aosc.io>, Shawn Lin <shawn.lin@rock-chips.com>, Rask Ingemann Lambertsen <rask@formelder.dk>, Catalin Marinas <catalin.marinas@arm.com>, Pierre-Hugues Husson <phh@phh.me>, Corentin Labbe <clabbe.montjoie@gmail.com>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, Will Deacon <will.deacon@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Jianqun Xu <jay.xu@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Heinrich Schuchardt <xypron.glpk@g>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Geert,
+Hi,
 
-Thanks for your reply.
+Commit c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
+support for rk3399") introduced a regression on some rk3399 boards,
+and break USB. While some boards have support to report cable-state via
+extcon interface, other boards does not support. This patch series
+tries to fix this.
 
-On 03/01/2018 04:33 PM, Geert Uytterhoeven wrote:
->> >so maybe we can:
->> >1/ let the device(dts) or driver decide which clock is PM clk, and add it
->> >using*pm_clk_add*  APIs (even of_pm_clk_add_clks() if all clocks are pm clk)
->> >
->> >2/ add support for critical PM clk, which would return error to the driver
->> >if anything wrong
->> >
->> >3/ make sure PM clk always be controlled(otherwise it might be unexpected
->> >disabled by other clocks under the same clk parent?):
->> >  a) make sure Runtime PM is always enabled. and as discussed, we can select
->> >PM in ARCH_ROCKCHIP
-> On Renesas SoCs, we only add the device's module clock with pm_clk_add().
-> Drivers that don't care about properties of the module clock just call
-> pm_runtime_*(). That way the same driver works on different SoCs using
-> the same device, with and without power and/or clock domains.
+First and second patch makes extcon optional, the following patches
+enables the typec phyter for others rk3399 boards. It has been tested on
+Samsung Chromebook Plus and Sapphire but not on the other boards, so I'll
+appreciate if someone can test it.
 
-well, i think we may need to check:
-1/ so the driver might not know is the clock really enabled(currently):
+Best regards,
+ Enric
 
-static void pm_clk_acquire(struct device *dev, struct pm_clock_entry *ce)
-{
-     if (!ce->clk)
-         ce->clk = clk_get(dev, ce->con_id);
-     if (IS_ERR(ce->clk)) {
-         ce->status = PCE_STATUS_ERROR;
+Enric Balletbo i Serra (6):
+  phy: rockchip-typec: fall back to working in host-mode if extcon is
+    missing.
+  dt-bindings: phy-rockchip-typec: move extcon property to be optional.
+  arm64: dts: rockchip: enable typec-phy for rk3399-sapphire.
+  arm64: dts: rockchip: enable typec-phy for rk3399-firefly.
+  arm64: dts: rockchip: enable typec-phy1 for rk3399-puma.
+  arm64: dts: rockchip: enable typec-phy0 for rk3399-puma-haikou.
 
-static inline void __pm_clk_enable(struct device *dev, struct 
-pm_clock_entry *ce)
-{
-     int ret;
+ Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt | 2 ++
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts              | 8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts          | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi            | 8 ++++++++
+ drivers/phy/rockchip/phy-rockchip-typec.c                    | 9 ++++++---
+ 6 files changed, 32 insertions(+), 3 deletions(-)
 
-     if (ce->status < PCE_STATUS_ERROR) {
-         ret = clk_enable(ce->clk);
-         if (!ret)
-             ce->status = PCE_STATUS_ENABLED;
-
-it seems the status is private.
-
-2/ the pm_clk_resume/suspend seems only be called in the domain's 
-suspend/resume ops(or USE_PM_CLK_RUNTIME_OPS, or called directly in the 
-drivers for example tegra-aconnect):
-
-# cgrep pm_clk_resume -w
-./include/linux/pm_clock.h:50:extern int pm_clk_resume(struct device *dev);
-./include/linux/pm_clock.h:83:#define pm_clk_resume     NULL
-./drivers/bus/tegra-aconnect.c:62:      return pm_clk_resume(dev);
-./drivers/dma/tegra210-adma.c:649:      ret = pm_clk_resume(dev);
-./drivers/base/power/clock_ops.c:421: * pm_clk_resume - Enable clocks in 
-a device's PM clock list.
-./drivers/base/power/clock_ops.c:424:int pm_clk_resume(struct device *dev)
-./drivers/base/power/clock_ops.c:444:EXPORT_SYMBOL_GPL(pm_clk_resume);
-./drivers/base/power/clock_ops.c:533:   ret = pm_clk_resume(dev);
-./drivers/base/power/domain.c:1685:             genpd->dev_ops.start = 
-pm_clk_resume;
-./drivers/irqchip/irq-gic-pm.c:36:      ret = pm_clk_resume(dev);
-
-so if the device doesn't have a power domain, the PM clks could be 
-unmanaged right?
-
-by the way, the tegra drivers(tegra-aconnect/tegra210-adma) seems like 
-good examples of using current PM clks...
-
-
-but anyway, force adding all clocks as PM clks in the rockchip power 
-domain driver seems wrong...
-
->
-> Drivers that care about properties of the module clock (mainly frequency)
-> can still use the clk_*() API for that. Other (optional) clocks must be
-> handled by the device driver itself.
->
-> Gr{oetje,eeting}s,
->
->                          Geert
->
-> --
-> Geert Uytterhoeven -- There's lots of Linux beyond ia32 --geert@linux-m68k.org
->
-> In personal conversations with technical people, I call myself a hacker. But
-> when I'm talking to journalists I just say "programmer" or something like that.
->                                  -- Linus Torvalds
->
->
->
+-- 
+2.16.1
