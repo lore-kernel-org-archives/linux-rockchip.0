@@ -1,65 +1,86 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] pinctrl/rockchip: Don't call pinctrl_force_* for nothing
-Date: Thu, 01 Mar 2018 10:52:12 +0100
-Message-ID: <8494129.Zhd8RdA9ep@diego>
-References: <20180224200732.6116-1-marc.zyngier@arm.com>
- <CACRpkdaBbH_2KiQdrE9yZfJd0c97rTr_tF7vhSA_vCJF0L_sGw@mail.gmail.com>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v6 00/14] iommu/rockchip: Use OF_IOMMU
+Date: Thu,  1 Mar 2018 18:08:10 +0800
+Message-ID: <20180301100824.14887-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CACRpkdaBbH_2KiQdrE9yZfJd0c97rTr_tF7vhSA_vCJF0L_sGw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, "open list:GPIO SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Romain Perier <romain.perier-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <markyao0591-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM1dQTEkxZZdg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Linus,
 
-Am Donnerstag, 1. M=E4rz 2018, 10:32:22 CET schrieb Linus Walleij:
-> On Sat, Feb 24, 2018 at 9:07 PM, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org> wrot=
-e:
-> > The rockchip pinctl driver calls pinctrl_force_default and
-> > pinctrl_force_sleep on suspend resume, but seems to expect
-> > that the outcome of these calls will be that nothing happens,
-> > as the core code checks whether we're already in the right
-> > state or not.
-> > =
+This series fixes some issues in rockchip iommu driver, and add of_iommu
+support in it.
 
-> > Or at least, that was what the core code was doing until
-> > 981ed1bfbc ("pinctrl: Really force states during suspend/resume"),
-> > which gives the "force" qualifier its actual meaning.
-> > =
+Changes in v6:
+Add clk names, and modify all iommu nodes in all existing rockchip dts
+Fix dt-binding as Robin suggested.
+Use aclk and iface clk as Rob and Robin suggested, and split binding
+patch.
 
-> > In turn, this breaks suspend/resume on the rk3399. So let's
-> > change the rockchip code to do what it should have done from
-> > the very begining, which is exactly *nothing*.
-> > =
+Changes in v5:
+Use out labels to save the duplication between the error and success paths.
+Use RK_MMU_POLL_PERIOD_US instead of 100.
+Remove clk names.
+Use clk_bulk APIs.
+Avoid race about pm_runtime_get_if_in_use() and pm_runtime_enabled().
 
-> > We take this opportunity to tidy-up the RK3288 GPIO6_C6 mux
-> > resume workaround, making it symetrical to the suspend path.
-> > =
+Changes in v4:
+Rewrite commit message.
 
-> > Tested on a rk3399-based kevin Chromebook.
-> > =
+Changes in v3:
+Also remove remove() and module_exit() as Tomasz suggested.
+Loop platform_get_irq() as Robin suggested.
+Add struct rk_iommudata.
+Squash iommu/rockchip: Use iommu_group_get_for_dev() for add_device
+Only call startup() and shutdown() when iommu attached.
+Remove pm_mutex.
+Check runtime PM disabled.
+Check pm_runtime in rk_iommu_irq().
+Remove rk_iommudata->domain.
 
-> > Fixes: 9198f509c888 ("pinctrl: rockchip: add suspend/resume functions")
-> > Signed-off-by: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-> =
+Changes in v2:
+Move irq request to probe(in patch[0])
+Move bus_set_iommu() to rk_iommu_probe().
 
-> I assume I should drop this patch for now and that
-> Dough's long DTS patch with the long explanation was the
-> right solution to the problem?
+Jeffy Chen (10):
+  iommu/rockchip: Prohibit unbind and remove
+  iommu/rockchip: Fix error handling in probe
+  iommu/rockchip: Request irqs in rk_iommu_probe()
+  ARM: dts: rockchip: add clocks in iommu nodes
+  dt-bindings: iommu/rockchip: Add clock property
+  iommu/rockchip: Use IOMMU device for dma mapping operations
+  iommu/rockchip: Use OF_IOMMU to attach devices automatically
+  iommu/rockchip: Fix error handling in init
+  iommu/rockchip: Add runtime PM support
+  iommu/rockchip: Support sharing IOMMU between masters
 
-Correct this patch is not needed.
+Tomasz Figa (4):
+  iommu/rockchip: Fix error handling in attach
+  iommu/rockchip: Use iopoll helpers to wait for hardware
+  iommu/rockchip: Fix TLB flush of secondary IOMMUs
+  iommu/rockchip: Control clocks needed to access the IOMMU
 
-Thanks
-Heiko
+ .../devicetree/bindings/iommu/rockchip,iommu.txt   |   7 +
+ arch/arm/boot/dts/rk3036.dtsi                      |   2 +
+ arch/arm/boot/dts/rk322x.dtsi                      |   8 +
+ arch/arm/boot/dts/rk3288.dtsi                      |  12 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  10 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  10 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  14 +-
+ drivers/iommu/rockchip-iommu.c                     | 600 +++++++++++----------
+ 8 files changed, 374 insertions(+), 289 deletions(-)
+
+-- 
+2.11.0
