@@ -1,125 +1,119 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
-Date: Thu, 1 Mar 2018 11:37:00 +0100
-Message-ID: <CAMuHMdWg1y3Ragb9nYY12whZhUn8w0a4aOOR31LSNXa37NbfXg@mail.gmail.com>
-References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
- <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
- <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
- <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com>
- <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
- <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
- <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com>
- <5A977638.8010506@rock-chips.com> <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
- <CAPDyKFq_hwao0hZCYmO-VrsW3vDJJboa1RG-TMLRQRgbt+YhpQ@mail.gmail.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [RESEND PATCH v6 14/14] iommu/rockchip: Support sharing IOMMU
+	between masters
+Date: Thu, 1 Mar 2018 11:03:38 +0000
+Message-ID: <44efebd3-ab48-4e12-cf92-66b6563f7644@arm.com>
+References: <20180301101837.27969-1-jeffy.chen@rock-chips.com>
+	<20180301101837.27969-15-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFq_hwao0hZCYmO-VrsW3vDJJboa1RG-TMLRQRgbt+YhpQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: JeffyChen <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Linux PM <linux-pm@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180301101837.27969-15-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ulf,
+On 01/03/18 10:18, Jeffy Chen wrote:
+> There would be some masters sharing the same IOMMU device. Put them in
+> the same iommu group and share the same iommu domain.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> ---
+> 
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3:
+> Remove rk_iommudata->domain.
+> 
+> Changes in v2: None
+> 
+>   drivers/iommu/rockchip-iommu.c | 22 ++++++++++++++++++++--
+>   1 file changed, 20 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 0e0a42f41818..f4ce7706fc34 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -104,6 +104,7 @@ struct rk_iommu {
+>   	struct iommu_device iommu;
+>   	struct list_head node; /* entry in rk_iommu_domain.iommus */
+>   	struct iommu_domain *domain; /* domain to which iommu is attached */
+> +	struct iommu_group *group;
+>   };
+>   
+>   struct rk_iommudata {
+> @@ -1083,6 +1084,15 @@ static void rk_iommu_remove_device(struct device *dev)
+>   	iommu_group_remove_device(dev);
+>   }
+>   
+> +static struct iommu_group *rk_iommu_device_group(struct device *dev)
+> +{
+> +	struct rk_iommu *iommu;
+> +
+> +	iommu = rk_iommu_from_dev(dev);
+> +
+> +	return iommu->group;
 
-On Thu, Mar 1, 2018 at 11:18 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> On 1 March 2018 at 09:33, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
->> On Thu, Mar 1, 2018 at 4:40 AM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
->>> 3/ make sure PM clk always be controlled(otherwise it might be unexpected
->>> disabled by other clocks under the same clk parent?):
->>>  a) make sure Runtime PM is always enabled. and as discussed, we can select
->>> PM in ARCH_ROCKCHIP
->
-> I am fine enabling PM for ARCH_ROCKCHIP, if needed.
->
-> However, what I don't agree with in general, is to make a generic
-> driver to rely on having CONFIG_PM to be set to be functional. That's
-> to me, bad practice.
->
-> I understand, this approach exists in drivers today. I assume it
-> works, because those drivers are being used on SoCs which always has
-> CONFIG_PM set.
+Oops, seems I overlooked this in my previous review - it should really be:
 
-I agree. This is mostly useful for drivers that are used on multiple SoCs,
-where the driver doesn't care about the clock (doesn't care about its
-properties), and where the clock is optional (i.e. either tied to an
-always-running bus clock, or to a controllable module clock, depending on SoC).
-The latter needs CONFIG_PM=y, but that's a platform property, controlled
-by selecting support for that specific SoC.
+	return iommu_group_get(iommu->group);
 
->> On Renesas SoCs, we only add the device's module clock with pm_clk_add().
->> Drivers that don't care about properties of the module clock just call
->> pm_runtime_*(). That way the same driver works on different SoCs using
->> the same device, with and without power and/or clock domains.
->
-> I understand your point and I accept your view.
->
-> However, I think this is more a mindset of which way one want
-> implement things. This has been discussed several times in the mailing
-> list as well.
->
-> Surely we can cope with SoC specific constraints in drivers as well,
-> we already do that.
->
-> In principle I think this boils done to comparing a centralized
-> method, where the PM domain deals with clocks vs a decentralized
-> method, where the driver deals with clocks. Both works, both have
-> positive and negative consequences.
+or the refcounting will be unbalanced on those future systems where it 
+really will be called more than once.
 
-Is the clock (are the clocks) used purely for power management of the device,
-or does it/do they serve another (independent) purpose?
+Robin.
 
-Note that unlike clocks, power areas cannot be controlled explicitly by the
-driver. That always has to be done through the Runtime PM API.
-
-> In my experience for ARM SoCs, I have found that centralized method
-> doesn't work well, when one need flexibility. For example, if there
-> are strict constraints on the order of how to put device's PM
-> resources (clocks, pinctrl, etc) in low power states. For example, to
-> avoid clock glitches.
-
-With multiple clocks used by a device, there's sometimes also a lack of
-understanding of the real clock hierarchy. If these multiple clocks need
-to be enabled/disabled in a specific order, perhaps they are not
-independent, and modelling the hierarchy correctly, and describing in DT
-the device as being connected to the leaf clock may solve the ordering issue.
-
-> Another problem with the PM clk is, more exactly with
-> pm_clk_suspend|resume(), that those invokes only clk_enable|disable().
-> pm_clk_suspend|resume() can't call clk_prepare|unprepare(), because we
-> don't know if we running in atomic context when those are executed.
-> Potentially this means leaving the clocks ungated - all the time.
->
-> I have though about how to fix the above, several times, but I always
-> ends up with thinking that's it more easy, to let the driver deal with
-> the clocks, as then the problem goes away.
-
-There's a similar issue with powering on/off power areas.
-How do device start/stop differ from power domain on/off?
-
->> Drivers that care about properties of the module clock (mainly frequency)
->> can still use the clk_*() API for that. Other (optional) clocks must be
->> handled by the device driver itself.
->
-> A comment on that;
->
-> Before we the PM clk was introduced, we didn't have the clk_bulk_*()
-> interface. To me, using clk_bulk_*() in drivers could help to simplify
-> the code in regards to manage clocks (including SoC specific clocks)
-> during runtime PM.
->
-> Perhaps this could be an option to using PM clk, as it provides both
-> flexibility and could manage SoC specific clocks.
-
-See my comment about multiple clocks above...
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> +}
+> +
+>   static int rk_iommu_of_xlate(struct device *dev,
+>   			     struct of_phandle_args *args)
+>   {
+> @@ -1114,7 +1124,7 @@ static const struct iommu_ops rk_iommu_ops = {
+>   	.add_device = rk_iommu_add_device,
+>   	.remove_device = rk_iommu_remove_device,
+>   	.iova_to_phys = rk_iommu_iova_to_phys,
+> -	.device_group = generic_device_group,
+> +	.device_group = rk_iommu_device_group,
+>   	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
+>   	.of_xlate = rk_iommu_of_xlate,
+>   };
+> @@ -1183,9 +1193,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
+>   	if (err)
+>   		return err;
+>   
+> +	iommu->group = iommu_group_alloc();
+> +	if (IS_ERR(iommu->group)) {
+> +		err = PTR_ERR(iommu->group);
+> +		goto err_unprepare_clocks;
+> +	}
+> +
+>   	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
+>   	if (err)
+> -		goto err_unprepare_clocks;
+> +		goto err_put_group;
+>   
+>   	iommu_device_set_ops(&iommu->iommu, &rk_iommu_ops);
+>   	iommu_device_set_fwnode(&iommu->iommu, &dev->of_node->fwnode);
+> @@ -1209,6 +1225,8 @@ static int rk_iommu_probe(struct platform_device *pdev)
+>   	return 0;
+>   err_remove_sysfs:
+>   	iommu_device_sysfs_remove(&iommu->iommu);
+> +err_put_group:
+> +	iommu_group_put(iommu->group);
+>   err_unprepare_clocks:
+>   	clk_bulk_unprepare(iommu->num_clocks, iommu->clocks);
+>   	return err;
+> 
