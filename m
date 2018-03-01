@@ -1,77 +1,68 @@
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: Re: [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Thu, 01 Mar 2018 09:19:54 +0100
-Message-ID: <b8675afb-a674-e4c9-4030-d527d0e5c456@samsung.com>
-References: <20180130202913.28724-1-thierry.escande@collabora.com>
- <20180130202913.28724-6-thierry.escande@collabora.com>
- <CGME20180228152110epcas2p2f604c46e842dae0cd09cea45af38503c@epcas2p2.samsung.com>
- <19741148.ZWsFISTM5I@diego>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
+Date: Thu, 1 Mar 2018 09:33:22 +0100
+Message-ID: <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
+References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
+ <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
+ <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
+ <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com>
+ <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
+ <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
+ <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com> <5A977638.8010506@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <19741148.ZWsFISTM5I@diego>
-Content-language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?=c3=98rjan_Eide?= <orjan.eide@arm.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5A977638.8010506@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: JeffyChen <jeffy.chen@rock-chips.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpUaGFua3MgZm9yIGFkZGluZyBtZSB0byB0aGlzIHRocmVhZC4KCk9uIDIwMTgt
-MDItMjggMTY6MjAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFtIERpZW5zdGFnLCAzMC4gSmFu
-dWFyIDIwMTgsIDIxOjI4OjM1IENFVCBzY2hyaWViIFRoaWVycnkgRXNjYW5kZToKPj4gRnJvbTog
-emFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4+Cj4+IFRoZSBicmlkZ2UgZG9lcyBub3Qg
-bmVlZCB0byBiZSBwb3dlcmVkIGluIGFuYWxvZ2l4X2RwX2JpbmQoKSwgc28KPj4gcmVtb3ZlIHRo
-ZSBjYWxscyB0byBwbV9ydW50aW1lX2dldCgpL3BoeV9wb3dlcl9vbigpL2FuYWxvZ2l4X2RwX2lu
-aXRfZHAoKQo+PiBhcyB3ZWxsIGFzIHRoZWlyIHBvd2VyLW9mZiBjb3VudGVycGFydHMuCj4+Cj4+
-IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9yZz4KPj4gU2lnbmVk
-LW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6
-IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4+IFt0aGUgcGF0Y2ggb3JpZ2luYWxs
-eSBqdXN0IHJlbW92ZWQgdGhlIHBvd2VyX29uIHBvcnRpb24sIHNlYW5wYXVsIHJlbW92ZWQKPj4g
-dGhlIHBvd2VyIG9mZiBjb2RlIGFzIHdlbGwgYXMgaW1wcm92ZWQgdGhlIGNvbW1pdCBtZXNzYWdl
-XQo+PiBTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPj4g
-U2lnbmVkLW9mZi1ieTogVGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3Jh
-LmNvbT4KPj4gLS0tCj4+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMgfCAxMCAtLS0tLS0tLS0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDEwIGRlbGV0
-aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
-eC9hbmFsb2dpeF9kcF9jb3JlLmMKPj4gYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4
-L2FuYWxvZ2l4X2RwX2NvcmUuYyBpbmRleAo+PiBjYjVlMThkNmJhMDQuLjE0NzdlYTliYTg1ZCAx
-MDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
-cF9jb3JlLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dp
-eF9kcF9jb3JlLmMKPj4gQEAgLTEzODIsMTEgKzEzODIsNiBAQCBhbmFsb2dpeF9kcF9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0Cj4+IGRybV9kZXZpY2UgKmRybV9kZXYsCj4+Cj4+ICAg
-CXBtX3J1bnRpbWVfZW5hYmxlKGRldik7Cj4+Cj4+IC0JcG1fcnVudGltZV9nZXRfc3luYyhkZXYp
-Owo+PiAtCXBoeV9wb3dlcl9vbihkcC0+cGh5KTsKPj4gLQo+PiAtCWFuYWxvZ2l4X2RwX2luaXRf
-ZHAoZHApOwo+PiAtCj4+ICAgCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJnBkZXYt
-PmRldiwgZHAtPmlycSwKPj4gICAJCQkJCWFuYWxvZ2l4X2RwX2hhcmRpcnEsCj4+ICAgCQkJCQlh
-bmFsb2dpeF9kcF9pcnFfdGhyZWFkLAo+PiBAQCAtMTQxNCwxNSArMTQwOSwxMCBAQCBhbmFsb2dp
-eF9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0Cj4+IGRybV9kZXZpY2UgKmRybV9k
-ZXYsIGdvdG8gZXJyX2Rpc2FibGVfcG1fcnVudGltZTsKPj4gICAJfQo+Pgo+PiAtCXBoeV9wb3dl
-cl9vZmYoZHAtPnBoeSk7Cj4+IC0JcG1fcnVudGltZV9wdXQoZGV2KTsKPj4gLQo+PiAgIAlyZXR1
-cm4gZHA7Cj4+Cj4+ICAgZXJyX2Rpc2FibGVfcG1fcnVudGltZToKPj4KPj4gLQlwaHlfcG93ZXJf
-b2ZmKGRwLT5waHkpOwo+PiAtCXBtX3J1bnRpbWVfcHV0KGRldik7Cj4+ICAgCXBtX3J1bnRpbWVf
-ZGlzYWJsZShkZXYpOwo+Pgo+PiAgIAlyZXR1cm4gRVJSX1BUUihyZXQpOwo+IEluIGdlbmVyYWws
-IHRoaXMgcGF0Y2ggc2VlbXMgdG8gYWxzbyBjcmVhdGUgdGhlIG9wcG9zaXRlIHRoYW4KPiAiZHJt
-L2JyaWRnZTogYW5hbG9naXhfZHA6IEtlZXAgUEhZIHBvd2VyZWQgYmV0d2VlbiBkcml2ZXIgYmlu
-ZC91bmJpbmQiIFswXQo+Cj4gcG9zdGVkIG9uIG1vbmRheT8KPgo+IFswXSBodHRwczovL3BhdGNo
-d29yay5rZXJuZWwub3JnL3BhdGNoLzEwMjQyNDkzLwoKV2VsbCwgbXkgcGF0Y2ggd2FzIGEgcXVp
-Y2sgd29ya2Fyb3VuZCB0byBhdm9pZCBib2FyZCBmcmVlemUuCgpUaGlzIHBhdGNoIGxvb2tzIGxp
-a2UgYSBwcm9wZXIgZml4LiBCZXNpZGVzIHJlbW92aW5nIHJ1bnRpbWUgcG0gYW5kIHBoeQpwb3dl
-ciBjYWxscyBmcm9tIGRwX2JpbmQsIGl0IGFsc28gcmVtb3ZlcyBkcCByZWdpc3RlciBhY2Nlc3Mg
-ZG9uZSBpbgphbmFsb2dpeF9kcF9pbml0X2RwLCBhcyB0aGVyZSBpcyByZWFsbHkgbm8gbmVlZCB0
-byB0b3VjaCByZWdpc3RlcnMgaW4gYmluZApvcGVyYXRpb24uCgpUaGUgcGF0Y2hzZXQgaG93ZXZl
-ciBzdWZmZXJzIGZyb20gb3RoZXIgaXNzdWVzIG9uIEV4eW5vcyBoYXJkd2FyZS4gSSAKd2lsbCBw
-b3N0CnRoZW0gaW4gdGhhdCB0aHJlYWQuCgpCZXN0IHJlZ2FyZHMKLS0gCk1hcmVrIFN6eXByb3dz
-a2ksIFBoRApTYW1zdW5nIFImRCBJbnN0aXR1dGUgUG9sYW5kCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Jeffy,
+
+On Thu, Mar 1, 2018 at 4:40 AM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
+> if i'm reading the code right, the PM clk means:
+> 1/ the clocks which would be enabled while power on
+> 2/ these clocks are optional, it's ok if anything wrong with them
+> 3/ controlled by pm_domain(or USE_PM_CLK_RUNTIME_OPS & pm_clk_add_notifier)
+>
+> and currently we're adding all clocks of the attached device as PM clk in
+> rockchip PM domain driver, which seems wrong. because we might have these
+> kinds of clocks:
+> 1/ critical, should block power on if anything wrong with it(failed to get/
+> prepare/ enable)
+> 2/ optional, could ignore it if anything wrong
+> 3/ only required in some special cases, for example register r/w, and
+> doesn't need to stay enabled while power on
+>
+> so maybe we can:
+> 1/ let the device(dts) or driver decide which clock is PM clk, and add it
+> using *pm_clk_add* APIs (even of_pm_clk_add_clks() if all clocks are pm clk)
+>
+> 2/ add support for critical PM clk, which would return error to the driver
+> if anything wrong
+>
+> 3/ make sure PM clk always be controlled(otherwise it might be unexpected
+> disabled by other clocks under the same clk parent?):
+>  a) make sure Runtime PM is always enabled. and as discussed, we can select
+> PM in ARCH_ROCKCHIP
+
+On Renesas SoCs, we only add the device's module clock with pm_clk_add().
+Drivers that don't care about properties of the module clock just call
+pm_runtime_*(). That way the same driver works on different SoCs using
+the same device, with and without power and/or clock domains.
+
+Drivers that care about properties of the module clock (mainly frequency)
+can still use the clk_*() API for that. Other (optional) clocks must be
+handled by the device driver itself.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
