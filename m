@@ -1,62 +1,78 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] pinctrl/rockchip: Don't call pinctrl_force_* for nothing
-Date: Thu, 1 Mar 2018 09:40:39 +0000
-Message-ID: <04120632-73ce-d505-b9ba-9672c2b2c515@arm.com>
-References: <20180224200732.6116-1-marc.zyngier@arm.com>
- <CACRpkdaBbH_2KiQdrE9yZfJd0c97rTr_tF7vhSA_vCJF0L_sGw@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 1/6] phy: rockchip-typec: fall back to working in host-mode if extcon is missing.
+Date: Thu, 01 Mar 2018 10:45:20 +0100
+Message-ID: <5052573.JZoBBeufta@diego>
+References: <20180301092420.1191-1-enric.balletbo@collabora.com> <20180301092420.1191-2-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CACRpkdaBbH_2KiQdrE9yZfJd0c97rTr_tF7vhSA_vCJF0L_sGw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180301092420.1191-2-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: kishon@ti.com, groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/03/18 09:32, Linus Walleij wrote:
-> On Sat, Feb 24, 2018 at 9:07 PM, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org> wrote:
+Am Donnerstag, 1. März 2018, 10:24:15 CET schrieb Enric Balletbo i Serra:
+> Right now the rockchip typec-phy does fail probing when no extcon is
+> detected. Some boards get the cable-state via the extcon interface and
+> have this supported, other boards seem to use the fusb302 chip or
+> another but the driver currently does not seem to utilize the extcon
+> interface to report the cable-state. That's required to detect
+> cable-state changes but a missing extcon shouldn't fail to probe,
+> instead, should just fall back to working in host-mode if it cannot get
+> the extcon.
+
+And of course:
+Some boards use no controller at all and just connect the type-c to a
+standard USB-A port.
+
+> Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
+> support for rk3399") Reported-by: Vicente Bergas <vicencb@gmail.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
 > 
->> The rockchip pinctl driver calls pinctrl_force_default and
->> pinctrl_force_sleep on suspend resume, but seems to expect
->> that the outcome of these calls will be that nothing happens,
->> as the core code checks whether we're already in the right
->> state or not.
->>
->> Or at least, that was what the core code was doing until
->> 981ed1bfbc ("pinctrl: Really force states during suspend/resume"),
->> which gives the "force" qualifier its actual meaning.
->>
->> In turn, this breaks suspend/resume on the rk3399. So let's
->> change the rockchip code to do what it should have done from
->> the very begining, which is exactly *nothing*.
->>
->> We take this opportunity to tidy-up the RK3288 GPIO6_C6 mux
->> resume workaround, making it symetrical to the suspend path.
->>
->> Tested on a rk3399-based kevin Chromebook.
->>
->> Fixes: 9198f509c888 ("pinctrl: rockchip: add suspend/resume functions")
->> Signed-off-by: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+>  drivers/phy/rockchip/phy-rockchip-typec.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
 > 
-> I assume I should drop this patch for now and that
-> Dough's long DTS patch with the long explanation was the
-> right solution to the problem?
+> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c
+> b/drivers/phy/rockchip/phy-rockchip-typec.c index
+> 7492c8978217..3741afab5cd2 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+> @@ -782,6 +782,9 @@ static int tcphy_get_mode(struct rockchip_typec_phy
+> *tcphy) u8 mode;
+>  	int ret;
+> 
+> +	if (!edev)
+> +		return MODE_DFP_USB;
+> +
+>  	ufp = extcon_get_state(edev, EXTCON_USB);
+>  	dp = extcon_get_state(edev, EXTCON_DISP_DP);
+> 
+> @@ -1115,9 +1118,9 @@ static int rockchip_typec_phy_probe(struct
+> platform_device *pdev)
+> 
+>  	tcphy->extcon = extcon_get_edev_by_phandle(dev, 0);
+>  	if (IS_ERR(tcphy->extcon)) {
+> -		if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
+> -			dev_err(dev, "Invalid or missing extcon\n");
+> -		return PTR_ERR(tcphy->extcon);
+> +		if (PTR_ERR(tcphy->extcon) == -EPROBE_DEFER)
+> +			return PTR_ERR(tcphy->extcon);
+> +		tcphy->extcon = NULL;
 
-Absolutely. It also appears that this patch has the potential to break
-other Rockchip systems, so let's drop it.
+Do we want to keep a bit of the error handling of extcon, a la
 
-Thanks again,
++		if (PTR_ERR(tcphy->extcon) == -ENODEV) {
++			tcphy->extcon = NULL;
++		} else {
++			if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
++				dev_err(dev, "Invalid or extcon\n");
++			return PTR_ERR(tcphy->extcon);
++		}
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+So only make it NULL, if extcon really reports ENODEV?
+
+
+Heiko
