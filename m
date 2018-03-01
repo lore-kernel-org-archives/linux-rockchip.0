@@ -1,56 +1,95 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
-Date: Thu, 1 Mar 2018 12:54:46 +0100
-Message-ID: <CAMuHMdVXWj8GCAFy66usSj-z_zeWgY3SyxvpenUKf9cc-ZWK5w@mail.gmail.com>
-References: <20180228111113.13639-1-jeffy.chen@rock-chips.com>
- <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com>
- <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com>
- <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com>
- <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com>
- <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com>
- <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com>
- <5A977638.8010506@rock-chips.com> <CAMuHMdU9PFAXwo+1Z7Baw1fanst9yFKZ3ohoSTiQiMKTaYMVVw@mail.gmail.com>
- <CAPDyKFq_hwao0hZCYmO-VrsW3vDJJboa1RG-TMLRQRgbt+YhpQ@mail.gmail.com>
- <CAMuHMdWg1y3Ragb9nYY12whZhUn8w0a4aOOR31LSNXa37NbfXg@mail.gmail.com> <CAPDyKFrN0t6Jr-gAuU4_OHEvYap2fRiaUbZC5E7sAGAQOUQjjw@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH 1/6] phy: rockchip-typec: fall back to working in
+ host-mode if extcon is missing.
+Date: Thu, 1 Mar 2018 13:15:44 +0100
+Message-ID: <38900733-42c3-4b53-74c9-30356f01d46d@collabora.com>
+References: <20180301092420.1191-1-enric.balletbo@collabora.com>
+ <20180301092420.1191-2-enric.balletbo@collabora.com>
+ <5052573.JZoBBeufta@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFrN0t6Jr-gAuU4_OHEvYap2fRiaUbZC5E7sAGAQOUQjjw@mail.gmail.com>
+In-Reply-To: <5052573.JZoBBeufta@diego>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: JeffyChen <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Linux PM <linux-pm@vger.kernel.org>
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: kishon@ti.com, groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ulf,
+Hi Heiko,
 
-On Thu, Mar 1, 2018 at 12:22 PM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> On 1 March 2018 at 11:37, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
->> On Thu, Mar 1, 2018 at 11:18 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
->>> Another problem with the PM clk is, more exactly with
->>> pm_clk_suspend|resume(), that those invokes only clk_enable|disable().
->>> pm_clk_suspend|resume() can't call clk_prepare|unprepare(), because we
->>> don't know if we running in atomic context when those are executed.
->>> Potentially this means leaving the clocks ungated - all the time.
->>>
->>> I have though about how to fix the above, several times, but I always
->>> ends up with thinking that's it more easy, to let the driver deal with
->>> the clocks, as then the problem goes away.
+On 01/03/18 10:45, Heiko Stübner wrote:
+> Am Donnerstag, 1. März 2018, 10:24:15 CET schrieb Enric Balletbo i Serra:
+>> Right now the rockchip typec-phy does fail probing when no extcon is
+>> detected. Some boards get the cable-state via the extcon interface and
+>> have this supported, other boards seem to use the fusb302 chip or
+>> another but the driver currently does not seem to utilize the extcon
+>> interface to report the cable-state. That's required to detect
+>> cable-state changes but a missing extcon shouldn't fail to probe,
+>> instead, should just fall back to working in host-mode if it cannot get
+>> the extcon.
+> 
+> And of course:
+> Some boards use no controller at all and just connect the type-c to a
+> standard USB-A port.
+> 
+>> Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
+>> support for rk3399") Reported-by: Vicente Bergas <vicencb@gmail.com>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> ---
 >>
->> There's a similar issue with powering on/off power areas.
->
-> I don't follow. Can you elaborate?
+>>  drivers/phy/rockchip/phy-rockchip-typec.c | 9 ++++++---
+>>  1 file changed, 6 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c
+>> b/drivers/phy/rockchip/phy-rockchip-typec.c index
+>> 7492c8978217..3741afab5cd2 100644
+>> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
+>> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+>> @@ -782,6 +782,9 @@ static int tcphy_get_mode(struct rockchip_typec_phy
+>> *tcphy) u8 mode;
+>>  	int ret;
+>>
+>> +	if (!edev)
+>> +		return MODE_DFP_USB;
+>> +
+>>  	ufp = extcon_get_state(edev, EXTCON_USB);
+>>  	dp = extcon_get_state(edev, EXTCON_DISP_DP);
+>>
+>> @@ -1115,9 +1118,9 @@ static int rockchip_typec_phy_probe(struct
+>> platform_device *pdev)
+>>
+>>  	tcphy->extcon = extcon_get_edev_by_phandle(dev, 0);
+>>  	if (IS_ERR(tcphy->extcon)) {
+>> -		if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
+>> -			dev_err(dev, "Invalid or missing extcon\n");
+>> -		return PTR_ERR(tcphy->extcon);
+>> +		if (PTR_ERR(tcphy->extcon) == -EPROBE_DEFER)
+>> +			return PTR_ERR(tcphy->extcon);
+>> +		tcphy->extcon = NULL;
+> 
+> Do we want to keep a bit of the error handling of extcon, a la
+> 
+> +		if (PTR_ERR(tcphy->extcon) == -ENODEV) {
+> +			tcphy->extcon = NULL;
+> +		} else {
+> +			if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
+> +				dev_err(dev, "Invalid or extcon\n");
+> +			return PTR_ERR(tcphy->extcon);
+> +		}
+> 
+> So only make it NULL, if extcon really reports ENODEV?
+> 
 
-I intended to comment on the atomic context (or not).
-But I think I was wrong, and PM domain drivers do busy loops instead
-of sleeps.
+Sounds good to me, I'll send a second version ASAP, so people can test it with
+that change applied.
 
-Gr{oetje,eeting}s,
+Thanks for the feedback.
 
-                        Geert
+Regards,
+ Enric
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> 
+> Heiko
+> 
