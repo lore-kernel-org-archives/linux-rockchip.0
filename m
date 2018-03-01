@@ -1,78 +1,74 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/6] phy: rockchip-typec: fall back to working in host-mode if extcon is missing.
-Date: Thu, 01 Mar 2018 10:45:20 +0100
-Message-ID: <5052573.JZoBBeufta@diego>
-References: <20180301092420.1191-1-enric.balletbo@collabora.com> <20180301092420.1191-2-enric.balletbo@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/6] dt-bindings: phy-rockchip-typec: move extcon property
+ to be optional.
+Date: Thu, 01 Mar 2018 10:49:52 +0100
+Message-ID: <379977528.QSC4nRyzFz@diego>
+References: <20180301092420.1191-1-enric.balletbo@collabora.com>
+ <20180301092420.1191-3-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180301092420.1191-2-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: kishon@ti.com, groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180301092420.1191-3-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gwendal-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 1. März 2018, 10:24:15 CET schrieb Enric Balletbo i Serra:
-> Right now the rockchip typec-phy does fail probing when no extcon is
-> detected. Some boards get the cable-state via the extcon interface and
-> have this supported, other boards seem to use the fusb302 chip or
-> another but the driver currently does not seem to utilize the extcon
-> interface to report the cable-state. That's required to detect
-> cable-state changes but a missing extcon shouldn't fail to probe,
-> instead, should just fall back to working in host-mode if it cannot get
-> the extcon.
+Hi Enric,
 
-And of course:
-Some boards use no controller at all and just connect the type-c to a
-standard USB-A port.
+Am Donnerstag, 1. M=E4rz 2018, 10:24:16 CET schrieb Enric Balletbo i Serra:
+> The extcon property is used to detect the cable-state but some boards,
+> like Sapphire, currently does not seem to support, others might just not
+> need, as are supposed to work in host-mode only. So, extcon property is
+> not really a required property, move to be optional instead.
 
-> Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
-> support for rk3399") Reported-by: Vicente Bergas <vicencb@gmail.com>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+The change itself is justified, the "justification" in the message might
+need some rework, as this sounds more like a kernel-side issue,
+while the extcon should always be optional.
+
+Something like:
+
+The extcon property is used to detect the cable-state but some boards
+just connect the type-c phy to a regular USB-A connector without any
+power-delivery and thus no controller reporting the cable-state.
+So the extcon property is not really a required property, move it to be =
+
+optional instead.
+
+
+For the change itself:
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 > ---
-> 
->  drivers/phy/rockchip/phy-rockchip-typec.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c
-> b/drivers/phy/rockchip/phy-rockchip-typec.c index
-> 7492c8978217..3741afab5cd2 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-> @@ -782,6 +782,9 @@ static int tcphy_get_mode(struct rockchip_typec_phy
-> *tcphy) u8 mode;
->  	int ret;
-> 
-> +	if (!edev)
-> +		return MODE_DFP_USB;
+> =
+
+>  Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt | 2 ++
+>  1 file changed, 2 insertions(+)
+> =
+
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt index
+> 6ea867e3176f..a66f23a01129 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> @@ -14,6 +14,8 @@ Required properties:
+>   - resets : a list of phandle + reset specifier pairs
+>   - reset-names : string reset name, must be:
+>  		 "uphy", "uphy-pipe", "uphy-tcphy"
 > +
->  	ufp = extcon_get_state(edev, EXTCON_USB);
->  	dp = extcon_get_state(edev, EXTCON_DISP_DP);
-> 
-> @@ -1115,9 +1118,9 @@ static int rockchip_typec_phy_probe(struct
-> platform_device *pdev)
-> 
->  	tcphy->extcon = extcon_get_edev_by_phandle(dev, 0);
->  	if (IS_ERR(tcphy->extcon)) {
-> -		if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
-> -			dev_err(dev, "Invalid or missing extcon\n");
-> -		return PTR_ERR(tcphy->extcon);
-> +		if (PTR_ERR(tcphy->extcon) == -EPROBE_DEFER)
-> +			return PTR_ERR(tcphy->extcon);
-> +		tcphy->extcon = NULL;
+> +Optional properties:
+>   - extcon : extcon specifier for the Power Delivery
+> =
 
-Do we want to keep a bit of the error handling of extcon, a la
-
-+		if (PTR_ERR(tcphy->extcon) == -ENODEV) {
-+			tcphy->extcon = NULL;
-+		} else {
-+			if (PTR_ERR(tcphy->extcon) != -EPROBE_DEFER)
-+				dev_err(dev, "Invalid or extcon\n");
-+			return PTR_ERR(tcphy->extcon);
-+		}
-
-So only make it NULL, if extcon really reports ENODEV?
-
-
-Heiko
+>  Note, there are 2 type-c phys for RK3399, and they are almost identical,
+> except
