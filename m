@@ -1,113 +1,96 @@
-From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v5 08/13] iommu/rockchip: Control clocks needed to access
-	the IOMMU
-Date: Thu, 01 Mar 2018 09:37:43 +0800
-Message-ID: <5A975967.6020301@rock-chips.com>
-References: <20180124103516.2571-1-jeffy.chen@rock-chips.com>
-	<20180124103516.2571-9-jeffy.chen@rock-chips.com>
-	<20180130170515.3g6wtadqgmehxh5b@rob-hp-laptop>
-	<CAAFQd5A383Ey3Ntg_hcsvzHj2DsSuW6RMQ+kP=LPAZ1YmqjHOg@mail.gmail.com>
-	<CAL_JsqKFW0USD_TgGCO-s4wMBw9O2psToMObjeSEwCNReq-3=w@mail.gmail.com>
-	<5A72F7D2.1050201@rock-chips.com> <5A8FEBC6.4000408@rock-chips.com>
-	<33d1d6bd-3455-5cad-6990-a9ca94063f3a@arm.com>
-	<5A96A809.2020509@rock-chips.com>
-	<34a60ab2-a3af-3302-6612-740cba5460db@arm.com>
+From: JeffyChen <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH] soc: rockchip: power-domain: remove PM clocks
+Date: Thu, 01 Mar 2018 11:40:40 +0800
+Message-ID: <5A977638.8010506@rock-chips.com>
+References: <20180228111113.13639-1-jeffy.chen@rock-chips.com> <CAMuHMdWLL9CxmxSLsqs1QX0dDHVhp4NrW4Me2EZaZE_bJ330bA@mail.gmail.com> <CAAFQd5CLXUwH6jTq9ZOpbYt9-Xx-+Kgj-Nk+KujS=Y=qLByc9Q@mail.gmail.com> <CAMuHMdWdVdregCRh17Jfa92csBruZvLzAK+M8uajif0BSJTcaw@mail.gmail.com> <CAAFQd5CpA_M821cMDtiEiWxw_rL--hQy6T6imz_c+fSi3gH9zw@mail.gmail.com> <CAMuHMdVVDiuv7bpdC0X95Xy9dSK_TfjW5RvSekVym9Q02798Fg@mail.gmail.com> <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <34a60ab2-a3af-3302-6612-740cba5460db-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5C0GZ9C-pAqAdpuyxaF2xthLPY62a921nmABTbbmYtBmQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
+Hi guys,
 
-Thanks for your reply.
+if i'm reading the code right, the PM clk means:
+1/ the clocks which would be enabled while power on
+2/ these clocks are optional, it's ok if anything wrong with them
+3/ controlled by pm_domain(or USE_PM_CLK_RUNTIME_OPS & pm_clk_add_notifier)
 
-On 02/28/2018 11:06 PM, Robin Murphy wrote:
-> On 28/02/18 13:00, JeffyChen wrote:
->> Hi Robin,
+and currently we're adding all clocks of the attached device as PM clk 
+in rockchip PM domain driver, which seems wrong. because we might have 
+these kinds of clocks:
+1/ critical, should block power on if anything wrong with it(failed to 
+get/ prepare/ enable)
+2/ optional, could ignore it if anything wrong
+3/ only required in some special cases, for example register r/w, and 
+doesn't need to stay enabled while power on
+
+so maybe we can:
+1/ let the device(dts) or driver decide which clock is PM clk, and add 
+it using *pm_clk_add* APIs (even of_pm_clk_add_clks() if all clocks are 
+pm clk)
+
+2/ add support for critical PM clk, which would return error to the 
+driver if anything wrong
+
+3/ make sure PM clk always be controlled(otherwise it might be 
+unexpected disabled by other clocks under the same clk parent?):
+  a) make sure Runtime PM is always enabled. and as discussed, we can 
+select PM in ARCH_ROCKCHIP
+
+  b) make sure the device has a PM domain to control PM clk:
+select ROCKCHIP_PM_DOMAINS for ARCH_ROCKCHIP(that would also select 
+PM_GENERIC_DOMAINS)
+
+check dev->pm_domain before hand over PM clk, since we only care about 
+EPROBE_DEFER when attach PM domain:
+         ret = dev_pm_domain_attach(_dev, true);
+         if (ret != -EPROBE_DEFER) {
+                 if (drv->probe) {
+                         ret = drv->probe(dev);
+
+or
+
+  c) make pm_clk_suspend/pm_clk_resume part of the generic PM Runtime 
+flow(even without a PM domain)
+
+
+On 02/28/2018 10:07 PM, Tomasz Figa wrote:
+> On Wed, Feb 28, 2018 at 10:11 PM, Geert Uytterhoeven
+> <geert@linux-m68k.org> wrote:
+>> Hi Tomasz,
 >>
->> Thanks for your reply.
->>
->> On 02/28/2018 12:59 AM, Robin Murphy wrote:
->>>>> the rockchip IOMMU is part of the master block in hardware, so it
->>>>> needs
->>>>> to control the master's power domain and some of the master's clocks
->>>>> when access it's registers.
->>>>>
->>>>> and the number of clocks needed here, might be different between each
->>>>> IOMMUs(according to which master block it belongs), it's a little like
->>>>> our power domain:
->>>>> https://elixir.free-electrons.com/linux/latest/source/arch/arm64/boot/dts/rockchip/rk3399.dtsi#L935
->>>>>
->>>>>
->>>>>
->>>>>
->>>>> i'm not sure how to describe this correctly, is it ok use something
->>>>> like
->>>>> "the same as it's master block"?
+>> On Wed, Feb 28, 2018 at 1:49 PM, Tomasz Figa <tfiga@chromium.org> wrote:
+>>> On Wed, Feb 28, 2018 at 9:32 PM, Geert Uytterhoeven
+>>> <geert@linux-m68k.org> wrote:
+>>>> On Wed, Feb 28, 2018 at 1:29 PM, Tomasz Figa <tfiga@chromium.org> wrote:
+>>>>> Also, how about systems where runtime PM is disabled? I think that's
+>>>>> one of the reasons we control the clocks explicitly in the drivers
+>>>>> anyway.
 >>>>
->>>> would it make sense to add a property to specify the master who owns
->>>> the iommu, and we can get all clocks(only some of those clocks are
->>>> actually needed) from it in the of_xlate()? and we can also reuse the
->>>> clock-names of that master to build clk_bulk_data and log errors in
->>>> clk_bulk_get.
+>>>> On many platforms, Runtime PM is always enabled.
 >>>
->>> I'm inclined to agree with Rob here - if we're to add anything to the
->>> binding, it should only be whatever clock inputs are defined for the
->>> IOMMU IP block itself. If Linux doesn't properly handle the interconnect
->>> clock hierarchy external to a particular integration, that's a separate
->>> issue and it's not the binding's problem.
->>>
->>> I actually quite like the hack of "borrowing" the clocks from
->>> dev->of_node in of_xlate() - you shouldn't need any DT changes for that,
->>> because you already know that each IOMMU instance only has the one
->>> master device anyway.
+>>> Can we make such assumption? If so, could we just make an explicit
+>>> "select PM_RUNTIME" in Kconfig of the SoC?
 >>
->> Thanks:) but actually we are going to support sharing IOMMU between
->> multiple masters(one of them is the main master i think) in the newer
->> chips(not yet supported on upstream kernel)...
+>> Note that the PM_RUNTIME symbol was removed in commit 464ed18ebdb6236f
+>> ("PM: Eliminate CONFIG_PM_RUNTIME"), in favor of plain PM.
+>>
+>> The following already select PM unconditionally:
+>>    - ARCH_OMAP2PLUS_TYPICAL
+>>    - ARCH_RENESAS (except EMEV2)
+>>    - ARCH_TEGRA
+>>    - ARCH_VEXPRESS
 >
-> Ha! OK, fair enough, back to the first point then...
+> Thanks! Sounds like we might be able to simplify a lot of things with
+> doing the same for Rockchip.
 >
->> So we might have to get all clocks from all masters, or find a way to
->> specify the main master...and for the multiple masters case, do it in
->> of_xlate() turns out to be a little racy...maybe we can add a property
->> to specify main master, and get it's clocks in probe()?
->
-> I notice that the 4.4 BSP kernel consistently specifies "aclk" and
-> "hclk" for the IOMMU instances - it feels unusual to say "why don't we
-> follow the downstream binding?", but it does look a lot like what I
-> would expect (I'd guess at one for the register slave interface and one
-> for the master interface/general operation?)
-huh, right.
-i did noticed that, but there's a hevc_mmu with ("aclk", "hclk", 
-"clk_core", "clk_cabac") confused me.
-
-so confirmed with Simon, that hevc_mmu is wrong. currently all IOMMUs 
-should only have 2 clks, either aclk+hclk or aclk+pclk (depends on the 
-clk tree)
-
-so it seems to be a good idea to do so, will send patches soon, thanks :)
->
-> If we can implement conceptually-correct clock handling based on an
-> accurate binding, which should cover most cases, and *then* look at
-> hacking around those where it doesn't quite work in practice due to
-> shortcomings elsewhere, that would be ideal, and of course a lot nicer
-> than just jumping straight into piles of hacks.
->
-> Robin.
+> Best regards,
+> Tomasz
 >
 >
 >
