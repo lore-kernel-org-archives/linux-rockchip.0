@@ -1,76 +1,60 @@
-From: klaus.goger@theobroma-systems.com
-Subject: Re: [PATCH v2 5/6] arm64: dts: rockchip: enable typec-phy1 for
- rk3399-puma.
-Date: Fri, 2 Mar 2018 20:49:49 +0100
-Message-ID: <056BCD2A-CBAF-46B2-831B-5E60BE4CC74D@theobroma-systems.com>
-References: <20180301152515.20940-1-enric.balletbo@collabora.com>
- <20180301152515.20940-6-enric.balletbo@collabora.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.2 \(3445.5.20\))
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180301152515.20940-6-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v9 5/5] drm/bridge/synopsys: dw-hdmi: Add missing bridge
+ detach
+Date: Fri, 02 Mar 2018 23:49:06 +0200
+Message-ID: <2714218.VptbnhJPkd@avalon>
+References: <20180302175757.28192-1-enric.balletbo@collabora.com>
+ <20180302175757.28192-6-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180302175757.28192-6-enric.balletbo@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: kishon@ti.com, =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, devicetree@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, Russell King <rmk+kernel@armlinux.org.uk>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-> On 01.03.2018, at 16:25, Enric Balletbo i Serra <enric.balletbo@collabora.com> wrote:
-> 
-> Commit c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
-> support for rk3399") caused a regression regarding the USB3. During boot,
-> the following message appears a few times:
-> 
->      dwc3: failed to initialize core
-> 
-> The driver is deferred waiting for the typec-phy, but this never happens
-> beause is disabled. So, enable it.
-> 
-> Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port support for rk3399")
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> 
-> Changes in v2: None
-> 
-> arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 4 ++++
-> 1 file changed, 4 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> index 1fc5060d7027..3a3b24383482 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> @@ -505,6 +505,10 @@
-> 	};
-> };
-> 
-> +&tcphy1 {
-> +	status = "okay";
-> +};
-> +
-> &u2phy1 {
-> 	status = "okay";
-> 
-> -- 
-> 2.16.1
-
-
-Tested-by: Klaus Goger <klaus.goger@theobroma-systems.com>
-
-Looks good. With your patch,the onboard USB hub on tcphy1 is found 
-at bootup.
-
-# lsusb  -t
-/:  Bus 06.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M
-    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 5000M
-        |__ Port 2: Dev 3, If 0, Class=Mass Storage, Driver=usb-storage, 5000M
-/:  Bus 05.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 480M
-    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M
-        |__ Port 4: Dev 4, If 0, Class=, Driver=, 12M
-/:  Bus 04.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M
-/:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M
-/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M
-/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M
-
-— 
-Klaus
+SGkgRW5yaWMsCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4KCk9uIEZyaWRheSwgMiBNYXJjaCAy
+MDE4IDE5OjU3OjU3IEVFVCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdyb3RlOgo+IEZyb206IEpl
+ZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gCj4gV2UgaW5pdGVkIGNvbm5l
+Y3RvciBpbiBhdHRhY2goKSwgc28gbmVlZCBhIGRldGFjaCgpIHRvIGNsZWFudXAuCgpEbyB3ZSA/
+IFRoZSBkdy1oZG1pIGRyaXZlciBhbHJlYWR5IHNldHMgZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCkg
+YXMgdGhlIApjb25uZWN0b3IgLmRlc3Ryb3koKSBoYW5kbGVyLCBhbmQgdGhlIC5kZXN0cm95KCkg
+b3BlcmF0aW9uIGlzIGNhbGxlZCBieSB0aGUgCkRSTSBjb3JlLiBOb25lIG9mIHRoZSBvdGhlciBi
+cmlkZ2UgZHJpdmVycyBjYWxsIGRybV9jb25uZWN0b3JfY2xlYW51cCgpIApkaXJlY3RseS4KCj4g
+U2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiBT
+aWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEu
+Y29tPgo+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxl
+dGJvQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2OTogTm9uZQo+IAo+ICBk
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDggKysrKysrKysKPiAg
+MSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IGIvZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgaW5kZXgKPiBmOTgwMjM5OWNjMGQuLjU2MjY5MjJmOTVm
+OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gQEAg
+LTE5ODUsNiArMTk4NSwxMyBAQCBzdGF0aWMgaW50IGR3X2hkbWlfYnJpZGdlX2F0dGFjaChzdHJ1
+Y3QgZHJtX2JyaWRnZQo+ICpicmlkZ2UpIHJldHVybiAwOwo+ICB9Cj4gCj4gK3N0YXRpYyB2b2lk
+IGR3X2hkbWlfYnJpZGdlX2RldGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICt7Cj4g
+KwlzdHJ1Y3QgZHdfaGRtaSAqaGRtaSA9IGJyaWRnZS0+ZHJpdmVyX3ByaXZhdGU7Cj4gKwo+ICsJ
+ZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCZoZG1pLT5jb25uZWN0b3IpOwo+ICt9Cj4gKwo+ICBzdGF0
+aWMgZW51bSBkcm1fbW9kZV9zdGF0dXMKPiAgZHdfaGRtaV9icmlkZ2VfbW9kZV92YWxpZChzdHJ1
+Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICAJCQkgIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9t
+b2RlICptb2RlKQo+IEBAIC0yMDQxLDYgKzIwNDgsNyBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX2Jy
+aWRnZV9lbmFibGUoc3RydWN0IGRybV9icmlkZ2UKPiAqYnJpZGdlKQo+IAo+ICBzdGF0aWMgY29u
+c3Qgc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgZHdfaGRtaV9icmlkZ2VfZnVuY3MgPSB7Cj4gIAku
+YXR0YWNoID0gZHdfaGRtaV9icmlkZ2VfYXR0YWNoLAo+ICsJLmRldGFjaCA9IGR3X2hkbWlfYnJp
+ZGdlX2RldGFjaCwKPiAgCS5lbmFibGUgPSBkd19oZG1pX2JyaWRnZV9lbmFibGUsCj4gIAkuZGlz
+YWJsZSA9IGR3X2hkbWlfYnJpZGdlX2Rpc2FibGUsCj4gIAkubW9kZV9zZXQgPSBkd19oZG1pX2Jy
+aWRnZV9tb2RlX3NldCwKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
