@@ -1,137 +1,131 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v8 4/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
-Date: Fri, 2 Mar 2018 13:22:53 +0100
-Message-ID: <a3140d3d-d6bc-afa9-30fa-00980511dd82@collabora.com>
-References: <20180110162348.22765-1-thierry.escande@collabora.com>
- <13219770.NOTAg9tncx@diego>
- <68537204-0c41-5210-935a-0a7743ea847c@collabora.com>
- <1552223.kPgI5s5XdI@phil>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: Re: [PATCH 2/3] soc: rockchip: power-domain: Use
+ of_clk_get_parent_count() instead of open coding
+Date: Fri, 2 Mar 2018 14:15:35 +0100
+Message-ID: <CAMuHMdVsb+5T-DYfF9v6ANhVxhRk6_r+XPA34mW7Q=90HnitAA@mail.gmail.com>
+References: <1516375101-29836-1-git-send-email-geert+renesas@glider.be>
+ <1516375101-29836-3-git-send-email-geert+renesas@glider.be>
+ <11171053.oOJPuGlHoK@phil>
+ <CAEG3pNCioW_FVXj3-j4KC_yO6ZYGXQB_eanHWSb9NUE9kYsWag@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1552223.kPgI5s5XdI@phil>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAEG3pNCioW_FVXj3-j4KC_yO6ZYGXQB_eanHWSb9NUE9kYsWag@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linus Walleij <linus.walleij@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, Jonathan Hunter <jonathanh@nvidia.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Chen-Yu Tsai <wens@csie.org>, Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-clk <linux-clk@vger.kernel.org>, "Stephen Boyd <sboyd@codeaurora.org>,
+ Emilio Lopez <emilio@elopez.com.ar>, Hans de Goede <hdegoede@redhat.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ linux-arm-kernel" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Mike,
 
-On 02/03/18 13:17, Heiko Stuebner wrote:
-> Hi Enric,
-> 
-> Am Freitag, 2. März 2018, 13:09:02 CET schrieb Enric Balletbo i Serra:
->> Hi Heiko,
->>
->> On 01/03/18 16:50, Heiko Stübner wrote:
->>> Hi Jeffy, Thierry, Enric,
+On Sun, Feb 18, 2018 at 8:09 PM, Michael Turquette
+<mturquette@baylibre.com> wrote:
+> On Sat, Feb 10, 2018 at 8:35 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+>> Am Freitag, 19. Januar 2018, 16:18:20 CET schrieb Geert Uytterhoeven:
+>>> As of_clk_get_parent_count() returns zero on failure, while
+>>> of_count_phandle_with_args() might return a negative error code, this
+>>> also fixes the issue of possibly using a negative number in the
+>>> allocation below.
 >>>
->>> Am Mittwoch, 10. Januar 2018, 17:23:44 CET schrieb Thierry Escande:
->>>> From: Jeffy Chen <jeffy.chen@rock-chips.com>
->>>>
->>>> Add missing pm_runtime_disable() in bind()'s error handling path.
->>>>
->>>> Also cleanup encoder & connector in unbind().
+>>> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+>>> ---
+>>>  drivers/soc/rockchip/pm_domains.c | 3 ++-
+>>>  1 file changed, 2 insertions(+), 1 deletion(-)
 >>>
->>> Can you please split all these surprise "Also" sections into separate
->>> patches?
->>>
+>>> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+>>> index 5c342167b9db7a16..9936038d38771784 100644
+>>> --- a/drivers/soc/rockchip/pm_domains.c
+>>> +++ b/drivers/soc/rockchip/pm_domains.c
+>>> @@ -16,6 +16,7 @@
+>>>  #include <linux/of_address.h>
+>>>  #include <linux/of_platform.h>
+>>>  #include <linux/clk.h>
+>>> +#include <linux/clk-provider.h>
 >>
->> I'll take a look.
+>> not wanting to be to nitpicky, but clk-provider.h seems that it should be
+>> used from drivers exposing clocks to the system, not from clock users.
 >>
->>> It looks like this is true for all following patch to some degree and
->>> the inno-hdmi patch even has a unbind reordering-change without
->>> mentioning it in the commit message.
->>>
+>> I just remember that in the past clk maintainers tried to keep their
+>> layering intact, so I've included them for clarification.
 >>
->> Actually, I think this patch is not correct against current mainline, see below.
->>
->>>
->>> Thanks
->>> Heiko
->>>
->>>> Fixes: 80a9a059d4e4 ("drm/rockchip/dsi: add dw-mipi power domain support")
->>>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>>> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
->>>> ---
->>>>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 21 +++++++++++++--------
->>>>  1 file changed, 13 insertions(+), 8 deletions(-)
->>>>
->>>> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->>>> b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c index b1fe0639227e..78e6b7919bf7
->>>> 100644
->>>> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->>>> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
->>>> @@ -1282,7 +1282,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct
->>>> device *master, ret = dw_mipi_dsi_register(drm, dsi);
->>>>  	if (ret) {
->>>>  		DRM_DEV_ERROR(dev, "Failed to register mipi_dsi: %d\n", ret);
->>>> -		goto err_pllref;
->>>> +		goto err_disable_pllref;
->>>>  	}
->>>>
->>>>  	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
->>>> @@ -1290,24 +1290,25 @@ static int dw_mipi_dsi_bind(struct device *dev,
->>>> struct device *master, ret = mipi_dsi_host_register(&dsi->dsi_host);
->>>>  	if (ret) {
->>>>  		DRM_DEV_ERROR(dev, "Failed to register MIPI host: %d\n", ret);
->>>> -		goto err_cleanup;
->>>> +		goto err_disable_pm_runtime;
->>>>  	}
->>>>
->>>>  	if (!dsi->panel) {
->>>>  		ret = -EPROBE_DEFER;
->>>> -		goto err_mipi_dsi_host;
->>>> +		goto err_unreg_mipi_dsi_host;
->>>>  	}
->>>>
->>>>  	dev_set_drvdata(dev, dsi);
->>>>  	pm_runtime_enable(dev);
->>>>  	return 0;
->>>>
->>>> -err_mipi_dsi_host:
->>>> +err_unreg_mipi_dsi_host:
->>>>  	mipi_dsi_host_unregister(&dsi->dsi_host);
->>>> -err_cleanup:
->>>> -	drm_encoder_cleanup(&dsi->encoder);
->>>> -	drm_connector_cleanup(&dsi->connector);
->>>> -err_pllref:
->>>> +err_disable_pm_runtime:
->>>> +	pm_runtime_disable(dev);
->>
->> I think that this is not required, 'pm_runtime_enable' is called just before the
->> 'return 0' (see above). Commit 517f56839f58 'drm/rockchip: dw-mipi-dsi: fix
->> possible un-balanced runtime PM enable' moved the call to that place. So, now
->> the call to pm_runtime_disable is not needed.
->>
->>>> +	dsi->connector.funcs->destroy(&dsi->connector);
->>>> +	dsi->encoder.funcs->destroy(&dsi->encoder);
->>
->> Here, there is a reordering and also a function replacement. The reorder makes
->> sense to me, first cleanup the connector and then the encoder, but I'm not sure
->> about the function change and if is needed, anyway, in the case is needed,
->> shouldn't be
->>
->> +	drm_connector_cleanup(&dsi->connector);
->> +	drm_encoder_cleanup(&dsi->encoder);
->>
->> instead?
-> 
-> If you look at drm/rockchip/dw-mipi-dsi.c you'll see that
-> dw_mipi_dsi_drm_connector_destroy() does both connector_unregister()
-> and drm_connector_cleanup().
-> 
-> And looking at other drivers it really seems that calling that destroy
-> callback is really the way to go.
-> 
+>> Mike, Stephen: the power-domain driver of Rockchip socs needs
+>> to toggle all clocks of domain peripherals when turning a domain
+>> on or off, so has a variable list of clocks in the clocks property in dt.
+>> Hence the of_count_... call which could be replaced with
+>> of_clk_get_parent_count to not open-code this.
+>
+> Moving of_clk_get_parent_count to clk.h seems reasonable to me. It's
+> more of an of-specific helper than a provider-specific helper.
+>
+> Anyone up to submit a patch so that this one doesn't need to include
+> clk-provider.h?
 
-Right, thanks for pointing me in the right direction. Learning about this
-graphics stuff ;)
+I gave it a try.
+Just moving of_clk_get_parent_count() from clk-provider.h to clk.h causes
+breakage, as half of the clock providers using of_clk_get_parent_count()
+do not include <linux/clk.h>:
 
-Regards,
- Enric
-> 
-> Heiko
-> 
+    drivers/clk/at91/clk-generated.c
+    drivers/clk/at91/clk-main.c
+    drivers/clk/at91/clk-master.c
+    drivers/clk/at91/clk-programmable.c
+    drivers/clk/at91/clk-slow.c
+    drivers/clk/at91/clk-smd.c
+    drivers/clk/at91/clk-usb.c
+    drivers/clk/at91/sckc.c
+    drivers/clk/clk-axi-clkgen.c
+    drivers/clk/clk-gpio.c
+    drivers/clk/clk-hsdk-pll.c
+    drivers/clk/h8300/clk-div.c
+    drivers/clk/h8300/clk-h8s2678.c
+    drivers/clk/renesas/clk-div6.c
+    drivers/clk/ti/composite.c
+    drivers/clk/ti/gate.c
+    drivers/clk/ti/mux.c
+
+So our options are:
+  1. Add #include <linux/clk.h> to each of the above,
+  2. Add #include <linux/clk.h> to <linux/clk-provider.h>,
+  3. Do nothing, i.e. users of of_clk_get_parent_count () need to
+      #include <linux/clk-provider.h>, cfr. this patch series.
+
+Any preference? Any option I'm missing?
+
+Thanks!
+
+>>>  #include <linux/regmap.h>
+>>>  #include <linux/mfd/syscon.h>
+>>>  #include <dt-bindings/power/rk3288-power.h>
+>>> @@ -391,7 +392,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+>>>               return -EINVAL;
+>>>       }
+>>>
+>>> -     clk_cnt = of_count_phandle_with_args(node, "clocks", "#clock-cells");
+>>> +     clk_cnt = of_clk_get_parent_count(node);
+>>>       pd = devm_kzalloc(pmu->dev,
+>>>                         sizeof(*pd) + clk_cnt * sizeof(pd->clks[0]),
+>>>                         GFP_KERNEL);
+>>>
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
