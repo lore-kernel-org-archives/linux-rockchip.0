@@ -1,96 +1,66 @@
-From: Philippe CORNU <philippe.cornu@st.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: readl_poll_timeout return value
- clean up
-Date: Fri, 2 Mar 2018 13:15:49 +0000
-Message-ID: <587f8a32-b9b3-0e81-d91d-69ea256bdc29@st.com>
-References: <20180204213624.18288-1-philippe.cornu@st.com>
- <CGME20180301090106epcas2p3c47f4436b0c8a31ce71cfd3909dc77ae@epcas2p3.samsung.com>
- <172e7f68-8f4b-7e5f-3e9f-7aaf10a51dc9@st.com>
- <290c749a-70bf-2b74-1fb9-2de26708d001@samsung.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] soc: rockchip: disable jtag switching for RK3128 SoCs
+Date: Fri,  2 Mar 2018 13:20:31 +0100
+Message-ID: <20180302122031.17426-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <290c749a-70bf-2b74-1fb9-2de26708d001@samsung.com>
-Content-Language: en-US
-Content-ID: <B4FA7D0F1751414AA5C5DA7792EDD915@st.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Yannick FERTRE <yannick.fertre@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Alexandre TORGUE <alexandre.torgue@st.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwNCg0KDQpPbiAwMy8wMi8yMDE4IDExOjIxIEFNLCBBbmRyemVqIEhhamRhIHdy
-b3RlOg0KPiBPbiAwMS4wMy4yMDE4IDEwOjAwLCBQaGlsaXBwZSBDT1JOVSB3cm90ZToNCj4+IEhp
-IEFyY2hpdCwgQW5kcnplaiAmIExhdXJlbnQsDQo+Pg0KPj4gTWF5IEkgYXNrIHlvdSBwbGVhc2Ug
-eW91ciBmZWVkYmFjayBvbiB0aGlzIHNtYWxsIHBhdGNoPw0KPj4gTWFueSB0aGFua3MsDQo+Pg0K
-Pj4gUGhpbGlwcGUgOi0pDQo+Pg0KPj4gT24gMDIvMDQvMjAxOCAxMDozNiBQTSwgUGhpbGlwcGUg
-Q29ybnUgd3JvdGU6DQo+Pj4gVGhlIHJlYWRsX3BvbGxfdGltZW91dCgpIHJldHVybiB2YWx1ZSBp
-cyAwIGluIGNhc2Ugb2Ygc3VjY2Vzcw0KPj4+IHNvIGl0IGlzIGJldHRlciB0byBkZXRlY3QgZXJy
-b3JzIHdpdGhvdXQgdGFraW5nIGNhcmUgb2YgdGhlDQo+Pj4gcmV0dXJuIHZhbHVlIHNpZ24uDQo+
-Pj4NCj4+PiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3Qu
-Y29tPg0KPiANCj4gVGhlIHBhdGNoIGlzIG9mIGNvdXJzZSBjb3JyZWN0LiBIb3dldmVyIEkgYW0g
-bm90IHN1cmUgaWYgbmVjZXNzYXJ5LiBGb3INCj4gc3VyZSBmdW5jdGlvbmFsbHkgaXQgZG9lcyBu
-b3QgY2hhbmdlIGFueXRoaW5nLg0KPiBBRkFJSyBrZXJuZWwgQ29kaW5nU3R5bGUgc2F5cyBub3Ro
-aW5nIGFib3V0IGl0LCBzbyBJIHN1cHBvc2UgaXQgaXMNCj4gbWF0dGVyIG9mIHBlcnNvbmFsIHRh
-c3RlLg0KDQpJIHNlbnQgdGhpcyB0aW55IHBhdGNoIGluIG9yZGVyIHRvIGhvbW9nZW5pemUgdGhl
-IGR3IG1pcGkgZHJpdmVyIGJlY2F1c2UgDQp0aGVyZSB3ZXJlIGJvdGggY2FzZXMgImlmIChyZXQp
-IiAmICJpZiAocmV0IDwgMCkiIGluIHRoZSBzb3VyY2UgY29kZS4NCg0KSSBkaWQgbm90IHJlYWxs
-eSBmaW5kIGEgcHJlZmVycmVkIHdheSBpbiB0aGUga2VybmVsIHNvdXJjZSBjb2RlIHNvIEkgDQpz
-ZWxlY3RlZCB3aGF0IHNvdW5kcyB0aGUgYmVzdCB0byBtZSBpZSAiaWYgKHJldCkiIGJ1dCBpdCBp
-cyBub3QgYSANCnByb2JsZW0gdG8gbWFrZSBhbm90aGVyIHBhdGNoIGZvciAiaWYgKHJldCA8IDAp
-IiBldmVyeXdoZXJlIDotKQ0KDQpJbiBhbnkgY2FzZSwgdGhlIG1vc3QgaW1wb3J0YW50IGZyb20g
-bXkgcG92IGlzIHRvIGhhdmUgYSBob21vZ2VuZW91cyANCnNvdXJjZSBjb2RlIDotKQ0KDQpEb2Vz
-IGFueW9uZSBoYXZlIGEgcHJlZmVycmVkIGNob2ljZSBiZXR3ZWVuICJpZiAocmV0KSIgJiAiaWYg
-KHJldCA8IDApIiANCmFmdGVyIGEgInJldCA9IHJlYWRsX3BvbGxfdGltZW91dCgpIj8NCg0KPiBB
-bnl3YXkgSSBjYW4gZ2l2ZSBpdDoNCj4gUmV2aWV3ZWQtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFq
-ZGFAc2Ftc3VuZy5jb20+DQoNCk1hbnkgdGhhbmtzLA0KUGhpbGlwcGUgOikNCg0KPiANCj4gIMKg
-LS0NCj4gUmVnYXJkcw0KPiBBbmRyemVqDQo+IA0KPj4+IC0tLQ0KPj4+ICAgIGRyaXZlcnMvZ3B1
-L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDEwICsrKysrLS0tLS0NCj4+PiAg
-ICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQ0KPj4+DQo+
-Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1k
-c2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPj4+
-IGluZGV4IDY1YWViM2Y3OGI0OC4uNGQwZTg0NzFhMTVjIDEwMDY0NA0KPj4+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPj4+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYw0KPj4+IEBAIC0zNDIsNyAr
-MzQyLDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShzdHJ1Y3Qg
-ZHdfbWlwaV9kc2kgKmRzaSwgdTMyIGhkcl92YWwpDQo+Pj4gICAgCXJldCA9IHFxKGRzaS0+YmFz
-ZSArIERTSV9DTURfUEtUX1NUQVRVUywNCj4+PiAgICAJCQkJIHZhbCwgISh2YWwgJiBHRU5fQ01E
-X0ZVTEwpLCAxMDAwLA0KPj4+ICAgIAkJCQkgQ01EX1BLVF9TVEFUVVNfVElNRU9VVF9VUyk7DQo+
-Pj4gLQlpZiAocmV0IDwgMCkgew0KPj4+ICsJaWYgKHJldCkgew0KPj4+ICAgIAkJZGV2X2Vycihk
-c2ktPmRldiwgImZhaWxlZCB0byBnZXQgYXZhaWxhYmxlIGNvbW1hbmQgRklGT1xuIik7DQo+Pj4g
-ICAgCQlyZXR1cm4gcmV0Ow0KPj4+ICAgIAl9DQo+Pj4gQEAgLTM1Myw3ICszNTMsNyBAQCBzdGF0
-aWMgaW50IGR3X21pcGlfZHNpX2dlbl9wa3RfaGRyX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAq
-ZHNpLCB1MzIgaGRyX3ZhbCkNCj4+PiAgICAJcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+
-YmFzZSArIERTSV9DTURfUEtUX1NUQVRVUywNCj4+PiAgICAJCQkJIHZhbCwgKHZhbCAmIG1hc2sp
-ID09IG1hc2ssDQo+Pj4gICAgCQkJCSAxMDAwLCBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsN
-Cj4+PiAtCWlmIChyZXQgPCAwKSB7DQo+Pj4gKwlpZiAocmV0KSB7DQo+Pj4gICAgCQlkZXZfZXJy
-KGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHdyaXRlIGNvbW1hbmQgRklGT1xuIik7DQo+Pj4gICAgCQly
-ZXR1cm4gcmV0Ow0KPj4+ICAgIAl9DQo+Pj4gQEAgLTM4NSw3ICszODUsNyBAQCBzdGF0aWMgaW50
-IGR3X21pcGlfZHNpX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLA0KPj4+ICAgIAkJcmV0
-ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+YmFzZSArIERTSV9DTURfUEtUX1NUQVRVUywNCj4+
-PiAgICAJCQkJCSB2YWwsICEodmFsICYgR0VOX1BMRF9XX0ZVTEwpLCAxMDAwLA0KPj4+ICAgIAkJ
-CQkJIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOw0KPj4+IC0JCWlmIChyZXQgPCAwKSB7DQo+
-Pj4gKwkJaWYgKHJldCkgew0KPj4+ICAgIAkJCWRldl9lcnIoZHNpLT5kZXYsDQo+Pj4gICAgCQkJ
-CSJmYWlsZWQgdG8gZ2V0IGF2YWlsYWJsZSB3cml0ZSBwYXlsb2FkIEZJRk9cbiIpOw0KPj4+ICAg
-IAkJCXJldHVybiByZXQ7DQo+Pj4gQEAgLTcxNiwxMyArNzE2LDEzIEBAIHN0YXRpYyB2b2lkIGR3
-X21pcGlfZHNpX2RwaHlfZW5hYmxlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQ0KPj4+ICAgIA0K
-Pj4+ICAgIAlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX1BIWV9TVEFU
-VVMsIHZhbCwNCj4+PiAgICAJCQkJIHZhbCAmIFBIWV9MT0NLLCAxMDAwLCBQSFlfU1RBVFVTX1RJ
-TUVPVVRfVVMpOw0KPj4+IC0JaWYgKHJldCA8IDApDQo+Pj4gKwlpZiAocmV0KQ0KPj4+ICAgIAkJ
-RFJNX0RFQlVHX0RSSVZFUigiZmFpbGVkIHRvIHdhaXQgcGh5IGxvY2sgc3RhdGVcbiIpOw0KPj4+
-ICAgIA0KPj4+ICAgIAlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX1BI
-WV9TVEFUVVMsDQo+Pj4gICAgCQkJCSB2YWwsIHZhbCAmIFBIWV9TVE9QX1NUQVRFX0NMS19MQU5F
-LCAxMDAwLA0KPj4+ICAgIAkJCQkgUEhZX1NUQVRVU19USU1FT1VUX1VTKTsNCj4+PiAtCWlmIChy
-ZXQgPCAwKQ0KPj4+ICsJaWYgKHJldCkNCj4+PiAgICAJCURSTV9ERUJVR19EUklWRVIoImZhaWxl
-ZCB0byB3YWl0IHBoeSBjbGsgbGFuZSBzdG9wIHN0YXRlXG4iKTsNCj4+PiAgICB9DQo+Pj4gICAg
-DQo+IA0KPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Disable IO function switching between sdmmc and jtag
+for RK3128 SoCs.
+
+Signed-off-by: Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/soc/rockchip/grf.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index dd81b87d79f0..96882ffde67e 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -43,6 +43,17 @@ static const struct rockchip_grf_info rk3036_grf __initconst = {
+ 	.num_values = ARRAY_SIZE(rk3036_defaults),
+ };
+ 
++#define RK3128_GRF_SOC_CON0		0x140
++
++static const struct rockchip_grf_value rk3128_defaults[] __initconst = {
++	{ "jtag switching", RK3128_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 8) },
++};
++
++static const struct rockchip_grf_info rk3128_grf __initconst = {
++	.values = rk3128_defaults,
++	.num_values = ARRAY_SIZE(rk3128_defaults),
++};
++
+ #define RK3228_GRF_SOC_CON6		0x418
+ 
+ static const struct rockchip_grf_value rk3228_defaults[] __initconst = {
+@@ -102,6 +113,9 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+ 	{
+ 		.compatible = "rockchip,rk3036-grf",
+ 		.data = (void *)&rk3036_grf,
++	}, {
++		.compatible = "rockchip,rk3128-grf",
++		.data = (void *)&rk3128_grf,
+ 	}, {
+ 		.compatible = "rockchip,rk3228-grf",
+ 		.data = (void *)&rk3228_grf,
+-- 
+2.16.1
