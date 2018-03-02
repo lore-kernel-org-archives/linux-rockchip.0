@@ -1,93 +1,137 @@
-From: Heiko Stuebner <heiko@sntech.de>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Subject: Re: [PATCH v8 4/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
-Date: Fri, 02 Mar 2018 13:17:16 +0100
-Message-ID: <1552223.kPgI5s5XdI@phil>
+Date: Fri, 2 Mar 2018 13:22:53 +0100
+Message-ID: <a3140d3d-d6bc-afa9-30fa-00980511dd82@collabora.com>
 References: <20180110162348.22765-1-thierry.escande@collabora.com>
  <13219770.NOTAg9tncx@diego>
  <68537204-0c41-5210-935a-0a7743ea847c@collabora.com>
+ <1552223.kPgI5s5XdI@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <68537204-0c41-5210-935a-0a7743ea847c@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1552223.kPgI5s5XdI@phil>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRW5yaWMsCgpBbSBGcmVpdGFnLCAyLiBNw6RyeiAyMDE4LCAxMzowOTowMiBDRVQgc2Nocmll
-YiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhOgo+IEhpIEhlaWtvLAo+IAo+IE9uIDAxLzAzLzE4IDE2
-OjUwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiA+IEhpIEplZmZ5LCBUaGllcnJ5LCBFbnJpYywK
-PiA+IAo+ID4gQW0gTWl0dHdvY2gsIDEwLiBKYW51YXIgMjAxOCwgMTc6MjM6NDQgQ0VUIHNjaHJp
-ZWIgVGhpZXJyeSBFc2NhbmRlOgo+ID4+IEZyb206IEplZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9j
-ay1jaGlwcy5jb20+Cj4gPj4KPiA+PiBBZGQgbWlzc2luZyBwbV9ydW50aW1lX2Rpc2FibGUoKSBp
-biBiaW5kKCkncyBlcnJvciBoYW5kbGluZyBwYXRoLgo+ID4+Cj4gPj4gQWxzbyBjbGVhbnVwIGVu
-Y29kZXIgJiBjb25uZWN0b3IgaW4gdW5iaW5kKCkuCj4gPiAKPiA+IENhbiB5b3UgcGxlYXNlIHNw
-bGl0IGFsbCB0aGVzZSBzdXJwcmlzZSAiQWxzbyIgc2VjdGlvbnMgaW50byBzZXBhcmF0ZQo+ID4g
-cGF0Y2hlcz8KPiA+IAo+IAo+IEknbGwgdGFrZSBhIGxvb2suCj4gCj4gPiBJdCBsb29rcyBsaWtl
-IHRoaXMgaXMgdHJ1ZSBmb3IgYWxsIGZvbGxvd2luZyBwYXRjaCB0byBzb21lIGRlZ3JlZSBhbmQK
-PiA+IHRoZSBpbm5vLWhkbWkgcGF0Y2ggZXZlbiBoYXMgYSB1bmJpbmQgcmVvcmRlcmluZy1jaGFu
-Z2Ugd2l0aG91dAo+ID4gbWVudGlvbmluZyBpdCBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCj4gPiAK
-PiAKPiBBY3R1YWxseSwgSSB0aGluayB0aGlzIHBhdGNoIGlzIG5vdCBjb3JyZWN0IGFnYWluc3Qg
-Y3VycmVudCBtYWlubGluZSwgc2VlIGJlbG93Lgo+IAo+ID4gCj4gPiBUaGFua3MKPiA+IEhlaWtv
-Cj4gPiAKPiA+PiBGaXhlczogODBhOWEwNTlkNGU0ICgiZHJtL3JvY2tjaGlwL2RzaTogYWRkIGR3
-LW1pcGkgcG93ZXIgZG9tYWluIHN1cHBvcnQiKQo+ID4+IFNpZ25lZC1vZmYtYnk6IEplZmZ5IENo
-ZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPj4gU2lnbmVkLW9mZi1ieTogVGhpZXJy
-eSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3JhLmNvbT4KPiA+PiAtLS0KPiA+PiAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCAyMSArKysrKysrKysrKysr
-LS0tLS0tLS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDggZGVsZXRp
-b25zKC0pCj4gPj4KPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
-LW1pcGktZHNpLmMKPiA+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5j
-IGluZGV4IGIxZmUwNjM5MjI3ZS4uNzhlNmI3OTE5YmY3Cj4gPj4gMTAwNjQ0Cj4gPj4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMKPiA+PiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+ID4+IEBAIC0xMjgyLDcgKzEyODIsNyBA
-QCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QK
-PiA+PiBkZXZpY2UgKm1hc3RlciwgcmV0ID0gZHdfbWlwaV9kc2lfcmVnaXN0ZXIoZHJtLCBkc2kp
-Owo+ID4+ICAJaWYgKHJldCkgewo+ID4+ICAJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRv
-IHJlZ2lzdGVyIG1pcGlfZHNpOiAlZFxuIiwgcmV0KTsKPiA+PiAtCQlnb3RvIGVycl9wbGxyZWY7
-Cj4gPj4gKwkJZ290byBlcnJfZGlzYWJsZV9wbGxyZWY7Cj4gPj4gIAl9Cj4gPj4KPiA+PiAgCWRz
-aS0+ZHNpX2hvc3Qub3BzID0gJmR3X21pcGlfZHNpX2hvc3Rfb3BzOwo+ID4+IEBAIC0xMjkwLDI0
-ICsxMjkwLDI1IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYsCj4gPj4gc3RydWN0IGRldmljZSAqbWFzdGVyLCByZXQgPSBtaXBpX2RzaV9ob3N0X3JlZ2lz
-dGVyKCZkc2ktPmRzaV9ob3N0KTsKPiA+PiAgCWlmIChyZXQpIHsKPiA+PiAgCQlEUk1fREVWX0VS
-Uk9SKGRldiwgIkZhaWxlZCB0byByZWdpc3RlciBNSVBJIGhvc3Q6ICVkXG4iLCByZXQpOwo+ID4+
-IC0JCWdvdG8gZXJyX2NsZWFudXA7Cj4gPj4gKwkJZ290byBlcnJfZGlzYWJsZV9wbV9ydW50aW1l
-Owo+ID4+ICAJfQo+ID4+Cj4gPj4gIAlpZiAoIWRzaS0+cGFuZWwpIHsKPiA+PiAgCQlyZXQgPSAt
-RVBST0JFX0RFRkVSOwo+ID4+IC0JCWdvdG8gZXJyX21pcGlfZHNpX2hvc3Q7Cj4gPj4gKwkJZ290
-byBlcnJfdW5yZWdfbWlwaV9kc2lfaG9zdDsKPiA+PiAgCX0KPiA+Pgo+ID4+ICAJZGV2X3NldF9k
-cnZkYXRhKGRldiwgZHNpKTsKPiA+PiAgCXBtX3J1bnRpbWVfZW5hYmxlKGRldik7Cj4gPj4gIAly
-ZXR1cm4gMDsKPiA+Pgo+ID4+IC1lcnJfbWlwaV9kc2lfaG9zdDoKPiA+PiArZXJyX3VucmVnX21p
-cGlfZHNpX2hvc3Q6Cj4gPj4gIAltaXBpX2RzaV9ob3N0X3VucmVnaXN0ZXIoJmRzaS0+ZHNpX2hv
-c3QpOwo+ID4+IC1lcnJfY2xlYW51cDoKPiA+PiAtCWRybV9lbmNvZGVyX2NsZWFudXAoJmRzaS0+
-ZW5jb2Rlcik7Cj4gPj4gLQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubmVjdG9yKTsK
-PiA+PiAtZXJyX3BsbHJlZjoKPiA+PiArZXJyX2Rpc2FibGVfcG1fcnVudGltZToKPiA+PiArCXBt
-X3J1bnRpbWVfZGlzYWJsZShkZXYpOwo+IAo+IEkgdGhpbmsgdGhhdCB0aGlzIGlzIG5vdCByZXF1
-aXJlZCwgJ3BtX3J1bnRpbWVfZW5hYmxlJyBpcyBjYWxsZWQganVzdCBiZWZvcmUgdGhlCj4gJ3Jl
-dHVybiAwJyAoc2VlIGFib3ZlKS4gQ29tbWl0IDUxN2Y1NjgzOWY1OCAnZHJtL3JvY2tjaGlwOiBk
-dy1taXBpLWRzaTogZml4Cj4gcG9zc2libGUgdW4tYmFsYW5jZWQgcnVudGltZSBQTSBlbmFibGUn
-IG1vdmVkIHRoZSBjYWxsIHRvIHRoYXQgcGxhY2UuIFNvLCBub3cKPiB0aGUgY2FsbCB0byBwbV9y
-dW50aW1lX2Rpc2FibGUgaXMgbm90IG5lZWRlZC4KPiAKPiA+PiArCWRzaS0+Y29ubmVjdG9yLmZ1
-bmNzLT5kZXN0cm95KCZkc2ktPmNvbm5lY3Rvcik7Cj4gPj4gKwlkc2ktPmVuY29kZXIuZnVuY3Mt
-PmRlc3Ryb3koJmRzaS0+ZW5jb2Rlcik7Cj4gCj4gSGVyZSwgdGhlcmUgaXMgYSByZW9yZGVyaW5n
-IGFuZCBhbHNvIGEgZnVuY3Rpb24gcmVwbGFjZW1lbnQuIFRoZSByZW9yZGVyIG1ha2VzCj4gc2Vu
-c2UgdG8gbWUsIGZpcnN0IGNsZWFudXAgdGhlIGNvbm5lY3RvciBhbmQgdGhlbiB0aGUgZW5jb2Rl
-ciwgYnV0IEknbSBub3Qgc3VyZQo+IGFib3V0IHRoZSBmdW5jdGlvbiBjaGFuZ2UgYW5kIGlmIGlz
-IG5lZWRlZCwgYW55d2F5LCBpbiB0aGUgY2FzZSBpcyBuZWVkZWQsCj4gc2hvdWxkbid0IGJlCj4g
-Cj4gKwlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubmVjdG9yKTsKPiArCWRybV9lbmNv
-ZGVyX2NsZWFudXAoJmRzaS0+ZW5jb2Rlcik7Cj4gCj4gaW5zdGVhZD8KCklmIHlvdSBsb29rIGF0
-IGRybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHlvdSdsbCBzZWUgdGhhdApkd19taXBpX2RzaV9k
-cm1fY29ubmVjdG9yX2Rlc3Ryb3koKSBkb2VzIGJvdGggY29ubmVjdG9yX3VucmVnaXN0ZXIoKQph
-bmQgZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCkuCgpBbmQgbG9va2luZyBhdCBvdGhlciBkcml2ZXJz
-IGl0IHJlYWxseSBzZWVtcyB0aGF0IGNhbGxpbmcgdGhhdCBkZXN0cm95CmNhbGxiYWNrIGlzIHJl
-YWxseSB0aGUgd2F5IHRvIGdvLgoKCkhlaWtvCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+Hi Heiko,
+
+On 02/03/18 13:17, Heiko Stuebner wrote:
+> Hi Enric,
+> 
+> Am Freitag, 2. März 2018, 13:09:02 CET schrieb Enric Balletbo i Serra:
+>> Hi Heiko,
+>>
+>> On 01/03/18 16:50, Heiko Stübner wrote:
+>>> Hi Jeffy, Thierry, Enric,
+>>>
+>>> Am Mittwoch, 10. Januar 2018, 17:23:44 CET schrieb Thierry Escande:
+>>>> From: Jeffy Chen <jeffy.chen@rock-chips.com>
+>>>>
+>>>> Add missing pm_runtime_disable() in bind()'s error handling path.
+>>>>
+>>>> Also cleanup encoder & connector in unbind().
+>>>
+>>> Can you please split all these surprise "Also" sections into separate
+>>> patches?
+>>>
+>>
+>> I'll take a look.
+>>
+>>> It looks like this is true for all following patch to some degree and
+>>> the inno-hdmi patch even has a unbind reordering-change without
+>>> mentioning it in the commit message.
+>>>
+>>
+>> Actually, I think this patch is not correct against current mainline, see below.
+>>
+>>>
+>>> Thanks
+>>> Heiko
+>>>
+>>>> Fixes: 80a9a059d4e4 ("drm/rockchip/dsi: add dw-mipi power domain support")
+>>>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>>>> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+>>>> ---
+>>>>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 21 +++++++++++++--------
+>>>>  1 file changed, 13 insertions(+), 8 deletions(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+>>>> b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c index b1fe0639227e..78e6b7919bf7
+>>>> 100644
+>>>> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+>>>> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+>>>> @@ -1282,7 +1282,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct
+>>>> device *master, ret = dw_mipi_dsi_register(drm, dsi);
+>>>>  	if (ret) {
+>>>>  		DRM_DEV_ERROR(dev, "Failed to register mipi_dsi: %d\n", ret);
+>>>> -		goto err_pllref;
+>>>> +		goto err_disable_pllref;
+>>>>  	}
+>>>>
+>>>>  	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
+>>>> @@ -1290,24 +1290,25 @@ static int dw_mipi_dsi_bind(struct device *dev,
+>>>> struct device *master, ret = mipi_dsi_host_register(&dsi->dsi_host);
+>>>>  	if (ret) {
+>>>>  		DRM_DEV_ERROR(dev, "Failed to register MIPI host: %d\n", ret);
+>>>> -		goto err_cleanup;
+>>>> +		goto err_disable_pm_runtime;
+>>>>  	}
+>>>>
+>>>>  	if (!dsi->panel) {
+>>>>  		ret = -EPROBE_DEFER;
+>>>> -		goto err_mipi_dsi_host;
+>>>> +		goto err_unreg_mipi_dsi_host;
+>>>>  	}
+>>>>
+>>>>  	dev_set_drvdata(dev, dsi);
+>>>>  	pm_runtime_enable(dev);
+>>>>  	return 0;
+>>>>
+>>>> -err_mipi_dsi_host:
+>>>> +err_unreg_mipi_dsi_host:
+>>>>  	mipi_dsi_host_unregister(&dsi->dsi_host);
+>>>> -err_cleanup:
+>>>> -	drm_encoder_cleanup(&dsi->encoder);
+>>>> -	drm_connector_cleanup(&dsi->connector);
+>>>> -err_pllref:
+>>>> +err_disable_pm_runtime:
+>>>> +	pm_runtime_disable(dev);
+>>
+>> I think that this is not required, 'pm_runtime_enable' is called just before the
+>> 'return 0' (see above). Commit 517f56839f58 'drm/rockchip: dw-mipi-dsi: fix
+>> possible un-balanced runtime PM enable' moved the call to that place. So, now
+>> the call to pm_runtime_disable is not needed.
+>>
+>>>> +	dsi->connector.funcs->destroy(&dsi->connector);
+>>>> +	dsi->encoder.funcs->destroy(&dsi->encoder);
+>>
+>> Here, there is a reordering and also a function replacement. The reorder makes
+>> sense to me, first cleanup the connector and then the encoder, but I'm not sure
+>> about the function change and if is needed, anyway, in the case is needed,
+>> shouldn't be
+>>
+>> +	drm_connector_cleanup(&dsi->connector);
+>> +	drm_encoder_cleanup(&dsi->encoder);
+>>
+>> instead?
+> 
+> If you look at drm/rockchip/dw-mipi-dsi.c you'll see that
+> dw_mipi_dsi_drm_connector_destroy() does both connector_unregister()
+> and drm_connector_cleanup().
+> 
+> And looking at other drivers it really seems that calling that destroy
+> callback is really the way to go.
+> 
+
+Right, thanks for pointing me in the right direction. Learning about this
+graphics stuff ;)
+
+Regards,
+ Enric
+> 
+> Heiko
+> 
