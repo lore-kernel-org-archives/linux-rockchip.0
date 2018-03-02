@@ -1,79 +1,137 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: readl_poll_timeout return
- value clean up
-Date: Fri, 2 Mar 2018 11:21:23 +0100
-Message-ID: <290c749a-70bf-2b74-1fb9-2de26708d001@samsung.com>
-References: <20180204213624.18288-1-philippe.cornu@st.com>
- <CGME20180301090106epcas2p3c47f4436b0c8a31ce71cfd3909dc77ae@epcas2p3.samsung.com>
- <172e7f68-8f4b-7e5f-3e9f-7aaf10a51dc9@st.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v8 4/8] drm/rockchip: dw-mipi-dsi: Fix error handling path
+Date: Fri, 2 Mar 2018 13:09:02 +0100
+Message-ID: <68537204-0c41-5210-935a-0a7743ea847c@collabora.com>
+References: <20180110162348.22765-1-thierry.escande@collabora.com>
+ <20180110162348.22765-5-thierry.escande@collabora.com>
+ <13219770.NOTAg9tncx@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <172e7f68-8f4b-7e5f-3e9f-7aaf10a51dc9@st.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philippe CORNU <philippe.cornu@st.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Brian Norris <briannorris@chromium.org>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Bhumika Goyal <bhumirks@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Yannick FERTRE <yannick.fertre@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Alexandre TORGUE <alexandre.torgue@st.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <13219770.NOTAg9tncx@diego>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org
+Cc: Rob Herring <robh+dt@kernel.org>, Archit Taneja <architt@codeaurora.org>, Daniel Vetter <daniel.vetter@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDEuMDMuMjAxOCAxMDowMCwgUGhpbGlwcGUgQ09STlUgd3JvdGU6Cj4gSGkgQXJjaGl0LCBB
-bmRyemVqICYgTGF1cmVudCwKPgo+IE1heSBJIGFzayB5b3UgcGxlYXNlIHlvdXIgZmVlZGJhY2sg
-b24gdGhpcyBzbWFsbCBwYXRjaD8KPiBNYW55IHRoYW5rcywKPgo+IFBoaWxpcHBlIDotKQo+Cj4g
-T24gMDIvMDQvMjAxOCAxMDozNiBQTSwgUGhpbGlwcGUgQ29ybnUgd3JvdGU6Cj4+IFRoZSByZWFk
-bF9wb2xsX3RpbWVvdXQoKSByZXR1cm4gdmFsdWUgaXMgMCBpbiBjYXNlIG9mIHN1Y2Nlc3MKPj4g
-c28gaXQgaXMgYmV0dGVyIHRvIGRldGVjdCBlcnJvcnMgd2l0aG91dCB0YWtpbmcgY2FyZSBvZiB0
-aGUKPj4gcmV0dXJuIHZhbHVlIHNpZ24uCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFBoaWxpcHBlIENv
-cm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+CgpUaGUgcGF0Y2ggaXMgb2YgY291cnNlIGNvcnJl
-Y3QuIEhvd2V2ZXIgSSBhbSBub3Qgc3VyZSBpZiBuZWNlc3NhcnkuIEZvcgpzdXJlIGZ1bmN0aW9u
-YWxseSBpdCBkb2VzIG5vdCBjaGFuZ2UgYW55dGhpbmcuCkFGQUlLIGtlcm5lbCBDb2RpbmdTdHls
-ZSBzYXlzIG5vdGhpbmcgYWJvdXQgaXQsIHNvIEkgc3VwcG9zZSBpdCBpcwptYXR0ZXIgb2YgcGVy
-c29uYWwgdGFzdGUuCkFueXdheSBJIGNhbiBnaXZlIGl0OgpSZXZpZXdlZC1ieTogQW5kcnplaiBI
-YWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KCsKgLS0KUmVnYXJkcwpBbmRyemVqCgo+PiAtLS0K
-Pj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCAxMCAr
-KysrKy0tLS0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlv
-bnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMv
-ZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1k
-c2kuYwo+PiBpbmRleCA2NWFlYjNmNzhiNDguLjRkMGU4NDcxYTE1YyAxMDA2NDQKPj4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwo+PiBAQCAtMzQyLDcg
-KzM0Miw3IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfZ2VuX3BrdF9oZHJfd3JpdGUoc3RydWN0
-IGR3X21pcGlfZHNpICpkc2ksIHUzMiBoZHJfdmFsKQo+PiAgIAlyZXQgPSBxcShkc2ktPmJhc2Ug
-KyBEU0lfQ01EX1BLVF9TVEFUVVMsCj4+ICAgCQkJCSB2YWwsICEodmFsICYgR0VOX0NNRF9GVUxM
-KSwgMTAwMCwKPj4gICAJCQkJIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwo+PiAtCWlmIChy
-ZXQgPCAwKSB7Cj4+ICsJaWYgKHJldCkgewo+PiAgIAkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxl
-ZCB0byBnZXQgYXZhaWxhYmxlIGNvbW1hbmQgRklGT1xuIik7Cj4+ICAgCQlyZXR1cm4gcmV0Owo+
-PiAgIAl9Cj4+IEBAIC0zNTMsNyArMzUzLDcgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9nZW5f
-cGt0X2hkcl93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwgdTMyIGhkcl92YWwpCj4+ICAg
-CXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2UgKyBEU0lfQ01EX1BLVF9TVEFUVVMs
-Cj4+ICAgCQkJCSB2YWwsICh2YWwgJiBtYXNrKSA9PSBtYXNrLAo+PiAgIAkJCQkgMTAwMCwgQ01E
-X1BLVF9TVEFUVVNfVElNRU9VVF9VUyk7Cj4+IC0JaWYgKHJldCA8IDApIHsKPj4gKwlpZiAocmV0
-KSB7Cj4+ICAgCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIHdyaXRlIGNvbW1hbmQgRklG
-T1xuIik7Cj4+ICAgCQlyZXR1cm4gcmV0Owo+PiAgIAl9Cj4+IEBAIC0zODUsNyArMzg1LDcgQEAg
-c3RhdGljIGludCBkd19taXBpX2RzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKPj4g
-ICAJCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2UgKyBEU0lfQ01EX1BLVF9TVEFU
-VVMsCj4+ICAgCQkJCQkgdmFsLCAhKHZhbCAmIEdFTl9QTERfV19GVUxMKSwgMTAwMCwKPj4gICAJ
-CQkJCSBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKPj4gLQkJaWYgKHJldCA8IDApIHsKPj4g
-KwkJaWYgKHJldCkgewo+PiAgIAkJCWRldl9lcnIoZHNpLT5kZXYsCj4+ICAgCQkJCSJmYWlsZWQg
-dG8gZ2V0IGF2YWlsYWJsZSB3cml0ZSBwYXlsb2FkIEZJRk9cbiIpOwo+PiAgIAkJCXJldHVybiBy
-ZXQ7Cj4+IEBAIC03MTYsMTMgKzcxNiwxMyBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9kcGh5
-X2VuYWJsZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPj4gICAKPj4gICAJcmV0ID0gcmVhZGxf
-cG9sbF90aW1lb3V0KGRzaS0+YmFzZSArIERTSV9QSFlfU1RBVFVTLCB2YWwsCj4+ICAgCQkJCSB2
-YWwgJiBQSFlfTE9DSywgMTAwMCwgUEhZX1NUQVRVU19USU1FT1VUX1VTKTsKPj4gLQlpZiAocmV0
-IDwgMCkKPj4gKwlpZiAocmV0KQo+PiAgIAkJRFJNX0RFQlVHX0RSSVZFUigiZmFpbGVkIHRvIHdh
-aXQgcGh5IGxvY2sgc3RhdGVcbiIpOwo+PiAgIAo+PiAgIAlyZXQgPSByZWFkbF9wb2xsX3RpbWVv
-dXQoZHNpLT5iYXNlICsgRFNJX1BIWV9TVEFUVVMsCj4+ICAgCQkJCSB2YWwsIHZhbCAmIFBIWV9T
-VE9QX1NUQVRFX0NMS19MQU5FLCAxMDAwLAo+PiAgIAkJCQkgUEhZX1NUQVRVU19USU1FT1VUX1VT
-KTsKPj4gLQlpZiAocmV0IDwgMCkKPj4gKwlpZiAocmV0KQo+PiAgIAkJRFJNX0RFQlVHX0RSSVZF
-UigiZmFpbGVkIHRvIHdhaXQgcGh5IGNsayBsYW5lIHN0b3Agc3RhdGVcbiIpOwo+PiAgIH0KPj4g
-ICAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Heiko,
+
+On 01/03/18 16:50, Heiko Stübner wrote:
+> Hi Jeffy, Thierry, Enric,
+> 
+> Am Mittwoch, 10. Januar 2018, 17:23:44 CET schrieb Thierry Escande:
+>> From: Jeffy Chen <jeffy.chen@rock-chips.com>
+>>
+>> Add missing pm_runtime_disable() in bind()'s error handling path.
+>>
+>> Also cleanup encoder & connector in unbind().
+> 
+> Can you please split all these surprise "Also" sections into separate
+> patches?
+> 
+
+I'll take a look.
+
+> It looks like this is true for all following patch to some degree and
+> the inno-hdmi patch even has a unbind reordering-change without
+> mentioning it in the commit message.
+> 
+
+Actually, I think this patch is not correct against current mainline, see below.
+
+> 
+> Thanks
+> Heiko
+> 
+>> Fixes: 80a9a059d4e4 ("drm/rockchip/dsi: add dw-mipi power domain support")
+>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+>> ---
+>>  drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 21 +++++++++++++--------
+>>  1 file changed, 13 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+>> b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c index b1fe0639227e..78e6b7919bf7
+>> 100644
+>> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+>> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
+>> @@ -1282,7 +1282,7 @@ static int dw_mipi_dsi_bind(struct device *dev, struct
+>> device *master, ret = dw_mipi_dsi_register(drm, dsi);
+>>  	if (ret) {
+>>  		DRM_DEV_ERROR(dev, "Failed to register mipi_dsi: %d\n", ret);
+>> -		goto err_pllref;
+>> +		goto err_disable_pllref;
+>>  	}
+>>
+>>  	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
+>> @@ -1290,24 +1290,25 @@ static int dw_mipi_dsi_bind(struct device *dev,
+>> struct device *master, ret = mipi_dsi_host_register(&dsi->dsi_host);
+>>  	if (ret) {
+>>  		DRM_DEV_ERROR(dev, "Failed to register MIPI host: %d\n", ret);
+>> -		goto err_cleanup;
+>> +		goto err_disable_pm_runtime;
+>>  	}
+>>
+>>  	if (!dsi->panel) {
+>>  		ret = -EPROBE_DEFER;
+>> -		goto err_mipi_dsi_host;
+>> +		goto err_unreg_mipi_dsi_host;
+>>  	}
+>>
+>>  	dev_set_drvdata(dev, dsi);
+>>  	pm_runtime_enable(dev);
+>>  	return 0;
+>>
+>> -err_mipi_dsi_host:
+>> +err_unreg_mipi_dsi_host:
+>>  	mipi_dsi_host_unregister(&dsi->dsi_host);
+>> -err_cleanup:
+>> -	drm_encoder_cleanup(&dsi->encoder);
+>> -	drm_connector_cleanup(&dsi->connector);
+>> -err_pllref:
+>> +err_disable_pm_runtime:
+>> +	pm_runtime_disable(dev);
+
+I think that this is not required, 'pm_runtime_enable' is called just before the
+'return 0' (see above). Commit 517f56839f58 'drm/rockchip: dw-mipi-dsi: fix
+possible un-balanced runtime PM enable' moved the call to that place. So, now
+the call to pm_runtime_disable is not needed.
+
+>> +	dsi->connector.funcs->destroy(&dsi->connector);
+>> +	dsi->encoder.funcs->destroy(&dsi->encoder);
+
+Here, there is a reordering and also a function replacement. The reorder makes
+sense to me, first cleanup the connector and then the encoder, but I'm not sure
+about the function change and if is needed, anyway, in the case is needed,
+shouldn't be
+
++	drm_connector_cleanup(&dsi->connector);
++	drm_encoder_cleanup(&dsi->encoder);
+
+instead?
+
+>> +err_disable_pllref:
+>>  	clk_disable_unprepare(dsi->pllref_clk);
+>>  	return ret;
+>>  }
+>> @@ -1319,6 +1320,10 @@ static void dw_mipi_dsi_unbind(struct device *dev,
+>> struct device *master,
+>>
+>>  	mipi_dsi_host_unregister(&dsi->dsi_host);
+>>  	pm_runtime_disable(dev);
+>> +
+>> +	dsi->connector.funcs->destroy(&dsi->connector);
+>> +	dsi->encoder.funcs->destroy(&dsi->encoder);
+>> +
+
+Same here.
+
+>>  	clk_disable_unprepare(dsi->pllref_clk);
+>>  }
+> 
+> 
+
+Best regards,
+  Enric
