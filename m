@@ -1,40 +1,54 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] soc: rockchip: power-domain: use clk_bulk APIs
-Date: Fri, 02 Mar 2018 16:43:09 +0100
-Message-ID: <2683576.o9hXnVZqaR@phil>
-References: <20180228124143.8364-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v9 5/5] drm/bridge/synopsys: dw-hdmi: Add missing bridge detach
+Date: Fri,  2 Mar 2018 18:57:57 +0100
+Message-ID: <20180302175757.28192-6-enric.balletbo@collabora.com>
+References: <20180302175757.28192-1-enric.balletbo@collabora.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180228124143.8364-1-jeffy.chen@rock-chips.com>
+In-Reply-To: <20180302175757.28192-1-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dmitry.torokhov@gmail.com, wxt@rock-chips.com, linux-rockchip@lists.infradead.org, Geert Uytterhoeven <geert+renesas@glider.be>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Elaine Zhang <zhangqing@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+Cc: Andrzej Hajda <a.hajda@samsung.com>, linux-rockchip@lists.infradead.org, Archit Taneja <architt@codeaurora.org>, linux-kernel@vger.kernel.org, Russell King <rmk+kernel@armlinux.org.uk>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, Jose Abreu <Jose.Abreu@synopsys.com>, Hans Verkuil <hverkuil@xs4all.nl>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jernej Skrabec <jernej.skrabec@siol.net>, linux-arm-kernel@lists.infradead.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, kernel@collabora.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
 
-Am Mittwoch, 28. Februar 2018, 13:41:43 CET schrieb Jeffy Chen:
-> Use clk_bulk APIs, and also add error handling for clk enable.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+We inited connector in attach(), so need a detach() to cleanup.
 
-[...]
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
 
-> -	for (i = 0; i < clk_cnt; i++) {
-> -		clk = of_clk_get(node, i);
-> -		if (IS_ERR(clk)) {
-> -			error = PTR_ERR(clk);
-> +	pd->num_clks = of_count_phandle_with_args(node, "clocks",
-> +						  "#clock-cells");
-> +
-> +	pd->clks = devm_kzalloc(pmu->dev, pd->num_clks * sizeof(pd->clks[0]),
+Changes in v9: None
 
-applied for 4.17, after changing to devm_kcalloc like below:
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-pd->clks = devm_kcalloc(pmu->dev, pd->num_clks, sizeof(*pd->clks),
-
-
-Thanks
-Heiko
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index f9802399cc0d..5626922f95f9 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -1985,6 +1985,13 @@ static int dw_hdmi_bridge_attach(struct drm_bridge *bridge)
+ 	return 0;
+ }
+ 
++static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
++{
++	struct dw_hdmi *hdmi = bridge->driver_private;
++
++	drm_connector_cleanup(&hdmi->connector);
++}
++
+ static enum drm_mode_status
+ dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+ 			  const struct drm_display_mode *mode)
+@@ -2041,6 +2048,7 @@ static void dw_hdmi_bridge_enable(struct drm_bridge *bridge)
+ 
+ static const struct drm_bridge_funcs dw_hdmi_bridge_funcs = {
+ 	.attach = dw_hdmi_bridge_attach,
++	.detach = dw_hdmi_bridge_detach,
+ 	.enable = dw_hdmi_bridge_enable,
+ 	.disable = dw_hdmi_bridge_disable,
+ 	.mode_set = dw_hdmi_bridge_mode_set,
+-- 
+2.16.1
