@@ -1,56 +1,41 @@
-From: Rob Herring <robh@kernel.org>
-Subject: [PATCH] arm: dts: rk3288: Add missing #sound-dai-cells
-Date: Thu,  1 Mar 2018 14:25:35 -0600
-Message-ID: <20180301202537.30571-3-robh@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, Heiko Stuebner <heiko@sntech.de>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 0/3] gpio-keys: Add support for specifying wakeup event action
+Date: Fri,  2 Mar 2018 11:50:59 +0800
+Message-ID: <20180302035102.10084-1-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@google.com, heiko@sntech.de, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Mark Yao <markyao0591@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg
 List-Id: linux-rockchip.vger.kernel.org
 
-dtc now gives the following warning:
 
-arch/arm/boot/dts/rk3288-tinker.dtb: Warning (sound_dai_property): /sound/simple-audio-card,codec: Missing property '#sound-dai-cells' in node /hdmi@ff980000 or bad phandle (referred from sound-dai[0])
+On chromebook kevin, we are using gpio-keys for pen insert event. But
+we only want it to wakeup the system when ejecting the pen.
 
-Add the missing #sound-dai-cells property.
+So we may need to change the interrupt trigger type during suspending.
 
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- arch/arm/boot/dts/rk3288.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+Changes in v3:
+Adding more comments as Brian suggested.
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 6102e4e7f35c..354aff45c1af 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -927,6 +927,7 @@
- 	i2s: i2s@ff890000 {
- 		compatible = "rockchip,rk3288-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff890000 0x0 0x10000>;
-+		#sound-dai-cells = <0>;
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -1176,6 +1177,7 @@
- 		compatible = "rockchip,rk3288-dw-hdmi";
- 		reg = <0x0 0xff980000 0x0 0x20000>;
- 		reg-io-width = <4>;
-+		#sound-dai-cells = <0>;
- 		rockchip,grf = <&grf>;
- 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
+Changes in v2:
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+
+Jeffy Chen (3):
+  Input: gpio-keys - add support for wakeup event action
+  Input: gpio-keys - allow setting wakeup event action in DT
+  arm64: dts: rockchip: Avoid wakeup when inserting the pen
+
+ .../devicetree/bindings/input/gpio-keys.txt        |  8 +++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  2 ++
+ drivers/input/keyboard/gpio_keys.c                 | 39 ++++++++++++++++++++++
+ include/linux/gpio_keys.h                          |  2 ++
+ include/uapi/linux/input-event-codes.h             |  9 +++++
+ 5 files changed, 60 insertions(+)
+
 -- 
-2.14.1
+2.11.0
