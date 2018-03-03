@@ -1,60 +1,114 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+From: JeffyChen <jeffy.chen@rock-chips.com>
 Subject: Re: [PATCH v9 5/5] drm/bridge/synopsys: dw-hdmi: Add missing bridge
  detach
-Date: Fri, 02 Mar 2018 23:49:06 +0200
-Message-ID: <2714218.VptbnhJPkd@avalon>
-References: <20180302175757.28192-1-enric.balletbo@collabora.com>
- <20180302175757.28192-6-enric.balletbo@collabora.com>
+Date: Sat, 03 Mar 2018 08:20:07 +0800
+Message-ID: <5A99EA37.6070006@rock-chips.com>
+References: <20180302175757.28192-1-enric.balletbo@collabora.com> <20180302175757.28192-6-enric.balletbo@collabora.com> <2714218.VptbnhJPkd@avalon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180302175757.28192-6-enric.balletbo@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, Russell King <rmk+kernel@armlinux.org.uk>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2714218.VptbnhJPkd@avalon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, Andrzej Hajda <a.hajda@samsung.com>, linux-rockchip@lists.infradead.org, Archit Taneja <architt@codeaurora.org>, linux-kernel@vger.kernel.org, Russell King <rmk+kernel@armlinux.org.uk>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, Jose Abreu <Jose.Abreu@synopsys.com>, Hans Verkuil <hverkuil@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>, linux-arm-kernel@lists.infradead.org, David Airlie <airlied@linux.ie>, kernel@collabora.com, Daniel Vetter <daniel.vetter@ffwll.ch>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRW5yaWMsCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4KCk9uIEZyaWRheSwgMiBNYXJjaCAy
-MDE4IDE5OjU3OjU3IEVFVCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdyb3RlOgo+IEZyb206IEpl
-ZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gCj4gV2UgaW5pdGVkIGNvbm5l
-Y3RvciBpbiBhdHRhY2goKSwgc28gbmVlZCBhIGRldGFjaCgpIHRvIGNsZWFudXAuCgpEbyB3ZSA/
-IFRoZSBkdy1oZG1pIGRyaXZlciBhbHJlYWR5IHNldHMgZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCkg
-YXMgdGhlIApjb25uZWN0b3IgLmRlc3Ryb3koKSBoYW5kbGVyLCBhbmQgdGhlIC5kZXN0cm95KCkg
-b3BlcmF0aW9uIGlzIGNhbGxlZCBieSB0aGUgCkRSTSBjb3JlLiBOb25lIG9mIHRoZSBvdGhlciBi
-cmlkZ2UgZHJpdmVycyBjYWxsIGRybV9jb25uZWN0b3JfY2xlYW51cCgpIApkaXJlY3RseS4KCj4g
-U2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiBT
-aWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEu
-Y29tPgo+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxl
-dGJvQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2OTogTm9uZQo+IAo+ICBk
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDggKysrKysrKysKPiAg
-MSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IGIvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgaW5kZXgKPiBmOTgwMjM5OWNjMGQuLjU2MjY5MjJmOTVm
-OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
-Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gQEAg
-LTE5ODUsNiArMTk4NSwxMyBAQCBzdGF0aWMgaW50IGR3X2hkbWlfYnJpZGdlX2F0dGFjaChzdHJ1
-Y3QgZHJtX2JyaWRnZQo+ICpicmlkZ2UpIHJldHVybiAwOwo+ICB9Cj4gCj4gK3N0YXRpYyB2b2lk
-IGR3X2hkbWlfYnJpZGdlX2RldGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICt7Cj4g
-KwlzdHJ1Y3QgZHdfaGRtaSAqaGRtaSA9IGJyaWRnZS0+ZHJpdmVyX3ByaXZhdGU7Cj4gKwo+ICsJ
-ZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCZoZG1pLT5jb25uZWN0b3IpOwo+ICt9Cj4gKwo+ICBzdGF0
-aWMgZW51bSBkcm1fbW9kZV9zdGF0dXMKPiAgZHdfaGRtaV9icmlkZ2VfbW9kZV92YWxpZChzdHJ1
-Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICAJCQkgIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9t
-b2RlICptb2RlKQo+IEBAIC0yMDQxLDYgKzIwNDgsNyBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX2Jy
-aWRnZV9lbmFibGUoc3RydWN0IGRybV9icmlkZ2UKPiAqYnJpZGdlKQo+IAo+ICBzdGF0aWMgY29u
-c3Qgc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgZHdfaGRtaV9icmlkZ2VfZnVuY3MgPSB7Cj4gIAku
-YXR0YWNoID0gZHdfaGRtaV9icmlkZ2VfYXR0YWNoLAo+ICsJLmRldGFjaCA9IGR3X2hkbWlfYnJp
-ZGdlX2RldGFjaCwKPiAgCS5lbmFibGUgPSBkd19oZG1pX2JyaWRnZV9lbmFibGUsCj4gIAkuZGlz
-YWJsZSA9IGR3X2hkbWlfYnJpZGdlX2Rpc2FibGUsCj4gIAkubW9kZV9zZXQgPSBkd19oZG1pX2Jy
-aWRnZV9tb2RlX3NldCwKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Laurent,
+
+On 03/03/2018 05:49 AM, Laurent Pinchart wrote:
+> Hi Enric,
+>
+> Thank you for the patch.
+>
+> On Friday, 2 March 2018 19:57:57 EET Enric Balletbo i Serra wrote:
+>> From: Jeffy Chen <jeffy.chen@rock-chips.com>
+>>
+>> We inited connector in attach(), so need a detach() to cleanup.
+>
+> Do we ? The dw-hdmi driver already sets drm_connector_cleanup() as the
+> connector .destroy() handler, and the .destroy() operation is called by the
+> DRM core. None of the other bridge drivers call drm_connector_cleanup()
+> directly.
+
+hmmm, checking the code, there are also lots of drivers do the 
+cleanup(drm_connector_cleanup or funcs->destroy):
+drm# grep -r "connector.*funcs->destroy" .
+./rockchip/inno_hdmi.c: hdmi->connector.funcs->destroy(&hdmi->connector);
+./rockchip/cdn-dp-core.c:       connector->funcs->destroy(connector);
+./bridge/analogix/analogix_dp_core.c: 
+dp->connector.funcs->destroy(&dp->connector);
+./msm/hdmi/hdmi.c: 
+hdmi->connector->funcs->destroy(hdmi->connector);
+./msm/dsi/dsi.c: 
+msm_dsi->connector->funcs->destroy(msm_dsi->connector);
+./msm/edp/edp.c: 
+edp->connector->funcs->destroy(edp->connector);
+./zte/zx_hdmi.c:        hdmi->connector.funcs->destroy(&hdmi->connector);
+./drm_connector.c:      connector->funcs->destroy(connector);
+./drm_connector.c:              connector->funcs->destroy(connector);
+./nouveau/dispnv04/disp.c: 
+connector->funcs->destroy(connector);
+./nouveau/nv50_display.c: 
+mstc->connector.funcs->destroy(&mstc->connector);
+./nouveau/nv50_display.c: 
+connector->funcs->destroy(connector);
+
+
+
+when i debug analogix_dp bind/unbind, i found that we need to cleanup 
+the connector(reported by kmemleak). so i added it to 
+./bridge/analogix/analogix_dp_core.c...after that i saw dw-hdmi missing 
+that too(by checking the code), so make this patch.
+
+but i didn't really tested it on devices using dw-hdmi, so i'm not very 
+sure the dw-hdmi(maybe also other bridges) is the same with analogix_dp.
+
+i can try to find a chromebook veyron to check it next week :)
+
+but even there's a leak, i'm still not very sure about:
+should the caller of drm_connector_init cleanup it
+or the caller of drm_bridge_attach should do it(for example 
+analogix_dp_bind/analogix_dp_unbind)
+or should the DRM core take care of that?
+
+>
+>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> ---
+>>
+>> Changes in v9: None
+>>
+>>   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 8 ++++++++
+>>   1 file changed, 8 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c index
+>> f9802399cc0d..5626922f95f9 100644
+>> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> @@ -1985,6 +1985,13 @@ static int dw_hdmi_bridge_attach(struct drm_bridge
+>> *bridge) return 0;
+>>   }
+>>
+>> +static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
+>> +{
+>> +	struct dw_hdmi *hdmi = bridge->driver_private;
+>> +
+>> +	drm_connector_cleanup(&hdmi->connector);
+>> +}
+>> +
+>>   static enum drm_mode_status
+>>   dw_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+>>   			  const struct drm_display_mode *mode)
+>> @@ -2041,6 +2048,7 @@ static void dw_hdmi_bridge_enable(struct drm_bridge
+>> *bridge)
+>>
+>>   static const struct drm_bridge_funcs dw_hdmi_bridge_funcs = {
+>>   	.attach = dw_hdmi_bridge_attach,
+>> +	.detach = dw_hdmi_bridge_detach,
+>>   	.enable = dw_hdmi_bridge_enable,
+>>   	.disable = dw_hdmi_bridge_disable,
+>>   	.mode_set = dw_hdmi_bridge_mode_set,
+>
