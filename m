@@ -1,14 +1,14 @@
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Subject: [PATCH v4 00/38] DRM Rockchip rk3399 (Kevin)
-Date: Mon,  5 Mar 2018 23:12:35 +0100
-Message-ID: <20180305221313.3751-1-enric.balletbo@collabora.com>
+Date: Mon,  5 Mar 2018 23:22:52 +0100
+Message-ID: <20180305222324.5872-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, ykk@rock-chips.com, orjan.eide@arm.com, mark.yao@rock-chips.com, m.szyprowski@samsung.com, Andrzej Hajda <a.hajda@samsung.com>, Yakir Yang <kuankuan.y@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, linux-input@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Kukjin Kim <kgene@kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Henrik Rydberg <rydberg@bitmath.org>, Joonyoung Shim <jy0922.shim@samsung.c>
+Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
