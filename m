@@ -1,112 +1,77 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v4 29/38] drm/rockchip: pre dither down when output bpc is 8bit
-Date: Mon,  5 Mar 2018 23:23:21 +0100
-Message-ID: <20180305222324.5872-30-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v4 20/38] drm/bridge: analogix_dp: Reset aux channel if an
+ error occurred
+Date: Mon,  5 Mar 2018 23:23:12 +0100
+Message-ID: <20180305222324.5872-21-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, Mark Yao <mark.yao@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Mark Yao <mark.yao@rock-chips.com>
-
-Some encoder have a crc verification check, crc check fail if
-input and output data is not equal.
-
-That means encoder input and output need use same color depth,
-vop can output 10bit data to encoder, but some panel only support
-8bit depth, that would make crc check die.
-
-So pre dither down vop data to 8bit if panel's bpc is 8.
-
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
-[seanpaul resolved conflict in rockchip_drm_vop.c]
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 ++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h     | 1 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     | 6 ++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h     | 1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c     | 1 +
- 5 files changed, 11 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 8c884f9ce713..b3f46ed24cdc 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -218,6 +218,7 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
- 				      struct drm_connector_state *conn_state)
- {
- 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-+	struct drm_display_info *di = &conn_state->connector->display_info;
- 
- 	/*
- 	 * The hardware IC designed that VOP must output the RGB10 video
-@@ -229,6 +230,7 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
- 
- 	s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
- 	s->output_type = DRM_MODE_CONNECTOR_eDP;
-+	s->output_bpc = di->bpc;
- 
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 9c064a40458b..3a6ebfc26036 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -36,6 +36,7 @@ struct rockchip_crtc_state {
- 	struct drm_crtc_state base;
- 	int output_type;
- 	int output_mode;
-+	int output_bpc;
- };
- #define to_rockchip_crtc_state(s) \
- 		container_of(s, struct rockchip_crtc_state, base)
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 184f980679af..42562ab04bde 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -928,6 +928,12 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA &&
- 	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
- 		s->output_mode = ROCKCHIP_OUT_MODE_P888;
-+
-+	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
-+		VOP_REG_SET(vop, common, pre_dither_down, 1);
-+	else
-+		VOP_REG_SET(vop, common, pre_dither_down, 0);
-+
- 	VOP_REG_SET(vop, common, out_mode, s->output_mode);
- 
- 	VOP_REG_SET(vop, modeset, htotal_pw, (htotal << 16) | hsync_len);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 56bbd2e2a8ef..084acdd0019a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -67,6 +67,7 @@ struct vop_common {
- 	struct vop_reg cfg_done;
- 	struct vop_reg dsp_blank;
- 	struct vop_reg data_blank;
-+	struct vop_reg pre_dither_down;
- 	struct vop_reg dither_down;
- 	struct vop_reg dither_up;
- 	struct vop_reg gate_en;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 2e4eea3459fe..08023d3ecb76 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -264,6 +264,7 @@ static const struct vop_common rk3288_common = {
- 	.standby = VOP_REG_SYNC(RK3288_SYS_CTRL, 0x1, 22),
- 	.gate_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 23),
- 	.mmu_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 20),
-+	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
- 	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
- 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
- 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
--- 
-2.16.1
+RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCkFVWCBlcnJvcnMgYXJlIGNhdXNl
+ZCBieSBtYW55IGRpZmZlcmVudCByZWFzb25zLiBXZSBtYXkgbm90IGtub3cgd2hhdApoYXBwZW5l
+ZCBpbiBhdXggY2hhbm5lbCBvbiBmYWlsdXJlLCBzbyBsZXQncyByZXNldCBhdXggY2hhbm5lbCBp
+ZiBzb21lCmVycm9ycyBvY2N1cnJlZC4KCkNjOiDlvoHlop4g546LIDx3enpAcm9jay1jaGlwcy5j
+b20+CkNjOiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1v
+ZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
+ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogQW5kcnplaiBI
+YWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8g
+aSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KLS0tCgogZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyB8IDE4ICsrKysrKysrKysrKysr
+LS0tLQogMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9y
+ZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMK
+aW5kZXggZGVlMWJhMTA5YjVmLi43YjdmZDIyN2UxZjkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtNDY2LDYgKzQ2NiwxMCBA
+QCB2b2lkIGFuYWxvZ2l4X2RwX2luaXRfYXV4KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRw
+KQogCXJlZyA9IFJQTFlfUkVDRUlWIHwgQVVYX0VSUjsKIAl3cml0ZWwocmVnLCBkcC0+cmVnX2Jh
+c2UgKyBBTkFMT0dJWF9EUF9JTlRfU1RBKTsKIAorCWFuYWxvZ2l4X2RwX3NldF9hbmFsb2dfcG93
+ZXJfZG93bihkcCwgQVVYX0JMT0NLLCB0cnVlKTsKKwl1c2xlZXBfcmFuZ2UoMTAsIDExKTsKKwlh
+bmFsb2dpeF9kcF9zZXRfYW5hbG9nX3Bvd2VyX2Rvd24oZHAsIEFVWF9CTE9DSywgZmFsc2UpOwor
+CiAJYW5hbG9naXhfZHBfcmVzZXRfYXV4KGRwKTsKIAogCS8qIERpc2FibGUgQVVYIHRyYW5zYWN0
+aW9uIEgvVyByZXRyeSAqLwpAQCAtMTE1OSw3ICsxMTYzLDcgQEAgc3NpemVfdCBhbmFsb2dpeF9k
+cF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIAkJCQkgcmVnLCAhKHJl
+ZyAmIEFVWF9FTiksIDI1LCA1MDAgKiAxMDAwKTsKIAlpZiAocmV0KSB7CiAJCWRldl9lcnIoZHAt
+PmRldiwgIkFVWCBDSCBlbmFibGUgdGltZW91dCFcbiIpOwotCQlyZXR1cm4gLUVUSU1FRE9VVDsK
+KwkJZ290byBhdXhfZXJyb3I7CiAJfQogCiAJLyogVE9ETzogV2FpdCBmb3IgYW4gaW50ZXJydXB0
+IGluc3RlYWQgb2YgbG9vcGluZz8gKi8KQEAgLTExNjgsNyArMTE3Miw3IEBAIHNzaXplX3QgYW5h
+bG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCiAJCQkJIHJl
+ZywgcmVnICYgUlBMWV9SRUNFSVYsIDEwLCAyMCAqIDEwMDApOwogCWlmIChyZXQpIHsKIAkJZGV2
+X2VycihkcC0+ZGV2LCAiQVVYIENIIGNtZCByZXBseSB0aW1lb3V0IVxuIik7Ci0JCXJldHVybiAt
+RVRJTUVET1VUOworCQlnb3RvIGF1eF9lcnJvcjsKIAl9CiAKIAkvKiBDbGVhciBpbnRlcnJ1cHQg
+c291cmNlIGZvciBBVVggQ0ggY29tbWFuZCByZXBseSAqLwpAQCAtMTE3OCw3ICsxMTgyLDcgQEAg
+c3NpemVfdCBhbmFsb2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpk
+cCwKIAlyZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9JTlRfU1RBKTsKIAlp
+ZiAocmVnICYgQVVYX0VSUikgewogCQl3cml0ZWwoQVVYX0VSUiwgZHAtPnJlZ19iYXNlICsgQU5B
+TE9HSVhfRFBfSU5UX1NUQSk7Ci0JCXJldHVybiAtRVJFTU9URUlPOworCQlnb3RvIGF1eF9lcnJv
+cjsKIAl9CiAKIAkvKiBDaGVjayBBVVggQ0ggZXJyb3IgYWNjZXNzIHN0YXR1cyAqLwpAQCAtMTE4
+Niw3ICsxMTkwLDcgQEAgc3NpemVfdCBhbmFsb2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9n
+aXhfZHBfZGV2aWNlICpkcCwKIAlpZiAoKHJlZyAmIEFVWF9TVEFUVVNfTUFTSykpIHsKIAkJZGV2
+X2VycihkcC0+ZGV2LCAiQVVYIENIIGVycm9yIGhhcHBlbmVkOiAlZFxuXG4iLAogCQkJcmVnICYg
+QVVYX1NUQVRVU19NQVNLKTsKLQkJcmV0dXJuIC1FUkVNT1RFSU87CisJCWdvdG8gYXV4X2Vycm9y
+OwogCX0KIAogCWlmIChtc2ctPnJlcXVlc3QgJiBEUF9BVVhfSTJDX1JFQUQpIHsKQEAgLTEyMTIs
+NCArMTIxNiwxMCBAQCBzc2l6ZV90IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dp
+eF9kcF9kZXZpY2UgKmRwLAogCQltc2ctPnJlcGx5ID0gRFBfQVVYX05BVElWRV9SRVBMWV9BQ0s7
+CiAKIAlyZXR1cm4gbnVtX3RyYW5zZmVycmVkID4gMCA/IG51bV90cmFuc2ZlcnJlZCA6IC1FQlVT
+WTsKKworYXV4X2Vycm9yOgorCS8qIGlmIGF1eCBlcnIgaGFwcGVuLCByZXNldCBhdXggKi8KKwlh
+bmFsb2dpeF9kcF9pbml0X2F1eChkcCk7CisKKwlyZXR1cm4gLUVSRU1PVEVJTzsKIH0KLS0gCjIu
+MTYuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
