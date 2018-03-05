@@ -1,61 +1,50 @@
-From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 15/38] drm/bridge: analogix_dp: Ensure edp is disabled when
- shutting down the panel
-Date: Mon,  5 Mar 2018 23:23:07 +0100
-Message-ID: <20180305222324.5872-16-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v4 23/38] drm/bridge: analogix_dp: Fix timeout of video streamclk config
+Date: Mon,  5 Mar 2018 23:23:15 +0100
+Message-ID: <20180305222324.5872-24-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCldoZW4gcGFuZWwgaXMgc2h1dCBk
-b3duLCB3ZSBzaG91bGQgbWFrZSBzdXJlIGVkcCBjYW4gYmUgZGlzYWJsZWQgdG8gYXZvaWQKdW5k
-ZWZpbmVkIGJlaGF2aW9yLgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21p
-dW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgpTaWdu
-ZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTog
-U2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFRoaWVycnkg
-RXNjYW5kZSA8dGhpZXJyeS5lc2NhbmRlQGNvbGxhYm9yYS5jb20+ClJldmlld2VkLWJ5OiBBbmRy
-emVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgpTaWduZWQtb2ZmLWJ5OiBFbnJpYyBCYWxs
-ZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgotLS0KCiBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDExICsrKysrKysr
-KysrCiAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKaW5kZXggOTJmYjlhMDcy
-Y2I2Li45YjdkNTMwYWQyNGMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
-bG9naXgvYW5hbG9naXhfZHBfY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
-bG9naXgvYW5hbG9naXhfZHBfY29yZS5jCkBAIC0xMTYwLDYgKzExNjAsMTIgQEAgc3RhdGljIGlu
-dCBhbmFsb2dpeF9kcF9zZXRfYnJpZGdlKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQog
-CiAJcG1fcnVudGltZV9nZXRfc3luYyhkcC0+ZGV2KTsKIAorCXJldCA9IGNsa19wcmVwYXJlX2Vu
-YWJsZShkcC0+Y2xvY2spOworCWlmIChyZXQgPCAwKSB7CisJCURSTV9FUlJPUigiRmFpbGVkIHRv
-IHByZXBhcmVfZW5hYmxlIHRoZSBjbG9jayBjbGsgWyVkXVxuIiwgcmV0KTsKKwkJZ290byBvdXRf
-ZHBfY2xrX3ByZTsKKwl9CisKIAlpZiAoZHAtPnBsYXRfZGF0YS0+cG93ZXJfb24pCiAJCWRwLT5w
-bGF0X2RhdGEtPnBvd2VyX29uKGRwLT5wbGF0X2RhdGEpOwogCkBAIC0xMTkxLDYgKzExOTcsOCBA
-QCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX3NldF9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4X2RwX2Rl
-dmljZSAqZHApCiAJcGh5X3Bvd2VyX29mZihkcC0+cGh5KTsKIAlpZiAoZHAtPnBsYXRfZGF0YS0+
-cG93ZXJfb2ZmKQogCQlkcC0+cGxhdF9kYXRhLT5wb3dlcl9vZmYoZHAtPnBsYXRfZGF0YSk7CisJ
-Y2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwLT5jbG9jayk7CitvdXRfZHBfY2xrX3ByZToKIAlwbV9y
-dW50aW1lX3B1dF9zeW5jKGRwLT5kZXYpOwogCiAJcmV0dXJuIHJldDsKQEAgLTEyMzQsMTAgKzEy
-NDIsMTMgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfYnJpZGdlX2Rpc2FibGUoc3RydWN0IGRy
-bV9icmlkZ2UgKmJyaWRnZSkKIAogCWRpc2FibGVfaXJxKGRwLT5pcnEpOwogCXBoeV9wb3dlcl9v
-ZmYoZHAtPnBoeSk7CisJYW5hbG9naXhfZHBfc2V0X2FuYWxvZ19wb3dlcl9kb3duKGRwLCBQT1dF
-Ul9BTEwsIDEpOwogCiAJaWYgKGRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZikKIAkJZHAtPnBsYXRf
-ZGF0YS0+cG93ZXJfb2ZmKGRwLT5wbGF0X2RhdGEpOwogCisJY2xrX2Rpc2FibGVfdW5wcmVwYXJl
-KGRwLT5jbG9jayk7CisKIAlwbV9ydW50aW1lX3B1dF9zeW5jKGRwLT5kZXYpOwogCiAJcmV0ID0g
-YW5hbG9naXhfZHBfcHJlcGFyZV9wYW5lbChkcCwgZmFsc2UsIHRydWUpOwotLSAKMi4xNi4xCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: zain wang <wzz@rock-chips.com>
+
+The STRM_VALID bit in register ANALOGIX_DP_SYS_CTL_3 may be unstable,
+so we may hit the error log "Timeout of video streamclk ok" since
+checked this unstable bit.
+In fact, we can go continue and the streamclk is ok if we wait enough time,
+it does no effect on display.
+Let's change this error to warn.
+
+Cc: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: zain wang <wzz@rock-chips.com>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index c93a0d125b87..2493a580e655 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -921,8 +921,9 @@ static int analogix_dp_config_video(struct analogix_dp_device *dp)
+ 			done_count = 0;
+ 		}
+ 		if (timeout_loop > DP_TIMEOUT_LOOP_COUNT) {
+-			dev_err(dp->dev, "Timeout of video streamclk ok\n");
+-			return -ETIMEDOUT;
++			dev_warn(dp->dev,
++				 "Ignoring timeout of video streamclk ok\n");
++			break;
+ 		}
+ 
+ 		usleep_range(1000, 1001);
+-- 
+2.16.1
