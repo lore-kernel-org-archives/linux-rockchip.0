@@ -1,189 +1,140 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v4 19/38] drm/bridge: analogix_dp: Fix AUX_PD bit for Rockchip
-Date: Mon,  5 Mar 2018 23:23:11 +0100
-Message-ID: <20180305222324.5872-20-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v4 12/38] drm/bridge: analogix_dp: Retry bridge enable when it
+ failed
+Date: Mon,  5 Mar 2018 23:23:04 +0100
+Message-ID: <20180305222324.5872-13-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz@rock-chips.com>
-
-There are some different bits between Rockchip and Exynos in register
-"AUX_PD". This patch fixes the incorrect operations about it.
-
-Cc: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 117 ++++++++++++----------
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h |   2 +
- 2 files changed, 65 insertions(+), 54 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index bb72f8b0e603..dee1ba109b5f 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -248,76 +248,85 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- {
- 	u32 reg;
- 	u32 phy_pd_addr = ANALOGIX_DP_PHY_PD;
-+	u32 mask;
- 
- 	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
- 		phy_pd_addr = ANALOGIX_DP_PD;
- 
- 	switch (block) {
- 	case AUX_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= AUX_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~AUX_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+			mask = RK_AUX_PD;
-+		else
-+			mask = AUX_PD;
-+
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH0_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH0_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH0_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH0_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH1_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH1_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH1_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH1_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH2_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH2_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH2_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH2_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case CH3_BLOCK:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= CH3_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~CH3_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		mask = CH3_PD;
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+		writel(reg, dp->reg_base + phy_pd_addr);
- 		break;
- 	case ANALOG_TOTAL:
--		if (enable) {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg |= DP_PHY_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		} else {
--			reg = readl(dp->reg_base + phy_pd_addr);
--			reg &= ~DP_PHY_PD;
--			writel(reg, dp->reg_base + phy_pd_addr);
--		}
-+		/*
-+		 * There is no bit named DP_PHY_PD, so We used DP_INC_BG
-+		 * to power off everything instead of DP_PHY_PD in
-+		 * Rockchip
-+		 */
-+		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+			mask = DP_INC_BG;
-+		else
-+			mask = DP_PHY_PD;
-+
-+		reg = readl(dp->reg_base + phy_pd_addr);
-+		if (enable)
-+			reg |= mask;
-+		else
-+			reg &= ~mask;
-+
-+		writel(reg, dp->reg_base + phy_pd_addr);
-+		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+			usleep_range(10, 15);
- 		break;
- 	case POWER_ALL:
- 		if (enable) {
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-index 9602668669f4..b633a4a5082a 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-@@ -345,7 +345,9 @@
- #define DP_INC_BG				(0x1 << 7)
- #define DP_EXP_BG				(0x1 << 6)
- #define DP_PHY_PD				(0x1 << 5)
-+#define RK_AUX_PD				(0x1 << 5)
- #define AUX_PD					(0x1 << 4)
-+#define RK_PLL_PD				(0x1 << 4)
- #define CH3_PD					(0x1 << 3)
- #define CH2_PD					(0x1 << 2)
- #define CH1_PD					(0x1 << 1)
--- 
-2.16.1
+RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpXaGVuIHdlIGVuYWJsZSBicmlk
+Z2UgZmFpbGVkLCB3ZSBoYXZlIHRvIHJldHJ5IGl0LCBvdGhlcndpc2Ugd2Ugd291bGQgZ2V0CnRo
+ZSBhYm5vcm1hbCBkaXNwbGF5LgoKQ2M6IFN0w6lwaGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hy
+b21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWluIHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4K
+U2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+ClNpZ25lZC1v
+ZmYtYnk6IFRoaWVycnkgRXNjYW5kZSA8dGhpZXJyeS5lc2NhbmRlQGNvbGxhYm9yYS5jb20+ClJl
+dmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgpTaWduZWQtb2Zm
+LWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEuY29t
+PgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUu
+YyB8IDY1ICsrKysrKysrKysrKysrKysrLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
+bG9naXgvYW5hbG9naXhfZHBfY29yZS5oIHwgIDMgKy0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+YW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMgIHwgIDUgKy0KIDMgZmlsZXMgY2hhbmdlZCwgNTYg
+aW5zZXJ0aW9ucygrKSwgMTcgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwppbmRleCBlYTdhODBhOTg5YzYuLmM4
+MTczM2I4MTg1ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9h
+bmFsb2dpeF9kcF9jb3JlLmMKQEAgLTQzLDggKzQzLDEwIEBAIHN0cnVjdCBicmlkZ2VfaW5pdCB7
+CiAJc3RydWN0IGRldmljZV9ub2RlICpub2RlOwogfTsKIAotc3RhdGljIHZvaWQgYW5hbG9naXhf
+ZHBfaW5pdF9kcChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKK3N0YXRpYyBpbnQgYW5h
+bG9naXhfZHBfaW5pdF9kcChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIHsKKwlpbnQg
+cmV0OworCiAJYW5hbG9naXhfZHBfcmVzZXQoZHApOwogCiAJYW5hbG9naXhfZHBfc3dyZXNldChk
+cCk7CkBAIC01NiwxMCArNTgsMTMgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfaW5pdF9kcChz
+dHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKIAlhbmFsb2dpeF9kcF9lbmFibGVfc3dfZnVu
+Y3Rpb24oZHApOwogCiAJYW5hbG9naXhfZHBfY29uZmlnX2ludGVycnVwdChkcCk7Ci0JYW5hbG9n
+aXhfZHBfaW5pdF9hbmFsb2dfZnVuYyhkcCk7CisJcmV0ID0gYW5hbG9naXhfZHBfaW5pdF9hbmFs
+b2dfZnVuYyhkcCk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKIAogCWFuYWxvZ2l4X2RwX2lu
+aXRfaHBkKGRwKTsKIAlhbmFsb2dpeF9kcF9pbml0X2F1eChkcCk7CisJcmV0dXJuIDA7CiB9CiAK
+IHN0YXRpYyBpbnQgYW5hbG9naXhfZHBfZGV0ZWN0X2hwZChzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2
+aWNlICpkcCkKQEAgLTkxOCw3ICs5MjMsNyBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgYW5hbG9naXhf
+ZHBfaXJxX3RocmVhZChpbnQgaXJxLCB2b2lkICphcmcpCiAJcmV0dXJuIElSUV9IQU5ETEVEOwog
+fQogCi1zdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9jb21taXQoc3RydWN0IGFuYWxvZ2l4X2RwX2Rl
+dmljZSAqZHApCitzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX2NvbW1pdChzdHJ1Y3QgYW5hbG9naXhf
+ZHBfZGV2aWNlICpkcCkKIHsKIAlpbnQgcmV0OwogCkBAIC05MjgsMTEgKzkzMywxMCBAQCBzdGF0
+aWMgdm9pZCBhbmFsb2dpeF9kcF9jb21taXQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAp
+CiAJCQlEUk1fRVJST1IoImZhaWxlZCB0byBkaXNhYmxlIHRoZSBwYW5lbFxuIik7CiAJfQogCi0J
+cmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KGFuYWxvZ2l4X2RwX3RyYWluX2xpbmssIGRwLCByZXQs
+ICFyZXQsIDEwMCwKLQkJCQkgRFBfVElNRU9VVF9UUkFJTklOR19VUyAqIDUpOworCXJldCA9IGFu
+YWxvZ2l4X2RwX3RyYWluX2xpbmsoZHApOwogCWlmIChyZXQpIHsKIAkJZGV2X2VycihkcC0+ZGV2
+LCAidW5hYmxlIHRvIGRvIGxpbmsgdHJhaW4sIHJldD0lZFxuIiwgcmV0KTsKLQkJcmV0dXJuOwor
+CQlyZXR1cm4gcmV0OwogCX0KIAogCWFuYWxvZ2l4X2RwX2VuYWJsZV9zY3JhbWJsZShkcCwgMSk7
+CkBAIC05NTMsNiArOTU3LDcgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfY29tbWl0KHN0cnVj
+dCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQogCWRwLT5wc3JfZW5hYmxlID0gYW5hbG9naXhfZHBf
+ZGV0ZWN0X3NpbmtfcHNyKGRwKTsKIAlpZiAoZHAtPnBzcl9lbmFibGUpCiAJCWFuYWxvZ2l4X2Rw
+X2VuYWJsZV9zaW5rX3BzcihkcCk7CisJcmV0dXJuIDA7CiB9CiAKIC8qCkBAIC0xMTQ5LDEyICsx
+MTU0LDkgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBfYnJpZGdlX3ByZV9lbmFibGUoc3RydWN0
+IGRybV9icmlkZ2UgKmJyaWRnZSkKIAkJRFJNX0VSUk9SKCJmYWlsZWQgdG8gc2V0dXAgdGhlIHBh
+bmVsIHJldCA9ICVkXG4iLCByZXQpOwogfQogCi1zdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9icmlk
+Z2VfZW5hYmxlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCitzdGF0aWMgaW50IGFuYWxvZ2l4
+X2RwX3NldF9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiB7Ci0Jc3RydWN0
+IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAgPSBicmlkZ2UtPmRyaXZlcl9wcml2YXRlOwotCi0JaWYg
+KGRwLT5kcG1zX21vZGUgPT0gRFJNX01PREVfRFBNU19PTikKLQkJcmV0dXJuOworCWludCByZXQ7
+CiAKIAlwbV9ydW50aW1lX2dldF9zeW5jKGRwLT5kZXYpOwogCkBAIC0xMTYyLDExICsxMTY0LDQ2
+IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9lbmFibGUoc3RydWN0IGRybV9icmlk
+Z2UgKmJyaWRnZSkKIAkJZHAtPnBsYXRfZGF0YS0+cG93ZXJfb24oZHAtPnBsYXRfZGF0YSk7CiAK
+IAlwaHlfcG93ZXJfb24oZHAtPnBoeSk7Ci0JYW5hbG9naXhfZHBfaW5pdF9kcChkcCk7CisKKwly
+ZXQgPSBhbmFsb2dpeF9kcF9pbml0X2RwKGRwKTsKKwlpZiAocmV0KQorCQlnb3RvIG91dF9kcF9p
+bml0OworCisJcmV0ID0gYW5hbG9naXhfZHBfY29tbWl0KGRwKTsKKwlpZiAocmV0KQorCQlnb3Rv
+IG91dF9kcF9pbml0OworCiAJZW5hYmxlX2lycShkcC0+aXJxKTsKLQlhbmFsb2dpeF9kcF9jb21t
+aXQoZHApOworCXJldHVybiAwOwogCi0JZHAtPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNfT047
+CitvdXRfZHBfaW5pdDoKKwlwaHlfcG93ZXJfb2ZmKGRwLT5waHkpOworCWlmIChkcC0+cGxhdF9k
+YXRhLT5wb3dlcl9vZmYpCisJCWRwLT5wbGF0X2RhdGEtPnBvd2VyX29mZihkcC0+cGxhdF9kYXRh
+KTsKKwlwbV9ydW50aW1lX3B1dF9zeW5jKGRwLT5kZXYpOworCisJcmV0dXJuIHJldDsKK30KKwor
+c3RhdGljIHZvaWQgYW5hbG9naXhfZHBfYnJpZGdlX2VuYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAq
+YnJpZGdlKQoreworCXN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwID0gYnJpZGdlLT5kcml2
+ZXJfcHJpdmF0ZTsKKwlpbnQgdGltZW91dF9sb29wID0gMDsKKworCWlmIChkcC0+ZHBtc19tb2Rl
+ID09IERSTV9NT0RFX0RQTVNfT04pCisJCXJldHVybjsKKworCXdoaWxlICh0aW1lb3V0X2xvb3Ag
+PCBNQVhfUExMX0xPQ0tfTE9PUCkgeworCQlpZiAoYW5hbG9naXhfZHBfc2V0X2JyaWRnZShkcCkg
+PT0gMCkgeworCQkJZHAtPmRwbXNfbW9kZSA9IERSTV9NT0RFX0RQTVNfT047CisJCQlyZXR1cm47
+CisJCX0KKwkJZGV2X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRvIHNldCBicmlkZ2UsIHJldHJ5OiAl
+ZFxuIiwKKwkJCXRpbWVvdXRfbG9vcCk7CisJCXRpbWVvdXRfbG9vcCsrOworCQl1c2xlZXBfcmFu
+Z2UoMTAsIDExKTsKKwl9CisJZGV2X2VycihkcC0+ZGV2LCAidG9vIG1hbnkgdGltZXMgcmV0cnkg
+c2V0IGJyaWRnZSwgZ2l2ZSBpdCB1cFxuIik7CiB9CiAKIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2Rw
+X2JyaWRnZV9kaXNhYmxlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaCBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oCmluZGV4IDQwM2Zm
+ODUzNDY0Yi4uNzY5MjU1ZGM2ZTk5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaApAQCAtMTksNiArMTksNyBAQAogI2RlZmluZSBE
+UF9USU1FT1VUX0xPT1BfQ09VTlQgMTAwCiAjZGVmaW5lIE1BWF9DUl9MT09QIDUKICNkZWZpbmUg
+TUFYX0VRX0xPT1AgNQorI2RlZmluZSBNQVhfUExMX0xPQ0tfTE9PUCA1CiAKIC8qIFRyYWluaW5n
+IHRha2VzIDIybXMgaWYgQVVYIGNoYW5uZWwgY29tbSBmYWlscy4gVXNlIHRoaXMgYXMgcmV0cnkg
+aW50ZXJ2YWwgKi8KICNkZWZpbmUgRFBfVElNRU9VVF9UUkFJTklOR19VUwkJCTIyMDAwCkBAIC0x
+OTcsNyArMTk4LDcgQEAgdm9pZCBhbmFsb2dpeF9kcF9zZXRfcGxsX3Bvd2VyX2Rvd24oc3RydWN0
+IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsIGJvb2wgZW5hYmxlKTsKIHZvaWQgYW5hbG9naXhfZHBf
+c2V0X2FuYWxvZ19wb3dlcl9kb3duKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwLAogCQkJ
+CSAgICAgICBlbnVtIGFuYWxvZ19wb3dlcl9ibG9jayBibG9jaywKIAkJCQkgICAgICAgYm9vbCBl
+bmFibGUpOwotdm9pZCBhbmFsb2dpeF9kcF9pbml0X2FuYWxvZ19mdW5jKHN0cnVjdCBhbmFsb2dp
+eF9kcF9kZXZpY2UgKmRwKTsKK2ludCBhbmFsb2dpeF9kcF9pbml0X2FuYWxvZ19mdW5jKHN0cnVj
+dCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKTsKIHZvaWQgYW5hbG9naXhfZHBfaW5pdF9ocGQoc3Ry
+dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApOwogdm9pZCBhbmFsb2dpeF9kcF9mb3JjZV9ocGQo
+c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApOwogZW51bSBkcF9pcnFfdHlwZSBhbmFsb2dp
+eF9kcF9nZXRfaXJxX3R5cGUoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApOwpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKaW5kZXgg
+ZTc4Yzg2MWI5ZTA2Li5iNDdjNWFmNDM1NjAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtMzMzLDcgKzMzMyw3IEBAIHZvaWQg
+YW5hbG9naXhfZHBfc2V0X2FuYWxvZ19wb3dlcl9kb3duKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
+Y2UgKmRwLAogCX0KIH0KIAotdm9pZCBhbmFsb2dpeF9kcF9pbml0X2FuYWxvZ19mdW5jKHN0cnVj
+dCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQoraW50IGFuYWxvZ2l4X2RwX2luaXRfYW5hbG9nX2Z1
+bmMoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiB7CiAJdTMyIHJlZzsKIAlpbnQgdGlt
+ZW91dF9sb29wID0gMDsKQEAgLTM1NSw3ICszNTUsNyBAQCB2b2lkIGFuYWxvZ2l4X2RwX2luaXRf
+YW5hbG9nX2Z1bmMoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJCQl0aW1lb3V0X2xv
+b3ArKzsKIAkJCWlmIChEUF9USU1FT1VUX0xPT1BfQ09VTlQgPCB0aW1lb3V0X2xvb3ApIHsKIAkJ
+CQlkZXZfZXJyKGRwLT5kZXYsICJmYWlsZWQgdG8gZ2V0IHBsbCBsb2NrIHN0YXR1c1xuIik7Ci0J
+CQkJcmV0dXJuOworCQkJCXJldHVybiAtRVRJTUVET1VUOwogCQkJfQogCQkJdXNsZWVwX3Jhbmdl
+KDEwLCAyMCk7CiAJCX0KQEAgLTM2Niw2ICszNjYsNyBAQCB2b2lkIGFuYWxvZ2l4X2RwX2luaXRf
+YW5hbG9nX2Z1bmMoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJcmVnICY9IH4oU0VS
+REVTX0ZJRk9fRlVOQ19FTl9OIHwgTFNfQ0xLX0RPTUFJTl9GVU5DX0VOX04KIAkJfCBBVVhfRlVO
+Q19FTl9OKTsKIAl3cml0ZWwocmVnLCBkcC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9GVU5DX0VO
+XzIpOworCXJldHVybiAwOwogfQogCiB2b2lkIGFuYWxvZ2l4X2RwX2NsZWFyX2hvdHBsdWdfaW50
+ZXJydXB0cyhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKLS0gCjIuMTYuMQoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
