@@ -1,8 +1,8 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] clk: rockchip: Prevent calculating mmc phase if clock rate is
- zero
-Date: Mon,  5 Mar 2018 11:21:49 +0800
-Message-ID: <1520220109-177862-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [RESEND PATCH] clk: rockchip: Prevent calculating mmc phase if clock
+ rate is zero
+Date: Mon,  5 Mar 2018 11:25:58 +0800
+Message-ID: <1520220358-181119-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -30,6 +30,8 @@ data transfer is unstable.
 
 Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
+Resend this since the former log output missed '\n'
+
 
  drivers/clk/rockchip/clk-mmc-phase.c | 25 +++++++++++++++++++++++++
  1 file changed, 25 insertions(+)
@@ -44,7 +46,7 @@ index 077fcdc..c0c14e4 100644
  
 +	/* See the comment for rockchip_mmc_set_phase below */
 +	if (!rate) {
-+		pr_err("%s: invalid clk rate", __func__);
++		pr_err("%s: invalid clk rate\n", __func__);
 +		return -EINVAL;
 +	}
 +
@@ -70,7 +72,7 @@ index 077fcdc..c0c14e4 100644
 +	 * happening.
 +	 */
 +	if (!rate) {
-+		pr_err("%s: invalid clk rate", __func__);
++		pr_err("%s: invalid clk rate\n", __func__);
 +		return -EINVAL;
 +	}
 +
