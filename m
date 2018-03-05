@@ -1,55 +1,61 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v4 13/38] drm/bridge: analogix_dp: Wait for HPD signal before configuring link
-Date: Mon,  5 Mar 2018 23:23:05 +0100
-Message-ID: <20180305222324.5872-14-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v4 09/38] drm/bridge: analogix_dp: Move enable video into
+ config_video()
+Date: Mon,  5 Mar 2018 23:23:01 +0100
+Message-ID: <20180305222324.5872-10-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz@rock-chips.com>
-
-According to DP spec v1.3 chap 3.5.1.2 Link Training, Link Policy Maker
-must first detect that the HPD signal is asserted high by the Downstream
-Device before establishing a link with it.
-
-Cc: Stéphane Marchesin <marcheu@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index c81733b8185e..92fb9a072cb6 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1169,6 +1169,17 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 	if (ret)
- 		goto out_dp_init;
- 
-+	/*
-+	 * According to DP spec v1.3 chap 3.5.1.2 Link Training,
-+	 * We should first make sure the HPD signal is asserted high by device
-+	 * when we want to establish a link with it.
-+	 */
-+	ret = analogix_dp_detect_hpd(dp);
-+	if (ret) {
-+		DRM_ERROR("failed to get hpd single ret = %d\n", ret);
-+		goto out_dp_init;
-+	}
-+
- 	ret = analogix_dp_commit(dp);
- 	if (ret)
- 		goto out_dp_init;
--- 
-2.16.1
+RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCldlIG5lZWQgdG8gZW5hYmxlIHZp
+ZGVvIGJlZm9yZSBhbmFsb2dpeF9kcF9pc192aWRlb19zdHJlYW1fb24oKSwgc28Kd2UgY2FuIGdl
+dCB0aGUgcmlnaHQgdmlkZW8gc3RyZWFtIHN0YXR1cy4KCkNjOiDlvoHlop4g546LIDx3enpAcm9j
+ay1jaGlwcy5jb20+CkNjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9y
+Zz4KU2lnbmVkLW9mZi1ieTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9m
+Zi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFRo
+aWVycnkgRXNjYW5kZSA8dGhpZXJyeS5lc2NhbmRlQGNvbGxhYm9yYS5jb20+ClJldmlld2VkLWJ5
+OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgpTaWduZWQtb2ZmLWJ5OiBFbnJp
+YyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgotLS0KCiBk
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDExICsr
+KysrLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygt
+KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhf
+ZHBfY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9j
+b3JlLmMKaW5kZXggNWEyZTM1ZGM0MWUzLi5mOTY2MWI0MTBjYjkgMTAwNjQ0Ci0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCisrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCkBAIC04MTksMTEg
+KzgxOSwxMCBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX2NvbmZpZ192aWRlbyhzdHJ1Y3QgYW5h
+bG9naXhfZHBfZGV2aWNlICpkcCkKIAkJaWYgKGFuYWxvZ2l4X2RwX2lzX3NsYXZlX3ZpZGVvX3N0
+cmVhbV9jbG9ja19vbihkcCkgPT0gMCkKIAkJCWJyZWFrOwogCQlpZiAodGltZW91dF9sb29wID4g
+RFBfVElNRU9VVF9MT09QX0NPVU5UKSB7Ci0JCQlkZXZfZXJyKGRwLT5kZXYsICJUaW1lb3V0IG9m
+IHZpZGVvIHN0cmVhbWNsayBva1xuIik7CisJCQlkZXZfZXJyKGRwLT5kZXYsICJUaW1lb3V0IG9m
+IHNsYXZlIHZpZGVvIHN0cmVhbWNsayBva1xuIik7CiAJCQlyZXR1cm4gLUVUSU1FRE9VVDsKIAkJ
+fQotCi0JCXVzbGVlcF9yYW5nZSgxLCAyKTsKKwkJdXNsZWVwX3JhbmdlKDEwMDAsIDEwMDEpOwog
+CX0KIAogCS8qIFNldCB0byB1c2UgdGhlIHJlZ2lzdGVyIGNhbGN1bGF0ZWQgTS9OIHZpZGVvICov
+CkBAIC04MzgsNiArODM3LDkgQEAgc3RhdGljIGludCBhbmFsb2dpeF9kcF9jb25maWdfdmlkZW8o
+c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJLyogQ29uZmlndXJlIHZpZGVvIHNsYXZl
+IG1vZGUgKi8KIAlhbmFsb2dpeF9kcF9lbmFibGVfdmlkZW9fbWFzdGVyKGRwLCAwKTsKIAorCS8q
+IEVuYWJsZSB2aWRlbyAqLworCWFuYWxvZ2l4X2RwX3N0YXJ0X3ZpZGVvKGRwKTsKKwogCXRpbWVv
+dXRfbG9vcCA9IDA7CiAKIAlmb3IgKDs7KSB7CkBAIC05NDgsOSArOTUwLDYgQEAgc3RhdGljIHZv
+aWQgYW5hbG9naXhfZHBfY29tbWl0KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQogCQkJ
+RFJNX0VSUk9SKCJmYWlsZWQgdG8gZW5hYmxlIHRoZSBwYW5lbFxuIik7CiAJfQogCi0JLyogRW5h
+YmxlIHZpZGVvICovCi0JYW5hbG9naXhfZHBfc3RhcnRfdmlkZW8oZHApOwotCiAJZHAtPnBzcl9l
+bmFibGUgPSBhbmFsb2dpeF9kcF9kZXRlY3Rfc2lua19wc3IoZHApOwogCWlmIChkcC0+cHNyX2Vu
+YWJsZSkKIAkJYW5hbG9naXhfZHBfZW5hYmxlX3NpbmtfcHNyKGRwKTsKLS0gCjIuMTYuMQoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
