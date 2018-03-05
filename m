@@ -1,279 +1,85 @@
-From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 07/38] drm/bridge: analogix_dp: add fast link train for eDP
-Date: Mon,  5 Mar 2018 23:22:59 +0100
-Message-ID: <20180305222324.5872-8-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v4 11/38] drm/bridge: analogix_dp: Don't use fast link training when panel just powered up
+Date: Mon,  5 Mar 2018 23:23:03 +0100
+Message-ID: <20180305222324.5872-12-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: zain wang <wzz@rock-chips.com>
 
-We would meet a short black screen when exit PSR with the full link
-training, In this case, we should use fast link train instead of full
-link training.
+Panel would reset its setting when it powers down. It would forget the last
+succeeded link training setting. So we can't use the last successful link
+training setting to do fast link training. Let's reset fast_train_enable in
+analogix_dp_bridge_disable();
 
-Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Stéphane Marchesin <marcheu@chromium.org>
+Signed-off-by: zain wang <wzz@rock-chips.com>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 142 ++++++++++++++++-----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   3 +
- 2 files changed, 114 insertions(+), 31 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 9 +++++----
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 2 +-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index ee00d3d920e0..806c3878b3d6 100644
+index f9661b410cb9..ea7a80a989c6 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -10,17 +10,18 @@
- * option) any later version.
- */
+@@ -579,14 +579,14 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ 		if (retval != 1) {
+ 			dev_err(dp->dev, "failed to read downspread %d\n",
+ 				retval);
+-			dp->fast_train_support = false;
++			dp->fast_train_enable = false;
+ 		} else {
+-			dp->fast_train_support =
++			dp->fast_train_enable =
+ 				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
+ 					true : false;
+ 		}
+ 		dev_dbg(dp->dev, "fast link training %s\n",
+-			dp->fast_train_support ? "supported" : "unsupported");
++			dp->fast_train_enable ? "supported" : "unsupported");
  
--#include <linux/module.h>
--#include <linux/platform_device.h>
--#include <linux/err.h>
- #include <linux/clk.h>
--#include <linux/io.h>
-+#include <linux/component.h>
-+#include <linux/err.h>
-+#include <linux/gpio.h>
- #include <linux/interrupt.h>
-+#include <linux/io.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_gpio.h>
--#include <linux/gpio.h>
--#include <linux/component.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- 
- #include <drm/drmP.h>
- #include <drm/drm_atomic_helper.h>
-@@ -35,6 +36,8 @@
- 
- #define to_dp(nm)	container_of(nm, struct analogix_dp_device, nm)
- 
-+static const bool verify_fast_training;
-+
- struct bridge_init {
- 	struct i2c_client *client;
- 	struct device_node *node;
-@@ -528,7 +531,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- {
- 	int lane, lane_count, retval;
- 	u32 reg;
--	u8 link_align, link_status[2], adjust_request[2];
-+	u8 link_align, link_status[2], adjust_request[2], spread;
- 
- 	usleep_range(400, 401);
- 
-@@ -571,6 +574,20 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- 		dev_dbg(dp->dev, "final lane count = %.2x\n",
- 			dp->link_train.lane_count);
- 
-+		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
-+					   &spread);
-+		if (retval != 1) {
-+			dev_err(dp->dev, "failed to read downspread %d\n",
-+				retval);
-+			dp->fast_train_support = false;
-+		} else {
-+			dp->fast_train_support =
-+				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
-+					true : false;
-+		}
-+		dev_dbg(dp->dev, "fast link training %s\n",
-+			dp->fast_train_support ? "supported" : "unsupported");
-+
  		/* set enhanced mode if available */
  		analogix_dp_set_enhanced_mode(dp);
- 		dp->link_train.lt_state = FINISHED;
-@@ -627,10 +644,12 @@ static void analogix_dp_get_max_rx_lane_count(struct analogix_dp_device *dp,
- 	*lane_count = DPCD_MAX_LANE_COUNT(data);
- }
+@@ -793,7 +793,7 @@ static int analogix_dp_fast_link_train(struct analogix_dp_device *dp)
  
--static void analogix_dp_init_training(struct analogix_dp_device *dp,
--				      enum link_lane_count_type max_lane,
--				      int max_rate)
-+static int analogix_dp_full_link_train(struct analogix_dp_device *dp,
-+				       u32 max_lanes, u32 max_rate)
+ static int analogix_dp_train_link(struct analogix_dp_device *dp)
  {
-+	int retval = 0;
-+	bool training_finished = false;
-+
- 	/*
- 	 * MACRO_RST must be applied after the PLL_LOCK to avoid
- 	 * the DP inter pair skew issue for at least 10 us
-@@ -656,18 +675,13 @@ static void analogix_dp_init_training(struct analogix_dp_device *dp,
- 	}
+-	if (dp->fast_train_support)
++	if (dp->fast_train_enable)
+ 		return analogix_dp_fast_link_train(dp);
  
- 	/* Setup TX lane count & rate */
--	if (dp->link_train.lane_count > max_lane)
--		dp->link_train.lane_count = max_lane;
-+	if (dp->link_train.lane_count > max_lanes)
-+		dp->link_train.lane_count = max_lanes;
- 	if (dp->link_train.link_rate > max_rate)
- 		dp->link_train.link_rate = max_rate;
+ 	return analogix_dp_full_link_train(dp, dp->video_info.max_lane_count,
+@@ -1197,6 +1197,7 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
+ 		DRM_ERROR("failed to setup the panel ret = %d\n", ret);
  
- 	/* All DP analog module power up */
- 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 0);
--}
--
--static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
--{
--	int retval = 0, training_finished = 0;
- 
- 	dp->link_train.lt_state = START;
- 
-@@ -702,22 +716,88 @@ static int analogix_dp_sw_link_training(struct analogix_dp_device *dp)
- 	return retval;
+ 	dp->psr_enable = false;
++	dp->fast_train_enable = false;
+ 	dp->dpms_mode = DRM_MODE_DPMS_OFF;
  }
- 
--static int analogix_dp_set_link_train(struct analogix_dp_device *dp,
--				      u32 count, u32 bwtype)
-+static int analogix_dp_fast_link_train(struct analogix_dp_device *dp)
- {
--	int i;
--	int retval;
-+	int i, ret;
-+	u8 link_align, link_status[2];
-+	enum pll_status status;
- 
--	for (i = 0; i < DP_TIMEOUT_LOOP_COUNT; i++) {
--		analogix_dp_init_training(dp, count, bwtype);
--		retval = analogix_dp_sw_link_training(dp);
--		if (retval == 0)
--			break;
-+	analogix_dp_reset_macro(dp);
-+
-+	analogix_dp_set_link_bandwidth(dp, dp->link_train.link_rate);
-+	analogix_dp_set_lane_count(dp, dp->link_train.lane_count);
- 
--		usleep_range(100, 110);
-+	for (i = 0; i < dp->link_train.lane_count; i++) {
-+		analogix_dp_set_lane_link_training(dp,
-+			dp->link_train.training_lane[i], i);
- 	}
- 
--	return retval;
-+	ret = readx_poll_timeout(analogix_dp_get_pll_lock_status, dp, status,
-+				 status != PLL_UNLOCKED, 120,
-+				 120 * DP_TIMEOUT_LOOP_COUNT);
-+	if (ret) {
-+		DRM_DEV_ERROR(dp->dev, "Wait for pll lock failed %d\n", ret);
-+		return ret;
-+	}
-+
-+	/* source Set training pattern 1 */
-+	analogix_dp_set_training_pattern(dp, TRAINING_PTN1);
-+	/* From DP spec, pattern must be on-screen for a minimum 500us */
-+	usleep_range(500, 600);
-+
-+	analogix_dp_set_training_pattern(dp, TRAINING_PTN2);
-+	/* From DP spec, pattern must be on-screen for a minimum 500us */
-+	usleep_range(500, 600);
-+
-+	/* TODO: enhanced_mode?*/
-+	analogix_dp_set_training_pattern(dp, DP_NONE);
-+
-+	/*
-+	 * Useful for debugging issues with fast link training, disable for more
-+	 * speed
-+	 */
-+	if (verify_fast_training) {
-+		ret = drm_dp_dpcd_readb(&dp->aux, DP_LANE_ALIGN_STATUS_UPDATED,
-+					&link_align);
-+		if (ret < 0) {
-+			DRM_DEV_ERROR(dp->dev, "Read align status failed %d\n",
-+				      ret);
-+			return ret;
-+		}
-+
-+		ret = drm_dp_dpcd_read(&dp->aux, DP_LANE0_1_STATUS, link_status,
-+				       2);
-+		if (ret < 0) {
-+			DRM_DEV_ERROR(dp->dev, "Read link status failed %d\n",
-+				      ret);
-+			return ret;
-+		}
-+
-+		if (analogix_dp_clock_recovery_ok(link_status,
-+						  dp->link_train.lane_count)) {
-+			DRM_DEV_ERROR(dp->dev, "Clock recovery failed\n");
-+			analogix_dp_reduce_link_rate(dp);
-+			return -EIO;
-+		}
-+
-+		if (analogix_dp_channel_eq_ok(link_status, link_align,
-+					      dp->link_train.lane_count)) {
-+			DRM_DEV_ERROR(dp->dev, "Channel EQ failed\n");
-+			analogix_dp_reduce_link_rate(dp);
-+			return -EIO;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int analogix_dp_train_link(struct analogix_dp_device *dp)
-+{
-+	if (dp->fast_train_support)
-+		return analogix_dp_fast_link_train(dp);
-+
-+	return analogix_dp_full_link_train(dp, dp->video_info.max_lane_count,
-+					   dp->video_info.max_link_rate);
- }
- 
- static int analogix_dp_config_video(struct analogix_dp_device *dp)
-@@ -846,10 +926,10 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
- 			DRM_ERROR("failed to disable the panel\n");
- 	}
- 
--	ret = analogix_dp_set_link_train(dp, dp->video_info.max_lane_count,
--					 dp->video_info.max_link_rate);
-+	ret = readx_poll_timeout(analogix_dp_train_link, dp, ret, !ret, 100,
-+				 DP_TIMEOUT_TRAINING_US * 5);
- 	if (ret) {
--		dev_err(dp->dev, "unable to do link train\n");
-+		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
- 		return;
- 	}
  
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index e135a42cb19e..920607d7eb3e 100644
+index 6a96ef7e6934..403ff853464b 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -20,6 +20,8 @@
- #define MAX_CR_LOOP 5
- #define MAX_EQ_LOOP 5
- 
-+/* Training takes 22ms if AUX channel comm fails. Use this as retry interval */
-+#define DP_TIMEOUT_TRAINING_US			22000
- #define DP_TIMEOUT_PSR_LOOP_MS			300
- 
- /* DP_MAX_LANE_COUNT */
-@@ -171,6 +173,7 @@ struct analogix_dp_device {
+@@ -173,7 +173,7 @@ struct analogix_dp_device {
  	int			hpd_gpio;
  	bool                    force_hpd;
  	bool			psr_enable;
-+	bool			fast_train_support;
+-	bool			fast_train_support;
++	bool			fast_train_enable;
  
  	struct mutex		panel_lock;
  	bool			panel_is_modeset;
