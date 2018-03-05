@@ -1,83 +1,82 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH] clk: rockchip: Prevent calculating mmc phase if clock
- rate is zero
-Date: Mon,  5 Mar 2018 11:25:58 +0800
-Message-ID: <1520220358-181119-1-git-send-email-shawn.lin@rock-chips.com>
+From: JeffyChen <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v9 5/5] drm/bridge/synopsys: dw-hdmi: Add missing bridge
+ detach
+Date: Mon, 05 Mar 2018 15:01:24 +0800
+Message-ID: <5A9CEB44.40207@rock-chips.com>
+References: <20180302175757.28192-1-enric.balletbo@collabora.com>
+ <20180302175757.28192-6-enric.balletbo@collabora.com>
+ <2714218.VptbnhJPkd@avalon> <5A99EA37.6070006@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5A99EA37.6070006@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Jernej Skrabec <jernej.skrabec@siol.net>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, Russell King <rmk+kernel@armlinux.org.uk>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The MMC sample and drv clock for rockchip platforms are derived from
-the bus clock output to the MMC/SDIO card. So it should never happens
-that the clk rate is zero given it should inherits the clock rate from
-its parent. If something goes wrong and makes the clock rate to be zero,
-the calculation would be wrong but may still make the mmc tuning process
-work luckily. However it makes people harder to debug when the following
-data transfer is unstable.
-
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-Resend this since the former log output missed '\n'
-
-
- drivers/clk/rockchip/clk-mmc-phase.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
-index 077fcdc..c0c14e4 100644
---- a/drivers/clk/rockchip/clk-mmc-phase.c
-+++ b/drivers/clk/rockchip/clk-mmc-phase.c
-@@ -58,6 +58,12 @@ static int rockchip_mmc_get_phase(struct clk_hw *hw)
- 	u16 degrees;
- 	u32 delay_num = 0;
- 
-+	/* See the comment for rockchip_mmc_set_phase below */
-+	if (!rate) {
-+		pr_err("%s: invalid clk rate\n", __func__);
-+		return -EINVAL;
-+	}
-+
- 	raw_value = readl(mmc_clock->reg) >> (mmc_clock->shift);
- 
- 	degrees = (raw_value & ROCKCHIP_MMC_DEGREE_MASK) * 90;
-@@ -84,6 +90,25 @@ static int rockchip_mmc_set_phase(struct clk_hw *hw, int degrees)
- 	u32 raw_value;
- 	u32 delay;
- 
-+	/*
-+	 * The below calculation is based on the output clock from
-+	 * MMC host to the card, which expects the phase clock inherits
-+	 * the clock rate from its parent, namely the output clock
-+	 * provider of MMC host. However, things may go wrong if
-+	 * (1) It is orphan.
-+	 * (2) It is assigned to the wrong parent.
-+	 *
-+	 * This check help debug the case (1), which seems to be the
-+	 * most likely problem we often made and explicitly makes people
-+	 * harder to debug the unstable mmc tuning stuff. So hope people
-+	 * to have a close look at this comment to help check out what was
-+	 * happening.
-+	 */
-+	if (!rate) {
-+		pr_err("%s: invalid clk rate\n", __func__);
-+		return -EINVAL;
-+	}
-+
- 	nineties = degrees / 90;
- 	remainder = (degrees % 90);
- 
--- 
-1.9.1
+SGkgTGF1cmVudCwKCnNvcnJ5LCB5b3UncmUgcmlnaHQsIHRoaXMgcGF0Y2ggc2hvdWxkIG5vdCBi
+ZSBuZWVkZWQuCgp0aGUgY29ubmVjdG9yIHNob3VsZCBiZSBjbGVhbnVwIGJ5IApkcm1fbW9kZV9j
+b25maWdfY2xlYW51cC0+ZHJtX2Nvbm5lY3Rvcl9wdXQuCgppIGRpZCB0aGF0IGluIGFuYWxvZ2l4
+X2RwIGlzIHRvIGF2b2lkIGEgdXNlLWFmdGVyLWZyZWUgaXNzdWUgbm90IAprbWVtbGVhaywgYmVj
+YXVzZSB0aGUgY29ubmVjdG9yIHdhcyBhbGxvY2F0ZWQvZnJlZWQgaW4gYW5hbG9naXhfZHAncyAK
+YmluZC91bmJpbmQuCgpidXQgaSBmb3VuZCBhIGttZW1sZWFrIGlzc3VlKGRtYV9tYXNrIG5vdCBm
+cmVlZCkgaW4gZHctaGRtaSB3aGVuIHRlc3RpbmcgCnRoYXQsIHdpbGwgc2VuZCBwYXRjaCBzb29u
+LgoKT24gMDMvMDMvMjAxOCAwODoyMCBBTSwgSmVmZnlDaGVuIHdyb3RlOgo+IEhpIExhdXJlbnQs
+Cj4KPiBPbiAwMy8wMy8yMDE4IDA1OjQ5IEFNLCBMYXVyZW50IFBpbmNoYXJ0IHdyb3RlOgo+PiBI
+aSBFbnJpYywKPj4KPj4gVGhhbmsgeW91IGZvciB0aGUgcGF0Y2guCj4+Cj4+IE9uIEZyaWRheSwg
+MiBNYXJjaCAyMDE4IDE5OjU3OjU3IEVFVCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdyb3RlOgo+
+Pj4gRnJvbTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPj4+Cj4+PiBX
+ZSBpbml0ZWQgY29ubmVjdG9yIGluIGF0dGFjaCgpLCBzbyBuZWVkIGEgZGV0YWNoKCkgdG8gY2xl
+YW51cC4KPj4KPj4gRG8gd2UgPyBUaGUgZHctaGRtaSBkcml2ZXIgYWxyZWFkeSBzZXRzIGRybV9j
+b25uZWN0b3JfY2xlYW51cCgpIGFzIHRoZQo+PiBjb25uZWN0b3IgLmRlc3Ryb3koKSBoYW5kbGVy
+LCBhbmQgdGhlIC5kZXN0cm95KCkgb3BlcmF0aW9uIGlzIGNhbGxlZAo+PiBieSB0aGUKPj4gRFJN
+IGNvcmUuIE5vbmUgb2YgdGhlIG90aGVyIGJyaWRnZSBkcml2ZXJzIGNhbGwgZHJtX2Nvbm5lY3Rv
+cl9jbGVhbnVwKCkKPj4gZGlyZWN0bHkuCj4KPiBobW1tLCBjaGVja2luZyB0aGUgY29kZSwgdGhl
+cmUgYXJlIGFsc28gbG90cyBvZiBkcml2ZXJzIGRvIHRoZQo+IGNsZWFudXAoZHJtX2Nvbm5lY3Rv
+cl9jbGVhbnVwIG9yIGZ1bmNzLT5kZXN0cm95KToKPiBkcm0jIGdyZXAgLXIgImNvbm5lY3Rvci4q
+ZnVuY3MtPmRlc3Ryb3kiIC4KPiAuL3JvY2tjaGlwL2lubm9faGRtaS5jOiBoZG1pLT5jb25uZWN0
+b3IuZnVuY3MtPmRlc3Ryb3koJmhkbWktPmNvbm5lY3Rvcik7Cj4gLi9yb2NrY2hpcC9jZG4tZHAt
+Y29yZS5jOiAgICAgICBjb25uZWN0b3ItPmZ1bmNzLT5kZXN0cm95KGNvbm5lY3Rvcik7Cj4gLi9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jOgo+IGRwLT5jb25uZWN0b3IuZnVuY3Mt
+PmRlc3Ryb3koJmRwLT5jb25uZWN0b3IpOwo+IC4vbXNtL2hkbWkvaGRtaS5jOiBoZG1pLT5jb25u
+ZWN0b3ItPmZ1bmNzLT5kZXN0cm95KGhkbWktPmNvbm5lY3Rvcik7Cj4gLi9tc20vZHNpL2RzaS5j
+OiBtc21fZHNpLT5jb25uZWN0b3ItPmZ1bmNzLT5kZXN0cm95KG1zbV9kc2ktPmNvbm5lY3Rvcik7
+Cj4gLi9tc20vZWRwL2VkcC5jOiBlZHAtPmNvbm5lY3Rvci0+ZnVuY3MtPmRlc3Ryb3koZWRwLT5j
+b25uZWN0b3IpOwo+IC4venRlL3p4X2hkbWkuYzogICAgICAgIGhkbWktPmNvbm5lY3Rvci5mdW5j
+cy0+ZGVzdHJveSgmaGRtaS0+Y29ubmVjdG9yKTsKPiAuL2RybV9jb25uZWN0b3IuYzogICAgICBj
+b25uZWN0b3ItPmZ1bmNzLT5kZXN0cm95KGNvbm5lY3Rvcik7Cj4gLi9kcm1fY29ubmVjdG9yLmM6
+ICAgICAgICAgICAgICBjb25uZWN0b3ItPmZ1bmNzLT5kZXN0cm95KGNvbm5lY3Rvcik7Cj4gLi9u
+b3V2ZWF1L2Rpc3BudjA0L2Rpc3AuYzogY29ubmVjdG9yLT5mdW5jcy0+ZGVzdHJveShjb25uZWN0
+b3IpOwo+IC4vbm91dmVhdS9udjUwX2Rpc3BsYXkuYzogbXN0Yy0+Y29ubmVjdG9yLmZ1bmNzLT5k
+ZXN0cm95KCZtc3RjLT5jb25uZWN0b3IpOwo+IC4vbm91dmVhdS9udjUwX2Rpc3BsYXkuYzogY29u
+bmVjdG9yLT5mdW5jcy0+ZGVzdHJveShjb25uZWN0b3IpOwo+Cj4KPgo+IHdoZW4gaSBkZWJ1ZyBh
+bmFsb2dpeF9kcCBiaW5kL3VuYmluZCwgaSBmb3VuZCB0aGF0IHdlIG5lZWQgdG8gY2xlYW51cAo+
+IHRoZSBjb25uZWN0b3IocmVwb3J0ZWQgYnkga21lbWxlYWspLiBzbyBpIGFkZGVkIGl0IHRvCj4g
+Li9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jLi4uYWZ0ZXIgdGhhdCBpIHNhdyBk
+dy1oZG1pIG1pc3NpbmcKPiB0aGF0IHRvbyhieSBjaGVja2luZyB0aGUgY29kZSksIHNvIG1ha2Ug
+dGhpcyBwYXRjaC4KPgo+IGJ1dCBpIGRpZG4ndCByZWFsbHkgdGVzdGVkIGl0IG9uIGRldmljZXMg
+dXNpbmcgZHctaGRtaSwgc28gaSdtIG5vdCB2ZXJ5Cj4gc3VyZSB0aGUgZHctaGRtaShtYXliZSBh
+bHNvIG90aGVyIGJyaWRnZXMpIGlzIHRoZSBzYW1lIHdpdGggYW5hbG9naXhfZHAuCj4KPiBpIGNh
+biB0cnkgdG8gZmluZCBhIGNocm9tZWJvb2sgdmV5cm9uIHRvIGNoZWNrIGl0IG5leHQgd2VlayA6
+KQo+Cj4gYnV0IGV2ZW4gdGhlcmUncyBhIGxlYWssIGknbSBzdGlsbCBub3QgdmVyeSBzdXJlIGFi
+b3V0Ogo+IHNob3VsZCB0aGUgY2FsbGVyIG9mIGRybV9jb25uZWN0b3JfaW5pdCBjbGVhbnVwIGl0
+Cj4gb3IgdGhlIGNhbGxlciBvZiBkcm1fYnJpZGdlX2F0dGFjaCBzaG91bGQgZG8gaXQoZm9yIGV4
+YW1wbGUKPiBhbmFsb2dpeF9kcF9iaW5kL2FuYWxvZ2l4X2RwX3VuYmluZCkKPiBvciBzaG91bGQg
+dGhlIERSTSBjb3JlIHRha2UgY2FyZSBvZiB0aGF0Pwo+Cj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBK
+ZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+Pj4gU2lnbmVkLW9mZi1ieTog
+VGhpZXJyeSBFc2NhbmRlIDx0aGllcnJ5LmVzY2FuZGVAY29sbGFib3JhLmNvbT4KPj4+IFNpZ25l
+ZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9y
+YS5jb20+Cj4+PiAtLS0KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
