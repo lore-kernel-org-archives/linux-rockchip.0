@@ -1,7 +1,7 @@
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v4 10/38] drm/bridge: analogix_dp: Check AUX_EN status when doing AUX transfer
-Date: Mon,  5 Mar 2018 23:23:02 +0100
-Message-ID: <20180305222324.5872-11-enric.balletbo@collabora.com>
+Subject: [PATCH v4 08/38] drm/rockchip: Only wait for panel ACK on PSR entry
+Date: Mon,  5 Mar 2018 23:23:00 +0100
+Message-ID: <20180305222324.5872-9-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -10,69 +10,91 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Lin Huang <hl@rock-chips.com>
+From: zain wang <wzz@rock-chips.com>
 
-We should check AUX_EN bit to confirm the AUX CH operation is completed.
+We currently wait for the panel to mirror our intended PSR state
+before continuing on both PSR enter and PSR exit. This is really
+only important to do when we're entering PSR, since we want to
+be sure the last frame we pushed is being served from the panel's
+internal fb before shutting down the soc blocks (vop/analogix).
+
+This patch changes the behavior such that we only wait for the
+panel to complete the PSR transition when we're entering PSR, and
+to skip verification when we're exiting.
 
 Cc: Stéphane Marchesin <marcheu@chromium.org>
-Signed-off-by: Lin Huang <hl@rock-chips.com>
+Cc: Sonny Rao <sonnyrao@chromium.org>
 Signed-off-by: zain wang <wzz@rock-chips.com>
 Signed-off-by: Sean Paul <seanpaul@chromium.org>
 Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 25 +++++++++++++----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 5 ++++-
+ 3 files changed, 7 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 806c3878b3d6..5a2e35dc41e3 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -125,7 +125,7 @@ int analogix_dp_enable_psr(struct analogix_dp_device *dp)
+ 	psr_vsc.DB0 = 0;
+ 	psr_vsc.DB1 = EDP_VSC_PSR_STATE_ACTIVE | EDP_VSC_PSR_CRC_VALUES_VALID;
+ 
+-	return analogix_dp_send_psr_spd(dp, &psr_vsc);
++	return analogix_dp_send_psr_spd(dp, &psr_vsc, true);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_enable_psr);
+ 
+@@ -151,7 +151,7 @@ int analogix_dp_disable_psr(struct analogix_dp_device *dp)
+ 	if (ret != 1)
+ 		dev_err(dp->dev, "Failed to set DP Power0 %d\n", ret);
+ 
+-	return analogix_dp_send_psr_spd(dp, &psr_vsc);
++	return analogix_dp_send_psr_spd(dp, &psr_vsc, false);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_disable_psr);
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 920607d7eb3e..6a96ef7e6934 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -253,7 +253,7 @@ void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
+ void analogix_dp_enable_psr_crc(struct analogix_dp_device *dp);
+ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			     struct edp_vsc_psr *vsc);
++			     struct edp_vsc_psr *vsc, bool blocking);
+ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+ 			     struct drm_dp_aux_msg *msg);
+ 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 9df2f3ef000c..e78c861b9e06 100644
+index 005a3f7005d2..9df2f3ef000c 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -1073,9 +1073,9 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+@@ -1007,7 +1007,7 @@ static ssize_t analogix_dp_get_psr_status(struct analogix_dp_device *dp)
+ }
+ 
+ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+-			     struct edp_vsc_psr *vsc)
++			     struct edp_vsc_psr *vsc, bool blocking)
  {
- 	u32 reg;
- 	u8 *buffer = msg->buffer;
--	int timeout_loop = 0;
- 	unsigned int i;
- 	int num_transferred = 0;
-+	int ret;
+ 	unsigned int val;
+ 	int ret;
+@@ -1053,6 +1053,9 @@ int analogix_dp_send_psr_spd(struct analogix_dp_device *dp,
+ 	val |= IF_EN;
+ 	writel(val, dp->reg_base + ANALOGIX_DP_PKT_SEND_CTL);
  
- 	/* Buffer size of AUX CH is 16 bytes */
- 	if (WARN_ON(msg->size > 16))
-@@ -1139,17 +1139,20 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 
- 	writel(reg, dp->reg_base + ANALOGIX_DP_AUX_CH_CTL_2);
- 
--	/* Is AUX CH command reply received? */
-+	ret = readx_poll_timeout(readl, dp->reg_base + ANALOGIX_DP_AUX_CH_CTL_2,
-+				 reg, !(reg & AUX_EN), 25, 500 * 1000);
-+	if (ret) {
-+		dev_err(dp->dev, "AUX CH enable timeout!\n");
-+		return -ETIMEDOUT;
-+	}
++	if (!blocking)
++		return 0;
 +
- 	/* TODO: Wait for an interrupt instead of looping? */
--	reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
--	while (!(reg & RPLY_RECEIV)) {
--		timeout_loop++;
--		if (timeout_loop > DP_TIMEOUT_LOOP_COUNT) {
--			dev_err(dp->dev, "AUX CH command reply failed!\n");
--			return -ETIMEDOUT;
--		}
--		reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
--		usleep_range(10, 11);
-+	/* Is AUX CH command reply received? */
-+	ret = readx_poll_timeout(readl, dp->reg_base + ANALOGIX_DP_INT_STA,
-+				 reg, reg & RPLY_RECEIV, 10, 20 * 1000);
-+	if (ret) {
-+		dev_err(dp->dev, "AUX CH cmd reply timeout!\n");
-+		return -ETIMEDOUT;
- 	}
- 
- 	/* Clear interrupt source for AUX CH command reply */
+ 	ret = readx_poll_timeout(analogix_dp_get_psr_status, dp, psr_status,
+ 		psr_status >= 0 &&
+ 		((vsc->DB1 && psr_status == DP_PSR_SINK_ACTIVE_RFB) ||
 -- 
 2.16.1
