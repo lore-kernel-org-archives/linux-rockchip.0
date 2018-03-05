@@ -1,74 +1,63 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] soc: rockchip: power-domain: use clk_bulk APIs
-Date: Mon, 5 Mar 2018 17:05:33 +0800
-Message-ID: <709dc2eb-e34b-9603-3a49-3e61afb073e4@rock-chips.com>
-References: <20180228124143.8364-1-jeffy.chen@rock-chips.com>
- <2683576.o9hXnVZqaR@phil>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH] soc: rockchip: power-domain: Add a sanity check on
+ pd->num_clks
+Date: Mon,  5 Mar 2018 17:17:22 +0800
+Message-ID: <20180305091722.22246-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2683576.o9hXnVZqaR@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, "Rafael J. Wysocki" <rafael.j.wysocki-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kernel@vger.kernel.org
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, linux-rockchip@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+The of_count_phandle_with_args() can fail and return error(for example,
+rk3399 pd_vio doesn't have clocks). That would break the pd probe.
 
-On 2018/3/2 23:43, Heiko Stuebner wrote:
-> Hi Jeffy,
-> 
-> Am Mittwoch, 28. Februar 2018, 13:41:43 CET schrieb Jeffy Chen:
->> Use clk_bulk APIs, and also add error handling for clk enable.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> [...]
-> 
->> -	for (i = 0; i < clk_cnt; i++) {
->> -		clk = of_clk_get(node, i);
->> -		if (IS_ERR(clk)) {
->> -			error = PTR_ERR(clk);
->> +	pd->num_clks = of_count_phandle_with_args(node, "clocks",
->> +						  "#clock-cells");
->> +
->> +	pd->clks = devm_kzalloc(pmu->dev, pd->num_clks * sizeof(pd->clks[0]),
+Add a sanity check on pd->num_clks to avoid that.
 
-This doesn't work for rk3399, as the pd_vio doesn't have any clocks
-attached.
+Fixes: 65084121d59d ("soc: rockchip: power-domain: use clk_bulk APIs")
+Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-[    0.713241] rockchip-pm-domain 
-ff310000.power-management:power-controller: failed to handle node 
-pd_vio: -12
-[    0.714615] rockchip-pm-domain: probe of 
-ff310000.power-management:power-controller failed with error -12
+ drivers/soc/rockchip/pm_domains.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-
-I think Jeffy's v2 is coming, so I assume you will drop this version?
-
-
-> 
-> applied for 4.17, after changing to devm_kcalloc like below:
-> 
-> pd->clks = devm_kcalloc(pmu->dev, pd->num_clks, sizeof(*pd->clks),
-> 
-> 
-> Thanks
-> Heiko
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-> 
-> 
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index ad96ddeaeb78..fd58fd475950 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -402,11 +402,16 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 
+ 	pd->num_clks = of_count_phandle_with_args(node, "clocks",
+ 						  "#clock-cells");
+-
+-	pd->clks = devm_kcalloc(pmu->dev, pd->num_clks, sizeof(*pd->clks),
+-				GFP_KERNEL);
+-	if (!pd->clks)
+-		return -ENOMEM;
++	if (pd->num_clks > 0) {
++		pd->clks = devm_kcalloc(pmu->dev, pd->num_clks,
++					sizeof(*pd->clks), GFP_KERNEL);
++		if (!pd->clks)
++			return -ENOMEM;
++	} else {
++		dev_dbg(pmu->dev, "%s: don't have clocks: %d\n",
++			node->name, pd->num_clks);
++		pd->num_clks = 0;
++	}
+ 
+ 	for (i = 0; i < pd->num_clks; i++) {
+ 		pd->clks[i].clk = of_clk_get(node, i);
+-- 
+2.11.0
