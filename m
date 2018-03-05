@@ -1,30 +1,39 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] soc: rockchip: power-domain: Add a sanity check on pd->num_clks
-Date: Mon, 05 Mar 2018 21:26:23 +0100
-Message-ID: <2446754.ohlkqz2d1D@diego>
-References: <20180305091722.22246-1-jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add dp83867 CLK_OUT muxing
+Date: Mon, 05 Mar 2018 22:08:14 +0100
+Message-ID: <2707703.8mZIocJ1Ne@diego>
+References: <1520253911-46218-1-git-send-email-d.schultz@phytec.de> <3380975.Amu1WGHSQ5@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180305091722.22246-1-jeffy.chen@rock-chips.com>
+In-Reply-To: <3380975.Amu1WGHSQ5@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-arm-kernel@lists.infradead.org
+To: Daniel Schultz <d.schultz@phytec.de>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 5. März 2018, 10:17:22 CET schrieb Jeffy Chen:
-> The of_count_phandle_with_args() can fail and return error(for example,
-> rk3399 pd_vio doesn't have clocks). That would break the pd probe.
+Am Montag, 5. März 2018, 21:25:30 CET schrieb Heiko Stübner:
+> Am Montag, 5. März 2018, 13:45:11 CET schrieb Daniel Schultz:
+> > The CLK_O_SEL default is synchronous to XI input clock, which is 25 MHz.
+> > Set CLK_O_SEL to channel A transmit clock so we have 125 MHz on CLK_OUT.
+> > 
+> > Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
 > 
-> Add a sanity check on pd->num_clks to avoid that.
-> 
-> Fixes: 65084121d59d ("soc: rockchip: power-domain: use clk_bulk APIs")
-> Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> applied for 4.17
 
-applied for 4.17
+had to move it to 4.18 though.
+
+The change to the dt-binding header goes through the networking
+tree and will only get merged for 4.17-rc1 .
+
+So devicetree changes in a different branch aren't available at this
+point.
+
+One commonly practiced alternative is that you provide a v2
+with the actual hex values instead of the constants for 4.17
+and a follow-up patch replacing them with the constants
+that I can apply for 4.18.
 
 
-Thanks
 Heiko
