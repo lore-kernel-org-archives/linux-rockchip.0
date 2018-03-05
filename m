@@ -1,77 +1,110 @@
-From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 20/38] drm/bridge: analogix_dp: Reset aux channel if an
- error occurred
-Date: Mon,  5 Mar 2018 23:23:12 +0100
-Message-ID: <20180305222324.5872-21-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v4 25/38] drm/bridge: analogix_dp: Move fast link training detect to set_bridge
+Date: Mon,  5 Mar 2018 23:23:17 +0100
+Message-ID: <20180305222324.5872-26-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KCkFVWCBlcnJvcnMgYXJlIGNhdXNl
-ZCBieSBtYW55IGRpZmZlcmVudCByZWFzb25zLiBXZSBtYXkgbm90IGtub3cgd2hhdApoYXBwZW5l
-ZCBpbiBhdXggY2hhbm5lbCBvbiBmYWlsdXJlLCBzbyBsZXQncyByZXNldCBhdXggY2hhbm5lbCBp
-ZiBzb21lCmVycm9ycyBvY2N1cnJlZC4KCkNjOiDlvoHlop4g546LIDx3enpAcm9jay1jaGlwcy5j
-b20+CkNjOiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+ClNpZ25lZC1v
-ZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogQW5kcnplaiBI
-YWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8g
-aSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KLS0tCgogZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYyB8IDE4ICsrKysrKysrKysrKysr
-LS0tLQogMSBmaWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9y
-ZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMK
-aW5kZXggZGVlMWJhMTA5YjVmLi43YjdmZDIyN2UxZjkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwpAQCAtNDY2LDYgKzQ2NiwxMCBA
-QCB2b2lkIGFuYWxvZ2l4X2RwX2luaXRfYXV4KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRw
-KQogCXJlZyA9IFJQTFlfUkVDRUlWIHwgQVVYX0VSUjsKIAl3cml0ZWwocmVnLCBkcC0+cmVnX2Jh
-c2UgKyBBTkFMT0dJWF9EUF9JTlRfU1RBKTsKIAorCWFuYWxvZ2l4X2RwX3NldF9hbmFsb2dfcG93
-ZXJfZG93bihkcCwgQVVYX0JMT0NLLCB0cnVlKTsKKwl1c2xlZXBfcmFuZ2UoMTAsIDExKTsKKwlh
-bmFsb2dpeF9kcF9zZXRfYW5hbG9nX3Bvd2VyX2Rvd24oZHAsIEFVWF9CTE9DSywgZmFsc2UpOwor
-CiAJYW5hbG9naXhfZHBfcmVzZXRfYXV4KGRwKTsKIAogCS8qIERpc2FibGUgQVVYIHRyYW5zYWN0
-aW9uIEgvVyByZXRyeSAqLwpAQCAtMTE1OSw3ICsxMTYzLDcgQEAgc3NpemVfdCBhbmFsb2dpeF9k
-cF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCwKIAkJCQkgcmVnLCAhKHJl
-ZyAmIEFVWF9FTiksIDI1LCA1MDAgKiAxMDAwKTsKIAlpZiAocmV0KSB7CiAJCWRldl9lcnIoZHAt
-PmRldiwgIkFVWCBDSCBlbmFibGUgdGltZW91dCFcbiIpOwotCQlyZXR1cm4gLUVUSU1FRE9VVDsK
-KwkJZ290byBhdXhfZXJyb3I7CiAJfQogCiAJLyogVE9ETzogV2FpdCBmb3IgYW4gaW50ZXJydXB0
-IGluc3RlYWQgb2YgbG9vcGluZz8gKi8KQEAgLTExNjgsNyArMTE3Miw3IEBAIHNzaXplX3QgYW5h
-bG9naXhfZHBfdHJhbnNmZXIoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsCiAJCQkJIHJl
-ZywgcmVnICYgUlBMWV9SRUNFSVYsIDEwLCAyMCAqIDEwMDApOwogCWlmIChyZXQpIHsKIAkJZGV2
-X2VycihkcC0+ZGV2LCAiQVVYIENIIGNtZCByZXBseSB0aW1lb3V0IVxuIik7Ci0JCXJldHVybiAt
-RVRJTUVET1VUOworCQlnb3RvIGF1eF9lcnJvcjsKIAl9CiAKIAkvKiBDbGVhciBpbnRlcnJ1cHQg
-c291cmNlIGZvciBBVVggQ0ggY29tbWFuZCByZXBseSAqLwpAQCAtMTE3OCw3ICsxMTgyLDcgQEAg
-c3NpemVfdCBhbmFsb2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpk
-cCwKIAlyZWcgPSByZWFkbChkcC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9JTlRfU1RBKTsKIAlp
-ZiAocmVnICYgQVVYX0VSUikgewogCQl3cml0ZWwoQVVYX0VSUiwgZHAtPnJlZ19iYXNlICsgQU5B
-TE9HSVhfRFBfSU5UX1NUQSk7Ci0JCXJldHVybiAtRVJFTU9URUlPOworCQlnb3RvIGF1eF9lcnJv
-cjsKIAl9CiAKIAkvKiBDaGVjayBBVVggQ0ggZXJyb3IgYWNjZXNzIHN0YXR1cyAqLwpAQCAtMTE4
-Niw3ICsxMTkwLDcgQEAgc3NpemVfdCBhbmFsb2dpeF9kcF90cmFuc2ZlcihzdHJ1Y3QgYW5hbG9n
-aXhfZHBfZGV2aWNlICpkcCwKIAlpZiAoKHJlZyAmIEFVWF9TVEFUVVNfTUFTSykpIHsKIAkJZGV2
-X2VycihkcC0+ZGV2LCAiQVVYIENIIGVycm9yIGhhcHBlbmVkOiAlZFxuXG4iLAogCQkJcmVnICYg
-QVVYX1NUQVRVU19NQVNLKTsKLQkJcmV0dXJuIC1FUkVNT1RFSU87CisJCWdvdG8gYXV4X2Vycm9y
-OwogCX0KIAogCWlmIChtc2ctPnJlcXVlc3QgJiBEUF9BVVhfSTJDX1JFQUQpIHsKQEAgLTEyMTIs
-NCArMTIxNiwxMCBAQCBzc2l6ZV90IGFuYWxvZ2l4X2RwX3RyYW5zZmVyKHN0cnVjdCBhbmFsb2dp
-eF9kcF9kZXZpY2UgKmRwLAogCQltc2ctPnJlcGx5ID0gRFBfQVVYX05BVElWRV9SRVBMWV9BQ0s7
-CiAKIAlyZXR1cm4gbnVtX3RyYW5zZmVycmVkID4gMCA/IG51bV90cmFuc2ZlcnJlZCA6IC1FQlVT
-WTsKKworYXV4X2Vycm9yOgorCS8qIGlmIGF1eCBlcnIgaGFwcGVuLCByZXNldCBhdXggKi8KKwlh
-bmFsb2dpeF9kcF9pbml0X2F1eChkcCk7CisKKwlyZXR1cm4gLUVSRU1PVEVJTzsKIH0KLS0gCjIu
-MTYuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+From: zain wang <wzz@rock-chips.com>
+
+It's too early to detect fast link training, if other step after it
+failed, we will set fast_link flag to 1, and retry set_bridge again. In
+this case we will power down and power up panel power supply, and we
+will do fast link training since we have set fast_link flag to 1. In
+fact, we should do full link training now, not the fast link training.
+So we should move the fast link detection at the end of set_bridge.
+
+Cc: Tomasz Figa <tfiga@chromium.org>
+Signed-off-by: zain wang <wzz@rock-chips.com>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 42 +++++++++++++---------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 2493a580e655..e0f96ad4c700 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -601,7 +601,7 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ {
+ 	int lane, lane_count, retval;
+ 	u32 reg;
+-	u8 link_align, link_status[2], adjust_request[2], spread;
++	u8 link_align, link_status[2], adjust_request[2];
+ 
+ 	usleep_range(400, 401);
+ 
+@@ -645,20 +645,6 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
+ 		dev_dbg(dp->dev, "final lane count = %.2x\n",
+ 			dp->link_train.lane_count);
+ 
+-		retval = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD,
+-					   &spread);
+-		if (retval != 1) {
+-			dev_err(dp->dev, "failed to read downspread %d\n",
+-				retval);
+-			dp->fast_train_enable = false;
+-		} else {
+-			dp->fast_train_enable =
+-				(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING) ?
+-					true : false;
+-		}
+-		dev_dbg(dp->dev, "fast link training %s\n",
+-			dp->fast_train_enable ? "supported" : "unsupported");
+-
+ 		dp->link_train.lt_state = FINISHED;
+ 
+ 		return 0;
+@@ -996,6 +982,22 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
++static int analogix_dp_fast_link_train_detection(struct analogix_dp_device *dp)
++{
++	int ret;
++	u8 spread;
++
++	ret = drm_dp_dpcd_readb(&dp->aux, DP_MAX_DOWNSPREAD, &spread);
++	if (ret != 1) {
++		dev_err(dp->dev, "failed to read downspread %d\n", ret);
++		return ret;
++	}
++	dp->fast_train_enable = !!(spread & DP_NO_AUX_HANDSHAKE_LINK_TRAINING);
++	dev_dbg(dp->dev, "fast link training %s\n",
++		dp->fast_train_enable ? "supported" : "unsupported");
++	return 0;
++}
++
+ static int analogix_dp_commit(struct analogix_dp_device *dp)
+ {
+ 	int ret;
+@@ -1038,8 +1040,16 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (dp->psr_enable)
++	if (dp->psr_enable) {
+ 		ret = analogix_dp_enable_sink_psr(dp);
++		if (ret)
++			return ret;
++	}
++
++	/* Check whether panel supports fast training */
++	ret =  analogix_dp_fast_link_train_detection(dp);
++	if (ret)
++		dp->psr_enable = false;
+ 
+ 	return ret;
+ }
+-- 
+2.16.1
