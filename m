@@ -1,108 +1,36 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 2/3] drm/bridge: analogix_dp: Postpone enabling runtime
- power management
-Date: Mon, 05 Mar 2018 13:44:12 +0100
-Message-ID: <1891086.K6dugOe5Z7@diego>
-References: <20180305085741.18896-1-m.szyprowski@samsung.com>
- <CGME20180305085805eucas1p23b768fec0ab88387084b7b6bfc7c7b53@eucas1p2.samsung.com>
- <20180305085741.18896-3-m.szyprowski@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180305085741.18896-3-m.szyprowski@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Douglas Anderson <dianders@chromium.org>, linux-samsung-soc@vger.kernel.org, Lin Huang <hl@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Thierry Escande <thierry.escande@collabora.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Zain Wang <wzz@rock-chips.com>, Haixia Shi <hshi@chromium.org>
+From: Daniel Schultz <d.schultz@phytec.de>
+Subject: [PATCH] ARM: dts: rockchip: Add dp83867 CLK_OUT muxing
+Date: Mon, 5 Mar 2018 13:45:11 +0100
+Message-ID: <1520253911-46218-1-git-send-email-d.schultz@phytec.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCA1LiBNw6RyeiAyMDE4LCAwOTo1Nzo0MCBDRVQgc2NocmllYiBNYXJlayBTenlw
-cm93c2tpOgo+IEVuYWJsaW5nIHJ1bnRpbWUgcG93ZXIgbWFuYWdlbWVudCBlYXJseSBpbiBhbmFs
-b2dpeF9kcF9iaW5kKCkgY2F1c2VzCj4gZm9sbG93aW5nIGtlcm5lbCBOVUxMIHBvaW50ZXIgZGVy
-ZWZlcmVuY2U6Cj4gCj4gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRlcmVm
-ZXJlbmNlIGF0IHZpcnR1YWwgYWRkcmVzcyAwMDAwMDdkOAo+IHBnZCA9IDI4ZmZhMmU0Cj4gWzAw
-MDAwN2Q4XSAqcGdkPTAwMDAwMDAwCj4gSW50ZXJuYWwgZXJyb3I6IE9vcHM6IDUgWyMxXSBQUkVF
-TVBUIFNNUCBBUk0KPiBNb2R1bGVzIGxpbmtlZCBpbjoKPiBDUFU6IDYgUElEOiA2OSBDb21tOiBr
-d29ya2VyLzY6MSBOb3QgdGFpbnRlZCA0LjE2LjAtcmMxLTAwMDYyLWdlMjU3NTE5NzRiYTgKPiAj
-MzYyMiBIYXJkd2FyZSBuYW1lOiBTQU1TVU5HIEVYWU5PUyAoRmxhdHRlbmVkIERldmljZSBUcmVl
-KQo+IFdvcmtxdWV1ZTogZXZlbnRzIGRlZmVycmVkX3Byb2JlX3dvcmtfZnVuYwo+IFBDIGlzIGF0
-IGFuYWxvZ2l4X2RwX3Jlc3VtZSsweDgvMHhjMAo+IExSIGlzIGF0IHBtX2dlbmVyaWNfcnVudGlt
-ZV9yZXN1bWUrMHgyYy8weDM4Cj4gcGMgOiBbPGMwNTMxYjk4Pl0gICAgbHIgOiBbPGMwNTQzZmVj
-Pl0gcHNyOiBhMDAwMDExMwo+IHNwIDogZWUxM2ZiZDggIGlwIDogMDAwMDAwMWEgIGZwIDogMDAw
-MDAwMDEKPiByMTA6IGVlMGViMDgwICByOSA6IGMwNTUyYmQ4ICByOCA6IGMwZmIxZDk4Cj4gcjcg
-OiBlZWJiMTAxMCAgcjYgOiBlZWFlOTgwOCAgcjUgOiAwMDAwMDAwMCAgcjQgOiBkNDg1MDQxNQo+
-IHIzIDogZWUwZWQwMTAgIHIyIDogYjJkMDVlMDAgIHIxIDogMDAwMDAwMDAgIHIwIDogMDAwMDAw
-MDAKPiBGbGFnczogTnpDdiAgSVJRcyBvbiAgRklRcyBvbiAgTW9kZSBTVkNfMzIgIElTQSBBUk0g
-U2VnbWVudCBub25lCj4gQ29udHJvbDogMTBjNTM4N2QgIFRhYmxlOiAyMDAwNDA2YSAgREFDOiAw
-MDAwMDA1MQo+IFByb2Nlc3Mga3dvcmtlci82OjEgKHBpZDogNjksIHN0YWNrIGxpbWl0ID0gMHg5
-MTMyMDViNCkKPiBTdGFjazogKDB4ZWUxM2ZiZDggdG8gMHhlZTE0MDAwMCkKPiAuLi4KPiBbPGMw
-NTMxYjk4Pl0gKGFuYWxvZ2l4X2RwX3Jlc3VtZSkgZnJvbSBbPGMwNTQzZmVjPl0KPiAocG1fZ2Vu
-ZXJpY19ydW50aW1lX3Jlc3VtZSsweDJjLzB4MzgpIFs8YzA1NDNmZWM+XQo+IChwbV9nZW5lcmlj
-X3J1bnRpbWVfcmVzdW1lKSBmcm9tIFs8YzA1NGZmYjQ+XQo+IChfX2dlbnBkX3J1bnRpbWVfcmVz
-dW1lKzB4MmMvMHg4YykgWzxjMDU0ZmZiND5dIChfX2dlbnBkX3J1bnRpbWVfcmVzdW1lKQo+IGZy
-b20gWzxjMDU1MmQyND5dIChnZW5wZF9ydW50aW1lX3Jlc3VtZSsweDE0Yy8weDI1OCkgWzxjMDU1
-MmQyND5dCj4gKGdlbnBkX3J1bnRpbWVfcmVzdW1lKSBmcm9tIFs8YzA1NDc3OTg+XSAoX19ycG1f
-Y2FsbGJhY2srMHgxMzQvMHgyMTQpCj4gWzxjMDU0Nzc5OD5dIChfX3JwbV9jYWxsYmFjaykgZnJv
-bSBbPGMwNTQ3ODk4Pl0gKHJwbV9jYWxsYmFjaysweDIwLzB4ODApCj4gWzxjMDU0Nzg5OD5dIChy
-cG1fY2FsbGJhY2spIGZyb20gWzxjMDU0NmZmND5dIChycG1fcmVzdW1lKzB4M2EwLzB4NzM0KQo+
-IFs8YzA1NDZmZjQ+XSAocnBtX3Jlc3VtZSkgZnJvbSBbPGMwNTQ3NWVjPl0gKF9fcG1fcnVudGlt
-ZV9yZXN1bWUrMHg2NC8weDljKQo+IFs8YzA1NDc1ZWM+XSAoX19wbV9ydW50aW1lX3Jlc3VtZSkg
-ZnJvbSBbPGMwNTNiOTVjPl0KPiAoX19kZXZpY2VfYXR0YWNoKzB4OGMvMHgxMzQpIFs8YzA1M2I5
-NWM+XSAoX19kZXZpY2VfYXR0YWNoKSBmcm9tCj4gWzxjMDUzYWQwOD5dIChidXNfcHJvYmVfZGV2
-aWNlKzB4ODgvMHg5MCkgWzxjMDUzYWQwOD5dIChidXNfcHJvYmVfZGV2aWNlKQo+IGZyb20gWzxj
-MDUzOTBkMD5dIChkZXZpY2VfYWRkKzB4M2E4LzB4NTgwKSBbPGMwNTM5MGQwPl0gKGRldmljZV9h
-ZGQpIGZyb20KPiBbPGMwNjc2NGM0Pl0gKGkyY19yZWdpc3Rlcl9hZGFwdGVyKzB4ZDQvMHgzZWMp
-IFs8YzA2NzY0YzQ+XQo+IChpMmNfcmVnaXN0ZXJfYWRhcHRlcikgZnJvbSBbPGMwNTMyMWM4Pl0g
-KGFuYWxvZ2l4X2RwX2JpbmQrMHgyYTAvMHg0MTApCj4gWzxjMDUzMjFjOD5dIChhbmFsb2dpeF9k
-cF9iaW5kKSBmcm9tIFs8YzA1MjhlOTA+XQo+IChleHlub3NfZHBfYmluZCsweDljLzB4MTJjKSBb
-PGMwNTI4ZTkwPl0gKGV4eW5vc19kcF9iaW5kKSBmcm9tIFs8YzA1MzViYzQ+XQo+IChjb21wb25l
-bnRfYmluZF9hbGwrMHhmYy8weDI1OCkgWzxjMDUzNWJjND5dIChjb21wb25lbnRfYmluZF9hbGwp
-IGZyb20KPiBbPGMwNTIyZWU4Pl0gKGV4eW5vc19kcm1fYmluZCsweDE1Yy8weDI4YykgWzxjMDUy
-MmVlOD5dIChleHlub3NfZHJtX2JpbmQpCj4gZnJvbSBbPGMwNTM2Mzc4Pl0gKHRyeV90b19icmlu
-Z191cF9tYXN0ZXIrMHgxYjgvMHgyOWMpIFs8YzA1MzYzNzg+XQo+ICh0cnlfdG9fYnJpbmdfdXBf
-bWFzdGVyKSBmcm9tIFs8YzA1MzY0ZmM+XSAoY29tcG9uZW50X2FkZCsweGEwLzB4MTcwKQo+IFs8
-YzA1MzY0ZmM+XSAoY29tcG9uZW50X2FkZCkgZnJvbSBbPGMwNTI4ZmU0Pl0gKGV4eW5vc19kcF9w
-cm9iZSsweDY0LzB4YjgpCj4gWzxjMDUyOGZlND5dIChleHlub3NfZHBfcHJvYmUpIGZyb20gWzxj
-MDUzZGViYz5dCj4gKHBsYXRmb3JtX2Rydl9wcm9iZSsweDUwLzB4YjApIFs8YzA1M2RlYmM+XSAo
-cGxhdGZvcm1fZHJ2X3Byb2JlKSBmcm9tCj4gWzxjMDUzYmQxOD5dIChkcml2ZXJfcHJvYmVfZGV2
-aWNlKzB4MmI4LzB4NGEwKSBbPGMwNTNiZDE4Pl0KPiAoZHJpdmVyX3Byb2JlX2RldmljZSkgZnJv
-bSBbPGMwNTM5ZTRjPl0gKGJ1c19mb3JfZWFjaF9kcnYrMHg0NC8weDhjKQo+IFs8YzA1MzllNGM+
-XSAoYnVzX2Zvcl9lYWNoX2RydikgZnJvbSBbPGMwNTNiOTcwPl0KPiAoX19kZXZpY2VfYXR0YWNo
-KzB4YTAvMHgxMzQpIFs8YzA1M2I5NzA+XSAoX19kZXZpY2VfYXR0YWNoKSBmcm9tCj4gWzxjMDUz
-YWQwOD5dIChidXNfcHJvYmVfZGV2aWNlKzB4ODgvMHg5MCkgWzxjMDUzYWQwOD5dIChidXNfcHJv
-YmVfZGV2aWNlKQo+IGZyb20gWzxjMDUzYjI1OD5dIChkZWZlcnJlZF9wcm9iZV93b3JrX2Z1bmMr
-MHgzYy8weDE2OCkgWzxjMDUzYjI1OD5dCj4gKGRlZmVycmVkX3Byb2JlX3dvcmtfZnVuYykgZnJv
-bSBbPGMwMTQzNTJjPl0gKHByb2Nlc3Nfb25lX3dvcmsrMHgxZDAvMHg3YmMpCj4gWzxjMDE0MzUy
-Yz5dIChwcm9jZXNzX29uZV93b3JrKSBmcm9tIFs8YzAxNDNiODQ+XQo+ICh3b3JrZXJfdGhyZWFk
-KzB4MzQvMHg0ZGMpIFs8YzAxNDNiODQ+XSAod29ya2VyX3RocmVhZCkgZnJvbSBbPGMwMTRhMzBj
-Pl0KPiAoa3RocmVhZCsweDEyOC8weDE2NCkgWzxjMDE0YTMwYz5dIChrdGhyZWFkKSBmcm9tIFs8
-YzAxMDEwYjQ+XQo+IChyZXRfZnJvbV9mb3JrKzB4MTQvMHgyMCkgRXhjZXB0aW9uIHN0YWNrKDB4
-ZWUxM2ZmYjAgdG8gMHhlZTEzZmZmOCkKPiBmZmEwOiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAwMDAwMDAwMCAwMDAwMDAwMCAwMDAwMDAwMAo+IDAwMDAwMDAwIGZmYzA6IDAw
-MDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwCj4gMDAw
-MDAwMDAgMDAwMDAwMDAgZmZlMDogMDAwMDAwMDAgMDAwMDAwMDAgMDAwMDAwMDAgMDAwMDAwMDAg
-MDAwMDAwMTMKPiAwMDAwMDAwMAo+IENvZGU6IGUyODAwZTM3IGVhZmVlNjAxIGU5MmQ0MDcwIGUx
-YTA1MDAwIChlNTkwNjdkOCkKPiAtLS1bIGVuZCB0cmFjZSBiZjYwNDYwMTNkZjdjYWIyIF0tLS0K
-PiAKPiBUaGlzIG9vcHMgaGFwcGVucywgYmVjYXVzZSBhbmFsb2dpeF9kcF9iaW5kKCkgY2FsbHMg
-ZHJtX2RwX2F1eF9yZWdpc3RlcigpCj4gd2hpY2ggcmVnaXN0ZXJzIGkyYyBhZGFwdGVyLiBJMkMg
-Y29yZSB0cmllcyB0byBydW50aW1lIGdldCBpMmMgaG9zdAo+IGRldmljZSBkdXJpbmcgcmVnaXN0
-cmF0aW9uLiBUaGlzIGVuZHMgaW4gYW5hbG9naXhfZHBfcmVzdW1lKCksIGJ1dCBkcAo+IGNvbnRl
-eHQgaXMgTlVMTCB0aGVyZS4gZHAgY29udGV4dCBpcyBzZXQgaW4gZXh5bm9zX2RwX2JpbmQoKSBh
-ZnRlcgo+IGV4ZWN1dGluZyBhbmFsb2dpeF9kcF9iaW5kKCkuIEZpeCB0aGlzIGlzc3VlIGJ5IHBv
-c3Rwb25pbmcgZW5hYmxpbmcgcnVudGltZQo+IHBvd2VyIG1hbmFnZW1lbnQgYWZ0ZXIgZHJtX2Rw
-X2F1eF9yZWdpc3RlcigpLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmVrIFN6eXByb3dza2kgPG0u
-c3p5cHJvd3NraUBzYW1zdW5nLmNvbT4KCm9uIHRvcCBvZiBjdXJyZW50IGRybS1taXNjLW5leHQg
-b24gcmszMjg4IGFuZCByazMzOTkKVGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250
-ZWNoLmRlPgoKYW5kIHRoZSBhY3R1YWwgY2hhbmdlIGFsc28gbG9va3Mgc2FuZSBvZiBjb3Vyc2Us
-IHNvClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The CLK_O_SEL default is synchronous to XI input clock, which is 25 MHz.
+Set CLK_O_SEL to channel A transmit clock so we have 125 MHz on CLK_OUT.
+
+Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
+---
+
+The binding will be added with the next merge of net-next:
+https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/commit/?id=9708fb630d19ee51ae3aeb3a533e3010da0e8570
+
+ arch/arm/boot/dts/rk3288-phycore-som.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/rk3288-phycore-som.dtsi b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+index bdd80aa..e60535d 100644
+--- a/arch/arm/boot/dts/rk3288-phycore-som.dtsi
++++ b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+@@ -141,6 +141,7 @@
+ 			ti,tx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+ 			ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+ 			enet-phy-lane-no-swap;
++			ti,clk-output-sel = <DP83867_CLK_O_SEL_CHN_A_TCLK>;
+ 		};
+ 	};
+ };
+-- 
+2.7.4
