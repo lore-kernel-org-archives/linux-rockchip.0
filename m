@@ -1,47 +1,87 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] soc: rockchip: disable jtag switching for RK3128 SoCs
-Date: Mon, 5 Mar 2018 22:55:14 +0800
-Message-ID: <b364b257-3ead-cbfe-2ba0-ad49c2c92d04@rock-chips.com>
-References: <20180302122031.17426-1-heiko@sntech.de>
- <7020f92d-cc0e-745e-713b-3aa847b7e939@rock-chips.com>
- <1633972.b4bkohDpDd@phil>
+From: Daniel Schultz <d.schultz@phytec.de>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add dp83867 CLK_OUT muxing
+Date: Mon, 5 Mar 2018 16:57:13 +0100
+Message-ID: <cecf3c08-d43d-c340-c5ff-30e41e338469@phytec.de>
+References: <1520253911-46218-1-git-send-email-d.schultz@phytec.de>
+ <3530074.WSbKf9j6h0@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1633972.b4bkohDpDd@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3530074.WSbKf9j6h0@phil>
+Content-Language: de-DE
+Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, Xiao Yao <xiaoyao@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOC8zLzUgMjI6NDIsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEhpIFNoYXduLAo+IAo+
-IEFtIE1vbnRhZywgNS4gTcOkcnogMjAxOCwgMTU6Mzk6MDQgQ0VUIHNjaHJpZWIgU2hhd24gTGlu
-Ogo+PiBPbiAyMDE4LzMvMiAyMDoyMCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+PiBGcm9tOiBY
-aWFvIFlhbyA8eGlhb3lhb0Byb2NrLWNoaXBzLmNvbT4KPj4+Cj4+PiBEaXNhYmxlIElPIGZ1bmN0
-aW9uIHN3aXRjaGluZyBiZXR3ZWVuIHNkbW1jIGFuZCBqdGFnCj4+PiBmb3IgUkszMTI4IFNvQ3Mu
-Cj4+Pgo+Pgo+PiBJIGFja2VkIHRoaXMgb24gdGhlIHZlbmRvciBrZXJuZWwgdHJlZSwgc28gRldJ
-VzoKPj4KPj4gUmV2aWV3ZWQtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29t
-Pgo+Pgo+PiBIb3BlIHRoaXMgaXMgb25lIG9mIHRoZSBmaW5hbCBwYXRjaGVzIGZvciB0aGF0LCBh
-cyBJIHdvdWxkCj4+IHJldml2ZSBJTyBmdW5jdGlvbiBzd2l0Y2hpbmcgYmV0d2VlbiBzZG1tYyBh
-bmQganRhZyBmb3IgbmV3ZXIKPj4gU29DcyBhZnRlciBhZGRyZXNzaW5nIHRoZSBwcm9ibGVtIGZy
-b20gSFcgbGV2ZWwuCj4gCj4gdGhlIG1haW4gcHJvYmxlbSB3ZSBoYWQgd2l0aCB0aGF0IHdhcyB0
-aGF0IHRoZSAgbW1jLXN1YnN5c3RlbQo+IHNvbWVob3cgZGVmaW5pdGx5IGRpZG4ndCBsaWtlIGl0
-IHdoZW4gdGhlIGNvbnRyb2xsZXIgcGlucyB3aGVyZSBwdWxsZWQKPiBvdXQgZnJvbSB1bmRlciBp
-dCBvbiBjYXJkIGVqZWN0LgoKUmlnaHQsIHdlIGhhZCBzb3J0IG91dCBpdCdzIHRpbWluZyByZXZl
-bGFudCBiZXR3ZWVuIG1tYyBjb250cm9sbGVyIGFuZAp0aGUgc3dpdGNoaW5nIGh3IGJsb2NrLgoK
-PiAKPiBCdXQgb2YgY291cnNlLCBpZiB5b3UgY2FuIGdldCB0aGlzIHNvbHZlZCBieSBodyBzb21l
-aG93LCB0aGF0Cj4gd291bGQgYmUgcHJldHR5IGNvb2wgOi0pCgpJdCBpcyB1bmRlciBleHRlbnNp
-dmVseSB0ZXN0ZWQgbm93LCBhbmQgc2VlbXMgcXVpdGUgcG9zaXRpdmUuIDopCgo+IAo+IAo+IEhl
-aWtvCj4gCj4gCj4gCgoKLS0gCkJlc3QgUmVnYXJkcwpTaGF3biBMaW4KCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxp
-bmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+Hi,
+
+
+On 03/05/2018 03:15 PM, Heiko Stuebner wrote:
+> Hi Daniel,
+>
+> Am Montag, 5. März 2018, 13:45:11 CET schrieb Daniel Schultz:
+>> The CLK_O_SEL default is synchronous to XI input clock, which is 25 MHz.
+>> Set CLK_O_SEL to channel A transmit clock so we have 125 MHz on CLK_OUT.
+>>
+>> Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
+>> ---
+>>
+>> The binding will be added with the next merge of net-next:
+>> https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/commit/?id=9708fb630d19ee51ae3aeb3a533e3010da0e8570
+https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/log/Documentation/devicetree/bindings/net/ti,dp83867.txt
+
+If I search in the master branch, I get the patch. Did I searched wrong?
+
+Daniel
+> I did find the commit, but no related change of the dp83867 dt binding
+> document [0], including a review by dt-maintainers.
+>
+> While your property does not look overly complicated, the binding
+> should be updated nontheless.
+>
+>
+> Heiko
+>
+> [0] https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/log/Documentation/devicetree/bindings/net/ti,dp83867.txt?id=9708fb630d19ee51ae3aeb3a533e3010da0e8570
+>
+>>   arch/arm/boot/dts/rk3288-phycore-som.dtsi | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288-phycore-som.dtsi b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+>> index bdd80aa..e60535d 100644
+>> --- a/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+>> +++ b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+>> @@ -141,6 +141,7 @@
+>>   			ti,tx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+>>   			ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+>>   			enet-phy-lane-no-swap;
+>> +			ti,clk-output-sel = <DP83867_CLK_O_SEL_CHN_A_TCLK>;
+>>   		};
+>>   	};
+>>   };
+>>
+>
+
+-- 
+Mit freundlichen Grüßen,
+With best regards,
+   Daniel Schultz
+
+- Entwicklung -
+Tel.: 	+49 6131 92 21 457
+d.schultz@phytec.de
+www.phytec.de
+
+Sie finden uns auch auf: Facebook, LinkedIn, Xing, YouTube
+
+PHYTEC Messtechnik GmbH | Robert-Koch-Str. 39 | 55129 Mainz, Germany
+Geschäftsführer: Dipl.-Ing. Michael Mitezki, Dipl.-Ing. Bodo Huber |
+Handelsregister Mainz HRB 4656 | Finanzamt Mainz-Mitte | St.Nr. 266500608,
+DE 149059855
+This E-Mail may contain confidential or privileged information. If you are
+not the intended recipient (or have received this E-Mail in error) please
+notify the sender immediately and destroy this E-Mail. Any unauthorized
+copying, disclosure or distribution of the material in this E-Mail is
+strictly forbidden.
