@@ -1,58 +1,74 @@
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: [PATCH 1/3] drm/bridge: analogix_dp: Don't power bridge in
- analogix_dp_bind
-Date: Mon, 05 Mar 2018 09:57:39 +0100
-Message-ID: <20180305085741.18896-2-m.szyprowski@samsung.com>
-References: <20180305085741.18896-1-m.szyprowski@samsung.com>
- <CGME20180305085804eucas1p10709830a36b02a28a6cb74827968f64d@eucas1p1.samsung.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] soc: rockchip: power-domain: use clk_bulk APIs
+Date: Mon, 5 Mar 2018 17:05:33 +0800
+Message-ID: <709dc2eb-e34b-9603-3a49-3e61afb073e4@rock-chips.com>
+References: <20180228124143.8364-1-jeffy.chen@rock-chips.com>
+ <2683576.o9hXnVZqaR@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20180305085741.18896-1-m.szyprowski@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Caesar Wang <wxt@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2683576.o9hXnVZqaR@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, "Rafael J. Wysocki" <rafael.j.wysocki-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpUaGUgYnJpZGdlIGRvZXMgbm90
-IG5lZWQgdG8gYmUgcG93ZXJlZCBpbiBhbmFsb2dpeF9kcF9iaW5kKCksIHNvCnJlbW92ZSB0aGUg
-Y2FsbHMgdG8gcG1fcnVudGltZV9nZXQoKS9waHlfcG93ZXJfb24oKS9hbmFsb2dpeF9kcF9pbml0
-X2RwKCkKYXMgd2VsbCBhcyB0aGVpciBwb3dlci1vZmYgY291bnRlcnBhcnRzLgoKQ2M6IFN0w6lw
-aGFuZSBNYXJjaGVzaW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiB6YWlu
-IHdhbmcgPHd6ekByb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4
-dEByb2NrLWNoaXBzLmNvbT4KW3RoZSBwYXRjaCBvcmlnaW5hbGx5IGp1c3QgcmVtb3ZlZCB0aGUg
-cG93ZXJfb24gcG9ydGlvbiwgc2VhbnBhdWwgcmVtb3ZlZAp0aGUgcG93ZXIgb2ZmIGNvZGUgYXMg
-d2VsbCBhcyBpbXByb3ZlZCB0aGUgY29tbWl0IG1lc3NhZ2VdClNpZ25lZC1vZmYtYnk6IFNlYW4g
-UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2Fu
-ZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgpTaWduZWQtb2ZmLWJ5OiBNYXJlayBT
-enlwcm93c2tpIDxtLnN6eXByb3dza2lAc2Ftc3VuZy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAxMCAtLS0tLS0tLS0tCiAxIGZp
-bGUgY2hhbmdlZCwgMTAgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwppbmRleCAzZjdhNzk2YjI3ZTQuLjg0NzU3
-NDliYWFlNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFs
-b2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFs
-b2dpeF9kcF9jb3JlLmMKQEAgLTEzNzgsMTEgKzEzNzgsNiBAQCBhbmFsb2dpeF9kcF9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCiAKIAlwbV9ydW50
-aW1lX2VuYWJsZShkZXYpOwogCi0JcG1fcnVudGltZV9nZXRfc3luYyhkZXYpOwotCXBoeV9wb3dl
-cl9vbihkcC0+cGh5KTsKLQotCWFuYWxvZ2l4X2RwX2luaXRfZHAoZHApOwotCiAJcmV0ID0gZGV2
-bV9yZXF1ZXN0X3RocmVhZGVkX2lycSgmcGRldi0+ZGV2LCBkcC0+aXJxLAogCQkJCQlhbmFsb2dp
-eF9kcF9oYXJkaXJxLAogCQkJCQlhbmFsb2dpeF9kcF9pcnFfdGhyZWFkLApAQCAtMTQxMCwxNSAr
-MTQwNSwxMCBAQCBhbmFsb2dpeF9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRy
-bV9kZXZpY2UgKmRybV9kZXYsCiAJCWdvdG8gZXJyX2Rpc2FibGVfcG1fcnVudGltZTsKIAl9CiAK
-LQlwaHlfcG93ZXJfb2ZmKGRwLT5waHkpOwotCXBtX3J1bnRpbWVfcHV0KGRldik7Ci0KIAlyZXR1
-cm4gZHA7CiAKIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU6CiAKLQlwaHlfcG93ZXJfb2ZmKGRwLT5w
-aHkpOwotCXBtX3J1bnRpbWVfcHV0KGRldik7CiAJcG1fcnVudGltZV9kaXNhYmxlKGRldik7CiAK
-IAlyZXR1cm4gRVJSX1BUUihyZXQpOwotLSAKMi4xNS4wCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Heiko,
+
+On 2018/3/2 23:43, Heiko Stuebner wrote:
+> Hi Jeffy,
+> 
+> Am Mittwoch, 28. Februar 2018, 13:41:43 CET schrieb Jeffy Chen:
+>> Use clk_bulk APIs, and also add error handling for clk enable.
+>>
+>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> [...]
+> 
+>> -	for (i = 0; i < clk_cnt; i++) {
+>> -		clk = of_clk_get(node, i);
+>> -		if (IS_ERR(clk)) {
+>> -			error = PTR_ERR(clk);
+>> +	pd->num_clks = of_count_phandle_with_args(node, "clocks",
+>> +						  "#clock-cells");
+>> +
+>> +	pd->clks = devm_kzalloc(pmu->dev, pd->num_clks * sizeof(pd->clks[0]),
+
+This doesn't work for rk3399, as the pd_vio doesn't have any clocks
+attached.
+
+[    0.713241] rockchip-pm-domain 
+ff310000.power-management:power-controller: failed to handle node 
+pd_vio: -12
+[    0.714615] rockchip-pm-domain: probe of 
+ff310000.power-management:power-controller failed with error -12
+
+
+I think Jeffy's v2 is coming, so I assume you will drop this version?
+
+
+> 
+> applied for 4.17, after changing to devm_kcalloc like below:
+> 
+> pd->clks = devm_kcalloc(pmu->dev, pd->num_clks, sizeof(*pd->clks),
+> 
+> 
+> Thanks
+> Heiko
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+> 
+> 
