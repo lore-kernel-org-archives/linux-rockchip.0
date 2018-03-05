@@ -1,74 +1,84 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RESEND PATCH v6 13/14] iommu/rockchip: Add runtime PM support
-Date: Mon, 5 Mar 2018 23:34:34 +0900
-Message-ID: <CAAFQd5AU_uZ_ywO6p-j9=yukoNf_fjiAqh=qzBBLYXM2rp1Fbw@mail.gmail.com>
-References: <20180301101837.27969-1-jeffy.chen@rock-chips.com>
-	<20180301101837.27969-14-jeffy.chen@rock-chips.com>
-	<CAAFQd5D2SY2RV9HLTeTQigfnVCkF9wDq74_+t3OV2YEb9wJtqg@mail.gmail.com>
-	<0cd81b39-ffe9-eda3-1358-13afeb2ec25b@arm.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] soc: rockchip: disable jtag switching for RK3128 SoCs
+Date: Mon, 5 Mar 2018 22:39:04 +0800
+Message-ID: <7020f92d-cc0e-745e-713b-3aa847b7e939@rock-chips.com>
+References: <20180302122031.17426-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <0cd81b39-ffe9-eda3-1358-13afeb2ec25b-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
-	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180302122031.17426-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, Xiao Yao <xiaoyao@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 5, 2018 at 11:13 PM, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
-> On 05/03/18 13:49, Tomasz Figa wrote:
-> [...]
->>>
->>> @@ -518,7 +520,12 @@ static irqreturn_t rk_iommu_irq(int irq, void
->>> *dev_id)
->>>          u32 int_status;
->>>          dma_addr_t iova;
->>>          irqreturn_t ret = IRQ_NONE;
->>> -       int i;
->>> +       int i, err, need_runtime_put;
->>
->>
->> nit: need_runtime_put could be a bool.
->>
->>> +
->>> +       err = pm_runtime_get_if_in_use(iommu->dev);
->>> +       if (err <= 0 && err != -EINVAL)
->>> +               return ret;
->>> +       need_runtime_put = err > 0;
->>
->>
->> Generally something must be really wrong if we end up with err == 0
->> here, because the IOMMU must be powered on to signal an interrupt. The
->> only case this could happen would be if the IRQ signal was shared with
->> some device from another power domain. Is it possible on Rockchip
->> SoCs? If not, perhaps we should have a WARN_ON() here for such case.
->
->
-> In general, there's almost certainly some time window between the interrupt
-> level being latched at the GIC and the IRQ actually being taken by its
-> target CPU, in which potentially the power could be removed and/or the
-> clocks gated - especially if there are higher-priority IRQs pending at the
-> same time and the racing PM call is on some other CPU. Sure, it's probably
-> unlikely, but I wouldn't necessarily consider it completely erroneous.
+On 2018/3/2 20:20, Heiko Stuebner wrote:
+> From: Xiao Yao <xiaoyao@rock-chips.com>
+> 
+> Disable IO function switching between sdmmc and jtag
+> for RK3128 SoCs.
+> 
 
-Clocks are not a problem here, since the handler re-enables them and
-clk_enable() is IRQ-safe. However, runtime PM might need sleeping, so
-we can't just get_sync() from the handler. I guess, we should just
-bail out in such case, since the power off would probably clear any
-internal interrupt state anyway.
+I acked this on the vendor kernel tree, so FWIW:
 
-Also, the interrupt would be basically a page fault, during which the
-master device would be stalled, so it's rather unlikely that we see
-its driver putting the runtime PM, which would only happen after the
-master device resumes and competes (or something times out). So
-probably WARN_ON() isn't such bad idea still.
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Hope this is one of the final patches for that, as I would
+revive IO function switching between sdmmc and jtag for newer
+SoCs after addressing the problem from HW level.
+
+
+
+> Signed-off-by: Xiao Yao <xiaoyao@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>   drivers/soc/rockchip/grf.c | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
+> 
+> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+> index dd81b87d79f0..96882ffde67e 100644
+> --- a/drivers/soc/rockchip/grf.c
+> +++ b/drivers/soc/rockchip/grf.c
+> @@ -43,6 +43,17 @@ static const struct rockchip_grf_info rk3036_grf __initconst = {
+>   	.num_values = ARRAY_SIZE(rk3036_defaults),
+>   };
+>   
+> +#define RK3128_GRF_SOC_CON0		0x140
+> +
+> +static const struct rockchip_grf_value rk3128_defaults[] __initconst = {
+> +	{ "jtag switching", RK3128_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 8) },
+> +};
+> +
+> +static const struct rockchip_grf_info rk3128_grf __initconst = {
+> +	.values = rk3128_defaults,
+> +	.num_values = ARRAY_SIZE(rk3128_defaults),
+> +};
+> +
+>   #define RK3228_GRF_SOC_CON6		0x418
+>   
+>   static const struct rockchip_grf_value rk3228_defaults[] __initconst = {
+> @@ -102,6 +113,9 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+>   	{
+>   		.compatible = "rockchip,rk3036-grf",
+>   		.data = (void *)&rk3036_grf,
+> +	}, {
+> +		.compatible = "rockchip,rk3128-grf",
+> +		.data = (void *)&rk3128_grf,
+>   	}, {
+>   		.compatible = "rockchip,rk3228-grf",
+>   		.data = (void *)&rk3228_grf,
+> 
+
+
+-- 
+Best Regards
+Shawn Lin
