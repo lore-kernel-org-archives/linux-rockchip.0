@@ -1,24 +1,86 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] dt-bindings: rockchip-dw-mshc: use consistent clock names
-Date: Mon, 5 Mar 2018 15:45:38 +0800
-Message-ID: <d4a6c91e-9304-8b4f-5089-b7d7541ac98f@rock-chips.com>
-References: <20180301103447.7059-1-john@metanate.com>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: [PATCH 3/3] drm/bridge: analogix_dp: Don't create useless connectors
+Date: Mon, 05 Mar 2018 09:57:41 +0100
+Message-ID: <20180305085741.18896-4-m.szyprowski@samsung.com>
+References: <20180305085741.18896-1-m.szyprowski@samsung.com>
+ <CGME20180305085806eucas1p2156c70fa406dd25814b12a873dac5281@eucas1p2.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180301103447.7059-1-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: John Keeping <john@metanate.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20180305085741.18896-1-m.szyprowski@samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Haixia Shi <hshi@chromium.org>, Zain Wang <wzz@rock-chips.com>, Marek Szyprowski <m.szyprowski@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+SWYgdGhlcmUgaXMgYW5vdGhlciBicmlkZ2UgYWZ0ZXIgYW5hbG9naXhfZHAsIHRoZW4gdGhlIGNv
+bm5lY3RvciBvYmplY3QKc2hvdWxkIG5vdCBiZSBjcmVhdGVkLiBUaGlzIGZpeGVzIGZvbGxvd2lu
+ZyB0aW1lb3V0cyBvbiBFeHlub3M1NDIwLWJhc2VkCkNocm9tZWJvb2syIFBlYWNoLVBJVCBib2Fy
+ZCBkdXJpbmcgYm9vdDoKCmV4eW5vcy1kcCAxNDViMDAwMC5kcC1jb250cm9sbGVyOiBBVVggQ0gg
+Y21kIHJlcGx5IHRpbWVvdXQhCmV4eW5vcy1kcCAxNDViMDAwMC5kcC1jb250cm9sbGVyOiBBVVgg
+Q0ggZW5hYmxlIHRpbWVvdXQhCmV4eW5vcy1kcCAxNDViMDAwMC5kcC1jb250cm9sbGVyOiBBVVgg
+Q0ggZW5hYmxlIHRpbWVvdXQhCmV4eW5vcy1kcCAxNDViMDAwMC5kcC1jb250cm9sbGVyOiBBVVgg
+Q0ggZW5hYmxlIHRpbWVvdXQhCmV4eW5vcy1kcCAxNDViMDAwMC5kcC1jb250cm9sbGVyOiBBVVgg
+Q0ggZW5hYmxlIHRpbWVvdXQhCgpTaWduZWQtb2ZmLWJ5OiBNYXJlayBTenlwcm93c2tpIDxtLnN6
+eXByb3dza2lAc2Ftc3VuZy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dp
+eC9hbmFsb2dpeF9kcF9jb3JlLmMgfCAyOSArKysrKysrKysrKystLS0tLS0tLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAgICAgICAgICAgICB8ICAxICsKIGluY2x1
+ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgIDEgKwogMyBm
+aWxlcyBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCAxMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCmluZGV4
+IGIzOTFkMTQ5ZGI5MS4uYTY5M2FiMzA3OGYwIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwpAQCAtMTAxMiwyNyArMTAxMiwzMCBA
+QCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX2JyaWRnZV9hdHRhY2goc3RydWN0IGRybV9icmlkZ2Ug
+KmJyaWRnZSkKIHsKIAlzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCA9IGJyaWRnZS0+ZHJp
+dmVyX3ByaXZhdGU7CiAJc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyID0gZHAtPmVuY29kZXI7
+Ci0Jc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciA9ICZkcC0+Y29ubmVjdG9yOwotCWlu
+dCByZXQ7CisJc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciA9IE5VTEw7CisJaW50IHJl
+dCA9IDA7CiAKIAlpZiAoIWJyaWRnZS0+ZW5jb2RlcikgewogCQlEUk1fRVJST1IoIlBhcmVudCBl
+bmNvZGVyIG9iamVjdCBub3QgZm91bmQiKTsKIAkJcmV0dXJuIC1FTk9ERVY7CiAJfQogCi0JY29u
+bmVjdG9yLT5wb2xsZWQgPSBEUk1fQ09OTkVDVE9SX1BPTExfSFBEOworCWlmICghZHAtPnBsYXRf
+ZGF0YS0+c2tpcF9jb25uZWN0b3IpIHsKKwkJY29ubmVjdG9yID0gJmRwLT5jb25uZWN0b3I7CisJ
+CWNvbm5lY3Rvci0+cG9sbGVkID0gRFJNX0NPTk5FQ1RPUl9QT0xMX0hQRDsKIAotCXJldCA9IGRy
+bV9jb25uZWN0b3JfaW5pdChkcC0+ZHJtX2RldiwgY29ubmVjdG9yLAotCQkJCSAmYW5hbG9naXhf
+ZHBfY29ubmVjdG9yX2Z1bmNzLAotCQkJCSBEUk1fTU9ERV9DT05ORUNUT1JfZURQKTsKLQlpZiAo
+cmV0KSB7Ci0JCURSTV9FUlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgY29ubmVjdG9yIHdpdGgg
+ZHJtXG4iKTsKLQkJcmV0dXJuIHJldDsKLQl9CisJCXJldCA9IGRybV9jb25uZWN0b3JfaW5pdChk
+cC0+ZHJtX2RldiwgY29ubmVjdG9yLAorCQkJCQkgJmFuYWxvZ2l4X2RwX2Nvbm5lY3Rvcl9mdW5j
+cywKKwkJCQkJIERSTV9NT0RFX0NPTk5FQ1RPUl9lRFApOworCQlpZiAocmV0KSB7CisJCQlEUk1f
+RVJST1IoIkZhaWxlZCB0byBpbml0aWFsaXplIGNvbm5lY3RvciB3aXRoIGRybVxuIik7CisJCQly
+ZXR1cm4gcmV0OworCQl9CiAKLQlkcm1fY29ubmVjdG9yX2hlbHBlcl9hZGQoY29ubmVjdG9yLAot
+CQkJCSAmYW5hbG9naXhfZHBfY29ubmVjdG9yX2hlbHBlcl9mdW5jcyk7Ci0JZHJtX21vZGVfY29u
+bmVjdG9yX2F0dGFjaF9lbmNvZGVyKGNvbm5lY3RvciwgZW5jb2Rlcik7CisJCWRybV9jb25uZWN0
+b3JfaGVscGVyX2FkZChjb25uZWN0b3IsCisJCQkJCSAmYW5hbG9naXhfZHBfY29ubmVjdG9yX2hl
+bHBlcl9mdW5jcyk7CisJCWRybV9tb2RlX2Nvbm5lY3Rvcl9hdHRhY2hfZW5jb2Rlcihjb25uZWN0
+b3IsIGVuY29kZXIpOworCX0KIAogCS8qCiAJICogTk9URTogdGhlIGNvbm5lY3RvciByZWdpc3Ry
+YXRpb24gaXMgaW1wbGVtZW50ZWQgaW4gYW5hbG9naXgKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9leHlub3MvZXh5bm9zX2RwLmMgYi9kcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19k
+cC5jCmluZGV4IDMzMzE5YTg1OGYzYS4uOTY0ODMxZGFiMTAyIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9leHlub3Mv
+ZXh5bm9zX2RwLmMKQEAgLTI0NCw2ICsyNDQsNyBAQCBzdGF0aWMgaW50IGV4eW5vc19kcF9wcm9i
+ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCiAJLyogVGhlIHJlbW90ZSBwb3J0IGNh
+biBiZSBlaXRoZXIgYSBwYW5lbCBvciBhIGJyaWRnZSAqLwogCWRwLT5wbGF0X2RhdGEucGFuZWwg
+PSBwYW5lbDsKKwlkcC0+cGxhdF9kYXRhLnNraXBfY29ubmVjdG9yID0gISFicmlkZ2U7CiAJZHAt
+PnB0bl9icmlkZ2UgPSBicmlkZ2U7CiAKIG91dDoKZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2Jy
+aWRnZS9hbmFsb2dpeF9kcC5oIGIvaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmgKaW5k
+ZXggNTUxOGZjNzVkZDZlLi43MTFmZmY5YjY4MDMgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvZHJtL2Jy
+aWRnZS9hbmFsb2dpeF9kcC5oCisrKyBiL2luY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5o
+CkBAIC0zMSw2ICszMSw3IEBAIHN0cnVjdCBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgewogCXN0cnVj
+dCBkcm1fcGFuZWwgKnBhbmVsOwogCXN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcjsKIAlzdHJ1
+Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yOworCWJvb2wgc2tpcF9jb25uZWN0b3I7CiAKIAlp
+bnQgKCpwb3dlcl9vbikoc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAqKTsKIAlpbnQgKCpw
+b3dlcl9vZmYpKHN0cnVjdCBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgKik7Ci0tIAoyLjE1LjAKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
