@@ -1,84 +1,56 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [PATCH] soc: rockchip: disable jtag switching for RK3128 SoCs
-Date: Mon, 5 Mar 2018 22:39:04 +0800
-Message-ID: <7020f92d-cc0e-745e-713b-3aa847b7e939@rock-chips.com>
+Date: Mon, 05 Mar 2018 15:42:11 +0100
+Message-ID: <1633972.b4bkohDpDd@phil>
 References: <20180302122031.17426-1-heiko@sntech.de>
+ <7020f92d-cc0e-745e-713b-3aa847b7e939@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180302122031.17426-1-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, Xiao Yao <xiaoyao@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <7020f92d-cc0e-745e-713b-3aa847b7e939-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018/3/2 20:20, Heiko Stuebner wrote:
-> From: Xiao Yao <xiaoyao@rock-chips.com>
-> 
-> Disable IO function switching between sdmmc and jtag
-> for RK3128 SoCs.
-> 
+Hi Shawn,
 
-I acked this on the vendor kernel tree, so FWIW:
+Am Montag, 5. M=E4rz 2018, 15:39:04 CET schrieb Shawn Lin:
+> On 2018/3/2 20:20, Heiko Stuebner wrote:
+> > From: Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > =
 
-Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+> > Disable IO function switching between sdmmc and jtag
+> > for RK3128 SoCs.
+> > =
 
-Hope this is one of the final patches for that, as I would
-revive IO function switching between sdmmc and jtag for newer
-SoCs after addressing the problem from HW level.
+> =
 
+> I acked this on the vendor kernel tree, so FWIW:
+> =
 
+> Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> =
 
-> Signed-off-by: Xiao Yao <xiaoyao@rock-chips.com>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->   drivers/soc/rockchip/grf.c | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-> index dd81b87d79f0..96882ffde67e 100644
-> --- a/drivers/soc/rockchip/grf.c
-> +++ b/drivers/soc/rockchip/grf.c
-> @@ -43,6 +43,17 @@ static const struct rockchip_grf_info rk3036_grf __initconst = {
->   	.num_values = ARRAY_SIZE(rk3036_defaults),
->   };
->   
-> +#define RK3128_GRF_SOC_CON0		0x140
-> +
-> +static const struct rockchip_grf_value rk3128_defaults[] __initconst = {
-> +	{ "jtag switching", RK3128_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 8) },
-> +};
-> +
-> +static const struct rockchip_grf_info rk3128_grf __initconst = {
-> +	.values = rk3128_defaults,
-> +	.num_values = ARRAY_SIZE(rk3128_defaults),
-> +};
-> +
->   #define RK3228_GRF_SOC_CON6		0x418
->   
->   static const struct rockchip_grf_value rk3228_defaults[] __initconst = {
-> @@ -102,6 +113,9 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
->   	{
->   		.compatible = "rockchip,rk3036-grf",
->   		.data = (void *)&rk3036_grf,
-> +	}, {
-> +		.compatible = "rockchip,rk3128-grf",
-> +		.data = (void *)&rk3128_grf,
->   	}, {
->   		.compatible = "rockchip,rk3228-grf",
->   		.data = (void *)&rk3228_grf,
-> 
+> Hope this is one of the final patches for that, as I would
+> revive IO function switching between sdmmc and jtag for newer
+> SoCs after addressing the problem from HW level.
+
+the main problem we had with that was that the  mmc-subsystem
+somehow definitly didn't like it when the controller pins where pulled
+out from under it on card eject.
+
+But of course, if you can get this solved by hw somehow, that
+would be pretty cool :-)
 
 
--- 
-Best Regards
-Shawn Lin
+Heiko
