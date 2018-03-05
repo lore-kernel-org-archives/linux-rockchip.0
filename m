@@ -1,70 +1,106 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v4 31/38] drm/rockchip: analogix_dp: Do not call Analogix code before bind
-Date: Mon,  5 Mar 2018 23:23:23 +0100
-Message-ID: <20180305222324.5872-32-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v4 24/38] drm/bridge: analogix_dp: Fix incorrect operations
+ with register ANALOGIX_DP_FUNC_EN_1
+Date: Mon,  5 Mar 2018 23:23:16 +0100
+Message-ID: <20180305222324.5872-25-enric.balletbo@collabora.com>
 References: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180305222324.5872-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, m.szyprowski@samsung.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180305222324.5872-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, orjan.eide-5wv7dgnIgG8@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hshi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tomasz Figa <tfiga@chromium.org>
+From: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Driver callbacks, such as system suspend or resume can be called any
-time, specifically they can be called before the component bind
-callback. Let's use dp->adp pointer as a safeguard and skip calling
-Analogix entry points if it is an ERR_PTR().
+Register ANALOGIX_DP_FUNC_EN_1(offset 0x18), Rockchip is different to
+Exynos:
 
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+on Exynos edp phy,
+BIT 7		MASTER_VID_FUNC_EN_N
+BIT 6		reserved
+BIT 5		SLAVE_VID_FUNC_EN_N
+
+on Rockchip edp phy,
+BIT 7		reserved
+BIT 6		RK_VID_CAP_FUNC_EN_N
+BIT 5		RK_VID_FIFO_FUNC_EN_N
+
+So, we should do some private operations to Rockchip.
+
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: zain wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Thierry Escande <thierry.escande-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 19 ++++++++++++++-----
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h |  2 ++
+ 2 files changed, 16 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 23317a2269e1..6d45d62466b3 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -368,6 +368,8 @@ static void rockchip_dp_unbind(struct device *dev, struct device *master,
- 	analogix_dp_unbind(dp->adp);
- 	rockchip_drm_psr_unregister(&dp->encoder);
- 	dp->encoder.funcs->destroy(&dp->encoder);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 02ab1aaa9993..4eae206ec31b 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -126,9 +126,14 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
+ 	analogix_dp_stop_video(dp);
+ 	analogix_dp_enable_video_mute(dp, 0);
+ 
+-	reg = MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N |
+-		AUD_FIFO_FUNC_EN_N | AUD_FUNC_EN_N |
+-		HDCP_FUNC_EN_N | SW_FUNC_EN_N;
++	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
++		reg = RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N |
++			SW_FUNC_EN_N;
++	else
++		reg = MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N |
++			AUD_FIFO_FUNC_EN_N | AUD_FUNC_EN_N |
++			HDCP_FUNC_EN_N | SW_FUNC_EN_N;
 +
-+	dp->adp = ERR_PTR(-ENODEV);
- }
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
  
- static const struct component_ops rockchip_dp_component_ops = {
-@@ -391,6 +393,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 		return -ENOMEM;
+ 	reg = SSC_FUNC_EN_N | AUX_FUNC_EN_N |
+@@ -971,8 +976,12 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp)
+ 	u32 reg;
  
- 	dp->dev = dev;
-+	dp->adp = ERR_PTR(-ENODEV);
- 	dp->plat_data.panel = panel;
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
+-	reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
+-	reg |= MASTER_VID_FUNC_EN_N;
++	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
++		reg &= ~(RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N);
++	} else {
++		reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
++		reg |= MASTER_VID_FUNC_EN_N;
++	}
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
  
- 	ret = rockchip_dp_of_probe(dp);
-@@ -414,6 +417,9 @@ static int rockchip_dp_suspend(struct device *dev)
- {
- 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_VIDEO_CTL_10);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+index b633a4a5082a..0cf27c731727 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+@@ -127,7 +127,9 @@
  
-+	if (IS_ERR(dp->adp))
-+		return 0;
-+
- 	return analogix_dp_suspend(dp->adp);
- }
- 
-@@ -421,6 +427,9 @@ static int rockchip_dp_resume(struct device *dev)
- {
- 	struct rockchip_dp_device *dp = dev_get_drvdata(dev);
- 
-+	if (IS_ERR(dp->adp))
-+		return 0;
-+
- 	return analogix_dp_resume(dp->adp);
- }
- #endif
+ /* ANALOGIX_DP_FUNC_EN_1 */
+ #define MASTER_VID_FUNC_EN_N			(0x1 << 7)
++#define RK_VID_CAP_FUNC_EN_N			(0x1 << 6)
+ #define SLAVE_VID_FUNC_EN_N			(0x1 << 5)
++#define RK_VID_FIFO_FUNC_EN_N			(0x1 << 5)
+ #define AUD_FIFO_FUNC_EN_N			(0x1 << 4)
+ #define AUD_FUNC_EN_N				(0x1 << 3)
+ #define HDCP_FUNC_EN_N				(0x1 << 2)
 -- 
 2.16.1
