@@ -1,96 +1,47 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v4 15/38] drm/bridge: analogix_dp: Ensure edp is disabled
- when shutting down the panel
-Date: Tue, 6 Mar 2018 09:49:45 +0100
-Message-ID: <4d0e97f2-985c-fe04-9390-45ea60f3d731@collabora.com>
-References: <20180305222324.5872-1-enric.balletbo@collabora.com>
- <CGME20180305222414epcas5p4bdc22ede027606945c97d3429c3bd10c@epcas5p4.samsung.com>
- <20180305222324.5872-16-enric.balletbo@collabora.com>
- <3b9537bb-0471-775e-d43b-1f1ccd46b94c@samsung.com>
+From: Daniel Schultz <d.schultz@phytec.de>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add dp83867 CLK_OUT muxing
+Date: Tue, 6 Mar 2018 10:59:54 +0100
+Message-ID: <fe1d445e-e9ac-452f-e990-d4bc17bd3355@phytec.de>
+References: <1520253911-46218-1-git-send-email-d.schultz@phytec.de>
+ <3380975.Amu1WGHSQ5@diego> <2707703.8mZIocJ1Ne@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3b9537bb-0471-775e-d43b-1f1ccd46b94c@samsung.com>
-Content-Language: en-GB
+In-Reply-To: <2707703.8mZIocJ1Ne@diego>
+Content-Language: de-DE
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marek Szyprowski <m.szyprowski@samsung.com>, architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, w.egorov@phytec.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marek,
-
-On 06/03/18 08:35, Marek Szyprowski wrote:
-> Hi All,
-> 
-> This is the patch, which introduces the issue I've pointed here:
-> 
-> https://lists.freedesktop.org/archives/dri-devel/2018-March/167794.html
-> 
-> On 2018-03-05 23:23, Enric Balletbo i Serra wrote:
->> From: Lin Huang <hl@rock-chips.com>
->>
->> When panel is shut down, we should make sure edp can be disabled to avoid
->> undefined behavior.
->>
->> Cc: Stéphane Marchesin <marcheu@chromium.org>
->> Signed-off-by: Lin Huang <hl@rock-chips.com>
->> Signed-off-by: zain wang <wzz@rock-chips.com>
->> Signed-off-by: Sean Paul <seanpaul@chromium.org>
->> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
->> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> ---
->>
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++++
->>   1 file changed, 11 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 92fb9a072cb6..9b7d530ad24c 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -1160,6 +1160,12 @@ static int analogix_dp_set_bridge(struct
->> analogix_dp_device *dp)
->>         pm_runtime_get_sync(dp->dev);
->>   +    ret = clk_prepare_enable(dp->clock);
->> +    if (ret < 0) {
->> +        DRM_ERROR("Failed to prepare_enable the clock clk [%d]\n", ret);
->> +        goto out_dp_clk_pre;
->> +    }
->> +
->>       if (dp->plat_data->power_on)
->>           dp->plat_data->power_on(dp->plat_data);
->>   @@ -1191,6 +1197,8 @@ static int analogix_dp_set_bridge(struct
->> analogix_dp_device *dp)
->>       phy_power_off(dp->phy);
->>       if (dp->plat_data->power_off)
->>           dp->plat_data->power_off(dp->plat_data);
->> +    clk_disable_unprepare(dp->clock);
->> +out_dp_clk_pre:
->>       pm_runtime_put_sync(dp->dev);
->>         return ret;
->> @@ -1234,10 +1242,13 @@ static void analogix_dp_bridge_disable(struct
->> drm_bridge *bridge)
->>         disable_irq(dp->irq);
->>       phy_power_off(dp->phy);
->> +    analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
-> 
-> In case of Exynos DP, external PHY is used to power the DP block, so no
-> register access should be performed after phy_power_off(). Please move
-> analogix_dp_set_analog_power_down() before phy_power_off().
-> 
-
-Oh, sorry, I missed that change, I'll include in next version, but I will wait a
-little bit more before send for if I receive feedback on the others patches.
+Hi,
 
 
->>         if (dp->plat_data->power_off)
->>           dp->plat_data->power_off(dp->plat_data);
->>   +    clk_disable_unprepare(dp->clock);
->> +
->>       pm_runtime_put_sync(dp->dev);
->>         ret = analogix_dp_prepare_panel(dp, false, true);
-> 
-> Best regards
-Enric
+On 03/05/2018 10:08 PM, Heiko Stübner wrote:
+> Am Montag, 5. März 2018, 21:25:30 CET schrieb Heiko Stübner:
+>> Am Montag, 5. März 2018, 13:45:11 CET schrieb Daniel Schultz:
+>>> The CLK_O_SEL default is synchronous to XI input clock, which is 25 MHz.
+>>> Set CLK_O_SEL to channel A transmit clock so we have 125 MHz on CLK_OUT.
+>>>
+>>> Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
+>> applied for 4.17
+> had to move it to 4.18 though.
+>
+> The change to the dt-binding header goes through the networking
+> tree and will only get merged for 4.17-rc1 .
+>
+> So devicetree changes in a different branch aren't available at this
+> point.
+>
+> One commonly practiced alternative is that you provide a v2
+> with the actual hex values instead of the constants for 4.17
+> and a follow-up patch replacing them with the constants
+> that I can apply for 4.18.
+It's not so urgent because the RK818 PMIC currently does not boot and 
+the patch for this problem is also pending.
+
+-- 
+Mit freundlichen Grüßen,
+With best regards,
+   Daniel Schultz
