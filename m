@@ -1,45 +1,93 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: remove keep-power-in-suspend from sdhci
- of rk3399-sapphire
-Date: Tue,  6 Mar 2018 15:09:13 +0800
-Message-ID: <1520320153-192176-1-git-send-email-shawn.lin@rock-chips.com>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [PATCH v4 15/38] drm/bridge: analogix_dp: Ensure edp is
+ disabled when shutting down the panel
+Date: Tue, 06 Mar 2018 08:35:28 +0100
+Message-ID: <3b9537bb-0471-775e-d43b-1f1ccd46b94c@samsung.com>
+References: <20180305222324.5872-1-enric.balletbo@collabora.com>
+        <CGME20180305222414epcas5p4bdc22ede027606945c97d3429c3bd10c@epcas5p4.samsung.com>
+        <20180305222324.5872-16-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <20180305222324.5872-16-enric.balletbo@collabora.com>
+Content-language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-sdhci for rk3399-sapphire works for eMMC but keep-power-in-suspend
-is an optional property for SDIO.
+Hi All,
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+This is the patch, which introduces the issue I've pointed here:
 
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+https://lists.freedesktop.org/archives/dri-devel/2018-March/167794.html
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index f7157c1..e5daed7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -541,7 +541,6 @@
- 
- &sdhci {
- 	bus-width = <8>;
--	keep-power-in-suspend;
- 	mmc-hs400-1_8v;
- 	mmc-hs400-enhanced-strobe;
- 	non-removable;
+On 2018-03-05 23:23, Enric Balletbo i Serra wrote:
+> From: Lin Huang <hl@rock-chips.com>
+>
+> When panel is shut down, we should make sure edp can be disabled to avoid
+> undefined behavior.
+>
+> Cc: Stéphane Marchesin <marcheu@chromium.org>
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> Signed-off-by: zain wang <wzz@rock-chips.com>
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+>
+>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index 92fb9a072cb6..9b7d530ad24c 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -1160,6 +1160,12 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+>   
+>   	pm_runtime_get_sync(dp->dev);
+>   
+> +	ret = clk_prepare_enable(dp->clock);
+> +	if (ret < 0) {
+> +		DRM_ERROR("Failed to prepare_enable the clock clk [%d]\n", ret);
+> +		goto out_dp_clk_pre;
+> +	}
+> +
+>   	if (dp->plat_data->power_on)
+>   		dp->plat_data->power_on(dp->plat_data);
+>   
+> @@ -1191,6 +1197,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+>   	phy_power_off(dp->phy);
+>   	if (dp->plat_data->power_off)
+>   		dp->plat_data->power_off(dp->plat_data);
+> +	clk_disable_unprepare(dp->clock);
+> +out_dp_clk_pre:
+>   	pm_runtime_put_sync(dp->dev);
+>   
+>   	return ret;
+> @@ -1234,10 +1242,13 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
+>   
+>   	disable_irq(dp->irq);
+>   	phy_power_off(dp->phy);
+> +	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
+
+In case of Exynos DP, external PHY is used to power the DP block, so no
+register access should be performed after phy_power_off(). Please move
+analogix_dp_set_analog_power_down() before phy_power_off().
+
+>   
+>   	if (dp->plat_data->power_off)
+>   		dp->plat_data->power_off(dp->plat_data);
+>   
+> +	clk_disable_unprepare(dp->clock);
+> +
+>   	pm_runtime_put_sync(dp->dev);
+>   
+>   	ret = analogix_dp_prepare_panel(dp, false, true);
+
+Best regards
 -- 
-1.9.1
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
