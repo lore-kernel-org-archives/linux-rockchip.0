@@ -1,57 +1,46 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [RESEND PATCH v6 13/14] iommu/rockchip: Add runtime PM support
-Date: Tue, 6 Mar 2018 11:04:48 +0900
-Message-ID: <CAAFQd5DCGgFWvpfFgkP-L+4WC9HRyqtCHiTUGRpA5PGx-QgpLg@mail.gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH v6 09/14] dt-bindings: iommu/rockchip: Add clock
+	property
+Date: Mon, 5 Mar 2018 20:27:42 -0600
+Message-ID: <20180306022742.yfx2ond45orzhqiy@rob-hp-laptop>
 References: <20180301101837.27969-1-jeffy.chen@rock-chips.com>
- <20180301101837.27969-14-jeffy.chen@rock-chips.com> <CAAFQd5D2SY2RV9HLTeTQigfnVCkF9wDq74_+t3OV2YEb9wJtqg@mail.gmail.com>
- <5A9DF59E.60900@rock-chips.com>
+	<20180301101837.27969-10-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5A9DF59E.60900@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: JeffyChen <jeffy.chen@rock-chips.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Ricky Liang <jcliang@chromium.org>, Robin Murphy <robin.murphy@arm.com>, simon xue <xxm@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, open@263.net, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>, list@263.net:IOMMU DRIVERS
-        <iommu@lists.linux-foundation.org>, Joerg Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180301101837.27969-10-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+On Thu, Mar 01, 2018 at 06:18:32PM +0800, Jeffy Chen wrote:
+> Add clock property, since we are going to control clocks in rockchip
+> iommu driver.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v6: None
 
-On Tue, Mar 6, 2018 at 10:57 AM, JeffyChen <jeffy.chen@rock-chips.com> wrote:
-> Hi Tomasz,
->
-> Thanks for your reply.
->
-> On 03/05/2018 09:49 PM, Tomasz Figa wrote:
->>>
->>> >  struct rk_iommudata {
->>> >+       struct device_link *link; /* runtime PM link from IOMMU to
->>> > master */
->>
->> Kerneldoc comment for the struct could be added instead.
->
-> i saw this in the kerneldoc:
->
-> * An MMU device exists alongside a busmaster device, both are in the same
->   power domain.  The MMU implements DMA address translation for the
-> busmaster
->   device and shall be runtime resumed and kept active whenever and as long
->   as the busmaster device is active.  The busmaster device's driver shall
->   not bind before the MMU is bound.  To achieve this, a device link with
->   runtime PM integration is added from the busmaster device (consumer)
->   to the MMU device (supplier).  The effect with regards to runtime PM
->   is the same as if the MMU was the parent of the master device.
->
->
-> maybe we can use something like:
-> device link with runtime PM integration from the master (consumer) to the
-> IOMMU (supplier).
+Really? There was a different number of clocks before.
 
-Sorry, I meant that kerneldoc comment style could be used to document
-this struct.
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  Documentation/devicetree/bindings/iommu/rockchip,iommu.txt | 7 +++++++
+>  1 file changed, 7 insertions(+)
 
-https://www.kernel.org/doc/html/v4.15/doc-guide/kernel-doc.html#writing-kernel-doc-comments
-
-Best regards,
-Tomasz
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>                                 
