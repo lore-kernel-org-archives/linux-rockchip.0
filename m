@@ -1,162 +1,125 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v7 13/14] iommu/rockchip: Add runtime PM support
-Date: Tue, 6 Mar 2018 19:07:30 +0900
-Message-ID: <CAAFQd5DPewKda7ThqMGKRvnArZ0X8ChD10E06nLZaNa-SBNdwA@mail.gmail.com>
-References: <20180306030252.3197-1-jeffy.chen@rock-chips.com>
-	<20180306032759.29069-1-jeffy.chen@rock-chips.com>
-	<20180306032759.29069-4-jeffy.chen@rock-chips.com>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [PATCH v4 00/38] DRM Rockchip rk3399 (Kevin)
+Date: Tue, 06 Mar 2018 11:15:52 +0100
+Message-ID: <568969f3-0b93-05ef-953d-af1eebdac87e@samsung.com>
+References: <CGME20180305222337epcas3p22a4f5c32c5622d89f6e649b26c0a6043@epcas3p2.samsung.com>
+ <20180305222324.5872-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180306032759.29069-4-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
-	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20180305222324.5872-1-enric.balletbo@collabora.com>
+Content-language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: wzz@rock-chips.com, hl@rock-chips.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, hshi@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
-
-It looks like I missed some details of how runtime PM enable works
-before, so we might be able to simplify things. Sorry for not getting
-things right earlier.
-
-On Tue, Mar 6, 2018 at 12:27 PM, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> When the power domain is powered off, the IOMMU cannot be accessed and
-> register programming must be deferred until the power domain becomes
-> enabled.
->
-> Add runtime PM support, and use runtime PM device link from IOMMU to
-> master to startup and shutdown IOMMU.
->
-> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->
-> Changes in v7:
-> Add WARN_ON in irq isr, and modify iommu archdata comment.
->
-> Changes in v6: None
-> Changes in v5:
-> Avoid race about pm_runtime_get_if_in_use() and pm_runtime_enabled().
->
-> Changes in v4: None
-> Changes in v3:
-> Only call startup() and shutdown() when iommu attached.
-> Remove pm_mutex.
-> Check runtime PM disabled.
-> Check pm_runtime in rk_iommu_irq().
->
-> Changes in v2: None
->
->  drivers/iommu/rockchip-iommu.c | 189 ++++++++++++++++++++++++++++++++---------
->  1 file changed, 148 insertions(+), 41 deletions(-)
->
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 2448a0528e39..db08978203f7 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -22,6 +22,7 @@
->  #include <linux/of_iommu.h>
->  #include <linux/of_platform.h>
->  #include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
->  #include <linux/slab.h>
->  #include <linux/spinlock.h>
->
-> @@ -105,7 +106,14 @@ struct rk_iommu {
->         struct iommu_domain *domain; /* domain to which iommu is attached */
->  };
->
-> +/**
-> + * struct rk_iommudata - iommu archdata of master device.
-> + * @link:      device link with runtime PM integration from the master
-> + *             (consumer) to the IOMMU (supplier).
-> + * @iommu:     IOMMU of the master device.
-> + */
->  struct rk_iommudata {
-> +       struct device_link *link;
->         struct rk_iommu *iommu;
->  };
->
-> @@ -518,7 +526,13 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
->         u32 int_status;
->         dma_addr_t iova;
->         irqreturn_t ret = IRQ_NONE;
-> -       int i;
-> +       bool need_runtime_put;
-> +       int i, err;
-> +
-> +       err = pm_runtime_get_if_in_use(iommu->dev);
-> +       if (WARN_ON(err <= 0 && err != -EINVAL))
-> +               return ret;
-> +       need_runtime_put = err > 0;
-
-Actually, for our purposes, we can assume that runtime PM enable
-status can be only changed by the driver itself. Looking at the LXR,
-PM core also calls __pm_runtime_disable() before calling
-.suspend_late() callback and pm_runtime_enable() after calling
-.resume_early() callback, but we should be able to ignore this,
-because we handle things in .suspend() callback in this driver.
-
-With this assumption in mind, all we need to do here is:
-
-if (WARN_ON(!pm_runtime_get_if_in_use(iommu->dev)))
-    return 0;
-
->
->         WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
->
-> @@ -570,6 +584,9 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
->
->         clk_bulk_disable(iommu->num_clocks, iommu->clocks);
->
-> +       if (need_runtime_put)
-> +               pm_runtime_put(iommu->dev);
-
-if (pm_runtime_enabled())
-        pm_runtime_put(iommu->dev);
-
-> +
->         return ret;
->  }
->
-> @@ -611,10 +628,20 @@ static void rk_iommu_zap_iova(struct rk_iommu_domain *rk_domain,
->         spin_lock_irqsave(&rk_domain->iommus_lock, flags);
->         list_for_each(pos, &rk_domain->iommus) {
->                 struct rk_iommu *iommu;
-> +               int ret;
-> +
->                 iommu = list_entry(pos, struct rk_iommu, node);
-> -               WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
-> -               rk_iommu_zap_lines(iommu, iova, size);
-> -               clk_bulk_disable(iommu->num_clocks, iommu->clocks);
-> +
-> +               /* Only zap TLBs of IOMMUs that are powered on. */
-> +               ret = pm_runtime_get_if_in_use(iommu->dev);
-> +               if (ret > 0 || ret == -EINVAL) {
-
-if (pm_runtime_get_if_in_use(iommu->dev)) {
-
-> +                       WARN_ON(clk_bulk_enable(iommu->num_clocks,
-> +                                               iommu->clocks));
-> +                       rk_iommu_zap_lines(iommu, iova, size);
-> +                       clk_bulk_disable(iommu->num_clocks, iommu->clocks);
-
-        if (pm_runtime_enabled(iommu->dev))
-                pm_runtime_put(iommu->dev);
-
-And so on, in other places.
-
-Really sorry for the confusion before.
-
-Best regards,
-Tomasz
+SGkgRW5yaWMsCgpPbiAyMDE4LTAzLTA1IDIzOjIyLCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdy
+b3RlOgo+IEhpLAo+Cj4gVGhpcyBwYXRjaHNldCBpbmNsdWRlcyBjbGVhbnVwcywgaW1wcm92ZW1l
+bnRzLCBhbmQgYnVnIGZpeGVzIGZvcgo+IFJvY2tjaGlwIERSTSBkcml2ZXIgYW5kIFBTUiBzdXBw
+b3J0Lgo+Cj4gVGhpcyBuZXcgdmVyc2lvbiBpcyB0aGUgc2FtZSBhcyBiZWZvcmUgYnV0IHJlYmFz
+ZWQgb24gdG9wIG9mCj4gZHJtLW1pc2MtbmV4dCBwbHVzIHRoZSBNYXJlayBwYXRjaGVzIHRoYXQg
+Zml4ZXMgQ2hyb21lYm9vazIgUGVhY2gtUGl0IFsxXQo+IGFuZCB0aGUgbGF0ZXN0IHNlcmllcyBv
+ZiBSb2NrY2hpcCByazMzOTkgZURQIHN1cHBvcnQgWzJdLgo+Cj4gWzFdIGh0dHBzOi8vd3d3LnNw
+aW5pY3MubmV0L2xpc3RzL2RyaS1kZXZlbC9tc2cxNjc4MDQuaHRtbAo+IFsyXSBodHRwczovL3d3
+dy5zcGluaWNzLm5ldC9saXN0cy9kcmktZGV2ZWwvbXNnMTY3NzcwLmh0bWwKClRoYW5rcyBmb3Ig
+djQgb2YgdGhpcyBwYXRjaHNldC4KCkFmdGVyIGZpeGluZyB0aGUgaXNzdWUgcG9pbnRlZCBpbiB0
+aGUgcGF0Y2ggMTUvMzgsIGV2ZXJ5dGhpbmcgd29ya3MgZmluZSBvbgpFeHlub3M1MjUwLWJhc2Vk
+IENocm9tZWJvb2sgU25vdyBhbmQgRXh5bm9zNTQyMC1iYXNlZCBDaHJvbWVib29rMiBQZWFjaC1Q
+aXQKYm9hcmRzLiBZb3UgY2FuIGFkZCBteToKClRlc3RlZC1ieTogTWFyZWsgU3p5cHJvd3NraSA8
+bS5zenlwcm93c2tpQHNhbXN1bmcuY29tPgoKPiBSZWdhcmRzLAo+ICAgRW5yaWMKPgo+IENoYW5n
+ZXMgaW4gdjQ6Cj4gLSBSZWJhc2VkIGFsbCBvbiB0b3Agb2YgZHJtLW1pc2MtbmV4dAo+IC0gUmVt
+b3ZlZCB0aGUgZm9sbG93aW5nIHBhdGNoZXMgYXMgYXJlIGFscmVhZHkgYXBwbGllZC4KPiAgICBb
+UEFUQ0ggdjMgMDEvNDNdIGRybS9yb2NrY2hpcDogR2V0IHJpZCBvZiB1bm5lY2Vzc2FyeSBzdHJ1
+Y3QgZmllbGRzCj4gICAgW1BBVENIIHYzIDAyLzQzXSBkcm0vcm9ja2NoaXA6IHN1cHBvcnQgcHJp
+bWUgaW1wb3J0IHNnIHRhYmxlCj4gICAgW1BBVENIIHYzIDAzLzQzXSBkcm0vcm9ja2NoaXA6IFJl
+c3BlY3QgcGFnZSBvZmZzZXQgZm9yIFBSSU1FIG1tYXAKPiAgICBjYWxscwo+IC0gUmVtb3ZlZCB0
+aGUgZm9sbG93aW5nIHBhdGNoZXMgYXMgbm93IGFyZSBwYXJ0IG9mIGFub3RoZXIgcGF0Y2hzZXQK
+PiAgICBbUEFUQ0ggdjMgMDUvNDNdIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24ndCBwb3dl
+ciBicmlkZ2UgaW4KPiAgICBhbmFsb2dpeF9kcF9iaW5kCj4gICAgW1BBVENIIHYzIDMzLzQzXSBk
+cm0vcGFuZWw6IHNpbXBsZTogQ2hhbmdlIG1vZGUgZm9yIFNoYXJwIGxxMTIzcDFqeDMxCj4KPiBD
+aGFuZ2VzIGluIHYzOgo+IC0gQWRkcmVzc2VkIHNvbWUgb2YgdGhlIGNvbW1lbnRzIGZyb20gU2Vh
+biBvbiB0aGUgdjIKPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSBBIGZldyBwYXRjaGVzIGhhdmUgYmVl
+biByZXBsYWNlZCBieSBuZXdlciBhbmQgY2xlYW5lciB2ZXJzaW9ucyBmcm9tCj4gICAgdGhlIENo
+cm9tZU9TIGtlcm5lbCBnZXJyaXQsIGVzcGVjaWFsbHkgYWJvdXQgZGlzYWxsb3dpbmcgUFNSIGZv
+ciB0aGUKPiAgICB3aG9sZSBhdG9taWMgY29tbWl0Lgo+Cj4KPiBEb3VnbGFzIEFuZGVyc29uICg0
+KToKPiAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmVvcmRlciBwbGF0X2RhdGEtPnBvd2Vy
+X29mZiB0byBoYXBwZW4gc29vbmVyCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
+cmx5IGxvZyBBVVggQ0ggZXJyb3JzCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFByb3Bl
+cmx5IGRpc2FibGUgYXV4IGNoYW4gcmV0cmllcyBvbiByb2NrY2hpcAo+ICAgIGRybS9icmlkZ2U6
+IGFuYWxvZ2l4X2RwOiBTcGxpdCB0aGUgcGxhdGZvcm0tc3BlY2lmaWMgcG93ZXJvbiBpbiB0d28K
+PiAgICAgIHBhcnRzCj4KPiBLcmlzdGlhbiBILiBLcmlzdGVuc2VuICgxKToKPiAgICBkcm0vcm9j
+a2NoaXA6IERpc2FibGUgUFNSIG9uIGlucHV0IGV2ZW50cwo+Cj4gTGluIEh1YW5nICg2KToKPiAg
+ICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogTW92ZSBlbmFibGUgdmlkZW8gaW50byBjb25maWdf
+dmlkZW8oKQo+ICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBDaGVjayBBVVhfRU4gc3RhdHVz
+IHdoZW4gZG9pbmcgQVVYIHRyYW5zZmVyCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEVu
+c3VyZSBlZHAgaXMgZGlzYWJsZWQgd2hlbiBzaHV0dGluZyBkb3duIHRoZQo+ICAgICAgcGFuZWwK
+PiAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRXh0ZW5kIGhwZCBjaGVjayB0aW1lIHRvIDEw
+MG1zCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IENoZWNrIGRwY2Qgd3JpdGUvcmVhZCBz
+dGF0dXMKPiAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogUmVzZXQgYXV4IGNoYW5uZWwgaWYg
+YW4gZXJyb3Igb2NjdXJyZWQKPgo+IE1hcmsgWWFvICgxKToKPiAgICBkcm0vcm9ja2NoaXA6IHBy
+ZSBkaXRoZXIgZG93biB3aGVuIG91dHB1dCBicGMgaXMgOGJpdAo+Cj4gU2VhbiBQYXVsICgyKToK
+PiAgICBkcm0vcm9ja2NoaXA6IERvbid0IHVzZSBhdG9taWMgY29uc3RydWN0cyBmb3IgcHNyCj4g
+ICAgZHJtL3JvY2tjaGlwOiBSZW1vdmUgYW5hbG9naXggcHNyIHdvcmtlcgo+Cj4gVG9tYXN6IEZp
+Z2EgKDcpOgo+ICAgIGRybS9yb2NrY2hpcDogYW5hbG9naXhfZHA6IERvIG5vdCBjYWxsIEFuYWxv
+Z2l4IGNvZGUgYmVmb3JlIGJpbmQKPiAgICBkcm0vcm9ja2NoaXA6IENhbmNlbCBQU1IgZW5hYmxl
+IHdvcmsgYmVmb3JlIGNoYW5naW5nIHRoZSBzdGF0ZQo+ICAgIGRybS9yb2NrY2hpcDogcHNyOiBB
+dm9pZCByZWR1bmRhbnQgY2FsbHMgdG8gLnNldCgpIGNhbGxiYWNrCj4gICAgZHJtL3JvY2tjaGlw
+OiBwc3I6IFNhbml0aXplIHNlbWFudGljcyBvZiBhbGxvdy9kaXNhbGxvdyBBUEkKPiAgICBkcm0v
+cm9ja2NoaXA6IERpc2FibGUgUFNSIGZyb20gcmVib290IG5vdGlmaWVyCj4gICAgZHJtL3JvY2tj
+aGlwOiBEaXNhbGxvdyBQU1IgZm9yIHRoZSB3aG9sZSBhdG9taWMgY29tbWl0Cj4gICAgZHJtL3Jv
+Y2tjaGlwOiBwc3I6IFJlbW92ZSBmbHVzaCBieSBDUlRDCj4KPiBZYWtpciBZYW5nICgxKToKPiAg
+ICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogZGV0ZWN0IFNpbmsgUFNSIHN0YXRlIGFmdGVyIGNv
+bmZpZ3VyaW5nIHRoZQo+ICAgICAgUFNSCj4KPiB6YWluIHdhbmcgKDE2KToKPiAgICBkcm0vYnJp
+ZGdlOiBhbmFsb2dpeF9kcDogc2V0IHBzciBhY3RpdmF0ZS9kZWFjdGl2YXRlIHdoZW4KPiAgICAg
+IGVuYWJsZS9kaXNhYmxlIGJyaWRnZQo+ICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24n
+dCBjaGFuZ2UgcHNyIHdoaWxlIGJyaWRnZSBpcyBkaXNhYmxlZAo+ICAgIGRybS9yb2NrY2hpcDog
+YWRkIG11dGV4IHZvcCBsb2NrCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IGFkZCBmYXN0
+IGxpbmsgdHJhaW4gZm9yIGVEUAo+ICAgIGRybS9yb2NrY2hpcDogT25seSB3YWl0IGZvciBwYW5l
+bCBBQ0sgb24gUFNSIGVudHJ5Cj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IERvbid0IHVz
+ZSBmYXN0IGxpbmsgdHJhaW5pbmcgd2hlbiBwYW5lbCBqdXN0Cj4gICAgICBwb3dlcmVkIHVwCj4g
+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IFJldHJ5IGJyaWRnZSBlbmFibGUgd2hlbiBpdCBm
+YWlsZWQKPiAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogV2FpdCBmb3IgSFBEIHNpZ25hbCBi
+ZWZvcmUgY29uZmlndXJpbmcgbGluawo+ICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBTZXQg
+UERfSU5DX0JHIGZpcnN0IHdoZW4gcG93ZXJpbmcgdXAgZWRwIHBoeQo+ICAgIGRybS9icmlkZ2U6
+IGFuYWxvZ2l4X2RwOiBGaXggaW5jb3JyZWN0IHVzYWdlIG9mIGVuaGFuY2VkIG1vZGUKPiAgICBk
+cm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogRml4IEFVWF9QRCBiaXQgZm9yIFJvY2tjaGlwCj4gICAg
+ZHJtL3JvY2tjaGlwOiBSZXN0b3JlIHBzci0+c3RhdGUgd2hlbiBlbmFibGUvZGlzYWJsZSBwc3Ig
+ZmFpbGVkCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IERvbid0IHVzZSBBTkFMT0dJWF9E
+UF9QTExfQ1RMIHRvIGNvbnRyb2wgcGxsCj4gICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEZp
+eCB0aW1lb3V0IG9mIHZpZGVvIHN0cmVhbWNsayBjb25maWcKPiAgICBkcm0vYnJpZGdlOiBhbmFs
+b2dpeF9kcDogRml4IGluY29ycmVjdCBvcGVyYXRpb25zIHdpdGggcmVnaXN0ZXIKPiAgICAgIEFO
+QUxPR0lYX0RQX0ZVTkNfRU5fMQo+ICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBNb3ZlIGZh
+c3QgbGluayB0cmFpbmluZyBkZXRlY3QgdG8gc2V0X2JyaWRnZQo+Cj4gICBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDQ1MiArKysrKysrKysrKysr
+KysrLS0tLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
+Y29yZS5oIHwgIDE0ICstCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
+Z2l4X2RwX3JlZy5jICB8IDI3NCArKysrKysrKy0tLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5oICB8ICAgNyArCj4gICBkcml2ZXJzL2dwdS9k
+cm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAgICAgICAgICAgICB8ICAgMiArLQo+ICAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICAgfCAgNzMgKystLQo+
+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyAgICAgICAgfCAg
+IDIgKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggICAg
+ICAgIHwgICAzICstCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Zi
+LmMgICAgICAgICB8ICA2MSArKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fcHNyLmMgICAgICAgIHwgMzYxICsrKysrKysrKystLS0tLS0KPiAgIGRyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmggICAgICAgIHwgICA3ICstCj4gICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAgICB8ICA0NyArKy0K
+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggICAgICAgIHwg
+ICAxICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgICAg
+ICAgIHwgICAxICsKPiAgIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAg
+ICAgICAgICAgIHwgICA1ICstCj4gICAxNSBmaWxlcyBjaGFuZ2VkLCA5MTUgaW5zZXJ0aW9ucygr
+KSwgMzk1IGRlbGV0aW9ucygtKQo+CgpCZXN0IHJlZ2FyZHMKLS0gCk1hcmVrIFN6eXByb3dza2ks
+IFBoRApTYW1zdW5nIFImRCBJbnN0aXR1dGUgUG9sYW5kCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
