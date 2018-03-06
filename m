@@ -1,93 +1,46 @@
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: Re: [PATCH v4 15/38] drm/bridge: analogix_dp: Ensure edp is
- disabled when shutting down the panel
-Date: Tue, 06 Mar 2018 08:35:28 +0100
-Message-ID: <3b9537bb-0471-775e-d43b-1f1ccd46b94c@samsung.com>
-References: <20180305222324.5872-1-enric.balletbo@collabora.com>
-        <CGME20180305222414epcas5p4bdc22ede027606945c97d3429c3bd10c@epcas5p4.samsung.com>
-        <20180305222324.5872-16-enric.balletbo@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-Content-Transfer-Encoding: 8bit
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v4 0/3] gpio-keys: Add support for specifying wakeup event action
+Date: Tue,  6 Mar 2018 15:44:15 +0800
+Message-ID: <20180306074418.8879-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <20180305222324.5872-16-enric.balletbo@collabora.com>
-Content-language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: hshi@chromium.org, wzz@rock-chips.com, hl@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, orjan.eide@arm.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+To: linux-kernel@vger.kernel.org
+Cc: briannorris@google.com, heiko@sntech.de, dtor@google.com, dianders@google.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Arvind Yadav <arv>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi All,
 
-This is the patch, which introduces the issue I've pointed here:
+On chromebook kevin, we are using gpio-keys for pen insert event. But
+we only want it to wakeup the system when ejecting the pen.
 
-https://lists.freedesktop.org/archives/dri-devel/2018-March/167794.html
+So we may need to change the interrupt trigger type during suspending.
 
-On 2018-03-05 23:23, Enric Balletbo i Serra wrote:
-> From: Lin Huang <hl@rock-chips.com>
->
-> When panel is shut down, we should make sure edp can be disabled to avoid
-> undefined behavior.
->
-> Cc: Stéphane Marchesin <marcheu@chromium.org>
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
-> Signed-off-by: zain wang <wzz@rock-chips.com>
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
->
->   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++++
->   1 file changed, 11 insertions(+)
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index 92fb9a072cb6..9b7d530ad24c 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1160,6 +1160,12 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
->   
->   	pm_runtime_get_sync(dp->dev);
->   
-> +	ret = clk_prepare_enable(dp->clock);
-> +	if (ret < 0) {
-> +		DRM_ERROR("Failed to prepare_enable the clock clk [%d]\n", ret);
-> +		goto out_dp_clk_pre;
-> +	}
-> +
->   	if (dp->plat_data->power_on)
->   		dp->plat_data->power_on(dp->plat_data);
->   
-> @@ -1191,6 +1197,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
->   	phy_power_off(dp->phy);
->   	if (dp->plat_data->power_off)
->   		dp->plat_data->power_off(dp->plat_data);
-> +	clk_disable_unprepare(dp->clock);
-> +out_dp_clk_pre:
->   	pm_runtime_put_sync(dp->dev);
->   
->   	return ret;
-> @@ -1234,10 +1242,13 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
->   
->   	disable_irq(dp->irq);
->   	phy_power_off(dp->phy);
-> +	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
+Changes in v4:
+Add dt-binding gpio-keys.h, stop saving irq trigger type, add enable/disable wakeup helpers as Dmitry suggested.
+Include dt-binding gpio-keys.h
 
-In case of Exynos DP, external PHY is used to power the DP block, so no
-register access should be performed after phy_power_off(). Please move
-analogix_dp_set_analog_power_down() before phy_power_off().
+Changes in v3:
+Adding more comments as Brian suggested.
 
->   
->   	if (dp->plat_data->power_off)
->   		dp->plat_data->power_off(dp->plat_data);
->   
-> +	clk_disable_unprepare(dp->clock);
-> +
->   	pm_runtime_put_sync(dp->dev);
->   
->   	ret = analogix_dp_prepare_panel(dp, false, true);
+Changes in v2:
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
 
-Best regards
+Jeffy Chen (3):
+  Input: gpio-keys - add support for wakeup event action
+  Input: gpio-keys - allow setting wakeup event action in DT
+  arm64: dts: rockchip: kevin: Avoid wakeup when inserting the pen
+
+ .../devicetree/bindings/input/gpio-keys.txt        |  8 +++
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  3 +
+ drivers/input/keyboard/gpio_keys.c                 | 67 +++++++++++++++++++++-
+ include/dt-bindings/input/gpio-keys.h              | 13 +++++
+ include/linux/gpio_keys.h                          |  2 +
+ 5 files changed, 90 insertions(+), 3 deletions(-)
+ create mode 100644 include/dt-bindings/input/gpio-keys.h
+
 -- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+2.11.0
