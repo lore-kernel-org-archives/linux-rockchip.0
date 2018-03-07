@@ -1,75 +1,63 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v7 09/14] dt-bindings: iommu/rockchip: Add clock property
-Date: Wed, 7 Mar 2018 13:01:37 +0000
-Message-ID: <b7b58e44-82d5-4f7d-5f49-69f8d1a93279@arm.com>
-References: <20180306030252.3197-1-jeffy.chen@rock-chips.com>
-	<20180306032113.22247-1-jeffy.chen@rock-chips.com>
-	<20180306032113.22247-6-jeffy.chen@rock-chips.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH 0/3] Analogix DP fixes for Chromebook2 Peach-Pit
+ (Exynos5420)
+Date: Wed, 7 Mar 2018 16:31:57 +0100
+Message-ID: <de15031b-6508-fda8-13bf-adeede92b806@samsung.com>
+References: <CGME20180305085803eucas1p2ff8ab6037f5158ab338bfe5e6d7d8ccd@eucas1p2.samsung.com>
+ <20180305085741.18896-1-m.szyprowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180306032113.22247-6-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180305085741.18896-1-m.szyprowski@samsung.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Marek Szyprowski <m.szyprowski@samsung.com>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zain Wang <wzz@rock-chips.com>, Haixia Shi <hshi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/03/18 03:21, Jeffy Chen wrote:
-> Add clock property, since we are going to control clocks in rockchip
-> iommu driver.
-
-Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-
-> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
-> 
-> Changes in v7: None
-> Changes in v6:
-> Fix dt-binding as Robin suggested.
-> Use aclk and iface clk as Rob and Robin suggested, and split binding
-> patch.
-> 
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->   Documentation/devicetree/bindings/iommu/rockchip,iommu.txt | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-> index 2098f7732264..6ecefea1c6f9 100644
-> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
-> @@ -14,6 +14,11 @@ Required properties:
->                       "single-master" device, and needs no additional information
->                       to associate with its master device.  See:
->                       Documentation/devicetree/bindings/iommu/iommu.txt
-> +- clocks          : A list of clocks required for the IOMMU to be accessible by
-> +                    the host CPU.
-> +- clock-names     : Should contain the following:
-> +	"iface" - Main peripheral bus clock (PCLK/HCL) (required)
-> +	"aclk"  - AXI bus clock (required)
->   
->   Optional properties:
->   - rockchip,disable-mmu-reset : Don't use the mmu reset operation.
-> @@ -27,5 +32,7 @@ Example:
->   		reg = <0xff940300 0x100>;
->   		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
->   		interrupt-names = "vopl_mmu";
-> +		clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
-> +		clock-names = "aclk", "iface";
->   		#iommu-cells = <0>;
->   	};
-> 
+T24gMDUuMDMuMjAxOCAwOTo1NywgTWFyZWsgU3p5cHJvd3NraSB3cm90ZToKPiBIaSEKPgo+IExh
+c3Qgd2VlayBJIHdhcyBhc2tlZCB0byBjb21tZW50IGEgcGF0Y2ggIltQQVRDSCB2MyAwNS80M10g
+ZHJtL2JyaWRnZToKPiBhbmFsb2dpeF9kcDogRG9uJ3QgcG93ZXIgYnJpZGdlIGluIGFuYWxvZ2l4
+X2RwX2JpbmQiOgo+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAxOTM0OTMv
+Cj4KPiBUaGF0IHBhdGNoIGRvZXMgYWxtb3N0IHRoZSBvcHBvc2l0ZSB0byBteSBpbml0aWFsIGZp
+eCAiW1BBVENIIHYyXQo+IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBLZWVwIFBIWSBwb3dlcmVk
+IGJldHdlZW4gZHJpdmVyIGJpbmQvdW5iaW5kIjoKPiBodHRwczovL3BhdGNod29yay5rZXJuZWwu
+b3JnL3BhdGNoLzEwMjQyNDkzLwo+Cj4gSSBkaWQgc29tZSBmdXJ0aGVyIGludmVzdGlnYXRpb24g
+YmFzZWQgb24gdGhlIHByb3Bvc2VkICJbUEFUQ0ggdjMgMDAvNDNdIERSTQo+IFJvY2tjaGlwIHJr
+MzM5OSAoS2V2aW4pIiBwYXRjaHNldDoKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9h
+cmNoaXZlcy9kcmktZGV2ZWwvMjAxOC1NYXJjaC8xNjc3NzUuaHRtbAo+Cj4gVGhvc2UgcGF0Y2hl
+cyBzZWVtcyB0byBzb2x2ZSBhbHNvIHNvbWUgaXNzdWVzIHdpdGggYW5hbG9naXhfZHAgZHJpdmVy
+IG9uCj4gRXh5bm9zNTQyMCBiYXNlZCBDaHJvbWVib29rMiBQZWFjaC1QSVQgYm9hcmQuCj4KPiBJ
+IGRpZG4ndCBnZXQgYW55IHJlcGx5IGZvciBteSBjb21tZW50cyBhbmQgdW5mb3J0dW5hdGVseSB0
+aGUgbWFpbCBvZgo+IFRoaWVycnkgRXNjYW5kZSwgd2hvIHN1Ym1pdHRlZCB0aGF0IHBhdGNoc2V0
+IGlzIG5vIGxvbmdlciB2YWxpZCwgc28gSQo+IGRlY2lkZWQgdG8gcmVzZW5kIHRoZSBtaW5pbWFs
+IHBhdGNoc2V0IHRoYXQgZml4ZXMgdGhlIGlzc3VlIHdpdGgKPiBDaHJvbWVib29rMiBQZWFjaC1Q
+aXQgYm9hcmQsIHdoaWNoIHdhcyBicm9rZW4gc2luY2UgdjQuMTAga2VybmVsIHJlbGVhc2UuCj4K
+PiBJZiBwb3NzaWJsZSwgcGxlYXNlIGFwcGx5IHRoZW0gYXMgZml4ZXMgZm9yIHY0LjE2LXJjLgo+
+Cj4gVGhpcyBwYXRjaHNldCByZXBsYWNlcyBteSBwcmV2aW91cyBmaXg6Cj4gaHR0cHM6Ly9wYXRj
+aHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDI0MjQ5My8KPgo+IEJlc3QgcmVnYXJkcwo+IE1hcmVr
+IFN6eXByb3dza2kKPiBTYW1zdW5nIFImRCBJbnN0aXR1dGUgUG9sYW5kCj4KPgo+IFBhdGNoIHN1
+bW1hcnk6Cj4KPiBNYXJlayBTenlwcm93c2tpICgyKToKPiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4
+X2RwOiBQb3N0cG9uZSBlbmFibGluZyBydW50aW1lIHBvd2VyIG1hbmFnZW1lbnQKPiAgIGRybS9i
+cmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24ndCBjcmVhdGUgdXNlbGVzcyBjb25uZWN0b3JzCj4KPiB6
+YWluIHdhbmcgKDEpOgo+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IERvbid0IHBvd2VyIGJy
+aWRnZSBpbiBhbmFsb2dpeF9kcF9iaW5kCgpBcHBsaWVkIHRvIGRybS1taXNjLW5leHQuCgpDb3Vs
+ZCBub3QgYXBwbHkgdG8gZHJtLW1pc2MtZml4ZXMgc2luY2UgcGF0Y2hzZXQgZGVwZW5kcyBvbiBw
+YXRjaGVzIGZyb20KZHJtLW1pc2MtbmV4dC4KClJlZ2FyZHMKQW5kcnplagoKCj4gIGRyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgNDUgKysrKysrKysr
+LS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAg
+ICAgICAgICAgICB8ICAxICsKPiAgaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmggICAg
+ICAgICAgICAgICAgICAgfCAgMSArCj4gIDMgZmlsZXMgY2hhbmdlZCwgMjEgaW5zZXJ0aW9ucygr
+KSwgMjYgZGVsZXRpb25zKC0pCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
