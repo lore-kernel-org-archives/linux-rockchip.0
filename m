@@ -1,63 +1,35 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH 0/3] Analogix DP fixes for Chromebook2 Peach-Pit
- (Exynos5420)
-Date: Wed, 7 Mar 2018 16:31:57 +0100
-Message-ID: <de15031b-6508-fda8-13bf-adeede92b806@samsung.com>
-References: <CGME20180305085803eucas1p2ff8ab6037f5158ab338bfe5e6d7d8ccd@eucas1p2.samsung.com>
- <20180305085741.18896-1-m.szyprowski@samsung.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: rockchip-dw-mshc: use consistent clock names
+Date: Wed, 7 Mar 2018 13:31:40 -0600
+Message-ID: <20180307193140.gbccxsp3rxanxjpp@rob-hp-laptop>
+References: <20180301103447.7059-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180305085741.18896-1-m.szyprowski@samsung.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marek Szyprowski <m.szyprowski@samsung.com>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Douglas Anderson <dianders@chromium.org>, Thierry Escande <thierry.escande@collabora.com>, Lin Huang <hl@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zain Wang <wzz@rock-chips.com>, Haixia Shi <hshi@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180301103447.7059-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDUuMDMuMjAxOCAwOTo1NywgTWFyZWsgU3p5cHJvd3NraSB3cm90ZToKPiBIaSEKPgo+IExh
-c3Qgd2VlayBJIHdhcyBhc2tlZCB0byBjb21tZW50IGEgcGF0Y2ggIltQQVRDSCB2MyAwNS80M10g
-ZHJtL2JyaWRnZToKPiBhbmFsb2dpeF9kcDogRG9uJ3QgcG93ZXIgYnJpZGdlIGluIGFuYWxvZ2l4
-X2RwX2JpbmQiOgo+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAxOTM0OTMv
-Cj4KPiBUaGF0IHBhdGNoIGRvZXMgYWxtb3N0IHRoZSBvcHBvc2l0ZSB0byBteSBpbml0aWFsIGZp
-eCAiW1BBVENIIHYyXQo+IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBLZWVwIFBIWSBwb3dlcmVk
-IGJldHdlZW4gZHJpdmVyIGJpbmQvdW5iaW5kIjoKPiBodHRwczovL3BhdGNod29yay5rZXJuZWwu
-b3JnL3BhdGNoLzEwMjQyNDkzLwo+Cj4gSSBkaWQgc29tZSBmdXJ0aGVyIGludmVzdGlnYXRpb24g
-YmFzZWQgb24gdGhlIHByb3Bvc2VkICJbUEFUQ0ggdjMgMDAvNDNdIERSTQo+IFJvY2tjaGlwIHJr
-MzM5OSAoS2V2aW4pIiBwYXRjaHNldDoKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9h
-cmNoaXZlcy9kcmktZGV2ZWwvMjAxOC1NYXJjaC8xNjc3NzUuaHRtbAo+Cj4gVGhvc2UgcGF0Y2hl
-cyBzZWVtcyB0byBzb2x2ZSBhbHNvIHNvbWUgaXNzdWVzIHdpdGggYW5hbG9naXhfZHAgZHJpdmVy
-IG9uCj4gRXh5bm9zNTQyMCBiYXNlZCBDaHJvbWVib29rMiBQZWFjaC1QSVQgYm9hcmQuCj4KPiBJ
-IGRpZG4ndCBnZXQgYW55IHJlcGx5IGZvciBteSBjb21tZW50cyBhbmQgdW5mb3J0dW5hdGVseSB0
-aGUgbWFpbCBvZgo+IFRoaWVycnkgRXNjYW5kZSwgd2hvIHN1Ym1pdHRlZCB0aGF0IHBhdGNoc2V0
-IGlzIG5vIGxvbmdlciB2YWxpZCwgc28gSQo+IGRlY2lkZWQgdG8gcmVzZW5kIHRoZSBtaW5pbWFs
-IHBhdGNoc2V0IHRoYXQgZml4ZXMgdGhlIGlzc3VlIHdpdGgKPiBDaHJvbWVib29rMiBQZWFjaC1Q
-aXQgYm9hcmQsIHdoaWNoIHdhcyBicm9rZW4gc2luY2UgdjQuMTAga2VybmVsIHJlbGVhc2UuCj4K
-PiBJZiBwb3NzaWJsZSwgcGxlYXNlIGFwcGx5IHRoZW0gYXMgZml4ZXMgZm9yIHY0LjE2LXJjLgo+
-Cj4gVGhpcyBwYXRjaHNldCByZXBsYWNlcyBteSBwcmV2aW91cyBmaXg6Cj4gaHR0cHM6Ly9wYXRj
-aHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDI0MjQ5My8KPgo+IEJlc3QgcmVnYXJkcwo+IE1hcmVr
-IFN6eXByb3dza2kKPiBTYW1zdW5nIFImRCBJbnN0aXR1dGUgUG9sYW5kCj4KPgo+IFBhdGNoIHN1
-bW1hcnk6Cj4KPiBNYXJlayBTenlwcm93c2tpICgyKToKPiAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4
-X2RwOiBQb3N0cG9uZSBlbmFibGluZyBydW50aW1lIHBvd2VyIG1hbmFnZW1lbnQKPiAgIGRybS9i
-cmlkZ2U6IGFuYWxvZ2l4X2RwOiBEb24ndCBjcmVhdGUgdXNlbGVzcyBjb25uZWN0b3JzCj4KPiB6
-YWluIHdhbmcgKDEpOgo+ICAgZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IERvbid0IHBvd2VyIGJy
-aWRnZSBpbiBhbmFsb2dpeF9kcF9iaW5kCgpBcHBsaWVkIHRvIGRybS1taXNjLW5leHQuCgpDb3Vs
-ZCBub3QgYXBwbHkgdG8gZHJtLW1pc2MtZml4ZXMgc2luY2UgcGF0Y2hzZXQgZGVwZW5kcyBvbiBw
-YXRjaGVzIGZyb20KZHJtLW1pc2MtbmV4dC4KClJlZ2FyZHMKQW5kcnplagoKCj4gIGRyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgNDUgKysrKysrKysr
-LS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jICAgICAg
-ICAgICAgICAgICB8ICAxICsKPiAgaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmggICAg
-ICAgICAgICAgICAgICAgfCAgMSArCj4gIDMgZmlsZXMgY2hhbmdlZCwgMjEgaW5zZXJ0aW9ucygr
-KSwgMjYgZGVsZXRpb25zKC0pCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+On Thu, Mar 01, 2018 at 10:34:47AM +0000, John Keeping wrote:
+> The names of these clocks are "ciu-drive" and "ciu-sample" as described
+> for the clock-names property.  Avoid confusion by spelling these
+> correctly everywhere they are referenced.
+> 
+> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Applied, thanks.
