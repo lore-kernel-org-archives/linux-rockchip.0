@@ -1,55 +1,67 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] usb: dwc3: core: power on PHYs before initializing core
-Date: Thu, 8 Mar 2018 08:49:18 -0800
-Message-ID: <20180308164916.GA65031@rodete-desktop-imager.corp.google.com>
-References: <1515729616-8639-1-git-send-email-william.wu@rock-chips.com>
- <87ina6vodf.fsf@linux.intel.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: Re: [PATCH v3 01/22] nvmem: Document struct nvmem_config
+Date: Thu, 8 Mar 2018 10:22:09 -0800
+Message-ID: <CAHQ1cqGCX8eFt4x-G=V6YnM64kr8cHXauVjepFi47uaX_hn6Vw@mail.gmail.com>
+References: <20180103200114.23922-1-andrew.smirnov@gmail.com>
+ <20180103200114.23922-2-andrew.smirnov@gmail.com> <1519842888.8089.88.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <87ina6vodf.fsf@linux.intel.com>
+In-Reply-To: <1519842888.8089.88.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <balbi@kernel.org>
-Cc: William Wu <william.wu@rock-chips.com>, gregkh@linuxfoundation.org, Roger Quadros <rogerq@ti.com>, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, briannorris@google.com, groeck@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, lin.huang@rock-chips.com
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Kevin Hilman <khilman@baylibre.com>, linux-kernel <linux-kernel@vger.kernel.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org, Carlo Caione <carlo@caione.org>, Chris Healy <cphealy@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, Feb 28, 2018 at 10:34 AM, Sean Wang <sean.wang@mediatek.com> wrote:
+> On Wed, 2018-01-03 at 12:00 -0800, Andrey Smirnov wrote:
+>> Add a simple description of struct nvmem_config and its fields.
+>>
+>> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+>> Cc: Heiko Stuebner <heiko@sntech.de>
+>> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+>> Cc: Carlo Caione <carlo@caione.org>
+>> Cc: Kevin Hilman <khilman@baylibre.com>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: cphealy@gmail.com
+>> Cc: linux-kernel@vger.kernel.org
+>> Cc: linux-mediatek@lists.infradead.org
+>> Cc: linux-rockchip@lists.infradead.org
+>> Cc: linux-amlogic@lists.infradead.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+>> ---
+>>  include/linux/nvmem-provider.h | 22 ++++++++++++++++++++++
+>>  1 file changed, 22 insertions(+)
+>>
+>> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+>> index 497706f5adca..27e599222ec1 100644
+>> --- a/include/linux/nvmem-provider.h
+>> +++ b/include/linux/nvmem-provider.h
+>> @@ -22,6 +22,28 @@ typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+>>  typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+>>                                void *val, size_t bytes);
+>>
+>> +/**
+>> + * struct nvmem_config - NVMEM device configuration
+>> + *
+>> + * @dev:     Parent device.
+>> + * @name:    Optional name.
+>> + * @id:              Optional device ID used in full name. Ignored if name is NULL.
+>> + * @owner:   Pointer to exporter module. Used for refcounting.
+>> + * @cells:   Optional array of pre-defined NVMEM cells.
+>> + * @ncells:  Number of elements in cells.
+>> + * @read_only:       Device is read-only.
+>> + * @root_only:       Device is accessibly to root only.
+>> + * @reg_read:        Callback to read data.
+>> + * @reg_write:       Callback to write data.
+>> + * @size:    Device size.
+>> + * @word_size:       Minimum read/write access granularity.
+>> + * @stride:  Minimum read/write access stide.
+>
+> typo on stide ?
 
-On Thu, Mar 08, 2018 at 12:43:40PM +0200, Felipe Balbi wrote:
-> William Wu <william.wu@rock-chips.com> writes:
-> > The dwc3_core_init() gets the PHYs and initializes the PHYs with
-> > the usb_phy_init() and phy_init() functions before initializing
-> > core, and power on the PHYs after core initialization is done.
-> >
-> > However, some platforms (e.g. Rockchip RK3399 DWC3 with Type-C
-> > USB3 PHY), it needs to do some special operation while power on
-> > the Type-C PHY before initializing DWC3 core. It's because that
-> > the RK3399 Type-C PHY requires to hold the DWC3 controller in
-> > reset state to keep the PIPE power state in P2 while configuring
-> > the Type-C PHY, otherwise, it may cause waiting for the PIPE ready
-> > timeout. In this case, if we power on the PHYs after the DWC3 core
-> > initialization is done, the core will be reset to uninitialized
-> > state after power on the PHYs.
-> >
-> > Fix this by powering on the PHYs before initializing core. And
-> > because the GUID register may also be reset in this case, so we
-> > need to configure the GUID register after powering on the PHYs.
-> >
-> > Signed-off-by: William Wu <william.wu@rock-chips.com>
-> 
-> does this cause any regressions for your boards?
+Definitely, will fix in next version.
 
-I'm not Roger, but I believe it was determined we don't need this for
-the Rockchip systems for which William was originally sending this. At
-least not right now. I believe our PHY init problems were mostly
-resolved in other ways.
-
-(Although I hear USB is currently pretty broken around suspend/resume
-for us on -next. Likely unrelated.)
-
-I guess we never clearly replied stating the above. I hope this isn't
-merged anywhere? Or I guess it's no problem to me at the moment, but it
-might be needless churn.
-
-Brian
+Thanks,
+Andrey Smirnov
