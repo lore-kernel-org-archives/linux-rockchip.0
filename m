@@ -1,133 +1,62 @@
-From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v6 11/17] dt-bindings: Document the Rockchip MIPI RX D-PHY
- bindings
-Date: Thu,  8 Mar 2018 17:48:01 +0800
-Message-ID: <20180308094807.9443-12-jacob-chen@iotwrt.com>
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [PATCH v6 12/17] ARM: dts: rockchip: add isp node for rk3288
+Date: Thu,  8 Mar 2018 17:48:02 +0800
+Message-ID: <20180308094807.9443-13-jacob-chen@iotwrt.com>
 References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180308094807.9443-1-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, mchehab@kernel.org, zhengsq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jacob Chen <jacob2.chen@rock-chips.com>
 
-Add DT bindings documentation for Rockchip MIPI D-PHY RX
+rk3288 have a Embedded 13M ISP
 
-Signed-off-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 ---
- .../bindings/media/rockchip-mipi-dphy.txt          | 90 ++++++++++++++++++++++
- 1 file changed, 90 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+ arch/arm/boot/dts/rk3288.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt b/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
-new file mode 100644
-index 000000000000..d83700faf4c4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
-@@ -0,0 +1,90 @@
-+Rockchip SoC MIPI RX D-PHY
-+-------------------------------------------------------------
-+
-+Required properties:
-+- compatible: value should be one of the following
-+	"rockchip,rk3288-mipi-dphy"
-+	"rockchip,rk3399-mipi-dphy"
-+- clocks : list of clock specifiers, corresponding to entries in
-+	clock-names property;
-+- clock-names: required clock name.
-+
-+MIPI RX D-PHY use registers in "general register files", it
-+should be a child of the GRF.
-+MIPI TXRX D-PHY have its own registers, it must have a reg property.
-+
-+Optional properties:
-+- reg: offset and length of the register set for the device.
-+- rockchip,grf: MIPI TX1RX1 D-PHY not only has its own register but also
-+		the GRF, so it is only necessary for MIPI TX1RX1 D-PHY.
-+
-+port node
-+-------------------
-+
-+The device node should contain two 'port' child nodes, according to the bindings
-+defined in Documentation/devicetree/bindings/media/video-interfaces.txt.
-+
-+The first port show the sensors connected in this mipi-dphy.
-+- endpoint:
-+	- remote-endpoint: Linked to a sensor with a MIPI CSI-2 video bus.
-+	- data-lanes : (required) an array specifying active physical MIPI-CSI2
-+			data input lanes and their mapping to logical lanes; the
-+			D-PHY can't reroute lanes, so the array's content should
-+			be consecutive and only its length is meaningful.
-+
-+The port node must contain at least one endpoint. It could have multiple endpoints
-+linked to different sensors, but please note that they are not supposed to be
-+activated at the same time.
-+
-+The second port should be connected to isp node.
-+- endpoint:
-+	- remote-endpoint:  Linked to Rockchip ISP1, which is defined
-+		in rockchip-isp1.txt.
-+
-+Device node example
-+-------------------
-+
-+grf: syscon@ff770000 {
-+	compatible = "rockchip,rk3288-grf", "syscon", "simple-mfd";
-+
-+...
-+
-+	mipi_dphy_rx0: mipi-dphy-rx0 {
-+		compatible = "rockchip,rk3399-mipi-dphy";
-+		clocks = <&cru SCLK_MIPIDPHY_REF>,
-+			<&cru SCLK_DPHY_RX0_CFG>,
-+			<&cru PCLK_VIO_GRF>;
-+		clock-names = "dphy-ref", "dphy-cfg", "grf";
-+		power-domains = <&power RK3399_PD_VIO>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				mipi_in_wcam: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&wcam_out>;
-+					data-lanes = <1 2>;
-+				};
-+				mipi_in_ucam: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&ucam_out>;
-+					data-lanes = <1>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+
-+				dphy_rx0_out: endpoint {
-+					remote-endpoint = <&isp0_mipi_in>;
-+				};
-+			};
-+		};
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index ad6bda85c85a..6c122aaf06a7 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -962,6 +962,23 @@
+ 		status = "disabled";
+ 	};
+ 
++	isp: isp@ff910000 {
++		compatible = "rockchip,rk3288-cif-isp";
++		reg = <0x0 0xff910000 0x0 0x4000>;
++		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_ISP>, <&cru ACLK_ISP>,
++			 <&cru HCLK_ISP>, <&cru PCLK_ISP_IN>,
++			 <&cru SCLK_ISP_JPE>;
++		clock-names = "clk_isp", "aclk_isp",
++			      "hclk_isp", "pclk_isp_in",
++			      "sclk_isp_jpe";
++		assigned-clocks = <&cru SCLK_ISP>, <&cru SCLK_ISP_JPE>;
++		assigned-clock-rates = <400000000>, <400000000>;
++		power-domains = <&power RK3288_PD_VIO>;
++		iommus = <&isp_mmu>;
++		status = "disabled";
 +	};
-+};
++
+ 	isp_mmu: iommu@ff914000 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
 -- 
 2.16.1
