@@ -1,54 +1,57 @@
-From: Alexandru Stan <amstan@google.com>
-Subject: Re: [PATCH v2 2/6] dt-bindings: phy-rockchip-typec: move extcon
- property to be optional.
-Date: Wed, 7 Mar 2018 11:42:00 -0800
-Message-ID: <CAHNYxRx2kHvefaroNH_fhLcToXCH8q1TBfp-A8b0BNZ00jGL9w@mail.gmail.com>
-References: <20180301152515.20940-1-enric.balletbo@collabora.com>
- <20180301152515.20940-3-enric.balletbo@collabora.com>
- <20180307193438.fogti4jodn2jgsb5@rob-hp-laptop>
+From: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH v6 17/17] MAINTAINERS: add entry for Rockchip ISP1 driver
+Date: Thu,  8 Mar 2018 17:48:07 +0800
+Message-ID: <20180308094807.9443-18-jacob-chen@iotwrt.com>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180307193438.fogti4jodn2jgsb5@rob-hp-laptop>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Gwendal Grignou <gwendal@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, vicencb@gmail.com, kishon@ti.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, groeck@chromium.org, kernel@collabora.com, Benson Leung <bleung@chromium.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180308094807.9443-1-jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 7, 2018 at 11:34 AM, Rob Herring <robh@kernel.org> wrote:
-> On Thu, Mar 01, 2018 at 04:25:11PM +0100, Enric Balletbo i Serra wrote:
->> The extcon property is used to detect the cable-state but some boards
->> just connect the type-c phy to a regular USB-A connector without any
->> power-delivery and thus no controller reporting the cable-state.
->> So the extcon property is not really a required property, move it to be
->> optional instead.
->>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->> ---
->>
->> Changes in v2:
->> - [2/6] Rewrite the justification as suggested by Heiko Stuebner.
->>
->>  Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt | 2 ++
->>  1 file changed, 2 insertions(+)
->
-> And extcon should be deprecated IMO.
->
-> Reviewed-by: Rob Herring <robh@kernel.org>
+From: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Hello Rob,
+Add MAINTAINERS entry for the rockchip isp1 driver.
+This driver is maintained by rockchip officially and it
+will be used for rockchip SoC on all linux-kernel based OS.
 
-I'm currently learning a bit about USB and extcon.
+Signed-off-by: Jacob Chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ MAINTAINERS | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Could you provide some background on why you think extcon should be
-deprecated? What do you propose we replace it with?
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4623caf8d72d..7a9ff4fa4592 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11852,6 +11852,16 @@ F:	drivers/hid/hid-roccat*
+ F:	include/linux/hid-roccat*
+ F:	Documentation/ABI/*/sysfs-driver-hid-roccat*
+ 
++ROCKCHIP ISP V1 DRIVER
++M:	Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++M:	Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++M:	Yichong Zhong <zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++L:	linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
++S:	Maintained
++F:	drivers/media/platform/rockchip/isp1/
++F:	Documentation/devicetree/bindings/media/rockchip-isp1.txt
++F:	Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
++
+ ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
+ M:	Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+ L:	linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+-- 
+2.16.1
