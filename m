@@ -1,13 +1,14 @@
-From: Jacob Chen <jacob-chen@iotwrt.com>
-Subject: [PATCH v6 12/17] ARM: dts: rockchip: add isp node for rk3288
-Date: Thu,  8 Mar 2018 17:48:02 +0800
-Message-ID: <20180308094807.9443-13-jacob-chen@iotwrt.com>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v5 3/3] arm64: dts: rockchip: kevin: Avoid wakeup when
+ inserting the pen
+Date: Thu,  8 Mar 2018 15:42:26 +0800
+Message-ID: <20180308074226.18974-1-jeffy.chen@rock-chips.com>
+References: <20180308073213.8419-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+In-Reply-To: <20180308073213.8419-1-jeffy.chen@rock-chips.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,46 +18,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, mchehab@kernel.org, zhengsq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Brian Norris <briannorris@chromium.org>, heiko@sntech.de, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Rob Herring <robh+dt@kernel.org>, dianders@google.com, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org, briannorris@google.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, dtor@google.com, Emil Renner Berthing <kernel@esmil.dk>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jacob Chen <jacob2.chen@rock-chips.com>
+Add wakeup event action for Pen Insert gpio key, to avoid wakeup when
+inserting the pen.
 
-rk3288 have a Embedded 13M ISP
-
-Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index ad6bda85c85a..6c122aaf06a7 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -962,6 +962,23 @@
- 		status = "disabled";
- 	};
+Changes in v5: None
+Changes in v4:
+Include dt-binding gpio-keys.h
+
+Changes in v3: None
+Changes in v2:
+Specify wakeup event action instead of irq trigger type as Brian
+suggested.
+
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index 191a6bcb1704..89126dbe5d91 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -44,6 +44,7 @@
  
-+	isp: isp@ff910000 {
-+		compatible = "rockchip,rk3288-cif-isp";
-+		reg = <0x0 0xff910000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_ISP>, <&cru ACLK_ISP>,
-+			 <&cru HCLK_ISP>, <&cru PCLK_ISP_IN>,
-+			 <&cru SCLK_ISP_JPE>;
-+		clock-names = "clk_isp", "aclk_isp",
-+			      "hclk_isp", "pclk_isp_in",
-+			      "sclk_isp_jpe";
-+		assigned-clocks = <&cru SCLK_ISP>, <&cru SCLK_ISP_JPE>;
-+		assigned-clock-rates = <400000000>, <400000000>;
-+		power-domains = <&power RK3288_PD_VIO>;
-+		iommus = <&isp_mmu>;
-+		status = "disabled";
-+	};
-+
- 	isp_mmu: iommu@ff914000 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+ /dts-v1/;
+ #include "rk3399-gru.dtsi"
++#include <dt-bindings/input/gpio-keys.h>
+ #include <dt-bindings/input/linux-event-codes.h>
+ 
+ /*
+@@ -134,6 +135,8 @@
+ 		gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+ 		linux,code = <SW_PEN_INSERTED>;
+ 		linux,input-type = <EV_SW>;
++		/* Wakeup only when ejecting */
++		wakeup-event-action = <EV_ACT_DEASSERTED>;
+ 		wakeup-source;
+ 	};
+ };
 -- 
-2.16.1
+2.11.0
