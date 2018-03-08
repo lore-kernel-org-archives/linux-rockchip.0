@@ -1,40 +1,55 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v9 4/5] drm/rockchip: dw_hdmi: Move HDMI vpll clock enable
- to bind()
-Date: Thu, 08 Mar 2018 17:38:54 +0100
-Message-ID: <4713538.mFGgDtM9HE@diego>
-References: <20180302175757.28192-1-enric.balletbo@collabora.com>
- <20180302175757.28192-5-enric.balletbo@collabora.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] usb: dwc3: core: power on PHYs before initializing core
+Date: Thu, 8 Mar 2018 08:49:18 -0800
+Message-ID: <20180308164916.GA65031@rodete-desktop-imager.corp.google.com>
+References: <1515729616-8639-1-git-send-email-william.wu@rock-chips.com>
+ <87ina6vodf.fsf@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180302175757.28192-5-enric.balletbo@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Jose Abreu <Jose.Abreu@synopsys.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, Russell King <rmk+kernel@armlinux.org.uk>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <87ina6vodf.fsf@linux.intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Felipe Balbi <balbi@kernel.org>
+Cc: William Wu <william.wu@rock-chips.com>, gregkh@linuxfoundation.org, Roger Quadros <rogerq@ti.com>, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, briannorris@google.com, groeck@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, lin.huang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgMi4gTcOkcnogMjAxOCwgMTg6NTc6NTYgQ0VUIHNjaHJpZWIgRW5yaWMgQmFs
-bGV0Ym8gaSBTZXJyYToKPiBGcm9tOiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMu
-Y29tPgo+IAo+IFRoZSBIRE1JIHZwbGwgY2xvY2sgc2hvdWxkIGJlIGVuYWJsZWQgd2hlbiBiaW5k
-KCkgaXMgY2FsbGVkLiBTbyBtb3ZlIHRoZQo+IGNsa19wcmVwYXJlX2VuYWJsZSBvZiB0aGF0IGNs
-b2NrIHRvIGJpbmQoKSBmdW5jdGlvbiBhbmQgYWRkIHRoZSBtaXNzaW5nCj4gY2xrX2Rpc2FibGVf
-dW5wcmVwYXJlKCkgcmVxdWlyZWQgaW4gZXJyb3IgaGFuZGxpbmcgcGF0aCBhbmQgdW5iaW5kKCku
-Cj4gCj4gRml4ZXM6IDEyYjlmMjA0ZTgwNCAoImRybTogYnJpZGdlL2R3X2hkbWk6IGFkZCByb2Nr
-Y2hpcCByazMyODggc3VwcG9ydCIpCj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnku
-Y2hlbkByb2NrLWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBUaGllcnJ5IEVzY2FuZGUgPHRo
-aWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJhbGxl
-dGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+CgphcHBsaWVkIHRvIGRy
-bS1taXNjLW5leHQKClRoYW5rcwpIZWlrbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+Hi,
+
+On Thu, Mar 08, 2018 at 12:43:40PM +0200, Felipe Balbi wrote:
+> William Wu <william.wu@rock-chips.com> writes:
+> > The dwc3_core_init() gets the PHYs and initializes the PHYs with
+> > the usb_phy_init() and phy_init() functions before initializing
+> > core, and power on the PHYs after core initialization is done.
+> >
+> > However, some platforms (e.g. Rockchip RK3399 DWC3 with Type-C
+> > USB3 PHY), it needs to do some special operation while power on
+> > the Type-C PHY before initializing DWC3 core. It's because that
+> > the RK3399 Type-C PHY requires to hold the DWC3 controller in
+> > reset state to keep the PIPE power state in P2 while configuring
+> > the Type-C PHY, otherwise, it may cause waiting for the PIPE ready
+> > timeout. In this case, if we power on the PHYs after the DWC3 core
+> > initialization is done, the core will be reset to uninitialized
+> > state after power on the PHYs.
+> >
+> > Fix this by powering on the PHYs before initializing core. And
+> > because the GUID register may also be reset in this case, so we
+> > need to configure the GUID register after powering on the PHYs.
+> >
+> > Signed-off-by: William Wu <william.wu@rock-chips.com>
+> 
+> does this cause any regressions for your boards?
+
+I'm not Roger, but I believe it was determined we don't need this for
+the Rockchip systems for which William was originally sending this. At
+least not right now. I believe our PHY init problems were mostly
+resolved in other ways.
+
+(Although I hear USB is currently pretty broken around suspend/resume
+for us on -next. Likely unrelated.)
+
+I guess we never clearly replied stating the above. I hope this isn't
+merged anywhere? Or I guess it's no problem to me at the moment, but it
+might be needless churn.
+
+Brian
