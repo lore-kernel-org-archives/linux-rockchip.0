@@ -1,55 +1,61 @@
-From: Jacob Chen <jacobchen110@gmail.com>
-Subject: Re: [PATCH v5 03/16] media: rkisp1: Add user space ABI definitions
-Date: Thu, 8 Mar 2018 18:00:45 +0800
-Message-ID: <CAFLEztSsg+EW97AN93gd-rx7A1bNwfHK5e9MpLnem40ATnfsrw@mail.gmail.com>
-References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
- <1514533978-20408-4-git-send-email-zhengsq@rock-chips.com> <d98ac356-a482-f26f-fd6b-6142281d99c3@xs4all.nl>
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [PATCH v6 15/17] arm64: dts: rockchip: add isp0 node for rk3399
+Date: Thu,  8 Mar 2018 17:48:05 +0800
+Message-ID: <20180308094807.9443-16-jacob-chen@iotwrt.com>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d98ac356-a482-f26f-fd6b-6142281d99c3@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Shunqian Zheng <zhengsq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Tomasz Figa <tfiga@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org, Joao Pinto <Joao.Pinto@synopsys.com>, Luis Oliveira <Luis.Oliveira@synopsys>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, mchehab@kernel.org, zhengsq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Hans,
+From: Shunqian Zheng <zhengsq@rock-chips.com>
 
-2018-02-07 20:00 GMT+08:00 Hans Verkuil <hverkuil@xs4all.nl>:
-> On 12/29/17 08:52, Shunqian Zheng wrote:
->> From: Jeffy Chen <jeffy.chen@rock-chips.com>
->>
->> Add the header for userspace
->
-> General note: I saw four cases where this documentation referred to the
-> datasheet. Three comments on that:
->
-> 1) You don't say which datasheet.
-> 2) I assume the datasheet is under NDA?
+rk3399 have two ISP, but we havn't test isp1, so just add isp0 at present.
 
-This datasheet can't be got by customers, even under NDA.
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-> 3) You do need to give enough information so a reasonable default can be
->    used. I mentioned in an earlier review that creating an initial params
->    struct that can be used as a templete would be helpful (or even
->    required), and that would be a good place to put such defaults.
->
-
-It don't need a default config
-For applcation writers, they can just init it with zero data, and only
-set value for the part they concerned.
-
-As for ABI, i have checked there is no mismatches.
-Those structures is 32 bit aligned both in 64bit/32bit env, since
-there is no 64bit value.
-"__attribute__ ((packed))" can avoid mismatches happen when we add a
-64bit value to those structures.
-
-As robin said, enums and bools are not guaranteed to be consistent
-between different compiler, so it's a potential risk.
-I have replace bools with unsigned char and enums with unsigned int.
-
-
-> Regards,
->
->         Hans
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 2605118d4b4c..14ed016f2fdd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1614,6 +1614,21 @@
+ 		status = "disabled";
+ 	};
+ 
++	isp0: isp0@ff910000 {
++		compatible = "rockchip,rk3399-cif-isp";
++		reg = <0x0 0xff910000 0x0 0x4000>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_ISP0>,
++			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
++			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
++		clock-names = "clk_isp",
++			      "aclk_isp", "aclk_isp_wrap",
++			      "hclk_isp", "hclk_isp_wrap";
++		power-domains = <&power RK3399_PD_ISP0>;
++		iommus = <&isp0_mmu>;
++		status = "disabled";
++	};
++
+ 	isp0_mmu: iommu@ff914000 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+-- 
+2.16.1
