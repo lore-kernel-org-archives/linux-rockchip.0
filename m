@@ -1,66 +1,42 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v5 3/3] arm64: dts: rockchip: kevin: Avoid wakeup when
- inserting the pen
-Date: Thu,  8 Mar 2018 15:42:26 +0800
-Message-ID: <20180308074226.18974-1-jeffy.chen@rock-chips.com>
-References: <20180308073213.8419-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180308073213.8419-1-jeffy.chen@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Brian Norris <briannorris@chromium.org>, heiko@sntech.de, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Rob Herring <robh+dt@kernel.org>, dianders@google.com, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org, briannorris@google.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, dtor@google.com, Emil Renner Berthing <kernel@esmil.dk>
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Subject: [PATCH v6 14/17] ARM: dts: rockchip: Add dts mipi-dphy TXRX1 node for rk3288
+Date: Thu,  8 Mar 2018 17:48:04 +0800
+Message-ID: <20180308094807.9443-15-jacob-chen@iotwrt.com>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Wen Nuan <leo.wen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add wakeup event action for Pen Insert gpio key, to avoid wakeup when
-inserting the pen.
+From: Wen Nuan <leo.wen@rock-chips.com>
 
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Change-Id: I0b6122b2b34ae0f24f0d4a1111c1bbe6018cac4e
+Signed-off-by: Wen Nuan <leo.wen@rock-chips.com>
 ---
+ arch/arm/boot/dts/rk3288.dtsi | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-Changes in v5: None
-Changes in v4:
-Include dt-binding gpio-keys.h
-
-Changes in v3: None
-Changes in v2:
-Specify wakeup event action instead of irq trigger type as Brian
-suggested.
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 191a6bcb1704..89126dbe5d91 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -44,6 +44,7 @@
- 
- /dts-v1/;
- #include "rk3399-gru.dtsi"
-+#include <dt-bindings/input/gpio-keys.h>
- #include <dt-bindings/input/linux-event-codes.h>
- 
- /*
-@@ -134,6 +135,8 @@
- 		gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
- 		linux,code = <SW_PEN_INSERTED>;
- 		linux,input-type = <EV_SW>;
-+		/* Wakeup only when ejecting */
-+		wakeup-event-action = <EV_ACT_DEASSERTED>;
- 		wakeup-source;
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 3a530b72c057..ed05f3d77358 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1164,6 +1164,15 @@
+ 		};
  	};
- };
+ 
++	mipi_phy_tx1rx1: mipi-phy-tx1rx1@ff968000 {
++		compatible = "rockchip,rk3288-mipi-dphy";
++		reg = <0x0 0xff968000 0x0 0x4000>;
++		rockchip,grf = <&grf>;
++		clocks = <&cru SCLK_MIPIDSI_24M>, <&cru PCLK_MIPI_CSI>;
++		clock-names = "dphy-ref", "pclk";
++		status = "disabled";
++	};
++
+ 	edp: dp@ff970000 {
+ 		compatible = "rockchip,rk3288-dp";
+ 		reg = <0x0 0xff970000 0x0 0x4000>;
 -- 
-2.11.0
+2.16.1
