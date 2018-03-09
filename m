@@ -1,39 +1,38 @@
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v4 0/4] Set name of regmap_config
-Date: Fri,  9 Mar 2018 09:51:42 +0800
-Message-ID: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
+Subject: [PATCH v4 4/4] ARM: rockchip: Set name of regmap_config
+Date: Fri,  9 Mar 2018 09:51:46 +0800
+Message-ID: <20180309015146.8297-5-jeffy.chen@rock-chips.com>
+References: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-rtc@vger.kernel.org, Sylvain Lemieux <slemieux.tyco@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Alessandro Zummo <a.zummo@towertech.it>, Stephen Boyd <sboyd@kernel.org>, Gabriel Fernandez <gabriel.fernandez@st.com>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Lee Jones <lee.jones@linaro.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Jerome Brunet <jbrunet@baylibre.com>, Vladimir Zapolskiy <vz@mleia.com>, Arvind Yadav <arvind.yadav.cs@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
+We are now allowing to register debugfs without a valid device, and not
+having a valid name will end up using "dummy*" to create debugfs dir.
 
-After 9b947a13e7f6 ("regmap: use debugfs even when no device"), we are
-allowing regmap to create debugfs without a valid device. Some of them
-would end up using "dummy*" as debugfs name.
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
 
-This series try to set names in some regmap_config to avoid that.
-
-
-Changes in v4:
-Not to use rtc dev to init regmap, the gpbr is not directly related to
-the rtc.
-
-Changes in v3:
-Modify commit message.
-
-Jeffy Chen (4):
-  mfd: syscon: Set name of regmap_config
-  rtc: at91sam9: Set name of regmap_config
-  clk: lpc32xx: Set name of regmap_config
-  ARM: rockchip: Set name of regmap_config
+Changes in v4: None
+Changes in v3: None
 
  arch/arm/mach-rockchip/platsmp.c | 1 +
- drivers/clk/nxp/clk-lpc32xx.c    | 1 +
- drivers/mfd/syscon.c             | 1 +
- drivers/rtc/rtc-at91sam9.c       | 1 +
- 4 files changed, 4 insertions(+)
+ 1 file changed, 1 insertion(+)
 
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index ecec340ca345..51984a40b097 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -208,6 +208,7 @@ static int __init rockchip_smp_prepare_sram(struct device_node *node)
+ }
+ 
+ static const struct regmap_config rockchip_pmu_regmap_config = {
++	.name = "rockchip-pmu",
+ 	.reg_bits = 32,
+ 	.val_bits = 32,
+ 	.reg_stride = 4,
 -- 
 2.11.0
