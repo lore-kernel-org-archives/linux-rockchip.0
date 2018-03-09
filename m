@@ -1,56 +1,39 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v4 0/4] Set name of regmap_config
-Date: Fri, 9 Mar 2018 08:16:03 +0000
-Message-ID: <20180309081603.4u5pgwwsfxernodm@dell>
-References: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [RESEND PATCH v4 0/4] Set name of regmap_config
+Date: Fri,  9 Mar 2018 16:43:47 +0800
+Message-ID: <20180309084351.32009-1-jeffy.chen@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com, linux-rtc@vger.kernel.org, Sylvain Lemieux <slemieux.tyco@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Alessandro Zummo <a.zummo@towertech.it>, Stephen Boyd <sboyd@kernel.org>, Gabriel Fernandez <gabriel.fernandez@st.com>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Nicolas Ferre <nicolas.ferre@microchip.com>, Jerome Brunet <jbrunet@baylibre.com>, Vladimir Zapolskiy <vz@mleia.com>, Arvind Yadav <arvind.yadav.cs@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com
+Cc: Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>, linux-arm-ke
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 09 Mar 2018, Jeffy Chen wrote:
 
-> 
-> After 9b947a13e7f6 ("regmap: use debugfs even when no device"), we are
-> allowing regmap to create debugfs without a valid device. Some of them
-> would end up using "dummy*" as debugfs name.
-> 
-> This series try to set names in some regmap_config to avoid that.
-> 
-> 
-> Changes in v4:
-> Not to use rtc dev to init regmap, the gpbr is not directly related to
-> the rtc.
-> 
-> Changes in v3:
-> Modify commit message.
-> 
-> Jeffy Chen (4):
->   mfd: syscon: Set name of regmap_config
->   rtc: at91sam9: Set name of regmap_config
->   clk: lpc32xx: Set name of regmap_config
->   ARM: rockchip: Set name of regmap_config
-> 
->  arch/arm/mach-rockchip/platsmp.c | 1 +
->  drivers/clk/nxp/clk-lpc32xx.c    | 1 +
->  drivers/mfd/syscon.c             | 1 +
+After 9b947a13e7f6 ("regmap: use debugfs even when no device"), we are
+allowing regmap to create debugfs without a valid device. Some of them
+would end up using "dummy*" as debugfs name.
 
-It's difficult to review, since we cannot see what's happening with
-the rest of the patch set.  Would you mind re-sending the whole set to
-all parties please?
+This series try to set names in some regmap_config to avoid that.
 
->  drivers/rtc/rtc-at91sam9.c       | 1 +
->  4 files changed, 4 insertions(+)
-> 
+
+Changes in v4:
+Not to use rtc dev to init regmap, the gpbr is not directly related to
+the rtc.
+
+Changes in v3:
+Modify commit message.
+
+Jeffy Chen (4):
+  mfd: syscon: Set name of regmap_config
+  rtc: at91sam9: Set name of regmap_config
+  clk: lpc32xx: Set name of regmap_config
+  ARM: rockchip: Set name of regmap_config
+
+ arch/arm/mach-rockchip/platsmp.c | 1 +
+ drivers/clk/nxp/clk-lpc32xx.c    | 1 +
+ drivers/mfd/syscon.c             | 1 +
+ drivers/rtc/rtc-at91sam9.c       | 1 +
+ 4 files changed, 4 insertions(+)
 
 -- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+2.11.0
