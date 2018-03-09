@@ -1,68 +1,56 @@
-From: Baruch Siach <baruch@tkos.co.il>
-Subject: Re: [PATCH v6 00/17] Rockchip ISP1 Driver
-Date: Fri, 9 Mar 2018 07:54:43 +0200
-Message-ID: <20180309055443.edcj2uvbc2s6bcoy@tarshish>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
- <20180308120200.wpcjnbglf4x32vrp@tarshish>
- <CAFLEztTokSaXJuN8Ls0BpAEuFdTC+Viwn6PGxC=TC6vZAs+w3g@mail.gmail.com>
- <20180309040903.hhkhylvs6q6lvqjy@tarshish>
- <CAFLEztT4XJ9QnvLciv62dFCfj-y7Kynd2R8HpVxXeUXObvp3GQ@mail.gmail.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v4 0/4] Set name of regmap_config
+Date: Fri, 9 Mar 2018 08:16:03 +0000
+Message-ID: <20180309081603.4u5pgwwsfxernodm@dell>
+References: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAFLEztT4XJ9QnvLciv62dFCfj-y7Kynd2R8HpVxXeUXObvp3GQ@mail.gmail.com>
+In-Reply-To: <20180309015146.8297-1-jeffy.chen@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacobchen110@gmail.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Tomasz Figa <tfiga@chromium.org>, Shunqian Zheng <zhengsq@rock-chips.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?utf-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com, linux-rtc@vger.kernel.org, Sylvain Lemieux <slemieux.tyco@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Alessandro Zummo <a.zummo@towertech.it>, Stephen Boyd <sboyd@kernel.org>, Gabriel Fernandez <gabriel.fernandez@st.com>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Russell King <linux@armlinux.org.uk>, Nicolas Ferre <nicolas.ferre@microchip.com>, Jerome Brunet <jbrunet@baylibre.com>, Vladimir Zapolskiy <vz@mleia.com>, Arvind Yadav <arvind.yadav.cs@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+On Fri, 09 Mar 2018, Jeffy Chen wrote:
 
-On Fri, Mar 09, 2018 at 01:05:28PM +0800, Jacob Chen wrote:
-> 2018-03-09 12:09 GMT+08:00 Baruch Siach <baruch@tkos.co.il>:
-> > On Fri, Mar 09, 2018 at 08:53:57AM +0800, Jacob Chen wrote:
-> >> 2018-03-08 20:02 GMT+08:00 Baruch Siach <baruch@tkos.co.il>:
-> >> > On Thu, Mar 08, 2018 at 05:47:50PM +0800, Jacob Chen wrote:
-> >> >> This patch series add a ISP(Camera) v4l2 driver for rockchip rk3288/rk3399
-> >> >> SoC.
-> >> >>
-> >> >> Wiki Pages:
-> >> >> http://opensource.rock-chips.com/wiki_Rockchip-isp1
-> >> >>
-> >> >> The deprecated g_mbus_config op is not dropped in  V6 because i am waiting
-> >> >> tomasz's patches.
-> >> >
-> >> > Which tree is this series based on? On top of v4.16-rc4 I get the build
-> >> > failure below. The V4L2_BUF_TYPE_META_OUTPUT macro, for example, is not even
-> >> > in media_tree.git.
-> >>
-> >> This series is based on v4.16-rc4 with below patch.
-> >> https://patchwork.kernel.org/patch/9792001/
-> >
-> > This patch does not apply on v4.16-rc4. I also tried v2 of this patch with the
-> > same result:
-> >
-> >   https://patchwork.linuxtv.org/patch/44682/
 > 
-> It need resolve merge conflict.
+> After 9b947a13e7f6 ("regmap: use debugfs even when no device"), we are
+> allowing regmap to create debugfs without a valid device. Some of them
+> would end up using "dummy*" as debugfs name.
 > 
-> > Can you push your series to a public git repo branch?
+> This series try to set names in some regmap_config to avoid that.
 > 
-> Sure, I have push it to my github.
-> https://github.com/wzyy2/linux/tree/4.16-rc4
 > 
-> This commit might be a bit of a mess
-> https://github.com/wzyy2/linux/commit/ff68323c4804adc10f64836ea1be172c54a9d6c6
+> Changes in v4:
+> Not to use rtc dev to init regmap, the gpbr is not directly related to
+> the rtc.
+> 
+> Changes in v3:
+> Modify commit message.
+> 
+> Jeffy Chen (4):
+>   mfd: syscon: Set name of regmap_config
+>   rtc: at91sam9: Set name of regmap_config
+>   clk: lpc32xx: Set name of regmap_config
+>   ARM: rockchip: Set name of regmap_config
+> 
+>  arch/arm/mach-rockchip/platsmp.c | 1 +
+>  drivers/clk/nxp/clk-lpc32xx.c    | 1 +
+>  drivers/mfd/syscon.c             | 1 +
 
-Thanks. This is very helpful.
+It's difficult to review, since we cannot see what's happening with
+the rest of the patch set.  Would you mind re-sending the whole set to
+all parties please?
 
-I'm mostly interested in the tinkerboard, so the DT bits in your tree are also 
-useful.
-
-baruch
+>  drivers/rtc/rtc-at91sam9.c       | 1 +
+>  4 files changed, 4 insertions(+)
+> 
 
 -- 
-     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-=}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch@tkos.co.il - tel: +972.52.368.4656, http://www.tkos.co.il -
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
