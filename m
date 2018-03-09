@@ -1,83 +1,68 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [RESEND PATCH v5 2/5] dt-bindings: pwm-backlight: add PWM delay proprieties.
-Date: Fri, 9 Mar 2018 11:14:36 +0100
-Message-ID: <CAFqH_51EGNzMx76WrjEr9Ss7QoU8FSHAhUf2OeencUC-XXtSWQ@mail.gmail.com>
-References: <20180216174034.15936-1-enric.balletbo@collabora.com>
- <20180216174034.15936-2-enric.balletbo@collabora.com> <20180219111136.jpv4wtcm6h2hfwac@oak.lan>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v5 03/16] media: rkisp1: Add user space ABI definitions
+Date: Fri, 9 Mar 2018 14:14:00 +0100
+Message-ID: <d1677c06-4e9f-58a9-817d-0a4b8d958285@xs4all.nl>
+References: <1514533978-20408-1-git-send-email-zhengsq@rock-chips.com>
+ <1514533978-20408-4-git-send-email-zhengsq@rock-chips.com>
+ <d98ac356-a482-f26f-fd6b-6142281d99c3@xs4all.nl>
+ <CAFLEztSsg+EW97AN93gd-rx7A1bNwfHK5e9MpLnem40ATnfsrw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180219111136.jpv4wtcm6h2hfwac@oak.lan>
+In-Reply-To: <CAFLEztSsg+EW97AN93gd-rx7A1bNwfHK5e9MpLnem40ATnfsrw@mail.gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Thompson <daniel.thompson@linaro.org>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>
+To: Jacob Chen <jacobchen110@gmail.com>
+Cc: Shunqian Zheng <zhengsq@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Tomasz Figa <tfiga@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org, Joao Pinto <Joao.Pinto@synopsys.com>, Luis Oliveira <Luis.Oliveira@synopsys>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+On 08/03/18 11:00, Jacob Chen wrote:
+> Hi Hans,
+> 
+> 2018-02-07 20:00 GMT+08:00 Hans Verkuil <hverkuil@xs4all.nl>:
+>> On 12/29/17 08:52, Shunqian Zheng wrote:
+>>> From: Jeffy Chen <jeffy.chen@rock-chips.com>
+>>>
+>>> Add the header for userspace
+>>
+>> General note: I saw four cases where this documentation referred to the
+>> datasheet. Three comments on that:
+>>
+>> 1) You don't say which datasheet.
+>> 2) I assume the datasheet is under NDA?
+> 
+> This datasheet can't be got by customers, even under NDA.
 
-oh, devicetree mailing list is not added, sorry, so cc'ing ...
+OK. This should be mentioned somewhere.
 
-2018-02-19 12:11 GMT+01:00 Daniel Thompson <daniel.thompson@linaro.org>:
-> On Fri, Feb 16, 2018 at 06:40:31PM +0100, Enric Balletbo i Serra wrote:
->> Hardware needs a delay between setting an initial (non-zero) PWM and
->> enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
->> this delay in milli seconds. Hardware also needs a delay between disabing
->> the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
->> is this delay in milli seconds.
+> 
+>> 3) You do need to give enough information so a reasonable default can be
+>>    used. I mentioned in an earlier review that creating an initial params
+>>    struct that can be used as a templete would be helpful (or even
+>>    required), and that would be a good place to put such defaults.
 >>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> Acked-by: Pavel Machek <pavel@ucw.cz>
->
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
->
+> 
+> It don't need a default config
+> For applcation writers, they can just init it with zero data, and only
+> set value for the part they concerned.
 
-Lee, I guess that after Daniel ack the only ack missing here is one
-from Rob Herring?
+This too should be clearly documented. This is very useful information for
+users of this API.
 
-Rob, if you have a chance to look at this I'd appreciate.
+> 
+> As for ABI, i have checked there is no mismatches.
+> Those structures is 32 bit aligned both in 64bit/32bit env, since
+> there is no 64bit value.
+> "__attribute__ ((packed))" can avoid mismatches happen when we add a
+> 64bit value to those structures.
+> 
+> As robin said, enums and bools are not guaranteed to be consistent
+> between different compiler, so it's a potential risk.
+> I have replace bools with unsigned char and enums with unsigned int.
 
-Thanks,
-  Enric
+Excellent.
 
->> ---
->> Based on the original Huang Lin <hl@rock-chips.com> work.
->>
->> Changes since v4:
->>  - Rebase on top of mainline.
->> Changes since v3:
->>  - Replace us for ms.
->>  - Add Acked-by: Pavel Machek <pavel@ucw.cz>
->> Changes since v2:
->>  - Use separate properties (Rob Herring)
->> Changes since v1:
->>  - As suggested by Daniel Thompson
->>    - Do not assume power-on delay and power-off delay will be the same
->>
->>  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
->>  1 file changed, 6 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
->> index 764db86d441a..310810906613 100644
->> --- a/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
->> +++ b/Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt
->> @@ -17,6 +17,10 @@ Optional properties:
->>                 "pwms" property (see PWM binding[0])
->>    - enable-gpios: contains a single GPIO specifier for the GPIO which enables
->>                    and disables the backlight (see GPIO binding[1])
->> +  - post-pwm-on-delay-ms: Delay in ms between setting an initial (non-zero) PWM
->> +                          and enabling the backlight using GPIO.
->> +  - pwm-off-delay-ms: Delay in ms between disabling the backlight using GPIO
->> +                      and setting PWM value to 0.
->>
->>  [0]: Documentation/devicetree/bindings/pwm/pwm.txt
->>  [1]: Documentation/devicetree/bindings/gpio/gpio.txt
->> @@ -32,4 +36,6 @@ Example:
->>
->>               power-supply = <&vdd_bl_reg>;
->>               enable-gpios = <&gpio 58 0>;
->> +             post-pwm-on-delay-ms = <10>;
->> +             pwm-off-delay-ms = <10>;
->>       };
->> --
->> 2.15.1
->>
+Regards,
+
+	Hans
