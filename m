@@ -1,67 +1,59 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 1/2] watchdog: dw: RMW the control register
-Date: Fri, 9 Mar 2018 18:47:47 -0800
-Message-ID: <CA+ASDXPmh7Ng8x1dnezs5a9zSdvVVTa4W+KQYVLDWWoKW0S=-w@mail.gmail.com>
-References: <20180310024431.160195-1-briannorris@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Subject: [PATCH v2 2/2] watchdog: dw: save/restore control and timeout across suspend/resume
+Date: Fri,  9 Mar 2018 19:46:07 -0800
+Message-ID: <20180310034607.254884-2-briannorris@chromium.org>
+References: <20180310034607.254884-1-briannorris@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180310024431.160195-1-briannorris@chromium.org>
+In-Reply-To: <20180310034607.254884-1-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
-Cc: Linux Kernel <linux-kernel@vger.kernel.org>, linux-watchdog@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Cc: linux-kernel@vger.kernel.org, linux-watchdog@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-+ linux-rockchip (probably should have included in the first place)
+Some platforms lose this state in suspend. It should be safe to do this
+unconditionally.
 
-On Fri, Mar 9, 2018 at 6:44 PM, Brian Norris <briannorris@chromium.org> wrote:
-> RK3399 has rst_pulse_length in CONTROL_REG[4:2], determining the length
-> of pulse to issue for system reset. We shouldn't clobber this value,
-> because that might make the system reset ineffective. On RK3399, we're
-> seeing that a value of 000b (meaning 2 cycles) yields an unreliable
-> (partial?) reset, and so we only fully reset after the watchdog fires a
-> second time. If we retain the system default (010b, or 8 clock cycles),
-> then the watchdog reset is much more reliable.
->
-> Read-modify-write retains the system value and improves reset
-> reliability.
->
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->  drivers/watchdog/dw_wdt.c | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/watchdog/dw_wdt.c b/drivers/watchdog/dw_wdt.c
-> index c2f4ff516230..6925d3e6c6b3 100644
-> --- a/drivers/watchdog/dw_wdt.c
-> +++ b/drivers/watchdog/dw_wdt.c
-> @@ -34,6 +34,7 @@
->
->  #define WDOG_CONTROL_REG_OFFSET                    0x00
->  #define WDOG_CONTROL_REG_WDT_EN_MASK       0x01
-> +#define WDOG_CONTROL_REG_RESP_MODE_MASK            0x02
->  #define WDOG_TIMEOUT_RANGE_REG_OFFSET      0x04
->  #define WDOG_TIMEOUT_RANGE_TOPINIT_SHIFT    4
->  #define WDOG_CURRENT_COUNT_REG_OFFSET      0x08
-> @@ -124,11 +125,16 @@ static int dw_wdt_set_timeout(struct watchdog_device *wdd, unsigned int top_s)
->  static int dw_wdt_start(struct watchdog_device *wdd)
->  {
->         struct dw_wdt *dw_wdt = to_dw_wdt(wdd);
-> +       u32 val;
->
->         dw_wdt_set_timeout(wdd, wdd->timeout);
->
-> -       writel(WDOG_CONTROL_REG_WDT_EN_MASK,
-> -              dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> +       val = readl(dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> +       /* Disable interrupt mode; always perform system reset. */
-> +       val &= ~WDOG_CONTROL_REG_RESP_MODE_MASK;
-> +       /* Enable watchdog. */
-> +       val |= WDOG_CONTROL_REG_WDT_EN_MASK;
-> +       writel(val, dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
->
->         return 0;
->  }
-> --
-> 2.16.2.660.g709887971b-goog
->
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+---
+v2: no change
+---
+ drivers/watchdog/dw_wdt.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/watchdog/dw_wdt.c b/drivers/watchdog/dw_wdt.c
+index 918357bccf5e..501aebb5b81f 100644
+--- a/drivers/watchdog/dw_wdt.c
++++ b/drivers/watchdog/dw_wdt.c
+@@ -57,6 +57,9 @@ struct dw_wdt {
+ 	unsigned long		rate;
+ 	struct watchdog_device	wdd;
+ 	struct reset_control	*rst;
++	/* Save/restore */
++	u32			control;
++	u32			timeout;
+ };
+ 
+ #define to_dw_wdt(wdd)	container_of(wdd, struct dw_wdt, wdd)
+@@ -205,6 +208,9 @@ static int dw_wdt_suspend(struct device *dev)
+ {
+ 	struct dw_wdt *dw_wdt = dev_get_drvdata(dev);
+ 
++	dw_wdt->control = readl(dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
++	dw_wdt->timeout = readl(dw_wdt->regs + WDOG_TIMEOUT_RANGE_REG_OFFSET);
++
+ 	clk_disable_unprepare(dw_wdt->clk);
+ 
+ 	return 0;
+@@ -218,6 +224,9 @@ static int dw_wdt_resume(struct device *dev)
+ 	if (err)
+ 		return err;
+ 
++	writel(dw_wdt->timeout, dw_wdt->regs + WDOG_TIMEOUT_RANGE_REG_OFFSET);
++	writel(dw_wdt->control, dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
++
+ 	dw_wdt_ping(&dw_wdt->wdd);
+ 
+ 	return 0;
+-- 
+2.16.2.660.g709887971b-goog
