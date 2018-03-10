@@ -1,65 +1,67 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v5 15/36] drm/bridge: analogix_dp: Fix incorrect usage of enhanced mode
-Date: Fri,  9 Mar 2018 23:23:06 +0100
-Message-ID: <20180309222327.18689-16-enric.balletbo@collabora.com>
-References: <20180309222327.18689-1-enric.balletbo@collabora.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 1/2] watchdog: dw: RMW the control register
+Date: Fri, 9 Mar 2018 18:47:47 -0800
+Message-ID: <CA+ASDXPmh7Ng8x1dnezs5a9zSdvVVTa4W+KQYVLDWWoKW0S=-w@mail.gmail.com>
+References: <20180310024431.160195-1-briannorris@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180309222327.18689-1-enric.balletbo@collabora.com>
+In-Reply-To: <20180310024431.160195-1-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, dianders@chromium.org, a.hajda@samsung.com, ykk@rock-chips.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, linux-input@vger.kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com, kuankuan.y@gmail.com, hshi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
+Cc: Linux Kernel <linux-kernel@vger.kernel.org>, linux-watchdog@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zain wang <wzz@rock-chips.com>
++ linux-rockchip (probably should have included in the first place)
 
-Enhanced mode is required by the eDP 1.2 specification, and not doing it
-early could result in a period of time where we have a link transmitting
-idle packets without it. Since there is no reason to disable it, we just
-enable it at the beginning of link training and then keep it on all the
-time.
-
-Cc: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
-
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 6cbde8473f58..1eed35f9eb8d 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -281,6 +281,8 @@ static int analogix_dp_link_start(struct analogix_dp_device *dp)
- 	retval = drm_dp_dpcd_write(&dp->aux, DP_LINK_BW_SET, buf, 2);
- 	if (retval < 0)
- 		return retval;
-+	/* set enhanced mode if available */
-+	analogix_dp_set_enhanced_mode(dp);
- 
- 	/* Set TX pre-emphasis to minimum */
- 	for (lane = 0; lane < lane_count; lane++)
-@@ -593,8 +595,6 @@ static int analogix_dp_process_equalizer_training(struct analogix_dp_device *dp)
- 		dev_dbg(dp->dev, "fast link training %s\n",
- 			dp->fast_train_enable ? "supported" : "unsupported");
- 
--		/* set enhanced mode if available */
--		analogix_dp_set_enhanced_mode(dp);
- 		dp->link_train.lt_state = FINISHED;
- 
- 		return 0;
-@@ -940,8 +940,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
- 	}
- 
- 	analogix_dp_enable_scramble(dp, 1);
--	analogix_dp_enable_rx_to_enhanced_mode(dp, 1);
--	analogix_dp_enable_enhanced_mode(dp, 1);
- 
- 	analogix_dp_init_video(dp);
- 	ret = analogix_dp_config_video(dp);
--- 
-2.16.1
+On Fri, Mar 9, 2018 at 6:44 PM, Brian Norris <briannorris@chromium.org> wrote:
+> RK3399 has rst_pulse_length in CONTROL_REG[4:2], determining the length
+> of pulse to issue for system reset. We shouldn't clobber this value,
+> because that might make the system reset ineffective. On RK3399, we're
+> seeing that a value of 000b (meaning 2 cycles) yields an unreliable
+> (partial?) reset, and so we only fully reset after the watchdog fires a
+> second time. If we retain the system default (010b, or 8 clock cycles),
+> then the watchdog reset is much more reliable.
+>
+> Read-modify-write retains the system value and improves reset
+> reliability.
+>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+>  drivers/watchdog/dw_wdt.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/watchdog/dw_wdt.c b/drivers/watchdog/dw_wdt.c
+> index c2f4ff516230..6925d3e6c6b3 100644
+> --- a/drivers/watchdog/dw_wdt.c
+> +++ b/drivers/watchdog/dw_wdt.c
+> @@ -34,6 +34,7 @@
+>
+>  #define WDOG_CONTROL_REG_OFFSET                    0x00
+>  #define WDOG_CONTROL_REG_WDT_EN_MASK       0x01
+> +#define WDOG_CONTROL_REG_RESP_MODE_MASK            0x02
+>  #define WDOG_TIMEOUT_RANGE_REG_OFFSET      0x04
+>  #define WDOG_TIMEOUT_RANGE_TOPINIT_SHIFT    4
+>  #define WDOG_CURRENT_COUNT_REG_OFFSET      0x08
+> @@ -124,11 +125,16 @@ static int dw_wdt_set_timeout(struct watchdog_device *wdd, unsigned int top_s)
+>  static int dw_wdt_start(struct watchdog_device *wdd)
+>  {
+>         struct dw_wdt *dw_wdt = to_dw_wdt(wdd);
+> +       u32 val;
+>
+>         dw_wdt_set_timeout(wdd, wdd->timeout);
+>
+> -       writel(WDOG_CONTROL_REG_WDT_EN_MASK,
+> -              dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
+> +       val = readl(dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
+> +       /* Disable interrupt mode; always perform system reset. */
+> +       val &= ~WDOG_CONTROL_REG_RESP_MODE_MASK;
+> +       /* Enable watchdog. */
+> +       val |= WDOG_CONTROL_REG_WDT_EN_MASK;
+> +       writel(val, dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
+>
+>         return 0;
+>  }
+> --
+> 2.16.2.660.g709887971b-goog
+>
