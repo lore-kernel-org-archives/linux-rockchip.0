@@ -1,104 +1,44 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v2 1/2] watchdog: dw: RMW the control register
-Date: Fri, 9 Mar 2018 20:04:12 -0800
-Message-ID: <4be661fc-033d-7be6-cda6-8e90510f1738@roeck-us.net>
-References: <20180310034607.254884-1-briannorris@chromium.org>
+From: Baruch Siach <baruch@tkos.co.il>
+Subject: Re: [PATCH v6 09/17] media: rkisp1: add rockchip isp1 core driver
+Date: Sun, 11 Mar 2018 08:58:05 +0200
+Message-ID: <20180311065805.ezrjm4wn5mnorvgg@sapphire.tkos.co.il>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+ <20180308094807.9443-10-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180310034607.254884-1-briannorris@chromium.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20180308094807.9443-10-jacob-chen@iotwrt.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Wim Van Sebroeck <wim@linux-watchdog.org>
-Cc: linux-kernel@vger.kernel.org, linux-watchdog@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, linux-rockchip@lists.infradead.org
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/09/2018 07:46 PM, Brian Norris wrote:
-> RK3399 has rst_pulse_length in CONTROL_REG[4:2], determining the length
-> of pulse to issue for system reset. We shouldn't clobber this value,
-> because that might make the system reset ineffective. On RK3399, we're
-> seeing that a value of 000b (meaning 2 cycles) yields an unreliable
-> (partial?) reset, and so we only fully reset after the watchdog fires a
-> second time. If we retain the system default (010b, or 8 clock cycles),
-> then the watchdog reset is much more reliable.
-> 
-> Read-modify-write retains the system value and improves reset
-> reliability.
-> 
-> It seems we were intentionally clobbering the response mode previously,
-> to ensure we performed a system reset (we don't support an interrupt
-> notification), so retain that explicitly.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+Hi Jacob,
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+On Thu, Mar 08, 2018 at 05:47:59PM +0800, Jacob Chen wrote:
+> +config VIDEO_ROCKCHIP_ISP1
+> +	tristate "Rockchip Image Signal Processing v1 Unit driver"
+> +	depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
+> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
+> +	select VIDEOBUF2_DMA_CONTIG
+> +	select V4L2_FWNODE
+> +	default n
+> +	---help---
+> +	  Support for ISP1 on the rockchip SoC.
 
-> ---
-> v2:
->   * factor out helper
->   * handle both start() and restart() cases
->   * note the RESP_MODE handling in commit message
-> ---
->   drivers/watchdog/dw_wdt.c | 23 +++++++++++++++--------
->   1 file changed, 15 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/watchdog/dw_wdt.c b/drivers/watchdog/dw_wdt.c
-> index c2f4ff516230..918357bccf5e 100644
-> --- a/drivers/watchdog/dw_wdt.c
-> +++ b/drivers/watchdog/dw_wdt.c
-> @@ -34,6 +34,7 @@
->   
->   #define WDOG_CONTROL_REG_OFFSET		    0x00
->   #define WDOG_CONTROL_REG_WDT_EN_MASK	    0x01
-> +#define WDOG_CONTROL_REG_RESP_MODE_MASK	    0x02
->   #define WDOG_TIMEOUT_RANGE_REG_OFFSET	    0x04
->   #define WDOG_TIMEOUT_RANGE_TOPINIT_SHIFT    4
->   #define WDOG_CURRENT_COUNT_REG_OFFSET	    0x08
-> @@ -121,14 +122,23 @@ static int dw_wdt_set_timeout(struct watchdog_device *wdd, unsigned int top_s)
->   	return 0;
->   }
->   
-> +static void dw_wdt_arm_system_reset(struct dw_wdt *dw_wdt)
-> +{
-> +	u32 val = readl(dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> +
-> +	/* Disable interrupt mode; always perform system reset. */
-> +	val &= ~WDOG_CONTROL_REG_RESP_MODE_MASK;
-> +	/* Enable watchdog. */
-> +	val |= WDOG_CONTROL_REG_WDT_EN_MASK;
-> +	writel(val, dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> +}
-> +
->   static int dw_wdt_start(struct watchdog_device *wdd)
->   {
->   	struct dw_wdt *dw_wdt = to_dw_wdt(wdd);
->   
->   	dw_wdt_set_timeout(wdd, wdd->timeout);
-> -
-> -	writel(WDOG_CONTROL_REG_WDT_EN_MASK,
-> -	       dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> +	dw_wdt_arm_system_reset(dw_wdt);
->   
->   	return 0;
->   }
-> @@ -152,16 +162,13 @@ static int dw_wdt_restart(struct watchdog_device *wdd,
->   			  unsigned long action, void *data)
->   {
->   	struct dw_wdt *dw_wdt = to_dw_wdt(wdd);
-> -	u32 val;
->   
->   	writel(0, dw_wdt->regs + WDOG_TIMEOUT_RANGE_REG_OFFSET);
-> -	val = readl(dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> -	if (val & WDOG_CONTROL_REG_WDT_EN_MASK)
-> +	if (dw_wdt_is_enabled(dw_wdt))
->   		writel(WDOG_COUNTER_RESTART_KICK_VALUE,
->   		       dw_wdt->regs + WDOG_COUNTER_RESTART_REG_OFFSET);
->   	else
-> -		writel(WDOG_CONTROL_REG_WDT_EN_MASK,
-> -		       dw_wdt->regs + WDOG_CONTROL_REG_OFFSET);
-> +		dw_wdt_arm_system_reset(dw_wdt);
->   
->   	/* wait for reset to assert... */
->   	mdelay(500);
-> 
+I added 'select VIDEOBUF2_VMALLOC' here to fix link failure:
+
+drivers/media/platform/rockchip/isp1/isp_stats.o: In function `rkisp1_register_stats_vdev':
+isp_stats.c:(.text+0x80c): undefined reference to `vb2_vmalloc_memops'
+isp_stats.c:(.text+0x814): undefined reference to `vb2_vmalloc_memops'
+drivers/media/platform/rockchip/isp1/isp_params.o: In function `rkisp1_register_params_vdev':
+isp_params.c:(.text+0x29b4): undefined reference to `vb2_vmalloc_memops'
+isp_params.c:(.text+0x29bc): undefined reference to `vb2_vmalloc_memops'
+
+baruch
+
+-- 
+     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+=}------------------------------------------------ooO--U--Ooo------------{=
+   - baruch@tkos.co.il - tel: +972.2.679.5364, http://www.tkos.co.il -
