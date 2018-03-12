@@ -1,55 +1,37 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v5 1/4] mfd: syscon: Set name of regmap_config
-Date: Mon, 12 Mar 2018 14:06:52 +0000
-Message-ID: <20180312140652.7ffdls4pccih32vk@dell>
-References: <20180312095142.30854-1-jeffy.chen@rock-chips.com>
- <20180312095142.30854-2-jeffy.chen@rock-chips.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL 1/2] Rockchip dts32 fixes for 4.16
+Date: Mon, 12 Mar 2018 15:34:42 +0100
+Message-ID: <CAK8P3a21GKhqGX04u4p3B9ck-D4RPMqwcdsjJoteEM3p6Aoz0g@mail.gmail.com>
+References: <22043255.iBjVuxpHK5@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180312095142.30854-2-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com, Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Arvind Yadav <arvind.>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <22043255.iBjVuxpHK5@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 12 Mar 2018, Jeffy Chen wrote:
+On Mon, Mar 12, 2018 at 9:37 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Hi Arnd, Kevin, Olof
+>
+> please find below some more fixes for 4.16 .
+>
+> I wasn't sure if dtc warning count as fixes, so feel free to ignore the
+> arm32 part, but the arm64 changes are somewhat important as they
+> fix usb and suspend regressions, so please pull
 
-> We are now allowing to register debugfs without a valid device, and not
-> having a valid name will end up using "dummy*" to create debugfs dir.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> ---
-> 
-> Changes in v5:
-> CC lee.jones@linaro.org
-> 
-> Changes in v4: None
-> Changes in v3:
-> Modify commit message.
-> 
->  drivers/mfd/syscon.c | 1 +
->  1 file changed, 1 insertion(+)
+Pulled into fixes. This one is a bit of a grey area. It's something
+that I'd just leave up to you as the downstream maintainer, and
+I picked it up since you sent the pull request.
 
-Looks okay.  Applied, thanks.
-
-> diff --git a/drivers/mfd/syscon.c b/drivers/mfd/syscon.c
-> index fc9ba0ea4e44..b6d05cd934e6 100644
-> --- a/drivers/mfd/syscon.c
-> +++ b/drivers/mfd/syscon.c
-> @@ -110,6 +110,7 @@ static struct syscon *of_syscon_register(struct device_node *np)
->  	syscon_config.reg_stride = reg_io_width;
->  	syscon_config.val_bits = reg_io_width * 8;
->  	syscon_config.max_register = resource_size(&res) - reg_io_width;
-> +	syscon_config.name = of_node_full_name(np);
->  
->  	regmap = regmap_init_mmio(NULL, base, &syscon_config);
->  	if (IS_ERR(regmap)) {
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+       Arnd
