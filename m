@@ -1,10 +1,10 @@
 From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: [v6-1,15/17] arm64: dts: rockchip: add isp0 node for rk3399
-Date: Mon, 12 Mar 2018 11:37:11 +0800
-Message-ID: <1520825831-24229-1-git-send-email-zhengsq@rock-chips.com>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+Subject: [PATCH v6-1,15/17] arm64: dts: rockchip: add isp0 node for rk3399
+Date: Mon, 12 Mar 2018 11:49:07 +0800
+Message-ID: <1520826547-24825-1-git-send-email-zhengsq@rock-chips.com>
+References: <20180308094807.9443-16-jacob-chen@iotwrt.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+In-Reply-To: <20180308094807.9443-16-jacob-chen@iotwrt.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org, Shunqian Zheng <zhengsq@rock-chips.com>, Jacob Chen <jacob2.chen@rock-chips.com>
