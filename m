@@ -1,52 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dts64 fixes for 4.16
-Date: Mon, 12 Mar 2018 09:38:24 +0100
-Message-ID: <304170820.2ZTNuuGKzZ@phil>
-References: <22043255.iBjVuxpHK5@phil>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [RESEND PATCH v5 2/5] dt-bindings: pwm-backlight: add PWM delay
+ proprieties.
+Date: Mon, 12 Mar 2018 09:10:41 +0000
+Message-ID: <20180312091041.5sk3t27n5tryikie@dell>
+References: <20180216174034.15936-1-enric.balletbo@collabora.com>
+ <20180216174034.15936-2-enric.balletbo@collabora.com>
+ <20180219111136.jpv4wtcm6h2hfwac@oak.lan>
+ <CAFqH_51EGNzMx76WrjEr9Ss7QoU8FSHAhUf2OeencUC-XXtSWQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <22043255.iBjVuxpHK5@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAFqH_51EGNzMx76WrjEr9Ss7QoU8FSHAhUf2OeencUC-XXtSWQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo Serra <eballetbo@gmail.com>
+Cc: Daniel Thompson <daniel.thompson@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit ca9eee95a2decc6f60bed65b5b836a26bff825c1:
+FAO Thierry,
 
-  arm64: dts: rockchip: Fix DWMMC clocks (2018-02-16 10:30:25 +0100)
+> oh, devicetree mailing list is not added, sorry, so cc'ing ...
+> 
+> 2018-02-19 12:11 GMT+01:00 Daniel Thompson <daniel.thompson@linaro.org>:
+> > On Fri, Feb 16, 2018 at 06:40:31PM +0100, Enric Balletbo i Serra wrote:
+> >> Hardware needs a delay between setting an initial (non-zero) PWM and
+> >> enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
+> >> this delay in milli seconds. Hardware also needs a delay between disabing
+> >> the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
+> >> is this delay in milli seconds.
+> >>
+> >> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> >> Acked-by: Pavel Machek <pavel@ucw.cz>
+> >
+> > Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+> >
+> 
+> Lee, I guess that after Daniel ack the only ack missing here is one
+> from Rob Herring?
 
-are available in the Git repository at:
+I'd also like an ACK from the PWM Maintainer if possible.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.16-rockchip-dts64fixes-2
+> Rob, if you have a chance to look at this I'd appreciate.
 
-for you to fetch changes up to 835a1d5cdefffe08bec46efff11daea9b389baa9:
-
-  Revert "arm64: dts: rockchip: add usb3-phy otg-port support for rk3399" (2018-03-02 08:36:31 +0100)
-
-----------------------------------------------------------------
-Pinctrl got a fix in 4.16-rc1, that exposed an issue with wifi-related
-pinctrl hogs on rk3399-gru-kevin that broke suspend. This gets fixed
-by moving the wifi pinctrl to the correct node.
-Also revert the usb3 phy-port enablement, as a missing feature in the
-type-c phy breaks usb on all non-gru rk3399 boards.
-
-----------------------------------------------------------------
-Douglas Anderson (1):
-      arm64: dts: rockchip: Fix rk3399-gru-* s2r (pinctrl hogs, wifi reset)
-
-Heiko Stuebner (1):
-      Revert "arm64: dts: rockchip: add usb3-phy otg-port support for rk3399"
-
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 16 +++-------------
- arch/arm64/boot/dts/rockchip/rk3399.dtsi     |  8 ++++----
- 2 files changed, 7 insertions(+), 17 deletions(-)
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
