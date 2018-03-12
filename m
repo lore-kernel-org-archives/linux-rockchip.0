@@ -1,61 +1,103 @@
-From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: Re: [v6-1,15/17] arm64: dts: rockchip: add isp0 node for rk3399
-Date: Mon, 12 Mar 2018 11:51:05 +0800
-Message-ID: <ef1dd0cf-a9ca-7590-0bdf-a0aa303776b6@rock-chips.com>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
- <1520825831-24229-1-git-send-email-zhengsq@rock-chips.com>
-Reply-To: zhengsq@rock-chips.com
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v3 0/6] drm/panel: simple: Add mode support to devicetree
+Date: Mon, 12 Mar 2018 09:35:08 +0100
+Message-ID: <20180312083508.GG23060@ulmo>
+References: <20180208174855.55620-1-seanpaul@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1520825831-24229-1-git-send-email-zhengsq@rock-chips.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Jacob Chen <jacob2.chen@rock-chips.com>
+Content-Type: multipart/mixed; boundary="===============0637515178=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180208174855.55620-1-seanpaul@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, =?utf-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Ah, sorry, I used a wrong Message-Id in In-reply-to, please ignore this one.
 
-Sorry about that.
+--===============0637515178==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="w/VI3ydZO+RcZ3Ux"
+Content-Disposition: inline
 
 
-On 2018年03月12日 11:37, Shunqian Zheng wrote:
-> rk3399 have two ISP, but we havn't test isp1, so just add isp0 at present.
->
-> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 18 ++++++++++++++++++
->   1 file changed, 18 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 2605118..5729786 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1614,6 +1614,24 @@
->   		status = "disabled";
->   	};
->   
-> +	isp0: isp0@ff910000 {
-> +		compatible = "rockchip,rk3399-cif-isp";
-> +		reg = <0x0 0xff910000 0x0 0x4000>;
-> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks = <&cru SCLK_ISP0>,
-> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
-> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
-> +		clock-names = "clk_isp",
-> +			      "aclk_isp", "aclk_isp_wrap",
-> +			      "hclk_isp", "hclk_isp_wrap";
-> +		assigned-clocks = <&cru SCLK_ISP0>, <&cru ACLK_ISP0>;
-> +		assigned-clock-rates = <500000000>, <400000000>;
-> +
-> +		power-domains = <&power RK3399_PD_ISP0>;
-> +		iommus = <&isp0_mmu>;
-> +		status = "disabled";
-> +	};
-> +
->   	isp0_mmu: iommu@ff914000 {
->   		compatible = "rockchip,iommu";
->   		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+--w/VI3ydZO+RcZ3Ux
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Feb 08, 2018 at 12:48:47PM -0500, Sean Paul wrote:
+> Hello!
+>=20
+> Here's v3 of the set. I've reintroduced the single display timing node
+> in the dt binding from v1, and left the improved docs and patch split
+> from v2. I've also added a patch to clarify that a single display timing
+> node should always be named panel-timing, which was feedback from v1.
+>=20
+> Cover letter from v1 (was the same in v2) is here:
+> https://lists.freedesktop.org/archives/dri-devel/2018-February/164886.html
+>=20
+> Thanks for the reviews so far,
+>=20
+> Sean
+>=20
+>=20
+> Sean Paul (6):
+>   dt-bindings: Clarify timing subnode use as panel-timing
+>   dt-bindings: Add headings to simple-panel bindings
+>   dt-bindings: Add panel-timing subnode to simple-panel
+>   drm/panel: simple: Add ability to override typical timing
+>   drm/panel: simple: Use display_timing for lq123p1jx31
+>   arm64: dts: rockchip: Specify override mode for kevin panel
+>=20
+>  .../bindings/display/panel/display-timing.txt      |  5 ++
+>  .../bindings/display/panel/simple-panel.txt        | 34 ++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  | 14 ++++
+>  drivers/gpu/drm/panel/panel-simple.c               | 94 ++++++++++++++++=
+++----
+>  4 files changed, 132 insertions(+), 15 deletions(-)
+
+I've applied patches 1, 2 and 5 of the series, 3 and 4 had comments and
+6 will need to go through the Rockchip tree.
+
+Thierry
+
+--w/VI3ydZO+RcZ3Ux
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlqmO7kACgkQ3SOs138+
+s6GNaQ/+KExPzrDIOtSeVBQUpZgLqAss7b5TkdE+d9uJ19GJWNPYzvpf0WwDg4DW
+r2YIShadalmD3Z85qQpi4RaydU0V9wlw6CKPSF3PZ8fgWom78ceKjmQfVSQmLZaf
+9wPInSOmNdQIDFoM9eCOcE8Y6B1XGHZEzD4gqbuJhO/JkDjTXEaHumFW9V2yfBis
+s4Op/dJbRLD5SK6NU3EY4mj6JmtLTpi3elEDF03y8fohw6s0Gwb2eG4aXFmU9lUc
+L/UjS1cPlb2XKwn3oMnewj/zGoCL5ADfYJ9R6dxVOkquh1iPYCQk1xwxsTvgJKEK
+946/9dfowKB0mL+5vJ4JcXTY8DDph7okxnOvrY75kas15SncNuecp5cNVQtoCTMd
+bXiWinbp4HfWNCOkgNfiJMsfmIqAc0O9R2Nqaxxkh+RlEvzscR+IW4ytoxzg+/2M
+lmIkq0aT76WZU8OE5zF/aMi6ac5LLhxSw/Gc6xMmf5BMHfX42oIJoF0zt9J63OWH
+jz4r4ZUJjOfwd9pjzHm706TH8SeXBp6jQsYp3Z37w9oaF2viO5nQaz9JkHo8FuvZ
+8hSs0pkwbKtl/agwaPZ/CuLuvf69DhSGzM+VMMZc/EbFWSKNN4I00d4G+YBd3mL6
+L49WuMUg1ER9nmVHuCW4+v7yj8rV36NuXnlPwh4XGClnaR3UCW0=
+=PmFI
+-----END PGP SIGNATURE-----
+
+--w/VI3ydZO+RcZ3Ux--
+
+--===============0637515178==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0637515178==--
