@@ -1,44 +1,75 @@
-From: Baruch Siach <baruch@tkos.co.il>
-Subject: Re: [PATCH v6 09/17] media: rkisp1: add rockchip isp1 core driver
-Date: Sun, 11 Mar 2018 08:58:05 +0200
-Message-ID: <20180311065805.ezrjm4wn5mnorvgg@sapphire.tkos.co.il>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
- <20180308094807.9443-10-jacob-chen@iotwrt.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Shunqian Zheng <zhengsq@rock-chips.com>
+Subject: [PATCH] arm64: dts: rockchip: assign clock rate for ACLK_VIO
+Date: Mon, 12 Mar 2018 09:50:48 +0800
+Message-ID: <1520819448-8316-1-git-send-email-zhengsq@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180308094807.9443-10-jacob-chen@iotwrt.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, dianders@chromium.org, Shunqian Zheng <zhengsq@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
+The ACLK_VIO is a parent clock used by a several children,
+its suggested clock rate is 400MHz. Right now it gets 400MHz
+because it sources from CPLL(800M) and divides by 2 after reset.
+It's good not to rely on default values like this, so let's
+explicitly set it.
+NOTE: it's expected that at least one board may override cru node and
+set the CPLL to 1.6 GHz. On that board it will be very important to be
+explicit about aclk-vio being 400 MHz.
 
-On Thu, Mar 08, 2018 at 05:47:59PM +0800, Jacob Chen wrote:
-> +config VIDEO_ROCKCHIP_ISP1
-> +	tristate "Rockchip Image Signal Processing v1 Unit driver"
-> +	depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
-> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	select VIDEOBUF2_DMA_CONTIG
-> +	select V4L2_FWNODE
-> +	default n
-> +	---help---
-> +	  Support for ISP1 on the rockchip SoC.
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 6 ++++--
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi     | 6 ++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
-I added 'select VIDEOBUF2_VMALLOC' here to fix link failure:
-
-drivers/media/platform/rockchip/isp1/isp_stats.o: In function `rkisp1_register_stats_vdev':
-isp_stats.c:(.text+0x80c): undefined reference to `vb2_vmalloc_memops'
-isp_stats.c:(.text+0x814): undefined reference to `vb2_vmalloc_memops'
-drivers/media/platform/rockchip/isp1/isp_params.o: In function `rkisp1_register_params_vdev':
-isp_params.c:(.text+0x29b4): undefined reference to `vb2_vmalloc_memops'
-isp_params.c:(.text+0x29bc): undefined reference to `vb2_vmalloc_memops'
-
-baruch
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 199a511..7d8d5de 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -580,7 +580,8 @@
+ 		<&cru PCLK_PERIHP>,
+ 		<&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
+ 		<&cru PCLK_PERILP0>, <&cru ACLK_CCI>,
+-		<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>;
++		<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>,
++		<&cru ACLK_VIO>;
+ 	assigned-clock-rates =
+ 		<600000000>, <800000000>,
+ 		<1000000000>,
+@@ -588,7 +589,8 @@
+ 		<37500000>,
+ 		<100000000>, <100000000>,
+ 		<50000000>, <800000000>,
+-		<100000000>, <50000000>;
++		<100000000>, <50000000>,
++		<400000000>;
+ };
+ 
+ &emmc_phy {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index d79e9b3..91ee951 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1259,7 +1259,8 @@
+ 			<&cru PCLK_PERIHP>,
+ 			<&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
+ 			<&cru PCLK_PERILP0>, <&cru ACLK_CCI>,
+-			<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>;
++			<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>,
++			<&cru ACLK_VIO>;
+ 		assigned-clock-rates =
+ 			 <594000000>,  <800000000>,
+ 			<1000000000>,
+@@ -1267,7 +1268,8 @@
+ 			  <37500000>,
+ 			 <100000000>,  <100000000>,
+ 			  <50000000>, <600000000>,
+-			 <100000000>,   <50000000>;
++			 <100000000>,   <50000000>,
++			 <400000000>;
+ 	};
+ 
+ 	grf: syscon@ff770000 {
 -- 
-     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-=}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch@tkos.co.il - tel: +972.2.679.5364, http://www.tkos.co.il -
+1.9.1
