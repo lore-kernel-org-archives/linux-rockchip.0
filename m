@@ -1,35 +1,26 @@
-From: Doug Anderson <dianders@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [PATCH] clk: rockchip: Add 1.6GHz PLL rate
-Date: Tue, 13 Mar 2018 14:57:51 -0700
-Message-ID: <CAD=FV=UK-Rnto+iH8TSuTyzt010HT8Ujk0TX74hA1D5Lh4HfOQ@mail.gmail.com>
+Date: Wed, 14 Mar 2018 00:38:40 +0100
+Message-ID: <13704601.M15qmmjcHi@phil>
 References: <20180313203719.75639-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20180313203719.75639-1-dbasehore@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Derek Basehore <dbasehore@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, sboyd@kernel.org, Michael Turquette <mturquette@baylibre.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, Mar 13, 2018 at 1:37 PM, Derek Basehore <dbasehore@chromium.org> wrote:
+Am Dienstag, 13. März 2018, 21:37:19 CET schrieb Derek Basehore:
 > We need this rate to generate 100, 200, and 228.57MHz from the same
 > PLL. 228.57MHz is useful for a pixel clock when the VPLL is used for
 > and external display.
->
+> 
 > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> ---
->  drivers/clk/rockchip/clk-rk3399.c | 1 +
->  1 file changed, 1 insertion(+)
 
-Looks good to me.  I spent a little bit of time poking at this and I
-agreed it's the best way to make 1.6 GHz in
-<http://crosreview.com/956677>.  Lin Huang at Rockchip also said:
+applied for 4.17
 
-> yes, we also use this setting for 1.6GHz in our internal branch.
-
-...and they seem to agree this is a sane setting.  Thus:
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Thanks
+Heiko
