@@ -1,83 +1,59 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH 2/3] soc: rockchip: power-domain: Use
- of_clk_get_parent_count() instead of open coding
-Date: Mon, 12 Mar 2018 15:32:25 -0700
-Message-ID: <152089394512.147033.16036395348488651030@swboyd.mtv.corp.google.com>
-References: <1516375101-29836-1-git-send-email-geert+renesas@glider.be>
- <1516375101-29836-3-git-send-email-geert+renesas@glider.be>
- <11171053.oOJPuGlHoK@phil>
- <CAEG3pNCioW_FVXj3-j4KC_yO6ZYGXQB_eanHWSb9NUE9kYsWag@mail.gmail.com>
- <CAMuHMdVsb+5T-DYfF9v6ANhVxhRk6_r+XPA34mW7Q=90HnitAA@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v5 06/36] drm/rockchip: Only wait for panel ACK on PSR
+ entry
+Date: Tue, 13 Mar 2018 01:26:41 +0100
+Message-ID: <804ab508-40b8-71fa-c40b-b54f70fcc453@collabora.com>
+References: <20180309222327.18689-1-enric.balletbo@collabora.com>
+ <20180309222327.18689-7-enric.balletbo@collabora.com>
+ <1909495.WV5cT3kS9W@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAMuHMdVsb+5T-DYfF9v6ANhVxhRk6_r+XPA34mW7Q=90HnitAA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>, Michael Turquette <mturquette@baylibre.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, Jonathan Hunter <jonathanh@nvidia.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-clk <linux-clk@vger.kernel.org>, "Stephen Boyd <sboyd@codeaurora.org>,
- Emilio Lopez <emilio@elopez.com.ar>,
- Hans de Goede <hdegoede@redhat.com>, linux-clk <linux-clk@vger.kernel.org>,
- linux-arm-kernel" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1909495.WV5cT3kS9W@diego>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, a.hajda@samsung.com, ykk@rock-chips.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, linux-input@vger.kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Geert Uytterhoeven (2018-03-02 05:15:35)
-> Hi Mike,
+
+
+On 12/03/18 17:58, Heiko Stübner wrote:
+> Hi,
 > 
-> On Sun, Feb 18, 2018 at 8:09 PM, Michael Turquette
-> <mturquette@baylibre.com> wrote:
-> > Moving of_clk_get_parent_count to clk.h seems reasonable to me. It's
-> > more of an of-specific helper than a provider-specific helper.
-> >
-> > Anyone up to submit a patch so that this one doesn't need to include
-> > clk-provider.h?
-> 
-> I gave it a try.
-> Just moving of_clk_get_parent_count() from clk-provider.h to clk.h causes
-> breakage, as half of the clock providers using of_clk_get_parent_count()
-> do not include <linux/clk.h>:
-> 
->     drivers/clk/at91/clk-generated.c
->     drivers/clk/at91/clk-main.c
->     drivers/clk/at91/clk-master.c
->     drivers/clk/at91/clk-programmable.c
->     drivers/clk/at91/clk-slow.c
->     drivers/clk/at91/clk-smd.c
->     drivers/clk/at91/clk-usb.c
->     drivers/clk/at91/sckc.c
->     drivers/clk/clk-axi-clkgen.c
->     drivers/clk/clk-gpio.c
->     drivers/clk/clk-hsdk-pll.c
->     drivers/clk/h8300/clk-div.c
->     drivers/clk/h8300/clk-h8s2678.c
->     drivers/clk/renesas/clk-div6.c
->     drivers/clk/ti/composite.c
->     drivers/clk/ti/gate.c
->     drivers/clk/ti/mux.c
-> 
-> So our options are:
->   1. Add #include <linux/clk.h> to each of the above,
->   2. Add #include <linux/clk.h> to <linux/clk-provider.h>,
->   3. Do nothing, i.e. users of of_clk_get_parent_count () need to
->       #include <linux/clk-provider.h>, cfr. this patch series.
-> 
-> Any preference? Any option I'm missing?
+> the subject is misleading I think, as this is touching only the generic
+> bridge code and not anything Rockchip-related, so should probably
+> be "drm/bridge"?
 > 
 
-#2 is a definite no.
+Right, I'll fix this when I need to send another version, I'll wait, for now, a
+bit more for reviews on the other patches.
 
-How about option #4? Move of_clk_get_parent_count() and
-of_clk_get_parent_name() to a new include/linux/of_clk.h, include that
-in clk-provider.h, and then have non-clk provider drivers include that
-file? After that, we can also move of_clk_init() into this new file, and
-then non-provider arch code can call of_clk_init() without including the
-provider APIs. I'd also like to get rid of the include of linux/of.h in
-clk-provider.h, but that's a ways away.
+Thanks
+  Enric
+
+> Am Freitag, 9. März 2018, 23:22:57 CET schrieb Enric Balletbo i Serra:
+>> From: zain wang <wzz@rock-chips.com>
+>>
+>> We currently wait for the panel to mirror our intended PSR state
+>> before continuing on both PSR enter and PSR exit. This is really
+>> only important to do when we're entering PSR, since we want to
+>> be sure the last frame we pushed is being served from the panel's
+>> internal fb before shutting down the soc blocks (vop/analogix).
+>>
+>> This patch changes the behavior such that we only wait for the
+>> panel to complete the PSR transition when we're entering PSR, and
+>> to skip verification when we're exiting.
+>>
+>> Cc: Stéphane Marchesin <marcheu@chromium.org>
+>> Cc: Sonny Rao <sonnyrao@chromium.org>
+>> Signed-off-by: zain wang <wzz@rock-chips.com>
+>> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+>> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> 
+> change itself looks good, so
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> 
