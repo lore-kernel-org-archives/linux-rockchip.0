@@ -1,53 +1,80 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 0/3] drm/rockchip: VOP interrupt fixes
-Date: Wed, 14 Mar 2018 14:25:39 +0100
-Message-ID: <9337520.8DqYEZO4hX@diego>
-References: <20180220130120.5254-1-marc.zyngier@arm.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] Rockchip clock updates for 4.17 round 1
+Date: Wed, 14 Mar 2018 18:22:47 +0100
+Message-ID: <1808510.rdFFBGyEiV@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180220130120.5254-1-marc.zyngier@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDIwLiBGZWJydWFyIDIwMTgsIDE0OjAxOjE3IENFVCBzY2hyaWViIE1hcmMg
-WnluZ2llcjoKPiBUaGlzIHNtYWxsIHNlcmllcyBmaXhlcyBhIG51bWJlciBvZiBpc3N1ZXMgdGhh
-dCBJIGZvdW5kIHdoaWxlIHRyeWluZwo+IHRvIGdldCBrZXhlYyB3b3JraW5nIG9uIHRoZSBDaHJv
-bWVib29rIFBsdXMgKGFrYSByazMzOTktZ3J1LWtldmluKSBpbgo+IG9yZGVyIHRvIHVzZSBpdCBh
-cyBzb21lIHNvcnQgb2YgaW50ZXJhY3RpdmUgYm9vdGxvYWRlci4KPiAKPiBUaGUgbWFpbiBpc3N1
-ZSBpcyB0aGF0IHRoZSB2b3AgZHJpdmVyIGV4cGVjdHMgdGhlIGludGVycnVwdHMgdG8gYmUKPiBj
-bGVhcmVkIGFuZCBkaXNhYmxlZCB3aGVuIGJvb3RpbmcuIE5vdGhpbmcgY291bGQgYmUgbW9yZSB3
-cm9uZy4gVGhlCj4gZGV2aWNlIHNob3VsZCBiZSBleHBlY3RlZCB0byBiZSBhbGl2ZSBhbmQgc2Ny
-ZWFtaW5nLCBhbmQgaXQgaXMgdGhlCj4gZHJpdmVyJ3Mgam9iIHRvIHB1dCBpdCBiYWNrIGludG8g
-YSBzYW5lIHN0YXRlLgo+IAo+IFRoaXMgaXMgd2hhdCB0aGUgZmlyc3QgcGF0Y2ggZG9lcywgbWFr
-aW5nIHN1cmUgdGhlIGludGVycnVwdCBpcwo+IHJlcXVlc3RlZCBvbmx5IHdoZW4gdGhlIGRldmlj
-ZSBoYXMgYmVlbiBwdXQgYmFjayBpbnRvIGEga25vd24KPiBzdGF0ZS4gR2l2ZW4gdGhhdCB0aGlz
-IGlzIGFuIG9ic2VydmFibGUgYnVnIHRoYXQgaGFzIGJlZW4gYXJvdW5kIGZvciBhCj4gd2hpbGUs
-IEkndmUgdGFnZ2VkIGl0IHdpdGggYSBDYzogc3RhYmxlLgo+IAo+IFRoZSB0d28gZm9sbG93aW5n
-IHBhdGNoZXMgYXJlIGxlc3MgaW1wb3J0YW50OiBVc2luZyBtZW1jcHkgb24gTU1JTwo+IHJhbmdl
-cyBpcyBwbGFpbiB3cm9uZywgYW5kIHVzaW5nIHNwaW5fbG9ja19pcnFzYXZlIGluIGlycSBjb250
-ZXh0IGlzCj4gc2xpZ2h0bHkgcG9pbnRsZXNzLgo+IAo+IFdpdGggdGhlc2UgcGF0Y2hlcyBpbiwg
-SSdtIGFibGUgdG8gZ2V0IGtleGVjIHRvIHdvcmsuIFRoZXJlIGlzIHN0aWxsCj4gc29tZSBmdW5u
-eSBpc3N1ZXMgYXQgdGhlIGlvbW11IGxldmVsLCBidXQgdGhhdCdzIGZvciBhbm90aGVyIGRheS4K
-PiAKPiBQYXRjaGVzIG9uIHRvcCBvZiA0LjE2LXJjMi4KPiAKPiBNYXJjIFp5bmdpZXIgKDMpOgo+
-ICAgZHJtL3JvY2tjaGlwOiBDbGVhciBhbGwgaW50ZXJydXB0cyBiZWZvcmUgcmVxdWVzdGluZyB0
-aGUgSVJRCj4gICBkcm0vcm9ja2NoaXA6IERvIG5vdCB1c2UgbWVtY3B5IGZvciBNTUlPIGFkZHJl
-c3Nlcwo+ICAgZHJtL3JvY2tjaGlwOiBEb24ndCB1c2Ugc3Bpbl9sb2NrX2lycXNhdmUgaW4gaW50
-ZXJydXB0IGNvbnRleHQKClRlc3RlZCBvbiByazMwMzYgKGhkbWkpLCByazMyODggKGhkbWkrZWRw
-KSBhbmQgcmszMzk5IChlZHApIGFuZAphcHBsaWVkIHRvIGRybS1taXNjLW5leHQgYWZ0ZXIgc2xp
-Z2h0bHkgZml4aW5nIHBhdGNoMSBmb3IgYSByZWNlbnQgY2hhbmdlCnRvIHRoZSBjb2RlIGFyb3Vu
-ZCB0aGUgb2xkIHJlcXVlc3RfaXJxIHBvc2l0aW9uLCBzbyBpdCBhcHBsaWVzLgoKClRoYW5rcwpI
-ZWlrbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Mike, Stephen,
+
+please find below Rockchip clock changes targetted at 4.17.
+
+As you can see in the tag, making the rk3328 ready for display output
+is the biggest part, otherwise there are some smaller things for the
+other parts. So please pull.
+
+Thanks
+Heiko
+
+
+The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
+
+  Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.17-rockchip-clk-1
+
+for you to fetch changes up to 4ee3fd4abeca30d530fe67972f1964f7454259d6:
+
+  clk: rockchip: Add 1.6GHz PLL rate for rk3399 (2018-03-14 00:37:22 +0100)
+
+----------------------------------------------------------------
+The rk3328 got the most love this time, preparing it for supplying actual
+display output in the future and actually protecting all necessary clocks.
+The rk3399 simply got a special 1.6GHz rate that is going to be needed
+for a board and the core code got a fix to actually free allocated memory
+in error case as well as making sure the clock-phases don't return bad
+values and stay the same on rate changes.
+
+----------------------------------------------------------------
+Derek Basehore (1):
+      clk: rockchip: Add 1.6GHz PLL rate for rk3399
+
+Heiko Stuebner (6):
+      clk: rockchip: fix hclk_vio_niu on rk3328
+      clk: rockchip: remove HCLK_VIO from rk3328 dt header
+      clk: rockchip: export sclk_hdmi_sfc on rk3328
+      clk: rockchip: protect all remaining rk3328 interconnect clocks
+      clk: rockchip: remove ignore_unused flag from rk3328 vio_h2p clocks
+      clk: rockchip: document hdmi_phy external input for rk3328
+
+Shawn Lin (3):
+      clk: rockchip: Free the memory on the error path
+      clk: rockchip: Prevent calculating mmc phase if clock rate is zero
+      clk: rockchip: Restore the clock phase after the rate was changed
+
+Zheng Yang (1):
+      clk: rockchip: add flags for rk3328 dclk_lcdc
+
+ .../bindings/clock/rockchip,rk3328-cru.txt         |  1 +
+ drivers/clk/rockchip/clk-mmc-phase.c               | 62 +++++++++++++++++++-
+ drivers/clk/rockchip/clk-rk3328.c                  | 67 ++++++++++++++--------
+ drivers/clk/rockchip/clk-rk3399.c                  |  1 +
+ drivers/clk/rockchip/clk.c                         | 22 +++++--
+ include/dt-bindings/clock/rk3328-cru.h             |  1 -
+ 6 files changed, 124 insertions(+), 30 deletions(-)
