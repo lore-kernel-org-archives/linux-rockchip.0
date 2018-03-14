@@ -1,76 +1,45 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v5 26/36] drm/bridge: analogix_dp: Properly disable aux
- chan retries on rockchip
-Date: Wed, 14 Mar 2018 12:23:49 +0530
-Message-ID: <4044e328-09e4-a0d1-61d4-164fed221c8f@codeaurora.org>
-References: <20180309222327.18689-1-enric.balletbo@collabora.com>
- <20180309222327.18689-27-enric.balletbo@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/6] phy: rockchip-typec: fall back to working in host-mode if extcon is missing.
+Date: Wed, 14 Mar 2018 09:14:43 +0100
+Message-ID: <20019382.PXhIOVQJGo@diego>
+References: <20180301152515.20940-1-enric.balletbo@collabora.com> <20180301152515.20940-2-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180309222327.18689-27-enric.balletbo@collabora.com>
-Content-Language: en-US
+In-Reply-To: <20180301152515.20940-2-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, dianders@chromium.org, a.hajda@samsung.com, ykk@rock-chips.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, linux-input@vger.kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com, kuankuan.y@gmail.com, hshi@chromium.org, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@chromium.org>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, kishon@ti.com
+Cc: groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Kishon,
 
-
-On Saturday 10 March 2018 03:53 AM, Enric Balletbo i Serra wrote:
-> From: Douglas Anderson <dianders@chromium.org>
+Am Donnerstag, 1. M�rz 2018, 16:25:10 CET schrieb Enric Balletbo i Serra:
+> Right now the rockchip type-c phy does fail probing when no extcon is
+> detected. Some boards get the cable-state via the extcon interface and
+> have this supported, other boards seem to use the fusb302 chip or
+> another but the driver currently does not seem to utilize the extcon
+> interface to report the cable-state. And, other, just connect the type-c
+> to a standard USB-A port so use no controller at all. A missing extcon
+> shouldn't fail to probe, instead, should just fall back to working in
+> host-mode if it cannot get the extcon.
 > 
-> The comments in analogix_dp_init_aux() claim that we're disabling aux
-> channel retries, but then right below it for Rockchip it sets them to
-> 3.  If we actually need 3 retries for Rockchip then we could adjust
-> the comment, but it seems more likely that we want the same retry
-> behavior across all platforms.
-
-Reviewed-by: Archit Taneja <architt@codeaurora.org>
-
-Thanks,
-Archit
-
-> 
-> Cc: Stéphane Marchesin <marcheu@chromium.org>
-> Cc: 征增 王 <wzz@rock-chips.com>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
+> Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
+> support for rk3399") Reported-by: Vicente Bergas <vicencb@gmail.com>
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> ---
-> 
->   drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 ++++++++-------
->   1 file changed, 8 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> index 58e8a28e99aa..a5f2763d72e4 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-> @@ -481,15 +481,16 @@ void analogix_dp_init_aux(struct analogix_dp_device *dp)
->   
->   	analogix_dp_reset_aux(dp);
->   
-> -	/* Disable AUX transaction H/W retry */
-> +	/* AUX_BIT_PERIOD_EXPECTED_DELAY doesn't apply to Rockchip IP */
->   	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-> -		reg = AUX_BIT_PERIOD_EXPECTED_DELAY(0) |
-> -		      AUX_HW_RETRY_COUNT_SEL(3) |
-> -		      AUX_HW_RETRY_INTERVAL_600_MICROSECONDS;
-> +		reg = 0;
->   	else
-> -		reg = AUX_BIT_PERIOD_EXPECTED_DELAY(3) |
-> -		      AUX_HW_RETRY_COUNT_SEL(0) |
-> -		      AUX_HW_RETRY_INTERVAL_600_MICROSECONDS;
-> +		reg = AUX_BIT_PERIOD_EXPECTED_DELAY(3);
-> +
-> +	/* Disable AUX transaction H/W retry */
-> +	reg |= AUX_HW_RETRY_COUNT_SEL(0) |
-> +	       AUX_HW_RETRY_INTERVAL_600_MICROSECONDS;
-> +
->   	writel(reg, dp->reg_base + ANALOGIX_DP_AUX_HW_RETRY_CTL);
->   
->   	/* Receive AUX Channel DEFER commands equal to DEFFER_COUNT*64 */
-> 
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+I did revert the original commit mentioned in the fixes tag for 4.16-rc
+but it would nevertheless be really cool if these 2 patches (code + binding)
+could make it into your tree for 4.17 :-)
+
+And ideally also with the other 5 patches from Enric starting at
+	[PATCH v3 1/6] phy: rockchip-typec: deprecate some DT properties for various register fields.
+
+from 2018-02-16.
+
+
+Thanks
+Heiko
