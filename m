@@ -1,16 +1,13 @@
-From: hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: assign correct id for pclk_ddr and hclk_sd
- in rk3399
-Date: Thu, 15 Mar 2018 17:12:01 +0800
-Message-ID: <df78009d-924f-6b9c-6bf6-f1f69d162708@rock-chips.com>
-References: <1521104071-19595-1-git-send-email-hl@rock-chips.com>
- <18794d71-ec37-7af4-3de6-7a43a5c66010@rock-chips.com>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] mmc: dw_mmc-rockchip: correct property names in debug
+Date: Thu, 15 Mar 2018 11:23:26 +0100
+Message-ID: <CAPDyKFro5hvuEKuiPHCg9WEf7Ysmj_9GJ_bykquq9+okA2Sk_w@mail.gmail.com>
+References: <20180301103625.7285-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <18794d71-ec37-7af4-3de6-7a43a5c66010-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20180301103625.7285-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,48 +17,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, diander-F7+t8E8rja9pdisugbWFHA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2hhd24sCgoKT24gVGh1cnNkYXksIE1hcmNoIDE1LCAyMDE4IDA1OjAxIFBNLCBTaGF3biBM
-aW4gd3JvdGU6Cj4gSGkgSHVhbmcsCj4KPiBPbiAyMDE4LzMvMTUgMTY6NTQsIExpbiBIdWFuZyB3
-cm90ZToKPj4gQXNzaWduIGlkIFBDTEtfRERSIHRvIHBjbGtfZGRyLCBpZCBIQ0xLX1NEIHRvIGhj
-bGtfc2QsIHNvIHdlIGNhbgo+PiBhc3NpZ24gZnJlcXVlbmN5IGZvciB0aGVtIGluIGR0cy4KPgo+
-IEknbSBjdXJpb3VzIHVuZGVyIHdoaWNoIGNvbmRpdGlvbiB0aGF0IHdlIG5lZWQgYXNzaWduIGZy
-ZXF1ZW5jeSBmb3IKPiBoY2xrX3NkPwpXZSBtYXkgc2V0IENQTEwgZnJlcXVlbmN5IGhpZ2hlciB0
-aGFuIDgwME1Ieiwgd2l0aCB0aGF0IHdlIG5lZWQgYXNzaWduIGNsb2NrCnRvIGhjbGtfc2QsIG90
-aGVyd2lzZSBpdCB3aWxsIGV4Y2VlZCAyMDBNSHosIHNpbmNlIHdlIHVzZSB0aGUgZGVmYXVsdCAK
-Y3J1IHJlZ2lzdGVyIHZhbHVlIHRvIGdldCBoY2xrX3NkIGZvciBub3cuCnlvdSBjYW4gY2hlY2sK
-aHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS9jL2Nocm9taXVtb3MvdGhp
-cmRfcGFydHkva2VybmVsLysvOTU2Njc4LzUgCgo+Cj4+Cj4+IENoYW5nZS1JZDogSTZjNGQxNWQz
-N2RkYWJlNGVkMzRlMjM1MWNmMjZlNjYwNjcyYWU5ZWUKPj4gU2lnbmVkLW9mZi1ieTogTGluIEh1
-YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+IMKgIGRyaXZlcnMvY2xrL3JvY2tjaGlw
-L2Nsay1yazMzOTkuYyB8IDQgKystLQo+PiDCoCAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25z
-KCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2No
-aXAvY2xrLXJrMzM5OS5jIAo+PiBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+
-PiBpbmRleCA2ODQ3MTIwLi5hMjljOTllIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2Nsay9yb2Nr
-Y2hpcC9jbGstcmszMzk5LmMKPj4gKysrIGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5
-OS5jCj4+IEBAIC02NzAsNyArNjcwLDcgQEAgc3RhdGljIHN0cnVjdCByb2NrY2hpcF9jbGtfYnJh
-bmNoIAo+PiByazMzOTlfY2xrX2JyYW5jaGVzW10gX19pbml0ZGF0YSA9IHsKPj4gwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgUkszMzk5X0NMS0dBVEVfQ09OKDkpLCA3LCBHRkxBR1MsCj4+IMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICZyazMzOTlfdWFydDNfZnJhY211eCksCj4+IMKgIC3C
-oMKgwqAgQ09NUE9TSVRFKDAsICJwY2xrX2RkciIsIG11eF9wbGxfc3JjX2NwbGxfZ3BsbF9wLCAK
-Pj4gQ0xLX0lHTk9SRV9VTlVTRUQsCj4+ICvCoMKgwqAgQ09NUE9TSVRFKFBDTEtfRERSLCAicGNs
-a19kZHIiLCBtdXhfcGxsX3NyY19jcGxsX2dwbGxfcCwgCj4+IENMS19JR05PUkVfVU5VU0VELAo+
-PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSSzMzOTlfQ0xLU0VMX0NPTig2KSwgMTUsIDEs
-IE1GTEFHUywgOCwgNSwgREZMQUdTLAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSSzMz
-OTlfQ0xLR0FURV9DT04oMyksIDQsIEdGTEFHUyksCj4+IMKgIEBAIC04ODYsNyArODg2LDcgQEAg
-c3RhdGljIHN0cnVjdCByb2NrY2hpcF9jbGtfYnJhbmNoIAo+PiByazMzOTlfY2xrX2JyYW5jaGVz
-W10gX19pbml0ZGF0YSA9IHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgUkszMzk5X0NM
-S0dBVEVfQ09OKDMxKSwgOCwgR0ZMQUdTKSwKPj4gwqAgwqDCoMKgwqDCoCAvKiBzZGlvICYgc2Rt
-bWMgKi8KPj4gLcKgwqDCoCBDT01QT1NJVEUoMCwgImhjbGtfc2QiLCBtdXhfcGxsX3NyY19jcGxs
-X2dwbGxfcCwgMCwKPj4gK8KgwqDCoCBDT01QT1NJVEUoSENMS19TRCwgImhjbGtfc2QiLCBtdXhf
-cGxsX3NyY19jcGxsX2dwbGxfcCwgMCwKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgUksz
-Mzk5X0NMS1NFTF9DT04oMTMpLCAxNSwgMSwgTUZMQUdTLCA4LCA1LCBERkxBR1MsCj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJLMzM5OV9DTEtHQVRFX0NPTigxMiksIDEzLCBHRkxBR1Mp
-LAo+PiDCoMKgwqDCoMKgIEdBVEUoSENMS19TRE1NQywgImhjbGtfc2RtbWMiLCAiaGNsa19zZCIs
-IDAsCj4+Cj4KPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+On 1 March 2018 at 11:36, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org> wrote:
+> Following up the device tree fixed in commits e78c637127ee ("ARM: dts:
+> rockchip: Fix DWMMC clocks") and ca9eee95a2de ("arm64: dts: rockchip:
+> Fix DWMMC clocks", 2018-02-15), avoid confusion by using the correct
+> property name in the debug output if clocks are not found.
+>
+> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+
+Thanks, applied for next!
+
+Kind regards
+Uffe
+
+> ---
+>  drivers/mmc/host/dw_mmc-rockchip.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index 339295212935..40d7de2eea12 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -282,11 +282,11 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
+>
+>         priv->drv_clk = devm_clk_get(host->dev, "ciu-drive");
+>         if (IS_ERR(priv->drv_clk))
+> -               dev_dbg(host->dev, "ciu_drv not available\n");
+> +               dev_dbg(host->dev, "ciu-drive not available\n");
+>
+>         priv->sample_clk = devm_clk_get(host->dev, "ciu-sample");
+>         if (IS_ERR(priv->sample_clk))
+> -               dev_dbg(host->dev, "ciu_sample not available\n");
+> +               dev_dbg(host->dev, "ciu-sample not available\n");
+>
+>         host->priv = priv;
+>
+> --
+> 2.16.2
+>
