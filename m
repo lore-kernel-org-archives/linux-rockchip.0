@@ -1,108 +1,65 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: assign correct id for pclk_ddr and hclk_sd
- in rk3399
-Date: Thu, 15 Mar 2018 09:20:04 -0700
-Message-ID: <CAD=FV=UaGaE0FX7ofQgSqsyir08psc0-EkHq9_WTW7EQvTZPog@mail.gmail.com>
-References: <1521104071-19595-1-git-send-email-hl@rock-chips.com>
- <18794d71-ec37-7af4-3de6-7a43a5c66010@rock-chips.com>
- <df78009d-924f-6b9c-6bf6-f1f69d162708@rock-chips.com>
- <b0b083c6-3a99-c0ed-9f1b-bba203eaa6bc@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/4] Rockchip driver changes for 4.17
+Date: Thu, 15 Mar 2018 23:20:53 +0100
+Message-ID: <12470502.BUvxkRrZk8@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <b0b083c6-3a99-c0ed-9f1b-bba203eaa6bc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Derek Basehore <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, diander-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Arnd, Kevin, Olof,
 
-On Thu, Mar 15, 2018 at 6:40 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> [Correct Doug's email address]
->
-> On 2018/3/15 17:12, hl wrote:
->>
->> Hi Shawn,
->>
->>
->> On Thursday, March 15, 2018 05:01 PM, Shawn Lin wrote:
->>>
->>> Hi Huang,
->>>
->>> On 2018/3/15 16:54, Lin Huang wrote:
->>>>
->>>> Assign id PCLK_DDR to pclk_ddr, id HCLK_SD to hclk_sd, so we can
->>>> assign frequency for them in dts.
->>>
->>>
->>> I'm curious under which condition that we need assign frequency for
->>> hclk_sd?
->>
->> We may set CPLL frequency higher than 800MHz, with that we need assign
->> clock
->> to hclk_sd, otherwise it will exceed 200MHz, since we use the default cru
->> register value to get hclk_sd for now.
->> you can check
->>
->> https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/956678/5
->
->
-> Okay, thanks for pointing me to the actual user case.
-> I'm fine with that, however, what I am thinking now is:
->
-> (1) It's worth elaborating more in the commit msg.
+please find below the main Rockchip-related changes for 4.17.
+The individual tags should explain things nicely but overall it's a pretty
+standard set of changes without anything special standing out.
 
-Seems like a nice idea to me.
+So if things look ok, please pull!
+
+Thanks
+Heiko
 
 
-> (2) The reason you need set hclk_sd is that it depends on the
-> defualt settings but lack real owner to explicitly set it to <=200MHz.
+The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
 
-Actually, in the case of hclk_sd there _is_ an owner to set it to <=
-200 MHz.  I'll comment on the gerrit review, but the assigned clock
-for hclk_sd probably belongs in the node "sdmmc: dwmmc@fe320000".
+  Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
 
-...but in any case, you still need the clock ID to do that.
+are available in the Git repository at:
 
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.17-rockchip-drivers-1
 
-> So my another question is if that is more about aspect of power
-> consumption, then it looks okay to me. But if that is a SoC limitation,
-> then we are under risk for that. Either we should never rely on the
-> default settings, or we should set its rate range after registering this
-> clock provider.
+for you to fetch changes up to b1271993aa3855bda5073c6061a095fd6e6febc6:
 
-I have always wondered about perhaps encoding the min/max clock rate
-for each clock somewhere in the source code.  Then whenever we change
-clock rates we could enforce that we don't ever go past this min/max.
-In think, in theory, this is possible by registering for all the right
-callbacks / notifications.  ...but I suspect that doing in a generic /
-performant way might be very difficult.  Specifically, whenever a
-clock changes you may need to make all sorts of decisions about
-re-parenting and also checking whether all your children are out fo
-spec.
+  soc: rockchip: power-domain: Add a sanity check on pd->num_clks (2018-03-05 19:42:29 +0100)
 
-So without encoding the min/max and having it magically auto-resolve,
-the best we can do is just to assign a sane clock rate.  If there's no
-subsystem owning this clock then doing so at clock init time is sane
-(and that's what we do with many clocks).  If a subsystem owns it,
-doing it when the subsystem is probed is sane.
+----------------------------------------------------------------
+Rockchip soc drivers containing conversion of the power-domain driver
+to use the clk-bulk APIs and two more socs to disable jtag-switching.
+On the plus-side the issue we see with that are _supposed_ to be fixed
+in hardware in upcoming socs, so maybe this can be the last of those.
 
+----------------------------------------------------------------
+Jeffy Chen (2):
+      soc: rockchip: power-domain: use clk_bulk APIs
+      soc: rockchip: power-domain: Add a sanity check on pd->num_clks
 
-So, to summarize, I'm happy with this change.  I wouldn't mind a
-little more justification in the CL description but personally I won't
-make a big deal about it.
+Shawn Lin (1):
+      soc: rockchip: disable jtag switching for RK3228/RK3229 SoCs
 
-Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Xiao Yao (1):
+      soc: rockchip: disable jtag switching for RK3128 SoCs
 
-
--Doug
+ drivers/soc/rockchip/grf.c        | 28 ++++++++++++
+ drivers/soc/rockchip/pm_domains.c | 95 +++++++++++++++++++--------------------
+ 2 files changed, 75 insertions(+), 48 deletions(-)
