@@ -1,82 +1,29 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: assign correct id for pclk_ddr and hclk_sd
- in rk3399
-Date: Thu, 15 Mar 2018 21:40:16 +0800
-Message-ID: <b0b083c6-3a99-c0ed-9f1b-bba203eaa6bc@rock-chips.com>
-References: <1521104071-19595-1-git-send-email-hl@rock-chips.com>
- <18794d71-ec37-7af4-3de6-7a43a5c66010@rock-chips.com>
- <df78009d-924f-6b9c-6bf6-f1f69d162708@rock-chips.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH] iommu/rockchip: Perform a reset on shutdown
+Date: Thu, 15 Mar 2018 15:12:10 +0100
+Message-ID: <20180315141210.yb6c6tbzietiuty3@8bytes.org>
+References: <20180220202504.19275-1-marc.zyngier@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <df78009d-924f-6b9c-6bf6-f1f69d162708-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, diander-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180220202504.19275-1-marc.zyngier@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-W0NvcnJlY3QgRG91ZydzIGVtYWlsIGFkZHJlc3NdCgpPbiAyMDE4LzMvMTUgMTc6MTIsIGhsIHdy
-b3RlOgo+IEhpIFNoYXduLAo+IAo+IAo+IE9uIFRodXJzZGF5LCBNYXJjaCAxNSwgMjAxOCAwNTow
-MSBQTSwgU2hhd24gTGluIHdyb3RlOgo+PiBIaSBIdWFuZywKPj4KPj4gT24gMjAxOC8zLzE1IDE2
-OjU0LCBMaW4gSHVhbmcgd3JvdGU6Cj4+PiBBc3NpZ24gaWQgUENMS19ERFIgdG8gcGNsa19kZHIs
-IGlkIEhDTEtfU0QgdG8gaGNsa19zZCwgc28gd2UgY2FuCj4+PiBhc3NpZ24gZnJlcXVlbmN5IGZv
-ciB0aGVtIGluIGR0cy4KPj4KPj4gSSdtIGN1cmlvdXMgdW5kZXIgd2hpY2ggY29uZGl0aW9uIHRo
-YXQgd2UgbmVlZCBhc3NpZ24gZnJlcXVlbmN5IGZvcgo+PiBoY2xrX3NkPwo+IFdlIG1heSBzZXQg
-Q1BMTCBmcmVxdWVuY3kgaGlnaGVyIHRoYW4gODAwTUh6LCB3aXRoIHRoYXQgd2UgbmVlZCBhc3Np
-Z24gCj4gY2xvY2sKPiB0byBoY2xrX3NkLCBvdGhlcndpc2UgaXQgd2lsbCBleGNlZWQgMjAwTUh6
-LCBzaW5jZSB3ZSB1c2UgdGhlIGRlZmF1bHQgCj4gY3J1IHJlZ2lzdGVyIHZhbHVlIHRvIGdldCBo
-Y2xrX3NkIGZvciBub3cuCj4geW91IGNhbiBjaGVjawo+IGh0dHBzOi8vY2hyb21pdW0tcmV2aWV3
-Lmdvb2dsZXNvdXJjZS5jb20vYy9jaHJvbWl1bW9zL3RoaXJkX3BhcnR5L2tlcm5lbC8rLzk1NjY3
-OC81IAo+IAoKT2theSwgdGhhbmtzIGZvciBwb2ludGluZyBtZSB0byB0aGUgYWN0dWFsIHVzZXIg
-Y2FzZS4KSSdtIGZpbmUgd2l0aCB0aGF0LCBob3dldmVyLCB3aGF0IEkgYW0gdGhpbmtpbmcgbm93
-IGlzOgoKKDEpIEl0J3Mgd29ydGggZWxhYm9yYXRpbmcgbW9yZSBpbiB0aGUgY29tbWl0IG1zZy4K
-KDIpIFRoZSByZWFzb24geW91IG5lZWQgc2V0IGhjbGtfc2QgaXMgdGhhdCBpdCBkZXBlbmRzIG9u
-IHRoZQpkZWZ1YWx0IHNldHRpbmdzIGJ1dCBsYWNrIHJlYWwgb3duZXIgdG8gZXhwbGljaXRseSBz
-ZXQgaXQgdG8gPD0yMDBNSHouClNvIG15IGFub3RoZXIgcXVlc3Rpb24gaXMgaWYgdGhhdCBpcyBt
-b3JlIGFib3V0IGFzcGVjdCBvZiBwb3dlcgpjb25zdW1wdGlvbiwgdGhlbiBpdCBsb29rcyBva2F5
-IHRvIG1lLiBCdXQgaWYgdGhhdCBpcyBhIFNvQyBsaW1pdGF0aW9uLAp0aGVuIHdlIGFyZSB1bmRl
-ciByaXNrIGZvciB0aGF0LiBFaXRoZXIgd2Ugc2hvdWxkIG5ldmVyIHJlbHkgb24gdGhlCmRlZmF1
-bHQgc2V0dGluZ3MsIG9yIHdlIHNob3VsZCBzZXQgaXRzIHJhdGUgcmFuZ2UgYWZ0ZXIgcmVnaXN0
-ZXJpbmcgdGhpcwpjbG9jayBwcm92aWRlci4KCk9mIGNvdXJzZSwgSSdtIG5vdCBhIGNsayBleHBl
-cnQsIGJ1dCBqdXN0IHdhbnQgdG8gbGVhcm4gbW9yZSBiaXRzCmZyb20geW91IGd1eXMuIDopCgoK
-Cj4+Cj4+Pgo+Pj4gQ2hhbmdlLUlkOiBJNmM0ZDE1ZDM3ZGRhYmU0ZWQzNGUyMzUxY2YyNmU2NjA2
-NzJhZTllZQo+Pj4gU2lnbmVkLW9mZi1ieTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4K
-Pj4+IC0tLQo+Pj4gwqAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jIHwgNCArKy0t
-Cj4+PiDCoCAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgCj4+
-PiBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+Pj4gaW5kZXggNjg0NzEyMC4u
-YTI5Yzk5ZSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTku
-Ywo+Pj4gKysrIGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzM5OS5jCj4+PiBAQCAtNjcw
-LDcgKzY3MCw3IEBAIHN0YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX2JyYW5jaCAKPj4+IHJrMzM5
-OV9jbGtfYnJhbmNoZXNbXSBfX2luaXRkYXRhID0gewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgUkszMzk5X0NMS0dBVEVfQ09OKDkpLCA3LCBHRkxBR1MsCj4+PiDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCAmcmszMzk5X3VhcnQzX2ZyYWNtdXgpLAo+Pj4gwqAgLcKgwqDCoCBDT01Q
-T1NJVEUoMCwgInBjbGtfZGRyIiwgbXV4X3BsbF9zcmNfY3BsbF9ncGxsX3AsIAo+Pj4gQ0xLX0lH
-Tk9SRV9VTlVTRUQsCj4+PiArwqDCoMKgIENPTVBPU0lURShQQ0xLX0REUiwgInBjbGtfZGRyIiwg
-bXV4X3BsbF9zcmNfY3BsbF9ncGxsX3AsIAo+Pj4gQ0xLX0lHTk9SRV9VTlVTRUQsCj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSSzMzOTlfQ0xLU0VMX0NPTig2KSwgMTUsIDEsIE1GTEFH
-UywgOCwgNSwgREZMQUdTLAo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgUkszMzk5X0NM
-S0dBVEVfQ09OKDMpLCA0LCBHRkxBR1MpLAo+Pj4gwqAgQEAgLTg4Niw3ICs4ODYsNyBAQCBzdGF0
-aWMgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2ggCj4+PiByazMzOTlfY2xrX2JyYW5jaGVzW10g
-X19pbml0ZGF0YSA9IHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJLMzM5OV9DTEtH
-QVRFX0NPTigzMSksIDgsIEdGTEFHUyksCj4+PiDCoCDCoMKgwqDCoMKgIC8qIHNkaW8gJiBzZG1t
-YyAqLwo+Pj4gLcKgwqDCoCBDT01QT1NJVEUoMCwgImhjbGtfc2QiLCBtdXhfcGxsX3NyY19jcGxs
-X2dwbGxfcCwgMCwKPj4+ICvCoMKgwqAgQ09NUE9TSVRFKEhDTEtfU0QsICJoY2xrX3NkIiwgbXV4
-X3BsbF9zcmNfY3BsbF9ncGxsX3AsIDAsCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBS
-SzMzOTlfQ0xLU0VMX0NPTigxMyksIDE1LCAxLCBNRkxBR1MsIDgsIDUsIERGTEFHUywKPj4+IMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJLMzM5OV9DTEtHQVRFX0NPTigxMiksIDEzLCBHRkxB
-R1MpLAo+Pj4gwqDCoMKgwqDCoCBHQVRFKEhDTEtfU0RNTUMsICJoY2xrX3NkbW1jIiwgImhjbGtf
-c2QiLCAwLAo+Pj4KPj4KPj4KPj4KPiAKPiAKPiAKPiAKCgotLSAKQmVzdCBSZWdhcmRzClNoYXdu
-IExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On Tue, Feb 20, 2018 at 08:25:04PM +0000, Marc Zyngier wrote:
+> Trying to do a kexec whilst the iommus are still on is proving to be
+> a challenging exercise. It is terribly unsafe, as we're reusing the
+> memory allocated for the page tables, leading to a likely crash.
+> 
+> Let's implement a shutdown method that will at least try to stop
+> DMA from going crazy behind our back. Note that we need to be
+> extra cautious when doing so, as the IOMMU may not be clocked
+> if controlled by a another master, as typical on Rockchip system.
+> 
+> Suggested-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
+
+Applied, thanks.
