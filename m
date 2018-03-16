@@ -1,59 +1,42 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH 1/2] dt-bindings: analogix-dp: Add backlight-pwm-passthru
-Date: Fri, 16 Mar 2018 14:56:09 +0530
-Message-ID: <124034c6-a0af-0142-0d04-7d8bbc19bb82@codeaurora.org>
-References: <20180316025659.217423-1-amstan@chromium.org>
- <20180316025659.217423-2-amstan@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 3/6] arm64: dts: rockchip: enable typec-phy for rk3399-sapphire.
+Date: Fri, 16 Mar 2018 11:38:08 +0100
+Message-ID: <4216465.6C9qR2QedA@phil>
+References: <20180301152515.20940-1-enric.balletbo@collabora.com> <20180301152515.20940-4-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180316025659.217423-2-amstan@chromium.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Alexandru M Stan <amstan@chromium.org>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Sean Paul <seanpaul@chromium.org>
-Cc: devicetree@vger.kernel.org, Thierry Escande <thierry.escande@collabora.com>, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, marcheu@chromium.org, hoegsberg@chromium.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180301152515.20940-4-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: kishon@ti.com, groeck@chromium.org, gwendal@chromium.org, kernel@collabora.com, vicencb@gmail.com, devicetree@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiBGcmlkYXkgMTYgTWFyY2ggMjAxOCAwODoyNiBBTSwgQWxleGFuZHJ1IE0gU3RhbiB3cm90
-ZToKPiBEb2N1bWVudGF0aW9uIGZvciB0aGUgb3B0aW9uYWwgYmFja2xpZ2h0LXB3bS1wYXNzdGhy
-dSBwcm9wZXJ0eS4KPiBUZWxscyB0aGUgRURQIHBhbmVsIHRvIGZvbG93IHRoZSBpbnB1dCBwd20g
-ZnJlcXVlbmN5IGluc3RlYWQKCnMvZm9sb3cvZm9sbG93CgpJdCB3b3VsZCBiZSBuaWNlIGlmIHdl
-IGNvdWxkIGFkZCB0aGUgZGV0YWlscyB5b3UgbWVudGlvbmVkIGluCnBhdGNoICMwIGluIGVpdGhl
-ciB0aGlzIG9yIHRoZSBuZXh0IHBhdGNoLgoKPiBvZiBnZW5lcmF0aW5nIGl0cyBvd24uCgpUaGlz
-IGlzIG9uZSBvZiB0aG9zZSBiaW5kaW5ncyB3aGljaCBpcyBtb3JlIGEga25vYiB0aGFuIGEgSFcg
-cHJvcGVydHksCmJ1dCBJIGNhbid0IHRoaW5rIG9mIGFueSBlYXN5IHdheSB0byBmaWd1cmUgdGhp
-cyBvdXQgaW4gU1cuIFNvLCBJIGd1ZXNzCml0J3Mgb2theSB0byBoYXZlLgoKT25lIHRoaW5nIEkg
-d2FzIHdvbmRlcmluZyBhYm91dCB3YXMgd2hldGhlciB0aGlzIHByb3Agc2hvdWxkIGJlbG9uZyB0
-bwp0aGUgZURQIGNvbnRyb2xsZXIgb3IgdGhlIGVEUCBwYW5lbC4gSSBkb24ndCBoYXZlIGFueSBz
-dHJvbmcgb3BpbmlvbgphYm91dCBpdCwgdGhvdWdoLgoKUmV2aWV3ZWQtYnk6IEFyY2hpdCBUYW5l
-amEgPGFyY2hpdHRAY29kZWF1cm9yYS5vcmc+CgpUaGFua3MsCkFyY2hpdAoKCj4gCj4gU2lnbmVk
-LW9mZi1ieTogQWxleGFuZHJ1IE0gU3RhbiA8YW1zdGFuQGNocm9taXVtLm9yZz4KPiAtLS0KPiAK
-PiAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9hbmFs
-b2dpeF9kcC50eHQgfCA0ICsrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykK
-PiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
-YXkvYnJpZGdlL2FuYWxvZ2l4X2RwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiBpbmRleCAwYzc0NzNkZDBlNTEu
-LjNjMTUyNDJmNmNlMyAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxvZ2l4X2RwLnR4dAo+IEBA
-IC0yMyw2ICsyMywxMCBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzIGZvciBkcC1jb250cm9sbGVyOgo+
-ICAgCQlmcm9tIGdlbmVyYWwgUEhZIGJpbmRpbmc6IFNob3VsZCBiZSAiZHAiLgo+ICAgCj4gICBP
-cHRpb25hbCBwcm9wZXJ0aWVzIGZvciBkcC1jb250cm9sbGVyOgo+ICsJLWJhY2tsaWdodC1wd20t
-cGFzc3RocnU6Cj4gKwkJRGlyZWN0bHkgcGFzcyB0aGUgUFdNIGZyZXF1ZW5jeSBhcHBsaWVkIHRv
-IHRoZSBCTF9QV01fRElNCj4gKwkJcGluIHRvIHRoZSBiYWNrbGlnaHQgY3VycmVudCBzb3VyY2Uu
-IERvbmUgdmlhCj4gKwkJRURQX0JBQ0tMSUdIVF9NT0RFX1NFVF9SRUdJU1RFUiBvbiBEUENELgo+
-ICAgCS1mb3JjZS1ocGQ6Cj4gICAJCUluZGljYXRlIGRyaXZlciBuZWVkIGZvcmNlIGhwZCB3aGVu
-IGhwZCBkZXRlY3QgZmFpbGVkLCB0aGlzCj4gICAJCWlzIHVzZWQgZm9yIHNvbWUgZURQIHNjcmVl
-biB3aGljaCBkb24ndCBoYXZlIGhwZCBzaWduYWwuCj4gCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Donnerstag, 1. März 2018, 16:25:12 CET schrieb Enric Balletbo i Serra:
+> Commit c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port
+> support for rk3399") caused a regression regarding the USB3 type-A port.
+> During boot, the following message appears a few times:
+> 
+>   dwc3: failed to initialize core
+> 
+> The driver is deferred waiting for the typec-phy, but this never happens
+> bceause is disabled. So, enable it.
+> 
+> Fixes: c301b327aea898af ("arm64: dts: rockchip: add usb3-phy otg-port support for rk3399")
+> Reported-by: Vicente Bergas <vicencb@gmail.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+I've amended the message a bit to clarify that the offending commit
+has been reverted for now and this change is needed for reenabling it
+and also dropped the Fixes tag.
+
+I've also moved the node to a better place - if in doubt please sort
+the "&foo {" things alphabetically.
+
+I've applied the result in my 4.17 branch, but may move that to 4.18
+depending on timing. The reenablement of the otg-port will be in
+4.18 only anyway.
+
+
+Heiko
