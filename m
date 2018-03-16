@@ -1,48 +1,27 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: Re: [PATCH] net: ethernet: arc: Fix a potential memory leak if an
- optional regulator is deferred
-Date: Fri, 16 Mar 2018 21:52:07 +0100
-Message-ID: <4593afd4-8578-d724-4eae-dcaaa609120c@wanadoo.fr>
-References: <7fd57a4e7f7a41dccf55430cbc43de3b0a7f7826.1521061530.git.christophe.jaillet@wanadoo.fr>
- <20180316.152712.1584177628223195375.davem@davemloft.net>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH 0/7] clk: add helper functions for managing clk_onecell_data
+Date: Fri, 16 Mar 2018 15:29:13 -0700
+Message-ID: <152123935331.242365.4716792321487612827@swboyd.mtv.corp.google.com>
+References: <1515112695-3160-1-git-send-email-david@lechnology.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180316.152712.1584177628223195375.davem@davemloft.net>
-Content-Language: fr
+In-Reply-To: <1515112695-3160-1-git-send-email-david@lechnology.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: heiko@sntech.de, branislav@radocaj.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+To: linux-clk@vger.kernel.org
+Cc: David Lechner <david@lechnology.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, =?utf-8?q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Le 16/03/2018 à 20:27, David Miller a écrit :
-> From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Date: Wed, 14 Mar 2018 22:09:34 +0100
->
->> diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
->> index 16f9bee992fe..8ee9dfd0e363 100644
->> --- a/drivers/net/ethernet/arc/emac_rockchip.c
->> +++ b/drivers/net/ethernet/arc/emac_rockchip.c
->> @@ -169,8 +169,10 @@ static int emac_rockchip_probe(struct platform_device *pdev)
->>   	/* Optional regulator for PHY */
->>   	priv->regulator = devm_regulator_get_optional(dev, "phy");
->>   	if (IS_ERR(priv->regulator)) {
->> -		if (PTR_ERR(priv->regulator) == -EPROBE_DEFER)
->> -			return -EPROBE_DEFER;
->> +		if (PTR_ERR(priv->regulator) == -EPROBE_DEFER) {
->> +			ret = -EPROBE_DEFER;
->> +			goto out_clk_disable;
->> +		}
-> Please build test your changes.
->
-> There is no 'ret' variable in this function, perhaps you meant 'err'.
->
-Yes, obviously, this is 'err'.
+Quoting David Lechner (2018-01-04 16:38:05)
+> I am writing some clock drivers that use struct clk_onecell_data a few
+> times, so I decided to write a helper function to allocate the memory
+> since it is a two step process and can be tedious. Then I noticed that
+> mediatek already had such a helper function, so I have moved that to the
+> clk core and made use of it in other drivers where possible.
+> 
 
-I apologize. I usually build-test all my patches before submission.
-This one seems to have gone out of my normal process.
-
-Can you fix it yourself or do you want me to re-submit?
-
-CJ
+We're actively trying to discourage driver authors from adding more
+clk_onecell_data and pushing them to register clks and providers with
+the clk_hw structures. So thanks for doing the consolidation work, but
+no thanks. We can wait for the conversion to hw pointers instead.
