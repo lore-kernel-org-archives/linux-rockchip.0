@@ -1,39 +1,64 @@
-From: Alexandru M Stan <amstan@chromium.org>
-Subject: [PATCH 1/2] dt-bindings: analogix-dp: Add backlight-pwm-passthru
-Date: Thu, 15 Mar 2018 19:56:58 -0700
-Message-ID: <20180316025659.217423-2-amstan@chromium.org>
-References: <20180316025659.217423-1-amstan@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180316025659.217423-1-amstan@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Sean Paul <seanpaul@chromium.org>
-Cc: devicetree@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, marcheu@chromium.org, hoegsberg@chromium.org, Thierry Escande <thierry.escande@collabora.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Alexandru M Stan <amstan@chromium.org>
+From: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 1/2] clk: rockchip: assign correct id for pclk_ddr and
+ hclk_sd in rk3399
+Date: Fri, 16 Mar 2018 11:02:27 +0800
+Message-ID: <1521169348-8552-1-git-send-email-hl@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, diander-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Documentation for the optional backlight-pwm-passthru property.
-Tells the EDP panel to folow the input pwm frequency instead
-of generating its own.
+Since hclk_sd and pclk_ddr source clock from CPLL or GPLL,
+and these two PLL may change their frequency. If we do not
+assign right id to pclk_ddr and hclk_sd, they will alway use
+default cur register value, and may get the frequency
+exceed their signed off frequency. So assign correct Id
+for them, then we can assign frequency for them in dts.
 
-Signed-off-by: Alexandru M Stan <amstan@chromium.org>
+Change-Id: I6c4d15d37ddabe4ed34e2351cf26e660672ae9ee
+Signed-off-by: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
+Changes in v2:
+- add more detail in commit message
 
- Documentation/devicetree/bindings/display/bridge/analogix_dp.txt | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-index 0c7473dd0e51..3c15242f6ce3 100644
---- a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-+++ b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-@@ -23,6 +23,10 @@ Required properties for dp-controller:
- 		from general PHY binding: Should be "dp".
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 3e57c6e..bca10d6 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -671,7 +671,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKGATE_CON(9), 7, GFLAGS,
+ 			&rk3399_uart3_fracmux),
  
- Optional properties for dp-controller:
-+	-backlight-pwm-passthru:
-+		Directly pass the PWM frequency applied to the BL_PWM_DIM
-+		pin to the backlight current source. Done via
-+		EDP_BACKLIGHT_MODE_SET_REGISTER on DPCD.
- 	-force-hpd:
- 		Indicate driver need force hpd when hpd detect failed, this
- 		is used for some eDP screen which don't have hpd signal.
+-	COMPOSITE(0, "pclk_ddr", mux_pll_src_cpll_gpll_p, CLK_IGNORE_UNUSED,
++	COMPOSITE(PCLK_DDR, "pclk_ddr", mux_pll_src_cpll_gpll_p, CLK_IGNORE_UNUSED,
+ 			RK3399_CLKSEL_CON(6), 15, 1, MFLAGS, 8, 5, DFLAGS,
+ 			RK3399_CLKGATE_CON(3), 4, GFLAGS),
+ 
+@@ -887,7 +887,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKGATE_CON(31), 8, GFLAGS),
+ 
+ 	/* sdio & sdmmc */
+-	COMPOSITE(0, "hclk_sd", mux_pll_src_cpll_gpll_p, 0,
++	COMPOSITE(HCLK_SD, "hclk_sd", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(13), 15, 1, MFLAGS, 8, 5, DFLAGS,
+ 			RK3399_CLKGATE_CON(12), 13, GFLAGS),
+ 	GATE(HCLK_SDMMC, "hclk_sdmmc", "hclk_sd", 0,
 -- 
-2.13.5
+2.7.4
