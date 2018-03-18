@@ -1,67 +1,67 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: analogix-dp: Add backlight-pwm-passthru
-Date: Sun, 18 Mar 2018 07:52:45 -0500
-Message-ID: <20180318125245.ndnplplmtsy3hmu7@rob-hp-laptop>
-References: <20180316025659.217423-1-amstan@chromium.org>
- <20180316025659.217423-2-amstan@chromium.org>
- <124034c6-a0af-0142-0d04-7d8bbc19bb82@codeaurora.org>
+From: Vladimir Zapolskiy <vz@mleia.com>
+Subject: Re: [PATCH v5 3/4] clk: lpc32xx: Set name of regmap_config
+Date: Sun, 18 Mar 2018 23:57:39 +0200
+Message-ID: <23a9cbf8-9b1d-f7ec-b980-a16c9b2c4d84@mleia.com>
+References: <20180312095142.30854-1-jeffy.chen@rock-chips.com>
+ <20180312095142.30854-4-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <124034c6-a0af-0142-0d04-7d8bbc19bb82@codeaurora.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Archit Taneja <architt@codeaurora.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thierry Escande <thierry.escande@collabora.com>, Alexandru M Stan <amstan@chromium.org>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, briannorris@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, dianders@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, marcheu@chromium.org, hoegsberg@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180312095142.30854-4-jeffy.chen@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com
+Cc: Kate Stewart <kstewart@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Emil Renner Berthing <kernel@esmil.dk>, stephen lu <lumotuwe@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, Will Deacon <will.deacon@arm.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Joseph Lo <josephl@nvidia.com>, lee.jones@linaro.org, linux-clk@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-input@vger.kernel.org, Arvind Yadav <arvind.yadav.cs@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Rob Herring <robh+dt@kernel.org>, Thomas Gleixner <tglx@linutronix.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBNYXIgMTYsIDIwMTggYXQgMDI6NTY6MDlQTSArMDUzMCwgQXJjaGl0IFRhbmVqYSB3
-cm90ZToKPiAKPiAKPiBPbiBGcmlkYXkgMTYgTWFyY2ggMjAxOCAwODoyNiBBTSwgQWxleGFuZHJ1
-IE0gU3RhbiB3cm90ZToKPiA+IERvY3VtZW50YXRpb24gZm9yIHRoZSBvcHRpb25hbCBiYWNrbGln
-aHQtcHdtLXBhc3N0aHJ1IHByb3BlcnR5Lgo+ID4gVGVsbHMgdGhlIEVEUCBwYW5lbCB0byBmb2xv
-dyB0aGUgaW5wdXQgcHdtIGZyZXF1ZW5jeSBpbnN0ZWFkCj4gCj4gcy9mb2xvdy9mb2xsb3cKPiAK
-PiBJdCB3b3VsZCBiZSBuaWNlIGlmIHdlIGNvdWxkIGFkZCB0aGUgZGV0YWlscyB5b3UgbWVudGlv
-bmVkIGluCj4gcGF0Y2ggIzAgaW4gZWl0aGVyIHRoaXMgb3IgdGhlIG5leHQgcGF0Y2guCj4gCj4g
-PiBvZiBnZW5lcmF0aW5nIGl0cyBvd24uCj4gCj4gVGhpcyBpcyBvbmUgb2YgdGhvc2UgYmluZGlu
-Z3Mgd2hpY2ggaXMgbW9yZSBhIGtub2IgdGhhbiBhIEhXIHByb3BlcnR5LAo+IGJ1dCBJIGNhbid0
-IHRoaW5rIG9mIGFueSBlYXN5IHdheSB0byBmaWd1cmUgdGhpcyBvdXQgaW4gU1cuIFNvLCBJIGd1
-ZXNzCj4gaXQncyBva2F5IHRvIGhhdmUuCj4gCj4gT25lIHRoaW5nIEkgd2FzIHdvbmRlcmluZyBh
-Ym91dCB3YXMgd2hldGhlciB0aGlzIHByb3Agc2hvdWxkIGJlbG9uZyB0bwo+IHRoZSBlRFAgY29u
-dHJvbGxlciBvciB0aGUgZURQIHBhbmVsLiBJIGRvbid0IGhhdmUgYW55IHN0cm9uZyBvcGluaW9u
-Cj4gYWJvdXQgaXQsIHRob3VnaC4KClNlZW1zIHRvIG1lLCBpdCBzaG91bGQgYmUgdGhlIHBhbmVs
-LiBJdCdzIGEgc2V0dGluZyBpbiB0aGUgcGFuZWwsIHJpZ2h0PwoKSXMgdGhpcyBnZW5lcmljIHRv
-IERQIHBhbmVscyBvciBzb21ldGhpbmcgc3BlY2lmaWMgdG8gYSBjZXJ0YWluIHBhbmVsPyAKVGhl
-IG5hbWluZyAodmVuZG9yIHByZWZpeCBvciBub3QpIGFuZCBkb2MgbG9jYXRpb24gc2hvdWxkIG1h
-dGNoIAp3aGF0ZXZlciB0aGUgYW5zd2VyIHRvIHRoYXQgaXMuCgo+IAo+IFJldmlld2VkLWJ5OiBB
-cmNoaXQgVGFuZWphIDxhcmNoaXR0QGNvZGVhdXJvcmEub3JnPgo+IAo+IFRoYW5rcywKPiBBcmNo
-aXQKPiAKPiAKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQWxleGFuZHJ1IE0gU3RhbiA8YW1zdGFu
-QGNocm9taXVtLm9yZz4KPiA+IC0tLQo+ID4gCj4gPiAgIERvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQgfCA0ICsrKysKPiA+ICAg
-MSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxvZ2l4X2Rw
-LnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9h
-bmFsb2dpeF9kcC50eHQKPiA+IGluZGV4IDBjNzQ3M2RkMGU1MS4uM2MxNTI0MmY2Y2UzIDEwMDY0
-NAo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJp
-ZGdlL2FuYWxvZ2l4X2RwLnR4dAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxvZ2l4X2RwLnR4dAo+ID4gQEAgLTIzLDYgKzIzLDEw
-IEBAIFJlcXVpcmVkIHByb3BlcnRpZXMgZm9yIGRwLWNvbnRyb2xsZXI6Cj4gPiAgIAkJZnJvbSBn
-ZW5lcmFsIFBIWSBiaW5kaW5nOiBTaG91bGQgYmUgImRwIi4KPiA+ICAgT3B0aW9uYWwgcHJvcGVy
-dGllcyBmb3IgZHAtY29udHJvbGxlcjoKPiA+ICsJLWJhY2tsaWdodC1wd20tcGFzc3RocnU6Cj4g
-PiArCQlEaXJlY3RseSBwYXNzIHRoZSBQV00gZnJlcXVlbmN5IGFwcGxpZWQgdG8gdGhlIEJMX1BX
-TV9ESU0KPiA+ICsJCXBpbiB0byB0aGUgYmFja2xpZ2h0IGN1cnJlbnQgc291cmNlLiBEb25lIHZp
-YQo+ID4gKwkJRURQX0JBQ0tMSUdIVF9NT0RFX1NFVF9SRUdJU1RFUiBvbiBEUENELgo+ID4gICAJ
-LWZvcmNlLWhwZDoKPiA+ICAgCQlJbmRpY2F0ZSBkcml2ZXIgbmVlZCBmb3JjZSBocGQgd2hlbiBo
-cGQgZGV0ZWN0IGZhaWxlZCwgdGhpcwo+ID4gICAJCWlzIHVzZWQgZm9yIHNvbWUgZURQIHNjcmVl
-biB3aGljaCBkb24ndCBoYXZlIGhwZCBzaWduYWwuCj4gPiAKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Jeffy,
+
+On 03/12/2018 11:51 AM, Jeffy Chen wrote:
+> We are now allowing to register debugfs without a valid device, and not
+> having a valid name will end up using "dummy*" to create debugfs dir.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+> 
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> 
+>  drivers/clk/nxp/clk-lpc32xx.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/clk/nxp/clk-lpc32xx.c b/drivers/clk/nxp/clk-lpc32xx.c
+> index f5d815f577e0..a2a0a7f3bc57 100644
+> --- a/drivers/clk/nxp/clk-lpc32xx.c
+> +++ b/drivers/clk/nxp/clk-lpc32xx.c
+> @@ -67,6 +67,7 @@
+>  #define LPC32XX_USB_CLK_STS		0xF8
+>  
+>  static struct regmap_config lpc32xx_scb_regmap_config = {
+> +	.name = "lpc32xx-scb",
+
+please rename it to "scb", LPC32xx SoC name is already known from the context.
+
+When it's done, feel free to add to the next version my
+
+Acked-by: Vladimir Zapolskiy <vz@mleia.com>
+
+>  	.reg_bits = 32,
+>  	.val_bits = 32,
+>  	.reg_stride = 4,
+> 
+
+Thank you for the change.
+
+--
+With best wishes,
+Vladimir
