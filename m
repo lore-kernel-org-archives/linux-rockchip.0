@@ -1,28 +1,72 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v5 3/4] clk: lpc32xx: Set name of regmap_config
-Date: Mon, 19 Mar 2018 11:59:36 +0800
-Message-ID: <5AAF35A8.3040107@rock-chips.com>
-References: <20180312095142.30854-1-jeffy.chen@rock-chips.com> <20180312095142.30854-4-jeffy.chen@rock-chips.com> <23a9cbf8-9b1d-f7ec-b980-a16c9b2c4d84@mleia.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] clk: rockchip: Don't restore invalid cached phase
+Date: Mon, 19 Mar 2018 17:15:02 +0800
+Message-ID: <1521450902-32142-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <23a9cbf8-9b1d-f7ec-b980-a16c9b2c4d84@mleia.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vladimir Zapolskiy <vz@mleia.com>, linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com
-Cc: Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, lee.jones@linaro.org, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vladimir,
+We inevitably cache the invalid phase when the clock provider
+be reparented from orphan to its real parent in the first place,
+thus we may mess up the initialization of MMC cards since we
+only set the default sample phase and drive phase later on.
+So we should skip to restore the invalid phase. And this patch
+also corrects the error path to return invalid pointer to clk if
+clk_notifier_register failed introduced by the same offending
+commit.
 
-On 03/19/2018 05:57 AM, Vladimir Zapolskiy wrote:
->> >  static struct regmap_config lpc32xx_scb_regmap_config = {
->> >+	.name = "lpc32xx-scb",
-> please rename it to "scb", LPC32xx SoC name is already known from the context.
->
-> When it's done, feel free to add to the next version my
->
-> Acked-by: Vladimir Zapolskiy<vz@mleia.com>
->
+Fixes: 60cf09e45fbc ("clk: rockchip: Restore the clock phase after the rate was changed")
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-ok, will do, thanks:)
+ drivers/clk/rockchip/clk-mmc-phase.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
+index dc4c227..c8c6119 100644
+--- a/drivers/clk/rockchip/clk-mmc-phase.c
++++ b/drivers/clk/rockchip/clk-mmc-phase.c
+@@ -181,7 +181,8 @@ static int rockchip_mmc_clk_rate_notify(struct notifier_block *nb,
+ 	if (event == PRE_RATE_CHANGE)
+ 		mmc_clock->cached_phase =
+ 			rockchip_mmc_get_phase(&mmc_clock->hw);
+-	else if (event == POST_RATE_CHANGE)
++	else if (mmc_clock->cached_phase != -EINVAL &&
++		 event == POST_RATE_CHANGE)
+ 		rockchip_mmc_set_phase(&mmc_clock->hw, mmc_clock->cached_phase);
+ 
+ 	return NOTIFY_DONE;
+@@ -211,8 +212,10 @@ struct clk *rockchip_clk_register_mmc(const char *name,
+ 	mmc_clock->shift = shift;
+ 
+ 	clk = clk_register(NULL, &mmc_clock->hw);
+-	if (IS_ERR(clk))
++	if (IS_ERR(clk)) {
++		ret = PTR_ERR(clk);
+ 		goto err_register;
++	}
+ 
+ 	mmc_clock->clk_rate_change_nb.notifier_call =
+ 				&rockchip_mmc_clk_rate_notify;
+@@ -225,5 +228,5 @@ struct clk *rockchip_clk_register_mmc(const char *name,
+ 	clk_unregister(clk);
+ err_register:
+ 	kfree(mmc_clock);
+-	return clk;
++	return ERR_PTR(ret);
+ }
+-- 
+1.9.1
