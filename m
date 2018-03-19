@@ -1,40 +1,28 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH v2] net: ethernet: arc: Fix a potential memory leak if an optional regulator is deferred
-Date: Sun, 18 Mar 2018 23:59:36 +0100
-Message-ID: <7fd57a4e79da41dccf55430cbc43de340a7f1826.1521061530.git.christophe.jaillet@wanadoo.fr>
+From: JeffyChen <jeffy.chen@rock-chips.com>
+Subject: Re: [PATCH v5 3/4] clk: lpc32xx: Set name of regmap_config
+Date: Mon, 19 Mar 2018 11:59:36 +0800
+Message-ID: <5AAF35A8.3040107@rock-chips.com>
+References: <20180312095142.30854-1-jeffy.chen@rock-chips.com> <20180312095142.30854-4-jeffy.chen@rock-chips.com> <23a9cbf8-9b1d-f7ec-b980-a16c9b2c4d84@mleia.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <23a9cbf8-9b1d-f7ec-b980-a16c9b2c4d84@mleia.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, branislav@radocaj.org, davem@davemloft.net
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Vladimir Zapolskiy <vz@mleia.com>, linux-kernel@vger.kernel.org, broonie@kernel.org, alexandre.belloni@bootlin.com
+Cc: Guenter Roeck <linux@roeck-us.net>, Arnd Bergmann <arnd@arndb.de>, Joseph Lo <josephl@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, lee.jones@linaro.org, Emil Renner Berthing <kernel@esmil.dk>, Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Philippe Ombredanne <pombredanne@nexb.com>, linux-rockchip@lists.infradead.org, Kate Stewart <kstewart@linuxfoundation.org>, linux-input@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, stephen lu <lumotuwe@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-If the optional regulator is deferred, we must release some resources.
-They will be re-allocated when the probe function will be called again.
+Hi Vladimir,
 
-Fixes: 6eacf31139bf ("ethernet: arc: Add support for Rockchip SoC layer device tree bindings")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-v2: v1 did not compile because of an erroneous variable name. s/ret/err/
----
- drivers/net/ethernet/arc/emac_rockchip.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+On 03/19/2018 05:57 AM, Vladimir Zapolskiy wrote:
+>> >  static struct regmap_config lpc32xx_scb_regmap_config = {
+>> >+	.name = "lpc32xx-scb",
+> please rename it to "scb", LPC32xx SoC name is already known from the context.
+>
+> When it's done, feel free to add to the next version my
+>
+> Acked-by: Vladimir Zapolskiy<vz@mleia.com>
+>
 
-diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
-index 16f9bee992fe..8ee9dfd0e363 100644
---- a/drivers/net/ethernet/arc/emac_rockchip.c
-+++ b/drivers/net/ethernet/arc/emac_rockchip.c
-@@ -169,8 +169,10 @@ static int emac_rockchip_probe(struct platform_device *pdev)
- 	/* Optional regulator for PHY */
- 	priv->regulator = devm_regulator_get_optional(dev, "phy");
- 	if (IS_ERR(priv->regulator)) {
--		if (PTR_ERR(priv->regulator) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
-+		if (PTR_ERR(priv->regulator) == -EPROBE_DEFER) {
-+			err = -EPROBE_DEFER;
-+			goto out_clk_disable;
-+		}
- 		dev_err(dev, "no regulator found\n");
- 		priv->regulator = NULL;
- 	}
--- 
-2.14.1
+ok, will do, thanks:)
