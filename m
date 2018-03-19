@@ -1,76 +1,75 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [RESEND PATCH v5 3/5] pwm-backlight: add support for PWM delays
- proprieties.
-Date: Mon, 19 Mar 2018 17:59:22 +0100
-Message-ID: <20180319165922.GD22770@ulmo>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [RESEND PATCH v5 1/5] pwm-backlight: enable/disable the PWM
+ before/after LCD enable toggle.
+Date: Mon, 19 Mar 2018 19:28:55 +0100
+Message-ID: <a2ea8b01-1182-7c80-60a2-4b4e0d8141ab@collabora.com>
 References: <20180216174034.15936-1-enric.balletbo@collabora.com>
- <20180216174034.15936-3-enric.balletbo@collabora.com>
+ <20180319165829.GB22770@ulmo>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="g7w8+K/95kPelPD2"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180216174034.15936-3-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180319165829.GB22770@ulmo>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Thierry,
 
---g7w8+K/95kPelPD2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks for your ack.
 
-On Fri, Feb 16, 2018 at 06:40:32PM +0100, Enric Balletbo i Serra wrote:
-> Some panels (i.e. N116BGE-L41), in their power sequence specifications,
-> request a delay between set the PWM signal and enable the backlight and
-> between clear the PWM signal and disable the backlight. Add support for
-> the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
-> the timings.
->=20
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Pavel Machek <pavel@ucw.cz>
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-> Acked-by: Jingoo Han <jingoohan1@gmail.com>
-> ---
-> Changes since v4:
->  - Rebased on top of mainline.
->  - Added the acks from Pavel Machek, Daniel thompson and Jingoo Han
-> Changes since v3:
->  - Use two named members instead of pwm_delay[] (Daniel and Pavel)
->  - Use msleep instead of usleep_range. (Pavel)
-> Changes since v2:
->  - Move the pwm/enable sequence to another patch (Thierry Reding)
-> Changes since v1:
->  - As suggested by Daniel Thompson
->    - Do not assume power-on delay and power-off delay will be the same
->  - Move the check of dt property to the parse dt function.
->=20
->  drivers/video/backlight/pwm_bl.c | 19 +++++++++++++++++++
->  include/linux/pwm_backlight.h    |  2 ++
->  2 files changed, 21 insertions(+)
+On 19/03/18 17:58, Thierry Reding wrote:
+> On Fri, Feb 16, 2018 at 06:40:30PM +0100, Enric Balletbo i Serra wrote:
+>> Before this patch the enable signal was set before the PWM signal and
+>> vice-versa on power off. This sequence is wrong, at least, it is on
+>> the different panels datasheets that I checked, so I inverted the sequence
+>> to follow the specs.
+>>
+>> For reference the following panels have the mentioned sequence:
+>>   - N133HSE-EA1 (Innolux)
+>>   - N116BGE (Innolux)
+>>   - N156BGE-L21 (Innolux)
+>>   - B101EAN0 (Auo)
+>>   - B101AW03 (Auo)
+>>   - LTN101NT05 (Samsung)
+>>   - CLAA101WA01A (Chunghwa)
+>>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> Acked-by: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+>> Acked-by: Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> ---
+>> Changes since v4:
+>>  - Rebase on top of mainline.
+>>  - Add the acks from Daniel Thompson and Jingoo Han.
+>> Changes since v3:
+>>  - List the part numbers for the panel checked (Daniel Thompson)
+>> Changes since v2:
+>>  - Add this as a separate patch (Thierry Reding)
+>> Changes since v1:
+>>  - None
+>>
+>>  drivers/video/backlight/pwm_bl.c | 9 +++++----
+>>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> I'm surprised that panels even care about this. Do you see actual
+> breakage if these are the other way around?
+> 
 
-Acked-by: Thierry Reding <thierry.reding@gmail.com>
+At least the B116XTN02 requires enable first the PWM, wait 10ms and then BL_EN
+to avoid garbage. I did not observe the issue on other panels but the datasheets
+I checked specifies this sequence as correct.
 
---g7w8+K/95kPelPD2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlqv7GoACgkQ3SOs138+
-s6F9GxAAqXp9JE/VvfuJ/zqbvGh/hLA1/RJzfV05dGFb5pk9QoKYjKgIZSaJ9VyB
-rNEnjma8Mbj89T4emlMg+3jMXXBiMGUv9vfDR+XO7GQI1bhGgp7JQUUmYg3d6a/F
-CUL3jR0RJWlqChyDgU4VkZJqlfF15t7Vdmu8zrpVaMSmNSSCnlNDYM6EZ7v7Fmct
-zWxgfovvsV+E/cCAcJQvUxPL5bZWFlTcoWAbhL+xUyCNmChBKPIgiFMbaYBlBREC
-7teXLSnQ2OVD4p0H/SpkMDD2fTAUChpSoUWVWhnxa1Z8NCY0ZikF5srsWr+W25bO
-tixRdRPR/1l/1x6/3kKvWO5/mrKxHhMcCHxfe4QY5PgtsDCiFgFwJ/nmN5HPVuYa
-+clnAbDcytGfv31fLlnvd4+04CnVFyHjzaSIWjw4kKjmJd6d6rWs+4E4XlVmJtku
-s2QMW4bN5GBFqteNRR0zLDz0bbEYjiZtTwOf0bs3bViw8sNh2rw0/KUogfFumI3F
-4WYqbapezDnXiHoA7MX349f9z9TVuHvE7fioK+GQW+6wfkTuY5GAmqCxfsO254Uk
-E9gtIZ0W9qFlga2mHp0hBUwzLdAhei4x8uZ8bNF6hKSlBLRj4Agn+XOaLzJYJmiZ
-DrOaqv0lpcX/1ERM5HDsLjKdj5VaKov1lyjUo4G5JCl59TmDZLo=
-=3DKy
------END PGP SIGNATURE-----
-
---g7w8+K/95kPelPD2--
+> Anyway, this seems to me as legit as the other way around, so:
+> 
+> Acked-by: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> 
