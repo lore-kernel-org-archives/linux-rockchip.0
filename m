@@ -1,7 +1,7 @@
-From: John Garry <john.garry@huawei.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
 Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Tue, 20 Mar 2018 16:52:47 +0000
-Message-ID: <ff6cd434-2227-12a6-b3b9-325da78a7fa9@huawei.com>
+Date: Tue, 20 Mar 2018 17:00:49 +0000
+Message-ID: <2aed10a0-ad3d-d9fc-7b6e-3b6877bff0be@arm.com>
 References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
  <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
@@ -10,11 +10,13 @@ References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <e603186e-b9e8-c7d5-b98a-f5bcce94f7d5@arm.com>
  <cbc89d68-ba41-1f6a-4ab2-4c9647b48f75@huawei.com>
  <d18d6f27-7270-d2d7-58b9-3bf16ffe6b0a@arm.com>
+ <ff6cd434-2227-12a6-b3b9-325da78a7fa9@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <d18d6f27-7270-d2d7-58b9-3bf16ffe6b0a@arm.com>
+In-Reply-To: <ff6cd434-2227-12a6-b3b9-325da78a7fa9@huawei.com>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -24,70 +26,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Marc Zyngier <marc.zyngier@arm.com>, JeffyChen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+To: John Garry <john.garry@huawei.com>, JeffyChen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>, Linuxarm <linuxarm@huawei.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20/03/2018 16:06, Marc Zyngier wrote:
-> Hi John,
->
-> On 20/03/18 15:52, John Garry wrote:
->> On 20/03/2018 13:34, Marc Zyngier wrote:
->>> On 20/03/18 10:13, JeffyChen wrote:
->>>> Hi Shawn,
->>>>
->>>> On 03/20/2018 05:39 PM, Shawn Lin wrote:
->>>>>
->>>>>
->>>>> Also another patch warns a lot when booting the kernel. Is there
->>>>> anything else I could do to let it go? Seems I am using broken
->>>>> dts for requesting IRQ_TYPE_NONE there?
->>>>
->>>> could be:
->>>> https://github.com/torvalds/linux/blob/master/drivers/irqchip/irq-gic-v3.c#L1145
->>>>
->>>> 		struct irq_fwspec ppi_fwspec = {
->>>> 			.fwnode		= gic_data.fwnode,
->>>> 			.param_count	= 3,
->>>> 			.param		= {
->>>> 				[0]	= 1,
->>>> 				[1]	= i,
->>>> 				[2]	= IRQ_TYPE_NONE, <--
->>>> 			},
->>>> 		};
->>>>
->>>> 		irq = irq_create_fwspec_mapping(&ppi_fwspec);
->>>
->>> Probably is. Caught at my own game, fun! ;-)
->>>
->>> Turning that NONE into LEVEL will work, as there is no known PPIs
->>> configured as edge (specially in a partitioned system), but the general
->>> case isn't pretty. I'll queue a workaround for now, and will look at
->>> addressing the more general issue.
->>>
+On 20/03/18 16:52, John Garry wrote:
+> On 20/03/2018 16:06, Marc Zyngier wrote:
+>> Hi John,
 >>
->> JFYI, reverting the original patch mentioned by Shawn resolved the boot
->> hang I was seeing on my Huawei D03. My D05 was fine without the revert.
->
-> I guess your D05 doesn't set SCR_EL3.FIQ, meaning that no Group-0
-> interrupts can reach the firmware. Hopefully it doesn't need them.
->
-> Would you mind testing the last patch I posted earlier today[1]?
->
+>> On 20/03/18 15:52, John Garry wrote:
+>>> On 20/03/2018 13:34, Marc Zyngier wrote:
+>>>> On 20/03/18 10:13, JeffyChen wrote:
+>>>>> Hi Shawn,
+>>>>>
+>>>>> On 03/20/2018 05:39 PM, Shawn Lin wrote:
+>>>>>>
+>>>>>>
+>>>>>> Also another patch warns a lot when booting the kernel. Is there
+>>>>>> anything else I could do to let it go? Seems I am using broken
+>>>>>> dts for requesting IRQ_TYPE_NONE there?
+>>>>>
+>>>>> could be:
+>>>>> https://github.com/torvalds/linux/blob/master/drivers/irqchip/irq-gic-v3.c#L1145
+>>>>>
+>>>>> 		struct irq_fwspec ppi_fwspec = {
+>>>>> 			.fwnode		= gic_data.fwnode,
+>>>>> 			.param_count	= 3,
+>>>>> 			.param		= {
+>>>>> 				[0]	= 1,
+>>>>> 				[1]	= i,
+>>>>> 				[2]	= IRQ_TYPE_NONE, <--
+>>>>> 			},
+>>>>> 		};
+>>>>>
+>>>>> 		irq = irq_create_fwspec_mapping(&ppi_fwspec);
+>>>>
+>>>> Probably is. Caught at my own game, fun! ;-)
+>>>>
+>>>> Turning that NONE into LEVEL will work, as there is no known PPIs
+>>>> configured as edge (specially in a partitioned system), but the general
+>>>> case isn't pretty. I'll queue a workaround for now, and will look at
+>>>> addressing the more general issue.
+>>>>
+>>>
+>>> JFYI, reverting the original patch mentioned by Shawn resolved the boot
+>>> hang I was seeing on my Huawei D03. My D05 was fine without the revert.
+>>
+>> I guess your D05 doesn't set SCR_EL3.FIQ, meaning that no Group-0
+>> interrupts can reach the firmware. Hopefully it doesn't need them.
+>>
+>> Would you mind testing the last patch I posted earlier today[1]?
+>>
+> 
+> Hi Marc,
+> 
+> Yes, [1] allows my D03 to boot. D05 is still ok.
+> 
+> If you're going to send this same patch to the list then feel free to add:
+> Tested-by: John Garry <john.garry@huawei.com>
 
-Hi Marc,
+OK, thanks for that. There is still a nit on my Chromebook, and I cannot
+yet explain why.
 
-Yes, [1] allows my D03 to boot. D05 is still ok.
+Digging.
 
-If you're going to send this same patch to the list then feel free to add:
-Tested-by: John Garry <john.garry@huawei.com>
-
-Cheers,
-John
-
-> Thanks,
->
-> 	M.
->
-> [1] https://www.spinics.net/lists/arm-kernel/msg642440.html
->
+	M.
+-- 
+Jazz is not dead. It just smells funny...
