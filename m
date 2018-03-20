@@ -1,16 +1,17 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
 Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Tue, 20 Mar 2018 18:13:06 +0800
-Message-ID: <5AB0DEB2.4000803@rock-chips.com>
+Date: Tue, 20 Mar 2018 10:33:31 +0000
+Message-ID: <ee53d58b-5e46-b54f-b985-81631aaf7882@arm.com>
 References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
  <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
  <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,83 +21,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Marc Zyngier <marc.zyngier@arm.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-On 03/20/2018 05:39 PM, Shawn Lin wrote:
->
->
-> Also another patch warns a lot when booting the kernel. Is there
-> anything else I could do to let it go? Seems I am using broken
-> dts for requesting IRQ_TYPE_NONE there?
-
-could be:
-https://github.com/torvalds/linux/blob/master/drivers/irqchip/irq-gic-v3.c#L1145
-
-		struct irq_fwspec ppi_fwspec = {
-			.fwnode		= gic_data.fwnode,
-			.param_count	= 3,
-			.param		= {
-				[0]	= 1,
-				[1]	= i,
-				[2]	= IRQ_TYPE_NONE, <--
-			},
-		};
-
-		irq = irq_create_fwspec_mapping(&ppi_fwspec);
-
-
->
-> [    0.000000] WARNING: CPU: 0 PID: 0 at
-> drivers/irqchip/irq-gic-v3.c:909 gic_irq_domain_translate+0x84/0xe8
-> [    0.000000] Modules linked in:
-> [    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted
-> 4.16.0-rc6-next-20180320-00006-g841c1d1-dirty #257
-> [    0.000000] Hardware name: Excavator-RK3399 Board (DT)
-> [    0.000000] pstate: 60000085 (nZCv daIf -PAN -UAO)
-> [    0.000000] pc : gic_irq_domain_translate+0x84/0xe8
-> [    0.000000] lr : irq_create_fwspec_mapping+0x64/0x328
-> [    0.000000] sp : ffff000009033cb0
-> [    0.000000] x29: ffff000009033cb0 x28: 0000000000000002
-> [    0.000000] x27: ffff8000f280fc90 x26: 0000000000000003
-> [    0.000000] x25: 0000000000000000 x24: ffff8000f280fc80
-> [    0.000000] x23: ffff00000903c8f8 x22: ffff00000903c000
-> [    0.000000] x21: ffff000009033d88 x20: ffff000009039000
-> [    0.000000] x19: ffff8000f2825000 x18: ffffffffffffffff
-> [    0.000000] x17: 000000000000000a x16: 00000000000007ff
-> [    0.000000] x15: ffff0000090396c8 x14: 31407570632f7375
-> [    0.000000] x13: 70632f207b205d31 x12: 5b312d6e6f697469
-> [    0.000000] x11: 747261702d747075 x10: 727265746e69206e
-> [    0.000000] x9 : 6f69746974726170 x8 : 407570632f737570
-> [    0.000000] x7 : 0000000000000000 x6 : 0000000000000002
-> [    0.000000] x5 : 0000000000000001 x4 : ffff000008c153f8
-> [    0.000000] x3 : ffff000009033cec x2 : ffff000009033cf0
-> [    0.000000] x1 : ffff000009033d88 x0 : 0000000000000000
-> [    0.000000] Call trace:
-> [    0.000000]  gic_irq_domain_translate+0x84/0xe8
-> [    0.000000]  gic_populate_ppi_partitions+0x1fc/0x280
-> [    0.000000]  gic_of_init+0x174/0x214
-> [    0.000000]  of_irq_init+0x180/0x2e8
-> [    0.000000]  irqchip_init+0x14/0x38
-> [    0.000000]  init_IRQ+0xfc/0x130
-> [    0.000000]  start_kernel+0x284/0x414
-> [    0.000000] ---[ end trace 5a16819db6b2d5d2 ]---
->
-> commit 6ef6386ef7c15bea21afce06f951c87de7e2a562
-> Author: Marc Zyngier <marc.zyngier@arm.com>
-> Date:   Fri Mar 16 14:35:17 2018 +0000
->
->      irqchip/gic-v3: Loudly complain about the use of IRQ_TYPE_NONE
->
->      There is a huge number of broken device trees out there. Just
->      grepping through the tree for the use of IRQ_TYPE_NONE in conjunction
->      with the GIC is scary.
->
->      People just don't realise that IRQ_TYPE_NONE just doesn't exist, and
->      you just get whatever junk was there before. So let's make them aware
->      of the issue.
->
->      Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
+T24gMjAvMDMvMTggMDk6MzksIFNoYXduIExpbiB3cm90ZToKPiBIaSBNYXJjCj4gCj4gT24gMjAx
+OC8zLzIwIDE3OjMyLCBTaGF3biBMaW4gd3JvdGU6Cj4+IEhpIE1hcmMsCj4+Cj4+IE9uIDIwMTgv
+My8yMCAxNzowMSwgTWFyYyBaeW5naWVyIHdyb3RlOgo+Pj4gSGkgU2hhd24sCj4+Pgo+Pj4gT24g
+MjAvMDMvMTggMDg6NDgsIFNoYXduIExpbiB3cm90ZToKPj4+PiBIaSBNYXJjLAo+Pj4+Cj4+Pj4g
+wqDCoMKgwqDCoCBJIHdhcyBhYmxlIHRvIGJvb3QgbXkgUkszMzk5IGJvYXJkIHdpdGggaW4gbGlu
+dXgtbmV4dC0yMDE4MDMxNCwKPj4+PiBidXQgbm90IHRvZGF5LiBNeSBiaXNlY3Qgcm9ib3Qgc2hv
+d3MgbWUgaXQgd2FzIGludHJvZHVjZWQgYnkKPj4+Pgo+Pj4+IGNvbW1pdCBkNjA2MmE2ZDYyYzY0
+M2EwNmMzOTM3NDVkMDMyZGEzZTY0NDFkNGJkCj4+Pj4gQXV0aG9yOiBNYXJjIFp5bmdpZXIgPG1h
+cmMuenluZ2llckBhcm0uY29tPgo+Pj4+IERhdGU6wqDCoCBGcmkgTWFyIDkgMTQ6NTM6MTkgMjAx
+OCArMDAwMAo+Pj4+Cj4+Pj4gwqDCoMKgwqDCoCBpcnFjaGlwL2dpYy12MzogUmVzZXQgQVBnUm4g
+cmVnaXN0ZXJzIGF0IGJvb3QgdGltZQo+Pj4+Cj4+Pj4gwqDCoMKgwqDCoCBCb290aW5nIGEgY3Jh
+c2gga2VybmVsIHdoaWxlIGluIGFuIGludGVycnVwdCBoYW5kbGVyIGlzIGxpa2VseQo+Pj4+IMKg
+wqDCoMKgwqAgdG8gbGVhdmUgdGhlIEFjdGl2ZSBQcmlvcml0eSBSZWdpc3RlcnMgd2l0aCBzb21l
+IHN0YXRlIHRoYXQKPj4+PiDCoMKgwqDCoMKgIGlzIG5vdCByZWxldmFudCB0byB0aGUgbmV3IGtl
+cm5lbCwgYW5kIGlzIGxpa2VseSB0byBsZWFkCj4+Pj4gwqDCoMKgwqDCoCB0byBlcnJhdGljIGJl
+aGF2aW91cnMgc3VjaCBhcyBpbnRlcnJ1cHRzIG5vdCBmaXJpbmcgYXMgdGhlaXIKPj4+PiDCoMKg
+wqDCoMKgIHByaW9yaXR5IGlzIGFscmVhZHkgYWN0aXZlLgo+Pj4+Cj4+Pj4gwqDCoMKgwqDCoCBB
+cyBhIHNhbml0eSBtZWFzdXJlLCB3aXBlIHRoZSBBUFJzIGNsZWFuIG9uIHN0YXJ0dXAuIFdlIG1h
+a2UKPj4+PiDCoMKgwqDCoMKgIHN1cmUgdG8gd2lwZSBib3RoIGdyb3VwIDAgYW5kIDEgcmVnaXN0
+ZXJzIGluIG9yZGVyIHRvIGF2b2lkCj4+Pj4gwqDCoMKgwqDCoCBhbnkgc3VycHJpc2UuCj4+Pj4K
+Pj4+Pgo+Pj4+IFRoZSBwYW5pYyBsb2cgaXMgaGVyZToKPj4+PiBodHRwczovL3Bhc3RlLnVidW50
+dS5jb20vcC83V3JKSkRHNkpRLwo+Pj4+Cj4+Pj4gSXMgaXQgYSBrbm93biBpc3N1ZSBvciBpcyB0
+aGVyZSBhIGNvbWluZyBwYXRjaCBmb3IgdGhhdD8KPj4+Cj4+PiDCoCBJbnRlcmVzdGluZy4gTm8s
+IHRoYXQgd2Fzbid0IHRoZSBpbnRlbnRpb24sIGJ1dCBJIG1heSBoYXZlIG1pc3NlZCBhIGtleQo+
+Pj4gZGV0YWlsIChncm91cCAwIGFjY2VzcyB0cmFwcyB0byBFTDMgaWYgU0NSX0VMMy5GSVE9PTEp
+LiBDYW4geW91IGhhdmUgYQo+Pj4gZ28gYXQgdGhlIGZvbGxvd2luZyBoYWNrLCBqdXN0IHRvIG5h
+cnJvdyBpdCBkb3duOgo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2lycWNoaXAvaXJxLWdp
+Yy12My5jIGIvZHJpdmVycy9pcnFjaGlwL2lycS1naWMtdjMuYwo+Pj4gaW5kZXggNWJiN2JiMjJm
+MWMxLi5mOGZmNDNiMWQ0ZjggMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2lycWNoaXAvaXJxLWdp
+Yy12My5jCj4+PiArKysgYi9kcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My5jCj4+PiBAQCAtNTcw
+LDE2ICs1NzAsMTIgQEAgc3RhdGljIHZvaWQgZ2ljX2NwdV9zeXNfcmVnX2luaXQodm9pZCkKPj4+
+IMKgwqDCoMKgwqAgc3dpdGNoKHZhbCArIDEpIHsKPj4+IMKgwqDCoMKgwqAgY2FzZSA4Ogo+Pj4g
+wqDCoMKgwqDCoCBjYXNlIDc6Cj4+PiAtwqDCoMKgwqDCoMKgwqAgd3JpdGVfZ2ljcmVnKDAsIElD
+Q19BUDBSM19FTDEpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHdyaXRlX2dpY3JlZygwLCBJQ0Nf
+QVAxUjNfRUwxKTsKPj4+IC3CoMKgwqDCoMKgwqDCoCB3cml0ZV9naWNyZWcoMCwgSUNDX0FQMFIy
+X0VMMSk7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDFSMl9F
+TDEpOwo+Pj4gwqDCoMKgwqDCoCBjYXNlIDY6Cj4+PiAtwqDCoMKgwqDCoMKgwqAgd3JpdGVfZ2lj
+cmVnKDAsIElDQ19BUDBSMV9FTDEpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHdyaXRlX2dpY3Jl
+ZygwLCBJQ0NfQVAxUjFfRUwxKTsKPj4+IMKgwqDCoMKgwqAgY2FzZSA1Ogo+Pj4gwqDCoMKgwqDC
+oCBjYXNlIDQ6Cj4+PiAtwqDCoMKgwqDCoMKgwqAgd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDBSMF9F
+TDEpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHdyaXRlX2dpY3JlZygwLCBJQ0NfQVAxUjBfRUwx
+KTsKPj4+IMKgwqDCoMKgwqAgfQo+Pj4KPj4+IExldCBtZSBrbm93IGlmIHRoYXQgaGVscHMuCj4+
+Pgo+Pgo+PiBJdCB3b3JrcyBmb3IgbWUuIFRoYW5rcyEKPiAKPiAKPiBBbHNvIGFub3RoZXIgcGF0
+Y2ggd2FybnMgYSBsb3Qgd2hlbiBib290aW5nIHRoZSBrZXJuZWwuIElzIHRoZXJlCj4gYW55dGhp
+bmcgZWxzZSBJIGNvdWxkIGRvIHRvIGxldCBpdCBnbz8gU2VlbXMgSSBhbSB1c2luZyBicm9rZW4K
+PiBkdHMgZm9yIHJlcXVlc3RpbmcgSVJRX1RZUEVfTk9ORSB0aGVyZT8KCkluZGVlZC4gSVJRX1RZ
+UEVfTk9ORSBpcyBub3Qgc29tZXRoaW5nIHlvdSBzaG91bGQgZXZlciBmZWVkIHRvIHRoZSBHSUMu
+CgpUaGFua3MsCgoJTS4KLS0gCkphenogaXMgbm90IGRlYWQuIEl0IGp1c3Qgc21lbGxzIGZ1bm55
+Li4uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
+eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
+cm0ta2VybmVsCg==
