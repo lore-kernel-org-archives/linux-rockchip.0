@@ -1,72 +1,52 @@
-From: John Garry <john.garry@huawei.com>
-Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Tue, 20 Mar 2018 15:52:04 +0000
-Message-ID: <cbc89d68-ba41-1f6a-4ab2-4c9647b48f75@huawei.com>
-References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
- <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
- <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
- <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
- <5AB0DEB2.4000803@rock-chips.com>
- <e603186e-b9e8-c7d5-b98a-f5bcce94f7d5@arm.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: [PATCH 0/3] Fix audio regression on rk3288
+Date: Tue, 20 Mar 2018 13:03:29 -0300
+Message-ID: <20180320160332.13212-1-ezequiel@vanguardiasur.com.ar>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <e603186e-b9e8-c7d5-b98a-f5bcce94f7d5@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Marc Zyngier <marc.zyngier@arm.com>, JeffyChen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Ezequiel Garcia <ezequiel@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20/03/2018 13:34, Marc Zyngier wrote:
-> On 20/03/18 10:13, JeffyChen wrote:
->> Hi Shawn,
->>
->> On 03/20/2018 05:39 PM, Shawn Lin wrote:
->>>
->>>
->>> Also another patch warns a lot when booting the kernel. Is there
->>> anything else I could do to let it go? Seems I am using broken
->>> dts for requesting IRQ_TYPE_NONE there?
->>
->> could be:
->> https://github.com/torvalds/linux/blob/master/drivers/irqchip/irq-gic-v3.c#L1145
->>
->> 		struct irq_fwspec ppi_fwspec = {
->> 			.fwnode		= gic_data.fwnode,
->> 			.param_count	= 3,
->> 			.param		= {
->> 				[0]	= 1,
->> 				[1]	= i,
->> 				[2]	= IRQ_TYPE_NONE, <--
->> 			},
->> 		};
->>
->> 		irq = irq_create_fwspec_mapping(&ppi_fwspec);
->
-> Probably is. Caught at my own game, fun! ;-)
->
-> Turning that NONE into LEVEL will work, as there is no known PPIs
-> configured as edge (specially in a partitioned system), but the general
-> case isn't pretty. I'll queue a workaround for now, and will look at
-> addressing the more general issue.
->
+From: Ezequiel Garcia <ezequiel@collabora.co.uk>
 
-JFYI, reverting the original patch mentioned by Shawn resolved the boot 
-hang I was seeing on my Huawei D03. My D05 was fine without the revert.
+Currently on rk3288 boards the ASoC machine driver fails to load,
+breaking audio support.
 
-Thanks,
-John
+Apparently, the regression was introduced by commit 24069b589b02
+("ASoC: hdmi-codec: remove multi detection support") which changed
+the codec name.
 
-> Thanks,
->
-> 	M.
->
+If there is a lesson here, it would be about binding drivers using
+strings and how fragile this is. Or maybe it's about regression
+testing. Or maybe there isn't a lesson.
+
+Anyway, the first patch fixes the regression; the second patch
+makes the machine driver selects all the codecs it; finally
+the third patch is just a binding documentation fix.
+
+Tested on a Radxa Rock2 Square board.
+
+Ezequiel Garcia (3):
+  ASoC: rockchip: Fix dai_name for HDMI codec
+  ASoC: rockchip: rk3288-hdmi-analog: Select needed codecs
+  dt-bindings: sound: rockchip Fix compatible string in example
+
+ .../devicetree/bindings/sound/rockchip,rk3288-hdmi-analog.txt          | 2 +-
+ sound/soc/rockchip/Kconfig                                             | 3 +++
+ sound/soc/rockchip/rk3288_hdmi_analog.c                                | 2 +-
+ 3 files changed, 5 insertions(+), 2 deletions(-)
+
+-- 
+2.16.2
