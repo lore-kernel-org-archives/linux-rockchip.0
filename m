@@ -1,16 +1,16 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
+From: JeffyChen <jeffy.chen@rock-chips.com>
 Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Tue, 20 Mar 2018 18:06:02 +0800
-Message-ID: <1d4d0797-1630-b09d-943d-1a1cac178700@rock-chips.com>
+Date: Tue, 20 Mar 2018 18:13:06 +0800
+Message-ID: <5AB0DEB2.4000803@rock-chips.com>
 References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
  <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
- <2dfe4f47-8163-d7a4-c9cc-d60b9f0e71a8@arm.com>
+ <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2dfe4f47-8163-d7a4-c9cc-d60b9f0e71a8@arm.com>
+In-Reply-To: <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,124 +20,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, shawn.lin@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>, Marc Zyngier <marc.zyngier@arm.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyYywKCtTaIDIwMTgvMy8yMCAxNzo1NiwgTWFyYyBaeW5naWVyINC0tcA6Cj4gT24gMjAv
-MDMvMTggMDk6MzIsIFNoYXduIExpbiB3cm90ZToKPj4gSGkgTWFyYywKPj4KPj4gT24gMjAxOC8z
-LzIwIDE3OjAxLCBNYXJjIFp5bmdpZXIgd3JvdGU6Cj4+PiBIaSBTaGF3biwKPj4+Cj4+PiBPbiAy
-MC8wMy8xOCAwODo0OCwgU2hhd24gTGluIHdyb3RlOgo+Pj4+IEhpIE1hcmMsCj4+Pj4KPj4+PiAg
-ICAgICAgSSB3YXMgYWJsZSB0byBib290IG15IFJLMzM5OSBib2FyZCB3aXRoIGluIGxpbnV4LW5l
-eHQtMjAxODAzMTQsCj4+Pj4gYnV0IG5vdCB0b2RheS4gTXkgYmlzZWN0IHJvYm90IHNob3dzIG1l
-IGl0IHdhcyBpbnRyb2R1Y2VkIGJ5Cj4+Pj4KPj4+PiBjb21taXQgZDYwNjJhNmQ2MmM2NDNhMDZj
-MzkzNzQ1ZDAzMmRhM2U2NDQxZDRiZAo+Pj4+IEF1dGhvcjogTWFyYyBaeW5naWVyIDxtYXJjLnp5
-bmdpZXJAYXJtLmNvbT4KPj4+PiBEYXRlOiAgIEZyaSBNYXIgOSAxNDo1MzoxOSAyMDE4ICswMDAw
-Cj4+Pj4KPj4+PiAgICAgICAgaXJxY2hpcC9naWMtdjM6IFJlc2V0IEFQZ1JuIHJlZ2lzdGVycyBh
-dCBib290IHRpbWUKPj4+Pgo+Pj4+ICAgICAgICBCb290aW5nIGEgY3Jhc2gga2VybmVsIHdoaWxl
-IGluIGFuIGludGVycnVwdCBoYW5kbGVyIGlzIGxpa2VseQo+Pj4+ICAgICAgICB0byBsZWF2ZSB0
-aGUgQWN0aXZlIFByaW9yaXR5IFJlZ2lzdGVycyB3aXRoIHNvbWUgc3RhdGUgdGhhdAo+Pj4+ICAg
-ICAgICBpcyBub3QgcmVsZXZhbnQgdG8gdGhlIG5ldyBrZXJuZWwsIGFuZCBpcyBsaWtlbHkgdG8g
-bGVhZAo+Pj4+ICAgICAgICB0byBlcnJhdGljIGJlaGF2aW91cnMgc3VjaCBhcyBpbnRlcnJ1cHRz
-IG5vdCBmaXJpbmcgYXMgdGhlaXIKPj4+PiAgICAgICAgcHJpb3JpdHkgaXMgYWxyZWFkeSBhY3Rp
-dmUuCj4+Pj4KPj4+PiAgICAgICAgQXMgYSBzYW5pdHkgbWVhc3VyZSwgd2lwZSB0aGUgQVBScyBj
-bGVhbiBvbiBzdGFydHVwLiBXZSBtYWtlCj4+Pj4gICAgICAgIHN1cmUgdG8gd2lwZSBib3RoIGdy
-b3VwIDAgYW5kIDEgcmVnaXN0ZXJzIGluIG9yZGVyIHRvIGF2b2lkCj4+Pj4gICAgICAgIGFueSBz
-dXJwcmlzZS4KPj4+Pgo+Pj4+Cj4+Pj4gVGhlIHBhbmljIGxvZyBpcyBoZXJlOgo+Pj4+IGh0dHBz
-Oi8vcGFzdGUudWJ1bnR1LmNvbS9wLzdXckpKREc2SlEvCj4+Pj4KPj4+PiBJcyBpdCBhIGtub3du
-IGlzc3VlIG9yIGlzIHRoZXJlIGEgY29taW5nIHBhdGNoIGZvciB0aGF0Pwo+Pj4KPj4+ICAgIElu
-dGVyZXN0aW5nLiBObywgdGhhdCB3YXNuJ3QgdGhlIGludGVudGlvbiwgYnV0IEkgbWF5IGhhdmUg
-bWlzc2VkIGEga2V5Cj4+PiBkZXRhaWwgKGdyb3VwIDAgYWNjZXNzIHRyYXBzIHRvIEVMMyBpZiBT
-Q1JfRUwzLkZJUT09MSkuIENhbiB5b3UgaGF2ZSBhCj4+PiBnbyBhdCB0aGUgZm9sbG93aW5nIGhh
-Y2ssIGp1c3QgdG8gbmFycm93IGl0IGRvd246Cj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-aXJxY2hpcC9pcnEtZ2ljLXYzLmMgYi9kcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My5jCj4+PiBp
-bmRleCA1YmI3YmIyMmYxYzEuLmY4ZmY0M2IxZDRmOCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMv
-aXJxY2hpcC9pcnEtZ2ljLXYzLmMKPj4+ICsrKyBiL2RyaXZlcnMvaXJxY2hpcC9pcnEtZ2ljLXYz
-LmMKPj4+IEBAIC01NzAsMTYgKzU3MCwxMiBAQCBzdGF0aWMgdm9pZCBnaWNfY3B1X3N5c19yZWdf
-aW5pdCh2b2lkKQo+Pj4gICAgCXN3aXRjaCh2YWwgKyAxKSB7Cj4+PiAgICAJY2FzZSA4Ogo+Pj4g
-ICAgCWNhc2UgNzoKPj4+IC0JCXdyaXRlX2dpY3JlZygwLCBJQ0NfQVAwUjNfRUwxKTsKPj4+ICAg
-IAkJd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDFSM19FTDEpOwo+Pj4gLQkJd3JpdGVfZ2ljcmVnKDAs
-IElDQ19BUDBSMl9FTDEpOwo+Pj4gICAgCQl3cml0ZV9naWNyZWcoMCwgSUNDX0FQMVIyX0VMMSk7
-Cj4+PiAgICAJY2FzZSA2Ogo+Pj4gLQkJd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDBSMV9FTDEpOwo+
-Pj4gICAgCQl3cml0ZV9naWNyZWcoMCwgSUNDX0FQMVIxX0VMMSk7Cj4+PiAgICAJY2FzZSA1Ogo+
-Pj4gICAgCWNhc2UgNDoKPj4+IC0JCXdyaXRlX2dpY3JlZygwLCBJQ0NfQVAwUjBfRUwxKTsKPj4+
-ICAgIAkJd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDFSMF9FTDEpOwo+Pj4gICAgCX0KPj4+Cj4+PiBM
-ZXQgbWUga25vdyBpZiB0aGF0IGhlbHBzLgo+Pj4KPj4KPj4gSXQgd29ya3MgZm9yIG1lLiBUaGFu
-a3MhCj4gT0suIFdvdWxkIHlvdSBtaW5kIHRlc3RpbmcgYSBtdWNoIG1vcmUgY29tcGxldGUgcGF0
-Y2g/CgpIbW0uLiB0aGUgbW9yZSBjb21wbGV0ZSBwYXRjaCBkb2Vzbid0IHdvcmsgZm9yIG1lLgoK
-PiAKPj5Gcm9tIDE5Mjc4NjU5MDkzMGMyMDU0NjFlYTBhMzc5ZDI5NWEyZDAzNzVmYzEgTW9uIFNl
-cCAxNyAwMDowMDowMCAyMDAxCj4gRnJvbTogTWFyYyBaeW5naWVyIDxtYXJjLnp5bmdpZXJAYXJt
-LmNvbT4KPiBEYXRlOiBUdWUsIDIwIE1hciAyMDE4IDA5OjQ2OjQyICswMDAwCj4gU3ViamVjdDog
-W1BBVENIXSBpcnFjaGlwL2dpYy12MzogQ2hlY2sgYXZhaWxhYmlsaXR5IG9mIEdyb3VwMCBiZWZv
-cmUgcmVzZXR0aW5nCj4gICBBUDBSbgo+IAo+IFdlIG5vdyB0cnkgdG8gcmVzZXQgdGhlIEFjdGl2
-ZSBQcmlvcml0eSBSZWdpc3RlcnMgYXQgYm9vdCB0aW1lLAo+IHdpdGhvdXQgY2hlY2tpbmcgIGlm
-IHdlIGFjdHVhbGx5IGhhdmUgYWNjZXNzIHRvIHRoZW0uIEJhZCBtb3ZlLgo+IElmIHRoZSBzZWN1
-cmUgc2lkZSBoYXMgc2V0IFNDUl9FTDMuRklRPTEsIHdlJ2xsIHRyYXAgdG8gRUwzLCBhbmQKPiB0
-aGUgZmlybXdhcmUgbWF5IG5vdCBiZSBwbGVhc2UgdG8gZ2V0IHN1Y2ggYW4gZXhjZXB0aW9uLgo+
-IAo+IEluc3RlYWQsIGxldCdzIHVzZSBQTVIgdG8gZmluZCBvdXQgaWYgaXRzIHZhbHVlIGdldHMg
-YWZmZWN0ZWQgYnkKPiBTQ1JfRUwzLkZJUSBiZWluZyBzZXQuIE9ubHkgaWYgYSByZWFkYmFjayBm
-cm9tIFBNUiBzaG93cyB0aGUgc2FtZQo+IHZhbHVlIChvciBhIGhpZ2hlciBwcmlvcml0eSkgd2ls
-bCB3ZSBiZSBhYmxlIHRvIHdyaXRlIHRvIEFQMFJuLgo+IAo+IEZpeGVzOiBkNjA2MmE2ZDYyYzYg
-KCJpcnFjaGlwL2dpYy12MzogUmVzZXQgQVBnUm4gcmVnaXN0ZXJzIGF0IGJvb3QgdGltZSIpCj4g
-UmVwb3J0ZWQtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+IFNpZ25l
-ZC1vZmYtYnk6IE1hcmMgWnluZ2llciA8bWFyYy56eW5naWVyQGFybS5jb20+Cj4gLS0tCj4gICBh
-cmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmggICB8ICA2ICstLS0tLQo+ICAgYXJjaC9h
-cm02NC9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmggfCAgNSAtLS0tLQo+ICAgZHJpdmVycy9pcnFj
-aGlwL2lycS1naWMtdjMuYyAgICAgICAgfCAyNSArKysrKysrKysrKysrKysrKysrKy0tLS0tCj4g
-ICAzIGZpbGVzIGNoYW5nZWQsIDIxIGluc2VydGlvbnMoKyksIDE1IGRlbGV0aW9ucygtKQo+IAo+
-IGRpZmYgLS1naXQgYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmggYi9hcmNoL2Fy
-bS9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmgKPiBpbmRleCAyNzI4OGJkYmQ4NDAuLjBiZDUzMDcw
-MjExOCAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmgKPiAr
-KysgYi9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmgKPiBAQCAtMTM3LDYgKzEzNyw3
-IEBAIHN0YXRpYyBpbmxpbmUgdTY0IHJlYWRfICMjIGE2NCh2b2lkKQkJXAo+ICAgCXJldHVybiB2
-YWw7IAkJCQlcCj4gICB9Cj4gICAKPiArQ1BVSUZfTUFQKElDQ19QTVIsIElDQ19QTVJfRUwxKQo+
-ICAgQ1BVSUZfTUFQKElDQ19BUDBSMCwgSUNDX0FQMFIwX0VMMSkKPiAgIENQVUlGX01BUChJQ0Nf
-QVAwUjEsIElDQ19BUDBSMV9FTDEpCj4gICBDUFVJRl9NQVAoSUNDX0FQMFIyLCBJQ0NfQVAwUjJf
-RUwxKQo+IEBAIC0yMDYsMTEgKzIwNyw2IEBAIHN0YXRpYyBpbmxpbmUgdTMyIGdpY19yZWFkX2lh
-cih2b2lkKQo+ICAgCXJldHVybiBpcnFzdGF0Owo+ICAgfQo+ICAgCj4gLXN0YXRpYyBpbmxpbmUg
-dm9pZCBnaWNfd3JpdGVfcG1yKHUzMiB2YWwpCj4gLXsKPiAtCXdyaXRlX3N5c3JlZyh2YWwsIElD
-Q19QTVIpOwo+IC19Cj4gLQo+ICAgc3RhdGljIGlubGluZSB2b2lkIGdpY193cml0ZV9jdGxyKHUz
-MiB2YWwpCj4gICB7Cj4gICAJd3JpdGVfc3lzcmVnKHZhbCwgSUNDX0NUTFIpOwo+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybTY0L2luY2x1ZGUvYXNtL2FyY2hfZ2ljdjMuaCBiL2FyY2gvYXJtNjQvaW5j
-bHVkZS9hc20vYXJjaF9naWN2My5oCj4gaW5kZXggOWJlY2JhOWFiMzkyLi5lMjc4Zjk0ZGYwYzkg
-MTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9pbmNsdWRlL2FzbS9hcmNoX2dpY3YzLmgKPiArKysg
-Yi9hcmNoL2FybTY0L2luY2x1ZGUvYXNtL2FyY2hfZ2ljdjMuaAo+IEBAIC03NiwxMSArNzYsNiBA
-QCBzdGF0aWMgaW5saW5lIHU2NCBnaWNfcmVhZF9pYXJfY2F2aXVtX3RodW5kZXJ4KHZvaWQpCj4g
-ICAJcmV0dXJuIGlycXN0YXQ7Cj4gICB9Cj4gICAKPiAtc3RhdGljIGlubGluZSB2b2lkIGdpY193
-cml0ZV9wbXIodTMyIHZhbCkKPiAtewo+IC0Jd3JpdGVfc3lzcmVnX3ModmFsLCBTWVNfSUNDX1BN
-Ul9FTDEpOwo+IC19Cj4gLQo+ICAgc3RhdGljIGlubGluZSB2b2lkIGdpY193cml0ZV9jdGxyKHUz
-MiB2YWwpCj4gICB7Cj4gICAJd3JpdGVfc3lzcmVnX3ModmFsLCBTWVNfSUNDX0NUTFJfRUwxKTsK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pcnFjaGlwL2lycS1naWMtdjMuYyBiL2RyaXZlcnMvaXJx
-Y2hpcC9pcnEtZ2ljLXYzLmMKPiBpbmRleCA1YmI3YmIyMmYxYzEuLmEzZjc2MjRmNWIwMCAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My5jCj4gKysrIGIvZHJpdmVycy9p
-cnFjaGlwL2lycS1naWMtdjMuYwo+IEBAIC01MzIsNiArNTMyLDcgQEAgc3RhdGljIHZvaWQgZ2lj
-X2NwdV9zeXNfcmVnX2luaXQodm9pZCkKPiAgIAlpbnQgaSwgY3B1ID0gc21wX3Byb2Nlc3Nvcl9p
-ZCgpOwo+ICAgCXU2NCBtcGlkciA9IGNwdV9sb2dpY2FsX21hcChjcHUpOwo+ICAgCXU2NCBuZWVk
-X3JzcyA9IE1QSURSX1JTKG1waWRyKTsKPiArCWJvb2wgZ3JvdXAwOwo+ICAgCXUzMiB2YWw7Cj4g
-ICAKPiAgIAkvKgo+IEBAIC01NDUsNyArNTQ2LDExIEBAIHN0YXRpYyB2b2lkIGdpY19jcHVfc3lz
-X3JlZ19pbml0KHZvaWQpCj4gICAJCXByX2VycigiR0lDOiB1bmFibGUgdG8gc2V0IFNSRSAoZGlz
-YWJsZWQgYXQgRUwyKSwgcGFuaWMgYWhlYWRcbiIpOwo+ICAgCj4gICAJLyogU2V0IHByaW9yaXR5
-IG1hc2sgcmVnaXN0ZXIgKi8KPiAtCWdpY193cml0ZV9wbXIoREVGQVVMVF9QTVJfVkFMVUUpOwo+
-ICsJd3JpdGVfZ2ljcmVnKERFRkFVTFRfUE1SX1ZBTFVFLCBJQ0NfUE1SX0VMMSk7Cj4gKwo+ICsJ
-LyogSXMgR3JvdXAwIGF2YWlsYWJsZSB0byB1cz8gKi8KPiArCXZhbCA9IHJlYWRfZ2ljcmVnKElD
-Q19QTVJfRUwxKTsKPiArCWdyb3VwMCA9ICh2YWwgPD0gREVGQVVMVF9QTVJfVkFMVUUpOwo+ICAg
-Cj4gICAJLyoKPiAgIAkgKiBTb21lIGZpcm13YXJlcyBoYW5kIG92ZXIgdG8gdGhlIGtlcm5lbCB3
-aXRoIHRoZSBCUFIgY2hhbmdlZCBmcm9tCj4gQEAgLTU2NywxOSArNTcyLDI5IEBAIHN0YXRpYyB2
-b2lkIGdpY19jcHVfc3lzX3JlZ19pbml0KHZvaWQpCj4gICAJdmFsICY9IElDQ19DVExSX0VMMV9Q
-UklfQklUU19NQVNLOwo+ICAgCXZhbCA+Pj0gSUNDX0NUTFJfRUwxX1BSSV9CSVRTX1NISUZUOwo+
-ICAgCj4gKwlpZiAoZ3JvdXAwKSB7Cj4gKwkJc3dpdGNoKHZhbCArIDEpIHsKPiArCQljYXNlIDg6
-Cj4gKwkJY2FzZSA3Ogo+ICsJCQl3cml0ZV9naWNyZWcoMCwgSUNDX0FQMFIzX0VMMSk7Cj4gKwkJ
-CXdyaXRlX2dpY3JlZygwLCBJQ0NfQVAwUjJfRUwxKTsKPiArCQljYXNlIDY6Cj4gKwkJCXdyaXRl
-X2dpY3JlZygwLCBJQ0NfQVAwUjFfRUwxKTsKPiArCQljYXNlIDU6Cj4gKwkJY2FzZSA0Ogo+ICsJ
-CQl3cml0ZV9naWNyZWcoMCwgSUNDX0FQMFIwX0VMMSk7Cj4gKwkJfQo+ICsJfQo+ICsKPiAgIAlz
-d2l0Y2godmFsICsgMSkgewo+ICAgCWNhc2UgODoKPiAgIAljYXNlIDc6Cj4gLQkJd3JpdGVfZ2lj
-cmVnKDAsIElDQ19BUDBSM19FTDEpOwo+ICAgCQl3cml0ZV9naWNyZWcoMCwgSUNDX0FQMVIzX0VM
-MSk7Cj4gLQkJd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDBSMl9FTDEpOwo+ICAgCQl3cml0ZV9naWNy
-ZWcoMCwgSUNDX0FQMVIyX0VMMSk7Cj4gICAJY2FzZSA2Ogo+IC0JCXdyaXRlX2dpY3JlZygwLCBJ
-Q0NfQVAwUjFfRUwxKTsKPiAgIAkJd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDFSMV9FTDEpOwo+ICAg
-CWNhc2UgNToKPiAgIAljYXNlIDQ6Cj4gLQkJd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDBSMF9FTDEp
-Owo+ICAgCQl3cml0ZV9naWNyZWcoMCwgSUNDX0FQMVIwX0VMMSk7Cj4gICAJfQo+ICAgCj4gCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJt
-LWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtl
-cm5lbAo=
+Hi Shawn,
+
+On 03/20/2018 05:39 PM, Shawn Lin wrote:
+>
+>
+> Also another patch warns a lot when booting the kernel. Is there
+> anything else I could do to let it go? Seems I am using broken
+> dts for requesting IRQ_TYPE_NONE there?
+
+could be:
+https://github.com/torvalds/linux/blob/master/drivers/irqchip/irq-gic-v3.c#L1145
+
+		struct irq_fwspec ppi_fwspec = {
+			.fwnode		= gic_data.fwnode,
+			.param_count	= 3,
+			.param		= {
+				[0]	= 1,
+				[1]	= i,
+				[2]	= IRQ_TYPE_NONE, <--
+			},
+		};
+
+		irq = irq_create_fwspec_mapping(&ppi_fwspec);
+
+
+>
+> [    0.000000] WARNING: CPU: 0 PID: 0 at
+> drivers/irqchip/irq-gic-v3.c:909 gic_irq_domain_translate+0x84/0xe8
+> [    0.000000] Modules linked in:
+> [    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted
+> 4.16.0-rc6-next-20180320-00006-g841c1d1-dirty #257
+> [    0.000000] Hardware name: Excavator-RK3399 Board (DT)
+> [    0.000000] pstate: 60000085 (nZCv daIf -PAN -UAO)
+> [    0.000000] pc : gic_irq_domain_translate+0x84/0xe8
+> [    0.000000] lr : irq_create_fwspec_mapping+0x64/0x328
+> [    0.000000] sp : ffff000009033cb0
+> [    0.000000] x29: ffff000009033cb0 x28: 0000000000000002
+> [    0.000000] x27: ffff8000f280fc90 x26: 0000000000000003
+> [    0.000000] x25: 0000000000000000 x24: ffff8000f280fc80
+> [    0.000000] x23: ffff00000903c8f8 x22: ffff00000903c000
+> [    0.000000] x21: ffff000009033d88 x20: ffff000009039000
+> [    0.000000] x19: ffff8000f2825000 x18: ffffffffffffffff
+> [    0.000000] x17: 000000000000000a x16: 00000000000007ff
+> [    0.000000] x15: ffff0000090396c8 x14: 31407570632f7375
+> [    0.000000] x13: 70632f207b205d31 x12: 5b312d6e6f697469
+> [    0.000000] x11: 747261702d747075 x10: 727265746e69206e
+> [    0.000000] x9 : 6f69746974726170 x8 : 407570632f737570
+> [    0.000000] x7 : 0000000000000000 x6 : 0000000000000002
+> [    0.000000] x5 : 0000000000000001 x4 : ffff000008c153f8
+> [    0.000000] x3 : ffff000009033cec x2 : ffff000009033cf0
+> [    0.000000] x1 : ffff000009033d88 x0 : 0000000000000000
+> [    0.000000] Call trace:
+> [    0.000000]  gic_irq_domain_translate+0x84/0xe8
+> [    0.000000]  gic_populate_ppi_partitions+0x1fc/0x280
+> [    0.000000]  gic_of_init+0x174/0x214
+> [    0.000000]  of_irq_init+0x180/0x2e8
+> [    0.000000]  irqchip_init+0x14/0x38
+> [    0.000000]  init_IRQ+0xfc/0x130
+> [    0.000000]  start_kernel+0x284/0x414
+> [    0.000000] ---[ end trace 5a16819db6b2d5d2 ]---
+>
+> commit 6ef6386ef7c15bea21afce06f951c87de7e2a562
+> Author: Marc Zyngier <marc.zyngier@arm.com>
+> Date:   Fri Mar 16 14:35:17 2018 +0000
+>
+>      irqchip/gic-v3: Loudly complain about the use of IRQ_TYPE_NONE
+>
+>      There is a huge number of broken device trees out there. Just
+>      grepping through the tree for the use of IRQ_TYPE_NONE in conjunction
+>      with the GIC is scary.
+>
+>      People just don't realise that IRQ_TYPE_NONE just doesn't exist, and
+>      you just get whatever junk was there before. So let's make them aware
+>      of the issue.
+>
+>      Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
