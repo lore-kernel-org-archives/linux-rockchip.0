@@ -1,91 +1,115 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
 Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Tue, 20 Mar 2018 17:32:50 +0800
-Message-ID: <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
+Date: Tue, 20 Mar 2018 17:39:07 +0800
+Message-ID: <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
 References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
+ <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <077cecdd-7982-dd33-454f-e38cc571366c-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, shawn.lin@rock-chips.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc,
-
-On 2018/3/20 17:01, Marc Zyngier wrote:
-> Hi Shawn,
-> 
-> On 20/03/18 08:48, Shawn Lin wrote:
->> Hi Marc,
->>
->>       I was able to boot my RK3399 board with in linux-next-20180314,
->> but not today. My bisect robot shows me it was introduced by
->>
->> commit d6062a6d62c643a06c393745d032da3e6441d4bd
->> Author: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
->> Date:   Fri Mar 9 14:53:19 2018 +0000
->>
->>       irqchip/gic-v3: Reset APgRn registers at boot time
->>
->>       Booting a crash kernel while in an interrupt handler is likely
->>       to leave the Active Priority Registers with some state that
->>       is not relevant to the new kernel, and is likely to lead
->>       to erratic behaviours such as interrupts not firing as their
->>       priority is already active.
->>
->>       As a sanity measure, wipe the APRs clean on startup. We make
->>       sure to wipe both group 0 and 1 registers in order to avoid
->>       any surprise.
->>
->>
->> The panic log is here:
->> https://paste.ubuntu.com/p/7WrJJDG6JQ/
->>
->> Is it a known issue or is there a coming patch for that?
-> 
->   Interesting. No, that wasn't the intention, but I may have missed a key
-> detail (group 0 access traps to EL3 if SCR_EL3.FIQ==1). Can you have a
-> go at the following hack, just to narrow it down:
-> 
-> diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
-> index 5bb7bb22f1c1..f8ff43b1d4f8 100644
-> --- a/drivers/irqchip/irq-gic-v3.c
-> +++ b/drivers/irqchip/irq-gic-v3.c
-> @@ -570,16 +570,12 @@ static void gic_cpu_sys_reg_init(void)
->   	switch(val + 1) {
->   	case 8:
->   	case 7:
-> -		write_gicreg(0, ICC_AP0R3_EL1);
->   		write_gicreg(0, ICC_AP1R3_EL1);
-> -		write_gicreg(0, ICC_AP0R2_EL1);
->   		write_gicreg(0, ICC_AP1R2_EL1);
->   	case 6:
-> -		write_gicreg(0, ICC_AP0R1_EL1);
->   		write_gicreg(0, ICC_AP1R1_EL1);
->   	case 5:
->   	case 4:
-> -		write_gicreg(0, ICC_AP0R0_EL1);
->   		write_gicreg(0, ICC_AP1R0_EL1);
->   	}
-> 
-> Let me know if that helps.
-> 
-
-It works for me. Thanks!
-
-> Thanks,
-> 
-> 	M.
-> 
+SGkgTWFyYwoKT24gMjAxOC8zLzIwIDE3OjMyLCBTaGF3biBMaW4gd3JvdGU6Cj4gSGkgTWFyYywK
+PiAKPiBPbiAyMDE4LzMvMjAgMTc6MDEsIE1hcmMgWnluZ2llciB3cm90ZToKPj4gSGkgU2hhd24s
+Cj4+Cj4+IE9uIDIwLzAzLzE4IDA4OjQ4LCBTaGF3biBMaW4gd3JvdGU6Cj4+PiBIaSBNYXJjLAo+
+Pj4KPj4+IMKgwqDCoMKgwqAgSSB3YXMgYWJsZSB0byBib290IG15IFJLMzM5OSBib2FyZCB3aXRo
+IGluIGxpbnV4LW5leHQtMjAxODAzMTQsCj4+PiBidXQgbm90IHRvZGF5LiBNeSBiaXNlY3Qgcm9i
+b3Qgc2hvd3MgbWUgaXQgd2FzIGludHJvZHVjZWQgYnkKPj4+Cj4+PiBjb21taXQgZDYwNjJhNmQ2
+MmM2NDNhMDZjMzkzNzQ1ZDAzMmRhM2U2NDQxZDRiZAo+Pj4gQXV0aG9yOiBNYXJjIFp5bmdpZXIg
+PG1hcmMuenluZ2llckBhcm0uY29tPgo+Pj4gRGF0ZTrCoMKgIEZyaSBNYXIgOSAxNDo1MzoxOSAy
+MDE4ICswMDAwCj4+Pgo+Pj4gwqDCoMKgwqDCoCBpcnFjaGlwL2dpYy12MzogUmVzZXQgQVBnUm4g
+cmVnaXN0ZXJzIGF0IGJvb3QgdGltZQo+Pj4KPj4+IMKgwqDCoMKgwqAgQm9vdGluZyBhIGNyYXNo
+IGtlcm5lbCB3aGlsZSBpbiBhbiBpbnRlcnJ1cHQgaGFuZGxlciBpcyBsaWtlbHkKPj4+IMKgwqDC
+oMKgwqAgdG8gbGVhdmUgdGhlIEFjdGl2ZSBQcmlvcml0eSBSZWdpc3RlcnMgd2l0aCBzb21lIHN0
+YXRlIHRoYXQKPj4+IMKgwqDCoMKgwqAgaXMgbm90IHJlbGV2YW50IHRvIHRoZSBuZXcga2VybmVs
+LCBhbmQgaXMgbGlrZWx5IHRvIGxlYWQKPj4+IMKgwqDCoMKgwqAgdG8gZXJyYXRpYyBiZWhhdmlv
+dXJzIHN1Y2ggYXMgaW50ZXJydXB0cyBub3QgZmlyaW5nIGFzIHRoZWlyCj4+PiDCoMKgwqDCoMKg
+IHByaW9yaXR5IGlzIGFscmVhZHkgYWN0aXZlLgo+Pj4KPj4+IMKgwqDCoMKgwqAgQXMgYSBzYW5p
+dHkgbWVhc3VyZSwgd2lwZSB0aGUgQVBScyBjbGVhbiBvbiBzdGFydHVwLiBXZSBtYWtlCj4+PiDC
+oMKgwqDCoMKgIHN1cmUgdG8gd2lwZSBib3RoIGdyb3VwIDAgYW5kIDEgcmVnaXN0ZXJzIGluIG9y
+ZGVyIHRvIGF2b2lkCj4+PiDCoMKgwqDCoMKgIGFueSBzdXJwcmlzZS4KPj4+Cj4+Pgo+Pj4gVGhl
+IHBhbmljIGxvZyBpcyBoZXJlOgo+Pj4gaHR0cHM6Ly9wYXN0ZS51YnVudHUuY29tL3AvN1dySkpE
+RzZKUS8KPj4+Cj4+PiBJcyBpdCBhIGtub3duIGlzc3VlIG9yIGlzIHRoZXJlIGEgY29taW5nIHBh
+dGNoIGZvciB0aGF0Pwo+Pgo+PiDCoCBJbnRlcmVzdGluZy4gTm8sIHRoYXQgd2Fzbid0IHRoZSBp
+bnRlbnRpb24sIGJ1dCBJIG1heSBoYXZlIG1pc3NlZCBhIGtleQo+PiBkZXRhaWwgKGdyb3VwIDAg
+YWNjZXNzIHRyYXBzIHRvIEVMMyBpZiBTQ1JfRUwzLkZJUT09MSkuIENhbiB5b3UgaGF2ZSBhCj4+
+IGdvIGF0IHRoZSBmb2xsb3dpbmcgaGFjaywganVzdCB0byBuYXJyb3cgaXQgZG93bjoKPj4KPj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvaXJxY2hpcC9pcnEtZ2ljLXYzLmMgYi9kcml2ZXJzL2lycWNo
+aXAvaXJxLWdpYy12My5jCj4+IGluZGV4IDViYjdiYjIyZjFjMS4uZjhmZjQzYjFkNGY4IDEwMDY0
+NAo+PiAtLS0gYS9kcml2ZXJzL2lycWNoaXAvaXJxLWdpYy12My5jCj4+ICsrKyBiL2RyaXZlcnMv
+aXJxY2hpcC9pcnEtZ2ljLXYzLmMKPj4gQEAgLTU3MCwxNiArNTcwLDEyIEBAIHN0YXRpYyB2b2lk
+IGdpY19jcHVfc3lzX3JlZ19pbml0KHZvaWQpCj4+IMKgwqDCoMKgwqAgc3dpdGNoKHZhbCArIDEp
+IHsKPj4gwqDCoMKgwqDCoCBjYXNlIDg6Cj4+IMKgwqDCoMKgwqAgY2FzZSA3Ogo+PiAtwqDCoMKg
+wqDCoMKgwqAgd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDBSM19FTDEpOwo+PiDCoMKgwqDCoMKgwqDC
+oMKgwqAgd3JpdGVfZ2ljcmVnKDAsIElDQ19BUDFSM19FTDEpOwo+PiAtwqDCoMKgwqDCoMKgwqAg
+d3JpdGVfZ2ljcmVnKDAsIElDQ19BUDBSMl9FTDEpOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgd3Jp
+dGVfZ2ljcmVnKDAsIElDQ19BUDFSMl9FTDEpOwo+PiDCoMKgwqDCoMKgIGNhc2UgNjoKPj4gLcKg
+wqDCoMKgwqDCoMKgIHdyaXRlX2dpY3JlZygwLCBJQ0NfQVAwUjFfRUwxKTsKPj4gwqDCoMKgwqDC
+oMKgwqDCoMKgIHdyaXRlX2dpY3JlZygwLCBJQ0NfQVAxUjFfRUwxKTsKPj4gwqDCoMKgwqDCoCBj
+YXNlIDU6Cj4+IMKgwqDCoMKgwqAgY2FzZSA0Ogo+PiAtwqDCoMKgwqDCoMKgwqAgd3JpdGVfZ2lj
+cmVnKDAsIElDQ19BUDBSMF9FTDEpOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgd3JpdGVfZ2ljcmVn
+KDAsIElDQ19BUDFSMF9FTDEpOwo+PiDCoMKgwqDCoMKgIH0KPj4KPj4gTGV0IG1lIGtub3cgaWYg
+dGhhdCBoZWxwcy4KPj4KPiAKPiBJdCB3b3JrcyBmb3IgbWUuIFRoYW5rcyEKCgpBbHNvIGFub3Ro
+ZXIgcGF0Y2ggd2FybnMgYSBsb3Qgd2hlbiBib290aW5nIHRoZSBrZXJuZWwuIElzIHRoZXJlCmFu
+eXRoaW5nIGVsc2UgSSBjb3VsZCBkbyB0byBsZXQgaXQgZ28/IFNlZW1zIEkgYW0gdXNpbmcgYnJv
+a2VuCmR0cyBmb3IgcmVxdWVzdGluZyBJUlFfVFlQRV9OT05FIHRoZXJlPwoKWyAgICAwLjAwMDAw
+MF0gV0FSTklORzogQ1BVOiAwIFBJRDogMCBhdCAKZHJpdmVycy9pcnFjaGlwL2lycS1naWMtdjMu
+Yzo5MDkgZ2ljX2lycV9kb21haW5fdHJhbnNsYXRlKzB4ODQvMHhlOApbICAgIDAuMDAwMDAwXSBN
+b2R1bGVzIGxpbmtlZCBpbjoKWyAgICAwLjAwMDAwMF0gQ1BVOiAwIFBJRDogMCBDb21tOiBzd2Fw
+cGVyLzAgTm90IHRhaW50ZWQgCjQuMTYuMC1yYzYtbmV4dC0yMDE4MDMyMC0wMDAwNi1nODQxYzFk
+MS1kaXJ0eSAjMjU3ClsgICAgMC4wMDAwMDBdIEhhcmR3YXJlIG5hbWU6IEV4Y2F2YXRvci1SSzMz
+OTkgQm9hcmQgKERUKQpbICAgIDAuMDAwMDAwXSBwc3RhdGU6IDYwMDAwMDg1IChuWkN2IGRhSWYg
+LVBBTiAtVUFPKQpbICAgIDAuMDAwMDAwXSBwYyA6IGdpY19pcnFfZG9tYWluX3RyYW5zbGF0ZSsw
+eDg0LzB4ZTgKWyAgICAwLjAwMDAwMF0gbHIgOiBpcnFfY3JlYXRlX2Z3c3BlY19tYXBwaW5nKzB4
+NjQvMHgzMjgKWyAgICAwLjAwMDAwMF0gc3AgOiBmZmZmMDAwMDA5MDMzY2IwClsgICAgMC4wMDAw
+MDBdIHgyOTogZmZmZjAwMDAwOTAzM2NiMCB4Mjg6IDAwMDAwMDAwMDAwMDAwMDIKWyAgICAwLjAw
+MDAwMF0geDI3OiBmZmZmODAwMGYyODBmYzkwIHgyNjogMDAwMDAwMDAwMDAwMDAwMwpbICAgIDAu
+MDAwMDAwXSB4MjU6IDAwMDAwMDAwMDAwMDAwMDAgeDI0OiBmZmZmODAwMGYyODBmYzgwClsgICAg
+MC4wMDAwMDBdIHgyMzogZmZmZjAwMDAwOTAzYzhmOCB4MjI6IGZmZmYwMDAwMDkwM2MwMDAKWyAg
+ICAwLjAwMDAwMF0geDIxOiBmZmZmMDAwMDA5MDMzZDg4IHgyMDogZmZmZjAwMDAwOTAzOTAwMApb
+ICAgIDAuMDAwMDAwXSB4MTk6IGZmZmY4MDAwZjI4MjUwMDAgeDE4OiBmZmZmZmZmZmZmZmZmZmZm
+ClsgICAgMC4wMDAwMDBdIHgxNzogMDAwMDAwMDAwMDAwMDAwYSB4MTY6IDAwMDAwMDAwMDAwMDA3
+ZmYKWyAgICAwLjAwMDAwMF0geDE1OiBmZmZmMDAwMDA5MDM5NmM4IHgxNDogMzE0MDc1NzA2MzJm
+NzM3NQpbICAgIDAuMDAwMDAwXSB4MTM6IDcwNjMyZjIwN2IyMDVkMzEgeDEyOiA1YjMxMmQ2ZTZm
+Njk3NDY5ClsgICAgMC4wMDAwMDBdIHgxMTogNzQ3MjYxNzAyZDc0NzA3NSB4MTA6IDcyNzI2NTc0
+NmU2OTIwNmUKWyAgICAwLjAwMDAwMF0geDkgOiA2ZjY5NzQ2OTc0NzI2MTcwIHg4IDogNDA3NTcw
+NjMyZjczNzU3MApbICAgIDAuMDAwMDAwXSB4NyA6IDAwMDAwMDAwMDAwMDAwMDAgeDYgOiAwMDAw
+MDAwMDAwMDAwMDAyClsgICAgMC4wMDAwMDBdIHg1IDogMDAwMDAwMDAwMDAwMDAwMSB4NCA6IGZm
+ZmYwMDAwMDhjMTUzZjgKWyAgICAwLjAwMDAwMF0geDMgOiBmZmZmMDAwMDA5MDMzY2VjIHgyIDog
+ZmZmZjAwMDAwOTAzM2NmMApbICAgIDAuMDAwMDAwXSB4MSA6IGZmZmYwMDAwMDkwMzNkODggeDAg
+OiAwMDAwMDAwMDAwMDAwMDAwClsgICAgMC4wMDAwMDBdIENhbGwgdHJhY2U6ClsgICAgMC4wMDAw
+MDBdICBnaWNfaXJxX2RvbWFpbl90cmFuc2xhdGUrMHg4NC8weGU4ClsgICAgMC4wMDAwMDBdICBn
+aWNfcG9wdWxhdGVfcHBpX3BhcnRpdGlvbnMrMHgxZmMvMHgyODAKWyAgICAwLjAwMDAwMF0gIGdp
+Y19vZl9pbml0KzB4MTc0LzB4MjE0ClsgICAgMC4wMDAwMDBdICBvZl9pcnFfaW5pdCsweDE4MC8w
+eDJlOApbICAgIDAuMDAwMDAwXSAgaXJxY2hpcF9pbml0KzB4MTQvMHgzOApbICAgIDAuMDAwMDAw
+XSAgaW5pdF9JUlErMHhmYy8weDEzMApbICAgIDAuMDAwMDAwXSAgc3RhcnRfa2VybmVsKzB4Mjg0
+LzB4NDE0ClsgICAgMC4wMDAwMDBdIC0tLVsgZW5kIHRyYWNlIDVhMTY4MTlkYjZiMmQ1ZDIgXS0t
+LQoKY29tbWl0IDZlZjYzODZlZjdjMTViZWEyMWFmY2UwNmY5NTFjODdkZTdlMmE1NjIKQXV0aG9y
+OiBNYXJjIFp5bmdpZXIgPG1hcmMuenluZ2llckBhcm0uY29tPgpEYXRlOiAgIEZyaSBNYXIgMTYg
+MTQ6MzU6MTcgMjAxOCArMDAwMAoKICAgICBpcnFjaGlwL2dpYy12MzogTG91ZGx5IGNvbXBsYWlu
+IGFib3V0IHRoZSB1c2Ugb2YgSVJRX1RZUEVfTk9ORQoKICAgICBUaGVyZSBpcyBhIGh1Z2UgbnVt
+YmVyIG9mIGJyb2tlbiBkZXZpY2UgdHJlZXMgb3V0IHRoZXJlLiBKdXN0CiAgICAgZ3JlcHBpbmcg
+dGhyb3VnaCB0aGUgdHJlZSBmb3IgdGhlIHVzZSBvZiBJUlFfVFlQRV9OT05FIGluIGNvbmp1bmN0
+aW9uCiAgICAgd2l0aCB0aGUgR0lDIGlzIHNjYXJ5LgoKICAgICBQZW9wbGUganVzdCBkb24ndCBy
+ZWFsaXNlIHRoYXQgSVJRX1RZUEVfTk9ORSBqdXN0IGRvZXNuJ3QgZXhpc3QsIGFuZAogICAgIHlv
+dSBqdXN0IGdldCB3aGF0ZXZlciBqdW5rIHdhcyB0aGVyZSBiZWZvcmUuIFNvIGxldCdzIG1ha2Ug
+dGhlbSBhd2FyZQogICAgIG9mIHRoZSBpc3N1ZS4KCiAgICAgU2lnbmVkLW9mZi1ieTogTWFyYyBa
+eW5naWVyIDxtYXJjLnp5bmdpZXJAYXJtLmNvbT4KCgo+IAo+PiBUaGFua3MsCj4+Cj4+IMKgwqDC
+oMKgTS4KPj4KPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVs
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
