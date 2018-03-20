@@ -1,15 +1,17 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: assign clock rate for some
  cpll child clock
-Date: Tue, 20 Mar 2018 10:12:59 +0800
-Message-ID: <13843114-3db5-b98c-a71d-c61911a8a42c@rock-chips.com>
+Date: Tue, 20 Mar 2018 10:23:41 +0800
+Message-ID: <d92aa74d-7a49-8fbd-5efc-b931210ef0b7@rock-chips.com>
 References: <1521511589-17844-1-git-send-email-hl@rock-chips.com>
  <1521511589-17844-2-git-send-email-hl@rock-chips.com>
+ <13843114-3db5-b98c-a71d-c61911a8a42c@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1521511589-17844-2-git-send-email-hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <13843114-3db5-b98c-a71d-c61911a8a42c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,113 +21,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018/3/20 10:06, Lin Huang wrote:
-> These clocks do not assign default clock frequency, and use the
-> default cru register value to get frequency, so if cpll increase
-> frequency, these clocks also increase their frequency, that may
-> exceed their signed off frequency. So assign default clock for
-> them to avoid it.
-> 
-> NOTE: on none of the boards currently in mainline do we expect
-> CPLL to be anything other than 800 MHz, but some future boards
-> might have it. It's still good to be explicit about the clock
-> rates to make diffing against future boards easier and also to
-> rely less on BIOS muxing.
-> 
-> Change-Id: If79368aeda5c51dbf2a3b6659f17052a2ae4a401
-
-Should remove Change-Id for future patch(es), thought Heiko may help
-do it when applied.
-
-Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-> Signed-off-by: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> Changes in v2:
-> - None
-> Changes in v3:
-> - Update commit message
-> 
->   arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi |  8 +++++++-
->   arch/arm64/boot/dts/rockchip/rk3399.dtsi     | 14 ++++++++++++--
->   2 files changed, 19 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> index 18f546f..84e367b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> @@ -588,7 +588,10 @@
->   		<&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
->   		<&cru PCLK_PERILP0>, <&cru ACLK_CCI>,
->   		<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>,
-> -		<&cru ACLK_VIO>;
-> +		<&cru ACLK_VIO>,
-> +		<&cru ACLK_GIC_PRE>,
-> +		<&cru PCLK_DDR>,
-> +		<&cru ACLK_HDCP>;
->   	assigned-clock-rates =
->   		<600000000>, <800000000>,
->   		<1000000000>,
-> @@ -597,6 +600,9 @@
->   		<100000000>, <100000000>,
->   		<50000000>, <800000000>,
->   		<100000000>, <50000000>,
-> +		<400000000>,
-> +		<200000000>,
-> +		<200000000>,
->   		<400000000>;
->   };
->   
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 4550c0f..b358533 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -315,6 +315,8 @@
->   		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
->   			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
->   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +		assigned-clocks = <&cru HCLK_SD>;
-> +		assigned-clock-rates = <200000000>;
->   		fifo-depth = <0x100>;
->   		power-domains = <&power RK3399_PD_SD>;
->   		resets = <&cru SRST_SDMMC>;
-> @@ -466,8 +468,10 @@
->   		clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>,
->   			 <&cru SCLK_SPDIF_REC_DPTX>, <&cru PCLK_VIO_GRF>;
->   		clock-names = "core-clk", "pclk", "spdif", "grf";
-> -		phys = <&tcphy0_dp>, <&tcphy1_dp>;
-> +		assigned-clocks = <&cru SCLK_DP_CORE>, <&cru SCLK_SPDIF_REC_DPTX>;
-> +		assigned-clock-rates = <100000000>, <200000000>;
->   		power-domains = <&power RK3399_PD_HDCP>;
-> +		phys = <&tcphy0_dp>, <&tcphy1_dp>;
->   		resets = <&cru SRST_DPTX_SPDIF_REC>, <&cru SRST_P_UPHY0_DPTX>,
->   			 <&cru SRST_P_UPHY0_APB>, <&cru SRST_DP_CORE>;
->   		reset-names = "spdif", "dptx", "apb", "core";
-> @@ -1323,7 +1327,10 @@
->   			<&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
->   			<&cru PCLK_PERILP0>, <&cru ACLK_CCI>,
->   			<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>,
-> -			<&cru ACLK_VIO>;
-> +			<&cru ACLK_VIO>,
-> +			<&cru ACLK_GIC_PRE>,
-> +			<&cru PCLK_DDR>,
-> +			<&cru ACLK_HDCP>;
->   		assigned-clock-rates =
->   			 <594000000>,  <800000000>,
->   			<1000000000>,
-> @@ -1332,6 +1339,9 @@
->   			 <100000000>,  <100000000>,
->   			  <50000000>, <600000000>,
->   			 <100000000>,   <50000000>,
-> +			 <400000000>,
-> +			 <200000000>,
-> +			 <200000000>,
->   			 <400000000>;
->   	};
->   
-> 
+CgpPbiBUdWVzZGF5LCBNYXJjaCAyMCwgMjAxOCAxMDoxMiBBTSwgU2hhd24gTGluIHdyb3RlOgo+
+IE9uIDIwMTgvMy8yMCAxMDowNiwgTGluIEh1YW5nIHdyb3RlOgo+PiBUaGVzZSBjbG9ja3MgZG8g
+bm90IGFzc2lnbiBkZWZhdWx0IGNsb2NrIGZyZXF1ZW5jeSwgYW5kIHVzZSB0aGUKPj4gZGVmYXVs
+dCBjcnUgcmVnaXN0ZXIgdmFsdWUgdG8gZ2V0IGZyZXF1ZW5jeSwgc28gaWYgY3BsbCBpbmNyZWFz
+ZQo+PiBmcmVxdWVuY3ksIHRoZXNlIGNsb2NrcyBhbHNvIGluY3JlYXNlIHRoZWlyIGZyZXF1ZW5j
+eSwgdGhhdCBtYXkKPj4gZXhjZWVkIHRoZWlyIHNpZ25lZCBvZmYgZnJlcXVlbmN5LiBTbyBhc3Np
+Z24gZGVmYXVsdCBjbG9jayBmb3IKPj4gdGhlbSB0byBhdm9pZCBpdC4KPj4KPj4gTk9URTogb24g
+bm9uZSBvZiB0aGUgYm9hcmRzIGN1cnJlbnRseSBpbiBtYWlubGluZSBkbyB3ZSBleHBlY3QKPj4g
+Q1BMTCB0byBiZSBhbnl0aGluZyBvdGhlciB0aGFuIDgwMCBNSHosIGJ1dCBzb21lIGZ1dHVyZSBi
+b2FyZHMKPj4gbWlnaHQgaGF2ZSBpdC4gSXQncyBzdGlsbCBnb29kIHRvIGJlIGV4cGxpY2l0IGFi
+b3V0IHRoZSBjbG9jawo+PiByYXRlcyB0byBtYWtlIGRpZmZpbmcgYWdhaW5zdCBmdXR1cmUgYm9h
+cmRzIGVhc2llciBhbmQgYWxzbyB0bwo+PiByZWx5IGxlc3Mgb24gQklPUyBtdXhpbmcuCj4+Cj4+
+IENoYW5nZS1JZDogSWY3OTM2OGFlZGE1YzUxZGJmMmEzYjY2NTlmMTcwNTJhMmFlNGE0MDEKPgo+
+IFNob3VsZCByZW1vdmUgQ2hhbmdlLUlkIGZvciBmdXR1cmUgcGF0Y2goZXMpLCB0aG91Z2h0IEhl
+aWtvIG1heSBoZWxwCj4gZG8gaXQgd2hlbiBhcHBsaWVkLgo+Ck9wcCwgc29ycnkgZm9yIHRoYXQu
+Cj4gUmV2aWV3ZWQtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+Cj4+
+IFNpZ25lZC1vZmYtYnk6IExpbiBIdWFuZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4+IFJldmlld2Vk
+LWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+IC0tLQo+PiBD
+aGFuZ2VzIGluIHYyOgo+PiAtIE5vbmUKPj4gQ2hhbmdlcyBpbiB2MzoKPj4gLSBVcGRhdGUgY29t
+bWl0IG1lc3NhZ2UKPj4KPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkt
+Z3J1LmR0c2kgfMKgIDggKysrKysrKy0KPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazMzOTkuZHRzacKgwqDCoMKgIHwgMTQgKysrKysrKysrKysrLS0KPj4gwqAgMiBmaWxlcyBj
+aGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0
+IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LmR0c2kgCj4+IGIvYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LmR0c2kKPj4gaW5kZXggMThmNTQ2
+Zi4uODRlMzY3YiAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTktZ3J1LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
+OTktZ3J1LmR0c2kKPj4gQEAgLTU4OCw3ICs1ODgsMTAgQEAKPj4gwqDCoMKgwqDCoMKgwqDCoMKg
+IDwmY3J1IEFDTEtfUEVSSUxQMD4sIDwmY3J1IEhDTEtfUEVSSUxQMD4sCj4+IMKgwqDCoMKgwqDC
+oMKgwqDCoCA8JmNydSBQQ0xLX1BFUklMUDA+LCA8JmNydSBBQ0xLX0NDST4sCj4+IMKgwqDCoMKg
+wqDCoMKgwqDCoCA8JmNydSBIQ0xLX1BFUklMUDE+LCA8JmNydSBQQ0xLX1BFUklMUDE+LAo+PiAt
+wqDCoMKgwqDCoMKgwqAgPCZjcnUgQUNMS19WSU8+Owo+PiArwqDCoMKgwqDCoMKgwqAgPCZjcnUg
+QUNMS19WSU8+LAo+PiArwqDCoMKgwqDCoMKgwqAgPCZjcnUgQUNMS19HSUNfUFJFPiwKPj4gK8Kg
+wqDCoMKgwqDCoMKgIDwmY3J1IFBDTEtfRERSPiwKPj4gK8KgwqDCoMKgwqDCoMKgIDwmY3J1IEFD
+TEtfSERDUD47Cj4+IMKgwqDCoMKgwqAgYXNzaWduZWQtY2xvY2stcmF0ZXMgPQo+PiDCoMKgwqDC
+oMKgwqDCoMKgwqAgPDYwMDAwMDAwMD4sIDw4MDAwMDAwMDA+LAo+PiDCoMKgwqDCoMKgwqDCoMKg
+wqAgPDEwMDAwMDAwMDA+LAo+PiBAQCAtNTk3LDYgKzYwMCw5IEBACj4+IMKgwqDCoMKgwqDCoMKg
+wqDCoCA8MTAwMDAwMDAwPiwgPDEwMDAwMDAwMD4sCj4+IMKgwqDCoMKgwqDCoMKgwqDCoCA8NTAw
+MDAwMDA+LCA8ODAwMDAwMDAwPiwKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIDwxMDAwMDAwMDA+LCA8
+NTAwMDAwMDA+LAo+PiArwqDCoMKgwqDCoMKgwqAgPDQwMDAwMDAwMD4sCj4+ICvCoMKgwqDCoMKg
+wqDCoCA8MjAwMDAwMDAwPiwKPj4gK8KgwqDCoMKgwqDCoMKgIDwyMDAwMDAwMDA+LAo+PiDCoMKg
+wqDCoMKgwqDCoMKgwqAgPDQwMDAwMDAwMD47Cj4+IMKgIH07Cj4+IMKgIGRpZmYgLS1naXQgYS9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpIAo+PiBiL2FyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gaW5kZXggNDU1MGMwZi4uYjM1ODUzMyAx
+MDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+
+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+IEBAIC0z
+MTUsNiArMzE1LDggQEAKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGNsb2NrcyA9IDwmY3J1IEhDTEtf
+U0RNTUM+LCA8JmNydSBTQ0xLX1NETU1DPiwKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCA8JmNydSBTQ0xLX1NETU1DX0RSVj4sIDwmY3J1IFNDTEtfU0RNTUNfU0FNUExFPjsKPj4gwqDC
+oMKgwqDCoMKgwqDCoMKgIGNsb2NrLW5hbWVzID0gImJpdSIsICJjaXUiLCAiY2l1LWRyaXZlIiwg
+ImNpdS1zYW1wbGUiOwo+PiArwqDCoMKgwqDCoMKgwqAgYXNzaWduZWQtY2xvY2tzID0gPCZjcnUg
+SENMS19TRD47Cj4+ICvCoMKgwqDCoMKgwqDCoCBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDwyMDAw
+MDAwMDA+Owo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgZmlmby1kZXB0aCA9IDwweDEwMD47Cj4+IMKg
+wqDCoMKgwqDCoMKgwqDCoCBwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzMzOTlfUERfU0Q+Owo+
+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmVzZXRzID0gPCZjcnUgU1JTVF9TRE1NQz47Cj4+IEBAIC00
+NjYsOCArNDY4LDEwIEBACj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBjbG9ja3MgPSA8JmNydSBTQ0xL
+X0RQX0NPUkU+LCA8JmNydSBQQ0xLX0RQX0NUUkw+LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIDwmY3J1IFNDTEtfU1BESUZfUkVDX0RQVFg+LCA8JmNydSBQQ0xLX1ZJT19HUkY+Owo+
+PiDCoMKgwqDCoMKgwqDCoMKgwqAgY2xvY2stbmFtZXMgPSAiY29yZS1jbGsiLCAicGNsayIsICJz
+cGRpZiIsICJncmYiOwo+PiAtwqDCoMKgwqDCoMKgwqAgcGh5cyA9IDwmdGNwaHkwX2RwPiwgPCZ0
+Y3BoeTFfZHA+Owo+PiArwqDCoMKgwqDCoMKgwqAgYXNzaWduZWQtY2xvY2tzID0gPCZjcnUgU0NM
+S19EUF9DT1JFPiwgPCZjcnUgCj4+IFNDTEtfU1BESUZfUkVDX0RQVFg+Owo+PiArwqDCoMKgwqDC
+oMKgwqAgYXNzaWduZWQtY2xvY2stcmF0ZXMgPSA8MTAwMDAwMDAwPiwgPDIwMDAwMDAwMD47Cj4+
+IMKgwqDCoMKgwqDCoMKgwqDCoCBwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzMzOTlfUERfSERD
+UD47Cj4+ICvCoMKgwqDCoMKgwqDCoCBwaHlzID0gPCZ0Y3BoeTBfZHA+LCA8JnRjcGh5MV9kcD47
+Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCByZXNldHMgPSA8JmNydSBTUlNUX0RQVFhfU1BESUZfUkVD
+PiwgPCZjcnUgU1JTVF9QX1VQSFkwX0RQVFg+LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIDwmY3J1IFNSU1RfUF9VUEhZMF9BUEI+LCA8JmNydSBTUlNUX0RQX0NPUkU+Owo+PiDCoMKg
+wqDCoMKgwqDCoMKgwqAgcmVzZXQtbmFtZXMgPSAic3BkaWYiLCAiZHB0eCIsICJhcGIiLCAiY29y
+ZSI7Cj4+IEBAIC0xMzIzLDcgKzEzMjcsMTAgQEAKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgPCZjcnUgQUNMS19QRVJJTFAwPiwgPCZjcnUgSENMS19QRVJJTFAwPiwKPj4gwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgPCZjcnUgUENMS19QRVJJTFAwPiwgPCZjcnUgQUNMS19DQ0k+LAo+
+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNydSBIQ0xLX1BFUklMUDE+LCA8JmNydSBQ
+Q0xLX1BFUklMUDE+LAo+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNydSBBQ0xLX1ZJTz47
+Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY3J1IEFDTEtfVklPPiwKPj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgPCZjcnUgQUNMS19HSUNfUFJFPiwKPj4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgPCZjcnUgUENMS19ERFI+LAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNydSBB
+Q0xLX0hEQ1A+Owo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgYXNzaWduZWQtY2xvY2stcmF0ZXMgPQo+
+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDw1OTQwMDAwMDA+LMKgIDw4MDAwMDAwMDA+
+LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8MTAwMDAwMDAwMD4sCj4+IEBAIC0xMzMy
+LDYgKzEzMzksOSBAQAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwxMDAwMDAwMDA+
+LMKgIDwxMDAwMDAwMDA+LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDUwMDAw
+MDAwPiwgPDYwMDAwMDAwMD4sCj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDEwMDAw
+MDAwMD4swqDCoCA8NTAwMDAwMDA+LAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDw0MDAw
+MDAwMDA+LAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwyMDAwMDAwMDA+LAo+PiArwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwyMDAwMDAwMDA+LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIDw0MDAwMDAwMDA+Owo+PiDCoMKgwqDCoMKgIH07Cj4+Cj4KPgo+IF9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPgo+
+Cj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
