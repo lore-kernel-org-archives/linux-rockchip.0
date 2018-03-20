@@ -1,13 +1,12 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: Don't restore invalid cached phase
-Date: Tue, 20 Mar 2018 08:53:13 +0800
-Message-ID: <b8891a77-2c43-bf0b-f3a0-abc85ffafc37@rock-chips.com>
-References: <1521450902-32142-1-git-send-email-shawn.lin@rock-chips.com>
+From: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 1/2] clk: rockchip: assign correct id for pclk_ddr and
+ hclk_sd in rk3399
+Date: Tue, 20 Mar 2018 10:06:28 +0800
+Message-ID: <1521511589-17844-1-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1521450902-32142-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,61 +16,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Sorry, It turns out still some corner case need to address, please
-drop this.
+Since hclk_sd and pclk_ddr source clock from CPLL or GPLL,
+and these two PLL may change their frequency. If we do not
+assign right id to pclk_ddr and hclk_sd, they will alway use
+default cur register value, and may get the frequency
+exceed their signed off frequency. So assign correct Id
+for them, then we can assign frequency for them in dts.
 
-On 2018/3/19 17:15, Shawn Lin wrote:
-> We inevitably cache the invalid phase when the clock provider
-> be reparented from orphan to its real parent in the first place,
-> thus we may mess up the initialization of MMC cards since we
-> only set the default sample phase and drive phase later on.
-> So we should skip to restore the invalid phase. And this patch
-> also corrects the error path to return invalid pointer to clk if
-> clk_notifier_register failed introduced by the same offending
-> commit.
-> 
-> Fixes: 60cf09e45fbc ("clk: rockchip: Restore the clock phase after the rate was changed")
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->   drivers/clk/rockchip/clk-mmc-phase.c | 9 ++++++---
->   1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
-> index dc4c227..c8c6119 100644
-> --- a/drivers/clk/rockchip/clk-mmc-phase.c
-> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
-> @@ -181,7 +181,8 @@ static int rockchip_mmc_clk_rate_notify(struct notifier_block *nb,
->   	if (event == PRE_RATE_CHANGE)
->   		mmc_clock->cached_phase =
->   			rockchip_mmc_get_phase(&mmc_clock->hw);
-> -	else if (event == POST_RATE_CHANGE)
-> +	else if (mmc_clock->cached_phase != -EINVAL &&
-> +		 event == POST_RATE_CHANGE)
->   		rockchip_mmc_set_phase(&mmc_clock->hw, mmc_clock->cached_phase);
->   
->   	return NOTIFY_DONE;
-> @@ -211,8 +212,10 @@ struct clk *rockchip_clk_register_mmc(const char *name,
->   	mmc_clock->shift = shift;
->   
->   	clk = clk_register(NULL, &mmc_clock->hw);
-> -	if (IS_ERR(clk))
-> +	if (IS_ERR(clk)) {
-> +		ret = PTR_ERR(clk);
->   		goto err_register;
-> +	}
->   
->   	mmc_clock->clk_rate_change_nb.notifier_call =
->   				&rockchip_mmc_clk_rate_notify;
-> @@ -225,5 +228,5 @@ struct clk *rockchip_clk_register_mmc(const char *name,
->   	clk_unregister(clk);
->   err_register:
->   	kfree(mmc_clock);
-> -	return clk;
-> +	return ERR_PTR(ret);
->   }
-> 
+Change-Id: I6c4d15d37ddabe4ed34e2351cf26e660672ae9ee
+Signed-off-by: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+Changes in v2:
+- add more detail in commit message
+Changes in v3:
+- None
+
+ drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 3e57c6e..bca10d6 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -671,7 +671,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKGATE_CON(9), 7, GFLAGS,
+ 			&rk3399_uart3_fracmux),
+ 
+-	COMPOSITE(0, "pclk_ddr", mux_pll_src_cpll_gpll_p, CLK_IGNORE_UNUSED,
++	COMPOSITE(PCLK_DDR, "pclk_ddr", mux_pll_src_cpll_gpll_p, CLK_IGNORE_UNUSED,
+ 			RK3399_CLKSEL_CON(6), 15, 1, MFLAGS, 8, 5, DFLAGS,
+ 			RK3399_CLKGATE_CON(3), 4, GFLAGS),
+ 
+@@ -887,7 +887,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKGATE_CON(31), 8, GFLAGS),
+ 
+ 	/* sdio & sdmmc */
+-	COMPOSITE(0, "hclk_sd", mux_pll_src_cpll_gpll_p, 0,
++	COMPOSITE(HCLK_SD, "hclk_sd", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3399_CLKSEL_CON(13), 15, 1, MFLAGS, 8, 5, DFLAGS,
+ 			RK3399_CLKGATE_CON(12), 13, GFLAGS),
+ 	GATE(HCLK_SDMMC, "hclk_sdmmc", "hclk_sd", 0,
+-- 
+2.7.4
