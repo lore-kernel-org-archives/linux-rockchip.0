@@ -1,78 +1,110 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Wed, 21 Mar 2018 12:20:21 +0000
-Message-ID: <ad24a159-5c26-506f-c9e6-1319a86aeda2@arm.com>
-References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
- <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
- <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
- <fe56e7e3-50dd-88de-ce61-f3cbcc1f572b@rock-chips.com>
- <5AB0DEB2.4000803@rock-chips.com>
- <e603186e-b9e8-c7d5-b98a-f5bcce94f7d5@arm.com>
- <cbc89d68-ba41-1f6a-4ab2-4c9647b48f75@huawei.com>
- <d18d6f27-7270-d2d7-58b9-3bf16ffe6b0a@arm.com>
- <ff6cd434-2227-12a6-b3b9-325da78a7fa9@huawei.com>
- <2aed10a0-ad3d-d9fc-7b6e-3b6877bff0be@arm.com>
- <13507742-ddb8-0b43-cd09-14a57ec2a07a@rock-chips.com>
- <5AB1F763.3040409@rock-chips.com>
- <680aba8d-4117-227b-d5a1-ad7121d2565f@arm.com>
- <5AB22377.1000404@rock-chips.com>
- <de4be2ef-ee2c-60f8-a08e-11e378e55343@arm.com>
- <5AB24A4D.6020503@rock-chips.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v3 1/6] PCI: rockchip: Create individual folder for
+ rockchip drivers
+Date: Wed, 21 Mar 2018 18:19:40 +0000
+Message-ID: <20180321181940.GA9760@e107981-ln.cambridge.arm.com>
+References: <1520304173-231081-1-git-send-email-shawn.lin@rock-chips.com>
+ <1520304202-232891-1-git-send-email-shawn.lin@rock-chips.com>
+ <20180320174633.GA137590@bhelgaas-glaptop.roam.corp.google.com>
+ <879a4862-d0d5-21fd-6c47-029c795fe78e@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5AB24A4D.6020503@rock-chips.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: JeffyChen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, John Garry <john.garry@huawei.com>, Robin Murphy <robin.murphy@arm.com>, Linuxarm <linuxarm@huawei.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <879a4862-d0d5-21fd-6c47-029c795fe78e-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+On Wed, Mar 21, 2018 at 09:04:21AM +0800, Shawn Lin wrote:
+> Dear Bjorn, Lorenzo
+> 
+> On 2018/3/21 1:46, Bjorn Helgaas wrote:
+> >On Tue, Mar 06, 2018 at 10:43:22AM +0800, Shawn Lin wrote:
+> >>In preparation for introducing End-Point driver for Rockchip
+> >>PCIe controller, we create a new folder to follow the convention
+> >>of dwc and cadence. Then we rename the host driver from pcie-rockchip.c
+> >>to pcie-rockchip-host.c, and only leave some common functions in
+> >>pcie-rockchip.c in order to be reused for both of host and EP drivers.
+> >>
+> >>Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >>Tested-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >>...
+> >
+> >>diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
+> >>index 34b56a8..b85ad40 100644
+> >>--- a/drivers/pci/Kconfig
+> >>+++ b/drivers/pci/Kconfig
+> >>@@ -141,4 +141,5 @@ source "drivers/pci/cadence/Kconfig"
+> >>  source "drivers/pci/dwc/Kconfig"
+> >>  source "drivers/pci/host/Kconfig"
+> >>  source "drivers/pci/endpoint/Kconfig"
+> >>+source "drivers/pci/rockchip/Kconfig"
+> >>  source "drivers/pci/switch/Kconfig"
+> >
+> >Why is this out of order?  This seems exactly analogous to
+> >drivers/pci/cadence and dwc, so they should be next to each other.
+> 
+> This confused me as well! I just put "rockchip" before "switch"
+> to keep the order, but I didn't know why "endpoint" wasn't ordered.
+> 
+> >
+> >>diff --git a/drivers/pci/Makefile b/drivers/pci/Makefile
+> >>index 9419709..8434afb 100644
+> >>--- a/drivers/pci/Makefile
+> >>+++ b/drivers/pci/Makefile
+> >>@@ -55,6 +55,8 @@ obj-y += switch/
+> >>  obj-$(CONFIG_PCI_ENDPOINT)	+= endpoint/
+> >>+obj-$(CONFIG_PCIE_ROCKCHIP)	+= rockchip/
+> >>+
+> >>  # Endpoint library must be initialized before its users
+> >>  obj-$(CONFIG_PCIE_CADENCE)	+= cadence/
+> >>  # pcie-hisi.o quirks are needed even without CONFIG_PCIE_DW
+> >
+> >Similarly here.
+> >
+> >I admit to still being a little dubious about the idea of a bunch of
+> >vendor-specific directories, each containing a completely trivial
+> >Makefile, a mostly-trivial Kconfig, a header file, a shared .c file, a
+> >host .c file, and an endpoint .c file.
+> 
+> So do I.
+> 
+> >
+> >One alternative would be to keep the single pcie-rockchip.c file with
+> >an #ifdef CONFIG_PCIE_ROCKCHIP_HOST section and an #ifdef
+> >CONFIG_PCIE_ROCKCHIP_EP section.
+> 
+> I admit I thought this eariler, however, I don't like it personally, as
+> it confuses the new-comer to follow the convention here, if we are
+> alternatives just for "style issue" or "personal taste".
 
-On 21/03/18 12:04, JeffyChen wrote:
-> Hi Marc,
-> 
-> On 03/21/2018 05:33 PM, Marc Zyngier wrote:
->>>>>>>>>> @Jeffy
->>>>>>>>>>
->>>>>>>>>> Could you help test Marc's latest patch on your RK3399 kevin/Gru or
->>>>>>>>>> whatever Chromebook?
->>>>>>>> tested on my chromebook kevin, it works with that patch.
->>>>>>
->>>>>> This is very odd. It completely fails on mine, which is aannoying.
->>>>>> Do you have any special firmware? Or the stock firmware?
->>>>>>
->>>>
->>>> hmmm, my kevin's firmware is official:
->>>> localhost / # cat /var/log/bios_info.txt
->>>> version              | Google_Kevin.8785.241.0
->>>> ro bios version      | Google_Kevin.8785.241.0
->> (booting into ChromeOS) Definitely not what I have on mine:
->> 8785.220.0 as the runtime version, and 8785.94.7 as the RO one.
->>
->> This is a retail machine, bought in November. So what you have cannot be
->> the stock firmware.
->>
->> What changes related to the GIC have been applied to this FW?
-> 
-> 
-> i tried to flash my firmware back to 8785.220.0, and still works...:
-> localhost tmp # head -2 /var/log/bios_info.txt
-> version              | Google_Kevin.8785.220.0
-> ro bios version      | Google_Kevin.8785.220.0
-Interesting. That patch was breaking my machine yesterday, and it
-doesn't seem to break today. Still investigating.
+It would be OK for me to keep files separate too; a separate question
+would then be whether we have to rename drivers/pci/host if we add
+endpoint drivers in there, do we have to?
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+At that stage we could well move drivers/pci/dwc and drivers/pci/cadence
+in there too.
+
+> Certainly, I could do that beased on your suggestion, but I would like
+> to know if this's the final agreement both you and Lorenzo reached. :)
+
+Or we can add all EP drivers into drivers/pci/endpoint but then the problem
+is how to share code between host and endpoint directories and it starts
+feeling like we are going round in circles.
+
+I can merge this series as-is as long as we will rework the directory
+structure according to this discussion (given that's already late -rc6
+so directory moves/renames can be disrupting - if feasible at all).
+
+Lorenzo
