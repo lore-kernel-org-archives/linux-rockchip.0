@@ -1,7 +1,7 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
+From: JeffyChen <jeffy.chen@rock-chips.com>
 Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Wed, 21 Mar 2018 09:33:03 +0000
-Message-ID: <de4be2ef-ee2c-60f8-a08e-11e378e55343@arm.com>
+Date: Wed, 21 Mar 2018 20:04:29 +0800
+Message-ID: <5AB24A4D.6020503@rock-chips.com>
 References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
  <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
@@ -16,12 +16,12 @@ References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <5AB1F763.3040409@rock-chips.com>
  <680aba8d-4117-227b-d5a1-ad7121d2565f@arm.com>
  <5AB22377.1000404@rock-chips.com>
+ <de4be2ef-ee2c-60f8-a08e-11e378e55343@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5AB22377.1000404@rock-chips.com>
-Content-Language: en-GB
+In-Reply-To: <de4be2ef-ee2c-60f8-a08e-11e378e55343@arm.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -31,46 +31,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: JeffyChen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+To: Marc Zyngier <marc.zyngier@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>
 Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, John Garry <john.garry@huawei.com>, Robin Murphy <robin.murphy@arm.com>, Linuxarm <linuxarm@huawei.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 21/03/18 09:18, JeffyChen wrote:
-> Hi Marc,
-> 
-> On 03/21/2018 04:52 PM, Marc Zyngier wrote:
->> Hi Jeffy,
->>
->> On 21/03/18 06:10, JeffyChen wrote:
->>> Hi Shawn,
->>>
->>> On 03/21/2018 08:34 AM, Shawn Lin wrote:
->>>>
->>>> @Jeffy
->>>>
->>>> Could you help test Marc's latest patch on your RK3399 kevin/Gru or
->>>> whatever Chromebook?
->>> tested on my chromebook kevin, it works with that patch.
->>
->> This is very odd. It completely fails on mine, which is aannoying.
->> Do you have any special firmware? Or the stock firmware?
->>
-> 
-> hmmm, my kevin's firmware is official:
-> localhost / # cat /var/log/bios_info.txt
-> version              | Google_Kevin.8785.241.0
-> ro bios version      | Google_Kevin.8785.241.0
+Hi Marc,
 
-(booting into ChromeOS) Definitely not what I have on mine:
-8785.220.0 as the runtime version, and 8785.94.7 as the RO one.
+On 03/21/2018 05:33 PM, Marc Zyngier wrote:
+>>>>> >>>>@Jeffy
+>>>>> >>>>
+>>>>> >>>>Could you help test Marc's latest patch on your RK3399 kevin/Gru or
+>>>>> >>>>whatever Chromebook?
+>>>> >>>tested on my chromebook kevin, it works with that patch.
+>>> >>
+>>> >>This is very odd. It completely fails on mine, which is aannoying.
+>>> >>Do you have any special firmware? Or the stock firmware?
+>>> >>
+>> >
+>> >hmmm, my kevin's firmware is official:
+>> >localhost / # cat /var/log/bios_info.txt
+>> >version              | Google_Kevin.8785.241.0
+>> >ro bios version      | Google_Kevin.8785.241.0
+> (booting into ChromeOS) Definitely not what I have on mine:
+> 8785.220.0 as the runtime version, and 8785.94.7 as the RO one.
+>
+> This is a retail machine, bought in November. So what you have cannot be
+> the stock firmware.
+>
+> What changes related to the GIC have been applied to this FW?
 
-This is a retail machine, bought in November. So what you have cannot be
-the stock firmware.
 
-What changes related to the GIC have been applied to this FW?
+i tried to flash my firmware back to 8785.220.0, and still works...:
+localhost tmp # head -2 /var/log/bios_info.txt
+version              | Google_Kevin.8785.220.0
+ro bios version      | Google_Kevin.8785.220.0
 
-Thanks,
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+dmesg:
+https://emailattachment.net/sites/default/files/files/public/dmesg.dmesg
+
+firmware 8785.220.0:
+https://emailattachment.net/sites/default/files/files/public/image.dev.bin
+
+>
+> Thanks,
+>
+> 	M.
+> -- Jazz is not dead. It just smells funny...
