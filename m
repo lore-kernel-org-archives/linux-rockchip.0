@@ -1,98 +1,70 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 1/6] PCI: rockchip: Create individual folder for
- rockchip drivers
-Date: Wed, 21 Mar 2018 09:04:21 +0800
-Message-ID: <879a4862-d0d5-21fd-6c47-029c795fe78e@rock-chips.com>
-References: <1520304173-231081-1-git-send-email-shawn.lin@rock-chips.com>
- <1520304202-232891-1-git-send-email-shawn.lin@rock-chips.com>
- <20180320174633.GA137590@bhelgaas-glaptop.roam.corp.google.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 3/3] dt-bindings: sound: rockchip Fix
+ compatible string in example
+Date: Wed, 21 Mar 2018 09:52:16 +0800
+Message-ID: <20180321015216.GU2186@sirena.org.uk>
+References: <20180320160332.13212-1-ezequiel@vanguardiasur.com.ar>
+ <20180320160332.13212-4-ezequiel@vanguardiasur.com.ar>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180320174633.GA137590-1RhO1Y9PlrlHTL0Zs8A6p5iNqAH0jzoTYJqu5kTmcBRl57MIdRCFDg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============2801568672922947606=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20180320160332.13212-4-ezequiel@vanguardiasur.com.ar>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@collabora.co.uk>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Bjorn, Lorenzo
 
-On 2018/3/21 1:46, Bjorn Helgaas wrote:
-> On Tue, Mar 06, 2018 at 10:43:22AM +0800, Shawn Lin wrote:
->> In preparation for introducing End-Point driver for Rockchip
->> PCIe controller, we create a new folder to follow the convention
->> of dwc and cadence. Then we rename the host driver from pcie-rockchip.c
->> to pcie-rockchip-host.c, and only leave some common functions in
->> pcie-rockchip.c in order to be reused for both of host and EP drivers.
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Tested-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ...
-> 
->> diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
->> index 34b56a8..b85ad40 100644
->> --- a/drivers/pci/Kconfig
->> +++ b/drivers/pci/Kconfig
->> @@ -141,4 +141,5 @@ source "drivers/pci/cadence/Kconfig"
->>   source "drivers/pci/dwc/Kconfig"
->>   source "drivers/pci/host/Kconfig"
->>   source "drivers/pci/endpoint/Kconfig"
->> +source "drivers/pci/rockchip/Kconfig"
->>   source "drivers/pci/switch/Kconfig"
-> 
-> Why is this out of order?  This seems exactly analogous to
-> drivers/pci/cadence and dwc, so they should be next to each other.
+--===============2801568672922947606==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fzjtk4ayEOCSo8lB"
+Content-Disposition: inline
 
-This confused me as well! I just put "rockchip" before "switch"
-to keep the order, but I didn't know why "endpoint" wasn't ordered.
 
-> 
->> diff --git a/drivers/pci/Makefile b/drivers/pci/Makefile
->> index 9419709..8434afb 100644
->> --- a/drivers/pci/Makefile
->> +++ b/drivers/pci/Makefile
->> @@ -55,6 +55,8 @@ obj-y += switch/
->>   
->>   obj-$(CONFIG_PCI_ENDPOINT)	+= endpoint/
->>   
->> +obj-$(CONFIG_PCIE_ROCKCHIP)	+= rockchip/
->> +
->>   # Endpoint library must be initialized before its users
->>   obj-$(CONFIG_PCIE_CADENCE)	+= cadence/
->>   # pcie-hisi.o quirks are needed even without CONFIG_PCIE_DW
-> 
-> Similarly here.
-> 
-> I admit to still being a little dubious about the idea of a bunch of
-> vendor-specific directories, each containing a completely trivial
-> Makefile, a mostly-trivial Kconfig, a header file, a shared .c file, a
-> host .c file, and an endpoint .c file.
+--fzjtk4ayEOCSo8lB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-So do I.
+On Tue, Mar 20, 2018 at 01:03:32PM -0300, Ezequiel Garcia wrote:
+> From: Ezequiel Garcia <ezequiel@collabora.co.uk>
+>=20
+> Use the correct compatible string in the example devicetree
+> snippet, which was probably overlooked.
 
-> 
-> One alternative would be to keep the single pcie-rockchip.c file with
-> an #ifdef CONFIG_PCIE_ROCKCHIP_HOST section and an #ifdef
-> CONFIG_PCIE_ROCKCHIP_EP section.
+Please use subject lines matching the style for the subsystem.  This
+makes it easier for people to identify relevant patches.
 
-I admit I thought this eariler, however, I don't like it personally, as
-it confuses the new-comer to follow the convention here, if we are
-alternatives just for "style issue" or "personal taste".
+--fzjtk4ayEOCSo8lB
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Certainly, I could do that beased on your suggestion, but I would like
-to know if this's the final agreement both you and Lorenzo reached. :)
+-----BEGIN PGP SIGNATURE-----
 
-> 
-> Bjorn
-> 
-> 
-> 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlqxutAACgkQJNaLcl1U
+h9DAcwf/bYW4CIGdq2kOKN4CHIVmjGVX3W11zO75WlWSXST/IqFd0H0JN4crYn9S
+25HvEkob+XjA1v/eSzho/yizt9yVOjh5jod6oRKruT1fmbzczMhc1gg3ZXbmeSJi
+F2HAYpJFDh5cGKAVWVYnrXFyCG/9jnBwWWdfy7kjp9sbmDSXCi2MgFqHVyrKcdxx
+qUoD/ErnN4loLH1/I3LJpWYpaPLSeBz/BXqw4pzAWYgcSsOaGBDSTFVRh3Ix+Smy
+gKAdMcH7vOUtSiU96xnLp1aW9xG4di1dWFir62uthz53vzNbfluR/t2NBLzHBXYY
+U1FkjlQ4+TVHDjz2zRDVMDVaUcwypg==
+=MLPw
+-----END PGP SIGNATURE-----
+
+--fzjtk4ayEOCSo8lB--
+
+--===============2801568672922947606==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============2801568672922947606==--
