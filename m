@@ -1,86 +1,72 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: Fix dai_name for HDMI codec"
-	to the asoc tree
-Date: Wed, 21 Mar 2018 01:57:51 +0000 (GMT)
-Message-ID: <20180321015751.9D29644007A@finisterre.ee.mobilebroadband>
-References: <20180320160332.13212-2-ezequiel@vanguardiasur.com.ar>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/3] clk: rockchip: Fix wrong parents for MMC phase clock for
+ rk3328
+Date: Wed, 21 Mar 2018 10:39:18 +0800
+Message-ID: <1521599960-34381-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20180320160332.13212-2-ezequiel@vanguardiasur.com.ar>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Ezequiel Garcia <ezequiel@collabora.co.uk>
-Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Mark Brown <broonie@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+commit c420c1e4db22 ("clk: rockchip: Prevent calculating mmc phase if
+clock rate is zero") catches some gremlins for clk-rk3328.c that the
+parents of MMC phase clock should be clk_{sdmmc, sdio, emmc}, but not
+sclk_{sdmmc, sdio, emmc}.
 
-   ASoC: rockchip: Fix dai_name for HDMI codec
-
-has been applied to the asoc tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From a5ad3b4b240b0335f9ea7d474efa79ba8463ade7 Mon Sep 17 00:00:00 2001
-From: Ezequiel Garcia <ezequiel@collabora.co.uk>
-Date: Tue, 20 Mar 2018 13:03:30 -0300
-Subject: [PATCH] ASoC: rockchip: Fix dai_name for HDMI codec
-
-Commit 24069b589b02 ("ASoC: hdmi-codec: remove multi detection support")
-changed the dai_name for the HDMI Codec, breaking the rk3288_hdmi_analog
-driver, which fails to register with a:
-
-  rk3288-snd-hdmi-analog sound: ASoC: CODEC DAI hdmi-hifi.0 not registered
-
-This commit fixes the dai_name, fixing the issue.
-
-Fixes: 24069b589b02 ("ASoC: hdmi-codec: remove multi detection support")
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.co.uk>
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- sound/soc/rockchip/rk3288_hdmi_analog.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
-index fa44e3901336..929b3fe289b0 100644
---- a/sound/soc/rockchip/rk3288_hdmi_analog.c
-+++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
-@@ -155,7 +155,7 @@ static struct snd_soc_dai_link_component rk_codecs[] = {
- 	{ },
- 	{
- 		.name = "hdmi-audio-codec.2.auto",
--		.dai_name = "hdmi-hifi.0",
-+		.dai_name = "i2s-hifi",
- 	},
+ drivers/clk/rockchip/clk-rk3328.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
+index f680b42..252366a 100644
+--- a/drivers/clk/rockchip/clk-rk3328.c
++++ b/drivers/clk/rockchip/clk-rk3328.c
+@@ -810,24 +810,24 @@ enum rk3328_plls {
+ 	GATE(0, "pclk_phy_niu", "pclk_phy_pre", 0, RK3328_CLKGATE_CON(15), 15, GFLAGS),
+ 
+ 	/* PD_MMC */
+-	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "sclk_sdmmc",
++	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "clk_sdmmc",
+ 	    RK3328_SDMMC_CON0, 1),
+-	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "sclk_sdmmc",
++	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "clk_sdmmc",
+ 	    RK3328_SDMMC_CON1, 1),
+ 
+-	MMC(SCLK_SDIO_DRV, "sdio_drv", "sclk_sdio",
++	MMC(SCLK_SDIO_DRV, "sdio_drv", "clk_sdio",
+ 	    RK3328_SDIO_CON0, 1),
+-	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "sclk_sdio",
++	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "clk_sdio",
+ 	    RK3328_SDIO_CON1, 1),
+ 
+-	MMC(SCLK_EMMC_DRV, "emmc_drv", "sclk_emmc",
++	MMC(SCLK_EMMC_DRV, "emmc_drv", "clk_emmc",
+ 	    RK3328_EMMC_CON0, 1),
+-	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "sclk_emmc",
++	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "clk_emmc",
+ 	    RK3328_EMMC_CON1, 1),
+ 
+-	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "sclk_sdmmc_ext",
++	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "clk_sdmmc_ext",
+ 	    RK3328_SDMMC_EXT_CON0, 1),
+-	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "sclk_sdmmc_ext",
++	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "clk_sdmmc_ext",
+ 	    RK3328_SDMMC_EXT_CON1, 1),
  };
  
 -- 
-2.16.2
+1.9.1
