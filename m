@@ -1,7 +1,7 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
 Subject: Re: Failed to boot ARM64 boards for recent linux-next
-Date: Wed, 21 Mar 2018 14:10:43 +0800
-Message-ID: <5AB1F763.3040409@rock-chips.com>
+Date: Wed, 21 Mar 2018 08:52:33 +0000
+Message-ID: <680aba8d-4117-227b-d5a1-ad7121d2565f@arm.com>
 References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <077cecdd-7982-dd33-454f-e38cc571366c@arm.com>
  <9cff515e-fcb9-a1c0-329b-a18c3bed0071@rock-chips.com>
@@ -13,11 +13,13 @@ References: <dae4b3b8-3da4-4a86-ac4a-0631802fa546@rock-chips.com>
  <ff6cd434-2227-12a6-b3b9-325da78a7fa9@huawei.com>
  <2aed10a0-ad3d-d9fc-7b6e-3b6877bff0be@arm.com>
  <13507742-ddb8-0b43-cd09-14a57ec2a07a@rock-chips.com>
+ <5AB1F763.3040409@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <13507742-ddb8-0b43-cd09-14a57ec2a07a@rock-chips.com>
+In-Reply-To: <5AB1F763.3040409@rock-chips.com>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -27,16 +29,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Marc Zyngier <marc.zyngier@arm.com>
+To: JeffyChen <jeffy.chen@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
 Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, John Garry <john.garry@huawei.com>, Robin Murphy <robin.murphy@arm.com>, Linuxarm <linuxarm@huawei.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+Hi Jeffy,
 
-On 03/21/2018 08:34 AM, Shawn Lin wrote:
->
-> @Jeffy
->
-> Could you help test Marc's latest patch on your RK3399 kevin/Gru or
-> whatever Chromebook?
-tested on my chromebook kevin, it works with that patch.
+On 21/03/18 06:10, JeffyChen wrote:
+> Hi Shawn,
+> 
+> On 03/21/2018 08:34 AM, Shawn Lin wrote:
+>>
+>> @Jeffy
+>>
+>> Could you help test Marc's latest patch on your RK3399 kevin/Gru or
+>> whatever Chromebook?
+> tested on my chromebook kevin, it works with that patch.
+
+This is very odd. It completely fails on mine, which is aannoying.
+Do you have any special firmware? Or the stock firmware?
+
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny...
