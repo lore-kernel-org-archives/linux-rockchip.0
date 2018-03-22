@@ -1,20 +1,17 @@
-From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [PATCH v3 1/6] PCI: rockchip: Create individual folder for
- rockchip drivers
-Date: Thu, 22 Mar 2018 09:47:35 +0100
-Message-ID: <20180322084735.GC6211@kroah.com>
-References: <1520304173-231081-1-git-send-email-shawn.lin@rock-chips.com>
- <1520304202-232891-1-git-send-email-shawn.lin@rock-chips.com>
- <20180320174633.GA137590@bhelgaas-glaptop.roam.corp.google.com>
- <879a4862-d0d5-21fd-6c47-029c795fe78e@rock-chips.com>
- <20180321181940.GA9760@e107981-ln.cambridge.arm.com>
- <7275bd77-016a-2729-482d-2855703d9b56@rock-chips.com>
+From: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] mmc: block: Delete gendisk before cleaning up the request
+ queue
+Date: Thu, 22 Mar 2018 11:31:43 +0200
+Message-ID: <1e104a4a-0508-97ee-4235-12de3e38b417@intel.com>
+References: <1521704940-45406-1-git-send-email-shawn.lin@rock-chips.com>
+ <f1c54ab8-aa38-69bc-b55a-fd8decc67d2d@intel.com>
+ <ba973085-9321-c782-2eb1-68a1ff67366c@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <7275bd77-016a-2729-482d-2855703d9b56-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <ba973085-9321-c782-2eb1-68a1ff67366c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,40 +21,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 22, 2018 at 09:03:58AM +0800, Shawn Lin wrote:
-> [+ Greg]
-
-Why me?
-
-> > It would be OK for me to keep files separate too; a separate question
-> > would then be whether we have to rename drivers/pci/host if we add
-> > endpoint drivers in there, do we have to?
-> > 
-> > At that stage we could well move drivers/pci/dwc and drivers/pci/cadence
-> > in there too.
-> > 
-> 
-> I add Greg to this thread, and hope he could shed a light here.
-> 
-> That is completely the same situation annoying me when looking into
-> drivers/usb where they have drivers/usb/host/ for host drivers,
-> drivers/usb/gadget/ for device framwork, drivers/usb/gaget/udc for
-> device drivers, and even surprisingly drivers/usb/dwc2/,
-> drivers/usb/dwc3/ and drivers/usb/renesas_usbhs/ for supporting both of
-> host and device functional drivers....
-
-USB is "messy" in that we have hardware that acts both as a host and a
-gadget controller.  Don't use our directory scheme as an example to do
-anything :)
-
-Do what is right for the PCI subsystem, if a driver is too "complex"
-that it needs lots of different files, make a subdirectory to make it
-easier to manage.  That's all we did for USB, nothing really complex.
-
-good luck!
-
-greg k-h
+T24gMjIvMDMvMTggMTA6NDMsIFNoYXduIExpbiB3cm90ZToKPiBPbiAyMDE4LzMvMjIgMTY6MjYs
+IEFkcmlhbiBIdW50ZXIgd3JvdGU6Cj4+IE9uIDIyLzAzLzE4IDA5OjQ5LCBTaGF3biBMaW4gd3Jv
+dGU6Cj4+PiBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9L2Rldi9tbWNibGsxIGJzPTRrIGNvdW50PTEw
+MDAwCj4+PiB3aXRoIGEgU0QgY2FyZCBob3RwbHVnIGR1cmluZyB0cmFuc2ZlciByZXBvcnRzIGEg
+d2FybmluZyBiZWxvdzoKPj4KPj4gV2hhdCBrZXJuZWwgdmVyc2lvbiAvIGNvbW1pdCB3YXMgaXQ/
+Cj4gCj4gQWN0dWFsbHkgdGhlIGxvZyBiZWxvdyBoYXMgaXQsIGl0IGlzIGNsZWFuIDogNC4xNi4w
+LXJjNi1uZXh0LTIwMTgwMzIxCgpPayBzbyBpdCBzZWVtcyB0byBiZSBjb21pbmcgZnJvbSB0aGlz
+IHBhdGNoIGluIG5leHQ6Cgpjb21taXQgYTA2MzA1N2Q3YzczMWNmZmE3ZDEwNzQwZThlYmMyOTcw
+ZGY4ZGJiMwpBdXRob3I6IEJhcnQgVmFuIEFzc2NoZSA8YmFydC52YW5hc3NjaGVAd2RjLmNvbT4K
+RGF0ZTogICBXZWQgRmViIDI4IDEwOjE1OjMzIDIwMTggLTA4MDAKCiAgICBibG9jazogRml4IGEg
+cmFjZSBiZXR3ZWVuIHJlcXVlc3QgcXVldWUgcmVtb3ZhbCBhbmQgdGhlIGJsb2NrIGNncm91cCBj
+b250cm9sbGVyCgogICAgQXZvaWQgdGhhdCB0aGUgZm9sbG93aW5nIHJhY2UgY2FuIG9jY3VyOgoK
+ICAgIGJsa19jbGVhbnVwX3F1ZXVlKCkgICAgICAgICAgICAgICBibGtjZ19wcmludF9ibGtncygp
+CiAgICAgIHNwaW5fbG9ja19pcnEobG9jaykgKDEpICAgICAgICAgICBzcGluX2xvY2tfaXJxKGJs
+a2ctPnEtPnF1ZXVlX2xvY2spICgyLDUpCiAgICAgICAgcS0+cXVldWVfbG9jayA9ICZxLT5fX3F1
+ZXVlX2xvY2sgKDMpCiAgICAgIHNwaW5fdW5sb2NrX2lycShsb2NrKSAoNCkKICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNwaW5fdW5sb2NrX2lycShibGtnLT5xLT5xdWV1
+ZV9sb2NrKSAoNikKCiAgICAoMSkgdGFrZSBkcml2ZXIgbG9jazsKICAgICgyKSBidXN5IGxvb3Ag
+Zm9yIGRyaXZlciBsb2NrOwogICAgKDMpIG92ZXJyaWRlIGRyaXZlciBsb2NrIHdpdGggaW50ZXJu
+YWwgbG9jazsKICAgICg0KSB1bmxvY2sgZHJpdmVyIGxvY2s7CiAgICAoNSkgY2FuIHRha2UgZHJp
+dmVyIGxvY2sgbm93OwogICAgKDYpIGJ1dCB1bmxvY2sgaW50ZXJuYWwgbG9jay4KCiAgICBUaGlz
+IGNoYW5nZSBpcyBzYWZlIGJlY2F1c2Ugb25seSB0aGUgU0NTSSBjb3JlIGFuZCB0aGUgTlZNRSBj
+b3JlIGtlZXAKICAgIGEgcmVmZXJlbmNlIG9uIGEgcmVxdWVzdCBxdWV1ZSBhZnRlciBoYXZpbmcg
+Y2FsbGVkIGJsa19jbGVhbnVwX3F1ZXVlKCkuCiAgICBOZWl0aGVyIGRyaXZlciBhY2Nlc3NlcyBh
+bnkgb2YgdGhlIHJlbW92ZWQgZGF0YSBzdHJ1Y3R1cmVzIGJldHdlZW4gaXRzCiAgICBibGtfY2xl
+YW51cF9xdWV1ZSgpIGFuZCBibGtfcHV0X3F1ZXVlKCkgY2FsbHMuCgogICAgUmVwb3J0ZWQtYnk6
+IEpvc2VwaCBRaSA8am9zZXBoLnFpQGxpbnV4LmFsaWJhYmEuY29tPgogICAgU2lnbmVkLW9mZi1i
+eTogQmFydCBWYW4gQXNzY2hlIDxiYXJ0LnZhbmFzc2NoZUB3ZGMuY29tPgogICAgUmV2aWV3ZWQt
+Ynk6IEpvc2VwaCBRaSA8am9zZXBoLnFpQGxpbnV4LmFsaWJhYmEuY29tPgogICAgQ2M6IEphbiBL
+YXJhIDxqYWNrQHN1c2UuY29tPgogICAgU2lnbmVkLW9mZi1ieTogSmVucyBBeGJvZSA8YXhib2VA
+a2VybmVsLmRrPgoKCj4gCj4+Cj4+Pgo+Pj4gUmVtb3ZlIHRoZSBkaXNrLCBwYXJ0aXRpb24gYW5k
+IGJkaSBzeXNmcyBhdHRyaWJ1dGVzIGJlZm9yZSBjbGVhbmluZwo+Pj4gdXAgdGhlIHJlcXVlc3Qg
+cXVldWUgYXNzb2NpYXRlZCB3aXRoIHRoZSBkaXNrLgo+Pj4KPj4+IFvCoCA0MTAuMzMxMjI2XSBt
+bWMxOiBjYXJkIDU5YjQgcmVtb3ZlZAo+Pj4gW8KgIDQxMC4zNDg1ODNdIFdBUk5JTkc6IENQVTog
+MCBQSUQ6IDUgYXQgYmxvY2svYmxrLWNvcmUuYzo3ODUKPj4+IGJsa19jbGVhbnVwX3F1ZXVlKzB4
+MTM4LzB4MTQwCj4+PiBbwqAgNDEwLjM0OTI5NF0gTW9kdWxlcyBsaW5rZWQgaW46Cj4+PiBbwqAg
+NDEwLjM0OTU3MF0gQ1BVOiAwIFBJRDogNSBDb21tOiBrd29ya2VyLzA6MCBOb3QgdGFpbnRlZAo+
+Pj4gNC4xNi4wLXJjNi1uZXh0LTIwMTgwMzIxLTAwMDA0LWdjMmFkNmE3ICMyNjMKPj4+IFvCoCA0
+MTAuMzUwMzYzXSBIYXJkd2FyZSBuYW1lOiBFeGNhdmF0b3ItUkszMzk5IEJvYXJkIChEVCkKPj4+
+IFvCoCA0MTAuMzUwODE5XSBXb3JrcXVldWU6IGV2ZW50c19mcmVlemFibGUgbW1jX3Jlc2Nhbgo+
+Pj4gW8KgIDQxMC4zNTEyNDJdIHBzdGF0ZTogNjAwMDAwMDUgKG5aQ3YgZGFpZiAtUEFOIC1VQU8p
+Cj4+PiBbwqAgNDEwLjM1MTY2M10gcGMgOiBibGtfY2xlYW51cF9xdWV1ZSsweDEzOC8weDE0MAo+
+Pj4gW8KgIDQxMC4zNTIwNTRdIGxyIDogYmxrX2NsZWFudXBfcXVldWUrMHhhYy8weDE0MAo+Pj4g
+W8KgIDQxMC4zNTI0MzZdIHNwIDogZmZmZjAwMDAwOTJjYmI5MAo+Pj4gW8KgIDQxMC4zNTI3Mjdd
+IHgyOTogZmZmZjAwMDAwOTJjYmI5MCB4Mjg6IDAwMDAwMDAwMDAwMDAwMDAKPj4+IFvCoCA0MTAu
+MzUzMTk1XSB4Mjc6IGZmZmY4MDAwZjZmMjMwMzAgeDI2OiBmZmZmMDAwMDA5MDRlNjEwCj4+PiBb
+wqAgNDEwLjM1MzY2Ml0geDI1OiBmZmZmODAwMGYxN2NjODA4IHgyNDogZmZmZjgwMDBmMTAzODIw
+MAo+Pj4gW8KgIDQxMC4zNTQxMjhdIHgyMzogMDAwMDAwMDAwMDAwMDA2MCB4MjI6IDAwMDAwMDAw
+MDAwMDAwMDAKPj4+IFvCoCA0MTAuMzU0NTk1XSB4MjE6IGZmZmY4MDAwZjExNzQ4ZDggeDIwOiBm
+ZmZmODAwMGYxMDM4MjAwCj4+PiBbwqAgNDEwLjM1NTA2MV0geDE5OiBmZmZmODAwMGYxMTc0MjAw
+IHgxODogMDAwMGZmZmY5MzYzNDdkOAo+Pj4gW8KgIDQxMC4zNTU1MjhdIHgxNzogMDAwMGZmZmY5
+MzViOTNjMCB4MTY6IGZmZmYwMDAwMDgxMjYzZjgKPj4+IFvCoCA0MTAuMzU1OTk0XSB4MTU6IDAw
+MDAwMDAwMDAwMDAwMDAgeDE0OiAwMDAwMDAwMDAwMDAwNDAwCj4+PiBbwqAgNDEwLjM1NjQ2MV0g
+eDEzOiAwMDAwMDAwMDAwMDAwMDAxIHgxMjogMDAwMDAwMDAwMDAwMDAwMQo+Pj4gW8KgIDQxMC4z
+NTY5MjddIHgxMTogMDAwMDAwMDAwMDAwMDA0MCB4MTA6IGZmZmY4MDAwZjI0MDAwMjgKPj4+IFvC
+oCA0MTAuMzU3MzkzXSB4OSA6IGZmZmY4MDAwZjI0MDAwNDAgeDggOiAwMDAwMDAwMDAwMDAwMDAw
+Cj4+PiBbwqAgNDEwLjM1Nzg2MF0geDcgOiBmZmZmODAwMGY2ZjNhMzQwIHg2IDogZmZmZjgwMDBm
+NmYzYTM0MAo+Pj4gW8KgIDQxMC4zNTgzMjZdIHg1IDogZmZmZjgwMDBmMjQwMDAwMCB4NCA6IGZm
+ZmY4MDAwZjZmM2EzNDAKPj4+IFvCoCA0MTAuMzU4NzkyXSB4MyA6IDAwMDAwMDAwMDAwMDAwMDAg
+eDIgOiAzOWMxMzMzZTQ1NjcwODAwCj4+PiBbwqAgNDEwLjM1OTI1OV0geDEgOiAwMDAwMDAwMDAw
+MDAwMDAwIHgwIDogMDAwMDAwMDAwMDAwMDAwMwo+Pj4gW8KgIDQxMC4zNTk3MjZdIENhbGwgdHJh
+Y2U6Cj4+PiBbwqAgNDEwLjM1OTk0M13CoCBibGtfY2xlYW51cF9xdWV1ZSsweDEzOC8weDE0MAo+
+Pj4gW8KgIDQxMC4zNjAzMDVdwqAgbW1jX2NsZWFudXBfcXVldWUrMHgyYy8weDQ4Cj4+PiBbwqAg
+NDEwLjM2MDY1Ml3CoCBtbWNfYmxrX3JlbW92ZV9yZXErMHgxYy8weDk4Cj4+PiBbwqAgNDEwLjM2
+MTAwNV3CoCBtbWNfYmxrX3JlbW92ZSsweDE4MC8weDFjMAo+Pj4gW8KgIDQxMC4zNjEzNDNdwqAg
+bW1jX2J1c19yZW1vdmUrMHgxYy8weDI4Cj4+PiBbwqAgNDEwLjM2MTY3MF3CoCBkZXZpY2VfcmVs
+ZWFzZV9kcml2ZXJfaW50ZXJuYWwrMHgxNTQvMHgxZjAKPj4+IFvCoCA0MTAuMzYyMTI4XcKgIGRl
+dmljZV9yZWxlYXNlX2RyaXZlcisweDE0LzB4MjAKPj4+IFvCoCA0MTAuMzYyNTA0XcKgIGJ1c19y
+ZW1vdmVfZGV2aWNlKzB4YzgvMHgxMDgKPj4+IFvCoCA0MTAuMzYyODU4XcKgIGRldmljZV9kZWwr
+MHgxMjAvMHgzNTAKPj4+IFvCoCA0MTAuMzYzMTY3XcKgIG1tY19yZW1vdmVfY2FyZCsweDVjLzB4
+YjgKPj4+IFvCoCA0MTAuMzYzNDk4XcKgIG1tY19zZF9kZXRlY3QrMHg0MC8weDc4Cj4+PiBbwqAg
+NDEwLjM2MzgxM13CoCBtbWNfcmVzY2FuKzB4MTljLzB4MzY4Cj4+PiBbwqAgNDEwLjM2NDEyM13C
+oCBwcm9jZXNzX29uZV93b3JrKzB4MWFjLzB4MzE4Cj4+PiBbwqAgNDEwLjM2NDQ3N13CoCB3b3Jr
+ZXJfdGhyZWFkKzB4NTAvMHg0NTAKPj4+IFvCoCA0MTAuMzY0ODAxXcKgIGt0aHJlYWQrMHhmOC8w
+eDEyOAo+Pj4gW8KgIDQxMC4zNjUwODFdwqAgcmV0X2Zyb21fZm9yaysweDEwLzB4MTgKPj4+IFvC
+oCA0MTAuMzY1Mzk1XSAtLS1bIGVuZCB0cmFjZSAyNjhlODdhNDZjMjg5NjhjIF0tLS0KPj4+Cj4+
+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4+
+IC0tLQo+Pj4KPj4+IMKgIGRyaXZlcnMvbW1jL2NvcmUvYmxvY2suYyB8IDIgKy0KPj4+IMKgIDEg
+ZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Pj4KPj4+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL21tYy9jb3JlL2Jsb2NrLmMgYi9kcml2ZXJzL21tYy9jb3JlL2Jsb2Nr
+LmMKPj4+IGluZGV4IGEyYjljMjUuLjAyNDg1ZTMgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL21t
+Yy9jb3JlL2Jsb2NrLmMKPj4+ICsrKyBiL2RyaXZlcnMvbW1jL2NvcmUvYmxvY2suYwo+Pj4gQEAg
+LTI2NTksNyArMjY1OSw2IEBAIHN0YXRpYyB2b2lkIG1tY19ibGtfcmVtb3ZlX3JlcShzdHJ1Y3Qg
+bW1jX2Jsa19kYXRhCj4+PiAqbWQpCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqIGZyb20gYmVp
+bmcgYWNjZXB0ZWQuCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqLwo+Pj4gwqDCoMKgwqDCoMKg
+wqDCoMKgIGNhcmQgPSBtZC0+cXVldWUuY2FyZDsKPj4+IC3CoMKgwqDCoMKgwqDCoCBtbWNfY2xl
+YW51cF9xdWV1ZSgmbWQtPnF1ZXVlKTsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAobWQtPmRp
+c2stPmZsYWdzICYgR0VOSERfRkxfVVApIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IGRldmljZV9yZW1vdmVfZmlsZShkaXNrX3RvX2RldihtZC0+ZGlzayksICZtZC0+Zm9yY2Vfcm8p
+Owo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKChtZC0+YXJlYV90eXBlICYgTU1D
+X0JMS19EQVRBX0FSRUFfQk9PVCkgJiYKPj4+IEBAIC0yNjY5LDYgKzI2NjgsNyBAQCBzdGF0aWMg
+dm9pZCBtbWNfYmxrX3JlbW92ZV9yZXEoc3RydWN0IG1tY19ibGtfZGF0YQo+Pj4gKm1kKQo+Pj4g
+wqAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGVsX2dlbmRpc2sobWQtPmRpc2spOwo+Pj4g
+wqDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+ICvCoMKgwqDCoMKgwqDCoCBtbWNfY2xlYW51cF9xdWV1
+ZSgmbWQtPnF1ZXVlKTsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBtbWNfYmxrX3B1dChtZCk7Cj4+
+PiDCoMKgwqDCoMKgIH0KPj4+IMKgIH0KPj4+Cj4+Cj4+Cj4+Cj4+Cj4gCj4gCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
