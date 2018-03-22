@@ -1,20 +1,11 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v3 1/6] PCI: rockchip: Create individual folder for
- rockchip drivers
-Date: Thu, 22 Mar 2018 11:30:00 +0000
-Message-ID: <20180322113000.GA24976@e107981-ln.cambridge.arm.com>
-References: <1520304173-231081-1-git-send-email-shawn.lin@rock-chips.com>
- <1520304202-232891-1-git-send-email-shawn.lin@rock-chips.com>
- <20180320174633.GA137590@bhelgaas-glaptop.roam.corp.google.com>
- <879a4862-d0d5-21fd-6c47-029c795fe78e@rock-chips.com>
- <20180321181940.GA9760@e107981-ln.cambridge.arm.com>
- <7275bd77-016a-2729-482d-2855703d9b56@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/6] Add endpoint driver for Rockchip PCIe controller
+Date: Thu, 22 Mar 2018 19:42:05 +0800
+Message-ID: <1521718925-160084-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <7275bd77-016a-2729-482d-2855703d9b56-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,43 +15,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+To: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 22, 2018 at 09:03:58AM +0800, Shawn Lin wrote:
 
-[...]
+Patch 1 firstly move the whole Rockchip PCIe host driver from
+drivers/pci/host to a new folder, driver/pci/rockchip/, and rename
+pcie-rockchip.c to pcie-rockchip-host.c. It also updates the
+Kconfig/Makefile etc to repect this change.
 
-> How about renaming drivers/pci/host to drivers/pci/controller,
-> and then put all pcie-rockchip* files in there, then we don't
-> need add seperate directory containning trivial Kconfig, Makefile.
+Then patch 2 and patch 3 are trying to spilt out some common code in
+preparation for adding endponit controller driver support.
 
-Yes we can do that but not at -rc6 tail end.
+Patch 4 rename rockchip-pcie.txt to rockchip-pcie-host.txt.
 
-> >>Certainly, I could do that beased on your suggestion, but I would like
-> >>to know if this's the final agreement both you and Lorenzo reached. :)
-> >
-> >Or we can add all EP drivers into drivers/pci/endpoint but then the problem
-> >is how to share code between host and endpoint directories and it starts
-> >feeling like we are going round in circles.
-> 
-> I would prefer to rename it to endpoint-framwrok or whatever to clearly
-> states it is for framework but not the drivers. All the drivers
-> whichever for host or endpoint should be in controller directory.
-> 
-> >
-> >I can merge this series as-is as long as we will rework the directory
-> >structure according to this discussion (given that's already late -rc6
-> >so directory moves/renames can be disrupting - if feasible at all).
-> 
-> This sounds super great to me to make this series into -next for some
-> days before hitting into v4.17. Then we could simultaneously head up to
-> see how we could move forward with this.
+Patch 5 adds endpoint controller driver support as well as the new
+documentation, rockchip-pcie-ep.txt, introduced by patch 6.
 
-Send a last version asap and I will try to merge it for this cycle,
-keeping in mind that what we discussed above must be implemented as
-soon as a new cycle starts.
 
-Thanks,
-Lorenzo
+Changes in v4:
+- remove empty line
+- keep rockchip's order next to cadence and dwc, but we will
+  try to resort it later when reconstructing the directories
+
+Changes in v2:
+- remove rockchip,rk3399-pcie-host compatible(Suggested by Rob)
+- fix some error handling
+Series-changes: 3
+- fix all issues suggested by Lorenzo
+
+Shawn Lin (6):
+  PCI: rockchip: Create individual folder for rockchip drivers
+  PCI: rockchip: Split out common function to parse DT
+  PCI: rockchip: Split out common function to init controller
+  dt-bindings: PCI: rockchip: Rename rockchip-pcie.txt to
+    rockchip-pcie-host.txt
+  PCI: rockchip: Add Endpoint controller driver for Rockchip PCIe
+    controller
+  dt-bindings: PCI: rockchip: Add DT bindings for Rockchip PCIe endpoint
+    controller
+
+ .../devicetree/bindings/pci/rockchip-pcie-ep.txt   |  62 ++
+ .../{rockchip-pcie.txt => rockchip-pcie-host.txt}  |   0
+ MAINTAINERS                                        |   4 +-
+ drivers/pci/Kconfig                                |   1 +
+ drivers/pci/Makefile                               |   1 +
+ drivers/pci/host/Kconfig                           |  11 -
+ drivers/pci/host/Makefile                          |   1 -
+ drivers/pci/rockchip/Kconfig                       |  32 ++
+ drivers/pci/rockchip/Makefile                      |   4 +
+ drivers/pci/rockchip/pcie-rockchip-ep.c            | 638 +++++++++++++++++++++
+ .../pcie-rockchip-host.c}                          | 594 +------------------
+ drivers/pci/rockchip/pcie-rockchip.c               | 416 ++++++++++++++
+ drivers/pci/rockchip/pcie-rockchip.h               | 341 +++++++++++
+ 13 files changed, 1510 insertions(+), 595 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
+ rename Documentation/devicetree/bindings/pci/{rockchip-pcie.txt => rockchip-pcie-host.txt} (100%)
+ create mode 100644 drivers/pci/rockchip/Kconfig
+ create mode 100644 drivers/pci/rockchip/Makefile
+ create mode 100644 drivers/pci/rockchip/pcie-rockchip-ep.c
+ rename drivers/pci/{host/pcie-rockchip.c => rockchip/pcie-rockchip-host.c} (61%)
+ create mode 100644 drivers/pci/rockchip/pcie-rockchip.c
+ create mode 100644 drivers/pci/rockchip/pcie-rockchip.h
+
+-- 
+1.9.1
