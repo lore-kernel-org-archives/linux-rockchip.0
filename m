@@ -1,110 +1,42 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v8 14/14] iommu/rockchip: Support sharing IOMMU between masters
-Date: Fri, 23 Mar 2018 15:38:14 +0800
-Message-ID: <20180323073814.5802-15-jeffy.chen@rock-chips.com>
-References: <20180323073814.5802-1-jeffy.chen@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/3] clk: rockchip: Fix wrong parent for SDMMC phase clock
+ for rk3228
+Date: Fri, 23 Mar 2018 08:51:40 +0100
+Message-ID: <2742343.qouzS0Ddo7@phil>
+References: <1521599960-34381-1-git-send-email-shawn.lin@rock-chips.com>
+ <1521599960-34381-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180323073814.5802-1-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1521599960-34381-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There would be some masters sharing the same IOMMU device. Put them in
-the same iommu group and share the same iommu domain.
+Am Mittwoch, 21. M=E4rz 2018, 03:39:19 CET schrieb Shawn Lin:
+> commit c420c1e4db22 ("clk: rockchip: Prevent calculating mmc phase
+> if clock rate is zero") catches one gremlin again for clk-rk3228.c
+> that the parent of SDMMC phase clock should be sclk_sdmmc0, but not
+> sclk_sdmmc. However, I don't like the name of sclk_sdmmc0, so I now
+> rename it to be sclk_sdmmc.
+> =
 
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
----
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Changes in v8: None
-Changes in v7:
-Use iommu_group_ref_get to avoid ref leak
+applied to my clk-branch after adapting the commit message a bit,
+so that it is less about personal taste and highlights the discrepancy
+in the manual between clk_sdmmc0 and hclk_sdmmc (without 0)
+and we thus standardize on the one without 0.
 
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3:
-Remove rk_iommudata->domain.
 
-Changes in v2: None
-
- drivers/iommu/rockchip-iommu.c | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 9f6f74689464..5fc8656c60f9 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -104,6 +104,7 @@ struct rk_iommu {
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-+	struct iommu_group *group;
- };
- 
- struct rk_iommudata {
-@@ -1073,6 +1074,15 @@ static void rk_iommu_remove_device(struct device *dev)
- 	iommu_group_remove_device(dev);
- }
- 
-+static struct iommu_group *rk_iommu_device_group(struct device *dev)
-+{
-+	struct rk_iommu *iommu;
-+
-+	iommu = rk_iommu_from_dev(dev);
-+
-+	return iommu_group_ref_get(iommu->group);
-+}
-+
- static int rk_iommu_of_xlate(struct device *dev,
- 			     struct of_phandle_args *args)
- {
-@@ -1104,7 +1114,7 @@ static const struct iommu_ops rk_iommu_ops = {
- 	.add_device = rk_iommu_add_device,
- 	.remove_device = rk_iommu_remove_device,
- 	.iova_to_phys = rk_iommu_iova_to_phys,
--	.device_group = generic_device_group,
-+	.device_group = rk_iommu_device_group,
- 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
- 	.of_xlate = rk_iommu_of_xlate,
- };
-@@ -1173,9 +1183,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
- 
-+	iommu->group = iommu_group_alloc();
-+	if (IS_ERR(iommu->group)) {
-+		err = PTR_ERR(iommu->group);
-+		goto err_unprepare_clocks;
-+	}
-+
- 	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
- 	if (err)
--		goto err_unprepare_clocks;
-+		goto err_put_group;
- 
- 	iommu_device_set_ops(&iommu->iommu, &rk_iommu_ops);
- 	iommu_device_set_fwnode(&iommu->iommu, &dev->of_node->fwnode);
-@@ -1199,6 +1215,8 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	return 0;
- err_remove_sysfs:
- 	iommu_device_sysfs_remove(&iommu->iommu);
-+err_put_group:
-+	iommu_group_put(iommu->group);
- err_unprepare_clocks:
- 	clk_bulk_unprepare(iommu->num_clocks, iommu->clocks);
- 	return err;
--- 
-2.11.0
+Heiko
