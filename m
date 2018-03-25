@@ -1,65 +1,34 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] Rockchip clock updates for 4.17 round 2
-Date: Mon, 26 Mar 2018 00:11:36 +0200
-Message-ID: <2462810.3FAOKQrxCs@phil>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v8 09/14] dt-bindings: iommu/rockchip: Add clock property
+Date: Sun, 25 Mar 2018 18:52:05 -0500
+Message-ID: <20180325235205.fkrz3chbkfj7eo64@rob-hp-laptop>
+References: <20180323073814.5802-1-jeffy.chen@rock-chips.com>
+	<20180323073814.5802-10-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180323073814.5802-10-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+On Fri, Mar 23, 2018 at 03:38:09PM +0800, Jeffy Chen wrote:
+> Add clock property, since we are going to control clocks in rockchip
+> iommu driver.
+> 
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> ---
 
-it looks like the recent phase change triggered some more fixups and
-corrections and would be great on top of the first pull request.
-So please pull :-)
-
-
-Thanks
-Heiko
-
-
-The following changes since commit 4ee3fd4abeca30d530fe67972f1964f7454259d6:
-
-  clk: rockchip: Add 1.6GHz PLL rate for rk3399 (2018-03-14 00:37:22 +0100)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.17-rockchip-clk-2
-
-for you to fetch changes up to 9dc486fdf6cc0d7f635954810ab119c5db2cbb60:
-
-  clk: rockchip: assign correct id for pclk_ddr and hclk_sd in rk3399 (2018-03-23 09:09:19 +0100)
-
-----------------------------------------------------------------
-Some more fixes for Rockchip clocks mainly resulting from the changes in
-phase-handling. Which revealed some parent issues on rk3228 and rk3328 as
-well as additional issue in how handle phase restoration.
-And to top it off two assignments of already existing clock ids for rk3399.
-
-----------------------------------------------------------------
-Lin Huang (1):
-      clk: rockchip: assign correct id for pclk_ddr and hclk_sd in rk3399
-
-Shawn Lin (4):
-      clk: rockchip: Fix wrong parent for SDMMC phase clock for rk3228
-      clk: rockchip: Fix wrong parents for MMC phase clock for rk3328
-      clk: rockchip: Correct the behaviour of restoring cached phase
-      clk: rockchip: Fix error return in phase clock registration
-
- drivers/clk/rockchip/clk-mmc-phase.c | 22 ++++++++++++++++++----
- drivers/clk/rockchip/clk-rk3228.c    |  2 +-
- drivers/clk/rockchip/clk-rk3328.c    | 16 ++++++++--------
- drivers/clk/rockchip/clk-rk3399.c    |  4 ++--
- 4 files changed, 29 insertions(+), 15 deletions(-)
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
