@@ -1,48 +1,95 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v6 2/5] dt-bindings: pwm-backlight: add PWM delay
- proprieties.
-Date: Tue, 27 Mar 2018 10:08:27 -0500
-Message-ID: <20180327150827.i7b4urmjrf2mqj3t@rob-hp-laptop>
-References: <20180326095213.18362-1-enric.balletbo@collabora.com>
- <20180326095213.18362-2-enric.balletbo@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [GIT PULL 1/4] Rockchip driver changes for 4.17
+Date: Tue, 27 Mar 2018 19:50:18 +0200
+Message-ID: <2730470.Dx7LZZSCZ1@diego>
+References: <12470502.BUvxkRrZk8@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180326095213.18362-2-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <12470502.BUvxkRrZk8@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 26, 2018 at 11:52:10AM +0200, Enric Balletbo i Serra wrote:
-> Hardware needs a delay between setting an initial (non-zero) PWM and
-> enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
-> this delay in milli seconds. Hardware also needs a delay between disabing
-> the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
-> is this delay in milli seconds.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Pavel Machek <pavel@ucw.cz>
-> Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> ---
-> Based on the original Huang Lin <hl@rock-chips.com> work.
-> Changes since v5:
->  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
->  - CC DT mainling list (for some reason dropped at some point, my
->    fault)
-> Changes since v4:
->  - Rebase on top of mainline.
-> Changes since v3:
->  - Replace us for ms.
->  - Add Acked-by: Pavel Machek <pavel@ucw.cz>
-> Changes since v2:
->  - Use separate properties (Rob Herring)
-> Changes since v1:
->  - As suggested by Daniel Thompson
->    - Do not assume power-on delay and power-off delay will be the same
-> ---
->  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
->  1 file changed, 6 insertions(+)
+Hi Arnd,
 
-Reviewed-by: Rob Herring <robh@kernel.org> 
+Am Donnerstag, 15. M=E4rz 2018, 23:20:53 CEST schrieb Heiko Stuebner:
+> Hi Arnd, Kevin, Olof,
+> =
+
+> please find below the main Rockchip-related changes for 4.17.
+> The individual tags should explain things nicely but overall it's a pretty
+> standard set of changes without anything special standing out.
+> =
+
+> So if things look ok, please pull!
+> =
+
+> Thanks
+> Heiko
+
+As requested a ping on the seemingly missed pull requests. (4 pieces)
+
+Thanks for considering
+Heiko
+
+> =
+
+> =
+
+> The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1=
+b2:
+> =
+
+>   Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
+> =
+
+> are available in the Git repository at:
+> =
+
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
+> tags/v4.17-rockchip-drivers-1
+> =
+
+> for you to fetch changes up to b1271993aa3855bda5073c6061a095fd6e6febc6:
+> =
+
+>   soc: rockchip: power-domain: Add a sanity check on pd->num_clks
+> (2018-03-05 19:42:29 +0100)
+> =
+
+> ----------------------------------------------------------------
+> Rockchip soc drivers containing conversion of the power-domain driver
+> to use the clk-bulk APIs and two more socs to disable jtag-switching.
+> On the plus-side the issue we see with that are _supposed_ to be fixed
+> in hardware in upcoming socs, so maybe this can be the last of those.
+> =
+
+> ----------------------------------------------------------------
+> Jeffy Chen (2):
+>       soc: rockchip: power-domain: use clk_bulk APIs
+>       soc: rockchip: power-domain: Add a sanity check on pd->num_clks
+> =
+
+> Shawn Lin (1):
+>       soc: rockchip: disable jtag switching for RK3228/RK3229 SoCs
+> =
+
+> Xiao Yao (1):
+>       soc: rockchip: disable jtag switching for RK3128 SoCs
+> =
+
+>  drivers/soc/rockchip/grf.c        | 28 ++++++++++++
+>  drivers/soc/rockchip/pm_domains.c | 95
+> +++++++++++++++++++-------------------- 2 files changed, 75 insertions(+),
+> 48 deletions(-)
