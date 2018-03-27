@@ -1,62 +1,44 @@
-From: Daniel Thompson <daniel.thompson@linaro.org>
-Subject: Re: [PATCH v6 1/5] pwm-backlight: enable/disable the PWM
- before/after LCD enable toggle.
-Date: Mon, 26 Mar 2018 16:18:05 +0100
-Message-ID: <20180326151805.dzqqar36npmwzpdr@holly.lan>
-References: <20180326095213.18362-1-enric.balletbo@collabora.com>
- <20180326104205.GA12425@amd>
- <CAFqH_52fFLhuj6gkRNJsPozNfLSAKd0OpQKMjrdhqHRYU4xZ3Q@mail.gmail.com>
+From: Daniel Vetter <daniel.vetter@ffwll.ch>
+Subject: [PATCH 2/5] drm/rockchip: fixup comment for gem_free_object_unlocked
+Date: Tue, 27 Mar 2018 10:23:53 +0200
+Message-ID: <20180327082356.24516-2-daniel.vetter@ffwll.ch>
+References: <20180327082356.24516-1-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAFqH_52fFLhuj6gkRNJsPozNfLSAKd0OpQKMjrdhqHRYU4xZ3Q@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Pavel Machek <pavel@ucw.cz>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-fbdev@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, Guenter Roeck <groeck@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-leds@vger.kernel.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, kernel@collabora.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180327082356.24516-1-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: DRI Development <dri-devel@lists.freedesktop.org>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 26, 2018 at 04:40:21PM +0200, Enric Balletbo Serra wrote:
-> Hi Pavel,
-> 
-> 2018-03-26 12:42 GMT+02:00 Pavel Machek <pavel@ucw.cz>:
-> > On Mon 2018-03-26 11:52:09, Enric Balletbo i Serra wrote:
-> >> Before this patch the enable signal was set before the PWM signal and
-> >> vice-versa on power off. This sequence is wrong, at least, it is on
-> >> the different panels datasheets that I checked, so I inverted the sequence
-> >> to follow the specs.
-> >>
-> >> For reference the following panels have the mentioned sequence:
-> >>   - N133HSE-EA1 (Innolux)
-> >>   - N116BGE (Innolux)
-> >>   - N156BGE-L21 (Innolux)
-> >>   - B101EAN0 (Auo)
-> >>   - B101AW03 (Auo)
-> >>   - LTN101NT05 (Samsung)
-> >>   - CLAA101WA01A (Chunghwa)
-> >
-> > Ok, but this changes behaviour for other panels, too. Are you sure you
-> > are not breaking one of those?
-> 
-> I can't say that I am 100% sure because I didn't find all the
-> datasheets of all the panels supported in the kernel. But all the
-> datasheets I checked specifies this sequence as valid. In general I
-> think that doesn't really matter, but I know that at least the
-> B116XTN02 panel requires enable first the PWM, wait 10ms and then
-> enable BL_EN to avoid garbage. So the other way around is not valid
-> for this panel. That's the reason for this patchset.
-
-This is certainly a patch that could cause regressions... but it would
-be a very odd panel that *likes* to be exposed to all the weird edges
-that might occur whilst the PWM stablizes and a panel that *needs* to
-see weird edges to work seems even less likely (since it could act
-different with each SoC).
-
-So whilst the patch is not absolutely cast iron guaranteed free of
-risk, I think it is well enough argued for.
-
-Naturally I may change my position *very* quickly on receipt of the
-first bug report ;-)
-
-
-Daniel.
+SnVzdCB3YW50IHRvIGNsZWFuIG91dCBhbGwgZ3JlcCBoaXRzLiBnZW1fZnJlZV9vYmplY3QgaXMg
+ZGVwcmVjYXRlZC4KClNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJA
+aW50ZWwuY29tPgpDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KQ2M6ICJIZWlr
+byBTdMO8Ym5lciIgPGhlaWtvQHNudGVjaC5kZT4KQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0K
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCA0ICsrLS0KIDEg
+ZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKaW5kZXggMDc0ZGI3YTkyODA5Li5h
+OGRiNzU4ZDUyM2UgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
+ZW0uYwpAQCAtMzU3LDggKzM1Nyw4IEBAIHJvY2tjaGlwX2dlbV9jcmVhdGVfb2JqZWN0KHN0cnVj
+dCBkcm1fZGV2aWNlICpkcm0sIHVuc2lnbmVkIGludCBzaXplLAogfQogCiAvKgotICogcm9ja2No
+aXBfZ2VtX2ZyZWVfb2JqZWN0IC0gKHN0cnVjdCBkcm1fZHJpdmVyKS0+Z2VtX2ZyZWVfb2JqZWN0
+IGNhbGxiYWNrCi0gKiBmdW5jdGlvbgorICogcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0IC0gKHN0
+cnVjdCBkcm1fZHJpdmVyKS0+Z2VtX2ZyZWVfb2JqZWN0X3VubG9ja2VkCisgKiBjYWxsYmFjayBm
+dW5jdGlvbgogICovCiB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX29iamVjdChzdHJ1Y3QgZHJtX2dl
+bV9vYmplY3QgKm9iaikKIHsKLS0gCjIuMTYuMgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
