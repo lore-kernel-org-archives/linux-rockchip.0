@@ -1,44 +1,48 @@
-From: Daniel Vetter <daniel.vetter@ffwll.ch>
-Subject: [PATCH 2/5] drm/rockchip: fixup comment for gem_free_object_unlocked
-Date: Tue, 27 Mar 2018 10:23:53 +0200
-Message-ID: <20180327082356.24516-2-daniel.vetter@ffwll.ch>
-References: <20180327082356.24516-1-daniel.vetter@ffwll.ch>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v6 2/5] dt-bindings: pwm-backlight: add PWM delay
+ proprieties.
+Date: Tue, 27 Mar 2018 10:08:27 -0500
+Message-ID: <20180327150827.i7b4urmjrf2mqj3t@rob-hp-laptop>
+References: <20180326095213.18362-1-enric.balletbo@collabora.com>
+ <20180326095213.18362-2-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180327082356.24516-1-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: DRI Development <dri-devel@lists.freedesktop.org>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180326095213.18362-2-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SnVzdCB3YW50IHRvIGNsZWFuIG91dCBhbGwgZ3JlcCBoaXRzLiBnZW1fZnJlZV9vYmplY3QgaXMg
-ZGVwcmVjYXRlZC4KClNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJA
-aW50ZWwuY29tPgpDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KQ2M6ICJIZWlr
-byBTdMO8Ym5lciIgPGhlaWtvQHNudGVjaC5kZT4KQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0K
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCA0ICsrLS0KIDEg
-ZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKaW5kZXggMDc0ZGI3YTkyODA5Li5h
-OGRiNzU4ZDUyM2UgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
-ZW0uYwpAQCAtMzU3LDggKzM1Nyw4IEBAIHJvY2tjaGlwX2dlbV9jcmVhdGVfb2JqZWN0KHN0cnVj
-dCBkcm1fZGV2aWNlICpkcm0sIHVuc2lnbmVkIGludCBzaXplLAogfQogCiAvKgotICogcm9ja2No
-aXBfZ2VtX2ZyZWVfb2JqZWN0IC0gKHN0cnVjdCBkcm1fZHJpdmVyKS0+Z2VtX2ZyZWVfb2JqZWN0
-IGNhbGxiYWNrCi0gKiBmdW5jdGlvbgorICogcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0IC0gKHN0
-cnVjdCBkcm1fZHJpdmVyKS0+Z2VtX2ZyZWVfb2JqZWN0X3VubG9ja2VkCisgKiBjYWxsYmFjayBm
-dW5jdGlvbgogICovCiB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX29iamVjdChzdHJ1Y3QgZHJtX2dl
-bV9vYmplY3QgKm9iaikKIHsKLS0gCjIuMTYuMgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+On Mon, Mar 26, 2018 at 11:52:10AM +0200, Enric Balletbo i Serra wrote:
+> Hardware needs a delay between setting an initial (non-zero) PWM and
+> enabling the backlight using GPIO. The post-pwm-on-delay-ms specifies
+> this delay in milli seconds. Hardware also needs a delay between disabing
+> the backlight using GPIO and setting PWM value to 0. The pwm-off-delay-ms
+> is this delay in milli seconds.
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Acked-by: Pavel Machek <pavel@ucw.cz>
+> Acked-by: Thierry Reding <thierry.reding@gmail.com>
+> ---
+> Based on the original Huang Lin <hl@rock-chips.com> work.
+> Changes since v5:
+>  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
+>  - CC DT mainling list (for some reason dropped at some point, my
+>    fault)
+> Changes since v4:
+>  - Rebase on top of mainline.
+> Changes since v3:
+>  - Replace us for ms.
+>  - Add Acked-by: Pavel Machek <pavel@ucw.cz>
+> Changes since v2:
+>  - Use separate properties (Rob Herring)
+> Changes since v1:
+>  - As suggested by Daniel Thompson
+>    - Do not assume power-on delay and power-off delay will be the same
+> ---
+>  Documentation/devicetree/bindings/leds/backlight/pwm-backlight.txt | 6 ++++++
+>  1 file changed, 6 insertions(+)
+
+Reviewed-by: Rob Herring <robh@kernel.org> 
