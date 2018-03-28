@@ -1,54 +1,47 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH 2/5] drm/rockchip: fixup comment for
- gem_free_object_unlocked
-Date: Wed, 28 Mar 2018 10:02:10 -0400
-Message-ID: <20180328140210.GB41885@art_vandelay>
-References: <20180327082356.24516-1-daniel.vetter@ffwll.ch>
- <20180327082356.24516-2-daniel.vetter@ffwll.ch>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL RESEND 2/4] Rockchip soc32 changes for 4.17
+Date: Wed, 28 Mar 2018 17:08:45 +0200
+Message-ID: <4643567.9MCT7BxVJK@diego>
+References: <12470502.BUvxkRrZk8@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20180327082356.24516-2-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <12470502.BUvxkRrZk8@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBNYXIgMjcsIDIwMTggYXQgMTA6MjM6NTNBTSArMDIwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKPiBKdXN0IHdhbnQgdG8gY2xlYW4gb3V0IGFsbCBncmVwIGhpdHMuIGdlbV9mcmVlX29i
-amVjdCBpcyBkZXByZWNhdGVkLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRh
-bmllbC52ZXR0ZXJAaW50ZWwuY29tPgoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxA
-Y2hyb21pdW0ub3JnPgoKPiBDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPiBD
-YzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBsaW51eC1hcm0ta2Vy
-bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jIHwgNCArKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRp
-b25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5j
-Cj4gaW5kZXggMDc0ZGI3YTkyODA5Li5hOGRiNzU4ZDUyM2UgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiBAQCAtMzU3LDggKzM1Nyw4IEBAIHJv
-Y2tjaGlwX2dlbV9jcmVhdGVfb2JqZWN0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHVuc2lnbmVk
-IGludCBzaXplLAo+ICB9Cj4gIAo+ICAvKgo+IC0gKiByb2NrY2hpcF9nZW1fZnJlZV9vYmplY3Qg
-LSAoc3RydWN0IGRybV9kcml2ZXIpLT5nZW1fZnJlZV9vYmplY3QgY2FsbGJhY2sKPiAtICogZnVu
-Y3Rpb24KPiArICogcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0IC0gKHN0cnVjdCBkcm1fZHJpdmVy
-KS0+Z2VtX2ZyZWVfb2JqZWN0X3VubG9ja2VkCj4gKyAqIGNhbGxiYWNrIGZ1bmN0aW9uCj4gICAq
-Lwo+ICB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX29iamVjdChzdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
-Km9iaikKPiAgewo+IC0tIAo+IDIuMTYuMgo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCj4gbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QK
-PiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKCi0tIApTZWFuIFBh
-dWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
+
+  Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/
+v4.17-rockchip-soc32-1
+
+for you to fetch changes up to 03151b8989257bfcee6cfd5f06d9a4a06b781cf3:
+
+  ARM: rockchip: Set name of pmu regmap_config in smp code (2018-03-12 
+11:09:36 +0100)
+
+----------------------------------------------------------------
+Fix for the legacy pmu-regmap in the smp-code to have a real name
+and therefore not create a dummy* entry in debugfs.
+
+----------------------------------------------------------------
+Jeffy Chen (1):
+      ARM: rockchip: Set name of pmu regmap_config in smp code
+
+ arch/arm/mach-rockchip/platsmp.c | 1 +
+ 1 file changed, 1 insertion(+)
