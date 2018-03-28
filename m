@@ -1,95 +1,64 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [GIT PULL 1/4] Rockchip driver changes for 4.17
-Date: Tue, 27 Mar 2018 19:50:18 +0200
-Message-ID: <2730470.Dx7LZZSCZ1@diego>
-References: <12470502.BUvxkRrZk8@phil>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v6 1/5] pwm-backlight: enable/disable the PWM
+ before/after LCD enable toggle.
+Date: Wed, 28 Mar 2018 12:12:09 +0100
+Message-ID: <20180328111209.qnce2tkisy5txbhj@dell>
+References: <20180326095213.18362-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <12470502.BUvxkRrZk8@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180326095213.18362-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd,
+On Mon, 26 Mar 2018, Enric Balletbo i Serra wrote:
 
-Am Donnerstag, 15. M=E4rz 2018, 23:20:53 CEST schrieb Heiko Stuebner:
-> Hi Arnd, Kevin, Olof,
-> =
+> Before this patch the enable signal was set before the PWM signal and
+> vice-versa on power off. This sequence is wrong, at least, it is on
+> the different panels datasheets that I checked, so I inverted the sequence
+> to follow the specs.
+> 
+> For reference the following panels have the mentioned sequence:
+>   - N133HSE-EA1 (Innolux)
+>   - N116BGE (Innolux)
+>   - N156BGE-L21 (Innolux)
+>   - B101EAN0 (Auo)
+>   - B101AW03 (Auo)
+>   - LTN101NT05 (Samsung)
+>   - CLAA101WA01A (Chunghwa)
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+> Acked-by: Jingoo Han <jingoohan1@gmail.com>
+> Acked-by: Thierry Reding <thierry.reding@gmail.com>
+> ---
+> Changes since v5:
+>  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
+> Changes since v4:
+>  - Rebase on top of mainline.
+>  - Add the acks from Daniel Thompson and Jingoo Han.
+> Changes since v3:
+>  - List the part numbers for the panel checked (Daniel Thompson)
+> Changes since v2:
+>  - Add this as a separate patch (Thierry Reding)
+> Changes since v1:
+>  - None
+> ---
+>  drivers/video/backlight/pwm_bl.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
 
-> please find below the main Rockchip-related changes for 4.17.
-> The individual tags should explain things nicely but overall it's a pretty
-> standard set of changes without anything special standing out.
-> =
+Enric,
 
-> So if things look ok, please pull!
-> =
+Please collect all of your Acks and submit a RESEND.
 
-> Thanks
-> Heiko
+I will then apply the set.
 
-As requested a ping on the seemingly missed pull requests. (4 pieces)
-
-Thanks for considering
-Heiko
-
-> =
-
-> =
-
-> The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1=
-b2:
-> =
-
->   Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
-> =
-
-> are available in the Git repository at:
-> =
-
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-> tags/v4.17-rockchip-drivers-1
-> =
-
-> for you to fetch changes up to b1271993aa3855bda5073c6061a095fd6e6febc6:
-> =
-
->   soc: rockchip: power-domain: Add a sanity check on pd->num_clks
-> (2018-03-05 19:42:29 +0100)
-> =
-
-> ----------------------------------------------------------------
-> Rockchip soc drivers containing conversion of the power-domain driver
-> to use the clk-bulk APIs and two more socs to disable jtag-switching.
-> On the plus-side the issue we see with that are _supposed_ to be fixed
-> in hardware in upcoming socs, so maybe this can be the last of those.
-> =
-
-> ----------------------------------------------------------------
-> Jeffy Chen (2):
->       soc: rockchip: power-domain: use clk_bulk APIs
->       soc: rockchip: power-domain: Add a sanity check on pd->num_clks
-> =
-
-> Shawn Lin (1):
->       soc: rockchip: disable jtag switching for RK3228/RK3229 SoCs
-> =
-
-> Xiao Yao (1):
->       soc: rockchip: disable jtag switching for RK3128 SoCs
-> =
-
->  drivers/soc/rockchip/grf.c        | 28 ++++++++++++
->  drivers/soc/rockchip/pm_domains.c | 95
-> +++++++++++++++++++-------------------- 2 files changed, 75 insertions(+),
-> 48 deletions(-)
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
