@@ -1,64 +1,54 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v6 1/5] pwm-backlight: enable/disable the PWM
- before/after LCD enable toggle.
-Date: Wed, 28 Mar 2018 12:12:09 +0100
-Message-ID: <20180328111209.qnce2tkisy5txbhj@dell>
-References: <20180326095213.18362-1-enric.balletbo@collabora.com>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH 2/5] drm/rockchip: fixup comment for
+ gem_free_object_unlocked
+Date: Wed, 28 Mar 2018 10:02:10 -0400
+Message-ID: <20180328140210.GB41885@art_vandelay>
+References: <20180327082356.24516-1-daniel.vetter@ffwll.ch>
+ <20180327082356.24516-2-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20180326095213.18362-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
+In-Reply-To: <20180327082356.24516-2-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 26 Mar 2018, Enric Balletbo i Serra wrote:
-
-> Before this patch the enable signal was set before the PWM signal and
-> vice-versa on power off. This sequence is wrong, at least, it is on
-> the different panels datasheets that I checked, so I inverted the sequence
-> to follow the specs.
-> 
-> For reference the following panels have the mentioned sequence:
->   - N133HSE-EA1 (Innolux)
->   - N116BGE (Innolux)
->   - N156BGE-L21 (Innolux)
->   - B101EAN0 (Auo)
->   - B101AW03 (Auo)
->   - LTN101NT05 (Samsung)
->   - CLAA101WA01A (Chunghwa)
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-> Acked-by: Jingoo Han <jingoohan1@gmail.com>
-> Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> ---
-> Changes since v5:
->  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> Changes since v4:
->  - Rebase on top of mainline.
->  - Add the acks from Daniel Thompson and Jingoo Han.
-> Changes since v3:
->  - List the part numbers for the panel checked (Daniel Thompson)
-> Changes since v2:
->  - Add this as a separate patch (Thierry Reding)
-> Changes since v1:
->  - None
-> ---
->  drivers/video/backlight/pwm_bl.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-
-Enric,
-
-Please collect all of your Acks and submit a RESEND.
-
-I will then apply the set.
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+T24gVHVlLCBNYXIgMjcsIDIwMTggYXQgMTA6MjM6NTNBTSArMDIwMCwgRGFuaWVsIFZldHRlciB3
+cm90ZToKPiBKdXN0IHdhbnQgdG8gY2xlYW4gb3V0IGFsbCBncmVwIGhpdHMuIGdlbV9mcmVlX29i
+amVjdCBpcyBkZXByZWNhdGVkLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRh
+bmllbC52ZXR0ZXJAaW50ZWwuY29tPgoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxA
+Y2hyb21pdW0ub3JnPgoKPiBDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPiBD
+YzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBsaW51eC1hcm0ta2Vy
+bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
+bS5jIHwgNCArKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRp
+b25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5j
+Cj4gaW5kZXggMDc0ZGI3YTkyODA5Li5hOGRiNzU4ZDUyM2UgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiBAQCAtMzU3LDggKzM1Nyw4IEBAIHJv
+Y2tjaGlwX2dlbV9jcmVhdGVfb2JqZWN0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHVuc2lnbmVk
+IGludCBzaXplLAo+ICB9Cj4gIAo+ICAvKgo+IC0gKiByb2NrY2hpcF9nZW1fZnJlZV9vYmplY3Qg
+LSAoc3RydWN0IGRybV9kcml2ZXIpLT5nZW1fZnJlZV9vYmplY3QgY2FsbGJhY2sKPiAtICogZnVu
+Y3Rpb24KPiArICogcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0IC0gKHN0cnVjdCBkcm1fZHJpdmVy
+KS0+Z2VtX2ZyZWVfb2JqZWN0X3VubG9ja2VkCj4gKyAqIGNhbGxiYWNrIGZ1bmN0aW9uCj4gICAq
+Lwo+ICB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX29iamVjdChzdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
+Km9iaikKPiAgewo+IC0tIAo+IDIuMTYuMgo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCj4gbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QK
+PiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKCi0tIApTZWFuIFBh
+dWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
