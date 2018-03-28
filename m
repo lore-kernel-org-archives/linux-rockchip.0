@@ -1,13 +1,11 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL RESEND 4/4] Rockchip dts64 changes for 4.17
-Date: Wed, 28 Mar 2018 17:17:24 +0200
-Message-ID: <CAK8P3a1FDEcJov-O_fdP8r-6Q56pBb3b0T_-=P1HSeQXqF+R9A@mail.gmail.com>
-References: <12470502.BUvxkRrZk8@phil> <3276217.5UkD8yNFGY@diego>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH] drm/rockchip: fix VOP vblank race
+Date: Wed, 28 Mar 2018 17:03:51 +0100
+Message-ID: <20180328160351.23763-1-john@metanate.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3276217.5UkD8yNFGY@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,41 +15,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, Sandy Huang <hjc@rock-chips.com>, linux-arm-kernel@lists.infradead.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 28, 2018 at 5:09 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
->
->   Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
->
-> are available in the Git repository at:
->
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/
-> v4.17-rockchip-dts64-1
->
-> for you to fetch changes up to 3783f1eb8a8db3747e753c4aa972124e1309db4e:
->
->   arm64: dts: rockchip: remove keep-power-in-suspend from sdhci of rk3399-
-> sapphire (2018-03-13 13:01:03 +0100)
->
-> ----------------------------------------------------------------
-> The rk3399 gained support its Cadence displayport controller and some
-> minor additions like pins for 2ch i2s0 and the cif test clocks as well
-> as a default rate for ACLK_VIO that should be 400MHz according to the TRM.
->
-> The rk3328 got uart dmas fixed - a non-critical fix, as nobody was using
-> that so far.
->
-> New boards are the rk3328-based roc-rk3328-cc, the rk3368-based Lion-SOM
-> + baseborad from Theobroma Systems and a standalone variant of the Sapphire
-> board, as a lot of people where using that without the Exkavator baseboard.
->
-> Sapphire also saw a lot of small cleanups of things that are not part
-> of the actual Sapphire board, but the baseboard instead. The rk3399-puma
-> board got i2s and tsadc support and Gru got its DP node enabled.
+We have seen a case of a bad reference count for vblanks with the
+Rockchip VOP:
 
-Pulled into next/dt, thanks!
+	------------[ cut here ]------------
+	WARNING: CPU: 1 PID: 383 at drivers/gpu/drm/drm_irq.c:1198 drm_vblank_put+0x40/0xcc
+	Modules linked in: brcmfmac brcmutil
+	CPU: 1 PID: 383 Comm: kworker/u8:2 Not tainted 4.9.75-rt60 #1
+	Hardware name: Rockchip (Device Tree)
+	Workqueue: events_unbound flip_worker
+	Backtrace:
+	[<c010b7b0>] (dump_backtrace) from [<c010ba4c>] (show_stack+0x18/0x1c)
+	 r7:c0b1b13c r6:600b0013 r5:00000000 r4:c0b1b13c
+	[<c010ba34>] (show_stack) from [<c032d248>] (dump_stack+0x78/0x94)
+	[<c032d1d0>] (dump_stack) from [<c011e6e8>] (__warn+0xe4/0x104)
+	 r7:00000009 r6:c03cf26c r5:00000000 r4:00000000
+	[<c011e604>] (__warn) from [<c011e7c0>] (warn_slowpath_null+0x28/0x30)
+	 r9:eeb443a0 r8:eeb443c8 r7:ee8a5ec0 r6:ee8a5ec0 r5:edb47f00 r4:ee096200
+	[<c011e798>] (warn_slowpath_null) from [<c03cf26c>] (drm_vblank_put+0x40/0xcc)
+	[<c03cf22c>] (drm_vblank_put) from [<c03cf310>] (drm_crtc_vblank_put+0x18/0x1c)
+	 r5:edb47f00 r4:ee3c8a80
+	[<c03cf2f8>] (drm_crtc_vblank_put) from [<c03ef9b4>] (vop_fb_unref_worker+0x18/0x24)
+	[<c03ef99c>] (vop_fb_unref_worker) from [<c03df194>] (flip_worker+0x98/0xb4)
+	 r5:edb47f00 r4:eeb443a8
+	[<c03df0fc>] (flip_worker) from [<c0134808>] (process_one_work+0x1a8/0x2fc)
+	 r9:00000000 r8:ee807d00 r7:00000000 r6:ee809c00 r5:eeb443a8 r4:edfe5f80
+	[<c0134660>] (process_one_work) from [<c01358ec>] (worker_thread+0x2ac/0x458)
+	 r10:00000088 r9:edfe5f98 r8:ee809c2c r7:c0b04100 r6:ee809c00 r5:ee809c00
+	 r4:edfe5f80
+	[<c0135640>] (worker_thread) from [<c013a0bc>] (kthread+0xfc/0x10c)
+	 r10:00000000 r9:00000000 r8:c0135640 r7:edfe5f80 r6:00000000 r5:edf0e240
+	 r4:ee8a4000 r3:ed194e00
+	[<c0139fc0>] (kthread) from [<c0107cb8>] (ret_from_fork+0x14/0x3c)
+	 r8:00000000 r7:00000000 r6:00000000 r5:c0139fc0 r4:edf0e240
+	---[ end trace 0000000000000002 ]---
 
-        Arnd
+It seems that this is caused by unfortunate timing between
+vop_crtc_atomic_flush() and vop_handle_vblank() given the following
+ordering:
+
+	atomic_flush		handle_vblank
+	------------		-------------
+
+	drm_flip_work_queue
+	set_bit
+	     			if (test_and_clear_bit(...))
+	     				drm_flip_work_commit
+	drm_vblank_get
+
+This results in vop_fb_unref_worker (called as flip work) decrementing
+the vblank refcount before it has been incremented.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 6755a9eea4b2..d4e1400aedf3 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1017,9 +1017,9 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+ 			continue;
+ 
+ 		drm_framebuffer_get(old_plane_state->fb);
++		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
+ 		drm_flip_work_queue(&vop->fb_unref_work, old_plane_state->fb);
+ 		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
+-		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
+ 	}
+ }
+ 
+-- 
+2.16.3
