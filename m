@@ -1,13 +1,11 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL RESEND 2/4] Rockchip soc32 changes for 4.17
-Date: Wed, 28 Mar 2018 17:08:45 +0200
-Message-ID: <4643567.9MCT7BxVJK@diego>
-References: <12470502.BUvxkRrZk8@phil>
+Subject: [GIT PULL RESEND 1/4] Rockchip driver changes for 4.17
+Date: Wed, 28 Mar 2018 17:08:35 +0200
+Message-ID: <11988780.dXTO0OjEMk@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <12470502.BUvxkRrZk8@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,6 +19,18 @@ To: arm@kernel.org
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Arnd, Kevin, Olof,
+
+please find below the main Rockchip-related changes for 4.17.
+The individual tags should explain things nicely but overall it's a pretty
+standard set of changes without anything special standing out.
+
+So if things look ok, please pull!
+
+Thanks
+Heiko
+
+
 The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
 
   Linux 4.16-rc1 (2018-02-11 15:04:29 -0800)
@@ -28,20 +38,31 @@ The following changes since commit 7928b2cbe55b2a410a0f5c1f154610059c57b1b2:
 are available in the Git repository at:
 
   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/
-v4.17-rockchip-soc32-1
+v4.17-rockchip-drivers-1
 
-for you to fetch changes up to 03151b8989257bfcee6cfd5f06d9a4a06b781cf3:
+for you to fetch changes up to b1271993aa3855bda5073c6061a095fd6e6febc6:
 
-  ARM: rockchip: Set name of pmu regmap_config in smp code (2018-03-12 
-11:09:36 +0100)
-
-----------------------------------------------------------------
-Fix for the legacy pmu-regmap in the smp-code to have a real name
-and therefore not create a dummy* entry in debugfs.
+  soc: rockchip: power-domain: Add a sanity check on pd->num_clks (2018-03-05 
+19:42:29 +0100)
 
 ----------------------------------------------------------------
-Jeffy Chen (1):
-      ARM: rockchip: Set name of pmu regmap_config in smp code
+Rockchip soc drivers containing conversion of the power-domain driver
+to use the clk-bulk APIs and two more socs to disable jtag-switching.
+On the plus-side the issue we see with that are _supposed_ to be fixed
+in hardware in upcoming socs, so maybe this can be the last of those.
 
- arch/arm/mach-rockchip/platsmp.c | 1 +
- 1 file changed, 1 insertion(+)
+----------------------------------------------------------------
+Jeffy Chen (2):
+      soc: rockchip: power-domain: use clk_bulk APIs
+      soc: rockchip: power-domain: Add a sanity check on pd->num_clks
+
+Shawn Lin (1):
+      soc: rockchip: disable jtag switching for RK3228/RK3229 SoCs
+
+Xiao Yao (1):
+      soc: rockchip: disable jtag switching for RK3128 SoCs
+
+ drivers/soc/rockchip/grf.c        | 28 ++++++++++++
+ drivers/soc/rockchip/pm_domains.c | 95 ++++++++++++++++++
++--------------------
+ 2 files changed, 75 insertions(+), 48 deletions(-)
