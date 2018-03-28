@@ -1,94 +1,79 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH] drm/rockchip: fix VOP vblank race
-Date: Wed, 28 Mar 2018 17:03:51 +0100
-Message-ID: <20180328160351.23763-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, Sandy Huang <hjc@rock-chips.com>, linux-arm-kernel@lists.infradead.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [RESEND PATCH v6 1/5] pwm-backlight: enable/disable the PWM before/after LCD enable toggle.
+Date: Wed, 28 Mar 2018 19:03:23 +0200
+Message-ID: <20180328170327.5395-1-enric.balletbo@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-We have seen a case of a bad reference count for vblanks with the
-Rockchip VOP:
+Before this patch the enable signal was set before the PWM signal and
+vice-versa on power off. This sequence is wrong, at least, it is on
+the different panels datasheets that I checked, so I inverted the sequence
+to follow the specs.
 
-	------------[ cut here ]------------
-	WARNING: CPU: 1 PID: 383 at drivers/gpu/drm/drm_irq.c:1198 drm_vblank_put+0x40/0xcc
-	Modules linked in: brcmfmac brcmutil
-	CPU: 1 PID: 383 Comm: kworker/u8:2 Not tainted 4.9.75-rt60 #1
-	Hardware name: Rockchip (Device Tree)
-	Workqueue: events_unbound flip_worker
-	Backtrace:
-	[<c010b7b0>] (dump_backtrace) from [<c010ba4c>] (show_stack+0x18/0x1c)
-	 r7:c0b1b13c r6:600b0013 r5:00000000 r4:c0b1b13c
-	[<c010ba34>] (show_stack) from [<c032d248>] (dump_stack+0x78/0x94)
-	[<c032d1d0>] (dump_stack) from [<c011e6e8>] (__warn+0xe4/0x104)
-	 r7:00000009 r6:c03cf26c r5:00000000 r4:00000000
-	[<c011e604>] (__warn) from [<c011e7c0>] (warn_slowpath_null+0x28/0x30)
-	 r9:eeb443a0 r8:eeb443c8 r7:ee8a5ec0 r6:ee8a5ec0 r5:edb47f00 r4:ee096200
-	[<c011e798>] (warn_slowpath_null) from [<c03cf26c>] (drm_vblank_put+0x40/0xcc)
-	[<c03cf22c>] (drm_vblank_put) from [<c03cf310>] (drm_crtc_vblank_put+0x18/0x1c)
-	 r5:edb47f00 r4:ee3c8a80
-	[<c03cf2f8>] (drm_crtc_vblank_put) from [<c03ef9b4>] (vop_fb_unref_worker+0x18/0x24)
-	[<c03ef99c>] (vop_fb_unref_worker) from [<c03df194>] (flip_worker+0x98/0xb4)
-	 r5:edb47f00 r4:eeb443a8
-	[<c03df0fc>] (flip_worker) from [<c0134808>] (process_one_work+0x1a8/0x2fc)
-	 r9:00000000 r8:ee807d00 r7:00000000 r6:ee809c00 r5:eeb443a8 r4:edfe5f80
-	[<c0134660>] (process_one_work) from [<c01358ec>] (worker_thread+0x2ac/0x458)
-	 r10:00000088 r9:edfe5f98 r8:ee809c2c r7:c0b04100 r6:ee809c00 r5:ee809c00
-	 r4:edfe5f80
-	[<c0135640>] (worker_thread) from [<c013a0bc>] (kthread+0xfc/0x10c)
-	 r10:00000000 r9:00000000 r8:c0135640 r7:edfe5f80 r6:00000000 r5:edf0e240
-	 r4:ee8a4000 r3:ed194e00
-	[<c0139fc0>] (kthread) from [<c0107cb8>] (ret_from_fork+0x14/0x3c)
-	 r8:00000000 r7:00000000 r6:00000000 r5:c0139fc0 r4:edf0e240
-	---[ end trace 0000000000000002 ]---
+For reference the following panels have the mentioned sequence:
+  - N133HSE-EA1 (Innolux)
+  - N116BGE (Innolux)
+  - N156BGE-L21 (Innolux)
+  - B101EAN0 (Auo)
+  - B101AW03 (Auo)
+  - LTN101NT05 (Samsung)
+  - CLAA101WA01A (Chunghwa)
 
-It seems that this is caused by unfortunate timing between
-vop_crtc_atomic_flush() and vop_handle_vblank() given the following
-ordering:
-
-	atomic_flush		handle_vblank
-	------------		-------------
-
-	drm_flip_work_queue
-	set_bit
-	     			if (test_and_clear_bit(...))
-	     				drm_flip_work_commit
-	drm_vblank_get
-
-This results in vop_fb_unref_worker (called as flip work) decrementing
-the vblank refcount before it has been incremented.
-
-Signed-off-by: John Keeping <john@metanate.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+Acked-by: Jingoo Han <jingoohan1@gmail.com>
+Acked-by: Thierry Reding <thierry.reding@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v5:
+ - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
+Changes since v4:
+ - Rebase on top of mainline.
+ - Add the acks from Daniel Thompson and Jingoo Han.
+Changes since v3:
+ - List the part numbers for the panel checked (Daniel Thompson)
+Changes since v2:
+ - Add this as a separate patch (Thierry Reding)
+Changes since v1:
+ - None
+---
+ drivers/video/backlight/pwm_bl.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 6755a9eea4b2..d4e1400aedf3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1017,9 +1017,9 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- 			continue;
+diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
+index 1c2289ddd555..698ec68bcdc9 100644
+--- a/drivers/video/backlight/pwm_bl.c
++++ b/drivers/video/backlight/pwm_bl.c
+@@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
+ 	if (err < 0)
+ 		dev_err(pb->dev, "failed to enable power supply\n");
  
- 		drm_framebuffer_get(old_plane_state->fb);
-+		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
- 		drm_flip_work_queue(&vop->fb_unref_work, old_plane_state->fb);
- 		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
--		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
- 	}
++	pwm_enable(pb->pwm);
++
+ 	if (pb->enable_gpio)
+ 		gpiod_set_value_cansleep(pb->enable_gpio, 1);
+ 
+-	pwm_enable(pb->pwm);
+ 	pb->enabled = true;
  }
  
+@@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
+ 	if (!pb->enabled)
+ 		return;
+ 
+-	pwm_config(pb->pwm, 0, pb->period);
+-	pwm_disable(pb->pwm);
+-
+ 	if (pb->enable_gpio)
+ 		gpiod_set_value_cansleep(pb->enable_gpio, 0);
+ 
++	pwm_config(pb->pwm, 0, pb->period);
++	pwm_disable(pb->pwm);
++
+ 	regulator_disable(pb->power_supply);
+ 	pb->enabled = false;
+ }
 -- 
-2.16.3
+2.16.2
