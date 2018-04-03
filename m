@@ -1,58 +1,43 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [RESEND PATCH v6 3/5] pwm-backlight: add support for PWM delays
- proprieties.
-Date: Tue, 3 Apr 2018 10:19:07 +0100
-Message-ID: <20180403091907.rfupwgx4ryy66ebu@dell>
-References: <20180328170327.5395-1-enric.balletbo@collabora.com>
- <20180328170327.5395-3-enric.balletbo@collabora.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v8 11/14] iommu/rockchip: Use OF_IOMMU to attach devices automatically
+Date: Tue, 03 Apr 2018 16:11:49 +0000
+Message-ID: <CAGS+omCN7cXY0APvFuL_wmZeXihivu4hF0+ZfLFffvdZyK9f6A@mail.gmail.com>
+References: <20180323073814.5802-1-jeffy.chen@rock-chips.com>
+ <20180323073814.5802-12-jeffy.chen@rock-chips.com> <CAGS+omDUve9DTMJY8FdWBBxQgCOACLYLsRuzmQzd3Fh7TeekDw@mail.gmail.com>
+ <5AB8A7F0.1090305@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180328170327.5395-3-enric.balletbo@collabora.com>
+In-Reply-To: <5AB8A7F0.1090305@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
+To: Jeffy <jeffy.chen@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, Robin Murphy <robin.murphy@arm.com>, xxm <xxm@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, open@263.net, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 28 Mar 2018, Enric Balletbo i Serra wrote:
+Hi Jeffy,
 
-> Some panels (i.e. N116BGE-L41), in their power sequence specifications,
-> request a delay between set the PWM signal and enable the backlight and
-> between clear the PWM signal and disable the backlight. Add support for
-> the new post-pwm-on-delay-ms and pwm-off-delay-ms proprieties to meet
-> the timings.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Pavel Machek <pavel@ucw.cz>
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-> Acked-by: Jingoo Han <jingoohan1@gmail.com>
-> Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> ---
-> Changes since v5:
->  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> Changes since v4:
->  - Rebased on top of mainline.
->  - Added the acks from Pavel Machek, Daniel thompson and Jingoo Han
-> Changes since v3:
->  - Use two named members instead of pwm_delay[] (Daniel and Pavel)
->  - Use msleep instead of usleep_range. (Pavel)
-> Changes since v2:
->  - Move the pwm/enable sequence to another patch (Thierry Reding)
-> Changes since v1:
->  - As suggested by Daniel Thompson
->    - Do not assume power-on delay and power-off delay will be the same
->  - Move the check of dt property to the parse dt function.
-> ---
->  drivers/video/backlight/pwm_bl.c | 19 +++++++++++++++++++
->  include/linux/pwm_backlight.h    |  2 ++
->  2 files changed, 21 insertions(+)
+Sorry for delayed response.
 
-Applied, thanks.
+On Mon, Mar 26, 2018 at 1:58 AM JeffyChen <jeffy.chen@rock-chips.com> wrote:
 
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+> Hi Daniel,
+
+> Thanks for your reply.
+
+> On 03/26/2018 02:31 PM, Daniel Kurtz wrote:
+> >> >+struct rk_iommudata {
+> >> >+       struct rk_iommu *iommu;
+> >> >+};
+> > Why do we need this struct?  Can't we just assign a pointer to struct
+> > rk_iommu directly to dev->archdata.iommu?
+> >
+> hmmm, i was trying to add more device related data in patch[13]:
+
+>    struct rk_iommudata {
+> +       struct device_link *link; /* runtime PM link from IOMMU to master
+*/
+>          struct rk_iommu *iommu;
+>    };
+> >
+
+Can't you just add link to rk_iommu directly?
