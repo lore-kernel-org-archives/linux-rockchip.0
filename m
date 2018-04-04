@@ -1,43 +1,64 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v8 11/14] iommu/rockchip: Use OF_IOMMU to attach devices automatically
-Date: Tue, 03 Apr 2018 16:11:49 +0000
-Message-ID: <CAGS+omCN7cXY0APvFuL_wmZeXihivu4hF0+ZfLFffvdZyK9f6A@mail.gmail.com>
-References: <20180323073814.5802-1-jeffy.chen@rock-chips.com>
- <20180323073814.5802-12-jeffy.chen@rock-chips.com> <CAGS+omDUve9DTMJY8FdWBBxQgCOACLYLsRuzmQzd3Fh7TeekDw@mail.gmail.com>
- <5AB8A7F0.1090305@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: [PATCH] iommu: rockchip: fix building without CONFIG_OF
+Date: Wed,  4 Apr 2018 12:23:53 +0200
+Message-ID: <20180404102401.3634085-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5AB8A7F0.1090305@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, Robin Murphy <robin.murphy@arm.com>, xxm <xxm@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, open@263.net, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+We get a build error when compiling the iommu driver without CONFIG_OF:
 
-Sorry for delayed response.
+drivers/iommu/rockchip-iommu.c: In function 'rk_iommu_of_xlate':
+drivers/iommu/rockchip-iommu.c:1101:2: error: implicit declaration of function 'of_dev_put'; did you mean 'of_node_put'? [-Werror=implicit-function-declaration]
 
-On Mon, Mar 26, 2018 at 1:58 AM JeffyChen <jeffy.chen@rock-chips.com> wrote:
+This replaces the of_dev_put() with the equivalent platform_device_put(),
+and adds an error check for of_find_device_by_node() returning NULL,
+which seems to be appropriate here given that we pass the device into
+platform_get_drvdata() next, and that of_find_device_by_node() might
+theoretically return a NULL pointer.
 
-> Hi Daniel,
+Fixes: 5fd577c3eac3 ("iommu/rockchip: Use OF_IOMMU to attach devices automatically")
+Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+---
+This warning appears to only have been introduced in linux-next after
+the merge window opened.
+---
+ drivers/iommu/rockchip-iommu.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-> Thanks for your reply.
-
-> On 03/26/2018 02:31 PM, Daniel Kurtz wrote:
-> >> >+struct rk_iommudata {
-> >> >+       struct rk_iommu *iommu;
-> >> >+};
-> > Why do we need this struct?  Can't we just assign a pointer to struct
-> > rk_iommu directly to dev->archdata.iommu?
-> >
-> hmmm, i was trying to add more device related data in patch[13]:
-
->    struct rk_iommudata {
-> +       struct device_link *link; /* runtime PM link from IOMMU to master
-*/
->          struct rk_iommu *iommu;
->    };
-> >
-
-Can't you just add link to rk_iommu directly?
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 5fc8656c60f9..fe9c9cc1a9d4 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1094,11 +1094,15 @@ static int rk_iommu_of_xlate(struct device *dev,
+ 		return -ENOMEM;
+ 
+ 	iommu_dev = of_find_device_by_node(args->np);
++	if (!iommu_dev) {
++		kfree(data);
++		return -ENODEV;
++	}
+ 
+ 	data->iommu = platform_get_drvdata(iommu_dev);
+ 	dev->archdata.iommu = data;
+ 
+-	of_dev_put(iommu_dev);
++	platform_device_put(iommu_dev);
+ 
+ 	return 0;
+ }
+-- 
+2.9.0
