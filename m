@@ -1,99 +1,62 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v6 12/30] drm/bridge: analogix_dp: Reset aux channel if an error occurred
-Date: Thu,  5 Apr 2018 11:49:42 +0200
-Message-ID: <20180405095000.9756-13-enric.balletbo@collabora.com>
-References: <20180405095000.9756-1-enric.balletbo@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] clk: divider: Add CLK_DIVIDER_EVEN flag support
+Date: Thu, 05 Apr 2018 15:30:07 +0200
+Message-ID: <3456608.qSAPWuSAs9@phil>
+References: <1522906699-127765-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180405095000.9756-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, dianders@chromium.org, a.hajda@samsung.com, ykk@rock-chips.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, linux-input@vger.kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com, kuankuan.y@gmail.com, hshi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1522906699-127765-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <xing.zheng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Lin Huang <hl@rock-chips.com>
+Hi Shawn,
 
-AUX errors are caused by many different reasons. We may not know what
-happened in aux channel on failure, so let's reset aux channel if some
-errors occurred.
+Am Donnerstag, 5. April 2018, 07:38:18 CEST schrieb Shawn Lin:
+> CLK_DIVIDER_EVEN is used for clock divders that should only
+> use even number in the div field.
+> 
+> Two clock divder should consider to use this flag
+> (1) The divder is physically only support even div number to
+> generate 50% duty cycle clock rate.
+> (2) The divder's clock consumer request it to use even div number
+> to generate the most closest requested rate for whatever reason.
+> 
+> In some platforms, for instance Rockchip, the eMMC/SDIO/SDMMC should
+> request divder to use even number when working at a high throughput
+> speed mode reliably. However, that wasn't guaranteed by clock framework.
+> So the previous tricky is to carefully assign magic clock rate to their
+> parents as well as consumer's clock rate when requesting. That works
+> bad in practice if folks change the parents clock rate or the clock
+> hierarchy randomly. That also work bad if the consumer's clock rate
+> came from the DT, which is changed so fraquent for different boards.
+> 
+> To make it's less prone to make mistake and to make it really respect
+> the fact that the divder should use even number to the div field, we
+> need the clock framework's help. Now we have CLK_DIVIDER_POWER_OF_TWO,
+> which could guarantee the div field is even number, however, obviously
+> it skips the even numbers which is the power of 2, but maybe which is
+> the best div to generate closest clock rate for consumer.
 
-Cc: 征增 王 <wzz@rock-chips.com>
-Cc: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Lin Huang <hl@rock-chips.com>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Reviewed-by: Archit Taneja <architt@codeaurora.org>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+I think there is a slight misunderstanding here, CLK_DIVIDER_POWER_OF_TWO
+means "2 raised to the value read from the hardware register", so describes
+a hardware property, while your CLK_DIVIDER_EVEN describes needed special
+handling due to some hardware necessity.
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+That is not meant to nack your change, but just to point out that you can
+also have CLK_DIVIDER_POWER_OF_TWO | CLK_DIVIDER_EVEN, which is
+relevant for the uneven 2^0 = 1 case and should be taken in to account.
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index dee1ba109b5f..7b7fd227e1f9 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -466,6 +466,10 @@ void analogix_dp_init_aux(struct analogix_dp_device *dp)
- 	reg = RPLY_RECEIV | AUX_ERR;
- 	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA);
- 
-+	analogix_dp_set_analog_power_down(dp, AUX_BLOCK, true);
-+	usleep_range(10, 11);
-+	analogix_dp_set_analog_power_down(dp, AUX_BLOCK, false);
-+
- 	analogix_dp_reset_aux(dp);
- 
- 	/* Disable AUX transaction H/W retry */
-@@ -1159,7 +1163,7 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 				 reg, !(reg & AUX_EN), 25, 500 * 1000);
- 	if (ret) {
- 		dev_err(dp->dev, "AUX CH enable timeout!\n");
--		return -ETIMEDOUT;
-+		goto aux_error;
- 	}
- 
- 	/* TODO: Wait for an interrupt instead of looping? */
-@@ -1168,7 +1172,7 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 				 reg, reg & RPLY_RECEIV, 10, 20 * 1000);
- 	if (ret) {
- 		dev_err(dp->dev, "AUX CH cmd reply timeout!\n");
--		return -ETIMEDOUT;
-+		goto aux_error;
- 	}
- 
- 	/* Clear interrupt source for AUX CH command reply */
-@@ -1178,7 +1182,7 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 	reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
- 	if (reg & AUX_ERR) {
- 		writel(AUX_ERR, dp->reg_base + ANALOGIX_DP_INT_STA);
--		return -EREMOTEIO;
-+		goto aux_error;
- 	}
- 
- 	/* Check AUX CH error access status */
-@@ -1186,7 +1190,7 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 	if ((reg & AUX_STATUS_MASK)) {
- 		dev_err(dp->dev, "AUX CH error happened: %d\n\n",
- 			reg & AUX_STATUS_MASK);
--		return -EREMOTEIO;
-+		goto aux_error;
- 	}
- 
- 	if (msg->request & DP_AUX_I2C_READ) {
-@@ -1212,4 +1216,10 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
- 		msg->reply = DP_AUX_NATIVE_REPLY_ACK;
- 
- 	return num_transferred > 0 ? num_transferred : -EBUSY;
-+
-+aux_error:
-+	/* if aux err happen, reset aux */
-+	analogix_dp_init_aux(dp);
-+
-+	return -EREMOTEIO;
- }
--- 
-2.16.3
+
+Heiko
