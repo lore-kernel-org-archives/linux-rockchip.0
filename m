@@ -1,275 +1,137 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 2/2] clk: rockchip: Add CLK_DIVIDER_EVEN for all mmc clock
- consumers
-Date: Thu,  5 Apr 2018 13:38:19 +0800
-Message-ID: <1522906699-127765-2-git-send-email-shawn.lin@rock-chips.com>
-References: <1522906699-127765-1-git-send-email-shawn.lin@rock-chips.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v6 00/30] DRM Rockchip rk3399 (Kevin)
+Date: Thu,  5 Apr 2018 11:49:30 +0200
+Message-ID: <20180405095000.9756-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1522906699-127765-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <xing.zheng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org, dianders@chromium.org, a.hajda@samsung.com, ykk@rock-chips.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, linux-input@vger.kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com, kuankuan.y@gmail.com, hshi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-For conventional Rockchip platforms, mmc hosts, except RK3399's
-eMMC controller, should ask their clock parents to provider the
-closest clock rate with a even div number. That wasn't done
-explicitly by the clock framework. but now we have CLK_DIVIDER_EVEN
-flag to help.
+Hi,
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+This patchset includes cleanups, improvements, and bug fixes for
+Rockchip DRM driver and PSR support.
 
- drivers/clk/rockchip/clk-rk3036.c |  7 ++++---
- drivers/clk/rockchip/clk-rk3128.c |  9 ++++++---
- drivers/clk/rockchip/clk-rk3188.c |  6 +++---
- drivers/clk/rockchip/clk-rk3228.c |  7 ++++---
- drivers/clk/rockchip/clk-rk3288.c | 12 ++++++++----
- drivers/clk/rockchip/clk-rk3328.c |  9 ++++++---
- drivers/clk/rockchip/clk-rk3368.c |  9 ++++++---
- drivers/clk/rockchip/clk-rk3399.c |  6 ++++--
- drivers/clk/rockchip/clk-rv1108.c |  7 ++++---
- 9 files changed, 45 insertions(+), 27 deletions(-)
+This new version is the same as before removing some of the patches
+already applied and fixing the Exynos issue due patch '[v4 15/38]
+drm/bridge: analogix_dp: Ensure edp is disabled when shutting down
+the panel' reported by Marek.
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index c300198..155fd4f 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -290,16 +290,17 @@ enum rk3036_plls {
- 			RK2928_CLKSEL_CON(12), 8, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 	DIV(SCLK_SDMMC, "sclk_sdmmc", "sclk_sdmmc_src", 0,
--			RK2928_CLKSEL_CON(11), 0, 7, DFLAGS),
-+			RK2928_CLKSEL_CON(11), 0, 7, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE_NODIV(0, "sclk_sdio_src", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(12), 10, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
--			RK2928_CLKSEL_CON(11), 8, 7, DFLAGS),
-+			RK2928_CLKSEL_CON(11), 8, 7, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 12, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 12, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,    "sdmmc_drv",    "sclk_sdmmc", RK3036_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index 5970a50..7c6e30a 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -324,15 +324,18 @@ enum rk3128_plls {
- 			RK2928_CLKGATE_CON(2), 15, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc0", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDIO, "sclk_sdio", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 
- 	DIV(SCLK_PVTM, "clk_pvtm", "clk_pvtm_func", 0,
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 67e73fd..32f199d 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -402,13 +402,13 @@ enum rk3188_plls {
- 			RK2928_CLKGATE_CON(2), 10, GFLAGS),
- 
- 	COMPOSITE_NOMUX(SCLK_SDMMC, "sclk_sdmmc", "hclk_peri", 0,
--			RK2928_CLKSEL_CON(11), 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(11), 0, 6, DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 	COMPOSITE_NOMUX(SCLK_SDIO, "sclk_sdio", "hclk_peri", 0,
--			RK2928_CLKSEL_CON(12), 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 0, 6, DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	COMPOSITE_NOMUX(SCLK_EMMC, "sclk_emmc", "hclk_peri", 0,
--			RK2928_CLKSEL_CON(12), 8, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 8, 6, DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 
- 	MUX(0, "uart_src", mux_pll_src_gpll_cpll_p, 0,
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 7af4818..15da16a 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -388,20 +388,21 @@ enum rk3228_plls {
- 			RK2928_CLKGATE_CON(2), 15, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(11), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK2928_CLKSEL_CON(11), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 
- 	COMPOSITE_NODIV(SCLK_SDIO_SRC, "sclk_sdio_src", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(11), 10, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
--			RK2928_CLKSEL_CON(12), 0, 8, DFLAGS),
-+			RK2928_CLKSEL_CON(12), 0, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE_NODIV(0, "sclk_emmc_src", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(11), 12, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 	DIV(SCLK_EMMC, "sclk_emmc", "sclk_emmc_src", 0,
--			RK2928_CLKSEL_CON(12), 8, 8, DFLAGS),
-+			RK2928_CLKSEL_CON(12), 8, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	/*
- 	 * Clock-Architecture Diagram 2
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 450de24..2a6f231 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -508,16 +508,20 @@ enum rk3288_plls {
- 			RK3288_CLKGATE_CON(2), 11, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 0, GFLAGS),
- 	COMPOSITE(SCLK_SDIO0, "sclk_sdio0", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 1, GFLAGS),
- 	COMPOSITE(SCLK_SDIO1, "sclk_sdio1", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(34), 14, 2, MFLAGS, 8, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(34), 14, 2, MFLAGS, 8, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 2, GFLAGS),
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 3, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,    "sdmmc_drv",    "sclk_sdmmc", RK3288_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
-index 252366a..f81acf8 100644
---- a/drivers/clk/rockchip/clk-rk3328.c
-+++ b/drivers/clk/rockchip/clk-rk3328.c
-@@ -632,15 +632,18 @@ enum rk3328_plls {
- 			RK3328_CLKGATE_CON(4), 3, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDIO, "clk_sdio", mux_2plls_24m_u480m_p, 0,
--			RK3328_CLKSEL_CON(31), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK3328_CLKSEL_CON(31), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3328_CLKGATE_CON(4), 4, GFLAGS),
- 
- 	COMPOSITE(SCLK_EMMC, "clk_emmc", mux_2plls_24m_u480m_p, 0,
--			RK3328_CLKSEL_CON(32), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK3328_CLKSEL_CON(32), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3328_CLKGATE_CON(4), 5, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC_EXT, "clk_sdmmc_ext", mux_2plls_24m_u480m_p, 0,
--			RK3328_CLKSEL_CON(43), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK3328_CLKSEL_CON(43), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3328_CLKGATE_CON(4), 10, GFLAGS),
- 
- 	COMPOSITE(SCLK_REF_USB3OTG_SRC, "clk_ref_usb3otg_src", mux_2plls_p, 0,
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 7c4d242..17a6293 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -550,13 +550,16 @@ enum rk3368_plls {
- 
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RK3368_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK3368_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3368_CLKGATE_CON(7), 12, GFLAGS),
- 	COMPOSITE(SCLK_SDIO0, "sclk_sdio0", mux_mmc_src_p, 0,
--			RK3368_CLKSEL_CON(48), 8, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK3368_CLKSEL_CON(48), 8, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3368_CLKGATE_CON(7), 13, GFLAGS),
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK3368_CLKSEL_CON(51), 8, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK3368_CLKSEL_CON(51), 8, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3368_CLKGATE_CON(7), 15, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,    "sdmmc_drv",    "sclk_sdmmc", RK3368_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 118759d..aedb3d0 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -896,11 +896,13 @@ enum rk3399_pmu_plls {
- 			RK3399_CLKGATE_CON(33), 9, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDIO, "clk_sdio", mux_pll_src_cpll_gpll_npll_ppll_upll_24m_p, 0,
--			RK3399_CLKSEL_CON(15), 8, 3, MFLAGS, 0, 7, DFLAGS,
-+			RK3399_CLKSEL_CON(15), 8, 3, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3399_CLKGATE_CON(6), 0, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "clk_sdmmc", mux_pll_src_cpll_gpll_npll_ppll_upll_24m_p, 0,
--			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7, DFLAGS,
-+			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3399_CLKGATE_CON(6), 1, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rv1108.c b/drivers/clk/rockchip/clk-rv1108.c
-index 089cb17..b63af26 100644
---- a/drivers/clk/rockchip/clk-rv1108.c
-+++ b/drivers/clk/rockchip/clk-rv1108.c
-@@ -721,20 +721,21 @@ enum rv1108_plls {
- 			RV1108_CLKGATE_CON(15), 11, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RV1108_CLKSEL_CON(25), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RV1108_CLKSEL_CON(25), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RV1108_CLKGATE_CON(5), 0, GFLAGS),
- 
- 	COMPOSITE_NODIV(0, "sclk_sdio_src", mux_mmc_src_p, 0,
- 			RV1108_CLKSEL_CON(25), 10, 2, MFLAGS,
- 			RV1108_CLKGATE_CON(5), 2, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
--			RV1108_CLKSEL_CON(26), 0, 8, DFLAGS),
-+			RV1108_CLKSEL_CON(26), 0, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE_NODIV(0, "sclk_emmc_src", mux_mmc_src_p, 0,
- 			RV1108_CLKSEL_CON(25), 12, 2, MFLAGS,
- 			RV1108_CLKGATE_CON(5), 1, GFLAGS),
- 	DIV(SCLK_EMMC, "sclk_emmc", "sclk_emmc_src", 0,
--			RK2928_CLKSEL_CON(26), 8, 8, DFLAGS),
-+			RK2928_CLKSEL_CON(26), 8, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 	GATE(HCLK_SDMMC, "hclk_sdmmc", "hclk_periph", 0, RV1108_CLKGATE_CON(15), 0, GFLAGS),
- 	GATE(HCLK_SDIO, "hclk_sdio", "hclk_periph", 0, RV1108_CLKGATE_CON(15), 1, GFLAGS),
- 	GATE(HCLK_EMMC, "hclk_emmc", "hclk_periph", 0, RV1108_CLKGATE_CON(15), 2, GFLAGS),
+Regards,
+Enric
+
+Changes in v6:
+- Removed the following patches as are already applied.
+  [PATCH v5 01/36] drm/bridge: analogix_dp: detect Sink PSR state after
+  configuring the PSR
+  [PATCH v5 02/36] drm/rockchip: Remove analogix psr worker
+  [PATCH v5 03/36] drm/bridge: analogix_dp: Don't change psr while
+  bridge is disabled
+- Explain in the commit message why we need to increase
+  the delay in the timeout loop in
+  [PATCH v5 07/36] drm/bridge: analogix_dp: Move enable video into
+  config_video()
+- Add Reviewed-by: Archit Taneja <architt@codeaurora.org> for the
+  drm/bridge parts
+- Add Reviewed-by: Heiko Stuebner <heiko@sntech.de> for
+  [PATCH v5 19/36] drm/rockchip: Restore psr->state when enable/disable
+  psr failed
+
+Changes in v5:
+- Removed the following patches as are already applied.
+  [PATCH v4 01/38] drm/bridge: analogix_dp: set psr activate/deactivate
+  when enable/disable bridge
+  [PATCH v4 02/38] drm/rockchip: Don't use atomic constructs for psr
+- Add Mareks tested-tag and including the missing people.
+- [PATCH v4 15/38] move analogix_dp_set_analog_power_down() before
+  phy_power_off() to fix Exynos issue.
+
+Changes in v4:
+- Rebased all on top of drm-misc-next
+- Removed the following patches as are already applied.
+  [PATCH v3 01/43] drm/rockchip: Get rid of unnecessary struct fields
+  [PATCH v3 02/43] drm/rockchip: support prime import sg table
+  [PATCH v3 03/43] drm/rockchip: Respect page offset for PRIME mmap
+  calls
+- Removed the following patches as now are part of another patchset
+  [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
+  analogix_dp_bind
+  [PATCH v3 33/43] drm/panel: simple: Change mode for Sharp lq123p1jx31
+
+Changes in v3:
+- Addressed some of the comments from Sean on the v2
+
+Changes in v2:
+- A few patches have been replaced by newer and cleaner versions from
+  the ChromeOS kernel gerrit, especially about disallowing PSR for the
+  whole atomic commit.
+
+
+Douglas Anderson (4):
+  drm/bridge: analogix_dp: Reorder plat_data->power_off to happen sooner
+  drm/bridge: analogix_dp: Properly log AUX CH errors
+  drm/bridge: analogix_dp: Properly disable aux chan retries on rockchip
+  drm/bridge: analogix_dp: Split the platform-specific poweron in two
+    parts
+
+Kristian H. Kristensen (1):
+  drm/rockchip: Disable PSR on input events
+
+Lin Huang (6):
+  drm/bridge: analogix_dp: Move enable video into config_video()
+  drm/bridge: analogix_dp: Check AUX_EN status when doing AUX transfer
+  drm/bridge: analogix_dp: Ensure edp is disabled when shutting down the
+    panel
+  drm/bridge: analogix_dp: Extend hpd check time to 100ms
+  drm/bridge: analogix_dp: Check dpcd write/read status
+  drm/bridge: analogix_dp: Reset aux channel if an error occurred
+
+Mark Yao (1):
+  drm/rockchip: pre dither down when output bpc is 8bit
+
+Tomasz Figa (7):
+  drm/rockchip: analogix_dp: Do not call Analogix code before bind
+  drm/rockchip: Cancel PSR enable work before changing the state
+  drm/rockchip: psr: Avoid redundant calls to .set() callback
+  drm/rockchip: psr: Sanitize semantics of allow/disallow API
+  drm/rockchip: Disable PSR from reboot notifier
+  drm/rockchip: Disallow PSR for the whole atomic commit
+  drm/rockchip: psr: Remove flush by CRTC
+
+zain wang (11):
+  drm/bridge: analogix_dp: Don't use fast link training when panel just
+    powered up
+  drm/bridge: analogix_dp: Retry bridge enable when it failed
+  drm/bridge: analogix_dp: Wait for HPD signal before configuring link
+  drm/bridge: analogix_dp: Set PD_INC_BG first when powering up edp phy
+  drm/bridge: analogix_dp: Fix incorrect usage of enhanced mode
+  drm/bridge: analogix_dp: Fix AUX_PD bit for Rockchip
+  drm/rockchip: Restore psr->state when enable/disable psr failed
+  drm/bridge: analogix_dp: Don't use ANALOGIX_DP_PLL_CTL to control pll
+  drm/bridge: analogix_dp: Fix timeout of video streamclk config
+  drm/bridge: analogix_dp: Fix incorrect operations with register
+    ANALOGIX_DP_FUNC_EN_1
+  drm/bridge: analogix_dp: Move fast link training detect to set_bridge
+
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 331 +++++++++++++++------
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   5 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 236 +++++++++------
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h  |   7 +
+ drivers/gpu/drm/exynos/exynos_dp.c                 |   2 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  37 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |   1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c         |  61 +++-
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c        | 309 +++++++++++++------
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h        |   7 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |  13 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |   1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c        |   1 +
+ include/drm/bridge/analogix_dp.h                   |   3 +-
+ 14 files changed, 710 insertions(+), 304 deletions(-)
+
 -- 
-1.9.1
+2.16.3
