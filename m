@@ -1,278 +1,331 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 2/2] clk: rockchip: Add CLK_DIVIDER_EVEN for all mmc clock
- consumers
-Date: Sun,  8 Apr 2018 15:28:18 +0800
-Message-ID: <1523172498-74798-2-git-send-email-shawn.lin@rock-chips.com>
-References: <1523172498-74798-1-git-send-email-shawn.lin@rock-chips.com>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH v8 07/14] ARM: dts: rockchip: add clocks in iommu nodes
+Date: Mon, 9 Apr 2018 16:41:56 +0200
+Message-ID: <CAAObsKCkg4+Ji=HPXnHCoxF9g0=uBgx+f+p-ehZ_D4Ld5RVVgg@mail.gmail.com>
+References: <20180323073814.5802-1-jeffy.chen@rock-chips.com> <20180323073814.5802-8-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1523172498-74798-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <xing.zheng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180323073814.5802-8-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: open list <linux-kernel@vger.kernel.org>, jcliang@chromium.org, robin.murphy@arm.com, simon xue <xxm@rock-chips.com>, tfiga@chromium.org, Romain Perier <romain.perier@collabora.com>, Yakir Yang <kuankuan.y@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Liang Chen <cl@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, David Wu <david.wu@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rocky Hao <rocky.h>
 List-Id: linux-rockchip.vger.kernel.org
 
-For conventional Rockchip platforms, mmc hosts, except RK3399's
-eMMC controller, should ask their clock parents to provider the
-closest clock rate with a even div number. That wasn't done
-explicitly by the clock framework. but now we have CLK_DIVIDER_EVEN
-flag to help.
+Hi there,
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+in today's linux-next, the DRM driver fails to probe because the iommu
+driver fails to find the aclk. I need to apply this patch for things
+to work again.
 
-Changes in v3: None
-Changes in v2: None
+Thanks,
 
- drivers/clk/rockchip/clk-rk3036.c |  7 ++++---
- drivers/clk/rockchip/clk-rk3128.c |  9 ++++++---
- drivers/clk/rockchip/clk-rk3188.c |  6 +++---
- drivers/clk/rockchip/clk-rk3228.c |  7 ++++---
- drivers/clk/rockchip/clk-rk3288.c | 12 ++++++++----
- drivers/clk/rockchip/clk-rk3328.c |  9 ++++++---
- drivers/clk/rockchip/clk-rk3368.c |  9 ++++++---
- drivers/clk/rockchip/clk-rk3399.c |  6 ++++--
- drivers/clk/rockchip/clk-rv1108.c |  7 ++++---
- 9 files changed, 45 insertions(+), 27 deletions(-)
+Tomeu
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index c300198..155fd4f 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -290,16 +290,17 @@ enum rk3036_plls {
- 			RK2928_CLKSEL_CON(12), 8, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 	DIV(SCLK_SDMMC, "sclk_sdmmc", "sclk_sdmmc_src", 0,
--			RK2928_CLKSEL_CON(11), 0, 7, DFLAGS),
-+			RK2928_CLKSEL_CON(11), 0, 7, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE_NODIV(0, "sclk_sdio_src", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(12), 10, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
--			RK2928_CLKSEL_CON(11), 8, 7, DFLAGS),
-+			RK2928_CLKSEL_CON(11), 8, 7, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 12, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 12, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,    "sdmmc_drv",    "sclk_sdmmc", RK3036_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index 5970a50..7c6e30a 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -324,15 +324,18 @@ enum rk3128_plls {
- 			RK2928_CLKGATE_CON(2), 15, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc0", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDIO, "sclk_sdio", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 
- 	DIV(SCLK_PVTM, "clk_pvtm", "clk_pvtm_func", 0,
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 67e73fd..32f199d 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -402,13 +402,13 @@ enum rk3188_plls {
- 			RK2928_CLKGATE_CON(2), 10, GFLAGS),
- 
- 	COMPOSITE_NOMUX(SCLK_SDMMC, "sclk_sdmmc", "hclk_peri", 0,
--			RK2928_CLKSEL_CON(11), 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(11), 0, 6, DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 	COMPOSITE_NOMUX(SCLK_SDIO, "sclk_sdio", "hclk_peri", 0,
--			RK2928_CLKSEL_CON(12), 0, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 0, 6, DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	COMPOSITE_NOMUX(SCLK_EMMC, "sclk_emmc", "hclk_peri", 0,
--			RK2928_CLKSEL_CON(12), 8, 6, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 8, 6, DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 
- 	MUX(0, "uart_src", mux_pll_src_gpll_cpll_p, 0,
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 7af4818..15da16a 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -388,20 +388,21 @@ enum rk3228_plls {
- 			RK2928_CLKGATE_CON(2), 15, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(11), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK2928_CLKSEL_CON(11), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 
- 	COMPOSITE_NODIV(SCLK_SDIO_SRC, "sclk_sdio_src", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(11), 10, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
--			RK2928_CLKSEL_CON(12), 0, 8, DFLAGS),
-+			RK2928_CLKSEL_CON(12), 0, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE_NODIV(0, "sclk_emmc_src", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(11), 12, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 14, GFLAGS),
- 	DIV(SCLK_EMMC, "sclk_emmc", "sclk_emmc_src", 0,
--			RK2928_CLKSEL_CON(12), 8, 8, DFLAGS),
-+			RK2928_CLKSEL_CON(12), 8, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	/*
- 	 * Clock-Architecture Diagram 2
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 450de24..2a6f231 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -508,16 +508,20 @@ enum rk3288_plls {
- 			RK3288_CLKGATE_CON(2), 11, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 0, GFLAGS),
- 	COMPOSITE(SCLK_SDIO0, "sclk_sdio0", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(12), 6, 2, MFLAGS, 0, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 1, GFLAGS),
- 	COMPOSITE(SCLK_SDIO1, "sclk_sdio1", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(34), 14, 2, MFLAGS, 8, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(34), 14, 2, MFLAGS, 8, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 2, GFLAGS),
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK3288_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6, DFLAGS,
-+			RK3288_CLKSEL_CON(12), 14, 2, MFLAGS, 8, 6,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3288_CLKGATE_CON(13), 3, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,    "sdmmc_drv",    "sclk_sdmmc", RK3288_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
-index 252366a..f81acf8 100644
---- a/drivers/clk/rockchip/clk-rk3328.c
-+++ b/drivers/clk/rockchip/clk-rk3328.c
-@@ -632,15 +632,18 @@ enum rk3328_plls {
- 			RK3328_CLKGATE_CON(4), 3, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDIO, "clk_sdio", mux_2plls_24m_u480m_p, 0,
--			RK3328_CLKSEL_CON(31), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK3328_CLKSEL_CON(31), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3328_CLKGATE_CON(4), 4, GFLAGS),
- 
- 	COMPOSITE(SCLK_EMMC, "clk_emmc", mux_2plls_24m_u480m_p, 0,
--			RK3328_CLKSEL_CON(32), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK3328_CLKSEL_CON(32), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3328_CLKGATE_CON(4), 5, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC_EXT, "clk_sdmmc_ext", mux_2plls_24m_u480m_p, 0,
--			RK3328_CLKSEL_CON(43), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RK3328_CLKSEL_CON(43), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3328_CLKGATE_CON(4), 10, GFLAGS),
- 
- 	COMPOSITE(SCLK_REF_USB3OTG_SRC, "clk_ref_usb3otg_src", mux_2plls_p, 0,
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 7c4d242..17a6293 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -550,13 +550,16 @@ enum rk3368_plls {
- 
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RK3368_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK3368_CLKSEL_CON(50), 8, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3368_CLKGATE_CON(7), 12, GFLAGS),
- 	COMPOSITE(SCLK_SDIO0, "sclk_sdio0", mux_mmc_src_p, 0,
--			RK3368_CLKSEL_CON(48), 8, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK3368_CLKSEL_CON(48), 8, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3368_CLKGATE_CON(7), 13, GFLAGS),
- 	COMPOSITE(SCLK_EMMC, "sclk_emmc", mux_mmc_src_p, 0,
--			RK3368_CLKSEL_CON(51), 8, 2, MFLAGS, 0, 7, DFLAGS,
-+			RK3368_CLKSEL_CON(51), 8, 2, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3368_CLKGATE_CON(7), 15, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,    "sdmmc_drv",    "sclk_sdmmc", RK3368_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 118759d..aedb3d0 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -896,11 +896,13 @@ enum rk3399_pmu_plls {
- 			RK3399_CLKGATE_CON(33), 9, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDIO, "clk_sdio", mux_pll_src_cpll_gpll_npll_ppll_upll_24m_p, 0,
--			RK3399_CLKSEL_CON(15), 8, 3, MFLAGS, 0, 7, DFLAGS,
-+			RK3399_CLKSEL_CON(15), 8, 3, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3399_CLKGATE_CON(6), 0, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "clk_sdmmc", mux_pll_src_cpll_gpll_npll_ppll_upll_24m_p, 0,
--			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7, DFLAGS,
-+			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RK3399_CLKGATE_CON(6), 1, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
-diff --git a/drivers/clk/rockchip/clk-rv1108.c b/drivers/clk/rockchip/clk-rv1108.c
-index 089cb17..b63af26 100644
---- a/drivers/clk/rockchip/clk-rv1108.c
-+++ b/drivers/clk/rockchip/clk-rv1108.c
-@@ -721,20 +721,21 @@ enum rv1108_plls {
- 			RV1108_CLKGATE_CON(15), 11, GFLAGS),
- 
- 	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
--			RV1108_CLKSEL_CON(25), 8, 2, MFLAGS, 0, 8, DFLAGS,
-+			RV1108_CLKSEL_CON(25), 8, 2, MFLAGS, 0, 8,
-+			DFLAGS | CLK_DIVIDER_EVEN,
- 			RV1108_CLKGATE_CON(5), 0, GFLAGS),
- 
- 	COMPOSITE_NODIV(0, "sclk_sdio_src", mux_mmc_src_p, 0,
- 			RV1108_CLKSEL_CON(25), 10, 2, MFLAGS,
- 			RV1108_CLKGATE_CON(5), 2, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
--			RV1108_CLKSEL_CON(26), 0, 8, DFLAGS),
-+			RV1108_CLKSEL_CON(26), 0, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 
- 	COMPOSITE_NODIV(0, "sclk_emmc_src", mux_mmc_src_p, 0,
- 			RV1108_CLKSEL_CON(25), 12, 2, MFLAGS,
- 			RV1108_CLKGATE_CON(5), 1, GFLAGS),
- 	DIV(SCLK_EMMC, "sclk_emmc", "sclk_emmc_src", 0,
--			RK2928_CLKSEL_CON(26), 8, 8, DFLAGS),
-+			RK2928_CLKSEL_CON(26), 8, 8, DFLAGS | CLK_DIVIDER_EVEN),
- 	GATE(HCLK_SDMMC, "hclk_sdmmc", "hclk_periph", 0, RV1108_CLKGATE_CON(15), 0, GFLAGS),
- 	GATE(HCLK_SDIO, "hclk_sdio", "hclk_periph", 0, RV1108_CLKGATE_CON(15), 1, GFLAGS),
- 	GATE(HCLK_EMMC, "hclk_emmc", "hclk_periph", 0, RV1108_CLKGATE_CON(15), 2, GFLAGS),
--- 
-1.9.1
+On 23 March 2018 at 08:38, Jeffy Chen <jeffy.chen@rock-chips.com> wrote:
+> Add clocks in iommu nodes, since we are going to control clocks in
+> rockchip iommu driver.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+>
+> Changes in v8: None
+> Changes in v7: None
+> Changes in v6:
+> Add clk names, and modify all iommu nodes in all existing rockchip dts
+>
+> Changes in v5:
+> Remove clk names.
+>
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>
+>  arch/arm/boot/dts/rk3036.dtsi            |  2 ++
+>  arch/arm/boot/dts/rk322x.dtsi            |  8 ++++++++
+>  arch/arm/boot/dts/rk3288.dtsi            | 12 ++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 10 ++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 10 ++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 14 ++++++++++++--
+>  6 files changed, 54 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+> index a97458112ff6..567a6a725f9c 100644
+> --- a/arch/arm/boot/dts/rk3036.dtsi
+> +++ b/arch/arm/boot/dts/rk3036.dtsi
+> @@ -197,6 +197,8 @@
+>                 reg = <0x10118300 0x100>;
+>                 interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vop_mmu";
+> +               clocks = <&cru ACLK_LCDC>, <&cru HCLK_LCDC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+> index df1e47858675..be80e9a2c9af 100644
+> --- a/arch/arm/boot/dts/rk322x.dtsi
+> +++ b/arch/arm/boot/dts/rk322x.dtsi
+> @@ -584,6 +584,8 @@
+>                 reg = <0x20020800 0x100>;
+>                 interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vpu_mmu";
+> +               clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+> +               clock-names = "aclk", "iface";
+>                 iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -593,6 +595,8 @@
+>                 reg = <0x20030480 0x40>, <0x200304c0 0x40>;
+>                 interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vdec_mmu";
+> +               clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
+> +               clock-names = "aclk", "iface";
+>                 iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -602,6 +606,8 @@
+>                 reg = <0x20053f00 0x100>;
+>                 interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vop_mmu";
+> +               clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
+> +               clock-names = "aclk", "iface";
+>                 iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -611,6 +617,8 @@
+>                 reg = <0x20070800 0x100>;
+>                 interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "iep_mmu";
+> +               clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
+> +               clock-names = "aclk", "iface";
+>                 iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index be9acb6d28a1..d7e49d29ace5 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -959,6 +959,8 @@
+>                 reg = <0x0 0xff900800 0x0 0x40>;
+>                 interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "iep_mmu";
+> +               clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -968,6 +970,8 @@
+>                 reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+>                 interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "isp_mmu";
+> +               clocks = <&cru ACLK_ISP>, <&cru HCLK_ISP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 rockchip,disable-mmu-reset;
+>                 status = "disabled";
+> @@ -1027,6 +1031,8 @@
+>                 reg = <0x0 0xff930300 0x0 0x100>;
+>                 interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vopb_mmu";
+> +               clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+> +               clock-names = "aclk", "iface";
+>                 power-domains = <&power RK3288_PD_VIO>;
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+> @@ -1075,6 +1081,8 @@
+>                 reg = <0x0 0xff940300 0x0 0x100>;
+>                 interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vopl_mmu";
+> +               clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+> +               clock-names = "aclk", "iface";
+>                 power-domains = <&power RK3288_PD_VIO>;
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+> @@ -1206,6 +1214,8 @@
+>                 reg = <0x0 0xff9a0800 0x0 0x100>;
+>                 interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vpu_mmu";
+> +               clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -1215,6 +1225,8 @@
+>                 reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
+>                 interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "hevc_mmu";
+> +               clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index be2bfbc6b483..b8e9da15e00c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -595,6 +595,8 @@
+>                 reg = <0x0 0xff330200 0 0x100>;
+>                 interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "h265e_mmu";
+> +               clocks = <&cru ACLK_H265>, <&cru PCLK_H265>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -604,6 +606,8 @@
+>                 reg = <0x0 0xff340800 0x0 0x40>;
+>                 interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vepu_mmu";
+> +               clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -613,6 +617,8 @@
+>                 reg = <0x0 0xff350800 0x0 0x40>;
+>                 interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vpu_mmu";
+> +               clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -622,6 +628,8 @@
+>                 reg = <0x0 0xff360480 0x0 0x40>, <0x0 0xff3604c0 0x0 0x40>;
+>                 interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "rkvdec_mmu";
+> +               clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -631,6 +639,8 @@
+>                 reg = <0x0 0xff373f00 0x0 0x100>;
+>                 interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vop_mmu";
+> +               clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> index 03458ac44201..ad91ced78649 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> @@ -742,6 +742,8 @@
+>                 reg = <0x0 0xff900800 0x0 0x100>;
+>                 interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "iep_mmu";
+> +               clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -752,6 +754,8 @@
+>                       <0x0 0xff915000 0x0 0x100>;
+>                 interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "isp_mmu";
+> +               clocks = <&cru ACLK_ISP>, <&cru HCLK_ISP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 rockchip,disable-mmu-reset;
+>                 status = "disabled";
+> @@ -762,6 +766,8 @@
+>                 reg = <0x0 0xff930300 0x0 0x100>;
+>                 interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vop_mmu";
+> +               clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -772,6 +778,8 @@
+>                       <0x0 0xff9a0480 0x0 0x40>;
+>                 interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "hevc_mmu";
+> +               clocks = <&cru ACLK_VIDEO>, <&cru HCLK_VIDEO>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -782,6 +790,8 @@
+>                 interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
+>                              <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+>                 interrupt-names = "vepu_mmu", "vdpu_mmu";
+> +               clocks = <&cru ACLK_VIDEO>, <&cru HCLK_VIDEO>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 4550c0f82be9..56f6bb31b399 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1234,6 +1234,8 @@
+>                 reg = <0x0 0xff650800 0x0 0x40>;
+>                 interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "vpu_mmu";
+> +               clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -1243,6 +1245,8 @@
+>                 reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
+>                 interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "vdec_mmu";
+> +               clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -1252,6 +1256,8 @@
+>                 reg = <0x0 0xff670800 0x0 0x40>;
+>                 interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "iep_mmu";
+> +               clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+>         };
+> @@ -1599,7 +1605,7 @@
+>                 interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "vopl_mmu";
+>                 clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+> -               clock-names = "aclk", "hclk";
+> +               clock-names = "aclk", "iface";
+>                 power-domains = <&power RK3399_PD_VOPL>;
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+> @@ -1656,7 +1662,7 @@
+>                 interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "vopb_mmu";
+>                 clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+> -               clock-names = "aclk", "hclk";
+> +               clock-names = "aclk", "iface";
+>                 power-domains = <&power RK3399_PD_VOPB>;
+>                 #iommu-cells = <0>;
+>                 status = "disabled";
+> @@ -1667,6 +1673,8 @@
+>                 reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+>                 interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "isp0_mmu";
+> +               clocks = <&cru ACLK_ISP0_NOC>, <&cru HCLK_ISP0_NOC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 rockchip,disable-mmu-reset;
+>                 status = "disabled";
+> @@ -1677,6 +1685,8 @@
+>                 reg = <0x0 0xff924000 0x0 0x100>, <0x0 0xff925000 0x0 0x100>;
+>                 interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH 0>;
+>                 interrupt-names = "isp1_mmu";
+> +               clocks = <&cru ACLK_ISP1_NOC>, <&cru HCLK_ISP1_NOC>;
+> +               clock-names = "aclk", "iface";
+>                 #iommu-cells = <0>;
+>                 rockchip,disable-mmu-reset;
+>                 status = "disabled";
+> --
+> 2.11.0
+>
+>
