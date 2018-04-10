@@ -1,28 +1,27 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH v6 5/5] ARM: dts: rockchip: set PWM delay backlight settings for Minnie
-Date: Tue, 10 Apr 2018 15:04:22 +0200
-Message-ID: <217634691.qDbm1hq3Bz@phil>
-References: <20180328170327.5395-1-enric.balletbo@collabora.com> <20180328170327.5395-5-enric.balletbo@collabora.com>
+Subject: Re: [PATCH v2 1/5] clk: Extract OF clock helpers in <linux/of_clk.h>
+Date: Tue, 10 Apr 2018 15:15:24 +0200
+Message-ID: <15715859.glpt2iY6pm@phil>
+References: <1523364701-15383-1-git-send-email-geert+renesas@glider.be> <1523364701-15383-2-git-send-email-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180328170327.5395-5-enric.balletbo@collabora.com>
+In-Reply-To: <1523364701-15383-2-git-send-email-geert+renesas@glider.be>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 28. März 2018, 19:03:27 CEST schrieb Enric Balletbo i Serra:
-> The minnie devices comes with an AUO B101EAN01 panel which is different
-> from default veyron devices, thus the power on/off timing sequence is
-> slightly different. The datasheet specifies a pwm delay of 200 ms, so
-> update the PMW delay proprieties accordingly.
+Am Dienstag, 10. April 2018, 14:51:37 CEST schrieb Geert Uytterhoeven:
+> The use of of_clk_get_parent_{count,name}() and of_clk_init() is not
+> limited to clock providers.
 > 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Pavel Machek <pavel@ucw.cz>
+> Hence move these helpers into their own header file, so callers that are
+> not clock providers no longer have to include <linux/clk-provider.h>.
+> 
+> Suggested-by: Stephen Boyd <sboyd@kernel.org>
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-applied for 4.18
-
-Thanks
-Heiko
+Really cool move,
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
