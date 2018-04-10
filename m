@@ -1,84 +1,58 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: fix VOP vblank race
-Date: Tue, 10 Apr 2018 20:40:06 +0800
-Message-ID: <38a49065-4667-4d91-3191-ec81b03cba44@rock-chips.com>
-References: <20180328160351.23763-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180328160351.23763-1-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: John Keeping <john@metanate.com>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH v2 5/5] pinctrl: sunxi: Use of_clk_get_parent_count() instead of open coding
+Date: Tue, 10 Apr 2018 14:51:41 +0200
+Message-ID: <1523364701-15383-6-git-send-email-geert+renesas@glider.be>
+References: <1523364701-15383-1-git-send-email-geert+renesas@glider.be>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1523364701-15383-1-git-send-email-geert+renesas@glider.be>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-rockchip.vger.kernel.org
 
-UmV2aWV3ZWQtYnk6IFNhbmR5IGh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CgrlnKggMjAxOC8z
-LzI5IDA6MDMsIEpvaG4gS2VlcGluZyDlhpnpgZM6Cj4gV2UgaGF2ZSBzZWVuIGEgY2FzZSBvZiBh
-IGJhZCByZWZlcmVuY2UgY291bnQgZm9yIHZibGFua3Mgd2l0aCB0aGUKPiBSb2NrY2hpcCBWT1A6
-Cj4KPiAJLS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4gCVdBUk5JTkc6IENQ
-VTogMSBQSUQ6IDM4MyBhdCBkcml2ZXJzL2dwdS9kcm0vZHJtX2lycS5jOjExOTggZHJtX3ZibGFu
-a19wdXQrMHg0MC8weGNjCj4gCU1vZHVsZXMgbGlua2VkIGluOiBicmNtZm1hYyBicmNtdXRpbAo+
-IAlDUFU6IDEgUElEOiAzODMgQ29tbToga3dvcmtlci91ODoyIE5vdCB0YWludGVkIDQuOS43NS1y
-dDYwICMxCj4gCUhhcmR3YXJlIG5hbWU6IFJvY2tjaGlwIChEZXZpY2UgVHJlZSkKPiAJV29ya3F1
-ZXVlOiBldmVudHNfdW5ib3VuZCBmbGlwX3dvcmtlcgo+IAlCYWNrdHJhY2U6Cj4gCVs8YzAxMGI3
-YjA+XSAoZHVtcF9iYWNrdHJhY2UpIGZyb20gWzxjMDEwYmE0Yz5dIChzaG93X3N0YWNrKzB4MTgv
-MHgxYykKPiAJIHI3OmMwYjFiMTNjIHI2OjYwMGIwMDEzIHI1OjAwMDAwMDAwIHI0OmMwYjFiMTNj
-Cj4gCVs8YzAxMGJhMzQ+XSAoc2hvd19zdGFjaykgZnJvbSBbPGMwMzJkMjQ4Pl0gKGR1bXBfc3Rh
-Y2srMHg3OC8weDk0KQo+IAlbPGMwMzJkMWQwPl0gKGR1bXBfc3RhY2spIGZyb20gWzxjMDExZTZl
-OD5dIChfX3dhcm4rMHhlNC8weDEwNCkKPiAJIHI3OjAwMDAwMDA5IHI2OmMwM2NmMjZjIHI1OjAw
-MDAwMDAwIHI0OjAwMDAwMDAwCj4gCVs8YzAxMWU2MDQ+XSAoX193YXJuKSBmcm9tIFs8YzAxMWU3
-YzA+XSAod2Fybl9zbG93cGF0aF9udWxsKzB4MjgvMHgzMCkKPiAJIHI5OmVlYjQ0M2EwIHI4OmVl
-YjQ0M2M4IHI3OmVlOGE1ZWMwIHI2OmVlOGE1ZWMwIHI1OmVkYjQ3ZjAwIHI0OmVlMDk2MjAwCj4g
-CVs8YzAxMWU3OTg+XSAod2Fybl9zbG93cGF0aF9udWxsKSBmcm9tIFs8YzAzY2YyNmM+XSAoZHJt
-X3ZibGFua19wdXQrMHg0MC8weGNjKQo+IAlbPGMwM2NmMjJjPl0gKGRybV92YmxhbmtfcHV0KSBm
-cm9tIFs8YzAzY2YzMTA+XSAoZHJtX2NydGNfdmJsYW5rX3B1dCsweDE4LzB4MWMpCj4gCSByNTpl
-ZGI0N2YwMCByNDplZTNjOGE4MAo+IAlbPGMwM2NmMmY4Pl0gKGRybV9jcnRjX3ZibGFua19wdXQp
-IGZyb20gWzxjMDNlZjliND5dICh2b3BfZmJfdW5yZWZfd29ya2VyKzB4MTgvMHgyNCkKPiAJWzxj
-MDNlZjk5Yz5dICh2b3BfZmJfdW5yZWZfd29ya2VyKSBmcm9tIFs8YzAzZGYxOTQ+XSAoZmxpcF93
-b3JrZXIrMHg5OC8weGI0KQo+IAkgcjU6ZWRiNDdmMDAgcjQ6ZWViNDQzYTgKPiAJWzxjMDNkZjBm
-Yz5dIChmbGlwX3dvcmtlcikgZnJvbSBbPGMwMTM0ODA4Pl0gKHByb2Nlc3Nfb25lX3dvcmsrMHgx
-YTgvMHgyZmMpCj4gCSByOTowMDAwMDAwMCByODplZTgwN2QwMCByNzowMDAwMDAwMCByNjplZTgw
-OWMwMCByNTplZWI0NDNhOCByNDplZGZlNWY4MAo+IAlbPGMwMTM0NjYwPl0gKHByb2Nlc3Nfb25l
-X3dvcmspIGZyb20gWzxjMDEzNThlYz5dICh3b3JrZXJfdGhyZWFkKzB4MmFjLzB4NDU4KQo+IAkg
-cjEwOjAwMDAwMDg4IHI5OmVkZmU1Zjk4IHI4OmVlODA5YzJjIHI3OmMwYjA0MTAwIHI2OmVlODA5
-YzAwIHI1OmVlODA5YzAwCj4gCSByNDplZGZlNWY4MAo+IAlbPGMwMTM1NjQwPl0gKHdvcmtlcl90
-aHJlYWQpIGZyb20gWzxjMDEzYTBiYz5dIChrdGhyZWFkKzB4ZmMvMHgxMGMpCj4gCSByMTA6MDAw
-MDAwMDAgcjk6MDAwMDAwMDAgcjg6YzAxMzU2NDAgcjc6ZWRmZTVmODAgcjY6MDAwMDAwMDAgcjU6
-ZWRmMGUyNDAKPiAJIHI0OmVlOGE0MDAwIHIzOmVkMTk0ZTAwCj4gCVs8YzAxMzlmYzA+XSAoa3Ro
-cmVhZCkgZnJvbSBbPGMwMTA3Y2I4Pl0gKHJldF9mcm9tX2ZvcmsrMHgxNC8weDNjKQo+IAkgcjg6
-MDAwMDAwMDAgcjc6MDAwMDAwMDAgcjY6MDAwMDAwMDAgcjU6YzAxMzlmYzAgcjQ6ZWRmMGUyNDAK
-PiAJLS0tWyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMiBdLS0tCj4KPiBJdCBzZWVtcyB0aGF0
-IHRoaXMgaXMgY2F1c2VkIGJ5IHVuZm9ydHVuYXRlIHRpbWluZyBiZXR3ZWVuCj4gdm9wX2NydGNf
-YXRvbWljX2ZsdXNoKCkgYW5kIHZvcF9oYW5kbGVfdmJsYW5rKCkgZ2l2ZW4gdGhlIGZvbGxvd2lu
-Zwo+IG9yZGVyaW5nOgo+Cj4gCWF0b21pY19mbHVzaAkJaGFuZGxlX3ZibGFuawo+IAktLS0tLS0t
-LS0tLS0JCS0tLS0tLS0tLS0tLS0KPgo+IAlkcm1fZmxpcF93b3JrX3F1ZXVlCj4gCXNldF9iaXQK
-PiAJICAgICAJCQlpZiAodGVzdF9hbmRfY2xlYXJfYml0KC4uLikpCj4gCSAgICAgCQkJCWRybV9m
-bGlwX3dvcmtfY29tbWl0Cj4gCWRybV92YmxhbmtfZ2V0Cj4KPiBUaGlzIHJlc3VsdHMgaW4gdm9w
-X2ZiX3VucmVmX3dvcmtlciAoY2FsbGVkIGFzIGZsaXAgd29yaykgZGVjcmVtZW50aW5nCj4gdGhl
-IHZibGFuayByZWZjb3VudCBiZWZvcmUgaXQgaGFzIGJlZW4gaW5jcmVtZW50ZWQuCj4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+IC0tLQo+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDIgKy0KPiAgIDEgZmls
-ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNjc1NWE5ZWVhNGIyLi5k
-NGUxNDAwYWVkZjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKPiBAQCAtMTAxNyw5ICsxMDE3LDkgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfYXRv
-bWljX2ZsdXNoKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgIAkJCWNvbnRpbnVlOwo+ICAgCj4g
-ICAJCWRybV9mcmFtZWJ1ZmZlcl9nZXQob2xkX3BsYW5lX3N0YXRlLT5mYik7Cj4gKwkJV0FSTl9P
-Tihkcm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpICE9IDApOwo+ICAgCQlkcm1fZmxpcF93b3JrX3F1
-ZXVlKCZ2b3AtPmZiX3VucmVmX3dvcmssIG9sZF9wbGFuZV9zdGF0ZS0+ZmIpOwo+ICAgCQlzZXRf
-Yml0KFZPUF9QRU5ESU5HX0ZCX1VOUkVGLCAmdm9wLT5wZW5kaW5nKTsKPiAtCQlXQVJOX09OKGRy
-bV9jcnRjX3ZibGFua19nZXQoY3J0YykgIT0gMCk7Cj4gICAJfQo+ICAgfQo+ICAgCgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJu
-ZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+A new open coder has crept in since 470b73a38470e8ba ("pinctrl: sunxi:
+Use of_clk_get_parent_count() instead of open coding"), replace it.
+
+of_clk_get_parent_count() was moved to <linux/of_clk.h>, so include that
+instead of <linux/clk-provider.h>.
+
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+This depends on "[PATCH v2 1/5] clk: Extract OF clock helpers in
+<linux/of_clk.h>".
+
+v2:
+  - New.
+---
+ drivers/pinctrl/sunxi/pinctrl-sunxi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+index 020d6d84639ca002..25e80a5370ca02f6 100644
+--- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
++++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+@@ -12,12 +12,12 @@
+ 
+ #include <linux/io.h>
+ #include <linux/clk.h>
+-#include <linux/clk-provider.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/irqdomain.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/export.h>
+ #include <linux/of.h>
++#include <linux/of_clk.h>
+ #include <linux/of_address.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
+@@ -1361,7 +1361,7 @@ int sunxi_pinctrl_init_with_variant(struct platform_device *pdev,
+ 			goto gpiochip_error;
+ 	}
+ 
+-	ret = of_count_phandle_with_args(node, "clocks", "#clock-cells");
++	ret = of_clk_get_parent_count(node);
+ 	clk = devm_clk_get(&pdev->dev, ret == 1 ? NULL : "apb");
+ 	if (IS_ERR(clk)) {
+ 		ret = PTR_ERR(clk);
+-- 
+2.7.4
