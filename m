@@ -1,54 +1,91 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] iommu/rockchip: make clock handling optional
-Date: Tue, 10 Apr 2018 11:26:12 +0200
-Message-ID: <20180410092612.2653-3-heiko@sntech.de>
-References: <20180410092612.2653-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v8 07/14] ARM: dts: rockchip: add clocks in iommu nodes
+Date: Tue, 10 Apr 2018 12:54:17 +0200
+Message-ID: <1720770.fWGWCFZ36p@phil>
+References: <20180323073814.5802-1-jeffy.chen@rock-chips.com> <2255884.b1SkkUdh3X@diego> <5686492.Vgpi8vPSL1@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180410092612.2653-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5686492.Vgpi8vPSL1@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, open list <linux-kernel@vger.kernel.org>, jcliang@chromium.org, simon xue <xxm@rock-chips.com>, tfiga@chromium.org, Romain Perier <romain.perier@collabora.com>, Yakir Yang <kuankuan.y@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Liang Chen <cl@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, David Wu <david.wu@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.or>
 List-Id: linux-rockchip.vger.kernel.org
 
-iommu clocks are optional, so the driver should not fail if they are not
-present. Instead just set the number of clocks to 0, which the clk-blk APIs
-can handle just fine.
+Am Montag, 9. April 2018, 23:49:58 CEST schrieb Heiko Stübner:
+> Am Montag, 9. April 2018, 17:55:40 CEST schrieb Heiko Stübner:
+> > Am Montag, 9. April 2018, 17:53:01 CEST schrieb Robin Murphy:
+> > > On 09/04/18 16:44, Heiko Stübner wrote:
+> > > > Hi Tomeu,
+> > > > 
+> > > > Am Montag, 9. April 2018, 16:41:56 CEST schrieb Tomeu Vizoso:
+> > > >> in today's linux-next, the DRM driver fails to probe because the iommu
+> > > >> driver fails to find the aclk. I need to apply this patch for things
+> > > >> to work again.
+> > > > 
+> > > > Thanks for catching that issue.
+> > > > 
+> > > > This seems to expose a backwards-compatibility issue, as this breaks
+> > > > all old devicetrees, so should get a proper fix, apart from me applying
+> > > > the dt-patch I missed.
+> > > > 
+> > > > Looking at the iommu-clock-handling patch, I imagine this part as
+> > > > the culprit:
+> > > > 
+> > > > +	iommu->num_clocks = ARRAY_SIZE(rk_iommu_clocks);
+> > > > +	iommu->clocks = devm_kcalloc(iommu->dev, iommu->num_clocks,
+> > > > +				     sizeof(*iommu->clocks), GFP_KERNEL);
+> > > > +	if (!iommu->clocks)
+> > > > +		return -ENOMEM;
+> > > > 
+> > > > The clk-bulk functions seem to work with simple for loops and
+> > > > should (as the other standard clock functions) just work fine with
+> > > > an empty struct, so I guess a simple
+> > > > 
+> > > > 	if (!iommu->clocks && iommu->num_clocks > 0)
+> > > > 	
+> > > > 		return -ENOMEM;
+> > > > 
+> > > > should hopefully be enough. I'll try to give this a test later on
+> > > > if nobody beats me to it :-)
+> > > 
+> > > But iommu->num_clocks is clearly set to a nonzero compile-time constant
+> > > at this point ;)
+> > > 
+> > > I'd assume it's the return from devm_clk_bulk_get() which needs to
+> > > special-case the "no clocks found" case from any other error, and *then*
+> > > blat num_clocks to 0 if so.
+> > 
+> > you're right of course. Looking at it again, I now clearly see the
+> > ARRAY_SIZE and am wondering what made me think num_clocks would be
+> > runtime-read.
+> > 
+> > Must be those 25°C today ;-)
+> 
+> In any case, this does not seem to fully fix the issue ... or be more exact 
+> seems to be the only issue.
+> 
+> - With 4.16 both pinky and kevin have working displays.
+> - When I was merging display patches to drm-misc, I did boot-tests on
+>   both pinky and kevin, keeping their displays in a working state.
+> 
+> - With current torvalds head (iommu not merged yet)
+> e9092d0d9796 ("Fix subtle macro variable shadowing in min_not_zero()")
+> 
+> I get display output on rk3399-kevin (edp), but not on
+> rk3288-pinky (edp + hdmi). [components + hdmi device+modes get
+> recognized correctly though]
+> 
+> - With iommu changes merged I end up with the failing clock issue
+>   which can be countered by making the iommu-clocks optional.
+> 
+> - After that I get working display output again on kevin but not pinky.
+> 
+> Looks like this needs bisecting.
 
-Fixes: f2e3a5f557ad ("iommu/rockchip: Control clocks needed to access the IOMMU")
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/iommu/rockchip-iommu.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+And it seems the dwc2 vbus thingy was responsible for the other issue I saw.
+With Tomeus fixup patch applied and the series I sent an hour ago, I now
+get display output again on both kevin (rk3399) and pinky (rk3288).
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 5fc8656c60f9..7215c683cb8f 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1176,8 +1176,12 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 		iommu->clocks[i].id = rk_iommu_clocks[i];
- 
- 	err = devm_clk_bulk_get(iommu->dev, iommu->num_clocks, iommu->clocks);
--	if (err)
--		return err;
-+	if (err) {
-+		if (err == -ENOENT)
-+			iommu->num_clocks = 0;
-+		else
-+			return err;
-+	}
- 
- 	err = clk_bulk_prepare(iommu->num_clocks, iommu->clocks);
- 	if (err)
--- 
-2.16.2
+Heiko
