@@ -1,329 +1,84 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v8 07/14] ARM: dts: rockchip: add clocks in iommu nodes
-Date: Tue, 10 Apr 2018 13:46:29 +0200
-Message-ID: <2267884.YgWmziWd1G@phil>
-References: <20180323073814.5802-1-jeffy.chen@rock-chips.com> <20180323073814.5802-8-jeffy.chen@rock-chips.com>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: fix VOP vblank race
+Date: Tue, 10 Apr 2018 20:40:06 +0800
+Message-ID: <38a49065-4667-4d91-3191-ec81b03cba44@rock-chips.com>
+References: <20180328160351.23763-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180323073814.5802-8-jeffy.chen@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, jcliang@chromium.org, robin.murphy@arm.com, xxm@rock-chips.com, tfiga@chromium.org, Romain Perier <romain.perier@collabora.com>, Yakir Yang <kuankuan.y@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Liang Chen <cl@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, David Wu <david.wu@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Jacob Chen <jacob-chen@iotwrt.com>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, linux-rockchip@lists.infradead.org, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Nickey Yang <nickey.yang@rock>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180328160351.23763-1-john@metanate.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: John Keeping <john@metanate.com>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 23. März 2018, 08:38:07 CEST schrieb Jeffy Chen:
-> Add clocks in iommu nodes, since we are going to control clocks in
-> rockchip iommu driver.
-> 
-> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-
-applied for 4.18 after splitting arm32+arm64 parts into 2 patches
-and adapting the subject for the arm64 variant.
-
-Please don't mix arm32+arm64 devicetree patches in the future.
-
-
-Thanks
-Heiko
-
-> ---
-> 
-> Changes in v8: None
-> Changes in v7: None
-> Changes in v6:
-> Add clk names, and modify all iommu nodes in all existing rockchip dts
-> 
-> Changes in v5:
-> Remove clk names.
-> 
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  arch/arm/boot/dts/rk3036.dtsi            |  2 ++
->  arch/arm/boot/dts/rk322x.dtsi            |  8 ++++++++
->  arch/arm/boot/dts/rk3288.dtsi            | 12 ++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 10 ++++++++++
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 10 ++++++++++
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 14 ++++++++++++--
->  6 files changed, 54 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-> index a97458112ff6..567a6a725f9c 100644
-> --- a/arch/arm/boot/dts/rk3036.dtsi
-> +++ b/arch/arm/boot/dts/rk3036.dtsi
-> @@ -197,6 +197,8 @@
->  		reg = <0x10118300 0x100>;
->  		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vop_mmu";
-> +		clocks = <&cru ACLK_LCDC>, <&cru HCLK_LCDC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-> index df1e47858675..be80e9a2c9af 100644
-> --- a/arch/arm/boot/dts/rk322x.dtsi
-> +++ b/arch/arm/boot/dts/rk322x.dtsi
-> @@ -584,6 +584,8 @@
->  		reg = <0x20020800 0x100>;
->  		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vpu_mmu";
-> +		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +		clock-names = "aclk", "iface";
->  		iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -593,6 +595,8 @@
->  		reg = <0x20030480 0x40>, <0x200304c0 0x40>;
->  		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vdec_mmu";
-> +		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
-> +		clock-names = "aclk", "iface";
->  		iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -602,6 +606,8 @@
->  		reg = <0x20053f00 0x100>;
->  		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vop_mmu";
-> +		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-> +		clock-names = "aclk", "iface";
->  		iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -611,6 +617,8 @@
->  		reg = <0x20070800 0x100>;
->  		interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "iep_mmu";
-> +		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-> +		clock-names = "aclk", "iface";
->  		iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index be9acb6d28a1..d7e49d29ace5 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -959,6 +959,8 @@
->  		reg = <0x0 0xff900800 0x0 0x40>;
->  		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "iep_mmu";
-> +		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -968,6 +970,8 @@
->  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
->  		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "isp_mmu";
-> +		clocks = <&cru ACLK_ISP>, <&cru HCLK_ISP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		rockchip,disable-mmu-reset;
->  		status = "disabled";
-> @@ -1027,6 +1031,8 @@
->  		reg = <0x0 0xff930300 0x0 0x100>;
->  		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vopb_mmu";
-> +		clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
-> +		clock-names = "aclk", "iface";
->  		power-domains = <&power RK3288_PD_VIO>;
->  		#iommu-cells = <0>;
->  		status = "disabled";
-> @@ -1075,6 +1081,8 @@
->  		reg = <0x0 0xff940300 0x0 0x100>;
->  		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vopl_mmu";
-> +		clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
-> +		clock-names = "aclk", "iface";
->  		power-domains = <&power RK3288_PD_VIO>;
->  		#iommu-cells = <0>;
->  		status = "disabled";
-> @@ -1206,6 +1214,8 @@
->  		reg = <0x0 0xff9a0800 0x0 0x100>;
->  		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vpu_mmu";
-> +		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -1215,6 +1225,8 @@
->  		reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
->  		interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "hevc_mmu";
-> +		clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> index be2bfbc6b483..b8e9da15e00c 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> @@ -595,6 +595,8 @@
->  		reg = <0x0 0xff330200 0 0x100>;
->  		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "h265e_mmu";
-> +		clocks = <&cru ACLK_H265>, <&cru PCLK_H265>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -604,6 +606,8 @@
->  		reg = <0x0 0xff340800 0x0 0x40>;
->  		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vepu_mmu";
-> +		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -613,6 +617,8 @@
->  		reg = <0x0 0xff350800 0x0 0x40>;
->  		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vpu_mmu";
-> +		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -622,6 +628,8 @@
->  		reg = <0x0 0xff360480 0x0 0x40>, <0x0 0xff3604c0 0x0 0x40>;
->  		interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "rkvdec_mmu";
-> +		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -631,6 +639,8 @@
->  		reg = <0x0 0xff373f00 0x0 0x100>;
->  		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vop_mmu";
-> +		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> index 03458ac44201..ad91ced78649 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> @@ -742,6 +742,8 @@
->  		reg = <0x0 0xff900800 0x0 0x100>;
->  		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "iep_mmu";
-> +		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -752,6 +754,8 @@
->  		      <0x0 0xff915000 0x0 0x100>;
->  		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "isp_mmu";
-> +		clocks = <&cru ACLK_ISP>, <&cru HCLK_ISP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		rockchip,disable-mmu-reset;
->  		status = "disabled";
-> @@ -762,6 +766,8 @@
->  		reg = <0x0 0xff930300 0x0 0x100>;
->  		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vop_mmu";
-> +		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -772,6 +778,8 @@
->  		      <0x0 0xff9a0480 0x0 0x40>;
->  		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "hevc_mmu";
-> +		clocks = <&cru ACLK_VIDEO>, <&cru HCLK_VIDEO>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -782,6 +790,8 @@
->  		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
->  			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vepu_mmu", "vdpu_mmu";
-> +		clocks = <&cru ACLK_VIDEO>, <&cru HCLK_VIDEO>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 4550c0f82be9..56f6bb31b399 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1234,6 +1234,8 @@
->  		reg = <0x0 0xff650800 0x0 0x40>;
->  		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "vpu_mmu";
-> +		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -1243,6 +1245,8 @@
->  		reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
->  		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "vdec_mmu";
-> +		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -1252,6 +1256,8 @@
->  		reg = <0x0 0xff670800 0x0 0x40>;
->  		interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "iep_mmu";
-> +		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
-> @@ -1599,7 +1605,7 @@
->  		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "vopl_mmu";
->  		clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
-> -		clock-names = "aclk", "hclk";
-> +		clock-names = "aclk", "iface";
->  		power-domains = <&power RK3399_PD_VOPL>;
->  		#iommu-cells = <0>;
->  		status = "disabled";
-> @@ -1656,7 +1662,7 @@
->  		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "vopb_mmu";
->  		clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
-> -		clock-names = "aclk", "hclk";
-> +		clock-names = "aclk", "iface";
->  		power-domains = <&power RK3399_PD_VOPB>;
->  		#iommu-cells = <0>;
->  		status = "disabled";
-> @@ -1667,6 +1673,8 @@
->  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
->  		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "isp0_mmu";
-> +		clocks = <&cru ACLK_ISP0_NOC>, <&cru HCLK_ISP0_NOC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		rockchip,disable-mmu-reset;
->  		status = "disabled";
-> @@ -1677,6 +1685,8 @@
->  		reg = <0x0 0xff924000 0x0 0x100>, <0x0 0xff925000 0x0 0x100>;
->  		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH 0>;
->  		interrupt-names = "isp1_mmu";
-> +		clocks = <&cru ACLK_ISP1_NOC>, <&cru HCLK_ISP1_NOC>;
-> +		clock-names = "aclk", "iface";
->  		#iommu-cells = <0>;
->  		rockchip,disable-mmu-reset;
->  		status = "disabled";
-> 
+UmV2aWV3ZWQtYnk6IFNhbmR5IGh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CgrlnKggMjAxOC8z
+LzI5IDA6MDMsIEpvaG4gS2VlcGluZyDlhpnpgZM6Cj4gV2UgaGF2ZSBzZWVuIGEgY2FzZSBvZiBh
+IGJhZCByZWZlcmVuY2UgY291bnQgZm9yIHZibGFua3Mgd2l0aCB0aGUKPiBSb2NrY2hpcCBWT1A6
+Cj4KPiAJLS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4gCVdBUk5JTkc6IENQ
+VTogMSBQSUQ6IDM4MyBhdCBkcml2ZXJzL2dwdS9kcm0vZHJtX2lycS5jOjExOTggZHJtX3ZibGFu
+a19wdXQrMHg0MC8weGNjCj4gCU1vZHVsZXMgbGlua2VkIGluOiBicmNtZm1hYyBicmNtdXRpbAo+
+IAlDUFU6IDEgUElEOiAzODMgQ29tbToga3dvcmtlci91ODoyIE5vdCB0YWludGVkIDQuOS43NS1y
+dDYwICMxCj4gCUhhcmR3YXJlIG5hbWU6IFJvY2tjaGlwIChEZXZpY2UgVHJlZSkKPiAJV29ya3F1
+ZXVlOiBldmVudHNfdW5ib3VuZCBmbGlwX3dvcmtlcgo+IAlCYWNrdHJhY2U6Cj4gCVs8YzAxMGI3
+YjA+XSAoZHVtcF9iYWNrdHJhY2UpIGZyb20gWzxjMDEwYmE0Yz5dIChzaG93X3N0YWNrKzB4MTgv
+MHgxYykKPiAJIHI3OmMwYjFiMTNjIHI2OjYwMGIwMDEzIHI1OjAwMDAwMDAwIHI0OmMwYjFiMTNj
+Cj4gCVs8YzAxMGJhMzQ+XSAoc2hvd19zdGFjaykgZnJvbSBbPGMwMzJkMjQ4Pl0gKGR1bXBfc3Rh
+Y2srMHg3OC8weDk0KQo+IAlbPGMwMzJkMWQwPl0gKGR1bXBfc3RhY2spIGZyb20gWzxjMDExZTZl
+OD5dIChfX3dhcm4rMHhlNC8weDEwNCkKPiAJIHI3OjAwMDAwMDA5IHI2OmMwM2NmMjZjIHI1OjAw
+MDAwMDAwIHI0OjAwMDAwMDAwCj4gCVs8YzAxMWU2MDQ+XSAoX193YXJuKSBmcm9tIFs8YzAxMWU3
+YzA+XSAod2Fybl9zbG93cGF0aF9udWxsKzB4MjgvMHgzMCkKPiAJIHI5OmVlYjQ0M2EwIHI4OmVl
+YjQ0M2M4IHI3OmVlOGE1ZWMwIHI2OmVlOGE1ZWMwIHI1OmVkYjQ3ZjAwIHI0OmVlMDk2MjAwCj4g
+CVs8YzAxMWU3OTg+XSAod2Fybl9zbG93cGF0aF9udWxsKSBmcm9tIFs8YzAzY2YyNmM+XSAoZHJt
+X3ZibGFua19wdXQrMHg0MC8weGNjKQo+IAlbPGMwM2NmMjJjPl0gKGRybV92YmxhbmtfcHV0KSBm
+cm9tIFs8YzAzY2YzMTA+XSAoZHJtX2NydGNfdmJsYW5rX3B1dCsweDE4LzB4MWMpCj4gCSByNTpl
+ZGI0N2YwMCByNDplZTNjOGE4MAo+IAlbPGMwM2NmMmY4Pl0gKGRybV9jcnRjX3ZibGFua19wdXQp
+IGZyb20gWzxjMDNlZjliND5dICh2b3BfZmJfdW5yZWZfd29ya2VyKzB4MTgvMHgyNCkKPiAJWzxj
+MDNlZjk5Yz5dICh2b3BfZmJfdW5yZWZfd29ya2VyKSBmcm9tIFs8YzAzZGYxOTQ+XSAoZmxpcF93
+b3JrZXIrMHg5OC8weGI0KQo+IAkgcjU6ZWRiNDdmMDAgcjQ6ZWViNDQzYTgKPiAJWzxjMDNkZjBm
+Yz5dIChmbGlwX3dvcmtlcikgZnJvbSBbPGMwMTM0ODA4Pl0gKHByb2Nlc3Nfb25lX3dvcmsrMHgx
+YTgvMHgyZmMpCj4gCSByOTowMDAwMDAwMCByODplZTgwN2QwMCByNzowMDAwMDAwMCByNjplZTgw
+OWMwMCByNTplZWI0NDNhOCByNDplZGZlNWY4MAo+IAlbPGMwMTM0NjYwPl0gKHByb2Nlc3Nfb25l
+X3dvcmspIGZyb20gWzxjMDEzNThlYz5dICh3b3JrZXJfdGhyZWFkKzB4MmFjLzB4NDU4KQo+IAkg
+cjEwOjAwMDAwMDg4IHI5OmVkZmU1Zjk4IHI4OmVlODA5YzJjIHI3OmMwYjA0MTAwIHI2OmVlODA5
+YzAwIHI1OmVlODA5YzAwCj4gCSByNDplZGZlNWY4MAo+IAlbPGMwMTM1NjQwPl0gKHdvcmtlcl90
+aHJlYWQpIGZyb20gWzxjMDEzYTBiYz5dIChrdGhyZWFkKzB4ZmMvMHgxMGMpCj4gCSByMTA6MDAw
+MDAwMDAgcjk6MDAwMDAwMDAgcjg6YzAxMzU2NDAgcjc6ZWRmZTVmODAgcjY6MDAwMDAwMDAgcjU6
+ZWRmMGUyNDAKPiAJIHI0OmVlOGE0MDAwIHIzOmVkMTk0ZTAwCj4gCVs8YzAxMzlmYzA+XSAoa3Ro
+cmVhZCkgZnJvbSBbPGMwMTA3Y2I4Pl0gKHJldF9mcm9tX2ZvcmsrMHgxNC8weDNjKQo+IAkgcjg6
+MDAwMDAwMDAgcjc6MDAwMDAwMDAgcjY6MDAwMDAwMDAgcjU6YzAxMzlmYzAgcjQ6ZWRmMGUyNDAK
+PiAJLS0tWyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMiBdLS0tCj4KPiBJdCBzZWVtcyB0aGF0
+IHRoaXMgaXMgY2F1c2VkIGJ5IHVuZm9ydHVuYXRlIHRpbWluZyBiZXR3ZWVuCj4gdm9wX2NydGNf
+YXRvbWljX2ZsdXNoKCkgYW5kIHZvcF9oYW5kbGVfdmJsYW5rKCkgZ2l2ZW4gdGhlIGZvbGxvd2lu
+Zwo+IG9yZGVyaW5nOgo+Cj4gCWF0b21pY19mbHVzaAkJaGFuZGxlX3ZibGFuawo+IAktLS0tLS0t
+LS0tLS0JCS0tLS0tLS0tLS0tLS0KPgo+IAlkcm1fZmxpcF93b3JrX3F1ZXVlCj4gCXNldF9iaXQK
+PiAJICAgICAJCQlpZiAodGVzdF9hbmRfY2xlYXJfYml0KC4uLikpCj4gCSAgICAgCQkJCWRybV9m
+bGlwX3dvcmtfY29tbWl0Cj4gCWRybV92YmxhbmtfZ2V0Cj4KPiBUaGlzIHJlc3VsdHMgaW4gdm9w
+X2ZiX3VucmVmX3dvcmtlciAoY2FsbGVkIGFzIGZsaXAgd29yaykgZGVjcmVtZW50aW5nCj4gdGhl
+IHZibGFuayByZWZjb3VudCBiZWZvcmUgaXQgaGFzIGJlZW4gaW5jcmVtZW50ZWQuCj4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+IC0tLQo+ICAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDIgKy0KPiAgIDEgZmls
+ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNjc1NWE5ZWVhNGIyLi5k
+NGUxNDAwYWVkZjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMKPiBAQCAtMTAxNyw5ICsxMDE3LDkgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfYXRv
+bWljX2ZsdXNoKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgIAkJCWNvbnRpbnVlOwo+ICAgCj4g
+ICAJCWRybV9mcmFtZWJ1ZmZlcl9nZXQob2xkX3BsYW5lX3N0YXRlLT5mYik7Cj4gKwkJV0FSTl9P
+Tihkcm1fY3J0Y192YmxhbmtfZ2V0KGNydGMpICE9IDApOwo+ICAgCQlkcm1fZmxpcF93b3JrX3F1
+ZXVlKCZ2b3AtPmZiX3VucmVmX3dvcmssIG9sZF9wbGFuZV9zdGF0ZS0+ZmIpOwo+ICAgCQlzZXRf
+Yml0KFZPUF9QRU5ESU5HX0ZCX1VOUkVGLCAmdm9wLT5wZW5kaW5nKTsKPiAtCQlXQVJOX09OKGRy
+bV9jcnRjX3ZibGFua19nZXQoY3J0YykgIT0gMCk7Cj4gICAJfQo+ICAgfQo+ICAgCgoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJu
+ZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
