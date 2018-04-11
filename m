@@ -1,33 +1,63 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 3/5] soc: rockchip: power-domain: Use of_clk_get_parent_count() instead of open coding
-Date: Tue, 10 Apr 2018 15:17:56 +0200
-Message-ID: <7442109.yKeQIlf4qX@phil>
-References: <1523364701-15383-1-git-send-email-geert+renesas@glider.be> <1523364701-15383-4-git-send-email-geert+renesas@glider.be>
+From: Jon Hunter <jonathanh@nvidia.com>
+Subject: Re: [PATCH v2 4/5] soc/tegra: pmc: Use of_clk_get_parent_count()
+ instead of open coding
+Date: Wed, 11 Apr 2018 10:07:47 +0100
+Message-ID: <a96706de-f680-7ef2-53fd-d2cf07b6061b@nvidia.com>
+References: <1523364701-15383-1-git-send-email-geert+renesas@glider.be>
+ <1523364701-15383-5-git-send-email-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1523364701-15383-4-git-send-email-geert+renesas@glider.be>
+In-Reply-To: <1523364701-15383-5-git-send-email-geert+renesas@glider.be>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Geert Uytterhoeven <geert+renesas@glider.be>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 10. April 2018, 14:51:39 CEST schrieb Geert Uytterhoeven:
+
+On 10/04/18 13:51, Geert Uytterhoeven wrote:
 > As of_clk_get_parent_count() returns zero on failure, while
 > of_count_phandle_with_args() might return a negative error code, this
-> also fixes the issue of possibly using a negative number in the
+> also fixes the issue of possibly using a very big number in the
 > allocation below.
 > 
 > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> ---
+> This depends on "[PATCH v2 1/5] clk: Extract OF clock helpers in
+> <linux/of_clk.h>".
+> 
+> v2:
+>   - of_clk_get_parent_count() was moved to <linux/of_clk.h>.
+> ---
+>  drivers/soc/tegra/pmc.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/soc/tegra/pmc.c b/drivers/soc/tegra/pmc.c
+> index d9fcdb592b3966a5..d8cb48a4b8eb1b78 100644
+> --- a/drivers/soc/tegra/pmc.c
+> +++ b/drivers/soc/tegra/pmc.c
+> @@ -31,6 +31,7 @@
+>  #include <linux/iopoll.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+> +#include <linux/of_clk.h>
+>  #include <linux/of_platform.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+> @@ -725,7 +726,7 @@ static int tegra_powergate_of_get_clks(struct tegra_powergate *pg,
+>  	unsigned int i, count;
+>  	int err;
+>  
+> -	count = of_count_phandle_with_args(np, "clocks", "#clock-cells");
+> +	count = of_clk_get_parent_count(np);
+>  	if (count == 0)
+>  		return -ENODEV;
+>  
+> 
 
-Depending on how we plan on merging this series, I could either pick
-this patch for 4.19, after patch1 makes it into 4.18 or otherwise
-someone could pick the whole series together with my
+Acked-by: Jon Hunter <jonathanh@nvidia.com>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-for this patch.
-
-
-Heiko
+Cheers
+Jon
