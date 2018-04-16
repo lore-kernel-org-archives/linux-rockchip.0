@@ -1,11 +1,12 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 2/7] arm64: defconfig: Enable Rockchip io-domain driver
-Date: Mon, 16 Apr 2018 11:39:57 -0300
-Message-ID: <20180416144002.15569-3-ezequiel@collabora.com>
+Subject: [PATCH 1/7] arm64: defconfig: Enable typec-phy and
+ extcon-usbc-cros-ec for rk3399
+Date: Mon, 16 Apr 2018 11:39:56 -0300
+Message-ID: <20180416144002.15569-2-ezequiel@collabora.com>
 References: <20180416144002.15569-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20180416144002.15569-1-ezequiel@collabora.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
@@ -21,31 +22,37 @@ To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
 Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNv
-bT4KCgpIZWlrbyBTdMO8Ym5lciBqdXN0aWZpZWQgcHJldHR5IHdlbGwgdGhlIGNoYW5nZSBpbiBj
-b21taXQgZTMzMGViODZiYTBiCigiQVJNOiBtdWx0aV92N19kZWZjb25maWc6IGVuYWJsZSBSb2Nr
-Y2hpcCBpby1kb21haW4gZHJpdmVyIikuIFRoaXMKY2hhbmdlIGlzIGFsc28gbmVlZGVkIGZvciBh
-cm02NCByb2NrY2hpcCBib2FyZHMsIHNvLCBkbyB0aGUgc2FtZSBmb3IgYXJtNjQuCgpUaGUgaW8t
-ZG9tYWluIGRyaXZlciBpcyBuZWNlc3NhcnkgdG8gbm90aWZ5IHRoZSBzb2MgYWJvdXQgdm9sdGFn
-ZXMKY2hhbmdlcyBoYXBwZW5pbmcgb24gc3VwcGx5aW5nIHJlZ3VsYXRvcnMuIFByb2JhYmx5IHRo
-ZSBtb3N0IGltcG9ydGFudAp1c2VyIHJpZ2h0IG5vdyBpcyB0aGUgbW1jIHR1bmluZyBjb2RlLCB3
-aGVyZSB0aGUgc29jIG5lZWRzIHRvIGdldApub3RpZmllZCB3aGVuIHRoZSB2b2x0YWdlIGlzIGRy
-b3BwZWQgdG8gdGhlIDEuOFYgcG9pbnQuCgpBcyB0aGlzIG9wdGlvbiBpcyBuZWNlc3NhcnkgdG8g
-c3VjY2Vzc2Z1bGx5IHR1bmUgVUhTIGNhcmRzIGV0YywgaXQKc2hvdWxkIGdldCBidWlsdCBpbi4g
-T3RoZXJ3aXNlLCB0dW5pbmcgd2lsbCBmYWlsIHdpdGgsCgogICBkd21tY19yb2NrY2hpcCBmZTMy
-MDAwMC5kd21tYzogQWxsIHBoYXNlcyBiYWQhCiAgIG1tYzA6IHR1bmluZyBleGVjdXRpb24gZmFp
-bGVkOiAtNQoKU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFs
-bGV0Ym9AY29sbGFib3JhLmNvbT4KQWNrZWQtYnk6IFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5
-QGFybS5jb20+Ci0tLQogYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZyB8IDIgKysKIDEgZmls
-ZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2NvbmZp
-Z3MvZGVmY29uZmlnIGIvYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZwppbmRleCBiZGQ1OTQz
-ODcyMzIuLjdlM2IzZjA0ODRiOSAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9jb25maWdzL2RlZmNv
-bmZpZworKysgYi9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnCkBAIC0zMzIsNiArMzMyLDgg
-QEAgQ09ORklHX0dQSU9fWEdFTkVfU0I9eQogQ09ORklHX0dQSU9fUENBOTUzWD15CiBDT05GSUdf
-R1BJT19QQ0E5NTNYX0lSUT15CiBDT05GSUdfR1BJT19NQVg3NzYyMD15CitDT05GSUdfUE9XRVJf
-QVZTPXkKK0NPTkZJR19ST0NLQ0hJUF9JT0RPTUFJTj15CiBDT05GSUdfUE9XRVJfUkVTRVRfTVNN
-PXkKIENPTkZJR19QT1dFUl9SRVNFVF9YR0VORT15CiBDT05GSUdfUE9XRVJfUkVTRVRfU1lTQ09O
-PXkKLS0gCjIuMTYuMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LWFybS1rZXJuZWwK
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+Enables typec phyter and extcon driver for cable detection that is used by
+USB 3.0 controller for Rockchip rk3399 SoCs.
+
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Tested-by: Alexandre Courbot <acourbot@chromium.org>
+Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
+---
+ arch/arm64/configs/defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index ecf613761e78..bdd594387232 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -568,6 +568,7 @@ CONFIG_ARCH_TEGRA_210_SOC=y
+ CONFIG_ARCH_TEGRA_186_SOC=y
+ CONFIG_ARCH_TEGRA_194_SOC=y
+ CONFIG_EXTCON_USB_GPIO=y
++CONFIG_EXTCON_USBC_CROS_EC=y
+ CONFIG_MEMORY=y
+ CONFIG_TEGRA_MC=y
+ CONFIG_IIO=y
+@@ -590,6 +591,7 @@ CONFIG_PHY_MVEBU_CP110_COMPHY=y
+ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+ CONFIG_PHY_ROCKCHIP_EMMC=y
+ CONFIG_PHY_ROCKCHIP_PCIE=m
++CONFIG_PHY_ROCKCHIP_TYPEC=y
+ CONFIG_PHY_XGENE=y
+ CONFIG_PHY_TEGRA_XUSB=y
+ CONFIG_QCOM_L2_PMU=y
+-- 
+2.16.3
