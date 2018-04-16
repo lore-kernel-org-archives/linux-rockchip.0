@@ -1,53 +1,60 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 0/7] Defconfig updates for RK3399
-Date: Mon, 16 Apr 2018 11:39:55 -0300
-Message-ID: <20180416144002.15569-1-ezequiel@collabora.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [RESEND PATCH v6 1/5] pwm-backlight: enable/disable the PWM
+ before/after LCD enable toggle.
+Date: Mon, 16 Apr 2018 15:43:32 +0100
+Message-ID: <20180416144332.caww5vttzrzjlnkt@dell>
+References: <20180328170327.5395-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180328170327.5395-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This series collects some pending defconfig patches
-from Enric, namely:
+On Wed, 28 Mar 2018, Enric Balletbo i Serra wrote:
 
-https://patchwork.kernel.org/patch/10302033/
-https://patchwork.kernel.org/patch/10247583/
-https://patchwork.kernel.org/patch/10269255/
+> Before this patch the enable signal was set before the PWM signal and
+> vice-versa on power off. This sequence is wrong, at least, it is on
+> the different panels datasheets that I checked, so I inverted the sequence
+> to follow the specs.
+> 
+> For reference the following panels have the mentioned sequence:
+>   - N133HSE-EA1 (Innolux)
+>   - N116BGE (Innolux)
+>   - N156BGE-L21 (Innolux)
+>   - B101EAN0 (Auo)
+>   - B101AW03 (Auo)
+>   - LTN101NT05 (Samsung)
+>   - CLAA101WA01A (Chunghwa)
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+> Acked-by: Jingoo Han <jingoohan1@gmail.com>
+> Acked-by: Thierry Reding <thierry.reding@gmail.com>
+> ---
+> Changes since v5:
+>  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
+> Changes since v4:
+>  - Rebase on top of mainline.
+>  - Add the acks from Daniel Thompson and Jingoo Han.
+> Changes since v3:
+>  - List the part numbers for the panel checked (Daniel Thompson)
+> Changes since v2:
+>  - Add this as a separate patch (Thierry Reding)
+> Changes since v1:
+>  - None
+> ---
+>  drivers/video/backlight/pwm_bl.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
 
-And adds some more defconfig changes, required to
-support other peripherals:
-
- * Touchscreen, touchpad and stylus
- * WiFi and Bluetooth
-
-Series tested on RK3399 Kevin Chromebook.
-
-Enric Balletbo i Serra (3):
-  arm64: defconfig: Enable typec-phy and extcon-usbc-cros-ec for rk3399
-  arm64: defconfig: Enable Rockchip io-domain driver
-  arm64: defconfig: Enable ChromeOS EC drivers for supported
-    Chromebooks.
-
-Ezequiel Garcia (4):
-  arm64: defconfig: Enable HID over I2C drivers
-  arm64: defconfig: Enable Atmel Maxtouch driver
-  arm64: defconfig: Enable Marvell WiFi-Ex PCIe driver
-  arm64: defconfig: Enable bluetooth USB support
-
- arch/arm64/configs/defconfig | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Applied, thanks.
 
 -- 
-2.16.3
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
