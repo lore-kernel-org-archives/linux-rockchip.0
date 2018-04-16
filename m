@@ -1,60 +1,70 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [RESEND PATCH v6 1/5] pwm-backlight: enable/disable the PWM
- before/after LCD enable toggle.
-Date: Mon, 16 Apr 2018 15:43:32 +0100
-Message-ID: <20180416144332.caww5vttzrzjlnkt@dell>
-References: <20180328170327.5395-1-enric.balletbo@collabora.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH 3/7] arm64: defconfig: Enable ChromeOS EC drivers for
+ supported Chromebooks.
+Date: Mon, 16 Apr 2018 11:39:58 -0300
+Message-ID: <20180416144002.15569-4-ezequiel@collabora.com>
+References: <20180416144002.15569-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180328170327.5395-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, groeck@chromium.org, linux-rockchip@lists.infradead.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180416144002.15569-1-ezequiel@collabora.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 28 Mar 2018, Enric Balletbo i Serra wrote:
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-> Before this patch the enable signal was set before the PWM signal and
-> vice-versa on power off. This sequence is wrong, at least, it is on
-> the different panels datasheets that I checked, so I inverted the sequence
-> to follow the specs.
-> 
-> For reference the following panels have the mentioned sequence:
->   - N133HSE-EA1 (Innolux)
->   - N116BGE (Innolux)
->   - N156BGE-L21 (Innolux)
->   - B101EAN0 (Auo)
->   - B101AW03 (Auo)
->   - LTN101NT05 (Samsung)
->   - CLAA101WA01A (Chunghwa)
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-> Acked-by: Jingoo Han <jingoohan1@gmail.com>
-> Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> ---
-> Changes since v5:
->  - Add Acked-by: Thierry Reding <thierry.reding@gmail.com>
-> Changes since v4:
->  - Rebase on top of mainline.
->  - Add the acks from Daniel Thompson and Jingoo Han.
-> Changes since v3:
->  - List the part numbers for the panel checked (Daniel Thompson)
-> Changes since v2:
->  - Add this as a separate patch (Thierry Reding)
-> Changes since v1:
->  - None
-> ---
->  drivers/video/backlight/pwm_bl.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
+Enable following drivers for merged devices:
+- ChromeOS EC RTC driver.
+- ChromeOS EC userspace interface.
+- ChromeOS EC light and proximity sensors.
+- ChromeOS EC Barometer Sensor driver.
 
-Applied, thanks.
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+ arch/arm64/configs/defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 7e3b3f0484b9..397bc0b42a86 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -363,6 +363,7 @@ CONFIG_MFD_AXP20X_RSB=y
+ CONFIG_MFD_CROS_EC=y
+ CONFIG_MFD_CROS_EC_I2C=y
+ CONFIG_MFD_CROS_EC_SPI=y
++CONFIG_MFD_CROS_EC_CHARDEV=m
+ CONFIG_MFD_EXYNOS_LPASS=m
+ CONFIG_MFD_HI6421_PMIC=y
+ CONFIG_MFD_HI655X_PMIC=y
+@@ -516,6 +517,7 @@ CONFIG_RTC_DRV_SUN6I=y
+ CONFIG_RTC_DRV_ARMADA38X=y
+ CONFIG_RTC_DRV_TEGRA=y
+ CONFIG_RTC_DRV_XGENE=y
++CONFIG_RTC_DRV_CROS_EC=y
+ CONFIG_DMADEVICES=y
+ CONFIG_DMA_BCM2835=m
+ CONFIG_K3_DMA=y
+@@ -576,6 +578,10 @@ CONFIG_TEGRA_MC=y
+ CONFIG_IIO=y
+ CONFIG_EXYNOS_ADC=y
+ CONFIG_ROCKCHIP_SARADC=m
++CONFIG_IIO_CROS_EC_SENSORS_CORE=m
++CONFIG_IIO_CROS_EC_SENSORS=m
++CONFIG_IIO_CROS_EC_LIGHT_PROX=m
++CONFIG_IIO_CROS_EC_BARO=m
+ CONFIG_PWM=y
+ CONFIG_PWM_BCM2835=m
+ CONFIG_PWM_CROS_EC=m
 -- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+2.16.3
