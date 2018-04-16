@@ -1,7 +1,7 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 4/7] arm64: defconfig: Enable HID over I2C drivers
-Date: Mon, 16 Apr 2018 11:39:59 -0300
-Message-ID: <20180416144002.15569-5-ezequiel@collabora.com>
+Subject: [PATCH 5/7] arm64: defconfig: Enable Atmel Maxtouch driver
+Date: Mon, 16 Apr 2018 11:40:00 -0300
+Message-ID: <20180416144002.15569-6-ezequiel@collabora.com>
 References: <20180416144002.15569-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,25 +21,26 @@ To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
 Cc: linux-rockchip@lists.infradead.org, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable the HID-I2C driver to support the stylus
-present in RK3399 Kevin Chromebooks.
+Enable the Atmel Maxtouch driver to support the touchscreen
+and touchpad present in RK3399 Kevin Chromebooks.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/configs/defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 397bc0b42a86..9b12f0ea0e35 100644
+index 9b12f0ea0e35..83856a047af9 100644
 --- a/arch/arm64/configs/defconfig
 +++ b/arch/arm64/configs/defconfig
-@@ -443,6 +443,7 @@ CONFIG_SND_SOC_SAMSUNG=y
- CONFIG_SND_SOC_RCAR=m
- CONFIG_SND_SOC_AK4613=m
- CONFIG_SND_SIMPLE_CARD=y
-+CONFIG_I2C_HID=m
- CONFIG_USB=y
- CONFIG_USB_OTG=y
- CONFIG_USB_XHCI_HCD=y
+@@ -253,6 +253,8 @@ CONFIG_INPUT_EVDEV=y
+ CONFIG_KEYBOARD_ADC=m
+ CONFIG_KEYBOARD_CROS_EC=y
+ CONFIG_KEYBOARD_GPIO=y
++CONFIG_INPUT_TOUCHSCREEN=y
++CONFIG_TOUCHSCREEN_ATMEL_MXT=m
+ CONFIG_INPUT_MISC=y
+ CONFIG_INPUT_PM8941_PWRKEY=y
+ CONFIG_INPUT_HISI_POWERKEY=y
 -- 
 2.16.3
