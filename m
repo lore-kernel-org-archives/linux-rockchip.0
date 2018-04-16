@@ -1,45 +1,51 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v6 28/30] drm/rockchip: Disable PSR from reboot notifier
-Date: Mon, 16 Apr 2018 13:12:07 +0000
-Message-ID: <CAAFQd5C_RhqSCfEXNPQ0zH-O1PGk6xGEdvzsSxnfz9kJ5G4Ceg@mail.gmail.com>
-References: <20180405095000.9756-1-enric.balletbo@collabora.com>
- <CGME20180405095117epcas2p2093448b49aab2abd6684bf689f8888d5@epcas2p2.samsung.com>
- <20180405095000.9756-29-enric.balletbo@collabora.com>
- <a9e436f8-34ec-123a-9c69-efabb4576bea@samsung.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH 2/7] arm64: defconfig: Enable Rockchip io-domain driver
+Date: Mon, 16 Apr 2018 11:39:57 -0300
+Message-ID: <20180416144002.15569-3-ezequiel@collabora.com>
+References: <20180416144002.15569-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <a9e436f8-34ec-123a-9c69-efabb4576bea@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: a.hajda@samsung.com
-Cc: David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Yakir Yang <ykk@rock-chips.com>, kernel@collabora.com, Marek Szyprowski <m.szyprowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, rydberg@bitmath.org, Krzysztof Kozlowski <krzk@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kgene@kernel.org, linux-input@vger.kernel.org, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, Caesar Wang <wxt@rock-chips.com>, Jeffy <jeffy.chen@rock-chips.com>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>, Mark yao <mark.yao@rock-chips.com>, =?UTF-8?B?546L5b6B5aKe?= <wzz@rock-chi>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180416144002.15569-1-ezequiel@collabora.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwKCk9uIE1vbiwgQXByIDE2LCAyMDE4IGF0IDY6NTcgUE0gQW5kcnplaiBIYWpk
-YSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4gd3JvdGU6Cgo+IE9uIDA1LjA0LjIwMTggMTE6NDksIEVu
-cmljIEJhbGxldGJvIGkgU2VycmEgd3JvdGU6Cj4gPiBGcm9tOiBUb21hc3ogRmlnYSA8dGZpZ2FA
-Y2hyb21pdW0ub3JnPgo+ID4KPiA+IEl0IGxvb2tzIGxpa2UgdGhlIGRyaXZlciBzdWJzeXN0ZW0g
-ZGV0YWNoZXMgZGV2aWNlcyBmcm9tIHBvd2VyIGRvbWFpbnMKPiA+IGF0IHNodXRkb3duIHdpdGhv
-dXQgY29uc2VudCBvZiB0aGUgZHJpdmVycy4KCj4gSXQgbG9va3MgYml0IHN0cmFuZ2UuIENvdWxk
-IHlvdSBlbGFib3JhdGUgbW9yZSBvbiBpdC4gQ291bGQgeW91IHNob3cgdGhlCj4gY29kZSBwZXJm
-b3JtaW5nIHRoZSBkZXRhY2g/CgpJdCBub3Qgb25seSBsb29rcyBzdHJhbmdlLCBidXQgaXQgaXMg
-c3RyYW5nZS4gVGhlIGNvZGUgd2FzIHByZXNlbnQgaW4gNC40OgoKaHR0cHM6Ly9lbGl4aXIuYm9v
-dGxpbi5jb20vbGludXgvdjQuNC4xMjgvc291cmNlL2RyaXZlcnMvYmFzZS9wbGF0Zm9ybS5jI0w1
-NTMKCmJ1dCB3YXMgYXBwYXJlbnRseSByZW1vdmVkIGluIDQuNToKCmh0dHBzOi8vZ2l0Lmtlcm5l
-bC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L25leHQvbGludXgtbmV4dC5naXQvY29tbWl0
-L2RyaXZlcnMvYmFzZS9wbGF0Zm9ybS5jP2g9bmV4dC0yMDE4MDQxNiZpZD0yZDMwYmIwYjM4ODlh
-ZGYwOWIzNDI3MjJiMmNlNTk2YzA3NjNiYzkzCgpTbyB3ZSBtaWdodCBub3QgbmVlZCB0aGlzIHBh
-dGNoIGFueW1vcmUuCgpCZXN0IHJlZ2FyZHMsClRvbWFzegpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+RnJvbTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNv
+bT4KCgpIZWlrbyBTdMO8Ym5lciBqdXN0aWZpZWQgcHJldHR5IHdlbGwgdGhlIGNoYW5nZSBpbiBj
+b21taXQgZTMzMGViODZiYTBiCigiQVJNOiBtdWx0aV92N19kZWZjb25maWc6IGVuYWJsZSBSb2Nr
+Y2hpcCBpby1kb21haW4gZHJpdmVyIikuIFRoaXMKY2hhbmdlIGlzIGFsc28gbmVlZGVkIGZvciBh
+cm02NCByb2NrY2hpcCBib2FyZHMsIHNvLCBkbyB0aGUgc2FtZSBmb3IgYXJtNjQuCgpUaGUgaW8t
+ZG9tYWluIGRyaXZlciBpcyBuZWNlc3NhcnkgdG8gbm90aWZ5IHRoZSBzb2MgYWJvdXQgdm9sdGFn
+ZXMKY2hhbmdlcyBoYXBwZW5pbmcgb24gc3VwcGx5aW5nIHJlZ3VsYXRvcnMuIFByb2JhYmx5IHRo
+ZSBtb3N0IGltcG9ydGFudAp1c2VyIHJpZ2h0IG5vdyBpcyB0aGUgbW1jIHR1bmluZyBjb2RlLCB3
+aGVyZSB0aGUgc29jIG5lZWRzIHRvIGdldApub3RpZmllZCB3aGVuIHRoZSB2b2x0YWdlIGlzIGRy
+b3BwZWQgdG8gdGhlIDEuOFYgcG9pbnQuCgpBcyB0aGlzIG9wdGlvbiBpcyBuZWNlc3NhcnkgdG8g
+c3VjY2Vzc2Z1bGx5IHR1bmUgVUhTIGNhcmRzIGV0YywgaXQKc2hvdWxkIGdldCBidWlsdCBpbi4g
+T3RoZXJ3aXNlLCB0dW5pbmcgd2lsbCBmYWlsIHdpdGgsCgogICBkd21tY19yb2NrY2hpcCBmZTMy
+MDAwMC5kd21tYzogQWxsIHBoYXNlcyBiYWQhCiAgIG1tYzA6IHR1bmluZyBleGVjdXRpb24gZmFp
+bGVkOiAtNQoKU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFs
+bGV0Ym9AY29sbGFib3JhLmNvbT4KQWNrZWQtYnk6IFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5
+QGFybS5jb20+Ci0tLQogYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZyB8IDIgKysKIDEgZmls
+ZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2NvbmZp
+Z3MvZGVmY29uZmlnIGIvYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZwppbmRleCBiZGQ1OTQz
+ODcyMzIuLjdlM2IzZjA0ODRiOSAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9jb25maWdzL2RlZmNv
+bmZpZworKysgYi9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnCkBAIC0zMzIsNiArMzMyLDgg
+QEAgQ09ORklHX0dQSU9fWEdFTkVfU0I9eQogQ09ORklHX0dQSU9fUENBOTUzWD15CiBDT05GSUdf
+R1BJT19QQ0E5NTNYX0lSUT15CiBDT05GSUdfR1BJT19NQVg3NzYyMD15CitDT05GSUdfUE9XRVJf
+QVZTPXkKK0NPTkZJR19ST0NLQ0hJUF9JT0RPTUFJTj15CiBDT05GSUdfUE9XRVJfUkVTRVRfTVNN
+PXkKIENPTkZJR19QT1dFUl9SRVNFVF9YR0VORT15CiBDT05GSUdfUE9XRVJfUkVTRVRfU1lTQ09O
+PXkKLS0gCjIuMTYuMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LWFybS1rZXJuZWwK
