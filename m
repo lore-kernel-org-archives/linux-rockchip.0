@@ -1,102 +1,48 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: fix VOP vblank race
-Date: Tue, 17 Apr 2018 09:28:27 +0800
-Message-ID: <22fcc7f7-c71d-09e0-accf-fb790cf24414@rock-chips.com>
-References: <20180328160351.23763-1-john@metanate.com>
- <38a49065-4667-4d91-3191-ec81b03cba44@rock-chips.com>
- <20180416174656.6c113081.john@metanate.com> <3779920.ZoukgOgWSN@phil>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v6 08/17] media: rkisp1: add capture device driver
+Date: Tue, 17 Apr 2018 08:44:14 +0000
+Message-ID: <CAAFQd5CF9-T24sw9fPw050G=fPha46DnCb8g6m7V2wtNVx_=1A@mail.gmail.com>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com> <20180308094807.9443-9-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <3779920.ZoukgOgWSN@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, John Keeping <john@metanate.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180308094807.9443-9-jacob-chen@iotwrt.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Chen Jacob <jacob2.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QXBwbGllZCB0byBkcm0tbWlzYy1uZXh0LiBUaGFua3PvvIEKCgrlnKggMjAxOC80LzE3IDU6NDMs
-IEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiBIaSBKb2huLAo+Cj4gQW0gTW9udGFnLCAxNi4gQXBy
-aWwgMjAxOCwgMTg6NDY6NTYgQ0VTVCBzY2hyaWViIEpvaG4gS2VlcGluZzoKPj4gSGkgU2FuZHks
-Cj4+Cj4+IE9uIFR1ZSwgMTAgQXByIDIwMTggMjA6NDA6MDYgKzA4MDAsIFNhbmR5IEh1YW5nIHdy
-b3RlOgo+Pgo+Pj4gUmV2aWV3ZWQtYnk6IFNhbmR5IGh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+
-Cj4+IFRoYW5rcyBmb3IgdGhlIHJldmlldywgYnV0IEkgZG9uJ3Qgc2VlIHRoaXMgaW4gZHJtLW1p
-c2MgeWV0LiAgQXJlIHlvdQo+PiBwbGFubmluZyB0byBwaWNrIHRoaXMgdXA/Cj4gSSB3YXMgb2Nj
-dXBpZWQgd2l0aCBtZXJnZS13aW5kb3cgc3R1ZmYgcmVjZW50bHksIGJ1dCBJIGd1ZXNzIGVpdGhl
-cgo+IFNhbmR5IG9yIG15c2VsZiBpcyBnb2luZyB0byBwaWNrIGl0IHVwIHNob3J0bHkuCj4KPgo+
-IEhlaWtvCj4KPj4+IOWcqCAyMDE4LzMvMjkgMDowMywgSm9obiBLZWVwaW5nIOWGmemBkzoKPj4+
-PiBXZSBoYXZlIHNlZW4gYSBjYXNlIG9mIGEgYmFkIHJlZmVyZW5jZSBjb3VudCBmb3IgdmJsYW5r
-cyB3aXRoIHRoZQo+Pj4+IFJvY2tjaGlwIFZPUDoKPj4+Pgo+Pj4+IAktLS0tLS0tLS0tLS1bIGN1
-dCBoZXJlIF0tLS0tLS0tLS0tLS0KPj4+PiAJV0FSTklORzogQ1BVOiAxIFBJRDogMzgzIGF0IGRy
-aXZlcnMvZ3B1L2RybS9kcm1faXJxLmM6MTE5OCBkcm1fdmJsYW5rX3B1dCsweDQwLzB4Y2MKPj4+
-PiAJTW9kdWxlcyBsaW5rZWQgaW46IGJyY21mbWFjIGJyY211dGlsCj4+Pj4gCUNQVTogMSBQSUQ6
-IDM4MyBDb21tOiBrd29ya2VyL3U4OjIgTm90IHRhaW50ZWQgNC45Ljc1LXJ0NjAgIzEKPj4+PiAJ
-SGFyZHdhcmUgbmFtZTogUm9ja2NoaXAgKERldmljZSBUcmVlKQo+Pj4+IAlXb3JrcXVldWU6IGV2
-ZW50c191bmJvdW5kIGZsaXBfd29ya2VyCj4+Pj4gCUJhY2t0cmFjZToKPj4+PiAJWzxjMDEwYjdi
-MD5dIChkdW1wX2JhY2t0cmFjZSkgZnJvbSBbPGMwMTBiYTRjPl0gKHNob3dfc3RhY2srMHgxOC8w
-eDFjKQo+Pj4+IAkgcjc6YzBiMWIxM2MgcjY6NjAwYjAwMTMgcjU6MDAwMDAwMDAgcjQ6YzBiMWIx
-M2MKPj4+PiAJWzxjMDEwYmEzND5dIChzaG93X3N0YWNrKSBmcm9tIFs8YzAzMmQyNDg+XSAoZHVt
-cF9zdGFjaysweDc4LzB4OTQpCj4+Pj4gCVs8YzAzMmQxZDA+XSAoZHVtcF9zdGFjaykgZnJvbSBb
-PGMwMTFlNmU4Pl0gKF9fd2FybisweGU0LzB4MTA0KQo+Pj4+IAkgcjc6MDAwMDAwMDkgcjY6YzAz
-Y2YyNmMgcjU6MDAwMDAwMDAgcjQ6MDAwMDAwMDAKPj4+PiAJWzxjMDExZTYwND5dIChfX3dhcm4p
-IGZyb20gWzxjMDExZTdjMD5dICh3YXJuX3Nsb3dwYXRoX251bGwrMHgyOC8weDMwKQo+Pj4+IAkg
-cjk6ZWViNDQzYTAgcjg6ZWViNDQzYzggcjc6ZWU4YTVlYzAgcjY6ZWU4YTVlYzAgcjU6ZWRiNDdm
-MDAgcjQ6ZWUwOTYyMDAKPj4+PiAJWzxjMDExZTc5OD5dICh3YXJuX3Nsb3dwYXRoX251bGwpIGZy
-b20gWzxjMDNjZjI2Yz5dIChkcm1fdmJsYW5rX3B1dCsweDQwLzB4Y2MpCj4+Pj4gCVs8YzAzY2Yy
-MmM+XSAoZHJtX3ZibGFua19wdXQpIGZyb20gWzxjMDNjZjMxMD5dIChkcm1fY3J0Y192Ymxhbmtf
-cHV0KzB4MTgvMHgxYykKPj4+PiAJIHI1OmVkYjQ3ZjAwIHI0OmVlM2M4YTgwCj4+Pj4gCVs8YzAz
-Y2YyZjg+XSAoZHJtX2NydGNfdmJsYW5rX3B1dCkgZnJvbSBbPGMwM2VmOWI0Pl0gKHZvcF9mYl91
-bnJlZl93b3JrZXIrMHgxOC8weDI0KQo+Pj4+IAlbPGMwM2VmOTljPl0gKHZvcF9mYl91bnJlZl93
-b3JrZXIpIGZyb20gWzxjMDNkZjE5ND5dIChmbGlwX3dvcmtlcisweDk4LzB4YjQpCj4+Pj4gCSBy
-NTplZGI0N2YwMCByNDplZWI0NDNhOAo+Pj4+IAlbPGMwM2RmMGZjPl0gKGZsaXBfd29ya2VyKSBm
-cm9tIFs8YzAxMzQ4MDg+XSAocHJvY2Vzc19vbmVfd29yaysweDFhOC8weDJmYykKPj4+PiAJIHI5
-OjAwMDAwMDAwIHI4OmVlODA3ZDAwIHI3OjAwMDAwMDAwIHI2OmVlODA5YzAwIHI1OmVlYjQ0M2E4
-IHI0OmVkZmU1ZjgwCj4+Pj4gCVs8YzAxMzQ2NjA+XSAocHJvY2Vzc19vbmVfd29yaykgZnJvbSBb
-PGMwMTM1OGVjPl0gKHdvcmtlcl90aHJlYWQrMHgyYWMvMHg0NTgpCj4+Pj4gCSByMTA6MDAwMDAw
-ODggcjk6ZWRmZTVmOTggcjg6ZWU4MDljMmMgcjc6YzBiMDQxMDAgcjY6ZWU4MDljMDAgcjU6ZWU4
-MDljMDAKPj4+PiAJIHI0OmVkZmU1ZjgwCj4+Pj4gCVs8YzAxMzU2NDA+XSAod29ya2VyX3RocmVh
-ZCkgZnJvbSBbPGMwMTNhMGJjPl0gKGt0aHJlYWQrMHhmYy8weDEwYykKPj4+PiAJIHIxMDowMDAw
-MDAwMCByOTowMDAwMDAwMCByODpjMDEzNTY0MCByNzplZGZlNWY4MCByNjowMDAwMDAwMCByNTpl
-ZGYwZTI0MAo+Pj4+IAkgcjQ6ZWU4YTQwMDAgcjM6ZWQxOTRlMDAKPj4+PiAJWzxjMDEzOWZjMD5d
-IChrdGhyZWFkKSBmcm9tIFs8YzAxMDdjYjg+XSAocmV0X2Zyb21fZm9yaysweDE0LzB4M2MpCj4+
-Pj4gCSByODowMDAwMDAwMCByNzowMDAwMDAwMCByNjowMDAwMDAwMCByNTpjMDEzOWZjMCByNDpl
-ZGYwZTI0MAo+Pj4+IAktLS1bIGVuZCB0cmFjZSAwMDAwMDAwMDAwMDAwMDAyIF0tLS0KPj4+Pgo+
-Pj4+IEl0IHNlZW1zIHRoYXQgdGhpcyBpcyBjYXVzZWQgYnkgdW5mb3J0dW5hdGUgdGltaW5nIGJl
-dHdlZW4KPj4+PiB2b3BfY3J0Y19hdG9taWNfZmx1c2goKSBhbmQgdm9wX2hhbmRsZV92Ymxhbmso
-KSBnaXZlbiB0aGUgZm9sbG93aW5nCj4+Pj4gb3JkZXJpbmc6Cj4+Pj4KPj4+PiAJYXRvbWljX2Zs
-dXNoCQloYW5kbGVfdmJsYW5rCj4+Pj4gCS0tLS0tLS0tLS0tLQkJLS0tLS0tLS0tLS0tLQo+Pj4+
-Cj4+Pj4gCWRybV9mbGlwX3dvcmtfcXVldWUKPj4+PiAJc2V0X2JpdAo+Pj4+IAkgICAgIAkJCWlm
-ICh0ZXN0X2FuZF9jbGVhcl9iaXQoLi4uKSkKPj4+PiAJICAgICAJCQkJZHJtX2ZsaXBfd29ya19j
-b21taXQKPj4+PiAJZHJtX3ZibGFua19nZXQKPj4+Pgo+Pj4+IFRoaXMgcmVzdWx0cyBpbiB2b3Bf
-ZmJfdW5yZWZfd29ya2VyIChjYWxsZWQgYXMgZmxpcCB3b3JrKSBkZWNyZW1lbnRpbmcKPj4+PiB0
-aGUgdmJsYW5rIHJlZmNvdW50IGJlZm9yZSBpdCBoYXMgYmVlbiBpbmNyZW1lbnRlZC4KPj4+Pgo+
-Pj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Cj4+Pj4g
-LS0tCj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8
-IDIgKy0KPj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
-LSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-Ywo+Pj4+IGluZGV4IDY3NTVhOWVlYTRiMi4uZDRlMTQwMGFlZGYzIDEwMDY0NAo+Pj4+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+PiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4gQEAgLTEwMTcs
-OSArMTAxNyw5IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19mbHVzaChzdHJ1Y3QgZHJt
-X2NydGMgKmNydGMsCj4+Pj4gICAgCQkJY29udGludWU7Cj4+Pj4gICAgCj4+Pj4gICAgCQlkcm1f
-ZnJhbWVidWZmZXJfZ2V0KG9sZF9wbGFuZV9zdGF0ZS0+ZmIpOwo+Pj4+ICsJCVdBUk5fT04oZHJt
-X2NydGNfdmJsYW5rX2dldChjcnRjKSAhPSAwKTsKPj4+PiAgICAJCWRybV9mbGlwX3dvcmtfcXVl
-dWUoJnZvcC0+ZmJfdW5yZWZfd29yaywgb2xkX3BsYW5lX3N0YXRlLT5mYik7Cj4+Pj4gICAgCQlz
-ZXRfYml0KFZPUF9QRU5ESU5HX0ZCX1VOUkVGLCAmdm9wLT5wZW5kaW5nKTsKPj4+PiAtCQlXQVJO
-X09OKGRybV9jcnRjX3ZibGFua19nZXQoY3J0YykgIT0gMCk7Cj4+Pj4gICAgCX0KPj4+PiAgICB9
-Cj4+Pj4gICAgICAKPj4+Cj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+Hi Jacob,
+
+On Thu, Mar 8, 2018 at 6:49 PM Jacob Chen <jacob-chen@iotwrt.com> wrote:
+
+> From: Jacob Chen <jacob2.chen@rock-chips.com>
+
+> This is the capture device interface driver that provides the v4l2
+> user interface. Frames can be received from ISP1.
+
+Thanks for the patch. Please find my comment inline.
+
+[snip]
+> +static int
+> +rkisp1_start_streaming(struct vb2_queue *queue, unsigned int count)
+> +{
+> +       struct rkisp1_stream *stream = queue->drv_priv;
+> +       struct rkisp1_vdev_node *node = &stream->vnode;
+> +       struct rkisp1_device *dev = stream->ispdev;
+> +       struct v4l2_device *v4l2_dev = &dev->v4l2_dev;
+> +       int ret;
+> +
+> +       if (WARN_ON(stream->state != RKISP1_STATE_READY))
+> +               goto return_queued_buf;
+
+We jump out with ret unitialized here. For reference, it triggers a
+compiler warning for me.
+
+Note that rather than initializing ret at its definition, I'd recommend
+adding an assignment before the goto statement. This will still let the
+compiler issue warnings, without assuming that the default value is correct.
+
+Best regards,
+Tomasz
