@@ -1,13 +1,15 @@
-From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] iommu/rockchip: make clock handling optional
-Date: Tue, 17 Apr 2018 16:27:36 +0200
-Message-ID: <CAFqH_531GBbpKtQQyU827Wn+Lf4uHbLJJtp=hZHkkiZUYX+g4w@mail.gmail.com>
-References: <20180417120915.31535-1-heiko@sntech.de>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Regression: HDMI stopped working on rk3399-sapphire in 4.17-rc1
+Date: Tue, 17 Apr 2018 19:23:29 +0200
+Message-ID: <CAAMcf8AEDE2p16WQHjwS85M=1aAfgW8cY+0E6GWKA5WSFGmejw@mail.gmail.com>
+References: <CAAMcf8DRkLJYCYtemri3L-SrPax4VJ4jvHG369MYcDAwWeOm8g@mail.gmail.com>
+ <22762165.vUi6oYY3Kd@phil>
+ <CAAMcf8DKcxHuMn78dHe-4Qn7XHvnQBEx6jaMm3aukrmMsBFVWw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180417120915.31535-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <CAAMcf8DKcxHuMn78dHe-4Qn7XHvnQBEx6jaMm3aukrmMsBFVWw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,59 +20,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, robin.murphy-5wv7dgnIgG8@public.gmane.org, tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-2018-04-17 14:09 GMT+02:00 Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>:
-> iommu clocks are optional, so the driver should not fail if they are not
-> present. Instead just set the number of clocks to 0, which the clk-blk APIs
-> can handle just fine.
+On Mon, Apr 16, 2018 at 11:49 PM, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> On Mon, Apr 16, 2018 at 11:41 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+>> Hi Vicente,
+>>
+>> Am Montag, 16. April 2018, 23:18:27 CEST schrieb Vicente Bergas:
+>>> Hello,
+>>>
+>>> first of all, I am not sure if this goes to
+>>> linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>>> or
+>>> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+>>> Please, tell me if I have chosen the wrong list.
+>>
+>> Best would be having both in the Cc list :-)
+>>
+>>
+>>> In 4.16-rc7 the HDMI video works with minor issues, but it is perfectly
+>>> usable. In 4.17-rc1 the HDMI port is not detected at all.
+>>>
+>>> Here are the messages from dmesg that I think are relevant:
+>>>
+>>> Linux version 4.16.0-rc7+ (vj@alarm) (gcc version 7.3.0 (GCC)) #15 SMP
+>>> Mon Mar 26 19:03:44 CEST 2018
+>>> iommu: Adding device ff8f0000.vop to group 0
+>>> iommu: Adding device ff900000.vop to group 1
+>>> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
+>>> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
+>>> rockchip-drm display-subsystem: failed to bind ff940000.hdmi (ops
+>>> dw_hdmi_rockchip_ops): -EPROBE_DEFER
+>>> rockchip-drm display-subsystem: master bind failed: -EPROBE_DEFER
+>>> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
+>>> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
+>>> dwhdmi-rockchip ff940000.hdmi: Detected HDMI TX controller v2.11a with
+>>> HDCP (DWC HDMI 2.0 TX PHY)
+>>> rockchip-drm display-subsystem: bound ff940000.hdmi (ops dw_hdmi_rockchip_ops)
+>>> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+>>> [drm] No driver support for vblank timestamp query.
+>>> Console: switching to colour frame buffer device 240x67
+>>> rockchip-drm display-subsystem: fb0:  frame buffer device
+>>> [drm] Initialized rockchip 1.0.0 20140818 for display-subsystem on minor 0
+>>>
+>>> Linux version 4.17.0-rc1+ (vj@alarm) (gcc version 7.3.0 (GCC)) #1 SMP
+>>> Mon Apr 16 19:42:50 CEST 2018
+>>> rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -ENOENT
+>>> rk_iommu: probe of ff8f3f00.iommu failed with error -ENOENT
+>>> rk_iommu ff903f00.iommu: Failed to get clk 'iface': -ENOENT
+>>> rk_iommu: probe of ff903f00.iommu failed with error -ENOENT
+>>> rockchip-drm display-subsystem: Linked as a consumer to ff8f0000.vop
+>>> rockchip-drm display-subsystem: Linked as a consumer to ff900000.vop
+>>> rockchip-drm display-subsystem: Linked as a consumer to ff940000.hdmi
+>>> rockchip-drm display-subsystem: master bind failed: -12
+>>> rockchip-vop: probe of ff900000.vop failed with error -12
+>>>
+>>>
+>>> While fixing this issue, I can help debugging and testing.
+>>
+>> I do belive
+>>         https://patchwork.codeaurora.org/patch/495129/
+>> should do the trick. Needs a respin to make it a bit more
+>> beatiful, but should restore your display output again nevertheless.
+>>
+>>
+>> Heiko
 >
-> Fixes: f2e3a5f557ad ("iommu/rockchip: Control clocks needed to access the IOMMU")
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> ---
-> changes in v2:
-> - keep it required in the binding for future variants
->   but optional in the code for backwards compatiblity
-> - follow Robin Murphy's beautification suggestion
+> Hi Heiko,
+> thanks for such a quick answer!
+> Tomorrow I'll give it a try.
 >
-> As the original changes breaks a lot of display support in 4.17-rc1,
-> this should abviously go in as fix into 4.17.
->
->  drivers/iommu/rockchip-iommu.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 5fc8656c60f9..422d22990289 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -1175,8 +1175,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
->         for (i = 0; i < iommu->num_clocks; ++i)
->                 iommu->clocks[i].id = rk_iommu_clocks[i];
->
-> +       /*
-> +        * iommu clocks should be present for all new devices and devicetrees
-> +        * but there are older devicetrees without clocks out in the wild.
-> +        * So clocks as optional for the time being.
-> +        */
->         err = devm_clk_bulk_get(iommu->dev, iommu->num_clocks, iommu->clocks);
-> -       if (err)
-> +       if (err == -ENOENT)
-> +               iommu->num_clocks = 0;
-> +       else if (err)
->                 return err;
->
->         err = clk_bulk_prepare(iommu->num_clocks, iommu->clocks);
-> --
-> 2.16.2
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> Regards,
+>   Vicente.
 
-Thanks to this patch my display is back :)
+Hi Heiko,
+just tested your v2 patch:
+http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020349.html
+and indeed the HDMI port was detected and was able to show me the console :)
 
-Tested-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+But, there have been several kernel stack traces, a lot of
+unresponsiveness and unable to start a framebuffer-based graphical
+mode.
+The first relevant error seems to be line 349 from dmesg:
+[CRTC:30:crtc-0] vblank wait timed out
+https://pastebin.com/YegEpAep
+
+Please, can somebody help?
+
+Regards,
+  Vicente.
