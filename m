@@ -1,93 +1,102 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Regression: HDMI stopped working on rk3399-sapphire in 4.17-rc1
-Date: Mon, 16 Apr 2018 23:49:52 +0200
-Message-ID: <CAAMcf8DKcxHuMn78dHe-4Qn7XHvnQBEx6jaMm3aukrmMsBFVWw@mail.gmail.com>
-References: <CAAMcf8DRkLJYCYtemri3L-SrPax4VJ4jvHG369MYcDAwWeOm8g@mail.gmail.com>
- <22762165.vUi6oYY3Kd@phil>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: fix VOP vblank race
+Date: Tue, 17 Apr 2018 09:28:27 +0800
+Message-ID: <22fcc7f7-c71d-09e0-accf-fb790cf24414@rock-chips.com>
+References: <20180328160351.23763-1-john@metanate.com>
+ <38a49065-4667-4d91-3191-ec81b03cba44@rock-chips.com>
+ <20180416174656.6c113081.john@metanate.com> <3779920.ZoukgOgWSN@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <22762165.vUi6oYY3Kd@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <3779920.ZoukgOgWSN@phil>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, John Keeping <john@metanate.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 16, 2018 at 11:41 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Hi Vicente,
->
-> Am Montag, 16. April 2018, 23:18:27 CEST schrieb Vicente Bergas:
->> Hello,
->>
->> first of all, I am not sure if this goes to
->> linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> or
->> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
->> Please, tell me if I have chosen the wrong list.
->
-> Best would be having both in the Cc list :-)
->
->
->> In 4.16-rc7 the HDMI video works with minor issues, but it is perfectly
->> usable. In 4.17-rc1 the HDMI port is not detected at all.
->>
->> Here are the messages from dmesg that I think are relevant:
->>
->> Linux version 4.16.0-rc7+ (vj@alarm) (gcc version 7.3.0 (GCC)) #15 SMP
->> Mon Mar 26 19:03:44 CEST 2018
->> iommu: Adding device ff8f0000.vop to group 0
->> iommu: Adding device ff900000.vop to group 1
->> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
->> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
->> rockchip-drm display-subsystem: failed to bind ff940000.hdmi (ops
->> dw_hdmi_rockchip_ops): -EPROBE_DEFER
->> rockchip-drm display-subsystem: master bind failed: -EPROBE_DEFER
->> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
->> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
->> dwhdmi-rockchip ff940000.hdmi: Detected HDMI TX controller v2.11a with
->> HDCP (DWC HDMI 2.0 TX PHY)
->> rockchip-drm display-subsystem: bound ff940000.hdmi (ops dw_hdmi_rockchip_ops)
->> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
->> [drm] No driver support for vblank timestamp query.
->> Console: switching to colour frame buffer device 240x67
->> rockchip-drm display-subsystem: fb0:  frame buffer device
->> [drm] Initialized rockchip 1.0.0 20140818 for display-subsystem on minor 0
->>
->> Linux version 4.17.0-rc1+ (vj@alarm) (gcc version 7.3.0 (GCC)) #1 SMP
->> Mon Apr 16 19:42:50 CEST 2018
->> rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -ENOENT
->> rk_iommu: probe of ff8f3f00.iommu failed with error -ENOENT
->> rk_iommu ff903f00.iommu: Failed to get clk 'iface': -ENOENT
->> rk_iommu: probe of ff903f00.iommu failed with error -ENOENT
->> rockchip-drm display-subsystem: Linked as a consumer to ff8f0000.vop
->> rockchip-drm display-subsystem: Linked as a consumer to ff900000.vop
->> rockchip-drm display-subsystem: Linked as a consumer to ff940000.hdmi
->> rockchip-drm display-subsystem: master bind failed: -12
->> rockchip-vop: probe of ff900000.vop failed with error -12
->>
->>
->> While fixing this issue, I can help debugging and testing.
->
-> I do belive
->         https://patchwork.codeaurora.org/patch/495129/
-> should do the trick. Needs a respin to make it a bit more
-> beatiful, but should restore your display output again nevertheless.
->
->
-> Heiko
-
-Hi Heiko,
-thanks for such a quick answer!
-Tomorrow I'll give it a try.
-
-Regards,
-  Vicente.
+QXBwbGllZCB0byBkcm0tbWlzYy1uZXh0LiBUaGFua3PvvIEKCgrlnKggMjAxOC80LzE3IDU6NDMs
+IEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiBIaSBKb2huLAo+Cj4gQW0gTW9udGFnLCAxNi4gQXBy
+aWwgMjAxOCwgMTg6NDY6NTYgQ0VTVCBzY2hyaWViIEpvaG4gS2VlcGluZzoKPj4gSGkgU2FuZHks
+Cj4+Cj4+IE9uIFR1ZSwgMTAgQXByIDIwMTggMjA6NDA6MDYgKzA4MDAsIFNhbmR5IEh1YW5nIHdy
+b3RlOgo+Pgo+Pj4gUmV2aWV3ZWQtYnk6IFNhbmR5IGh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+
+Cj4+IFRoYW5rcyBmb3IgdGhlIHJldmlldywgYnV0IEkgZG9uJ3Qgc2VlIHRoaXMgaW4gZHJtLW1p
+c2MgeWV0LiAgQXJlIHlvdQo+PiBwbGFubmluZyB0byBwaWNrIHRoaXMgdXA/Cj4gSSB3YXMgb2Nj
+dXBpZWQgd2l0aCBtZXJnZS13aW5kb3cgc3R1ZmYgcmVjZW50bHksIGJ1dCBJIGd1ZXNzIGVpdGhl
+cgo+IFNhbmR5IG9yIG15c2VsZiBpcyBnb2luZyB0byBwaWNrIGl0IHVwIHNob3J0bHkuCj4KPgo+
+IEhlaWtvCj4KPj4+IOWcqCAyMDE4LzMvMjkgMDowMywgSm9obiBLZWVwaW5nIOWGmemBkzoKPj4+
+PiBXZSBoYXZlIHNlZW4gYSBjYXNlIG9mIGEgYmFkIHJlZmVyZW5jZSBjb3VudCBmb3IgdmJsYW5r
+cyB3aXRoIHRoZQo+Pj4+IFJvY2tjaGlwIFZPUDoKPj4+Pgo+Pj4+IAktLS0tLS0tLS0tLS1bIGN1
+dCBoZXJlIF0tLS0tLS0tLS0tLS0KPj4+PiAJV0FSTklORzogQ1BVOiAxIFBJRDogMzgzIGF0IGRy
+aXZlcnMvZ3B1L2RybS9kcm1faXJxLmM6MTE5OCBkcm1fdmJsYW5rX3B1dCsweDQwLzB4Y2MKPj4+
+PiAJTW9kdWxlcyBsaW5rZWQgaW46IGJyY21mbWFjIGJyY211dGlsCj4+Pj4gCUNQVTogMSBQSUQ6
+IDM4MyBDb21tOiBrd29ya2VyL3U4OjIgTm90IHRhaW50ZWQgNC45Ljc1LXJ0NjAgIzEKPj4+PiAJ
+SGFyZHdhcmUgbmFtZTogUm9ja2NoaXAgKERldmljZSBUcmVlKQo+Pj4+IAlXb3JrcXVldWU6IGV2
+ZW50c191bmJvdW5kIGZsaXBfd29ya2VyCj4+Pj4gCUJhY2t0cmFjZToKPj4+PiAJWzxjMDEwYjdi
+MD5dIChkdW1wX2JhY2t0cmFjZSkgZnJvbSBbPGMwMTBiYTRjPl0gKHNob3dfc3RhY2srMHgxOC8w
+eDFjKQo+Pj4+IAkgcjc6YzBiMWIxM2MgcjY6NjAwYjAwMTMgcjU6MDAwMDAwMDAgcjQ6YzBiMWIx
+M2MKPj4+PiAJWzxjMDEwYmEzND5dIChzaG93X3N0YWNrKSBmcm9tIFs8YzAzMmQyNDg+XSAoZHVt
+cF9zdGFjaysweDc4LzB4OTQpCj4+Pj4gCVs8YzAzMmQxZDA+XSAoZHVtcF9zdGFjaykgZnJvbSBb
+PGMwMTFlNmU4Pl0gKF9fd2FybisweGU0LzB4MTA0KQo+Pj4+IAkgcjc6MDAwMDAwMDkgcjY6YzAz
+Y2YyNmMgcjU6MDAwMDAwMDAgcjQ6MDAwMDAwMDAKPj4+PiAJWzxjMDExZTYwND5dIChfX3dhcm4p
+IGZyb20gWzxjMDExZTdjMD5dICh3YXJuX3Nsb3dwYXRoX251bGwrMHgyOC8weDMwKQo+Pj4+IAkg
+cjk6ZWViNDQzYTAgcjg6ZWViNDQzYzggcjc6ZWU4YTVlYzAgcjY6ZWU4YTVlYzAgcjU6ZWRiNDdm
+MDAgcjQ6ZWUwOTYyMDAKPj4+PiAJWzxjMDExZTc5OD5dICh3YXJuX3Nsb3dwYXRoX251bGwpIGZy
+b20gWzxjMDNjZjI2Yz5dIChkcm1fdmJsYW5rX3B1dCsweDQwLzB4Y2MpCj4+Pj4gCVs8YzAzY2Yy
+MmM+XSAoZHJtX3ZibGFua19wdXQpIGZyb20gWzxjMDNjZjMxMD5dIChkcm1fY3J0Y192Ymxhbmtf
+cHV0KzB4MTgvMHgxYykKPj4+PiAJIHI1OmVkYjQ3ZjAwIHI0OmVlM2M4YTgwCj4+Pj4gCVs8YzAz
+Y2YyZjg+XSAoZHJtX2NydGNfdmJsYW5rX3B1dCkgZnJvbSBbPGMwM2VmOWI0Pl0gKHZvcF9mYl91
+bnJlZl93b3JrZXIrMHgxOC8weDI0KQo+Pj4+IAlbPGMwM2VmOTljPl0gKHZvcF9mYl91bnJlZl93
+b3JrZXIpIGZyb20gWzxjMDNkZjE5ND5dIChmbGlwX3dvcmtlcisweDk4LzB4YjQpCj4+Pj4gCSBy
+NTplZGI0N2YwMCByNDplZWI0NDNhOAo+Pj4+IAlbPGMwM2RmMGZjPl0gKGZsaXBfd29ya2VyKSBm
+cm9tIFs8YzAxMzQ4MDg+XSAocHJvY2Vzc19vbmVfd29yaysweDFhOC8weDJmYykKPj4+PiAJIHI5
+OjAwMDAwMDAwIHI4OmVlODA3ZDAwIHI3OjAwMDAwMDAwIHI2OmVlODA5YzAwIHI1OmVlYjQ0M2E4
+IHI0OmVkZmU1ZjgwCj4+Pj4gCVs8YzAxMzQ2NjA+XSAocHJvY2Vzc19vbmVfd29yaykgZnJvbSBb
+PGMwMTM1OGVjPl0gKHdvcmtlcl90aHJlYWQrMHgyYWMvMHg0NTgpCj4+Pj4gCSByMTA6MDAwMDAw
+ODggcjk6ZWRmZTVmOTggcjg6ZWU4MDljMmMgcjc6YzBiMDQxMDAgcjY6ZWU4MDljMDAgcjU6ZWU4
+MDljMDAKPj4+PiAJIHI0OmVkZmU1ZjgwCj4+Pj4gCVs8YzAxMzU2NDA+XSAod29ya2VyX3RocmVh
+ZCkgZnJvbSBbPGMwMTNhMGJjPl0gKGt0aHJlYWQrMHhmYy8weDEwYykKPj4+PiAJIHIxMDowMDAw
+MDAwMCByOTowMDAwMDAwMCByODpjMDEzNTY0MCByNzplZGZlNWY4MCByNjowMDAwMDAwMCByNTpl
+ZGYwZTI0MAo+Pj4+IAkgcjQ6ZWU4YTQwMDAgcjM6ZWQxOTRlMDAKPj4+PiAJWzxjMDEzOWZjMD5d
+IChrdGhyZWFkKSBmcm9tIFs8YzAxMDdjYjg+XSAocmV0X2Zyb21fZm9yaysweDE0LzB4M2MpCj4+
+Pj4gCSByODowMDAwMDAwMCByNzowMDAwMDAwMCByNjowMDAwMDAwMCByNTpjMDEzOWZjMCByNDpl
+ZGYwZTI0MAo+Pj4+IAktLS1bIGVuZCB0cmFjZSAwMDAwMDAwMDAwMDAwMDAyIF0tLS0KPj4+Pgo+
+Pj4+IEl0IHNlZW1zIHRoYXQgdGhpcyBpcyBjYXVzZWQgYnkgdW5mb3J0dW5hdGUgdGltaW5nIGJl
+dHdlZW4KPj4+PiB2b3BfY3J0Y19hdG9taWNfZmx1c2goKSBhbmQgdm9wX2hhbmRsZV92Ymxhbmso
+KSBnaXZlbiB0aGUgZm9sbG93aW5nCj4+Pj4gb3JkZXJpbmc6Cj4+Pj4KPj4+PiAJYXRvbWljX2Zs
+dXNoCQloYW5kbGVfdmJsYW5rCj4+Pj4gCS0tLS0tLS0tLS0tLQkJLS0tLS0tLS0tLS0tLQo+Pj4+
+Cj4+Pj4gCWRybV9mbGlwX3dvcmtfcXVldWUKPj4+PiAJc2V0X2JpdAo+Pj4+IAkgICAgIAkJCWlm
+ICh0ZXN0X2FuZF9jbGVhcl9iaXQoLi4uKSkKPj4+PiAJICAgICAJCQkJZHJtX2ZsaXBfd29ya19j
+b21taXQKPj4+PiAJZHJtX3ZibGFua19nZXQKPj4+Pgo+Pj4+IFRoaXMgcmVzdWx0cyBpbiB2b3Bf
+ZmJfdW5yZWZfd29ya2VyIChjYWxsZWQgYXMgZmxpcCB3b3JrKSBkZWNyZW1lbnRpbmcKPj4+PiB0
+aGUgdmJsYW5rIHJlZmNvdW50IGJlZm9yZSBpdCBoYXMgYmVlbiBpbmNyZW1lbnRlZC4KPj4+Pgo+
+Pj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Cj4+Pj4g
+LS0tCj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8
+IDIgKy0KPj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
+LSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+Ywo+Pj4+IGluZGV4IDY3NTVhOWVlYTRiMi4uZDRlMTQwMGFlZGYzIDEwMDY0NAo+Pj4+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+PiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4gQEAgLTEwMTcs
+OSArMTAxNyw5IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19mbHVzaChzdHJ1Y3QgZHJt
+X2NydGMgKmNydGMsCj4+Pj4gICAgCQkJY29udGludWU7Cj4+Pj4gICAgCj4+Pj4gICAgCQlkcm1f
+ZnJhbWVidWZmZXJfZ2V0KG9sZF9wbGFuZV9zdGF0ZS0+ZmIpOwo+Pj4+ICsJCVdBUk5fT04oZHJt
+X2NydGNfdmJsYW5rX2dldChjcnRjKSAhPSAwKTsKPj4+PiAgICAJCWRybV9mbGlwX3dvcmtfcXVl
+dWUoJnZvcC0+ZmJfdW5yZWZfd29yaywgb2xkX3BsYW5lX3N0YXRlLT5mYik7Cj4+Pj4gICAgCQlz
+ZXRfYml0KFZPUF9QRU5ESU5HX0ZCX1VOUkVGLCAmdm9wLT5wZW5kaW5nKTsKPj4+PiAtCQlXQVJO
+X09OKGRybV9jcnRjX3ZibGFua19nZXQoY3J0YykgIT0gMCk7Cj4+Pj4gICAgCX0KPj4+PiAgICB9
+Cj4+Pj4gICAgICAKPj4+Cj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
