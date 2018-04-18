@@ -1,141 +1,145 @@
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH v3 1/5] clk: Extract OF clock helpers in <linux/of_clk.h>
-Date: Wed, 18 Apr 2018 16:50:01 +0200
-Message-ID: <1524063005-1716-2-git-send-email-geert+renesas@glider.be>
-References: <1524063005-1716-1-git-send-email-geert+renesas@glider.be>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1524063005-1716-1-git-send-email-geert+renesas@glider.be>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] drm: Print unadorned pointers
+Date: Wed, 18 Apr 2018 17:52:09 +0200
+Message-ID: <20180418155209.GA1634@kroah.com>
+References: <20180418092450.13798-1-abrodkin@synopsys.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20180418092450.13798-1-abrodkin@synopsys.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Alexey Brodkin <Alexey.Brodkin@synopsys.com>
+Cc: amd-gfx@lists.freedesktop.org, Tom Lendacky <thomas.lendacky@amd.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, Russell King <linux@armlinux.org.uk>, Cihangir Akturk <cakturk@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>, Ingo Molnar <mingo@kernel.org>, linux-kernel@vger.kernel.org, Thomas Hellstrom <thellstrom@vmware.com>, Vincent Abriou <vincent.abriou@st.com>, "Jerry (Fangzhi) Zuo" <Jerry.Zuo@amd.com>, Krzysztof Kozlowski <krzk@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Roger He <Hongbo.He@amd.com>, Dave Airlie <airlied@redhat.com>, Borislav Petkov <bp@suse.de>, Arnd Bergmann <arnd@arndb.de>, "Leo (Sunpeng) Li" <sunpeng.li@amd.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-rockchip@lists.infradead.
 List-Id: linux-rockchip.vger.kernel.org
 
-The use of of_clk_get_parent_{count,name}() and of_clk_init() is not
-limited to clock providers.
-
-Hence move these helpers into their own header file, so callers that are
-not clock providers no longer have to include <linux/clk-provider.h>.
-
-Suggested-by: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-v3:
-  - Add Reviewed-by,
-  - Add SPDX-License-Identifier,
-  - Add to clock section in MAINTAINERS (note that Rob is still listed
-    as a maintainer, too, due to the include/linux/of*.h catch-all
-    rule),
-
-v2:
-  - New.
----
- MAINTAINERS                  |  1 +
- include/linux/clk-provider.h | 14 +-------------
- include/linux/of_clk.h       | 30 ++++++++++++++++++++++++++++++
- 3 files changed, 32 insertions(+), 13 deletions(-)
- create mode 100644 include/linux/of_clk.h
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 50927cba875771e8..abf08b50a85d969d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3556,6 +3556,7 @@ F:	drivers/clk/
- X:	drivers/clk/clkdev.c
- F:	include/linux/clk-pr*
- F:	include/linux/clk/
-+F:	include/linux/of_clk.h
- 
- COMMON INTERNET FILE SYSTEM (CIFS)
- M:	Steve French <sfrench@samba.org>
-diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-index 210a890008f9e129..61cb4729f22acd6b 100644
---- a/include/linux/clk-provider.h
-+++ b/include/linux/clk-provider.h
-@@ -13,6 +13,7 @@
- 
- #include <linux/io.h>
- #include <linux/of.h>
-+#include <linux/of_clk.h>
- 
- #ifdef CONFIG_COMMON_CLK
- 
-@@ -890,13 +891,10 @@ struct clk_hw *of_clk_hw_simple_get(struct of_phandle_args *clkspec,
- struct clk *of_clk_src_onecell_get(struct of_phandle_args *clkspec, void *data);
- struct clk_hw *of_clk_hw_onecell_get(struct of_phandle_args *clkspec,
- 				     void *data);
--unsigned int of_clk_get_parent_count(struct device_node *np);
- int of_clk_parent_fill(struct device_node *np, const char **parents,
- 		       unsigned int size);
--const char *of_clk_get_parent_name(struct device_node *np, int index);
- int of_clk_detect_critical(struct device_node *np, int index,
- 			    unsigned long *flags);
--void of_clk_init(const struct of_device_id *matches);
- 
- #else /* !CONFIG_OF */
- 
-@@ -943,26 +941,16 @@ of_clk_hw_onecell_get(struct of_phandle_args *clkspec, void *data)
- {
- 	return ERR_PTR(-ENOENT);
- }
--static inline unsigned int of_clk_get_parent_count(struct device_node *np)
--{
--	return 0;
--}
- static inline int of_clk_parent_fill(struct device_node *np,
- 				     const char **parents, unsigned int size)
- {
- 	return 0;
- }
--static inline const char *of_clk_get_parent_name(struct device_node *np,
--						 int index)
--{
--	return NULL;
--}
- static inline int of_clk_detect_critical(struct device_node *np, int index,
- 					  unsigned long *flags)
- {
- 	return 0;
- }
--static inline void of_clk_init(const struct of_device_id *matches) {}
- #endif /* CONFIG_OF */
- 
- /*
-diff --git a/include/linux/of_clk.h b/include/linux/of_clk.h
-new file mode 100644
-index 0000000000000000..b27da9f164cbd221
---- /dev/null
-+++ b/include/linux/of_clk.h
-@@ -0,0 +1,30 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * OF clock helpers
-+ */
-+
-+#ifndef __LINUX_OF_CLK_H
-+#define __LINUX_OF_CLK_H
-+
-+#if defined(CONFIG_COMMON_CLK) && defined(CONFIG_OF)
-+
-+unsigned int of_clk_get_parent_count(struct device_node *np);
-+const char *of_clk_get_parent_name(struct device_node *np, int index);
-+void of_clk_init(const struct of_device_id *matches);
-+
-+#else /* !CONFIG_COMMON_CLK || !CONFIG_OF */
-+
-+static inline unsigned int of_clk_get_parent_count(struct device_node *np)
-+{
-+	return 0;
-+}
-+static inline const char *of_clk_get_parent_name(struct device_node *np,
-+						 int index)
-+{
-+	return NULL;
-+}
-+static inline void of_clk_init(const struct of_device_id *matches) {}
-+
-+#endif /* !CONFIG_COMMON_CLK || !CONFIG_OF */
-+
-+#endif /* __LINUX_OF_CLK_H */
--- 
-2.7.4
+T24gV2VkLCBBcHIgMTgsIDIwMTggYXQgMTI6MjQ6NTBQTSArMDMwMCwgQWxleGV5IEJyb2RraW4g
+d3JvdGU6Cj4gQWZ0ZXIgY29tbWl0IGFkNjdiNzQgKCJwcmludGs6IGhhc2ggYWRkcmVzc2VzIHBy
+aW50ZWQgd2l0aCAlcCIpCj4gcG9pbnRlcnMgYXJlIGJlaW5nIGhhc2hlZCB3aGVuIHByaW50ZWQu
+IEhvd2V2ZXIsIHRoaXMgbWFrZXMKPiBkZWJ1ZyBvdXRwdXQgY29tcGxldGVseSB1c2VsZXNzLiBT
+d2l0Y2ggdG8gJXB4IGluIG9yZGVyIHRvIHNlZSB0aGUKPiB1bmFkb3JuZWQga2VybmVsIHBvaW50
+ZXJzLgo+IAo+IFRoaXMgd2FzIGRvbmUgd2l0aCB0aGUgZm9sbG93aW5nIG9uZS1saW5lcjoKPiAg
+ZmluZCBkcml2ZXJzL2dwdS9kcm0gLXR5cGUgZiAtbmFtZSAiKi5jIiAtZXhlYyBzZWQgLXIgLWkg
+Jy9EUk1fREVCVUd8S0VSTl9ERUJVR3xwcl9kZWJ1Zy8gcy8lcFxiLyVweC9nJyB7fSArCj4gCj4g
+U2lnbmVkLW9mZi1ieTogQWxleGV5IEJyb2RraW4gPGFicm9ka2luQHN5bm9wc3lzLmNvbT4KPiBD
+YzogQm9yaXNsYXYgUGV0a292IDxicEBzdXNlLmRlPgo+IENjOiBUb2JpbiBDLiBIYXJkaW5nIDxt
+ZUB0b2Jpbi5jYz4KPiBDYzogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIuZGV1Y2hlckBhbWQuY29t
+Pgo+IENjOiBBbmRyZXkgR3JvZHpvdnNreSA8YW5kcmV5Lmdyb2R6b3Zza3lAYW1kLmNvbT4KPiBD
+YzogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KPiBDYzogQmVuamFtaW4gR2FpZ25hcmQg
+PGJlbmphbWluLmdhaWduYXJkQGxpbmFyby5vcmc+Cj4gQ2M6IENoZW4tWXUgVHNhaSA8d2Vuc0Bj
+c2llLm9yZz4KPiBDYzogQ2hyaXN0aWFuIEdtZWluZXIgPGNocmlzdGlhbi5nbWVpbmVyQGdtYWls
+LmNvbT4KPiBDYzogIkNocmlzdGlhbiBLw7ZuaWciIDxjaHJpc3RpYW4ua29lbmlnQGFtZC5jb20+
+Cj4gQ2M6IENpaGFuZ2lyIEFrdHVyayA8Y2FrdHVya0BnbWFpbC5jb20+Cj4gQ2M6IENLIEh1IDxj
+ay5odUBtZWRpYXRlay5jb20+Cj4gQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3
+bGwuY2g+Cj4gQ2M6IERhdmUgQWlybGllIDxhaXJsaWVkQHJlZGhhdC5jb20+Cj4gQ2M6IERhdmlk
+IEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiBDYzogIkRhdmlkIChDaHVuTWluZykgWmhvdSIg
+PERhdmlkMS5aaG91QGFtZC5jb20+Cj4gQ2M6IEdlcmQgSG9mZm1hbm4gPGtyYXhlbEByZWRoYXQu
+Y29tPgo+IENjOiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3Jn
+Pgo+IENjOiBHdXN0YXZvIFBhZG92YW4gPGd1c3Rhdm9AcGFkb3Zhbi5vcmc+Cj4gQ2M6IEhhcnJ5
+IFdlbnRsYW5kIDxoYXJyeS53ZW50bGFuZEBhbWQuY29tPgo+IENjOiAiSGVpa28gU3TDvGJuZXIi
+IDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IEluZ28gTW9sbmFyIDxtaW5nb0BrZXJuZWwub3JnPgo+
+IENjOiBKYW5pIE5pa3VsYSA8amFuaS5uaWt1bGFAbGludXguaW50ZWwuY29tPgo+IENjOiAiSmVy
+cnkgKEZhbmd6aGkpIFp1byIgPEplcnJ5Llp1b0BhbWQuY29tPgo+IENjOiBKb29uYXMgTGFodGlu
+ZW4gPGpvb25hcy5sYWh0aW5lbkBsaW51eC5pbnRlbC5jb20+Cj4gQ2M6IEtyenlzenRvZiBLb3ps
+b3dza2kgPGtyemtAa2VybmVsLm9yZz4KPiBDYzogIkxlbyAoU3VucGVuZykgTGkiIDxzdW5wZW5n
+LmxpQGFtZC5jb20+Cj4gQ2M6IEx1Y2FzIFN0YWNoIDxsLnN0YWNoQHBlbmd1dHJvbml4LmRlPgo+
+IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29t
+Pgo+IENjOiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgo+IENjOiBN
+YXhpbWUgUmlwYXJkIDxtYXhpbWUucmlwYXJkQGJvb3RsaW4uY29tPgo+IENjOiAiTWljaGVsIETD
+pG56ZXIiIDxtaWNoZWwuZGFlbnplckBhbWQuY29tPgo+IENjOiBPZGVkIEdhYmJheSA8b2RlZC5n
+YWJiYXlAZ21haWwuY29tPgo+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4
+LmRlPgo+IENjOiBSb2IgQ2xhcmsgPHJvYmRjbGFya0BnbWFpbC5jb20+Cj4gQ2M6IFJvZHJpZ28g
+Vml2aSA8cm9kcmlnby52aXZpQGludGVsLmNvbT4KPiBDYzogUm9nZXIgSGUgPEhvbmdiby5IZUBh
+bWQuY29tPgo+IENjOiBSb21hbiBMaSA8Um9tYW4uTGlAYW1kLmNvbT4KPiBDYzogUnVzc2VsbCBL
+aW5nIDxsaW51eEBhcm1saW51eC5vcmcudWs+Cj4gQ2M6IFNhbXVlbCBMaSA8U2FtdWVsLkxpQGFt
+ZC5jb20+Cj4gQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gQ2M6IFNlYW4g
+UGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IENjOiBTaGlyaXNoIFMgPHNoaXJpc2guc0Bh
+bWQuY29tPgo+IENjOiBTaW5jbGFpciBZZWggPHN5ZWhAdm13YXJlLmNvbT4KPiBDYzogVGhvbWFz
+IEhlbGxzdHJvbSA8dGhlbGxzdHJvbUB2bXdhcmUuY29tPgo+IENjOiBUb20gTGVuZGFja3kgPHRo
+b21hcy5sZW5kYWNreUBhbWQuY29tPgo+IENjOiBUb255IENoZW5nIDxUb255LkNoZW5nQGFtZC5j
+b20+Cj4gQ2M6IFZpbmNlbnQgQWJyaW91IDx2aW5jZW50LmFicmlvdUBzdC5jb20+Cj4gQ2M6IFZN
+d2FyZSBHcmFwaGljcyA8bGludXgtZ3JhcGhpY3MtbWFpbnRhaW5lckB2bXdhcmUuY29tPgo+IENj
+OiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtYXJtLW1z
+bUB2Z2VyLmtlcm5lbC5vcmcKPiBDYzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwo+IENj
+OiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogZXRuYXZpdkBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+PiBDYzogZnJlZWRyZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IENjOiBhbWQtZ2Z4QGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwo+IENjOiBpbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4g
+Q2M6IHZpcnR1YWxpemF0aW9uQGxpc3RzLmxpbnV4LWZvdW5kYXRpb24ub3JnCj4gLS0tCj4gIGRy
+aXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9hbWRrZmRfZ3B1dm0uYyAgIHwgMTQgKysr
+LS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZGlzcGxheS5jICAgICAg
+ICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1ka2ZkL2tmZF9jaGFyZGV2LmMgICAg
+ICAgICAgIHwgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRrZmQva2ZkX2RiZ2Rldi5j
+ICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGtmZC9rZmRfZGV2
+aWNlLmMgICAgICAgICAgICB8IDEwICsrLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1ka2Zk
+L2tmZF9kb29yYmVsbC5jICAgICAgICAgIHwgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2FtZC9h
+bWRrZmQva2ZkX2V2ZW50cy5jICAgICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+YW1kL2FtZGtmZC9rZmRfa2VybmVsX3F1ZXVlLmMgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1
+L2RybS9hbWQvYW1ka2ZkL2tmZF9wcm9jZXNzLmMgICAgICAgICAgIHwgIDQgKy0KPiAgZHJpdmVy
+cy9ncHUvZHJtL2FtZC9hbWRrZmQva2ZkX3F1ZXVlLmMgICAgICAgICAgICAgfCAxOCArKysrLS0t
+LS0KPiAgZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG0uYyAg
+fCAxNCArKystLS0tCj4gIC4uLi9hbWQvZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtX21zdF90
+eXBlcy5jICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZ2VtLmMg
+ICAgICAgICAgICAgICAgfCAxMiArKystLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWMu
+YyAgICAgICAgICAgICAgICAgICAgICAgfCA0NCArKysrKysrKysrKy0tLS0tLS0tLS0tCj4gIGRy
+aXZlcnMvZ3B1L2RybS9kcm1fYnVmcy5jICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDggKyst
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2RwX21zdF90b3BvbG9neS5jICAgICAgICAgICAgICB8
+ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fbGVhc2UuYyAgICAgICAgICAgICAgICAgICAg
+ICAgIHwgIDYgKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fbG9jay5jICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9zY2F0dGVyLmMgICAgICAg
+ICAgICAgICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXRuYXZpdi9ldG5hdml2
+X2Rydi5jICAgICAgICAgICAgICB8ICA2ICstLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTgxMC9pODEw
+X2RtYS5jICAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1
+L2k5MTVfcGVyZi5jICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
+L2k5MTUvaW50ZWxfZGlzcGxheS5jICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dw
+dS9kcm0vaTkxNS9pbnRlbF9ndWNfY3QuYyAgICAgICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZl
+cnMvZ3B1L2RybS9pOTE1L2ludGVsX2d1Y19zdWJtaXNzaW9uLmMgICAgICAgIHwgIDIgKy0KPiAg
+ZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfdWNfZncuYyAgICAgICAgICAgICAgICAgfCAgMiAr
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyAgICAgICAgICAgICB8
+ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tZ2EvbWdhX3dhcnAuYyAgICAgICAgICAgICAgICAg
+ICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21zbS9tc21fZHJ2LmMgICAgICAgICAgICAg
+ICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vcXhsL3F4bF9jbWQuYyAgICAgICAg
+ICAgICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9xeGwvcXhsX2ZiLmMgICAg
+ICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3F4bC9xeGxfdHRt
+LmMgICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vcmFkZW9u
+L3JhZGVvbl9kaXNwbGF5LmMgICAgICAgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9y
+YWRlb24vcmFkZW9uX2RwX21zdC5jICAgICAgICAgICAgIHwgMTIgKysrLS0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9yYWRlb24vcmFkZW9uX29iamVjdC5jICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jICAgICAgfCAgMiArLQo+
+ICBkcml2ZXJzL2dwdS9kcm0vc2F2YWdlL3NhdmFnZV9iY2kuYyAgICAgICAgICAgICAgICB8ICAy
+ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2dkcC5jICAgICAgICAgICAgICAgICAgICAg
+IHwgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfbWl4ZXIuYyAgICAgICAgICAgICAg
+ICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfY3J0Yy5jICAgICAg
+ICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS90dG0vdHRtX3BhZ2VfYWxsb2Mu
+YyAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3VkbC91ZGxfZmIuYyAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vdmlhL3ZpYV9k
+bWEuYyAgICAgICAgICAgICAgICAgICAgICB8ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS92aWEv
+dmlhX2lycS5jICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
+L3Ztd2dmeC92bXdnZnhfb3ZlcmxheS5jICAgICAgICAgICAgfCAgMiArLQo+ICA0NSBmaWxlcyBj
+aGFuZ2VkLCAxMjAgaW5zZXJ0aW9ucygrKSwgMTIwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMKPiBpbmRleCAx
+ZDZlMTQ3OWRhMzguLjMyZTg1ZmU4MzE1MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
+YW1kL2FtZGdwdS9hbWRncHVfYW1ka2ZkX2dwdXZtLmMKPiBAQCAtNDM4LDcgKzQzOCw3IEBAIHN0
+YXRpYyBpbnQgYWRkX2JvX3RvX3ZtKHN0cnVjdCBhbWRncHVfZGV2aWNlICphZGV2LCBzdHJ1Y3Qg
+a2dkX21lbSAqbWVtLAo+ICAJaWYgKCFib192YV9lbnRyeSkKPiAgCQlyZXR1cm4gLUVOT01FTTsK
+PiAgCj4gLQlwcl9kZWJ1ZygiXHQgYWRkIFZBIDB4JWxseCAtIDB4JWxseCB0byB2bSAlcFxuIiwg
+dmEsCj4gKwlwcl9kZWJ1ZygiXHQgYWRkIFZBIDB4JWxseCAtIDB4JWxseCB0byB2bSAlcHhcbiIs
+IHZhLAo+ICAJCQl2YSArIGJvX3NpemUsIHZtKTsKPiAgCj4gIAkvKiBBZGQgQk8gdG8gVk0gaW50
+ZXJuYWwgZGF0YSBzdHJ1Y3R1cmVzKi8KCjxzbmlwPgoKQXMgb3RoZXJzIGhhdmUgcG9pbnRlZCBv
+dXQsIHBsZWFzZSBkbyBub3QgZG8gdGhpcy4gIFVzZSAlcEsgYXMgbmVlZGVkLgpBbmQgcGVyaGFw
+cyByZXZpc2l0IHNvbWUgb2YgdGhlICJuZWVkIiBmb3IgdGhlc2UgcG9pbnRlcnMgYXQgYWxsIGlu
+IHRoZQpmaXJzdCBwbGFjZS4uLgoKdGhhbmtzLAoKZ3JlZyBrLWgKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
