@@ -1,116 +1,35 @@
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Subject: [PATCH 50/61] thermal: simplify getting .drvdata
-Date: Thu, 19 Apr 2018 16:06:20 +0200
-Message-ID: <20180419140641.27926-51-wsa+renesas@sang-engineering.com>
-References: <20180419140641.27926-1-wsa+renesas@sang-engineering.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v3 1/5] clk: Extract OF clock helpers in <linux/of_clk.h>
+Date: Thu, 19 Apr 2018 15:25:24 -0700
+Message-ID: <152417672470.46528.14790019208345640453@swboyd.mtv.corp.google.com>
+References: <1524063005-1716-1-git-send-email-geert+renesas@glider.be>
+ <1524063005-1716-2-git-send-email-geert+renesas@glider.be>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180419140641.27926-1-wsa+renesas@sang-engineering.com>
+In-Reply-To: <1524063005-1716-2-git-send-email-geert+renesas@glider.be>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: linux-renesas-soc@vger.kernel.org, kernel-janitors@vger.kernel.org, Wolfram Sang <wsa+renesas@sang-engineering.com>, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jun Nie <jun.nie@linaro.org>, Baoyou Xie <baoyou.xie@linaro.org>, Shawn Guo <shawnguo@kernel.org>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-rockchip.vger.kernel.org
 
-We should get drvdata from struct device directly. Going via
-platform_device is an unneeded step back and forth.
+Quoting Geert Uytterhoeven (2018-04-18 07:50:01)
+> The use of of_clk_get_parent_{count,name}() and of_clk_init() is not
+> limited to clock providers.
+> 
+> Hence move these helpers into their own header file, so callers that are
+> not clock providers no longer have to include <linux/clk-provider.h>.
+> 
+> Suggested-by: Stephen Boyd <sboyd@kernel.org>
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> v3:
+>   - Add Reviewed-by,
+>   - Add SPDX-License-Identifier,
+>   - Add to clock section in MAINTAINERS (note that Rob is still listed
+>     as a maintainer, too, due to the include/linux/of*.h catch-all
+>     rule),
 
-Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
----
-
-Build tested only. buildbot is happy. Please apply individually.
-
- drivers/thermal/rockchip_thermal.c | 8 +++-----
- drivers/thermal/spear_thermal.c    | 8 +++-----
- drivers/thermal/zx2967_thermal.c   | 6 ++----
- 3 files changed, 8 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index f36375d5a16c..9c7643d62ed7 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1327,8 +1327,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
- 
- static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct rockchip_thermal_data *thermal = platform_get_drvdata(pdev);
-+	struct rockchip_thermal_data *thermal = dev_get_drvdata(dev);
- 	int i;
- 
- 	for (i = 0; i < thermal->chip->chn_num; i++)
-@@ -1346,8 +1345,7 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
- 
- static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct rockchip_thermal_data *thermal = platform_get_drvdata(pdev);
-+	struct rockchip_thermal_data *thermal = dev_get_drvdata(dev);
- 	int i;
- 	int error;
- 
-@@ -1376,7 +1374,7 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- 					      id, thermal->regs,
- 					      thermal->tshut_temp);
- 		if (error)
--			dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
-+			dev_err(dev, "%s: invalid tshut=%d, error=%d\n",
- 				__func__, thermal->tshut_temp, error);
- 	}
- 
-diff --git a/drivers/thermal/spear_thermal.c b/drivers/thermal/spear_thermal.c
-index 81b35aace9de..8b9d567134d0 100644
---- a/drivers/thermal/spear_thermal.c
-+++ b/drivers/thermal/spear_thermal.c
-@@ -56,8 +56,7 @@ static struct thermal_zone_device_ops ops = {
- 
- static int __maybe_unused spear_thermal_suspend(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct thermal_zone_device *spear_thermal = platform_get_drvdata(pdev);
-+	struct thermal_zone_device *spear_thermal = dev_get_drvdata(dev);
- 	struct spear_thermal_dev *stdev = spear_thermal->devdata;
- 	unsigned int actual_mask = 0;
- 
-@@ -73,15 +72,14 @@ static int __maybe_unused spear_thermal_suspend(struct device *dev)
- 
- static int __maybe_unused spear_thermal_resume(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct thermal_zone_device *spear_thermal = platform_get_drvdata(pdev);
-+	struct thermal_zone_device *spear_thermal = dev_get_drvdata(dev);
- 	struct spear_thermal_dev *stdev = spear_thermal->devdata;
- 	unsigned int actual_mask = 0;
- 	int ret = 0;
- 
- 	ret = clk_enable(stdev->clk);
- 	if (ret) {
--		dev_err(&pdev->dev, "Can't enable clock\n");
-+		dev_err(dev, "Can't enable clock\n");
- 		return ret;
- 	}
- 
-diff --git a/drivers/thermal/zx2967_thermal.c b/drivers/thermal/zx2967_thermal.c
-index 6acce0bce7c0..145ebf371598 100644
---- a/drivers/thermal/zx2967_thermal.c
-+++ b/drivers/thermal/zx2967_thermal.c
-@@ -207,8 +207,7 @@ MODULE_DEVICE_TABLE(of, zx2967_thermal_id_table);
- #ifdef CONFIG_PM_SLEEP
- static int zx2967_thermal_suspend(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct zx2967_thermal_priv *priv = platform_get_drvdata(pdev);
-+	struct zx2967_thermal_priv *priv = dev_get_drvdata(dev);
- 
- 	if (priv && priv->clk_topcrm)
- 		clk_disable_unprepare(priv->clk_topcrm);
-@@ -221,8 +220,7 @@ static int zx2967_thermal_suspend(struct device *dev)
- 
- static int zx2967_thermal_resume(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct zx2967_thermal_priv *priv = platform_get_drvdata(pdev);
-+	struct zx2967_thermal_priv *priv = dev_get_drvdata(dev);
- 	int error;
- 
- 	error = clk_prepare_enable(priv->clk_topcrm);
--- 
-2.11.0
+Can you X: out this file so Rob is happy? Or that doesn't work?
