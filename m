@@ -1,146 +1,142 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] drm/bridge/synopsys: dsi: use adjusted_mode in mode_set
-Date: Mon, 23 Apr 2018 13:10:31 +0300
-Message-ID: <2334482.mQhE6fZxKp@avalon>
-References: <20180125155504.8611-1-philippe.cornu@st.com>
- <7ec671c2-a777-5dcd-dcc9-e026fff89900@st.com> <1802436.kt7XbhHcH5@avalon>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [RESEND PATCH v6 00/27] DRM Rockchip rk3399 (Kevin)
+Date: Mon, 23 Apr 2018 12:49:36 +0200
+Message-ID: <20180423105003.9004-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1802436.kt7XbhHcH5@avalon>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Alexandre TORGUE <alexandre.torgue@st.com>, David Airlie <airlied@linux.ie>, "daniel.vetter@ffwll.ch" <daniel.vetter@ffwll.ch>, Brian Norris <briannorris@chromium.org>, Philippe CORNU <philippe.cornu@st.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Yannick FERTRE <yannick.fertre@st.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Ludovic BARRE <ludovic.barre@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mickael REULIER <mickael.reulier@st.com>, Vincent ABRIOU <vincent.abriou@st.com>, Bhumika Goyal <bhumirks@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org, dianders@chromium.org, a.hajda@samsung.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com, kuankuan.y@gmail.com, hshi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGhpbGlwcGUsCgpPbiBUaHVyc2RheSwgOCBGZWJydWFyeSAyMDE4IDE1OjE1OjQwIEVFU1Qg
-TGF1cmVudCBQaW5jaGFydCB3cm90ZToKPiBPbiBTYXR1cmRheSwgMyBGZWJydWFyeSAyMDE4IDAw
-OjQxOjI2IEVFVCBQaGlsaXBwZSBDT1JOVSB3cm90ZToKPiA+IE9uIDAxLzI5LzIwMTggMTE6NDAg
-QU0sIExhdXJlbnQgUGluY2hhcnQgd3JvdGU6Cj4gPiA+IE9uIE1vbmRheSwgMjkgSmFudWFyeSAy
-MDE4IDEyOjE3OjM3IEVFVCBQaGlsaXBwZSBDT1JOVSB3cm90ZToKPiA+ID4+IE9uIDAxLzI5LzIw
-MTggMTA6NDYgQU0sIExhdXJlbnQgUGluY2hhcnQgd3JvdGU6Cj4gPiA+Pj4gT24gVGh1cnNkYXks
-IDI1IEphbnVhcnkgMjAxOCAxNzo1NTowNCBFRVQgUGhpbGlwcGUgQ29ybnUgd3JvdGU6Cj4gPiA+
-Pj4+IFRoZSAiYWRqdXN0ZWRfbW9kZSIgY2xvY2sgdmFsdWUgKGllIHRoZSByZWFsIHBpeGVsIGNs
-b2NrKSBpcyBtb3JlCj4gPiA+Pj4+IGFjY3VyYXRlIHRoYW4gIm1vZGUiIGNsb2NrIHZhbHVlIChp
-ZSB0aGUgcGFuZWwvYnJpZGdlIHJlcXVlc3RlZAo+ID4gPj4+PiBjbG9jayB2YWx1ZSkuIEl0IG9m
-ZmVycyBhIGJldHRlciBwcmVjaXNlbmVzcyBmb3IgdGltaW5nCj4gPiA+Pj4+IGNvbXB1dGF0aW9u
-cyBhbmQgYWxsb3dzIHRvIHJlZHVjZSB0aGUgZXh0cmEgZHNpIGJhbmR3aWR0aCBpbgo+ID4gPj4+
-PiBidXJzdCBtb2RlIChmcm9tIH4yMCUgdG8gfjEwLTEyJSwgaHcgcGxhdGZvcm0gZGVwZW5kYW50
-KS4KPiA+ID4+Pj4gCj4gPiA+Pj4+IFNpZ25lZC1vZmYtYnk6IFBoaWxpcHBlIENvcm51IDxwaGls
-aXBwZS5jb3JudUBzdC5jb20+Cj4gPiA+Pj4gCj4gPiA+Pj4gVGhlIGFkanVzdGVkIG1vZGUgaXMg
-ZG9jdW1lbnRlZCBhcwo+ID4gPj4+IAo+ID4gPj4+ICAgLyoqCj4gPiA+Pj4gICAKPiA+ID4+PiAg
-ICAqIEBhZGp1c3RlZF9tb2RlOgo+ID4gPj4+ICAgICoKPiA+ID4+PiAgICAqIEludGVybmFsIGRp
-c3BsYXkgdGltaW5ncyB3aGljaCBjYW4gYmUgdXNlZCBieSB0aGUgZHJpdmVyIHRvCj4gPiA+Pj4g
-ICAgaGFuZGxlCj4gPiA+Pj4gICAgKiBkaWZmZXJlbmNlcyBiZXR3ZWVuIHRoZSBtb2RlIHJlcXVl
-c3RlZCBieSB1c2Vyc3BhY2UgaW4gQG1vZGUgYW5kCj4gPiA+Pj4gICAgd2hhdAo+ID4gPj4+ICAg
-ICogaXMgYWN0dWFsbHkgcHJvZ3JhbW1lZCBpbnRvIHRoZSBoYXJkd2FyZS4gSXQgaXMgcHVyZWx5
-IGRyaXZlcgo+ID4gPj4+ICAgICogaW1wbGVtZW50YXRpb24gZGVmaW5lZCB3aGF0IGV4YWN0bHkg
-dGhpcyBhZGp1c3RlZCBtb2RlIG1lYW5zLgo+ID4gPj4+ICAgIFVzdWFsbHkKPiA+ID4+PiAgICAq
-IGl0IGlzIHVzZWQgdG8gc3RvcmUgdGhlIGhhcmR3YXJlIGRpc3BsYXkgdGltaW5ncyB1c2VkIGJl
-dHdlZW4gdGhlCj4gPiA+Pj4gICAgKiBDUlRDIGFuZCBlbmNvZGVyIGJsb2Nrcy4KPiA+ID4+PiAg
-ICAqLwo+ID4gPj4+IAo+ID4gPj4+IFRoaXMgaXMgZWFzeSB0byBoYW5kbGUgd2hlbiB0aGUgQ1JU
-QyBhbmQgZW5jb2RlciBhcmUgY29udHJvbGxlZCBieSB0aGUKPiA+ID4+PiBzYW1lIGRyaXZlciwg
-YXMgdGhlIGZpZWxkIGlzICJpbXBsZW1lbnRhdGlvbiBkZWZpbmVkIiBieSBhIHNpbmdsZQo+ID4g
-Pj4+IGRyaXZlci4gSG93ZXZlciwgd2hlbiB1c2luZyBicmlkZ2VzLCB0aGVyZSBhcmUgdHdvIGRy
-aXZlcnMgaW52b2x2ZWQsCj4gPiA+Pj4gYW5kCj4gPiA+Pj4gdGhleSBtdXN0IGJvdGggYWdyZWUg
-dG8gbWVhbmluZ2Z1bGx5IHVzZSB0aGUgYWRqdXN0ZWQgbW9kZS4gSSBjYW4ndAo+ID4gPj4+IHNl
-ZQo+ID4gPj4+IGhvdyB0byBkbyBzbyB3aXRob3V0IHN0YW5kYXJkaXppbmcgdGhlIG1lYW5pbmcg
-b2YgdGhlIGFkanVzdGVkIG1vZGUKPiA+ID4+PiBmaWVsZC4KPiA+ID4+IAo+ID4gPj4gVGhpcyBp
-cyBleGFjdGx5IHRoZSByZWFzb24gd2h5IG15IGZpcnN0IGltcGxlbWVudGF0aW9uIHVzZWQgdGhl
-IGRzaQo+ID4gPj4gYnJpZGdlICJvcHRpb25hbCBwaXhlbCBjbG9jayIgaW5zdGVhZCBvZiB0aGUg
-YWRqdXN0ZWRfbW9kZSAoc2VlIFsxXSkKPiA+ID4+IAo+ID4gPj4gQnV0IGFmdGVyIGRpZ2dpbmcg
-bW9yZSBpbnRvIHRoZSBkcm0gc291cmNlIGNvZGUsIEkgdGhpbmsgdXNpbmcKPiA+ID4+IGFkanVz
-dGVkX21vZGUgaW5zdGVhZCBvZiB0aGUgcGl4ZWwgY2xvY2sgaGVyZSBicmluZ3MgbW9yZSBhZHZh
-bnRhZ2VzCj4gPiA+PiBiZWNhdXNlOgo+ID4gPj4gKiBhZGp1c3RlZF9tb2RlIGlzIGFuIGFyZ3Vt
-ZW50IG9mIGJyaWRnZSBtb2RlX3NldCgpIHByb2JhYmx5IGZvciBiZWluZwo+ID4gPj4gdXNlZCBp
-biBhbnkgbWFubmVyLCBtYXliZSBsaWtlIHRoaXMgOikKPiA+ID4+ICogaWYgdGhlIGJyaWRnZSAi
-dXNlciIgKGNydGMgb3IgYSBtYXN0ZXIgYnJpZGdlIGRyaXZlcnMpIGRvZXMgbm90IG5lZWQKPiA+
-ID4+IHRvIG1vZGlmeSBpdHMgYWRqdXN0ZWRfbW9kZSB0aGVuIG1vZGUgJiBhZGp1c3RlZF9tb2Rl
-IG1vZGVfc2V0KCkKPiA+ID4+IGFyZ3VtZW50cyB3aWxsIGhhdmUgdGhlIHNhbWUgdmFsdWVzIHNv
-ICJubyBjb25zZXF1ZW5jZSIgZm9yIHRoZSBicmlkZ2UuCj4gPiA+PiAqIGlmIHRoZSBicmlkZ2Ug
-InVzZXIiIChjcnRjIG9yIG1hc3RlciBicmlkZ2UgZHJpdmVycykgbmVlZHMgdG8gYWRqdXN0Cj4g
-PiA+PiBhbnkgdmFsdWUgb2YgdGhlIG1vZGUgdGhlbiB0aGlzIGFkanVzdG1lbnQgaXMgYXZhaWxh
-YmxlIGZvciB0aGUgYnJpZGdlLgo+ID4gPiAKPiA+ID4gUmVtZW1iZXIgdGhhdCB0aGVyZSBjYW4g
-YmUgbXVsdGlwbGUgY2hhaW5lZCBicmlkZ2VzLCBhbmQgYSBzaW5nbGUKPiA+ID4gYWRqdXN0ZWQg
-bW9kZSBmaWVsZC4KPiA+ID4gCj4gPiA+PiAqIHJvY2tjaGlwIGNydGMgdXBkYXRlcyBhIHBhcnQg
-b2YgdGhlIG1vZGUgKHRoZSBjbG9jayksIHN0bSBpcyBkb2luZwo+ID4gPj4gdGhlCj4gPiA+PiBz
-YW1lIChzZWUgWzJdKSBidXQgYW55IGZ1dHVyZSAidXNlciIgb2YgdGhlIGR3X21pcGlfZHNpIGJy
-aWRnZSBjYW4KPiA+ID4+IGFkanVzdCBzb21ldGhpbmcgZWxzZSAoYmxhbmtpbmdzLi4uKSBhbmQg
-dGhlIGR3X21pcGlfZHNpIGJyaWRnZSB3aWxsIGJlCj4gPiA+PiB0aGVuIGF3YXJlIG9mLi4uCj4g
-PiA+PiAKPiA+ID4+IEJ1dCBtYXliZSBpdCBpcyBhIHdyb25nIHVzYWdlIG9mIHRoZSAiYWRqdXN0
-ZWRfbW9kZSBvZmZlciIuLi4KPiA+ID4gCj4gPiA+IEkgZG9uJ3QgZGlzYWdyZWUgdGhhdCB0aGVy
-ZSdzIGEgbmVlZCBmb3IgdXNpbmcgYWRqdXN0ZWQgdmFsdWVzLCBidXQgSQo+ID4gPiBiZWxpZXZl
-IHdlIG5lZWQgdG8gY3JlYXRlIGEgY2xlYXIgQVBJIHRvIGRvIHNvLiBVc2luZyB0aGUgYWRqdXN0
-X21vZGUKPiA+ID4gZmllbGQgYXMtaXMgd2hlbiBpdCdzIGNsZWFybHkgZG9jdW1lbnRlZCBhcyBi
-ZWluZyBpbXBsZW1lbnRhdGlvbi1kZWZpbmVkCj4gPiA+IGlzIGFza2luZyBmb3IgdHJvdWJsZS4K
-PiA+IAo+ID4gTGF1cmVudCwgZG8geW91IHRoaW5rIHdlIGNhbiB1c2UgImFkanVzdGVkIG1vZGUi
-IGhlcmUgaW4gdGhpcyBzbWFsbAo+ID4gcGF0Y2ggYXMgdGhlIGFjdHVhbCAyICJ1c2VycyIgb2Yg
-dGhpcyBicmlkZ2UgKHJvY2tjaGlwICYgc3RtKSB1c2UgYm90aAo+ID4gImFkanVzdGVkIG1vZGUi
-IGluIHRoZWlyIGNydGM/Cj4gCj4gVGhlIFN5bm9wc3lzIERTSSBkcml2ZXIgbWlnaHQgb25seSBi
-ZSB1c2VkIGJ5IHR3byBkaXNwbGF5IGNvbnRyb2xsZXIgZHJpdmVycwo+IHRvZGF5LCBpdCBpcyBu
-b25ldGhlbGVzcyBhIHN0YW5kYXJkIGJyaWRnZSBkcml2ZXIgdGhhdCBzaG91bGQgbm90IG1ha2Ug
-YW55Cj4gYXNzdW1wdGlvbiBvZiBhIHBhcnRpY3VsYXIgdXNlIG9mIHRoZSBhZGp1c3RlZF9tb2Rl
-IGluIHBhcnRpY3VsYXIgZGlzcGxheQo+IGNvbnRyb2xsZXIgZHJpdmVycy4gVG8gdXNlIHRoZSBh
-ZGp1c3RlZF9tb2RlIHZhbHVlIGluIGJyaWRnZSBkcml2ZXJzIHdlCj4gbmVlZCB0byBzdGFuZGFy
-ZGl6ZSBpdHMgdXNhZ2UsIG90aGVyd2lzZSB3ZSdsbCBlbmQgdXAgd2l0aAo+IGluY29tcGF0aWJp
-bGl0aWVzIGJldHdlZW4gYnJpZGdlIGRyaXZlcnMgYW5kIGRpc3BsYXkgY29udHJvbGxlciBkcml2
-ZXJzLgoKTm93IHRoYXQgdGhlIGRvY3VtZW50YXRpb24gaGFzIGJlZW4gY2xhcmlmaWVkIEkgaGF2
-ZSBubyBvYmplY3Rpb24gYWdhaW5zdCB0aGlzIApwYXRjaCBhbnltb3JlLgoKPiA+ID4+IFsxXSBo
-dHRwczovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0Y2gvMjAwMjQwLwo+ID4gPj4gWzJd
-IGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9wYXRjaC8yMDA3MjAvCj4gPiA+PiAK
-PiA+ID4+PiBEYW5pZWwsIHdoYXQncyB5b3VyIG9waW5pb24gb24gdGhpcyA/Cj4gPiAKPiA+IERh
-bmllbCwgYW55IG9waW5pb24gb24gdGhlIGFkanVzdGVkX21vZGUgdXNhZ2U/Cj4gPiAKPiA+ID4+
-Pj4gLS0tCj4gPiA+Pj4+IE5vdGU6IFRoaXMgcGF0Y2ggcmVwbGFjZXMgImRybS9icmlkZ2Uvc3lu
-b3BzeXM6IGRzaTogYWRkIG9wdGlvbmFsCj4gPiA+Pj4+IHBpeGVsIGNsb2NrIgo+ID4gPj4+PiAK
-PiA+ID4+Pj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIHwg
-MTIgKysrKysrLS0tLS0tCj4gPiA+Pj4+IDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyks
-IDYgZGVsZXRpb25zKC0pCj4gPiA+Pj4+IAo+ID4gPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4gPiA+Pj4+IGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIGluZGV4Cj4gPiA+Pj4+IGVkOGFm
-MzJmOGU1Mi4uYjkyNmI2MmU5ZTMzIDEwMDY0NAo+ID4gPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKPiA+ID4+Pj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCj4gPiA+Pj4+IEBAIC03MDcsMjAg
-KzcwNywyMCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0
-Cj4gPiA+Pj4+IGRybV9icmlkZ2UgKmJyaWRnZSwKPiA+ID4+Pj4gCj4gPiA+Pj4+ICAgIAljbGtf
-cHJlcGFyZV9lbmFibGUoZHNpLT5wY2xrKTsKPiA+ID4+Pj4gCj4gPiA+Pj4+IC0JcmV0ID0gcGh5
-X29wcy0+Z2V0X2xhbmVfbWJwcyhwcml2X2RhdGEsIG1vZGUsIGRzaS0+bW9kZV9mbGFncywKPiA+
-ID4+Pj4gKwlyZXQgPSBwaHlfb3BzLT5nZXRfbGFuZV9tYnBzKHByaXZfZGF0YSwgYWRqdXN0ZWRf
-bW9kZSwKPiA+ID4+Pj4gZHNpLT5tb2RlX2ZsYWdzLAo+ID4gPj4+PiAKPiA+ID4+Pj4gICAgCQkJ
-CSAgICAgZHNpLT5sYW5lcywgZHNpLT5mb3JtYXQsICZkc2ktPmxhbmVfbWJwcyk7Cj4gPiA+Pj4+
-ICAgIAo+ID4gPj4+PiAgICBpZiAocmV0KQo+ID4gPj4+PiAgICAKPiA+ID4+Pj4gICAgCURSTV9E
-RUJVR19EUklWRVIoIlBoeSBnZXRfbGFuZV9tYnBzKCkgZmFpbGVkXG4iKTsKPiA+ID4+Pj4gICAg
-Cj4gPiA+Pj4+ICAgIHBtX3J1bnRpbWVfZ2V0X3N5bmMoZHNpLT5kZXYpOwo+ID4gPj4+PiAgICBk
-d19taXBpX2RzaV9pbml0KGRzaSk7Cj4gPiA+Pj4+IAo+ID4gPj4+PiAtCWR3X21pcGlfZHNpX2Rw
-aV9jb25maWcoZHNpLCBtb2RlKTsKPiA+ID4+Pj4gKwlkd19taXBpX2RzaV9kcGlfY29uZmlnKGRz
-aSwgYWRqdXN0ZWRfbW9kZSk7Cj4gPiA+Pj4+IAo+ID4gPj4+PiAgICBkd19taXBpX2RzaV9wYWNr
-ZXRfaGFuZGxlcl9jb25maWcoZHNpKTsKPiA+ID4+Pj4gICAgZHdfbWlwaV9kc2lfdmlkZW9fbW9k
-ZV9jb25maWcoZHNpKTsKPiA+ID4+Pj4gCj4gPiA+Pj4+IC0JZHdfbWlwaV9kc2lfdmlkZW9fcGFj
-a2V0X2NvbmZpZyhkc2ksIG1vZGUpOwo+ID4gPj4+PiArCWR3X21pcGlfZHNpX3ZpZGVvX3BhY2tl
-dF9jb25maWcoZHNpLCBhZGp1c3RlZF9tb2RlKTsKPiA+ID4+Pj4gCj4gPiA+Pj4+ICAgIGR3X21p
-cGlfZHNpX2NvbW1hbmRfbW9kZV9jb25maWcoZHNpKTsKPiA+ID4+Pj4gCj4gPiA+Pj4+IC0JZHdf
-bWlwaV9kc2lfbGluZV90aW1lcl9jb25maWcoZHNpLCBtb2RlKTsKPiA+ID4+Pj4gLQlkd19taXBp
-X2RzaV92ZXJ0aWNhbF90aW1pbmdfY29uZmlnKGRzaSwgbW9kZSk7Cj4gPiA+Pj4+ICsJZHdfbWlw
-aV9kc2lfbGluZV90aW1lcl9jb25maWcoZHNpLCBhZGp1c3RlZF9tb2RlKTsKPiA+ID4+Pj4gKwlk
-d19taXBpX2RzaV92ZXJ0aWNhbF90aW1pbmdfY29uZmlnKGRzaSwgYWRqdXN0ZWRfbW9kZSk7Cj4g
-PiA+Pj4+IAo+ID4gPj4+PiAgICBkd19taXBpX2RzaV9kcGh5X2luaXQoZHNpKTsKPiA+ID4+Pj4g
-ICAgZHdfbWlwaV9kc2lfZHBoeV90aW1pbmdfY29uZmlnKGRzaSk7Cj4gPiA+Pj4+IAo+ID4gPj4+
-PiBAQCAtNzM0LDcgKzczNCw3IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2JyaWRnZV9tb2Rl
-X3NldChzdHJ1Y3QKPiA+ID4+Pj4gZHJtX2JyaWRnZSAqYnJpZGdlLAo+ID4gPj4+PiAKPiA+ID4+
-Pj4gICAgZHdfbWlwaV9kc2lfZHBoeV9lbmFibGUoZHNpKTsKPiA+ID4+Pj4gCj4gPiA+Pj4+IC0J
-ZHdfbWlwaV9kc2lfd2FpdF9mb3JfdHdvX2ZyYW1lcyhtb2RlKTsKPiA+ID4+Pj4gKwlkd19taXBp
-X2RzaV93YWl0X2Zvcl90d29fZnJhbWVzKGFkanVzdGVkX21vZGUpOwo+ID4gPj4+PiAKPiA+ID4+
-Pj4gICAgLyogU3dpdGNoIHRvIGNtZCBtb2RlIGZvciBwYW5lbC1icmlkZ2UgcHJlX2VuYWJsZSAm
-IHBhbmVsIHByZXBhcmUKPiA+ID4+Pj4gICAgKi8KPiA+ID4+Pj4gICAgZHdfbWlwaV9kc2lfc2V0
-X21vZGUoZHNpLCAwKTsKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Andrzej,
+
+This is the rebased version of v6 series. This patchset includes cleanups,
+improvements, and bug fixes for Rockchip DRM driver and PSR support.
+
+This version is a RESEND of v6 with few changes. The following two
+patches are not included and will be send in a separate patchset for
+further discussion.
+
+- [PATCH v6 24/30] drm/rockchip: Disable PSR on input events
+- [PATCH v6 25/30] drm/rockchip: Cancel PSR enable work before changing
+                   the state
+
+The following patch was remove as is not needed.
+
+- [PATCH v6 28/30] drm/rockchip: Disable PSR from reboot notifier
+
+I think that the other patches have the required tags and are ready to
+be merged.
+
+Regards,
+  Enric
+
+Changes in v6:
+- Removed the following patches as are already applied.
+  [PATCH v5 01/36] drm/bridge: analogix_dp: detect Sink PSR state after
+  configuring the PSR
+  [PATCH v5 02/36] drm/rockchip: Remove analogix psr worker
+  [PATCH v5 03/36] drm/bridge: analogix_dp: Don't change psr while
+  bridge is disabled
+- Explain in the commit message why we need to increase
+  the delay in the timeout loop in
+  [PATCH v5 07/36] drm/bridge: analogix_dp: Move enable video into
+  config_video()
+- Add Reviewed-by: Archit Taneja <architt@codeaurora.org> for the
+  drm/bridge parts
+- Add Reviewed-by: Heiko Stuebner <heiko@sntech.de> for
+  [PATCH v5 19/36] drm/rockchip: Restore psr->state when enable/disable
+  psr failed
+
+Changes in v5:
+- Removed the following patches as are already applied.
+  [PATCH v4 01/38] drm/bridge: analogix_dp: set psr activate/deactivate
+  when enable/disable bridge
+  [PATCH v4 02/38] drm/rockchip: Don't use atomic constructs for psr
+- Add Mareks tested-tag and including the missing people.
+- [PATCH v4 15/38] move analogix_dp_set_analog_power_down() before
+  phy_power_off() to fix Exynos issue.
+
+Changes in v4:
+- Rebased all on top of drm-misc-next
+- Removed the following patches as are already applied.
+  [PATCH v3 01/43] drm/rockchip: Get rid of unnecessary struct fields
+  [PATCH v3 02/43] drm/rockchip: support prime import sg table
+  [PATCH v3 03/43] drm/rockchip: Respect page offset for PRIME mmap
+  calls
+- Removed the following patches as now are part of another patchset
+  [PATCH v3 05/43] drm/bridge: analogix_dp: Don't power bridge in
+  analogix_dp_bind
+  [PATCH v3 33/43] drm/panel: simple: Change mode for Sharp lq123p1jx31
+
+Changes in v3:
+- Addressed some of the comments from Sean on the v2
+
+Changes in v2:
+- A few patches have been replaced by newer and cleaner versions from
+  the ChromeOS kernel gerrit, especially about disallowing PSR for the
+  whole atomic commit.
+
+
+Douglas Anderson (4):
+  drm/bridge: analogix_dp: Reorder plat_data->power_off to happen sooner
+  drm/bridge: analogix_dp: Properly log AUX CH errors
+  drm/bridge: analogix_dp: Properly disable aux chan retries on rockchip
+  drm/bridge: analogix_dp: Split the platform-specific poweron in two
+    parts
+
+Lin Huang (6):
+  drm/bridge: analogix_dp: Move enable video into config_video()
+  drm/bridge: analogix_dp: Check AUX_EN status when doing AUX transfer
+  drm/bridge: analogix_dp: Ensure edp is disabled when shutting down the
+    panel
+  drm/bridge: analogix_dp: Extend hpd check time to 100ms
+  drm/bridge: analogix_dp: Check dpcd write/read status
+  drm/bridge: analogix_dp: Reset aux channel if an error occurred
+
+Mark Yao (1):
+  drm/rockchip: pre dither down when output bpc is 8bit
+
+Tomasz Figa (5):
+  drm/rockchip: analogix_dp: Do not call Analogix code before bind
+  drm/rockchip: psr: Avoid redundant calls to .set() callback
+  drm/rockchip: psr: Sanitize semantics of allow/inhibit API
+  drm/rockchip: Disallow PSR for the whole atomic commit
+  drm/rockchip: psr: Remove flush by CRTC
+
+zain wang (11):
+  drm/bridge: analogix_dp: Don't use fast link training when panel just
+    powered up
+  drm/bridge: analogix_dp: Retry bridge enable when it failed
+  drm/bridge: analogix_dp: Wait for HPD signal before configuring link
+  drm/bridge: analogix_dp: Set PD_INC_BG first when powering up edp phy
+  drm/bridge: analogix_dp: Fix incorrect usage of enhanced mode
+  drm/bridge: analogix_dp: Fix AUX_PD bit for Rockchip
+  drm/rockchip: Restore psr->state when enable/disable psr failed
+  drm/bridge: analogix_dp: Don't use ANALOGIX_DP_PLL_CTL to control pll
+  drm/bridge: analogix_dp: Fix timeout of video streamclk config
+  drm/bridge: analogix_dp: Fix incorrect operations with register
+    ANALOGIX_DP_FUNC_EN_1
+  drm/bridge: analogix_dp: Move fast link training detect to set_bridge
+
+ .../drm/bridge/analogix/analogix_dp_core.c    | 331 +++++++++++++-----
+ .../drm/bridge/analogix/analogix_dp_core.h    |   5 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 236 +++++++------
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.h |   7 +
+ drivers/gpu/drm/exynos/exynos_dp.c            |   2 +-
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  37 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |  61 +++-
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c   | 158 ++++-----
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h   |   7 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c   |  13 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c   |   1 +
+ include/drm/bridge/analogix_dp.h              |   3 +-
+ 14 files changed, 559 insertions(+), 304 deletions(-)
+
+-- 
+2.17.0
