@@ -1,67 +1,78 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 0/6] devfreq: rk3399_dmc: improve rk3399_dmc driver and
- it's documentation
-Date: Mon, 23 Apr 2018 12:53:12 +0200
-Message-ID: <CAPDyKFr_NPNqCmyD0XHa=vy_--kOCzgwUjNqkvXO0uUOdFM=tQ@mail.gmail.com>
-References: <20180419104019.24406-1-enric.balletbo@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [RESEND PATCH v6 03/27] drm/bridge: analogix_dp: Don't use fast link
+ training when panel just powered up
+Date: Mon, 23 Apr 2018 12:49:39 +0200
+Message-ID: <20180423105003.9004-4-enric.balletbo@collabora.com>
+References: <20180423105003.9004-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180419104019.24406-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Myungjoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Linux PM <linux-pm@vger.kernel.org>, Derek Basehore <dbasehore@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@google.com>, groek@google.com, kernel@collabora.com, Elaine Zhang <zhangqing@rock-chips.com>, Chanwoo Choi <cw00.choi@samsung.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Lin Huang <hl@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180423105003.9004-1-enric.balletbo@collabora.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, linux-arm-kernel@lists.infradead.org, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, dianders@chromium.org, kyungmin.park@samsung.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kuankuan.y@gmail.com, hshi@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 19 April 2018 at 12:40, Enric Balletbo i Serra
-<enric.balletbo@collabora.com> wrote:
-> Dear all,
->
-> These patches is an attempt to improve a little bit the rk3399_dmc
-> driver and it's documentation in order to have all in a better shape for
-> a future work I am doing. My final intention is add ddrfreq support for
-> rockchip drm driver, but the patches for this are still
-> work-in-progress. So let's start with this first patchset that is
-> basically some fixes/improvements for the rk3399_dmc driver.
-
-I didn't get cc:ed the series, but only the last part, which makes it
-bit hard to get the full context.
-
-Moreover, it would be good if you explained a bit more on what the
-above series actually does and why. Also I don't get why is the PM
-domain changes is in the series, as this seems to be about devfreq.
-
-My point is, if you want me to review, please try to be more precise
-so I know what to review.
-
->
-> Best regards,
->
-> Enric Balletbo i Serra (3):
->   dt-bindings: clock: add DDR3 standard speed bins.
->   devfreq: rk3399_dmc: remove wait for dcf irq event.
->   dt-bindings: devfreq: rk3399_dmc: remove interrupts as is not
->     required.
->
-> Lin Huang (2):
->   devfreq: rk3399_dmc: do not print error when get supply and clk defer.
->   devfreq: rk3399_dmc: register devfreq notification to dmc driver.
->
-> Nick Milner (1):
->   dt-bindings: devfreq: rk3399_dmc: improve binding documentation.
->
->  .../bindings/devfreq/rk3399_dmc.txt           | 204 +++++++++---------
->  drivers/devfreq/rk3399_dmc.c                  | 106 +--------
->  drivers/soc/rockchip/pm_domains.c             |  31 +++
->  include/dt-bindings/clock/ddr.h               |  34 +++
->  include/soc/rockchip/rk3399_dmc.h             |  63 ++++++
->  5 files changed, 238 insertions(+), 200 deletions(-)
->  create mode 100644 include/dt-bindings/clock/ddr.h
->  create mode 100644 include/soc/rockchip/rk3399_dmc.h
->
-> --
-> 2.17.0
->
-
-Kind regards
-Uffe
+RnJvbTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+CgpQYW5lbCB3b3VsZCByZXNldCBp
+dHMgc2V0dGluZyB3aGVuIGl0IHBvd2VycyBkb3duLiBJdCB3b3VsZCBmb3JnZXQgdGhlIGxhc3QK
+c3VjY2VlZGVkIGxpbmsgdHJhaW5pbmcgc2V0dGluZy4gU28gd2UgY2FuJ3QgdXNlIHRoZSBsYXN0
+IHN1Y2Nlc3NmdWwgbGluawp0cmFpbmluZyBzZXR0aW5nIHRvIGRvIGZhc3QgbGluayB0cmFpbmlu
+Zy4gTGV0J3MgcmVzZXQgZmFzdF90cmFpbl9lbmFibGUgaW4KYW5hbG9naXhfZHBfYnJpZGdlX2Rp
+c2FibGUoKTsKCkNjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1QGNocm9taXVtLm9yZz4K
+U2lnbmVkLW9mZi1ieTogemFpbiB3YW5nIDx3enpAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYt
+Ynk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBUaGll
+cnJ5IEVzY2FuZGUgPHRoaWVycnkuZXNjYW5kZUBjb2xsYWJvcmEuY29tPgpTaWduZWQtb2ZmLWJ5
+OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgpU
+ZXN0ZWQtYnk6IE1hcmVrIFN6eXByb3dza2kgPG0uc3p5cHJvd3NraUBzYW1zdW5nLmNvbT4KUmV2
+aWV3ZWQtYnk6IEFyY2hpdCBUYW5lamEgPGFyY2hpdHRAY29kZWF1cm9yYS5vcmc+Ci0tLQoKIGRy
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIHwgOSArKysr
+Ky0tLS0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5o
+IHwgMiArLQogMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0p
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9k
+cF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2Nv
+cmUuYwppbmRleCAwNWEwY2E0YWYwNTcuLjg1ZGJiMWNhOTg4NiAxMDA2NDQKLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKQEAgLTU3OSwxNCAr
+NTc5LDE0IEBAIHN0YXRpYyBpbnQgYW5hbG9naXhfZHBfcHJvY2Vzc19lcXVhbGl6ZXJfdHJhaW5p
+bmcoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAJCWlmIChyZXR2YWwgIT0gMSkgewog
+CQkJZGV2X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRvIHJlYWQgZG93bnNwcmVhZCAlZFxuIiwKIAkJ
+CQlyZXR2YWwpOwotCQkJZHAtPmZhc3RfdHJhaW5fc3VwcG9ydCA9IGZhbHNlOworCQkJZHAtPmZh
+c3RfdHJhaW5fZW5hYmxlID0gZmFsc2U7CiAJCX0gZWxzZSB7Ci0JCQlkcC0+ZmFzdF90cmFpbl9z
+dXBwb3J0ID0KKwkJCWRwLT5mYXN0X3RyYWluX2VuYWJsZSA9CiAJCQkJKHNwcmVhZCAmIERQX05P
+X0FVWF9IQU5EU0hBS0VfTElOS19UUkFJTklORykgPwogCQkJCQl0cnVlIDogZmFsc2U7CiAJCX0K
+IAkJZGV2X2RiZyhkcC0+ZGV2LCAiZmFzdCBsaW5rIHRyYWluaW5nICVzXG4iLAotCQkJZHAtPmZh
+c3RfdHJhaW5fc3VwcG9ydCA/ICJzdXBwb3J0ZWQiIDogInVuc3VwcG9ydGVkIik7CisJCQlkcC0+
+ZmFzdF90cmFpbl9lbmFibGUgPyAic3VwcG9ydGVkIiA6ICJ1bnN1cHBvcnRlZCIpOwogCiAJCS8q
+IHNldCBlbmhhbmNlZCBtb2RlIGlmIGF2YWlsYWJsZSAqLwogCQlhbmFsb2dpeF9kcF9zZXRfZW5o
+YW5jZWRfbW9kZShkcCk7CkBAIC03OTMsNyArNzkzLDcgQEAgc3RhdGljIGludCBhbmFsb2dpeF9k
+cF9mYXN0X2xpbmtfdHJhaW4oc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCiAKIHN0YXRp
+YyBpbnQgYW5hbG9naXhfZHBfdHJhaW5fbGluayhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpk
+cCkKIHsKLQlpZiAoZHAtPmZhc3RfdHJhaW5fc3VwcG9ydCkKKwlpZiAoZHAtPmZhc3RfdHJhaW5f
+ZW5hYmxlKQogCQlyZXR1cm4gYW5hbG9naXhfZHBfZmFzdF9saW5rX3RyYWluKGRwKTsKIAogCXJl
+dHVybiBhbmFsb2dpeF9kcF9mdWxsX2xpbmtfdHJhaW4oZHAsIGRwLT52aWRlb19pbmZvLm1heF9s
+YW5lX2NvdW50LApAQCAtMTE5Nyw2ICsxMTk3LDcgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhfZHBf
+YnJpZGdlX2Rpc2FibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKIAkJRFJNX0VSUk9SKCJm
+YWlsZWQgdG8gc2V0dXAgdGhlIHBhbmVsIHJldCA9ICVkXG4iLCByZXQpOwogCiAJZHAtPnBzcl9l
+bmFibGUgPSBmYWxzZTsKKwlkcC0+ZmFzdF90cmFpbl9lbmFibGUgPSBmYWxzZTsKIAlkcC0+ZHBt
+c19tb2RlID0gRFJNX01PREVfRFBNU19PRkY7CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5oIGIvZHJpdmVycy9ncHUvZHJt
+L2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgKaW5kZXggNmE5NmVmN2U2OTM0Li40
+MDNmZjg1MzQ2NGIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgv
+YW5hbG9naXhfZHBfY29yZS5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgv
+YW5hbG9naXhfZHBfY29yZS5oCkBAIC0xNzMsNyArMTczLDcgQEAgc3RydWN0IGFuYWxvZ2l4X2Rw
+X2RldmljZSB7CiAJaW50CQkJaHBkX2dwaW87CiAJYm9vbCAgICAgICAgICAgICAgICAgICAgZm9y
+Y2VfaHBkOwogCWJvb2wJCQlwc3JfZW5hYmxlOwotCWJvb2wJCQlmYXN0X3RyYWluX3N1cHBvcnQ7
+CisJYm9vbAkJCWZhc3RfdHJhaW5fZW5hYmxlOwogCiAJc3RydWN0IG11dGV4CQlwYW5lbF9sb2Nr
+OwogCWJvb2wJCQlwYW5lbF9pc19tb2Rlc2V0OwotLSAKMi4xNy4wCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5n
+IGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
