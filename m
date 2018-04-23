@@ -1,277 +1,203 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v6 24/30] drm/rockchip: Disable PSR on input events
-Date: Fri, 20 Apr 2018 15:51:51 +0200
-Message-ID: <8f267fc9-094e-6fee-9978-7dfc95b01e01@collabora.com>
-References: <20180405095000.9756-1-enric.balletbo@collabora.com>
- <CGME20180405095330epcas1p33487d73838f08a65ce7935f0d3e8b9e4@epcas1p3.samsung.com>
- <20180405095000.9756-25-enric.balletbo@collabora.com>
- <9de97922-da64-d914-8b8c-ed064056edbd@samsung.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 0/10] Add endpoint driver for Rockchip PCIe controller
+Date: Mon, 23 Apr 2018 09:07:46 +0800
+Message-ID: <834c0cd3-f036-53f6-8447-774e7ee1ea36@rock-chips.com>
+References: <1522630865-151344-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9de97922-da64-d914-8b8c-ed064056edbd@samsung.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrzej Hajda <a.hajda@samsung.com>, architt@codeaurora.org, inki.dae@samsung.com, thierry.reding@gmail.com, hjc@rock-chips.com, seanpaul@chromium.org, airlied@linux.ie, tfiga@chromium.org, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, dianders@chromium.org, ykk@rock-chips.com, kernel@collabora.com, m.szyprowski@samsung.com, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com, rydberg@bitmath.org, krzk@kernel.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, linux-input@vger.kernel.org, orjan.eide@arm.com, wxt@rock-chips.com, jeffy.chen@rock-chips.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com, wzz@rock-chips.com, hl@rock-chips.com, jingoohan1@gmail.com, sw0312.kim@samsung.com, linux-kernel@vger.kernel.org, kyungmin.park@samsung.com, Laurent.pinchart@ideasonboard.com, kuankuan.y@gmail.com, hshi@chromium.org, "Kristian H. Kristensen" <hoegsberg@google.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1522630865-151344-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andrzej,
+Hi Lorenzo,
 
-On 20/04/18 15:47, Andrzej Hajda wrote:
-> Hi Enric,
+Gentle ping :)
+
+On 2018/4/2 9:01, Shawn Lin wrote:
+> Hi Lorenzo,
+> 
+>      This's the 5th try to upstream endpoint driver for Rockchip PCIe
+> controller. In previous discussion, we both agree to do some directory
+> reconstruction as soon as possible in 4.17 cycle. So the first 3 patches
+> attempt to move forward with that.
+> 
+> Then patch 4-9 are mostly the same as previous version, but just
+> fold in the fixes found by Kbuild Robot.
+> 
+> And patch 10 will update the defconfig for arm64 to avoid the warning,
+> which may go via linux-rockchip tree.
+> 
+> Hope it looks good to you. :)
+> 
+> Changes in v5:
+> - fix all issues found by Kbuild Robot
+> - rename directory from host to controller, and move back dwc and cadence
+> 
+> Changes in v4:
+> - remove empty line
+> - keep rockchip's order next to cadence and dwc, but we will
+>    try to resort it later when reconstructing the directories
+> 
+> Changes in v2:
+> - remove rockchip,rk3399-pcie-host compatible(Suggested by Rob)
+> - fix some error handling
 > 
 > 
-> On 05.04.2018 11:49, Enric Balletbo i Serra wrote:
->> From: "Kristian H. Kristensen" <hoegsberg@google.com>
->>
->> To improve PSR exit latency, we speculatively start exiting when we
->> receive input events. Occasionally, this may lead to false positives,
->> but most of the time we get a head start on coming out of PSR. Depending
->> on how userspace takes to produce a new frame in response to the event,
->> this can completely hide the exit latency. In case of Chrome OS, we
->> typically get the input notifier 50ms or more before the dirty_fb
->> triggered exit.
 > 
-> This patch is quite controversial and require more attention/discussion
-> and probably changes.
-
-Agree.
-
-> The rest of the patches is OK, and all have r-b/t-b tags.
-> If you prefer I can merge all other patches, if you rebase patches 25-30
-> on top of patch 23, or I can only merge patches 01-23.
-> What do you prefer?
+> Shawn Lin (10):
+>    PCI: Rename directory from host to controller
+>    PCI: cadence: Move cadence drivers back to controller directory
+>    PCI: dwc: Move dwc drivers back to controller directory
+>    PCI: rockchip: Factor out common code and host code
+>    PCI: rockchip: Split out common function to parse DT
+>    PCI: rockchip: Split out common function to init controller
+>    dt-bindings: PCI: rockchip: Rename rockchip-pcie.txt to
+>      rockchip-pcie-host.txt
+>    PCI: rockchip: Add Endpoint controller driver for Rockchip PCIe
+>      controller
+>    dt-bindings: PCI: rockchip: Add DT bindings for Rockchip PCIe endpoint
+>      controller
+>    arm64: defconfig: update config for Rockchip PCIe
 > 
-
-If the patches 25-30 are also fine let me rebase those, and lets start a
-discussion regarding patches 23-25 on another patchset. I'll send another
-version without 23-25.
-
-Regards,
- Enric
-
-> Regards
-> Andrzej
-> 
->>
->> Signed-off-by: Kristian H. Kristensen <hoegsberg@google.com>
->> Signed-off-by: Thierry Escande <thierry.escande@collabora.com>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
->> ---
->>
->>  drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 134 ++++++++++++++++++++++++++++
->>  1 file changed, 134 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
->> index 9376f4396b6b..a107845ba97c 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
->> @@ -12,6 +12,8 @@
->>   * GNU General Public License for more details.
->>   */
->>  
->> +#include <linux/input.h>
->> +
->>  #include <drm/drmP.h>
->>  #include <drm/drm_crtc_helper.h>
->>  
->> @@ -35,6 +37,9 @@ struct psr_drv {
->>  	enum psr_state		state;
->>  
->>  	struct delayed_work	flush_work;
->> +	struct work_struct	disable_work;
->> +
->> +	struct input_handler    input_handler;
->>  
->>  	int (*set)(struct drm_encoder *encoder, bool enable);
->>  };
->> @@ -133,6 +138,18 @@ static void psr_flush_handler(struct work_struct *work)
->>  	mutex_unlock(&psr->lock);
->>  }
->>  
->> +static void psr_disable_handler(struct work_struct *work)
->> +{
->> +	struct psr_drv *psr = container_of(work, struct psr_drv, disable_work);
->> +
->> +	/* If the state has changed since we initiated the flush, do nothing */
->> +	mutex_lock(&psr->lock);
->> +	if (psr->state == PSR_ENABLE)
->> +		psr_set_state_locked(psr, PSR_FLUSH);
->> +	mutex_unlock(&psr->lock);
->> +	mod_delayed_work(system_wq, &psr->flush_work, PSR_FLUSH_TIMEOUT_MS);
->> +}
->> +
->>  /**
->>   * rockchip_drm_psr_activate - activate PSR on the given pipe
->>   * @encoder: encoder to obtain the PSR encoder
->> @@ -173,6 +190,7 @@ int rockchip_drm_psr_deactivate(struct drm_encoder *encoder)
->>  	psr->active = false;
->>  	mutex_unlock(&psr->lock);
->>  	cancel_delayed_work_sync(&psr->flush_work);
->> +	cancel_work_sync(&psr->disable_work);
->>  
->>  	return 0;
->>  }
->> @@ -226,6 +244,95 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev)
->>  }
->>  EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
->>  
->> +static void psr_input_event(struct input_handle *handle,
->> +			    unsigned int type, unsigned int code,
->> +			    int value)
->> +{
->> +	struct psr_drv *psr = handle->handler->private;
->> +
->> +	schedule_work(&psr->disable_work);
->> +}
->> +
->> +static int psr_input_connect(struct input_handler *handler,
->> +			     struct input_dev *dev,
->> +			     const struct input_device_id *id)
->> +{
->> +	struct input_handle *handle;
->> +	int error;
->> +
->> +	handle = kzalloc(sizeof(struct input_handle), GFP_KERNEL);
->> +	if (!handle)
->> +		return -ENOMEM;
->> +
->> +	handle->dev = dev;
->> +	handle->handler = handler;
->> +	handle->name = "rockchip-psr";
->> +
->> +	error = input_register_handle(handle);
->> +	if (error)
->> +		goto err2;
->> +
->> +	error = input_open_device(handle);
->> +	if (error)
->> +		goto err1;
->> +
->> +	return 0;
->> +
->> +err1:
->> +	input_unregister_handle(handle);
->> +err2:
->> +	kfree(handle);
->> +	return error;
->> +}
->> +
->> +static void psr_input_disconnect(struct input_handle *handle)
->> +{
->> +	input_close_device(handle);
->> +	input_unregister_handle(handle);
->> +	kfree(handle);
->> +}
->> +
->> +/* Same device ids as cpu-boost */
->> +static const struct input_device_id psr_ids[] = {
->> +	{
->> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
->> +			 INPUT_DEVICE_ID_MATCH_ABSBIT,
->> +		.evbit = { BIT_MASK(EV_ABS) },
->> +		.absbit = { [BIT_WORD(ABS_MT_POSITION_X)] =
->> +			    BIT_MASK(ABS_MT_POSITION_X) |
->> +			    BIT_MASK(ABS_MT_POSITION_Y) },
->> +	}, /* multi-touch touchscreen */
->> +	{
->> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
->> +		.evbit = { BIT_MASK(EV_ABS) },
->> +		.absbit = { [BIT_WORD(ABS_X)] = BIT_MASK(ABS_X) }
->> +
->> +	}, /* stylus or joystick device */
->> +	{
->> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
->> +		.evbit = { BIT_MASK(EV_KEY) },
->> +		.keybit = { [BIT_WORD(BTN_LEFT)] = BIT_MASK(BTN_LEFT) },
->> +	}, /* pointer (e.g. trackpad, mouse) */
->> +	{
->> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
->> +		.evbit = { BIT_MASK(EV_KEY) },
->> +		.keybit = { [BIT_WORD(KEY_ESC)] = BIT_MASK(KEY_ESC) },
->> +	}, /* keyboard */
->> +	{
->> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
->> +				INPUT_DEVICE_ID_MATCH_KEYBIT,
->> +		.evbit = { BIT_MASK(EV_KEY) },
->> +		.keybit = {[BIT_WORD(BTN_JOYSTICK)] = BIT_MASK(BTN_JOYSTICK) },
->> +	}, /* joysticks not caught by ABS_X above */
->> +	{
->> +		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
->> +				INPUT_DEVICE_ID_MATCH_KEYBIT,
->> +		.evbit = { BIT_MASK(EV_KEY) },
->> +		.keybit = { [BIT_WORD(BTN_GAMEPAD)] = BIT_MASK(BTN_GAMEPAD) },
->> +	}, /* gamepad */
->> +	{ },
->> +};
->> +
->>  /**
->>   * rockchip_drm_psr_register - register encoder to psr driver
->>   * @encoder: encoder that obtain the PSR function
->> @@ -239,6 +346,7 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
->>  {
->>  	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
->>  	struct psr_drv *psr;
->> +	int error;
->>  
->>  	if (!encoder || !psr_set)
->>  		return -EINVAL;
->> @@ -248,6 +356,7 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
->>  		return -ENOMEM;
->>  
->>  	INIT_DELAYED_WORK(&psr->flush_work, psr_flush_handler);
->> +	INIT_WORK(&psr->disable_work, psr_disable_handler);
->>  	mutex_init(&psr->lock);
->>  
->>  	psr->active = true;
->> @@ -255,11 +364,33 @@ int rockchip_drm_psr_register(struct drm_encoder *encoder,
->>  	psr->encoder = encoder;
->>  	psr->set = psr_set;
->>  
->> +	psr->input_handler.event = psr_input_event;
->> +	psr->input_handler.connect = psr_input_connect;
->> +	psr->input_handler.disconnect = psr_input_disconnect;
->> +	psr->input_handler.name =
->> +		kasprintf(GFP_KERNEL, "rockchip-psr-%s", encoder->name);
->> +	if (!psr->input_handler.name) {
->> +		error = -ENOMEM;
->> +		goto err2;
->> +	}
->> +	psr->input_handler.id_table = psr_ids;
->> +	psr->input_handler.private = psr;
->> +
->> +	error = input_register_handler(&psr->input_handler);
->> +	if (error)
->> +		goto err1;
->> +
->>  	mutex_lock(&drm_drv->psr_list_lock);
->>  	list_add_tail(&psr->list, &drm_drv->psr_list);
->>  	mutex_unlock(&drm_drv->psr_list_lock);
->>  
->>  	return 0;
->> +
->> + err1:
->> +	kfree(psr->input_handler.name);
->> + err2:
->> +	kfree(psr);
->> +	return error;
->>  }
->>  EXPORT_SYMBOL(rockchip_drm_psr_register);
->>  
->> @@ -279,8 +410,11 @@ void rockchip_drm_psr_unregister(struct drm_encoder *encoder)
->>  	mutex_lock(&drm_drv->psr_list_lock);
->>  	list_for_each_entry_safe(psr, n, &drm_drv->psr_list, list) {
->>  		if (psr->encoder == encoder) {
->> +			input_unregister_handler(&psr->input_handler);
->>  			cancel_delayed_work_sync(&psr->flush_work);
->> +			cancel_work_sync(&psr->disable_work);
->>  			list_del(&psr->list);
->> +			kfree(psr->input_handler.name);
->>  			kfree(psr);
->>  		}
->>  	}
-> 
+>   .../devicetree/bindings/pci/rockchip-pcie-ep.txt   |  62 ++
+>   .../{rockchip-pcie.txt => rockchip-pcie-host.txt}  |   0
+>   MAINTAINERS                                        |  65 ++-
+>   arch/arm64/configs/defconfig                       |   3 +-
+>   drivers/pci/Kconfig                                |   4 +-
+>   drivers/pci/Makefile                               |   6 +-
+>   drivers/pci/cadence/Kconfig                        |  27 -
+>   drivers/pci/cadence/Makefile                       |   4 -
+>   drivers/pci/{host => controller}/Kconfig           |  50 +-
+>   drivers/pci/{host => controller}/Makefile          |   7 +
+>   drivers/pci/{ => controller}/dwc/Kconfig           |   0
+>   drivers/pci/{ => controller}/dwc/Makefile          |   0
+>   drivers/pci/{ => controller}/dwc/pci-dra7xx.c      |   0
+>   drivers/pci/{ => controller}/dwc/pci-exynos.c      |   0
+>   drivers/pci/{ => controller}/dwc/pci-imx6.c        |   0
+>   drivers/pci/{ => controller}/dwc/pci-keystone-dw.c |   0
+>   drivers/pci/{ => controller}/dwc/pci-keystone.c    |   0
+>   drivers/pci/{ => controller}/dwc/pci-keystone.h    |   0
+>   drivers/pci/{ => controller}/dwc/pci-layerscape.c  |   0
+>   drivers/pci/{ => controller}/dwc/pcie-armada8k.c   |   0
+>   drivers/pci/{ => controller}/dwc/pcie-artpec6.c    |   0
+>   .../pci/{ => controller}/dwc/pcie-designware-ep.c  |   0
+>   .../{ => controller}/dwc/pcie-designware-host.c    |   0
+>   .../{ => controller}/dwc/pcie-designware-plat.c    |   0
+>   drivers/pci/{ => controller}/dwc/pcie-designware.c |   0
+>   drivers/pci/{ => controller}/dwc/pcie-designware.h |   0
+>   drivers/pci/{ => controller}/dwc/pcie-hisi.c       |   2 +-
+>   drivers/pci/{ => controller}/dwc/pcie-histb.c      |   0
+>   drivers/pci/{ => controller}/dwc/pcie-kirin.c      |   0
+>   drivers/pci/{ => controller}/dwc/pcie-qcom.c       |   0
+>   drivers/pci/{ => controller}/dwc/pcie-spear13xx.c  |   0
+>   drivers/pci/{host => controller}/pci-aardvark.c    |   0
+>   drivers/pci/{host => controller}/pci-ftpci100.c    |   0
+>   drivers/pci/{host => controller}/pci-host-common.c |   0
+>   .../pci/{host => controller}/pci-host-generic.c    |   0
+>   drivers/pci/{host => controller}/pci-hyperv.c      |   0
+>   drivers/pci/{host => controller}/pci-mvebu.c       |   0
+>   drivers/pci/{host => controller}/pci-rcar-gen2.c   |   0
+>   drivers/pci/{host => controller}/pci-tegra.c       |   0
+>   .../pci/{host => controller}/pci-thunder-ecam.c    |   0
+>   drivers/pci/{host => controller}/pci-thunder-pem.c |   0
+>   drivers/pci/{host => controller}/pci-v3-semi.c     |   0
+>   drivers/pci/{host => controller}/pci-versatile.c   |   0
+>   drivers/pci/{host => controller}/pci-xgene-msi.c   |   0
+>   drivers/pci/{host => controller}/pci-xgene.c       |   0
+>   drivers/pci/{host => controller}/pcie-altera-msi.c |   0
+>   drivers/pci/{host => controller}/pcie-altera.c     |   0
+>   .../pci/{cadence => controller}/pcie-cadence-ep.c  |   0
+>   .../{cadence => controller}/pcie-cadence-host.c    |   0
+>   drivers/pci/{cadence => controller}/pcie-cadence.c |   0
+>   drivers/pci/{cadence => controller}/pcie-cadence.h |   0
+>   drivers/pci/{host => controller}/pcie-iproc-bcma.c |   0
+>   drivers/pci/{host => controller}/pcie-iproc-msi.c  |   0
+>   .../pci/{host => controller}/pcie-iproc-platform.c |   0
+>   drivers/pci/{host => controller}/pcie-iproc.c      |   0
+>   drivers/pci/{host => controller}/pcie-iproc.h      |   0
+>   drivers/pci/{host => controller}/pcie-mediatek.c   |   0
+>   drivers/pci/{host => controller}/pcie-rcar.c       |   0
+>   drivers/pci/controller/pcie-rockchip-ep.c          | 639 +++++++++++++++++++++
+>   .../pcie-rockchip-host.c}                          | 600 +------------------
+>   drivers/pci/controller/pcie-rockchip.c             | 423 ++++++++++++++
+>   drivers/pci/controller/pcie-rockchip.h             | 338 +++++++++++
+>   drivers/pci/{host => controller}/pcie-tango.c      |   0
+>   drivers/pci/{host => controller}/pcie-xilinx-nwl.c |   0
+>   drivers/pci/{host => controller}/pcie-xilinx.c     |   0
+>   drivers/pci/{host => controller}/vmd.c             |   0
+>   66 files changed, 1571 insertions(+), 659 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/pci/rockchip-pcie-ep.txt
+>   rename Documentation/devicetree/bindings/pci/{rockchip-pcie.txt => rockchip-pcie-host.txt} (100%)
+>   delete mode 100644 drivers/pci/cadence/Kconfig
+>   delete mode 100644 drivers/pci/cadence/Makefile
+>   rename drivers/pci/{host => controller}/Kconfig (84%)
+>   rename drivers/pci/{host => controller}/Makefile (84%)
+>   rename drivers/pci/{ => controller}/dwc/Kconfig (100%)
+>   rename drivers/pci/{ => controller}/dwc/Makefile (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-dra7xx.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-exynos.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-imx6.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-keystone-dw.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-keystone.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-keystone.h (100%)
+>   rename drivers/pci/{ => controller}/dwc/pci-layerscape.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-armada8k.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-artpec6.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-designware-ep.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-designware-host.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-designware-plat.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-designware.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-designware.h (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-hisi.c (99%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-histb.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-kirin.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-qcom.c (100%)
+>   rename drivers/pci/{ => controller}/dwc/pcie-spear13xx.c (100%)
+>   rename drivers/pci/{host => controller}/pci-aardvark.c (100%)
+>   rename drivers/pci/{host => controller}/pci-ftpci100.c (100%)
+>   rename drivers/pci/{host => controller}/pci-host-common.c (100%)
+>   rename drivers/pci/{host => controller}/pci-host-generic.c (100%)
+>   rename drivers/pci/{host => controller}/pci-hyperv.c (100%)
+>   rename drivers/pci/{host => controller}/pci-mvebu.c (100%)
+>   rename drivers/pci/{host => controller}/pci-rcar-gen2.c (100%)
+>   rename drivers/pci/{host => controller}/pci-tegra.c (100%)
+>   rename drivers/pci/{host => controller}/pci-thunder-ecam.c (100%)
+>   rename drivers/pci/{host => controller}/pci-thunder-pem.c (100%)
+>   rename drivers/pci/{host => controller}/pci-v3-semi.c (100%)
+>   rename drivers/pci/{host => controller}/pci-versatile.c (100%)
+>   rename drivers/pci/{host => controller}/pci-xgene-msi.c (100%)
+>   rename drivers/pci/{host => controller}/pci-xgene.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-altera-msi.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-altera.c (100%)
+>   rename drivers/pci/{cadence => controller}/pcie-cadence-ep.c (100%)
+>   rename drivers/pci/{cadence => controller}/pcie-cadence-host.c (100%)
+>   rename drivers/pci/{cadence => controller}/pcie-cadence.c (100%)
+>   rename drivers/pci/{cadence => controller}/pcie-cadence.h (100%)
+>   rename drivers/pci/{host => controller}/pcie-iproc-bcma.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-iproc-msi.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-iproc-platform.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-iproc.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-iproc.h (100%)
+>   rename drivers/pci/{host => controller}/pcie-mediatek.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-rcar.c (100%)
+>   create mode 100644 drivers/pci/controller/pcie-rockchip-ep.c
+>   rename drivers/pci/{host/pcie-rockchip.c => controller/pcie-rockchip-host.c} (61%)
+>   create mode 100644 drivers/pci/controller/pcie-rockchip.c
+>   create mode 100644 drivers/pci/controller/pcie-rockchip.h
+>   rename drivers/pci/{host => controller}/pcie-tango.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-xilinx-nwl.c (100%)
+>   rename drivers/pci/{host => controller}/pcie-xilinx.c (100%)
+>   rename drivers/pci/{host => controller}/vmd.c (100%)
 > 
