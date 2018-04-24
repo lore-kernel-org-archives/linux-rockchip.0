@@ -1,85 +1,56 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH 6/6] devfreq: rk3399_dmc: register devfreq notification to
- dmc driver.
-Date: Tue, 24 Apr 2018 10:01:03 +0200
-Message-ID: <a213bb68-2a47-b7b9-d35f-cc5355f9c1be@collabora.com>
-References: <20180419104019.24406-7-enric.balletbo@collabora.com>
- <20180419104019.24406-1-enric.balletbo@collabora.com>
- <CGME20180419104059epcas2p3fe5aba95859e02307556200a42bc1ac2@epcms1p7>
- <20180424042233epcms1p7b27cb007b11ed467d773ce93d8bc7ed4@epcms1p7>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH 2/2] usb: dwc2: fix isoc split in transfer with no data
+Date: Tue, 24 Apr 2018 11:27:04 +0300
+Message-ID: <799e2eea-be83-b3c1-3ee7-7a66b1759379@cogentembedded.com>
+References: <1524537824-22010-1-git-send-email-william.wu@rock-chips.com>
+ <1524537824-22010-3-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180424042233epcms1p7b27cb007b11ed467d773ce93d8bc7ed4@epcms1p7>
-Content-Language: en-GB
+In-Reply-To: <1524537824-22010-3-git-send-email-william.wu@rock-chips.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: myungjoo.ham@samsung.com, Kyungmin Park <kyungmin.park@samsung.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dianders@google.com" <dianders@google.com>, "groek@google.com" <groek@google.com>, "kernel@collabora.com" <kernel@collabora.com>, Lin Huang <hl@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, Chanwoo Choi <cw00.choi@samsung.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Jeffy Chen <jeffy.chen@rock-chips.com>, Ulf
+To: William Wu <william.wu@rock-chips.com>, hminas@synopsys.com, felipe.balbi@linux.intel.com, gregkh@linuxfoundation.org
+Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, wzz@rock-chips.com, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@AOPEN.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
+Hello!
 
-On 24/04/18 06:22, MyungJoo Ham wrote:
->> From: Lin Huang <hl@rock-chips.com>
->>
->> Because dmc may also access the PMU_BUS_IDLE_REQ register, we need to
->> ensure that the pd driver and the dmc driver will not access at this
->> register at the same time.
->>
->> Signed-off-by: Lin Huang <hl@rock-chips.com>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> ---
->>
->> drivers/devfreq/rk3399_dmc.c      | 47 +----------------------
->> drivers/soc/rockchip/pm_domains.c | 31 +++++++++++++++
->> include/soc/rockchip/rk3399_dmc.h | 63 +++++++++++++++++++++++++++++++
->> 3 files changed, 96 insertions(+), 45 deletions(-)
->> create mode 100644 include/soc/rockchip/rk3399_dmc.h
->>
->> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
->> index 5bfca028eaaf..a1f320634d69 100644
->> --- a/drivers/devfreq/rk3399_dmc.c
->> +++ b/drivers/devfreq/rk3399_dmc.c
-> []
->> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
->> index 53efc386b1ad..7acc836e7eb7 100644
->> --- a/drivers/soc/rockchip/pm_domains.c
->> +++ b/drivers/soc/rockchip/pm_domains.c
-> []
->> +static int dmc_notify(struct notifier_block *nb, unsigned long event,
->> +		      void *data)
->> +{
->> +	if (event == DEVFREQ_PRECHANGE)
->> +		mutex_lock(&dmc_pmu->mutex);
->> +	else if (event == DEVFREQ_POSTCHANGE)
->> +		mutex_unlock(&dmc_pmu->mutex);
->> +
->> +	return NOTIFY_OK;
->> +}
->> +
-> 
-> Doesn't this incur a deadlock?
-> 
-> 1. devfreq.c:update_freq calls devfreq_notify_transition(DEVFREQ_PRECHANGE)
-> 2. pm_domain.c:dmc_notify calls mutex_lock(dmc_pmu->mutex)
-> 3. devfreq.c:update_freq calls target callback
-> 4. rk3399_dmc.c:rk3399_dmcfreq_target calls mutex_lock(&dmcfreq->lock)
->    >>>>>> update_freq cannot proceed. <<<<
-> 
+On 4/24/2018 5:43 AM, William Wu wrote:
 
-Mmm, makes sense, but I did not detect this deadlock.
+> If isoc split in transfer with no data (the length of DATA0
+> packet is 0), we can't simply return immediately. Because the
+> DATA0 can be the first transaction or the second transaction for
+> the isoc split in transaction. If the DATA0 packet with on data
+                                                           ^^ no?
 
-As this patch is controversial let me remove this patch from these series and
-I'll send again with the other series that applies on top of these, the series I
-am working on are to add ddrfreq support in the drm rockchip driver. Thinking
-about it I guess makes more sense as 1-5 are just cleanups, 6 is a bit
-different, maybe more related to the work I am doing.
+> is in the first transaction, we can return immediately. But if
+> the the DATA0 packet with on data is in the second transaction
 
-Best regards,
-  Enric
+   One "the" too many. And that "on data" again... :-)
 
+> of isoc split in transaction sequence, we need to increase the
+> qtd->isoc_frame_index and giveback urb to device driver if needed,
+> otherwise, the MDATA packet will be lost.
 > 
-> Cheers,
-> MyungJoo
+> A typical test case is that connect the dwc2 controller with an
+> usb hs Hub (GL852G-12), and plug an usb fs audio device (Plantronics
+> headset) into the downstream port of Hub. Then use the usb mic
+> to record, we can find noise when playback.
 > 
+> In the case, the isoc split in transaction sequence like this:
+> 
+> - SSPLIT IN transaction
+> - CSPLIT IN transaction
+>    - MDATA packet (176 bytes)
+> - CSPLIT IN transaction
+>    - DATA0 packet (0 byte)
+> 
+> This patch use both the length of DATA0 and qtd->isoc_split_offset
+> to check if the DATA0 is in the second transaction.
+> 
+> Signed-off-by: William Wu <william.wu@rock-chips.com>
+[...]
+
+MBR, Sergei
