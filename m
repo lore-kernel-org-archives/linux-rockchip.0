@@ -1,69 +1,60 @@
-From: wlf <wulf@rock-chips.com>
-Subject: Re: [PATCH 2/2] usb: dwc2: fix isoc split in transfer with no data
-Date: Tue, 24 Apr 2018 17:04:26 +0800
-Message-ID: <4daa0026-f5b5-a82f-08b1-20196968dcfb@rock-chips.com>
-References: <1524537824-22010-1-git-send-email-william.wu@rock-chips.com>
- <1524537824-22010-3-git-send-email-william.wu@rock-chips.com>
- <799e2eea-be83-b3c1-3ee7-7a66b1759379@cogentembedded.com>
+From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+Subject: [regression, bisected] rockchip rk3399 video output breakage
+Date: Tue, 24 Apr 2018 14:19:47 +0200
+Message-ID: <3beabd18-0c39-be65-cfe7-8498dc7c296b@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <799e2eea-be83-b3c1-3ee7-7a66b1759379@cogentembedded.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, William Wu <william.wu@rock-chips.com>, hminas@synopsys.com, felipe.balbi@linux.intel.com, gregkh@linuxfoundation.org
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, wzz@rock-chips.com, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@AOPEN.com
+To: linux-kernel@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Joerg Roedel <jroedel@suse.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Sergei,
+I am working on getting HDMI output enabled in mainline Linux for our 
+RK3399-Q7 module. It works fine on v4.16, but testing with v4.17-rc2 I 
+get this, and the screen stays black:
 
+> [    7.142712] alloc_contig_range: [7f061, 7f062) PFNs busy
+> [    7.148862] alloc_contig_range: [7f066, 7f067) PFNs busy
+> [    7.155041] alloc_contig_range: [7f067, 7f068) PFNs busy
+> [    7.161139] alloc_contig_range: [7f070, 7f071) PFNs busy
+> [    7.167295] alloc_contig_range: [7f071, 7f072) PFNs busy
+> [    7.173413] alloc_contig_range: [7f072, 7f073) PFNs busy
+> [    7.181387] alloc_contig_range: [7f073, 7f074) PFNs busy
+> [    7.190623] alloc_contig_range: [7f074, 7f075) PFNs busy
+> [    7.196668] alloc_contig_range: [7f075, 7f076) PFNs busy
+> [    7.202793] alloc_contig_range: [7f076, 7f077) PFNs busy
+> [    7.254911] hub 7-1:1.0: USB hub found
+> [    7.259878] hub 7-1:1.0: 4 ports detected
+> [    7.322543] rockchip-drm display-subsystem: master bind failed: -12
+> [    7.329619] rockchip-vop: probe of ff900000.vop failed with error -12
 
-在 2018年04月24日 16:27, Sergei Shtylyov 写道:
-> Hello!
->
-> On 4/24/2018 5:43 AM, William Wu wrote:
->
->> If isoc split in transfer with no data (the length of DATA0
->> packet is 0), we can't simply return immediately. Because the
->> DATA0 can be the first transaction or the second transaction for
->> the isoc split in transaction. If the DATA0 packet with on data
->                                                           ^^ no?
-Thank you for correcting me. I will fix it in next patch version.
->
->> is in the first transaction, we can return immediately. But if
->> the the DATA0 packet with on data is in the second transaction
->
->   One "the" too many. And that "on data" again... :-)
-Ah, sorry to make such a simple mistake. I will fix these in next patch 
-version.
->
->> of isoc split in transaction sequence, we need to increase the
->> qtd->isoc_frame_index and giveback urb to device driver if needed,
->> otherwise, the MDATA packet will be lost.
->>
->> A typical test case is that connect the dwc2 controller with an
->> usb hs Hub (GL852G-12), and plug an usb fs audio device (Plantronics
->> headset) into the downstream port of Hub. Then use the usb mic
->> to record, we can find noise when playback.
->>
->> In the case, the isoc split in transaction sequence like this:
->>
->> - SSPLIT IN transaction
->> - CSPLIT IN transaction
->>    - MDATA packet (176 bytes)
->> - CSPLIT IN transaction
->>    - DATA0 packet (0 byte)
->>
->> This patch use both the length of DATA0 and qtd->isoc_split_offset
->> to check if the DATA0 is in the second transaction.
->>
->> Signed-off-by: William Wu <william.wu@rock-chips.com>
-> [...]
->
-> MBR, Sergei
-Best regards,
-     wulf
->
->
->
+Full dmesg: 
+https://gist.github.com/jakob-tsd/33cf395e355bf9bb6956c36438d999e7
+
+I have bisected the "master bind failed" down to:
+
+> commit 9176a303d971dc0fb35469c531c0d263667d2277
+> Author: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Date:   Fri Mar 23 15:38:10 2018 +0800
+> 
+>     iommu/rockchip: Use IOMMU device for dma mapping operations
+> 
+>     Use the first registered IOMMU device for dma mapping operations, and
+>     drop the domain platform device.
+> 
+>     This is similar to exynos iommu driver.
+> 
+>     Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+>     Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+>     Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+>     Signed-off-by: Joerg Roedel <jroedel@suse.de>
+
+Moving to one commit earlier brings the screen to life. Just with 
+colorful garbage, but I guess that's a different problem.
+
+Is this a known issue with the IOMMU change?
+
+Thanks,
+Jakob
