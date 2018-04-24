@@ -1,63 +1,56 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
+From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
 Subject: Re: [regression, bisected] rockchip rk3399 video output breakage
-Date: Tue, 24 Apr 2018 20:37:07 +0800
-Message-ID: <5ADF24F3.6070106@rock-chips.com>
+Date: Tue, 24 Apr 2018 15:11:26 +0200
+Message-ID: <fdd0fe29-2117-c67b-5dba-5d1ab0b19dd1@theobroma-systems.com>
 References: <3beabd18-0c39-be65-cfe7-8498dc7c296b@theobroma-systems.com>
+ <5ADF24F3.6070106@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3beabd18-0c39-be65-cfe7-8498dc7c296b@theobroma-systems.com>
+In-Reply-To: <5ADF24F3.6070106@rock-chips.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>, linux-kernel@vger.kernel.org, Joerg Roedel <jroedel@suse.de>, linux-rockchip@lists.infradead.org
+To: JeffyChen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, Joerg Roedel <jroedel@suse.de>, linux-rockchip@lists.infradead.org
+Cc: klaus.goger@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jakob,
+On 24.04.18 14:37, JeffyChen wrote:
+> 
+> right, i think it's a known issue, as the iommu failed to get clks:
+> [    1.525153] rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -2
+> [    1.525316] rk_iommu: probe of ff8f3f00.iommu failed with error -2
+> [    1.525484] rk_iommu ff903f00.iommu: Failed to get clk 'iface': -2
+> [    1.525643] rk_iommu: probe of ff903f00.iommu failed with error -2
+> 
+> 
+> there's a followed patch to add those clks to the dtsi, and also a fix 
+> patch to make those clks optional(by heiko):
+> 
+> https://www.spinics.net/lists/arm-kernel/msg645696.html
+> 
+> http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020349.html
 
-Thanks for your message.
+Thanks, I tested both, and both get the screen to display some kernel 
+output!
 
-On 04/24/2018 08:19 PM, Jakob Unterwurzacher wrote:
->
-> Full dmesg:
-> https://gist.github.com/jakob-tsd/33cf395e355bf9bb6956c36438d999e7
->
-> I have bisected the "master bind failed" down to:
->
->> commit 9176a303d971dc0fb35469c531c0d263667d2277
->> Author: Jeffy Chen <jeffy.chen@rock-chips.com>
->> Date:   Fri Mar 23 15:38:10 2018 +0800
->>
->>     iommu/rockchip: Use IOMMU device for dma mapping operations
->>
->>     Use the first registered IOMMU device for dma mapping operations, and
->>     drop the domain platform device.
->>
->>     This is similar to exynos iommu driver.
->>
->>     Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>     Reviewed-by: Tomasz Figa <tfiga@chromium.org>
->>     Reviewed-by: Robin Murphy <robin.murphy@arm.com>
->>     Signed-off-by: Joerg Roedel <jroedel@suse.de>
->
-> Moving to one commit earlier brings the screen to life. Just with
-> colorful garbage, but I guess that's a different problem.
->
-> Is this a known issue with the IOMMU change?
+However, I am getting some nasty error messages and the screen seems to 
+refresh only once every 30 seconds:
 
-right, i think it's a known issue, as the iommu failed to get clks:
-[    1.525153] rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -2
-[    1.525316] rk_iommu: probe of ff8f3f00.iommu failed with error -2
-[    1.525484] rk_iommu ff903f00.iommu: Failed to get clk 'iface': -2
-[    1.525643] rk_iommu: probe of ff903f00.iommu failed with error -2
+> [   15.586502] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CRTC:30:crtc-0] flip_done timed out
+> [   25.826490] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CONNECTOR:37:HDMI-A-1] flip_done timed out
+> [   36.066490] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [PLANE:28:plane-0] flip_done timed out
+> [   36.066504] [drm:drm_calc_timestamping_constants] crtc 30: hwmode: htotal 2200, vtotal 1125, vdisplay 1080
+> [   36.066508] [drm:drm_calc_timestamping_constants] crtc 30: clock 148500 kHz framedur 16666666 linedur 14814
+> [   36.076535] rockchip-vop ff8f0000.vop: [drm:vop_crtc_atomic_flush] *ERROR* VOP vblank IRQ stuck for 10 ms
+> [   36.076577] WARNING: CPU: 1 PID: 83 at drivers/gpu/drm/rockchip/rockchip_drm_vop.c:1004 vop_crtc_atomic_flush+0x1c0/0x1c8
 
+Full dmesg with patch "arm64: dts: rockchip: add clocks in iommu nodes":
+https://gist.github.com/jakob-tsd/3fd49894d52dcd8a409eb9e6136b2d39
 
-there's a followed patch to add those clks to the dtsi, and also a fix 
-patch to make those clks optional(by heiko):
+Full dmesg with patch "iommu/rockchip: make clock handling optional":
+https://gist.github.com/jakob-tsd/da96572a40d11f0f6dff3ee481098138 
+(looks the same)
 
-https://www.spinics.net/lists/arm-kernel/msg645696.html
-
-http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020349.html
-
->
-> Thanks,
-> Jakob
+Thanks,
+Jakob
