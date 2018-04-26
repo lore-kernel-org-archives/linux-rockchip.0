@@ -1,85 +1,32 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] drm/core: Remove drm_dev_unref() and it's uses
-Date: Thu, 26 Apr 2018 13:43:09 +0300
-Message-ID: <2767328.18DNhHKilX@avalon>
-References: <20180426102819.6985-1-vthakkar1994@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2 2/5] ARM: timer-sp: Use of_clk_get_parent_count()
+ instead of open coding
+Date: Thu, 26 Apr 2018 13:56:00 +0200
+Message-ID: <CACRpkdZdiVhZcfJU67i+innQimcR48Zq6uRB42c57Vx1G204jw@mail.gmail.com>
+References: <1523364701-15383-1-git-send-email-geert+renesas@glider.be> <1523364701-15383-3-git-send-email-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180426102819.6985-1-vthakkar1994@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Vaishali Thakkar <vthakkar1994@gmail.com>
-Cc: linux-renesas-soc@vger.kernel.org, alexandre.belloni@bootlin.com, airlied@linux.ie, thierry.reding@gmail.com, kraxel@redhat.com, nouveau@lists.freedesktop.org, marex@denx.de, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, tomi.valkeinen@ti.com, linux@armlinux.org.uk, krzk@kernel.org, jonathanh@nvidia.com, z.liuxinliang@hisilicon.com, maxime.ripard@bootlin.com, kong.kongxinwei@hisilicon.com, kgene@kernel.org, bskeggs@redhat.com, linux-arm-msm@vger.kernel.org, airlied@redhat.com, virtualization@lists.linux-foundation.org, freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, puck.chen@hisilicon.com, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, brodkin@synopsys.com, boris.brezillon@bootlin.com, zourongrong@gmail.com, rodrigo.vivi@intel.com, matthias.bgg@gmail.com, org@freedesktop.org, wens@csie.org, vincent.abriou@st.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1523364701-15383-3-git-send-email-geert+renesas@glider.be>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-tegra@vger.kernel.org, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgVmFpc2hhbGksCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4KCk9uIFRodXJzZGF5LCAyNiBB
-cHJpbCAyMDE4IDEzOjI4OjE5IEVFU1QgVmFpc2hhbGkgVGhha2thciB3cm90ZToKPiBJdCdzIGJl
-ZW4gYSB3aGlsZSBzaW5jZSB3ZSBpbnRyb2R1Y2VkIGRybV9kZXZ7Z2V0L3B1dH0gZnVuY3Rpb25z
-Cj4gdG8gcmVwbGFjZSByZWZlcmVuY2UvdW5yZWZlcmVuY2UgaW4gZHJtIHN1YnN5c3RlbSBmb3Ig
-dGhlCj4gY29uc2lzdGVuY3kgcHVycG9zZS4gU28sIHdpdGggdGhpcyBwYXRjaCwgbGV0J3MganVz
-dCByZXBsYWNlCj4gYWxsIGN1cnJlbnQgdXNlIGNhc2VzIG9mIGRybV9kZXZfdW5yZWYoKSB3aXRo
-IGRybV9kZXZfcHV0IGFuZCByZW1vdmUKPiB0aGUgZnVuY3Rpb24gaXRzZWxmLgo+IAo+IENvY2Np
-bmVsbGUgd2FzIHVzZWQgZm9yIG1hc3MtcGF0Y2hpbmcuCj4gCj4gU2lnbmVkLW9mZi1ieTogVmFp
-c2hhbGkgVGhha2thciA8dnRoYWtrYXIxOTk0QGdtYWlsLmNvbT4KCkkgbG92ZSBzZWVpbmcgZGVw
-cmVjYXRlZCBmdW5jdGlvbnMgZ28uCgpSZXZpZXdlZC1ieTogTGF1cmVudCBQaW5jaGFydCA8bGF1
-cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJt
-L2FtZC9hbWRncHUvYW1kZ3B1X2Rydi5jICAgICAgICAgICAgfCAgNCArKy0tCj4gIGRyaXZlcnMv
-Z3B1L2RybS9hcmMvYXJjcGd1X2Rydi5jICAgICAgICAgICAgICAgICAgIHwgIDQgKystLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYyAgICAgICAgICAgICAgICB8ICA2ICsr
-Ky0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXRtZWwtaGxjZGMvYXRtZWxfaGxjZGNfZGMuYyAgICAg
-ICB8ICA0ICsrLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9kcnYuYyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgfCAxMyAtLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9ldG5hdml2L2V0
-bmF2aXZfZHJ2LmMgICAgICAgICAgICAgIHwgIDQgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5
-bm9zL2V4eW5vc19kcm1fZHJ2LmMgICAgICAgICAgICB8ICA0ICsrLS0KPiAgZHJpdmVycy9ncHUv
-ZHJtL2ZzbC1kY3UvZnNsX2RjdV9kcm1fZHJ2LmMgICAgICAgICAgfCAgNCArKy0tCj4gIGRyaXZl
-cnMvZ3B1L2RybS9oaXNpbGljb24vaGlibWMvaGlibWNfZHJtX2Rydi5jICAgIHwgIDQgKystLQo+
-ICBkcml2ZXJzL2dwdS9kcm0vaGlzaWxpY29uL2tpcmluL2tpcmluX2RybV9kcnYuYyAgICB8ICA4
-ICsrKystLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L3NlbGZ0ZXN0cy9odWdlX3BhZ2VzLmMg
-ICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvc2VsZnRlc3RzL2k5MTVfZ2Vt
-X2RtYWJ1Zi5jICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9zZWxmdGVzdHMvaTkx
-NV9nZW1fZXZpY3QuYyAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L3NlbGZ0ZXN0
-cy9pOTE1X2dlbV9ndHQuYyAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvc2Vs
-ZnRlc3RzL2k5MTVfZ2VtX29iamVjdC5jICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkx
-NS9zZWxmdGVzdHMvaTkxNV9yZXF1ZXN0LmMgICAgICB8ICAyICstCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9pOTE1L3NlbGZ0ZXN0cy9pOTE1X3ZtYS5jICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL2k5MTUvc2VsZnRlc3RzL2ludGVsX2JyZWFkY3J1bWJzLmMgfCAgMiArLQo+ICBkcml2
-ZXJzL2dwdS9kcm0vaW14L2lteC1kcm0tY29yZS5jICAgICAgICAgICAgICAgICB8ICA0ICsrLS0K
-PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgICAgICAgfCAg
-NiArKystLS0KPiAgZHJpdmVycy9ncHUvZHJtL21zbS9tc21fZHJ2LmMgICAgICAgICAgICAgICAg
-ICAgICAgfCAgOCArKysrLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbXhzZmIvbXhzZmJfZHJ2LmMg
-ICAgICAgICAgICAgICAgICB8ICA0ICsrLS0KPiAgZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvbm91
-dmVhdV9wbGF0Zm9ybS5jICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vb21hcGRy
-bS9vbWFwX2Rydi5jICAgICAgICAgICAgICAgICB8ICA0ICsrLS0KPiAgZHJpdmVycy9ncHUvZHJt
-L3BsMTExL3BsMTExX2Rydi5jICAgICAgICAgICAgICAgICAgfCAgNCArKy0tCj4gIGRyaXZlcnMv
-Z3B1L2RybS9xeGwvcXhsX2Rydi5jICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJp
-dmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9kdV9kcnYuYyAgICAgICAgICAgICAgfCAgMiArLQo+
-ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jICAgICAgICB8ICA0
-ICsrLS0KPiAgZHJpdmVycy9ncHUvZHJtL3NobW9iaWxlL3NobW9iX2RybV9kcnYuYyAgICAgICAg
-ICAgfCAgNCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2Rydi5jICAgICAgICAgICAg
-ICAgICAgICAgIHwgIDggKysrKy0tLS0KPiAgZHJpdmVycy9ncHUvZHJtL3N0bS9kcnYuYyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgNCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9z
-dW40aV9kcnYuYyAgICAgICAgICAgICAgICAgIHwgIDQgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-dGVncmEvZHJtLmMgICAgICAgICAgICAgICAgICAgICAgICB8ICA0ICsrLS0KPiAgZHJpdmVycy9n
-cHUvZHJtL3Rpbnlkcm0vY29yZS90aW55ZHJtLWNvcmUuYyAgICAgICAgfCAgNiArKystLS0KPiAg
-ZHJpdmVycy9ncHUvZHJtL3R2ZTIwMC90dmUyMDBfZHJ2LmMgICAgICAgICAgICAgICAgfCAgNCAr
-Ky0tCj4gIGRyaXZlcnMvZ3B1L2RybS91ZGwvdWRsX2Rydi5jICAgICAgICAgICAgICAgICAgICAg
-IHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRfZHJ2LmMgICAgICAgICAgICAgICAg
-ICAgICAgfCAgNCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS92Z2VtL3ZnZW1fZHJ2LmMgICAgICAg
-ICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3ZpcnRpby92aXJ0Z3B1X2Ry
-bV9idXMuYyAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0venRlL3p4X2RybV9k
-cnYuYyAgICAgICAgICAgICAgICAgICB8ICA0ICsrLS0KPiAgaW5jbHVkZS9kcm0vZHJtX2Rydi5o
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMSAtCj4gIDQxIGZpbGVzIGNoYW5nZWQs
-IDczIGluc2VydGlvbnMoKyksIDg3IGRlbGV0aW9ucygtKQoKLS0gClJlZ2FyZHMsCgpMYXVyZW50
-IFBpbmNoYXJ0CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
-bAo=
+On Tue, Apr 10, 2018 at 2:51 PM, Geert Uytterhoeven
+<geert+renesas@glider.be> wrote:
+
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> ---
+> This depends on "[PATCH v2 1/5] clk: Extract OF clock helpers in
+> <linux/of_clk.h>".
+>
+> v2:
+>   - of_clk_get_parent_count() was moved to <linux/of_clk.h>,
+>   - Dropped RFC, as a dummy is now available in the !CONFIG_COMMON_CLK
+>     case.
+
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
