@@ -1,17 +1,13 @@
 From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Regression: HDMI stopped working on rk3399-sapphire in 4.17-rc1
-Date: Mon, 30 Apr 2018 20:08:04 +0200
-Message-ID: <CAAMcf8Di05nV0N+py33WF-JKQnOh2=mC8G9vYCUFNNNg3MFm1A@mail.gmail.com>
-References: <CAAMcf8DRkLJYCYtemri3L-SrPax4VJ4jvHG369MYcDAwWeOm8g@mail.gmail.com>
- <CAAMcf8DKcxHuMn78dHe-4Qn7XHvnQBEx6jaMm3aukrmMsBFVWw@mail.gmail.com>
- <CAAMcf8AEDE2p16WQHjwS85M=1aAfgW8cY+0E6GWKA5WSFGmejw@mail.gmail.com>
- <5183868.jTL5zlpghY@phil>
- <CAAMcf8CuYmh1PSdB+7MXK8on6T-TomeuHRZjCi3gv+Dy+Cjb0w@mail.gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: enable hdmi on rk3399-puma-haikou
+Date: Mon, 30 Apr 2018 20:51:07 +0200
+Message-ID: <20180430185107.3197-1-vicencb@gmail.com>
+References: <20180424142459.3339-1-jakob.unterwurzacher@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAAMcf8CuYmh1PSdB+7MXK8on6T-TomeuHRZjCi3gv+Dy+Cjb0w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20180424142459.3339-1-jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,127 +17,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Hello Jakob,
 
-On Fri, Apr 20, 2018 at 12:53 AM, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> Hi Heiko,
+On 2018-04-24 16:24, Jakob Unterwurzacher wrote:
+>Earlier kernels showed a corrupt image on hdmi, on v4.16 things
+>work fine at resolutions up to 1920x1080.
 >
-> On Fri, Apr 20, 2018 at 12:31 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
->> Hi Vicente,
->>
->> Am Dienstag, 17. April 2018, 19:23:29 CEST schrieb Vicente Bergas:
->>> On Mon, Apr 16, 2018 at 11:49 PM, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->>> > On Mon, Apr 16, 2018 at 11:41 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
->>> >> Hi Vicente,
->>> >>
->>> >> Am Montag, 16. April 2018, 23:18:27 CEST schrieb Vicente Bergas:
->>> >>> Hello,
->>> >>>
->>> >>> first of all, I am not sure if this goes to
->>> >>> linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->>> >>> or
->>> >>> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
->>> >>> Please, tell me if I have chosen the wrong list.
->>> >>
->>> >> Best would be having both in the Cc list :-)
->>> >>
->>> >>
->>> >>> In 4.16-rc7 the HDMI video works with minor issues, but it is perfectly
->>> >>> usable. In 4.17-rc1 the HDMI port is not detected at all.
->>> >>>
->>> >>> Here are the messages from dmesg that I think are relevant:
->>> >>>
->>> >>> Linux version 4.16.0-rc7+ (vj@alarm) (gcc version 7.3.0 (GCC)) #15 SMP
->>> >>> Mon Mar 26 19:03:44 CEST 2018
->>> >>> iommu: Adding device ff8f0000.vop to group 0
->>> >>> iommu: Adding device ff900000.vop to group 1
->>> >>> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
->>> >>> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
->>> >>> rockchip-drm display-subsystem: failed to bind ff940000.hdmi (ops
->>> >>> dw_hdmi_rockchip_ops): -EPROBE_DEFER
->>> >>> rockchip-drm display-subsystem: master bind failed: -EPROBE_DEFER
->>> >>> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
->>> >>> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
->>> >>> dwhdmi-rockchip ff940000.hdmi: Detected HDMI TX controller v2.11a with
->>> >>> HDCP (DWC HDMI 2.0 TX PHY)
->>> >>> rockchip-drm display-subsystem: bound ff940000.hdmi (ops dw_hdmi_rockchip_ops)
->>> >>> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
->>> >>> [drm] No driver support for vblank timestamp query.
->>> >>> Console: switching to colour frame buffer device 240x67
->>> >>> rockchip-drm display-subsystem: fb0:  frame buffer device
->>> >>> [drm] Initialized rockchip 1.0.0 20140818 for display-subsystem on minor 0
->>> >>>
->>> >>> Linux version 4.17.0-rc1+ (vj@alarm) (gcc version 7.3.0 (GCC)) #1 SMP
->>> >>> Mon Apr 16 19:42:50 CEST 2018
->>> >>> rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -ENOENT
->>> >>> rk_iommu: probe of ff8f3f00.iommu failed with error -ENOENT
->>> >>> rk_iommu ff903f00.iommu: Failed to get clk 'iface': -ENOENT
->>> >>> rk_iommu: probe of ff903f00.iommu failed with error -ENOENT
->>> >>> rockchip-drm display-subsystem: Linked as a consumer to ff8f0000.vop
->>> >>> rockchip-drm display-subsystem: Linked as a consumer to ff900000.vop
->>> >>> rockchip-drm display-subsystem: Linked as a consumer to ff940000.hdmi
->>> >>> rockchip-drm display-subsystem: master bind failed: -12
->>> >>> rockchip-vop: probe of ff900000.vop failed with error -12
->>> >>>
->>> >>>
->>> >>> While fixing this issue, I can help debugging and testing.
->>> >>
->>> >> I do belive
->>> >>         https://patchwork.codeaurora.org/patch/495129/
->>> >> should do the trick. Needs a respin to make it a bit more
->>> >> beatiful, but should restore your display output again nevertheless.
->>> >>
->>> >>
->>> >> Heiko
->>> >
->>> > Hi Heiko,
->>> > thanks for such a quick answer!
->>> > Tomorrow I'll give it a try.
->>> >
->>> > Regards,
->>> >   Vicente.
->>>
->>> Hi Heiko,
->>> just tested your v2 patch:
->>> http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020349.html
->>> and indeed the HDMI port was detected and was able to show me the console :)
->>>
->>> But, there have been several kernel stack traces, a lot of
->>> unresponsiveness and unable to start a framebuffer-based graphical
->>> mode.
->>> The first relevant error seems to be line 349 from dmesg:
->>> [CRTC:30:crtc-0] vblank wait timed out
->>> https://pastebin.com/YegEpAep
->>>
->>> Please, can somebody help?
->>
->> does the problem go away when you apply
->> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v4.18-armsoc/dts64&id=df3bcde704fb51645615635667944fc550c493e2
->>
->>
->> Thanks
->> Heiko
+>On v4.17-rc2 two fixes are pending for hdmi to work:
 >
-> Just tested, but unfortunately it does not fix the issue.
-> The messages in dmesg are exactly the same except that these
->   rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -2
->   rk_iommu ff903f00.iommu: Failed to get clk 'iface': -2
-> stopped appearing.
+>1) "iommu/rockchip: make clock handling optional"
+>   https://patchwork.kernel.org/patch/10344875/
 >
-> Thank you,
->   Vicente.
+>2) Add missing enable_irq in rockchip_drm_vop.c
+>   http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020427.html
+>
+>These should get merged soon, so I think it's time to enable
+>the hdmi output in our dts.
+>
+>Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher at theobroma-systems.com>
+>Cc: linux-rockchip at lists.infradead.org
+>Cc: Heiko Stuebner <heiko at sntech.de>
+>Cc: Klaus Goger <klaus.goger at theobroma-systems.com>
+>---
+> arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 21 +++++++++++++++++++++
+> 1 file changed, 21 insertions(+)
+>
+>diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+>index 7d3e8bfd51dd..23c59c8f0775 100644
+>--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+>+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+>@@ -143,6 +143,11 @@
+> 	};
+> };
+> 
+>+&hdmi {
+>+	ddc-i2c-bus = <&i2c3>;
+>+	status = "okay";
+>+};
+>+
+> &i2c1 {
+> 	status = "okay";
+> 	clock-frequency = <400000>;
+>@@ -281,3 +286,19 @@
+> &usb_host0_ohci {
+> 	status = "okay";
+> };
+>+
+>+&vopb {
+>+	status = "okay";
+>+};
+>+
+>+&vopb_mmu {
+>+	status = "okay";
+>+};
+>+
+>+&vopl {
+>+	status = "okay";
+>+};
+>+
+>+&vopl_mmu {
+>+	status = "okay";
+>+};
+>-- 
+>2.11.0
 
-like Jakob, I can also confirm that
-https://patchwork.kernel.org/patch/10344875/
-and
-http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020427.html
-fixes the issue.
-
-Thank you all!
+Does HDMI audio work on rk3399-puma-haikou?
 
 Regards,
   Vicente.
