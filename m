@@ -1,16 +1,17 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v6 2/7] PCI: rockchip: Split out common function to parse
- DT
-Date: Mon, 30 Apr 2018 15:51:32 +0100
-Message-ID: <20180430145132.GD32033@e107981-ln.cambridge.arm.com>
-References: <1524796697-160764-1-git-send-email-shawn.lin@rock-chips.com>
- <1524796751-161084-1-git-send-email-shawn.lin@rock-chips.com>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Regression: HDMI stopped working on rk3399-sapphire in 4.17-rc1
+Date: Mon, 30 Apr 2018 20:08:04 +0200
+Message-ID: <CAAMcf8Di05nV0N+py33WF-JKQnOh2=mC8G9vYCUFNNNg3MFm1A@mail.gmail.com>
+References: <CAAMcf8DRkLJYCYtemri3L-SrPax4VJ4jvHG369MYcDAwWeOm8g@mail.gmail.com>
+ <CAAMcf8DKcxHuMn78dHe-4Qn7XHvnQBEx6jaMm3aukrmMsBFVWw@mail.gmail.com>
+ <CAAMcf8AEDE2p16WQHjwS85M=1aAfgW8cY+0E6GWKA5WSFGmejw@mail.gmail.com>
+ <5183868.jTL5zlpghY@phil>
+ <CAAMcf8CuYmh1PSdB+7MXK8on6T-TomeuHRZjCi3gv+Dy+Cjb0w@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1524796751-161084-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <CAAMcf8CuYmh1PSdB+7MXK8on6T-TomeuHRZjCi3gv+Dy+Cjb0w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,355 +21,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Apr 27, 2018 at 10:39:11AM +0800, Shawn Lin wrote:
-> Most of the DT properties are used for both of host and
-> EP drivrs, so this patch spilt them out to new function,
-> rockchip_pcie_parse_dt in pcie-rockchip.c and rename the
-> original function to rockchip_pcie_parse_host_dt to avoid
-> confusion. No functional changed intended.
+Hello,
 
-If you read this commit log again you would notice that there
-are typos and the formatting is non-compliant with:
+On Fri, Apr 20, 2018 at 12:53 AM, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> Hi Heiko,
+>
+> On Fri, Apr 20, 2018 at 12:31 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+>> Hi Vicente,
+>>
+>> Am Dienstag, 17. April 2018, 19:23:29 CEST schrieb Vicente Bergas:
+>>> On Mon, Apr 16, 2018 at 11:49 PM, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>>> > On Mon, Apr 16, 2018 at 11:41 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+>>> >> Hi Vicente,
+>>> >>
+>>> >> Am Montag, 16. April 2018, 23:18:27 CEST schrieb Vicente Bergas:
+>>> >>> Hello,
+>>> >>>
+>>> >>> first of all, I am not sure if this goes to
+>>> >>> linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>>> >>> or
+>>> >>> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+>>> >>> Please, tell me if I have chosen the wrong list.
+>>> >>
+>>> >> Best would be having both in the Cc list :-)
+>>> >>
+>>> >>
+>>> >>> In 4.16-rc7 the HDMI video works with minor issues, but it is perfectly
+>>> >>> usable. In 4.17-rc1 the HDMI port is not detected at all.
+>>> >>>
+>>> >>> Here are the messages from dmesg that I think are relevant:
+>>> >>>
+>>> >>> Linux version 4.16.0-rc7+ (vj@alarm) (gcc version 7.3.0 (GCC)) #15 SMP
+>>> >>> Mon Mar 26 19:03:44 CEST 2018
+>>> >>> iommu: Adding device ff8f0000.vop to group 0
+>>> >>> iommu: Adding device ff900000.vop to group 1
+>>> >>> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
+>>> >>> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
+>>> >>> rockchip-drm display-subsystem: failed to bind ff940000.hdmi (ops
+>>> >>> dw_hdmi_rockchip_ops): -EPROBE_DEFER
+>>> >>> rockchip-drm display-subsystem: master bind failed: -EPROBE_DEFER
+>>> >>> rockchip-drm display-subsystem: bound ff8f0000.vop (ops vop_component_ops)
+>>> >>> rockchip-drm display-subsystem: bound ff900000.vop (ops vop_component_ops)
+>>> >>> dwhdmi-rockchip ff940000.hdmi: Detected HDMI TX controller v2.11a with
+>>> >>> HDCP (DWC HDMI 2.0 TX PHY)
+>>> >>> rockchip-drm display-subsystem: bound ff940000.hdmi (ops dw_hdmi_rockchip_ops)
+>>> >>> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+>>> >>> [drm] No driver support for vblank timestamp query.
+>>> >>> Console: switching to colour frame buffer device 240x67
+>>> >>> rockchip-drm display-subsystem: fb0:  frame buffer device
+>>> >>> [drm] Initialized rockchip 1.0.0 20140818 for display-subsystem on minor 0
+>>> >>>
+>>> >>> Linux version 4.17.0-rc1+ (vj@alarm) (gcc version 7.3.0 (GCC)) #1 SMP
+>>> >>> Mon Apr 16 19:42:50 CEST 2018
+>>> >>> rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -ENOENT
+>>> >>> rk_iommu: probe of ff8f3f00.iommu failed with error -ENOENT
+>>> >>> rk_iommu ff903f00.iommu: Failed to get clk 'iface': -ENOENT
+>>> >>> rk_iommu: probe of ff903f00.iommu failed with error -ENOENT
+>>> >>> rockchip-drm display-subsystem: Linked as a consumer to ff8f0000.vop
+>>> >>> rockchip-drm display-subsystem: Linked as a consumer to ff900000.vop
+>>> >>> rockchip-drm display-subsystem: Linked as a consumer to ff940000.hdmi
+>>> >>> rockchip-drm display-subsystem: master bind failed: -12
+>>> >>> rockchip-vop: probe of ff900000.vop failed with error -12
+>>> >>>
+>>> >>>
+>>> >>> While fixing this issue, I can help debugging and testing.
+>>> >>
+>>> >> I do belive
+>>> >>         https://patchwork.codeaurora.org/patch/495129/
+>>> >> should do the trick. Needs a respin to make it a bit more
+>>> >> beatiful, but should restore your display output again nevertheless.
+>>> >>
+>>> >>
+>>> >> Heiko
+>>> >
+>>> > Hi Heiko,
+>>> > thanks for such a quick answer!
+>>> > Tomorrow I'll give it a try.
+>>> >
+>>> > Regards,
+>>> >   Vicente.
+>>>
+>>> Hi Heiko,
+>>> just tested your v2 patch:
+>>> http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020349.html
+>>> and indeed the HDMI port was detected and was able to show me the console :)
+>>>
+>>> But, there have been several kernel stack traces, a lot of
+>>> unresponsiveness and unable to start a framebuffer-based graphical
+>>> mode.
+>>> The first relevant error seems to be line 349 from dmesg:
+>>> [CRTC:30:crtc-0] vblank wait timed out
+>>> https://pastebin.com/YegEpAep
+>>>
+>>> Please, can somebody help?
+>>
+>> does the problem go away when you apply
+>> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v4.18-armsoc/dts64&id=df3bcde704fb51645615635667944fc550c493e2
+>>
+>>
+>> Thanks
+>> Heiko
+>
+> Just tested, but unfortunately it does not fix the issue.
+> The messages in dmesg are exactly the same except that these
+>   rk_iommu ff8f3f00.iommu: Failed to get clk 'iface': -2
+>   rk_iommu ff903f00.iommu: Failed to get clk 'iface': -2
+> stopped appearing.
+>
+> Thank you,
+>   Vicente.
 
-https://marc.info/?l=linux-pci&m=150905742808166&w=2
+like Jakob, I can also confirm that
+https://patchwork.kernel.org/patch/10344875/
+and
+http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020427.html
+fixes the issue.
 
-I am fine with updating commit logs myself, that's not a problem, but I
-wanted to make clear that you can easily spot these issues for future
-postings too ;-)
+Thank you all!
 
-Lorenzo
-
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Tested-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> 
->  drivers/pci/host/pcie-rockchip-host.c | 119 ++-----------------------------
->  drivers/pci/host/pcie-rockchip.c      | 129 ++++++++++++++++++++++++++++++++++
->  drivers/pci/host/pcie-rockchip.h      |   2 +
->  3 files changed, 136 insertions(+), 114 deletions(-)
-> 
-> diff --git a/drivers/pci/host/pcie-rockchip-host.c b/drivers/pci/host/pcie-rockchip-host.c
-> index fae9ecc..cf97130 100644
-> --- a/drivers/pci/host/pcie-rockchip-host.c
-> +++ b/drivers/pci/host/pcie-rockchip-host.c
-> @@ -705,130 +705,20 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
->  }
->  
->  /**
-> - * rockchip_pcie_parse_dt - Parse Device Tree
-> + * rockchip_pcie_parse_host_dt - Parse Device Tree
->   * @rockchip: PCIe port information
->   *
->   * Return: '0' on success and error value on failure
->   */
-> -static int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
-> +static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
->  {
->  	struct device *dev = rockchip->dev;
-> -	struct platform_device *pdev = to_platform_device(dev);
-> -	struct device_node *node = dev->of_node;
-> -	struct resource *regs;
->  	int err;
->  
-> -	regs = platform_get_resource_byname(pdev,
-> -					    IORESOURCE_MEM,
-> -					    "axi-base");
-> -	rockchip->reg_base = devm_pci_remap_cfg_resource(dev, regs);
-> -	if (IS_ERR(rockchip->reg_base))
-> -		return PTR_ERR(rockchip->reg_base);
-> -
-> -	regs = platform_get_resource_byname(pdev,
-> -					    IORESOURCE_MEM,
-> -					    "apb-base");
-> -	rockchip->apb_base = devm_ioremap_resource(dev, regs);
-> -	if (IS_ERR(rockchip->apb_base))
-> -		return PTR_ERR(rockchip->apb_base);
-> -
-> -	err = rockchip_pcie_get_phys(rockchip);
-> +	err = rockchip_pcie_parse_dt(rockchip);
->  	if (err)
->  		return err;
->  
-> -	rockchip->lanes = 1;
-> -	err = of_property_read_u32(node, "num-lanes", &rockchip->lanes);
-> -	if (!err && (rockchip->lanes == 0 ||
-> -		     rockchip->lanes == 3 ||
-> -		     rockchip->lanes > 4)) {
-> -		dev_warn(dev, "invalid num-lanes, default to use one lane\n");
-> -		rockchip->lanes = 1;
-> -	}
-> -
-> -	rockchip->link_gen = of_pci_get_max_link_speed(node);
-> -	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
-> -		rockchip->link_gen = 2;
-> -
-> -	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
-> -	if (IS_ERR(rockchip->core_rst)) {
-> -		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing core reset property in node\n");
-> -		return PTR_ERR(rockchip->core_rst);
-> -	}
-> -
-> -	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
-> -	if (IS_ERR(rockchip->mgmt_rst)) {
-> -		if (PTR_ERR(rockchip->mgmt_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing mgmt reset property in node\n");
-> -		return PTR_ERR(rockchip->mgmt_rst);
-> -	}
-> -
-> -	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
-> -								     "mgmt-sticky");
-> -	if (IS_ERR(rockchip->mgmt_sticky_rst)) {
-> -		if (PTR_ERR(rockchip->mgmt_sticky_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing mgmt-sticky reset property in node\n");
-> -		return PTR_ERR(rockchip->mgmt_sticky_rst);
-> -	}
-> -
-> -	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
-> -	if (IS_ERR(rockchip->pipe_rst)) {
-> -		if (PTR_ERR(rockchip->pipe_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing pipe reset property in node\n");
-> -		return PTR_ERR(rockchip->pipe_rst);
-> -	}
-> -
-> -	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
-> -	if (IS_ERR(rockchip->pm_rst)) {
-> -		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing pm reset property in node\n");
-> -		return PTR_ERR(rockchip->pm_rst);
-> -	}
-> -
-> -	rockchip->pclk_rst = devm_reset_control_get_exclusive(dev, "pclk");
-> -	if (IS_ERR(rockchip->pclk_rst)) {
-> -		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing pclk reset property in node\n");
-> -		return PTR_ERR(rockchip->pclk_rst);
-> -	}
-> -
-> -	rockchip->aclk_rst = devm_reset_control_get_exclusive(dev, "aclk");
-> -	if (IS_ERR(rockchip->aclk_rst)) {
-> -		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
-> -			dev_err(dev, "missing aclk reset property in node\n");
-> -		return PTR_ERR(rockchip->aclk_rst);
-> -	}
-> -
-> -	rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
-> -	if (IS_ERR(rockchip->ep_gpio)) {
-> -		dev_err(dev, "missing ep-gpios property in node\n");
-> -		return PTR_ERR(rockchip->ep_gpio);
-> -	}
-> -
-> -	rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
-> -	if (IS_ERR(rockchip->aclk_pcie)) {
-> -		dev_err(dev, "aclk clock not found\n");
-> -		return PTR_ERR(rockchip->aclk_pcie);
-> -	}
-> -
-> -	rockchip->aclk_perf_pcie = devm_clk_get(dev, "aclk-perf");
-> -	if (IS_ERR(rockchip->aclk_perf_pcie)) {
-> -		dev_err(dev, "aclk_perf clock not found\n");
-> -		return PTR_ERR(rockchip->aclk_perf_pcie);
-> -	}
-> -
-> -	rockchip->hclk_pcie = devm_clk_get(dev, "hclk");
-> -	if (IS_ERR(rockchip->hclk_pcie)) {
-> -		dev_err(dev, "hclk clock not found\n");
-> -		return PTR_ERR(rockchip->hclk_pcie);
-> -	}
-> -
-> -	rockchip->clk_pcie_pm = devm_clk_get(dev, "pm");
-> -	if (IS_ERR(rockchip->clk_pcie_pm)) {
-> -		dev_err(dev, "pm clock not found\n");
-> -		return PTR_ERR(rockchip->clk_pcie_pm);
-> -	}
-> -
->  	err = rockchip_pcie_setup_irq(rockchip);
->  	if (err)
->  		return err;
-> @@ -1195,8 +1085,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	platform_set_drvdata(pdev, rockchip);
->  	rockchip->dev = dev;
-> +	rockchip->is_rc = true;
->  
-> -	err = rockchip_pcie_parse_dt(rockchip);
-> +	err = rockchip_pcie_parse_host_dt(rockchip);
->  	if (err)
->  		return err;
->  
-> diff --git a/drivers/pci/host/pcie-rockchip.c b/drivers/pci/host/pcie-rockchip.c
-> index 3d46da9..bcc222b 100644
-> --- a/drivers/pci/host/pcie-rockchip.c
-> +++ b/drivers/pci/host/pcie-rockchip.c
-> @@ -12,10 +12,139 @@
->   */
->  
->  #include <linux/clk.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/of_pci.h>
->  #include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/reset.h>
->  
->  #include "pcie-rockchip.h"
->  
-> +int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
-> +{
-> +	struct device *dev = rockchip->dev;
-> +	struct platform_device *pdev = to_platform_device(dev);
-> +	struct device_node *node = dev->of_node;
-> +	struct resource *regs;
-> +	int err;
-> +
-> +	regs = platform_get_resource_byname(pdev,
-> +					    IORESOURCE_MEM,
-> +					    "axi-base");
-> +	rockchip->reg_base = devm_pci_remap_cfg_resource(dev, regs);
-> +	if (IS_ERR(rockchip->reg_base))
-> +		return PTR_ERR(rockchip->reg_base);
-> +
-> +	regs = platform_get_resource_byname(pdev,
-> +					    IORESOURCE_MEM,
-> +					    "apb-base");
-> +	rockchip->apb_base = devm_ioremap_resource(dev, regs);
-> +	if (IS_ERR(rockchip->apb_base))
-> +		return PTR_ERR(rockchip->apb_base);
-> +
-> +	err = rockchip_pcie_get_phys(rockchip);
-> +	if (err)
-> +		return err;
-> +
-> +	rockchip->lanes = 1;
-> +	err = of_property_read_u32(node, "num-lanes", &rockchip->lanes);
-> +	if (!err && (rockchip->lanes == 0 ||
-> +		     rockchip->lanes == 3 ||
-> +		     rockchip->lanes > 4)) {
-> +		dev_warn(dev, "invalid num-lanes, default to use one lane\n");
-> +		rockchip->lanes = 1;
-> +	}
-> +
-> +	rockchip->link_gen = of_pci_get_max_link_speed(node);
-> +	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
-> +		rockchip->link_gen = 2;
-> +
-> +	rockchip->core_rst = devm_reset_control_get_exclusive(dev, "core");
-> +	if (IS_ERR(rockchip->core_rst)) {
-> +		if (PTR_ERR(rockchip->core_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing core reset property in node\n");
-> +		return PTR_ERR(rockchip->core_rst);
-> +	}
-> +
-> +	rockchip->mgmt_rst = devm_reset_control_get_exclusive(dev, "mgmt");
-> +	if (IS_ERR(rockchip->mgmt_rst)) {
-> +		if (PTR_ERR(rockchip->mgmt_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing mgmt reset property in node\n");
-> +		return PTR_ERR(rockchip->mgmt_rst);
-> +	}
-> +
-> +	rockchip->mgmt_sticky_rst = devm_reset_control_get_exclusive(dev,
-> +								     "mgmt-sticky");
-> +	if (IS_ERR(rockchip->mgmt_sticky_rst)) {
-> +		if (PTR_ERR(rockchip->mgmt_sticky_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing mgmt-sticky reset property in node\n");
-> +		return PTR_ERR(rockchip->mgmt_sticky_rst);
-> +	}
-> +
-> +	rockchip->pipe_rst = devm_reset_control_get_exclusive(dev, "pipe");
-> +	if (IS_ERR(rockchip->pipe_rst)) {
-> +		if (PTR_ERR(rockchip->pipe_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing pipe reset property in node\n");
-> +		return PTR_ERR(rockchip->pipe_rst);
-> +	}
-> +
-> +	rockchip->pm_rst = devm_reset_control_get_exclusive(dev, "pm");
-> +	if (IS_ERR(rockchip->pm_rst)) {
-> +		if (PTR_ERR(rockchip->pm_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing pm reset property in node\n");
-> +		return PTR_ERR(rockchip->pm_rst);
-> +	}
-> +
-> +	rockchip->pclk_rst = devm_reset_control_get_exclusive(dev, "pclk");
-> +	if (IS_ERR(rockchip->pclk_rst)) {
-> +		if (PTR_ERR(rockchip->pclk_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing pclk reset property in node\n");
-> +		return PTR_ERR(rockchip->pclk_rst);
-> +	}
-> +
-> +	rockchip->aclk_rst = devm_reset_control_get_exclusive(dev, "aclk");
-> +	if (IS_ERR(rockchip->aclk_rst)) {
-> +		if (PTR_ERR(rockchip->aclk_rst) != -EPROBE_DEFER)
-> +			dev_err(dev, "missing aclk reset property in node\n");
-> +		return PTR_ERR(rockchip->aclk_rst);
-> +	}
-> +
-> +	if (rockchip->is_rc) {
-> +		rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
-> +		if (IS_ERR(rockchip->ep_gpio)) {
-> +			dev_err(dev, "missing ep-gpios property in node\n");
-> +			return PTR_ERR(rockchip->ep_gpio);
-> +		}
-> +	}
-> +
-> +	rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
-> +	if (IS_ERR(rockchip->aclk_pcie)) {
-> +		dev_err(dev, "aclk clock not found\n");
-> +		return PTR_ERR(rockchip->aclk_pcie);
-> +	}
-> +
-> +	rockchip->aclk_perf_pcie = devm_clk_get(dev, "aclk-perf");
-> +	if (IS_ERR(rockchip->aclk_perf_pcie)) {
-> +		dev_err(dev, "aclk_perf clock not found\n");
-> +		return PTR_ERR(rockchip->aclk_perf_pcie);
-> +	}
-> +
-> +	rockchip->hclk_pcie = devm_clk_get(dev, "hclk");
-> +	if (IS_ERR(rockchip->hclk_pcie)) {
-> +		dev_err(dev, "hclk clock not found\n");
-> +		return PTR_ERR(rockchip->hclk_pcie);
-> +	}
-> +
-> +	rockchip->clk_pcie_pm = devm_clk_get(dev, "pm");
-> +	if (IS_ERR(rockchip->clk_pcie_pm)) {
-> +		dev_err(dev, "pm clock not found\n");
-> +		return PTR_ERR(rockchip->clk_pcie_pm);
-> +	}
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(rockchip_pcie_parse_dt);
-> +
->  int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip)
->  {
->  	struct device *dev = rockchip->dev;
-> diff --git a/drivers/pci/host/pcie-rockchip.h b/drivers/pci/host/pcie-rockchip.h
-> index d27941e..473e74f 100644
-> --- a/drivers/pci/host/pcie-rockchip.h
-> +++ b/drivers/pci/host/pcie-rockchip.h
-> @@ -222,6 +222,7 @@ struct rockchip_pcie {
->  	u32     mem_size;
->  	phys_addr_t msg_bus_addr;
->  	phys_addr_t mem_bus_addr;
-> +	bool is_rc;
->  };
->  
->  static u32 rockchip_pcie_read(struct rockchip_pcie *rockchip, u32 reg)
-> @@ -235,6 +236,7 @@ static void rockchip_pcie_write(struct rockchip_pcie *rockchip, u32 val,
->  	writel(val, rockchip->apb_base + reg);
->  }
->  
-> +int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip);
->  int rockchip_pcie_get_phys(struct rockchip_pcie *rockchip);
->  void rockchip_pcie_deinit_phys(struct rockchip_pcie *rockchip);
->  int rockchip_pcie_enable_clocks(struct rockchip_pcie *rockchip);
-> -- 
-> 1.9.1
-> 
-> 
+Regards,
+  Vicente.
