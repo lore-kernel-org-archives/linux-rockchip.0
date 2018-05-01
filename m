@@ -1,50 +1,90 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: use canonical compatible for
- touchpad/touchscreen
-Date: Tue, 1 May 2018 15:46:28 -0700
-Message-ID: <20180501224628.GA150745@dtor-ws>
+From: <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: Patch "ARM: dts: rockchip: Add missing #sound-dai-cells on rk3288"
+ has been added to the 4.14-stable tree
+Date: Tue, 01 May 2018 16:48:27 -0700
+Message-ID: <152521850758147@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Kaehlcke <mka@chromium.org>, Brian Norris <briannorris@chromium.org>, Emil Renner Berthing <kernel@esmil.dk>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: alexander.levin-0li6OtcxBFHby3iVrkZq2A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: stable-commits-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-"atmel,atmel_mxt_tp" and "atmel,atmel_mxt_ts" are ChromeOS inventions,
-let's replace them with canonical compatible string "atmel,maxtouch".
 
-Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+This is a note to let you know that I've just added the patch titled
+
+    ARM: dts: rockchip: Add missing #sound-dai-cells on rk3288
+
+to the 4.14-stable tree which can be found at:
+    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
+
+The filename of the patch is:
+     arm-dts-rockchip-add-missing-sound-dai-cells-on-rk3288.patch
+and it can be found in the queue-4.14 subdirectory.
+
+If you, or anyone else, feels it should not be added to the stable tree,
+please let <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org> know about it.
+
+
+From foo@baz Tue May  1 16:18:20 PDT 2018
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Date: Thu, 1 Mar 2018 14:25:35 -0600
+Subject: ARM: dts: rockchip: Add missing #sound-dai-cells on rk3288
+
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+[ Upstream commit 4e943a890cef42e90f43ce6be64728a290b97c55 ]
+
+dtc now gives the following warning:
+
+arch/arm/boot/dts/rk3288-tinker.dtb: Warning (sound_dai_property): /sound/simple-audio-card,codec: Missing property '#sound-dai-cells' in node /hdmi@ff980000 or bad phandle (referred from sound-dai[0])
+
+Add the missing #sound-dai-cells property.
+
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Sasha Levin <alexander.levin-0li6OtcxBFHby3iVrkZq2A@public.gmane.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/rk3288.dtsi |    2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 191a6bcb17040..82179125bfb7c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -255,7 +255,7 @@ ap_i2c_dig: &i2c2 {
- 
- &ap_i2c_tp {
- 	trackpad@4a {
--		compatible = "atmel,atmel_mxt_tp";
-+		compatible = "atmel,maxtouch";
- 		reg = <0x4a>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&trackpad_int_l>;
-@@ -271,7 +271,7 @@ ap_i2c_dig: &i2c2 {
- 
- &ap_i2c_ts {
- 	touchscreen@4b {
--		compatible = "atmel,atmel_mxt_ts";
-+		compatible = "atmel,maxtouch";
- 		reg = <0x4b>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&touch_int_l>;
--- 
-2.17.0.441.gb46fe60e1d-goog
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -927,6 +927,7 @@
+ 	i2s: i2s@ff890000 {
+ 		compatible = "rockchip,rk3288-i2s", "rockchip,rk3066-i2s";
+ 		reg = <0x0 0xff890000 0x0 0x10000>;
++		#sound-dai-cells = <0>;
+ 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -1122,6 +1123,7 @@
+ 		compatible = "rockchip,rk3288-dw-hdmi";
+ 		reg = <0x0 0xff980000 0x0 0x20000>;
+ 		reg-io-width = <4>;
++		#sound-dai-cells = <0>;
+ 		rockchip,grf = <&grf>;
+ 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>;
 
 
--- 
-Dmitry
+Patches currently in stable-queue which might be from robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org are
+
+queue-4.14/microblaze-switch-to-no_bootmem.patch
+queue-4.14/arm64-dts-cavium-fix-pci-bus-dtc-warnings.patch
+queue-4.14/dmaengine-mv_xor_v2-fix-clock-resource-by-adding-a-register-clock.patch
+queue-4.14/arm-dts-rockchip-add-missing-sound-dai-cells-on-rk3288.patch
+queue-4.14/pinctrl-artpec6-dt-add-missing-pin-group-uart5nocts.patch
