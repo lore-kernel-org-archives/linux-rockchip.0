@@ -1,91 +1,40 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: enable hdmi on rk3399-puma-haikou
-Date: Mon, 30 Apr 2018 20:51:07 +0200
-Message-ID: <20180430185107.3197-1-vicencb@gmail.com>
-References: <20180424142459.3339-1-jakob.unterwurzacher@theobroma-systems.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] iommu/rockchip: make clock handling optional
+Date: Tue, 01 May 2018 11:57:29 +0200
+Message-ID: <1951663.B4MoXU0Rz2@phil>
+References: <20180417120915.31535-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180424142459.3339-1-jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180417120915.31535-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org
+Cc: jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Jakob,
+Ho Joerg,
 
-On 2018-04-24 16:24, Jakob Unterwurzacher wrote:
->Earlier kernels showed a corrupt image on hdmi, on v4.16 things
->work fine at resolutions up to 1920x1080.
->
->On v4.17-rc2 two fixes are pending for hdmi to work:
->
->1) "iommu/rockchip: make clock handling optional"
->   https://patchwork.kernel.org/patch/10344875/
->
->2) Add missing enable_irq in rockchip_drm_vop.c
->   http://lists.infradead.org/pipermail/linux-rockchip/2018-April/020427.html
->
->These should get merged soon, so I think it's time to enable
->the hdmi output in our dts.
->
->Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher at theobroma-systems.com>
->Cc: linux-rockchip at lists.infradead.org
->Cc: Heiko Stuebner <heiko at sntech.de>
->Cc: Klaus Goger <klaus.goger at theobroma-systems.com>
->---
-> arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 21 +++++++++++++++++++++
-> 1 file changed, 21 insertions(+)
->
->diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
->index 7d3e8bfd51dd..23c59c8f0775 100644
->--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
->+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
->@@ -143,6 +143,11 @@
-> 	};
-> };
+Am Dienstag, 17. April 2018, 14:09:15 CEST schrieb Heiko Stuebner:
+> iommu clocks are optional, so the driver should not fail if they are not
+> present. Instead just set the number of clocks to 0, which the clk-blk APIs
+> can handle just fine.
 > 
->+&hdmi {
->+	ddc-i2c-bus = <&i2c3>;
->+	status = "okay";
->+};
->+
-> &i2c1 {
-> 	status = "okay";
-> 	clock-frequency = <400000>;
->@@ -281,3 +286,19 @@
-> &usb_host0_ohci {
-> 	status = "okay";
-> };
->+
->+&vopb {
->+	status = "okay";
->+};
->+
->+&vopb_mmu {
->+	status = "okay";
->+};
->+
->+&vopl {
->+	status = "okay";
->+};
->+
->+&vopl_mmu {
->+	status = "okay";
->+};
->-- 
->2.11.0
+> Fixes: f2e3a5f557ad ("iommu/rockchip: Control clocks needed to access the IOMMU")
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 
-Does HDMI audio work on rk3399-puma-haikou?
+could you pick up this patch as fix for 4.17 please?
+As without it, we loose display output with old devicetrees.
 
-Regards,
-  Vicente.
+
+Thanks
+Heiko
