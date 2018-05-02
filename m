@@ -1,92 +1,80 @@
-From: wlf <wulf@rock-chips.com>
-Subject: Re: [PATCH v2 2/2] usb: dwc2: fix isoc split in transfer with no data
-Date: Thu, 3 May 2018 01:16:26 +0800
-Message-ID: <abdf9cc8-c065-109f-82eb-0de61c3d976e@rock-chips.com>
-References: <1525230288-6014-1-git-send-email-william.wu@rock-chips.com>
- <1525230288-6014-3-git-send-email-william.wu@rock-chips.com>
- <CAD=FV=XWzKZOF8+=z07UC3FBGRFifBvk9Oda7HRipqGy9Rxcnw@mail.gmail.com>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable hdmi on rk3399-puma-haikou
+Date: Wed, 2 May 2018 21:12:05 +0200
+Message-ID: <CAAMcf8CBH+fmw3-+x15G=7R0EFCwN9o_vEjt8K-n5EYuRnfb4A@mail.gmail.com>
+References: <20180424142459.3339-1-jakob.unterwurzacher@theobroma-systems.com>
+ <20180430185107.3197-1-vicencb@gmail.com>
+ <d32fa12f-ceb8-a869-2450-0df5cb4086ff@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XWzKZOF8+=z07UC3FBGRFifBvk9Oda7HRipqGy9Rxcnw@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@google.com>, William Wu <william.wu@rock-chips.com>
-Cc: hminas@synopsys.com, felipe.balbi@linux.intel.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, linux-usb@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, "daniel.meng" <daniel.meng@rock-chips.com>, John Youn <John.Youn@synopsys.com>, =?UTF-8?B?546L5b6B5aKe?= <wzz@rock-chips.com>, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@aopen.com, Vincent Palatin <vpalatin@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <d32fa12f-ceb8-a869-2450-0df5cb4086ff-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Doug,
+Hi,
 
+On Wed, May 2, 2018 at 4:19 PM, Jakob Unterwurzacher
+<jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org> wrote:
+> On 30.04.18 20:51, Vicente Bergas wrote:
+>>
+>> Does HDMI audio work on rk3399-puma-haikou?
+>
+>
+> Hi Vicente, works on v4.4 vendor kernel, but does not seem to work on
+> mainline.
+>
+> Best regards,
+> Jakob
 
-在 2018年05月02日 13:02, Doug Anderson 写道:
-> Hi,
->
-> On Tue, May 1, 2018 at 8:04 PM, William Wu <william.wu@rock-chips.com> wrote:
->> If isoc split in transfer with no data (the length of DATA0
->> packet is zero), we can't simply return immediately. Because
->> the DATA0 can be the first transaction or the second transaction
->> for the isoc split in transaction. If the DATA0 packet with no
->> data is in the first transaction, we can return immediately.
->> But if the DATA0 packet with no data is in the second transaction
->> of isoc split in transaction sequence, we need to increase the
->> qtd->isoc_frame_index and giveback urb to device driver if needed,
->> otherwise, the MDATA packet will be lost.
->>
->> A typical test case is that connect the dwc2 controller with an
->> usb hs Hub (GL852G-12), and plug an usb fs audio device (Plantronics
->> headset) into the downstream port of Hub. Then use the usb mic
->> to record, we can find noise when playback.
->>
->> In the case, the isoc split in transaction sequence like this:
->>
->> - SSPLIT IN transaction
->> - CSPLIT IN transaction
->>    - MDATA packet (176 bytes)
->> - CSPLIT IN transaction
->>    - DATA0 packet (0 byte)
->>
->> This patch use both the length of DATA0 and qtd->isoc_split_offset
->> to check if the DATA0 is in the second transaction.
->>
->> Signed-off-by: William Wu <william.wu@rock-chips.com>
->> ---
->> Changes in v2:
->> - Modify the commit message
->>
->>   drivers/usb/dwc2/hcd_intr.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
->> index 5e2378f..479f628 100644
->> --- a/drivers/usb/dwc2/hcd_intr.c
->> +++ b/drivers/usb/dwc2/hcd_intr.c
->> @@ -930,7 +930,7 @@ static int dwc2_xfercomp_isoc_split_in(struct dwc2_hsotg *hsotg,
->>          frame_desc = &qtd->urb->iso_descs[qtd->isoc_frame_index];
->>          len = dwc2_get_actual_xfer_length(hsotg, chan, chnum, qtd,
->>                                            DWC2_HC_XFER_COMPLETE, NULL);
->> -       if (!len) {
->> +       if (!len && !qtd->isoc_split_offset) {
->>                  qtd->complete_split = 0;
->>                  qtd->isoc_split_offset = 0;
->>                  return 0;
-> I don't think my USB-fu is strong enough to do a real review of this
-> patch, but one small nitpick is that you can remove
-> "qtd->isoc_split_offset = 0" in the if test now.  AKA:
->
-> if (!len && !qtd->isoc_split_offset) {
->    qtd->complete_split = 0;
->    return 0;
-> }
-Yes, good idea! I will fix it in next patch. Thank you!
->
-> ...since you only enter the "if" test now when isoc_split_offset is
-> already 0...  Hopefully John Youn will have some time to comment on
-> this patch with more real USB knowledge...
->
->
-> -Doug
->
-Best regards,
-      wulf
->
+just for reference, this is what I tested:
+ 1.- enable CONFIG_SND_SIMPLE_CARD in the kernel configuration
+ 2.- patch rk3399-sapphire.dtsi with
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+@@ -119,6 +119,19 @@
+         };
+     };
+
++    sapphire-sound {
++        compatible = "simple-audio-card";
++        simple-audio-card,name = "rockchip,sapphire-codec";
++        simple-audio-card,format = "i2s";
++        simple-audio-card,mclk-fs = <256>;
++        simple-audio-card,cpu {
++            sound-dai = <&i2s2>;
++        };
++        simple-audio-card,codec {
++            sound-dai = <&hdmi>;
++        };
++    };
++
+     /* switched by pmic_sleep */
+     vcc1v8_s3: vcca1v8_s3: vcc1v8-s3 {
+         compatible = "regulator-fixed";
+@@ -223,6 +246,7 @@
+ };
+
+ &hdmi {
++    #sound-dai-cells = <0>;
+     ddc-i2c-bus = <&i2c3>;
+     status = "okay";
+ };
+
+But I am always getting:
+ALSA device list:
+  No soundcards found.
+
+Regards,
+  Vicente.
