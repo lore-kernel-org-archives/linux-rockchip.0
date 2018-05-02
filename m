@@ -1,29 +1,25 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v3 3/5] soc: rockchip: power-domain: Use
- of_clk_get_parent_count() instead of open coding
-Date: Wed, 02 May 2018 08:38:46 -0700
-Message-ID: <152527552692.138124.9472680209483820124@swboyd.mtv.corp.google.com>
-References: <1524063005-1716-1-git-send-email-geert+renesas@glider.be>
- <1524063005-1716-4-git-send-email-geert+renesas@glider.be>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: use canonical compatible for touchpad/touchscreen
+Date: Wed, 2 May 2018 09:53:00 -0700
+Message-ID: <CA+ASDXOFEQwfis9ziXcG1BTH2muWPTZh-fZX9xPU4KgyNeWCPA@mail.gmail.com>
+References: <20180501224628.GA150745@dtor-ws>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1524063005-1716-4-git-send-email-geert+renesas@glider.be>
+In-Reply-To: <20180501224628.GA150745@dtor-ws>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Kaehlcke <mka@chromium.org>, Emil Renner Berthing <kernel@esmil.dk>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Geert Uytterhoeven (2018-04-18 07:50:03)
-> As of_clk_get_parent_count() returns zero on failure, while
-> of_count_phandle_with_args() might return a negative error code, this
-> also fixes the issue of possibly using a negative number in the
-> allocation below.
-> =
+On Tue, May 1, 2018 at 3:46 PM, Dmitry Torokhov
+<dmitry.torokhov@gmail.com> wrote:
+> "atmel,atmel_mxt_tp" and "atmel,atmel_mxt_ts" are ChromeOS inventions,
+> let's replace them with canonical compatible string "atmel,maxtouch".
+>
+> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> ---
+I guess the other IDs are in the driver just for non-DT usage? Anyway,
+seems fine:
 
-Applied to clk-next
+Reviewed-by: Brian Norris <briannorris@chromium.org>
