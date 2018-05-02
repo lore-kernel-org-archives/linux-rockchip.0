@@ -1,80 +1,33 @@
-From: Doug Anderson <dianders@google.com>
-Subject: Re: [PATCH v2 2/2] usb: dwc2: fix isoc split in transfer with no data
-Date: Tue, 1 May 2018 22:02:14 -0700
-Message-ID: <CAD=FV=XWzKZOF8+=z07UC3FBGRFifBvk9Oda7HRipqGy9Rxcnw@mail.gmail.com>
-References: <1525230288-6014-1-git-send-email-william.wu@rock-chips.com> <1525230288-6014-3-git-send-email-william.wu@rock-chips.com>
+From: Peter Rosin <peda@axentia.se>
+Subject: [PATCH 0/3] drm: fix some bridge api misunderstandings
+Date: Wed,  2 May 2018 09:40:22 +0200
+Message-ID: <20180502074025.12421-1-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525230288-6014-3-git-send-email-william.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: William Wu <william.wu@rock-chips.com>
-Cc: hminas@synopsys.com, felipe.balbi@linux.intel.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, linux-usb@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, "daniel.meng" <daniel.meng@rock-chips.com>, John Youn <John.Youn@synopsys.com>, =?UTF-8?B?546L5b6B5aKe?= <wzz@rock-chips.com>, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@aopen.com, Vincent Palatin <vpalatin@chromium.org>
+To: linux-kernel@vger.kernel.org
+Cc: Peter Rosin <peda@axentia.se>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi!
 
-On Tue, May 1, 2018 at 8:04 PM, William Wu <william.wu@rock-chips.com> wrote:
-> If isoc split in transfer with no data (the length of DATA0
-> packet is zero), we can't simply return immediately. Because
-> the DATA0 can be the first transaction or the second transaction
-> for the isoc split in transaction. If the DATA0 packet with no
-> data is in the first transaction, we can return immediately.
-> But if the DATA0 packet with no data is in the second transaction
-> of isoc split in transaction sequence, we need to increase the
-> qtd->isoc_frame_index and giveback urb to device driver if needed,
-> otherwise, the MDATA packet will be lost.
->
-> A typical test case is that connect the dwc2 controller with an
-> usb hs Hub (GL852G-12), and plug an usb fs audio device (Plantronics
-> headset) into the downstream port of Hub. Then use the usb mic
-> to record, we can find noise when playback.
->
-> In the case, the isoc split in transaction sequence like this:
->
-> - SSPLIT IN transaction
-> - CSPLIT IN transaction
->   - MDATA packet (176 bytes)
-> - CSPLIT IN transaction
->   - DATA0 packet (0 byte)
->
-> This patch use both the length of DATA0 and qtd->isoc_split_offset
-> to check if the DATA0 is in the second transaction.
->
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
-> ---
-> Changes in v2:
-> - Modify the commit message
->
->  drivers/usb/dwc2/hcd_intr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-> index 5e2378f..479f628 100644
-> --- a/drivers/usb/dwc2/hcd_intr.c
-> +++ b/drivers/usb/dwc2/hcd_intr.c
-> @@ -930,7 +930,7 @@ static int dwc2_xfercomp_isoc_split_in(struct dwc2_hsotg *hsotg,
->         frame_desc = &qtd->urb->iso_descs[qtd->isoc_frame_index];
->         len = dwc2_get_actual_xfer_length(hsotg, chan, chnum, qtd,
->                                           DWC2_HC_XFER_COMPLETE, NULL);
-> -       if (!len) {
-> +       if (!len && !qtd->isoc_split_offset) {
->                 qtd->complete_split = 0;
->                 qtd->isoc_split_offset = 0;
->                 return 0;
+While looking at various drm bridge users, I came across these
+issues.
 
-I don't think my USB-fu is strong enough to do a real review of this
-patch, but one small nitpick is that you can remove
-"qtd->isoc_split_offset = 0" in the if test now.  AKA:
+Cheers,
+Peter
 
-if (!len && !qtd->isoc_split_offset) {
-  qtd->complete_split = 0;
-  return 0;
-}
+Peter Rosin (3):
+  drm/sti: do not remove the drm_bridge that was never added
+  drm/rockchip: lvds: avoid duplicating drm_bridge_attach
+  drm/exynos: hdmi: avoid duplicating drm_bridge_attach
 
-...since you only enter the "if" test now when isoc_split_offset is
-already 0...  Hopefully John Youn will have some time to comment on
-this patch with more real USB knowledge...
+ drivers/gpu/drm/exynos/exynos_hdmi.c     | 2 --
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 2 --
+ drivers/gpu/drm/sti/sti_hda.c            | 1 -
+ drivers/gpu/drm/sti/sti_hdmi.c           | 1 -
+ 4 files changed, 6 deletions(-)
 
-
--Doug
+-- 
+2.11.0
