@@ -1,55 +1,79 @@
-From: Baruch Siach <baruch@tkos.co.il>
-Subject: Re: [PATCH v6 05/17] media: rkisp1: add Rockchip ISP1 subdev driver
-Date: Thu, 3 May 2018 12:09:09 +0300
-Message-ID: <20180503090909.o3dyhukzs2y7em5z@tarshish>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
- <20180308094807.9443-6-jacob-chen@iotwrt.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [regression] HDMI breakage just before poweroff
+Date: Thu, 3 May 2018 13:14:22 +0100
+Message-ID: <0284fa4f-abd6-26f6-31e2-1a6d24777733@arm.com>
+References: <CAAMcf8D86ssM+YeFAXaYDm9QwwAQLdaOgWyC2F8yQ-_-UNyY+A@mail.gmail.com>
+ <5AEA873A.7080701@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180308094807.9443-6-jacob-chen@iotwrt.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5AEA873A.7080701-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
-
-On Thu, Mar 08, 2018 at 05:47:55PM +0800, Jacob Chen wrote:
-> +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int on)
-> +{
-> +	struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
-> +	int ret;
-> +
-> +	v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power: %d\n", on);
-> +
-> +	if (on) {
-> +		ret = pm_runtime_get_sync(isp_dev->dev);
-> +		if (ret < 0)
-> +			return ret;
-> +
-> +		rkisp1_config_clk(isp_dev);
-> +	} else {
-> +		ret = pm_runtime_put(isp_dev->dev);
-
-I commented this line out to make more than one STREAMON work. Otherwise, the 
-second STREAMON hangs. I guess the bug is not this driver. Probably something 
-in drivers/soc/rockchip/pm_domains.c. Just noting that in case you or someone 
-on Cc would like to investigate it further.
-
-I tested v4.16-rc4 on the Tinkerboard.
-
-baruch
-
-> +		if (ret < 0)
-> +			return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-
--- 
-     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-=}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch@tkos.co.il - tel: +972.52.368.4656, http://www.tkos.co.il -
+T24gMDMvMDUvMTggMDQ6NTEsIEplZmZ5Q2hlbiB3cm90ZToKPiBIaSBWaW5jZW50ZSwKPiAKPiBU
+aGFua3MgZm9yIHlvdXIgbWFpbC4KPiAKPiBPbiAwNS8wMy8yMDE4IDAzOjM2IEFNLCBWaWNlbnRl
+IEJlcmdhcyB3cm90ZToKPj4gSGVsbG8sCj4+IG9uIHJrMzM5OS1zYXBwaGlyZSB0aGVyZSBpcyBh
+IG1pc3NpbmcgZmVhdHVyZTogdGhlIHBvd2Vyb2ZmIGNvbW1hbmQgaXMKPj4gdW5hYmxlIHRvIHBv
+d2Vyb2ZmIHRoZSBzeXN0ZW0gYW5kIHRoZSBkaXNwbGF5IHN0YXlzIG9uLgo+PiBXaGVuIHRoZSBz
+eXN0ZW0gaXMgaGFsdGVkLCBwb3dlciBuZWVkcyB0byBiZSByZW1vdmVkIG1hbnVhbGx5Lgo+IGFj
+Y29yZGluZyB0byB0aGUgZHRzaSwgdGhlIHJrMzM5OS1zYXBwaGlyZSBpcyB1c2luZyByazgwOCBw
+aW1jIHJpZ2h0Pwo+IAo+IGkgdGhpbmsgdGhlIHBvd2VyIG9mZiBmbG93IHdvdWxkIGJlOgo+IDEv
+IHJrODA4IHNldCB0aGUgcG1fcG93ZXJfb2ZmIGNhbGxiYWNrOgo+IGRyaXZlcnMvbWZkL3JrODA4
+LmMKPiAgwqDCoMKgwqDCoMKgwqAgc3dpdGNoIChyazgwOC0+dmFyaWFudCkgewo+ICDCoMKgwqDC
+oMKgwqDCoCBjYXNlIFJLODA1X0lEOgo+ICDCoMKgwqDCoC4uLgo+ICDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgcG1fcHdyb2ZmX2ZuID0gcms4MDVfZGV2aWNlX3NodXRkb3duOwo+ICDC
+oMKgwqDCoC4uLgo+IAo+ICDCoMKgwqDCoMKgwqDCoCBwbV9vZmYgPSBvZl9wcm9wZXJ0eV9yZWFk
+X2Jvb2wobnAsCj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgICJyb2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlciIpOwo+
+ICDCoMKgwqDCoMKgwqDCoCBpZiAocG1fb2ZmICYmICFwbV9wb3dlcl9vZmYpIHsKPiAgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJrODA4X2kyY19jbGllbnQgPSBjbGllbnQ7Cj4gIMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwbV9wb3dlcl9vZmYgPSBwbV9wd3JvZmZfZm47
+Cj4gIMKgwqDCoMKgwqDCoMKgIH0KPiAKPiAyLyB0aGUgcG93ZXJvZmYgY29tbWFuZCB3b3VsZCBj
+YWxsIGtlcm5lbF9wb3dlcl9vZmY6Cj4ga2VybmVsL3JlYm9vdC5jOgo+IHZvaWQga2VybmVsX3Bv
+d2VyX29mZih2b2lkKQo+IHsKPiAuLi4KPiAgwqDCoMKgwqDCoMKgwqAgbWFjaGluZV9wb3dlcl9v
+ZmYoKTsKPiB9Cj4gCj4gMy8gYXJtNjQncyBtYWNoaW5lX3Bvd2VyX29mZigpIHdvdWxkIGNhbGwg
+cG1fcG93ZXJfb2ZmIHRvIGxldCByazgwOCAKPiBjdXRvZmYgdGhlIHBvd2VyLgoKRG9lc24ndCBQ
+U0NJJ3MgcG1fcG93ZXJfb2ZmIHRha2UgcHJlY2VkZW5jZSwgdGhvdWdoPyBUaGlzIHNvdW5kcyBz
+aW1pbGFyIAp0byB3aGF0IG15IFJLMzMyOCBkb2VzIC0gSSBsb29rZWQgaW50byB0aGF0IGJyaWVm
+bHkgYSB3aGlsZSBhZ28sIGFuZCAKZnJvbSB3aGF0IEkgcmVtZW1iZXIgaXQgYXBwZWFyZWQgdGhh
+dCB0aGUgZmlybXdhcmUgU1lTVEVNX09GRiBoYW5kbGVyIAp0cmllcyB0byB0dXJuIG9mZiB0aGUg
+UE1JQyBieSBkcml2aW5nIHRoZSBTTEVFUCBwaW4sIGJ1dCB0aGUga2VybmVsIApkcml2ZXIgbmV2
+ZXIgYWN0dWFsbHkgY29uZmlndXJlcyBpdCBpbnRvIHRoZSBjb3JyZWN0IG1vZGUgZm9yIHRoYXQg
+dG8gCndvcmsuIFRodXMgdGhlIGJveCBqdXN0IGVuZHMgdXAgc3Bpbm5pbmcgaW4gdGhlIGZpcm13
+YXJlIHVudGlsIHlvdSBwdWxsIAp0aGUgcGx1ZyBtYW51YWxseS4KCj4+IFdpdGggTGludXgga2Vy
+bmVsIDQuMTYsIHdoZW4gcmVhY2hpbmcgdGhlIGhhbHRlZCBzdGF0ZSwgdGhlIEhETUkgY29uc29s
+ZQo+PiBzaG93cyB0aGUgbGFzdCBtZXNzYWdlcyBiZWZvcmUgaGFsdGluZy4KPiBpZiBpdCBlbmRz
+IHVwIGhhbHRlZCwgbWF5YmUgc29tZXRoaW5nIHdyb25nIGR1cmluZyBzZXR1cCB0aGUgcG1fcG93
+ZXJfb2ZmPwo+IGtlcm5lbC9yZWJvb3QuYzoKPiAgwqDCoMKgwqDCoMKgwqAgLyogSW5zdGVhZCBv
+ZiB0cnlpbmcgdG8gbWFrZSB0aGUgcG93ZXJfb2ZmIGNvZGUgbG9vayBsaWtlCj4gIMKgwqDCoMKg
+wqDCoMKgwqAgKiBoYWx0IHdoZW4gcG1fcG93ZXJfb2ZmIGlzIG5vdCBzZXQgZG8gaXQgdGhlIGVh
+c3kgd2F5Lgo+ICDCoMKgwqDCoMKgwqDCoMKgICovCj4gIMKgwqDCoMKgwqDCoMKgIGlmICgoY21k
+ID09IExJTlVYX1JFQk9PVF9DTURfUE9XRVJfT0ZGKSAmJiAhcG1fcG93ZXJfb2ZmKQo+ICDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY21kID0gTElOVVhfUkVCT09UX0NNRF9IQUxUOwo+
+IAo+Pgo+PiBXaXRoIDQuMTcuMC1yYzMsIHdoZW4gcmVhY2hpbmcgdGhlIGhhbHRlZCBzdGF0ZSwg
+dGhlIEhETUkgY29uc29sZQo+PiBzaG93cyBjb2xvcmZ1bCBzdGF0aWMgbm9pc2UuCj4+Cj4gd2Un
+dmUgYWRkZWQgYSBzaHV0ZG93bigpIHRvIHRoZSBpb21tdSBkcml2ZXI6Cj4gaHR0cHM6Ly9wYXRj
+aHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDIzMDgxNy8KPiAKPiBhbnkgY2hhbmNlIHJlbGF0ZWQ/
+CgpGb3Igc3VyZSAtIHRoZSBJT01NVSBzaHV0ZG93biBkaXNhYmxlcyBwYWdpbmcsIHNvIGlmIHRo
+ZSBWT1AgaXMgc3RpbGwgCnNjYW5uaW5nIG91dCB0aGVuIHRoYXQgd2lsbCByZXN1bHQgaW4gd2hh
+dGV2ZXIgSU9WQXMgaXQgd2FzIHVzaW5nIG5vdyAKZ29pbmcgc3RyYWlnaHQgb3V0IG9udG8gdGhl
+IGJ1cyBhcyBwaHlzaWNhbCBhZGRyZXNzZXMuIEJldHdlZW4gdGhlIApSSzMzOTkgbWVtb3J5IG1h
+cCBhbmQgdGhlIHdheSB0aGUgSU9WQSBhbGxvY2F0b3Igd29ya3MsIHRoYXQgcHJvYmFibHkgCm1l
+YW5zIGl0J3MgcmVhZGluZyBmcm9tIGFsbCBvdmVyIHRoZSBwZXJpcGhlcmFscyByZWdpb24sIHdo
+aWNoLCBlciwgCmlzbid0IGlkZWFsLgoKUm9iaW4uCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
