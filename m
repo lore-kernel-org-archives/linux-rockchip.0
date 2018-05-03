@@ -1,114 +1,65 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] pinctrl: rockchip: Add set_config callback support for gpiolib
-Date: Thu,  3 May 2018 16:04:42 +0800
-Message-ID: <1525334682-222918-1-git-send-email-shawn.lin@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/3] drm/sti: do not remove the drm_bridge that was never
+ added
+Date: Thu, 3 May 2018 11:06:48 +0200
+Message-ID: <20180503090648.GG12521@phenom.ffwll.local>
+References: <20180502074025.12421-1-peda@axentia.se>
+ <20180502074025.12421-2-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20180502074025.12421-2-peda@axentia.se>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>
+Cc: linux-samsung-soc@vger.kernel.org, David Airlie <airlied@linux.ie>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, dri-devel@lists.freedesktop.org, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Could only support PIN_CONFIG_INPUT_DEBOUNCE now as the HW block
-is too simple to support others. But even wrt. debounce capability,
-it now could only support very limited period of time to satisfy the
-real usecase. But still be useful to enable the crippled HW debounce
-to prevent any spurious glitches from waking up the system if the
-gpio is conguired as wakeup interrupt source.
-
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-Hi Linus,
-
-This patch comes from our early discussion of debounce of cd-gpios for sd card
-that I pointed out that rockchip's platform lacks HW debounce support, but I
-think it's overkilled. It does have HW debounce but not really useful as the
-debounce period is toooo short and almost fixed. But something is better than
-nothing, so I'd like to enable it for filtering glitches, since cd-gpios for
-sd card is allow to configured as wakeup source. ;)
-
- drivers/pinctrl/pinctrl-rockchip.c | 52 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 3924779..14e80de 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2555,6 +2555,57 @@ static int rockchip_gpio_direction_output(struct gpio_chip *gc,
- 	return pinctrl_gpio_direction_output(gc->base + offset);
- }
- 
-+static void rockchip_gpio_set_debounce(struct gpio_chip *gc,
-+				       unsigned int offset, bool enable)
-+{
-+	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
-+	void __iomem *reg = bank->reg_base + GPIO_DEBOUNCE;
-+	unsigned long flags;
-+	u32 data;
-+
-+	clk_enable(bank->clk);
-+	raw_spin_lock_irqsave(&bank->slock, flags);
-+
-+	data = readl(reg);
-+	if (enable)
-+		data |= BIT(offset);
-+	else
-+		data &= ~BIT(offset);
-+	writel(data, reg);
-+
-+	raw_spin_unlock_irqrestore(&bank->slock, flags);
-+	clk_disable(bank->clk);
-+}
-+
-+/*
-+ * gpiolib set_config callback function. The setting of the pin
-+ * mux function as 'gpio output' will be handled by the pinctrl subsystem
-+ * interface.
-+ */
-+static int rockchip_gpio_set_config(struct gpio_chip *gc, unsigned int offset,
-+				  unsigned long config)
-+{
-+	enum pin_config_param param = pinconf_to_config_param(config);
-+
-+	switch (param) {
-+	case PIN_CONFIG_INPUT_DEBOUNCE:
-+		rockchip_gpio_set_debounce(gc, offset, true);
-+		/*
-+		 * Rockchip's gpio could only support up to one period
-+		 * of the debounce clock(pclk), which is far away from
-+		 * satisftying the requirement, as pclk is usually near
-+		 * 100MHz shared by all peripherals. So the fact is it
-+		 * has crippled debounce capability could only be useful
-+		 * to prevent any spurious glitches from waking up the system
-+		 * if the gpio is conguired as wakeup interrupt source. Let's
-+		 * still return -ENOTSUPP as before, to make sure the caller
-+		 * of gpiod_set_debounce won't change its behaviour.
-+		 */
-+	default:
-+		return -ENOTSUPP;
-+	}
-+}
-+
- /*
-  * gpiolib gpio_to_irq callback function. Creates a mapping between a GPIO pin
-  * and a virtual IRQ, if not already present.
-@@ -2580,6 +2631,7 @@ static int rockchip_gpio_to_irq(struct gpio_chip *gc, unsigned offset)
- 	.get_direction	= rockchip_gpio_get_direction,
- 	.direction_input = rockchip_gpio_direction_input,
- 	.direction_output = rockchip_gpio_direction_output,
-+	.set_config = rockchip_gpio_set_config,
- 	.to_irq = rockchip_gpio_to_irq,
- 	.owner = THIS_MODULE,
- };
--- 
-1.9.1
+T24gV2VkLCBNYXkgMDIsIDIwMTggYXQgMDk6NDA6MjNBTSArMDIwMCwgUGV0ZXIgUm9zaW4gd3Jv
+dGU6Cj4gVGhlIG1vcmUgbmF0dXJhbCBhcHByb2FjaCB3b3VsZCBwZXJoYXBzIGJlIHRvIGFkZCBh
+biBkcm1fYnJpZGdlX2FkZCwKPiBidXQgdGhlcmUgYXJlIHNldmVyYWwgb3RoZXIgYnJpZGdlcyB0
+aGF0IG5ldmVyIGNhbGwgZHJtX2JyaWRnZV9hZGQuCj4gSnVzdCByZW1vdmluZyB0aGUgZHJtX2Jy
+aWRnZV9yZW1vdmUgaXMgdGhlIGVhc2llciBmaXguCj4gCj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIg
+Um9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KClRoaXMgbWVzcyBpcyBtdWNoIGJpZ2dlci4gVGhlcmUn
+cyAyIHBhaXJzIG9mIGJyaWRnZSBmdW5jdGlvbnM6CgotIGRybV9icmlkZ2VfYXR0YWNoL2RldGFj
+aC4gVGhvc2UgYXJlIG1lYW50IHRvIGJlIGNhbGxlZCBieSB0aGUgb3ZlcmFsbAogIGRybSBkcml2
+ZXIgdG8gY29ubmVjdC9kaXNjb25uZWN0IGEgZHJtX2JyaWRnZS4KCi0gZHJtX2JyaWRnZV9hZGQv
+cmVtb3ZlLiBUaGVzZSBhcmUgc3VwcG9zZWQgdG8gYmUgY2FsbGVkIGJ5IHRoZSBicmlkZ2UKICBk
+cml2ZXIgaXRzZWxmIHRvIHJlZ2lzdGVyL3VucmVnaXN0ZXIgaXRzZWxmLiBNYXliZSB3ZSBzaG91
+bGQgcmVuYW1lCiAgdGhlbSwgc2luY2UgdGhlIHNhbWUgaXNzdWUgaGFwcGVucyB3aXRoIGRybV9w
+YW5lbCwgd2l0aCB0aGUgc2FtZQogIGNvbmZ1c2lvbi4KCkkgdGhvdWdodCBzb21lb25lIHdhcyB3
+b3JraW5nIG9uIGEgY2xlYW51cCBzZXJpZXMgdG8gZml4IHRoaXMgbWVzcywgYnV0IEkKZGlkbid0
+IGZpbmQgYW55dGhpbmcuCi1EYW5pZWwKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3Rp
+X2hkYS5jICB8IDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZG1pLmMgfCAxIC0KPiAg
+MiBmaWxlcyBjaGFuZ2VkLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vc3RpL3N0aV9oZGEuYyBiL2RyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2hkYS5jCj4g
+aW5kZXggNjdiYmRiNDlmZmZjLi4xOTlkYjEzZjU2NWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3N0aS9zdGlfaGRhLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZGEu
+Ywo+IEBAIC03MjEsNyArNzIxLDYgQEAgc3RhdGljIGludCBzdGlfaGRhX2JpbmQoc3RydWN0IGRl
+dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCj4gIAlyZXR1cm4g
+MDsKPiAgCj4gIGVycl9zeXNmczoKPiAtCWRybV9icmlkZ2VfcmVtb3ZlKGJyaWRnZSk7Cj4gIAly
+ZXR1cm4gLUVJTlZBTDsKPiAgfQo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0
+aS9zdGlfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jCj4gaW5kZXggNThm
+NDMxMTAyNTEyLi45MzI3MjQ3ODQ5NDIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0
+aS9zdGlfaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jCj4gQEAg
+LTEzMTUsNyArMTMxNSw2IEBAIHN0YXRpYyBpbnQgc3RpX2hkbWlfYmluZChzdHJ1Y3QgZGV2aWNl
+ICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPiAgCXJldHVybiAwOwo+
+ICAKPiAgZXJyX3N5c2ZzOgo+IC0JZHJtX2JyaWRnZV9yZW1vdmUoYnJpZGdlKTsKPiAgCWhkbWkt
+PmRybV9jb25uZWN0b3IgPSBOVUxMOwo+ICAJcmV0dXJuIC1FSU5WQUw7Cj4gIH0KPiAtLSAKPiAy
+LjExLjAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3Jh
+dGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
