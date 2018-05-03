@@ -1,79 +1,65 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [regression] HDMI breakage just before poweroff
-Date: Thu, 3 May 2018 13:14:22 +0100
-Message-ID: <0284fa4f-abd6-26f6-31e2-1a6d24777733@arm.com>
-References: <CAAMcf8D86ssM+YeFAXaYDm9QwwAQLdaOgWyC2F8yQ-_-UNyY+A@mail.gmail.com>
- <5AEA873A.7080701@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 50/61] thermal: simplify getting .drvdata
+Date: Thu, 03 May 2018 14:23:07 +0200
+Message-ID: <3499277.H47n29vZV6@phil>
+References: <20180419140641.27926-1-wsa+renesas@sang-engineering.com> <20180419140641.27926-51-wsa+renesas@sang-engineering.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5AEA873A.7080701-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180419140641.27926-51-wsa+renesas@sang-engineering.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, kernel-janitors@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Jun Nie <jun.nie@linaro.org>, Baoyou Xie <baoyou.xie@linaro.org>, Shawn Guo <shawnguo@kernel.org>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDMvMDUvMTggMDQ6NTEsIEplZmZ5Q2hlbiB3cm90ZToKPiBIaSBWaW5jZW50ZSwKPiAKPiBU
-aGFua3MgZm9yIHlvdXIgbWFpbC4KPiAKPiBPbiAwNS8wMy8yMDE4IDAzOjM2IEFNLCBWaWNlbnRl
-IEJlcmdhcyB3cm90ZToKPj4gSGVsbG8sCj4+IG9uIHJrMzM5OS1zYXBwaGlyZSB0aGVyZSBpcyBh
-IG1pc3NpbmcgZmVhdHVyZTogdGhlIHBvd2Vyb2ZmIGNvbW1hbmQgaXMKPj4gdW5hYmxlIHRvIHBv
-d2Vyb2ZmIHRoZSBzeXN0ZW0gYW5kIHRoZSBkaXNwbGF5IHN0YXlzIG9uLgo+PiBXaGVuIHRoZSBz
-eXN0ZW0gaXMgaGFsdGVkLCBwb3dlciBuZWVkcyB0byBiZSByZW1vdmVkIG1hbnVhbGx5Lgo+IGFj
-Y29yZGluZyB0byB0aGUgZHRzaSwgdGhlIHJrMzM5OS1zYXBwaGlyZSBpcyB1c2luZyByazgwOCBw
-aW1jIHJpZ2h0Pwo+IAo+IGkgdGhpbmsgdGhlIHBvd2VyIG9mZiBmbG93IHdvdWxkIGJlOgo+IDEv
-IHJrODA4IHNldCB0aGUgcG1fcG93ZXJfb2ZmIGNhbGxiYWNrOgo+IGRyaXZlcnMvbWZkL3JrODA4
-LmMKPiAgwqDCoMKgwqDCoMKgwqAgc3dpdGNoIChyazgwOC0+dmFyaWFudCkgewo+ICDCoMKgwqDC
-oMKgwqDCoCBjYXNlIFJLODA1X0lEOgo+ICDCoMKgwqDCoC4uLgo+ICDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgcG1fcHdyb2ZmX2ZuID0gcms4MDVfZGV2aWNlX3NodXRkb3duOwo+ICDC
-oMKgwqDCoC4uLgo+IAo+ICDCoMKgwqDCoMKgwqDCoCBwbV9vZmYgPSBvZl9wcm9wZXJ0eV9yZWFk
-X2Jvb2wobnAsCj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgICJyb2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlciIpOwo+
-ICDCoMKgwqDCoMKgwqDCoCBpZiAocG1fb2ZmICYmICFwbV9wb3dlcl9vZmYpIHsKPiAgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJrODA4X2kyY19jbGllbnQgPSBjbGllbnQ7Cj4gIMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwbV9wb3dlcl9vZmYgPSBwbV9wd3JvZmZfZm47
-Cj4gIMKgwqDCoMKgwqDCoMKgIH0KPiAKPiAyLyB0aGUgcG93ZXJvZmYgY29tbWFuZCB3b3VsZCBj
-YWxsIGtlcm5lbF9wb3dlcl9vZmY6Cj4ga2VybmVsL3JlYm9vdC5jOgo+IHZvaWQga2VybmVsX3Bv
-d2VyX29mZih2b2lkKQo+IHsKPiAuLi4KPiAgwqDCoMKgwqDCoMKgwqAgbWFjaGluZV9wb3dlcl9v
-ZmYoKTsKPiB9Cj4gCj4gMy8gYXJtNjQncyBtYWNoaW5lX3Bvd2VyX29mZigpIHdvdWxkIGNhbGwg
-cG1fcG93ZXJfb2ZmIHRvIGxldCByazgwOCAKPiBjdXRvZmYgdGhlIHBvd2VyLgoKRG9lc24ndCBQ
-U0NJJ3MgcG1fcG93ZXJfb2ZmIHRha2UgcHJlY2VkZW5jZSwgdGhvdWdoPyBUaGlzIHNvdW5kcyBz
-aW1pbGFyIAp0byB3aGF0IG15IFJLMzMyOCBkb2VzIC0gSSBsb29rZWQgaW50byB0aGF0IGJyaWVm
-bHkgYSB3aGlsZSBhZ28sIGFuZCAKZnJvbSB3aGF0IEkgcmVtZW1iZXIgaXQgYXBwZWFyZWQgdGhh
-dCB0aGUgZmlybXdhcmUgU1lTVEVNX09GRiBoYW5kbGVyIAp0cmllcyB0byB0dXJuIG9mZiB0aGUg
-UE1JQyBieSBkcml2aW5nIHRoZSBTTEVFUCBwaW4sIGJ1dCB0aGUga2VybmVsIApkcml2ZXIgbmV2
-ZXIgYWN0dWFsbHkgY29uZmlndXJlcyBpdCBpbnRvIHRoZSBjb3JyZWN0IG1vZGUgZm9yIHRoYXQg
-dG8gCndvcmsuIFRodXMgdGhlIGJveCBqdXN0IGVuZHMgdXAgc3Bpbm5pbmcgaW4gdGhlIGZpcm13
-YXJlIHVudGlsIHlvdSBwdWxsIAp0aGUgcGx1ZyBtYW51YWxseS4KCj4+IFdpdGggTGludXgga2Vy
-bmVsIDQuMTYsIHdoZW4gcmVhY2hpbmcgdGhlIGhhbHRlZCBzdGF0ZSwgdGhlIEhETUkgY29uc29s
-ZQo+PiBzaG93cyB0aGUgbGFzdCBtZXNzYWdlcyBiZWZvcmUgaGFsdGluZy4KPiBpZiBpdCBlbmRz
-IHVwIGhhbHRlZCwgbWF5YmUgc29tZXRoaW5nIHdyb25nIGR1cmluZyBzZXR1cCB0aGUgcG1fcG93
-ZXJfb2ZmPwo+IGtlcm5lbC9yZWJvb3QuYzoKPiAgwqDCoMKgwqDCoMKgwqAgLyogSW5zdGVhZCBv
-ZiB0cnlpbmcgdG8gbWFrZSB0aGUgcG93ZXJfb2ZmIGNvZGUgbG9vayBsaWtlCj4gIMKgwqDCoMKg
-wqDCoMKgwqAgKiBoYWx0IHdoZW4gcG1fcG93ZXJfb2ZmIGlzIG5vdCBzZXQgZG8gaXQgdGhlIGVh
-c3kgd2F5Lgo+ICDCoMKgwqDCoMKgwqDCoMKgICovCj4gIMKgwqDCoMKgwqDCoMKgIGlmICgoY21k
-ID09IExJTlVYX1JFQk9PVF9DTURfUE9XRVJfT0ZGKSAmJiAhcG1fcG93ZXJfb2ZmKQo+ICDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY21kID0gTElOVVhfUkVCT09UX0NNRF9IQUxUOwo+
-IAo+Pgo+PiBXaXRoIDQuMTcuMC1yYzMsIHdoZW4gcmVhY2hpbmcgdGhlIGhhbHRlZCBzdGF0ZSwg
-dGhlIEhETUkgY29uc29sZQo+PiBzaG93cyBjb2xvcmZ1bCBzdGF0aWMgbm9pc2UuCj4+Cj4gd2Un
-dmUgYWRkZWQgYSBzaHV0ZG93bigpIHRvIHRoZSBpb21tdSBkcml2ZXI6Cj4gaHR0cHM6Ly9wYXRj
-aHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDIzMDgxNy8KPiAKPiBhbnkgY2hhbmNlIHJlbGF0ZWQ/
-CgpGb3Igc3VyZSAtIHRoZSBJT01NVSBzaHV0ZG93biBkaXNhYmxlcyBwYWdpbmcsIHNvIGlmIHRo
-ZSBWT1AgaXMgc3RpbGwgCnNjYW5uaW5nIG91dCB0aGVuIHRoYXQgd2lsbCByZXN1bHQgaW4gd2hh
-dGV2ZXIgSU9WQXMgaXQgd2FzIHVzaW5nIG5vdyAKZ29pbmcgc3RyYWlnaHQgb3V0IG9udG8gdGhl
-IGJ1cyBhcyBwaHlzaWNhbCBhZGRyZXNzZXMuIEJldHdlZW4gdGhlIApSSzMzOTkgbWVtb3J5IG1h
-cCBhbmQgdGhlIHdheSB0aGUgSU9WQSBhbGxvY2F0b3Igd29ya3MsIHRoYXQgcHJvYmFibHkgCm1l
-YW5zIGl0J3MgcmVhZGluZyBmcm9tIGFsbCBvdmVyIHRoZSBwZXJpcGhlcmFscyByZWdpb24sIHdo
-aWNoLCBlciwgCmlzbid0IGlkZWFsLgoKUm9iaW4uCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Donnerstag, 19. April 2018, 16:06:20 CEST schrieb Wolfram Sang:
+> We should get drvdata from struct device directly. Going via
+> platform_device is an unneeded step back and forth.
+> 
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> ---
+> 
+> Build tested only. buildbot is happy. Please apply individually.
+> 
+>  drivers/thermal/rockchip_thermal.c | 8 +++-----
+>  drivers/thermal/spear_thermal.c    | 8 +++-----
+>  drivers/thermal/zx2967_thermal.c   | 6 ++----
+>  3 files changed, 8 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index f36375d5a16c..9c7643d62ed7 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -1327,8 +1327,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
+>  
+>  static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+>  {
+> -	struct platform_device *pdev = to_platform_device(dev);
+> -	struct rockchip_thermal_data *thermal = platform_get_drvdata(pdev);
+> +	struct rockchip_thermal_data *thermal = dev_get_drvdata(dev);
+>  	int i;
+>  
+>  	for (i = 0; i < thermal->chip->chn_num; i++)
+> @@ -1346,8 +1345,7 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+>  
+>  static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>  {
+> -	struct platform_device *pdev = to_platform_device(dev);
+> -	struct rockchip_thermal_data *thermal = platform_get_drvdata(pdev);
+> +	struct rockchip_thermal_data *thermal = dev_get_drvdata(dev);
+>  	int i;
+>  	int error;
+>  
+> @@ -1376,7 +1374,7 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>  					      id, thermal->regs,
+>  					      thermal->tshut_temp);
+>  		if (error)
+> -			dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
+> +			dev_err(dev, "%s: invalid tshut=%d, error=%d\n",
+>  				__func__, thermal->tshut_temp, error);
+>  	}
+>  
+
+for the Rockchip-part
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
