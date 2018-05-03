@@ -1,65 +1,55 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 1/3] drm/sti: do not remove the drm_bridge that was never
- added
-Date: Thu, 3 May 2018 11:06:48 +0200
-Message-ID: <20180503090648.GG12521@phenom.ffwll.local>
-References: <20180502074025.12421-1-peda@axentia.se>
- <20180502074025.12421-2-peda@axentia.se>
+From: Baruch Siach <baruch@tkos.co.il>
+Subject: Re: [PATCH v6 05/17] media: rkisp1: add Rockchip ISP1 subdev driver
+Date: Thu, 3 May 2018 12:09:09 +0300
+Message-ID: <20180503090909.o3dyhukzs2y7em5z@tarshish>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+ <20180308094807.9443-6-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180502074025.12421-2-peda@axentia.se>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Peter Rosin <peda@axentia.se>
-Cc: linux-samsung-soc@vger.kernel.org, David Airlie <airlied@linux.ie>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, dri-devel@lists.freedesktop.org, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20180308094807.9443-6-jacob-chen@iotwrt.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBNYXkgMDIsIDIwMTggYXQgMDk6NDA6MjNBTSArMDIwMCwgUGV0ZXIgUm9zaW4gd3Jv
-dGU6Cj4gVGhlIG1vcmUgbmF0dXJhbCBhcHByb2FjaCB3b3VsZCBwZXJoYXBzIGJlIHRvIGFkZCBh
-biBkcm1fYnJpZGdlX2FkZCwKPiBidXQgdGhlcmUgYXJlIHNldmVyYWwgb3RoZXIgYnJpZGdlcyB0
-aGF0IG5ldmVyIGNhbGwgZHJtX2JyaWRnZV9hZGQuCj4gSnVzdCByZW1vdmluZyB0aGUgZHJtX2Jy
-aWRnZV9yZW1vdmUgaXMgdGhlIGVhc2llciBmaXguCj4gCj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIg
-Um9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KClRoaXMgbWVzcyBpcyBtdWNoIGJpZ2dlci4gVGhlcmUn
-cyAyIHBhaXJzIG9mIGJyaWRnZSBmdW5jdGlvbnM6CgotIGRybV9icmlkZ2VfYXR0YWNoL2RldGFj
-aC4gVGhvc2UgYXJlIG1lYW50IHRvIGJlIGNhbGxlZCBieSB0aGUgb3ZlcmFsbAogIGRybSBkcml2
-ZXIgdG8gY29ubmVjdC9kaXNjb25uZWN0IGEgZHJtX2JyaWRnZS4KCi0gZHJtX2JyaWRnZV9hZGQv
-cmVtb3ZlLiBUaGVzZSBhcmUgc3VwcG9zZWQgdG8gYmUgY2FsbGVkIGJ5IHRoZSBicmlkZ2UKICBk
-cml2ZXIgaXRzZWxmIHRvIHJlZ2lzdGVyL3VucmVnaXN0ZXIgaXRzZWxmLiBNYXliZSB3ZSBzaG91
-bGQgcmVuYW1lCiAgdGhlbSwgc2luY2UgdGhlIHNhbWUgaXNzdWUgaGFwcGVucyB3aXRoIGRybV9w
-YW5lbCwgd2l0aCB0aGUgc2FtZQogIGNvbmZ1c2lvbi4KCkkgdGhvdWdodCBzb21lb25lIHdhcyB3
-b3JraW5nIG9uIGEgY2xlYW51cCBzZXJpZXMgdG8gZml4IHRoaXMgbWVzcywgYnV0IEkKZGlkbid0
-IGZpbmQgYW55dGhpbmcuCi1EYW5pZWwKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3Rp
-X2hkYS5jICB8IDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZG1pLmMgfCAxIC0KPiAg
-MiBmaWxlcyBjaGFuZ2VkLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vc3RpL3N0aV9oZGEuYyBiL2RyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2hkYS5jCj4g
-aW5kZXggNjdiYmRiNDlmZmZjLi4xOTlkYjEzZjU2NWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3N0aS9zdGlfaGRhLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZGEu
-Ywo+IEBAIC03MjEsNyArNzIxLDYgQEAgc3RhdGljIGludCBzdGlfaGRhX2JpbmQoc3RydWN0IGRl
-dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCj4gIAlyZXR1cm4g
-MDsKPiAgCj4gIGVycl9zeXNmczoKPiAtCWRybV9icmlkZ2VfcmVtb3ZlKGJyaWRnZSk7Cj4gIAly
-ZXR1cm4gLUVJTlZBTDsKPiAgfQo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0
-aS9zdGlfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jCj4gaW5kZXggNThm
-NDMxMTAyNTEyLi45MzI3MjQ3ODQ5NDIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0
-aS9zdGlfaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jCj4gQEAg
-LTEzMTUsNyArMTMxNSw2IEBAIHN0YXRpYyBpbnQgc3RpX2hkbWlfYmluZChzdHJ1Y3QgZGV2aWNl
-ICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPiAgCXJldHVybiAwOwo+
-ICAKPiAgZXJyX3N5c2ZzOgo+IC0JZHJtX2JyaWRnZV9yZW1vdmUoYnJpZGdlKTsKPiAgCWhkbWkt
-PmRybV9jb25uZWN0b3IgPSBOVUxMOwo+ICAJcmV0dXJuIC1FSU5WQUw7Cj4gIH0KPiAtLSAKPiAy
-LjExLjAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Xwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3Jh
-dGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+Hi Jacob,
+
+On Thu, Mar 08, 2018 at 05:47:55PM +0800, Jacob Chen wrote:
+> +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int on)
+> +{
+> +	struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
+> +	int ret;
+> +
+> +	v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power: %d\n", on);
+> +
+> +	if (on) {
+> +		ret = pm_runtime_get_sync(isp_dev->dev);
+> +		if (ret < 0)
+> +			return ret;
+> +
+> +		rkisp1_config_clk(isp_dev);
+> +	} else {
+> +		ret = pm_runtime_put(isp_dev->dev);
+
+I commented this line out to make more than one STREAMON work. Otherwise, the 
+second STREAMON hangs. I guess the bug is not this driver. Probably something 
+in drivers/soc/rockchip/pm_domains.c. Just noting that in case you or someone 
+on Cc would like to investigate it further.
+
+I tested v4.16-rc4 on the Tinkerboard.
+
+baruch
+
+> +		if (ret < 0)
+> +			return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+
+-- 
+     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+=}------------------------------------------------ooO--U--Ooo------------{=
+   - baruch@tkos.co.il - tel: +972.52.368.4656, http://www.tkos.co.il -
