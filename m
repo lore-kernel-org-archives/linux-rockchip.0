@@ -1,121 +1,276 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [regression] HDMI breakage just before poweroff
-Date: Thu, 3 May 2018 23:15:59 +0200
-Message-ID: <CAAMcf8Cr977rt9o3-BFDLM_PBhBgJCBDpm5VzN3NFG4ptbg=9g@mail.gmail.com>
-References: <CAAMcf8D86ssM+YeFAXaYDm9QwwAQLdaOgWyC2F8yQ-_-UNyY+A@mail.gmail.com>
- <5AEA873A.7080701@rock-chips.com>
- <0284fa4f-abd6-26f6-31e2-1a6d24777733@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <0284fa4f-abd6-26f6-31e2-1a6d24777733-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Lin Huang <hl@rock-chips.com>
+Subject: [PATCH 1/4] drm/rockchip: add transfer function for cdn-dp
+Date: Fri,  4 May 2018 16:08:55 +0800
+Message-ID: <1525421338-1021-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: seanpaul@chromium.org, airlied@linux.ie, zyw@rock-chips.com
+Cc: dianders@chromium.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, heiko@sntech.de, daniel.vetter@intel.com, jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 3, 2018 at 2:14 PM, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
-> On 03/05/18 04:51, JeffyChen wrote:
->>
->> Hi Vincente,
->>
->> Thanks for your mail.
->>
->> On 05/03/2018 03:36 AM, Vicente Bergas wrote:
->>>
->>> Hello,
->>> on rk3399-sapphire there is a missing feature: the poweroff command is
->>> unable to poweroff the system and the display stays on.
->>> When the system is halted, power needs to be removed manually.
->>
->> according to the dtsi, the rk3399-sapphire is using rk808 pimc right?
->>
->> i think the power off flow would be:
->> 1/ rk808 set the pm_power_off callback:
->> drivers/mfd/rk808.c
->>          switch (rk808->variant) {
->>          case RK805_ID:
->>      ...
->>                  pm_pwroff_fn = rk805_device_shutdown;
->>      ...
->>
->>          pm_off = of_property_read_bool(np,
->>                                  "rockchip,system-power-controller");
->>          if (pm_off && !pm_power_off) {
->>                  rk808_i2c_client = client;
->>                  pm_power_off = pm_pwroff_fn;
->>          }
->>
->> 2/ the poweroff command would call kernel_power_off:
->> kernel/reboot.c:
->> void kernel_power_off(void)
->> {
->> ...
->>          machine_power_off();
->> }
->>
->> 3/ arm64's machine_power_off() would call pm_power_off to let rk808 cutoff
->> the power.
->
->
-> Doesn't PSCI's pm_power_off take precedence, though? This sounds similar to
-> what my RK3328 does - I looked into that briefly a while ago, and from what
-> I remember it appeared that the firmware SYSTEM_OFF handler tries to turn
-> off the PMIC by driving the SLEEP pin, but the kernel driver never actually
-> configures it into the correct mode for that to work. Thus the box just ends
-> up spinning in the firmware until you pull the plug manually.
->
->>> With Linux kernel 4.16, when reaching the halted state, the HDMI console
->>> shows the last messages before halting.
->>
->> if it ends up halted, maybe something wrong during setup the pm_power_off?
->> kernel/reboot.c:
->>          /* Instead of trying to make the power_off code look like
->>           * halt when pm_power_off is not set do it the easy way.
->>           */
->>          if ((cmd == LINUX_REBOOT_CMD_POWER_OFF) && !pm_power_off)
->>                  cmd = LINUX_REBOOT_CMD_HALT;
->>
->>>
->>> With 4.17.0-rc3, when reaching the halted state, the HDMI console
->>> shows colorful static noise.
->>>
->> we've added a shutdown() to the iommu driver:
->> https://patchwork.kernel.org/patch/10230817/
->>
->> any chance related?
->
->
-> For sure - the IOMMU shutdown disables paging, so if the VOP is still
-> scanning out then that will result in whatever IOVAs it was using now going
-> straight out onto the bus as physical addresses. Between the RK3399 memory
-> map and the way the IOVA allocator works, that probably means it's reading
-> from all over the peripherals region, which, er, isn't ideal.
->
-> Robin.
+From: Chris Zhong <zyw@rock-chips.com>
 
-I can confirm that
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1269,7 +1264,6 @@ MODULE_DEVICE_TABLE(of, rk_iommu_dt_ids);
+We may support training outside firmware, so we need support
+dpcd read/write to get the message or do some setting with
+display.
 
- static struct platform_driver rk_iommu_driver = {
-     .probe = rk_iommu_probe,
--    .shutdown = rk_iommu_shutdown,
-     .driver = {
-            .name = "rk_iommu",
-            .of_match_table = rk_iommu_dt_ids,
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Signed-off-by: Lin Huang <hl@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 55 ++++++++++++++++++++++++----
+ drivers/gpu/drm/rockchip/cdn-dp-core.h |  1 +
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c  | 66 +++++++++++++++++++++++++++++-----
+ drivers/gpu/drm/rockchip/cdn-dp-reg.h  | 14 ++++++--
+ 4 files changed, 119 insertions(+), 17 deletions(-)
 
-fixes the HDMI issue.
-
-Regards,
-  Vicente.
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index c6fbdcd..268c190 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -176,8 +176,8 @@ static int cdn_dp_get_sink_count(struct cdn_dp_device *dp, u8 *sink_count)
+ 	u8 value;
+ 
+ 	*sink_count = 0;
+-	ret = cdn_dp_dpcd_read(dp, DP_SINK_COUNT, &value, 1);
+-	if (ret)
++	ret = drm_dp_dpcd_read(&dp->aux, DP_SINK_COUNT, &value, 1);
++	if (ret < 0)
+ 		return ret;
+ 
+ 	*sink_count = DP_GET_SINK_COUNT(value);
+@@ -374,9 +374,9 @@ static int cdn_dp_get_sink_capability(struct cdn_dp_device *dp)
+ 	if (!cdn_dp_check_sink_connection(dp))
+ 		return -ENODEV;
+ 
+-	ret = cdn_dp_dpcd_read(dp, DP_DPCD_REV, dp->dpcd,
+-			       DP_RECEIVER_CAP_SIZE);
+-	if (ret) {
++	ret = drm_dp_dpcd_read(&dp->aux, DP_DPCD_REV, dp->dpcd,
++			       sizeof(dp->dpcd));
++	if (ret < 0) {
+ 		DRM_DEV_ERROR(dp->dev, "Failed to get caps %d\n", ret);
+ 		return ret;
+ 	}
+@@ -582,8 +582,8 @@ static bool cdn_dp_check_link_status(struct cdn_dp_device *dp)
+ 	if (!port || !dp->link.rate || !dp->link.num_lanes)
+ 		return false;
+ 
+-	if (cdn_dp_dpcd_read(dp, DP_LANE0_1_STATUS, link_status,
+-			     DP_LINK_STATUS_SIZE)) {
++	if (drm_dp_dpcd_read_link_status(&dp->aux, link_status) !=
++	    DP_LINK_STATUS_SIZE) {
+ 		DRM_ERROR("Failed to get link status\n");
+ 		return false;
+ 	}
+@@ -1012,6 +1012,40 @@ static int cdn_dp_pd_event(struct notifier_block *nb,
+ 	return NOTIFY_DONE;
+ }
+ 
++static ssize_t cdn_dp_aux_transfer(struct drm_dp_aux *aux,
++				   struct drm_dp_aux_msg *msg)
++{
++	struct cdn_dp_device *dp = container_of(aux, struct cdn_dp_device, aux);
++	int ret;
++	u8 status;
++
++	switch (msg->request & ~DP_AUX_I2C_MOT) {
++	case DP_AUX_NATIVE_WRITE:
++	case DP_AUX_I2C_WRITE:
++	case DP_AUX_I2C_WRITE_STATUS_UPDATE:
++		ret = cdn_dp_dpcd_write(dp, msg->address, msg->buffer,
++					msg->size);
++		break;
++	case DP_AUX_NATIVE_READ:
++	case DP_AUX_I2C_READ:
++		ret = cdn_dp_dpcd_read(dp, msg->address, msg->buffer,
++				       msg->size);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	status = cdn_dp_get_aux_status(dp);
++	if (status == AUX_STAUS_ACK)
++		msg->reply = DP_AUX_NATIVE_REPLY_ACK;
++	else if (status == AUX_STAUS_NACK)
++		msg->reply = DP_AUX_NATIVE_REPLY_NACK;
++	else if (status == AUX_STAUS_DEFER)
++		msg->reply = DP_AUX_NATIVE_REPLY_DEFER;
++
++	return ret;
++}
++
+ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+@@ -1030,6 +1064,13 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ 	dp->active = false;
+ 	dp->active_port = -1;
+ 	dp->fw_loaded = false;
++	dp->aux.name = "DP-AUX";
++	dp->aux.transfer = cdn_dp_aux_transfer;
++	dp->aux.dev = dev;
++
++	ret = drm_dp_aux_register(&dp->aux);
++	if (ret)
++		return ret;
+ 
+ 	INIT_WORK(&dp->event_work, cdn_dp_pd_event_work);
+ 
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+index f57e296..46159b2 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+@@ -78,6 +78,7 @@ struct cdn_dp_device {
+ 	struct platform_device *audio_pdev;
+ 	struct work_struct event_work;
+ 	struct edid *edid;
++	struct drm_dp_aux aux;
+ 
+ 	struct mutex lock;
+ 	bool connected;
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+index eb3042c..b2f532a 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+@@ -221,7 +221,11 @@ static int cdn_dp_reg_write_bit(struct cdn_dp_device *dp, u16 addr,
+ 				   sizeof(field), field);
+ }
+ 
+-int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len)
++/*
++ * Returns the number of bytes transferred on success, or a negative error
++ * code on failure. -ETIMEDOUT is returned if mailbox message not send success;
++ */
++ssize_t cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len)
+ {
+ 	u8 msg[5], reg[5];
+ 	int ret;
+@@ -247,24 +251,40 @@ int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len)
+ 		goto err_dpcd_read;
+ 
+ 	ret = cdn_dp_mailbox_read_receive(dp, data, len);
++	if (!ret)
++		return len;
+ 
+ err_dpcd_read:
++	DRM_DEV_ERROR(dp->dev, "dpcd read failed: %d\n", ret);
+ 	return ret;
+ }
+ 
+-int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value)
++#define CDN_AUX_HEADER_SIZE	5
++#define CDN_AUX_MSG_SIZE	20
++/*
++ * Returns the number of bytes transferred on success, or a negative error
++ * code on failure. -ETIMEDOUT is returned if mailbox message not send success;
++ * -EINVAL is return if get the wrong data size after message send.
++ */
++ssize_t cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len)
+ {
+-	u8 msg[6], reg[5];
++	u8 msg[CDN_AUX_MSG_SIZE + CDN_AUX_HEADER_SIZE];
++	u8 reg[CDN_AUX_HEADER_SIZE];
+ 	int ret;
+ 
+-	msg[0] = 0;
+-	msg[1] = 1;
++	if (WARN_ON(len > CDN_AUX_MSG_SIZE) || WARN_ON(len <= 0))
++		return -EINVAL;
++
++	msg[0] = (len >> 8) & 0xff;
++	msg[1] = len & 0xff;
+ 	msg[2] = (addr >> 16) & 0xff;
+ 	msg[3] = (addr >> 8) & 0xff;
+ 	msg[4] = addr & 0xff;
+-	msg[5] = value;
++
++	memcpy(msg + CDN_AUX_HEADER_SIZE, data, len);
++
+ 	ret = cdn_dp_mailbox_send(dp, MB_MODULE_ID_DP_TX, DPTX_WRITE_DPCD,
+-				  sizeof(msg), msg);
++				  CDN_AUX_HEADER_SIZE + len, msg);
+ 	if (ret)
+ 		goto err_dpcd_write;
+ 
+@@ -277,8 +297,12 @@ int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value)
+ 	if (ret)
+ 		goto err_dpcd_write;
+ 
+-	if (addr != (reg[2] << 16 | reg[3] << 8 | reg[4]))
++	if ((len != (reg[0] << 8 | reg[1])) ||
++	    (addr != (reg[2] << 16 | reg[3] << 8 | reg[4]))) {
+ 		ret = -EINVAL;
++	} else {
++		return len;
++	}
+ 
+ err_dpcd_write:
+ 	if (ret)
+@@ -286,6 +310,32 @@ int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value)
+ 	return ret;
+ }
+ 
++int cdn_dp_get_aux_status(struct cdn_dp_device *dp)
++{
++	u8 status;
++	int ret;
++
++	ret = cdn_dp_mailbox_send(dp, MB_MODULE_ID_DP_TX, DPTX_GET_LAST_AUX_STAUS,
++				  0, NULL);
++	if (ret)
++		goto err_get_hpd;
++
++	ret = cdn_dp_mailbox_validate_receive(dp, MB_MODULE_ID_DP_TX,
++					      DPTX_GET_LAST_AUX_STAUS, sizeof(status));
++	if (ret)
++		goto err_get_hpd;
++
++	ret = cdn_dp_mailbox_read_receive(dp, &status, sizeof(status));
++	if (ret)
++		goto err_get_hpd;
++
++	return status;
++
++err_get_hpd:
++	DRM_DEV_ERROR(dp->dev, "get aux status failed: %d\n", ret);
++	return ret;
++}
++
+ int cdn_dp_load_firmware(struct cdn_dp_device *dp, const u32 *i_mem,
+ 			 u32 i_size, const u32 *d_mem, u32 d_size)
+ {
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.h b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+index c4bbb4a83..aedf2dc 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.h
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.h
+@@ -328,6 +328,13 @@
+ #define GENERAL_BUS_SETTINGS            0x03
+ #define GENERAL_TEST_ACCESS             0x04
+ 
++/* AUX status*/
++#define AUX_STAUS_ACK			0
++#define AUX_STAUS_NACK			1
++#define AUX_STAUS_DEFER			2
++#define AUX_STAUS_SINK_ERROR		3
++#define AUX_STAUS_BUS_ERROR		4
++
+ #define DPTX_SET_POWER_MNG			0x00
+ #define DPTX_SET_HOST_CAPABILITIES		0x01
+ #define DPTX_GET_EDID				0x02
+@@ -469,8 +476,11 @@ int cdn_dp_set_host_cap(struct cdn_dp_device *dp, u8 lanes, bool flip);
+ int cdn_dp_event_config(struct cdn_dp_device *dp);
+ u32 cdn_dp_get_event(struct cdn_dp_device *dp);
+ int cdn_dp_get_hpd_status(struct cdn_dp_device *dp);
+-int cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr, u8 value);
+-int cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr, u8 *data, u16 len);
++ssize_t cdn_dp_dpcd_write(struct cdn_dp_device *dp, u32 addr,
++			  u8 *data, u16 len);
++ssize_t cdn_dp_dpcd_read(struct cdn_dp_device *dp, u32 addr,
++			 u8 *data, u16 len);
++int cdn_dp_get_aux_status(struct cdn_dp_device *dp);
+ int cdn_dp_get_edid_block(void *dp, u8 *edid,
+ 			  unsigned int block, size_t length);
+ int cdn_dp_train_link(struct cdn_dp_device *dp);
+-- 
+2.7.4
