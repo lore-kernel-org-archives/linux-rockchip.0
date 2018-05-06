@@ -1,50 +1,44 @@
-From: "Marty E. Plummer" <hanetzer@startmail.com>
-Subject: [PATCH 0/3] add support for the asus C201 chromebook (4GiB)
-Date: Sun,  6 May 2018 09:25:10 -0500
-Message-ID: <20180506142513.19911-1-hanetzer@startmail.com>
+From: "Marty E. Plummer" <hanetzer-zVALfsKDk1AS+FvcfC7Uqw@public.gmane.org>
+Subject: [PATCH 1/3] sf: Add GigaDevice gd25q32b entry
+Date: Sun,  6 May 2018 09:25:11 -0500
+Message-ID: <20180506142513.19911-2-hanetzer@startmail.com>
+References: <20180506142513.19911-1-hanetzer@startmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: u-boot@lists.denx.de
-Cc: vagrant@debian.org, linux-rockchip@lists.infradead.org, "Marty E. Plummer" <hanetzer@startmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180506142513.19911-1-hanetzer-zVALfsKDk1AS+FvcfC7Uqw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: vagrant-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Marty E. Plummer" <hanetzer-zVALfsKDk1AS+FvcfC7Uqw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QnVpbGQgYW5kIGJvb3QgdGVzdGVkIG9uIG15IGNocm9tZWJvb2ssIHdoaWNoIHdhcyBnZW5lcm91
-c2x5IGFsdGVyZWQgYnkKU2ltb24gR2xhc3MgdG8gaGF2ZSBhIHNlcnZvIGhlYWRlciBhbmQgYWxz
-byBnZW5lcm91c2x5IHByb3ZpZGVkIGEgc2Vydm8KYm9hcmQgaXRzZWxmIHRvIGRvIGRlYnVnZ2lu
-ZyB3aXRoLgoKSXQgJyd3b3JrcycnLCBidXQgaGFzIGEgZmV3IG9kZGl0aWVzLiBJIGNhbid0IHNl
-ZW0gdG8gZ2V0IGl0IHRvIHNlZSBteQpleHRlcm5hbCBzZGNhcmQgb3IgYSB1c2IgZmxhc2ggZHJp
-dmUsIHNvIEkndmUgYmVlbiBoYXZpbmcgdG8geW1vZGVtIG15Cmtlcm5lbCwgZmR0LCBhbmQgaW5p
-dHJhbWZzIG92ZXIgdG8gdGVzdCBib290aW5nICh3aGljaCBkb2VzIHdvcmspLiBUaGUKc2NyZWVu
-IGlzIGEgYml0IGluY29uc2lzdGVudCBvbiB3aGV0aGVyIG9yIG5vdCBpdCBhY3RpdmF0ZXMgYW55
-IGdpdmVuCnBvd2VyIGN5Y2xlLCBidXQgd2hlbiBpdCBkb2VzIHdvcmssIGl0IHdvcmtzIHJpZ2h0
-LgoKVGhlIGNoYW5nZXMgdG8gc2RyYW1fY29tbW9uLmMgd2VyZSB0YWtlbiBmcm9tIGNvcmVib290
-LCBhcyBpdCBoYXMKb3RoZXJ3aXNlIGlkZW50aWNhbCBjb2RlIChtaW51cyB0aGUgaWYgKCFzaXpl
-X21iKSBibG9jayksIGFuZCBhY3R1YWxseQp3b3JrcyBvbiBteSBoYXJkd2FyZS4KCk1hcnR5IEUu
-IFBsdW1tZXIgKDMpOgogIHNmOiBBZGQgR2lnYURldmljZSBnZDI1cTMyYiBlbnRyeQogIHJvY2tj
-aGlwOiBhZGQgc3VwcG9ydCBmb3IgdmV5cm9uLXNwZWVkeSAoQVNVUyBDaHJvbWVib29rIEMyMDEp
-CiAgcm9ja2NoaXA6IGZpeCBpbmNvcnJlY3QgZGV0ZWN0aW9uIG9mIHJhbSBzaXplCgogYXJjaC9h
-cm0vZHRzL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwogYXJjaC9hcm0vZHRz
-L3JrMzI4OC12ZXlyb24tc3BlZWR5LmR0cyAgICAgfCAxODkgKysrKysrKysrKysrKysrKysrKysr
-KwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyODgtYm9hcmQtc3BsLmMgfCAgIDMgKy0KIGFy
-Y2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjg4L0tjb25maWcgICAgIHwgIDExICsrCiBhcmNoL2Fy
-bS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jICAgICB8ICA2MiArKysrLS0tCiBib2FyZC9n
-b29nbGUvdmV5cm9uL0tjb25maWcgICAgICAgICAgICAgICB8ICAxNiArKwogY29uZmlncy9jaHJv
-bWVib29rX3NwZWVkeV9kZWZjb25maWcgICAgICAgfCAgOTYgKysrKysrKysrKysKIGRyaXZlcnMv
-bXRkL3NwaS9zcGlfZmxhc2hfaWRzLmMgICAgICAgICAgIHwgICAxICsKIDggZmlsZXMgY2hhbmdl
-ZCwgMzUzIGluc2VydGlvbnMoKyksIDI2IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGFyY2gvYXJtL2R0cy9yazMyODgtdmV5cm9uLXNwZWVkeS5kdHMKIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBjb25maWdzL2Nocm9tZWJvb2tfc3BlZWR5X2RlZmNvbmZpZwoKLS0gCjIuMTcuMAoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcg
-bGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
-dS1ib290Cg==
+Add entry for GigaDevice gd25q32b part.
+
+Signed-off-by: Marty E. Plummer <hanetzer-zVALfsKDk1AS+FvcfC7Uqw@public.gmane.org>
+---
+ drivers/mtd/spi/spi_flash_ids.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/mtd/spi/spi_flash_ids.c b/drivers/mtd/spi/spi_flash_ids.c
+index ef55abb01d..de940645ed 100644
+--- a/drivers/mtd/spi/spi_flash_ids.c
++++ b/drivers/mtd/spi/spi_flash_ids.c
+@@ -63,6 +63,7 @@ const struct spi_flash_info spi_flash_ids[] = {
+ 	{"en25s64",	   INFO(0x1c3817, 0x0, 64 * 1024,   128, 0) },
+ #endif
+ #ifdef CONFIG_SPI_FLASH_GIGADEVICE	/* GIGADEVICE */
++	{"gd25q32b",	   INFO(0xc84016, 0x0, 64 * 1024,    64, SECT_4K) },
+ 	{"gd25q64b",	   INFO(0xc84017, 0x0, 64 * 1024,   128, SECT_4K) },
+ 	{"gd25lq32",	   INFO(0xc86016, 0x0, 64 * 1024,    64, SECT_4K) },
+ #endif
+-- 
+2.17.0
