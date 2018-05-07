@@ -1,75 +1,153 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v6 05/17] media: rkisp1: add Rockchip ISP1 subdev driver
-Date: Mon, 07 May 2018 06:41:50 +0000
-Message-ID: <CAAFQd5A7gAK4fXH9YVrobR5_QX_5f8xa272R_56v5YUghV6Sxw@mail.gmail.com>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com> <20180308094807.9443-6-jacob-chen@iotwrt.com>
- <20180503090909.o3dyhukzs2y7em5z@tarshish> <CAAFQd5CvBv4hkE=PSHBJTYa9Lj0SyggxpMBEAYD=if0=T0uzHw@mail.gmail.com>
- <20180507063814.vweb4p3nfgnoc3td@tarshish>
+From: =?utf-8?B?QWxsZW4gSHN1ICjoqLHlmInpipgp?= <Allen.Hsu-nXwZKfITCkNWk0Htik3J/w@public.gmane.org>
+Subject: RE: [PATCH v2 1/2] usb: dwc2: alloc dma aligned buffer for isoc split
+ in
+Date: Mon, 7 May 2018 07:19:46 +0000
+Message-ID: <c257333733244cf680f43128153956fd@quantatw.com>
+References: <1525230288-6014-1-git-send-email-william.wu@rock-chips.com>
+ <1525230288-6014-2-git-send-email-william.wu@rock-chips.com>
+ <CAD=FV=UTjLbh+Qj8JcyGa5dMH8=hFurA2qyWpi9vCJkE1_ExRg@mail.gmail.com>
+ <8ce56264-cdd1-1a12-c642-79224c65f639@rock-chips.com>
+ <CAD=FV=V1gFsyG+PDp6xF2w+=t87vcoSNcXGvwVu_YchY4MyNAQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180507063814.vweb4p3nfgnoc3td@tarshish>
-Sender: linux-kernel-owner@vger.kernel.org
-To: baruch@tkos.co.il
-Cc: Jacob Chen <jacob-chen@iotwrt.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=V1gFsyG+PDp6xF2w+=t87vcoSNcXGvwVu_YchY4MyNAQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: zh-TW
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, wlf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, =?utf-8?B?6buE5rab?= <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?B?546L5b6B5aKe?= <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, "open
+ list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "zsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <zsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stan Tsui <StanTsui-nUfzYEzx97oAvxtiuMwx3w@public.gmane.org>, "daniel.meng" <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?B?Q2xhdWQgQ2hhbmcgKOW8teaBreeviSk=?= <Claud.Chang-nXwZKfITCkNWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 7, 2018 at 3:38 PM Baruch Siach <baruch@tkos.co.il> wrote:
-
-> Hi Tomasz,
-
-> On Mon, May 07, 2018 at 06:13:27AM +0000, Tomasz Figa wrote:
-> > On Thu, May 3, 2018 at 6:09 PM Baruch Siach <baruch@tkos.co.il> wrote:
-> > > On Thu, Mar 08, 2018 at 05:47:55PM +0800, Jacob Chen wrote:
-> > > > +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int on)
-> > > > +{
-> > > > +     struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
-> > > > +     int ret;
-> > > > +
-> > > > +     v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power: %d\n",
-> > on);
-> > > > +
-> > > > +     if (on) {
-> > > > +             ret = pm_runtime_get_sync(isp_dev->dev);
-> > > > +             if (ret < 0)
-> > > > +                     return ret;
-> > > > +
-> > > > +             rkisp1_config_clk(isp_dev);
-> > > > +     } else {
-> > > > +             ret = pm_runtime_put(isp_dev->dev);
-> >
-> > > I commented this line out to make more than one STREAMON work.
-Otherwise,
-> > > the second STREAMON hangs. I guess the bug is not this driver.
-Probably
-> > > something in drivers/soc/rockchip/pm_domains.c. Just noting that in
-case
-> > > you or someone on Cc would like to investigate it further.
-> > >
-> > > I tested v4.16-rc4 on the Tinkerboard.
-> >
-> > Looks like that version doesn't include the IOMMU PM and clock handling
-> > rework [1], which should fix a lot of runtime PM issues. FWIW,
-linux-next
-> > seems to already include it.
-> >
-> > [1] https://lkml.org/lkml/2018/3/23/44
-
-> Thanks for the reference.
-
-> It looks like the iommu driver part is in Linus' tree already. The DT
-part is
-> in the v4.18-armsoc/dts32 branch of Heiko's tree. Am I missing anything?
-
-You're right, most of the series made it in time for 4.17. However, the DT
-part (precisely, the clocks properties added to IOMMU nodes) is crucial for
-the fixes to be effective.
-
-
-> Anyway, I'll take a look.
-
-Thanks for testing. :) (Forgot to mention in my previous email...)
-
-Best regards,
-Tomasz
+QWRkIG1vcmU6DQoNCg0KQmVzdCByZWdhcmRzLA0KQlU0IEVFDQpBbGxlbiBIc3UNClFDSSA4ODYt
+My0zMjctMjM0NSBleHQgMTU0MTANCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCkZyb206
+IERvdWcgQW5kZXJzb24gW21haWx0bzpkaWFuZGVyc0Bnb29nbGUuY29tXSANClNlbnQ6IEZyaWRh
+eSwgTWF5IDQsIDIwMTggMTE6NTggUE0NClRvOiB3bGYgPHd1bGZAcm9jay1jaGlwcy5jb20+DQpD
+YzogV2lsbGlhbSBXdSA8d2lsbGlhbS53dUByb2NrLWNoaXBzLmNvbT47IGhtaW5hc0BzeW5vcHN5
+cy5jb207IGZlbGlwZS5iYWxiaUBsaW51eC5pbnRlbC5jb207IEdyZWcgS3JvYWgtSGFydG1hbiA8
+Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+OyBTZXJnZWkgU2h0eWx5b3YgPHNlcmdlaS5zaHR5
+bHlvdkBjb2dlbnRlbWJlZGRlZC5jb20+OyBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRl
+PjsgTEtNTCA8bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZz47IGxpbnV4LXVzYkB2Z2VyLmtl
+cm5lbC5vcmc7IG9wZW4gbGlzdDpBUk0vUm9ja2NoaXAgU29DLi4uIDxsaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnPjsgRnJhbmsgV2FuZyA8ZnJhbmsud2FuZ0Byb2NrLWNoaXBzLmNv
+bT47IOm7hOa2myA8aHVhbmd0YW9Acm9jay1jaGlwcy5jb20+OyBkYW5pZWwubWVuZyA8ZGFuaWVs
+Lm1lbmdAcm9jay1jaGlwcy5jb20+OyBKb2huIFlvdW4gPEpvaG4uWW91bkBzeW5vcHN5cy5jb20+
+OyDnjovlvoHlop4gPHd6ekByb2NrLWNoaXBzLmNvbT47IHpzcUByb2NrLWNoaXBzLmNvbTsgQWxs
+ZW4gSHN1ICjoqLHlmInpipgpIDxBbGxlbi5Ic3VAcXVhbnRhdHcuY29tPjsgU3RhbiBUc3VpIDxT
+dGFuVHN1aUBhb3Blbi5jb20+DQpTdWJqZWN0OiBSZTogW1BBVENIIHYyIDEvMl0gdXNiOiBkd2My
+OiBhbGxvYyBkbWEgYWxpZ25lZCBidWZmZXIgZm9yIGlzb2Mgc3BsaXQgaW4NCg0KSGksDQoNCk9u
+IFdlZCwgTWF5IDIsIDIwMTggYXQgMTA6MTQgQU0sIHdsZiA8d3VsZkByb2NrLWNoaXBzLmNvbT4g
+d3JvdGU6DQo+IEl0J3MgYSBnb29kIHdheSB0byBhbGxvY2F0ZSBhbiBleHRyYSAzIGJ5dGVzIGlu
+IHRoZSBvcmlnaW5hbCBib3VuY2UgDQo+IGJ1ZmZlciBmb3IgdGhpcyB1bmFsaWduZWQNCj4gaXNz
+dWXvvIwgaXQncyBzaW1pbGFyIHRvIHRoZSB0YWlscm9vbSBvZiBza19idWZmLiBIb3dldmVyLCBq
+dXN0IGFzIHlvdSANCj4gc2FpZCwgd2UnZCBiZXR0ZXIgZmluZCB0aGUgc3BlY2lhbCBjYXNlcyB3
+aGVyZSB3ZSBuZWVkIGFuIG92ZXJzaXplZCANCj4gYm91bmNlIGJ1ZmZlciwgb3RoZXJ3aXNl77yM
+d2UNCj4gbmVlZCB0byBhbGxvY2F0ZQ0KPiBhIGJvdW5jZSBidWZmZXIgZm9yIGFsbCBvZiB1cmJz
+Lg0KPg0KPiBJdCdzIGhhcmQgZm9yIG1lIHRvIGtub3cgdGhlIHNwZWNpYWwgY2FzZXMgaW4gdGhl
+IA0KPiBkd2MyX2FsbG9jX2RtYV9hbGlnbmVkX2J1ZmZlcigpLCBiZWNhdXNlIGl0J3MgY2FsbGVk
+IGZyb20gDQo+IHVzYl9zdWJtaXRfdXJiKCkgaW4gdGhlIGRldmljZSBjbGFzcyBkcml2ZXIsIGFu
+ZCBJIGhhcmRseSBrbm93IHRoZSANCj4gc3BsaXQgc3RhdGUgaW4gdGhpcyBwcm9jZXNzLCBtdWNo
+IGxlc3MgaWYgdGhlIHNwbGl0IHRyYW5zYWN0aW9uIG5lZWQgDQo+IGFsaWduZWQgYnVmZmVyLiBE
+byB5b3UgaGF2ZSBhbnkgaWRlYT8NCj4NCj4gSSBzdXBwb3NlIHRoYXQgd2UgY2FuJ3QgZmluZCB0
+aGUgc3BlY2lhbCBjYXNlcyB3aGVyZSB3ZSBuZWVkIGFuIA0KPiBvdmVyc2l6ZWQgYm91bmNlIGJ1
+ZmZlciBpbiB0aGUgZHdjMl9hbGxvY19kbWFfYWxpZ25lZF9idWZmZXIoKSwgYW5kIGlmIA0KPiB3
+ZSBzdGlsbCB3YW50IHRvIHJlLXVzZSB0aGUgb3JpZ2luYWwgYm91bmNlIGJ1ZmZlciB3aXRoIGV4
+dHJhIDMgYnl0ZXMsIA0KPiB0aGVuIHdlIG5lZWQgdG8gYWxsb2NhdGUgYSAgYm91bmNlIGJ1ZmZl
+ciBmb3IgYWxsIG9mIHVyYnMsIGFuZCBkbyANCj4gdW5uZWNlc3NhcnkgIGRhdGEgY29weSBmb3Ig
+dGhlc2UgdXJicyAgd2hvc2UgdHJhbnNmZXJfYnVmZmVyIHdlcmUgDQo+IGFscmVhZHkgYWxpZ25l
+ZC4gIFRoaXMgbWF5IHJlZHVjZSB0aGUgdHJhbnNtaXNzaW9uIHJhdGUgb2YgVVNCLg0KPg0KPiBD
+YW4gd2UganVzdCBwcmUtYWxsb2NhdGUgYW4gYWRkaXRpb25hbCBhbGlnbmVkIGJ1ZmZlciAodGhl
+IHNpemUgaXMgMjAwDQo+IGJ5dGVzKSBmb3Igc3BsaXQgdHJhbnNhY3Rpb24NCj4gaW4gZHdjMl9t
+YXBfdXJiX2Zvcl9kbWEgZm9yIGFsbCBvZiB1cmJzLiBBbmQgaWYgd2UgZmluZCB0aGUgc3BsaXQg
+DQo+IHRyYW5zYWN0aW9uIGlzIHVuYWxpZ25lZO+8jA0KPiB3ZSBjYW4gZWFzaWx5IHVzZSB0aGUg
+cHJlLWFsbG9jYXRlZCBhbGlnbmVkIGJ1ZmZlci4NCg0KT0ssIHNvIHRoaW5raW5nIGFib3V0IHRo
+aXMgbW9yZS4uLg0KDQpQcmV2aW91c2x5IHRoaW5ncyBnb3QgcmVhbGx5IHNsb3cgYXQgaW50ZXJy
+dXB0IHRpbWUgYmVjYXVzZSB3ZSB3ZXJlIHRyeWluZyB0byBhbGxvY2F0ZSBhcyBtdWNoIGFzIDY0
+SyBhdCBpbnRlcnJ1cHQgdGltZS4gIFRoYXQgd2Fzbid0IHNvIGdyZWF0LiAgSW4geW91ciBjYXNl
+LCB5b3UncmUgb25seSBhbGxvY2F0aW5nIDIwMCBieXRlcy4gIEFzIEkgdW5kZXJzdGFuZCB0aGlu
+Z3MsIGFsbG9jYXRpbmcgMjAwIGJ5dGVzIGF0IGludGVycnVwdCB0aW1lIGlzIHByb2JhYmx5IG5v
+dCBhIGh1Z2UgZGVhbC4NCg0KLi4uc28gSSBndWVzcyBpdCBjb21lIGRvd24gdG8gYSB0cmFkZW9m
+ZiBoZXJlOiBpcyBpdCB3b3J0aCBlYXRpbmcgMjAwIGJ5dGVzIGZvciBlYWNoIFVSQiB0byBzYXZl
+IGFuIDIwMCBieXRlIGFsbG9jYXRpb24gYXQgaW50ZXJydXB0IHRpbWUgaW4gdGhpcyBvbmUgcmFy
+ZSBjYXNlLg0KDQpJJ2QgY2VydGFpbmx5IHdlbGNvbWUgYW55b25lJ3Mgb3BpbmlvbiBoZXJlLCBi
+dXQgSSdtIGdvaW5nIHRvIGdvIHdpdGggc2F5aW5nIGl0J3MgZmluZSB0byBhbGxvY2F0ZSB0aGUg
+MjAwIGJ5dGVzIGF0IGludGVycnVwdCB0aW1lIChsaWtlIHlvdXIgcGF0Y2ggZG9lcykuICAuLi5i
+dXQsIEkgX3RoaW5rXyB5b3Ugd2FudCB0byB1c2UNCmttZW1fY2FjaGVfY3JlYXRlKCkgdG8gY3Jl
+YXRlIGEgY2FjaGUgYW5kIHRoZW4ga21lbV9jYWNoZV96YWxsb2MoKS4NClNpbmNlIGFsbCBhbGxv
+Y2F0aW9ucyBhcmUgdGhlIHNhbWUgc2l6ZSBhbmQgeW91IHdhbnQgdGhpcyB0byBiZSBmYXN0LCBJ
+IHRoaW5rIHVzaW5nIGttZW1fY2FjaGUgaXMgZ29vZC4NCg0KDQoNCj4+PiArICAgICAgIC8qIEZv
+ciBub24tZHdvcmQgYWxpZ25lZCBidWZmZXJzICovDQo+Pj4gKyAgICAgICBpZiAoaHNvdGctPnBh
+cmFtcy5ob3N0X2RtYSA+IDAgJiYgcWgtPmRvX3NwbGl0ICYmDQo+Pj4gKyAgICAgICAgICAgY2hh
+bi0+ZXBfaXNfaW4gJiYgKGNoYW4tPnhmZXJfZG1hICYgMHgzKSkgew0KPj4NCj4+IFNvIHdoYXQg
+aGFwcGVucyBpZiB3ZXJlIHVuYWxpZ25lZCAoQUtBIChjaGFuLT54ZmVyX2RtYSAmIDB4MykpIGJ1
+dCANCj4+IHdlJ3JlIG5vdCBkb2luZyBzcGxpdCBvciBpdCdzIG5vdCBhbiBJTiBFUD8gIERvIHdl
+IGp1c3QgZmFpbCB0aGVuPw0KPj4NCj4+IEkgZ3Vlc3MgdGhlIHJlc3Qgb2YgdGhpcyBwYXRjaCBv
+bmx5IGhhbmRsZXMgdGhlICJpbiIgY2FzZSBhbmQgbWF5YmUgDQo+PiB5b3UgZXhwZWN0IHRoYXQg
+dGhlIHByb2JsZW1zIHdpbGwgb25seSBjb21lIGFib3V0IGZvciBkb19zcGxpdCwgYnV0IA0KPj4g
+aXQgc3RpbGwgbWlnaHQgYmUgd2lzZSB0byBhdCBsZWFzdCBwcmludCBhIHdhcm5pbmcgaW4gdGhl
+IG90aGVyIGNhc2VzPw0KPj4gPkZyb20gcmVhZGluZyBkd2MyX2hjX2luaXRfeGZlcigpIGl0IHNl
+ZW1zIGxpa2UgeW91IGNvdWxkIHJ1biBpbnRvIA0KPj4gPnRoaXMNCj4+IHNhbWUgcHJvYmxlbSBp
+biB0aGUgIm91dCIgY2FzZT8NCj4NCj4gQWN0dWFsbHksIEkgb25seSBmaW5kIG5vbi1kd29yZCBh
+bGlnbmVkIGlzc3VlIGluIHRoZSBjYXNlIG9mIHNwbGl0IGluIA0KPiB0cmFuc2FjdGlvbi4NCj4g
+QW5kIEkgdGhpbmsgdGhhdCBpZiB3ZSdyZSBub3QgZG9pbmcgc3BsaXQgb3IgaXQncyBhbiBPVVQg
+RVAsIHdlIGNhbiANCj4gYWx3YXlzIGdldCBhbGlnbmVkIGJ1ZmZlciBpbiB0aGUgY3VycmVudCBj
+b2RlLiBGb3Igbm9uLXNwbGl0IGNhc2UsIHRoZSANCj4gZHdjMl9hbGxvY19kbWFfYWxpZ25lZF9i
+dWZmZXIoKSBpcyBlbm91Z2guIEFuZCBmb3Igc3BsaXQgb3V0IGNhc2UsIGlmIA0KPiB0aGUgdHJh
+bnNhY3Rpb24gaXMgc3ViZGl2aWRlZCBpbnRvIG11bHRpcGxlIHN0YXJ0LXNwbGl0cywgZWFjaCB3
+aXRoIGEgDQo+IGRhdGEgcGF5bG9hZCBvZiAxODggYnl0ZXMgb3IgbGVzcywgc28gdGhlIERNQSBh
+ZGRyZXNzIGlzIGFsd2F5cyANCj4gYWxpZ25lZC4NCg0KQ2FuIHlvdSBhdCBsZWFzdCBwcmludCBh
+biBlcnJvciBtZXNzYWdlIGlmIHlvdSBlbmQgdXAgd2l0aCBub24tYWxpZ25lZCBETUEgaW4gb25l
+IG9mIHRoZSBvdGhlciBjYXNlcz8NCg0KDQo+Pj4gRE1BX0ZST01fREVWSUNFKTsNCj4+PiArICAg
+ICAgICAgICAgICAgbWVtY3B5KHF0ZC0+dXJiLT5idWYgKyBmcmFtZV9kZXNjLT5vZmZzZXQgKw0K
+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgcXRkLT5pc29jX3NwbGl0X29mZnNldCwgDQo+Pj4g
+KyBjaGFuLT5xaC0+ZHdfYWxpZ25fYnVmLA0KPj4+IGxlbik7DQo+Pg0KPj4gQXNzdW1pbmcgSSdt
+IHVuZGVyc3RhbmRpbmcgdGhpcyBwYXRjaCBjb3JyZWN0bHksIEkgdGhpbmsgaXQgd291bGQgYmUg
+DQo+PiBiZXR0ZXIgdG8gd3JpdGU6DQo+Pg0KPj4gICAgbWVtY3B5KHF0ZC0+eGZlcl9kbWEsIGNo
+YW4tPnFoLT5kd19hbGlnbl9idWYsIGxlbik7DQo+DQo+IFNvcnJ5LCB0aGVyZSdzIG5vICJ4ZmVy
+X2J1ZiIgaW4gcXRkLCBkbyB5b3UgbWVhbnMgdGhlIA0KPiAiY2hhbi0+eGZlcl9kbWEiPyBJZiBp
+dCdzLCBJIHRoaW5rIHdlIGNhbid0IGRvIG1lbWNweSBmcm9tIGEgdHJhbnNmZXIgDQo+IGJ1ZmZl
+ciB0byBhIERNQSBhZGRyZXNzLiBNYXliZSBjaGFuLT54ZmVyX2J1ZiBpcyBtb3JlIHN1aXRhYmxl
+LCBidXQgaXQgDQo+IHNlZW1zIHRoYXQgdGhlIGR3YzIgZHJpdmVyIGRvZXNuJ3QgdXBkYXRlIHRo
+ZSBjaGFuLT54ZmVyX2J1ZiBmb3IgaXNvYyANCj4gdHJhbnNmZXIgd2l0aCBkbWEgZW5hYmxlZCBp
+biBkd2MyX2hjX2luaXRfeGZlcigpLg0KDQpZZXMsIEkgbWVhbnQgY2hhbi0+eGZlcl9kbWEuICBB
+aCwgcmlnaHQuICB4ZmVyX2RtYSBpcyBhIERNQSBhZGRyZXNzLg0KDQpJIGd1ZXNzIHlvdSBjb3Vs
+ZCBpbiB0aGVvcnkgeW91IGNvdWxkIGRvOg0KDQptZW1jcHkocXRkLT51cmItPmJ1ZiArIChjaGFu
+LT54ZmVyX2RtYSAtIHVyYi0+ZG1hKSwNCiAgICBjaGFuLT5xaC0+ZHdfYWxpZ25fYnVmKTsNCg0K
+VGhhdCBhdCBsZWFzdCBhdm9pZHMgZHVwbGljYXRpbmcgdGhlIG1hdGguICBNYXliZSBlaXRoZXIg
+ZG8gdGhhdCwgb3IgaWYgeW91IGRvbid0IGxpa2UgaXQgYXQgbGVhc3QgYWRkIGEgY29tbWVudCBz
+YXlpbmcgdGhhdCB0aGUgbWF0aCBuZWVkcyB0byBtYXRjaCB0aGUgbWF0aCBpbiBkd2MyX2hjX2lu
+aXRfeGZlcigpLg0KDQoNCj4+IFRoZW4gaWYgeW91IGV2ZXIgZW5kIHVwIGhhdmluZyB0byBhbGln
+biBhIHRyYW5zZmVyIG90aGVyIHRoYW4gYSBzcGxpdCANCj4+IHlvdSB3b24ndCBiZSBkb2luZyB0
+aGUgd3JvbmcgbWF0aC4gIEFzIGl0IGlzIGl0J3MgdmVyeSBub24tb2J2aW91cyANCj4+IHRoYXQg
+eW91J3JlIGhhcmRjb2RpbmcgdGhlIHNhbWUgZm9ybXVsYSB0aGF0J3MgaW4gZHdjMl9oY19pbml0
+X3hmZXIoKQ0KPg0KPiBBY3R1YWxseSwgSSdtIGhhcmRjb2RpbmcgdGhlIHNhbWUgZm9ybXVsYSBm
+cm9tIHRoZSBvbGQgY29kZSB3aGljaCBoYXMgDQo+IGJlZW4gcmlwcGVkIG91dCBpbiB0aGUgY29t
+bWl0IDNiYzA0ZTI4YTAzMCAoInVzYjogZHdjMjogaG9zdDogR2V0IA0KPiBhbGlnbmVkIERNQSBp
+biBhIG1vcmUgc3VwcG9ydGVkIHdheSIpLg0KDQpBaCwgZ290IGl0LiAgV2VsbCwgSSB0aGluayB0
+aGUgb2xkIGNvZGUgd2FzIGp1c3QgaGFyZGNvZGluZyB0aGUgc2FtZSBmb3JtdWxhIGluIHR3byBw
+bGFjZXMgdGhlbi4gIDstKQ0KDQoNCj4+PiAtICAgICAgIGlmIChxaC0+ZGVzY19saXN0KQ0KPj4+
+ICsgICAgICAgaWYgKHFoLT5kZXNjX2xpc3QpIHsNCj4+PiAgICAgICAgICAgICAgICAgIGR3YzJf
+aGNkX3FoX2ZyZWVfZGRtYShoc290ZywgcWgpOw0KPj4+ICsgICAgICAgfSBlbHNlIHsNCj4+PiAr
+ICAgICAgICAgICAgICAgLyoga2ZyZWUoTlVMTCkgaXMgc2FmZSAqLw0KPj4+ICsgICAgICAgICAg
+ICAgICBrZnJlZShxaC0+ZHdfYWxpZ25fYnVmKTsNCj4+PiArICAgICAgICAgICAgICAgcWgtPmR3
+X2FsaWduX2J1Zl9kbWEgPSAoZG1hX2FkZHJfdCkwOw0KPj4NCj4+IFdoeSBhc3NpZ24gcWgtPmR3
+X2FsaWduX2J1Zl9kbWEgdG8gMD8gIFRoZSBuZXh0IHRoaW5nIHlvdSdyZSBkb2luZyBpcyANCj4+
+IGtmcmVlKHFoKS4gIElmIHlvdSB3YW50IGV4dHJhIGRlYnVnZ2luZywgdHVybiBvbiBzbHViX2Rl
+YnVnLg0KPg0KPiBJIGp1c3QgY29weSB0aGUgc2FtZSBjb2RlIGZyb20gdGhlIG9sZCBjb2RlIHdo
+aWNoIGhhcyBiZWVuIHJpcHBlZCBvdXQgDQo+IGluIHRoZSBjb21taXQgM2JjMDRlMjhhMDMwICgi
+dXNiOiBkd2MyOiBob3N0OiBHZXQgYWxpZ25lZCBETUEgaW4gYSANCj4gbW9yZSBzdXBwb3J0ZWQg
+d2F5IikuDQo+IEkgcmVhbGx5IGRvbid0IGtub3cgd2h5IGFzc2lnbiBxaC0+ZHdfYWxpZ25fYnVm
+X2RtYSB0byAwLg0KDQpUaGVyZSdzIG5vIHJlYXNvbi4gIEp1c3QgcmVtb3ZlIGl0Lg0KDQoNCi1E
+b3VnDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
