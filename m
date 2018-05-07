@@ -1,71 +1,58 @@
-From: "Marty E. Plummer" <hanetzer@startmail.com>
-Subject: Re: [PATCH 3/3] rockchip: fix incorrect detection of ram
- size
-Date: Sun, 6 May 2018 21:34:14 -0500
-Message-ID: <20180507023413.mil4wj7xtjy6gnuw@proprietary-killer>
-References: <20180506142513.19911-1-hanetzer@startmail.com>
- <20180506142513.19911-4-hanetzer@startmail.com>
- <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v6 05/17] media: rkisp1: add Rockchip ISP1 subdev driver
+Date: Mon, 07 May 2018 06:13:27 +0000
+Message-ID: <CAAFQd5CvBv4hkE=PSHBJTYa9Lj0SyggxpMBEAYD=if0=T0uzHw@mail.gmail.com>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com> <20180308094807.9443-6-jacob-chen@iotwrt.com>
+ <20180503090909.o3dyhukzs2y7em5z@tarshish>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-Content-Disposition: inline
-In-Reply-To: <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: vagrant@debian.org, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180503090909.o3dyhukzs2y7em5z@tarshish>
+Sender: linux-kernel-owner@vger.kernel.org
+To: baruch@tkos.co.il
+Cc: Jacob Chen <jacob-chen@iotwrt.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBNYXkgMDcsIDIwMTggYXQgMTA6MjA6NTVBTSArMDgwMCwgS2V2ZXIgWWFuZyB3cm90
-ZToKPiBIaSBNYXJ0eSwKPiAKPiAKPiBPbiAwNS8wNi8yMDE4IDEwOjI1IFBNLCBNYXJ0eSBFLiBQ
-bHVtbWVyIHdyb3RlOgo+ID4gVGFrZW4gZnJvbSBjb3JlYm9vdCdzIHNyYy9zb2Mvcm9ja2NoaXAv
-cmszMjg4L3NkcmFtLmMKPiA+Cj4gPiBXaXRob3V0IHRoaXMgY2hhbmdlLCBteSB1LWJvb3QgYnVp
-bGQgZm9yIHRoZSBhc3VzIGMyMDEgY2hyb21lYm9vayAoNEdpQikKPiA+IGlzIGluY29ycmVjdGx5
-IGRldGVjdGVkIGFzIDAgQnl0ZXMgb2YgcmFtLgo+IAo+IEkga25vdyB0aGUgcm9vdCBjYXVzZSBm
-b3IgdGhpcyBpc3N1ZSwgYW5kIEkgaGF2ZSBhIGxvY2FsIHBhdGNoIGZvciBpdC4KPiBUaGUgcmsz
-Mjg4IGlzIDMyYml0LCBhbmQgNEdCIHNpemUgaXMganVzdCBvdXQgb2YgcmFuZ2UsIHNvIHdlIG5l
-ZWQgdG8gYmVmb3JlCj4gdGhlIG1heCBzaXplIGJlZm9yZSByZXR1cm4gd2l0aCAnPDwyMCcuIFNv
-cnJ5IGZvciBmb3Jnb3QgdG8gc2VuZCBpdCBvdXQuCj4gCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTog
-TWFydHkgRS4gUGx1bW1lciA8aGFuZXR6ZXJAc3RhcnRtYWlsLmNvbT4KPiA+IC0tLQo+ID4gIGFy
-Y2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgfCA2MiArKysrKysrKysrKysrKysr
-LS0tLS0tLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMzcgaW5zZXJ0aW9ucygrKSwgMjUgZGVs
-ZXRpb25zKC0pCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2Ry
-YW1fY29tbW9uLmMgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4gPiBp
-bmRleCA3NmRiZGM4NzE1Li5hOWM5Zjk3MGE0IDEwMDY0NAo+ID4gLS0tIGEvYXJjaC9hcm0vbWFj
-aC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+ID4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hp
-cC9zZHJhbV9jb21tb24uYwo+ID4gQEAgLTEwLDYgKzEwLDggQEAKPiA+ICAjaW5jbHVkZSA8YXNt
-L2lvLmg+Cj4gPiAgI2luY2x1ZGUgPGFzbS9hcmNoL3NkcmFtX2NvbW1vbi5oPgo+ID4gICNpbmNs
-dWRlIDxkbS91Y2xhc3MtaW50ZXJuYWwuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+
-Cj4gPiArI2luY2x1ZGUgPGxpbnV4L3NpemVzLmg+Cj4gPiAgCj4gPiAgREVDTEFSRV9HTE9CQUxf
-REFUQV9QVFI7Cj4gPiAgc2l6ZV90IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19hZGRyX3QgcmVn
-KQo+ID4gQEAgLTE5LDM0ICsyMSw0NCBAQCBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShwaHlz
-X2FkZHJfdCByZWcpCj4gPiAgCXNpemVfdCBzaXplX21iID0gMDsKPiA+ICAJdTMyIGNoOwo+ID4g
-IAo+ID4gLQl1MzIgc3lzX3JlZyA9IHJlYWRsKHJlZyk7Cj4gPiAtCXUzMiBjaF9udW0gPSAxICsg
-KChzeXNfcmVnID4+IFNZU19SRUdfTlVNX0NIX1NISUZUKQo+ID4gLQkJICAgICAgICYgU1lTX1JF
-R19OVU1fQ0hfTUFTSyk7Cj4gPiArCWlmICghc2l6ZV9tYikgewo+IAo+IEkgZG9uJ3QgdW5kZXJz
-dGFuZCB0aGlzIGFuZCBmb2xsb3cgdXAgY2hhbmdlcywgd2UgZG9uJ3QgcmVhbGx5IG5lZWQgaXQs
-Cj4gaXNuJ3QgaXQ/Cj4gSSB0aGluayBkb24ndCBuZWVkIHRoZSBjaGFuZ2VzIGJlZm9yZSBoZXJl
-LgpZZWFoLCB0aGF0IHdhcyBqdXN0IGFub3RoZXIgbGV2ZWwgb2YgaW5kZW50YXRpb24gZm9yIHRo
-ZSBpZiAoIXNpemVfbWIpCmd1YXJkLCBidXQgSSd2ZSByZXdvcmtlZCB0aGUgcGF0Y2ggdG8gbm90
-IGRvIHRoYXQgYXMgaXQgd2FzIHBvaW50ZWQgb3V0CnRoYXQgc2luY2Ugc2l6ZV9tYiBpcyBpbml0
-aWFsaXplZCB0byAwIHByaW9yLgo+ID4gKwkJLyoKPiA+ICsJCSAqIHdlIHVzZSB0aGUgMHgwMDAw
-MDAwMH4weGZlZmZmZmZmIHNwYWNlCj4gPiArCQkgKiBzaW5jZSAweGZmMDAwMDAwfjB4ZmZmZmZm
-ZmYgaXMgc29jIHJlZ2lzdGVyIHNwYWNlCj4gPiArCQkgKiBzbyB3ZSByZXNlcnZlIGl0Cj4gPiAr
-CQkgKi8KPiA+ICsJCXNpemVfbWIgPSBtaW4oc2l6ZV9tYiwgMHhmZjAwMDAwMC9TWl8xTSk7Cj4g
-Cj4gVGhpcyBpcyB3aGF0IHdlIHJlYWxseSBuZWVkLCBhcyBLbGF1cyBwb2ludCBvdXQsIHdlIG5l
-ZWQgdG8gdXNlCj4gU0RSQU1fTUFYX1NJWkUKPiBpbnN0ZWFkIG9mIGhhcmQgY29kZS4KWWVhaCwg
-SSd2ZSBnb3QgYSByZXdvcmsgb24gdGhhdCB3aGljaCB1c2VzIFNEUkFNX01BWF9TSVpFIGFzIGlu
-c3RydWN0ZWQsCmJ1aWxkIGFuZCBib290IHRlc3RlZCBvbiBteSBoYXJkd2FyZS4KPiAKPiBUaGFu
-a3MsCj4gLSBLZXZlcgo+ID4gIAl9Cj4gPiAgCj4gPiAgCXJldHVybiAoc2l6ZV90KXNpemVfbWIg
-PDwgMjA7Cj4gCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0
-cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Hi Baruch,
+
+On Thu, May 3, 2018 at 6:09 PM Baruch Siach <baruch@tkos.co.il> wrote:
+
+> Hi Jacob,
+
+> On Thu, Mar 08, 2018 at 05:47:55PM +0800, Jacob Chen wrote:
+> > +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int on)
+> > +{
+> > +     struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
+> > +     int ret;
+> > +
+> > +     v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power: %d\n",
+on);
+> > +
+> > +     if (on) {
+> > +             ret = pm_runtime_get_sync(isp_dev->dev);
+> > +             if (ret < 0)
+> > +                     return ret;
+> > +
+> > +             rkisp1_config_clk(isp_dev);
+> > +     } else {
+> > +             ret = pm_runtime_put(isp_dev->dev);
+
+> I commented this line out to make more than one STREAMON work. Otherwise,
+the
+> second STREAMON hangs. I guess the bug is not this driver. Probably
+something
+> in drivers/soc/rockchip/pm_domains.c. Just noting that in case you or
+someone
+> on Cc would like to investigate it further.
+
+> I tested v4.16-rc4 on the Tinkerboard.
+
+Looks like that version doesn't include the IOMMU PM and clock handling
+rework [1], which should fix a lot of runtime PM issues. FWIW, linux-next
+seems to already include it.
+
+[1] https://lkml.org/lkml/2018/3/23/44
+
+Best regards,
+Tomasz
