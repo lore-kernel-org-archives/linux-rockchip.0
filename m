@@ -1,84 +1,153 @@
-From: Peter Rosin <peda@axentia.se>
-Subject: Re: [PATCH 1/3] drm/sti: do not remove the drm_bridge that was never
- added
-Date: Mon, 7 May 2018 16:24:43 +0200
-Message-ID: <7f79c109-6b0f-000e-569b-1f702e0006d3@axentia.se>
-References: <20180502074025.12421-1-peda@axentia.se>
- <20180502074025.12421-2-peda@axentia.se>
- <20180503090648.GG12521@phenom.ffwll.local>
- <bd8d12f7-0c71-c96b-80fa-54de7de39511@axentia.se>
- <20180507133929.GG12521@phenom.ffwll.local>
- <d378241f-7420-bbaf-c447-18cdfd4f9dd3@axentia.se>
+From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
+Subject: Re: [PATCH v2 00/26] device link, bridge supplier <-> drm device
+Date: Mon, 7 May 2018 16:09:27 +0200
+Message-ID: <12173f3b-e4dc-940a-8abb-b7be7b79f451__27502.7089556263$1525703037$gmane$org@axentia.se>
+References: <20180504135212.26977-1-peda@axentia.se>
+ <20180507135601.GJ12521@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d378241f-7420-bbaf-c447-18cdfd4f9dd3@axentia.se>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180507135601.GJ12521-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, David Airlie <airlied@linux.ie>, Seung-Woo Kim <sw0312.kim@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, dri-devel@lists.freedesktop.org, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heik
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018-05-07 15:59, Peter Rosin wrote:
-> On 2018-05-07 15:39, Daniel Vetter wrote:
->> On Thu, May 03, 2018 at 11:12:21PM +0200, Peter Rosin wrote:
->>> On 2018-05-03 11:06, Daniel Vetter wrote:
->>>> On Wed, May 02, 2018 at 09:40:23AM +0200, Peter Rosin wrote:
->>>>> The more natural approach would perhaps be to add an drm_bridge_add,
->>>>> but there are several other bridges that never call drm_bridge_add.
->>>>> Just removing the drm_bridge_remove is the easier fix.
->>>>>
->>>>> Signed-off-by: Peter Rosin <peda@axentia.se>
->>>>
->>>> This mess is much bigger. There's 2 pairs of bridge functions:
->>>>
->>>> - drm_bridge_attach/detach. Those are meant to be called by the overall
->>>>   drm driver to connect/disconnect a drm_bridge.
->>>>
->>>> - drm_bridge_add/remove. These are supposed to be called by the bridge
->>>>   driver itself to register/unregister itself. Maybe we should rename
->>>>   them, since the same issue happens with drm_panel, with the same
->>>>   confusion.
->>>>
->>>> I thought someone was working on a cleanup series to fix this mess, but I
->>>> didn't find anything.
->>>
->>> Ok, I just spotted the imbalance and didn't really dig into what
->>> actually happens in these error paths. Now that I have done so I
->>> believe that the removed drm_bridge_remove calls causes NULL
->>> dereferences if/when the error paths are triggered.
->>>
->>> So, I don't think this can wait for some bigger cleanup.
->>>
->>> drm_bridge_remove calls list_del_init calls __list_del_entry calls
->>> __list_del with NULL in both prev and next since the list member
->>> is never initialized. prev and next are dereferenced by __list_del
->>> and you have *boom*
->>>
->>> I recommend adding the tag
->>>
->>> Fixes: 84601dbdea36 ("drm: sti: rework init sequence")
->>>
->>> so that stable picks this one up.
+On 2018-05-07 15:56, Daniel Vetter wrote:
+> On Fri, May 04, 2018 at 03:51:46PM +0200, Peter Rosin wrote:
+>> Hi!
 >>
->> I just wanted to correct your commit message text - the correct solution
->> is definitely _not_ for sti here to call drm_bridge_add.
+>> It was noted by Russel King [1] that bridges (not using components)
+>> might disappear unexpectedly if the owner of the bridge was unbound.
+>> Jyri Sarha had previously noted the same thing with panels [2]. Jyri
+>> came up with using device links to resolve the panel issue, which
+>> was also my (independent) reaction to the note from Russel.
+>>
+>> This series builds up to the addition of that link in the last
+>> patch, but in my opinion the other 25 patches do have merit on their
+>> own.
+>>
+>> The last patch needs testing, while the others look trivial. Jyri, are
+>> you able to test? That said, I might have missed some subtlety.
+>>
+>> Oh and the reason I'm pushing this is of course so that the issue
+>> noted by Russel in [1] is addressed which in turn means that the
+>> tda998x bridge driver can be patched according to that series without
+>> objection (hopefully) and then used from the atmel-hlcdc driver (and
+>> other drivers that are not componentized).
+>>
+>> Changes since v1    https://lkml.org/lkml/2018/4/26/1018
+>>
+>> - rename .owner to .odev to not get mixed up with the module owner.
+>> - added patches for new recent drivers thc63lvd1024 and cdns-dsi
+>> - fix for problem in the rockchip_lvds driver reported by 0day
+>> - added a WARN in drm_bridge_add if there is no .odev owner device
+>>
+>> I did *not*:
+>> - add any ack from Daniel since he suggested "pdev", and I ended up
+>>   with "odev" in the rename since I disliked "pdev" about as much
+>>   as "owner".
 > 
-> Ah, I see what you mean. Do you want me to respin?
+> As long as it's not owner, I'm fine :-) Ack on the idea still holds.
+> 
+>> - add any port id. The current .of_node (that this series removes)
+>>   does not identify the port, so that problem seems orthogonal
+>>   to me.
+> 
+> Hm, from my cursory DT/of code reading last week I thought the port is
+> used to lookup the right node, but there's no port thing on the target for
+> a phandle? At least that's how current drm_of_find_panel_or_bridge seems
+> to work ...
 
-Hold on, no I don't agree. sti_hda.c does create a bridge for it's own
-internal use. It does not drm_bridge_add it, because all that ever does
-is adding the bridge to the global lost of bridges. But since this is
-a bridge for internal use, there is little point in calling drm_bridge_add,
-the driver currently gains nothing by doing so.
-
-But, drm_bridge_add might be a good place to put common stuff for every
-bridge in the system, so it might be worthwhile to start requiring all
-bridges to be drm_bridge_add-ed. And IMHO, it would not be wrong to have
-the sti-hda driver call drm_bridge_add on the bridge it creates.
-
-Do you really think it is actively wrong to call drm_bridge_add for
-internal bridges such as this?
+drm_of_find_panel_or_bridge calls of_graph_get_remote_node and that
+function looks up the main remote device node, i.e. not the remote
+port or endpoint node but the parent node. So, bridges using .of_node
+have stored their main device node in the .of_node member. I.e. the
+same value as of_node in struct device for all current cases.
 
 Cheers,
 Peter
+
+> -Daniel
+>>
+>> Cheers,
+>> Peter
+>>
+>> [1] https://lkml.org/lkml/2018/4/23/769
+>> [2] https://www.spinics.net/lists/dri-devel/msg174275.html
+>>
+>> Peter Rosin (26):
+>>   drm/bridge: allow optionally specifying an owner .odev device
+>>   drm/bridge: adv7511: provide an owner .odev device
+>>   drm/bridge/analogix: core: specify the owner .odev of the bridge
+>>   drm/bridge: analogix-anx78xx: provide an owner .odev device
+>>   drm/bridge: cdns-dsi: provide an owner .odev device
+>>   drm/bridge: vga-dac: provide an owner .odev device
+>>   drm/bridge: lvds-encoder: provide an owner .odev device
+>>   drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: provide an owner .odev
+>>     device
+>>   drm/bridge: nxp-ptn3460: provide an owner .odev device
+>>   drm/bridge: panel: provide an owner .odev device
+>>   drm/bridge: ps8622: provide an owner .odev device
+>>   drm/bridge: sii902x: provide an owner .odev device
+>>   drm/bridge: sii9234: provide an owner .odev device
+>>   drm/bridge: sii8620: provide an owner .odev device
+>>   drm/bridge: synopsys: provide an owner .odev device for the bridges
+>>   drm/bridge: tc358767: provide an owner .odev device
+>>   drm/bridge: thc63lvd1024: provide an owner .odev device
+>>   drm/bridge: ti-tfp410: provide an owner .odev device
+>>   drm/exynos: mic: provide an owner .odev device for the bridge
+>>   drm/mediatek: hdmi: provide an owner .odev device for the bridge
+>>   drm/msm: specify the owner .odev of the bridges
+>>   drm/rcar-du: lvds: provide an owner .odev device for the bridge
+>>   drm/sti: provide an owner .odev device for the bridges
+>>   drm/bridge: remove the .of_node member
+>>   drm/bridge: require the owner .odev to be filled in on
+>>     drm_bridge_add/attach
+>>   drm/bridge: establish a link between the bridge supplier and consumer
+>>
+>>  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
+>>  drivers/gpu/drm/bridge/analogix-anx78xx.c          |  5 +----
+>>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  1 +
+>>  drivers/gpu/drm/bridge/cdns-dsi.c                  |  2 +-
+>>  drivers/gpu/drm/bridge/dumb-vga-dac.c              |  2 +-
+>>  drivers/gpu/drm/bridge/lvds-encoder.c              |  2 +-
+>>  .../drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c   |  2 +-
+>>  drivers/gpu/drm/bridge/nxp-ptn3460.c               |  2 +-
+>>  drivers/gpu/drm/bridge/panel.c                     |  4 +---
+>>  drivers/gpu/drm/bridge/parade-ps8622.c             |  2 +-
+>>  drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
+>>  drivers/gpu/drm/bridge/sii9234.c                   |  2 +-
+>>  drivers/gpu/drm/bridge/sil-sii8620.c               |  2 +-
+>>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  4 +---
+>>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  4 +---
+>>  drivers/gpu/drm/bridge/tc358767.c                  |  2 +-
+>>  drivers/gpu/drm/bridge/thc63lvd1024.c              |  2 +-
+>>  drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
+>>  drivers/gpu/drm/drm_bridge.c                       | 26 +++++++++++++++++++++-
+>>  drivers/gpu/drm/exynos/exynos_drm_mic.c            |  2 +-
+>>  drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
+>>  drivers/gpu/drm/msm/dsi/dsi_manager.c              |  1 +
+>>  drivers/gpu/drm/msm/edp/edp_bridge.c               |  1 +
+>>  drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  1 +
+>>  drivers/gpu/drm/rcar-du/rcar_lvds.c                |  2 +-
+>>  drivers/gpu/drm/rockchip/rockchip_lvds.c           |  2 +-
+>>  drivers/gpu/drm/sti/sti_dvo.c                      |  2 +-
+>>  drivers/gpu/drm/sti/sti_hda.c                      |  1 +
+>>  drivers/gpu/drm/sti/sti_hdmi.c                     |  1 +
+>>  include/drm/drm_bridge.h                           |  8 +++----
+>>  30 files changed, 57 insertions(+), 36 deletions(-)
+>>
+>> -- 
+>> 2.11.0
+>>
+> 
