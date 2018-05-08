@@ -1,85 +1,29 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
-Subject: Re: [RESEND PATCH] pinctrl: rockchip: Disable interrupt when changing
- it's capability
-Date: Tue, 08 May 2018 10:56:48 +0800
-Message-ID: <5AF111F0.3030409@rock-chips.com>
-References: <20180503065553.7762-1-jeffy.chen@rock-chips.com> <20180507221511.GA6448@rodete-desktop-imager.corp.google.com> <5AF0FF18.1050905@rock-chips.com> <20180508015623.GA61455@rodete-desktop-imager.corp.google.com> <5AF10C10.1070003@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v3 0/2] usb: dwc2: fix isoc split in transfer issue
+Date: Tue,  8 May 2018 11:07:24 +0800
+Message-ID: <1525748846-7767-1-git-send-email-william.wu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5AF10C10.1070003@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Doug Anderson <dianders@chromium.org>
+To: hminas@synopsys.com, felipe.balbi@linux.intel.com, gregkh@linuxfoundation.org
+Cc: sergei.shtylyov@cogentembedded.com, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, william.wu@rock-chips.com, wzz@rock-chips.com, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@AOPEN.com, Spruce.Wu@quantatw.com, Martin.Tsai@quantatw.com, Kevin.Shai@quantatw.com, Mon-Jer.Wu@quantatw.com, Claud.Chang@quantatw.com, San.Lin@quantatw.com, Ren.Kuo@quantatw.com, davidhtwang@aopen.com, fonglin@aopen.com, stevencheng@aopen.com, tomchen@aopen.com, donchang@aopen.com, milesschofield@aopen.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
+This patch fix dma unaligned problem and data lost problem for
+isoc split in transfer.
 
-On 05/08/2018 10:31 AM, JeffyChen wrote:
-> Hi Brian,
->
-> On 05/08/2018 09:56 AM, Brian Norris wrote:
->> On Tue, May 08, 2018 at 09:36:24AM +0800, Jeffy Chen wrote:
->>> On 05/08/2018 06:15 AM, Brian Norris wrote:
->>>> On the other hand...this also implies there may be a race condition
->>>> there, where we might lose an interrupt if there is an edge between the
->>>> re-configuration of the polarity in rockchip_irq_demux() and the
->>>> clearing/handling of the interrupt (handle_edge_irq() ->
->>>> chip->irq_ack()). If we have an edge between there, then we might ack
->>>> it, but leave the polarity such that we aren't ready for the next
->>>> (inverted) edge.
->>>
->>> if let me guess, the unexpected irq we saw is the hardware trying to
->>> avoid
->>> losing irq? for example, we set a EDGE_RISING, and the hardware saw
->>> the gpio
->>> is already high, then though it might lost an irq, so fake one for safe?
->>
->> I won't pretend to know what the IC designers were doing, but I don't
->> think that would resolve the problem I'm talking about. The sequence is
->> something like:
->> 1. EDGE_BOTH IRQ occurs (e.g., low to high)
->> 2. reconfigure polarity in rockchip_irq_demux() (polarity=low)
->> 3. continue to handle_edge_irq()
->> 4. another HW edge occurs (e.g., high to low)
->> 5. handle_edge_irq() (from 3) acks (clears) IRQ (before a subsequent
->>     rockchip_irq_demux() gets a chance to run and flip the polarity)
->> ...
->>
->> Now the polarity is still low, but the next trigger should be a
->> low-to-high edge.
->
-> oops, i see the problem.
->
-> so what if we do these:
-> 1/ edge irq triggered
-> 2/ read gpio level
-> 3/ handle irq(ack irq)
-> 4/ toggle edge mode(with a while gpio level check)
->
-> if the gpio changed in 2/ -> 3/, the 4/ will trigger an irq when writing
-> GPIO_INT_POLARITY(which is what we are trying to avoid in the set_type
-> case)
->
-> but this would not work if i'm wrong about how the HW fake an irq when
-> changing POLARITY...
->
->
-> or maybe we could just check the gpio status again after
-> handle_edge_irq, and correct the polarity in this case
+Test on rk3288 platform, use an usb hs Hub (GL852G-12) and an usb
+fs audio device (Plantronics headset) to capture and playback.
 
-i saw the pinctrl-msm.c do this in the ack(),
+William Wu (2):
+  usb: dwc2: alloc dma aligned buffer for isoc split in
+  usb: dwc2: fix isoc split in transfer with no data
 
-and also at the end of set_type(), which might avoid another race in the 
-set_type()
+ drivers/usb/dwc2/core.h      |  3 ++
+ drivers/usb/dwc2/hcd.c       | 85 ++++++++++++++++++++++++++++++++++++++++++--
+ drivers/usb/dwc2/hcd.h       | 10 ++++++
+ drivers/usb/dwc2/hcd_intr.c  | 11 ++++--
+ drivers/usb/dwc2/hcd_queue.c |  3 ++
+ 5 files changed, 107 insertions(+), 5 deletions(-)
 
->
->>
->>> i'll try to confirm it with IC guys.
->>
->> Brian
->>
->>
->>
->
+-- 
+2.0.0
