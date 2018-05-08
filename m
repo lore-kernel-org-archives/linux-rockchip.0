@@ -1,18 +1,20 @@
 From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
 Subject: Re: [PATCH 3/3] rockchip: fix incorrect detection of ram
  size
-Date: Tue, 8 May 2018 12:21:24 +0200
-Message-ID: <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
+Date: Tue, 8 May 2018 12:23:33 +0200
+Message-ID: <5EC6775E-8A88-4057-8176-780E645283AA@theobroma-systems.com>
 References: <20180506142513.19911-1-hanetzer@startmail.com>
  <20180506142513.19911-4-hanetzer@startmail.com>
  <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
  <20180507023413.mil4wj7xtjy6gnuw@proprietary-killer>
  <791299C0-EEC0-4DB1-97C4-A8DAD3B1A481@theobroma-systems.com>
  <20180508005215.s3uivl43jfaryv7j@proprietary-killer>
+ <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
 Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Content-Type: multipart/mixed; boundary="===============8828142644824458812=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20180508005215.s3uivl43jfaryv7j@proprietary-killer>
+In-Reply-To: <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <http://lists.denx.de/pipermail/u-boot/>
@@ -22,308 +24,166 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: "Marty E. Plummer" <hanetzer@startmail.com>
-Cc: vagrant@debian.org, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+To: Simon Glass <sjg@chromium.org>
+Cc: vagrant@debian.org, U-Boot Mailing List <u-boot@lists.denx.de>, "Marty E. Plummer" <hanetzer@startmail.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============8828142644824458812==
-Content-Type: multipart/signed;
- boundary="Apple-Mail=_FBB5852E-60DD-426B-8587-F911789191CE";
- protocol="application/pgp-signature"; micalg=pgp-sha512
-
-
---Apple-Mail=_FBB5852E-60DD-426B-8587-F911789191CE
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
-
-Marty,
-
-> On 8 May 2018, at 02:52, Marty E. Plummer <hanetzer@startmail.com> =
-wrote:
->=20
-> On Mon, May 07, 2018 at 11:16:28AM +0200, Dr. Philipp Tomsich wrote:
->>=20
->>> On 7 May 2018, at 04:34, Marty E. Plummer <hanetzer@startmail.com> =
-wrote:
->>>=20
->>> On Mon, May 07, 2018 at 10:20:55AM +0800, Kever Yang wrote:
->>>> Hi Marty,
->>>>=20
->>>>=20
->>>> On 05/06/2018 10:25 PM, Marty E. Plummer wrote:
->>>>> Taken from coreboot's src/soc/rockchip/rk3288/sdram.c
->>>>>=20
->>>>> Without this change, my u-boot build for the asus c201 chromebook =
-(4GiB)
->>>>> is incorrectly detected as 0 Bytes of ram.
->>>>=20
->>>> I know the root cause for this issue, and I have a local patch for =
-it.
->>>> The rk3288 is 32bit, and 4GB size is just out of range, so we need =
-to before
->>>> the max size before return with '<<20'. Sorry for forgot to send it =
-out.
->>>>=20
->>>>>=20
->>>>> Signed-off-by: Marty E. Plummer <hanetzer@startmail.com>
->>>>> ---
->>>>> arch/arm/mach-rockchip/sdram_common.c | 62 =
-++++++++++++++++-----------
->>>>> 1 file changed, 37 insertions(+), 25 deletions(-)
->>>>>=20
->>>>> diff --git a/arch/arm/mach-rockchip/sdram_common.c =
-b/arch/arm/mach-rockchip/sdram_common.c
->>>>> index 76dbdc8715..a9c9f970a4 100644
->>>>> --- a/arch/arm/mach-rockchip/sdram_common.c
->>>>> +++ b/arch/arm/mach-rockchip/sdram_common.c
->>>>> @@ -10,6 +10,8 @@
->>>>> #include <asm/io.h>
->>>>> #include <asm/arch/sdram_common.h>
->>>>> #include <dm/uclass-internal.h>
->>>>> +#include <linux/kernel.h>
->>>>> +#include <linux/sizes.h>
->>>>>=20
->>>>> DECLARE_GLOBAL_DATA_PTR;
->>>>> size_t rockchip_sdram_size(phys_addr_t reg)
->>>>> @@ -19,34 +21,44 @@ size_t rockchip_sdram_size(phys_addr_t reg)
->>>>> 	size_t size_mb =3D 0;
->>>>> 	u32 ch;
->>>>>=20
->>>>> -	u32 sys_reg =3D readl(reg);
->>>>> -	u32 ch_num =3D 1 + ((sys_reg >> SYS_REG_NUM_CH_SHIFT)
->>>>> -		       & SYS_REG_NUM_CH_MASK);
->>>>> +	if (!size_mb) {
->>>>=20
->>>> I don't understand this and follow up changes, we don't really need =
-it,
->>>> isn't it?
->>>> I think don't need the changes before here.
->>> Yeah, that was just another level of indentation for the if =
-(!size_mb)
->>> guard, but I've reworked the patch to not do that as it was pointed =
-out
->>> that since size_mb is initialized to 0 prior.
->>>>> +		/*
->>>>> +		 * we use the 0x00000000~0xfeffffff space
->>>>> +		 * since 0xff000000~0xffffffff is soc register space
->>>>> +		 * so we reserve it
->>>>> +		 */
->>>>> +		size_mb =3D min(size_mb, 0xff000000/SZ_1M);
->>>>=20
->>>> This is what we really need, as Klaus point out, we need to use
->>>> SDRAM_MAX_SIZE
->>>> instead of hard code.
->>> Yeah, I've got a rework on that which uses SDRAM_MAX_SIZE as =
-instructed,
->>> build and boot tested on my hardware.
->>=20
->> In that case you just masked the problem but didn???t solve it: =
-assuming size_mb
->> is size_t (I???ll assume this is 64bit, but did not check), then your =
-4GB is 0x1_0000_0000 )
->> which overflows to 0x0 when converted to a u32.
->>=20
->> In other words: we need to figure out where the truncation occurs =
-(image what
->> happens if a new 32bit processor with LPAE comes out???).
->>=20
-> A very valid point. With the following patch to sdram_common.c and
-> sdram_rk3288.c applied I get the debug output that follows it:
-> diff --git a/arch/arm/mach-rockchip/sdram_common.c =
-b/arch/arm/mach-rockchip/sdram_common.c
-> index 232a7fa655..0fe69bf558 100644
-> --- a/arch/arm/mach-rockchip/sdram_common.c
-> +++ b/arch/arm/mach-rockchip/sdram_common.c
-> @@ -4,6 +4,7 @@
->  * SPDX-License-Identifier:     GPL-2.0+
->  */
->=20
-> +#define DEBUG 1
-> #include <common.h>
-> #include <dm.h>
-> #include <ram.h>
-> @@ -39,16 +40,19 @@ size_t rockchip_sdram_size(phys_addr_t reg)
-> 			SYS_REG_ROW_3_4_MASK;
->=20
-> 		chipsize_mb =3D (1 << (cs0_row + col + bk + bw - 20));
-> +		debug("%s: %d: chipsize_mb %x\n", __func__, __LINE__, =
-chipsize_mb);
->=20
-> 		if (rank > 1)
-> 			chipsize_mb +=3D chipsize_mb >> (cs0_row - =
-cs1_row);
-> 		if (row_3_4)
-> 			chipsize_mb =3D chipsize_mb * 3 / 4;
-> 		size_mb +=3D chipsize_mb;
-> +		debug("%s: %d: size_mb %x\n", __func__, __LINE__, =
-size_mb);
-> 		debug("rank %d col %d bk %d cs0_row %d bw %d row_3_4 =
-%d\n",
-> 		      rank, col, bk, cs0_row, bw, row_3_4);
-> 	}
->=20
-> +	debug("%s: %d: size_mb %x\n", __func__, __LINE__, size_mb);
-> 	size_mb =3D min(size_mb, SDRAM_MAX_SIZE/SZ_1M);
->=20
-> 	return (size_t)size_mb << 20;
-> diff --git a/drivers/ram/rockchip/sdram_rk3288.c =
-b/drivers/ram/rockchip/sdram_rk3288.c
-> index d99bf12476..9738eb088f 100644
-> --- a/drivers/ram/rockchip/sdram_rk3288.c
-> +++ b/drivers/ram/rockchip/sdram_rk3288.c
-> @@ -7,6 +7,7 @@
->  * Adapted from coreboot.
->  */
->=20
-> +#define DEBUG 1
-> #include <common.h>
-> #include <clk.h>
-> #include <dm.h>
->=20
-> ---
-> U-Boot SPL 2018.05-rc3-02370-g309384e84b-dirty (May 07 2018 - 19:42:15 =
--0500)
-> Trying to boot from SPI
->=20
->=20
-> U-Boot 2018.05-rc3-02370-g309384e84b-dirty (May 07 2018 - 19:42:15 =
--0500)
->=20
-> Model: Google Speedy
-> DRAM:  rockchip_sdram_size ff73009c 3c50dc50
-> rockchip_sdram_size: 42: chipsize_mb 400
-> rockchip_sdram_size: 49: size_mb 800
-> rank 2 col 11 bk 3 cs0_row 14 bw 2 row_3_4 0
-> rockchip_sdram_size: 42: chipsize_mb 400
-> rockchip_sdram_size: 49: size_mb 1000
-> rank 2 col 11 bk 3 cs0_row 14 bw 2 row_3_4 0
-> rockchip_sdram_size: 54: size_mb 1000
-> SDRAM base=3D0, size=3Dfe000000
-> 4 GiB
-> MMC:   dwmmc@ff0c0000: 1, dwmmc@ff0d0000: 2, dwmmc@ff0f0000: 0
-> In:    cros-ec-keyb
-> Out:   vidconsole
-> Err:   vidconsole
-> Model: Google Speedy
-> rockchip_dnl_key_pressed: adc_channel_single_shot fail!
-> Net:   Net Initialization Skipped
-> No ethernet found.
-> Hit any key to stop autoboot:  0
-> I guess we need to change the size_t to something larger; unless I'm
-> mistaken, that's a 32 bit value, right? and 0x100000000 is at least 40
-
-4GB is actually the 33rd bit set and the lower 32bits cleared (i.e. the =
-largest
-32bit value =E2=80=9Cplus one=E2=80=9D).
-
-> bits, unless I'm missing the issue here somewhere. However, that would
-> take a change to include/ram.h, and would impact far more than just
-> rk3288/rockchip devices across the board, so I'm unsure how to =
-proceed.
->=20
-> Use the min macro here for now, and begin work migrating the ram_info
-> size member to a 64-bit container?
-
-The min() doesn=E2=80=99t make any sense here, as we implement the hook =
-function
-=E2=80=98board_get_usable_ram_top=E2=80=99 just a few lines later=E2=80=A6=
-
-We are at the start of the merge window right now, so I=E2=80=99d rather =
-hold off a
-week (or two) and have a permanent solution than merging just a band-aid
-now and then having the full fix come in later during the merge window.
-
-I briefly reviewed the situation yesterday and it looks like the size =
-field in
-ram_info is the culprit: it=E2=80=99s defined as =E2=80=98size_t=E2=80=99,=
- which again is __SIZE_TYPE__
-which again is =E2=80=98unsigned int=E2=80=99 on a (32bit) arm-*-eabi =
-compiler.
-
-Expanding this to a phys_size_t won=E2=80=99t be doing us much good, =
-either (as
-that one will also be 32bits for the RK3288).
-
-The root cause of this is really that the RAM size and the =E2=80=98usable=
- RAM=E2=80=99 are
-two different concepts in U-Boot.  On a 32bit physical address space =
-with
-memory-mapped peripherals, we can never have the full 4GB of DRAM as
-we=E2=80=99ll also have some of the physical address-space set aside for =
-the MMIO;
-however, the MMIO range is only removed from the DRAM size when the
-usable ram-top is evaluated=E2=80=A6 so the size can be 4GB after all =
-and overflow
-the 32bit size_t.  Note that this separation into two different steps =
-makes a
-lot of sense, as processors might not use MMIO but specialised =
-instructions
-to access peripheral space=E2=80=94in which case there might indeed be a =
-usable
-memory of 4GB on a 32bit physical address space.
-
-=46rom what I can tell, we=E2=80=99ll need to do two things:
-(a)	fix arch/arm/mach-rockchip/sdram_common.c to not use 32bit types
-	for the memory size
-(b)	touch ram.h to change the type of the =E2=80=98size=E2=80=99 =
-field in ram_info (it needs
-	to be larger than 32bits
-
-I=E2=80=99d like Simon=E2=80=99s input (as he owns ram.h) and can create =
-a patchset for this
-change, if he agrees that this is the way forward.
-
-Regards,
-Philipp.
-
->>>>=20
->>>> Thanks,
->>>> - Kever
->>>>> 	}
->>>>>=20
->>>>> 	return (size_t)size_mb << 20;
->>>>=20
->>>>=20
->>> _______________________________________________
->>> U-Boot mailing list
->>> U-Boot@lists.denx.de <mailto:U-Boot@lists.denx.de>
->>> https://lists.denx.de/listinfo/u-boot =
-<https://lists.denx.de/listinfo/u-boot>
-
-
---Apple-Mail=_FBB5852E-60DD-426B-8587-F911789191CE
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment;
-	filename=signature.asc
-Content-Type: application/pgp-signature;
-	name=signature.asc
-Content-Description: Message signed with OpenPGP
-
------BEGIN PGP SIGNATURE-----
-Comment: GPGTools - https://gpgtools.org
-
-iQEzBAEBCgAdFiEEiYUpNmRO2QAtLWkiJoAVwQ5yiE0FAlrxeiQACgkQJoAVwQ5y
-iE35hQf8Cvwnk3/CSA5gmc4VXHKA9BgPUIVSN4EaRopMAE09Okui2ox7WhdV5H0N
-jBE6mysJx4j38hRUGt/n3suqnuyA8+iUe/qxd5w6LJ2h/SVKnURPxev0RF2uVlWH
-iGW0lg4RIZH78tn4LQ5N6an+aZ07WiR/LKeSpQzTYSGqgeMv8/pj7ti3UYLUuygH
-aQKgVx5Qsb483nOfmKrHc4lVsMbUYP9rIO4S3V7OH2qjo9WWF/mRSsxVvu/hsUFK
-MuWcFq1A/TCrA+BwGSJBneNhOGWVZtJ4c8mo54QLqr9fUNu7/etfu4+QRughJ86m
-sd1rSoT+Pa0LJN3Nzuo/6MJHjD70Vw==
-=O0dJ
------END PGP SIGNATURE-----
-
---Apple-Mail=_FBB5852E-60DD-426B-8587-F911789191CE--
-
---===============8828142644824458812==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1h
-aWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlz
-dGluZm8vdS1ib290Cg==
-
---===============8828142644824458812==--
+U2ltb24sCgpMb29rcyBsaWtlIHdl4oCZZCBsaWtlIHRvIGhhdmUgYSA2NGJpdCB0eXBlIGZvciBz
+aXplIGluIOKAmHN0cnVjdCByYW1faW5mb+KAmSAoc2VlIGJlbG93KS4KTGV0IHVzIGtub3cgd2hh
+dCB5b3UgdGhpbmsgb2YgdGhlIHByb3Bvc2VkIGNoYW5nZS4KClRoYW5rcywKUGhpbGlwcC4KCgo+
+IE9uIDggTWF5IDIwMTgsIGF0IDEyOjIxLCBEci4gUGhpbGlwcCBUb21zaWNoIDxwaGlsaXBwLnRv
+bXNpY2hAdGhlb2Jyb21hLXN5c3RlbXMuY29tPiB3cm90ZToKPiAKPiBNYXJ0eSwKPiAKPj4gT24g
+OCBNYXkgMjAxOCwgYXQgMDI6NTIsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFp
+bC5jb20+IHdyb3RlOgo+PiAKPj4gT24gTW9uLCBNYXkgMDcsIDIwMTggYXQgMTE6MTY6MjhBTSAr
+MDIwMCwgRHIuIFBoaWxpcHAgVG9tc2ljaCB3cm90ZToKPj4+IAo+Pj4+IE9uIDcgTWF5IDIwMTgs
+IGF0IDA0OjM0LCBNYXJ0eSBFLiBQbHVtbWVyIDxoYW5ldHplckBzdGFydG1haWwuY29tPiB3cm90
+ZToKPj4+PiAKPj4+PiBPbiBNb24sIE1heSAwNywgMjAxOCBhdCAxMDoyMDo1NUFNICswODAwLCBL
+ZXZlciBZYW5nIHdyb3RlOgo+Pj4+PiBIaSBNYXJ0eSwKPj4+Pj4gCj4+Pj4+IAo+Pj4+PiBPbiAw
+NS8wNi8yMDE4IDEwOjI1IFBNLCBNYXJ0eSBFLiBQbHVtbWVyIHdyb3RlOgo+Pj4+Pj4gVGFrZW4g
+ZnJvbSBjb3JlYm9vdCdzIHNyYy9zb2Mvcm9ja2NoaXAvcmszMjg4L3NkcmFtLmMKPj4+Pj4+IAo+
+Pj4+Pj4gV2l0aG91dCB0aGlzIGNoYW5nZSwgbXkgdS1ib290IGJ1aWxkIGZvciB0aGUgYXN1cyBj
+MjAxIGNocm9tZWJvb2sgKDRHaUIpCj4+Pj4+PiBpcyBpbmNvcnJlY3RseSBkZXRlY3RlZCBhcyAw
+IEJ5dGVzIG9mIHJhbS4KPj4+Pj4gCj4+Pj4+IEkga25vdyB0aGUgcm9vdCBjYXVzZSBmb3IgdGhp
+cyBpc3N1ZSwgYW5kIEkgaGF2ZSBhIGxvY2FsIHBhdGNoIGZvciBpdC4KPj4+Pj4gVGhlIHJrMzI4
+OCBpcyAzMmJpdCwgYW5kIDRHQiBzaXplIGlzIGp1c3Qgb3V0IG9mIHJhbmdlLCBzbyB3ZSBuZWVk
+IHRvIGJlZm9yZQo+Pj4+PiB0aGUgbWF4IHNpemUgYmVmb3JlIHJldHVybiB3aXRoICc8PDIwJy4g
+U29ycnkgZm9yIGZvcmdvdCB0byBzZW5kIGl0IG91dC4KPj4+Pj4gCj4+Pj4+PiAKPj4+Pj4+IFNp
+Z25lZC1vZmYtYnk6IE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFpbC5jb20+Cj4+
+Pj4+PiAtLS0KPj4+Pj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgfCA2
+MiArKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0KPj4+Pj4+IDEgZmlsZSBjaGFuZ2VkLCAzNyBp
+bnNlcnRpb25zKCspLCAyNSBkZWxldGlvbnMoLSkKPj4+Pj4+IAo+Pj4+Pj4gZGlmZiAtLWdpdCBh
+L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgYi9hcmNoL2FybS9tYWNoLXJv
+Y2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+PiBpbmRleCA3NmRiZGM4NzE1Li5hOWM5Zjk3MGE0
+IDEwMDY0NAo+Pj4+Pj4gLS0tIGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24u
+Ywo+Pj4+Pj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+Pj4+
+Pj4gQEAgLTEwLDYgKzEwLDggQEAKPj4+Pj4+ICNpbmNsdWRlIDxhc20vaW8uaD4KPj4+Pj4+ICNp
+bmNsdWRlIDxhc20vYXJjaC9zZHJhbV9jb21tb24uaD4KPj4+Pj4+ICNpbmNsdWRlIDxkbS91Y2xh
+c3MtaW50ZXJuYWwuaD4KPj4+Pj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+Pj4+PiAr
+I2luY2x1ZGUgPGxpbnV4L3NpemVzLmg+Cj4+Pj4+PiAKPj4+Pj4+IERFQ0xBUkVfR0xPQkFMX0RB
+VEFfUFRSOwo+Pj4+Pj4gc2l6ZV90IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19hZGRyX3QgcmVn
+KQo+Pj4+Pj4gQEAgLTE5LDM0ICsyMSw0NCBAQCBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShw
+aHlzX2FkZHJfdCByZWcpCj4+Pj4+PiAJc2l6ZV90IHNpemVfbWIgPSAwOwo+Pj4+Pj4gCXUzMiBj
+aDsKPj4+Pj4+IAo+Pj4+Pj4gLQl1MzIgc3lzX3JlZyA9IHJlYWRsKHJlZyk7Cj4+Pj4+PiAtCXUz
+MiBjaF9udW0gPSAxICsgKChzeXNfcmVnID4+IFNZU19SRUdfTlVNX0NIX1NISUZUKQo+Pj4+Pj4g
+LQkJICAgICAgICYgU1lTX1JFR19OVU1fQ0hfTUFTSyk7Cj4+Pj4+PiArCWlmICghc2l6ZV9tYikg
+ewo+Pj4+PiAKPj4+Pj4gSSBkb24ndCB1bmRlcnN0YW5kIHRoaXMgYW5kIGZvbGxvdyB1cCBjaGFu
+Z2VzLCB3ZSBkb24ndCByZWFsbHkgbmVlZCBpdCwKPj4+Pj4gaXNuJ3QgaXQ/Cj4+Pj4+IEkgdGhp
+bmsgZG9uJ3QgbmVlZCB0aGUgY2hhbmdlcyBiZWZvcmUgaGVyZS4KPj4+PiBZZWFoLCB0aGF0IHdh
+cyBqdXN0IGFub3RoZXIgbGV2ZWwgb2YgaW5kZW50YXRpb24gZm9yIHRoZSBpZiAoIXNpemVfbWIp
+Cj4+Pj4gZ3VhcmQsIGJ1dCBJJ3ZlIHJld29ya2VkIHRoZSBwYXRjaCB0byBub3QgZG8gdGhhdCBh
+cyBpdCB3YXMgcG9pbnRlZCBvdXQKPj4+PiB0aGF0IHNpbmNlIHNpemVfbWIgaXMgaW5pdGlhbGl6
+ZWQgdG8gMCBwcmlvci4KPj4+Pj4+ICsJCS8qCj4+Pj4+PiArCQkgKiB3ZSB1c2UgdGhlIDB4MDAw
+MDAwMDB+MHhmZWZmZmZmZiBzcGFjZQo+Pj4+Pj4gKwkJICogc2luY2UgMHhmZjAwMDAwMH4weGZm
+ZmZmZmZmIGlzIHNvYyByZWdpc3RlciBzcGFjZQo+Pj4+Pj4gKwkJICogc28gd2UgcmVzZXJ2ZSBp
+dAo+Pj4+Pj4gKwkJICovCj4+Pj4+PiArCQlzaXplX21iID0gbWluKHNpemVfbWIsIDB4ZmYwMDAw
+MDAvU1pfMU0pOwo+Pj4+PiAKPj4+Pj4gVGhpcyBpcyB3aGF0IHdlIHJlYWxseSBuZWVkLCBhcyBL
+bGF1cyBwb2ludCBvdXQsIHdlIG5lZWQgdG8gdXNlCj4+Pj4+IFNEUkFNX01BWF9TSVpFCj4+Pj4+
+IGluc3RlYWQgb2YgaGFyZCBjb2RlLgo+Pj4+IFllYWgsIEkndmUgZ290IGEgcmV3b3JrIG9uIHRo
+YXQgd2hpY2ggdXNlcyBTRFJBTV9NQVhfU0laRSBhcyBpbnN0cnVjdGVkLAo+Pj4+IGJ1aWxkIGFu
+ZCBib290IHRlc3RlZCBvbiBteSBoYXJkd2FyZS4KPj4+IAo+Pj4gSW4gdGhhdCBjYXNlIHlvdSBq
+dXN0IG1hc2tlZCB0aGUgcHJvYmxlbSBidXQgZGlkbj8/P3Qgc29sdmUgaXQ6IGFzc3VtaW5nIHNp
+emVfbWIKPj4+IGlzIHNpemVfdCAoST8/P2xsIGFzc3VtZSB0aGlzIGlzIDY0Yml0LCBidXQgZGlk
+IG5vdCBjaGVjayksIHRoZW4geW91ciA0R0IgaXMgMHgxXzAwMDBfMDAwMCApCj4+PiB3aGljaCBv
+dmVyZmxvd3MgdG8gMHgwIHdoZW4gY29udmVydGVkIHRvIGEgdTMyLgo+Pj4gCj4+PiBJbiBvdGhl
+ciB3b3Jkczogd2UgbmVlZCB0byBmaWd1cmUgb3V0IHdoZXJlIHRoZSB0cnVuY2F0aW9uIG9jY3Vy
+cyAoaW1hZ2Ugd2hhdAo+Pj4gaGFwcGVucyBpZiBhIG5ldyAzMmJpdCBwcm9jZXNzb3Igd2l0aCBM
+UEFFIGNvbWVzIG91dD8/PykuCj4+PiAKPj4gQSB2ZXJ5IHZhbGlkIHBvaW50LiBXaXRoIHRoZSBm
+b2xsb3dpbmcgcGF0Y2ggdG8gc2RyYW1fY29tbW9uLmMgYW5kCj4+IHNkcmFtX3JrMzI4OC5jIGFw
+cGxpZWQgSSBnZXQgdGhlIGRlYnVnIG91dHB1dCB0aGF0IGZvbGxvd3MgaXQ6Cj4+IGRpZmYgLS1n
+aXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jIGIvYXJjaC9hcm0vbWFj
+aC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+PiBpbmRleCAyMzJhN2ZhNjU1Li4wZmU2OWJmNTU4
+IDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+
+ICsrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMKPj4gQEAgLTQsNiAr
+NCw3IEBACj4+ICogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6ICAgICBHUEwtMi4wKwo+PiAqLwo+
+PiAKPj4gKyNkZWZpbmUgREVCVUcgMQo+PiAjaW5jbHVkZSA8Y29tbW9uLmg+Cj4+ICNpbmNsdWRl
+IDxkbS5oPgo+PiAjaW5jbHVkZSA8cmFtLmg+Cj4+IEBAIC0zOSwxNiArNDAsMTkgQEAgc2l6ZV90
+IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19hZGRyX3QgcmVnKQo+PiAJCQlTWVNfUkVHX1JPV18z
+XzRfTUFTSzsKPj4gCj4+IAkJY2hpcHNpemVfbWIgPSAoMSA8PCAoY3MwX3JvdyArIGNvbCArIGJr
+ICsgYncgLSAyMCkpOwo+PiArCQlkZWJ1ZygiJXM6ICVkOiBjaGlwc2l6ZV9tYiAleFxuIiwgX19m
+dW5jX18sIF9fTElORV9fLCBjaGlwc2l6ZV9tYik7Cj4+IAo+PiAJCWlmIChyYW5rID4gMSkKPj4g
+CQkJY2hpcHNpemVfbWIgKz0gY2hpcHNpemVfbWIgPj4gKGNzMF9yb3cgLSBjczFfcm93KTsKPj4g
+CQlpZiAocm93XzNfNCkKPj4gCQkJY2hpcHNpemVfbWIgPSBjaGlwc2l6ZV9tYiAqIDMgLyA0Owo+
+PiAJCXNpemVfbWIgKz0gY2hpcHNpemVfbWI7Cj4+ICsJCWRlYnVnKCIlczogJWQ6IHNpemVfbWIg
+JXhcbiIsIF9fZnVuY19fLCBfX0xJTkVfXywgc2l6ZV9tYik7Cj4+IAkJZGVidWcoInJhbmsgJWQg
+Y29sICVkIGJrICVkIGNzMF9yb3cgJWQgYncgJWQgcm93XzNfNCAlZFxuIiwKPj4gCQkgICAgICBy
+YW5rLCBjb2wsIGJrLCBjczBfcm93LCBidywgcm93XzNfNCk7Cj4+IAl9Cj4+IAo+PiArCWRlYnVn
+KCIlczogJWQ6IHNpemVfbWIgJXhcbiIsIF9fZnVuY19fLCBfX0xJTkVfXywgc2l6ZV9tYik7Cj4+
+IAlzaXplX21iID0gbWluKHNpemVfbWIsIFNEUkFNX01BWF9TSVpFL1NaXzFNKTsKPj4gCj4+IAly
+ZXR1cm4gKHNpemVfdClzaXplX21iIDw8IDIwOwo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9yYW0v
+cm9ja2NoaXAvc2RyYW1fcmszMjg4LmMgYi9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMy
+ODguYwo+PiBpbmRleCBkOTliZjEyNDc2Li45NzM4ZWIwODhmIDEwMDY0NAo+PiAtLS0gYS9kcml2
+ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMyODguYwo+PiArKysgYi9kcml2ZXJzL3JhbS9yb2Nr
+Y2hpcC9zZHJhbV9yazMyODguYwo+PiBAQCAtNyw2ICs3LDcgQEAKPj4gKiBBZGFwdGVkIGZyb20g
+Y29yZWJvb3QuCj4+ICovCj4+IAo+PiArI2RlZmluZSBERUJVRyAxCj4+ICNpbmNsdWRlIDxjb21t
+b24uaD4KPj4gI2luY2x1ZGUgPGNsay5oPgo+PiAjaW5jbHVkZSA8ZG0uaD4KPj4gCj4+IC0tLQo+
+PiBVLUJvb3QgU1BMIDIwMTguMDUtcmMzLTAyMzcwLWczMDkzODRlODRiLWRpcnR5IChNYXkgMDcg
+MjAxOCAtIDE5OjQyOjE1IC0wNTAwKQo+PiBUcnlpbmcgdG8gYm9vdCBmcm9tIFNQSQo+PiAKPj4g
+Cj4+IFUtQm9vdCAyMDE4LjA1LXJjMy0wMjM3MC1nMzA5Mzg0ZTg0Yi1kaXJ0eSAoTWF5IDA3IDIw
+MTggLSAxOTo0MjoxNSAtMDUwMCkKPj4gCj4+IE1vZGVsOiBHb29nbGUgU3BlZWR5Cj4+IERSQU06
+ICByb2NrY2hpcF9zZHJhbV9zaXplIGZmNzMwMDljIDNjNTBkYzUwCj4+IHJvY2tjaGlwX3NkcmFt
+X3NpemU6IDQyOiBjaGlwc2l6ZV9tYiA0MDAKPj4gcm9ja2NoaXBfc2RyYW1fc2l6ZTogNDk6IHNp
+emVfbWIgODAwCj4+IHJhbmsgMiBjb2wgMTEgYmsgMyBjczBfcm93IDE0IGJ3IDIgcm93XzNfNCAw
+Cj4+IHJvY2tjaGlwX3NkcmFtX3NpemU6IDQyOiBjaGlwc2l6ZV9tYiA0MDAKPj4gcm9ja2NoaXBf
+c2RyYW1fc2l6ZTogNDk6IHNpemVfbWIgMTAwMAo+PiByYW5rIDIgY29sIDExIGJrIDMgY3MwX3Jv
+dyAxNCBidyAyIHJvd18zXzQgMAo+PiByb2NrY2hpcF9zZHJhbV9zaXplOiA1NDogc2l6ZV9tYiAx
+MDAwCj4+IFNEUkFNIGJhc2U9MCwgc2l6ZT1mZTAwMDAwMAo+PiA0IEdpQgo+PiBNTUM6ICAgZHdt
+bWNAZmYwYzAwMDA6IDEsIGR3bW1jQGZmMGQwMDAwOiAyLCBkd21tY0BmZjBmMDAwMDogMAo+PiBJ
+bjogICAgY3Jvcy1lYy1rZXliCj4+IE91dDogICB2aWRjb25zb2xlCj4+IEVycjogICB2aWRjb25z
+b2xlCj4+IE1vZGVsOiBHb29nbGUgU3BlZWR5Cj4+IHJvY2tjaGlwX2RubF9rZXlfcHJlc3NlZDog
+YWRjX2NoYW5uZWxfc2luZ2xlX3Nob3QgZmFpbCEKPj4gTmV0OiAgIE5ldCBJbml0aWFsaXphdGlv
+biBTa2lwcGVkCj4+IE5vIGV0aGVybmV0IGZvdW5kLgo+PiBIaXQgYW55IGtleSB0byBzdG9wIGF1
+dG9ib290OiAgMAo+PiBJIGd1ZXNzIHdlIG5lZWQgdG8gY2hhbmdlIHRoZSBzaXplX3QgdG8gc29t
+ZXRoaW5nIGxhcmdlcjsgdW5sZXNzIEknbQo+PiBtaXN0YWtlbiwgdGhhdCdzIGEgMzIgYml0IHZh
+bHVlLCByaWdodD8gYW5kIDB4MTAwMDAwMDAwIGlzIGF0IGxlYXN0IDQwCj4gCj4gNEdCIGlzIGFj
+dHVhbGx5IHRoZSAzM3JkIGJpdCBzZXQgYW5kIHRoZSBsb3dlciAzMmJpdHMgY2xlYXJlZCAoaS5l
+LiB0aGUgbGFyZ2VzdAo+IDMyYml0IHZhbHVlIOKAnHBsdXMgb25l4oCdKS4KPiAKPj4gYml0cywg
+dW5sZXNzIEknbSBtaXNzaW5nIHRoZSBpc3N1ZSBoZXJlIHNvbWV3aGVyZS4gSG93ZXZlciwgdGhh
+dCB3b3VsZAo+PiB0YWtlIGEgY2hhbmdlIHRvIGluY2x1ZGUvcmFtLmgsIGFuZCB3b3VsZCBpbXBh
+Y3QgZmFyIG1vcmUgdGhhbiBqdXN0Cj4+IHJrMzI4OC9yb2NrY2hpcCBkZXZpY2VzIGFjcm9zcyB0
+aGUgYm9hcmQsIHNvIEknbSB1bnN1cmUgaG93IHRvIHByb2NlZWQuCj4+IAo+PiBVc2UgdGhlIG1p
+biBtYWNybyBoZXJlIGZvciBub3csIGFuZCBiZWdpbiB3b3JrIG1pZ3JhdGluZyB0aGUgcmFtX2lu
+Zm8KPj4gc2l6ZSBtZW1iZXIgdG8gYSA2NC1iaXQgY29udGFpbmVyPwo+IAo+IFRoZSBtaW4oKSBk
+b2VzbuKAmXQgbWFrZSBhbnkgc2Vuc2UgaGVyZSwgYXMgd2UgaW1wbGVtZW50IHRoZSBob29rIGZ1
+bmN0aW9uCj4g4oCYYm9hcmRfZ2V0X3VzYWJsZV9yYW1fdG9w4oCZIGp1c3QgYSBmZXcgbGluZXMg
+bGF0ZXLigKYKPiBXZSBhcmUgYXQgdGhlIHN0YXJ0IG9mIHRoZSBtZXJnZSB3aW5kb3cgcmlnaHQg
+bm93LCBzbyBJ4oCZZCByYXRoZXIgaG9sZCBvZmYgYQo+IHdlZWsgKG9yIHR3bykgYW5kIGhhdmUg
+YSBwZXJtYW5lbnQgc29sdXRpb24gdGhhbiBtZXJnaW5nIGp1c3QgYSBiYW5kLWFpZAo+IG5vdyBh
+bmQgdGhlbiBoYXZpbmcgdGhlIGZ1bGwgZml4IGNvbWUgaW4gbGF0ZXIgZHVyaW5nIHRoZSBtZXJn
+ZSB3aW5kb3cuCj4gCj4gSSBicmllZmx5IHJldmlld2VkIHRoZSBzaXR1YXRpb24geWVzdGVyZGF5
+IGFuZCBpdCBsb29rcyBsaWtlIHRoZSBzaXplIGZpZWxkIGluCj4gcmFtX2luZm8gaXMgdGhlIGN1
+bHByaXQ6IGl04oCZcyBkZWZpbmVkIGFzIOKAmHNpemVfdOKAmSwgd2hpY2ggYWdhaW4gaXMgX19T
+SVpFX1RZUEVfXwo+IHdoaWNoIGFnYWluIGlzIOKAmHVuc2lnbmVkIGludOKAmSBvbiBhICgzMmJp
+dCkgYXJtLSotZWFiaSBjb21waWxlci4KPiAKPiBFeHBhbmRpbmcgdGhpcyB0byBhIHBoeXNfc2l6
+ZV90IHdvbuKAmXQgYmUgZG9pbmcgdXMgbXVjaCBnb29kLCBlaXRoZXIgKGFzCj4gdGhhdCBvbmUg
+d2lsbCBhbHNvIGJlIDMyYml0cyBmb3IgdGhlIFJLMzI4OCkuCj4gCj4gVGhlIHJvb3QgY2F1c2Ug
+b2YgdGhpcyBpcyByZWFsbHkgdGhhdCB0aGUgUkFNIHNpemUgYW5kIHRoZSDigJh1c2FibGUgUkFN
+4oCZIGFyZQo+IHR3byBkaWZmZXJlbnQgY29uY2VwdHMgaW4gVS1Cb290LiAgT24gYSAzMmJpdCBw
+aHlzaWNhbCBhZGRyZXNzIHNwYWNlIHdpdGgKPiBtZW1vcnktbWFwcGVkIHBlcmlwaGVyYWxzLCB3
+ZSBjYW4gbmV2ZXIgaGF2ZSB0aGUgZnVsbCA0R0Igb2YgRFJBTSBhcwo+IHdl4oCZbGwgYWxzbyBo
+YXZlIHNvbWUgb2YgdGhlIHBoeXNpY2FsIGFkZHJlc3Mtc3BhY2Ugc2V0IGFzaWRlIGZvciB0aGUg
+TU1JTzsKPiBob3dldmVyLCB0aGUgTU1JTyByYW5nZSBpcyBvbmx5IHJlbW92ZWQgZnJvbSB0aGUg
+RFJBTSBzaXplIHdoZW4gdGhlCj4gdXNhYmxlIHJhbS10b3AgaXMgZXZhbHVhdGVk4oCmIHNvIHRo
+ZSBzaXplIGNhbiBiZSA0R0IgYWZ0ZXIgYWxsIGFuZCBvdmVyZmxvdwo+IHRoZSAzMmJpdCBzaXpl
+X3QuICBOb3RlIHRoYXQgdGhpcyBzZXBhcmF0aW9uIGludG8gdHdvIGRpZmZlcmVudCBzdGVwcyBt
+YWtlcyBhCj4gbG90IG9mIHNlbnNlLCBhcyBwcm9jZXNzb3JzIG1pZ2h0IG5vdCB1c2UgTU1JTyBi
+dXQgc3BlY2lhbGlzZWQgaW5zdHJ1Y3Rpb25zCj4gdG8gYWNjZXNzIHBlcmlwaGVyYWwgc3BhY2Xi
+gJRpbiB3aGljaCBjYXNlIHRoZXJlIG1pZ2h0IGluZGVlZCBiZSBhIHVzYWJsZQo+IG1lbW9yeSBv
+ZiA0R0Igb24gYSAzMmJpdCBwaHlzaWNhbCBhZGRyZXNzIHNwYWNlLgo+IAo+IEZyb20gd2hhdCBJ
+IGNhbiB0ZWxsLCB3ZeKAmWxsIG5lZWQgdG8gZG8gdHdvIHRoaW5nczoKPiAoYSkJZml4IGFyY2gv
+YXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgdG8gbm90IHVzZSAzMmJpdCB0eXBlcwo+
+IAlmb3IgdGhlIG1lbW9yeSBzaXplCj4gKGIpCXRvdWNoIHJhbS5oIHRvIGNoYW5nZSB0aGUgdHlw
+ZSBvZiB0aGUg4oCYc2l6ZeKAmSBmaWVsZCBpbiByYW1faW5mbyAoaXQgbmVlZHMKPiAJdG8gYmUg
+bGFyZ2VyIHRoYW4gMzJiaXRzCj4gCj4gSeKAmWQgbGlrZSBTaW1vbuKAmXMgaW5wdXQgKGFzIGhl
+IG93bnMgcmFtLmgpIGFuZCBjYW4gY3JlYXRlIGEgcGF0Y2hzZXQgZm9yIHRoaXMKPiBjaGFuZ2Us
+IGlmIGhlIGFncmVlcyB0aGF0IHRoaXMgaXMgdGhlIHdheSBmb3J3YXJkLgo+IAo+IFJlZ2FyZHMs
+Cj4gUGhpbGlwcC4KPiAKPj4+Pj4gCj4+Pj4+IFRoYW5rcywKPj4+Pj4gLSBLZXZlcgo+Pj4+Pj4g
+CX0KPj4+Pj4+IAo+Pj4+Pj4gCXJldHVybiAoc2l6ZV90KXNpemVfbWIgPDwgMjA7Cj4+Pj4+IAo+
+Pj4+PiAKPj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwo+Pj4+IFUtQm9vdCBtYWlsaW5nIGxpc3QKPj4+PiBVLUJvb3RAbGlzdHMuZGVueC5kZSA8bWFp
+bHRvOlUtQm9vdEBsaXN0cy5kZW54LmRlPiA8bWFpbHRvOlUtQm9vdEBsaXN0cy5kZW54LmRlIDxt
+YWlsdG86VS1Cb290QGxpc3RzLmRlbnguZGU+Pgo+Pj4+IGh0dHBzOi8vbGlzdHMuZGVueC5kZS9s
+aXN0aW5mby91LWJvb3QgPGh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3Q+IDxo
+dHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290IDxodHRwczovL2xpc3RzLmRlbngu
+ZGUvbGlzdGluZm8vdS1ib290Pj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0
+cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
