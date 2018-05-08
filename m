@@ -1,189 +1,149 @@
-From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [PATCH 3/3] rockchip: fix incorrect detection of ram
- size
-Date: Tue, 8 May 2018 12:23:33 +0200
-Message-ID: <5EC6775E-8A88-4057-8176-780E645283AA@theobroma-systems.com>
-References: <20180506142513.19911-1-hanetzer@startmail.com>
- <20180506142513.19911-4-hanetzer@startmail.com>
- <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
- <20180507023413.mil4wj7xtjy6gnuw@proprietary-killer>
- <791299C0-EEC0-4DB1-97C4-A8DAD3B1A481@theobroma-systems.com>
- <20180508005215.s3uivl43jfaryv7j@proprietary-killer>
- <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
-Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>
-Cc: vagrant@debian.org, U-Boot Mailing List <u-boot@lists.denx.de>, "Marty E. Plummer" <hanetzer@startmail.com>, linux-rockchip@lists.infradead.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v0 1/2] gpio: syscon: Add gpio-syscon for rk3328
+Date: Tue, 08 May 2018 13:49:46 +0200
+Message-ID: <2356128.gufDZceMBS@phil>
+References: <1525747704-8537-1-git-send-email-djw@t-chip.com.cn> <1525747704-8537-2-git-send-email-djw@t-chip.com.cn>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="nextPart2893046.DzjenlKqZX"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1525747704-8537-2-git-send-email-djw@t-chip.com.cn>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: djw@t-chip.com.cn, linux-gpio@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2ltb24sCgpMb29rcyBsaWtlIHdl4oCZZCBsaWtlIHRvIGhhdmUgYSA2NGJpdCB0eXBlIGZvciBz
-aXplIGluIOKAmHN0cnVjdCByYW1faW5mb+KAmSAoc2VlIGJlbG93KS4KTGV0IHVzIGtub3cgd2hh
-dCB5b3UgdGhpbmsgb2YgdGhlIHByb3Bvc2VkIGNoYW5nZS4KClRoYW5rcywKUGhpbGlwcC4KCgo+
-IE9uIDggTWF5IDIwMTgsIGF0IDEyOjIxLCBEci4gUGhpbGlwcCBUb21zaWNoIDxwaGlsaXBwLnRv
-bXNpY2hAdGhlb2Jyb21hLXN5c3RlbXMuY29tPiB3cm90ZToKPiAKPiBNYXJ0eSwKPiAKPj4gT24g
-OCBNYXkgMjAxOCwgYXQgMDI6NTIsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFp
-bC5jb20+IHdyb3RlOgo+PiAKPj4gT24gTW9uLCBNYXkgMDcsIDIwMTggYXQgMTE6MTY6MjhBTSAr
-MDIwMCwgRHIuIFBoaWxpcHAgVG9tc2ljaCB3cm90ZToKPj4+IAo+Pj4+IE9uIDcgTWF5IDIwMTgs
-IGF0IDA0OjM0LCBNYXJ0eSBFLiBQbHVtbWVyIDxoYW5ldHplckBzdGFydG1haWwuY29tPiB3cm90
-ZToKPj4+PiAKPj4+PiBPbiBNb24sIE1heSAwNywgMjAxOCBhdCAxMDoyMDo1NUFNICswODAwLCBL
-ZXZlciBZYW5nIHdyb3RlOgo+Pj4+PiBIaSBNYXJ0eSwKPj4+Pj4gCj4+Pj4+IAo+Pj4+PiBPbiAw
-NS8wNi8yMDE4IDEwOjI1IFBNLCBNYXJ0eSBFLiBQbHVtbWVyIHdyb3RlOgo+Pj4+Pj4gVGFrZW4g
-ZnJvbSBjb3JlYm9vdCdzIHNyYy9zb2Mvcm9ja2NoaXAvcmszMjg4L3NkcmFtLmMKPj4+Pj4+IAo+
-Pj4+Pj4gV2l0aG91dCB0aGlzIGNoYW5nZSwgbXkgdS1ib290IGJ1aWxkIGZvciB0aGUgYXN1cyBj
-MjAxIGNocm9tZWJvb2sgKDRHaUIpCj4+Pj4+PiBpcyBpbmNvcnJlY3RseSBkZXRlY3RlZCBhcyAw
-IEJ5dGVzIG9mIHJhbS4KPj4+Pj4gCj4+Pj4+IEkga25vdyB0aGUgcm9vdCBjYXVzZSBmb3IgdGhp
-cyBpc3N1ZSwgYW5kIEkgaGF2ZSBhIGxvY2FsIHBhdGNoIGZvciBpdC4KPj4+Pj4gVGhlIHJrMzI4
-OCBpcyAzMmJpdCwgYW5kIDRHQiBzaXplIGlzIGp1c3Qgb3V0IG9mIHJhbmdlLCBzbyB3ZSBuZWVk
-IHRvIGJlZm9yZQo+Pj4+PiB0aGUgbWF4IHNpemUgYmVmb3JlIHJldHVybiB3aXRoICc8PDIwJy4g
-U29ycnkgZm9yIGZvcmdvdCB0byBzZW5kIGl0IG91dC4KPj4+Pj4gCj4+Pj4+PiAKPj4+Pj4+IFNp
-Z25lZC1vZmYtYnk6IE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFpbC5jb20+Cj4+
-Pj4+PiAtLS0KPj4+Pj4+IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgfCA2
-MiArKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0KPj4+Pj4+IDEgZmlsZSBjaGFuZ2VkLCAzNyBp
-bnNlcnRpb25zKCspLCAyNSBkZWxldGlvbnMoLSkKPj4+Pj4+IAo+Pj4+Pj4gZGlmZiAtLWdpdCBh
-L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgYi9hcmNoL2FybS9tYWNoLXJv
-Y2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+PiBpbmRleCA3NmRiZGM4NzE1Li5hOWM5Zjk3MGE0
-IDEwMDY0NAo+Pj4+Pj4gLS0tIGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24u
-Ywo+Pj4+Pj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+Pj4+
-Pj4gQEAgLTEwLDYgKzEwLDggQEAKPj4+Pj4+ICNpbmNsdWRlIDxhc20vaW8uaD4KPj4+Pj4+ICNp
-bmNsdWRlIDxhc20vYXJjaC9zZHJhbV9jb21tb24uaD4KPj4+Pj4+ICNpbmNsdWRlIDxkbS91Y2xh
-c3MtaW50ZXJuYWwuaD4KPj4+Pj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+Pj4+PiAr
-I2luY2x1ZGUgPGxpbnV4L3NpemVzLmg+Cj4+Pj4+PiAKPj4+Pj4+IERFQ0xBUkVfR0xPQkFMX0RB
-VEFfUFRSOwo+Pj4+Pj4gc2l6ZV90IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19hZGRyX3QgcmVn
-KQo+Pj4+Pj4gQEAgLTE5LDM0ICsyMSw0NCBAQCBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShw
-aHlzX2FkZHJfdCByZWcpCj4+Pj4+PiAJc2l6ZV90IHNpemVfbWIgPSAwOwo+Pj4+Pj4gCXUzMiBj
-aDsKPj4+Pj4+IAo+Pj4+Pj4gLQl1MzIgc3lzX3JlZyA9IHJlYWRsKHJlZyk7Cj4+Pj4+PiAtCXUz
-MiBjaF9udW0gPSAxICsgKChzeXNfcmVnID4+IFNZU19SRUdfTlVNX0NIX1NISUZUKQo+Pj4+Pj4g
-LQkJICAgICAgICYgU1lTX1JFR19OVU1fQ0hfTUFTSyk7Cj4+Pj4+PiArCWlmICghc2l6ZV9tYikg
-ewo+Pj4+PiAKPj4+Pj4gSSBkb24ndCB1bmRlcnN0YW5kIHRoaXMgYW5kIGZvbGxvdyB1cCBjaGFu
-Z2VzLCB3ZSBkb24ndCByZWFsbHkgbmVlZCBpdCwKPj4+Pj4gaXNuJ3QgaXQ/Cj4+Pj4+IEkgdGhp
-bmsgZG9uJ3QgbmVlZCB0aGUgY2hhbmdlcyBiZWZvcmUgaGVyZS4KPj4+PiBZZWFoLCB0aGF0IHdh
-cyBqdXN0IGFub3RoZXIgbGV2ZWwgb2YgaW5kZW50YXRpb24gZm9yIHRoZSBpZiAoIXNpemVfbWIp
-Cj4+Pj4gZ3VhcmQsIGJ1dCBJJ3ZlIHJld29ya2VkIHRoZSBwYXRjaCB0byBub3QgZG8gdGhhdCBh
-cyBpdCB3YXMgcG9pbnRlZCBvdXQKPj4+PiB0aGF0IHNpbmNlIHNpemVfbWIgaXMgaW5pdGlhbGl6
-ZWQgdG8gMCBwcmlvci4KPj4+Pj4+ICsJCS8qCj4+Pj4+PiArCQkgKiB3ZSB1c2UgdGhlIDB4MDAw
-MDAwMDB+MHhmZWZmZmZmZiBzcGFjZQo+Pj4+Pj4gKwkJICogc2luY2UgMHhmZjAwMDAwMH4weGZm
-ZmZmZmZmIGlzIHNvYyByZWdpc3RlciBzcGFjZQo+Pj4+Pj4gKwkJICogc28gd2UgcmVzZXJ2ZSBp
-dAo+Pj4+Pj4gKwkJICovCj4+Pj4+PiArCQlzaXplX21iID0gbWluKHNpemVfbWIsIDB4ZmYwMDAw
-MDAvU1pfMU0pOwo+Pj4+PiAKPj4+Pj4gVGhpcyBpcyB3aGF0IHdlIHJlYWxseSBuZWVkLCBhcyBL
-bGF1cyBwb2ludCBvdXQsIHdlIG5lZWQgdG8gdXNlCj4+Pj4+IFNEUkFNX01BWF9TSVpFCj4+Pj4+
-IGluc3RlYWQgb2YgaGFyZCBjb2RlLgo+Pj4+IFllYWgsIEkndmUgZ290IGEgcmV3b3JrIG9uIHRo
-YXQgd2hpY2ggdXNlcyBTRFJBTV9NQVhfU0laRSBhcyBpbnN0cnVjdGVkLAo+Pj4+IGJ1aWxkIGFu
-ZCBib290IHRlc3RlZCBvbiBteSBoYXJkd2FyZS4KPj4+IAo+Pj4gSW4gdGhhdCBjYXNlIHlvdSBq
-dXN0IG1hc2tlZCB0aGUgcHJvYmxlbSBidXQgZGlkbj8/P3Qgc29sdmUgaXQ6IGFzc3VtaW5nIHNp
-emVfbWIKPj4+IGlzIHNpemVfdCAoST8/P2xsIGFzc3VtZSB0aGlzIGlzIDY0Yml0LCBidXQgZGlk
-IG5vdCBjaGVjayksIHRoZW4geW91ciA0R0IgaXMgMHgxXzAwMDBfMDAwMCApCj4+PiB3aGljaCBv
-dmVyZmxvd3MgdG8gMHgwIHdoZW4gY29udmVydGVkIHRvIGEgdTMyLgo+Pj4gCj4+PiBJbiBvdGhl
-ciB3b3Jkczogd2UgbmVlZCB0byBmaWd1cmUgb3V0IHdoZXJlIHRoZSB0cnVuY2F0aW9uIG9jY3Vy
-cyAoaW1hZ2Ugd2hhdAo+Pj4gaGFwcGVucyBpZiBhIG5ldyAzMmJpdCBwcm9jZXNzb3Igd2l0aCBM
-UEFFIGNvbWVzIG91dD8/PykuCj4+PiAKPj4gQSB2ZXJ5IHZhbGlkIHBvaW50LiBXaXRoIHRoZSBm
-b2xsb3dpbmcgcGF0Y2ggdG8gc2RyYW1fY29tbW9uLmMgYW5kCj4+IHNkcmFtX3JrMzI4OC5jIGFw
-cGxpZWQgSSBnZXQgdGhlIGRlYnVnIG91dHB1dCB0aGF0IGZvbGxvd3MgaXQ6Cj4+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jIGIvYXJjaC9hcm0vbWFj
-aC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+PiBpbmRleCAyMzJhN2ZhNjU1Li4wZmU2OWJmNTU4
-IDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+
-ICsrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMKPj4gQEAgLTQsNiAr
-NCw3IEBACj4+ICogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6ICAgICBHUEwtMi4wKwo+PiAqLwo+
-PiAKPj4gKyNkZWZpbmUgREVCVUcgMQo+PiAjaW5jbHVkZSA8Y29tbW9uLmg+Cj4+ICNpbmNsdWRl
-IDxkbS5oPgo+PiAjaW5jbHVkZSA8cmFtLmg+Cj4+IEBAIC0zOSwxNiArNDAsMTkgQEAgc2l6ZV90
-IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19hZGRyX3QgcmVnKQo+PiAJCQlTWVNfUkVHX1JPV18z
-XzRfTUFTSzsKPj4gCj4+IAkJY2hpcHNpemVfbWIgPSAoMSA8PCAoY3MwX3JvdyArIGNvbCArIGJr
-ICsgYncgLSAyMCkpOwo+PiArCQlkZWJ1ZygiJXM6ICVkOiBjaGlwc2l6ZV9tYiAleFxuIiwgX19m
-dW5jX18sIF9fTElORV9fLCBjaGlwc2l6ZV9tYik7Cj4+IAo+PiAJCWlmIChyYW5rID4gMSkKPj4g
-CQkJY2hpcHNpemVfbWIgKz0gY2hpcHNpemVfbWIgPj4gKGNzMF9yb3cgLSBjczFfcm93KTsKPj4g
-CQlpZiAocm93XzNfNCkKPj4gCQkJY2hpcHNpemVfbWIgPSBjaGlwc2l6ZV9tYiAqIDMgLyA0Owo+
-PiAJCXNpemVfbWIgKz0gY2hpcHNpemVfbWI7Cj4+ICsJCWRlYnVnKCIlczogJWQ6IHNpemVfbWIg
-JXhcbiIsIF9fZnVuY19fLCBfX0xJTkVfXywgc2l6ZV9tYik7Cj4+IAkJZGVidWcoInJhbmsgJWQg
-Y29sICVkIGJrICVkIGNzMF9yb3cgJWQgYncgJWQgcm93XzNfNCAlZFxuIiwKPj4gCQkgICAgICBy
-YW5rLCBjb2wsIGJrLCBjczBfcm93LCBidywgcm93XzNfNCk7Cj4+IAl9Cj4+IAo+PiArCWRlYnVn
-KCIlczogJWQ6IHNpemVfbWIgJXhcbiIsIF9fZnVuY19fLCBfX0xJTkVfXywgc2l6ZV9tYik7Cj4+
-IAlzaXplX21iID0gbWluKHNpemVfbWIsIFNEUkFNX01BWF9TSVpFL1NaXzFNKTsKPj4gCj4+IAly
-ZXR1cm4gKHNpemVfdClzaXplX21iIDw8IDIwOwo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9yYW0v
-cm9ja2NoaXAvc2RyYW1fcmszMjg4LmMgYi9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMy
-ODguYwo+PiBpbmRleCBkOTliZjEyNDc2Li45NzM4ZWIwODhmIDEwMDY0NAo+PiAtLS0gYS9kcml2
-ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMyODguYwo+PiArKysgYi9kcml2ZXJzL3JhbS9yb2Nr
-Y2hpcC9zZHJhbV9yazMyODguYwo+PiBAQCAtNyw2ICs3LDcgQEAKPj4gKiBBZGFwdGVkIGZyb20g
-Y29yZWJvb3QuCj4+ICovCj4+IAo+PiArI2RlZmluZSBERUJVRyAxCj4+ICNpbmNsdWRlIDxjb21t
-b24uaD4KPj4gI2luY2x1ZGUgPGNsay5oPgo+PiAjaW5jbHVkZSA8ZG0uaD4KPj4gCj4+IC0tLQo+
-PiBVLUJvb3QgU1BMIDIwMTguMDUtcmMzLTAyMzcwLWczMDkzODRlODRiLWRpcnR5IChNYXkgMDcg
-MjAxOCAtIDE5OjQyOjE1IC0wNTAwKQo+PiBUcnlpbmcgdG8gYm9vdCBmcm9tIFNQSQo+PiAKPj4g
-Cj4+IFUtQm9vdCAyMDE4LjA1LXJjMy0wMjM3MC1nMzA5Mzg0ZTg0Yi1kaXJ0eSAoTWF5IDA3IDIw
-MTggLSAxOTo0MjoxNSAtMDUwMCkKPj4gCj4+IE1vZGVsOiBHb29nbGUgU3BlZWR5Cj4+IERSQU06
-ICByb2NrY2hpcF9zZHJhbV9zaXplIGZmNzMwMDljIDNjNTBkYzUwCj4+IHJvY2tjaGlwX3NkcmFt
-X3NpemU6IDQyOiBjaGlwc2l6ZV9tYiA0MDAKPj4gcm9ja2NoaXBfc2RyYW1fc2l6ZTogNDk6IHNp
-emVfbWIgODAwCj4+IHJhbmsgMiBjb2wgMTEgYmsgMyBjczBfcm93IDE0IGJ3IDIgcm93XzNfNCAw
-Cj4+IHJvY2tjaGlwX3NkcmFtX3NpemU6IDQyOiBjaGlwc2l6ZV9tYiA0MDAKPj4gcm9ja2NoaXBf
-c2RyYW1fc2l6ZTogNDk6IHNpemVfbWIgMTAwMAo+PiByYW5rIDIgY29sIDExIGJrIDMgY3MwX3Jv
-dyAxNCBidyAyIHJvd18zXzQgMAo+PiByb2NrY2hpcF9zZHJhbV9zaXplOiA1NDogc2l6ZV9tYiAx
-MDAwCj4+IFNEUkFNIGJhc2U9MCwgc2l6ZT1mZTAwMDAwMAo+PiA0IEdpQgo+PiBNTUM6ICAgZHdt
-bWNAZmYwYzAwMDA6IDEsIGR3bW1jQGZmMGQwMDAwOiAyLCBkd21tY0BmZjBmMDAwMDogMAo+PiBJ
-bjogICAgY3Jvcy1lYy1rZXliCj4+IE91dDogICB2aWRjb25zb2xlCj4+IEVycjogICB2aWRjb25z
-b2xlCj4+IE1vZGVsOiBHb29nbGUgU3BlZWR5Cj4+IHJvY2tjaGlwX2RubF9rZXlfcHJlc3NlZDog
-YWRjX2NoYW5uZWxfc2luZ2xlX3Nob3QgZmFpbCEKPj4gTmV0OiAgIE5ldCBJbml0aWFsaXphdGlv
-biBTa2lwcGVkCj4+IE5vIGV0aGVybmV0IGZvdW5kLgo+PiBIaXQgYW55IGtleSB0byBzdG9wIGF1
-dG9ib290OiAgMAo+PiBJIGd1ZXNzIHdlIG5lZWQgdG8gY2hhbmdlIHRoZSBzaXplX3QgdG8gc29t
-ZXRoaW5nIGxhcmdlcjsgdW5sZXNzIEknbQo+PiBtaXN0YWtlbiwgdGhhdCdzIGEgMzIgYml0IHZh
-bHVlLCByaWdodD8gYW5kIDB4MTAwMDAwMDAwIGlzIGF0IGxlYXN0IDQwCj4gCj4gNEdCIGlzIGFj
-dHVhbGx5IHRoZSAzM3JkIGJpdCBzZXQgYW5kIHRoZSBsb3dlciAzMmJpdHMgY2xlYXJlZCAoaS5l
-LiB0aGUgbGFyZ2VzdAo+IDMyYml0IHZhbHVlIOKAnHBsdXMgb25l4oCdKS4KPiAKPj4gYml0cywg
-dW5sZXNzIEknbSBtaXNzaW5nIHRoZSBpc3N1ZSBoZXJlIHNvbWV3aGVyZS4gSG93ZXZlciwgdGhh
-dCB3b3VsZAo+PiB0YWtlIGEgY2hhbmdlIHRvIGluY2x1ZGUvcmFtLmgsIGFuZCB3b3VsZCBpbXBh
-Y3QgZmFyIG1vcmUgdGhhbiBqdXN0Cj4+IHJrMzI4OC9yb2NrY2hpcCBkZXZpY2VzIGFjcm9zcyB0
-aGUgYm9hcmQsIHNvIEknbSB1bnN1cmUgaG93IHRvIHByb2NlZWQuCj4+IAo+PiBVc2UgdGhlIG1p
-biBtYWNybyBoZXJlIGZvciBub3csIGFuZCBiZWdpbiB3b3JrIG1pZ3JhdGluZyB0aGUgcmFtX2lu
-Zm8KPj4gc2l6ZSBtZW1iZXIgdG8gYSA2NC1iaXQgY29udGFpbmVyPwo+IAo+IFRoZSBtaW4oKSBk
-b2VzbuKAmXQgbWFrZSBhbnkgc2Vuc2UgaGVyZSwgYXMgd2UgaW1wbGVtZW50IHRoZSBob29rIGZ1
-bmN0aW9uCj4g4oCYYm9hcmRfZ2V0X3VzYWJsZV9yYW1fdG9w4oCZIGp1c3QgYSBmZXcgbGluZXMg
-bGF0ZXLigKYKPiBXZSBhcmUgYXQgdGhlIHN0YXJ0IG9mIHRoZSBtZXJnZSB3aW5kb3cgcmlnaHQg
-bm93LCBzbyBJ4oCZZCByYXRoZXIgaG9sZCBvZmYgYQo+IHdlZWsgKG9yIHR3bykgYW5kIGhhdmUg
-YSBwZXJtYW5lbnQgc29sdXRpb24gdGhhbiBtZXJnaW5nIGp1c3QgYSBiYW5kLWFpZAo+IG5vdyBh
-bmQgdGhlbiBoYXZpbmcgdGhlIGZ1bGwgZml4IGNvbWUgaW4gbGF0ZXIgZHVyaW5nIHRoZSBtZXJn
-ZSB3aW5kb3cuCj4gCj4gSSBicmllZmx5IHJldmlld2VkIHRoZSBzaXR1YXRpb24geWVzdGVyZGF5
-IGFuZCBpdCBsb29rcyBsaWtlIHRoZSBzaXplIGZpZWxkIGluCj4gcmFtX2luZm8gaXMgdGhlIGN1
-bHByaXQ6IGl04oCZcyBkZWZpbmVkIGFzIOKAmHNpemVfdOKAmSwgd2hpY2ggYWdhaW4gaXMgX19T
-SVpFX1RZUEVfXwo+IHdoaWNoIGFnYWluIGlzIOKAmHVuc2lnbmVkIGludOKAmSBvbiBhICgzMmJp
-dCkgYXJtLSotZWFiaSBjb21waWxlci4KPiAKPiBFeHBhbmRpbmcgdGhpcyB0byBhIHBoeXNfc2l6
-ZV90IHdvbuKAmXQgYmUgZG9pbmcgdXMgbXVjaCBnb29kLCBlaXRoZXIgKGFzCj4gdGhhdCBvbmUg
-d2lsbCBhbHNvIGJlIDMyYml0cyBmb3IgdGhlIFJLMzI4OCkuCj4gCj4gVGhlIHJvb3QgY2F1c2Ug
-b2YgdGhpcyBpcyByZWFsbHkgdGhhdCB0aGUgUkFNIHNpemUgYW5kIHRoZSDigJh1c2FibGUgUkFN
-4oCZIGFyZQo+IHR3byBkaWZmZXJlbnQgY29uY2VwdHMgaW4gVS1Cb290LiAgT24gYSAzMmJpdCBw
-aHlzaWNhbCBhZGRyZXNzIHNwYWNlIHdpdGgKPiBtZW1vcnktbWFwcGVkIHBlcmlwaGVyYWxzLCB3
-ZSBjYW4gbmV2ZXIgaGF2ZSB0aGUgZnVsbCA0R0Igb2YgRFJBTSBhcwo+IHdl4oCZbGwgYWxzbyBo
-YXZlIHNvbWUgb2YgdGhlIHBoeXNpY2FsIGFkZHJlc3Mtc3BhY2Ugc2V0IGFzaWRlIGZvciB0aGUg
-TU1JTzsKPiBob3dldmVyLCB0aGUgTU1JTyByYW5nZSBpcyBvbmx5IHJlbW92ZWQgZnJvbSB0aGUg
-RFJBTSBzaXplIHdoZW4gdGhlCj4gdXNhYmxlIHJhbS10b3AgaXMgZXZhbHVhdGVk4oCmIHNvIHRo
-ZSBzaXplIGNhbiBiZSA0R0IgYWZ0ZXIgYWxsIGFuZCBvdmVyZmxvdwo+IHRoZSAzMmJpdCBzaXpl
-X3QuICBOb3RlIHRoYXQgdGhpcyBzZXBhcmF0aW9uIGludG8gdHdvIGRpZmZlcmVudCBzdGVwcyBt
-YWtlcyBhCj4gbG90IG9mIHNlbnNlLCBhcyBwcm9jZXNzb3JzIG1pZ2h0IG5vdCB1c2UgTU1JTyBi
-dXQgc3BlY2lhbGlzZWQgaW5zdHJ1Y3Rpb25zCj4gdG8gYWNjZXNzIHBlcmlwaGVyYWwgc3BhY2Xi
-gJRpbiB3aGljaCBjYXNlIHRoZXJlIG1pZ2h0IGluZGVlZCBiZSBhIHVzYWJsZQo+IG1lbW9yeSBv
-ZiA0R0Igb24gYSAzMmJpdCBwaHlzaWNhbCBhZGRyZXNzIHNwYWNlLgo+IAo+IEZyb20gd2hhdCBJ
-IGNhbiB0ZWxsLCB3ZeKAmWxsIG5lZWQgdG8gZG8gdHdvIHRoaW5nczoKPiAoYSkJZml4IGFyY2gv
-YXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgdG8gbm90IHVzZSAzMmJpdCB0eXBlcwo+
-IAlmb3IgdGhlIG1lbW9yeSBzaXplCj4gKGIpCXRvdWNoIHJhbS5oIHRvIGNoYW5nZSB0aGUgdHlw
-ZSBvZiB0aGUg4oCYc2l6ZeKAmSBmaWVsZCBpbiByYW1faW5mbyAoaXQgbmVlZHMKPiAJdG8gYmUg
-bGFyZ2VyIHRoYW4gMzJiaXRzCj4gCj4gSeKAmWQgbGlrZSBTaW1vbuKAmXMgaW5wdXQgKGFzIGhl
-IG93bnMgcmFtLmgpIGFuZCBjYW4gY3JlYXRlIGEgcGF0Y2hzZXQgZm9yIHRoaXMKPiBjaGFuZ2Us
-IGlmIGhlIGFncmVlcyB0aGF0IHRoaXMgaXMgdGhlIHdheSBmb3J3YXJkLgo+IAo+IFJlZ2FyZHMs
-Cj4gUGhpbGlwcC4KPiAKPj4+Pj4gCj4+Pj4+IFRoYW5rcywKPj4+Pj4gLSBLZXZlcgo+Pj4+Pj4g
-CX0KPj4+Pj4+IAo+Pj4+Pj4gCXJldHVybiAoc2l6ZV90KXNpemVfbWIgPDwgMjA7Cj4+Pj4+IAo+
-Pj4+PiAKPj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Xwo+Pj4+IFUtQm9vdCBtYWlsaW5nIGxpc3QKPj4+PiBVLUJvb3RAbGlzdHMuZGVueC5kZSA8bWFp
-bHRvOlUtQm9vdEBsaXN0cy5kZW54LmRlPiA8bWFpbHRvOlUtQm9vdEBsaXN0cy5kZW54LmRlIDxt
-YWlsdG86VS1Cb290QGxpc3RzLmRlbnguZGU+Pgo+Pj4+IGh0dHBzOi8vbGlzdHMuZGVueC5kZS9s
-aXN0aW5mby91LWJvb3QgPGh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3Q+IDxo
-dHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290IDxodHRwczovL2xpc3RzLmRlbngu
-ZGUvbGlzdGluZm8vdS1ib290Pj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0
-cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+This is a multi-part message in MIME format.
+
+--nextPart2893046.DzjenlKqZX
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+
+Hi Levin,
+
+Am Dienstag, 8. Mai 2018, 04:48:23 CEST schrieb djw@t-chip.com.cn:
+> From: Levin Du <djw@t-chip.com.cn>
+> 
+> In Rockchip RK3328 Soc, there's a output only gpio pin labeled
+> `gpiomut_pmuio_iout`, which can be set by bit[1] of GRF_SOC_CON10.
+> (bit[0] controls the enable state of the pin and defaults to enabled.)
+> 
+> This pin is used by the roc-rk3328-cc board to switch sdmmc io signal
+> voltage between 1.8V and 3.3V, which is essential to the SD card UHS
+> support.
+> 
+> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+
+Thanks for investigating that special pin.
+
+Please also add a devicetree-binding document under
+Documentation/devicetree/bindings/gpio.
+
+And I do have some more suggestions below.
+
+
+> ---
+> 
+>  drivers/gpio/gpio-syscon.c | 32 ++++++++++++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
+> 
+> diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
+> index 537cec7..b69f65f 100644
+> --- a/drivers/gpio/gpio-syscon.c
+> +++ b/drivers/gpio/gpio-syscon.c
+> @@ -135,6 +135,34 @@ static const struct syscon_gpio_data clps711x_mctrl_gpio = {
+>  	.dat_bit_offset	= 0x40 * 8 + 8,
+>  };
+>  
+> +static void rockchip_gpio_set(struct gpio_chip *chip, unsigned int offset,
+> +			      int val)
+> +{
+> +	struct syscon_gpio_priv *priv = gpiochip_get_data(chip);
+> +	unsigned int offs;
+> +	u8 bit;
+> +	u32 data;
+> +	int ret;
+> +
+> +	offs = priv->dreg_offset + priv->data->dat_bit_offset + offset;
+> +	bit = offs % SYSCON_REG_BITS;
+> +	data = (val ? BIT(bit) : 0) | BIT(bit + 16);
+> +	ret = regmap_write(priv->syscon,
+> +			   (offs / SYSCON_REG_BITS) * SYSCON_REG_SIZE,
+> +			   data);
+> +	if (ret < 0)
+> +		dev_err(chip->parent, "gpio write failed ret(%d)\n", ret);
+> +}
+> +
+> +static const struct syscon_gpio_data rk3328_gpio_syscon10 = {
+> +	/* Rockchip RK3328 GRF_SOC_CON10 Bits 0-1 */
+> +	.compatible	= "rockchip,rk3328-grf",
+
+please drop the compatible above, include the attached patch before
+this one and follow the things I'll will outline in the devicetree patch
+shortly :-)
+
+Patch for getting the syscon frome the parent is compile-tested only
+so please double-check that I didn't mess up anything.
+
+
+> +	.flags		= GPIO_SYSCON_FEAT_OUT,
+> +	.bit_count	= 2,
+> +	.dat_bit_offset	= 0x0428 * 8,
+> +	.set		= rockchip_gpio_set,
+> +};
+> +
+>  #define KEYSTONE_LOCK_BIT BIT(0)
+>  
+>  static void keystone_gpio_set(struct gpio_chip *chip, unsigned offset, int val)
+> @@ -175,6 +203,10 @@ static const struct of_device_id syscon_gpio_ids[] = {
+>  		.compatible	= "ti,keystone-dsp-gpio",
+>  		.data		= &keystone_dsp_gpio,
+>  	},
+> +	{
+> +		.compatible	= "rockchip,rk3328-gpio-syscon10",
+
+rockchip,rk3328-gpio-mute [the naming from the TRM] could
+be a more suitable naming?
+
+
+Heiko
+--nextPart2893046.DzjenlKqZX
+Content-Disposition: attachment; filename="0001-gpio-syscon-allow-fetching-syscon-from-parent-node.patch"
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/x-patch; charset="UTF-8"; name="0001-gpio-syscon-allow-fetching-syscon-from-parent-node.patch"
+
+From 8894fdd9fc4ad90abec32336cc2e528d49abf887 Mon Sep 17 00:00:00 2001
+From: Heiko Stuebner <heiko@sntech.de>
+Date: Tue, 8 May 2018 13:33:37 +0200
+Subject: [PATCH] gpio: syscon: allow fetching syscon from parent node
+
+Syscon nodes can be a simple-mfd and the syscon-users then be declared
+as children of this node. That way the parent-child structure can be
+better represented for devices that are fully embedded in the syscon.
+
+Therefore allow getting the syscon from the parent if neither
+a special compatible nor a gpio,syscon-dev property is defined.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/gpio/gpio-syscon.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
+index 537cec7583fc..7325b864f52a 100644
+--- a/drivers/gpio/gpio-syscon.c
++++ b/drivers/gpio/gpio-syscon.c
+@@ -205,6 +205,8 @@ static int syscon_gpio_probe(struct platform_device *pdev)
+ 	} else {
+ 		priv->syscon =
+ 			syscon_regmap_lookup_by_phandle(np, "gpio,syscon-dev");
++		if (IS_ERR(priv->syscon) && np->parent)
++			priv->syscon = syscon_node_to_regmap(np->parent);
+ 		if (IS_ERR(priv->syscon))
+ 			return PTR_ERR(priv->syscon);
+ 
+-- 
+2.16.2
+
+
+--nextPart2893046.DzjenlKqZX--
