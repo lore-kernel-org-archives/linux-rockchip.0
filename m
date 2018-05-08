@@ -1,149 +1,148 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v0 1/2] gpio: syscon: Add gpio-syscon for rk3328
-Date: Tue, 08 May 2018 13:49:46 +0200
-Message-ID: <2356128.gufDZceMBS@phil>
-References: <1525747704-8537-1-git-send-email-djw@t-chip.com.cn> <1525747704-8537-2-git-send-email-djw@t-chip.com.cn>
+Subject: Re: [PATCH v0 2/2] arm64: dts: rockchip: Add sdmmc UHS support for roc-rk3328-cc
+Date: Tue, 08 May 2018 13:57:17 +0200
+Message-ID: <4418544.G3kHmbejD5@phil>
+References: <1525747704-8537-1-git-send-email-djw@t-chip.com.cn> <1525747704-8537-3-git-send-email-djw@t-chip.com.cn>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="nextPart2893046.DzjenlKqZX"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525747704-8537-2-git-send-email-djw@t-chip.com.cn>
+In-Reply-To: <1525747704-8537-3-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: djw@t-chip.com.cn, linux-gpio@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org
+Cc: djw@t-chip.com.cn, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, David Wu <david.wu@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Rocky Hao <rocky.hao@rock-chips.com>, "David S. Miller" <davem@davemloft.net>, Liang Chen <cl@rock-chips.com>, Joseph Chen <chenjh@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
-
-This is a multi-part message in MIME format.
-
---nextPart2893046.DzjenlKqZX
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
 
 Hi Levin,
 
-Am Dienstag, 8. Mai 2018, 04:48:23 CEST schrieb djw@t-chip.com.cn:
+Am Dienstag, 8. Mai 2018, 04:48:24 CEST schrieb djw@t-chip.com.cn:
 > From: Levin Du <djw@t-chip.com.cn>
 > 
-> In Rockchip RK3328 Soc, there's a output only gpio pin labeled
-> `gpiomut_pmuio_iout`, which can be set by bit[1] of GRF_SOC_CON10.
-> (bit[0] controls the enable state of the pin and defaults to enabled.)
+> In roc-rk3328-cc board, the signal voltage of sdmmc is supplied by
+> the vcc_sdio regulator, which is a mux between 1.8V and 3.3V,
+> controlled by a special output only gpio pin.
 > 
-> This pin is used by the roc-rk3328-cc board to switch sdmmc io signal
-> voltage between 1.8V and 3.3V, which is essential to the SD card UHS
-> support.
+> However, this pin,  not being a normal gpio in the rockchip pinctrl,
+> is set by bit 1 of system register GRF_SOC_CON10. Therefore a new
+> gpio controller using gpio-syscon driver is defined in order to use
+> regulator-gpio.
+> 
+> If the signal voltage changes, the io domain needs to change
+> correspondingly.
+> 
+> To use this feature, the following options are required in kernel config:
+>  - CONFIG_GPIO_SYSCON=y
+>  - CONFIG_POWER_AVS=y
+>  - CONFIG_ROCKCHIP_IODOMAIN=y
 > 
 > Signed-off-by: Levin Du <djw@t-chip.com.cn>
-
-Thanks for investigating that special pin.
-
-Please also add a devicetree-binding document under
-Documentation/devicetree/bindings/gpio.
-
-And I do have some more suggestions below.
-
-
+> 
 > ---
 > 
->  drivers/gpio/gpio-syscon.c | 32 ++++++++++++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 36 ++++++++++++++++++++++++++
+>  1 file changed, 36 insertions(+)
 > 
-> diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
-> index 537cec7..b69f65f 100644
-> --- a/drivers/gpio/gpio-syscon.c
-> +++ b/drivers/gpio/gpio-syscon.c
-> @@ -135,6 +135,34 @@ static const struct syscon_gpio_data clps711x_mctrl_gpio = {
->  	.dat_bit_offset	= 0x40 * 8 + 8,
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+> index 246c317..792cb04 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+> @@ -14,6 +14,12 @@
+>  		stdout-path = "serial2:1500000n8";
+>  	};
+>  
+> +	gpio_syscon10: gpio-syscon10 {
+> +		compatible = "rockchip,rk3328-gpio-syscon10";
+> +		gpio-controller;
+> +		#gpio-cells = <2>;
+> +	};
+> +
+
+please split this into a separate patch, move it to rk3328.dtsi and together
+with the suggestions from patch 1/2 make it look like
+
+grf: syscon@ff100000 {
+	compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
+	reg = <0x0 0xff100000 0x0 0x1000>;
+...
+		gpio_mute: gpio-mute {
+		compatible = "rockchip,rk3328-gpio-mute";
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+...
+};
+
+So making the gpio-controller a child of the grf node.
+And as this definition is not specific to the roc-cc it should be in the
+main devicetree file for the rk3328.
+
+>  	gmac_clkin: external-gmac-clock {
+>  		compatible = "fixed-clock";
+>  		clock-frequency = <125000000>;
+> @@ -41,6 +47,19 @@
+>  		vin-supply = <&vcc_io>;
+>  	};
+>  
+> +	vcc_sdio: sdmmcio-regulator {
+> +		compatible = "regulator-gpio";
+> +		gpios = <&gpio_syscon10 1 GPIO_ACTIVE_HIGH>;
+> +		states = <1800000 0x1
+> +			  3300000 0x0>;
+> +		regulator-name = "vcc_sdio";
+> +		regulator-type = "voltage";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		regulator-always-on;
+> +		vin-supply = <&vcc_sys>;
+> +	};
+> +
+>  	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
+>  		compatible = "regulator-fixed";
+>  		enable-active-high;
+> @@ -208,6 +227,18 @@
+>  	};
 >  };
 >  
-> +static void rockchip_gpio_set(struct gpio_chip *chip, unsigned int offset,
-> +			      int val)
-> +{
-> +	struct syscon_gpio_priv *priv = gpiochip_get_data(chip);
-> +	unsigned int offs;
-> +	u8 bit;
-> +	u32 data;
-> +	int ret;
+> +&io_domains {
+> +	status = "okay";
 > +
-> +	offs = priv->dreg_offset + priv->data->dat_bit_offset + offset;
-> +	bit = offs % SYSCON_REG_BITS;
-> +	data = (val ? BIT(bit) : 0) | BIT(bit + 16);
-> +	ret = regmap_write(priv->syscon,
-> +			   (offs / SYSCON_REG_BITS) * SYSCON_REG_SIZE,
-> +			   data);
-> +	if (ret < 0)
-> +		dev_err(chip->parent, "gpio write failed ret(%d)\n", ret);
-> +}
-> +
-> +static const struct syscon_gpio_data rk3328_gpio_syscon10 = {
-> +	/* Rockchip RK3328 GRF_SOC_CON10 Bits 0-1 */
-> +	.compatible	= "rockchip,rk3328-grf",
-
-please drop the compatible above, include the attached patch before
-this one and follow the things I'll will outline in the devicetree patch
-shortly :-)
-
-Patch for getting the syscon frome the parent is compile-tested only
-so please double-check that I didn't mess up anything.
-
-
-> +	.flags		= GPIO_SYSCON_FEAT_OUT,
-> +	.bit_count	= 2,
-> +	.dat_bit_offset	= 0x0428 * 8,
-> +	.set		= rockchip_gpio_set,
+> +	vccio1-supply = <&vcc_io>;
+> +	vccio2-supply = <&vcc18_emmc>;
+> +	vccio3-supply = <&vcc_sdio>;
+> +	vccio4-supply = <&vcc_18>;
+> +	vccio5-supply = <&vcc_io>;
+> +	vccio6-supply = <&vcc_io>;
+> +	pmuio-supply = <&vcc_io>;
 > +};
 > +
->  #define KEYSTONE_LOCK_BIT BIT(0)
->  
->  static void keystone_gpio_set(struct gpio_chip *chip, unsigned offset, int val)
-> @@ -175,6 +203,10 @@ static const struct of_device_id syscon_gpio_ids[] = {
->  		.compatible	= "ti,keystone-dsp-gpio",
->  		.data		= &keystone_dsp_gpio,
->  	},
-> +	{
-> +		.compatible	= "rockchip,rk3328-gpio-syscon10",
 
-rockchip,rk3328-gpio-mute [the naming from the TRM] could
-be a more suitable naming?
+Please split this into a separate patch about
+"adding io-domain supplies for roc-cc"
 
 
+>  &pinctrl {
+>  	pmic {
+>  		pmic_int_l: pmic-int-l {
+> @@ -227,10 +258,15 @@
+>  	cap-mmc-highspeed;
+>  	cap-sd-highspeed;
+>  	disable-wp;
+> +	sd-uhs-sdr12;
+> +	sd-uhs-sdr25;
+> +	sd-uhs-sdr50;
+> +	sd-uhs-sdr104;
+
+please sort properties alphabetically, so between pinctrl-0 and vmmc-supply
+
+
+>  	max-frequency = <150000000>;
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
+>  	vmmc-supply = <&vcc_sd>;
+> +	vqmmc-supply = <&vcc_sdio>;
+>  	status = "okay";
+>  };
+
+
+Thanks
 Heiko
---nextPart2893046.DzjenlKqZX
-Content-Disposition: attachment; filename="0001-gpio-syscon-allow-fetching-syscon-from-parent-node.patch"
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/x-patch; charset="UTF-8"; name="0001-gpio-syscon-allow-fetching-syscon-from-parent-node.patch"
-
-From 8894fdd9fc4ad90abec32336cc2e528d49abf887 Mon Sep 17 00:00:00 2001
-From: Heiko Stuebner <heiko@sntech.de>
-Date: Tue, 8 May 2018 13:33:37 +0200
-Subject: [PATCH] gpio: syscon: allow fetching syscon from parent node
-
-Syscon nodes can be a simple-mfd and the syscon-users then be declared
-as children of this node. That way the parent-child structure can be
-better represented for devices that are fully embedded in the syscon.
-
-Therefore allow getting the syscon from the parent if neither
-a special compatible nor a gpio,syscon-dev property is defined.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/gpio/gpio-syscon.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
-index 537cec7583fc..7325b864f52a 100644
---- a/drivers/gpio/gpio-syscon.c
-+++ b/drivers/gpio/gpio-syscon.c
-@@ -205,6 +205,8 @@ static int syscon_gpio_probe(struct platform_device *pdev)
- 	} else {
- 		priv->syscon =
- 			syscon_regmap_lookup_by_phandle(np, "gpio,syscon-dev");
-+		if (IS_ERR(priv->syscon) && np->parent)
-+			priv->syscon = syscon_node_to_regmap(np->parent);
- 		if (IS_ERR(priv->syscon))
- 			return PTR_ERR(priv->syscon);
- 
--- 
-2.16.2
-
-
---nextPart2893046.DzjenlKqZX--
