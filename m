@@ -1,112 +1,91 @@
-From: djw@t-chip.com.cn
-Subject: [PATCH v0 2/2] arm64: dts: rockchip: Add sdmmc UHS support for roc-rk3328-cc
-Date: Tue,  8 May 2018 10:48:24 +0800
-Message-ID: <1525747704-8537-3-git-send-email-djw@t-chip.com.cn>
+From: djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org
+Subject: [PATCH v0 1/2] gpio: syscon: Add gpio-syscon for rk3328
+Date: Tue,  8 May 2018 10:48:23 +0800
+Message-ID: <1525747704-8537-2-git-send-email-djw@t-chip.com.cn>
 References: <1525747704-8537-1-git-send-email-djw@t-chip.com.cn>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525747704-8537-1-git-send-email-djw@t-chip.com.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>, William Wu <william.wu@rock-chips.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Joseph Chen <chenjh@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, "David S. Miller" <davem@davemloft.net>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1525747704-8537-1-git-send-email-djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wayne Chou <zxf-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Levin Du <djw@t-chip.com.cn>
+From: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
 
-In roc-rk3328-cc board, the signal voltage of sdmmc is supplied by
-the vcc_sdio regulator, which is a mux between 1.8V and 3.3V,
-controlled by a special output only gpio pin.
+In Rockchip RK3328 Soc, there's a output only gpio pin labeled
+`gpiomut_pmuio_iout`, which can be set by bit[1] of GRF_SOC_CON10.
+(bit[0] controls the enable state of the pin and defaults to enabled.)
 
-However, this pin,  not being a normal gpio in the rockchip pinctrl,
-is set by bit 1 of system register GRF_SOC_CON10. Therefore a new
-gpio controller using gpio-syscon driver is defined in order to use
-regulator-gpio.
+This pin is used by the roc-rk3328-cc board to switch sdmmc io signal
+voltage between 1.8V and 3.3V, which is essential to the SD card UHS
+support.
 
-If the signal voltage changes, the io domain needs to change
-correspondingly.
-
-To use this feature, the following options are required in kernel config:
- - CONFIG_GPIO_SYSCON=y
- - CONFIG_POWER_AVS=y
- - CONFIG_ROCKCHIP_IODOMAIN=y
-
-Signed-off-by: Levin Du <djw@t-chip.com.cn>
-
+Signed-off-by: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
 ---
 
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 36 ++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+ drivers/gpio/gpio-syscon.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 246c317..792cb04 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -14,6 +14,12 @@
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	gpio_syscon10: gpio-syscon10 {
-+		compatible = "rockchip,rk3328-gpio-syscon10";
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+	};
-+
- 	gmac_clkin: external-gmac-clock {
- 		compatible = "fixed-clock";
- 		clock-frequency = <125000000>;
-@@ -41,6 +47,19 @@
- 		vin-supply = <&vcc_io>;
- 	};
- 
-+	vcc_sdio: sdmmcio-regulator {
-+		compatible = "regulator-gpio";
-+		gpios = <&gpio_syscon10 1 GPIO_ACTIVE_HIGH>;
-+		states = <1800000 0x1
-+			  3300000 0x0>;
-+		regulator-name = "vcc_sdio";
-+		regulator-type = "voltage";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
- 	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -208,6 +227,18 @@
- 	};
+diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
+index 537cec7..b69f65f 100644
+--- a/drivers/gpio/gpio-syscon.c
++++ b/drivers/gpio/gpio-syscon.c
+@@ -135,6 +135,34 @@ static const struct syscon_gpio_data clps711x_mctrl_gpio = {
+ 	.dat_bit_offset	= 0x40 * 8 + 8,
  };
  
-+&io_domains {
-+	status = "okay";
++static void rockchip_gpio_set(struct gpio_chip *chip, unsigned int offset,
++			      int val)
++{
++	struct syscon_gpio_priv *priv = gpiochip_get_data(chip);
++	unsigned int offs;
++	u8 bit;
++	u32 data;
++	int ret;
 +
-+	vccio1-supply = <&vcc_io>;
-+	vccio2-supply = <&vcc18_emmc>;
-+	vccio3-supply = <&vcc_sdio>;
-+	vccio4-supply = <&vcc_18>;
-+	vccio5-supply = <&vcc_io>;
-+	vccio6-supply = <&vcc_io>;
-+	pmuio-supply = <&vcc_io>;
++	offs = priv->dreg_offset + priv->data->dat_bit_offset + offset;
++	bit = offs % SYSCON_REG_BITS;
++	data = (val ? BIT(bit) : 0) | BIT(bit + 16);
++	ret = regmap_write(priv->syscon,
++			   (offs / SYSCON_REG_BITS) * SYSCON_REG_SIZE,
++			   data);
++	if (ret < 0)
++		dev_err(chip->parent, "gpio write failed ret(%d)\n", ret);
++}
++
++static const struct syscon_gpio_data rk3328_gpio_syscon10 = {
++	/* Rockchip RK3328 GRF_SOC_CON10 Bits 0-1 */
++	.compatible	= "rockchip,rk3328-grf",
++	.flags		= GPIO_SYSCON_FEAT_OUT,
++	.bit_count	= 2,
++	.dat_bit_offset	= 0x0428 * 8,
++	.set		= rockchip_gpio_set,
 +};
 +
- &pinctrl {
- 	pmic {
- 		pmic_int_l: pmic-int-l {
-@@ -227,10 +258,15 @@
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
- 	disable-wp;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
- 	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
- 	vmmc-supply = <&vcc_sd>;
-+	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
- };
+ #define KEYSTONE_LOCK_BIT BIT(0)
  
+ static void keystone_gpio_set(struct gpio_chip *chip, unsigned offset, int val)
+@@ -175,6 +203,10 @@ static const struct of_device_id syscon_gpio_ids[] = {
+ 		.compatible	= "ti,keystone-dsp-gpio",
+ 		.data		= &keystone_dsp_gpio,
+ 	},
++	{
++		.compatible	= "rockchip,rk3328-gpio-syscon10",
++		.data		= &rk3328_gpio_syscon10,
++	},
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, syscon_gpio_ids);
 -- 
 2.7.4
