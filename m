@@ -1,40 +1,46 @@
-From: Lin Huang <hl@rock-chips.com>
-Subject: [PATCH v2 3/4] Documentation: bindings: add phy_config for Rockchip USB Type-C PHY
-Date: Wed,  9 May 2018 18:22:43 +0800
-Message-ID: <1525861364-26323-3-git-send-email-hl@rock-chips.com>
-References: <1525861364-26323-1-git-send-email-hl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525861364-26323-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: seanpaul@chromium.org, airlied@linux.ie, zyw@rock-chips.com
-Cc: dianders@chromium.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, heiko@sntech.de, daniel.vetter@intel.com, jani.nikula@linux.intel.com, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, eballetbo@gmail.com, Lin Huang <hl@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] arm64: defconfig: enable rockchip efuse
+Date: Wed,  9 May 2018 16:32:25 +0200
+Message-ID: <20180509143225.32596-1-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-If want to do training outside DP Firmware, need phy voltage swing
-and pre_emphasis value.
+The efuses on Rockchip socs often contain informations
+about specifics of the chip its running on (leakage currents etc)
+which components might want to read to adjust settings accordingly.
 
-Signed-off-by: Lin Huang <hl@rock-chips.com>
+So enable the efuse early for that.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
-Changes in v2:
-- rebase
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
- Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-index 960da7f..eda26dd 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-@@ -17,7 +17,9 @@ Required properties:
- 
- Optional properties:
-  - extcon : extcon specifier for the Power Delivery
--
-+ - rockchip,phy_config : That's phy voltage swing and pre_emphasis
-+			 setting, if want to do dp training outside
-+			 dp firmware, need to add these value.
- Required nodes : a sub-node is required for each port the phy provides.
- 		 The sub-node name is used to identify dp or usb3 port,
- 		 and shall be the following entries:
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 34037d24fbf4..74abf140e332 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -612,6 +612,7 @@ CONFIG_QCOM_L2_PMU=y
+ CONFIG_QCOM_L3_PMU=y
+ CONFIG_MESON_EFUSE=m
+ CONFIG_QCOM_QFPROM=y
++CONFIG_ROCKCHIP_EFUSE=y
+ CONFIG_UNIPHIER_EFUSE=y
+ CONFIG_TEE=y
+ CONFIG_OPTEE=y
 -- 
-2.7.4
+2.16.2
