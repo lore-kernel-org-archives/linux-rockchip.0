@@ -1,238 +1,225 @@
-From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [PATCH 3/3] rockchip: fix incorrect detection of ram
- size
-Date: Wed, 9 May 2018 09:24:24 +0200
-Message-ID: <ACC69619-170B-4B14-9113-FAD4E917DF99@theobroma-systems.com>
-References: <20180506142513.19911-1-hanetzer@startmail.com>
- <20180506142513.19911-4-hanetzer@startmail.com>
- <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
- <20180507023413.mil4wj7xtjy6gnuw@proprietary-killer>
- <791299C0-EEC0-4DB1-97C4-A8DAD3B1A481@theobroma-systems.com>
- <20180508005215.s3uivl43jfaryv7j@proprietary-killer>
- <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
- <20180508192125.t2srquyb7no7izog@proprietary-killer>
- <C5B7DFAE-C5CA-4D9E-B6CB-C44E9AD974E9@theobroma-systems.com>
- <20180509052903.csmglv3aqbp6zmec@proprietary-killer>
-Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20180509052903.csmglv3aqbp6zmec@proprietary-killer>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: "Marty E. Plummer" <hanetzer@startmail.com>
-Cc: vagrant@debian.org, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+From: wlf <wulf@rock-chips.com>
+Subject: Re: [PATCH v3 1/2] usb: dwc2: alloc dma aligned buffer for isoc split
+ in
+Date: Wed, 9 May 2018 16:55:24 +0800
+Message-ID: <196bd304-3c6b-91b6-1743-50d6d13fc5a5@rock-chips.com>
+References: <1525748846-7767-1-git-send-email-william.wu@rock-chips.com>
+ <1525748846-7767-2-git-send-email-william.wu@rock-chips.com>
+ <CAD=FV=VKBVp++gPXzYN0N46NVarPNWqs1YZjfcd7twkU25WNyQ@mail.gmail.com>
+ <f2e0fba2-da0b-38ba-6e25-3da9ccf1e4ee@rock-chips.com>
+ <CAD=FV=W0Aufw1=UH2eZjb4cpiLjt9ty49CrUOdM5B2wF+WoY-A@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=W0Aufw1=UH2eZjb4cpiLjt9ty49CrUOdM5B2wF+WoY-A@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@google.com>
+Cc: William Wu <william.wu@rock-chips.com>, hminas@synopsys.com, felipe.balbi@linux.intel.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, linux-usb@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, "daniel.meng" <daniel.meng@rock-chips.com>, John Youn <John.Youn@synopsys.com>, =?UTF-8?B?546L5b6B5aKe?= <wzz@rock-chips.com>, zsq@rock-chips.com, =?UTF-8?B?6Kix5ZiJ6YqY?= <Allen.Hsu@quantatw.com>, Stan Tsui <StanTsui@aopen.com>, =?UTF-8?B?U3BydWNlIFd1ICjlkLPlu7rli7Mp?= <Spruce.Wu@quantatw.com>, Marti
 List-Id: linux-rockchip.vger.kernel.org
 
-Cj4gT24gOSBNYXkgMjAxOCwgYXQgMDc6MjksIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0
-YXJ0bWFpbC5jb20+IHdyb3RlOgo+IAo+IE9uIFR1ZSwgTWF5IDA4LCAyMDE4IGF0IDExOjA4OjE0
-UE0gKzAyMDAsIERyLiBQaGlsaXBwIFRvbXNpY2ggd3JvdGU6Cj4+IAo+Pj4gT24gOCBNYXkgMjAx
-OCwgYXQgMjE6MjEsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFpbC5jb20+IHdy
-b3RlOgo+Pj4gCj4+PiBPbiBUdWUsIE1heSAwOCwgMjAxOCBhdCAxMjoyMToyNFBNICswMjAwLCBE
-ci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+Pj4+IE1hcnR5LAo+Pj4+IAo+Pj4+PiBPbiA4IE1h
-eSAyMDE4LCBhdCAwMjo1MiwgTWFydHkgRS4gUGx1bW1lciA8aGFuZXR6ZXJAc3RhcnRtYWlsLmNv
-bT4gd3JvdGU6Cj4+Pj4+IAo+Pj4+PiBPbiBNb24sIE1heSAwNywgMjAxOCBhdCAxMToxNjoyOEFN
-ICswMjAwLCBEci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+Pj4+Pj4gCj4+Pj4+Pj4gT24gNyBN
-YXkgMjAxOCwgYXQgMDQ6MzQsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFpbC5j
-b20+IHdyb3RlOgo+Pj4+Pj4+IAo+Pj4+Pj4+IE9uIE1vbiwgTWF5IDA3LCAyMDE4IGF0IDEwOjIw
-OjU1QU0gKzA4MDAsIEtldmVyIFlhbmcgd3JvdGU6Cj4+Pj4+Pj4+IEhpIE1hcnR5LAo+Pj4+Pj4+
-PiAKPj4+Pj4+Pj4gCj4+Pj4+Pj4+IE9uIDA1LzA2LzIwMTggMTA6MjUgUE0sIE1hcnR5IEUuIFBs
-dW1tZXIgd3JvdGU6Cj4+Pj4+Pj4+PiBUYWtlbiBmcm9tIGNvcmVib290J3Mgc3JjL3NvYy9yb2Nr
-Y2hpcC9yazMyODgvc2RyYW0uYwo+Pj4+Pj4+Pj4gCj4+Pj4+Pj4+PiBXaXRob3V0IHRoaXMgY2hh
-bmdlLCBteSB1LWJvb3QgYnVpbGQgZm9yIHRoZSBhc3VzIGMyMDEgY2hyb21lYm9vayAoNEdpQikK
-Pj4+Pj4+Pj4+IGlzIGluY29ycmVjdGx5IGRldGVjdGVkIGFzIDAgQnl0ZXMgb2YgcmFtLgo+Pj4+
-Pj4+PiAKPj4+Pj4+Pj4gSSBrbm93IHRoZSByb290IGNhdXNlIGZvciB0aGlzIGlzc3VlLCBhbmQg
-SSBoYXZlIGEgbG9jYWwgcGF0Y2ggZm9yIGl0Lgo+Pj4+Pj4+PiBUaGUgcmszMjg4IGlzIDMyYml0
-LCBhbmQgNEdCIHNpemUgaXMganVzdCBvdXQgb2YgcmFuZ2UsIHNvIHdlIG5lZWQgdG8gYmVmb3Jl
-Cj4+Pj4+Pj4+IHRoZSBtYXggc2l6ZSBiZWZvcmUgcmV0dXJuIHdpdGggJzw8MjAnLiBTb3JyeSBm
-b3IgZm9yZ290IHRvIHNlbmQgaXQgb3V0Lgo+Pj4+Pj4+PiAKPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4g
-U2lnbmVkLW9mZi1ieTogTWFydHkgRS4gUGx1bW1lciA8aGFuZXR6ZXJAc3RhcnRtYWlsLmNvbT4K
-Pj4+Pj4+Pj4+IC0tLQo+Pj4+Pj4+Pj4gYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21t
-b24uYyB8IDYyICsrKysrKysrKysrKysrKystLS0tLS0tLS0tLQo+Pj4+Pj4+Pj4gMSBmaWxlIGNo
-YW5nZWQsIDM3IGluc2VydGlvbnMoKyksIDI1IGRlbGV0aW9ucygtKQo+Pj4+Pj4+Pj4gCj4+Pj4+
-Pj4+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYyBi
-L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMKPj4+Pj4+Pj4+IGluZGV4IDc2
-ZGJkYzg3MTUuLmE5YzlmOTcwYTQgMTAwNjQ0Cj4+Pj4+Pj4+PiAtLS0gYS9hcmNoL2FybS9tYWNo
-LXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+Pj4+PiArKysgYi9hcmNoL2FybS9tYWNoLXJv
-Y2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+Pj4+PiBAQCAtMTAsNiArMTAsOCBAQAo+Pj4+Pj4+
-Pj4gI2luY2x1ZGUgPGFzbS9pby5oPgo+Pj4+Pj4+Pj4gI2luY2x1ZGUgPGFzbS9hcmNoL3NkcmFt
-X2NvbW1vbi5oPgo+Pj4+Pj4+Pj4gI2luY2x1ZGUgPGRtL3VjbGFzcy1pbnRlcm5hbC5oPgo+Pj4+
-Pj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPj4+Pj4+Pj4+ICsjaW5jbHVkZSA8bGlu
-dXgvc2l6ZXMuaD4KPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4gREVDTEFSRV9HTE9CQUxfREFUQV9QVFI7
-Cj4+Pj4+Pj4+PiBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShwaHlzX2FkZHJfdCByZWcpCj4+
-Pj4+Pj4+PiBAQCAtMTksMzQgKzIxLDQ0IEBAIHNpemVfdCByb2NrY2hpcF9zZHJhbV9zaXplKHBo
-eXNfYWRkcl90IHJlZykKPj4+Pj4+Pj4+IAlzaXplX3Qgc2l6ZV9tYiA9IDA7Cj4+Pj4+Pj4+PiAJ
-dTMyIGNoOwo+Pj4+Pj4+Pj4gCj4+Pj4+Pj4+PiAtCXUzMiBzeXNfcmVnID0gcmVhZGwocmVnKTsK
-Pj4+Pj4+Pj4+IC0JdTMyIGNoX251bSA9IDEgKyAoKHN5c19yZWcgPj4gU1lTX1JFR19OVU1fQ0hf
-U0hJRlQpCj4+Pj4+Pj4+PiAtCQkgICAgICAgJiBTWVNfUkVHX05VTV9DSF9NQVNLKTsKPj4+Pj4+
-Pj4+ICsJaWYgKCFzaXplX21iKSB7Cj4+Pj4+Pj4+IAo+Pj4+Pj4+PiBJIGRvbid0IHVuZGVyc3Rh
-bmQgdGhpcyBhbmQgZm9sbG93IHVwIGNoYW5nZXMsIHdlIGRvbid0IHJlYWxseSBuZWVkIGl0LAo+
-Pj4+Pj4+PiBpc24ndCBpdD8KPj4+Pj4+Pj4gSSB0aGluayBkb24ndCBuZWVkIHRoZSBjaGFuZ2Vz
-IGJlZm9yZSBoZXJlLgo+Pj4+Pj4+IFllYWgsIHRoYXQgd2FzIGp1c3QgYW5vdGhlciBsZXZlbCBv
-ZiBpbmRlbnRhdGlvbiBmb3IgdGhlIGlmICghc2l6ZV9tYikKPj4+Pj4+PiBndWFyZCwgYnV0IEkn
-dmUgcmV3b3JrZWQgdGhlIHBhdGNoIHRvIG5vdCBkbyB0aGF0IGFzIGl0IHdhcyBwb2ludGVkIG91
-dAo+Pj4+Pj4+IHRoYXQgc2luY2Ugc2l6ZV9tYiBpcyBpbml0aWFsaXplZCB0byAwIHByaW9yLgo+
-Pj4+Pj4+Pj4gKwkJLyoKPj4+Pj4+Pj4+ICsJCSAqIHdlIHVzZSB0aGUgMHgwMDAwMDAwMH4weGZl
-ZmZmZmZmIHNwYWNlCj4+Pj4+Pj4+PiArCQkgKiBzaW5jZSAweGZmMDAwMDAwfjB4ZmZmZmZmZmYg
-aXMgc29jIHJlZ2lzdGVyIHNwYWNlCj4+Pj4+Pj4+PiArCQkgKiBzbyB3ZSByZXNlcnZlIGl0Cj4+
-Pj4+Pj4+PiArCQkgKi8KPj4+Pj4+Pj4+ICsJCXNpemVfbWIgPSBtaW4oc2l6ZV9tYiwgMHhmZjAw
-MDAwMC9TWl8xTSk7Cj4+Pj4+Pj4+IAo+Pj4+Pj4+PiBUaGlzIGlzIHdoYXQgd2UgcmVhbGx5IG5l
-ZWQsIGFzIEtsYXVzIHBvaW50IG91dCwgd2UgbmVlZCB0byB1c2UKPj4+Pj4+Pj4gU0RSQU1fTUFY
-X1NJWkUKPj4+Pj4+Pj4gaW5zdGVhZCBvZiBoYXJkIGNvZGUuCj4+Pj4+Pj4gWWVhaCwgSSd2ZSBn
-b3QgYSByZXdvcmsgb24gdGhhdCB3aGljaCB1c2VzIFNEUkFNX01BWF9TSVpFIGFzIGluc3RydWN0
-ZWQsCj4+Pj4+Pj4gYnVpbGQgYW5kIGJvb3QgdGVzdGVkIG9uIG15IGhhcmR3YXJlLgo+Pj4+Pj4g
-Cj4+Pj4+PiBJbiB0aGF0IGNhc2UgeW91IGp1c3QgbWFza2VkIHRoZSBwcm9ibGVtIGJ1dCBkaWRu
-Pz8/dCBzb2x2ZSBpdDogYXNzdW1pbmcgc2l6ZV9tYgo+Pj4+Pj4gaXMgc2l6ZV90IChJPz8/bGwg
-YXNzdW1lIHRoaXMgaXMgNjRiaXQsIGJ1dCBkaWQgbm90IGNoZWNrKSwgdGhlbiB5b3VyIDRHQiBp
-cyAweDFfMDAwMF8wMDAwICkKPj4+Pj4+IHdoaWNoIG92ZXJmbG93cyB0byAweDAgd2hlbiBjb252
-ZXJ0ZWQgdG8gYSB1MzIuCj4+Pj4+PiAKPj4+Pj4+IEluIG90aGVyIHdvcmRzOiB3ZSBuZWVkIHRv
-IGZpZ3VyZSBvdXQgd2hlcmUgdGhlIHRydW5jYXRpb24gb2NjdXJzIChpbWFnZSB3aGF0Cj4+Pj4+
-PiBoYXBwZW5zIGlmIGEgbmV3IDMyYml0IHByb2Nlc3NvciB3aXRoIExQQUUgY29tZXMgb3V0Pz8/
-KS4KPj4+Pj4+IAo+Pj4+PiBBIHZlcnkgdmFsaWQgcG9pbnQuIFdpdGggdGhlIGZvbGxvd2luZyBw
-YXRjaCB0byBzZHJhbV9jb21tb24uYyBhbmQKPj4+Pj4gc2RyYW1fcmszMjg4LmMgYXBwbGllZCBJ
-IGdldCB0aGUgZGVidWcgb3V0cHV0IHRoYXQgZm9sbG93cyBpdDoKPj4+Pj4gZGlmZiAtLWdpdCBh
-L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgYi9hcmNoL2FybS9tYWNoLXJv
-Y2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+IGluZGV4IDIzMmE3ZmE2NTUuLjBmZTY5YmY1NTgg
-MTAwNjQ0Cj4+Pj4+IC0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMK
-Pj4+Pj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+Pj4+PiBA
-QCAtNCw2ICs0LDcgQEAKPj4+Pj4gKiBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogICAgIEdQTC0y
-LjArCj4+Pj4+ICovCj4+Pj4+IAo+Pj4+PiArI2RlZmluZSBERUJVRyAxCj4+Pj4+ICNpbmNsdWRl
-IDxjb21tb24uaD4KPj4+Pj4gI2luY2x1ZGUgPGRtLmg+Cj4+Pj4+ICNpbmNsdWRlIDxyYW0uaD4K
-Pj4+Pj4gQEAgLTM5LDE2ICs0MCwxOSBAQCBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShwaHlz
-X2FkZHJfdCByZWcpCj4+Pj4+IAkJCVNZU19SRUdfUk9XXzNfNF9NQVNLOwo+Pj4+PiAKPj4+Pj4g
-CQljaGlwc2l6ZV9tYiA9ICgxIDw8IChjczBfcm93ICsgY29sICsgYmsgKyBidyAtIDIwKSk7Cj4+
-Pj4+ICsJCWRlYnVnKCIlczogJWQ6IGNoaXBzaXplX21iICV4XG4iLCBfX2Z1bmNfXywgX19MSU5F
-X18sIGNoaXBzaXplX21iKTsKPj4+Pj4gCj4+Pj4+IAkJaWYgKHJhbmsgPiAxKQo+Pj4+PiAJCQlj
-aGlwc2l6ZV9tYiArPSBjaGlwc2l6ZV9tYiA+PiAoY3MwX3JvdyAtIGNzMV9yb3cpOwo+Pj4+PiAJ
-CWlmIChyb3dfM180KQo+Pj4+PiAJCQljaGlwc2l6ZV9tYiA9IGNoaXBzaXplX21iICogMyAvIDQ7
-Cj4+Pj4+IAkJc2l6ZV9tYiArPSBjaGlwc2l6ZV9tYjsKPj4+Pj4gKwkJZGVidWcoIiVzOiAlZDog
-c2l6ZV9tYiAleFxuIiwgX19mdW5jX18sIF9fTElORV9fLCBzaXplX21iKTsKPj4+Pj4gCQlkZWJ1
-ZygicmFuayAlZCBjb2wgJWQgYmsgJWQgY3MwX3JvdyAlZCBidyAlZCByb3dfM180ICVkXG4iLAo+
-Pj4+PiAJCSAgICAgIHJhbmssIGNvbCwgYmssIGNzMF9yb3csIGJ3LCByb3dfM180KTsKPj4+Pj4g
-CX0KPj4+Pj4gCj4+Pj4+ICsJZGVidWcoIiVzOiAlZDogc2l6ZV9tYiAleFxuIiwgX19mdW5jX18s
-IF9fTElORV9fLCBzaXplX21iKTsKPj4+Pj4gCXNpemVfbWIgPSBtaW4oc2l6ZV9tYiwgU0RSQU1f
-TUFYX1NJWkUvU1pfMU0pOwo+Pj4+PiAKPj4+Pj4gCXJldHVybiAoc2l6ZV90KXNpemVfbWIgPDwg
-MjA7Cj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMyODgu
-YyBiL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzI4OC5jCj4+Pj4+IGluZGV4IGQ5OWJm
-MTI0NzYuLjk3MzhlYjA4OGYgMTAwNjQ0Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvcmFtL3JvY2tjaGlw
-L3NkcmFtX3JrMzI4OC5jCj4+Pj4+ICsrKyBiL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3Jr
-MzI4OC5jCj4+Pj4+IEBAIC03LDYgKzcsNyBAQAo+Pj4+PiAqIEFkYXB0ZWQgZnJvbSBjb3JlYm9v
-dC4KPj4+Pj4gKi8KPj4+Pj4gCj4+Pj4+ICsjZGVmaW5lIERFQlVHIDEKPj4+Pj4gI2luY2x1ZGUg
-PGNvbW1vbi5oPgo+Pj4+PiAjaW5jbHVkZSA8Y2xrLmg+Cj4+Pj4+ICNpbmNsdWRlIDxkbS5oPgo+
-Pj4+PiAKPj4+Pj4gLS0tCj4+Pj4+IFUtQm9vdCBTUEwgMjAxOC4wNS1yYzMtMDIzNzAtZzMwOTM4
-NGU4NGItZGlydHkgKE1heSAwNyAyMDE4IC0gMTk6NDI6MTUgLTA1MDApCj4+Pj4+IFRyeWluZyB0
-byBib290IGZyb20gU1BJCj4+Pj4+IAo+Pj4+PiAKPj4+Pj4gVS1Cb290IDIwMTguMDUtcmMzLTAy
-MzcwLWczMDkzODRlODRiLWRpcnR5IChNYXkgMDcgMjAxOCAtIDE5OjQyOjE1IC0wNTAwKQo+Pj4+
-PiAKPj4+Pj4gTW9kZWw6IEdvb2dsZSBTcGVlZHkKPj4+Pj4gRFJBTTogIHJvY2tjaGlwX3NkcmFt
-X3NpemUgZmY3MzAwOWMgM2M1MGRjNTAKPj4+Pj4gcm9ja2NoaXBfc2RyYW1fc2l6ZTogNDI6IGNo
-aXBzaXplX21iIDQwMAo+Pj4+PiByb2NrY2hpcF9zZHJhbV9zaXplOiA0OTogc2l6ZV9tYiA4MDAK
-Pj4+Pj4gcmFuayAyIGNvbCAxMSBiayAzIGNzMF9yb3cgMTQgYncgMiByb3dfM180IDAKPj4+Pj4g
-cm9ja2NoaXBfc2RyYW1fc2l6ZTogNDI6IGNoaXBzaXplX21iIDQwMAo+Pj4+PiByb2NrY2hpcF9z
-ZHJhbV9zaXplOiA0OTogc2l6ZV9tYiAxMDAwCj4+Pj4+IHJhbmsgMiBjb2wgMTEgYmsgMyBjczBf
-cm93IDE0IGJ3IDIgcm93XzNfNCAwCj4+Pj4+IHJvY2tjaGlwX3NkcmFtX3NpemU6IDU0OiBzaXpl
-X21iIDEwMDAKPj4+Pj4gU0RSQU0gYmFzZT0wLCBzaXplPWZlMDAwMDAwCj4+Pj4+IDQgR2lCCj4+
-Pj4+IE1NQzogICBkd21tY0BmZjBjMDAwMDogMSwgZHdtbWNAZmYwZDAwMDA6IDIsIGR3bW1jQGZm
-MGYwMDAwOiAwCj4+Pj4+IEluOiAgICBjcm9zLWVjLWtleWIKPj4+Pj4gT3V0OiAgIHZpZGNvbnNv
-bGUKPj4+Pj4gRXJyOiAgIHZpZGNvbnNvbGUKPj4+Pj4gTW9kZWw6IEdvb2dsZSBTcGVlZHkKPj4+
-Pj4gcm9ja2NoaXBfZG5sX2tleV9wcmVzc2VkOiBhZGNfY2hhbm5lbF9zaW5nbGVfc2hvdCBmYWls
-IQo+Pj4+PiBOZXQ6ICAgTmV0IEluaXRpYWxpemF0aW9uIFNraXBwZWQKPj4+Pj4gTm8gZXRoZXJu
-ZXQgZm91bmQuCj4+Pj4+IEhpdCBhbnkga2V5IHRvIHN0b3AgYXV0b2Jvb3Q6ICAwCj4+Pj4+IEkg
-Z3Vlc3Mgd2UgbmVlZCB0byBjaGFuZ2UgdGhlIHNpemVfdCB0byBzb21ldGhpbmcgbGFyZ2VyOyB1
-bmxlc3MgSSdtCj4+Pj4+IG1pc3Rha2VuLCB0aGF0J3MgYSAzMiBiaXQgdmFsdWUsIHJpZ2h0PyBh
-bmQgMHgxMDAwMDAwMDAgaXMgYXQgbGVhc3QgNDAKPj4+PiAKPj4+PiA0R0IgaXMgYWN0dWFsbHkg
-dGhlIDMzcmQgYml0IHNldCBhbmQgdGhlIGxvd2VyIDMyYml0cyBjbGVhcmVkIChpLmUuIHRoZSBs
-YXJnZXN0Cj4+Pj4gMzJiaXQgdmFsdWUgPz8/cGx1cyBvbmU/Pz8pLgo+Pj4+IAo+Pj4+PiBiaXRz
-LCB1bmxlc3MgSSdtIG1pc3NpbmcgdGhlIGlzc3VlIGhlcmUgc29tZXdoZXJlLiBIb3dldmVyLCB0
-aGF0IHdvdWxkCj4+Pj4+IHRha2UgYSBjaGFuZ2UgdG8gaW5jbHVkZS9yYW0uaCwgYW5kIHdvdWxk
-IGltcGFjdCBmYXIgbW9yZSB0aGFuIGp1c3QKPj4+Pj4gcmszMjg4L3JvY2tjaGlwIGRldmljZXMg
-YWNyb3NzIHRoZSBib2FyZCwgc28gSSdtIHVuc3VyZSBob3cgdG8gcHJvY2VlZC4KPj4+Pj4gCj4+
-Pj4+IFVzZSB0aGUgbWluIG1hY3JvIGhlcmUgZm9yIG5vdywgYW5kIGJlZ2luIHdvcmsgbWlncmF0
-aW5nIHRoZSByYW1faW5mbwo+Pj4+PiBzaXplIG1lbWJlciB0byBhIDY0LWJpdCBjb250YWluZXI/
-Cj4+Pj4gCj4+Pj4gVGhlIG1pbigpIGRvZXNuPz8/dCBtYWtlIGFueSBzZW5zZSBoZXJlLCBhcyB3
-ZSBpbXBsZW1lbnQgdGhlIGhvb2sgZnVuY3Rpb24KPj4+PiA/Pz9ib2FyZF9nZXRfdXNhYmxlX3Jh
-bV90b3A/Pz8ganVzdCBhIGZldyBsaW5lcyBsYXRlcj8/Pwo+Pj4+IFdlIGFyZSBhdCB0aGUgc3Rh
-cnQgb2YgdGhlIG1lcmdlIHdpbmRvdyByaWdodCBub3csIHNvIEk/Pz9kIHJhdGhlciBob2xkIG9m
-ZiBhCj4+Pj4gd2VlayAob3IgdHdvKSBhbmQgaGF2ZSBhIHBlcm1hbmVudCBzb2x1dGlvbiB0aGFu
-IG1lcmdpbmcganVzdCBhIGJhbmQtYWlkCj4+Pj4gbm93IGFuZCB0aGVuIGhhdmluZyB0aGUgZnVs
-bCBmaXggY29tZSBpbiBsYXRlciBkdXJpbmcgdGhlIG1lcmdlIHdpbmRvdy4KPj4+PiAKPj4+PiBJ
-IGJyaWVmbHkgcmV2aWV3ZWQgdGhlIHNpdHVhdGlvbiB5ZXN0ZXJkYXkgYW5kIGl0IGxvb2tzIGxp
-a2UgdGhlIHNpemUgZmllbGQgaW4KPj4+PiByYW1faW5mbyBpcyB0aGUgY3VscHJpdDogaXQ/Pz9z
-IGRlZmluZWQgYXMgPz8/c2l6ZV90Pz8/LCB3aGljaCBhZ2FpbiBpcyBfX1NJWkVfVFlQRV9fCj4+
-Pj4gd2hpY2ggYWdhaW4gaXMgPz8/dW5zaWduZWQgaW50Pz8/IG9uIGEgKDMyYml0KSBhcm0tKi1l
-YWJpIGNvbXBpbGVyLgo+Pj4gWWVhaCwgSSB3YXMgdGFsa2luZyBhYm91dCB0aGlzIHdpdGggTWFy
-ZWsgb24gaXJjIHllc3RlcmRheSwgSSBoYWQgdGhlCj4+PiBzYW1lIGNvbmNsdXNpb24uIEhvd2V2
-ZXIsIGJlaW5nIHZlcnkgbmV3IGFuZCBpbmV4cGVyaWVuY2VkIHdpdGggdS1ib290Cj4+PiBkZXZl
-bG9wbWVudCBpbiBnZW5lcmFsLCBJJ20gYSBiaXQgYXZlcnNlIHRvIHRvIG1lc3Npbmcgd2l0aCB3
-aGF0IGFwcGVhcnMKPj4+IHRvIGJlIGEgZ2xvYmFsIGhlYWRlciBmaWxlLCBhcyBpdCBjYW4gZWFz
-aWx5IGJyZWFrIGFueSBvdGhlciBib2FyZCB3aGljaAo+Pj4gdXNlcyBpdC4KPj4gCj4+IE5vIHBy
-b2JsZW0gPz8/IGxldD8/P3Mgd2FpdCBmb3IgU2ltb24/Pz9zIGlucHV0IGFuZCBJPz8/bGwgY3Jl
-YXRlIHRoZSBwYXRjaHNldC4KPj4gST8/P2xsIG5lZWQgeW91ciBoZWxwIHRlc3RpbmcsIGFzIEkg
-ZG9uPz8/dCBoYXZlIGFueSAzMmJpdCBwbGF0Zm9ybXMgdy8gNEdCPz8/IGFuZCBJPz8/bGwKPj4g
-bGV0IHlvdSBrbm93IG9uY2Ugc29tZXRoaW5nIGlzIHJlYWR5IGZvciB5b3UgdG8gdGVzdC4KPj4g
-Cj4gRXZlbiBpZiB3ZSBkbyBjaGFuZ2UgcmFtX2luZm8uc2l6ZSBpbnRvIGEgbGFyZ2VyLCA2NC1i
-aXQgdmFyaWFibGUsIHdlCj4gc2hvdWxkIHN0aWxsIHByb2JhYmx5IHVzZSB0aGF0IG1pbiBjYWxs
-IHNpbmNlIHdpdGggYSAzMi1iaXQgYWRkcmVzcwo+IHNwYWNlLCBldmVuIHdpdGggNEdpQiByYW0g
-cGh5c2ljYWxseSwgdGhlIHJrMzI4OCBjYW4gb25seSBhZGRyZXNzCj4gMHhmZjAwMDAwIG9mIHJh
-bSwgd2hpY2ggaXMganVzdCBhIHRhZCBzaHkgb2YgdGhlIGZ1bGwgNEdpQi4KClRoaXMgaXMgbm90
-IHRoZSBtZWFuaW5nIG9mIHJhbV9pbmZvLnNpemUsIHRob3VnaOKApiBmb3IgdGhlIGFkZHJlc3Nh
-YmlsaXR5IHRoZXJl4oCZcwp0aGUg4oCYYm9hcmRfZ2V0X3VzYWJsZV9yYW1fdG9w4oCZIGhvb2sg
-dXNlZCB0b2RheS4KClVuZm9ydHVuYXRlbHksIHRoZXJl4oCZcyBubyBmb3JtYWwgZGVmaW5pdGlv
-biAoaS5lLiBjbGVhciBkb2N1bWVudGF0aW9uIG9mIHRoaXMgaW4gYSBoZWFkZXIKZmlsZSkgb2Yg
-Ym9hcmRfZ2V0X3VzYWJsZV9yYW1fdG9wOyBob3dldmVyLCB0aGUgZGVmYXVsdCAod2VhaykgaW1w
-bGVtZW50YXRpb24gaW4KYm9hcmRfZiBoaW50cyBhdCB0aGUgaW50ZW50IHRvIHVzZSBpdCB0byBj
-bGlwIHRoZSBlbmQgaWYgdGhlIOKAmXNpemXigJkgZmllbGQgZXhjZWVkcyB0aGUKYWRkcmVzc2Fi
-bGUgc3BhY2U6CiAgICAgICAgLyoKICAgICAgICAgKiBEZXRlY3Qgd2hldGhlciB3ZSBoYXZlIHNv
-IG11Y2ggUkFNIHRoYXQgaXQgZ29lcyBwYXN0IHRoZSBlbmQgb2Ygb3VyCiAgICAgICAgICogMzIt
-Yml0IGFkZHJlc3Mgc3BhY2UuIElmIHNvLCBjbGlwIHRoZSB1c2FibGUgUkFNIHNvIGl0IGRvZXNu
-J3QuCiAgICAgICAgICovCgpUaGlzIGlzIGFsc28gY29uc2lzdGVudCB3aXRoIHVzYWdlIG9uIFRl
-Z3JhIGFuZCBhIGZldyBvdGhlcnMuClVudGlsIHNvbWVvbmUgZGVjaWRlcyB0aGF0IHJhbV9pbmZv
-IHNob3VsZCBub3QgaG9sZCB0aGUgRFJBTSBjb250cm9sbGVy4oCZcyB2aWV3LApidXQgcmF0aGVy
-IGNvbnNpZGVyIGFkZHJlc3NhYmlsaXR5IGJ5IHRoZSBDUFUsIEkgc3Ryb25nbHkgZGlzYWdyZWUg
-d2l0aCBhcHBseWluZyAKdGhlIGNhcnZlb3V0IGZvciB0aGUgTU1JTyB0aGlzIGVhcmx5LgoKQWxz
-byBub3RlIHRoYXQganVzdCBiZWNhdXNlIHRoaXMgcGFydCBvZiBtZW1vcnkgaXMgbm90IGFkZHJl
-c3NhYmxlIGZyb20gdGhlIENQVXMKZG9lcyBub3QgbmVjZXNzYXJpbHkgbWVhbiB0aGF0IGl0IGlz
-IG5vdCBhZGRyZXNzYWJsZSBmcm9tIG9uZSBvZiB0aGUgRE1BIGNvbnRyb2xsZXJzCihJIGRvbuKA
-mXQga25vdyBlbm91Z2ggYWJvdXQgdGhlIGludGVybmFsIGltcGxlbWVudGF0aW9uIG9mIHRoZSBh
-ZGRyZXNzIGRlY29kZSBsb2dpYwppbiB0aGlzIFNvQyB0byBkZXRlcm1pbmUgd2hldGhlciB0aGF0
-IHBhcnQgb2YgbWVtb3J5IGlzIHJlYWxseSB1bmFjY2Vzc2libGUgb3IgaWYgaXQKaXMgbWVyZWx5
-IOKAnHNwZWNpYWzigJ0pLgoKPj4+PiAKPj4+PiBFeHBhbmRpbmcgdGhpcyB0byBhIHBoeXNfc2l6
-ZV90IHdvbj8/P3QgYmUgZG9pbmcgdXMgbXVjaCBnb29kLCBlaXRoZXIgKGFzCj4+Pj4gdGhhdCBv
-bmUgd2lsbCBhbHNvIGJlIDMyYml0cyBmb3IgdGhlIFJLMzI4OCkuCj4+Pj4gCj4+Pj4gVGhlIHJv
-b3QgY2F1c2Ugb2YgdGhpcyBpcyByZWFsbHkgdGhhdCB0aGUgUkFNIHNpemUgYW5kIHRoZSA/Pz91
-c2FibGUgUkFNPz8/IGFyZQo+Pj4+IHR3byBkaWZmZXJlbnQgY29uY2VwdHMgaW4gVS1Cb290LiAg
-T24gYSAzMmJpdCBwaHlzaWNhbCBhZGRyZXNzIHNwYWNlIHdpdGgKPj4+PiBtZW1vcnktbWFwcGVk
-IHBlcmlwaGVyYWxzLCB3ZSBjYW4gbmV2ZXIgaGF2ZSB0aGUgZnVsbCA0R0Igb2YgRFJBTSBhcwo+
-Pj4+IHdlPz8/bGwgYWxzbyBoYXZlIHNvbWUgb2YgdGhlIHBoeXNpY2FsIGFkZHJlc3Mtc3BhY2Ug
-c2V0IGFzaWRlIGZvciB0aGUgTU1JTzsKPj4+PiBob3dldmVyLCB0aGUgTU1JTyByYW5nZSBpcyBv
-bmx5IHJlbW92ZWQgZnJvbSB0aGUgRFJBTSBzaXplIHdoZW4gdGhlCj4+Pj4gdXNhYmxlIHJhbS10
-b3AgaXMgZXZhbHVhdGVkPz8/IHNvIHRoZSBzaXplIGNhbiBiZSA0R0IgYWZ0ZXIgYWxsIGFuZCBv
-dmVyZmxvdwo+Pj4+IHRoZSAzMmJpdCBzaXplX3QuICBOb3RlIHRoYXQgdGhpcyBzZXBhcmF0aW9u
-IGludG8gdHdvIGRpZmZlcmVudCBzdGVwcyBtYWtlcyBhCj4+Pj4gbG90IG9mIHNlbnNlLCBhcyBw
-cm9jZXNzb3JzIG1pZ2h0IG5vdCB1c2UgTU1JTyBidXQgc3BlY2lhbGlzZWQgaW5zdHJ1Y3Rpb25z
-Cj4+Pj4gdG8gYWNjZXNzIHBlcmlwaGVyYWwgc3BhY2U/Pz9pbiB3aGljaCBjYXNlIHRoZXJlIG1p
-Z2h0IGluZGVlZCBiZSBhIHVzYWJsZQo+Pj4+IG1lbW9yeSBvZiA0R0Igb24gYSAzMmJpdCBwaHlz
-aWNhbCBhZGRyZXNzIHNwYWNlLgo+Pj4+IAo+Pj4+IEZyb20gd2hhdCBJIGNhbiB0ZWxsLCB3ZT8/
-P2xsIG5lZWQgdG8gZG8gdHdvIHRoaW5nczoKPj4+PiAoYSkJZml4IGFyY2gvYXJtL21hY2gtcm9j
-a2NoaXAvc2RyYW1fY29tbW9uLmMgdG8gbm90IHVzZSAzMmJpdCB0eXBlcwo+Pj4+IAlmb3IgdGhl
-IG1lbW9yeSBzaXplCj4+Pj4gKGIpCXRvdWNoIHJhbS5oIHRvIGNoYW5nZSB0aGUgdHlwZSBvZiB0
-aGUgPz8/c2l6ZT8/PyBmaWVsZCBpbiByYW1faW5mbyAoaXQgbmVlZHMKPj4+PiAJdG8gYmUgbGFy
-Z2VyIHRoYW4gMzJiaXRzCj4+Pj4gCj4+Pj4gST8/P2QgbGlrZSBTaW1vbj8/P3MgaW5wdXQgKGFz
-IGhlIG93bnMgcmFtLmgpIGFuZCBjYW4gY3JlYXRlIGEgcGF0Y2hzZXQgZm9yIHRoaXMKPj4+PiBj
-aGFuZ2UsIGlmIGhlIGFncmVlcyB0aGF0IHRoaXMgaXMgdGhlIHdheSBmb3J3YXJkLgo+Pj4+IAo+
-Pj4+IFJlZ2FyZHMsCj4+Pj4gUGhpbGlwcC4KPj4+PiAKPj4+Pj4+Pj4gCj4+Pj4+Pj4+IFRoYW5r
-cywKPj4+Pj4+Pj4gLSBLZXZlcgo+Pj4+Pj4+Pj4gCX0KPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4gCXJl
-dHVybiAoc2l6ZV90KXNpemVfbWIgPDwgMjA7Cj4+Pj4+Pj4+IAo+Pj4+Pj4+PiAKPj4+Pj4+PiBf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4+Pj4+IFUt
-Qm9vdCBtYWlsaW5nIGxpc3QKPj4+Pj4+PiBVLUJvb3RAbGlzdHMuZGVueC5kZSA8bWFpbHRvOlUt
-Qm9vdEBsaXN0cy5kZW54LmRlPgo+Pj4+Pj4+IGh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5m
-by91LWJvb3QgPGh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3Q+CgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBs
-aXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91
-LWJvb3QK
+Dear Doug,
+
+在 2018年05月08日 23:29, Doug Anderson 写道:
+> Hi,
+>
+> On Tue, May 8, 2018 at 12:43 AM, wlf <wulf@rock-chips.com> wrote:
+>> Dear Doug,
+>>
+>> 在 2018年05月08日 13:11, Doug Anderson 写道:
+>>> Hi,
+>>>
+>>> On Mon, May 7, 2018 at 8:07 PM, William Wu <william.wu@rock-chips.com>
+>>> wrote:
+>>>> +static int dwc2_alloc_split_dma_aligned_buf(struct dwc2_hsotg *hsotg,
+>>>> +                                           struct dwc2_qh *qh,
+>>>> +                                           struct dwc2_host_chan *chan)
+>>>> +{
+>>>> +       if (!hsotg->unaligned_cache)
+>>>> +               return -ENOMEM;
+>>>> +
+>>>> +       if (!qh->dw_align_buf) {
+>>>> +               qh->dw_align_buf =
+>>>> kmem_cache_alloc(hsotg->unaligned_cache,
+>>>> +                                                   GFP_ATOMIC |
+>>>> GFP_DMA);
+>>>> +               if (!qh->dw_align_buf)
+>>>> +                       return -ENOMEM;
+>>>> +
+>>>> +               qh->dw_align_buf_size = min_t(u32, chan->max_packet,
+>>>> +
+>>>> DWC2_KMEM_UNALIGNED_BUF_SIZE);
+>>> Rather than using min_t, wouldn't it be better to return -ENOMEM if
+>>> "max_packet" > DWC2_KMEM_UNALIGNED_BUF_SIZE?  As it is, you might
+>>> allocate less space than you need, right?  That seems like it would be
+>>> bad (even though this is probably impossible).
+>> Yes, good idea! So is it good to fix it like this?
+>>
+>> if (!qh->dw_align_buf || chan->max_packet >
+>>      DWC2_KMEM_UNALIGNED_BUF_SIZE)
+>>          return -ENOMEM;
+>>
+>> qh->dw_align_buf_size = chan->max_packet;
+> Won't that orphan memory in the case that the allocation is OK but the
+> size is wrong?
+>
+> I would have put it all the way at the top:
+>
+> if (!hsotg->unaligned_cache ||
+>      chan->max_packet > DWC2_KMEM_UNALIGNED_BUF_SIZE)
+>    return -ENOMEM;
+Ah, yes, you're right! Thank you for correcting me.
+>
+> It also feels like you should get rid of "qh->dw_align_buf_size".  The
+> buffer is always DWC2_KMEM_UNALIGNED_BUF_SIZE.
+>
+> ...if you need to keep track of how many bytes you mapped with
+> dma_map_single() and somehow can't get back to "chan", rename this to
+> qh->dw_align_buf_mapped_bytes or something.  I haven't followed
+> through all the code, but I _think_ you'd want to make sure to set
+> qh->dw_align_buf_mapped_bytes every time through
+> dwc2_alloc_split_dma_aligned_buf(), even if dw_align_buf was already
+> allocated.  Specifically, my worry is in the case where you enter
+> dwc2_alloc_split_dma_aligned_buf() and qh->dw_align_buf is non-NULL.
+> Could "max_packet" be different in this case compared to what it was
+> when dw_align_buf was first allocated?
+Sorry to make you feel confused. It's really not suitable to use 
+"qh->dw_align_buf_size" for the dma mapped size. And I think the 
+"max_packet" should be  always be the same. However, just in case, maybe 
+I can get rid of "qh->dw_align_buf_size" and just use 
+DWC2_KMEM_UNALIGNED_BUF_SIZE to do dma_map_single().
+>
+>
+>>>> @@ -2797,6 +2837,32 @@ static int dwc2_assign_and_init_hc(struct
+>>>> dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+>>>>           /* Set the transfer attributes */
+>>>>           dwc2_hc_init_xfer(hsotg, chan, qtd);
+>>>>
+>>>> +       /* For non-dword aligned buffers */
+>>>> +       if (hsotg->params.host_dma && qh->do_split &&
+>>>> +           chan->ep_is_in && (chan->xfer_dma & 0x3)) {
+>>>> +               dev_vdbg(hsotg->dev, "Non-aligned buffer\n");
+>>>> +               if (dwc2_alloc_split_dma_aligned_buf(hsotg, qh, chan)) {
+>>>> +                       dev_err(hsotg->dev,
+>>>> +                               "Failed to allocate memory to handle
+>>>> non-aligned buffer\n");
+>>>> +                       /* Add channel back to free list */
+>>>> +                       chan->align_buf = 0;
+>>>> +                       chan->multi_count = 0;
+>>>> +                       list_add_tail(&chan->hc_list_entry,
+>>>> +                                     &hsotg->free_hc_list);
+>>>> +                       qtd->in_process = 0;
+>>>> +                       qh->channel = NULL;
+>>>> +                       return -ENOMEM;
+>>>> +               }
+>>>> +       } else {
+>>>> +               /*
+>>>> +                * We assume that DMA is always aligned in non-split
+>>>> +                * case or split out case. Warn if not.
+>>>> +                */
+>>>> +               WARN_ON_ONCE(hsotg->params.host_dma &&
+>>>> +                            (chan->xfer_dma & 0x3));
+>>>> +               chan->align_buf = 0;
+>>>> +       }
+>>>> +
+>>>>           if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
+>>>>               chan->ep_type == USB_ENDPOINT_XFER_ISOC)
+>>>>                   /*
+>>>> @@ -5241,6 +5307,17 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg)
+>>>>                           hsotg->params.dma_desc_enable = false;
+>>>>                           hsotg->params.dma_desc_fs_enable = false;
+>>>>                   }
+>>>> +       } else if (hsotg->params.host_dma) {
+>>> Are you sure this is "else if"?  Can't you have descriptor DMA enabled
+>>> in the controller and still need to do a normal DMA transfer if you
+>>> plug in a hub?  Seems like this should be just "if".
+>> Sorry, I don't understand the case "have descriptor DMA enabled in the
+>> controller and still need to do a normal DMA transfer". But maybe it still
+>> has another problem if just use "if" here, because it will create kmem
+>> caches for Slave mode which actually doesn't need aligned DMA buf.
+> So right now your code looks like:
+>
+> if (hsotg->params.dma_desc_enable ||
+>      hsotg->params.dma_desc_fs_enable) {
+>      ...
+>      ...
+> } else if (hsotg->params.host_dma) {
+>     ...
+> }
+>
+>
+> I've never played much with "descriptor DMA" on dwc2 because every
+> time I enabled it (last I tried was years ago) a whole bunch of
+> peripherals stopped working and I didn't dig (I just left it off).
+> Thus, I'm no expert on descriptor DMA.  ...that being said, my
+> understanding is that if you enable descriptor DMA in the controller
+> then it will enable a smarter DMA mode for some of the transfers.
+> IIRC Descriptor DMA mode specifically can't handle splits.  Is my
+> memory correct there?  Presumably that means that when you enable
+> descriptor DMA in the controller the driver will automatically fall
+> back to normal Address DMA mode if things get too complicated.  When
+> it falls back to Address DMA mode, presumably dwc2_hcd_init() won't
+> get called again.  That means that any data structures that are needed
+> for Address DMA need to be allocated in dwc2_hcd_init() even if
+> descriptor DMA is enabled because we might need to fall back to
+> Address DMA.
+>
+> Thus, I'm suggesting changing the code to:
+>
+> if (hsotg->params.dma_desc_enable ||
+>      hsotg->params.dma_desc_fs_enable) {
+>      ...
+>      ...
+> }
+>
+> if (hsotg->params.host_dma) {
+>     ...
+> }
+>
+>
+> ...as I said, I'm no expert and I could just be confused.  If
+> something I say seems wrong please correct me.
+Ah, I got it. Thanks for your detailed explanation. Although I don't 
+know if it's possible that dwc2 driver automatically fall back to normal 
+Address DMA mode when desc DMA work abnormally with split, I agree with 
+your suggestion. I'll fix it in V4 patch.
+>
+>>>> +                                               SLAB_CACHE_DMA, NULL);
+>>>> +               if (!hsotg->unaligned_cache)
+>>>> +                       dev_err(hsotg->dev,
+>>>> +                               "unable to create dwc2 unaligned
+>>>> cache\n");
+>>>>           }
+>>>>
+>>>>           hsotg->otg_port = 1;
+>>>> @@ -5279,6 +5356,7 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg)
+>>>>    error4:
+>>>>           kmem_cache_destroy(hsotg->desc_gen_cache);
+>>>>           kmem_cache_destroy(hsotg->desc_hsisoc_cache);
+>>>> +       kmem_cache_destroy(hsotg->unaligned_cache);
+>>> nitty nit: freeing order should be opposite of allocation, so the new
+>>> line should be above the other two.
+>> Ah, I got it. But note that it's impossible to allocate the
+>> "unaligned_cache" and "desc *cache" at the same time. Should we still fix
+>> the free order? If yes, maybe the correct free order is:
+>>
+>> kmem_cache_destroy(hsotg->unaligned_cache);
+>> kmem_cache_destroy(hsotg->desc_hsisoc_cache);
+>> kmem_cache_destroy(hsotg->desc_gen_cache);
+>>
+>> Right?
+>>
+>> And should we also need to fix the same free order in the "dwc2_hcd_remove"?
+> Right.  Yes, it totally doesn't matter which is why I tagged it with
+> "nitty nit" (or, another way of saying it is: I'm just being totally
+> obsessive here).  It's just that, for me, I always expect frees to be
+> in the opposite order of allocations so it makes it easier for me to
+> parse the code if this is consistent.
+It seems like a good idea to me. I'll fix it.
+>
+Best regards，
+         wulf
+>
+>
+>
