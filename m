@@ -1,167 +1,238 @@
-From: JeffyChen <jeffy.chen@rock-chips.com>
-Subject: Re: [RESEND PATCH] pinctrl: rockchip: Disable interrupt when changing
- it's capability
-Date: Wed, 09 May 2018 14:41:28 +0800
-Message-ID: <5AF29818.2010705@rock-chips.com>
-References: <20180503065553.7762-1-jeffy.chen@rock-chips.com> <20180507221511.GA6448@rodete-desktop-imager.corp.google.com> <5AF0FF18.1050905@rock-chips.com> <20180508015623.GA61455@rodete-desktop-imager.corp.google.com> <CAD=FV=W_v+aoNT09k-2exVABTFzOp0heY-XWcLi95uPisZhiGQ@mail.gmail.com> <5AF25B2E.8080901@rock-chips.com> <CAD=FV=WZ+2MNbe341M7OQD11+RxaJuzdM6zMnXYB4dka74K1hQ@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WZ+2MNbe341M7OQD11+RxaJuzdM6zMnXYB4dka74K1hQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Brian Norris <briannorris@chromium.org>, LKML <linux-kernel@vger.kernel.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>
+From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
+Subject: Re: [PATCH 3/3] rockchip: fix incorrect detection of ram
+ size
+Date: Wed, 9 May 2018 09:24:24 +0200
+Message-ID: <ACC69619-170B-4B14-9113-FAD4E917DF99@theobroma-systems.com>
+References: <20180506142513.19911-1-hanetzer@startmail.com>
+ <20180506142513.19911-4-hanetzer@startmail.com>
+ <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
+ <20180507023413.mil4wj7xtjy6gnuw@proprietary-killer>
+ <791299C0-EEC0-4DB1-97C4-A8DAD3B1A481@theobroma-systems.com>
+ <20180508005215.s3uivl43jfaryv7j@proprietary-killer>
+ <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
+ <20180508192125.t2srquyb7no7izog@proprietary-killer>
+ <C5B7DFAE-C5CA-4D9E-B6CB-C44E9AD974E9@theobroma-systems.com>
+ <20180509052903.csmglv3aqbp6zmec@proprietary-killer>
+Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20180509052903.csmglv3aqbp6zmec@proprietary-killer>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: "Marty E. Plummer" <hanetzer@startmail.com>
+Cc: vagrant@debian.org, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-
-Thanks for your reply :)
-
-On 05/09/2018 01:18 PM, Doug Anderson wrote:
->> >
->> >
->> >right, so we now have 2 cases: rockchip_irq_demux/ rockchip_irq_set_type
->> >
->> >if i'm right about the spurious irq(only happen when set rising for a high
->> >gpio, or set falling for a low gpio), then:
->> >
->> >1/ rockchip_irq_demux
->> >it's important to not losing irqs in this case, maybe we can
->> >
->> >a) ack irq
->> >b) update polarity for edge both irq
->> >
->> >we don't need to disable irq in b), since we would not hit the spurious irq
->> >cases here(always check gpio level to toggle it)
-> Unless you have some sort of proof that rockchip_irq_demux(), I would
-> take it as an example of something that works.  I remember stress
-> testing the heck out of it.  Do you have some evidence that it's not
-> working?  I think Brian was simply speculating that there might be a
-> race here, but I don't think anyone has shown it have they?  Looking
-> back at my notes, the thing I really made sure to stress was that we
-> never got into a situation where we were losing an edge (AKA we were
-> never configured to look for a falling edge when the line was already
-> low).  I'm not sure I confirmed that we never got an extra interrupt.
->
-> I'm at home right now and I can't add prints and poke at things, but
-> as I understand it for edge interrupts the usual flow to make sure
-> interrupts aren't ever lost is:
->
-> 1. See that the interrupt went off
-> 2. Ack it (clear it)
-> 3. Call the interrupt handler
->
-> ...presumably in this case rockchip_irq_demux() is called after step
-> #2 (but I don't know if it's called before or after step #3).  If the
-> line is toggling like crazy while the 3 steps are going on, it's OK if
-> the interrupt handler is called more than once.  In general this could
-> be considered expected.  That's why you Ack before handling--any extra
-> edges that come in any time after the interrupt handler starts (even
-> after the very first instruction) need to cause the interrupt handler
-> to get called again.
->
-> This is different than Brian's understanding since he seemed to think
-> the Ack was happening later.  If you're in front of something where
-> you can add printouts, maybe you can tell us.  I tried to look through
-> the code and it was too twisted for me to be sure.
-
-i think the current edge both irq flow for rk3399 would be:
-gic_handle_irq //irq-gic-v3.c
-   handle_domain_irq
-     rockchip_irq_demux //pinctrl-rockchip.c
-       toggle polarity
-       generic_handle_irq
-         handle_edge_irq //kernel/irq
-           irq_ack
-           handle_irq_event
-             action->handler
-
-so i think the race might actually exist (maybe we can add some delay 
-after toggle polarity to confirm)
-
-
-BTW, checking other drivers, there're quite a few using this kind of 
-toggle edge for edge both, and they go different ways:
-
-1/ toggle it in ack():
-mediatek/pinctrl-mtk-common.c
-gpio-ingenic.c
-gpio-ep93xx.c
-
-2/ toggle it before handle_irq:
-pinctrl-rockchip.c
-pinctrl-armada-37xx.c
-gpio-ath79.c
-gpio-mxs.c
-gpio-omap.c
-gpio-mvebu.c
-
-3/ toggle it after handle_irq:
-gpio-dwapb.c
-gpio-pmic-eic-sprd.c
-
-
-would it make sense to support this kind of emulate edge both irq in 
-some core codes?
-
->
->
->> >2/ rockchip_irq_set_type
->> >it's important to not having spurious irqs
->> >
->> >so we can disable irq during changing polarity only in these case:
->> >((rising && gpio is heigh) || (falling && gpio is low))
->> >
->> >i'm still confirming the spurious irq with IC guys.
-> Hmmm, thinking about all this more, I'm curious how callers expect
-> this to work.  Certainly things are undefined if you have the
-> following situation:
->
-> Start: rising edge trigger, line is actually high
-> Request: change to falling edge trigger
-> Line falls during the request
->
-> In that case it's OK to throw the interrupt away because it can be
-> argued that the line could have fallen before the request actually
-> took place.  ...but it seems like there could be situations where the
-> user wouldn't expect interrupts to be thrown away by a call to
-> irq_set_type().  In other words:
->
-> Start: rising edge trigger, line is actually high
-> Request: change to falling edge trigger
-> Line falls, rises, and falls during the request
->
-> ...in that case you'd expect that some sort of interrupt would have
-> gone off and not be thrown away.  No matter what instant in time the
-> request actually took place it should have caught an edge, right?
->
->
-> Said another way: As a client of irq_set_type() I'd expect it to not
-> throw away interrupts, but I'd expect that the change in type would be
-> atomic.  That is: if the interrupt came in before the type change in
-> type applied then it should trigger with the old rules.  If the
-> interrupt came in after the type change then it should trigger with
-> the new rules.
->
->
-> I would be tempted to confirm your testing and just clear the spurious
-> interrupts that you're aware of.  AKA: if there's no interrupt pending
-> and you change the type to "IRQ_TYPE_EDGE_RISING" or
-> "IRQ_TYPE_EDGE_FALLING" then you should clear the interrupt.  It's
-> still racy, but I guess it's the best you can do unless IC guys come
-> up with something better.
->
-
-hmmm, right, clear the spurious irq seems to be a better way, will try 
-to do it in the next version.
->
->
-> Anyway, it's past my bedtime.  Hopefully some of the above made sense.
-> I'm sure you'll tell me if it didn't or if I said something
-> stupid/wrong.:-P
->
-> -Doug
->
->
->
+Cj4gT24gOSBNYXkgMjAxOCwgYXQgMDc6MjksIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0
+YXJ0bWFpbC5jb20+IHdyb3RlOgo+IAo+IE9uIFR1ZSwgTWF5IDA4LCAyMDE4IGF0IDExOjA4OjE0
+UE0gKzAyMDAsIERyLiBQaGlsaXBwIFRvbXNpY2ggd3JvdGU6Cj4+IAo+Pj4gT24gOCBNYXkgMjAx
+OCwgYXQgMjE6MjEsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFpbC5jb20+IHdy
+b3RlOgo+Pj4gCj4+PiBPbiBUdWUsIE1heSAwOCwgMjAxOCBhdCAxMjoyMToyNFBNICswMjAwLCBE
+ci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+Pj4+IE1hcnR5LAo+Pj4+IAo+Pj4+PiBPbiA4IE1h
+eSAyMDE4LCBhdCAwMjo1MiwgTWFydHkgRS4gUGx1bW1lciA8aGFuZXR6ZXJAc3RhcnRtYWlsLmNv
+bT4gd3JvdGU6Cj4+Pj4+IAo+Pj4+PiBPbiBNb24sIE1heSAwNywgMjAxOCBhdCAxMToxNjoyOEFN
+ICswMjAwLCBEci4gUGhpbGlwcCBUb21zaWNoIHdyb3RlOgo+Pj4+Pj4gCj4+Pj4+Pj4gT24gNyBN
+YXkgMjAxOCwgYXQgMDQ6MzQsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0YXJ0bWFpbC5j
+b20+IHdyb3RlOgo+Pj4+Pj4+IAo+Pj4+Pj4+IE9uIE1vbiwgTWF5IDA3LCAyMDE4IGF0IDEwOjIw
+OjU1QU0gKzA4MDAsIEtldmVyIFlhbmcgd3JvdGU6Cj4+Pj4+Pj4+IEhpIE1hcnR5LAo+Pj4+Pj4+
+PiAKPj4+Pj4+Pj4gCj4+Pj4+Pj4+IE9uIDA1LzA2LzIwMTggMTA6MjUgUE0sIE1hcnR5IEUuIFBs
+dW1tZXIgd3JvdGU6Cj4+Pj4+Pj4+PiBUYWtlbiBmcm9tIGNvcmVib290J3Mgc3JjL3NvYy9yb2Nr
+Y2hpcC9yazMyODgvc2RyYW0uYwo+Pj4+Pj4+Pj4gCj4+Pj4+Pj4+PiBXaXRob3V0IHRoaXMgY2hh
+bmdlLCBteSB1LWJvb3QgYnVpbGQgZm9yIHRoZSBhc3VzIGMyMDEgY2hyb21lYm9vayAoNEdpQikK
+Pj4+Pj4+Pj4+IGlzIGluY29ycmVjdGx5IGRldGVjdGVkIGFzIDAgQnl0ZXMgb2YgcmFtLgo+Pj4+
+Pj4+PiAKPj4+Pj4+Pj4gSSBrbm93IHRoZSByb290IGNhdXNlIGZvciB0aGlzIGlzc3VlLCBhbmQg
+SSBoYXZlIGEgbG9jYWwgcGF0Y2ggZm9yIGl0Lgo+Pj4+Pj4+PiBUaGUgcmszMjg4IGlzIDMyYml0
+LCBhbmQgNEdCIHNpemUgaXMganVzdCBvdXQgb2YgcmFuZ2UsIHNvIHdlIG5lZWQgdG8gYmVmb3Jl
+Cj4+Pj4+Pj4+IHRoZSBtYXggc2l6ZSBiZWZvcmUgcmV0dXJuIHdpdGggJzw8MjAnLiBTb3JyeSBm
+b3IgZm9yZ290IHRvIHNlbmQgaXQgb3V0Lgo+Pj4+Pj4+PiAKPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4g
+U2lnbmVkLW9mZi1ieTogTWFydHkgRS4gUGx1bW1lciA8aGFuZXR6ZXJAc3RhcnRtYWlsLmNvbT4K
+Pj4+Pj4+Pj4+IC0tLQo+Pj4+Pj4+Pj4gYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21t
+b24uYyB8IDYyICsrKysrKysrKysrKysrKystLS0tLS0tLS0tLQo+Pj4+Pj4+Pj4gMSBmaWxlIGNo
+YW5nZWQsIDM3IGluc2VydGlvbnMoKyksIDI1IGRlbGV0aW9ucygtKQo+Pj4+Pj4+Pj4gCj4+Pj4+
+Pj4+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYyBi
+L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMKPj4+Pj4+Pj4+IGluZGV4IDc2
+ZGJkYzg3MTUuLmE5YzlmOTcwYTQgMTAwNjQ0Cj4+Pj4+Pj4+PiAtLS0gYS9hcmNoL2FybS9tYWNo
+LXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+Pj4+PiArKysgYi9hcmNoL2FybS9tYWNoLXJv
+Y2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+Pj4+PiBAQCAtMTAsNiArMTAsOCBAQAo+Pj4+Pj4+
+Pj4gI2luY2x1ZGUgPGFzbS9pby5oPgo+Pj4+Pj4+Pj4gI2luY2x1ZGUgPGFzbS9hcmNoL3NkcmFt
+X2NvbW1vbi5oPgo+Pj4+Pj4+Pj4gI2luY2x1ZGUgPGRtL3VjbGFzcy1pbnRlcm5hbC5oPgo+Pj4+
+Pj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPj4+Pj4+Pj4+ICsjaW5jbHVkZSA8bGlu
+dXgvc2l6ZXMuaD4KPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4gREVDTEFSRV9HTE9CQUxfREFUQV9QVFI7
+Cj4+Pj4+Pj4+PiBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShwaHlzX2FkZHJfdCByZWcpCj4+
+Pj4+Pj4+PiBAQCAtMTksMzQgKzIxLDQ0IEBAIHNpemVfdCByb2NrY2hpcF9zZHJhbV9zaXplKHBo
+eXNfYWRkcl90IHJlZykKPj4+Pj4+Pj4+IAlzaXplX3Qgc2l6ZV9tYiA9IDA7Cj4+Pj4+Pj4+PiAJ
+dTMyIGNoOwo+Pj4+Pj4+Pj4gCj4+Pj4+Pj4+PiAtCXUzMiBzeXNfcmVnID0gcmVhZGwocmVnKTsK
+Pj4+Pj4+Pj4+IC0JdTMyIGNoX251bSA9IDEgKyAoKHN5c19yZWcgPj4gU1lTX1JFR19OVU1fQ0hf
+U0hJRlQpCj4+Pj4+Pj4+PiAtCQkgICAgICAgJiBTWVNfUkVHX05VTV9DSF9NQVNLKTsKPj4+Pj4+
+Pj4+ICsJaWYgKCFzaXplX21iKSB7Cj4+Pj4+Pj4+IAo+Pj4+Pj4+PiBJIGRvbid0IHVuZGVyc3Rh
+bmQgdGhpcyBhbmQgZm9sbG93IHVwIGNoYW5nZXMsIHdlIGRvbid0IHJlYWxseSBuZWVkIGl0LAo+
+Pj4+Pj4+PiBpc24ndCBpdD8KPj4+Pj4+Pj4gSSB0aGluayBkb24ndCBuZWVkIHRoZSBjaGFuZ2Vz
+IGJlZm9yZSBoZXJlLgo+Pj4+Pj4+IFllYWgsIHRoYXQgd2FzIGp1c3QgYW5vdGhlciBsZXZlbCBv
+ZiBpbmRlbnRhdGlvbiBmb3IgdGhlIGlmICghc2l6ZV9tYikKPj4+Pj4+PiBndWFyZCwgYnV0IEkn
+dmUgcmV3b3JrZWQgdGhlIHBhdGNoIHRvIG5vdCBkbyB0aGF0IGFzIGl0IHdhcyBwb2ludGVkIG91
+dAo+Pj4+Pj4+IHRoYXQgc2luY2Ugc2l6ZV9tYiBpcyBpbml0aWFsaXplZCB0byAwIHByaW9yLgo+
+Pj4+Pj4+Pj4gKwkJLyoKPj4+Pj4+Pj4+ICsJCSAqIHdlIHVzZSB0aGUgMHgwMDAwMDAwMH4weGZl
+ZmZmZmZmIHNwYWNlCj4+Pj4+Pj4+PiArCQkgKiBzaW5jZSAweGZmMDAwMDAwfjB4ZmZmZmZmZmYg
+aXMgc29jIHJlZ2lzdGVyIHNwYWNlCj4+Pj4+Pj4+PiArCQkgKiBzbyB3ZSByZXNlcnZlIGl0Cj4+
+Pj4+Pj4+PiArCQkgKi8KPj4+Pj4+Pj4+ICsJCXNpemVfbWIgPSBtaW4oc2l6ZV9tYiwgMHhmZjAw
+MDAwMC9TWl8xTSk7Cj4+Pj4+Pj4+IAo+Pj4+Pj4+PiBUaGlzIGlzIHdoYXQgd2UgcmVhbGx5IG5l
+ZWQsIGFzIEtsYXVzIHBvaW50IG91dCwgd2UgbmVlZCB0byB1c2UKPj4+Pj4+Pj4gU0RSQU1fTUFY
+X1NJWkUKPj4+Pj4+Pj4gaW5zdGVhZCBvZiBoYXJkIGNvZGUuCj4+Pj4+Pj4gWWVhaCwgSSd2ZSBn
+b3QgYSByZXdvcmsgb24gdGhhdCB3aGljaCB1c2VzIFNEUkFNX01BWF9TSVpFIGFzIGluc3RydWN0
+ZWQsCj4+Pj4+Pj4gYnVpbGQgYW5kIGJvb3QgdGVzdGVkIG9uIG15IGhhcmR3YXJlLgo+Pj4+Pj4g
+Cj4+Pj4+PiBJbiB0aGF0IGNhc2UgeW91IGp1c3QgbWFza2VkIHRoZSBwcm9ibGVtIGJ1dCBkaWRu
+Pz8/dCBzb2x2ZSBpdDogYXNzdW1pbmcgc2l6ZV9tYgo+Pj4+Pj4gaXMgc2l6ZV90IChJPz8/bGwg
+YXNzdW1lIHRoaXMgaXMgNjRiaXQsIGJ1dCBkaWQgbm90IGNoZWNrKSwgdGhlbiB5b3VyIDRHQiBp
+cyAweDFfMDAwMF8wMDAwICkKPj4+Pj4+IHdoaWNoIG92ZXJmbG93cyB0byAweDAgd2hlbiBjb252
+ZXJ0ZWQgdG8gYSB1MzIuCj4+Pj4+PiAKPj4+Pj4+IEluIG90aGVyIHdvcmRzOiB3ZSBuZWVkIHRv
+IGZpZ3VyZSBvdXQgd2hlcmUgdGhlIHRydW5jYXRpb24gb2NjdXJzIChpbWFnZSB3aGF0Cj4+Pj4+
+PiBoYXBwZW5zIGlmIGEgbmV3IDMyYml0IHByb2Nlc3NvciB3aXRoIExQQUUgY29tZXMgb3V0Pz8/
+KS4KPj4+Pj4+IAo+Pj4+PiBBIHZlcnkgdmFsaWQgcG9pbnQuIFdpdGggdGhlIGZvbGxvd2luZyBw
+YXRjaCB0byBzZHJhbV9jb21tb24uYyBhbmQKPj4+Pj4gc2RyYW1fcmszMjg4LmMgYXBwbGllZCBJ
+IGdldCB0aGUgZGVidWcgb3V0cHV0IHRoYXQgZm9sbG93cyBpdDoKPj4+Pj4gZGlmZiAtLWdpdCBh
+L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgYi9hcmNoL2FybS9tYWNoLXJv
+Y2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+IGluZGV4IDIzMmE3ZmE2NTUuLjBmZTY5YmY1NTgg
+MTAwNjQ0Cj4+Pj4+IC0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMK
+Pj4+Pj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+Pj4+PiBA
+QCAtNCw2ICs0LDcgQEAKPj4+Pj4gKiBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogICAgIEdQTC0y
+LjArCj4+Pj4+ICovCj4+Pj4+IAo+Pj4+PiArI2RlZmluZSBERUJVRyAxCj4+Pj4+ICNpbmNsdWRl
+IDxjb21tb24uaD4KPj4+Pj4gI2luY2x1ZGUgPGRtLmg+Cj4+Pj4+ICNpbmNsdWRlIDxyYW0uaD4K
+Pj4+Pj4gQEAgLTM5LDE2ICs0MCwxOSBAQCBzaXplX3Qgcm9ja2NoaXBfc2RyYW1fc2l6ZShwaHlz
+X2FkZHJfdCByZWcpCj4+Pj4+IAkJCVNZU19SRUdfUk9XXzNfNF9NQVNLOwo+Pj4+PiAKPj4+Pj4g
+CQljaGlwc2l6ZV9tYiA9ICgxIDw8IChjczBfcm93ICsgY29sICsgYmsgKyBidyAtIDIwKSk7Cj4+
+Pj4+ICsJCWRlYnVnKCIlczogJWQ6IGNoaXBzaXplX21iICV4XG4iLCBfX2Z1bmNfXywgX19MSU5F
+X18sIGNoaXBzaXplX21iKTsKPj4+Pj4gCj4+Pj4+IAkJaWYgKHJhbmsgPiAxKQo+Pj4+PiAJCQlj
+aGlwc2l6ZV9tYiArPSBjaGlwc2l6ZV9tYiA+PiAoY3MwX3JvdyAtIGNzMV9yb3cpOwo+Pj4+PiAJ
+CWlmIChyb3dfM180KQo+Pj4+PiAJCQljaGlwc2l6ZV9tYiA9IGNoaXBzaXplX21iICogMyAvIDQ7
+Cj4+Pj4+IAkJc2l6ZV9tYiArPSBjaGlwc2l6ZV9tYjsKPj4+Pj4gKwkJZGVidWcoIiVzOiAlZDog
+c2l6ZV9tYiAleFxuIiwgX19mdW5jX18sIF9fTElORV9fLCBzaXplX21iKTsKPj4+Pj4gCQlkZWJ1
+ZygicmFuayAlZCBjb2wgJWQgYmsgJWQgY3MwX3JvdyAlZCBidyAlZCByb3dfM180ICVkXG4iLAo+
+Pj4+PiAJCSAgICAgIHJhbmssIGNvbCwgYmssIGNzMF9yb3csIGJ3LCByb3dfM180KTsKPj4+Pj4g
+CX0KPj4+Pj4gCj4+Pj4+ICsJZGVidWcoIiVzOiAlZDogc2l6ZV9tYiAleFxuIiwgX19mdW5jX18s
+IF9fTElORV9fLCBzaXplX21iKTsKPj4+Pj4gCXNpemVfbWIgPSBtaW4oc2l6ZV9tYiwgU0RSQU1f
+TUFYX1NJWkUvU1pfMU0pOwo+Pj4+PiAKPj4+Pj4gCXJldHVybiAoc2l6ZV90KXNpemVfbWIgPDwg
+MjA7Cj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMyODgu
+YyBiL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzI4OC5jCj4+Pj4+IGluZGV4IGQ5OWJm
+MTI0NzYuLjk3MzhlYjA4OGYgMTAwNjQ0Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvcmFtL3JvY2tjaGlw
+L3NkcmFtX3JrMzI4OC5jCj4+Pj4+ICsrKyBiL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3Jr
+MzI4OC5jCj4+Pj4+IEBAIC03LDYgKzcsNyBAQAo+Pj4+PiAqIEFkYXB0ZWQgZnJvbSBjb3JlYm9v
+dC4KPj4+Pj4gKi8KPj4+Pj4gCj4+Pj4+ICsjZGVmaW5lIERFQlVHIDEKPj4+Pj4gI2luY2x1ZGUg
+PGNvbW1vbi5oPgo+Pj4+PiAjaW5jbHVkZSA8Y2xrLmg+Cj4+Pj4+ICNpbmNsdWRlIDxkbS5oPgo+
+Pj4+PiAKPj4+Pj4gLS0tCj4+Pj4+IFUtQm9vdCBTUEwgMjAxOC4wNS1yYzMtMDIzNzAtZzMwOTM4
+NGU4NGItZGlydHkgKE1heSAwNyAyMDE4IC0gMTk6NDI6MTUgLTA1MDApCj4+Pj4+IFRyeWluZyB0
+byBib290IGZyb20gU1BJCj4+Pj4+IAo+Pj4+PiAKPj4+Pj4gVS1Cb290IDIwMTguMDUtcmMzLTAy
+MzcwLWczMDkzODRlODRiLWRpcnR5IChNYXkgMDcgMjAxOCAtIDE5OjQyOjE1IC0wNTAwKQo+Pj4+
+PiAKPj4+Pj4gTW9kZWw6IEdvb2dsZSBTcGVlZHkKPj4+Pj4gRFJBTTogIHJvY2tjaGlwX3NkcmFt
+X3NpemUgZmY3MzAwOWMgM2M1MGRjNTAKPj4+Pj4gcm9ja2NoaXBfc2RyYW1fc2l6ZTogNDI6IGNo
+aXBzaXplX21iIDQwMAo+Pj4+PiByb2NrY2hpcF9zZHJhbV9zaXplOiA0OTogc2l6ZV9tYiA4MDAK
+Pj4+Pj4gcmFuayAyIGNvbCAxMSBiayAzIGNzMF9yb3cgMTQgYncgMiByb3dfM180IDAKPj4+Pj4g
+cm9ja2NoaXBfc2RyYW1fc2l6ZTogNDI6IGNoaXBzaXplX21iIDQwMAo+Pj4+PiByb2NrY2hpcF9z
+ZHJhbV9zaXplOiA0OTogc2l6ZV9tYiAxMDAwCj4+Pj4+IHJhbmsgMiBjb2wgMTEgYmsgMyBjczBf
+cm93IDE0IGJ3IDIgcm93XzNfNCAwCj4+Pj4+IHJvY2tjaGlwX3NkcmFtX3NpemU6IDU0OiBzaXpl
+X21iIDEwMDAKPj4+Pj4gU0RSQU0gYmFzZT0wLCBzaXplPWZlMDAwMDAwCj4+Pj4+IDQgR2lCCj4+
+Pj4+IE1NQzogICBkd21tY0BmZjBjMDAwMDogMSwgZHdtbWNAZmYwZDAwMDA6IDIsIGR3bW1jQGZm
+MGYwMDAwOiAwCj4+Pj4+IEluOiAgICBjcm9zLWVjLWtleWIKPj4+Pj4gT3V0OiAgIHZpZGNvbnNv
+bGUKPj4+Pj4gRXJyOiAgIHZpZGNvbnNvbGUKPj4+Pj4gTW9kZWw6IEdvb2dsZSBTcGVlZHkKPj4+
+Pj4gcm9ja2NoaXBfZG5sX2tleV9wcmVzc2VkOiBhZGNfY2hhbm5lbF9zaW5nbGVfc2hvdCBmYWls
+IQo+Pj4+PiBOZXQ6ICAgTmV0IEluaXRpYWxpemF0aW9uIFNraXBwZWQKPj4+Pj4gTm8gZXRoZXJu
+ZXQgZm91bmQuCj4+Pj4+IEhpdCBhbnkga2V5IHRvIHN0b3AgYXV0b2Jvb3Q6ICAwCj4+Pj4+IEkg
+Z3Vlc3Mgd2UgbmVlZCB0byBjaGFuZ2UgdGhlIHNpemVfdCB0byBzb21ldGhpbmcgbGFyZ2VyOyB1
+bmxlc3MgSSdtCj4+Pj4+IG1pc3Rha2VuLCB0aGF0J3MgYSAzMiBiaXQgdmFsdWUsIHJpZ2h0PyBh
+bmQgMHgxMDAwMDAwMDAgaXMgYXQgbGVhc3QgNDAKPj4+PiAKPj4+PiA0R0IgaXMgYWN0dWFsbHkg
+dGhlIDMzcmQgYml0IHNldCBhbmQgdGhlIGxvd2VyIDMyYml0cyBjbGVhcmVkIChpLmUuIHRoZSBs
+YXJnZXN0Cj4+Pj4gMzJiaXQgdmFsdWUgPz8/cGx1cyBvbmU/Pz8pLgo+Pj4+IAo+Pj4+PiBiaXRz
+LCB1bmxlc3MgSSdtIG1pc3NpbmcgdGhlIGlzc3VlIGhlcmUgc29tZXdoZXJlLiBIb3dldmVyLCB0
+aGF0IHdvdWxkCj4+Pj4+IHRha2UgYSBjaGFuZ2UgdG8gaW5jbHVkZS9yYW0uaCwgYW5kIHdvdWxk
+IGltcGFjdCBmYXIgbW9yZSB0aGFuIGp1c3QKPj4+Pj4gcmszMjg4L3JvY2tjaGlwIGRldmljZXMg
+YWNyb3NzIHRoZSBib2FyZCwgc28gSSdtIHVuc3VyZSBob3cgdG8gcHJvY2VlZC4KPj4+Pj4gCj4+
+Pj4+IFVzZSB0aGUgbWluIG1hY3JvIGhlcmUgZm9yIG5vdywgYW5kIGJlZ2luIHdvcmsgbWlncmF0
+aW5nIHRoZSByYW1faW5mbwo+Pj4+PiBzaXplIG1lbWJlciB0byBhIDY0LWJpdCBjb250YWluZXI/
+Cj4+Pj4gCj4+Pj4gVGhlIG1pbigpIGRvZXNuPz8/dCBtYWtlIGFueSBzZW5zZSBoZXJlLCBhcyB3
+ZSBpbXBsZW1lbnQgdGhlIGhvb2sgZnVuY3Rpb24KPj4+PiA/Pz9ib2FyZF9nZXRfdXNhYmxlX3Jh
+bV90b3A/Pz8ganVzdCBhIGZldyBsaW5lcyBsYXRlcj8/Pwo+Pj4+IFdlIGFyZSBhdCB0aGUgc3Rh
+cnQgb2YgdGhlIG1lcmdlIHdpbmRvdyByaWdodCBub3csIHNvIEk/Pz9kIHJhdGhlciBob2xkIG9m
+ZiBhCj4+Pj4gd2VlayAob3IgdHdvKSBhbmQgaGF2ZSBhIHBlcm1hbmVudCBzb2x1dGlvbiB0aGFu
+IG1lcmdpbmcganVzdCBhIGJhbmQtYWlkCj4+Pj4gbm93IGFuZCB0aGVuIGhhdmluZyB0aGUgZnVs
+bCBmaXggY29tZSBpbiBsYXRlciBkdXJpbmcgdGhlIG1lcmdlIHdpbmRvdy4KPj4+PiAKPj4+PiBJ
+IGJyaWVmbHkgcmV2aWV3ZWQgdGhlIHNpdHVhdGlvbiB5ZXN0ZXJkYXkgYW5kIGl0IGxvb2tzIGxp
+a2UgdGhlIHNpemUgZmllbGQgaW4KPj4+PiByYW1faW5mbyBpcyB0aGUgY3VscHJpdDogaXQ/Pz9z
+IGRlZmluZWQgYXMgPz8/c2l6ZV90Pz8/LCB3aGljaCBhZ2FpbiBpcyBfX1NJWkVfVFlQRV9fCj4+
+Pj4gd2hpY2ggYWdhaW4gaXMgPz8/dW5zaWduZWQgaW50Pz8/IG9uIGEgKDMyYml0KSBhcm0tKi1l
+YWJpIGNvbXBpbGVyLgo+Pj4gWWVhaCwgSSB3YXMgdGFsa2luZyBhYm91dCB0aGlzIHdpdGggTWFy
+ZWsgb24gaXJjIHllc3RlcmRheSwgSSBoYWQgdGhlCj4+PiBzYW1lIGNvbmNsdXNpb24uIEhvd2V2
+ZXIsIGJlaW5nIHZlcnkgbmV3IGFuZCBpbmV4cGVyaWVuY2VkIHdpdGggdS1ib290Cj4+PiBkZXZl
+bG9wbWVudCBpbiBnZW5lcmFsLCBJJ20gYSBiaXQgYXZlcnNlIHRvIHRvIG1lc3Npbmcgd2l0aCB3
+aGF0IGFwcGVhcnMKPj4+IHRvIGJlIGEgZ2xvYmFsIGhlYWRlciBmaWxlLCBhcyBpdCBjYW4gZWFz
+aWx5IGJyZWFrIGFueSBvdGhlciBib2FyZCB3aGljaAo+Pj4gdXNlcyBpdC4KPj4gCj4+IE5vIHBy
+b2JsZW0gPz8/IGxldD8/P3Mgd2FpdCBmb3IgU2ltb24/Pz9zIGlucHV0IGFuZCBJPz8/bGwgY3Jl
+YXRlIHRoZSBwYXRjaHNldC4KPj4gST8/P2xsIG5lZWQgeW91ciBoZWxwIHRlc3RpbmcsIGFzIEkg
+ZG9uPz8/dCBoYXZlIGFueSAzMmJpdCBwbGF0Zm9ybXMgdy8gNEdCPz8/IGFuZCBJPz8/bGwKPj4g
+bGV0IHlvdSBrbm93IG9uY2Ugc29tZXRoaW5nIGlzIHJlYWR5IGZvciB5b3UgdG8gdGVzdC4KPj4g
+Cj4gRXZlbiBpZiB3ZSBkbyBjaGFuZ2UgcmFtX2luZm8uc2l6ZSBpbnRvIGEgbGFyZ2VyLCA2NC1i
+aXQgdmFyaWFibGUsIHdlCj4gc2hvdWxkIHN0aWxsIHByb2JhYmx5IHVzZSB0aGF0IG1pbiBjYWxs
+IHNpbmNlIHdpdGggYSAzMi1iaXQgYWRkcmVzcwo+IHNwYWNlLCBldmVuIHdpdGggNEdpQiByYW0g
+cGh5c2ljYWxseSwgdGhlIHJrMzI4OCBjYW4gb25seSBhZGRyZXNzCj4gMHhmZjAwMDAwIG9mIHJh
+bSwgd2hpY2ggaXMganVzdCBhIHRhZCBzaHkgb2YgdGhlIGZ1bGwgNEdpQi4KClRoaXMgaXMgbm90
+IHRoZSBtZWFuaW5nIG9mIHJhbV9pbmZvLnNpemUsIHRob3VnaOKApiBmb3IgdGhlIGFkZHJlc3Nh
+YmlsaXR5IHRoZXJl4oCZcwp0aGUg4oCYYm9hcmRfZ2V0X3VzYWJsZV9yYW1fdG9w4oCZIGhvb2sg
+dXNlZCB0b2RheS4KClVuZm9ydHVuYXRlbHksIHRoZXJl4oCZcyBubyBmb3JtYWwgZGVmaW5pdGlv
+biAoaS5lLiBjbGVhciBkb2N1bWVudGF0aW9uIG9mIHRoaXMgaW4gYSBoZWFkZXIKZmlsZSkgb2Yg
+Ym9hcmRfZ2V0X3VzYWJsZV9yYW1fdG9wOyBob3dldmVyLCB0aGUgZGVmYXVsdCAod2VhaykgaW1w
+bGVtZW50YXRpb24gaW4KYm9hcmRfZiBoaW50cyBhdCB0aGUgaW50ZW50IHRvIHVzZSBpdCB0byBj
+bGlwIHRoZSBlbmQgaWYgdGhlIOKAmXNpemXigJkgZmllbGQgZXhjZWVkcyB0aGUKYWRkcmVzc2Fi
+bGUgc3BhY2U6CiAgICAgICAgLyoKICAgICAgICAgKiBEZXRlY3Qgd2hldGhlciB3ZSBoYXZlIHNv
+IG11Y2ggUkFNIHRoYXQgaXQgZ29lcyBwYXN0IHRoZSBlbmQgb2Ygb3VyCiAgICAgICAgICogMzIt
+Yml0IGFkZHJlc3Mgc3BhY2UuIElmIHNvLCBjbGlwIHRoZSB1c2FibGUgUkFNIHNvIGl0IGRvZXNu
+J3QuCiAgICAgICAgICovCgpUaGlzIGlzIGFsc28gY29uc2lzdGVudCB3aXRoIHVzYWdlIG9uIFRl
+Z3JhIGFuZCBhIGZldyBvdGhlcnMuClVudGlsIHNvbWVvbmUgZGVjaWRlcyB0aGF0IHJhbV9pbmZv
+IHNob3VsZCBub3QgaG9sZCB0aGUgRFJBTSBjb250cm9sbGVy4oCZcyB2aWV3LApidXQgcmF0aGVy
+IGNvbnNpZGVyIGFkZHJlc3NhYmlsaXR5IGJ5IHRoZSBDUFUsIEkgc3Ryb25nbHkgZGlzYWdyZWUg
+d2l0aCBhcHBseWluZyAKdGhlIGNhcnZlb3V0IGZvciB0aGUgTU1JTyB0aGlzIGVhcmx5LgoKQWxz
+byBub3RlIHRoYXQganVzdCBiZWNhdXNlIHRoaXMgcGFydCBvZiBtZW1vcnkgaXMgbm90IGFkZHJl
+c3NhYmxlIGZyb20gdGhlIENQVXMKZG9lcyBub3QgbmVjZXNzYXJpbHkgbWVhbiB0aGF0IGl0IGlz
+IG5vdCBhZGRyZXNzYWJsZSBmcm9tIG9uZSBvZiB0aGUgRE1BIGNvbnRyb2xsZXJzCihJIGRvbuKA
+mXQga25vdyBlbm91Z2ggYWJvdXQgdGhlIGludGVybmFsIGltcGxlbWVudGF0aW9uIG9mIHRoZSBh
+ZGRyZXNzIGRlY29kZSBsb2dpYwppbiB0aGlzIFNvQyB0byBkZXRlcm1pbmUgd2hldGhlciB0aGF0
+IHBhcnQgb2YgbWVtb3J5IGlzIHJlYWxseSB1bmFjY2Vzc2libGUgb3IgaWYgaXQKaXMgbWVyZWx5
+IOKAnHNwZWNpYWzigJ0pLgoKPj4+PiAKPj4+PiBFeHBhbmRpbmcgdGhpcyB0byBhIHBoeXNfc2l6
+ZV90IHdvbj8/P3QgYmUgZG9pbmcgdXMgbXVjaCBnb29kLCBlaXRoZXIgKGFzCj4+Pj4gdGhhdCBv
+bmUgd2lsbCBhbHNvIGJlIDMyYml0cyBmb3IgdGhlIFJLMzI4OCkuCj4+Pj4gCj4+Pj4gVGhlIHJv
+b3QgY2F1c2Ugb2YgdGhpcyBpcyByZWFsbHkgdGhhdCB0aGUgUkFNIHNpemUgYW5kIHRoZSA/Pz91
+c2FibGUgUkFNPz8/IGFyZQo+Pj4+IHR3byBkaWZmZXJlbnQgY29uY2VwdHMgaW4gVS1Cb290LiAg
+T24gYSAzMmJpdCBwaHlzaWNhbCBhZGRyZXNzIHNwYWNlIHdpdGgKPj4+PiBtZW1vcnktbWFwcGVk
+IHBlcmlwaGVyYWxzLCB3ZSBjYW4gbmV2ZXIgaGF2ZSB0aGUgZnVsbCA0R0Igb2YgRFJBTSBhcwo+
+Pj4+IHdlPz8/bGwgYWxzbyBoYXZlIHNvbWUgb2YgdGhlIHBoeXNpY2FsIGFkZHJlc3Mtc3BhY2Ug
+c2V0IGFzaWRlIGZvciB0aGUgTU1JTzsKPj4+PiBob3dldmVyLCB0aGUgTU1JTyByYW5nZSBpcyBv
+bmx5IHJlbW92ZWQgZnJvbSB0aGUgRFJBTSBzaXplIHdoZW4gdGhlCj4+Pj4gdXNhYmxlIHJhbS10
+b3AgaXMgZXZhbHVhdGVkPz8/IHNvIHRoZSBzaXplIGNhbiBiZSA0R0IgYWZ0ZXIgYWxsIGFuZCBv
+dmVyZmxvdwo+Pj4+IHRoZSAzMmJpdCBzaXplX3QuICBOb3RlIHRoYXQgdGhpcyBzZXBhcmF0aW9u
+IGludG8gdHdvIGRpZmZlcmVudCBzdGVwcyBtYWtlcyBhCj4+Pj4gbG90IG9mIHNlbnNlLCBhcyBw
+cm9jZXNzb3JzIG1pZ2h0IG5vdCB1c2UgTU1JTyBidXQgc3BlY2lhbGlzZWQgaW5zdHJ1Y3Rpb25z
+Cj4+Pj4gdG8gYWNjZXNzIHBlcmlwaGVyYWwgc3BhY2U/Pz9pbiB3aGljaCBjYXNlIHRoZXJlIG1p
+Z2h0IGluZGVlZCBiZSBhIHVzYWJsZQo+Pj4+IG1lbW9yeSBvZiA0R0Igb24gYSAzMmJpdCBwaHlz
+aWNhbCBhZGRyZXNzIHNwYWNlLgo+Pj4+IAo+Pj4+IEZyb20gd2hhdCBJIGNhbiB0ZWxsLCB3ZT8/
+P2xsIG5lZWQgdG8gZG8gdHdvIHRoaW5nczoKPj4+PiAoYSkJZml4IGFyY2gvYXJtL21hY2gtcm9j
+a2NoaXAvc2RyYW1fY29tbW9uLmMgdG8gbm90IHVzZSAzMmJpdCB0eXBlcwo+Pj4+IAlmb3IgdGhl
+IG1lbW9yeSBzaXplCj4+Pj4gKGIpCXRvdWNoIHJhbS5oIHRvIGNoYW5nZSB0aGUgdHlwZSBvZiB0
+aGUgPz8/c2l6ZT8/PyBmaWVsZCBpbiByYW1faW5mbyAoaXQgbmVlZHMKPj4+PiAJdG8gYmUgbGFy
+Z2VyIHRoYW4gMzJiaXRzCj4+Pj4gCj4+Pj4gST8/P2QgbGlrZSBTaW1vbj8/P3MgaW5wdXQgKGFz
+IGhlIG93bnMgcmFtLmgpIGFuZCBjYW4gY3JlYXRlIGEgcGF0Y2hzZXQgZm9yIHRoaXMKPj4+PiBj
+aGFuZ2UsIGlmIGhlIGFncmVlcyB0aGF0IHRoaXMgaXMgdGhlIHdheSBmb3J3YXJkLgo+Pj4+IAo+
+Pj4+IFJlZ2FyZHMsCj4+Pj4gUGhpbGlwcC4KPj4+PiAKPj4+Pj4+Pj4gCj4+Pj4+Pj4+IFRoYW5r
+cywKPj4+Pj4+Pj4gLSBLZXZlcgo+Pj4+Pj4+Pj4gCX0KPj4+Pj4+Pj4+IAo+Pj4+Pj4+Pj4gCXJl
+dHVybiAoc2l6ZV90KXNpemVfbWIgPDwgMjA7Cj4+Pj4+Pj4+IAo+Pj4+Pj4+PiAKPj4+Pj4+PiBf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4+Pj4+IFUt
+Qm9vdCBtYWlsaW5nIGxpc3QKPj4+Pj4+PiBVLUJvb3RAbGlzdHMuZGVueC5kZSA8bWFpbHRvOlUt
+Qm9vdEBsaXN0cy5kZW54LmRlPgo+Pj4+Pj4+IGh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5m
+by91LWJvb3QgPGh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3Q+CgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBs
+aXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91
+LWJvb3QK
