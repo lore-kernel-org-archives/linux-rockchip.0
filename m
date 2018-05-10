@@ -1,89 +1,63 @@
-From: djw@t-chip.com.cn
-Subject: [PATCH v1 5/5] arm64: dts: rockchip: Add sdmmc UHS support for roc-rk3328-cc
-Date: Thu, 10 May 2018 17:28:41 +0800
-Message-ID: <1525944521-17114-1-git-send-email-djw@t-chip.com.cn>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v1 3/5] arm64: dts: rockchip: Add gpio-syscon10 to rk3328
+Date: Thu, 10 May 2018 13:50:47 +0100
+Message-ID: <76f2bbde-e158-a186-f136-9fb610a810c5@arm.com>
 References: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn>
+ <1525943800-14095-4-git-send-email-djw@t-chip.com.cn>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn>
+In-Reply-To: <1525943800-14095-4-git-send-email-djw@t-chip.com.cn>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Liang Chen <cl@rock-chips.com>, William Wu <william.wu@rock-chips.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Joseph Chen <chenjh@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, Rocky Hao <rocky.hao@rock-chips.com>
+To: djw@t-chip.com.cn, linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>, David Wu <david.wu@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Rocky Hao <rocky.hao@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Levin Du <djw@t-chip.com.cn>
+On 10/05/18 10:16, djw@t-chip.com.cn wrote:
+> From: Levin Du <djw@t-chip.com.cn>
+> 
+> Adding a new gpio controller named "gpio-syscon10" to rk3328, providing
+> access to the pins defined in the syscon GRF_SOC_CON10.
 
-In roc-rk3328-cc board, the signal voltage of sdmmc is supplied by
-the vcc_sdio regulator, which is a mux between 1.8V and 3.3V,
-controlled by a special output only gpio pin labeled
-"gpiomut_pmuio_iout", corresponding bit 1 of the syscon GRF_SOC_CON10.
+This is the GPIO_MUTE pin, right? The public TRM is rather vague, but 
+cross-referencing against the datasheet and schematics implies that it's 
+the "gpiomut_*" part of the GRF bit names which is most significant.
 
-This special pin can now be reference as <&gpio_syscon10 1>, thanks
-to the gpio-syscon driver, which makes writing regulator-gpio possible.
+It might be worth using a more descriptive name here, since "syscon10" 
+is pretty much meaningless at the board level.
 
-If the signal voltage changes, the io domain needs to change
-correspondingly.
+Robin.
 
-To use this feature, the following options are required in kernel config:
- - CONFIG_GPIO_SYSCON=y
- - CONFIG_POWER_AVS=y
- - CONFIG_ROCKCHIP_IODOMAIN=y
-
-Signed-off-by: Levin Du <djw@t-chip.com.cn>
-
----
-
-Changes in v1:
-- Split into small patches
-- Sort dts properties in sdmmc node
-
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index b983abd..3f33e42 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -41,6 +41,19 @@
- 		vin-supply = <&vcc_io>;
- 	};
- 
-+	vcc_sdio: sdmmcio-regulator {
-+		compatible = "regulator-gpio";
-+		gpios = <&gpio_syscon10 1 GPIO_ACTIVE_HIGH>;
-+		states = <1800000 0x1
-+			  3300000 0x0>;
-+		regulator-name = "vcc_sdio";
-+		regulator-type = "voltage";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
- 	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -213,7 +226,7 @@
- 
- 	vccio1-supply = <&vcc_io>;
- 	vccio2-supply = <&vcc18_emmc>;
--	vccio3-supply = <&vcc_io>;
-+	vccio3-supply = <&vcc_sdio>;
- 	vccio4-supply = <&vcc_18>;
- 	vccio5-supply = <&vcc_io>;
- 	vccio6-supply = <&vcc_io>;
-@@ -242,7 +255,12 @@
- 	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
- 	vmmc-supply = <&vcc_sd>;
-+	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
- };
- 
--- 
-2.7.4
+> Boards using these special pins to control regulators or LEDs, can now
+> utilize existing drivers like gpio-regulator and leds-gpio.
+> 
+> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+> 
+> ---
+> 
+> Changes in v1:
+> - Split from V0 and add to rk3328.dtsi for general use.
+> 
+>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index b8e9da1..73a822d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -309,6 +309,12 @@
+>   			mode-loader = <BOOT_BL_DOWNLOAD>;
+>   		};
+>   
+> +		gpio_syscon10: gpio-syscon10 {
+> +			compatible = "rockchip,gpio-syscon";
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio,syscon-dev = <0 0x0428 0>;
+> +		};
+>   	};
+>   
+>   	uart0: serial@ff110000 {
+> 
