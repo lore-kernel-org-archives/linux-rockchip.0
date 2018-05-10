@@ -1,170 +1,97 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v1 2/5] gpio: syscon: Add gpio-syscon for rockchip
-Date: Thu, 10 May 2018 15:56:08 +0100
-Message-ID: <c0f520d1-42e3-e8b5-128e-3ff3d532ec4c@arm.com>
-References: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn>
- <1525943800-14095-3-git-send-email-djw@t-chip.com.cn>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [PATCH v3 1/2] usb: dwc2: alloc dma aligned buffer for isoc split in
+Date: Thu, 10 May 2018 13:59:13 -0700
+Message-ID: <CAD=FV=Xsa9MAw==_Oi28B69oqZehwL2JTwEzjKAnH5PS5wKC_A@mail.gmail.com>
+References: <1525748846-7767-1-git-send-email-william.wu@rock-chips.com>
+ <1525748846-7767-2-git-send-email-william.wu@rock-chips.com>
+ <CAD=FV=VKBVp++gPXzYN0N46NVarPNWqs1YZjfcd7twkU25WNyQ@mail.gmail.com>
+ <f2e0fba2-da0b-38ba-6e25-3da9ccf1e4ee@rock-chips.com> <CAD=FV=W0Aufw1=UH2eZjb4cpiLjt9ty49CrUOdM5B2wF+WoY-A@mail.gmail.com>
+ <196bd304-3c6b-91b6-1743-50d6d13fc5a5@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1525943800-14095-3-git-send-email-djw@t-chip.com.cn>
-Content-Language: en-GB
+In-Reply-To: <196bd304-3c6b-91b6-1743-50d6d13fc5a5@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: djw@t-chip.com.cn, linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+To: wlf <wulf@rock-chips.com>
+Cc: William Wu <william.wu@rock-chips.com>, hminas@synopsys.com, felipe.balbi@linux.intel.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, linux-usb@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, "daniel.meng" <daniel.meng@rock-chips.com>, John Youn <John.Youn@synopsys.com>, =?UTF-8?B?546L5b6B5aKe?= <wzz@rock-chips.com>, zsq@rock-chips.com, =?UTF-8?B?6Kix5ZiJ6YqY?= <Allen.Hsu@quantatw.com>, Stan Tsui <StanTsui@aopen.com>, =?UTF-8?B?U3BydWNlIFd1ICjlkLPlu7rli7Mp?= <Spruce.Wu@quantatw.com>, Marti
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/05/18 10:16, djw@t-chip.com.cn wrote:
-> From: Levin Du <djw@t-chip.com.cn>
-> 
-> Some GPIOs sit in the GRF_SOC_CON registers of Rockchip SoCs,
-> which do not belong to the general pinctrl.
-> 
-> Adding gpio-syscon support makes controlling regulator or
-> LED using these special pins very easy by reusing existing
-> drivers, such as gpio-regulator and led-gpio.
-> 
-> Signed-off-by: Levin Du <djw@t-chip.com.cn>
-> 
-> ---
-> 
-> Changes in v1:
-> - Refactured for general gpio-syscon usage for Rockchip SoCs.
-> - Add doc rockchip,gpio-syscon.txt
-> 
->   .../bindings/gpio/rockchip,gpio-syscon.txt         | 41 ++++++++++++++++++++++
->   drivers/gpio/gpio-syscon.c                         | 30 ++++++++++++++++
->   2 files changed, 71 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
-> new file mode 100644
-> index 0000000..e4c1650
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
-> @@ -0,0 +1,41 @@
-> +* Rockchip GPIO support for GRF_SOC_CON registers
-> +
-> +Required properties:
-> +- compatible: Should contain "rockchip,gpio-syscon".
-> +- gpio-controller: Marks the device node as a gpio controller.
-> +- #gpio-cells: Should be two. The first cell is the pin number and
+Hi,
 
-I would suggest s/pin number/bit number in the associated GRF register/ 
-here. At least in this RK3328 case there's only one pin, which isn't 
-numbered, and if you naively considered it pin 0 of this 'bank' you'd 
-already have the wrong number. Since we're dealing with the "random 
-SoC-specific controls" region of the GRF as opposed to the 
-relatively-consistent and organised pinmux parts, I don't think we 
-should rely on any assumptions about how things are laid out.
+On Wed, May 9, 2018 at 1:55 AM, wlf <wulf@rock-chips.com> wrote:
+>>>>> +       } else if (hsotg->params.host_dma) {
+>>>>
+>>>> Are you sure this is "else if"?  Can't you have descriptor DMA enabled
+>>>> in the controller and still need to do a normal DMA transfer if you
+>>>> plug in a hub?  Seems like this should be just "if".
+>>>
+>>> Sorry, I don't understand the case "have descriptor DMA enabled in the
+>>> controller and still need to do a normal DMA transfer". But maybe it
+>>> still
+>>> has another problem if just use "if" here, because it will create kmem
+>>> caches for Slave mode which actually doesn't need aligned DMA buf.
+>>
+>> So right now your code looks like:
+>>
+>> if (hsotg->params.dma_desc_enable ||
+>>      hsotg->params.dma_desc_fs_enable) {
+>>      ...
+>>      ...
+>> } else if (hsotg->params.host_dma) {
+>>     ...
+>> }
+>>
+>>
+>> I've never played much with "descriptor DMA" on dwc2 because every
+>> time I enabled it (last I tried was years ago) a whole bunch of
+>> peripherals stopped working and I didn't dig (I just left it off).
+>> Thus, I'm no expert on descriptor DMA.  ...that being said, my
+>> understanding is that if you enable descriptor DMA in the controller
+>> then it will enable a smarter DMA mode for some of the transfers.
+>> IIRC Descriptor DMA mode specifically can't handle splits.  Is my
+>> memory correct there?  Presumably that means that when you enable
+>> descriptor DMA in the controller the driver will automatically fall
+>> back to normal Address DMA mode if things get too complicated.  When
+>> it falls back to Address DMA mode, presumably dwc2_hcd_init() won't
+>> get called again.  That means that any data structures that are needed
+>> for Address DMA need to be allocated in dwc2_hcd_init() even if
+>> descriptor DMA is enabled because we might need to fall back to
+>> Address DMA.
+>>
+>> Thus, I'm suggesting changing the code to:
+>>
+>> if (hsotg->params.dma_desc_enable ||
+>>      hsotg->params.dma_desc_fs_enable) {
+>>      ...
+>>      ...
+>> }
+>>
+>> if (hsotg->params.host_dma) {
+>>     ...
+>> }
+>>
+>>
+>> ...as I said, I'm no expert and I could just be confused.  If
+>> something I say seems wrong please correct me.
+>
+> Ah, I got it. Thanks for your detailed explanation. Although I don't know if
+> it's possible that dwc2 driver automatically fall back to normal Address DMA
+> mode when desc DMA work abnormally with split, I agree with your suggestion.
+> I'll fix it in V4 patch.
 
-I was initially going to suggest a more specific compatible string as 
-well, but on reflection I think the generic "rockchip,gpio-syscon" for 
-basic "flip this single GRF bit" functionality actually is the right way 
-to go. In the specific RK3328 GPIO_MUTE case, there look to be 4 bits in 
-total related to this pin - the enable, value, and some pull controls 
-(which I assume apply when the output is disabled) - if at some point in 
-future we *did* want to start explicitly controlling the rest of them 
-too, then would be a good time to define a separate 
-"rockchip,rk3328-gpio-mute" binding (and probably a dedicated driver) 
-for that specialised functionality, independently of this basic one.
+Hmm, I guess you're right.  I did a quick search and I can't find any
+evidence of a fallback like this.  Maybe I dreamed that.  I found some
+old comment in the commit history that said:
 
-> +  the second cell is used to specify the gpio polarity:
-> +    0 = Active high,
-> +    1 = Active low.
-> +- gpio,syscon-dev: Should contain <grf_phandle syscon_offset 0>.
-> +  If declared as child of the grf node, the grf_phandle can be 0.
-> +
-> +Example:
-> +
-> +1. As child of grf node:
-> +
-> +	grf: syscon@ff100000 {
-> +		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
-> +
-> +		gpio_syscon10: gpio-syscon10 {
-> +			compatible = "rockchip,gpio-syscon";
-> +			gpio-controller;
-> +			#gpio-cells = <2>;
-> +			gpio,syscon-dev = <0 0x0428 0>;
-> +		};
-> +	};
-> +
-> +
-> +2. Not child of grf node:
-> +
-> +	grf: syscon@ff100000 {
-> +		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
-> +		//...
-> +	};
-> +
-> +	gpio_syscon10: gpio-syscon10 {
-> +		compatible = "rockchip,gpio-syscon";
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-> +		gpio,syscon-dev = <&grf 0x0428 0>;
-> +	};
-> diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
-> index 7325b86..e24b408 100644
-> --- a/drivers/gpio/gpio-syscon.c
-> +++ b/drivers/gpio/gpio-syscon.c
-> @@ -135,6 +135,32 @@ static const struct syscon_gpio_data clps711x_mctrl_gpio = {
->   	.dat_bit_offset	= 0x40 * 8 + 8,
->   };
->   
-> +static void rockchip_gpio_set(struct gpio_chip *chip, unsigned int offset,
-> +			      int val)
-> +{
-> +	struct syscon_gpio_priv *priv = gpiochip_get_data(chip);
-> +	unsigned int offs;
-> +	u8 bit;
-> +	u32 data;
-> +	int ret;
-> +
-> +	offs = priv->dreg_offset + priv->data->dat_bit_offset + offset;
+/*
+ * Disable descriptor dma mode by default as the HW can support
+ * it, but does not support it for SPLIT transactions.
+ * Disable it for FS devices as well.
+ */
 
-data->dat_bit_offset is always 0 here, but given that wrapping large 
-offsets to successive GRF registers doesn't make sense (and wouldn't 
-work anyway with this arithmetic) I don't think you even need this 
-calculation of offs at all...
+...and it looks there's currently nobody using descriptor DMA anyway
+(assuming I read the code correctly).  It does seem like people were
+ever going to turn it on then it would have to be dynamic as I was
+dreaming it was...
 
-> +	bit = offs % SYSCON_REG_BITS;
-
-... since it would suffice to use offset here...
-
-> +	data = (val ? BIT(bit) : 0) | BIT(bit + 16);
-> +	ret = regmap_write(priv->syscon,
-> +			   (offs / SYSCON_REG_BITS) * SYSCON_REG_SIZE,
-
-... and priv->dreg_offset here.
-
-Robin.
-
-> +			   data);
-> +	if (ret < 0)
-> +		dev_err(chip->parent, "gpio write failed ret(%d)\n", ret);
-> +}
-> +
-> +static const struct syscon_gpio_data rockchip_gpio_syscon = {
-> +	/* Rockchip GRF_SOC_CON Bits 0-15 */
-> +	.flags		= GPIO_SYSCON_FEAT_OUT,
-> +	.bit_count	= 16,
-> +	.set		= rockchip_gpio_set,
-> +};
-> +
->   #define KEYSTONE_LOCK_BIT BIT(0)
->   
->   static void keystone_gpio_set(struct gpio_chip *chip, unsigned offset, int val)
-> @@ -175,6 +201,10 @@ static const struct of_device_id syscon_gpio_ids[] = {
->   		.compatible	= "ti,keystone-dsp-gpio",
->   		.data		= &keystone_dsp_gpio,
->   	},
-> +	{
-> +		.compatible	= "rockchip,gpio-syscon",
-> +		.data		= &rockchip_gpio_syscon,
-> +	},
->   	{ }
->   };
->   MODULE_DEVICE_TABLE(of, syscon_gpio_ids);
-> 
+-Doug
