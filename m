@@ -1,82 +1,125 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the
- bridge supplier and consumer
-Date: Thu, 10 May 2018 10:10:27 +0200
-Message-ID: <a723ad4a-8caa-4ff5-d39d-52db98a56d7b@samsung.com>
-References: <20180504135212.26977-1-peda@axentia.se>
- <CGME20180504135432epcas3p368bb7541ca52bc8bc301dec794851214@epcas3p3.samsung.com>
- <20180504135212.26977-27-peda@axentia.se>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] clk: add clock panic dump in tree-view
+Date: Thu, 10 May 2018 16:50:05 +0800
+Message-ID: <1525942205-111855-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180504135212.26977-27-peda@axentia.se>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Peter Rosin <peda@axentia.se>, linux-kernel@vger.kernel.org
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDQuMDUuMjAxOCAxNTo1MiwgUGV0ZXIgUm9zaW4gd3JvdGU6Cj4gSWYgdGhlIGJyaWRnZSBz
-dXBwbGllciBpcyB1bmJvdW5kLCB0aGlzIHdpbGwgYnJpbmcgdGhlIGJyaWRnZSBjb25zdW1lcgo+
-IGRvd24gYWxvbmcgd2l0aCB0aGUgYnJpZGdlLiBUaHVzLCB0aGVyZSB3aWxsIG5vIGxvbmdlciBs
-aW5nZXIgYW55Cj4gZGFuZ2xpbmcgcG9pbnRlcnMgZnJvbSB0aGUgYnJpZGdlIGNvbnN1bWVyICh0
-aGUgZHJtX2RldmljZSkgdG8gc29tZQo+IG5vbi1leGlzdGVudCBicmlkZ2Ugc3VwcGxpZXIuCj4K
-PiBTaWduZWQtb2ZmLWJ5OiBQZXRlciBSb3NpbiA8cGVkYUBheGVudGlhLnNlPgo+IC0tLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jIHwgMTggKysrKysrKysrKysrKysrKysrCj4gIGlu
-Y2x1ZGUvZHJtL2RybV9icmlkZ2UuaCAgICAgfCAgMiArKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDIw
-IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRn
-ZS5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYwo+IGluZGV4IDc4ZDE4NmI2ODMxYi4u
-MDI1OWYwYTNmZjI3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMK
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jCj4gQEAgLTI2LDYgKzI2LDcgQEAK
-PiAgI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+Cj4gIAo+ICAjaW5jbHVkZSA8ZHJtL2RybV9icmlk
-Z2UuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJt
-X2VuY29kZXIuaD4KPiAgCj4gICNpbmNsdWRlICJkcm1fY3J0Y19pbnRlcm5hbC5oIgo+IEBAIC0x
-MjcsMTIgKzEyOCwyNSBAQCBpbnQgZHJtX2JyaWRnZV9hdHRhY2goc3RydWN0IGRybV9lbmNvZGVy
-ICplbmNvZGVyLCBzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICAJaWYgKGJyaWRnZS0+ZGV2
-KQo+ICAJCXJldHVybiAtRUJVU1k7Cj4gIAo+ICsJaWYgKGVuY29kZXItPmRldi0+ZGV2ICE9IGJy
-aWRnZS0+b2RldikgewoKSSB3b25kZXIgd2h5IGRldmljZV9saW5rX2FkZCBkb2VzIG5vdCBoYW5k
-bGUgdGhpcyBjYXNlIChzZWxmIGRlcGVuZGVuY3kpCnNpbGVudGx5IGFzIG5vb3AsIGFzIGl0IHNl
-ZW1zIHRvIGJlIGEgY29ycmVjdCBiZWhhdmlvci4KCj4gKwkJYnJpZGdlLT5saW5rID0gZGV2aWNl
-X2xpbmtfYWRkKGVuY29kZXItPmRldi0+ZGV2LAo+ICsJCQkJCSAgICAgICBicmlkZ2UtPm9kZXYs
-IDApOwo+ICsJCWlmICghYnJpZGdlLT5saW5rKSB7Cj4gKwkJCWRldl9lcnIoYnJpZGdlLT5vZGV2
-LCAiZmFpbGVkIHRvIGxpbmsgYnJpZGdlIHRvICVzXG4iLAo+ICsJCQkJZGV2X25hbWUoZW5jb2Rl
-ci0+ZGV2LT5kZXYpKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJfQo+ICsJfQo+ICsKPiAg
-CWJyaWRnZS0+ZGV2ID0gZW5jb2Rlci0+ZGV2Owo+ICAJYnJpZGdlLT5lbmNvZGVyID0gZW5jb2Rl
-cjsKPiAgCj4gIAlpZiAoYnJpZGdlLT5mdW5jcy0+YXR0YWNoKSB7Cj4gIAkJcmV0ID0gYnJpZGdl
-LT5mdW5jcy0+YXR0YWNoKGJyaWRnZSk7Cj4gIAkJaWYgKHJldCA8IDApIHsKPiArCQkJaWYgKGJy
-aWRnZS0+bGluaykKPiArCQkJCWRldmljZV9saW5rX2RlbChicmlkZ2UtPmxpbmspOwo+ICsJCQli
-cmlkZ2UtPmxpbmsgPSBOVUxMOwo+ICAJCQlicmlkZ2UtPmRldiA9IE5VTEw7Cj4gIAkJCWJyaWRn
-ZS0+ZW5jb2RlciA9IE5VTEw7Cj4gIAkJCXJldHVybiByZXQ7Cj4gQEAgLTE1OSw2ICsxNzMsMTAg
-QEAgdm9pZCBkcm1fYnJpZGdlX2RldGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICAJ
-aWYgKGJyaWRnZS0+ZnVuY3MtPmRldGFjaCkKPiAgCQlicmlkZ2UtPmZ1bmNzLT5kZXRhY2goYnJp
-ZGdlKTsKPiAgCj4gKwlpZiAoYnJpZGdlLT5saW5rKQo+ICsJCWRldmljZV9saW5rX2RlbChicmlk
-Z2UtPmxpbmspOwo+ICsJYnJpZGdlLT5saW5rID0gTlVMTDsKPiArCj4gIAlicmlkZ2UtPmRldiA9
-IE5VTEw7Cj4gIH0KPiAgCj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2RybV9icmlkZ2UuaCBi
-L2luY2x1ZGUvZHJtL2RybV9icmlkZ2UuaAo+IGluZGV4IGI2NTZlNTA1ZDExZS4uODA0MTg5YzYz
-YTRjIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvZHJtL2RybV9icmlkZ2UuaAo+ICsrKyBiL2luY2x1
-ZGUvZHJtL2RybV9icmlkZ2UuaAo+IEBAIC0yNjEsNiArMjYxLDcgQEAgc3RydWN0IGRybV9icmlk
-Z2VfdGltaW5ncyB7Cj4gICAqIEBsaXN0OiB0byBrZWVwIHRyYWNrIG9mIGFsbCBhZGRlZCBicmlk
-Z2VzCj4gICAqIEB0aW1pbmdzOiB0aGUgdGltaW5nIHNwZWNpZmljYXRpb24gZm9yIHRoZSBicmlk
-Z2UsIGlmIGFueSAobWF5Cj4gICAqIGJlIE5VTEwpCj4gKyAqIEBsaW5rOiBkcm0gY29uc3VtZXIg
-PC0+IGJyaWRnZSBzdXBwbGllcgoKTml0cGljazogIjwtPiIgc3VnZ2VzdHMgc3ltbWV0cnksIG1h
-eWJlICJkZXZpY2UgbGluayBmcm9tIGRybSBjb25zdW1lcgp0byB0aGUgYnJpZGdlIiB3b3VsZCBi
-ZSBiZXR0ZXIuCgpBbnl3YXk6ClJldmlld2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNh
-bXN1bmcuY29tPgoKwqAtLQpSZWdhcmRzCkFuZHJ6ZWoKCj4gICAqIEBmdW5jczogY29udHJvbCBm
-dW5jdGlvbnMKPiAgICogQGRyaXZlcl9wcml2YXRlOiBwb2ludGVyIHRvIHRoZSBicmlkZ2UgZHJp
-dmVyJ3MgaW50ZXJuYWwgY29udGV4dAo+ICAgKi8KPiBAQCAtMjcxLDYgKzI3Miw3IEBAIHN0cnVj
-dCBkcm1fYnJpZGdlIHsKPiAgCXN0cnVjdCBkcm1fYnJpZGdlICpuZXh0Owo+ICAJc3RydWN0IGxp
-c3RfaGVhZCBsaXN0Owo+ICAJY29uc3Qgc3RydWN0IGRybV9icmlkZ2VfdGltaW5ncyAqdGltaW5n
-czsKPiArCXN0cnVjdCBkZXZpY2VfbGluayAqbGluazsKPiAgCj4gIAljb25zdCBzdHJ1Y3QgZHJt
-X2JyaWRnZV9mdW5jcyAqZnVuY3M7Cj4gIAl2b2lkICpkcml2ZXJfcHJpdmF0ZTsKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Sometimes it's useful and for debugging to check the whole system clock
+configuration in tree-view upon panic.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ Documentation/admin-guide/kernel-parameters.txt |  3 ++
+ drivers/clk/clk.c                               | 67 +++++++++++++++++++++++++
+ 2 files changed, 70 insertions(+)
+
+diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+index 3487be7..7bbdb6f 100644
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -519,6 +519,9 @@
+ 			debug and development, but should not be needed on a
+ 			platform with proper driver support.  For more
+ 			information, see Documentation/clk.txt.
++	clk_panic_dump
++			[CLK]
++			Dump the whole clock tree-view upon panic.
+ 
+ 	clock=		[BUGS=X86-32, HW] gettimeofday clocksource override.
+ 			[Deprecated]
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index 9ae92aa..adb5537 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -2802,6 +2802,73 @@ static inline void clk_debug_unregister(struct clk_core *core)
+ }
+ #endif
+ 
++static bool clk_pdump_enable;
++static int __init clk_pdump_setup(char *__unused)
++{
++	clk_pdump_enable  = true;
++	return 1;
++}
++__setup("clk_panic_dump", clk_pdump_setup);
++
++static void clk_pdump_show_one(struct clk_core *c, int level)
++{
++	if (!c)
++		return;
++
++	pr_err("%*s%-*s %11d %12d %11lu %10lu %-3d\n",
++		level * 3 + 1, "", 30 - level * 3, c->name,
++		c->enable_count, c->prepare_count, clk_core_get_rate(c),
++		clk_core_get_accuracy(c), clk_core_get_phase(c));
++}
++
++static void clk_pdump_show_subtree(struct clk_core *c, int level)
++{
++	struct clk_core *child;
++
++	if (!c)
++		return;
++
++	clk_pdump_show_one(c, level);
++
++	hlist_for_each_entry(child, &c->children, child_node)
++		clk_pdump_show_subtree(child, level + 1);
++}
++
++static int clk_panic_dump(struct notifier_block *this, unsigned long ev,
++			  void *ptr)
++{
++	struct clk_core *c;
++
++	if (!clk_pdump_enable)
++		return 0;
++
++	pr_err("clock panic dump:\n");
++	pr_err("   clock                         enable_cnt  prepare_cnt        rate   accuracy   phase\n");
++	pr_err("----------------------------------------------------------------------------------------\n");
++
++	clk_prepare_lock();
++
++	hlist_for_each_entry(c, &clk_root_list, child_node)
++		clk_pdump_show_subtree(c, 0);
++	hlist_for_each_entry(c, &clk_orphan_list, child_node)
++		clk_pdump_show_subtree(c, 0);
++
++	clk_prepare_unlock();
++
++	return 0;
++}
++
++static struct notifier_block clk_pdump_block = {
++	.notifier_call = clk_panic_dump,
++};
++
++static int clk_register_pdump(void)
++{
++	atomic_notifier_chain_register(&panic_notifier_list, &clk_pdump_block);
++	return 0;
++}
++late_initcall_sync(clk_register_pdump);
++
+ /**
+  * __clk_core_init - initialize the data structures in a struct clk_core
+  * @core:	clk_core being initialized
+-- 
+1.9.1
