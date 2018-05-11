@@ -1,72 +1,64 @@
-From: William Wu <william.wu@rock-chips.com>
-Subject: [PATCH v5 2/2] usb: dwc2: fix isoc split in transfer with no data
-Date: Fri, 11 May 2018 17:46:32 +0800
-Message-ID: <1526031992-16565-3-git-send-email-william.wu@rock-chips.com>
-References: <1526031992-16565-1-git-send-email-william.wu@rock-chips.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v1 3/5] arm64: dts: rockchip: Add gpio-syscon10 to rk3328
+Date: Fri, 11 May 2018 07:22:19 -0500
+Message-ID: <CAL_JsqLK6S0iA=K1o=gpuJAxD6HxCSzHaJ6ZchuCz=GZ-Zb=Dg@mail.gmail.com>
+References: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn> <1525943800-14095-4-git-send-email-djw@t-chip.com.cn>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526031992-16565-1-git-send-email-william.wu@rock-chips.com>
+In-Reply-To: <1525943800-14095-4-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: hminas@synopsys.com, felipe.balbi@linux.intel.com, gregkh@linuxfoundation.org
-Cc: sergei.shtylyov@cogentembedded.com, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, william.wu@rock-chips.com, wzz@rock-chips.com, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@AOPEN.com, Spruce.Wu@quantatw.com, Martin.Tsai@quantatw.com, Kevin.Shai@quantatw.com, Mon-Jer.Wu@quantatw.com, Claud.Chang@quantatw.com, San.Lin@quantatw.com, Ren.Kuo@quantatw.com, davidhtwang@aopen.com, fonglin@aopen.com, stevencheng@aopen.com, tomchen@aopen.com, donchang@aopen.com, milesschofield@aopen.com
+To: djw@t-chip.com.cn
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Finley Xiao <finley.xiao@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-If isoc split in transfer with no data (the length of DATA0
-packet is zero), we can't simply return immediately. Because
-the DATA0 can be the first transaction or the second transaction
-for the isoc split in transaction. If the DATA0 packet with no
-data is in the first transaction, we can return immediately.
-But if the DATA0 packet with no data is in the second transaction
-of isoc split in transaction sequence, we need to increase the
-qtd->isoc_frame_index and giveback urb to device driver if needed,
-otherwise, the MDATA packet will be lost.
+On Thu, May 10, 2018 at 4:16 AM,  <djw@t-chip.com.cn> wrote:
+> From: Levin Du <djw@t-chip.com.cn>
+>
+> Adding a new gpio controller named "gpio-syscon10" to rk3328, providing
+> access to the pins defined in the syscon GRF_SOC_CON10.
+>
+> Boards using these special pins to control regulators or LEDs, can now
+> utilize existing drivers like gpio-regulator and leds-gpio.
+>
+> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+>
+> ---
+>
+> Changes in v1:
+> - Split from V0 and add to rk3328.dtsi for general use.
+>
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index b8e9da1..73a822d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -309,6 +309,12 @@
+>                         mode-loader = <BOOT_BL_DOWNLOAD>;
+>                 };
+>
+> +               gpio_syscon10: gpio-syscon10 {
 
-A typical test case is that connect the dwc2 controller with an
-usb hs Hub (GL852G-12), and plug an usb fs audio device (Plantronics
-headset) into the downstream port of Hub. Then use the usb mic
-to record, we can find noise when playback.
+GPIO controller nodes should be named just 'gpio'.
 
-In the case, the isoc split in transaction sequence like this:
+> +                       compatible = "rockchip,gpio-syscon";
+> +                       gpio-controller;
+> +                       #gpio-cells = <2>;
+> +                       gpio,syscon-dev = <0 0x0428 0>;
 
-- SSPLIT IN transaction
-- CSPLIT IN transaction
-  - MDATA packet (176 bytes)
-- CSPLIT IN transaction
-  - DATA0 packet (0 byte)
+This property is not documented and takes a phandle.
 
-This patch use both the length of DATA0 and qtd->isoc_split_offset
-to check if the DATA0 is in the second transaction.
-
-Signed-off-by: William Wu <william.wu@rock-chips.com>
----
-Changes in v5:
-- None
-
-Changes in v4:
-- None
-
-Changes in v3:
-- Remove "qtd->isoc_split_offset = 0" in the if test
-
-Changes in v2:
-- Modify the commit message
-
- drivers/usb/dwc2/hcd_intr.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index ba6229e..9751785 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -930,9 +930,8 @@ static int dwc2_xfercomp_isoc_split_in(struct dwc2_hsotg *hsotg,
- 	frame_desc = &qtd->urb->iso_descs[qtd->isoc_frame_index];
- 	len = dwc2_get_actual_xfer_length(hsotg, chan, chnum, qtd,
- 					  DWC2_HC_XFER_COMPLETE, NULL);
--	if (!len) {
-+	if (!len && !qtd->isoc_split_offset) {
- 		qtd->complete_split = 0;
--		qtd->isoc_split_offset = 0;
- 		return 0;
- 	}
- 
--- 
-2.0.0
+> +               };
+>         };
+>
+>         uart0: serial@ff110000 {
+> --
+> 2.7.4
+>
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
