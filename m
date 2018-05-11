@@ -1,92 +1,42 @@
-From: Levin Du <djw@t-chip.com.cn>
-Subject: Re: [PATCH v1 2/5] gpio: syscon: Add gpio-syscon for rockchip
-Date: Fri, 11 May 2018 10:16:48 +0800
-Message-ID: <bbbacb2b-531b-cb41-2d74-618d957c4ab7@t-chip.com.cn>
-References: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn>
- <1525943800-14095-3-git-send-email-djw@t-chip.com.cn>
- <c0f520d1-42e3-e8b5-128e-3ff3d532ec4c@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1 00/13] add power domain support for Rockchip Socs
+Date: Fri, 11 May 2018 11:30:45 +0800
+Message-ID: <1526009458-28579-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c0f520d1-42e3-e8b5-128e-3ff3d532ec4c@arm.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018-05-10 10:56 PM, Robin Murphy wrote:
->
->> diff --git 
->> a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt 
->> b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
->> new file mode 100644
->> index 0000000..e4c1650
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
->> @@ -0,0 +1,41 @@
->> +* Rockchip GPIO support for GRF_SOC_CON registers
->> +
->> +Required properties:
->> +- compatible: Should contain "rockchip,gpio-syscon".
->> +- gpio-controller: Marks the device node as a gpio controller.
->> +- #gpio-cells: Should be two. The first cell is the pin number and
->
-> I would suggest s/pin number/bit number in the associated GRF 
-> register/ here. At least in this RK3328 case there's only one pin, 
-> which isn't numbered, and if you naively considered it pin 0 of this 
-> 'bank' you'd already have the wrong number. Since we're dealing with 
-> the "random SoC-specific controls" region of the GRF as opposed to the 
-> relatively-consistent and organised pinmux parts, I don't think we 
-> should rely on any assumptions about how things are laid out.
->
-> I was initially going to suggest a more specific compatible string as 
-> well, but on reflection I think the generic "rockchip,gpio-syscon" for 
-> basic "flip this single GRF bit" functionality actually is the right 
-> way to go. In the specific RK3328 GPIO_MUTE case, there look to be 4 
-> bits in total related to this pin - the enable, value, and some pull 
-> controls (which I assume apply when the output is disabled) - if at 
-> some point in future we *did* want to start explicitly controlling the 
-> rest of them too, then would be a good time to define a separate 
-> "rockchip,rk3328-gpio-mute" binding (and probably a dedicated driver) 
-> for that specialised functionality, independently of this basic one.
->
-Good point! I'll fix the doc.
+add power domain support for RK3036/RK3128/RK3228/PX30 Soc.
+fix up the wrong value when set power domain up.
 
->>   +static void rockchip_gpio_set(struct gpio_chip *chip, unsigned int 
->> offset,
->> +                  int val)
->> +{
->> +    struct syscon_gpio_priv *priv = gpiochip_get_data(chip);
->> +    unsigned int offs;
->> +    u8 bit;
->> +    u32 data;
->> +    int ret;
->> +
->> +    offs = priv->dreg_offset + priv->data->dat_bit_offset + offset;
->
-> data->dat_bit_offset is always 0 here, but given that wrapping large 
-> offsets to successive GRF registers doesn't make sense (and wouldn't 
-> work anyway with this arithmetic) I don't think you even need this 
-> calculation of offs at all...
->
->> +    bit = offs % SYSCON_REG_BITS;
->
-> ... since it would suffice to use offset here...
->
->> +    data = (val ? BIT(bit) : 0) | BIT(bit + 16);
->> +    ret = regmap_write(priv->syscon,
->> +               (offs / SYSCON_REG_BITS) * SYSCON_REG_SIZE,
->
-> ... and priv->dreg_offset here.
->
+Elaine Zhang (13):
+  dt-bindings: power: add RK3036 SoCs header for power-domain
+  dt-bindings: add binding for rk3036 power domains
+  Soc: rockchip: power-domain: add power domain support for rk3036
+  soc: rockchip: power-domain: Fix wrong value when power up pd
+  dt-bindings: power: add RK3128 SoCs header for power-domain
+  dt-bindings: add binding for rk3128 power domains
+  soc: rockchip: power-domain: add power domain support for rk3128
+  dt-bindings: power: add RK3228 SoCs header for power-domain
+  dt-bindings: add binding for rk3228 power domains
+  soc: rockchip: power-domain: add power domain support for rk3228
+  dt-bindings: power: add PX30 SoCs header for power-domain
+  dt-bindings: add binding for px30 power domains
+  soc: rockchip: power-domain: add power domain support for px30
 
-rockchip_gpio_set() follows the conventional offset handling in the 
-gpio-syscon driver.
-dreg_offset will get multiplied by 8 (dreg_offset <<= 3) in 
-syscon_gpio_probe().
-I'm not sure if this needs to simplify, or stay the same as others.
+ .../bindings/soc/rockchip/power_domain.txt         |  12 +++
+ drivers/soc/rockchip/pm_domains.c                  | 116 ++++++++++++++++++++-
+ include/dt-bindings/power/px30-power.h             |  32 ++++++
+ include/dt-bindings/power/rk3036-power.h           |  27 +++++
+ include/dt-bindings/power/rk3128-power.h           |  28 +++++
+ include/dt-bindings/power/rk3228-power.h           |  26 +++++
+ 6 files changed, 240 insertions(+), 1 deletion(-)
+ create mode 100644 include/dt-bindings/power/px30-power.h
+ create mode 100644 include/dt-bindings/power/rk3036-power.h
+ create mode 100644 include/dt-bindings/power/rk3128-power.h
+ create mode 100644 include/dt-bindings/power/rk3228-power.h
 
-Thanks
-Levin
+-- 
+1.9.1
