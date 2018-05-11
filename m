@@ -1,95 +1,109 @@
-From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link
- between the bridge supplier and consumer
-Date: Fri, 11 May 2018 09:37:47 +0200
-Message-ID: <c25f81e0-5b7b-c605-5b58-0ecc88830124@axentia.se>
-References: <20180504135212.26977-1-peda@axentia.se>
- <CGME20180504135432epcas3p368bb7541ca52bc8bc301dec794851214@epcas3p3.samsung.com>
- <20180504135212.26977-27-peda@axentia.se>
- <a723ad4a-8caa-4ff5-d39d-52db98a56d7b@samsung.com>
+From: wlf <wulf@rock-chips.com>
+Subject: Re: [PATCH v3 1/2] usb: dwc2: alloc dma aligned buffer for isoc split
+ in
+Date: Fri, 11 May 2018 17:26:59 +0800
+Message-ID: <3768eb42-98c4-5bd0-a796-5ba36d03cd35@rock-chips.com>
+References: <1525748846-7767-1-git-send-email-william.wu@rock-chips.com>
+ <1525748846-7767-2-git-send-email-william.wu@rock-chips.com>
+ <CAD=FV=VKBVp++gPXzYN0N46NVarPNWqs1YZjfcd7twkU25WNyQ@mail.gmail.com>
+ <f2e0fba2-da0b-38ba-6e25-3da9ccf1e4ee@rock-chips.com>
+ <CAD=FV=W0Aufw1=UH2eZjb4cpiLjt9ty49CrUOdM5B2wF+WoY-A@mail.gmail.com>
+ <196bd304-3c6b-91b6-1743-50d6d13fc5a5@rock-chips.com>
+ <CAD=FV=Xsa9MAw==_Oi28B69oqZehwL2JTwEzjKAnH5PS5wKC_A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <a723ad4a-8caa-4ff5-d39d-52db98a56d7b-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Xsa9MAw==_Oi28B69oqZehwL2JTwEzjKAnH5PS5wKC_A@mail.gmail.com>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@google.com>
+Cc: William Wu <william.wu@rock-chips.com>, hminas@synopsys.com, felipe.balbi@linux.intel.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>, linux-usb@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank Wang <frank.wang@rock-chips.com>, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, "daniel.meng" <daniel.meng@rock-chips.com>, John Youn <John.Youn@synopsys.com>, =?UTF-8?B?546L5b6B5aKe?= <wzz@rock-chips.com>, zsq@rock-chips.com, =?UTF-8?B?6Kix5ZiJ6YqY?= <Allen.Hsu@quantatw.com>, Stan Tsui <StanTsui@aopen.com>, =?UTF-8?B?U3BydWNlIFd1ICjlkLPlu7rli7Mp?= <Spruce.Wu@quantatw.com>, Marti
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOC0wNS0xMCAxMDoxMCwgQW5kcnplaiBIYWpkYSB3cm90ZToKPiBPbiAwNC4wNS4yMDE4
-IDE1OjUyLCBQZXRlciBSb3NpbiB3cm90ZToKPj4gSWYgdGhlIGJyaWRnZSBzdXBwbGllciBpcyB1
-bmJvdW5kLCB0aGlzIHdpbGwgYnJpbmcgdGhlIGJyaWRnZSBjb25zdW1lcgo+PiBkb3duIGFsb25n
-IHdpdGggdGhlIGJyaWRnZS4gVGh1cywgdGhlcmUgd2lsbCBubyBsb25nZXIgbGluZ2VyIGFueQo+
-PiBkYW5nbGluZyBwb2ludGVycyBmcm9tIHRoZSBicmlkZ2UgY29uc3VtZXIgKHRoZSBkcm1fZGV2
-aWNlKSB0byBzb21lCj4+IG5vbi1leGlzdGVudCBicmlkZ2Ugc3VwcGxpZXIuCj4+Cj4+IFNpZ25l
-ZC1vZmYtYnk6IFBldGVyIFJvc2luIDxwZWRhQGF4ZW50aWEuc2U+Cj4+IC0tLQo+PiAgZHJpdmVy
-cy9ncHUvZHJtL2RybV9icmlkZ2UuYyB8IDE4ICsrKysrKysrKysrKysrKysrKwo+PiAgaW5jbHVk
-ZS9kcm0vZHJtX2JyaWRnZS5oICAgICB8ICAyICsrCj4+ICAyIGZpbGVzIGNoYW5nZWQsIDIwIGlu
-c2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdl
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jCj4+IGluZGV4IDc4ZDE4NmI2ODMxYi4u
-MDI1OWYwYTNmZjI3IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5j
-Cj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMKPj4gQEAgLTI2LDYgKzI2LDcg
-QEAKPj4gICNpbmNsdWRlIDxsaW51eC9tdXRleC5oPgo+PiAgCj4+ICAjaW5jbHVkZSA8ZHJtL2Ry
-bV9icmlkZ2UuaD4KPj4gKyNpbmNsdWRlIDxkcm0vZHJtX2RldmljZS5oPgo+PiAgI2luY2x1ZGUg
-PGRybS9kcm1fZW5jb2Rlci5oPgo+PiAgCj4+ICAjaW5jbHVkZSAiZHJtX2NydGNfaW50ZXJuYWwu
-aCIKPj4gQEAgLTEyNywxMiArMTI4LDI1IEBAIGludCBkcm1fYnJpZGdlX2F0dGFjaChzdHJ1Y3Qg
-ZHJtX2VuY29kZXIgKmVuY29kZXIsIHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4+ICAJaWYg
-KGJyaWRnZS0+ZGV2KQo+PiAgCQlyZXR1cm4gLUVCVVNZOwo+PiAgCj4+ICsJaWYgKGVuY29kZXIt
-PmRldi0+ZGV2ICE9IGJyaWRnZS0+b2Rldikgewo+IAo+IEkgd29uZGVyIHdoeSBkZXZpY2VfbGlu
-a19hZGQgZG9lcyBub3QgaGFuZGxlIHRoaXMgY2FzZSAoc2VsZiBkZXBlbmRlbmN5KQo+IHNpbGVu
-dGx5IGFzIG5vb3AsIGFzIGl0IHNlZW1zIHRvIGJlIGEgY29ycmVjdCBiZWhhdmlvci4KCkl0J3Mg
-a2luZC1vZiBhIHNpbGx5IGNvcm5lci1jYXNlIHRob3VnaCwgc28gcGVyZmVjdGx5IHVuZGVyc3Rh
-bmRhYmxlCnRoYXQgaXQgaXNuJ3QgaGFuZGxlZC4KCj4+ICsJCWJyaWRnZS0+bGluayA9IGRldmlj
-ZV9saW5rX2FkZChlbmNvZGVyLT5kZXYtPmRldiwKPj4gKwkJCQkJICAgICAgIGJyaWRnZS0+b2Rl
-diwgMCk7Cj4+ICsJCWlmICghYnJpZGdlLT5saW5rKSB7Cj4+ICsJCQlkZXZfZXJyKGJyaWRnZS0+
-b2RldiwgImZhaWxlZCB0byBsaW5rIGJyaWRnZSB0byAlc1xuIiwKPj4gKwkJCQlkZXZfbmFtZShl
-bmNvZGVyLT5kZXYtPmRldikpOwo+PiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4+ICsJCX0KPj4gKwl9
-Cj4+ICsKPj4gIAlicmlkZ2UtPmRldiA9IGVuY29kZXItPmRldjsKPj4gIAlicmlkZ2UtPmVuY29k
-ZXIgPSBlbmNvZGVyOwo+PiAgCj4+ICAJaWYgKGJyaWRnZS0+ZnVuY3MtPmF0dGFjaCkgewo+PiAg
-CQlyZXQgPSBicmlkZ2UtPmZ1bmNzLT5hdHRhY2goYnJpZGdlKTsKPj4gIAkJaWYgKHJldCA8IDAp
-IHsKPj4gKwkJCWlmIChicmlkZ2UtPmxpbmspCj4+ICsJCQkJZGV2aWNlX2xpbmtfZGVsKGJyaWRn
-ZS0+bGluayk7Cj4+ICsJCQlicmlkZ2UtPmxpbmsgPSBOVUxMOwo+PiAgCQkJYnJpZGdlLT5kZXYg
-PSBOVUxMOwo+PiAgCQkJYnJpZGdlLT5lbmNvZGVyID0gTlVMTDsKPj4gIAkJCXJldHVybiByZXQ7
-Cj4+IEBAIC0xNTksNiArMTczLDEwIEBAIHZvaWQgZHJtX2JyaWRnZV9kZXRhY2goc3RydWN0IGRy
-bV9icmlkZ2UgKmJyaWRnZSkKPj4gIAlpZiAoYnJpZGdlLT5mdW5jcy0+ZGV0YWNoKQo+PiAgCQli
-cmlkZ2UtPmZ1bmNzLT5kZXRhY2goYnJpZGdlKTsKPj4gIAo+PiArCWlmIChicmlkZ2UtPmxpbmsp
-Cj4+ICsJCWRldmljZV9saW5rX2RlbChicmlkZ2UtPmxpbmspOwo+PiArCWJyaWRnZS0+bGluayA9
-IE5VTEw7Cj4+ICsKPj4gIAlicmlkZ2UtPmRldiA9IE5VTEw7Cj4+ICB9Cj4+ICAKPj4gZGlmZiAt
-LWdpdCBhL2luY2x1ZGUvZHJtL2RybV9icmlkZ2UuaCBiL2luY2x1ZGUvZHJtL2RybV9icmlkZ2Uu
-aAo+PiBpbmRleCBiNjU2ZTUwNWQxMWUuLjgwNDE4OWM2M2E0YyAxMDA2NDQKPj4gLS0tIGEvaW5j
-bHVkZS9kcm0vZHJtX2JyaWRnZS5oCj4+ICsrKyBiL2luY2x1ZGUvZHJtL2RybV9icmlkZ2UuaAo+
-PiBAQCAtMjYxLDYgKzI2MSw3IEBAIHN0cnVjdCBkcm1fYnJpZGdlX3RpbWluZ3Mgewo+PiAgICog
-QGxpc3Q6IHRvIGtlZXAgdHJhY2sgb2YgYWxsIGFkZGVkIGJyaWRnZXMKPj4gICAqIEB0aW1pbmdz
-OiB0aGUgdGltaW5nIHNwZWNpZmljYXRpb24gZm9yIHRoZSBicmlkZ2UsIGlmIGFueSAobWF5Cj4+
-ICAgKiBiZSBOVUxMKQo+PiArICogQGxpbms6IGRybSBjb25zdW1lciA8LT4gYnJpZGdlIHN1cHBs
-aWVyCj4gCj4gTml0cGljazogIjwtPiIgc3VnZ2VzdHMgc3ltbWV0cnksIG1heWJlICJkZXZpY2Ug
-bGluayBmcm9tIGRybSBjb25zdW1lcgo+IHRvIHRoZSBicmlkZ2UiIHdvdWxkIGJlIGJldHRlci4K
-CkkgbWVhbnQgIjwtPiIgdG8gaW5kaWNhdGUgdGhhdCB0aGUgbGluayBpcyBiaWRpcmVjdGlvbmFs
-LCBub3QgdGhhdCB0aGUKcmVsYXRpb25zaGlwIGlzIGluIGFueSB3YXkgc3ltbWV0cmljLiBJIHdh
-c24ndCBhd2FyZSBvZiBhbnkgaW1wbGljYXRpb24Kb2YgYSBzeW1tZXRyaWMgcmVsYXRpb25zaGlw
-IHdoZW4gdXNpbmcgIjwtPiIsIGRvIHlvdSBoYXZlIGEgcmVmZXJlbmNlPwpCdXQgSSBndWVzcyB0
-aGUgZGlmZmVyZW50IGFycm93IG5vdGF0aW9ucyBpbiBtYXRoIGFyZSBzb21ld2hhdCBvdmVybG9h
-ZGVkCmFuZCB0aGF0IHNvbWVvbmUgYXQgc29tZSBwb2ludCBtdXN0IGhhdmUgdXNlZCAiPC0+IiB0
-byBpbmRpY2F0ZSBhCnN5bW1ldHJpYyByZWxhdGlvbnNoaXAuLi4KCj4gQW55d2F5Ogo+IFJldmll
-d2VkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPgoKVGhhbmtzIQoKQ2hl
-ZXJzLApQZXRlcgoKPiDCoC0tCj4gUmVnYXJkcwo+IEFuZHJ6ZWoKPiAKPj4gICAqIEBmdW5jczog
-Y29udHJvbCBmdW5jdGlvbnMKPj4gICAqIEBkcml2ZXJfcHJpdmF0ZTogcG9pbnRlciB0byB0aGUg
-YnJpZGdlIGRyaXZlcidzIGludGVybmFsIGNvbnRleHQKPj4gICAqLwo+PiBAQCAtMjcxLDYgKzI3
-Miw3IEBAIHN0cnVjdCBkcm1fYnJpZGdlIHsKPj4gIAlzdHJ1Y3QgZHJtX2JyaWRnZSAqbmV4dDsK
-Pj4gIAlzdHJ1Y3QgbGlzdF9oZWFkIGxpc3Q7Cj4+ICAJY29uc3Qgc3RydWN0IGRybV9icmlkZ2Vf
-dGltaW5ncyAqdGltaW5nczsKPj4gKwlzdHJ1Y3QgZGV2aWNlX2xpbmsgKmxpbms7Cj4+ICAKPj4g
-IAljb25zdCBzdHJ1Y3QgZHJtX2JyaWRnZV9mdW5jcyAqZnVuY3M7Cj4+ICAJdm9pZCAqZHJpdmVy
-X3ByaXZhdGU7Cj4gCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpGcmVlZHJlbm8gbWFpbGluZyBsaXN0CkZyZWVkcmVub0BsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9mcmVl
-ZHJlbm8K
+Dear Doug,
+
+
+在 2018年05月11日 04:59, Doug Anderson 写道:
+> Hi,
+>
+> On Wed, May 9, 2018 at 1:55 AM, wlf <wulf@rock-chips.com> wrote:
+>>>>>> +       } else if (hsotg->params.host_dma) {
+>>>>> Are you sure this is "else if"?  Can't you have descriptor DMA enabled
+>>>>> in the controller and still need to do a normal DMA transfer if you
+>>>>> plug in a hub?  Seems like this should be just "if".
+>>>> Sorry, I don't understand the case "have descriptor DMA enabled in the
+>>>> controller and still need to do a normal DMA transfer". But maybe it
+>>>> still
+>>>> has another problem if just use "if" here, because it will create kmem
+>>>> caches for Slave mode which actually doesn't need aligned DMA buf.
+>>> So right now your code looks like:
+>>>
+>>> if (hsotg->params.dma_desc_enable ||
+>>>       hsotg->params.dma_desc_fs_enable) {
+>>>       ...
+>>>       ...
+>>> } else if (hsotg->params.host_dma) {
+>>>      ...
+>>> }
+>>>
+>>>
+>>> I've never played much with "descriptor DMA" on dwc2 because every
+>>> time I enabled it (last I tried was years ago) a whole bunch of
+>>> peripherals stopped working and I didn't dig (I just left it off).
+>>> Thus, I'm no expert on descriptor DMA.  ...that being said, my
+>>> understanding is that if you enable descriptor DMA in the controller
+>>> then it will enable a smarter DMA mode for some of the transfers.
+>>> IIRC Descriptor DMA mode specifically can't handle splits.  Is my
+>>> memory correct there?  Presumably that means that when you enable
+>>> descriptor DMA in the controller the driver will automatically fall
+>>> back to normal Address DMA mode if things get too complicated.  When
+>>> it falls back to Address DMA mode, presumably dwc2_hcd_init() won't
+>>> get called again.  That means that any data structures that are needed
+>>> for Address DMA need to be allocated in dwc2_hcd_init() even if
+>>> descriptor DMA is enabled because we might need to fall back to
+>>> Address DMA.
+>>>
+>>> Thus, I'm suggesting changing the code to:
+>>>
+>>> if (hsotg->params.dma_desc_enable ||
+>>>       hsotg->params.dma_desc_fs_enable) {
+>>>       ...
+>>>       ...
+>>> }
+>>>
+>>> if (hsotg->params.host_dma) {
+>>>      ...
+>>> }
+>>>
+>>>
+>>> ...as I said, I'm no expert and I could just be confused.  If
+>>> something I say seems wrong please correct me.
+>> Ah, I got it. Thanks for your detailed explanation. Although I don't know if
+>> it's possible that dwc2 driver automatically fall back to normal Address DMA
+>> mode when desc DMA work abnormally with split, I agree with your suggestion.
+>> I'll fix it in V4 patch.
+> Hmm, I guess you're right.  I did a quick search and I can't find any
+> evidence of a fallback like this.  Maybe I dreamed that.  I found some
+> old comment in the commit history that said:
+I think you're right. I find that it's possible to fall back to Address 
+DMA mode if desc DMA initialization failure. The error case is：in 
+dwc2_hcd_init(),  if it fails to create dwc2 generic desc cache or dwc2 
+hs isoc desc cache, then it will disable desc DMA and fall back to 
+Address DMA mode.
+>
+> /*
+>   * Disable descriptor dma mode by default as the HW can support
+>   * it, but does not support it for SPLIT transactions.
+>   * Disable it for FS devices as well.
+>   */
+>
+> ...and it looks there's currently nobody using descriptor DMA anyway
+> (assuming I read the code correctly).  It does seem like people were
+> ever going to turn it on then it would have to be dynamic as I was
+> dreaming it was...
+Yes, the dwc2 desc DMA mode can't support split transaction. So few 
+people use desc DMA mode for OTG Host mode. BTW, I find that the latest 
+code enable desc DMA mode by default for the OTG peripheral mode if the 
+dwc2 hardware support desc DMA.
+>
