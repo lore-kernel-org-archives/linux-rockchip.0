@@ -1,39 +1,66 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 11/13] dt-bindings: power: add PX30 SoCs header for power-domain
-Date: Sun, 13 May 2018 22:53:00 +0200
-Message-ID: <1550439.0mAU4944n0@diego>
-References: <1526009458-28579-1-git-send-email-zhangqing@rock-chips.com> <508694354.7btLQf7nsA@phil> <9c9606f0-5c97-1a6e-a3c5-f6380c16fea4@rock-chips.com>
+From: Levin Du <djw@t-chip.com.cn>
+Subject: Re: [PATCH v1 3/5] arm64: dts: rockchip: Add gpio-syscon10 to rk3328
+Date: Mon, 14 May 2018 09:22:35 +0800
+Message-ID: <5218da3c-40d3-a44f-2b82-13cd4c522a1f@t-chip.com.cn>
+References: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn>
+ <1525943800-14095-4-git-send-email-djw@t-chip.com.cn>
+ <CAL_JsqLK6S0iA=K1o=gpuJAxD6HxCSzHaJ6ZchuCz=GZ-Zb=Dg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9c9606f0-5c97-1a6e-a3c5-f6380c16fea4@rock-chips.com>
+In-Reply-To: <CAL_JsqLK6S0iA=K1o=gpuJAxD6HxCSzHaJ6ZchuCz=GZ-Zb=Dg@mail.gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tao Huang <huangtao@rock-chips.com>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, mark.rutland@arm.com, devicetree@vger.kernel.org, ulf.hansson@linaro.org, khilman@kernel.org, xxx@rock-chips.com, linux-pm@vger.kernel.org, rjw@rjwysocki.net, linux-kernel@vger.kernel.org, xf@rock-chips.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Finley Xiao <finley.xiao@rock-chips.com>, linux-arm-kernel@lists.infradead.org, wxt@rock-chips.com
+To: Rob Herring <robh+dt@kernel.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Finley Xiao <finley.xiao@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Sonntag, 13. Mai 2018, 17:18:12 CEST schrieb Tao Huang:
-> Hi Heiko:
-> 
-> On 2018年05月12日 06:11, Heiko Stuebner wrote:
-> > Here I have a naming question. When looking at the vendor kernel
-> > it looks like the px30 is largely related to the rk3326.
-> > (rk3326.dtsi includeing the px30.dtsi)
-> > 
-> > What is the reason for basing the naming on the px30 this time? And could
-> > we possibly keep to rkXXXX names for the basic things in the kernel, thus
-> > keeping the pxXX as second name, like with the other px-variants before?
-> 
-> PX30 and RK3326 are different chips. PX30 has more features. You can simply
-> think that RK3326 is a subset of PX30. The RK3326 is more like a PX30
-> derivative chip. This is not the same as the previous chips. So we use PX30
-> instead of RK3326 for name, and the opening document is only for PX30, we
-> think this is more convenient for developers.
-
-ok, sounds reasonable :-) ... So we'll stay with the PX30.
 
 
-Heiko
+On 2018-05-11 8:22 PM, Rob Herring wrote:
+> On Thu, May 10, 2018 at 4:16 AM,  <djw@t-chip.com.cn> wrote:
+>> From: Levin Du <djw@t-chip.com.cn>
+>>
+>> Adding a new gpio controller named "gpio-syscon10" to rk3328, providing
+>> access to the pins defined in the syscon GRF_SOC_CON10.
+>>
+>> Boards using these special pins to control regulators or LEDs, can now
+>> utilize existing drivers like gpio-regulator and leds-gpio.
+>>
+>> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+>>
+>> ---
+>>
+>> Changes in v1:
+>> - Split from V0 and add to rk3328.dtsi for general use.
+>>
+>>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 ++++++
+>>   1 file changed, 6 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> index b8e9da1..73a822d 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> @@ -309,6 +309,12 @@
+>>                          mode-loader = <BOOT_BL_DOWNLOAD>;
+>>                  };
+>>
+>> +               gpio_syscon10: gpio-syscon10 {
+> GPIO controller nodes should be named just 'gpio'.
+
+'gpio' is a general name, and there're already gpio0~gpio3 for pinctrl 
+GPIOs.
+
+>> +                       compatible = "rockchip,gpio-syscon";
+>> +                       gpio-controller;
+>> +                       #gpio-cells = <2>;
+>> +                       gpio,syscon-dev = <0 0x0428 0>;
+> This property is not documented and takes a phandle.
+See PATCH1 which allows fetching syscon from parent node .
+This is also documented in 
+Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+in PATCH2.
+
+Thanks
+Levin
