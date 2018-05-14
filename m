@@ -1,105 +1,123 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [RFC PATCH 00/10] Add support for drm/rockchip to dynamically control the DDR frequency.
-Date: Mon, 14 May 2018 23:16:00 +0200
-Message-ID: <20180514211610.26618-1-enric.balletbo@collabora.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [RFC PATCH 01/10] devfreq: rockchip-dfi: Move GRF definitions
+ to a common place.
+Date: Tue, 15 May 2018 06:44:07 +0900
+Message-ID: <5AFA0327.2080204@samsung.com>
+References: <20180514211610.26618-1-enric.balletbo@collabora.com>
+        <CGME20180514211637epcas4p4017318fec5b9d7ace763d72e35216449@epcas4p4.samsung.com>
+        <20180514211610.26618-2-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <20180514211610.26618-2-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Lin Huang <hl@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, Yakir Yang <kuankuan.y@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Elaine Zhang <zhangqing@rock-chips.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Mark Yao <markyao0591@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Kever Yang <kever.yang@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Lin Huang <hl@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear all,
+Hi Enric,
 
-The rk3399 platform has a DFI controller that can monitor DDR load and a
-DMC driver that talks with the TF-A (Trusted Firmware-A) to dynamically
-set the DDR frequency with following flow.
+On 2018년 05월 15일 06:16, Enric Balletbo i Serra wrote:
+> Some rk3399 GRF (Generic Register Files) definitions can be used for
+> different drivers. Move these definitions to a common include so we
+> don't need to duplicate these definitions.
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+> 
+>  drivers/devfreq/event/rockchip-dfi.c | 23 +++++++----------------
+>  include/soc/rockchip/rk3399_grf.h    | 21 +++++++++++++++++++++
+>  2 files changed, 28 insertions(+), 16 deletions(-)
+>  create mode 100644 include/soc/rockchip/rk3399_grf.h
+> 
+> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+> index 22b113363ffc..2fbbcbeb644f 100644
+> --- a/drivers/devfreq/event/rockchip-dfi.c
+> +++ b/drivers/devfreq/event/rockchip-dfi.c
+> @@ -26,6 +26,8 @@
+>  #include <linux/list.h>
+>  #include <linux/of.h>
+>  
+> +#include <soc/rockchip/rk3399_grf.h>
+> +
+>  #define RK3399_DMC_NUM_CH	2
+>  
+>  /* DDRMON_CTRL */
+> @@ -43,18 +45,6 @@
+>  #define DDRMON_CH1_COUNT_NUM		0x3c
+>  #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
+>  
+> -/* pmu grf */
+> -#define PMUGRF_OS_REG2	0x308
+> -#define DDRTYPE_SHIFT	13
+> -#define DDRTYPE_MASK	7
+> -
+> -enum {
+> -	DDR3 = 3,
+> -	LPDDR3 = 6,
+> -	LPDDR4 = 7,
+> -	UNUSED = 0xFF
+> -};
+> -
+>  struct dmc_usage {
+>  	u32 access;
+>  	u32 total;
+> @@ -83,16 +73,17 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+>  	u32 ddr_type;
+>  
+>  	/* get ddr type */
+> -	regmap_read(info->regmap_pmu, PMUGRF_OS_REG2, &val);
+> -	ddr_type = (val >> DDRTYPE_SHIFT) & DDRTYPE_MASK;
+> +	regmap_read(info->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+> +	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+> +		    RK3399_PMUGRF_DDRTYPE_MASK;
+>  
+>  	/* clear DDRMON_CTRL setting */
+>  	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+>  
+>  	/* set ddr type to dfi */
+> -	if (ddr_type == LPDDR3)
+> +	if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
+>  		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+> -	else if (ddr_type == LPDDR4)
+> +	else if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
+>  		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+>  
+>  	/* enable count, use software mode */
+> diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
+> new file mode 100644
+> index 000000000000..0f94034e2e9a
+> --- /dev/null
+> +++ b/include/soc/rockchip/rk3399_grf.h
+> @@ -0,0 +1,21 @@
+> +/* SPDX-License-Identifier: GPL-2.0+ */
+> +/*
+> + * Rockchip Generic Register Files definitions
+> + *
+> + * Copyright (c) 2018, Collabora Ltd.
+> + * Author: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> + */
+> +
+> +#ifndef __SOC_RK3399_GRF_H
+> +#define __SOC_RK3399_GRF_H
+> +
+> +/* PMU GRF Registers */
+> +#define RK3399_PMUGRF_OS_REG2		0x308
+> +#define RK3399_PMUGRF_DDRTYPE_SHIFT	13
+> +#define RK3399_PMUGRF_DDRTYPE_MASK	7
+> +#define RK3399_PMUGRF_DDRTYPE_DDR3	3
+> +#define RK3399_PMUGRF_DDRTYPE_LPDDR2	5
+> +#define RK3399_PMUGRF_DDRTYPE_LPDDR3	6
+> +#define RK3399_PMUGRF_DDRTYPE_LPDDR4	7
+> +
+> +#endif
+> 
 
-             kernel                          Trusted Firmware-A
-                                                  (bl31)
-        monitor ddr load
-                |
-                |
-        get_target_rate
-                |
-                |           pass rate to TF-A
-        clk_set_rate(ddr) --------------------->run ddr dvs flow
-                                                    |
-                                                    |
-                 <------------------------------end ddr dvs flow
-                |
-                |
-              return
-
-These patches add support for devfreq to dynamically control the DDR
-frequency into the drm rockchip driver. By default it uses the
-'simple_ondemand' governor which can adjust the frequency based on the
-DDR load.
-
-Although the patches were present in the chromeos kernel for long time I
-am sending this as a RFC because I have doubts on some of them,
-specially patch 4/10 that tries to sync the TF-A with the kernel using a
-mutex, to be honest I did not find another way to do it so feedback is
-more than welcome.
-
-The patches apply on top of current 4.17-rc5 and depends on the
-following series to apply cleanly.
-
- 1. https://lkml.org/lkml/2018/5/9/464
- 2. https://lkml.org/lkml/2018/4/23/354
-
-Waiting for your feedback.
-
-Best regards,
- Enric
-
-
-Derek Basehore (3):
-  devfreq: rk3399_dmc / clk: rockchip: Sync with vblank in the kernel
-    for DDRfreq.
-  devfreq: rk3399_dmc / clk: rockchip: Disable DDR clk timeout on
-    suspend.
-  clk: rockchip: set clk-ddr to GET_RATE_NOCACHE.
-
-Enric Balletbo i Serra (3):
-  devfreq: rockchip-dfi: Move GRF definitions to a common place.
-  dt-bindings: devfreq: rk3399_dmc: Add rockchip,pmu phandle.
-  devfreq: rk3399_dmc: Pass ODT and auto power down parameters to TF-A.
-
-Lin Huang (3):
-  devfreq: rk3399_dmc / rockchip: pm_domains: Register notify to DMC
-    driver.
-  arm64: dts: rk3399: Add dfi and dmc nodes.
-  arm64: dts: rockchip: Enable dmc and dfi nodes on gru.
-
-Sean Paul (1):
-  drm: rockchip: Add DDR devfreq support.
-
- .../bindings/devfreq/rk3399_dmc.txt           |   2 +
- .../rockchip/rk3399-dram-default-timing.dtsi  |  38 ++++
- arch/arm64/boot/dts/rockchip/rk3399-dram.h    |  73 +++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  |  21 ++
- .../boot/dts/rockchip/rk3399-op1-opp.dtsi     |  29 +++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  22 +-
- drivers/clk/rockchip/clk-ddr.c                | 159 ++++++++++++---
- drivers/clk/rockchip/clk.c                    |   2 +-
- drivers/clk/rockchip/clk.h                    |   3 +-
- drivers/devfreq/event/rockchip-dfi.c          |  23 +--
- drivers/devfreq/rk3399_dmc.c                  | 191 +++++++++++++++---
- drivers/devfreq/rk3399_dmc_priv.h             |  16 ++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |  46 +++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   9 +
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |  35 ++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c   |  34 ++++
- drivers/soc/rockchip/pm_domains.c             |  36 ++++
- include/soc/rockchip/rk3399_dmc.h             |  44 ++++
- include/soc/rockchip/rk3399_grf.h             |  21 ++
- include/soc/rockchip/rockchip_sip.h           |   1 +
- 20 files changed, 734 insertions(+), 71 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-dram-default-timing.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-dram.h
- create mode 100644 drivers/devfreq/rk3399_dmc_priv.h
- create mode 100644 include/soc/rockchip/rk3399_dmc.h
- create mode 100644 include/soc/rockchip/rk3399_grf.h
+Looks good to me.
+Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
 -- 
-2.17.0
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
