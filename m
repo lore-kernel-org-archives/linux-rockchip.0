@@ -1,21 +1,21 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2 04/13] soc: rockchip: power-domain: Fix wrong value
- when power up pd
-Date: Mon, 14 May 2018 08:16:16 +0200
-Message-ID: <20180514061616.GA9153@kroah.com>
-References: <1526268455-9133-1-git-send-email-zhangqing@rock-chips.com>
- <1526268578-9361-1-git-send-email-zhangqing@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 04/13] soc: rockchip: power-domain: Fix wrong value when power up pd
+Date: Mon, 14 May 2018 11:45:05 +0200
+Message-ID: <1861053.XlXe5vHN1s@phil>
+References: <1526268455-9133-1-git-send-email-zhangqing@rock-chips.com> <1526268578-9361-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <1526268578-9361-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, stable@vger.kernel.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>, linux-pm@vger.kernel.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 14, 2018 at 11:29:38AM +0800, Elaine Zhang wrote:
+Hi Elaine,
+
+Am Montag, 14. Mai 2018, 05:29:38 CEST schrieb Elaine Zhang:
 > From: Finley Xiao <finley.xiao@rock-chips.com>
 > 
 > Solve the pd could only ever turn off but never turn them on again,
@@ -36,15 +36,19 @@ On Mon, May 14, 2018 at 11:29:38AM +0800, Elaine Zhang wrote:
 > 
 > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  drivers/soc/rockchip/pm_domains.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 
-<formletter>
+As Gregs automated mail noted, the stable-notice needed some changes.
 
-This is not the correct way to submit patches for inclusion in the
-stable kernel tree.  Please read:
-    https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
-for how to do this properly.
+I've done these changes and applied the result for 4.18.
 
-</formletter>
+When you look at [0] you'll see  the two lines "Fixes:..." and "Cc:..."
+in the commit message. Greg then has automated scripts running that
+extract so marked patches from Linus' tree and queue them for possible
+stable-inclusion.
+
+[The other patches need to wait a bit to give Rob a chance to Ack them]
+
+Heiko
+
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=ed726894761c056b3513ce15915af74ce5d7d57b
