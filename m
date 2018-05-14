@@ -1,112 +1,107 @@
-From: Peter Rosin <peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org>
-Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the bridge
- supplier and consumer
-Date: Mon, 14 May 2018 22:40:58 +0200
-Message-ID: <73fa1ca3-28e4-96c5-1fc6-23e9c0cebb49__49832.5380417102$1526330397$gmane$org@axentia.se>
-References: <20180504135212.26977-1-peda@axentia.se>
- <CGME20180504135432epcas3p368bb7541ca52bc8bc301dec794851214@epcas3p3.samsung.com>
- <20180504135212.26977-27-peda@axentia.se>
- <a723ad4a-8caa-4ff5-d39d-52db98a56d7b@samsung.com>
- <c25f81e0-5b7b-c605-5b58-0ecc88830124@axentia.se>
- <20180514162828.GE28661@phenom.ffwll.local>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180514162828.GE28661-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Peter Senna Tschudin <peter.senna-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martin Donnelly <martin.donnelly-JJi787mZWgc@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heik
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [RFC PATCH 01/10] devfreq: rockchip-dfi: Move GRF definitions to a common place.
+Date: Mon, 14 May 2018 23:16:01 +0200
+Message-ID: <20180514211610.26618-2-enric.balletbo@collabora.com>
+References: <20180514211610.26618-1-enric.balletbo@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180514211610.26618-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Lin Huang <hl@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOC0wNS0xNCAxODoyOCwgRGFuaWVsIFZldHRlciB3cm90ZToKPiBPbiBGcmksIE1heSAx
-MSwgMjAxOCBhdCAwOTozNzo0N0FNICswMjAwLCBQZXRlciBSb3NpbiB3cm90ZToKPj4gT24gMjAx
-OC0wNS0xMCAxMDoxMCwgQW5kcnplaiBIYWpkYSB3cm90ZToKPj4+IE9uIDA0LjA1LjIwMTggMTU6
-NTIsIFBldGVyIFJvc2luIHdyb3RlOgo+Pj4+IElmIHRoZSBicmlkZ2Ugc3VwcGxpZXIgaXMgdW5i
-b3VuZCwgdGhpcyB3aWxsIGJyaW5nIHRoZSBicmlkZ2UgY29uc3VtZXIKPj4+PiBkb3duIGFsb25n
-IHdpdGggdGhlIGJyaWRnZS4gVGh1cywgdGhlcmUgd2lsbCBubyBsb25nZXIgbGluZ2VyIGFueQo+
-Pj4+IGRhbmdsaW5nIHBvaW50ZXJzIGZyb20gdGhlIGJyaWRnZSBjb25zdW1lciAodGhlIGRybV9k
-ZXZpY2UpIHRvIHNvbWUKPj4+PiBub24tZXhpc3RlbnQgYnJpZGdlIHN1cHBsaWVyLgo+Pj4+Cj4+
-Pj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgUm9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KPj4+PiAtLS0K
-Pj4+PiAgZHJpdmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYyB8IDE4ICsrKysrKysrKysrKysrKysr
-Kwo+Pj4+ICBpbmNsdWRlL2RybS9kcm1fYnJpZGdlLmggICAgIHwgIDIgKysKPj4+PiAgMiBmaWxl
-cyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL2RybV9icmlkZ2UuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMKPj4+
-PiBpbmRleCA3OGQxODZiNjgzMWIuLjAyNTlmMGEzZmYyNyAxMDA2NDQKPj4+PiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jCj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9i
-cmlkZ2UuYwo+Pj4+IEBAIC0yNiw2ICsyNiw3IEBACj4+Pj4gICNpbmNsdWRlIDxsaW51eC9tdXRl
-eC5oPgo+Pj4+ICAKPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fYnJpZGdlLmg+Cj4+Pj4gKyNpbmNs
-dWRlIDxkcm0vZHJtX2RldmljZS5oPgo+Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9lbmNvZGVyLmg+
-Cj4+Pj4gIAo+Pj4+ICAjaW5jbHVkZSAiZHJtX2NydGNfaW50ZXJuYWwuaCIKPj4+PiBAQCAtMTI3
-LDEyICsxMjgsMjUgQEAgaW50IGRybV9icmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fZW5jb2RlciAq
-ZW5jb2Rlciwgc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwKPj4+PiAgCWlmIChicmlkZ2UtPmRl
-dikKPj4+PiAgCQlyZXR1cm4gLUVCVVNZOwo+Pj4+ICAKPj4+PiArCWlmIChlbmNvZGVyLT5kZXYt
-PmRldiAhPSBicmlkZ2UtPm9kZXYpIHsKPj4+Cj4+PiBJIHdvbmRlciB3aHkgZGV2aWNlX2xpbmtf
-YWRkIGRvZXMgbm90IGhhbmRsZSB0aGlzIGNhc2UgKHNlbGYgZGVwZW5kZW5jeSkKPj4+IHNpbGVu
-dGx5IGFzIG5vb3AsIGFzIGl0IHNlZW1zIHRvIGJlIGEgY29ycmVjdCBiZWhhdmlvci4KPj4KPj4g
-SXQncyBraW5kLW9mIGEgc2lsbHkgY29ybmVyLWNhc2UgdGhvdWdoLCBzbyBwZXJmZWN0bHkgdW5k
-ZXJzdGFuZGFibGUKPj4gdGhhdCBpdCBpc24ndCBoYW5kbGVkLgo+Pgo+Pj4+ICsJCWJyaWRnZS0+
-bGluayA9IGRldmljZV9saW5rX2FkZChlbmNvZGVyLT5kZXYtPmRldiwKPj4+PiArCQkJCQkgICAg
-ICAgYnJpZGdlLT5vZGV2LCAwKTsKPj4+PiArCQlpZiAoIWJyaWRnZS0+bGluaykgewo+Pj4+ICsJ
-CQlkZXZfZXJyKGJyaWRnZS0+b2RldiwgImZhaWxlZCB0byBsaW5rIGJyaWRnZSB0byAlc1xuIiwK
-Pj4+PiArCQkJCWRldl9uYW1lKGVuY29kZXItPmRldi0+ZGV2KSk7Cj4+Pj4gKwkJCXJldHVybiAt
-RUlOVkFMOwo+Pj4+ICsJCX0KPj4+PiArCX0KPj4+PiArCj4+Pj4gIAlicmlkZ2UtPmRldiA9IGVu
-Y29kZXItPmRldjsKPj4+PiAgCWJyaWRnZS0+ZW5jb2RlciA9IGVuY29kZXI7Cj4+Pj4gIAo+Pj4+
-ICAJaWYgKGJyaWRnZS0+ZnVuY3MtPmF0dGFjaCkgewo+Pj4+ICAJCXJldCA9IGJyaWRnZS0+ZnVu
-Y3MtPmF0dGFjaChicmlkZ2UpOwo+Pj4+ICAJCWlmIChyZXQgPCAwKSB7Cj4+Pj4gKwkJCWlmIChi
-cmlkZ2UtPmxpbmspCj4+Pj4gKwkJCQlkZXZpY2VfbGlua19kZWwoYnJpZGdlLT5saW5rKTsKPj4+
-PiArCQkJYnJpZGdlLT5saW5rID0gTlVMTDsKPj4+PiAgCQkJYnJpZGdlLT5kZXYgPSBOVUxMOwo+
-Pj4+ICAJCQlicmlkZ2UtPmVuY29kZXIgPSBOVUxMOwo+Pj4+ICAJCQlyZXR1cm4gcmV0Owo+Pj4+
-IEBAIC0xNTksNiArMTczLDEwIEBAIHZvaWQgZHJtX2JyaWRnZV9kZXRhY2goc3RydWN0IGRybV9i
-cmlkZ2UgKmJyaWRnZSkKPj4+PiAgCWlmIChicmlkZ2UtPmZ1bmNzLT5kZXRhY2gpCj4+Pj4gIAkJ
-YnJpZGdlLT5mdW5jcy0+ZGV0YWNoKGJyaWRnZSk7Cj4+Pj4gIAo+Pj4+ICsJaWYgKGJyaWRnZS0+
-bGluaykKPj4+PiArCQlkZXZpY2VfbGlua19kZWwoYnJpZGdlLT5saW5rKTsKPj4+PiArCWJyaWRn
-ZS0+bGluayA9IE5VTEw7Cj4+Pj4gKwo+Pj4+ICAJYnJpZGdlLT5kZXYgPSBOVUxMOwo+Pj4+ICB9
-Cj4+Pj4gIAo+Pj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmggYi9pbmNs
-dWRlL2RybS9kcm1fYnJpZGdlLmgKPj4+PiBpbmRleCBiNjU2ZTUwNWQxMWUuLjgwNDE4OWM2M2E0
-YyAxMDA2NDQKPj4+PiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fYnJpZGdlLmgKPj4+PiArKysgYi9p
-bmNsdWRlL2RybS9kcm1fYnJpZGdlLmgKPj4+PiBAQCAtMjYxLDYgKzI2MSw3IEBAIHN0cnVjdCBk
-cm1fYnJpZGdlX3RpbWluZ3Mgewo+Pj4+ICAgKiBAbGlzdDogdG8ga2VlcCB0cmFjayBvZiBhbGwg
-YWRkZWQgYnJpZGdlcwo+Pj4+ICAgKiBAdGltaW5nczogdGhlIHRpbWluZyBzcGVjaWZpY2F0aW9u
-IGZvciB0aGUgYnJpZGdlLCBpZiBhbnkgKG1heQo+Pj4+ICAgKiBiZSBOVUxMKQo+Pj4+ICsgKiBA
-bGluazogZHJtIGNvbnN1bWVyIDwtPiBicmlkZ2Ugc3VwcGxpZXIKPj4+Cj4+PiBOaXRwaWNrOiAi
-PC0+IiBzdWdnZXN0cyBzeW1tZXRyeSwgbWF5YmUgImRldmljZSBsaW5rIGZyb20gZHJtIGNvbnN1
-bWVyCj4+PiB0byB0aGUgYnJpZGdlIiB3b3VsZCBiZSBiZXR0ZXIuCj4+Cj4+IEkgbWVhbnQgIjwt
-PiIgdG8gaW5kaWNhdGUgdGhhdCB0aGUgbGluayBpcyBiaWRpcmVjdGlvbmFsLCBub3QgdGhhdCB0
-aGUKPj4gcmVsYXRpb25zaGlwIGlzIGluIGFueSB3YXkgc3ltbWV0cmljLiBJIHdhc24ndCBhd2Fy
-ZSBvZiBhbnkgaW1wbGljYXRpb24KPj4gb2YgYSBzeW1tZXRyaWMgcmVsYXRpb25zaGlwIHdoZW4g
-dXNpbmcgIjwtPiIsIGRvIHlvdSBoYXZlIGEgcmVmZXJlbmNlPwo+PiBCdXQgSSBndWVzcyB0aGUg
-ZGlmZmVyZW50IGFycm93IG5vdGF0aW9ucyBpbiBtYXRoIGFyZSBzb21ld2hhdCBvdmVybG9hZGVk
-Cj4+IGFuZCB0aGF0IHNvbWVvbmUgYXQgc29tZSBwb2ludCBtdXN0IGhhdmUgdXNlZCAiPC0+IiB0
-byBpbmRpY2F0ZSBhCj4+IHN5bW1ldHJpYyByZWxhdGlvbnNoaXAuLi4KPiAKPiBZZWFoIEkgYWdy
-ZWUgd2l0aCBBbmRyemVqIGhlcmUsIGZvciBtZSA8LT4gaW1wbGllcyBhIHN5bW1ldHJpYwo+IHJl
-bGF0aW9uc2hpcC4gU3BlbGxpbmcgaXQgb3V0IGxpa2UgQW5kcnplaiBzdWdnZXN0ZWQgc291bmRz
-IGxpa2UgdGhlCj4gYmV0dGVyIGlkZWEuCj4gLURhbmllbAoKT2ssIEkgZ3Vlc3MgdGhhdCBtZWFu
-cyBJIGhhdmUgdG8gZG8gYSB2MyBhZnRlciBhbGwuIE9yIGNhbiB0aGlzCnRyaXZpYWwgZG9jdW1l
-bnRhdGlvbiB1cGRhdGUgYmUgZG9uZSBieSB0aGUgY29tbWl0dGVyPyBJIGhhdGUgdG8Kc3BhbSBl
-dmVyeW9uZSB3aXRoIGFub3RoZXIgdm9sbGV5Li4uCgpPciBwZXJoYXBzIEkgc2hvdWxkIHNxdWFz
-aCBwYXRjaGVzIDItMjMgdGhhdCBhcmUgYWxsIHJhdGhlciBzaW1pbGFyCmFuZCBtZWNoYW5pYz8g
-SSBzZXBhcmF0ZWQgdGhlbSB0byBhbGxvdyBmb3IgZWFzaWVyIHJldmlldyBmcm9tCmluZGl2aWR1
-YWwgZHJpdmVyIG1haW50YWluZXJzLCBidXQgdGhhdCBkaWRuJ3Qgc2VlbSB0byBoYXBwZW4KYW55
-d2F5Li4uCgpDaGVlcnMsClBldGVyCgo+IAo+Pgo+Pj4gQW55d2F5Ogo+Pj4gUmV2aWV3ZWQtYnk6
-IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+Cj4+Cj4+IFRoYW5rcyEKPj4KPj4g
-Q2hlZXJzLAo+PiBQZXRlcgo+Pgo+Pj4gwqAtLQo+Pj4gUmVnYXJkcwo+Pj4gQW5kcnplago+Pj4K
-Pj4+PiAgICogQGZ1bmNzOiBjb250cm9sIGZ1bmN0aW9ucwo+Pj4+ICAgKiBAZHJpdmVyX3ByaXZh
-dGU6IHBvaW50ZXIgdG8gdGhlIGJyaWRnZSBkcml2ZXIncyBpbnRlcm5hbCBjb250ZXh0Cj4+Pj4g
-ICAqLwo+Pj4+IEBAIC0yNzEsNiArMjcyLDcgQEAgc3RydWN0IGRybV9icmlkZ2Ugewo+Pj4+ICAJ
-c3RydWN0IGRybV9icmlkZ2UgKm5leHQ7Cj4+Pj4gIAlzdHJ1Y3QgbGlzdF9oZWFkIGxpc3Q7Cj4+
-Pj4gIAljb25zdCBzdHJ1Y3QgZHJtX2JyaWRnZV90aW1pbmdzICp0aW1pbmdzOwo+Pj4+ICsJc3Ry
-dWN0IGRldmljZV9saW5rICpsaW5rOwo+Pj4+ICAKPj4+PiAgCWNvbnN0IHN0cnVjdCBkcm1fYnJp
-ZGdlX2Z1bmNzICpmdW5jczsKPj4+PiAgCXZvaWQgKmRyaXZlcl9wcml2YXRlOwo+Pj4KPj4+Cj4+
-Cj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+Some rk3399 GRF (Generic Register Files) definitions can be used for
+different drivers. Move these definitions to a common include so we
+don't need to duplicate these definitions.
+
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+
+ drivers/devfreq/event/rockchip-dfi.c | 23 +++++++----------------
+ include/soc/rockchip/rk3399_grf.h    | 21 +++++++++++++++++++++
+ 2 files changed, 28 insertions(+), 16 deletions(-)
+ create mode 100644 include/soc/rockchip/rk3399_grf.h
+
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 22b113363ffc..2fbbcbeb644f 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -26,6 +26,8 @@
+ #include <linux/list.h>
+ #include <linux/of.h>
+ 
++#include <soc/rockchip/rk3399_grf.h>
++
+ #define RK3399_DMC_NUM_CH	2
+ 
+ /* DDRMON_CTRL */
+@@ -43,18 +45,6 @@
+ #define DDRMON_CH1_COUNT_NUM		0x3c
+ #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
+ 
+-/* pmu grf */
+-#define PMUGRF_OS_REG2	0x308
+-#define DDRTYPE_SHIFT	13
+-#define DDRTYPE_MASK	7
+-
+-enum {
+-	DDR3 = 3,
+-	LPDDR3 = 6,
+-	LPDDR4 = 7,
+-	UNUSED = 0xFF
+-};
+-
+ struct dmc_usage {
+ 	u32 access;
+ 	u32 total;
+@@ -83,16 +73,17 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 	u32 ddr_type;
+ 
+ 	/* get ddr type */
+-	regmap_read(info->regmap_pmu, PMUGRF_OS_REG2, &val);
+-	ddr_type = (val >> DDRTYPE_SHIFT) & DDRTYPE_MASK;
++	regmap_read(info->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
++	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
++		    RK3399_PMUGRF_DDRTYPE_MASK;
+ 
+ 	/* clear DDRMON_CTRL setting */
+ 	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+ 
+ 	/* set ddr type to dfi */
+-	if (ddr_type == LPDDR3)
++	if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
+ 		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+-	else if (ddr_type == LPDDR4)
++	else if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
+ 		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+ 
+ 	/* enable count, use software mode */
+diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
+new file mode 100644
+index 000000000000..0f94034e2e9a
+--- /dev/null
++++ b/include/soc/rockchip/rk3399_grf.h
+@@ -0,0 +1,21 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * Rockchip Generic Register Files definitions
++ *
++ * Copyright (c) 2018, Collabora Ltd.
++ * Author: Enric Balletbo i Serra <enric.balletbo@collabora.com>
++ */
++
++#ifndef __SOC_RK3399_GRF_H
++#define __SOC_RK3399_GRF_H
++
++/* PMU GRF Registers */
++#define RK3399_PMUGRF_OS_REG2		0x308
++#define RK3399_PMUGRF_DDRTYPE_SHIFT	13
++#define RK3399_PMUGRF_DDRTYPE_MASK	7
++#define RK3399_PMUGRF_DDRTYPE_DDR3	3
++#define RK3399_PMUGRF_DDRTYPE_LPDDR2	5
++#define RK3399_PMUGRF_DDRTYPE_LPDDR3	6
++#define RK3399_PMUGRF_DDRTYPE_LPDDR4	7
++
++#endif
+-- 
+2.17.0
