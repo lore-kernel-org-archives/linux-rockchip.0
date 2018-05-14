@@ -1,31 +1,88 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] pinctrl: rockchip: Add pinctrl support for PX30
-Date: Mon, 14 May 2018 15:36:37 +0200
-Message-ID: <2756512.RvepBuBXky@phil>
-References: <1526299191-1140-1-git-send-email-david.wu@rock-chips.com>
+Subject: [PATCH v3 1/2] dt-bindings: add binding for Rockchip hdmi phy using
+ an Innosilicon IP
+Date: Mon, 14 May 2018 15:57:10 +0200
+Message-ID: <20180514135711.19519-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526299191-1140-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: kishon@ti.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+From: Zheng Yang <zhengyang@rock-chips.com>
 
-Am Montag, 14. Mai 2018, 13:59:51 CEST schrieb David Wu:
-> There are 4 banks (GPIO0 ~ GPIO3), bank0 is in PD_PMU
-> subsystem, bank1/bank2/bank3 are in PD_BUS subsystem.
-> 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+The phy is used so far in two Rockchip socs the rk3228 and the rk3328.
 
-the PX30 looks pretty simple in the pinctrl-area and I couldn't
-find anything looking out of the ordinary, so
+Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+changes in v3:
+- describe both refclks supplied to the phy block
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+ .../bindings/phy/phy-rockchip-inno-hdmi.txt   | 43 +++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
 
-
-Thanks
-Heiko
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
+new file mode 100644
+index 000000000000..710cccd5ee56
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
+@@ -0,0 +1,43 @@
++ROCKCHIP HDMI PHY WITH INNO IP BLOCK
++
++Required properties:
++ - compatible : should be one of the listed compatibles:
++	* "rockchip,rk3228-hdmi-phy",
++	* "rockchip,rk3328-hdmi-phy";
++ - reg : Address and length of the hdmi phy control register set
++ - clocks : phandle + clock specifier for the phy clocks
++ - clock-names : string, clock name, must contain "sysclk" for system
++	  control and register configuration, "refoclk" for crystal-
++	  oscillator reference PLL clock input and "refpclk" for pclk-
++	  based refeference PLL clock input.
++ - #clock-cells: should be 0.
++ - clock-output-names : shall be the name for the output clock.
++ - interrupts : phandle + interrupt specified for the hdmiphy interrupt
++ - #phy-cells : must be 0. See ./phy-bindings.txt for details.
++
++Optional properties for rk3328-hdmi-phy:
++ - nvmem-cells = phandle + nvmem specifier for the cpu-version efuse
++ - nvmem-cell-names : "cpu-version" to read the chip version, required
++	  for adjustment to some frequency settings
++
++Example:
++	hdmi_phy: hdmi-phy@12030000 {
++		compatible = "rockchip,rk3228-hdmi-phy";
++		reg = <0x12030000 0x10000>;
++		#phy-cells = <0>;
++		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>, <&cru DCLK_HDMIPHY>;
++		clock-names = "sysclk", "refoclk", "refpclk";
++		#clock-cells = <0>;
++		clock-output-names = "hdmi_phy";
++		status = "disabled";
++	};
++
++Then the PHY can be used in other nodes such as:
++
++	hdmi: hdmi@200a0000 {
++		compatible = "rockchip,rk3228-dw-hdmi";
++		...
++		phys = <&hdmi_phy>;
++		phy-names = "hdmi";
++		...
++	};
+-- 
+2.17.0
