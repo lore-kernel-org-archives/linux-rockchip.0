@@ -1,66 +1,49 @@
-From: Levin Du <djw@t-chip.com.cn>
-Subject: Re: [PATCH v1 3/5] arm64: dts: rockchip: Add gpio-syscon10 to rk3328
-Date: Mon, 14 May 2018 09:28:40 +0800
-Message-ID: <62ff43c8-8f98-1bc4-b208-c2bed4bf192e@t-chip.com.cn>
-References: <1525943800-14095-1-git-send-email-djw@t-chip.com.cn>
- <1525943800-14095-4-git-send-email-djw@t-chip.com.cn>
- <76f2bbde-e158-a186-f136-9fb610a810c5@arm.com>
- <3fdfcc9b-90b5-191c-37e0-c99389a4e872@t-chip.com.cn>
- <CAL_JsqLujC0nx9LpkWuSR0+fsZn4UJL9Ln6SHWyBmZ-7ErMzfw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 00/13] add power domain support for Rockchip Socs
+Date: Mon, 14 May 2018 11:27:35 +0800
+Message-ID: <1526268455-9133-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqLujC0nx9LpkWuSR0+fsZn4UJL9Ln6SHWyBmZ-7ErMzfw@mail.gmail.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sugar Zhang <sugar.zhang@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, David Wu <david.wu@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Rocky Hao <rocky.hao@rock-chips.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018-05-11 8:24 PM, Rob Herring wrote:
-> On Thu, May 10, 2018 at 10:45 PM, Levin Du <djw@t-chip.com.cn> wrote:
->> On 2018-05-10 8:50 PM, Robin Murphy wrote:
->>> On 10/05/18 10:16, djw@t-chip.com.cn wrote:
->>>> From: Levin Du <djw@t-chip.com.cn>
->>>>
->>>> Adding a new gpio controller named "gpio-syscon10" to rk3328, providing
->>>> access to the pins defined in the syscon GRF_SOC_CON10.
->>>
->>> This is the GPIO_MUTE pin, right? The public TRM is rather vague, but
->>> cross-referencing against the datasheet and schematics implies that it's the
->>> "gpiomut_*" part of the GRF bit names which is most significant.
->>>
->>> It might be worth using a more descriptive name here, since "syscon10" is
->>> pretty much meaningless at the board level.
->>>
->>> Robin.
->>>
->> Previously I though other bits might be able to reference from syscon10,
->> other than GPIO_MUTE alone.
->> If it is renamed to gpio-mute, then the GPIO_MUTE pin is accessed as
->> `<&gpio-mute 1>`. Yet other
->> bits in syscon10 can also be referenced, say, `<&gpio-mute 10>`, which is
->> not good.
->>
->> I'd like to add a `gpio,syscon-bit` property to gpio-syscon, which overrides
->> the properties
->> of bit_count,  data_bit_offset and dir_bit_offset in the driver. For
-> No. Once you are describing individual register bits, it is too low
-> level for DT.
+add power domain support for RK3036/RK3128/RK3228/PX30 Soc.
+fix up the wrong value when set power domain up.
 
-Okay. So I'll rename it to gpio_mute, and reference the output pin as 
-<&gpio_mute 1>:
+Change in V2:
+Fix up the commit message description and Assign author.
 
-+               // Use <&gpio_mute 1> to ref to GPIO_MUTE pin
-+		gpio_mute: gpio-mute {
-+			compatible = "rockchip,gpio-syscon";
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			gpio,syscon-dev = <0 0x0428 0>;
-+		};
-  	};
+Caesar Wang (3):
+  dt-bindings: power: add RK3036 SoCs header for power-domain
+  dt-bindings: add binding for rk3036 power domains
+  Soc: rockchip: power-domain: add power domain support for rk3036
 
+Elaine Zhang (6):
+  dt-bindings: power: add RK3128 SoCs header for power-domain
+  dt-bindings: add binding for rk3128 power domains
+  soc: rockchip: power-domain: add power domain support for rk3128
+  dt-bindings: power: add RK3228 SoCs header for power-domain
+  dt-bindings: add binding for rk3228 power domains
+  soc: rockchip: power-domain: add power domain support for rk3228
 
-Thanks
-Levin
+Finley Xiao (4):
+  soc: rockchip: power-domain: Fix wrong value when power up pd
+  dt-bindings: power: add PX30 SoCs header for power-domain
+  dt-bindings: add binding for px30 power domains
+  soc: rockchip: power-domain: add power domain support for px30
+
+ .../bindings/soc/rockchip/power_domain.txt         |  12 +++
+ drivers/soc/rockchip/pm_domains.c                  | 116 ++++++++++++++++++++-
+ include/dt-bindings/power/px30-power.h             |  32 ++++++
+ include/dt-bindings/power/rk3036-power.h           |  27 +++++
+ include/dt-bindings/power/rk3128-power.h           |  28 +++++
+ include/dt-bindings/power/rk3228-power.h           |  26 +++++
+ 6 files changed, 240 insertions(+), 1 deletion(-)
+ create mode 100644 include/dt-bindings/power/px30-power.h
+ create mode 100644 include/dt-bindings/power/rk3036-power.h
+ create mode 100644 include/dt-bindings/power/rk3128-power.h
+ create mode 100644 include/dt-bindings/power/rk3228-power.h
+
+-- 
+1.9.1
