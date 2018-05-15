@@ -1,42 +1,51 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: rockchip: Add set_config callback support for
- gpiolib
-Date: Tue, 15 May 2018 14:38:37 +0200
-Message-ID: <18645454.vOLSfLOOiQ@phil>
-References: <1525334682-222918-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v3 0/6] drm/rockchip: hdmi support for rk3328
+Date: Tue, 15 May 2018 15:47:30 +0200
+Message-ID: <20180515134736.5824-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1525334682-222918-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: architt@codeaurora.org, a.hajda@samsung.com
+Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 3. Mai 2018, 10:04:42 CEST schrieb Shawn Lin:
-> Could only support PIN_CONFIG_INPUT_DEBOUNCE now as the HW block
-> is too simple to support others. But even wrt. debounce capability,
-> it now could only support very limited period of time to satisfy the
-> real usecase. But still be useful to enable the crippled HW debounce
-> to prevent any spurious glitches from waking up the system if the
-> gpio is conguired as wakeup interrupt source.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-From the argument given, this sounds sane to me, also about not changing
-the behaviour (as noted in the comment in _set_config) and the code looks
-also good to me, so from my non electrical pov
-
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-
-Heiko
+VGhlIHJrMzIyOC9yazMyMjkgYW5kIHJrMzMyOCBzb2NzIHN0YXJ0ZWQgdXNpbmcgYSBuZXcgdHlw
+ZSBvZiBoZG1pLXBoeQpmcm9tIElubm9zaWxpY29uIHRoYXQgcmVzaWRlcyBjb21wbGV0ZWx5IHNl
+cGFyYXRlIGZyb20gdGhlIGR3LWhkbWkgYmxvY2sKYW5kIGdldHMgYWNjZXNzZWQgdmlhIG1taW8u
+CgpBZGRpdGlvbmFsbHkgdGhlIHJrMzMyOCBkdy1oZG1pIGRvZXMgbm90IHJlcG9ydCB0aGUgdmVu
+ZG9yLXBoeSB0eXBlCmJ1dCBhIGRpZmZlcmVudCBvbmUgaW5zdGVhZCwgc28gYWRkIHRoZSBwb3Nz
+aWJpbGl0eSB0byBvdmVycmlkZSB0aGUKcGh5IHR5cGUgd2hlbiB0aGUgZ2x1ZSBkcml2ZXIga25v
+d3MgYmV0dGVyIHRoYW4gdGhlIGlwIGJsb2NrIGl0c2VsZi4KCmNoYW5nZXMgaW4gdjM6Ci0gc3Bs
+aXQgb2ZmIHBoeSBkcml2ZXIgaW50byBhIHNlcGFyYXRlIHNlcmllcwotIG9ubHkgYWxsb3cgZm9y
+Y2luZyB2ZW5kb3IgcGh5IHR5cGUKLSB3b3JkaW5nIGZpeGVzIGFuZCBvdGhlciBuaXRzCgpjaGFu
+Z2VzIGluIHYyOgotIHBoeTogcHJldmVudCBvdmVyZmxvdyBpbiB0bWRzY2xrIGNhbGN1bGF0aW9u
+CiAgYXMgcmVwb3J0ZWQgYnkgTWFydGluIENlcnZlbnkKLSBwaHk6IHVzZSB1bnNpZ25lZCBsb25n
+IGZvciBhbGwgdG1kc2NsayByYXRlIHVzZXMKLSBwaHk6IHNpbXBsaWZ5IHRtZHMgcmF0ZSBjYWxj
+dWxhdGlvbgotIGRyb3BwZWQgcGF0Y2ggZXhwb3J0aW5nIHNvbWUgZHctaGRtaSBwaHkgZnVuY3Rp
+b25zCiAgYXMgYSBzaW1pbGFyIHBhdGNoIGVudGVyZWQgZHJtLW1pc2MgYWxyZWFkeQoKSGVpa28g
+U3R1ZWJuZXIgKDYpOgogIGRybS9icmlkZ2U6IGR3LWhkbWk6IGFsbG93IGZvcmNpbmcgdmVuZG9y
+IHBoeS10eXBlCiAgZHJtL3JvY2tjaGlwOiBkd19oZG1pOiBBbGxvdyBvdXRwdXRzIHRoYXQgZG9u
+J3QgbmVlZCBvdXRwdXQgc3dpdGNoaW5nCiAgZHQtYmluZGluZ3M6IGFsbG93IG9wdGlvbmFsIHBo
+eXMgaW4gUm9ja2NoaXAgZHdfaGRtaSBiaW5kaW5nCiAgZHJtL3JvY2tjaGlwOiBkd19oZG1pOiBh
+bGxvdyBpbmNsdWRpbmcgZXh0ZXJuYWwgcGh5cwogIGRybS9yb2NrY2hpcDogZHdfaGRtaTogc3Rv
+cmUgcm9ja2NoaXBfaGRtaSByZWZlcmVuY2UgaW4gcGh5X2RhdGEKICAgIG9iamVjdAogIGRybS9y
+b2NrY2hpcDogZHdfaGRtaTogYWRkIGR3LWhkbWkgc3VwcG9ydCBmb3IgdGhlIHJrMzMyOAoKIC4u
+Li9kaXNwbGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0ICAgICB8ICAgMyArCiBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyAgICAgfCAgIDQgKy0KIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICB8IDEzMCArKysrKysrKysr
+KysrKysrKy0KIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmggICAgICAgICAgICAgICAgICB8
+ICAgMSArCiA0IGZpbGVzIGNoYW5nZWQsIDEzNCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygt
+KQoKLS0gCjIuMTcuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
