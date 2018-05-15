@@ -1,46 +1,34 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: remove deprecated gate-clk code and
- dt-binding
-Date: Tue, 15 May 2018 09:57:08 -0700
-Message-ID: <152640342836.34267.18008728966241252616@swboyd.mtv.corp.google.com>
-References: <20180512143038.30447-1-heiko@sntech.de>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [RFC PATCH 07/10] clk: rockchip: set clk-ddr to GET_RATE_NOCACHE.
+Date: Tue, 15 May 2018 13:41:56 -0700
+Message-ID: <152641691632.237094.11483387696003404182@swboyd.mtv.corp.google.com>
+References: <20180514211610.26618-1-enric.balletbo@collabora.com>
+ <20180514211610.26618-8-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180512143038.30447-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180514211610.26618-8-enric.balletbo@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chanwoo Choi <cw00.choi@samsung.com>, David Airlie <airlied@linux.ie>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Kyungmin Park <kyungmin.park@samsung.com>, Michael Turquette <mturquette@baylibre.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Rob Herring <robh+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Will Deacon <will.deacon@arm.com>
+Cc: Lin Huang <hl@rock-chips.com>, linux-pm@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Heiko Stuebner (2018-05-12 07:30:38)
-> Initially we tried modeling clocks via the devicetree before switching
-> to clocks declared in the clock drivers and only exporting specific
-> ids to the devicetree.
-> 
-> As the old code was in the kernel for 1-2 releases when the new mode
-> of operation was added we kept it for backwards compatibility.
-> 
-> That deprecation notice is in the binding since july 2014, so nearly
-> 4 years now and I think it's time to drop the old cruft.
-> 
-> Especially as at the time using the mainline kernel on Rockchip devices
-> was not really possible, except for experiments on the really old socs of
-> the rk3066 + rk3188 line, so there shouldn't be any devicetrees still
-> around that rely on that code.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
-
-Alright, let's see how things go.
-
-Acked-by: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+UXVvdGluZyBFbnJpYyBCYWxsZXRibyBpIFNlcnJhICgyMDE4LTA1LTE0IDE0OjE2OjA3KQo+IEZy
+b206IERlcmVrIEJhc2Vob3JlIDxkYmFzZWhvcmVAY2hyb21pdW0ub3JnPgo+IAo+IFRoaXMgYWRk
+cyB0aGUgZmxhZyB0byB0aGUgY2xrLWRkciBpbiByb2NrY2hpcCB0byBub3QgdXNlIHRoZSBjYWNo
+ZWQKPiByYXRlIGZvciBnZXRfcmF0ZS4gVGhpcyBpcyB0byBoYW5kbGUgdGltZW91dCBlcnJvciBj
+b25kaXRpb25zIGluIFNNQwo+IGZvciB0aGUgc2V0IHJhdGUgZnVuY3Rpb24uCgpXZSBuZWVkIHNv
+bWUgbW9yZSBpbmZvcm1hdGlvbiBoZXJlLiBXaHkgZG9lcyB0aW1lb3V0IGVycm9yIGNvbmRpdGlv
+biBpbgpzZXRfcmF0ZSgpIG1hdHRlciBmb3IgZ2V0X3JhdGUoKT8KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
