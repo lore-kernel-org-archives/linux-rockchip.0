@@ -1,34 +1,58 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [RFC PATCH 07/10] clk: rockchip: set clk-ddr to GET_RATE_NOCACHE.
-Date: Tue, 15 May 2018 13:41:56 -0700
-Message-ID: <152641691632.237094.11483387696003404182@swboyd.mtv.corp.google.com>
-References: <20180514211610.26618-1-enric.balletbo@collabora.com>
- <20180514211610.26618-8-enric.balletbo@collabora.com>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [GIT PULL 1/4] Rockchip driver updates for 4.18 round 1
+Date: Tue, 15 May 2018 13:51:29 -0700
+Message-ID: <20180515205129.krdwrceinbhs3zcq@localhost>
+References: <2000491.bLgWuj0xar@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180514211610.26618-8-enric.balletbo@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chanwoo Choi <cw00.choi@samsung.com>, David Airlie <airlied@linux.ie>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Kyungmin Park <kyungmin.park@samsung.com>, Michael Turquette <mturquette@baylibre.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Rob Herring <robh+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Will Deacon <will.deacon@arm.com>
-Cc: Lin Huang <hl@rock-chips.com>, linux-pm@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <2000491.bLgWuj0xar@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-UXVvdGluZyBFbnJpYyBCYWxsZXRibyBpIFNlcnJhICgyMDE4LTA1LTE0IDE0OjE2OjA3KQo+IEZy
-b206IERlcmVrIEJhc2Vob3JlIDxkYmFzZWhvcmVAY2hyb21pdW0ub3JnPgo+IAo+IFRoaXMgYWRk
-cyB0aGUgZmxhZyB0byB0aGUgY2xrLWRkciBpbiByb2NrY2hpcCB0byBub3QgdXNlIHRoZSBjYWNo
-ZWQKPiByYXRlIGZvciBnZXRfcmF0ZS4gVGhpcyBpcyB0byBoYW5kbGUgdGltZW91dCBlcnJvciBj
-b25kaXRpb25zIGluIFNNQwo+IGZvciB0aGUgc2V0IHJhdGUgZnVuY3Rpb24uCgpXZSBuZWVkIHNv
-bWUgbW9yZSBpbmZvcm1hdGlvbiBoZXJlLiBXaHkgZG9lcyB0aW1lb3V0IGVycm9yIGNvbmRpdGlv
-biBpbgpzZXRfcmF0ZSgpIG1hdHRlciBmb3IgZ2V0X3JhdGUoKT8KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Tue, May 15, 2018 at 12:38:09PM +0200, Heiko Stuebner wrote:
+> Hi Arnd, Kevin Olof,
+> 
+> please find below and in the replies the main pull requests for Rockchip
+> stuff for 4.18. Depending on timing there may or may not be a second
+> round but so far I don't have anything big on the radar.
+> 
+> The signed tags should explain the individual contents, so please pull.
+> 
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 60cc43fc888428bb2f18f08997432d426a243338:
+> 
+>   Linux 4.17-rc1 (2018-04-15 18:24:20 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.18-rockchip-drivers-1
+> 
+> for you to fetch changes up to 9e59c5f66c624b43c766a9fe3b2430e0e976bf0e:
+> 
+>   soc: rockchip: power-domain: Fix wrong value when power up pd with writemask (2018-05-14 11:53:26 +0200)
+> 
+> ----------------------------------------------------------------
+> Fix for an issue introduced in 2016 where some powerdomains could only
+> be turned off but not on again.
+
+Merged, thanks!
+
+
+-Olof
