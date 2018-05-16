@@ -1,68 +1,131 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [GIT PULL 4/4] Rockchip arm64 defconfig updates for 4.18 round 1
-Date: Tue, 15 May 2018 23:41:26 +0200
-Message-ID: <5941903.uzDxGiH5hI@diego>
-References: <2000491.bLgWuj0xar@phil> <2676342.8y6AX4oR9f@phil>
- <20180515205354.whll4pj74exaci5h@localhost>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180515205354.whll4pj74exaci5h@localhost>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Olof Johansson <olof@lixom.net>
-Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH] ethernet: stmmac: dwmac-rk: Add GMAC support for px30
+Date: Wed, 16 May 2018 11:38:45 +0800
+Message-ID: <1526441925-12654-1-git-send-email-david.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 15. Mai 2018, 22:53:54 CEST schrieb Olof Johansson:
-> On Tue, May 15, 2018 at 12:40:05PM +0200, Heiko Stuebner wrote:
-> > The following changes since commit 
-60cc43fc888428bb2f18f08997432d426a243338:
-> >   Linux 4.17-rc1 (2018-04-15 18:24:20 -0700)
-> > 
-> > are available in the Git repository at:
-> >   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-> >   tags/v4.18-rockchip-defconfig64-1> 
-> > for you to fetch changes up to 214f2c319a140f8a0121f362ad8e73ea1576d5ad:
-> >   arm64: defconfig: enable rockchip efuse (2018-05-09 16:33:09 +0200)
-> > 
-> > ----------------------------------------------------------------
-> > Enablement of Rockchip-specific efuse, io-domain and typec drivers
-> > as well as general cros-ec, hid, touchscreen bluetooth and wifi-drivers
-> > on 64bit arm platforms.
-> > 
-> > ----------------------------------------------------------------
-> > 
-> > Enric Balletbo i Serra (3):
-> >       arm64: defconfig: Enable typec-phy and extcon-usbc-cros-ec for
-> >       rk3399
-> >       arm64: defconfig: Enable Rockchip io-domain driver
-> >       arm64: defconfig: Enable ChromeOS EC drivers for supported
-> >       Chromebooks.
-> > 
-> > Ezequiel Garcia (4):
-> >       arm64: defconfig: Enable HID over I2C drivers
-> >       arm64: defconfig: Enable Atmel Maxtouch driver
-> >       arm64: defconfig: Enable Marvell WiFi-Ex PCIe driver
-> >       arm64: defconfig: Enable bluetooth USB support
-> > 
-> > Heiko Stuebner (1):
-> >       arm64: defconfig: enable rockchip efuse
-> 
-> Merged. Not sure if it's useful to split defconfig updates quite this
-> granular, might make sense to just do slightly more consolidated patches.
-> 
-> Anyway, no harm, just a bit verbose.
+Add constants and callback functions for the dwmac on px30 soc.
+The base structure is the same, but registers and the bits in
+them moved slightly, and add the clk_mac_speed for the select
+of mac speed.
 
-ok, I'll check if things can be merged more, the next time :-)
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+---
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |  1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 64 ++++++++++++++++++++++
+ 2 files changed, 65 insertions(+)
 
-
-Heiko
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+index 9c16ee2..3b71da7 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+@@ -4,6 +4,7 @@ The device node has following properties.
+ 
+ Required properties:
+  - compatible: should be "rockchip,<name>-gamc"
++   "rockchip,px30-gmac":   found on PX30 SoCs
+    "rockchip,rk3128-gmac": found on RK312x SoCs
+    "rockchip,rk3228-gmac": found on RK322x SoCs
+    "rockchip,rk3288-gmac": found on RK3288 SoCs
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 13133b3..4b2ab71 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -61,6 +61,7 @@ struct rk_priv_data {
+ 	struct clk *mac_clk_tx;
+ 	struct clk *clk_mac_ref;
+ 	struct clk *clk_mac_refout;
++	struct clk *clk_mac_speed;
+ 	struct clk *aclk_mac;
+ 	struct clk *pclk_mac;
+ 	struct clk *clk_phy;
+@@ -83,6 +84,64 @@ struct rk_priv_data {
+ 	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
+ 	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
+ 
++#define PX30_GRF_GMAC_CON1		0X0904
++
++/* PX30_GRF_GMAC_CON1 */
++#define PX30_GMAC_PHY_INTF_SEL_RMII	(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | \
++					GRF_BIT(6))
++#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
++#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
++
++static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++		     PX30_GMAC_PHY_INTF_SEL_RMII);
++}
++
++static void px30_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++	int ret;
++
++	if (IS_ERR(bsp_priv->clk_mac_speed)) {
++		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
++		return;
++	}
++
++	if (speed == 10) {
++		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++			     PX30_GMAC_SPEED_10M);
++
++		ret = clk_set_rate(bsp_priv->clk_mac_speed, 2500000);
++		if (ret)
++			dev_err(dev, "%s: set clk_mac_speed rate 2500000 failed: %d\n",
++				__func__, ret);
++	} else if (speed == 100) {
++		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++			     PX30_GMAC_SPEED_100M);
++
++		ret = clk_set_rate(bsp_priv->clk_mac_speed, 25000000);
++		if (ret)
++			dev_err(dev, "%s: set clk_mac_speed rate 25000000 failed: %d\n",
++				__func__, ret);
++
++	} else {
++		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
++	}
++}
++
++static const struct rk_gmac_ops px30_ops = {
++	.set_to_rmii = px30_set_to_rmii,
++	.set_rmii_speed = px30_set_rmii_speed,
++};
++
+ #define RK3128_GRF_MAC_CON0	0x0168
+ #define RK3128_GRF_MAC_CON1	0x016c
+ 
+@@ -1042,6 +1101,10 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
+ 		}
+ 	}
+ 
++	bsp_priv->clk_mac_speed = devm_clk_get(dev, "clk_mac_speed");
++	if (IS_ERR(bsp_priv->clk_mac_speed))
++		dev_err(dev, "cannot get clock %s\n", "clk_mac_speed");
++
+ 	if (bsp_priv->clock_input) {
+ 		dev_info(dev, "clock input from PHY\n");
+ 	} else {
+@@ -1424,6 +1487,7 @@ static int rk_gmac_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(rk_gmac_pm_ops, rk_gmac_suspend, rk_gmac_resume);
+ 
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
++	{ .compatible = "rockchip,px30-gmac",	.data = &px30_ops   },
+ 	{ .compatible = "rockchip,rk3128-gmac", .data = &rk3128_ops },
+ 	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
+ 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
+-- 
+2.7.4
