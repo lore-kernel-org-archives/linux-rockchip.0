@@ -1,174 +1,34 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] ethernet: stmmac: dwmac-rk: Add GMAC support for px30
-Date: Wed, 16 May 2018 14:34:21 +0800
-Message-ID: <f7f67fbe-41e7-4497-cb01-a1fa2195d4b0@rock-chips.com>
-References: <1526441925-12654-1-git-send-email-david.wu@rock-chips.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v6 09/17] media: rkisp1: add rockchip isp1 core driver
+Date: Wed, 16 May 2018 17:08:49 +0900
+Message-ID: <CAAFQd5BZm6+s=o1xEu_+E56R-k+ujAFxfytjA+N_SAcU=4A9FA@mail.gmail.com>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com> <20180308094807.9443-10-jacob-chen@iotwrt.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526441925-12654-1-git-send-email-david.wu@rock-chips.com>
+In-Reply-To: <20180308094807.9443-10-jacob-chen@iotwrt.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>, robh+dt@kernel.org
-Cc: davem@davemloft.net, heiko@sntech.de, shawn.lin@rock-chips.com, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Jacob Chen <jacob-chen@iotwrt.com>, Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Chen Jacob <jacob2.chen@rock-chips.com>, =?UTF-8?B?6ZmI5Z+O?= <cc@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+Hi Jacob, Shunqian,
 
-On 2018/5/16 11:38, David Wu wrote:
-> Add constants and callback functions for the dwmac on px30 soc.
-
-s/soc/SoC
-
-> The base structure is the same, but registers and the bits in
-> them moved slightly, and add the clk_mac_speed for the select
-
-s/moved/are moved
-
-> of mac speed.
-
-for selecting mas speed.
-
-> 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-
-git log --oneline  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-
-shows very inconsistent format wrt. commit title, so please
-follow the exsiting exsamples as possible.
-
-> ---
->   .../devicetree/bindings/net/rockchip-dwmac.txt     |  1 +
->   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 64 ++++++++++++++++++++++
->   2 files changed, 65 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> index 9c16ee2..3b71da7 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-
-It'd be better to split doc changes into a separate patch.
-
-> @@ -4,6 +4,7 @@ The device node has following properties.
->   
->   Required properties:
->    - compatible: should be "rockchip,<name>-gamc"
-> +   "rockchip,px30-gmac":   found on PX30 SoCs
->      "rockchip,rk3128-gmac": found on RK312x SoCs
->      "rockchip,rk3228-gmac": found on RK322x SoCs
->      "rockchip,rk3288-gmac": found on RK3288 SoCs
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index 13133b3..4b2ab71 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -61,6 +61,7 @@ struct rk_priv_data {
->   	struct clk *mac_clk_tx;
->   	struct clk *clk_mac_ref;
->   	struct clk *clk_mac_refout;
-> +	struct clk *clk_mac_speed;
-
-No need to do anything now but it seems you could consider doing some
-cleanup by using clk bulk APIs in the future.
-
->   	struct clk *aclk_mac;
->   	struct clk *pclk_mac;
->   	struct clk *clk_phy;
-> @@ -83,6 +84,64 @@ struct rk_priv_data {
->   	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
->   	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
->   
-> +#define PX30_GRF_GMAC_CON1		0X0904
-
-s/0X0904/0x0904 , since the other constants in this file follow the
-same format.
-
-> +
-> +/* PX30_GRF_GMAC_CON1 */
-> +#define PX30_GMAC_PHY_INTF_SEL_RMII	(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | \
-> +					GRF_BIT(6))
-> +#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
-> +#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
-> +
-> +static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
-> +{
-> +	struct device *dev = &bsp_priv->pdev->dev;
-> +
-> +	if (IS_ERR(bsp_priv->grf)) {
-> +		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
-> +		return;
-> +	}
-> +
-> +	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-> +		     PX30_GMAC_PHY_INTF_SEL_RMII);
-> +}
-> +
-> +static void px30_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
-> +{
-> +	struct device *dev = &bsp_priv->pdev->dev;
-> +	int ret;
-> +
-> +	if (IS_ERR(bsp_priv->clk_mac_speed)) {
-> +		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
-> +		return;
-> +	}
-> +
-> +	if (speed == 10) {
-> +		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-> +			     PX30_GMAC_SPEED_10M);
-> +
-> +		ret = clk_set_rate(bsp_priv->clk_mac_speed, 2500000);
-> +		if (ret)
-> +			dev_err(dev, "%s: set clk_mac_speed rate 2500000 failed: %d\n",
-> +				__func__, ret);
-> +	} else if (speed == 100) {
-> +		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-> +			     PX30_GMAC_SPEED_100M);
-> +
-> +		ret = clk_set_rate(bsp_priv->clk_mac_speed, 25000000);
-> +		if (ret)
-> +			dev_err(dev, "%s: set clk_mac_speed rate 25000000 failed: %d\n",
-> +				__func__, ret);
-
-I know it follows the existing examples, but IMHO it duplicates
-unnecessary code as all the difference is PX30_GMAC_SPEED_*
-
-> +
-> +	} else {
-> +		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
-> +	}
-> +}
-> +
-> +static const struct rk_gmac_ops px30_ops = {
-> +	.set_to_rmii = px30_set_to_rmii,
-> +	.set_rmii_speed = px30_set_rmii_speed,
+On Thu, Mar 8, 2018 at 6:49 PM Jacob Chen <jacob-chen@iotwrt.com> wrote:
+[snip]
+> +static const struct of_device_id rkisp1_plat_of_match[] = {
+> +       {
+> +               .compatible = "rockchip,rk3288-cif-isp",
+> +               .data = &rk3288_isp_clk_data,
+> +       }, {
+> +               .compatible = "rockchip,rk3399-cif-isp",
+> +               .data = &rk3399_isp_clk_data,
+> +       },
+> +       {},
 > +};
-> +
->   #define RK3128_GRF_MAC_CON0	0x0168
->   #define RK3128_GRF_MAC_CON1	0x016c
->   
-> @@ -1042,6 +1101,10 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
->   		}
->   	}
->   
-> +	bsp_priv->clk_mac_speed = devm_clk_get(dev, "clk_mac_speed");
 
-Mightbe it'd be better to use "mac-speed" in DT bindings.
+We need MODULE_DEVICE_TABLE() here.
 
-> +	if (IS_ERR(bsp_priv->clk_mac_speed))
-> +		dev_err(dev, "cannot get clock %s\n", "clk_mac_speed");
-> +
-
-Would you like to handle deferred probe?
-
->   	if (bsp_priv->clock_input) {
->   		dev_info(dev, "clock input from PHY\n");
->   	} else {
-> @@ -1424,6 +1487,7 @@ static int rk_gmac_resume(struct device *dev)
->   static SIMPLE_DEV_PM_OPS(rk_gmac_pm_ops, rk_gmac_suspend, rk_gmac_resume);
->   
->   static const struct of_device_id rk_gmac_dwmac_match[] = {
-> +	{ .compatible = "rockchip,px30-gmac",	.data = &px30_ops   },
->   	{ .compatible = "rockchip,rk3128-gmac", .data = &rk3128_ops },
->   	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
->   	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
-> 
+Best regards,
+Tomasz
