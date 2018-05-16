@@ -1,131 +1,155 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] clk: add clock panic dump in tree-view
-Date: Wed, 16 May 2018 01:09:00 -0700
-Message-ID: <152645814090.210890.10037636681887493249@swboyd.mtv.corp.google.com>
-References: <1525942205-111855-1-git-send-email-shawn.lin@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v2 26/26] drm/bridge: establish a link between the bridge
+ supplier and consumer
+Date: Wed, 16 May 2018 11:31:10 +0200
+Message-ID: <20180516093110.GC3438@phenom.ffwll.local>
+References: <20180504135212.26977-1-peda@axentia.se>
+ <CGME20180504135432epcas3p368bb7541ca52bc8bc301dec794851214@epcas3p3.samsung.com>
+ <20180504135212.26977-27-peda@axentia.se>
+ <a723ad4a-8caa-4ff5-d39d-52db98a56d7b@samsung.com>
+ <c25f81e0-5b7b-c605-5b58-0ecc88830124@axentia.se>
+ <20180514162828.GE28661@phenom.ffwll.local>
+ <73fa1ca3-28e4-96c5-1fc6-23e9c0cebb49@axentia.se>
+ <CAKMK7uECSUo5k6uG3-y+yKQTGxB3FfGcwzMT+ZP5uux2SbpfUg@mail.gmail.com>
+ <f8215ba1-4cdb-69b9-39ff-68feca3ec502@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1525942205-111855-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <f8215ba1-4cdb-69b9-39ff-68feca3ec502@axentia.se>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kukjin Kim <kgene@kernel.org>, Peter Senna Tschudin <peter.senna@collabora.com>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Seung-Woo Kim <sw0312.kim@samsung.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:DRM DRIVERS FOR RENESAS" <linux-renesas-soc@vger.kernel.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Shawn Lin (2018-05-10 01:50:05)
-> diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-> index 3487be7..7bbdb6f 100644
-> --- a/Documentation/admin-guide/kernel-parameters.txt
-> +++ b/Documentation/admin-guide/kernel-parameters.txt
-> @@ -519,6 +519,9 @@
->                         debug and development, but should not be needed on a
->                         platform with proper driver support.  For more
->                         information, see Documentation/clk.txt.
-> +       clk_panic_dump
-> +                       [CLK]
-> +                       Dump the whole clock tree-view upon panic.
-
-Typically when the system panics it's because something has gone wrong.
-When a clk has gone wrong, typically the system hangs or crashes hard
-and printing out panic info just doesn't happen.
-
-I'm not sure why clks are so special here that we need to dump the
-information about the clk tree at the point of a panic. Is this more of
-a debug patch to dump out clk tree info by calling panic() in certain
-places near where you get odd system hangs?
-
->  
->         clock=          [BUGS=X86-32, HW] gettimeofday clocksource override.
->                         [Deprecated]
-> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> index 9ae92aa..adb5537 100644
-> --- a/drivers/clk/clk.c
-> +++ b/drivers/clk/clk.c
-> @@ -2802,6 +2802,73 @@ static inline void clk_debug_unregister(struct clk_core *core)
->  }
->  #endif
->  
-> +static bool clk_pdump_enable;
-> +static int __init clk_pdump_setup(char *__unused)
-> +{
-> +       clk_pdump_enable  = true;
-> +       return 1;
-> +}
-> +__setup("clk_panic_dump", clk_pdump_setup);
-> +
-> +static void clk_pdump_show_one(struct clk_core *c, int level)
-> +{
-> +       if (!c)
-> +               return;
-> +
-> +       pr_err("%*s%-*s %11d %12d %11lu %10lu %-3d\n",
-> +               level * 3 + 1, "", 30 - level * 3, c->name,
-> +               c->enable_count, c->prepare_count, clk_core_get_rate(c),
-> +               clk_core_get_accuracy(c), clk_core_get_phase(c));
-> +}
-> +
-> +static void clk_pdump_show_subtree(struct clk_core *c, int level)
-> +{
-> +       struct clk_core *child;
-> +
-> +       if (!c)
-> +               return;
-> +
-> +       clk_pdump_show_one(c, level);
-> +
-> +       hlist_for_each_entry(child, &c->children, child_node)
-> +               clk_pdump_show_subtree(child, level + 1);
-> +}
-> +
-> +static int clk_panic_dump(struct notifier_block *this, unsigned long ev,
-> +                         void *ptr)
-> +{
-> +       struct clk_core *c;
-> +
-> +       if (!clk_pdump_enable)
-> +               return 0;
-
-Why register the notifier in late init if the commandline doesn't have
-the parameter set?
-
-> +
-> +       pr_err("clock panic dump:\n");
-> +       pr_err("   clock                         enable_cnt  prepare_cnt        rate   accuracy   phase\n");
-> +       pr_err("----------------------------------------------------------------------------------------\n");
-> +
-> +       clk_prepare_lock();
-
-Why are we taking locks in the panic path?
-
-> +
-> +       hlist_for_each_entry(c, &clk_root_list, child_node)
-> +               clk_pdump_show_subtree(c, 0);
-> +       hlist_for_each_entry(c, &clk_orphan_list, child_node)
-> +               clk_pdump_show_subtree(c, 0);
-> +
-> +       clk_prepare_unlock();
-> +
-> +       return 0;
-> +}
-> +
-> +static struct notifier_block clk_pdump_block = {
-> +       .notifier_call = clk_panic_dump,
-> +};
-> +
-> +static int clk_register_pdump(void)
-> +{
-> +       atomic_notifier_chain_register(&panic_notifier_list, &clk_pdump_block);
-> +       return 0;
-> +}
-> +late_initcall_sync(clk_register_pdump);
-
-Why sync?
+T24gVHVlLCBNYXkgMTUsIDIwMTggYXQgMDE6MDk6NTlQTSArMDIwMCwgUGV0ZXIgUm9zaW4gd3Jv
+dGU6Cj4gT24gMjAxOC0wNS0xNSAxMjoyMiwgRGFuaWVsIFZldHRlciB3cm90ZToKPiA+IE9uIE1v
+biwgTWF5IDE0LCAyMDE4IGF0IDEwOjQwIFBNLCBQZXRlciBSb3NpbiA8cGVkYUBheGVudGlhLnNl
+PiB3cm90ZToKPiA+PiBPbiAyMDE4LTA1LTE0IDE4OjI4LCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
+ID4+PiBPbiBGcmksIE1heSAxMSwgMjAxOCBhdCAwOTozNzo0N0FNICswMjAwLCBQZXRlciBSb3Np
+biB3cm90ZToKPiA+Pj4+IE9uIDIwMTgtMDUtMTAgMTA6MTAsIEFuZHJ6ZWogSGFqZGEgd3JvdGU6
+Cj4gPj4+Pj4gT24gMDQuMDUuMjAxOCAxNTo1MiwgUGV0ZXIgUm9zaW4gd3JvdGU6Cj4gPj4+Pj4+
+IElmIHRoZSBicmlkZ2Ugc3VwcGxpZXIgaXMgdW5ib3VuZCwgdGhpcyB3aWxsIGJyaW5nIHRoZSBi
+cmlkZ2UgY29uc3VtZXIKPiA+Pj4+Pj4gZG93biBhbG9uZyB3aXRoIHRoZSBicmlkZ2UuIFRodXMs
+IHRoZXJlIHdpbGwgbm8gbG9uZ2VyIGxpbmdlciBhbnkKPiA+Pj4+Pj4gZGFuZ2xpbmcgcG9pbnRl
+cnMgZnJvbSB0aGUgYnJpZGdlIGNvbnN1bWVyICh0aGUgZHJtX2RldmljZSkgdG8gc29tZQo+ID4+
+Pj4+PiBub24tZXhpc3RlbnQgYnJpZGdlIHN1cHBsaWVyLgo+ID4+Pj4+Pgo+ID4+Pj4+PiBTaWdu
+ZWQtb2ZmLWJ5OiBQZXRlciBSb3NpbiA8cGVkYUBheGVudGlhLnNlPgo+ID4+Pj4+PiAtLS0KPiA+
+Pj4+Pj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMgfCAxOCArKysrKysrKysrKysrKysr
+KysKPiA+Pj4+Pj4gIGluY2x1ZGUvZHJtL2RybV9icmlkZ2UuaCAgICAgfCAgMiArKwo+ID4+Pj4+
+PiAgMiBmaWxlcyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspCj4gPj4+Pj4+Cj4gPj4+Pj4+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jIGIvZHJpdmVycy9ncHUvZHJt
+L2RybV9icmlkZ2UuYwo+ID4+Pj4+PiBpbmRleCA3OGQxODZiNjgzMWIuLjAyNTlmMGEzZmYyNyAx
+MDA2NDQKPiA+Pj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9icmlkZ2UuYwo+ID4+Pj4+
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2JyaWRnZS5jCj4gPj4+Pj4+IEBAIC0yNiw2ICsy
+Niw3IEBACj4gPj4+Pj4+ICAjaW5jbHVkZSA8bGludXgvbXV0ZXguaD4KPiA+Pj4+Pj4KPiA+Pj4+
+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX2JyaWRnZS5oPgo+ID4+Pj4+PiArI2luY2x1ZGUgPGRybS9k
+cm1fZGV2aWNlLmg+Cj4gPj4+Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9lbmNvZGVyLmg+Cj4gPj4+
+Pj4+Cj4gPj4+Pj4+ICAjaW5jbHVkZSAiZHJtX2NydGNfaW50ZXJuYWwuaCIKPiA+Pj4+Pj4gQEAg
+LTEyNywxMiArMTI4LDI1IEBAIGludCBkcm1fYnJpZGdlX2F0dGFjaChzdHJ1Y3QgZHJtX2VuY29k
+ZXIgKmVuY29kZXIsIHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4gPj4+Pj4+ICAgIGlmIChi
+cmlkZ2UtPmRldikKPiA+Pj4+Pj4gICAgICAgICAgICByZXR1cm4gLUVCVVNZOwo+ID4+Pj4+Pgo+
+ID4+Pj4+PiArICBpZiAoZW5jb2Rlci0+ZGV2LT5kZXYgIT0gYnJpZGdlLT5vZGV2KSB7Cj4gPj4+
+Pj4KPiA+Pj4+PiBJIHdvbmRlciB3aHkgZGV2aWNlX2xpbmtfYWRkIGRvZXMgbm90IGhhbmRsZSB0
+aGlzIGNhc2UgKHNlbGYgZGVwZW5kZW5jeSkKPiA+Pj4+PiBzaWxlbnRseSBhcyBub29wLCBhcyBp
+dCBzZWVtcyB0byBiZSBhIGNvcnJlY3QgYmVoYXZpb3IuCj4gPj4+Pgo+ID4+Pj4gSXQncyBraW5k
+LW9mIGEgc2lsbHkgY29ybmVyLWNhc2UgdGhvdWdoLCBzbyBwZXJmZWN0bHkgdW5kZXJzdGFuZGFi
+bGUKPiA+Pj4+IHRoYXQgaXQgaXNuJ3QgaGFuZGxlZC4KPiA+Pj4+Cj4gPj4+Pj4+ICsgICAgICAg
+ICAgYnJpZGdlLT5saW5rID0gZGV2aWNlX2xpbmtfYWRkKGVuY29kZXItPmRldi0+ZGV2LAo+ID4+
+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBicmlkZ2UtPm9k
+ZXYsIDApOwo+ID4+Pj4+PiArICAgICAgICAgIGlmICghYnJpZGdlLT5saW5rKSB7Cj4gPj4+Pj4+
+ICsgICAgICAgICAgICAgICAgICBkZXZfZXJyKGJyaWRnZS0+b2RldiwgImZhaWxlZCB0byBsaW5r
+IGJyaWRnZSB0byAlc1xuIiwKPiA+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgZGV2
+X25hbWUoZW5jb2Rlci0+ZGV2LT5kZXYpKTsKPiA+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgIHJl
+dHVybiAtRUlOVkFMOwo+ID4+Pj4+PiArICAgICAgICAgIH0KPiA+Pj4+Pj4gKyAgfQo+ID4+Pj4+
+PiArCj4gPj4+Pj4+ICAgIGJyaWRnZS0+ZGV2ID0gZW5jb2Rlci0+ZGV2Owo+ID4+Pj4+PiAgICBi
+cmlkZ2UtPmVuY29kZXIgPSBlbmNvZGVyOwo+ID4+Pj4+Pgo+ID4+Pj4+PiAgICBpZiAoYnJpZGdl
+LT5mdW5jcy0+YXR0YWNoKSB7Cj4gPj4+Pj4+ICAgICAgICAgICAgcmV0ID0gYnJpZGdlLT5mdW5j
+cy0+YXR0YWNoKGJyaWRnZSk7Cj4gPj4+Pj4+ICAgICAgICAgICAgaWYgKHJldCA8IDApIHsKPiA+
+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgIGlmIChicmlkZ2UtPmxpbmspCj4gPj4+Pj4+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgIGRldmljZV9saW5rX2RlbChicmlkZ2UtPmxpbmspOwo+ID4+
+Pj4+PiArICAgICAgICAgICAgICAgICAgYnJpZGdlLT5saW5rID0gTlVMTDsKPiA+Pj4+Pj4gICAg
+ICAgICAgICAgICAgICAgIGJyaWRnZS0+ZGV2ID0gTlVMTDsKPiA+Pj4+Pj4gICAgICAgICAgICAg
+ICAgICAgIGJyaWRnZS0+ZW5jb2RlciA9IE5VTEw7Cj4gPj4+Pj4+ICAgICAgICAgICAgICAgICAg
+ICByZXR1cm4gcmV0Owo+ID4+Pj4+PiBAQCAtMTU5LDYgKzE3MywxMCBAQCB2b2lkIGRybV9icmlk
+Z2VfZGV0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gPj4+Pj4+ICAgIGlmIChicmlk
+Z2UtPmZ1bmNzLT5kZXRhY2gpCj4gPj4+Pj4+ICAgICAgICAgICAgYnJpZGdlLT5mdW5jcy0+ZGV0
+YWNoKGJyaWRnZSk7Cj4gPj4+Pj4+Cj4gPj4+Pj4+ICsgIGlmIChicmlkZ2UtPmxpbmspCj4gPj4+
+Pj4+ICsgICAgICAgICAgZGV2aWNlX2xpbmtfZGVsKGJyaWRnZS0+bGluayk7Cj4gPj4+Pj4+ICsg
+IGJyaWRnZS0+bGluayA9IE5VTEw7Cj4gPj4+Pj4+ICsKPiA+Pj4+Pj4gICAgYnJpZGdlLT5kZXYg
+PSBOVUxMOwo+ID4+Pj4+PiAgfQo+ID4+Pj4+Pgo+ID4+Pj4+PiBkaWZmIC0tZ2l0IGEvaW5jbHVk
+ZS9kcm0vZHJtX2JyaWRnZS5oIGIvaW5jbHVkZS9kcm0vZHJtX2JyaWRnZS5oCj4gPj4+Pj4+IGlu
+ZGV4IGI2NTZlNTA1ZDExZS4uODA0MTg5YzYzYTRjIDEwMDY0NAo+ID4+Pj4+PiAtLS0gYS9pbmNs
+dWRlL2RybS9kcm1fYnJpZGdlLmgKPiA+Pj4+Pj4gKysrIGIvaW5jbHVkZS9kcm0vZHJtX2JyaWRn
+ZS5oCj4gPj4+Pj4+IEBAIC0yNjEsNiArMjYxLDcgQEAgc3RydWN0IGRybV9icmlkZ2VfdGltaW5n
+cyB7Cj4gPj4+Pj4+ICAgKiBAbGlzdDogdG8ga2VlcCB0cmFjayBvZiBhbGwgYWRkZWQgYnJpZGdl
+cwo+ID4+Pj4+PiAgICogQHRpbWluZ3M6IHRoZSB0aW1pbmcgc3BlY2lmaWNhdGlvbiBmb3IgdGhl
+IGJyaWRnZSwgaWYgYW55IChtYXkKPiA+Pj4+Pj4gICAqIGJlIE5VTEwpCj4gPj4+Pj4+ICsgKiBA
+bGluazogZHJtIGNvbnN1bWVyIDwtPiBicmlkZ2Ugc3VwcGxpZXIKPiA+Pj4+Pgo+ID4+Pj4+IE5p
+dHBpY2s6ICI8LT4iIHN1Z2dlc3RzIHN5bW1ldHJ5LCBtYXliZSAiZGV2aWNlIGxpbmsgZnJvbSBk
+cm0gY29uc3VtZXIKPiA+Pj4+PiB0byB0aGUgYnJpZGdlIiB3b3VsZCBiZSBiZXR0ZXIuCj4gPj4+
+Pgo+ID4+Pj4gSSBtZWFudCAiPC0+IiB0byBpbmRpY2F0ZSB0aGF0IHRoZSBsaW5rIGlzIGJpZGly
+ZWN0aW9uYWwsIG5vdCB0aGF0IHRoZQo+ID4+Pj4gcmVsYXRpb25zaGlwIGlzIGluIGFueSB3YXkg
+c3ltbWV0cmljLiBJIHdhc24ndCBhd2FyZSBvZiBhbnkgaW1wbGljYXRpb24KPiA+Pj4+IG9mIGEg
+c3ltbWV0cmljIHJlbGF0aW9uc2hpcCB3aGVuIHVzaW5nICI8LT4iLCBkbyB5b3UgaGF2ZSBhIHJl
+ZmVyZW5jZT8KPiA+Pj4+IEJ1dCBJIGd1ZXNzIHRoZSBkaWZmZXJlbnQgYXJyb3cgbm90YXRpb25z
+IGluIG1hdGggYXJlIHNvbWV3aGF0IG92ZXJsb2FkZWQKPiA+Pj4+IGFuZCB0aGF0IHNvbWVvbmUg
+YXQgc29tZSBwb2ludCBtdXN0IGhhdmUgdXNlZCAiPC0+IiB0byBpbmRpY2F0ZSBhCj4gPj4+PiBz
+eW1tZXRyaWMgcmVsYXRpb25zaGlwLi4uCj4gPj4+Cj4gPj4+IFllYWggSSBhZ3JlZSB3aXRoIEFu
+ZHJ6ZWogaGVyZSwgZm9yIG1lIDwtPiBpbXBsaWVzIGEgc3ltbWV0cmljCj4gPj4+IHJlbGF0aW9u
+c2hpcC4gU3BlbGxpbmcgaXQgb3V0IGxpa2UgQW5kcnplaiBzdWdnZXN0ZWQgc291bmRzIGxpa2Ug
+dGhlCj4gPj4+IGJldHRlciBpZGVhLgo+ID4+PiAtRGFuaWVsCj4gPj4KPiA+PiBPaywgSSBndWVz
+cyB0aGF0IG1lYW5zIEkgaGF2ZSB0byBkbyBhIHYzIGFmdGVyIGFsbC4gT3IgY2FuIHRoaXMKPiA+
+PiB0cml2aWFsIGRvY3VtZW50YXRpb24gdXBkYXRlIGJlIGRvbmUgYnkgdGhlIGNvbW1pdHRlcj8g
+SSBoYXRlIHRvCj4gPj4gc3BhbSBldmVyeW9uZSB3aXRoIGFub3RoZXIgdm9sbGV5Li4uCj4gPj4K
+PiA+PiBPciBwZXJoYXBzIEkgc2hvdWxkIHNxdWFzaCBwYXRjaGVzIDItMjMgdGhhdCBhcmUgYWxs
+IHJhdGhlciBzaW1pbGFyCj4gPj4gYW5kIG1lY2hhbmljPyBJIHNlcGFyYXRlZCB0aGVtIHRvIGFs
+bG93IGZvciBlYXNpZXIgcmV2aWV3IGZyb20KPiA+PiBpbmRpdmlkdWFsIGRyaXZlciBtYWludGFp
+bmVycywgYnV0IHRoYXQgZGlkbid0IHNlZW0gdG8gaGFwcGVuCj4gPj4gYW55d2F5Li4uCj4gPiAK
+PiA+IERvIGFub3RoZXIgdm9sbGV5IG9mIHRoZSBmdWxsIHNldCwgb3IgaW4tcmVwbHktdG8gdG8g
+anVzdCByZXBsYWNlIHRoZQo+ID4gcGF0Y2ggdGhhdCBuZWVkcyB0byBiZSByZXNwdW4gKGJ1dCBz
+b21lIHBlb3BsZSBkb24ndCBsaWtlIHRoYXQpLgo+ID4gCj4gPiBXaGVuIHJlc2VuZGluZyBqdXN0
+IG1ha2Ugc3VyZSB5b3UncmUgcGlja2luZyB1cCBhbGwgdGhlIGFja3Mvci1icyB5b3UKPiA+IGhh
+dmUgYWxyZWFkeS4KPiAKPiBSaWdodCwgSSBhbHdheXMgdHJ5IHRvIGRvIHRoYXQuIE9uZSBBY2sg
+dGhhdCBJIGRpZCBub3QgaW5jbHVkZSBpbiB2Mgo+IHdhcyB0aGUgb25lIHlvdSBoYWQgb24gdjEg
+MjQvMjQgKGkuZS4gdGhpcyBwYXRjaCkuIFRoZSByZWFzb24gSSBkaWQKPiBub3QgYWRkIHlvdXIg
+QWNrIGZvciB2MiBldmVuIG9uIHRoZSBwYXRjaCB3aGVyZSBpdCBvYnZpb3VzbHkgYXBwbGllZAo+
+IHdhcyB0aGF0IEkgZGlkbid0IGtub3cgaWYgeW91J2QgYmFyZiBvbiB0aGUgb2RldiBuYW1lLgo+
+IAo+IEJ1dCBpdCB3YXMgKGFuZCBzdGlsbCBpcykgYSBiaXQgdW5jbGVhciBpZiB0aGF0IHdhcyBv
+biBBY2sgb24gdGhlCj4gbGFzdCBwYXRjaCBvbmx5LCBvciBpZiBpdCB3YXMgZm9yIHRoZSB3aG9s
+ZSBzZXJpZXM/IEkgdGhpbmsgaXQgbWlnaHQKPiBoYXZlIGJlZW4gZm9yIHRoZSB3aG9sZSBzZXJp
+ZXMsIGJ1dCBJJ20gbm90IHN1cmUgYW5kIEkgaGF0ZSB0byBiZSBhCj4gcHJlc3VtcHR1b3VzIGlk
+aW90Li4uCgpBY2sgb24gdGhlIG92ZXJhbGwgY29uY2VwdCwgYW5kIEknbSBvayB3aXRoIG9kZXYg
+dG9vLiBCdXQgZGVmaW5pdGVseSBnZXQKYWNrcyBmcm9tIHJlbGV2YW50IHBlb3BsZSAoYnJpZGdl
+L2RyaXZlciBtYWludGFpbmVycykuIEluIHRlcm1zIG9mCnBhdGNoZXMsIEknZCBzYXkgcGF0Y2gg
+MSArIDI0LTI2IGhhdmUgbXkKCkFja2VkLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVy
+QGZmd2xsLmNoPgoKLURhbmllbAoKPiAKPiBDaGVlcnMsCj4gUGV0ZXIKPiAKPiA+IC1EYW5pZWwK
+PiA+PiBDaGVlcnMsCj4gPj4gUGV0ZXIKPiA+Pgo+ID4+Pgo+ID4+Pj4KPiA+Pj4+PiBBbnl3YXk6
+Cj4gPj4+Pj4gUmV2aWV3ZWQtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+
+Cj4gPj4+Pgo+ID4+Pj4gVGhhbmtzIQo+ID4+Pj4KPiA+Pj4+IENoZWVycywKPiA+Pj4+IFBldGVy
+Cj4gPj4+Pgo+ID4+Pj4+ICAtLQo+ID4+Pj4+IFJlZ2FyZHMKPiA+Pj4+PiBBbmRyemVqCj4gPj4+
+Pj4KPiA+Pj4+Pj4gICAqIEBmdW5jczogY29udHJvbCBmdW5jdGlvbnMKPiA+Pj4+Pj4gICAqIEBk
+cml2ZXJfcHJpdmF0ZTogcG9pbnRlciB0byB0aGUgYnJpZGdlIGRyaXZlcidzIGludGVybmFsIGNv
+bnRleHQKPiA+Pj4+Pj4gICAqLwo+ID4+Pj4+PiBAQCAtMjcxLDYgKzI3Miw3IEBAIHN0cnVjdCBk
+cm1fYnJpZGdlIHsKPiA+Pj4+Pj4gICAgc3RydWN0IGRybV9icmlkZ2UgKm5leHQ7Cj4gPj4+Pj4+
+ICAgIHN0cnVjdCBsaXN0X2hlYWQgbGlzdDsKPiA+Pj4+Pj4gICAgY29uc3Qgc3RydWN0IGRybV9i
+cmlkZ2VfdGltaW5ncyAqdGltaW5nczsKPiA+Pj4+Pj4gKyAgc3RydWN0IGRldmljZV9saW5rICps
+aW5rOwo+ID4+Pj4+Pgo+ID4+Pj4+PiAgICBjb25zdCBzdHJ1Y3QgZHJtX2JyaWRnZV9mdW5jcyAq
+ZnVuY3M7Cj4gPj4+Pj4+ICAgIHZvaWQgKmRyaXZlcl9wcml2YXRlOwo+ID4+Pj4+Cj4gPj4+Pj4K
+PiA+Pj4+Cj4gPj4+Cj4gPj4KPiA+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwo+ID4+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiA+PiBkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPiA+IAo+ID4gCj4gPiAKPiAKCi0tIApEYW5pZWwg
+VmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5m
+ZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
