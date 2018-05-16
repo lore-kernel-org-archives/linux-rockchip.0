@@ -1,107 +1,55 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v6 04/17] media: rkisp1: add Rockchip MIPI Synopsys DPHY driver
-Date: Thu, 17 May 2018 00:15:41 +0900
-Message-ID: <CAAFQd5C6deXgEj5+oH41g+4Yqre2RMq9m+efZ40M_7Eks=X8ow@mail.gmail.com>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com> <20180308094807.9443-5-jacob-chen@iotwrt.com>
- <18647985.GIavVuIZz4@avalon> <CAFLEztRY0xSScE51uvUtS89PqE_bNjkMfzBeTQTPyKd6asfPEQ@mail.gmail.com>
- <CAFLEztTsPdR9mjj7uu+0dUpUecUx=bLRBRcfue06Gy5YdrgGDA@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v4 4/4] drm/rockchip: support dp training outside dp
+ firmware
+Date: Wed, 16 May 2018 16:28:47 -0700
+Message-ID: <20180516232845.GA219198@rodete-desktop-imager.corp.google.com>
+References: <1526354560-23135-1-git-send-email-hl@rock-chips.com>
+ <1526354560-23135-4-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFLEztTsPdR9mjj7uu+0dUpUecUx=bLRBRcfue06Gy5YdrgGDA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: jacobchen110@gmail.com
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Shunqian Zheng <zhengsq@rock-chips.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, zhengxing@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1526354560-23135-4-git-send-email-hl@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Lin Huang <hl@rock-chips.com>
+Cc: devicetree@vger.kernel.org, airlied@linux.ie, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, dri-devel@lists.freedesktop.org, zyw@rock-chips.com, daniel.vetter@intel.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jacob,
-
-On Wed, May 16, 2018 at 11:54 PM Jacob Chen <jacobchen110@gmail.com> wrote:
-
-> 2018-05-16 22:39 GMT+08:00 Jacob Chen <jacobchen110@gmail.com>:
-> > Hi Laurent,
-> >
-> > 2018-05-16 13:20 GMT+08:00 Laurent Pinchart <
-laurent.pinchart@ideasonboard.com>:
-> >> Hi Jacob,
-> >>
-> >> Thank you for the patch.
-> >>
-> >> On Thursday, 8 March 2018 11:47:54 EEST Jacob Chen wrote:
-> >>> From: Jacob Chen <jacob2.chen@rock-chips.com>
-> >>>
-> >>> This commit adds a subdev driver for Rockchip MIPI Synopsys DPHY
-driver
-> >>
-> >> Should this really be a subdev driver ? After a quick look at the
-code, the
-> >> only parameters you need to configure the PHY is the number of lanes
-and the
-> >> data rate. Implementing the whole subdev API seems overcomplicated to
-me,
-> >> especially given that the D-PHY doesn't deal with video streams as
-such, but
-> >> operates one level down. Shouldn't we model the D-PHY using the Linux
-PHY
-> >> framework ? I believe all the features you need are there except for a
-D-PHY-
-> >> specific configuration function that should be very easy to add.
-> >>
-> >
-> > It deserves a subdev driver since the ISP is not the only user.
-> > Other driver, like VIP, use it too.
-> >
-> >
-
-> For example, if there are two sensors connected to a rk3399 board.
-
-> Sensor1 --> DPHY1
-> Sensor2 --> DPHY2
-
-> With a subdev phy driver, i can choose either ISP or VIP for
-> sensor1/sensor2 by enable/disable media link in the run time.
-> 1.
-> Sensor1 --> DPHY1 ---> VIP
-> Sensor2 --> DPHY2 ---> ISP1
-> 2.
-> Sensor1 --> DPHY1 ---> ISP1
-> Sensor2 --> DPHY2 ---> VIP
-
-
-What is VIP?
-
-Also, if we model the DPHY using the PHY interface, it will be still
-possible to achieve the same, just by toggling the link between sensor and
-VIP or ISP1:
-
-1.
-
-Sensor1 -------|~|--- VIP
-         \             | (PHY interface)
-          \           DPHY1
-           \           | (PHY interface)
-            \---| |-- ISP1
-
-Sensor2 -------| |-- VIP
-         \             | (PHY interface)
-          \           DPHY2
-           \           | (PHY interface)
-            \---|~|-- ISP1
-
-2.
-
-Sensor1 -------| |-- VIP
-         \             | (PHY interface)
-          \           DPHY1
-           \           | (PHY interface)
-            \---|~|-- ISP1
-
-Sensor2 -------|~|-- VIP
-         \             | (PHY interface)
-          \           DPHY2
-           \           | (PHY interface)
-            \---| |-- ISP1
-
-Best regards,
-Tomasz
+T24gVHVlLCBNYXkgMTUsIDIwMTggYXQgMTE6MjI6NDBBTSArMDgwMCwgTGluIEh1YW5nIHdyb3Rl
+Ogo+IERQIGZpcm13YXJlIHVzZXMgZml4ZWQgcGh5IGNvbmZpZyB2YWx1ZXMgdG8gZG8gdHJhaW5p
+bmcsIGJ1dCBzb21lCj4gYm9hcmRzIG5lZWQgdG8gYWRqdXN0IHRoZXNlIHZhbHVlcyB0byBmaXQg
+Zm9yIHRoZWlyIHVuaXF1ZSBoYXJkd2FyZQo+IGRlc2lnbi4gU28gZ2V0IHBoeSBjb25maWcgdmFs
+dWVzIGZyb20gZHRzIGFuZCB1c2Ugc29mdHdhcmUgbGluayB0cmFpbmluZwo+IGluc3RlYWQgb2Yg
+cmVseWluZyBvbiBmaXJtd2FyZSwgaWYgc29mdHdhcmUgdHJhaW5pbmcgZmFpbCwga2VlcCBmaXJt
+d2FyZQo+IHRyYWluaW5nIGFzIGEgZmFsbGJhY2sgaWYgc3cgdHJhaW5pbmcgZmFpbHMuCj4gCj4g
+Cj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IENoYW5nZXMg
+aW4gdjI6Cj4gLSB1cGRhdGUgcGF0Y2ggZm9sbG93aW5nIEVucmljIHN1Z2dlc3QKPiBDaGFuZ2Vz
+IGluIHYzOgo+IC0gdXNlIHZhcmlhYmxlIGZ3X3RyYWluaW5nIGluc3RlYWQgc3dfdHJhaW5pbmdf
+c3VjY2Vzcwo+IC0gYmFzZSBvbiBEUCBTUENFLCBpZiB0cmFpbmluZyBmYWlsIHVzZSBsb3dlciBs
+aW5rIHJhdGUgdG8gcmV0cnkgdHJhaW5pbmcKPiBDaGFuZ2VzIGluIHY0Ogo+IC0gaW1wcm92ZSBj
+ZG5fZHBfZ2V0X2xvd2VyX2xpbmtfcmF0ZSgpIGFuZCBjZG5fZHBfc29mdHdhcmVfdHJhaW5fbGlu
+aygpIGZvbGxvdyBTZWFuIHN1Z2dlc3QKPiAKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01h
+a2VmaWxlICAgICAgICAgICAgICAgfCAgIDMgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2Nkbi1kcC1jb3JlLmMgICAgICAgICAgfCAgMjQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2Nkbi1kcC1jb3JlLmggICAgICAgICAgfCAgIDIgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYyB8IDQyMCArKysrKysrKysrKysrKysrKysrKysr
+KysKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYyAgICAgICAgICAgfCAg
+MzEgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuaCAgICAgICAgICAg
+fCAgMzggKystCj4gIDYgZmlsZXMgY2hhbmdlZCwgNTA1IGluc2VydGlvbnMoKyksIDEzIGRlbGV0
+aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nk
+bi1kcC1saW5rLXRyYWluaW5nLmMKClBsZWFzZSByZXJ1biBjaGVja3BhdGNoIG5leHQgdGltZS4g
+WW91J3ZlIGdvdCBhIGJ1bmNoIG9mIHdoaXRlc3BhY2UKaXNzdWVzIGluIGNkbl9kcF9nZXRfbG93
+ZXJfbGlua19yYXRlKCkgYW5kIGNkbl9kcF9zb2Z0d2FyZV90cmFpbl9saW5rKCkuCgpCcmlhbgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
