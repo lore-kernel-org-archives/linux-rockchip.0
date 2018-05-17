@@ -1,77 +1,158 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v4 4/4] drm/rockchip: support dp training outside dp
- firmware
-Date: Wed, 16 May 2018 16:51:26 -0700
-Message-ID: <20180516235125.GB219198@rodete-desktop-imager.corp.google.com>
-References: <1526354560-23135-1-git-send-email-hl@rock-chips.com>
- <1526354560-23135-4-git-send-email-hl@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] clk: add clock panic dump in tree-view
+Date: Thu, 17 May 2018 10:32:50 +0800
+Message-ID: <25a9c183-af5b-3310-521f-caaa5810c8e8@rock-chips.com>
+References: <1525942205-111855-1-git-send-email-shawn.lin@rock-chips.com>
+ <152645814090.210890.10037636681887493249@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1526354560-23135-4-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Lin Huang <hl@rock-chips.com>
-Cc: devicetree@vger.kernel.org, airlied@linux.ie, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, dri-devel@lists.freedesktop.org, zyw@rock-chips.com, daniel.vetter@intel.com, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <152645814090.210890.10037636681887493249-n1Xw8LXHxjTHt/MElyovVYaSKrA+ACpX0E9HWUfgJXw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-KyBLaXNob24KCkhpLAoKT24gVHVlLCBNYXkgMTUsIDIwMTggYXQgMTE6MjI6NDBBTSArMDgwMCwg
-TGluIEh1YW5nIHdyb3RlOgo+IERQIGZpcm13YXJlIHVzZXMgZml4ZWQgcGh5IGNvbmZpZyB2YWx1
-ZXMgdG8gZG8gdHJhaW5pbmcsIGJ1dCBzb21lCj4gYm9hcmRzIG5lZWQgdG8gYWRqdXN0IHRoZXNl
-IHZhbHVlcyB0byBmaXQgZm9yIHRoZWlyIHVuaXF1ZSBoYXJkd2FyZQo+IGRlc2lnbi4gU28gZ2V0
-IHBoeSBjb25maWcgdmFsdWVzIGZyb20gZHRzIGFuZCB1c2Ugc29mdHdhcmUgbGluayB0cmFpbmlu
-Zwo+IGluc3RlYWQgb2YgcmVseWluZyBvbiBmaXJtd2FyZSwgaWYgc29mdHdhcmUgdHJhaW5pbmcg
-ZmFpbCwga2VlcCBmaXJtd2FyZQo+IHRyYWluaW5nIGFzIGEgZmFsbGJhY2sgaWYgc3cgdHJhaW5p
-bmcgZmFpbHMuCj4gCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNo
-aXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+
-IC0tLQo+IENoYW5nZXMgaW4gdjI6Cj4gLSB1cGRhdGUgcGF0Y2ggZm9sbG93aW5nIEVucmljIHN1
-Z2dlc3QKPiBDaGFuZ2VzIGluIHYzOgo+IC0gdXNlIHZhcmlhYmxlIGZ3X3RyYWluaW5nIGluc3Rl
-YWQgc3dfdHJhaW5pbmdfc3VjY2Vzcwo+IC0gYmFzZSBvbiBEUCBTUENFLCBpZiB0cmFpbmluZyBm
-YWlsIHVzZSBsb3dlciBsaW5rIHJhdGUgdG8gcmV0cnkgdHJhaW5pbmcKPiBDaGFuZ2VzIGluIHY0
-Ogo+IC0gaW1wcm92ZSBjZG5fZHBfZ2V0X2xvd2VyX2xpbmtfcmF0ZSgpIGFuZCBjZG5fZHBfc29m
-dHdhcmVfdHJhaW5fbGluaygpIGZvbGxvdyBTZWFuIHN1Z2dlc3QKPiAKPiAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgfCAgIDMgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgICAgICAgICAgfCAgMjQgKy0KPiAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmggICAgICAgICAgfCAgIDIgKwo+ICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYyB8IDQyMCArKysrKysr
-KysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcu
-YyAgICAgICAgICAgfCAgMzEgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1y
-ZWcuaCAgICAgICAgICAgfCAgMzggKystCj4gIDYgZmlsZXMgY2hhbmdlZCwgNTA1IGluc2VydGlv
-bnMoKyksIDEzIGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2Nkbi1kcC1saW5rLXRyYWluaW5nLmMKCi4uLgoKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1saW5rLXRyYWluaW5nLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYwo+IG5ldyBmaWxlIG1vZGUg
-MTAwNjQ0Cj4gaW5kZXggMDAwMDAwMC4uN2VmZDA3MAo+IC0tLSAvZGV2L251bGwKPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYwo+IEBAIC0wLDAg
-KzEsNDIwIEBACj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCj4gKy8qCj4g
-KyAqIENvcHlyaWdodCAoQykgRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLkx0ZAo+ICsg
-KiBBdXRob3I6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4gKyAqLwo+ICsKPiAr
-I2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPiAr
-I2luY2x1ZGUgPGxpbnV4L3BoeS9waHkuaD4KPiArI2luY2x1ZGUgPHNvYy9yb2NrY2hpcC9yb2Nr
-Y2hpcF9waHlfdHlwZWMuaD4KPiArCj4gKyNpbmNsdWRlICJjZG4tZHAtY29yZS5oIgo+ICsjaW5j
-bHVkZSAiY2RuLWRwLXJlZy5oIgo+ICsKPiArc3RhdGljIHZvaWQgY2RuX2RwX3NldF9zaWduYWxf
-bGV2ZWxzKHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCkKPiArewo+ICsJc3RydWN0IGNkbl9kcF9w
-b3J0ICpwb3J0ID0gZHAtPnBvcnRbZHAtPmFjdGl2ZV9wb3J0XTsKPiArCXN0cnVjdCByb2NrY2hp
-cF90eXBlY19waHkgKnRjcGh5ID0gcGh5X2dldF9kcnZkYXRhKHBvcnQtPnBoeSk7CgpUaGlzIGlz
-IHN0aWxsIGFudGl0aGV0aWNhbCB0byB0aGUgUEhZIGZyYW1ld29yazsgeW91J3JlIGFzc3VtaW5n
-IHRoYXQKdGhpcyBpcyBhIHBhcnRpY3VsYXIgdHlwZSBvZiBQSFkgaGVyZS4KCj4gKwo+ICsJaW50
-IHJhdGUgPSBkcm1fZHBfYndfY29kZV90b19saW5rX3JhdGUoZHAtPmxpbmsucmF0ZSk7Cj4gKwl1
-OCBzd2luZyA9IChkcC0+dHJhaW5fc2V0WzBdICYgRFBfVFJBSU5fVk9MVEFHRV9TV0lOR19NQVNL
-KSA+Pgo+ICsJCSAgIERQX1RSQUlOX1ZPTFRBR0VfU1dJTkdfU0hJRlQ7Cj4gKwl1OCBwcmVfZW1w
-aGFzaXMgPSAoZHAtPnRyYWluX3NldFswXSAmIERQX1RSQUlOX1BSRV9FTVBIQVNJU19NQVNLKQo+
-ICsJCQkgID4+IERQX1RSQUlOX1BSRV9FTVBIQVNJU19TSElGVDsKPiArCj4gKwl0Y3BoeS0+dHlw
-ZWNfcGh5X2NvbmZpZyhwb3J0LT5waHksIHJhdGUsIGRwLT5saW5rLm51bV9sYW5lcywKPiArCQkJ
-CXN3aW5nLCBwcmVfZW1waGFzaXMpOwoKSXMgdGhpcyBzb21ldGhpbmcgZ2VuZXJpYyB0aGF0IGNv
-dWxkIGJlIGFkZGVkIGFzIGEgbmV3IFBIWSBBUEkgaW5zdGVhZD8KCj4gK30KCkJyaWFuCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Stephen,
+
+On 2018/5/16 16:09, Stephen Boyd wrote:
+> Quoting Shawn Lin (2018-05-10 01:50:05)
+>> diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+>> index 3487be7..7bbdb6f 100644
+>> --- a/Documentation/admin-guide/kernel-parameters.txt
+>> +++ b/Documentation/admin-guide/kernel-parameters.txt
+>> @@ -519,6 +519,9 @@
+>>                          debug and development, but should not be needed on a
+>>                          platform with proper driver support.  For more
+>>                          information, see Documentation/clk.txt.
+>> +       clk_panic_dump
+>> +                       [CLK]
+>> +                       Dump the whole clock tree-view upon panic.
+> 
+> Typically when the system panics it's because something has gone wrong.
+> When a clk has gone wrong, typically the system hangs or crashes hard
+> and printing out panic info just doesn't happen.
+> 
+> I'm not sure why clks are so special here that we need to dump the
+> information about the clk tree at the point of a panic. Is this more of
+> a debug patch to dump out clk tree info by calling panic() in certain
+> places near where you get odd system hangs?
+
+Yes, it's a debug patch when system in a odd hangds/hard locked. If it
+crashes seriously, anything wrt. panic info is unusable, but if the
+system still has a chance to dump panic info, for instance stack trace,
+it would also be able to dump the clk tree.
+
+Btw, I should marked this patch as RFC but forgot it. So if this patch
+is acceptable from your point, if I address the your comment about the
+code?
+
+> 
+>>   
+>>          clock=          [BUGS=X86-32, HW] gettimeofday clocksource override.
+>>                          [Deprecated]
+>> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+>> index 9ae92aa..adb5537 100644
+>> --- a/drivers/clk/clk.c
+>> +++ b/drivers/clk/clk.c
+>> @@ -2802,6 +2802,73 @@ static inline void clk_debug_unregister(struct clk_core *core)
+>>   }
+>>   #endif
+>>   
+>> +static bool clk_pdump_enable;
+>> +static int __init clk_pdump_setup(char *__unused)
+>> +{
+>> +       clk_pdump_enable  = true;
+>> +       return 1;
+>> +}
+>> +__setup("clk_panic_dump", clk_pdump_setup);
+>> +
+>> +static void clk_pdump_show_one(struct clk_core *c, int level)
+>> +{
+>> +       if (!c)
+>> +               return;
+>> +
+>> +       pr_err("%*s%-*s %11d %12d %11lu %10lu %-3d\n",
+>> +               level * 3 + 1, "", 30 - level * 3, c->name,
+>> +               c->enable_count, c->prepare_count, clk_core_get_rate(c),
+>> +               clk_core_get_accuracy(c), clk_core_get_phase(c));
+>> +}
+>> +
+>> +static void clk_pdump_show_subtree(struct clk_core *c, int level)
+>> +{
+>> +       struct clk_core *child;
+>> +
+>> +       if (!c)
+>> +               return;
+>> +
+>> +       clk_pdump_show_one(c, level);
+>> +
+>> +       hlist_for_each_entry(child, &c->children, child_node)
+>> +               clk_pdump_show_subtree(child, level + 1);
+>> +}
+>> +
+>> +static int clk_panic_dump(struct notifier_block *this, unsigned long ev,
+>> +                         void *ptr)
+>> +{
+>> +       struct clk_core *c;
+>> +
+>> +       if (!clk_pdump_enable)
+>> +               return 0;
+> 
+> Why register the notifier in late init if the commandline doesn't have
+> the parameter set?
+> 
+
+Ok, will fix.
+
+>> +
+>> +       pr_err("clock panic dump:\n");
+>> +       pr_err("   clock                         enable_cnt  prepare_cnt        rate   accuracy   phase\n");
+>> +       pr_err("----------------------------------------------------------------------------------------\n");
+>> +
+>> +       clk_prepare_lock();
+> 
+> Why are we taking locks in the panic path?
+
+ok, it's unnecessary in the special path indeed.
+
+> 
+>> +
+>> +       hlist_for_each_entry(c, &clk_root_list, child_node)
+>> +               clk_pdump_show_subtree(c, 0);
+>> +       hlist_for_each_entry(c, &clk_orphan_list, child_node)
+>> +               clk_pdump_show_subtree(c, 0);
+>> +
+>> +       clk_prepare_unlock();
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static struct notifier_block clk_pdump_block = {
+>> +       .notifier_call = clk_panic_dump,
+>> +};
+>> +
+>> +static int clk_register_pdump(void)
+>> +{
+>> +       atomic_notifier_chain_register(&panic_notifier_list, &clk_pdump_block);
+>> +       return 0;
+>> +}
+>> +late_initcall_sync(clk_register_pdump);
+> 
+> Why sync?
+
+Oh, sync is no needed.
+
+> 
+> 
+> 
+> 
