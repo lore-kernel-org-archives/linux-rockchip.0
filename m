@@ -1,53 +1,145 @@
-From: djw@t-chip.com.cn
-Subject: [PATCH v2 3/5] arm64: dts: rockchip: Add gpio-mute to rk3328
-Date: Fri, 18 May 2018 11:52:06 +0800
-Message-ID: <1526615528-9707-3-git-send-email-djw@t-chip.com.cn>
-References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn>
- <1526615528-9707-1-git-send-email-djw@t-chip.com.cn>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [RFC PATCH] drm/rockchip: update cursors asynchronously through atomic.
+Date: Fri, 18 May 2018 10:25:48 +0200
+Message-ID: <20180518082548.13450-1-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526615528-9707-1-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Finley Xiao <finley.xiao@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Levin Du <djw@t-chip.com.cn>
+Add support to async updates of cursors by using the new atomic
+interface for that.
 
-Adding a new gpio controller named "gpio-mute" to rk3328, providing
-access to the GPIO_MUTE pin defined in the syscon GRF_SOC_CON10.
-
-The GPIO_MUTE pin is referred to as <&gpio-mute 1>.
-
-Signed-off-by: Levin Du <djw@t-chip.com.cn>
-
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
+I am sending this as RFC because I still don't have a deep knowledge of
+the hw and I am not sure if the vop_plane_update function can be reused
+in both cases, atomic_updates and atomic_async_updates. I think that
+someone with more knowledge should take a look. The patch was tested on
+a Samsung Chromebook Plus in two ways.
 
-Changes in v2:
-- Rename gpio_syscon10 to gpio_mute in rk3328.dtsi
+1. Running all igt kms_cursor_legacy and kms_atomic@plane_cursor_legacy
+tests and see that there is no regression after the patch.
 
-Changes in v1:
-- Split from V0 and add to rk3328.dtsi for general use.
+2. Running weston using the atomic API.
 
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+Best regards,
+ Enric
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index b8e9da1..5ba29d3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -309,6 +309,13 @@
- 			mode-loader = <BOOT_BL_DOWNLOAD>;
- 		};
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 79 ++++++++++++++++-----
+ 1 file changed, 63 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 53d4afe15278..a89214541439 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -688,8 +688,7 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
+ 	spin_unlock(&vop->reg_lock);
+ }
  
-+		/* The GPIO_MUTE pin is referred to as <&gpio-mute 1>.*/
-+		gpio_mute: gpio-mute {
-+			compatible = "rockchip,gpio-syscon";
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			gpio,syscon-dev = <0 0x0428 0>;
-+		};
- 	};
+-static void vop_plane_atomic_update(struct drm_plane *plane,
+-		struct drm_plane_state *old_state)
++static void vop_plane_update(struct drm_plane *plane)
+ {
+ 	struct drm_plane_state *state = plane->state;
+ 	struct drm_crtc *crtc = state->crtc;
+@@ -710,20 +709,6 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	bool rb_swap;
+ 	int format;
  
- 	uart0: serial@ff110000 {
+-	/*
+-	 * can't update plane when vop is disabled.
+-	 */
+-	if (WARN_ON(!crtc))
+-		return;
+-
+-	if (WARN_ON(!vop->is_enabled))
+-		return;
+-
+-	if (!state->visible) {
+-		vop_plane_atomic_disable(plane, old_state);
+-		return;
+-	}
+-
+ 	obj = rockchip_fb_get_gem_obj(fb, 0);
+ 	rk_obj = to_rockchip_obj(obj);
+ 
+@@ -794,10 +779,72 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	spin_unlock(&vop->reg_lock);
+ }
+ 
++static void vop_plane_atomic_update(struct drm_plane *plane,
++				    struct drm_plane_state *old_state)
++{
++	struct drm_plane_state *state = plane->state;
++	struct vop *vop = to_vop(state->crtc);
++
++	/*
++	 * can't update plane when vop is disabled.
++	 */
++	if (WARN_ON(!state->crtc))
++		return;
++
++	if (WARN_ON(!vop->is_enabled))
++		return;
++
++	if (!state->visible) {
++		vop_plane_atomic_disable(plane, old_state);
++		return;
++	}
++
++	vop_plane_update(plane);
++}
++
++static int vop_plane_atomic_async_check(struct drm_plane *plane,
++					struct drm_plane_state *state)
++{
++	struct drm_crtc_state *crtc_state;
++
++	crtc_state = drm_atomic_get_existing_crtc_state(state->state,
++							state->crtc);
++	if (WARN_ON(!crtc_state))
++		return -EINVAL;
++
++	if (!crtc_state->active)
++		return -EINVAL;
++
++	if (plane->state->crtc != state->crtc ||
++	    plane->state->src_w != state->src_w ||
++	    plane->state->src_h != state->src_h ||
++	    plane->state->crtc_w != state->crtc_w ||
++	    plane->state->crtc_h != state->crtc_h ||
++	    !plane->state->fb ||
++	    plane->state->fb != state->fb)
++		return -EINVAL;
++
++	return 0;
++}
++
++static void vop_plane_atomic_async_update(struct drm_plane *plane,
++					  struct drm_plane_state *new_state)
++{
++	plane->state->src_x = new_state->src_x;
++	plane->state->src_y = new_state->src_y;
++	plane->state->crtc_x = new_state->crtc_x;
++	plane->state->crtc_y = new_state->crtc_y;
++	plane->state->fb = new_state->fb;
++
++	vop_plane_update(plane);
++}
++
+ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+ 	.atomic_check = vop_plane_atomic_check,
+ 	.atomic_update = vop_plane_atomic_update,
+ 	.atomic_disable = vop_plane_atomic_disable,
++	.atomic_async_check = vop_plane_atomic_async_check,
++	.atomic_async_update = vop_plane_atomic_async_update,
+ };
+ 
+ static const struct drm_plane_funcs vop_plane_funcs = {
 -- 
-2.7.4
+2.17.0
