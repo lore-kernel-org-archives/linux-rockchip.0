@@ -1,145 +1,89 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [RFC PATCH] drm/rockchip: update cursors asynchronously through atomic.
-Date: Fri, 18 May 2018 10:25:48 +0200
-Message-ID: <20180518082548.13450-1-enric.balletbo@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5 4/4] drm/rockchip: support dp training outside dp
+ firmware
+Date: Fri, 18 May 2018 10:52:17 +0200
+Message-ID: <11928313.3EhRqhFFHB@phil>
+References: <1526548680-2552-1-git-send-email-hl@rock-chips.com>
+ <d4c38236-7455-ccd5-a1d9-a000b7d78be9@rock-chips.com>
+ <CA+ASDXN2LT6FcX_2-MM=Qu7cZOHwVK3+2rGDLGcC1SnY3BJaSw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CA+ASDXN2LT6FcX_2-MM=Qu7cZOHwVK3+2rGDLGcC1SnY3BJaSw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: devicetree@vger.kernel.org, hl <hl@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Doug Anderson <dianders@chromium.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Daniel Vetter <daniel.vetter@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support to async updates of cursors by using the new atomic
-interface for that.
-
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-I am sending this as RFC because I still don't have a deep knowledge of
-the hw and I am not sure if the vop_plane_update function can be reused
-in both cases, atomic_updates and atomic_async_updates. I think that
-someone with more knowledge should take a look. The patch was tested on
-a Samsung Chromebook Plus in two ways.
-
-1. Running all igt kms_cursor_legacy and kms_atomic@plane_cursor_legacy
-tests and see that there is no regression after the patch.
-
-2. Running weston using the atomic API.
-
-Best regards,
- Enric
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 79 ++++++++++++++++-----
- 1 file changed, 63 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 53d4afe15278..a89214541439 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -688,8 +688,7 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
- 	spin_unlock(&vop->reg_lock);
- }
- 
--static void vop_plane_atomic_update(struct drm_plane *plane,
--		struct drm_plane_state *old_state)
-+static void vop_plane_update(struct drm_plane *plane)
- {
- 	struct drm_plane_state *state = plane->state;
- 	struct drm_crtc *crtc = state->crtc;
-@@ -710,20 +709,6 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	bool rb_swap;
- 	int format;
- 
--	/*
--	 * can't update plane when vop is disabled.
--	 */
--	if (WARN_ON(!crtc))
--		return;
--
--	if (WARN_ON(!vop->is_enabled))
--		return;
--
--	if (!state->visible) {
--		vop_plane_atomic_disable(plane, old_state);
--		return;
--	}
--
- 	obj = rockchip_fb_get_gem_obj(fb, 0);
- 	rk_obj = to_rockchip_obj(obj);
- 
-@@ -794,10 +779,72 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	spin_unlock(&vop->reg_lock);
- }
- 
-+static void vop_plane_atomic_update(struct drm_plane *plane,
-+				    struct drm_plane_state *old_state)
-+{
-+	struct drm_plane_state *state = plane->state;
-+	struct vop *vop = to_vop(state->crtc);
-+
-+	/*
-+	 * can't update plane when vop is disabled.
-+	 */
-+	if (WARN_ON(!state->crtc))
-+		return;
-+
-+	if (WARN_ON(!vop->is_enabled))
-+		return;
-+
-+	if (!state->visible) {
-+		vop_plane_atomic_disable(plane, old_state);
-+		return;
-+	}
-+
-+	vop_plane_update(plane);
-+}
-+
-+static int vop_plane_atomic_async_check(struct drm_plane *plane,
-+					struct drm_plane_state *state)
-+{
-+	struct drm_crtc_state *crtc_state;
-+
-+	crtc_state = drm_atomic_get_existing_crtc_state(state->state,
-+							state->crtc);
-+	if (WARN_ON(!crtc_state))
-+		return -EINVAL;
-+
-+	if (!crtc_state->active)
-+		return -EINVAL;
-+
-+	if (plane->state->crtc != state->crtc ||
-+	    plane->state->src_w != state->src_w ||
-+	    plane->state->src_h != state->src_h ||
-+	    plane->state->crtc_w != state->crtc_w ||
-+	    plane->state->crtc_h != state->crtc_h ||
-+	    !plane->state->fb ||
-+	    plane->state->fb != state->fb)
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
-+static void vop_plane_atomic_async_update(struct drm_plane *plane,
-+					  struct drm_plane_state *new_state)
-+{
-+	plane->state->src_x = new_state->src_x;
-+	plane->state->src_y = new_state->src_y;
-+	plane->state->crtc_x = new_state->crtc_x;
-+	plane->state->crtc_y = new_state->crtc_y;
-+	plane->state->fb = new_state->fb;
-+
-+	vop_plane_update(plane);
-+}
-+
- static const struct drm_plane_helper_funcs plane_helper_funcs = {
- 	.atomic_check = vop_plane_atomic_check,
- 	.atomic_update = vop_plane_atomic_update,
- 	.atomic_disable = vop_plane_atomic_disable,
-+	.atomic_async_check = vop_plane_atomic_async_check,
-+	.atomic_async_update = vop_plane_atomic_async_update,
- };
- 
- static const struct drm_plane_funcs vop_plane_funcs = {
--- 
-2.17.0
+QW0gRnJlaXRhZywgMTguIE1haSAyMDE4LCAwMzo0NTo0NiBDRVNUIHNjaHJpZWIgQnJpYW4gTm9y
+cmlzOgo+IE9uIFRodSwgTWF5IDE3LCAyMDE4IGF0IDY6NDEgUE0sIGhsIDxobEByb2NrLWNoaXBz
+LmNvbT4gd3JvdGU6Cj4gPiBPbiBUaHVyc2RheSwgTWF5IDE3LCAyMDE4IDA5OjUxIFBNLCBTZWFu
+IFBhdWwgd3JvdGU6Cj4gPj4gT24gVGh1LCBNYXkgMTcsIDIwMTggYXQgMDU6MTg6MDBQTSArMDgw
+MCwgTGluIEh1YW5nIHdyb3RlOgo+ID4+PiBEUCBmaXJtd2FyZSB1c2VzIGZpeGVkIHBoeSBjb25m
+aWcgdmFsdWVzIHRvIGRvIHRyYWluaW5nLCBidXQgc29tZQo+ID4+PiBib2FyZHMgbmVlZCB0byBh
+ZGp1c3QgdGhlc2UgdmFsdWVzIHRvIGZpdCBmb3IgdGhlaXIgdW5pcXVlIGhhcmR3YXJlCj4gPj4+
+IGRlc2lnbi4gU28gZ2V0IHBoeSBjb25maWcgdmFsdWVzIGZyb20gZHRzIGFuZCB1c2Ugc29mdHdh
+cmUgbGluayB0cmFpbmluZwo+ID4+PiBpbnN0ZWFkIG9mIHJlbHlpbmcgb24gZmlybXdhcmUsIGlm
+IHNvZnR3YXJlIHRyYWluaW5nIGZhaWwsIGtlZXAgZmlybXdhcmUKPiA+Pj4gdHJhaW5pbmcgYXMg
+YSBmYWxsYmFjayBpZiBzdyB0cmFpbmluZyBmYWlscy4KPiA+Pj4KPiA+Pj4gU2lnbmVkLW9mZi1i
+eTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiA+Pj4gU2lnbmVkLW9mZi1ieTog
+TGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNvbT4KPiA+Pj4gLS0tCj4gPj4+IENoYW5nZXMgaW4g
+djI6Cj4gPj4+IC0gdXBkYXRlIHBhdGNoIGZvbGxvd2luZyBFbnJpYyBzdWdnZXN0Cj4gPj4+IENo
+YW5nZXMgaW4gdjM6Cj4gPj4+IC0gdXNlIHZhcmlhYmxlIGZ3X3RyYWluaW5nIGluc3RlYWQgc3df
+dHJhaW5pbmdfc3VjY2Vzcwo+ID4+PiAtIGJhc2Ugb24gRFAgU1BDRSwgaWYgdHJhaW5pbmcgZmFp
+bCB1c2UgbG93ZXIgbGluayByYXRlIHRvIHJldHJ5IHRyYWluaW5nCj4gPj4+IENoYW5nZXMgaW4g
+djQ6Cj4gPj4+IC0gaW1wcm92ZSBjZG5fZHBfZ2V0X2xvd2VyX2xpbmtfcmF0ZSgpIGFuZCBjZG5f
+ZHBfc29mdHdhcmVfdHJhaW5fbGluaygpIGZvbGxvdyBTZWFuIHN1Z2dlc3QKPiA+Pj4gQ2hhbmdl
+cyBpbiB2NToKPiA+Pj4gLSBmaXggc29tZSB3aGl0ZXNwY2FlIGlzc3VlCj4gPj4+Cj4gPj4+ICAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgfCAgIDMgKy0K
+PiA+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyAgICAgICAgICB8
+ICAyNCArLQo+ID4+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oICAg
+ICAgICAgIHwgICAyICsKPiA+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxp
+bmstdHJhaW5pbmcuYyB8IDQyMCArKysrKysrKysrKysrKysrKysrKysrKysKPiA+Pj4gICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jICAgICAgICAgICB8ICAzMSArLQo+ID4+
+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmggICAgICAgICAgIHwgIDM4
+ICsrLQo+ID4+PiAgIDYgZmlsZXMgY2hhbmdlZCwgNTA1IGluc2VydGlvbnMoKyksIDEzIGRlbGV0
+aW9ucygtKQo+ID4+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYwo+ID4+Pgo+IC4uLgo+ID4+PiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1saW5rLXRyYWluaW5nLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYwo+ID4+PiBuZXcgZmlsZSBt
+b2RlIDEwMDY0NAo+ID4+PiBpbmRleCAwMDAwMDAwLi43M2MzMjkwCj4gPj4+IC0tLSAvZGV2L251
+bGwKPiA+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1saW5rLXRyYWlu
+aW5nLmMKPiA+Pj4gQEAgLTAsMCArMSw0MjAgQEAKPiA+Pj4gKy8vIFNQRFgtTGljZW5zZS1JZGVu
+dGlmaWVyOiBHUEwtMi4wCj4gPj4+ICsvKgo+ID4+PiArICogQ29weXJpZ2h0IChDKSBGdXpob3Ug
+Um9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uTHRkCj4gPj4+ICsgKiBBdXRob3I6IENocmlzIFpob25n
+IDx6eXdAcm9jay1jaGlwcy5jb20+Cj4gPj4+ICsgKi8KPiA+Pj4gKwo+ID4+PiArI2luY2x1ZGUg
+PGxpbnV4L2RldmljZS5oPgo+ID4+PiArI2luY2x1ZGUgPGxpbnV4L2RlbGF5Lmg+Cj4gPj4+ICsj
+aW5jbHVkZSA8bGludXgvcGh5L3BoeS5oPgo+ID4+PiArI2luY2x1ZGUgPHNvYy9yb2NrY2hpcC9y
+b2NrY2hpcF9waHlfdHlwZWMuaD4KPiA+Pj4gKwo+ID4+PiArI2luY2x1ZGUgImNkbi1kcC1jb3Jl
+LmgiCj4gPj4+ICsjaW5jbHVkZSAiY2RuLWRwLXJlZy5oIgo+ID4+PiArCj4gPj4+ICtzdGF0aWMg
+dm9pZCBjZG5fZHBfc2V0X3NpZ25hbF9sZXZlbHMoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKQo+
+ID4+PiArewo+ID4+PiArICAgICAgIHN0cnVjdCBjZG5fZHBfcG9ydCAqcG9ydCA9IGRwLT5wb3J0
+W2RwLT5hY3RpdmVfcG9ydF07Cj4gPj4+ICsgICAgICAgc3RydWN0IHJvY2tjaGlwX3R5cGVjX3Bo
+eSAqdGNwaHkgPSBwaHlfZ2V0X2RydmRhdGEocG9ydC0+cGh5KTsKPiA+Pgo+ID4+IFlvdSBpZ25v
+cmVkIEJyaWFuJ3MgY29tbWVudCBvbiB0aGUgcHJldmlvdXMgcGF0Y2g6Cj4gPj4gICAgVGhpcyBp
+cyBzdGlsbCBhbnRpdGhldGljYWwgdG8gdGhlIFBIWSBmcmFtZXdvcms7IHlvdSdyZSBhc3N1bWlu
+ZyB0aGF0Cj4gPj4gICAgdGhpcyBpcyBhIHBhcnRpY3VsYXIgdHlwZSBvZiBQSFkgaGVyZS4KPiA+
+Pgo+ID4+IEZXSVcsIHRoZSBtZWRpYXRlayBkcm0gZHJpdmVyIGFsc28gYXNzdW1lcyBhIGNlcnRh
+aW4gUEhZIHR5cGUuIEEgcXVpY2sgZ3JlcCBvZgo+ID4+IGRyaXZlcnMvIHNob3dzIHRoYXQgdGhl
+IG9ubHkgb3RoZXIgbm9uLXBoeS8gZHJpdmVyIHVzaW5nIHRoaXMgZnVuY3Rpb24KPiA+PiAocGlu
+Y3RybC10ZWdyYS14dXNiLmMpIGFsc28gY2FzdHMgaXQuCj4gPj4KPiA+PiBTZWFuCj4gPgo+ID4g
+VGhhbmtzIFNlYW4sIGV4Y2VwdCBwaHkgZnJhbWV3b3JrIGhhdmUgbmV3IEFQSSB0byBoYW5kbGUg
+aXQsIGkgaGF2ZSBub3QKPiA+IGlkZWEgaG93IHRvIGRvIGl0IGluIGEgYmV0dGVyIHdheS4KPiAK
+PiBXZWxsLCBpZiBNZWRpYXRlayBjYW4gZG8gaXQgZm9yIHRoZWlyIE1JUEkgYW5kIEhETUksIHRo
+ZW4gbWF5YmUgd2UganVzdCBkbyBpdC4uLgoKSSdkIHRoaW5rIHNvIHRvby4gVGhpcyBpcyBpbiBS
+b2NrY2hpcC1zcGVjaWZpYyBjb2RlIHNvIGl0IHdpbGwgYWx3YXlzIGJlCnBvc3NpYmxlIHRvIGVh
+c2lseSBnZXQgdGhlIHNvYy10eXBlIGFuZCB0aHVzIHBoeS10eXBlLCBpZiB0aGF0IGNvbWJpbmF0
+aW9uCnJlYWxseSBjaGFuZ2VzIGRvd24gdGhlIHJvYWQuCgoKSGVpa28KCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
