@@ -1,83 +1,180 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH v5 4/4] drm/rockchip: support dp training outside dp
- firmware
-Date: Thu, 17 May 2018 18:45:46 -0700
-Message-ID: <CA+ASDXN2LT6FcX_2-MM=Qu7cZOHwVK3+2rGDLGcC1SnY3BJaSw@mail.gmail.com>
-References: <1526548680-2552-1-git-send-email-hl@rock-chips.com>
- <1526548680-2552-4-git-send-email-hl@rock-chips.com>
- <20180517135136.GD3373@art_vandelay>
- <d4c38236-7455-ccd5-a1d9-a000b7d78be9@rock-chips.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [RFC PATCH 04/10] devfreq: rk3399_dmc / rockchip: pm_domains:
+ Register notify to DMC driver.
+Date: Fri, 18 May 2018 11:44:20 +0900
+Message-ID: <5AFE3E04.6060801@samsung.com>
+References: <20180514211610.26618-1-enric.balletbo@collabora.com>
+        <CGME20180514211809epcas3p47e2f67ad346dc2fc35c46465381fbffa@epcas3p4.samsung.com>
+        <20180514211610.26618-5-enric.balletbo@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <d4c38236-7455-ccd5-a1d9-a000b7d78be9@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hl <hl@rock-chips.com>
-Cc: devicetree@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, Doug Anderson <dianders@chromium.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Chris Zhong <zyw@rock-chips.com>, Daniel Vetter <daniel.vetter@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <20180514211610.26618-5-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Lin Huang <hl@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Elaine Zhang <zhangqing@rock-chips.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBNYXkgMTcsIDIwMTggYXQgNjo0MSBQTSwgaGwgPGhsQHJvY2stY2hpcHMuY29tPiB3
-cm90ZToKPiBPbiBUaHVyc2RheSwgTWF5IDE3LCAyMDE4IDA5OjUxIFBNLCBTZWFuIFBhdWwgd3Jv
-dGU6Cj4+IE9uIFRodSwgTWF5IDE3LCAyMDE4IGF0IDA1OjE4OjAwUE0gKzA4MDAsIExpbiBIdWFu
-ZyB3cm90ZToKPj4+IERQIGZpcm13YXJlIHVzZXMgZml4ZWQgcGh5IGNvbmZpZyB2YWx1ZXMgdG8g
-ZG8gdHJhaW5pbmcsIGJ1dCBzb21lCj4+PiBib2FyZHMgbmVlZCB0byBhZGp1c3QgdGhlc2UgdmFs
-dWVzIHRvIGZpdCBmb3IgdGhlaXIgdW5pcXVlIGhhcmR3YXJlCj4+PiBkZXNpZ24uIFNvIGdldCBw
-aHkgY29uZmlnIHZhbHVlcyBmcm9tIGR0cyBhbmQgdXNlIHNvZnR3YXJlIGxpbmsgdHJhaW5pbmcK
-Pj4+IGluc3RlYWQgb2YgcmVseWluZyBvbiBmaXJtd2FyZSwgaWYgc29mdHdhcmUgdHJhaW5pbmcg
-ZmFpbCwga2VlcCBmaXJtd2FyZQo+Pj4gdHJhaW5pbmcgYXMgYSBmYWxsYmFjayBpZiBzdyB0cmFp
-bmluZyBmYWlscy4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2st
-Y2hpcHMuY29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogTGluIEh1YW5nIDxobEByb2NrLWNoaXBzLmNv
-bT4KPj4+IC0tLQo+Pj4gQ2hhbmdlcyBpbiB2MjoKPj4+IC0gdXBkYXRlIHBhdGNoIGZvbGxvd2lu
-ZyBFbnJpYyBzdWdnZXN0Cj4+PiBDaGFuZ2VzIGluIHYzOgo+Pj4gLSB1c2UgdmFyaWFibGUgZndf
-dHJhaW5pbmcgaW5zdGVhZCBzd190cmFpbmluZ19zdWNjZXNzCj4+PiAtIGJhc2Ugb24gRFAgU1BD
-RSwgaWYgdHJhaW5pbmcgZmFpbCB1c2UgbG93ZXIgbGluayByYXRlIHRvIHJldHJ5IHRyYWluaW5n
-Cj4+PiBDaGFuZ2VzIGluIHY0Ogo+Pj4gLSBpbXByb3ZlIGNkbl9kcF9nZXRfbG93ZXJfbGlua19y
-YXRlKCkgYW5kIGNkbl9kcF9zb2Z0d2FyZV90cmFpbl9saW5rKCkgZm9sbG93IFNlYW4gc3VnZ2Vz
-dAo+Pj4gQ2hhbmdlcyBpbiB2NToKPj4+IC0gZml4IHNvbWUgd2hpdGVzcGNhZSBpc3N1ZQo+Pj4K
-Pj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgfCAg
-IDMgKy0KPj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgICAgICAg
-ICAgfCAgMjQgKy0KPj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgg
-ICAgICAgICAgfCAgIDIgKwo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxp
-bmstdHJhaW5pbmcuYyB8IDQyMCArKysrKysrKysrKysrKysrKysrKysrKysKPj4+ICAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYyAgICAgICAgICAgfCAgMzEgKy0KPj4+ICAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuaCAgICAgICAgICAgfCAgMzggKyst
-Cj4+PiAgIDYgZmlsZXMgY2hhbmdlZCwgNTA1IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygt
-KQo+Pj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1k
-cC1saW5rLXRyYWluaW5nLmMKPj4+Ci4uLgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9jZG4tZHAtbGluay10cmFpbmluZy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2Nkbi1kcC1saW5rLXRyYWluaW5nLmMKPj4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4+PiBp
-bmRleCAwMDAwMDAwLi43M2MzMjkwCj4+PiAtLS0gL2Rldi9udWxsCj4+PiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWxpbmstdHJhaW5pbmcuYwo+Pj4gQEAgLTAsMCArMSw0
-MjAgQEAKPj4+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAo+Pj4gKy8qCj4+
-PiArICogQ29weXJpZ2h0IChDKSBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uTHRkCj4+
-PiArICogQXV0aG9yOiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+Pj4gKyAqLwo+
-Pj4gKwo+Pj4gKyNpbmNsdWRlIDxsaW51eC9kZXZpY2UuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgv
-ZGVsYXkuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgvcGh5L3BoeS5oPgo+Pj4gKyNpbmNsdWRlIDxz
-b2Mvcm9ja2NoaXAvcm9ja2NoaXBfcGh5X3R5cGVjLmg+Cj4+PiArCj4+PiArI2luY2x1ZGUgImNk
-bi1kcC1jb3JlLmgiCj4+PiArI2luY2x1ZGUgImNkbi1kcC1yZWcuaCIKPj4+ICsKPj4+ICtzdGF0
-aWMgdm9pZCBjZG5fZHBfc2V0X3NpZ25hbF9sZXZlbHMoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
-KQo+Pj4gK3sKPj4+ICsgICAgICAgc3RydWN0IGNkbl9kcF9wb3J0ICpwb3J0ID0gZHAtPnBvcnRb
-ZHAtPmFjdGl2ZV9wb3J0XTsKPj4+ICsgICAgICAgc3RydWN0IHJvY2tjaGlwX3R5cGVjX3BoeSAq
-dGNwaHkgPSBwaHlfZ2V0X2RydmRhdGEocG9ydC0+cGh5KTsKPj4KPj4gWW91IGlnbm9yZWQgQnJp
-YW4ncyBjb21tZW50IG9uIHRoZSBwcmV2aW91cyBwYXRjaDoKPj4gICAgVGhpcyBpcyBzdGlsbCBh
-bnRpdGhldGljYWwgdG8gdGhlIFBIWSBmcmFtZXdvcms7IHlvdSdyZSBhc3N1bWluZyB0aGF0Cj4+
-ICAgIHRoaXMgaXMgYSBwYXJ0aWN1bGFyIHR5cGUgb2YgUEhZIGhlcmUuCj4+Cj4+IEZXSVcsIHRo
-ZSBtZWRpYXRlayBkcm0gZHJpdmVyIGFsc28gYXNzdW1lcyBhIGNlcnRhaW4gUEhZIHR5cGUuIEEg
-cXVpY2sgZ3JlcCBvZgo+PiBkcml2ZXJzLyBzaG93cyB0aGF0IHRoZSBvbmx5IG90aGVyIG5vbi1w
-aHkvIGRyaXZlciB1c2luZyB0aGlzIGZ1bmN0aW9uCj4+IChwaW5jdHJsLXRlZ3JhLXh1c2IuYykg
-YWxzbyBjYXN0cyBpdC4KPj4KPj4gU2Vhbgo+Cj4gVGhhbmtzIFNlYW4sIGV4Y2VwdCBwaHkgZnJh
-bWV3b3JrIGhhdmUgbmV3IEFQSSB0byBoYW5kbGUgaXQsIGkgaGF2ZSBub3QKPiBpZGVhIGhvdyB0
-byBkbyBpdCBpbiBhIGJldHRlciB3YXkuCgpXZWxsLCBpZiBNZWRpYXRlayBjYW4gZG8gaXQgZm9y
-IHRoZWlyIE1JUEkgYW5kIEhETUksIHRoZW4gbWF5YmUgd2UganVzdCBkbyBpdC4uLgoKQnJpYW4K
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+As I already commented[1], I think that it is not proper in order to pass
+the devfreq instance to power_domain driver by separate defined function
+(rockchip_pm_register_dmcfreq_notifier()).
+[1] https://patchwork.kernel.org/patch/10349571/
+
+Maybe, you could check the 'OF graph[1]' or 'device connection[2]'
+for the device connection. Unfortunately, I'm not sure what is
+best solution for this issue.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/graph.txt
+[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f2d9b66d84f3ff5ea3aff111e6a403e04fa8bf37
+
+
+On 2018년 05월 15일 06:16, Enric Balletbo i Serra wrote:
+> From: Lin Huang <hl@rock-chips.com>
+> 
+> The DMC (Dynamic Memory Interface) controller does a SiP call to the
+> Trusted Firmware-A (TF-A) to change the DDR clock frequency. When this
+> happens the TF-A writes to the PMU bus idle request register
+> (PMU_BUS_IDLE_REQ) but at the same time it is possible that the Rockchip
+> power domain driver writes to the same register. So, add a notification
+> mechanism to ensure that the DMC and the PD driver does not access to this
+> register at the same time.
+> 
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> [rewrite commit message]
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+> As I explained in the cover letter I have doubts regarding this patch
+> but I did not find another way to do it. So I will appreciate any
+> feedback on this.
+> 
+>  drivers/devfreq/rk3399_dmc.c      |  7 ++++++
+>  drivers/soc/rockchip/pm_domains.c | 36 +++++++++++++++++++++++++++++++
+>  include/soc/rockchip/rk3399_dmc.h | 14 ++++++++++++
+>  3 files changed, 57 insertions(+)
+>  create mode 100644 include/soc/rockchip/rk3399_dmc.h
+> 
+> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
+> index cc1bbca3fb15..2c4985a501cb 100644
+> --- a/drivers/devfreq/rk3399_dmc.c
+> +++ b/drivers/devfreq/rk3399_dmc.c
+> @@ -28,6 +28,7 @@
+>  #include <linux/rwsem.h>
+>  #include <linux/suspend.h>
+>  
+> +#include <soc/rockchip/rk3399_dmc.h>
+>  #include <soc/rockchip/rk3399_grf.h>
+>  #include <soc/rockchip/rockchip_sip.h>
+>  
+> @@ -443,6 +444,12 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+>  	data->dev = dev;
+>  	platform_set_drvdata(pdev, data);
+>  
+> +	rockchip_pm_register_dmcfreq_notifier(data->devfreq);
+> +	if (ret < 0) {
+> +		dev_err(dev, "Failed to register dmcfreq notifier\n");
+> +		return ret;
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+> index 53efc386b1ad..b0e66f24b3e3 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -8,6 +8,7 @@
+>   * published by the Free Software Foundation.
+>   */
+>  
+> +#include <linux/devfreq.h>
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/err.h>
+> @@ -76,9 +77,13 @@ struct rockchip_pmu {
+>  	const struct rockchip_pmu_info *info;
+>  	struct mutex mutex; /* mutex lock for pmu */
+>  	struct genpd_onecell_data genpd_data;
+> +	struct devfreq *devfreq;
+> +	struct notifier_block dmc_nb;
+>  	struct generic_pm_domain *domains[];
+>  };
+>  
+> +static struct rockchip_pmu *dmc_pmu;
+> +
+>  #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain, genpd)
+>  
+>  #define DOMAIN(pwr, status, req, idle, ack, wakeup)	\
+> @@ -601,6 +606,35 @@ static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
+>  	return error;
+>  }
+>  
+> +static int rk3399_dmcfreq_notify(struct notifier_block *nb,
+> +				 unsigned long event, void *data)
+> +{
+> +	if (event == DEVFREQ_PRECHANGE)
+> +		mutex_lock(&dmc_pmu->mutex);
+> +	else if (event == DEVFREQ_POSTCHANGE)
+> +		mutex_unlock(&dmc_pmu->mutex);
+> +
+> +	return NOTIFY_OK;
+> +}
+> +
+> +int rockchip_pm_register_dmcfreq_notifier(struct devfreq *devfreq)
+> +{
+> +	int ret;
+> +
+> +	if (!dmc_pmu)
+> +		return -EPROBE_DEFER;
+> +
+> +	dmc_pmu->devfreq = devfreq;
+> +	dmc_pmu->dmc_nb.notifier_call = rk3399_dmcfreq_notify;
+> +	ret = devm_devfreq_register_notifier(devfreq->dev.parent,
+> +					     dmc_pmu->devfreq,
+> +					     &dmc_pmu->dmc_nb,
+> +					     DEVFREQ_TRANSITION_NOTIFIER);
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(rockchip_pm_register_dmcfreq_notifier);
+> +
+>  static int rockchip_pm_domain_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -694,6 +728,8 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+>  		goto err_out;
+>  	}
+>  
+> +	dmc_pmu = pmu;
+> +
+>  	return 0;
+>  
+>  err_out:
+> diff --git a/include/soc/rockchip/rk3399_dmc.h b/include/soc/rockchip/rk3399_dmc.h
+> new file mode 100644
+> index 000000000000..031a62607f61
+> --- /dev/null
+> +++ b/include/soc/rockchip/rk3399_dmc.h
+> @@ -0,0 +1,14 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2016-2018, Fuzhou Rockchip Electronics Co., Ltd
+> + * Author: Lin Huang <hl@rock-chips.com>
+> + */
+> +
+> +#ifndef __SOC_RK3399_DMC_H
+> +#define __SOC_RK3399_DMC_H
+> +
+> +#include <linux/devfreq.h>
+> +
+> +int rockchip_pm_register_dmcfreq_notifier(struct devfreq *devfreq);
+> +
+> +#endif
+> 
+
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
