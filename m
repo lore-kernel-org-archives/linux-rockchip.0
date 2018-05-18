@@ -1,70 +1,80 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 2/4] Documentation: bindings: add phy_config for
- Rockchip USB Type-C PHY
-Date: Fri, 18 May 2018 11:41:05 -0500
-Message-ID: <20180518164105.GA14201@rob-hp-laptop>
-References: <1526548680-2552-1-git-send-email-hl@rock-chips.com>
- <1526548680-2552-2-git-send-email-hl@rock-chips.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RFC PATCH] irqchip/gic-v3: Try to distribute irq affinity to the
+ less distributed CPU
+Date: Sat, 19 May 2018 07:35:55 +0800
+Message-ID: <009df4aa-5db0-1d30-fb32-c93012271ab8@rock-chips.com>
+References: <1526636866-209210-1-git-send-email-shawn.lin@rock-chips.com>
+ <9e5f6b5e-1200-8c12-a5d0-5412142fb615@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1526548680-2552-2-git-send-email-hl@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Lin Huang <hl@rock-chips.com>
-Cc: devicetree@vger.kernel.org, airlied@linux.ie, briannorris@chromium.org, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, zyw@rock-chips.com, daniel.vetter@intel.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <9e5f6b5e-1200-8c12-a5d0-5412142fb615-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBNYXkgMTcsIDIwMTggYXQgMDU6MTc6NThQTSArMDgwMCwgTGluIEh1YW5nIHdyb3Rl
-Ogo+IElmIHdhbnQgdG8gZG8gdHJhaW5pbmcgb3V0c2lkZSBEUCBGaXJtd2FyZSwgbmVlZCBwaHkg
-dm9sdGFnZSBzd2luZwo+IGFuZCBwcmVfZW1waGFzaXMgdmFsdWUuCgoiZHQtYmluZGluZ3M6IHBo
-eTogLi4uIiBmb3IgdGhlIHN1YmplY3QgcGxlYXNlLgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBMaW4g
-SHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IENoYW5nZXMgaW4gdjI6Cj4gLSBOb25l
-IAo+IENoYW5nZXMgaW4gdjM6Cj4gLSBtb2RpZnkgcHJvcGVydHkgZGVzY3JpcHRpb24gYW5kIGFk
-ZCB0aGlzIHByb3BlcnR5IHRvIEV4YW1wbGUKPiBDaGFuZ2UgaW4gdjQ6Cj4gLSBOb25lCj4gQ2hh
-bmdlIGluIHY1Ogo+IC0gTm9uZQo+IAo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcGh5
-LXJvY2tjaGlwLXR5cGVjLnR4dCB8IDI5ICsrKysrKysrKysrKysrKysrKysrKy0KPiAgMSBmaWxl
-IGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0
-IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9waHktcm9ja2NoaXAtdHlw
-ZWMudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9waHktcm9ja2No
-aXAtdHlwZWMudHh0Cj4gaW5kZXggOTYwZGE3Zi4uYWYyOThmMiAxMDA2NDQKPiAtLS0gYS9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1yb2NrY2hpcC10eXBlYy50eHQK
-PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1yb2NrY2hp
-cC10eXBlYy50eHQKPiBAQCAtMTcsNyArMTcsOCBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICAK
-PiAgT3B0aW9uYWwgcHJvcGVydGllczoKPiAgIC0gZXh0Y29uIDogZXh0Y29uIHNwZWNpZmllciBm
-b3IgdGhlIFBvd2VyIERlbGl2ZXJ5Cj4gLQo+ICsgLSByb2NrY2hpcCxwaHlfY29uZmlnIDogQSBs
-aXN0IG9mIHZvbHRhZ2Ugc3dpbmcobXYpIGFuZCBwcmUtZW1waGFzaXMKPiArCQkJKGRCKSBwYWly
-cy4KCnJvY2tjaGlwLHBoeS1jb25maWcKCj4gIFJlcXVpcmVkIG5vZGVzIDogYSBzdWItbm9kZSBp
-cyByZXF1aXJlZCBmb3IgZWFjaCBwb3J0IHRoZSBwaHkgcHJvdmlkZXMuCj4gIAkJIFRoZSBzdWIt
-bm9kZSBuYW1lIGlzIHVzZWQgdG8gaWRlbnRpZnkgZHAgb3IgdXNiMyBwb3J0LAo+ICAJCSBhbmQg
-c2hhbGwgYmUgdGhlIGZvbGxvd2luZyBlbnRyaWVzOgo+IEBAIC01MCw2ICs1MSwxOSBAQCBFeGFt
-cGxlOgo+ICAJCQkgPCZjcnUgU1JTVF9QX1VQSFkwX1RDUEhZPjsKPiAgCQlyZXNldC1uYW1lcyA9
-ICJ1cGh5IiwgInVwaHktcGlwZSIsICJ1cGh5LXRjcGh5IjsKPiAgCj4gKwkJcm9ja2NoaXAscGh5
-X2NvbmZpZyA9PDB4MmEgMHgwMAoKc3BhY2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBeCgpBbmQgZm9ybWF0IHdpdGggaW5uZXIgPD4gKCI8IDwwIDE+IDwwIDI+IC4uLiA+IikgdG8g
-c2hvdyB0aGUgcGFpcnMuCgo+ICsJCQkweDFmIDB4MTUKPiArCQkJMHgxNCAweDIyCj4gKwkJCTB4
-MDIgMHgyYgo+ICsJCQkweDIxIDB4MDAKPiArCQkJMHgxMiAweDE1Cj4gKwkJCTB4MDIgMHgyMgo+
-ICsJCQkwIDAKPiArCQkJMHgxNSAweDAwCj4gKwkJCTB4MDAgMHgxNQo+ICsJCQkwIDAKPiArCQkJ
-MCAwPjsKClNpbmNlIHlvdSBoYXZlIDwwIDA+IG11bHRpcGxlIHRpbWVzLCBJIHByZXN1bWUgdGhl
-IGluZGV4IGlzIHNpZ25pZmljYW50IAphbmQgdGhlIGxlbmd0aCBpcyBmaXhlZC4gUGxlYXNlIGRl
-ZmluZSB0aGUgaW5kZXggbWVhbmluZyBhbmQgbGVuZ3RoIAphYm92ZS4KCj4gKwo+ICAJCXRjcGh5
-MF9kcDogZHAtcG9ydCB7Cj4gIAkJCSNwaHktY2VsbHMgPSA8MD47Cj4gIAkJfTsKPiBAQCAtNzQs
-NiArODgsMTkgQEAgRXhhbXBsZToKPiAgCQkJIDwmY3J1IFNSU1RfUF9VUEhZMV9UQ1BIWT47Cj4g
-IAkJcmVzZXQtbmFtZXMgPSAidXBoeSIsICJ1cGh5LXBpcGUiLCAidXBoeS10Y3BoeSI7Cj4gIAo+
-ICsJCXJvY2tjaGlwLHBoeV9jb25maWcgPTwweDJhIDB4MDAKPiArCQkJMHgxZiAweDE1Cj4gKwkJ
-CTB4MTQgMHgyMgo+ICsJCQkweDAyIDB4MmIKPiArCQkJMHgyMSAweDAwCj4gKwkJCTB4MTIgMHgx
-NQo+ICsJCQkweDAyIDB4MjIKPiArCQkJMCAwCj4gKwkJCTB4MTUgMHgwMAo+ICsJCQkweDAwIDB4
-MTUKPiArCQkJMCAwCj4gKwkJCTAgMD47Cj4gKwo+ICAJCXRjcGh5MV9kcDogZHAtcG9ydCB7Cj4g
-IAkJCSNwaHktY2VsbHMgPSA8MD47Cj4gIAkJfTsKPiAtLSAKPiAyLjcuNAo+IApfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Marc,
+
+On 2018/5/18 18:05, Marc Zyngier wrote:
+> Hi Shawn,
+> 
+> On 18/05/18 10:47, Shawn Lin wrote:
+>> gic-v3 seems only suppot distribute hwirq to one CPU in dispite of
+>> setting it via /proc/irq/*/smp_affinity.
+>>
+>> My RK3399 platform has 6 CPUs and I was trying to bind the emmc
+>> irq, whose hwirq is 43 and virq is 30, to all cores
+>>
+>> echo 3f > /proc/irq/30/smp_affinity
+>>
+>> but the I/O test still shows the irq was fired to CPU0. For really
+>> user case, we may try to distribute different hwirqs to different cores,
+>> with the hope of distributing to a less irq-binded core as possible.
+>> Otherwise, as current implementation, gic-v3 always distribute it
+>> to the first masked cpu, which is what cpumask_any_and actually did in
+>> practice now on my platform.
+> 
+> That's because GICv3 cannot broadcast the interrupt to all CPUs, and has
+> to pick one.
+> 
+
+yep, that's what I got from the GIC-V3 TRM. Btw, IIRC, gic-400(belonging
+to GIC-V2) on RK3288 platform could support broadcast interrupts to all
+CPUs, so I was a bit surprised to know GIC-V3 cannot do it, as v3 sounds
+should be more powerful than v2 instinctively. :)))
+
+>>
+>> So I was thinking to record how much hwirqs are distributed to each
+>> core and try to pick up the least used one.
+>>
+>> This patch is rather rough with slightly test on my board. Just for
+>> asking advice from wisdom of your. :)
+> 
+> My advice is not to do this in the kernel. Why don't you run something
+> like irqbalance? It will watch the interrupt usage and place move
+> interrupts around.
+
+I will take a look at how irqbalance work in practice. Thanks
+for your advice.
+
+
+> 
+> Thanks,
+> 
+> 	M.
+> 
+
+
+-- 
+Best Regards
+Shawn Lin
