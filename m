@@ -1,106 +1,61 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [RFC PATCH] irqchip/gic-v3: Try to distribute irq affinity to
- the less distributed CPU
-Date: Sat, 19 May 2018 11:04:06 +0100
-Message-ID: <20180519110406.0409df83@why.wild-wind.fr.eu.org>
-References: <1526636866-209210-1-git-send-email-shawn.lin@rock-chips.com>
- <9e5f6b5e-1200-8c12-a5d0-5412142fb615@arm.com>
- <009df4aa-5db0-1d30-fb32-c93012271ab8@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 01/26] drm/bridge: allow optionally specifying an owner
+ .odev device
+Date: Sat, 19 May 2018 18:07:33 +0200
+Message-ID: <21812146.Dm3JJO5T5a@phil>
+References: <20180516101510.13215-1-peda@axentia.se>
+ <20180516101510.13215-2-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <009df4aa-5db0-1d30-fb32-c93012271ab8-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180516101510.13215-2-peda@axentia.se>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Martin Donnelly <martin.donnelly@ge.com>, linux-arm-msm@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, 19 May 2018 07:35:55 +0800
-Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-
-> Hi Marc,
-> 
-> On 2018/5/18 18:05, Marc Zyngier wrote:
-> > Hi Shawn,
-> > 
-> > On 18/05/18 10:47, Shawn Lin wrote:  
-> >> gic-v3 seems only suppot distribute hwirq to one CPU in dispite of
-> >> setting it via /proc/irq/*/smp_affinity.
-> >>
-> >> My RK3399 platform has 6 CPUs and I was trying to bind the emmc
-> >> irq, whose hwirq is 43 and virq is 30, to all cores
-> >>
-> >> echo 3f > /proc/irq/30/smp_affinity
-> >>
-> >> but the I/O test still shows the irq was fired to CPU0. For really
-> >> user case, we may try to distribute different hwirqs to different cores,
-> >> with the hope of distributing to a less irq-binded core as possible.
-> >> Otherwise, as current implementation, gic-v3 always distribute it
-> >> to the first masked cpu, which is what cpumask_any_and actually did in
-> >> practice now on my platform.  
-> > 
-> > That's because GICv3 cannot broadcast the interrupt to all CPUs, and has
-> > to pick one.
-> >   
-> 
-> yep, that's what I got from the GIC-V3 TRM. Btw, IIRC, gic-400(belonging
-> to GIC-V2) on RK3288 platform could support broadcast interrupts to all
-> CPUs, so I was a bit surprised to know GIC-V3 cannot do it, as v3 sounds
-> should be more powerful than v2 instinctively. :)))
-
-The GICv2 1:N feature is really nasty, actually. It places a overhead
-on all CPUs (they will all take an interrupt and only one will
-actually service it, while the others may only see a spurious
-interrupt). So in practice, you don't really gain anything, unless your
-CPUs are completely idle. 
-
-On a busy system, you see an actual performance reduction of your
-overall throughput, for a very small benefit in latency. That's why I
-refuse to support this feature in Linux. This may be useful on latency
-sensitive systems where the software is too primitive to do an
-effective balancing, but Linux is a bit better than that. Thankfully,
-GICv3 got rid of this misfeature, and I'm making sure it won't come
-back.
-
-<rant>
-
-Overall, interrupt affinity is too critical to be left to the hardware,
-which has no knowledge of how busy the CPUs are. It is a bit like
-implementing the scheduler in HW. It works very well if your SW is
-minimal enough. Grow a bigger system, and HW scheduling is becoming a
-total pain. That's why you only see such feature on small
-microcontrollers, and not on larger CPUs.
-
-</rant>
-
-> 
-> >>
-> >> So I was thinking to record how much hwirqs are distributed to each
-> >> core and try to pick up the least used one.
-> >>
-> >> This patch is rather rough with slightly test on my board. Just for
-> >> asking advice from wisdom of your. :)  
-> > 
-> > My advice is not to do this in the kernel. Why don't you run something
-> > like irqbalance? It will watch the interrupt usage and place move
-> > interrupts around.  
-> 
-> I will take a look at how irqbalance work in practice. Thanks
-> for your advice.
-
-Let me know how it goes.
-
-Thanks,
-
-	M.
--- 
-Without deviation from the norm, progress is not possible.
+SGkgUGV0ZXIsCgpBbSBNaXR0d29jaCwgMTYuIE1haSAyMDE4LCAxMjoxNDo0NSBDRVNUIHNjaHJp
+ZWIgUGV0ZXIgUm9zaW46Cj4gQnJpZGdlIGRyaXZlcnMgY2FuIG5vdyAodGVtcG9yYXJpbHksIGlu
+IGEgdHJhbnNpdGlvbiBwaGFzZSkgc2VsZWN0IGlmCj4gdGhleSB3YW50IHRvIHByb3ZpZGUgYSBm
+dWxsIG93bmVyIGRldmljZSBvciBrZWVwIGp1c3QgcHJvdmlkaW5nIGFuCj4gb2Zfbm9kZS4KPiAK
+PiBCeSBwcm92aWRpbmcgYSBmdWxsIG93bmVyIGRldmljZSwgdGhlIGJyaWRnZSBkcml2ZXJzIG5v
+IGxvbmdlciBuZWVkCj4gdG8gcHJvdmlkZSBhbiBvZl9ub2RlIHNpbmNlIHRoYXQgbm9kZSBpcyBh
+dmFpbGFibGUgdmlhIHRoZSBvd25lcgo+IGRldmljZS4KPiAKPiBXaGVuIGFsbCBicmlkZ2UgZHJp
+dmVycyBwcm92aWRlIGFuIG93bmVyIGRldmljZSwgdGhhdCB3aWxsIGJlY29tZQo+IG1hbmRhdG9y
+eSBhbmQgdGhlIC5vZl9ub2RlIG1lbWJlciB3aWxsIGJlIHJlbW92ZWQuCj4gCj4gVGhlcmUgaXMg
+YW4gaW50ZXJhY3Rpb24gd2l0aCB0aGUgcm9ja2NoaXAgbHZkcyBkcml2ZXIsIHNpbmNlIHRoYXQK
+PiBkcml2ZXIgcGVla3MgaW50byBzb21ld2hhdCBwcml2YXRlIHBhcnRzIG9mIHRoZSBicmlkZ2Ug
+c3RydWN0IGluCj4gb3JkZXIgdG8gZmluZCBvdXQgdGhpbmdzIGFib3V0IHRoZSByZW1vdGUgYnJp
+ZGdlLiBXaGVuIHRoZXJlIGFyZQo+IG5vdyB0d28gd2F5cyB0byBnZXQgdG8gdGhlIHJlbW90ZSBi
+cmlkZ2UsIHRoZSByb2NrY2hpcCBsdmRzIGRyaXZlcgo+IGhhcyB0byBhZGFwdC4gVGhhdCBzYWlk
+LCB0aGUgY29ycmVjdCB0aGluZyB0byBkbyBmb3IgdGhlIHJvY2tjaGlwCj4gbHZkcyBkcml2ZXIg
+aXMgdG8gdXNlIHNvbWUgb3RoZXIgd2F5IHRoYW4gRFQgdG8gZmluZCB0aGluZ3Mgb3V0Cj4gYWJv
+dXQgdGhlIHJlbW90ZSBicmlkZ2UsIGJ1dCB0aGF0IGlzIG9ydGhvZ29uYWwgdG8gdGhpcyBwYXRj
+aC4KPiAKPiBSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4K
+PiBBY2tlZC1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBmZndsbC5jaD4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBQZXRlciBSb3NpbiA8cGVkYUBheGVudGlhLnNlPgoKPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKPiBpbmRleCA0YmQ5NGIxNjdkMmMuLjU1N2UwMDc5
+Yzk4ZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZk
+cy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+IEBA
+IC0zNzcsOCArMzc3LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfbHZkc19iaW5kKHN0cnVjdCBk
+ZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ICAJfQo+ICAJaWYgKGx2ZHMtPnBh
+bmVsKQo+ICAJCXJlbW90ZSA9IGx2ZHMtPnBhbmVsLT5kZXYtPm9mX25vZGU7Cj4gLQllbHNlCj4g
+KwllbHNlIGlmIChsdmRzLT5icmlkZ2UtPm9mX25vZGUpCj4gIAkJcmVtb3RlID0gbHZkcy0+YnJp
+ZGdlLT5vZl9ub2RlOwo+ICsJZWxzZQo+ICsJCXJlbW90ZSA9IGx2ZHMtPmJyaWRnZS0+b2Rldi0+
+b2Zfbm9kZTsKPiAgCWlmIChvZl9wcm9wZXJ0eV9yZWFkX3N0cmluZyhkZXYtPm9mX25vZGUsICJy
+b2NrY2hpcCxvdXRwdXQiLCAmbmFtZSkpCj4gIAkJLyogZGVmYXVsdCBzZXQgaXQgYXMgb3V0cHV0
+IHJnYiAqLwo+ICAJCWx2ZHMtPm91dHB1dCA9IERJU1BMQVlfT1VUUFVUX1JHQjsKCmZvciB0aGUg
+Um9ja2NoaXAtcGFydApBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4K
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
