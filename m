@@ -1,28 +1,33 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v5 0/2] usb: dwc2: fix isoc split in transfer issue
-Date: Sun, 20 May 2018 12:38:24 +0200
-Message-ID: <2379874.hUfS9Aq0OQ@phil>
-References: <1526031992-16565-1-git-send-email-william.wu@rock-chips.com>
+Subject: Re: [PATCH 2/3] drm/rockchip: lvds: avoid duplicating
+ drm_bridge_attach
+Date: Sun, 20 May 2018 13:48:39 +0200
+Message-ID: <2076868.NHBhtu2M9j@phil>
+References: <20180502074025.12421-1-peda@axentia.se>
+ <20180502074025.12421-3-peda@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526031992-16565-1-git-send-email-william.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: William Wu <william.wu@rock-chips.com>
-Cc: hminas@synopsys.com, felipe.balbi@linux.intel.com, gregkh@linuxfoundation.org, sergei.shtylyov@cogentembedded.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, frank.wang@rock-chips.com, huangtao@rock-chips.com, dianders@google.com, daniel.meng@rock-chips.com, John.Youn@synopsys.com, wzz@rock-chips.com, zsq@rock-chips.com, Allen.Hsu@quantatw.com, StanTsui@aopen.com, Spruce.Wu@quantatw.com, Martin.Tsai@quantatw.com, Kevin.Shai@quantatw.com, Mon-Jer.Wu@quantatw.com, Claud.Chang@quantatw.com, San.Lin@quantatw.com, Ren.Kuo@quantatw.com, davidhtwang@aopen.com, fonglin@aopen.com, stevencheng@aopen.com, tomchen@aopen.com, donchang@aopen.com, milesschofield@aopen.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180502074025.12421-3-peda@axentia.se>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Peter Rosin <peda@axentia.se>
+Cc: linux-samsung-soc@vger.kernel.org, David Airlie <airlied@linux.ie>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, dri-devel@lists.freedesktop.org, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 11. Mai 2018, 11:46:30 CEST schrieb William Wu:
-> This patch fix dma unaligned problem and data lost problem for
-> isoc split in transfer.
-> 
-> Test on rk3288 platform, use an usb hs Hub (GL852G-12) and an usb
-> fs audio device (Plantronics headset) to capture and playback.
-> 
-> William Wu (2):
->   usb: dwc2: alloc dma aligned buffer for isoc split in
->   usb: dwc2: fix isoc split in transfer with no data
-
-On rk3036, rk3188, rk3288 and rk3328
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+QW0gTWl0dHdvY2gsIDIuIE1haSAyMDE4LCAwOTo0MDoyNCBDRVNUIHNjaHJpZWIgUGV0ZXIgUm9z
+aW46Cj4gZHJtX2JyaWRnZV9hdHRhY2ggdGFrZXMgY2FyZSBvZiB0aGVzZSBhc3NpZ25tZW50cywg
+c28gdGhlcmUgaXMgbm8gbmVlZAo+IHRvIG9wZW4tY29kZSB0aGVtIGEgc2Vjb25kIHRpbWUuCj4g
+Cj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgUm9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KCmFwcGxpZWQg
+dG8gZHJtLW1pc2MtbmV4dAoKClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
