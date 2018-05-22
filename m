@@ -1,63 +1,72 @@
-From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+From: Randy Li <randy.li@rock-chips.com>
 Subject: Re: [PATCH 1/2] drm/fourcc: add a 10bits fully packed variant of NV12
-Date: Tue, 22 May 2018 11:26:12 +0200
-Message-ID: <303c89b8-e24f-cacb-c305-65d17c58c597@linux.intel.com>
+Date: Tue, 22 May 2018 17:49:07 +0800
+Message-ID: <6288544d-32de-b933-d204-b7026012fb82@rock-chips.com>
 References: <20180520171705.29690-1-ayaka@soulik.info>
  <20180520171705.29690-2-ayaka@soulik.info>
+ <303c89b8-e24f-cacb-c305-65d17c58c597@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180520171705.29690-2-ayaka@soulik.info>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <303c89b8-e24f-cacb-c305-65d17c58c597@linux.intel.com>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Randy Li <ayaka@soulik.info>, dri-devel@lists.freedesktop.org
-Cc: airlied@linux.ie, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, nicolas.dufresne@collabora.com, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Randy Li <ayaka@soulik.info>, dri-devel@lists.freedesktop.org, airlied@linux.ie, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, nicolas.dufresne@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T3AgMjAtMDUtMTggb20gMTk6MTcgc2NocmVlZiBSYW5keSBMaToKPiBUaGlzIHBpeGVsIGZvcm1h
-dCBpcyBhIGZ1bGx5IHBhY2tlZCBhbmQgMTBiaXRzIHZhcmlhbnQgb2YgTlYxMi4KPiBBIGx1bWEg
-cGl4ZWwgd291bGQgdGFrZSAxMGJpdHMgaW4gbWVtb3J5LCB3aXRob3V0IGFueQo+IGZpbGxlZCBi
-aXRzIGJldHdlZW4gcGl4ZWxzIGluIGEgc3RyaWRlLiBUaGUgY29sb3IgZ2FtdXQKPiBmb2xsb3dz
-IHRoZSBCVC4yMDIwIHN0YW5kYXJkLgo+Cj4gU2lnbmVkLW9mZi1ieTogUmFuZHkgTGkgPGF5YWth
-QHNvdWxpay5pbmZvPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJjYy5jICB8IDEg
-Kwo+ICBpbmNsdWRlL3VhcGkvZHJtL2RybV9mb3VyY2MuaCB8IDMgKysrCj4gIDIgZmlsZXMgY2hh
-bmdlZCwgNCBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Ry
-bV9mb3VyY2MuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fZm91cmNjLmMKPiBpbmRleCA1Y2E2Mzk1
-Y2Q0ZDMuLjFmNDM5NjdjNDAxMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2Zv
-dXJjYy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2MuYwo+IEBAIC0xNzMsNiAr
-MTczLDcgQEAgY29uc3Qgc3RydWN0IGRybV9mb3JtYXRfaW5mbyAqX19kcm1fZm9ybWF0X2luZm8o
-dTMyIGZvcm1hdCkKPiAgCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1VZVlksCQkuZGVwdGggPSAw
-LCAgLm51bV9wbGFuZXMgPSAxLCAuY3BwID0geyAyLCAwLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIg
-PSAxIH0sCj4gIAkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9WWVVZLAkJLmRlcHRoID0gMCwgIC5u
-dW1fcGxhbmVzID0gMSwgLmNwcCA9IHsgMiwgMCwgMCB9LCAuaHN1YiA9IDIsIC52c3ViID0gMSB9
-LAo+ICAJCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfQVlVViwJCS5kZXB0aCA9IDAsICAubnVtX3Bs
-YW5lcyA9IDEsIC5jcHAgPSB7IDQsIDAsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEsIC5oYXNf
-YWxwaGEgPSB0cnVlIH0sCj4gKwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjEyXzEwTEU0MCwJ
-LmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMiwgLmNwcCA9IHsgMSwgMiwgMCB9LCAuaHN1YiA9
-IDIsIC52c3ViID0gMiB9LApIbSwgdGhlIGNwcCB2YWx1ZSBtaWdodCBnaXZlIHByb2JsZW1zIGJl
-Y2F1c2UgaXQgcm91bmRzIGRvd24sIG5vdCBzdXJlIGhvdyB3ZSBzaG91bGQgaGFuZGxlIHRoYXQ/
-IFNldCB0byB6ZXJvPwo+ICAJfTsKPiAgCj4gIAl1bnNpZ25lZCBpbnQgaTsKPiBkaWZmIC0tZ2l0
-IGEvaW5jbHVkZS91YXBpL2RybS9kcm1fZm91cmNjLmggYi9pbmNsdWRlL3VhcGkvZHJtL2RybV9m
-b3VyY2MuaAo+IGluZGV4IGUwNDYxM2QzMGExMy4uOGVhYmYwMWU5NjZmIDEwMDY0NAo+IC0tLSBh
-L2luY2x1ZGUvdWFwaS9kcm0vZHJtX2ZvdXJjYy5oCj4gKysrIGIvaW5jbHVkZS91YXBpL2RybS9k
-cm1fZm91cmNjLmgKPiBAQCAtMTQwLDYgKzE0MCw5IEBAIGV4dGVybiAiQyIgewo+ICAjZGVmaW5l
-IERSTV9GT1JNQVRfTlY2MQkJZm91cmNjX2NvZGUoJ04nLCAnVicsICc2JywgJzEnKSAvKiAyeDEg
-c3Vic2FtcGxlZCBDYjpDciBwbGFuZSAqLwo+ICAjZGVmaW5lIERSTV9GT1JNQVRfTlYyNAkJZm91
-cmNjX2NvZGUoJ04nLCAnVicsICcyJywgJzQnKSAvKiBub24tc3Vic2FtcGxlZCBDcjpDYiBwbGFu
-ZSAqLwo+ICAjZGVmaW5lIERSTV9GT1JNQVRfTlY0MgkJZm91cmNjX2NvZGUoJ04nLCAnVicsICc0
-JywgJzInKSAvKiBub24tc3Vic2FtcGxlZCBDYjpDciBwbGFuZSAqLwo+ICsvKiBBIGZ1bGx5IHBh
-Y2tlZCB2YXJpYW50IG9mIE5WMTJfMTBMRTMyICovCj4gKyNkZWZpbmUgRFJNX0ZPUk1BVF9OVjEy
-XzEwTEU0MAlmb3VyY2NfY29kZSgnUicsICdLJywgJzInLCAnMCcpIC8qIDJ4MiBzdWJzYW1wbGVk
-IENyOkNiIHBsYW5lICovCj4gKwo+ICAKPiAgLyoKPiAgICogMyBwbGFuZSBZQ2JDcgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+
+On 05/22/2018 05:26 PM, Maarten Lankhorst wrote:
+> Op 20-05-18 om 19:17 schreef Randy Li:
+>> This pixel format is a fully packed and 10bits variant of NV12.
+>> A luma pixel would take 10bits in memory, without any
+>> filled bits between pixels in a stride. The color gamut
+>> follows the BT.2020 standard.
+>>
+>> Signed-off-by: Randy Li <ayaka@soulik.info>
+>> ---
+>>   drivers/gpu/drm/drm_fourcc.c  | 1 +
+>>   include/uapi/drm/drm_fourcc.h | 3 +++
+>>   2 files changed, 4 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/drm_fourcc.c b/drivers/gpu/drm/drm_fourcc.c
+>> index 5ca6395cd4d3..1f43967c4013 100644
+>> --- a/drivers/gpu/drm/drm_fourcc.c
+>> +++ b/drivers/gpu/drm/drm_fourcc.c
+>> @@ -173,6 +173,7 @@ const struct drm_format_info *__drm_format_info(u32 format)
+>>   		{ .format = DRM_FORMAT_UYVY,		.depth = 0,  .num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
+>>   		{ .format = DRM_FORMAT_VYUY,		.depth = 0,  .num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
+>>   		{ .format = DRM_FORMAT_AYUV,		.depth = 0,  .num_planes = 1, .cpp = { 4, 0, 0 }, .hsub = 1, .vsub = 1, .has_alpha = true },
+>> +		{ .format = DRM_FORMAT_NV12_10LE40,	.depth = 0,  .num_planes = 2, .cpp = { 1, 2, 0 }, .hsub = 2, .vsub = 2 },
+> Hm, the cpp value might give problems because it rounds down, not sure how we should handle that? Set to zero?
+It is default behavior that using the filed "cpp"  to calculate the 
+pixel in many drivers. I would suggest use a new filed called bits per 
+pixel (bpp) instead of the old cpp.
+The one used in the Gstreamer is more complex: 
+https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-GstVideoAlignment.html#GstVideoFormatInfo
+As the struct drm_format_info only a kernel internal data structure, it 
+doesn't need to update the user-space interface like libdrm.
+>>   	};
+>>   
+>>   	unsigned int i;
+>> diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
+>> index e04613d30a13..8eabf01e966f 100644
+>> --- a/include/uapi/drm/drm_fourcc.h
+>> +++ b/include/uapi/drm/drm_fourcc.h
+>> @@ -140,6 +140,9 @@ extern "C" {
+>>   #define DRM_FORMAT_NV61		fourcc_code('N', 'V', '6', '1') /* 2x1 subsampled Cb:Cr plane */
+>>   #define DRM_FORMAT_NV24		fourcc_code('N', 'V', '2', '4') /* non-subsampled Cr:Cb plane */
+>>   #define DRM_FORMAT_NV42		fourcc_code('N', 'V', '4', '2') /* non-subsampled Cb:Cr plane */
+>> +/* A fully packed variant of NV12_10LE32 */
+>> +#define DRM_FORMAT_NV12_10LE40	fourcc_code('R', 'K', '2', '0') /* 2x2 subsampled Cr:Cb plane */
+>> +
+>>   
+>>   /*
+>>    * 3 plane YCbCr
+>
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
