@@ -1,95 +1,64 @@
-From: Lin Huang <hl@rock-chips.com>
-Subject: [PATCH 2/2] ASoC: rockchip: cdn-dp sound output use spdif
-Date: Tue, 22 May 2018 16:53:42 +0800
-Message-ID: <1526979222-32478-2-git-send-email-hl@rock-chips.com>
-References: <1526979222-32478-1-git-send-email-hl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526979222-32478-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: seanpaul@chromium.org, airlied@linux.ie, zyw@rock-chips.com, dgreid@chromium.org, broonie@kernel.org
-Cc: dianders@chromium.org, briannorris@chromium.org, linux-rockchip@lists.infradead.org, heiko@sntech.de, daniel.vetter@intel.com, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, jeffy.chen@rock-chips.com, Lin Huang <hl@rock-chips.com>
+From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Subject: Re: [PATCH 1/2] drm/fourcc: add a 10bits fully packed variant of NV12
+Date: Tue, 22 May 2018 11:12:06 +0200
+Message-ID: <fd131abe-613b-b539-b35c-2ebd6c29addb@linux.intel.com>
+References: <20180520171705.29690-1-ayaka@soulik.info>
+ <20180520171705.29690-2-ayaka@soulik.info>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180520171705.29690-2-ayaka@soulik.info>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Randy Li <ayaka@soulik.info>, dri-devel@lists.freedesktop.org
+Cc: airlied@linux.ie, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, nicolas.dufresne@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-some monitors care about the parity bit in the sub-frame of I2S,
-but the cdn-dp always set this bit to "1", so these monitors
-do not have sound output if use i2s, use spdif can fix this issue.
-
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Signed-off-by: Lin Huang <hl@rock-chips.com>
----
- sound/soc/rockchip/rk3399_gru_sound.c | 46 +----------------------------------
- 1 file changed, 1 insertion(+), 45 deletions(-)
-
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 9a10181..f184168 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -220,45 +220,6 @@ static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
- 	return 0;
- }
- 
--static int rockchip_sound_cdndp_hw_params(struct snd_pcm_substream *substream,
--					  struct snd_pcm_hw_params *params)
--{
--	struct snd_soc_pcm_runtime *rtd = substream->private_data;
--	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
--	struct snd_soc_dai *codec_dai = rtd->codec_dai;
--	int mclk, ret;
--
--	/* in bypass mode, the mclk has to be one of the frequencies below */
--	switch (params_rate(params)) {
--	case 8000:
--	case 16000:
--	case 24000:
--	case 32000:
--	case 48000:
--	case 64000:
--	case 96000:
--		mclk = 12288000;
--		break;
--	case 11025:
--	case 22050:
--	case 44100:
--	case 88200:
--		mclk = 11289600;
--		break;
--	default:
--		return -EINVAL;
--	}
--
--	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
--				     SND_SOC_CLOCK_OUT);
--	if (ret < 0) {
--		dev_err(codec_dai->dev, "Can't set cpu clock out %d\n", ret);
--		return ret;
--	}
--
--	return 0;
--}
--
- static int rockchip_sound_dmic_hw_params(struct snd_pcm_substream *substream,
- 			     struct snd_pcm_hw_params *params)
- {
-@@ -293,10 +254,6 @@ static const struct snd_soc_ops rockchip_sound_da7219_ops = {
- 	.hw_params = rockchip_sound_da7219_hw_params,
- };
- 
--static const struct snd_soc_ops rockchip_sound_cdndp_ops = {
--	.hw_params = rockchip_sound_cdndp_hw_params,
--};
--
- static const struct snd_soc_ops rockchip_sound_dmic_ops = {
- 	.hw_params = rockchip_sound_dmic_hw_params,
- };
-@@ -323,8 +280,7 @@ static const struct snd_soc_dai_link rockchip_dais[] = {
- 	[DAILINK_CDNDP] = {
- 		.name = "DP",
- 		.stream_name = "DP PCM",
--		.codec_dai_name = "i2s-hifi",
--		.ops = &rockchip_sound_cdndp_ops,
-+		.codec_dai_name = "spdif-hifi",
- 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
- 			SND_SOC_DAIFMT_CBS_CFS,
- 	},
--- 
-2.7.4
+T3AgMjAtMDUtMTggb20gMTk6MTcgc2NocmVlZiBSYW5keSBMaToKPiBUaGlzIHBpeGVsIGZvcm1h
+dCBpcyBhIGZ1bGx5IHBhY2tlZCBhbmQgMTBiaXRzIHZhcmlhbnQgb2YgTlYxMi4KPiBBIGx1bWEg
+cGl4ZWwgd291bGQgdGFrZSAxMGJpdHMgaW4gbWVtb3J5LCB3aXRob3V0IGFueQo+IGZpbGxlZCBi
+aXRzIGJldHdlZW4gcGl4ZWxzIGluIGEgc3RyaWRlLiBUaGUgY29sb3IgZ2FtdXQKPiBmb2xsb3dz
+IHRoZSBCVC4yMDIwIHN0YW5kYXJkLgo+Cj4gU2lnbmVkLW9mZi1ieTogUmFuZHkgTGkgPGF5YWth
+QHNvdWxpay5pbmZvPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJjYy5jICB8IDEg
+Kwo+ICBpbmNsdWRlL3VhcGkvZHJtL2RybV9mb3VyY2MuaCB8IDMgKysrCj4gIDIgZmlsZXMgY2hh
+bmdlZCwgNCBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Ry
+bV9mb3VyY2MuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fZm91cmNjLmMKPiBpbmRleCA1Y2E2Mzk1
+Y2Q0ZDMuLjFmNDM5NjdjNDAxMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2Zv
+dXJjYy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2MuYwo+IEBAIC0xNzMsNiAr
+MTczLDcgQEAgY29uc3Qgc3RydWN0IGRybV9mb3JtYXRfaW5mbyAqX19kcm1fZm9ybWF0X2luZm8o
+dTMyIGZvcm1hdCkKPiAgCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1VZVlksCQkuZGVwdGggPSAw
+LCAgLm51bV9wbGFuZXMgPSAxLCAuY3BwID0geyAyLCAwLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIg
+PSAxIH0sCj4gIAkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9WWVVZLAkJLmRlcHRoID0gMCwgIC5u
+dW1fcGxhbmVzID0gMSwgLmNwcCA9IHsgMiwgMCwgMCB9LCAuaHN1YiA9IDIsIC52c3ViID0gMSB9
+LAo+ICAJCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfQVlVViwJCS5kZXB0aCA9IDAsICAubnVtX3Bs
+YW5lcyA9IDEsIC5jcHAgPSB7IDQsIDAsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEsIC5oYXNf
+YWxwaGEgPSB0cnVlIH0sCj4gKwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjEyXzEwTEU0MCwJ
+LmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMiwgLmNwcCA9IHsgMSwgMiwgMCB9LCAuaHN1YiA9
+IDIsIC52c3ViID0gMiB9LAo+ICAJfTsKPiAgCj4gIAl1bnNpZ25lZCBpbnQgaTsKPiBkaWZmIC0t
+Z2l0IGEvaW5jbHVkZS91YXBpL2RybS9kcm1fZm91cmNjLmggYi9pbmNsdWRlL3VhcGkvZHJtL2Ry
+bV9mb3VyY2MuaAo+IGluZGV4IGUwNDYxM2QzMGExMy4uOGVhYmYwMWU5NjZmIDEwMDY0NAo+IC0t
+LSBhL2luY2x1ZGUvdWFwaS9kcm0vZHJtX2ZvdXJjYy5oCj4gKysrIGIvaW5jbHVkZS91YXBpL2Ry
+bS9kcm1fZm91cmNjLmgKPiBAQCAtMTQwLDYgKzE0MCw5IEBAIGV4dGVybiAiQyIgewo+ICAjZGVm
+aW5lIERSTV9GT1JNQVRfTlY2MQkJZm91cmNjX2NvZGUoJ04nLCAnVicsICc2JywgJzEnKSAvKiAy
+eDEgc3Vic2FtcGxlZCBDYjpDciBwbGFuZSAqLwo+ICAjZGVmaW5lIERSTV9GT1JNQVRfTlYyNAkJ
+Zm91cmNjX2NvZGUoJ04nLCAnVicsICcyJywgJzQnKSAvKiBub24tc3Vic2FtcGxlZCBDcjpDYiBw
+bGFuZSAqLwo+ICAjZGVmaW5lIERSTV9GT1JNQVRfTlY0MgkJZm91cmNjX2NvZGUoJ04nLCAnVics
+ICc0JywgJzInKSAvKiBub24tc3Vic2FtcGxlZCBDYjpDciBwbGFuZSAqLwo+ICsvKiBBIGZ1bGx5
+IHBhY2tlZCB2YXJpYW50IG9mIE5WMTJfMTBMRTMyICovCj4gKyNkZWZpbmUgRFJNX0ZPUk1BVF9O
+VjEyXzEwTEU0MAlmb3VyY2NfY29kZSgnUicsICdLJywgJzInLCAnMCcpIC8qIDJ4MiBzdWJzYW1w
+bGVkIENyOkNiIHBsYW5lICovCj4gKwo+ICAKPiAgLyoKPiAgICogMyBwbGFuZSBZQ2JDcgoKSSB0
+aGluayB0aGUgZGVzY3JpcHRpb24gaGVyZSBpcyBzbGlnaHRseSB0b28gdGVyc2UgZm9yIGFkZGlu
+ZyBhIG5ldyBwYWNrZWQgZm9ybWF0LiBJIHRoaW5rIGl0IHdvdWxkIGJlIGJldHRlcgp0byBkZWZp
+bmUgYSBuZXcgY2F0ZWdvcnkgZm9yIDEwLWJpdCAyIHBsYW5lIGZvcm1hdHMuCgp+TWFhcnRlbgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
