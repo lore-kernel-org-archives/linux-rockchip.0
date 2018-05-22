@@ -1,74 +1,63 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 11/13] dt-bindings: power: add PX30 SoCs header for
- power-domain
-Date: Tue, 22 May 2018 12:39:12 -0500
-Message-ID: <20180522173912.GA19562@rob-hp-laptop>
-References: <1526268455-9133-1-git-send-email-zhangqing@rock-chips.com>
- <1526268724-25288-1-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2 2/5] gpio: syscon: Add gpio-syscon for rockchip
+Date: Tue, 22 May 2018 13:02:38 -0500
+Message-ID: <20180522180238.GA7328@rob-hp-laptop>
+References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn>
+ <1526615528-9707-1-git-send-email-djw@t-chip.com.cn>
+ <1526615528-9707-2-git-send-email-djw@t-chip.com.cn>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1526268724-25288-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1526615528-9707-2-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: heiko@sntech.de, mark.rutland@arm.com, devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
+To: djw@t-chip.com.cn
+Cc: linux-rockchip@lists.infradead.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 14, 2018 at 11:32:04AM +0800, Elaine Zhang wrote:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
+On Fri, May 18, 2018 at 11:52:05AM +0800, djw@t-chip.com.cn wrote:
+> From: Levin Du <djw@t-chip.com.cn>
 > 
-> According to a description from TRM, add all the power domains.
+> Some GPIOs sit in the GRF_SOC_CON registers of Rockchip SoCs,
+> which do not belong to the general pinctrl.
 > 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Adding gpio-syscon support makes controlling regulator or
+> LED using these special pins very easy by reusing existing
+> drivers, such as gpio-regulator and led-gpio.
+> 
+> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+> 
 > ---
->  include/dt-bindings/power/px30-power.h | 32 ++++++++++++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
->  create mode 100644 include/dt-bindings/power/px30-power.h
 > 
-> diff --git a/include/dt-bindings/power/px30-power.h b/include/dt-bindings/power/px30-power.h
+> Changes in v2:
+> - Rename gpio_syscon10 to gpio_mute in doc
+> 
+> Changes in v1:
+> - Refactured for general gpio-syscon usage for Rockchip SoCs.
+> - Add doc rockchip,gpio-syscon.txt
+> 
+>  .../bindings/gpio/rockchip,gpio-syscon.txt         | 41 ++++++++++++++++++++++
+>  drivers/gpio/gpio-syscon.c                         | 30 ++++++++++++++++
+>  2 files changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
 > new file mode 100644
-> index 000000000000..4ed482e80950
+> index 0000000..b1b2a67
 > --- /dev/null
-> +++ b/include/dt-bindings/power/px30-power.h
-> @@ -0,0 +1,32 @@
-> +/*
-> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+> @@ -0,0 +1,41 @@
+> +* Rockchip GPIO support for GRF_SOC_CON registers
+> +
+> +Required properties:
+> +- compatible: Should contain "rockchip,gpio-syscon".
+> +- gpio-controller: Marks the device node as a gpio controller.
+> +- #gpio-cells: Should be two. The first cell is the pin number and
+> +  the second cell is used to specify the gpio polarity:
+> +    0 = Active high,
+> +    1 = Active low.
 
-Same comments here.
+There's no need for this child node. Just make the parent node a gpio 
+controller.
 
-> + */
-> +
-> +#ifndef __DT_BINDINGS_POWER_PX30_POWER_H__
-> +#define __DT_BINDINGS_POWER_PX30_POWER_H__
-> +
-> +/* VD_CORE */
-> +#define PX30_PD_A35_0		0
-> +#define PX30_PD_A35_1		1
-> +#define PX30_PD_A35_2		2
-> +#define PX30_PD_A35_3		3
-> +#define PX30_PD_SCU		4
-> +
-> +/* VD_LOGIC */
-> +#define PX30_PD_USB		5
-> +#define PX30_PD_DDR		6
-> +#define PX30_PD_SDCARD		7
-> +#define PX30_PD_CRYPTO		8
-> +#define PX30_PD_GMAC		9
-> +#define PX30_PD_MMC_NAND	10
-> +#define PX30_PD_VPU		11
-> +#define PX30_PD_VO		12
-> +#define PX30_PD_VI		13
-> +#define PX30_PD_GPU		14
-> +
-> +/* VD_PMU */
-> +#define PX30_PD_PMU		15
-> +
-> +#endif
-> -- 
-> 1.9.1
-> 
-> 
+Rob
