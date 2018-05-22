@@ -1,42 +1,73 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 6/6] drm/rockchip: dw_hdmi: add dw-hdmi support for
- the rk3328
-Date: Tue, 22 May 2018 12:13:45 -0500
-Message-ID: <20180522171345.GA19614@rob-hp-laptop>
-References: <20180515134736.5824-1-heiko@sntech.de>
- <20180515134736.5824-7-heiko@sntech.de>
+Subject: Re: [PATCH v2 01/13] dt-bindings: power: add RK3036 SoCs header for
+ power-domain
+Date: Tue, 22 May 2018 12:34:21 -0500
+Message-ID: <20180522173421.GA12892@rob-hp-laptop>
+References: <1526268455-9133-1-git-send-email-zhangqing@rock-chips.com>
+ <1526268501-9200-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180515134736.5824-7-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+In-Reply-To: <1526268501-9200-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: heiko@sntech.de, mark.rutland@arm.com, devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBNYXkgMTUsIDIwMTggYXQgMDM6NDc6MzZQTSArMDIwMCwgSGVpa28gU3R1ZWJuZXIg
-d3JvdGU6Cj4gVGhlIHJrMzMyOCB1c2VzIGEgZHctaGRtaSBjb250cm9sbGVyIHdpdGggYW4gZXh0
-ZXJuYWwgaGRtaSBwaHkgZnJvbQo+IElubm9zaWxpY29uIHdoaWNoIHVzZXMgdGhlIGdlbmVyaWMg
-cGh5IGZyYW1ld29yayBmb3IgYWNjZXNzLgo+IEFkZCB0aGUgbmVjZXNzYXJ5IGRhdGEgYW5kIHRo
-ZSBjb21wYXRpYmxlIGZvciB0aGUgcmszMzI4IHRvIHRoZQo+IHJvY2tjaGlwIGR3LWhkbWkgZHJp
-dmVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
-Cj4gVGVzdGVkLWJ5OiBSb2JpbiBNdXJwaHkgPHJvYmluLm11cnBoeUBhcm0uY29tPgo+IC0tLQo+
-IGNoYW5nZXMgaW4gdjM6Cj4gLSByZXdvcmQgYXMgc3VnZ2VzdGVkIGJ5IFJvYiB0byBzaG93IHRo
-YXQgaXQncyBhIGR3LWhkbWkgKyBJbm5vIHBoeQo+IAo+ICAuLi4vZGlzcGxheS9yb2NrY2hpcC9k
-d19oZG1pLXJvY2tjaGlwLnR4dCAgICAgfCAgIDEgKwoKQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxy
-b2JoQGtlcm5lbC5vcmc+Cgo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2Nr
-Y2hpcC5jICAgfCAxMDYgKysrKysrKysrKysrKysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMTA3
-IGluc2VydGlvbnMoKykKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+On Mon, May 14, 2018 at 11:28:21AM +0800, Elaine Zhang wrote:
+> From: Caesar Wang <wxt@rock-chips.com>
+> 
+> According to a description from TRM, add all the power domains.
+> 
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  include/dt-bindings/power/rk3036-power.h | 27 +++++++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+>  create mode 100644 include/dt-bindings/power/rk3036-power.h
+> 
+> diff --git a/include/dt-bindings/power/rk3036-power.h b/include/dt-bindings/power/rk3036-power.h
+> new file mode 100644
+> index 000000000000..59e09f1c5af7
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rk3036-power.h
+> @@ -0,0 +1,27 @@
+> +/*
+> + * Copyright (c) 2017 Rockchip Electronics Co. Ltd.
+> + * Author: Caesar Wang <wxt@rock-chips.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+
+Use SPDX tag instead.
+
+Otherwise,
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
+> + */
+> +
+> +#ifndef __DT_BINDINGS_POWER_RK3036_POWER_H__
+> +#define __DT_BINDINGS_POWER_RK3036_POWER_H__
+> +
+> +#define RK3036_PD_MSCH		0
+> +#define RK3036_PD_CORE		1
+> +#define RK3036_PD_PERI		2
+> +#define RK3036_PD_VIO		3
+> +#define RK3036_PD_VPU		4
+> +#define RK3036_PD_GPU		5
+> +#define RK3036_PD_SYS		6
+> +
+> +#endif
+> -- 
+> 1.9.1
+> 
+> 
