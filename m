@@ -1,28 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 07/13] soc: rockchip: power-domain: add power domain support for rk3128
-Date: Wed, 23 May 2018 13:18:34 +0200
-Message-ID: <1726856.rN84jyP16b@diego>
-References: <1527058129-10260-1-git-send-email-zhangqing@rock-chips.com> <1527058270-10412-1-git-send-email-zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] clk: rockchip: remove deprecated gate-clk code and
+ dt-binding
+Date: Wed, 23 May 2018 13:20:34 +0200
+Message-ID: <4588886.sEysoKttEW@diego>
+References: <20180512143038.30447-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1527058270-10412-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180512143038.30447-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 23. Mai 2018, 08:51:10 CEST schrieb Elaine Zhang:
-> This driver is modified to support RK3128 SoC.
+Am Samstag, 12. Mai 2018, 16:30:38 CEST schrieb Heiko Stuebner:
+> Initially we tried modeling clocks via the devicetree before switching
+> to clocks declared in the clock drivers and only exporting specific
+> ids to the devicetree.
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> As the old code was in the kernel for 1-2 releases when the new mode
+> of operation was added we kept it for backwards compatibility.
+> 
+> That deprecation notice is in the binding since july 2014, so nearly
+> 4 years now and I think it's time to drop the old cruft.
+> 
+> Especially as at the time using the mainline kernel on Rockchip devices
+> was not really possible, except for experiments on the really old socs of
+> the rk3066 + rk3188 line, so there shouldn't be any devicetrees still
+> around that rely on that code.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-applied for 4.18 or 4.19 (not sure yet).
-
-Patch 8/13 had the licensing issue Rob pointed out, so while
-with your fixed SPDX tag everything should be fine, I'll give
-Rob the chance to look it over :-)
-
-
-Heiko
+applied to my Rockchip clock-tree with the 2 received tags.
