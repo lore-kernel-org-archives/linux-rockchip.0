@@ -1,38 +1,119 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v2 1/5] gpio: syscon: allow fetching syscon from parent node
-Date: Wed, 23 May 2018 10:08:15 +0200
-Message-ID: <CACRpkdYsDiTWL8MkWCP55ZnB8xoxcDFDEuuqA=Ov=opi-kyc1w@mail.gmail.com>
-References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn> <1526615528-9707-1-git-send-email-djw@t-chip.com.cn>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v7 3/5] soc: rockchip: split rockchip_typec_phy struct to
+ separate header
+Date: Wed, 23 May 2018 10:48:41 +0200
+Message-ID: <CAFqH_50+8V_CRZmdHUMGexiRb2T2cFFka0y1W7Smgf07_mBZJQ@mail.gmail.com>
+References: <1527061353-16902-1-git-send-email-hl@rock-chips.com>
+ <1527061353-16902-3-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1526615528-9707-1-git-send-email-djw@t-chip.com.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: djw@t-chip.com.cn
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1527061353-16902-3-git-send-email-hl@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Lin Huang <hl@rock-chips.com>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Chris Zhong <zyw@rock-chips.com>, daniel.vetter@intel.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, May 18, 2018 at 5:52 AM,  <djw@t-chip.com.cn> wrote:
-
-> From: Heiko Stuebner <heiko@sntech.de>
->
-> Syscon nodes can be a simple-mfd and the syscon-users then be declared
-> as children of this node. That way the parent-child structure can be
-> better represented for devices that are fully embedded in the syscon.
->
-> Therefore allow getting the syscon from the parent if neither
-> a special compatible nor a gpio,syscon-dev property is defined.
->
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Levin Du <djw@t-chip.com.cn>
-> ---
->
-> Changes in v2: None
-> Changes in v1:
-> - New: allow fetching syscon from parent node in gpio-syscon driver
-
-Regardless of what happens with the rest of the patches this
-looks sane and generally useful, so patch applied!
-
-Yours,
-Linus Walleij
+MjAxOC0wNS0yMyA5OjQyIEdNVCswMjowMCBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPjoK
+PiB3ZSBtYXkgdXNlIHJvY2tjaGlwX3BoeV90eXBlYyBzdHJ1Y3QgaW4gb3RoZXIgZHJpdmVyLCBz
+byBzcGxpdAo+IGl0IHRvIHNlcGFyYXRlIGhlYWRlci4KPgo+IFNpZ25lZC1vZmYtYnk6IExpbiBI
+dWFuZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIE5vbmUK
+PiBDaGFuZ2VzIGluIHYzOgo+IC0gTm9uZQo+IENoYW5nZXMgaW4gdjQ6Cj4gLSBOb25lCj4gQ2hh
+bmdlcyBpbiB2NToKPiAtIE5vbmUKPiBDaGFuZ2VzIGluIHY2Ogo+IC0gbmV3IHBhdGNoIGhlcmUK
+PiBDaGFuZ2VzIGluIHY3Ogo+IC0gbW92ZSBuZXcgZWxlbWVudCB0byBuZXh0IHBhdGNoCj4KPiAg
+ZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVjLmMgfCA0NyArLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQo+ICBpbmNsdWRlL3NvYy9yb2NrY2hpcC9yb2NrY2hpcF9waHlfdHlw
+ZWMuaCB8IDU1ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMiBmaWxlcyBjaGFu
+Z2VkLCA1NiBpbnNlcnRpb25zKCspLCA0NiBkZWxldGlvbnMoLSkKPiAgY3JlYXRlIG1vZGUgMTAw
+NjQ0IGluY2x1ZGUvc29jL3JvY2tjaGlwL3JvY2tjaGlwX3BoeV90eXBlYy5oCj4KPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVjLmMgYi9kcml2ZXJz
+L3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtdHlwZWMuYwo+IGluZGV4IDc2YTRiNTguLjc5NTA1
+NWYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVj
+LmMKPiArKysgYi9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtdHlwZWMuYwo+IEBA
+IC02Myw2ICs2Myw3IEBACj4KPiAgI2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KPiAgI2lu
+Y2x1ZGUgPGxpbnV4L3BoeS9waHkuaD4KPiArI2luY2x1ZGUgPHNvYy9yb2NrY2hpcC9yb2NrY2hp
+cF9waHlfdHlwZWMuaD4KPgo+ICAjZGVmaW5lIENNTl9TU01fQkFOREdBUCAgICAgICAgICAgICAg
+ICAgICAgICAgICgweDIxIDw8IDIpCj4gICNkZWZpbmUgQ01OX1NTTV9CSUFTICAgICAgICAgICAg
+ICAgICAgICgweDIyIDw8IDIpCj4gQEAgLTM0OSw1MiArMzUwLDYgQEAKPiAgI2RlZmluZSBNT0RF
+X0RGUF9VU0IgICAgICAgICAgICAgICAgICAgQklUKDEpCj4gICNkZWZpbmUgTU9ERV9ERlBfRFAg
+ICAgICAgICAgICAgICAgICAgIEJJVCgyKQo+Cj4gLXN0cnVjdCB1c2IzcGh5X3JlZyB7Cj4gLSAg
+ICAgICB1MzIgb2Zmc2V0Owo+IC0gICAgICAgdTMyIGVuYWJsZV9iaXQ7Cj4gLSAgICAgICB1MzIg
+d3JpdGVfZW5hYmxlOwo+IC19Owo+IC0KPiAtLyoqCj4gLSAqIHN0cnVjdCByb2NrY2hpcF91c2Iz
+cGh5X3BvcnRfY2ZnOiB1c2IzLXBoeSBwb3J0IGNvbmZpZ3VyYXRpb24uCj4gLSAqIEByZWc6IHRo
+ZSBiYXNlIGFkZHJlc3MgZm9yIHVzYjMtcGh5IGNvbmZpZy4KPiAtICogQHR5cGVjX2Nvbm5fZGly
+OiB0aGUgcmVnaXN0ZXIgb2YgdHlwZS1jIGNvbm5lY3RvciBkaXJlY3Rpb24uCj4gLSAqIEB1c2Iz
+dG91c2IyX2VuOiB0aGUgcmVnaXN0ZXIgb2YgdHlwZS1jIGZvcmNlIHVzYjIgdG8gdXNiMiBlbmFi
+bGUuCj4gLSAqIEBleHRlcm5hbF9wc206IHRoZSByZWdpc3RlciBvZiB0eXBlLWMgcGh5IGV4dGVy
+bmFsIHBzbSBjbG9jay4KPiAtICogQHBpcGVfc3RhdHVzOiB0aGUgcmVnaXN0ZXIgb2YgdHlwZS1j
+IHBoeSBwaXBlIHN0YXR1cy4KPiAtICogQHVzYjNfaG9zdF9kaXNhYmxlOiB0aGUgcmVnaXN0ZXIg
+b2YgdHlwZS1jIHVzYjMgaG9zdCBkaXNhYmxlLgo+IC0gKiBAdXNiM19ob3N0X3BvcnQ6IHRoZSBy
+ZWdpc3RlciBvZiB0eXBlLWMgdXNiMyBob3N0IHBvcnQuCj4gLSAqIEB1cGh5X2RwX3NlbDogdGhl
+IHJlZ2lzdGVyIG9mIHR5cGUtYyBwaHkgRFAgc2VsZWN0IGNvbnRyb2wuCj4gLSAqLwo+IC1zdHJ1
+Y3Qgcm9ja2NoaXBfdXNiM3BoeV9wb3J0X2NmZyB7Cj4gLSAgICAgICB1bnNpZ25lZCBpbnQgcmVn
+Owo+IC0gICAgICAgc3RydWN0IHVzYjNwaHlfcmVnIHR5cGVjX2Nvbm5fZGlyOwo+IC0gICAgICAg
+c3RydWN0IHVzYjNwaHlfcmVnIHVzYjN0b3VzYjJfZW47Cj4gLSAgICAgICBzdHJ1Y3QgdXNiM3Bo
+eV9yZWcgZXh0ZXJuYWxfcHNtOwo+IC0gICAgICAgc3RydWN0IHVzYjNwaHlfcmVnIHBpcGVfc3Rh
+dHVzOwo+IC0gICAgICAgc3RydWN0IHVzYjNwaHlfcmVnIHVzYjNfaG9zdF9kaXNhYmxlOwo+IC0g
+ICAgICAgc3RydWN0IHVzYjNwaHlfcmVnIHVzYjNfaG9zdF9wb3J0Owo+IC0gICAgICAgc3RydWN0
+IHVzYjNwaHlfcmVnIHVwaHlfZHBfc2VsOwo+IC19Owo+IC0KPiAtc3RydWN0IHJvY2tjaGlwX3R5
+cGVjX3BoeSB7Cj4gLSAgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4gLSAgICAgICB2b2lkIF9f
+aW9tZW0gKmJhc2U7Cj4gLSAgICAgICBzdHJ1Y3QgZXh0Y29uX2RldiAqZXh0Y29uOwo+IC0gICAg
+ICAgc3RydWN0IHJlZ21hcCAqZ3JmX3JlZ3M7Cj4gLSAgICAgICBzdHJ1Y3QgY2xrICpjbGtfY29y
+ZTsKPiAtICAgICAgIHN0cnVjdCBjbGsgKmNsa19yZWY7Cj4gLSAgICAgICBzdHJ1Y3QgcmVzZXRf
+Y29udHJvbCAqdXBoeV9yc3Q7Cj4gLSAgICAgICBzdHJ1Y3QgcmVzZXRfY29udHJvbCAqcGlwZV9y
+c3Q7Cj4gLSAgICAgICBzdHJ1Y3QgcmVzZXRfY29udHJvbCAqdGNwaHlfcnN0Owo+IC0gICAgICAg
+Y29uc3Qgc3RydWN0IHJvY2tjaGlwX3VzYjNwaHlfcG9ydF9jZmcgKnBvcnRfY2ZnczsKPiAtICAg
+ICAgIC8qIG11dGV4IHRvIHByb3RlY3QgYWNjZXNzIHRvIGluZGl2aWR1YWwgUEhZcyAqLwo+IC0g
+ICAgICAgc3RydWN0IG11dGV4IGxvY2s7Cj4gLQo+IC0gICAgICAgYm9vbCBmbGlwOwo+IC0gICAg
+ICAgdTggbW9kZTsKPiAtfTsKPiAtCj4gIHN0cnVjdCBwaHlfcmVnIHsKPiAgICAgICAgIHUxNiB2
+YWx1ZTsKPiAgICAgICAgIHUzMiBhZGRyOwo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3NvYy9yb2Nr
+Y2hpcC9yb2NrY2hpcF9waHlfdHlwZWMuaCBiL2luY2x1ZGUvc29jL3JvY2tjaGlwL3JvY2tjaGlw
+X3BoeV90eXBlYy5oCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi40YWZl
+MDM5Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2luY2x1ZGUvc29jL3JvY2tjaGlwL3JvY2tjaGlw
+X3BoeV90eXBlYy5oCj4gQEAgLTAsMCArMSw1NSBAQAo+ICsvKiBTUERYLUxpY2Vuc2UtSWRlbnRp
+ZmllcjogR1BMLTIuMCAqLwo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKEMpIEZ1emhvdSBSb2NrY2hp
+cCBFbGVjdHJvbmljcyBDby5MdGQKPiArICogQXV0aG9yOiBMaW4gSHVhbmcgPGhsQHJvY2stY2hp
+cHMuY29tPgo+ICsgKi8KPiArCj4gKyNpZm5kZWYgX19TT0NfUk9DS0NISVBfUEhZX1RZUEVDX0gK
+PiArI2RlZmluZSBfX1NPQ19ST0NLQ0hJUF9QSFlfVFlQRUNfSAo+ICsKPiArc3RydWN0IHVzYjNw
+aHlfcmVnIHsKPiArICAgICAgIHUzMiBvZmZzZXQ7Cj4gKyAgICAgICB1MzIgZW5hYmxlX2JpdDsK
+PiArICAgICAgIHUzMiB3cml0ZV9lbmFibGU7Cj4gK307Cj4gKwo+ICsvKioKPiArICogc3RydWN0
+IHJvY2tjaGlwX3VzYjNwaHlfcG9ydF9jZmc6IHVzYjMtcGh5IHBvcnQgY29uZmlndXJhdGlvbi4K
+PiArICogQHJlZzogdGhlIGJhc2UgYWRkcmVzcyBmb3IgdXNiMy1waHkgY29uZmlnLgo+ICsgKiBA
+dHlwZWNfY29ubl9kaXI6IHRoZSByZWdpc3RlciBvZiB0eXBlLWMgY29ubmVjdG9yIGRpcmVjdGlv
+bi4KPiArICogQHVzYjN0b3VzYjJfZW46IHRoZSByZWdpc3RlciBvZiB0eXBlLWMgZm9yY2UgdXNi
+MiB0byB1c2IyIGVuYWJsZS4KPiArICogQGV4dGVybmFsX3BzbTogdGhlIHJlZ2lzdGVyIG9mIHR5
+cGUtYyBwaHkgZXh0ZXJuYWwgcHNtIGNsb2NrLgo+ICsgKiBAcGlwZV9zdGF0dXM6IHRoZSByZWdp
+c3RlciBvZiB0eXBlLWMgcGh5IHBpcGUgc3RhdHVzLgo+ICsgKiBAdXNiM19ob3N0X2Rpc2FibGU6
+IHRoZSByZWdpc3RlciBvZiB0eXBlLWMgdXNiMyBob3N0IGRpc2FibGUuCj4gKyAqIEB1c2IzX2hv
+c3RfcG9ydDogdGhlIHJlZ2lzdGVyIG9mIHR5cGUtYyB1c2IzIGhvc3QgcG9ydC4KPiArICogQHVw
+aHlfZHBfc2VsOiB0aGUgcmVnaXN0ZXIgb2YgdHlwZS1jIHBoeSBEUCBzZWxlY3QgY29udHJvbC4K
+PiArICovCj4gK3N0cnVjdCByb2NrY2hpcF91c2IzcGh5X3BvcnRfY2ZnIHsKPiArICAgICAgIHVu
+c2lnbmVkIGludCByZWc7Cj4gKyAgICAgICBzdHJ1Y3QgdXNiM3BoeV9yZWcgdHlwZWNfY29ubl9k
+aXI7Cj4gKyAgICAgICBzdHJ1Y3QgdXNiM3BoeV9yZWcgdXNiM3RvdXNiMl9lbjsKPiArICAgICAg
+IHN0cnVjdCB1c2IzcGh5X3JlZyBleHRlcm5hbF9wc207Cj4gKyAgICAgICBzdHJ1Y3QgdXNiM3Bo
+eV9yZWcgcGlwZV9zdGF0dXM7Cj4gKyAgICAgICBzdHJ1Y3QgdXNiM3BoeV9yZWcgdXNiM19ob3N0
+X2Rpc2FibGU7Cj4gKyAgICAgICBzdHJ1Y3QgdXNiM3BoeV9yZWcgdXNiM19ob3N0X3BvcnQ7Cj4g
+KyAgICAgICBzdHJ1Y3QgdXNiM3BoeV9yZWcgdXBoeV9kcF9zZWw7Cj4gK307Cj4gKwo+ICtzdHJ1
+Y3Qgcm9ja2NoaXBfdHlwZWNfcGh5IHsKPiArICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldjsKPiAr
+ICAgICAgIHZvaWQgX19pb21lbSAqYmFzZTsKPiArICAgICAgIHN0cnVjdCBleHRjb25fZGV2ICpl
+eHRjb247Cj4gKyAgICAgICBzdHJ1Y3QgcmVnbWFwICpncmZfcmVnczsKPiArICAgICAgIHN0cnVj
+dCBjbGsgKmNsa19jb3JlOwo+ICsgICAgICAgc3RydWN0IGNsayAqY2xrX3JlZjsKPiArICAgICAg
+IHN0cnVjdCByZXNldF9jb250cm9sICp1cGh5X3JzdDsKPiArICAgICAgIHN0cnVjdCByZXNldF9j
+b250cm9sICpwaXBlX3JzdDsKPiArICAgICAgIHN0cnVjdCByZXNldF9jb250cm9sICp0Y3BoeV9y
+c3Q7Cj4gKyAgICAgICBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfdXNiM3BoeV9wb3J0X2NmZyAqcG9y
+dF9jZmdzOwo+ICsgICAgICAgLyogbXV0ZXggdG8gcHJvdGVjdCBhY2Nlc3MgdG8gaW5kaXZpZHVh
+bCBQSFlzICovCj4gKyAgICAgICBzdHJ1Y3QgbXV0ZXggbG9jazsKPiArICAgICAgIGJvb2wgZmxp
+cDsKPiArICAgICAgIHU4IG1vZGU7Cj4gK307Cj4gKwo+ICsjZW5kaWYKPiAtLQo+IDIuNy40Cj4K
+ClJldmlld2VkLWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xs
+YWJvcmEuY29tPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
