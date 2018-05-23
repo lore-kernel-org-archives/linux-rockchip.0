@@ -1,11 +1,13 @@
 From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 0/5] add missing of_node_put
-Date: Wed, 23 May 2018 21:07:11 +0200
-Message-ID: <1527102436-13447-1-git-send-email-Julia.Lawall@lip6.fr>
+Subject: [PATCH 5/5] drm/rockchip: lvds: add missing of_node_put
+Date: Wed, 23 May 2018 21:07:16 +0200
+Message-ID: <1527102436-13447-6-git-send-email-Julia.Lawall@lip6.fr>
+References: <1527102436-13447-1-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1527102436-13447-1-git-send-email-Julia.Lawall@lip6.fr>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -15,18 +17,33 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-pci@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 VGhlIGRldmljZSBub2RlIGl0ZXJhdG9ycyBwZXJmb3JtIGFuIG9mX25vZGVfZ2V0IG9uIGVhY2gg
 aXRlcmF0aW9uLCBzbyBhCmp1bXAgb3V0IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIG9mX25vZGVf
-cHV0LgoKLS0tCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyAgIHwg
-ICAgNCArKystCiBkcml2ZXJzL3BjaS9ob3RwbHVnL3Budl9waHAuYyAgICAgICAgICAgICAgfCAg
-ICA4ICsrKysrKy0tCiBkcml2ZXJzL3BoeS9oaXNpbGljb24vcGh5LWhpc2ktaW5uby11c2IyLmMg
-fCAgICA5ICsrKysrKystLQogZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtYXQ5MS1waW80LmMgICAg
-ICAgIHwgICAgNCArKystCiBkcml2ZXJzL3NvYy90aS9rbmF2X2RtYS5jICAgICAgICAgICAgICAg
-ICAgfCAgICAxICsKIDUgZmlsZXMgY2hhbmdlZCwgMjAgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlv
-bnMoLSkKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+cHV0LgoKVGhlIHNlbWFudGljIHBhdGNoIHRoYXQgZml4ZXMgdGhpcyBwcm9ibGVtIGlzIGFzIGZv
+bGxvd3MKKGh0dHA6Ly9jb2NjaW5lbGxlLmxpcDYuZnIpOgoKLy8gPHNtcGw+CkBACmV4cHJlc3Np
+b24gcm9vdCxlOwpsb2NhbCBpZGV4cHJlc3Npb24gY2hpbGQ7Cml0ZXJhdG9yIG5hbWUgZm9yX2Vh
+Y2hfY2hpbGRfb2Zfbm9kZTsKQEAKCiBmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHJvb3QsIGNoaWxk
+KSB7CiAgIC4uLiB3aGVuICE9IG9mX25vZGVfcHV0KGNoaWxkKQogICAgICAgd2hlbiAhPSBlID0g
+Y2hpbGQKKyAgb2Zfbm9kZV9wdXQoY2hpbGQpOwo/ICBicmVhazsKICAgLi4uCn0KLi4uIHdoZW4g
+IT0gY2hpbGQKLy8gPC9zbXBsPgoKU2lnbmVkLW9mZi1ieTogSnVsaWEgTGF3YWxsIDxKdWxpYS5M
+YXdhbGxAbGlwNi5mcj4KCi0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2
+ZHMuYyB8ICAgIDQgKysrLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxl
+dGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9s
+dmRzLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCmluZGV4IGU2
+N2Y0ZWEuLjA1MWI4YmUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9sdmRzLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMu
+YwpAQCAtMzYzLDggKzM2MywxMCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2x2ZHNfYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKIAkJb2ZfcHJvcGVydHlfcmVh
+ZF91MzIoZW5kcG9pbnQsICJyZWciLCAmZW5kcG9pbnRfaWQpOwogCQlyZXQgPSBkcm1fb2ZfZmlu
+ZF9wYW5lbF9vcl9icmlkZ2UoZGV2LT5vZl9ub2RlLCAxLCBlbmRwb2ludF9pZCwKIAkJCQkJCSAg
+Jmx2ZHMtPnBhbmVsLCAmbHZkcy0+YnJpZGdlKTsKLQkJaWYgKCFyZXQpCisJCWlmICghcmV0KSB7
+CisJCQlvZl9ub2RlX3B1dChlbmRwb2ludCk7CiAJCQlicmVhazsKKwkJfQogCX0KIAlpZiAoIWNo
+aWxkX2NvdW50KSB7CiAJCURSTV9ERVZfRVJST1IoZGV2LCAibHZkcyBwb3J0IGRvZXMgbm90IGhh
+dmUgYW55IGNoaWxkcmVuXG4iKTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbAo=
