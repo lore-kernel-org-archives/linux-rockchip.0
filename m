@@ -1,95 +1,55 @@
-From: Levin Du <djw@t-chip.com.cn>
-Subject: Re: [PATCH v2 2/5] gpio: syscon: Add gpio-syscon for rockchip
-Date: Wed, 23 May 2018 10:02:15 +0800
-Message-ID: <6ffb43dc-55a5-14eb-eb18-3a731cdaf424@t-chip.com.cn>
-References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn>
- <1526615528-9707-1-git-send-email-djw@t-chip.com.cn>
- <1526615528-9707-2-git-send-email-djw@t-chip.com.cn>
- <20180522180238.GA7328@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v3 00/13] add power domain support for Rockchip Socs
+Date: Wed, 23 May 2018 14:48:36 +0800
+Message-ID: <1527058129-10260-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180522180238.GA7328@rob-hp-laptop>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, rjw@rjwysocki.net, khilman@kernel.org, ulf.hansson@linaro.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, wxt@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018-05-23 2:02 AM, Rob Herring wrote:
-> On Fri, May 18, 2018 at 11:52:05AM +0800, djw@t-chip.com.cn wrote:
->> From: Levin Du <djw@t-chip.com.cn>
->>
->> Some GPIOs sit in the GRF_SOC_CON registers of Rockchip SoCs,
->> which do not belong to the general pinctrl.
->>
->> Adding gpio-syscon support makes controlling regulator or
->> LED using these special pins very easy by reusing existing
->> drivers, such as gpio-regulator and led-gpio.
->>
->> Signed-off-by: Levin Du <djw@t-chip.com.cn>
->>
->> ---
->>
->> Changes in v2:
->> - Rename gpio_syscon10 to gpio_mute in doc
->>
->> Changes in v1:
->> - Refactured for general gpio-syscon usage for Rockchip SoCs.
->> - Add doc rockchip,gpio-syscon.txt
->>
->>   .../bindings/gpio/rockchip,gpio-syscon.txt         | 41 ++++++++++++++++++++++
->>   drivers/gpio/gpio-syscon.c                         | 30 ++++++++++++++++
->>   2 files changed, 71 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
->>
->> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
->> new file mode 100644
->> index 0000000..b1b2a67
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
->> @@ -0,0 +1,41 @@
->> +* Rockchip GPIO support for GRF_SOC_CON registers
->> +
->> +Required properties:
->> +- compatible: Should contain "rockchip,gpio-syscon".
->> +- gpio-controller: Marks the device node as a gpio controller.
->> +- #gpio-cells: Should be two. The first cell is the pin number and
->> +  the second cell is used to specify the gpio polarity:
->> +    0 = Active high,
->> +    1 = Active low.
-> There's no need for this child node. Just make the parent node a gpio
-> controller.
->
-> Rob
-Hi Rob, it is not clear to me. Do you suggest that the grf node should 
-be a gpio controller,
-like below?
+add power domain support for RK3036/RK3128/RK3228/PX30 Soc.
+fix up the wrong value when set power domain up.
 
-+    grf: syscon at ff100000 {
-+        compatible = "rockchip,gpio-syscon", "rockchip,rk3328-grf", 
-"syscon", "simple-mfd";
-+        //...
-+        gpio-controller;
-+        #gpio-cells = <2>;
-+        gpio,syscon-dev = <&grf 0x0428 0>;
-+    };
+Change in V2:
+Fix up the commit message description and Assign author.
 
-or just reserve the following case in the doc?
+Change in V3:
+[PATCH 01/13]: The Copyright description use SPDX tag instead.
+[PATCH 05/13]: The Copyright description use SPDX tag instead.
+[PATCH 08/13]: The Copyright description use SPDX tag instead.
+[PATCH 11/13]: The Copyright description use SPDX tag instead.
 
-+    grf: syscon at ff100000 {
-+        compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
-+        //...
-+    };
-+
-+    gpio_mute: gpio-mute {
-+        compatible = "rockchip,gpio-syscon";
-+        gpio-controller;
-+        #gpio-cells = <2>;
-+        gpio,syscon-dev = <&grf 0x0428 0>;
-+    };
+Caesar Wang (3):
+  dt-bindings: power: add RK3036 SoCs header for power-domain
+  dt-bindings: add binding for rk3036 power domains
+  Soc: rockchip: power-domain: add power domain support for rk3036
 
+Elaine Zhang (6):
+  dt-bindings: power: add RK3128 SoCs header for power-domain
+  dt-bindings: add binding for rk3128 power domains
+  soc: rockchip: power-domain: add power domain support for rk3128
+  dt-bindings: power: add RK3228 SoCs header for power-domain
+  dt-bindings: add binding for rk3228 power domains
+  soc: rockchip: power-domain: add power domain support for rk3228
 
-Thanks
-Levin
+Finley Xiao (4):
+  soc: rockchip: power-domain: Fix wrong value when power up pd
+  dt-bindings: power: add PX30 SoCs header for power-domain
+  dt-bindings: add binding for px30 power domains
+  soc: rockchip: power-domain: add power domain support for px30
+
+ .../bindings/soc/rockchip/power_domain.txt         |  12 +++
+ drivers/soc/rockchip/pm_domains.c                  | 116 ++++++++++++++++++++-
+ include/dt-bindings/power/px30-power.h             |  27 +++++
+ include/dt-bindings/power/rk3036-power.h           |  13 +++
+ include/dt-bindings/power/rk3128-power.h           |  14 +++
+ include/dt-bindings/power/rk3228-power.h           |  21 ++++
+ 6 files changed, 202 insertions(+), 1 deletion(-)
+ create mode 100644 include/dt-bindings/power/px30-power.h
+ create mode 100644 include/dt-bindings/power/rk3036-power.h
+ create mode 100644 include/dt-bindings/power/rk3128-power.h
+ create mode 100644 include/dt-bindings/power/rk3228-power.h
+
+-- 
+1.9.1
