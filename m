@@ -1,43 +1,114 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: remove deprecated gate-clk code and
- dt-binding
-Date: Wed, 23 May 2018 13:20:34 +0200
-Message-ID: <4588886.sEysoKttEW@diego>
-References: <20180512143038.30447-1-heiko@sntech.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 2/5] gpio: syscon: Add gpio-syscon for rockchip
+Date: Wed, 23 May 2018 09:43:07 -0500
+Message-ID: <CAL_Jsq+_QEBWdxW=J4oVGWeokc-+nMzxzX_pgCayaxg-ehivfQ@mail.gmail.com>
+References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn>
+ <1526615528-9707-1-git-send-email-djw@t-chip.com.cn> <1526615528-9707-2-git-send-email-djw@t-chip.com.cn>
+ <20180522180238.GA7328@rob-hp-laptop> <6ffb43dc-55a5-14eb-eb18-3a731cdaf424@t-chip.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180512143038.30447-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6ffb43dc-55a5-14eb-eb18-3a731cdaf424@t-chip.com.cn>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Levin Du <djw@t-chip.com.cn>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 12. Mai 2018, 16:30:38 CEST schrieb Heiko Stuebner:
-> Initially we tried modeling clocks via the devicetree before switching
-> to clocks declared in the clock drivers and only exporting specific
-> ids to the devicetree.
-> 
-> As the old code was in the kernel for 1-2 releases when the new mode
-> of operation was added we kept it for backwards compatibility.
-> 
-> That deprecation notice is in the binding since july 2014, so nearly
-> 4 years now and I think it's time to drop the old cruft.
-> 
-> Especially as at the time using the mainline kernel on Rockchip devices
-> was not really possible, except for experiments on the really old socs of
-> the rk3066 + rk3188 line, so there shouldn't be any devicetrees still
-> around that rely on that code.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+On Tue, May 22, 2018 at 9:02 PM, Levin Du <djw@t-chip.com.cn> wrote:
+> On 2018-05-23 2:02 AM, Rob Herring wrote:
+>>
+>> On Fri, May 18, 2018 at 11:52:05AM +0800, djw@t-chip.com.cn wrote:
+>>>
+>>> From: Levin Du <djw@t-chip.com.cn>
+>>>
+>>> Some GPIOs sit in the GRF_SOC_CON registers of Rockchip SoCs,
+>>> which do not belong to the general pinctrl.
+>>>
+>>> Adding gpio-syscon support makes controlling regulator or
+>>> LED using these special pins very easy by reusing existing
+>>> drivers, such as gpio-regulator and led-gpio.
+>>>
+>>> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+>>>
+>>> ---
+>>>
+>>> Changes in v2:
+>>> - Rename gpio_syscon10 to gpio_mute in doc
+>>>
+>>> Changes in v1:
+>>> - Refactured for general gpio-syscon usage for Rockchip SoCs.
+>>> - Add doc rockchip,gpio-syscon.txt
+>>>
+>>>   .../bindings/gpio/rockchip,gpio-syscon.txt         | 41
+>>> ++++++++++++++++++++++
+>>>   drivers/gpio/gpio-syscon.c                         | 30
+>>> ++++++++++++++++
+>>>   2 files changed, 71 insertions(+)
+>>>   create mode 100644
+>>> Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>>> b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>>> new file mode 100644
+>>> index 0000000..b1b2a67
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>>> @@ -0,0 +1,41 @@
+>>> +* Rockchip GPIO support for GRF_SOC_CON registers
+>>> +
+>>> +Required properties:
+>>> +- compatible: Should contain "rockchip,gpio-syscon".
+>>> +- gpio-controller: Marks the device node as a gpio controller.
+>>> +- #gpio-cells: Should be two. The first cell is the pin number and
+>>> +  the second cell is used to specify the gpio polarity:
+>>> +    0 = Active high,
+>>> +    1 = Active low.
+>>
+>> There's no need for this child node. Just make the parent node a gpio
+>> controller.
+>>
+>> Rob
+>
+> Hi Rob, it is not clear to me. Do you suggest that the grf node should be a
+> gpio controller,
+> like below?
+>
+> +    grf: syscon at ff100000 {
+> +        compatible = "rockchip,gpio-syscon", "rockchip,rk3328-grf",
+> "syscon", "simple-mfd";
 
-applied to my Rockchip clock-tree with the 2 received tags.
+Yes, but drop "rockchip,gpio-syscon" and "simple-mfd".
+
+> +        //...
+> +        gpio-controller;
+> +        #gpio-cells = <2>;
+> +        gpio,syscon-dev = <&grf 0x0428 0>;
+
+And drop this. It may be used in the kernel, but it is not a
+documented property.
+
+> +    };
+>
+> or just reserve the following case in the doc?
+>
+> +    grf: syscon at ff100000 {
+> +        compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
+> +        //...
+> +    };
+> +
+> +    gpio_mute: gpio-mute {
+> +        compatible = "rockchip,gpio-syscon";
+> +        gpio-controller;
+> +        #gpio-cells = <2>;
+> +        gpio,syscon-dev = <&grf 0x0428 0>;
+> +    };
+>
+>
+> Thanks
+> Levin
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
