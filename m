@@ -1,54 +1,69 @@
-From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: rockchip: Add set_config callback support for
- gpiolib
-Date: Wed, 23 May 2018 11:36:29 +0200
-Message-ID: <CACRpkdaGTLgE-bApn5arUFhHT_4bJMrJN1oYk5LNW3mKSUzkjQ@mail.gmail.com>
-References: <1525334682-222918-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 00/13] add power domain support for Rockchip Socs
+Date: Wed, 23 May 2018 12:02:22 +0200
+Message-ID: <CAPDyKFrMBS5-TckrB22=S-JCAooMpg+g1BgRModMWGaoBJcJLA@mail.gmail.com>
+References: <1527058129-10260-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1525334682-222918-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1527058129-10260-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Linux PM <linux-pm@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Caesar Wang <wxt@rock-chips.com>, xxx@rock-chips.com, Feng Xiao <xf@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 3, 2018 at 10:04 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-
-> Could only support PIN_CONFIG_INPUT_DEBOUNCE now as the HW block
-> is too simple to support others. But even wrt. debounce capability,
-> it now could only support very limited period of time to satisfy the
-> real usecase. But still be useful to enable the crippled HW debounce
-> to prevent any spurious glitches from waking up the system if the
-> gpio is conguired as wakeup interrupt source.
+On 23 May 2018 at 08:48, Elaine Zhang <zhangqing@rock-chips.com> wrote:
+> add power domain support for RK3036/RK3128/RK3228/PX30 Soc.
+> fix up the wrong value when set power domain up.
 >
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> Hi Linus,
+> Change in V2:
+> Fix up the commit message description and Assign author.
 >
-> This patch comes from our early discussion of debounce of cd-gpios for sd card
-> that I pointed out that rockchip's platform lacks HW debounce support, but I
-> think it's overkilled. It does have HW debounce but not really useful as the
-> debounce period is toooo short and almost fixed. But something is better than
-> nothing, so I'd like to enable it for filtering glitches, since cd-gpios for
-> sd card is allow to configured as wakeup source. ;)
+> Change in V3:
+> [PATCH 01/13]: The Copyright description use SPDX tag instead.
+> [PATCH 05/13]: The Copyright description use SPDX tag instead.
+> [PATCH 08/13]: The Copyright description use SPDX tag instead.
+> [PATCH 11/13]: The Copyright description use SPDX tag instead.
+>
+> Caesar Wang (3):
+>   dt-bindings: power: add RK3036 SoCs header for power-domain
+>   dt-bindings: add binding for rk3036 power domains
+>   Soc: rockchip: power-domain: add power domain support for rk3036
+>
+> Elaine Zhang (6):
+>   dt-bindings: power: add RK3128 SoCs header for power-domain
+>   dt-bindings: add binding for rk3128 power domains
+>   soc: rockchip: power-domain: add power domain support for rk3128
+>   dt-bindings: power: add RK3228 SoCs header for power-domain
+>   dt-bindings: add binding for rk3228 power domains
+>   soc: rockchip: power-domain: add power domain support for rk3228
+>
+> Finley Xiao (4):
+>   soc: rockchip: power-domain: Fix wrong value when power up pd
+>   dt-bindings: power: add PX30 SoCs header for power-domain
+>   dt-bindings: add binding for px30 power domains
+>   soc: rockchip: power-domain: add power domain support for px30
+>
+>  .../bindings/soc/rockchip/power_domain.txt         |  12 +++
+>  drivers/soc/rockchip/pm_domains.c                  | 116 ++++++++++++++++++++-
+>  include/dt-bindings/power/px30-power.h             |  27 +++++
+>  include/dt-bindings/power/rk3036-power.h           |  13 +++
+>  include/dt-bindings/power/rk3128-power.h           |  14 +++
+>  include/dt-bindings/power/rk3228-power.h           |  21 ++++
+>  6 files changed, 202 insertions(+), 1 deletion(-)
+>  create mode 100644 include/dt-bindings/power/px30-power.h
+>  create mode 100644 include/dt-bindings/power/rk3036-power.h
+>  create mode 100644 include/dt-bindings/power/rk3128-power.h
+>  create mode 100644 include/dt-bindings/power/rk3228-power.h
+>
+> --
+> 1.9.1
+>
+>
 
-OK with the fat comment in there it sure makes sense like this,
-so patch applied.
+Seems like the changes in v3 is very small, so feel free to add, for the series:
 
-What I want to do is to pull in the timer-based debounce emulation
-from gpio_keys.c into GPIOLIB so this callback will fall back to
-using timers to provide debounce on all platforms and not needing
-reimplementations of debounce timers all over the kernel.
+Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-Yours,
-Linus Walleij
+Kind regards
+Uffe
