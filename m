@@ -1,211 +1,264 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH v2 7/8] iommu: Remove IOMMU_OF_DECLARE
-Date: Thu, 24 May 2018 12:50:23 -0500
-Message-ID: <20180524175024.19874-8-robh@kernel.org>
-References: <20180524175024.19874-1-robh@kernel.org>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v8 03/14] iommu/rockchip: Request irqs in
+ rk_iommu_probe()
+Date: Thu, 24 May 2018 18:02:10 -0300
+Message-ID: <b8eb41e576c4007d40223699eb951db32916b86a.camel@collabora.com>
+Reply-To: 20180323073814.5802-4-jeffy.chen@rock-chips.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180524175024.19874-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexander Graf <agraf-l3A5Bk7waGM@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, boot-architecture-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.co.uk>, Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>, Robin Murphy <robin.murphy@arm.com>
+Cc: jcliang@chromium.org, xxm@rock-chips.com, tfiga@chromium.org, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Now that we use the driver core to stop deferred probe for missing
-drivers, IOMMU_OF_DECLARE can be removed.
+Hey Jeffy, Robin:
 
-This is slightly less optimal than having a list of built-in drivers in
-that we'll now defer probe twice before giving up. This shouldn't have a
-significant impact on boot times as past discussions about deferred
-probe have given no evidence of deferred probe having a substantial
-impact.
+Some odd issues to report here.
 
-Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Cc: linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- drivers/iommu/arm-smmu-v3.c    |  2 --
- drivers/iommu/arm-smmu.c       |  7 -------
- drivers/iommu/exynos-iommu.c   |  2 --
- drivers/iommu/ipmmu-vmsa.c     |  3 ---
- drivers/iommu/msm_iommu.c      |  2 --
- drivers/iommu/of_iommu.c       | 19 +------------------
- drivers/iommu/qcom_iommu.c     |  2 --
- drivers/iommu/rockchip-iommu.c |  2 --
- include/linux/of_iommu.h       |  4 ----
- 9 files changed, 1 insertion(+), 42 deletions(-)
+On 23 March 2018 at 04:38, Jeffy Chen <jeffy.chen@rock-chips.com> wrote:
+> Move request_irq to the end of rk_iommu_probe().
+>
+> Suggested-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Acked-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>
+> Changes in v8: None
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3:
+> Loop platform_get_irq() as Robin suggested.
+>
+> Changes in v2: None
+>
+>  drivers/iommu/rockchip-iommu.c | 38 +++++++++-----------------------------
+>  1 file changed, 9 insertions(+), 29 deletions(-)
+>
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 73117dbe839e..ec3ff936aa60 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -90,8 +90,6 @@ struct rk_iommu {
+>         struct device *dev;
+>         void __iomem **bases;
+>         int num_mmu;
+> -       int *irq;
+> -       int num_irq;
+>         bool reset_disabled;
+>         struct iommu_device iommu;
+>         struct list_head node; /* entry in rk_iommu_domain.iommus */
+> @@ -830,13 +828,6 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+>
+>         iommu->domain = domain;
+>
+> -       for (i = 0; i < iommu->num_irq; i++) {
+> -               ret = devm_request_irq(iommu->dev, iommu->irq[i], rk_iommu_irq,
+> -                                      IRQF_SHARED, dev_name(dev), iommu);
+> -               if (ret)
+> -                       return ret;
+> -       }
+> -
+>         for (i = 0; i < iommu->num_mmu; i++) {
+>                 rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
+>                                rk_domain->dt_dma);
+> @@ -885,9 +876,6 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
+>         }
+>         rk_iommu_disable_stall(iommu);
+>
+> -       for (i = 0; i < iommu->num_irq; i++)
+> -               devm_free_irq(iommu->dev, iommu->irq[i], iommu);
+> -
+>         iommu->domain = NULL;
+>
+>         dev_dbg(dev, "Detached from iommu domain\n");
+> @@ -1138,7 +1126,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
+>         struct rk_iommu *iommu;
+>         struct resource *res;
+>         int num_res = pdev->num_resources;
+> -       int err, i;
+> +       int err, i, irq;
+>
+>         iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
+>         if (!iommu)
+> @@ -1165,23 +1153,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
+>         if (iommu->num_mmu == 0)
+>                 return PTR_ERR(iommu->bases[0]);
+>
+> -       iommu->num_irq = platform_irq_count(pdev);
+> -       if (iommu->num_irq < 0)
+> -               return iommu->num_irq;
+> -       if (iommu->num_irq == 0)
+> -               return -ENXIO;
+> +       i = 0;
+> +       while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
+> +               if (irq < 0)
+> +                       return irq;
+>
+> -       iommu->irq = devm_kcalloc(dev, iommu->num_irq, sizeof(*iommu->irq),
+> -                                 GFP_KERNEL);
+> -       if (!iommu->irq)
+> -               return -ENOMEM;
+> -
+> -       for (i = 0; i < iommu->num_irq; i++) {
+> -               iommu->irq[i] = platform_get_irq(pdev, i);
+> -               if (iommu->irq[i] < 0) {
+> -                       dev_err(dev, "Failed to get IRQ, %d\n", iommu->irq[i]);
+> -                       return -ENXIO;
+> -               }
+> +               err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
+> +                                      IRQF_SHARED, dev_name(dev), iommu);
+> +               if (err)
+> +                       return err;
+>         }
+>
+>         iommu->reset_disabled = device_property_read_bool(dev,
+> --
+> 2.11.0
+>
+>
 
-diff --git a/drivers/iommu/arm-smmu-v3.c b/drivers/iommu/arm-smmu-v3.c
-index 1d647104bccc..22bdabd3d8e0 100644
---- a/drivers/iommu/arm-smmu-v3.c
-+++ b/drivers/iommu/arm-smmu-v3.c
-@@ -2915,8 +2915,6 @@ static struct platform_driver arm_smmu_driver = {
- };
- module_platform_driver(arm_smmu_driver);
- 
--IOMMU_OF_DECLARE(arm_smmuv3, "arm,smmu-v3");
--
- MODULE_DESCRIPTION("IOMMU API for ARM architected SMMUv3 implementations");
- MODULE_AUTHOR("Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 69e7c60792a8..9dd7cbaa3b0c 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -2211,13 +2211,6 @@ static struct platform_driver arm_smmu_driver = {
- };
- module_platform_driver(arm_smmu_driver);
- 
--IOMMU_OF_DECLARE(arm_smmuv1, "arm,smmu-v1");
--IOMMU_OF_DECLARE(arm_smmuv2, "arm,smmu-v2");
--IOMMU_OF_DECLARE(arm_mmu400, "arm,mmu-400");
--IOMMU_OF_DECLARE(arm_mmu401, "arm,mmu-401");
--IOMMU_OF_DECLARE(arm_mmu500, "arm,mmu-500");
--IOMMU_OF_DECLARE(cavium_smmuv2, "cavium,smmu-v2");
--
- MODULE_DESCRIPTION("IOMMU API for ARM architected SMMU implementations");
- MODULE_AUTHOR("Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-index 85879cfec52f..b128cb4372d3 100644
---- a/drivers/iommu/exynos-iommu.c
-+++ b/drivers/iommu/exynos-iommu.c
-@@ -1390,5 +1390,3 @@ static int __init exynos_iommu_init(void)
- 	return ret;
- }
- core_initcall(exynos_iommu_init);
--
--IOMMU_OF_DECLARE(exynos_iommu_of, "samsung,exynos-sysmmu");
-diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-index 40ae6e87cb88..f026aa16d5f1 100644
---- a/drivers/iommu/ipmmu-vmsa.c
-+++ b/drivers/iommu/ipmmu-vmsa.c
-@@ -1108,9 +1108,6 @@ static void __exit ipmmu_exit(void)
- subsys_initcall(ipmmu_init);
- module_exit(ipmmu_exit);
- 
--IOMMU_OF_DECLARE(ipmmu_vmsa_iommu_of, "renesas,ipmmu-vmsa");
--IOMMU_OF_DECLARE(ipmmu_r8a7795_iommu_of, "renesas,ipmmu-r8a7795");
--
- MODULE_DESCRIPTION("IOMMU API for Renesas VMSA-compatible IPMMU");
- MODULE_AUTHOR("Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
-index 0d3350463a3f..27377742600d 100644
---- a/drivers/iommu/msm_iommu.c
-+++ b/drivers/iommu/msm_iommu.c
-@@ -877,7 +877,5 @@ static void __exit msm_iommu_driver_exit(void)
- subsys_initcall(msm_iommu_driver_init);
- module_exit(msm_iommu_driver_exit);
- 
--IOMMU_OF_DECLARE(msm_iommu_of, "qcom,apq8064-iommu");
--
- MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>");
-diff --git a/drivers/iommu/of_iommu.c b/drivers/iommu/of_iommu.c
-index 2aac8387717c..1904ccf9fc4e 100644
---- a/drivers/iommu/of_iommu.c
-+++ b/drivers/iommu/of_iommu.c
-@@ -27,9 +27,6 @@
- 
- #define NO_IOMMU	1
- 
--static const struct of_device_id __iommu_of_table_sentinel
--	__used __section(__iommu_of_table_end);
--
- /**
-  * of_get_dma_window - Parse *dma-window property and returns 0 if found.
-  *
-@@ -98,19 +95,6 @@ int of_get_dma_window(struct device_node *dn, const char *prefix, int index,
- }
- EXPORT_SYMBOL_GPL(of_get_dma_window);
- 
--static bool of_iommu_driver_present(struct device_node *np)
--{
--	/*
--	 * If the IOMMU still isn't ready by the time we reach init, assume
--	 * it never will be. We don't want to defer indefinitely, nor attempt
--	 * to dereference __iommu_of_table after it's been freed.
--	 */
--	if (system_state >= SYSTEM_RUNNING)
--		return false;
--
--	return of_match_node(&__iommu_of_table, np);
--}
--
- static int of_iommu_xlate(struct device *dev,
- 			  struct of_phandle_args *iommu_spec)
- {
-@@ -120,8 +104,7 @@ static int of_iommu_xlate(struct device *dev,
- 
- 	ops = iommu_ops_from_fwnode(fwnode);
- 	if ((ops && !ops->of_xlate) ||
--	    !of_device_is_available(iommu_spec->np) ||
--	    (!ops && !of_iommu_driver_present(iommu_spec->np)))
-+	    !of_device_is_available(iommu_spec->np))
- 		return NO_IOMMU;
- 
- 	err = iommu_fwspec_init(dev, &iommu_spec->np->fwnode, ops);
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 65b9c99707f8..fa0f6c39a144 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -947,7 +947,5 @@ static void __exit qcom_iommu_exit(void)
- module_init(qcom_iommu_init);
- module_exit(qcom_iommu_exit);
- 
--IOMMU_OF_DECLARE(qcom_iommu_dev, "qcom,msm-iommu-v1");
--
- MODULE_DESCRIPTION("IOMMU API for QCOM IOMMU v1 implementations");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 0468acfa131f..90d37f29c24c 100644
+Odd as it may be, this patch is causing problems with DRM,
+on any recent kernel, either linux-next or v4.17-rc5 shows
+the same issue.
+
+I debugged this issue on a RK3288 Rock2 board connected to
+a Samsung TV, but I also saw this warning on a RK3399 board.
+
+The issue is a several-second stall at:
+
+[..]
+[    2.091953] rockchip-drm display-subsystem: bound ff930000.vop (ops 0xc078ebb4)
+[    2.100310] rockchip-drm display-subsystem: bound ff940000.vop (ops 0xc078ebb4)
+[    2.108550] dwhdmi-rockchip ff980000.hdmi: Detected HDMI TX controller v2.00a with HDCP (DWC MHL PHY)
+[    2.119307] rockchip-drm display-subsystem: bound ff980000.hdmi (ops 0xc0790860)
+[    2.127588] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+[    2.134988] [drm] No driver support for vblank timestamp query.
+[boot stalls for several seconds]
+
+followed by this warning:
+
+[    2.251400] ------------[ cut here ]------------
+[    2.251465] WARNING: CPU: 2 PID: 38 at /home/zeta/repos/linux/next/kernel/irq/manage.c:525 enable_irq+0x34/0x6c
+[    2.251479] Unbalanced enable for IRQ 49
+[    2.251490] Modules linked in:
+[    2.251537] CPU: 2 PID: 38 Comm: kworker/2:1 Not tainted 4.17.0-rc5-00001-g5bc6dc2896ec-dirty #31
+[    2.251551] Hardware name: Rockchip (Device Tree)
+[    2.251595] Workqueue: events deferred_probe_work_func
+[    2.251681] [<c0110984>] (unwind_backtrace) from [<c010ca98>] (show_stack+0x10/0x14)
+[    2.251743] [<c010ca98>] (show_stack) from [<c06c7100>] (dump_stack+0x94/0xa8)
+[    2.251807] [<c06c7100>] (dump_stack) from [<c0122140>] (__warn+0xf8/0x110)
+[    2.251868] [<c0122140>] (__warn) from [<c0122190>] (warn_slowpath_fmt+0x38/0x48)
+[    2.251927] [<c0122190>] (warn_slowpath_fmt) from [<c01722d0>] (enable_irq+0x34/0x6c)
+[    2.251986] [<c01722d0>] (enable_irq) from [<c04afc34>] (vop_crtc_atomic_enable+0x2c4/0x7b4)
+[    2.252053] [<c04afc34>] (vop_crtc_atomic_enable) from [<c047e20c>]
+(drm_atomic_helper_commit_modeset_enables+0x170/0x19c)
+[    2.252119] [<c047e20c>] (drm_atomic_helper_commit_modeset_enables) from [<c0480cfc>]
+(drm_atomic_helper_commit_tail_rpm+0x24/0x64)
+[    2.252175] [<c0480cfc>] (drm_atomic_helper_commit_tail_rpm) from [<c0480ca4>] (commit_tail+0x40/0x6c)
+[    2.252230] [<c0480ca4>] (commit_tail) from [<c0480eb8>] (drm_atomic_helper_commit+0x118/0x120)
+[    2.252291] [<c0480eb8>] (drm_atomic_helper_commit) from [<c049b02c>] (drm_atomic_commit+0x4c/0x50)
+[    2.252357] [<c049b02c>] (drm_atomic_commit) from [<c0483440>] (restore_fbdev_mode_atomic+0x1b8/0x210)
+[    2.252420] [<c0483440>] (restore_fbdev_mode_atomic) from [<c0486698>]
+(drm_fb_helper_restore_fbdev_mode_unlocked+0x4c/0x90)
+[    2.252469] [<c0486698>] (drm_fb_helper_restore_fbdev_mode_unlocked) from [<c048670c>]
+(drm_fb_helper_set_par+0x30/0x54)
+[    2.252520] [<c048670c>] (drm_fb_helper_set_par) from [<c04014c4>] (fbcon_init+0x474/0x4b0)
+[    2.252569] [<c04014c4>] (fbcon_init) from [<c044f358>] (visual_init+0x9c/0xe4)
+[    2.252617] [<c044f358>] (visual_init) from [<c045129c>] (do_bind_con_driver+0x140/0x2bc)
+[    2.252666] [<c045129c>] (do_bind_con_driver) from [<c045172c>] (do_take_over_console+0x12c/0x188)
+[    2.252714] [<c045172c>] (do_take_over_console) from [<c0401580>] (do_fbcon_takeover+0x80/0xd8)
+[    2.252775] [<c0401580>] (do_fbcon_takeover) from [<c0141818>] (notifier_call_chain+0x44/0x84)
+[    2.252832] [<c0141818>] (notifier_call_chain) from [<c0141b0c>] (__blocking_notifier_call_chain+0x48/0x60)
+[    2.252877] [<c0141b0c>] (__blocking_notifier_call_chain) from [<c0141b3c>] (blocking_notifier_call_chain+0x18/0x20)
+[    2.252935] [<c0141b3c>] (blocking_notifier_call_chain) from [<c03f9654>] (register_framebuffer+0x1fc/0x2bc)
+[    2.252996] [<c03f9654>] (register_framebuffer) from [<c048625c>]
+(__drm_fb_helper_initial_config_and_unlock+0x21c/0x3f0)
+[    2.253054] [<c048625c>] (__drm_fb_helper_initial_config_and_unlock) from [<c04b2210>]
+(rockchip_drm_fbdev_init+0x68/0xf0)
+[    2.253105] [<c04b2210>] (rockchip_drm_fbdev_init) from [<c04ad688>] (rockchip_drm_bind+0x184/0x1dc)
+[    2.253163] [<c04ad688>] (rockchip_drm_bind) from [<c04c2a94>] (try_to_bring_up_master+0x148/0x188)
+[    2.253226] [<c04c2a94>] (try_to_bring_up_master) from [<c04c2cdc>] (component_master_add_with_match+0xc4/0xf8)
+[    2.253282] [<c04c2cdc>] (component_master_add_with_match) from [<c04ad8c8>]
+(rockchip_drm_platform_probe+0x1a0/0x268)
+[    2.253336] [<c04ad8c8>] (rockchip_drm_platform_probe) from [<c04c9a4c>] (platform_drv_probe+0x4c/0xac)
+[    2.253390] [<c04c9a4c>] (platform_drv_probe) from [<c04c7dd0>] (driver_probe_device+0x23c/0x33c)
+[    2.253440] [<c04c7dd0>] (driver_probe_device) from [<c04c629c>] (bus_for_each_drv+0x58/0x8c)
+[    2.253486] [<c04c629c>] (bus_for_each_drv) from [<c04c7ab8>] (__device_attach+0xb0/0x110)
+[    2.253532] [<c04c7ab8>] (__device_attach) from [<c04c704c>] (bus_probe_device+0x84/0x8c)
+[    2.253577] [<c04c704c>] (bus_probe_device) from [<c04c74e0>] (deferred_probe_work_func+0x44/0x13c)
+[    2.253637] [<c04c74e0>] (deferred_probe_work_func) from [<c013ad90>] (process_one_work+0x14c/0x42c)
+[    2.253699] [<c013ad90>] (process_one_work) from [<c013b298>] (worker_thread+0x228/0x538)
+[    2.253755] [<c013b298>] (worker_thread) from [<c01402d8>] (kthread+0x12c/0x15c)
+[    2.253802] [<c01402d8>] (kthread) from [<c01010e8>] (ret_from_fork+0x14/0x2c)
+[    2.253822] Exception stack(0xee3affb0 to 0xee3afff8)
+[    2.253855] ffa0:                                     00000000 00000000 00000000 00000000
+[    2.253896] ffc0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[    2.253930] ffe0: 00000000 00000000 00000000 00000000 00000013 00000000
+[    2.253951] ---[ end trace b95f9f3d3a06357b ]---
+
+Git-bisection wasn't easy because of regressions in the middle
+of the merge, so I did some manual bisection until I found
+this patch!
+
+There are two workaround for this issue:
+
+1) Don't request the interrupts in the iommu driver:
+
 --- a/drivers/iommu/rockchip-iommu.c
 +++ b/drivers/iommu/rockchip-iommu.c
-@@ -1284,8 +1284,6 @@ static int __init rk_iommu_init(void)
- }
- subsys_initcall(rk_iommu_init);
+@@ -1152,17 +1152,6 @@ static int rk_iommu_probe(struct platform_device *pdev)
+        if (iommu->num_mmu == 0)
+                return PTR_ERR(iommu->bases[0]);
  
--IOMMU_OF_DECLARE(rk_iommu_of, "rockchip,iommu");
+-       i = 0;
+-       while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
+-               if (irq < 0)
+-                       return irq;
 -
- MODULE_DESCRIPTION("IOMMU API for Rockchip");
- MODULE_AUTHOR("Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org> and Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>");
- MODULE_ALIAS("platform:rockchip-iommu");
-diff --git a/include/linux/of_iommu.h b/include/linux/of_iommu.h
-index 4fa654e4b5a9..f3d40dd7bb66 100644
---- a/include/linux/of_iommu.h
-+++ b/include/linux/of_iommu.h
-@@ -32,8 +32,4 @@ static inline const struct iommu_ops *of_iommu_configure(struct device *dev,
+-               err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
+-                                      IRQF_SHARED, dev_name(dev), iommu);
+-               if (err)
+-                       return err;
+-       }
+-
+
+2) Don't disable/enable interrupts in the vop driver:
+
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -549,8 +549,6 @@ static int vop_enable(struct drm_crtc *crtc)
  
- #endif	/* CONFIG_OF_IOMMU */
+        spin_unlock(&vop->reg_lock);
  
--extern struct of_device_id __iommu_of_table;
+-       enable_irq(vop->irq);
 -
--#define IOMMU_OF_DECLARE(name, compat)	OF_DECLARE_1(iommu, name, compat, NULL)
+        drm_crtc_vblank_on(crtc);
+ 
+        return 0;
+@@ -596,8 +594,6 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
+ 
+        vop_dsp_hold_valid_irq_disable(vop);
+ 
+-       disable_irq(vop->irq);
 -
- #endif /* __OF_IOMMU_H */
--- 
-2.17.0
+        vop->is_enabled = false;
+ 
+        /*
+@@ -1586,9 +1582,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+        if (ret)
+                goto err_disable_pm_runtime;
+ 
+-       /* IRQ is initially disabled; it gets enabled in power_on */
+-       disable_irq(vop->irq);
+-
+
+Any of these remove the stall and the warning.
+
+Ideas?
+
+Confused as hell,
+Eze
