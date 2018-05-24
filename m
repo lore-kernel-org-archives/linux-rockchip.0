@@ -1,76 +1,207 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] Rockchip driver updates for 4.18 round 2
-Date: Thu, 24 May 2018 15:20:54 +0200
-Message-ID: <2574457.1saVLptjF6@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 2/5] gpio: syscon: Add gpio-syscon for rockchip
+Date: Thu, 24 May 2018 08:38:48 -0500
+Message-ID: <CAL_JsqKO+1KpESJ1E58QcfWoNOpfVw6M_JVkAruZhFF5thEg7g@mail.gmail.com>
+References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn>
+ <1685755.J6GI985WX3@diego> <CAL_Jsq+VBspzCaLD2Wy=fyC-S+LKGZbVsB+b+Etkx91ioXOCuQ@mail.gmail.com>
+ <3307687.qJF5Pr3uHG@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3307687.qJF5Pr3uHG@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Levin Du <djw@t-chip.com.cn>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin Olof,
+On Thu, May 24, 2018 at 7:07 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Hi Rob,
+>
+> Am Mittwoch, 23. Mai 2018, 21:53:53 CEST schrieb Rob Herring:
+>> On Wed, May 23, 2018 at 10:12 AM, Heiko St=C3=BCbner <heiko@sntech.de> w=
+rote:
+>> > Am Mittwoch, 23. Mai 2018, 16:43:07 CEST schrieb Rob Herring:
+>> >> On Tue, May 22, 2018 at 9:02 PM, Levin Du <djw@t-chip.com.cn> wrote:
+>> >> > On 2018-05-23 2:02 AM, Rob Herring wrote:
+>> >> >> On Fri, May 18, 2018 at 11:52:05AM +0800, djw@t-chip.com.cn wrote:
+>> >> >>> From: Levin Du <djw@t-chip.com.cn>
+>> >> >>>
+>> >> >>> Some GPIOs sit in the GRF_SOC_CON registers of Rockchip SoCs,
+>> >> >>> which do not belong to the general pinctrl.
+>> >> >>>
+>> >> >>> Adding gpio-syscon support makes controlling regulator or
+>> >> >>> LED using these special pins very easy by reusing existing
+>> >> >>> drivers, such as gpio-regulator and led-gpio.
+>> >> >>>
+>> >> >>> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+>> >> >>>
+>> >> >>> ---
+>> >> >>>
+>> >> >>> Changes in v2:
+>> >> >>> - Rename gpio_syscon10 to gpio_mute in doc
+>> >> >>>
+>> >> >>> Changes in v1:
+>> >> >>> - Refactured for general gpio-syscon usage for Rockchip SoCs.
+>> >> >>> - Add doc rockchip,gpio-syscon.txt
+>> >> >>>
+>> >> >>>   .../bindings/gpio/rockchip,gpio-syscon.txt         | 41
+>> >> >>>
+>> >> >>> ++++++++++++++++++++++
+>> >> >>>
+>> >> >>>   drivers/gpio/gpio-syscon.c                         | 30
+>> >> >>>
+>> >> >>> ++++++++++++++++
+>> >> >>>
+>> >> >>>   2 files changed, 71 insertions(+)
+>> >> >>>   create mode 100644
+>> >> >>>
+>> >> >>> Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>> >> >>>
+>> >> >>> diff --git
+>> >> >>> a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>> >> >>> b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+>> >> >>> new file mode 100644
+>> >> >>> index 0000000..b1b2a67
+>> >> >>> --- /dev/null
+>> >> >>> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon=
+.txt
+>> >> >>> @@ -0,0 +1,41 @@
+>> >> >>> +* Rockchip GPIO support for GRF_SOC_CON registers
+>> >> >>> +
+>> >> >>> +Required properties:
+>> >> >>> +- compatible: Should contain "rockchip,gpio-syscon".
+>> >> >>> +- gpio-controller: Marks the device node as a gpio controller.
+>> >> >>> +- #gpio-cells: Should be two. The first cell is the pin number a=
+nd
+>> >> >>> +  the second cell is used to specify the gpio polarity:
+>> >> >>> +    0 =3D Active high,
+>> >> >>> +    1 =3D Active low.
+>> >> >>
+>> >> >> There's no need for this child node. Just make the parent node a g=
+pio
+>> >> >> controller.
+>> >> >>
+>> >> >> Rob
+>> >> >
+>> >> > Hi Rob, it is not clear to me. Do you suggest that the grf node sho=
+uld be
+>> >> > a
+>> >> > gpio controller,
+>> >> > like below?
+>> >> >
+>> >> > +    grf: syscon at ff100000 {
+>> >> > +        compatible =3D "rockchip,gpio-syscon", "rockchip,rk3328-gr=
+f",
+>> >> > "syscon", "simple-mfd";
+>> >>
+>> >> Yes, but drop "rockchip,gpio-syscon" and "simple-mfd".
+>> >
+>> > I would disagree quite a bit here. The grf are the "general register f=
+iles",
+>> > a bunch of registers used for quite a lot of things, and so it seems
+>> > among other users, also a gpio-controller for some more random pins
+>> > not controlled through the regular gpio controllers.
+>> >
+>> > For a more fully stocked grf, please see
+>> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tre=
+e/arch/arm/boot/dts/rk3288.dtsi#n855
+>> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tre=
+e/arch/arm64/boot/dts/rockchip/rk3399.dtsi#n1338
+>> >
+>> > So the gpio controller should definitly also be a subnode.
+>>
+>> Sigh, yes, if there are a bunch of functions needing subnodes like the
+>> above, then yes that makes sense. But that's not what has been
+>> presented. Please make some attempt at defining *all* the functions.
+>> An actual binding would be nice, but I'll settle for just a list of
+>> things. The list should have functions that have DT dependencies (like
+>> clocks for phys in the above) because until you do, you don't need
+>> child nodes.
+>
+> That's the problem with the Rockchip-GRF, you only realize its content
+> when implementing specific features.
+>
+> Like on the rk3399 the table of the register-list of the GRF alone is 11
+> pages long with the register details tables taking up another 230 pages.
+> And functional description is often somewhat thin.
 
-please find below a second pull request for Rockchip-specific drivers,
-adding power-domain support for some more socs on top of the
-previous git tag.
+But surely one can scan thru it and have some clue what functions
+there are. For example, does this chip have phy registers in GRF?
 
+> So I'm not sure I fully understand what you're asking, but in general
+> we define the bindings for sub-devices when tackling these individual
+> components, see for example
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit=
+?id=3D72580a49a837c2c7da83f698c00592eac41537d8
 
-If it looks ok, please pull
-Heiko
+Yes, and in that case it makes sense. The individual functions
+themselves have resources defined in DT like clocks. What I don't want
+to see are child nodes defining *only* a compatible and any provider
+properties (e.g. #gpio-cells). The only reason to do that is to make
+Linux bind a driver, but DT is not a list of drivers to bind.
 
-The following changes since commit 9e59c5f66c624b43c766a9fe3b2430e0e976bf0e:
+This is what I don't want to see:
 
-  soc: rockchip: power-domain: Fix wrong value when power up pd with writemask (2018-05-14 11:53:26 +0200)
+syscon {
+  compatible =3D "foo,soc-sysctrl", "syscon", "simple-mfd";
+  reg =3D <...>;
+  clock-controller {
+    compatible =3D "foo,soc-sysctrl-clocks";
+    #clock-cells =3D <1>;
+  };
+  reset-controller {
+    compatible =3D "foo,soc-sysctrl-resets";
+    #reset-cells =3D <1>;
+  };
+  gpio {
+    compatible =3D "foo,soc-sysctrl-gpios";
+    #gpio-cells =3D <2>;
+    gpio-controller;
+  };
+};
 
-are available in the Git repository at:
+But rather:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.18-rockchip-drivers-2
+syscon {
+  compatible =3D "foo,soc-sysctrl";
+  reg =3D <...>;
+  #clock-cells =3D <1>;
+  #reset-cells =3D <1>;
+  #gpio-cells =3D <2>;
+  gpio-controller;
+};
 
-for you to fetch changes up to 9bdf401bf49eddba98ae36f7243b888d43496bd6:
+> which also has a real phy-driver behind it and binding against that
+> subnode of the GRF simple-mfd.
+>
+> These are real IP blocks somewhere on the socs, with regular supplies
+> like resets, clocks etc in most cases. Only their controlling registers
+> got dumped into the GRF for some reason.
 
-  soc: rockchip: power-domain: add power domain support for px30 (2018-05-23 20:47:57 +0200)
+I can tell that from your examples, but I can't tell that with this
+binding. For this binding, it looks like you are adding a sub-node for
+1 register bit. That wouldn't scale if you have 11 page register list.
 
-----------------------------------------------------------------
-Power-domain support for Rockchip socs px30, rk3128, rk3228 and rk3036.
+> And in retrospect it really looks like we're doing something right,
+> because it seems these bindings seem quite stable over time.
+>
+>
+>> > The gpio in question is called "mute", so I'd think the gpio-syscon dr=
+iver
+>> > should just define a "rockchip,rk3328-gpio-mute" compatible and contai=
+n
+>> > all the register voodoo in the driver itself and not define it in the =
+dt.
+>>
+>> Is there really just one GPIO? If it has a defined function, then is
+>> it really GP? Can you control direction? I know Linus W doesn't like
+>> that kind of abuse of GPIO.
+>
+> looks like I convinced Linus that we're not abusing anything with this :-=
+) .
 
-----------------------------------------------------------------
-Caesar Wang (3):
-      dt-bindings: power: add RK3036 SoCs header for power-domain
-      dt-bindings: power: add binding for rk3036 power domains
-      soc: rockchip: power-domain: add power domain support for rk3036
+Okay, but still my question remains: is it really only 1 GPIO?
+Dropping "-mute" would be more future proof if not.
 
-Elaine Zhang (6):
-      dt-bindings: power: add RK3128 SoCs header for power-domain
-      dt-bindings: power: add binding for rk3128 power domains
-      soc: rockchip: power-domain: add power domain support for rk3128
-      dt-bindings: power: add RK3228 SoCs header for power-domain
-      dt-bindings: power: add binding for rk3228 power domains
-      soc: rockchip: power-domain: add power domain support for rk3228
-
-Finley Xiao (3):
-      dt-bindings: power: add PX30 SoCs header for power-domain
-      dt-bindings: power: add binding for px30 power domains
-      soc: rockchip: power-domain: add power domain support for px30
-
- .../bindings/soc/rockchip/power_domain.txt         |  12 +++
- drivers/soc/rockchip/pm_domains.c                  | 115 +++++++++++++++++++++
- include/dt-bindings/power/px30-power.h             |  27 +++++
- include/dt-bindings/power/rk3036-power.h           |  13 +++
- include/dt-bindings/power/rk3128-power.h           |  14 +++
- include/dt-bindings/power/rk3228-power.h           |  21 ++++
- 6 files changed, 202 insertions(+)
- create mode 100644 include/dt-bindings/power/px30-power.h
- create mode 100644 include/dt-bindings/power/rk3036-power.h
- create mode 100644 include/dt-bindings/power/rk3128-power.h
- create mode 100644 include/dt-bindings/power/rk3228-power.h
+Rob
