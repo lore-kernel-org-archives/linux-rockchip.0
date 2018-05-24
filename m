@@ -1,75 +1,144 @@
-From: Myy <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>
-Subject: Re: rockchip-vpu driver usability
-Date: Thu, 24 May 2018 14:02:45 +0200
-Message-ID: <dad668e7-4d26-94b0-ec12-d0393c7a049a@miouyouyou.fr>
-References: <20180524103431.63eog25qynr72ots@tarshish>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 2/5] gpio: syscon: Add gpio-syscon for rockchip
+Date: Thu, 24 May 2018 14:07:09 +0200
+Message-ID: <3307687.qJF5Pr3uHG@phil>
+References: <1526614328-6869-1-git-send-email-djw@t-chip.com.cn> <1685755.J6GI985WX3@diego> <CAL_Jsq+VBspzCaLD2Wy=fyC-S+LKGZbVsB+b+Etkx91ioXOCuQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180524103431.63eog25qynr72ots@tarshish>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_Jsq+VBspzCaLD2Wy=fyC-S+LKGZbVsB+b+Etkx91ioXOCuQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Levin Du <djw@t-chip.com.cn>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CkxlIDI0LzA1LzIwMTggw6AgMTI6MzQsIEJhcnVjaCBTaWFjaCBhIMOpY3JpdCA6Cj4gQW5vdGhl
-ciBvcHRpb24gaXMgdG8gZm9yd2FyZCBwb3J0IHRoZSByb2NrY2hpcC12Y29kZWMgc2hpbSBkcml2
-ZXIgZm9yIHRoZSBNUFAKPiBmcmFtZXdvcmsuIEknbSBhd2FyZSBvZiBNeXkgTWlvdXlvdXlvdSdz
-IHdvcmtbMV0gaW4gdGhpcyBhcmVhLiBCdXQgdGhpcyBkcml2ZXIKPiBzZWVtcyB1bnVzYWJsZSBh
-cyB3ZWxsLiBUZXN0aW5nIHY0LjE3LXJjNiwgdGhlIFBNIGNvZGUgZmFpbHMgdG8gZW5hYmxlIHRo
-ZQo+IHZpZGVvIHBvd2VyIGRvbWFpbiAodGhlIGh2ZWMgcG93ZXIgZG9tYWluIGVuYWJsZXMgY29y
-cmVjdGx5LCB0aG91Z2gpLiBUaGUKPiBlcnJvciBpczoKPgo+ICAgIHJvY2tjaGlwLXBtLWRvbWFp
-biBmZjczMDAwMC5wb3dlci1tYW5hZ2VtZW50OnBvd2VyLWNvbnRyb2xsZXI6IGZhaWxlZCB0byBn
-ZXQgYWNrIG9uIGRvbWFpbiAncGRfdmlkZW8nLCB2YWw9MHg4MDIxYwpJIGN1cnJlbnRseSBkaWRu
-J3QgdGVzdCB0aGlzIGRyaXZlciBvbiB0aGF0IHZlcnNpb24uIFRob3VnaCwgdGhlIGxhdGVzdCAK
-Im5vbi1jcmFzaGluZyIgYnJhbmNoIHdhcyB0aGUgYnJhbmNoICJyZXRyeSIgLgoKQW55d2F5LCBp
-dCB0b29rIG1lIGEgbG90IG9mICh0b28gbXVjaCkgdGltZSB0byB1bmRlcnN0YW5kIGhvdyB0aGUg
-ZHJpdmVyIAp3b3JrZWQgYXQgdGhlIGZpcnN0IHBsYWNlIChXaGF0IE1NSU8gYWRkcmVzcyBpdCBp
-cyB3cml0aW5nLCB3aGljaCBkYXRhIApjb21lcyB3aGVyZSwgLi4uKS4KVGhlIHBhZ2VzIG9mIFRS
-TSBwcm92aWRpbmcgdGhlIHVzZWZ1bCByZWdpc3RlcnMgZGVzY3JpcHRpb24gYmVpbmcgCnJlbW92
-ZWQgdG8gYXZvaWQgaW5mcmluZ2luZyBzb21lIE5EQSB3aXRoIHRoZSBWUFUgY2hpcG1ha2VyIChh
-dCBsZWFzdCBpdCAKd2FzIHRoZSBleHBsYW5hdGlvbiBJIGdvdCksIEkgZGlkbid0IG1ha2UgaXQg
-ZmFyIGJ5IGFuYWx5c2luZyB0aGUgVlBVIApjb2RlLCB3aGljaCBpcyBjbG9zZWx5IHJlbGF0ZWQg
-dG8gTVBQLgoKSUlSQyAoSSdtIGF0IHdvcmssIGNhbm5vdCBjaGVjayB0aGUgY29kZSByaWdodCBu
-b3cpClRoZSB3YXkgdGhhdCBkcml2ZXIgd29ya2VkLCBpbiB0aGUgNC40IGtlcm5lbCwgd2FzIDoK
-KiBNUFAgc2V0cyB1cCBhIGJpZyBkYXRhIHN0cnVjdHVyZSBjb3JyZXNwb25kaW5nIHRvIHRoZSBW
-UFUgcmVnaXN0ZXJzIAphbmQgc2VuZHMgaXQgdG8gdGhlIFZQVSBkcml2ZXIsIHRob3VnaCBhbiBp
-b2N0bC4KKiBUaGUgVlBVIGRyaXZlciByZWNlaXZlcyB0aGUgZGF0YSBzdHJ1Y3R1cmUgYW5kIGlu
-dGVycHJldHMgaXQgYXMgYSAKdWludDMyX3QgdGFibGUsIGNvcnJlc3BvbmRpbmcgdG8gdGhlIHJl
-Z2lzdGVycyBhbmQgZG8gc29tZSBtYWdpYyB0aGluZ3MgCndpdGggc29tZSBpbmRpY2VzLCBzZXR1
-cHMgdGhlIElPTU1VIHNvIHRoYXQgdGhlIFZQVSBjYW4gd3JpdGUgdGhlIApyZXN1bHRpbmcgZnJh
-bWUsIHRocm91Z2ggYSBETUEgb3BlcmF0aW9uLCB0byBzb21lIG1lbW9yeSBidWZmZXIgcHJvdmlk
-ZWQgCmJ5IHRoZSB1c2VyLCBhbmQgc3RhcnRzIHRoZSBkZWNvZGluZyBwcm9jZXNzLgoqIE1QUCBz
-ZW5kcyBhbiBpb2N0bCB0byB0aGUgVlBVIGluIG9yZGVyIHRvIGtub3cgdGhlIEVUQSBvZiB0aGUg
-VlBVIGpvYi4KKiBUaGUgVlBVIHNlbmRzIGJhY2sgdGhlIEVUQSB0byBNUFAgaW4gcmV0dXJuIHRv
-IHRoYXQgaW9jdGwgY2FsbC4KCk5vdywgdGhhdCBkcml2ZXIgaGFzIGEgbG90IG9mIHdlaXJkIElP
-TU1VIGNvZGUgdGhhdCBzaG91bGQgYmUgdGhlcmUuIEZvciAKZXhhbXBsZSwgaXQgZG9lcyBETUEg
-U0cgdGFibGVzIHJlbWFwcGluZyBieSBoYW5kLCB0YWtpbmcgaW50byBhY2NvdW50IApJT01NVSBh
-bGlnbm1lbnQgcmVzdHJpY3Rpb25zLi4uIFRoYXQgY29kZSBpcyBub3cgZGVwcmVjYXRlZCBpbiB0
-aGUgbmV3IAprZXJuZWxzIHdoaWNoIHNob3VsZCB1c2UgdGhlIHByb3BlciBJT01NVSBoZWxwZXJz
-IHB1dCBpbiBwbGFjZS4KCkFsc28sIGlmIHlvdSBsb29rIGF0IHRoZSByb2NrY2hpcCBrZXJuZWws
-IHRoZXJlJ3MgYW5vdGhlciBWNEwyIGRyaXZlciAKd3JpdHRlbiBieSBwYXJ0IG9mIHRoZSBDaHJv
-bWl1bSBhbmQgUm9ja2NoaXAgdGVhbSwgd2hpY2ggZGVzY3JpYmVzIApldmVyeXRoaW5nIGluIGEg
-Y2xlYXIgZmFzaGlvbiBzbyBub3cgSSdtIGFpbWluZyB0byByZXRlc3QgdGhlIHdob2xlIAp0aGlu
-ZywgYmFzZWQgb24gdGhlc2UgaW5mb3JtYXRpb24uCklmIHRoYXQgd29ya3MsIEknbGwgdHJ5IHRv
-IG1pbWljIHRoYXQgVjRMMiBkcml2ZXIsIGluIGEgd2F5IHRoYXQgd29ya3MgCndpdGggbWFpbmxp
-bmUga2VybmVscyAod2hpY2ggbW92ZWQgdGhlIHdob2xlIHZpZGVvIGZvcm1hdHMgaGFuZGxpbmcg
-aW50byAKdGhlIHVzZXItc3BhY2UgbGlicmFyeSBpdCBzZWVtcykuCkhlcmUncyB0aGUgZmlsZSBk
-ZXNjcmliaW5nIHRoZSByZWdpc3RlcnMgCmh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51
-eC9rZXJuZWwvYmxvYi9yZWxlYXNlLTQuNC9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlw
-LXZwdS9yazMyODhfdnB1X3JlZ3MuaCAKYW5kIHRoZSB3aG9sZSBuZXcgY29kZSBpcyBoZXJlIDog
-Cmh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51eC9rZXJuZWwvdHJlZS9yZWxlYXNlLTQu
-NC9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwLXZwdQoKLS0gCk15eQoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Rob,
+
+Am Mittwoch, 23. Mai 2018, 21:53:53 CEST schrieb Rob Herring:
+> On Wed, May 23, 2018 at 10:12 AM, Heiko Stübner <heiko@sntech.de> wrote:
+> > Am Mittwoch, 23. Mai 2018, 16:43:07 CEST schrieb Rob Herring:
+> >> On Tue, May 22, 2018 at 9:02 PM, Levin Du <djw@t-chip.com.cn> wrote:
+> >> > On 2018-05-23 2:02 AM, Rob Herring wrote:
+> >> >> On Fri, May 18, 2018 at 11:52:05AM +0800, djw@t-chip.com.cn wrote:
+> >> >>> From: Levin Du <djw@t-chip.com.cn>
+> >> >>>
+> >> >>> Some GPIOs sit in the GRF_SOC_CON registers of Rockchip SoCs,
+> >> >>> which do not belong to the general pinctrl.
+> >> >>>
+> >> >>> Adding gpio-syscon support makes controlling regulator or
+> >> >>> LED using these special pins very easy by reusing existing
+> >> >>> drivers, such as gpio-regulator and led-gpio.
+> >> >>>
+> >> >>> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+> >> >>>
+> >> >>> ---
+> >> >>>
+> >> >>> Changes in v2:
+> >> >>> - Rename gpio_syscon10 to gpio_mute in doc
+> >> >>>
+> >> >>> Changes in v1:
+> >> >>> - Refactured for general gpio-syscon usage for Rockchip SoCs.
+> >> >>> - Add doc rockchip,gpio-syscon.txt
+> >> >>>
+> >> >>>   .../bindings/gpio/rockchip,gpio-syscon.txt         | 41
+> >> >>>
+> >> >>> ++++++++++++++++++++++
+> >> >>>
+> >> >>>   drivers/gpio/gpio-syscon.c                         | 30
+> >> >>>
+> >> >>> ++++++++++++++++
+> >> >>>
+> >> >>>   2 files changed, 71 insertions(+)
+> >> >>>   create mode 100644
+> >> >>>
+> >> >>> Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+> >> >>>
+> >> >>> diff --git
+> >> >>> a/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+> >> >>> b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+> >> >>> new file mode 100644
+> >> >>> index 0000000..b1b2a67
+> >> >>> --- /dev/null
+> >> >>> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-syscon.txt
+> >> >>> @@ -0,0 +1,41 @@
+> >> >>> +* Rockchip GPIO support for GRF_SOC_CON registers
+> >> >>> +
+> >> >>> +Required properties:
+> >> >>> +- compatible: Should contain "rockchip,gpio-syscon".
+> >> >>> +- gpio-controller: Marks the device node as a gpio controller.
+> >> >>> +- #gpio-cells: Should be two. The first cell is the pin number and
+> >> >>> +  the second cell is used to specify the gpio polarity:
+> >> >>> +    0 = Active high,
+> >> >>> +    1 = Active low.
+> >> >>
+> >> >> There's no need for this child node. Just make the parent node a gpio
+> >> >> controller.
+> >> >>
+> >> >> Rob
+> >> >
+> >> > Hi Rob, it is not clear to me. Do you suggest that the grf node should be
+> >> > a
+> >> > gpio controller,
+> >> > like below?
+> >> >
+> >> > +    grf: syscon at ff100000 {
+> >> > +        compatible = "rockchip,gpio-syscon", "rockchip,rk3328-grf",
+> >> > "syscon", "simple-mfd";
+> >>
+> >> Yes, but drop "rockchip,gpio-syscon" and "simple-mfd".
+> >
+> > I would disagree quite a bit here. The grf are the "general register files",
+> > a bunch of registers used for quite a lot of things, and so it seems
+> > among other users, also a gpio-controller for some more random pins
+> > not controlled through the regular gpio controllers.
+> >
+> > For a more fully stocked grf, please see
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/dts/rk3288.dtsi#n855
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3399.dtsi#n1338
+> >
+> > So the gpio controller should definitly also be a subnode.
+> 
+> Sigh, yes, if there are a bunch of functions needing subnodes like the
+> above, then yes that makes sense. But that's not what has been
+> presented. Please make some attempt at defining *all* the functions.
+> An actual binding would be nice, but I'll settle for just a list of
+> things. The list should have functions that have DT dependencies (like
+> clocks for phys in the above) because until you do, you don't need
+> child nodes.
+
+That's the problem with the Rockchip-GRF, you only realize its content
+when implementing specific features. 
+
+Like on the rk3399 the table of the register-list of the GRF alone is 11
+pages long with the register details tables taking up another 230 pages.
+And functional description is often somewhat thin.
+
+So I'm not sure I fully understand what you're asking, but in general
+we define the bindings for sub-devices when tackling these individual
+components, see for example
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit?id=72580a49a837c2c7da83f698c00592eac41537d8
+
+which also has a real phy-driver behind it and binding against that
+subnode of the GRF simple-mfd.
+
+These are real IP blocks somewhere on the socs, with regular supplies
+like resets, clocks etc in most cases. Only their controlling registers
+got dumped into the GRF for some reason.
+
+And in retrospect it really looks like we're doing something right,
+because it seems these bindings seem quite stable over time.
+
+
+> > The gpio in question is called "mute", so I'd think the gpio-syscon driver
+> > should just define a "rockchip,rk3328-gpio-mute" compatible and contain
+> > all the register voodoo in the driver itself and not define it in the dt.
+> 
+> Is there really just one GPIO? If it has a defined function, then is
+> it really GP? Can you control direction? I know Linus W doesn't like
+> that kind of abuse of GPIO.
+
+looks like I convinced Linus that we're not abusing anything with this :-) .
+
+
+Heiko
