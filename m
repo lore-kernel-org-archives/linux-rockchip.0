@@ -1,52 +1,86 @@
-From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
-Subject: rockchip-vpu driver usability
-Date: Thu, 24 May 2018 13:34:31 +0300
-Message-ID: <20180524103431.63eog25qynr72ots@tarshish>
+From: Baruch Siach <baruch@tkos.co.il>
+Subject: Re: [PATCH v6 05/17] media: rkisp1: add Rockchip ISP1 subdev driver
+Date: Thu, 24 May 2018 14:30:12 +0300
+Message-ID: <20180524113012.mt5b2f2vrhfrn3d7@tarshish>
+References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
+ <20180308094807.9443-6-jacob-chen@iotwrt.com>
+ <20180503090909.o3dyhukzs2y7em5z@tarshish>
+ <CAAFQd5CvBv4hkE=PSHBJTYa9Lj0SyggxpMBEAYD=if0=T0uzHw@mail.gmail.com>
+ <20180507063814.vweb4p3nfgnoc3td@tarshish>
+ <CAAFQd5A7gAK4fXH9YVrobR5_QX_5f8xa272R_56v5YUghV6Sxw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Myy Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>
+In-Reply-To: <CAAFQd5A7gAK4fXH9YVrobR5_QX_5f8xa272R_56v5YUghV6Sxw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Jacob Chen <jacob-chen@iotwrt.com>, ARM/Rockchip SoC <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil <hans.verkuil@cisco.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?utf-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, =?utf-8?B?6ZmI5Z+O?=
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Tomasz,
 
-I'm trying to get the RK3288 VPU do h.264 encoding on the Tinkerboard platform 
-with latest mainline kernel. I found the v4l2 based rockchip-vpu driver in the 
-vendor kernel. But I could not get it work even in the context of that kernel. 
-Is this driver in usable state? If not, how far it is from being usable?
+On Mon, May 07, 2018 at 06:41:50AM +0000, Tomasz Figa wrote:
+> On Mon, May 7, 2018 at 3:38 PM Baruch Siach <baruch@tkos.co.il> wrote:
+> > On Mon, May 07, 2018 at 06:13:27AM +0000, Tomasz Figa wrote:
+> > > On Thu, May 3, 2018 at 6:09 PM Baruch Siach <baruch@tkos.co.il> wrote:
+> > > > On Thu, Mar 08, 2018 at 05:47:55PM +0800, Jacob Chen wrote:
+> > > > > +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int on)
+> > > > > +{
+> > > > > +     struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
+> > > > > +     int ret;
+> > > > > +
+> > > > > +     v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power: %d\n",
+> > > on);
+> > > > > +
+> > > > > +     if (on) {
+> > > > > +             ret = pm_runtime_get_sync(isp_dev->dev);
+> > > > > +             if (ret < 0)
+> > > > > +                     return ret;
+> > > > > +
+> > > > > +             rkisp1_config_clk(isp_dev);
+> > > > > +     } else {
+> > > > > +             ret = pm_runtime_put(isp_dev->dev);
+> > >
+> > > > I commented this line out to make more than one STREAMON work.
+> Otherwise,
+> > > > the second STREAMON hangs. I guess the bug is not this driver.
+> Probably
+> > > > something in drivers/soc/rockchip/pm_domains.c. Just noting that in
+> case
+> > > > you or someone on Cc would like to investigate it further.
+> > > >
+> > > > I tested v4.16-rc4 on the Tinkerboard.
+> > >
+> > > Looks like that version doesn't include the IOMMU PM and clock handling
+> > > rework [1], which should fix a lot of runtime PM issues. FWIW,
+> linux-next
+> > > seems to already include it.
+> > >
+> > > [1] https://lkml.org/lkml/2018/3/23/44
+> 
+> > Thanks for the reference.
+> 
+> > It looks like the iommu driver part is in Linus' tree already. The DT
+> part is
+> > in the v4.18-armsoc/dts32 branch of Heiko's tree. Am I missing anything?
+> 
+> You're right, most of the series made it in time for 4.17. However, the DT
+> part (precisely, the clocks properties added to IOMMU nodes) is crucial for
+> the fixes to be effective.
+> 
+> > Anyway, I'll take a look.
+> 
+> Thanks for testing. :) (Forgot to mention in my previous email...)
 
-Another option is to forward port the rockchip-vcodec shim driver for the MPP 
-framework. I'm aware of Myy Miouyouyou's work[1] in this area. But this driver 
-seems unusable as well. Testing v4.17-rc6, the PM code fails to enable the 
-video power domain (the hvec power domain enables correctly, though). The 
-error is:
+I finally got around to testing. Unfortunately, kernel v4.17-rc6 with 
+cherry-pick of commit c78751f91c0b (ARM: dts: rockchip: add clocks in iommu 
+nodes) from Heiko's tree still exhibit the same problem. STREAMON hangs on 
+second try. The same workaround "fixes" it.
 
-  rockchip-pm-domain ff730000.power-management:power-controller: failed to get ack on domain 'pd_video', val=0x8021c
-
-With the TinkerOS provided kernel I managed to make the VPU encode to h.264 
-using the gstreamer MPP plugin. But I would rather not use that kernel if 
-possible, since that would mean backporting other v4l2 code that I need.
-
-Do you have any other idea/direction for me to explore?
-
-Thanks,
 baruch
-
-[1] https://github.com/Miouyouyou/rockchip-vcodec
 
 -- 
      http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
 =}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
+   - baruch@tkos.co.il - tel: +972.52.368.4656, http://www.tkos.co.il -
