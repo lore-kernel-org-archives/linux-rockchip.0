@@ -1,111 +1,76 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: [PATCH 10/15] arm: dts: rk3288: Add missing cooling device properties for CPUs
-Date: Fri, 25 May 2018 16:01:56 +0530
-Message-ID: <11f16618dc965a7996976a2bca040cd87d1961d2.1527244201.git.viresh.kumar@linaro.org>
-References: <cover.1527244200.git.viresh.kumar@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1527244200.git.viresh.kumar@linaro.org>
-In-Reply-To: <cover.1527244200.git.viresh.kumar@linaro.org>
-References: <cover.1527244200.git.viresh.kumar@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: arm@kernel.org, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] drm/rockchip: vop: fix irq disabled after vop driver
+	probed
+Date: Fri, 25 May 2018 12:07:02 +0100
+Message-ID: <8495bffd-2a52-ca85-1bc9-afc3ea0af8e4@arm.com>
+References: <b8eb41e576c4007d40223699eb951db32916b86a.camel@collabora.com>
+	<25470133.K8n9sLBzRS@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <25470133.K8n9sLBzRS@diego>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, =?UTF-8?Q?Enric_Balletb=c3=b2?= <enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The cooling device properties, like "#cooling-cells" and
-"dynamic-power-coefficient", should either be present for all the CPUs
-of a cluster or none. If these are present only for a subset of CPUs of
-a cluster then things will start falling apart as soon as the CPUs are
-brought online in a different order. For example, this will happen
-because the operating system looks for such properties in the CPU node
-it is trying to bring up, so that it can register a cooling device.
-
-Add such missing properties.
-
-Fix other missing properties (clocks, OPP, clock latency) as well to
-make it all work.
-
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- arch/arm/boot/dts/rk3288.dtsi | 54 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 54 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index d7e49d29ace5..752a892847dd 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -122,18 +122,72 @@
- 			compatible = "arm,cortex-a12";
- 			reg = <0x501>;
- 			resets = <&cru SRST_CORE1>;
-+			operating-points = <
-+				/* KHz    uV */
-+				1608000 1350000
-+				1512000 1300000
-+				1416000 1200000
-+				1200000 1100000
-+				1008000 1050000
-+				 816000 1000000
-+				 696000  950000
-+				 600000  900000
-+				 408000  900000
-+				 312000  900000
-+				 216000  900000
-+				 126000  900000
-+			>;
-+			#cooling-cells = <2>; /* min followed by max */
-+			clock-latency = <40000>;
-+			clocks = <&cru ARMCLK>;
- 		};
- 		cpu2: cpu@502 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a12";
- 			reg = <0x502>;
- 			resets = <&cru SRST_CORE2>;
-+			operating-points = <
-+				/* KHz    uV */
-+				1608000 1350000
-+				1512000 1300000
-+				1416000 1200000
-+				1200000 1100000
-+				1008000 1050000
-+				 816000 1000000
-+				 696000  950000
-+				 600000  900000
-+				 408000  900000
-+				 312000  900000
-+				 216000  900000
-+				 126000  900000
-+			>;
-+			#cooling-cells = <2>; /* min followed by max */
-+			clock-latency = <40000>;
-+			clocks = <&cru ARMCLK>;
- 		};
- 		cpu3: cpu@503 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a12";
- 			reg = <0x503>;
- 			resets = <&cru SRST_CORE3>;
-+			operating-points = <
-+				/* KHz    uV */
-+				1608000 1350000
-+				1512000 1300000
-+				1416000 1200000
-+				1200000 1100000
-+				1008000 1050000
-+				 816000 1000000
-+				 696000  950000
-+				 600000  900000
-+				 408000  900000
-+				 312000  900000
-+				 216000  900000
-+				 126000  900000
-+			>;
-+			#cooling-cells = <2>; /* min followed by max */
-+			clock-latency = <40000>;
-+			clocks = <&cru ARMCLK>;
- 		};
- 	};
- 
--- 
-2.15.0.194.g9af6a3dea062
+W1RoYW5rcyBSb2JpbiBmb3IgcG9pbnRpbmcgbWUgdG8gdGhhdCBwYXRjaC5dCgpIaSBIZWlrbywK
+Ck9uIDI0LzA1LzE4IDIzOjA2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBGcm9tOiBTYW5keSBI
+dWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+IAo+IFRoZSB2b3AgaXJxIGlzIHNoYXJlZCBiZXR3
+ZWVuIHZvcCBhbmQgaW9tbXUgYW5kIGlycSBwcm9iaW5nIGluIHRoZQo+IGlvbW11IGRyaXZlciBt
+b3ZlZCB0byB0aGUgcHJvYmUgZnVuY3Rpb24gcmVjZW50bHkuIFRoaXMgY2FuIGluIHNvbWUKPiBj
+YXNlcyBsZWFkIHRvIGEgc3RhbGwgaWYgdGhlIGlycSBpcyB0cmlnZ2VyZWQgd2hpbGUgdGhlIHZv
+cCBkcml2ZXIKPiBzdGlsbCBoYXMgaXQgZGlzYWJsZWQuCj4gCj4gQnV0IHRoZXJlIGlzIG5vIHJl
+YWwgbmVlZCB0byBkaXNhYmxlIHRoZSBpcnEsIGFzIHRoZSB2b3AgY2FuIHNpbXBseQo+IGFsc28g
+dHJhY2sgaXRzIGVuYWJsZWQgc3RhdGUgYW5kIGlnbm9yZSBpcnFzIGluIHRoYXQgY2FzZS4KPiAK
+PiBTbyByZW1vdmUgdGhlIGVuYWJsZS9kaXNhYmxlIGhhbmRsaW5nIGFuZCBhZGQgYXBwcm9wcmlh
+dGUgY29uZGl0aW9uCj4gdG8gdGhlIGlycSBoYW5kbGVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNh
+bmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gW2FkZGVkIGFuIGFjdHVhbCBjb21taXQg
+bWVzc2FnZV0KPiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRl
+Pgo+IC0tLQo+IEhpIEV6ZXF1aWVsLAo+IAo+IHRoaXMgcGF0Y2ggY2FtZSBmcm9tIGEgZGlzY3Vz
+c2lvbiBJIGhhZCB3aXRoIFJvY2tjaGlwIHBlb3BsZSBvdmVyIHRoZQo+IGlvbW11IGNoYW5nZXMg
+YW5kIHJlc3VsdGluZyBpc3N1ZXMgYmFjayBpbiBhcHJpbCwgYnV0IHNvbWVob3cgd2FzCj4gZm9y
+Z290dGVuIGFuZCBub3QgcG9zdGVkIHRvIHRoZSBsaXN0cy4gQ29ycmVjdGluZyB0aGF0IG5vdy4K
+PiAKPiBTbyByZW1vdmluZyB0aGUgZW5hYmxlL2Rpc2FibGUgdm9vZG9vIG9uIHRoZSBzaGFyZWQg
+aW50ZXJydXB0IGlzCj4gdGhlIHByZWZlcnJlZCB3YXkuCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxMyArKysrKystLS0tLS0tCj4gIDEgZmlsZSBj
+aGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNTEwY2RmMC4uNjE0OTNk
+NCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+
+IEBAIC01NDksOCArNTQ5LDYgQEAgc3RhdGljIGludCB2b3BfZW5hYmxlKHN0cnVjdCBkcm1fY3J0
+YyAqY3J0YykKPiAgCj4gIAlzcGluX3VubG9jaygmdm9wLT5yZWdfbG9jayk7Cj4gIAo+IC0JZW5h
+YmxlX2lycSh2b3AtPmlycSk7Cj4gLQo+ICAJZHJtX2NydGNfdmJsYW5rX29uKGNydGMpOwo+ICAK
+PiAgCXJldHVybiAwOwo+IEBAIC01OTYsOCArNTk0LDYgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNf
+YXRvbWljX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAKPiAgCXZvcF9kc3BfaG9s
+ZF92YWxpZF9pcnFfZGlzYWJsZSh2b3ApOwo+ICAKPiAtCWRpc2FibGVfaXJxKHZvcC0+aXJxKTsK
+PiAtCj4gIAl2b3AtPmlzX2VuYWJsZWQgPSBmYWxzZTsKPiAgCj4gIAkvKgo+IEBAIC0xMTY4LDYg
+KzExNjQsMTMgQEAgc3RhdGljIGlycXJldHVybl90IHZvcF9pc3IoaW50IGlycSwgdm9pZCAqZGF0
+YSkKPiAgCWludCByZXQgPSBJUlFfTk9ORTsKPiAgCj4gIAkvKgo+ICsJICogc2luY2UgdGhlIGly
+cSBpcyBzaGFyZWQgd2l0aCBpb21tdSwgaW9tbXUgaXJxIGlzIGVuYWJsZWQgYmVmb3JlIHZvcAo+
+ICsJICogZW5hYmxlLCBzbyBiZWZvcmUgdm9wIGVuYWJsZSB3ZSBkbyBub3RoaW5nLgo+ICsJICov
+Cj4gKwlpZiAoIXZvcC0+aXNfZW5hYmxlZCkKPiArCQlyZXR1cm4gSVJRX05PTkU7Cj4gKwoKV2hh
+dCBndWFyYW50ZWUgZG8gd2UgaGF2ZSB0aGF0IHRoZSBJT01NVSB3aWxsIGFjdHVhbGx5IHNlcnZp
+Y2UgdGhhdAppbnRlcnJ1cHQ/IENhbid0IHdlIGdldCBpbnRvIGEgc2l0dWF0aW9uIHdoZXJlIHRo
+ZSBpbnRlcnJ1cHQgZ2V0cwppZ25vcmVkIGJ5IGJvdGggZHJpdmVycyBhbmQgc3Vic2VxdWVudGx5
+IGRpc2FibGVkIGJ5IHRoZSBjb3JlIGlycSBjb2RlCmFzIGJlaW5nIHNwdXJpb3VzPwoKRnJvbSB3
+aGF0IEkgdW5kZXJzdG9vZCBvZiB0aGUgd2F5IHRoaW5ncyBhcmUgcGx1Z2dlZCB0b2dldGhlciBv
+biB0aGUKcm9ja2NoaXAgcGxhdGZvcm1zLCBlYWNoIGluZGl2aWR1YWwgVk9QIGlzIGJlaGluZCBh
+IHNpbmdsZSBJT01NVSwgaGVuY2UKdGhlcmUgdGhlcmUgaXMgaGFyZGx5IGFueSBwb2ludCBpbiBo
+YW5kbGluZyBJT01NVSBpbnRlcnJ1cHRzIGlmIHRoZSBWT1AKaXMgb2ZmLgoKQnV0IEknbSBtaXNz
+aW5nIHRoZSBhY3R1YWwgcmVhc29uIGJlaGluZCB0aGlzIHBhdGNoLiBDb3VsZCB5b3UgZW5saWdo
+dGVuIG1lPwoKVGhhbmtzLAoKCU0uCi0tIApKYXp6IGlzIG5vdCBkZWFkLiBJdCBqdXN0IHNtZWxs
+cyBmdW5ueS4uLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwppb21tdSBtYWlsaW5nIGxpc3QKaW9tbXVAbGlzdHMubGludXgtZm91bmRhdGlvbi5vcmcKaHR0
+cHM6Ly9saXN0cy5saW51eGZvdW5kYXRpb24ub3JnL21haWxtYW4vbGlzdGluZm8vaW9tbXU=
