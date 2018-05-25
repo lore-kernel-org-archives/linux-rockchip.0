@@ -1,13 +1,15 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] drm/rockchip: vop: fix irq disabled after vop driver probed
-Date: Fri, 25 May 2018 00:06:39 +0200
-Message-ID: <25470133.K8n9sLBzRS@diego>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] drm/rockchip: vop: fix irq disabled after vop driver
+	probed
+Date: Fri, 25 May 2018 11:57:37 +0900
+Message-ID: <CAAFQd5DwFiKJ-JyFkFqC-XzTyBeanbQWazw8OqT4XQRmwrNJrA@mail.gmail.com>
 References: <b8eb41e576c4007d40223699eb951db32916b86a.camel@collabora.com>
+	<25470133.K8n9sLBzRS@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <b8eb41e576c4007d40223699eb951db32916b86a.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <25470133.K8n9sLBzRS@diego>
 List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
 	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
@@ -17,84 +19,60 @@ List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
 	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
 Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
 Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, tomeu.vizoso-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-The vop irq is shared between vop and iommu and irq probing in the
-iommu driver moved to the probe function recently. This can in some
-cases lead to a stall if the irq is triggered while the vop driver
-still has it disabled.
-
-But there is no real need to disable the irq, as the vop can simply
-also track its enabled state and ignore irqs in that case.
-
-So remove the enable/disable handling and add appropriate condition
-to the irq handler.
-
-Signed-off-by: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-[added an actual commit message]
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
-Hi Ezequiel,
-
-this patch came from a discussion I had with Rockchip people over the
-iommu changes and resulting issues back in april, but somehow was
-forgotten and not posted to the lists. Correcting that now.
-
-So removing the enable/disable voodoo on the shared interrupt is
-the preferred way.
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 13 ++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 510cdf0..61493d4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -549,8 +549,6 @@ static int vop_enable(struct drm_crtc *crtc)
- 
- 	spin_unlock(&vop->reg_lock);
- 
--	enable_irq(vop->irq);
--
- 	drm_crtc_vblank_on(crtc);
- 
- 	return 0;
-@@ -596,8 +594,6 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
- 
- 	vop_dsp_hold_valid_irq_disable(vop);
- 
--	disable_irq(vop->irq);
--
- 	vop->is_enabled = false;
- 
- 	/*
-@@ -1168,6 +1164,13 @@ static irqreturn_t vop_isr(int irq, void *data)
- 	int ret = IRQ_NONE;
- 
- 	/*
-+	 * since the irq is shared with iommu, iommu irq is enabled before vop
-+	 * enable, so before vop enable we do nothing.
-+	 */
-+	if (!vop->is_enabled)
-+		return IRQ_NONE;
-+
-+	/*
- 	 * interrupt register has interrupt status, enable and clear bits, we
- 	 * must hold irq_lock to avoid a race with enable/disable_vblank().
- 	*/
-@@ -1586,9 +1588,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 	if (ret)
- 		goto err_disable_pm_runtime;
- 
--	/* IRQ is initially disabled; it gets enabled in power_on */
--	disable_irq(vop->irq);
--
- 	return 0;
- 
- err_disable_pm_runtime:
--- 
-2.7.4
+SGkgSGVpa28sIFNhbmR5LAoKT24gRnJpLCBNYXkgMjUsIDIwMTggYXQgNzowNyBBTSBIZWlrbyBT
+dMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKCj4gRnJvbTogU2FuZHkgSHVhbmcgPGhq
+Y0Byb2NrLWNoaXBzLmNvbT4KCj4gVGhlIHZvcCBpcnEgaXMgc2hhcmVkIGJldHdlZW4gdm9wIGFu
+ZCBpb21tdSBhbmQgaXJxIHByb2JpbmcgaW4gdGhlCj4gaW9tbXUgZHJpdmVyIG1vdmVkIHRvIHRo
+ZSBwcm9iZSBmdW5jdGlvbiByZWNlbnRseS4gVGhpcyBjYW4gaW4gc29tZQo+IGNhc2VzIGxlYWQg
+dG8gYSBzdGFsbCBpZiB0aGUgaXJxIGlzIHRyaWdnZXJlZCB3aGlsZSB0aGUgdm9wIGRyaXZlcgo+
+IHN0aWxsIGhhcyBpdCBkaXNhYmxlZC4KCj4gQnV0IHRoZXJlIGlzIG5vIHJlYWwgbmVlZCB0byBk
+aXNhYmxlIHRoZSBpcnEsIGFzIHRoZSB2b3AgY2FuIHNpbXBseQo+IGFsc28gdHJhY2sgaXRzIGVu
+YWJsZWQgc3RhdGUgYW5kIGlnbm9yZSBpcnFzIGluIHRoYXQgY2FzZS4KCj4gU28gcmVtb3ZlIHRo
+ZSBlbmFibGUvZGlzYWJsZSBoYW5kbGluZyBhbmQgYWRkIGFwcHJvcHJpYXRlIGNvbmRpdGlvbgo+
+IHRvIHRoZSBpcnEgaGFuZGxlci4KCj4gU2lnbmVkLW9mZi1ieTogU2FuZHkgSHVhbmcgPGhqY0By
+b2NrLWNoaXBzLmNvbT4KPiBbYWRkZWQgYW4gYWN0dWFsIGNvbW1pdCBtZXNzYWdlXQo+IFNpZ25l
+ZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gSGkgRXpl
+cXVpZWwsCgo+IHRoaXMgcGF0Y2ggY2FtZSBmcm9tIGEgZGlzY3Vzc2lvbiBJIGhhZCB3aXRoIFJv
+Y2tjaGlwIHBlb3BsZSBvdmVyIHRoZQo+IGlvbW11IGNoYW5nZXMgYW5kIHJlc3VsdGluZyBpc3N1
+ZXMgYmFjayBpbiBhcHJpbCwgYnV0IHNvbWVob3cgd2FzCj4gZm9yZ290dGVuIGFuZCBub3QgcG9z
+dGVkIHRvIHRoZSBsaXN0cy4gQ29ycmVjdGluZyB0aGF0IG5vdy4KCj4gU28gcmVtb3ZpbmcgdGhl
+IGVuYWJsZS9kaXNhYmxlIHZvb2RvbyBvbiB0aGUgc2hhcmVkIGludGVycnVwdCBpcwo+IHRoZSBw
+cmVmZXJyZWQgd2F5LgoKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+dm9wLmMgfCAxMyArKysrKystLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25z
+KCspLCA3IGRlbGV0aW9ucygtKQoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYwpiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fdm9wLmMKPiBpbmRleCA1MTBjZGYwLi42MTQ5M2Q0IDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTU0OSw4ICs1NDksNiBAQCBz
+dGF0aWMgaW50IHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQoKPiAgICAgICAgICBz
+cGluX3VubG9jaygmdm9wLT5yZWdfbG9jayk7Cgo+IC0gICAgICAgZW5hYmxlX2lycSh2b3AtPmly
+cSk7Cj4gLQoKV2hpbGUgdGhpcyBvbmUgc2hvdWxkIGJlIG9rYXkgKCsvLSBteSBjb21tZW50IGZv
+ciB2b3BfaXNyKCkpLCBiZWNhdXNlIHRoZQpoYXJkd2FyZSBpcyBhbHJlYWR5IHBvd2VyZWQgb24g
+YW5kIGNsb2NrZWQgYXQgdGhpcyBwb2ludC4uLgoKPiAgICAgICAgICBkcm1fY3J0Y192Ymxhbmtf
+b24oY3J0Yyk7Cgo+ICAgICAgICAgIHJldHVybiAwOwo+IEBAIC01OTYsOCArNTk0LDYgQEAgc3Rh
+dGljIHZvaWQgdm9wX2NydGNfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjCipjcnRjLAoK
+PiAgICAgICAgICB2b3BfZHNwX2hvbGRfdmFsaWRfaXJxX2Rpc2FibGUodm9wKTsKCj4gLSAgICAg
+ICBkaXNhYmxlX2lycSh2b3AtPmlycSk7Cj4gLQo+ICAgICAgICAgIHZvcC0+aXNfZW5hYmxlZCA9
+IGZhbHNlOwoKLi4udGhpcyBvbmUgaXMgbW9yZSB0cmlja3kuIFRoZXJlIG1pZ2h0IGJlIGFuIGlu
+dGVycnVwdCBoYW5kbGVyIHN0aWxsCnJ1bm5pbmcgYXQgdGhpcyBwb2ludC4gZGlzYWJsZV9pcnEo
+KSB3YWl0cyBmb3IgYW55IHJ1bm5pbmcgaGFuZGxlciB0bwpjb21wbGV0ZSBiZWZvcmUgZGlzYWJs
+aW5nLCBzbyB3ZSBtaWdodCB3YW50IHRvIGNhbGwgc3luY2hyb25pemVfaXJxKCkgYWZ0ZXIKc2V0
+dGluZyBpc19lbmFibGVkIHRvIGZhbHNlLgoKCj4gICAgICAgICAgLyoKPiBAQCAtMTE2OCw2ICsx
+MTY0LDEzIEBAIHN0YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNyKGludCBpcnEsIHZvaWQgKmRhdGEp
+Cj4gICAgICAgICAgaW50IHJldCA9IElSUV9OT05FOwoKPiAgICAgICAgICAvKgo+ICsgICAgICAg
+ICogc2luY2UgdGhlIGlycSBpcyBzaGFyZWQgd2l0aCBpb21tdSwgaW9tbXUgaXJxIGlzIGVuYWJs
+ZWQKYmVmb3JlIHZvcAo+ICsgICAgICAgICogZW5hYmxlLCBzbyBiZWZvcmUgdm9wIGVuYWJsZSB3
+ZSBkbyBub3RoaW5nLgo+ICsgICAgICAgICovCj4gKyAgICAgICBpZiAoIXZvcC0+aXNfZW5hYmxl
+ZCkKPiArICAgICAgICAgICAgICAgcmV0dXJuIElSUV9OT05FOwoKVGhpcyBkb2Vzbid0IHNlZW0g
+dG8gYmUgcHJvcGVybHkgc3luY2hyb25pemVkLiBXZSBkb24ndCBldmVuIGNhbGwgaXQgdW5kZXIK
+YSBzcGlubG9jaywgc28gbm8gYmFycmllcnMgYXJlIGlzc3VlZC4gUGVyaGFwcyB3ZSBzaG91bGQg
+bWFrZSB0aGlzIGF0b21pY190PwoKQmVzdCByZWdhcmRzLApUb21hc3oKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KaW9tbXUgbWFpbGluZyBsaXN0CmlvbW11
+QGxpc3RzLmxpbnV4LWZvdW5kYXRpb24ub3JnCmh0dHBzOi8vbGlzdHMubGludXhmb3VuZGF0aW9u
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lvbW11
