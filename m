@@ -1,107 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: vop: fix irq disabled after vop driver probed
-Date: Fri, 25 May 2018 14:14:20 +0200
-Message-ID: <4318500.8KycslRrNH@phil>
-References: <b8eb41e576c4007d40223699eb951db32916b86a.camel@collabora.com> <25470133.K8n9sLBzRS@diego> <8495bffd-2a52-ca85-1bc9-afc3ea0af8e4@arm.com>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL] Rockchip driver updates for 4.18 round 2
+Date: Fri, 25 May 2018 14:57:24 -0700
+Message-ID: <20180525215724.if43mgylfrdseatr@localhost>
+References: <2574457.1saVLptjF6@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8495bffd-2a52-ca85-1bc9-afc3ea0af8e4@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, xxm@rock-chips.com, Joerg Roedel <joro@8bytes.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>, jcliang@chromium.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.co.uk>, tfiga@chromium.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <2574457.1saVLptjF6@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc,
-
-Am Freitag, 25. Mai 2018, 13:07:02 CEST schrieb Marc Zyngier:
-> [Thanks Robin for pointing me to that patch.]
+On Thu, May 24, 2018 at 03:20:54PM +0200, Heiko Stuebner wrote:
+> Hi Arnd, Kevin Olof,
 > 
-> Hi Heiko,
+> please find below a second pull request for Rockchip-specific drivers,
+> adding power-domain support for some more socs on top of the
+> previous git tag.
 > 
-> On 24/05/18 23:06, Heiko Stübner wrote:
-> > From: Sandy Huang <hjc@rock-chips.com>
-> > 
-> > The vop irq is shared between vop and iommu and irq probing in the
-> > iommu driver moved to the probe function recently. This can in some
-> > cases lead to a stall if the irq is triggered while the vop driver
-> > still has it disabled.
-> > 
-> > But there is no real need to disable the irq, as the vop can simply
-> > also track its enabled state and ignore irqs in that case.
-> > 
-> > So remove the enable/disable handling and add appropriate condition
-> > to the irq handler.
-> > 
-> > Signed-off-by: Sandy Huang <hjc@rock-chips.com>
-> > [added an actual commit message]
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> > Hi Ezequiel,
-> > 
-> > this patch came from a discussion I had with Rockchip people over the
-> > iommu changes and resulting issues back in april, but somehow was
-> > forgotten and not posted to the lists. Correcting that now.
-> > 
-> > So removing the enable/disable voodoo on the shared interrupt is
-> > the preferred way.
-> > 
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 13 ++++++-------
-> >  1 file changed, 7 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > index 510cdf0..61493d4 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > @@ -549,8 +549,6 @@ static int vop_enable(struct drm_crtc *crtc)
-> >  
-> >  	spin_unlock(&vop->reg_lock);
-> >  
-> > -	enable_irq(vop->irq);
-> > -
-> >  	drm_crtc_vblank_on(crtc);
-> >  
-> >  	return 0;
-> > @@ -596,8 +594,6 @@ static void vop_crtc_atomic_disable(struct drm_crtc *crtc,
-> >  
-> >  	vop_dsp_hold_valid_irq_disable(vop);
-> >  
-> > -	disable_irq(vop->irq);
-> > -
-> >  	vop->is_enabled = false;
-> >  
-> >  	/*
-> > @@ -1168,6 +1164,13 @@ static irqreturn_t vop_isr(int irq, void *data)
-> >  	int ret = IRQ_NONE;
-> >  
-> >  	/*
-> > +	 * since the irq is shared with iommu, iommu irq is enabled before vop
-> > +	 * enable, so before vop enable we do nothing.
-> > +	 */
-> > +	if (!vop->is_enabled)
-> > +		return IRQ_NONE;
-> > +
 > 
-> What guarantee do we have that the IOMMU will actually service that
-> interrupt? Can't we get into a situation where the interrupt gets
-> ignored by both drivers and subsequently disabled by the core irq code
-> as being spurious?
+> If it looks ok, please pull
+> Heiko
 > 
-> From what I understood of the way things are plugged together on the
-> rockchip platforms, each individual VOP is behind a single IOMMU, hence
-> there there is hardly any point in handling IOMMU interrupts if the VOP
-> is off.
+> The following changes since commit 9e59c5f66c624b43c766a9fe3b2430e0e976bf0e:
+> 
+>   soc: rockchip: power-domain: Fix wrong value when power up pd with writemask (2018-05-14 11:53:26 +0200)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.18-rockchip-drivers-2
+> 
+> for you to fetch changes up to 9bdf401bf49eddba98ae36f7243b888d43496bd6:
+> 
+>   soc: rockchip: power-domain: add power domain support for px30 (2018-05-23 20:47:57 +0200)
 
-Yeah, which is probably the reason that patch fell through the cracks
-initially. I resurrected it from the internal discussion because of the issue
-described below.
-
-> But I'm missing the actual reason behind this patch. Could you enlighten me?
-
-Recently the iommu driver moved the irq request from the iommu enablement
-to its probe function. With that change Ezequiel got various stalls, see
-	https://lkml.org/lkml/2018/5/24/1347
+Merged, thanks!
 
 
-Heiko
+-Olof
