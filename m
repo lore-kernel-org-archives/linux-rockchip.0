@@ -1,107 +1,47 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v6 05/17] media: rkisp1: add Rockchip ISP1 subdev driver
-Date: Fri, 25 May 2018 13:35:45 +0900
-Message-ID: <CAAFQd5B8DbnmmkKRb-2M7PFHDAKRFOA1Bnk-si_AZLjfzXOgPg@mail.gmail.com>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
-	<20180308094807.9443-6-jacob-chen@iotwrt.com>
-	<20180503090909.o3dyhukzs2y7em5z@tarshish>
-	<CAAFQd5CvBv4hkE=PSHBJTYa9Lj0SyggxpMBEAYD=if0=T0uzHw@mail.gmail.com>
-	<20180507063814.vweb4p3nfgnoc3td@tarshish>
-	<CAAFQd5A7gAK4fXH9YVrobR5_QX_5f8xa272R_56v5YUghV6Sxw@mail.gmail.com>
-	<20180524113012.mt5b2f2vrhfrn3d7@tarshish>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180524113012.mt5b2f2vrhfrn3d7@tarshish>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?6ZmI5Z+O?= <cc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Allon Huang <allon.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
-	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: [PATCH 0/6] arm64: dts: Add missing cooling device properties for CPUs
+Date: Fri, 25 May 2018 11:10:00 +0530
+Message-ID: <cover.1527225682.git.viresh.kumar@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: arm@kernel.org, Carlo Caione <carlo@caione.org>, Catalin Marinas <catalin.marinas@arm.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Mark Rutland <mark.rutland@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Wei Xu <xuwei5@hisilicon.com>, Will Deacon <will.deacon@arm.com>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, devicetree@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 24, 2018 at 8:30 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+Hello,
 
-> Hi Tomasz,
+This fixes missing cooling device properties for CPUs for the ARM64
+platforms. This is build tested by the zero day testing infrastructure
+as well.
 
-> On Mon, May 07, 2018 at 06:41:50AM +0000, Tomasz Figa wrote:
-> > On Mon, May 7, 2018 at 3:38 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > > On Mon, May 07, 2018 at 06:13:27AM +0000, Tomasz Figa wrote:
-> > > > On Thu, May 3, 2018 at 6:09 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
-wrote:
-> > > > > On Thu, Mar 08, 2018 at 05:47:55PM +0800, Jacob Chen wrote:
-> > > > > > +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int
-on)
-> > > > > > +{
-> > > > > > +     struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
-> > > > > > +     int ret;
-> > > > > > +
-> > > > > > +     v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power:
-%d\n",
-> > > > on);
-> > > > > > +
-> > > > > > +     if (on) {
-> > > > > > +             ret = pm_runtime_get_sync(isp_dev->dev);
-> > > > > > +             if (ret < 0)
-> > > > > > +                     return ret;
-> > > > > > +
-> > > > > > +             rkisp1_config_clk(isp_dev);
-> > > > > > +     } else {
-> > > > > > +             ret = pm_runtime_put(isp_dev->dev);
-> > > >
-> > > > > I commented this line out to make more than one STREAMON work.
-> > Otherwise,
-> > > > > the second STREAMON hangs. I guess the bug is not this driver.
-> > Probably
-> > > > > something in drivers/soc/rockchip/pm_domains.c. Just noting that
-in
-> > case
-> > > > > you or someone on Cc would like to investigate it further.
-> > > > >
-> > > > > I tested v4.16-rc4 on the Tinkerboard.
-> > > >
-> > > > Looks like that version doesn't include the IOMMU PM and clock
-handling
-> > > > rework [1], which should fix a lot of runtime PM issues. FWIW,
-> > linux-next
-> > > > seems to already include it.
-> > > >
-> > > > [1] https://lkml.org/lkml/2018/3/23/44
-> >
-> > > Thanks for the reference.
-> >
-> > > It looks like the iommu driver part is in Linus' tree already. The DT
-> > part is
-> > > in the v4.18-armsoc/dts32 branch of Heiko's tree. Am I missing
-anything?
-> >
-> > You're right, most of the series made it in time for 4.17. However, the
-DT
-> > part (precisely, the clocks properties added to IOMMU nodes) is crucial
-for
-> > the fixes to be effective.
-> >
-> > > Anyway, I'll take a look.
-> >
-> > Thanks for testing. :) (Forgot to mention in my previous email...)
+Individual maintainers can pick the patches to their SoC trees or I will
+ask ARM SoC maintainers to pick them up later.
 
-> I finally got around to testing. Unfortunately, kernel v4.17-rc6 with
-> cherry-pick of commit c78751f91c0b (ARM: dts: rockchip: add clocks in
-iommu
-> nodes) from Heiko's tree still exhibit the same problem. STREAMON hangs on
-> second try. The same workaround "fixes" it.
+--
+viresh
 
-Thanks for testing. I'm out of ideas, since the same code seems to work
-fine for us in Chrome OS 4.4 kernel. Maybe we could have someone from RK
-take a look.
+Viresh Kumar (6):
+  arm64: dts: amlogic: Add missing cooling device properties for CPUs
+  arm64: dts: freescale: Add missing cooling device properties for CPUs
+  arm64: dts: hisilicon: Add missing cooling device properties for CPUs
+  arm64: dts: mediatek: Add missing cooling device properties for CPUs
+  arm64: dts: rockchip: Add missing cooling device properties for CPUs
+  arm64: dts: socionext: Add missing cooling device properties for CPUs
 
-Best regards,
-Tomasz
+ .../boot/dts/amlogic/meson-gxm-khadas-vim2.dts     | 24 ++++++++++++++++++++++
+ arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi     |  5 ++++-
+ arch/arm64/boot/dts/freescale/fsl-ls1046a.dtsi     |  3 +++
+ arch/arm64/boot/dts/freescale/fsl-ls1088a.dtsi     |  6 ++++++
+ arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi     |  4 ++++
+ arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi     |  4 ++++
+ arch/arm64/boot/dts/hisilicon/hi6220.dtsi          | 16 ++++++++++++++-
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi           |  1 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  3 +++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           | 12 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  8 ++++++--
+ arch/arm64/boot/dts/socionext/uniphier-ld20.dtsi   |  2 ++
+ 13 files changed, 86 insertions(+), 4 deletions(-)
+
+-- 
+2.15.0.194.g9af6a3dea062
