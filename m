@@ -1,14 +1,16 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] clk: divider: Add CLK_DIVIDER_EVEN flag support
-Date: Fri, 25 May 2018 16:37:39 +0800
-Message-ID: <55ab3c00-fa2f-b821-e512-a741a3c339ec@rock-chips.com>
-References: <1523172498-74798-1-git-send-email-shawn.lin@rock-chips.com>
- <fab22026-32eb-04c2-6f18-d58394cafd08@rock-chips.com>
+From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: rockchip-vpu driver usability
+Date: Fri, 25 May 2018 17:52:57 +0800
+Message-ID: <5B07DCF9.2090709@rock-chips.com>
+References: <20180524103431.63eog25qynr72ots@tarshish>
+ <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
+ <20180524121824.fdtyjez3lc5pftfz@tarshish>
+ <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <fab22026-32eb-04c2-6f18-d58394cafd08-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,143 +20,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xiao Yao <xiaoyao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Xing Zheng <xing.zheng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-UGluZy4uLi4gOikKCk9uIDIwMTgvNS84IDEwOjE5LCBTaGF3biBMaW4gd3JvdGU6Cj4gSGkgTWlj
-aGFlbCBhbmQgU3RlcGhlbgo+IAo+IEFueSBjaGFuY2UgdG8gdGFrZSBhIGxvb2sgYXQgdGhpcyBw
-YXRjaD8gOikKPiAKPiBPbiAyMDE4LzQvOCAxNToyOCwgU2hhd24gTGluIHdyb3RlOgo+PiBDTEtf
-RElWSURFUl9FVkVOIGlzIHVzZWQgZm9yIGNsb2NrIGRpdmRlcnMgdGhhdCBzaG91bGQgb25seQo+
-PiB1c2UgZXZlbiBudW1iZXIgaW4gdGhlIGRpdiBmaWVsZC4KPj4KPj4gVHdvIGNsb2NrIGRpdmRl
-ciBzaG91bGQgY29uc2lkZXIgdG8gdXNlIHRoaXMgZmxhZwo+PiAoMSkgVGhlIGRpdmRlciBpcyBw
-aHlzaWNhbGx5IG9ubHkgc3VwcG9ydCBldmVuIGRpdiBudW1iZXIgdG8KPj4gZ2VuZXJhdGUgNTAl
-IGR1dHkgY3ljbGUgY2xvY2sgcmF0ZS4KPj4gKDIpIFRoZSBkaXZkZXIncyBjbG9jayBjb25zdW1l
-ciByZXF1ZXN0IGl0IHRvIHVzZSBldmVuIGRpdiBudW1iZXIKPj4gdG8gZ2VuZXJhdGUgdGhlIG1v
-c3QgY2xvc2VzdCByZXF1ZXN0ZWQgcmF0ZSBmb3Igd2hhdGV2ZXIgcmVhc29uLgo+Pgo+PiBJbiBz
-b21lIHBsYXRmb3JtcywgZm9yIGluc3RhbmNlIFJvY2tjaGlwLCB0aGUgZU1NQy9TRElPL1NETU1D
-IHNob3VsZAo+PiByZXF1ZXN0IGRpdmRlciB0byB1c2UgZXZlbiBudW1iZXIgd2hlbiB3b3JraW5n
-IGF0IGEgaGlnaCB0aHJvdWdocHV0Cj4+IHNwZWVkIG1vZGUgcmVsaWFibHkuIEhvd2V2ZXIsIHRo
-YXQgd2Fzbid0IGd1YXJhbnRlZWQgYnkgY2xvY2sgZnJhbWV3b3JrLgo+PiBTbyB0aGUgcHJldmlv
-dXMgdHJpY2t5IGlzIHRvIGNhcmVmdWxseSBhc3NpZ24gbWFnaWMgY2xvY2sgcmF0ZSB0byB0aGVp
-cgo+PiBwYXJlbnRzIGFzIHdlbGwgYXMgY29uc3VtZXIncyBjbG9jayByYXRlIHdoZW4gcmVxdWVz
-dGluZy4gVGhhdCB3b3Jrcwo+PiBiYWQgaW4gcHJhY3RpY2UgaWYgZm9sa3MgY2hhbmdlIHRoZSBw
-YXJlbnRzIGNsb2NrIHJhdGUgb3IgdGhlIGNsb2NrCj4+IGhpZXJhcmNoeSByYW5kb21seS4gVGhh
-dCBhbHNvIHdvcmsgYmFkIGlmIHRoZSBjb25zdW1lcidzIGNsb2NrIHJhdGUKPj4gY2FtZSBmcm9t
-IHRoZSBEVCwgd2hpY2ggaXMgY2hhbmdlZCBzbyBmcmFxdWVudCBmb3IgZGlmZmVyZW50IGJvYXJk
-cy4KPj4KPj4gVG8gbWFrZSBpdCdzIGxlc3MgcHJvbmUgdG8gbWFrZSBtaXN0YWtlIGFuZCB0byBt
-YWtlIGl0IHJlYWxseSByZXNwZWN0Cj4+IHRoZSBmYWN0IHRoYXQgdGhlIGRpdmRlciBzaG91bGQg
-dXNlIGV2ZW4gbnVtYmVyIHRvIHRoZSBkaXYgZmllbGQsIHdlCj4+IG5lZWQgdGhlIGNsb2NrIGZy
-YW1ld29yaydzIGhlbHAuIE5vdyB3ZSBoYXZlIENMS19ESVZJREVSX1BPV0VSX09GX1RXTywKPj4g
-d2hpY2ggY291bGQgZ3VhcmFudGVlIHRoZSBkaXYgZmllbGQgaXMgZXZlbiBudW1iZXIsIGhvd2V2
-ZXIsIG9idmlvdXNseQo+PiBpdCBza2lwcyB0aGUgZXZlbiBudW1iZXJzIHdoaWNoIGlzbid0IHRo
-ZSBwb3dlciBvZiAyLCBidXQgbWF5YmUgd2hpY2ggaXMKPj4gdGhlIGJlc3QgZGl2IHRvIGdlbmVy
-YXRlIGNsb3Nlc3QgY2xvY2sgcmF0ZSBmb3IgY29uc3VtZXIuCj4+Cj4+IExvb2sgYXQgdGhlIGV4
-YW1wbGVzIGhlcmUgd2hlbiBkb2luZyBzb21lIHJhbmRvbSB0ZXN0IG9uIFJvY2tjaGlwJ3MKPj4g
-cGxhdGZvcm1zLCBieSBjaGFuZ2luZyB0aGUgcmVxdWVzdGVkIGNsb2NrIHJhdGUgZnJvbSBEVCwg
-bmFtZWx5Cj4+IGFzc2lnbmluZyBkaWZmZXJlbnQgbWF4LWZycXVlbmN5IGZvciBNTUMgbm9kZSwK
-Pj4KPj4gd2hlbiB0aGUgbW1jIGhvc3QgZHJpdmVyIHJlcXVlc3RzIDgwTUh6IHdpdGggQ0xLX0RJ
-VklERVJfUE9XRVJfT0ZfVFdPCj4+IGZsYWcgZm9yIHRoZSBjbG9jayBkaXZkZXIsIGl0IHNob3dz
-IHRoZSBmaW5hbCBjbG9jayByYXRlIGlzIDYxLjQ0TWh6Cj4+Cj4+IHBsbF92cGxsMMKgwqDCoMKg
-wqDCoMKgIDHCoMKgwqDCoMKgwqDCoCAxIDk4MzAzOTk5OcKgwqDCoMKgIDDCoMKgIDAKPj4gwqDC
-oMKgIHZwbGwwwqDCoMKgwqDCoMKgwqAgNMKgwqDCoMKgwqDCoMKgIDQgOTgzMDM5OTk5wqDCoMKg
-wqAgMMKgwqAgMAo+PiDCoMKgwqDCoMKgIGNsa19lbW1jX2RpdsKgwqDCoMKgwqDCoCAxwqDCoMKg
-wqDCoMKgwqAgMSAxMjI4ODAwMDDCoMKgwqDCoCAwwqDCoCAwCj4+IMKgwqDCoMKgY2xrX2VtbWPC
-oMKgwqAgMcKgwqDCoMKgwqDCoMKgIDEgMTIyODgwMDAwwqDCoMKgwqAgMMKgwqAgMAo+PiDCoMKg
-wqDCoMKgIGVtbWNfc2FtcGxlwqDCoMKgIDDCoMKgwqDCoMKgwqDCoCAwwqAgNjE0NDAwMDDCoMKg
-wqAgMCAxNTUKPj4gwqDCoMKgwqDCoCBlbW1jX2RydsKgwqDCoCAwwqDCoMKgwqDCoMKgwqAgMMKg
-IDYxNDQwMDAwwqDCoMKgIDAgMTgwCj4+Cj4+IFdpdGggdGhpcyBwYXRjaCBhbmQgYWRkIENMS19E
-SVZJREVSX0VWRU4gZmxhZyBmb3IgY2xrX2VtbWNfZGl2LCB3ZSBnZXQKPj4gdGhlIGZpbmFsIGNs
-b2NrIHJhdGUsIDY3LjczNzZNSHouCj4+Cj4+IHBsbF92cGxsMcKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgMcKgwqDCoMKgwqDCoMKgIDEgODEyODUxMTk5wqDCoMKgIDDCoMKgIDAKPj4gwqDC
-oMKgIHZwbGwxwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDLCoMKgwqDCoMKgwqDCoCAy
-IDgxMjg1MTE5OcKgwqDCoMKgIDDCoMKgIDAKPj4gwqDCoMKgwqDCoCBjbGtfZW1tY19kaXbCoMKg
-wqDCoMKgwqAgMcKgwqDCoMKgwqDCoMKgIDEgMTM1NDc1MjAwwqDCoMKgwqAgMMKgwqAgMAo+PiDC
-oMKgwqDCoGNsa19lbW1jwqDCoMKgIDHCoMKgwqDCoMKgwqDCoCAxIDEzNTQ3NTIwMMKgwqDCoMKg
-IDDCoMKgIDAKPj4gwqDCoMKgwqDCoCBlbW1jX3NhbXBsZcKgwqAgMMKgwqDCoMKgwqDCoMKgIDDC
-oCA2NzczNzYwMMKgwqDCoMKgIDAgMTEzCj4+IMKgwqDCoMKgwqAgZW1tY19kcnbCoMKgwqAgMMKg
-wqDCoMKgwqDCoMKgIDDCoCA2NzczNzYwMMKgwqDCoCAwIDE4MAo+Pgo+PiBBcHByZW50bHkgNjc3
-Mzc2MDAgaXMgYmV0dGVyIHRoYW4gNjE0NDAwMDAgd2hlbiByZXF1ZXN0aW5nIDgwTUh6Lgo+PiBP
-ZiBjb3Vyc2UsIHdlIGNvdWxkIGhhdmUgbW9yZSBjYXNlIHRoYXQgd29yc2VuIHRoZSBnYXAgYmV0
-d2Vlbgo+PiB0aGUgZGVzaXJlZCByYXRlIGFuZCB0aGUgYWN0dWFsIHJhdGUgaWYgdXNpbmcgQ0xL
-X0RJVklERVJfUE9XRVJfT0ZfVFdPLgo+Pgo+PiBBbHRlcm5hdGl2ZWx5LCBjbGtfZGl2X3RhYmxl
-IGNvdWxkIGJlIHJlc29ydGVkIHRvIGhhbmRsZSBkaWZmZXJlbnQga2luZHMKPj4gb2YgZGl2IGxp
-bWlsYXRpb24sIGFuZCBpdCBzZWVtcyB0byBiZSBhcHBsaWVkIHRvIGlycmVndWxhciBkaXYgCj4+
-IGNhbGN1bGF0aW9uCj4+IGluIHByYWN0aWNlIGJ5IGN1cnJlbnQgY2xvY2sgcHJvdmlkZXIgZHJp
-dmVycywgYnV0IGV2ZW4gbnVtYmVyIGZvciBkaXYKPj4gZmllbGQgaXMgYSByYXRoZXIgY29tbW9u
-LCByZWd1bGFyIGFuZCBzeW1tZXRyaWNhbCByZXF1aXJlbWVudC4gU28gaXQgaXMKPj4gd29ydGgg
-dG8gaW50cm9kdWNlcyBDTEtfRElWSURFUl9FVkVOIGZsYWcgZm9yIGNsb2NrIGZyYW1ld29yayB0
-byBtYWtlCj4+IHRoZSBiZXN0IGluIHRoaXMgcHJvY2Vzcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTog
-U2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+Cj4+IC0tLQo+Pgo+PiBDaGFu
-Z2VzIGluIHYzOgo+PiAtIEZpeCBhIHdyb25nIGlmIGNvbmRpdGlvbiBjaGVjawo+Pgo+PiBDaGFu
-Z2VzIGluIHYyOgo+PiAtIEF2b2lkIHRvIHVzZSBkaXYgMSBpZiAoQ0xLX0RJVklERVJfRVZFTiB8
-IENMS19ESVZJREVSX1BPV0VSX09GX1RXTykKPj4gwqDCoCBzdWdnZXN0ZWQgYnkgSGVpa28uIEFu
-ZCBzZWVtcyBhY3R1YWxseSBubyBvdGhlciBmbGFncyBzaG91bGQgYmUgCj4+IGJvdGhlcmVkCj4+
-IMKgwqAgYnkgdGhpcyBuZXdseSBhZGRlZCBDTEtfRElWSURFUl9FVkVOLgo+Pgo+PiDCoCBkcml2
-ZXJzL2Nsay9jbGstZGl2aWRlci5jwqDCoMKgIHwgMjYgKysrKysrKysrKysrKysrKysrKysrKysr
-LS0KPj4gwqAgaW5jbHVkZS9saW51eC9jbGstcHJvdmlkZXIuaCB8wqAgMyArKysKPj4gwqAgMiBm
-aWxlcyBjaGFuZ2VkLCAyNyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9jbGsvY2xrLWRpdmlkZXIuYyBiL2RyaXZlcnMvY2xrL2Nsay1kaXZp
-ZGVyLmMKPj4gaW5kZXggYjYyMzRhNS4uOGYzMDVmMSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9j
-bGsvY2xrLWRpdmlkZXIuYwo+PiArKysgYi9kcml2ZXJzL2Nsay9jbGstZGl2aWRlci5jCj4+IEBA
-IC0xNTksOCArMTU5LDE3IEBAIHN0YXRpYyBib29sIF9pc192YWxpZF90YWJsZV9kaXYoY29uc3Qg
-c3RydWN0IAo+PiBjbGtfZGl2X3RhYmxlICp0YWJsZSwKPj4gwqAgc3RhdGljIGJvb2wgX2lzX3Zh
-bGlkX2Rpdihjb25zdCBzdHJ1Y3QgY2xrX2Rpdl90YWJsZSAqdGFibGUsIAo+PiB1bnNpZ25lZCBp
-bnQgZGl2LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdW5zaWduZWQgbG9uZyBm
-bGFncykKPj4gwqAgewo+PiAtwqDCoMKgIGlmIChmbGFncyAmIENMS19ESVZJREVSX1BPV0VSX09G
-X1RXTykKPj4gLcKgwqDCoMKgwqDCoMKgIHJldHVybiBpc19wb3dlcl9vZl8yKGRpdik7Cj4+ICvC
-oMKgwqAgYm9vbCBpc192YWxpZDsKPj4gKwo+PiArwqDCoMKgIGlmIChmbGFncyAmIENMS19ESVZJ
-REVSX1BPV0VSX09GX1RXTykgewo+PiArwqDCoMKgwqDCoMKgwqAgaXNfdmFsaWQgPSBpc19wb3dl
-cl9vZl8yKGRpdik7Cj4+ICvCoMKgwqDCoMKgwqDCoCBpZiAoZmxhZ3MgJiBDTEtfRElWSURFUl9F
-VkVOKQo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gaXNfdmFsaWQgJiYgKGRpdiAh
-PSAxKTsKPj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiBpc192YWxpZDsKPj4gK8KgwqDCoCB9Cj4+
-ICsKPj4gK8KgwqDCoCBpZiAoZmxhZ3MgJiBDTEtfRElWSURFUl9FVkVOKQo+PiArwqDCoMKgwqDC
-oMKgwqAgcmV0dXJuICEoZGl2ICUgMik7Cj4+IMKgwqDCoMKgwqAgaWYgKHRhYmxlKQo+PiDCoMKg
-wqDCoMKgwqDCoMKgwqAgcmV0dXJuIF9pc192YWxpZF90YWJsZV9kaXYodGFibGUsIGRpdik7Cj4+
-IMKgwqDCoMKgwqAgcmV0dXJuIHRydWU7Cj4+IEBAIC0yMDgsNiArMjE3LDEyIEBAIHN0YXRpYyBp
-bnQgX2Rpdl9yb3VuZF91cChjb25zdCBzdHJ1Y3QgCj4+IGNsa19kaXZfdGFibGUgKnRhYmxlLAo+
-PiDCoCB7Cj4+IMKgwqDCoMKgwqAgaW50IGRpdiA9IERJVl9ST1VORF9VUF9VTEwoKHU2NClwYXJl
-bnRfcmF0ZSwgcmF0ZSk7Cj4+ICvCoMKgwqAgLyoKPj4gK8KgwqDCoMKgICogQ2hlY2sgZXZlbiBi
-ZWZvcmUgcG93ZXIgb2YgdHdvIHRvIGF2b2lkIGRpdiAxIGlmIGNvbWJpbmF0aW9uCj4+ICvCoMKg
-wqDCoCAqIGhhcHBlbnMsIHdoaWNoIGFwcGxpZXMgdG8gYWxsIHRoZSBmb2xsb3dpbmcgc2ltaWxh
-cml0aWVzLgo+PiArwqDCoMKgwqAgKi8KPj4gK8KgwqDCoCBpZiAoZmxhZ3MgJiBDTEtfRElWSURF
-Ul9FVkVOKQo+PiArwqDCoMKgwqDCoMKgwqAgZGl2ID0gIShkaXYgJSAyKSA/IGRpdiA6IChkaXYg
-KyAxKTsKPj4gwqDCoMKgwqDCoCBpZiAoZmxhZ3MgJiBDTEtfRElWSURFUl9QT1dFUl9PRl9UV08p
-Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBkaXYgPSBfX3JvdW5kdXBfcG93X29mX3R3byhkaXYpOwo+
-PiDCoMKgwqDCoMKgIGlmICh0YWJsZSkKPj4gQEAgLTIyNiw2ICsyNDEsMTEgQEAgc3RhdGljIGlu
-dCBfZGl2X3JvdW5kX2Nsb3Nlc3QoY29uc3Qgc3RydWN0IAo+PiBjbGtfZGl2X3RhYmxlICp0YWJs
-ZSwKPj4gwqDCoMKgwqDCoCB1cCA9IERJVl9ST1VORF9VUF9VTEwoKHU2NClwYXJlbnRfcmF0ZSwg
-cmF0ZSk7Cj4+IMKgwqDCoMKgwqAgZG93biA9IHBhcmVudF9yYXRlIC8gcmF0ZTsKPj4gK8KgwqDC
-oCBpZiAoZmxhZ3MgJiBDTEtfRElWSURFUl9FVkVOKSB7Cj4+ICvCoMKgwqDCoMKgwqDCoCB1cCA9
-ICEodXAgJSAyKSA/IHVwIDogKHVwICsgMSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBkb3duID0gIShk
-b3duICUgMikgPyBkb3duIDogKGRvd24gLSAxKTsKPj4gK8KgwqDCoCB9Cj4+ICsKPj4gwqDCoMKg
-wqDCoCBpZiAoZmxhZ3MgJiBDTEtfRElWSURFUl9QT1dFUl9PRl9UV08pIHsKPj4gwqDCoMKgwqDC
-oMKgwqDCoMKgIHVwID0gX19yb3VuZHVwX3Bvd19vZl90d28odXApOwo+PiDCoMKgwqDCoMKgwqDC
-oMKgwqAgZG93biA9IF9fcm91bmRkb3duX3Bvd19vZl90d28oZG93bik7Cj4+IEBAIC0yNjQsNiAr
-Mjg0LDggQEAgc3RhdGljIGludCBfbmV4dF9kaXYoY29uc3Qgc3RydWN0IGNsa19kaXZfdGFibGUg
-Cj4+ICp0YWJsZSwgaW50IGRpdiwKPj4gwqAgewo+PiDCoMKgwqDCoMKgIGRpdisrOwo+PiArwqDC
-oMKgIGlmIChmbGFncyAmIENMS19ESVZJREVSX0VWRU4pCj4+ICvCoMKgwqDCoMKgwqDCoCBkaXYg
-PSAhKGRpdiAlIDIpID8gZGl2IDogKGRpdiArIDEpOwo+PiDCoMKgwqDCoMKgIGlmIChmbGFncyAm
-IENMS19ESVZJREVSX1BPV0VSX09GX1RXTykKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiBf
-X3JvdW5kdXBfcG93X29mX3R3byhkaXYpOwo+PiDCoMKgwqDCoMKgIGlmICh0YWJsZSkKPj4gZGlm
-ZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvY2xrLXByb3ZpZGVyLmggYi9pbmNsdWRlL2xpbnV4L2Ns
-ay1wcm92aWRlci5oCj4+IGluZGV4IDIxMGE4OTAuLjdjNTk2MTEgMTAwNjQ0Cj4+IC0tLSBhL2lu
-Y2x1ZGUvbGludXgvY2xrLXByb3ZpZGVyLmgKPj4gKysrIGIvaW5jbHVkZS9saW51eC9jbGstcHJv
-dmlkZXIuaAo+PiBAQCAtMzg4LDYgKzM4OCw4IEBAIHN0cnVjdCBjbGtfZGl2X3RhYmxlIHsKPj4g
-wqDCoCAqIENMS19ESVZJREVSX01BWF9BVF9aRVJPIC0gRm9yIGRpdmlkZXJzIHdoaWNoIGFyZSBs
-aWtlIAo+PiBDTEtfRElWSURFUl9PTkVfQkFTRUQKPj4gwqDCoCAqwqDCoMKgIGV4Y2VwdCB3aGVu
-IHRoZSB2YWx1ZSByZWFkIGZyb20gdGhlIHJlZ2lzdGVyIGlzIHplcm8sIHRoZSAKPj4gZGl2aXNv
-ciBpcwo+PiDCoMKgICrCoMKgwqAgMl53aWR0aCBvZiB0aGUgZmllbGQuCj4+ICsgKiBDTEtfRElW
-SURFUl9FVkVOIC0gRm9yIHRoZSBkaXZpZGVycyB3aGljaCBjb3VsZCBvbmx5IHVzZSBldmVuIAo+
-PiBudW1iZXIgaW4gdGhlCj4+ICsgKsKgwqDCoCBkaXYgZmllbGQuCj4+IMKgwqAgKi8KPj4gwqAg
-c3RydWN0IGNsa19kaXZpZGVyIHsKPj4gwqDCoMKgwqDCoCBzdHJ1Y3QgY2xrX2h3wqDCoMKgIGh3
-Owo+PiBAQCAtNDA5LDYgKzQxMSw3IEBAIHN0cnVjdCBjbGtfZGl2aWRlciB7Cj4+IMKgICNkZWZp
-bmUgQ0xLX0RJVklERVJfUk9VTkRfQ0xPU0VTVMKgwqDCoCBCSVQoNCkKPj4gwqAgI2RlZmluZSBD
-TEtfRElWSURFUl9SRUFEX09OTFnCoMKgwqDCoMKgwqDCoCBCSVQoNSkKPj4gwqAgI2RlZmluZSBD
-TEtfRElWSURFUl9NQVhfQVRfWkVST8KgwqDCoMKgwqDCoMKgIEJJVCg2KQo+PiArI2RlZmluZSBD
-TEtfRElWSURFUl9FVkVOwqDCoMKgwqDCoMKgwqAgQklUKDcpCj4+IMKgIGV4dGVybiBjb25zdCBz
-dHJ1Y3QgY2xrX29wcyBjbGtfZGl2aWRlcl9vcHM7Cj4+IMKgIGV4dGVybiBjb25zdCBzdHJ1Y3Qg
-Y2xrX29wcyBjbGtfZGl2aWRlcl9yb19vcHM7Cj4+Cj4gCj4gCj4gCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+On 05/25/2018 02:10 PM, Tomasz Figa wrote:
+> On Thu, May 24, 2018 at 9:18 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+>
+>> Hi Tomasz,
+>
+>> On Thu, May 24, 2018 at 08:46:35PM +0900, Tomasz Figa wrote:
+>>> On Thu, May 24, 2018 at 7:34 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+>>>> I'm trying to get the RK3288 VPU do h.264 encoding on the Tinkerboard
+>>>> platform with latest mainline kernel. I found the v4l2 based
+> rockchip-vpu
+>>>> driver in the vendor kernel. But I could not get it work even in the
+>>>> context of that kernel. Is this driver in usable state? If not, how
+> far it
+>>>> is from being usable?
+>>>
+>>> The driver in chromeos-3.14 kernel [1] is running in production on
+> RK3288
+>>> systems, while the one in chromeos-4.4 [2] on RK3399 systems.
+>>>
+>>> [1]
+>>>
+> https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14/drivers/media/platform/rk3288-vpu/
+>>> [2]
+>>>
+> https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/media/platform/rockchip-vpu/
+>>>
+>>> However, it doesn't implement a regular stateful V4L2 encoder API, since
+>>> the hardware is stateless and does only part of the encoding. For other
+>>> things, like bitstream generation and bitrate control, we have
+> libv4l-based
+>>> plugins for rk3288 [3] and rk3399 [4].
+>>>
+>>> [3]
+>>>
+> https://chromium.googlesource.com/chromiumos/third_party/libv4lplugins/+/master/libv4l-rockchip/
+>>> [4]
+>>>
+> https://chromium.googlesource.com/chromiumos/third_party/libv4lplugins/+/master/libv4l-rockchip_v2/
+>
+>> This is interesting, thanks.
+>
+>> It looks like only v2 supports h.264 encoding. Does the v2 plugin work
+> with
+>> the rk3288?
+>
+> Hmm, looks like I missed the part about h264 in your original message (only
+> noticed encoding). We didn't have a need to encode h264 on rk3288 devices.
+> The need showed up only later when we were working on rk3399. This made
+> both the driver and plugin for rk3288 lack h264 support.
+>
+> AFAICT the hardware programming interface differs between rk3288 and
+> rk3399, so v2 might not work, but maybe you just need to reshuffle some
+> registers.
+>
+> It's also possible that Rockchip has some code for it. Jeffy, do you know
+> if there is h264 driver code and plugin for rk3288 available somewhere
+> (based on the driver developed for Chrome OS 3.14 kernel)?
+>
+
+well, i do saw a h264e driver for rk3288 in cros kernel:
+chromiumos/src/third_party/kernel/local/drivers/media/platform/rockchip-vpu# 
+ls rk3288_vpu_hw_h264e.c
+
+and the related struct defined in v2 plugin:
+libv4l-rockchip_v2/libvepu/common/rk_venc.h:120:struct 
+rk3288_h264e_reg_params {
+
+
+>
+>> A recent discussion on the linux-media list indicated that gstreamer and
+>> libv4l2 are not a good match. Which application would you recommend for
+> doing
+>> h.264 encoding?
+>
+>>> Do you have any details on what was going wrong when you tried to "get
+> it
+>>> work even in the context of that kernel"?
+>
+>> I used the code from the 'develop' branch of the TinkerOS kernel source
+>> tree[1]. I had to build the latest gstreamer version 1.14.0 to get the
+>> v4l2h264enc plugin. On startup I got a lot of "must be set encoding output
+>> size" error messages from try_fmt. Shortly after that I got a NULL
+> dereference
+>> BUG message.
+>
+>> But since you say that the driver does not implement the regular API, I
+> can't
+>> expect gstreamer native V4L2 code to work, right?
+>
+> Nope. GStreamer would be expecting the normal stateful encoder API.
+>
+>
+>> [1] https://github.com/TinkerBoard/debian_kernel
+>
+>>>> Another option is to forward port the rockchip-vcodec shim driver for
+> the
+>>>> MPP
+>>>> framework. I'm aware of Myy Miouyouyou's work[1] in this area. But
+> this
+>>>> driver
+>>>> seems unusable as well. Testing v4.17-rc6, the PM code fails to
+> enable the
+>>>> video power domain (the hvec power domain enables correctly, though).
+> The
+>>>> error is:
+>>>
+>>>>     rockchip-pm-domain ff730000.power-management:power-controller:
+> failed
+>>> to get ack on domain 'pd_video', val=0x8021c
+>>>
+>>> Hmm, this looks like some problem with power domains. I don't think
+> this is
+>>> related to the codec driver itself. Could be something wrong with power
+>>> domain driver or some data in device tree, such as power domain clocks.
+>>>
+>>>
+>>>> With the TinkerOS provided kernel I managed to make the VPU encode to
+>>> h.264
+>>>> using the gstreamer MPP plugin. But I would rather not use that
+> kernel if
+>>>> possible, since that would mean backporting other v4l2 code that I
+> need.
+>>>
+>>>> Do you have any other idea/direction for me to explore?
+>>>
+>>> I think you should be able to get our driver to work, but ideally we
+> should
+>>> create a proper stateless encoder API, based on V4L2 Request API,
+> similar
+>>> to what's being proposed for decoders.
+>
+>> Thanks for your detailed and helpful response.
+>
+> Well, not so helpful in the end. I feel like we could have done better with
+> pushing this driver upstream. Hopefully the Request API finalizes soon and
+> we can try to push this forward.
+>
+> Best regards,
+> Tomasz
+>
+>
+>
