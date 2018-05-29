@@ -1,109 +1,29 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/2] drm/rockchip: vop: fix irq disabled after vop
- driver probed
-Date: Tue, 29 May 2018 14:17:53 +0200
-Message-ID: <2101966.8jTPiMBMkx@diego>
-References: <20180528132002.7712-1-heiko@sntech.de>
- <20180528132002.7712-3-heiko@sntech.de>
- <c4b699f3-dec8-a7e3-a0d6-c483be2ae10f@arm.com>
+From: Gevorg Sahakyan <Gevorg.Sahakyan@synopsys.com>
+Subject: Re: [PATCH v5 0/2] usb: dwc2: fix isoc split in transfer issue
+Date: Tue, 29 May 2018 14:30:06 +0000
+Message-ID: <3A9D5F5B1BA2034E826C50459B71BE044CB587EA@am04wembxa.internal.synopsys.com>
+References: <1526031992-16565-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <c4b699f3-dec8-a7e3-a0d6-c483be2ae10f@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: marc.zyngier@arm.com, jeffy.chen@rock-chips.com, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, enric.balletbo@collabora.co.uk, tomeu.vizoso@collabora.co.uk, ezequiel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: William Wu <william.wu@rock-chips.com>, "Minas.Harutyunyan@synopsys.com" <Minas.Harutyunyan@synopsys.com>, "felipe.balbi@linux.intel.com" <felipe.balbi@linux.intel.com>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Cc: "sergei.shtylyov@cogentembedded.com" <sergei.shtylyov@cogentembedded.com>, "heiko@sntech.de" <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "frank.wang@rock-chips.com" <frank.wang@rock-chips.com>, "huangtao@rock-chips.com" <huangtao@rock-chips.com>, "dianders@google.com" <dianders@google.com>, "daniel.meng@rock-chips.com" <daniel.meng@rock-chips.com>, "John.Youn@synopsys.com" <John.Youn@synopsys.com>, "wzz@rock-chips.com" <wzz@rock-chips.com>, "zsq@rock-chips.com" <zsq@rock-chips.com>, "Allen.Hsu@quantatw.com" <Allen.Hsu@quantatw.com>, "StanTsui@AOPEN.com" <StanTsui@AOPEN.com>, Spruce.Wu@qua
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDI5LiBNYWkgMjAxOCwgMTM6NTk6NDIgQ0VTVCBzY2hyaWViIFJvYmluIE11
-cnBoeToKPiBPbiAyOC8wNS8xOCAxNDoyMCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBGcm9t
-OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+ID4gCj4gPiBUaGUgdm9wIGlycSBp
-cyBzaGFyZWQgYmV0d2VlbiB2b3AgYW5kIGlvbW11IGFuZCBpcnEgcHJvYmluZyBpbiB0aGUKPiA+
-IGlvbW11IGRyaXZlciBtb3ZlZCB0byB0aGUgcHJvYmUgZnVuY3Rpb24gcmVjZW50bHkuIFRoaXMg
-Y2FuIGluIHNvbWUKPiA+IGNhc2VzIGxlYWQgdG8gYSBzdGFsbCBpZiB0aGUgaXJxIGlzIHRyaWdn
-ZXJlZCB3aGlsZSB0aGUgdm9wIGRyaXZlcgo+ID4gc3RpbGwgaGFzIGl0IGRpc2FibGVkLCBidXQg
-dGhlIHZvcCBpcnEgaGFuZGxlciBnZXRzIGNhbGxlZC4KPiA+IAo+ID4gQnV0IHRoZXJlIGlzIG5v
-IHJlYWwgbmVlZCB0byBkaXNhYmxlIHRoZSBpcnEsIGFzIHRoZSB2b3AgY2FuIHNpbXBseQo+ID4g
-YWxzbyB0cmFjayBpdHMgZW5hYmxlZCBzdGF0ZSBhbmQgaWdub3JlIGlycXMgaW4gdGhhdCBjYXNl
-Lgo+ID4gRm9yIHRoaXMgd2UgY2FuIHNpbXBseSBjaGVjayB0aGUgcG93ZXItZG9tYWluIHN0YXRl
-IG9mIHRoZSB2b3AsCj4gPiBzaW1pbGFyIHRvIGhvdyB0aGUgaW9tbXUgZHJpdmVyIGRvZXMgaXQu
-Cj4gPiAKPiA+IFNvIHJlbW92ZSB0aGUgZW5hYmxlL2Rpc2FibGUgaGFuZGxpbmcgYW5kIGFkZCBh
-cHByb3ByaWF0ZSBjb25kaXRpb24KPiA+IHRvIHRoZSBpcnEgaGFuZGxlci4KPiA+IAo+ID4gY2hh
-bmdlcyBpbiB2MjoKPiA+IC0gbW92ZSB0byBqdXN0IGNoZWNrIHRoZSBwb3dlci1kb21haW4gc3Rh
-dGUKPiA+IC0gYWRkIGNsb2NrIGhhbmRsaW5nCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFNhbmR5
-IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gPiBbYWRkIGNvbW1pdCBtZXNzYWdlLCBtb3Zl
-ZCB0byBwbV9ydW50aW1lX2dldF9pZl9pbl91c2VdCj4gPiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBT
-dHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4gLS0tCj4gPiAKPiA+ICAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDI4ICsrKysrKysrKysrKysrLS0tLS0t
-LQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMTkgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkK
-PiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKPiA+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-YyBpbmRleAo+ID4gYjU1MTU2YjhiYTNiLi42MTVhNWI0NGJmZTkgMTAwNjQ0Cj4gPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gPiArKysgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gPiBAQCAtNTczLDggKzU3
-Myw2IEBAIHN0YXRpYyBpbnQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gPiAK
-PiA+ICAgCXNwaW5fdW5sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKPiA+IAo+ID4gLQllbmFibGVfaXJx
-KHZvcC0+aXJxKTsKPiA+IC0KPiA+IAo+ID4gICAJZHJtX2NydGNfdmJsYW5rX29uKGNydGMpOwo+
-ID4gICAJCj4gPiAgIAlyZXR1cm4gMDsKPiA+IAo+ID4gQEAgLTYxOCw4ICs2MTYsNiBAQCBzdGF0
-aWMgdm9pZCB2b3BfY3J0Y19hdG9taWNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMKPiA+ICpjcnRj
-LD4gCj4gPiAgIAl2b3BfZHNwX2hvbGRfdmFsaWRfaXJxX2Rpc2FibGUodm9wKTsKPiA+IAo+ID4g
-LQlkaXNhYmxlX2lycSh2b3AtPmlycSk7Cj4gPiAtCj4gPiAKPiA+ICAgCXZvcC0+aXNfZW5hYmxl
-ZCA9IGZhbHNlOwo+ID4gICAJCj4gPiAgIAkvKgo+ID4gCj4gPiBAQCAtMTE5NSw2ICsxMTkxLDE2
-IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNyKGludCBpcnEsIHZvaWQgKmRhdGEpCj4gPiAK
-PiA+ICAgCXVpbnQzMl90IGFjdGl2ZV9pcnFzOwo+ID4gICAJaW50IHJldCA9IElSUV9OT05FOwo+
-ID4gCj4gPiArCS8qCj4gPiArCSAqIFRoZSBpcnEgaXMgc2hhcmVkIHdpdGggdGhlIGlvbW11LiBJ
-ZiB0aGUgcG93ZXItZG9tYWluIGlzIG9mZgo+ID4gKwkgKiB0aGUgaXJxIGhhcyB0byBiZSB0YXJn
-ZXR0ZWQgYXQgdGhlIGlvbW11Lgo+IAo+IEhtbSwgYXJlbid0IHRoZSBJT01NVXMgaW4gdGhlIHNh
-bWUgcG93ZXIgZG9tYWluIGFzIHRoZWlyIHJlc3BlY3RpdmUKPiBtYXN0ZXIsIHRob3VnaD8gSSB3
-b3VsZCBuYWl2ZWx5IGFzc3VtZSBzbywgYW5kIGl0IGRvZXMgbG9vayB0aGF0IHdheQo+IGZyb20g
-dGhlIERUcyBpbiB0aGUgQlNQIGtlcm5lbC4KPgo+IEFGQUlDUyB0aGUgSU9NTVUgdXNhZ2UgY291
-bnQgc2hvdWxkIG5ldmVyIGJlIGdyZWF0ZXIgdGhhbiB0aGUgVk9QIHVzYWdlCj4gY291bnQgKGV4
-Y2VwdCBiZWZvcmUgdGhlIFZPUCBkcml2ZXIgaGFzIHByb2JlZCwgYnV0IEkgZG9uJ3QgdGhpbmsg
-dGhhdAo+IG1hdHRlcnMpLCBzbyBhbHRob3VnaCB0aGlzIGxvb2tzIGxpa2UgYSBzZW5zaWJsZSBj
-aGFuZ2UgaW4gZ2VuZXJhbCBJCj4gY2FuJ3QgaGVscCBiZSBhIGxpdHRsZSBiaXQgcHV6emxlZCBh
-dCBob3cgYW5kIHdoeSB0aGUgZmxvdyB3b3Jrcy4KCk9rLCB0aGUgY29tbWVudCBtaWdodCBiZSBt
-aXNsZWFkaW5nLiBJdCBhY3R1YWxseSBtZWFucyB0byB1c2UgdGhlIHJ1bnRpbWUtcG0gCnN0YXRl
-IG9mIHRoZSB2b3AtX2RldmljZV8gYXMgYSBjaGVjay4KCkkuZS4gaW4gdm9wX2luaXRpYWxzKCks
-IE1hcmMgYWRkZWQgdGhlIHBhdGNoIGNsZWFyaW5nIGFuZCBtYXNraW5nIGFsbCB2b3AgCmludGVy
-cnVwdHMuIEluIHZvcF9lbmFibGUoKSB3ZSBoYXZlIHJ1bnRpbWVfZ2V0Xy4uLiArIGVuYWJsZW1l
-bnQgb2YKdm9wIGludGVycnVwdHMsIHdoaWNoIGdldCBkaXNhYmxlZCBpbiB2b3BfZGlzYWJsZSBh
-Z2Fpbi4KClRoYXQgd2F5LCBjaGVja2luZyB0aGUgcnVudGltZV9wbSBzdGF0ZSBzaG91bGQgYmUg
-YW4gaW5kaWNhdG9yIGlmIHRoZQppcnEgaXMgZm9yIHRoZSB2b3AgYW5kIG5vdCB0aGUgaW9tbXUu
-CgoKPiA+ICsJICovCj4gPiArCWlmICghcG1fcnVudGltZV9nZXRfaWZfaW5fdXNlKHZvcC0+ZGV2
-KSkKPiA+ICsJCXJldHVybiBJUlFfTk9ORTsKPiA+ICsKPiA+ICsJaWYgKFdBUk5fT04odm9wX2Nv
-cmVfY2xrc19lbmFibGUodm9wKSkpCj4gPiArCQlnb3RvIG91dDsKPiA+ICsKPiA+IAo+ID4gICAJ
-LyoKPiA+ICAgCQo+ID4gICAJICogaW50ZXJydXB0IHJlZ2lzdGVyIGhhcyBpbnRlcnJ1cHQgc3Rh
-dHVzLCBlbmFibGUgYW5kIGNsZWFyIGJpdHMsIHdlCj4gPiAgIAkgKiBtdXN0IGhvbGQgaXJxX2xv
-Y2sgdG8gYXZvaWQgYSByYWNlIHdpdGggZW5hYmxlL2Rpc2FibGVfdmJsYW5rKCkuCj4gPiAKPiA+
-IEBAIC0xMjA5LDggKzEyMTUsMTEgQEAgc3RhdGljIGlycXJldHVybl90IHZvcF9pc3IoaW50IGly
-cSwgdm9pZCAqZGF0YSkKPiA+IAo+ID4gICAJc3Bpbl91bmxvY2soJnZvcC0+aXJxX2xvY2spOwo+
-ID4gICAJCj4gPiAgIAkvKiBUaGlzIGlzIGV4cGVjdGVkIGZvciB2b3AgaW9tbXUgaXJxcywgc2lu
-Y2UgdGhlIGlycSBpcyBzaGFyZWQgKi8KPiA+IAo+ID4gLQlpZiAoIWFjdGl2ZV9pcnFzKQo+ID4g
-LQkJcmV0dXJuIElSUV9OT05FOwo+ID4gKwlpZiAoIWFjdGl2ZV9pcnFzKSB7Cj4gPiArCQlyZXQg
-PSBJUlFfTk9ORTsKPiA+ICsJCXZvcF9jb3JlX2Nsa3NfZGlzYWJsZSh2b3ApOwo+ID4gKwkJZ290
-byBvdXQ7Cj4gPiArCX0KPiA+IAo+ID4gICAJaWYgKGFjdGl2ZV9pcnFzICYgRFNQX0hPTERfVkFM
-SURfSU5UUikgewo+ID4gICAJCj4gPiAgIAkJY29tcGxldGUoJnZvcC0+ZHNwX2hvbGRfY29tcGxl
-dGlvbik7Cj4gPiAKPiA+IEBAIC0xMjM2LDYgKzEyNDUsMTAgQEAgc3RhdGljIGlycXJldHVybl90
-IHZvcF9pc3IoaW50IGlycSwgdm9pZCAqZGF0YSkKPiA+IAo+ID4gICAJCURSTV9ERVZfRVJST1Io
-dm9wLT5kZXYsICJVbmtub3duIFZPUCBJUlFzOiAlIzAyeFxuIiwKPiA+ICAgCQkKPiA+ICAgCQkJ
-ICAgICAgYWN0aXZlX2lycXMpOwo+ID4gCj4gPiArCXZvcF9jb3JlX2Nsa3NfZGlzYWJsZSh2b3Ap
-Owo+ID4gKwo+ID4gK291dDoKPiA+ICsJcG1fcnVudGltZV9wdXQodm9wLT5kZXYpOwo+ID4gCj4g
-PiAgIAlyZXR1cm4gcmV0Owo+ID4gICAKPiA+ICAgfQo+ID4gCj4gPiBAQCAtMTYxNCw5ICsxNjI3
-LDYgQEAgc3RhdGljIGludCB2b3BfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdAo+ID4g
-ZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpPiAKPiA+ICAgCWlmIChyZXQpCj4gPiAgIAkKPiA+
-ICAgCQlnb3RvIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU7Cj4gPiAKPiA+IC0JLyogSVJRIGlzIGlu
-aXRpYWxseSBkaXNhYmxlZDsgaXQgZ2V0cyBlbmFibGVkIGluIHBvd2VyX29uICovCj4gPiAtCWRp
-c2FibGVfaXJxKHZvcC0+aXJxKTsKPiA+IC0KPiA+IAo+ID4gICAJcmV0dXJuIDA7Cj4gPiAgIAo+
-ID4gICBlcnJfZGlzYWJsZV9wbV9ydW50aW1lOgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 5/11/2018 1:48 PM, William Wu wrote:=0A=
+> This patch fix dma unaligned problem and data lost problem for=0A=
+> isoc split in transfer.=0A=
+>=0A=
+> Test on rk3288 platform, use an usb hs Hub (GL852G-12) and an usb=0A=
+> fs audio device (Plantronics headset) to capture and playback.=0A=
+>=0A=
+> William Wu (2):=0A=
+>   usb: dwc2: alloc dma aligned buffer for isoc split in=0A=
+>   usb: dwc2: fix isoc split in transfer with no data=0A=
+>=0A=
+On HAPS-DX7 with HS HUB Belkin(050d:0233) using internal USB testing tool.=
+=0A=
+Tested-by: Gevorg Sahakyan <sahakyan@synopsys.com>=0A=
