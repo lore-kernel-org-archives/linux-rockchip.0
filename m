@@ -1,103 +1,88 @@
-From: djw@t-chip.com.cn
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: Add sdmmc UHS support for roc-rk3328-cc
-Date: Thu, 31 May 2018 13:03:21 +0800
-Message-ID: <1527743001-29656-1-git-send-email-djw@t-chip.com.cn>
-References: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v3 2/5] gpio: syscon: rockchip: add GPIO_MUTE support for rk3328
+Date: Thu, 31 May 2018 09:45:02 -0500
+Message-ID: <CAL_JsqJK4vrmLBeN_ZeGCXAyqshshL16B0KN_+8uvt+=-O9TEw@mail.gmail.com>
+References: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn> <1527737273-8387-3-git-send-email-djw@t-chip.com.cn>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn>
+In-Reply-To: <1527737273-8387-3-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Liang Chen <cl@rock-chips.com>, William Wu <william.wu@rock-chips.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Joseph Chen <chenjh@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Rocky Hao <rocky.hao@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Levin Du <djw@t-chip.com.cn>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Levin Du <djw@t-chip.com.cn>
+On Wed, May 30, 2018 at 10:27 PM,  <djw@t-chip.com.cn> wrote:
+> From: Levin Du <djw@t-chip.com.cn>
+>
+> In Rockchip RK3328, the output only GPIO_MUTE pin, originally for codec
+> mute control, can also be used for general purpose. It is manipulated by
+> the GRF_SOC_CON10 register.
+>
+> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+>
+> ---
+>
+> Changes in v3:
+> - Change from general gpio-syscon to specific rk3328-gpio-mute
+>
+> Changes in v2:
+> - Rename gpio_syscon10 to gpio_mute in doc
+>
+> Changes in v1:
+> - Refactured for general gpio-syscon usage for Rockchip SoCs.
+> - Add doc rockchip,gpio-syscon.txt
+>
+>  .../bindings/gpio/rockchip,rk3328-gpio-mute.txt    | 28 +++++++++++++++++++
+>  drivers/gpio/gpio-syscon.c                         | 31 ++++++++++++++++++++++
+>  2 files changed, 59 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+>
+> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+> new file mode 100644
+> index 0000000..10bc632
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+> @@ -0,0 +1,28 @@
+> +Rockchip RK3328 GPIO controller dedicated for the GPIO_MUTE pin.
+> +
+> +In Rockchip RK3328, the output only GPIO_MUTE pin, originally for codec mute
+> +control, can also be used for general purpose. It is manipulated by the
+> +GRF_SOC_CON10 register.
+> +
+> +Required properties:
+> +- compatible: Should contain "rockchip,rk3328-gpio-mute".
+> +- gpio-controller: Marks the device node as a gpio controller.
+> +- #gpio-cells: Should be 2. The first cell is the pin number and
+> +  the second cell is used to specify the gpio polarity:
+> +    0 = Active high,
+> +    1 = Active low.
+> +
+> +Example:
+> +
+> +       grf: syscon@ff100000 {
+> +               compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
+> +
+> +               gpio_mute: gpio-mute {
 
-In roc-rk3328-cc board, the signal voltage of sdmmc is supplied by
-the vcc_sdio regulator, which is a mux between 1.8V and 3.3V,
-controlled by a special output only gpio pin labeled
-"gpiomut_pmuio_iout", corresponding bit 1 of the syscon GRF_SOC_CON10.
+Node names should be generic:
 
-This special pin can now be reference as <&gpio_mute 0>, thanks
-to the gpio-syscon driver, which makes writing regulator-gpio possible.
+gpio {
 
-If the signal voltage changes, the io domain needs to change
-correspondingly.
+This also means you can't add another GPIO node in the future and
+you'll have to live with "rockchip,rk3328-gpio-mute" covering more
+than 1 GPIO if you do need to add more GPIOs.
 
-To use this feature, the following options are required in kernel config:
- - CONFIG_GPIO_SYSCON=y
- - CONFIG_POWER_AVS=y
- - CONFIG_ROCKCHIP_IODOMAIN=y
+> +                       compatible = "rockchip,rk3328-gpio-mute";
+> +                       gpio-controller;
+> +                       #gpio-cells = <2>;
+> +               };
+> +       };
+> +
+> +Note: The gpio_mute node should be declared as the child of the GRF (General
+> +Register File) node. The GPIO_MUTE pin is referred to as <&gpio_mute 0>.
 
-Signed-off-by: Levin Du <djw@t-chip.com.cn>
+This is wrong because you should have 2 cells. The phandle doesn't
+count as a cell.
 
----
-
-Changes in v3:
-- Use <&gpio_mute 0> instead of <&gpio_mute 1> to refer to the GPIO_MUTE pin.
-
-Changes in v2:
-- Rename gpio_syscon10 to gpio_mute in rk3328-roc-cc.dts
-
-Changes in v1:
-- Split into small patches
-- Sort dts properties in sdmmc node
-
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index b983abd..25c1111 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -41,6 +41,19 @@
- 		vin-supply = <&vcc_io>;
- 	};
- 
-+	vcc_sdio: sdmmcio-regulator {
-+		compatible = "regulator-gpio";
-+		gpios = <&gpio_mute 0 GPIO_ACTIVE_HIGH>;
-+		states = <1800000 0x1
-+			  3300000 0x0>;
-+		regulator-name = "vcc_sdio";
-+		regulator-type = "voltage";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+		vin-supply = <&vcc_sys>;
-+	};
-+
- 	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -213,7 +226,7 @@
- 
- 	vccio1-supply = <&vcc_io>;
- 	vccio2-supply = <&vcc18_emmc>;
--	vccio3-supply = <&vcc_io>;
-+	vccio3-supply = <&vcc_sdio>;
- 	vccio4-supply = <&vcc_18>;
- 	vccio5-supply = <&vcc_io>;
- 	vccio6-supply = <&vcc_io>;
-@@ -242,7 +255,12 @@
- 	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
- 	vmmc-supply = <&vcc_sd>;
-+	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
- };
- 
-@@ -277,3 +295,7 @@
- &usb_host0_ohci {
- 	status = "okay";
- };
-+
-+&gpio_mute {
-+	status = "okay";
-+};
--- 
-2.7.4
+Rob
