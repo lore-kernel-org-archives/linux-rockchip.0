@@ -1,48 +1,56 @@
 From: djw@t-chip.com.cn
-Subject: [PATCH v3 1/5] gpio: syscon: allow fetching syscon from parent node
-Date: Thu, 31 May 2018 11:27:49 +0800
-Message-ID: <1527737273-8387-2-git-send-email-djw@t-chip.com.cn>
+Subject: [PATCH v3 3/5] arm64: dts: rockchip: Add GPIO_MUTE pin support to rk3328
+Date: Thu, 31 May 2018 11:27:51 +0800
+Message-ID: <1527737273-8387-4-git-send-email-djw@t-chip.com.cn>
 References: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org
+Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, David Wu <david.wu@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Finley Xiao <finley.xiao@rock-chips.com>, William Wu <william.wu@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko@sntech.de>
+From: Levin Du <djw@t-chip.com.cn>
 
-Syscon nodes can be a simple-mfd and the syscon-users then be declared
-as children of this node. That way the parent-child structure can be
-better represented for devices that are fully embedded in the syscon.
+Adding a new gpio controller named "gpio_mute" to rk3328, providing
+access to the GPIO_MUTE pin, which is manupulated by the GRF_SOC_CON10
+register.
 
-Therefore allow getting the syscon from the parent if neither
-a special compatible nor a gpio,syscon-dev property is defined.
+The GPIO_MUTE pin is referred to as <&gpio_mute 0>.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Levin Du <djw@t-chip.com.cn>
+
 ---
 
-Changes in v3: None
-Changes in v2: None
+Changes in v3:
+- Use dedicated "rockchip,rk3328-gpio-mute" driver
+
+Changes in v2:
+- Rename gpio_syscon10 to gpio_mute in rk3328.dtsi
+
 Changes in v1:
-- New: allow fetching syscon from parent node in gpio-syscon driver
+- Split from V0 and add to rk3328.dtsi for general use.
 
- drivers/gpio/gpio-syscon.c | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/gpio/gpio-syscon.c b/drivers/gpio/gpio-syscon.c
-index 537cec7..7325b86 100644
---- a/drivers/gpio/gpio-syscon.c
-+++ b/drivers/gpio/gpio-syscon.c
-@@ -205,6 +205,8 @@ static int syscon_gpio_probe(struct platform_device *pdev)
- 	} else {
- 		priv->syscon =
- 			syscon_regmap_lookup_by_phandle(np, "gpio,syscon-dev");
-+		if (IS_ERR(priv->syscon) && np->parent)
-+			priv->syscon = syscon_node_to_regmap(np->parent);
- 		if (IS_ERR(priv->syscon))
- 			return PTR_ERR(priv->syscon);
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index be2bfbc..2ee0fa3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -309,6 +309,13 @@
+ 			mode-loader = <BOOT_BL_DOWNLOAD>;
+ 		};
  
++		/* Use <&gpio_mute 0> to refer to GPIO_MUTE pin */
++		gpio_mute: gpio-mute {
++			compatible = "rockchip,rk3328-gpio-mute";
++			gpio-controller;
++			#gpio-cells = <2>;
++			status = "disabled";
++		};
+ 	};
+ 
+ 	uart0: serial@ff110000 {
 -- 
 2.7.4
