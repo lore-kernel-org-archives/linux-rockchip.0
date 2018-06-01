@@ -1,13 +1,11 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [GIT PULL] Rockchip clock updates for 4.18
-Date: Fri, 01 Jun 2018 10:26:55 -0700
-Message-ID: <152787401574.144038.10380569270518549727@swboyd.mtv.corp.google.com>
-References: <6125058.CyqeWxRe4B@phil>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 0/2] rockchip/rga: A fix and a cleanup
+Date: Fri,  1 Jun 2018 16:49:50 -0300
+Message-ID: <20180601194952.17440-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6125058.CyqeWxRe4B@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,15 +15,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Heiko Stuebner (2018-05-24 06:16:06)
-> Hi Mike, Stephen,
-> 
-> please find below the pull request for 4.18 Rockchip clock updates.
-> As the tag describes this contains two cleanups for an open-coded
-> search and removing the old dt-based gate-clocks.
-> 
+Decided to test v4l2transform filters and found these two
+issues.
 
-Thanks. Pulled into clk-next.
+Without the first commit, start_streaming fails. The second
+commit is just a cleanup, removing a seemingly redundant
+operation.
+
+Tested on RK3288 Radxa Rock2 with these kind of pipelines:
+
+gst-launch-1.0 videotestsrc ! video/x-raw,width=640,height=480,framerate=30/1,format=RGB ! v4l2video0convert ! video/x-raw,width=1920,height=1080,framerate=30/1,format=NV16 ! fakesink
+
+gst-launch-1.0 v4l2src device=/dev/video1 ! video/x-raw,width=640,height=480,framerate=30/1,format=RGB ! v4l2video0convert ! video/x-raw,width=1920,height=1080,framerate=30/1,format=NV16 ! kmssink
+
+Ezequiel Garcia (2):
+  rockchip/rga: Fix broken .start_streaming
+  rockchip/rga: Remove unrequired wait in .job_abort
+
+ drivers/media/platform/rockchip/rga/rga-buf.c | 44 +++++++++----------
+ drivers/media/platform/rockchip/rga/rga.c     | 13 +-----
+ drivers/media/platform/rockchip/rga/rga.h     |  2 -
+ 3 files changed, 23 insertions(+), 36 deletions(-)
+
+-- 
+2.17.1
