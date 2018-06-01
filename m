@@ -1,7 +1,7 @@
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 2/2] rockchip/rga: Remove unrequired wait in .job_abort
-Date: Fri,  1 Jun 2018 16:49:52 -0300
-Message-ID: <20180601194952.17440-3-ezequiel@collabora.com>
+Subject: [PATCH 1/2] rockchip/rga: Fix broken .start_streaming
+Date: Fri,  1 Jun 2018 16:49:51 -0300
+Message-ID: <20180601194952.17440-2-ezequiel@collabora.com>
 References: <20180601194952.17440-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,68 +21,94 @@ To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As per the documentation, job_abort is not required
-to wait until the current job finishes. It is redundant
-to do so, as the core will perform the wait operation.
+Currently, rga_buf_start_streaming() is expecting
+pm_runtime_get_sync to return zero on success, which
+is wrong.
 
-Remove the wait infrastructure completely.
+As per the documentation, pm_runtime_get_sync increments
+the device's usage counter and return its result.
+This means it will typically return a positive integer
+on success and a negative error code.
 
+Therefore, rockchip-rga driver is currently unusable
+failing to start_streaming in most cases. Fix it and
+while here, cleanup the buffer return-to-core logic.
+
+Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
 Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/media/platform/rockchip/rga/rga.c | 13 +------------
- drivers/media/platform/rockchip/rga/rga.h |  2 --
- 2 files changed, 1 insertion(+), 14 deletions(-)
+ drivers/media/platform/rockchip/rga/rga-buf.c | 44 +++++++++----------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index d508a8ba6f89..5a5a6139e18a 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -41,14 +41,7 @@ module_param(debug, int, 0644);
- 
- static void job_abort(void *prv)
- {
--	struct rga_ctx *ctx = prv;
--	struct rockchip_rga *rga = ctx->rga;
--
--	if (!rga->curr)	/* No job currently running */
--		return;
--
--	wait_event_timeout(rga->irq_queue,
--			   !rga->curr, msecs_to_jiffies(RGA_TIMEOUT));
-+	/* Can't do anything rational here */
+diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
+index fa1ba98c96dc..c7c5a371b11e 100644
+--- a/drivers/media/platform/rockchip/rga/rga-buf.c
++++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+@@ -64,43 +64,43 @@ static void rga_buf_queue(struct vb2_buffer *vb)
+ 	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
  }
  
- static void device_run(void *prv)
-@@ -104,8 +97,6 @@ static irqreturn_t rga_isr(int irq, void *prv)
- 		v4l2_m2m_buf_done(src, VB2_BUF_STATE_DONE);
- 		v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
- 		v4l2_m2m_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx);
++static void rga_buf_return_buffers(struct vb2_queue *q, enum vb2_buffer_state state)
++{
++	struct rga_ctx *ctx = vb2_get_drv_priv(q);
++	struct vb2_v4l2_buffer *vbuf;
++
++	for (;;) {
++		if (V4L2_TYPE_IS_OUTPUT(q->type))
++			vbuf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
++		else
++			vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
++		if (!vbuf)
++			break;
++		v4l2_m2m_buf_done(vbuf, state);
++	}
++}
++
+ static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
+ {
+ 	struct rga_ctx *ctx = vb2_get_drv_priv(q);
+ 	struct rockchip_rga *rga = ctx->rga;
+-	int ret, i;
++	int ret;
+ 
+ 	ret = pm_runtime_get_sync(rga->dev);
 -
--		wake_up(&rga->irq_queue);
+-	if (!ret)
+-		return 0;
+-
+-	for (i = 0; i < q->num_buffers; ++i) {
+-		if (q->bufs[i]->state == VB2_BUF_STATE_ACTIVE) {
+-			v4l2_m2m_buf_done(to_vb2_v4l2_buffer(q->bufs[i]),
+-					  VB2_BUF_STATE_QUEUED);
+-		}
++	if (ret < 0) {
++		rga_buf_return_buffers(q, VB2_BUF_STATE_QUEUED);
++		return ret;
  	}
  
- 	return IRQ_HANDLED;
-@@ -838,8 +829,6 @@ static int rga_probe(struct platform_device *pdev)
- 	spin_lock_init(&rga->ctrl_lock);
- 	mutex_init(&rga->mutex);
+-	return ret;
++	return 0;
+ }
  
--	init_waitqueue_head(&rga->irq_queue);
+ static void rga_buf_stop_streaming(struct vb2_queue *q)
+ {
+ 	struct rga_ctx *ctx = vb2_get_drv_priv(q);
+ 	struct rockchip_rga *rga = ctx->rga;
+-	struct vb2_v4l2_buffer *vbuf;
 -
- 	ret = rga_parse_dt(rga);
- 	if (ret)
- 		dev_err(&pdev->dev, "Unable to parse OF data\n");
-diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
-index 5d43e7ea88af..72d8a159fa7b 100644
---- a/drivers/media/platform/rockchip/rga/rga.h
-+++ b/drivers/media/platform/rockchip/rga/rga.h
-@@ -86,8 +86,6 @@ struct rockchip_rga {
- 	/* ctrl parm lock */
- 	spinlock_t ctrl_lock;
+-	for (;;) {
+-		if (V4L2_TYPE_IS_OUTPUT(q->type))
+-			vbuf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+-		else
+-			vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+-		if (!vbuf)
+-			break;
+-		v4l2_m2m_buf_done(vbuf, VB2_BUF_STATE_ERROR);
+-	}
  
--	wait_queue_head_t irq_queue;
--
- 	struct rga_ctx *curr;
- 	dma_addr_t cmdbuf_phy;
- 	void *cmdbuf_virt;
++	rga_buf_return_buffers(q, VB2_BUF_STATE_ERROR);
+ 	pm_runtime_put(rga->dev);
+ }
+ 
 -- 
 2.17.1
