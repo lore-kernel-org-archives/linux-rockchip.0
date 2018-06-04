@@ -1,41 +1,57 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 0/2] Use SPDX-License-Identifier for rockchip devicetree files
-Date: Mon, 04 Jun 2018 12:19:39 +0200
-Message-ID: <1700848.99AcjQORKy@phil>
-References: <20171215114427.32059-1-klaus.goger@theobroma-systems.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH 0/2] rockchip/rga: A fix and a cleanup
+Date: Mon, 04 Jun 2018 11:34:30 -0300
+Message-ID: <3706c4e9a9cdadfac4a40fdd9c3b15c94a338de1.camel@collabora.com>
+References: <20180601194952.17440-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20171215114427.32059-1-klaus.goger@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Klaus Goger <klaus.goger@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, Romain Perier <romain.perier@collabora.com>, Arnd Bergmann <arnd@arndb.de>, Andre Przywara <andre.przywara@arm.com>, Simon Xue <xxm@rock-chips.com>, Liang Chen <cl@rock-chips.com>, Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>, Icenowy Zheng <icenowy@aosc.io>, Shawn Lin <shawn.lin@rock-chips.com>, Catalin Marinas <catalin.marinas@arm.com>, Huibin Hong <huibin.hong@rock-chips.com>, David Wu <david.wu@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, William Wu <william.wu@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Jaehoon Chung <jh80.chung@samsung.com>, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180601194952.17440-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 15. Dezember 2017, 12:44:25 CEST schrieb Klaus Goger:
-> This patch series replaces all the license text in rockchip devicetree
-> files text with a proper SPDX-License-Identifier.
-> It follows the guidelines submitted[1] by Thomas Gleixner that are not
-> yet merged.
-> 
-> These series also fixes the issue with contradicting statements in most
-> licenses. The introduction text claims to be GPL or X11[2] but the
-> following verbatim copy of the license is actually a MIT[3] license.
-> The X11 license includes a advertise clause and trademark information
-> related to the X Consortium. As these X Consortium specfic points are
-> irrelevant for us we stick with the actuall license text.
-> 
-> [1] https://patchwork.kernel.org/patch/10091607/
-> [2] https://spdx.org/licenses/X11.html
-> [3] https://spdx.org/licenses/MIT.html
-> 
-> 
-> Klaus Goger (2):
->   arm64: dts: rockchip: use SPDX-License-Identifier
->   ARM: dts: rockchip: use SPDX-License-Identifier
+Ccing Jacob at the right address.
 
-This had now 6 months for anybody concerned about this change to speak
-up - with no NACKs received, so I've applied both patches for 4.19
+Perhaps we should fix the MAINTAINERS file.
 
-Heiko
+On Fri, 2018-06-01 at 16:49 -0300, Ezequiel Garcia wrote:
+> Decided to test v4l2transform filters and found these two
+> issues.
+> 
+> Without the first commit, start_streaming fails. The second
+> commit is just a cleanup, removing a seemingly redundant
+> operation.
+> 
+> Tested on RK3288 Radxa Rock2 with these kind of pipelines:
+> 
+> gst-launch-1.0 videotestsrc ! video/x-
+> raw,width=640,height=480,framerate=30/1,format=RGB !
+> v4l2video0convert ! video/x-
+> raw,width=1920,height=1080,framerate=30/1,format=NV16 ! fakesink
+> 
+> gst-launch-1.0 v4l2src device=/dev/video1 ! video/x-
+> raw,width=640,height=480,framerate=30/1,format=RGB !
+> v4l2video0convert ! video/x-
+> raw,width=1920,height=1080,framerate=30/1,format=NV16 ! kmssink
+> 
+> Ezequiel Garcia (2):
+>   rockchip/rga: Fix broken .start_streaming
+>   rockchip/rga: Remove unrequired wait in .job_abort
+> 
+>  drivers/media/platform/rockchip/rga/rga-buf.c | 44 +++++++++------
+> ----
+>  drivers/media/platform/rockchip/rga/rga.c     | 13 +-----
+>  drivers/media/platform/rockchip/rga/rga.h     |  2 -
+>  3 files changed, 23 insertions(+), 36 deletions(-)
+> 
