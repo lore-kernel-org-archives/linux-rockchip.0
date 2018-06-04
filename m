@@ -1,57 +1,56 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH 0/2] rockchip/rga: A fix and a cleanup
-Date: Mon, 04 Jun 2018 11:34:30 -0300
-Message-ID: <3706c4e9a9cdadfac4a40fdd9c3b15c94a338de1.camel@collabora.com>
-References: <20180601194952.17440-1-ezequiel@collabora.com>
+From: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Subject: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector
+ Firefly-RK3399
+Date: Mon,  4 Jun 2018 19:15:23 +0200
+Message-ID: <20180604171523.28454-1-xypron.glpk@gmx.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180601194952.17440-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Vagrant Cascadian <vagrant@debian.org>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Heinrich Schuchardt <xypron.glpk@gmx.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ccing Jacob at the right address.
+Without this patch the Firefly-RK3399 board boot process hangs after these
+lines:
 
-Perhaps we should fix the MAINTAINERS file.
+   fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
+   fan53555-reg: supplied by vcc_sys
+   vcc1v8_s3: supplied by vcc_1v8
 
-On Fri, 2018-06-01 at 16:49 -0300, Ezequiel Garcia wrote:
-> Decided to test v4l2transform filters and found these two
-> issues.
-> 
-> Without the first commit, start_streaming fails. The second
-> commit is just a cleanup, removing a seemingly redundant
-> operation.
-> 
-> Tested on RK3288 Radxa Rock2 with these kind of pipelines:
-> 
-> gst-launch-1.0 videotestsrc ! video/x-
-> raw,width=640,height=480,framerate=30/1,format=RGB !
-> v4l2video0convert ! video/x-
-> raw,width=1920,height=1080,framerate=30/1,format=NV16 ! fakesink
-> 
-> gst-launch-1.0 v4l2src device=/dev/video1 ! video/x-
-> raw,width=640,height=480,framerate=30/1,format=RGB !
-> v4l2video0convert ! video/x-
-> raw,width=1920,height=1080,framerate=30/1,format=NV16 ! kmssink
-> 
-> Ezequiel Garcia (2):
->   rockchip/rga: Fix broken .start_streaming
->   rockchip/rga: Remove unrequired wait in .job_abort
-> 
->  drivers/media/platform/rockchip/rga/rga-buf.c | 44 +++++++++------
-> ----
->  drivers/media/platform/rockchip/rga/rga.c     | 13 +-----
->  drivers/media/platform/rockchip/rga/rga.h     |  2 -
->  3 files changed, 23 insertions(+), 36 deletions(-)
-> 
+Blacklisting driver fan53555 allows booting.
+
+The device tree uses a value of fcs,suspend-voltage-selector different to
+any other board.
+
+Changing this setting to the usual value is sufficient to enable booting.
+
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 4f28628aa091..50940ef844a7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -458,7 +458,7 @@
+ 	vdd_cpu_b: regulator@40 {
+ 		compatible = "silergy,syr827";
+ 		reg = <0x40>;
+-		fcs,suspend-voltage-selector = <0>;
++		fcs,suspend-voltage-selector = <1>;
+ 		regulator-name = "vdd_cpu_b";
+ 		regulator-min-microvolt = <712500>;
+ 		regulator-max-microvolt = <1500000>;
+-- 
+2.17.1
