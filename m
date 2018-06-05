@@ -1,88 +1,45 @@
-From: Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector
- Firefly-RK3399
-Date: Mon, 4 Jun 2018 23:45:18 +0200
-Message-ID: <1d5c4a57-c89c-07e9-e4ad-1bda2247e2be@gmx.de>
-References: <20180604171523.28454-1-xypron.glpk@gmx.de>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v7 1/5] drm/rockchip: add transfer function for cdn-dp
+Date: Tue, 05 Jun 2018 15:42:11 +0200
+Message-ID: <2246202.0LhvmkcTbg@diego>
+References: <1527061353-16902-1-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180604171523.28454-1-xypron.glpk-Mmb7MZpHnFY@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Vagrant Cascadian <vagrant-8fiUuRrzOP0dnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Pierre-Hugues Husson <phh-8tEavu1zA38@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1527061353-16902-1-git-send-email-hl@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Lin Huang <hl@rock-chips.com>
+Cc: devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, briannorris@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, kishon@ti.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, zyw@rock-chips.com, daniel.vetter@intel.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/04/2018 07:15 PM, Heinrich Schuchardt wrote:
-> Without this patch the Firefly-RK3399 board boot process hangs after these
-> lines:
-> 
->    fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
->    fan53555-reg: supplied by vcc_sys
->    vcc1v8_s3: supplied by vcc_1v8
-> 
-> Blacklisting driver fan53555 allows booting.
-> 
-> The device tree uses a value of fcs,suspend-voltage-selector different to
-> any other board.
-> 
-> Changing this setting to the usual value is sufficient to enable booting.
-> 
-> Signed-off-by: Heinrich Schuchardt <xypron.glpk-Mmb7MZpHnFY@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-> index 4f28628aa091..50940ef844a7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-> @@ -458,7 +458,7 @@
->  	vdd_cpu_b: regulator@40 {
->  		compatible = "silergy,syr827";
->  		reg = <0x40>;
-> -		fcs,suspend-voltage-selector = <0>;
-> +		fcs,suspend-voltage-selector = <1>;
-
-The same value <1> is used in the legacy kernel:
-
-https://github.com/rockchip-linux/kernel/blob/release-4.4/arch/arm64/boot/dts/rockchip/rk3399-firefly-linux.dts
-
-	vdd_cpu_b: syr827@40 {
-		compatible = "silergy,syr827";
-		reg = <0x40>;
-		vin-supply = <&vcc5v0_sys>;
-		regulator-compatible = "fan53555-reg";
-		regulator-name = "vdd_cpu_b";
-		regulator-min-microvolt = <712500>;
-		regulator-max-microvolt = <1500000>;
-		regulator-ramp-delay = <1000>;
-		vsel-gpios = <&gpio1 18 GPIO_ACTIVE_HIGH>;
-		fcs,suspend-voltage-selector = <1>;
-		regulator-always-on;
-		regulator-boot-on;
-		regulator-initial-state = <3>;
-			regulator-state-mem {
-			regulator-off-in-suspend;
-		};
-};
-
-Best regards
-
-Heinrich
-
-
->  		regulator-name = "vdd_cpu_b";
->  		regulator-min-microvolt = <712500>;
->  		regulator-max-microvolt = <1500000>;
-> 
+SGksCgpBbSBNaXR0d29jaCwgMjMuIE1haSAyMDE4LCAwOTo0MjoyOSBDRVNUIHNjaHJpZWIgTGlu
+IEh1YW5nOgo+IEZyb206IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4gCj4gV2Ug
+bWF5IHN1cHBvcnQgdHJhaW5pbmcgb3V0c2lkZSBmaXJtd2FyZSwgc28gd2UgbmVlZCBzdXBwb3J0
+Cj4gZHBjZCByZWFkL3dyaXRlIHRvIGdldCB0aGUgbWVzc2FnZSBvciBkbyBzb21lIHNldHRpbmcg
+d2l0aAo+IGRpc3BsYXkuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2Nr
+LWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29t
+Pgo+IFJldmlld2VkLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiBSZXZp
+ZXdlZC1ieTogRW5yaWMgQmFsbGV0Ym8gPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+Cgo+
+IEBAIC0xMDMwLDYgKzEwNjQsMTMgQEAgc3RhdGljIGludCBjZG5fZHBfYmluZChzdHJ1Y3QgZGV2
+aWNlICpkZXYsIHN0cnVjdAo+IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKSBkcC0+YWN0aXZl
+ID0gZmFsc2U7Cj4gIAlkcC0+YWN0aXZlX3BvcnQgPSAtMTsKPiAgCWRwLT5md19sb2FkZWQgPSBm
+YWxzZTsKPiArCWRwLT5hdXgubmFtZSA9ICJEUC1BVVgiOwo+ICsJZHAtPmF1eC50cmFuc2ZlciA9
+IGNkbl9kcF9hdXhfdHJhbnNmZXI7Cj4gKwlkcC0+YXV4LmRldiA9IGRldjsKPiArCj4gKwlyZXQg
+PSBkcm1fZHBfYXV4X3JlZ2lzdGVyKCZkcC0+YXV4KTsKPiArCWlmIChyZXQpCj4gKwkJcmV0dXJu
+IHJldDsKCnRoaXMgaXMgbWlzc2luZyBtYXRjaGluZyBkcm1fZHBfYXV4X3VucmVnaXN0ZXIgY2Fs
+bHMgYm90aCBpbiB0aGUgZXJyb3IgcGF0aCBhcyAKd2VsbCBhcyBpbiB0aGUgdW5iaW5kIGNhbGxi
+YWNrLgoKV2l0aCB0aGUgY29kZSBhcyBpcywgdGhlIGtlcm5lbCBnaXZlcyB3YXJuaW5ncyBhYm91
+dCBpdCB0cnlpbmcgdG8gaW5pdGlhbGl6ZSAKYW4gYWxyZWFkeSBpbml0aWFsaXplZCBvYmplY3Qg
+Li4uIGluIGNhc2VzIGxpa2UgcHJvYmUtZGVmZXJyYWxzLgoKCkhlaWtvCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
