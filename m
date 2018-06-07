@@ -1,42 +1,115 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 2/4] clk: rockchip: add dt-binding header for px30
-Date: Thu, 07 Jun 2018 09:56:58 +0200
-Message-ID: <2233320.o0OUWNYjTa@diego>
-References: <1528340786-462-1-git-send-email-zhangqing@rock-chips.com> <1528340786-462-3-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v1 3/4] clk: rockchip: add support for half divider
+Date: Thu, 07 Jun 2018 12:57:04 +0200
+Message-ID: <2360735.SLDx3PN3Y9@diego>
+References: <1528340786-462-1-git-send-email-zhangqing@rock-chips.com> <1528340786-462-4-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1528340786-462-3-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1528340786-462-4-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: sboyd@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
+To: Elaine Zhang <zhangqing@rock-chips.com>, sboyd@kernel.org, mturquette@baylibre.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 7. Juni 2018, 05:06:24 CEST schrieb Elaine Zhang:
-> Add the dt-bindings header for the px30, that gets shared between
-> the clock controller and the clock references in the dts.
-> Add softreset ID for px30.
+Hi Elaine,
+
+looks good to me overall, some minor things below.
+
+Am Donnerstag, 7. Juni 2018, 05:06:25 CEST schrieb Elaine Zhang:
+> The new Rockchip socs have optional half divider,
+> so we use "branch_half_divider" + "COMPOSITE_NOMUX_HALFDIV \ DIV_HALF"
+> to hook that special divider clock-type into our clock-tree.
 > 
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+Please provide a bit more explanation on how this clock type, so
+people reading the git log later can understand how the divider works.
+
+
 > ---
->  include/dt-bindings/clock/px30-cru.h | 402
-> +++++++++++++++++++++++++++++++++++ 1 file changed, 402 insertions(+)
->  create mode 100644 include/dt-bindings/clock/px30-cru.h
+>  drivers/clk/rockchip/Makefile           |   1 +
+>  drivers/clk/rockchip/clk-half-divider.c | 235
+> ++++++++++++++++++++++++++++++++ drivers/clk/rockchip/clk.c              | 
+> 10 ++
+>  drivers/clk/rockchip/clk.h              |  45 ++++++
+>  4 files changed, 291 insertions(+)
+>  create mode 100644 drivers/clk/rockchip/clk-half-divider.c
 > 
-> diff --git a/include/dt-bindings/clock/px30-cru.h
-> b/include/dt-bindings/clock/px30-cru.h new file mode 100644
-> index 000000000000..db9fc2a0bb21
+> diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+> index 59b8d320960a..023f83ad3429 100644
+> --- a/drivers/clk/rockchip/Makefile
+> +++ b/drivers/clk/rockchip/Makefile
+> @@ -7,6 +7,7 @@ obj-y	+= clk-rockchip.o
+>  obj-y	+= clk.o
+>  obj-y	+= clk-pll.o
+>  obj-y	+= clk-cpu.o
+> +obj-y   += clk-half-divider.o
+
+all other entries use tabs as spacers between obj-y and the +=
+
+>  obj-y	+= clk-inverter.o
+>  obj-y	+= clk-mmc-phase.o
+>  obj-y	+= clk-muxgrf.o
+> diff --git a/drivers/clk/rockchip/clk-half-divider.c
+> b/drivers/clk/rockchip/clk-half-divider.c new file mode 100644
+> index 000000000000..23830de254ec
 > --- /dev/null
-> +++ b/include/dt-bindings/clock/px30-cru.h
-> @@ -0,0 +1,402 @@
+> +++ b/drivers/clk/rockchip/clk-half-divider.c
+> @@ -0,0 +1,235 @@
 > +/*
-> + * Copyright (c) 2017 Rockchip Electronics Co. Ltd.
-> + * Author: Elaine <zhangqing@rock-chips.com>
 
-				^^ full name maybe?
+copyright line missing?
 
-Otherwise looks good.
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <linux/slab.h>
+> +#include <linux/bitops.h>
+> +#include <linux/regmap.h>
+> +#include <linux/clk.h>
+> +#include <linux/clk-provider.h>
+> +#include "clk.h"
+> +
+> +#define div_mask(width)	((1 << (width)) - 1)
+> +
+> +static bool _is_best_half_div(unsigned long rate, unsigned long now,
+> +			      unsigned long best, unsigned long flags)
+> +{
+> +	if (flags & CLK_DIVIDER_ROUND_CLOSEST)
+> +		return abs(rate - now) < abs(rate - best);
+> +
+> +	return now <= rate && now > best;
+> +}
+> +
+> +static unsigned long clk_half_divider_recalc_rate(struct clk_hw *hw,
+> +						  unsigned long parent_rate)
+> +{
+> +	struct clk_divider *divider = to_clk_divider(hw);
+
+While I find it very cool that we can reuse the clk_divider struct
+and see no issue doing it, I'm hoping for either Mike or Stephen
+to indicate if we're allowed to do that ;-)
+
+
+> +const struct clk_ops clk_half_divider_ops = {
+> +	.recalc_rate = clk_half_divider_recalc_rate,
+> +	.round_rate = clk_half_divider_round_rate,
+> +	.set_rate = clk_half_divider_set_rate,
+> +};
+> +EXPORT_SYMBOL_GPL(clk_half_divider_ops);
+
+this is only used locally in rockchip_clk_register_halfdiv, so doesn't
+need to be exported.
 
 
 Heiko
