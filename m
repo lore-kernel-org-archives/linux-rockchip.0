@@ -1,134 +1,85 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH] ASoC: rockchip: add config for rockchip dmaengine pcm register
-Date: Fri,  8 Jun 2018 16:31:09 +0800
-Message-ID: <1528446669-18141-1-git-send-email-jay.xu@rock-chips.com>
+From: Alexey Khoroshilov <khoroshilov@ispras.ru>
+Subject: [PATCH] ASoC: rockchip: put device_node on remove
+Date: Sun, 10 Jun 2018 01:20:54 +0300
+Message-ID: <1528582854-8402-1-git-send-email-khoroshilov@ispras.ru>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, heiko@sntech.de, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, jay.xu@rock-chips.com, broonie@kernel.org
-Cc: shawn.lin@rock-chips.com, kever.yang@rock-chips.com, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: Alexey Khoroshilov <khoroshilov@ispras.ru>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ldv-project@linuxtesting.org, Julia Lawall <julia.lawall@lip6.fr>, sil2review@lists.osadl.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch makes the rockchip i2s pcm configurable by adding
-rockchip pcm config for devm_snd_dmaengine_pcm_register.
+snd_rk_mc_probe() gets a couple of device nodes with of_parse_phandle(),
+but there is no release of them.
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+The patch adds remove handler and proper error handling in the probe.
+
+Found by Linux Driver Verification project (linuxtesting.org).
+
+Signed-off-by: Alexey Khoroshilov <khoroshilov@ispras.ru>
 ---
- sound/soc/rockchip/Makefile       |  3 ++-
- sound/soc/rockchip/rockchip_i2s.c |  3 ++-
- sound/soc/rockchip/rockchip_pcm.c | 45 +++++++++++++++++++++++++++++++++++++++
- sound/soc/rockchip/rockchip_pcm.h | 14 ++++++++++++
- 4 files changed, 63 insertions(+), 2 deletions(-)
- create mode 100644 sound/soc/rockchip/rockchip_pcm.c
- create mode 100644 sound/soc/rockchip/rockchip_pcm.h
+ sound/soc/rockchip/rockchip_rt5645.c | 27 ++++++++++++++++++++++++---
+ 1 file changed, 24 insertions(+), 3 deletions(-)
 
-diff --git a/sound/soc/rockchip/Makefile b/sound/soc/rockchip/Makefile
-index 05b078e..65e814d 100644
---- a/sound/soc/rockchip/Makefile
-+++ b/sound/soc/rockchip/Makefile
-@@ -1,10 +1,11 @@
- # SPDX-License-Identifier: GPL-2.0
- # ROCKCHIP Platform Support
- snd-soc-rockchip-i2s-objs := rockchip_i2s.o
-+snd-soc-rockchip-pcm-objs := rockchip_pcm.o
- snd-soc-rockchip-pdm-objs := rockchip_pdm.o
- snd-soc-rockchip-spdif-objs := rockchip_spdif.o
- 
--obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S) += snd-soc-rockchip-i2s.o
-+obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S) += snd-soc-rockchip-i2s.o snd-soc-rockchip-pcm.o
- obj-$(CONFIG_SND_SOC_ROCKCHIP_PDM) += snd-soc-rockchip-pdm.o
- obj-$(CONFIG_SND_SOC_ROCKCHIP_SPDIF) += snd-soc-rockchip-spdif.o
- 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 908211e..5e60181 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -22,6 +22,7 @@
- #include <sound/dmaengine_pcm.h>
- 
- #include "rockchip_i2s.h"
-+#include "rockchip_pcm.h"
- 
- #define DRV_NAME "rockchip-i2s"
- 
-@@ -667,7 +668,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		goto err_suspend;
+diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
+index 4db4fd56db35..881c32498808 100644
+--- a/sound/soc/rockchip/rockchip_rt5645.c
++++ b/sound/soc/rockchip/rockchip_rt5645.c
+@@ -181,7 +181,8 @@ static int snd_rk_mc_probe(struct platform_device *pdev)
+ 	if (!rk_dailink.cpu_of_node) {
+ 		dev_err(&pdev->dev,
+ 			"Property 'rockchip,i2s-controller' missing or invalid\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto put_codec_of_node;
  	}
  
--	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-+	ret = rockchip_pcm_platform_register(&pdev->dev);
+ 	rk_dailink.platform_of_node = rk_dailink.cpu_of_node;
+@@ -190,17 +191,36 @@ static int snd_rk_mc_probe(struct platform_device *pdev)
  	if (ret) {
- 		dev_err(&pdev->dev, "Could not register PCM\n");
- 		return ret;
-diff --git a/sound/soc/rockchip/rockchip_pcm.c b/sound/soc/rockchip/rockchip_pcm.c
-new file mode 100644
-index 0000000..f775383
---- /dev/null
-+++ b/sound/soc/rockchip/rockchip_pcm.c
-@@ -0,0 +1,45 @@
-+/*
-+ * Copyright (c) 2018 Rockchip Electronics Co. Ltd.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
+ 		dev_err(&pdev->dev,
+ 			"Soc parse card name failed %d\n", ret);
+-		return ret;
++		goto put_cpu_of_node;
+ 	}
+ 
+ 	ret = devm_snd_soc_register_card(&pdev->dev, card);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+ 			"Soc register card failed %d\n", ret);
+-		return ret;
++		goto put_cpu_of_node;
+ 	}
+ 
+ 	return ret;
 +
-+#include <linux/device.h>
-+#include <linux/init.h>
-+#include <linux/module.h>
++put_cpu_of_node:
++	of_node_put(rk_dailink.cpu_of_node);
++	rk_dailink.cpu_of_node = NULL;
++put_codec_of_node:
++	of_node_put(rk_dailink.codec_of_node);
++	rk_dailink.codec_of_node = NULL;
 +
-+#include <sound/core.h>
-+#include <sound/pcm.h>
-+#include <sound/soc.h>
-+#include <sound/dmaengine_pcm.h>
-+
-+#include "rockchip_pcm.h"
-+
-+static const struct snd_pcm_hardware snd_rockchip_hardware = {
-+	.info			= SNDRV_PCM_INFO_MMAP |
-+				  SNDRV_PCM_INFO_MMAP_VALID |
-+				  SNDRV_PCM_INFO_PAUSE |
-+				  SNDRV_PCM_INFO_RESUME,
-+	.period_bytes_min	= 32,
-+	.period_bytes_max	= 8192,
-+	.periods_min		= 1,
-+	.periods_max		= 52,
-+	.buffer_bytes_max	= 64 * 1024,
-+	.fifo_size		= 32,
-+};
-+
-+static const struct snd_dmaengine_pcm_config rk_dmaengine_pcm_config = {
-+	.pcm_hardware = &snd_rockchip_hardware,
-+	.prealloc_buffer_size = 32 * 1024,
-+};
-+
-+int rockchip_pcm_platform_register(struct device *dev)
-+{
-+	return devm_snd_dmaengine_pcm_register(dev, &rk_dmaengine_pcm_config,
-+		SND_DMAENGINE_PCM_FLAG_COMPAT);
++	return ret;
 +}
-+EXPORT_SYMBOL_GPL(rockchip_pcm_platform_register);
 +
-+MODULE_LICENSE("GPL v2");
-diff --git a/sound/soc/rockchip/rockchip_pcm.h b/sound/soc/rockchip/rockchip_pcm.h
-new file mode 100644
-index 0000000..d6c3611
---- /dev/null
-+++ b/sound/soc/rockchip/rockchip_pcm.h
-@@ -0,0 +1,14 @@
-+/*
-+ * Copyright (c) 2018 Rockchip Electronics Co. Ltd.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
++static int snd_rk_mc_remove(struct platform_device *pdev)
++{
++	of_node_put(rk_dailink.cpu_of_node);
++	rk_dailink.cpu_of_node = NULL;
++	of_node_put(rk_dailink.codec_of_node);
++	rk_dailink.codec_of_node = NULL;
 +
-+#ifndef _ROCKCHIP_PCM_H
-+#define _ROCKCHIP_PCM_H
-+
-+int rockchip_pcm_platform_register(struct device *dev);
-+
-+#endif
++	return 0;
+ }
+ 
+ static const struct of_device_id rockchip_rt5645_of_match[] = {
+@@ -212,6 +232,7 @@ MODULE_DEVICE_TABLE(of, rockchip_rt5645_of_match);
+ 
+ static struct platform_driver snd_rk_mc_driver = {
+ 	.probe = snd_rk_mc_probe,
++	.remove = snd_rk_mc_remove,
+ 	.driver = {
+ 		.name = DRV_NAME,
+ 		.pm = &snd_soc_pm_ops,
 -- 
-1.9.1
+2.7.4
