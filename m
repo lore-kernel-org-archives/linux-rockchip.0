@@ -1,14 +1,11 @@
-From: 4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Subject: [rk3188-radxa] USB reset, cannot enumerate
-Date: Thu, 04 Oct 2018 17:34:52 +0200
-Message-ID: <2171897.IN8UzJH6PV@think-future.de>
-References: <20181003185854.GA1174@think-future.de>
-Reply-To: "4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: "=?ISO-8859-1?B?SmFjb2IgQ2hlbg==?=" <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
+Subject: Re:  [PATCH 0/2] rockchip/rga: A fix and a cleanup
+Date: Mon, 11 Jun 2018 10:02:42 +0800
+Message-ID: <tencent_7145303C52804A69C5DCA429C5EBE474240A@qq.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181003185854.GA1174-ehbYDe70fqD9uQeqpI+JUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,69 +15,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?ISO-8859-1?B?RXplcXVpZWwgR2FyY2lh?= <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, =?ISO-8859-1?B?bGludXgtbWVkaWE=?= <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: =?ISO-8859-1?B?bGludXgtcm9ja2NoaXA=?= <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?ISO-8859-1?B?TWF1cm8gQ2FydmFsaG8gQ2hlaGFi?= <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?ISO-8859-1?B?amFjb2JjaGVuMTEw?= <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?ISO-8859-1?B?aGVpa28=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, =?ISO-8859-1?B?aGFucy52ZXJrdWls?= <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Ezequiel,
 
-When cloning the micro-sdcard (internal reader, boot device) to a standard 
-size sdcard on a rk3188 based SoC (radxa rock pro) using dd the transfer fails 
-after a couple of seconds. It recovers only after un-/replugging. dmesg shows 
-the following USB device messages:
+> Ccing Jacob at the right address.Ccing Jacob at the right address.
+> 
+> Perhaps we should fix the MAINTAINERS file.
+> 
+> On Fri, 2018-06-01 at 16:49 -0300, Ezequiel Garcia wrote:
+> > Decided to test v4l2transform filters and found these two
+> > issues.
+> > 
+> > Without the first commit, start_streaming fails. The second
+> > commit is just a cleanup, removing a seemingly redundant
+> > operation.
+> > 
+> > Tested on RK3288 Radxa Rock2 with these kind of pipelines:
+> > 
+> > gst-launch-1.0 videotestsrc ! video/x-
+> > raw,width=640,height=480,framerate=30/1,format=RGB !
+> > v4l2video0convert ! video/x-
+> > raw,width=1920,height=1080,framerate=30/1,format=NV16 ! fakesink
+> > 
+> > gst-launch-1.0 v4l2src device=/dev/video1 ! video/x-
+> > raw,width=640,height=480,framerate=30/1,format=RGB !
+> > v4l2video0convert ! video/x-
+> > raw,width=1920,height=1080,framerate=30/1,format=NV16 ! kmssink
+> > 
+> > Ezequiel Garcia (2):
+> >   rockchip/rga: Fix broken .start_streaming
+> >   rockchip/rga: Remove unrequired wait in .job_abort
+> > 
+> >  drivers/media/platform/rockchip/rga/rga-buf.c | 44 +++++++++------
+> > ----
+> >  drivers/media/platform/rockchip/rga/rga.c     | 13 +-----
+> >  drivers/media/platform/rockchip/rga/rga.h     |  2 -
+> >  3 files changed, 23 insertions(+), 36 deletions(-)
+> > 
 
-usb 2-1.3: New USB device found, idVendor=05e3, idProduct=0608, 
-bcdDevice=60.52
-usb 2-1.3: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 2-1.3: Product: USB2.0 Hub
-hub 2-1.3:1.0: USB hub found
-hub 2-1.3:1.0: 4 ports detected
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-usb 2-1.3: Failed to suspend device, error -71
-usb 2-1.3: USB disconnect, device number 21
-usb 2-1.3: new high-speed USB device number 22 using dwc2
-usb 2-1.3: device descriptor read/64, error -71
-usb 2-1.3: New USB device found, idVendor=05e3, idProduct=0608, 
-bcdDevice=60.52
-usb 2-1.3: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 2-1.3: Product: USB2.0 Hub
-hub 2-1.3:1.0: USB hub found
-hub 2-1.3:1.0: 4 ports detected
-usb 2-1.3.2: new high-speed USB device number 23 using dwc2
-usb 2-1.3.2: New USB device found, idVendor=1bcf, idProduct=0c31, bcdDevice= 
-1.32
-usb 2-1.3.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-usb 2-1.3.2: Product: USB to Serial-ATA bridge
-usb 2-1.3.2: Manufacturer: Sunplus Innovation Technology 
-usb 2-1.3.2: SerialNumber: FAFDFFF0FF183335804373
-usb-storage 2-1.3.2:1.0: USB Mass Storage device detected
-scsi host0: usb-storage 2-1.3.2:1.0
-usb 2-1.3: USB disconnect, device number 22
-usb 2-1.3.2: USB disconnect, device number 23
-usb 2-1.3: new high-speed USB device number 24 using dwc2
-usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
-usb 2-1.3: new high-speed USB device number 25 using dwc2
-usb 2-1.3: device not accepting address 25, error -71
-usb 2-1-port3: attempt power cycle
-usb 2-1.3: new full-speed USB device number 27 using dwc2
-usb 2-1.3: device descriptor read/64, error -32
-usb 2-1.3: device descriptor read/64, error -32
+To both patches,
+Reviewed-by: Jacob Chen<jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
 
-This happens reproducibly. It happens when using the sdcard-reader connected 
-to an external USB-hub and it also happens when the reader is connected 
-directly to the internal USB-hub. I tried dd bs>=512 and it always failed.
-
-The reader and cable is used on a daily basis w/ other hosts and has always 
-been working reliably.
-
-Is USB on rk3188 known to be unstable? Is it the PCB layout ("Maybe the USB 
-cable is bad?")?
-
-Any ideas, hints anyone?
-
-Thanks.
-
-4omecha
+It seems the current job_abort will also cause unnecessary wait when using multi-instance.
