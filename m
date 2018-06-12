@@ -1,84 +1,198 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v4 2/2] drm/rockchip: vop: fix irq disabled after vop driver
- probed
-Date: Tue, 12 Jun 2018 15:20:28 +0200
-Message-ID: <20180612132028.27490-3-heiko@sntech.de>
-References: <20180612132028.27490-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180612132028.27490-1-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: marc.zyngier@arm.com, robin.murphy@arm.com, jeffy.chen@rock-chips.com, stable@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, enric.balletbo@collabora.co.uk, tomeu.vizoso@collabora.co.uk, ezequiel@collabora.com
+From: Randy Li <ayaka@soulik.info>
+Subject: [PATCH] ARM64: dts: rockchip: add some pins to rk3399
+Date: Tue, 12 Jun 2018 23:25:44 +0800
+Message-ID: <20180612152544.3812-1-ayaka@soulik.info>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Randy Li <ayaka@soulik.info>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KClRoZSB2b3AgaXJxIGlzIHNo
-YXJlZCBiZXR3ZWVuIHZvcCBhbmQgaW9tbXUgYW5kIGlycSBwcm9iaW5nIGluIHRoZQppb21tdSBk
-cml2ZXIgbW92ZWQgdG8gdGhlIHByb2JlIGZ1bmN0aW9uIHJlY2VudGx5LiBUaGlzIGNhbiBpbiBz
-b21lCmNhc2VzIGxlYWQgdG8gYSBzdGFsbCBpZiB0aGUgaXJxIGlzIHRyaWdnZXJlZCB3aGlsZSB0
-aGUgdm9wIGRyaXZlcgpzdGlsbCBoYXMgaXQgZGlzYWJsZWQsIGJ1dCB0aGUgdm9wIGlycSBoYW5k
-bGVyIGdldHMgY2FsbGVkLgoKQnV0IHRoZXJlIGlzIG5vIHJlYWwgbmVlZCB0byBkaXNhYmxlIHRo
-ZSBpcnEsIGFzIHRoZSB2b3AgY2FuIHNpbXBseQphbHNvIHRyYWNrIGl0cyBlbmFibGVkIHN0YXRl
-IGFuZCBpZ25vcmUgaXJxcyBpbiB0aGF0IGNhc2UuCkZvciB0aGlzIHdlIGNhbiBzaW1wbHkgY2hl
-Y2sgdGhlIHBvd2VyLWRvbWFpbiBzdGF0ZSBvZiB0aGUgdm9wLApzaW1pbGFyIHRvIGhvdyB0aGUg
-aW9tbXUgZHJpdmVyIGRvZXMgaXQuCgpTbyByZW1vdmUgdGhlIGVuYWJsZS9kaXNhYmxlIGhhbmRs
-aW5nIGFuZCBhZGQgYXBwcm9wcmlhdGUgY29uZGl0aW9uCnRvIHRoZSBpcnEgaGFuZGxlci4KCmNo
-YW5nZXMgaW4gdjI6Ci0gbW92ZSB0byBqdXN0IGNoZWNrIHRoZSBwb3dlci1kb21haW4gc3RhdGUK
-LSBhZGQgY2xvY2sgaGFuZGxpbmcKY2hhbmdlcyBpbiB2MzoKLSBjbGFyaWZ5IGNvbW1lbnQgdG8g
-c3BlYWsgb2YgcnVudGltZS1wbSBub3QgcG93ZXItZG9tYWluCmNoYW5nZXMgaW4gdjQ6Ci0gYWRk
-cmVzcyBNYXJjJ3MgY29tbWVudHMgKGNsay1lbmFibGUgV0FSTl9PTiBhbmQgc3R5bGUgaW1wcm92
-ZW1lbnQpCgpGaXhlczogZDBiOTEyYmQ0YzIzICgiaW9tbXUvcm9ja2NoaXA6IFJlcXVlc3QgaXJx
-cyBpbiBya19pb21tdV9wcm9iZSgpIikKQ2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKU2lnbmVk
-LW9mZi1ieTogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KU2lnbmVkLW9mZi1ieTog
-SGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KVGVzdGVkLWJ5OiBFemVxdWllbCBHYXJj
-aWEgPGV6ZXF1aWVsQGNvbGxhYm9yYS5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuYyB8IDI1ICsrKysrKysrKysrKysrLS0tLS0tLQogMSBmaWxlIGNo
-YW5nZWQsIDE3IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggOWExZjI3MmU0MWM3Li5kMTA1ZTk4
-NGNmMDkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpA
-QCAtNTczLDggKzU3Myw2IEBAIHN0YXRpYyBpbnQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMg
-KmNydGMpCiAKIAlzcGluX3VubG9jaygmdm9wLT5yZWdfbG9jayk7CiAKLQllbmFibGVfaXJxKHZv
-cC0+aXJxKTsKLQogCWRybV9jcnRjX3ZibGFua19vbihjcnRjKTsKIAogCXJldHVybiAwOwpAQCAt
-NjE4LDggKzYxNiw2IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19kaXNhYmxlKHN0cnVj
-dCBkcm1fY3J0YyAqY3J0YywKIAogCXZvcF9kc3BfaG9sZF92YWxpZF9pcnFfZGlzYWJsZSh2b3Ap
-OwogCi0JZGlzYWJsZV9pcnEodm9wLT5pcnEpOwotCiAJdm9wLT5pc19lbmFibGVkID0gZmFsc2U7
-CiAKIAkvKgpAQCAtMTE5NSw2ICsxMTkxLDE4IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNy
-KGludCBpcnEsIHZvaWQgKmRhdGEpCiAJdWludDMyX3QgYWN0aXZlX2lycXM7CiAJaW50IHJldCA9
-IElSUV9OT05FOwogCisJLyoKKwkgKiBUaGUgaXJxIGlzIHNoYXJlZCB3aXRoIHRoZSBpb21tdS4g
-SWYgdGhlIHJ1bnRpbWUtcG0gc3RhdGUgb2YgdGhlCisJICogdm9wLWRldmljZSBpcyBkaXNhYmxl
-ZCB0aGUgaXJxIGhhcyB0byBiZSB0YXJnZXR0ZWQgYXQgdGhlIGlvbW11LgorCSAqLworCWlmICgh
-cG1fcnVudGltZV9nZXRfaWZfaW5fdXNlKHZvcC0+ZGV2KSkKKwkJcmV0dXJuIElSUV9OT05FOwor
-CisJaWYgKHZvcF9jb3JlX2Nsa3NfZW5hYmxlKHZvcCkpIHsKKwkJRFJNX0RFVl9FUlJPUl9SQVRF
-TElNSVRFRCh2b3AtPmRldiwgImNvdWxkbid0IGVuYWJsZSBjbG9ja3NcbiIpOworCQlnb3RvIG91
-dDsKKwl9CisKIAkvKgogCSAqIGludGVycnVwdCByZWdpc3RlciBoYXMgaW50ZXJydXB0IHN0YXR1
-cywgZW5hYmxlIGFuZCBjbGVhciBiaXRzLCB3ZQogCSAqIG11c3QgaG9sZCBpcnFfbG9jayB0byBh
-dm9pZCBhIHJhY2Ugd2l0aCBlbmFibGUvZGlzYWJsZV92YmxhbmsoKS4KQEAgLTEyMTAsNyArMTIx
-OCw3IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNyKGludCBpcnEsIHZvaWQgKmRhdGEpCiAK
-IAkvKiBUaGlzIGlzIGV4cGVjdGVkIGZvciB2b3AgaW9tbXUgaXJxcywgc2luY2UgdGhlIGlycSBp
-cyBzaGFyZWQgKi8KIAlpZiAoIWFjdGl2ZV9pcnFzKQotCQlyZXR1cm4gSVJRX05PTkU7CisJCWdv
-dG8gb3V0X2Rpc2FibGU7CiAKIAlpZiAoYWN0aXZlX2lycXMgJiBEU1BfSE9MRF9WQUxJRF9JTlRS
-KSB7CiAJCWNvbXBsZXRlKCZ2b3AtPmRzcF9ob2xkX2NvbXBsZXRpb24pOwpAQCAtMTIzNiw2ICsx
-MjQ0LDEwIEBAIHN0YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNyKGludCBpcnEsIHZvaWQgKmRhdGEp
-CiAJCURSTV9ERVZfRVJST1Iodm9wLT5kZXYsICJVbmtub3duIFZPUCBJUlFzOiAlIzAyeFxuIiwK
-IAkJCSAgICAgIGFjdGl2ZV9pcnFzKTsKIAorb3V0X2Rpc2FibGU6CisJdm9wX2NvcmVfY2xrc19k
-aXNhYmxlKHZvcCk7CitvdXQ6CisJcG1fcnVudGltZV9wdXQodm9wLT5kZXYpOwogCXJldHVybiBy
-ZXQ7CiB9CiAKQEAgLTE2MTQsOSArMTYyNiw2IEBAIHN0YXRpYyBpbnQgdm9wX2JpbmQoc3RydWN0
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCiAJaWYgKHJl
-dCkKIAkJZ290byBlcnJfZGlzYWJsZV9wbV9ydW50aW1lOwogCi0JLyogSVJRIGlzIGluaXRpYWxs
-eSBkaXNhYmxlZDsgaXQgZ2V0cyBlbmFibGVkIGluIHBvd2VyX29uICovCi0JZGlzYWJsZV9pcnEo
-dm9wLT5pcnEpOwotCiAJcmV0dXJuIDA7CiAKIGVycl9kaXNhYmxlX3BtX3J1bnRpbWU6Ci0tIAoy
-LjE3LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Those pins would be used by many boards.
+
+Signed-off-by: Randy Li <ayaka@soulik.info>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 97 +++++++++++++++++++++++++++-----
+ 1 file changed, 83 insertions(+), 14 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index e0040b648f43..9fa629857929 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -160,7 +160,7 @@
+ 		};
+ 	};
+ 
+-	display-subsystem {
++	display_subsystem: display-subsystem {
+ 		compatible = "rockchip,display-subsystem";
+ 		ports = <&vopl_out>, <&vopb_out>;
+ 	};
+@@ -1936,19 +1936,49 @@
+ 			drive-strength = <12>;
+ 		};
+ 
++		pcfg_pull_none_13ma: pcfg-pull-none-13ma {
++			bias-disable;
++			drive-strength = <13>;
++		};
++
++		pcfg_pull_none_18ma: pcfg-pull-none-18ma {
++			bias-disable;
++			drive-strength = <18>;
++		};
++
++		pcfg_pull_none_20ma: pcfg-pull-none-20ma {
++			bias-disable;
++			drive-strength = <20>;
++		};
++
++		pcfg_pull_up_2ma: pcfg-pull-up-2ma {
++			bias-pull-up;
++			drive-strength = <2>;
++		};
++
+ 		pcfg_pull_up_8ma: pcfg-pull-up-8ma {
+ 			bias-pull-up;
+ 			drive-strength = <8>;
+ 		};
+ 
++		pcfg_pull_up_18ma: pcfg-pull-up-18ma {
++			bias-pull-up;
++			drive-strength = <18>;
++		};
++
++		pcfg_pull_up_20ma: pcfg-pull-up-20ma {
++			bias-pull-up;
++			drive-strength = <20>;
++		};
++
+ 		pcfg_pull_down_4ma: pcfg-pull-down-4ma {
+ 			bias-pull-down;
+ 			drive-strength = <4>;
+ 		};
+ 
+-		pcfg_pull_up_2ma: pcfg-pull-up-2ma {
+-			bias-pull-up;
+-			drive-strength = <2>;
++		pcfg_pull_down_8ma: pcfg-pull-down-8ma {
++			bias-pull-down;
++			drive-strength = <8>;
+ 		};
+ 
+ 		pcfg_pull_down_12ma: pcfg-pull-down-12ma {
+@@ -1956,9 +1986,22 @@
+ 			drive-strength = <12>;
+ 		};
+ 
+-		pcfg_pull_none_13ma: pcfg-pull-none-13ma {
+-			bias-disable;
+-			drive-strength = <13>;
++		pcfg_pull_down_18ma: pcfg-pull-down-18ma {
++			bias-pull-down;
++			drive-strength = <18>;
++		};
++
++		pcfg_pull_down_20ma: pcfg-pull-down-20ma {
++			bias-pull-down;
++			drive-strength = <18>;
++		};
++
++		pcfg_output_high: pcfg-output-high {
++			output-high;	
++		};
++
++		pcfg_output_low: pcfg-output-low {
++			output-low;	
+ 		};
+ 
+ 		clock {
+@@ -2484,10 +2527,21 @@
+ 					<4 18 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
+ 
++			pwm0_pin_pull_down: pwm0-pin-pull-down {
++				rockchip,pins =
++					<4 18 RK_FUNC_1 &pcfg_pull_down>;
++			};
++
+ 			vop0_pwm_pin: vop0-pwm-pin {
+ 				rockchip,pins =
+ 					<4 18 RK_FUNC_2 &pcfg_pull_none>;
+ 			};
++
++			vop1_pwm_pin: vop1-pwm-pin {
++				rockchip,pins =
++					<4 18 RK_FUNC_3 &pcfg_pull_none>;
++			};
++
+ 		};
+ 
+ 		pwm1 {
+@@ -2496,9 +2550,9 @@
+ 					<4 22 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
+ 
+-			vop1_pwm_pin: vop1-pwm-pin {
++			pwm1_pin_pull_down: pwm1-pin-pull-down {
+ 				rockchip,pins =
+-					<4 18 RK_FUNC_3 &pcfg_pull_none>;
++					<4 22 RK_FUNC_1 &pcfg_pull_down>;
+ 			};
+ 		};
+ 
+@@ -2507,6 +2561,11 @@
+ 				rockchip,pins =
+ 					<1 19 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
++
++			pwm2_pin_pull_down: pwm2-pin-pull-down {
++				rockchip,pins =
++					<1 19 RK_FUNC_1 &pcfg_pull_none>;
++			};
+ 		};
+ 
+ 		pwm3a {
+@@ -2526,25 +2585,35 @@
+ 		hdmi {
+ 			hdmi_i2c_xfer: hdmi-i2c-xfer {
+ 				rockchip,pins =
+-					<4 RK_PC1 RK_FUNC_3 &pcfg_pull_none>,
+-					<4 RK_PC0 RK_FUNC_3 &pcfg_pull_none>;
++					<4 17 RK_FUNC_3 &pcfg_pull_none>,
++					<4 16 RK_FUNC_3 &pcfg_pull_none>;
+ 			};
+ 
+ 			hdmi_cec: hdmi-cec {
+ 				rockchip,pins =
+-					<4 RK_PC7 RK_FUNC_1 &pcfg_pull_none>;
++					<4 23 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pcie {
++			pcie_clkreqn: pci-clkreqn {
++				rockchip,pins =
++					<2 26 RK_FUNC_2 &pcfg_pull_none>;
++			};
++
++			pcie_clkreqnb: pci-clkreqnb {
++				rockchip,pins =
++					<4 24 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
+ 			pcie_clkreqn_cpm: pci-clkreqn-cpm {
+ 				rockchip,pins =
+-					<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
++					<2 26 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 
+ 			pcie_clkreqnb_cpm: pci-clkreqnb-cpm {
+ 				rockchip,pins =
+-					<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
++					<4 24 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+-- 
+2.14.4
