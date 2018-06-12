@@ -1,239 +1,110 @@
-From: klaus.goger@theobroma-systems.com
-Subject: Re: [PATCH] ARM64: dts: rockchip: add some pins to rk3399
-Date: Tue, 12 Jun 2018 20:21:06 +0200
-Message-ID: <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
-References: <20180612152544.3812-1-ayaka@soulik.info>
-Mime-Version: 1.0 (Mac OS X Mail 11.2 \(3445.5.20\))
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: add bindings for px30 clock
+ controller
+Date: Tue, 12 Jun 2018 13:12:20 -0600
+Message-ID: <20180612191220.GA27984@rob-hp-laptop>
+References: <1528439519-30135-1-git-send-email-zhangqing@rock-chips.com>
+ <1528439519-30135-2-git-send-email-zhangqing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180612152544.3812-1-ayaka@soulik.info>
+Content-Disposition: inline
+In-Reply-To: <1528439519-30135-2-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Randy Li <ayaka@soulik.info>
-Cc: linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: heiko@sntech.de, sboyd@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Randy,
-
-> On 12.06.2018, at 17:25, Randy Li <ayaka@soulik.info> wrote:
+On Fri, Jun 08, 2018 at 02:31:56PM +0800, Elaine Zhang wrote:
+> Add devicetree bindings for Rockchip cru which found on
+> Rockchip SoCs.
 > 
-> Those pins would be used by many boards.
-> 
-> Signed-off-by: Randy Li <ayaka@soulik.info>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
-> arch/arm64/boot/dts/rockchip/rk3399.dtsi | 97 +++++++++++++++++++++++++++-----
-> 1 file changed, 83 insertions(+), 14 deletions(-)
+>  .../bindings/clock/rockchip,px30-cru.txt           | 67 ++++++++++++++++++++++
+>  1 file changed, 67 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index e0040b648f43..9fa629857929 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -160,7 +160,7 @@
-> 		};
-> 	};
-> 
-> -	display-subsystem {
-> +	display_subsystem: display-subsystem {
-
-nitpick: that change is not pin related
-
-> 		compatible = "rockchip,display-subsystem";
-> 		ports = <&vopl_out>, <&vopb_out>;
-> 	};
-> @@ -1936,19 +1936,49 @@
-> 			drive-strength = <12>;
-> 		};
-> 
-> +		pcfg_pull_none_13ma: pcfg-pull-none-13ma {
-> +			bias-disable;
-> +			drive-strength = <13>;
-> +		};
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
+> new file mode 100644
+> index 000000000000..af5a45b680d0
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
+> @@ -0,0 +1,67 @@
+> +* Rockchip PX30 Clock and Reset Unit
 > +
-> +		pcfg_pull_none_18ma: pcfg-pull-none-18ma {
-> +			bias-disable;
-> +			drive-strength = <18>;
-> +		};
+> +The PX30 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
 > +
-> +		pcfg_pull_none_20ma: pcfg-pull-none-20ma {
-> +			bias-disable;
-> +			drive-strength = <20>;
-> +		};
+> +Required Properties:
 > +
-> +		pcfg_pull_up_2ma: pcfg-pull-up-2ma {
-> +			bias-pull-up;
-> +			drive-strength = <2>;
-> +		};
+> +- compatible: PMU for CRU should be "rockchip,px30-pmu-cru"
+> +- compatible: CRU should be "rockchip,px30-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
 > +
-> 		pcfg_pull_up_8ma: pcfg-pull-up-8ma {
-> 			bias-pull-up;
-> 			drive-strength = <8>;
-> 		};
-> 
-> +		pcfg_pull_up_18ma: pcfg-pull-up-18ma {
-> +			bias-pull-up;
-> +			drive-strength = <18>;
-> +		};
+> +Optional Properties:
 > +
-> +		pcfg_pull_up_20ma: pcfg-pull-up-20ma {
-> +			bias-pull-up;
-> +			drive-strength = <20>;
-> +		};
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing, pll rates are not changeable, due to the missing pll lock status.
 > +
-> 		pcfg_pull_down_4ma: pcfg-pull-down-4ma {
-> 			bias-pull-down;
-> 			drive-strength = <4>;
-> 		};
-> 
-> -		pcfg_pull_up_2ma: pcfg-pull-up-2ma {
-> -			bias-pull-up;
-> -			drive-strength = <2>;
-> +		pcfg_pull_down_8ma: pcfg-pull-down-8ma {
-> +			bias-pull-down;
-> +			drive-strength = <8>;
-> 		};
-> 
-> 		pcfg_pull_down_12ma: pcfg-pull-down-12ma {
-> @@ -1956,9 +1986,22 @@
-> 			drive-strength = <12>;
-> 		};
-> 
-> -		pcfg_pull_none_13ma: pcfg-pull-none-13ma {
-> -			bias-disable;
-> -			drive-strength = <13>;
-> +		pcfg_pull_down_18ma: pcfg-pull-down-18ma {
-> +			bias-pull-down;
-> +			drive-strength = <18>;
-> +		};
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/px30-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
 > +
-> +		pcfg_pull_down_20ma: pcfg-pull-down-20ma {
-> +			bias-pull-down;
-> +			drive-strength = <18>;
-
-drive-strength = <20>?
-
-> +		};
+> +External clocks:
 > +
-> +		pcfg_output_high: pcfg-output-high {
-> +			output-high;	
-
-Trailing whitespace
-
-> +		};
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "xin32k" - rtc clock - optional,
+> + - "i2sx_clkin" - external I2S clock - optional,
+> + - "gmac_clkin" - external GMAC clock - optional
 > +
-> +		pcfg_output_low: pcfg-output-low {
-> +			output-low;	
-
-Trailing whitespace
-
-> 		};
-> 
-> 		clock {
-> @@ -2484,10 +2527,21 @@
-> 					<4 18 RK_FUNC_1 &pcfg_pull_none>;
-> 			};
-> 
-> +			pwm0_pin_pull_down: pwm0-pin-pull-down {
-> +				rockchip,pins =
-> +					<4 18 RK_FUNC_1 &pcfg_pull_down>;
-> +			};
+> +Example: Clock controller node:
 > +
-> 			vop0_pwm_pin: vop0-pwm-pin {
-> 				rockchip,pins =
-> 					<4 18 RK_FUNC_2 &pcfg_pull_none>;
-> 			};
+> +	pmucru: pmu-clock-controller@ff2bc000 {
+
+s/pmu-clock-controller/clock-controller/
+
+> +		compatible = "rockchip,px30-pmucru";
+> +		reg = <0x0 0xff2bc000 0x0 0x1000>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
 > +
-> +			vop1_pwm_pin: vop1-pwm-pin {
-> +				rockchip,pins =
-> +					<4 18 RK_FUNC_3 &pcfg_pull_none>;
-> +			};
+> +	cru: clock-controller@ff2b0000 {
+> +		compatible = "rockchip,px30-cru";
+> +		reg = <0x0 0xff2b0000 0x0 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
 > +
-> 		};
-> 
-> 		pwm1 {
-> @@ -2496,9 +2550,9 @@
-> 					<4 22 RK_FUNC_1 &pcfg_pull_none>;
-> 			};
-> 
-> -			vop1_pwm_pin: vop1-pwm-pin {
-> +			pwm1_pin_pull_down: pwm1-pin-pull-down {
-> 				rockchip,pins =
-> -					<4 18 RK_FUNC_3 &pcfg_pull_none>;
-> +					<4 22 RK_FUNC_1 &pcfg_pull_down>;
-> 			};
-> 		};
-> 
-> @@ -2507,6 +2561,11 @@
-> 				rockchip,pins =
-> 					<1 19 RK_FUNC_1 &pcfg_pull_none>;
-> 			};
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
 > +
-> +			pwm2_pin_pull_down: pwm2-pin-pull-down {
-> +				rockchip,pins =
-> +					<1 19 RK_FUNC_1 &pcfg_pull_none>;
-> +			};
+> +	uart0: serial@ff030000 {
+> +		compatible = "rockchip,px30-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xff030000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&pmucru SCLK_UART0_PMU>, <&pmucru PCLK_UART0_PMU>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		status = "disabled";
 
-&pcfg_pull_down? 
+Don't show status in examples.
 
-> 		};
-> 
-> 		pwm3a {
-> @@ -2526,25 +2585,35 @@
-> 		hdmi {
-> 			hdmi_i2c_xfer: hdmi-i2c-xfer {
-> 				rockchip,pins =
-> -					<4 RK_PC1 RK_FUNC_3 &pcfg_pull_none>,
-> -					<4 RK_PC0 RK_FUNC_3 &pcfg_pull_none>;
-> +					<4 17 RK_FUNC_3 &pcfg_pull_none>,
-> +					<4 16 RK_FUNC_3 &pcfg_pull_none>;
-> 			};
-> 
-
-Please keep the RK_Pxx macros.
-
-> 			hdmi_cec: hdmi-cec {
-> 				rockchip,pins =
-> -					<4 RK_PC7 RK_FUNC_1 &pcfg_pull_none>;
-> +					<4 23 RK_FUNC_1 &pcfg_pull_none>;
-> 			};
-
-Same
-
-> 		};
-> 
-> 		pcie {
-> +			pcie_clkreqn: pci-clkreqn {
-> +				rockchip,pins =
-> +					<2 26 RK_FUNC_2 &pcfg_pull_none>;
-> +			};
+> +	};
 > +
-> +			pcie_clkreqnb: pci-clkreqnb {
-> +				rockchip,pins =
-> +					<4 24 RK_FUNC_1 &pcfg_pull_none>;
-> +			};
-> +
-
-I’m not sure if pci-clkreqn is functional at all. If not I’m not sure if we should add it to the dtsi.
-Shawn may know more about it.
-
-> 			pcie_clkreqn_cpm: pci-clkreqn-cpm {
-> 				rockchip,pins =
-> -					<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +					<2 26 RK_FUNC_GPIO &pcfg_pull_none>;
-> 			};
-> 
-> 			pcie_clkreqnb_cpm: pci-clkreqnb-cpm {
-> 				rockchip,pins =
-> -					<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
-> +					<4 24 RK_FUNC_GPIO &pcfg_pull_none>;
-> 			};
-> 		};
-> 
 > -- 
-> 2.14.4
-
-
-Could we actually use RK_Pxx for all new pin definitions? Would increase readability a lot.
-
-Thanks,
-Klaus
+> 1.9.1
+> 
+> 
