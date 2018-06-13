@@ -1,53 +1,72 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH v4 2/2] drm/rockchip: vop: fix irq disabled after vop
- driver probed
-Date: Wed, 13 Jun 2018 14:01:27 +0100
-Message-ID: <edc71874-4517-c097-c851-d60565f06817@arm.com>
-References: <20180612132028.27490-1-heiko@sntech.de>
- <20180612132028.27490-3-heiko@sntech.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] ARM64: dts: rockchip: add some pins to rk3399
+Date: Wed, 13 Jun 2018 22:44:08 +0800
+Message-ID: <e9584bfe-a098-1b90-2660-c27f82ed513c@rock-chips.com>
+References: <20180612152544.3812-1-ayaka@soulik.info>
+ <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20180612132028.27490-3-heiko@sntech.de>
-Content-Language: en-GB
-Sender: stable-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, ezequiel@collabora.com, tfiga@chromium.org, robin.murphy@arm.com, jeffy.chen@rock-chips.com, hjc@rock-chips.com, enric.balletbo@collabora.co.uk, tomeu.vizoso@collabora.co.uk, stable@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: klaus.goger@theobroma-systems.com, Randy Li <ayaka@soulik.info>
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/06/18 14:20, Heiko Stuebner wrote:
-> From: Sandy Huang <hjc@rock-chips.com>
-> 
-> The vop irq is shared between vop and iommu and irq probing in the
-> iommu driver moved to the probe function recently. This can in some
-> cases lead to a stall if the irq is triggered while the vop driver
-> still has it disabled, but the vop irq handler gets called.
-> 
-> But there is no real need to disable the irq, as the vop can simply
-> also track its enabled state and ignore irqs in that case.
-> For this we can simply check the power-domain state of the vop,
-> similar to how the iommu driver does it.
-> 
-> So remove the enable/disable handling and add appropriate condition
-> to the irq handler.
-> 
-> changes in v2:
-> - move to just check the power-domain state
-> - add clock handling
-> changes in v3:
-> - clarify comment to speak of runtime-pm not power-domain
-> changes in v4:
-> - address Marc's comments (clk-enable WARN_ON and style improvement)
-> 
-> Fixes: d0b912bd4c23 ("iommu/rockchip: Request irqs in rk_iommu_probe()")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Sandy Huang <hjc@rock-chips.com>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Tested-by: Ezequiel Garcia <ezequiel@collabora.com>
+On 2018/6/13 2:21, klaus.goger@theobroma-systems.com wrote:
+> Hi Randy,
 
-Reviewed-by: Marc Zyngier <marc.zyngier@arm.com>
+-----8<-------------
 
-	M.
+>> 		pcie {
+>> +			pcie_clkreqn: pci-clkreqn {
+>> +				rockchip,pins =
+>> +					<2 26 RK_FUNC_2 &pcfg_pull_none>;
+>> +			};
+>> +
+>> +			pcie_clkreqnb: pci-clkreqnb {
+>> +				rockchip,pins =
+>> +					<4 24 RK_FUNC_1 &pcfg_pull_none>;
+>> +			};
+>> +
+> 
+> I’m not sure if pci-clkreqn is functional at all. If not I’m not sure if we should add it to the dtsi.
+> Shawn may know more about it.
+
+Please refer to commit 461a00bb9d539e
+("arm64: dts: rockchip: kill pcie_clkreqn and pcie_clkreqnb for rk3399")
+
+CLKREQ# is used for PCI-PM L1.x, but it's not functional for rk3399, so
+we have to support CPM(clock power management), thus I kill them last
+year.
+
+> 
+>> 			pcie_clkreqn_cpm: pci-clkreqn-cpm {
+>> 				rockchip,pins =
+>> -					<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +					<2 26 RK_FUNC_GPIO &pcfg_pull_none>;
+>> 			};
+>>
+>> 			pcie_clkreqnb_cpm: pci-clkreqnb-cpm {
+>> 				rockchip,pins =
+>> -					<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +					<4 24 RK_FUNC_GPIO &pcfg_pull_none>;
+>> 			};
+>> 		};
+>>
+>> -- 
+>> 2.14.4
+> 
+> 
+> Could we actually use RK_Pxx for all new pin definitions? Would increase readability a lot.
+> 
+> Thanks,
+> Klaus
+> 
+> 
+
+
 -- 
-Jazz is not dead. It just smells funny...
+Best Regards
+Shawn Lin
