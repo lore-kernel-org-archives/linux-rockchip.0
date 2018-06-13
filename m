@@ -1,68 +1,66 @@
-From: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [regression] HDMI breakage just before poweroff
-Date: Wed, 13 Jun 2018 18:46:08 +0800
-Message-ID: <5B20F5F0.9090101@rock-chips.com>
-References: <CAAMcf8D86ssM+YeFAXaYDm9QwwAQLdaOgWyC2F8yQ-_-UNyY+A@mail.gmail.com>
- <5AEA873A.7080701@rock-chips.com>
- <0284fa4f-abd6-26f6-31e2-1a6d24777733@arm.com>
- <CAAMcf8BJ1skbmR7AazyTPkkdyMoyuA0ihj=Gbnhb9nKWf3FSGg@mail.gmail.com>
- <5B1F4375.7000000@rock-chips.com>
- <77e4c6e1-015f-5fac-66b6-c942bb2dc9d8@arm.com>
- <5B1F9FF7.5070203@rock-chips.com>
- <CAAFQd5D__ArEYSVoWL5A40X6vbYxJ-vOYpsXxiLujC-XK9u2+A@mail.gmail.com>
- <86efhc8dyg.wl-marc.zyngier@arm.com>
- <CAAMcf8AmuMStdSUHGEQhii7BUtTRHOSyLhop43rf_nX0GROnnw@mail.gmail.com>
- <cc147c40-dbad-b714-3fe6-858854a56004@arm.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] ARM64: dts: rockchip: add some pins to rk3399
+Date: Wed, 13 Jun 2018 14:56:43 +0200
+Message-ID: <6575089.GrJ2ErpgXD@diego>
+References: <20180612152544.3812-1-ayaka@soulik.info> <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cc147c40-dbad-b714-3fe6-858854a56004-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: klaus.goger@theobroma-systems.com
+Cc: Randy Li <ayaka@soulik.info>, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc & Vicente,
+Am Dienstag, 12. Juni 2018, 20:21:06 CEST schrieb klaus.goger@theobroma-
+systems.com:
+> Hi Randy,
+> 
+> > On 12.06.2018, at 17:25, Randy Li <ayaka@soulik.info> wrote:
+> > 
+> > Those pins would be used by many boards.
+> > 
+> > Signed-off-by: Randy Li <ayaka@soulik.info>
 
-On 06/13/2018 06:26 PM, Marc Zyngier wrote:
->> >
->> >--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> >+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->> >@@ -451,6 +451,7 @@
->> >  static struct platform_driver rockchip_drm_platform_driver = {
->> >      .probe = rockchip_drm_platform_probe,
->> >      .remove = rockchip_drm_platform_remove,
->> >+    .shutdown = (void (*)(struct platform_device
->> >*))rockchip_drm_platform_remove,
-> No, please...:-(  Provide a wrapper that returns void instead.
+agree to everything Klaus said ;-) .
 
-hmmm, this is just a test only hack, i am thinking maybe 
-drm_atomic_helper_shutdown is enough for shutdown() ?
+[...]
+
+> > +			pcie_clkreqn: pci-clkreqn {
+> > +				rockchip,pins =
+> > +					<2 26 RK_FUNC_2 &pcfg_pull_none>;
+> > +			};
+> > +
+> > +			pcie_clkreqnb: pci-clkreqnb {
+> > +				rockchip,pins =
+> > +					<4 24 RK_FUNC_1 &pcfg_pull_none>;
+> > +			};
+> > +
+> 
+> I’m not sure if pci-clkreqn is functional at all. If not I’m not sure if we
+> should add it to the dtsi. Shawn may know more about it.
+
+Yep, wasn't there a big change away from clkreqn, due it
+not being functional?
 
 
-something like:
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -442,6 +442,14 @@ static int rockchip_drm_platform_remove(struct 
-platform_device *pdev)
-         return 0;
-  }
+> > 			pcie_clkreqnb_cpm: pci-clkreqnb-cpm {
+> > 			
+> > 				rockchip,pins =
+> > 
+> > -					<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +					<4 24 RK_FUNC_GPIO &pcfg_pull_none>;
+> > 
+> > 			};
+> > 		
+> > 		};
+> 
+> Could we actually use RK_Pxx for all new pin definitions? Would increase
+> readability a lot.
 
-+static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
-+{
-+       struct drm_device *drm = platform_get_drvdata(pdev);
-+
-+       if (drm)
-+               drm_atomic_helper_shutdown(drm);
-+}
-+
+Especially as the above change really only seems to change RK_PD0 back
+to 24, so this block (and some others) will go away entirely.
 
->
+
+Heiko
