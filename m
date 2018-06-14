@@ -1,72 +1,134 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add some pins to rk3399
-Date: Wed, 13 Jun 2018 22:44:08 +0800
-Message-ID: <e9584bfe-a098-1b90-2660-c27f82ed513c@rock-chips.com>
-References: <20180612152544.3812-1-ayaka@soulik.info>
- <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH v2] net: ethernet: stmmac: dwmac-rk: Add GMAC support for PX30
+Date: Thu, 14 Jun 2018 14:15:27 +0800
+Message-ID: <1528956927-32440-1-git-send-email-david.wu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <B649911B-28E0-4466-B3F0-15875FFB9D43@theobroma-systems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: klaus.goger@theobroma-systems.com, Randy Li <ayaka@soulik.info>
-Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+To: davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2018/6/13 2:21, klaus.goger@theobroma-systems.com wrote:
-> Hi Randy,
+Add constants and callback functions for the dwmac on PX30 Soc.
+The base structure is the same, but registers and the bits in
+them are moved slightly, and add the clk_mac_speed for selecting
+mac speed.
 
------8<-------------
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+---
+Change in v2:
+- Fix some error in commit title and message
 
->> 		pcie {
->> +			pcie_clkreqn: pci-clkreqn {
->> +				rockchip,pins =
->> +					<2 26 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +
->> +			pcie_clkreqnb: pci-clkreqnb {
->> +				rockchip,pins =
->> +					<4 24 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +
-> 
-> I’m not sure if pci-clkreqn is functional at all. If not I’m not sure if we should add it to the dtsi.
-> Shawn may know more about it.
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |  1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 64 ++++++++++++++++++++++
+ 2 files changed, 65 insertions(+)
 
-Please refer to commit 461a00bb9d539e
-("arm64: dts: rockchip: kill pcie_clkreqn and pcie_clkreqnb for rk3399")
-
-CLKREQ# is used for PCI-PM L1.x, but it's not functional for rk3399, so
-we have to support CPM(clock power management), thus I kill them last
-year.
-
-> 
->> 			pcie_clkreqn_cpm: pci-clkreqn-cpm {
->> 				rockchip,pins =
->> -					<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
->> +					<2 26 RK_FUNC_GPIO &pcfg_pull_none>;
->> 			};
->>
->> 			pcie_clkreqnb_cpm: pci-clkreqnb-cpm {
->> 				rockchip,pins =
->> -					<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
->> +					<4 24 RK_FUNC_GPIO &pcfg_pull_none>;
->> 			};
->> 		};
->>
->> -- 
->> 2.14.4
-> 
-> 
-> Could we actually use RK_Pxx for all new pin definitions? Would increase readability a lot.
-> 
-> Thanks,
-> Klaus
-> 
-> 
-
-
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+index 9c16ee2..3b71da7 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+@@ -4,6 +4,7 @@ The device node has following properties.
+ 
+ Required properties:
+  - compatible: should be "rockchip,<name>-gamc"
++   "rockchip,px30-gmac":   found on PX30 SoCs
+    "rockchip,rk3128-gmac": found on RK312x SoCs
+    "rockchip,rk3228-gmac": found on RK322x SoCs
+    "rockchip,rk3288-gmac": found on RK3288 SoCs
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 13133b3..5e69dd0 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -61,6 +61,7 @@ struct rk_priv_data {
+ 	struct clk *mac_clk_tx;
+ 	struct clk *clk_mac_ref;
+ 	struct clk *clk_mac_refout;
++	struct clk *clk_mac_speed;
+ 	struct clk *aclk_mac;
+ 	struct clk *pclk_mac;
+ 	struct clk *clk_phy;
+@@ -83,6 +84,64 @@ struct rk_priv_data {
+ 	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
+ 	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
+ 
++#define PX30_GRF_GMAC_CON1		0x0904
++
++/* PX30_GRF_GMAC_CON1 */
++#define PX30_GMAC_PHY_INTF_SEL_RMII	(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | \
++					 GRF_BIT(6))
++#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
++#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
++
++static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
++		return;
++	}
++
++	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++		     PX30_GMAC_PHY_INTF_SEL_RMII);
++}
++
++static void px30_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
++{
++	struct device *dev = &bsp_priv->pdev->dev;
++	int ret;
++
++	if (IS_ERR(bsp_priv->clk_mac_speed)) {
++		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
++		return;
++	}
++
++	if (speed == 10) {
++		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++			     PX30_GMAC_SPEED_10M);
++
++		ret = clk_set_rate(bsp_priv->clk_mac_speed, 2500000);
++		if (ret)
++			dev_err(dev, "%s: set clk_mac_speed rate 2500000 failed: %d\n",
++				__func__, ret);
++	} else if (speed == 100) {
++		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++			     PX30_GMAC_SPEED_100M);
++
++		ret = clk_set_rate(bsp_priv->clk_mac_speed, 25000000);
++		if (ret)
++			dev_err(dev, "%s: set clk_mac_speed rate 25000000 failed: %d\n",
++				__func__, ret);
++
++	} else {
++		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
++	}
++}
++
++static const struct rk_gmac_ops px30_ops = {
++	.set_to_rmii = px30_set_to_rmii,
++	.set_rmii_speed = px30_set_rmii_speed,
++};
++
+ #define RK3128_GRF_MAC_CON0	0x0168
+ #define RK3128_GRF_MAC_CON1	0x016c
+ 
+@@ -1042,6 +1101,10 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
+ 		}
+ 	}
+ 
++	bsp_priv->clk_mac_speed = devm_clk_get(dev, "clk_mac_speed");
++	if (IS_ERR(bsp_priv->clk_mac_speed))
++		dev_err(dev, "cannot get clock %s\n", "clk_mac_speed");
++
+ 	if (bsp_priv->clock_input) {
+ 		dev_info(dev, "clock input from PHY\n");
+ 	} else {
+@@ -1424,6 +1487,7 @@ static int rk_gmac_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(rk_gmac_pm_ops, rk_gmac_suspend, rk_gmac_resume);
+ 
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
++	{ .compatible = "rockchip,px30-gmac",	.data = &px30_ops   },
+ 	{ .compatible = "rockchip,rk3128-gmac", .data = &rk3128_ops },
+ 	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
+ 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
 -- 
-Best Regards
-Shawn Lin
+2.7.4
