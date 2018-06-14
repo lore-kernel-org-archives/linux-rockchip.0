@@ -1,55 +1,41 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 0/4] arm64: dts: rockchip: add RK3399-Gru-Bob and prepare for
- Scarlet
-Date: Thu, 14 Jun 2018 13:30:35 +0200
-Message-ID: <20180614113039.29117-1-heiko@sntech.de>
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector Firefly-RK3399
+Date: Thu, 14 Jun 2018 14:55:27 +0200
+Message-ID: <19360053.2ABrQ075F2@phil>
+References: <20180604171523.28454-1-xypron.glpk@gmx.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org
-Cc: briannorris@chromium.org, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, linux-arm-kernel@lists.infradead.org, amstan@chromium.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180604171523.28454-1-xypron.glpk@gmx.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Vagrant Cascadian <vagrant@debian.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-So far the Gru series of ChromeOS devices has seen 3 public devices.
-Two clamshell devices with the already supported Kevin and Bob
-(aka Chromebook Flip C101PA), as well as one table-style device Scarlet.
+Am Montag, 4. Juni 2018, 19:15:23 CEST schrieb Heinrich Schuchardt:
+> Without this patch the Firefly-RK3399 board boot process hangs after these
+> lines:
+> 
+>    fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
+>    fan53555-reg: supplied by vcc_sys
+>    vcc1v8_s3: supplied by vcc_1v8
+> 
+> Blacklisting driver fan53555 allows booting.
+> 
+> The device tree uses a value of fcs,suspend-voltage-selector different to
+> any other board.
+> 
+> Changing this setting to the usual value is sufficient to enable booting.
+> 
+> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
 
-So this series not only adds a devicetree file for Bob, but also prepares
-for Scarlets arrival, in that common properties of the clamshell-devices
-get moved into a rk3399-gru-chromebook.dtsi, similar to what we have on
-RK3288-Veyron, as Scarlet does some things a bit differently.
+applied for 4.19.
 
-Scarlet itself needs a bit more time, as its display is connected via
-dual-dsi, where the patches are still pending.
+I've amended your commit message with the info from your reply about
+the vendor kernel using the same value and added an appropriate Fixes
+tag to possibly get it merged into stable.
 
 
-Heiko Stuebner (4):
-  arm64: dts: rockchip: move Chromebook-specific Gru-parts to a separate
-    file
-  arm64: dts: rockchip: add phandles to some nodes on rk3399-gru
-  arm64: dts: rockchip: move core edp from rk3399-kevin to shared
-    chromebook
-  arm64: dts: rockchip: add Google Bob
-
- .../devicetree/bindings/arm/rockchip.txt      |   9 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3399-gru-bob.dts      |  79 ++++
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   | 399 ++++++++++++++++++
- .../boot/dts/rockchip/rk3399-gru-kevin.dts    |  47 +--
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 328 +-------------
- 6 files changed, 496 insertions(+), 367 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-
--- 
-2.17.0
+Thanks
+Heiko
