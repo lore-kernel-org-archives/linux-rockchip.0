@@ -1,7 +1,8 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 4/4] arm64: dts: rockchip: add Google Bob
-Date: Thu, 14 Jun 2018 13:30:39 +0200
-Message-ID: <20180614113039.29117-5-heiko@sntech.de>
+Subject: [PATCH 3/4] arm64: dts: rockchip: move core edp from rk3399-kevin to
+ shared chromebook
+Date: Thu, 14 Jun 2018 13:30:38 +0200
+Message-ID: <20180614113039.29117-4-heiko@sntech.de>
 References: <20180614113039.29117-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,136 +22,130 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-After Kevin, the second chromebook-incarnation of the Gru series is Bob.
-This materializes as the Asus Chromebook Flip C101PA, whose formfactor
-is quite similar to Minnie from the Veyron series.
-
-Add the devicetree file and binding update for it.
+Bob needs the same backlight and core edp settings, so move these node to
+the shared dtsi that both will use as a base.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- .../devicetree/bindings/arm/rockchip.txt      |  9 +++
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../boot/dts/rockchip/rk3399-gru-bob.dts      | 79 +++++++++++++++++++
- 3 files changed, 89 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   | 34 ++++++++++++++++
+ .../boot/dts/rockchip/rk3399-gru-kevin.dts    | 39 ++-----------------
+ 2 files changed, 38 insertions(+), 35 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 1c1d62d03c4f..145ab0b0a030 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -66,6 +66,15 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-       - compatible = "geekbuying,geekbox", "rockchip,rk3368";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 32139e6910a3..8cce0f59d2ea 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -191,6 +191,23 @@
  
-+- Google Bob (Asus Chromebook Flip C101PA):
-+    Required root node properties:
-+	compatible = "google,bob-rev13", "google,bob-rev12",
-+		     "google,bob-rev11", "google,bob-rev10",
-+		     "google,bob-rev9", "google,bob-rev8",
-+		     "google,bob-rev7", "google,bob-rev6",
-+		     "google,bob-rev5", "google,bob-rev4",
-+		     "google,bob", "google,gru", "rockchip,rk3399";
+ 		vin-supply = <&pp1800_pcie>;
+ 	};
 +
- - Google Brain (dev-board):
-     Required root node properties:
-       - compatible = "google,veyron-brain-rev0", "google,veyron-brain",
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 48a83f882947..7c4311eac700 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -10,6 +10,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-px5-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-firefly.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-bob.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-kevin.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
-new file mode 100644
-index 000000000000..1ee0dc0d9f10
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
-@@ -0,0 +1,79 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Google Gru-Bob Rev 4+ board device tree source
-+ *
-+ * Copyright 2018 Google, Inc
-+ */
-+
-+/dts-v1/;
-+#include "rk3399-gru-chromebook.dtsi"
-+
-+/ {
-+	model = "Google Bob";
-+	compatible = "google,bob-rev13", "google,bob-rev12",
-+		     "google,bob-rev11", "google,bob-rev10",
-+		     "google,bob-rev9", "google,bob-rev8",
-+		     "google,bob-rev7", "google,bob-rev6",
-+		     "google,bob-rev5", "google,bob-rev4",
-+		     "google,bob", "google,gru", "rockchip,rk3399";
-+
-+	edp_panel: edp-panel {
-+		compatible = "boe,nv101wxmn51", "simple-panel";
-+		backlight = <&backlight>;
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		brightness-levels = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
++				     17 18 19 20 21 22 23 24 25 26 27 28 29 30
++				     31 32 33 34 35 36 37 38 39 40 41 42 43 44
++				     45 46 47 48 49 50 51 52 53 54 55 56 57 58
++				     59 60 61 62 63 64 65 66 67 68 69 70 71 72
++				     73 74 75 76 77 78 79 80 81 82 83 84 85 86
++				     87 88 89 90 91 92 93 94 95 96 97 98 99 100>;
++		default-brightness-level = <51>;
++		enable-gpios = <&gpio1 17 GPIO_ACTIVE_HIGH>;
 +		power-supply = <&pp3300_disp>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bl_en>;
++		pwm-delay-us = <10000>;
++	};
+ };
+ 
+ &ppvar_bigcpu {
+@@ -212,6 +229,23 @@
+ 	extcon = <&usbc_extcon0>, <&usbc_extcon1>;
+ };
+ 
++&edp {
++	status = "okay";
 +
-+		ports {
-+			panel_in_edp: endpoint {
-+				remote-endpoint = <&edp_out_panel>;
++	ports {
++		edp_out: port@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			edp_out_panel: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&panel_in_edp>;
 +			};
 +		};
 +	};
 +};
 +
-+&ap_i2c_ts {
-+	touchscreen: touchscreen@10 {
-+		compatible = "elan,ekth3500";
-+		reg = <0x10>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <13 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touch_int_l &touch_reset_l>;
-+		reset-gpios = <&gpio4 26 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&ap_i2c_tp {
-+	trackpad: trackpad@15 {
-+		compatible = "elan,ekth3000";
-+		reg = <0x15>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_int_l>;
-+		wakeup-source;
-+	};
-+};
-+
+ ap_i2c_mic: &i2c1 {
+ 	status = "okay";
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index e582ec9fbc97..2cc7c47d6a85 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -38,24 +38,6 @@
+ 		vin-supply = <&pp3300>;
+ 	};
+ 
+-	backlight: backlight {
+-		compatible = "pwm-backlight";
+-		pwms = <&cros_ec_pwm 1>;
+-		brightness-levels = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+-				     17 18 19 20 21 22 23 24 25 26 27 28 29 30
+-				     31 32 33 34 35 36 37 38 39 40 41 42 43 44
+-				     45 46 47 48 49 50 51 52 53 54 55 56 57 58
+-				     59 60 61 62 63 64 65 66 67 68 69 70 71 72
+-				     73 74 75 76 77 78 79 80 81 82 83 84 85 86
+-				     87 88 89 90 91 92 93 94 95 96 97 98 99 100>;
+-		default-brightness-level = <51>;
+-		enable-gpios = <&gpio1 17 GPIO_ACTIVE_HIGH>;
+-		power-supply = <&pp3300_disp>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&bl_en>;
+-		pwm-delay-us = <10000>;
+-	};
+-
+ 	edp_panel: edp-panel {
+ 		compatible = "sharp,lq123p1jx31", "simple-panel";
+ 		backlight = <&backlight>;
+@@ -87,6 +69,10 @@
+ 	};
+ };
+ 
 +&backlight {
-+	pwms = <&cros_ec_pwm 0>;
++	pwms = <&cros_ec_pwm 1>;
 +};
 +
-+&cpu_alert0 {
-+	temperature = <65000>;
-+};
-+
-+&cpu_alert1 {
-+	temperature = <70000>;
-+};
-+
-+&spi0 {
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	tpm {
-+		h1_int_od_l: h1-int-od-l {
-+			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
+ &gpio_keys {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&bt_host_wake_l>, <&cpu1_pen_eject>;
+@@ -243,23 +229,6 @@ ap_i2c_dig: &i2c2 {
+ 	};
+ };
+ 
+-&edp {
+-	status = "okay";
+-
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
+-	};
+-};
+-
+ &ppvar_bigcpu_pwm {
+ 	regulator-min-microvolt = <798674>;
+ 	regulator-max-microvolt = <1302172>;
 -- 
 2.17.0
