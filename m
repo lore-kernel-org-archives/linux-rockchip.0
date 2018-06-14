@@ -1,39 +1,65 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2] net: ethernet: stmmac: dwmac-rk: Add GMAC support for PX30
-Date: Thu, 14 Jun 2018 10:30:56 +0200
-Message-ID: <2582999.2hZx6CH9S6@diego>
-References: <1528956927-32440-1-git-send-email-david.wu@rock-chips.com> <1961033.25ax7s0Z5i@diego> <3aa2445f-ab2a-93b6-3a49-36be6c98d327@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 2/4] arm64: dts: rockchip: add phandles to some nodes on
+ rk3399-gru
+Date: Thu, 14 Jun 2018 13:30:37 +0200
+Message-ID: <20180614113039.29117-3-heiko@sntech.de>
+References: <20180614113039.29117-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3aa2445f-ab2a-93b6-3a49-36be6c98d327@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180614113039.29117-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 14. Juni 2018, 10:14:31 CEST schrieb David Wu:
-> Hi Heiko,
-> 
-> 在 2018年06月14日 15:54, Heiko Stübner 写道:
-> > I don't see that new clock documented in the dt-binding.
-> > Also, which clock from the clock-controller does this connect to?
-> 
-> The clock is the "SCLK_GMAC_RMII" at the clock-controller, which could
-> be set rate by the link speed.
+Some nodes will need to be refined on a per board level, so add phandles
+to them to reference them later.
 
-Hmm, while these huge number of clocks are somewhat strange,
-shouldn't it be named something with _rmii instead of _speed then?
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Also, I don't see any clk_enable action for that new clock, so you could
-end up with being off?
-
-And someone could convert the driver to use the new clk-bulk APIs [0],
-so the large number of clk_prepare_enable calls would be a bit
-trimmed down.
-
-
-Heiko
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/clk-bulk.c
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 614b4f198cc0..ca07f6032200 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -267,7 +267,7 @@
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bt_host_wake_l>;
+ 
+-		wake-on-bt {
++		wake_on_bt: wake-on-bt {
+ 			label = "Wake-on-Bluetooth";
+ 			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+ 			linux,code = <KEY_WAKEUP>;
+@@ -285,7 +285,7 @@
+ 		status = "okay";
+ 	};
+ 
+-	sound {
++	sound: sound {
+ 		compatible = "rockchip,rk3399-gru-sound";
+ 		rockchip,cpu = <&i2s0 &i2s2>;
+ 	};
+@@ -813,7 +813,7 @@ ap_i2c_audio: &i2c8 {
+ 		};
+ 	};
+ 
+-	wifi {
++	wifi: wifi {
+ 		wlan_module_reset_l: wlan-module-reset-l {
+ 			rockchip,pins = <1 11 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+-- 
+2.17.0
