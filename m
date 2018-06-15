@@ -1,96 +1,37 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [regression] HDMI breakage just before poweroff
-Date: Fri, 15 Jun 2018 20:46:50 +0200
-Message-ID: <CAAMcf8C3fS1SdZVKrsu9zRMn69BcAtFL44QvWMJ8zn4CySnfcw@mail.gmail.com>
-References: <CAAMcf8D86ssM+YeFAXaYDm9QwwAQLdaOgWyC2F8yQ-_-UNyY+A@mail.gmail.com>
- <5AEA873A.7080701@rock-chips.com>
- <0284fa4f-abd6-26f6-31e2-1a6d24777733@arm.com>
- <CAAMcf8BJ1skbmR7AazyTPkkdyMoyuA0ihj=Gbnhb9nKWf3FSGg@mail.gmail.com>
- <5B1F4375.7000000@rock-chips.com>
- <77e4c6e1-015f-5fac-66b6-c942bb2dc9d8@arm.com>
- <5B1F9FF7.5070203@rock-chips.com>
- <CAAFQd5D__ArEYSVoWL5A40X6vbYxJ-vOYpsXxiLujC-XK9u2+A@mail.gmail.com>
- <86efhc8dyg.wl-marc.zyngier@arm.com>
- <CAAMcf8AmuMStdSUHGEQhii7BUtTRHOSyLhop43rf_nX0GROnnw@mail.gmail.com>
- <cc147c40-dbad-b714-3fe6-858854a56004@arm.com>
- <5B20F5F0.9090101@rock-chips.com>
- <CAAMcf8D1-7YvOeOMd+rJOWX7XNQwKeAYjfmyAHOR8TC6vc=G1w@mail.gmail.com>
- <7ce78e65-51b6-9204-5bb4-e515e36576d4@arm.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v3 16/27] docs: Fix more broken references
+Date: Fri, 15 Jun 2018 14:42:46 -0700
+Message-ID: <152909896651.16708.13481357388390831455@swboyd.mtv.corp.google.com>
+References: <cover.1528990947.git.mchehab+samsung@kernel.org>
+ <e1bf52a721005b2017434acc54ec5ddc152d6fe4.1528990947.git.mchehab+samsung@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7ce78e65-51b6-9204-5bb4-e515e36576d4-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <e1bf52a721005b2017434acc54ec5ddc152d6fe4.1528990947.git.mchehab+samsung@kernel.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Cc: linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, intel-wired-lan@lists.osuosl.org, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, linux-fsdevel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 15, 2018 at 6:51 PM, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org> wrote:
-> On 15/06/18 17:39, Vicente Bergas wrote:
->> On Wed, Jun 13, 2018 at 12:46 PM, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->>> Hi Marc & Vicente,
->>>
->>> On 06/13/2018 06:26 PM, Marc Zyngier wrote:
->>>>>
->>>>>>
->>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->>>>>> @@ -451,6 +451,7 @@
->>>>>>  static struct platform_driver rockchip_drm_platform_driver = {
->>>>>>      .probe = rockchip_drm_platform_probe,
->>>>>>      .remove = rockchip_drm_platform_remove,
->>>>>> +    .shutdown = (void (*)(struct platform_device
->>>>>> *))rockchip_drm_platform_remove,
->>>>
->>>> No, please...:-(  Provide a wrapper that returns void instead.
->>>
->>>
->>> hmmm, this is just a test only hack, i am thinking maybe
->>> drm_atomic_helper_shutdown is enough for shutdown() ?
->>>
->>>
->>> something like:
->>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
->>> @@ -442,6 +442,14 @@ static int rockchip_drm_platform_remove(struct
->>> platform_device *pdev)
->>>         return 0;
->>>  }
->>>
->>> +static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
->>> +{
->>> +       struct drm_device *drm = platform_get_drvdata(pdev);
->>> +
->>> +       if (drm)
->>> +               drm_atomic_helper_shutdown(drm);
->>> +}
->>> +
->>>
->> Hi,
->> I can confirm that rockchip_drm_platform_shutdown works as fine as
->> rockchip_drm_platform_remove.
->> Just a note: The first time I noticed this error was because it
->> appeared on display, now that the display is off, are we sure the
->> error is fixed?
->> Also, could there be other peripherals that need to be powered off
->> before the iommu?
->> For curiosity: why is the iommu disabled before kexec instead of
->> resetting it after kexec?
->
-> Because by the time you're in the new kernel, you've corrupted the page
-> tables, accessed peripheral address space, and set the system on fire.
->
-> In general, having a DMA master active across something like kexec is a
-> pretty fatal issue. And when your boot loader is a Linux kernel using
-> kexec, you're really insisting that kexec works correctly.
-
-Is it feasible to place the display memory at a virtual address that
-matches the physical address?
+UXVvdGluZyBNYXVybyBDYXJ2YWxobyBDaGVoYWIgKDIwMTgtMDYtMTQgMDk6MDk6MDEpCj4gQXMg
+d2UgbW92ZSBzdHVmZiBhcm91bmQsIHNvbWUgZG9jIHJlZmVyZW5jZXMgYXJlIGJyb2tlbi4gRml4
+IHNvbWUgb2YKPiB0aGVtIHZpYSB0aGlzIHNjcmlwdDoKPiAgICAgICAgIC4vc2NyaXB0cy9kb2N1
+bWVudGF0aW9uLWZpbGUtcmVmLWNoZWNrIC0tZml4Cj4gCj4gTWFudWFsbHkgY2hlY2tlZCB0aGF0
+IHByb2R1Y2VkIHJlc3VsdHMgYXJlIHZhbGlkLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hdXJvIENh
+cnZhbGhvIENoZWhhYiA8bWNoZWhhYitzYW1zdW5nQGtlcm5lbC5vcmc+Cj4gLS0tCj4gIC4uLi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3N0L3N0LGNsa2dlbi50eHQgfCAgOCArKysrLS0tLQo+
+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay90aS9nYXRlLnR4dCAgICAgIHwgIDIgKy0K
+PiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svdGkvaW50ZXJmYWNlLnR4dCB8ICAyICst
+CgpBY2tlZC1ieTogU3RlcGhlbiBCb3lkIDxzYm95ZEBrZXJuZWwub3JnPgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
