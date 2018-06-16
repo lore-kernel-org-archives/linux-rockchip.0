@@ -1,14 +1,13 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 5/5] drm/rockchip: lvds: add missing of_node_put
-Date: Sat, 16 Jun 2018 14:24:09 +0200
-Message-ID: <1948755.WvuARZiism@diego>
-References: <1527102436-13447-1-git-send-email-Julia.Lawall@lip6.fr>
- <1527102436-13447-6-git-send-email-Julia.Lawall@lip6.fr>
+Subject: Re: [PATCH 1/2] drm/rockchip: cnd-dp: adjust spdif register setting
+Date: Sat, 16 Jun 2018 15:00:06 +0200
+Message-ID: <1713657.Ecv5Pr7be3@diego>
+References: <1526979222-32478-1-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1527102436-13447-6-git-send-email-Julia.Lawall@lip6.fr>
+In-Reply-To: <1526979222-32478-1-git-send-email-hl@rock-chips.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -18,24 +17,18 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Lin Huang <hl@rock-chips.com>
+Cc: jeffy.chen@rock-chips.com, airlied@linux.ie, briannorris@chromium.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, broonie@kernel.org, zyw@rock-chips.com, daniel.vetter@intel.com, dgreid@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSnVsaWEsCgpBbSBNaXR0d29jaCwgMjMuIE1haSAyMDE4LCAyMTowNzoxNiBDRVNUIHNjaHJp
-ZWIgSnVsaWEgTGF3YWxsOgo+IFRoZSBkZXZpY2Ugbm9kZSBpdGVyYXRvcnMgcGVyZm9ybSBhbiBv
-Zl9ub2RlX2dldCBvbiBlYWNoIGl0ZXJhdGlvbiwgc28gYQo+IGp1bXAgb3V0IG9mIHRoZSBsb29w
-IHJlcXVpcmVzIGFuIG9mX25vZGVfcHV0Lgo+IAo+IFRoZSBzZW1hbnRpYyBwYXRjaCB0aGF0IGZp
-eGVzIHRoaXMgcHJvYmxlbSBpcyBhcyBmb2xsb3dzCj4gKGh0dHA6Ly9jb2NjaW5lbGxlLmxpcDYu
-ZnIpOgo+IAo+IC8vIDxzbXBsPgo+IEBACj4gZXhwcmVzc2lvbiByb290LGU7Cj4gbG9jYWwgaWRl
-eHByZXNzaW9uIGNoaWxkOwo+IGl0ZXJhdG9yIG5hbWUgZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZTsK
-PiBAQAo+IAo+ICBmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHJvb3QsIGNoaWxkKSB7Cj4gICAgLi4u
-IHdoZW4gIT0gb2Zfbm9kZV9wdXQoY2hpbGQpCj4gICAgICAgIHdoZW4gIT0gZSA9IGNoaWxkCj4g
-KyAgb2Zfbm9kZV9wdXQoY2hpbGQpOwo+ID8gIGJyZWFrOwo+ICAgIC4uLgo+IH0KPiAuLi4gd2hl
-biAhPSBjaGlsZAo+IC8vIDwvc21wbD4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKdWxpYSBMYXdhbGwg
-PEp1bGlhLkxhd2FsbEBsaXA2LmZyPgoKdGhhbmtzIGZvciBjYXRjaGluZyB0aGlzLiBJJ3ZlIGFk
-ZGVkIGEgIkZpeGVzIi10YWcgYW5kCmFwcGxpZWQgdGhlIHBhdGNoIHRvIGRybS1taXNjLW5leHQg
-CgoKVGhhbmtzCkhlaWtvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+QW0gRGllbnN0YWcsIDIyLiBNYWkgMjAxOCwgMTA6NTM6NDEgQ0VTVCBzY2hyaWViIExpbiBIdWFu
+ZzoKPiBXZSB1c2Ugaml0dGVyIGJ5cGFzcyBtb2RlIGZvciBzcGRpZiwgc28gZG8gbm90IG5lZWQg
+dG8gc2V0IGppdHRlciBtb2RlCj4gcmVsYXRlZCBiaXQgaW4gU1BESUZfQ1RSTF9BRERSIHJlZ2lz
+dGVyLiBBbHNvLCB3ZSBuZWVkIHRvIGVuYWJsZQo+IFNQRElGX0VOQUJMRSBiaXQuCj4gCj4gU2ln
+bmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNvbT4KPiBTaWduZWQtb2Zm
+LWJ5OiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMuY29tPgoKYXBwbGllZCB0byBkcm0tbWlzYy1u
+ZXh0IGFmdGVyIGFkYXB0aW5nIHRoZSBjb21taXQgbWVzc2FnZQp0byBtYWtlIGl0IGNsZWFyIHRo
+YXQgd2UgbmVlZCB0byBrZWVwIHRoZSBTUERJRl9FTkFCTEUgYml0LgoKClRoYW5rcwpIZWlrbwoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
