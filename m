@@ -1,133 +1,32 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: generalize rk3399 #sound-dai-cells
-Date: Sun, 17 Jun 2018 15:24:19 +0200
-Message-ID: <20180617132419.30688-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 04/15] arm: dts: rk322x: Add missing cooling device properties for CPUs
+Date: Sun, 17 Jun 2018 16:47:07 +0200
+Message-ID: <6654764.Ls0NFkadpc@phil>
+References: <cover.1527244200.git.viresh.kumar@linaro.org> <406021e33d541ca0318a6b15687084ca19fdd943.1527244201.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <406021e33d541ca0318a6b15687084ca19fdd943.1527244201.git.viresh.kumar@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: arm@kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The soc spdif and i2s controllers always only have one compontent, so
-always require #sound-dai-cells to be 0. Therefore there is no need to
-duplicate this property in individual boards.
+Am Freitag, 25. Mai 2018, 12:31:50 CEST schrieb Viresh Kumar:
+> The cooling device properties, like "#cooling-cells" and
+> "dynamic-power-coefficient", should either be present for all the CPUs
+> of a cluster or none. If these are present only for a subset of CPUs of
+> a cluster then things will start falling apart as soon as the CPUs are
+> brought online in a different order. For example, this will happen
+> because the operating system looks for such properties in the CPU node
+> it is trying to bring up, so that it can register a cooling device.
+> 
+> Add such missing properties.
+> 
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-So move them to rk3399.dtsi.
+applied for 4.19
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts            | 3 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi              | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 --
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi          | 1 -
- arch/arm64/boot/dts/rockchip/rk3399.dtsi                   | 3 +++
- 5 files changed, 3 insertions(+), 7 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index d8a2f0ba4b2b..918944aafe83 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -492,19 +492,16 @@
- &i2s0 {
- 	rockchip,playback-channels = <8>;
- 	rockchip,capture-channels = <8>;
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
- 
- &i2s1 {
- 	rockchip,playback-channels = <2>;
- 	rockchip,capture-channels = <2>;
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
- 
- &i2s2 {
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 111839a18465..0130b9f98c9d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -402,7 +402,6 @@
- 	pinctrl-0 = <&i2s0_2ch_bus>;
- 	rockchip,playback-channels = <2>;
- 	rockchip,capture-channels = <2>;
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-index 3768e1623e4f..fef2c0608999 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-@@ -149,7 +149,6 @@
- &i2s0 {
- 	rockchip,playback-channels = <8>;
- 	rockchip,capture-channels = <8>;
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
- 
-@@ -198,6 +197,5 @@
- &spdif {
- 	i2c-scl-rising-time-ns = <450>;
- 	i2c-scl-falling-time-ns = <15>;
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 5dada565429c..36b60791c156 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -425,7 +425,6 @@
- };
- 
- &i2s2 {
--	#sound-dai-cells = <0>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index ff63d9e93b4a..adb037cd80fe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1483,6 +1483,7 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spdif_bus>;
- 		power-domains = <&power RK3399_PD_SDIOAUDIO>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
- 	};
- 
-@@ -1498,6 +1499,7 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2s0_8ch_bus>;
- 		power-domains = <&power RK3399_PD_SDIOAUDIO>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
- 	};
- 
-@@ -1512,6 +1514,7 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2s1_2ch_bus>;
- 		power-domains = <&power RK3399_PD_SDIOAUDIO>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
- 	};
- 
--- 
-2.17.0
+Thanks
+Heiko
