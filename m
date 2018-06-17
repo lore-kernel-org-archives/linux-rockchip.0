@@ -1,272 +1,170 @@
-From: Chanwoo Choi <cwchoi00@gmail.com>
-Subject: Re: [RFC PATCH 03/10] devfreq: rk3399_dmc: Pass ODT and auto power
- down parameters to TF-A.
-Date: Sun, 17 Jun 2018 09:00:29 +0900
-Message-ID: <CAGTfZH3DqzOXNy-w6x=DC9PJ-XPe8SPtZqkONwVO2aL5OGAcqA@mail.gmail.com>
-References: <20180514211610.26618-1-enric.balletbo@collabora.com>
- <CGME20180514211840epcas3p41708e430bc22d7e61e8b894b12a083f9@epcas3p4.samsung.com>
- <20180514211610.26618-4-enric.balletbo@collabora.com> <5AFA0B94.4000100@samsung.com>
- <CAFqH_51jDy6hvwTtVQf52OZ2QFwAACzH8bh2bUZdxAnvKqM6=A@mail.gmail.com>
-Reply-To: cwchoi00@gmail.com
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: convert rk3288 to operating-points-v2
+Date: Sun, 17 Jun 2018 15:18:08 +0200
+Message-ID: <20180617131808.30283-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqH_51jDy6hvwTtVQf52OZ2QFwAACzH8bh2bUZdxAnvKqM6=A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Chanwoo Choi <cw00.choi@samsung.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, sboyd@kernel.org, hjc@rock-chips.com, David Airlie <airlied@linux.ie>, huang lin <hl@rock-chips.com>, Linux PM list <linux-pm@vger.kernel.org>, dbasehore@chromium.org, linux-kernel <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com, linux-clk@vger.kernel.orgLinux
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Enric
+Operating points need to be present in each cpu core using it, not only
+the first one. With operating-points-v1 this would require duplicating
+this table into each cpu node.
 
-2018-06-16 19:15 GMT+09:00 Enric Balletbo Serra <eballetbo@gmail.com>:
-> Hi Chanwoo,
->
-> I'll send a new version soon, just wanted to ask some questions here. See=
- below.
->
-> Missatge de Chanwoo Choi <cw00.choi@samsung.com> del dia dt., 15 de
-> maig 2018 a les 0:21:
->>
->> Hi,
->>
->> On 2018=EB=85=84 05=EC=9B=94 15=EC=9D=BC 06:16, Enric Balletbo i Serra w=
-rote:
->> > Trusted Firmware-A (TF-A) for rk3399 implements a SiP call to get the
->> > on-die termination (ODT) and auto power down parameters from kernel,
->> > this patch adds the functionality to do this. Also, if DDR clock
->> > frequency is lower than the on-die termination (ODT) disable frequency
->> > this driver should disable the DDR ODT.
->>
->> I have a question.
->> 'disable frequency' is the same meaning of 'disable the DDR ODT'?
->>
->
-> Yes, the DT defines an odt_dis_freq parameter, when the DDR frequency
-> is less than the value in this parameter we disable the ODT on the
-> DRAM.
->
->> >
->> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> > ---
->> >
->> >  drivers/devfreq/rk3399_dmc.c        | 50 ++++++++++++++++++++++++++++=
--
->> >  include/soc/rockchip/rockchip_sip.h |  1 +
->> >  2 files changed, 50 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc=
-.c
->> > index d5c03e5abe13..cc1bbca3fb15 100644
->> > --- a/drivers/devfreq/rk3399_dmc.c
->> > +++ b/drivers/devfreq/rk3399_dmc.c
->> > @@ -18,14 +18,17 @@
->> >  #include <linux/devfreq.h>
->> >  #include <linux/devfreq-event.h>
->> >  #include <linux/interrupt.h>
->> > +#include <linux/mfd/syscon.h>
->> >  #include <linux/module.h>
->> >  #include <linux/of.h>
->> >  #include <linux/platform_device.h>
->> >  #include <linux/pm_opp.h>
->> > +#include <linux/regmap.h>
->> >  #include <linux/regulator/consumer.h>
->> >  #include <linux/rwsem.h>
->> >  #include <linux/suspend.h>
->> >
->> > +#include <soc/rockchip/rk3399_grf.h>
->> >  #include <soc/rockchip/rockchip_sip.h>
->> >
->> >  struct dram_timing {
->> > @@ -69,8 +72,11 @@ struct rk3399_dmcfreq {
->> >       struct mutex lock;
->> >       struct dram_timing timing;
->> >       struct regulator *vdd_center;
->> > +     struct regmap *regmap_pmu;
->> >       unsigned long rate, target_rate;
->> >       unsigned long volt, target_volt;
->> > +     unsigned int odt_dis_freq;
->> > +     int odt_pd_arg0, odt_pd_arg1;
->> >  };
->> >
->> >  static int rk3399_dmcfreq_target(struct device *dev, unsigned long *f=
-req,
->> > @@ -80,6 +86,8 @@ static int rk3399_dmcfreq_target(struct device *dev,=
- unsigned long *freq,
->> >       struct dev_pm_opp *opp;
->> >       unsigned long old_clk_rate =3D dmcfreq->rate;
->> >       unsigned long target_volt, target_rate;
->> > +     struct arm_smccc_res res;
->> > +     int dram_flag;
->> >       int err;
->> >
->> >       opp =3D devfreq_recommended_opp(dev, freq, flags);
->> > @@ -95,6 +103,15 @@ static int rk3399_dmcfreq_target(struct device *de=
-v, unsigned long *freq,
->> >
->> >       mutex_lock(&dmcfreq->lock);
->> >
->> > +     dram_flag =3D 0;
->>
->> Also, if dram_flag is 0, it mean that disable ODT frequency?
->
-> Yes, not a good name, maybe I should just rename it to odt_enable to
-> be more clear.
->
->> If it's right, you better to define the precise variables as following
->> instead of just integer(0 or 1).
->> For example,
->> - ROCKCHIP_SIP_DRAM_FREQ_ENABLE
->> - ROCKCHIP_SIP_DRAM_FREQ_DISABLE
->>
->> > +     if (target_rate >=3D dmcfreq->odt_dis_freq)
->> > +             dram_flag =3D 1;
->> > +
->> > +     arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
->> > +                   dmcfreq->odt_pd_arg1,
->> > +                   ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
->> > +                   dram_flag, 0, 0, 0, &res);
->> > +
->>
->> This operation is special for only rk3399_dmc. It is difficult
->> to understand what to do. I recommend you better to add the detailed com=
-ment
->> with code.
->
-> Will do.
->
->>
->> >       /*
->> >        * If frequency scaling from low to high, adjust voltage first.
->> >        * If frequency scaling from high to low, adjust frequency first=
-.
->> > @@ -294,11 +311,13 @@ static int rk3399_dmcfreq_probe(struct platform_=
-device *pdev)
->> >  {
->> >       struct arm_smccc_res res;
->> >       struct device *dev =3D &pdev->dev;
->> > -     struct device_node *np =3D pdev->dev.of_node;
->> > +     struct device_node *np =3D pdev->dev.of_node, *node;
->> >       struct rk3399_dmcfreq *data;
->> >       int ret, index, size;
->> >       uint32_t *timing;
->> >       struct dev_pm_opp *opp;
->> > +     u32 ddr_type;
->> > +     u32 val;
->> >
->> >       data =3D devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP_KE=
-RNEL);
->> >       if (!data)
->> > @@ -334,6 +353,29 @@ static int rk3399_dmcfreq_probe(struct platform_d=
-evice *pdev)
->> >               return ret;
->> >       }
->> >
->> > +     /* Try to find the optional reference to the pmu syscon */
->> > +     node =3D of_parse_phandle(np, "rockchip,pmu", 0);
->> > +     if (node) {
->> > +             data->regmap_pmu =3D syscon_node_to_regmap(node);
->> > +             if (IS_ERR(data->regmap_pmu))
->> > +                     return PTR_ERR(data->regmap_pmu);
->> > +     }
->> > +
->> > +     /* Get DDR type */
->> > +     regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
->> > +     ddr_type =3D (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
->> > +                 RK3399_PMUGRF_DDRTYPE_MASK;
->> > +
->> > +     /* Get the odt_dis_freq parameter in function of the DDR type */
->> > +     if (ddr_type =3D=3D RK3399_PMUGRF_DDRTYPE_DDR3)
->> > +             data->odt_dis_freq =3D data->timing.ddr3_odt_dis_freq;
->> > +     else if (ddr_type =3D=3D RK3399_PMUGRF_DDRTYPE_LPDDR3)
->> > +             data->odt_dis_freq =3D data->timing.lpddr3_odt_dis_freq;
->> > +     else if (ddr_type =3D=3D RK3399_PMUGRF_DDRTYPE_LPDDR4)
->> > +             data->odt_dis_freq =3D data->timing.lpddr4_odt_dis_freq;
->> > +     else
->> > +             return -EINVAL;
->> > +
->>
->> how about using 'switch' statement?
->>
->
-> Ok
->
->> >       /*
->> >        * Get dram timing and pass it to arm trust firmware,
->> >        * the dram drvier in arm trust firmware will get these
->> > @@ -358,6 +400,12 @@ static int rk3399_dmcfreq_probe(struct platform_d=
-evice *pdev)
->> >                     ROCKCHIP_SIP_CONFIG_DRAM_INIT,
->> >                     0, 0, 0, 0, &res);
->> >
->> > +     data->odt_pd_arg0 =3D (data->timing.sr_idle & 0xff) |
->> > +                         ((data->timing.sr_mc_gate_idle & 0xff) << 8)=
- |
->> > +                         ((data->timing.standby_idle & 0xffff) << 16)=
-;
->> > +     data->odt_pd_arg1 =3D (data->timing.pd_idle & 0xfff) |
->> > +                         ((data->timing.srpd_lite_idle & 0xfff) << 16=
-);
->> > +
->>
->> odt_pd_arg0 and odt_pd_arg1 might be used for disabling/enabling the ODT=
- frequency.
->> As I commented, it depend on only rk3399_dmc. You better to add detailed=
- comment.
->>
->
-> Ok
->
->> And I prefer to define the XXX_SHIFT/XXX_MASK definition instead of
->> using 8/16/0xff/0xffff for the readability.
->>
->
-> I tried to add the XXX_SHIFT/XXX_MASK definitions and IMHO the
-> readability is worst if I use a maximum line length of 80 characters.
-> These masks are only used here, let me try to convince you by adding a
-> good doc in the next version and if you still prefer I add the
-> definition I'll do.
+With opp-v2 we can share the same table on all nodes.
 
-If you add the some description and it would be only used on here,
-I don't force to add some definition such as _SHIFT, _MASK as you suggested=
-.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 36 +++++++-------
+ arch/arm/boot/dts/rk3288.dtsi        | 70 ++++++++++++++++++++++------
+ 2 files changed, 75 insertions(+), 31 deletions(-)
 
->
->> >       /*
->> >        * We add a devfreq driver to our parent since it has a device t=
-ree node
->> >        * with operating points.
->> > diff --git a/include/soc/rockchip/rockchip_sip.h b/include/soc/rockchi=
-p/rockchip_sip.h
->> > index 7e28092c4d3d..ad9482c56797 100644
->> > --- a/include/soc/rockchip/rockchip_sip.h
->> > +++ b/include/soc/rockchip/rockchip_sip.h
->> > @@ -23,5 +23,6 @@
->> >  #define ROCKCHIP_SIP_CONFIG_DRAM_GET_RATE    0x05
->> >  #define ROCKCHIP_SIP_CONFIG_DRAM_CLR_IRQ     0x06
->> >  #define ROCKCHIP_SIP_CONFIG_DRAM_SET_PARAM   0x07
->> > +#define ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD  0x08
->> >
->> >  #endif
->> >
->>
->>
->> --
->> Best Regards,
->> Chanwoo Choi
->> Samsung Electronics
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> Cheers,
->  Enric
-
-
-
---=20
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 823c7ed47fcf..c8c83bf544b9 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -91,22 +91,26 @@
+ 
+ &cpu0 {
+ 	cpu0-supply = <&vdd_cpu>;
+-	operating-points = <
+-		/* KHz    uV */
+-		1800000 1400000
+-		1704000 1350000
+-		1608000 1300000
+-		1512000 1250000
+-		1416000 1200000
+-		1200000 1100000
+-		1008000 1050000
+-		 816000 1000000
+-		 696000  950000
+-		 600000  900000
+-		 408000  900000
+-		 216000  900000
+-		 126000  900000
+-	>;
++};
++
++/* rk3288-c used in Veyron Chrome-devices has slightly changed OPPs */
++&cpu_opp_table {
++	/delete-node/ opp02;
++
++	opp10 {
++		opp-microvolt = <1250000>;
++	};
++	opp11 {
++		opp-microvolt = <1300000>;
++	};
++	opp12 {
++		opp-hz = /bits/ 64 <1704000000>;
++		opp-microvolt = <1350000>;
++	};
++	opp13 {
++		opp-hz = /bits/ 64 <1800000000>;
++		opp-microvolt = <1400000>;
++	};
+ };
+ 
+ &emmc {
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 2a060c2dc383..a3af3f6ad8d0 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -60,21 +60,7 @@
+ 			compatible = "arm,cortex-a12";
+ 			reg = <0x500>;
+ 			resets = <&cru SRST_CORE0>;
+-			operating-points = <
+-				/* KHz    uV */
+-				1608000 1350000
+-				1512000 1300000
+-				1416000 1200000
+-				1200000 1100000
+-				1008000 1050000
+-				 816000 1000000
+-				 696000  950000
+-				 600000  900000
+-				 408000  900000
+-				 312000  900000
+-				 216000  900000
+-				 126000  900000
+-			>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			clock-latency = <40000>;
+ 			clocks = <&cru ARMCLK>;
+@@ -99,6 +85,60 @@
+ 		};
+ 	};
+ 
++	cpu_opp_table: cpu-opp-table {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp00 {
++			opp-hz = /bits/ 64 <126000000>;
++			opp-microvolt = <900000>;
++		};
++		opp01 {
++			opp-hz = /bits/ 64 <216000000>;
++			opp-microvolt = <900000>;
++		};
++		opp02 {
++			opp-hz = /bits/ 64 <312000000>;
++			opp-microvolt = <900000>;
++		};
++		opp03 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <900000>;
++		};
++		opp04 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <900000>;
++		};
++		opp05 {
++			opp-hz = /bits/ 64 <696000000>;
++			opp-microvolt = <950000>;
++		};
++		opp06 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <1000000>;
++		};
++		opp07 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <1050000>;
++		};
++		opp08 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <1100000>;
++		};
++		opp09 {
++			opp-hz = /bits/ 64 <1416000000>;
++			opp-microvolt = <1200000>;
++		};
++		opp10 {
++			opp-hz = /bits/ 64 <1512000000>;
++			opp-microvolt = <1300000>;
++		};
++		opp11 {
++			opp-hz = /bits/ 64 <1608000000>;
++			opp-microvolt = <1350000>;
++		};
++	};
++
+ 	amba {
+ 		compatible = "simple-bus";
+ 		#address-cells = <2>;
+-- 
+2.17.0
