@@ -1,37 +1,61 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 10/15] arm: dts: rk3288: Add missing cooling device properties for CPUs
-Date: Sun, 17 Jun 2018 16:47:57 +0200
-Message-ID: <2717295.dpLKm0oEe9@phil>
-References: <cover.1527244200.git.viresh.kumar@linaro.org> <11f16618dc965a7996976a2bca040cd87d1961d2.1527244201.git.viresh.kumar@linaro.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 2/2] drm/rockchip: vop: fix irq disabled after vop
+ driver probed
+Date: Mon, 18 Jun 2018 10:19:46 +0200
+Message-ID: <1637509.0BUGQyR5Xn@diego>
+References: <20180612132028.27490-1-heiko@sntech.de>
+ <20180612132028.27490-3-heiko@sntech.de>
+ <edc71874-4517-c097-c851-d60565f06817@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <11f16618dc965a7996976a2bca040cd87d1961d2.1527244201.git.viresh.kumar@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: arm@kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Vincent Guittot <vincent.guittot@linaro.org>, ionela.voinescu@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>, chris.redpath@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <edc71874-4517-c097-c851-d60565f06817@arm.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: robin.murphy@arm.com, jeffy.chen@rock-chips.com, dri-devel@lists.freedesktop.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, enric.balletbo@collabora.co.uk, stable@vger.kernel.org, tomeu.vizoso@collabora.co.uk, ezequiel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 25. Mai 2018, 12:31:56 CEST schrieb Viresh Kumar:
-> The cooling device properties, like "#cooling-cells" and
-> "dynamic-power-coefficient", should either be present for all the CPUs
-> of a cluster or none. If these are present only for a subset of CPUs of
-> a cluster then things will start falling apart as soon as the CPUs are
-> brought online in a different order. For example, this will happen
-> because the operating system looks for such properties in the CPU node
-> it is trying to bring up, so that it can register a cooling device.
-> 
-> Add such missing properties.
-> 
-> Fix other missing properties (clocks, OPP, clock latency) as well to
-> make it all work.
-> 
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-
-applied for 4.19, after adapting the patch to the opp-v2 conversion
-I Cc'ed you on [for your reference].
-
-
-Thanks
-Heiko
+SGkgTWFyYywKCkFtIE1pdHR3b2NoLCAxMy4gSnVuaSAyMDE4LCAxNTowMToyNyBDRVNUIHNjaHJp
+ZWIgTWFyYyBaeW5naWVyOgo+IE9uIDEyLzA2LzE4IDE0OjIwLCBIZWlrbyBTdHVlYm5lciB3cm90
+ZToKPiA+IEZyb206IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gPiAKPiA+IFRo
+ZSB2b3AgaXJxIGlzIHNoYXJlZCBiZXR3ZWVuIHZvcCBhbmQgaW9tbXUgYW5kIGlycSBwcm9iaW5n
+IGluIHRoZQo+ID4gaW9tbXUgZHJpdmVyIG1vdmVkIHRvIHRoZSBwcm9iZSBmdW5jdGlvbiByZWNl
+bnRseS4gVGhpcyBjYW4gaW4gc29tZQo+ID4gY2FzZXMgbGVhZCB0byBhIHN0YWxsIGlmIHRoZSBp
+cnEgaXMgdHJpZ2dlcmVkIHdoaWxlIHRoZSB2b3AgZHJpdmVyCj4gPiBzdGlsbCBoYXMgaXQgZGlz
+YWJsZWQsIGJ1dCB0aGUgdm9wIGlycSBoYW5kbGVyIGdldHMgY2FsbGVkLgo+ID4gCj4gPiBCdXQg
+dGhlcmUgaXMgbm8gcmVhbCBuZWVkIHRvIGRpc2FibGUgdGhlIGlycSwgYXMgdGhlIHZvcCBjYW4g
+c2ltcGx5Cj4gPiBhbHNvIHRyYWNrIGl0cyBlbmFibGVkIHN0YXRlIGFuZCBpZ25vcmUgaXJxcyBp
+biB0aGF0IGNhc2UuCj4gPiBGb3IgdGhpcyB3ZSBjYW4gc2ltcGx5IGNoZWNrIHRoZSBwb3dlci1k
+b21haW4gc3RhdGUgb2YgdGhlIHZvcCwKPiA+IHNpbWlsYXIgdG8gaG93IHRoZSBpb21tdSBkcml2
+ZXIgZG9lcyBpdC4KPiA+IAo+ID4gU28gcmVtb3ZlIHRoZSBlbmFibGUvZGlzYWJsZSBoYW5kbGlu
+ZyBhbmQgYWRkIGFwcHJvcHJpYXRlIGNvbmRpdGlvbgo+ID4gdG8gdGhlIGlycSBoYW5kbGVyLgo+
+ID4gCj4gPiBjaGFuZ2VzIGluIHYyOgo+ID4gLSBtb3ZlIHRvIGp1c3QgY2hlY2sgdGhlIHBvd2Vy
+LWRvbWFpbiBzdGF0ZQo+ID4gLSBhZGQgY2xvY2sgaGFuZGxpbmcKPiA+IGNoYW5nZXMgaW4gdjM6
+Cj4gPiAtIGNsYXJpZnkgY29tbWVudCB0byBzcGVhayBvZiBydW50aW1lLXBtIG5vdCBwb3dlci1k
+b21haW4KPiA+IGNoYW5nZXMgaW4gdjQ6Cj4gPiAtIGFkZHJlc3MgTWFyYydzIGNvbW1lbnRzIChj
+bGstZW5hYmxlIFdBUk5fT04gYW5kIHN0eWxlIGltcHJvdmVtZW50KQo+ID4gCj4gPiBGaXhlczog
+ZDBiOTEyYmQ0YzIzICgiaW9tbXUvcm9ja2NoaXA6IFJlcXVlc3QgaXJxcyBpbiBya19pb21tdV9w
+cm9iZSgpIikKPiA+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnCj4gPiBTaWduZWQtb2ZmLWJ5
+OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogSGVp
+a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+IFRlc3RlZC1ieTogRXplcXVpZWwgR2Fy
+Y2lhIDxlemVxdWllbEBjb2xsYWJvcmEuY29tPgo+IAo+IFJldmlld2VkLWJ5OiBNYXJjIFp5bmdp
+ZXIgPG1hcmMuenluZ2llckBhcm0uY29tPgoKY291bGQgSSBhc2sgeW91IHRvIGFsc28gbG9vayBh
+dCBwYXRjaDEgb2YgdGhpcyBzZXJpZXMsIHRvIGdpdmUgaXQgYW4KQWNrIG9yIFJldmlldz8gZHJt
+LW1pc2MgZG9jdW1lbnRhdGlvbiB2ZXJ5IHN0cm9uZ2x5IHN1Z2dlc3RzIFswXQp0byBoYXZlIGF0
+IGxlYXN0IGFub3RoZXIgc2V0IG9mIGV5ZXMgb24gYSBwYXRjaCBhbmQgc28gZmFyIG5vb25lCmNh
+bWUgZm9yd2FyZCA7LSkKClRoaXMgb2YgY291cnNlIGFsc28gYXBwbGllcyB0byBldmVyeWJvZHkg
+ZWxzZSBpbiB0aGUgQ2MgbGlzdCA6LUQgLgoKClRoYW5rcwpIZWlrbwoKClswXSBodHRwczovLzAx
+Lm9yZy9saW51eGdyYXBoaWNzL2dmeC1kb2NzL21haW50YWluZXItdG9vbHMvZHJtLW1pc2MuaHRt
+bCNtZXJnZS1jcml0ZXJpYQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
