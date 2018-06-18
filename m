@@ -1,35 +1,71 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: convert rk3288 to operating-points-v2
-Date: Mon, 18 Jun 2018 14:51:16 +0530
-Message-ID: <20180618092116.gbxlb46cqihtlhwa@vireshk-i7>
-References: <20180617131808.30283-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 2/2] drm/rockchip: vop: fix irq disabled after vop
+ driver probed
+Date: Mon, 18 Jun 2018 11:38:32 +0200
+Message-ID: <84967793.QqIqAsAVEt@phil>
+References: <20180612121537.31223-1-heiko@sntech.de>
+ <20180612121537.31223-3-heiko@sntech.de>
+ <CAAFQd5D77W8qQm9YmOtr_bpD7WpA9VokjQ+jvTo05F4BFdyrTw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20180617131808.30283-1-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, briannorris@chromium.org, dianders@chromium.org, linux-arm-kernel@lists.infradead.org, amstan@chromium.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAAFQd5D77W8qQm9YmOtr_bpD7WpA9VokjQ+jvTo05F4BFdyrTw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: marc.zyngier@arm.com, Robin Murphy <robin.murphy@arm.com>, Jeffy <jeffy.chen@rock-chips.com>, dri-devel <dri-devel@lists.freedesktop.org>, Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, enric.balletbo@collabora.co.uk, stable@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 17-06-18, 15:18, Heiko Stuebner wrote:
-> +	cpu_opp_table: cpu-opp-table {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +
-> +		opp00 {
-
-Most of the platforms write it as "opp-126000000". Maybe follow the same
-nomenclature ?
--- 
-viresh
+QW0gTW9udGFnLCAxOC4gSnVuaSAyMDE4LCAxMDo0NDo1OCBDRVNUIHNjaHJpZWIgVG9tYXN6IEZp
+Z2E6Cj4gSGkgSGVpa28sCj4gCj4gT24gVHVlLCBKdW4gMTIsIDIwMTggYXQgOToxNSBQTSBIZWlr
+byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiA+Cj4gPiBGcm9tOiBTYW5keSBI
+dWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+ID4KPiA+IFRoZSB2b3AgaXJxIGlzIHNoYXJlZCBi
+ZXR3ZWVuIHZvcCBhbmQgaW9tbXUgYW5kIGlycSBwcm9iaW5nIGluIHRoZQo+ID4gaW9tbXUgZHJp
+dmVyIG1vdmVkIHRvIHRoZSBwcm9iZSBmdW5jdGlvbiByZWNlbnRseS4gVGhpcyBjYW4gaW4gc29t
+ZQo+ID4gY2FzZXMgbGVhZCB0byBhIHN0YWxsIGlmIHRoZSBpcnEgaXMgdHJpZ2dlcmVkIHdoaWxl
+IHRoZSB2b3AgZHJpdmVyCj4gPiBzdGlsbCBoYXMgaXQgZGlzYWJsZWQsIGJ1dCB0aGUgdm9wIGly
+cSBoYW5kbGVyIGdldHMgY2FsbGVkLgo+ID4KPiA+IEJ1dCB0aGVyZSBpcyBubyByZWFsIG5lZWQg
+dG8gZGlzYWJsZSB0aGUgaXJxLCBhcyB0aGUgdm9wIGNhbiBzaW1wbHkKPiA+IGFsc28gdHJhY2sg
+aXRzIGVuYWJsZWQgc3RhdGUgYW5kIGlnbm9yZSBpcnFzIGluIHRoYXQgY2FzZS4KPiA+IEZvciB0
+aGlzIHdlIGNhbiBzaW1wbHkgY2hlY2sgdGhlIHBvd2VyLWRvbWFpbiBzdGF0ZSBvZiB0aGUgdm9w
+LAo+ID4gc2ltaWxhciB0byBob3cgdGhlIGlvbW11IGRyaXZlciBkb2VzIGl0Lgo+ID4KPiA+IFNv
+IHJlbW92ZSB0aGUgZW5hYmxlL2Rpc2FibGUgaGFuZGxpbmcgYW5kIGFkZCBhcHByb3ByaWF0ZSBj
+b25kaXRpb24KPiA+IHRvIHRoZSBpcnEgaGFuZGxlci4KPiA+Cj4gPiBjaGFuZ2VzIGluIHYyOgo+
+ID4gLSBtb3ZlIHRvIGp1c3QgY2hlY2sgdGhlIHBvd2VyLWRvbWFpbiBzdGF0ZQo+ID4gLSBhZGQg
+Y2xvY2sgaGFuZGxpbmcKPiA+IGNoYW5nZXMgaW4gdjM6Cj4gPiAtIGNsYXJpZnkgY29tbWVudCB0
+byBzcGVhayBvZiBydW50aW1lLXBtIG5vdCBwb3dlci1kb21haW4KPiBbc25pcF0KPiA+IEBAIC0x
+MjA5LDggKzEyMTUsMTEgQEAgc3RhdGljIGlycXJldHVybl90IHZvcF9pc3IoaW50IGlycSwgdm9p
+ZCAqZGF0YSkKPiA+ICAgICAgICAgc3Bpbl91bmxvY2soJnZvcC0+aXJxX2xvY2spOwo+ID4KPiA+
+ICAgICAgICAgLyogVGhpcyBpcyBleHBlY3RlZCBmb3Igdm9wIGlvbW11IGlycXMsIHNpbmNlIHRo
+ZSBpcnEgaXMgc2hhcmVkICovCj4gPiAtICAgICAgIGlmICghYWN0aXZlX2lycXMpCj4gPiAtICAg
+ICAgICAgICAgICAgcmV0dXJuIElSUV9OT05FOwo+ID4gKyAgICAgICBpZiAoIWFjdGl2ZV9pcnFz
+KSB7Cj4gPiArICAgICAgICAgICAgICAgcmV0ID0gSVJRX05PTkU7Cj4gPiArICAgICAgICAgICAg
+ICAgdm9wX2NvcmVfY2xrc19kaXNhYmxlKHZvcCk7Cj4gCj4gbml0OiBJZiB3ZSdyZSBhZGRpbmcg
+Im91dDoiLCBjb3VsZG4ndCB3ZSBhbHNvIGFkZCAib3V0X2Nsa3M6IiBhbmQgbW92ZQo+IHRoZSBj
+YWxsIHRvIHZvcF9jb3JlX2Nsa3NfZGlzYWJsZSgpIHRoZXJlPwo+IAo+ID4gKyAgICAgICAgICAg
+ICAgIGdvdG8gb3V0Owo+ID4gKyAgICAgICB9Cj4gPgo+ID4gICAgICAgICBpZiAoYWN0aXZlX2ly
+cXMgJiBEU1BfSE9MRF9WQUxJRF9JTlRSKSB7Cj4gPiAgICAgICAgICAgICAgICAgY29tcGxldGUo
+JnZvcC0+ZHNwX2hvbGRfY29tcGxldGlvbik7Cj4gPiBAQCAtMTIzNiw2ICsxMjQ1LDEwIEBAIHN0
+YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNyKGludCBpcnEsIHZvaWQgKmRhdGEpCj4gPiAgICAgICAg
+ICAgICAgICAgRFJNX0RFVl9FUlJPUih2b3AtPmRldiwgIlVua25vd24gVk9QIElSUXM6ICUjMDJ4
+XG4iLAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWN0aXZlX2lycXMpOwo+ID4K
+PiA+ICsgICAgICAgdm9wX2NvcmVfY2xrc19kaXNhYmxlKHZvcCk7Cj4gPiArCj4gPiArb3V0Ogo+
+ID4gKyAgICAgICBwbV9ydW50aW1lX3B1dCh2b3AtPmRldik7Cj4gPiAgICAgICAgIHJldHVybiBy
+ZXQ7Cj4gPiAgfQo+IAo+IE90aGVyIHRoYW4gdGhhdDoKPiAKPiBSZXZpZXdlZC1ieTogVG9tYXN6
+IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4KClRoYXQncyBzaW1pbGFyIHRvIHdoYXQgTWFyYyBz
+dWdnZXN0ZWQgYW5kIHRodXMgYWxyZWFkeSBwYXJ0IG9mIHY0CnBvc3RlZCBsYXN0IHR1ZXNkYXks
+IHNvIEknbGwganVzdCBjYXJyeSBvdmVyIHlvdXIgUmV2aWV3ZWQtYnkuCgpDb3VsZCB5b3UgcG9z
+c2libHkgYWxzbyBnaXZlIHBhdGNoMSBhIG5vZCBvZiBhcHByb3ZhbD8gU28gSSBjYW4gaG9ub3IK
+dGhlIHN0cm9uZyBzdWdnZXN0aW9uIGluIHRoZSBkcm0tbWlzYyBkb2N1bWVudGF0aW9uPyA7LSkK
+ClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
