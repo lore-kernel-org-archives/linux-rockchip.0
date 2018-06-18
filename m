@@ -1,41 +1,173 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v4 1/2] drm/rockchip: vop: split out core clock enablement
- into separate functions
-Date: Mon, 18 Jun 2018 18:44:24 +0900
-Message-ID: <CAAFQd5Be53CNQXROdRyZ0mFc2dDHhLDcQ+vCvWfW-9V3078_Bg@mail.gmail.com>
-References: <20180612132028.27490-1-heiko@sntech.de>
- <20180612132028.27490-2-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2] ARM: dts: rockchip: convert rk3288 to operating-points-v2
+Date: Mon, 18 Jun 2018 12:05:19 +0200
+Message-ID: <20180618100519.14922-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180612132028.27490-2-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: marc.zyngier@arm.com, Robin Murphy <robin.murphy@arm.com>, Jeffy <jeffy.chen@rock-chips.com>, dri-devel <dri-devel@lists.freedesktop.org>, Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, enric.balletbo@collabora.co.uk, stable@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiBUdWUsIEp1biAxMiwgMjAxOCBhdCAxMDoyMCBQTSBIZWlrbyBTdHVlYm5l
-ciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPgo+IEp1ZGdpbmcgZnJvbSB0aGUgaW9tbXUgY29k
-ZSwgYm90aCB0aGUgaGNsayBhbmQgYWNsayBhcmUgbmVjZXNzYXJ5IGZvcgo+IHJlZ2lzdGVyIGFj
-Y2Vzcy4gU3BsaXQgdGhlbSBvZmYgaW50byBzZXBhcmF0ZSBmdW5jdGlvbnMgZnJvbSB0aGUgcmVn
-dWxhcgo+IHZvcCBlbmFibGVtZW50LCBzbyB0aGF0IHdlIGNhbiB1c2UgdGhlbSBlbHNld2hlcmUg
-YXMgd2VsbC4KPgo+IEZpeGVzOiBkMGI5MTJiZDRjMjMgKCJpb21tdS9yb2NrY2hpcDogUmVxdWVz
-dCBpcnFzIGluIHJrX2lvbW11X3Byb2JlKCkiKQo+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3Jn
-Cj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBUZXN0
-ZWQtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDQ0ICsrKysrKysr
-KysrKysrKy0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKSwgMTMgZGVs
-ZXRpb25zKC0pCgpSZXZpZXdlZC1ieTogVG9tYXN6IEZpZ2EgPHRmaWdhQGNocm9taXVtLm9yZz4K
-CkJlc3QgcmVnYXJkcywKVG9tYXN6Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+Operating points need to be present in each cpu core using it, not only
+the first one. With operating-points-v1 this would require duplicating
+this table into each cpu node.
+
+With opp-v2 we can share the same table on all nodes.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+changes in v2:
+- adapt opp node names as suggested by Viresh
+
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 36 +++++++-------
+ arch/arm/boot/dts/rk3288.dtsi        | 70 ++++++++++++++++++++++------
+ 2 files changed, 75 insertions(+), 31 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 823c7ed47fcf..2075120cfc4d 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -91,22 +91,26 @@
+ 
+ &cpu0 {
+ 	cpu0-supply = <&vdd_cpu>;
+-	operating-points = <
+-		/* KHz    uV */
+-		1800000 1400000
+-		1704000 1350000
+-		1608000 1300000
+-		1512000 1250000
+-		1416000 1200000
+-		1200000 1100000
+-		1008000 1050000
+-		 816000 1000000
+-		 696000  950000
+-		 600000  900000
+-		 408000  900000
+-		 216000  900000
+-		 126000  900000
+-	>;
++};
++
++/* rk3288-c used in Veyron Chrome-devices has slightly changed OPPs */
++&cpu_opp_table {
++	/delete-node/ opp-312000000;
++
++	opp-1512000000 {
++		opp-microvolt = <1250000>;
++	};
++	opp-1608000000 {
++		opp-microvolt = <1300000>;
++	};
++	opp-1704000000 {
++		opp-hz = /bits/ 64 <1704000000>;
++		opp-microvolt = <1350000>;
++	};
++	opp-1800000000 {
++		opp-hz = /bits/ 64 <1800000000>;
++		opp-microvolt = <1400000>;
++	};
+ };
+ 
+ &emmc {
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 2a060c2dc383..7094f95b967f 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -60,21 +60,7 @@
+ 			compatible = "arm,cortex-a12";
+ 			reg = <0x500>;
+ 			resets = <&cru SRST_CORE0>;
+-			operating-points = <
+-				/* KHz    uV */
+-				1608000 1350000
+-				1512000 1300000
+-				1416000 1200000
+-				1200000 1100000
+-				1008000 1050000
+-				 816000 1000000
+-				 696000  950000
+-				 600000  900000
+-				 408000  900000
+-				 312000  900000
+-				 216000  900000
+-				 126000  900000
+-			>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			clock-latency = <40000>;
+ 			clocks = <&cru ARMCLK>;
+@@ -99,6 +85,60 @@
+ 		};
+ 	};
+ 
++	cpu_opp_table: cpu-opp-table {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp-126000000 {
++			opp-hz = /bits/ 64 <126000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-216000000 {
++			opp-hz = /bits/ 64 <216000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-312000000 {
++			opp-hz = /bits/ 64 <312000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-408000000 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-696000000 {
++			opp-hz = /bits/ 64 <696000000>;
++			opp-microvolt = <950000>;
++		};
++		opp-816000000 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <1000000>;
++		};
++		opp-1008000000 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <1050000>;
++		};
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <1100000>;
++		};
++		opp-1416000000 {
++			opp-hz = /bits/ 64 <1416000000>;
++			opp-microvolt = <1200000>;
++		};
++		opp-1512000000 {
++			opp-hz = /bits/ 64 <1512000000>;
++			opp-microvolt = <1300000>;
++		};
++		opp-1608000000 {
++			opp-hz = /bits/ 64 <1608000000>;
++			opp-microvolt = <1350000>;
++		};
++	};
++
+ 	amba {
+ 		compatible = "simple-bus";
+ 		#address-cells = <2>;
+-- 
+2.17.0
