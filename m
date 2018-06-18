@@ -1,62 +1,35 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v3 2/2] drm/rockchip: vop: fix irq disabled after vop
- driver probed
-Date: Mon, 18 Jun 2018 17:44:58 +0900
-Message-ID: <CAAFQd5D77W8qQm9YmOtr_bpD7WpA9VokjQ+jvTo05F4BFdyrTw@mail.gmail.com>
-References: <20180612121537.31223-1-heiko@sntech.de>
- <20180612121537.31223-3-heiko@sntech.de>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: convert rk3288 to operating-points-v2
+Date: Mon, 18 Jun 2018 14:51:16 +0530
+Message-ID: <20180618092116.gbxlb46cqihtlhwa@vireshk-i7>
+References: <20180617131808.30283-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180612121537.31223-3-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: marc.zyngier@arm.com, Robin Murphy <robin.murphy@arm.com>, Jeffy <jeffy.chen@rock-chips.com>, dri-devel <dri-devel@lists.freedesktop.org>, Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, enric.balletbo@collabora.co.uk, stable@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20180617131808.30283-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, briannorris@chromium.org, dianders@chromium.org, linux-arm-kernel@lists.infradead.org, amstan@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiBUdWUsIEp1biAxMiwgMjAxOCBhdCA5OjE1IFBNIEhlaWtvIFN0dWVibmVy
-IDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+Cj4gRnJvbTogU2FuZHkgSHVhbmcgPGhqY0Byb2Nr
-LWNoaXBzLmNvbT4KPgo+IFRoZSB2b3AgaXJxIGlzIHNoYXJlZCBiZXR3ZWVuIHZvcCBhbmQgaW9t
-bXUgYW5kIGlycSBwcm9iaW5nIGluIHRoZQo+IGlvbW11IGRyaXZlciBtb3ZlZCB0byB0aGUgcHJv
-YmUgZnVuY3Rpb24gcmVjZW50bHkuIFRoaXMgY2FuIGluIHNvbWUKPiBjYXNlcyBsZWFkIHRvIGEg
-c3RhbGwgaWYgdGhlIGlycSBpcyB0cmlnZ2VyZWQgd2hpbGUgdGhlIHZvcCBkcml2ZXIKPiBzdGls
-bCBoYXMgaXQgZGlzYWJsZWQsIGJ1dCB0aGUgdm9wIGlycSBoYW5kbGVyIGdldHMgY2FsbGVkLgo+
-Cj4gQnV0IHRoZXJlIGlzIG5vIHJlYWwgbmVlZCB0byBkaXNhYmxlIHRoZSBpcnEsIGFzIHRoZSB2
-b3AgY2FuIHNpbXBseQo+IGFsc28gdHJhY2sgaXRzIGVuYWJsZWQgc3RhdGUgYW5kIGlnbm9yZSBp
-cnFzIGluIHRoYXQgY2FzZS4KPiBGb3IgdGhpcyB3ZSBjYW4gc2ltcGx5IGNoZWNrIHRoZSBwb3dl
-ci1kb21haW4gc3RhdGUgb2YgdGhlIHZvcCwKPiBzaW1pbGFyIHRvIGhvdyB0aGUgaW9tbXUgZHJp
-dmVyIGRvZXMgaXQuCj4KPiBTbyByZW1vdmUgdGhlIGVuYWJsZS9kaXNhYmxlIGhhbmRsaW5nIGFu
-ZCBhZGQgYXBwcm9wcmlhdGUgY29uZGl0aW9uCj4gdG8gdGhlIGlycSBoYW5kbGVyLgo+Cj4gY2hh
-bmdlcyBpbiB2MjoKPiAtIG1vdmUgdG8ganVzdCBjaGVjayB0aGUgcG93ZXItZG9tYWluIHN0YXRl
-Cj4gLSBhZGQgY2xvY2sgaGFuZGxpbmcKPiBjaGFuZ2VzIGluIHYzOgo+IC0gY2xhcmlmeSBjb21t
-ZW50IHRvIHNwZWFrIG9mIHJ1bnRpbWUtcG0gbm90IHBvd2VyLWRvbWFpbgpbc25pcF0KPiBAQCAt
-MTIwOSw4ICsxMjE1LDExIEBAIHN0YXRpYyBpcnFyZXR1cm5fdCB2b3BfaXNyKGludCBpcnEsIHZv
-aWQgKmRhdGEpCj4gICAgICAgICBzcGluX3VubG9jaygmdm9wLT5pcnFfbG9jayk7Cj4KPiAgICAg
-ICAgIC8qIFRoaXMgaXMgZXhwZWN0ZWQgZm9yIHZvcCBpb21tdSBpcnFzLCBzaW5jZSB0aGUgaXJx
-IGlzIHNoYXJlZCAqLwo+IC0gICAgICAgaWYgKCFhY3RpdmVfaXJxcykKPiAtICAgICAgICAgICAg
-ICAgcmV0dXJuIElSUV9OT05FOwo+ICsgICAgICAgaWYgKCFhY3RpdmVfaXJxcykgewo+ICsgICAg
-ICAgICAgICAgICByZXQgPSBJUlFfTk9ORTsKPiArICAgICAgICAgICAgICAgdm9wX2NvcmVfY2xr
-c19kaXNhYmxlKHZvcCk7CgpuaXQ6IElmIHdlJ3JlIGFkZGluZyAib3V0OiIsIGNvdWxkbid0IHdl
-IGFsc28gYWRkICJvdXRfY2xrczoiIGFuZCBtb3ZlCnRoZSBjYWxsIHRvIHZvcF9jb3JlX2Nsa3Nf
-ZGlzYWJsZSgpIHRoZXJlPwoKPiArICAgICAgICAgICAgICAgZ290byBvdXQ7Cj4gKyAgICAgICB9
-Cj4KPiAgICAgICAgIGlmIChhY3RpdmVfaXJxcyAmIERTUF9IT0xEX1ZBTElEX0lOVFIpIHsKPiAg
-ICAgICAgICAgICAgICAgY29tcGxldGUoJnZvcC0+ZHNwX2hvbGRfY29tcGxldGlvbik7Cj4gQEAg
-LTEyMzYsNiArMTI0NSwxMCBAQCBzdGF0aWMgaXJxcmV0dXJuX3Qgdm9wX2lzcihpbnQgaXJxLCB2
-b2lkICpkYXRhKQo+ICAgICAgICAgICAgICAgICBEUk1fREVWX0VSUk9SKHZvcC0+ZGV2LCAiVW5r
-bm93biBWT1AgSVJRczogJSMwMnhcbiIsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-YWN0aXZlX2lycXMpOwo+Cj4gKyAgICAgICB2b3BfY29yZV9jbGtzX2Rpc2FibGUodm9wKTsKPiAr
-Cj4gK291dDoKPiArICAgICAgIHBtX3J1bnRpbWVfcHV0KHZvcC0+ZGV2KTsKPiAgICAgICAgIHJl
-dHVybiByZXQ7Cj4gIH0KCk90aGVyIHRoYW4gdGhhdDoKClJldmlld2VkLWJ5OiBUb21hc3ogRmln
-YSA8dGZpZ2FAY2hyb21pdW0ub3JnPgoKQmVzdCByZWdhcmRzLApUb21hc3oKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 17-06-18, 15:18, Heiko Stuebner wrote:
+> +	cpu_opp_table: cpu-opp-table {
+> +		compatible = "operating-points-v2";
+> +		opp-shared;
+> +
+> +		opp00 {
+
+Most of the platforms write it as "opp-126000000". Maybe follow the same
+nomenclature ?
+-- 
+viresh
