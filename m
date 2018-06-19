@@ -1,78 +1,51 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: next/master boot: 138 boots: 8 failed,
- 112 passed with 18 offline (next-20180619)
-Date: Tue, 19 Jun 2018 16:57:41 +0200
-Message-ID: <7241956.9AMTTgrPoJ@diego>
-References: <5b290c6d.1c69fb81.fc936.98ee@mx.google.com>
- <69c0adb9-b784-4f73-fcc9-ff1a01ce27c5@arm.com>
- <20180619144143.GE11230@sirena.org.uk>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector Firefly-RK3399
+Date: Wed, 20 Jun 2018 01:21:31 +0200
+Message-ID: <10782218.jfpm9omiT7@phil>
+References: <20180604171523.28454-1-xypron.glpk@gmx.de> <19360053.2ABrQ075F2@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180619144143.GE11230-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: kernel-build-reports-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-next-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <19360053.2ABrQ075F2@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Vagrant Cascadian <vagrant@debian.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-> > On Tue, Jun 19, 2018 at 07:00:13AM -0700, kernelci.org bot wrote:
-> > 
-> > Today and yesterday's -next is failing to boot on rk3399-firefly in two
-> > 
-> > configs:
-> >>     defconfig:
-> >>         rk3399-firefly:
-> >>             lab-baylibre-seattle: failing since 1 day (last pass:
-> >>             next-20180615 - first fail: next-20180618)>>     
-> >>     defconfig+CONFIG_RANDOMIZE_BASE=y:
-> >>         rk3399-firefly:
-> >>             lab-baylibre-seattle: failing since 1 day (last pass:
-> >>             next-20180615 - first fail: next-20180618)> 
-> > The log ends with:
-> > 
-> > [    2.629278] SWITCH_REG2: supplied by vcc3v3_sys
-> > [    2.633030] fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1]
-> > Detected! [    2.633723] fan53555-reg: supplied by vcc_sys
-> > [    2.6353|] Internal error: undefined instruction: 0 [#1] PREEMPT SMP
-> > 
-> > which is rather entertaining.
+Hi Heinrich,
 
-> Am Dienstag, 19. Juni 2018, 16:41:43 CEST schrieb Mark Brown:
-> On Tue, Jun 19, 2018 at 03:22:47PM +0100, Sudeep Holla wrote:
-> > Based on the logs from successful boots, I see it's CPUFreq that gets
-> > probed after fan53555-reg. I also see that it warns about unlisted OPPs
-> > in the successful boots. I guess, the undefined instruction could occur
-> > if there's issue with CPU DVFS(under voltage or frequency that's not
-> > supported). I don't have much knowledge on the platform, I am just
-> > guessing on the possible cause here.
+Am Donnerstag, 14. Juni 2018, 14:55:27 CEST schrieb Heiko Stuebner:
+> Am Montag, 4. Juni 2018, 19:15:23 CEST schrieb Heinrich Schuchardt:
+> > Without this patch the Firefly-RK3399 board boot process hangs after these
+> > lines:
+> > 
+> >    fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
+> >    fan53555-reg: supplied by vcc_sys
+> >    vcc1v8_s3: supplied by vcc_1v8
+> > 
+> > Blacklisting driver fan53555 allows booting.
+> > 
+> > The device tree uses a value of fcs,suspend-voltage-selector different to
+> > any other board.
+> > 
+> > Changing this setting to the usual value is sufficient to enable booting.
+> > 
+> > Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
 > 
-> Yeah, that was my guess - either an out of spec voltage/frequency was
-> selected or the regulator isn't able to keep up with the voltage
-> transition or a load spike and the power browns out.
+> applied for 4.19.
 
-I guess this is related to
-	arm64: dts: rockchip: correct voltage selector Firefly-RK3399 [0]
+and dropped again.
 
-which is in so far interesting as the patch seems to fix a similar issue
-to the above with the opposite "fcs,suspend-voltage-selector" value.
-And also claims to be in line with the vendor kernel.
+Sadly it looks like the patch causes conflicts with at least one firefly
+board in a kernelci lab. My own is currently not ready to use, so I cannot
+look myself right now.
 
-From looking at the schematics, we might have a discrepancy between the
-fcs,suspend-voltage-selector and vsel input-pin leading to a gpio
-[likely depending on what the bootloader set this pin up for].
-
-I'll drop the patch for now and get in contact with the patch submitter.
+The issue kernelci people described sounded quite a lot like the one
+in your commit message, so my current theory is that the
+suspend-voltage-selector must in some form corespond to the
+cpu_b_sleep_h gpio setting we're currently not handling at all, which
+would therefore depend on how the bootloader sets this up.
 
 
 Heiko
-
-[0] https://patchwork.kernel.org/patch/10447075/
