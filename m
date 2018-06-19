@@ -1,73 +1,98 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH v4 2/2] drm/rockchip: vop: fix irq disabled after vop
- driver probed
-Date: Tue, 19 Jun 2018 09:38:09 +0100
-Message-ID: <81f22651-00e2-f8b4-a655-2caceb067194@arm.com>
-References: <20180612132028.27490-1-heiko@sntech.de>
- <20180612132028.27490-3-heiko@sntech.de>
- <edc71874-4517-c097-c851-d60565f06817@arm.com> <1637509.0BUGQyR5Xn@diego>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: next/master boot: 138 boots: 8 failed, 112 passed with 18
+ offline (next-20180619)
+Date: Tue, 19 Jun 2018 15:13:24 +0100
+Message-ID: <20180619141324.GD11230@sirena.org.uk>
+References: <5b290c6d.1c69fb81.fc936.98ee@mx.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <1637509.0BUGQyR5Xn@diego>
-Content-Language: en-GB
-Sender: stable-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, ezequiel@collabora.com, tfiga@chromium.org, robin.murphy@arm.com, jeffy.chen@rock-chips.com, hjc@rock-chips.com, enric.balletbo@collabora.co.uk, tomeu.vizoso@collabora.co.uk, stable@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============9042178545070806570=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5b290c6d.1c69fb81.fc936.98ee@mx.google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: khilman@baylibre.com, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-next@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel-build-reports@lists.linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 18/06/18 09:19, Heiko Stübner wrote:
-> Hi Marc,
-> 
-> Am Mittwoch, 13. Juni 2018, 15:01:27 CEST schrieb Marc Zyngier:
->> On 12/06/18 14:20, Heiko Stuebner wrote:
->>> From: Sandy Huang <hjc@rock-chips.com>
->>>
->>> The vop irq is shared between vop and iommu and irq probing in the
->>> iommu driver moved to the probe function recently. This can in some
->>> cases lead to a stall if the irq is triggered while the vop driver
->>> still has it disabled, but the vop irq handler gets called.
->>>
->>> But there is no real need to disable the irq, as the vop can simply
->>> also track its enabled state and ignore irqs in that case.
->>> For this we can simply check the power-domain state of the vop,
->>> similar to how the iommu driver does it.
->>>
->>> So remove the enable/disable handling and add appropriate condition
->>> to the irq handler.
->>>
->>> changes in v2:
->>> - move to just check the power-domain state
->>> - add clock handling
->>> changes in v3:
->>> - clarify comment to speak of runtime-pm not power-domain
->>> changes in v4:
->>> - address Marc's comments (clk-enable WARN_ON and style improvement)
->>>
->>> Fixes: d0b912bd4c23 ("iommu/rockchip: Request irqs in rk_iommu_probe()")
->>> Cc: stable@vger.kernel.org
->>> Signed-off-by: Sandy Huang <hjc@rock-chips.com>
->>> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
->>> Tested-by: Ezequiel Garcia <ezequiel@collabora.com>
->>
->> Reviewed-by: Marc Zyngier <marc.zyngier@arm.com>
-> 
-> could I ask you to also look at patch1 of this series, to give it an
-> Ack or Review? drm-misc documentation very strongly suggests [0]
-> to have at least another set of eyes on a patch and so far noone
-> came forward ;-)
-> 
-> This of course also applies to everybody else in the Cc list :-D
 
-Please feel free to apply my
+--===============9042178545070806570==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="cQXOx3fnlpmgJsTP"
+Content-Disposition: inline
 
-Acked-by: Marc Zyngier <marc.zyngier@arm.com>
 
-to that one.
+--cQXOx3fnlpmgJsTP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
+On Tue, Jun 19, 2018 at 07:00:13AM -0700, kernelci.org bot wrote:
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+Today and yesterday's -next is failing to boot on rk3399-firefly in two
+configs:
+
+>     defconfig:
+>         rk3399-firefly:
+>             lab-baylibre-seattle: failing since 1 day (last pass: next-20=
+180615 - first fail: next-20180618)
+
+>     defconfig+CONFIG_RANDOMIZE_BASE=3Dy:
+>         rk3399-firefly:
+>             lab-baylibre-seattle: failing since 1 day (last pass: next-20=
+180615 - first fail: next-20180618)
+
+The log ends with:
+
+[    2.629278] SWITCH_REG2: supplied by vcc3v3_sys
+[    2.633030] fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detecte=
+d!
+[    2.633723] fan53555-reg: supplied by vcc_sys
+[    2.6353|] Internal error: undefined instruction: 0 [#1] PREEMPT SMP
+
+which is rather entertaining.=20
+
+The pending fixes -next branch is fine.  More diagnostics can be seen
+at:
+
+	https://kernelci.org/boot/id/5b28eadb59b514636d79a877/
+
+(that's the defconfig.)  Other boards don't seem to be affected, there's
+some other boards that are failing but don't seem to be related.
+
+--cQXOx3fnlpmgJsTP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlspD4QACgkQJNaLcl1U
+h9Dg6Af9HgXyMmwb5r0r/TCB1SJySqeoi5/U264YijkxmUl4QHIUbA6WYVEDlJdn
+9Nq0fWHbXaAtwvi+nQnYJQDH43igEq6W/hCfbsDCfkJSLkeEpI7vPBZgo1yavGza
+WKrdb5eykUtCoRp0QnscEwW+RxRpOHOdaubrKFnTDb5bzgGTou5Qbu5f7VFIRiN3
+9Oz2j0OnnKFGrs7TtupXmlMIMQ2TFCL43T0xIDDBgTtgw0X+ajyLcECV6IMYaoX0
+Kn2KKc0EqmtzZrYPTjUEjEJCLencVko1sNmlN8qP0T5W1WZfhb5a2dvDhsBO7Det
+fx3NhZGCKgWJ2Gc5yjs1uw2EEJm8eA==
+=8foL
+-----END PGP SIGNATURE-----
+
+--cQXOx3fnlpmgJsTP--
+
+
+--===============9042178545070806570==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============9042178545070806570==--
