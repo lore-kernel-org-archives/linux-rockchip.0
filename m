@@ -1,51 +1,59 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector Firefly-RK3399
-Date: Wed, 20 Jun 2018 01:21:31 +0200
-Message-ID: <10782218.jfpm9omiT7@phil>
-References: <20180604171523.28454-1-xypron.glpk@gmx.de> <19360053.2ABrQ075F2@phil>
+From: David Wu <david.wu@rock-chips.com>
+Subject: Re: [PATCH v2] net: ethernet: stmmac: dwmac-rk: Add GMAC support for
+ PX30
+Date: Wed, 20 Jun 2018 10:40:35 +0800
+Message-ID: <157ecfc9-d0e6-7782-1cbc-d0fb76c81edb@rock-chips.com>
+References: <1528956927-32440-1-git-send-email-david.wu@rock-chips.com>
+ <1961033.25ax7s0Z5i@diego>
+ <3aa2445f-ab2a-93b6-3a49-36be6c98d327@rock-chips.com>
+ <2582999.2hZx6CH9S6@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <19360053.2ABrQ075F2@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Vagrant Cascadian <vagrant@debian.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <2582999.2hZx6CH9S6@diego>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heinrich,
+Hi Heiko,
 
-Am Donnerstag, 14. Juni 2018, 14:55:27 CEST schrieb Heiko Stuebner:
-> Am Montag, 4. Juni 2018, 19:15:23 CEST schrieb Heinrich Schuchardt:
-> > Without this patch the Firefly-RK3399 board boot process hangs after these
-> > lines:
-> > 
-> >    fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
-> >    fan53555-reg: supplied by vcc_sys
-> >    vcc1v8_s3: supplied by vcc_1v8
-> > 
-> > Blacklisting driver fan53555 allows booting.
-> > 
-> > The device tree uses a value of fcs,suspend-voltage-selector different to
-> > any other board.
-> > 
-> > Changing this setting to the usual value is sufficient to enable booting.
-> > 
-> > Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+在 2018年06月14日 16:30, Heiko Stübner 写道:
+> Am Donnerstag, 14. Juni 2018, 10:14:31 CEST schrieb David Wu:
+>> Hi Heiko,
+>>
+>> 在 2018年06月14日 15:54, Heiko Stübner 写道:
+>>> I don't see that new clock documented in the dt-binding.
+>>> Also, which clock from the clock-controller does this connect to?
+>>
+>> The clock is the "SCLK_GMAC_RMII" at the clock-controller, which could
+>> be set rate by the link speed.
 > 
-> applied for 4.19.
+> Hmm, while these huge number of clocks are somewhat strange,
+> shouldn't it be named something with _rmii instead of _speed then?
 
-and dropped again.
+Okay, it is better to be named _speed.
 
-Sadly it looks like the patch causes conflicts with at least one firefly
-board in a kernelci lab. My own is currently not ready to use, so I cannot
-look myself right now.
+> 
+> Also, I don't see any clk_enable action for that new clock, so you could
+> end up with being off?
 
-The issue kernelci people described sounded quite a lot like the one
-in your commit message, so my current theory is that the
-suspend-voltage-selector must in some form corespond to the
-cpu_b_sleep_h gpio setting we're currently not handling at all, which
-would therefore depend on how the bootloader sets this up.
+The new speed is the parent of the clk_tx_rx, to enable/disable 
+clk_tx_rx, the new clock would be also enabled/disabled.
 
-
-Heiko
+> 
+> And someone could convert the driver to use the new clk-bulk APIs [0],
+> so the large number of clk_prepare_enable calls would be a bit
+> trimmed down.
+> 
+> 
+> Heiko
+> 
+> [0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/clk-bulk.c
+> 
+> 
+> 
+> 
+> 
