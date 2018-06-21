@@ -1,139 +1,218 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector Firefly-RK3399
-Date: Thu, 21 Jun 2018 13:37:26 +0200
-Message-ID: <5740207.Zs2D9gmsc0@phil>
-References: <20180604171523.28454-1-xypron.glpk@gmx.de> <cd7447bc-1c3d-29ca-9671-144b1f474711@gmx.de> <3b6e37c8-0ee2-1723-1aa8-499fcb30471c@gmx.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add 96boards RK3399 Ficus board
+Date: Thu, 21 Jun 2018 15:27:24 +0200
+Message-ID: <1621532.NjQG3041Bx@phil>
+References: <20180618220804.18468-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3b6e37c8-0ee2-1723-1aa8-499fcb30471c@gmx.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Cc: khilman@baylibre.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Vagrant Cascadian <vagrant@debian.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180618220804.18468-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 21. Juni 2018, 02:57:02 CEST schrieb Heinrich Schuchardt:
-> On 06/20/2018 09:57 PM, Heinrich Schuchardt wrote:
-> > On 06/20/2018 11:15 AM, Heiko Stübner wrote:
-> >> Hi Heinrich,
-> >>
-> >> Am Mittwoch, 20. Juni 2018, 07:59:34 CEST schrieb Heinrich Schuchardt:
-> >>> On 06/20/2018 01:21 AM, Heiko Stuebner wrote:
-> >>>> Am Donnerstag, 14. Juni 2018, 14:55:27 CEST schrieb Heiko Stuebner:
-> >>>>> Am Montag, 4. Juni 2018, 19:15:23 CEST schrieb Heinrich Schuchardt:
-> >>>>>> Without this patch the Firefly-RK3399 board boot process hangs after
-> >>>>>> these
-> >>>>>>
-> >>>>>> lines:
-> >>>>>>    fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
-> >>>>>>    fan53555-reg: supplied by vcc_sys
-> >>>>>>    vcc1v8_s3: supplied by vcc_1v8
-> >>>>>>
-> >>>>>> Blacklisting driver fan53555 allows booting.
-> >>>>>>
-> >>>>>> The device tree uses a value of fcs,suspend-voltage-selector different
-> >>>>>> to
-> >>>>>> any other board.
-> >>>>>>
-> >>>>>> Changing this setting to the usual value is sufficient to enable
-> >>>>>> booting.
-> >>>>>>
-> >>>>>> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
-> >>>>>
-> >>>>> applied for 4.19.
-> >>>>
-> >>>> and dropped again.
-> >>>>
-> >>>> Sadly it looks like the patch causes conflicts with at least one firefly
-> >>>> board in a kernelci lab. My own is currently not ready to use, so I cannot
-> >>>> look myself right now.
-> >>>>
-> >>>> The issue kernelci people described sounded quite a lot like the one
-> >>>> in your commit message, so my current theory is that the
-> >>>> suspend-voltage-selector must in some form corespond to the
-> >>>> cpu_b_sleep_h gpio setting we're currently not handling at all, which
-> >>>> would therefore depend on how the bootloader sets this up.
-> >>>
-> >>> please, provide a link to the log displaying the issue and the contact
-> >>> who can provide the exact setup.
-> >>>
-> >>> I have been testing with U-Boot as boot loader.
-> >>
-> >> failing boot can be found on
-> >> https://kernelci.org/boot/id/5b2a053d59b514569079a872/
-> >>
-> >> As this board is sitting in the "lab-baylibre-seattle", I guess
-> >> Kevin Hilman (Cc'ed now) is the one that can say a bit more about the
-> >> board setup.
-> >>
-> >>
-> >> The more interesting question would be how to make sure we don't
-> >> die with possible different bootloader versions. As I don't really thing 
-> >> "upgrade your bootloader" is an always valid option.
-> >>
-> >>
-> >> Heiko
-> >>
-> > 
-> > Hi Kevin,
-> > 
-> > the RK3399-Firefly was booted on lab-baylibre-seattle with
-> > U-Boot 2017.05-rc3-00131-gf79fd58d5f5c-dirty
-> > 
-> > f79fd58d5f5c is not a commit in U-Boot master.
-> > The version number tells us it is 131 patches ahead of U-Boot 2017.05-rc3.
-> > Dirty means the source contained uncommitted changes.
-> > 
-> > Unfortunately this is not a reproducible test environment.
-> > Could you, please, provide the build recipe to reproduce the U-Boot
-> > BayLibre is using?
-> > Would it be possible to use mainline U-Boot in kernelci for this board?
-> > 
-> > Best regards
-> > 
-> > Heinrich
-> > 
-> 
-> I have now built the last available release of U-Boot (v2018.05)
-> according to the following recipe:
-> 
-> git clone https://github.com/xypron/u-boot-build.git
-> cd u-boot-build/
-> git checkout firefly-rk3399-rkloader
-> # commit 251b12fb4f0eabfff2d0552d0807d8ddc44ae2aa
-> # tag firefly-rk3399-rkloader-v2018.05
-> make
-> make install DESTDIR=foo
-> cd foo/usr/lib/u-boot/firefly-rk3399/
-> # be careful to specify your SD card as device!
-> ./sd_fusing /dev/sdX
-> 
-> # in U-Boot 2018.05 (Jun 21 2018 - 02:33:12 +0200)
-> load mmc 1:1 ${fdt_addr_r} 2018-06-20/rk3399-firefly.dtb
-> load mmc 1:1 ${kernel_addr_r} 2018-06-20/Image
-> booti ${kernel_addr_r} - ${fdt_addr_r}
-> 
-> The error observed in kernelci when initializing the FAN53555 driver
-> does not occur.
-> 
-> The console log is here:
-> https://gist.github.com/xypron/34b6485deabfc8172f978b5a99705466
+Hi Ezequiel,
 
-For one, the kernelci board uses the uboot SPL not rkloader as 1st stage.
-But I also think the real culprit might be the unconfigured cpu_b_sleep_h
-gpio. 
+Am Dienstag, 19. Juni 2018, 00:08:04 CEST schrieb Ezequiel Garcia:
+> The RK3399 Ficus board is an Enterprise Edition board
+> manufactured by Vamrs Ltd., based on the Rockchip RK3399 SoC.
+> 
+> The board exposes a bunch of nice peripherals, including
+> SATA, HDMI, MIPI CSI, Ethernet, WiFi, USB 2.0, USB 3.0
+> and PCIe.
+> 
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> I am not including USB support because I cannot seem
+> to make it work.
+> 
+> [    1.677293] dwc3 fe800000.dwc3: Failed to get clk 'ref': -2
+> [    1.677937] dwc3 fe800000.dwc3: Configuration mismatch. dr_mode forced to host
+> [    1.678602] dwc3 fe800000.dwc3: failed to initialize core
+> [    1.679409] dwc3 fe900000.dwc3: Failed to get clk 'ref': -2
+> [    1.679988] dwc3 fe900000.dwc3: failed to initialize core
+> 
+> I am under the impression it is related to:
+> 
+> commit fe8abf332b8f66868013cfcd6bfe727136a2ab5f
+> Author: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> Date:   Wed May 16 11:41:07 2018 +0900
+> 
+>     usb: dwc3: support clocks and resets for DWC3 core
+> 
+> Any ideas? Would like to sort out the USB issue before
+> merging.
 
-So far I haven't seen any code that touches this pin at all, so it is probably
-floating and both mine as well as the kernelci board are from an early
-production run, so I guess it is possible that either rkloader configures
-this pin or some board change between ours and your board could make
-the pin take another state.
+From what I remember, we had an issue with usb ports not providing
+an extcon to the typc-c phys, making the dwc3 fail to probe.
+Enric did a nice patch adding support for extcon-less type-c phys in
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ec1fcd7b7e6f50dd6e259ca76c6e41e2346b3afe
 
-Requiring replacement of a bootloader still isn't the best way forward,
-so my current idea would be to let the driver know the vsel-gpio via the
-devicetree and have the driver then make sure the gpio is set correctly
-_after_ setting the regulator voltage.
+So maybe the kernel you were working on was just to old?
+
+
+> Also, I should probably split the rk3399.dtsi change.
+
+correct :-D
+
+
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 564 ++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   9 +
+>  3 files changed, 574 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+
+Please also add an entry to Documentation/devicetree/bindings/arm/rockchip.txt
+
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+> new file mode 100644
+> index 000000000000..17471b4b7a14
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+> @@ -0,0 +1,564 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2018 Collabora Ltd.
+> + * Copyright (c) 2018 Fuzhou Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +/dts-v1/;
+> +#include "rk3399.dtsi"
+> +#include "rk3399-opp.dtsi"
+> +
+> +/ {
+> +	model = "96boards RK3399 Ficus";
+> +	compatible = "vamrs,ficus", "rockchip,rk3399";
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +
+> +	clkin_gmac: external-gmac-clock {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <125000000>;
+> +		clock-output-names = "clkin_gmac";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	usb_typec_vbus: usb-typec-vbus {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "typec-vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&gpio1 3 GPIO_ACTIVE_HIGH>;
+> +	};
+> +
+> +	vcc1v8_s0: vcc1v8-s0 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc1v8_s0";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		regulator-always-on;
+> +	};
+> +
+> +	vcc_sys: vcc-sys {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_sys";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		regulator-always-on;
+> +	};
+> +
+> +	vcc_phy: vcc-phy-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_phy";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +	};
+
+please try to double-check the regulator setup with the schematics.
+
+Like this completely unconnected vcc_phy regulator is normally copy-pasted
+from Rockchip's default board-dt and never matches the actual power-tree.
+
+Schematics seem to a at
+	https://www.96boards.org/documentation/consumer/rock960/hardware-docs/
+and there doesn't even seem to be network interface on the board?
+
+Also please use regulator names as defined in the schematics.
+
+
+This applies to all regulators defined here. I'd really like to see a real
+supply-tree with regulators connected to their supplies.
+
+See for example the rk3399-gru boards for an example :-)
+And you can also check $DEBUGFS/regulator/regulator_summary
+which should form a nice tree structure if everything is correct.
+
+
+> +&gmac {
+> +	assigned-clocks = <&cru SCLK_RMII_SRC>;
+> +	assigned-clock-parents = <&clkin_gmac>;
+> +	clock_in_out = "input";
+> +	phy-supply = <&vcc_phy>;
+> +	phy-mode = "rgmii";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&rgmii_pins>;
+> +	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 10000 50000>;
+> +	tx_delay = <0x28>;
+> +	rx_delay = <0x11>;
+> +	status = "okay";
+> +};
+
+Looking at the 96boards page, there is no gmac on the board at all?
+
+
+> +	fusb0: fusb30x@22 {
+
+node name should be generic ... typec@22 or something like that
+
+
+
+> +		vbus-supply = <&usb_typec_vbus>;
+> +		compatible = "fairchild,fusb302";
+> +		reg = <0x22>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&fusb0_int>;
+> +		int-n-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
+> +		status = "okay";
+
+Please do
+- compatible
+- reg
+- interrupts
+[alphabetical]
+- status
+for properties.
+
+Again applies to everything.
+
+> +	};
+> +
+
+
+> +&pinctrl {
+> +	gmac {
+> +		rgmii_sleep_pins: rgmii-sleep-pins {
+> +			rockchip,pins =
+> +				<3 15 RK_FUNC_GPIO &pcfg_output_low>;
+> +		};
+> +	};
+
+again, no gmac that I can see ;-)
 
 
 Heiko
