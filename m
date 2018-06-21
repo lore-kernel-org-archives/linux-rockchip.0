@@ -1,95 +1,139 @@
-From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector
- Firefly-RK3399
-Date: Thu, 21 Jun 2018 02:57:02 +0200
-Message-ID: <3b6e37c8-0ee2-1723-1aa8-499fcb30471c@gmx.de>
-References: <20180604171523.28454-1-xypron.glpk@gmx.de>
- <10782218.jfpm9omiT7@phil> <459cb125-a3e2-8f1e-b960-011020d41b3c@gmx.de>
- <6592028.l3WmXB2ndK@diego> <cd7447bc-1c3d-29ca-9671-144b1f474711@gmx.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector Firefly-RK3399
+Date: Thu, 21 Jun 2018 13:37:26 +0200
+Message-ID: <5740207.Zs2D9gmsc0@phil>
+References: <20180604171523.28454-1-xypron.glpk@gmx.de> <cd7447bc-1c3d-29ca-9671-144b1f474711@gmx.de> <3b6e37c8-0ee2-1723-1aa8-499fcb30471c@gmx.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cd7447bc-1c3d-29ca-9671-144b1f474711@gmx.de>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: khilman@baylibre.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Vagrant Cascadian <vagrant@debian.org>, Catalin Marinas <catalin.marinas@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Kever Yang <kever.yang@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3b6e37c8-0ee2-1723-1aa8-499fcb30471c@gmx.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Cc: khilman@baylibre.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Vagrant Cascadian <vagrant@debian.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pierre-Hugues Husson <phh@phh.me>, Jianqun Xu <jay.xu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDYvMjAvMjAxOCAwOTo1NyBQTSwgSGVpbnJpY2ggU2NodWNoYXJkdCB3cm90ZToKPiBPbiAw
-Ni8yMC8yMDE4IDExOjE1IEFNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gSGkgSGVpbnJpY2gs
-Cj4+Cj4+IEFtIE1pdHR3b2NoLCAyMC4gSnVuaSAyMDE4LCAwNzo1OTozNCBDRVNUIHNjaHJpZWIg
-SGVpbnJpY2ggU2NodWNoYXJkdDoKPj4+IE9uIDA2LzIwLzIwMTggMDE6MjEgQU0sIEhlaWtvIFN0
-dWVibmVyIHdyb3RlOgo+Pj4+IEFtIERvbm5lcnN0YWcsIDE0LiBKdW5pIDIwMTgsIDE0OjU1OjI3
-IENFU1Qgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPj4+Pj4gQW0gTW9udGFnLCA0LiBKdW5pIDIw
-MTgsIDE5OjE1OjIzIENFU1Qgc2NocmllYiBIZWlucmljaCBTY2h1Y2hhcmR0Ogo+Pj4+Pj4gV2l0
-aG91dCB0aGlzIHBhdGNoIHRoZSBGaXJlZmx5LVJLMzM5OSBib2FyZCBib290IHByb2Nlc3MgaGFu
-Z3MgYWZ0ZXIKPj4+Pj4+IHRoZXNlCj4+Pj4+Pgo+Pj4+Pj4gbGluZXM6Cj4+Pj4+PiAgICBmYW41
-MzU1NS1yZWd1bGF0b3IgMC0wMDQwOiBGQU41MzU1NSBPcHRpb25bOF0gUmV2WzFdIERldGVjdGVk
-IQo+Pj4+Pj4gICAgZmFuNTM1NTUtcmVnOiBzdXBwbGllZCBieSB2Y2Nfc3lzCj4+Pj4+PiAgICB2
-Y2MxdjhfczM6IHN1cHBsaWVkIGJ5IHZjY18xdjgKPj4+Pj4+Cj4+Pj4+PiBCbGFja2xpc3Rpbmcg
-ZHJpdmVyIGZhbjUzNTU1IGFsbG93cyBib290aW5nLgo+Pj4+Pj4KPj4+Pj4+IFRoZSBkZXZpY2Ug
-dHJlZSB1c2VzIGEgdmFsdWUgb2YgZmNzLHN1c3BlbmQtdm9sdGFnZS1zZWxlY3RvciBkaWZmZXJl
-bnQKPj4+Pj4+IHRvCj4+Pj4+PiBhbnkgb3RoZXIgYm9hcmQuCj4+Pj4+Pgo+Pj4+Pj4gQ2hhbmdp
-bmcgdGhpcyBzZXR0aW5nIHRvIHRoZSB1c3VhbCB2YWx1ZSBpcyBzdWZmaWNpZW50IHRvIGVuYWJs
-ZQo+Pj4+Pj4gYm9vdGluZy4KPj4+Pj4+Cj4+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBIZWlucmljaCBT
-Y2h1Y2hhcmR0IDx4eXByb24uZ2xwa0BnbXguZGU+Cj4+Pj4+Cj4+Pj4+IGFwcGxpZWQgZm9yIDQu
-MTkuCj4+Pj4KPj4+PiBhbmQgZHJvcHBlZCBhZ2Fpbi4KPj4+Pgo+Pj4+IFNhZGx5IGl0IGxvb2tz
-IGxpa2UgdGhlIHBhdGNoIGNhdXNlcyBjb25mbGljdHMgd2l0aCBhdCBsZWFzdCBvbmUgZmlyZWZs
-eQo+Pj4+IGJvYXJkIGluIGEga2VybmVsY2kgbGFiLiBNeSBvd24gaXMgY3VycmVudGx5IG5vdCBy
-ZWFkeSB0byB1c2UsIHNvIEkgY2Fubm90Cj4+Pj4gbG9vayBteXNlbGYgcmlnaHQgbm93Lgo+Pj4+
-Cj4+Pj4gVGhlIGlzc3VlIGtlcm5lbGNpIHBlb3BsZSBkZXNjcmliZWQgc291bmRlZCBxdWl0ZSBh
-IGxvdCBsaWtlIHRoZSBvbmUKPj4+PiBpbiB5b3VyIGNvbW1pdCBtZXNzYWdlLCBzbyBteSBjdXJy
-ZW50IHRoZW9yeSBpcyB0aGF0IHRoZQo+Pj4+IHN1c3BlbmQtdm9sdGFnZS1zZWxlY3RvciBtdXN0
-IGluIHNvbWUgZm9ybSBjb3Jlc3BvbmQgdG8gdGhlCj4+Pj4gY3B1X2Jfc2xlZXBfaCBncGlvIHNl
-dHRpbmcgd2UncmUgY3VycmVudGx5IG5vdCBoYW5kbGluZyBhdCBhbGwsIHdoaWNoCj4+Pj4gd291
-bGQgdGhlcmVmb3JlIGRlcGVuZCBvbiBob3cgdGhlIGJvb3Rsb2FkZXIgc2V0cyB0aGlzIHVwLgo+
-Pj4KPj4+IHBsZWFzZSwgcHJvdmlkZSBhIGxpbmsgdG8gdGhlIGxvZyBkaXNwbGF5aW5nIHRoZSBp
-c3N1ZSBhbmQgdGhlIGNvbnRhY3QKPj4+IHdobyBjYW4gcHJvdmlkZSB0aGUgZXhhY3Qgc2V0dXAu
-Cj4+Pgo+Pj4gSSBoYXZlIGJlZW4gdGVzdGluZyB3aXRoIFUtQm9vdCBhcyBib290IGxvYWRlci4K
-Pj4KPj4gZmFpbGluZyBib290IGNhbiBiZSBmb3VuZCBvbgo+PiBodHRwczovL2tlcm5lbGNpLm9y
-Zy9ib290L2lkLzViMmEwNTNkNTliNTE0NTY5MDc5YTg3Mi8KPj4KPj4gQXMgdGhpcyBib2FyZCBp
-cyBzaXR0aW5nIGluIHRoZSAibGFiLWJheWxpYnJlLXNlYXR0bGUiLCBJIGd1ZXNzCj4+IEtldmlu
-IEhpbG1hbiAoQ2MnZWQgbm93KSBpcyB0aGUgb25lIHRoYXQgY2FuIHNheSBhIGJpdCBtb3JlIGFi
-b3V0IHRoZQo+PiBib2FyZCBzZXR1cC4KPj4KPj4KPj4gVGhlIG1vcmUgaW50ZXJlc3RpbmcgcXVl
-c3Rpb24gd291bGQgYmUgaG93IHRvIG1ha2Ugc3VyZSB3ZSBkb24ndAo+PiBkaWUgd2l0aCBwb3Nz
-aWJsZSBkaWZmZXJlbnQgYm9vdGxvYWRlciB2ZXJzaW9ucy4gQXMgSSBkb24ndCByZWFsbHkgdGhp
-bmcgCj4+ICJ1cGdyYWRlIHlvdXIgYm9vdGxvYWRlciIgaXMgYW4gYWx3YXlzIHZhbGlkIG9wdGlv
-bi4KPj4KPj4KPj4gSGVpa28KPj4KPiAKPiBIaSBLZXZpbiwKPiAKPiB0aGUgUkszMzk5LUZpcmVm
-bHkgd2FzIGJvb3RlZCBvbiBsYWItYmF5bGlicmUtc2VhdHRsZSB3aXRoCj4gVS1Cb290IDIwMTcu
-MDUtcmMzLTAwMTMxLWdmNzlmZDU4ZDVmNWMtZGlydHkKPiAKPiBmNzlmZDU4ZDVmNWMgaXMgbm90
-IGEgY29tbWl0IGluIFUtQm9vdCBtYXN0ZXIuCj4gVGhlIHZlcnNpb24gbnVtYmVyIHRlbGxzIHVz
-IGl0IGlzIDEzMSBwYXRjaGVzIGFoZWFkIG9mIFUtQm9vdCAyMDE3LjA1LXJjMy4KPiBEaXJ0eSBt
-ZWFucyB0aGUgc291cmNlIGNvbnRhaW5lZCB1bmNvbW1pdHRlZCBjaGFuZ2VzLgo+IAo+IFVuZm9y
-dHVuYXRlbHkgdGhpcyBpcyBub3QgYSByZXByb2R1Y2libGUgdGVzdCBlbnZpcm9ubWVudC4KPiBD
-b3VsZCB5b3UsIHBsZWFzZSwgcHJvdmlkZSB0aGUgYnVpbGQgcmVjaXBlIHRvIHJlcHJvZHVjZSB0
-aGUgVS1Cb290Cj4gQmF5TGlicmUgaXMgdXNpbmc/Cj4gV291bGQgaXQgYmUgcG9zc2libGUgdG8g
-dXNlIG1haW5saW5lIFUtQm9vdCBpbiBrZXJuZWxjaSBmb3IgdGhpcyBib2FyZD8KPiAKPiBCZXN0
-IHJlZ2FyZHMKPiAKPiBIZWlucmljaAo+IAoKSSBoYXZlIG5vdyBidWlsdCB0aGUgbGFzdCBhdmFp
-bGFibGUgcmVsZWFzZSBvZiBVLUJvb3QgKHYyMDE4LjA1KQphY2NvcmRpbmcgdG8gdGhlIGZvbGxv
-d2luZyByZWNpcGU6CgpnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL3h5cHJvbi91LWJvb3Qt
-YnVpbGQuZ2l0CmNkIHUtYm9vdC1idWlsZC8KZ2l0IGNoZWNrb3V0IGZpcmVmbHktcmszMzk5LXJr
-bG9hZGVyCiMgY29tbWl0IDI1MWIxMmZiNGYwZWFiZmZmMmQwNTUyZDA4MDdkOGRkYzQ0YWUyYWEK
-IyB0YWcgZmlyZWZseS1yazMzOTktcmtsb2FkZXItdjIwMTguMDUKbWFrZQptYWtlIGluc3RhbGwg
-REVTVERJUj1mb28KY2QgZm9vL3Vzci9saWIvdS1ib290L2ZpcmVmbHktcmszMzk5LwojIGJlIGNh
-cmVmdWwgdG8gc3BlY2lmeSB5b3VyIFNEIGNhcmQgYXMgZGV2aWNlIQouL3NkX2Z1c2luZyAvZGV2
-L3NkWAoKIyBpbiBVLUJvb3QgMjAxOC4wNSAoSnVuIDIxIDIwMTggLSAwMjozMzoxMiArMDIwMCkK
-bG9hZCBtbWMgMToxICR7ZmR0X2FkZHJfcn0gMjAxOC0wNi0yMC9yazMzOTktZmlyZWZseS5kdGIK
-bG9hZCBtbWMgMToxICR7a2VybmVsX2FkZHJfcn0gMjAxOC0wNi0yMC9JbWFnZQpib290aSAke2tl
-cm5lbF9hZGRyX3J9IC0gJHtmZHRfYWRkcl9yfQoKVGhlIGVycm9yIG9ic2VydmVkIGluIGtlcm5l
-bGNpIHdoZW4gaW5pdGlhbGl6aW5nIHRoZSBGQU41MzU1NSBkcml2ZXIKZG9lcyBub3Qgb2NjdXIu
-CgpUaGUgY29uc29sZSBsb2cgaXMgaGVyZToKaHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20veHlwcm9u
-LzM0YjY0ODVkZWFiZmM4MTcyZjk3OGI1YTk5NzA1NDY2CgpCZXN0IHJlZ2FyZHMKCkhlaW5yaWNo
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1h
-cm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0t
-a2VybmVsCg==
+Am Donnerstag, 21. Juni 2018, 02:57:02 CEST schrieb Heinrich Schuchardt:
+> On 06/20/2018 09:57 PM, Heinrich Schuchardt wrote:
+> > On 06/20/2018 11:15 AM, Heiko Stübner wrote:
+> >> Hi Heinrich,
+> >>
+> >> Am Mittwoch, 20. Juni 2018, 07:59:34 CEST schrieb Heinrich Schuchardt:
+> >>> On 06/20/2018 01:21 AM, Heiko Stuebner wrote:
+> >>>> Am Donnerstag, 14. Juni 2018, 14:55:27 CEST schrieb Heiko Stuebner:
+> >>>>> Am Montag, 4. Juni 2018, 19:15:23 CEST schrieb Heinrich Schuchardt:
+> >>>>>> Without this patch the Firefly-RK3399 board boot process hangs after
+> >>>>>> these
+> >>>>>>
+> >>>>>> lines:
+> >>>>>>    fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
+> >>>>>>    fan53555-reg: supplied by vcc_sys
+> >>>>>>    vcc1v8_s3: supplied by vcc_1v8
+> >>>>>>
+> >>>>>> Blacklisting driver fan53555 allows booting.
+> >>>>>>
+> >>>>>> The device tree uses a value of fcs,suspend-voltage-selector different
+> >>>>>> to
+> >>>>>> any other board.
+> >>>>>>
+> >>>>>> Changing this setting to the usual value is sufficient to enable
+> >>>>>> booting.
+> >>>>>>
+> >>>>>> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+> >>>>>
+> >>>>> applied for 4.19.
+> >>>>
+> >>>> and dropped again.
+> >>>>
+> >>>> Sadly it looks like the patch causes conflicts with at least one firefly
+> >>>> board in a kernelci lab. My own is currently not ready to use, so I cannot
+> >>>> look myself right now.
+> >>>>
+> >>>> The issue kernelci people described sounded quite a lot like the one
+> >>>> in your commit message, so my current theory is that the
+> >>>> suspend-voltage-selector must in some form corespond to the
+> >>>> cpu_b_sleep_h gpio setting we're currently not handling at all, which
+> >>>> would therefore depend on how the bootloader sets this up.
+> >>>
+> >>> please, provide a link to the log displaying the issue and the contact
+> >>> who can provide the exact setup.
+> >>>
+> >>> I have been testing with U-Boot as boot loader.
+> >>
+> >> failing boot can be found on
+> >> https://kernelci.org/boot/id/5b2a053d59b514569079a872/
+> >>
+> >> As this board is sitting in the "lab-baylibre-seattle", I guess
+> >> Kevin Hilman (Cc'ed now) is the one that can say a bit more about the
+> >> board setup.
+> >>
+> >>
+> >> The more interesting question would be how to make sure we don't
+> >> die with possible different bootloader versions. As I don't really thing 
+> >> "upgrade your bootloader" is an always valid option.
+> >>
+> >>
+> >> Heiko
+> >>
+> > 
+> > Hi Kevin,
+> > 
+> > the RK3399-Firefly was booted on lab-baylibre-seattle with
+> > U-Boot 2017.05-rc3-00131-gf79fd58d5f5c-dirty
+> > 
+> > f79fd58d5f5c is not a commit in U-Boot master.
+> > The version number tells us it is 131 patches ahead of U-Boot 2017.05-rc3.
+> > Dirty means the source contained uncommitted changes.
+> > 
+> > Unfortunately this is not a reproducible test environment.
+> > Could you, please, provide the build recipe to reproduce the U-Boot
+> > BayLibre is using?
+> > Would it be possible to use mainline U-Boot in kernelci for this board?
+> > 
+> > Best regards
+> > 
+> > Heinrich
+> > 
+> 
+> I have now built the last available release of U-Boot (v2018.05)
+> according to the following recipe:
+> 
+> git clone https://github.com/xypron/u-boot-build.git
+> cd u-boot-build/
+> git checkout firefly-rk3399-rkloader
+> # commit 251b12fb4f0eabfff2d0552d0807d8ddc44ae2aa
+> # tag firefly-rk3399-rkloader-v2018.05
+> make
+> make install DESTDIR=foo
+> cd foo/usr/lib/u-boot/firefly-rk3399/
+> # be careful to specify your SD card as device!
+> ./sd_fusing /dev/sdX
+> 
+> # in U-Boot 2018.05 (Jun 21 2018 - 02:33:12 +0200)
+> load mmc 1:1 ${fdt_addr_r} 2018-06-20/rk3399-firefly.dtb
+> load mmc 1:1 ${kernel_addr_r} 2018-06-20/Image
+> booti ${kernel_addr_r} - ${fdt_addr_r}
+> 
+> The error observed in kernelci when initializing the FAN53555 driver
+> does not occur.
+> 
+> The console log is here:
+> https://gist.github.com/xypron/34b6485deabfc8172f978b5a99705466
+
+For one, the kernelci board uses the uboot SPL not rkloader as 1st stage.
+But I also think the real culprit might be the unconfigured cpu_b_sleep_h
+gpio. 
+
+So far I haven't seen any code that touches this pin at all, so it is probably
+floating and both mine as well as the kernelci board are from an early
+production run, so I guess it is possible that either rkloader configures
+this pin or some board change between ours and your board could make
+the pin take another state.
+
+Requiring replacement of a bootloader still isn't the best way forward,
+so my current idea would be to let the driver know the vsel-gpio via the
+devicetree and have the driver then make sure the gpio is set correctly
+_after_ setting the regulator voltage.
+
+
+Heiko
