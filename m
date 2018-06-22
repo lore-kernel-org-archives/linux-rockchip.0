@@ -1,49 +1,66 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] net: ethernet: stmmac: dwmac-rk: Add GMAC support for PX30
-Date: Fri, 22 Jun 2018 09:30:54 +0200
-Message-ID: <18221590.FEDROxemCD@phil>
-References: <1528956927-32440-1-git-send-email-david.wu@rock-chips.com> <2582999.2hZx6CH9S6@diego> <157ecfc9-d0e6-7782-1cbc-d0fb76c81edb@rock-chips.com>
+From: David Wu <david.wu@rock-chips.com>
+Subject: Re: [PATCH v2] net: ethernet: stmmac: dwmac-rk: Add GMAC support for
+ PX30
+Date: Fri, 22 Jun 2018 16:13:13 +0800
+Message-ID: <7baeda9c-d7c4-e491-e18d-30afefa98c96@rock-chips.com>
+References: <1528956927-32440-1-git-send-email-david.wu@rock-chips.com>
+ <2582999.2hZx6CH9S6@diego>
+ <157ecfc9-d0e6-7782-1cbc-d0fb76c81edb@rock-chips.com>
+ <18221590.FEDROxemCD@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <157ecfc9-d0e6-7782-1cbc-d0fb76c81edb@rock-chips.com>
+In-Reply-To: <18221590.FEDROxemCD@phil>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, =?utf-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+Hi Heiko,
 
-Am Mittwoch, 20. Juni 2018, 04:40:35 CEST schrieb David Wu:
-> 在 2018年06月14日 16:30, Heiko Stübner 写道:
-> > Am Donnerstag, 14. Juni 2018, 10:14:31 CEST schrieb David Wu:
-> >> Hi Heiko,
-> >>
-> >> 在 2018年06月14日 15:54, Heiko Stübner 写道:
-> >>> I don't see that new clock documented in the dt-binding.
-> >>> Also, which clock from the clock-controller does this connect to?
-> >>
-> >> The clock is the "SCLK_GMAC_RMII" at the clock-controller, which could
-> >> be set rate by the link speed.
-> > 
-> > Hmm, while these huge number of clocks are somewhat strange,
-> > shouldn't it be named something with _rmii instead of _speed then?
+在 2018年06月22日 15:30, Heiko Stuebner 写道:
+> Hi David,
 > 
-> Okay, it is better to be named _speed.
+> Am Mittwoch, 20. Juni 2018, 04:40:35 CEST schrieb David Wu:
+>> 在 2018年06月14日 16:30, Heiko Stübner 写道:
+>>> Am Donnerstag, 14. Juni 2018, 10:14:31 CEST schrieb David Wu:
+>>>> Hi Heiko,
+>>>>
+>>>> 在 2018年06月14日 15:54, Heiko Stübner 写道:
+>>>>> I don't see that new clock documented in the dt-binding.
+>>>>> Also, which clock from the clock-controller does this connect to?
+>>>>
+>>>> The clock is the "SCLK_GMAC_RMII" at the clock-controller, which could
+>>>> be set rate by the link speed.
+>>>
+>>> Hmm, while these huge number of clocks are somewhat strange,
+>>> shouldn't it be named something with _rmii instead of _speed then?
+>>
+>> Okay, it is better to be named _speed.
+>>
+>>>
+>>> Also, I don't see any clk_enable action for that new clock, so you could
+>>> end up with being off?
+>>
+>> The new speed is the parent of the clk_tx_rx, to enable/disable
+>> clk_tx_rx, the new clock would be also enabled/disabled.
 > 
-> > 
-> > Also, I don't see any clk_enable action for that new clock, so you could
-> > end up with being off?
+> Still it is nicer to really enable it, so that the clock-framework can keep
+> track of usage counts.
 > 
-> The new speed is the parent of the clk_tx_rx, to enable/disable 
-> clk_tx_rx, the new clock would be also enabled/disabled.
+> Because also no-one hinders the chip-designer from putting a gate in
+> between in one of the next socs ;-)
+> 
 
-Still it is nicer to really enable it, so that the clock-framework can keep
-track of usage counts.
+Okay, i will add the enable/disable for clk_mac_speed.
+  ;-)
 
-Because also no-one hinders the chip-designer from putting a gate in
-between in one of the next socs ;-)
-
-
-Heiko
+> 
+> Heiko
+> 
+> 
+> 
+> 
+> 
