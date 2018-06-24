@@ -1,66 +1,28 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: Re: [PATCH v2] net: ethernet: stmmac: dwmac-rk: Add GMAC support for
- PX30
-Date: Fri, 22 Jun 2018 16:13:13 +0800
-Message-ID: <7baeda9c-d7c4-e491-e18d-30afefa98c96@rock-chips.com>
-References: <1528956927-32440-1-git-send-email-david.wu@rock-chips.com>
- <2582999.2hZx6CH9S6@diego>
- <157ecfc9-d0e6-7782-1cbc-d0fb76c81edb@rock-chips.com>
- <18221590.FEDROxemCD@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <18221590.FEDROxemCD@phil>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: davem@davemloft.net, robh+dt@kernel.org, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>
+From: pr-c7ZnjTJo27EChJjN5xaSnkEOCMrvLtNR@public.gmane.org
+Subject: Alysha
+Date: Sun, 24 Jun 2018 02:17:00 +0200
+Message-ID: <B1487A0F-50D8-D841-64AE-E79AAFFA26C4@parkgrandlondon.com>
+Mime-Version: 1.0 (1.0)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: marktbqq-sQ/6V5cjUVAHryyBEU1UzwC/G2K4zDHf@public.gmane.org, sparta4-GHUIhM1UvO1l57MIdRCFDg@public.gmane.org, alexandra.patel-4j3QVFgYiwiVEjtw5UbVHw@public.gmane.org, ahikl-5n89uKRqJts@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, adrianflores-9Mxg7WA3/HIjD8S081q9vkzdiZCgik9O@public.gmane.org, priyadarshini-PPX+bLfvgWbx9EC7H7QlI/C9HSW9iNxf@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-在 2018年06月22日 15:30, Heiko Stuebner 写道:
-> Hi David,
-> 
-> Am Mittwoch, 20. Juni 2018, 04:40:35 CEST schrieb David Wu:
->> 在 2018年06月14日 16:30, Heiko Stübner 写道:
->>> Am Donnerstag, 14. Juni 2018, 10:14:31 CEST schrieb David Wu:
->>>> Hi Heiko,
->>>>
->>>> 在 2018年06月14日 15:54, Heiko Stübner 写道:
->>>>> I don't see that new clock documented in the dt-binding.
->>>>> Also, which clock from the clock-controller does this connect to?
->>>>
->>>> The clock is the "SCLK_GMAC_RMII" at the clock-controller, which could
->>>> be set rate by the link speed.
->>>
->>> Hmm, while these huge number of clocks are somewhat strange,
->>> shouldn't it be named something with _rmii instead of _speed then?
->>
->> Okay, it is better to be named _speed.
->>
->>>
->>> Also, I don't see any clk_enable action for that new clock, so you could
->>> end up with being off?
->>
->> The new speed is the parent of the clk_tx_rx, to enable/disable
->> clk_tx_rx, the new clock would be also enabled/disabled.
-> 
-> Still it is nicer to really enable it, so that the clock-framework can keep
-> track of usage counts.
-> 
-> Because also no-one hinders the chip-designer from putting a gate in
-> between in one of the next socs ;-)
-> 
-
-Okay, i will add the enable/disable for clk_mac_speed.
-  ;-)
-
-> 
-> Heiko
-> 
-> 
-> 
-> 
-> 
+WW8hIFdoYXQgYXJlIHlvdSBidXN5IGZvciBub3c/DQpJIGFtIHN1cmUgdGhhdCBJIGNhbiBvZmZl
+ciB5b3Ugc29tZXRoaW5nIG1vcmUgZW50ZXJ0YWluaW5nIQ0KTXkgYmVhdXRpZnVsIGN1cGNha2Vz
+IG1pc3MgbWFsZeKAmXMgaGFuZHMgYW5kIG15IHNpc3N5IGludml0ZXMgeW91IGZvciBhIHZpc2l0
+Lg0KDQpodHRwOi8vd3d3LnBhZGVseWEuZXMvcjI3dmE3bndwL2c3a2lla3Yyb3IucGhwP2JXRnlh
+M1JpY1hGQVkyOXlZMjl5WVc1bmJHRnpjeTVqYjIwPQ0KX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
