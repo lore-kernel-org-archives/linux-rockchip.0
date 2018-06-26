@@ -1,28 +1,107 @@
-From: yangk-NXN67KNX7eEnDS1+zs4M5A@public.gmane.org
-Subject: Rebekah
-Date: Sun, 24 Jun 2018 18:17:51 +0200
-Message-ID: <mqwt3wy-khs4yw-42@pku.edu.cn>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: marktbqq-sQ/6V5cjUVAHryyBEU1UzwC/G2K4zDHf@public.gmane.org, sparta4-GHUIhM1UvO1l57MIdRCFDg@public.gmane.org, alexandra.patel-4j3QVFgYiwiVEjtw5UbVHw@public.gmane.org, ahikl-5n89uKRqJts@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, adrianflores-9Mxg7WA3/HIjD8S081q9vkzdiZCgik9O@public.gmane.org, priyadarshini-PPX+bLfvgWbx9EC7H7QlI/C9HSW9iNxf@public.gmane.org, raf-vY/kJTGU0cQDYPdb5HWdL4ble9XqW/aP@public.gmane.org
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: [PATCH v4 1/2] devicetree/bindings: display: Add document for rockchip RGB output
+Date: Tue, 26 Jun 2018 15:15:39 +0800
+Message-ID: <1529997340-156879-2-git-send-email-hjc@rock-chips.com>
+References: <1529997340-156879-1-git-send-email-hjc@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1529997340-156879-1-git-send-email-hjc@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: seanpaul@chromium.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SeKAmW0gaGF2aW5nIGEgY29ja3RhaWwgY2xvc2UgdG8geW91ciBwbGFjZS4NCkRvIHlvdSB3YW50
-IHRvIGNhbGwgbWUgb24gYSBkYXRlPw0KSSBoYXZlIGEgbG90IG9mIGZyZWUgdGltZSBhbmQgSeKA
-mW0gaW50ZXJlc3RlZCBpbiBuZXcgYWNxdWFpbnRhbmNlcy4NClNlZSBteSBsb2NhdGlvbiwgbWFu
-Lg0KQ2xpY2sgdGhlIGxpbmsuDQoNCmh0dHA6Ly93d3cuc3ZhaS50b20ucnUvZ2M5aHc3eC83N2Yy
-OTFmLnBocD9iV0Z5YTNSaWNYRkFZMjl5WTI5eVlXNW5iR0Z6Y3k1amIyMD0NCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+This path add support rv1108 and px30 rgb output interface driver.
+
+Signed-off-by: Sandy Huang <hjc@rock-chips.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/1509522765-118759-1-git-send-email-hjc@rock-chips.com
+---
+
+Changes in v4: Add support px30
+Changes in v3: None
+Changes in v2: None
+
+.../bindings/display/rockchip/rockchip-rgb.txt     | 73 ++++++++++++++++++++++
+ 1 file changed, 73 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
+new file mode 100644
+index 0000000..077b9ad
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-rgb.txt
+@@ -0,0 +1,73 @@
++Rockchip RV1108 RGB interface
++================================
++
++Required properties:
++- compatible: matching the soc type:
++	- "rockchip,px30-rgb";
++	- "rockchip,rv1108-rgb";
++
++Optional properties:
++- pinctrl-names: should be a "lcdc" entry or a "default" entry.
++- pinctrl-0: pin control group to be used for this interface.
++
++The rgb has two video ports described by:
++	Documentation/devicetree/bindings/media/video-interfaces.txt
++Their connections are modeled using the OF graph bindings specified in
++	Documentation/devicetree/bindings/graph.txt.
++
++- video port 0 for the VOP input, the remote endpoint maybe vopb/vopl/vop
++- video port 1 for either a panel or subsequent encoder
++
++the panel described by:
++	Documentation/devicetree/bindings/display/panel/simple-panel.txt
++rgb-mode nodes described by:
++	Documentation/devicetree/bindings/display/panel/panel-rgb.txt
++Panel other required properties:
++- ports for remote rgb output.
++
++Example:
++
++panel: panel {
++	compatible = "auo,b101ean01";
++	enable-gpios = <&gpio7 21 GPIO_ACTIVE_HIGH>;
++	rgb-mode = "p888";
++
++	ports {
++		panel_in_rgb: endpoint {
++			remote-endpoint = <&rgb_out_panel>;
++		};
++	};
++};
++
++For Rockchip RV1108:
++
++	rgb: rgb {
++		compatible = "rockchip,rv1108-rgb";
++		pinctrl-names = "lcdc";
++		pinctrl-0 = <&lcdc_ctl>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			rgb_in: port@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				rgb_in_vop: endpoint {
++					remote-endpoint = <&vop_out_rgb>;
++				};
++			};
++
++			rgb_out: port@1 {
++				reg = <1>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				rgb_out_panel: endpoint {
++					remote-endpoint = <&panel_in_rgb>;
++				};
++			};
++		};
++	};
+-- 
+2.7.4
