@@ -1,215 +1,224 @@
-From: djw@archiso.i-did-not-set--mail-host-address--so-tickle-me
-Subject: Re: [PATCH v3 2/5] gpio: syscon: rockchip: add GPIO_MUTE support for rk3328
-Date: Thu, 28 Jun 2018 15:22:04 +0800
-Message-ID: <87y3eze5pf.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-References: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn>
-        <1527737273-8387-3-git-send-email-djw@t-chip.com.cn>
-        <CAL_JsqJK4vrmLBeN_ZeGCXAyqshshL16B0KN_+8uvt+=-O9TEw@mail.gmail.com>
-        <0d08ba26-77f2-6c42-8fb1-214aaf6085e9@t-chip.com.cn>
-        <CAL_JsqKSy4q5dfVfXbRMLa7koTWufpAt3yNdE-9mwyJ-VzVQRQ@mail.gmail.com>
-        <87zi0d8tue.fsf@t-chip.com.cn> <20180605195854.GA16394@rob-hp-laptop>
-        <8736xz8jph.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Rob Herring <robh@kernel.org>
+Subject: [PATCH v3 5/6] iommu: Remove IOMMU_OF_DECLARE
+Date: Thu, 28 Jun 2018 14:43:43 -0600
+Message-ID: <20180628204344.13973-6-robh@kernel.org>
+References: <20180628204344.13973-1-robh@kernel.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8736xz8jph.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-        (Levin's message of "Thu, 07 Jun 2018 09:32:42 +0800")
+In-Reply-To: <20180628204344.13973-1-robh@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Levin <djw@t-chip.com.cn>
-Cc: Rob Herring <robh@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linus Walleij <linus.walleij@linaro.org>, Alexander Graf <agraf@suse.de>, Bjorn Andersson <bjorn.andersson@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Kevin Hilman <khilman@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Mark Brown <broonie@kernel.org>, Frank Rowand <frowand.list@gmail.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, boot-architecture@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux-foundation.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Joerg Roedel <jroedel@suse.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Levin <djw@t-chip.com.cn> writes:
+Now that we use the driver core to stop deferred probe for missing
+drivers, IOMMU_OF_DECLARE can be removed.
 
-> Rob Herring <robh@kernel.org> writes:
->
->> On Sat, Jun 02, 2018 at 04:40:09PM +0800, Levin Du wrote:
->>> 
->>> Rob Herring <robh+dt@kernel.org> writes:
->>> 
->>> > On Thu, May 31, 2018 at 9:05 PM, Levin <djw@t-chip.com.cn> wrote:
->>> > > Hi Rob,
->>> > > 
->>> > > 
->>> > > On 2018-05-31 10:45 PM, Rob Herring wrote:
->>> > > > 
->>> > > > On Wed, May 30, 2018 at 10:27 PM,  <djw@t-chip.com.cn> wrote:
->>> > > > > 
->>> > > > > From: Levin Du <djw@t-chip.com.cn>
->>> > > > > 
->>> > > > > In Rockchip RK3328, the output only GPIO_MUTE pin,
->>> > > > > originally for codec
->>> > > > > mute control, can also be used for general purpose. It is
->>> > > > > manipulated by
->>> > > > > the GRF_SOC_CON10 register.
->>> > > > > 
->>> > > > > Signed-off-by: Levin Du <djw@t-chip.com.cn>
->>> > > > > 
->>> > > > > ---
->>> > > > > 
->>> > > > > Changes in v3:
->>> > > > > - Change from general gpio-syscon to specific
->>> > > > > rk3328-gpio-mute
->>> > > > > 
->>> > > > > Changes in v2:
->>> > > > > - Rename gpio_syscon10 to gpio_mute in doc
->>> > > > > 
->>> > > > > Changes in v1:
->>> > > > > - Refactured for general gpio-syscon usage for Rockchip SoCs.
->>> > > > > - Add doc rockchip,gpio-syscon.txt
->>> > > > > 
->>> > > > >   .../bindings/gpio/rockchip,rk3328-gpio-mute.txt    | 28
->>> > > > > +++++++++++++++++++
->>> > > > >   drivers/gpio/gpio-syscon.c                         | 31
->>> > > > > ++++++++++++++++++++++
->>> > > > >   2 files changed, 59 insertions(+)
->>> > > > >   create mode 100644
->>> > > > > Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
->>> > > > > 
->>> > > > > diff --git
->>> > > > > a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
->>> > > > > b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
->>> > > > > new file mode 100644
->>> > > > > index 0000000..10bc632
->>> > > > > --- /dev/null
->>> > > > > +++
->>> > > > > b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
->>> > > > > @@ -0,0 +1,28 @@
->>> > > > > +Rockchip RK3328 GPIO controller dedicated for the GPIO_MUTE
->>> > > > > pin.
->>> > > > > +
->>> > > > > +In Rockchip RK3328, the output only GPIO_MUTE pin,
->>> > > > > originally for codec
->>> > > > > mute
->>> > > > > +control, can also be used for general purpose. It is
->>> > > > > manipulated by the
->>> > > > > +GRF_SOC_CON10 register.
->>> > > > > +
->>> > > > > +Required properties:
->>> > > > > +- compatible: Should contain "rockchip,rk3328-gpio-mute".
->>> > > > > +- gpio-controller: Marks the device node as a gpio
->>> > > > > controller.
->>> > > > > +- #gpio-cells: Should be 2. The first cell is the pin
->>> > > > > number and
->>> > > > > +  the second cell is used to specify the gpio polarity:
->>> > > > > +    0 = Active high,
->>> > > > > +    1 = Active low.
->>> > > > > +
->>> > > > > +Example:
->>> > > > > +
->>> > > > > +       grf: syscon@ff100000 {
->>> > > > > +               compatible = "rockchip,rk3328-grf", "syscon",
->>> > > > > "simple-mfd";
->>> > > > > +
->>> > > > > +               gpio_mute: gpio-mute {
->>> > > > 
->>> > > > Node names should be generic:
->>> > > > 
->>> > > > gpio {
->>> > > > 
->>> > > > This also means you can't add another GPIO node in the future
->>> > > > and
->>> > > > you'll have to live with "rockchip,rk3328-gpio-mute" covering
->>> > > > more
->>> > > > than 1 GPIO if you do need to add more GPIOs.
->>> > > 
->>> > > 
->>> > > As the first line describes, this GPIO controller is dedicated for
->>> > > the
->>> > > GPIO_MUTE pin.
->>> > > There's only one GPIO pin in the GRF_SOC_CON10 register. Therefore
->>> > > the
->>> > > gpio_mute
->>> > > name is proper IMHO.
->>> > 
->>> > It's how many GPIOs in the GRF, not this register. What I'm saying is
->>> > when you come along later to add another GPIO in the GRF, you had
->>> > better just add it to this same node. I'm not going to accept another
->>> > GPIO controller node within the GRF. You have the cells to support
->>> > more than 1, so it would only be a driver change. The compatible
->>> > string would then not be ideally named at that point. But compatible
->>> > strings are just unique identifiers, so it doesn't really matter what
->>> > the string is.
->>> > 
->>> 
->>> I'll try my best to introduce the situation here. The GRF, GPIO0~GPIO3
->>> are register blocks in the RK3328 Soc. The GPIO0~GPIO3 contain registers
->>> for GPIO operations like reading/writing data, setting direction,
->>> interruption etc, which corresponds to the GPIO banks (gpio0~gpio3)
->>> defined in rk3328.dtsi:
->>
->> I'm only talking about GRF functions, not "regular" GPIOs.
->>
->>> 	pinctrl: pinctrl {
->>> 		compatible = "rockchip,rk3328-pinctrl";
->>> 		rockchip,grf = <&grf>;
->>> 		#address-cells = <2>;
->>> 		#size-cells = <2>;
->>> 		ranges;
->>> 
->>> 		gpio0: gpio0@ff210000 {
->>> 			compatible = "rockchip,gpio-bank";
->>> 			reg = <0x0 0xff210000 0x0 0x100>;
->>> 			interrupts = <GIC_SPI 51 			IRQ_TYPE_LEVEL_HIGH>;
->>> 			clocks = <&cru PCLK_GPIO0>;
->>> 
->>> 			gpio-controller;
->>> 			#gpio-cells = <2>;
->>> 
->>> 			interrupt-controller;
->>> 			#interrupt-cells = <2>;
->>> 		};
->>> 
->>> 		gpio1: gpio1@ff220000 {
->>>                //...
->>> 		};
->>> 
->>> 		gpio2: gpio2@ff230000 {
->>>                //...
->>> 		};
->>> 
->>> 		gpio3: gpio3@ff240000 {
->>>                //...
->>> 		};
->>>         }
->>> 
->>> However, these general GPIO pins has multiplexed functions and their
->>> pull up/down and driving strength can also be configured. These settings
->>> are manipulated by the GRF registers in pinctrl driver. Quoted from the
->>> TRM, the GRF has the following function:
->>> 
->>> - IOMUX control
->>> - Control the state of GPIO in power-down mode
->>> - GPIO PAD pull down and pull up control
->>> - Used for common system control
->>> - Used to record the system state
->>> 
->>> Therefore the functions of the GRF are messy and scattered in different
->>> nodes. The so-called GPIO_MUTE does not belong to GPIO0~GPIO3. It is
->>> manipulated by the GRF_SOC_CON10 register in the GRF block.
->>> 
->>> > I'm being told both "this is the only GPIO" and "the GRF has too many
->>> > different functions for us to tell you what they all are". So which is
->>> > it?
->>> > 
->>> > Rob
->>> 
->>> They are both true, but lack of context. See the above description.
->>
->> What I meant was "only GPIO in GRF registers"...
->>
->> Rob
->
-> I check the TRM and schematic once again. In GRF resters, there are also
-> HDMI GPIOs, which are already covered by the HDMI driver. Aside from
-> those, MUTE_GPIO is the only GPIO.
->
-> Levin
+This is slightly less optimal than having a list of built-in drivers in
+that we'll now defer probe twice before giving up. This shouldn't have a
+significant impact on boot times as past discussions about deferred
+probe have given no evidence of deferred probe having a substantial
+impact.
 
-Hi Rob,
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: Kukjin Kim <kgene@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Rob Clark <robdclark@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Frank Rowand <frowand.list@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: iommu@lists.linux-foundation.org
+Cc: linux-samsung-soc@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org
+Acked-by: Will Deacon <will.deacon@arm.com>
+Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Acked-by: Joerg Roedel <jroedel@suse.de>
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+v3:
+  - Also remove linker sections from vmlinux.lds.h
 
-Is there anything I can do to move forward? I know that this patch is
-far from a perfect solution. But it can be refactored later on.
+ drivers/iommu/arm-smmu-v3.c       |  2 --
+ drivers/iommu/arm-smmu.c          |  7 -------
+ drivers/iommu/exynos-iommu.c      |  2 --
+ drivers/iommu/ipmmu-vmsa.c        |  3 ---
+ drivers/iommu/msm_iommu.c         |  2 --
+ drivers/iommu/of_iommu.c          | 19 +------------------
+ drivers/iommu/qcom_iommu.c        |  2 --
+ drivers/iommu/rockchip-iommu.c    |  2 --
+ include/asm-generic/vmlinux.lds.h |  2 --
+ include/linux/of_iommu.h          |  4 ----
+ 10 files changed, 1 insertion(+), 44 deletions(-)
 
-Best Regards,
-Levin
+diff --git a/drivers/iommu/arm-smmu-v3.c b/drivers/iommu/arm-smmu-v3.c
+index 1d647104bccc..22bdabd3d8e0 100644
+--- a/drivers/iommu/arm-smmu-v3.c
++++ b/drivers/iommu/arm-smmu-v3.c
+@@ -2915,8 +2915,6 @@ static struct platform_driver arm_smmu_driver = {
+ };
+ module_platform_driver(arm_smmu_driver);
+
+-IOMMU_OF_DECLARE(arm_smmuv3, "arm,smmu-v3");
+-
+ MODULE_DESCRIPTION("IOMMU API for ARM architected SMMUv3 implementations");
+ MODULE_AUTHOR("Will Deacon <will.deacon@arm.com>");
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
+index f7a96bcf94a6..c73cfce1ccc0 100644
+--- a/drivers/iommu/arm-smmu.c
++++ b/drivers/iommu/arm-smmu.c
+@@ -2211,13 +2211,6 @@ static struct platform_driver arm_smmu_driver = {
+ };
+ module_platform_driver(arm_smmu_driver);
+
+-IOMMU_OF_DECLARE(arm_smmuv1, "arm,smmu-v1");
+-IOMMU_OF_DECLARE(arm_smmuv2, "arm,smmu-v2");
+-IOMMU_OF_DECLARE(arm_mmu400, "arm,mmu-400");
+-IOMMU_OF_DECLARE(arm_mmu401, "arm,mmu-401");
+-IOMMU_OF_DECLARE(arm_mmu500, "arm,mmu-500");
+-IOMMU_OF_DECLARE(cavium_smmuv2, "cavium,smmu-v2");
+-
+ MODULE_DESCRIPTION("IOMMU API for ARM architected SMMU implementations");
+ MODULE_AUTHOR("Will Deacon <will.deacon@arm.com>");
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+index 85879cfec52f..b128cb4372d3 100644
+--- a/drivers/iommu/exynos-iommu.c
++++ b/drivers/iommu/exynos-iommu.c
+@@ -1390,5 +1390,3 @@ static int __init exynos_iommu_init(void)
+ 	return ret;
+ }
+ core_initcall(exynos_iommu_init);
+-
+-IOMMU_OF_DECLARE(exynos_iommu_of, "samsung,exynos-sysmmu");
+diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+index 40ae6e87cb88..f026aa16d5f1 100644
+--- a/drivers/iommu/ipmmu-vmsa.c
++++ b/drivers/iommu/ipmmu-vmsa.c
+@@ -1108,9 +1108,6 @@ static void __exit ipmmu_exit(void)
+ subsys_initcall(ipmmu_init);
+ module_exit(ipmmu_exit);
+
+-IOMMU_OF_DECLARE(ipmmu_vmsa_iommu_of, "renesas,ipmmu-vmsa");
+-IOMMU_OF_DECLARE(ipmmu_r8a7795_iommu_of, "renesas,ipmmu-r8a7795");
+-
+ MODULE_DESCRIPTION("IOMMU API for Renesas VMSA-compatible IPMMU");
+ MODULE_AUTHOR("Laurent Pinchart <laurent.pinchart@ideasonboard.com>");
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
+index 0d3350463a3f..27377742600d 100644
+--- a/drivers/iommu/msm_iommu.c
++++ b/drivers/iommu/msm_iommu.c
+@@ -877,7 +877,5 @@ static void __exit msm_iommu_driver_exit(void)
+ subsys_initcall(msm_iommu_driver_init);
+ module_exit(msm_iommu_driver_exit);
+
+-IOMMU_OF_DECLARE(msm_iommu_of, "qcom,apq8064-iommu");
+-
+ MODULE_LICENSE("GPL v2");
+ MODULE_AUTHOR("Stepan Moskovchenko <stepanm@codeaurora.org>");
+diff --git a/drivers/iommu/of_iommu.c b/drivers/iommu/of_iommu.c
+index 78ddf47dd67a..f7787e757244 100644
+--- a/drivers/iommu/of_iommu.c
++++ b/drivers/iommu/of_iommu.c
+@@ -27,9 +27,6 @@
+
+ #define NO_IOMMU	1
+
+-static const struct of_device_id __iommu_of_table_sentinel
+-	__used __section(__iommu_of_table_end);
+-
+ /**
+  * of_get_dma_window - Parse *dma-window property and returns 0 if found.
+  *
+@@ -98,19 +95,6 @@ int of_get_dma_window(struct device_node *dn, const char *prefix, int index,
+ }
+ EXPORT_SYMBOL_GPL(of_get_dma_window);
+
+-static bool of_iommu_driver_present(struct device_node *np)
+-{
+-	/*
+-	 * If the IOMMU still isn't ready by the time we reach init, assume
+-	 * it never will be. We don't want to defer indefinitely, nor attempt
+-	 * to dereference __iommu_of_table after it's been freed.
+-	 */
+-	if (system_state >= SYSTEM_RUNNING)
+-		return false;
+-
+-	return of_match_node(&__iommu_of_table, np);
+-}
+-
+ static int of_iommu_xlate(struct device *dev,
+ 			  struct of_phandle_args *iommu_spec)
+ {
+@@ -120,8 +104,7 @@ static int of_iommu_xlate(struct device *dev,
+
+ 	ops = iommu_ops_from_fwnode(fwnode);
+ 	if ((ops && !ops->of_xlate) ||
+-	    !of_device_is_available(iommu_spec->np) ||
+-	    (!ops && !of_iommu_driver_present(iommu_spec->np)))
++	    !of_device_is_available(iommu_spec->np))
+ 		return NO_IOMMU;
+
+ 	err = iommu_fwspec_init(dev, &iommu_spec->np->fwnode, ops);
+diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
+index fe88a4880d3a..b48aee82d14b 100644
+--- a/drivers/iommu/qcom_iommu.c
++++ b/drivers/iommu/qcom_iommu.c
+@@ -945,7 +945,5 @@ static void __exit qcom_iommu_exit(void)
+ module_init(qcom_iommu_init);
+ module_exit(qcom_iommu_exit);
+
+-IOMMU_OF_DECLARE(qcom_iommu_dev, "qcom,msm-iommu-v1");
+-
+ MODULE_DESCRIPTION("IOMMU API for QCOM IOMMU v1 implementations");
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 054cd2c8e9c8..de8d3bf91b23 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1284,8 +1284,6 @@ static int __init rk_iommu_init(void)
+ }
+ subsys_initcall(rk_iommu_init);
+
+-IOMMU_OF_DECLARE(rk_iommu_of, "rockchip,iommu");
+-
+ MODULE_DESCRIPTION("IOMMU API for Rockchip");
+ MODULE_AUTHOR("Simon Xue <xxm@rock-chips.com> and Daniel Kurtz <djkurtz@chromium.org>");
+ MODULE_ALIAS("platform:rockchip-iommu");
+diff --git a/include/asm-generic/vmlinux.lds.h b/include/asm-generic/vmlinux.lds.h
+index e373e2e10f6a..f173b5f30dbe 100644
+--- a/include/asm-generic/vmlinux.lds.h
++++ b/include/asm-generic/vmlinux.lds.h
+@@ -218,7 +218,6 @@
+ #define TIMER_OF_TABLES()	OF_TABLE(CONFIG_TIMER_OF, timer)
+ #define IRQCHIP_OF_MATCH_TABLE() OF_TABLE(CONFIG_IRQCHIP, irqchip)
+ #define CLK_OF_TABLES()		OF_TABLE(CONFIG_COMMON_CLK, clk)
+-#define IOMMU_OF_TABLES()	OF_TABLE(CONFIG_OF_IOMMU, iommu)
+ #define RESERVEDMEM_OF_TABLES()	OF_TABLE(CONFIG_OF_RESERVED_MEM, reservedmem)
+ #define CPU_METHOD_OF_TABLES()	OF_TABLE(CONFIG_SMP, cpu_method)
+ #define CPUIDLE_METHOD_OF_TABLES() OF_TABLE(CONFIG_CPU_IDLE, cpuidle_method)
+@@ -601,7 +600,6 @@
+ 	CLK_OF_TABLES()							\
+ 	RESERVEDMEM_OF_TABLES()						\
+ 	TIMER_OF_TABLES()						\
+-	IOMMU_OF_TABLES()						\
+ 	CPU_METHOD_OF_TABLES()						\
+ 	CPUIDLE_METHOD_OF_TABLES()					\
+ 	KERNEL_DTB()							\
+diff --git a/include/linux/of_iommu.h b/include/linux/of_iommu.h
+index 4fa654e4b5a9..f3d40dd7bb66 100644
+--- a/include/linux/of_iommu.h
++++ b/include/linux/of_iommu.h
+@@ -32,8 +32,4 @@ static inline const struct iommu_ops *of_iommu_configure(struct device *dev,
+
+ #endif	/* CONFIG_OF_IOMMU */
+
+-extern struct of_device_id __iommu_of_table;
+-
+-#define IOMMU_OF_DECLARE(name, compat)	OF_DECLARE_1(iommu, name, compat, NULL)
+-
+ #endif /* __OF_IOMMU_H */
+--
+2.17.1
