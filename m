@@ -1,146 +1,159 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [RFC RESEND PATCH] drm/rockchip: update cursors asynchronously through atomic.
-Date: Wed, 27 Jun 2018 23:14:47 +0200
-Message-ID: <20180627211447.20927-1-enric.balletbo@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH v4] net: ethernet: stmmac: dwmac-rk: Add GMAC support for px30
+Date: Thu, 28 Jun 2018 09:33:21 +0800
+Message-ID: <1530149601-23337-1-git-send-email-david.wu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>
+To: davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support to async updates of cursors by using the new atomic
-interface for that.
+Add constants and callback functions for the dwmac on px30 Soc.
+The base structure is the same, but registers and the bits in
+them are moved slightly, and add the clk_mac_speed for selecting
+mac speed.
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Signed-off-by: David Wu <david.wu@rock-chips.com>
 ---
-I am sending this as RFC because I still don't have a deep knowledge of
-the hw and I am not sure if the vop_plane_update function can be reused
-in both cases, atomic_updates and atomic_async_updates. I think that
-someone with more knowledge should take a look. The patch was tested on
-a Samsung Chromebook Plus in two ways.
+Change in v4:
+- Fix the patch applied failed at net-next.
 
-1. Running all igt kms_cursor_legacy and kms_atomic@plane_cursor_legacy
-tests and see that there is no regression after the patch.
+Change in v3:
+- Add the clock enable/disable for clk_mac_speed.
 
-2. Running weston using the atomic API.
+Change in v2:
+- Fix some error in commit title and message.
 
-Best regards,
-  Enric
+ .../devicetree/bindings/net/rockchip-dwmac.txt     |  1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 69 ++++++++++++++++++++++
+ 2 files changed, 70 insertions(+)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 80 ++++++++++++++++-----
- 1 file changed, 64 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 53d4afe15278..1eb6bda924af 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -688,8 +688,7 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
- 	spin_unlock(&vop->reg_lock);
- }
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+index 9c16ee2..3b71da7 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+@@ -4,6 +4,7 @@ The device node has following properties.
  
--static void vop_plane_atomic_update(struct drm_plane *plane,
--		struct drm_plane_state *old_state)
-+static void vop_plane_update(struct drm_plane *plane)
- {
- 	struct drm_plane_state *state = plane->state;
- 	struct drm_crtc *crtc = state->crtc;
-@@ -710,20 +709,6 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	bool rb_swap;
- 	int format;
+ Required properties:
+  - compatible: should be "rockchip,<name>-gamc"
++   "rockchip,px30-gmac":   found on PX30 SoCs
+    "rockchip,rk3128-gmac": found on RK312x SoCs
+    "rockchip,rk3228-gmac": found on RK322x SoCs
+    "rockchip,rk3288-gmac": found on RK3288 SoCs
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index f08625a..7b92336 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -61,6 +61,7 @@ struct rk_priv_data {
+ 	struct clk *mac_clk_tx;
+ 	struct clk *clk_mac_ref;
+ 	struct clk *clk_mac_refout;
++	struct clk *clk_mac_speed;
+ 	struct clk *aclk_mac;
+ 	struct clk *pclk_mac;
+ 	struct clk *clk_phy;
+@@ -83,6 +84,64 @@ struct rk_priv_data {
+ 	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
+ 	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
  
--	/*
--	 * can't update plane when vop is disabled.
--	 */
--	if (WARN_ON(!crtc))
--		return;
--
--	if (WARN_ON(!vop->is_enabled))
--		return;
--
--	if (!state->visible) {
--		vop_plane_atomic_disable(plane, old_state);
--		return;
--	}
--
- 	obj = rockchip_fb_get_gem_obj(fb, 0);
- 	rk_obj = to_rockchip_obj(obj);
- 
-@@ -794,10 +779,73 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	spin_unlock(&vop->reg_lock);
- }
- 
-+static void vop_plane_atomic_update(struct drm_plane *plane,
-+				    struct drm_plane_state *old_state)
++#define PX30_GRF_GMAC_CON1		0x0904
++
++/* PX30_GRF_GMAC_CON1 */
++#define PX30_GMAC_PHY_INTF_SEL_RMII	(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | \
++					 GRF_BIT(6))
++#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
++#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
++
++static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
 +{
-+	struct drm_plane_state *state = plane->state;
-+	struct vop *vop = to_vop(state->crtc);
++	struct device *dev = &bsp_priv->pdev->dev;
 +
-+	/*
-+	 * can't update plane when vop is disabled.
-+	 */
-+	if (WARN_ON(!state->crtc))
-+		return;
-+
-+	if (WARN_ON(!vop->is_enabled))
-+		return;
-+
-+	if (!state->visible) {
-+		vop_plane_atomic_disable(plane, old_state);
++	if (IS_ERR(bsp_priv->grf)) {
++		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
 +		return;
 +	}
 +
-+	vop_plane_update(plane);
++	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++		     PX30_GMAC_PHY_INTF_SEL_RMII);
 +}
 +
-+static int vop_plane_atomic_async_check(struct drm_plane *plane,
-+					struct drm_plane_state *state)
++static void px30_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
 +{
-+	struct drm_crtc_state *crtc_state;
++	struct device *dev = &bsp_priv->pdev->dev;
++	int ret;
 +
-+	crtc_state = drm_atomic_get_existing_crtc_state(state->state,
-+							state->crtc);
-+	if (WARN_ON(!crtc_state))
-+		return -EINVAL;
++	if (IS_ERR(bsp_priv->clk_mac_speed)) {
++		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
++		return;
++	}
 +
-+	if (!crtc_state->active)
-+		return -EINVAL;
++	if (speed == 10) {
++		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++			     PX30_GMAC_SPEED_10M);
 +
-+	if (plane->state->crtc != state->crtc ||
-+	    plane->state->src_w != state->src_w ||
-+	    plane->state->src_h != state->src_h ||
-+	    plane->state->crtc_w != state->crtc_w ||
-+	    plane->state->crtc_h != state->crtc_h ||
-+	    !plane->state->fb ||
-+	    plane->state->fb != state->fb)
-+		return -EINVAL;
++		ret = clk_set_rate(bsp_priv->clk_mac_speed, 2500000);
++		if (ret)
++			dev_err(dev, "%s: set clk_mac_speed rate 2500000 failed: %d\n",
++				__func__, ret);
++	} else if (speed == 100) {
++		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
++			     PX30_GMAC_SPEED_100M);
 +
-+	return 0;
++		ret = clk_set_rate(bsp_priv->clk_mac_speed, 25000000);
++		if (ret)
++			dev_err(dev, "%s: set clk_mac_speed rate 25000000 failed: %d\n",
++				__func__, ret);
++
++	} else {
++		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
++	}
 +}
 +
-+static void vop_plane_atomic_async_update(struct drm_plane *plane,
-+					  struct drm_plane_state *new_state)
-+{
-+	plane->state->src_x = new_state->src_x;
-+	plane->state->src_y = new_state->src_y;
-+	plane->state->crtc_x = new_state->crtc_x;
-+	plane->state->crtc_y = new_state->crtc_y;
-+	plane->state->fb = new_state->fb;
-+	*plane->state = *new_state;
++static const struct rk_gmac_ops px30_ops = {
++	.set_to_rmii = px30_set_to_rmii,
++	.set_rmii_speed = px30_set_rmii_speed,
++};
 +
-+	vop_plane_update(plane);
-+}
-+
- static const struct drm_plane_helper_funcs plane_helper_funcs = {
- 	.atomic_check = vop_plane_atomic_check,
- 	.atomic_update = vop_plane_atomic_update,
- 	.atomic_disable = vop_plane_atomic_disable,
-+	.atomic_async_check = vop_plane_atomic_async_check,
-+	.atomic_async_update = vop_plane_atomic_async_update,
- };
+ #define RK3128_GRF_MAC_CON0	0x0168
+ #define RK3128_GRF_MAC_CON1	0x016c
  
- static const struct drm_plane_funcs vop_plane_funcs = {
+@@ -1042,6 +1101,10 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
+ 		}
+ 	}
+ 
++	bsp_priv->clk_mac_speed = devm_clk_get(dev, "clk_mac_speed");
++	if (IS_ERR(bsp_priv->clk_mac_speed))
++		dev_err(dev, "cannot get clock %s\n", "clk_mac_speed");
++
+ 	if (bsp_priv->clock_input) {
+ 		dev_info(dev, "clock input from PHY\n");
+ 	} else {
+@@ -1094,6 +1157,9 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+ 			if (!IS_ERR(bsp_priv->mac_clk_tx))
+ 				clk_prepare_enable(bsp_priv->mac_clk_tx);
+ 
++			if (!IS_ERR(bsp_priv->clk_mac_speed))
++				clk_prepare_enable(bsp_priv->clk_mac_speed);
++
+ 			/**
+ 			 * if (!IS_ERR(bsp_priv->clk_mac))
+ 			 *	clk_prepare_enable(bsp_priv->clk_mac);
+@@ -1118,6 +1184,8 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+ 			clk_disable_unprepare(bsp_priv->pclk_mac);
+ 
+ 			clk_disable_unprepare(bsp_priv->mac_clk_tx);
++
++			clk_disable_unprepare(bsp_priv->clk_mac_speed);
+ 			/**
+ 			 * if (!IS_ERR(bsp_priv->clk_mac))
+ 			 *	clk_disable_unprepare(bsp_priv->clk_mac);
+@@ -1414,6 +1482,7 @@ static int rk_gmac_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(rk_gmac_pm_ops, rk_gmac_suspend, rk_gmac_resume);
+ 
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
++	{ .compatible = "rockchip,px30-gmac",	.data = &px30_ops   },
+ 	{ .compatible = "rockchip,rk3128-gmac", .data = &rk3128_ops },
+ 	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
+ 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
 -- 
-2.18.0
+2.7.4
