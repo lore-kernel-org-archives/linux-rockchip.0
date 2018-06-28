@@ -1,159 +1,215 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH v4] net: ethernet: stmmac: dwmac-rk: Add GMAC support for px30
-Date: Thu, 28 Jun 2018 09:33:21 +0800
-Message-ID: <1530149601-23337-1-git-send-email-david.wu@rock-chips.com>
+From: djw@archiso.i-did-not-set--mail-host-address--so-tickle-me
+Subject: Re: [PATCH v3 2/5] gpio: syscon: rockchip: add GPIO_MUTE support for rk3328
+Date: Thu, 28 Jun 2018 15:22:04 +0800
+Message-ID: <87y3eze5pf.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
+References: <1527737273-8387-1-git-send-email-djw@t-chip.com.cn>
+        <1527737273-8387-3-git-send-email-djw@t-chip.com.cn>
+        <CAL_JsqJK4vrmLBeN_ZeGCXAyqshshL16B0KN_+8uvt+=-O9TEw@mail.gmail.com>
+        <0d08ba26-77f2-6c42-8fb1-214aaf6085e9@t-chip.com.cn>
+        <CAL_JsqKSy4q5dfVfXbRMLa7koTWufpAt3yNdE-9mwyJ-VzVQRQ@mail.gmail.com>
+        <87zi0d8tue.fsf@t-chip.com.cn> <20180605195854.GA16394@rob-hp-laptop>
+        <8736xz8jph.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <8736xz8jph.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
+        (Levin's message of "Thu, 07 Jun 2018 09:32:42 +0800")
 Sender: linux-kernel-owner@vger.kernel.org
-To: davem@davemloft.net, heiko@sntech.de, robh+dt@kernel.org
-Cc: mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+To: Levin <djw@t-chip.com.cn>
+Cc: Rob Herring <robh@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add constants and callback functions for the dwmac on px30 Soc.
-The base structure is the same, but registers and the bits in
-them are moved slightly, and add the clk_mac_speed for selecting
-mac speed.
+Levin <djw@t-chip.com.cn> writes:
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
-Change in v4:
-- Fix the patch applied failed at net-next.
+> Rob Herring <robh@kernel.org> writes:
+>
+>> On Sat, Jun 02, 2018 at 04:40:09PM +0800, Levin Du wrote:
+>>> 
+>>> Rob Herring <robh+dt@kernel.org> writes:
+>>> 
+>>> > On Thu, May 31, 2018 at 9:05 PM, Levin <djw@t-chip.com.cn> wrote:
+>>> > > Hi Rob,
+>>> > > 
+>>> > > 
+>>> > > On 2018-05-31 10:45 PM, Rob Herring wrote:
+>>> > > > 
+>>> > > > On Wed, May 30, 2018 at 10:27 PM,  <djw@t-chip.com.cn> wrote:
+>>> > > > > 
+>>> > > > > From: Levin Du <djw@t-chip.com.cn>
+>>> > > > > 
+>>> > > > > In Rockchip RK3328, the output only GPIO_MUTE pin,
+>>> > > > > originally for codec
+>>> > > > > mute control, can also be used for general purpose. It is
+>>> > > > > manipulated by
+>>> > > > > the GRF_SOC_CON10 register.
+>>> > > > > 
+>>> > > > > Signed-off-by: Levin Du <djw@t-chip.com.cn>
+>>> > > > > 
+>>> > > > > ---
+>>> > > > > 
+>>> > > > > Changes in v3:
+>>> > > > > - Change from general gpio-syscon to specific
+>>> > > > > rk3328-gpio-mute
+>>> > > > > 
+>>> > > > > Changes in v2:
+>>> > > > > - Rename gpio_syscon10 to gpio_mute in doc
+>>> > > > > 
+>>> > > > > Changes in v1:
+>>> > > > > - Refactured for general gpio-syscon usage for Rockchip SoCs.
+>>> > > > > - Add doc rockchip,gpio-syscon.txt
+>>> > > > > 
+>>> > > > >   .../bindings/gpio/rockchip,rk3328-gpio-mute.txt    | 28
+>>> > > > > +++++++++++++++++++
+>>> > > > >   drivers/gpio/gpio-syscon.c                         | 31
+>>> > > > > ++++++++++++++++++++++
+>>> > > > >   2 files changed, 59 insertions(+)
+>>> > > > >   create mode 100644
+>>> > > > > Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+>>> > > > > 
+>>> > > > > diff --git
+>>> > > > > a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+>>> > > > > b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+>>> > > > > new file mode 100644
+>>> > > > > index 0000000..10bc632
+>>> > > > > --- /dev/null
+>>> > > > > +++
+>>> > > > > b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-gpio-mute.txt
+>>> > > > > @@ -0,0 +1,28 @@
+>>> > > > > +Rockchip RK3328 GPIO controller dedicated for the GPIO_MUTE
+>>> > > > > pin.
+>>> > > > > +
+>>> > > > > +In Rockchip RK3328, the output only GPIO_MUTE pin,
+>>> > > > > originally for codec
+>>> > > > > mute
+>>> > > > > +control, can also be used for general purpose. It is
+>>> > > > > manipulated by the
+>>> > > > > +GRF_SOC_CON10 register.
+>>> > > > > +
+>>> > > > > +Required properties:
+>>> > > > > +- compatible: Should contain "rockchip,rk3328-gpio-mute".
+>>> > > > > +- gpio-controller: Marks the device node as a gpio
+>>> > > > > controller.
+>>> > > > > +- #gpio-cells: Should be 2. The first cell is the pin
+>>> > > > > number and
+>>> > > > > +  the second cell is used to specify the gpio polarity:
+>>> > > > > +    0 = Active high,
+>>> > > > > +    1 = Active low.
+>>> > > > > +
+>>> > > > > +Example:
+>>> > > > > +
+>>> > > > > +       grf: syscon@ff100000 {
+>>> > > > > +               compatible = "rockchip,rk3328-grf", "syscon",
+>>> > > > > "simple-mfd";
+>>> > > > > +
+>>> > > > > +               gpio_mute: gpio-mute {
+>>> > > > 
+>>> > > > Node names should be generic:
+>>> > > > 
+>>> > > > gpio {
+>>> > > > 
+>>> > > > This also means you can't add another GPIO node in the future
+>>> > > > and
+>>> > > > you'll have to live with "rockchip,rk3328-gpio-mute" covering
+>>> > > > more
+>>> > > > than 1 GPIO if you do need to add more GPIOs.
+>>> > > 
+>>> > > 
+>>> > > As the first line describes, this GPIO controller is dedicated for
+>>> > > the
+>>> > > GPIO_MUTE pin.
+>>> > > There's only one GPIO pin in the GRF_SOC_CON10 register. Therefore
+>>> > > the
+>>> > > gpio_mute
+>>> > > name is proper IMHO.
+>>> > 
+>>> > It's how many GPIOs in the GRF, not this register. What I'm saying is
+>>> > when you come along later to add another GPIO in the GRF, you had
+>>> > better just add it to this same node. I'm not going to accept another
+>>> > GPIO controller node within the GRF. You have the cells to support
+>>> > more than 1, so it would only be a driver change. The compatible
+>>> > string would then not be ideally named at that point. But compatible
+>>> > strings are just unique identifiers, so it doesn't really matter what
+>>> > the string is.
+>>> > 
+>>> 
+>>> I'll try my best to introduce the situation here. The GRF, GPIO0~GPIO3
+>>> are register blocks in the RK3328 Soc. The GPIO0~GPIO3 contain registers
+>>> for GPIO operations like reading/writing data, setting direction,
+>>> interruption etc, which corresponds to the GPIO banks (gpio0~gpio3)
+>>> defined in rk3328.dtsi:
+>>
+>> I'm only talking about GRF functions, not "regular" GPIOs.
+>>
+>>> 	pinctrl: pinctrl {
+>>> 		compatible = "rockchip,rk3328-pinctrl";
+>>> 		rockchip,grf = <&grf>;
+>>> 		#address-cells = <2>;
+>>> 		#size-cells = <2>;
+>>> 		ranges;
+>>> 
+>>> 		gpio0: gpio0@ff210000 {
+>>> 			compatible = "rockchip,gpio-bank";
+>>> 			reg = <0x0 0xff210000 0x0 0x100>;
+>>> 			interrupts = <GIC_SPI 51 			IRQ_TYPE_LEVEL_HIGH>;
+>>> 			clocks = <&cru PCLK_GPIO0>;
+>>> 
+>>> 			gpio-controller;
+>>> 			#gpio-cells = <2>;
+>>> 
+>>> 			interrupt-controller;
+>>> 			#interrupt-cells = <2>;
+>>> 		};
+>>> 
+>>> 		gpio1: gpio1@ff220000 {
+>>>                //...
+>>> 		};
+>>> 
+>>> 		gpio2: gpio2@ff230000 {
+>>>                //...
+>>> 		};
+>>> 
+>>> 		gpio3: gpio3@ff240000 {
+>>>                //...
+>>> 		};
+>>>         }
+>>> 
+>>> However, these general GPIO pins has multiplexed functions and their
+>>> pull up/down and driving strength can also be configured. These settings
+>>> are manipulated by the GRF registers in pinctrl driver. Quoted from the
+>>> TRM, the GRF has the following function:
+>>> 
+>>> - IOMUX control
+>>> - Control the state of GPIO in power-down mode
+>>> - GPIO PAD pull down and pull up control
+>>> - Used for common system control
+>>> - Used to record the system state
+>>> 
+>>> Therefore the functions of the GRF are messy and scattered in different
+>>> nodes. The so-called GPIO_MUTE does not belong to GPIO0~GPIO3. It is
+>>> manipulated by the GRF_SOC_CON10 register in the GRF block.
+>>> 
+>>> > I'm being told both "this is the only GPIO" and "the GRF has too many
+>>> > different functions for us to tell you what they all are". So which is
+>>> > it?
+>>> > 
+>>> > Rob
+>>> 
+>>> They are both true, but lack of context. See the above description.
+>>
+>> What I meant was "only GPIO in GRF registers"...
+>>
+>> Rob
+>
+> I check the TRM and schematic once again. In GRF resters, there are also
+> HDMI GPIOs, which are already covered by the HDMI driver. Aside from
+> those, MUTE_GPIO is the only GPIO.
+>
+> Levin
 
-Change in v3:
-- Add the clock enable/disable for clk_mac_speed.
+Hi Rob,
 
-Change in v2:
-- Fix some error in commit title and message.
+Is there anything I can do to move forward? I know that this patch is
+far from a perfect solution. But it can be refactored later on.
 
- .../devicetree/bindings/net/rockchip-dwmac.txt     |  1 +
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 69 ++++++++++++++++++++++
- 2 files changed, 70 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-index 9c16ee2..3b71da7 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-@@ -4,6 +4,7 @@ The device node has following properties.
- 
- Required properties:
-  - compatible: should be "rockchip,<name>-gamc"
-+   "rockchip,px30-gmac":   found on PX30 SoCs
-    "rockchip,rk3128-gmac": found on RK312x SoCs
-    "rockchip,rk3228-gmac": found on RK322x SoCs
-    "rockchip,rk3288-gmac": found on RK3288 SoCs
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index f08625a..7b92336 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -61,6 +61,7 @@ struct rk_priv_data {
- 	struct clk *mac_clk_tx;
- 	struct clk *clk_mac_ref;
- 	struct clk *clk_mac_refout;
-+	struct clk *clk_mac_speed;
- 	struct clk *aclk_mac;
- 	struct clk *pclk_mac;
- 	struct clk *clk_phy;
-@@ -83,6 +84,64 @@ struct rk_priv_data {
- 	(((tx) ? soc##_GMAC_TXCLK_DLY_ENABLE : soc##_GMAC_TXCLK_DLY_DISABLE) | \
- 	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
- 
-+#define PX30_GRF_GMAC_CON1		0x0904
-+
-+/* PX30_GRF_GMAC_CON1 */
-+#define PX30_GMAC_PHY_INTF_SEL_RMII	(GRF_CLR_BIT(4) | GRF_CLR_BIT(5) | \
-+					 GRF_BIT(6))
-+#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
-+#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
-+
-+static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
-+{
-+	struct device *dev = &bsp_priv->pdev->dev;
-+
-+	if (IS_ERR(bsp_priv->grf)) {
-+		dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
-+		return;
-+	}
-+
-+	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-+		     PX30_GMAC_PHY_INTF_SEL_RMII);
-+}
-+
-+static void px30_set_rmii_speed(struct rk_priv_data *bsp_priv, int speed)
-+{
-+	struct device *dev = &bsp_priv->pdev->dev;
-+	int ret;
-+
-+	if (IS_ERR(bsp_priv->clk_mac_speed)) {
-+		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
-+		return;
-+	}
-+
-+	if (speed == 10) {
-+		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-+			     PX30_GMAC_SPEED_10M);
-+
-+		ret = clk_set_rate(bsp_priv->clk_mac_speed, 2500000);
-+		if (ret)
-+			dev_err(dev, "%s: set clk_mac_speed rate 2500000 failed: %d\n",
-+				__func__, ret);
-+	} else if (speed == 100) {
-+		regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-+			     PX30_GMAC_SPEED_100M);
-+
-+		ret = clk_set_rate(bsp_priv->clk_mac_speed, 25000000);
-+		if (ret)
-+			dev_err(dev, "%s: set clk_mac_speed rate 25000000 failed: %d\n",
-+				__func__, ret);
-+
-+	} else {
-+		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
-+	}
-+}
-+
-+static const struct rk_gmac_ops px30_ops = {
-+	.set_to_rmii = px30_set_to_rmii,
-+	.set_rmii_speed = px30_set_rmii_speed,
-+};
-+
- #define RK3128_GRF_MAC_CON0	0x0168
- #define RK3128_GRF_MAC_CON1	0x016c
- 
-@@ -1042,6 +1101,10 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
- 		}
- 	}
- 
-+	bsp_priv->clk_mac_speed = devm_clk_get(dev, "clk_mac_speed");
-+	if (IS_ERR(bsp_priv->clk_mac_speed))
-+		dev_err(dev, "cannot get clock %s\n", "clk_mac_speed");
-+
- 	if (bsp_priv->clock_input) {
- 		dev_info(dev, "clock input from PHY\n");
- 	} else {
-@@ -1094,6 +1157,9 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
- 			if (!IS_ERR(bsp_priv->mac_clk_tx))
- 				clk_prepare_enable(bsp_priv->mac_clk_tx);
- 
-+			if (!IS_ERR(bsp_priv->clk_mac_speed))
-+				clk_prepare_enable(bsp_priv->clk_mac_speed);
-+
- 			/**
- 			 * if (!IS_ERR(bsp_priv->clk_mac))
- 			 *	clk_prepare_enable(bsp_priv->clk_mac);
-@@ -1118,6 +1184,8 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
- 			clk_disable_unprepare(bsp_priv->pclk_mac);
- 
- 			clk_disable_unprepare(bsp_priv->mac_clk_tx);
-+
-+			clk_disable_unprepare(bsp_priv->clk_mac_speed);
- 			/**
- 			 * if (!IS_ERR(bsp_priv->clk_mac))
- 			 *	clk_disable_unprepare(bsp_priv->clk_mac);
-@@ -1414,6 +1482,7 @@ static int rk_gmac_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(rk_gmac_pm_ops, rk_gmac_suspend, rk_gmac_resume);
- 
- static const struct of_device_id rk_gmac_dwmac_match[] = {
-+	{ .compatible = "rockchip,px30-gmac",	.data = &px30_ops   },
- 	{ .compatible = "rockchip,rk3128-gmac", .data = &rk3128_ops },
- 	{ .compatible = "rockchip,rk3228-gmac", .data = &rk3228_ops },
- 	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
--- 
-2.7.4
+Best Regards,
+Levin
