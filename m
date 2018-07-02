@@ -1,27 +1,72 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH v4] net: ethernet: stmmac: dwmac-rk: Add GMAC support
- for px30
-Date: Fri, 29 Jun 2018 22:19:25 +0900 (KST)
-Message-ID: <20180629.221925.1974171391493646561.davem@davemloft.net>
-References: <1530149601-23337-1-git-send-email-david.wu@rock-chips.com>
+From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
+Subject: Re: rockchip-vpu driver usability
+Date: Mon, 2 Jul 2018 10:24:58 +0300
+Message-ID: <20180702072458.gcvwf24m63u2zg4m@tarshish>
+References: <20180524103431.63eog25qynr72ots@tarshish>
+ <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
+ <20180524121824.fdtyjez3lc5pftfz@tarshish>
+ <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
+ <5B07DCF9.2090709@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1530149601-23337-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: david.wu@rock-chips.com
-Cc: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com, huangtao@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <5B07DCF9.2090709-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: David Wu <david.wu@rock-chips.com>
-Date: Thu, 28 Jun 2018 09:33:21 +0800
+Hi Jeffy,
 
-> Add constants and callback functions for the dwmac on px30 Soc.
-> The base structure is the same, but registers and the bits in
-> them are moved slightly, and add the clk_mac_speed for selecting
-> mac speed.
+On Fri, May 25, 2018 at 05:52:57PM +0800, JeffyChen wrote:
+> On 05/25/2018 02:10 PM, Tomasz Figa wrote:
+> > On Thu, May 24, 2018 at 9:18 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+> > > It looks like only v2 supports h.264 encoding. Does the v2 plugin work
+> > > with the rk3288?
+> > 
+> > Hmm, looks like I missed the part about h264 in your original message (only
+> > noticed encoding). We didn't have a need to encode h264 on rk3288 devices.
+> > The need showed up only later when we were working on rk3399. This made
+> > both the driver and plugin for rk3288 lack h264 support.
+> > 
+> > AFAICT the hardware programming interface differs between rk3288 and
+> > rk3399, so v2 might not work, but maybe you just need to reshuffle some
+> > registers.
+> > 
+> > It's also possible that Rockchip has some code for it. Jeffy, do you know
+> > if there is h264 driver code and plugin for rk3288 available somewhere
+> > (based on the driver developed for Chrome OS 3.14 kernel)?
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> well, i do saw a h264e driver for rk3288 in cros kernel:
+> chromiumos/src/third_party/kernel/local/drivers/media/platform/rockchip-vpu#
+> ls rk3288_vpu_hw_h264e.c
+> 
+> and the related struct defined in v2 plugin:
+> libv4l-rockchip_v2/libvepu/common/rk_venc.h:120:struct
+> rk3288_h264e_reg_params {
 
-Applied.
+Thanks for the reference.
+
+I'm trying to build the v4l plugin stand alone. But in the repo I only see a 
+Makefile.am file. I guess it integrates with the higher level build system of 
+CromiumOS.
+
+Do you have any idea how to build this v4l plugin code stand-alone?
+
+Thanks,
+baruch
+
+-- 
+     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+=}------------------------------------------------ooO--U--Ooo------------{=
+   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
