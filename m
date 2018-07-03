@@ -1,94 +1,56 @@
-From: Damian Kos <dkos@cadence.com>
-Subject: [PATCH 04/12] drm/dp: fix training interval formula for DP 1.3+
-Date: Tue, 3 Jul 2018 11:02:15 +0100
-Message-ID: <1530612152-27555-5-git-send-email-dkos@cadence.com>
-References: <1530612152-27555-1-git-send-email-dkos@cadence.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2 1/8] drm/bridge/synopsys: dsi: move
+ mipi_dsi_host_unregister to __dw_mipi_dsi_remove
+Date: Tue, 3 Jul 2018 12:40:23 +0200
+Message-ID: <20180703104025eucas1p14d3e2c79b8b9684fe0e815a43940cb8c~91bXiDzus1951019510eucas1p1C@eucas1p1.samsung.com>
+References: <20180618102806.15650-1-heiko@sntech.de>
+ <CGME20180618102835epcas1p3ac605f9d14736ae1298889772d5e3da2@epcas1p3.samsung.com>
+ <20180618102806.15650-2-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1530612152-27555-1-git-send-email-dkos@cadence.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark
- Rutland <mark.rutland@arm.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Damian Kos <dkos@cadence.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Quentin Schulz <quentin.schulz@free-electrons.com>, pgaj@cadence.com, ltyrala@cadence.com, stelford@cadence.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180618102806.15650-2-heiko@sntech.de>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Quentin Schulz <quentin.schulz@free-electrons.com>
-
-In DP standard v1.2, DP_TRAINING_AUX_RD_INTERVAL DPCD "register" only
-has 0x0 to 0x4 values that are valid, the rest is reserved.
-
-In DP standard v1.3+, DP_TRAINING_AUX_RD_INTERVAL DPCD "register" has
-the same 0x0 to 0x4 valid values but there is an additional bit (bit 7)
-that specifies if there is an Extended Receiver Capability field or not.
-
-Thus, the formula for getting the training interval is now broken on DP
-1.3+.
-
-Let's add a mask for the training interval and a define for the Extended
-Receiver Capability field presence.
-
-Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
-Signed-off-by: Damian Kos <dkos@cadence.com>
----
- drivers/gpu/drm/drm_dp_helper.c |   14 ++++++++++----
- include/drm/drm_dp_helper.h     |    2 ++
- 2 files changed, 12 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/drm_dp_helper.c b/drivers/gpu/drm/drm_dp_helper.c
-index ca2f469..7f5d568 100644
---- a/drivers/gpu/drm/drm_dp_helper.c
-+++ b/drivers/gpu/drm/drm_dp_helper.c
-@@ -149,18 +149,24 @@ void drm_dp_set_adjust_request_pre_emphasis(u8 link_status[DP_LINK_STATUS_SIZE],
- EXPORT_SYMBOL(drm_dp_set_adjust_request_pre_emphasis);
- 
- void drm_dp_link_train_clock_recovery_delay(const u8 dpcd[DP_RECEIVER_CAP_SIZE]) {
--	if (dpcd[DP_TRAINING_AUX_RD_INTERVAL] == 0)
-+	unsigned int training_interval = dpcd[DP_TRAINING_AUX_RD_INTERVAL] &
-+		DP_TRAINING_AUX_RD_INTERVAL_MASK;
-+
-+	if (training_interval == 0)
- 		udelay(100);
- 	else
--		mdelay(dpcd[DP_TRAINING_AUX_RD_INTERVAL] * 4);
-+		mdelay(training_interval * 4);
- }
- EXPORT_SYMBOL(drm_dp_link_train_clock_recovery_delay);
- 
- void drm_dp_link_train_channel_eq_delay(const u8 dpcd[DP_RECEIVER_CAP_SIZE]) {
--	if (dpcd[DP_TRAINING_AUX_RD_INTERVAL] == 0)
-+	unsigned int training_interval = dpcd[DP_TRAINING_AUX_RD_INTERVAL] &
-+		DP_TRAINING_AUX_RD_INTERVAL_MASK;
-+
-+	if (training_interval == 0)
- 		udelay(400);
- 	else
--		mdelay(dpcd[DP_TRAINING_AUX_RD_INTERVAL] * 4);
-+		mdelay(training_interval * 4);
- }
- EXPORT_SYMBOL(drm_dp_link_train_channel_eq_delay);
- 
-diff --git a/include/drm/drm_dp_helper.h b/include/drm/drm_dp_helper.h
-index 6e64b2a..bd593df 100644
---- a/include/drm/drm_dp_helper.h
-+++ b/include/drm/drm_dp_helper.h
-@@ -119,6 +119,8 @@
- # define DP_DPCD_DISPLAY_CONTROL_CAPABLE     (1 << 3) /* edp v1.2 or higher */
- 
- #define DP_TRAINING_AUX_RD_INTERVAL         0x00e   /* XXX 1.2? */
-+# define DP_TRAINING_AUX_RD_INTERVAL_MASK   GENMASK(6, 0)
-+# define DP_EXTENDED_RCVR_CAPA_FIELD_PRESENT BIT(7) /* 1.3 */
- 
- #define DP_ADAPTER_CAP			    0x00f   /* 1.2 */
- # define DP_FORCE_LOAD_SENSE_CAP	    (1 << 0)
--- 
-1.7.1
+T24gMTguMDYuMjAxOCAxMjoyNywgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gUmlnaHQgbm93IHRo
+ZSBob3N0IGlzIG9ubHkgdW5yZWdpc3RlcmVkIHdoZW4gdGhlIGRyaXZlciBpcyB1c2VkIHZpYSB0
+aGUKPiBicmlkZ2UgYXBpIGFuZCBub3QgdmlhIHRoZSBjb21wb25lbnQgYXBpLCBsZWFkaW5nIHRv
+IHRoZSBob3N0IHN0YXlpbmcKPiByZWdpc3RlcmVkIGluIGNhc2VzIGxpa2UgcHJvYmUgZGVmZXJy
+YWwuCj4KPiBTbyBtb3ZlIHRoZSBob3N0IHVucmVnaXN0ZXIgdG8gdGhlIGdlbmVyYWwgcmVtb3Zl
+IGZ1bmN0aW9uLCBzbyB0aGF0IGl0Cj4gZ2V0cyBjbGVhbmVkIHVwIGluIGFsbCBjYXNlcy4KPgo+
+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpJIGhhdmUg
+bHVya2VkIGludG8gdGhlIG9ubHkgY3VycmVudCB1c2VyIG9mIHRoZSBicmlkZ2UgKHN0bSksIGFu
+ZCBJIGFtCmxpdHRsZSBiaXQgY29uZnVzZWQgaG93IGRvZXMgaXQgd29yaywgYnV0IHRoaXMgY2hh
+bmdlIGxvb2tzIE9LLgoKUmV2aWV3ZWQtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3Vu
+Zy5jb20+CgrCoC0tClJlZ2FyZHMKQW5kcnplago+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgfCA0ICsrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIg
+aW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKPiBpbmRleCBmZDc5OTk2NDJjZjguLjA3Y2RlMjU1
+Y2FiMiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1p
+cGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
+ZHNpLmMKPiBAQCAtOTQxLDYgKzk0MSw4IEBAIF9fZHdfbWlwaV9kc2lfcHJvYmUoc3RydWN0IHBs
+YXRmb3JtX2RldmljZSAqcGRldiwKPiAgCj4gIHN0YXRpYyB2b2lkIF9fZHdfbWlwaV9kc2lfcmVt
+b3ZlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICB7Cj4gKwltaXBpX2RzaV9ob3N0X3VucmVn
+aXN0ZXIoJmRzaS0+ZHNpX2hvc3QpOwo+ICsKPiAgCXBtX3J1bnRpbWVfZGlzYWJsZShkc2ktPmRl
+dik7Cj4gIH0KPiAgCj4gQEAgLTk1Nyw4ICs5NTksNiBAQCBFWFBPUlRfU1lNQk9MX0dQTChkd19t
+aXBpX2RzaV9wcm9iZSk7Cj4gIAo+ICB2b2lkIGR3X21pcGlfZHNpX3JlbW92ZShzdHJ1Y3QgZHdf
+bWlwaV9kc2kgKmRzaSkKPiAgewo+IC0JbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmRz
+aV9ob3N0KTsKPiAtCj4gIAlfX2R3X21pcGlfZHNpX3JlbW92ZShkc2kpOwo+ICB9Cj4gIEVYUE9S
+VF9TWU1CT0xfR1BMKGR3X21pcGlfZHNpX3JlbW92ZSk7CgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
