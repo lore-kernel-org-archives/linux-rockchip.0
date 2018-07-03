@@ -1,123 +1,91 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: rockchip-vpu driver usability
-Date: Tue, 3 Jul 2018 23:29:03 +0900
-Message-ID: <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w@mail.gmail.com>
-References: <20180524103431.63eog25qynr72ots@tarshish>
- <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
- <20180524121824.fdtyjez3lc5pftfz@tarshish>
- <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
- <5B07DCF9.2090709@rock-chips.com> <20180702072458.gcvwf24m63u2zg4m@tarshish>
- <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
- <20180702145707.kogqcuuqqofyugoc@tarshish>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2 6/8] drm/dsi: add helper function to find the second
+ host in a dual-dsi setup
+Date: Tue, 3 Jul 2018 17:06:48 +0200
+Message-ID: <20180703150650eucas1p28f06bae066a5c83cf820c7993764bcaa~95D_j3hK30626506265eucas1p25@eucas1p2.samsung.com>
+References: <20180618102806.15650-1-heiko@sntech.de>
+ <CGME20180618102832epcas1p1ad749eb9d419f415e5673d06cced8280@epcas1p1.samsung.com>
+ <20180618102806.15650-7-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180702145707.kogqcuuqqofyugoc@tarshish>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180618102806.15650-7-heiko@sntech.de>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Baruch,
-
-On Mon, Jul 2, 2018 at 11:57 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
->
-> Hi Tomasz,
->
-> On Mon, Jul 02, 2018 at 04:30:52PM +0900, Tomasz Figa wrote:
-> > On Mon, Jul 2, 2018 at 4:25 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > > On Fri, May 25, 2018 at 05:52:57PM +0800, JeffyChen wrote:
-> > > > On 05/25/2018 02:10 PM, Tomasz Figa wrote:
-> > > > > On Thu, May 24, 2018 at 9:18 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > > > > > It looks like only v2 supports h.264 encoding. Does the v2 plugin work
-> > > > > > with the rk3288?
-> > > > >
-> > > > > Hmm, looks like I missed the part about h264 in your original message (only
-> > > > > noticed encoding). We didn't have a need to encode h264 on rk3288 devices.
-> > > > > The need showed up only later when we were working on rk3399. This made
-> > > > > both the driver and plugin for rk3288 lack h264 support.
-> > > > >
-> > > > > AFAICT the hardware programming interface differs between rk3288 and
-> > > > > rk3399, so v2 might not work, but maybe you just need to reshuffle some
-> > > > > registers.
-> > > > >
-> > > > > It's also possible that Rockchip has some code for it. Jeffy, do you know
-> > > > > if there is h264 driver code and plugin for rk3288 available somewhere
-> > > > > (based on the driver developed for Chrome OS 3.14 kernel)?
-> > > >
-> > > > well, i do saw a h264e driver for rk3288 in cros kernel:
-> > > > chromiumos/src/third_party/kernel/local/drivers/media/platform/rockchip-vpu#
-> > > > ls rk3288_vpu_hw_h264e.c
-> > > >
-> > > > and the related struct defined in v2 plugin:
-> > > > libv4l-rockchip_v2/libvepu/common/rk_venc.h:120:struct
-> > > > rk3288_h264e_reg_params {
-> > >
-> > > Thanks for the reference.
-> > >
-> > > I'm trying to build the v4l plugin stand alone. But in the repo I only see a
-> > > Makefile.am file. I guess it integrates with the higher level build system of
-> > > CromiumOS.
-> > >
-> > > Do you have any idea how to build this v4l plugin code stand-alone?
-> >
-> > It's supposed to be built as a part of v4l-utils
-> > (http://git.linuxtv.org/v4l-utils.git), which includes libv4l. We
-> > build it with 1.6.0, but I guess newer versions may work too.
-> >
-> > For reference, here's our ebuild (for Gentoo portage) to build it:
-> > https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4lplugins/libv4lplugins-9999.ebuild
->
-> The rockchip plugin code refers to the 'config_store' field in v4l2_buffer and
-> v4l2_ext_controls. This requires a special version of videodev2.h that is in
-> the chromeos-4.4 kernel (featuring commits 3b6d3bc13e572 and 86be552490a2a).
->
-> The code of libv4l2 also requires patching since it refers to the 'reserved2'
-> field of v4l2_buffer since before version 1.6.0.
->
-> I could not find these patches in the libv4l2 ebuild[1]. Where can I find
-> them? Is there some other version of libv4l2 that the rockchip plugin builds
-> against?
-
-The code is based on Chrome OS kernel headers [1], which are based on
-Chrome OS 4.4 kernel [2], which includes some downstream changes.
-'config_store' comes from the V4L2 configuration store work in
-progress series by Hans Verkuil, which eventually evolved into what we
-know today as Request API (still not merged, though). The purpose of
-configuration stores was to bind specific V4L2 control values with
-particular buffers, since Rockchip encoder needs a number of low level
-encoding parameters for every frame [3].
-
-Another caveat is that the encoder API we have implemented in that
-driver is just based on hardware registers (excluding the security
-sensitive registers, which the driver deals with directly). The plugin
-generates registers values and the driver just writes them to the
-hardware. This needs to be replaced with a proper stateless encoder
-API, based on Request API, which we're working on.
-
-[1] https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/sys-kernel/linux-headers/linux-headers-4.4.ebuild
-[2] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/
-[3] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.h#117
-
-Best regards,
-Tomasz
-
->
-> Thanks,
-> baruch
->
-> [1] https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4l/
->
-> --
->      http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-> =}------------------------------------------------ooO--U--Ooo------------{=
->    - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
+T24gMTguMDYuMjAxOCAxMjoyOCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPkZyb20gYSBzcGVj
+aWZpZWQgb3V0cHV0IHBvcnQgb2Ygb25lIGRzaSBjb250cm9sbGVyIHRoaXMgZnVuY3Rpb24gYWxs
+b3dzIHRvCj4gaXRlcmF0ZSBvdmVyIHRoZSBsaXN0IG9mIHJlZ2lzdGVyZWQgZHNpIGNvbnRyb2xs
+ZXJzIHRyeWluZyB0byBmaW5kIGEgc2Vjb25kCj4gaW5zdGFuY2UgY29ubmVjdGVkIHRvIHRoZSBz
+YW1lIGRpc3BsYXksIGxpa2UgaXQgaXMgdXNlZCBpbiBkdWFsLWRzaSBzZXR1cHMuCj4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKVGhlIGNvZGUgbG9v
+a3MgaGFja3kgdG8gbWUgLSBpdCBpdGVyYXRlcyBvdmVyIGV4dGVybmFsIG5vZGVzLCBpdCBhc3N1
+bWVzCmFsbCBncmFwaCBsaW5rcyBhcmUgZGVkaWNhdGVkIGV4Y2x1c2l2ZWx5IHRvIGRzaSwgaXQg
+YXNzdW1lcyB0aGF0IHRoZXJlCmlzIG5vIGFkZGl0aW9uYWwgbm9kZSBiZXR3ZWVuIGRzaSBob3N0
+IGFuZCB0aGUgcGFuZWwuCkFueXdheSBsZXQncyBza2lwIGl0IGZvciBhIG1vbWVudCwgYW5kIGxv
+b2sgYXQgdGhlIGZvbGxvd2luZyBwYXRjaGVzLgoKUmVnYXJkcwpBbmRyemVqCgo+IC0tLQo+ICBk
+cml2ZXJzL2dwdS9kcm0vZHJtX21pcGlfZHNpLmMgfCA1NiArKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrCj4gIGluY2x1ZGUvZHJtL2RybV9taXBpX2RzaS5oICAgICB8ICAyICsrCj4g
+IDIgZmlsZXMgY2hhbmdlZCwgNTggaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fbWlwaV9kc2ku
+Ywo+IGluZGV4IGJjNzNiN2Y1YjlmYy4uMGMzYzljN2FhM2I4IDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fbWlw
+aV9kc2kuYwo+IEBAIC0zMCw2ICszMCw3IEBACj4gICNpbmNsdWRlIDxsaW51eC9kZXZpY2UuaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNl
+Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgo+ICAjaW5jbHVkZSA8bGludXgvcG1f
+cnVudGltZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvc2xhYi5oPgo+ICAKPiBAQCAtMjgyLDYgKzI4
+Myw2MSBAQCBzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqb2ZfZmluZF9taXBpX2RzaV9ob3N0X2J5X25v
+ZGUoc3RydWN0IGRldmljZV9ub2RlICpub2RlKQo+ICB9Cj4gIEVYUE9SVF9TWU1CT0wob2ZfZmlu
+ZF9taXBpX2RzaV9ob3N0X2J5X25vZGUpOwo+ICAKPiArc3RydWN0IGRldmljZV9ub2RlICpvZl9t
+aXBpX2RzaV9maW5kX3NlY29uZF9ob3N0KHN0cnVjdCBkZXZpY2Vfbm9kZSAqZmlyc3RfbnAsCj4g
+KwkJCQkJCSBpbnQgcG9ydCwgaW50IGVuZHBvaW50KQo+ICt7Cj4gKwlzdHJ1Y3QgbWlwaV9kc2lf
+aG9zdCAqZmlyc3QsICpob3N0Owo+ICsJc3RydWN0IGRldmljZV9ub2RlICpyZW1vdGUsICpucCwg
+KnNlY29uZF9ucCA9IE5VTEw7Cj4gKwlpbnQgbnVtID0gMDsKPiArCj4gKwlmaXJzdCA9IG9mX2Zp
+bmRfbWlwaV9kc2lfaG9zdF9ieV9ub2RlKGZpcnN0X25wKTsKPiArCWlmICghZmlyc3QpIHsKPiAr
+CQlwcl9lcnIoIm5vIGRzaS1ob3N0IGZvciBub2RlICVzXG4iLCBmaXJzdF9ucC0+ZnVsbF9uYW1l
+KTsKPiArCQlyZXR1cm4gRVJSX1BUUigtRU5PREVWKTsKPiArCX0KPiArCj4gKwkvKiBvdXRwdXQt
+bm9kZSBvZiB0aGUga25vd24gZHNpLWhvc3QgKi8KPiArCXJlbW90ZSA9IG9mX2dyYXBoX2dldF9y
+ZW1vdGVfbm9kZShmaXJzdF9ucCwgcG9ydCwgZW5kcG9pbnQpOwo+ICsJaWYgKCFyZW1vdGUpIHsK
+PiArCQlkZXZfZXJyKGZpcnN0LT5kZXYsICJubyBvdXRwdXQgbm9kZSBmb3VuZFxuIik7Cj4gKwkJ
+cmV0dXJuIEVSUl9QVFIoLUVOT0RFVik7Cj4gKwl9Cj4gKwo+ICsJbXV0ZXhfbG9jaygmaG9zdF9s
+b2NrKTsKPiArCj4gKwlsaXN0X2Zvcl9lYWNoX2VudHJ5KGhvc3QsICZob3N0X2xpc3QsIGxpc3Qp
+IHsKPiArCQlucCA9IG9mX2dyYXBoX2dldF9yZW1vdGVfbm9kZShob3N0LT5kZXYtPm9mX25vZGUs
+Cj4gKwkJCQkJICAgICAgcG9ydCwgZW5kcG9pbnQpOwo+ICsKPiArCQkvKiBmb3VuZCBhIGhvc3Qg
+Y29ubmVjdGVkIHRvIHRoaXMgcGFuZWwgKi8KPiArCQlpZiAobnAgPT0gcmVtb3RlKQo+ICsJCQlu
+dW0rKzsKPiArCj4gKwkJLyogZm91bmQgb25lIHNlY29uZCBob3N0ICovCj4gKwkJaWYgKGhvc3Qt
+PmRldi0+b2Zfbm9kZSAhPSBmaXJzdF9ucCkKPiArCQkJc2Vjb25kX25wID0gaG9zdC0+ZGV2LT5v
+Zl9ub2RlOwo+ICsKPiArCQlvZl9ub2RlX3B1dChucCk7Cj4gKwl9Cj4gKwo+ICsJLyogb2Zfbm9k
+ZV9nZXQgdGhlIG5vZGUgdW5kZXIgaG9zdF9sb2NrICovCj4gKwlpZiAobnVtID09IDIpCj4gKwkJ
+b2Zfbm9kZV9nZXQoc2Vjb25kX25wKTsKPiArCj4gKwltdXRleF91bmxvY2soJmhvc3RfbG9jayk7
+Cj4gKwo+ICsJb2Zfbm9kZV9wdXQocmVtb3RlKTsKPiArCj4gKwlpZiAobnVtID4gMikgewo+ICsJ
+CWRldl9lcnIoZmlyc3QtPmRldiwKPiArCQkJICAgICAgInRvbyBtYW55IERTSSBsaW5rcyBmb3Ig
+b3V0cHV0OiAlZCBsaW5rc1xuIiwgbnVtKTsKPiArCQlyZXR1cm4gRVJSX1BUUigtRUlOVkFMKTsK
+PiArCX0KPiArCj4gKwlyZXR1cm4gc2Vjb25kX25wOwo+ICt9Cj4gK0VYUE9SVF9TWU1CT0wob2Zf
+bWlwaV9kc2lfZmluZF9zZWNvbmRfaG9zdCk7Cj4gKwo+ICBpbnQgbWlwaV9kc2lfaG9zdF9yZWdp
+c3RlcihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCkKPiAgewo+ICAJc3RydWN0IGRldmljZV9u
+b2RlICpub2RlOwo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fbWlwaV9kc2kuaCBiL2lu
+Y2x1ZGUvZHJtL2RybV9taXBpX2RzaS5oCj4gaW5kZXggNGZlZjE5MDY0YjBmLi44OTUzMmFlNjlj
+OTEgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9kcm0vZHJtX21pcGlfZHNpLmgKPiArKysgYi9pbmNs
+dWRlL2RybS9kcm1fbWlwaV9kc2kuaAo+IEBAIC0xMDcsNiArMTA3LDggQEAgc3RydWN0IG1pcGlf
+ZHNpX2hvc3Qgewo+ICBpbnQgbWlwaV9kc2lfaG9zdF9yZWdpc3RlcihzdHJ1Y3QgbWlwaV9kc2lf
+aG9zdCAqaG9zdCk7Cj4gIHZvaWQgbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKHN0cnVjdCBtaXBp
+X2RzaV9ob3N0ICpob3N0KTsKPiAgc3RydWN0IG1pcGlfZHNpX2hvc3QgKm9mX2ZpbmRfbWlwaV9k
+c2lfaG9zdF9ieV9ub2RlKHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZSk7Cj4gK3N0cnVjdCBkZXZp
+Y2Vfbm9kZSAqb2ZfbWlwaV9kc2lfZmluZF9zZWNvbmRfaG9zdChzdHJ1Y3QgZGV2aWNlX25vZGUg
+KmZpcnN0X25wLAo+ICsJCQkJCQkgaW50IHBvcnQsIGludCBlbmRwb2ludCk7Cj4gIAo+ICAvKiBE
+U0kgbW9kZSBmbGFncyAqLwo+ICAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
