@@ -1,96 +1,41 @@
-From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
-Subject: Re: rockchip-vpu driver usability
-Date: Mon, 2 Jul 2018 17:57:07 +0300
-Message-ID: <20180702145707.kogqcuuqqofyugoc@tarshish>
-References: <20180524103431.63eog25qynr72ots@tarshish>
- <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
- <20180524121824.fdtyjez3lc5pftfz@tarshish>
- <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
- <5B07DCF9.2090709@rock-chips.com>
- <20180702072458.gcvwf24m63u2zg4m@tarshish>
- <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
+From: Damian Kos <dkos@cadence.com>
+Subject: [PATCH 00/12] drm: add support for Cadence MHDP DPI/DP bridge.
+Date: Tue, 3 Jul 2018 11:02:11 +0100
+Message-ID: <1530612152-27555-1-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Damian Kos <dkos@cadence.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: ltyrala@cadence.com, pgaj@cadence.com, stelford@cadence.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomasz,
+Damian Kos (3):
+  dt-bindings: drm/bridge: Document Cadence MHDP bridge bindings
+  drm/rockchip: added implementation for a few FW commands.
+  drm/rockchip: add support for CDNS MHDP IP controller.
 
-On Mon, Jul 02, 2018 at 04:30:52PM +0900, Tomasz Figa wrote:
-> On Mon, Jul 2, 2018 at 4:25 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > On Fri, May 25, 2018 at 05:52:57PM +0800, JeffyChen wrote:
-> > > On 05/25/2018 02:10 PM, Tomasz Figa wrote:
-> > > > On Thu, May 24, 2018 at 9:18 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > > > > It looks like only v2 supports h.264 encoding. Does the v2 plugin work
-> > > > > with the rk3288?
-> > > >
-> > > > Hmm, looks like I missed the part about h264 in your original message (only
-> > > > noticed encoding). We didn't have a need to encode h264 on rk3288 devices.
-> > > > The need showed up only later when we were working on rk3399. This made
-> > > > both the driver and plugin for rk3288 lack h264 support.
-> > > >
-> > > > AFAICT the hardware programming interface differs between rk3288 and
-> > > > rk3399, so v2 might not work, but maybe you just need to reshuffle some
-> > > > registers.
-> > > >
-> > > > It's also possible that Rockchip has some code for it. Jeffy, do you know
-> > > > if there is h264 driver code and plugin for rk3288 available somewhere
-> > > > (based on the driver developed for Chrome OS 3.14 kernel)?
-> > >
-> > > well, i do saw a h264e driver for rk3288 in cros kernel:
-> > > chromiumos/src/third_party/kernel/local/drivers/media/platform/rockchip-vpu#
-> > > ls rk3288_vpu_hw_h264e.c
-> > >
-> > > and the related struct defined in v2 plugin:
-> > > libv4l-rockchip_v2/libvepu/common/rk_venc.h:120:struct
-> > > rk3288_h264e_reg_params {
-> >
-> > Thanks for the reference.
-> >
-> > I'm trying to build the v4l plugin stand alone. But in the repo I only see a
-> > Makefile.am file. I guess it integrates with the higher level build system of
-> > CromiumOS.
-> >
-> > Do you have any idea how to build this v4l plugin code stand-alone?
-> 
-> It's supposed to be built as a part of v4l-utils
-> (http://git.linuxtv.org/v4l-utils.git), which includes libv4l. We
-> build it with 1.6.0, but I guess newer versions may work too.
-> 
-> For reference, here's our ebuild (for Gentoo portage) to build it:
-> https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4lplugins/libv4lplugins-9999.ebuild
+Quentin Schulz (9):
+  HACK: increase timeout for drm_atomic_helper_wait_for_vblanks
+  drm/dp: make dp_link_status and dp_get_lane_status usable from
+    outside of the core
+  drm/dp: add helpers for drm_dp_set_adjust_request_pre_emphasis and
+    drm_dp_set_adjust_request_voltage
+  drm/dp: fix training interval formula for DP 1.3+
+  drm/dp: fix link probing for devices supporting DP 1.4+
+  drm/dp: fix drm_dp_link_power_* for DP 1.2+
+  drm/dp: fix drm_dp_link_train_clock_recovery_delay for DP 1.4
+  drm/dp: add max number of lanes supported
+  drm/dp: add pixel encoding and colorimetry format indicator field in
+    MISC1
 
-The rockchip plugin code refers to the 'config_store' field in v4l2_buffer and 
-v4l2_ext_controls. This requires a special version of videodev2.h that is in 
-the chromeos-4.4 kernel (featuring commits 3b6d3bc13e572 and 86be552490a2a). 
-
-The code of libv4l2 also requires patching since it refers to the 'reserved2' 
-field of v4l2_buffer since before version 1.6.0.
-
-I could not find these patches in the libv4l2 ebuild[1]. Where can I find 
-them? Is there some other version of libv4l2 that the rockchip plugin builds 
-against?
-
-Thanks,
-baruch
-
-[1] https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4l/
-
--- 
-     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-=}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
+ .../bindings/display/bridge/cdns,mhdp.txt          |   39 +
+ drivers/gpu/drm/drm_atomic_helper.c                |    2 +-
+ drivers/gpu/drm/drm_dp_helper.c                    |   97 ++-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             |  953 +++++++++++++++++++-
+ drivers/gpu/drm/rockchip/cdn-dp-core.h             |   25 +
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c              |  167 ++++-
+ drivers/gpu/drm/rockchip/cdn-dp-reg.h              |  147 +++-
+ include/drm/drm_dp_helper.h                        |   14 +-
+ 8 files changed, 1400 insertions(+), 44 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
