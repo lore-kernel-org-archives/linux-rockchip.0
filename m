@@ -1,114 +1,123 @@
-From: Damian Kos <dkos@cadence.com>
-Subject: RE: [PATCH 12/12] drm/rockchip: add support for CDNS MHDP IP
- controller.
-Date: Tue, 3 Jul 2018 14:06:56 +0000
-Message-ID: <CO2PR07MB25512372C4FEAF1990305433CD420@CO2PR07MB2551.namprd07.prod.outlook.com>
-References: <1530612152-27555-1-git-send-email-dkos@cadence.com>
- <1530612152-27555-13-git-send-email-dkos@cadence.com>
- <2647490.Uuqs1CuF1U@diego>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: rockchip-vpu driver usability
+Date: Tue, 3 Jul 2018 23:29:03 +0900
+Message-ID: <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w@mail.gmail.com>
+References: <20180524103431.63eog25qynr72ots@tarshish>
+ <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
+ <20180524121824.fdtyjez3lc5pftfz@tarshish>
+ <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
+ <5B07DCF9.2090709@rock-chips.com> <20180702072458.gcvwf24m63u2zg4m@tarshish>
+ <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
+ <20180702145707.kogqcuuqqofyugoc@tarshish>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2647490.Uuqs1CuF1U@diego>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>
-Cc: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <seanpaul@chromium.org>, Sandy Huang <hjc@rock-chips.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Lukasz Tyrala <ltyrala@cadence.com>, Przemyslaw Gaj <pgaj@cadence.com>, Scott Telford <stelford@cadence.com>, Quentin Schulz <quentin.schulz@bootlin.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180702145707.kogqcuuqqofyugoc@tarshish>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Baruch,
 
-Thank you for your feedback! Initially, MHDP driver was developed as a DRM =
-bridge driver and was planned to be placed in drivers/gpu/drm/bridge/cadenc=
-e/mhdp.c.  However, there was already a driver for Cadence's DP controller =
-developed by RockChip, but that driver uses different DRM framework. Both c=
-ontrollers (including firmware) are quite different internally (MST/FEC/DSC=
- support, link training done by driver, additional commands, etc.) but they=
- have very similar register map, except for Framer/Streamer, so they appear=
- similar.
-
-We would be more than happy to provide fully separate driver (that was basi=
-cally pasted in RockChip's driver) for DP DRM bridge. Some parts can defini=
-tely shared between these two drivers like code for mailbox and commands se=
-nt/received by it, audio init.
-
-Moving cdn-dp-* to drivers/gpu/drm/bridge/ was also a plan, but it seems th=
-at cdn-dp-core.c use some stuff from drivers/gpu/drm/rockchip/*. cdn-dp-cor=
-e driver in this case seems like a part of a bigger picture while the drive=
-r that we want to upstream is standalone.
-
-We'll move/add everything that can be shared by both drivers to drivers/gpu=
-/drm/ and add new DPI/DP bridge driver as you advised and provide a new pat=
-ch.
-
-PS. Should we post patches 01-08 done in DRM helper by Quentin as a separat=
-e patch, so that reviewers will not have to go through them every time when=
- we send updated version?
-
-Regards,
-Damian
-
------Original Message-----
-From: Heiko St=FCbner <heiko@sntech.de>=20
-Sent: Tuesday, July 3, 2018 13:03
-To: Damian Kos <dkos@cadence.com>
-Cc: David Airlie <airlied@linux.ie>; Rob Herring <robh+dt@kernel.org>; Mark=
- Rutland <mark.rutland@arm.com>; Gustavo Padovan <gustavo@padovan.org>; Maa=
-rten Lankhorst <maarten.lankhorst@linux.intel.com>; Sean Paul <seanpaul@chr=
-omium.org>; Sandy Huang <hjc@rock-chips.com>; dri-devel@lists.freedesktop.o=
-rg; devicetree@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-ker=
-nel@lists.infradead.org; linux-rockchip@lists.infradead.org; Lukasz Tyrala =
-<ltyrala@cadence.com>; Przemyslaw Gaj <pgaj@cadence.com>; Scott Telford <st=
-elford@cadence.com>
-Subject: Re: [PATCH 12/12] drm/rockchip: add support for CDNS MHDP IP contr=
-oller.
-
-EXTERNAL MAIL
-
-
-Hi Damien,
-
-it's very cool to see collaboration from vendors on this.
-
-
-Am Dienstag, 3. Juli 2018, 12:02:23 CEST schrieb Damian Kos:
+On Mon, Jul 2, 2018 at 11:57 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
 >
+> Hi Tomasz,
+>
+> On Mon, Jul 02, 2018 at 04:30:52PM +0900, Tomasz Figa wrote:
+> > On Mon, Jul 2, 2018 at 4:25 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+> > > On Fri, May 25, 2018 at 05:52:57PM +0800, JeffyChen wrote:
+> > > > On 05/25/2018 02:10 PM, Tomasz Figa wrote:
+> > > > > On Thu, May 24, 2018 at 9:18 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+> > > > > > It looks like only v2 supports h.264 encoding. Does the v2 plugin work
+> > > > > > with the rk3288?
+> > > > >
+> > > > > Hmm, looks like I missed the part about h264 in your original message (only
+> > > > > noticed encoding). We didn't have a need to encode h264 on rk3288 devices.
+> > > > > The need showed up only later when we were working on rk3399. This made
+> > > > > both the driver and plugin for rk3288 lack h264 support.
+> > > > >
+> > > > > AFAICT the hardware programming interface differs between rk3288 and
+> > > > > rk3399, so v2 might not work, but maybe you just need to reshuffle some
+> > > > > registers.
+> > > > >
+> > > > > It's also possible that Rockchip has some code for it. Jeffy, do you know
+> > > > > if there is h264 driver code and plugin for rk3288 available somewhere
+> > > > > (based on the driver developed for Chrome OS 3.14 kernel)?
+> > > >
+> > > > well, i do saw a h264e driver for rk3288 in cros kernel:
+> > > > chromiumos/src/third_party/kernel/local/drivers/media/platform/rockchip-vpu#
+> > > > ls rk3288_vpu_hw_h264e.c
+> > > >
+> > > > and the related struct defined in v2 plugin:
+> > > > libv4l-rockchip_v2/libvepu/common/rk_venc.h:120:struct
+> > > > rk3288_h264e_reg_params {
+> > >
+> > > Thanks for the reference.
+> > >
+> > > I'm trying to build the v4l plugin stand alone. But in the repo I only see a
+> > > Makefile.am file. I guess it integrates with the higher level build system of
+> > > CromiumOS.
+> > >
+> > > Do you have any idea how to build this v4l plugin code stand-alone?
+> >
+> > It's supposed to be built as a part of v4l-utils
+> > (http://git.linuxtv.org/v4l-utils.git), which includes libv4l. We
+> > build it with 1.6.0, but I guess newer versions may work too.
+> >
+> > For reference, here's our ebuild (for Gentoo portage) to build it:
+> > https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4lplugins/libv4lplugins-9999.ebuild
+>
+> The rockchip plugin code refers to the 'config_store' field in v4l2_buffer and
+> v4l2_ext_controls. This requires a special version of videodev2.h that is in
+> the chromeos-4.4 kernel (featuring commits 3b6d3bc13e572 and 86be552490a2a).
+>
+> The code of libv4l2 also requires patching since it refers to the 'reserved2'
+> field of v4l2_buffer since before version 1.6.0.
+>
+> I could not find these patches in the libv4l2 ebuild[1]. Where can I find
+> them? Is there some other version of libv4l2 that the rockchip plugin builds
+> against?
 
-It would be really nice to explain a bit about the added controller support=
- in the commit message, so that people reviewing the patch can get a feelin=
-g for it.
+The code is based on Chrome OS kernel headers [1], which are based on
+Chrome OS 4.4 kernel [2], which includes some downstream changes.
+'config_store' comes from the V4L2 configuration store work in
+progress series by Hans Verkuil, which eventually evolved into what we
+know today as Request API (still not merged, though). The purpose of
+configuration stores was to bind specific V4L2 control values with
+particular buffers, since Rockchip encoder needs a number of low level
+encoding parameters for every frame [3].
 
-> Signed-off-by: Damian Kos <dkos@cadence.com>
-> ---
->  drivers/gpu/drm/rockchip/cdn-dp-core.c |  953
-> +++++++++++++++++++++++++++++++-=20
-> +++++++++++++++++++++++++++++++drivers/gpu/drm/rockchip/cdn-dp-core.h=20
-> +++++++++++++++++++++++++++++++|
-> 25 +
->  drivers/gpu/drm/rockchip/cdn-dp-reg.c  |    2 +-
->  drivers/gpu/drm/rockchip/cdn-dp-reg.h  |    4 +
+Another caveat is that the encoder API we have implemented in that
+driver is just based on hardware registers (excluding the security
+sensitive registers, which the driver deals with directly). The plugin
+generates registers values and the driver just writes them to the
+hardware. This needs to be replaced with a proper stateless encoder
+API, based on Request API, which we're working on.
 
-From the changes below, it looks that this seems to add support for a bridg=
-e chip based on that IP block. So it seems like the bridge+glue driver mode=
-l would be a perfect fit for this, instead of stapling this onto the Rockch=
-ip-specific driver.
+[1] https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/sys-kernel/linux-headers/linux-headers-4.4.ebuild
+[2] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/
+[3] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.h#117
 
-So essentially, you could take the Rockchip cdn-dp driver, move the common =
-parts to drivers/gpu/drm/bridge and then create separate glue drivers for b=
-oth Rockchip and your external bridge IP block.
+Best regards,
+Tomasz
 
-This would prevent code duplication and also allow your bridge driver to be=
- compiled without the Rockchip drm being present :-) .
-And also pave the way for future socs using your DP ip block.
-
-
-Nowadays we have quite a number of examples you could take as inspiration f=
-or this:
-- bridge/analogix/* (shared between Exynos and Rockchip right now)
-- bridge/synopsys/dw-hdmi* (shared between a quite big number of users)
-- bridge/synopsys/dw-mipi-dsi.c (shared between Rockchip [pending] and stm)
-
-
-Thanks
-Heiko
+>
+> Thanks,
+> baruch
+>
+> [1] https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4l/
+>
+> --
+>      http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+> =}------------------------------------------------ooO--U--Ooo------------{=
+>    - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
