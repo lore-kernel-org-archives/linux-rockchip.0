@@ -1,94 +1,97 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 03/12] drm/dp: add helpers for
- drm_dp_set_adjust_request_pre_emphasis and drm_dp_set_adjust_request_voltage
-Date: Wed, 4 Jul 2018 10:16:49 +0200
-Message-ID: <20180704081648.GI3891@phenom.ffwll.local>
-References: <1530612152-27555-1-git-send-email-dkos@cadence.com>
- <1530612152-27555-4-git-send-email-dkos@cadence.com>
+From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
+Subject: Re: rockchip-vpu driver usability
+Date: Wed, 4 Jul 2018 11:55:37 +0300
+Message-ID: <20180704085537.vglkza6bwllx3573@sapphire.tkos.co.il>
+References: <20180524103431.63eog25qynr72ots@tarshish>
+ <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
+ <20180524121824.fdtyjez3lc5pftfz@tarshish>
+ <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
+ <5B07DCF9.2090709@rock-chips.com>
+ <20180702072458.gcvwf24m63u2zg4m@tarshish>
+ <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
+ <20180702145707.kogqcuuqqofyugoc@tarshish>
+ <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1530612152-27555-4-git-send-email-dkos@cadence.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Damian Kos <dkos@cadence.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Quentin Schulz <quentin.schulz@free-electrons.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, pgaj@cadence.com, Rob Herring <robh+dt@kernel.org>, stelford@cadence.com, ltyrala@cadence.com, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdWwgMDMsIDIwMTggYXQgMTE6MDI6MTRBTSArMDEwMCwgRGFtaWFuIEtvcyB3cm90
-ZToKPiBGcm9tOiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAZnJlZS1lbGVjdHJvbnMu
-Y29tPgo+IAo+IFdlIGFscmVhZHkgaGF2ZSBmdW5jdGlvbnMgdG8gZ2V0IHRoZSBhZGp1c3QgcmVx
-dWVzdCB2b2x0YWdlIGFuZAo+IHByZS1lbXBoYXNpcyBmb3IgYSBsYW5lIHNvIGl0IG1ha2VzIGFs
-c28gc2Vuc2UgdG8gYmUgYWJsZSB0byBzZXQgdGhlbSBzbwo+IHRoYXQgd2UgY2FuIHRoZW4gZWFz
-aWx5IHVwZGF0ZSB0aGVtIHZpYSBhIERQQ0Qgd3JpdGUuCj4gCj4gQWRkIGhlbHBlcnMgZm9yIGRy
-bV9kcF9zZXRfYWRqdXN0X3JlcXVlc3RfcHJlX2VtcGhhc2lzIGFuZAo+IGRybV9kcF9zZXRfYWRq
-dXN0X3JlcXVlc3Rfdm9sdGFnZSB0aGF0IHJlc3BlY3RpdmVseSBzZXQgdGhlCj4gcHJlLWVtcGhh
-c2lzIGFuZCB2b2x0YWdlIG9mIGEgbGFuZSBpbiB0aGUgbGluayBzdGF0dXMgYXJyYXkuCj4gCj4g
-U2lnbmVkLW9mZi1ieTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGZyZWUtZWxlY3Ry
-b25zLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEYW1pYW4gS29zIDxka29zQGNhZGVuY2UuY29tPgoK
-SG0gdXN1YWxseSB0aGlzIGlzIHNvdXJjZSBkZXBlbmRlbnQgLSBzb21lIHNvdXJjZXMgb25seSBo
-YXZlIG9uZQphZGovcHJlLWVtcGggdmFsdWUgZm9yIGFsbCBsYW5lcywgc29tZSBvbmx5IDIgKGZv
-ciBncm91cHMgb2YgMiksIHNvbWUgZm9yCmFsbCBmb3VyLiBUaGF0J3Mga2luZGEgd2h5IHdlIGRv
-bid0IGhhdmUgaGVscGVycyBmb3IgdGhpcyBzdHVmZi4KCkFuIGV4Y2VsbGVudCB3YXkgdG8gc2hv
-dyB0aGF0IHlvdXIgbmV3IGhlbHBlcnMgYXJlIHVzZWZ1bCB3b3VsZCBiZSB0byBnbwp0aHJvdWdo
-IGV4aXN0aW5nIGRyaXZlcnMgYW5kIGNvbnZlcnQgdGhlbSBvdmVyLCB3aGVyZSBpdCBtYWtlcyBz
-ZW5zZS4gU2FtZQpraW5kYSBob2xkcyBmb3IgcGF0Y2ggMS4KClRoYW5rcywgRGFuaWVsCj4gLS0t
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fZHBfaGVscGVyLmMgfCAgIDI4ICsrKysrKysrKysrKysr
-KysrKysrKysrKysrKysKPiAgaW5jbHVkZS9kcm0vZHJtX2RwX2hlbHBlci5oICAgICB8ICAgIDQg
-KysrKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDMyIGluc2VydGlvbnMoKyksIDAgZGVsZXRpb25zKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fZHBfaGVscGVyLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vZHJtX2RwX2hlbHBlci5jCj4gaW5kZXggM2JjMmU5OC4uY2EyZjQ2OSAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2RwX2hlbHBlci5jCj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2RybV9kcF9oZWxwZXIuYwo+IEBAIC0xMjAsNiArMTIwLDM0IEBAIHU4IGRybV9k
-cF9nZXRfYWRqdXN0X3JlcXVlc3RfcHJlX2VtcGhhc2lzKGNvbnN0IHU4IGxpbmtfc3RhdHVzW0RQ
-X0xJTktfU1RBVFVTX1NJCj4gIH0KPiAgRVhQT1JUX1NZTUJPTChkcm1fZHBfZ2V0X2FkanVzdF9y
-ZXF1ZXN0X3ByZV9lbXBoYXNpcyk7Cj4gIAo+ICt2b2lkIGRybV9kcF9zZXRfYWRqdXN0X3JlcXVl
-c3Rfdm9sdGFnZSh1OCBsaW5rX3N0YXR1c1tEUF9MSU5LX1NUQVRVU19TSVpFXSwKPiArCQkJCSAg
-ICAgICBpbnQgbGFuZSwgdTggdm9sdCkKPiArewo+ICsJaW50IGkgPSBEUF9BREpVU1RfUkVRVUVT
-VF9MQU5FMF8xICsgKGxhbmUgPj4gMSk7Cj4gKwlpbnQgcyA9ICgobGFuZSAmIDEpID8KPiArCQkg
-RFBfQURKVVNUX1ZPTFRBR0VfU1dJTkdfTEFORTFfU0hJRlQgOgo+ICsJCSBEUF9BREpVU1RfVk9M
-VEFHRV9TV0lOR19MQU5FMF9TSElGVCk7Cj4gKwlpbnQgaWR4ID0gaSAtIERQX0xBTkUwXzFfU1RB
-VFVTOwo+ICsKPiArCWxpbmtfc3RhdHVzW2lkeF0gJj0gfihEUF9BREpVU1RfVk9MVEFHRV9TV0lO
-R19MQU5FMF9NQVNLIDw8IHMpOwo+ICsJbGlua19zdGF0dXNbaWR4XSB8PSB2b2x0IDw8IHM7Cj4g
-K30KPiArRVhQT1JUX1NZTUJPTChkcm1fZHBfc2V0X2FkanVzdF9yZXF1ZXN0X3ZvbHRhZ2UpOwo+
-ICsKPiArdm9pZCBkcm1fZHBfc2V0X2FkanVzdF9yZXF1ZXN0X3ByZV9lbXBoYXNpcyh1OCBsaW5r
-X3N0YXR1c1tEUF9MSU5LX1NUQVRVU19TSVpFXSwKPiArCQkJCQkgICAgaW50IGxhbmUsIHU4IHBy
-ZV9lbXBoYXNpcykKPiArewo+ICsJaW50IGkgPSBEUF9BREpVU1RfUkVRVUVTVF9MQU5FMF8xICsg
-KGxhbmUgPj4gMSk7Cj4gKwlpbnQgcyA9ICgobGFuZSAmIDEpID8KPiArCQkgRFBfQURKVVNUX1BS
-RV9FTVBIQVNJU19MQU5FMV9TSElGVCA6Cj4gKwkJIERQX0FESlVTVF9QUkVfRU1QSEFTSVNfTEFO
-RTBfU0hJRlQpOwo+ICsJaW50IGlkeCA9IGkgLSBEUF9MQU5FMF8xX1NUQVRVUzsKPiArCj4gKwls
-aW5rX3N0YXR1c1tpZHhdICY9IH4oRFBfQURKVVNUX1BSRV9FTVBIQVNJU19MQU5FMF9NQVNLIDw8
-IHMpOwo+ICsJbGlua19zdGF0dXNbaWR4XSB8PSBwcmVfZW1waGFzaXMgPDwgczsKPiArfQo+ICtF
-WFBPUlRfU1lNQk9MKGRybV9kcF9zZXRfYWRqdXN0X3JlcXVlc3RfcHJlX2VtcGhhc2lzKTsKPiAr
-Cj4gIHZvaWQgZHJtX2RwX2xpbmtfdHJhaW5fY2xvY2tfcmVjb3ZlcnlfZGVsYXkoY29uc3QgdTgg
-ZHBjZFtEUF9SRUNFSVZFUl9DQVBfU0laRV0pIHsKPiAgCWlmIChkcGNkW0RQX1RSQUlOSU5HX0FV
-WF9SRF9JTlRFUlZBTF0gPT0gMCkKPiAgCQl1ZGVsYXkoMTAwKTsKPiBkaWZmIC0tZ2l0IGEvaW5j
-bHVkZS9kcm0vZHJtX2RwX2hlbHBlci5oIGIvaW5jbHVkZS9kcm0vZHJtX2RwX2hlbHBlci5oCj4g
-aW5kZXggYTQ4OGFmMC4uNmU2NGIyYSAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fZHBf
-aGVscGVyLmgKPiArKysgYi9pbmNsdWRlL2RybS9kcm1fZHBfaGVscGVyLmgKPiBAQCAtOTQ2LDYg
-Kzk0NiwxMCBAQCB1OCBkcm1fZHBfZ2V0X2FkanVzdF9yZXF1ZXN0X3ZvbHRhZ2UoY29uc3QgdTgg
-bGlua19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0sCj4gIAkJCQkgICAgIGludCBsYW5lKTsK
-PiAgdTggZHJtX2RwX2dldF9hZGp1c3RfcmVxdWVzdF9wcmVfZW1waGFzaXMoY29uc3QgdTggbGlu
-a19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0sCj4gIAkJCQkJICBpbnQgbGFuZSk7Cj4gK3Zv
-aWQgZHJtX2RwX3NldF9hZGp1c3RfcmVxdWVzdF92b2x0YWdlKHU4IGxpbmtfc3RhdHVzW0RQX0xJ
-TktfU1RBVFVTX1NJWkVdLAo+ICsJCQkJICAgICAgIGludCBsYW5lLCB1OCB2b2x0KTsKPiArdm9p
-ZCBkcm1fZHBfc2V0X2FkanVzdF9yZXF1ZXN0X3ByZV9lbXBoYXNpcyh1OCBsaW5rX3N0YXR1c1tE
-UF9MSU5LX1NUQVRVU19TSVpFXSwKPiArCQkJCQkgICAgaW50IGxhbmUsIHU4IHByZV9lbXBoYXNp
-cyk7Cj4gIAo+ICAjZGVmaW5lIERQX0JSQU5DSF9PVUlfSEVBREVSX1NJWkUJMHhjCj4gICNkZWZp
-bmUgRFBfUkVDRUlWRVJfQ0FQX1NJWkUJCTB4Zgo+IC0tIAo+IDEuNy4xCj4gCj4gX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKRGFuaWVsIFZl
-dHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3
-bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Tomasz,
+
+On Tue, Jul 03, 2018 at 11:29:03PM +0900, Tomasz Figa wrote:
+> On Mon, Jul 2, 2018 at 11:57 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+> > On Mon, Jul 02, 2018 at 04:30:52PM +0900, Tomasz Figa wrote:
+> > > On Mon, Jul 2, 2018 at 4:25 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+> > > > I'm trying to build the v4l plugin stand alone. But in the repo I only 
+> > > > see a Makefile.am file. I guess it integrates with the higher level 
+> > > > build system of CromiumOS.
+> > > >
+> > > > Do you have any idea how to build this v4l plugin code stand-alone?
+> > >
+> > > It's supposed to be built as a part of v4l-utils
+> > > (http://git.linuxtv.org/v4l-utils.git), which includes libv4l. We
+> > > build it with 1.6.0, but I guess newer versions may work too.
+> > >
+> > > For reference, here's our ebuild (for Gentoo portage) to build it:
+> > > https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/media-libs/libv4lplugins/libv4lplugins-9999.ebuild
+> >
+> > The rockchip plugin code refers to the 'config_store' field in v4l2_buffer and
+> > v4l2_ext_controls. This requires a special version of videodev2.h that is in
+> > the chromeos-4.4 kernel (featuring commits 3b6d3bc13e572 and 86be552490a2a).
+> >
+> > The code of libv4l2 also requires patching since it refers to the 'reserved2'
+> > field of v4l2_buffer since before version 1.6.0.
+> >
+> > I could not find these patches in the libv4l2 ebuild[1]. Where can I find
+> > them? Is there some other version of libv4l2 that the rockchip plugin builds
+> > against?
+> 
+> The code is based on Chrome OS kernel headers [1], which are based on
+> Chrome OS 4.4 kernel [2], which includes some downstream changes.
+> 'config_store' comes from the V4L2 configuration store work in
+> progress series by Hans Verkuil, which eventually evolved into what we
+> know today as Request API (still not merged, though). The purpose of
+> configuration stores was to bind specific V4L2 control values with
+> particular buffers, since Rockchip encoder needs a number of low level
+> encoding parameters for every frame [3].
+> 
+> Another caveat is that the encoder API we have implemented in that
+> driver is just based on hardware registers (excluding the security
+> sensitive registers, which the driver deals with directly). The plugin
+> generates registers values and the driver just writes them to the
+> hardware. This needs to be replaced with a proper stateless encoder
+> API, based on Request API, which we're working on.
+
+So to get the rockchip-vpu driver working with current kernel I need to also 
+forward-port the embryonic Request API as well. I'll look into this.
+
+Are you aware of any other dependencies?
+
+The alternative for me is to back-port rkisp1 video capture driver to vendor 
+provided 4.4 kernel so I can use the MPP shim driver. I hope to not get there.
+
+The easiest option, of course, is to just wait for the Request API and the new 
+codec driver. I'm not sure I can afford to wait though.
+
+Thanks for your support in sorting that out.
+
+baruch
+
+-- 
+     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+=}------------------------------------------------ooO--U--Ooo------------{=
+   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.2.679.5364, http://www.tkos.co.il -
