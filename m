@@ -1,40 +1,57 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 0/4] clk: rockchip: support clock controller for px30 SoC
-Date: Wed, 04 Jul 2018 12:08:15 +0200
-Message-ID: <19643053.9AiPb2dtV0@phil>
-References: <1529029011-15021-1-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2 3/8] drm/bridge/synopsys: dsi: defer probing if panel
+ not available in bridge-attach
+Date: Wed, 04 Jul 2018 12:36:15 +0200
+Message-ID: <2796749.EVdO9cK1mC@phil>
+References: <20180618102806.15650-1-heiko@sntech.de>
+ <20180618102806.15650-4-heiko@sntech.de>
+ <20180703124251eucas1p25b137491e5e1adc8ce3cfc36650e82cb~93GQzL7MQ0183501835eucas1p2a@eucas1p2.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1529029011-15021-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: sboyd@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, cl@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180703124251eucas1p25b137491e5e1adc8ce3cfc36650e82cb~93GQzL7MQ0183501835eucas1p2a@eucas1p2.samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
-
-Am Freitag, 15. Juni 2018, 04:16:47 CEST schrieb Elaine Zhang:
-> Change in V3:
-> [PATCH v3 1/4]: Correct description
-> [PATCH v3 2/4]: Use an SPDX tag instead.
-> [PATCH v3 3/4]: Use an SPDX tag instead,
-> 		parent_rate might overflow and fix it.
-> 		fix up the checkpatch warning.
-> 		add more CMPOSITE_xxx_HALFdiv.
-> 
-> Change in V2:
-> [PATCH v2 2/4]: modify the Author name
-> [PATCH v2 3/4]: provide a bit more explanation for commit message
-> 
-> Elaine Zhang (4):
->   dt-bindings: add bindings for px30 clock controller
->   clk: rockchip: add dt-binding header for px30
->   clk: rockchip: add support for half divider
->   clk: rockchip: add clock controller for px30
-
-I've applied the set for 4.19 but dropped the panic-notifier
-dump function from the px30 clock driver.
-
-Heiko
+QW0gRGllbnN0YWcsIDMuIEp1bGkgMjAxOCwgMTQ6NDI6NDkgQ0VTVCBzY2hyaWViIEFuZHJ6ZWog
+SGFqZGE6Cj4gT24gMTguMDYuMjAxOCAxMjoyOCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBX
+aGVuIHRoZSBwYW5lbC1kcml2ZXIgaXMgYnVpbGQgYXMgYSBtb2R1bGUgaXQgY3VycmVudGx5IGZh
+aWxzIGhhcmQgYXMgdGhlCj4gPiBwYW5lbCBjYW5ub3QgYmUgcHJvYmVkIGRpcmVjdGx5Ogo+ID4K
+PiA+IGR3X21pcGlfZHNpX2JpbmQoKQo+ID4gICBfX2R3X21pcGlfZHNpX3Byb2JlKCkKPiA+ICAg
+ICBjcmVhdGVzIGRzaSBidXMKPiA+ICAgICBjcmVhdGVzIHBhbmVsIGRldmljZQo+ID4gICAgIHRy
+aWdnZXJzIHBhbmVsIG1vZHVsZSBsb2FkCj4gPiAgICAgcGFuZWwgbm90IHByb2JlZCAobW9kdWxl
+IG5vdCBsb2FkZWQgb3IgcGFuZWwgcHJvYmUgc2xvdykKPiA+ICAgZHJtX2JyaWRnZV9hdHRhY2gK
+PiA+ICAgICBmYWlscyB3aXRoIC1FSU5WQUwgZHVlIHRvIGVtcHR5IHBhbmVsX2JyaWRnZQo+ID4K
+PiA+IFNvIGVtaXQgYSAtRVBST0JFX0RFRkVSIGluIHRoYXQgY2FzZSB0byBnaXZlIHRoZSBkcml2
+ZXIgYW5vdGhlcgo+ID4gY2hhbmNlIGF0IGdldHRpbmcgdGhlIGRpc3BsYXkgbGF0ZXIuCj4gCj4g
+VGhhdHMgb2RkIChhdCBsZWFzdCBmb3IgbWUpLCBpZiB0aGUgcmVzb3VyY2UgKHBhbmVsIGluIHRo
+aXMgY2FzZSkgaXMgbm90Cj4gcHJlc2VudCwgYnJpZGdlIHNob3VsZCBub3QgYmUgYXR0YWNoZWQg
+KGRybV9icmlkZ2VfYXR0YWNoIHNob3VsZCBub3QgYmUKPiBjYWxsZWQpLiBJZSBfX2R3X21pcGlf
+ZHNpX3Byb2JlIHNob3VsZCByYXRoZXIgbG9vayBmb3IgdGhlIHBhbmVsIGFuZAo+IGRlZmVyIGlm
+IG5vdCBmb3VuZC4gUmVzb3VyY2UgZ2F0aGVyaW5nIGlzIHRoZSB0YXNrIG9mIHByb2JlLgo+IGRy
+bV9icmlkZ2VfYXR0YWNoIGNhbiBiZSBjYWxsZWQgYWZ0ZXIgcHJvYmUgYW5kIGl0IHdvdWxkIGJl
+IGRpZmZpY3VsdAo+IGZvciB0aGUgY2FsbGVyIHRvIHJlYWN0IHByb3Blcmx5IGZvciAtRVBST0JF
+X0RFRkVSIGVycm9yLgoKSSB0aGluayBvbmUgb2YgdGhlIHByb2JsZW1zIGNvbWVzIGZyb20gdGhl
+IGZhY3QgdGhhdCB0aGUgcGFuZWwgb25seQpnZXRzIHByb2JlZCAoYW5kIGV2ZW4gdGhlIHBhbmVs
+LWRldmljZSBjcmVhdGVkKSBhZnRlciB0aGUgZHNpIGhvc3QgYnVzCmdldHMgY3JlYXRlZCBpbiBf
+X2R3X21pcGlfZHNpX3Byb2JlLgoKCkluIGhpbmRzaWdodCwgSSB0aGluayB0aGlzIGlzIG1vcmUg
+b2YgYSBjb25jdXJyZW5jeSBpc3N1ZSBiZXR3ZWVuIHRoZQpwYW5lbCBwcm9iaW5nIGFuZCBjYWxs
+aW5nIGRzaS1hdHRhY2ggYW5kIHRoZSBkc2ktY29udHJvbGxlciBsb29raW5nIGZvcgp0aGUgcGFu
+ZWwgdnMuIHBhbmVsLWJyaWRnZS4KClNvIHdoZW4gSSdtIHVzaW5nIGRybV9vZl9maW5kX3BhbmVs
+X29yX2JyaWRnZSgpIGFzIGluZGljYXRvciBvZiB0aGUKcGFuZWwgYmVpbmcsIGl0IHByb2JhYmx5
+IG1ha2VzIHRoaW5ncyByYWN5LiBJJ2xsIHRyeSB0byBmaW5kIGEgYmV0dGVyCnNvbHV0aW9uIGZv
+ciB0aGUgaXNzdWUuCgoKSGVpa28KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
