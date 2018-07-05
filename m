@@ -1,74 +1,50 @@
-From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
-Subject: Re: rockchip-vpu driver usability
-Date: Thu, 5 Jul 2018 15:14:47 +0300
-Message-ID: <20180705121447.e65uehk5q2vung7e@tarshish>
-References: <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
- <20180524121824.fdtyjez3lc5pftfz@tarshish>
- <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
- <5B07DCF9.2090709@rock-chips.com>
- <20180702072458.gcvwf24m63u2zg4m@tarshish>
- <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
- <20180702145707.kogqcuuqqofyugoc@tarshish>
- <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w@mail.gmail.com>
- <20180704085537.vglkza6bwllx3573@sapphire.tkos.co.il>
- <CAAFQd5AYQVY-MPVsGn4XeM6m+uTV+-MYdU4DwmxkGCPr0BQthw@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH v3 0/2] arm64: rockchip: support RK3399 Ficus board
+Date: Thu,  5 Jul 2018 12:08:16 -0300
+Message-ID: <20180705150818.29931-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5AYQVY-MPVsGn4XeM6m+uTV+-MYdU4DwmxkGCPr0BQthw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomasz,
+Here's the third spin for the RK3399 Ficus support.
 
-On Wed, Jul 04, 2018 at 06:04:35PM +0900, Tomasz Figa wrote:
-> On Wed, Jul 4, 2018 at 5:55 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > So to get the rockchip-vpu driver working with current kernel I need to 
-> > also forward-port the embryonic Request API as well. I'll look into this.
-> >
-> > Are you aware of any other dependencies?
-> 
-> I think V4L2 compound controls, but that should be already in
-> upstream. I'll try to look up relevant Chromium kernel patches for you
-> a bit later.
-> 
-> > The alternative for me is to back-port rkisp1 video capture driver to vendor
-> > provided 4.4 kernel so I can use the MPP shim driver. I hope to not get there.
-> >
-> > The easiest option, of course, is to just wait for the Request API and the new
-> > codec driver. I'm not sure I can afford to wait though.
-> 
-> I think you could also try to remove the use of config stores and make
-> the driver latch control values in QBUF(OUTPUT). You would also need
-> to adjust the plugin code accordingly.
+Changes from v2:
+ * Dropped rk3399.dtsi changes and rebased on top of Randy's patch.
+ * Removed double empty line.
+ * Coalesced schematics comment
 
-I'm trying to wrap me head around the config_store implementation in the 
-'chromeos-4.4' kernel branch (commit a36974eae81a). I think I get the general 
-idea. Still need to figure out the details.
+Changes from v1:
+ * Dropoed USB support as it's not working.
+ * Added schematics.
+ * Splitted rk3399.dtsi from new ficus.dts file.
+ * Added new vendor.
+ * Cleaned regulators syntax and stlye.
 
-I'm not sure I get your QBUF(OUTPUT) suggestion, though. Does "latch" means 
-that the driver attaches the same controls to all buffers, essentially 
-behaving like a traditional V4L2 device? Something else?
+Series based on: 600b359d2b98 ("arm64: dts: rockchip: add some common pin-settings to rk3399").
 
-The limitation of being able to encode only one stream at a time is acceptable 
-for my application.
+Ezequiel Garcia (2):
+  dt-bindings: Add vendor prefix for Vamrs Ltd.
+  arm64: dts: rockchip: add 96boards RK3399 Ficus board
 
-Thanks,
-baruch
+ .../devicetree/bindings/arm/rockchip.txt      |   5 +
+ .../devicetree/bindings/vendor-prefixes.txt   |   1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 514 ++++++++++++++++++
+ 4 files changed, 521 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
 
 -- 
-     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-=}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
+2.18.0.rc2
