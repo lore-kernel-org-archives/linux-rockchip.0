@@ -1,76 +1,74 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/8] drm/bridge/synopsys: dsi: don't call
- __dw_mipi_dsi_probe from dw_mipi_dsi_bind
-Date: Wed, 04 Jul 2018 14:23:19 +0200
-Message-ID: <2417936.Py6EiBXf7X@phil>
-References: <20180618102806.15650-1-heiko@sntech.de>
- <20180618102806.15650-3-heiko@sntech.de>
- <20180703121630eucas1p2a8a61ac1390b7dbc34cf2bea78f1fcf5~92vQQKuDT2201222012eucas1p2I@eucas1p2.samsung.com>
+From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
+Subject: Re: rockchip-vpu driver usability
+Date: Thu, 5 Jul 2018 15:14:47 +0300
+Message-ID: <20180705121447.e65uehk5q2vung7e@tarshish>
+References: <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
+ <20180524121824.fdtyjez3lc5pftfz@tarshish>
+ <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
+ <5B07DCF9.2090709@rock-chips.com>
+ <20180702072458.gcvwf24m63u2zg4m@tarshish>
+ <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
+ <20180702145707.kogqcuuqqofyugoc@tarshish>
+ <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w@mail.gmail.com>
+ <20180704085537.vglkza6bwllx3573@sapphire.tkos.co.il>
+ <CAAFQd5AYQVY-MPVsGn4XeM6m+uTV+-MYdU4DwmxkGCPr0BQthw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180703121630eucas1p2a8a61ac1390b7dbc34cf2bea78f1fcf5~92vQQKuDT2201222012eucas1p2I@eucas1p2.samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, mka@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAAFQd5AYQVY-MPVsGn4XeM6m+uTV+-MYdU4DwmxkGCPr0BQthw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDMuIEp1bGkgMjAxOCwgMTQ6MTY6MjggQ0VTVCBzY2hyaWViIEFuZHJ6ZWog
-SGFqZGE6Cj4gT24gMTguMDYuMjAxOCAxMjoyOCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBf
-X2R3X21pcGlfZHNpX3Byb2JlKCkgZG9lcyBhbGwgdGhlIGdyYWJiaW5nIG9mIHJlc291cmNlcyBh
-bmQgZG9lcyBpdCB1c2luZwo+ID4gZGV2bS1oZWxwZXJzLiBTbyB0aGlzIGlzIGhhcHBlbmluZyBv
-biBlYWNoIHRyeSBvZiBtYXN0ZXIgYnJpbmd1cCBwb3NzaWJseQo+ID4gc2xvd2luZyBkb3duIHRo
-aW5ncyBhIGxvdC4KPiA+Cj4gPiBEcml2ZXJzIHVzaW5nIHRoZSBjb21wb25lbnQgZnJhbWV3b3Jr
-IG1heSBpbnN0ZWFkIHdhbnQgY2FsbCBkd19taXBpX2RzaV9wcm9iZQo+ID4gc2VwYXJhdGVseSBp
-biB0aGVpciBwcm9iZSBmdW5jdGlvbiBzZXR1cCByZXNvdXJjZXMgZWFybHkuIFRoYXQgd2F5IHRo
-ZSBkc2kKPiA+IGJ1cyBhbHNvIGdldHMgY3JlYXRlZCBlYXJsaWVyIGFuZCBhbHNvIG5vdCByZWNy
-ZWF0ZWQgb24gZWFjaCBiaW5kLXRyeSwgc28KPiA+IHRoYXQgYXR0YWNoZWQgcGFuZWxzIGNhbiBs
-b2FkIHRoZWlyIG1vZHVsZXMgYW5kIGJlIHByb2JlZCB3YXkgYmVmb3JlIHRoZQo+ID4gYnJpZGdl
-LWF0dGFjaCBpbiB0aGUgYmluZCBjYWxsLgo+ID4KPiA+IFNvIGRyb3AgdGhlIGNhbGwgdG8gX19k
-d19taXBpX2RzaV9wcm9iZSBhbmQgbW9kaWZ5IHRoZSBmdW5jdGlvbiB0byB0YWtlCj4gPiBhIHN0
-cnVjdCBkd19taXBpX2RzaSBpbnN0ZWFkIG9mIHRoZSBwbGF0Zm9ybS1kZXZpY2UuCj4gPgo+ID4g
-U2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+IC0tLQo+
-ID4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDE1ICsr
-Ky0tLS0tLS0tLS0tLQo+ID4gIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19taXBpX2RzaS5oICAgICAg
-ICAgICAgICB8ICA1ICstLS0tCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyks
-IDE2IGRlbGV0aW9ucygtKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
-c3lzL2R3LW1pcGktZHNpLmMKPiA+IGluZGV4IDA3Y2RlMjU1Y2FiMi4uYmI0YWVjYTVjMGY5IDEw
-MDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRz
-aS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNp
-LmMKPiA+IEBAIC05NjYsMzEgKzk2NiwyMiBAQCBFWFBPUlRfU1lNQk9MX0dQTChkd19taXBpX2Rz
-aV9yZW1vdmUpOwo+ID4gIC8qCj4gPiAgICogQmluZC91bmJpbmQgQVBJLCB1c2VkIGZyb20gcGxh
-dGZvcm1zIGJhc2VkIG9uIHRoZSBjb21wb25lbnQgZnJhbWV3b3JrLgo+ID4gICAqLwo+ID4gLXN0
-cnVjdCBkd19taXBpX2RzaSAqCj4gPiAtZHdfbWlwaV9kc2lfYmluZChzdHJ1Y3QgcGxhdGZvcm1f
-ZGV2aWNlICpwZGV2LCBzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4gPiAtCQkgY29uc3Qg
-c3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQo+ID4gK2ludCBkd19taXBp
-X2RzaV9iaW5kKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpLCBzdHJ1Y3QgZHJtX2VuY29kZXIgKmVu
-Y29kZXIpCj4gPiAgewo+ID4gLQlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaTsKPiA+ICAJaW50IHJl
-dDsKPiA+ICAKPiA+IC0JZHNpID0gX19kd19taXBpX2RzaV9wcm9iZShwZGV2LCBwbGF0X2RhdGEp
-Owo+ID4gLQlpZiAoSVNfRVJSKGRzaSkpCj4gPiAtCQlyZXR1cm4gZHNpOwo+ID4gLQo+ID4gIAly
-ZXQgPSBkcm1fYnJpZGdlX2F0dGFjaChlbmNvZGVyLCAmZHNpLT5icmlkZ2UsIE5VTEwpOwo+ID4g
-IAlpZiAocmV0KSB7Cj4gPiAtCQlkd19taXBpX2RzaV9yZW1vdmUoZHNpKTsKPiA+ICAJCURSTV9F
-UlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgYnJpZGdlIHdpdGggZHJtXG4iKTsKPiA+IC0JCXJl
-dHVybiBFUlJfUFRSKHJldCk7Cj4gPiArCQlyZXR1cm4gcmV0Owo+ID4gIAl9Cj4gPiAgCj4gPiAt
-CXJldHVybiBkc2k7Cj4gPiArCXJldHVybiByZXQ7Cj4gPiAgfQo+ID4gIEVYUE9SVF9TWU1CT0xf
-R1BMKGR3X21pcGlfZHNpX2JpbmQpOwo+ID4gIAo+ID4gIHZvaWQgZHdfbWlwaV9kc2lfdW5iaW5k
-KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ID4gIHsKPiA+IC0JX19kd19taXBpX2RzaV9yZW1v
-dmUoZHNpKTsKPiA+ICB9Cj4gPiAgRVhQT1JUX1NZTUJPTF9HUEwoZHdfbWlwaV9kc2lfdW5iaW5k
-KTsKPiAKPiBDYW4ndCB3ZSBqdXN0IHJlbW92ZSB0aGVzZSB0d28gYmluZC91bmJpbmQgZnVuY3Rp
-b25zIGFuZCBjYWxsCj4gZHJtX2JyaWRnZV9hdHRhY2ggZGlyZWN0bHk/CgpBbmQgSSBqdXN0IHJl
-YWxpemVkLCB3ZSBjYW4ndC4KCnN0cnVjdCBkd19taXBpX2RzaSBpcyBsb2NhbCB0byB0aGUgY29t
-bW9uIGJyaWRnZSBkcml2ZXIsIHdoaWNoIGFsc28gbWFrZXMKc2Vuc2UgdG8gbm90IGV4cG9zZSBp
-bnRlcm5hbCBzdHVmZi4gU28gZHJtX2JyaWRnZSBhdHRhY2ggd2lsbCBuZWVkIHRvCmJlIGNhbGxl
-ZCBmcm9tIHRoZSBjb21tb24gYnJpZGdlIGRyaXZlci4KCgpIZWlrbwoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Tomasz,
+
+On Wed, Jul 04, 2018 at 06:04:35PM +0900, Tomasz Figa wrote:
+> On Wed, Jul 4, 2018 at 5:55 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
+> > So to get the rockchip-vpu driver working with current kernel I need to 
+> > also forward-port the embryonic Request API as well. I'll look into this.
+> >
+> > Are you aware of any other dependencies?
+> 
+> I think V4L2 compound controls, but that should be already in
+> upstream. I'll try to look up relevant Chromium kernel patches for you
+> a bit later.
+> 
+> > The alternative for me is to back-port rkisp1 video capture driver to vendor
+> > provided 4.4 kernel so I can use the MPP shim driver. I hope to not get there.
+> >
+> > The easiest option, of course, is to just wait for the Request API and the new
+> > codec driver. I'm not sure I can afford to wait though.
+> 
+> I think you could also try to remove the use of config stores and make
+> the driver latch control values in QBUF(OUTPUT). You would also need
+> to adjust the plugin code accordingly.
+
+I'm trying to wrap me head around the config_store implementation in the 
+'chromeos-4.4' kernel branch (commit a36974eae81a). I think I get the general 
+idea. Still need to figure out the details.
+
+I'm not sure I get your QBUF(OUTPUT) suggestion, though. Does "latch" means 
+that the driver attaches the same controls to all buffers, essentially 
+behaving like a traditional V4L2 device? Something else?
+
+The limitation of being able to encode only one stream at a time is acceptable 
+for my application.
+
+Thanks,
+baruch
+
+-- 
+     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+=}------------------------------------------------ooO--U--Ooo------------{=
+   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
