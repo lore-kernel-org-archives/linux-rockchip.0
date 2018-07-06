@@ -1,12 +1,14 @@
 From: Anthony Brandon <anthony-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 1/2] clk: rockchip: rk3399: fix clk_i2sout parent selection
- bits
-Date: Fri,  6 Jul 2018 15:18:51 +0200
-Message-ID: <1530883132-17678-1-git-send-email-anthony@amarulasolutions.com>
+Subject: [PATCH 2/2] clk: rockchip: rk3399: fix returning correct value on
+ clk_i2sout get_rate
+Date: Fri,  6 Jul 2018 15:18:52 +0200
+Message-ID: <1530883132-17678-2-git-send-email-anthony@amarulasolutions.com>
+References: <1530883132-17678-1-git-send-email-anthony@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1530883132-17678-1-git-send-email-anthony-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,26 +24,32 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Alberto Panizzo <alberto-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 
-Register, shift and mask were wrong according to datasheet.
+clk_i2sout can be used as codec mclk.
+On simple audio card clk_i2sout is just enabled/disabled while the rate
+is decided on parent clock by i2s driver.
+Without setting CLK_GET_RATE_NOCACHE flag, the get_rate function on
+clk_i2sout would return incorrect values after clk_i2sout's parents
+update.
 
 Signed-off-by: Alberto Panizzo <alberto-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: Anthony Brandon <anthony-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-rk3399.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/rockchip/clk-rk3399.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index bca10d6..2a8634a 100644
+index 2a8634a..6073479 100644
 --- a/drivers/clk/rockchip/clk-rk3399.c
 +++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -631,7 +631,7 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+@@ -630,7 +630,8 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 
  	MUX(0, "clk_i2sout_src", mux_i2sch_p, CLK_SET_RATE_PARENT,
  			RK3399_CLKSEL_CON(31), 0, 2, MFLAGS),
- 	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "clk_i2sout", mux_i2sout_p, CLK_SET_RATE_PARENT,
--			RK3399_CLKSEL_CON(30), 8, 2, MFLAGS,
-+			RK3399_CLKSEL_CON(31), 2, 1, MFLAGS,
+-	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "clk_i2sout", mux_i2sout_p, CLK_SET_RATE_PARENT,
++	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "clk_i2sout", mux_i2sout_p,
++			CLK_SET_RATE_PARENT | CLK_GET_RATE_NOCACHE,
+ 			RK3399_CLKSEL_CON(31), 2, 1, MFLAGS,
  			RK3399_CLKGATE_CON(8), 12, GFLAGS),
  
- 	/* uart */
 -- 
 2.7.4
