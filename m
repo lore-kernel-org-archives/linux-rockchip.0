@@ -1,64 +1,54 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: add 96boards RK3399 Ficus
- board
-Date: Fri, 06 Jul 2018 15:49:41 +0200
-Message-ID: <5173203.kQ7HMvCHTa@phil>
-References: <20180705150818.29931-1-ezequiel@collabora.com>
- <20180705234124.GA32051@rob-hp-laptop>
- <cceccdfefbcf9a5dcc5d683e7c7d4a2d16949344.camel@collabora.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH v4 0/2] arm64: rockchip: support RK3399 Ficus board
+Date: Fri,  6 Jul 2018 12:08:16 -0300
+Message-ID: <20180706150818.5631-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cceccdfefbcf9a5dcc5d683e7c7d4a2d16949344.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 6. Juli 2018, 15:46:55 CEST schrieb Ezequiel Garcia:
-> On Thu, 2018-07-05 at 17:41 -0600, Rob Herring wrote:
-> > On Thu, Jul 05, 2018 at 12:08:18PM -0300, Ezequiel Garcia wrote:
-> > > The RK3399 Ficus board is an Enterprise Edition board
-> > > manufactured by Vamrs Ltd., based on the Rockchip RK3399 SoC.
-> > > 
-> > > The board exposes a bunch of nice peripherals, including
-> > > SATA, HDMI, MIPI CSI, Ethernet, WiFi, and PCIe.
-> > > 
-> > > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > 
-> [snip]
-> > > +
-> > > +&i2c0 {
-> > > +	clock-frequency = <400000>;
-> > > +	i2c-scl-rising-time-ns = <168>;
-> > > +	i2c-scl-falling-time-ns = <4>;
-> > > +	status = "okay";
-> > > +
-> > > +	vdd_cpu_b: syr827@40 {
-> > 
-> > regulator@40
-> > 
-> 
-> OK.
-> 
-> > > +		compatible = "silergy,syr827";
-> > > +		reg = <0x40>;
-> > > +		fcs,suspend-voltage-selector = <1>;
-> > 
-> > Strange to have a different vendor for this property...
-> > 
-> 
-> It's because this driver has also a Fairchild compatible
-> "fcs,fan53555".
+Fourth round for the RK3399 Ficus support.
 
-The Silergy regulators seem to be some sort of clone of
-the Fairchild fan53555.
+Changes from v3:
+ * Fixed a regulator node name, as noted by Rob.
+ * Fixed wrong alphabetical order in vendors prefix patch, also noted by Rob.
+
+Changes from v2:
+ * Dropped rk3399.dtsi changes and rebased on top of Randy's patch.
+ * Removed double empty line.
+ * Coalesced schematics comment
+
+Changes from v1:
+ * Dropoed USB support as it's not working.
+ * Added schematics.
+ * Splitted rk3399.dtsi from new ficus.dts file.
+ * Added new vendor.
+ * Cleaned regulators syntax and stlye.
+
+Series based on: 600b359d2b98 ("arm64: dts: rockchip: add some common pin-settings to rk3399").
+
+Ezequiel Garcia (2):
+  dt-bindings: Add vendor prefix for Vamrs Ltd.
+  arm64: dts: rockchip: add 96boards RK3399 Ficus board
+
+ .../devicetree/bindings/arm/rockchip.txt      |   5 +
+ .../devicetree/bindings/vendor-prefixes.txt   |   1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 514 ++++++++++++++++++
+ 4 files changed, 521 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+
+-- 
+2.18.0.rc2
