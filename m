@@ -1,32 +1,28 @@
-From: Huibin Hong <huibin.hong@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: corrected uart1 clock-names for rk3328
-Date: Fri,  6 Jul 2018 16:03:57 +0800
-Message-ID: <1530864237-14891-1-git-send-email-huibin.hong@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: corrected uart1 clock-names for rk3328
+Date: Fri, 06 Jul 2018 10:52:33 +0200
+Message-ID: <4047306.zuHpop0b3Q@phil>
+References: <1530864237-14891-1-git-send-email-huibin.hong@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1530864237-14891-1-git-send-email-huibin.hong@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, heiko@sntech.de
-Cc: mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, sugar.zhang@rock-chips.com, david.wu@rock-chips.com, finley.xiao@rock-chips.com, robin.murphy@arm.com, william.wu@rock-chips.com, rocky.hao@rock-chips.com, klaus.goger@theobroma-systems.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Huibin Hong <huibin.hong@rock-chips.com>
+To: Huibin Hong <huibin.hong@rock-chips.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, sugar.zhang@rock-chips.com, david.wu@rock-chips.com, finley.xiao@rock-chips.com, robin.murphy@arm.com, william.wu@rock-chips.com, rocky.hao@rock-chips.com, klaus.goger@theobroma-systems.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Corrected the uart clock-names or the uart driver might fail.
+Hi Huibin,
 
-Signed-off-by: Huibin Hong <huibin.hong@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Am Freitag, 6. Juli 2018, 10:03:57 CEST schrieb Huibin Hong:
+> Corrected the uart clock-names or the uart driver might fail.
+> 
+> Signed-off-by: Huibin Hong <huibin.hong@rock-chips.com>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 2f38ff2..3f5a294 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -297,7 +297,7 @@
- 		reg = <0x0 0xff120000 0x0 0x100>;
- 		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
--		clock-names = "sclk_uart", "pclk_uart";
-+		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac 4>, <&dmac 5>;
- 		dma-names = "tx", "rx";
- 		pinctrl-names = "default";
--- 
-1.9.1
+thanks for catching that issue. I've added a Fixes-tag and a stable-cc
+and applied the patch for 4.19
+
+
+Thanks
+Heiko
