@@ -1,69 +1,94 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] clk: rockchip: rk3399: fix returning correct value on
- clk_i2sout get_rate [with GET_RATE_NOCACHE]
-Date: Sun, 08 Jul 2018 11:32:19 +0200
-Message-ID: <4069085.blmd9nAIm0@phil>
-References: <1530883132-17678-1-git-send-email-anthony@amarulasolutions.com>
- <1530883132-17678-2-git-send-email-anthony@amarulasolutions.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 7/8] drm/bridge/synopsys: dsi: add dual-dsi support
+Date: Mon, 09 Jul 2018 15:45:52 +0200
+Message-ID: <3506508.xeQ9YkZVU1@phil>
+References: <20180618102806.15650-1-heiko@sntech.de>
+ <20180618102806.15650-8-heiko@sntech.de>
+ <20180703170704eucas1p219825811a840a2bbe077a3439c5d1558~96s9V2Ipb1884318843eucas1p2B@eucas1p2.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1530883132-17678-2-git-send-email-anthony-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Anthony Brandon <anthony-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alberto Panizzo <alberto-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180703170704eucas1p219825811a840a2bbe077a3439c5d1558~96s9V2Ipb1884318843eucas1p2B@eucas1p2.samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Freitag, 6. Juli 2018, 15:18:52 CEST schrieb Anthony Brandon:
-> From: Alberto Panizzo <alberto-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> 
-> clk_i2sout can be used as codec mclk.
-> On simple audio card clk_i2sout is just enabled/disabled while the rate
-> is decided on parent clock by i2s driver.
-> Without setting CLK_GET_RATE_NOCACHE flag, the get_rate function on
-> clk_i2sout would return incorrect values after clk_i2sout's parents
-> update.
-
-Can you elaborate a bit more on the issue you see please?
-Because as far as I remember the clock-framework should already
-update child-clocks when the rate of their parent changed.
-
-So even the cached rate should be correct after the parent changes,
-so I don't really understand in what case you would get a wrong rate.
-
-
-Heiko
-
-
-> Signed-off-by: Alberto Panizzo <alberto-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> Signed-off-by: Anthony Brandon <anthony-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> ---
->  drivers/clk/rockchip/clk-rk3399.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index 2a8634a..6073479 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -630,7 +630,8 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
->  
->  	MUX(0, "clk_i2sout_src", mux_i2sch_p, CLK_SET_RATE_PARENT,
->  			RK3399_CLKSEL_CON(31), 0, 2, MFLAGS),
-> -	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "clk_i2sout", mux_i2sout_p, CLK_SET_RATE_PARENT,
-> +	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "clk_i2sout", mux_i2sout_p,
-> +			CLK_SET_RATE_PARENT | CLK_GET_RATE_NOCACHE,
->  			RK3399_CLKSEL_CON(31), 2, 1, MFLAGS,
->  			RK3399_CLKGATE_CON(8), 12, GFLAGS),
->  
-> 
+QW0gRGllbnN0YWcsIDMuIEp1bGkgMjAxOCwgMTk6MDc6MDIgQ0VTVCBzY2hyaWViIEFuZHJ6ZWog
+SGFqZGE6Cj4gT24gMTguMDYuMjAxOCAxMjoyOCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBG
+cm9tOiBOaWNrZXkgWWFuZyA8bmlja2V5LnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPgo+ID4gQWxs
+b3cgdG8gYWxzbyBkcml2ZSBhIHNsYXZlIGR3LW1pcGktZHNpIGNvbnRyb2xsZXIgaW4gYSBkdWFs
+LWRzaQo+ID4gc2V0dXAuIFRoaXMgd2lsbCByZXF1aXJlIGFkZGl0aW9uYWwgaW1wbGVtZW50YXRp
+b24tc3BlY2lmaWMKPiA+IGNvZGUgdG8gbG9vayB1cCB0aGUgc2xhdmUgaW5zdGFuY2UgYW5kIGRv
+IHNwZWNpZmljIHNldHVwLgo+ID4gQWxzbyB3aWxsIHByb2JhYmx5IG5lZWQgY29kZSBpbiB0aGUg
+c3BlY2lmaWMgY3J0Y3MgYXMgZHVhbC1kc2kKPiA+IGRvZXMgbm90IGVxdWFsIHR3byBzZXBhcmF0
+ZSBkc2kgb3V0cHV0cy4KPiA+Cj4gPiBUbyBhY3RpdmF0ZSwgdGhlIGltcGxlbWVudGF0aW9uLXNw
+ZWNpZmljIGNvZGUgc2hvdWxkIHNldCB0aGUgc2xhdmUKPiA+IHVzaW5nIGR3X21pcGlfZHNpX3Nl
+dF9zbGF2ZSgpIGJlZm9yZSBjYWxsaW5nIF9fZHdfbWlwaV9kc2lfYmluZCgpLgo+ID4KPiA+IHYy
+Ogo+ID4gLSBleHBlY3QgcmVhbCBpbnRlcmZhY2UgbnVtYmVyIG9mIGxhbmVzCj4gPiAtIGtlZXAg
+bGlua3MgdG8gYm90aCBtYXN0ZXIgYW5kIHNsYXZlCj4gCj4gSSBkaWQgbm90IHNlZSB0aGUgd2hv
+bGUgZHJpdmVyL3BpcGVsaW5lLCBidXQgaXQgc2VlbXMgdGhlIHBvaW50IG9mIHRoaXMKPiBwYXRj
+aCBpcyB0byBwZXJmb3JtIHRoZSBzYW1lIHdvcmsgb24gdGhlIHNsYXZlIGFzIG9uIHRoZSBtYXN0
+ZXIgaW4gY2FzZQo+IG9mIGR1YWwgbW9kZS4gSSB0aGluayBEU0kgc2hvdWxkIG5vdCBiZSBhIHBs
+YWNlIGZvciBpdCwKPiBEU0kgbWFzdGVycyB1c3VhbGx5IGFyZSBzdHVwaWQgZGV2aWNlcyBmcm9t
+IGRpc3BsYXkgc3RhY2sgUG9WLCB0aGV5IGp1c3QKPiBjb252ZXJ0IHZpZGVvIHN0cmVhbXMsIGlu
+IGR1YWwgbW9kZSBhbHNvLiBJbiB0aGlzIGNhc2UgdGhlIHBhbmVsIGFuZC9vcgo+IGNydGMgYWRk
+cyBjb21wbGljYXRpb25zIHNvIHRoZXkgc2hvdWxkIGJlIHJlc3BvbnNpYmxlIGZvciBoYW5kbGlu
+ZyBpdC4KPiBQYW5lbCBzaG91bGQ6Cj4gLSByZWdpc3RlciBpdHMgYm90aCBtaXBpIGludGVyZmFj
+ZXMgd2l0aCBwcm9wZXIgbW9kZV9mbGFncyAobWF5YmUgc29tZQo+IGR1YWwtbW9kZSBpbmRpY2F0
+aW9uIGZsYWdzIHNob3VsZCBiZSBhZGRlZCBpZiBuZWNlc3NhcnkpLAo+IC0gcmVnaXN0ZXIgZHJt
+X3BhbmVsIGZvciBib3RoIGludGVyZmFjZXMgKGl0IHJlcXVpcmVzIGNoYW5nZSBpbgo+IGRybV9w
+YW5lbCBhcGkpLCBhbmQgcHJvdmlkZSB2aWRlbyBtb2RlIHRpbWluZ3MuCj4gLSBpbiBjYXNlIGl0
+IG5lZWRzIHBlcmZvcm0gdHJhbnNmZXJzIHBlcmZvcm0gaXQgdG8gbWFzdGVyL3NsYXZlL2JvdGgK
+PiBpbnRlcmZhY2VzIGFjY29yZGluZyB0byBpdHMgbmVlZHMsCj4gCj4gSSBhbSBub3Qgc3VyZSBh
+Ym91dCBEUk0gcGlwZWxpbmUsIGl0IHNob3VsZCBtb2RlbCwgbWF5YmUgaXQgY291bGQgYmUKPiBk
+b25lIHRoaXMgd2F5Ogo+IENSVEMgLS0+RU5DT0RFUjAoZHNpIG1hc3RlcikgLS0+IENPTk5FQ1RP
+UjAgKHBhbmVsIGludGVyZmFjZSAwKQo+ICAgICAgIHwtLS0+IEVOQ09ERVIxKGRzaSBzbGF2ZSkg
+LS0+IENPTk5FQ1RPUjEgKHBhbmVsIGludGVyZmFjZSAxKQo+IAo+IEJ1dCBJIGFtIG5vdCBzdXJl
+IGlmIGl0IGlzIG5vdCByZXNlcnZlZCBvbmx5IGZvciBtaXJyb3JpbmcuCj4gCj4gRm9yIG1lIG1v
+cmUgdGVtcHRpbmcgc29sdXRpb24gaXMgdG8gY3JlYXRlIG1ldGEtZW5jb2Rlci1jb25uZWN0b3Ig
+bGV0J3MKPiBjYWxsIGl0IGR1YWwtZW5jb2RlciAobWF5YmUgaXQgY291bGQgYmUgZXZlbiBnZW5l
+cmljKSwgd2hpY2ggaXMgdmlzaWJsZQo+IHRvIHVzZXJzcGFjZSBhcyBzaW5nbGUgcGlwZWxpbmUg
+YW5kIGVuY2Fwc3VsYXRlcyBib3RoIGRzaSBicmlkZ2VzL3BhbmVsCj4gaW5wdXRzLiBTbyBpdHMg
+ZXZlcnkgY2FsbGJhY2sgd2lsbCBiZSB0cmFuc2xhdGVkIHVzdWFsbHkgdG8gc2VxdWVuY2Ugb2YK
+PiBjYWxsYmFja3MgdG8gMXN0IGFuZCAybmQgZHNpLCBvciBpbiBjYXNlIG9mIGdldF9tb2RlcyBp
+dCBzaG91bGQgcmV0dXJuCj4gbW9kZSB3aGljaCByZXByZXNlbnQgc3VtIG9mIG1vZGVzIGluIGJv
+dGggcGFuZWxzLgo+IE1heWJlIGl0IGxvb2tzIG1vcmUgY29tcGxpY2F0ZWQsIGJ1dCBpdCBjYW4g
+YmUgbW9yZSB1bml2ZXJzYWwgLSB5b3UgY2FuCj4gdXNlIGl0IHdpdGggZGlmZmVyZW50IGJyaWRn
+ZXMvcGFuZWxzIGV2ZW4gdHdvIHNpbmdsZS1wYW5lbHMgaWYgbmVjZXNzYXJ5Lgo+IAo+IE9mIGNv
+dXJzZSBJIGRvIG5vdCBzZWUgdGhlIHdob2xlIHBpY3R1cmUsIG9yIEkgY2FuIGJlIGp1c3Qgd3Jv
+bmcsIG9yCj4ganVzdCBmcmVha2luZyBwdXJpc3QgOikuIElmIHRoZXJlIGFyZSBhcmd1bWVudHMg
+YWdhaW5zdCBteSB2aXNpb24gcGxlYXNlCj4gcHJvdmlkZSB0aGVtLgo+IEkgYW0gYWxzbyBub3Qg
+c3Ryb25nbHkgYWdhaW5zdCB5b3VyIHNvbHV0aW9uLCBJIGp1c3Qgd2FudCB0byBzaG93Cj4gYWx0
+ZXJuYXRpdmVzLCB3aGljaCBjb3VsZCBiZSBiZXR0ZXIvbW9yZSBnZW5lcmljLgoKSSBjYW5ub3Qg
+cmVhbGx5IGNsYWltIHRvIGtub3cgdGhlIGNvcnJlY3Qgd2F5IHRvIGdvIGZvcndhcmQsIGFzIHRo
+ZXNlCmRybS1pbnRlcm5hbHMgYXJlIHN0aWxsIHZlcnkgbXVjaCB1bmtub3duIGxhbmQgZm9yIG1l
+LCBidXQgY3VycmVudAp0aG91Z2h0IHBvaW50cyBJIGhhZCBvbiB0aGlzOgoKLSBzdHJhd21hbiBh
+cmd1bWVudCA7LSkgOiB0aGlzIGlzIHRoZSBzYW1lIHdheSB0ZWdyYSBoYW5kbGVzIGR1YWwtZHNp
+CiAgaW4gaXRzIGdhbmdlZCBtb2RlIC4uLiBhbHNvIHdpdGggcmVnYXJkcyB0byBwYW5lbCBoYW5k
+bGluZwogIFdpdGggVGhpZXJyeSBoZWxtaW5nIGJvdGggcGFuZWxzIGFuZCB0aGUgdGVncmEgZHVh
+bC1kc2kgY2hhbmdlCgotIHdoaWxlIHRoZSBwYW5lbCBtYXkgZXhwb3NlIHR3byBEU0kgZGF0YSBp
+bnRlcmZhY2VzLCB0aGVyZSBpcyBzdGlsbAogIG9ubHkgb25lIHBvd2VyLXNlcXVlbmNlIGFuZCBh
+bHNvIG9ubHkgb25lIGluaXQtY29tbWFuZCBzZXF1ZW5jZS4KICBTbyBJIGRvbid0IHRoaW5rIHlv
+dSBjYW4gcmVhbGx5IGhhbmRsZSBhIGR1YWwtZHNpIHBhbmVscyBhcyB0d28gZnVsbHkKICBzZXBh
+cmF0ZSBwYW5lbHMsIGNyZWF0aW5nIGluc3RlYWQgdGhlIG5lZWQgZm9yIGJvdGggcGFuZWwtaW5z
+dGFuY2VzCiAgdG8gd29yayB0b2dldGhlcgoKLSBSaWdodCBub3cgd2UgaGF2ZSB0d28gZGF0YS1w
+b2ludHMgb24gZHVhbC1zb21ldGhpbmcgdm9vZG9vCiAgKHRlZ3JhK3JvY2tjaGlwKQogIFNvIGZv
+ciBtZSBpdCBzb3VuZHMgaGFyZCB0byBkZXNpZ24gc29tZXRoaW5nIGdlbmVyaWMgdGhhdCBzdXJ2
+aXZlcwogIHRoZSBmaXJzdCBub24tZHNpIHVzZS1jYXNlLgoKICBUaGUgZGV2aWNldHJlZSBiaW5k
+aW5nIChzZWUgY292ZXItbGV0dGVyKSBzaG91bGQgYmUgcHJldHR5IHN0YWJsZSwgYXMKICBhIHBh
+bmVsIGxpa2UgdGhpcyB3aWxsIG5lZWQgdG8gYmUgYm91bmQgdG8gb25lIG9mIHRoZSB0d28gZHNp
+IGNvbnRyb2xsZXJzCiAgc28gbm90aGluZyBoaW5kZXJzIGNvZGUgY2hhbmdlcyBsYXRlciBvbiBp
+ZiB0aGUgbmVlZCBmb3IgYSBtb3JlIGdlbmVyaWMKICBzb2x1dGlvbiBjb21lcyB1cC4KCgpIZWlr
+bwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
