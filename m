@@ -1,49 +1,38 @@
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH] arm64: dts: rockchip: remove deprecated Type-C PHY properties on rk3399
-Date: Mon,  9 Jul 2018 22:57:54 +0200
-Message-ID: <20180709205754.29132-1-enric.balletbo@collabora.com>
+Subject: [PATCH] usb: dwc3: rockchip: Fix PHY documentation links.
+Date: Tue, 10 Jul 2018 14:58:48 +0200
+Message-ID: <20180710125848.15915-1-enric.balletbo@collabora.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: kernel@collabora.com, Nickey Yang <nickey.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, Yakir Yang <kuankuan.y@gmail.com>, Mark Yao <markyao0591@gmail.com>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Jacob Chen <jacob-chen@iotwrt.com>, Brian Norris <briannorris@chromium.org>, Lin Huang <hl@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Catalin Marinas <catalin.marinas@arm.com>, Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit 0fbc47d9e426 ("phy: rockchip-typec: deprecate some DT properties
-for various register fields.") deprecates some Rockchip Type-C
-properties. As these are now not needed, remove from the device tree
-file.
+Commit 34962fb8070c ("docs: Fix more broken references") replaced the
+broken reference to rockchip,dwc3-usb-phy.txt binding for the Qualcomm
+DWC3 binding (qcom-dwc3-usb-phy.txt). That's wrong, so replace that
+reference for the correct ones.
 
+Fixes: 34962fb8070c ("docs: Fix more broken references")
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 --------
- 1 file changed, 8 deletions(-)
+ Documentation/devicetree/bindings/usb/rockchip,dwc3.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index e0040b648f43..180dd9d2cc23 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1446,10 +1446,6 @@
- 			 <&cru SRST_P_UPHY0_TCPHY>;
- 		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
- 		rockchip,grf = <&grf>;
--		rockchip,typec-conn-dir = <0xe580 0 16>;
--		rockchip,usb3tousb2-en = <0xe580 3 19>;
--		rockchip,external-psm = <0xe588 14 30>;
--		rockchip,pipe-status = <0xe5c0 0 0>;
- 		status = "disabled";
+diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+index 252a05c5d976..c8c4b00ecb94 100644
+--- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
++++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+@@ -16,7 +16,8 @@ A child node must exist to represent the core DWC3 IP block. The name of
+ the node is not important. The content of the node is defined in dwc3.txt.
  
- 		tcphy0_dp: dp-port {
-@@ -1475,10 +1471,6 @@
- 			 <&cru SRST_P_UPHY1_TCPHY>;
- 		reset-names = "uphy", "uphy-pipe", "uphy-tcphy";
- 		rockchip,grf = <&grf>;
--		rockchip,typec-conn-dir = <0xe58c 0 16>;
--		rockchip,usb3tousb2-en = <0xe58c 3 19>;
--		rockchip,external-psm = <0xe594 14 30>;
--		rockchip,pipe-status = <0xe5c0 16 16>;
- 		status = "disabled";
+ Phy documentation is provided in the following places:
+-Documentation/devicetree/bindings/phy/qcom-dwc3-usb-phy.txt
++Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt - USB2.0 PHY
++Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt     - Type-C PHY
  
- 		tcphy1_dp: dp-port {
+ Example device nodes:
+ 
 -- 
 2.18.0
