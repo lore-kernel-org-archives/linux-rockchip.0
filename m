@@ -1,25 +1,91 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] usb: dwc3: rockchip: Fix PHY documentation links.
-Date: Tue, 10 Jul 2018 15:03:14 +0200
-Message-ID: <1651148.X0ZVfyzq5n@phil>
-References: <20180710125848.15915-1-enric.balletbo@collabora.com>
+Subject: [PATCH v3 RESEND 1/2] dt-bindings: add binding for Rockchip hdmi phy
+ using an Innosilicon IP
+Date: Tue, 10 Jul 2018 15:49:48 +0200
+Message-ID: <20180710134949.25203-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180710125848.15915-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, kernel@collabora.com, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: kishon@ti.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 10. Juli 2018, 14:58:48 CEST schrieb Enric Balletbo i Serra:
-> Commit 34962fb8070c ("docs: Fix more broken references") replaced the
-> broken reference to rockchip,dwc3-usb-phy.txt binding for the Qualcomm
-> DWC3 binding (qcom-dwc3-usb-phy.txt). That's wrong, so replace that
-> reference for the correct ones.
-> 
-> Fixes: 34962fb8070c ("docs: Fix more broken references")
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+From: Zheng Yang <zhengyang@rock-chips.com>
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+The phy is used so far in two Rockchip socs the rk3228 and the rk3328.
+
+Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+This is an unmodified resend of the hdmiphy driver sent
+originally on 2018-05-14.
+
+changes in v3:
+- describe both refclks supplied to the phy block
+
+ .../bindings/phy/phy-rockchip-inno-hdmi.txt   | 43 +++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
+
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
+new file mode 100644
+index 000000000000..710cccd5ee56
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-hdmi.txt
+@@ -0,0 +1,43 @@
++ROCKCHIP HDMI PHY WITH INNO IP BLOCK
++
++Required properties:
++ - compatible : should be one of the listed compatibles:
++	* "rockchip,rk3228-hdmi-phy",
++	* "rockchip,rk3328-hdmi-phy";
++ - reg : Address and length of the hdmi phy control register set
++ - clocks : phandle + clock specifier for the phy clocks
++ - clock-names : string, clock name, must contain "sysclk" for system
++	  control and register configuration, "refoclk" for crystal-
++	  oscillator reference PLL clock input and "refpclk" for pclk-
++	  based refeference PLL clock input.
++ - #clock-cells: should be 0.
++ - clock-output-names : shall be the name for the output clock.
++ - interrupts : phandle + interrupt specified for the hdmiphy interrupt
++ - #phy-cells : must be 0. See ./phy-bindings.txt for details.
++
++Optional properties for rk3328-hdmi-phy:
++ - nvmem-cells = phandle + nvmem specifier for the cpu-version efuse
++ - nvmem-cell-names : "cpu-version" to read the chip version, required
++	  for adjustment to some frequency settings
++
++Example:
++	hdmi_phy: hdmi-phy@12030000 {
++		compatible = "rockchip,rk3228-hdmi-phy";
++		reg = <0x12030000 0x10000>;
++		#phy-cells = <0>;
++		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>, <&cru DCLK_HDMIPHY>;
++		clock-names = "sysclk", "refoclk", "refpclk";
++		#clock-cells = <0>;
++		clock-output-names = "hdmi_phy";
++		status = "disabled";
++	};
++
++Then the PHY can be used in other nodes such as:
++
++	hdmi: hdmi@200a0000 {
++		compatible = "rockchip,rk3228-dw-hdmi";
++		...
++		phys = <&hdmi_phy>;
++		phy-names = "hdmi";
++		...
++	};
+-- 
+2.17.0
