@@ -1,192 +1,52 @@
-From: "Dr. Philipp Tomsich" <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [PATCH 3/3] rockchip: fix incorrect detection of ram
- size
-Date: Tue, 10 Jul 2018 20:55:18 +0200
-Message-ID: <8CE65D7E-99C3-49D6-81DE-FE0E61123399@theobroma-systems.com>
-References: <20180506142513.19911-1-hanetzer@startmail.com>
- <20180506142513.19911-4-hanetzer@startmail.com>
- <6a0116f8-fd8a-dd53-2759-0014c7ab2700@rock-chips.com>
- <20180507023413.mil4wj7xtjy6gnuw@proprietary-killer>
- <791299C0-EEC0-4DB1-97C4-A8DAD3B1A481@theobroma-systems.com>
- <20180508005215.s3uivl43jfaryv7j@proprietary-killer>
- <45A258A9-9825-41F4-965F-A821D52D5E4F@theobroma-systems.com>
- <CAPnjgZ2vLyOaJNOOY1w8rXV4nMxuP+e7cUyajKJ=RAMrJAd+Og@mail.gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAPnjgZ2vLyOaJNOOY1w8rXV4nMxuP+e7cUyajKJ=RAMrJAd+Og@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>
-Cc: Vagrant Cascadian <vagrant@debian.org>, U-Boot Mailing List <u-boot@lists.denx.de>, "Marty E. Plummer" <hanetzer@startmail.com>, linux-rockchip@lists.infradead.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip dts32 fix for 4.18
+Date: Wed, 11 Jul 2018 16:18:55 +0200
+Message-ID: <1776596.Q4iCTXTKyP@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-PiBPbiAxMCBKdWwgMjAxOCwgYXQgMTY6NDEsIFNpbW9uIEdsYXNzIDxzamdAY2hyb21pdW0ub3Jn
-PiB3cm90ZToKPiAKPiBIaSwKPiAKPiBPbiA4IE1heSAyMDE4IGF0IDA0OjIxLCBEci4gUGhpbGlw
-cCBUb21zaWNoCj4gPHBoaWxpcHAudG9tc2ljaEB0aGVvYnJvbWEtc3lzdGVtcy5jb20gPG1haWx0
-bzpwaGlsaXBwLnRvbXNpY2hAdGhlb2Jyb21hLXN5c3RlbXMuY29tPj4gd3JvdGU6Cj4+IE1hcnR5
-LAo+PiAKPj4+IE9uIDggTWF5IDIwMTgsIGF0IDAyOjUyLCBNYXJ0eSBFLiBQbHVtbWVyIDxoYW5l
-dHplckBzdGFydG1haWwuY29tPiB3cm90ZToKPj4+IAo+Pj4gT24gTW9uLCBNYXkgMDcsIDIwMTgg
-YXQgMTE6MTY6MjhBTSArMDIwMCwgRHIuIFBoaWxpcHAgVG9tc2ljaCB3cm90ZToKPj4+PiAKPj4+
-Pj4gT24gNyBNYXkgMjAxOCwgYXQgMDQ6MzQsIE1hcnR5IEUuIFBsdW1tZXIgPGhhbmV0emVyQHN0
-YXJ0bWFpbC5jb20+IHdyb3RlOgo+Pj4+PiAKPj4+Pj4gT24gTW9uLCBNYXkgMDcsIDIwMTggYXQg
-MTA6MjA6NTVBTSArMDgwMCwgS2V2ZXIgWWFuZyB3cm90ZToKPj4+Pj4+IEhpIE1hcnR5LAo+Pj4+
-Pj4gCj4+Pj4+PiAKPj4+Pj4+IE9uIDA1LzA2LzIwMTggMTA6MjUgUE0sIE1hcnR5IEUuIFBsdW1t
-ZXIgd3JvdGU6Cj4+Pj4+Pj4gVGFrZW4gZnJvbSBjb3JlYm9vdCdzIHNyYy9zb2Mvcm9ja2NoaXAv
-cmszMjg4L3NkcmFtLmMKPj4+Pj4+PiAKPj4+Pj4+PiBXaXRob3V0IHRoaXMgY2hhbmdlLCBteSB1
-LWJvb3QgYnVpbGQgZm9yIHRoZSBhc3VzIGMyMDEgY2hyb21lYm9vayAoNEdpQikKPj4+Pj4+PiBp
-cyBpbmNvcnJlY3RseSBkZXRlY3RlZCBhcyAwIEJ5dGVzIG9mIHJhbS4KPj4+Pj4+IAo+Pj4+Pj4g
-SSBrbm93IHRoZSByb290IGNhdXNlIGZvciB0aGlzIGlzc3VlLCBhbmQgSSBoYXZlIGEgbG9jYWwg
-cGF0Y2ggZm9yIGl0Lgo+Pj4+Pj4gVGhlIHJrMzI4OCBpcyAzMmJpdCwgYW5kIDRHQiBzaXplIGlz
-IGp1c3Qgb3V0IG9mIHJhbmdlLCBzbyB3ZSBuZWVkIHRvIGJlZm9yZQo+Pj4+Pj4gdGhlIG1heCBz
-aXplIGJlZm9yZSByZXR1cm4gd2l0aCAnPDwyMCcuIFNvcnJ5IGZvciBmb3Jnb3QgdG8gc2VuZCBp
-dCBvdXQuCj4+Pj4+PiAKPj4+Pj4+PiAKPj4+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBNYXJ0eSBFLiBQ
-bHVtbWVyIDxoYW5ldHplckBzdGFydG1haWwuY29tPgo+Pj4+Pj4+IC0tLQo+Pj4+Pj4+IGFyY2gv
-YXJtL21hY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmMgfCA2MiArKysrKysrKysrKysrKysrLS0t
-LS0tLS0tLS0KPj4+Pj4+PiAxIGZpbGUgY2hhbmdlZCwgMzcgaW5zZXJ0aW9ucygrKSwgMjUgZGVs
-ZXRpb25zKC0pCj4+Pj4+Pj4gCj4+Pj4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9j
-a2NoaXAvc2RyYW1fY29tbW9uLmMgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1v
-bi5jCj4+Pj4+Pj4gaW5kZXggNzZkYmRjODcxNS4uYTljOWY5NzBhNCAxMDA2NDQKPj4+Pj4+PiAt
-LS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5jCj4+Pj4+Pj4gKysrIGIv
-YXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+Pj4+Pj4+IEBAIC0xMCw2ICsx
-MCw4IEBACj4+Pj4+Pj4gI2luY2x1ZGUgPGFzbS9pby5oPgo+Pj4+Pj4+ICNpbmNsdWRlIDxhc20v
-YXJjaC9zZHJhbV9jb21tb24uaD4KPj4+Pj4+PiAjaW5jbHVkZSA8ZG0vdWNsYXNzLWludGVybmFs
-Lmg+Cj4+Pj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPj4+Pj4+PiArI2luY2x1ZGUg
-PGxpbnV4L3NpemVzLmg+Cj4+Pj4+Pj4gCj4+Pj4+Pj4gREVDTEFSRV9HTE9CQUxfREFUQV9QVFI7
-Cj4+Pj4+Pj4gc2l6ZV90IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19hZGRyX3QgcmVnKQo+Pj4+
-Pj4+IEBAIC0xOSwzNCArMjEsNDQgQEAgc2l6ZV90IHJvY2tjaGlwX3NkcmFtX3NpemUocGh5c19h
-ZGRyX3QgcmVnKQo+Pj4+Pj4+ICBzaXplX3Qgc2l6ZV9tYiA9IDA7Cj4+Pj4+Pj4gIHUzMiBjaDsK
-Pj4+Pj4+PiAKPj4+Pj4+PiAtIHUzMiBzeXNfcmVnID0gcmVhZGwocmVnKTsKPj4+Pj4+PiAtIHUz
-MiBjaF9udW0gPSAxICsgKChzeXNfcmVnID4+IFNZU19SRUdfTlVNX0NIX1NISUZUKQo+Pj4+Pj4+
-IC0gICAgICAgICAgICAgICAgJiBTWVNfUkVHX05VTV9DSF9NQVNLKTsKPj4+Pj4+PiArIGlmICgh
-c2l6ZV9tYikgewo+Pj4+Pj4gCj4+Pj4+PiBJIGRvbid0IHVuZGVyc3RhbmQgdGhpcyBhbmQgZm9s
-bG93IHVwIGNoYW5nZXMsIHdlIGRvbid0IHJlYWxseSBuZWVkIGl0LAo+Pj4+Pj4gaXNuJ3QgaXQ/
-Cj4+Pj4+PiBJIHRoaW5rIGRvbid0IG5lZWQgdGhlIGNoYW5nZXMgYmVmb3JlIGhlcmUuCj4+Pj4+
-IFllYWgsIHRoYXQgd2FzIGp1c3QgYW5vdGhlciBsZXZlbCBvZiBpbmRlbnRhdGlvbiBmb3IgdGhl
-IGlmICghc2l6ZV9tYikKPj4+Pj4gZ3VhcmQsIGJ1dCBJJ3ZlIHJld29ya2VkIHRoZSBwYXRjaCB0
-byBub3QgZG8gdGhhdCBhcyBpdCB3YXMgcG9pbnRlZCBvdXQKPj4+Pj4gdGhhdCBzaW5jZSBzaXpl
-X21iIGlzIGluaXRpYWxpemVkIHRvIDAgcHJpb3IuCj4+Pj4+Pj4gKyAgICAgICAgIC8qCj4+Pj4+
-Pj4gKyAgICAgICAgICAqIHdlIHVzZSB0aGUgMHgwMDAwMDAwMH4weGZlZmZmZmZmIHNwYWNlCj4+
-Pj4+Pj4gKyAgICAgICAgICAqIHNpbmNlIDB4ZmYwMDAwMDB+MHhmZmZmZmZmZiBpcyBzb2MgcmVn
-aXN0ZXIgc3BhY2UKPj4+Pj4+PiArICAgICAgICAgICogc28gd2UgcmVzZXJ2ZSBpdAo+Pj4+Pj4+
-ICsgICAgICAgICAgKi8KPj4+Pj4+PiArICAgICAgICAgc2l6ZV9tYiA9IG1pbihzaXplX21iLCAw
-eGZmMDAwMDAwL1NaXzFNKTsKPj4+Pj4+IAo+Pj4+Pj4gVGhpcyBpcyB3aGF0IHdlIHJlYWxseSBu
-ZWVkLCBhcyBLbGF1cyBwb2ludCBvdXQsIHdlIG5lZWQgdG8gdXNlCj4+Pj4+PiBTRFJBTV9NQVhf
-U0laRQo+Pj4+Pj4gaW5zdGVhZCBvZiBoYXJkIGNvZGUuCj4+Pj4+IFllYWgsIEkndmUgZ290IGEg
-cmV3b3JrIG9uIHRoYXQgd2hpY2ggdXNlcyBTRFJBTV9NQVhfU0laRSBhcyBpbnN0cnVjdGVkLAo+
-Pj4+PiBidWlsZCBhbmQgYm9vdCB0ZXN0ZWQgb24gbXkgaGFyZHdhcmUuCj4+Pj4gCj4+Pj4gSW4g
-dGhhdCBjYXNlIHlvdSBqdXN0IG1hc2tlZCB0aGUgcHJvYmxlbSBidXQgZGlkbj8/P3Qgc29sdmUg
-aXQ6IGFzc3VtaW5nIHNpemVfbWIKPj4+PiBpcyBzaXplX3QgKEk/Pz9sbCBhc3N1bWUgdGhpcyBp
-cyA2NGJpdCwgYnV0IGRpZCBub3QgY2hlY2spLCB0aGVuIHlvdXIgNEdCIGlzIDB4MV8wMDAwXzAw
-MDAgKQo+Pj4+IHdoaWNoIG92ZXJmbG93cyB0byAweDAgd2hlbiBjb252ZXJ0ZWQgdG8gYSB1MzIu
-Cj4+Pj4gCj4+Pj4gSW4gb3RoZXIgd29yZHM6IHdlIG5lZWQgdG8gZmlndXJlIG91dCB3aGVyZSB0
-aGUgdHJ1bmNhdGlvbiBvY2N1cnMgKGltYWdlIHdoYXQKPj4+PiBoYXBwZW5zIGlmIGEgbmV3IDMy
-Yml0IHByb2Nlc3NvciB3aXRoIExQQUUgY29tZXMgb3V0Pz8/KS4KPj4+PiAKPj4+IEEgdmVyeSB2
-YWxpZCBwb2ludC4gV2l0aCB0aGUgZm9sbG93aW5nIHBhdGNoIHRvIHNkcmFtX2NvbW1vbi5jIGFu
-ZAo+Pj4gc2RyYW1fcmszMjg4LmMgYXBwbGllZCBJIGdldCB0aGUgZGVidWcgb3V0cHV0IHRoYXQg
-Zm9sbG93cyBpdDoKPj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NkcmFt
-X2NvbW1vbi5jIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYwo+Pj4gaW5k
-ZXggMjMyYTdmYTY1NS4uMGZlNjliZjU1OCAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvYXJtL21hY2gt
-cm9ja2NoaXAvc2RyYW1fY29tbW9uLmMKPj4+ICsrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAv
-c2RyYW1fY29tbW9uLmMKPj4+IEBAIC00LDYgKzQsNyBAQAo+Pj4gKiBTUERYLUxpY2Vuc2UtSWRl
-bnRpZmllcjogICAgIEdQTC0yLjArCj4+PiAqLwo+Pj4gCj4+PiArI2RlZmluZSBERUJVRyAxCj4+
-PiAjaW5jbHVkZSA8Y29tbW9uLmg+Cj4+PiAjaW5jbHVkZSA8ZG0uaD4KPj4+ICNpbmNsdWRlIDxy
-YW0uaD4KPj4+IEBAIC0zOSwxNiArNDAsMTkgQEAgc2l6ZV90IHJvY2tjaGlwX3NkcmFtX3NpemUo
-cGh5c19hZGRyX3QgcmVnKQo+Pj4gICAgICAgICAgICAgICAgICAgICAgU1lTX1JFR19ST1dfM180
-X01BU0s7Cj4+PiAKPj4+ICAgICAgICAgICAgICBjaGlwc2l6ZV9tYiA9ICgxIDw8IChjczBfcm93
-ICsgY29sICsgYmsgKyBidyAtIDIwKSk7Cj4+PiArICAgICAgICAgICAgIGRlYnVnKCIlczogJWQ6
-IGNoaXBzaXplX21iICV4XG4iLCBfX2Z1bmNfXywgX19MSU5FX18sIGNoaXBzaXplX21iKTsKPj4+
-IAo+Pj4gICAgICAgICAgICAgIGlmIChyYW5rID4gMSkKPj4+ICAgICAgICAgICAgICAgICAgICAg
-IGNoaXBzaXplX21iICs9IGNoaXBzaXplX21iID4+IChjczBfcm93IC0gY3MxX3Jvdyk7Cj4+PiAg
-ICAgICAgICAgICAgaWYgKHJvd18zXzQpCj4+PiAgICAgICAgICAgICAgICAgICAgICBjaGlwc2l6
-ZV9tYiA9IGNoaXBzaXplX21iICogMyAvIDQ7Cj4+PiAgICAgICAgICAgICAgc2l6ZV9tYiArPSBj
-aGlwc2l6ZV9tYjsKPj4+ICsgICAgICAgICAgICAgZGVidWcoIiVzOiAlZDogc2l6ZV9tYiAleFxu
-IiwgX19mdW5jX18sIF9fTElORV9fLCBzaXplX21iKTsKPj4+ICAgICAgICAgICAgICBkZWJ1Zygi
-cmFuayAlZCBjb2wgJWQgYmsgJWQgY3MwX3JvdyAlZCBidyAlZCByb3dfM180ICVkXG4iLAo+Pj4g
-ICAgICAgICAgICAgICAgICAgIHJhbmssIGNvbCwgYmssIGNzMF9yb3csIGJ3LCByb3dfM180KTsK
-Pj4+ICAgICAgfQo+Pj4gCj4+PiArICAgICBkZWJ1ZygiJXM6ICVkOiBzaXplX21iICV4XG4iLCBf
-X2Z1bmNfXywgX19MSU5FX18sIHNpemVfbWIpOwo+Pj4gICAgICBzaXplX21iID0gbWluKHNpemVf
-bWIsIFNEUkFNX01BWF9TSVpFL1NaXzFNKTsKPj4+IAo+Pj4gICAgICByZXR1cm4gKHNpemVfdClz
-aXplX21iIDw8IDIwOwo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFt
-X3JrMzI4OC5jIGIvZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMjg4LmMKPj4+IGluZGV4
-IGQ5OWJmMTI0NzYuLjk3MzhlYjA4OGYgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL3JhbS9yb2Nr
-Y2hpcC9zZHJhbV9yazMyODguYwo+Pj4gKysrIGIvZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1f
-cmszMjg4LmMKPj4+IEBAIC03LDYgKzcsNyBAQAo+Pj4gKiBBZGFwdGVkIGZyb20gY29yZWJvb3Qu
-Cj4+PiAqLwo+Pj4gCj4+PiArI2RlZmluZSBERUJVRyAxCj4+PiAjaW5jbHVkZSA8Y29tbW9uLmg+
-Cj4+PiAjaW5jbHVkZSA8Y2xrLmg+Cj4+PiAjaW5jbHVkZSA8ZG0uaD4KPj4+IAo+Pj4gLS0tCj4+
-PiBVLUJvb3QgU1BMIDIwMTguMDUtcmMzLTAyMzcwLWczMDkzODRlODRiLWRpcnR5IChNYXkgMDcg
-MjAxOCAtIDE5OjQyOjE1IC0wNTAwKQo+Pj4gVHJ5aW5nIHRvIGJvb3QgZnJvbSBTUEkKPj4+IAo+
-Pj4gCj4+PiBVLUJvb3QgMjAxOC4wNS1yYzMtMDIzNzAtZzMwOTM4NGU4NGItZGlydHkgKE1heSAw
-NyAyMDE4IC0gMTk6NDI6MTUgLTA1MDApCj4+PiAKPj4+IE1vZGVsOiBHb29nbGUgU3BlZWR5Cj4+
-PiBEUkFNOiAgcm9ja2NoaXBfc2RyYW1fc2l6ZSBmZjczMDA5YyAzYzUwZGM1MAo+Pj4gcm9ja2No
-aXBfc2RyYW1fc2l6ZTogNDI6IGNoaXBzaXplX21iIDQwMAo+Pj4gcm9ja2NoaXBfc2RyYW1fc2l6
-ZTogNDk6IHNpemVfbWIgODAwCj4+PiByYW5rIDIgY29sIDExIGJrIDMgY3MwX3JvdyAxNCBidyAy
-IHJvd18zXzQgMAo+Pj4gcm9ja2NoaXBfc2RyYW1fc2l6ZTogNDI6IGNoaXBzaXplX21iIDQwMAo+
-Pj4gcm9ja2NoaXBfc2RyYW1fc2l6ZTogNDk6IHNpemVfbWIgMTAwMAo+Pj4gcmFuayAyIGNvbCAx
-MSBiayAzIGNzMF9yb3cgMTQgYncgMiByb3dfM180IDAKPj4+IHJvY2tjaGlwX3NkcmFtX3NpemU6
-IDU0OiBzaXplX21iIDEwMDAKPj4+IFNEUkFNIGJhc2U9MCwgc2l6ZT1mZTAwMDAwMAo+Pj4gNCBH
-aUIKPj4+IE1NQzogICBkd21tY0BmZjBjMDAwMDogMSwgZHdtbWNAZmYwZDAwMDA6IDIsIGR3bW1j
-QGZmMGYwMDAwOiAwCj4+PiBJbjogICAgY3Jvcy1lYy1rZXliCj4+PiBPdXQ6ICAgdmlkY29uc29s
-ZQo+Pj4gRXJyOiAgIHZpZGNvbnNvbGUKPj4+IE1vZGVsOiBHb29nbGUgU3BlZWR5Cj4+PiByb2Nr
-Y2hpcF9kbmxfa2V5X3ByZXNzZWQ6IGFkY19jaGFubmVsX3NpbmdsZV9zaG90IGZhaWwhCj4+PiBO
-ZXQ6ICAgTmV0IEluaXRpYWxpemF0aW9uIFNraXBwZWQKPj4+IE5vIGV0aGVybmV0IGZvdW5kLgo+
-Pj4gSGl0IGFueSBrZXkgdG8gc3RvcCBhdXRvYm9vdDogIDAKPj4+IEkgZ3Vlc3Mgd2UgbmVlZCB0
-byBjaGFuZ2UgdGhlIHNpemVfdCB0byBzb21ldGhpbmcgbGFyZ2VyOyB1bmxlc3MgSSdtCj4+PiBt
-aXN0YWtlbiwgdGhhdCdzIGEgMzIgYml0IHZhbHVlLCByaWdodD8gYW5kIDB4MTAwMDAwMDAwIGlz
-IGF0IGxlYXN0IDQwCj4+IAo+PiA0R0IgaXMgYWN0dWFsbHkgdGhlIDMzcmQgYml0IHNldCBhbmQg
-dGhlIGxvd2VyIDMyYml0cyBjbGVhcmVkIChpLmUuIHRoZSBsYXJnZXN0Cj4+IDMyYml0IHZhbHVl
-IOKAnHBsdXMgb25l4oCdKS4KPj4gCj4+PiBiaXRzLCB1bmxlc3MgSSdtIG1pc3NpbmcgdGhlIGlz
-c3VlIGhlcmUgc29tZXdoZXJlLiBIb3dldmVyLCB0aGF0IHdvdWxkCj4+PiB0YWtlIGEgY2hhbmdl
-IHRvIGluY2x1ZGUvcmFtLmgsIGFuZCB3b3VsZCBpbXBhY3QgZmFyIG1vcmUgdGhhbiBqdXN0Cj4+
-PiByazMyODgvcm9ja2NoaXAgZGV2aWNlcyBhY3Jvc3MgdGhlIGJvYXJkLCBzbyBJJ20gdW5zdXJl
-IGhvdyB0byBwcm9jZWVkLgo+Pj4gCj4+PiBVc2UgdGhlIG1pbiBtYWNybyBoZXJlIGZvciBub3cs
-IGFuZCBiZWdpbiB3b3JrIG1pZ3JhdGluZyB0aGUgcmFtX2luZm8KPj4+IHNpemUgbWVtYmVyIHRv
-IGEgNjQtYml0IGNvbnRhaW5lcj8KPj4gCj4+IFRoZSBtaW4oKSBkb2VzbuKAmXQgbWFrZSBhbnkg
-c2Vuc2UgaGVyZSwgYXMgd2UgaW1wbGVtZW50IHRoZSBob29rIGZ1bmN0aW9uCj4+IOKAmGJvYXJk
-X2dldF91c2FibGVfcmFtX3RvcOKAmSBqdXN0IGEgZmV3IGxpbmVzIGxhdGVy4oCmCj4+IFdlIGFy
-ZSBhdCB0aGUgc3RhcnQgb2YgdGhlIG1lcmdlIHdpbmRvdyByaWdodCBub3csIHNvIEnigJlkIHJh
-dGhlciBob2xkIG9mZiBhCj4+IHdlZWsgKG9yIHR3bykgYW5kIGhhdmUgYSBwZXJtYW5lbnQgc29s
-dXRpb24gdGhhbiBtZXJnaW5nIGp1c3QgYSBiYW5kLWFpZAo+PiBub3cgYW5kIHRoZW4gaGF2aW5n
-IHRoZSBmdWxsIGZpeCBjb21lIGluIGxhdGVyIGR1cmluZyB0aGUgbWVyZ2Ugd2luZG93Lgo+PiAK
-Pj4gSSBicmllZmx5IHJldmlld2VkIHRoZSBzaXR1YXRpb24geWVzdGVyZGF5IGFuZCBpdCBsb29r
-cyBsaWtlIHRoZSBzaXplIGZpZWxkIGluCj4+IHJhbV9pbmZvIGlzIHRoZSBjdWxwcml0OiBpdOKA
-mXMgZGVmaW5lZCBhcyDigJhzaXplX3TigJksIHdoaWNoIGFnYWluIGlzIF9fU0laRV9UWVBFX18K
-Pj4gd2hpY2ggYWdhaW4gaXMg4oCYdW5zaWduZWQgaW504oCZIG9uIGEgKDMyYml0KSBhcm0tKi1l
-YWJpIGNvbXBpbGVyLgo+PiAKPj4gRXhwYW5kaW5nIHRoaXMgdG8gYSBwaHlzX3NpemVfdCB3b27i
-gJl0IGJlIGRvaW5nIHVzIG11Y2ggZ29vZCwgZWl0aGVyIChhcwo+PiB0aGF0IG9uZSB3aWxsIGFs
-c28gYmUgMzJiaXRzIGZvciB0aGUgUkszMjg4KS4KPj4gCj4+IFRoZSByb290IGNhdXNlIG9mIHRo
-aXMgaXMgcmVhbGx5IHRoYXQgdGhlIFJBTSBzaXplIGFuZCB0aGUg4oCYdXNhYmxlIFJBTeKAmSBh
-cmUKPj4gdHdvIGRpZmZlcmVudCBjb25jZXB0cyBpbiBVLUJvb3QuICBPbiBhIDMyYml0IHBoeXNp
-Y2FsIGFkZHJlc3Mgc3BhY2Ugd2l0aAo+PiBtZW1vcnktbWFwcGVkIHBlcmlwaGVyYWxzLCB3ZSBj
-YW4gbmV2ZXIgaGF2ZSB0aGUgZnVsbCA0R0Igb2YgRFJBTSBhcwo+PiB3ZeKAmWxsIGFsc28gaGF2
-ZSBzb21lIG9mIHRoZSBwaHlzaWNhbCBhZGRyZXNzLXNwYWNlIHNldCBhc2lkZSBmb3IgdGhlIE1N
-SU87Cj4+IGhvd2V2ZXIsIHRoZSBNTUlPIHJhbmdlIGlzIG9ubHkgcmVtb3ZlZCBmcm9tIHRoZSBE
-UkFNIHNpemUgd2hlbiB0aGUKPj4gdXNhYmxlIHJhbS10b3AgaXMgZXZhbHVhdGVk4oCmIHNvIHRo
-ZSBzaXplIGNhbiBiZSA0R0IgYWZ0ZXIgYWxsIGFuZCBvdmVyZmxvdwo+PiB0aGUgMzJiaXQgc2l6
-ZV90LiAgTm90ZSB0aGF0IHRoaXMgc2VwYXJhdGlvbiBpbnRvIHR3byBkaWZmZXJlbnQgc3RlcHMg
-bWFrZXMgYQo+PiBsb3Qgb2Ygc2Vuc2UsIGFzIHByb2Nlc3NvcnMgbWlnaHQgbm90IHVzZSBNTUlP
-IGJ1dCBzcGVjaWFsaXNlZCBpbnN0cnVjdGlvbnMKPj4gdG8gYWNjZXNzIHBlcmlwaGVyYWwgc3Bh
-Y2XigJRpbiB3aGljaCBjYXNlIHRoZXJlIG1pZ2h0IGluZGVlZCBiZSBhIHVzYWJsZQo+PiBtZW1v
-cnkgb2YgNEdCIG9uIGEgMzJiaXQgcGh5c2ljYWwgYWRkcmVzcyBzcGFjZS4KPj4gCj4+IEZyb20g
-d2hhdCBJIGNhbiB0ZWxsLCB3ZeKAmWxsIG5lZWQgdG8gZG8gdHdvIHRoaW5nczoKPj4gKGEpICAg
-ICBmaXggYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uYyB0byBub3QgdXNlIDMy
-Yml0IHR5cGVzCj4+ICAgICAgICBmb3IgdGhlIG1lbW9yeSBzaXplCj4+IChiKSAgICAgdG91Y2gg
-cmFtLmggdG8gY2hhbmdlIHRoZSB0eXBlIG9mIHRoZSDigJhzaXpl4oCZIGZpZWxkIGluIHJhbV9p
-bmZvIChpdCBuZWVkcwo+PiAgICAgICAgdG8gYmUgbGFyZ2VyIHRoYW4gMzJiaXRzCj4+IAo+PiBJ
-4oCZZCBsaWtlIFNpbW9u4oCZcyBpbnB1dCAoYXMgaGUgb3ducyByYW0uaCkgYW5kIGNhbiBjcmVh
-dGUgYSBwYXRjaHNldCBmb3IgdGhpcwo+PiBjaGFuZ2UsIGlmIGhlIGFncmVlcyB0aGF0IHRoaXMg
-aXMgdGhlIHdheSBmb3J3YXJkLgo+IAo+IFNvcnJ5IEkgbWlzc2VkIHRoaXMuIFllcyBjaGFuZ2lu
-ZyByYW0uaCBpcyBmaW5lIHdpdGggbWUuIEluIGZhY3QgSQo+IHRob3VnaHQgdGhhdCBzaXplX3Qg
-d291bGQgYmUgT0suIENsZWFybHkgbm90LgoKT2ssIEnigJlsbCB0cnkgdG8gZ2V0IHRoaXMgZG9u
-ZSBvdmVyIHRoZSBuZXh0IGZldyBkYXlzLgoKPiBSZWdhcmRzLAo+IFNpbW9uCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0
-ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJv
-b3QK
+Hi Arnd, Kevin, Olof,
+
+please find below a one-patch pull fixing a new warning the updated dtc
+in 4.18 found. So far no other regressions have been found in Rockchip
+parts it seems. So please pull!
+
+Thanks
+Heiko
+
+The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
+
+  Linux 4.18-rc1 (2018-06-17 08:04:49 +0900)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.18-rockchip-dts32fixes-1
+
+for you to fetch changes up to cddb86833615d9550d7b3a1b65b71071784dae70:
+
+  ARM: dts: rockchip: fix graph node unit address error from dtc (2018-06-17 09:31:34 +0200)
+
+----------------------------------------------------------------
+Fix for a new warning from dtc in graph node unit addresses.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      ARM: dts: rockchip: fix graph node unit address error from dtc
+
+ arch/arm/boot/dts/rk3288-evb.dtsi               | 2 +-
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
