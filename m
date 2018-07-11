@@ -1,97 +1,36 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dts64 updates for 4.19 round 1
-Date: Wed, 11 Jul 2018 16:29:29 +0200
-Message-ID: <3426970.u8yLmZCROa@phil>
-References: <2000491.bLgWuj0xar@phil> <1895379.zdtPBogyMs@phil>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] dt-bindings: Add vendor prefix for Vamrs Ltd.
+Date: Wed, 11 Jul 2018 09:04:14 -0600
+Message-ID: <20180711150414.GA25606@rob-hp-laptop>
+References: <20180706150818.5631-1-ezequiel@collabora.com>
+ <20180706150818.5631-2-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1895379.zdtPBogyMs@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180706150818.5631-2-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
+On Fri, Jul 06, 2018 at 12:08:17PM -0300, Ezequiel Garcia wrote:
+> Vamrs Ltd. is a hardware solutions provider based in China.
+> 
+> Website: http://vamrs.com/
+> 
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-  Linux 4.18-rc1 (2018-06-17 08:04:49 +0900)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.19-rockchip-dts64-1
-
-for you to fetch changes up to d0414fdd58eb51ffd6528280fd66705123663964:
-
-  arm64: dts: rockchip: corrected uart1 clock-names for rk3328 (2018-07-07 13:02:27 +0200)
-
-----------------------------------------------------------------
-SPDX conversion for existing devicetree files. New board is Gru-Bob
-the Chromebook Flip C101PA which also got some stuff moved around
-to make room for Scarlet once its display pipeline makes some more
-advances.
-Also included are some general sound improvements for rk3399
-including enabling hdmi-sound on the sapphire board and some
-misc fixes like missing cooling device properties and wrong
-clock-names for the uart1 on rk3328.
-
-----------------------------------------------------------------
-Heiko Stuebner (5):
-      arm64: dts: rockchip: generalize rk3399 #sound-dai-cells
-      arm64: dts: rockchip: add phandles to some nodes on rk3399-gru
-      arm64: dts: rockchip: move Chromebook-specific Gru-parts to a separate file
-      arm64: dts: rockchip: move core edp from rk3399-kevin to shared chromebook
-      arm64: dts: rockchip: add Google Bob
-
-Huibin Hong (1):
-      arm64: dts: rockchip: corrected uart1 clock-names for rk3328
-
-Klaus Goger (1):
-      arm64: dts: rockchip: use SPDX-License-Identifier
-
-Randy Li (1):
-      arm64: dts: rockchip: add some common pin-settings to rk3399
-
-Vicente Bergas (2):
-      arm64: dts: rockchip: connect hdmi sound in rk3399
-      arm64: dts: rockchip: enable hdmi sound on rk3399-sapphire
-
-Viresh Kumar (1):
-      arm64: dts: rockchip: Add missing cooling device properties for CPUs
-
- Documentation/devicetree/bindings/arm/rockchip.txt |   9 +
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |  39 +-
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |  39 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  44 +--
- .../arm64/boot/dts/rockchip/rk3368-evb-act8846.dts |  39 +-
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       |  39 +-
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |  39 +-
- .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |  39 +-
- arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    |  39 +-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |  39 +-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  47 +--
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |  39 +-
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |  42 +--
- arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts    |  79 ++++
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   | 397 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  86 +----
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 367 +------------------
- arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi   |  39 +-
- arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       |  39 +-
- .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  39 +-
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |  40 +--
- .../dts/rockchip/rk3399-sapphire-excavator.dts     |  41 +--
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |  44 +--
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 153 +++++---
- 25 files changed, 627 insertions(+), 1191 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
