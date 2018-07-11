@@ -1,33 +1,25 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] Rockchip clock updates for 4.19
-Date: Wed, 11 Jul 2018 16:22:04 +0200
-Message-ID: <9241272.zrLup0OXSE@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 2/2] Rockchip dts64 updates for 4.19 round 1
+Date: Wed, 11 Jul 2018 16:29:29 +0200
+Message-ID: <3426970.u8yLmZCROa@phil>
+References: <2000491.bLgWuj0xar@phil> <1895379.zdtPBogyMs@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1895379.zdtPBogyMs@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
-
-Hi Mike, Stephen,
-
-please find below the pull request for 4.19 Rockchip clock updates.
-As the tag describes this contains the px30 clock controller including
-its new clock type of a "half-divider", as well as a small fix for wrong
-register values that is present since the beginning of rk3399 support.
-
-Please pull
-Heiko
-
 
 The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
 
@@ -35,40 +27,71 @@ The following changes since commit ce397d215ccd07b8ae3f71db689aedb85d56ab40:
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.19-rockchip-clk1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.19-rockchip-dts64-1
 
-for you to fetch changes up to a64ad008980c65d38e6cf6858429c78e6b740c41:
+for you to fetch changes up to d0414fdd58eb51ffd6528280fd66705123663964:
 
-  clk: rockchip: fix clk_i2sout parent selection bits on rk3399 (2018-07-08 00:19:19 +0200)
-
-----------------------------------------------------------------
-Support for Rockchip's PX30 SoC including its new half-divider
-clock type that is doing freq_out = 2*freq_in / (2*div + 3).
-As well as a register-bit fix for the rk3399 i2sout clock.
+  arm64: dts: rockchip: corrected uart1 clock-names for rk3328 (2018-07-07 13:02:27 +0200)
 
 ----------------------------------------------------------------
-Alberto Panizzo (1):
-      clk: rockchip: fix clk_i2sout parent selection bits on rk3399
+SPDX conversion for existing devicetree files. New board is Gru-Bob
+the Chromebook Flip C101PA which also got some stuff moved around
+to make room for Scarlet once its display pipeline makes some more
+advances.
+Also included are some general sound improvements for rk3399
+including enabling hdmi-sound on the sapphire board and some
+misc fixes like missing cooling device properties and wrong
+clock-names for the uart1 on rk3328.
 
-Elaine Zhang (4):
-      clk: rockchip: add dt-binding header for px30
-      dt-bindings: add bindings for px30 clock controller
-      clk: rockchip: add support for half divider
-      clk: rockchip: add clock controller for px30
+----------------------------------------------------------------
+Heiko Stuebner (5):
+      arm64: dts: rockchip: generalize rk3399 #sound-dai-cells
+      arm64: dts: rockchip: add phandles to some nodes on rk3399-gru
+      arm64: dts: rockchip: move Chromebook-specific Gru-parts to a separate file
+      arm64: dts: rockchip: move core edp from rk3399-kevin to shared chromebook
+      arm64: dts: rockchip: add Google Bob
 
-Heiko Stuebner (1):
-      Merge branch 'v4.19-shared/clkids' into v4.19-clk/next
+Huibin Hong (1):
+      arm64: dts: rockchip: corrected uart1 clock-names for rk3328
 
- .../bindings/clock/rockchip,px30-cru.txt           |   65 ++
- drivers/clk/rockchip/Makefile                      |    2 +
- drivers/clk/rockchip/clk-half-divider.c            |  227 +++++
- drivers/clk/rockchip/clk-px30.c                    | 1039 ++++++++++++++++++++
- drivers/clk/rockchip/clk-rk3399.c                  |    2 +-
- drivers/clk/rockchip/clk.c                         |   10 +
- drivers/clk/rockchip/clk.h                         |  126 ++-
- include/dt-bindings/clock/px30-cru.h               |  389 ++++++++
- 8 files changed, 1858 insertions(+), 2 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-half-divider.c
- create mode 100644 drivers/clk/rockchip/clk-px30.c
- create mode 100644 include/dt-bindings/clock/px30-cru.h
+Klaus Goger (1):
+      arm64: dts: rockchip: use SPDX-License-Identifier
+
+Randy Li (1):
+      arm64: dts: rockchip: add some common pin-settings to rk3399
+
+Vicente Bergas (2):
+      arm64: dts: rockchip: connect hdmi sound in rk3399
+      arm64: dts: rockchip: enable hdmi sound on rk3399-sapphire
+
+Viresh Kumar (1):
+      arm64: dts: rockchip: Add missing cooling device properties for CPUs
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   9 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  44 +--
+ .../arm64/boot/dts/rockchip/rk3368-evb-act8846.dts |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |  39 +-
+ .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  47 +--
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |  42 +--
+ arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts    |  79 ++++
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   | 397 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  86 +----
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       | 367 +------------------
+ arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi   |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi       |  39 +-
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  39 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |  40 +--
+ .../dts/rockchip/rk3399-sapphire-excavator.dts     |  41 +--
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |  44 +--
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 153 +++++---
+ 25 files changed, 627 insertions(+), 1191 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
