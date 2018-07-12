@@ -1,13 +1,12 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 0/2] arm64: rockchip: support RK3399 Ficus board
-Date: Thu, 12 Jul 2018 11:31:06 +0200
-Message-ID: <31262174.ngUfOPmpOk@diego>
-References: <20180706150818.5631-1-ezequiel@collabora.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] PCI: rockchip: Add EP driver for Rockchip PCIe controller
+Date: Thu, 12 Jul 2018 15:33:53 +0300
+Message-ID: <20180712123319.nr5jowaat6h3kr2m@kili.mountain>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180706150818.5631-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Disposition: inline
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,38 +16,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 6. Juli 2018, 17:08:16 CEST schrieb Ezequiel Garcia:
-> Fourth round for the RK3399 Ficus support.
-> 
-> Changes from v3:
->  * Fixed a regulator node name, as noted by Rob.
->  * Fixed wrong alphabetical order in vendors prefix patch, also noted by
-> Rob.
-> 
-> Changes from v2:
->  * Dropped rk3399.dtsi changes and rebased on top of Randy's patch.
->  * Removed double empty line.
->  * Coalesced schematics comment
-> 
-> Changes from v1:
->  * Dropoed USB support as it's not working.
->  * Added schematics.
->  * Splitted rk3399.dtsi from new ficus.dts file.
->  * Added new vendor.
->  * Cleaned regulators syntax and stlye.
-> 
-> Series based on: 600b359d2b98 ("arm64: dts: rockchip: add some common
-> pin-settings to rk3399").
-> 
-> Ezequiel Garcia (2):
->   dt-bindings: Add vendor prefix for Vamrs Ltd.
->   arm64: dts: rockchip: add 96boards RK3399 Ficus board
+Hello Shawn Lin,
 
-applied both for 4.19
+The patch cf590b078391: "PCI: rockchip: Add EP driver for Rockchip
+PCIe controller" from May 9, 2018, leads to the following static
+checker warning:
 
-Thanks
-Heiko
+	drivers/pci/controller/pcie-rockchip-ep.c:380 rockchip_pcie_ep_assert_intx()
+	warn: '(1 << (19))' 524288 can't fit into 65535 'status'
+
+drivers/pci/controller/pcie-rockchip-ep.c
+   347  static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
+   348                                           u8 intx, bool is_asserted)
+   349  {
+   350          struct rockchip_pcie *rockchip = &ep->rockchip;
+   351          u32 r = ep->max_regions - 1;
+   352          u32 offset;
+   353          u16 status;
+   354          u8 msg_code;
+   355  
+   356          if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
+   357                       ep->irq_pci_fn != fn)) {
+   358                  rockchip_pcie_prog_ep_ob_atu(rockchip, fn, r,
+   359                                               AXI_WRAPPER_NOR_MSG,
+   360                                               ep->irq_phys_addr, 0, 0);
+   361                  ep->irq_pci_addr = ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR;
+   362                  ep->irq_pci_fn = fn;
+   363          }
+   364  
+   365          intx &= 3;
+   366          if (is_asserted) {
+   367                  ep->irq_pending |= BIT(intx);
+   368                  msg_code = ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA + intx;
+   369          } else {
+   370                  ep->irq_pending &= ~BIT(intx);
+   371                  msg_code = ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA + intx;
+   372          }
+   373  
+   374          status = rockchip_pcie_read(rockchip,
+   375                                      ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+   376                                      ROCKCHIP_PCIE_EP_CMD_STATUS);
+   377          status &= ROCKCHIP_PCIE_EP_CMD_STATUS_IS;
+   378  
+   379          if ((status != 0) ^ (ep->irq_pending != 0)) {
+   380                  status ^= ROCKCHIP_PCIE_EP_CMD_STATUS_IS;
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+status is a u16 but we're twiddling BIT(19).
+
+   381                  rockchip_pcie_write(rockchip, status,
+   382                                      ROCKCHIP_PCIE_EP_FUNC_BASE(fn) +
+   383                                      ROCKCHIP_PCIE_EP_CMD_STATUS);
+   384          }
+   385  
+   386          offset =
+   387             ROCKCHIP_PCIE_MSG_ROUTING(ROCKCHIP_PCIE_MSG_ROUTING_LOCAL_INTX) |
+   388             ROCKCHIP_PCIE_MSG_CODE(msg_code) | ROCKCHIP_PCIE_MSG_NO_DATA;
+   389          writel(0, ep->irq_cpu_addr + offset);
+   390  }
+
+regards,
+dan carpenter
