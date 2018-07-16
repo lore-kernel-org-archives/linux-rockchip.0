@@ -1,67 +1,69 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add USB 2.0 and 3.0 support on
- Ficus board
-Date: Mon, 16 Jul 2018 14:29:40 -0300
-Message-ID: <68cdc26d1e58797080ce9939c173148eb9f15a52.camel@collabora.com>
-References: <20180714170922.4433-1-ezequiel@collabora.com>
- <2487041.HPaZN1uVBU@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 10/12] dt-bindings: drm/bridge: Document Cadence MHDP
+ bridge bindings
+Date: Mon, 16 Jul 2018 15:14:40 -0600
+Message-ID: <20180716211440.GA29964@rob-hp-laptop>
+References: <1530612152-27555-1-git-send-email-dkos@cadence.com>
+ <1530612152-27555-11-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2487041.HPaZN1uVBU@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1530612152-27555-11-git-send-email-dkos@cadence.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, pgaj@cadence.com, stelford@cadence.com, ltyrala@cadence.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2018-07-16 at 19:02 +0200, Heiko Stuebner wrote:
-> Hi Enric, Ezequiel,
-> 
-> Am Samstag, 14. Juli 2018, 19:09:22 CEST schrieb Ezequiel Garcia:
-> > From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > 
-> > The board exposes two types A ports, one is USB 3.0, up to 5.0Gbps and
-> > another one is USB 2.0 up to 480Mbps. Enable the USB PHYs and the USB
-> > controllers to enable theses devices.
-> > 
-> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > ---
-> > Changes from v1:
-> >  * Provide voltage for vcc5v0_host and vcc3v3_pcie regulators
-> >  * Provide vin_supply for vcc5v0_host.
-> > 
-> >  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 90 +++++++++++++++++++
-> >  1 file changed, 90 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > index 0d14183dd4a9..6295483b701f 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > @@ -58,9 +58,24 @@
-> >  		pinctrl-0 = <&pcie_drv>;
-> >  		regulator-boot-on;
-> >  		regulator-name = "vcc3v3_pcie";
-> > +		regulator-min-microvolt = <3300000>;
-> > +		regulator-max-microvolt = <3300000>;
-> >  		vin-supply = <&vcc3v3_sys>;
-> >  	};
-> 
-> I've split this out into a separate patch, as it isn't part of what
-> the commit message describes and thus should be separate
-> and applied both resulting patches for 4.19.
-> 
-> And also cleaned up a vendor-property that shouldn't be
-> part of mainline.
-> 
-
-Thanks a lot!
+T24gVHVlLCBKdWwgMDMsIDIwMTggYXQgMTE6MDI6MjFBTSArMDEwMCwgRGFtaWFuIEtvcyB3cm90
+ZToKPiBEb2N1bWVudCB0aGUgYmluZGluZ3MgdXNlZCBmb3IgdGhlIENhZGVuY2UgTUhEUCBEUEkv
+RFAgYnJpZGdlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbWlhbiBLb3MgPGRrb3NAY2FkZW5jZS5j
+b20+Cj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9jZG5zLG1oZHAudHh0ICAg
+ICAgICAgIHwgICAzOSArKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGVzIGNoYW5nZWQsIDM5
+IGluc2VydGlvbnMoKyksIDAgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvY2RucyxtaGRwLnR4
+dAo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
+cGxheS9icmlkZ2UvY2RucyxtaGRwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9kaXNwbGF5L2JyaWRnZS9jZG5zLG1oZHAudHh0Cj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQK
+PiBpbmRleCAwMDAwMDAwLi5kODcyZTI2Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9jZG5zLG1oZHAudHh0Cj4g
+QEAgLTAsMCArMSwzOSBAQAo+ICtDYWRlbmNlIE1IRFAgYnJpZGdlCj4gKz09PT09PT09PT09PT09
+PT09PT09PT09PT09Cj4gKwo+ICtUaGUgQ2FkZW5jZSBNSERQIGJyaWRnZSBpcyBhIERQSSB0byBE
+UCBicmlkZ2UuCj4gKwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICsgLSBjb21wYXRpYmxlOiBz
+aG91bGQgYmUgImNkbnMsbWhkcCIsCgpOb3QgdmVyeSBzcGVjaWZpYy4gT25seSAxIHZlcnNpb24g
+b2YgdGhpcyBibG9jaz8KCj4gKyAtIHJlZzogcGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5n
+dGggb2YgdGhlIGNvbnRyb2xsZXIncyByZWdpc3RlcnMsCj4gKyAtIGNsb2NrczogRFAgYnJpZGdl
+IGNsb2NrLCBpdCdzIHVzZWQgYnkgdGhlIElQIHRvIGtub3cgaG93IHRvIHRyYW5zbGF0ZQo+ICsJ
+ICAgYSBudW1iZXIgb2YgY2xvY2sgY3ljbGVzIGludG8gYSB0aW1lICh3aGljaCBpcyB1c2VkIHRv
+IGNvbXBseQo+ICsJICAgd2l0aCBEUCBzdGFuZGFyZCB0aW1pbmdzIGFuZCBkZWxheXMpLAo+ICsg
+LSBjbG9jay1uYW1lczogbXVzdCBiZSAiY2xrIiwKCk5vdCBhIHVzZWZ1bCBuYW1lLiBXaXRoIG9u
+bHkgMSBjbG9jaywgeW91IGNhbiBqdXN0IGRyb3AgdGhpcy4KCj4gKwo+ICtSZXF1aXJlZCBzdWJu
+b2RlczoKPiArIC0gcG9ydHM6IFBvcnRzIGFzIGRlc2NyaWJlZCBpbiBEb2N1bWVudGF0aW9uL2Rl
+dmljdHJlZS9iaW5kaW5ncy9ncmFwaC50eHQKPiArICAgQ3VycmVudGx5IGNvbnRhaW5zIGEgc2lu
+Z2xlIGlucHV0IHBvcnQgYXQgYWRkcmVzcyAwIHJlcHJlc2VudGluZyB0aGUgRFBJCj4gKyAgIGlu
+cHV0LgoKQ3VycmVudGx5PyBZb3Ugc2hvdWxkIGhhdmUgYSBwb3J0IGNvbm5lY3RpbmcgdG8gYSBj
+b25uZWN0b3Igbm9kZS4KCj4gKyAgIFBvcnQgMCBzaG91bGQgYmUgY29ubmVjdGVkIHRvIGEgRFBJ
+IGVuY29kZXIgb3V0cHV0Lgo+ICsKPiArRXhhbXBsZToKPiArCj4gKwltaGRwOiBtaGRwQDB4ZjBm
+YjAwMDAwMCB7CgpkcC1icmlkZ2VAZjBmYjAwMDAwMAoKPiArCQljb21wYXRpYmxlID0gImNkbnMs
+bWhkcCI7Cj4gKwkJcmVnID0gPDB4ZjAgMHhmYjAwMDAwMCAweDAgMHgxMDAwMDAwPjsKPiArCQlj
+bG9ja3MgPSA8Jm1oZHBfY2xvY2s+Owo+ICsJCWNsb2NrLW5hbWVzID0gImNsayI7Cj4gKwo+ICsJ
+CXBvcnRzIHsKPiArCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkJCSNzaXplLWNlbGxzID0g
+PDA+Owo+ICsKPiArCQkJcG9ydEAwIHsKPiArCQkJCXJlZyA9IDwwPjsKPiArCQkJCW1oZHAwX2Rw
+aV9pbnB1dDogZW5kcG9pbnQgewo+ICsJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmeHh4X2RwaV9v
+dXRwdXQ+Owo+ICsJCQkJfTsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiAtLSAKPiAxLjcuMQo+
+IAo+IC0tCj4gVG8gdW5zdWJzY3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhlIGxpbmUgInVu
+c3Vic2NyaWJlIGRldmljZXRyZWUiIGluCj4gdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1ham9y
+ZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPiBNb3JlIG1ham9yZG9tbyBpbmZvIGF0ICBodHRwOi8vdmdl
+ci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
