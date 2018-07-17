@@ -1,101 +1,62 @@
 From: Ayan Kumar Halder <ayan.halder@arm.com>
-Subject: [PATCH 4/5] drm/omapdrm: Substitute format_is_yuv() with format->is_yuv
-Date: Tue, 17 Jul 2018 18:13:45 +0100
-Message-ID: <1531847626-22248-4-git-send-email-ayan.halder@arm.com>
+Subject: [PATCH 5/5] drm/sun4i: Substitute
+ sun4i_backend_format_is_yuv() with format->is_yuv
+Date: Tue, 17 Jul 2018 18:13:46 +0100
+Message-ID: <1531847626-22248-5-git-send-email-ayan.halder@arm.com>
 References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
 In-Reply-To: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
 To: ayan.halder@arm.com, liviu.dudau@arm.com, brian.starkey@arm.com, gustavo@padovan.org, maarten.lankhorst@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com, intel-gfx@lists.freedesktop.org, hjc@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tomi.valkeinen@ti.com, laurent.pinchart@ideasonboard.com, sre@kernel.org, bparrot@ti.com, peter.ujfalusi@ti.com, afd@ti.com, dri-devel@lists.freedesktop.org, maxime.ripard@bootlin.com, wens@csie.org, malidp@foss.arm.com
 Cc: nd@arm.com
 List-Id: linux-rockchip.vger.kernel.org
 
-drm_format_info table has a field 'is_yuv' to denote if the format
-is yuv or not. The driver is expected to use this instead of
-having a function for the same purpose.
-
-Signed-off-by: Ayan Kumar halder <ayan.halder@arm.com>
----
- drivers/gpu/drm/omapdrm/dss/dispc.c | 26 ++++++++++----------------
- 1 file changed, 10 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/gpu/drm/omapdrm/dss/dispc.c b/drivers/gpu/drm/omapdrm/dss/dispc.c
-index 84f274c..8d2d7a4 100644
---- a/drivers/gpu/drm/omapdrm/dss/dispc.c
-+++ b/drivers/gpu/drm/omapdrm/dss/dispc.c
-@@ -1140,18 +1140,6 @@ static void dispc_ovl_set_color_mode(struct dispc_device *dispc,
- 	REG_FLD_MOD(dispc, DISPC_OVL_ATTRIBUTES(plane), m, 4, 1);
- }
- 
--static bool format_is_yuv(u32 fourcc)
--{
--	switch (fourcc) {
--	case DRM_FORMAT_YUYV:
--	case DRM_FORMAT_UYVY:
--	case DRM_FORMAT_NV12:
--		return true;
--	default:
--		return false;
--	}
--}
--
- static void dispc_ovl_configure_burst_type(struct dispc_device *dispc,
- 					   enum omap_plane_id plane,
- 					   enum omap_dss_rotation_type rotation)
-@@ -1910,11 +1898,14 @@ static void dispc_ovl_set_scaling_uv(struct dispc_device *dispc,
- 	int scale_x = out_width != orig_width;
- 	int scale_y = out_height != orig_height;
- 	bool chroma_upscale = plane != OMAP_DSS_WB;
-+	const struct drm_format_info *info;
-+
-+	info = drm_format_info(fourcc);
- 
- 	if (!dispc_has_feature(dispc, FEAT_HANDLE_UV_SEPARATE))
- 		return;
- 
--	if (!format_is_yuv(fourcc)) {
-+	if (!info->is_yuv) {
- 		/* reset chroma resampling for RGB formats  */
- 		if (plane != OMAP_DSS_WB)
- 			REG_FLD_MOD(dispc, DISPC_OVL_ATTRIBUTES2(plane),
-@@ -2632,6 +2623,9 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
- 	bool ilace = !!(vm->flags & DISPLAY_FLAGS_INTERLACED);
- 	unsigned long pclk = dispc_plane_pclk_rate(dispc, plane);
- 	unsigned long lclk = dispc_plane_lclk_rate(dispc, plane);
-+	const struct drm_format_info *info;
-+
-+	info = drm_format_info(fourcc);
- 
- 	/* when setting up WB, dispc_plane_pclk_rate() returns 0 */
- 	if (plane == OMAP_DSS_WB)
-@@ -2640,7 +2634,7 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
- 	if (paddr == 0 && rotation_type != OMAP_DSS_ROT_TILER)
- 		return -EINVAL;
- 
--	if (format_is_yuv(fourcc) && (in_width & 1)) {
-+	if (info->is_yuv && (in_width & 1)) {
- 		DSSERR("input width %d is not even for YUV format\n", in_width);
- 		return -EINVAL;
- 	}
-@@ -2680,7 +2674,7 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
- 		DSSDBG("predecimation %d x %x, new input size %d x %d\n",
- 			x_predecim, y_predecim, in_width, in_height);
- 
--	if (format_is_yuv(fourcc) && (in_width & 1)) {
-+	if (info->is_yuv && (in_width & 1)) {
- 		DSSDBG("predecimated input width is not even for YUV format\n");
- 		DSSDBG("adjusting input width %d -> %d\n",
- 			in_width, in_width & ~1);
-@@ -2688,7 +2682,7 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
- 		in_width &= ~1;
- 	}
- 
--	if (format_is_yuv(fourcc))
-+	if (info->is_yuv)
- 		cconv = 1;
- 
- 	if (ilace && !fieldmode) {
--- 
-2.7.4
+ZHJtX2Zvcm1hdF9pbmZvIHRhYmxlIGhhcyBhIGZpZWxkICdpc195dXYnIHRvIGRlbm90ZSBpZiB0
+aGUgZm9ybWF0CmlzIHl1diBvciBub3QuIFRoZSBkcml2ZXIgaXMgZXhwZWN0ZWQgdG8gdXNlIHRo
+aXMgaW5zdGVhZCBvZgpoYXZpbmcgYSBmdW5jdGlvbiBmb3IgdGhlIHNhbWUgcHVycG9zZS4KClNp
+Z25lZC1vZmYtYnk6IEF5YW4gS3VtYXIgaGFsZGVyIDxheWFuLmhhbGRlckBhcm0uY29tPgotLS0K
+IGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9iYWNrZW5kLmMgfCAxMiArKystLS0tLS0tLS0K
+IDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDkgZGVsZXRpb25zKC0pCgpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9zdW40aS9zdW40aV9iYWNrZW5kLmMKaW5kZXggZGUwYTc2ZC4uZDc5NTBiNSAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYworKysgYi9kcml2ZXJz
+L2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFja2VuZC5jCkBAIC04NiwxMiArODYsNiBAQCBzdGF0aWMg
+aW5saW5lIGJvb2wgc3VuNGlfYmFja2VuZF9mb3JtYXRfaXNfcGFja2VkX3l1djQyMih1aW50MzJf
+dCBmb3JtYXQpCiAJfQogfQogCi1zdGF0aWMgaW5saW5lIGJvb2wgc3VuNGlfYmFja2VuZF9mb3Jt
+YXRfaXNfeXV2KHVpbnQzMl90IGZvcm1hdCkKLXsKLQlyZXR1cm4gc3VuNGlfYmFja2VuZF9mb3Jt
+YXRfaXNfcGxhbmFyX3l1dihmb3JtYXQpIHx8Ci0JCXN1bjRpX2JhY2tlbmRfZm9ybWF0X2lzX3Bh
+Y2tlZF95dXY0MjIoZm9ybWF0KTsKLX0KLQogc3RhdGljIHZvaWQgc3VuNGlfYmFja2VuZF9hcHBs
+eV9jb2xvcl9jb3JyZWN0aW9uKHN0cnVjdCBzdW54aV9lbmdpbmUgKmVuZ2luZSkKIHsKIAlpbnQg
+aTsKQEAgLTMwNCw3ICsyOTgsNyBAQCBpbnQgc3VuNGlfYmFja2VuZF91cGRhdGVfbGF5ZXJfZm9y
+bWF0cyhzdHJ1Y3Qgc3VuNGlfYmFja2VuZCAqYmFja2VuZCwKIAkJCSAgIFNVTjRJX0JBQ0tFTkRf
+QVRUQ1RMX1JFRzBfTEFZX0dMQkFMUEhBX0VOLAogCQkJICAgdmFsKTsKIAotCWlmIChzdW40aV9i
+YWNrZW5kX2Zvcm1hdF9pc195dXYoZmItPmZvcm1hdC0+Zm9ybWF0KSkKKwlpZiAoZmItPmZvcm1h
+dC0+aXNfeXV2KQogCQlyZXR1cm4gc3VuNGlfYmFja2VuZF91cGRhdGVfeXV2X2Zvcm1hdChiYWNr
+ZW5kLCBsYXllciwgcGxhbmUpOwogCiAJcmV0ID0gc3VuNGlfYmFja2VuZF9kcm1fZm9ybWF0X3Rv
+X2xheWVyKGZiLT5mb3JtYXQtPmZvcm1hdCwgJnZhbCk7CkBAIC0zODQsNyArMzc4LDcgQEAgaW50
+IHN1bjRpX2JhY2tlbmRfdXBkYXRlX2xheWVyX2J1ZmZlcihzdHJ1Y3Qgc3VuNGlfYmFja2VuZCAq
+YmFja2VuZCwKIAkgKi8KIAlwYWRkciAtPSBQSFlTX09GRlNFVDsKIAotCWlmIChzdW40aV9iYWNr
+ZW5kX2Zvcm1hdF9pc195dXYoZmItPmZvcm1hdC0+Zm9ybWF0KSkKKwlpZiAoZmItPmZvcm1hdC0+
+aXNfeXV2KQogCQlyZXR1cm4gc3VuNGlfYmFja2VuZF91cGRhdGVfeXV2X2J1ZmZlcihiYWNrZW5k
+LCBmYiwgcGFkZHIpOwogCiAJLyogV3JpdGUgdGhlIDMyIGxvd2VyIGJpdHMgb2YgdGhlIGFkZHJl
+c3MgKGluIGJpdHMpICovCkBAIC01MDIsNyArNDk2LDcgQEAgc3RhdGljIGludCBzdW40aV9iYWNr
+ZW5kX2F0b21pY19jaGVjayhzdHJ1Y3Qgc3VueGlfZW5naW5lICplbmdpbmUsCiAJCWlmIChmYi0+
+Zm9ybWF0LT5oYXNfYWxwaGEgfHwgKHBsYW5lX3N0YXRlLT5hbHBoYSAhPSBEUk1fQkxFTkRfQUxQ
+SEFfT1BBUVVFKSkKIAkJCW51bV9hbHBoYV9wbGFuZXMrKzsKIAotCQlpZiAoc3VuNGlfYmFja2Vu
+ZF9mb3JtYXRfaXNfeXV2KGZiLT5mb3JtYXQtPmZvcm1hdCkpIHsKKwkJaWYgKGZiLT5mb3JtYXQt
+PmlzX3l1dikgewogCQkJRFJNX0RFQlVHX0RSSVZFUigiUGxhbmUgRkIgZm9ybWF0IGlzIFlVVlxu
+Iik7CiAJCQludW1feXV2X3BsYW5lcysrOwogCQl9Ci0tIAoyLjcuNAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJ
+bnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4Cg==
