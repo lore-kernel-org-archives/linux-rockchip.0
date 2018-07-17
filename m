@@ -1,69 +1,35 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 10/12] dt-bindings: drm/bridge: Document Cadence MHDP
- bridge bindings
-Date: Mon, 16 Jul 2018 15:14:40 -0600
-Message-ID: <20180716211440.GA29964@rob-hp-laptop>
-References: <1530612152-27555-1-git-send-email-dkos@cadence.com>
- <1530612152-27555-11-git-send-email-dkos@cadence.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1530612152-27555-11-git-send-email-dkos@cadence.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Damian Kos <dkos@cadence.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, pgaj@cadence.com, stelford@cadence.com, ltyrala@cadence.com, linux-arm-kernel@lists.infradead.org
+From: <cl@rock-chips.com>
+Subject: [PATCH v1 1/7] Documentation: usb: dwc2: add description for px30
+Date: Tue, 17 Jul 2018 15:49:01 +0800
+Message-ID: <1531813747-8804-2-git-send-email-cl@rock-chips.com>
+References: <1531813747-8804-1-git-send-email-cl@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1531813747-8804-1-git-send-email-cl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, klaus.goger@theobroma-systems.com, cl@rock-chips.com, jagan@amarulasolutions.com, djw@t-chip.com.cn, jacob-chen@iotwrt.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, frank.wang@rock-chips.com, lgirdwood@gmail.com, broonie@kernel.org, alsa-devel@alsa-project.org, gregkh@linuxfoundation.org, catalin.marinas@arm.com, will.deacon@arm.com, yamada.masahiro@socionext.com, arnd@arndb.de, zhangqing@rock-chips.com, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, david.wu@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, sugar.zhang@rock-chips.com, huibin.hong@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdWwgMDMsIDIwMTggYXQgMTE6MDI6MjFBTSArMDEwMCwgRGFtaWFuIEtvcyB3cm90
-ZToKPiBEb2N1bWVudCB0aGUgYmluZGluZ3MgdXNlZCBmb3IgdGhlIENhZGVuY2UgTUhEUCBEUEkv
-RFAgYnJpZGdlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbWlhbiBLb3MgPGRrb3NAY2FkZW5jZS5j
-b20+Cj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9jZG5zLG1oZHAudHh0ICAg
-ICAgICAgIHwgICAzOSArKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGVzIGNoYW5nZWQsIDM5
-IGluc2VydGlvbnMoKyksIDAgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvY2RucyxtaGRwLnR4
-dAo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
-cGxheS9icmlkZ2UvY2RucyxtaGRwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9kaXNwbGF5L2JyaWRnZS9jZG5zLG1oZHAudHh0Cj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQK
-PiBpbmRleCAwMDAwMDAwLi5kODcyZTI2Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9jZG5zLG1oZHAudHh0Cj4g
-QEAgLTAsMCArMSwzOSBAQAo+ICtDYWRlbmNlIE1IRFAgYnJpZGdlCj4gKz09PT09PT09PT09PT09
-PT09PT09PT09PT09Cj4gKwo+ICtUaGUgQ2FkZW5jZSBNSERQIGJyaWRnZSBpcyBhIERQSSB0byBE
-UCBicmlkZ2UuCj4gKwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICsgLSBjb21wYXRpYmxlOiBz
-aG91bGQgYmUgImNkbnMsbWhkcCIsCgpOb3QgdmVyeSBzcGVjaWZpYy4gT25seSAxIHZlcnNpb24g
-b2YgdGhpcyBibG9jaz8KCj4gKyAtIHJlZzogcGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5n
-dGggb2YgdGhlIGNvbnRyb2xsZXIncyByZWdpc3RlcnMsCj4gKyAtIGNsb2NrczogRFAgYnJpZGdl
-IGNsb2NrLCBpdCdzIHVzZWQgYnkgdGhlIElQIHRvIGtub3cgaG93IHRvIHRyYW5zbGF0ZQo+ICsJ
-ICAgYSBudW1iZXIgb2YgY2xvY2sgY3ljbGVzIGludG8gYSB0aW1lICh3aGljaCBpcyB1c2VkIHRv
-IGNvbXBseQo+ICsJICAgd2l0aCBEUCBzdGFuZGFyZCB0aW1pbmdzIGFuZCBkZWxheXMpLAo+ICsg
-LSBjbG9jay1uYW1lczogbXVzdCBiZSAiY2xrIiwKCk5vdCBhIHVzZWZ1bCBuYW1lLiBXaXRoIG9u
-bHkgMSBjbG9jaywgeW91IGNhbiBqdXN0IGRyb3AgdGhpcy4KCj4gKwo+ICtSZXF1aXJlZCBzdWJu
-b2RlczoKPiArIC0gcG9ydHM6IFBvcnRzIGFzIGRlc2NyaWJlZCBpbiBEb2N1bWVudGF0aW9uL2Rl
-dmljdHJlZS9iaW5kaW5ncy9ncmFwaC50eHQKPiArICAgQ3VycmVudGx5IGNvbnRhaW5zIGEgc2lu
-Z2xlIGlucHV0IHBvcnQgYXQgYWRkcmVzcyAwIHJlcHJlc2VudGluZyB0aGUgRFBJCj4gKyAgIGlu
-cHV0LgoKQ3VycmVudGx5PyBZb3Ugc2hvdWxkIGhhdmUgYSBwb3J0IGNvbm5lY3RpbmcgdG8gYSBj
-b25uZWN0b3Igbm9kZS4KCj4gKyAgIFBvcnQgMCBzaG91bGQgYmUgY29ubmVjdGVkIHRvIGEgRFBJ
-IGVuY29kZXIgb3V0cHV0Lgo+ICsKPiArRXhhbXBsZToKPiArCj4gKwltaGRwOiBtaGRwQDB4ZjBm
-YjAwMDAwMCB7CgpkcC1icmlkZ2VAZjBmYjAwMDAwMAoKPiArCQljb21wYXRpYmxlID0gImNkbnMs
-bWhkcCI7Cj4gKwkJcmVnID0gPDB4ZjAgMHhmYjAwMDAwMCAweDAgMHgxMDAwMDAwPjsKPiArCQlj
-bG9ja3MgPSA8Jm1oZHBfY2xvY2s+Owo+ICsJCWNsb2NrLW5hbWVzID0gImNsayI7Cj4gKwo+ICsJ
-CXBvcnRzIHsKPiArCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkJCSNzaXplLWNlbGxzID0g
-PDA+Owo+ICsKPiArCQkJcG9ydEAwIHsKPiArCQkJCXJlZyA9IDwwPjsKPiArCQkJCW1oZHAwX2Rw
-aV9pbnB1dDogZW5kcG9pbnQgewo+ICsJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmeHh4X2RwaV9v
-dXRwdXQ+Owo+ICsJCQkJfTsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiAtLSAKPiAxLjcuMQo+
-IAo+IC0tCj4gVG8gdW5zdWJzY3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhlIGxpbmUgInVu
-c3Vic2NyaWJlIGRldmljZXRyZWUiIGluCj4gdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1ham9y
-ZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPiBNb3JlIG1ham9yZG9tbyBpbmZvIGF0ICBodHRwOi8vdmdl
-ci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+From: Liang Chen <cl@rock-chips.com>
+
+This patch adds the compatible of dwc2 for PX30 SoCs.
+
+Signed-off-by: Liang Chen <cl@rock-chips.com>
+---
+ Documentation/devicetree/bindings/usb/dwc2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/usb/dwc2.txt b/Documentation/devicetree/bindings/usb/dwc2.txt
+index 46da5f1..6dc3c4a 100644
+--- a/Documentation/devicetree/bindings/usb/dwc2.txt
++++ b/Documentation/devicetree/bindings/usb/dwc2.txt
+@@ -6,6 +6,7 @@ Required properties:
+   - brcm,bcm2835-usb: The DWC2 USB controller instance in the BCM2835 SoC.
+   - hisilicon,hi6220-usb: The DWC2 USB controller instance in the hi6220 SoC.
+   - rockchip,rk3066-usb: The DWC2 USB controller instance in the rk3066 Soc;
++  - "rockchip,px30-usb", "rockchip,rk3066-usb", "snps,dwc2": for px30 Soc;
+   - "rockchip,rk3188-usb", "rockchip,rk3066-usb", "snps,dwc2": for rk3188 Soc;
+   - "rockchip,rk3288-usb", "rockchip,rk3066-usb", "snps,dwc2": for rk3288 Soc;
+   - "lantiq,arx100-usb": The DWC2 USB controller instance in Lantiq ARX SoCs;
+-- 
+1.9.1
