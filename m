@@ -1,75 +1,101 @@
 From: Ayan Kumar Halder <ayan.halder@arm.com>
-Subject: [PATCH 3/5] drm/rockchip: Substitute is_yuv_support() with
- format->is_yuv
-Date: Tue, 17 Jul 2018 18:13:44 +0100
-Message-ID: <1531847626-22248-3-git-send-email-ayan.halder@arm.com>
+Subject: [PATCH 4/5] drm/omapdrm: Substitute format_is_yuv() with format->is_yuv
+Date: Tue, 17 Jul 2018 18:13:45 +0100
+Message-ID: <1531847626-22248-4-git-send-email-ayan.halder@arm.com>
 References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: ayan.halder@arm.com, liviu.dudau@arm.com, brian.starkey@arm.com, gustavo@padovan.org, maarten.lankhorst@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com, intel-gfx@lists.freedesktop.org, hjc@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tomi.valkeinen@ti.com, laurent.pinchart@ideasonboard.com, sre@kernel.org, bparrot@ti.com, peter.ujfalusi@ti.com, afd@ti.com, dri-devel@lists.freedesktop.org, maxime.ripard@bootlin.com, wens@csie.org, malidp@foss.arm.com
 Cc: nd@arm.com
 List-Id: linux-rockchip.vger.kernel.org
 
-ZHJtX2Zvcm1hdF9pbmZvIHRhYmxlIGhhcyBhIGZpZWxkICdpc195dXYnIHRvIGRlbm90ZSBpZiB0
-aGUgZm9ybWF0CmlzIHl1diBvciBub3QuIFRoZSBkcml2ZXIgaXMgZXhwZWN0ZWQgdG8gdXNlIHRo
-aXMgaW5zdGVhZCBvZgpoYXZpbmcgYSBmdW5jdGlvbiBmb3IgdGhlIHNhbWUgcHVycG9zZS4KClNp
-Z25lZC1vZmYtYnk6IEF5YW4gS3VtYXIgaGFsZGVyIDxheWFuLmhhbGRlckBhcm0uY29tPgotLS0K
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAyNCArKysrKysr
-KystLS0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKyksIDE1IGRl
-bGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
-CmluZGV4IGVmZmVjYmUuLjEzNTllNWMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYwpAQCAtMjQzLDE4ICsyNDMsNiBAQCBzdGF0aWMgZW51bSB2b3BfZGF0
-YV9mb3JtYXQgdm9wX2NvbnZlcnRfZm9ybWF0KHVpbnQzMl90IGZvcm1hdCkKIAl9CiB9CiAKLXN0
-YXRpYyBib29sIGlzX3l1dl9zdXBwb3J0KHVpbnQzMl90IGZvcm1hdCkKLXsKLQlzd2l0Y2ggKGZv
-cm1hdCkgewotCWNhc2UgRFJNX0ZPUk1BVF9OVjEyOgotCWNhc2UgRFJNX0ZPUk1BVF9OVjE2Ogot
-CWNhc2UgRFJNX0ZPUk1BVF9OVjI0OgotCQlyZXR1cm4gdHJ1ZTsKLQlkZWZhdWx0OgotCQlyZXR1
-cm4gZmFsc2U7Ci0JfQotfQotCiBzdGF0aWMgdWludDE2X3Qgc2NsX3ZvcF9jYWxfc2NhbGUoZW51
-bSBzY2FsZV9tb2RlIG1vZGUsIHVpbnQzMl90IHNyYywKIAkJCQkgIHVpbnQzMl90IGRzdCwgYm9v
-bCBpc19ob3Jpem9udGFsLAogCQkJCSAgaW50IHZzdV9tb2RlLCBpbnQgKnZza2lwbGluZXMpCkBA
-IC0yOTgsNyArMjg2LDggQEAgc3RhdGljIHZvaWQgc2NsX3ZvcF9jYWxfc2NsX2ZhYyhzdHJ1Y3Qg
-dm9wICp2b3AsIGNvbnN0IHN0cnVjdCB2b3Bfd2luX2RhdGEgKndpbiwKIAl1aW50MTZfdCBjYmNy
-X3Zlcl9zY2xfbW9kZSA9IFNDQUxFX05PTkU7CiAJaW50IGhzdWIgPSBkcm1fZm9ybWF0X2hvcnpf
-Y2hyb21hX3N1YnNhbXBsaW5nKHBpeGVsX2Zvcm1hdCk7CiAJaW50IHZzdWIgPSBkcm1fZm9ybWF0
-X3ZlcnRfY2hyb21hX3N1YnNhbXBsaW5nKHBpeGVsX2Zvcm1hdCk7Ci0JYm9vbCBpc195dXYgPSBp
-c195dXZfc3VwcG9ydChwaXhlbF9mb3JtYXQpOworCWNvbnN0IHN0cnVjdCBkcm1fZm9ybWF0X2lu
-Zm8gKmluZm87CisJYm9vbCBpc195dXYgPSBmYWxzZTsKIAl1aW50MTZfdCBjYmNyX3NyY193ID0g
-c3JjX3cgLyBoc3ViOwogCXVpbnQxNl90IGNiY3Jfc3JjX2ggPSBzcmNfaCAvIHZzdWI7CiAJdWlu
-dDE2X3QgdnN1X21vZGU7CkBAIC0zMDYsNiArMjk1LDExIEBAIHN0YXRpYyB2b2lkIHNjbF92b3Bf
-Y2FsX3NjbF9mYWMoc3RydWN0IHZvcCAqdm9wLCBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3
-aW4sCiAJdWludDMyX3QgdmFsOwogCWludCB2c2tpcGxpbmVzOwogCisJaW5mbyA9IGRybV9mb3Jt
-YXRfaW5mbyhwaXhlbF9mb3JtYXQpOworCisJaWYgKGluZm8tPmlzX3l1dikKKwkJaXNfeXV2ID0g
-dHJ1ZTsKKwogCWlmIChkc3RfdyA+IDM4NDApIHsKIAkJRFJNX0RFVl9FUlJPUih2b3AtPmRldiwg
-Ik1heGltdW0gZHN0IHdpZHRoICgzODQwKSBleGNlZWRlZFxuIik7CiAJCXJldHVybjsKQEAgLTY4
-MCw3ICs2NzQsNyBAQCBzdGF0aWMgaW50IHZvcF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRy
-bV9wbGFuZSAqcGxhbmUsCiAJICogU3JjLngxIGNhbiBiZSBvZGQgd2hlbiBkbyBjbGlwLCBidXQg
-eXV2IHBsYW5lIHN0YXJ0IHBvaW50CiAJICogbmVlZCBhbGlnbiB3aXRoIDIgcGl4ZWwuCiAJICov
-Ci0JaWYgKGlzX3l1dl9zdXBwb3J0KGZiLT5mb3JtYXQtPmZvcm1hdCkgJiYgKChzdGF0ZS0+c3Jj
-LngxID4+IDE2KSAlIDIpKSB7CisJaWYgKGZiLT5mb3JtYXQtPmlzX3l1diAmJiAoKHN0YXRlLT5z
-cmMueDEgPj4gMTYpICUgMikpIHsKIAkJRFJNX0VSUk9SKCJJbnZhbGlkIFNvdXJjZTogWXV2IGZv
-cm1hdCBub3Qgc3VwcG9ydCBvZGQgeHBvc1xuIik7CiAJCXJldHVybiAtRUlOVkFMOwogCX0KQEAg
-LTc2Nyw3ICs3NjEsNyBAQCBzdGF0aWMgdm9pZCB2b3BfcGxhbmVfYXRvbWljX3VwZGF0ZShzdHJ1
-Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZm9ybWF0LCBmb3Jt
-YXQpOwogCVZPUF9XSU5fU0VUKHZvcCwgd2luLCB5cmdiX3ZpciwgRElWX1JPVU5EX1VQKGZiLT5w
-aXRjaGVzWzBdLCA0KSk7CiAJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHlyZ2JfbXN0LCBkbWFfYWRk
-cik7Ci0JaWYgKGlzX3l1dl9zdXBwb3J0KGZiLT5mb3JtYXQtPmZvcm1hdCkpIHsKKwlpZiAoZmIt
-PmZvcm1hdC0+aXNfeXV2KSB7CiAJCWludCBoc3ViID0gZHJtX2Zvcm1hdF9ob3J6X2Nocm9tYV9z
-dWJzYW1wbGluZyhmYi0+Zm9ybWF0LT5mb3JtYXQpOwogCQlpbnQgdnN1YiA9IGRybV9mb3JtYXRf
-dmVydF9jaHJvbWFfc3Vic2FtcGxpbmcoZmItPmZvcm1hdC0+Zm9ybWF0KTsKIAkJaW50IGJwcCA9
-IGZiLT5mb3JtYXQtPmNwcFsxXTsKLS0gCjIuNy40CgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+drm_format_info table has a field 'is_yuv' to denote if the format
+is yuv or not. The driver is expected to use this instead of
+having a function for the same purpose.
+
+Signed-off-by: Ayan Kumar halder <ayan.halder@arm.com>
+---
+ drivers/gpu/drm/omapdrm/dss/dispc.c | 26 ++++++++++----------------
+ 1 file changed, 10 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/omapdrm/dss/dispc.c b/drivers/gpu/drm/omapdrm/dss/dispc.c
+index 84f274c..8d2d7a4 100644
+--- a/drivers/gpu/drm/omapdrm/dss/dispc.c
++++ b/drivers/gpu/drm/omapdrm/dss/dispc.c
+@@ -1140,18 +1140,6 @@ static void dispc_ovl_set_color_mode(struct dispc_device *dispc,
+ 	REG_FLD_MOD(dispc, DISPC_OVL_ATTRIBUTES(plane), m, 4, 1);
+ }
+ 
+-static bool format_is_yuv(u32 fourcc)
+-{
+-	switch (fourcc) {
+-	case DRM_FORMAT_YUYV:
+-	case DRM_FORMAT_UYVY:
+-	case DRM_FORMAT_NV12:
+-		return true;
+-	default:
+-		return false;
+-	}
+-}
+-
+ static void dispc_ovl_configure_burst_type(struct dispc_device *dispc,
+ 					   enum omap_plane_id plane,
+ 					   enum omap_dss_rotation_type rotation)
+@@ -1910,11 +1898,14 @@ static void dispc_ovl_set_scaling_uv(struct dispc_device *dispc,
+ 	int scale_x = out_width != orig_width;
+ 	int scale_y = out_height != orig_height;
+ 	bool chroma_upscale = plane != OMAP_DSS_WB;
++	const struct drm_format_info *info;
++
++	info = drm_format_info(fourcc);
+ 
+ 	if (!dispc_has_feature(dispc, FEAT_HANDLE_UV_SEPARATE))
+ 		return;
+ 
+-	if (!format_is_yuv(fourcc)) {
++	if (!info->is_yuv) {
+ 		/* reset chroma resampling for RGB formats  */
+ 		if (plane != OMAP_DSS_WB)
+ 			REG_FLD_MOD(dispc, DISPC_OVL_ATTRIBUTES2(plane),
+@@ -2632,6 +2623,9 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
+ 	bool ilace = !!(vm->flags & DISPLAY_FLAGS_INTERLACED);
+ 	unsigned long pclk = dispc_plane_pclk_rate(dispc, plane);
+ 	unsigned long lclk = dispc_plane_lclk_rate(dispc, plane);
++	const struct drm_format_info *info;
++
++	info = drm_format_info(fourcc);
+ 
+ 	/* when setting up WB, dispc_plane_pclk_rate() returns 0 */
+ 	if (plane == OMAP_DSS_WB)
+@@ -2640,7 +2634,7 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
+ 	if (paddr == 0 && rotation_type != OMAP_DSS_ROT_TILER)
+ 		return -EINVAL;
+ 
+-	if (format_is_yuv(fourcc) && (in_width & 1)) {
++	if (info->is_yuv && (in_width & 1)) {
+ 		DSSERR("input width %d is not even for YUV format\n", in_width);
+ 		return -EINVAL;
+ 	}
+@@ -2680,7 +2674,7 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
+ 		DSSDBG("predecimation %d x %x, new input size %d x %d\n",
+ 			x_predecim, y_predecim, in_width, in_height);
+ 
+-	if (format_is_yuv(fourcc) && (in_width & 1)) {
++	if (info->is_yuv && (in_width & 1)) {
+ 		DSSDBG("predecimated input width is not even for YUV format\n");
+ 		DSSDBG("adjusting input width %d -> %d\n",
+ 			in_width, in_width & ~1);
+@@ -2688,7 +2682,7 @@ static int dispc_ovl_setup_common(struct dispc_device *dispc,
+ 		in_width &= ~1;
+ 	}
+ 
+-	if (format_is_yuv(fourcc))
++	if (info->is_yuv)
+ 		cconv = 1;
+ 
+ 	if (ilace && !fieldmode) {
+-- 
+2.7.4
