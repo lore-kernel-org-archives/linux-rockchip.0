@@ -1,100 +1,152 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: rockchip-vpu driver usability
-Date: Wed, 18 Jul 2018 14:44:18 +0900
-Message-ID: <CAAFQd5DwBXKc9G4tRmSjih=+Qccjyd+VKOXCJp2YMOQkouCymg@mail.gmail.com>
-References: <CAAFQd5DZkLoR3HCD74JdWQzg4XZ8Rmh9=DCgAhYX=7ue-iHDtA@mail.gmail.com>
- <20180524121824.fdtyjez3lc5pftfz@tarshish>
- <CAAFQd5Ap9v2-oyxZ8UK1bfsfEKd7K+=1erz+aK75SsLdd1SxHQ@mail.gmail.com>
- <5B07DCF9.2090709@rock-chips.com> <20180702072458.gcvwf24m63u2zg4m@tarshish>
- <CAAFQd5Ddc2w7GdzWcSPBKbpnkc2KLAXePBEbSNjbkt9aNjhOAg@mail.gmail.com>
- <20180702145707.kogqcuuqqofyugoc@tarshish>
- <CAAFQd5CytjMN1ZvX27TGuHbfywbQ3Lmqh6UV6YJdgSouqQ_+8w@mail.gmail.com>
- <20180704085537.vglkza6bwllx3573@sapphire.tkos.co.il>
- <CAAFQd5AYQVY-MPVsGn4XeM6m+uTV+-MYdU4DwmxkGCPr0BQthw@mail.gmail.com>
- <20180705121447.e65uehk5q2vung7e@tarshish>
+From: Brian Starkey <brian.starkey@arm.com>
+Subject: Re: [PATCH 1/5] drm/fourcc: Add is_yuv field to drm_format_info to
+ denote if the format is yuv
+Date: Wed, 18 Jul 2018 10:12:02 +0100
+Message-ID: <20180718091202.GA27151@DESKTOP-E1NTVVP.localdomain>
+References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180705121447.e65uehk5q2vung7e@tarshish>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ayan Kumar Halder <ayan.halder@arm.com>
+Cc: airlied@linux.ie, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org, peter.ujfalusi@ti.com, laurent.pinchart@ideasonboard.com, afd@ti.com, maxime.ripard@bootlin.com, linux-rockchip@lists.infradead.org, wens@csie.org, tomi.valkeinen@ti.com, malidp@foss.arm.com, intel-gfx@lists.freedesktop.org, rodrigo.vivi@intel.com, nd@arm.com, linux-arm-kernel@lists.infradead.org, sre@kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Baruch,
-
-Sorry, it looks like this message has been stuck somewhere in my
-mailbox for quite a long time.
-
-On Thu, Jul 5, 2018 at 9:14 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
->
-> Hi Tomasz,
->
-> On Wed, Jul 04, 2018 at 06:04:35PM +0900, Tomasz Figa wrote:
-> > On Wed, Jul 4, 2018 at 5:55 PM Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org> wrote:
-> > > So to get the rockchip-vpu driver working with current kernel I need to
-> > > also forward-port the embryonic Request API as well. I'll look into this.
-> > >
-> > > Are you aware of any other dependencies?
-> >
-> > I think V4L2 compound controls, but that should be already in
-> > upstream. I'll try to look up relevant Chromium kernel patches for you
-> > a bit later.
-> >
-> > > The alternative for me is to back-port rkisp1 video capture driver to vendor
-> > > provided 4.4 kernel so I can use the MPP shim driver. I hope to not get there.
-> > >
-> > > The easiest option, of course, is to just wait for the Request API and the new
-> > > codec driver. I'm not sure I can afford to wait though.
-> >
-> > I think you could also try to remove the use of config stores and make
-> > the driver latch control values in QBUF(OUTPUT). You would also need
-> > to adjust the plugin code accordingly.
->
-> I'm trying to wrap me head around the config_store implementation in the
-> 'chromeos-4.4' kernel branch (commit a36974eae81a). I think I get the general
-> idea. Still need to figure out the details.
->
-> I'm not sure I get your QBUF(OUTPUT) suggestion, though. Does "latch" means
-> that the driver attaches the same controls to all buffers, essentially
-> behaving like a traditional V4L2 device? Something else?
->
-> The limitation of being able to encode only one stream at a time is acceptable
-> for my application.
-
-The point is that userspace needs to specify a number of controls
-exactly for particular frame. Let's consider following sequence in
-user space:
-
-1) S_CTRL(control X, 1)
-2) QBUF(buffer 1, OUTPUT)
-3) S_CTRL(control X, 2)
-4) QBUF(buffer 2, OUTPUT)
-5) S_CTRL(control X, 3)
-6) QBUF(buffer 3, OUTPUT)
-
-Traditional V4L2 device would start processing buffer 1 after 2)
-completes, but all the further ioctls would just execute
-asynchronously, possibly leading to buffer 2 being processed with
-control X set to 3 (not 2) or even corrupting processing results of
-buffer 1, since control X changes during the processing.
-
-Latching would mean that rather than setting the active control value
-in S_CTRL, the driver would keep the last recently set value and write
-it to per-buffer data in QBUF.
-
-Obviously, if your user space waits for processing to end between 2)
-and 3) (and 4) and 5)), each buffer would be processed with correct
-control value even with traditional behavior.
-
-Best regards,
-Tomasz
+SGkgQXlhbiwKCk9uIFR1ZSwgSnVsIDE3LCAyMDE4IGF0IDA2OjEzOjQyUE0gKzAxMDAsIEF5YW4g
+S3VtYXIgSGFsZGVyIHdyb3RlOgo+QSBsb3Qgb2YgZHJpdmVycyBkdXBsaWNhdGUgdGhlIGZ1bmN0
+aW9uIHRvIGNoZWNrIGlmIGEgZm9ybWF0IGlzIHl1diBvciBub3QuCj5JZiB3ZSBhZGQgYSBmaWVs
+ZCAodG8gZGVub3RlIHdoZXRoZXIgdGhlIGZvcm1hdCBpcyB5dXYgb3Igbm90KSBpbiB0aGUKPmRy
+bV9mb3JtYXRfaW5mbyB0YWJsZSwgYWxsIHRoZSBkcml2ZXJzIGNhbiB1c2UgdGhpcyBmaWVsZCBh
+bmQgaXQgd2lsbAo+cHJldmVudCBkdXBsaWNhdGlvbiBvZiBzaW1pbGFyIGxvZ2ljLgoKVGhpcyBs
+b29rcyBsaWtlIGEgZ29vZCBpZGVhIHRvIG1lLgoKSSB3b25kZXIgaWYgdGhlIHR3byAiaGFzX2Fs
+cGhhIiBhbmQgImlzX3l1diIgYm9vbHMgc2hvdWxkIGJlIGJpdGZpZWxkcwp0byByZWR1Y2UgdGhl
+IGZvb3RwcmludCAobm90IHN1cmUgd2hhdCB0aGUgZ2VuZXJhbCBEUk0gYXR0aXR1ZGUgdG8KYml0
+ZmllbGRzIGlzKSwgYnV0IGVpdGhlciB3YXk6CgpSZXZpZXdlZC1ieTogQnJpYW4gU3RhcmtleSA8
+YnJpYW4uc3RhcmtleUBhcm0uY29tPgoKPgo+U2lnbmVkLW9mZi1ieTogQXlhbiBLdW1hciBoYWxk
+ZXIgPGF5YW4uaGFsZGVyQGFybS5jb20+Cj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJj
+Yy5jIHwgNDIgKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gaW5j
+bHVkZS9kcm0vZHJtX2ZvdXJjYy5oICAgICB8ICAyICsrCj4gMiBmaWxlcyBjaGFuZ2VkLCAyMyBp
+bnNlcnRpb25zKCspLCAyMSBkZWxldGlvbnMoLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9kcm1fZm91cmNjLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJjYy5jCj5pbmRleCA1
+Y2E2Mzk1Li4zNWMxZTI3IDEwMDY0NAo+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2Mu
+Ywo+KysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2MuYwo+QEAgLTE1MiwyNyArMTUyLDI3
+IEBAIGNvbnN0IHN0cnVjdCBkcm1fZm9ybWF0X2luZm8gKl9fZHJtX2Zvcm1hdF9pbmZvKHUzMiBm
+b3JtYXQpCj4gCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1hCR1I4ODg4X0E4LAkuZGVwdGggPSAz
+MiwgLm51bV9wbGFuZXMgPSAyLCAuY3BwID0geyA0LCAxLCAwIH0sIC5oc3ViID0gMSwgLnZzdWIg
+PSAxLCAuaGFzX2FscGhhID0gdHJ1ZSB9LAo+IAkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9SR0JY
+ODg4OF9BOCwJLmRlcHRoID0gMzIsIC5udW1fcGxhbmVzID0gMiwgLmNwcCA9IHsgNCwgMSwgMCB9
+LCAuaHN1YiA9IDEsIC52c3ViID0gMSwgLmhhc19hbHBoYSA9IHRydWUgfSwKPiAJCXsgLmZvcm1h
+dCA9IERSTV9GT1JNQVRfQkdSWDg4ODhfQTgsCS5kZXB0aCA9IDMyLCAubnVtX3BsYW5lcyA9IDIs
+IC5jcHAgPSB7IDQsIDEsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEsIC5oYXNfYWxwaGEgPSB0
+cnVlIH0sCj4tCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQxMCwJCS5kZXB0aCA9IDAsICAu
+bnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDQg
+fSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfWVZVNDEwLAkJLmRlcHRoID0gMCwgIC5udW1f
+cGxhbmVzID0gMywgLmNwcCA9IHsgMSwgMSwgMSB9LCAuaHN1YiA9IDQsIC52c3ViID0gNCB9LAo+
+LQkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9ZVVY0MTEsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFu
+ZXMgPSAzLCAuY3BwID0geyAxLCAxLCAxIH0sIC5oc3ViID0gNCwgLnZzdWIgPSAxIH0sCj4tCQl7
+IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lWVTQxMSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9
+IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDEgfSwKPi0JCXsgLmZv
+cm1hdCA9IERSTV9GT1JNQVRfWVVWNDIwLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMywg
+LmNwcCA9IHsgMSwgMSwgMSB9LCAuaHN1YiA9IDIsIC52c3ViID0gMiB9LAo+LQkJeyAuZm9ybWF0
+ID0gRFJNX0ZPUk1BVF9ZVlU0MjAsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAzLCAuY3Bw
+ID0geyAxLCAxLCAxIH0sIC5oc3ViID0gMiwgLnZzdWIgPSAyIH0sCj4tCQl7IC5mb3JtYXQgPSBE
+Uk1fRk9STUFUX1lVVjQyMiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7
+IDEsIDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9G
+T1JNQVRfWVZVNDIyLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMywgLmNwcCA9IHsgMSwg
+MSwgMSB9LCAuaHN1YiA9IDIsIC52c3ViID0gMSB9LAo+LQkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1B
+VF9ZVVY0NDQsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAzLCAuY3BwID0geyAxLCAxLCAx
+IH0sIC5oc3ViID0gMSwgLnZzdWIgPSAxIH0sCj4tCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lW
+VTQ0NCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwg
+LmhzdWIgPSAxLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYxMiwJ
+CS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIg
+PSAyLCAudnN1YiA9IDIgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYyMSwJCS5kZXB0
+aCA9IDAsICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAu
+dnN1YiA9IDIgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYxNiwJCS5kZXB0aCA9IDAs
+ICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9
+IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlY2MSwJCS5kZXB0aCA9IDAsICAubnVt
+X3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwK
+Pi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYyNCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5l
+cyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEgfSwKPi0JCXsg
+LmZvcm1hdCA9IERSTV9GT1JNQVRfTlY0MiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDIs
+IC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1h
+dCA9IERSTV9GT1JNQVRfWVVZViwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAg
+PSB7IDIsIDAsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERS
+TV9GT1JNQVRfWVZZVSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIs
+IDAsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JN
+QVRfVVlWWSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIsIDAsIDAg
+fSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfVllV
+WSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIsIDAsIDAgfSwgLmhz
+dWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfQVlVViwJCS5k
+ZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDQsIDAsIDAgfSwgLmhzdWIgPSAx
+LCAudnN1YiA9IDEsIC5oYXNfYWxwaGEgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9S
+TUFUX1lVVjQxMCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEs
+IDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDQsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3Jt
+YXQgPSBEUk1fRk9STUFUX1lWVTQxMCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5j
+cHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDQsIC5pc195dXYgPSB0cnVlIH0s
+Cj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQxMSwJCS5kZXB0aCA9IDAsICAubnVtX3Bs
+YW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDEsIC5pc195
+dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lWVTQxMSwJCS5kZXB0aCA9
+IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1
+YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQy
+MCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhz
+dWIgPSAyLCAudnN1YiA9IDIsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1f
+Rk9STUFUX1lWVTQyMCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEs
+IDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDIsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5m
+b3JtYXQgPSBEUk1fRk9STUFUX1lVVjQyMiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMs
+IC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVl
+IH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lWVTQyMiwJCS5kZXB0aCA9IDAsICAubnVt
+X3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5p
+c195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQ0NCwJCS5kZXB0
+aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSAxLCAu
+dnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lW
+VTQ0NCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwg
+LmhzdWIgPSAxLCAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBE
+Uk1fRk9STUFUX05WMTIsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAyLCAuY3BwID0geyAx
+LCAyLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIgPSAyLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJeyAu
+Zm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjIxLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMiwg
+LmNwcCA9IHsgMSwgMiwgMCB9LCAuaHN1YiA9IDIsIC52c3ViID0gMiwgLmlzX3l1diA9IHRydWUg
+fSwKPisJCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYxNiwJCS5kZXB0aCA9IDAsICAubnVtX3Bs
+YW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5pc195
+dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX05WNjEsCQkuZGVwdGggPSAw
+LCAgLm51bV9wbGFuZXMgPSAyLCAuY3BwID0geyAxLCAyLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIg
+PSAxLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjI0LAkJ
+LmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMiwgLmNwcCA9IHsgMSwgMiwgMCB9LCAuaHN1YiA9
+IDEsIC52c3ViID0gMSwgLmlzX3l1diA9IHRydWUgfSwKPisJCXsgLmZvcm1hdCA9IERSTV9GT1JN
+QVRfTlY0MiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAg
+fSwgLmhzdWIgPSAxLCAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQg
+PSBEUk1fRk9STUFUX1lVWVYsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAxLCAuY3BwID0g
+eyAyLCAwLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIgPSAxLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJ
+eyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9ZVllVLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0g
+MSwgLmNwcCA9IHsgMiwgMCwgMCB9LCAuaHN1YiA9IDIsIC52c3ViID0gMSwgLmlzX3l1diA9IHRy
+dWUgfSwKPisJCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfVVlWWSwJCS5kZXB0aCA9IDAsICAubnVt
+X3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIsIDAsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5p
+c195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1ZZVVksCQkuZGVwdGgg
+PSAwLCAgLm51bV9wbGFuZXMgPSAxLCAuY3BwID0geyAyLCAwLCAwIH0sIC5oc3ViID0gMiwgLnZz
+dWIgPSAxLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9BWVVW
+LAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMSwgLmNwcCA9IHsgNCwgMCwgMCB9LCAuaHN1
+YiA9IDEsIC52c3ViID0gMSwgLmhhc19hbHBoYSA9IHRydWUsIC5pc195dXYgPSB0cnVlIH0sCj4g
+CX07Cj4KPiAJdW5zaWduZWQgaW50IGk7Cj5kaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2Zv
+dXJjYy5oIGIvaW5jbHVkZS9kcm0vZHJtX2ZvdXJjYy5oCj5pbmRleCAzZTg2NDA4Li5mOWMxNTg0
+IDEwMDY0NAo+LS0tIGEvaW5jbHVkZS9kcm0vZHJtX2ZvdXJjYy5oCj4rKysgYi9pbmNsdWRlL2Ry
+bS9kcm1fZm91cmNjLmgKPkBAIC0zOSw2ICszOSw3IEBAIHN0cnVjdCBkcm1fbW9kZV9mYl9jbWQy
+Owo+ICAqIEBoc3ViOiBIb3Jpem9udGFsIGNocm9tYSBzdWJzYW1wbGluZyBmYWN0b3IKPiAgKiBA
+dnN1YjogVmVydGljYWwgY2hyb21hIHN1YnNhbXBsaW5nIGZhY3Rvcgo+ICAqIEBoYXNfYWxwaGE6
+IERvZXMgdGhlIGZvcm1hdCBlbWJlZHMgYW4gYWxwaGEgY29tcG9uZW50Pwo+KyAqIEBpc195dXY6
+IElzIGl0IGEgWVVWIGZvcm1hdD8KPiAgKi8KPiBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvIHsKPiAJ
+dTMyIGZvcm1hdDsKPkBAIC00OCw2ICs0OSw3IEBAIHN0cnVjdCBkcm1fZm9ybWF0X2luZm8gewo+
+IAl1OCBoc3ViOwo+IAl1OCB2c3ViOwo+IAlib29sIGhhc19hbHBoYTsKPisJYm9vbCBpc195dXY7
+Cj4gfTsKPgo+IC8qKgo+LS0gCj4yLjcuNAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
