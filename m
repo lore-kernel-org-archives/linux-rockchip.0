@@ -1,152 +1,89 @@
-From: Brian Starkey <brian.starkey@arm.com>
-Subject: Re: [PATCH 1/5] drm/fourcc: Add is_yuv field to drm_format_info to
- denote if the format is yuv
-Date: Wed, 18 Jul 2018 10:12:02 +0100
-Message-ID: <20180718091202.GA27151@DESKTOP-E1NTVVP.localdomain>
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+Subject: Re: [Intel-gfx] [PATCH 5/5] drm/sun4i: Substitute
+ sun4i_backend_format_is_yuv() with format->is_yuv
+Date: Wed, 18 Jul 2018 13:15:40 +0300
+Message-ID: <20180718101540.GT5565@intel.com>
 References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
+ <1531847626-22248-5-git-send-email-ayan.halder@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1531847626-22248-5-git-send-email-ayan.halder@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Ayan Kumar Halder <ayan.halder@arm.com>
-Cc: airlied@linux.ie, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org, peter.ujfalusi@ti.com, laurent.pinchart@ideasonboard.com, afd@ti.com, maxime.ripard@bootlin.com, linux-rockchip@lists.infradead.org, wens@csie.org, tomi.valkeinen@ti.com, malidp@foss.arm.com, intel-gfx@lists.freedesktop.org, rodrigo.vivi@intel.com, nd@arm.com, linux-arm-kernel@lists.infradead.org, sre@kernel.org, linux-kernel@vger.kernel.org
+Cc: liviu.dudau@arm.com, brian.starkey@arm.com, gustavo@padovan.org, maarten.lankhorst@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com, intel-gfx@lists.freedesktop.org, hjc@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tomi.valkeinen@ti.com, laurent.pinchart@ideasonboard.com, sre@kernel.org, bparrot@ti.com, peter.ujfalusi@ti.com, afd@ti.com, dri-devel@lists.freedesktop.org, maxime.ripard@bootlin.com, wens@csie.org, malidp@foss.arm.com, nd@arm.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQXlhbiwKCk9uIFR1ZSwgSnVsIDE3LCAyMDE4IGF0IDA2OjEzOjQyUE0gKzAxMDAsIEF5YW4g
-S3VtYXIgSGFsZGVyIHdyb3RlOgo+QSBsb3Qgb2YgZHJpdmVycyBkdXBsaWNhdGUgdGhlIGZ1bmN0
-aW9uIHRvIGNoZWNrIGlmIGEgZm9ybWF0IGlzIHl1diBvciBub3QuCj5JZiB3ZSBhZGQgYSBmaWVs
-ZCAodG8gZGVub3RlIHdoZXRoZXIgdGhlIGZvcm1hdCBpcyB5dXYgb3Igbm90KSBpbiB0aGUKPmRy
-bV9mb3JtYXRfaW5mbyB0YWJsZSwgYWxsIHRoZSBkcml2ZXJzIGNhbiB1c2UgdGhpcyBmaWVsZCBh
-bmQgaXQgd2lsbAo+cHJldmVudCBkdXBsaWNhdGlvbiBvZiBzaW1pbGFyIGxvZ2ljLgoKVGhpcyBs
-b29rcyBsaWtlIGEgZ29vZCBpZGVhIHRvIG1lLgoKSSB3b25kZXIgaWYgdGhlIHR3byAiaGFzX2Fs
-cGhhIiBhbmQgImlzX3l1diIgYm9vbHMgc2hvdWxkIGJlIGJpdGZpZWxkcwp0byByZWR1Y2UgdGhl
-IGZvb3RwcmludCAobm90IHN1cmUgd2hhdCB0aGUgZ2VuZXJhbCBEUk0gYXR0aXR1ZGUgdG8KYml0
-ZmllbGRzIGlzKSwgYnV0IGVpdGhlciB3YXk6CgpSZXZpZXdlZC1ieTogQnJpYW4gU3RhcmtleSA8
-YnJpYW4uc3RhcmtleUBhcm0uY29tPgoKPgo+U2lnbmVkLW9mZi1ieTogQXlhbiBLdW1hciBoYWxk
-ZXIgPGF5YW4uaGFsZGVyQGFybS5jb20+Cj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJj
-Yy5jIHwgNDIgKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gaW5j
-bHVkZS9kcm0vZHJtX2ZvdXJjYy5oICAgICB8ICAyICsrCj4gMiBmaWxlcyBjaGFuZ2VkLCAyMyBp
-bnNlcnRpb25zKCspLCAyMSBkZWxldGlvbnMoLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9kcm1fZm91cmNjLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJjYy5jCj5pbmRleCA1
-Y2E2Mzk1Li4zNWMxZTI3IDEwMDY0NAo+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2Mu
-Ywo+KysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2MuYwo+QEAgLTE1MiwyNyArMTUyLDI3
-IEBAIGNvbnN0IHN0cnVjdCBkcm1fZm9ybWF0X2luZm8gKl9fZHJtX2Zvcm1hdF9pbmZvKHUzMiBm
-b3JtYXQpCj4gCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1hCR1I4ODg4X0E4LAkuZGVwdGggPSAz
-MiwgLm51bV9wbGFuZXMgPSAyLCAuY3BwID0geyA0LCAxLCAwIH0sIC5oc3ViID0gMSwgLnZzdWIg
-PSAxLCAuaGFzX2FscGhhID0gdHJ1ZSB9LAo+IAkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9SR0JY
-ODg4OF9BOCwJLmRlcHRoID0gMzIsIC5udW1fcGxhbmVzID0gMiwgLmNwcCA9IHsgNCwgMSwgMCB9
-LCAuaHN1YiA9IDEsIC52c3ViID0gMSwgLmhhc19hbHBoYSA9IHRydWUgfSwKPiAJCXsgLmZvcm1h
-dCA9IERSTV9GT1JNQVRfQkdSWDg4ODhfQTgsCS5kZXB0aCA9IDMyLCAubnVtX3BsYW5lcyA9IDIs
-IC5jcHAgPSB7IDQsIDEsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEsIC5oYXNfYWxwaGEgPSB0
-cnVlIH0sCj4tCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQxMCwJCS5kZXB0aCA9IDAsICAu
-bnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDQg
-fSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfWVZVNDEwLAkJLmRlcHRoID0gMCwgIC5udW1f
-cGxhbmVzID0gMywgLmNwcCA9IHsgMSwgMSwgMSB9LCAuaHN1YiA9IDQsIC52c3ViID0gNCB9LAo+
-LQkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9ZVVY0MTEsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFu
-ZXMgPSAzLCAuY3BwID0geyAxLCAxLCAxIH0sIC5oc3ViID0gNCwgLnZzdWIgPSAxIH0sCj4tCQl7
-IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lWVTQxMSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9
-IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDEgfSwKPi0JCXsgLmZv
-cm1hdCA9IERSTV9GT1JNQVRfWVVWNDIwLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMywg
-LmNwcCA9IHsgMSwgMSwgMSB9LCAuaHN1YiA9IDIsIC52c3ViID0gMiB9LAo+LQkJeyAuZm9ybWF0
-ID0gRFJNX0ZPUk1BVF9ZVlU0MjAsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAzLCAuY3Bw
-ID0geyAxLCAxLCAxIH0sIC5oc3ViID0gMiwgLnZzdWIgPSAyIH0sCj4tCQl7IC5mb3JtYXQgPSBE
-Uk1fRk9STUFUX1lVVjQyMiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7
-IDEsIDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9G
-T1JNQVRfWVZVNDIyLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMywgLmNwcCA9IHsgMSwg
-MSwgMSB9LCAuaHN1YiA9IDIsIC52c3ViID0gMSB9LAo+LQkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1B
-VF9ZVVY0NDQsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAzLCAuY3BwID0geyAxLCAxLCAx
-IH0sIC5oc3ViID0gMSwgLnZzdWIgPSAxIH0sCj4tCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lW
-VTQ0NCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwg
-LmhzdWIgPSAxLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYxMiwJ
-CS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIg
-PSAyLCAudnN1YiA9IDIgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYyMSwJCS5kZXB0
-aCA9IDAsICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAu
-dnN1YiA9IDIgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYxNiwJCS5kZXB0aCA9IDAs
-ICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9
-IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlY2MSwJCS5kZXB0aCA9IDAsICAubnVt
-X3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwK
-Pi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYyNCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5l
-cyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEgfSwKPi0JCXsg
-LmZvcm1hdCA9IERSTV9GT1JNQVRfTlY0MiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDIs
-IC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAxLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1h
-dCA9IERSTV9GT1JNQVRfWVVZViwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAg
-PSB7IDIsIDAsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERS
-TV9GT1JNQVRfWVZZVSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIs
-IDAsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JN
-QVRfVVlWWSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIsIDAsIDAg
-fSwgLmhzdWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfVllV
-WSwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIsIDAsIDAgfSwgLmhz
-dWIgPSAyLCAudnN1YiA9IDEgfSwKPi0JCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfQVlVViwJCS5k
-ZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDEsIC5jcHAgPSB7IDQsIDAsIDAgfSwgLmhzdWIgPSAx
-LCAudnN1YiA9IDEsIC5oYXNfYWxwaGEgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9S
-TUFUX1lVVjQxMCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEs
-IDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDQsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3Jt
-YXQgPSBEUk1fRk9STUFUX1lWVTQxMCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5j
-cHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDQsIC5pc195dXYgPSB0cnVlIH0s
-Cj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQxMSwJCS5kZXB0aCA9IDAsICAubnVtX3Bs
-YW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1YiA9IDEsIC5pc195
-dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lWVTQxMSwJCS5kZXB0aCA9
-IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSA0LCAudnN1
-YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQy
-MCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhz
-dWIgPSAyLCAudnN1YiA9IDIsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1f
-Rk9STUFUX1lWVTQyMCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEs
-IDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDIsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5m
-b3JtYXQgPSBEUk1fRk9STUFUX1lVVjQyMiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMs
-IC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVl
-IH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lWVTQyMiwJCS5kZXB0aCA9IDAsICAubnVt
-X3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5p
-c195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lVVjQ0NCwJCS5kZXB0
-aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwgLmhzdWIgPSAxLCAu
-dnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1lW
-VTQ0NCwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDMsIC5jcHAgPSB7IDEsIDEsIDEgfSwg
-LmhzdWIgPSAxLCAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBE
-Uk1fRk9STUFUX05WMTIsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAyLCAuY3BwID0geyAx
-LCAyLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIgPSAyLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJeyAu
-Zm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjIxLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMiwg
-LmNwcCA9IHsgMSwgMiwgMCB9LCAuaHN1YiA9IDIsIC52c3ViID0gMiwgLmlzX3l1diA9IHRydWUg
-fSwKPisJCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfTlYxNiwJCS5kZXB0aCA9IDAsICAubnVtX3Bs
-YW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5pc195
-dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX05WNjEsCQkuZGVwdGggPSAw
-LCAgLm51bV9wbGFuZXMgPSAyLCAuY3BwID0geyAxLCAyLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIg
-PSAxLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjI0LAkJ
-LmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMiwgLmNwcCA9IHsgMSwgMiwgMCB9LCAuaHN1YiA9
-IDEsIC52c3ViID0gMSwgLmlzX3l1diA9IHRydWUgfSwKPisJCXsgLmZvcm1hdCA9IERSTV9GT1JN
-QVRfTlY0MiwJCS5kZXB0aCA9IDAsICAubnVtX3BsYW5lcyA9IDIsIC5jcHAgPSB7IDEsIDIsIDAg
-fSwgLmhzdWIgPSAxLCAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQg
-PSBEUk1fRk9STUFUX1lVWVYsCQkuZGVwdGggPSAwLCAgLm51bV9wbGFuZXMgPSAxLCAuY3BwID0g
-eyAyLCAwLCAwIH0sIC5oc3ViID0gMiwgLnZzdWIgPSAxLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJ
-eyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9ZVllVLAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0g
-MSwgLmNwcCA9IHsgMiwgMCwgMCB9LCAuaHN1YiA9IDIsIC52c3ViID0gMSwgLmlzX3l1diA9IHRy
-dWUgfSwKPisJCXsgLmZvcm1hdCA9IERSTV9GT1JNQVRfVVlWWSwJCS5kZXB0aCA9IDAsICAubnVt
-X3BsYW5lcyA9IDEsIC5jcHAgPSB7IDIsIDAsIDAgfSwgLmhzdWIgPSAyLCAudnN1YiA9IDEsIC5p
-c195dXYgPSB0cnVlIH0sCj4rCQl7IC5mb3JtYXQgPSBEUk1fRk9STUFUX1ZZVVksCQkuZGVwdGgg
-PSAwLCAgLm51bV9wbGFuZXMgPSAxLCAuY3BwID0geyAyLCAwLCAwIH0sIC5oc3ViID0gMiwgLnZz
-dWIgPSAxLCAuaXNfeXV2ID0gdHJ1ZSB9LAo+KwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9BWVVW
-LAkJLmRlcHRoID0gMCwgIC5udW1fcGxhbmVzID0gMSwgLmNwcCA9IHsgNCwgMCwgMCB9LCAuaHN1
-YiA9IDEsIC52c3ViID0gMSwgLmhhc19hbHBoYSA9IHRydWUsIC5pc195dXYgPSB0cnVlIH0sCj4g
-CX07Cj4KPiAJdW5zaWduZWQgaW50IGk7Cj5kaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2Zv
-dXJjYy5oIGIvaW5jbHVkZS9kcm0vZHJtX2ZvdXJjYy5oCj5pbmRleCAzZTg2NDA4Li5mOWMxNTg0
-IDEwMDY0NAo+LS0tIGEvaW5jbHVkZS9kcm0vZHJtX2ZvdXJjYy5oCj4rKysgYi9pbmNsdWRlL2Ry
-bS9kcm1fZm91cmNjLmgKPkBAIC0zOSw2ICszOSw3IEBAIHN0cnVjdCBkcm1fbW9kZV9mYl9jbWQy
-Owo+ICAqIEBoc3ViOiBIb3Jpem9udGFsIGNocm9tYSBzdWJzYW1wbGluZyBmYWN0b3IKPiAgKiBA
-dnN1YjogVmVydGljYWwgY2hyb21hIHN1YnNhbXBsaW5nIGZhY3Rvcgo+ICAqIEBoYXNfYWxwaGE6
-IERvZXMgdGhlIGZvcm1hdCBlbWJlZHMgYW4gYWxwaGEgY29tcG9uZW50Pwo+KyAqIEBpc195dXY6
-IElzIGl0IGEgWVVWIGZvcm1hdD8KPiAgKi8KPiBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvIHsKPiAJ
-dTMyIGZvcm1hdDsKPkBAIC00OCw2ICs0OSw3IEBAIHN0cnVjdCBkcm1fZm9ybWF0X2luZm8gewo+
-IAl1OCBoc3ViOwo+IAl1OCB2c3ViOwo+IAlib29sIGhhc19hbHBoYTsKPisJYm9vbCBpc195dXY7
-Cj4gfTsKPgo+IC8qKgo+LS0gCj4yLjcuNAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+On Tue, Jul 17, 2018 at 06:13:46PM +0100, Ayan Kumar Halder wrote:
+> drm_format_info table has a field 'is_yuv' to denote if the format
+> is yuv or not. The driver is expected to use this instead of
+> having a function for the same purpose.
+> 
+> Signed-off-by: Ayan Kumar halder <ayan.halder@arm.com>
+> ---
+>  drivers/gpu/drm/sun4i/sun4i_backend.c | 12 +++---------
+>  1 file changed, 3 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> index de0a76d..d7950b5 100644
+> --- a/drivers/gpu/drm/sun4i/sun4i_backend.c
+> +++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
+> @@ -86,12 +86,6 @@ static inline bool sun4i_backend_format_is_packed_yuv422(uint32_t format)
+>  	}
+>  }
+>  
+> -static inline bool sun4i_backend_format_is_yuv(uint32_t format)
+> -{
+> -	return sun4i_backend_format_is_planar_yuv(format) ||
+> -		sun4i_backend_format_is_packed_yuv422(format);
+> -}
+
+sun4i_backend_format_is_planar_yuv() is now unused so could be nuked.
+Also the one remaining use of sun4i_backend_format_is_packed_yuv422()
+could be replaced with 'is_yuv && num_planes == 1', so that one could
+be easily killed off ass well.
+
+> -
+>  static void sun4i_backend_apply_color_correction(struct sunxi_engine *engine)
+>  {
+>  	int i;
+> @@ -304,7 +298,7 @@ int sun4i_backend_update_layer_formats(struct sun4i_backend *backend,
+>  			   SUN4I_BACKEND_ATTCTL_REG0_LAY_GLBALPHA_EN,
+>  			   val);
+>  
+> -	if (sun4i_backend_format_is_yuv(fb->format->format))
+> +	if (fb->format->is_yuv)
+>  		return sun4i_backend_update_yuv_format(backend, layer, plane);
+>  
+>  	ret = sun4i_backend_drm_format_to_layer(fb->format->format, &val);
+> @@ -384,7 +378,7 @@ int sun4i_backend_update_layer_buffer(struct sun4i_backend *backend,
+>  	 */
+>  	paddr -= PHYS_OFFSET;
+>  
+> -	if (sun4i_backend_format_is_yuv(fb->format->format))
+> +	if (fb->format->is_yuv)
+>  		return sun4i_backend_update_yuv_buffer(backend, fb, paddr);
+>  
+>  	/* Write the 32 lower bits of the address (in bits) */
+> @@ -502,7 +496,7 @@ static int sun4i_backend_atomic_check(struct sunxi_engine *engine,
+>  		if (fb->format->has_alpha || (plane_state->alpha != DRM_BLEND_ALPHA_OPAQUE))
+>  			num_alpha_planes++;
+>  
+> -		if (sun4i_backend_format_is_yuv(fb->format->format)) {
+> +		if (fb->format->is_yuv) {
+>  			DRM_DEBUG_DRIVER("Plane FB format is YUV\n");
+>  			num_yuv_planes++;
+>  		}
+> -- 
+> 2.7.4
+> 
+> _______________________________________________
+> Intel-gfx mailing list
+> Intel-gfx@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
+
+-- 
+Ville Syrjälä
+Intel
