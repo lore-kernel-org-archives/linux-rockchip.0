@@ -1,89 +1,91 @@
 From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-Subject: Re: [Intel-gfx] [PATCH 5/5] drm/sun4i: Substitute
- sun4i_backend_format_is_yuv() with format->is_yuv
-Date: Wed, 18 Jul 2018 13:15:40 +0300
-Message-ID: <20180718101540.GT5565@intel.com>
+Subject: Re: [PATCH 4/5] drm/omapdrm: Substitute format_is_yuv()
+ with format->is_yuv
+Date: Wed, 18 Jul 2018 13:17:41 +0300
+Message-ID: <20180718101741.GU5565@intel.com>
 References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
- <1531847626-22248-5-git-send-email-ayan.halder@arm.com>
+ <1531847626-22248-4-git-send-email-ayan.halder@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1531847626-22248-5-git-send-email-ayan.halder@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
+In-Reply-To: <1531847626-22248-4-git-send-email-ayan.halder@arm.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
 To: Ayan Kumar Halder <ayan.halder@arm.com>
-Cc: liviu.dudau@arm.com, brian.starkey@arm.com, gustavo@padovan.org, maarten.lankhorst@linux.intel.com, seanpaul@chromium.org, airlied@linux.ie, jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com, intel-gfx@lists.freedesktop.org, hjc@rock-chips.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tomi.valkeinen@ti.com, laurent.pinchart@ideasonboard.com, sre@kernel.org, bparrot@ti.com, peter.ujfalusi@ti.com, afd@ti.com, dri-devel@lists.freedesktop.org, maxime.ripard@bootlin.com, wens@csie.org, malidp@foss.arm.com, nd@arm.com
+Cc: heiko@sntech.de, airlied@linux.ie, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, peter.ujfalusi@ti.com, laurent.pinchart@ideasonboard.com, afd@ti.com, maxime.ripard@bootlin.com, linux-rockchip@lists.infradead.org, wens@csie.org, tomi.valkeinen@ti.com, malidp@foss.arm.com, intel-gfx@lists.freedesktop.org, bparrot@ti.com, rodrigo.vivi@intel.com, nd@arm.com, linux-arm-kernel@lists.infradead.org, sre@kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jul 17, 2018 at 06:13:46PM +0100, Ayan Kumar Halder wrote:
-> drm_format_info table has a field 'is_yuv' to denote if the format
-> is yuv or not. The driver is expected to use this instead of
-> having a function for the same purpose.
-> 
-> Signed-off-by: Ayan Kumar halder <ayan.halder@arm.com>
-> ---
->  drivers/gpu/drm/sun4i/sun4i_backend.c | 12 +++---------
->  1 file changed, 3 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
-> index de0a76d..d7950b5 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_backend.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
-> @@ -86,12 +86,6 @@ static inline bool sun4i_backend_format_is_packed_yuv422(uint32_t format)
->  	}
->  }
->  
-> -static inline bool sun4i_backend_format_is_yuv(uint32_t format)
-> -{
-> -	return sun4i_backend_format_is_planar_yuv(format) ||
-> -		sun4i_backend_format_is_packed_yuv422(format);
-> -}
-
-sun4i_backend_format_is_planar_yuv() is now unused so could be nuked.
-Also the one remaining use of sun4i_backend_format_is_packed_yuv422()
-could be replaced with 'is_yuv && num_planes == 1', so that one could
-be easily killed off ass well.
-
-> -
->  static void sun4i_backend_apply_color_correction(struct sunxi_engine *engine)
->  {
->  	int i;
-> @@ -304,7 +298,7 @@ int sun4i_backend_update_layer_formats(struct sun4i_backend *backend,
->  			   SUN4I_BACKEND_ATTCTL_REG0_LAY_GLBALPHA_EN,
->  			   val);
->  
-> -	if (sun4i_backend_format_is_yuv(fb->format->format))
-> +	if (fb->format->is_yuv)
->  		return sun4i_backend_update_yuv_format(backend, layer, plane);
->  
->  	ret = sun4i_backend_drm_format_to_layer(fb->format->format, &val);
-> @@ -384,7 +378,7 @@ int sun4i_backend_update_layer_buffer(struct sun4i_backend *backend,
->  	 */
->  	paddr -= PHYS_OFFSET;
->  
-> -	if (sun4i_backend_format_is_yuv(fb->format->format))
-> +	if (fb->format->is_yuv)
->  		return sun4i_backend_update_yuv_buffer(backend, fb, paddr);
->  
->  	/* Write the 32 lower bits of the address (in bits) */
-> @@ -502,7 +496,7 @@ static int sun4i_backend_atomic_check(struct sunxi_engine *engine,
->  		if (fb->format->has_alpha || (plane_state->alpha != DRM_BLEND_ALPHA_OPAQUE))
->  			num_alpha_planes++;
->  
-> -		if (sun4i_backend_format_is_yuv(fb->format->format)) {
-> +		if (fb->format->is_yuv) {
->  			DRM_DEBUG_DRIVER("Plane FB format is YUV\n");
->  			num_yuv_planes++;
->  		}
-> -- 
-> 2.7.4
-> 
-> _______________________________________________
-> Intel-gfx mailing list
-> Intel-gfx@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
-
--- 
-Ville Syrjälä
-Intel
+T24gVHVlLCBKdWwgMTcsIDIwMTggYXQgMDY6MTM6NDVQTSArMDEwMCwgQXlhbiBLdW1hciBIYWxk
+ZXIgd3JvdGU6Cj4gZHJtX2Zvcm1hdF9pbmZvIHRhYmxlIGhhcyBhIGZpZWxkICdpc195dXYnIHRv
+IGRlbm90ZSBpZiB0aGUgZm9ybWF0Cj4gaXMgeXV2IG9yIG5vdC4gVGhlIGRyaXZlciBpcyBleHBl
+Y3RlZCB0byB1c2UgdGhpcyBpbnN0ZWFkIG9mCj4gaGF2aW5nIGEgZnVuY3Rpb24gZm9yIHRoZSBz
+YW1lIHB1cnBvc2UuCj4gCj4gU2lnbmVkLW9mZi1ieTogQXlhbiBLdW1hciBoYWxkZXIgPGF5YW4u
+aGFsZGVyQGFybS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9vbWFwZHJtL2Rzcy9kaXNw
+Yy5jIHwgMjYgKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDEw
+IGluc2VydGlvbnMoKyksIDE2IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vb21hcGRybS9kc3MvZGlzcGMuYyBiL2RyaXZlcnMvZ3B1L2RybS9vbWFwZHJtL2Rz
+cy9kaXNwYy5jCj4gaW5kZXggODRmMjc0Yy4uOGQyZDdhNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vb21hcGRybS9kc3MvZGlzcGMuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9vbWFw
+ZHJtL2Rzcy9kaXNwYy5jCj4gQEAgLTExNDAsMTggKzExNDAsNiBAQCBzdGF0aWMgdm9pZCBkaXNw
+Y19vdmxfc2V0X2NvbG9yX21vZGUoc3RydWN0IGRpc3BjX2RldmljZSAqZGlzcGMsCj4gIAlSRUdf
+RkxEX01PRChkaXNwYywgRElTUENfT1ZMX0FUVFJJQlVURVMocGxhbmUpLCBtLCA0LCAxKTsKPiAg
+fQo+ICAKPiAtc3RhdGljIGJvb2wgZm9ybWF0X2lzX3l1dih1MzIgZm91cmNjKQo+IC17Cj4gLQlz
+d2l0Y2ggKGZvdXJjYykgewo+IC0JY2FzZSBEUk1fRk9STUFUX1lVWVY6Cj4gLQljYXNlIERSTV9G
+T1JNQVRfVVlWWToKPiAtCWNhc2UgRFJNX0ZPUk1BVF9OVjEyOgo+IC0JCXJldHVybiB0cnVlOwo+
+IC0JZGVmYXVsdDoKPiAtCQlyZXR1cm4gZmFsc2U7Cj4gLQl9Cj4gLX0KPiAtCj4gIHN0YXRpYyB2
+b2lkIGRpc3BjX292bF9jb25maWd1cmVfYnVyc3RfdHlwZShzdHJ1Y3QgZGlzcGNfZGV2aWNlICpk
+aXNwYywKPiAgCQkJCQkgICBlbnVtIG9tYXBfcGxhbmVfaWQgcGxhbmUsCj4gIAkJCQkJICAgZW51
+bSBvbWFwX2Rzc19yb3RhdGlvbl90eXBlIHJvdGF0aW9uKQo+IEBAIC0xOTEwLDExICsxODk4LDE0
+IEBAIHN0YXRpYyB2b2lkIGRpc3BjX292bF9zZXRfc2NhbGluZ191dihzdHJ1Y3QgZGlzcGNfZGV2
+aWNlICpkaXNwYywKPiAgCWludCBzY2FsZV94ID0gb3V0X3dpZHRoICE9IG9yaWdfd2lkdGg7Cj4g
+IAlpbnQgc2NhbGVfeSA9IG91dF9oZWlnaHQgIT0gb3JpZ19oZWlnaHQ7Cj4gIAlib29sIGNocm9t
+YV91cHNjYWxlID0gcGxhbmUgIT0gT01BUF9EU1NfV0I7Cj4gKwljb25zdCBzdHJ1Y3QgZHJtX2Zv
+cm1hdF9pbmZvICppbmZvOwo+ICsKPiArCWluZm8gPSBkcm1fZm9ybWF0X2luZm8oZm91cmNjKTsK
+Ck5vdCBzdXJlIFRvbWkgd2FudHMgZHJtIHVzYWdlIChhcGFydCBmcm9tIHRoZSBmb3VyY2NzKSBp
+bnNpZGUgdGhlCmRzcyBjb2RlLgoKPiAgCj4gIAlpZiAoIWRpc3BjX2hhc19mZWF0dXJlKGRpc3Bj
+LCBGRUFUX0hBTkRMRV9VVl9TRVBBUkFURSkpCj4gIAkJcmV0dXJuOwo+ICAKPiAtCWlmICghZm9y
+bWF0X2lzX3l1dihmb3VyY2MpKSB7Cj4gKwlpZiAoIWluZm8tPmlzX3l1dikgewo+ICAJCS8qIHJl
+c2V0IGNocm9tYSByZXNhbXBsaW5nIGZvciBSR0IgZm9ybWF0cyAgKi8KPiAgCQlpZiAocGxhbmUg
+IT0gT01BUF9EU1NfV0IpCj4gIAkJCVJFR19GTERfTU9EKGRpc3BjLCBESVNQQ19PVkxfQVRUUklC
+VVRFUzIocGxhbmUpLAo+IEBAIC0yNjMyLDYgKzI2MjMsOSBAQCBzdGF0aWMgaW50IGRpc3BjX292
+bF9zZXR1cF9jb21tb24oc3RydWN0IGRpc3BjX2RldmljZSAqZGlzcGMsCj4gIAlib29sIGlsYWNl
+ID0gISEodm0tPmZsYWdzICYgRElTUExBWV9GTEFHU19JTlRFUkxBQ0VEKTsKPiAgCXVuc2lnbmVk
+IGxvbmcgcGNsayA9IGRpc3BjX3BsYW5lX3BjbGtfcmF0ZShkaXNwYywgcGxhbmUpOwo+ICAJdW5z
+aWduZWQgbG9uZyBsY2xrID0gZGlzcGNfcGxhbmVfbGNsa19yYXRlKGRpc3BjLCBwbGFuZSk7Cj4g
+Kwljb25zdCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvOwo+ICsKPiArCWluZm8gPSBkcm1f
+Zm9ybWF0X2luZm8oZm91cmNjKTsKPiAgCj4gIAkvKiB3aGVuIHNldHRpbmcgdXAgV0IsIGRpc3Bj
+X3BsYW5lX3BjbGtfcmF0ZSgpIHJldHVybnMgMCAqLwo+ICAJaWYgKHBsYW5lID09IE9NQVBfRFNT
+X1dCKQo+IEBAIC0yNjQwLDcgKzI2MzQsNyBAQCBzdGF0aWMgaW50IGRpc3BjX292bF9zZXR1cF9j
+b21tb24oc3RydWN0IGRpc3BjX2RldmljZSAqZGlzcGMsCj4gIAlpZiAocGFkZHIgPT0gMCAmJiBy
+b3RhdGlvbl90eXBlICE9IE9NQVBfRFNTX1JPVF9USUxFUikKPiAgCQlyZXR1cm4gLUVJTlZBTDsK
+PiAgCj4gLQlpZiAoZm9ybWF0X2lzX3l1dihmb3VyY2MpICYmIChpbl93aWR0aCAmIDEpKSB7Cj4g
+KwlpZiAoaW5mby0+aXNfeXV2ICYmIChpbl93aWR0aCAmIDEpKSB7Cj4gIAkJRFNTRVJSKCJpbnB1
+dCB3aWR0aCAlZCBpcyBub3QgZXZlbiBmb3IgWVVWIGZvcm1hdFxuIiwgaW5fd2lkdGgpOwo+ICAJ
+CXJldHVybiAtRUlOVkFMOwo+ICAJfQo+IEBAIC0yNjgwLDcgKzI2NzQsNyBAQCBzdGF0aWMgaW50
+IGRpc3BjX292bF9zZXR1cF9jb21tb24oc3RydWN0IGRpc3BjX2RldmljZSAqZGlzcGMsCj4gIAkJ
+RFNTREJHKCJwcmVkZWNpbWF0aW9uICVkIHggJXgsIG5ldyBpbnB1dCBzaXplICVkIHggJWRcbiIs
+Cj4gIAkJCXhfcHJlZGVjaW0sIHlfcHJlZGVjaW0sIGluX3dpZHRoLCBpbl9oZWlnaHQpOwo+ICAK
+PiAtCWlmIChmb3JtYXRfaXNfeXV2KGZvdXJjYykgJiYgKGluX3dpZHRoICYgMSkpIHsKPiArCWlm
+IChpbmZvLT5pc195dXYgJiYgKGluX3dpZHRoICYgMSkpIHsKPiAgCQlEU1NEQkcoInByZWRlY2lt
+YXRlZCBpbnB1dCB3aWR0aCBpcyBub3QgZXZlbiBmb3IgWVVWIGZvcm1hdFxuIik7Cj4gIAkJRFNT
+REJHKCJhZGp1c3RpbmcgaW5wdXQgd2lkdGggJWQgLT4gJWRcbiIsCj4gIAkJCWluX3dpZHRoLCBp
+bl93aWR0aCAmIH4xKTsKPiBAQCAtMjY4OCw3ICsyNjgyLDcgQEAgc3RhdGljIGludCBkaXNwY19v
+dmxfc2V0dXBfY29tbW9uKHN0cnVjdCBkaXNwY19kZXZpY2UgKmRpc3BjLAo+ICAJCWluX3dpZHRo
+ICY9IH4xOwo+ICAJfQo+ICAKPiAtCWlmIChmb3JtYXRfaXNfeXV2KGZvdXJjYykpCj4gKwlpZiAo
+aW5mby0+aXNfeXV2KQo+ICAJCWNjb252ID0gMTsKPiAgCj4gIAlpZiAoaWxhY2UgJiYgIWZpZWxk
+bW9kZSkgewo+IC0tIAo+IDIuNy40Cj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KPiBJbnRlbC1nZnggbWFpbGluZyBsaXN0Cj4gSW50ZWwtZ2Z4QGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vaW50ZWwtZ2Z4CgotLSAKVmlsbGUgU3lyasOkbMOkCkludGVsCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5n
+IGxpc3QKSW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeAo=
