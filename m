@@ -1,80 +1,49 @@
-From: Ayan Halder <ayan.halder@arm.com>
-Subject: Re: [Intel-gfx] [PATCH 5/5] drm/sun4i: Substitute
- sun4i_backend_format_is_yuv() with format->is_yuv
-Date: Wed, 18 Jul 2018 15:40:51 +0100
-Message-ID: <20180718144050.GA2056@arm.com>
-References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
- <1531847626-22248-5-git-send-email-ayan.halder@arm.com>
- <20180718101540.GT5565@intel.com>
+From: Fabio Berton <fabio.berton-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>
+Subject: Rockchip RV1108 mainline kernel support
+Date: Thu, 19 Jul 2018 10:53:02 -0300
+Message-ID: <CAAPZna3aGkUmDeAwM4J6LpeC9m1VA=CUQN_ChiwvTLkaE2zdrw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20180718101540.GT5565@intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ville Syrj?l? <ville.syrjala@linux.intel.com>
-Cc: airlied@linux.ie, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org, peter.ujfalusi@ti.com, laurent.pinchart@ideasonboard.com, afd@ti.com, maxime.ripard@bootlin.com, linux-rockchip@lists.infradead.org, wens@csie.org, tomi.valkeinen@ti.com, malidp@foss.arm.com, intel-gfx@lists.freedesktop.org, rodrigo.vivi@intel.com, nd@arm.com, linux-arm-kernel@lists.infradead.org, sre@kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBKdWwgMTgsIDIwMTggYXQgMDE6MTU6NDBQTSArMDMwMCwgVmlsbGUgU3lyaj9sPyB3
-cm90ZToKCkhpIFZpbGxlLAo+IE9uIFR1ZSwgSnVsIDE3LCAyMDE4IGF0IDA2OjEzOjQ2UE0gKzAx
-MDAsIEF5YW4gS3VtYXIgSGFsZGVyIHdyb3RlOgo+ID4gZHJtX2Zvcm1hdF9pbmZvIHRhYmxlIGhh
-cyBhIGZpZWxkICdpc195dXYnIHRvIGRlbm90ZSBpZiB0aGUgZm9ybWF0Cj4gPiBpcyB5dXYgb3Ig
-bm90LiBUaGUgZHJpdmVyIGlzIGV4cGVjdGVkIHRvIHVzZSB0aGlzIGluc3RlYWQgb2YKPiA+IGhh
-dmluZyBhIGZ1bmN0aW9uIGZvciB0aGUgc2FtZSBwdXJwb3NlLgo+ID4gCj4gPiBTaWduZWQtb2Zm
-LWJ5OiBBeWFuIEt1bWFyIGhhbGRlciA8YXlhbi5oYWxkZXJAYXJtLmNvbT4KPiA+IC0tLQo+ID4g
-IGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9iYWNrZW5kLmMgfCAxMiArKystLS0tLS0tLS0K
-PiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+ID4g
-Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9iYWNrZW5kLmMKPiA+IGluZGV4IGRlMGE3NmQu
-LmQ3OTUwYjUgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFj
-a2VuZC5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFja2VuZC5jCj4g
-PiBAQCAtODYsMTIgKzg2LDYgQEAgc3RhdGljIGlubGluZSBib29sIHN1bjRpX2JhY2tlbmRfZm9y
-bWF0X2lzX3BhY2tlZF95dXY0MjIodWludDMyX3QgZm9ybWF0KQo+ID4gIAl9Cj4gPiAgfQo+ID4g
-IAo+ID4gLXN0YXRpYyBpbmxpbmUgYm9vbCBzdW40aV9iYWNrZW5kX2Zvcm1hdF9pc195dXYodWlu
-dDMyX3QgZm9ybWF0KQo+ID4gLXsKPiA+IC0JcmV0dXJuIHN1bjRpX2JhY2tlbmRfZm9ybWF0X2lz
-X3BsYW5hcl95dXYoZm9ybWF0KSB8fAo+ID4gLQkJc3VuNGlfYmFja2VuZF9mb3JtYXRfaXNfcGFj
-a2VkX3l1djQyMihmb3JtYXQpOwo+ID4gLX0KPiAKPiBzdW40aV9iYWNrZW5kX2Zvcm1hdF9pc19w
-bGFuYXJfeXV2KCkgaXMgbm93IHVudXNlZCBzbyBjb3VsZCBiZSBudWtlZC4KPiBBbHNvIHRoZSBv
-bmUgcmVtYWluaW5nIHVzZSBvZiBzdW40aV9iYWNrZW5kX2Zvcm1hdF9pc19wYWNrZWRfeXV2NDIy
-KCkKPiBjb3VsZCBiZSByZXBsYWNlZCB3aXRoICdpc195dXYgJiYgbnVtX3BsYW5lcyA9PSAxJywg
-c28gdGhhdCBvbmUgY291bGQKPiBiZSBlYXNpbHkga2lsbGVkIG9mZiBhc3Mgd2VsbC4KCkkgd2ls
-bCBoYXZlIHRoaXMgaW4gYSBzZXBhcmF0ZSBwYXRjaC4KPiA+IC0KPiA+ICBzdGF0aWMgdm9pZCBz
-dW40aV9iYWNrZW5kX2FwcGx5X2NvbG9yX2NvcnJlY3Rpb24oc3RydWN0IHN1bnhpX2VuZ2luZSAq
-ZW5naW5lKQo+ID4gIHsKPiA+ICAJaW50IGk7Cj4gPiBAQCAtMzA0LDcgKzI5OCw3IEBAIGludCBz
-dW40aV9iYWNrZW5kX3VwZGF0ZV9sYXllcl9mb3JtYXRzKHN0cnVjdCBzdW40aV9iYWNrZW5kICpi
-YWNrZW5kLAo+ID4gIAkJCSAgIFNVTjRJX0JBQ0tFTkRfQVRUQ1RMX1JFRzBfTEFZX0dMQkFMUEhB
-X0VOLAo+ID4gIAkJCSAgIHZhbCk7Cj4gPiAgCj4gPiAtCWlmIChzdW40aV9iYWNrZW5kX2Zvcm1h
-dF9pc195dXYoZmItPmZvcm1hdC0+Zm9ybWF0KSkKPiA+ICsJaWYgKGZiLT5mb3JtYXQtPmlzX3l1
-dikKPiA+ICAJCXJldHVybiBzdW40aV9iYWNrZW5kX3VwZGF0ZV95dXZfZm9ybWF0KGJhY2tlbmQs
-IGxheWVyLCBwbGFuZSk7Cj4gPiAgCj4gPiAgCXJldCA9IHN1bjRpX2JhY2tlbmRfZHJtX2Zvcm1h
-dF90b19sYXllcihmYi0+Zm9ybWF0LT5mb3JtYXQsICZ2YWwpOwo+ID4gQEAgLTM4NCw3ICszNzgs
-NyBAQCBpbnQgc3VuNGlfYmFja2VuZF91cGRhdGVfbGF5ZXJfYnVmZmVyKHN0cnVjdCBzdW40aV9i
-YWNrZW5kICpiYWNrZW5kLAo+ID4gIAkgKi8KPiA+ICAJcGFkZHIgLT0gUEhZU19PRkZTRVQ7Cj4g
-PiAgCj4gPiAtCWlmIChzdW40aV9iYWNrZW5kX2Zvcm1hdF9pc195dXYoZmItPmZvcm1hdC0+Zm9y
-bWF0KSkKPiA+ICsJaWYgKGZiLT5mb3JtYXQtPmlzX3l1dikKPiA+ICAJCXJldHVybiBzdW40aV9i
-YWNrZW5kX3VwZGF0ZV95dXZfYnVmZmVyKGJhY2tlbmQsIGZiLCBwYWRkcik7Cj4gPiAgCj4gPiAg
-CS8qIFdyaXRlIHRoZSAzMiBsb3dlciBiaXRzIG9mIHRoZSBhZGRyZXNzIChpbiBiaXRzKSAqLwo+
-ID4gQEAgLTUwMiw3ICs0OTYsNyBAQCBzdGF0aWMgaW50IHN1bjRpX2JhY2tlbmRfYXRvbWljX2No
-ZWNrKHN0cnVjdCBzdW54aV9lbmdpbmUgKmVuZ2luZSwKPiA+ICAJCWlmIChmYi0+Zm9ybWF0LT5o
-YXNfYWxwaGEgfHwgKHBsYW5lX3N0YXRlLT5hbHBoYSAhPSBEUk1fQkxFTkRfQUxQSEFfT1BBUVVF
-KSkKPiA+ICAJCQludW1fYWxwaGFfcGxhbmVzKys7Cj4gPiAgCj4gPiAtCQlpZiAoc3VuNGlfYmFj
-a2VuZF9mb3JtYXRfaXNfeXV2KGZiLT5mb3JtYXQtPmZvcm1hdCkpIHsKPiA+ICsJCWlmIChmYi0+
-Zm9ybWF0LT5pc195dXYpIHsKPiA+ICAJCQlEUk1fREVCVUdfRFJJVkVSKCJQbGFuZSBGQiBmb3Jt
-YXQgaXMgWVVWXG4iKTsKPiA+ICAJCQludW1feXV2X3BsYW5lcysrOwo+ID4gIAkJfQo+ID4gLS0g
-Cj4gPiAyLjcuNAo+ID4gCj4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwo+ID4gSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdAo+ID4gSW50ZWwtZ2Z4QGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwo+ID4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC1nZngKPiAKPiAtLSAKPiBWaWxsZSBTeXJqP2w/Cj4gSW50ZWwKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi all!
+
+We're adding support to a custom Rockchip RV1108 in mainline kernel.
+
+Currently this custom board runs fine on the Rockchip 3.10 vendor kernel.
+
+The main problems is that kernel 4.17 can't detect eMMC.
+
+I would appreciate any help on how to make the mainline kernel to
+detect eMMC on this board
+
+Here the full log:
+https://gist.github.com/fbertux/df5b55928dcb703a28b990b72aa2e6fc
+
+and here the log from Rockchip kernel 3.10:
+https://gist.github.com/fbertux/9a476ca6903c2029d3db4ea53076be17
+
+This is dts file that we're using:
+
+https://github.com/OSSystems/linux/blob/wip-rockchip/arch/arm/boot/dts/rv1108-minievb-v10.dts
+
+Rockchip RV1108; http://rockchip.wikidot.com/rk1108
+Kernel Fork: https://github.com/OSSystems/linux/tree/wip-rockchip
+Rockchip kernel 3.10: https://github.com/rockchip-linux/kernel/tree/release-3.10
+
+Thanks!
+
+Fabio Berton
