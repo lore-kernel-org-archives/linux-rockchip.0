@@ -1,174 +1,77 @@
-From: Gustavo Padovan <gustavo.padovan@collabora.com>
-Subject: Re: [RFC RESEND PATCH] drm/rockchip: update cursors asynchronously
- through atomic.
-Date: Mon, 23 Jul 2018 15:39:06 -0300
-Message-ID: <621351c6-068e-1317-2571-5c8d1477c2e3@collabora.com>
-References: <20180627211447.20927-1-enric.balletbo@collabora.com>
- <20180723143634.GJ20359@art_vandelay>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 3/6] dt-bindings: sound: rockchip-i2s: add description
+ for px30
+Date: Mon, 23 Jul 2018 20:10:08 +0100
+Message-ID: <20180723191008.GL13981@sirena.org.uk>
+References: <1532337924-4185-1-git-send-email-cl@rock-chips.com>
+ <1532337924-4185-4-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180723143634.GJ20359@art_vandelay>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>
+Content-Type: multipart/mixed; boundary="===============3309507783022417474=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1532337924-4185-4-git-send-email-cl@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: cl@rock-chips.com
+Cc: mark.rutland@arm.com, ulf.hansson@linaro.org, heiko@sntech.de, huibin.hong@rock-chips.com, catalin.marinas@arm.com, shawn.lin@rock-chips.com, will.deacon@arm.com, alsa-devel@alsa-project.org, hjc@rock-chips.com, yamada.masahiro@socionext.com, tony.xie@rock-chips.com, klaus.goger@theobroma-systems.com, sugar.zhang@rock-chips.com, linux-rockchip@lists.infradead.org, jacob-chen@iotwrt.com, jagan@amarulasolutions.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, arnd@arndb.de, frank.wang@rock-chips.com, zhangqing@rock-chips.com, kever.yang@rock-chips.com, robh+dt@kernel.org, djw@t-chip.com.cn, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, linux-mmc@vger.kernel.org, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, david.wu@rock-chips.com, william.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Enric,
 
-On 07/23/2018 11:36 AM, Sean Paul wrote:
-> On Wed, Jun 27, 2018 at 11:14:47PM +0200, Enric Balletbo i Serra wrote:
->> Add support to async updates of cursors by using the new atomic
->> interface for that.
->>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> 
-> LGTM. Given rockchip hasn't weighed in on the patch, and that you've tested it
-> on real hardware, let's land it.
-> 
-> Reviewed-by: Sean Paul <seanpaul@chromium.org>
+--===============3309507783022417474==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="OX2aLCKeO1apYW07"
+Content-Disposition: inline
 
-Your patch don't apply cleanly anymore. Can you rebase it and add the 
-r-b to the patch while at it? Thanks!
 
-Gustavo
+--OX2aLCKeO1apYW07
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> 
->> ---
->> I am sending this as RFC because I still don't have a deep knowledge of
->> the hw and I am not sure if the vop_plane_update function can be reused
->> in both cases, atomic_updates and atomic_async_updates. I think that
->> someone with more knowledge should take a look. The patch was tested on
->> a Samsung Chromebook Plus in two ways.
->>
->> 1. Running all igt kms_cursor_legacy and kms_atomic@plane_cursor_legacy
->> tests and see that there is no regression after the patch.
->>
->> 2. Running weston using the atomic API.
->>
->> Best regards,
->>    Enric
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 80 ++++++++++++++++-----
->>   1 file changed, 64 insertions(+), 16 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->> index 53d4afe15278..1eb6bda924af 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->> @@ -688,8 +688,7 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
->>   	spin_unlock(&vop->reg_lock);
->>   }
->>   
->> -static void vop_plane_atomic_update(struct drm_plane *plane,
->> -		struct drm_plane_state *old_state)
->> +static void vop_plane_update(struct drm_plane *plane)
->>   {
->>   	struct drm_plane_state *state = plane->state;
->>   	struct drm_crtc *crtc = state->crtc;
->> @@ -710,20 +709,6 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
->>   	bool rb_swap;
->>   	int format;
->>   
->> -	/*
->> -	 * can't update plane when vop is disabled.
->> -	 */
->> -	if (WARN_ON(!crtc))
->> -		return;
->> -
->> -	if (WARN_ON(!vop->is_enabled))
->> -		return;
->> -
->> -	if (!state->visible) {
->> -		vop_plane_atomic_disable(plane, old_state);
->> -		return;
->> -	}
->> -
->>   	obj = rockchip_fb_get_gem_obj(fb, 0);
->>   	rk_obj = to_rockchip_obj(obj);
->>   
->> @@ -794,10 +779,73 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
->>   	spin_unlock(&vop->reg_lock);
->>   }
->>   
->> +static void vop_plane_atomic_update(struct drm_plane *plane,
->> +				    struct drm_plane_state *old_state)
->> +{
->> +	struct drm_plane_state *state = plane->state;
->> +	struct vop *vop = to_vop(state->crtc);
->> +
->> +	/*
->> +	 * can't update plane when vop is disabled.
->> +	 */
->> +	if (WARN_ON(!state->crtc))
->> +		return;
->> +
->> +	if (WARN_ON(!vop->is_enabled))
->> +		return;
->> +
->> +	if (!state->visible) {
->> +		vop_plane_atomic_disable(plane, old_state);
->> +		return;
->> +	}
->> +
->> +	vop_plane_update(plane);
->> +}
->> +
->> +static int vop_plane_atomic_async_check(struct drm_plane *plane,
->> +					struct drm_plane_state *state)
->> +{
->> +	struct drm_crtc_state *crtc_state;
->> +
->> +	crtc_state = drm_atomic_get_existing_crtc_state(state->state,
->> +							state->crtc);
->> +	if (WARN_ON(!crtc_state))
->> +		return -EINVAL;
->> +
->> +	if (!crtc_state->active)
->> +		return -EINVAL;
->> +
->> +	if (plane->state->crtc != state->crtc ||
->> +	    plane->state->src_w != state->src_w ||
->> +	    plane->state->src_h != state->src_h ||
->> +	    plane->state->crtc_w != state->crtc_w ||
->> +	    plane->state->crtc_h != state->crtc_h ||
->> +	    !plane->state->fb ||
->> +	    plane->state->fb != state->fb)
->> +		return -EINVAL;
->> +
->> +	return 0;
->> +}
->> +
->> +static void vop_plane_atomic_async_update(struct drm_plane *plane,
->> +					  struct drm_plane_state *new_state)
->> +{
->> +	plane->state->src_x = new_state->src_x;
->> +	plane->state->src_y = new_state->src_y;
->> +	plane->state->crtc_x = new_state->crtc_x;
->> +	plane->state->crtc_y = new_state->crtc_y;
->> +	plane->state->fb = new_state->fb;
->> +	*plane->state = *new_state;
->> +
->> +	vop_plane_update(plane);
->> +}
->> +
->>   static const struct drm_plane_helper_funcs plane_helper_funcs = {
->>   	.atomic_check = vop_plane_atomic_check,
->>   	.atomic_update = vop_plane_atomic_update,
->>   	.atomic_disable = vop_plane_atomic_disable,
->> +	.atomic_async_check = vop_plane_atomic_async_check,
->> +	.atomic_async_update = vop_plane_atomic_async_update,
->>   };
->>   
->>   static const struct drm_plane_funcs vop_plane_funcs = {
->> -- 
->> 2.18.0
->>
-> 
+On Mon, Jul 23, 2018 at 05:25:21PM +0800, cl@rock-chips.com wrote:
+> From: Liang Chen <cl@rock-chips.com>
+>=20
+> Add "rockchip,px30-i2s", "rockchip,rk3066-i2s" for i2s on px30 platform.
 
--- 
-Gustavo Padovan
-Collabora Ltd
+Please submit patches using subject lines reflecting the style for the
+subsystem.  This makes it easier for people to identify relevant
+patches.  Look at what existing commits in the area you're changing are
+doing and make sure your subject lines visually resemble what they're
+doing.
+
+--OX2aLCKeO1apYW07
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAltWKA8ACgkQJNaLcl1U
+h9BhLgf/Y0UU7Id4l6ICoIlmMMIaggZlIIZfIWDu4AXODkAXnewyj9blyVs+cdVm
+u5Frz8gAdH51Jm7o3t+JKQcHdl5yYEGi9Yf8Ob3KhbgpuBma3jUY6krtczVDaGdN
+r1QkRRCEmAw0Bxl6olyHG8sq4gFcp1Ixo1/WydCWG4vGr1ryZmsFjZDw1j9N10nJ
+9oHwx3ZqaRUiJAFttkrhSxrYlAK11KHfFjb2Luj6c7tnNATE69+kXkKSlRv/6Y+v
+PM3VEPiSGV7yIDYu6qCnzobhCG+MbkxF8Th5dEu2CjAxdtm7bZfe6kLcuPcBmY64
+WxWcdNYvUCqwYV1EpA4OzaR4zYnYPg==
+=Am74
+-----END PGP SIGNATURE-----
+
+--OX2aLCKeO1apYW07--
+
+
+--===============3309507783022417474==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============3309507783022417474==--
