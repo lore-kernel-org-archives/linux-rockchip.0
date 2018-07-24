@@ -1,343 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v0] arm64: dts: rockchip: add support for ROC-RK3399-PC board
-Date: Tue, 24 Jul 2018 11:28:45 +0200
-Message-ID: <139327780.KNaNigg5Hs@phil>
-References: <1532161826-2537-1-git-send-email-djw@t-chip.com.cn>
+From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v5 1/2] mfd: rk808: Refactor shutdown functions
+Date: Tue, 24 Jul 2018 11:39:51 +0200
+Message-ID: <ac1420fa-7916-813e-a4ef-b7ea403e275b@phytec.de>
+References: <1522335000-23057-1-git-send-email-d.schultz@phytec.de>
+ <20180416093821.sqrcc6mmnc23njul@dell>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1532161826-2537-1-git-send-email-djw@t-chip.com.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: djw@t-chip.com.cn
-Cc: linux-rockchip@lists.infradead.org, Wayne Chou <zxf@t-chip.com.cn>, devicetree@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, Brian Norris <briannorris@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Heinrich Schuchardt <xypron.glpk@gmx.de>, Shawn Lin <shawn.lin@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jagan Teki <jagan@amarulasolutions.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180416093821.sqrcc6mmnc23njul@dell>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Schultz <d.schultz-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xsf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Levin,
+Hi,
 
-Am Samstag, 21. Juli 2018, 10:30:26 CEST schrieb djw@t-chip.com.cn:
-> From: Levin Du <djw@t-chip.com.cn>
-> 
-> ROC-RK3399-PC is the first power efficient 4GB DDR4 single board
-
-maybe "is a power efficient" instead of "the first" ;-)
-
-[...]
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-> new file mode 100644
-> index 0000000..207f2e3
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-> @@ -0,0 +1,717 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
-> + */
-> +
-> +/dts-v1/;
-> +#include <dt-bindings/pwm/pwm.h>
-> +#include "rk3399.dtsi"
-> +#include "rk3399-opp.dtsi"
-> +
-> +/ {
-> +	model = "Firefly ROC-RK3399-PC Board";
-> +	compatible = "firefly,roc-rk3399-pc", "rockchip,rk3399";
-> +
-> +	chosen {
-> +		bootargs = "earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1";
-
-I don't think we want to hard-code linux bootargs in the generic devicetree
-
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	backlight: backlight {
-> +		compatible = "pwm-backlight";
-> +		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
-> +		pwms = <&pwm0 0 25000 0>;
-> +		brightness-levels = <
-> +			  0   1   2   3   4   5   6   7
-
-As Rob noted in the px30 evb patch, there is now a property helping
-to drop these long lists of brightness levels, see
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=1e5e7cc794b5a332c23216dade0a2e937d694b7f
-
-
-> +			  8   9  10  11  12  13  14  15
-> +			 16  17  18  19  20  21  22  23
-> +			 24  25  26  27  28  29  30  31
-> +			 32  33  34  35  36  37  38  39
-> +			 40  41  42  43  44  45  46  47
-> +			 48  49  50  51  52  53  54  55
-> +			 56  57  58  59  60  61  62  63
-> +			 64  65  66  67  68  69  70  71
-> +			 72  73  74  75  76  77  78  79
-> +			 80  81  82  83  84  85  86  87
-> +			 88  89  90  91  92  93  94  95
-> +			 96  97  98  99 100 101 102 103
-> +			104 105 106 107 108 109 110 111
-> +			112 113 114 115 116 117 118 119
-> +			120 121 122 123 124 125 126 127
-> +			128 129 130 131 132 133 134 135
-> +			136 137 138 139 140 141 142 143
-> +			144 145 146 147 148 149 150 151
-> +			152 153 154 155 156 157 158 159
-> +			160 161 162 163 164 165 166 167
-> +			168 169 170 171 172 173 174 175
-> +			176 177 178 179 180 181 182 183
-> +			184 185 186 187 188 189 190 191
-> +			192 193 194 195 196 197 198 199
-> +			200 201 202 203 204 205 206 207
-> +			208 209 210 211 212 213 214 215
-> +			216 217 218 219 220 221 222 223
-> +			224 225 226 227 228 229 230 231
-> +			232 233 234 235 236 237 238 239
-> +			240 241 242 243 244 245 246 247
-> +			248 249 250 251 252 253 254 255>;
-> +		default-brightness-level = <200>;
-> +	};
-
-[...]
-
-> +	vcc_vbus_typec0: vcc-vbus-typec0 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_vbus_typec0";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +	};
-> +
-> +	vcc12v_sys: mp8859-dcdc1 {
-
-The mp8859 seems to be an i2c-device, as also shown by the
-nearly empty mp8859 entry below, so shouldn't this regulator
-be defined there?
-
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc12v_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +		vin-supply = <&vcc_vbus_typec0>;
-> +	};
-
-[...]
-
-> +	vcc_hub_en: vcc_hub_en-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&hub_rst>;
-> +		regulator-name = "vcc_hub_en";
-> +		regulator-always-on;
-
-missing vin-supply
-
-> +	};
-> +
-
-[...]
-
-> +	vdd_cpu_b: regulator@40 {
-> +		compatible = "silergy,syr827";
-> +		reg = <0x40>;
-> +		fcs,suspend-voltage-selector = <1>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vsel1_gpio>;
-> +		regulator-name = "vdd_cpu_b";
-> +		regulator-min-microvolt = <712500>;
-> +		regulator-max-microvolt = <1500000>;
-> +		regulator-ramp-delay = <1000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		vsel-gpios = <&gpio1 18 GPIO_ACTIVE_HIGH>;
-
-vsel-gpios is not defined in the mainline dt-binding of the fan5355/syr82*
-
-> +		vin-supply = <&vcc3v3_sys>;
-> +
-> +		regulator-state-mem {
-> +			regulator-off-in-suspend;
-> +		};
-> +	};
-> +
-> +	vdd_gpu: regulator@41 {
-> +		compatible = "silergy,syr828";
-> +		reg = <0x41>;
-> +		fcs,suspend-voltage-selector = <1>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vsel2_gpio>;
-> +		regulator-name = "vdd_gpu";
-> +		regulator-min-microvolt = <712500>;
-> +		regulator-max-microvolt = <1500000>;
-> +		regulator-ramp-delay = <1000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		vsel-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
-
-same as above
-
-> +		vin-supply = <&vcc3v3_sys>;
-> +
-> +		regulator-state-mem {
-> +			regulator-off-in-suspend;
-> +		};
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	i2c-scl-rising-time-ns = <300>;
-> +	i2c-scl-falling-time-ns = <15>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c3 {
-> +	i2c-scl-rising-time-ns = <450>;
-> +	i2c-scl-falling-time-ns = <15>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c4 {
-> +	i2c-scl-rising-time-ns = <600>;
-> +	i2c-scl-falling-time-ns = <20>;
-> +	status = "okay";
-> +
-> +	mp8859: mp8859@66 {
-> +		compatible = "mps,mp8859";
-
-missing a dt-binding and also a real regulator implementation?
-
-> +		reg = <0x66>;
-> +	};
-> +
-> +	fusb1: usb-typec@22 {
-> +		compatible = "fcs,fusb302";
-> +		reg = <0x22>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&fusb1_int>;
-> +		fcs,int-n = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
-
-mainline binding expects an "interrupts" property not the
-fcs,int-n from above
-
-> +		status = "okay";
-> +	};
-> +
-> +};
-> +
-> +&i2c7 {
-> +	i2c-scl-rising-time-ns = <600>;
-> +	i2c-scl-falling-time-ns = <20>;
-> +	status = "okay";
-> +
-> +	fusb0: usb-typec@22 {
-> +		compatible = "fcs,fusb302";
-> +		reg = <0x22>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&fusb0_int>;
-> +		fcs,int-n = <&gpio1 RK_PA2 GPIO_ACTIVE_HIGH>;
-
-same as above
-
-> +		status = "okay";
-> +	};
-> +};
-> +
-> +&i2s0 {
-> +	rockchip,playback-channels = <8>;
-> +	rockchip,capture-channels = <8>;
-> +	#sound-dai-cells = <0>;
-
-sound-dai-cells are in rk3399.dtsi now ... see
-https://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc.git/commit/?id=4486baca66e7a96a6ded3957cb522872a49870ce
-
-> +	status = "okay";
-> +};
-> +
-> +&i2s1 {
-> +	rockchip,playback-channels = <2>;
-> +	rockchip,capture-channels = <2>;
-> +	#sound-dai-cells = <0>;
-
-same as above
-
-> +	status = "okay";
-> +};
-> +
-> +&i2s2 {
-> +	#sound-dai-cells = <0>;
-
-same as above
-
-> +	status = "okay";
-> +};
-> +
-
-> +&tcphy0 {
-> +	extcon = <&fusb0>;
-
-the extcon is not described in the mainline fusb302 binding.
-
-> +	status = "okay";
-> +};
-> +
-> +&tcphy1 {
-> +	extcon = <&fusb1>;
-
-same as above
-
-> +	status = "okay";
-> +};
-> +
-> +&tsadc {
-> +	/* tshut mode 0:CRU 1:GPIO */
-> +	rockchip,hw-tshut-mode = <1>;
-> +	/* tshut polarity 0:LOW 1:HIGH */
-> +	rockchip,hw-tshut-polarity = <1>;
-> +	status = "okay";
-> +};
-> +
-> +&u2phy0 {
-> +	status = "okay";
-> +
-> +	u2phy0_otg: otg-port {
-> +		phy-supply = <&vcc5v0_host>;
-> +		//status = "disabled";
-
-don't leave commented stuff in the dt please.
-
-> +		status = "okay";
-> +	};
-> +
-> +	u2phy0_host: host-port {
-> +		phy-supply = <&vcc5v0_host>;
-> +		status = "okay";
-> +	};
-> +};
-> +
-> +&u2phy1 {
-> +	status = "okay";
-> +
-> +	u2phy1_otg: otg-port {
-> +		phy-supply = <&vcc5v0_host>;
-> +		//status = "disabled";
-
-same as above
-
-> +		status = "okay";
-> +	};
-> +
-> +	u2phy1_host: host-port {
-> +		phy-supply = <&vcc5v0_host>;
-> +		status = "okay";
-> +	};
-> +};
-
-
-Thanks
-Heiko
+Am 16.04.2018 um 11:38 schrieb Lee Jones:
+> On Thu, 29 Mar 2018, Daniel Schultz wrote:
+>
+>> Since all three shutdown functions have almost the same code, all logic
+>> from the shutdown functions can be refactored to a new function
+>> "rk808_update_bits", which can update a register by a given address and
+>> bitmask.
+>>
+>> Signed-off-by: Daniel Schultz <d.schultz-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+>> ---
+>> Changes:
+>> 	v2: Re-submit with recipients from Rockchip.
+>> 	v3: - Added devicetree property to enable the PMIC reset seperate from 
+>> 	      "rockchip,system-power-controller".
+>> 	    - Dropped the first patch of this serie.
+>> 	v4: Splitted refactoring and the new reset feature.
+>> 	v5: Removed null pointer from rk808_update_bits.
+>>
+>>  drivers/mfd/rk808.c | 46 +++++++++++++---------------------------------
+>>  1 file changed, 13 insertions(+), 33 deletions(-)
+> I'd still like an Ack/Review from the Rockchip guys please.
+>
+can someone from Rockchip reply to this?
