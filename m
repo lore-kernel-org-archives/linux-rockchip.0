@@ -1,27 +1,66 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: remove deprecated Type-C PHY properties on rk3399
-Date: Wed, 25 Jul 2018 12:07:05 +0200
-Message-ID: <3045142.hvSNBlnxT0@phil>
-References: <20180709205754.29132-1-enric.balletbo@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 4/5] dt-bindings: drm/bridge Document Cadence MHDP
+ DPI/DP bridge bindings
+Date: Wed, 25 Jul 2018 11:43:30 -0600
+Message-ID: <20180725174330.GA31540@rob-hp-laptop>
+References: <1532430824-23477-1-git-send-email-dkos@cadence.com>
+ <1532430824-23477-5-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180709205754.29132-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-kernel@vger.kernel.org, kernel@collabora.com, Nickey Yang <nickey.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, Yakir Yang <kuankuan.y@gmail.com>, Mark Yao <markyao0591@gmail.com>, devicetree@vger.kernel.org, Jacob Chen <jacob-chen@iotwrt.com>, Brian Norris <briannorris@chromium.org>, Lin Huang <hl@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Catalin Marinas <catalin.marinas@arm.com>, Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1532430824-23477-5-git-send-email-dkos@cadence.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, stelford@cadence.com, ltyrala@cadence.com, linux-arm-kernel@lists.infradead.org, Quentin Schulz <quentin.schulz@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 9. Juli 2018, 22:57:54 CEST schrieb Enric Balletbo i Serra:
-> Commit 0fbc47d9e426 ("phy: rockchip-typec: deprecate some DT properties
-> for various register fields.") deprecates some Rockchip Type-C
-> properties. As these are now not needed, remove from the device tree
-> file.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-applied for 4.19
-
-Thanks
-Heiko
+T24gVHVlLCBKdWwgMjQsIDIwMTggYXQgMTI6MTM6MzVQTSArMDEwMCwgRGFtaWFuIEtvcyB3cm90
+ZToKPiBGcm9tOiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAYm9vdGxpbi5jb20+Cj4g
+Cj4gU2lnbmVkLW9mZi1ieTogRGFtaWFuIEtvcyA8ZGtvc0BjYWRlbmNlLmNvbT4KPiAtLS0KPiAg
+Li4uL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2NkbnMsbWhkcC50eHQgICAgIHwgNDMgKysrKysr
+KysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNDMgaW5zZXJ0aW9ucygrKQo+ICBjcmVh
+dGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
+YnJpZGdlL2NkbnMsbWhkcC50eHQKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2NkbnMsbWhkcC50eHQgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvY2RucyxtaGRwLnR4dAo+IG5l
+dyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwLi5kYzdiZTc1OTAwNDgKPiAt
+LS0gL2Rldi9udWxsCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
+c3BsYXkvYnJpZGdlL2NkbnMsbWhkcC50eHQKPiBAQCAtMCwwICsxLDQzIEBACj4gK0NhZGVuY2Ug
+TUhEUCBicmlkZ2UKPiArPT09PT09PT09PT09PT09PT09PT09PT09PT0KPiArCj4gK1RoZSBDYWRl
+bmNlIE1IRFAgYnJpZGdlIGlzIGEgRFBJIHRvIERQIGJyaWRnZS4KPiArCj4gK1JlcXVpcmVkIHBy
+b3BlcnRpZXM6Cj4gKy0gY29tcGF0aWJsZTogc2hvdWxkIGJlICJjZG5zLG1oZHA4NTQ2IiwKPiAr
+LSByZWc6IHBoeXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVy
+J3MgcmVnaXN0ZXJzLAo+ICstIGNsb2NrczogRFAgYnJpZGdlIGNsb2NrLCBpdCdzIHVzZWQgYnkg
+dGhlIElQIHRvIGtub3cgaG93IHRvIHRyYW5zbGF0ZQo+ICsJYSBudW1iZXIgb2YgY2xvY2sgY3lj
+bGVzIGludG8gYSB0aW1lICh3aGljaCBpcyB1c2VkIHRvIGNvbXBseQo+ICsJd2l0aCBEUCBzdGFu
+ZGFyZCB0aW1pbmdzIGFuZCBkZWxheXMpLAo+ICsKPiArUmVxdWlyZWQgc3Vibm9kZXM6Cj4gKy0g
+cG9ydHM6IFBvcnRzIGFzIGRlc2NyaWJlZCBpbiBEb2N1bWVudGF0aW9uL2RldmljdHJlZS9iaW5k
+aW5ncy9ncmFwaC50eHQKPiArCVBvcnQgMCAtIGlucHV0IHBvcnQgcmVwcmVzZW50aW5nIHRoZSBW
+R0EgYnJpZGdlIGlucHV0Cj4gKwlQb3J0IDEgLSBvdXRwdXQgcG9ydCByZXByZXNlbnRpbmcgdGhl
+IFZHQSBicmlkZ2Ugb3V0cHV0CgpWR0E/Cgo+ICsKPiArRXhhbXBsZToKPiArCj4gKwltaGRwOiBk
+cC1icmlkZ2VAZjBmYjAwMDAwMCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJjZG5zLG1oZHA4NTQ2IjsK
+PiArCQlyZWcgPSA8MHhmMCAweGZiMDAwMDAwIDB4MCAweDEwMDAwMDA+Owo+ICsJCWNsb2NrcyA9
+IDwmbWhkcF9jbG9jaz47Cj4gKwo+ICsJCXBvcnRzIHsKPiArCQkJI2FkZHJlc3MtY2VsbHMgPSA8
+MT47Cj4gKwkJCSNzaXplLWNlbGxzID0gPDA+Owo+ICsKPiArCQkJcG9ydEAwIHsKPiArCQkJCXJl
+ZyA9IDwwPjsKPiArCQkJCXZnYV9icmlkZ2VfaW5wdXQ6IGVuZHBvaW50IHsKPiArCQkJCQlyZW1v
+dGUtZW5kcG9pbnQgPSA8Jnh4eF9kcGlfb3V0cHV0PjsKPiArCQkJCX07Cj4gKwkJCX07Cj4gKwo+
+ICsJCQlwb3J0QDEgewo+ICsJCQkJcmVnID0gPDE+Owo+ICsJCQkJdmdhX2JyaWRnZV9vdXRwdXQ6
+IGVuZHBvaW50IHsKPiArCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jnh4eF92Z2FfY29ubmVjdG9y
+X2lucHV0PjsKCnZnYT8KCj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCX07Cj4gKwl9Owo+IC0tIAo+
+IDIuMTcuMQo+IAo+IC0tCj4gVG8gdW5zdWJzY3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhl
+IGxpbmUgInVuc3Vic2NyaWJlIGRldmljZXRyZWUiIGluCj4gdGhlIGJvZHkgb2YgYSBtZXNzYWdl
+IHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPiBNb3JlIG1ham9yZG9tbyBpbmZvIGF0ICBo
+dHRwOi8vdmdlci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
