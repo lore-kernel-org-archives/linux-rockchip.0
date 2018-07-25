@@ -1,66 +1,47 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 4/5] dt-bindings: drm/bridge Document Cadence MHDP
- DPI/DP bridge bindings
-Date: Wed, 25 Jul 2018 11:43:30 -0600
-Message-ID: <20180725174330.GA31540@rob-hp-laptop>
-References: <1532430824-23477-1-git-send-email-dkos@cadence.com>
- <1532430824-23477-5-git-send-email-dkos@cadence.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] rockchip/rga: Fix bad dma_free_attrs() parameter
+Date: Wed, 25 Jul 2018 18:01:23 -0300
+Message-ID: <20180725210123.10836-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1532430824-23477-5-git-send-email-dkos@cadence.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Damian Kos <dkos@cadence.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, stelford@cadence.com, ltyrala@cadence.com, linux-arm-kernel@lists.infradead.org, Quentin Schulz <quentin.schulz@bootlin.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Jacob chen <jacob2.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdWwgMjQsIDIwMTggYXQgMTI6MTM6MzVQTSArMDEwMCwgRGFtaWFuIEtvcyB3cm90
-ZToKPiBGcm9tOiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAYm9vdGxpbi5jb20+Cj4g
-Cj4gU2lnbmVkLW9mZi1ieTogRGFtaWFuIEtvcyA8ZGtvc0BjYWRlbmNlLmNvbT4KPiAtLS0KPiAg
-Li4uL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2NkbnMsbWhkcC50eHQgICAgIHwgNDMgKysrKysr
-KysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNDMgaW5zZXJ0aW9ucygrKQo+ICBjcmVh
-dGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
-YnJpZGdlL2NkbnMsbWhkcC50eHQKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2NkbnMsbWhkcC50eHQgYi9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvY2RucyxtaGRwLnR4dAo+IG5l
-dyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwLi5kYzdiZTc1OTAwNDgKPiAt
-LS0gL2Rldi9udWxsCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
-c3BsYXkvYnJpZGdlL2NkbnMsbWhkcC50eHQKPiBAQCAtMCwwICsxLDQzIEBACj4gK0NhZGVuY2Ug
-TUhEUCBicmlkZ2UKPiArPT09PT09PT09PT09PT09PT09PT09PT09PT0KPiArCj4gK1RoZSBDYWRl
-bmNlIE1IRFAgYnJpZGdlIGlzIGEgRFBJIHRvIERQIGJyaWRnZS4KPiArCj4gK1JlcXVpcmVkIHBy
-b3BlcnRpZXM6Cj4gKy0gY29tcGF0aWJsZTogc2hvdWxkIGJlICJjZG5zLG1oZHA4NTQ2IiwKPiAr
-LSByZWc6IHBoeXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVy
-J3MgcmVnaXN0ZXJzLAo+ICstIGNsb2NrczogRFAgYnJpZGdlIGNsb2NrLCBpdCdzIHVzZWQgYnkg
-dGhlIElQIHRvIGtub3cgaG93IHRvIHRyYW5zbGF0ZQo+ICsJYSBudW1iZXIgb2YgY2xvY2sgY3lj
-bGVzIGludG8gYSB0aW1lICh3aGljaCBpcyB1c2VkIHRvIGNvbXBseQo+ICsJd2l0aCBEUCBzdGFu
-ZGFyZCB0aW1pbmdzIGFuZCBkZWxheXMpLAo+ICsKPiArUmVxdWlyZWQgc3Vibm9kZXM6Cj4gKy0g
-cG9ydHM6IFBvcnRzIGFzIGRlc2NyaWJlZCBpbiBEb2N1bWVudGF0aW9uL2RldmljdHJlZS9iaW5k
-aW5ncy9ncmFwaC50eHQKPiArCVBvcnQgMCAtIGlucHV0IHBvcnQgcmVwcmVzZW50aW5nIHRoZSBW
-R0EgYnJpZGdlIGlucHV0Cj4gKwlQb3J0IDEgLSBvdXRwdXQgcG9ydCByZXByZXNlbnRpbmcgdGhl
-IFZHQSBicmlkZ2Ugb3V0cHV0CgpWR0E/Cgo+ICsKPiArRXhhbXBsZToKPiArCj4gKwltaGRwOiBk
-cC1icmlkZ2VAZjBmYjAwMDAwMCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJjZG5zLG1oZHA4NTQ2IjsK
-PiArCQlyZWcgPSA8MHhmMCAweGZiMDAwMDAwIDB4MCAweDEwMDAwMDA+Owo+ICsJCWNsb2NrcyA9
-IDwmbWhkcF9jbG9jaz47Cj4gKwo+ICsJCXBvcnRzIHsKPiArCQkJI2FkZHJlc3MtY2VsbHMgPSA8
-MT47Cj4gKwkJCSNzaXplLWNlbGxzID0gPDA+Owo+ICsKPiArCQkJcG9ydEAwIHsKPiArCQkJCXJl
-ZyA9IDwwPjsKPiArCQkJCXZnYV9icmlkZ2VfaW5wdXQ6IGVuZHBvaW50IHsKPiArCQkJCQlyZW1v
-dGUtZW5kcG9pbnQgPSA8Jnh4eF9kcGlfb3V0cHV0PjsKPiArCQkJCX07Cj4gKwkJCX07Cj4gKwo+
-ICsJCQlwb3J0QDEgewo+ICsJCQkJcmVnID0gPDE+Owo+ICsJCQkJdmdhX2JyaWRnZV9vdXRwdXQ6
-IGVuZHBvaW50IHsKPiArCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jnh4eF92Z2FfY29ubmVjdG9y
-X2lucHV0PjsKCnZnYT8KCj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCX07Cj4gKwl9Owo+IC0tIAo+
-IDIuMTcuMQo+IAo+IC0tCj4gVG8gdW5zdWJzY3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhl
-IGxpbmUgInVuc3Vic2NyaWJlIGRldmljZXRyZWUiIGluCj4gdGhlIGJvZHkgb2YgYSBtZXNzYWdl
-IHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPiBNb3JlIG1ham9yZG9tbyBpbmZvIGF0ICBo
-dHRwOi8vdmdlci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+In rga_remove(), dma_free_attrs is being passed the wrong
+cpu address, which triggers an exception if the driver is
+removed. Fix it.
+
+Tested on a RK3399 platform, with a bind/unbind cycle.
+
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/media/platform/rockchip/rga/rga.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 8ace1873202a..850da4b34e12 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -931,7 +931,7 @@ static int rga_remove(struct platform_device *pdev)
+ {
+ 	struct rockchip_rga *rga = platform_get_drvdata(pdev);
+ 
+-	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, &rga->cmdbuf_virt,
++	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
+ 		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
+ 
+ 	free_pages((unsigned long)rga->src_mmu_pages, 3);
+-- 
+2.18.0
