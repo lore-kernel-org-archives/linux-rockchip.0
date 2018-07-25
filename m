@@ -1,93 +1,118 @@
-From: djw@t-chip.com.cn
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [PATCH v0] arm64: dts: rockchip: add support for ROC-RK3399-PC board
-Date: Wed, 25 Jul 2018 12:01:43 +0800
-Message-ID: <87effsgdzs.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-References: <1532161826-2537-1-git-send-email-djw@t-chip.com.cn>
-        <139327780.KNaNigg5Hs@phil>
-        <CAFqH_52baP9yt35yfAdU5wk8DiK67_etPALsmb5K1JPmnW_kqQ@mail.gmail.com>
+Date: Wed, 25 Jul 2018 12:02:34 +0200
+Message-ID: <2859712.DISUneb7pN@phil>
+References: <1532161826-2537-1-git-send-email-djw@t-chip.com.cn> <139327780.KNaNigg5Hs@phil> <87in54ge68.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqH_52baP9yt35yfAdU5wk8DiK67_etPALsmb5K1JPmnW_kqQ@mail.gmail.com>
-        (Enric Balletbo Serra's message of "Tue, 24 Jul 2018 11:53:40 +0200")
+In-Reply-To: <87in54ge68.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, djw@t-chip.com.cn, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, zxf@t-chip.com.cn, Masahiro Yamada <yamada.masahiro@socionext.com>, ezequiel@collabora.com, xypron.glpk@gmx.de, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Will Deacon <will.deacon@arm.com>, linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, jacob-chen@iotwrt.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, Catalin Marinas <catalin.marinas@arm.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, jay.xu@rock-chips.comLinux ARM <linux->
+To: djw@t-chip.com.cn
+Cc: linux-rockchip@lists.infradead.org, Wayne Chou <zxf@t-chip.com.cn>, devicetree@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, Brian Norris <briannorris@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Heinrich Schuchardt <xypron.glpk@gmx.de>, Shawn Lin <shawn.lin@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jagan Teki <jagan@amarulasolutions.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enric Balletbo Serra <eballetbo@gmail.com> writes:
+Hi Levin,
 
-> Hi Levin,
->
-> Missatge de Heiko Stuebner <heiko@sntech.de> del dia dt., 24 de jul.
-> 2018 a les 11:29:
->>
->> Hi Levin,
->>
->> Am Samstag, 21. Juli 2018, 10:30:26 CEST schrieb djw@t-chip.com.cn:
->> > From: Levin Du <djw@t-chip.com.cn>
->> >
->> > ROC-RK3399-PC is the first power efficient 4GB DDR4 single board
->>
->> maybe "is a power efficient" instead of "the first" ;-)
->>
->> [...]
->>
->> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
->> > new file mode 100644
->> > index 0000000..207f2e3
->> > --- /dev/null
->> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
->> > @@ -0,0 +1,717 @@
->> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->> > +/*
->> > + * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
->> > + */
->> > +
->> > +/dts-v1/;
->> > +#include <dt-bindings/pwm/pwm.h>
->> > +#include "rk3399.dtsi"
->> > +#include "rk3399-opp.dtsi"
->> > +
->> > +/ {
->> > +     model = "Firefly ROC-RK3399-PC Board";
->> > +     compatible = "firefly,roc-rk3399-pc", "rockchip,rk3399";
->> > +
->> > +     chosen {
->> > +             bootargs = "earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1";
->>
->> I don't think we want to hard-code linux bootargs in the generic devicetree
->>
->> > +             stdout-path = "serial2:1500000n8";
->> > +     };
->> > +
->> > +     backlight: backlight {
->> > +             compatible = "pwm-backlight";
->> > +             enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
->> > +             pwms = <&pwm0 0 25000 0>;
->> > +             brightness-levels = <
->> > +                       0   1   2   3   4   5   6   7
->>
->> As Rob noted in the px30 evb patch, there is now a property helping
->> to drop these long lists of brightness levels, see
->> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=1e5e7cc794b5a332c23216dade0a2e937d694b7f
->
-> Adding to the Heiko information. Did you try to just remove brightness-levels?
-> Without this property, the driver computes a default table with the
-> brightness levels filled with the numbers provided by the CIE 1931
-> algorithm. That algorithm is used to dim a led for human perception.
->
-> Note that the patches needed did not land yet, are in linux-next, and
-> you will also be interested in apply this patch [1].
->
-> [1] https://lkml.org/lkml/2018/7/24/116
->
->
-> Best regards,
->  Enric
->
+Am Mittwoch, 25. Juli 2018, 05:57:51 CEST schrieb djw@t-chip.com.cn:
+> >> +	vcc_vbus_typec0: vcc-vbus-typec0 {
+> >> +		compatible = "regulator-fixed";
+> >> +		regulator-name = "vcc_vbus_typec0";
+> >> +		regulator-always-on;
+> >> +		regulator-boot-on;
+> >> +		regulator-min-microvolt = <5000000>;
+> >> +		regulator-max-microvolt = <5000000>;
+> >> +	};
+> >> +
+> >> +	vcc12v_sys: mp8859-dcdc1 {
+> >
+> > The mp8859 seems to be an i2c-device, as also shown by the
+> > nearly empty mp8859 entry below, so shouldn't this regulator
+> > be defined there?
+> 
+> Question here. Since mp8859 driver is not mainlined yet. Shall I leave
+> the regulator here (mp8859 defaults to output 5V) and remove the
+> mp8859 from the i2c?
 
-Thanks you for the note, Enric. I'll test that later.
+Yep, sounds good ... also please add a comment of sorts that this is
+temporary until the mp8859 has its own dt-binding.
 
-Regards,
-Levin
+> > [...]
+> >
+> >> +	vcc_hub_en: vcc_hub_en-regulator {
+> >> +		compatible = "regulator-fixed";
+> >> +		enable-active-high;
+> >> +		gpio = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
+> >> +		pinctrl-names = "default";
+> >> +		pinctrl-0 = <&hub_rst>;
+> >> +		regulator-name = "vcc_hub_en";
+> >> +		regulator-always-on;
+> >
+> > missing vin-supply
+> This just comes in need of setting GPIO2_A4 (HUB_RST) to high 
+> This dummy regulator should be removed.
+> 
+> I modify the pinctrl of hub_rst to output high:
+> 
+>                hub_rst: hub-rst {                                                                                                                 
+>                         rockchip,pins = <2 RK_PA4 RK_FUNC_GPIO &pcfg_output_high>;                                                                 
+>                };                                                                                                                                 
+> 
+> and add hub_rst to the pinctrl-0 of vcc5v0_host:
+> 
+>     vcc5v0_host: vcc5v0-host-regulator {                                                                                                       
+>             compatible = "regulator-fixed";                                                                                                    
+>             enable-active-high;                                                                                                                
+>             gpio = <&gpio1 RK_PA0 GPIO_ACTIVE_HIGH>;                                                                                           
+>             pinctrl-names = "default";                                                                                                         
+>             pinctrl-0 = <&vcc5v0_host_en &hub_rst>;                                                                                            
+>             regulator-name = "vcc5v0_host";                                                                                                    
+>             regulator-always-on;                                                                                                               
+>             vin-supply = <&vcc_sys>;                                                                                                           
+>     };
+> 
+> Tested show that it works. But is it the recommended way to set this
+>  gpio (HUB_RST) high? BTW, vcc5v0_host is the usb host voltage,
+>  and HUB_RST needs to set high for the usb hub chip to work.
+
+It seems you can also model usb-hirarchy internals via the devicetree.
+I guess for these things like soc-gpios and such. See
+Documentation/devicetree/bindings/usb/usb-device.txt
+
+While I don't know if this can handle such reset gpios yet, you
+could at least move the pinctrl setting there.
+
+
+> >> +		reg = <0x66>;
+> >> +	};
+> >> +
+> >> +	fusb1: usb-typec@22 {
+> >> +		compatible = "fcs,fusb302";
+> >> +		reg = <0x22>;
+> >> +		pinctrl-names = "default";
+> >> +		pinctrl-0 = <&fusb1_int>;
+> >> +		fcs,int-n = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
+> >
+> > mainline binding expects an "interrupts" property not the
+> > fcs,int-n from above
+> >
+> It seems no existing user of fusb302 yet. I take that fcs,int-n
+> from the driver code. But I look up the binding doc, and come
+> with this result:
+> 
+>     fusb1: usb-typec@22 {                                                                                                                      
+>             compatible = "fcs,fusb302";                                                                                                        
+>             reg = <0x22>;                                                                                                                      
+>             pinctrl-names = "default";                                                                                                         
+>             pinctrl-0 = <&fusb1_int>;                                                                                                          
+>             interrupt-parent = <&gpio1>;                                                                                                       
+>             interrupts = <1 IRQ_TYPE_LEVEL_LOW>;                                                                                               
+>             status = "okay";                                                                                                                   
+>     };                                                                                                                                         
+
+looks good, except please move the interrupt* properties between reg
+and pinctrl
+
+
+Heiko
