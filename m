@@ -1,111 +1,67 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: [PATCH] drm/rockchip: Convert drm_atomic_helper_suspend/resume()
-Date: Wed, 1 Aug 2018 02:04:30 +0530
-Message-ID: <20180731203430.GA30136@jordon-HP-15-Notebook-PC>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add support for ROC-RK3399-PC
+ board
+Date: Tue, 31 Jul 2018 14:51:02 -0600
+Message-ID: <20180731205102.GA13177@rob-hp-laptop>
+References: <1532916721-24117-1-git-send-email-djw@t-chip.com.cn>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <1532916721-24117-1-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, ajitn.linux@gmail.com, daniel@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: djw@t-chip.com.cn
+Cc: linux-rockchip@lists.infradead.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Jianqun Xu <jay.xu@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, Shohei Maruyama <cheat.sc.linux@outlook.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Ezequiel Garcia <ezequiel@collabora.com>, Jagan Teki <jagan@amarulasolutions.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Shawn Lin <shawn.lin@rock-chips.com>, Matthias Brugger <mbrugger@suse.com>, Mark Rutland <mark.rutland@arm.com>, Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infrade
 List-Id: linux-rockchip.vger.kernel.org
 
-convert drm_atomic_helper_suspend/resume() to use
-drm_mode_config_helper_suspend/resume().
+On Mon, Jul 30, 2018 at 10:12:01AM +0800, djw@t-chip.com.cn wrote:
+> From: Levin Du <djw@t-chip.com.cn>
+> 
+> ROC-RK3399-PC is a power efficient 4GB LPDDR4 single board
+> computer with USB 3.0 and Gigabit Ethernet in a form factor
+> compatible with the Raspberry Pi. It is based on the Rockchip
+> RK3399 SoC, powered by the Type-C port.
+> 
+> The devicetree currently supports peripherals of:
+> 
+> - Ethernet
+> - HDMI
+> - SD Card
+> - UART2 debug
+> - Type-C
+> - eMMC
+> 
+> USB3 in Type-C port currently only works with normal orientation,
+> not flip one.
+> 
+> Signed-off-by: Levin Du <djw@t-chip.com.cn>
+> 
+> ---
+> 
+> Changes in v2:
+> - remove custom brightness-levels (use calculated one in pwm_bl driver)
+> - remove redundant 'dr_mode="otg"' in usbdrd_dwc3_0
+> 
+> Changes in v1:
+> - remove bootargs
+> - use interpolation for brightness level
+> - add vcc_vbus_typec1 regulator
+> - fix phy-supply of u2phy0_otg and u2phy1_otg
+> - remove vcc_hub_en dummy regualtor
+> - add hub_rst (changed to output high) to pinctrl status of vcc5v0_host
+> - remove vsel-gpios props in fan53xx
+> - remove mp8859 in i2c
+> - fusb302: fix interrupt setting
+> - fusb302: add vbus-supply
+> - remove extcon in tcphy0 and tcphy1
+> - remove #sound-dai-cells in i2s*
+> - use RK_PXX style bit number for cd-gpios in SDMMC
+> - clean commented status lines
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts     | 682 +++++++++++++++++++++
+>  3 files changed, 687 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
 
-With this conversion, rockchip_drm_fb_resume() and
-rockchip_drm_fb_suspend() will not be used anymore.
-Both of these functions can be removed.
-
-Also, in struct rockchip_drm_private state will not be
-used anymore. So this can be removed forever.
-
-Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Signed-off-by: Ajit Negi <ajitn.linux@gmail.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 46 ++---------------------------
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h |  1 -
- 2 files changed, 2 insertions(+), 45 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index f814d37..dd12390 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -243,60 +243,18 @@ static void rockchip_drm_unbind(struct device *dev)
- };
- 
- #ifdef CONFIG_PM_SLEEP
--static void rockchip_drm_fb_suspend(struct drm_device *drm)
--{
--	struct rockchip_drm_private *priv = drm->dev_private;
--
--	console_lock();
--	drm_fb_helper_set_suspend(&priv->fbdev_helper, 1);
--	console_unlock();
--}
--
--static void rockchip_drm_fb_resume(struct drm_device *drm)
--{
--	struct rockchip_drm_private *priv = drm->dev_private;
--
--	console_lock();
--	drm_fb_helper_set_suspend(&priv->fbdev_helper, 0);
--	console_unlock();
--}
--
- static int rockchip_drm_sys_suspend(struct device *dev)
- {
- 	struct drm_device *drm = dev_get_drvdata(dev);
--	struct rockchip_drm_private *priv;
--
--	if (!drm)
--		return 0;
--
--	drm_kms_helper_poll_disable(drm);
--	rockchip_drm_fb_suspend(drm);
- 
--	priv = drm->dev_private;
--	priv->state = drm_atomic_helper_suspend(drm);
--	if (IS_ERR(priv->state)) {
--		rockchip_drm_fb_resume(drm);
--		drm_kms_helper_poll_enable(drm);
--		return PTR_ERR(priv->state);
--	}
--
--	return 0;
-+	return drm_mode_config_helper_suspend(drm);
- }
- 
- static int rockchip_drm_sys_resume(struct device *dev)
- {
- 	struct drm_device *drm = dev_get_drvdata(dev);
--	struct rockchip_drm_private *priv;
- 
--	if (!drm)
--		return 0;
--
--	priv = drm->dev_private;
--	drm_atomic_helper_resume(drm, priv->state);
--	rockchip_drm_fb_resume(drm);
--	drm_kms_helper_poll_enable(drm);
--
--	return 0;
-+	return drm_mode_config_helper_resume(drm);
- }
- #endif
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 3a6ebfc..d67ad0a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -51,7 +51,6 @@ struct rockchip_crtc_state {
- struct rockchip_drm_private {
- 	struct drm_fb_helper fbdev_helper;
- 	struct drm_gem_object *fbdev_bo;
--	struct drm_atomic_state *state;
- 	struct iommu_domain *domain;
- 	struct mutex mm_lock;
- 	struct drm_mm mm;
--- 
-1.9.1
+Reviewed-by: Rob Herring <robh@kernel.org>
