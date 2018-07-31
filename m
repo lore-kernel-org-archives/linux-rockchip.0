@@ -1,48 +1,67 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip defconfig64 updates for 4.19
-Date: Tue, 31 Jul 2018 00:37:01 +0200
-Message-ID: <6710740.gS0PWvgRmW@phil>
-References: <2000491.bLgWuj0xar@phil> <1809430.FkQi5Ue9ae@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1809430.FkQi5Ue9ae@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: djw@t-chip.com.cn
+Subject: [PATCH v4 0/4] Add sdmmc UHS support to ROC-RK3328-CC board.
+Date: Tue, 31 Jul 2018 13:59:18 +0800
+Message-ID: <1533016762-5268-1-git-send-email-djw@t-chip.com.cn>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, Simon Xue <xxm@rock-chips.com>, Liang Chen <cl@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, Linus Walleij <linus.walleij@linaro.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, David Wu <david.wu@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, Rocky Hao <rocky.hao@rock-chips.com>, Will Deacon <will.deacon@arm.com>, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Joseph Chen <chenjh@rock-chips.com>, Mark
 List-Id: linux-rockchip.vger.kernel.org
 
-This time with less granularity, as requested by Olof during the last pull.
+From: Levin Du <djw@t-chip.com.cn>
 
 
-The following changes since commit 021c91791a5e7e85c567452f1be3e4c2c6cb6063:
+Hi all, this is an attemp to add sdmmc UHS support to the
+ROC-RK3328-CC board.
 
-  Linux 4.18-rc3 (2018-07-01 16:04:53 -0700)
+This patch series adds a new compatible `rockchip,rk3328-grf-gpio` to
+the gpio-syscon driver, which currently only support for the access of
+the GPIO_MUTE pin in RK3328. Support for HDMI pins can be added later on
+perhaps by writing a standalone driver.
 
-are available in the Git repository at:
+A new GRF GPIO controller named `grf_gpio` is defined in rk3328.dtsi so
+that all RK3328 boards has access to it.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.19-rockchip-defconfig64-1
+The ROC-RK3328-CC board use the new gpio <&grf_gpio 0> in gpio-regulator
+to control the signal voltage of the sdmmc. It is essential for UHS
+support which requires 1.8V signal voltage.
 
-for you to fetch changes up to 365e660fc88d6b8bbff13e61114cfb7b57e8a23d:
+Many thanks to the Linux people!
 
-  arm64: defconfig: Enable more peripherals for Samsung Chromebook Plus. (2018-07-23 12:36:03 +0200)
+Changes in v4:
+- Use binding of "rockchip,rk3328-grf-gpio"
+- Use <&grf_gpio 0> to refer to the GPIO_MUTE pin.
 
-----------------------------------------------------------------
-Enablement of some more features relevant to rk3399-kevin
-(Chromebook Plus)
+Changes in v3:
+- Change from general gpio-syscon to specific rk3328-gpio-mute
+- Use dedicated "rockchip,rk3328-gpio-mute" driver
+- Use <&gpio_mute 0> instead of <&gpio_mute 1> to refer to the GPIO_MUTE pin.
 
-----------------------------------------------------------------
-Enric Balletbo i Serra (1):
-      arm64: defconfig: Enable more peripherals for Samsung Chromebook Plus.
+Changes in v2:
+- Rename gpio_syscon10 to gpio_mute in doc
+- Rename gpio_syscon10 to gpio_mute in rk3328.dtsi
+- Rename gpio_syscon10 to gpio_mute in rk3328-roc-cc.dts
 
- arch/arm64/configs/defconfig | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Changes in v1:
+- Refactured for general gpio-syscon usage for Rockchip SoCs.
+- Add doc rockchip,gpio-syscon.txt
+- Split from V0 and add to rk3328.dtsi for general use.
+- Split from V0.
+- Split into small patches
+- Sort dts properties in sdmmc node
+
+Levin Du (4):
+  gpio: syscon: rockchip: add GRF GPIO support for rk3328
+  arm64: dts: rockchip: add GRF GPIO controller to rk3328
+  arm64: dts: rockchip: add io-domain to roc-rk3328-cc
+  arm64: dts: rockchip: add sdmmc UHS support for roc-rk3328-cc
+
+ .../bindings/gpio/rockchip,rk3328-grf-gpio.txt     | 32 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     | 34 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  6 ++++
+ drivers/gpio/gpio-syscon.c                         | 31 ++++++++++++++++++++
+ 4 files changed, 103 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.txt
+
+-- 
+2.7.4
