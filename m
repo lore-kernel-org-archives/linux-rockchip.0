@@ -1,51 +1,111 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4 1/4] gpio: syscon: rockchip: add GRF GPIO support for
- rk3328
-Date: Tue, 31 Jul 2018 13:36:44 -0600
-Message-ID: <20180731193644.GA10459@rob-hp-laptop>
-References: <1533016762-5268-1-git-send-email-djw@t-chip.com.cn>
- <1533016762-5268-2-git-send-email-djw@t-chip.com.cn>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: [PATCH] drm/rockchip: Convert drm_atomic_helper_suspend/resume()
+Date: Wed, 1 Aug 2018 02:04:30 +0530
+Message-ID: <20180731203430.GA30136@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1533016762-5268-2-git-send-email-djw@t-chip.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: djw@t-chip.com.cn
-Cc: linux-rockchip@lists.infradead.org, Wayne Chou <zxf@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, ajitn.linux@gmail.com, daniel@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jul 31, 2018 at 01:59:19PM +0800, djw@t-chip.com.cn wrote:
-> From: Levin Du <djw@t-chip.com.cn>
-> 
-> In Rockchip RK3328, the output only GPIO_MUTE pin, originally for codec
-> mute control, can also be used for general purpose. It is manipulated by
-> the GRF_SOC_CON10 register in GRF. Aside from the GPIO_MUTE pin, the HDMI
-> pins can also be set in the same way.
-> 
-> Currently this GRF GPIO controller only supports the mute pin. If needed
-> in the future, the HDMI pins support can also be added.
-> 
-> Signed-off-by: Levin Du <djw@t-chip.com.cn>
-> 
-> ---
-> 
-> Changes in v4:
-> - Rename the GPIO binding to "rockchip,rk3328-grf-gpio"
-> 
-> Changes in v3:
-> - Change from general gpio-syscon to specific rk3328-gpio-mute
-> 
-> Changes in v2:
-> - Rename gpio_syscon10 to gpio_mute in doc
-> 
-> Changes in v1:
-> - Refactured for general gpio-syscon usage for Rockchip SoCs.
-> - Add doc rockchip,gpio-syscon.txt
-> 
->  .../bindings/gpio/rockchip,rk3328-grf-gpio.txt     | 32 ++++++++++++++++++++++
->  drivers/gpio/gpio-syscon.c                         | 31 +++++++++++++++++++++
->  2 files changed, 63 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.txt
+convert drm_atomic_helper_suspend/resume() to use
+drm_mode_config_helper_suspend/resume().
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+With this conversion, rockchip_drm_fb_resume() and
+rockchip_drm_fb_suspend() will not be used anymore.
+Both of these functions can be removed.
+
+Also, in struct rockchip_drm_private state will not be
+used anymore. So this can be removed forever.
+
+Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+Signed-off-by: Ajit Negi <ajitn.linux@gmail.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 46 ++---------------------------
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h |  1 -
+ 2 files changed, 2 insertions(+), 45 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index f814d37..dd12390 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -243,60 +243,18 @@ static void rockchip_drm_unbind(struct device *dev)
+ };
+ 
+ #ifdef CONFIG_PM_SLEEP
+-static void rockchip_drm_fb_suspend(struct drm_device *drm)
+-{
+-	struct rockchip_drm_private *priv = drm->dev_private;
+-
+-	console_lock();
+-	drm_fb_helper_set_suspend(&priv->fbdev_helper, 1);
+-	console_unlock();
+-}
+-
+-static void rockchip_drm_fb_resume(struct drm_device *drm)
+-{
+-	struct rockchip_drm_private *priv = drm->dev_private;
+-
+-	console_lock();
+-	drm_fb_helper_set_suspend(&priv->fbdev_helper, 0);
+-	console_unlock();
+-}
+-
+ static int rockchip_drm_sys_suspend(struct device *dev)
+ {
+ 	struct drm_device *drm = dev_get_drvdata(dev);
+-	struct rockchip_drm_private *priv;
+-
+-	if (!drm)
+-		return 0;
+-
+-	drm_kms_helper_poll_disable(drm);
+-	rockchip_drm_fb_suspend(drm);
+ 
+-	priv = drm->dev_private;
+-	priv->state = drm_atomic_helper_suspend(drm);
+-	if (IS_ERR(priv->state)) {
+-		rockchip_drm_fb_resume(drm);
+-		drm_kms_helper_poll_enable(drm);
+-		return PTR_ERR(priv->state);
+-	}
+-
+-	return 0;
++	return drm_mode_config_helper_suspend(drm);
+ }
+ 
+ static int rockchip_drm_sys_resume(struct device *dev)
+ {
+ 	struct drm_device *drm = dev_get_drvdata(dev);
+-	struct rockchip_drm_private *priv;
+ 
+-	if (!drm)
+-		return 0;
+-
+-	priv = drm->dev_private;
+-	drm_atomic_helper_resume(drm, priv->state);
+-	rockchip_drm_fb_resume(drm);
+-	drm_kms_helper_poll_enable(drm);
+-
+-	return 0;
++	return drm_mode_config_helper_resume(drm);
+ }
+ #endif
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index 3a6ebfc..d67ad0a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -51,7 +51,6 @@ struct rockchip_crtc_state {
+ struct rockchip_drm_private {
+ 	struct drm_fb_helper fbdev_helper;
+ 	struct drm_gem_object *fbdev_bo;
+-	struct drm_atomic_state *state;
+ 	struct iommu_domain *domain;
+ 	struct mutex mm_lock;
+ 	struct drm_mm mm;
+-- 
+1.9.1
