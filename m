@@ -1,59 +1,68 @@
-From: Heiko Stuebner <heiko@sntech.de>
+From: Souptick Joarder <jrdr.linux@gmail.com>
 Subject: Re: [PATCH] drm/rockchip: Convert drm_atomic_helper_suspend/resume()
-Date: Wed, 01 Aug 2018 15:10:29 +0200
-Message-ID: <1843623.lUM99VBV1x@phil>
+Date: Wed, 1 Aug 2018 18:44:24 +0530
+Message-ID: <CAFqt6zbd5pJJEV+9_sqs3bML18gpWROBjGA13VeK3AWFgJ_u+A@mail.gmail.com>
 References: <20180731203430.GA30136@jordon-HP-15-Notebook-PC>
- <16141309.kTfAWOe8rM@phil>
- <CAFqt6zZfLXuMUT75a3dWKeiCCmKZOfi=FdTeFRjcdFDZdfcRVQ@mail.gmail.com>
+ <16141309.kTfAWOe8rM@phil> <CAFqt6zZfLXuMUT75a3dWKeiCCmKZOfi=FdTeFRjcdFDZdfcRVQ@mail.gmail.com>
+ <1843623.lUM99VBV1x@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAFqt6zZfLXuMUT75a3dWKeiCCmKZOfi=FdTeFRjcdFDZdfcRVQ@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: Ajit Linux <ajitn.linux@gmail.com>, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1843623.lUM99VBV1x@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: hjc@rock-chips.com, airlied@linux.ie, Ajit Linux <ajitn.linux@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDEuIEF1Z3VzdCAyMDE4LCAxNDo0Mzo0NyBDRVNUIHNjaHJpZWIgU291cHRp
-Y2sgSm9hcmRlcjoKPiBPbiBXZWQsIEF1ZyAxLCAyMDE4IGF0IDY6MDMgUE0sIEhlaWtvIFN0dWVi
-bmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4gSGkgU291cHRpY2ssCj4gPgo+ID4gQW0g
-RGllbnN0YWcsIDMxLiBKdWxpIDIwMTgsIDIyOjM0OjMwIENFU1Qgc2NocmllYiBTb3VwdGljayBK
-b2FyZGVyOgo+ID4+IGNvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1bWUoKSB0
-byB1c2UKPiA+PiBkcm1fbW9kZV9jb25maWdfaGVscGVyX3N1c3BlbmQvcmVzdW1lKCkuCj4gPj4K
-PiA+PiBXaXRoIHRoaXMgY29udmVyc2lvbiwgcm9ja2NoaXBfZHJtX2ZiX3Jlc3VtZSgpIGFuZAo+
-ID4+IHJvY2tjaGlwX2RybV9mYl9zdXNwZW5kKCkgd2lsbCBub3QgYmUgdXNlZCBhbnltb3JlLgo+
-ID4+IEJvdGggb2YgdGhlc2UgZnVuY3Rpb25zIGNhbiBiZSByZW1vdmVkLgo+ID4+Cj4gPj4gQWxz
-bywgaW4gc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlIHN0YXRlIHdpbGwgbm90IGJlCj4gPj4g
-dXNlZCBhbnltb3JlLiBTbyB0aGlzIGNhbiBiZSByZW1vdmVkIGZvcmV2ZXIuCj4gPj4KPiA+PiBT
-aWduZWQtb2ZmLWJ5OiBTb3VwdGljayBKb2FyZGVyIDxqcmRyLmxpbnV4QGdtYWlsLmNvbT4KPiA+
-PiBTaWduZWQtb2ZmLWJ5OiBBaml0IE5lZ2kgPGFqaXRuLmxpbnV4QGdtYWlsLmNvbT4KPiA+Cj4g
-PiB0aGUgcGF0Y2ggaXRzZWxmIGxvb2tzIGdyZWF0LCBqdXN0IGEgc2ltcGxlIGJvb2trZWVwaW5n
-IHF1ZXN0aW9uLgo+ID4KPiA+IFdoYXQgcm9sZSBkaWQgQWppdCBwbGF5IGluIGNyZWF0aW5nIHRo
-ZSBwYXRjaD8gSWYgSSByZW1lbWJlciBjb3JyZWN0bHkKPiA+IGl0IGlzIG1lYW50IHRvIGJlCj4g
-PiAtIDFzdCBTaWduZWQtb2ZmOiBQYXRjaC1BdXRob3IKPiA+IC0gMm5kIFNpZ25lZC1vZmY6IEUt
-TWFpbCBzZW5kZXIgKyBwYXRjaCBwb3NzaWJseSBwYXRjaCBjaGFuZ2VzCj4gPiAob3B0aW9uYWwg
-b2YgY291cnNlIGlmIHRoZSBzYW1lKQo+ID4KPiA+IFNvIHdhcyB0aGlzIG1lYW50IHRvIGJlIGEg
-UmV2aWV3ZWQtYnkgZnJvbSBBaml0Pwo+IAo+IFdlIGJvdGggYXJlIHdvcmtpbmcgdG9nZXRoZXIg
-Zm9yIHRoZXNlIHBhdGNoZXMgdG8KPiBjb252ZXJ0IGRybV9hdG9taWNfaGVscGVyX3N1c3BlbmQv
-cmVzdW1lKCkuCj4gVGhhdCdzIHRoZSByZWFzb24gdG8gYWRkIGhpcyBuYW1lIGluIDJuZCBTaWdu
-ZWQtb2ZmCj4gaW4gYWxsIHNpbWlsYXIgcGF0Y2hlcy4KPiAKPiBJcyBpdCBhIGluY29ycmVjdCB3
-YXkgdG8gcHV0IDJuZCBTaWduZWQtb2ZmIGhlcmUgPwoKVGhhbmtzIGZvciB0aGUgY2xhcmlmaWNh
-dGlvbiBhbmQgdGhlIGludGVyZXN0aW5nIHF1ZXN0aW9uIDotKQoKSSd2ZSBqdXN0IHJlYWQgdGhy
-b3VnaCBEb2N1bWVudGF0aW9uL3Byb2Nlc3Mvc3VibWl0dGluZy1wYXRjaGVzLnJzdAphbmQgaXQg
-c2VlbXMgdGhlcmUgaXMgYW4gIm9mZmljaWFsIiB3YXkgdG8gc2hvdyB0aGF0IHJlbGF0aW9uc2hp
-cCwgdmlhIGEKdGFnIG5hbWVkICJDby1EZXZlbG9wZWQtYnk6IiBkZXNjcmliZWQgdW5kZXIgbnVt
-YmVyIDEyLgoKU28gSSBndWVzcyB3ZSBjb3VsZCBqdXN0IGFkYXB0IHRoZSBwYXRjaCBhY2NvcmRp
-bmdseSwgaWYgdGhhdCBpcyBvayB3aXRoCmJvdGggb2YgeW91IChpLmUuIEkgY2FuIGNoYW5nZSB0
-aGlzIHdoZW4gYXBwbHlpbmcsIHNvIG5vIG5lZWQgdG8gcmVzZW5kKS4KCgpIZWlrbwoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Wed, Aug 1, 2018 at 6:40 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Mittwoch, 1. August 2018, 14:43:47 CEST schrieb Souptick Joarder:
+>> On Wed, Aug 1, 2018 at 6:03 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+>> > Hi Souptick,
+>> >
+>> > Am Dienstag, 31. Juli 2018, 22:34:30 CEST schrieb Souptick Joarder:
+>> >> convert drm_atomic_helper_suspend/resume() to use
+>> >> drm_mode_config_helper_suspend/resume().
+>> >>
+>> >> With this conversion, rockchip_drm_fb_resume() and
+>> >> rockchip_drm_fb_suspend() will not be used anymore.
+>> >> Both of these functions can be removed.
+>> >>
+>> >> Also, in struct rockchip_drm_private state will not be
+>> >> used anymore. So this can be removed forever.
+>> >>
+>> >> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+>> >> Signed-off-by: Ajit Negi <ajitn.linux@gmail.com>
+>> >
+>> > the patch itself looks great, just a simple bookkeeping question.
+>> >
+>> > What role did Ajit play in creating the patch? If I remember correctly
+>> > it is meant to be
+>> > - 1st Signed-off: Patch-Author
+>> > - 2nd Signed-off: E-Mail sender + patch possibly patch changes
+>> > (optional of course if the same)
+>> >
+>> > So was this meant to be a Reviewed-by from Ajit?
+>>
+>> We both are working together for these patches to
+>> convert drm_atomic_helper_suspend/resume().
+>> That's the reason to add his name in 2nd Signed-off
+>> in all similar patches.
+>>
+>> Is it a incorrect way to put 2nd Signed-off here ?
+>
+> Thanks for the clarification and the interesting question :-)
+>
+> I've just read through Documentation/process/submitting-patches.rst
+> and it seems there is an "official" way to show that relationship, via a
+> tag named "Co-Developed-by:" described under number 12.
+>
+> So I guess we could just adapt the patch accordingly, if that is ok with
+> both of you (i.e. I can change this when applying, so no need to resend).
+
+We are ok with it :-)
+
+>
+>
+> Heiko
+>
+>
