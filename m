@@ -1,66 +1,42 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: Convert drm_atomic_helper_suspend/resume()
-Date: Wed, 01 Aug 2018 15:32:50 +0200
-Message-ID: <4854810.RcpRblXvbi@phil>
-References: <20180731203430.GA30136@jordon-HP-15-Notebook-PC>
- <1843623.lUM99VBV1x@phil>
- <CAFqt6zbd5pJJEV+9_sqs3bML18gpWROBjGA13VeK3AWFgJ_u+A@mail.gmail.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v2 5/5] clk: RK808: add RK809 and RK817 support.
+Date: Wed, 01 Aug 2018 08:18:55 -0700
+Message-ID: <153313673531.17365.8764698693425766723@swboyd.mtv.corp.google.com>
+References: <1533023850-29004-1-git-send-email-tony.xie@rock-chips.com>
+ <1533024029-30273-1-git-send-email-tony.xie@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAFqt6zbd5pJJEV+9_sqs3bML18gpWROBjGA13VeK3AWFgJ_u+A@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: Ajit Linux <ajitn.linux@gmail.com>, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1533024029-30273-1-git-send-email-tony.xie@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rtc@vger.kernel.org, a.zummo@towertech.it, alexandre.belloni@bootlin.com, tony.xie@rock-chips.com, huangtao@rock-chips.com, devicetree@vger.kernel.org, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, xsf@rock-chips.com, linux-rockchip@lists.infradead.org, broonie@kernel.org, lee.jones@linaro.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, chenjh@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDEuIEF1Z3VzdCAyMDE4LCAxNToxNDoyNCBDRVNUIHNjaHJpZWIgU291cHRp
-Y2sgSm9hcmRlcjoKPiBPbiBXZWQsIEF1ZyAxLCAyMDE4IGF0IDY6NDAgUE0sIEhlaWtvIFN0dWVi
-bmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4gQW0gTWl0dHdvY2gsIDEuIEF1Z3VzdCAy
-MDE4LCAxNDo0Mzo0NyBDRVNUIHNjaHJpZWIgU291cHRpY2sgSm9hcmRlcjoKPiA+PiBPbiBXZWQs
-IEF1ZyAxLCAyMDE4IGF0IDY6MDMgUE0sIEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
-IHdyb3RlOgo+ID4+ID4gSGkgU291cHRpY2ssCj4gPj4gPgo+ID4+ID4gQW0gRGllbnN0YWcsIDMx
-LiBKdWxpIDIwMTgsIDIyOjM0OjMwIENFU1Qgc2NocmllYiBTb3VwdGljayBKb2FyZGVyOgo+ID4+
-ID4+IGNvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1bWUoKSB0byB1c2UKPiA+
-PiA+PiBkcm1fbW9kZV9jb25maWdfaGVscGVyX3N1c3BlbmQvcmVzdW1lKCkuCj4gPj4gPj4KPiA+
-PiA+PiBXaXRoIHRoaXMgY29udmVyc2lvbiwgcm9ja2NoaXBfZHJtX2ZiX3Jlc3VtZSgpIGFuZAo+
-ID4+ID4+IHJvY2tjaGlwX2RybV9mYl9zdXNwZW5kKCkgd2lsbCBub3QgYmUgdXNlZCBhbnltb3Jl
-Lgo+ID4+ID4+IEJvdGggb2YgdGhlc2UgZnVuY3Rpb25zIGNhbiBiZSByZW1vdmVkLgo+ID4+ID4+
-Cj4gPj4gPj4gQWxzbywgaW4gc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlIHN0YXRlIHdpbGwg
-bm90IGJlCj4gPj4gPj4gdXNlZCBhbnltb3JlLiBTbyB0aGlzIGNhbiBiZSByZW1vdmVkIGZvcmV2
-ZXIuCj4gPj4gPj4KPiA+PiA+PiBTaWduZWQtb2ZmLWJ5OiBTb3VwdGljayBKb2FyZGVyIDxqcmRy
-LmxpbnV4QGdtYWlsLmNvbT4KPiA+PiA+PiBTaWduZWQtb2ZmLWJ5OiBBaml0IE5lZ2kgPGFqaXRu
-LmxpbnV4QGdtYWlsLmNvbT4KPiA+PiA+Cj4gPj4gPiB0aGUgcGF0Y2ggaXRzZWxmIGxvb2tzIGdy
-ZWF0LCBqdXN0IGEgc2ltcGxlIGJvb2trZWVwaW5nIHF1ZXN0aW9uLgo+ID4+ID4KPiA+PiA+IFdo
-YXQgcm9sZSBkaWQgQWppdCBwbGF5IGluIGNyZWF0aW5nIHRoZSBwYXRjaD8gSWYgSSByZW1lbWJl
-ciBjb3JyZWN0bHkKPiA+PiA+IGl0IGlzIG1lYW50IHRvIGJlCj4gPj4gPiAtIDFzdCBTaWduZWQt
-b2ZmOiBQYXRjaC1BdXRob3IKPiA+PiA+IC0gMm5kIFNpZ25lZC1vZmY6IEUtTWFpbCBzZW5kZXIg
-KyBwYXRjaCBwb3NzaWJseSBwYXRjaCBjaGFuZ2VzCj4gPj4gPiAob3B0aW9uYWwgb2YgY291cnNl
-IGlmIHRoZSBzYW1lKQo+ID4+ID4KPiA+PiA+IFNvIHdhcyB0aGlzIG1lYW50IHRvIGJlIGEgUmV2
-aWV3ZWQtYnkgZnJvbSBBaml0Pwo+ID4+Cj4gPj4gV2UgYm90aCBhcmUgd29ya2luZyB0b2dldGhl
-ciBmb3IgdGhlc2UgcGF0Y2hlcyB0bwo+ID4+IGNvbnZlcnQgZHJtX2F0b21pY19oZWxwZXJfc3Vz
-cGVuZC9yZXN1bWUoKS4KPiA+PiBUaGF0J3MgdGhlIHJlYXNvbiB0byBhZGQgaGlzIG5hbWUgaW4g
-Mm5kIFNpZ25lZC1vZmYKPiA+PiBpbiBhbGwgc2ltaWxhciBwYXRjaGVzLgo+ID4+Cj4gPj4gSXMg
-aXQgYSBpbmNvcnJlY3Qgd2F5IHRvIHB1dCAybmQgU2lnbmVkLW9mZiBoZXJlID8KPiA+Cj4gPiBU
-aGFua3MgZm9yIHRoZSBjbGFyaWZpY2F0aW9uIGFuZCB0aGUgaW50ZXJlc3RpbmcgcXVlc3Rpb24g
-Oi0pCj4gPgo+ID4gSSd2ZSBqdXN0IHJlYWQgdGhyb3VnaCBEb2N1bWVudGF0aW9uL3Byb2Nlc3Mv
-c3VibWl0dGluZy1wYXRjaGVzLnJzdAo+ID4gYW5kIGl0IHNlZW1zIHRoZXJlIGlzIGFuICJvZmZp
-Y2lhbCIgd2F5IHRvIHNob3cgdGhhdCByZWxhdGlvbnNoaXAsIHZpYSBhCj4gPiB0YWcgbmFtZWQg
-IkNvLURldmVsb3BlZC1ieToiIGRlc2NyaWJlZCB1bmRlciBudW1iZXIgMTIuCj4gPgo+ID4gU28g
-SSBndWVzcyB3ZSBjb3VsZCBqdXN0IGFkYXB0IHRoZSBwYXRjaCBhY2NvcmRpbmdseSwgaWYgdGhh
-dCBpcyBvayB3aXRoCj4gPiBib3RoIG9mIHlvdSAoaS5lLiBJIGNhbiBjaGFuZ2UgdGhpcyB3aGVu
-IGFwcGx5aW5nLCBzbyBubyBuZWVkIHRvIHJlc2VuZCkuCj4gCj4gV2UgYXJlIG9rIHdpdGggaXQg
-Oi0pCgphcHBsaWVkIHRvIGRybS1taXNjLW5leHQgd2l0aCB0aGUgc2Vjb25kIHNpZ25lZC1vZmYg
-Y2hhbmdlZCB0bwpjby1kZXZlbG9wZWQtYnkuCgpUaGFua3MgZm9yIHRoYXQgbmljZSBjbGVhbnVw
-LgpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Quoting Tony Xie (2018-07-31 01:00:29)
+> diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+> index 721572a..fc1427c 100644
+> --- a/drivers/clk/Kconfig
+> +++ b/drivers/clk/Kconfig
+> @@ -46,11 +46,11 @@ config COMMON_CLK_MAX77686
+>           clock.
+>  =
+
+>  config COMMON_CLK_RK808
+> -       tristate "Clock driver for RK805/RK808/RK818"
+> +       tristate "Clock driver for RK805/RK808/RK809/RK817/RK818"
+>         depends on MFD_RK808
+>         ---help---
+> -         This driver supports RK805, RK808 and RK818 crystal oscillator =
+clock. These
+> -         multi-function devices have two fixed-rate oscillators,
+> +         This driver supports RK805, RK809 and RK817, RK808 and RK818 cr=
+ystal oscillator clock.
+> +          These multi-function devices have two fixed-rate oscillators,
+
+Something got messed up with the indentation here. Please fix.
+
+>           clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
+>           by control register.
+> =20
