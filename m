@@ -1,130 +1,39 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH 1/8] devfreq: rockchip-dfi: Move GRF definitions to a
- common place.
-Date: Wed, 01 Aug 2018 17:36:04 +0900
-Message-ID: <5B6170F4.4070102@samsung.com>
-References: <20180730081124.30698-1-enric.balletbo@collabora.com>
-        <CGME20180730081245epcas3p2794d7d7c21f4059ab89ec59a0ef9fa22@epcas3p2.samsung.com>
-        <20180730081124.30698-2-enric.balletbo@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+From: <cl@rock-chips.com>
+Subject: [PATCH v3 0/4] arm64: dts: rockchip: add basic dts file for PX30 SoCs
+Date: Wed,  1 Aug 2018 16:45:12 +0800
+Message-ID: <1533113116-8820-1-git-send-email-cl@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <20180730081124.30698-2-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Lin Huang <hl@rock-chips.com>, kernel@collabora.com, robin.murphy@arm.com, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, klaus.goger@theobroma-systems.com, hjc@rock-chips.com, jagan@amarulasolutions.com, djw@t-chip.com.cn, jacob-chen@iotwrt.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, frank.wang@rock-chips.com, lgirdwood@gmail.com, broonie@kernel.org, alsa-devel@alsa-project.org, gregkh@linuxfoundation.org, catalin.marinas@arm.com, will.deacon@arm.com, yamada.masahiro@socionext.com, arnd@arndb.de, zhangqing@rock-chips.com, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, david.wu@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, sugar.zhang@rock-chips.com, huibin.hong@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Enric,
+From: Liang Chen <cl@rock-chips.com>
 
-On 2018년 07월 30일 17:11, Enric Balletbo i Serra wrote:
-> Some rk3399 GRF (Generic Register Files) definitions can be used for
-> different drivers. Move these definitions to a common include so we
-> don't need to duplicate these definitions.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> 
-> Changes in v1:
-> - [RFC 1/10] Add Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+Changes in v3:
+1. backlight: remove properties <brightness-levels>,<num-interpolated-steps>,
+<default-brightness-level>, as the driver will compute a default table.
 
-Even if you add the changes log, you are missing my Acked-by tag.
+Changes in V2:
+1. change the subject to format "dt-bindings: module: ..." for the documents. 
+2. use new property <num-interpolated-steps> for backlight.
+3. remove pinctrl of rk809, because the driver is not ready.
 
-> - [RFC 1/10] s/Generic/General/ (Robin Murphy)
-> - [RFC 4/10] Removed from the series. I did not found a use case where not holding the mutex causes the issue.
-> - [RFC 7/10] Removed from the series. I did not found a use case where this matters.
-> 
->  drivers/devfreq/event/rockchip-dfi.c | 23 +++++++----------------
->  include/soc/rockchip/rk3399_grf.h    | 21 +++++++++++++++++++++
->  2 files changed, 28 insertions(+), 16 deletions(-)
->  create mode 100644 include/soc/rockchip/rk3399_grf.h
-> 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 22b113363ffc..2fbbcbeb644f 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -26,6 +26,8 @@
->  #include <linux/list.h>
->  #include <linux/of.h>
->  
-> +#include <soc/rockchip/rk3399_grf.h>
-> +
->  #define RK3399_DMC_NUM_CH	2
->  
->  /* DDRMON_CTRL */
-> @@ -43,18 +45,6 @@
->  #define DDRMON_CH1_COUNT_NUM		0x3c
->  #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
->  
-> -/* pmu grf */
-> -#define PMUGRF_OS_REG2	0x308
-> -#define DDRTYPE_SHIFT	13
-> -#define DDRTYPE_MASK	7
-> -
-> -enum {
-> -	DDR3 = 3,
-> -	LPDDR3 = 6,
-> -	LPDDR4 = 7,
-> -	UNUSED = 0xFF
-> -};
-> -
->  struct dmc_usage {
->  	u32 access;
->  	u32 total;
-> @@ -83,16 +73,17 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
->  	u32 ddr_type;
->  
->  	/* get ddr type */
-> -	regmap_read(info->regmap_pmu, PMUGRF_OS_REG2, &val);
-> -	ddr_type = (val >> DDRTYPE_SHIFT) & DDRTYPE_MASK;
-> +	regmap_read(info->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> +	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> +		    RK3399_PMUGRF_DDRTYPE_MASK;
->  
->  	/* clear DDRMON_CTRL setting */
->  	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
->  
->  	/* set ddr type to dfi */
-> -	if (ddr_type == LPDDR3)
-> +	if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
->  		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
-> -	else if (ddr_type == LPDDR4)
-> +	else if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
->  		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
->  
->  	/* enable count, use software mode */
-> diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
-> new file mode 100644
-> index 000000000000..3eebabcb2812
-> --- /dev/null
-> +++ b/include/soc/rockchip/rk3399_grf.h
-> @@ -0,0 +1,21 @@
-> +/* SPDX-License-Identifier: GPL-2.0+ */
-> +/*
-> + * Rockchip General Register Files definitions
-> + *
-> + * Copyright (c) 2018, Collabora Ltd.
-> + * Author: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> + */
-> +
-> +#ifndef __SOC_RK3399_GRF_H
-> +#define __SOC_RK3399_GRF_H
-> +
-> +/* PMU GRF Registers */
-> +#define RK3399_PMUGRF_OS_REG2		0x308
-> +#define RK3399_PMUGRF_DDRTYPE_SHIFT	13
-> +#define RK3399_PMUGRF_DDRTYPE_MASK	7
-> +#define RK3399_PMUGRF_DDRTYPE_DDR3	3
-> +#define RK3399_PMUGRF_DDRTYPE_LPDDR2	5
-> +#define RK3399_PMUGRF_DDRTYPE_LPDDR3	6
-> +#define RK3399_PMUGRF_DDRTYPE_LPDDR4	7
-> +
-> +#endif
-> 
+Liang Chen (4):
+  dt-bindings: usb: dwc2: add description for px30
+  dt-bindings: rockchip: grf: add grf and pmugrf description for px30
+  arm64: dts: rockchip: add core dtsi file for PX30 SoCs
+  arm64: dts: rockchip: add PX30 eavluation board devicetree
 
+ Documentation/devicetree/bindings/arm/rockchip.txt |    4 +
+ .../devicetree/bindings/soc/rockchip/grf.txt       |    2 +
+ Documentation/devicetree/bindings/usb/dwc2.txt     |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |  470 +++++
+ arch/arm64/boot/dts/rockchip/px30.dtsi             | 2043 ++++++++++++++++++++
+ 6 files changed, 2521 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30.dtsi
 
 -- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+1.9.1
