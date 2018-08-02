@@ -1,67 +1,43 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 3/5] dt-bindings: mfd: rk808: Add binding informations
- for RK809 and RK817.
-Date: Thu, 02 Aug 2018 13:16:18 +0200
-Message-ID: <2820701.ErqR8ge6r7@phil>
-References: <1533023850-29004-1-git-send-email-tony.xie@rock-chips.com>
- <1533023850-29004-4-git-send-email-tony.xie@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 3/4] arm64: dts: rockchip: add core dtsi file for PX30 SoCs
+Date: Thu, 02 Aug 2018 13:58:51 +0200
+Message-ID: <5420010.G1GNdo6K2G@phil>
+References: <1533113116-8820-1-git-send-email-cl@rock-chips.com> <1533113116-8820-4-git-send-email-cl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1533023850-29004-4-git-send-email-tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xsf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1533113116-8820-4-git-send-email-cl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: cl@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, klaus.goger@theobroma-systems.com, hjc@rock-chips.com, jagan@amarulasolutions.com, djw@t-chip.com.cn, jacob-chen@iotwrt.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, frank.wang@rock-chips.com, lgirdwood@gmail.com, broonie@kernel.org, alsa-devel@alsa-project.org, gregkh@linuxfoundation.org, catalin.marinas@arm.com, will.deacon@arm.com, yamada.masahiro@socionext.com, arnd@arndb.de, zhangqing@rock-chips.com, shawn.lin@rock-chips.com, kever.yang@rock-chips.com, david.wu@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, sugar.zhang@rock-chips.com, huibin.hong@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tony,
+Hi,
 
-Am Dienstag, 31. Juli 2018, 09:57:28 CEST schrieb Tony Xie:
-> Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
+Am Mittwoch, 1. August 2018, 10:45:15 CEST schrieb cl@rock-chips.com:
+> From: Liang Chen <cl@rock-chips.com>
 > 
-> Signed-off-by: Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> This patch adds core dtsi file for Rockchip PX30 SoCs.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
 
-I don't see the devicetree binding maintainers listed in the recipient
-list, so adding them in the next iteration might increase your chances
-to get an Ack on the binding.
-
-scripts/get_maintainer.pl -f Documentation/devicetree/bindings lists
-
-Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-
-as the main dt maintainers.
-
-[...]
-
-> @@ -99,6 +147,13 @@ number as described in RK818 datasheet.
->  	- HDMI_SWITCH
->  	- OTG_SWITCH
->  
-> +There are three pins needed to config, named "gpio_ts" "gpio_gt" "gpio_slp".
-> +	The gpio_gt and gpio_ts pins support the gpio function.
-> +	The gpio_slp pin is for controlling the pmic states, as below:
-> +		- reset
-> +		- power down
-> +		- sleep
-> +
-
-Is this common for all rk8xx pmics or just the two new ones?
-As the paragraph above makes it sound like these are present on all
-and I didn't find mention of them in the datasheets for previous pmics
-I have.
-
-Also to me it is not clear in what way these should be used and I didn't
-find any mention of them at all in the rest of your series.
+applied with the following changes:
+- some reordering
+- cpu properties should be present in all cpu nodes (clocks etc)
+- added dma-names to uarts
+- dropped #dma-cells from uarts+spi (only for dma-controllers)
+- dropped phy-names from usb nodes without actual phys
+  (please readd once you have phy support)
+- dropped the gamma_lut + reg-names and spanned the
+  registers till below the iommu, similar to all other socs we have
+- dropped the high_speed pinctrl state from the spi nodes
+  (not part of mainline dt-binding)
+- dropped peripherals-req-type-burst from the dmac
+  (not part of mainline dt-binding)
+- split out dwc2 into separate patch to be applied once the binding lands
+- set #sound-dai-cells in px30.dtsi ... property of the i2s controller
+  and doesn't change per board
 
 
 Heiko
