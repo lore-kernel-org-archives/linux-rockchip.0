@@ -1,84 +1,49 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add idle-states to device tree for
- rk3399
-Date: Thu, 09 Aug 2018 22:09:42 +0200
-Message-ID: <5620784.b19SH5PkdR@phil>
-References: <1467793254-10808-1-git-send-email-wxt@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 7/8] arm64: dts: rk3399: Add dfi and dmc nodes.
+Date: Thu, 09 Aug 2018 16:41:22 -0600
+Message-ID: <5b6cc314.1c69fb81.96ced.16f7@mx.google.com>
+References: <20180730081124.30698-1-enric.balletbo@collabora.com>
+ <20180730081124.30698-8-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467793254-10808-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180730081124.30698-8-enric.balletbo@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: enric.balletbo@collabora.com
+Cc: Mark Rutland <mark.rutland@arm.com>, Douglas Anderson <dianders@chromium.org>, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, kernel@collabora.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Chanwoo Choi <cw00.choi@samsung.com>, Nickey Yang <nickey.yang@rock-chips.com>, Jacob Chen <jacob-chen@iotwrt.com>, devicetree@vger.kernel.org, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, Mark Yao <markyao0591@gmail.com>, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>, Kyungmin Park <kyungmin.park@samsung.com>, robin.murphy@arm.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 6. Juli 2016, 10:20:54 CEST schrieb Caesar Wang:
-> As the rk3399 ATF had been supported on ARM github [0], so we can add
-> idle-states for rk3399.
-> This patch adds idle-states bindings data collected through tests
-> experiments (latency and energy consumption) on rk3399 evb2 board.
-> 
-> You can see detail idle-states definitions on document [1].
-> 
-> * arm,psci-suspend-param: power_state parameter to pass to the PSCI
->   suspend call.
-> * entry-latency: Worst case latency required to enter the idle state. The
->   exit-latency may be guaranteed only after entry-latency has passed.
-> * min-residency: Minimum period, including preparation and entry, for a
->   given idle state to be worthwhile energywise
-> * min-residency: Minimum period, including preparation and entry, for a
->   given idle state to be worthwhile energywise.
-> 
-> [0]:
-> https://github.com/ARM-software/arm-trusted-firmware
-> [1]:
-> Documentation/devicetree/bindings/arm/psci.txt
-> Documentation/devicetree/bindings/arm/idle-states.txt
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Looks like this patch slipped through the cracks and nobody reposted
-them over time.
-
-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index a6dd623..12ce265 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -101,6 +101,18 @@
->  			};
->  		};
->  
-> +		idle-states {
-> +			entry-method = "psci";
-> +			cpu_sleep: cpu-sleep-0 {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				arm,psci-suspend-param = <0x0010000>;
-> +				entry-latency-us = <350>;
-> +				exit-latency-us = <600>;
-> +				min-residency-us = <1150>;
-
-Looking at the chromeos kernel, there are some more patches adapting
-this idle-state to use different timings.
-
-There also was a cluster-idle state added for a while but that seems to
-cause audio issues according to the CrOS history.
-
-In any case, I'll try to look at this shortly.
-
-
-Heiko
+SGksIHRoaXMgaXMgYW4gYXV0b21hdGVkIGVtYWlsIGZyb20gUm9iJ3MgKGV4cGVyaW1lbnRhbCkg
+cmV2aWV3IGJvdC4gSQpmb3VuZCBhIGNvdXBsZSBvZiBjb21tb24gcHJvYmxlbXMgd2l0aCB5b3Vy
+IHBhdGNoLiBQbGVhc2Ugc2VlIGJlbG93LgoKT24gTW9uLCAzMCBKdWwgMjAxOCAxMDoxMToyMyAr
+MDIwMCwgRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSB3cm90ZToKPiBGcm9tOiBMaW4gSHVhbmcgPGhs
+QHJvY2stY2hpcHMuY29tPgo+IAo+IFRoZXNlIGFyZSByZXF1aXJlZCB0byBzdXBwb3J0IEREUiBE
+VkZTIG9uIHJrMzM5OSBwbGF0Zm9ybS4gVGhlIHBhdGNoIGFsc28KPiBpbnRyb2R1Y2VzIHR3byBu
+ZXcgZmlsZXMgKHJrMzM5OS1kcmFtLmggYW5kIHJrMzM5OS1kcmFtLWRlZmF1bHQtdGltaW5nKQo+
+IHdpdGggZGVmYXVsdCBEUkFNIHNldHRpbmdzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IExpbiBIdWFu
+ZyA8aGxAcm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBT
+ZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KClRoZSBwcmVmZXJyZWQgc3ViamVj
+dCBwcmVmaXggaXMgImR0LWJpbmRpbmdzOiA8YmluZGluZyBkaXI+OiAuLi4iLgoKPiAtLS0KPiAK
+PiBDaGFuZ2VzIGluIHYxOgo+IC0gW1JGQyA4LzEwXSBNb3ZlIHJrMzM5OS1kcmFtLmggdG8gZHQt
+aW5jbHVkZXMuCj4gLSBbUkZDIDgvMTBdIFB1dCBzZHJhbSBkZWZhdWx0IHZhbHVlcyB1bmRlciB0
+aGUgZG1jIG5vZGUuCj4gLSBbUkZDIDgvMTBdIFJlbW92ZWQgcmszMzk5LWRyYW0tZGVmYXVsdC10
+aW1pbmcuZHRzCj4gCj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktb3AxLW9wcC5kdHNp
+ICAgICB8IDI5ICsrKysrKysrCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
+LmR0c2kgICAgICB8IDQ5ICsrKysrKysrKysrKysKPiAgaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dl
+ci9yazMzOTktZHJhbS5oICAgICAgIHwgNzMgKysrKysrKysrKysrKysrKysrKwo+ICAzIGZpbGVz
+IGNoYW5nZWQsIDE1MSBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRl
+L2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzM5OS1kcmFtLmgKPiAKCkRUIGJpbmRpbmdzIChpbmNsdWRp
+bmcgYmluZGluZyBoZWFkZXJzKSBzaG91bGQgYmUgYSBzZXBhcmF0ZSBwYXRjaC4gU2VlCkRvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zdWJtaXR0aW5nLXBhdGNoZXMudHh0LgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
