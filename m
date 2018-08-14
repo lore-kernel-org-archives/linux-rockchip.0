@@ -1,157 +1,140 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 RESEND 2/2] phy: add Rockchip Innosilicon hdmi phy
-Date: Tue, 14 Aug 2018 14:52:00 +0200
-Message-ID: <4194245.uYZyAYm7Hd@phil>
-References: <20180710134949.25203-1-heiko@sntech.de>
- <20180710134949.25203-2-heiko@sntech.de>
- <a0a84907-c51f-b484-33fa-592a23c756f9@ti.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: usb typec not doing handling in-kernel
+Date: Tue, 14 Aug 2018 15:58:31 +0200
+Message-ID: <5292837.COQWy9rWzJ@phil>
+References: <3762490.crBoikqiXD@phil>
+ <20180813133637.GA25757@kuha.fi.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a0a84907-c51f-b484-33fa-592a23c756f9@ti.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180813133637.GA25757-FZxXFokcWpatqXYlAKuG4QC/G2K4zDHf@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
+Hi Heikki,
 
-thanks for your review.
-
-
-Am Freitag, 3. August 2018, 11:24:06 CEST schrieb Kishon Vijay Abraham I:
-> On Tuesday 10 July 2018 07:19 PM, Heiko Stuebner wrote:
-> > +config PHY_ROCKCHIP_INNO_HDMI
-> > +	tristate "Rockchip INNO HDMI PHY Driver"
-> > +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
+Am Montag, 13. August 2018, 15:36:37 CEST schrieb Heikki Krogerus:
+> On Mon, Aug 13, 2018 at 12:36:55PM +0200, Heiko Stuebner wrote:
+> > I'm currently trying to wrap my head around the new typec subsystem and
+> > also how to do it correctly on Rockchip rk3399 devices.
+> > 
+> > The issue (and Guenter might know quite a bit about that) is that on
+> > ChromeOS devices the embedded controller hides the whole tcpm/vdm
+> > logic from the operating system and just provides a custom interface to
+> > query things like cable state, display-port hotplug status and so on.
+> > 
+> > So right now the rk3399-typec-phy uses that extcon-based interface to
+> > get all status changes but that of course leaves out all systems directly
+> > talking to a fusb302. I did a small drawing to showcase that:
+> > 
+> > -------------    ------------------
+> > | typec-phy |----| extcon-cros-ec |\
+> > -------------    ------------------ \
+> >      |        \                      \
+> > -------------  \ ------------------   \ -----------
+> > |  cdn-dp   |   \|     ?????      |-----| fusb302 |
+> > -------------    ------------------     -----------
+> > 
+> > So to bring everything on the same page, I guess the cros-ec extcon
+> > (drivers/extcon/extcon-usbc-cros-ec.c) should somehow use the typec
+> > functions instead of implementing an extcon?
 > 
-> depends on COMMON_CLK since the phy registers a clock provider?
+> I don't think the two necessary exclude each other. You can continue
+> to register the extcon device and use it for communication with the
+> phy driver, and also register your Type-C port(s), partners, and
+> optionally the port and partner alternate modes. I guess Guenter has
+> patches for that already?
 
-ok
+The issue is less with the working ChromeOS devices :-) .
 
-> > +static const struct phy_config rk3228_phy_cfg[] = {
-> > +	{	165000000, {
-> > +			0xaa, 0x00, 0x44, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00,
-> > +			0x00, 0x00, 0x00, 0x00, 0x00,
+What I'm trying to fit in there are all the other boards directly talking
+to a fusb302 via i2c and needing to do all these negotiations.
+
+So the rockchip typec phy would need to handle both cases. In the Rockchip
+vendor kernel they bolted the extcon export onto their fusb302 driver
+but I don't think that is really future proof ;-) .
+
+Hence the easiest way would probably be to have everything use the newer
+typec APIs and not try to make the Rockchip typec-phy handle both cases.
+
+
+And looking at Guenters mail, it seems like he had the same idea as well
+in the past, so I'll hope for his archeology-skills :-) .
+
+
+> It looks to me like that phy driver could just register a Type-C
+> switch for the orientation, and mux for the mode. Those seem to be the
+> only details the driver needs from extcon-usbc-cros-ec.
+
+Looks like it - I'm still trying to find my way through the typec subsystem
+though.
+
+> > But from reading into the typec code, it somehow looks like the
+> > typec framework expects to be in control of things like altmode
+> > negotiations, or am I misreading something?
 > 
-> If these register configurations are not a tuning value or dividers (which can
-> have absolute values), then we should have macros for each of these configurations.
-
-That might get difficult.
-
-That phy register set is completely undocumented even in the vendor TRMs
-of the 2 socs. I pieced together most existing macros from code comments
-and such from the vendor kernel. And Innosilicon is not known to willingly
-share much of their register documentation it seems.
-
-
-> > +static unsigned long inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy *inno,
-> > +					       unsigned long rate)
-> > +{
-> > +	int bus_width = phy_get_bus_width(inno->phy);
+> The alternate mode drivers will assume they are in control of the
+> negotiation with the partner, but note that you will not always need
+> them. The rest of the code in the framework doesn't expect to be in
+> control of the communication.
 > 
-> hmm, the bus_width could be a member of struct inno_hdmi_phy. PHY API's don't
-> have to be used for getting data within the PHY driver itself.
-> Looking at the phy_get_bus_width() implementation, we should have protected
-> bus-width set and get with mutex. With that there might be a deadlock here.
-
-ok, so just read phy->attrs.bus_width directly here?
-
-I don't see how this can be part of struct inno_hdmi_phy, as the bus-width
-depends on the color-depth used on the hdmi-controller side, so
-depending on that it will want to adapt the phy's bus_width.
-
-Right now our dw_hdmi in mainline only supports one output format
-requiring a bus_width of 8, but the vendor kernel shows [0] how this
-wants to be used with multiple output formats.
-
-[0] https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c#L817
-
-
-> > +static irqreturn_t inno_hdmi_phy_rk3328_irq(int irq, void *dev_id)
-> > +{
-> > +	struct inno_hdmi_phy *inno = dev_id;
-> > +
-> > +	inno_update_bits(inno, 0x02, RK3328_PDATA_EN, 0);
-> > +	usleep_range(9, 10);
+> If the EC (or some other microcontroller) firmware is taking care of
+> the actual entering and configuring of the alternate modes, the port
+> driver (so extcon-usbc-cros-ec in your case) will need to "emulate"
+> the VDM communication if the alt mode drivers need to be used, and
+> that means they need to do so with every supported alternate mode
+> separately.
 > 
-> This range looks very narrow. 10 to 20 should be okay?
+> Of course if the details that for example the DisplayPort alt mode
+> driver supplies to the user space is not relevant on your system, and
+> there is no requirement to allow the user to be able to reconfigure
+> the DisplayPort alt mode (note: you will also be unable to exit the
+> mode from sysfs in this case), you can still register the partner alt
+> mode device and simply allow the binding to the driver fail, or don't
+> register the partner alt modes with the USB Type-C framework at all.
 
-ok
+As said above, I'm mainly trying to make the typec framework usable
+for all the rk3399 boards using the "standard" setup of talking directly
+to the fusb302 but of course want to pull the cros-ec special case along,
+to not create to much overhead anywhere.
 
+Thankfully it is really only the DisplayPort Alt Mode that is supported
+on the rk3399.
 
-> > +static void inno_hdmi_phy_action(void *data)
-> > +{
-> > +	struct inno_hdmi_phy *inno = data;
-> > +
-> > +	clk_disable_unprepare(inno->refpclk);
-> > +	clk_disable_unprepare(inno->sysclk);
-> > +}
-> > +
-> > +static int inno_hdmi_phy_probe(struct platform_device *pdev)
-> > +{
-> > +	struct inno_hdmi_phy *inno;
-> > +	const struct of_device_id *match;
-> > +	struct phy_provider *phy_provider;
-> > +	struct resource *res;
-> > +	void __iomem *regs;
-> > +	int ret;
-> > +
-
-[...]
-
-> > +	/*
-> > +	 * Refpclk needs to be on, on at least the rk3328 for still
-> > +	 * unknown reasons.
-> > +	 */
-> > +	ret = clk_prepare_enable(inno->refpclk);
-> > +	if (ret) {
-> > +		dev_err(inno->dev, "failed to enable refpclk\n");
-> > +		clk_disable_unprepare(inno->sysclk);
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = devm_add_action_or_reset(inno->dev, inno_hdmi_phy_action,
-> > +				       inno);
-> > +	if (ret) {
-> > +		clk_disable_unprepare(inno->refpclk);
-> > +		clk_disable_unprepare(inno->sysclk);
-> > +		return ret;
-> > +	}
-> > +
-> > +	inno->regmap = devm_regmap_init_mmio(inno->dev, regs,
-> > +					     &inno_hdmi_phy_regmap_config);
-> > +	if (IS_ERR(inno->regmap))
-> 
-> here too clk_disable_unprepare and all error handling below?
-> It's better if we just handle error handling at the bottom of the function.
-
-Nope ;-) ... I.e. the goal of registering the devm_action above is to have
-the clocks get disabled in the correct order when devm undoes the other
-things in sequence.
-
-Manual error handling for the clocks would also break devm, as then
-the clocks would get disabled before the devm cleanup kicks in.
+While the extcon driver doesn't seem to use it right now, looking through
+the ec-commands shows that muxes, roles etc seem configurable from the
+host side.
 
 
-> > +	phy_provider = devm_of_phy_provider_register(inno->dev,
-> > +						     of_phy_simple_xlate);
-> > +	if (IS_ERR(phy_provider)) {
-> > +		dev_err(inno->dev, "failed to register PHY provider\n");
-> > +		return PTR_ERR(phy_provider);
-> > +	}
-> return PTR_ERR_OR_ZERO(phy_provider);?
+> I've prepared patches for the ucsi driver that add displayport alt
+> mode support to it. UCSI is just a standardised firmware interface for
+> USB Type-C conncetors, so the situation is exactly the same as with
+> extcon-usbc-cros-ec. I was planning to send the patches out for review
+> after next -rc1, but I guess I could send a RFC already. With UCSI we
+> do have a requirement to allow the user to reconfigure the DisplayPort
+> alternate mode if needed.
 
-ok
+That might be helpful. But you don't really have to hurry that much.
+-rc1 isn't that far away and I do have enough individual projects to
+keep me busy ;-) .
+
+Especially also as the device_connection stuff does seem to still
+miss graph-parsing [0] to connect my dt-stuff together, there
+is no really hurry.
+
 
 Thanks
 Heiko
+
+[0] https://patchwork.kernel.org/patch/10418263/
