@@ -1,83 +1,81 @@
-From: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: usb typec not doing handling in-kernel
-Date: Mon, 13 Aug 2018 13:20:36 -0700
-Message-ID: <CAHNYxRy4B2_NKw5a2bP2Oub+RHtecep1sgzJhP=p=BjVeMUCEw@mail.gmail.com>
-References: <3762490.crBoikqiXD@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 3/8] drm/bridge/synopsys: dsi: add ability to check
+ dsi-device attachment
+Date: Tue, 14 Aug 2018 09:49:34 +0200
+Message-ID: <9080604.jluIWsTyFA@phil>
+References: <20180709134834.11035-1-heiko@sntech.de> <8621122.S3a5QVICDx@phil>
+ <20180813102323eucas1p123c92168767f5b39171ae51acbb15504~KapMWOZgT3012630126eucas1p1B@eucas1p1.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3762490.crBoikqiXD@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180813102323eucas1p123c92168767f5b39171ae51acbb15504~KapMWOZgT3012630126eucas1p1B@eucas1p1.samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello everyone,
-
-Enric was looking recently at some of this to get gadget mode working.
-
-I drew this diagram around that time to help explain how things are
-hooked up on the rk3399 chromebooks. I hope it might be useful for
-this discussion.
-https://sites.google.com/a/chromium.org/dev/chromium-os/type-c-on-rk3399-chromebooks
-
-Some things to note (which may or may not be already know in here):
-* CC lines on the rk3399 are not connected to anything, we have an external TCPC
-* OTG_ID pin not connected to anything
-* rk3399 doesn't do much in terms of negotiating type C things or
-charging, everything must be handled by the EC (since such things
-might happen when the rk3399 is off or asleep). Instead the EC
-communicates most of that state via the SPI lines (hence cros-ec
-driver).
-
-Alexandru Stan (amstan)
-
-On Mon, Aug 13, 2018 at 3:36 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
->
-> Hi,
->
-> I'm currently trying to wrap my head around the new typec subsystem and
-> also how to do it correctly on Rockchip rk3399 devices.
->
-> The issue (and Guenter might know quite a bit about that) is that on
-> ChromeOS devices the embedded controller hides the whole tcpm/vdm
-> logic from the operating system and just provides a custom interface to
-> query things like cable state, display-port hotplug status and so on.
->
-> So right now the rk3399-typec-phy uses that extcon-based interface to
-> get all status changes but that of course leaves out all systems directly
-> talking to a fusb302. I did a small drawing to showcase that:
->
-> -------------    ------------------
-> | typec-phy |----| extcon-cros-ec |\
-> -------------    ------------------ \
->      |        \                      \
-> -------------  \ ------------------   \ -----------
-> |  cdn-dp   |   \|     ?????      |-----| fusb302 |
-> -------------    ------------------     -----------
->
-> So to bring everything on the same page, I guess the cros-ec extcon
-> (drivers/extcon/extcon-usbc-cros-ec.c) should somehow use the typec
-> functions instead of implementing an extcon? But from reading into the
-> typec code, it somehow looks like the typec framework expects to be in
-> control of things like altmode negotiations, or am I misreading something?
->
->
-> Thanks
-> Heiko
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQW5kcnplaiwKCkFtIE1vbnRhZywgMTMuIEF1Z3VzdCAyMDE4LCAxMjoyMzoyMSBDRVNUIHNj
+aHJpZWIgQW5kcnplaiBIYWpkYToKPiBPbiAxMy4wOC4yMDE4IDEwOjQ0LCBIZWlrbyBTdHVlYm5l
+ciB3cm90ZToKPiA+IEFtIE1vbnRhZywgMTMuIEF1Z3VzdCAyMDE4LCAxMDoyODozOSBDRVNUIHNj
+aHJpZWIgQW5kcnplaiBIYWpkYToKPiA+PiBPbiAwOS4wNy4yMDE4IDE1OjQ4LCBIZWlrbyBTdHVl
+Ym5lciB3cm90ZToKPiA+Pj4gK2Jvb2wgZHdfbWlwaV9kc2lfZGV2aWNlX2F0dGFjaGVkKHN0cnVj
+dCBkd19taXBpX2RzaSAqZHNpKQo+ID4+PiArewo+ID4+PiArCWJvb2wgb3V0cHV0Owo+ID4+PiAr
+Cj4gPj4+ICsJbXV0ZXhfbG9jaygmZHNpLT5wYW5lbF9tdXRleCk7Cj4gPj4+ICsJb3V0cHV0ID0g
+ISFkc2ktPnBhbmVsX2JyaWRnZTsKPiA+Pj4gKwltdXRleF91bmxvY2soJmRzaS0+cGFuZWxfbXV0
+ZXgpOwo+ID4+PiArCj4gPj4+ICsJcmV0dXJuIG91dHB1dDsKPiA+Pj4gK30KPiA+Pj4gK0VYUE9S
+VF9TWU1CT0xfR1BMKGR3X21pcGlfZHNpX2RldmljZV9hdHRhY2hlZCk7Cj4gPj4gVGhlIGZ1bmN0
+aW9uIGRvZXMgbm90IG1ha2Ugc2Vuc2UuIEFmdGVyIHJlbGVhc2luZyBwYW5lbF9tdXRleCBkZXZp
+Y2UgY2FuCj4gPj4gYmUgZGV0YWNoZWQvKHJlLSlhdHRhY2hlZCBtdWx0aXBsZSB0aW1lcy4gSWUg
+aXQgcmVwb3J0cyB1c2VsZXNzCj4gPj4gaW5mb3JtYXRpb24uIE9mIGNvdXJzZSBpbiBtb3N0IGNh
+c2VzIGl0IHdpbGwgd29yayBhcyBleHBlY3RlZCwgYnV0IGZvcgo+ID4+IHN1cmUgaXQgaXMgbm90
+IGJ1bGxldHByb29mLgo+ID4gT2suIENhbiB5b3Ugc3VnZ2VzdCBob3cgd2Ugc2hvdWxkIGNoZWNr
+IGZvciB0aGUgZGVzY3JpYmVkIGNhc2U/Cj4gPiBJLmUuIGluaXRpYWxseSBJIHRyaWVkIHRvIHNp
+bXBseSBkZWZlciBpbiBkd19taXBpX2RzaV9icmlkZ2VfYXR0YWNoIFswXQo+ID4gd2hlcmUgeW91
+IHN1Z2dlc3RlZCB0byBkbyB0aGF0IGluIHByb2JlLgo+ID4KPiA+IEkgbW92ZWQgdGhlIGNoZWNr
+IHRvIGJpbmQgLSBzZWUgcGF0Y2ggNSAtIHRvIGZpeCB0aGUgaXNzdWUgcmVnYXJkaW5nCj4gPiBw
+YW5lbCBvbmx5IHByb2JpbmcgYWZ0ZXIgdGhlIGRzaSBidXMgZ2V0cyBjcmVhdGVkLCBzbyB0aGlz
+IGZ1bmN0aW9uCj4gPiBpcyBhIG1lYW5zIHRvIGNoZWNrIGlmIHRoZSBwYW5lbCBoYXMgZmluaXNo
+ZWQgYXR0YWNoaW5nLCBvciB0byBkZWZlcgo+ID4gYmluZGluZyAtIHNlZSBkd19taXBpX2RzaV9y
+b2NrY2hpcF9iaW5kIGluIHBhdGNoIDUuCj4gPgo+ID4gU28gSSdtIHNvbWV3aGF0IG91dCBvZiBp
+ZGVhcyByaWdodCBub3csIGhvdyB0byBkbyB0aGlzIHJpZ2h0Lgo+IAo+IEkgYW0ganVzdCBhZnRl
+ciB2YWNhdGlvbiwgc28gcGxlYXNlIGJlIGtpbmQgaWYgSSB3cml0ZSBzdGggc3R1cGlkIDopCj4g
+Cj4gSSB3b3VsZCBzdGljayB0byB0aGUgcnVsZSAiZG8gbm90IGV4cG9zZSBmdW5jdGlvbmFsaXR5
+IHVudGlsIHlvdSBnYXRoZXIKPiByZXF1aXJlZCByZXNvdXJjZXMiLgo+IFdpdGggdGhpcyBpbiBt
+aW5kIEkgd291bGQgdHJ5IHRoaXMgd2F5Ogo+IDEuIEluIGJyaWRnZSBwcm9iZSBjcmVhdGUgbWlw
+aSBidXMsIGJ1dCBkbyBub3QgZXhwb3NlIGRybV9icmlkZ2UgYW5kIGRvCj4gbm90IGNhbGwgY29t
+cG9uZW50X2FkZCAtIGJlY2F1c2Ugd2Ugc3RpbGwgZG8gbm90IGhhdmUgdGhlIHNpbmsKPiAoZG93
+bnN0cmVhbSBwYW5lbCBvciBicmlkZ2UpLgo+IDIuIEluIG1pcGlfZHNpX2hvc3RfYXR0YWNoIGNh
+bGxiYWNrIGdhdGhlciBzaW5rIHJlc291cmNlIGFuZCB0aGVuIGV4cG9zZQo+IGRybV9icmlkZ2Ug
+YW5kIHRoZSBjb21wb25lbnQgKGJ5IGNhbGxpbmcgY29tcG9uZW50X2FkZCkgLSBpdCB3aWxsIHdv
+cmsKPiB3aXRoIGFzc3VtcHRpb24gdGhlIHNpbmsgaXMgcmVnaXN0ZXJlZC9hZGRlZCBiZWZvcmUg
+YXR0YWNoaW5nIHRvIGRzaSBidXMKCkkgdGhpbmsgdGhhdCBpcyB0aGUgZ2VuZXJhbCBjb25zZW5z
+dXMgaW4gYWxsIGtlcm5lbCBwYXJ0cywgbGlrZSB3aGVuIHlvdQpyZXF1ZXN0IGFuIGlycSwgdGhl
+IGRyaXZlciBzaG91bGQgYmUgYWJsZSB0byBoYW5kbGUgaXQgZmlyaW5nIAppbW1lZGlhdGVseSwg
+c28gc2ltaWxhcmx5IGEgZHNpLXNpbmsgc2hvdWxkIGluIGEgcG9zaXRpb24gdG8gYmUgZGlyZWN0
+bHkKdXNhYmxlIGFmdGVyIGl0IGF0dGFjaGVkIHRvIHRoZSBkc2kgaG9zdC4KCgo+IFsqXS4KPiAz
+LiBTaW1pbGFyIHdheSBpdCBzaG91bGQgYmUgZG9uZSBpbiByZW1vdmUgcGF0aC4KPiAKPiBUaGlz
+IHdheSBpbiBiaW5kIGNhbGxiYWNrIGFsbCByZXNvdXJjZXMgc2hvdWxkIGJlIHRoZXJlLgoKWW91
+J3JlIGEgZ2VuaXVzIC4uLiBUaGF0IHNlZW1zIHRvIHdvcmsgbGlrZSBhIGNoYXJtIDotRCAuCgp2
+NCBmb2xsb3dpbmcgc2hvcnRseSA6LSkKCgo+IFsqXTogVGhpcyBjb3VsZCBiZSBzZWVuIGFzIHN0
+aCBhZ2FpbnN0IHRoZSBydWxlICJmaXJzdCByZXNvdXJjZXMsIHRoZW4KPiBleHBvc2l0aW9uIiwg
+YnV0IHNpbmNlIHBhbmVsL2JyaWRnZSBmcmFtZXdvcmsgZG9lcyBub3QgcHJvdmlkZQo+IG5vdGlm
+aWNhdGlvbiBhYm91dCBhcHBlYXJhbmNlIG9mIHRoZSBvYmplY3RzLCBpdCB3b3JrcyBhcyBhIHdv
+cmthcm91bmQKPiBmb3IgbWlzc2luZyBub3RpZmljYXRpb24gc3lzdGVtLgoKQWN0dWFsbHkgSSdk
+IHNheSBpdCBmb2xsb3dzIHRoYXQgcGFyYWRpZ20gd2F5IGJldHRlciBub3csIGFzIHRoZQpjb21w
+b25lbnQgZnJhbWV3b3JrIG9ubHkgdHJpZXMgdG8gYnJpbmcgdXAgdGhlIGNvbXBvbmVudCBoaWVy
+YXJjaHkKYWZ0ZXIgYWxsIHJlc291cmNlcyBhcmUgaW4gcGxhY2UuCgpBbmQgbm93IEkgZXZlbiBk
+b24ndCBnZXQgYW55IGRlZmVycmFscyBhdCBhbGwsIHdoZXJlIGl0IHdhcyBhcm91bmQgMgpkZWZl
+cnJhbHMgd2FpdGluZyBmb3IgdGhlIHBhbmVsIGJlZm9yZS4gU28gaW4gdGVybXMgb2YgYmVpbmcg
+ZGV0ZXJtaW5pc3RpYwp0aGlzIGZlZWxzIGxpa2UgYSBwbHVzIDotKQoKCkhlaWtvCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
