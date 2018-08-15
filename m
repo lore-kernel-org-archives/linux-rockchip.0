@@ -1,49 +1,53 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 2/4] dt-bindings: phy-rockchip-inno-usb2: add documentation for extcon and utmi-avalid properties.
-Date: Wed, 15 Aug 2018 11:59:32 +0200
-Message-ID: <20180815095934.11205-3-enric.balletbo@collabora.com>
-References: <20180815095934.11205-1-enric.balletbo@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] phy: rockchip-inno-usb2: allow to force the B-Device Session Valid bit.
+Date: Wed, 15 Aug 2018 12:18:08 +0200
+Message-ID: <2209969.yNeHebgXRl@phil>
+References: <20180815095934.11205-1-enric.balletbo@collabora.com> <20180815095934.11205-4-enric.balletbo@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180815095934.11205-1-enric.balletbo@collabora.com>
+In-Reply-To: <20180815095934.11205-4-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: amstan@chromium.org, groeck@google.com, kieran.bingham@ideasonboard.com, kernel@collabora.com, bleung@chromium.org, heiko@sntech.de, devicetree@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: linux-kernel@vger.kernel.org, amstan@chromium.org, groeck@google.com, kieran.bingham@ideasonboard.com, kernel@collabora.com, bleung@chromium.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit 98898f3bc83c8 ("phy: rockchip-inno-usb2: support otg-port for
-rk3399") introduces two new properties. The extcon property is used to
-detect the cable-state, and the rockchip,utmi-avalid is used to indicate
-which register should be used to detect the vbus state.
+Hi Enric,
 
-Document these properties in the documentation binding.
+Am Mittwoch, 15. August 2018, 11:59:33 CEST schrieb Enric Balletbo i Serra:
+> The OTG disconnection event is generated after the presence/abscense of
+> an ID connection, but some platforms doesn't have the ID pin connected, so
+> the event is not generated. In such case, for detecting the disconnection
+> event, we can get the cable state from an extcon driver. We need, though,
+> to force to set the B-Device Session Valid bit on the PHY to have the
+> device respond to setup address. Otherwise, the following error is
+> shown:
+> 
+>     usb 2-2: Device not responding to setup address.
+>     usb 2-2: device not accepting address 14, error -71
+>     usb usb2-port2: unable to enumerate USB device
+> 
+> The patch allows to tell the PHY to force the B-Device Session Valid bit
+> when the OTG role is device and clear that bit if the OTG role is host.
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-Fixes: 98898f3bc83c8 ("phy: rockchip-inno-usb2: support otg-port for rk3399")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+> @@ -1024,6 +1051,12 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+>  	INIT_DELAYED_WORK(&rport->chg_work, rockchip_chg_detect_work);
+>  	INIT_DELAYED_WORK(&rport->otg_sm_work, rockchip_usb2phy_otg_sm_work);
+>  
+> +	rport->force_bvalid = false;
+> +	if (of_device_is_compatible(rphy->dev->of_node,
+> +				    "rockchip,rk3399-usb2phy"))
+> +		rport->force_bvalid = of_property_read_bool(child_np,
+> +						"rockchip,force-bvalid");
 
- .../devicetree/bindings/phy/phy-rockchip-inno-usb2.txt         | 3 +++
- 1 file changed, 3 insertions(+)
+That feels a bit clumsy, especially as the rk3399 seems to have the id
+connection in general ... maybe you could just make that conditional
+on the presence of the extcon?
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-index 074a7b3b0425..2d4808d3920b 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-@@ -23,6 +23,7 @@ Optional properties:
- 		 register files". When set driver will request its
- 		 phandle as one companion-grf for some special SoCs
- 		 (e.g RV1108).
-+ - extcon : phandle to the extcon device for the otg phy.
- 
- Required nodes : a sub-node is required for each port the phy provides.
- 		 The sub-node name is used to identify host or otg port,
-@@ -45,6 +46,8 @@ Required properties (port (child) node):
- Optional properties:
-  - phy-supply : phandle to a regulator that provides power to VBUS.
- 		See ./phy-bindings.txt for details.
-+ - rockchip,utmi-avalid : boolean, use the avalid register to get vbus status.
-+			  Otherwise, use the bvalid register.
- 
- Example:
- 
--- 
-2.18.0
+Or alternatively if needed put that in the soc-specific data struct we
+have already instead open-coding soc compatible checks.
+
+Heiko
