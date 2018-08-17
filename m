@@ -1,61 +1,106 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH 2/4] dt-bindings: phy-rockchip-inno-usb2: add
- documentation for extcon and utmi-avalid properties.
-Date: Thu, 16 Aug 2018 10:38:13 +0200
-Message-ID: <a71af5b8-cdc1-cf26-8c01-beb523e7c332@collabora.com>
-References: <20180815095934.11205-1-enric.balletbo@collabora.com>
- <20180815095934.11205-3-enric.balletbo@collabora.com>
- <20180815222157.GA8193@rob-hp-laptop>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 5/6] media: Add controls for jpeg quantization tables
+Date: Fri, 17 Aug 2018 11:10:00 +0900
+Message-ID: <CAAFQd5C4jTfdB5Zmk6LQwTOBB2hs14ensZ+J-ZdTcQzzBNKn0A@mail.gmail.com>
+References: <20180802200010.24365-1-ezequiel@collabora.com>
+ <20180802200010.24365-6-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180815222157.GA8193@rob-hp-laptop>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, amstan@chromium.org, groeck@google.com, kieran.bingham@ideasonboard.com, kernel@collabora.com, bleung@chromium.org, heiko@sntech.de, devicetree@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180802200010.24365-6-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+Hi Ezequiel,
 
-On 16/08/18 00:21, Rob Herring wrote:
-> On Wed, Aug 15, 2018 at 11:59:32AM +0200, Enric Balletbo i Serra wrote:
->> Commit 98898f3bc83c8 ("phy: rockchip-inno-usb2: support otg-port for
->> rk3399") introduces two new properties. The extcon property is used to
->> detect the cable-state, and the rockchip,utmi-avalid is used to indicate
->> which register should be used to detect the vbus state.
->>
->> Document these properties in the documentation binding.
->>
->> Fixes: 98898f3bc83c8 ("phy: rockchip-inno-usb2: support otg-port for rk3399")
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> ---
->>
->>  .../devicetree/bindings/phy/phy-rockchip-inno-usb2.txt         | 3 +++
->>  1 file changed, 3 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> index 074a7b3b0425..2d4808d3920b 100644
->> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> @@ -23,6 +23,7 @@ Optional properties:
->>  		 register files". When set driver will request its
->>  		 phandle as one companion-grf for some special SoCs
->>  		 (e.g RV1108).
->> + - extcon : phandle to the extcon device for the otg phy.
-> 
-> extcon is not a good binding. The usb connector binding should be used 
-> instead for new users.
-> 
+On Fri, Aug 3, 2018 at 5:00 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>
+> From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> Add V4L2_CID_JPEG_LUMA/CHROMA_QUANTIZATION controls to allow userspace
+> configure the JPEG quantization tables.
+>
+> Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  Documentation/media/uapi/v4l/extended-controls.rst | 9 +++++++++
+>  drivers/media/v4l2-core/v4l2-ctrls.c               | 4 ++++
+>  include/uapi/linux/v4l2-controls.h                 | 3 +++
+>  3 files changed, 16 insertions(+)
 
-Ok, although the extcon thing is implemented in the driver, so I was trying to
-just describe how is implemented now, looks like nobody is using it apart from
-me (patches not upstreamed yet). I suppose switch to the usb connector binding
-will imply some driver modifications. I will take a look.
+Thanks for this series and sorry for being late with review. Please
+see my comments inline.
 
-Thanks,
- Enric
+>
+> diff --git a/Documentation/media/uapi/v4l/extended-controls.rst b/Documentation/media/uapi/v4l/extended-controls.rst
+> index 9f7312bf3365..80e26f81900b 100644
+> --- a/Documentation/media/uapi/v4l/extended-controls.rst
+> +++ b/Documentation/media/uapi/v4l/extended-controls.rst
+> @@ -3354,6 +3354,15 @@ JPEG Control IDs
+>      Specify which JPEG markers are included in compressed stream. This
+>      control is valid only for encoders.
+>
+> +.. _jpeg-quant-tables-control:
+> +
+> +``V4L2_CID_JPEG_LUMA_QUANTIZATION (__u8 matrix)``
+> +    Sets the luma quantization table to be used for encoding
+> +    or decoding a V4L2_PIX_FMT_JPEG_RAW format buffer. This table is
+> +    expected to be in JPEG zigzag order, as per the JPEG specification.
 
-> Rob
-> 
+Should we also specify this to be 8x8?
+
+> +
+> +``V4L2_CID_JPEG_CHROMA_QUANTIZATION (__u8 matrix)``
+> +    Sets the chroma quantization table.
+>
+
+nit: I guess we aff something like
+
+"See also V4L2_CID_JPEG_LUMA_QUANTIZATION for details."
+
+to avoid repeating the V4L2_PIX_FMT_JPEG_RAW and zigzag order bits? Or
+maybe just repeating is better?
+
+>
+>  .. flat-table::
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+> index 599c1cbff3b9..5c62c3101851 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+> @@ -999,6 +999,8 @@ const char *v4l2_ctrl_get_name(u32 id)
+>         case V4L2_CID_JPEG_RESTART_INTERVAL:    return "Restart Interval";
+>         case V4L2_CID_JPEG_COMPRESSION_QUALITY: return "Compression Quality";
+>         case V4L2_CID_JPEG_ACTIVE_MARKER:       return "Active Markers";
+> +       case V4L2_CID_JPEG_LUMA_QUANTIZATION:   return "Luminance Quantization Matrix";
+> +       case V4L2_CID_JPEG_CHROMA_QUANTIZATION: return "Chrominance Quantization Matrix";
+>
+>         /* Image source controls */
+>         /* Keep the order of the 'case's the same as in v4l2-controls.h! */
+> @@ -1284,6 +1286,8 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+>                 *flags |= V4L2_CTRL_FLAG_READ_ONLY;
+>                 break;
+>         case V4L2_CID_DETECT_MD_REGION_GRID:
+> +       case V4L2_CID_JPEG_LUMA_QUANTIZATION:
+> +       case V4L2_CID_JPEG_CHROMA_QUANTIZATION:
+
+It looks like with this setup, the driver has to explicitly set dims
+to { 8, 8 } and min/max to 0/255.
+
+At least for min and max, we could set them here. For dims, i don't
+see it handled in generic code, so I guess we can leave it to the
+driver now and add move into generic code, if another driver shows up.
+Hans, what do you think?
+
+Best regards,
+Tomasz
