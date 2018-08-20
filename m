@@ -1,13 +1,17 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/6] Add Rockchip VPU JPEG encoder
-Date: Sat, 18 Aug 2018 18:02:34 -0300
-Message-ID: <022524d8b04450b2e8ed2dc8585a7a1c5c2cfe67.camel@collabora.com>
-References: <20180802200010.24365-1-ezequiel@collabora.com>
+From: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v4 3/8] drm/bridge/synopsys: dsi: add ability to have
+ glue-specific attach and detach
+Date: Mon, 20 Aug 2018 12:34:37 +0200
+Message-ID: <20180820103439eucas1p24d5507784cab3b79161f6cd61fada54c~MkUCMQTJD0184001840eucas1p2U@eucas1p2.samsung.com>
+References: <20180814102654.29113-1-heiko@sntech.de>
+ <CGME20180814102717epcas5p2035152247276761b64573fab1bc0dc31@epcas5p2.samsung.com>
+ <20180814102654.29113-4-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180802200010.24365-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <20180814102654.29113-4-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,132 +21,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hoegsberg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philippe.cornu-qxv4g6HH51o@public.gmane.org, yannick.fertre-qxv4g6HH51o@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 2018-08-02 at 17:00 -0300, Ezequiel Garcia wrote:
-> This series adds support for JPEG encoding via the VPU block
-> present in Rockchip platforms. Currently, support for RK3288
-> and RK3399 is included.
-> 
-> The hardware produces a Raw JPEG format (i.e. works as a
-> JPEG accelerator). It requires quantization tables provided
-> by the application, and uses standard huffman tables,
-> as recommended by the JPEG specification.
-> 
-> In order to support this, the series introduces a new pixel format,
-> and a new pair of controls, V4L2_CID_JPEG_{LUMA,CHROMA}_QUANTIZATION
-> allowing userspace to specify the quantization tables.
-> 
-> Userspace is then responsible to add the required headers
-> and tables to the produced raw payload, to produce a JPEG image.
-> 
-> Compliance
-> ==========
-> 
-> There is an outstanding compliance issue, related to a blocking
-> dqbuf, but I cannot see where is the issue, nor if the issue is
-> in the core or in the driver.
-> 
-> # v4l2-compliance -d 0 -s 
-> v4l2-compliance SHA: 81ea4a243b63d7bb1fec580910c553af4ae072c1, 64 bits
-> 
-> Compliance test for device /dev/video0:
-> 
-> Driver Info:
-> 	Driver name      : rockchip-vpu
-> 	Card type        : rockchip-vpu
-> 	Bus info         : platform: rockchip-vpu
-> 	Driver version   : 4.18.0
-> 	Capabilities     : 0x84204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 		Device Capabilities
-> 	Device Caps      : 0x04204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 
-> Required ioctls:
-> 	test VIDIOC_QUERYCAP: OK
-> 
-> Allow for multiple opens:
-> 	test second /dev/video0 open: OK
-> 	test VIDIOC_QUERYCAP: OK
-> 	test VIDIOC_G/S_PRIORITY: OK
-> 	test for unlimited opens: OK
-> 
-> Debug ioctls:
-> 	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-> 	test VIDIOC_LOG_STATUS: OK (Not Supported)
-> 
-> Input ioctls:
-> 	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-> 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-> 	test VIDIOC_ENUMAUDIO: OK (Not Supported)
-> 	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-> 	test VIDIOC_G/S_AUDIO: OK (Not Supported)
-> 	Inputs: 0 Audio Inputs: 0 Tuners: 0
-> 
-> Output ioctls:
-> 	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-> 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-> 	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-> 	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-> 	Outputs: 0 Audio Outputs: 0 Modulators: 0
-> 
-> Input/Output configuration ioctls:
-> 	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-> 	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-> 	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-> 	test VIDIOC_G/S_EDID: OK (Not Supported)
-> 
-> Control ioctls:
-> 	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-> 	test VIDIOC_QUERYCTRL: OK
-> 	test VIDIOC_G/S_CTRL: OK
-> 	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-> 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-> 	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-> 	Standard Controls: 2 Private Controls: 0
-> 
-> Format ioctls:
-> 	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> 	test VIDIOC_G/S_PARM: OK (Not Supported)
-> 	test VIDIOC_G_FBUF: OK (Not Supported)
-> 	test VIDIOC_G_FMT: OK
-> 	test VIDIOC_TRY_FMT: OK
-> 	test VIDIOC_S_FMT: OK
-> 	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> 	test Cropping: OK (Not Supported)
-> 	test Composing: OK (Not Supported)
-> 	test Scaling: OK
-> 
-> Codec ioctls:
-> 	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-> 	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-> 	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> 
-> Buffer ioctls:
-> 	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-> 	test VIDIOC_EXPBUF: OK
-> 
-> Test input 0:
-> 
-> Streaming ioctls:
-> 	test read/write: OK (Not Supported)
-> 		fail: v4l2-test-buffers.cpp(1225): pid != pid_streamoff
-> 		fail: v4l2-test-buffers.cpp(1258): testBlockingDQBuf(node, q)
-> 	test blocking wait: FAIL
-> 
-
-Hans,
-
-Any thoughts on where is this failure coming from and how to fix it?
-
-Thanks!
-Eze 
+T24gMTQuMDguMjAxOCAxMjoyNiwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gV2l0aCB0aGUgcmVn
+dWxhciBtZWFucyBvZiBhZGRpbmcgdGhlIGRzaS1jb21wb25lbnQgaW4gcHJvYmUgaXQgY3JlYXRl
+cwo+IGEgcmFjZSBjb25kaXRpb24gd2l0aCB0aGUgcGFuZWwgcHJvYmluZywgYXMgdGhlIHBhbmVs
+IGRldmljZSBvbmx5IGdldHMKPiBjcmVhdGVkIGFmdGVyIHRoZSBkc2ktYnVzIGdvdCBjcmVhdGVk
+Lgo+Cj4gV2hlbiB0aGUgcGFuZWwtZHJpdmVyIGlzIGJ1aWxkIGFzIGEgbW9kdWxlIGl0IGN1cnJl
+bnRseSBmYWlscyBoYXJkIGFzIHRoZQo+IHBhbmVsIGNhbm5vdCBiZSBwcm9iZWQgZGlyZWN0bHk6
+Cj4KPiBkd19taXBpX2RzaV9iaW5kKCkKPiAgIF9fZHdfbWlwaV9kc2lfcHJvYmUoKQo+ICAgICBj
+cmVhdGVzIGRzaSBidXMKPiAgICAgY3JlYXRlcyBwYW5lbCBkZXZpY2UKPiAgICAgdHJpZ2dlcnMg
+cGFuZWwgbW9kdWxlIGxvYWQKPiAgICAgcGFuZWwgbm90IHByb2JlZCAobW9kdWxlIG5vdCBsb2Fk
+ZWQgb3IgcGFuZWwgcHJvYmUgc2xvdykKPiAgIGRybV9icmlkZ2VfYXR0YWNoCj4gICAgIGZhaWxz
+IHdpdGggLUVJTlZBTCBkdWUgdG8gZW1wdHkgcGFuZWxfYnJpZGdlCj4KPiBBZGRpdGlvbmFsbHkg
+dGhlIHBhbmVsIHByb2JpbmcgY2FuIHJ1biBjb25jdXJyZW50bHkgd2l0aCBkc2kgYnJpbmd1cAo+
+IG1ha2luZyBpdCBwb3NzaWJsZSB0aGF0IHRoZSBwYW5lbCBjYW4gYWxyZWFkeSBiZSBmb3VuZCBi
+dXQgZHNpLWF0dGFjaAo+IGhhc24ndCBmaW5pc2hlZCBydW5uaW5nLgo+Cj4gVG8gc29sdmUgdGhh
+dCBjbGVhbmx5IHdlIG1heSB3YW50IHRvIG9ubHkgY3JlYXRlIHRoZSBjb21wb25lbnQgYWZ0ZXIK
+PiB0aGUgcGFuZWwgaGFzIGZpbmlzaGVkIHByb2JpbmcsIGJ5IGNhbGxpbmcgY29tcG9uZW50X2Fk
+ZCBmcm9tIHRoZQo+IGhvc3QtYXR0YWNoIGRzaSBjYWxsYmFjay4KPgo+IEFzIHRoYXQgaXMgc3Bl
+Y2lmaWMgdG8gZ2x1ZSBkcml2ZXJzLCBhZGQgYSBuZXcgc3RydWN0IGZvciBob3N0X29wcwo+IHNv
+IHRoYXQgZ2x1ZSBkcml2ZXJzIGNhbiB0ZWxsIHRoZSBicmlkZ2UgdG8gY2FsbCBzcGVjaWZpYyBm
+dW5jdGlvbnMKPiBhZnRlciB0aGUgY29tbW9uIGhvc3QtYXR0YWNoIGFuZCBiZWZvcmUgdGhlIGNv
+bW1vbiBob3N0LWRldGFjaCBydW4uCgpTb21ldGltZXMgSSBoYXZlIGFuIGltcHJlc3Npb24gdGhh
+dCBjb3JlL2dsdWUgZHJpdmVyIGFyY2hpdGVjdHVyZSB3aXRoCmNhbGxiYWNrcyB0byBnbHVlIGRy
+aXZlcnMgaXMgcXVpdGUgY29tcGxpY2F0ZWQsIGFuZCBzbWVsbHMgbWlkLWxheWVyCm1pc3Rha2Ug
+OiksIEkgd29uZGVyIGlmIHNpbXBsZSBidW5jaCBvZiBoZWxwZXJzIHdpdGggc29tZSBiYXNlIG9i
+amVjdAp3b3VsZG4ndCBiZSBiZXR0ZXIsIGJ1dCB0aGlzIGlzIHN1YmplY3QgZm9yIG90aGVyIGRp
+c2N1c3Npb24uCgo+Cj4gU3VnZ2VzdGVkLWJ5OiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1
+bmcuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8
+IDE1ICsrKysrKysrKysrKysrKwo+ICBpbmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaCAg
+ICAgICAgICAgICAgfCAgOCArKysrKysrKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlv
+bnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
+LW1pcGktZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNp
+LmMKPiBpbmRleCBiYjRhZWNhNWMwZjkuLjM5NjJlNWQ4NGUxZSAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNpLmMKPiBAQCAtMjcwLDYgKzI3MCw3
+IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfaG9zdF9hdHRhY2goc3RydWN0IG1pcGlfZHNpX2hv
+c3QgKmhvc3QsCj4gIAkJCQkgICBzdHJ1Y3QgbWlwaV9kc2lfZGV2aWNlICpkZXZpY2UpCj4gIHsK
+PiAgCXN0cnVjdCBkd19taXBpX2RzaSAqZHNpID0gaG9zdF90b19kc2koaG9zdCk7Cj4gKwljb25z
+dCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwZGF0YSA9IGRzaS0+cGxhdF9kYXRhOwo+
+ICAJc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZTsKPiAgCXN0cnVjdCBkcm1fcGFuZWwgKnBhbmVs
+Owo+ICAJaW50IHJldDsKPiBAQCAtMzAwLDYgKzMwMSwxMiBAQCBzdGF0aWMgaW50IGR3X21pcGlf
+ZHNpX2hvc3RfYXR0YWNoKHN0cnVjdCBtaXBpX2RzaV9ob3N0ICpob3N0LAo+ICAKPiAgCWRybV9i
+cmlkZ2VfYWRkKCZkc2ktPmJyaWRnZSk7Cj4gIAo+ICsJaWYgKHBkYXRhLT5ob3N0X29wcyAmJiBw
+ZGF0YS0+aG9zdF9vcHMtPmF0dGFjaCkgewo+ICsJCXJldCA9IHBkYXRhLT5ob3N0X29wcy0+YXR0
+YWNoKHBkYXRhLT5wcml2X2RhdGEsIGRldmljZSk7Cj4gKwkJaWYgKHJldCA8IDApCj4gKwkJCXJl
+dHVybiByZXQ7CgpJdCBjb3VsZCBiZSByZXBsYWNlZCBieToKwqDCoMKgIHJldHVybiBwZGF0YS0+
+aG9zdF9vcHMtPmF0dGFjaChwZGF0YS0+cHJpdl9kYXRhLCBkZXZpY2UpOwoKQnV0IG5vIHN0cm9u
+ZyBmZWVsaW5ncy4gV2l0aCBvciB3aXRob3V0IHRoZSBjaGFuZ2U6CgpSZXZpZXdlZC1ieTogQW5k
+cnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4KCsKgLS0KUmVnYXJkcwpBbmRyemVqCgo+
+ICsJfQo+ICsKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IEBAIC0zMDcsNiArMzE0LDE0IEBAIHN0
+YXRpYyBpbnQgZHdfbWlwaV9kc2lfaG9zdF9kZXRhY2goc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhv
+c3QsCj4gIAkJCQkgICBzdHJ1Y3QgbWlwaV9kc2lfZGV2aWNlICpkZXZpY2UpCj4gIHsKPiAgCXN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpID0gaG9zdF90b19kc2koaG9zdCk7Cj4gKwljb25zdCBzdHJ1
+Y3QgZHdfbWlwaV9kc2lfcGxhdF9kYXRhICpwZGF0YSA9IGRzaS0+cGxhdF9kYXRhOwo+ICsJaW50
+IHJldDsKPiArCj4gKwlpZiAocGRhdGEtPmhvc3Rfb3BzICYmIHBkYXRhLT5ob3N0X29wcy0+ZGV0
+YWNoKSB7Cj4gKwkJcmV0ID0gcGRhdGEtPmhvc3Rfb3BzLT5kZXRhY2gocGRhdGEtPnByaXZfZGF0
+YSwgZGV2aWNlKTsKPiArCQlpZiAocmV0IDwgMCkKPiArCQkJcmV0dXJuIHJldDsKPiArCX0KPiAg
+Cj4gIAlkcm1fb2ZfcGFuZWxfYnJpZGdlX3JlbW92ZShob3N0LT5kZXYtPm9mX25vZGUsIDEsIDAp
+Owo+ICAKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmggYi9p
+bmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaAo+IGluZGV4IDZkN2Y4ZWI1ZDlmMi4uYTlj
+MDMwOTljZjNlIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvZHJtL2JyaWRnZS9kd19taXBpX2RzaS5o
+Cj4gKysrIGIvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKPiBAQCAtMTksNiArMTks
+MTMgQEAgc3RydWN0IGR3X21pcGlfZHNpX3BoeV9vcHMgewo+ICAJCQkgICAgIHVuc2lnbmVkIGlu
+dCAqbGFuZV9tYnBzKTsKPiAgfTsKPiAgCj4gK3N0cnVjdCBkd19taXBpX2RzaV9ob3N0X29wcyB7
+Cj4gKwlpbnQgKCphdHRhY2gpKHZvaWQgKnByaXZfZGF0YSwKPiArCQkgICAgICBzdHJ1Y3QgbWlw
+aV9kc2lfZGV2aWNlICpkc2kpOwo+ICsJaW50ICgqZGV0YWNoKSh2b2lkICpwcml2X2RhdGEsCj4g
+KwkJICAgICAgc3RydWN0IG1pcGlfZHNpX2RldmljZSAqZHNpKTsKPiArfTsKPiArCj4gIHN0cnVj
+dCBkd19taXBpX2RzaV9wbGF0X2RhdGEgewo+ICAJdm9pZCBfX2lvbWVtICpiYXNlOwo+ICAJdW5z
+aWduZWQgaW50IG1heF9kYXRhX2xhbmVzOwo+IEBAIC0yNyw2ICszNCw3IEBAIHN0cnVjdCBkd19t
+aXBpX2RzaV9wbGF0X2RhdGEgewo+ICAJCQkJCSAgIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9t
+b2RlICptb2RlKTsKPiAgCj4gIAljb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGh5X29wcyAqcGh5
+X29wczsKPiArCWNvbnN0IHN0cnVjdCBkd19taXBpX2RzaV9ob3N0X29wcyAqaG9zdF9vcHM7Cj4g
+IAo+ICAJdm9pZCAqcHJpdl9kYXRhOwo+ICB9OwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
