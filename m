@@ -1,78 +1,45 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: [PATCH v2 4/4] iommu/rockchip: Move irq request past pm_runtime_enable
-Date: Fri, 24 Aug 2018 16:06:37 +0100
-Message-ID: <20180824150637.15316-5-marc.zyngier@arm.com>
-References: <20180824150637.15316-1-marc.zyngier@arm.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180824150637.15316-1-marc.zyngier@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Cc: Joerg Roedel <joro@8bytes.org>, Heiko Stuebner <heiko@sntech.de>, Jeffy Chen <jeffy.chen@rock-chips.com>, arm@kernel.org
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [GIT PULL] Rockchip dts64 updates for 4.19 round 3
+Date: Fri, 24 Aug 2018 08:36:30 -0700
+Message-ID: <CAOesGMhYtxYQR5T_bD_GN6eBEfwzUS8YDbJiiL2eGDoQxnzSJw@mail.gmail.com>
+References: <2000491.bLgWuj0xar@phil> <2105931.jBd9xt4tCK@phil>
+ <21611381.3gemCK5zcZ@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <21611381.3gemCK5zcZ@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, ARM-SoC Maintainers <arm@kernel.org>, Linux ARM Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enabling the interrupt early, before power has been applied to the
-device, can result in an interrupt being delivered too early if:
+On Tue, Aug 14, 2018 at 4:02 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Montag, 6. August 2018, 10:46:03 CEST schrieb Heiko Stuebner:
+>> Hi Arnd, Kevin, Olof,
+>>
+>> with Linus doing an -rc8 this time, I thought I send off some more
+>> things that became ready since the round2 pull from last week.
+>>
+>> As the tag describes a new soc, 2 new boards and 1 UHS support.
+>>
+>> No worries, if you haven't got the time to look at it. Then I'll just move
+>> things over to 4.20
+>
+> For completeness sake:
+> I've dropped the tag and moved the patches over to my stack for 4.20 now.
 
-- the IOMMU shares an interrupt with a VOP
-- the VOP has a pending interrupt (after a kexec, for example)
+Ok, thanks. I had closed down most new contents by then (and I was on
+vacation). Happy to take for 4.20.
 
-In these conditions, we end-up taking the interrupt without
-the IOMMU being ready to handle the interrupt (not powered on).
 
-Moving the interrupt request past the pm_runtime_enable() call
-makes sure we can at least access the IOMMU registers. Note that
-this is only a partial fix, and that the VOP interrupt will still
-be screaming until the VOP driver kicks in, which advocates for
-a more synchronized interrupt enabling/disabling approach.
 
-Fixes: 0f181d3cf7d98 ("iommu/rockchip: Add runtime PM support")
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
----
- drivers/iommu/rockchip-iommu.c | 24 +++++++++++++-----------
- 1 file changed, 13 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4e0f9b61cd7f..2b1724e8d307 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1161,17 +1161,6 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	if (iommu->num_mmu == 0)
- 		return PTR_ERR(iommu->bases[0]);
- 
--	i = 0;
--	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
--		if (irq < 0)
--			return irq;
--
--		err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
--				       IRQF_SHARED, dev_name(dev), iommu);
--		if (err)
--			return err;
--	}
--
- 	iommu->reset_disabled = device_property_read_bool(dev,
- 					"rockchip,disable-mmu-reset");
- 
-@@ -1228,6 +1217,19 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 
- 	pm_runtime_enable(dev);
- 
-+	i = 0;
-+	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
-+		if (irq < 0)
-+			return irq;
-+
-+		err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
-+				       IRQF_SHARED, dev_name(dev), iommu);
-+		if (err) {
-+			pm_runtime_disable(dev);
-+			goto err_remove_sysfs;
-+		}
-+	}
-+
- 	return 0;
- err_remove_sysfs:
- 	iommu_device_sysfs_remove(&iommu->iommu);
--- 
-2.18.0
+-Olof
