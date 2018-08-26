@@ -1,51 +1,84 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/4] iommu/rockchip: Runtime PM fixes
-Date: Fri, 24 Aug 2018 20:08:22 +0200
-Message-ID: <13492452.cxnNOAAFxb@phil>
-References: <20180824150637.15316-1-marc.zyngier@arm.com>
-	<20180824155059.qskwdxmc6ws3hwtv@localhost>
+From: "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+Subject: [PATCH] drm/rockchip: Use struct_size() in devm_kzalloc()
+Date: Sun, 26 Aug 2018 13:47:12 -0500
+Message-ID: <20180826184712.GA9330@embeddedor.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180824155059.qskwdxmc6ws3hwtv@localhost>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Cc: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Cc: Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 24. August 2018, 17:50:59 CEST schrieb Olof Johansson:
-> On Fri, Aug 24, 2018 at 04:06:33PM +0100, Marc Zyngier wrote:
-> > This small series addresses a couple of runtime PM issues I've spotted
-> > while running 4.18 on a Chromebook Plus (kevin, rk3399) platform, and
-> > specifically doing kexec.
-> > 
-> > In order to avoid making a complete mess of the IOMMU code, Heiko has
-> > requested that all RK platforms would select CONFIG_PM, which
-> > simplifies a lot of things. I've kept 32 and 64bit patches separate,
-> > but feel free to squash them into on if that's more convenient.
-> > 
-> > Note that even with these patches, kexec is still fairly broken on
-> > rk3399, as the VOP is never turned off (see [1] for a fix).
-> > 
-> > [1] https://www.spinics.net/lists/arm-kernel/msg670229.html
-> > 
-> > * From v1:
-> >   - Collected RBs from Heiko
-> >   - Added two patches forcing CONFIG_PM on all Rockchip platforms at
-> >     Heiko's request, following the example set by Tegra platforms.
-> 
-> Thanks, applied to our next/late branch which I plan to send in tomorrow.
+One of the more common cases of allocation size calculations is finding
+the size of a structure that has a zero-sized array at the end, along
+with memory for some number of elements for that array. For example:
 
-that was a quick turn around :-) .
-Thanks for picking the series.
+struct foo {
+	int stuff;
+        void *entry[];
+};
 
-Heiko
+instance = devm_kzalloc(dev, sizeof(struct foo) + sizeof(void *) * count, GFP_KERNEL);
+
+or, like in this particular case:
+
+size = sizeof(struct foo) + sizeof(void *) * count;
+instance = devm_kzalloc(dev, size, GFP_KERNEL);
+
+Instead of leaving these open-coded and prone to type mistakes, we can
+now use the new struct_size() helper:
+
+instance = devm_kzalloc(dev, struct_size(instance, entry, count),
+GFP_KERNEL);
+
+This issue was detected with the help of Coccinelle.
+
+Signed-off-by: Gustavo A. R. Silva <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 1359e5c..cf64e4d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -32,6 +32,7 @@
+ #include <linux/of_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/component.h>
++#include <linux/overflow.h>
+ 
+ #include <linux/reset.h>
+ #include <linux/delay.h>
+@@ -1561,7 +1562,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 	struct drm_device *drm_dev = data;
+ 	struct vop *vop;
+ 	struct resource *res;
+-	size_t alloc_size;
+ 	int ret, irq;
+ 
+ 	vop_data = of_device_get_match_data(dev);
+@@ -1569,8 +1569,8 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+ 		return -ENODEV;
+ 
+ 	/* Allocate vop struct and its vop_win array */
+-	alloc_size = sizeof(*vop) + sizeof(*vop->win) * vop_data->win_size;
+-	vop = devm_kzalloc(dev, alloc_size, GFP_KERNEL);
++	vop = devm_kzalloc(dev, struct_size(vop, win, vop_data->win_size),
++			   GFP_KERNEL);
+ 	if (!vop)
+ 		return -ENOMEM;
+ 
+-- 
+2.7.4
