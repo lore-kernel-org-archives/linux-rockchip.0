@@ -1,11 +1,13 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] iommu/rockchip: Free irqs in shutdown handler
-Date: Mon, 27 Aug 2018 12:56:24 +0200
-Message-ID: <20180827105624.5593-1-heiko@sntech.de>
+From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] iommu/rockchip: Free irqs in shutdown handler
+Date: Mon, 27 Aug 2018 12:59:56 +0200
+Message-ID: <CAFqH_53JXpi4zxkGELuSPthMv9ULw+rfOGV4sZ-uJ9W2YcP8GA@mail.gmail.com>
+References: <20180827105624.5593-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180827105624.5593-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
 	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
@@ -15,41 +17,41 @@ List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
 	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
 Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
 Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, marc.zyngier-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: marc.zyngier-5wv7dgnIgG8@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In the iommu's shutdown handler we disable runtime-pm which could
-result in the irq-handler running unclocked and since commit
-    3fc7c5c0cff3 ("iommu/rockchip: Handle errors returned from PM framework")
-we warn about that fact.
-
-This can cause warnings on shutdown on some Rockchip machines, so
-free the irqs in the shutdown handler before we disable runtime-pm.
-
-Reported-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Fixes: 3fc7c5c0cff3 ("iommu/rockchip: Handle errors returned from PM framework")
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/iommu/rockchip-iommu.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 258115b10fa9..ad3e2b97469e 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1241,6 +1241,12 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 
- static void rk_iommu_shutdown(struct platform_device *pdev)
- {
-+	struct rk_iommu *iommu = platform_get_drvdata(pdev);
-+	int i = 0, irq;
-+
-+	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO)
-+		devm_free_irq(iommu->dev, irq, iommu);
-+
- 	pm_runtime_force_suspend(&pdev->dev);
- }
- 
--- 
-2.17.0
+SGVpa28sCgpUaGFua3MgZm9yIHRoZSBwYXRjaApNaXNzYXRnZSBkZSBIZWlrbyBTdHVlYm5lciA8
+aGVpa29Ac250ZWNoLmRlPiBkZWwgZGlhIGRsLiwgMjcgZOKAmWFnLgoyMDE4IGEgbGVzIDEyOjU3
+Ogo+Cj4gSW4gdGhlIGlvbW11J3Mgc2h1dGRvd24gaGFuZGxlciB3ZSBkaXNhYmxlIHJ1bnRpbWUt
+cG0gd2hpY2ggY291bGQKPiByZXN1bHQgaW4gdGhlIGlycS1oYW5kbGVyIHJ1bm5pbmcgdW5jbG9j
+a2VkIGFuZCBzaW5jZSBjb21taXQKPiAgICAgM2ZjN2M1YzBjZmYzICgiaW9tbXUvcm9ja2NoaXA6
+IEhhbmRsZSBlcnJvcnMgcmV0dXJuZWQgZnJvbSBQTSBmcmFtZXdvcmsiKQo+IHdlIHdhcm4gYWJv
+dXQgdGhhdCBmYWN0Lgo+Cj4gVGhpcyBjYW4gY2F1c2Ugd2FybmluZ3Mgb24gc2h1dGRvd24gb24g
+c29tZSBSb2NrY2hpcCBtYWNoaW5lcywgc28KPiBmcmVlIHRoZSBpcnFzIGluIHRoZSBzaHV0ZG93
+biBoYW5kbGVyIGJlZm9yZSB3ZSBkaXNhYmxlIHJ1bnRpbWUtcG0uCj4KPiBSZXBvcnRlZC1ieTog
+RW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPiBG
+aXhlczogM2ZjN2M1YzBjZmYzICgiaW9tbXUvcm9ja2NoaXA6IEhhbmRsZSBlcnJvcnMgcmV0dXJu
+ZWQgZnJvbSBQTSBmcmFtZXdvcmsiKQo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxo
+ZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gIGRyaXZlcnMvaW9tbXUvcm9ja2NoaXAtaW9tbXUuYyB8
+IDYgKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMgYi9kcml2ZXJzL2lvbW11L3JvY2tj
+aGlwLWlvbW11LmMKPiBpbmRleCAyNTgxMTViMTBmYTkuLmFkM2UyYjk3NDY5ZSAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMKPiArKysgYi9kcml2ZXJzL2lvbW11
+L3JvY2tjaGlwLWlvbW11LmMKPiBAQCAtMTI0MSw2ICsxMjQxLDEyIEBAIHN0YXRpYyBpbnQgcmtf
+aW9tbXVfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPgo+ICBzdGF0aWMgdm9p
+ZCBya19pb21tdV9zaHV0ZG93bihzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICB7Cj4g
+KyAgICAgICBzdHJ1Y3QgcmtfaW9tbXUgKmlvbW11ID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRl
+dik7Cj4gKyAgICAgICBpbnQgaSA9IDAsIGlycTsKPiArCj4gKyAgICAgICB3aGlsZSAoKGlycSA9
+IHBsYXRmb3JtX2dldF9pcnEocGRldiwgaSsrKSkgIT0gLUVOWElPKQo+ICsgICAgICAgICAgICAg
+ICBkZXZtX2ZyZWVfaXJxKGlvbW11LT5kZXYsIGlycSwgaW9tbXUpOwo+ICsKPiAgICAgICAgIHBt
+X3J1bnRpbWVfZm9yY2Vfc3VzcGVuZCgmcGRldi0+ZGV2KTsKPiAgfQo+Cj4gLS0KPiAyLjE3LjAK
+PgoKQWZ0ZXIgdGhpcyBwYXRjaCB0aGUgV0FSTklORyBpcyBnb25lIG9uIG15IFNhbXN1bmcgQ2hy
+b21lYm9vayBQbHVzLgoKVGVzdGVkLWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5i
+YWxsZXRib0Bjb2xsYWJvcmEuY29tPgoKPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KaW9tbXUgbWFpbGluZyBsaXN0CmlvbW11QGxpc3RzLmxp
+bnV4LWZvdW5kYXRpb24ub3JnCmh0dHBzOi8vbGlzdHMubGludXhmb3VuZGF0aW9uLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2lvbW11
