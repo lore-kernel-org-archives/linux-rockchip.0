@@ -1,90 +1,44 @@
-From: Kees Cook <keescook@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Use struct_size() in devm_kzalloc()
-Date: Sun, 26 Aug 2018 15:04:52 -0700
-Message-ID: <CAGXu5jKkLMWz6aBzPHde9X5+_=k-X3ryjq6mm=z5X1QtRg-MxQ@mail.gmail.com>
-References: <20180826184712.GA9330@embeddedor.com>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: [PATCH] drm/rockchip: fix coding style and incorrect description
+Date: Mon, 27 Aug 2018 14:29:38 +0800
+Message-ID: <1535351378-128643-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180826184712.GA9330@embeddedor.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Maling list - DRI developers <dri-devel@lists.freedesktop.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: hjc@rock-chips.com, heiko@sntech.de, David Airlie <airlied@linux.ie>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Aug 26, 2018 at 11:47 AM, Gustavo A. R. Silva
-<gustavo@embeddedor.com> wrote:
-> One of the more common cases of allocation size calculations is finding
-> the size of a structure that has a zero-sized array at the end, along
-> with memory for some number of elements for that array. For example:
->
-> struct foo {
->         int stuff;
->         void *entry[];
-> };
->
-> instance = devm_kzalloc(dev, sizeof(struct foo) + sizeof(void *) * count, GFP_KERNEL);
->
-> or, like in this particular case:
->
-> size = sizeof(struct foo) + sizeof(void *) * count;
-> instance = devm_kzalloc(dev, size, GFP_KERNEL);
->
-> Instead of leaving these open-coded and prone to type mistakes, we can
-> now use the new struct_size() helper:
->
-> instance = devm_kzalloc(dev, struct_size(instance, entry, count),
-> GFP_KERNEL);
->
-> This issue was detected with the help of Coccinelle.
->
-> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-
-Reviewed-by: Kees Cook <keescook@chromium.org>
-
--Kees
-
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 1359e5c..cf64e4d 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -32,6 +32,7 @@
->  #include <linux/of_device.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/component.h>
-> +#include <linux/overflow.h>
->
->  #include <linux/reset.h>
->  #include <linux/delay.h>
-> @@ -1561,7 +1562,6 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
->         struct drm_device *drm_dev = data;
->         struct vop *vop;
->         struct resource *res;
-> -       size_t alloc_size;
->         int ret, irq;
->
->         vop_data = of_device_get_match_data(dev);
-> @@ -1569,8 +1569,8 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
->                 return -ENODEV;
->
->         /* Allocate vop struct and its vop_win array */
-> -       alloc_size = sizeof(*vop) + sizeof(*vop->win) * vop_data->win_size;
-> -       vop = devm_kzalloc(dev, alloc_size, GFP_KERNEL);
-> +       vop = devm_kzalloc(dev, struct_size(vop, win, vop_data->win_size),
-> +                          GFP_KERNEL);
->         if (!vop)
->                 return -ENOMEM;
->
-> --
-> 2.7.4
->
-
-
-
--- 
-Kees Cook
-Pixel Security
+QWxpZ24gd2l0aCBvdGhlciBkcml2ZXJzLCB0YWIgKyAyIHNwYWNlIGtleSBmb3IgZGVzY3JpcHRp
+b24uCmFuZCB0aGlzIG9wdGlvbiBzaG91bGQgYmUgZW5hYmxlZCBvbiBib3RoIHJrMzI4OCBhbmQg
+cmszMzk5LgoKU2lnbmVkLW9mZi1ieTogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4K
+LS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyB8IDggKysrKy0tLS0KIDEgZmls
+ZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvS2NvbmZpZwppbmRleCAwY2NjNzYyLi42MDEyMzRiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvS2NvbmZpZworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2Nv
+bmZpZwpAQCAtNDUsMTAgKzQ1LDEwIEBAIGNvbmZpZyBST0NLQ0hJUF9EV19IRE1JCiBjb25maWcg
+Uk9DS0NISVBfRFdfTUlQSV9EU0kKIAlib29sICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25z
+IGZvciBTeW5vcHN5cyBEVyBNSVBJIERTSSIKIAloZWxwCi0JIFRoaXMgc2VsZWN0cyBzdXBwb3J0
+IGZvciBSb2NrY2hpcCBTb0Mgc3BlY2lmaWMgZXh0ZW5zaW9ucwotCSBmb3IgdGhlIFN5bm9wc3lz
+IERlc2lnbldhcmUgSERNSSBkcml2ZXIuIElmIHlvdSB3YW50IHRvCi0JIGVuYWJsZSBNSVBJIERT
+SSBvbiBSSzMyODggYmFzZWQgU29DLCB5b3Ugc2hvdWxkIHNlbGV0IHRoaXMKLQkgb3B0aW9uLgor
+CSAgVGhpcyBzZWxlY3RzIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFNvQyBzcGVjaWZpYyBleHRlbnNp
+b25zCisJICBmb3IgdGhlIFN5bm9wc3lzIERlc2lnbldhcmUgSERNSSBkcml2ZXIuIElmIHlvdSB3
+YW50IHRvCisJICBlbmFibGUgTUlQSSBEU0kgb24gUkszMjg4IG9yIFJLMzM5OSBiYXNlZCBTb0Ms
+IHlvdSBzaG91bGQKKwkgIHNlbGV0IHRoaXMgb3B0aW9uLgogCiBjb25maWcgUk9DS0NISVBfSU5O
+T19IRE1JCiAJYm9vbCAiUm9ja2NoaXAgc3BlY2lmaWMgZXh0ZW5zaW9ucyBmb3IgSW5ub3NpbGlj
+b24gSERNSSIKLS0gCjIuNy40CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
