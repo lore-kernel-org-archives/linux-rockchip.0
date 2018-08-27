@@ -1,206 +1,246 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v5 7/7] drm/rockchip: dsi: add dual mipi support
-Date: Mon, 27 Aug 2018 13:34:07 +0200
-Message-ID: <20180827113409eucas1p16362863958c662d05c30d7c17a338a78~Ouo-Av8g90168501685eucas1p17@eucas1p1.samsung.com>
-References: <20180821140515.22246-1-heiko@sntech.de>
- <CGME20180821140537epcas3p39e49173f6c9eec1bd93366ae6cf8413a@epcas3p3.samsung.com>
- <20180821140515.22246-8-heiko@sntech.de>
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH v3 4/5] rtc: rk808: add RK809 and RK817 support.
+Date: Mon, 27 Aug 2018 23:14:51 +0200
+Message-ID: <20180827211451.GJ24549@piout.net>
+References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
+ <1535081441-20718-5-git-send-email-tony.xie@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180821140515.22246-8-heiko@sntech.de>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, mka@chromium.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1535081441-20718-5-git-send-email-tony.xie@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tony Xie <tony.xie@rock-chips.com>
+Cc: heiko@sntech.de, broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjEuMDguMjAxOCAxNjowNSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gQWRkIHRoZSBSb2Nr
-Y2hpcC1zZXBjaWZpYyBkdWFsLWRzaSBzZXR1cCBhbmQgaG9vayBpdCBpbnRvIHRoZSBWT1AgYXMg
-d2VsbC4KPiBBcyBkZXNjcmliZWQgaW4gdGhlIGdlbmVyYWwgZHVhbC1kc2kgZGV2aWNldHJlZSBi
-aW5kaW5nLCB0aGUgcGFuZWwgc2hvdWxkCj4gZGVmaW5lIHR3byBpbnB1dCBwb3J0cyBhbmQgcG9p
-bnQgZWFjaCBvZiB0aGVtIHRvIG9uZSBvZiB0aGUgdXNlZCBkc2ktCj4gY29udHJvbGxlcnMsIGFz
-IHdlbGwgYXMgZGVjbGFyZSBvbmUgb2YgdGhlbSBhcyBjbG9jay1tYXN0ZXIuCj4gVGhpcyBpcyB1
-c2VkIHRvIGRldGVybWluZSB0aGUgZHVhbC1kc2kgc3RhdGUgYW5kIGdldCBhY2Nlc3MgdG8gYm90
-aAo+IGNvbnRyb2xsZXIgaW5zdGFuY2VzLgo+Cj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJu
-ZXIgPGhlaWtvQHNudGVjaC5kZT4KPiB2NDoKPiAgIGFkZCBjb21wb25lbnQgZGlyZWN0bHkgaW4g
-cHJvYmUgd2hlbiBhZGRpbmcgZW1wdHkgZHNpIHNsYXZlIGNvbnRyb2xsZXIKPiB2NToKPiAgIHVz
-ZSBkcml2ZXItaW50ZXJuYWwgbWVjaGFuaXNtIHRvIGZpbmQgZHVhbCBkc2kgc2xhdmUKPiAtLS0K
-PiAgLi4uL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYyAgIHwgMTA1ICsr
-KysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2Rydi5oICAgfCAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5jICAgfCAgIDMgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5oICAgfCAgIDQgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9w
-X3JlZy5jICAgfCAgIDEgKwo+ICA1IGZpbGVzIGNoYW5nZWQsIDExNCBpbnNlcnRpb25zKCspCj4K
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLXJvY2tj
-aGlwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwo+
-IGluZGV4IGIzYWFlODQzOWFhMy4uZTRhZWUyY2NiZjRkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLXJvY2tjaGlwLmMKPiBAQCAtMjE4LDYgKzIxOCwx
-MCBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgewo+ICAJc3RydWN0IGNsayAqZ3JmX2Ns
-azsKPiAgCXN0cnVjdCBjbGsgKnBoeV9jZmdfY2xrOwo+ICAKPiArCS8qIGR1YWwtY2hhbm5lbCAq
-Lwo+ICsJYm9vbCBpc19zbGF2ZTsKPiArCXN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hpcCAqc2xh
-dmU7Cj4gKwo+ICAJdW5zaWduZWQgaW50IGxhbmVfbWJwczsgLyogcGVyIGxhbmUgKi8KPiAgCXUx
-NiBpbnB1dF9kaXY7Cj4gIAl1MTYgZmVlZGJhY2tfZGl2Owo+IEBAIC0yMjYsNiArMjMwLDcgQEAg
-c3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwIHsKPiAgCXN0cnVjdCBkd19taXBpX2RzaSAqZG1k
-Owo+ICAJY29uc3Qgc3RydWN0IHJvY2tjaGlwX2R3X2RzaV9jaGlwX2RhdGEgKmNkYXRhOwo+ICAJ
-c3RydWN0IGR3X21pcGlfZHNpX3BsYXRfZGF0YSBwZGF0YTsKPiArCWludCBkZXZjbnQ7Cj4gIH07
-Cj4gIAo+ICBzdHJ1Y3QgZHBoeV9wbGxfcGFyYW1ldGVyX21hcCB7Cj4gQEAgLTYwMiw2ICs2MDcs
-OCBAQCBkd19taXBpX2RzaV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2VuY29kZXIg
-KmVuY29kZXIsCj4gIAl9Cj4gIAo+ICAJcy0+b3V0cHV0X3R5cGUgPSBEUk1fTU9ERV9DT05ORUNU
-T1JfRFNJOwo+ICsJaWYgKGRzaS0+c2xhdmUpCj4gKwkJcy0+b3V0cHV0X2ZsYWdzID0gUk9DS0NI
-SVBfT1VUUFVUX0RTSV9EVUFMOwo+ICAKPiAgCXJldHVybiAwOwo+ICB9Cj4gQEAgLTYxNyw2ICs2
-MjQsOCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJt
-X2VuY29kZXIgKmVuY29kZXIpCj4gIAkJcmV0dXJuOwo+ICAKPiAgCXBtX3J1bnRpbWVfZ2V0X3N5
-bmMoZHNpLT5kZXYpOwo+ICsJaWYgKGRzaS0+c2xhdmUpCj4gKwkJcG1fcnVudGltZV9nZXRfc3lu
-Yyhkc2ktPnNsYXZlLT5kZXYpOwo+ICAKPiAgCS8qCj4gIAkgKiBGb3IgdGhlIFJLMzM5OSwgdGhl
-IGNsayBvZiBncmYgbXVzdCBiZSBlbmFibGVkIGJlZm9yZSB3cml0aW5nIGdyZgo+IEBAIC02MzAs
-NiArNjM5LDggQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0
-IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICAJfQo+ICAKPiAgCWR3X21pcGlfZHNpX3JvY2tjaGlw
-X2NvbmZpZyhkc2ksIG11eCk7Cj4gKwlpZiAoZHNpLT5zbGF2ZSkKPiArCQlkd19taXBpX2RzaV9y
-b2NrY2hpcF9jb25maWcoZHNpLT5zbGF2ZSwgbXV4KTsKPiAgCj4gIAljbGtfZGlzYWJsZV91bnBy
-ZXBhcmUoZHNpLT5ncmZfY2xrKTsKPiAgfQo+IEBAIC02MzgsNiArNjQ5LDggQEAgc3RhdGljIHZv
-aWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
-cikKPiAgewo+ICAJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2kgPSB0b19kc2koZW5j
-b2Rlcik7Cj4gIAo+ICsJaWYgKGRzaS0+c2xhdmUpCj4gKwkJcG1fcnVudGltZV9wdXQoZHNpLT5z
-bGF2ZS0+ZGV2KTsKPiAgCXBtX3J1bnRpbWVfcHV0KGRzaS0+ZGV2KTsKPiAgfQo+ICAKPiBAQCAt
-NjczLDE0ICs2ODYsNzYgQEAgc3RhdGljIGludCByb2NrY2hpcF9kc2lfZHJtX2NyZWF0ZV9lbmNv
-ZGVyKHN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hpcCAqZHNpLAo+ICAJcmV0dXJuIDA7Cj4gIH0K
-PiAgCj4gK3N0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfbWF0Y2hfc2Vjb25kKHN0cnVj
-dCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArewo+ICsJc3RydWN0IGR3X21pcGlfZHNpX3Jv
-Y2tjaGlwICpkc2kgPSBkYXRhOwo+ICsJc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZTEsICpicmlk
-Z2UyOwo+ICsJc3RydWN0IGRybV9wYW5lbCAqcGFuZWwxLCAqcGFuZWwyOwo+ICsJaW50IHJldDsK
-PiArCj4gKwlpZiAoZHNpLT5kZXYtPm9mX25vZGUgPT0gZGV2LT5vZl9ub2RlKQo+ICsJCXJldHVy
-biAwOwo+ICsKPiArCXJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZShkc2ktPmRldi0+
-b2Zfbm9kZSwgMSwgMCwKPiArCQkJCQkgICZwYW5lbDEsICZicmlkZ2UxKTsKPiArCWlmIChyZXQp
-Cj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwlyZXQgPSBkcm1fb2ZfZmluZF9wYW5lbF9vcl9icmlk
-Z2UoZGV2LT5vZl9ub2RlLCAxLCAwLAo+ICsJCQkJCSAgJnBhbmVsMiwgJmJyaWRnZTIpOwo+ICsJ
-aWYgKHJldCkKPiArCQlyZXR1cm4gcmV0Owo+ICsKPiArCXJldHVybiAocGFuZWwxID09IHBhbmVs
-MikgJiYgKGJyaWRnZTEgPT0gYnJpZGdlMik7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgZHdfbWlw
-aV9kc2lfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gIAkJCQkgICAgIHN0cnVj
-dCBkZXZpY2UgKm1hc3RlciwKPiAgCQkJCSAgICAgdm9pZCAqZGF0YSkKPiAgewo+ICAJc3RydWN0
-IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2kgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCXN0
-cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2ID0gZGF0YTsKPiArCXN0cnVjdCBkZXZpY2UgKnNlY29u
-ZDsKPiArCWJvb2wgbWFzdGVyMSwgbWFzdGVyMjsKPiAgCWludCByZXQ7Cj4gIAo+ICsJc2Vjb25k
-ID0gZHJpdmVyX2ZpbmRfZGV2aWNlKGRzaS0+ZGV2LT5kcml2ZXIsIE5VTEwsIGRzaSwKPiArCQkJ
-CQlkd19taXBpX2RzaV9yb2NrY2hpcF9tYXRjaF9zZWNvbmQpOwoKVGhpcyBmdW5jdGlvbiBwZXJm
-b3JtcyBnZXRfZGV2aWNlIG9uIHRoZSBtYXRjaGVkIGRldmljZSwgc28geW91IHNob3VsZApwcm9i
-YWJseSBjYWxsIHNvbWV3aGVyZSBwdXRfZGV2aWNlIHRvIG1ha2UgdGhlIGNvdW50ZXIgYmFsYW5j
-ZWQuCkkgaG9wZSBzZWNvbmQgZGV2aWNlIGlzIHNvbWVob3cgZ3VhcmRlZCBieSBjb21wb25lbnQg
-ZnJhbWV3b3JrIGZyb20KYmVpbmcgdW5ib3VuZCBpbiB1bmV4cGVjdGVkIG1vbWVudHMgKGllLiB3
-aGVuIGluIHVzZSBieSBtYXN0ZXIpLgoKPiArCWlmIChJU19FUlIoc2Vjb25kKSkKPiArCQlyZXR1
-cm4gUFRSX0VSUihzZWNvbmQpOwo+ICsKPiArCWlmIChzZWNvbmQpIHsKPiArCQltYXN0ZXIxID0g
-b2ZfcHJvcGVydHlfcmVhZF9ib29sKGRzaS0+ZGV2LT5vZl9ub2RlLAo+ICsJCQkJCQkiY2xvY2st
-bWFzdGVyIik7Cj4gKwkJbWFzdGVyMiA9IG9mX3Byb3BlcnR5X3JlYWRfYm9vbChzZWNvbmQtPm9m
-X25vZGUsCj4gKwkJCQkJCSJjbG9jay1tYXN0ZXIiKTsKPiArCj4gKwkJaWYgKG1hc3RlcjEgJiYg
-bWFzdGVyMikgewo+ICsJCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2LCAib25seSBvbmUgY2xvY2st
-bWFzdGVyIGFsbG93ZWRcbiIpOwo+ICsJCQlyZXR1cm4gLUVJTlZBTDsKPiArCQl9Cj4gKwo+ICsJ
-CWlmICghbWFzdGVyMSAmJiAhbWFzdGVyMikgewo+ICsJCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2
-LCAibm8gY2xvY2stbWFzdGVyIGRlZmluZWRcbiIpOwo+ICsJCQlyZXR1cm4gLUVJTlZBTDsKPiAr
-CQl9Cj4gKwo+ICsJCS8qIHdlIGFyZSB0aGUgc2xhdmUgaW4gZHVhbC1EU0kgKi8KPiArCQlpZiAo
-IW1hc3RlcjEpIHsKPiArCQkJZHNpLT5pc19zbGF2ZSA9IHRydWU7Cj4gKwkJCXJldHVybiAwOwo+
-ICsJCX0KPiArCj4gKwkJZHNpLT5zbGF2ZSA9IGRldl9nZXRfZHJ2ZGF0YShzZWNvbmQpOwo+ICsJ
-CWlmICghZHNpLT5zbGF2ZSkgewo+ICsJCQlEUk1fREVWX0VSUk9SKGRldiwgImNvdWxkIG5vdCBn
-ZXQgc2xhdmVzIGRhdGFcbiIpOwo+ICsJCQlyZXR1cm4gLUVOT0RFVjsKPiArCQl9Cj4gKwo+ICsJ
-CWRzaS0+c2xhdmUtPmlzX3NsYXZlID0gdHJ1ZTsKPiArCQlkd19taXBpX2RzaV9zZXRfc2xhdmUo
-ZHNpLT5kbWQsIGRzaS0+c2xhdmUtPmRtZCk7Cj4gKwl9Cj4gKwo+ICAJcmV0ID0gY2xrX3ByZXBh
-cmVfZW5hYmxlKGRzaS0+cGxscmVmX2Nsayk7Cj4gIAlpZiAocmV0KSB7Cj4gIAkJRFJNX0RFVl9F
-UlJPUihkZXYsICJGYWlsZWQgdG8gZW5hYmxlIHBsbHJlZl9jbGs6ICVkXG4iLCByZXQpOwo+IEBA
-IC03MDgsNiArNzgzLDkgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfdW5iaW5k
-KHN0cnVjdCBkZXZpY2UgKmRldiwKPiAgewo+ICAJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlw
-ICpkc2kgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCj4gKwlpZiAoZHNpLT5pc19zbGF2ZSkK
-PiArCQlyZXR1cm47Cj4gKwo+ICAJZHdfbWlwaV9kc2lfdW5iaW5kKGRzaS0+ZG1kKTsKPiAgCj4g
-IAljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKPiBAQCAtNzQ5LDYgKzgy
-NywxNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX2hvc3Rfb3BzIGR3X21pcGlf
-ZHNpX3JvY2tjaGlwX2hvc3Rfb3BzID0gewo+ICAJLmRldGFjaCA9IGR3X21pcGlfZHNpX3JvY2tj
-aGlwX2hvc3RfZGV0YWNoLAo+ICB9Owo+ICAKPiArc3RhdGljIGludCBkd19taXBpX2RzaV9yb2Nr
-Y2hpcF9jbnRfZGV2KHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArewo+ICsJc3Ry
-dWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2kgPSBkYXRhOwo+ICsKPiArCWRzaS0+ZGV2Y250
-Kys7Cj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiAgc3RhdGljIGludCBkd19taXBpX2RzaV9yb2Nr
-Y2hpcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICB7Cj4gIAlzdHJ1Y3Qg
-ZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+IEBAIC04MzUsNiArOTIxLDIyIEBAIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-dikKPiAgCQlnb3RvIGVycl9jbGtkaXNhYmxlOwo+ICAJfQo+ICAKPiArCS8qCj4gKwkgKiBBbGwg
-ZHNpIGNoaWxkIGRldmljZXMgd2lsbCBoYXZlIGJlZW4gY3JlYXRlZCwgc28gd2UgY2FuIGNoZWNr
-Cj4gKwkgKiB0aGVpciBudW1iZXIgYW5kIGFkZCB0aGUgY29tcG9uZW50IGhlcmUgaWYgdGhlcmUg
-d2lsbCBiZSBubwo+ICsJICogaG9zdC1hdHRhY2ggY2FsbC4KCkkgZ3Vlc3MgeW91IG1lYW4gdGhh
-dCBpbiB0aGlzIHBvaW50IGFsbCBjaGlsZCBkZXZpY2VzIGhhdmUgYmVlbiBjcmVhdGVkCihyZW1v
-dmUgJ3dpbGwnKSwgYnV0IGl0IG1heSBiZSBmYWxzZSBhc3N1bXB0aW9uLCB0aGVyZSBpcyBhbHdh
-eXMKcG9zc2liaWxpdHkgdG8gY3JlYXRlIGRldmljZSBvbiB0aGUgZmx5IC0gc2VlIG1pcGlfZHNp
-X2RldmljZV9yZWdpc3Rlcl9mdWxsLgpZb3UgY2Fubm90IGFzc3VtZSB0aGF0IGluIGNlcnRhaW4g
-cG9pbnQgaW4gdGltZSB0aGVyZSB3aWxsIGJlIG5vIG1vcmUKZGV2aWNlcyBvbiB0aGUgYnVzLgoK
-SSBhbSBub3Qgc3VyZSBvZiB0aGUgcHVycG9zZSBvZiB0aGlzIGNvZGUuIFdoeSBkbyB5b3Ugd2Fu
-dCB0byBiZWhhdmUKZGlmZmVyZW50bHkgaWYgdGhlcmUgYXJlIG5vIGNoaWxkIGRldnM/CgpSZWdh
-cmRzCkFuZHJ6ZWoKCj4gKwkgKi8KPiArCWRldmljZV9mb3JfZWFjaF9jaGlsZChkc2ktPmRldiwg
-ZHNpLCBkd19taXBpX2RzaV9yb2NrY2hpcF9jbnRfZGV2KTsKPiArCWlmIChkc2ktPmRldmNudCA9
-PSAwKSB7Cj4gKwkJcmV0ID0gY29tcG9uZW50X2FkZChkc2ktPmRldiwgJmR3X21pcGlfZHNpX3Jv
-Y2tjaGlwX29wcyk7Cj4gKwkJaWYgKHJldCkgewo+ICsJCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2
-LCAiRmFpbGVkIHRvIHJlZ2lzdGVyIGNvbXBvbmVudDogJWRcbiIsCj4gKwkJCQkJCXJldCk7Cj4g
-KwkJCWR3X21pcGlfZHNpX3JlbW92ZShkc2ktPmRtZCk7Cj4gKwkJCWdvdG8gZXJyX2Nsa2Rpc2Fi
-bGU7Cj4gKwkJfQo+ICsJfQo+ICsKPiAgCXJldHVybiAwOwo+ICAKPiAgZXJyX2Nsa2Rpc2FibGU6
-Cj4gQEAgLTg0Niw2ICs5NDgsOSBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3JvY2tjaGlwX3Jl
-bW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgZHdfbWlw
-aV9kc2lfcm9ja2NoaXAgKmRzaSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ICAKPiAr
-CWlmIChkc2ktPmRldmNudCA9PSAwKQo+ICsJCWNvbXBvbmVudF9kZWwoZHNpLT5kZXYsICZkd19t
-aXBpX2RzaV9yb2NrY2hpcF9vcHMpOwo+ICsKPiAgCWR3X21pcGlfZHNpX3JlbW92ZShkc2ktPmRt
-ZCk7Cj4gIAo+ICAJcmV0dXJuIDA7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2Rydi5oCj4gaW5kZXggNjdiYmQyNzRiNzFmLi5hY2RkNGZhY2NhNjcgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBAQCAtMzcsNiAr
-MzcsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19zdGF0ZSB7Cj4gIAlpbnQgb3V0cHV0X3R5cGU7
-Cj4gIAlpbnQgb3V0cHV0X21vZGU7Cj4gIAlpbnQgb3V0cHV0X2JwYzsKPiArCWludCBvdXRwdXRf
-ZmxhZ3M7Cj4gIH07Cj4gICNkZWZpbmUgdG9fcm9ja2NoaXBfY3J0Y19zdGF0ZShzKSBcCj4gIAkJ
-Y29udGFpbmVyX29mKHMsIHN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRlLCBiYXNlKQo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGluZGV4IGM5YTVlYTM4
-ZTg2Yi4uZTRjMzkzNTZmNzllIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTkxMCw2ICs5MTAsNyBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0
-Y19hdG9taWNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgCXBpbl9wb2wgfD0gKGFk
-anVzdGVkX21vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19QVlNZTkMpID8KPiAgCQkgICBCSVQo
-VlNZTkNfUE9TSVRJVkUpIDogMDsKPiAgCVZPUF9SRUdfU0VUKHZvcCwgb3V0cHV0LCBwaW5fcG9s
-LCBwaW5fcG9sKTsKPiArCVZPUF9SRUdfU0VUKHZvcCwgb3V0cHV0LCBtaXBpX2R1YWxfY2hhbm5l
-bF9lbiwgMCk7Cj4gIAo+ICAJc3dpdGNoIChzLT5vdXRwdXRfdHlwZSkgewo+ICAJY2FzZSBEUk1f
-TU9ERV9DT05ORUNUT1JfTFZEUzoKPiBAQCAtOTI3LDYgKzkyOCw4IEBAIHN0YXRpYyB2b2lkIHZv
-cF9jcnRjX2F0b21pY19lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAJY2FzZSBEUk1f
-TU9ERV9DT05ORUNUT1JfRFNJOgo+ICAJCVZPUF9SRUdfU0VUKHZvcCwgb3V0cHV0LCBtaXBpX3Bp
-bl9wb2wsIHBpbl9wb2wpOwo+ICAJCVZPUF9SRUdfU0VUKHZvcCwgb3V0cHV0LCBtaXBpX2VuLCAx
-KTsKPiArCQlWT1BfUkVHX1NFVCh2b3AsIG91dHB1dCwgbWlwaV9kdWFsX2NoYW5uZWxfZW4sCj4g
-KwkJCSAgICAhIShzLT5vdXRwdXRfZmxhZ3MgJiBST0NLQ0hJUF9PVVRQVVRfRFNJX0RVQUwpKTsK
-PiAgCQlicmVhazsKPiAgCWNhc2UgRFJNX01PREVfQ09OTkVDVE9SX0Rpc3BsYXlQb3J0Ogo+ICAJ
-CXBpbl9wb2wgJj0gfkJJVChEQ0xLX0lOVkVSVCk7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5oCj4gaW5kZXggZmNiOTEwNDFhNjY2Li4zNjFlNGM3ZDIyNWMg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-aAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKPiBA
-QCAtNjAsNiArNjAsNyBAQCBzdHJ1Y3Qgdm9wX291dHB1dCB7Cj4gIAlzdHJ1Y3Qgdm9wX3JlZyBl
-ZHBfZW47Cj4gIAlzdHJ1Y3Qgdm9wX3JlZyBoZG1pX2VuOwo+ICAJc3RydWN0IHZvcF9yZWcgbWlw
-aV9lbjsKPiArCXN0cnVjdCB2b3BfcmVnIG1pcGlfZHVhbF9jaGFubmVsX2VuOwo+ICAJc3RydWN0
-IHZvcF9yZWcgcmdiX2VuOwo+ICB9Owo+ICAKPiBAQCAtMjEzLDYgKzIxNCw5IEBAIHN0cnVjdCB2
-b3BfZGF0YSB7Cj4gIC8qIGZvciB1c2Ugc3BlY2lhbCBvdXRmYWNlICovCj4gICNkZWZpbmUgUk9D
-S0NISVBfT1VUX01PREVfQUFBQQkxNQo+ICAKPiArLyogb3V0cHV0IGZsYWdzICovCj4gKyNkZWZp
-bmUgUk9DS0NISVBfT1VUUFVUX0RTSV9EVUFMCUJJVCgwKQo+ICsKPiAgZW51bSBhbHBoYV9tb2Rl
-IHsKPiAgCUFMUEhBX1NUUkFJR0hULAo+ICAJQUxQSEFfSU5WRVJTRSwKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiBpbmRleCBkODI0Y2E2MGMxYTQuLjQ0
-ZDczYzdiZWI1YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfdm9wX3JlZy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3Zv
-cF9yZWcuYwo+IEBAIC01NDMsNiArNTQzLDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfb3V0
-cHV0IHJrMzM5OV9vdXRwdXQgPSB7Cj4gIAkuaGRtaV9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19D
-VFJMLCAweDEsIDEzKSwKPiAgCS5lZHBfZW4gPSBWT1BfUkVHKFJLMzI4OF9TWVNfQ1RSTCwgMHgx
-LCAxNCksCj4gIAkubWlwaV9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAweDEsIDE1KSwK
-PiArCS5taXBpX2R1YWxfY2hhbm5lbF9lbiA9IFZPUF9SRUcoUkszMjg4X1NZU19DVFJMLCAweDEs
-IDMpLAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfZGF0YSByazMzOTlfdm9w
-X2JpZyA9IHsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On 24/08/2018 11:30:40+0800, Tony Xie wrote:
+> RK809 and RK817 are power management IC chips for multimedia products.
+> Most of their functions and registers are same, including the rtc.
+> 
+> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+
+> ---
+>  drivers/rtc/Kconfig     |  4 +--
+>  drivers/rtc/rtc-rk808.c | 68 +++++++++++++++++++++++++++++++++++++++----------
+>  2 files changed, 56 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+> index a2ba5db..1aaf935 100644
+> --- a/drivers/rtc/Kconfig
+> +++ b/drivers/rtc/Kconfig
+> @@ -371,11 +371,11 @@ config RTC_DRV_MAX77686
+>  	  will be called rtc-max77686.
+>  
+>  config RTC_DRV_RK808
+> -	tristate "Rockchip RK805/RK808/RK818 RTC"
+> +	tristate "Rockchip RK805/RK808/RK809/RK817/RK818 RTC"
+>  	depends on MFD_RK808
+>  	help
+>  	  If you say yes here you will get support for the
+> -	  RTC of RK805, RK808 and RK818 PMIC.
+> +	  RTC of RK805, RK809 and RK817, RK808 and RK818 PMIC.
+>  
+>  	  This driver can also be built as a module. If so, the module
+>  	  will be called rk808-rtc.
+> diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
+> index 739c0d4..5bacdaf 100644
+> --- a/drivers/rtc/rtc-rk808.c
+> +++ b/drivers/rtc/rtc-rk808.c
+> @@ -50,9 +50,18 @@
+>  #define NUM_TIME_REGS	(RK808_WEEKS_REG - RK808_SECONDS_REG + 1)
+>  #define NUM_ALARM_REGS	(RK808_ALARM_YEARS_REG - RK808_ALARM_SECONDS_REG + 1)
+>  
+> +struct rk_rtc_compat_reg {
+> +	unsigned int ctrl_reg;
+> +	unsigned int status_reg;
+> +	unsigned int alarm_seconds_reg;
+> +	unsigned int int_reg;
+> +	unsigned int seconds_reg;
+> +};
+> +
+>  struct rk808_rtc {
+>  	struct rk808 *rk808;
+>  	struct rtc_device *rtc;
+> +	struct rk_rtc_compat_reg *creg;
+>  	int irq;
+>  };
+>  
+> @@ -101,7 +110,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+>  	int ret;
+>  
+>  	/* Force an update of the shadowed registers right now */
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+>  				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+>  				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
+>  	if (ret) {
+> @@ -115,7 +124,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+>  	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
+>  	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
+>  	 */
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+>  				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+>  				 0);
+>  	if (ret) {
+> @@ -123,7 +132,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+>  		return ret;
+>  	}
+>  
+> -	ret = regmap_bulk_read(rk808->regmap, RK808_SECONDS_REG,
+> +	ret = regmap_bulk_read(rk808->regmap, rk808_rtc->creg->seconds_reg,
+>  			       rtc_data, NUM_TIME_REGS);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
+> @@ -166,7 +175,7 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+>  	rtc_data[6] = bin2bcd(tm->tm_wday);
+>  
+>  	/* Stop RTC while updating the RTC registers */
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+>  				 BIT_RTC_CTRL_REG_STOP_RTC_M,
+>  				 BIT_RTC_CTRL_REG_STOP_RTC_M);
+>  	if (ret) {
+> @@ -174,14 +183,14 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+>  		return ret;
+>  	}
+>  
+> -	ret = regmap_bulk_write(rk808->regmap, RK808_SECONDS_REG,
+> +	ret = regmap_bulk_write(rk808->regmap, rk808_rtc->creg->seconds_reg,
+>  				rtc_data, NUM_TIME_REGS);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
+>  		return ret;
+>  	}
+>  	/* Start RTC again */
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+>  				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to update RTC control: %d\n", ret);
+> @@ -199,8 +208,13 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+>  	uint32_t int_reg;
+>  	int ret;
+>  
+> -	ret = regmap_bulk_read(rk808->regmap, RK808_ALARM_SECONDS_REG,
+> +	ret = regmap_bulk_read(rk808->regmap,
+> +			       rk808_rtc->creg->alarm_seconds_reg,
+>  			       alrm_data, NUM_ALARM_REGS);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to read RTC alarm date REG: %d\n", ret);
+> +		return ret;
+> +	}
+>  
+>  	alrm->time.tm_sec = bcd2bin(alrm_data[0] & SECONDS_REG_MSK);
+>  	alrm->time.tm_min = bcd2bin(alrm_data[1] & MINUTES_REG_MAK);
+> @@ -210,7 +224,7 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+>  	alrm->time.tm_year = (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
+>  	rockchip_to_gregorian(&alrm->time);
+>  
+> -	ret = regmap_read(rk808->regmap, RK808_RTC_INT_REG, &int_reg);
+> +	ret = regmap_read(rk808->regmap, rk808_rtc->creg->int_reg, &int_reg);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
+>  		return ret;
+> @@ -231,7 +245,7 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
+>  	struct rk808 *rk808 = rk808_rtc->rk808;
+>  	int ret;
+>  
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
+>  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
+>  
+>  	return ret;
+> @@ -242,7 +256,7 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
+>  	struct rk808 *rk808 = rk808_rtc->rk808;
+>  	int ret;
+>  
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
+>  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
+>  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
+>  
+> @@ -274,7 +288,8 @@ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
+>  	alrm_data[4] = bin2bcd(alrm->time.tm_mon + 1);
+>  	alrm_data[5] = bin2bcd(alrm->time.tm_year - 100);
+>  
+> -	ret = regmap_bulk_write(rk808->regmap, RK808_ALARM_SECONDS_REG,
+> +	ret = regmap_bulk_write(rk808->regmap,
+> +				rk808_rtc->creg->alarm_seconds_reg,
+>  				alrm_data, NUM_ALARM_REGS);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to bulk write: %d\n", ret);
+> @@ -318,7 +333,7 @@ static irqreturn_t rk808_alarm_irq(int irq, void *data)
+>  	struct i2c_client *client = rk808->i2c;
+>  	int ret;
+>  
+> -	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
+> +	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
+>  			   RTC_STATUS_MASK);
+>  	if (ret) {
+>  		dev_err(&client->dev,
+> @@ -371,6 +386,22 @@ static int rk808_rtc_resume(struct device *dev)
+>  static SIMPLE_DEV_PM_OPS(rk808_rtc_pm_ops,
+>  	rk808_rtc_suspend, rk808_rtc_resume);
+>  
+> +static struct rk_rtc_compat_reg rk808_creg = {
+> +	.ctrl_reg = RK808_RTC_CTRL_REG,
+> +	.status_reg = RK808_RTC_STATUS_REG,
+> +	.alarm_seconds_reg = RK808_ALARM_SECONDS_REG,
+> +	.int_reg = RK808_RTC_INT_REG,
+> +	.seconds_reg = RK808_SECONDS_REG,
+> +};
+> +
+> +static struct rk_rtc_compat_reg rk817_creg = {
+> +	.ctrl_reg = RK817_RTC_CTRL_REG,
+> +	.status_reg = RK817_RTC_STATUS_REG,
+> +	.alarm_seconds_reg = RK817_ALARM_SECONDS_REG,
+> +	.int_reg = RK817_RTC_INT_REG,
+> +	.seconds_reg = RK817_SECONDS_REG,
+> +};
+> +
+>  static int rk808_rtc_probe(struct platform_device *pdev)
+>  {
+>  	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+> @@ -381,11 +412,20 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+>  	if (rk808_rtc == NULL)
+>  		return -ENOMEM;
+>  
+> +	switch (rk808->variant) {
+> +	case RK809_ID:
+> +	case RK817_ID:
+> +		rk808_rtc->creg = &rk817_creg;
+> +		break;
+> +	default:
+> +		rk808_rtc->creg = &rk808_creg;
+> +		break;
+> +	}
+>  	platform_set_drvdata(pdev, rk808_rtc);
+>  	rk808_rtc->rk808 = rk808;
+>  
+>  	/* start rtc running by default, and use shadowed timer. */
+> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
+> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+>  				 BIT_RTC_CTRL_REG_STOP_RTC_M |
+>  				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
+>  				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
+> @@ -395,7 +435,7 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> -	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
+> +	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
+>  			   RTC_STATUS_MASK);
+>  	if (ret) {
+>  		dev_err(&pdev->dev,
+> -- 
+> 1.9.1
+> 
+> 
+
+-- 
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
