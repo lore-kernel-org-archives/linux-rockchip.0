@@ -1,246 +1,549 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v3 4/5] rtc: rk808: add RK809 and RK817 support.
-Date: Mon, 27 Aug 2018 23:14:51 +0200
-Message-ID: <20180827211451.GJ24549@piout.net>
-References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
- <1535081441-20718-5-git-send-email-tony.xie@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Rob Herring <robh@kernel.org>
+Subject: [PATCH] pinctrl: Convert to using %pOFn instead of device_node.name
+Date: Mon, 27 Aug 2018 20:52:41 -0500
+Message-ID: <20180828015252.28511-40-robh@kernel.org>
+References: <20180828015252.28511-1-robh@kernel.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1535081441-20718-5-git-send-email-tony.xie@rock-chips.com>
+In-Reply-To: <20180828015252.28511-1-robh@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tony Xie <tony.xie@rock-chips.com>
-Cc: heiko@sntech.de, broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+To: linux-kernel@vger.kernel.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24/08/2018 11:30:40+0800, Tony Xie wrote:
-> RK809 and RK817 are power management IC chips for multimedia products.
-> Most of their functions and registers are same, including the rtc.
-> 
-> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+In preparation to remove the node name pointer from struct device_node,
+convert printf users to use the %pOFn format specifier.
 
-> ---
->  drivers/rtc/Kconfig     |  4 +--
->  drivers/rtc/rtc-rk808.c | 68 +++++++++++++++++++++++++++++++++++++++----------
->  2 files changed, 56 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
-> index a2ba5db..1aaf935 100644
-> --- a/drivers/rtc/Kconfig
-> +++ b/drivers/rtc/Kconfig
-> @@ -371,11 +371,11 @@ config RTC_DRV_MAX77686
->  	  will be called rtc-max77686.
->  
->  config RTC_DRV_RK808
-> -	tristate "Rockchip RK805/RK808/RK818 RTC"
-> +	tristate "Rockchip RK805/RK808/RK809/RK817/RK818 RTC"
->  	depends on MFD_RK808
->  	help
->  	  If you say yes here you will get support for the
-> -	  RTC of RK805, RK808 and RK818 PMIC.
-> +	  RTC of RK805, RK809 and RK817, RK808 and RK818 PMIC.
->  
->  	  This driver can also be built as a module. If so, the module
->  	  will be called rk808-rtc.
-> diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
-> index 739c0d4..5bacdaf 100644
-> --- a/drivers/rtc/rtc-rk808.c
-> +++ b/drivers/rtc/rtc-rk808.c
-> @@ -50,9 +50,18 @@
->  #define NUM_TIME_REGS	(RK808_WEEKS_REG - RK808_SECONDS_REG + 1)
->  #define NUM_ALARM_REGS	(RK808_ALARM_YEARS_REG - RK808_ALARM_SECONDS_REG + 1)
->  
-> +struct rk_rtc_compat_reg {
-> +	unsigned int ctrl_reg;
-> +	unsigned int status_reg;
-> +	unsigned int alarm_seconds_reg;
-> +	unsigned int int_reg;
-> +	unsigned int seconds_reg;
-> +};
-> +
->  struct rk808_rtc {
->  	struct rk808 *rk808;
->  	struct rtc_device *rtc;
-> +	struct rk_rtc_compat_reg *creg;
->  	int irq;
->  };
->  
-> @@ -101,7 +110,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
->  	int ret;
->  
->  	/* Force an update of the shadowed registers right now */
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
->  				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
->  	if (ret) {
-> @@ -115,7 +124,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
->  	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
->  	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
->  	 */
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
->  				 0);
->  	if (ret) {
-> @@ -123,7 +132,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
->  		return ret;
->  	}
->  
-> -	ret = regmap_bulk_read(rk808->regmap, RK808_SECONDS_REG,
-> +	ret = regmap_bulk_read(rk808->regmap, rk808_rtc->creg->seconds_reg,
->  			       rtc_data, NUM_TIME_REGS);
->  	if (ret) {
->  		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
-> @@ -166,7 +175,7 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
->  	rtc_data[6] = bin2bcd(tm->tm_wday);
->  
->  	/* Stop RTC while updating the RTC registers */
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M);
->  	if (ret) {
-> @@ -174,14 +183,14 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
->  		return ret;
->  	}
->  
-> -	ret = regmap_bulk_write(rk808->regmap, RK808_SECONDS_REG,
-> +	ret = regmap_bulk_write(rk808->regmap, rk808_rtc->creg->seconds_reg,
->  				rtc_data, NUM_TIME_REGS);
->  	if (ret) {
->  		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
->  		return ret;
->  	}
->  	/* Start RTC again */
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
->  	if (ret) {
->  		dev_err(dev, "Failed to update RTC control: %d\n", ret);
-> @@ -199,8 +208,13 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
->  	uint32_t int_reg;
->  	int ret;
->  
-> -	ret = regmap_bulk_read(rk808->regmap, RK808_ALARM_SECONDS_REG,
-> +	ret = regmap_bulk_read(rk808->regmap,
-> +			       rk808_rtc->creg->alarm_seconds_reg,
->  			       alrm_data, NUM_ALARM_REGS);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to read RTC alarm date REG: %d\n", ret);
-> +		return ret;
-> +	}
->  
->  	alrm->time.tm_sec = bcd2bin(alrm_data[0] & SECONDS_REG_MSK);
->  	alrm->time.tm_min = bcd2bin(alrm_data[1] & MINUTES_REG_MAK);
-> @@ -210,7 +224,7 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
->  	alrm->time.tm_year = (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
->  	rockchip_to_gregorian(&alrm->time);
->  
-> -	ret = regmap_read(rk808->regmap, RK808_RTC_INT_REG, &int_reg);
-> +	ret = regmap_read(rk808->regmap, rk808_rtc->creg->int_reg, &int_reg);
->  	if (ret) {
->  		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
->  		return ret;
-> @@ -231,7 +245,7 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
->  	struct rk808 *rk808 = rk808_rtc->rk808;
->  	int ret;
->  
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
->  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
->  
->  	return ret;
-> @@ -242,7 +256,7 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
->  	struct rk808 *rk808 = rk808_rtc->rk808;
->  	int ret;
->  
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
->  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
->  				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
->  
-> @@ -274,7 +288,8 @@ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
->  	alrm_data[4] = bin2bcd(alrm->time.tm_mon + 1);
->  	alrm_data[5] = bin2bcd(alrm->time.tm_year - 100);
->  
-> -	ret = regmap_bulk_write(rk808->regmap, RK808_ALARM_SECONDS_REG,
-> +	ret = regmap_bulk_write(rk808->regmap,
-> +				rk808_rtc->creg->alarm_seconds_reg,
->  				alrm_data, NUM_ALARM_REGS);
->  	if (ret) {
->  		dev_err(dev, "Failed to bulk write: %d\n", ret);
-> @@ -318,7 +333,7 @@ static irqreturn_t rk808_alarm_irq(int irq, void *data)
->  	struct i2c_client *client = rk808->i2c;
->  	int ret;
->  
-> -	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
-> +	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
->  			   RTC_STATUS_MASK);
->  	if (ret) {
->  		dev_err(&client->dev,
-> @@ -371,6 +386,22 @@ static int rk808_rtc_resume(struct device *dev)
->  static SIMPLE_DEV_PM_OPS(rk808_rtc_pm_ops,
->  	rk808_rtc_suspend, rk808_rtc_resume);
->  
-> +static struct rk_rtc_compat_reg rk808_creg = {
-> +	.ctrl_reg = RK808_RTC_CTRL_REG,
-> +	.status_reg = RK808_RTC_STATUS_REG,
-> +	.alarm_seconds_reg = RK808_ALARM_SECONDS_REG,
-> +	.int_reg = RK808_RTC_INT_REG,
-> +	.seconds_reg = RK808_SECONDS_REG,
-> +};
-> +
-> +static struct rk_rtc_compat_reg rk817_creg = {
-> +	.ctrl_reg = RK817_RTC_CTRL_REG,
-> +	.status_reg = RK817_RTC_STATUS_REG,
-> +	.alarm_seconds_reg = RK817_ALARM_SECONDS_REG,
-> +	.int_reg = RK817_RTC_INT_REG,
-> +	.seconds_reg = RK817_SECONDS_REG,
-> +};
-> +
->  static int rk808_rtc_probe(struct platform_device *pdev)
->  {
->  	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
-> @@ -381,11 +412,20 @@ static int rk808_rtc_probe(struct platform_device *pdev)
->  	if (rk808_rtc == NULL)
->  		return -ENOMEM;
->  
-> +	switch (rk808->variant) {
-> +	case RK809_ID:
-> +	case RK817_ID:
-> +		rk808_rtc->creg = &rk817_creg;
-> +		break;
-> +	default:
-> +		rk808_rtc->creg = &rk808_creg;
-> +		break;
-> +	}
->  	platform_set_drvdata(pdev, rk808_rtc);
->  	rk808_rtc->rk808 = rk808;
->  
->  	/* start rtc running by default, and use shadowed timer. */
-> -	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
-> +	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
->  				 BIT_RTC_CTRL_REG_STOP_RTC_M |
->  				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
->  				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
-> @@ -395,7 +435,7 @@ static int rk808_rtc_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> -	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
-> +	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
->  			   RTC_STATUS_MASK);
->  	if (ret) {
->  		dev_err(&pdev->dev,
-> -- 
-> 1.9.1
-> 
-> 
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: Dong Aisheng <aisheng.dong@nxp.com>
+Cc: Fabio Estevam <festevam@gmail.com>
+Cc: Shawn Guo <shawnguo@kernel.org>
+Cc: Stefan Agner <stefan@agner.ch>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
+Cc: Sean Wang <sean.wang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Carlo Caione <carlo@caione.org>
+Cc: Kevin Hilman <khilman@baylibre.com>
+Cc: Jason Cooper <jason@lakedaemon.net>
+Cc: Andrew Lunn <andrew@lunn.ch>
+Cc: Gregory Clement <gregory.clement@bootlin.com>
+Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
+Cc: Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Tony Lindgren <tony@atomide.com>
+Cc: Haojian Zhuang <haojian.zhuang@linaro.org>
+Cc: Patrice Chotard <patrice.chotard@st.com>
+Cc: Barry Song <baohua@kernel.org>
+Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@st.com>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+Cc: Chen-Yu Tsai <wens@csie.org>
+Cc: linux-gpio@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-omap@vger.kernel.org
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ drivers/pinctrl/berlin/berlin.c               |  6 ++--
+ drivers/pinctrl/freescale/pinctrl-imx.c       |  7 ++--
+ drivers/pinctrl/freescale/pinctrl-imx1-core.c | 12 +++----
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |  4 +--
+ drivers/pinctrl/meson/pinctrl-meson.c         |  2 +-
+ drivers/pinctrl/mvebu/pinctrl-mvebu.c         |  4 +--
+ drivers/pinctrl/nomadik/pinctrl-nomadik.c     |  6 ++--
+ drivers/pinctrl/pinctrl-at91.c                |  8 ++---
+ drivers/pinctrl/pinctrl-lantiq.c              |  8 ++---
+ drivers/pinctrl/pinctrl-rockchip.c            |  8 ++---
+ drivers/pinctrl/pinctrl-rza1.c                |  8 ++---
+ drivers/pinctrl/pinctrl-single.c              | 32 +++++++++----------
+ drivers/pinctrl/pinctrl-st.c                  |  6 ++--
+ drivers/pinctrl/sirf/pinctrl-atlas7.c         |  4 +--
+ drivers/pinctrl/stm32/pinctrl-stm32.c         |  4 +--
+ drivers/pinctrl/sunxi/pinctrl-sunxi.c         |  8 ++---
+ drivers/pinctrl/ti/pinctrl-ti-iodelay.c       |  8 ++---
+ 17 files changed, 66 insertions(+), 69 deletions(-)
 
+diff --git a/drivers/pinctrl/berlin/berlin.c b/drivers/pinctrl/berlin/berlin.c
+index b5903fffb3d0..b17a03cf87be 100644
+--- a/drivers/pinctrl/berlin/berlin.c
++++ b/drivers/pinctrl/berlin/berlin.c
+@@ -64,16 +64,14 @@ static int berlin_pinctrl_dt_node_to_map(struct pinctrl_dev *pctrl_dev,
+ 	ret = of_property_read_string(node, "function", &function_name);
+ 	if (ret) {
+ 		dev_err(pctrl->dev,
+-			"missing function property in node %s\n",
+-			node->name);
++			"missing function property in node %pOFn\n", node);
+ 		return -EINVAL;
+ 	}
+ 
+ 	ngroups = of_property_count_strings(node, "groups");
+ 	if (ngroups < 0) {
+ 		dev_err(pctrl->dev,
+-			"missing groups property in node %s\n",
+-			node->name);
++			"missing groups property in node %pOFn\n", node);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx.c b/drivers/pinctrl/freescale/pinctrl-imx.c
+index b04edc22dad7..4e8cf0e357c6 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx.c
+@@ -69,8 +69,7 @@ static int imx_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	 */
+ 	grp = imx_pinctrl_find_group_by_name(pctldev, np->name);
+ 	if (!grp) {
+-		dev_err(ipctl->dev, "unable to find group for node %s\n",
+-			np->name);
++		dev_err(ipctl->dev, "unable to find group for node %pOFn\n", np);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -434,7 +433,7 @@ static int imx_pinctrl_parse_groups(struct device_node *np,
+ 	int i;
+ 	u32 config;
+ 
+-	dev_dbg(ipctl->dev, "group(%d): %s\n", index, np->name);
++	dev_dbg(ipctl->dev, "group(%d): %pOFn\n", index, np);
+ 
+ 	if (info->flags & SHARE_MUX_CONF_REG)
+ 		pin_size = FSL_PIN_SHARE_SIZE;
+@@ -544,7 +543,7 @@ static int imx_pinctrl_parse_functions(struct device_node *np,
+ 	struct group_desc *grp;
+ 	u32 i = 0;
+ 
+-	dev_dbg(pctl->dev, "parse function(%d): %s\n", index, np->name);
++	dev_dbg(pctl->dev, "parse function(%d): %pOFn\n", index, np);
+ 
+ 	func = pinmux_generic_get_function(pctl, index);
+ 	if (!func)
+diff --git a/drivers/pinctrl/freescale/pinctrl-imx1-core.c b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+index deb7870b3d1a..7e29e3fecdb2 100644
+--- a/drivers/pinctrl/freescale/pinctrl-imx1-core.c
++++ b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
+@@ -233,8 +233,8 @@ static int imx1_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	 */
+ 	grp = imx1_pinctrl_find_group_by_name(info, np->name);
+ 	if (!grp) {
+-		dev_err(info->dev, "unable to find group for node %s\n",
+-			np->name);
++		dev_err(info->dev, "unable to find group for node %pOFn\n",
++			np);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -466,7 +466,7 @@ static int imx1_pinctrl_parse_groups(struct device_node *np,
+ 	const __be32 *list;
+ 	int i;
+ 
+-	dev_dbg(info->dev, "group(%d): %s\n", index, np->name);
++	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
+ 
+ 	/* Initialise group */
+ 	grp->name = np->name;
+@@ -477,8 +477,8 @@ static int imx1_pinctrl_parse_groups(struct device_node *np,
+ 	list = of_get_property(np, "fsl,pins", &size);
+ 	/* we do not check return since it's safe node passed down */
+ 	if (!size || size % 12) {
+-		dev_notice(info->dev, "Not a valid fsl,pins property (%s)\n",
+-				np->name);
++		dev_notice(info->dev, "Not a valid fsl,pins property (%pOFn)\n",
++				np);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -513,7 +513,7 @@ static int imx1_pinctrl_parse_functions(struct device_node *np,
+ 	static u32 grp_index;
+ 	u32 i = 0;
+ 
+-	dev_dbg(info->dev, "parse function(%d): %s\n", index, np->name);
++	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
+ 
+ 	func = &info->functions[index];
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 16ff56f93501..071623873ca5 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -514,8 +514,8 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 
+ 	pins = of_find_property(node, "pinmux", NULL);
+ 	if (!pins) {
+-		dev_err(pctl->dev, "missing pins property in node %s .\n",
+-				node->name);
++		dev_err(pctl->dev, "missing pins property in node %pOFn .\n",
++				node);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/pinctrl/meson/pinctrl-meson.c b/drivers/pinctrl/meson/pinctrl-meson.c
+index 29a458da78db..9cb81aec4e3b 100644
+--- a/drivers/pinctrl/meson/pinctrl-meson.c
++++ b/drivers/pinctrl/meson/pinctrl-meson.c
+@@ -451,7 +451,7 @@ static struct regmap *meson_map_resource(struct meson_pinctrl *pc,
+ 
+ 	meson_regmap_config.max_register = resource_size(&res) - 4;
+ 	meson_regmap_config.name = devm_kasprintf(pc->dev, GFP_KERNEL,
+-						  "%s-%s", node->name,
++						  "%pOFn-%s", node,
+ 						  name);
+ 	if (!meson_regmap_config.name)
+ 		return ERR_PTR(-ENOMEM);
+diff --git a/drivers/pinctrl/mvebu/pinctrl-mvebu.c b/drivers/pinctrl/mvebu/pinctrl-mvebu.c
+index d7ec7119701b..7ee5f7970585 100644
+--- a/drivers/pinctrl/mvebu/pinctrl-mvebu.c
++++ b/drivers/pinctrl/mvebu/pinctrl-mvebu.c
+@@ -413,14 +413,14 @@ static int mvebu_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	ret = of_property_read_string(np, "marvell,function", &function);
+ 	if (ret) {
+ 		dev_err(pctl->dev,
+-			"missing marvell,function in node %s\n", np->name);
++			"missing marvell,function in node %pOFn\n", np);
+ 		return 0;
+ 	}
+ 
+ 	nmaps = of_property_count_strings(np, "marvell,pins");
+ 	if (nmaps < 0) {
+ 		dev_err(pctl->dev,
+-			"missing marvell,pins in node %s\n", np->name);
++			"missing marvell,pins in node %pOFn\n", np);
+ 		return 0;
+ 	}
+ 
+diff --git a/drivers/pinctrl/nomadik/pinctrl-nomadik.c b/drivers/pinctrl/nomadik/pinctrl-nomadik.c
+index f0e7a8c114b2..866db2706b8b 100644
+--- a/drivers/pinctrl/nomadik/pinctrl-nomadik.c
++++ b/drivers/pinctrl/nomadik/pinctrl-nomadik.c
+@@ -1051,7 +1051,7 @@ static struct nmk_gpio_chip *nmk_gpio_populate_chip(struct device_node *np,
+ 
+ 	gpio_pdev = of_find_device_by_node(np);
+ 	if (!gpio_pdev) {
+-		pr_err("populate \"%s\": device not found\n", np->name);
++		pr_err("populate \"%pOFn\": device not found\n", np);
+ 		return ERR_PTR(-ENODEV);
+ 	}
+ 	if (of_property_read_u32(np, "gpio-bank", &id)) {
+@@ -1904,8 +1904,8 @@ static int nmk_pinctrl_probe(struct platform_device *pdev)
+ 		gpio_np = of_parse_phandle(np, "nomadik-gpio-chips", i);
+ 		if (gpio_np) {
+ 			dev_info(&pdev->dev,
+-				 "populate NMK GPIO %d \"%s\"\n",
+-				 i, gpio_np->name);
++				 "populate NMK GPIO %d \"%pOFn\"\n",
++				 i, gpio_np);
+ 			nmk_chip = nmk_gpio_populate_chip(gpio_np, pdev);
+ 			if (IS_ERR(nmk_chip))
+ 				dev_err(&pdev->dev,
+diff --git a/drivers/pinctrl/pinctrl-at91.c b/drivers/pinctrl/pinctrl-at91.c
+index 50f0ec42c637..cfd8239f2727 100644
+--- a/drivers/pinctrl/pinctrl-at91.c
++++ b/drivers/pinctrl/pinctrl-at91.c
+@@ -263,8 +263,8 @@ static int at91_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	 */
+ 	grp = at91_pinctrl_find_group_by_name(info, np->name);
+ 	if (!grp) {
+-		dev_err(info->dev, "unable to find group for node %s\n",
+-			np->name);
++		dev_err(info->dev, "unable to find group for node %pOFn\n",
++			np);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1071,7 +1071,7 @@ static int at91_pinctrl_parse_groups(struct device_node *np,
+ 	const __be32 *list;
+ 	int i, j;
+ 
+-	dev_dbg(info->dev, "group(%d): %s\n", index, np->name);
++	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
+ 
+ 	/* Initialise group */
+ 	grp->name = np->name;
+@@ -1122,7 +1122,7 @@ static int at91_pinctrl_parse_functions(struct device_node *np,
+ 	static u32 grp_index;
+ 	u32 i = 0;
+ 
+-	dev_dbg(info->dev, "parse function(%d): %s\n", index, np->name);
++	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
+ 
+ 	func = &info->functions[index];
+ 
+diff --git a/drivers/pinctrl/pinctrl-lantiq.c b/drivers/pinctrl/pinctrl-lantiq.c
+index 81632af3a86a..22e80613e269 100644
+--- a/drivers/pinctrl/pinctrl-lantiq.c
++++ b/drivers/pinctrl/pinctrl-lantiq.c
+@@ -80,14 +80,14 @@ static void ltq_pinctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 	int ret, i;
+ 
+ 	if (!pins && !groups) {
+-		dev_err(pctldev->dev, "%s defines neither pins nor groups\n",
+-			np->name);
++		dev_err(pctldev->dev, "%pOFn defines neither pins nor groups\n",
++			np);
+ 		return;
+ 	}
+ 
+ 	if (pins && groups) {
+-		dev_err(pctldev->dev, "%s defines both pins and groups\n",
+-			np->name);
++		dev_err(pctldev->dev, "%pOFn defines both pins and groups\n",
++			np);
+ 		return;
+ 	}
+ 
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index f4a61429e06e..1fe72af3717b 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -501,8 +501,8 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	 */
+ 	grp = pinctrl_name_to_group(info, np->name);
+ 	if (!grp) {
+-		dev_err(info->dev, "unable to find group for node %s\n",
+-			np->name);
++		dev_err(info->dev, "unable to find group for node %pOFn\n",
++			np);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -2454,7 +2454,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+ 	int i, j;
+ 	int ret;
+ 
+-	dev_dbg(info->dev, "group(%d): %s\n", index, np->name);
++	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
+ 
+ 	/* Initialise group */
+ 	grp->name = np->name;
+@@ -2519,7 +2519,7 @@ static int rockchip_pinctrl_parse_functions(struct device_node *np,
+ 	static u32 grp_index;
+ 	u32 i = 0;
+ 
+-	dev_dbg(info->dev, "parse function(%d): %s\n", index, np->name);
++	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
+ 
+ 	func = &info->functions[index];
+ 
+diff --git a/drivers/pinctrl/pinctrl-rza1.c b/drivers/pinctrl/pinctrl-rza1.c
+index f76edf664539..042ede3b8ada 100644
+--- a/drivers/pinctrl/pinctrl-rza1.c
++++ b/drivers/pinctrl/pinctrl-rza1.c
+@@ -930,8 +930,8 @@ static int rza1_parse_pinmux_node(struct rza1_pinctrl *rza1_pctl,
+ 					      &npin_configs);
+ 	if (ret) {
+ 		dev_err(rza1_pctl->dev,
+-			"Unable to parse pin configuration options for %s\n",
+-			np->name);
++			"Unable to parse pin configuration options for %pOFn\n",
++			np);
+ 		return ret;
+ 	}
+ 
+@@ -1226,8 +1226,8 @@ static int rza1_parse_gpiochip(struct rza1_pinctrl *rza1_pctl,
+ 
+ 	*chip		= rza1_gpiochip_template;
+ 	chip->base	= -1;
+-	chip->label	= devm_kasprintf(rza1_pctl->dev, GFP_KERNEL, "%s",
+-					 np->name);
++	chip->label	= devm_kasprintf(rza1_pctl->dev, GFP_KERNEL, "%pOFn",
++					 np);
+ 	chip->ngpio	= of_args.args[2];
+ 	chip->of_node	= np;
+ 	chip->parent	= rza1_pctl->dev;
+diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
+index 7ec72ff2419a..1e0614daee9b 100644
+--- a/drivers/pinctrl/pinctrl-single.c
++++ b/drivers/pinctrl/pinctrl-single.c
+@@ -1022,14 +1022,14 @@ static int pcs_parse_one_pinctrl_entry(struct pcs_device *pcs,
+ 		vals[found].reg = pcs->base + offset;
+ 		vals[found].val = pinctrl_spec.args[1];
+ 
+-		dev_dbg(pcs->dev, "%s index: 0x%x value: 0x%x\n",
+-			pinctrl_spec.np->name, offset, pinctrl_spec.args[1]);
++		dev_dbg(pcs->dev, "%pOFn index: 0x%x value: 0x%x\n",
++			pinctrl_spec.np, offset, pinctrl_spec.args[1]);
+ 
+ 		pin = pcs_get_pin_by_offset(pcs, offset);
+ 		if (pin < 0) {
+ 			dev_err(pcs->dev,
+-				"could not add functions for %s %ux\n",
+-				np->name, offset);
++				"could not add functions for %pOFn %ux\n",
++				np, offset);
+ 			break;
+ 		}
+ 		pins[found++] = pin;
+@@ -1135,8 +1135,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+ 		val = pinctrl_spec.args[1];
+ 		mask = pinctrl_spec.args[2];
+ 
+-		dev_dbg(pcs->dev, "%s index: 0x%x value: 0x%x mask: 0x%x\n",
+-			pinctrl_spec.np->name, offset, val, mask);
++		dev_dbg(pcs->dev, "%pOFn index: 0x%x value: 0x%x mask: 0x%x\n",
++			pinctrl_spec.np, offset, val, mask);
+ 
+ 		/* Parse pins in each row from LSB */
+ 		while (mask) {
+@@ -1148,8 +1148,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+ 
+ 			if ((mask & mask_pos) == 0) {
+ 				dev_err(pcs->dev,
+-					"Invalid mask for %s at 0x%x\n",
+-					np->name, offset);
++					"Invalid mask for %pOFn at 0x%x\n",
++					np, offset);
+ 				break;
+ 			}
+ 
+@@ -1157,8 +1157,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+ 
+ 			if (submask != mask_pos) {
+ 				dev_warn(pcs->dev,
+-						"Invalid submask 0x%x for %s at 0x%x\n",
+-						submask, np->name, offset);
++						"Invalid submask 0x%x for %pOFn at 0x%x\n",
++						submask, np, offset);
+ 				continue;
+ 			}
+ 
+@@ -1169,8 +1169,8 @@ static int pcs_parse_bits_in_pinctrl_entry(struct pcs_device *pcs,
+ 			pin = pcs_get_pin_by_offset(pcs, offset);
+ 			if (pin < 0) {
+ 				dev_err(pcs->dev,
+-					"could not add functions for %s %ux\n",
+-					np->name, offset);
++					"could not add functions for %pOFn %ux\n",
++					np, offset);
+ 				break;
+ 			}
+ 			pins[found++] = pin + pin_num_from_lsb;
+@@ -1254,16 +1254,16 @@ static int pcs_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 		ret = pcs_parse_bits_in_pinctrl_entry(pcs, np_config, map,
+ 				num_maps, pgnames);
+ 		if (ret < 0) {
+-			dev_err(pcs->dev, "no pins entries for %s\n",
+-				np_config->name);
++			dev_err(pcs->dev, "no pins entries for %pOFn\n",
++				np_config);
+ 			goto free_pgnames;
+ 		}
+ 	} else {
+ 		ret = pcs_parse_one_pinctrl_entry(pcs, np_config, map,
+ 				num_maps, pgnames);
+ 		if (ret < 0) {
+-			dev_err(pcs->dev, "no pins entries for %s\n",
+-				np_config->name);
++			dev_err(pcs->dev, "no pins entries for %pOFn\n",
++				np_config);
+ 			goto free_pgnames;
+ 		}
+ 	}
+diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
+index 0966bb0bf71f..e66af93f2cbf 100644
+--- a/drivers/pinctrl/pinctrl-st.c
++++ b/drivers/pinctrl/pinctrl-st.c
+@@ -817,8 +817,8 @@ static int st_pctl_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 
+ 	grp = st_pctl_find_group_by_name(info, np->name);
+ 	if (!grp) {
+-		dev_err(info->dev, "unable to find group for node %s\n",
+-			np->name);
++		dev_err(info->dev, "unable to find group for node %pOFn\n",
++			np);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1184,7 +1184,7 @@ static int st_pctl_dt_parse_groups(struct device_node *np,
+ 		if (pp->length / sizeof(__be32) >= OF_GPIO_ARGS_MIN) {
+ 			npins++;
+ 		} else {
+-			pr_warn("Invalid st,pins in %s node\n", np->name);
++			pr_warn("Invalid st,pins in %pOFn node\n", np);
+ 			return -EINVAL;
+ 		}
+ 	}
+diff --git a/drivers/pinctrl/sirf/pinctrl-atlas7.c b/drivers/pinctrl/sirf/pinctrl-atlas7.c
+index 3abb028f6158..1d16df128b1a 100644
+--- a/drivers/pinctrl/sirf/pinctrl-atlas7.c
++++ b/drivers/pinctrl/sirf/pinctrl-atlas7.c
+@@ -6058,8 +6058,8 @@ static int atlas7_gpio_probe(struct platform_device *pdev)
+ 	ret = gpiochip_add_data(chip, a7gc);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+-			"%s: error in probe function with status %d\n",
+-			np->name, ret);
++			"%pOF: error in probe function with status %d\n",
++			np, ret);
+ 		goto failed;
+ 	}
+ 
+diff --git a/drivers/pinctrl/stm32/pinctrl-stm32.c b/drivers/pinctrl/stm32/pinctrl-stm32.c
+index a9bec6e6fdd1..0fbfcc9ea07c 100644
+--- a/drivers/pinctrl/stm32/pinctrl-stm32.c
++++ b/drivers/pinctrl/stm32/pinctrl-stm32.c
+@@ -416,8 +416,8 @@ static int stm32_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 
+ 	pins = of_find_property(node, "pinmux", NULL);
+ 	if (!pins) {
+-		dev_err(pctl->dev, "missing pins property in node %s .\n",
+-				node->name);
++		dev_err(pctl->dev, "missing pins property in node %pOFn .\n",
++				node);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/pinctrl/sunxi/pinctrl-sunxi.c b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+index 4d9bf9b3e9f3..3ccbe221e024 100644
+--- a/drivers/pinctrl/sunxi/pinctrl-sunxi.c
++++ b/drivers/pinctrl/sunxi/pinctrl-sunxi.c
+@@ -332,15 +332,15 @@ static int sunxi_pctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 
+ 	function = sunxi_pctrl_parse_function_prop(node);
+ 	if (!function) {
+-		dev_err(pctl->dev, "missing function property in node %s\n",
+-			node->name);
++		dev_err(pctl->dev, "missing function property in node %pOFn\n",
++			node);
+ 		return -EINVAL;
+ 	}
+ 
+ 	pin_prop = sunxi_pctrl_find_pins_prop(node, &npins);
+ 	if (!pin_prop) {
+-		dev_err(pctl->dev, "missing pins property in node %s\n",
+-			node->name);
++		dev_err(pctl->dev, "missing pins property in node %pOFn\n",
++			node);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
+index 8782c348ebe9..a4bc506a01a3 100644
+--- a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
++++ b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
+@@ -452,8 +452,8 @@ static int ti_iodelay_node_iterator(struct pinctrl_dev *pctldev,
+ 
+ 	pin = ti_iodelay_offset_to_pin(iod, cfg[pin_index].offset);
+ 	if (pin < 0) {
+-		dev_err(iod->dev, "could not add functions for %s %ux\n",
+-			np->name, cfg[pin_index].offset);
++		dev_err(iod->dev, "could not add functions for %pOFn %ux\n",
++			np, cfg[pin_index].offset);
+ 		return -ENODEV;
+ 	}
+ 	pins[pin_index] = pin;
+@@ -461,8 +461,8 @@ static int ti_iodelay_node_iterator(struct pinctrl_dev *pctldev,
+ 	pd = &iod->pa[pin];
+ 	pd->drv_data = &cfg[pin_index];
+ 
+-	dev_dbg(iod->dev, "%s offset=%x a_delay = %d g_delay = %d\n",
+-		np->name, cfg[pin_index].offset, cfg[pin_index].a_delay,
++	dev_dbg(iod->dev, "%pOFn offset=%x a_delay = %d g_delay = %d\n",
++		np, cfg[pin_index].offset, cfg[pin_index].a_delay,
+ 		cfg[pin_index].g_delay);
+ 
+ 	return 0;
 -- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+2.17.1
