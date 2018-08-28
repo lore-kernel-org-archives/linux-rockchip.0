@@ -1,25 +1,26 @@
-From: Tony Lindgren <tony@atomide.com>
-Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of
- device_node.name
-Date: Tue, 28 Aug 2018 08:34:30 -0700
-Message-ID: <20180828153430.GM7523@atomide.com>
-References: <20180828015252.28511-1-robh@kernel.org>
- <20180828015252.28511-40-robh@kernel.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 3/5] dt-bindings: mfd: rk808: Add binding information
+ for RK809 and RK817.
+Date: Tue, 28 Aug 2018 17:40:09 -0500
+Message-ID: <20180828224009.GA25643@bogus>
+References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
+ <1535081441-20718-4-git-send-email-tony.xie@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
+In-Reply-To: <1535081441-20718-4-git-send-email-tony.xie@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <hei>
+Cc: heiko@sntech.de, broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-* Rob Herring <robh@kernel.org> [180828 01:59]:
-> In preparation to remove the node name pointer from struct device_node,
-> convert printf users to use the %pOFn format specifier.
-...
->  drivers/pinctrl/pinctrl-single.c              | 32 +++++++++----------
->  drivers/pinctrl/ti/pinctrl-ti-iodelay.c       |  8 ++---
+On Fri, 24 Aug 2018 11:30:39 +0800, Tony Xie wrote:
+> Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
+> 
+> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/rk808.txt | 56 +++++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+> 
 
-Acked-by: Tony Lindgren <tony@atomide.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
