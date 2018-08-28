@@ -1,100 +1,25 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v5 2/2] drm/rockchip: Add support for Rockchip Soc RGB
- output interface
-Date: Tue, 28 Aug 2018 20:20:13 +0800
-Message-ID: <c203e409-d2e4-e534-7855-27c3503a78b1@rock-chips.com>
-References: <1535443954-38806-1-git-send-email-hjc@rock-chips.com>
- <1535443954-38806-3-git-send-email-hjc@rock-chips.com>
- <2164089.bDJbLuhFGU@phil>
+From: Tony Lindgren <tony@atomide.com>
+Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of
+ device_node.name
+Date: Tue, 28 Aug 2018 08:34:30 -0700
+Message-ID: <20180828153430.GM7523@atomide.com>
+References: <20180828015252.28511-1-robh@kernel.org>
+ <20180828015252.28511-40-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <2164089.bDJbLuhFGU@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Stefan Agner <stefan@agner.ch>, Pengutronix Kernel Team <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <hei>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgaGlla28sCgrlnKggMjAxOC84LzI4IDE2OjMxLCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
-SGkgU2FuZHksCj4gCj4gQW0gRGllbnN0YWcsIDI4LiBBdWd1c3QgMjAxOCwgMTA6MTI6MzQgQ0VT
-VCBzY2hyaWViIFNhbmR5IEh1YW5nOgo+PiBTb21lIFJvY2tjaGlwIENSVENzLCBsaWtlIHJ2MTEw
-OCBhbmQgcHgzMCwgY2FuIGRpcmVjdGx5IG91dHB1dCBwYXJhbGxlbAo+PiBhbmQgc2VyaWFsIFJH
-QiBkYXRhIHRvIHBhbmVsIG9yIGNvbnZlcnNpb24gY2hpcCwgc28gd2UgYWRkIHRoaXMgZHJpdmVy
-Cj4+IHRvIHByb2JlIGVuY29kZXIgYW5kIGNvbm5lY3Rvci4KPj4KPj4gU2lnbmVkLW9mZi1ieTog
-U2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPj4gUmV2aWV3ZWQtYnk6IFNlYW4gUGF1
-bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+PiBSZXZpZXdlZC1ieTogTWFyayBZYW8gPG1hcmsu
-eWFvQHJvY2stY2hpcHMuY29tPgo+PiBMaW5rOiBodHRwczovL3BhdGNod29yay5mcmVlZGVza3Rv
-cC5vcmcvcGF0Y2gvbXNnaWQvMTUwOTUyMjg1MS0xMjgxODEtMS1naXQtc2VuZC1lbWFpbC1oamNA
-cm9jay1jaGlwcy5jb20KPiAKPiBUaGlzIGRvZXMgbm90IHJlYWxseSBhZGRyZXNzLCBSb2IncyBj
-b25jZXJuIGFib3V0IG5vdCBiZWluZyBhbiBhY3R1YWwKPiBoYXJkd2FyZSBibG9jayByZWxhdGVk
-IHRvIHRoZSBkZXZpY2V0cmVlIG5vZGUgeW91IGFyZSB1c2luZy4KPiAKPiBJIHNlZSB5b3VyIHJl
-cGx5IHRvIG15IG1haWwsIGJ1dCBJIGd1ZXNzIHlvdSBkaWRuJ3Qgc2VlIHRoZSBhbHRlcm5hdGl2
-ZQo+IGFwcHJvYWNoIEkgZGVzY3JpYmVkIGEgYml0IGJlbG93IGluIHRoYXQgbWFpbD8KPiAKPiBB
-Y3R1YWwgKHVuZmluaXNoZWQpIGNvZGUgaW5jbHVkZWQgYmVsb3cuICgyIHBhdGNoZXMpCj4gCj4g
-SGVpa28KPiAKPiAKeWVzLGkgZGlkbid0IHNlZSB0aGUgYmVoaW5kIGRlc2NyaWJlZDooCkFzIHlv
-dSBzYWlkIGRldmljZXRyZWUgZGVzY3JpYmVzIGhhcmR3YXJlIGJsb2NrcywKSSB0aGluayB5b3Ug
-aW1wbGVtZW50IGRyaXZlciBmb3IgcmdiIG91dHB1dCBpbnRlcmZhY2UgaXMgbW9yZSAKcmVhc29u
-YWJsZSwgIGkgd2lsbCBhZGp1c3QgdGhpcyBkcml2ZXIgcmVmZXIgdG8geW91ciBpbXBsZW1lbnRh
-dGlvbiwgCnRoYW5rczopCgoKPiAKPiAtLS0tIDg8IC0tLS0tCj4gRnJvbTogSGVpa28gU3R1ZWJu
-ZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBEYXRlOiBTYXQsIDI1IEF1ZyAyMDE4IDE5OjA1OjIxICsw
-MjAwCj4gU3ViamVjdDogW1BBVENIIDEvMl0gZHJtL3RvY2tjaGlwOiBhZGQgZnVuY3Rpb24gdG8g
-Y2hlY2sgaWYgZW5kcG9pbnQgaXMgYQo+ICAgc3ViZHJpdmVyCj4gCj4gVG8gYmUgYWJsZSB0byBo
-YXZlIGJvdGggaW50ZXJuYWwgc3ViZHJpdmVycyBhbmQgZXh0ZXJuYWwgYnJpZGdlCj4gZHJpdmVy
-cyBhcyBvdXRwdXQgZW5kcG9pbnRzIG9mIHZvcHMsIGFkZCBhIGZ1bmN0aW9uIHRvIGJlIGFibGUK
-PiB0byBkaXN0aW5ndWlzaCB0aGVzZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5l
-ciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuYyB8IDI3ICsrKysrKysrKysrKysrKysrKysrKwo+ICAgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAxICsKPiAgIDIgZmlsZXMgY2hh
-bmdlZCwgMjggaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuYwo+IGluZGV4IDFkOWM0YTkyMDFjOC4uZDE4ZjdmODVhYTIzIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gQEAgLTI0
-LDYgKzI0LDcgQEAKPiAgICNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+Cj4gICAjaW5jbHVk
-ZSA8bGludXgvbW9kdWxlLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvb2ZfZ3JhcGguaD4KPiArI2lu
-Y2x1ZGUgPGxpbnV4L29mX3BsYXRmb3JtLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50
-Lmg+Cj4gICAjaW5jbHVkZSA8bGludXgvY29uc29sZS5oPgo+ICAgI2luY2x1ZGUgPGxpbnV4L2lv
-bW11Lmg+Cj4gQEAgLTI2Nyw2ICsyNjgsMzIgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1f
-b3BzIHJvY2tjaGlwX2RybV9wbV9vcHMgPSB7Cj4gICBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2Ry
-aXZlciAqcm9ja2NoaXBfc3ViX2RyaXZlcnNbTUFYX1JPQ0tDSElQX1NVQl9EUklWRVJTXTsKPiAg
-IHN0YXRpYyBpbnQgbnVtX3JvY2tjaGlwX3N1Yl9kcml2ZXJzOwo+ICAgCj4gKy8qCj4gKyAqIGNo
-ZWNrIGlmIGEgdm9wIG91dHB1dC1lbmRwb2ludCBpcyBhIHN1YmRyaXZlciBvciBicmlkZ2UuCj4g
-KyAqLwo+ICtib29sIHJvY2tjaGlwX2RybV9lbmRwb2ludF9pc19zdWJkcml2ZXIoc3RydWN0IGRl
-dmljZV9ub2RlICplcCkKPiArewo+ICsJc3RydWN0IGRldmljZV9ub2RlICpub2RlID0gb2ZfZ3Jh
-cGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChlcCk7Cj4gKwlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNl
-ICpwZGV2Owo+ICsJaW50IGk7Cj4gKwo+ICsJaWYgKCFub2RlKQo+ICsJCXJldHVybiBmYWxzZTsK
-PiArCj4gKwlwZGV2ID0gb2ZfZmluZF9kZXZpY2VfYnlfbm9kZShub2RlKTsKPiArCWlmICghcGRl
-dikKPiArCQlyZXR1cm4gZmFsc2U7Cj4gKwo+ICsJZm9yIChpID0gMDsgaSA8IG51bV9yb2NrY2hp
-cF9zdWJfZHJpdmVyczsgaSsrKSB7Cj4gKwkJc3RydWN0IGRldmljZV9kcml2ZXIgKmRydiA9IHBk
-ZXYtPmRldi5kcml2ZXI7Cj4gKwo+ICsJCWlmIChyb2NrY2hpcF9zdWJfZHJpdmVyc1tpXSA9PSB0
-b19wbGF0Zm9ybV9kcml2ZXIoZHJ2KSkKPiArCQkJcmV0dXJuIHRydWU7Cj4gKwl9Cj4gKwo+ICsJ
-cmV0dXJuIGZhbHNlOwo+ICt9Cj4gKwo+ICAgc3RhdGljIGludCBjb21wYXJlX2RldihzdHJ1Y3Qg
-ZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4gICB7Cj4gICAJcmV0dXJuIGRldiA9PSAoc3RydWN0
-IGRldmljZSAqKWRhdGE7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2Rydi5oCj4gaW5kZXggZDY3YWQwYTNjZjM2Li4zMDViNDg1OGM1MjIgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBAQCAtNjQsNiArNjQsNyBA
-QCB2b2lkIHJvY2tjaGlwX2RybV9kbWFfZGV0YWNoX2RldmljZShzdHJ1Y3QgZHJtX2RldmljZSAq
-ZHJtX2RldiwKPiAgIAkJCQkgICAgc3RydWN0IGRldmljZSAqZGV2KTsKPiAgIGludCByb2NrY2hp
-cF9kcm1fd2FpdF92YWN0X2VuZChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHVuc2lnbmVkIGludCBt
-c3RpbWVvdXQpOwo+ICAgCj4gK2Jvb2wgcm9ja2NoaXBfZHJtX2VuZHBvaW50X2lzX3N1YmRyaXZl
-cihzdHJ1Y3QgZGV2aWNlX25vZGUgKmVwKTsKPiAgIGV4dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJp
-dmVyIGNkbl9kcF9kcml2ZXI7Cj4gICBleHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19o
-ZG1pX3JvY2tjaGlwX3BsdGZtX2RyaXZlcjsKPiAgIGV4dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJp
-dmVyIGR3X21pcGlfZHNpX2RyaXZlcjsKPiAKPiAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+
-IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4gCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+* Rob Herring <robh@kernel.org> [180828 01:59]:
+> In preparation to remove the node name pointer from struct device_node,
+> convert printf users to use the %pOFn format specifier.
+...
+>  drivers/pinctrl/pinctrl-single.c              | 32 +++++++++----------
+>  drivers/pinctrl/ti/pinctrl-ti-iodelay.c       |  8 ++---
+
+Acked-by: Tony Lindgren <tony@atomide.com>
