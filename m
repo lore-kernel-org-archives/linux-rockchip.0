@@ -1,64 +1,229 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop: fix some register define error for px30
-Date: Tue, 28 Aug 2018 16:32:30 +0800
-Message-ID: <1535445150-40296-1-git-send-email-hjc@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] phy: rockchip-usb: add usb-uart setup for rk3188
+Date: Tue, 28 Aug 2018 10:56:10 +0200
+Message-ID: <20180828085610.28904-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hjc@rock-chips.com, heiko@sntech.de, David Airlie <airlied@linux.ie>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: kishon@ti.com
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-MS4gaW50ZXJydXB0IHJlZ2lzdGVyIGRlZmluZSBlcnJvciBsZWFkIHRvIGVuYWJsZSBpbnRlcnJ1
-cHQgZmFpbGVkOwoyLiBweDMwIHVuc3VwcG9ydCBoZG1pIG91dHB1dDsKMy4gdGhlcmUgYXJlIHNv
-bWUgaGFyZHdhcmUgZGVzaWduZWQgYnVnLCB3ZSBtdXN0IHN3YXAgd2luMiBnYXRlIGFuZAogICBl
-bmFibGUgb2Zmc2V0LCBvdGhlcndpc2Ugd2lsbCBhcHBlYXIgdm9wIGlvbW11IHBhZ2VmYXVsdC4K
-ClNpZ25lZC1vZmYtYnk6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Ci0tLQogZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8IDE0ICsrKysrKy0tLS0t
-LS0tCiAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCmluZGV4IGQ4MjRjYTYu
-LjdmMjk5MTMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92
-b3BfcmVnLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcu
-YwpAQCAtMTkwLDEwICsxOTAsMTAgQEAgc3RhdGljIGNvbnN0IGludCBweDMwX3ZvcF9pbnRyc1td
-ID0gewogc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfaW50ciBweDMwX2ludHIgPSB7CiAJLmludHJz
-ID0gcHgzMF92b3BfaW50cnMsCiAJLm5pbnRycyA9IEFSUkFZX1NJWkUocHgzMF92b3BfaW50cnMp
-LAotCS5saW5lX2ZsYWdfbnVtWzBdID0gVk9QX1JFRyhQWDMwX0xJTkVfRkxBRywgMHhmZmYsIDEy
-KSwKLQkuc3RhdHVzID0gVk9QX1JFR19TWU5DKFBYMzBfSU5UUl9TVEFUVVMsIDB4ZiwgMCksCi0J
-LmVuYWJsZSA9IFZPUF9SRUdfU1lOQyhQWDMwX0lOVFJfRU4sIDB4ZiwgNCksCi0JLmNsZWFyID0g
-Vk9QX1JFR19TWU5DKFBYMzBfSU5UUl9DTEVBUiwgMHhmLCA4KSwKKwkubGluZV9mbGFnX251bVsw
-XSA9IFZPUF9SRUcoUFgzMF9MSU5FX0ZMQUcsIDB4ZmZmLCAwKSwKKwkuc3RhdHVzID0gVk9QX1JF
-R19NQVNLX1NZTkMoUFgzMF9JTlRSX1NUQVRVUywgMHhmZmZmLCAwKSwKKwkuZW5hYmxlID0gVk9Q
-X1JFR19NQVNLX1NZTkMoUFgzMF9JTlRSX0VOLCAweGZmZmYsIDApLAorCS5jbGVhciA9IFZPUF9S
-RUdfTUFTS19TWU5DKFBYMzBfSU5UUl9DTEVBUiwgMHhmZmZmLCAwKSwKIH07CiAKIHN0YXRpYyBj
-b25zdCBzdHJ1Y3Qgdm9wX2NvbW1vbiBweDMwX2NvbW1vbiA9IHsKQEAgLTIxMiwxMCArMjEyLDgg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfbW9kZXNldCBweDMwX21vZGVzZXQgPSB7CiAKIHN0
-YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX291dHB1dCBweDMwX291dHB1dCA9IHsKIAkucmdiX3Bpbl9w
-b2wgPSBWT1BfUkVHKFBYMzBfRFNQX0NUUkwwLCAweGYsIDEpLAotCS5oZG1pX3Bpbl9wb2wgPSBW
-T1BfUkVHKFBYMzBfRFNQX0NUUkwwLCAweGYsIDkpLAogCS5taXBpX3Bpbl9wb2wgPSBWT1BfUkVH
-KFBYMzBfRFNQX0NUUkwwLCAweGYsIDI1KSwKIAkucmdiX2VuID0gVk9QX1JFRyhQWDMwX0RTUF9D
-VFJMMCwgMHgxLCAwKSwKLQkuaGRtaV9lbiA9IFZPUF9SRUcoUFgzMF9EU1BfQ1RSTDAsIDB4MSwg
-OCksCiAJLm1pcGlfZW4gPSBWT1BfUkVHKFBYMzBfRFNQX0NUUkwwLCAweDEsIDI0KSwKIH07CiAK
-QEAgLTI1Nyw4ICsyNTUsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF93aW5fcGh5IHB4MzBf
-d2luMV9kYXRhID0gewogc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSBweDMwX3dpbjJf
-ZGF0YSA9IHsKIAkuZGF0YV9mb3JtYXRzID0gZm9ybWF0c193aW5fbGl0ZSwKIAkubmZvcm1hdHMg
-PSBBUlJBWV9TSVpFKGZvcm1hdHNfd2luX2xpdGUpLAotCS5nYXRlID0gVk9QX1JFRyhQWDMwX1dJ
-TjJfQ1RSTDAsIDB4MSwgMCksCi0JLmVuYWJsZSA9IFZPUF9SRUcoUFgzMF9XSU4yX0NUUkwwLCAw
-eDEsIDQpLAorCS5nYXRlID0gVk9QX1JFRyhQWDMwX1dJTjJfQ1RSTDAsIDB4MSwgNCksCisJLmVu
-YWJsZSA9IFZPUF9SRUcoUFgzMF9XSU4yX0NUUkwwLCAweDEsIDApLAogCS5mb3JtYXQgPSBWT1Bf
-UkVHKFBYMzBfV0lOMl9DVFJMMCwgMHgzLCA1KSwKIAkucmJfc3dhcCA9IFZPUF9SRUcoUFgzMF9X
-SU4yX0NUUkwwLCAweDEsIDIwKSwKIAkuZHNwX2luZm8gPSBWT1BfUkVHKFBYMzBfV0lOMl9EU1Bf
-SU5GTzAsIDB4MGZmZjBmZmYsIDApLAotLSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The rk3188 also supports bringing the uart2 out through
+the usb dm+dp pins, so add the necessary setup for it.
+
+rk3066 does not seem to support usb-uart functionality and this
+particular phy was only used on older Rockchip socs, so this leaves
+room for a bit of cleanup as well, as there most likely won't be new
+additions in the driver.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/phy/rockchip/phy-rockchip-usb.c | 141 ++++++++++++++++--------
+ 1 file changed, 95 insertions(+), 46 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
+index 3378eeb7a562..456fa703e4f0 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usb.c
++++ b/drivers/phy/rockchip/phy-rockchip-usb.c
+@@ -36,7 +36,22 @@ static int enable_usb_uart;
+ #define HIWORD_UPDATE(val, mask) \
+ 		((val) | (mask) << 16)
+ 
+-#define UOC_CON0_SIDDQ BIT(13)
++#define UOC_CON0					0x00
++#define UOC_CON0_SIDDQ					BIT(13)
++#define UOC_CON0_DISABLE				BIT(4)
++#define UOC_CON0_COMMON_ON_N				BIT(0)
++
++#define UOC_CON2					0x08
++#define UOC_CON2_SOFT_CON_SEL				BIT(2)
++
++#define UOC_CON3					0x0c
++/* bits present on rk3188 and rk3288 phys */
++#define UOC_CON3_UTMI_TERMSEL_FULLSPEED			BIT(5)
++#define UOC_CON3_UTMI_XCVRSEELCT_FSTRANSC		(1 << 3)
++#define UOC_CON3_UTMI_XCVRSEELCT_MASK			(3 << 3)
++#define UOC_CON3_UTMI_OPMODE_NODRIVING			(1 << 1)
++#define UOC_CON3_UTMI_OPMODE_MASK			(3 << 1)
++#define UOC_CON3_UTMI_SUSPENDN				BIT(0)
+ 
+ struct rockchip_usb_phys {
+ 	int reg;
+@@ -46,7 +61,8 @@ struct rockchip_usb_phys {
+ struct rockchip_usb_phy_base;
+ struct rockchip_usb_phy_pdata {
+ 	struct rockchip_usb_phys *phys;
+-	int (*init_usb_uart)(struct regmap *grf);
++	int (*init_usb_uart)(struct regmap *grf,
++			     const struct rockchip_usb_phy_pdata *pdata);
+ 	int usb_uart_phy;
+ };
+ 
+@@ -313,28 +329,88 @@ static const struct rockchip_usb_phy_pdata rk3066a_pdata = {
+ 	},
+ };
+ 
++static int __init rockchip_init_usb_uart_common(struct regmap *grf,
++				const struct rockchip_usb_phy_pdata *pdata)
++{
++	int regoffs = pdata->phys[pdata->usb_uart_phy].reg;
++	int ret;
++	u32 val;
++
++	/*
++	 * COMMON_ON and DISABLE settings are described in the TRM,
++	 * but were not present in the original code.
++	 * Also disable the analog phy components to save power.
++	 */
++	val = HIWORD_UPDATE(UOC_CON0_COMMON_ON_N
++				| UOC_CON0_DISABLE
++				| UOC_CON0_SIDDQ,
++			    UOC_CON0_COMMON_ON_N
++				| UOC_CON0_DISABLE
++				| UOC_CON0_SIDDQ);
++	ret = regmap_write(grf, regoffs + UOC_CON0, val);
++	if (ret)
++		return ret;
++
++	val = HIWORD_UPDATE(UOC_CON2_SOFT_CON_SEL,
++			    UOC_CON2_SOFT_CON_SEL);
++	ret = regmap_write(grf, regoffs + UOC_CON2, val);
++	if (ret)
++		return ret;
++
++	val = HIWORD_UPDATE(UOC_CON3_UTMI_OPMODE_NODRIVING
++				| UOC_CON3_UTMI_XCVRSEELCT_FSTRANSC
++				| UOC_CON3_UTMI_TERMSEL_FULLSPEED,
++			    UOC_CON3_UTMI_SUSPENDN
++				| UOC_CON3_UTMI_OPMODE_MASK
++				| UOC_CON3_UTMI_XCVRSEELCT_MASK
++				| UOC_CON3_UTMI_TERMSEL_FULLSPEED);
++	ret = regmap_write(grf, UOC_CON3, val);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
++#define RK3188_UOC0_CON0				0x10c
++#define RK3188_UOC0_CON0_BYPASSSEL			BIT(9)
++#define RK3188_UOC0_CON0_BYPASSDMEN			BIT(8)
++
++/*
++ * Enable the bypass of uart2 data through the otg usb phy.
++ * See description of rk3288-variant for details.
++ */
++static int __init rk3188_init_usb_uart(struct regmap *grf,
++				const struct rockchip_usb_phy_pdata *pdata)
++{
++	u32 val;
++	int ret;
++
++	ret = rockchip_init_usb_uart_common(grf, pdata);
++	if (ret)
++		return ret;
++
++	val = HIWORD_UPDATE(RK3188_UOC0_CON0_BYPASSSEL
++				| RK3188_UOC0_CON0_BYPASSDMEN,
++			    RK3188_UOC0_CON0_BYPASSSEL
++				| RK3188_UOC0_CON0_BYPASSDMEN);
++	ret = regmap_write(grf, RK3188_UOC0_CON0, val);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
+ static const struct rockchip_usb_phy_pdata rk3188_pdata = {
+ 	.phys = (struct rockchip_usb_phys[]){
+ 		{ .reg = 0x10c, .pll_name = "sclk_otgphy0_480m" },
+ 		{ .reg = 0x11c, .pll_name = "sclk_otgphy1_480m" },
+ 		{ /* sentinel */ }
+ 	},
++	.init_usb_uart = rk3188_init_usb_uart,
++	.usb_uart_phy = 0,
+ };
+ 
+-#define RK3288_UOC0_CON0				0x320
+-#define RK3288_UOC0_CON0_COMMON_ON_N			BIT(0)
+-#define RK3288_UOC0_CON0_DISABLE			BIT(4)
+-
+-#define RK3288_UOC0_CON2				0x328
+-#define RK3288_UOC0_CON2_SOFT_CON_SEL			BIT(2)
+-
+ #define RK3288_UOC0_CON3				0x32c
+-#define RK3288_UOC0_CON3_UTMI_SUSPENDN			BIT(0)
+-#define RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING		(1 << 1)
+-#define RK3288_UOC0_CON3_UTMI_OPMODE_MASK		(3 << 1)
+-#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC	(1 << 3)
+-#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK		(3 << 3)
+-#define RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED		BIT(5)
+ #define RK3288_UOC0_CON3_BYPASSDMEN			BIT(6)
+ #define RK3288_UOC0_CON3_BYPASSSEL			BIT(7)
+ 
+@@ -353,40 +429,13 @@ static const struct rockchip_usb_phy_pdata rk3188_pdata = {
+  *
+  * The actual code in the vendor kernel does some things differently.
+  */
+-static int __init rk3288_init_usb_uart(struct regmap *grf)
++static int __init rk3288_init_usb_uart(struct regmap *grf,
++				const struct rockchip_usb_phy_pdata *pdata)
+ {
+ 	u32 val;
+ 	int ret;
+ 
+-	/*
+-	 * COMMON_ON and DISABLE settings are described in the TRM,
+-	 * but were not present in the original code.
+-	 * Also disable the analog phy components to save power.
+-	 */
+-	val = HIWORD_UPDATE(RK3288_UOC0_CON0_COMMON_ON_N
+-				| RK3288_UOC0_CON0_DISABLE
+-				| UOC_CON0_SIDDQ,
+-			    RK3288_UOC0_CON0_COMMON_ON_N
+-				| RK3288_UOC0_CON0_DISABLE
+-				| UOC_CON0_SIDDQ);
+-	ret = regmap_write(grf, RK3288_UOC0_CON0, val);
+-	if (ret)
+-		return ret;
+-
+-	val = HIWORD_UPDATE(RK3288_UOC0_CON2_SOFT_CON_SEL,
+-			    RK3288_UOC0_CON2_SOFT_CON_SEL);
+-	ret = regmap_write(grf, RK3288_UOC0_CON2, val);
+-	if (ret)
+-		return ret;
+-
+-	val = HIWORD_UPDATE(RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING
+-				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC
+-				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED,
+-			    RK3288_UOC0_CON3_UTMI_SUSPENDN
+-				| RK3288_UOC0_CON3_UTMI_OPMODE_MASK
+-				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK
+-				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED);
+-	ret = regmap_write(grf, RK3288_UOC0_CON3, val);
++	ret = rockchip_init_usb_uart_common(grf, pdata);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -516,7 +565,7 @@ static int __init rockchip_init_usb_uart(void)
+ 		return PTR_ERR(grf);
+ 	}
+ 
+-	ret = data->init_usb_uart(grf);
++	ret = data->init_usb_uart(grf, data);
+ 	if (ret) {
+ 		pr_err("%s: could not init usb_uart, %d\n", __func__, ret);
+ 		enable_usb_uart = 0;
+-- 
+2.17.0
