@@ -1,229 +1,95 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] phy: rockchip-usb: add usb-uart setup for rk3188
-Date: Tue, 28 Aug 2018 10:56:10 +0200
-Message-ID: <20180828085610.28904-1-heiko@sntech.de>
+From: Damian Kos <dkos@cadence.com>
+Subject: [PATCH v3 0/5] drm: add support for Cadence MHDP DPI/DP bridge.
+Date: Tue, 28 Aug 2018 11:24:43 +0100
+Message-ID: <1535451894-2518-1-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: kishon@ti.com
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Damian Kos <dkos@cadence.com>, Quentin Schulz <quentin.schulz@bootlin.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: pgaj@cadence.com, ltyrala@cadence.com, stelford@cadence.com, jartur@cadence.com, piotrs@cadence.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3188 also supports bringing the uart2 out through
-the usb dm+dp pins, so add the necessary setup for it.
+Hello!
 
-rk3066 does not seem to support usb-uart functionality and this
-particular phy was only used on older Rockchip socs, so this leaves
-room for a bit of cleanup as well, as there most likely won't be new
-additions in the driver.
+This is the series of patches that will add support for the Cadence's DPI/DP
+bridge. Please note that this is a preliminary version of the driver and there
+will be more patches in the future with updates, fixes and improvements.
+Please keep that in mind when looking at FIXME/TODO/XXX comments.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/phy/rockchip/phy-rockchip-usb.c | 141 ++++++++++++++++--------
- 1 file changed, 95 insertions(+), 46 deletions(-)
+Initially, MHDP driver was developed as a DRM bridge driver and was planed to
+be placed in drivers/gpu/drm/bridge/mhdp.c.  However, there was already
+a driver for Cadence's DP controller developed by RockChip, but that driver
+uses the different DRM framework and looks like a part of a bigger system.
+Both controllers (including firmware) are quite different internally
+(MST/FEC/DSC support, link training done by driver, additional commands, IRQ's
+etc.) but they have similar register map, except for Framer/Streamer (which is
+noticeably different), so they appear similar.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-index 3378eeb7a562..456fa703e4f0 100644
---- a/drivers/phy/rockchip/phy-rockchip-usb.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-@@ -36,7 +36,22 @@ static int enable_usb_uart;
- #define HIWORD_UPDATE(val, mask) \
- 		((val) | (mask) << 16)
- 
--#define UOC_CON0_SIDDQ BIT(13)
-+#define UOC_CON0					0x00
-+#define UOC_CON0_SIDDQ					BIT(13)
-+#define UOC_CON0_DISABLE				BIT(4)
-+#define UOC_CON0_COMMON_ON_N				BIT(0)
-+
-+#define UOC_CON2					0x08
-+#define UOC_CON2_SOFT_CON_SEL				BIT(2)
-+
-+#define UOC_CON3					0x0c
-+/* bits present on rk3188 and rk3288 phys */
-+#define UOC_CON3_UTMI_TERMSEL_FULLSPEED			BIT(5)
-+#define UOC_CON3_UTMI_XCVRSEELCT_FSTRANSC		(1 << 3)
-+#define UOC_CON3_UTMI_XCVRSEELCT_MASK			(3 << 3)
-+#define UOC_CON3_UTMI_OPMODE_NODRIVING			(1 << 1)
-+#define UOC_CON3_UTMI_OPMODE_MASK			(3 << 1)
-+#define UOC_CON3_UTMI_SUSPENDN				BIT(0)
- 
- struct rockchip_usb_phys {
- 	int reg;
-@@ -46,7 +61,8 @@ struct rockchip_usb_phys {
- struct rockchip_usb_phy_base;
- struct rockchip_usb_phy_pdata {
- 	struct rockchip_usb_phys *phys;
--	int (*init_usb_uart)(struct regmap *grf);
-+	int (*init_usb_uart)(struct regmap *grf,
-+			     const struct rockchip_usb_phy_pdata *pdata);
- 	int usb_uart_phy;
- };
- 
-@@ -313,28 +329,88 @@ static const struct rockchip_usb_phy_pdata rk3066a_pdata = {
- 	},
- };
- 
-+static int __init rockchip_init_usb_uart_common(struct regmap *grf,
-+				const struct rockchip_usb_phy_pdata *pdata)
-+{
-+	int regoffs = pdata->phys[pdata->usb_uart_phy].reg;
-+	int ret;
-+	u32 val;
-+
-+	/*
-+	 * COMMON_ON and DISABLE settings are described in the TRM,
-+	 * but were not present in the original code.
-+	 * Also disable the analog phy components to save power.
-+	 */
-+	val = HIWORD_UPDATE(UOC_CON0_COMMON_ON_N
-+				| UOC_CON0_DISABLE
-+				| UOC_CON0_SIDDQ,
-+			    UOC_CON0_COMMON_ON_N
-+				| UOC_CON0_DISABLE
-+				| UOC_CON0_SIDDQ);
-+	ret = regmap_write(grf, regoffs + UOC_CON0, val);
-+	if (ret)
-+		return ret;
-+
-+	val = HIWORD_UPDATE(UOC_CON2_SOFT_CON_SEL,
-+			    UOC_CON2_SOFT_CON_SEL);
-+	ret = regmap_write(grf, regoffs + UOC_CON2, val);
-+	if (ret)
-+		return ret;
-+
-+	val = HIWORD_UPDATE(UOC_CON3_UTMI_OPMODE_NODRIVING
-+				| UOC_CON3_UTMI_XCVRSEELCT_FSTRANSC
-+				| UOC_CON3_UTMI_TERMSEL_FULLSPEED,
-+			    UOC_CON3_UTMI_SUSPENDN
-+				| UOC_CON3_UTMI_OPMODE_MASK
-+				| UOC_CON3_UTMI_XCVRSEELCT_MASK
-+				| UOC_CON3_UTMI_TERMSEL_FULLSPEED);
-+	ret = regmap_write(grf, UOC_CON3, val);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+#define RK3188_UOC0_CON0				0x10c
-+#define RK3188_UOC0_CON0_BYPASSSEL			BIT(9)
-+#define RK3188_UOC0_CON0_BYPASSDMEN			BIT(8)
-+
-+/*
-+ * Enable the bypass of uart2 data through the otg usb phy.
-+ * See description of rk3288-variant for details.
-+ */
-+static int __init rk3188_init_usb_uart(struct regmap *grf,
-+				const struct rockchip_usb_phy_pdata *pdata)
-+{
-+	u32 val;
-+	int ret;
-+
-+	ret = rockchip_init_usb_uart_common(grf, pdata);
-+	if (ret)
-+		return ret;
-+
-+	val = HIWORD_UPDATE(RK3188_UOC0_CON0_BYPASSSEL
-+				| RK3188_UOC0_CON0_BYPASSDMEN,
-+			    RK3188_UOC0_CON0_BYPASSSEL
-+				| RK3188_UOC0_CON0_BYPASSDMEN);
-+	ret = regmap_write(grf, RK3188_UOC0_CON0, val);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
- static const struct rockchip_usb_phy_pdata rk3188_pdata = {
- 	.phys = (struct rockchip_usb_phys[]){
- 		{ .reg = 0x10c, .pll_name = "sclk_otgphy0_480m" },
- 		{ .reg = 0x11c, .pll_name = "sclk_otgphy1_480m" },
- 		{ /* sentinel */ }
- 	},
-+	.init_usb_uart = rk3188_init_usb_uart,
-+	.usb_uart_phy = 0,
- };
- 
--#define RK3288_UOC0_CON0				0x320
--#define RK3288_UOC0_CON0_COMMON_ON_N			BIT(0)
--#define RK3288_UOC0_CON0_DISABLE			BIT(4)
--
--#define RK3288_UOC0_CON2				0x328
--#define RK3288_UOC0_CON2_SOFT_CON_SEL			BIT(2)
--
- #define RK3288_UOC0_CON3				0x32c
--#define RK3288_UOC0_CON3_UTMI_SUSPENDN			BIT(0)
--#define RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING		(1 << 1)
--#define RK3288_UOC0_CON3_UTMI_OPMODE_MASK		(3 << 1)
--#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC	(1 << 3)
--#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK		(3 << 3)
--#define RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED		BIT(5)
- #define RK3288_UOC0_CON3_BYPASSDMEN			BIT(6)
- #define RK3288_UOC0_CON3_BYPASSSEL			BIT(7)
- 
-@@ -353,40 +429,13 @@ static const struct rockchip_usb_phy_pdata rk3188_pdata = {
-  *
-  * The actual code in the vendor kernel does some things differently.
-  */
--static int __init rk3288_init_usb_uart(struct regmap *grf)
-+static int __init rk3288_init_usb_uart(struct regmap *grf,
-+				const struct rockchip_usb_phy_pdata *pdata)
- {
- 	u32 val;
- 	int ret;
- 
--	/*
--	 * COMMON_ON and DISABLE settings are described in the TRM,
--	 * but were not present in the original code.
--	 * Also disable the analog phy components to save power.
--	 */
--	val = HIWORD_UPDATE(RK3288_UOC0_CON0_COMMON_ON_N
--				| RK3288_UOC0_CON0_DISABLE
--				| UOC_CON0_SIDDQ,
--			    RK3288_UOC0_CON0_COMMON_ON_N
--				| RK3288_UOC0_CON0_DISABLE
--				| UOC_CON0_SIDDQ);
--	ret = regmap_write(grf, RK3288_UOC0_CON0, val);
--	if (ret)
--		return ret;
--
--	val = HIWORD_UPDATE(RK3288_UOC0_CON2_SOFT_CON_SEL,
--			    RK3288_UOC0_CON2_SOFT_CON_SEL);
--	ret = regmap_write(grf, RK3288_UOC0_CON2, val);
--	if (ret)
--		return ret;
--
--	val = HIWORD_UPDATE(RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING
--				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC
--				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED,
--			    RK3288_UOC0_CON3_UTMI_SUSPENDN
--				| RK3288_UOC0_CON3_UTMI_OPMODE_MASK
--				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK
--				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED);
--	ret = regmap_write(grf, RK3288_UOC0_CON3, val);
-+	ret = rockchip_init_usb_uart_common(grf, pdata);
- 	if (ret)
- 		return ret;
- 
-@@ -516,7 +565,7 @@ static int __init rockchip_init_usb_uart(void)
- 		return PTR_ERR(grf);
- 	}
- 
--	ret = data->init_usb_uart(grf);
-+	ret = data->init_usb_uart(grf, data);
- 	if (ret) {
- 		pr_err("%s: could not init usb_uart, %d\n", __func__, ret);
- 		enable_usb_uart = 0;
+The following patches contain:
+- Moving common code to drivers/gpu/drm/bridge/cdns-mhdp-common.* and
+  modifying it a bit (mostly new prefixes for functions and data types) so it
+  can be used by two, higher level, drivers.
+- Modifying existing RockChip's DP driver to use the common code after changes
+  made to it (use the new cdns_mhdp_device structure and new function names).
+- Modifying DRM helpers a bit. Some are required for new driver, some are
+  updates from DP 1.2 to 1.3 or 1.4.
+- Adding documentation for device tree bindings.
+- Adding preliminary Cadence DPI/DP bridge driver.
+
+Some of the things that will be added later on include (but are not limited
+to):
+- Support for Cadence SD0801 PHY (PHY's driver should be on the way by now)
+- MST support
+- DSC support
+- FEC support
+- HDCP support
+
+Changes in v2:
+- Added actual description of what the patch contains, what is it for and
+  what's going on here in general.
+- New structure. Now we have one common low level driver + two high level
+  drivers - one for RockChip with minimum changes and one, more general, for
+  Cadence.
+- Dropped some changes made to DRM helpers.
+- Updated the device tree bindings document.
+
+Changes in v3:
+- Corrected dt-bindings document
+- Enabled some clocks at startup (since FW doesn't do that anymore).
+- Changed Firmware file name to match the file on Linux Firmware repo.
+- Added SST audio support
+- Made common functions (in cdns-mhdp-common.*) public.
+
+Damian Kos (1):
+  drm/rockchip: prepare common code for cdns and rk dpi/dp driver
+
+Quentin Schulz (4):
+  drm/dp: fix link probing for devices supporting DP 1.4+
+  drm/dp: make dp_link_status and dp_get_lane_status usable from outside
+    of the core
+  dt-bindings: drm/bridge Document Cadence MHDP DPI/DP bridge bindings
+  drm/bridge: add preliminary driver for cadence dpi/dp bridge
+
+ .../bindings/display/bridge/cdns,mhdp.txt     |   43 +
+ drivers/gpu/drm/bridge/Kconfig                |    9 +
+ drivers/gpu/drm/bridge/Makefile               |    3 +
+ drivers/gpu/drm/bridge/cdns-mhdp-common.c     | 1108 ++++++++++++++
+ .../cdns-mhdp-common.h}                       |  135 +-
+ drivers/gpu/drm/bridge/cdns-mhdp.c            | 1308 +++++++++++++++++
+ drivers/gpu/drm/drm_dp_helper.c               |   50 +-
+ drivers/gpu/drm/rockchip/Kconfig              |    1 +
+ drivers/gpu/drm/rockchip/Makefile             |    4 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c        |  234 +--
+ drivers/gpu/drm/rockchip/cdn-dp-core.h        |   42 +-
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c         |  969 ------------
+ include/drm/drm_dp_helper.h                   |    5 +-
+ 13 files changed, 2756 insertions(+), 1155 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
+ create mode 100644 drivers/gpu/drm/bridge/cdns-mhdp-common.c
+ rename drivers/gpu/drm/{rockchip/cdn-dp-reg.h => bridge/cdns-mhdp-common.h} (81%)
+ create mode 100644 drivers/gpu/drm/bridge/cdns-mhdp.c
+ delete mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
+
 -- 
-2.17.0
+2.17.1
