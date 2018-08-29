@@ -1,73 +1,46 @@
-From: Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [PATCH] pinctrl: Convert to using %pOFn instead of device_node.name
-Date: Wed, 29 Aug 2018 10:15:20 +0800
-Message-ID: <CAGb2v64Hy-RQiXBhYrcy7FtNnqRUOhwGNZc8jko=FVrDDUH_hQ@mail.gmail.com>
-References: <20180828015252.28511-1-robh@kernel.org> <20180828015252.28511-40-robh@kernel.org>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: [PATCH v6 0/3]  Add support rockchip RGB output interface
+Date: Wed, 29 Aug 2018 10:38:58 +0800
+Message-ID: <1535510338-32543-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180828015252.28511-40-robh@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, aisheng.dong@nxp.com, Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, stefan@agner.ch, Sascha Hauer <kernel@pengutronix.de>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, gregory.clement@bootlin.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, alexandre.belloni@bootlin.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, Haojian
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: hjc@rock-chips.com, heiko@sntech.de, seanpaul@chromium.org
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 28, 2018 at 9:55 AM Rob Herring <robh@kernel.org> wrote:
->
-> In preparation to remove the node name pointer from struct device_node,
-> convert printf users to use the %pOFn format specifier.
->
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Dong Aisheng <aisheng.dong@nxp.com>
-> Cc: Fabio Estevam <festevam@gmail.com>
-> Cc: Shawn Guo <shawnguo@kernel.org>
-> Cc: Stefan Agner <stefan@agner.ch>
-> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-> Cc: Sean Wang <sean.wang@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Carlo Caione <carlo@caione.org>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Jason Cooper <jason@lakedaemon.net>
-> Cc: Andrew Lunn <andrew@lunn.ch>
-> Cc: Gregory Clement <gregory.clement@bootlin.com>
-> Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
-> Cc: Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>
-> Cc: Nicolas Ferre <nicolas.ferre@microchip.com>
-> Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Tony Lindgren <tony@atomide.com>
-> Cc: Haojian Zhuang <haojian.zhuang@linaro.org>
-> Cc: Patrice Chotard <patrice.chotard@st.com>
-> Cc: Barry Song <baohua@kernel.org>
-> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-> Cc: Alexandre Torgue <alexandre.torgue@st.com>
-> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
-> Cc: Chen-Yu Tsai <wens@csie.org>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-omap@vger.kernel.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/pinctrl/berlin/berlin.c               |  6 ++--
->  drivers/pinctrl/freescale/pinctrl-imx.c       |  7 ++--
->  drivers/pinctrl/freescale/pinctrl-imx1-core.c | 12 +++----
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |  4 +--
->  drivers/pinctrl/meson/pinctrl-meson.c         |  2 +-
->  drivers/pinctrl/mvebu/pinctrl-mvebu.c         |  4 +--
->  drivers/pinctrl/nomadik/pinctrl-nomadik.c     |  6 ++--
->  drivers/pinctrl/pinctrl-at91.c                |  8 ++---
->  drivers/pinctrl/pinctrl-lantiq.c              |  8 ++---
->  drivers/pinctrl/pinctrl-rockchip.c            |  8 ++---
->  drivers/pinctrl/pinctrl-rza1.c                |  8 ++---
->  drivers/pinctrl/pinctrl-single.c              | 32 +++++++++----------
->  drivers/pinctrl/pinctrl-st.c                  |  6 ++--
->  drivers/pinctrl/sirf/pinctrl-atlas7.c         |  4 +--
->  drivers/pinctrl/stm32/pinctrl-stm32.c         |  4 +--
->  drivers/pinctrl/sunxi/pinctrl-sunxi.c         |  8 ++---
-
-For sunxi:
-
-Acked-by: Chen-Yu Tsai <wens@csie.org>
+VGhpcyBwYXRjaGVzIGFkZCBzdXBwb3J0IHJvY2tjaGlwIFJHQiBvdXRwdXQsIFNvbWUgUm9ja2No
+aXAgQ1JUQ3MsIGxpa2UKcnYxMTA4IGFuZCBweDMwIGNhbiBkaXJlY3RseSBvdXRwdXQgcGFyYWxs
+ZWwgYW5kIHNlcmlhbCBSR0IgZGF0YSB0byBwYW5lbApvciB0byBjb252ZXJzaW9uIGNoaXAuClNv
+IGFkZCBhIGZlYXR1cmUtYml0IGZvciB2b3BzIHRvIG1hcmsgdGhlIGFiaWxpdHkgZm9yIHRoZXNl
+IGRpcmVjdCBvdXRwdXRzCmFuZCBhZGQgYW4gaW50ZXJuYWwgZW5jb2RlciBpbiB0aGF0IGNhc2Us
+IHRoYXQgY2FuIGF0dGFjaCB0byBicmlkZ2UgY2hpcHMKb3IgcGFuZWxzLgoKSGVpa28gU3R1ZWJu
+ZXIgKDEpOgogIGRybS90b2NrY2hpcDogYWRkIGZ1bmN0aW9uIHRvIGNoZWNrIGlmIGVuZHBvaW50
+IGlzIGEgc3ViZHJpdmVyCgpTYW5keSBIdWFuZyAoMik6CiAgZHJtL3JvY2tjaGlwOiBBZGQgc3Vw
+cG9ydCBmb3IgUm9ja2NoaXAgU29jIFJHQiBvdXRwdXQgaW50ZXJmYWNlCiAgZHJtL3JvY2tjaGlw
+OiBBZGQgZGlyZWN0bHkgb3V0cHV0IHJnYiBmZWF0dXJlIGZvciBweDMwCgogZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL0tjb25maWcgICAgICAgICAgICB8ICAxMSArKwogZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgIDI5ICsrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwgICAyICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgMTYgKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5oIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9yZ2IuYyAgICAgfCAxNzMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKwogZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oICAgICB8ICAyMCArKysrCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgICAyICsKIDkgZmlsZXMgY2hh
+bmdlZCwgMjU1IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmgKCi0tIAoyLjcuNAoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
