@@ -1,26 +1,27 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 3/5] dt-bindings: mfd: rk808: Add binding information
- for RK809 and RK817.
-Date: Tue, 28 Aug 2018 17:40:09 -0500
-Message-ID: <20180828224009.GA25643@bogus>
-References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
- <1535081441-20718-4-git-send-email-tony.xie@rock-chips.com>
+Subject: Re: [PATCH v3 4/5] dt-bindings: drm/bridge Document Cadence MHDP
+ DPI/DP bridge bindings
+Date: Tue, 28 Aug 2018 19:28:19 -0500
+Message-ID: <20180829002819.GA12330@bogus>
+References: <1535451894-2518-1-git-send-email-dkos@cadence.com>
+ <1535451894-2518-5-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1535081441-20718-4-git-send-email-tony.xie@rock-chips.com>
+In-Reply-To: <1535451894-2518-5-git-send-email-dkos@cadence.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: heiko@sntech.de, broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
+Cc: David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Damian Kos <dkos@cadence.com>, Quentin Schulz <quentin.schulz@bootlin.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, pgaj@cadence.com, ltyrala@cadence.com, stelford@cadence.com, jartur@cadence.com, piotrs@cadence.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 24 Aug 2018 11:30:39 +0800, Tony Xie wrote:
-> Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
+On Tue, 28 Aug 2018 11:24:47 +0100, Damian Kos wrote:
+> From: Quentin Schulz <quentin.schulz@bootlin.com>
 > 
-> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+> Signed-off-by: Damian Kos <dkos@cadence.com>
 > ---
->  Documentation/devicetree/bindings/mfd/rk808.txt | 56 +++++++++++++++++++++++++
->  1 file changed, 56 insertions(+)
+>  .../bindings/display/bridge/cdns,mhdp.txt     | 43 +++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
