@@ -1,46 +1,60 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH v6 0/3]  Add support rockchip RGB output interface
-Date: Wed, 29 Aug 2018 10:38:58 +0800
-Message-ID: <1535510338-32543-1-git-send-email-hjc@rock-chips.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v3 6/7] media: Add controls for JPEG quantization tables
+Date: Tue, 28 Aug 2018 23:50:36 -0300
+Message-ID: <d55bf57ed63ba82524af1dcae3201a513cec9f48.camel@collabora.com>
+References: <20180822165937.8700-1-ezequiel@collabora.com>
+ <20180822165937.8700-7-ezequiel@collabora.com>
+ <3a92082b201776bfed0f68facc30577cb7d2a5c1.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hjc@rock-chips.com, heiko@sntech.de, seanpaul@chromium.org
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3a92082b201776bfed0f68facc30577cb7d2a5c1.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBwYXRjaGVzIGFkZCBzdXBwb3J0IHJvY2tjaGlwIFJHQiBvdXRwdXQsIFNvbWUgUm9ja2No
-aXAgQ1JUQ3MsIGxpa2UKcnYxMTA4IGFuZCBweDMwIGNhbiBkaXJlY3RseSBvdXRwdXQgcGFyYWxs
-ZWwgYW5kIHNlcmlhbCBSR0IgZGF0YSB0byBwYW5lbApvciB0byBjb252ZXJzaW9uIGNoaXAuClNv
-IGFkZCBhIGZlYXR1cmUtYml0IGZvciB2b3BzIHRvIG1hcmsgdGhlIGFiaWxpdHkgZm9yIHRoZXNl
-IGRpcmVjdCBvdXRwdXRzCmFuZCBhZGQgYW4gaW50ZXJuYWwgZW5jb2RlciBpbiB0aGF0IGNhc2Us
-IHRoYXQgY2FuIGF0dGFjaCB0byBicmlkZ2UgY2hpcHMKb3IgcGFuZWxzLgoKSGVpa28gU3R1ZWJu
-ZXIgKDEpOgogIGRybS90b2NrY2hpcDogYWRkIGZ1bmN0aW9uIHRvIGNoZWNrIGlmIGVuZHBvaW50
-IGlzIGEgc3ViZHJpdmVyCgpTYW5keSBIdWFuZyAoMik6CiAgZHJtL3JvY2tjaGlwOiBBZGQgc3Vw
-cG9ydCBmb3IgUm9ja2NoaXAgU29jIFJHQiBvdXRwdXQgaW50ZXJmYWNlCiAgZHJtL3JvY2tjaGlw
-OiBBZGQgZGlyZWN0bHkgb3V0cHV0IHJnYiBmZWF0dXJlIGZvciBweDMwCgogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL0tjb25maWcgICAgICAgICAgICB8ICAxMSArKwogZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgIDI5ICsrKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwgICAyICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgMTYgKysrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5oIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9yZ2IuYyAgICAgfCAxNzMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKwogZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oICAgICB8ICAyMCArKysrCiBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIHwgICAyICsKIDkgZmlsZXMgY2hh
-bmdlZCwgMjU1IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmgKCi0tIAoyLjcuNAoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Mon, 2018-08-27 at 09:47 +0200, Paul Kocialkowski wrote:
+> Hi,
+> 
+> On Wed, 2018-08-22 at 13:59 -0300, Ezequiel Garcia wrote:
+> > From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > 
+> > Add V4L2_CID_JPEG_LUMA/CHROMA_QUANTIZATION controls to allow userspace
+> > configure the JPEG quantization tables.
+> 
+> How about having a single control for quantization?
+> 
+> In MPEG-2/H.264/H.265, we have a single control exposed as a structure,
+> which contains the tables for both luma and chroma. In the case of JPEG,
+> it's not that big a deal, but for advanced video formats, it would be
+> too much hassle to have one control per table.
+> 
+> In order to keep the interface consistent, I think it'd be best to merge
+> both matrices into a single control.
+> 
+> What do you think?
+> 
+
+I think it makes a lot of sense. I don't see the benefit in having luma
+and chroma separated, and consistency is good.
+
+I guess the more consistent solution would be to expose a compound
+control, similar to the video quantization one.
+
+struct v4l2_ctrl_jpeg_quantization {
+       __u8    luma_quantization_matrix[64];
+       __u8    chroma_quantization_matrix[64];
+};
+
+Thanks!
+Eze
