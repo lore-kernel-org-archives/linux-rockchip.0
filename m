@@ -1,57 +1,62 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 0/3] Add support rockchip RGB output interface
-Date: Thu, 30 Aug 2018 23:12:04 +0200
-Message-ID: <20180830211207.10480-1-heiko@sntech.de>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] iommu: rockchip: Drop verbose prints in the interrupt handler
+Date: Thu, 30 Aug 2018 19:28:32 -0300
+Message-ID: <20180830222832.16766-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, seanpaul@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBwYXRjaGVzIGFkZCBzdXBwb3J0IHJvY2tjaGlwIFJHQiBvdXRwdXQsIFNvbWUgUm9ja2No
-aXAgQ1JUQ3MsIGxpa2UKcnYxMTA4IGFuZCBweDMwIGNhbiBkaXJlY3RseSBvdXRwdXQgcGFyYWxs
-ZWwgYW5kIHNlcmlhbCBSR0IgZGF0YSB0byBwYW5lbApvciB0byBjb252ZXJzaW9uIGNoaXAuClNv
-IGFkZCBhIGZlYXR1cmUtYml0IGZvciB2b3BzIHRvIG1hcmsgdGhlIGFiaWxpdHkgZm9yIHRoZXNl
-IGRpcmVjdCBvdXRwdXRzCmFuZCBhZGQgYW4gaW50ZXJuYWwgZW5jb2RlciBpbiB0aGF0IGNhc2Us
-IHRoYXQgY2FuIGF0dGFjaCB0byBicmlkZ2UgY2hpcHMKb3IgcGFuZWxzLgoKCkhpIFNhbmR5LAoK
-d2hpbGUgcmV2aWV3aW5nIG15IG93biBjb2RlIGluIHBhdGNoMSwgSSBmb3VuZCB0aGF0IGl0IHdh
-cyBtaXNzaW5nCmNvcnJlY3QgcHV0IGNhbGxzIGZvciBub2RlIGFuZCBwZGV2IGFuZCBhbHNvIG1h
-ZGUgaXQgYmVoYXZlIGJldHRlcgppZiBubyBkZXZpY2UgaXMgcHJlc2VudC4KCldoaWxlIHdlIGRv
-bid0IG5lZWQgdGhhdCByaWdodCBub3csIGl0IG1ha2VzIGl0IHBvc3NpYmxlIHRvCmRpc3Rpbmd1
-aXNoIGJldHdlZW4gc3ViZHJpdmVyLCBleHRlcm5hbCBicmlkZ2Ugb3Igbm8gZGV2aWNlIGxhdGVy
-Cm9uIGlmIG5lZWRlZC4KCkkndmUgYWxzbyB1cGRhdGVkIHRoZSBkb2N1bWVudGF0aW9uIG9mIHRo
-ZSBmdW5jdGlvbiBhIGJpdCwgc28gdGhhdApwZW9wbGUgbG9va2luZyBhdCBpdCBjYW4gZ3Jhc3Ag
-aXQgaG9wZWZ1bGx5IGVhc2llciA6LSkKCkFuZCBmaW5hbGx5IEkndmUgZHJvcHBlZCB0aGUgUmV2
-aWV3IHRhZyBmcm9tIE1hcmsuIEhlIGlzbid0IGF0ClJvY2tjaGlwIGZvciBhIHdoaWxlIG5vdyBh
-bmQgdGhlIGRyaXZlciBkaWQgY2hhbmdlIG92ZXIgdGltZSBhIGJpdC4KClNvIGlmIHlvdSBoYXZl
-IHRpbWUsIHBsZWFzZSB0YWtlIGEgZmluYWwgbG9vayBhdCBpdC4KClRoYW5rcwpIZWlrbwoKCkhl
-aWtvIFN0dWVibmVyICgxKToKICBkcm0vcm9ja2NoaXA6IGFkZCBmdW5jdGlvbiB0byBjaGVjayBp
-ZiBlbmRwb2ludCBpcyBhIHN1YmRyaXZlcgoKU2FuZHkgSHVhbmcgKDIpOgogIGRybS9yb2NrY2hp
-cDogQWRkIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFNvYyBSR0Igb3V0cHV0IGludGVyZmFjZQogIGRy
-bS9yb2NrY2hpcDogQWRkIGRpcmVjdGx5IG91dHB1dCByZ2IgZmVhdHVyZSBmb3IgcHgzMAoKIGRy
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgMTEgKysKIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8ICA0OCArKysrKysKIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgIDEgKwogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICAxNiArKwogZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCB8ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfcmdiLmMgICAgIHwgMTczICsrKysrKysrKysrKysrKysrKysrCiBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmggICAgIHwgIDIwICsrKwogZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8ICAgMiArCiA5IGZpbGVzIGNo
-YW5nZWQsIDI3MyBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oCgotLSAKMi4xNy4wCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Printing verbosely via WARN macros and friends in interrupt handlers
+is strongly discouraged. Drop them and use proper ratelimited
+prints.
+
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/iommu/rockchip-iommu.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 054cd2c8e9c8..21bb9a30bc64 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -523,11 +523,13 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
+ 	irqreturn_t ret = IRQ_NONE;
+ 	int i;
+ 
+-	if (WARN_ON(!pm_runtime_get_if_in_use(iommu->dev)))
+-		return 0;
++	if (!pm_runtime_get_if_in_use(iommu->dev))
++		return ret;
+ 
+-	if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
++	if (clk_bulk_enable(iommu->num_clocks, iommu->clocks)) {
++		dev_err_ratelimited(iommu->dev, "couldn't enable clocks\n");
+ 		goto out;
++	}
+ 
+ 	for (i = 0; i < iommu->num_mmu; i++) {
+ 		int_status = rk_iommu_read(iommu->bases[i], RK_MMU_INT_STATUS);
+@@ -544,7 +546,7 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
+ 			flags = (status & RK_MMU_STATUS_PAGE_FAULT_IS_WRITE) ?
+ 					IOMMU_FAULT_WRITE : IOMMU_FAULT_READ;
+ 
+-			dev_err(iommu->dev, "Page fault at %pad of type %s\n",
++			dev_err_ratelimited(iommu->dev, "Page fault at %pad of type %s\n",
+ 				&iova,
+ 				(flags == IOMMU_FAULT_WRITE) ? "write" : "read");
+ 
+-- 
+2.18.0
