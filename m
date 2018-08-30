@@ -1,74 +1,45 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: add rk3188 lcd controller nodes
-Date: Thu, 30 Aug 2018 14:22:32 +0200
-Message-ID: <2119603.JzqsNBunkW@phil>
-References: <20180830111134.2098-1-heiko@sntech.de>
- <42ff42a7-ebd8-e717-af3d-a18de5e4d05c@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <42ff42a7-ebd8-e717-af3d-a18de5e4d05c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v8 3/3] drm/rockchip: Add directly output rgb feature for px30
+Date: Thu, 30 Aug 2018 23:12:07 +0200
+Message-ID: <20180830211207.10480-4-heiko@sntech.de>
+References: <20180830211207.10480-1-heiko@sntech.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180830211207.10480-1-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: hjc@rock-chips.com
+Cc: seanpaul@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2FuZHksCgpBbSBEb25uZXJzdGFnLCAzMC4gQXVndXN0IDIwMTgsIDEzOjU5OjM1IENFU1Qg
-c2NocmllYiBTYW5keSBIdWFuZzoKPiBIaSBoZWlrbywKPiAKPiDlnKggMjAxOC84LzMwIDE5OjEx
-LCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4gPiBBZGQgdGhlIGNvcmUgZGlzcGxheSBzdWJzeXN0
-ZW0gYW5kIHZvcCBub2RlcyB0byByazMxODguCj4gPiBWb3AwIGhhcyBhIGZ1bGx5IGRlZGljYXRl
-ZCBzZXQgb2YgcGlucyBhbmQgb25seSB2b3AxIG5lZWRzIHRvCj4gPiBkbyBwaW5jdHJsIHRvIGhh
-dmUgZGlzcGxheSBvdXRwdXQsIHNvIGFsc28gYWRkIHRoZSBuZWNlc3NhcnkKPiA+IHBpbmN0cmwg
-ZW50cmllcyBmb3IgaXQuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxo
-ZWlrb0BzbnRlY2guZGU+Cj4gPiAtLS0KPiA+ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMTg4LmR0
-c2kgfCA4NCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gICAxIGZpbGUg
-Y2hhbmdlZCwgODQgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0v
-Ym9vdC9kdHMvcmszMTg4LmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yazMxODguZHRzaQo+ID4g
-aW5kZXggYWExMjNmOTNmMTgxLi5mZjYwN2YxMWY1YjAgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2Fy
-bS9ib290L2R0cy9yazMxODguZHRzaQo+ID4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMTg4
-LmR0c2kKPiA+IEBAIC01Niw2ICs1NiwxMSBAQAo+ID4gICAJCX07Cj4gPiAgIAl9Owo+ID4gICAK
-PiA+ICsJZGlzcGxheS1zdWJzeXN0ZW0gewo+ID4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxk
-aXNwbGF5LXN1YnN5c3RlbSI7Cj4gPiArCQlwb3J0cyA9IDwmdm9wMF9vdXQ+LCA8JnZvcDFfb3V0
-PjsKPiA+ICsJfTsKPiA+ICsKPiA+ICAgCXNyYW06IHNyYW1AMTAwODAwMDAgewo+ID4gICAJCWNv
-bXBhdGlibGUgPSAibW1pby1zcmFtIjsKPiA+ICAgCQlyZWcgPSA8MHgxMDA4MDAwMCAweDgwMDA+
-Owo+ID4gQEAgLTY5LDYgKzc0LDQwIEBACj4gPiAgIAkJfTsKPiA+ICAgCX07Cj4gPiAgIAo+ID4g
-Kwl2b3AwOiB2b3BAMTAxMGMwMDAgewo+ID4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMx
-ODgtdm9wIjsKPiA+ICsJCXJlZyA9IDwweDEwMTBjMDAwIDB4MTAwMD47Cj4gPiArCQlpbnRlcnJ1
-cHRzID0gPEdJQ19TUEkgMTMgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gPiArCQljbG9ja3MgPSA8
-JmNydSBBQ0xLX0xDREMwPiwgPCZjcnUgRENMS19MQ0RDMD4sIDwmY3J1IEhDTEtfTENEQzA+Owo+
-ID4gKwkJY2xvY2stbmFtZXMgPSAiYWNsa192b3AiLCAiZGNsa192b3AiLCAiaGNsa192b3AiOwo+
-ID4gKwkJcmVzZXRzID0gPCZjcnUgU1JTVF9MQ0RDMF9BWEk+LCA8JmNydSBTUlNUX0xDREMwX0FI
-Qj4sIDwmY3J1IFNSU1RfTENEQzBfRENMSz47Cj4gPiArCQlyZXNldC1uYW1lcyA9ICJheGkiLCAi
-YWhiIiwgImRjbGsiOwo+ID4gKwkJc3RhdHVzID0gImRpc2FibGVkIjsKPiA+ICsKPiA+ICsJCXZv
-cDBfb3V0OiBwb3J0IHsKPiA+ICsJCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiA+ICsJCQkjc2l6
-ZS1jZWxscyA9IDwwPjsKPiA+ICsJCX07Cj4gPiArCX07Cj4gPiArCj4gPiArCXZvcDE6IHZvcEAx
-MDEwZTAwMCB7Cj4gPiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzE4OC12b3AiOwo+ID4g
-KwkJcmVnID0gPDB4MTAxMGUwMDAgMHgxMDAwPjsKPiA+ICsJCWludGVycnVwdHMgPSA8R0lDX1NQ
-SSAxNCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiA+ICsJCWNsb2NrcyA9IDwmY3J1IEFDTEtfTENE
-QzE+LCA8JmNydSBEQ0xLX0xDREMxPiwgPCZjcnUgSENMS19MQ0RDMT47Cj4gPiArCQljbG9jay1u
-YW1lcyA9ICJhY2xrX3ZvcCIsICJkY2xrX3ZvcCIsICJoY2xrX3ZvcCI7Cj4gPiArCQlwaW5jdHJs
-LW5hbWVzID0gImRlZmF1bHQiOwo+ID4gKwkJcGluY3RybC0wID0gPCZsY2RjMV9kY2xrICZsY2Rj
-MV9kZW4gJmxjZGMxX2hzeW5jICZsY2RjMV92c3luYyAmbGNkYzFfcmdiMjQ+Owo+IFNvbWUgcHJv
-ZHVjdCBtYXliZSB1c2Ugdm9wMCBmb3IgZGlzcGxheSwgdGhpcyBpbyBtYXliZSB1c2VkIGZvciBv
-dGhlciAKPiBmdW5jdGlvbi4gU28gaSB0aGluayBwaW5jcnRsIGRlZmF1bHQgc3RhdGUgc2hvdWxk
-IGJlIG1vdmVkIGZyb20gaGVyZSBhbmQgCj4gZGVmaW5lIGF0IGR0cyBmaWxlLgoKRm9yIHRoZSBy
-azMxODggd2Ugc2hvdWxkIGJlIGZpbmUgdGhlbi4gSS5lLiB0aGUgcmszMTg4IG9ubHkgaGFzIHRo
-ZSByZ2IKb3V0cHV0IGFuZCBubyBlbmNvZGVycyBvZiBpdHMgb3duLiBTbyBhdCBhbnkgdGltZSB2
-b3AxIGlzIHVzZWQgaXQgd2lsbApuZWVkIHRoZSBwaW5jdHJsIGVudHJpZXMuCgpJdHMgZGVmYXVs
-dCBzdGF0ZSBpcyAiZGlzYWJsZWQiLCBhbmQgcGluY3RybCBzZXR0aW5ncyB3aWxsIG9ubHkgYmUg
-dXNlZCBpZgp0aGUgbm9kZSBnZXRzIGVuYWJsZWQgaW4gYSBib2FyZCBmaWxlLgoKRm9yIG90aGVy
-IHNvY3MgbGlrZSB0aGUgcHgzMCBhbmQgcmszMDY2IHdoaWNoIG1peCByZ2IgYW5kIGhkbWkgb3Ig
-c28KSSBkZWZpbml0bHkgYWdyZWUgdGhhdCBwaW5jdHJsIHNob3VsZCBiZSBzZXQgaW4gYm9hcmQg
-ZmlsZXMgOi0pIC4KCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+From: Sandy Huang <hjc@rock-chips.com>
+
+Add this feature bit indicate px30 vop can directly output
+parallel or serial rgb data.
+
+Signed-off-by: Sandy Huang <hjc@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 7f29913824ce..09910d3b01ce 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -276,6 +276,7 @@ static const struct vop_win_data px30_vop_big_win_data[] = {
+ 
+ static const struct vop_data px30_vop_big = {
+ 	.intr = &px30_intr,
++	.feature = VOP_FEATURE_INTERNAL_RGB,
+ 	.common = &px30_common,
+ 	.modeset = &px30_modeset,
+ 	.output = &px30_output,
+@@ -290,6 +291,7 @@ static const struct vop_win_data px30_vop_lit_win_data[] = {
+ 
+ static const struct vop_data px30_vop_lit = {
+ 	.intr = &px30_intr,
++	.feature = VOP_FEATURE_INTERNAL_RGB,
+ 	.common = &px30_common,
+ 	.modeset = &px30_modeset,
+ 	.output = &px30_output,
+-- 
+2.17.0
