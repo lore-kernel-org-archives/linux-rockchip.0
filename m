@@ -1,45 +1,83 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 3/3] drm/rockchip: Add directly output rgb feature for px30
-Date: Thu, 30 Aug 2018 23:12:07 +0200
-Message-ID: <20180830211207.10480-4-heiko@sntech.de>
+Subject: [PATCH v8 1/3] drm/rockchip: add function to check if endpoint is a
+ subdriver
+Date: Thu, 30 Aug 2018 23:12:05 +0200
+Message-ID: <20180830211207.10480-2-heiko@sntech.de>
 References: <20180830211207.10480-1-heiko@sntech.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20180830211207.10480-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: hjc@rock-chips.com
-Cc: seanpaul@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, seanpaul@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sandy Huang <hjc@rock-chips.com>
-
-Add this feature bit indicate px30 vop can directly output
-parallel or serial rgb data.
-
-Signed-off-by: Sandy Huang <hjc@rock-chips.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 7f29913824ce..09910d3b01ce 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -276,6 +276,7 @@ static const struct vop_win_data px30_vop_big_win_data[] = {
- 
- static const struct vop_data px30_vop_big = {
- 	.intr = &px30_intr,
-+	.feature = VOP_FEATURE_INTERNAL_RGB,
- 	.common = &px30_common,
- 	.modeset = &px30_modeset,
- 	.output = &px30_output,
-@@ -290,6 +291,7 @@ static const struct vop_win_data px30_vop_lit_win_data[] = {
- 
- static const struct vop_data px30_vop_lit = {
- 	.intr = &px30_intr,
-+	.feature = VOP_FEATURE_INTERNAL_RGB,
- 	.common = &px30_common,
- 	.modeset = &px30_modeset,
- 	.output = &px30_output,
--- 
-2.17.0
+VG8gYmUgYWJsZSB0byBoYXZlIGJvdGggaW50ZXJuYWwgc3ViZHJpdmVycyBhbmQgZXh0ZXJuYWwg
+YnJpZGdlCmRyaXZlcnMgYXMgb3V0cHV0IGVuZHBvaW50cyBvZiB2b3BzLCBhZGQgYSBmdW5jdGlv
+biB0byBiZSBhYmxlCnRvIGRpc3Rpbmd1aXNoIHRoZXNlLgoKY2hhbmdlcyBpbiB2ODoKLSBpbXBy
+b3ZlZCBmdW5jdGlvbiBkb2N1bWVudGF0aW9uCi0gYmV0dGVyIGVycm9yIGhhbmRsaW5nCi0gcHV0
+IGNhbGxzIGZvciBub2RlIGFuZCBwZGV2IHJlZmVyZW5jZXMKY2hhbmdlcyBpbiB2NjoKLSBhZGRl
+ZCBmdW5jdGlvbiB0byBjaGVjayBzdWJkcml2ZXIgdnMuIGJyaWRnZQoKU2lnbmVkLW9mZi1ieTog
+SGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgNDggKysrKysrKysrKysrKysrKysrKysrCiBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwgIDEgKwogMiBmaWxlcyBj
+aGFuZ2VkLCA0OSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmMKaW5kZXggMWQ5YzRhOTIwMWM4Li41ODY0Y2I0NTJjNWMgMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtMjQsNiArMjQsNyBA
+QAogI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KICNpbmNsdWRlIDxsaW51eC9tb2R1bGUu
+aD4KICNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgorI2luY2x1ZGUgPGxpbnV4L29mX3BsYXRm
+b3JtLmg+CiAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+CiAjaW5jbHVkZSA8bGludXgvY29u
+c29sZS5oPgogI2luY2x1ZGUgPGxpbnV4L2lvbW11Lmg+CkBAIC0yNjcsNiArMjY4LDUzIEBAIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgZGV2X3BtX29wcyByb2NrY2hpcF9kcm1fcG1fb3BzID0gewogc3Rh
+dGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgKnJvY2tjaGlwX3N1Yl9kcml2ZXJzW01BWF9ST0NL
+Q0hJUF9TVUJfRFJJVkVSU107CiBzdGF0aWMgaW50IG51bV9yb2NrY2hpcF9zdWJfZHJpdmVyczsK
+IAorLyoKKyAqIENoZWNrIGlmIGEgdm9wIGVuZHBvaW50IGlzIGxlYWRpbmcgdG8gYSByb2NrY2hp
+cCBzdWJkcml2ZXIgb3IgYnJpZGdlLgorICogU2hvdWxkIGJlIGNhbGxlZCBmcm9tIHRoZSBjb21w
+b25lbnQgYmluZCBzdGFnZSBvZiB0aGUgZHJpdmVycworICogdG8gZW5zdXJlIHRoYXQgYWxsIHN1
+YmRyaXZlcnMgYXJlIHByb2JlZC4KKyAqCisgKiBAZXA6IGVuZHBvaW50IG9mIGEgcm9ja2NoaXAg
+dm9wCisgKgorICogcmV0dXJucyB0cnVlIGlmIHN1YmRyaXZlciwgZmFsc2UgaWYgZXh0ZXJuYWwg
+YnJpZGdlIGFuZCAtRU5PREVWCisgKiBpZiByZW1vdGUgcG9ydCBkb2VzIG5vdCBjb250YWluIGEg
+ZGV2aWNlLgorICovCitpbnQgcm9ja2NoaXBfZHJtX2VuZHBvaW50X2lzX3N1YmRyaXZlcihzdHJ1
+Y3QgZGV2aWNlX25vZGUgKmVwKQoreworCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZSA9IG9mX2dy
+YXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQoZXApOworCXN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
+KnBkZXY7CisJc3RydWN0IGRldmljZV9kcml2ZXIgKmRydjsKKwlpbnQgaTsKKworCWlmICghbm9k
+ZSkKKwkJcmV0dXJuIC1FTk9ERVY7CisKKwkvKiBzdGF0dXMgZGlzYWJsZWQgd2lsbCBwcmV2ZW50
+IGNyZWF0aW9uIG9mIHBsYXRmb3JtLWRldmljZXMgKi8KKwlwZGV2ID0gb2ZfZmluZF9kZXZpY2Vf
+Ynlfbm9kZShub2RlKTsKKwlvZl9ub2RlX3B1dChub2RlKTsKKwlpZiAoIXBkZXYpCisJCXJldHVy
+biAtRU5PREVWOworCisJLyoKKwkgKiBBbGwgcm9ja2NoaXAgc3ViZHJpdmVycyBoYXZlIHByb2Jl
+ZCBhdCB0aGlzIHBvaW50LCBzbworCSAqIGFueSBkZXZpY2Ugbm90IGhhdmluZyBhIGRyaXZlciBu
+b3cgaXMgYW4gZXh0ZXJuYWwgYnJpZGdlLgorCSAqLworCWRydiA9IHBkZXYtPmRldi5kcml2ZXI7
+CisJaWYgKCFkcnYpIHsKKwkJcGxhdGZvcm1fZGV2aWNlX3B1dChwZGV2KTsKKwkJcmV0dXJuIGZh
+bHNlOworCX0KKworCWZvciAoaSA9IDA7IGkgPCBudW1fcm9ja2NoaXBfc3ViX2RyaXZlcnM7IGkr
+KykgeworCQlpZiAocm9ja2NoaXBfc3ViX2RyaXZlcnNbaV0gPT0gdG9fcGxhdGZvcm1fZHJpdmVy
+KGRydikpIHsKKwkJCXBsYXRmb3JtX2RldmljZV9wdXQocGRldik7CisJCQlyZXR1cm4gdHJ1ZTsK
+KwkJfQorCX0KKworCXBsYXRmb3JtX2RldmljZV9wdXQocGRldik7CisJcmV0dXJuIGZhbHNlOwor
+fQorCiBzdGF0aWMgaW50IGNvbXBhcmVfZGV2KHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0
+YSkKIHsKIAlyZXR1cm4gZGV2ID09IChzdHJ1Y3QgZGV2aWNlICopZGF0YTsKZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCmluZGV4IGQ2N2FkMGEzY2YzNi4uMjFh
+MDIzYTk3YmI4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2
+LmgKQEAgLTY0LDYgKzY0LDcgQEAgdm9pZCByb2NrY2hpcF9kcm1fZG1hX2RldGFjaF9kZXZpY2Uo
+c3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCiAJCQkJICAgIHN0cnVjdCBkZXZpY2UgKmRldik7
+CiBpbnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1
+bnNpZ25lZCBpbnQgbXN0aW1lb3V0KTsKIAoraW50IHJvY2tjaGlwX2RybV9lbmRwb2ludF9pc19z
+dWJkcml2ZXIoc3RydWN0IGRldmljZV9ub2RlICplcCk7CiBleHRlcm4gc3RydWN0IHBsYXRmb3Jt
+X2RyaXZlciBjZG5fZHBfZHJpdmVyOwogZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgZHdf
+aGRtaV9yb2NrY2hpcF9wbHRmbV9kcml2ZXI7CiBleHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZl
+ciBkd19taXBpX2RzaV9kcml2ZXI7Ci0tIAoyLjE3LjAKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
