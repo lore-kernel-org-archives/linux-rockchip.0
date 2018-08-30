@@ -1,26 +1,28 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: perfection vop property define for px30
-Date: Wed, 29 Aug 2018 14:57:13 +0200
-Message-ID: <7278966.mqSsajnGxb@phil>
-References: <1535512642-81253-1-git-send-email-hjc@rock-chips.com>
+Subject: Re: [PATCH v7 0/3] Add support rockchip RGB output interface
+Date: Thu, 30 Aug 2018 10:28:16 +0200
+Message-ID: <38391933.H7ebZMqo79@phil>
+References: <1535512364-80764-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1535512642-81253-1-git-send-email-hjc@rock-chips.com>
+In-Reply-To: <1535512364-80764-1-git-send-email-hjc@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Sandy Huang <hjc@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liang Chen <cl@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: seanpaul@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 29. August 2018, 05:17:13 CEST schrieb Sandy Huang:
-> Add display ports for display-subsystem and add reset property
-> for vop node, if missing this two define, drm driver can't
-> probe sucess.
-> 
-> Signed-off-by: Sandy Huang <hjc@rock-chips.com>
+Am Mittwoch, 29. August 2018, 05:12:41 CEST schrieb Sandy Huang:
+> This patches add support rockchip RGB output, Some Rockchip CRTCs, like
+> rv1108 and px30 can directly output parallel and serial RGB data to panel
+> or to conversion chip.
+> So add a feature-bit for vops to mark the ability for these direct outputs
+> and add an internal encoder in that case, that can attach to bridge chips
+> or panels.
 
-with a bit of cleanup applied for 4.20
+I'm obviously ok with this series, but let's give it till monday or so
+before applying to give people a bit longer to comment if necessary.
 
-Thanks
+
 Heiko
