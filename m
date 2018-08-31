@@ -1,62 +1,90 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH] iommu: rockchip: Drop verbose prints in the interrupt handler
-Date: Thu, 30 Aug 2018 19:28:32 -0300
-Message-ID: <20180830222832.16766-1-ezequiel@collabora.com>
+From: Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: add rk3188 lcd controller nodes
+Date: Fri, 31 Aug 2018 09:03:31 +0800
+Message-ID: <72b63e3c-e0ca-334e-f958-153f2f96bb62@rock-chips.com>
+References: <20180830111134.2098-1-heiko@sntech.de>
+ <42ff42a7-ebd8-e717-af3d-a18de5e4d05c@rock-chips.com>
+ <2119603.JzqsNBunkW@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2119603.JzqsNBunkW@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Printing verbosely via WARN macros and friends in interrupt handlers
-is strongly discouraged. Drop them and use proper ratelimited
-prints.
-
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- drivers/iommu/rockchip-iommu.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 054cd2c8e9c8..21bb9a30bc64 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -523,11 +523,13 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
- 	irqreturn_t ret = IRQ_NONE;
- 	int i;
- 
--	if (WARN_ON(!pm_runtime_get_if_in_use(iommu->dev)))
--		return 0;
-+	if (!pm_runtime_get_if_in_use(iommu->dev))
-+		return ret;
- 
--	if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
-+	if (clk_bulk_enable(iommu->num_clocks, iommu->clocks)) {
-+		dev_err_ratelimited(iommu->dev, "couldn't enable clocks\n");
- 		goto out;
-+	}
- 
- 	for (i = 0; i < iommu->num_mmu; i++) {
- 		int_status = rk_iommu_read(iommu->bases[i], RK_MMU_INT_STATUS);
-@@ -544,7 +546,7 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
- 			flags = (status & RK_MMU_STATUS_PAGE_FAULT_IS_WRITE) ?
- 					IOMMU_FAULT_WRITE : IOMMU_FAULT_READ;
- 
--			dev_err(iommu->dev, "Page fault at %pad of type %s\n",
-+			dev_err_ratelimited(iommu->dev, "Page fault at %pad of type %s\n",
- 				&iova,
- 				(flags == IOMMU_FAULT_WRITE) ? "write" : "read");
- 
--- 
-2.18.0
+SGkgaGVpa28sCgrlnKggMjAxOC84LzMwIDIwOjIyLCBIZWlrbyBTdHVlYm5lciDlhpnpgZM6Cj4g
+SGkgU2FuZHksCj4KPiBBbSBEb25uZXJzdGFnLCAzMC4gQXVndXN0IDIwMTgsIDEzOjU5OjM1IENF
+U1Qgc2NocmllYiBTYW5keSBIdWFuZzoKPiA+IEhpIGhlaWtvLAo+ID4KPiA+IOWcqCAyMDE4Lzgv
+MzAgMTk6MTEsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiA+PiBBZGQgdGhlIGNvcmUgZGlzcGxh
+eSBzdWJzeXN0ZW0gYW5kIHZvcCBub2RlcyB0byByazMxODguCj4gPj4gVm9wMCBoYXMgYSBmdWxs
+eSBkZWRpY2F0ZWQgc2V0IG9mIHBpbnMgYW5kIG9ubHkgdm9wMSBuZWVkcyB0bwo+ID4+IGRvIHBp
+bmN0cmwgdG8gaGF2ZSBkaXNwbGF5IG91dHB1dCwgc28gYWxzbyBhZGQgdGhlIG5lY2Vzc2FyeQo+
+ID4+IHBpbmN0cmwgZW50cmllcyBmb3IgaXQuCj4gPj4KPiA+PiBTaWduZWQtb2ZmLWJ5OiBIZWlr
+byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4+IC0tLQo+ID4+wqDCoMKgIGFyY2gvYXJt
+L2Jvb3QvZHRzL3JrMzE4OC5kdHNpIHwgODQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysKPiA+PsKgwqDCoCAxIGZpbGUgY2hhbmdlZCwgODQgaW5zZXJ0aW9ucygrKQo+ID4+Cj4g
+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC5kdHNpIGIvYXJjaC9hcm0v
+Ym9vdC9kdHMvcmszMTg4LmR0c2kKPiA+PiBpbmRleCBhYTEyM2Y5M2YxODEuLmZmNjA3ZjExZjVi
+MCAxMDA2NDQKPiA+PiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMxODguZHRzaQo+ID4+ICsr
+KyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC5kdHNpCj4gPj4gQEAgLTU2LDYgKzU2LDExIEBA
+Cj4gPj7CoMKgIMKgwqDCoCDCoMKgwqAgwqB9Owo+ID4+wqDCoCDCoMKgwqAgwqB9Owo+ID4+Cj4g
+Pj4gK8KgwqAgwqBkaXNwbGF5LXN1YnN5c3RlbSB7Cj4gPj4gK8KgwqAgwqDCoMKgIMKgY29tcGF0
+aWJsZSA9ICJyb2NrY2hpcCxkaXNwbGF5LXN1YnN5c3RlbSI7Cj4gPj4gK8KgwqAgwqDCoMKgIMKg
+cG9ydHMgPSA8JnZvcDBfb3V0PiwgPCZ2b3AxX291dD47Cj4gPj4gK8KgwqAgwqB9Owo+ID4+ICsK
+PiA+PsKgwqAgwqDCoMKgIMKgc3JhbTogc3JhbUAxMDA4MDAwMCB7Cj4gPj7CoMKgIMKgwqDCoCDC
+oMKgwqAgwqBjb21wYXRpYmxlID0gIm1taW8tc3JhbSI7Cj4gPj7CoMKgIMKgwqDCoCDCoMKgwqAg
+wqByZWcgPSA8MHgxMDA4MDAwMCAweDgwMDA+Owo+ID4+IEBAIC02OSw2ICs3NCw0MCBAQAo+ID4+
+wqDCoCDCoMKgwqAgwqDCoMKgIMKgfTsKPiA+PsKgwqAgwqDCoMKgIMKgfTsKPiA+Pgo+ID4+ICvC
+oMKgIMKgdm9wMDogdm9wQDEwMTBjMDAwIHsKPiA+PiArwqDCoCDCoMKgwqAgwqBjb21wYXRpYmxl
+ID0gInJvY2tjaGlwLHJrMzE4OC12b3AiOwo+ID4+ICvCoMKgIMKgwqDCoCDCoHJlZyA9IDwweDEw
+MTBjMDAwIDB4MTAwMD47Cj4gPj4gK8KgwqAgwqDCoMKgIMKgaW50ZXJydXB0cyA9IDxHSUNfU1BJ
+IDEzIElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+ID4+ICvCoMKgIMKgwqDCoCDCoGNsb2NrcyA9IDwm
+Y3J1IEFDTEtfTENEQzA+LCA8JmNydSBEQ0xLX0xDREMwPiwgPCZjcnUgSENMS19MQ0RDMD47Cj4g
+Pj4gK8KgwqAgwqDCoMKgIMKgY2xvY2stbmFtZXMgPSAiYWNsa192b3AiLCAiZGNsa192b3AiLCAi
+aGNsa192b3AiOwo+ID4+ICvCoMKgIMKgwqDCoCDCoHJlc2V0cyA9IDwmY3J1IFNSU1RfTENEQzBf
+QVhJPiwgPCZjcnUgU1JTVF9MQ0RDMF9BSEI+LCA8JmNydSBTUlNUX0xDREMwX0RDTEs+Owo+ID4+
+ICvCoMKgIMKgwqDCoCDCoHJlc2V0LW5hbWVzID0gImF4aSIsICJhaGIiLCAiZGNsayI7Cj4gPj4g
+K8KgwqAgwqDCoMKgIMKgc3RhdHVzID0gImRpc2FibGVkIjsKPiA+PiArCj4gPj4gK8KgwqAgwqDC
+oMKgIMKgdm9wMF9vdXQ6IHBvcnQgewo+ID4+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqAjYWRkcmVz
+cy1jZWxscyA9IDwxPjsKPiA+PiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgI3NpemUtY2VsbHMgPSA8
+MD47Cj4gPj4gK8KgwqAgwqDCoMKgIMKgfTsKPiA+PiArwqDCoCDCoH07Cj4gPj4gKwo+ID4+ICvC
+oMKgIMKgdm9wMTogdm9wQDEwMTBlMDAwIHsKPiA+PiArwqDCoCDCoMKgwqAgwqBjb21wYXRpYmxl
+ID0gInJvY2tjaGlwLHJrMzE4OC12b3AiOwo+ID4+ICvCoMKgIMKgwqDCoCDCoHJlZyA9IDwweDEw
+MTBlMDAwIDB4MTAwMD47Cj4gPj4gK8KgwqAgwqDCoMKgIMKgaW50ZXJydXB0cyA9IDxHSUNfU1BJ
+IDE0IElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+ID4+ICvCoMKgIMKgwqDCoCDCoGNsb2NrcyA9IDwm
+Y3J1IEFDTEtfTENEQzE+LCA8JmNydSBEQ0xLX0xDREMxPiwgPCZjcnUgSENMS19MQ0RDMT47Cj4g
+Pj4gK8KgwqAgwqDCoMKgIMKgY2xvY2stbmFtZXMgPSAiYWNsa192b3AiLCAiZGNsa192b3AiLCAi
+aGNsa192b3AiOwo+ID4+ICvCoMKgIMKgwqDCoCDCoHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7
+Cj4gPj4gK8KgwqAgwqDCoMKgIMKgcGluY3RybC0wID0gPCZsY2RjMV9kY2xrICZsY2RjMV9kZW4g
+JmxjZGMxX2hzeW5jICZsY2RjMV92c3luYyAmbGNkYzFfcmdiMjQ+Owo+ID4gU29tZSBwcm9kdWN0
+IG1heWJlIHVzZSB2b3AwIGZvciBkaXNwbGF5LCB0aGlzIGlvIG1heWJlIHVzZWQgZm9yIG90aGVy
+Cj4gPiBmdW5jdGlvbi4gU28gaSB0aGluayBwaW5jcnRsIGRlZmF1bHQgc3RhdGUgc2hvdWxkIGJl
+IG1vdmVkIGZyb20gaGVyZSBhbmQKPiA+IGRlZmluZSBhdCBkdHMgZmlsZS4KPgo+IEZvciB0aGUg
+cmszMTg4IHdlIHNob3VsZCBiZSBmaW5lIHRoZW4uIEkuZS4gdGhlIHJrMzE4OCBvbmx5IGhhcyB0
+aGUgcmdiCj4gb3V0cHV0IGFuZCBubyBlbmNvZGVycyBvZiBpdHMgb3duLiBTbyBhdCBhbnkgdGlt
+ZSB2b3AxIGlzIHVzZWQgaXQgd2lsbAo+IG5lZWQgdGhlIHBpbmN0cmwgZW50cmllcy4KPgo+IEl0
+cyBkZWZhdWx0IHN0YXRlIGlzICJkaXNhYmxlZCIsIGFuZCBwaW5jdHJsIHNldHRpbmdzIHdpbGwg
+b25seSBiZSB1c2VkIGlmCj4gdGhlIG5vZGUgZ2V0cyBlbmFibGVkIGluIGEgYm9hcmQgZmlsZS4K
+Pgo+IEZvciBvdGhlciBzb2NzIGxpa2UgdGhlIHB4MzAgYW5kIHJrMzA2NiB3aGljaCBtaXggcmdi
+IGFuZCBoZG1pIG9yIHNvCj4gSSBkZWZpbml0bHkgYWdyZWUgdGhhdCBwaW5jdHJsIHNob3VsZCBi
+ZSBzZXQgaW4gYm9hcmQgZmlsZXMgOi0pIC4KPgo+IEhlaWtvCk1heWJlIGFwcGVhciB0aGUgZm9s
+bG93aW5nIGhhcmR3YXJlIGRpc2lnbmVkOgpSR0IgcGFuZWwgaXMgUkdCNjY2IGludGVyZmFjZSwg
+Y29ubmVjdCB0byBMQ0RDMV9EMH5MQ0RDMV9EMTcsIGFuZCB0aGUgTENEQzFfRDE4fkxDREMxX0Qy
+MyB3aWxsIGJlIHVzZWTCoCBmb3IgR1BJTy4KPgo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+CgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
