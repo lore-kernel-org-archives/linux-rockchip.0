@@ -1,89 +1,145 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v8 1/3] drm/rockchip: add function to check if endpoint is
- a subdriver
-Date: Fri, 31 Aug 2018 09:41:29 +0800
-Message-ID: <ad6135e6-e2d4-7b97-3d77-4aa085270960@rock-chips.com>
-References: <20180830211207.10480-1-heiko@sntech.de>
- <20180830211207.10480-2-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2] ARM: dts: rockchip: add rk3188 lcd controller nodes
+Date: Fri, 31 Aug 2018 09:25:37 +0200
+Message-ID: <20180831072537.15785-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180830211207.10480-2-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, seanpaul@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CuWcqCAyMDE4LzgvMzEgNToxMiwgSGVpa28gU3R1ZWJuZXIg5YaZ6YGTOgo+IFRvIGJlIGFibGUg
-dG8gaGF2ZSBib3RoIGludGVybmFsIHN1YmRyaXZlcnMgYW5kIGV4dGVybmFsIGJyaWRnZQo+IGRy
-aXZlcnMgYXMgb3V0cHV0IGVuZHBvaW50cyBvZiB2b3BzLCBhZGQgYSBmdW5jdGlvbiB0byBiZSBh
-YmxlCj4gdG8gZGlzdGluZ3Vpc2ggdGhlc2UuCj4gCj4gY2hhbmdlcyBpbiB2ODoKPiAtIGltcHJv
-dmVkIGZ1bmN0aW9uIGRvY3VtZW50YXRpb24KPiAtIGJldHRlciBlcnJvciBoYW5kbGluZwo+IC0g
-cHV0IGNhbGxzIGZvciBub2RlIGFuZCBwZGV2IHJlZmVyZW5jZXMKPiBjaGFuZ2VzIGluIHY2Ogo+
-IC0gYWRkZWQgZnVuY3Rpb24gdG8gY2hlY2sgc3ViZHJpdmVyIHZzLiBicmlkZ2UKPiAKPiBTaWdu
-ZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDQ4ICsrKysrKysrKysr
-KysrKysrKysrKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
-aCB8ICAxICsKPiAgIDIgZmlsZXMgY2hhbmdlZCwgNDkgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+IGluZGV4IDFkOWM0YTky
-MDFjOC4uNTg2NGNiNDUyYzVjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX2Rydi5jCj4gQEAgLTI0LDYgKzI0LDcgQEAKPiAgICNpbmNsdWRlIDxsaW51eC9w
-bV9ydW50aW1lLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICAjaW5jbHVkZSA8
-bGludXgvb2ZfZ3JhcGguaD4KPiArI2luY2x1ZGUgPGxpbnV4L29mX3BsYXRmb3JtLmg+Cj4gICAj
-aW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4gICAjaW5jbHVkZSA8bGludXgvY29uc29sZS5o
-Pgo+ICAgI2luY2x1ZGUgPGxpbnV4L2lvbW11Lmg+Cj4gQEAgLTI2Nyw2ICsyNjgsNTMgQEAgc3Rh
-dGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIHJvY2tjaGlwX2RybV9wbV9vcHMgPSB7Cj4gICBz
-dGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciAqcm9ja2NoaXBfc3ViX2RyaXZlcnNbTUFYX1JP
-Q0tDSElQX1NVQl9EUklWRVJTXTsKPiAgIHN0YXRpYyBpbnQgbnVtX3JvY2tjaGlwX3N1Yl9kcml2
-ZXJzOwo+ICAgCj4gKy8qCj4gKyAqIENoZWNrIGlmIGEgdm9wIGVuZHBvaW50IGlzIGxlYWRpbmcg
-dG8gYSByb2NrY2hpcCBzdWJkcml2ZXIgb3IgYnJpZGdlLgo+ICsgKiBTaG91bGQgYmUgY2FsbGVk
-IGZyb20gdGhlIGNvbXBvbmVudCBiaW5kIHN0YWdlIG9mIHRoZSBkcml2ZXJzCj4gKyAqIHRvIGVu
-c3VyZSB0aGF0IGFsbCBzdWJkcml2ZXJzIGFyZSBwcm9iZWQuCj4gKyAqCj4gKyAqIEBlcDogZW5k
-cG9pbnQgb2YgYSByb2NrY2hpcCB2b3AKPiArICoKPiArICogcmV0dXJucyB0cnVlIGlmIHN1YmRy
-aXZlciwgZmFsc2UgaWYgZXh0ZXJuYWwgYnJpZGdlIGFuZCAtRU5PREVWCj4gKyAqIGlmIHJlbW90
-ZSBwb3J0IGRvZXMgbm90IGNvbnRhaW4gYSBkZXZpY2UuCj4gKyAqLwo+ICtpbnQgcm9ja2NoaXBf
-ZHJtX2VuZHBvaW50X2lzX3N1YmRyaXZlcihzdHJ1Y3QgZGV2aWNlX25vZGUgKmVwKQo+ICt7Cj4g
-KwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUgPSBvZl9ncmFwaF9nZXRfcmVtb3RlX3BvcnRfcGFy
-ZW50KGVwKTsKPiArCXN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXY7Cj4gKwlzdHJ1Y3QgZGV2
-aWNlX2RyaXZlciAqZHJ2Owo+ICsJaW50IGk7Cj4gKwo+ICsJaWYgKCFub2RlKQo+ICsJCXJldHVy
-biAtRU5PREVWOwo+ICsKPiArCS8qIHN0YXR1cyBkaXNhYmxlZCB3aWxsIHByZXZlbnQgY3JlYXRp
-b24gb2YgcGxhdGZvcm0tZGV2aWNlcyAqLwo+ICsJcGRldiA9IG9mX2ZpbmRfZGV2aWNlX2J5X25v
-ZGUobm9kZSk7Cj4gKwlvZl9ub2RlX3B1dChub2RlKTsKPiArCWlmICghcGRldikKPiArCQlyZXR1
-cm4gLUVOT0RFVjsKPiArCj4gKwkvKgo+ICsJICogQWxsIHJvY2tjaGlwIHN1YmRyaXZlcnMgaGF2
-ZSBwcm9iZWQgYXQgdGhpcyBwb2ludCwgc28KPiArCSAqIGFueSBkZXZpY2Ugbm90IGhhdmluZyBh
-IGRyaXZlciBub3cgaXMgYW4gZXh0ZXJuYWwgYnJpZGdlLgo+ICsJICovCj4gKwlkcnYgPSBwZGV2
-LT5kZXYuZHJpdmVyOwo+ICsJaWYgKCFkcnYpIHsKPiArCQlwbGF0Zm9ybV9kZXZpY2VfcHV0KHBk
-ZXYpOwo+ICsJCXJldHVybiBmYWxzZTsKPiArCX0KPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwgbnVt
-X3JvY2tjaGlwX3N1Yl9kcml2ZXJzOyBpKyspIHsKPiArCQlpZiAocm9ja2NoaXBfc3ViX2RyaXZl
-cnNbaV0gPT0gdG9fcGxhdGZvcm1fZHJpdmVyKGRydikpIHsKPiArCQkJcGxhdGZvcm1fZGV2aWNl
-X3B1dChwZGV2KTsKPiArCQkJcmV0dXJuIHRydWU7Cj4gKwkJfQo+ICsJfQo+ICsKPiArCXBsYXRm
-b3JtX2RldmljZV9wdXQocGRldik7Cj4gKwlyZXR1cm4gZmFsc2U7Cj4gK30KPiArCj4gICBzdGF0
-aWMgaW50IGNvbXBhcmVfZGV2KHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiAgIHsK
-PiAgIAlyZXR1cm4gZGV2ID09IChzdHJ1Y3QgZGV2aWNlICopZGF0YTsKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiBpbmRleCBkNjdhZDBhM2NmMzYuLjIx
-YTAyM2E5N2JiOCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2Rydi5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV9kcnYuaAo+IEBAIC02NCw2ICs2NCw3IEBAIHZvaWQgcm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hf
-ZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAo+ICAgCQkJCSAgICBzdHJ1Y3QgZGV2
-aWNlICpkZXYpOwo+ICAgaW50IHJvY2tjaGlwX2RybV93YWl0X3ZhY3RfZW5kKHN0cnVjdCBkcm1f
-Y3J0YyAqY3J0YywgdW5zaWduZWQgaW50IG1zdGltZW91dCk7Cj4gICAKPiAraW50IHJvY2tjaGlw
-X2RybV9lbmRwb2ludF9pc19zdWJkcml2ZXIoc3RydWN0IGRldmljZV9ub2RlICplcCk7Cj4gICBl
-eHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBjZG5fZHBfZHJpdmVyOwo+ICAgZXh0ZXJuIHN0
-cnVjdCBwbGF0Zm9ybV9kcml2ZXIgZHdfaGRtaV9yb2NrY2hpcF9wbHRmbV9kcml2ZXI7Cj4gICBl
-eHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19taXBpX2RzaV9kcml2ZXI7Cj4gCgpSZXZp
-ZXdlZC1ieSBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Add the core display subsystem and vop nodes to rk3188.
+Vop0 has a fully dedicated set of pins and only vop1 needs to
+do pinctrl to have display output, so also add the necessary
+pinctrl entries for it.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+changes in v2:
+- drop default pinctrl setting
+  Boards may use different output signals not needing
+  all pins.
+
+ arch/arm/boot/dts/rk3188.dtsi | 84 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index aa123f93f181..ff607f11f5b0 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -56,6 +56,11 @@
+ 		};
+ 	};
+ 
++	display-subsystem {
++		compatible = "rockchip,display-subsystem";
++		ports = <&vop0_out>, <&vop1_out>;
++	};
++
+ 	sram: sram@10080000 {
+ 		compatible = "mmio-sram";
+ 		reg = <0x10080000 0x8000>;
+@@ -69,6 +74,38 @@
+ 		};
+ 	};
+ 
++	vop0: vop@1010c000 {
++		compatible = "rockchip,rk3188-vop";
++		reg = <0x1010c000 0x1000>;
++		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_LCDC0>, <&cru DCLK_LCDC0>, <&cru HCLK_LCDC0>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++		resets = <&cru SRST_LCDC0_AXI>, <&cru SRST_LCDC0_AHB>, <&cru SRST_LCDC0_DCLK>;
++		reset-names = "axi", "ahb", "dclk";
++		status = "disabled";
++
++		vop0_out: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++	};
++
++	vop1: vop@1010e000 {
++		compatible = "rockchip,rk3188-vop";
++		reg = <0x1010e000 0x1000>;
++		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_LCDC1>, <&cru DCLK_LCDC1>, <&cru HCLK_LCDC1>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++		resets = <&cru SRST_LCDC1_AXI>, <&cru SRST_LCDC1_AHB>, <&cru SRST_LCDC1_DCLK>;
++		reset-names = "axi", "ahb", "dclk";
++		status = "disabled";
++
++		vop1_out: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++	};
++
+ 	timer3: timer@2000e000 {
+ 		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
+ 		reg = <0x2000e000 0x20>;
+@@ -309,6 +348,51 @@
+ 			};
+ 		};
+ 
++		lcdc1 {
++			lcdc1_dclk: lcdc1-dclk {
++				rockchip,pins = <2 RK_PD0 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			lcdc1_den: lcdc1-den {
++				rockchip,pins = <2 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			lcdc1_hsync: lcdc1-hsync {
++				rockchip,pins = <2 RK_PD2 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			lcdc1_vsync: lcdc1-vsync {
++				rockchip,pins = <2 RK_PD3 RK_FUNC_1 &pcfg_pull_none>;
++			};
++
++			lcdc1_rgb24: ldcd1-rgb24 {
++				rockchip,pins = <2 RK_PA0 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA1 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA2 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA3 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA4 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA5 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA6 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PA7 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB0 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB1 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB2 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB3 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB4 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB5 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB6 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PB7 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC0 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC1 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC2 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC3 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC4 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC5 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC6 RK_FUNC_1 &pcfg_pull_none>,
++						<2 RK_PC7 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
+ 		pwm0 {
+ 			pwm0_out: pwm0-out {
+ 				rockchip,pins = <RK_GPIO3 27 RK_FUNC_1 &pcfg_pull_none>;
+-- 
+2.17.0
