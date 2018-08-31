@@ -1,13 +1,14 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v2] ARM: dts: rockchip: add rk3188 lcd controller nodes
-Date: Fri, 31 Aug 2018 16:25:39 +0800
-Message-ID: <f70a503f-1774-8365-186a-430e8b7d3508@rock-chips.com>
-References: <20180831072537.15785-1-heiko@sntech.de>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 RESEND 2/2] phy: add Rockchip Innosilicon hdmi phy
+Date: Fri, 31 Aug 2018 11:26:01 +0200
+Message-ID: <21954745.lUUHsRAzaY@diego>
+References: <20180710134949.25203-1-heiko@sntech.de>
+ <a0a84907-c51f-b484-33fa-592a23c756f9@ti.com> <4194245.uYZyAYm7Hd@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180831072537.15785-1-heiko@sntech.de>
+In-Reply-To: <4194245.uYZyAYm7Hd@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,112 +18,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-CuWcqCAyMDE4LzgvMzEgMTU6MjUsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiBBZGQgdGhlIGNv
-cmUgZGlzcGxheSBzdWJzeXN0ZW0gYW5kIHZvcCBub2RlcyB0byByazMxODguCj4gVm9wMCBoYXMg
-YSBmdWxseSBkZWRpY2F0ZWQgc2V0IG9mIHBpbnMgYW5kIG9ubHkgdm9wMSBuZWVkcyB0bwo+IGRv
-IHBpbmN0cmwgdG8gaGF2ZSBkaXNwbGF5IG91dHB1dCwgc28gYWxzbyBhZGQgdGhlIG5lY2Vzc2Fy
-eQo+IHBpbmN0cmwgZW50cmllcyBmb3IgaXQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVl
-Ym5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+IGNoYW5nZXMgaW4gdjI6Cj4gLSBkcm9wIGRl
-ZmF1bHQgcGluY3RybCBzZXR0aW5nCj4gwqDCoCBCb2FyZHMgbWF5IHVzZSBkaWZmZXJlbnQgb3V0
-cHV0IHNpZ25hbHMgbm90IG5lZWRpbmcKPiDCoMKgIGFsbCBwaW5zLgo+Cj4gwqAgYXJjaC9hcm0v
-Ym9vdC9kdHMvcmszMTg4LmR0c2kgfCA4NCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKwo+IMKgIDEgZmlsZSBjaGFuZ2VkLCA4NCBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0
-IGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMTg4LmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yazMx
-ODguZHRzaQo+IGluZGV4IGFhMTIzZjkzZjE4MS4uZmY2MDdmMTFmNWIwIDEwMDY0NAo+IC0tLSBh
-L2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC5kdHNpCj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMv
-cmszMTg4LmR0c2kKPiBAQCAtNTYsNiArNTYsMTEgQEAKPiDCoCDCoMKgIMKgwqDCoCDCoH07Cj4g
-wqAgwqDCoCDCoH07Cj4KPiArwqDCoCDCoGRpc3BsYXktc3Vic3lzdGVtIHsKPiArwqDCoCDCoMKg
-wqAgwqBjb21wYXRpYmxlID0gInJvY2tjaGlwLGRpc3BsYXktc3Vic3lzdGVtIjsKPiArwqDCoCDC
-oMKgwqAgwqBwb3J0cyA9IDwmdm9wMF9vdXQ+LCA8JnZvcDFfb3V0PjsKPiArwqDCoCDCoH07Cj4g
-Kwo+IMKgIMKgwqAgwqBzcmFtOiBzcmFtQDEwMDgwMDAwIHsKPiDCoCDCoMKgIMKgwqDCoCDCoGNv
-bXBhdGlibGUgPSAibW1pby1zcmFtIjsKPiDCoCDCoMKgIMKgwqDCoCDCoHJlZyA9IDwweDEwMDgw
-MDAwIDB4ODAwMD47Cj4gQEAgLTY5LDYgKzc0LDM4IEBACj4gwqAgwqDCoCDCoMKgwqAgwqB9Owo+
-IMKgIMKgwqAgwqB9Owo+Cj4gK8KgwqAgwqB2b3AwOiB2b3BAMTAxMGMwMDAgewo+ICvCoMKgIMKg
-wqDCoCDCoGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMTg4LXZvcCI7Cj4gK8KgwqAgwqDCoMKg
-IMKgcmVnID0gPDB4MTAxMGMwMDAgMHgxMDAwPjsKPiArwqDCoCDCoMKgwqAgwqBpbnRlcnJ1cHRz
-ID0gPEdJQ19TUEkgMTMgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gK8KgwqAgwqDCoMKgIMKgY2xv
-Y2tzID0gPCZjcnUgQUNMS19MQ0RDMD4sIDwmY3J1IERDTEtfTENEQzA+LCA8JmNydSBIQ0xLX0xD
-REMwPjsKPiArwqDCoCDCoMKgwqAgwqBjbG9jay1uYW1lcyA9ICJhY2xrX3ZvcCIsICJkY2xrX3Zv
-cCIsICJoY2xrX3ZvcCI7Cj4gK8KgwqAgwqDCoMKgIMKgcmVzZXRzID0gPCZjcnUgU1JTVF9MQ0RD
-MF9BWEk+LCA8JmNydSBTUlNUX0xDREMwX0FIQj4sIDwmY3J1IFNSU1RfTENEQzBfRENMSz47Cj4g
-K8KgwqAgwqDCoMKgIMKgcmVzZXQtbmFtZXMgPSAiYXhpIiwgImFoYiIsICJkY2xrIjsKPiArwqDC
-oCDCoMKgwqAgwqBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsKPiArwqDCoCDCoMKgwqAgwqB2b3Aw
-X291dDogcG9ydCB7Cj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoCNhZGRyZXNzLWNlbGxzID0gPDE+
-Owo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqAjc2l6ZS1jZWxscyA9IDwwPjsKPiArwqDCoCDCoMKg
-wqAgwqB9Owo+ICvCoMKgIMKgfTsKPiArCj4gK8KgwqAgwqB2b3AxOiB2b3BAMTAxMGUwMDAgewo+
-ICvCoMKgIMKgwqDCoCDCoGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMTg4LXZvcCI7Cj4gK8Kg
-wqAgwqDCoMKgIMKgcmVnID0gPDB4MTAxMGUwMDAgMHgxMDAwPjsKPiArwqDCoCDCoMKgwqAgwqBp
-bnRlcnJ1cHRzID0gPEdJQ19TUEkgMTQgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gK8KgwqAgwqDC
-oMKgIMKgY2xvY2tzID0gPCZjcnUgQUNMS19MQ0RDMT4sIDwmY3J1IERDTEtfTENEQzE+LCA8JmNy
-dSBIQ0xLX0xDREMxPjsKPiArwqDCoCDCoMKgwqAgwqBjbG9jay1uYW1lcyA9ICJhY2xrX3ZvcCIs
-ICJkY2xrX3ZvcCIsICJoY2xrX3ZvcCI7Cj4gK8KgwqAgwqDCoMKgIMKgcmVzZXRzID0gPCZjcnUg
-U1JTVF9MQ0RDMV9BWEk+LCA8JmNydSBTUlNUX0xDREMxX0FIQj4sIDwmY3J1IFNSU1RfTENEQzFf
-RENMSz47Cj4gK8KgwqAgwqDCoMKgIMKgcmVzZXQtbmFtZXMgPSAiYXhpIiwgImFoYiIsICJkY2xr
-IjsKPiArwqDCoCDCoMKgwqAgwqBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsKPiArwqDCoCDCoMKg
-wqAgwqB2b3AxX291dDogcG9ydCB7Cj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoCNhZGRyZXNzLWNl
-bGxzID0gPDE+Owo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqAjc2l6ZS1jZWxscyA9IDwwPjsKPiAr
-wqDCoCDCoMKgwqAgwqB9Owo+ICvCoMKgIMKgfTsKPiArCj4gwqAgwqDCoCDCoHRpbWVyMzogdGlt
-ZXJAMjAwMGUwMDAgewo+IMKgIMKgwqAgwqDCoMKgIMKgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxy
-azMxODgtdGltZXIiLCAicm9ja2NoaXAscmszMjg4LXRpbWVyIjsKPiDCoCDCoMKgIMKgwqDCoCDC
-oHJlZyA9IDwweDIwMDBlMDAwIDB4MjA+Owo+IEBAIC0zMDksNiArMzQ4LDUxIEBACj4gwqAgwqDC
-oCDCoMKgwqAgwqDCoMKgIMKgfTsKPiDCoCDCoMKgIMKgwqDCoCDCoH07Cj4KPiArwqDCoCDCoMKg
-wqAgwqBsY2RjMSB7Cj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoGxjZGMxX2RjbGs6IGxjZGMxLWRj
-bGsgewo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgcm9ja2NoaXAscGlucyA9IDwyIFJL
-X1BEMCBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKg
-fTsKPiArCj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoGxjZGMxX2RlbjogbGNkYzEtZGVuIHsKPiAr
-wqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoHJvY2tjaGlwLHBpbnMgPSA8MiBSS19QRDEgUktf
-RlVOQ18xICZwY2ZnX3B1bGxfbm9uZT47Cj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoH07Cj4gKwo+
-ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqBsY2RjMV9oc3luYzogbGNkYzEtaHN5bmMgewo+ICvCoMKg
-IMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgcm9ja2NoaXAscGlucyA9IDwyIFJLX1BEMiBSS19GVU5D
-XzEgJnBjZmdfcHVsbF9ub25lPjsKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgfTsKPiArCj4gK8Kg
-wqAgwqDCoMKgIMKgwqDCoCDCoGxjZGMxX3ZzeW5jOiBsY2RjMS12c3luYyB7Cj4gK8KgwqAgwqDC
-oMKgIMKgwqDCoCDCoMKgwqAgwqByb2NrY2hpcCxwaW5zID0gPDIgUktfUEQzIFJLX0ZVTkNfMSAm
-cGNmZ19wdWxsX25vbmU+Owo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqB9Owo+ICsKPiArwqDCoCDC
-oMKgwqAgwqDCoMKgIMKgbGNkYzFfcmdiMjQ6IGxkY2QxLXJnYjI0IHsKPiArwqDCoCDCoMKgwqAg
-wqDCoMKgIMKgwqDCoCDCoHJvY2tjaGlwLHBpbnMgPSA8MiBSS19QQTAgUktfRlVOQ18xICZwY2Zn
-X3B1bGxfbm9uZT4sCj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDC
-oDwyIFJLX1BBMSBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKPiArwqDCoCDCoMKgwqAgwqDC
-oMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgPDIgUktfUEEyIFJLX0ZVTkNfMSAmcGNmZ19wdWxs
-X25vbmU+LAo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqA8MiBS
-S19QQTMgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDC
-oMKgwqAgwqDCoMKgIMKgwqDCoCDCoDwyIFJLX1BBNCBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25l
-PiwKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgPDIgUktfUEE1
-IFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+LAo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKg
-IMKgwqDCoCDCoMKgwqAgwqA8MiBSS19QQTYgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCj4g
-K8KgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoDwyIFJLX1BBNyBSS19G
-VU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKg
-wqAgwqDCoMKgIMKgPDIgUktfUEIwIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+LAo+ICvCoMKg
-IMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqA8MiBSS19QQjEgUktfRlVOQ18x
-ICZwY2ZnX3B1bGxfbm9uZT4sCj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKg
-wqDCoCDCoDwyIFJLX1BCMiBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKPiArwqDCoCDCoMKg
-wqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgPDIgUktfUEIzIFJLX0ZVTkNfMSAmcGNm
-Z19wdWxsX25vbmU+LAo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAg
-wqA8MiBSS19QQjQgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCj4gK8KgwqAgwqDCoMKgIMKg
-wqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoDwyIFJLX1BCNSBSS19GVU5DXzEgJnBjZmdfcHVs
-bF9ub25lPiwKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgPDIg
-UktfUEI2IFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+LAo+ICvCoMKgIMKgwqDCoCDCoMKgwqAg
-wqDCoMKgIMKgwqDCoCDCoMKgwqAgwqA8MiBSS19QQjcgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9u
-ZT4sCj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoDwyIFJLX1BD
-MCBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDC
-oCDCoMKgwqAgwqDCoMKgIMKgPDIgUktfUEMxIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+LAo+
-ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqA8MiBSS19QQzIgUktf
-RlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCj4gK8KgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDC
-oMKgIMKgwqDCoCDCoDwyIFJLX1BDMyBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKPiArwqDC
-oCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgPDIgUktfUEM0IFJLX0ZVTkNf
-MSAmcGNmZ19wdWxsX25vbmU+LAo+ICvCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDC
-oMKgwqAgwqA8MiBSS19QQzUgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCj4gK8KgwqAgwqDC
-oMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoDwyIFJLX1BDNiBSS19GVU5DXzEgJnBj
-ZmdfcHVsbF9ub25lPiwKPiArwqDCoCDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKg
-IMKgPDIgUktfUEM3IFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+Owo+ICvCoMKgIMKgwqDCoCDC
-oMKgwqAgwqB9Owo+ICvCoMKgIMKgwqDCoCDCoH07Cj4gKwo+IMKgIMKgwqAgwqDCoMKgIMKgcHdt
-MCB7Cj4gwqAgwqDCoCDCoMKgwqAgwqDCoMKgIMKgcHdtMF9vdXQ6IHB3bTAtb3V0IHsKPiDCoCDC
-oMKgIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgcm9ja2NoaXAscGlucyA9IDxSS19HUElPMyAyNyBS
-S19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKPgpSZXZpZXdlZC1ieSBTYW5keSBIdWFuZyA8aGpj
-QHJvY2stY2hpcHMuY29tPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Am Dienstag, 14. August 2018, 14:52:00 CEST schrieb Heiko Stuebner:
+> Hi Kishon,
+> 
+> thanks for your review.
+> 
+> Am Freitag, 3. August 2018, 11:24:06 CEST schrieb Kishon Vijay Abraham I:
+> > On Tuesday 10 July 2018 07:19 PM, Heiko Stuebner wrote:
+> > > +config PHY_ROCKCHIP_INNO_HDMI
+> > > +	tristate "Rockchip INNO HDMI PHY Driver"
+> > > +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
+> > 
+> > depends on COMMON_CLK since the phy registers a clock provider?
+> 
+> ok
+> 
+> > > +static const struct phy_config rk3228_phy_cfg[] = {
+> > > +	{	165000000, {
+> > > +			0xaa, 0x00, 0x44, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00,
+> > > +			0x00, 0x00, 0x00, 0x00, 0x00,
+> > 
+> > If these register configurations are not a tuning value or dividers (which
+> > can have absolute values), then we should have macros for each of these
+> > configurations.
+> That might get difficult.
+> 
+> That phy register set is completely undocumented even in the vendor TRMs
+> of the 2 socs. I pieced together most existing macros from code comments
+> and such from the vendor kernel. And Innosilicon is not known to willingly
+> share much of their register documentation it seems.
+> 
+> > > +static unsigned long inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy
+> > > *inno,
+> > > +					       unsigned long rate)
+> > > +{
+> > > +	int bus_width = phy_get_bus_width(inno->phy);
+> > 
+> > hmm, the bus_width could be a member of struct inno_hdmi_phy. PHY API's
+> > don't have to be used for getting data within the PHY driver itself.
+> > Looking at the phy_get_bus_width() implementation, we should have
+> > protected
+> > bus-width set and get with mutex. With that there might be a deadlock
+> > here.
+> 
+> ok, so just read phy->attrs.bus_width directly here?
+> 
+> I don't see how this can be part of struct inno_hdmi_phy, as the bus-width
+> depends on the color-depth used on the hdmi-controller side, so
+> depending on that it will want to adapt the phy's bus_width.
+> 
+> Right now our dw_hdmi in mainline only supports one output format
+> requiring a bus_width of 8, but the vendor kernel shows [0] how this
+> wants to be used with multiple output formats.
+> 
+> [0]
+> https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/r
+> ockchip/dw_hdmi-rockchip.c#L817
+> > > +static irqreturn_t inno_hdmi_phy_rk3328_irq(int irq, void *dev_id)
+> > > +{
+> > > +	struct inno_hdmi_phy *inno = dev_id;
+> > > +
+> > > +	inno_update_bits(inno, 0x02, RK3328_PDATA_EN, 0);
+> > > +	usleep_range(9, 10);
+> > 
+> > This range looks very narrow. 10 to 20 should be okay?
+> 
+> ok
+> 
+> > > +static void inno_hdmi_phy_action(void *data)
+> > > +{
+> > > +	struct inno_hdmi_phy *inno = data;
+> > > +
+> > > +	clk_disable_unprepare(inno->refpclk);
+> > > +	clk_disable_unprepare(inno->sysclk);
+> > > +}
+> > > +
+> > > +static int inno_hdmi_phy_probe(struct platform_device *pdev)
+> > > +{
+> > > +	struct inno_hdmi_phy *inno;
+> > > +	const struct of_device_id *match;
+> > > +	struct phy_provider *phy_provider;
+> > > +	struct resource *res;
+> > > +	void __iomem *regs;
+> > > +	int ret;
+> > > +
+> 
+> [...]
+> 
+> > > +	/*
+> > > +	 * Refpclk needs to be on, on at least the rk3328 for still
+> > > +	 * unknown reasons.
+> > > +	 */
+> > > +	ret = clk_prepare_enable(inno->refpclk);
+> > > +	if (ret) {
+> > > +		dev_err(inno->dev, "failed to enable refpclk\n");
+> > > +		clk_disable_unprepare(inno->sysclk);
+> > > +		return ret;
+> > > +	}
+> > > +
+> > > +	ret = devm_add_action_or_reset(inno->dev, inno_hdmi_phy_action,
+> > > +				       inno);
+> > > +	if (ret) {
+> > > +		clk_disable_unprepare(inno->refpclk);
+> > > +		clk_disable_unprepare(inno->sysclk);
+> > > +		return ret;
+> > > +	}
+> > > +
+> > > +	inno->regmap = devm_regmap_init_mmio(inno->dev, regs,
+> > > +					     &inno_hdmi_phy_regmap_config);
+> > > +	if (IS_ERR(inno->regmap))
+> > 
+> > here too clk_disable_unprepare and all error handling below?
+> > It's better if we just handle error handling at the bottom of the
+> > function.
+> 
+> Nope ;-) ... I.e. the goal of registering the devm_action above is to have
+> the clocks get disabled in the correct order when devm undoes the other
+> things in sequence.
+> 
+> Manual error handling for the clocks would also break devm, as then
+> the clocks would get disabled before the devm cleanup kicks in.
+
+but I just realized, that I don't need the initial disable_unprepare calls
+anymore as well, as devm_add_action_or_reset will call that itself
+in the error case.
