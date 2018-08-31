@@ -1,148 +1,70 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 RESEND 2/2] phy: add Rockchip Innosilicon hdmi phy
-Date: Fri, 31 Aug 2018 11:26:01 +0200
-Message-ID: <21954745.lUUHsRAzaY@diego>
-References: <20180710134949.25203-1-heiko@sntech.de>
- <a0a84907-c51f-b484-33fa-592a23c756f9@ti.com> <4194245.uYZyAYm7Hd@phil>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/3] dt-bindings: firmware: coreboot: document board
+ variant properties
+Date: Fri, 31 Aug 2018 08:18:36 -0400
+Message-ID: <20180831121836.GA23441@bogus>
+References: <20180822120214.11848-1-heiko@sntech.de>
+ <20180822120214.11848-2-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <4194245.uYZyAYm7Hd@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180822120214.11848-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 14. August 2018, 14:52:00 CEST schrieb Heiko Stuebner:
-> Hi Kishon,
+On Wed, Aug 22, 2018 at 02:02:13PM +0200, Heiko Stuebner wrote:
+> Since at least 2014 coreboot exports board specific variant ids for
+> board-revision, used ram-modules and component variants on the same board
+> into the loaded devicetree.
 > 
-> thanks for your review.
-> 
-> Am Freitag, 3. August 2018, 11:24:06 CEST schrieb Kishon Vijay Abraham I:
-> > On Tuesday 10 July 2018 07:19 PM, Heiko Stuebner wrote:
-> > > +config PHY_ROCKCHIP_INNO_HDMI
-> > > +	tristate "Rockchip INNO HDMI PHY Driver"
-> > > +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-> > 
-> > depends on COMMON_CLK since the phy registers a clock provider?
-> 
-> ok
-> 
-> > > +static const struct phy_config rk3228_phy_cfg[] = {
-> > > +	{	165000000, {
-> > > +			0xaa, 0x00, 0x44, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00,
-> > > +			0x00, 0x00, 0x00, 0x00, 0x00,
-> > 
-> > If these register configurations are not a tuning value or dividers (which
-> > can have absolute values), then we should have macros for each of these
-> > configurations.
-> That might get difficult.
-> 
-> That phy register set is completely undocumented even in the vendor TRMs
-> of the 2 socs. I pieced together most existing macros from code comments
-> and such from the vendor kernel. And Innosilicon is not known to willingly
-> share much of their register documentation it seems.
-> 
-> > > +static unsigned long inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy
-> > > *inno,
-> > > +					       unsigned long rate)
-> > > +{
-> > > +	int bus_width = phy_get_bus_width(inno->phy);
-> > 
-> > hmm, the bus_width could be a member of struct inno_hdmi_phy. PHY API's
-> > don't have to be used for getting data within the PHY driver itself.
-> > Looking at the phy_get_bus_width() implementation, we should have
-> > protected
-> > bus-width set and get with mutex. With that there might be a deadlock
-> > here.
-> 
-> ok, so just read phy->attrs.bus_width directly here?
-> 
-> I don't see how this can be part of struct inno_hdmi_phy, as the bus-width
-> depends on the color-depth used on the hdmi-controller side, so
-> depending on that it will want to adapt the phy's bus_width.
-> 
-> Right now our dw_hdmi in mainline only supports one output format
-> requiring a bus_width of 8, but the vendor kernel shows [0] how this
-> wants to be used with multiple output formats.
-> 
-> [0]
-> https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/r
-> ockchip/dw_hdmi-rockchip.c#L817
-> > > +static irqreturn_t inno_hdmi_phy_rk3328_irq(int irq, void *dev_id)
-> > > +{
-> > > +	struct inno_hdmi_phy *inno = dev_id;
-> > > +
-> > > +	inno_update_bits(inno, 0x02, RK3328_PDATA_EN, 0);
-> > > +	usleep_range(9, 10);
-> > 
-> > This range looks very narrow. 10 to 20 should be okay?
-> 
-> ok
-> 
-> > > +static void inno_hdmi_phy_action(void *data)
-> > > +{
-> > > +	struct inno_hdmi_phy *inno = data;
-> > > +
-> > > +	clk_disable_unprepare(inno->refpclk);
-> > > +	clk_disable_unprepare(inno->sysclk);
-> > > +}
-> > > +
-> > > +static int inno_hdmi_phy_probe(struct platform_device *pdev)
-> > > +{
-> > > +	struct inno_hdmi_phy *inno;
-> > > +	const struct of_device_id *match;
-> > > +	struct phy_provider *phy_provider;
-> > > +	struct resource *res;
-> > > +	void __iomem *regs;
-> > > +	int ret;
-> > > +
-> 
-> [...]
-> 
-> > > +	/*
-> > > +	 * Refpclk needs to be on, on at least the rk3328 for still
-> > > +	 * unknown reasons.
-> > > +	 */
-> > > +	ret = clk_prepare_enable(inno->refpclk);
-> > > +	if (ret) {
-> > > +		dev_err(inno->dev, "failed to enable refpclk\n");
-> > > +		clk_disable_unprepare(inno->sysclk);
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret = devm_add_action_or_reset(inno->dev, inno_hdmi_phy_action,
-> > > +				       inno);
-> > > +	if (ret) {
-> > > +		clk_disable_unprepare(inno->refpclk);
-> > > +		clk_disable_unprepare(inno->sysclk);
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	inno->regmap = devm_regmap_init_mmio(inno->dev, regs,
-> > > +					     &inno_hdmi_phy_regmap_config);
-> > > +	if (IS_ERR(inno->regmap))
-> > 
-> > here too clk_disable_unprepare and all error handling below?
-> > It's better if we just handle error handling at the bottom of the
-> > function.
-> 
-> Nope ;-) ... I.e. the goal of registering the devm_action above is to have
-> the clocks get disabled in the correct order when devm undoes the other
-> things in sequence.
-> 
-> Manual error handling for the clocks would also break devm, as then
-> the clocks would get disabled before the devm cleanup kicks in.
+> These are set on all devicetree-based Chromebooks since then, so at
+> least we can make the effort to document these long-used properties.
 
-but I just realized, that I don't need the initial disable_unprepare calls
-anymore as well, as devm_add_action_or_reset will call that itself
-in the error case.
+Long used, but never reviewed, so that doesn't really matter.
+
+> 
+> A case where these are used is for example to determine the touchscreen
+> type that is only identifyable via the sku-id when updating its firmware
+> on the Scarlet tablet from the Gru ChromeOS family.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/firmware/coreboot.txt | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/firmware/coreboot.txt b/Documentation/devicetree/bindings/firmware/coreboot.txt
+> index 4c955703cea8..cfc7623e2577 100644
+> --- a/Documentation/devicetree/bindings/firmware/coreboot.txt
+> +++ b/Documentation/devicetree/bindings/firmware/coreboot.txt
+> @@ -21,6 +21,12 @@ Required properties:
+>  	0xc0389481 that resides in the topmost 8 bytes of the area.
+>  	See coreboot's src/include/imd.h for details.
+>  
+> +Board variant properties determined via strapping measures (like gpios):
+> + - board-id: board-specific id indicating the board-revision
+> + - ram-code: board-specific id identifying the used ram-module
+> + - sku-id: board-specific id indicating a variant (using different
+> +           display panels for example)
+
+The appear to be consumed by coreboot, but the purpose of the /firmware 
+nodes has describing firmware interfaces provided by the platform. 
+
+Not saying we can't put things to configure the firmware there, but it 
+would be a departure and something we should consider. These properties 
+aren't really coreboot specific and probably belong at the root node. 
+Though I think we already discussed a 'board-id' property for QCom (and 
+ended up with a compatible string approach instead.
+
+Rob
