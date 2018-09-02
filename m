@@ -1,91 +1,56 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v3 5/5] clk: RK808: add RK809 and RK817 support.
-Date: Fri, 31 Aug 2018 10:34:22 -0700
-Message-ID: <153573686206.93865.11806745452503167124@swboyd.mtv.corp.google.com>
-References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
- <1535081762-20844-1-git-send-email-tony.xie@rock-chips.com>
+From: beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org
+Subject: [2/3] Device Tree for ASUS Tinker Board S : enable eMMC
+Date: Sun, 2 Sep 2018 11:04:58 +0100
+Message-ID: <d059a467-594d-3dcf-fe69-3b144695d448@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1535081762-20844-1-git-send-email-tony.xie@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Tony Xie (2018-08-23 20:36:02)
-> diff --git a/drivers/clk/clk-rk808.c b/drivers/clk/clk-rk808.c
-> index 6461f28..c5d3492 100644
-> --- a/drivers/clk/clk-rk808.c
-> +++ b/drivers/clk/clk-rk808.c
-> @@ -96,6 +96,66 @@ static int rk808_clkout2_is_prepared(struct clk_hw *hw)
-> +
-> +static int rk817_clkout2_is_prepared(struct clk_hw *hw)
-> +{
-> +       struct rk808_clkout *rk808_clkout =3D container_of(hw,
-> +                                                        struct rk808_clk=
-out,
-> +                                                        clkout2_hw);
-> +       struct rk808 *rk808 =3D rk808_clkout->rk808;
-> +       unsigned int val;
-> +
-> +       int ret =3D regmap_read(rk808->regmap, RK817_SYS_CFG(1), &val);
-> +
-> +       if (ret < 0)
-> +               return ret;
-
-The clk core handles the return value here as true or false. Probably
-should return 0 here.
-
-> +
-> +       return (val & RK817_CLK32KOUT2_EN) ? 1 : 0;
-> +}
-> +
-> +static const struct clk_ops rk817_clkout2_ops =3D {
-> +       .prepare =3D rk817_clkout2_prepare,
-> +       .unprepare =3D rk817_clkout2_unprepare,
-> +       .is_prepared =3D rk817_clkout2_is_prepared,
-> +       .recalc_rate =3D rk808_clkout_recalc_rate,
-> +};
-> +
-> +static const struct clk_ops *rkpmic_get_ops(long variant)
-
-Use the enum here for 'variant'? Then the case statement here will
-complain loudly for unhandled cases.
-
-> +{
-> +       switch (variant) {
-> +       case RK809_ID:
-> +       case RK817_ID:
-> +               return &rk817_clkout2_ops;
-> +       case RK805_ID:
-> +       case RK808_ID:
-> +       case RK818_ID:
-> +               return &rk808_clkout2_ops;
-> +       }
-> +
-> +       return &rk808_clkout2_ops;
-> +}
-> +
->  static int rk808_clkout_probe(struct platform_device *pdev)
->  {
->         struct rk808 *rk808 =3D dev_get_drvdata(pdev->dev.parent);
-> @@ -127,7 +187,7 @@ static int rk808_clkout_probe(struct platform_device =
-*pdev)
->                 return ret;
->  =
-
->         init.name =3D "rk808-clkout2";
-> -       init.ops =3D &rk808_clkout2_ops;
-> +       init.ops =3D rkpmic_get_ops(rk808->variant);
->         rk808_clkout->clkout2_hw.init =3D &init;
->  =
-
->         /* optional override of the clockname */
-> -- =
-
-> 1.9.1
-> =
-
->=20
+VGhpcyBwYXRjaCB0YWtlcyB0aGUgbmV3bHkgY3JlYXRlZCByazMyODgtdGlua2VyUy5kdHMgYW5k
+IGVuYWJsZXMgdGhlIGVNTUMuCgpJdCBpcyBiYXNlZCBvbjogCmh0dHBzOi8vZ2l0aHViLmNvbS9U
+aW5rZXJCb2FyZC9kZWJpYW5fa2VybmVsL2NvbW1pdC9kYzdkNGViNDE0MGI0ZTVmZjIzYWFmMjg2
+NGE1NmQ1Yzg2MzRmM2QwCgpXaXRoIHRoZSBzcGVlZCBjaGFuZ2UgZnJvbQoKaHR0cHM6Ly9naXRo
+dWIuY29tL1RpbmtlckJvYXJkL2RlYmlhbl9rZXJuZWwvY29tbWl0LzRiNTI2MjcwMzc5NThiYzk1
+ZWQzZjY3ZmY5NmJiYmFkYmIyYmZlMDcKClRoZSBwYXRjaCBpcyByZWxhdGl2ZWx5IHN0cmFpZ2h0
+IGZvcndhcmQuIE9ubHkgb2RkaXR5IHRoYXQgaXQgc2VlbXMgdG8gCmJlIG9uIHRoZSBzZCBjYXJk
+IHNsb3QgYXQgJnNkbW1jOyB3aGVuIGJvb3RpbmcgZnJvbSBlTU1DIGFuZCB0aGVyZSBpcyBubyAK
+Y2FyZCBpbiB0aGUgc2Qgc2xvdCAtIHRoZW4gdGhlIGtlcm5lbCBrZWVwcyBzY2FubmluZyB0aGUg
+c2Qgc2xvdC4gU28gaXQgCmxvb2tzIGxpa2UgY2FyZCBkZXRlY3QgaXNuJ3QgZnVuY3Rpb25pbmcg
+Y29ycmVjdGx5IG9uICZzZG1tYy4gVGhpcyAKcHJvYmFibHkgd2Fzbid0IG5vdGVkIG9uIHRoZSBv
+cmlnaW5hbCBUaW5rZXIgQm9hcmQsIGFzIHRoYXQgaGFkIHRvIGhhdmUgCmEgc2QgY2FyZCBpbiBv
+cmRlciB0byBib290LiBBbGFzIHRoZSBzY2hlbWF0aWMgZm9yIHRoZSB0aW5rZXIgYm9hcmQgCmRv
+ZXNuJ3Qgc2hvdyBob3cgdGhlIHNkIGNhcmQgaXMgd2lyZWQgLi4uOgoKaHR0cDovL2RsY2RuZXQu
+YXN1cy5jb20vcHViL0FTVVMvbWIvTGludXgvVGlua2VyX0JvYXJkXzJHQi9UaW5rZXJfQm9hcmRf
+U2NoZW1hdGljcy56aXAKCmRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtdGlu
+a2VyUy5kdHMgCmIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtlclMuZHRzCmluZGV4IDlk
+MTEzNDE4YTljOS4uN2FlZmEyY2QyM2ZhIDEwMDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9y
+azMyODgtdGlua2VyUy5kdHMKKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtlclMu
+ZHRzCkBAIC00NDQsNiArNDQ0LDIwIEBACiDCoMKgwqDCoMKgwqDCoCB2cW1tYy1zdXBwbHkgPSA8
+JnZjY2lvX3NkPjsKIMKgfTsKCismZW1tYyB7CivCoMKgwqDCoMKgwqAgYnVzLXdpZHRoID0gPDg+
+OworwqDCoMKgwqDCoMKgIGNhcC1tbWMtaGlnaHNwZWVkOworwqDCoMKgwqDCoMKgIGRpc2FibGUt
+d3A7CivCoMKgwqDCoMKgwqAgbm9uLXJlbW92YWJsZTsKK8KgwqDCoMKgwqDCoCBudW0tc2xvdHMg
+PSA8MT47CivCoMKgwqDCoMKgwqAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKK8KgwqDCoMKg
+wqDCoCBwaW5jdHJsLTAgPSA8JmVtbWNfY2xrICZlbW1jX2NtZCAmZW1tY19wd3IgJmVtbWNfYnVz
+OD47CivCoMKgwqDCoMKgwqAgbWF4LWZyZXF1ZW5jeSA9IDwxNTAwMDAwMDA+OworwqDCoMKgwqDC
+oMKgIG1tYy1oczIwMC0xXzh2OworwqDCoMKgwqDCoMKgIG1tYy1kZHItMV84djsKK8KgwqDCoMKg
+wqDCoCBzdGF0dXMgPSAib2theSI7Cit9OworCiDCoCZ0c2FkYyB7CiDCoMKgwqDCoMKgwqDCoCBy
+b2NrY2hpcCxody10c2h1dC1tb2RlID0gPDE+OyAvKiB0c2h1dCBtb2RlIDA6Q1JVIDE6R1BJTyAq
+LwogwqDCoMKgwqDCoMKgwqAgcm9ja2NoaXAsaHctdHNodXQtcG9sYXJpdHkgPSA8MT47IC8qIHRz
+aHV0IHBvbGFyaXR5IDA6TE9XIDE6SElHSCAqLwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
