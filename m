@@ -1,13 +1,12 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: vop: add rk3188 vop definitions
-Date: Wed, 05 Sep 2018 13:07:26 +0200
-Message-ID: <1970360.0KMkdXbmga@phil>
-References: <20180830110937.1739-1-heiko@sntech.de>
+Subject: [PATCH] drm/rockchip: rgb: add stub functions when rgb encoder is
+ disabled
+Date: Wed,  5 Sep 2018 21:13:02 +0200
+Message-ID: <20180905191302.26023-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180830110937.1739-1-heiko@sntech.de>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -18,15 +17,30 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: hjc@rock-chips.com
-Cc: mark.rutland@arm.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMzAuIEF1Z3VzdCAyMDE4LCAxMzowOTozNyBDRVNUIHNjaHJpZWIgSGVp
-a28gU3R1ZWJuZXI6Cj4gVGhlIHJrMzE4OCBoYXMgMiB2b3BzIG5vdCB1c2luZyBpb21tdXMgd2hp
-Y2ggb25seSBvdXRwdXQgZGlyZWN0bHkKPiB0byBhIHJnYiBpbnRlcmZhY2UgcGVyIHZvcC4gU28g
-YWxsIG90aGVyIG91dHB1dCBtb2RlcyBsaWtlIGhkbWkKPiBhcmUgcHJvdmlkZWQgYnkgZXh0ZXJu
-YWwgYnJpZ2UgY2hpcHMuCj4gCj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtv
-QHNudGVjaC5kZT4KCmFwcGxpZWQgdG8gZHJtLW1pc2MtbmV4dAoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+VGhlIG5ld2x5IGFkZGVkIGludGVybmFsIHJnYiBlbmNvZGVyIGZvciBSb2NrY2hpcCB2b3BzIGlz
+IG1pc3NpbmcKc3R1YnMgZm9yIHRoZSBjYXNlIHRoYXQgdGhlIHJnYiBvdXRwdXQgcGFydCBpcyBu
+b3QgZW5hYmxlZCBpbiB0aGUKa2VybmVsIGNvbmZpZy4gU28gYWRkIHRoZXNlLgoKRml4ZXM6IDFm
+MGYwMTUxNTE3MiAoImRybS9yb2NrY2hpcDogQWRkIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFNvYyBS
+R0Igb3V0cHV0IGludGVyZmFjZSIpClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlr
+b0BzbnRlY2guZGU+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5o
+IHwgMTQgKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspCgpk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oCmluZGV4IGM3MTJhNjczZDFlMy4u
+YmNkOTAzNjg4NDkxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfcmdiLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oCkBA
+IC0xNCw3ICsxNCwyMSBAQAogICogR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgZm9yIG1vcmUg
+ZGV0YWlscy4KICAqLwogCisjaWZkZWYgQ09ORklHX1JPQ0tDSElQX1JHQgogc3RydWN0IHJvY2tj
+aGlwX3JnYiAqcm9ja2NoaXBfcmdiX2luaXQoc3RydWN0IGRldmljZSAqZGV2LAogCQkJCSAgICAg
+ICBzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJCQkJICAgICAgIHN0cnVjdCBkcm1fZGV2aWNlICpk
+cm1fZGV2KTsKIHZvaWQgcm9ja2NoaXBfcmdiX2Zpbmkoc3RydWN0IHJvY2tjaGlwX3JnYiAqcmdi
+KTsKKyNlbHNlCitzdGF0aWMgaW5saW5lIHN0cnVjdCByb2NrY2hpcF9yZ2IgKnJvY2tjaGlwX3Jn
+Yl9pbml0KHN0cnVjdCBkZXZpY2UgKmRldiwKKwkJCQkgICAgICAgc3RydWN0IGRybV9jcnRjICpj
+cnRjLAorCQkJCSAgICAgICBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldikKK3sKKwlyZXR1cm4g
+TlVMTDsKK30KKworc3RhdGljIGlubGluZSB2b2lkIHJvY2tjaGlwX3JnYl9maW5pKHN0cnVjdCBy
+b2NrY2hpcF9yZ2IgKnJnYikKK3sKKwlyZXR1cm47Cit9CisjZW5kaWYKLS0gCjIuMTcuMAoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
