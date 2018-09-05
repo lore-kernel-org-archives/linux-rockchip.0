@@ -1,32 +1,58 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] ARM: dts: rockchip: add rk3188 lcd controller nodes
-Date: Wed, 05 Sep 2018 21:17:04 +0200
-Message-ID: <3757715.Y541dOOzu4@diego>
-References: <20180831072537.15785-1-heiko@sntech.de>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH] drm/rockchip: rgb: add stub functions when rgb encoder
+ is disabled
+Date: Wed, 5 Sep 2018 15:33:56 -0400
+Message-ID: <20180905193356.GW188300@art_vandelay>
+References: <20180905191302.26023-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180831072537.15785-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20180905191302.26023-1-heiko@sntech.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 31. August 2018, 09:25:37 CEST schrieb Heiko Stuebner:
-> Add the core display subsystem and vop nodes to rk3188.
-> Vop0 has a fully dedicated set of pins and only vop1 needs to
-> do pinctrl to have display output, so also add the necessary
-> pinctrl entries for it.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-applied for 4.20
+T24gV2VkLCBTZXAgMDUsIDIwMTggYXQgMDk6MTM6MDJQTSArMDIwMCwgSGVpa28gU3R1ZWJuZXIg
+d3JvdGU6Cj4gVGhlIG5ld2x5IGFkZGVkIGludGVybmFsIHJnYiBlbmNvZGVyIGZvciBSb2NrY2hp
+cCB2b3BzIGlzIG1pc3NpbmcKPiBzdHVicyBmb3IgdGhlIGNhc2UgdGhhdCB0aGUgcmdiIG91dHB1
+dCBwYXJ0IGlzIG5vdCBlbmFibGVkIGluIHRoZQo+IGtlcm5lbCBjb25maWcuIFNvIGFkZCB0aGVz
+ZS4KPiAKPiBGaXhlczogMWYwZjAxNTE1MTcyICgiZHJtL3JvY2tjaGlwOiBBZGQgc3VwcG9ydCBm
+b3IgUm9ja2NoaXAgU29jIFJHQiBvdXRwdXQgaW50ZXJmYWNlIikKPiBTaWduZWQtb2ZmLWJ5OiBI
+ZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfcmdiLmggfCAxNCArKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hh
+bmdlZCwgMTQgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfcmdiLmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfcmdiLmgKPiBpbmRleCBjNzEyYTY3M2QxZTMuLmJjZDkwMzY4ODQ5MSAxMDA2NDQKPiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmgKPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfcmdiLmgKPiBAQCAtMTQsNyArMTQsMjEgQEAKPiAg
+ICogR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgZm9yIG1vcmUgZGV0YWlscy4KPiAgICovCj4g
+IAo+ICsjaWZkZWYgQ09ORklHX1JPQ0tDSElQX1JHQgo+ICBzdHJ1Y3Qgcm9ja2NoaXBfcmdiICpy
+b2NrY2hpcF9yZ2JfaW5pdChzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gIAkJCQkgICAgICAgc3RydWN0
+IGRybV9jcnRjICpjcnRjLAo+ICAJCQkJICAgICAgIHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2
+KTsKPiAgdm9pZCByb2NrY2hpcF9yZ2JfZmluaShzdHJ1Y3Qgcm9ja2NoaXBfcmdiICpyZ2IpOwo+
+ICsjZWxzZQo+ICtzdGF0aWMgaW5saW5lIHN0cnVjdCByb2NrY2hpcF9yZ2IgKnJvY2tjaGlwX3Jn
+Yl9pbml0KHN0cnVjdCBkZXZpY2UgKmRldiwKPiArCQkJCSAgICAgICBzdHJ1Y3QgZHJtX2NydGMg
+KmNydGMsCj4gKwkJCQkgICAgICAgc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYpCj4gK3sKPiAr
+CXJldHVybiBOVUxMOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW5saW5lIHZvaWQgcm9ja2NoaXBfcmdi
+X2Zpbmkoc3RydWN0IHJvY2tjaGlwX3JnYiAqcmdiKQo+ICt7Cj4gKwlyZXR1cm47CgpUaGlzIHJl
+dHVybiBpcyByZWR1bmRhbnQuIFdpdGggdGhhdCBuaXQgZml4ZWQsIGZlZWwgZnJlZSB0byBjb21t
+aXQgd2l0aAoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgoK
+Cj4gK30KPiArI2VuZGlmCj4gLS0gCj4gMi4xNy4wCj4gCj4gX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBF
+bmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
