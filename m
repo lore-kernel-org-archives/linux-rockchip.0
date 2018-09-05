@@ -1,46 +1,32 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] drm/rockchip: rgb: add stub functions when rgb encoder is
- disabled
-Date: Wed,  5 Sep 2018 21:13:02 +0200
-Message-ID: <20180905191302.26023-1-heiko@sntech.de>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] ARM: dts: rockchip: add rk3188 lcd controller nodes
+Date: Wed, 05 Sep 2018 21:17:04 +0200
+Message-ID: <3757715.Y541dOOzu4@diego>
+References: <20180831072537.15785-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180831072537.15785-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIG5ld2x5IGFkZGVkIGludGVybmFsIHJnYiBlbmNvZGVyIGZvciBSb2NrY2hpcCB2b3BzIGlz
-IG1pc3NpbmcKc3R1YnMgZm9yIHRoZSBjYXNlIHRoYXQgdGhlIHJnYiBvdXRwdXQgcGFydCBpcyBu
-b3QgZW5hYmxlZCBpbiB0aGUKa2VybmVsIGNvbmZpZy4gU28gYWRkIHRoZXNlLgoKRml4ZXM6IDFm
-MGYwMTUxNTE3MiAoImRybS9yb2NrY2hpcDogQWRkIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFNvYyBS
-R0Igb3V0cHV0IGludGVyZmFjZSIpClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlr
-b0BzbnRlY2guZGU+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5o
-IHwgMTQgKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oCmluZGV4IGM3MTJhNjczZDFlMy4u
-YmNkOTAzNjg4NDkxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfcmdiLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5oCkBA
-IC0xNCw3ICsxNCwyMSBAQAogICogR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgZm9yIG1vcmUg
-ZGV0YWlscy4KICAqLwogCisjaWZkZWYgQ09ORklHX1JPQ0tDSElQX1JHQgogc3RydWN0IHJvY2tj
-aGlwX3JnYiAqcm9ja2NoaXBfcmdiX2luaXQoc3RydWN0IGRldmljZSAqZGV2LAogCQkJCSAgICAg
-ICBzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJCQkJICAgICAgIHN0cnVjdCBkcm1fZGV2aWNlICpk
-cm1fZGV2KTsKIHZvaWQgcm9ja2NoaXBfcmdiX2Zpbmkoc3RydWN0IHJvY2tjaGlwX3JnYiAqcmdi
-KTsKKyNlbHNlCitzdGF0aWMgaW5saW5lIHN0cnVjdCByb2NrY2hpcF9yZ2IgKnJvY2tjaGlwX3Jn
-Yl9pbml0KHN0cnVjdCBkZXZpY2UgKmRldiwKKwkJCQkgICAgICAgc3RydWN0IGRybV9jcnRjICpj
-cnRjLAorCQkJCSAgICAgICBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldikKK3sKKwlyZXR1cm4g
-TlVMTDsKK30KKworc3RhdGljIGlubGluZSB2b2lkIHJvY2tjaGlwX3JnYl9maW5pKHN0cnVjdCBy
-b2NrY2hpcF9yZ2IgKnJnYikKK3sKKwlyZXR1cm47Cit9CisjZW5kaWYKLS0gCjIuMTcuMAoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Freitag, 31. August 2018, 09:25:37 CEST schrieb Heiko Stuebner:
+> Add the core display subsystem and vop nodes to rk3188.
+> Vop0 has a fully dedicated set of pins and only vop1 needs to
+> do pinctrl to have display output, so also add the necessary
+> pinctrl entries for it.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+applied for 4.20
