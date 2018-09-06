@@ -1,59 +1,80 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix vcc_host1_5v pin assign
-Date: Fri,  7 Sep 2018 00:39:47 +0900
-Message-ID: <20180906153947.19495-1-katsuhiro@katsuster.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoint of rk3328
+Date: Fri,  7 Sep 2018 01:39:56 +0900
+Message-ID: <20180906163956.20667-1-katsuhiro@katsuster.net>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch fixes pin assign of vcc_host1_5v. This regulator is
-controlled by USB20_HOST_DRV signal.
+This patch adds port and endpoint of i2s and spdif nodes for rk3328.
+Because to use modern sound card interface such as audio-graph-card.
 
-ROCK64 schematic says that GPIO0_A2 pin is used as USB20_HOST_DRV.
-GPIO0_D3 pin is for SPDIF_TX_M0.
-
-ROCK64 schematic:
-http://files.pine64.org/doc/rock64/ROCK64_Schematic_v2.0_20171019.pdf
-
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 5272e887a434..5852061e497b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -46,7 +46,7 @@
- 	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
--		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
-+		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb20_host_drv>;
- 		regulator-name = "vcc_host1_5v";
-@@ -238,7 +238,7 @@
- 
- 	usb2 {
- 		usb20_host_drv: usb20-host-drv {
--			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index d3ef6566325e..41f0a20b73ed 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -179,7 +179,13 @@
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		dmas = <&dmac 11>, <&dmac 12>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		i2s0_p0: port@0 {
++			i2s0_p0_0: endpoint {
++			};
++		};
  	};
  
+ 	i2s1: i2s@ff010000 {
+@@ -190,7 +196,13 @@
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		dmas = <&dmac 14>, <&dmac 15>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		i2s1_p0: port@0 {
++			i2s1_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	i2s2: i2s@ff020000 {
+@@ -201,7 +213,13 @@
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		dmas = <&dmac 0>, <&dmac 1>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		i2s2_p0: port@0 {
++			i2s2_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	spdif: spdif@ff030000 {
+@@ -214,7 +232,13 @@
+ 		dma-names = "tx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&spdifm2_tx>;
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		spdif_p0: port@0 {
++			spdif_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	pdm: pdm@ff040000 {
 -- 
 2.18.0
