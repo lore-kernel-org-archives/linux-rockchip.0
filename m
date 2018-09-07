@@ -1,80 +1,42 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoint of rk3328
-Date: Fri,  7 Sep 2018 01:39:56 +0900
-Message-ID: <20180906163956.20667-1-katsuhiro@katsuster.net>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [PATCH v4 2/2] phy: add Rockchip Innosilicon hdmi phy
+Date: Fri, 7 Sep 2018 13:48:54 +0530
+Message-ID: <86a8225e-ed07-d4f1-10c6-a5f3158e44f1@ti.com>
+References: <20180906135047.30788-1-heiko@sntech.de>
+ <20180906135047.30788-2-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180906135047.30788-2-heiko@sntech.de>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds port and endpoint of i2s and spdif nodes for rk3328.
-Because to use modern sound card interface such as audio-graph-card.
+Hi Heiko,
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+On Thursday 06 September 2018 07:20 PM, Heiko Stuebner wrote:
+> From: Zheng Yang <zhengyang@rock-chips.com>
+> 
+> Add a driver for the Innosilicon hdmi phy used on rk3228/rk3229
+> and rk3328 socs from Rockchip.
+> 
+> Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Robin Murphy <robin.murphy@arm.com>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index d3ef6566325e..41f0a20b73ed 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -179,7 +179,13 @@
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		dmas = <&dmac 11>, <&dmac 12>;
- 		dma-names = "tx", "rx";
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
-+
-+		i2s0_p0: port@0 {
-+			i2s0_p0_0: endpoint {
-+			};
-+		};
- 	};
- 
- 	i2s1: i2s@ff010000 {
-@@ -190,7 +196,13 @@
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		dmas = <&dmac 14>, <&dmac 15>;
- 		dma-names = "tx", "rx";
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
-+
-+		i2s1_p0: port@0 {
-+			i2s1_p0_0: endpoint {
-+			};
-+		};
- 	};
- 
- 	i2s2: i2s@ff020000 {
-@@ -201,7 +213,13 @@
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		dmas = <&dmac 0>, <&dmac 1>;
- 		dma-names = "tx", "rx";
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
-+
-+		i2s2_p0: port@0 {
-+			i2s2_p0_0: endpoint {
-+			};
-+		};
- 	};
- 
- 	spdif: spdif@ff030000 {
-@@ -214,7 +232,13 @@
- 		dma-names = "tx";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&spdifm2_tx>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
-+
-+		spdif_p0: port@0 {
-+			spdif_p0_0: endpoint {
-+			};
-+		};
- 	};
- 
- 	pdm: pdm@ff040000 {
--- 
-2.18.0
+I got a bunch of checkpatch "check" warnings
+"Alignment should match open parenthesis". Can you fix resend after fixing those?
+
+Thanks
+Kishon
