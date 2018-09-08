@@ -1,7 +1,7 @@
 From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 2/4] arm64: dts: Sapphire board: Fix VCC5V0_HOST_EN
-Date: Sat,  8 Sep 2018 21:00:46 +0200
-Message-ID: <20180908190048.14231-3-vicencb@gmail.com>
+Subject: [PATCH 3/4] arm64: dts: Sapphire board has DVS2 disabled
+Date: Sat,  8 Sep 2018 21:00:47 +0200
+Message-ID: <20180908190048.14231-4-vicencb@gmail.com>
 References: <9e64e878-07c8-912c-c597-7da7b3f96dd6@collabora.com>
  <20180908190048.14231-1-vicencb@gmail.com>
 Mime-Version: 1.0
@@ -22,28 +22,40 @@ To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.o
 Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The reference is the schematic, page 15:
+The reference is the schematic, page 16:
 https://dl.vamrs.com/products/sapphire_excavator/RK_SAPPHIRE_SOCBOARD_RK3399_LPDDR3D178P232SD8_V12_20161109HXS.pdf
 (alternate link)
 http://opensource.rock-chips.com/images/f/f0/RK_Sapphire_RK3399.rar
 
 Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index dac7c331b..68b497ad3 100644
+index 68b497ad3..b1cb50595 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -143,7 +143,7 @@
- 	vcc5v0_host: vcc5v0-host-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
--		gpio = <&gpio1 RK_PD1 GPIO_ACTIVE_HIGH>;
-+		gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
+@@ -241,7 +241,7 @@
+ 		#clock-cells = <1>;
+ 		clock-output-names = "xin32k", "rk808-clkout2";
  		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_host_en>;
- 		regulator-name = "vcc5v0_host";
+-		pinctrl-0 = <&pmic_int_l &pmic_dvs2>;
++		pinctrl-0 = <&pmic_int_l>;
+ 		rockchip,system-power-controller;
+ 		wakeup-source;
+ 
+@@ -489,11 +489,6 @@
+ 				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+-		pmic_dvs2: pmic-dvs2 {
+-			rockchip,pins =
+-				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
+-		};
+-
+ 		vsel1_gpio: vsel1-gpio {
+ 			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
 -- 
 2.18.0
