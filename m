@@ -1,14 +1,16 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 4/4] arm64: dts: Sapphire board: Fix Type-C port supply
-Date: Sat,  8 Sep 2018 21:00:48 +0200
-Message-ID: <20180908190048.14231-5-vicencb@gmail.com>
-References: <9e64e878-07c8-912c-c597-7da7b3f96dd6@collabora.com>
- <20180908190048.14231-1-vicencb@gmail.com>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] drm/rockchip: shutdown drm subsystem on shutdown
+Date: Sun, 9 Sep 2018 14:43:00 +0100
+Message-ID: <20180909144300.3908a11b@why.wild-wind.fr.eu.org>
+References: <5B20F5F0.9090101@rock-chips.com> <1787688.I5Ssat59ga@phil>
+ <CAAMcf8D8Vwgi-Amqt8ou9LbDrsRTePjCvwDXWo1JUTGTxLyn_w@mail.gmail.com>
+ <2811200.LoPo4gnUJc@phil>
+ <CAAMcf8DJhBk8rG65SmQR4vwtj1zfm7jfKJJ4nAx6OsAeu52T2A@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180908190048.14231-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <CAAMcf8DJhBk8rG65SmQR4vwtj1zfm7jfKJJ4nAx6OsAeu52T2A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,60 +20,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The reference is the schematic, page 11:
-https://dl.vamrs.com/products/sapphire_excavator/RK_SAPPHIRE_SOCBOARD_RK3399_LPDDR3D178P232SD8_V12_20161109HXS.pdf
-(alternate link)
-http://opensource.rock-chips.com/images/f/f0/RK_Sapphire_RK3399.rar
+On Tue, 7 Aug 2018 18:20:15 +0200
+Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 
-Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- .../arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+> On Tue, Aug 7, 2018 at 6:07 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > Am Dienstag, 7. August 2018, 18:05:13 CEST schrieb Vicente Bergas:  
+> >> Hi Heiko, Jeffy, Marc,
+> >>
+> >> On Tue, Aug 7, 2018 at 2:44 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:  
+> >> > Hi Vicente,
+> >> >
+> >> > Am Sonntag, 5. August 2018, 16:09:11 CEST schrieb Vicente Bergas:  
+> >> >> As explained by Robin Murphy:  
+> >> >> > the IOMMU shutdown disables paging, so if the VOP is still
+> >> >> > scanning out then that will result in whatever IOVAs it was using now going
+> >> >> > straight out onto the bus as physical addresses.  
+> >> >>
+> >> >> Suggested-by: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> >> Suggested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> >> >> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> >> >> ---
+> >> >>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 9 +++++++++
+> >> >>  1 file changed, 9 insertions(+)
+> >> >>
+> >> >> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> >> >> index f814d37b1db2..00a06768edb2 100644
+> >> >> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> >> >> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> >> >> @@ -442,6 +442,14 @@ static int rockchip_drm_platform_remove(struct platform_device *pdev)
+> >> >>       return 0;
+> >> >>  }
+> >> >>
+> >> >> +static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
+> >> >> +{
+> >> >> +     struct drm_device *drm = platform_get_drvdata(pdev);
+> >> >> +
+> >> >> +     if (drm)
+> >> >> +             drm_atomic_helper_shutdown(drm);  
+> >> >
+> >> > I tend to side with Marc's more drastic approach, especially as this one
+> >> > should also nicely unbind the encoders used. Are you ok with us going
+> >> > with Marc's patch or do you have concerns?  
+> >>
+> >> The patch i posted comes from Jeffy, as is, no modifications.
+> >> So, if he has no concerns about it, then it is also fine for me.
+> >>  
+> >> >
+> >> > Providing a Tested-by tag would also be great ;-)  
+> >>
+> >> OK, i'll reply to his patch with a Tested-by tag, but i was only
+> >> aware of this issue affecting hdmi on power-off, so, the only testing
+> >> performed was checking only this. I have done no kexec-related test.
+> >>
+> >> Only one issue related to this: Marc, how can i reply to your patch
+> >> if i was not a recipient?  
+> >
+> > You can also just post it here. Together with Sandy I'm carrying the
+> > drm-maintainer hat, so I'm probably the one that applies either one
+> > of the patches and can pick up a tag from here as well :-D
+> >
+> >
+> > Heiko  
+> 
+> OK, perfect, so, for this patch:
+> https://www.spinics.net/lists/arm-kernel/msg670229.html
+> here is my
+> Tested-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> tag.
+> As said, i only tested that on shutdown, the hdmi output
+> is also shut down instead of showing random noise.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index b1cb50595..1188c8717 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -151,6 +151,16 @@
- 		vin-supply = <&vcc_sys>;
- 	};
- 
-+	vcc5v0_typec0: vcc5v0-typec0-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 RK_PA0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_typec0_en>;
-+		regulator-name = "vcc5v0_typec0";
-+		vin-supply = <&vcc_sys>;
-+	};
-+
- 	vcc_sys: vcc-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
-@@ -503,6 +513,10 @@
- 			rockchip,pins =
- 				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+		vcc5v0_typec0_en: vcc5v0-typec0-en {
-+			rockchip,pins =
-+				<2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- };
- 
-@@ -564,7 +578,7 @@
- 	};
- 
- 	u2phy0_host: host-port {
--		phy-supply = <&vcc5v0_host>;
-+		phy-supply = <&vcc5v0_typec0>;
- 		status = "okay";
- 	};
- };
+Any update on this patch? I was hoping to see it in 4.18, but so far
+nothing has happened.
+
+Thanks,
+
+	M.
 -- 
-2.18.0
+Without deviation from the norm, progress is not possible.
