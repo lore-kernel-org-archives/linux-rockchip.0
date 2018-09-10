@@ -1,15 +1,16 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v5 5/6] media: Add controls for JPEG quantization tables
-Date: Mon, 10 Sep 2018 10:25:10 -0300
-Message-ID: <710d4e77de63b46e6ffd440c9c98ca9af133117f.camel@collabora.com>
-References: <20180905220011.16612-1-ezequiel@collabora.com>
- <20180905220011.16612-6-ezequiel@collabora.com>
- <718d8a73-008a-a610-d090-91cc54a992ad@xs4all.nl>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 4/4] arm64: dts: Sapphire board: Fix Type-C port supply
+Date: Mon, 10 Sep 2018 15:39:45 +0200
+Message-ID: <CAAMcf8Dr6Kfgx6aqy0vk9TBjW1=0sDp=zJAetjAt5AhPVwHDdA@mail.gmail.com>
+References: <9e64e878-07c8-912c-c597-7da7b3f96dd6@collabora.com>
+ <20180908190048.14231-1-vicencb@gmail.com>
+ <20180908190048.14231-5-vicencb@gmail.com>
+ <2506276.WeVqUmcns7@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <718d8a73-008a-a610-d090-91cc54a992ad-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+In-Reply-To: <2506276.WeVqUmcns7@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,100 +20,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Hans,
-
-Thanks for the review.
-
-On Mon, 2018-09-10 at 14:42 +0200, Hans Verkuil wrote:
-> On 09/06/2018 12:00 AM, Ezequiel Garcia wrote:
-> > From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > 
-> > Add V4L2_CID_JPEG_QUANTIZATION compound control to allow userspace
-> > configure the JPEG quantization tables.
-> > 
-> > Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> >  .../media/uapi/v4l/extended-controls.rst      | 31 +++++++++++++++++++
-> >  .../media/videodev2.h.rst.exceptions          |  1 +
-> >  drivers/media/v4l2-core/v4l2-ctrls.c          | 10 ++++++
-> >  include/uapi/linux/v4l2-controls.h            | 12 +++++++
-> >  include/uapi/linux/videodev2.h                |  1 +
-> >  5 files changed, 55 insertions(+)
-> > 
-> > diff --git a/Documentation/media/uapi/v4l/extended-controls.rst b/Documentation/media/uapi/v4l/extended-controls.rst
-> > index 9f7312bf3365..1335d27d30f3 100644
-> > --- a/Documentation/media/uapi/v4l/extended-controls.rst
-> > +++ b/Documentation/media/uapi/v4l/extended-controls.rst
-> > @@ -3354,7 +3354,38 @@ JPEG Control IDs
-> >      Specify which JPEG markers are included in compressed stream. This
-> >      control is valid only for encoders.
-> >  
-> > +.. _jpeg-quant-tables-control:
-> >  
-> > +``V4L2_CID_JPEG_QUANTIZATION (struct)``
-> > +    Specifies the luma and chroma quantization matrices for encoding
-> > +    or decoding a V4L2_PIX_FMT_JPEG_RAW format buffer. The :ref:`itu-t81`
-> > +    specification allows 8-bit quantization coefficients for
-> > +    baseline profile images, and 8-bit or 16-bit for extended profile
-> > +    images. Supporting or not 16-bit precision coefficients is driver-specific.
-> > +    Coefficients must be set in JPEG zigzag scan order.
-> > +
-> > +
-> > +.. c:type:: struct v4l2_ctrl_jpeg_quantization
-> > +
-> > +.. cssclass:: longtable
-> > +
-> > +.. flat-table:: struct v4l2_ctrl_jpeg_quantization
-> > +    :header-rows:  0
-> > +    :stub-columns: 0
-> > +    :widths:       1 1 2
-> > +
-> > +    * - __u8
-> > +      - ``precision``
-> > +      - Specifies the coefficient precision. User shall set 0
-> > +        for 8-bit, and 1 for 16-bit.
-> 
-> So does specifying 1 here switch the HW encoder to use extended profile?
-> What if the HW only supports baseline? The rockchip driver doesn't appear
-> to check the precision field at all...
-> 
-
-The driver is missing to check that, when the user sets this control.
-
-> I think this needs a bit more thought.
-> 
-> I am not at all sure that this is the right place for the precision field.
-> This is really about JPEG profiles, so I would kind of expect a JPEG PROFILE
-> control (just like other codec profiles), or possibly a new pixelformat for
-> extended profiles.
-> 
-> And based on that the driver would interpret these matrix values as 8 or
-> 16 bits.
-> 
-
-Right, the JPEG profile control is definitely needed. I haven't add it because
-it wouldn't be used, since this VPU can only do baseline.
-
-However, the problem is that some JPEGs in the wild have with 8-bit data and
-16-bit quantization coefficients, as per [1] and [2]:
-
-[1] https://github.com/martinhath/jpeg-rust/issues/1
-[2] https://github.com/libjpeg-turbo/libjpeg-turbo/pull/90
-
-So, in order to support decoding of these images, I've added the precision
-field to the quantization control. The user would be able to set a baseline
-or extended profile thru a (future) profile control, and if 16-bit
-tables are found, and if the hardware supports them, the driver
-would be able to support them.
-
-Another option, which might be even better, is have explicit baseline
-and extended quantization tables controls, e.g.: V4L2_CID_JPEG_QUANT
-and V4L2_CID_JPEG_EXT_QUANT.
-
-Thanks,
-Ezequiel
+T24gTW9uLCBTZXAgMTAsIDIwMTggYXQgMjoyMyBQTSwgSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNu
+dGVjaC5kZT4gd3JvdGU6Cj4gQW0gU2Ftc3RhZywgOC4gU2VwdGVtYmVyIDIwMTgsIDIxOjAwOjQ4
+IENFU1Qgc2NocmllYiBWaWNlbnRlIEJlcmdhczoKPj4gVGhlIHJlZmVyZW5jZSBpcyB0aGUgc2No
+ZW1hdGljLCBwYWdlIDExOgo+PiBodHRwczovL2RsLnZhbXJzLmNvbS9wcm9kdWN0cy9zYXBwaGly
+ZV9leGNhdmF0b3IvUktfU0FQUEhJUkVfU09DQk9BUkRfUkszMzk5X0xQRERSM0QxNzhQMjMyU0Q4
+X1YxMl8yMDE2MTEwOUhYUy5wZGYKPj4gKGFsdGVybmF0ZSBsaW5rKQo+PiBodHRwOi8vb3BlbnNv
+dXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvZi9mMC9SS19TYXBwaGlyZV9SSzMzOTkucmFyCj4+
+Cj4+IFNpZ25lZC1vZmYtYnk6IFZpY2VudGUgQmVyZ2FzIDx2aWNlbmNiQGdtYWlsLmNvbT4KPj4g
+LS0tCj4+ICAuLi4vYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kg
+fCAxNiArKysrKysrKysrKysrKystCj4+ICAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygr
+KSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzk5LXNhcHBoaXJlLmR0c2kKPj4gaW5kZXggYjFjYjUwNTk1Li4xMTg4Yzg3MTcgMTAw
+NjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJl
+LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhp
+cmUuZHRzaQo+PiBAQCAtMTUxLDYgKzE1MSwxNiBAQAo+PiAgICAgICAgICAgICAgIHZpbi1zdXBw
+bHkgPSA8JnZjY19zeXM+Owo+PiAgICAgICB9Owo+Pgo+PiArICAgICB2Y2M1djBfdHlwZWMwOiB2
+Y2M1djAtdHlwZWMwLXJlZ3VsYXRvciB7Cj4+ICsgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJy
+ZWd1bGF0b3ItZml4ZWQiOwo+PiArICAgICAgICAgICAgIGVuYWJsZS1hY3RpdmUtaGlnaDsKPj4g
+KyAgICAgICAgICAgICBncGlvID0gPCZncGlvMiBSS19QQTAgR1BJT19BQ1RJVkVfSElHSD47Cj4+
+ICsgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gKyAgICAgICAgICAg
+ICBwaW5jdHJsLTAgPSA8JnZjYzV2MF90eXBlYzBfZW4+Owo+PiArICAgICAgICAgICAgIHJlZ3Vs
+YXRvci1uYW1lID0gInZjYzV2MF90eXBlYzAiOwo+PiArICAgICAgICAgICAgIHZpbi1zdXBwbHkg
+PSA8JnZjY19zeXM+Owo+PiArICAgICB9Owo+PiArCj4+ICAgICAgIHZjY19zeXM6IHZjYy1zeXMg
+ewo+PiAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gICAg
+ICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2Nfc3lzIjsKPj4gQEAgLTUwMyw2ICs1MTMs
+MTAgQEAKPj4gICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwLHBpbnMgPQo+PiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICA8NCBSS19QRDEgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxf
+bm9uZT47Cj4+ICAgICAgICAgICAgICAgfTsKPj4gKyAgICAgICAgICAgICB2Y2M1djBfdHlwZWMw
+X2VuOiB2Y2M1djAtdHlwZWMwLWVuIHsKPj4gKyAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlw
+LHBpbnMgPQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8MiBSS19QQTAgUktfRlVO
+Q19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4+ICsgICAgICAgICAgICAgfTsKPj4gICAgICAgfTsK
+Pj4gIH07Cj4+Cj4+IEBAIC01NjQsNyArNTc4LDcgQEAKPj4gICAgICAgfTsKPj4KPj4gICAgICAg
+dTJwaHkwX2hvc3Q6IGhvc3QtcG9ydCB7Cj4+IC0gICAgICAgICAgICAgcGh5LXN1cHBseSA9IDwm
+dmNjNXYwX2hvc3Q+Owo+PiArICAgICAgICAgICAgIHBoeS1zdXBwbHkgPSA8JnZjYzV2MF90eXBl
+YzA+Owo+Cj4gSG1tLCBJJ20gbm90IHN1cmUgaWYgdGhhdCBpcyBjb3JyZWN0Lgo+Cj4gUmVhZGlu
+ZyBzY2hlbWF0aWNzIGFuZCBhbHNvIHRoZSBwaHkgcG9ydCBhc3NpZ25tZW50cywgeW91IGNhbiBz
+ZWUKPiB1MnBoeTBfaG9zdCBiZWluZyBjb25uZWN0ZWQgdG8gInVzYl9ob3N0MF9laGNpOiB1c2JA
+ZmUzODAwMDAiLgo+Cj4gU28gSSBndWVzcyB0aGUgdmNjNXYwX2hvc3Qgc2hvdWxkIGJlIHRoZSBj
+b3JyZWN0IG9uZSBmb3IgaXQ/Cj4gRGlkIHlvdSBtZWFuIHRvIGFkZCB0aGUgcHktc3VwcGx5IHRv
+IHUycGh5MF9vdGcgaW5zdGVhZD8gV2hpY2ggaXMgb25lCj4gb2YgdGhlIHBvcnRzIHVzZWQgYnkg
+dGhlIGR3YzM/Cj4KPgo+IEhlaWtvCj4KSGksCmZyb20gdGhlIHNjaGVtYXRpYyB0aGVzZSBhcmUg
+dGhlIGNvbm5lY3Rpb25zIGZvciB0aGUgVVNCIHBvcnRzOgoKIyMjIyMgUEhZMCAjIyMjIwpVMTAw
+MFMgaXMgdGhlIFJLMzM5OSBQSFkwIHVzZWQgZm9yIHRoZSBVU0IzIFR5cGUtQyBjb25uZWN0b3Iu
+ClRoZSBVU0IzIFR5cGUtQyBjb25uZWN0b3IgaXMgdGhlIG9uZSBsYWJlbGVkIEo4OTAyLgpGcm9t
+IHRoZXJlLCB0aGUgVkJVUyBwaW4gaXMgY29ubmVjdGVkIHRvIHRoZSBWQlVTX1RZUEVDIG5ldC4K
+VGhlIFZCVVNfVFlQRUMgc3VwcGx5IGlzIFU4OTA1LCB3aGljaCBoYXMgYW4gZW5hYmxlIGlucHV0
+CiAgY29ubmVjdGVkIHRvIHRoZSBHUElPMl9BMC9DSUZfRDAgbmV0LgpUaGUgR1BJTzJfQTAvQ0lG
+X0QwIG5ldCBpcyBkcml2ZW4gYnkgdGhlCiAgR1BJTzJfQTAvVk9QX0QwL0NJRl9EMC9JMkMyX1NE
+QV91IHBpbiBvZiBVMTAwMEwsIHdoaWNoIGlzCiAgdGhlIFJLMzM5OS4KIyMjIyMjIyMjIyMjIyMj
+IwoKIyMjIyMgUEhZMSAjIyMjIwpVMTAwMFQgaXMgdGhlIFJLMzM5OSBQSFkxIHVzZWQgZm9yIHRo
+ZSBVU0IzIFR5cGUtQSBjb25uZWN0b3IuClRoZSBVU0IzIFR5cGUtQSBjb25uZWN0b3IgaXMgdGhl
+IG9uZSBsYWJlbGVkIENPTjYwMi4KRnJvbSB0aGVyZSwgdGhlIFZCVVMgcGluIGlzIGNvbm5lY3Rl
+ZCB0byB0aGUgVkNDNVYwX0hPU1QyIG5ldC4KVGhlIFZDQzVWMF9IT1NUMiBzdXBwbHkgaXMgVTE5
+MDIsIHdoaWNoIGhhcyBhbiBlbmFibGUgaW5wdXQKICBjb25uZWN0ZWQgdG8gdGhlIFZDQzVWMF9I
+T1NUX0VOIG5ldC4KVGhlIFZDQzVWMF9IT1NUX0VOIG5ldCBpcyBkcml2ZW4gYnkgdGhlCiAgR1BJ
+TzRfRDEvRFBfSE9UUExVR19kIHBpbiBvZiBVMTAwMEssIHdoaWNoIGlzIHRoZSBSSzMzOTkuCiMj
+IyMjIyMjIyMjIyMjIyMKClNvLCBpdCBpcyBjbGVhciB0aGF0IEdQSU8yX0EwIGNvbnRyb2xzIHRo
+ZSBWQlVTIG9mIFBIWTAgYW5kCiAgR1BJTzRfRDEgY29udHJvbHMgdGhlIFZCVVMgb2YgUEhZMS4K
+CkF0IHRoaXMgcG9pbnQsIGkgYW0gbm90IHN1cmUgaG93IHRvIHRyYW5zbGF0ZSB0aGlzIGluZm9y
+bWF0aW9uCmZyb20gdGhlIHNjaGVtYXRpYyBpbnRvIHRoZSBEVFMuIEkgZG9uJ3Qga25vdyBpZiBp
+dCBzaG91bGQgYmUKYXBwbGllZCB0byB0aGUgIm90ZyIgb3IgdGhlICJob3N0IiBzaWRlIGFzIHlv
+dSBhcmUgc3VnZ2VzdGluZy4KQnV0IGl0IGxvb2tzIHF1aXRlIGNsZWFyIHRvIG1lIHRoYXQgVkND
+NVYwX0hPU1QoR1BJTzRfRDEpIGlzIG5vdAphcHBsaWNhcGxlIHRvIHRoZSBQSFkwLgoKQXMgc3Rh
+dGVkIGluIHRoZSBlbWFpbCAwLzQsIHRoaXMgcGF0Y2ggb25seSBwb3dlcnMtdXAgdGhlIFR5cGUt
+Qwpwb3J0LCBidXQgaXQgaXMgc3RpbGwgbm9uLXdvcmtpbmcuIFNvLCBlaXRoZXIgdGhpcyBwYXRj
+aCBpcyB3cm9uZwpvciBtb3JlIGNoYW5nZXMgYXJlIG5lZWRlZCBsaWtlIHRoZSBmdXNiMzAyLgoK
+VGhlIHJlZmVyZW5jZSBzaG91bGQgYmUgdGhlIG9uZSBmcm9tIHRoZSBtYW51ZmFjdHVyZXI6Cmh0
+dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51eC9rZXJuZWwvYmxvYi9yZWxlYXNlLTQuNC9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCmJ1dCBpdCBj
+b250YWlucyB0aGUgc2FtZSBidWdzLgoKU28sIGFueSBoZWxwIHdpbGwgYmUgYXBwcmVjaWF0ZWQu
+CgpSZWdhcmRzLAogIFZpY2Vuw6cuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
