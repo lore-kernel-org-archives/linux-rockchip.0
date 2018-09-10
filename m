@@ -1,86 +1,61 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 4/4] arm64: dts: Sapphire board: Fix Type-C port supply
-Date: Mon, 10 Sep 2018 14:23:03 +0200
-Message-ID: <2506276.WeVqUmcns7@phil>
-References: <9e64e878-07c8-912c-c597-7da7b3f96dd6@collabora.com>
- <20180908190048.14231-1-vicencb@gmail.com>
- <20180908190048.14231-5-vicencb@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] dt-bindings: usb: dwc2: add description for px30
+Date: Mon, 10 Sep 2018 14:36:48 +0200
+Message-ID: <10844921.P8CMEBK8dG@phil>
+References: <20180802130133.4898-1-heiko@sntech.de>
+ <20180802130133.4898-2-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180908190048.14231-5-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180802130133.4898-2-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-usb@vger.kernel.org, gregkh@linuxfoundation.org, balbi@kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, cl@rock-chips.com, hminas@synopsys.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 8. September 2018, 21:00:48 CEST schrieb Vicente Bergas:
-> The reference is the schematic, page 11:
-> https://dl.vamrs.com/products/sapphire_excavator/RK_SAPPHIRE_SOCBOARD_RK3399_LPDDR3D178P232SD8_V12_20161109HXS.pdf
-> (alternate link)
-> http://opensource.rock-chips.com/images/f/f0/RK_Sapphire_RK3399.rar
+Hi Greg, Felipe,
+
+Am Donnerstag, 2. August 2018, 15:01:31 CEST schrieb Heiko Stuebner:
+> From: Liang Chen <cl@rock-chips.com>
 > 
-> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  .../arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 16 +++++++++++++++-
->  1 file changed, 15 insertions(+), 1 deletion(-)
+> This patch adds the compatible of dwc2 for PX30 SoCs.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> index b1cb50595..1188c8717 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> @@ -151,6 +151,16 @@
->  		vin-supply = <&vcc_sys>;
->  	};
->  
-> +	vcc5v0_typec0: vcc5v0-typec0-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio2 RK_PA0 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vcc5v0_typec0_en>;
-> +		regulator-name = "vcc5v0_typec0";
-> +		vin-supply = <&vcc_sys>;
-> +	};
-> +
->  	vcc_sys: vcc-sys {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc_sys";
-> @@ -503,6 +513,10 @@
->  			rockchip,pins =
->  				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
->  		};
-> +		vcc5v0_typec0_en: vcc5v0-typec0-en {
-> +			rockchip,pins =
-> +				<2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
->  	};
->  };
->  
-> @@ -564,7 +578,7 @@
->  	};
->  
->  	u2phy0_host: host-port {
-> -		phy-supply = <&vcc5v0_host>;
-> +		phy-supply = <&vcc5v0_typec0>;
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Acked-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Hmm, I'm not sure if that is correct.
-
-Reading schematics and also the phy port assignments, you can see
-u2phy0_host being connected to "usb_host0_ehci: usb@fe380000".
-
-So I guess the vcc5v0_host should be the correct one for it?
-Did you mean to add the py-supply to u2phy0_otg instead? Which is one
-of the ports used by the dwc3?
+Do you want to pick that patch through one of the usb trees, or should
+I just apply it with the arm64 devicetree-patches?
 
 
+Thanks
 Heiko
+
+
+> unchanged from it being part of the general px30 series
+> 
+>  Documentation/devicetree/bindings/usb/dwc2.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/dwc2.txt b/Documentation/devicetree/bindings/usb/dwc2.txt
+> index 46da5f184460..6dc3c4a34483 100644
+> --- a/Documentation/devicetree/bindings/usb/dwc2.txt
+> +++ b/Documentation/devicetree/bindings/usb/dwc2.txt
+> @@ -6,6 +6,7 @@ Required properties:
+>    - brcm,bcm2835-usb: The DWC2 USB controller instance in the BCM2835 SoC.
+>    - hisilicon,hi6220-usb: The DWC2 USB controller instance in the hi6220 SoC.
+>    - rockchip,rk3066-usb: The DWC2 USB controller instance in the rk3066 Soc;
+> +  - "rockchip,px30-usb", "rockchip,rk3066-usb", "snps,dwc2": for px30 Soc;
+>    - "rockchip,rk3188-usb", "rockchip,rk3066-usb", "snps,dwc2": for rk3188 Soc;
+>    - "rockchip,rk3288-usb", "rockchip,rk3066-usb", "snps,dwc2": for rk3288 Soc;
+>    - "lantiq,arx100-usb": The DWC2 USB controller instance in Lantiq ARX SoCs;
+> 
