@@ -1,58 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v4 1/6] drm/bridge: dw-hdmi: allow forcing vendor phy-type
-Date: Mon, 10 Sep 2018 11:22:18 +0200
-Message-ID: <20180910092223.1106-2-heiko@sntech.de>
-References: <20180910092223.1106-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v3 4/4] arm64: defconfig: enable Rockchip Innosilicon hdmiphy
+Date: Mon, 10 Sep 2018 11:28:43 +0200
+Message-ID: <20180910092843.1700-5-heiko@sntech.de>
+References: <20180910092843.1700-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180910092223.1106-1-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: architt@codeaurora.org, hjc@rock-chips.com, a.hajda@samsung.com
-Cc: Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180910092843.1700-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robin.murphy-5wv7dgnIgG8@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW4gc29tZSBJUCBpbXBsZW1lbnRhdGlvbnMgdGhlIHJlYWRpbmcgb2YgdGhlIHBoeS10eXBlIG1h
-eSBiZSBicm9rZW4uCk9uZSBleGFtcGxlIGFyZSB0aGUgUm9ja2NoaXAgcmszMjI4IGFuZCByazMz
-Mjggc29jcyB0aGF0IHVzZSBhIHNlcGFyYXRlCnZlbmRvci10eXBlIHBoeSBmcm9tIElubm9zaWxp
-Y29uIGJ1dCBzdGlsbCByZXBvcnQgdGhlIEhETUkyMF9UWCB0eXBlLgoKU28gYWxsb3cgdGhlIGds
-dWUgZHJpdmVyIHRvIGZvcmNlIHRoZSB2ZW5kb3ItcGh5IGZvciB0aGVzZSBjYXNlcy4KSW4gdGhl
-IGZ1dHVyZSBpdCBtYXkgYmUgbmVjZXNzYXJ5IHRvIGFsbG93IGZvcmNpbmcgb3RoZXIgdHlwZXMs
-IGJ1dApmb3Igbm93IHdlJ2xsIGtlZXAgaXQgc2ltcGx5IHRvIHRoZSBjYXNlIGFjdHVhbGx5IHNl
-ZW4gaW4gdGhlIHdpbGQuCgpjaGFuZ2VzIGluIHYzOgotIG9ubHkgYWxsb3cgZm9yY2luZyB2ZW5k
-b3IgdHlwZSwgYXMgc3VnZ2VzdGVkIGJ5IExhdXJlbnQKClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0
-dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+ClRlc3RlZC1ieTogUm9iaW4gTXVycGh5IDxyb2Jpbi5t
-dXJwaHlAYXJtLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhk
-bWkuYyB8IDQgKysrLQogaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaCAgICAgICAgICAgICAg
-fCAxICsKIDIgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwppbmRleCA1OTcxOTc2Mjg0
-YmYuLmFjMzdjNTBkNmM0YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
-cHN5cy9kdy1oZG1pLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1o
-ZG1pLmMKQEAgLTIyMDUsNyArMjIwNSw5IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9kZXRlY3RfcGh5
-KHN0cnVjdCBkd19oZG1pICpoZG1pKQogCXVuc2lnbmVkIGludCBpOwogCXU4IHBoeV90eXBlOwog
-Ci0JcGh5X3R5cGUgPSBoZG1pX3JlYWRiKGhkbWksIEhETUlfQ09ORklHMl9JRCk7CisJcGh5X3R5
-cGUgPSBoZG1pLT5wbGF0X2RhdGEtPnBoeV9mb3JjZV92ZW5kb3IgPworCQkJCURXX0hETUlfUEhZ
-X1ZFTkRPUl9QSFkgOgorCQkJCWhkbWlfcmVhZGIoaGRtaSwgSERNSV9DT05GSUcyX0lEKTsKIAog
-CWlmIChwaHlfdHlwZSA9PSBEV19IRE1JX1BIWV9WRU5ET1JfUEhZKSB7CiAJCS8qIFZlbmRvciBQ
-SFlzIHJlcXVpcmUgc3VwcG9ydCBmcm9tIHRoZSBnbHVlIGxheWVyLiAqLwpkaWZmIC0tZ2l0IGEv
-aW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaCBiL2luY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1p
-LmgKaW5kZXggY2NiNWFhODQ2OGUwLi42ZWYzMjM2YmI2ZGQgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUv
-ZHJtL2JyaWRnZS9kd19oZG1pLmgKKysrIGIvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaApA
-QCAtMTMzLDYgKzEzMyw3IEBAIHN0cnVjdCBkd19oZG1pX3BsYXRfZGF0YSB7CiAJY29uc3Qgc3Ry
-dWN0IGR3X2hkbWlfcGh5X29wcyAqcGh5X29wczsKIAljb25zdCBjaGFyICpwaHlfbmFtZTsKIAl2
-b2lkICpwaHlfZGF0YTsKKwlib29sIHBoeV9mb3JjZV92ZW5kb3I7CiAKIAkvKiBTeW5vcHN5cyBQ
-SFkgc3VwcG9ydCAqLwogCWNvbnN0IHN0cnVjdCBkd19oZG1pX21wbGxfY29uZmlnICptcGxsX2Nm
-ZzsKLS0gCjIuMTcuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+The rk3228 and rk3328 socs use an MMIO-connected hdmi-phy from Innosilicon.
+So enable the necessary driver as module.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index db8d364f8476..36ef2dcfa085 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -638,6 +638,7 @@ CONFIG_PHY_QCOM_USB_HS=y
+ CONFIG_PHY_RCAR_GEN3_USB2=y
+ CONFIG_PHY_RCAR_GEN3_USB3=m
+ CONFIG_PHY_ROCKCHIP_EMMC=y
++CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
+ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+ CONFIG_PHY_ROCKCHIP_PCIE=m
+ CONFIG_PHY_ROCKCHIP_TYPEC=y
+-- 
+2.17.0
