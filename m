@@ -1,90 +1,45 @@
 From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoints of
- rk3328
-Date: Tue, 11 Sep 2018 01:12:03 +0900
-Message-ID: <8acd8c0d-0185-e9b4-160b-0d406c0fa7ac@katsuster.net>
-References: <20180910161011.613-1-katsuhiro@katsuster.net>
+Subject: [PATCH] ASoC: rockchip: add missing INTERLEAVED PCM
+	attribute
+Date: Tue, 11 Sep 2018 01:39:32 +0900
+Message-ID: <20180910163932.13722-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180910161011.613-1-katsuhiro@katsuster.net>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ugh, sorry. I got mistake.
-This is 'v2' patch.
+This patch adds SNDRV_PCM_INFO_INTERLEAVED into PCM hardware info.
 
-On 2018年09月11日 01:10, Katsuhiro Suzuki wrote:
-> This patch adds port and endpoint of i2s and spdif nodes for rk3328.
-> Because to use modern sound card interface such as audio-graph-card.
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
->   1 file changed, 24 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> index d3ef6566325e..fd35dbd37ee2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> @@ -179,7 +179,13 @@
->   		clock-names = "i2s_clk", "i2s_hclk";
->   		dmas = <&dmac 11>, <&dmac 12>;
->   		dma-names = "tx", "rx";
-> +		#sound-dai-cells = <0>;
->   		status = "disabled";
-> +
-> +		i2s0_p0: port {
-> +			i2s0_p0_0: endpoint {
-> +			};
-> +		};
->   	};
->   
->   	i2s1: i2s@ff010000 {
-> @@ -190,7 +196,13 @@
->   		clock-names = "i2s_clk", "i2s_hclk";
->   		dmas = <&dmac 14>, <&dmac 15>;
->   		dma-names = "tx", "rx";
-> +		#sound-dai-cells = <0>;
->   		status = "disabled";
-> +
-> +		i2s1_p0: port {
-> +			i2s1_p0_0: endpoint {
-> +			};
-> +		};
->   	};
->   
->   	i2s2: i2s@ff020000 {
-> @@ -201,7 +213,13 @@
->   		clock-names = "i2s_clk", "i2s_hclk";
->   		dmas = <&dmac 0>, <&dmac 1>;
->   		dma-names = "tx", "rx";
-> +		#sound-dai-cells = <0>;
->   		status = "disabled";
-> +
-> +		i2s2_p0: port {
-> +			i2s2_p0_0: endpoint {
-> +			};
-> +		};
->   	};
->   
->   	spdif: spdif@ff030000 {
-> @@ -214,7 +232,13 @@
->   		dma-names = "tx";
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&spdifm2_tx>;
-> +		#sound-dai-cells = <0>;
->   		status = "disabled";
-> +
-> +		spdif_p0: port {
-> +			spdif_p0_0: endpoint {
-> +			};
-> +		};
->   	};
->   
->   	pdm: pdm@ff040000 {
-> 
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+---
+ sound/soc/rockchip/rockchip_pcm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/rockchip/rockchip_pcm.c b/sound/soc/rockchip/rockchip_pcm.c
+index f77538319221..9e7b5fa4cf59 100644
+--- a/sound/soc/rockchip/rockchip_pcm.c
++++ b/sound/soc/rockchip/rockchip_pcm.c
+@@ -21,7 +21,8 @@ static const struct snd_pcm_hardware snd_rockchip_hardware = {
+ 	.info			= SNDRV_PCM_INFO_MMAP |
+ 				  SNDRV_PCM_INFO_MMAP_VALID |
+ 				  SNDRV_PCM_INFO_PAUSE |
+-				  SNDRV_PCM_INFO_RESUME,
++				  SNDRV_PCM_INFO_RESUME |
++				  SNDRV_PCM_INFO_INTERLEAVED,
+ 	.period_bytes_min	= 32,
+ 	.period_bytes_max	= 8192,
+ 	.periods_min		= 1,
+-- 
+2.18.0
