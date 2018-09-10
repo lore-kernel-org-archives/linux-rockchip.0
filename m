@@ -1,62 +1,80 @@
 From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoint of
- rk3328
-Date: Tue, 11 Sep 2018 01:07:18 +0900
-Message-ID: <ba47e7c5-184c-caf7-2892-3610639d36eb@katsuster.net>
-References: <20180906163956.20667-1-katsuhiro@katsuster.net>
- <2729174.Cl53sqNc79@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoints of rk3328
+Date: Tue, 11 Sep 2018 01:10:11 +0900
+Message-ID: <20180910161011.613-1-katsuhiro@katsuster.net>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2729174.Cl53sqNc79@phil>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+This patch adds port and endpoint of i2s and spdif nodes for rk3328.
+Because to use modern sound card interface such as audio-graph-card.
 
-On 2018年09月10日 22:57, Heiko Stuebner wrote:
-> Hi,
-> 
-> Am Donnerstag, 6. September 2018, 18:39:56 CEST schrieb Katsuhiro Suzuki:
->> This patch adds port and endpoint of i2s and spdif nodes for rk3328.
->> Because to use modern sound card interface such as audio-graph-card.
->>
->> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
->>   1 file changed, 24 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> index d3ef6566325e..41f0a20b73ed 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> @@ -179,7 +179,13 @@
->>   		clock-names = "i2s_clk", "i2s_hclk";
->>   		dmas = <&dmac 11>, <&dmac 12>;
->>   		dma-names = "tx", "rx";
->> +		#sound-dai-cells = <0>;
->>   		status = "disabled";
->> +
->> +		i2s0_p0: port@0 {
-> 
-> there is only one port per device, so this should probably be
-> 	i2s0_p0: port {
-> without the address. Same for all others.
-> The of-graph framework should work just fine then as well.
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-Thanks, indeed. I'll fix and send v2.
-
-
-> 
-> Heiko
-> 
-> 
-> 
-
-Regards,
---
-Katsuhiro Suzuki
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index d3ef6566325e..fd35dbd37ee2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -179,7 +179,13 @@
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		dmas = <&dmac 11>, <&dmac 12>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		i2s0_p0: port {
++			i2s0_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	i2s1: i2s@ff010000 {
+@@ -190,7 +196,13 @@
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		dmas = <&dmac 14>, <&dmac 15>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		i2s1_p0: port {
++			i2s1_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	i2s2: i2s@ff020000 {
+@@ -201,7 +213,13 @@
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		dmas = <&dmac 0>, <&dmac 1>;
+ 		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		i2s2_p0: port {
++			i2s2_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	spdif: spdif@ff030000 {
+@@ -214,7 +232,13 @@
+ 		dma-names = "tx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&spdifm2_tx>;
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
++
++		spdif_p0: port {
++			spdif_p0_0: endpoint {
++			};
++		};
+ 	};
+ 
+ 	pdm: pdm@ff040000 {
+-- 
+2.18.0
