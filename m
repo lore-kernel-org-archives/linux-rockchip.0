@@ -1,32 +1,53 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] iommu: rockchip: Drop verbose prints in the interrupt
-	handler
-Date: Mon, 10 Sep 2018 16:14:47 +0200
-Message-ID: <3492511.ggRQRNLldU@phil>
-References: <20180830222832.16766-1-ezequiel@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180830222832.16766-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: [PATCH 0/4] Add 96Boards Rock960 CE board support
+Date: Mon, 10 Sep 2018 20:43:52 +0530
+Message-ID: <20180910151356.25946-1-manivannan.sadhasivam@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org
+Cc: vicencb@gmail.com, shawn.lin@rock-chips.com, ezequiel@collabora.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 31. August 2018, 00:28:32 CEST schrieb Ezequiel Garcia:
-> Printing verbosely via WARN macros and friends in interrupt handlers
-> is strongly discouraged. Drop them and use proper ratelimited
-> prints.
-> 
-> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+This patchset adds 96Boards Rock960 CE board support. Rock960 CE
+(Consumer Edition) board is one of the member of 96Boards Consumer
+Edition and AI platform and is manufactured by Vamrs Limited. Most of
+the board configuration is shared with the Ficus board manufactured by
+vamrs, which is an Enterprise 96Board.
 
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+For the sake of avoiding code duplication, a common rock960.dtsi file
+with common DT nodes for both boards and separate board specific DTS
+files has been added.
+
+To be specific, below are some of the key differences between both
+boards:
+
+1. Different host enable GPIO for USB
+2. Different power and reset GPIO for PCI-E
+3. No Ethernet port on Rock960
+
+While adding the board support, SD card Chip detection support is also
+added to the common dtsi file, shared by both boards.
+
+This series has been tested on Rock960 CE v1.2 board and expecting the
+Ficus board maintainer to test the relevant Ficus part.
+
+Thanks,
+Mani
+
+Manivannan Sadhasivam (4):
+  arm64: dts: rockchip: Split out common nodes for Rock960 based boards
+  dt-bindings: arm: rockchip: Add binding for Rock960 board
+  arm64: boot: dts: rockchip: Add support for Rock960 board
+  arm64: dts: rockchip: Enable SD card detection for Rock960 boards
+
+ .../devicetree/bindings/arm/rockchip.txt      |   4 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 429 +----------------
+ .../boot/dts/rockchip/rk3399-rock960.dts      | 139 ++++++
+ .../boot/dts/rockchip/rk3399-rock960.dtsi     | 440 ++++++++++++++++++
+ 5 files changed, 585 insertions(+), 428 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+
+-- 
+2.17.1
