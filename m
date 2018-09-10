@@ -1,66 +1,90 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: Fix Type-C port supply in Sapphire
- board
-Date: Mon, 10 Sep 2018 18:10:29 +0200
-Message-ID: <20180910161029.1948-1-vicencb@gmail.com>
-References: <3744467.8gaGBgj8zp@phil>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: Re: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoints of
+ rk3328
+Date: Tue, 11 Sep 2018 01:12:03 +0900
+Message-ID: <8acd8c0d-0185-e9b4-160b-0d406c0fa7ac@katsuster.net>
+References: <20180910161011.613-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3744467.8gaGBgj8zp@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180910161011.613-1-katsuhiro@katsuster.net>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIHJlZmVyZW5jZSBpcyB0aGUgc2NoZW1hdGljLCBwYWdlIDExOgpodHRwczovL2RsLnZhbXJz
-LmNvbS9wcm9kdWN0cy9zYXBwaGlyZV9leGNhdmF0b3IvUktfU0FQUEhJUkVfU09DQk9BUkRfUksz
-Mzk5X0xQRERSM0QxNzhQMjMyU0Q4X1YxMl8yMDE2MTEwOUhYUy5wZGYKKGFsdGVybmF0ZSBsaW5r
-KQpodHRwOi8vb3BlbnNvdXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvZi9mMC9SS19TYXBwaGly
-ZV9SSzMzOTkucmFyCgpDaGFuZ2VzIGluIHYyOgogVGhlIHBvd2VyIHN1cHBseSBpcyBhcHBsaWVk
-IHRvIHRoZSBPVEcgcG9ydC4KClNpZ25lZC1vZmYtYnk6IFZpY2VudGUgQmVyZ2FzIDx2aWNlbmNi
-QGdtYWlsLmNvbT4KLS0tCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBw
-aGlyZS5kdHNpIHwgMTUgKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0
-aW9ucygrKQoKSGkgSGVpa28sCnlvdXIgYXBwcm9hY2ggbWFrZXMgc2Vuc2UsIGkganVzdCB0cmll
-ZCBpdCBhbmQgdGhlIFR5cGUtQyBwb3J0IGlzCnN0aWxsIHBvd2VyZWQtb24sIGxpa2Ugd2l0aCB0
-aGUgcHJldmlvdXMgcGF0Y2guCkJ1dCBzYWRseSBzdGlsbCBubyBkYXRhIGZsb3cuCgpJIGhhdmUg
-Z290IGEgZ3J1L2tldmluIGFuZCBhbHNvIGJvdWdodCBhIFVTQi1DIHRvIFNBVEEgYnJpZGdlCmZv
-ciBpdC4gVGhlIGJyaWRnZSB3b3JrcyBmaW5lIG9uIGtldmluIHdpdGgga2VybmVsIDQuNCwgc3Rp
-bGwgbm90CnRlc3RlZCB3aXRoIG1haW5saW5lLgoKQnV0IHdoZW4gcGx1Z2dlZCBpbnRvIHRoZSBT
-YXBwaGlyZSB0aGVyZSBpcyBhbiBMRUQgdGhhdCBzaG93cyBpdAppcyBwb3dlcmVkLW9uIGFuZCBu
-b3RoaW5nIGVsc2UuIE9uIHRoZSBsaW51eCBzaWRlLCBkbWVzZyBzaG93cyBubwptZXNzYWdlcy4K
-CkNvbXBhcmluZyB0aGUgVVNCIHBvcnRpb24gb2YgdGhlIERUUyB3cnQgRmlyZWZseSBpIHNlZSBu
-bwpzaWduaWZpY2FudCBkaWZmZXJlbmNlcy4KCkFyZSB0aGVyZSBvdGhlciBTYXBwaGlyZSBib2Fy
-ZCB1c2VycyB0aGF0IGNhbiBjb25maXJtIGlmIHRoZQpUeXBlLUMgcG9ydCB3b3JrcyBvciBub3Q/
-IFRoYXQgd291bGQgaGVscCB0byBkaXNjYXJkIGEgSFcgaXNzdWUuCgpSZWdhcmRzLAogIFZpY2Vu
-w6cuCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2Fw
-cGhpcmUuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJl
-LmR0c2kKaW5kZXggOTQxYjYyNzA5Li5lMWI1OTBjYTIgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kKKysrIGIvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQpAQCAtMTQwLDYgKzE0MCwxNiBA
-QAogCQl2aW4tc3VwcGx5ID0gPCZ2Y2Nfc3lzPjsKIAl9OwogCisJdmNjNXYwX3R5cGVjMDogdmNj
-NXYwLXR5cGVjMC1yZWd1bGF0b3IgeworCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7
-CisJCWVuYWJsZS1hY3RpdmUtaGlnaDsKKwkJZ3BpbyA9IDwmZ3BpbzIgUktfUEEwIEdQSU9fQUNU
-SVZFX0hJR0g+OworCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCQlwaW5jdHJsLTAgPSA8
-JnZjYzV2MF90eXBlYzBfZW4+OworCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2M1djBfdHlwZWMwIjsK
-KwkJdmluLXN1cHBseSA9IDwmdmNjX3N5cz47CisJfTsKKwogCXZjY19zeXM6IHZjYy1zeXMgewog
-CQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7CiAJCXJlZ3VsYXRvci1uYW1lID0gInZj
-Y19zeXMiOwpAQCAtNTA4LDYgKzUxOCwxMCBAQAogCQkJcm9ja2NoaXAscGlucyA9CiAJCQkJPDQg
-UktfUEQxIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OwogCQl9OworCQl2Y2M1djBfdHlw
-ZWMwX2VuOiB2Y2M1djAtdHlwZWMwLWVuIHsKKwkJCXJvY2tjaGlwLHBpbnMgPQorCQkJCTwyIFJL
-X1BBMCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKKwkJfTsKIAl9OwogfTsKIApAQCAt
-NTY1LDYgKzU3OSw3IEBACiAJc3RhdHVzID0gIm9rYXkiOwogCiAJdTJwaHkwX290Zzogb3RnLXBv
-cnQgeworCQlwaHktc3VwcGx5ID0gPCZ2Y2M1djBfdHlwZWMwPjsKIAkJc3RhdHVzID0gIm9rYXki
-OwogCX07CiAKLS0gCjIuMTguMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Ugh, sorry. I got mistake.
+This is 'v2' patch.
+
+On 2018年09月11日 01:10, Katsuhiro Suzuki wrote:
+> This patch adds port and endpoint of i2s and spdif nodes for rk3328.
+> Because to use modern sound card interface such as audio-graph-card.
+> 
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
+>   1 file changed, 24 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index d3ef6566325e..fd35dbd37ee2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -179,7 +179,13 @@
+>   		clock-names = "i2s_clk", "i2s_hclk";
+>   		dmas = <&dmac 11>, <&dmac 12>;
+>   		dma-names = "tx", "rx";
+> +		#sound-dai-cells = <0>;
+>   		status = "disabled";
+> +
+> +		i2s0_p0: port {
+> +			i2s0_p0_0: endpoint {
+> +			};
+> +		};
+>   	};
+>   
+>   	i2s1: i2s@ff010000 {
+> @@ -190,7 +196,13 @@
+>   		clock-names = "i2s_clk", "i2s_hclk";
+>   		dmas = <&dmac 14>, <&dmac 15>;
+>   		dma-names = "tx", "rx";
+> +		#sound-dai-cells = <0>;
+>   		status = "disabled";
+> +
+> +		i2s1_p0: port {
+> +			i2s1_p0_0: endpoint {
+> +			};
+> +		};
+>   	};
+>   
+>   	i2s2: i2s@ff020000 {
+> @@ -201,7 +213,13 @@
+>   		clock-names = "i2s_clk", "i2s_hclk";
+>   		dmas = <&dmac 0>, <&dmac 1>;
+>   		dma-names = "tx", "rx";
+> +		#sound-dai-cells = <0>;
+>   		status = "disabled";
+> +
+> +		i2s2_p0: port {
+> +			i2s2_p0_0: endpoint {
+> +			};
+> +		};
+>   	};
+>   
+>   	spdif: spdif@ff030000 {
+> @@ -214,7 +232,13 @@
+>   		dma-names = "tx";
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&spdifm2_tx>;
+> +		#sound-dai-cells = <0>;
+>   		status = "disabled";
+> +
+> +		spdif_p0: port {
+> +			spdif_p0_0: endpoint {
+> +			};
+> +		};
+>   	};
+>   
+>   	pdm: pdm@ff040000 {
+> 
