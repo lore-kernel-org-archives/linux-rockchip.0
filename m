@@ -1,101 +1,45 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 4/4] arm64: dts: Sapphire board: Fix Type-C port supply
-Date: Mon, 10 Sep 2018 15:39:45 +0200
-Message-ID: <CAAMcf8Dr6Kfgx6aqy0vk9TBjW1=0sDp=zJAetjAt5AhPVwHDdA@mail.gmail.com>
-References: <9e64e878-07c8-912c-c597-7da7b3f96dd6@collabora.com>
- <20180908190048.14231-1-vicencb@gmail.com>
- <20180908190048.14231-5-vicencb@gmail.com>
- <2506276.WeVqUmcns7@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: add i2s and spdif endpoint of rk3328
+Date: Mon, 10 Sep 2018 15:57:31 +0200
+Message-ID: <2729174.Cl53sqNc79@phil>
+References: <20180906163956.20667-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2506276.WeVqUmcns7@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180906163956.20667-1-katsuhiro@katsuster.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBTZXAgMTAsIDIwMTggYXQgMjoyMyBQTSwgSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNu
-dGVjaC5kZT4gd3JvdGU6Cj4gQW0gU2Ftc3RhZywgOC4gU2VwdGVtYmVyIDIwMTgsIDIxOjAwOjQ4
-IENFU1Qgc2NocmllYiBWaWNlbnRlIEJlcmdhczoKPj4gVGhlIHJlZmVyZW5jZSBpcyB0aGUgc2No
-ZW1hdGljLCBwYWdlIDExOgo+PiBodHRwczovL2RsLnZhbXJzLmNvbS9wcm9kdWN0cy9zYXBwaGly
-ZV9leGNhdmF0b3IvUktfU0FQUEhJUkVfU09DQk9BUkRfUkszMzk5X0xQRERSM0QxNzhQMjMyU0Q4
-X1YxMl8yMDE2MTEwOUhYUy5wZGYKPj4gKGFsdGVybmF0ZSBsaW5rKQo+PiBodHRwOi8vb3BlbnNv
-dXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvZi9mMC9SS19TYXBwaGlyZV9SSzMzOTkucmFyCj4+
-Cj4+IFNpZ25lZC1vZmYtYnk6IFZpY2VudGUgQmVyZ2FzIDx2aWNlbmNiQGdtYWlsLmNvbT4KPj4g
-LS0tCj4+ICAuLi4vYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kg
-fCAxNiArKysrKysrKysrKysrKystCj4+ICAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygr
-KSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzk5LXNhcHBoaXJlLmR0c2kKPj4gaW5kZXggYjFjYjUwNTk1Li4xMTg4Yzg3MTcgMTAw
-NjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJl
-LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhp
-cmUuZHRzaQo+PiBAQCAtMTUxLDYgKzE1MSwxNiBAQAo+PiAgICAgICAgICAgICAgIHZpbi1zdXBw
-bHkgPSA8JnZjY19zeXM+Owo+PiAgICAgICB9Owo+Pgo+PiArICAgICB2Y2M1djBfdHlwZWMwOiB2
-Y2M1djAtdHlwZWMwLXJlZ3VsYXRvciB7Cj4+ICsgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJy
-ZWd1bGF0b3ItZml4ZWQiOwo+PiArICAgICAgICAgICAgIGVuYWJsZS1hY3RpdmUtaGlnaDsKPj4g
-KyAgICAgICAgICAgICBncGlvID0gPCZncGlvMiBSS19QQTAgR1BJT19BQ1RJVkVfSElHSD47Cj4+
-ICsgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gKyAgICAgICAgICAg
-ICBwaW5jdHJsLTAgPSA8JnZjYzV2MF90eXBlYzBfZW4+Owo+PiArICAgICAgICAgICAgIHJlZ3Vs
-YXRvci1uYW1lID0gInZjYzV2MF90eXBlYzAiOwo+PiArICAgICAgICAgICAgIHZpbi1zdXBwbHkg
-PSA8JnZjY19zeXM+Owo+PiArICAgICB9Owo+PiArCj4+ICAgICAgIHZjY19zeXM6IHZjYy1zeXMg
-ewo+PiAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gICAg
-ICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2Nfc3lzIjsKPj4gQEAgLTUwMyw2ICs1MTMs
-MTAgQEAKPj4gICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwLHBpbnMgPQo+PiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICA8NCBSS19QRDEgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxf
-bm9uZT47Cj4+ICAgICAgICAgICAgICAgfTsKPj4gKyAgICAgICAgICAgICB2Y2M1djBfdHlwZWMw
-X2VuOiB2Y2M1djAtdHlwZWMwLWVuIHsKPj4gKyAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlw
-LHBpbnMgPQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8MiBSS19QQTAgUktfRlVO
-Q19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4+ICsgICAgICAgICAgICAgfTsKPj4gICAgICAgfTsK
-Pj4gIH07Cj4+Cj4+IEBAIC01NjQsNyArNTc4LDcgQEAKPj4gICAgICAgfTsKPj4KPj4gICAgICAg
-dTJwaHkwX2hvc3Q6IGhvc3QtcG9ydCB7Cj4+IC0gICAgICAgICAgICAgcGh5LXN1cHBseSA9IDwm
-dmNjNXYwX2hvc3Q+Owo+PiArICAgICAgICAgICAgIHBoeS1zdXBwbHkgPSA8JnZjYzV2MF90eXBl
-YzA+Owo+Cj4gSG1tLCBJJ20gbm90IHN1cmUgaWYgdGhhdCBpcyBjb3JyZWN0Lgo+Cj4gUmVhZGlu
-ZyBzY2hlbWF0aWNzIGFuZCBhbHNvIHRoZSBwaHkgcG9ydCBhc3NpZ25tZW50cywgeW91IGNhbiBz
-ZWUKPiB1MnBoeTBfaG9zdCBiZWluZyBjb25uZWN0ZWQgdG8gInVzYl9ob3N0MF9laGNpOiB1c2JA
-ZmUzODAwMDAiLgo+Cj4gU28gSSBndWVzcyB0aGUgdmNjNXYwX2hvc3Qgc2hvdWxkIGJlIHRoZSBj
-b3JyZWN0IG9uZSBmb3IgaXQ/Cj4gRGlkIHlvdSBtZWFuIHRvIGFkZCB0aGUgcHktc3VwcGx5IHRv
-IHUycGh5MF9vdGcgaW5zdGVhZD8gV2hpY2ggaXMgb25lCj4gb2YgdGhlIHBvcnRzIHVzZWQgYnkg
-dGhlIGR3YzM/Cj4KPgo+IEhlaWtvCj4KSGksCmZyb20gdGhlIHNjaGVtYXRpYyB0aGVzZSBhcmUg
-dGhlIGNvbm5lY3Rpb25zIGZvciB0aGUgVVNCIHBvcnRzOgoKIyMjIyMgUEhZMCAjIyMjIwpVMTAw
-MFMgaXMgdGhlIFJLMzM5OSBQSFkwIHVzZWQgZm9yIHRoZSBVU0IzIFR5cGUtQyBjb25uZWN0b3Iu
-ClRoZSBVU0IzIFR5cGUtQyBjb25uZWN0b3IgaXMgdGhlIG9uZSBsYWJlbGVkIEo4OTAyLgpGcm9t
-IHRoZXJlLCB0aGUgVkJVUyBwaW4gaXMgY29ubmVjdGVkIHRvIHRoZSBWQlVTX1RZUEVDIG5ldC4K
-VGhlIFZCVVNfVFlQRUMgc3VwcGx5IGlzIFU4OTA1LCB3aGljaCBoYXMgYW4gZW5hYmxlIGlucHV0
-CiAgY29ubmVjdGVkIHRvIHRoZSBHUElPMl9BMC9DSUZfRDAgbmV0LgpUaGUgR1BJTzJfQTAvQ0lG
-X0QwIG5ldCBpcyBkcml2ZW4gYnkgdGhlCiAgR1BJTzJfQTAvVk9QX0QwL0NJRl9EMC9JMkMyX1NE
-QV91IHBpbiBvZiBVMTAwMEwsIHdoaWNoIGlzCiAgdGhlIFJLMzM5OS4KIyMjIyMjIyMjIyMjIyMj
-IwoKIyMjIyMgUEhZMSAjIyMjIwpVMTAwMFQgaXMgdGhlIFJLMzM5OSBQSFkxIHVzZWQgZm9yIHRo
-ZSBVU0IzIFR5cGUtQSBjb25uZWN0b3IuClRoZSBVU0IzIFR5cGUtQSBjb25uZWN0b3IgaXMgdGhl
-IG9uZSBsYWJlbGVkIENPTjYwMi4KRnJvbSB0aGVyZSwgdGhlIFZCVVMgcGluIGlzIGNvbm5lY3Rl
-ZCB0byB0aGUgVkNDNVYwX0hPU1QyIG5ldC4KVGhlIFZDQzVWMF9IT1NUMiBzdXBwbHkgaXMgVTE5
-MDIsIHdoaWNoIGhhcyBhbiBlbmFibGUgaW5wdXQKICBjb25uZWN0ZWQgdG8gdGhlIFZDQzVWMF9I
-T1NUX0VOIG5ldC4KVGhlIFZDQzVWMF9IT1NUX0VOIG5ldCBpcyBkcml2ZW4gYnkgdGhlCiAgR1BJ
-TzRfRDEvRFBfSE9UUExVR19kIHBpbiBvZiBVMTAwMEssIHdoaWNoIGlzIHRoZSBSSzMzOTkuCiMj
-IyMjIyMjIyMjIyMjIyMKClNvLCBpdCBpcyBjbGVhciB0aGF0IEdQSU8yX0EwIGNvbnRyb2xzIHRo
-ZSBWQlVTIG9mIFBIWTAgYW5kCiAgR1BJTzRfRDEgY29udHJvbHMgdGhlIFZCVVMgb2YgUEhZMS4K
-CkF0IHRoaXMgcG9pbnQsIGkgYW0gbm90IHN1cmUgaG93IHRvIHRyYW5zbGF0ZSB0aGlzIGluZm9y
-bWF0aW9uCmZyb20gdGhlIHNjaGVtYXRpYyBpbnRvIHRoZSBEVFMuIEkgZG9uJ3Qga25vdyBpZiBp
-dCBzaG91bGQgYmUKYXBwbGllZCB0byB0aGUgIm90ZyIgb3IgdGhlICJob3N0IiBzaWRlIGFzIHlv
-dSBhcmUgc3VnZ2VzdGluZy4KQnV0IGl0IGxvb2tzIHF1aXRlIGNsZWFyIHRvIG1lIHRoYXQgVkND
-NVYwX0hPU1QoR1BJTzRfRDEpIGlzIG5vdAphcHBsaWNhcGxlIHRvIHRoZSBQSFkwLgoKQXMgc3Rh
-dGVkIGluIHRoZSBlbWFpbCAwLzQsIHRoaXMgcGF0Y2ggb25seSBwb3dlcnMtdXAgdGhlIFR5cGUt
-Qwpwb3J0LCBidXQgaXQgaXMgc3RpbGwgbm9uLXdvcmtpbmcuIFNvLCBlaXRoZXIgdGhpcyBwYXRj
-aCBpcyB3cm9uZwpvciBtb3JlIGNoYW5nZXMgYXJlIG5lZWRlZCBsaWtlIHRoZSBmdXNiMzAyLgoK
-VGhlIHJlZmVyZW5jZSBzaG91bGQgYmUgdGhlIG9uZSBmcm9tIHRoZSBtYW51ZmFjdHVyZXI6Cmh0
-dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51eC9rZXJuZWwvYmxvYi9yZWxlYXNlLTQuNC9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCmJ1dCBpdCBj
-b250YWlucyB0aGUgc2FtZSBidWdzLgoKU28sIGFueSBoZWxwIHdpbGwgYmUgYXBwcmVjaWF0ZWQu
-CgpSZWdhcmRzLAogIFZpY2Vuw6cuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+Am Donnerstag, 6. September 2018, 18:39:56 CEST schrieb Katsuhiro Suzuki:
+> This patch adds port and endpoint of i2s and spdif nodes for rk3328.
+> Because to use modern sound card interface such as audio-graph-card.
+> 
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index d3ef6566325e..41f0a20b73ed 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -179,7 +179,13 @@
+>  		clock-names = "i2s_clk", "i2s_hclk";
+>  		dmas = <&dmac 11>, <&dmac 12>;
+>  		dma-names = "tx", "rx";
+> +		#sound-dai-cells = <0>;
+>  		status = "disabled";
+> +
+> +		i2s0_p0: port@0 {
+
+there is only one port per device, so this should probably be
+	i2s0_p0: port {
+without the address. Same for all others.
+The of-graph framework should work just fine then as well.
+
+Heiko
