@@ -1,14 +1,16 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 3/4] arm64: dts: rockchip: enable display nodes on
- rk3328-rock64
-Date: Mon, 10 Sep 2018 11:28:42 +0200
-Message-ID: <20180910092843.1700-4-heiko@sntech.de>
-References: <20180910092843.1700-1-heiko@sntech.de>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] drm/rockchip: shutdown drm subsystem on shutdown
+Date: Mon, 10 Sep 2018 10:57:37 +0100
+Message-ID: <d47314d7-9347-1bdf-fee8-8288f1320989@arm.com>
+References: <5B20F5F0.9090101@rock-chips.com>
+ <CAAMcf8DJhBk8rG65SmQR4vwtj1zfm7jfKJJ4nAx6OsAeu52T2A@mail.gmail.com>
+ <20180909144300.3908a11b@why.wild-wind.fr.eu.org> <8854779.AqCTpcZcc2@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180910092843.1700-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <8854779.AqCTpcZcc2@phil>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,47 +20,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robin.murphy-5wv7dgnIgG8@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable necessary nodes to get output on the hdmi port of the board.
+On 10/09/18 10:08, Heiko Stuebner wrote:
+> Am Sonntag, 9. September 2018, 15:43:00 CEST schrieb Marc Zyngier:
+>> On Tue, 7 Aug 2018 18:20:15 +0200
+>> Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>>
+>>> On Tue, Aug 7, 2018 at 6:07 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+>>>> Am Dienstag, 7. August 2018, 18:05:13 CEST schrieb Vicente Bergas:  
+>>>>> Hi Heiko, Jeffy, Marc,
+>>>>>
+>>>>> On Tue, Aug 7, 2018 at 2:44 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:  
+>>>>>> Hi Vicente,
+>>>>>>
+>>>>>> Am Sonntag, 5. August 2018, 16:09:11 CEST schrieb Vicente Bergas:  
+>>>>>>> As explained by Robin Murphy:  
+>>>>>>>> the IOMMU shutdown disables paging, so if the VOP is still
+>>>>>>>> scanning out then that will result in whatever IOVAs it was using now going
+>>>>>>>> straight out onto the bus as physical addresses.  
+>>>>>>>
+>>>>>>> Suggested-by: JeffyChen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>>>>> Suggested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+>>>>>>> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>>>>>>> ---
+>>>>>>>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 9 +++++++++
+>>>>>>>  1 file changed, 9 insertions(+)
+>>>>>>>
+>>>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>>>>>>> index f814d37b1db2..00a06768edb2 100644
+>>>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>>>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+>>>>>>> @@ -442,6 +442,14 @@ static int rockchip_drm_platform_remove(struct platform_device *pdev)
+>>>>>>>       return 0;
+>>>>>>>  }
+>>>>>>>
+>>>>>>> +static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
+>>>>>>> +{
+>>>>>>> +     struct drm_device *drm = platform_get_drvdata(pdev);
+>>>>>>> +
+>>>>>>> +     if (drm)
+>>>>>>> +             drm_atomic_helper_shutdown(drm);  
+>>>>>>
+>>>>>> I tend to side with Marc's more drastic approach, especially as this one
+>>>>>> should also nicely unbind the encoders used. Are you ok with us going
+>>>>>> with Marc's patch or do you have concerns?  
+>>>>>
+>>>>> The patch i posted comes from Jeffy, as is, no modifications.
+>>>>> So, if he has no concerns about it, then it is also fine for me.
+>>>>>  
+>>>>>>
+>>>>>> Providing a Tested-by tag would also be great ;-)  
+>>>>>
+>>>>> OK, i'll reply to his patch with a Tested-by tag, but i was only
+>>>>> aware of this issue affecting hdmi on power-off, so, the only testing
+>>>>> performed was checking only this. I have done no kexec-related test.
+>>>>>
+>>>>> Only one issue related to this: Marc, how can i reply to your patch
+>>>>> if i was not a recipient?  
+>>>>
+>>>> You can also just post it here. Together with Sandy I'm carrying the
+>>>> drm-maintainer hat, so I'm probably the one that applies either one
+>>>> of the patches and can pick up a tag from here as well :-D
+>>>>
+>>>>
+>>>> Heiko  
+>>>
+>>> OK, perfect, so, for this patch:
+>>> https://www.spinics.net/lists/arm-kernel/msg670229.html
+>>> here is my
+>>> Tested-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>>> tag.
+>>> As said, i only tested that on shutdown, the hdmi output
+>>> is also shut down instead of showing random noise.
+>>
+>> Any update on this patch? I was hoping to see it in 4.18, but so far
+>> nothing has happened.
+> 
+> it somehow slipped through my grasp, but I've applied it now.
+> With a stable tag added so it should also trickle down to some
+> stable kernels hopefully.
+> 
+> 
+> Sorry for the holdup
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+No worries, and thanks for the stable tag! :-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index ad82bf39e268..4870c089b6c9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -108,6 +108,14 @@
- 	status = "okay";
- };
- 
-+&hdmi {
-+	status = "okay";
-+};
-+
-+&hdmiphy {
-+	status = "okay";
-+};
-+
- &i2c1 {
- 	status = "okay";
- 
-@@ -304,3 +312,11 @@
- 	dr_mode = "host";
- 	status = "okay";
- };
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
+	M.
 -- 
-2.17.0
+Jazz is not dead. It just smells funny...
