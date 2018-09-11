@@ -1,57 +1,57 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/4] dt-bindings: arm: rockchip: Add binding for Rock960 board
-Date: Mon, 10 Sep 2018 19:53:41 +0200
-Message-ID: <2934145.U5auXtDNYt@phil>
-References: <20180910151356.25946-1-manivannan.sadhasivam@linaro.org> <1606406.b630GQBvc1@phil> <20180910172655.GA4191@Mani-XPS-13-9360>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: [PATCH v2 0/4] Add 96Boards Rock960 CE board support
+Date: Tue, 11 Sep 2018 08:00:27 +0530
+Message-ID: <20180911023031.4892-1-manivannan.sadhasivam@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180910172655.GA4191@Mani-XPS-13-9360>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: robh+dt@kernel.org, vicencb@gmail.com, shawn.lin@rock-chips.com, ezequiel@collabora.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org
+Cc: vicencb@gmail.com, shawn.lin@rock-chips.com, ezequiel@collabora.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 10. September 2018, 19:26:55 CEST schrieb Manivannan Sadhasivam:
-> Hi Heiko,
-> 
-> On Mon, Sep 10, 2018 at 07:22:26PM +0200, Heiko Stuebner wrote:
-> > Am Montag, 10. September 2018, 17:13:54 CEST schrieb Manivannan Sadhasivam:
-> > > Add devicetree binding for Rock960 board from Vamrs Limited.
-> > > 
-> > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > > ---
-> > >  Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
-> > >  1 file changed, 4 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-> > > index acfd3c773dd0..aaad9e2ff9a3 100644
-> > > --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> > > +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> > > @@ -5,6 +5,10 @@ Rockchip platforms device tree bindings
-> > >      Required root node properties:
-> > >        - compatible = "vamrs,ficus", "rockchip,rk3399";
-> > >  
-> > > +- 96boards RK3399 Rock960 (ROCK960 Consumer Edition)
-> > > +    Required root node properties:
-> > > +      - compatible = "vamrs,rk3399-rock960", "rockchip,rk3399";
-> > 
-> > hmm, are there more boards labeled rock960 from Vamrs?
-> > Because I'm trying to determine what makes "vamrs,rock960" unsuitable.
-> > 
-> 
-> Not that I'm aware of but the intention was to follow other RK3399 based
-> boards. Anyhow, I have no issues with "vamrs,rock960" if you prefer it!
+This patchset adds 96Boards Rock960 CE board support. Rock960 CE
+(Consumer Edition) board is one of the member of 96Boards Consumer
+Edition and AI platform and is manufactured by Vamrs Limited. Most of
+the board configuration is shared with the Ficus board manufactured by
+vamrs, which is an Enterprise 96Board.
 
-yep, I think I would prefer it :-)
+For the sake of avoiding code duplication, a common rock960.dtsi file
+with common DT nodes for both boards and separate board specific DTS
+files has been added.
 
-Looking at the bindings we have, it seems we really have some sort of mix,
-but I guess most boards with a real name, just use this one, like all
-the google boards or also the ficus itself.
+To be specific, below are some of the key differences between both
+boards:
 
-Most of the others are eval boards and fireflys, where the board is actually
-unnamed and just uses company name + soc :-)
+1. Different host enable GPIO for USB
+2. Different power and reset GPIO for PCI-E
+3. No Ethernet port on Rock960
 
+While adding the board support, SD card Chip detection support is also
+added to the common dtsi file, shared by both boards.
 
-Heiko
+This series has been tested on Rock960 CE v1.2 board and expecting the
+Ficus board maintainer to test the relevant Ficus part.
+
+Thanks,
+Mani
+
+Changes in v2:
+
+* Changed the board compatible to "vamrs,rock960"
+
+Manivannan Sadhasivam (4):
+  arm64: dts: rockchip: Split out common nodes for Rock960 based boards
+  dt-bindings: arm: rockchip: Add binding for Rock960 board
+  arm64: boot: dts: rockchip: Add support for Rock960 board
+  arm64: dts: rockchip: Enable SD card detection for Rock960 boards
+
+ .../devicetree/bindings/arm/rockchip.txt      |   4 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 429 +----------------
+ .../boot/dts/rockchip/rk3399-rock960.dts      | 139 ++++++
+ .../boot/dts/rockchip/rk3399-rock960.dtsi     | 440 ++++++++++++++++++
+ 5 files changed, 585 insertions(+), 428 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+
+-- 
+2.17.1
