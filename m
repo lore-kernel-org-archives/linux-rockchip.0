@@ -1,99 +1,53 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH v2 1/4] arm64: dts: rockchip: Split out common nodes for
- Rock960 based boards
-Date: Wed, 12 Sep 2018 13:52:44 +0530
-Message-ID: <20180912082244.GA16509@Mani-XPS-13-9360>
-References: <20180911023031.4892-1-manivannan.sadhasivam@linaro.org>
- <9e1868684ed851dfa19300ac2e648cfea7bf3eb9.camel@collabora.com>
- <20180912031248.GA4880@Mani-XPS-13-9360>
- <11137562.zz0kzkSHxt@diego>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v5 4/6] drm/rockchip: dw_hdmi: allow including external phys
+Date: Wed, 12 Sep 2018 14:47:38 +0200
+Message-ID: <20180912124740.20343-5-heiko@sntech.de>
+References: <20180912124740.20343-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <11137562.zz0kzkSHxt@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, robh+dt@kernel.org, vicencb@gmail.com, shawn.lin@rock-chips.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180912124740.20343-1-heiko@sntech.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: architt@codeaurora.org, hjc@rock-chips.com, a.hajda@samsung.com
+Cc: Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, jonas@kwiboo.se, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 12, 2018 at 09:26:12AM +0200, Heiko Stübner wrote:
-> Am Mittwoch, 12. September 2018, 05:12:48 CEST schrieb Manivannan Sadhasivam:
-> > Hi Ezequiel,
-> > 
-> > On Tue, Sep 11, 2018 at 04:40:29PM -0300, Ezequiel Garcia wrote:
-> > > On Tue, 2018-09-11 at 08:00 +0530, Manivannan Sadhasivam wrote:
-> > > > Since the same family members of Rock960 boards (Rock960 and Ficus)
-> > > > share the same configuration, split out the common nodes into a common
-> > > > dtsi file for reducing code duplication. The board specific nodes for
-> > > > Ficus boards are then placed in corresponding board DTS file.
-> > > 
-> > > I think it should be possible to move the common USB nodes to the dtsi
-> > > file, and keep the board-specific (phy-supply property) in the dts files:
-> > > 
-> > > &u2phy0_host {
-> > > 
-> > >         phy-supply = <&vcc5v0_host>;
-> > > 
-> > > };
-> > > 
-> > > &u2phy1_host {
-> > > 
-> > >         phy-supply = <&vcc5v0_host>;
-> > > 
-> > > };
-> > 
-> > We can do that but my intention was to entirely partition the nodes
-> > which are not common. So that it would be less confusing when someone
-> > looks at it (please correct me if I'm wrong).
-> 
-> The supply is actually named the same on both boards, so you could move
-> all the usb-nodes to the main dtsi, including the reference to vcc5v0_host
-> which would then get defined itself in the two board dts.
-> 
-> Then again, seeing that the vcc5v0_host also only differs in the actually
-> used gpio another option would be to move the whole regulator node
-> to the dtsi and just define the gpio properties in the board dts files.
->
-
-Hmm, if that's the preferred option then I guess this applies to pcie
-nodes also. At the end, usb and pcie nodes will be shrinked to below in
-board dts:
-
-&pinctrl {
-        pcie {
-                pcie_drv: pcie-drv {
-                        rockchip,pins =
-                                <2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-                        };
-        };
-
-        usb2 {
-                host_vbus_drv: host-vbus-drv {
-                        rockchip,pins =
-                                <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-                };
-        };
-};
-
-&pcie0 {
-        ep-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
-        status = "okay";
-};
-
-&vcc3v3_pcie {
-        gpio = <&gpio2 5 GPIO_ACTIVE_HIGH>;
-};
-
-&vcc5v0_host {
-        gpio = <&gpio4 25 GPIO_ACTIVE_HIGH>;
-};
-
-Thanks,
-Mani
-
-> 
-> Heiko
-> 
-> 
+U29tZSB2YXJpYW50cyBvZiB0aGUgZHctaGRtaSBvbiBSb2NrY2hpcCBzb2NzIHVzZSBhIHNlcGFy
+YXRlIHBoeSBibG9jawphY2Nlc3NlZCB2aWEgdGhlIGdlbmVyaWMgcGh5IGZyYW1ld29yaywgc28g
+YWxsb3cgdGhlbSB0byBiZSBpbmNsdWRlZAppZiBzdWNoIGEgcGh5IHJlZmVyZW5jZSBpcyBmb3Vu
+ZC4KClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+ClRlc3Rl
+ZC1ieTogUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT4KLS0tCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIHwgMTAgKysrKysrKysrKwogMSBmaWxl
+IGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
+X2hkbWktcm9ja2NoaXAuYwppbmRleCBiMDljMzUzMTMwNWIuLjU3ZTc2ZGZkNWY2ZCAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYworKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCkBAIC0xMSw2ICsxMSw3
+IEBACiAjaW5jbHVkZSA8bGludXgvbWZkL3N5c2Nvbi5oPgogI2luY2x1ZGUgPGxpbnV4L21vZHVs
+ZS5oPgogI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgorI2luY2x1ZGUgPGxpbnV4
+L3BoeS9waHkuaD4KICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KIAogI2luY2x1ZGUgPGRybS9k
+cm1fb2YuaD4KQEAgLTQ5LDYgKzUwLDcgQEAgc3RydWN0IHJvY2tjaGlwX2hkbWkgewogCXN0cnVj
+dCBjbGsgKnZwbGxfY2xrOwogCXN0cnVjdCBjbGsgKmdyZl9jbGs7CiAJc3RydWN0IGR3X2hkbWkg
+KmhkbWk7CisJc3RydWN0IHBoeSAqcGh5OwogfTsKIAogI2RlZmluZSB0b19yb2NrY2hpcF9oZG1p
+KHgpCWNvbnRhaW5lcl9vZih4LCBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSwgeCkKQEAgLTM3Niw2ICsz
+NzgsMTQgQEAgc3RhdGljIGludCBkd19oZG1pX3JvY2tjaGlwX2JpbmQoc3RydWN0IGRldmljZSAq
+ZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAJCXJldHVybiByZXQ7CiAJfQogCisJaGRtaS0+
+cGh5ID0gZGV2bV9waHlfb3B0aW9uYWxfZ2V0KGRldiwgImhkbWkiKTsKKwlpZiAoSVNfRVJSKGhk
+bWktPnBoeSkpIHsKKwkJcmV0ID0gUFRSX0VSUihoZG1pLT5waHkpOworCQlpZiAocmV0ICE9IC1F
+UFJPQkVfREVGRVIpCisJCQlEUk1fREVWX0VSUk9SKGhkbWktPmRldiwgImZhaWxlZCB0byBnZXQg
+cGh5XG4iKTsKKwkJcmV0dXJuIHJldDsKKwl9CisKIAlkcm1fZW5jb2Rlcl9oZWxwZXJfYWRkKGVu
+Y29kZXIsICZkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfaGVscGVyX2Z1bmNzKTsKIAlkcm1fZW5j
+b2Rlcl9pbml0KGRybSwgZW5jb2RlciwgJmR3X2hkbWlfcm9ja2NoaXBfZW5jb2Rlcl9mdW5jcywK
+IAkJCSBEUk1fTU9ERV9FTkNPREVSX1RNRFMsIE5VTEwpOwotLSAKMi4xNy4wCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
