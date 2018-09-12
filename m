@@ -1,107 +1,93 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 6/6] drm/rockchip: dw_hdmi: add dw-hdmi support for the
- rk3328
-Date: Wed, 12 Sep 2018 15:50:03 +0200
-Message-ID: <12703438.MgSoJEdsAQ@phil>
-References: <20180910092223.1106-1-heiko@sntech.de>
- <20180910092223.1106-7-heiko@sntech.de>
- <AM0PR03MB46769977FF55C3AC6F65E001AC050@AM0PR03MB4676.eurprd03.prod.outlook.com>
+Subject: Re: [PATCH v2 1/4] arm64: dts: rockchip: Split out common nodes for Rock960 based boards
+Date: Wed, 12 Sep 2018 16:05:28 +0200
+Message-ID: <2062942.2GzzSlpOsc@phil>
+References: <20180911023031.4892-1-manivannan.sadhasivam@linaro.org> <11137562.zz0kzkSHxt@diego> <20180912082244.GA16509@Mani-XPS-13-9360>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <AM0PR03MB46769977FF55C3AC6F65E001AC050@AM0PR03MB4676.eurprd03.prod.outlook.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>, "algea.cao@rock-chips.com" <algea.cao@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "zhengyang@rock-chips.com" <zhengyang@rock-chips.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180912082244.GA16509@Mani-XPS-13-9360>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, robh+dt@kernel.org, vicencb@gmail.com, shawn.lin@rock-chips.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCAxMC4gU2VwdGVtYmVyIDIwMTgsIDE3OjE1OjQ2IENFU1Qgc2NocmllYiBKb25h
-cyBLYXJsbWFuOgo+IEhpIEhlaWtvLAo+IAo+IENFQyBpcyBub3Qgd29ya2luZyB3aGVuIENFQyA1
-ViBpcyBlbmFibGVkCj4gCj4gT24gMjAxOC0wOS0xMCAxMToyMiwgSGVpa28gU3R1ZWJuZXIgd3Jv
-dGU6Cj4gCj4gPiBUaGUgcmszMzI4IHVzZXMgYSBkdy1oZG1pIGNvbnRyb2xsZXIgd2l0aCBhbiBl
-eHRlcm5hbCBoZG1pIHBoeSBmcm9tCj4gPiBJbm5vc2lsaWNvbiB3aGljaCB1c2VzIHRoZSBnZW5l
-cmljIHBoeSBmcmFtZXdvcmsgZm9yIGFjY2Vzcy4KPiA+IEFkZCB0aGUgbmVjZXNzYXJ5IGRhdGEg
-YW5kIHRoZSBjb21wYXRpYmxlIGZvciB0aGUgcmszMzI4IHRvIHRoZQo+ID4gcm9ja2NoaXAgZHct
-aGRtaSBkcml2ZXIuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtv
-QHNudGVjaC5kZT4KPiA+IFRlc3RlZC1ieTogUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJwaHlAYXJt
-LmNvbT4KPiA+IEFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+ID4KPiA+
-IGNoYW5nZXMgaW4gdjM6Cj4gPiAtIHJld29yZCBhcyBzdWdnZXN0ZWQgYnkgUm9iIHRvIHNob3cg
-dGhhdCBpdCdzIGEgZHctaGRtaSArIElubm8gcGh5Cj4gPiAtLS0KPiA+ICAuLi4vZGlzcGxheS9y
-b2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLnR4dCAgICAgfCAgIDEgKwo+ID4gIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICB8IDEwNiArKysrKysrKysrKysrKysr
-KysKPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDEwNyBpbnNlcnRpb25zKCspCj4gPgo+ID4gZGlmZiAt
-LWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
-L2R3X2hkbWktcm9ja2NoaXAudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L2Rpc3BsYXkvcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC50eHQKPiA+IGluZGV4IDkzN2JmYjQ3
-MmUxZC4uMzkxNDM0MjRhNDc0IDEwMDY0NAo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC50eHQKPiA+ICsr
-KyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3
-X2hkbWktcm9ja2NoaXAudHh0Cj4gPiBAQCAtMTMsNiArMTMsNyBAQCBSZXF1aXJlZCBwcm9wZXJ0
-aWVzOgo+ID4gIAo+ID4gIC0gY29tcGF0aWJsZTogc2hvdWxkIGJlIG9uZSBvZiB0aGUgZm9sbG93
-aW5nOgo+ID4gIAkJInJvY2tjaGlwLHJrMzI4OC1kdy1oZG1pIgo+ID4gKwkJInJvY2tjaGlwLHJr
-MzMyOC1kdy1oZG1pIgo+ID4gIAkJInJvY2tjaGlwLHJrMzM5OS1kdy1oZG1pIgo+ID4gIC0gcmVn
-OiBTZWUgZHdfaGRtaS50eHQuCj4gPiAgLSByZWctaW8td2lkdGg6IFNlZSBkd19oZG1pLnR4dC4g
-U2hhbGwgYmUgNC4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdf
-aGRtaS1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2No
-aXAuYwo+ID4gaW5kZXggMTlmMDAyZmEwYTA5Li4yMzdmMzFmZDg0MDMgMTAwNjQ0Cj4gPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gPiBAQCAtMjUsNiAr
-MjUsMjQgQEAKPiA+ICAKPiA+ICAjZGVmaW5lIFJLMzI4OF9HUkZfU09DX0NPTjYJCTB4MDI1Qwo+
-ID4gICNkZWZpbmUgUkszMjg4X0hETUlfTENEQ19TRUwJCUJJVCg0KQo+ID4gKyNkZWZpbmUgUksz
-MzI4X0dSRl9TT0NfQ09OMgkJMHgwNDA4Cj4gPiArCj4gPiArI2RlZmluZSBSSzMzMjhfSERNSV9T
-REFJTl9NU0sJCUJJVCgxMSkKPiA+ICsjZGVmaW5lIFJLMzMyOF9IRE1JX1NDTElOX01TSwkJQklU
-KDEwKQo+ID4gKyNkZWZpbmUgUkszMzI4X0hETUlfSFBEX0lPRQkJQklUKDIpCj4gPiArI2RlZmlu
-ZSBSSzMzMjhfR1JGX1NPQ19DT04zCQkweDA0MGMKPiA+ICsvKiBuZWVkIHRvIGJlIHVuc2V0IGlm
-IGhkbWkgb3IgaTJjIHNob3VsZCBjb250cm9sIHZvbHRhZ2UgKi8KPiA+ICsjZGVmaW5lIFJLMzMy
-OF9IRE1JX1NEQTVWX0dSRgkJQklUKDE1KQo+ID4gKyNkZWZpbmUgUkszMzI4X0hETUlfU0NMNVZf
-R1JGCQlCSVQoMTQpCj4gPiArI2RlZmluZSBSSzMzMjhfSERNSV9IUEQ1Vl9HUkYJCUJJVCgxMykK
-PiA+ICsjZGVmaW5lIFJLMzMyOF9IRE1JX0NFQzVWX0dSRgkJQklUKDEyKQo+ID4gKyNkZWZpbmUg
-UkszMzI4X0dSRl9TT0NfQ09ONAkJMHgwNDEwCj4gPiArI2RlZmluZSBSSzMzMjhfSERNSV9IUERf
-U0FSQURDCQlCSVQoMTMpCj4gPiArI2RlZmluZSBSSzMzMjhfSERNSV9DRUNfNVYJCUJJVCgxMSkK
-PiA+ICsjZGVmaW5lIFJLMzMyOF9IRE1JX1NEQV81VgkJQklUKDEwKQo+ID4gKyNkZWZpbmUgUksz
-MzI4X0hETUlfU0NMXzVWCQlCSVQoOSkKPiA+ICsjZGVmaW5lIFJLMzMyOF9IRE1JX0hQRF81VgkJ
-QklUKDgpCj4gPiArCj4gPiAgI2RlZmluZSBSSzMzOTlfR1JGX1NPQ19DT04yMAkJMHg2MjUwCj4g
-PiAgI2RlZmluZSBSSzMzOTlfSERNSV9MQ0RDX1NFTAkJQklUKDYpCj4gPiAgCj4gPiBAQCAtMjky
-LDYgKzMxMCw2OCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9lbmNvZGVyX2hlbHBlcl9mdW5j
-cyBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfaGVscGVyX2Z1bgo+ID4gIAkuYXRvbWljX2NoZWNr
-ID0gZHdfaGRtaV9yb2NrY2hpcF9lbmNvZGVyX2F0b21pY19jaGVjaywKPiA+ICB9Owo+ID4gIAo+
-ID4gK3N0YXRpYyBpbnQgZHdfaGRtaV9yb2NrY2hpcF9nZW5waHlfaW5pdChzdHJ1Y3QgZHdfaGRt
-aSAqZHdfaGRtaSwgdm9pZCAqZGF0YSwKPiA+ICsJCQkgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9t
-b2RlICptb2RlKQo+ID4gK3sKPiA+ICsJc3RydWN0IHJvY2tjaGlwX2hkbWkgKmhkbWkgPSAoc3Ry
-dWN0IHJvY2tjaGlwX2hkbWkgKilkYXRhOwo+ID4gKwo+ID4gKwlyZXR1cm4gcGh5X3Bvd2VyX29u
-KGhkbWktPnBoeSk7Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2No
-aXBfZ2VucGh5X2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmR3X2hkbWksIHZvaWQgKmRhdGEpCj4g
-PiArewo+ID4gKwlzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSAqaGRtaSA9IChzdHJ1Y3Qgcm9ja2NoaXBf
-aGRtaSAqKWRhdGE7Cj4gPiArCj4gPiArCXBoeV9wb3dlcl9vZmYoaGRtaS0+cGh5KTsKPiA+ICt9
-Cj4gPiArCj4gPiArc3RhdGljIGVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMKPiA+ICtkd19oZG1p
-X3JrMzMyOF9yZWFkX2hwZChzdHJ1Y3QgZHdfaGRtaSAqZHdfaGRtaSwgdm9pZCAqZGF0YSkKPiA+
-ICt7Cj4gPiArCXN0cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pID0gKHN0cnVjdCByb2NrY2hpcF9o
-ZG1pICopZGF0YTsKPiA+ICsJZW51bSBkcm1fY29ubmVjdG9yX3N0YXR1cyBzdGF0dXM7Cj4gPiAr
-Cj4gPiArCXN0YXR1cyA9IGR3X2hkbWlfcGh5X3JlYWRfaHBkKGR3X2hkbWksIGRhdGEpOwo+ID4g
-Kwo+ID4gKwlpZiAoc3RhdHVzID09IGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkKQo+ID4gKwkJ
-cmVnbWFwX3dyaXRlKGhkbWktPnJlZ21hcCwKPiA+ICsJCQlSSzMzMjhfR1JGX1NPQ19DT040LAo+
-ID4gKwkJCUhJV09SRF9VUERBVEUoUkszMzI4X0hETUlfQ0VDXzVWIHwgUkszMzI4X0hETUlfU0RB
-XzVWIHwKPiA+ICsJCQkJICAgICAgUkszMzI4X0hETUlfU0NMXzVWLAo+ID4gKwkJCQkgICAgICBS
-SzMzMjhfSERNSV9DRUNfNVYgfCBSSzMzMjhfSERNSV9TREFfNVYgfAo+ID4gKwkJCQkgICAgICBS
-SzMzMjhfSERNSV9TQ0xfNVYpKTsKPiAKPiBUaGlzIGRpZmZlcnMgZnJvbSBCU1Aga2VybmVsIGFu
-ZCBlbmFibGUgb2YgQ0VDIDVWIHN0b3BzIENFQyBmcm9tIHdvcmtpbmcuCj4gQlNQIGtlcm5lbCBk
-byBub3Qgc2V0IHdyaXRlIGVuYWJsZSBiaXQgZm9yIENFQyA1VjoKPiAKPiBSSzMzMjhfSU9fNVZf
-RE9NQUlOICgoNyA8PCA5KSB8ICgzIDw8ICg5ICsgMTYpKSkKPiAKPiBodHRwczovL2dpdGh1Yi5j
-b20vS3dpYm9vL2xpbnV4LXJvY2tjaGlwL2NvbW1pdC9lNzRhYzZhM2E1ODFiY2I3YjJhYzlmNGQ3
-MGNmNzI5OGRmMDFlNDE3IG1ha2VzIENFQyB3b3JrIG9uIHYzIG9mIHRoaXMgcGF0Y2guCgp0aGFu
-a3MgZm9yIGNoZWNraW5nIHRoZSBjZWMgZnVuY3Rpb25hbGl0eS4gSSd2ZSBpbmNvcnBvcmF0ZWQg
-eW91ciBjaGFuZ2UKYW5kIHNlbnQgb2ZmIHY2LiBNYXliZSB5b3UgY2FuIHRha2UgYW5vdGhlciBs
-b29rIGFuZCBwb3NzaWJsZSBwcm92aWRlCnNvbWUgVGVzdGVkLWJ5IChvciBldmVuIFJldmlld2Vk
-LWJ5L0Fja2VkLWJ5KSB0YWdzPyA6LSkKCgpUaGFua3MKSGVpa28KCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Mittwoch, 12. September 2018, 10:22:44 CEST schrieb Manivannan Sadhasivam:
+> On Wed, Sep 12, 2018 at 09:26:12AM +0200, Heiko Stübner wrote:
+> > Am Mittwoch, 12. September 2018, 05:12:48 CEST schrieb Manivannan Sadhasivam:
+> > > Hi Ezequiel,
+> > > 
+> > > On Tue, Sep 11, 2018 at 04:40:29PM -0300, Ezequiel Garcia wrote:
+> > > > On Tue, 2018-09-11 at 08:00 +0530, Manivannan Sadhasivam wrote:
+> > > > > Since the same family members of Rock960 boards (Rock960 and Ficus)
+> > > > > share the same configuration, split out the common nodes into a common
+> > > > > dtsi file for reducing code duplication. The board specific nodes for
+> > > > > Ficus boards are then placed in corresponding board DTS file.
+> > > > 
+> > > > I think it should be possible to move the common USB nodes to the dtsi
+> > > > file, and keep the board-specific (phy-supply property) in the dts files:
+> > > > 
+> > > > &u2phy0_host {
+> > > > 
+> > > >         phy-supply = <&vcc5v0_host>;
+> > > > 
+> > > > };
+> > > > 
+> > > > &u2phy1_host {
+> > > > 
+> > > >         phy-supply = <&vcc5v0_host>;
+> > > > 
+> > > > };
+> > > 
+> > > We can do that but my intention was to entirely partition the nodes
+> > > which are not common. So that it would be less confusing when someone
+> > > looks at it (please correct me if I'm wrong).
+> > 
+> > The supply is actually named the same on both boards, so you could move
+> > all the usb-nodes to the main dtsi, including the reference to vcc5v0_host
+> > which would then get defined itself in the two board dts.
+> > 
+> > Then again, seeing that the vcc5v0_host also only differs in the actually
+> > used gpio another option would be to move the whole regulator node
+> > to the dtsi and just define the gpio properties in the board dts files.
+> >
+> 
+> Hmm, if that's the preferred option then I guess this applies to pcie
+> nodes also. At the end, usb and pcie nodes will be shrinked to below in
+> board dts:
+> 
+> &pinctrl {
+>         pcie {
+>                 pcie_drv: pcie-drv {
+>                         rockchip,pins =
+>                                 <2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+>                         };
+>         };
+> 
+>         usb2 {
+>                 host_vbus_drv: host-vbus-drv {
+>                         rockchip,pins =
+>                                 <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+>                 };
+>         };
+> };
+> 
+> &pcie0 {
+>         ep-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
+>         status = "okay";
+> };
+> 
+> &vcc3v3_pcie {
+>         gpio = <&gpio2 5 GPIO_ACTIVE_HIGH>;
+> };
+> 
+> &vcc5v0_host {
+>         gpio = <&gpio4 25 GPIO_ACTIVE_HIGH>;
+> };
+
+yep, ideally we could go that way. It's way easier to determine the
+actual differences between boards that way as well.
+
+
+Heiko
