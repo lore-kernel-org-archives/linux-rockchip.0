@@ -1,104 +1,62 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip ARM64 devicetree updates for 4.20
-Date: Thu, 13 Sep 2018 15:55:15 +0200
-Message-ID: <2349272.dkc8ODN2Us@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: [PATCH v3 0/4] Add 96Boards Rock960 CE board support
+Date: Thu, 13 Sep 2018 23:35:41 +0530
+Message-ID: <20180913180545.29756-1-manivannan.sadhasivam@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org
+Cc: vicencb@gmail.com, shawn.lin@rock-chips.com, ezequiel@collabora.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin, Olof,
+This patchset adds 96Boards Rock960 CE board support. Rock960 CE
+(Consumer Edition) board is one of the member of 96Boards Consumer
+Edition and AI platform and is manufactured by Vamrs Limited. Most of
+the board configuration is shared with the Ficus board manufactured by
+vamrs, which is an Enterprise 96Board.
 
-please find below the first set of arm64 dt updates for 4.20
-(or however it will be named).
+For the sake of avoiding code duplication, a common rock960.dtsi file
+with common DT nodes for both boards and separate board specific DTS
+files has been added.
 
-It's really only 64 bit changes so far [I have one 32bit patch queued up,
-but that isn't really useful on its own, so I'll keep it a bit longer,
-to not send needless 1-patch pull requests ;-) ]
+To be specific, below are some of the key differences between both
+boards:
 
-The tag describes the included changes, so if ok please pull
+1. Different host enable GPIO for USB
+2. Different power and reset GPIO for PCI-E
+3. No Ethernet port on Rock960
 
-Thanks
-Heiko
+While adding the board support, SD card Chip detection support is also
+added to the common dtsi file, shared by both boards.
 
+This series has been tested on Rock960 CE v1.2 board.
 
-The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
+Thanks,
+Mani
 
-  Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
+Changes in v3:
 
-are available in the Git repository at:
+* Moved usb and pcie nodes to common dtsi and kept only the properties
+  which differ in board specific dts.
+* Updated the common dtsi commit description.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.20-rockchip-dts64-1
+Changes in v2:
 
-for you to fetch changes up to 78f26da3ffbce0ea3692a89fe3f5487cb8dda068:
+* Changed the board compatible to "vamrs,rock960"
 
-  arm64: dts: rockchip: Add type-c port supply on rk3399-sapphire board (2018-09-10 19:16:26 +0200)
+Manivannan Sadhasivam (4):
+  arm64: dts: rockchip: Split out common nodes for Rock960 based boards
+  dt-bindings: arm: rockchip: Add binding for Rock960 board
+  arm64: boot: dts: rockchip: Add support for Rock960 board
+  arm64: dts: rockchip: Enable SD card detection for Rock960 boards
 
-----------------------------------------------------------------
-New soc support for the px30 quad-core Cortex-A35.
-New boards are the px30 eval board and roc-rk3399-pc.
-The rk3328 got support for the one gpio controlled via the general
-register files and the rk3399 finally got its idle-states defined.
-And finally fixes and improvements for firefly-rk3399 (wifi),
-roc-rk3328-cc (sdmmc-uhs, io-domains), rk3328-rock64 (gpio-regulator
-pin fix) and rk3399-sapphire (gpio-regulator pin fix, pmic pin fix
-and type-c port supply).
+ .../devicetree/bindings/arm/rockchip.txt      |   4 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 524 +----------------
+ .../boot/dts/rockchip/rk3399-rock960.dts      |  52 ++
+ .../boot/dts/rockchip/rk3399-rock960.dtsi     | 542 ++++++++++++++++++
+ 5 files changed, 604 insertions(+), 519 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
 
-----------------------------------------------------------------
-Katsuhiro Suzuki (1):
-      arm64: dts: rockchip: fix vcc_host1_5v pin assign on rk3328-rock64
-
-Levin Du (4):
-      arm64: dts: rockchip: add support for ROC-RK3399-PC board
-      arm64: dts: rockchip: add io-domain to roc-rk3328-cc
-      arm64: dts: rockchip: add GRF GPIO controller to rk3328
-      arm64: dts: rockchip: add sdmmc UHS support for roc-rk3328-cc
-
-Liang Chen (3):
-      dt-bindings: rockchip: grf: add grf and pmugrf description for px30
-      arm64: dts: rockchip: add core dtsi file for PX30 SoCs
-      arm64: dts: rockchip: add PX30 evaluation board devicetree
-
-Sandy Huang (1):
-      arm64: dts: rockchip: add missing vop properties for px30
-
-Shohei Maruyama (1):
-      arm64: dts: rockchip: add WiFi module support for Firefly-RK3399
-
-Tony Xie (1):
-      arm64: dts: rockchip: Add idle-states to device tree for rk3399
-
-Vicente Bergas (4):
-      arm64: dts: rockchip: re-order vcc_sys on rk3399-sapphire
-      arm64: dts: rockchip: Fix VCC5V0_HOST_EN on rk3399-sapphire
-      arm64: dts: rockchip: remove dvs2 pinctrl from pmic on rk3399-sapphire
-      arm64: dts: rockchip: Add type-c port supply on rk3399-sapphire board
-
- Documentation/devicetree/bindings/arm/rockchip.txt |    8 +
- .../devicetree/bindings/soc/rockchip/grf.txt       |    2 +
- arch/arm64/boot/dts/rockchip/Makefile              |    2 +
- arch/arm64/boot/dts/rockchip/px30-evb.dts          |  231 +++
- arch/arm64/boot/dts/rockchip/px30.dtsi             | 2031 ++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |   30 +
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |    4 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |    7 +-
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |   36 +
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts     |  680 +++++++
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |   44 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   28 +
- 12 files changed, 3083 insertions(+), 20 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/px30-evb.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/px30.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+-- 
+2.17.1
