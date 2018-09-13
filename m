@@ -1,45 +1,70 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v3 1/5] drm/rockchip: prepare common code for cdns and
- rk dpi/dp driver
-Date: Thu, 13 Sep 2018 12:00:57 +0200
-Message-ID: <20180913100100eucas1p23e7e33035b6cba51d6219a58b34eea92~T7VgDpN8L3204732047eucas1p2_@eucas1p2.samsung.com>
+From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+Subject: RE: [PATCH v3 1/5] drm/rockchip: prepare common code for cdns and rk
+ dpi/dp driver
+Date: Thu, 13 Sep 2018 10:15:19 +0000
+Message-ID: <CO2PR07MB255146DAA1B87BB046E64BAECD1A0@CO2PR07MB2551.namprd07.prod.outlook.com>
 References: <1535451894-2518-1-git-send-email-dkos@cadence.com>
-        <CGME20180828102612epcas2p376fa6f21ce57f4753a8d0f80f5359842@epcas2p3.samsung.com>
-        <1535451894-2518-2-git-send-email-dkos@cadence.com>
+ <CGME20180828102612epcas2p376fa6f21ce57f4753a8d0f80f5359842@epcas2p3.samsung.com>
+ <1535451894-2518-2-git-send-email-dkos@cadence.com>
+ <20180913100100eucas1p23e7e33035b6cba51d6219a58b34eea92~T7VgDpN8L3204732047eucas1p2_@eucas1p2.samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1535451894-2518-2-git-send-email-dkos@cadence.com>
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180913100100eucas1p23e7e33035b6cba51d6219a58b34eea92~T7VgDpN8L3204732047eucas1p2_-PmokGAFL9ItqW5MlFJXMulaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Damian Kos <dkos@cadence.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Quentin Schulz <quentin.schulz@bootlin.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: pgaj@cadence.com, ltyrala@cadence.com, stelford@cadence.com, jartur@cadence.com, piotrs@cadence.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Quentin Schulz <quentin.schulz-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Przemyslaw Gaj <pgaj-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Lukasz Tyrala <ltyrala-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Scott Telford <stelford-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Artur Jedrysek <jartur-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Piotr Sroka <piotrs-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Damian,
-
-Quite late but.
-
-On 28.08.2018 12:24, Damian Kos wrote:
-> - Extracted common fields from cdn_dp_device to a new cdns_mhdp_device
->   structure which will be used by two separate drivers later on.
-> - Moved some datatypes (audio_format, audio_info, vic_pxl_encoding_format,
->   video_info) from cdn-dp-core.c to cdn-dp-reg.h.
-> - Changed prefixes from cdn_dp to cdns_mhdp
->     cdn -> cdns to match the other Cadence's drivers
->     dp -> mhdp to distinguish it from a "just a DP" as the IP underneath
->       this registers map can be a HDMI (which is internally different,
->       but the interface for commands, events is pretty much the same).
-> - Modified cdn-dp-core.c to use the new driver structure and new function
->   names.
->
-> Signed-off-by: Damian Kos <dkos@cadence.com>
-
-Many changes, hard to review. Anyway:
-
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-
- --
-Regards
-Andrzej
+VGhhbmsgeW91LCBBbmRyemVqISBJIHdhcyBhIGJpdCBhZnJhaWQgdGhhdCBvdXIgcGF0Y2hlcyBh
+cmUgYSBiaXQgdG9vIG1lc3N5IGFuZCB0aHVzIGlnbm9yZWQg8J+Yig0KQW55d2F5LCB0aGlzIHBh
+dGNoICgxLzUpIHNob3VsZCBiZSB0aGUgbGFzdCBvbmUgdGhhdCB3aWxsIGNhdXNlIHN1Y2ggY2hh
+b3MgaW4gdGhlIERSTSBhcmVhLg0KDQpSZWdhcmRzLA0KRGFtaWFuDQoNCi0tLS0tT3JpZ2luYWwg
+TWVzc2FnZS0tLS0tDQpGcm9tOiBBbmRyemVqIEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPiAN
+ClNlbnQ6IFRodXJzZGF5LCBTZXB0ZW1iZXIgMTMsIDIwMTggMTI6MDENClRvOiBEYW1pYW4gS29z
+IDxka29zQGNhZGVuY2UuY29tPjsgRGF2aWQgQWlybGllIDxhaXJsaWVkQGxpbnV4LmllPjsgUm9i
+IEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz47IE1hcmsgUnV0bGFuZCA8bWFyay5ydXRsYW5k
+QGFybS5jb20+OyBBcmNoaXQgVGFuZWphIDxhcmNoaXR0QGNvZGVhdXJvcmEub3JnPjsgTGF1cmVu
+dCBQaW5jaGFydCA8TGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPjsgR3VzdGF2byBQ
+YWRvdmFuIDxndXN0YXZvQHBhZG92YW4ub3JnPjsgTWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4u
+bGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT47IFNlYW4gUGF1bCA8c2VhbkBwb29ybHkucnVuPjsg
+U2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT47IEhlaWtvIFN0w7xibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+OyBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAYm9vdGxpbi5jb20+OyBk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBkZXZpY2V0cmVlQHZnZXIua2VybmVsLm9y
+ZzsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsgbGludXgtYXJtLWtlcm5lbEBsaXN0cy5p
+bmZyYWRlYWQub3JnOyBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnDQpDYzogUHJ6
+ZW15c2xhdyBHYWogPHBnYWpAY2FkZW5jZS5jb20+OyBMdWthc3ogVHlyYWxhIDxsdHlyYWxhQGNh
+ZGVuY2UuY29tPjsgU2NvdHQgVGVsZm9yZCA8c3RlbGZvcmRAY2FkZW5jZS5jb20+OyBBcnR1ciBK
+ZWRyeXNlayA8amFydHVyQGNhZGVuY2UuY29tPjsgUGlvdHIgU3Jva2EgPHBpb3Ryc0BjYWRlbmNl
+LmNvbT4NClN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgMS81XSBkcm0vcm9ja2NoaXA6IHByZXBhcmUg
+Y29tbW9uIGNvZGUgZm9yIGNkbnMgYW5kIHJrIGRwaS9kcCBkcml2ZXINCg0KRVhURVJOQUwgTUFJ
+TA0KDQoNCkhpIERhbWlhbiwNCg0KUXVpdGUgbGF0ZSBidXQuDQoNCk9uIDI4LjA4LjIwMTggMTI6
+MjQsIERhbWlhbiBLb3Mgd3JvdGU6DQo+IC0gRXh0cmFjdGVkIGNvbW1vbiBmaWVsZHMgZnJvbSBj
+ZG5fZHBfZGV2aWNlIHRvIGEgbmV3IGNkbnNfbWhkcF9kZXZpY2UNCj4gICBzdHJ1Y3R1cmUgd2hp
+Y2ggd2lsbCBiZSB1c2VkIGJ5IHR3byBzZXBhcmF0ZSBkcml2ZXJzIGxhdGVyIG9uLg0KPiAtIE1v
+dmVkIHNvbWUgZGF0YXR5cGVzIChhdWRpb19mb3JtYXQsIGF1ZGlvX2luZm8sIHZpY19weGxfZW5j
+b2RpbmdfZm9ybWF0LA0KPiAgIHZpZGVvX2luZm8pIGZyb20gY2RuLWRwLWNvcmUuYyB0byBjZG4t
+ZHAtcmVnLmguDQo+IC0gQ2hhbmdlZCBwcmVmaXhlcyBmcm9tIGNkbl9kcCB0byBjZG5zX21oZHAN
+Cj4gICAgIGNkbiAtPiBjZG5zIHRvIG1hdGNoIHRoZSBvdGhlciBDYWRlbmNlJ3MgZHJpdmVycw0K
+PiAgICAgZHAgLT4gbWhkcCB0byBkaXN0aW5ndWlzaCBpdCBmcm9tIGEgImp1c3QgYSBEUCIgYXMg
+dGhlIElQIHVuZGVybmVhdGgNCj4gICAgICAgdGhpcyByZWdpc3RlcnMgbWFwIGNhbiBiZSBhIEhE
+TUkgKHdoaWNoIGlzIGludGVybmFsbHkgZGlmZmVyZW50LA0KPiAgICAgICBidXQgdGhlIGludGVy
+ZmFjZSBmb3IgY29tbWFuZHMsIGV2ZW50cyBpcyBwcmV0dHkgbXVjaCB0aGUgc2FtZSkuDQo+IC0g
+TW9kaWZpZWQgY2RuLWRwLWNvcmUuYyB0byB1c2UgdGhlIG5ldyBkcml2ZXIgc3RydWN0dXJlIGFu
+ZCBuZXcgZnVuY3Rpb24NCj4gICBuYW1lcy4NCj4NCj4gU2lnbmVkLW9mZi1ieTogRGFtaWFuIEtv
+cyA8ZGtvc0BjYWRlbmNlLmNvbT4NCg0KTWFueSBjaGFuZ2VzLCBoYXJkIHRvIHJldmlldy4gQW55
+d2F5Og0KDQpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5nLmNvbT4N
+Cg0KwqAtLQ0KUmVnYXJkcw0KQW5kcnplag0KDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
