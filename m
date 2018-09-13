@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH] ARM: dts: rk3036: Fix erroneous SPI bus warnings
-Date: Thu, 13 Sep 2018 13:12:36 -0500
-Message-ID: <20180913181245.25484-12-robh@kernel.org>
+Subject: [PATCH] arm64: dts: rockchip: Fix I2C bus unit-address error
+Date: Thu, 13 Sep 2018 13:12:45 -0500
+Message-ID: <20180913181245.25484-21-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -19,14 +19,9 @@ To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-dtc has new checks for SPI buses. The rk3036 dts file has a node named
-spi' which causes false positive warnings. As the node is a pinctrl child
-node, change the node name to be 'spi-pins' to fix the warnings.
+dtc has new checks for I2C buses. Fix the warnings in unit-addresses.
 
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: Warning (i2c_bus_reg): /i2c@ff3d0000/codec@0a: I2C bus unit address format error, expected "a"
 
 Cc: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org
@@ -35,21 +30,21 @@ Signed-off-by: Rob Herring <robh@kernel.org>
 Please apply to the sub-arch tree. The dtc changes haven't landed, but 
 will for 4.20.
 
- arch/arm/boot/dts/rk3036.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 67f57200d9a0..d560fc4051c5 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -733,7 +733,7 @@
- 			/* no rts / cts for uart2 */
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index e0d64f862322..2dceeea29b83 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -131,7 +131,7 @@
+ 	status = "okay";
+ 	clock-frequency = <400000>;
  
--		spi {
-+		spi-pins {
- 			spi_txd:spi-txd {
- 				rockchip,pins = <1 29 RK_FUNC_3 &pcfg_pull_default>;
- 			};
+-	sgtl5000: codec@0a {
++	sgtl5000: codec@a {
+ 		compatible = "fsl,sgtl5000";
+ 		reg = <0x0a>;
+ 		clocks = <&sgtl5000_clk>;
 -- 
 2.17.1
