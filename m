@@ -1,219 +1,91 @@
-From: Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>
-Subject: Re: [PATCH v5 5/6] media: Add controls for JPEG quantization tables
-Date: Thu, 13 Sep 2018 14:14:53 +0200
-Message-ID: <e7126e89d8984eb93216ec75c83ce1fc5afc437d.camel@paulk.fr>
-References: <20180905220011.16612-1-ezequiel@collabora.com>
- <20180905220011.16612-6-ezequiel@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 5/5] drm/bridge: add preliminary driver for cadence
+ dpi/dp bridge
+Date: Thu, 13 Sep 2018 14:30:17 +0200
+Message-ID: <1794131.JE1BxD2NGT@phil>
+References: <1535451894-2518-1-git-send-email-dkos@cadence.com>
+ <1535451894-2518-6-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180905220011.16612-6-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1535451894-2518-6-git-send-email-dkos@cadence.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Quentin Schulz <quentin.schulz@bootlin.com>, jartur@cadence.com, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Rob Herring <robh+dt@kernel.org>, stelford@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, ltyrala@cadence.com, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, piotrs@cadence.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, 2018-09-05 at 19:00 -0300, Ezequiel Garcia wrote:
-> From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> Add V4L2_CID_JPEG_QUANTIZATION compound control to allow userspace
-> configure the JPEG quantization tables.
-> 
-> Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->  .../media/uapi/v4l/extended-controls.rst      | 31 +++++++++++++++++++
->  .../media/videodev2.h.rst.exceptions          |  1 +
->  drivers/media/v4l2-core/v4l2-ctrls.c          | 10 ++++++
->  include/uapi/linux/v4l2-controls.h            | 12 +++++++
->  include/uapi/linux/videodev2.h                |  1 +
->  5 files changed, 55 insertions(+)
-> 
-> diff --git a/Documentation/media/uapi/v4l/extended-controls.rst b/Documentation/media/uapi/v4l/extended-controls.rst
-> index 9f7312bf3365..1335d27d30f3 100644
-> --- a/Documentation/media/uapi/v4l/extended-controls.rst
-> +++ b/Documentation/media/uapi/v4l/extended-controls.rst
-> @@ -3354,7 +3354,38 @@ JPEG Control IDs
->      Specify which JPEG markers are included in compressed stream. This
->      control is valid only for encoders.
->  
-> +.. _jpeg-quant-tables-control:
-
-I just had a look at how the Allwinner VPU handles JPEG decoding and it
-seems to require the following information (in addition to
-quantization):
-
-* Horizontal and vertical sampling factors for each Y/U/V component:
-
-The number of components and sampling factors are coded separately in
-the bitstream, but it's probably easier to use the already-existing
-V4L2_CID_JPEG_CHROMA_SUBSAMPLING control for specifying that.
-
-However, this is potentially very much related to the destination
-format. If we decide that this format should match the format resulting
-from decompression, we don't need to specify it through an external
-control. On the other hand, it's possible that the VPU has format
-conversion block integrated in its pipeline so it would also make sense
-to consider the destination format as independent.
-
-* Custom Huffman tables (DC and AC), both for luma and chroma
-
-It seems that there is a default table when no Huffman table is provided
-in the bitstream (I'm not too sure how standard that is, just started
-learning about JPEG). We probably need a specific control for that.
-
-* Reset interval
-
-That's extracted from the bitstream as well and there's a
-V4L2_CID_JPEG_RESTART_INTERVAL control already.
-
-In addition to these points, I see that among all the JPEG profiles,
-some have to do with arithmetic coding which will probably require a
-specific control on its own (not sure how it should look at this point
-though).
-
-What do you think?
-
-Cheers,
-
-Paul
-
-> +``V4L2_CID_JPEG_QUANTIZATION (struct)``
-> +    Specifies the luma and chroma quantization matrices for encoding
-> +    or decoding a V4L2_PIX_FMT_JPEG_RAW format buffer. The :ref:`itu-t81`
-> +    specification allows 8-bit quantization coefficients for
-> +    baseline profile images, and 8-bit or 16-bit for extended profile
-> +    images. Supporting or not 16-bit precision coefficients is driver-specific.
-> +    Coefficients must be set in JPEG zigzag scan order.
-> +
-> +
-> +.. c:type:: struct v4l2_ctrl_jpeg_quantization
-> +
-> +.. cssclass:: longtable
-> +
-> +.. flat-table:: struct v4l2_ctrl_jpeg_quantization
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __u8
-> +      - ``precision``
-> +      - Specifies the coefficient precision. User shall set 0
-> +        for 8-bit, and 1 for 16-bit.
-> +
-> +    * - __u16
-> +      - ``luma_quantization_matrix[64]``
-> +      - Sets the luma quantization table.
-> +
-> +    * - __u16
-> +      - ``chroma_quantization_matrix[64]``
-> +      - Sets the chroma quantization table.
->  
->  .. flat-table::
->      :header-rows:  0
-> diff --git a/Documentation/media/videodev2.h.rst.exceptions b/Documentation/media/videodev2.h.rst.exceptions
-> index ca9f0edc579e..a0a38e92bf38 100644
-> --- a/Documentation/media/videodev2.h.rst.exceptions
-> +++ b/Documentation/media/videodev2.h.rst.exceptions
-> @@ -129,6 +129,7 @@ replace symbol V4L2_CTRL_TYPE_STRING :c:type:`v4l2_ctrl_type`
->  replace symbol V4L2_CTRL_TYPE_U16 :c:type:`v4l2_ctrl_type`
->  replace symbol V4L2_CTRL_TYPE_U32 :c:type:`v4l2_ctrl_type`
->  replace symbol V4L2_CTRL_TYPE_U8 :c:type:`v4l2_ctrl_type`
-> +replace symbol V4L2_CTRL_TYPE_JPEG_QUANTIZATION :c:type:`v4l2_ctrl_type`
->  
->  # V4L2 capability defines
->  replace define V4L2_CAP_VIDEO_CAPTURE device-capabilities
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
-> index 599c1cbff3b9..305bd7a9b7f1 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
-> @@ -999,6 +999,7 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_JPEG_RESTART_INTERVAL:	return "Restart Interval";
->  	case V4L2_CID_JPEG_COMPRESSION_QUALITY:	return "Compression Quality";
->  	case V4L2_CID_JPEG_ACTIVE_MARKER:	return "Active Markers";
-> +	case V4L2_CID_JPEG_QUANTIZATION:	return "JPEG Quantization Tables";
->  
->  	/* Image source controls */
->  	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
-> @@ -1286,6 +1287,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_DETECT_MD_REGION_GRID:
->  		*type = V4L2_CTRL_TYPE_U8;
->  		break;
-> +	case V4L2_CID_JPEG_QUANTIZATION:
-> +		*type = V4L2_CTRL_TYPE_JPEG_QUANTIZATION;
-> +		break;
->  	case V4L2_CID_DETECT_MD_THRESHOLD_GRID:
->  		*type = V4L2_CTRL_TYPE_U16;
->  		break;
-> @@ -1612,6 +1616,9 @@ static int std_validate(const struct v4l2_ctrl *ctrl, u32 idx,
->  			return -ERANGE;
->  		return 0;
->  
-> +	case V4L2_CTRL_TYPE_JPEG_QUANTIZATION:
-> +		return 0;
-> +
->  	default:
->  		return -EINVAL;
->  	}
-> @@ -2133,6 +2140,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
->  	case V4L2_CTRL_TYPE_U32:
->  		elem_size = sizeof(u32);
->  		break;
-> +	case V4L2_CTRL_TYPE_JPEG_QUANTIZATION:
-> +		elem_size = sizeof(struct v4l2_ctrl_jpeg_quantization);
-> +		break;
->  	default:
->  		if (type < V4L2_CTRL_COMPOUND_TYPES)
->  			elem_size = sizeof(s32);
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> index e4ee10ee917d..856b3325052f 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -987,6 +987,18 @@ enum v4l2_jpeg_chroma_subsampling {
->  #define	V4L2_JPEG_ACTIVE_MARKER_DQT		(1 << 17)
->  #define	V4L2_JPEG_ACTIVE_MARKER_DHT		(1 << 18)
->  
-> +#define V4L2_CID_JPEG_QUANTIZATION		(V4L2_CID_JPEG_CLASS_BASE + 5)
-> +struct v4l2_ctrl_jpeg_quantization {
-> +	/* ITU-T.81 specifies two quantization coefficient precisions:
-> +	 * 8-bit for baseline profile,
-> +	 * 8-bit or 16-bit for extended profile.
-> +	 *
-> +	 * User shall set "precision" to 0 for 8-bit and 1 for 16-bit.
-> +	 */
-> +	__u8	precision;
-> +	__u16	luma_quantization_matrix[64];
-> +	__u16	chroma_quantization_matrix[64];
-> +};
->  
->  /* Image source controls */
->  #define V4L2_CID_IMAGE_SOURCE_CLASS_BASE	(V4L2_CTRL_CLASS_IMAGE_SOURCE | 0x900)
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index f9f3ae5b489e..8ace47cb1003 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -1637,6 +1637,7 @@ enum v4l2_ctrl_type {
->  	V4L2_CTRL_TYPE_U8	     = 0x0100,
->  	V4L2_CTRL_TYPE_U16	     = 0x0101,
->  	V4L2_CTRL_TYPE_U32	     = 0x0102,
-> +	V4L2_CTRL_TYPE_JPEG_QUANTIZATION = 0x0103,
->  };
->  
->  /*  Used in the VIDIOC_QUERYCTRL ioctl for querying controls */
--- 
-Developer of free digital technology and hardware support.
-
-Website: https://www.paulk.fr/
-Coding blog: https://code.paulk.fr/
-Git repositories: https://git.paulk.fr/ https://git.code.paulk.fr/
+QW0gRGllbnN0YWcsIDI4LiBBdWd1c3QgMjAxOCwgMTI6MjQ6NDggQ0VTVCBzY2hyaWViIERhbWlh
+biBLb3M6Cj4gRnJvbTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGJvb3RsaW4uY29t
+Pgo+IAo+IFRoaXMgcGF0Y2ggZmluYWxseSBhZGRzIHRoZSBwcmVsaW1pbmFyeSBkcml2ZXIgZm9y
+IENhZGVuY2UgTUhEUCBEUEkvRFAgYnJpZGdlLgo+IAo+IENoYW5nZXMgbWFkZSBpbiB0aGUgbG93
+IGxldmVsIGRyaXZlciAoY2RuLWRwLXJlZy4qKToKPiAtIG1vdmVkIGl0IHRvIGZyb20gZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwIHRvCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2NkbnMtbWhk
+cC1jb21tb24uKgo+IC0gZnVuY3Rpb25zIGZvciBzZW5kaW5nL3JlY2VpdmluZyBjb21tYW5kcyBh
+cmUgbm93IHB1YmxpYwo+IC0gYWRkZWQgZnVuY3Rpb25zIGZvciByZWFkaW5nIHJlZ2lzdGVycyBh
+bmQgbGluayB0cmFpbmluZwo+ICAgYWRqdXN0bWVudAo+IAo+IENoYW5nZXMgbWFkZSBpbiBSSydz
+IGRyaXZlciAoY2RuLWRwLWNvcmUuKik6Cj4gLSBNb3ZlZCBhdWRpb19pbmZvIGFuZCBhdWRpb19w
+ZGV2IGZpZWxkcyBmcm9tIGNkbl9kcF9kZXZpY2UgdG8KPiAgIGNkbnNfbWhkcF9kZXZpY2Ugc3Ry
+dWN0dXJlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbWlhbiBLb3MgPGRrb3NAY2FkZW5jZS5jb20+
+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZyAgICAgICAgICAgICAgICB8
+ICAgIDkgKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL01ha2VmaWxlICAgICAgICAgICAgICAg
+fCAgICAzICsKPiAgLi4uL2NkbnMtbWhkcC1jb21tb24uY30gICAgICAgICAgICAgICAgICAgICAg
+IHwgIDEzNyArLQo+ICAuLi4vY2Rucy1taGRwLWNvbW1vbi5ofSAgICAgICAgICAgICAgICAgICAg
+ICAgfCAgIDIxICstCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvY2Rucy1taGRwLmMgICAgICAg
+ICAgICB8IDEzMDggKysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L0tjb25maWcgICAgICAgICAgICAgIHwgICAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9NYWtlZmlsZSAgICAgICAgICAgICB8ICAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL2Nkbi1kcC1jb3JlLmMgICAgICAgIHwgICAxNiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvY2RuLWRwLWNvcmUuaCAgICAgICAgfCAgICA0ICstCj4gIDkgZmlsZXMgY2hhbmdlZCwg
+MTQ4NCBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiAgcmVuYW1lIGRyaXZlcnMvZ3B1
+L2RybS97cm9ja2NoaXAvY2RuLWRwLXJlZy5jID0+IGJyaWRnZS9jZG5zLW1oZHAtY29tbW9uLmN9
+ICg4NyUpCj4gIHJlbmFtZSBkcml2ZXJzL2dwdS9kcm0ve3JvY2tjaGlwL2Nkbi1kcC1yZWcuaCA9
+PiBicmlkZ2UvY2Rucy1taGRwLWNvbW1vbi5ofSAoOTUlKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9jZG5zLW1oZHAuYwo+IAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25m
+aWcKPiBpbmRleCA5ZWViOGVmMGIxNzQuLjkwYTQ4MTBhOGM5NiAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25maWcKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L0tjb25maWcKPiBAQCAtMzUsNiArMzUsMTUgQEAgY29uZmlnIERSTV9DRE5TX0RTSQo+ICAJICBT
+dXBwb3J0IENhZGVuY2UgRFBJIHRvIERTSSBicmlkZ2UuIFRoaXMgaXMgYW4gaW50ZXJuYWwKPiAg
+CSAgYnJpZGdlIGFuZCBpcyBtZWFudCB0byBiZSBkaXJlY3RseSBlbWJlZGRlZCBpbiBhIFNvQy4K
+PiAgCj4gK2NvbmZpZyBEUk1fQ0ROU19NSERQCj4gKwl0cmlzdGF0ZSAiQ2FkZW5jZSBEUEkvRFAg
+YnJpZGdlIgo+ICsJc2VsZWN0IERSTV9LTVNfSEVMUEVSCj4gKwlzZWxlY3QgRFJNX1BBTkVMX0JS
+SURHRQo+ICsJZGVwZW5kcyBvbiBPRgo+ICsJaGVscAo+ICsJICBTdXBwb3J0IENhZGVuY2UgRFBJ
+IHRvIERQIGJyaWRnZS4gVGhpcyBpcyBhbiBpbnRlcm5hbAo+ICsJICBicmlkZ2UgYW5kIGlzIG1l
+YW50IHRvIGJlIGRpcmVjdGx5IGVtYmVkZGVkIGluIGEgU29DLgo+ICsKClRoaXMgZW5kcyB1cCB3
+aXRoIGEgS2NvbmZpZyBlcnJvciBvbiBteSBrZXJuZWwsIHdpdGg6CgpzY3JpcHRzL2tjb25maWcv
+Y29uZiAgLS1vbGRjb25maWcgS2NvbmZpZwpkcml2ZXJzL2kyYy9LY29uZmlnOjc6ZXJyb3I6IHJl
+Y3Vyc2l2ZSBkZXBlbmRlbmN5IGRldGVjdGVkIQpkcml2ZXJzL2kyYy9LY29uZmlnOjc6ICBzeW1i
+b2wgSTJDIGlzIHNlbGVjdGVkIGJ5IEZCX0REQwpkcml2ZXJzL3ZpZGVvL2ZiZGV2L0tjb25maWc6
+NjM6IHN5bWJvbCBGQl9EREMgZGVwZW5kcyBvbiBGQgpkcml2ZXJzL3ZpZGVvL2ZiZGV2L0tjb25m
+aWc6NTogIHN5bWJvbCBGQiBpcyBzZWxlY3RlZCBieSBEUk1fS01TX0ZCX0hFTFBFUgpkcml2ZXJz
+L2dwdS9kcm0vS2NvbmZpZzo3NDogICAgIHN5bWJvbCBEUk1fS01TX0ZCX0hFTFBFUiBkZXBlbmRz
+IG9uIERSTV9LTVNfSEVMUEVSCmRyaXZlcnMvZ3B1L2RybS9LY29uZmlnOjY4OiAgICAgc3ltYm9s
+IERSTV9LTVNfSEVMUEVSIGlzIHNlbGVjdGVkIGJ5IERSTV9DRE5TX01IRFAKZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9LY29uZmlnOjM4OiAgICAgIHN5bWJvbCBEUk1fQ0ROU19NSERQIGlzIHNlbGVj
+dGVkIGJ5IFJPQ0tDSElQX0NETl9EUApkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZzoy
+OTogICAgc3ltYm9sIFJPQ0tDSElQX0NETl9EUCBkZXBlbmRzIG9uIEVYVENPTgpkcml2ZXJzL2V4
+dGNvbi9LY29uZmlnOjE6ICAgICAgIHN5bWJvbCBFWFRDT04gaXMgc2VsZWN0ZWQgYnkgQ0hBUkdF
+Ul9NQU5BR0VSCmRyaXZlcnMvcG93ZXIvc3VwcGx5L0tjb25maWc6NDY3OiAgICAgICBzeW1ib2wg
+Q0hBUkdFUl9NQU5BR0VSIGRlcGVuZHMgb24gUE9XRVJfU1VQUExZCmRyaXZlcnMvcG93ZXIvc3Vw
+cGx5L0tjb25maWc6MTogc3ltYm9sIFBPV0VSX1NVUFBMWSBpcyBzZWxlY3RlZCBieSBISURfQkFU
+VEVSWV9TVFJFTkdUSApkcml2ZXJzL2hpZC9LY29uZmlnOjI4OiBzeW1ib2wgSElEX0JBVFRFUllf
+U1RSRU5HVEggZGVwZW5kcyBvbiBISUQKZHJpdmVycy9oaWQvS2NvbmZpZzo3OiAgc3ltYm9sIEhJ
+RCBpcyBzZWxlY3RlZCBieSBJMkNfSElECmRyaXZlcnMvaGlkL2kyYy1oaWQvS2NvbmZpZzo0OiAg
+c3ltYm9sIEkyQ19ISUQgZGVwZW5kcyBvbiBJMkMKRm9yIGEgcmVzb2x1dGlvbiByZWZlciB0byBE
+b2N1bWVudGF0aW9uL2tidWlsZC9rY29uZmlnLWxhbmd1YWdlLnR4dApzdWJzZWN0aW9uICJLY29u
+ZmlnIHJlY3Vyc2l2ZSBkZXBlbmRlbmN5IGxpbWl0YXRpb25zIgoKClRoZSBjdWxwcml0IGJlaW5n
+IHRoZSBkZXBlbmRlbmN5IG9uIEVYVENPTiBpbiB0aGUgUm9ja2NoaXAgY2RuLWRwIGRyaXZlci4K
+TW92aW5nIHRvICJzZWxlY3QgRVhUQ09OIiBzZWVtcyB0byBmaXggdGhlIGlzc3VlLCBidXQgSSdt
+IG5vdCBzdXJlIHlldCBpZiB0aGF0CmlzIHRoZSBjb3JyZWN0IHNvbHV0aW9uLgoKCkhlaWtvCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
