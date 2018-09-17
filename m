@@ -1,13 +1,13 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix I2C bus unit-address error
-Date: Mon, 17 Sep 2018 10:21:46 +0200
-Message-ID: <2920025.RxADjLU2lV@phil>
-References: <20180913181245.25484-21-robh@kernel.org>
+Subject: Re: [PATCH] ARM: dts: rk3036: Fix erroneous SPI bus warnings
+Date: Mon, 17 Sep 2018 10:22:04 +0200
+Message-ID: <1778216.aYnKCIvxKR@phil>
+References: <20180913181245.25484-12-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180913181245.25484-21-robh@kernel.org>
+In-Reply-To: <20180913181245.25484-12-robh@kernel.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,10 +21,15 @@ To: Rob Herring <robh@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 13. September 2018, 20:12:45 CEST schrieb Rob Herring:
-> dtc has new checks for I2C buses. Fix the warnings in unit-addresses.
+Am Donnerstag, 13. September 2018, 20:12:36 CEST schrieb Rob Herring:
+> dtc has new checks for SPI buses. The rk3036 dts file has a node named
+> spi' which causes false positive warnings. As the node is a pinctrl child
+> node, change the node name to be 'spi-pins' to fix the warnings.
 > 
-> arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: Warning (i2c_bus_reg): /i2c@ff3d0000/codec@0a: I2C bus unit address format error, expected "a"
+> arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
+> arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
+> arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
+> arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
 > 
 > Cc: Heiko Stuebner <heiko@sntech.de>
 > Cc: linux-rockchip@lists.infradead.org
