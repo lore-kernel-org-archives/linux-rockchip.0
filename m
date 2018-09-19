@@ -1,15 +1,15 @@
-From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
-Subject: RE: [PATCH v3 0/5] drm: add support for Cadence MHDP DPI/DP bridge.
-Date: Tue, 18 Sep 2018 13:18:07 +0000
-Message-ID: <CO2PR07MB255198B0CC8CD7DEA742C556CD1D0@CO2PR07MB2551.namprd07.prod.outlook.com>
-References: <1535451894-2518-1-git-send-email-dkos@cadence.com>
- <11916444.D1tlAhbW8U@phil>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v5 5/6] media: Add controls for JPEG quantization tables
+Date: Wed, 19 Sep 2018 13:28:31 +0900
+Message-ID: <CAAFQd5Bir0uMsaJPHdgQDvcYHpxZ4sUSn10OPpRXcnn-THUx2A@mail.gmail.com>
+References: <20180905220011.16612-1-ezequiel@collabora.com>
+ <20180905220011.16612-6-ezequiel@collabora.com>
+ <e7126e89d8984eb93216ec75c83ce1fc5afc437d.camel@paulk.fr>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <11916444.D1tlAhbW8U@phil>
-Content-Language: en-US
+In-Reply-To: <e7126e89d8984eb93216ec75c83ce1fc5afc437d.camel-W9ppeneeCTY@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,67 +19,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Quentin Schulz <quentin.schulz-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Artur Jedrysek <jartur-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Przemyslaw Gaj <pgaj-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Scott Telford <stelford-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Lukasz Tyrala <ltyrala-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWOunwaRDDq4rA@public.gmane.org
+To: contact-W9ppeneeCTY@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Got it.
+On Thu, Sep 13, 2018 at 9:15 PM Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org> wrote:
+>
+> Hi,
+>
+> On Wed, 2018-09-05 at 19:00 -0300, Ezequiel Garcia wrote:
+> > From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >
+> > Add V4L2_CID_JPEG_QUANTIZATION compound control to allow userspace
+> > configure the JPEG quantization tables.
+> >
+> > Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > ---
+> >  .../media/uapi/v4l/extended-controls.rst      | 31 +++++++++++++++++++
+> >  .../media/videodev2.h.rst.exceptions          |  1 +
+> >  drivers/media/v4l2-core/v4l2-ctrls.c          | 10 ++++++
+> >  include/uapi/linux/v4l2-controls.h            | 12 +++++++
+> >  include/uapi/linux/videodev2.h                |  1 +
+> >  5 files changed, 55 insertions(+)
+> >
+> > diff --git a/Documentation/media/uapi/v4l/extended-controls.rst b/Documentation/media/uapi/v4l/extended-controls.rst
+> > index 9f7312bf3365..1335d27d30f3 100644
+> > --- a/Documentation/media/uapi/v4l/extended-controls.rst
+> > +++ b/Documentation/media/uapi/v4l/extended-controls.rst
+> > @@ -3354,7 +3354,38 @@ JPEG Control IDs
+> >      Specify which JPEG markers are included in compressed stream. This
+> >      control is valid only for encoders.
+> >
+> > +.. _jpeg-quant-tables-control:
+>
+> I just had a look at how the Allwinner VPU handles JPEG decoding and it
+> seems to require the following information (in addition to
+> quantization):
 
--depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
-+depends on DRM_ROCKCHIP=m
-+select EXTCON
+I assume the hardware doesn't have the ability to parse those from the
+stream and so they need to be parsed by user space and given to the
+driver?
 
-Damian
------Original Message-----
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> 
-Sent: Thursday, September 13, 2018 14:32
-To: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>; Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>; Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>; Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>; Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>; Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>; Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>; Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>; Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>; Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>; Quentin Schulz <quentin.schulz-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>; dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org; devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org; linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org; linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org; linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org; Przemyslaw Gaj <pgaj-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>; Lukasz Tyrala <ltyrala-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>; Scott Telford <stelford-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>; Artur Jedrysek <jartur-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>; Piotr Sroka <piotrs-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v3 0/5] drm: add support for Cadence MHDP DPI/DP bridge.
+>
+> * Horizontal and vertical sampling factors for each Y/U/V component:
+>
+> The number of components and sampling factors are coded separately in
+> the bitstream, but it's probably easier to use the already-existing
+> V4L2_CID_JPEG_CHROMA_SUBSAMPLING control for specifying that.
+>
+> However, this is potentially very much related to the destination
+> format. If we decide that this format should match the format resulting
+> from decompression, we don't need to specify it through an external
+> control. On the other hand, it's possible that the VPU has format
+> conversion block integrated in its pipeline so it would also make sense
+> to consider the destination format as independent.
 
-EXTERNAL MAIL
++1 for keeping it separate.
 
+>
+> * Custom Huffman tables (DC and AC), both for luma and chroma
+>
+> It seems that there is a default table when no Huffman table is provided
+> in the bitstream (I'm not too sure how standard that is, just started
+> learning about JPEG). We probably need a specific control for that.
 
-Am Dienstag, 28. August 2018, 12:24:43 CEST schrieb Damian Kos:
-> Hello!
-> 
-> This is the series of patches that will add support for the Cadence's 
-> DPI/DP bridge. Please note that this is a preliminary version of the 
-> driver and there will be more patches in the future with updates, fixes and improvements.
-> Please keep that in mind when looking at FIXME/TODO/XXX comments.
-> 
-> Initially, MHDP driver was developed as a DRM bridge driver and was 
-> planed to be placed in drivers/gpu/drm/bridge/mhdp.c.  However, there 
-> was already a driver for Cadence's DP controller developed by 
-> RockChip, but that driver uses the different DRM framework and looks like a part of a bigger system.
-> Both controllers (including firmware) are quite different internally 
-> (MST/FEC/DSC support, link training done by driver, additional 
-> commands, IRQ's
-> etc.) but they have similar register map, except for Framer/Streamer 
-> (which is noticeably different), so they appear similar.
-> 
-> The following patches contain:
-> - Moving common code to drivers/gpu/drm/bridge/cdns-mhdp-common.* and
->   modifying it a bit (mostly new prefixes for functions and data types) so it
->   can be used by two, higher level, drivers.
-> - Modifying existing RockChip's DP driver to use the common code after changes
->   made to it (use the new cdns_mhdp_device structure and new function names).
-> - Modifying DRM helpers a bit. Some are required for new driver, some are
->   updates from DP 1.2 to 1.3 or 1.4.
-> - Adding documentation for device tree bindings.
-> - Adding preliminary Cadence DPI/DP bridge driver.
-> 
-> Some of the things that will be added later on include (but are not 
-> limited
-> to):
-> - Support for Cadence SD0801 PHY (PHY's driver should be on the way by 
-> now)
-> - MST support
-> - DSC support
-> - FEC support
-> - HDCP support
+What happens if there is one in the bitstream? Would the hardware pick
+it automatically?
 
-with te Kconfig issue in patch5 fixed, this series tested on
-rk3288 (analogix-dp) and rk3399 (analogix-dp + cadence-dp) Everything seems to work that worked before.
+I think it might make sense to just have a general control for Huffman
+table, which would be always provided by the user space, regardless of
+whether it's parsed from the stream or default, so that drivers don't
+have to care and could just always use it.
 
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Best regards,
+Tomasz
