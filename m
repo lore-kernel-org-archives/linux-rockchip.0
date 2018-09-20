@@ -1,168 +1,111 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v5 7/7] drm/rockchip: dsi: add dual mipi support
-Date: Thu, 20 Sep 2018 13:20:19 +0200
-Message-ID: <2386821.27RX7ahLgN@phil>
-References: <20180821140515.22246-1-heiko@sntech.de>
- <20180821140515.22246-8-heiko@sntech.de>
- <20180827113409eucas1p16362863958c662d05c30d7c17a338a78~Ouo-Av8g90168501685eucas1p17@eucas1p1.samsung.com>
+From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH v4 0/5] drm: add support for Cadence MHDP DPI/DP bridge.
+Date: Thu, 20 Sep 2018 15:54:35 +0100
+Message-ID: <1537455288-20223-1-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180827113409eucas1p16362863958c662d05c30d7c17a338a78~Ouo-Av8g90168501685eucas1p17@eucas1p1.samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, mka@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark
+ Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: quentin.schulz-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, jartur-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org, jbergsagel-l0cyMroinI0@public.gmane.org, ltyrala-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org, stelford-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org, pgaj-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org, dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org, piotrs-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwKCkFtIE1vbnRhZywgMjcuIEF1Z3VzdCAyMDE4LCAxMzozNDowNyBDRVNUIHNj
-aHJpZWIgQW5kcnplaiBIYWpkYToKPiBPbiAyMS4wOC4yMDE4IDE2OjA1LCBIZWlrbyBTdHVlYm5l
-ciB3cm90ZToKPiA+IEFkZCB0aGUgUm9ja2NoaXAtc2VwY2lmaWMgZHVhbC1kc2kgc2V0dXAgYW5k
-IGhvb2sgaXQgaW50byB0aGUgVk9QIGFzIHdlbGwuCj4gPiBBcyBkZXNjcmliZWQgaW4gdGhlIGdl
-bmVyYWwgZHVhbC1kc2kgZGV2aWNldHJlZSBiaW5kaW5nLCB0aGUgcGFuZWwgc2hvdWxkCj4gPiBk
-ZWZpbmUgdHdvIGlucHV0IHBvcnRzIGFuZCBwb2ludCBlYWNoIG9mIHRoZW0gdG8gb25lIG9mIHRo
-ZSB1c2VkIGRzaS0KPiA+IGNvbnRyb2xsZXJzLCBhcyB3ZWxsIGFzIGRlY2xhcmUgb25lIG9mIHRo
-ZW0gYXMgY2xvY2stbWFzdGVyLgo+ID4gVGhpcyBpcyB1c2VkIHRvIGRldGVybWluZSB0aGUgZHVh
-bC1kc2kgc3RhdGUgYW5kIGdldCBhY2Nlc3MgdG8gYm90aAo+ID4gY29udHJvbGxlciBpbnN0YW5j
-ZXMuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT4KPiA+IHY0Ogo+ID4gICBhZGQgY29tcG9uZW50IGRpcmVjdGx5IGluIHByb2JlIHdoZW4gYWRk
-aW5nIGVtcHR5IGRzaSBzbGF2ZSBjb250cm9sbGVyCj4gPiB2NToKPiA+ICAgdXNlIGRyaXZlci1p
-bnRlcm5hbCBtZWNoYW5pc20gdG8gZmluZCBkdWFsIGRzaSBzbGF2ZQo+ID4gLS0tCj4gPiAgLi4u
-L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYyAgIHwgMTA1ICsrKysrKysr
-KysrKysrKysrKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2
-LmggICB8ICAgMSArCj4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYyAgIHwgICAzICsKPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5oICAgfCAgIDQgKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92
-b3BfcmVnLmMgICB8ICAgMSArCj4gPiAgNSBmaWxlcyBjaGFuZ2VkLCAxMTQgaW5zZXJ0aW9ucygr
-KQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
-c2ktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2Nr
-Y2hpcC5jCj4gPiBpbmRleCBiM2FhZTg0MzlhYTMuLmU0YWVlMmNjYmY0ZCAxMDA2NDQKPiA+IC0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCj4gPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwo+ID4g
-QEAgLTIxOCw2ICsyMTgsMTAgQEAgc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwIHsKPiA+ICAJ
-c3RydWN0IGNsayAqZ3JmX2NsazsKPiA+ICAJc3RydWN0IGNsayAqcGh5X2NmZ19jbGs7Cj4gPiAg
-Cj4gPiArCS8qIGR1YWwtY2hhbm5lbCAqLwo+ID4gKwlib29sIGlzX3NsYXZlOwo+ID4gKwlzdHJ1
-Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgKnNsYXZlOwo+ID4gKwo+ID4gIAl1bnNpZ25lZCBpbnQg
-bGFuZV9tYnBzOyAvKiBwZXIgbGFuZSAqLwo+ID4gIAl1MTYgaW5wdXRfZGl2Owo+ID4gIAl1MTYg
-ZmVlZGJhY2tfZGl2Owo+ID4gQEAgLTIyNiw2ICsyMzAsNyBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2lf
-cm9ja2NoaXAgewo+ID4gIAlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRtZDsKPiA+ICAJY29uc3Qgc3Ry
-dWN0IHJvY2tjaGlwX2R3X2RzaV9jaGlwX2RhdGEgKmNkYXRhOwo+ID4gIAlzdHJ1Y3QgZHdfbWlw
-aV9kc2lfcGxhdF9kYXRhIHBkYXRhOwo+ID4gKwlpbnQgZGV2Y250Owo+ID4gIH07Cj4gPiAgCj4g
-PiAgc3RydWN0IGRwaHlfcGxsX3BhcmFtZXRlcl9tYXAgewo+ID4gQEAgLTYwMiw2ICs2MDcsOCBA
-QCBkd19taXBpX2RzaV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2VuY29kZXIgKmVu
-Y29kZXIsCj4gPiAgCX0KPiA+ICAKPiA+ICAJcy0+b3V0cHV0X3R5cGUgPSBEUk1fTU9ERV9DT05O
-RUNUT1JfRFNJOwo+ID4gKwlpZiAoZHNpLT5zbGF2ZSkKPiA+ICsJCXMtPm91dHB1dF9mbGFncyA9
-IFJPQ0tDSElQX09VVFBVVF9EU0lfRFVBTDsKPiA+ICAKPiA+ICAJcmV0dXJuIDA7Cj4gPiAgfQo+
-ID4gQEAgLTYxNyw2ICs2MjQsOCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2Vu
-YWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4gPiAgCQlyZXR1cm47Cj4gPiAgCj4g
-PiAgCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZHNpLT5kZXYpOwo+ID4gKwlpZiAoZHNpLT5zbGF2ZSkK
-PiA+ICsJCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZHNpLT5zbGF2ZS0+ZGV2KTsKPiA+ICAKPiA+ICAJ
-LyoKPiA+ICAJICogRm9yIHRoZSBSSzMzOTksIHRoZSBjbGsgb2YgZ3JmIG11c3QgYmUgZW5hYmxl
-ZCBiZWZvcmUgd3JpdGluZyBncmYKPiA+IEBAIC02MzAsNiArNjM5LDggQEAgc3RhdGljIHZvaWQg
-ZHdfbWlwaV9kc2lfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+
-ID4gIAl9Cj4gPiAgCj4gPiAgCWR3X21pcGlfZHNpX3JvY2tjaGlwX2NvbmZpZyhkc2ksIG11eCk7
-Cj4gPiArCWlmIChkc2ktPnNsYXZlKQo+ID4gKwkJZHdfbWlwaV9kc2lfcm9ja2NoaXBfY29uZmln
-KGRzaS0+c2xhdmUsIG11eCk7Cj4gPiAgCj4gPiAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShkc2kt
-PmdyZl9jbGspOwo+ID4gIH0KPiA+IEBAIC02MzgsNiArNjQ5LDggQEAgc3RhdGljIHZvaWQgZHdf
-bWlwaV9kc2lfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiA+
-ICB7Cj4gPiAgCXN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hpcCAqZHNpID0gdG9fZHNpKGVuY29k
-ZXIpOwo+ID4gIAo+ID4gKwlpZiAoZHNpLT5zbGF2ZSkKPiA+ICsJCXBtX3J1bnRpbWVfcHV0KGRz
-aS0+c2xhdmUtPmRldik7Cj4gPiAgCXBtX3J1bnRpbWVfcHV0KGRzaS0+ZGV2KTsKPiA+ICB9Cj4g
-PiAgCj4gPiBAQCAtNjczLDE0ICs2ODYsNzYgQEAgc3RhdGljIGludCByb2NrY2hpcF9kc2lfZHJt
-X2NyZWF0ZV9lbmNvZGVyKHN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hpcCAqZHNpLAo+ID4gIAly
-ZXR1cm4gMDsKPiA+ICB9Cj4gPiAgCj4gPiArc3RhdGljIGludCBkd19taXBpX2RzaV9yb2NrY2hp
-cF9tYXRjaF9zZWNvbmQoc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRhKQo+ID4gK3sKPiA+
-ICsJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2kgPSBkYXRhOwo+ID4gKwlzdHJ1Y3Qg
-ZHJtX2JyaWRnZSAqYnJpZGdlMSwgKmJyaWRnZTI7Cj4gPiArCXN0cnVjdCBkcm1fcGFuZWwgKnBh
-bmVsMSwgKnBhbmVsMjsKPiA+ICsJaW50IHJldDsKPiA+ICsKPiA+ICsJaWYgKGRzaS0+ZGV2LT5v
-Zl9ub2RlID09IGRldi0+b2Zfbm9kZSkKPiA+ICsJCXJldHVybiAwOwo+ID4gKwo+ID4gKwlyZXQg
-PSBkcm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UoZHNpLT5kZXYtPm9mX25vZGUsIDEsIDAsCj4g
-PiArCQkJCQkgICZwYW5lbDEsICZicmlkZ2UxKTsKPiA+ICsJaWYgKHJldCkKPiA+ICsJCXJldHVy
-biByZXQ7Cj4gPiArCj4gPiArCXJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZShkZXYt
-Pm9mX25vZGUsIDEsIDAsCj4gPiArCQkJCQkgICZwYW5lbDIsICZicmlkZ2UyKTsKPiA+ICsJaWYg
-KHJldCkKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiArCj4gPiArCXJldHVybiAocGFuZWwxID09IHBh
-bmVsMikgJiYgKGJyaWRnZTEgPT0gYnJpZGdlMik7Cj4gPiArfQo+ID4gKwo+ID4gIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiAgCQkJ
-CSAgICAgc3RydWN0IGRldmljZSAqbWFzdGVyLAo+ID4gIAkJCQkgICAgIHZvaWQgKmRhdGEpCj4g
-PiAgewo+ID4gIAlzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgKmRzaSA9IGRldl9nZXRfZHJ2
-ZGF0YShkZXYpOwo+ID4gIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiA9IGRhdGE7Cj4gPiAr
-CXN0cnVjdCBkZXZpY2UgKnNlY29uZDsKPiA+ICsJYm9vbCBtYXN0ZXIxLCBtYXN0ZXIyOwo+ID4g
-IAlpbnQgcmV0Owo+ID4gIAo+ID4gKwlzZWNvbmQgPSBkcml2ZXJfZmluZF9kZXZpY2UoZHNpLT5k
-ZXYtPmRyaXZlciwgTlVMTCwgZHNpLAo+ID4gKwkJCQkJZHdfbWlwaV9kc2lfcm9ja2NoaXBfbWF0
-Y2hfc2Vjb25kKTsKPiAKPiBUaGlzIGZ1bmN0aW9uIHBlcmZvcm1zIGdldF9kZXZpY2Ugb24gdGhl
-IG1hdGNoZWQgZGV2aWNlLCBzbyB5b3Ugc2hvdWxkCj4gcHJvYmFibHkgY2FsbCBzb21ld2hlcmUg
-cHV0X2RldmljZSB0byBtYWtlIHRoZSBjb3VudGVyIGJhbGFuY2VkLgo+IEkgaG9wZSBzZWNvbmQg
-ZGV2aWNlIGlzIHNvbWVob3cgZ3VhcmRlZCBieSBjb21wb25lbnQgZnJhbWV3b3JrIGZyb20KPiBi
-ZWluZyB1bmJvdW5kIGluIHVuZXhwZWN0ZWQgbW9tZW50cyAoaWUuIHdoZW4gaW4gdXNlIGJ5IG1h
-c3RlcikuCgpUaGFua3MgZm9yIHRoYXQgY2F0Y2gsIEknbGwgYWRkIHRoZSBwdXRfZGV2aWNlLgoK
-Cj4gPiArCWlmIChJU19FUlIoc2Vjb25kKSkKPiA+ICsJCXJldHVybiBQVFJfRVJSKHNlY29uZCk7
-Cj4gPiArCj4gPiArCWlmIChzZWNvbmQpIHsKPiA+ICsJCW1hc3RlcjEgPSBvZl9wcm9wZXJ0eV9y
-ZWFkX2Jvb2woZHNpLT5kZXYtPm9mX25vZGUsCj4gPiArCQkJCQkJImNsb2NrLW1hc3RlciIpOwo+
-ID4gKwkJbWFzdGVyMiA9IG9mX3Byb3BlcnR5X3JlYWRfYm9vbChzZWNvbmQtPm9mX25vZGUsCj4g
-PiArCQkJCQkJImNsb2NrLW1hc3RlciIpOwo+ID4gKwo+ID4gKwkJaWYgKG1hc3RlcjEgJiYgbWFz
-dGVyMikgewo+ID4gKwkJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYsICJvbmx5IG9uZSBjbG9jay1t
-YXN0ZXIgYWxsb3dlZFxuIik7Cj4gPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gPiArCQl9Cj4gPiAr
-Cj4gPiArCQlpZiAoIW1hc3RlcjEgJiYgIW1hc3RlcjIpIHsKPiA+ICsJCQlEUk1fREVWX0VSUk9S
-KGRzaS0+ZGV2LCAibm8gY2xvY2stbWFzdGVyIGRlZmluZWRcbiIpOwo+ID4gKwkJCXJldHVybiAt
-RUlOVkFMOwo+ID4gKwkJfQo+ID4gKwo+ID4gKwkJLyogd2UgYXJlIHRoZSBzbGF2ZSBpbiBkdWFs
-LURTSSAqLwo+ID4gKwkJaWYgKCFtYXN0ZXIxKSB7Cj4gPiArCQkJZHNpLT5pc19zbGF2ZSA9IHRy
-dWU7Cj4gPiArCQkJcmV0dXJuIDA7Cj4gPiArCQl9Cj4gPiArCj4gPiArCQlkc2ktPnNsYXZlID0g
-ZGV2X2dldF9kcnZkYXRhKHNlY29uZCk7Cj4gPiArCQlpZiAoIWRzaS0+c2xhdmUpIHsKPiA+ICsJ
-CQlEUk1fREVWX0VSUk9SKGRldiwgImNvdWxkIG5vdCBnZXQgc2xhdmVzIGRhdGFcbiIpOwo+ID4g
-KwkJCXJldHVybiAtRU5PREVWOwo+ID4gKwkJfQo+ID4gKwo+ID4gKwkJZHNpLT5zbGF2ZS0+aXNf
-c2xhdmUgPSB0cnVlOwo+ID4gKwkJZHdfbWlwaV9kc2lfc2V0X3NsYXZlKGRzaS0+ZG1kLCBkc2kt
-PnNsYXZlLT5kbWQpOwo+ID4gKwl9Cj4gPiArCj4gPiAgCXJldCA9IGNsa19wcmVwYXJlX2VuYWJs
-ZShkc2ktPnBsbHJlZl9jbGspOwo+ID4gIAlpZiAocmV0KSB7Cj4gPiAgCQlEUk1fREVWX0VSUk9S
-KGRldiwgIkZhaWxlZCB0byBlbmFibGUgcGxscmVmX2NsazogJWRcbiIsIHJldCk7Cj4gPiBAQCAt
-NzA4LDYgKzc4Myw5IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3JvY2tjaGlwX3VuYmluZChz
-dHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiAgewo+ID4gIAlzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2No
-aXAgKmRzaSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ID4gIAo+ID4gKwlpZiAoZHNpLT5pc19z
-bGF2ZSkKPiA+ICsJCXJldHVybjsKPiA+ICsKPiA+ICAJZHdfbWlwaV9kc2lfdW5iaW5kKGRzaS0+
-ZG1kKTsKPiA+ICAKPiA+ICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+cGxscmVmX2Nsayk7
-Cj4gPiBAQCAtNzQ5LDYgKzgyNywxNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNp
-X2hvc3Rfb3BzIGR3X21pcGlfZHNpX3JvY2tjaGlwX2hvc3Rfb3BzID0gewo+ID4gIAkuZGV0YWNo
-ID0gZHdfbWlwaV9kc2lfcm9ja2NoaXBfaG9zdF9kZXRhY2gsCj4gPiAgfTsKPiA+ICAKPiA+ICtz
-dGF0aWMgaW50IGR3X21pcGlfZHNpX3JvY2tjaGlwX2NudF9kZXYoc3RydWN0IGRldmljZSAqZGV2
-LCB2b2lkICpkYXRhKQo+ID4gK3sKPiA+ICsJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpk
-c2kgPSBkYXRhOwo+ID4gKwo+ID4gKwlkc2ktPmRldmNudCsrOwo+ID4gKwlyZXR1cm4gMDsKPiA+
-ICt9Cj4gPiArCj4gPiAgc3RhdGljIGludCBkd19taXBpX2RzaV9yb2NrY2hpcF9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gIHsKPiA+ICAJc3RydWN0IGRldmljZSAqZGV2
-ID0gJnBkZXYtPmRldjsKPiA+IEBAIC04MzUsNiArOTIxLDIyIEBAIHN0YXRpYyBpbnQgZHdfbWlw
-aV9kc2lfcm9ja2NoaXBfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+ICAJ
-CWdvdG8gZXJyX2Nsa2Rpc2FibGU7Cj4gPiAgCX0KPiA+ICAKPiA+ICsJLyoKPiA+ICsJICogQWxs
-IGRzaSBjaGlsZCBkZXZpY2VzIHdpbGwgaGF2ZSBiZWVuIGNyZWF0ZWQsIHNvIHdlIGNhbiBjaGVj
-awo+ID4gKwkgKiB0aGVpciBudW1iZXIgYW5kIGFkZCB0aGUgY29tcG9uZW50IGhlcmUgaWYgdGhl
-cmUgd2lsbCBiZSBubwo+ID4gKwkgKiBob3N0LWF0dGFjaCBjYWxsLgo+IAo+IEkgZ3Vlc3MgeW91
-IG1lYW4gdGhhdCBpbiB0aGlzIHBvaW50IGFsbCBjaGlsZCBkZXZpY2VzIGhhdmUgYmVlbiBjcmVh
-dGVkCj4gKHJlbW92ZSAnd2lsbCcpLCBidXQgaXQgbWF5IGJlIGZhbHNlIGFzc3VtcHRpb24sIHRo
-ZXJlIGlzIGFsd2F5cwo+IHBvc3NpYmlsaXR5IHRvIGNyZWF0ZSBkZXZpY2Ugb24gdGhlIGZseSAt
-IHNlZSBtaXBpX2RzaV9kZXZpY2VfcmVnaXN0ZXJfZnVsbC4KPiBZb3UgY2Fubm90IGFzc3VtZSB0
-aGF0IGluIGNlcnRhaW4gcG9pbnQgaW4gdGltZSB0aGVyZSB3aWxsIGJlIG5vIG1vcmUKPiBkZXZp
-Y2VzIG9uIHRoZSBidXMuCj4gCj4gSSBhbSBub3Qgc3VyZSBvZiB0aGUgcHVycG9zZSBvZiB0aGlz
-IGNvZGUuIFdoeSBkbyB5b3Ugd2FudCB0byBiZWhhdmUKPiBkaWZmZXJlbnRseSBpZiB0aGVyZSBh
-cmUgbm8gY2hpbGQgZGV2cz8KClRoYXQncyBhbGwgcmVsYXRlZCB0byB0aGUgc3VnZ2VzdGlvbiBv
-ZiBkb2luZyBjb21wb25lbnRfYWRkIGluIHRoZQpob3N0LWF0dGFjaCBjYWxsYmFjay4gSWYgdGhl
-IGRldmljZSBkb2Vzbid0IGhhdmUgYWN0aXZlIGNoaWxkcmVuIGl0cwpjb21wb25lbnQgd2lsbCBu
-ZXZlciBnZXQgYWRkZWQgYW5kIHRoZSB3aG9sZSBkcm0gY29tcG9uZW50IHN0cnVjdHVyZQp3aWxs
-IHdhaXQgZm9yZXZlciBhbmQgbmV2ZXIgcHJvYmUgdGhlIGRybSBkcml2ZXIsIGhlbmNlIGFkZCB0
-aGUgY29tcG9uZW50CndoZW4gbm8gY2hpbGQgd2lsbCBiZSBwcmVzZW50LgpbVGhpcyBpcyBvZiBj
-b3Vyc2UgcGFydCBvZiBoYW5kbGluZyBteSBlbXB0eSBkc2kgc2xhdmVdLgoKSSBkb24ndCB0aGlu
-ayB0aGUgd2hvbGUgZHctZHNpIGRyaXZlciBjdXJyZW50bHkgZXhwZWN0cyBtb3JlIHRoYW4gb25l
-CmRldmljZSB0byBleGlzdCwgd2hpbGUgdGhlIERTSSBidXMgY2FuIGFkZHJlc3MgbXVsdGlwbGUg
-ZGV2aWNlcy4KCldpdGggdGhlIGNoYW5nZXMgaW4gdGhpcyBzZXJpZXMgd2l0aCBjb21wb25lbnRf
-YWRkIGJlaW5nIGNhbGxlZCBmcm9tCmRzaS1hdHRhY2gsIHRoaXMgY3JlYXRlcyBldmVuIG1vcmUg
-aXNzdWVzIHdpdGggbXVsdGlwbGUgZGV2aWNlcywgYXMKY29tcG9uZW50X2FkZCBhbmQgY29tcG9u
-ZW50X2RlbCB3b3VsZCBiZSBjYWxsZWQgbXVsdGlwbGUgdGltZXMKZm9yIGVhY2ggZHNpIGRldmlj
-ZSBvbiB0aGUgYnVzLgoKU2hvdWxkIEkgc2ltcGx5IGdvIGJhY2sgdG8gbXkgZGVmZXJyYWwgaWYg
-bm8gcGFuZWwgZm91bmQsIG9yIGRvIHlvdQpoYXZlIGFub3RoZXIgc3VnZXN0aW9uPwoKVGhhbmtz
-CkhlaWtvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hello!
+
+This is the series of patches that will add support for the Cadence's DPI/DP
+bridge. Please note that this is a preliminary version of the driver and there
+will be more patches in the future with updates, fixes and improvements.
+Please keep that in mind when looking at FIXME/TODO/XXX comments.
+
+Initially, MHDP driver was developed as a DRM bridge driver and was planed to
+be placed in drivers/gpu/drm/bridge/mhdp.c.  However, there was already
+a driver for Cadence's DP controller developed by RockChip, but that driver
+uses the different DRM framework and looks like a part of a bigger system.
+Both controllers (including firmware) are quite different internally
+(MST/FEC/DSC support, link training done by driver, additional commands, IRQ's
+etc.) but they have similar register map, except for Framer/Streamer (which is
+noticeably different), so they appear similar.
+
+The following patches contain:
+- Moving common code to drivers/gpu/drm/bridge/cdns-mhdp-common.* and
+  modifying it a bit (mostly new prefixes for functions and data types) so it
+  can be used by two, higher level, drivers.
+- Modifying existing RockChip's DP driver to use the common code after changes
+  made to it (use the new cdns_mhdp_device structure and new function names).
+- Modifying DRM helpers a bit. Some are required for new driver, some are
+  updates from DP 1.2 to 1.3 or 1.4.
+- Adding documentation for device tree bindings.
+- Adding preliminary Cadence DPI/DP bridge driver.
+
+Some of the things that will be added later on include (but are not limited
+to):
+- Support for Cadence SD0801 PHY (PHY's driver should be on the way by now)
+- MST support
+- DSC support
+- FEC support
+- HDCP support
+
+Changes in v2:
+- Added actual description of what the patch contains, what is it for and
+  what's going on here in general.
+- New structure. Now we have one common low level driver + two high level
+  drivers - one for RockChip with minimum changes and one, more general, for
+  Cadence.
+- Dropped some changes made to DRM helpers.
+- Updated the device tree bindings document.
+
+Changes in v3:
+- Corrected dt-bindings document
+- Enabled some clocks at startup (since FW doesn't do that anymore).
+- Changed Firmware file name to match the file on Linux Firmware repo.
+- Added SST audio support
+- Made common functions (in cdns-mhdp-common.*) public.
+
+Changes in v4:
+- Fixed Kconfig in drm/rockchip
+- Fixed Signed-offs
+- dp_link_status() is no longer public since it's used only in drm_dp_helper.c
+- Replaced EXTRA_CFLAGS with ccflags-y in drm/rockchip Makefile
+
+
+Damian Kos (1):
+  drm/rockchip: prepare common code for cdns and rk dpi/dp driver
+
+Quentin Schulz (4):
+  drm/dp: fix link probing for devices supporting DP 1.4+
+  drm/dp: make dp_get_lane_status usable from outside of the core
+  dt-bindings: drm/bridge: Document Cadence MHDP bridge bindings
+  drm: bridge: add support for Cadence MHDP DPI/DP bridge
+
+ .../bindings/display/bridge/cdns,mhdp.txt     |   43 +
+ drivers/gpu/drm/bridge/Kconfig                |    9 +
+ drivers/gpu/drm/bridge/Makefile               |    3 +
+ drivers/gpu/drm/bridge/cdns-mhdp-common.c     | 1108 ++++++++++++++
+ .../cdns-mhdp-common.h}                       |  135 +-
+ drivers/gpu/drm/bridge/cdns-mhdp.c            | 1308 +++++++++++++++++
+ drivers/gpu/drm/drm_dp_helper.c               |   39 +-
+ drivers/gpu/drm/rockchip/Kconfig              |    4 +-
+ drivers/gpu/drm/rockchip/Makefile             |    4 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c        |  234 +--
+ drivers/gpu/drm/rockchip/cdn-dp-core.h        |   42 +-
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c         |  969 ------------
+ include/drm/drm_dp_helper.h                   |    2 +
+ 13 files changed, 2750 insertions(+), 1150 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
+ create mode 100644 drivers/gpu/drm/bridge/cdns-mhdp-common.c
+ rename drivers/gpu/drm/{rockchip/cdn-dp-reg.h => bridge/cdns-mhdp-common.h} (81%)
+ create mode 100644 drivers/gpu/drm/bridge/cdns-mhdp.c
+ delete mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
+
+-- 
+2.17.1
