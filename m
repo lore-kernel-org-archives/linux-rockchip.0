@@ -1,85 +1,68 @@
-From: Damian Kos <dkos@cadence.com>
-Subject: [PATCH v4 3/5] drm/dp: make dp_get_lane_status usable from outside of the core
-Date: Thu, 20 Sep 2018 15:54:38 +0100
-Message-ID: <1537455288-20223-4-git-send-email-dkos@cadence.com>
-References: <1537455288-20223-1-git-send-email-dkos@cadence.com>
+From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Subject: Re: usb typec not doing handling in-kernel
+Date: Thu, 20 Sep 2018 13:49:48 -0700
+Message-ID: <20180920204948.GA21382@roeck-us.net>
+References: <3762490.crBoikqiXD@phil>
+ <6e3e7449-1957-e98d-c186-97d960e06c09@roeck-us.net>
+ <1961701.QUyZfenaBu@phil>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537455288-20223-1-git-send-email-dkos@cadence.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: dkos@cadence.com, pgaj@cadence.com, ltyrala@cadence.com, stelford@cadence.com, jartur@cadence.com, piotrs@cadence.com, quentin.schulz@bootlin.com, jbergsagel@ti.com, Quentin Schulz <quentin.schulz@free-electrons.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1961701.QUyZfenaBu@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Quentin Schulz <quentin.schulz@free-electrons.com>
+On Thu, Sep 20, 2018 at 10:21:59AM +0200, Heiko Stuebner wrote:
+> Hi Guenter,
+> 
+> Am Montag, 13. August 2018, 14:29:15 CEST schrieb Guenter Roeck:
+> > On 08/13/2018 03:36 AM, Heiko Stuebner wrote:
+> > > Hi,
+> > > 
+> > > I'm currently trying to wrap my head around the new typec subsystem and
+> > > also how to do it correctly on Rockchip rk3399 devices.
+> > > 
+> > > The issue (and Guenter might know quite a bit about that) is that on
+> > > ChromeOS devices the embedded controller hides the whole tcpm/vdm
+> > > logic from the operating system and just provides a custom interface to
+> > > query things like cable state, display-port hotplug status and so on.
+> > > 
+> > > So right now the rk3399-typec-phy uses that extcon-based interface to
+> > > get all status changes but that of course leaves out all systems directly
+> > > talking to a fusb302. I did a small drawing to showcase that:
+> > > 
+> > > -------------    ------------------
+> > > | typec-phy |----| extcon-cros-ec |\
+> > > -------------    ------------------ \
+> > >       |        \                      \
+> > > -------------  \ ------------------   \ -----------
+> > > |  cdn-dp   |   \|     ?????      |-----| fusb302 |
+> > > -------------    ------------------     -----------
+> > > 
+> > > So to bring everything on the same page, I guess the cros-ec extcon
+> > > (drivers/extcon/extcon-usbc-cros-ec.c) should somehow use the typec
+> > > functions instead of implementing an extcon? But from reading into the
+> > > typec code, it somehow looks like the typec framework expects to be in
+> > > control of things like altmode negotiations, or am I misreading something?
+> > > 
+> > I used to have a patch for the cros-ec extcon driver which ties it into the
+> > typec subsystem. Let me see if I can dig it up.
+> 
+> were your archeological skills working in finding said old patch?
+> 
 
-dp_get_lane_status is pretty generic and can be used for other means,
-so let's make it "public".
+Not very well :-(
 
-This adds drm_dp_get_lane_status to the header file and add the appropriate
-EXPORT_SYMBOL for it so that it can be used by other drivers, be they compiled
-built-in or as modules.
-
-Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
-Signed-off-by: Damian Kos <dkos@cadence.com>
----
- drivers/gpu/drm/drm_dp_helper.c | 9 +++++----
- include/drm/drm_dp_helper.h     | 2 ++
- 2 files changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/drm_dp_helper.c b/drivers/gpu/drm/drm_dp_helper.c
-index 735ebde5c2f0..169db52f92f5 100644
---- a/drivers/gpu/drm/drm_dp_helper.c
-+++ b/drivers/gpu/drm/drm_dp_helper.c
-@@ -48,14 +48,15 @@ static u8 dp_link_status(const u8 link_status[DP_LINK_STATUS_SIZE], int r)
- 	return link_status[r - DP_LANE0_1_STATUS];
- }
- 
--static u8 dp_get_lane_status(const u8 link_status[DP_LINK_STATUS_SIZE],
--			     int lane)
-+u8 drm_dp_get_lane_status(const u8 link_status[DP_LINK_STATUS_SIZE],
-+			  int lane)
- {
- 	int i = DP_LANE0_1_STATUS + (lane >> 1);
- 	int s = (lane & 1) * 4;
- 	u8 l = dp_link_status(link_status, i);
- 	return (l >> s) & 0xf;
- }
-+EXPORT_SYMBOL(drm_dp_get_lane_status);
- 
- bool drm_dp_channel_eq_ok(const u8 link_status[DP_LINK_STATUS_SIZE],
- 			  int lane_count)
-@@ -69,7 +70,7 @@ bool drm_dp_channel_eq_ok(const u8 link_status[DP_LINK_STATUS_SIZE],
- 	if ((lane_align & DP_INTERLANE_ALIGN_DONE) == 0)
- 		return false;
- 	for (lane = 0; lane < lane_count; lane++) {
--		lane_status = dp_get_lane_status(link_status, lane);
-+		lane_status = drm_dp_get_lane_status(link_status, lane);
- 		if ((lane_status & DP_CHANNEL_EQ_BITS) != DP_CHANNEL_EQ_BITS)
- 			return false;
- 	}
-@@ -84,7 +85,7 @@ bool drm_dp_clock_recovery_ok(const u8 link_status[DP_LINK_STATUS_SIZE],
- 	u8 lane_status;
- 
- 	for (lane = 0; lane < lane_count; lane++) {
--		lane_status = dp_get_lane_status(link_status, lane);
-+		lane_status = drm_dp_get_lane_status(link_status, lane);
- 		if ((lane_status & DP_LANE_CR_DONE) == 0)
- 			return false;
- 	}
-diff --git a/include/drm/drm_dp_helper.h b/include/drm/drm_dp_helper.h
-index 698082a02b97..973d2fda9654 100644
---- a/include/drm/drm_dp_helper.h
-+++ b/include/drm/drm_dp_helper.h
-@@ -952,6 +952,8 @@
- #define DP_MST_LOGICAL_PORT_0 8
- 
- #define DP_LINK_STATUS_SIZE	   6
-+
-+u8 drm_dp_get_lane_status(const u8 link_status[DP_LINK_STATUS_SIZE], int lane);
- bool drm_dp_channel_eq_ok(const u8 link_status[DP_LINK_STATUS_SIZE],
- 			  int lane_count);
- bool drm_dp_clock_recovery_ok(const u8 link_status[DP_LINK_STATUS_SIZE],
--- 
-2.17.1
+Guenter
