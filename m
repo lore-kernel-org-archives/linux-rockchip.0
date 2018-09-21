@@ -1,67 +1,71 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: explicitly set vcc_sd0 pin to gpio on
- rk3188-radxarock
-Date: Fri, 21 Sep 2018 10:13:41 +0200
-Message-ID: <20180921081341.23258-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 5/5] drm: bridge: add support for Cadence MHDP DPI/DP
+ bridge
+Date: Fri, 21 Sep 2018 10:41:59 +0200
+Message-ID: <1903708.pJTgKoWLiI@phil>
+References: <1537455288-20223-1-git-send-email-dkos@cadence.com>
+ <1537455288-20223-6-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1537455288-20223-6-git-send-email-dkos@cadence.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, stelford@cadence.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, quentin.schulz@bootlin.com, jartur@cadence.com, ltyrala@cadence.com, linux-rockchip@lists.infradead.org, piotrs@cadence.com, devicetree@vger.kernel.org, jbergsagel@ti.com, Rob Herring <robh+dt@kernel.org>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Quentin Schulz <quentin.schulz@free-electrons.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-It is good practice to make the setting of gpio-pinctrls explicitly in the
-devicetree, and in this case even necessary.
-Rockchip boards start with iomux settings set to gpio for most pins and
-while the linux pinctrl driver also implicitly sets the gpio function if
-a pin is requested as gpio that is not necessarily true for other drivers.
-
-The issue in question stems from uboot, where the sdmmc_pwr pin is set
-to function 1 (sdmmc-power) by the bootrom when reading the 1st-stage
-loader. The regulator controlled by the pin is active-low though, so
-when the dwmmc hw-block sets its enabled bit, it actually disables the
-regulator. By changing the pin back to gpio we fix that behaviour.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3188-radxarock.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
-index 51379f36343f..0e5e4cf3d84c 100644
---- a/arch/arm/boot/dts/rk3188-radxarock.dts
-+++ b/arch/arm/boot/dts/rk3188-radxarock.dts
-@@ -108,6 +108,8 @@
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		gpio = <&gpio3 RK_PA1 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_pwr>;
- 		startup-delay-us = <100000>;
- 		vin-supply = <&vcc_io>;
- 	};
-@@ -371,6 +373,12 @@
- 		};
- 	};
- 
-+	sd0 {
-+		sdmmc_pwr: sdmmc-pwr {
-+			rockchip,pins = <RK_GPIO3 1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.18.0
+SGkgRGFtaWFuLAoKQW0gRG9ubmVyc3RhZywgMjAuIFNlcHRlbWJlciAyMDE4LCAxNjo1NDo0MCBD
+RVNUIHNjaHJpZWIgRGFtaWFuIEtvczoKPiBGcm9tOiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5z
+Y2h1bHpAZnJlZS1lbGVjdHJvbnMuY29tPgo+IAo+IFRoaXMgYWRkcyBiYXNpYyBzdXBwb3J0IGZv
+ciBDYWRlbmNlIE1IRFAgRFBJIHRvIERQIGJyaWRnZS4KPiAKPiBCYXNpY2FsbHksIGl0IHRha2Vz
+IGEgRFBJIHN0cmVhbSBhcyBpbnB1dCBhbmQgb3V0cHV0IGl0IGVuY29kZWQgaW4gRFAKPiBmb3Jt
+YXQuIEl0J3MgbWlzc2luZyBwcm9wZXIgSFBELCBIRENQIGFuZCBjdXJyZW50bHkgc3VwcG9ydHMg
+b25seQo+IFNTVCBtb2RlLgo+IAo+IENoYW5nZXMgbWFkZSBpbiB0aGUgbG93IGxldmVsIGRyaXZl
+ciAoY2RuLWRwLXJlZy4qKToKPiAtIG1vdmVkIGl0IHRvIGZyb20gZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwIHRvCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2NkbnMtbWhkcC1jb21tb24uKgo+
+IC0gZnVuY3Rpb25zIGZvciBzZW5kaW5nL3JlY2VpdmluZyBjb21tYW5kcyBhcmUgbm93IHB1Ymxp
+Ywo+IC0gYWRkZWQgZnVuY3Rpb25zIGZvciByZWFkaW5nIHJlZ2lzdGVycyBhbmQgbGluayB0cmFp
+bmluZwo+ICAgYWRqdXN0bWVudAo+IAo+IENoYW5nZXMgbWFkZSBpbiBSSydzIGRyaXZlciAoY2Ru
+LWRwLWNvcmUuKik6Cj4gLSBNb3ZlZCBhdWRpb19pbmZvIGFuZCBhdWRpb19wZGV2IGZpZWxkcyBm
+cm9tIGNkbl9kcF9kZXZpY2UgdG8KPiAgIGNkbnNfbWhkcF9kZXZpY2Ugc3RydWN0dXJlLgo+IAo+
+IFNpZ25lZC1vZmYtYnk6IFF1ZW50aW4gU2NodWx6IDxxdWVudGluLnNjaHVsekBmcmVlLWVsZWN0
+cm9ucy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogRGFtaWFuIEtvcyA8ZGtvc0BjYWRlbmNlLmNvbT4K
+ClsuLi5dCgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCj4gaW5kZXggMGNjYzc2MjE3ZWU0Li4x
+MjliMDUyOWYzZTEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25m
+aWcKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwo+IEBAIC0yNyw3ICsy
+Nyw5IEBAIGNvbmZpZyBST0NLQ0hJUF9BTkFMT0dJWF9EUAo+ICAKPiAgY29uZmlnIFJPQ0tDSElQ
+X0NETl9EUAo+ICAgICAgICAgIGJvb2wgIlJvY2tjaGlwIGNkbiBEUCIKPiAtCWRlcGVuZHMgb24g
+RVhUQ09OPXkgfHwgKEVYVENPTj1tICYmIERSTV9ST0NLQ0hJUD1tKQo+ICsJZGVwZW5kcyBvbiBE
+Uk1fUk9DS0NISVA9bQoKU29ycnksIEkgd2Fzbid0IGZhc3QgZW5vdWdoIGluIG15IHJlcGx5IHRv
+IHlvdSBtYWlsIHRvIGNhdGNoIHRoYXQgYmVmb3JlCnlvdXIgdjQsIGJ1dCBJIGRvbid0IHRoaW5r
+IHRoaXMgaXMgbmVjZXNzYXJ5LgpJbnN0ZWFkIEkgZG8gZ3Vlc3MsIHRoZSBzZWxlY3QgYmVsb3cg
+c2hvdWxkIGRvIHRoZSByaWdodCB0aGluZyBieQptYWtpbmcgRVhUQ09OPXkgaWYgRFJNX1JPQ0tD
+SElQPXkuCgpTb21ld2hhdCBjbHVtc2lseSB2ZXJpZmllZCBieSBtYWtpbmcgRVhUQ09OPW0gaW4g
+bXkgZGVmY29uZmlnCmFuZCBzZWVpbmcgZ2V0IGNoYW5nZWQgdG8geSB1cG9uIGJ1aWxkLCB3aGlj
+aCBJIGd1ZXNzIGNvbWVzIGZyb20KYSBkaWZmZXJlbnQgInNlbGVjdCIgaW4gdGhlIGNvbmZpZy4K
+Cgo+ICsJc2VsZWN0IEVYVENPTgo+ICsJc2VsZWN0IERSTV9DRE5TX01IRFAKPiAgICAgICAgICBo
+ZWxwCj4gIAkgIFRoaXMgc2VsZWN0cyBzdXBwb3J0IGZvciBSb2NrY2hpcCBTb0Mgc3BlY2lmaWMg
+ZXh0ZW5zaW9ucwo+ICAJICBmb3IgdGhlIGNkbiBEUCBkcml2ZXIuIElmIHlvdSB3YW50IHRvIGVu
+YWJsZSBEcCBvbgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZp
+bGUgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUKPiBpbmRleCBhMzE0ZTIxMDll
+NzYuLjE2YmE2MWZmY2EzOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+TWFrZWZpbGUKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUKPiBAQCAt
+MywxMyArMywxNSBAQAo+ICAjIE1ha2VmaWxlIGZvciB0aGUgZHJtIGRldmljZSBkcml2ZXIuICBU
+aGlzIGRyaXZlciBwcm92aWRlcyBzdXBwb3J0IGZvciB0aGUKPiAgIyBEaXJlY3QgUmVuZGVyaW5n
+IEluZnJhc3RydWN0dXJlIChEUkkpIGluIFhGcmVlODYgNC4xLjAgYW5kIGhpZ2hlci4KPiAgCj4g
+K2NjZmxhZ3MteSArPSAtSSQoc3JjKS8uLi9icmlkZ2UKCmhtbSwgaW5zdGVhZCBvZiBhZGRpbmcg
+YW4gaW5jbHVkZSBwYXRoLCB0aGUgc2hhcmVkIGhlYWRlciBzaG91bGQgcHJvYmFibHkKanVzdCBs
+aXZlIGluIC9pbmNsdWRlL2RybS9icmlkZ2UvLi4uIGluIHRoZSBrZXJuZWwgc291cmNlPwoKCkhl
+aWtvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
