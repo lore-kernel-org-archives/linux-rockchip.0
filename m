@@ -1,62 +1,62 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 0/4] Add 96Boards Rock960 CE board support
-Date: Sat, 22 Sep 2018 22:57:26 +0200
-Message-ID: <1927657.aQyVdf9HM0@phil>
-References: <20180913180545.29756-1-manivannan.sadhasivam@linaro.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v4 0/2] Reworked rk3288-tinker-s devicetree
+Date: Sun, 23 Sep 2018 13:38:05 +0200
+Message-ID: <20180923113807.11558-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180913180545.29756-1-manivannan.sadhasivam@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: robh+dt@kernel.org, vicencb@gmail.com, shawn.lin@rock-chips.com, ezequiel@collabora.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 13. September 2018, 20:05:41 CEST schrieb Manivannan Sadhasivam:
-> This patchset adds 96Boards Rock960 CE board support. Rock960 CE
-> (Consumer Edition) board is one of the member of 96Boards Consumer
-> Edition and AI platform and is manufactured by Vamrs Limited. Most of
-> the board configuration is shared with the Ficus board manufactured by
-> vamrs, which is an Enterprise 96Board.
-> 
-> For the sake of avoiding code duplication, a common rock960.dtsi file
-> with common DT nodes for both boards and separate board specific DTS
-> files has been added.
-> 
-> To be specific, below are some of the key differences between both
-> boards:
-> 
-> 1. Different host enable GPIO for USB
-> 2. Different power and reset GPIO for PCI-E
-> 3. No Ethernet port on Rock960
-> 
-> While adding the board support, SD card Chip detection support is also
-> added to the common dtsi file, shared by both boards.
-> 
-> This series has been tested on Rock960 CE v1.2 board.
-> 
-> Thanks,
-> Mani
-> 
-> Changes in v3:
-> 
-> * Moved usb and pcie nodes to common dtsi and kept only the properties
->   which differ in board specific dts.
-> * Updated the common dtsi commit description.
-> 
-> Changes in v2:
-> 
-> * Changed the board compatible to "vamrs,rock960"
-> 
-> Manivannan Sadhasivam (4):
->   arm64: dts: rockchip: Split out common nodes for Rock960 based boards
->   dt-bindings: arm: rockchip: Add binding for Rock960 board
->   arm64: boot: dts: rockchip: Add support for Rock960 board
->   arm64: dts: rockchip: Enable SD card detection for Rock960 boards
+Hi David,
 
-applied all 4 for 4.20, after fixing the subject of patch3 (-boot:)
-and adapting to recent Makefile changes as pointed out by
-Ezequiel.
+I've adpated your patches 1+2 like so and would like to add them this way
+later on. Biggest change is of course making patch 1 solely about moving
+the shared parts to the dtsi and adding the tinker-s.dts including the
+emmc in the second patch.
+
+Apart from that you can also see some previously missing style-related
+fixes. For example patch subject lines are somewhat specific, to allow
+people browsing the git history to realize the core patch contents just
+from the "headline" and also use the "correct" prefixes which vary
+depending on the subsystem your changing.
+
+For future patches you can just do a "git log --oneline arch/arm/boot/dts"
+(change directory depending on location of the change of course), to
+see that arm32 dts use "ARM: dts: $soc-vendor: foo".
+
+
+Also providing a commit message describing the individual change
+in a bit more detail is important.
+
+The wifi patch is a different issue, so I'll reply there.
+
 
 Heiko
+
+David Summers (2):
+  ARM: dts: rockchip: move shared tinker-board nodes to a common dtsi
+  ARM: dts: rockchip: add rk3288-based Tinker board S
+
+ .../devicetree/bindings/arm/rockchip.txt      |   4 +
+ arch/arm/boot/dts/Makefile                    |   1 +
+ arch/arm/boot/dts/rk3288-tinker-s.dts         |  26 +
+ arch/arm/boot/dts/rk3288-tinker.dts           | 498 +----------------
+ arch/arm/boot/dts/rk3288-tinker.dtsi          | 504 ++++++++++++++++++
+ 5 files changed, 537 insertions(+), 496 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
+ create mode 100644 arch/arm/boot/dts/rk3288-tinker.dtsi
+
+-- 
+2.18.0
