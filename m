@@ -1,201 +1,70 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 7/7] ARM: dts: rockchip: add rk3066/rk3188 power-domains
-Date: Sun, 23 Sep 2018 17:23:56 +0200
-Message-ID: <20180923152356.30154-8-heiko@sntech.de>
-References: <20180923152356.30154-1-heiko@sntech.de>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [regression, bisected] rockchip rk3399 hdmi audio MIA
+Date: Sun, 23 Sep 2018 17:59:14 +0200
+Message-ID: <CAAMcf8Anc1Y3Kc6yQUydZs-8o3pYYkcyinbvpYCvdov59SUs9g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180923152356.30154-1-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, chauveau.julien@gmail.com, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the power-domain nodes to both rk3066 and rk3188 including
-their clocks and qos connections.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm/boot/dts/rk3066a.dtsi | 52 ++++++++++++++++++++++++++++++++++
- arch/arm/boot/dts/rk3188.dtsi  | 51 +++++++++++++++++++++++++++++++++
- 2 files changed, 103 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-index 2ab3c4b32003..112d2bf8e998 100644
---- a/arch/arm/boot/dts/rk3066a.dtsi
-+++ b/arch/arm/boot/dts/rk3066a.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/clock/rk3066a-cru.h>
-+#include <dt-bindings/power/rk3066-power.h>
- #include "rk3xxx.dtsi"
- 
- / {
-@@ -595,6 +596,7 @@
- 			  "ppmmu2",
- 			  "pp3",
- 			  "ppmmu3";
-+	power-domains = <&power RK3066_PD_GPU>;
- };
- 
- &i2c0 {
-@@ -643,6 +645,56 @@
- 	dma-names = "rx-tx";
- };
- 
-+&pmu {
-+	power: power-controller {
-+		compatible = "rockchip,rk3066-power-controller";
-+		#power-domain-cells = <1>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		pd_vio@RK3066_PD_VIO {
-+			reg = <RK3066_PD_VIO>;
-+			clocks = <&cru ACLK_LCDC0>,
-+				 <&cru ACLK_LCDC1>,
-+				 <&cru DCLK_LCDC0>,
-+				 <&cru DCLK_LCDC1>,
-+				 <&cru HCLK_LCDC0>,
-+				 <&cru HCLK_LCDC1>,
-+				 <&cru SCLK_CIF1>,
-+				 <&cru ACLK_CIF1>,
-+				 <&cru HCLK_CIF1>,
-+				 <&cru SCLK_CIF0>,
-+				 <&cru ACLK_CIF0>,
-+				 <&cru HCLK_CIF0>,
-+				 <&cru ACLK_IPP>,
-+				 <&cru HCLK_IPP>,
-+				 <&cru ACLK_RGA>,
-+				 <&cru HCLK_RGA>;
-+			pm_qos = <&qos_lcdc0>,
-+				 <&qos_lcdc1>,
-+				 <&qos_cif0>,
-+				 <&qos_cif1>,
-+				 <&qos_ipp>,
-+				 <&qos_rga>;
-+		};
-+
-+		pd_video@RK3066_PD_VIDEO {
-+			reg = <RK3066_PD_VIDEO>;
-+			clocks = <&cru ACLK_VDPU>,
-+				 <&cru ACLK_VEPU>,
-+				 <&cru HCLK_VDPU>,
-+				 <&cru HCLK_VEPU>;
-+			pm_qos = <&qos_vpu>;
-+		};
-+
-+		pd_gpu@RK3066_PD_GPU {
-+			reg = <RK3066_PD_GPU>;
-+			clocks = <&cru ACLK_GPU>;
-+			pm_qos = <&qos_gpu>;
-+		};
-+	};
-+};
-+
- &pwm0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pwm0_out>;
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index b6f790973736..7e0dc52630d9 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/clock/rk3188-cru.h>
-+#include <dt-bindings/power/rk3188-power.h>
- #include "rk3xxx.dtsi"
- 
- / {
-@@ -80,6 +81,7 @@
- 		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru ACLK_LCDC0>, <&cru DCLK_LCDC0>, <&cru HCLK_LCDC0>;
- 		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
-+		power-domains = <&power RK3188_PD_VIO>;
- 		resets = <&cru SRST_LCDC0_AXI>, <&cru SRST_LCDC0_AHB>, <&cru SRST_LCDC0_DCLK>;
- 		reset-names = "axi", "ahb", "dclk";
- 		status = "disabled";
-@@ -96,6 +98,7 @@
- 		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru ACLK_LCDC1>, <&cru DCLK_LCDC1>, <&cru HCLK_LCDC1>;
- 		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
-+		power-domains = <&power RK3188_PD_VIO>;
- 		resets = <&cru SRST_LCDC1_AXI>, <&cru SRST_LCDC1_AHB>, <&cru SRST_LCDC1_DCLK>;
- 		reset-names = "axi", "ahb", "dclk";
- 		status = "disabled";
-@@ -620,6 +623,7 @@
- 			  "ppmmu2",
- 			  "pp3",
- 			  "ppmmu3";
-+	power-domains = <&power RK3188_PD_GPU>;
- };
- 
- &i2c0 {
-@@ -652,6 +656,53 @@
- 	pinctrl-0 = <&i2c4_xfer>;
- };
- 
-+&pmu {
-+	power: power-controller {
-+		compatible = "rockchip,rk3188-power-controller";
-+		#power-domain-cells = <1>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		pd_vio@RK3188_PD_VIO {
-+			reg = <RK3188_PD_VIO>;
-+			clocks = <&cru ACLK_LCDC0>,
-+				 <&cru ACLK_LCDC1>,
-+				 <&cru DCLK_LCDC0>,
-+				 <&cru DCLK_LCDC1>,
-+				 <&cru HCLK_LCDC0>,
-+				 <&cru HCLK_LCDC1>,
-+				 <&cru SCLK_CIF0>,
-+				 <&cru ACLK_CIF0>,
-+				 <&cru HCLK_CIF0>,
-+				 <&cru ACLK_IPP>,
-+				 <&cru HCLK_IPP>,
-+				 <&cru ACLK_RGA>,
-+				 <&cru HCLK_RGA>;
-+			pm_qos = <&qos_lcdc0>,
-+				 <&qos_lcdc1>,
-+				 <&qos_cif0>,
-+				 <&qos_cif1>,
-+				 <&qos_ipp>,
-+				 <&qos_rga>;
-+		};
-+
-+		pd_video@RK3188_PD_VIDEO {
-+			reg = <RK3188_PD_VIDEO>;
-+			clocks = <&cru ACLK_VDPU>,
-+				 <&cru ACLK_VEPU>,
-+				 <&cru HCLK_VDPU>,
-+				 <&cru HCLK_VEPU>;
-+			pm_qos = <&qos_vpu>;
-+		};
-+
-+		pd_gpu@RK3188_PD_GPU {
-+			reg = <RK3188_PD_GPU>;
-+			clocks = <&cru ACLK_GPU>;
-+			pm_qos = <&qos_gpu>;
-+		};
-+	};
-+};
-+
- &pwm0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pwm0_out>;
--- 
-2.18.0
+SGksCmZyb20gdjQuMTggdG8gdjQuMTktcmMxIHRoZXJlIGlzIHRoaXMgY29tbWl0CiAgNzViMzEx
+OTJmZTZhZDIwYjQyMjc2YjIwZWUzYmRmMTQ5MzIxNmQ2MwogIEFTb0M6IHJvY2tjaGlwOiBhZGQg
+Y29uZmlnIGZvciByb2NrY2hpcCBkbWFlbmdpbmUgcGNtIHJlZ2lzdGVyCndoaWNoIGJyb2tlIGhk
+bWkgYXVkaW8gb24gcm9ja2NoaXAuCk5vdyB0ZXN0aW5nIHY0LjE5LXJjNCB3aGljaCB0aGlzIHNp
+bmdsZSBjb21taXQgcmV2ZXJ0ZWQgYW5kIGl0IHdvcmtzIG9rLgoKQXMgc2hvd24gaW4gYmVsb3cg
+bG9ncywgdGhlcmUgaXMgbm8gZXZpZGVuY2Ugb2YgdGhlIGJyZWFrYWdlIGZyb20gZG1lc2cuCiJh
+cGxheSAtbCIgYWxzbyBzaG93cyBubyBpc3N1ZXMsIGJ1dCBwdWxzZWF1ZGlvIGRvZXMgbm90IGRl
+dGVjdCB0aGUKc291bmQgY2FyZC4KV2hlbiB0ZXN0aW5nIHdpdGggImFwbGF5IC12diAqLndhdiIg
+aXQgd29ya3MgZmluZSB3aXRoIHRoZSBjb21taXQKcmV2ZXJ0ZWQsIGJ1dCBvdGhlcndpc2UsIGFw
+bGF5IGp1c3QgdXNlcyBwdWxzZWF1ZGlvJ3MgZHVtbXkgb3V0cHV0LgoKUmVnYXJkcywKICBWaWNl
+bsOnLgoKIyMjIyMjIyMjIyMjIyMjIyMjIyMKIyB2NC4xOS1yYzQgYXMgaXM6ICMKIyMjIyMjIyMj
+IyMjIyMjIyMjIyMKJCBkbWVzZyB8IGZncmVwIC1pIC1lIGhkbWkgLWUgYXVkaW8gLWUgc291bmQg
+LWUgYWxzYSAtZSBpMnMKICBBZHZhbmNlZCBMaW51eCBTb3VuZCBBcmNoaXRlY3R1cmUgRHJpdmVy
+IEluaXRpYWxpemVkLgogIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogTGlua2VkIGFz
+IGEgY29uc3VtZXIgdG8gZmY5NDAwMDAuaGRtaQogIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5
+c3RlbTogZmFpbGVkIHRvIGJpbmQgZmY5NDAwMDAuaGRtaSAob3BzCjB4ZmZmZjAwMDAwODlkZGJk
+MCk6IC01MTcKICBkd2hkbWktcm9ja2NoaXAgZmY5NDAwMDAuaGRtaTogRGV0ZWN0ZWQgSERNSSBU
+WCBjb250cm9sbGVyIHYyLjExYQp3aXRoIEhEQ1AgKERXQyBIRE1JIDIuMCBUWCBQSFkpCiAgcm9j
+a2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBib3VuZCBmZjk0MDAwMC5oZG1pIChvcHMgMHhm
+ZmZmMDAwMDA4OWRkYmQwKQogIGFzb2Mtc2ltcGxlLWNhcmQgaGRtaS1zb3VuZDogaTJzLWhpZmkg
+PC0+IGZmOGEwMDAwLmkycyBtYXBwaW5nIG9rCiAgYXNvYy1zaW1wbGUtY2FyZCBoZG1pLXNvdW5k
+OiBBU29DOiBubyBETUkgdmVuZG9yIG5hbWUhCiAgQUxTQSBkZXZpY2UgbGlzdDoKICAgICMwOiBo
+ZG1pLXNvdW5kCgokIGFwbGF5IC1sCioqKiogTGlzdCBvZiBQTEFZQkFDSyBIYXJkd2FyZSBEZXZp
+Y2VzICoqKioKY2FyZCAwOiBoZG1pc291bmQgW2hkbWktc291bmRdLCBkZXZpY2UgMDogZmY4YTAw
+MDAuaTJzLWkycy1oaWZpIGkycy1oaWZpLTAgW10KICBTdWJkZXZpY2VzOiAxLzEKICBTdWJkZXZp
+Y2UgIzA6IHN1YmRldmljZSAjMAoKJCBwYWN0bCBsaXN0IHNpbmtzClNpbmsgIzAKICBEZXNjcmlw
+dGlvbjogRHVtbXkgT3V0cHV0CgojIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
+IyMKIyB2NC4xOS1yYzQgd2l0aCB0aGUgY29tbWl0IHJldmVydGVkOiAjCiMjIyMjIyMjIyMjIyMj
+IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIwokIGRtZXNnIHwgZmdyZXAgLWkgLWUgaGRtaSAtZSBh
+dWRpbyAtZSBzb3VuZCAtZSBhbHNhIC1lIGkycwogIEFkdmFuY2VkIExpbnV4IFNvdW5kIEFyY2hp
+dGVjdHVyZSBEcml2ZXIgSW5pdGlhbGl6ZWQuCiAgcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lz
+dGVtOiBMaW5rZWQgYXMgYSBjb25zdW1lciB0byBmZjk0MDAwMC5oZG1pCiAgcm9ja2NoaXAtZHJt
+IGRpc3BsYXktc3Vic3lzdGVtOiBmYWlsZWQgdG8gYmluZCBmZjk0MDAwMC5oZG1pIChvcHMKMHhm
+ZmZmMDAwMDA4YTNlMDI4KTogLTUxNwogIGR3aGRtaS1yb2NrY2hpcCBmZjk0MDAwMC5oZG1pOiBE
+ZXRlY3RlZCBIRE1JIFRYIGNvbnRyb2xsZXIgdjIuMTFhCndpdGggSERDUCAoRFdDIEhETUkgMi4w
+IFRYIFBIWSkKICByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmOTQwMDAw
+LmhkbWkgKG9wcyAweGZmZmYwMDAwMDhhM2UwMjgpCiAgYXNvYy1zaW1wbGUtY2FyZCBoZG1pLXNv
+dW5kOiBpMnMtaGlmaSA8LT4gZmY4YTAwMDAuaTJzIG1hcHBpbmcgb2sKICBhc29jLXNpbXBsZS1j
+YXJkIGhkbWktc291bmQ6IEFTb0M6IG5vIERNSSB2ZW5kb3IgbmFtZSEKICBBTFNBIGRldmljZSBs
+aXN0OgogICAgIzA6IGhkbWktc291bmQKCiQgYXBsYXkgLWwKKioqKiBMaXN0IG9mIFBMQVlCQUNL
+IEhhcmR3YXJlIERldmljZXMgKioqKgpjYXJkIDA6IGhkbWlzb3VuZCBbaGRtaS1zb3VuZF0sIGRl
+dmljZSAwOiBmZjhhMDAwMC5pMnMtaTJzLWhpZmkgaTJzLWhpZmktMCBbXQogIFN1YmRldmljZXM6
+IDEvMQogIFN1YmRldmljZSAjMDogc3ViZGV2aWNlICMwCgokIHBhY3RsIGxpc3Qgc2lua3MKU2lu
+ayAjMAogIE5hbWU6IGFsc2Ffb3V0cHV0LnBsYXRmb3JtLWhkbWktc291bmQuc3RlcmVvLWZhbGxi
+YWNrCiAgRGVzY3JpcHRpb246IEJ1aWx0LWluIEF1ZGlvIFN0ZXJlbwogIERyaXZlcjogbW9kdWxl
+LWFsc2EtY2FyZC5jCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
