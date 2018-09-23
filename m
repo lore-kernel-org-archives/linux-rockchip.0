@@ -1,45 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] drm/rockchip: vop: add rk3188 hs_start interrupt as dsp_hold
- equivalent
-Date: Sun, 23 Sep 2018 14:37:30 +0200
-Message-ID: <20180923123730.14706-1-heiko@sntech.de>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL] Rockchip ARM64 devicetree updates for 4.20
+Date: Sun, 23 Sep 2018 06:20:55 -0700
+Message-ID: <20180923132055.5hgyj4qphxxiecaz@localhost>
+References: <2349272.dkc8ODN2Us@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <2349272.dkc8ODN2Us@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIGhzX3N0YXJ0IGludGVycnVwdCBvbiByazMxODggZmlyZXMgYXQgdGhlIHN0YXJ0IG9mIGEg
-bmV3IGZyYW1lLCBzbwpzZXJ2ZXMgZXNzZW50aWFsbHkgdGhlIHNhbWUgcHVycG9zZSBhcyB0aGUg
-ZHNwX2hvbGRfdmFsaWQgaXJxIGluIGNoZWNraW5nCndoZW4gdGhlIGxhc3QgZnJhbWUgZ290IGRl
-bGl2ZXJlZCB3aGVuIGdvaW5nIHRvIHN0YW5kYnkuIFNvIGRlZmluZSBpdAp0byBmaXggYSBoYW5n
-IG9uIGF0b21pY19kaXNhYmxlIG9mIHRoZSB2b3AgYmVjYXVzZSB0aGUgY29tcGxldGlvbiBuZXZl
-cgpyZWFsbHkgY29tcGxldGVkIGJlZm9yZS4KCkZpeGVzOiA0MjhlMTVjYzQxZTMgKCJkcm0vcm9j
-a2NoaXA6IHZvcDogYWRkIHJrMzE4OCB2b3AgZGVmaW5pdGlvbnMiKQpTaWduZWQtb2ZmLWJ5OiBI
-ZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCA2ICsrKysrLQogMSBmaWxlIGNoYW5nZWQsIDUgaW5z
-ZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfdm9wX3JlZy5jCmluZGV4IGM0ODJkYTQxYmI1ZC4uMjI2YmIyYTE3MjBlIDEwMDY0NAot
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCisrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKQEAgLTQ2NSw3ICs0NjUs
-MTEgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX2RhdGEgcmszMTg4X3ZvcF93aW5fZGF0
-YVtdID0gewogfTsKIAogc3RhdGljIGNvbnN0IGludCByazMxODhfdm9wX2ludHJzW10gPSB7Ci0J
-MCwKKwkvKgorCSAqIGhzX3N0YXJ0IGludGVycnVwdCBmaXJlcyBhdCBmcmFtZS1zdGFydCwgc28g
-c2VydmVzCisJICogdGhlIHNhbWUgcHVycG9zZSBhcyBkc3BfaG9sZCBpbiB0aGUgZHJpdmVyLgor
-CSAqLworCURTUF9IT0xEX1ZBTElEX0lOVFIsCiAJRlNfSU5UUiwKIAlMSU5FX0ZMQUdfSU5UUiwK
-IAlCVVNfRVJST1JfSU5UUiwKLS0gCjIuMTguMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+On Thu, Sep 13, 2018 at 03:55:15PM +0200, Heiko Stuebner wrote:
+> Hi Arnd, Kevin, Olof,
+> 
+> please find below the first set of arm64 dt updates for 4.20
+> (or however it will be named).
+> 
+> It's really only 64 bit changes so far [I have one 32bit patch queued up,
+> but that isn't really useful on its own, so I'll keep it a bit longer,
+> to not send needless 1-patch pull requests ;-) ]
+
+No worries, send it if you want (or just send the patch without a PR, that
+works too).
+
+> The tag describes the included changes, so if ok please pull
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
+> 
+>   Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.20-rockchip-dts64-1
+> 
+> for you to fetch changes up to 78f26da3ffbce0ea3692a89fe3f5487cb8dda068:
+> 
+>   arm64: dts: rockchip: Add type-c port supply on rk3399-sapphire board (2018-09-10 19:16:26 +0200)
+> 
+> ----------------------------------------------------------------
+> New soc support for the px30 quad-core Cortex-A35.
+> New boards are the px30 eval board and roc-rk3399-pc.
+> The rk3328 got support for the one gpio controlled via the general
+> register files and the rk3399 finally got its idle-states defined.
+> And finally fixes and improvements for firefly-rk3399 (wifi),
+> roc-rk3328-cc (sdmmc-uhs, io-domains), rk3328-rock64 (gpio-regulator
+> pin fix) and rk3399-sapphire (gpio-regulator pin fix, pmic pin fix
+> and type-c port supply).
+
+Merged, thanks!
+
+
+-Olof
