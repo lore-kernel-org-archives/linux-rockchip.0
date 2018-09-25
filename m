@@ -1,240 +1,41 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] phy: rockchip-usb: add usb-uart setup for rk3188
-Date: Mon, 24 Sep 2018 16:13:23 +0200
-Message-ID: <2960494.bBbcRnOUuH@phil>
-References: <20180828085610.28904-1-heiko@sntech.de>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] iommu/rockchip: Free irqs in shutdown handler
+Date: Tue, 25 Sep 2018 11:14:17 +0200
+Message-ID: <20180925091417.asyvub7v75jtjdfk@8bytes.org>
+References: <20180827105624.5593-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180828085610.28904-1-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: kishon@ti.com
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180827105624.5593-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, marc.zyngier-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
-
-Am Dienstag, 28. August 2018, 10:56:10 CEST schrieb Heiko Stuebner:
-> The rk3188 also supports bringing the uart2 out through
-> the usb dm+dp pins, so add the necessary setup for it.
+On Mon, Aug 27, 2018 at 12:56:24PM +0200, Heiko Stuebner wrote:
+> In the iommu's shutdown handler we disable runtime-pm which could
+> result in the irq-handler running unclocked and since commit
+>     3fc7c5c0cff3 ("iommu/rockchip: Handle errors returned from PM framework")
+> we warn about that fact.
 > 
-> rk3066 does not seem to support usb-uart functionality and this
-> particular phy was only used on older Rockchip socs, so this leaves
-> room for a bit of cleanup as well, as there most likely won't be new
-> additions in the driver.
+> This can cause warnings on shutdown on some Rockchip machines, so
+> free the irqs in the shutdown handler before we disable runtime-pm.
 > 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-
-could you take a look at this change if you find the time please?
-
-
-Thanks
-Heiko
-
+> Reported-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> Fixes: 3fc7c5c0cff3 ("iommu/rockchip: Handle errors returned from PM framework")
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
->  drivers/phy/rockchip/phy-rockchip-usb.c | 141 ++++++++++++++++--------
->  1 file changed, 95 insertions(+), 46 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-> index 3378eeb7a562..456fa703e4f0 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-usb.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-> @@ -36,7 +36,22 @@ static int enable_usb_uart;
->  #define HIWORD_UPDATE(val, mask) \
->  		((val) | (mask) << 16)
->  
-> -#define UOC_CON0_SIDDQ BIT(13)
-> +#define UOC_CON0					0x00
-> +#define UOC_CON0_SIDDQ					BIT(13)
-> +#define UOC_CON0_DISABLE				BIT(4)
-> +#define UOC_CON0_COMMON_ON_N				BIT(0)
-> +
-> +#define UOC_CON2					0x08
-> +#define UOC_CON2_SOFT_CON_SEL				BIT(2)
-> +
-> +#define UOC_CON3					0x0c
-> +/* bits present on rk3188 and rk3288 phys */
-> +#define UOC_CON3_UTMI_TERMSEL_FULLSPEED			BIT(5)
-> +#define UOC_CON3_UTMI_XCVRSEELCT_FSTRANSC		(1 << 3)
-> +#define UOC_CON3_UTMI_XCVRSEELCT_MASK			(3 << 3)
-> +#define UOC_CON3_UTMI_OPMODE_NODRIVING			(1 << 1)
-> +#define UOC_CON3_UTMI_OPMODE_MASK			(3 << 1)
-> +#define UOC_CON3_UTMI_SUSPENDN				BIT(0)
->  
->  struct rockchip_usb_phys {
->  	int reg;
-> @@ -46,7 +61,8 @@ struct rockchip_usb_phys {
->  struct rockchip_usb_phy_base;
->  struct rockchip_usb_phy_pdata {
->  	struct rockchip_usb_phys *phys;
-> -	int (*init_usb_uart)(struct regmap *grf);
-> +	int (*init_usb_uart)(struct regmap *grf,
-> +			     const struct rockchip_usb_phy_pdata *pdata);
->  	int usb_uart_phy;
->  };
->  
-> @@ -313,28 +329,88 @@ static const struct rockchip_usb_phy_pdata rk3066a_pdata = {
->  	},
->  };
->  
-> +static int __init rockchip_init_usb_uart_common(struct regmap *grf,
-> +				const struct rockchip_usb_phy_pdata *pdata)
-> +{
-> +	int regoffs = pdata->phys[pdata->usb_uart_phy].reg;
-> +	int ret;
-> +	u32 val;
-> +
-> +	/*
-> +	 * COMMON_ON and DISABLE settings are described in the TRM,
-> +	 * but were not present in the original code.
-> +	 * Also disable the analog phy components to save power.
-> +	 */
-> +	val = HIWORD_UPDATE(UOC_CON0_COMMON_ON_N
-> +				| UOC_CON0_DISABLE
-> +				| UOC_CON0_SIDDQ,
-> +			    UOC_CON0_COMMON_ON_N
-> +				| UOC_CON0_DISABLE
-> +				| UOC_CON0_SIDDQ);
-> +	ret = regmap_write(grf, regoffs + UOC_CON0, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = HIWORD_UPDATE(UOC_CON2_SOFT_CON_SEL,
-> +			    UOC_CON2_SOFT_CON_SEL);
-> +	ret = regmap_write(grf, regoffs + UOC_CON2, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = HIWORD_UPDATE(UOC_CON3_UTMI_OPMODE_NODRIVING
-> +				| UOC_CON3_UTMI_XCVRSEELCT_FSTRANSC
-> +				| UOC_CON3_UTMI_TERMSEL_FULLSPEED,
-> +			    UOC_CON3_UTMI_SUSPENDN
-> +				| UOC_CON3_UTMI_OPMODE_MASK
-> +				| UOC_CON3_UTMI_XCVRSEELCT_MASK
-> +				| UOC_CON3_UTMI_TERMSEL_FULLSPEED);
-> +	ret = regmap_write(grf, UOC_CON3, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +#define RK3188_UOC0_CON0				0x10c
-> +#define RK3188_UOC0_CON0_BYPASSSEL			BIT(9)
-> +#define RK3188_UOC0_CON0_BYPASSDMEN			BIT(8)
-> +
-> +/*
-> + * Enable the bypass of uart2 data through the otg usb phy.
-> + * See description of rk3288-variant for details.
-> + */
-> +static int __init rk3188_init_usb_uart(struct regmap *grf,
-> +				const struct rockchip_usb_phy_pdata *pdata)
-> +{
-> +	u32 val;
-> +	int ret;
-> +
-> +	ret = rockchip_init_usb_uart_common(grf, pdata);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = HIWORD_UPDATE(RK3188_UOC0_CON0_BYPASSSEL
-> +				| RK3188_UOC0_CON0_BYPASSDMEN,
-> +			    RK3188_UOC0_CON0_BYPASSSEL
-> +				| RK3188_UOC0_CON0_BYPASSDMEN);
-> +	ret = regmap_write(grf, RK3188_UOC0_CON0, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
->  static const struct rockchip_usb_phy_pdata rk3188_pdata = {
->  	.phys = (struct rockchip_usb_phys[]){
->  		{ .reg = 0x10c, .pll_name = "sclk_otgphy0_480m" },
->  		{ .reg = 0x11c, .pll_name = "sclk_otgphy1_480m" },
->  		{ /* sentinel */ }
->  	},
-> +	.init_usb_uart = rk3188_init_usb_uart,
-> +	.usb_uart_phy = 0,
->  };
->  
-> -#define RK3288_UOC0_CON0				0x320
-> -#define RK3288_UOC0_CON0_COMMON_ON_N			BIT(0)
-> -#define RK3288_UOC0_CON0_DISABLE			BIT(4)
-> -
-> -#define RK3288_UOC0_CON2				0x328
-> -#define RK3288_UOC0_CON2_SOFT_CON_SEL			BIT(2)
-> -
->  #define RK3288_UOC0_CON3				0x32c
-> -#define RK3288_UOC0_CON3_UTMI_SUSPENDN			BIT(0)
-> -#define RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING		(1 << 1)
-> -#define RK3288_UOC0_CON3_UTMI_OPMODE_MASK		(3 << 1)
-> -#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC	(1 << 3)
-> -#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK		(3 << 3)
-> -#define RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED		BIT(5)
->  #define RK3288_UOC0_CON3_BYPASSDMEN			BIT(6)
->  #define RK3288_UOC0_CON3_BYPASSSEL			BIT(7)
->  
-> @@ -353,40 +429,13 @@ static const struct rockchip_usb_phy_pdata rk3188_pdata = {
->   *
->   * The actual code in the vendor kernel does some things differently.
->   */
-> -static int __init rk3288_init_usb_uart(struct regmap *grf)
-> +static int __init rk3288_init_usb_uart(struct regmap *grf,
-> +				const struct rockchip_usb_phy_pdata *pdata)
->  {
->  	u32 val;
->  	int ret;
->  
-> -	/*
-> -	 * COMMON_ON and DISABLE settings are described in the TRM,
-> -	 * but were not present in the original code.
-> -	 * Also disable the analog phy components to save power.
-> -	 */
-> -	val = HIWORD_UPDATE(RK3288_UOC0_CON0_COMMON_ON_N
-> -				| RK3288_UOC0_CON0_DISABLE
-> -				| UOC_CON0_SIDDQ,
-> -			    RK3288_UOC0_CON0_COMMON_ON_N
-> -				| RK3288_UOC0_CON0_DISABLE
-> -				| UOC_CON0_SIDDQ);
-> -	ret = regmap_write(grf, RK3288_UOC0_CON0, val);
-> -	if (ret)
-> -		return ret;
-> -
-> -	val = HIWORD_UPDATE(RK3288_UOC0_CON2_SOFT_CON_SEL,
-> -			    RK3288_UOC0_CON2_SOFT_CON_SEL);
-> -	ret = regmap_write(grf, RK3288_UOC0_CON2, val);
-> -	if (ret)
-> -		return ret;
-> -
-> -	val = HIWORD_UPDATE(RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING
-> -				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC
-> -				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED,
-> -			    RK3288_UOC0_CON3_UTMI_SUSPENDN
-> -				| RK3288_UOC0_CON3_UTMI_OPMODE_MASK
-> -				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK
-> -				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED);
-> -	ret = regmap_write(grf, RK3288_UOC0_CON3, val);
-> +	ret = rockchip_init_usb_uart_common(grf, pdata);
->  	if (ret)
->  		return ret;
->  
-> @@ -516,7 +565,7 @@ static int __init rockchip_init_usb_uart(void)
->  		return PTR_ERR(grf);
->  	}
->  
-> -	ret = data->init_usb_uart(grf);
-> +	ret = data->init_usb_uart(grf, data);
->  	if (ret) {
->  		pr_err("%s: could not init usb_uart, %d\n", __func__, ret);
->  		enable_usb_uart = 0;
-> 
+>  drivers/iommu/rockchip-iommu.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+
+Applied for v4.19, thanks Heiko.
