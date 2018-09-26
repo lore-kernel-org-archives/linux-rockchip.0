@@ -1,8 +1,8 @@
 From: Sandy Huang <hjc@rock-chips.com>
 Subject: Re: [PATCH] drm/rockchip: vop: add rk3188 hs_start interrupt as
  dsp_hold equivalent
-Date: Wed, 26 Sep 2018 20:42:01 +0800
-Message-ID: <e23734ed-bf61-dd69-ec3d-f1a3924f6422@rock-chips.com>
+Date: Wed, 26 Sep 2018 20:44:48 +0800
+Message-ID: <54fed9c9-5ce5-1b8e-91af-6a982101c2d4@rock-chips.com>
 References: <20180923123730.14706-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"; Format="flowed"
