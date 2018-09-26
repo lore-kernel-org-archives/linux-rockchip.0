@@ -1,43 +1,26 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH] iommu: rockchip: Drop verbose prints in the interrupt
-	handler
-Date: Wed, 26 Sep 2018 19:31:22 +0200
-Message-ID: <ea4d539ecbaf229bef8c0810c6a11cf824339b4b.camel@collabora.com>
-References: <20180830222832.16766-1-ezequiel@collabora.com>
-	<20180925112930.u5kftmo3vhmdxji4@8bytes.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 2/4] dt-bindings: arm: rockchip: Add binding for
+ Rock960 board
+Date: Wed, 26 Sep 2018 16:06:03 -0500
+Message-ID: <20180926210603.GA6297@bogus>
+References: <20180913180545.29756-1-manivannan.sadhasivam@linaro.org>
+ <20180913180545.29756-3-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20180925112930.u5kftmo3vhmdxji4-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20180913180545.29756-3-manivannan.sadhasivam@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: heiko@sntech.de, robh+dt@kernel.org, vicencb@gmail.com, shawn.lin@rock-chips.com, ezequiel@collabora.com, enric.balletbo@collabora.com, pbrobinson@gmail.com, tom@vamrs.com, dev@vamrs.com, stephen@vamrs.com, amit.kucheria@linaro.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2018-09-25 at 13:29 +0200, Joerg Roedel wrote:
-> On Thu, Aug 30, 2018 at 07:28:32PM -0300, Ezequiel Garcia wrote:
-> > Printing verbosely via WARN macros and friends in interrupt handlers
-> > is strongly discouraged. Drop them and use proper ratelimited
-> > prints.
-> > 
-> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> >  drivers/iommu/rockchip-iommu.c | 10 ++++++----
-> >  1 file changed, 6 insertions(+), 4 deletions(-)
+On Thu, 13 Sep 2018 23:35:43 +0530, Manivannan Sadhasivam wrote:
+> Add devicetree binding for Rock960 board from Vamrs Limited.
 > 
-> This doesn't apply cleanly to v4.19-rc5, can you please base the patch
-> on that tag, add the Reviewed-by and re-send?
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
 
-Well, after looking at the latest code, now I'm wondering why Marc
-changed the WARN_ON with a WARN_ON_ONCE, instead of a less verbose
-ratelimited print.
+Reviewed-by: Rob Herring <robh@kernel.org>
