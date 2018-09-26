@@ -1,55 +1,50 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 0/2] Reworked rk3288-tinker-s devicetree
-Date: Wed, 26 Sep 2018 14:32:10 +0200
-Message-ID: <5476375.mdEj9W728V@phil>
-References: <20180923113807.11558-1-heiko@sntech.de>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: add rk3188 hs_start interrupt as
+ dsp_hold equivalent
+Date: Wed, 26 Sep 2018 20:42:01 +0800
+Message-ID: <e23734ed-bf61-dd69-ec3d-f1a3924f6422@rock-chips.com>
+References: <20180923123730.14706-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180923113807.11558-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180923123730.14706-1-heiko@sntech.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 23. September 2018, 13:38:05 CEST schrieb Heiko Stuebner:
-> Hi David,
-> 
-> I've adpated your patches 1+2 like so and would like to add them this way
-> later on. Biggest change is of course making patch 1 solely about moving
-> the shared parts to the dtsi and adding the tinker-s.dts including the
-> emmc in the second patch.
-> 
-> Apart from that you can also see some previously missing style-related
-> fixes. For example patch subject lines are somewhat specific, to allow
-> people browsing the git history to realize the core patch contents just
-> from the "headline" and also use the "correct" prefixes which vary
-> depending on the subsystem your changing.
-> 
-> For future patches you can just do a "git log --oneline arch/arm/boot/dts"
-> (change directory depending on location of the change of course), to
-> see that arm32 dts use "ARM: dts: $soc-vendor: foo".
-> 
-> 
-> Also providing a commit message describing the individual change
-> in a bit more detail is important.
-> 
-> The wifi patch is a different issue, so I'll reply there.
-> 
-> 
-> Heiko
-> 
-> David Summers (2):
->   ARM: dts: rockchip: move shared tinker-board nodes to a common dtsi
->   ARM: dts: rockchip: add rk3288-based Tinker board S
-
-applied for 4.20
+SGkgaGVpa28sCm5pY2Ugc29sdXRpb24uCgpSZXZpZXdlZC1ieTogU2FuZHkgSHVhbmcgPGhqY0By
+b2NrLWNoaXBzLmNvbT4KCuWcqCAyMDE4LzkvMjMgMjA6MzcsIEhlaWtvIFN0dWVibmVyIOWGmemB
+kzoKPiBUaGUgaHNfc3RhcnQgaW50ZXJydXB0IG9uIHJrMzE4OCBmaXJlcyBhdCB0aGUgc3RhcnQg
+b2YgYSBuZXcgZnJhbWUsIHNvCj4gc2VydmVzIGVzc2VudGlhbGx5IHRoZSBzYW1lIHB1cnBvc2Ug
+YXMgdGhlIGRzcF9ob2xkX3ZhbGlkIGlycSBpbiBjaGVja2luZwo+IHdoZW4gdGhlIGxhc3QgZnJh
+bWUgZ290IGRlbGl2ZXJlZCB3aGVuIGdvaW5nIHRvIHN0YW5kYnkuIFNvIGRlZmluZSBpdAo+IHRv
+IGZpeCBhIGhhbmcgb24gYXRvbWljX2Rpc2FibGUgb2YgdGhlIHZvcCBiZWNhdXNlIHRoZSBjb21w
+bGV0aW9uIG5ldmVyCj4gcmVhbGx5IGNvbXBsZXRlZCBiZWZvcmUuCj4gCj4gRml4ZXM6IDQyOGUx
+NWNjNDFlMyAoImRybS9yb2NrY2hpcDogdm9wOiBhZGQgcmszMTg4IHZvcCBkZWZpbml0aW9ucyIp
+Cj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0K
+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCA2ICsrKysr
+LQo+ICAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5j
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+IGluZGV4IGM0
+ODJkYTQxYmI1ZC4uMjI2YmIyYTE3MjBlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gQEAgLTQ2NSw3ICs0NjUsMTEgQEAgc3RhdGljIGNvbnN0
+IHN0cnVjdCB2b3Bfd2luX2RhdGEgcmszMTg4X3ZvcF93aW5fZGF0YVtdID0gewo+ICAgfTsKPiAg
+IAo+ICAgc3RhdGljIGNvbnN0IGludCByazMxODhfdm9wX2ludHJzW10gPSB7Cj4gLQkwLAo+ICsJ
+LyoKPiArCSAqIGhzX3N0YXJ0IGludGVycnVwdCBmaXJlcyBhdCBmcmFtZS1zdGFydCwgc28gc2Vy
+dmVzCj4gKwkgKiB0aGUgc2FtZSBwdXJwb3NlIGFzIGRzcF9ob2xkIGluIHRoZSBkcml2ZXIuCj4g
+KwkgKi8KPiArCURTUF9IT0xEX1ZBTElEX0lOVFIsCj4gICAJRlNfSU5UUiwKPiAgIAlMSU5FX0ZM
+QUdfSU5UUiwKPiAgIAlCVVNfRVJST1JfSU5UUiwKPiAKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
