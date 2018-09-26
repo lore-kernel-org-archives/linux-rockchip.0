@@ -1,50 +1,43 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: add rk3188 hs_start interrupt as
- dsp_hold equivalent
-Date: Wed, 26 Sep 2018 20:44:48 +0800
-Message-ID: <54fed9c9-5ce5-1b8e-91af-6a982101c2d4@rock-chips.com>
-References: <20180923123730.14706-1-heiko@sntech.de>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH] iommu: rockchip: Drop verbose prints in the interrupt
+	handler
+Date: Wed, 26 Sep 2018 19:31:22 +0200
+Message-ID: <ea4d539ecbaf229bef8c0810c6a11cf824339b4b.camel@collabora.com>
+References: <20180830222832.16766-1-ezequiel@collabora.com>
+	<20180925112930.u5kftmo3vhmdxji4@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180923123730.14706-1-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20180925112930.u5kftmo3vhmdxji4-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgaGVpa28sCm5pY2Ugc29sdXRpb24uCgpSZXZpZXdlZC1ieTogU2FuZHkgSHVhbmcgPGhqY0By
-b2NrLWNoaXBzLmNvbT4KCuWcqCAyMDE4LzkvMjMgMjA6MzcsIEhlaWtvIFN0dWVibmVyIOWGmemB
-kzoKPiBUaGUgaHNfc3RhcnQgaW50ZXJydXB0IG9uIHJrMzE4OCBmaXJlcyBhdCB0aGUgc3RhcnQg
-b2YgYSBuZXcgZnJhbWUsIHNvCj4gc2VydmVzIGVzc2VudGlhbGx5IHRoZSBzYW1lIHB1cnBvc2Ug
-YXMgdGhlIGRzcF9ob2xkX3ZhbGlkIGlycSBpbiBjaGVja2luZwo+IHdoZW4gdGhlIGxhc3QgZnJh
-bWUgZ290IGRlbGl2ZXJlZCB3aGVuIGdvaW5nIHRvIHN0YW5kYnkuIFNvIGRlZmluZSBpdAo+IHRv
-IGZpeCBhIGhhbmcgb24gYXRvbWljX2Rpc2FibGUgb2YgdGhlIHZvcCBiZWNhdXNlIHRoZSBjb21w
-bGV0aW9uIG5ldmVyCj4gcmVhbGx5IGNvbXBsZXRlZCBiZWZvcmUuCj4gCj4gRml4ZXM6IDQyOGUx
-NWNjNDFlMyAoImRybS9yb2NrY2hpcDogdm9wOiBhZGQgcmszMTg4IHZvcCBkZWZpbml0aW9ucyIp
-Cj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0K
-PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCA2ICsrKysr
-LQo+ICAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5j
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+IGluZGV4IGM0
-ODJkYTQxYmI1ZC4uMjI2YmIyYTE3MjBlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gQEAgLTQ2NSw3ICs0NjUsMTEgQEAgc3RhdGljIGNvbnN0
-IHN0cnVjdCB2b3Bfd2luX2RhdGEgcmszMTg4X3ZvcF93aW5fZGF0YVtdID0gewo+ICAgfTsKPiAg
-IAo+ICAgc3RhdGljIGNvbnN0IGludCByazMxODhfdm9wX2ludHJzW10gPSB7Cj4gLQkwLAo+ICsJ
-LyoKPiArCSAqIGhzX3N0YXJ0IGludGVycnVwdCBmaXJlcyBhdCBmcmFtZS1zdGFydCwgc28gc2Vy
-dmVzCj4gKwkgKiB0aGUgc2FtZSBwdXJwb3NlIGFzIGRzcF9ob2xkIGluIHRoZSBkcml2ZXIuCj4g
-KwkgKi8KPiArCURTUF9IT0xEX1ZBTElEX0lOVFIsCj4gICAJRlNfSU5UUiwKPiAgIAlMSU5FX0ZM
-QUdfSU5UUiwKPiAgIAlCVVNfRVJST1JfSU5UUiwKPiAKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Tue, 2018-09-25 at 13:29 +0200, Joerg Roedel wrote:
+> On Thu, Aug 30, 2018 at 07:28:32PM -0300, Ezequiel Garcia wrote:
+> > Printing verbosely via WARN macros and friends in interrupt handlers
+> > is strongly discouraged. Drop them and use proper ratelimited
+> > prints.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > ---
+> >  drivers/iommu/rockchip-iommu.c | 10 ++++++----
+> >  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> This doesn't apply cleanly to v4.19-rc5, can you please base the patch
+> on that tag, add the Reviewed-by and re-send?
+> 
+
+Well, after looking at the latest code, now I'm wondering why Marc
+changed the WARN_ON with a WARN_ON_ONCE, instead of a less verbose
+ratelimited print.
