@@ -1,43 +1,29 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: add initial dts support for Rockpro64
-Date: Wed, 26 Sep 2018 13:35:15 +0200
-Message-ID: <6748636.LqZcXZ9sFQ@phil>
-References: <Akash_Gajjar@mentor.com> <1537943105-21247-1-git-send-email-Akash_Gajjar@mentor.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable SPI NOR flash on Rock64
+Date: Wed, 26 Sep 2018 13:38:53 +0200
+Message-ID: <2872521.VFYVRVU0oA@phil>
+References: <20180926045357.20722-1-wens@csie.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1537943105-21247-1-git-send-email-Akash_Gajjar@mentor.com>
+In-Reply-To: <20180926045357.20722-1-wens@csie.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Akash Gajjar <Akash_Gajjar@mentor.com>
-Cc: Deepak_das@mentor.com, Pragnesh_patel@mentor.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Levin Du <djw@t-chip.com.cn>, Klaus Goger <klaus.goger@theobroma-systems.com>, Ezequiel Garcia <ezequiel@collabora.com>, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Philippe Ombredanne <pombredanne@nexb.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Shohei Maruyama <cheat.sc.linux@outlook.com>, Pierre-Hugues Husson <phh@phh.me>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Chen-Yu Tsai <wens@csie.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 26. September 2018, 08:24:57 CEST schrieb Akash Gajjar:
-> Rockpro64 is a rockchip RK3399 based board from pine64.org.
-> This patch adds basic device node support for Rockpro64 board and make it able
-> to bring up.
+Am Mittwoch, 26. September 2018, 06:53:57 CEST schrieb Chen-Yu Tsai:
+> The Pine64 Rock64 board comes with a GigaDevice GD25Q128CSIG
+> or GD25Q127CSIG chip, which is a 128 Mbit SPI NOR flash chip
+> that supports the JEDEC read-ID command.
 > 
-> Peripheral Works
-> - Sdcard
-> - USB 2.0, 3.0
-> - Leds
-> - Ethernet
-> - Debug console
+> This patch enables the SPI controller and adds a device node
+> for the flash chip using the generic "jedec,spi-nor" comaptible.
 > 
-> Not working:
-> - USB Type-C
-> 
-> Signed-off-by: Akash Gajjar <Akash_Gajjar@mentor.com>
+> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 
-applied for 4.20.
-
-For future patches, please keep in mind to transfer received tags from
-one version to the next. v2 received a "Reviewed-by" from Rob, so ideally
-it should have been included below your Signed-off in v3.
-
-I've picked that tag myself from v2, so no need to do anything now,
-just for the next time ;-)
+applied for 4.20
 
 Thanks
 Heiko
