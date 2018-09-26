@@ -1,76 +1,65 @@
-From: Frieder Schrempf <frieder.schrempf@exceet.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable SPI NOR flash on Rock64
-Date: Wed, 26 Sep 2018 09:10:17 +0200
-Message-ID: <7ecb43c3-1693-005b-b547-03ca361bd843@exceet.de>
-References: <20180926045357.20722-1-wens@csie.org>
+From: Tomi Valkeinen <tomi.valkeinen@ti.com>
+Subject: Re: [Intel-gfx] [PATCH 4/5] drm/omapdrm: Substitute format_is_yuv()
+ with format->is_yuv
+Date: Wed, 26 Sep 2018 12:30:10 +0300
+Message-ID: <57ef0cb3-c032-3854-cff5-78fbe2a5ed20@ti.com>
+References: <1531847626-22248-1-git-send-email-ayan.halder@arm.com>
+ <1531847626-22248-4-git-send-email-ayan.halder@arm.com>
+ <20180718101741.GU5565@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180926045357.20722-1-wens@csie.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20180718101741.GU5565@intel.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, Ayan Kumar Halder <ayan.halder@arm.com>
+Cc: airlied@linux.ie, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org, peter.ujfalusi@ti.com, laurent.pinchart@ideasonboard.com, afd@ti.com, maxime.ripard@bootlin.com, linux-rockchip@lists.infradead.org, wens@csie.org, malidp@foss.arm.com, intel-gfx@lists.freedesktop.org, seanpaul@chromium.org, rodrigo.vivi@intel.com, nd@arm.com, linux-arm-kernel@lists.infradead.org, sre@kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26.09.2018 06:53, Chen-Yu Tsai wrote:
-> The Pine64 Rock64 board comes with a GigaDevice GD25Q128CSIG
-> or GD25Q127CSIG chip, which is a 128 Mbit SPI NOR flash chip
-> that supports the JEDEC read-ID command.
-> 
-> This patch enables the SPI controller and adds a device node
-> for the flash chip using the generic "jedec,spi-nor" comaptible.
-> 
-> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-> ---
-> 
-> This was working on linux-next 20180910, but now fails on linux-next
-> 20180925, with the following error messages:
-> 
->      m25p80 spi0.0: error -22 reading 9f
->      m25p80: probe of spi0.0 failed with error -2
-> 
-> Reverting the spi/for-next branch makes it work again:
-> 
->      m25p80 spi0.0: gd25q128 (16384 Kbytes)
-> 
-> Not sure what's up.
-
-The reason is probably an issue that was introduced here: [1], and it 
-was fixed here: [2].
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/spi?id=380583227c0c7f52383b0cd5c0e2de93ed31d553
-[2] 
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/spi?id=4c53f98555fdbf1cc291cab8ffa5e1507a4f25d9
-
-> 
-> ---
->   arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> index 9ee4f57557f3..2170cf63845e 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> @@ -290,6 +290,18 @@
->   	};
->   };
->   
-> +&spi0 {
-> +	status = "okay";
-> +
-> +	spiflash@0 {
-> +		compatible = "jedec,spi-nor";
-> +		reg = <0>;
-> +
-> +		/* maximum speed for Rockchip SPI */
-> +		spi-max-frequency = <50000000>;
-> +	};
-> +};
-> +
->   &tsadc {
->   	rockchip,hw-tshut-mode = <0>;
->   	rockchip,hw-tshut-polarity = <0>;
-> 
+SGksCgpPbiAxOC8wNy8xOCAxMzoxNywgVmlsbGUgU3lyasOkbMOkIHdyb3RlOgo+IE9uIFR1ZSwg
+SnVsIDE3LCAyMDE4IGF0IDA2OjEzOjQ1UE0gKzAxMDAsIEF5YW4gS3VtYXIgSGFsZGVyIHdyb3Rl
+Ogo+PiBkcm1fZm9ybWF0X2luZm8gdGFibGUgaGFzIGEgZmllbGQgJ2lzX3l1dicgdG8gZGVub3Rl
+IGlmIHRoZSBmb3JtYXQKPj4gaXMgeXV2IG9yIG5vdC4gVGhlIGRyaXZlciBpcyBleHBlY3RlZCB0
+byB1c2UgdGhpcyBpbnN0ZWFkIG9mCj4+IGhhdmluZyBhIGZ1bmN0aW9uIGZvciB0aGUgc2FtZSBw
+dXJwb3NlLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBBeWFuIEt1bWFyIGhhbGRlciA8YXlhbi5oYWxk
+ZXJAYXJtLmNvbT4KPj4gLS0tCj4+ICBkcml2ZXJzL2dwdS9kcm0vb21hcGRybS9kc3MvZGlzcGMu
+YyB8IDI2ICsrKysrKysrKystLS0tLS0tLS0tLS0tLS0tCj4+ICAxIGZpbGUgY2hhbmdlZCwgMTAg
+aW5zZXJ0aW9ucygrKSwgMTYgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vb21hcGRybS9kc3MvZGlzcGMuYyBiL2RyaXZlcnMvZ3B1L2RybS9vbWFwZHJtL2Rz
+cy9kaXNwYy5jCj4+IGluZGV4IDg0ZjI3NGMuLjhkMmQ3YTQgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9vbWFwZHJtL2Rzcy9kaXNwYy5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9v
+bWFwZHJtL2Rzcy9kaXNwYy5jCj4+IEBAIC0xMTQwLDE4ICsxMTQwLDYgQEAgc3RhdGljIHZvaWQg
+ZGlzcGNfb3ZsX3NldF9jb2xvcl9tb2RlKHN0cnVjdCBkaXNwY19kZXZpY2UgKmRpc3BjLAo+PiAg
+CVJFR19GTERfTU9EKGRpc3BjLCBESVNQQ19PVkxfQVRUUklCVVRFUyhwbGFuZSksIG0sIDQsIDEp
+Owo+PiAgfQo+PiAgCj4+IC1zdGF0aWMgYm9vbCBmb3JtYXRfaXNfeXV2KHUzMiBmb3VyY2MpCj4+
+IC17Cj4+IC0Jc3dpdGNoIChmb3VyY2MpIHsKPj4gLQljYXNlIERSTV9GT1JNQVRfWVVZVjoKPj4g
+LQljYXNlIERSTV9GT1JNQVRfVVlWWToKPj4gLQljYXNlIERSTV9GT1JNQVRfTlYxMjoKPj4gLQkJ
+cmV0dXJuIHRydWU7Cj4+IC0JZGVmYXVsdDoKPj4gLQkJcmV0dXJuIGZhbHNlOwo+PiAtCX0KPj4g
+LX0KPj4gLQo+PiAgc3RhdGljIHZvaWQgZGlzcGNfb3ZsX2NvbmZpZ3VyZV9idXJzdF90eXBlKHN0
+cnVjdCBkaXNwY19kZXZpY2UgKmRpc3BjLAo+PiAgCQkJCQkgICBlbnVtIG9tYXBfcGxhbmVfaWQg
+cGxhbmUsCj4+ICAJCQkJCSAgIGVudW0gb21hcF9kc3Nfcm90YXRpb25fdHlwZSByb3RhdGlvbikK
+Pj4gQEAgLTE5MTAsMTEgKzE4OTgsMTQgQEAgc3RhdGljIHZvaWQgZGlzcGNfb3ZsX3NldF9zY2Fs
+aW5nX3V2KHN0cnVjdCBkaXNwY19kZXZpY2UgKmRpc3BjLAo+PiAgCWludCBzY2FsZV94ID0gb3V0
+X3dpZHRoICE9IG9yaWdfd2lkdGg7Cj4+ICAJaW50IHNjYWxlX3kgPSBvdXRfaGVpZ2h0ICE9IG9y
+aWdfaGVpZ2h0Owo+PiAgCWJvb2wgY2hyb21hX3Vwc2NhbGUgPSBwbGFuZSAhPSBPTUFQX0RTU19X
+QjsKPj4gKwljb25zdCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvOwo+PiArCj4+ICsJaW5m
+byA9IGRybV9mb3JtYXRfaW5mbyhmb3VyY2MpOwo+IAo+IE5vdCBzdXJlIFRvbWkgd2FudHMgZHJt
+IHVzYWdlIChhcGFydCBmcm9tIHRoZSBmb3VyY2NzKSBpbnNpZGUgdGhlCj4gZHNzIGNvZGUuCgpT
+ZWVtcyBsaWtlIEkgaGF2ZSBtaXNzZWQgdGhpcy4gTm8sIEkgZG9uJ3QgaGF2ZSBhbnl0aGluZyBh
+Z2FpbnN0IGRybQp1c2FnZSBpbnNpZGUgZHNzLiBUaGF0J3MgdGhlIHdheSB3ZSd2ZSBiZWVuIG1v
+dmluZyBhZnRlciB3ZSBtYW5hZ2VkIHRvCmdldCByaWQgb2Ygb21hcGZiIGxpbmtzLgoKSSdsbCBw
+aWNrIHRoaXMgdXAuCgogVG9taQoKLS0gClRleGFzIEluc3RydW1lbnRzIEZpbmxhbmQgT3ksIFBv
+cmtrYWxhbmthdHUgMjIsIDAwMTgwIEhlbHNpbmtpLgpZLXR1bm51cy9CdXNpbmVzcyBJRDogMDYx
+NTUyMS00LiBLb3RpcGFpa2thL0RvbWljaWxlOiBIZWxzaW5raQpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
