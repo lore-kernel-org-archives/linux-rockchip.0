@@ -1,51 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: add initial dts support for
- Rockpro64
-Date: Thu, 27 Sep 2018 15:02:51 -0500
-Message-ID: <20180927200251.GA4060@bogus>
-References: <Akash_Gajjar@mentor.com>
- <1537943105-21247-1-git-send-email-Akash_Gajjar@mentor.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 2/3] dt-bindings: firmware: coreboot: document board
+ variant properties
+Date: Thu, 27 Sep 2018 14:48:51 -0700
+Message-ID: <CA+ASDXMMyz+uva9++kih+t9k2W+hFtA5E-Fmd8b_TwrY2N0LFg@mail.gmail.com>
+References: <20180822120214.11848-1-heiko@sntech.de>
+ <20180822120214.11848-2-heiko@sntech.de>
+ <20180831121836.GA23441@bogus> <1660300.IG1gbB27SJ@phil>
+ <20180925163927.GA23163@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1537943105-21247-1-git-send-email-Akash_Gajjar@mentor.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Akash Gajjar <Akash_Gajjar@mentor.com>
-Cc: heiko@sntech.de, Deepak_das@mentor.com, Pragnesh_patel@mentor.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Levin Du <djw@t-chip.com.cn>, Klaus Goger <klaus.goger@theobroma-systems.com>, Ezequiel Garcia <ezequiel@collabora.com>, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Philippe Ombredanne <pombredanne@nexb.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Shohei Maruyama <cheat.sc.linux@outlook.com>, Pierre-Hugues Husson <phh@phh.me>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180925163927.GA23163@bogus>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: robh@kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 26 Sep 2018 11:54:57 +0530, Akash Gajjar wrote:
-> Rockpro64 is a rockchip RK3399 based board from pine64.org.
-> This patch adds basic device node support for Rockpro64 board and make it able
-> to bring up.
-> 
-> Peripheral Works
-> - Sdcard
-> - USB 2.0, 3.0
-> - Leds
-> - Ethernet
-> - Debug console
-> 
-> Not working:
-> - USB Type-C
-> 
-> Signed-off-by: Akash Gajjar <Akash_Gajjar@mentor.com>
-> ---
-> changes for v2
-> - Added support for usb 2.0, 3.0
-> - Added fusb302 node and its regulator support
-> - Cleanup pinctrl node
-> - Remove backlight, pcie, sound codec node inherited from firefly-rk3399 dts
-> changes for v3
-> - Added copyright properly
-> - Typo correction in commit message
-> 
->  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
->  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
->  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts  | 692 +++++++++++++++++++++
->  3 files changed, 697 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> 
+On Tue, Sep 25, 2018 at 9:39 AM Rob Herring <robh@kernel.org> wrote:
+> Reading strapping values and putting into DT seems like a perfectly
+> reasonable thing to do (I'm assuming the pins get initialized to their
+> function and reading them later is not possible), but that has nothing
+> to do coreboot really. We don't put things u-boot touches under a u-boot
+> node. These should go at the top-level IMO.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Where, exactly? Do you have a suggested property name?
+
+Regarding compatible-based approach (from prior email): we do heavily
+use the top-level 'compatible' property too for a similar purpose, but
+sometimes there's a useful difference between "I booted with DTB
+<foo>, which is compatible with revision X, Y, Z, ..." and "the exact
+revision I booted is N". So the properties are definitely useful.
+
+> And maybe it is compelling to just take them having been in use for some
+> time on widely deploying devices, but that's not really good precedence.
+
+Well, we ain't changing the old firmware. Coming up with a new name
+can work, and we can modify new firmware to start doing both. But it'd
+still probably be wise to note what's actively in-use, especially if
+it's not substantively different than what we settle on.
+
+Brian
