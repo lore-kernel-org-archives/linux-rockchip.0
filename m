@@ -1,41 +1,51 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 2/2] ARM: dts: rockchip: add rk3288-based Tinker board S
-Date: Thu, 27 Sep 2018 13:24:13 -0500
-Message-ID: <20180927182413.GA1990@bogus>
-References: <20180923113807.11558-1-heiko@sntech.de>
- <20180923113807.11558-3-heiko@sntech.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3] arm64: dts: rockchip: add initial dts support for
+ Rockpro64
+Date: Thu, 27 Sep 2018 15:02:51 -0500
+Message-ID: <20180927200251.GA4060@bogus>
+References: <Akash_Gajjar@mentor.com>
+ <1537943105-21247-1-git-send-email-Akash_Gajjar@mentor.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20180923113807.11558-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1537943105-21247-1-git-send-email-Akash_Gajjar@mentor.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Akash Gajjar <Akash_Gajjar@mentor.com>
+Cc: heiko@sntech.de, Deepak_das@mentor.com, Pragnesh_patel@mentor.com, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Levin Du <djw@t-chip.com.cn>, Klaus Goger <klaus.goger@theobroma-systems.com>, Ezequiel Garcia <ezequiel@collabora.com>, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Philippe Ombredanne <pombredanne@nexb.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Shohei Maruyama <cheat.sc.linux@outlook.com>, Pierre-Hugues Husson <phh@phh.me>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, 23 Sep 2018 13:38:07 +0200, Heiko Stuebner wrote:
-> From: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+On Wed, 26 Sep 2018 11:54:57 +0530, Akash Gajjar wrote:
+> Rockpro64 is a rockchip RK3399 based board from pine64.org.
+> This patch adds basic device node support for Rockpro64 board and make it able
+> to bring up.
 > 
-> Add the actual dts for the tinker board S, which brings its own emmc
-> device, not therefore not requiring an sd-card to boot.
+> Peripheral Works
+> - Sdcard
+> - USB 2.0, 3.0
+> - Leds
+> - Ethernet
+> - Debug console
 > 
-> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Not working:
+> - USB Type-C
+> 
+> Signed-off-by: Akash Gajjar <Akash_Gajjar@mentor.com>
 > ---
->  .../devicetree/bindings/arm/rockchip.txt      |  4 +++
->  arch/arm/boot/dts/Makefile                    |  1 +
->  arch/arm/boot/dts/rk3288-tinker-s.dts         | 26 +++++++++++++++++++
->  3 files changed, 31 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
+> changes for v2
+> - Added support for usb 2.0, 3.0
+> - Added fusb302 node and its regulator support
+> - Cleanup pinctrl node
+> - Remove backlight, pcie, sound codec node inherited from firefly-rk3399 dts
+> changes for v3
+> - Added copyright properly
+> - Typo correction in commit message
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts  | 692 +++++++++++++++++++++
+>  3 files changed, 697 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
 > 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
