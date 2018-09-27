@@ -1,37 +1,30 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: vop: add rk3188 hs_start interrupt as
- dsp_hold equivalent
-Date: Thu, 27 Sep 2018 12:14:35 +0200
-Message-ID: <1747772.qPFq6DrLhZ@phil>
-References: <20180923123730.14706-1-heiko@sntech.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 4/5] dt-bindings: drm/bridge: Document Cadence MHDP
+ bridge bindings
+Date: Thu, 27 Sep 2018 12:38:21 -0500
+Message-ID: <20180927173821.GA7422@bogus>
+References: <1537866837-4408-1-git-send-email-dkos@cadence.com>
+ <1537866837-4408-5-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180923123730.14706-1-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1537866837-4408-5-git-send-email-dkos@cadence.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Quentin Schulz <quentin.schulz@free-electrons.com>, Damian Kos <dkos@cadence.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, pgaj@cadence.com, ltyrala@cadence.com, rafalc@cadence.com, jartur@cadence.com, piotrs@cadence.com, quentin.schulz@boot
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gU29ubnRhZywgMjMuIFNlcHRlbWJlciAyMDE4LCAxNDozNzozMCBDRVNUIHNjaHJpZWIgSGVp
-a28gU3R1ZWJuZXI6Cj4gVGhlIGhzX3N0YXJ0IGludGVycnVwdCBvbiByazMxODggZmlyZXMgYXQg
-dGhlIHN0YXJ0IG9mIGEgbmV3IGZyYW1lLCBzbwo+IHNlcnZlcyBlc3NlbnRpYWxseSB0aGUgc2Ft
-ZSBwdXJwb3NlIGFzIHRoZSBkc3BfaG9sZF92YWxpZCBpcnEgaW4gY2hlY2tpbmcKPiB3aGVuIHRo
-ZSBsYXN0IGZyYW1lIGdvdCBkZWxpdmVyZWQgd2hlbiBnb2luZyB0byBzdGFuZGJ5LiBTbyBkZWZp
-bmUgaXQKPiB0byBmaXggYSBoYW5nIG9uIGF0b21pY19kaXNhYmxlIG9mIHRoZSB2b3AgYmVjYXVz
-ZSB0aGUgY29tcGxldGlvbiBuZXZlcgo+IHJlYWxseSBjb21wbGV0ZWQgYmVmb3JlLgo+IAo+IEZp
-eGVzOiA0MjhlMTVjYzQxZTMgKCJkcm0vcm9ja2NoaXA6IHZvcDogYWRkIHJrMzE4OCB2b3AgZGVm
-aW5pdGlvbnMiKQo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
-ZGU+CgphcHBsaWVkIHRvIGRybS1taXNjLW5leHQgd2l0aCBTYW5keSdzIFJldmlldy4KCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Tue, 25 Sep 2018 10:13:34 +0100, Damian Kos wrote:
+> From: Quentin Schulz <quentin.schulz@free-electrons.com>
+> 
+> Document the bindings used for the Cadence MHDP DPI/DP bridge.
+> 
+> Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
+> Signed-off-by: Damian Kos <dkos@cadence.com>
+> ---
+>  .../bindings/display/bridge/cdns,mhdp.txt     | 43 +++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
