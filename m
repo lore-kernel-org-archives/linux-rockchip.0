@@ -1,55 +1,43 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] iommu: rockchip: Drop verbose prints in the interrupt
-	handler
-Date: Thu, 27 Sep 2018 09:10:23 +0100
-Message-ID: <03cdadf4-14e7-8643-81f6-cd2e7d2f3e88@arm.com>
-References: <20180830222832.16766-1-ezequiel@collabora.com>
-	<20180925112930.u5kftmo3vhmdxji4@8bytes.org>
-	<ea4d539ecbaf229bef8c0810c6a11cf824339b4b.camel@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: typo: selet->select
+Date: Thu, 27 Sep 2018 12:13:47 +0200
+Message-ID: <7004894.1MZhX1FFyX@phil>
+References: <20180923142005.23915-1-hanetzer@startmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <ea4d539ecbaf229bef8c0810c6a11cf824339b4b.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, enric.balletbo-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180923142005.23915-1-hanetzer@startmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Marty E. Plummer" <hanetzer@startmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26/09/18 18:31, Ezequiel Garcia wrote:
-> On Tue, 2018-09-25 at 13:29 +0200, Joerg Roedel wrote:
->> On Thu, Aug 30, 2018 at 07:28:32PM -0300, Ezequiel Garcia wrote:
->>> Printing verbosely via WARN macros and friends in interrupt handlers
->>> is strongly discouraged. Drop them and use proper ratelimited
->>> prints.
->>>
->>> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>> ---
->>>   drivers/iommu/rockchip-iommu.c | 10 ++++++----
->>>   1 file changed, 6 insertions(+), 4 deletions(-)
->>
->> This doesn't apply cleanly to v4.19-rc5, can you please base the patch
->> on that tag, add the Reviewed-by and re-send?
->>
+Hi Marty,
+
+Am Sonntag, 23. September 2018, 16:20:05 CEST schrieb Marty E. Plummer:
+> Signed-off-by: Marty E. Plummer <hanetzer@startmail.com>
+> ---
+>  drivers/gpu/drm/rockchip/Kconfig | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> Well, after looking at the latest code, now I'm wondering why Marc
-> changed the WARN_ON with a WARN_ON_ONCE, instead of a less verbose
-> ratelimited print.
+> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+> index 0ccc76217ee4..7d1ccc9efc76 100644
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
+> @@ -23,7 +23,7 @@ config ROCKCHIP_ANALOGIX_DP
+>  	help
+>  	  This selects support for Rockchip SoC specific extensions
+>  	  for the Analogix Core DP driver. If you want to enable DP
+> -	  on RK3288 based SoC, you should selet this option.
+> +	  on RK3288 based SoC, you should select this option.
 
-WARN_ONCE does it exactly once. A rate-limited printk will still spit as 
-many messages as you want.
+The "selet" typos got fixed in another commit recently.
+dc879f61c45d  ("drm/rockchip: fix coding style and incorrect description")
+from Sandy on 2018-08-28.
 
-Thanks,
+It is sitting on drm-misc-next [0] waiting for the next merge-window.
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+Heiko
+
+[0] https://cgit.freedesktop.org/drm/drm-misc/log/
