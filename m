@@ -1,54 +1,81 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v5 0/6] drm/rockchip: hdmi support for rk3328
-Date: Fri, 28 Sep 2018 13:14:03 +0200
-Message-ID: <1747873.4pnCHigBGG@phil>
-References: <20180912124740.20343-1-heiko@sntech.de>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v6 1/6] dt-bindings: Document the Rockchip VPU bindings
+Date: Fri, 28 Sep 2018 13:53:56 +0200
+Message-ID: <2184b772-2b40-289f-5537-7ebb693479fd@xs4all.nl>
+References: <20180917173022.9338-1-ezequiel@collabora.com>
+ <20180917173022.9338-2-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180912124740.20343-1-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: architt@codeaurora.org
-Cc: Jose.Abreu@synopsys.com, algea.cao@rock-chips.com, linux-rockchip@lists.infradead.org, jonas@kwiboo.se, dri-devel@lists.freedesktop.org, Laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, zhengyang@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180917173022.9338-2-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDEyLiBTZXB0ZW1iZXIgMjAxOCwgMTQ6NDc6MzQgQ0VTVCBzY2hyaWViIEhl
-aWtvIFN0dWVibmVyOgo+IFRoZSByazMyMjgvcmszMjI5IGFuZCByazMzMjggc29jcyBzdGFydGVk
-IHVzaW5nIGEgbmV3IHR5cGUgb2YgaGRtaS1waHkKPiBmcm9tIElubm9zaWxpY29uIHRoYXQgcmVz
-aWRlcyBjb21wbGV0ZWx5IHNlcGFyYXRlIGZyb20gdGhlIGR3LWhkbWkgYmxvY2sKPiBhbmQgZ2V0
-cyBhY2Nlc3NlZCB2aWEgbW1pby4KPiAKPiBBZGRpdGlvbmFsbHkgdGhlIHJrMzMyOCBkdy1oZG1p
-IGRvZXMgbm90IHJlcG9ydCB0aGUgdmVuZG9yLXBoeSB0eXBlCj4gYnV0IGEgZGlmZmVyZW50IG9u
-ZSBpbnN0ZWFkLCBzbyBhZGQgdGhlIHBvc3NpYmlsaXR5IHRvIG92ZXJyaWRlIHRoZQo+IHBoeSB0
-eXBlIHdoZW4gdGhlIGdsdWUgZHJpdmVyIGtub3dzIGJldHRlciB0aGFuIHRoZSBpcCBibG9jayBp
-dHNlbGYuCj4gCj4gY2hhbmdlcyBpbiB2NToKPiAtIGRpc2FibGUgQ0VDXzVWIG9wdGlvbiB0byBt
-YWtlIENFQyBhY3R1YWxseSB3b3JrIChKb25hcykKPiAKPiBjaGFuZ2VzIGluIHY0Ogo+IC0gcmVi
-YXNlZCBvbnRvIDQuMTktcmMyIC0gbm8gYWN0dWFsIGNoYW5nZXMKPiAtIGFkZGVkIFJvYidzIEFj
-ayBvbiB0aGUgZHctaGRtaSBjb21wYXRpYmxlCj4gCj4gY2hhbmdlcyBpbiB2MzoKPiAtIHNwbGl0
-IG9mZiBwaHkgZHJpdmVyIGludG8gYSBzZXBhcmF0ZSBzZXJpZXMKPiAtIG9ubHkgYWxsb3cgZm9y
-Y2luZyB2ZW5kb3IgcGh5IHR5cGUKPiAtIHdvcmRpbmcgZml4ZXMgYW5kIG90aGVyIG5pdHMKPiAK
-PiBjaGFuZ2VzIGluIHYyOgo+IC0gcGh5OiBwcmV2ZW50IG92ZXJmbG93IGluIHRtZHNjbGsgY2Fs
-Y3VsYXRpb24KPiAgIGFzIHJlcG9ydGVkIGJ5IE1hcnRpbiBDZXJ2ZW55Cj4gLSBwaHk6IHVzZSB1
-bnNpZ25lZCBsb25nIGZvciBhbGwgdG1kc2NsayByYXRlIHVzZXMKPiAtIHBoeTogc2ltcGxpZnkg
-dG1kcyByYXRlIGNhbGN1bGF0aW9uCj4gLSBkcm9wcGVkIHBhdGNoIGV4cG9ydGluZyBzb21lIGR3
-LWhkbWkgcGh5IGZ1bmN0aW9ucwo+ICAgYXMgYSBzaW1pbGFyIHBhdGNoIGVudGVyZWQgZHJtLW1p
-c2MgYWxyZWFkeQo+IAo+IEhlaWtvIFN0dWVibmVyICg2KToKPiAgIGRybS9icmlkZ2U6IGR3LWhk
-bWk6IGFsbG93IGZvcmNpbmcgdmVuZG9yIHBoeS10eXBlCj4gICBkcm0vcm9ja2NoaXA6IGR3X2hk
-bWk6IEFsbG93IG91dHB1dHMgdGhhdCBkb24ndCBuZWVkIG91dHB1dCBzd2l0Y2hpbmcKPiAgIGR0
-LWJpbmRpbmdzOiBhbGxvdyBvcHRpb25hbCBwaHlzIGluIFJvY2tjaGlwIGR3X2hkbWkgYmluZGlu
-Zwo+ICAgZHJtL3JvY2tjaGlwOiBkd19oZG1pOiBhbGxvdyBpbmNsdWRpbmcgZXh0ZXJuYWwgcGh5
-cwo+ICAgZHJtL3JvY2tjaGlwOiBkd19oZG1pOiBzdG9yZSByb2NrY2hpcF9oZG1pIHJlZmVyZW5j
-ZSBpbiBwaHlfZGF0YQo+ICAgICBvYmplY3QKPiAgIGRybS9yb2NrY2hpcDogZHdfaGRtaTogYWRk
-IGR3LWhkbWkgc3VwcG9ydCBmb3IgdGhlIHJrMzMyOAoKYXBwbGllZCB0byBkcm0tbWlzYy1uZXh0
-IHdpdGggdGhlIHJlY2VpdmVkIFJldmlld3MKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+On 09/17/2018 07:30 PM, Ezequiel Garcia wrote:
+> Add devicetree binding documentation for Rockchip Video Processing
+> Unit IP.
+> 
+> Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  .../bindings/media/rockchip-vpu.txt           | 30 +++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.txt b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> new file mode 100644
+> index 000000000000..5e0d421301ca
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> @@ -0,0 +1,30 @@
+> +device-tree bindings for rockchip VPU codec
+> +
+> +Rockchip (Video Processing Unit) present in various Rockchip platforms,
+> +such as RK3288 and RK3399.
+> +
+> +Required properties:
+> +- compatible: value should be one of the following
+> +		"rockchip,rk3288-vpu";
+> +		"rockchip,rk3399-vpu";
+> +- interrupts: encoding and decoding interrupt specifiers
+> +- interrupt-names: should be "vepu" and "vdpu"
+> +- clocks: phandle to VPU aclk, hclk clocks
+> +- clock-names: should be "aclk" and "hclk"
+> +- power-domains: phandle to power domain node
+> +- iommus: phandle to a iommu node
+> +
+> +Example:
+> +SoC-specific DT entry:
+> +	vpu: video-codec@ff9a0000 {
+> +		compatible = "rockchip,rk3288-vpu";
+> +		reg = <0x0 0xff9a0000 0x0 0x800>;
+> +		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
+> +			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "vepu", "vdpu";
+> +		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> +		clock-names = "aclk", "hclk";
+> +		power-domains = <&power RK3288_PD_VIDEO>;
+> +		iommus = <&vpu_mmu>;
+> +	};
+> +
+> 
+
+Please remove this empty last line to avoid this warning:
+
+.git/rebase-apply/patch:41: new blank line at EOF.
+
+Thanks!
+
+	Hans
