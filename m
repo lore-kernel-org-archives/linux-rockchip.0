@@ -1,51 +1,82 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 2/3] dt-bindings: firmware: coreboot: document board
- variant properties
-Date: Thu, 27 Sep 2018 14:48:51 -0700
-Message-ID: <CA+ASDXMMyz+uva9++kih+t9k2W+hFtA5E-Fmd8b_TwrY2N0LFg@mail.gmail.com>
-References: <20180822120214.11848-1-heiko@sntech.de>
- <20180822120214.11848-2-heiko@sntech.de>
- <20180831121836.GA23441@bogus> <1660300.IG1gbB27SJ@phil>
- <20180925163927.GA23163@bogus>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH v5 3/5] drm/dp: make dp_get_lane_status usable from
+ outside of the core
+Date: Fri, 28 Sep 2018 03:21:29 -0400
+Message-ID: <20180928072129.GX72545@art_vandelay>
+References: <1537866837-4408-1-git-send-email-dkos@cadence.com>
+ <1537866837-4408-4-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20180925163927.GA23163@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: robh@kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1537866837-4408-4-git-send-email-dkos@cadence.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, quentin.schulz@bootlin.com, jartur@cadence.com, ltyrala@cadence.com, linux-rockchip@lists.infradead.org, piotrs@cadence.com, devicetree@vger.kernel.org, rafalc@cadence.com, jbergsagel@ti.com, Rob Herring <robh+dt@kernel.org>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Quentin Schulz <quentin.schulz@free-electrons.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Sep 25, 2018 at 9:39 AM Rob Herring <robh@kernel.org> wrote:
-> Reading strapping values and putting into DT seems like a perfectly
-> reasonable thing to do (I'm assuming the pins get initialized to their
-> function and reading them later is not possible), but that has nothing
-> to do coreboot really. We don't put things u-boot touches under a u-boot
-> node. These should go at the top-level IMO.
-
-Where, exactly? Do you have a suggested property name?
-
-Regarding compatible-based approach (from prior email): we do heavily
-use the top-level 'compatible' property too for a similar purpose, but
-sometimes there's a useful difference between "I booted with DTB
-<foo>, which is compatible with revision X, Y, Z, ..." and "the exact
-revision I booted is N". So the properties are definitely useful.
-
-> And maybe it is compelling to just take them having been in use for some
-> time on widely deploying devices, but that's not really good precedence.
-
-Well, we ain't changing the old firmware. Coming up with a new name
-can work, and we can modify new firmware to start doing both. But it'd
-still probably be wise to note what's actively in-use, especially if
-it's not substantively different than what we settle on.
-
-Brian
+T24gVHVlLCBTZXAgMjUsIDIwMTggYXQgMTA6MTM6MzNBTSArMDEwMCwgRGFtaWFuIEtvcyB3cm90
+ZToKPiBGcm9tOiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAZnJlZS1lbGVjdHJvbnMu
+Y29tPgo+IAo+IGRwX2dldF9sYW5lX3N0YXR1cyBpcyBwcmV0dHkgZ2VuZXJpYyBhbmQgY2FuIGJl
+IHVzZWQgZm9yIG90aGVyIG1lYW5zLAo+IHNvIGxldCdzIG1ha2UgaXQgInB1YmxpYyIuCj4gCj4g
+VGhpcyBhZGRzIGRybV9kcF9nZXRfbGFuZV9zdGF0dXMgdG8gdGhlIGhlYWRlciBmaWxlIGFuZCBh
+ZGQgdGhlIGFwcHJvcHJpYXRlCj4gRVhQT1JUX1NZTUJPTCBmb3IgaXQgc28gdGhhdCBpdCBjYW4g
+YmUgdXNlZCBieSBvdGhlciBkcml2ZXJzLCBiZSB0aGV5IGNvbXBpbGVkCj4gYnVpbHQtaW4gb3Ig
+YXMgbW9kdWxlcy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5z
+Y2h1bHpAZnJlZS1lbGVjdHJvbnMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IERhbWlhbiBLb3MgPGRr
+b3NAY2FkZW5jZS5jb20+CgpOb3cgdGhhdCB5b3UndmUgcmVmYWN0b3JlZCBtaGRwX3ZhbGlkYXRl
+X2NyKCksIHlvdSBubyBsb25nZXIgbmVlZCB0aGlzIHBhdGNoLgoKU2VhbgoKPiAtLS0KPiAgZHJp
+dmVycy9ncHUvZHJtL2RybV9kcF9oZWxwZXIuYyB8IDkgKysrKystLS0tCj4gIGluY2x1ZGUvZHJt
+L2RybV9kcF9oZWxwZXIuaCAgICAgfCAyICsrCj4gIDIgZmlsZXMgY2hhbmdlZCwgNyBpbnNlcnRp
+b25zKCspLCA0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+ZHJtX2RwX2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9kcF9oZWxwZXIuYwo+IGluZGV4
+IDczNWViZGU1YzJmMC4uMTY5ZGI1MmY5MmY1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9kcm1fZHBfaGVscGVyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2RwX2hlbHBlci5j
+Cj4gQEAgLTQ4LDE0ICs0OCwxNSBAQCBzdGF0aWMgdTggZHBfbGlua19zdGF0dXMoY29uc3QgdTgg
+bGlua19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0sIGludCByKQo+ICAJcmV0dXJuIGxpbmtf
+c3RhdHVzW3IgLSBEUF9MQU5FMF8xX1NUQVRVU107Cj4gIH0KPiAgCj4gLXN0YXRpYyB1OCBkcF9n
+ZXRfbGFuZV9zdGF0dXMoY29uc3QgdTggbGlua19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0s
+Cj4gLQkJCSAgICAgaW50IGxhbmUpCj4gK3U4IGRybV9kcF9nZXRfbGFuZV9zdGF0dXMoY29uc3Qg
+dTggbGlua19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0sCj4gKwkJCSAgaW50IGxhbmUpCj4g
+IHsKPiAgCWludCBpID0gRFBfTEFORTBfMV9TVEFUVVMgKyAobGFuZSA+PiAxKTsKPiAgCWludCBz
+ID0gKGxhbmUgJiAxKSAqIDQ7Cj4gIAl1OCBsID0gZHBfbGlua19zdGF0dXMobGlua19zdGF0dXMs
+IGkpOwo+ICAJcmV0dXJuIChsID4+IHMpICYgMHhmOwo+ICB9Cj4gK0VYUE9SVF9TWU1CT0woZHJt
+X2RwX2dldF9sYW5lX3N0YXR1cyk7Cj4gIAo+ICBib29sIGRybV9kcF9jaGFubmVsX2VxX29rKGNv
+bnN0IHU4IGxpbmtfc3RhdHVzW0RQX0xJTktfU1RBVFVTX1NJWkVdLAo+ICAJCQkgIGludCBsYW5l
+X2NvdW50KQo+IEBAIC02OSw3ICs3MCw3IEBAIGJvb2wgZHJtX2RwX2NoYW5uZWxfZXFfb2soY29u
+c3QgdTggbGlua19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0sCj4gIAlpZiAoKGxhbmVfYWxp
+Z24gJiBEUF9JTlRFUkxBTkVfQUxJR05fRE9ORSkgPT0gMCkKPiAgCQlyZXR1cm4gZmFsc2U7Cj4g
+IAlmb3IgKGxhbmUgPSAwOyBsYW5lIDwgbGFuZV9jb3VudDsgbGFuZSsrKSB7Cj4gLQkJbGFuZV9z
+dGF0dXMgPSBkcF9nZXRfbGFuZV9zdGF0dXMobGlua19zdGF0dXMsIGxhbmUpOwo+ICsJCWxhbmVf
+c3RhdHVzID0gZHJtX2RwX2dldF9sYW5lX3N0YXR1cyhsaW5rX3N0YXR1cywgbGFuZSk7Cj4gIAkJ
+aWYgKChsYW5lX3N0YXR1cyAmIERQX0NIQU5ORUxfRVFfQklUUykgIT0gRFBfQ0hBTk5FTF9FUV9C
+SVRTKQo+ICAJCQlyZXR1cm4gZmFsc2U7Cj4gIAl9Cj4gQEAgLTg0LDcgKzg1LDcgQEAgYm9vbCBk
+cm1fZHBfY2xvY2tfcmVjb3Zlcnlfb2soY29uc3QgdTggbGlua19zdGF0dXNbRFBfTElOS19TVEFU
+VVNfU0laRV0sCj4gIAl1OCBsYW5lX3N0YXR1czsKPiAgCj4gIAlmb3IgKGxhbmUgPSAwOyBsYW5l
+IDwgbGFuZV9jb3VudDsgbGFuZSsrKSB7Cj4gLQkJbGFuZV9zdGF0dXMgPSBkcF9nZXRfbGFuZV9z
+dGF0dXMobGlua19zdGF0dXMsIGxhbmUpOwo+ICsJCWxhbmVfc3RhdHVzID0gZHJtX2RwX2dldF9s
+YW5lX3N0YXR1cyhsaW5rX3N0YXR1cywgbGFuZSk7Cj4gIAkJaWYgKChsYW5lX3N0YXR1cyAmIERQ
+X0xBTkVfQ1JfRE9ORSkgPT0gMCkKPiAgCQkJcmV0dXJuIGZhbHNlOwo+ICAJfQo+IGRpZmYgLS1n
+aXQgYS9pbmNsdWRlL2RybS9kcm1fZHBfaGVscGVyLmggYi9pbmNsdWRlL2RybS9kcm1fZHBfaGVs
+cGVyLmgKPiBpbmRleCA2OTgwODJhMDJiOTcuLjk3M2QyZmRhOTY1NCAxMDA2NDQKPiAtLS0gYS9p
+bmNsdWRlL2RybS9kcm1fZHBfaGVscGVyLmgKPiArKysgYi9pbmNsdWRlL2RybS9kcm1fZHBfaGVs
+cGVyLmgKPiBAQCAtOTUyLDYgKzk1Miw4IEBACj4gICNkZWZpbmUgRFBfTVNUX0xPR0lDQUxfUE9S
+VF8wIDgKPiAgCj4gICNkZWZpbmUgRFBfTElOS19TVEFUVVNfU0laRQkgICA2Cj4gKwo+ICt1OCBk
+cm1fZHBfZ2V0X2xhbmVfc3RhdHVzKGNvbnN0IHU4IGxpbmtfc3RhdHVzW0RQX0xJTktfU1RBVFVT
+X1NJWkVdLCBpbnQgbGFuZSk7Cj4gIGJvb2wgZHJtX2RwX2NoYW5uZWxfZXFfb2soY29uc3QgdTgg
+bGlua19zdGF0dXNbRFBfTElOS19TVEFUVVNfU0laRV0sCj4gIAkJCSAgaW50IGxhbmVfY291bnQp
+Owo+ICBib29sIGRybV9kcF9jbG9ja19yZWNvdmVyeV9vayhjb25zdCB1OCBsaW5rX3N0YXR1c1tE
+UF9MSU5LX1NUQVRVU19TSVpFXSwKPiAtLSAKPiAyLjE3LjEKPiAKCi0tIApTZWFuIFBhdWwsIFNv
+ZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
