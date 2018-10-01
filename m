@@ -1,150 +1,84 @@
-From: Quentin Schulz <quentin.schulz@bootlin.com>
-Subject: Re: [PATCH v4 2/5] drm/dp: fix link probing for devices supporting
- DP 1.4+
-Date: Mon, 1 Oct 2018 11:27:08 +0200
-Message-ID: <20181001092708.ow4rxgzp4haax76k@qschulz>
-References: <1537455288-20223-1-git-send-email-dkos@cadence.com>
- <1537455288-20223-3-git-send-email-dkos@cadence.com>
- <20180921075929.GA28323@intel.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v6 0/8] drm/rockchip: migrate to common dw-mipi-dsi bridge and
+ dual-dsi
+Date: Mon,  1 Oct 2018 14:38:38 +0200
+Message-ID: <20181001123845.11818-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="ybx4xhgzfithc2la"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20180921075929.GA28323@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Manasi Navare <manasi.d.navare@intel.com>
-Cc: Damian Kos <dkos@cadence.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, jartur@cadence.com, jbergsagel@ti.com, ltyrala@cadence.com, stelford@cadence.com, Quentin Schulz <quentin.schulz@free-electrons.com>, pg
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: architt@codeaurora.org, hjc@rock-chips.com, a.hajda@samsung.com
+Cc: briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, mka@chromium.org, seanpaul@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---ybx4xhgzfithc2la
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Manasi,
-
-On Fri, Sep 21, 2018 at 12:59:30AM -0700, Manasi Navare wrote:
-> Thanks for the patch. Verified with the DP 1.4 spec and looks good to me.
-> Also look at the related patch that makes use of the correct extended cap=
-abilities:
->=20
-> https://patchwork.freedesktop.org/patch/249400/
->=20
-
-If I'm not mistaken, you could get rid of the patch in the Intel driver
-when we have this one merged. Is there any reason not to, have I missed
-something?
-
-Thanks,
-Quentin
-
-> Reviewed-by: Manasi Navare <manasi.d.navare@intel.com>
->=20
-> Manasi
->=20
->=20
-> On Thu, Sep 20, 2018 at 03:54:37PM +0100, Damian Kos wrote:
-> > From: Quentin Schulz <quentin.schulz@free-electrons.com>
-> >=20
-> > DP 1.4 introduced a DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit in
-> > DP_TRAINING_AUX_RD_INTERVAL register. If set, DPCD registers from
-> > DP_DPCD_REV to DP_ADAPTER_CAP should be retrieved starting from
-> > DP_DPCD_REV_EXTENDED. All registers are copied except DP_DPCD_REV,
-> > DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT which represent the
-> > "true capabilities" of DPRX device.
-> >=20
-> > Original DP_DPCD_REV, DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT
-> > might falsely return lower capabilities to "avoid interoperability
-> > issues with some of the existing DP Source devices that malfunction
-> > when they discover the higher capabilities within those three
-> > registers.".
-> >=20
-> > Before DP 1.4, DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit was reserved
-> > and read 0 so it's safe to check against it even if DP revision is
-> > <1.4
-> >=20
-> > Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
-> > Signed-off-by: Damian Kos <dkos@cadence.com>
-> > ---
-> >  drivers/gpu/drm/drm_dp_helper.c | 30 +++++++++++++++++++++++++++++-
-> >  1 file changed, 29 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/gpu/drm/drm_dp_helper.c b/drivers/gpu/drm/drm_dp_h=
-elper.c
-> > index 8c6b9fd89f8a..735ebde5c2f0 100644
-> > --- a/drivers/gpu/drm/drm_dp_helper.c
-> > +++ b/drivers/gpu/drm/drm_dp_helper.c
-> > @@ -370,10 +370,38 @@ int drm_dp_link_probe(struct drm_dp_aux *aux, str=
-uct drm_dp_link *link)
-> >  {
-> >  	u8 values[3];
-> >  	int err;
-> > +	unsigned int addr;
-> > =20
-> >  	memset(link, 0, sizeof(*link));
-> > =20
-> > -	err =3D drm_dp_dpcd_read(aux, DP_DPCD_REV, values, sizeof(values));
-> > +	/*
-> > +	 * DP 1.4 introduced a DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit in
-> > +	 * DP_TRAINING_AUX_RD_INTERVAL register. If set, DPCD registers from
-> > +	 * DP_DPCD_REV to DP_ADAPTER_CAP should be retrieved starting from
-> > +	 * DP_DPCD_REV_EXTENDED. All registers are copied except DP_DPCD_REV,
-> > +	 * DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT which represent the
-> > +	 * "true capabilities" of DPRX device.
-> > +	 *
-> > +	 * Original DP_DPCD_REV, DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESE=
-NT
-> > +	 * might falsely return lower capabilities to "avoid interoperability
-> > +	 * issues with some of the existing DP Source devices that malfunction
-> > +	 * when they discover the higher capabilities within those three
-> > +	 * registers.".
-> > +	 *
-> > +	 * Before DP 1.4, DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit was rese=
-rved
-> > +	 * and read 0 so it's safe to check against it even if DP revision is
-> > +	 * <1.4
-> > +	 */
-> > +	err =3D drm_dp_dpcd_readb(aux, DP_TRAINING_AUX_RD_INTERVAL, values);
-> > +	if (err < 0)
-> > +		return err;
-> > +
-> > +	if (values[0] & DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT)
-> > +		addr =3D DP_DP13_DPCD_REV;
-> > +	else
-> > +		addr =3D DP_DPCD_REV;
-> > +
-> > +	err =3D drm_dp_dpcd_read(aux, addr, values, sizeof(values));
-> >  	if (err < 0)
-> >  		return err;
-> > =20
-> > --=20
-> > 2.17.1
-> >=20
-> > _______________________________________________
-> > dri-devel mailing list
-> > dri-devel@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
---ybx4xhgzfithc2la
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEXeEYjDsJh38OoyMzhLiadT7g8aMFAlux6GwACgkQhLiadT7g
-8aN2QxAAqgX9IhkXulMuqmg4XqlU+BLiYsRW3taPd50bz/sjTTPLHTLVllTt4y9Q
-IkV9QpcSpBdsmRA8iqYXwUQCPs+xXY4TNi2KrKhVWvBwfTnwneYt3v5hijbDil2t
-73uk7XJbEKaOLxuHAdvFstg5irXtCqKQzwjmq4sL9hQe4GVq2eFwf7pLJSg/aydy
-Mmu/FNnPJL/HL/2Hwg9x6lpe/TkF0Ub3o61lOzSl4Pk7zklrWw53D0d7lr2DcomN
-kjR/HFa6pKRVqCR0tKBmwaezXkDFdsnG8mZPbG+nS7Rrr9I1XvyUsYAJiDtLw9K1
-3/dRC+Kf6qb1HEOztGBoDDch0YOGeN92vTRFQfoaq2loO+Em0mYNjHNsxQupExVx
-rEIQ/GhCtkFO9ZgIIwh1tlnaB9IJ8uRKbJ090/xiZ+ROKu1VhIM83M8VfuAUGpcW
-K771bMpa5Je6UfBJDo7rQ352RY8hlL7pAGg+zPQPvf9keZERuMov8epGVhs/CsP+
-yq3oqfilNDXmzrvq6+0FJ61EWqoMJCJKIWLtXavaCEyiN0alO6YbsgSuf+U0R6lJ
-woTTJp3bCFLpuwQasEnYHAmvJVP1VJlLPh/Gb7Ubw7nyiqHpZCzBML7COG6yAdTO
-fscS2eyAyBYNGguSy18Nsxv+26uamEvic3Em6VPxLytbHdGAzck=
-=tY+G
------END PGP SIGNATURE-----
-
---ybx4xhgzfithc2la--
+VGhlIFJvY2tjaGlwIERTSSBkcml2ZXIgd2FzIHNlcGFyYXRlIHRpbGwgbm93LCBub3QgdXNpbmcg
+dGhlIGNvbW1vbgpicmlkZ2UgZHJpdmVyIHRoYXQgd2FzIGludHJvZHVjZWQgYSBiaXQgbGF0ZXIu
+IFNvIHRoaXMgc2VyaWVzIG1pZ3JhdGVzCm92ZXIgdG8gdXNlIHRoYXQgY29tbW9uIGJyaWRnZSBk
+cml2ZXIgYW5kIHRoZW4gYWxzbyBhZGRzIHN1cHBvcnQgZm9yCmR1YWwtZHNpIHRvIGJvdGggdGhl
+IGJyaWRnZSBhbmQgUm9ja2NoaXAgZ2x1ZSBjb2RlLgoKVGhlIGJyaWRnZS1taWdyYXRpb24gaXRz
+ZWxmIGlzIGJhc2VkIG9uIE5pY2tleXMgZWFybGllciB2OAp3b3JrLCBidXQgYWRhcHRlZCB0byBj
+dXJyZW50IGtlcm5lbHMgYW5kIHdpdGggYSBuZXcgc3BsaXQgYmV0d2VlbiBwcm9iZQphbmQgYmlu
+ZCwgc28gdGhhdCB3ZSBkbyBub3QgY3JlYXRlIGFuZCBkcm9wIHRoZSBkc2ktaG9zdCBvbiBlYWNo
+IGRlZmVycmVkCmJpbmQgYXR0ZW1wdC4KCmNoYW5nZXMgaW4gdjI6Ci0gcmViYXNlIGFnYWluc3Qg
+bmV3ZXIgZHJtIGNvZGUgKGRzaS1icmlkZ2Urcm9ja2NoaXAgY2hhbmdlcykKLSBhZGQgU1BEWCBo
+ZWFkZXIgdG8gbmV3IGdsdWUgZHJpdmVyCi0gZXhwZWN0IHJlZ3VsYXIgaW50ZXJmYWNlIGxhbmVz
+IGZyb20gcGFuZWwgKGxpa2UgNCkgbm90IHRoZSBkb3VibGUgbnVtYmVyCiAgU2ltaWxhciB0byB0
+ZWdyYQotIGtlZXAgbGlua3MgdG8gYm90aCBtYXN0ZXIgYW5kIHNsYXZlCmNoYW5nZXMgaW4gdjM6
+Ci0gZG9uJ3QgZGVmZXIgaW4gYnJpZGdlX2F0dGFjaCwgaW5zdGVhZCBhZGQgYWJpbGl0eSB0byBj
+aGVjayBmb3IgZmluYWxpemVkCiAgcGFuZWwgYXR0YWNoZW1lbnQsIGZvciBleGFtcGxlIGluIGJp
+bmQKLSBhZGRyZXNzIGJyaWRnZS1jb252ZXJzaW9uIGNvbW1lbnRzIGZyb20gQW5kcnplajoKICAt
+IGluY2x1ZGUgb3JkZXJpbmcKICAtIG1vdmVkIGh3YWNjZXNzIGZyb20gbW9kZV9zZXQgdG8gZW5h
+YmxlIGNhbGxiYWNrCiAgLSBtb3ZlIHBsbHJlZl9jbGsgZW5hYmxlbWVudCB0byBiaW5kIChuZWVk
+ZWQgYnkgYnJpZGdlIG1vZGVfc2V0LT5sYW5lX21icHMpCi0gbGltaXRlZCBzbGF2ZSBzZXR0aW5n
+cyB0byBkd19taXBpX2RzaV9zZXRfc2xhdmUKLSBhZGRyZXNzIGR1YWwtZHNpIGNvbW1lbnRzIGZy
+b20gUGhpbGlwcGU6CiAgLSByZW1vdmUgdW5uZWVkZWQgc2VwYXJhdGUgdmFyaWFibGVzCiAgLSBy
+ZW1vdmUgdW5uZWVkZWQgc2Vjb25kIHNsYXZlIHNldHRpbmdzCiAgLSBkaXNhYmxlIHNsYXZlIGJl
+Zm9yZSBtYXN0ZXIKICAtIGxhbmUtc3VtIGNhbGN1bGF0aW9uIGNvbW1lbnRzCmNoYW5nZXMgaW4g
+djQ6Ci0gcmViYXNlIGFnYWluc3Qgc29tZSBsZWdhY3kgcm9ja2NoaXAtZHNpIGNoYW5nZXMKLSBh
+ZGQgZHNpLWNvbXBvbmVudCBvbmx5IGFmdGVyIHBhbmVsIGhhcyBhdHRhY2hlZCB0byBkc2kgaG9z
+dAogIFRoaXMgc29sdmVzIHF1aXRlIHNvbWUgY29uY3VycmVuY3kgcHJvYmxlbXMgdGhhdCBoYXBw
+ZW4gd2hlbiB0cnlpbmcKICB0byBkZXRlcm1pbmUgZHNpLXBhbmVsIGF2YWlsYWJpbGl0eSAKY2hh
+bmdlcyBpbiB2NToKLSB1c2UgZHJpdmVyLWludGVybmFsIG1ldGhvZCB0byBmaW5kIHNlY29uZCBo
+b3N0Ci0gZHJvcCBvZi1ncmFwaCBiYXNlZCBkc2kgbWV0aG9kIGZvciBpdApjaGFuZ2VzIGluIHY2
+OgotIHBhdGNoNyBkb24ndCBhZGQgY29tcG9uZW50IG9uIGVtcHR5IGxvY2FsIGRzaS1idXMsIGFz
+IHNvbWUKICBkc2kgYnJpZGdlcyBtaWdodCBsaXZlIG9uIGFuIGkyYyBidXMgb3Igc28gYW5kIGF0
+dGFjaCBmcm9tIHRoZXJlLgogIEluc3RlYWQgY2hlY2sgZm9yIGEgc2xhdmUgaW4gZHNpLWF0dGFj
+aCBhbmQgYWRkIHRoZSBzbGF2ZS1jb21wb25lbnQKICBmcm9tIHRoZXJlIGlmIG5lZWRlZAotIEdv
+IGJhY2sgdG8gcmVhZGluZyBkc2ktc2xhdmUgZnJvbSBkdCwgdG8gcHJldmVudCBwb3NzaWJsZSBk
+cml2ZXItCiAgcHJvYmUgcmFjZXMKCkhlaWtvIFN0dWVibmVyICg0KToKICBkcm0vYnJpZGdlL3N5
+bm9wc3lzOiBkc2k6IG1vdmUgbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyIHRvCiAgICBfX2R3X21p
+cGlfZHNpX3JlbW92ZQogIGRybS9icmlkZ2Uvc3lub3BzeXM6IGRzaTogZG9uJ3QgY2FsbCBfX2R3
+X21pcGlfZHNpX3Byb2JlIGZyb20KICAgIGR3X21pcGlfZHNpX2JpbmQKICBkcm0vYnJpZGdlL3N5
+bm9wc3lzOiBkc2k6IGFkZCBhYmlsaXR5IHRvIGhhdmUgZ2x1ZS1zcGVjaWZpYyBhdHRhY2ggYW5k
+CiAgICBkZXRhY2gKICBkcm0vcm9ja2NoaXA6IGRzaTogYWRkIGR1YWwgbWlwaSBzdXBwb3J0CgpO
+aWNrZXkgWWFuZyAoMyk6CiAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IHJvY2tjaGlwOiB1cGRhdGUg
+RFNJIGNvbnRyb2xsZXIKICBkcm0vcm9ja2NoaXA6IGRzaTogbWlncmF0ZSB0byB1c2UgZHctbWlw
+aS1kc2kgYnJpZGdlIGRyaXZlcgogIGRybS9icmlkZ2Uvc3lub3BzeXM6IGRzaTogYWRkIGR1YWwt
+ZHNpIHN1cHBvcnQKCiAuLi4vZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50
+eHQgfCAgIDIzICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGktZHNp
+LmMgfCAgMTE0ICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAg
+ICAgfCAgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAg
+ICAgfCAgICAyICstCiAuLi4vZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5j
+ICAgfCAxMDc1ICsrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBp
+LWRzaS5jICAgICAgICB8IDEzNDkgLS0tLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgICB8ICAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggICB8ICAgIDMgKy0KIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICB8ICAgIDMgKwogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaCAgIHwgICAgNCArCiBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jICAgfCAgICAxICsKIGluY2x1ZGUvZHJtL2JyaWRnZS9k
+d19taXBpX2RzaS5oICAgICAgICAgICAgICB8ICAgMTQgKy0KIDEyIGZpbGVzIGNoYW5nZWQsIDEy
+MTMgaW5zZXJ0aW9ucygrKSwgMTM3OSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwogZGVsZXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCgotLSAKMi4x
+OC4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
