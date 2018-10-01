@@ -1,181 +1,128 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v5 7/7] drm/rockchip: dsi: add dual mipi support
-Date: Mon, 01 Oct 2018 14:44:35 +0200
-Message-ID: <4791422.4bPGcUinJ3@phil>
-References: <20180821140515.22246-1-heiko@sntech.de> <2386821.27RX7ahLgN@phil>
- <20180921061119eucas1p1bf74e85e4319fcf8709a3f1403b984d1~WVXPnP6GN0305103051eucas1p18@eucas1p1.samsung.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v6 0/6] Add Rockchip VPU JPEG encoder
+Date: Mon, 01 Oct 2018 14:54:09 -0300
+Message-ID: <faca3960d0478610b73071b471acfa26df987985.camel@collabora.com>
+References: <20180917173022.9338-1-ezequiel@collabora.com>
+ <7bd9573e-e0c6-71a6-84ed-deb0904593fd@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20180921061119eucas1p1bf74e85e4319fcf8709a3f1403b984d1~WVXPnP6GN0305103051eucas1p18@eucas1p1.samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, briannorris@chromium.org, hoegsberg@gmail.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, robh+dt@kernel.org, thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, seanpaul@chromium.org, mka@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <7bd9573e-e0c6-71a6-84ed-deb0904593fd-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplagoKQW0gRnJlaXRhZywgMjEuIFNlcHRlbWJlciAyMDE4LCAwODoxMToxNiBDRVNU
-IHNjaHJpZWIgQW5kcnplaiBIYWpkYToKPiBPbiAyMC4wOS4yMDE4IDEzOjIwLCBIZWlrbyBTdHVl
-Ym5lciB3cm90ZToKPiA+IEhpIEFuZHJ6ZWosCj4gPgo+ID4gQW0gTW9udGFnLCAyNy4gQXVndXN0
-IDIwMTgsIDEzOjM0OjA3IENFU1Qgc2NocmllYiBBbmRyemVqIEhhamRhOgo+ID4+IE9uIDIxLjA4
-LjIwMTggMTY6MDUsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4+PiBBZGQgdGhlIFJvY2tjaGlw
-LXNlcGNpZmljIGR1YWwtZHNpIHNldHVwIGFuZCBob29rIGl0IGludG8gdGhlIFZPUCBhcyB3ZWxs
-Lgo+ID4+PiBBcyBkZXNjcmliZWQgaW4gdGhlIGdlbmVyYWwgZHVhbC1kc2kgZGV2aWNldHJlZSBi
-aW5kaW5nLCB0aGUgcGFuZWwgc2hvdWxkCj4gPj4+IGRlZmluZSB0d28gaW5wdXQgcG9ydHMgYW5k
-IHBvaW50IGVhY2ggb2YgdGhlbSB0byBvbmUgb2YgdGhlIHVzZWQgZHNpLQo+ID4+PiBjb250cm9s
-bGVycywgYXMgd2VsbCBhcyBkZWNsYXJlIG9uZSBvZiB0aGVtIGFzIGNsb2NrLW1hc3Rlci4KPiA+
-Pj4gVGhpcyBpcyB1c2VkIHRvIGRldGVybWluZSB0aGUgZHVhbC1kc2kgc3RhdGUgYW5kIGdldCBh
-Y2Nlc3MgdG8gYm90aAo+ID4+PiBjb250cm9sbGVyIGluc3RhbmNlcy4KPiA+Pj4KPiA+Pj4gU2ln
-bmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+Pj4gdjQ6Cj4g
-Pj4+ICAgYWRkIGNvbXBvbmVudCBkaXJlY3RseSBpbiBwcm9iZSB3aGVuIGFkZGluZyBlbXB0eSBk
-c2kgc2xhdmUgY29udHJvbGxlcgo+ID4+PiB2NToKPiA+Pj4gICB1c2UgZHJpdmVyLWludGVybmFs
-IG1lY2hhbmlzbSB0byBmaW5kIGR1YWwgZHNpIHNsYXZlCj4gPj4+IC0tLQo+ID4+PiAgLi4uL2dw
-dS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYyAgIHwgMTA1ICsrKysrKysrKysr
-KysrKysrKwo+ID4+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
-aCAgIHwgICAxICsKPiA+Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmMgICB8ICAgMyArCj4gPj4+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5oICAgfCAgIDQgKwo+ID4+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX3ZvcF9yZWcuYyAgIHwgICAxICsKPiA+Pj4gIDUgZmlsZXMgY2hhbmdlZCwgMTE0IGluc2Vy
-dGlvbnMoKykKPiA+Pj4KPiA+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1p
-cGktZHNpLXJvY2tjaGlwLmMKPiA+Pj4gaW5kZXggYjNhYWU4NDM5YWEzLi5lNGFlZTJjY2JmNGQg
-MTAwNjQ0Cj4gPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1y
-b2NrY2hpcC5jCj4gPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRz
-aS1yb2NrY2hpcC5jCj4gPj4+IEBAIC0yMTgsNiArMjE4LDEwIEBAIHN0cnVjdCBkd19taXBpX2Rz
-aV9yb2NrY2hpcCB7Cj4gPj4+ICAJc3RydWN0IGNsayAqZ3JmX2NsazsKPiA+Pj4gIAlzdHJ1Y3Qg
-Y2xrICpwaHlfY2ZnX2NsazsKPiA+Pj4gIAo+ID4+PiArCS8qIGR1YWwtY2hhbm5lbCAqLwo+ID4+
-PiArCWJvb2wgaXNfc2xhdmU7Cj4gPj4+ICsJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpz
-bGF2ZTsKPiA+Pj4gKwo+ID4+PiAgCXVuc2lnbmVkIGludCBsYW5lX21icHM7IC8qIHBlciBsYW5l
-ICovCj4gPj4+ICAJdTE2IGlucHV0X2RpdjsKPiA+Pj4gIAl1MTYgZmVlZGJhY2tfZGl2Owo+ID4+
-PiBAQCAtMjI2LDYgKzIzMCw3IEBAIHN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hpcCB7Cj4gPj4+
-ICAJc3RydWN0IGR3X21pcGlfZHNpICpkbWQ7Cj4gPj4+ICAJY29uc3Qgc3RydWN0IHJvY2tjaGlw
-X2R3X2RzaV9jaGlwX2RhdGEgKmNkYXRhOwo+ID4+PiAgCXN0cnVjdCBkd19taXBpX2RzaV9wbGF0
-X2RhdGEgcGRhdGE7Cj4gPj4+ICsJaW50IGRldmNudDsKPiA+Pj4gIH07Cj4gPj4+ICAKPiA+Pj4g
-IHN0cnVjdCBkcGh5X3BsbF9wYXJhbWV0ZXJfbWFwIHsKPiA+Pj4gQEAgLTYwMiw2ICs2MDcsOCBA
-QCBkd19taXBpX2RzaV9lbmNvZGVyX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2VuY29kZXIgKmVu
-Y29kZXIsCj4gPj4+ICAJfQo+ID4+PiAgCj4gPj4+ICAJcy0+b3V0cHV0X3R5cGUgPSBEUk1fTU9E
-RV9DT05ORUNUT1JfRFNJOwo+ID4+PiArCWlmIChkc2ktPnNsYXZlKQo+ID4+PiArCQlzLT5vdXRw
-dXRfZmxhZ3MgPSBST0NLQ0hJUF9PVVRQVVRfRFNJX0RVQUw7Cj4gPj4+ICAKPiA+Pj4gIAlyZXR1
-cm4gMDsKPiA+Pj4gIH0KPiA+Pj4gQEAgLTYxNyw2ICs2MjQsOCBAQCBzdGF0aWMgdm9pZCBkd19t
-aXBpX2RzaV9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4gPj4+
-ICAJCXJldHVybjsKPiA+Pj4gIAo+ID4+PiAgCXBtX3J1bnRpbWVfZ2V0X3N5bmMoZHNpLT5kZXYp
-Owo+ID4+PiArCWlmIChkc2ktPnNsYXZlKQo+ID4+PiArCQlwbV9ydW50aW1lX2dldF9zeW5jKGRz
-aS0+c2xhdmUtPmRldik7Cj4gPj4+ICAKPiA+Pj4gIAkvKgo+ID4+PiAgCSAqIEZvciB0aGUgUksz
-Mzk5LCB0aGUgY2xrIG9mIGdyZiBtdXN0IGJlIGVuYWJsZWQgYmVmb3JlIHdyaXRpbmcgZ3JmCj4g
-Pj4+IEBAIC02MzAsNiArNjM5LDggQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfZW5jb2Rlcl9l
-bmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ID4+PiAgCX0KPiA+Pj4gIAo+ID4+
-PiAgCWR3X21pcGlfZHNpX3JvY2tjaGlwX2NvbmZpZyhkc2ksIG11eCk7Cj4gPj4+ICsJaWYgKGRz
-aS0+c2xhdmUpCj4gPj4+ICsJCWR3X21pcGlfZHNpX3JvY2tjaGlwX2NvbmZpZyhkc2ktPnNsYXZl
-LCBtdXgpOwo+ID4+PiAgCj4gPj4+ICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+Z3JmX2Ns
-ayk7Cj4gPj4+ICB9Cj4gPj4+IEBAIC02MzgsNiArNjQ5LDggQEAgc3RhdGljIHZvaWQgZHdfbWlw
-aV9kc2lfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPiA+Pj4g
-IHsKPiA+Pj4gIAlzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgKmRzaSA9IHRvX2RzaShlbmNv
-ZGVyKTsKPiA+Pj4gIAo+ID4+PiArCWlmIChkc2ktPnNsYXZlKQo+ID4+PiArCQlwbV9ydW50aW1l
-X3B1dChkc2ktPnNsYXZlLT5kZXYpOwo+ID4+PiAgCXBtX3J1bnRpbWVfcHV0KGRzaS0+ZGV2KTsK
-PiA+Pj4gIH0KPiA+Pj4gIAo+ID4+PiBAQCAtNjczLDE0ICs2ODYsNzYgQEAgc3RhdGljIGludCBy
-b2NrY2hpcF9kc2lfZHJtX2NyZWF0ZV9lbmNvZGVyKHN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hp
-cCAqZHNpLAo+ID4+PiAgCXJldHVybiAwOwo+ID4+PiAgfQo+ID4+PiAgCj4gPj4+ICtzdGF0aWMg
-aW50IGR3X21pcGlfZHNpX3JvY2tjaGlwX21hdGNoX3NlY29uZChzdHJ1Y3QgZGV2aWNlICpkZXYs
-IHZvaWQgKmRhdGEpCj4gPj4+ICt7Cj4gPj4+ICsJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlw
-ICpkc2kgPSBkYXRhOwo+ID4+PiArCXN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UxLCAqYnJpZGdl
-MjsKPiA+Pj4gKwlzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbDEsICpwYW5lbDI7Cj4gPj4+ICsJaW50
-IHJldDsKPiA+Pj4gKwo+ID4+PiArCWlmIChkc2ktPmRldi0+b2Zfbm9kZSA9PSBkZXYtPm9mX25v
-ZGUpCj4gPj4+ICsJCXJldHVybiAwOwo+ID4+PiArCj4gPj4+ICsJcmV0ID0gZHJtX29mX2ZpbmRf
-cGFuZWxfb3JfYnJpZGdlKGRzaS0+ZGV2LT5vZl9ub2RlLCAxLCAwLAo+ID4+PiArCQkJCQkgICZw
-YW5lbDEsICZicmlkZ2UxKTsKPiA+Pj4gKwlpZiAocmV0KQo+ID4+PiArCQlyZXR1cm4gcmV0Owo+
-ID4+PiArCj4gPj4+ICsJcmV0ID0gZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJpZGdlKGRldi0+b2Zf
-bm9kZSwgMSwgMCwKPiA+Pj4gKwkJCQkJICAmcGFuZWwyLCAmYnJpZGdlMik7Cj4gPj4+ICsJaWYg
-KHJldCkKPiA+Pj4gKwkJcmV0dXJuIHJldDsKPiA+Pj4gKwo+ID4+PiArCXJldHVybiAocGFuZWwx
-ID09IHBhbmVsMikgJiYgKGJyaWRnZTEgPT0gYnJpZGdlMik7Cj4gPj4+ICt9Cj4gPj4+ICsKPiA+
-Pj4gIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYsCj4gPj4+ICAJCQkJICAgICBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gPj4+ICAJCQkJICAg
-ICB2b2lkICpkYXRhKQo+ID4+PiAgewo+ID4+PiAgCXN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hp
-cCAqZHNpID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gPj4+ICAJc3RydWN0IGRybV9kZXZpY2Ug
-KmRybV9kZXYgPSBkYXRhOwo+ID4+PiArCXN0cnVjdCBkZXZpY2UgKnNlY29uZDsKPiA+Pj4gKwli
-b29sIG1hc3RlcjEsIG1hc3RlcjI7Cj4gPj4+ICAJaW50IHJldDsKPiA+Pj4gIAo+ID4+PiArCXNl
-Y29uZCA9IGRyaXZlcl9maW5kX2RldmljZShkc2ktPmRldi0+ZHJpdmVyLCBOVUxMLCBkc2ksCj4g
-Pj4+ICsJCQkJCWR3X21pcGlfZHNpX3JvY2tjaGlwX21hdGNoX3NlY29uZCk7Cj4gPj4gVGhpcyBm
-dW5jdGlvbiBwZXJmb3JtcyBnZXRfZGV2aWNlIG9uIHRoZSBtYXRjaGVkIGRldmljZSwgc28geW91
-IHNob3VsZAo+ID4+IHByb2JhYmx5IGNhbGwgc29tZXdoZXJlIHB1dF9kZXZpY2UgdG8gbWFrZSB0
-aGUgY291bnRlciBiYWxhbmNlZC4KPiA+PiBJIGhvcGUgc2Vjb25kIGRldmljZSBpcyBzb21laG93
-IGd1YXJkZWQgYnkgY29tcG9uZW50IGZyYW1ld29yayBmcm9tCj4gPj4gYmVpbmcgdW5ib3VuZCBp
-biB1bmV4cGVjdGVkIG1vbWVudHMgKGllLiB3aGVuIGluIHVzZSBieSBtYXN0ZXIpLgo+ID4gVGhh
-bmtzIGZvciB0aGF0IGNhdGNoLCBJJ2xsIGFkZCB0aGUgcHV0X2RldmljZS4KPiA+Cj4gPgo+ID4+
-PiArCWlmIChJU19FUlIoc2Vjb25kKSkKPiA+Pj4gKwkJcmV0dXJuIFBUUl9FUlIoc2Vjb25kKTsK
-PiA+Pj4gKwo+ID4+PiArCWlmIChzZWNvbmQpIHsKPiA+Pj4gKwkJbWFzdGVyMSA9IG9mX3Byb3Bl
-cnR5X3JlYWRfYm9vbChkc2ktPmRldi0+b2Zfbm9kZSwKPiA+Pj4gKwkJCQkJCSJjbG9jay1tYXN0
-ZXIiKTsKPiA+Pj4gKwkJbWFzdGVyMiA9IG9mX3Byb3BlcnR5X3JlYWRfYm9vbChzZWNvbmQtPm9m
-X25vZGUsCj4gPj4+ICsJCQkJCQkiY2xvY2stbWFzdGVyIik7Cj4gPj4+ICsKPiA+Pj4gKwkJaWYg
-KG1hc3RlcjEgJiYgbWFzdGVyMikgewo+ID4+PiArCQkJRFJNX0RFVl9FUlJPUihkc2ktPmRldiwg
-Im9ubHkgb25lIGNsb2NrLW1hc3RlciBhbGxvd2VkXG4iKTsKPiA+Pj4gKwkJCXJldHVybiAtRUlO
-VkFMOwo+ID4+PiArCQl9Cj4gPj4+ICsKPiA+Pj4gKwkJaWYgKCFtYXN0ZXIxICYmICFtYXN0ZXIy
-KSB7Cj4gPj4+ICsJCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2LCAibm8gY2xvY2stbWFzdGVyIGRl
-ZmluZWRcbiIpOwo+ID4+PiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gPj4+ICsJCX0KPiA+Pj4gKwo+
-ID4+PiArCQkvKiB3ZSBhcmUgdGhlIHNsYXZlIGluIGR1YWwtRFNJICovCj4gPj4+ICsJCWlmICgh
-bWFzdGVyMSkgewo+ID4+PiArCQkJZHNpLT5pc19zbGF2ZSA9IHRydWU7Cj4gPj4+ICsJCQlyZXR1
-cm4gMDsKPiA+Pj4gKwkJfQo+ID4+PiArCj4gPj4+ICsJCWRzaS0+c2xhdmUgPSBkZXZfZ2V0X2Ry
-dmRhdGEoc2Vjb25kKTsKPiA+Pj4gKwkJaWYgKCFkc2ktPnNsYXZlKSB7Cj4gPj4+ICsJCQlEUk1f
-REVWX0VSUk9SKGRldiwgImNvdWxkIG5vdCBnZXQgc2xhdmVzIGRhdGFcbiIpOwo+ID4+PiArCQkJ
-cmV0dXJuIC1FTk9ERVY7Cj4gPj4+ICsJCX0KPiA+Pj4gKwo+ID4+PiArCQlkc2ktPnNsYXZlLT5p
-c19zbGF2ZSA9IHRydWU7Cj4gPj4+ICsJCWR3X21pcGlfZHNpX3NldF9zbGF2ZShkc2ktPmRtZCwg
-ZHNpLT5zbGF2ZS0+ZG1kKTsKPiA+Pj4gKwl9Cj4gPj4+ICsKPiA+Pj4gIAlyZXQgPSBjbGtfcHJl
-cGFyZV9lbmFibGUoZHNpLT5wbGxyZWZfY2xrKTsKPiA+Pj4gIAlpZiAocmV0KSB7Cj4gPj4+ICAJ
-CURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBwbGxyZWZfY2xrOiAlZFxuIiwg
-cmV0KTsKPiA+Pj4gQEAgLTcwOCw2ICs3ODMsOSBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9y
-b2NrY2hpcF91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2LAo+ID4+PiAgewo+ID4+PiAgCXN0cnVj
-dCBkd19taXBpX2RzaV9yb2NrY2hpcCAqZHNpID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gPj4+
-ICAKPiA+Pj4gKwlpZiAoZHNpLT5pc19zbGF2ZSkKPiA+Pj4gKwkJcmV0dXJuOwo+ID4+PiArCj4g
-Pj4+ICAJZHdfbWlwaV9kc2lfdW5iaW5kKGRzaS0+ZG1kKTsKPiA+Pj4gIAo+ID4+PiAgCWNsa19k
-aXNhYmxlX3VucHJlcGFyZShkc2ktPnBsbHJlZl9jbGspOwo+ID4+PiBAQCAtNzQ5LDYgKzgyNywx
-NCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX2hvc3Rfb3BzIGR3X21pcGlfZHNp
-X3JvY2tjaGlwX2hvc3Rfb3BzID0gewo+ID4+PiAgCS5kZXRhY2ggPSBkd19taXBpX2RzaV9yb2Nr
-Y2hpcF9ob3N0X2RldGFjaCwKPiA+Pj4gIH07Cj4gPj4+ICAKPiA+Pj4gK3N0YXRpYyBpbnQgZHdf
-bWlwaV9kc2lfcm9ja2NoaXBfY250X2RldihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEp
-Cj4gPj4+ICt7Cj4gPj4+ICsJc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2kgPSBkYXRh
-Owo+ID4+PiArCj4gPj4+ICsJZHNpLT5kZXZjbnQrKzsKPiA+Pj4gKwlyZXR1cm4gMDsKPiA+Pj4g
-K30KPiA+Pj4gKwo+ID4+PiAgc3RhdGljIGludCBkd19taXBpX2RzaV9yb2NrY2hpcF9wcm9iZShz
-dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+PiAgewo+ID4+PiAgCXN0cnVjdCBkZXZp
-Y2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gPj4+IEBAIC04MzUsNiArOTIxLDIyIEBAIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-dikKPiA+Pj4gIAkJZ290byBlcnJfY2xrZGlzYWJsZTsKPiA+Pj4gIAl9Cj4gPj4+ICAKPiA+Pj4g
-KwkvKgo+ID4+PiArCSAqIEFsbCBkc2kgY2hpbGQgZGV2aWNlcyB3aWxsIGhhdmUgYmVlbiBjcmVh
-dGVkLCBzbyB3ZSBjYW4gY2hlY2sKPiA+Pj4gKwkgKiB0aGVpciBudW1iZXIgYW5kIGFkZCB0aGUg
-Y29tcG9uZW50IGhlcmUgaWYgdGhlcmUgd2lsbCBiZSBubwo+ID4+PiArCSAqIGhvc3QtYXR0YWNo
-IGNhbGwuCj4gPj4gSSBndWVzcyB5b3UgbWVhbiB0aGF0IGluIHRoaXMgcG9pbnQgYWxsIGNoaWxk
-IGRldmljZXMgaGF2ZSBiZWVuIGNyZWF0ZWQKPiA+PiAocmVtb3ZlICd3aWxsJyksIGJ1dCBpdCBt
-YXkgYmUgZmFsc2UgYXNzdW1wdGlvbiwgdGhlcmUgaXMgYWx3YXlzCj4gPj4gcG9zc2liaWxpdHkg
-dG8gY3JlYXRlIGRldmljZSBvbiB0aGUgZmx5IC0gc2VlIG1pcGlfZHNpX2RldmljZV9yZWdpc3Rl
-cl9mdWxsLgo+ID4+IFlvdSBjYW5ub3QgYXNzdW1lIHRoYXQgaW4gY2VydGFpbiBwb2ludCBpbiB0
-aW1lIHRoZXJlIHdpbGwgYmUgbm8gbW9yZQo+ID4+IGRldmljZXMgb24gdGhlIGJ1cy4KPiA+Pgo+
-ID4+IEkgYW0gbm90IHN1cmUgb2YgdGhlIHB1cnBvc2Ugb2YgdGhpcyBjb2RlLiBXaHkgZG8geW91
-IHdhbnQgdG8gYmVoYXZlCj4gPj4gZGlmZmVyZW50bHkgaWYgdGhlcmUgYXJlIG5vIGNoaWxkIGRl
-dnM/Cj4gPiBUaGF0J3MgYWxsIHJlbGF0ZWQgdG8gdGhlIHN1Z2dlc3Rpb24gb2YgZG9pbmcgY29t
-cG9uZW50X2FkZCBpbiB0aGUKPiA+IGhvc3QtYXR0YWNoIGNhbGxiYWNrLiBJZiB0aGUgZGV2aWNl
-IGRvZXNuJ3QgaGF2ZSBhY3RpdmUgY2hpbGRyZW4gaXRzCj4gPiBjb21wb25lbnQgd2lsbCBuZXZl
-ciBnZXQgYWRkZWQgYW5kIHRoZSB3aG9sZSBkcm0gY29tcG9uZW50IHN0cnVjdHVyZQo+ID4gd2ls
-bCB3YWl0IGZvcmV2ZXIgYW5kIG5ldmVyIHByb2JlIHRoZSBkcm0gZHJpdmVyLCBoZW5jZSBhZGQg
-dGhlIGNvbXBvbmVudAo+ID4gd2hlbiBubyBjaGlsZCB3aWxsIGJlIHByZXNlbnQuCj4gCj4gV2hh
-dCB3cm9uZyB3aXRoIGl0PyBJZiB0aGUgcmVzb3VyY2UgaXMgcmVxdWlyZWQsIHRoZW4gY29uc3Vt
-ZXIgc2hvdWxkCj4gd2FpdCBmb3IgaXQsIGlmIHRoZXJlIGlzIGEgcHJvYmxlbSB3aXRoIHByb3Zp
-ZGVyIGl0IGNhbiBiZSBmb3JldmVyLCBJCj4gdGhpbmsgaXQgaXMgY2xlYXIgYW5kIGZhaXIgcnVs
-ZS4KPiAKPiA+IFtUaGlzIGlzIG9mIGNvdXJzZSBwYXJ0IG9mIGhhbmRsaW5nIG15IGVtcHR5IGRz
-aSBzbGF2ZV0uCj4gCj4gQ291bGQgeW91IGVsYWJvcmF0ZSBpdD8gSWYgZHNpIHNsYXZlIGhhcyBu
-byBkb3duc3RyZWFtIGRldmljZSB3aHkgaXMgaXQKPiBhY3RpdmUgYXQgYWxsPwoKQXMgaW4gYWxs
-IGluc3RhbmNlcyBiZWZvcmUsIHlvdSB3ZXJlIHJpZ2h0IG9uIHBvaW50aW5nIG91dCB0aGUgZmxh
-dyBoZXJlIDotKQpEU0kgZGV2aWNlcyBjYW4gb2YgY291cnNlIGFsc28gc2l0IG9uIGNvbXBsZXRl
-bHkgb3RoZXIgYnVzZXMsIGxpa2UgaTJjCmFuZCBhdHRhY2ggZnJvbSB0aGVyZSBieSBjcmVhdGlu
-ZyB0aGVpciBvd24gZHNpIGRldmljZSBvbiB0aGUgYnVzLgoKSSd2ZSBwcmVwYXJlZCB2NiB3aGlj
-aCBzaG91bGQgYWRkcmVzcyB0aGF0IGluIGEgbW9yZSBlbGVnYW50IG1hbm5lcgp3aGlsZSBrZWVw
-aW5nIHRoZSBjb21wb25lbnRfYXR0YWNoIGluIHRoZSBob3N0LWF0dGFjaCBjYWxsYmFjay4KCgpU
-aGFua3MKSGVpa28KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+On Fri, 2018-09-28 at 14:33 +0200, Hans Verkuil wrote:
+> On 09/17/2018 07:30 PM, Ezequiel Garcia wrote:
+> > This series adds support for JPEG encoding via the VPU block
+> > present in Rockchip platforms. Currently, support for RK3288
+> > and RK3399 is included.
+> > 
+> > Please, see the previous versions of this cover letter for
+> > more information.
+> > 
+> > Compared to v5, the only change is in the V4L2_CID_JPEG_QUANTIZATION
+> > control. We've decided to support only baseline profile,
+> > and only add 8-bit luma and chroma tables.
+> > 
+> > struct v4l2_ctrl_jpeg_quantization {
+> >        __u8    luma_quantization_matrix[64];
+> >        __u8    chroma_quantization_matrix[64];
+> > };
+> > 
+> > By doing this, it's clear that we don't currently support anything
+> > but baseline.
+> > 
+> > This series should apply cleanly on top of
+> > 
+> >   git://linuxtv.org/hverkuil/media_tree.git br-cedrus tag.
+> > 
+> > If everyone is happy with this series, I'd like to route the devicetree
+> > changes through the rockchip tree, and the rest via the media subsystem.
+> 
+> OK, so I have what is no doubt an annoying question: do we really need
+> a JPEG_RAW format?
+> 
+
+Not annoying, as it helps clarify a few things :-)
+I think we do need the JPEG_RAW format. The way I see it, using
+JPEG opens a can of worms...
+
+> The JPEG header is really easy to parse for a decoder and really easy to
+> prepend to the compressed image for the encoder.
+> 
+> The only reason I can see for a JPEG_RAW is if the image must start at
+> some specific address alignment. Although even then you can just pad the
+> JPEG header that you will add according to the alignment requirements.
+> 
+> I know I am very late with this question, but I never looked all that
+> closely at what a JPEG header looks like. But this helped:
+> 
+> https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format
+> 
+> and it doesn't seem difficult at all to parse or create the header.
+> 
+> 
+
+... I think that having JPEG_RAW as the compressed format
+is much more clear for userspace, as it explicitly specifies
+what is expected.
+
+This way, for a stateless encoder, applications are required
+to set quantization and/or entropy tables, and are then in
+charge of using the compressed JPEG_RAW payload in whatever form
+they want. Stupid simple.
+
+On the other side, if the stateless encoder driver supports
+JPEG (creating headers in-kernel), it means that:
+
+*) applications should pass a quality control, if supported,
+and the driver will use hardcoded tables or...
+
+*) applications pass quantization control and, if supported,
+entropy control. The kernel uses them to create the JPEG frame.
+But also, some drivers (e.g. Rockchip), use default entropy
+tables, which should now be in the kernel.
+
+So the application would have to query controls to find out
+what to do. Not exactly hard, but I think having the JPEG_RAW
+is much simpler and more clear.
+
+Now, for stateless decoders, supporting JPEG_RAW means
+the application has to pass quantization and entropy
+controls, probably using the Request API.
+Given the application has parsed the JPEG,
+it knows the width and height and can request
+buffers accordingly.
+
+The hardware is stateless, and so is the driver.
+
+On the other hand, supporting JPEG would mean that
+drivers will have to parse the image, extracting
+the quantization and entropy tables.
+
+Format negotiation is now more complex,
+either we follow the stateful spec, introducing a little
+state machine in the driver... or we use the Request API,
+but that means parsing on both sides kernel and application.
+
+Either way, using JPEG_RAW is just waaay simpler and puts
+things where they belong. 
+
+> I also think there are more drivers (solo6x10) that
+> manipulate the JPEG header.
+
+Well, I've always thought this was kind of suboptimal.
+
+Thanks,
+Ezequiel
