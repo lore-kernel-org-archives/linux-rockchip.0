@@ -1,87 +1,137 @@
-From: Stefan Mavrodiev <stefan-kyXcfZUBQGPQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH 1/1] mfd: rk808: Prepare rk805 for poweroff
-Date: Tue,  2 Oct 2018 10:38:29 +0300
-Message-ID: <1538465910-27233-1-git-send-email-stefan@olimex.com>
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+Subject: Re: [PATCH v4 2/5] drm/dp: fix link probing for devices supporting
+ DP 1.4+
+Date: Tue, 2 Oct 2018 16:28:49 +0300
+Message-ID: <20181002132849.GR9144@intel.com>
+References: <1537455288-20223-1-git-send-email-dkos@cadence.com>
+ <1537455288-20223-3-git-send-email-dkos@cadence.com>
+ <20180921075929.GA28323@intel.com>
+ <20181001092708.ow4rxgzp4haax76k@qschulz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Cc: Stefan Mavrodiev <stefan-kyXcfZUBQGPQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20181001092708.ow4rxgzp4haax76k@qschulz>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Quentin Schulz <quentin.schulz@bootlin.com>
+Cc: Manasi Navare <manasi.d.navare@intel.com>, Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, stelford@cadence.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, jartur@cadence.com, ltyrala@cadence.com, linux-rockchip@lists.infradead.org, piotrs@cadence.com, devicetree@vger.kernel.org, jbergsagel@ti.com, Rob Herring <robh+dt@kernel.org>, Sean Paul <sean@poorly.run>, Damian Kos <dkos@cadence.com>, linux-arm-kernel@lists.infradead.org, Quentin Schulz <quentin.schulz@free-electrons.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RK805 has SLEEP signal, which can put the device into SLEEP or OFF
-mode. The default is SLEEP mode.
+On Mon, Oct 01, 2018 at 11:27:08AM +0200, Quentin Schulz wrote:
+> Hi Manasi,
+> 
+> On Fri, Sep 21, 2018 at 12:59:30AM -0700, Manasi Navare wrote:
+> > Thanks for the patch. Verified with the DP 1.4 spec and looks good to me.
+> > Also look at the related patch that makes use of the correct extended capabilities:
+> > 
+> > https://patchwork.freedesktop.org/patch/249400/
+> > 
+> 
+> If I'm not mistaken, you could get rid of the patch in the Intel driver
+> when we have this one merged. Is there any reason not to, have I missed
+> something?
 
-However, when the kernel performs power-off (actually the ATF) the
-device will not go fully off and this will result in higher power
-consumption and inability to wake the device with RTC alarm.
+i915 (and most other drivers) don't use this code. Also as mentioned in
+that thread you should probably validate that the data in the extended
+caps looks sane, otherwise the entire point of having it for compatibility
+with older source devices is lost.
 
-The solution is to enable pm_power_off_prepare function, which will
-configure SLEEP pin for OFF function.
+> 
+> Thanks,
+> Quentin
+> 
+> > Reviewed-by: Manasi Navare <manasi.d.navare@intel.com>
+> > 
+> > Manasi
+> > 
+> > 
+> > On Thu, Sep 20, 2018 at 03:54:37PM +0100, Damian Kos wrote:
+> > > From: Quentin Schulz <quentin.schulz@free-electrons.com>
+> > > 
+> > > DP 1.4 introduced a DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit in
+> > > DP_TRAINING_AUX_RD_INTERVAL register. If set, DPCD registers from
+> > > DP_DPCD_REV to DP_ADAPTER_CAP should be retrieved starting from
+> > > DP_DPCD_REV_EXTENDED. All registers are copied except DP_DPCD_REV,
+> > > DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT which represent the
+> > > "true capabilities" of DPRX device.
+> > > 
+> > > Original DP_DPCD_REV, DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT
+> > > might falsely return lower capabilities to "avoid interoperability
+> > > issues with some of the existing DP Source devices that malfunction
+> > > when they discover the higher capabilities within those three
+> > > registers.".
+> > > 
+> > > Before DP 1.4, DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit was reserved
+> > > and read 0 so it's safe to check against it even if DP revision is
+> > > <1.4
+> > > 
+> > > Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
+> > > Signed-off-by: Damian Kos <dkos@cadence.com>
+> > > ---
+> > >  drivers/gpu/drm/drm_dp_helper.c | 30 +++++++++++++++++++++++++++++-
+> > >  1 file changed, 29 insertions(+), 1 deletion(-)
+> > > 
+> > > diff --git a/drivers/gpu/drm/drm_dp_helper.c b/drivers/gpu/drm/drm_dp_helper.c
+> > > index 8c6b9fd89f8a..735ebde5c2f0 100644
+> > > --- a/drivers/gpu/drm/drm_dp_helper.c
+> > > +++ b/drivers/gpu/drm/drm_dp_helper.c
+> > > @@ -370,10 +370,38 @@ int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link)
+> > >  {
+> > >  	u8 values[3];
+> > >  	int err;
+> > > +	unsigned int addr;
+> > >  
+> > >  	memset(link, 0, sizeof(*link));
+> > >  
+> > > -	err = drm_dp_dpcd_read(aux, DP_DPCD_REV, values, sizeof(values));
+> > > +	/*
+> > > +	 * DP 1.4 introduced a DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit in
+> > > +	 * DP_TRAINING_AUX_RD_INTERVAL register. If set, DPCD registers from
+> > > +	 * DP_DPCD_REV to DP_ADAPTER_CAP should be retrieved starting from
+> > > +	 * DP_DPCD_REV_EXTENDED. All registers are copied except DP_DPCD_REV,
+> > > +	 * DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT which represent the
+> > > +	 * "true capabilities" of DPRX device.
+> > > +	 *
+> > > +	 * Original DP_DPCD_REV, DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT
+> > > +	 * might falsely return lower capabilities to "avoid interoperability
+> > > +	 * issues with some of the existing DP Source devices that malfunction
+> > > +	 * when they discover the higher capabilities within those three
+> > > +	 * registers.".
+> > > +	 *
+> > > +	 * Before DP 1.4, DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit was reserved
+> > > +	 * and read 0 so it's safe to check against it even if DP revision is
+> > > +	 * <1.4
+> > > +	 */
+> > > +	err = drm_dp_dpcd_readb(aux, DP_TRAINING_AUX_RD_INTERVAL, values);
+> > > +	if (err < 0)
+> > > +		return err;
+> > > +
+> > > +	if (values[0] & DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT)
+> > > +		addr = DP_DP13_DPCD_REV;
+> > > +	else
+> > > +		addr = DP_DPCD_REV;
+> > > +
+> > > +	err = drm_dp_dpcd_read(aux, addr, values, sizeof(values));
+> > >  	if (err < 0)
+> > >  		return err;
+> > >  
+> > > -- 
+> > > 2.17.1
+> > > 
+> > > _______________________________________________
+> > > dri-devel mailing list
+> > > dri-devel@lists.freedesktop.org
+> > > https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
-Signed-off-by: Stefan Mavrodiev <stefan-kyXcfZUBQGPQT0dZR+AlfA@public.gmane.org>
----
- drivers/mfd/rk808.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
 
-diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index 216fbf6..50f3f78 100644
---- a/drivers/mfd/rk808.c
-+++ b/drivers/mfd/rk808.c
-@@ -387,6 +387,25 @@ static void rk805_device_shutdown(void)
- 		dev_err(&rk808_i2c_client->dev, "power off error!\n");
- }
- 
-+static void rk805_device_shutdown_prepare(void)
-+{
-+	int ret;
-+	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
-+
-+	if (!rk808) {
-+		dev_warn(&rk808_i2c_client->dev,
-+			 "have no rk805, so do nothing here\n");
-+
-+		return;
-+	}
-+
-+	ret = regmap_update_bits(rk808->regmap,
-+				 RK805_GPIO_IO_POL_REG,
-+				 SLP_SD_MSK, SHUTDOWN_FUN);
-+	if (ret)
-+		dev_err(&rk808_i2c_client->dev, "power off error!\n");
-+}
-+
- static void rk808_device_shutdown(void)
- {
- 	int ret;
-@@ -549,6 +568,10 @@ static int rk808_probe(struct i2c_client *client,
- 	if (pm_off && !pm_power_off) {
- 		rk808_i2c_client = client;
- 		pm_power_off = pm_pwroff_fn;
-+	} else if (pm_off && !pm_power_off_prepare &&
-+		   rk808->variant == RK805_ID) {
-+		rk808_i2c_client = client;
-+		pm_power_off_prepare = rk805_device_shutdown_prepare;
- 	}
- 
- 	return 0;
-@@ -564,6 +587,7 @@ static int rk808_remove(struct i2c_client *client)
- 
- 	regmap_del_irq_chip(client->irq, rk808->irq_data);
- 	pm_power_off = NULL;
-+	pm_power_off_prepare = NULL;
- 
- 	return 0;
- }
+
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+
 -- 
-2.7.4
+Ville Syrjälä
+Intel
