@@ -1,137 +1,104 @@
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-Subject: Re: [PATCH v4 2/5] drm/dp: fix link probing for devices supporting
- DP 1.4+
-Date: Tue, 2 Oct 2018 16:28:49 +0300
-Message-ID: <20181002132849.GR9144@intel.com>
-References: <1537455288-20223-1-git-send-email-dkos@cadence.com>
- <1537455288-20223-3-git-send-email-dkos@cadence.com>
- <20180921075929.GA28323@intel.com>
- <20181001092708.ow4rxgzp4haax76k@qschulz>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/3] Rockchip ARM64 devicetree updates for 4.20 - round2
+Date: Wed, 03 Oct 2018 03:38:46 +0200
+Message-ID: <2559110.ail6FZQ9dJ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181001092708.ow4rxgzp4haax76k@qschulz>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Quentin Schulz <quentin.schulz@bootlin.com>
-Cc: Manasi Navare <manasi.d.navare@intel.com>, Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, stelford@cadence.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, pgaj@cadence.com, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, jartur@cadence.com, ltyrala@cadence.com, linux-rockchip@lists.infradead.org, piotrs@cadence.com, devicetree@vger.kernel.org, jbergsagel@ti.com, Rob Herring <robh+dt@kernel.org>, Sean Paul <sean@poorly.run>, Damian Kos <dkos@cadence.com>, linux-arm-kernel@lists.infradead.org, Quentin Schulz <quentin.schulz@free-electrons.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 01, 2018 at 11:27:08AM +0200, Quentin Schulz wrote:
-> Hi Manasi,
-> 
-> On Fri, Sep 21, 2018 at 12:59:30AM -0700, Manasi Navare wrote:
-> > Thanks for the patch. Verified with the DP 1.4 spec and looks good to me.
-> > Also look at the related patch that makes use of the correct extended capabilities:
-> > 
-> > https://patchwork.freedesktop.org/patch/249400/
-> > 
-> 
-> If I'm not mistaken, you could get rid of the patch in the Intel driver
-> when we have this one merged. Is there any reason not to, have I missed
-> something?
+Hi Arnd, Kevin, Olof,
 
-i915 (and most other drivers) don't use this code. Also as mentioned in
-that thread you should probably validate that the data in the extended
-caps looks sane, otherwise the entire point of having it for compatibility
-with older source devices is lost.
+please find below and in the following pull-requests more rockchip
+changes targetted at 4.20.
 
-> 
-> Thanks,
-> Quentin
-> 
-> > Reviewed-by: Manasi Navare <manasi.d.navare@intel.com>
-> > 
-> > Manasi
-> > 
-> > 
-> > On Thu, Sep 20, 2018 at 03:54:37PM +0100, Damian Kos wrote:
-> > > From: Quentin Schulz <quentin.schulz@free-electrons.com>
-> > > 
-> > > DP 1.4 introduced a DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit in
-> > > DP_TRAINING_AUX_RD_INTERVAL register. If set, DPCD registers from
-> > > DP_DPCD_REV to DP_ADAPTER_CAP should be retrieved starting from
-> > > DP_DPCD_REV_EXTENDED. All registers are copied except DP_DPCD_REV,
-> > > DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT which represent the
-> > > "true capabilities" of DPRX device.
-> > > 
-> > > Original DP_DPCD_REV, DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT
-> > > might falsely return lower capabilities to "avoid interoperability
-> > > issues with some of the existing DP Source devices that malfunction
-> > > when they discover the higher capabilities within those three
-> > > registers.".
-> > > 
-> > > Before DP 1.4, DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit was reserved
-> > > and read 0 so it's safe to check against it even if DP revision is
-> > > <1.4
-> > > 
-> > > Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
-> > > Signed-off-by: Damian Kos <dkos@cadence.com>
-> > > ---
-> > >  drivers/gpu/drm/drm_dp_helper.c | 30 +++++++++++++++++++++++++++++-
-> > >  1 file changed, 29 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/drm_dp_helper.c b/drivers/gpu/drm/drm_dp_helper.c
-> > > index 8c6b9fd89f8a..735ebde5c2f0 100644
-> > > --- a/drivers/gpu/drm/drm_dp_helper.c
-> > > +++ b/drivers/gpu/drm/drm_dp_helper.c
-> > > @@ -370,10 +370,38 @@ int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link)
-> > >  {
-> > >  	u8 values[3];
-> > >  	int err;
-> > > +	unsigned int addr;
-> > >  
-> > >  	memset(link, 0, sizeof(*link));
-> > >  
-> > > -	err = drm_dp_dpcd_read(aux, DP_DPCD_REV, values, sizeof(values));
-> > > +	/*
-> > > +	 * DP 1.4 introduced a DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit in
-> > > +	 * DP_TRAINING_AUX_RD_INTERVAL register. If set, DPCD registers from
-> > > +	 * DP_DPCD_REV to DP_ADAPTER_CAP should be retrieved starting from
-> > > +	 * DP_DPCD_REV_EXTENDED. All registers are copied except DP_DPCD_REV,
-> > > +	 * DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT which represent the
-> > > +	 * "true capabilities" of DPRX device.
-> > > +	 *
-> > > +	 * Original DP_DPCD_REV, DP_MAX_LINK_RATE and DP_DOWNSTREAMPORT_PRESENT
-> > > +	 * might falsely return lower capabilities to "avoid interoperability
-> > > +	 * issues with some of the existing DP Source devices that malfunction
-> > > +	 * when they discover the higher capabilities within those three
-> > > +	 * registers.".
-> > > +	 *
-> > > +	 * Before DP 1.4, DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT bit was reserved
-> > > +	 * and read 0 so it's safe to check against it even if DP revision is
-> > > +	 * <1.4
-> > > +	 */
-> > > +	err = drm_dp_dpcd_readb(aux, DP_TRAINING_AUX_RD_INTERVAL, values);
-> > > +	if (err < 0)
-> > > +		return err;
-> > > +
-> > > +	if (values[0] & DP_EXTENDED_RECEIVER_CAP_FIELD_PRESENT)
-> > > +		addr = DP_DP13_DPCD_REV;
-> > > +	else
-> > > +		addr = DP_DPCD_REV;
-> > > +
-> > > +	err = drm_dp_dpcd_read(aux, addr, values, sizeof(values));
-> > >  	if (err < 0)
-> > >  		return err;
-> > >  
-> > > -- 
-> > > 2.17.1
-> > > 
-> > > _______________________________________________
-> > > dri-devel mailing list
-> > > dri-devel@lists.freedesktop.org
-> > > https://lists.freedesktop.org/mailman/listinfo/dri-devel
+Nice mix of new boards and some improvements + fixes as described
+in the tags. So please pull.
+
+Thanks
+Heiko
 
 
+The following changes since commit 78f26da3ffbce0ea3692a89fe3f5487cb8dda068:
 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+  arm64: dts: rockchip: Add type-c port supply on rk3399-sapphire board (2018-09-10 19:16:26 +0200)
 
+are available in the Git repository at:
 
--- 
-Ville Syrjälä
-Intel
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.20-rockchip-dts64-2
+
+for you to fetch changes up to e78d53c7b2873e0724eb765a88ccde42560b0e05:
+
+  arm64: dts: rockchip: enable display nodes on rk3328-rock64 (2018-09-28 13:18:37 +0200)
+
+----------------------------------------------------------------
+Some additional new boards, the rk3399-based RockPro64 from Pine64, as well
+as the Vamrs Rock960. Another big feature is display support including hdmi
+and the Innosilicon hdmiphy on the rk3328, right now enabled on the rock64.
+The rock64 also got its spi-nor and spdif enabled. On the px30 we can see
+dwc2-based usb support now and finally some misc fixes, like for a new dtc
+warning, missing address and size cells and microSD fix on sapphire.
+
+----------------------------------------------------------------
+Akash Gajjar (1):
+      arm64: dts: rockchip: add initial dts support for Rockpro64
+
+Chen-Yu Tsai (1):
+      arm64: dts: rockchip: Enable SPI NOR flash on Rock64
+
+Heiko Stuebner (6):
+      arm64: dts: rockchip: add dwc2 otg controller on px30
+      arm64: dts: rockchip: enable dwc2-based otg controller on px30-evb
+      arm64: dts: rockchip: add missing address and size cells for rk3399 mipi dsi
+      arm64: dts: rockchip: add Innosilicon hdmi phy node to rk3328
+      arm64: dts: rockchip: add rk3328 display nodes
+      arm64: dts: rockchip: enable display nodes on rk3328-rock64
+
+Katsuhiro Suzuki (1):
+      arm64: dts: rockchip: add spdif sound node for rock64
+
+Liang Chen (1):
+      dt-bindings: usb: dwc2: add description for px30
+
+Manivannan Sadhasivam (4):
+      arm64: dts: rockchip: Split out common nodes for Rock960 based boards
+      dt-bindings: arm: rockchip: Add binding for Rock960 board
+      arm64: dts: rockchip: Add support for Rock960 board
+      arm64: dts: rockchip: Enable SD card detection for Rock960 boards
+
+Rob Herring (1):
+      arm64: dts: rockchip: Fix I2C bus unit-address error on rk3399-puma-haikou
+
+Vicente Bergas (1):
+      arm64: dts: rockchip: Fix microSD in rk3399 sapphire board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   8 +
+ Documentation/devicetree/bindings/usb/dwc2.txt     |   1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   2 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |   4 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi             |  16 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |  57 ++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  67 ++
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts      | 524 +---------------
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dts    |  52 ++
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   | 542 ++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts  | 692 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |  24 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   4 +
+ 14 files changed, 1474 insertions(+), 521 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
