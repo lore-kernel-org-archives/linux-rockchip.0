@@ -1,44 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 3/3] Rockchip defconfig64 updates for 4.20
-Date: Wed, 03 Oct 2018 03:40:18 +0200
-Message-ID: <2019835.IlPWu0PE1S@phil>
-References: <2559110.ail6FZQ9dJ@phil>
+From: Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add spdif sound node for rock64
+Date: Wed, 3 Oct 2018 17:53:19 +0800
+Message-ID: <CAGb2v64gTj7766o+6-BZkqKy=cDv9bqLcKHOzj-BiJOtjQMSyQ@mail.gmail.com>
+References: <20180917122633.31401-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2559110.ail6FZQ9dJ@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20180917122633.31401-1-katsuhiro@katsuster.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: katsuhiro@katsuster.net
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 5b394b2ddf0347bef56e50c69a58773c94343ff3:
+Hi,
 
-  Linux 4.19-rc1 (2018-08-26 14:11:59 -0700)
+On Mon, Sep 17, 2018 at 8:28 PM Katsuhiro Suzuki
+<katsuhiro@katsuster.net> wrote:
+>
+> This patch adds sound card node for rock64. Currently we can support
+> S/PDIF only. It seems the lack of codec driver of rk3328 to enable
+> analog audio out.
+>
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> ---
+>  .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 29 +++++++++++++++++++
+>  1 file changed, 29 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> index 5852061e497b..9ee4f57557f3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -62,6 +62,23 @@
+>                 regulator-min-microvolt = <5000000>;
+>                 regulator-max-microvolt = <5000000>;
+>         };
+> +
+> +       sound {
+> +               compatible = "audio-graph-card";
+> +               label = "rockchip,rk3328";
 
-are available in the Git repository at:
+I understand that this patch has been merged. However, seeing this label
+I wonder how this works when the analog codec and HDMI audio out are added,
+and how userspace is supposed to select an output.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.20-rockchip-defconfig64-1
+On the side, it seems that extra codecs, such as the rock64 add-on board,
+are easier dealt with by adding a separate simple-audio-card node to couple
+the codec and i2s nodes.
 
-for you to fetch changes up to 9485107ae880d756e8a607ff9e7927d5daba73a5:
-
-  arm64: defconfig: enable Rockchip Innosilicon hdmiphy (2018-09-28 13:19:57 +0200)
-
-----------------------------------------------------------------
-Enablement of the newly added Innosilicon hdmiphy.
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      arm64: defconfig: enable Rockchip Innosilicon hdmiphy
-
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+ChenYu
