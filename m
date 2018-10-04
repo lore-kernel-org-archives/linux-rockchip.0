@@ -1,51 +1,86 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 3/7] drm: rockchip: vop: add rk3066 vop definitions
-Date: Sun, 30 Dec 2018 18:22:00 +0100
-Message-ID: <154632658.xpTMZOjgxT@phil>
-References: <20181229133318.18128-1-jbx6244@gmail.com>
- <20181229133318.18128-4-jbx6244@gmail.com>
+From: 4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Subject: [rk3188-radxa] USB reset, cannot enumerate
+Date: Thu, 04 Oct 2018 17:34:52 +0200
+Message-ID: <2171897.IN8UzJH6PV@think-future.de>
+References: <20181003185854.GA1174@think-future.de>
+Reply-To: "4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181229133318.18128-4-jbx6244@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, sboyd@kernel.org, robh+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20181003185854.GA1174-ehbYDe70fqD9uQeqpI+JUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9oYW4sCgpBbSBTYW1zdGFnLCAyOS4gRGV6ZW1iZXIgMjAxOCwgMTQ6MzM6MTQgQ0VUIHNj
-aHJpZWIgSm9oYW4gSm9ua2VyOgo+IEZyb206IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBz
-LmNvbT4KPiAKPiBUaGlzIHBhdGNoIGFkZHMgdGhlIHJrMzA2NiBWT1AgZGVmaW5pdGlvbnMuCj4g
-Cj4gVGhlIFZPUCBvciBMQ0QgQ29udHJvbGxlciBzZXJ2ZXMgYXMgaW50ZXJmYWNlIGJldHdlZW4K
-PiBmcmFtZWJ1ZmZlciBtZW1vcnkgYW5kIGEgZGlzcGxheSBkZXZpY2UgKExDRCBwYW5lbCBvciBU
-ViBzZXQpLgo+IAo+IFRoaXMgU09DIGhhcyB0d28gc3ltbWV0cmljYWwgTENEQydzIGZvciBhIGR1
-YWwgcGFuZWwgYXBwbGljYXRpb24uCj4gCj4gQSBMQ0RDIGhhcyA1IGRpc3BsYXkgbGF5ZXJzLgo+
-IE9ubHkgMyBhcmUgdXNlZCBoZXJlLgo+IAo+IC0gVmlkZW8gbGF5ZXIgMCAoV2luMCkKPiAtIFZp
-ZGVvIGxheWVyIDEgKFdpbjEpCj4gLSBPU0QgbGF5ZXIgICAgIChXaW4yKQoKUGF0Y2ggaXRzZWxm
-IGxvb2tzIGdvb2QsIHdlJ2xsIG5lZWQgdG8gd2FpdCBhIGJpdCB0byBnaXZlIFJvYiBhIGNoYW5j
-ZQp0byBsb29rIGF0IHRoZSAoc2ltcGxlKSBkdC1iaW5kaW5nIGNoYW5nZSBhbmQgSSdsbCBkcm9w
-IHRoZSBwYXJhZ3JhcGgKYWJvdXQgdGhlIGRpc3BsYXkgbGF5ZXJzIHdoZW4gYXBwbHlpbmcuCgpM
-b29raW5nIGF0IHRoZSByazMwNjYtbWFudWFsLCB0aGUgbGNkY3MgcmVhbGx5IG9ubHkgaGF2ZSAz
-IGZ1bGx5IHVzYWJsZQpsYXllcnMgKyB0aGUgc3BlY2lhbCBjdXJzb3IgbGF5ZXIgd2hpY2ggaXMg
-cmlnaHQgbm93IG5vdCByZWFsbHkgdXNhYmxlIGluCmEgZHJtIGNvbnRleHQsIHNvIHRoZSBhYm92
-ZSBwYXJhZ3JhcGggaXMgbWlzbGVhZGluZywgc28gSSdsbCBqdXN0IGRyb3AgaXQuCgpIZWlrbwoK
-Cj4gV2luMCBhbmQgV2luMSBhcmUgZXhjaGFuZ2VhYmxlLgo+IE1heGltdW0gcmVzb2x1dGlvbiBp
-cyAxOTIweDEwODAuCj4gCj4gVGhlIExDREMwIG91dHB1dCBpcyBjb25uZWN0ZWQgdG86Cj4gLSBM
-Q0RDMCBJTyAod2l0aG91dCBJT01VWCkKPiAtIEhETUkgVFggdmlkZW8gaW5wdXQKPiAKPiBUaGUg
-TENEQzEgb3V0cHV0IGlzIGNvbm5lY3RlZCB0bzoKPiAtIExDREMxIElPICh3aXRoIElPTVVYKQo+
-IC0gSERNSSBUWCB2aWRlbyBpbnB1dAo+IAo+IFRoZSBIRE1JIFRYIGlucHV0IGNhbiBzd2l0Y2gg
-YmV0d2VlbiBMQ0RDMCBhbmQgTENEQzEuCj4gCj4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1h
-cmsueWFvQHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEpvaGFuIEpvbmtlciA8amJ4
-NjI0NEBnbWFpbC5jb20+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+Hi,
+
+When cloning the micro-sdcard (internal reader, boot device) to a standard 
+size sdcard on a rk3188 based SoC (radxa rock pro) using dd the transfer fails 
+after a couple of seconds. It recovers only after un-/replugging. dmesg shows 
+the following USB device messages:
+
+usb 2-1.3: New USB device found, idVendor=05e3, idProduct=0608, 
+bcdDevice=60.52
+usb 2-1.3: New USB device strings: Mfr=0, Product=1, SerialNumber=0
+usb 2-1.3: Product: USB2.0 Hub
+hub 2-1.3:1.0: USB hub found
+hub 2-1.3:1.0: 4 ports detected
+hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
+hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
+hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
+hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
+hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
+usb 2-1.3: Failed to suspend device, error -71
+usb 2-1.3: USB disconnect, device number 21
+usb 2-1.3: new high-speed USB device number 22 using dwc2
+usb 2-1.3: device descriptor read/64, error -71
+usb 2-1.3: New USB device found, idVendor=05e3, idProduct=0608, 
+bcdDevice=60.52
+usb 2-1.3: New USB device strings: Mfr=0, Product=1, SerialNumber=0
+usb 2-1.3: Product: USB2.0 Hub
+hub 2-1.3:1.0: USB hub found
+hub 2-1.3:1.0: 4 ports detected
+usb 2-1.3.2: new high-speed USB device number 23 using dwc2
+usb 2-1.3.2: New USB device found, idVendor=1bcf, idProduct=0c31, bcdDevice= 
+1.32
+usb 2-1.3.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 2-1.3.2: Product: USB to Serial-ATA bridge
+usb 2-1.3.2: Manufacturer: Sunplus Innovation Technology 
+usb 2-1.3.2: SerialNumber: FAFDFFF0FF183335804373
+usb-storage 2-1.3.2:1.0: USB Mass Storage device detected
+scsi host0: usb-storage 2-1.3.2:1.0
+usb 2-1.3: USB disconnect, device number 22
+usb 2-1.3.2: USB disconnect, device number 23
+usb 2-1.3: new high-speed USB device number 24 using dwc2
+usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
+usb 2-1.3: new high-speed USB device number 25 using dwc2
+usb 2-1.3: device not accepting address 25, error -71
+usb 2-1-port3: attempt power cycle
+usb 2-1.3: new full-speed USB device number 27 using dwc2
+usb 2-1.3: device descriptor read/64, error -32
+usb 2-1.3: device descriptor read/64, error -32
+
+This happens reproducibly. It happens when using the sdcard-reader connected 
+to an external USB-hub and it also happens when the reader is connected 
+directly to the internal USB-hub. I tried dd bs>=512 and it always failed.
+
+The reader and cable is used on a daily basis w/ other hosts and has always 
+been working reliably.
+
+Is USB on rk3188 known to be unstable? Is it the PCB layout ("Maybe the USB 
+cable is bad?")?
+
+Any ideas, hints anyone?
+
+Thanks.
+
+4omecha
