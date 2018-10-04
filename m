@@ -1,72 +1,163 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [GIT PULL 1/3] Rockchip ARM64 devicetree updates for 4.20 - round2
-Date: Thu, 04 Oct 2018 18:15:41 +0200
-Message-ID: <11931084.yfuDoSsS8u@phil>
-References: <2559110.ail6FZQ9dJ@phil>
- <CAK8P3a1EKduDFqJOsXq6W9r=0+-fyrfyTnwPeHEp1BDVRxNk_g@mail.gmail.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCH v2] mm: Introduce new function vm_insert_kmem_page
+Date: Thu, 4 Oct 2018 23:42:18 +0530
+Message-ID: <CAFqt6zZPOM17QwmcWKF3F1gqkJm=2PxvuJ3naWuRXZGHc2HrEQ@mail.gmail.com>
+References: <20181003185854.GA1174@jordon-HP-15-Notebook-PC>
+ <20181003200003.GA9965@bombadil.infradead.org> <20181003221444.GZ30658@n2100.armlinux.org.uk>
+ <CAFqt6zYHhmPwUdaCZX-BuAvaVwA-x1W39tz+Q50-nbEaW2cYVg@mail.gmail.com> <20181004123400.GC30658@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAK8P3a1EKduDFqJOsXq6W9r=0+-fyrfyTnwPeHEp1BDVRxNk_g@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181004123400.GC30658@n2100.armlinux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: Matthew Wilcox <willy@infradead.org>, Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>, robin@protonic.nl, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, Andrew Morton <akpm@linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kees Cook <keescook@chromium.org>, treding@nvidia.com, Michal Hocko <mhocko@suse.com>, Dan Williams <dan.j.williams@intel.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, aryabinin@virtuozzo.com, Dmitry Vyukov <dvyukov@google.com>, Kate Stewart <kstewart@linuxfoundation.org>, tchibo@google.com, riel@redhat.com, Minchan Kim <minchan@kernel.org>, Peter Zijlstra <peterz@infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd,
+On Thu, Oct 4, 2018 at 6:04 PM Russell King - ARM Linux
+<linux@armlinux.org.uk> wrote:
+>
+> On Thu, Oct 04, 2018 at 05:45:13PM +0530, Souptick Joarder wrote:
+> > On Thu, Oct 4, 2018 at 3:45 AM Russell King - ARM Linux
+> > <linux@armlinux.org.uk> wrote:
+> > >
+> > > On Wed, Oct 03, 2018 at 01:00:03PM -0700, Matthew Wilcox wrote:
+> > > > On Thu, Oct 04, 2018 at 12:28:54AM +0530, Souptick Joarder wrote:
+> > > > > These are the approaches which could have been taken to handle
+> > > > > this scenario -
+> > > > >
+> > > > > *  Replace vm_insert_page with vmf_insert_page and then write few
+> > > > >    extra lines of code to convert VM_FAULT_CODE to errno which
+> > > > >    makes driver users more complex ( also the reverse mapping errno to
+> > > > >    VM_FAULT_CODE have been cleaned up as part of vm_fault_t migration ,
+> > > > >    not preferred to introduce anything similar again)
+> > > > >
+> > > > > *  Maintain both vm_insert_page and vmf_insert_page and use it in
+> > > > >    respective places. But it won't gurantee that vm_insert_page will
+> > > > >    never be used in #PF context.
+> > > > >
+> > > > > *  Introduce a similar API like vm_insert_page, convert all non #PF
+> > > > >    consumer to use it and finally remove vm_insert_page by converting
+> > > > >    it to vmf_insert_page.
+> > > > >
+> > > > > And the 3rd approach was taken by introducing vm_insert_kmem_page().
+> > > > >
+> > > > > In short, vmf_insert_page will be used in page fault handlers
+> > > > > context and vm_insert_kmem_page will be used to map kernel
+> > > > > memory to user vma outside page fault handlers context.
+> > > >
+> > > > As far as I can tell, vm_insert_kmem_page() is line-for-line identical
+> > > > with vm_insert_page().  Seriously, here's a diff I just did:
+> > > >
+> > > > -static int insert_page(struct vm_area_struct *vma, unsigned long addr,
+> > > > -                       struct page *page, pgprot_t prot)
+> > > > +static int insert_kmem_page(struct vm_area_struct *vma, unsigned long addr,
+> > > > +               struct page *page, pgprot_t prot)
+> > > > -       /* Ok, finally just insert the thing.. */
+> > > > -int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
+> > > > +int vm_insert_kmem_page(struct vm_area_struct *vma, unsigned long addr,
+> > > > -       return insert_page(vma, addr, page, vma->vm_page_prot);
+> > > > +       return insert_kmem_page(vma, addr, page, vma->vm_page_prot);
+> > > > -EXPORT_SYMBOL(vm_insert_page);
+> > > > +EXPORT_SYMBOL(vm_insert_kmem_page);
+> > > >
+> > > > What on earth are you trying to do?
+> >
+> > >
+> > > Reading the commit log, it seems that the intention is to split out
+> > > vm_insert_page() used outside of page-fault handling with the use
+> > > within page-fault handling, so that different return codes can be
+> > > used.
+> > >
+> > > I don't see that justifies the code duplication - can't
+> > > vm_insert_page() and vm_insert_kmem_page() use the same mechanics
+> > > to do their job, and just translate the error code from the most-
+> > > specific to the least-specific error code?  Do we really need two
+> > > copies of the same code just to return different error codes.
+> >
+> > Sorry about it.
+> > can I take below approach in a patch series ->
+> >
+> > create a wrapper function vm_insert_kmem_page using vm_insert_page.
+> > Convert all the non #PF users to use it.
+> > Then make vm_insert_page static and convert inline vmf_insert_page to caller.
+>
+> I'm confused, what are you trying to do?
+>
+> It seems that we already have:
+>
+> vm_insert_page() - returns an errno
+> vmf_insert_page() - returns a VM_FAULT_* code
+>
+> From what I _think_ you're saying, you're trying to provide
+> vm_insert_kmem_page() as a direct replacement for the existing
+> vm_insert_page(), and then make vm_insert_page() behave as per
+> vmf_insert_page(), so we end up with:
 
-Am Donnerstag, 4. Oktober 2018, 16:18:06 CEST schrieb Arnd Bergmann:
-> On Wed, Oct 3, 2018 at 3:38 AM Heiko Stuebner <heiko@sntech.de> wrote:
-> 
-> >
-> > The following changes since commit 78f26da3ffbce0ea3692a89fe3f5487cb8dda068:
-> >
-> >   arm64: dts: rockchip: Add type-c port supply on rk3399-sapphire board (2018-09-10 19:16:26 +0200)
-> >
-> > are available in the Git repository at:
-> >
-> >   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.20-rockchip-dts64-2
-> >
-> > for you to fetch changes up to e78d53c7b2873e0724eb765a88ccde42560b0e05:
-> >
-> >   arm64: dts: rockchip: enable display nodes on rk3328-rock64 (2018-09-28 13:18:37 +0200)
-> >
-> > ----------------------------------------------------------------
-> > Some additional new boards, the rk3399-based RockPro64 from Pine64, as well
-> > as the Vamrs Rock960. Another big feature is display support including hdmi
-> > and the Innosilicon hdmiphy on the rk3328, right now enabled on the rock64.
-> > The rock64 also got its spi-nor and spdif enabled. On the px30 we can see
-> > dwc2-based usb support now and finally some misc fixes, like for a new dtc
-> > warning, missing address and size cells and microSD fix on sapphire.
-> 
-> Nice to see those new boards!
-> 
-> What about the bugfixes though, shouldn't at least the sapphire microSD fix
-> be merged into 4.19 and possibly backported to stable kernels?
-> 
-> I've pulled this into next/dt for now, please have a look at whether we
-> also want some of them in the fixes branch for 4.19. Thanks,
+yes, vm_insert_kmem_page() can be a direct replacement of vm_insert_page
+or might be a wrapper function written using vm_insert_page whichever
+suites better
+based on feedback.
 
-The fixes aren't that critical:
-- the dtc warning stems from the updated dtc that will get merged
-  into 4.20, so doesn't affect current kernels
-- the first board using a dsi-display at all is still in flight, so the
-  missing -*cells aren't really causing issues on old kernels
-- and finally I think Vicente is the only actual user of a sapphire
-  board (they are rk3399 eval boards after all) and he's using new
-  kernels and is still making new things work on that board.
+>
+> vm_insert_kmem_page() - returns an errno
+> vm_insert_page() - returns a VM_FAULT_* code
+> vmf_insert_page() - returns a VM_FAULT_* code and is identical to
+>       vm_insert_page()
+>
 
-So I'd think it we can save stable-maintainers time for breakage that
-affects bigger crowds ;-)
+After completion of conversion we end up with
+
+ vm_insert_kmem_page() - returns an errno
+ vmf_insert_page() - returns a VM_FAULT_* code
 
 
-Heiko
+> Given that the documentation for vm_insert_page() says:
+>
+>  * Usually this function is called from f_op->mmap() handler
+>  * under mm->mmap_sem write-lock, so it can change vma->vm_flags.
+>  * Caller must set VM_MIXEDMAP on vma if it wants to call this
+>  * function from other places, for example from page-fault handler.
+>
+> this says that the "usual" use method for vm_insert_page() is
+> _outside_ of page fault handling - if it is used _inside_ page fault
+> handling, then it states that additional fixups are required on the
+> VMA.  So I don't get why your patch commentry seems to be saying that
+> users of vm_insert_page() outside of page fault handling all need to
+> be patched - isn't this the use case that this function is defined
+> to be handling?
+
+The answer is yes best of my knowledge.
+
+But as mentioned in change log ->
+
+Going forward, the plan is to restrict future drivers not
+to use vm_insert_page ( *it will generate new errno to
+VM_FAULT_CODE mapping code for new drivers which were already
+cleaned up for existing drivers*) in #PF (page fault handler)
+context but to make use of vmf_insert_page which returns
+VMF_FAULT_CODE and that is not possible until both vm_insert_page
+and vmf_insert_page API exists.
+
+But there are some consumers of vm_insert_page which use it
+outside #PF context. straight forward conversion of vm_insert_page
+to vmf_insert_page won't work there as those function calls expects
+errno not vm_fault_t in return.
+
+If both {vm, vmf}_insert_page exists, vm_insert_page might be used for
+#PF context which we want to protect by removing/ replacing vm_insert_page
+with another similar/ wrapper API.
+
+Is that the right answer of your question ? no ?
+
+>
+> If you're going to be changing the semantics, doesn't this create a
+> flag day where we could get new users of vm_insert_page() using the
+> _existing_ semantics merged after you've changed its semantics (eg,
+> the return code)?
+
+No, vm_insert_page API will remove/ replace only when all the user are
+converted.
+We will do it intermediately by first introducing new API, convert all
+user to use it
+and at final step remove the old API.
