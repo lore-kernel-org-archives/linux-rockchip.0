@@ -1,47 +1,85 @@
-From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Subject: Re: [PATCH v2] mm: Introduce new function vm_insert_kmem_page
-Date: Thu, 4 Oct 2018 21:46:34 +0200
-Message-ID: <CANiq72mkTP_m20vqei-cpN+ypQ_gU472qn5m68vb_4Nqj5afMQ@mail.gmail.com>
-References: <20181003185854.GA1174@jordon-HP-15-Notebook-PC>
- <20181003200003.GA9965@bombadil.infradead.org> <20181003221444.GZ30658@n2100.armlinux.org.uk>
- <CAFqt6zYHhmPwUdaCZX-BuAvaVwA-x1W39tz+Q50-nbEaW2cYVg@mail.gmail.com>
- <20181004123400.GC30658@n2100.armlinux.org.uk> <CAFqt6zZPOM17QwmcWKF3F1gqkJm=2PxvuJ3naWuRXZGHc2HrEQ@mail.gmail.com>
- <20181004181736.GB20842@bombadil.infradead.org> <CAFqt6zaN0PQHkjuwFf8VriROLy7qrPDu-iNE=VPiXJw8C7GpQg@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v6 1/6] dt-bindings: Document the Rockchip VPU bindings
+Date: Thu, 04 Oct 2018 19:24:51 -0300
+Message-ID: <546235909ffa7b6ae48b29a8d532611850680d7d.camel@collabora.com>
+References: <20180917173022.9338-1-ezequiel@collabora.com>
+ <20180917173022.9338-2-ezequiel@collabora.com>
+ <2184b772-2b40-289f-5537-7ebb693479fd@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqt6zaN0PQHkjuwFf8VriROLy7qrPDu-iNE=VPiXJw8C7GpQg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: Matthew Wilcox <willy@infradead.org>, linux@armlinux.org.uk, Robin van der Gracht <robin@protonic.nl>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Dave Airlie <airlied@linux.ie>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, Andrew Morton <akpm@linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kees Cook <keescook@chromium.org>, treding@nvidia.com, mhocko@suse.com, Dan Williams <dan.j.williams@intel.com>, kirill.shutemov@linux.intel.com, Mark Rutland <mark.rutland@arm.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Dmitry Vyukov <dvyukov@google.com>, Kate Stewart <kstewart@linuxfoundation.org>, tchibo@google.com, riel@redhat.com, minchan@kernel.org, Peter Zijlstra <peterz@infradead.org>, ying.hua
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2184b772-2b40-289f-5537-7ebb693479fd-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Souptick,
+On Fri, 2018-09-28 at 13:53 +0200, Hans Verkuil wrote:
+> On 09/17/2018 07:30 PM, Ezequiel Garcia wrote:
+> > Add devicetree binding documentation for Rockchip Video Processing
+> > Unit IP.
+> > 
+> > Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > ---
+> >  .../bindings/media/rockchip-vpu.txt           | 30 +++++++++++++++++++
+> >  1 file changed, 30 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.txt b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> > new file mode 100644
+> > index 000000000000..5e0d421301ca
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> > @@ -0,0 +1,30 @@
+> > +device-tree bindings for rockchip VPU codec
+> > +
+> > +Rockchip (Video Processing Unit) present in various Rockchip platforms,
+> > +such as RK3288 and RK3399.
+> > +
+> > +Required properties:
+> > +- compatible: value should be one of the following
+> > +		"rockchip,rk3288-vpu";
+> > +		"rockchip,rk3399-vpu";
+> > +- interrupts: encoding and decoding interrupt specifiers
+> > +- interrupt-names: should be "vepu" and "vdpu"
+> > +- clocks: phandle to VPU aclk, hclk clocks
+> > +- clock-names: should be "aclk" and "hclk"
+> > +- power-domains: phandle to power domain node
+> > +- iommus: phandle to a iommu node
+> > +
+> > +Example:
+> > +SoC-specific DT entry:
+> > +	vpu: video-codec@ff9a0000 {
+> > +		compatible = "rockchip,rk3288-vpu";
+> > +		reg = <0x0 0xff9a0000 0x0 0x800>;
+> > +		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
+> > +			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+> > +		interrupt-names = "vepu", "vdpu";
+> > +		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> > +		clock-names = "aclk", "hclk";
+> > +		power-domains = <&power RK3288_PD_VIDEO>;
+> > +		iommus = <&vpu_mmu>;
+> > +	};
+> > +
+> > 
+> 
+> Please remove this empty last line to avoid this warning:
+> 
+> .git/rebase-apply/patch:41: new blank line at EOF.
+> 
+> 
 
-On Thu, Oct 4, 2018 at 8:49 PM Souptick Joarder <jrdr.linux@gmail.com> wrote:
->
-> On Thu, Oct 4, 2018 at 11:47 PM Matthew Wilcox <willy@infradead.org> wrote:
-> >
-> > I think this is a bad plan.  What we should rather do is examine the current
-> > users of vm_insert_page() and ask "What interface would better replace
-> > vm_insert_page()?"
-> >
-> > As I've said to you before, I believe the right answer is to have a
-> > vm_insert_range() which takes an array of struct page pointers.  That
-> > fits the majority of remaining users.
->
-> Ok, but it will take some time.
-> Is it a good idea to introduce the final vm_fault_t patch and then
-> start working on vm_insert_range as it will be bit time consuming ?
->
+Will fix.
 
-Well, why is there a rush? Development should be done in a patch
-series or a tree, and submitted as a whole, instead of sending partial
-patches.
-
-Also, not sure if you saw my comments/review: if the interface is not
-going to change, why the name change? Why can't we simply keep using
-vm_insert_page?
-
-Cheers,
-Miguel
+Thanks,
+Eze
