@@ -1,179 +1,99 @@
-From: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 0/6] Add Rockchip VPU JPEG encoder
-Date: Fri, 5 Oct 2018 09:10:34 -0300
-Message-ID: <20181005091034.7d8399ed@coco.lan>
-References: <20180917173022.9338-1-ezequiel@collabora.com>
- <7bd9573e-e0c6-71a6-84ed-deb0904593fd@xs4all.nl>
- <faca3960d0478610b73071b471acfa26df987985.camel@collabora.com>
- <5ce82f591ab9bd1a9a0a476f01bbf4f0fe4ab0e2.camel@collabora.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCH v2] mm: Introduce new function vm_insert_kmem_page
+Date: Fri, 5 Oct 2018 17:41:39 +0530
+Message-ID: <CAFqt6zYH4Aczu8AYke8AfGuMS70SJXCMn-n8X8C_Tz03gTjn8g@mail.gmail.com>
+References: <20181003185854.GA1174@jordon-HP-15-Notebook-PC>
+ <20181003200003.GA9965@bombadil.infradead.org> <20181003221444.GZ30658@n2100.armlinux.org.uk>
+ <CAFqt6zYHhmPwUdaCZX-BuAvaVwA-x1W39tz+Q50-nbEaW2cYVg@mail.gmail.com>
+ <20181004123400.GC30658@n2100.armlinux.org.uk> <CAFqt6zZPOM17QwmcWKF3F1gqkJm=2PxvuJ3naWuRXZGHc2HrEQ@mail.gmail.com>
+ <20181004181736.GB20842@bombadil.infradead.org> <CAFqt6zaN0PQHkjuwFf8VriROLy7qrPDu-iNE=VPiXJw8C7GpQg@mail.gmail.com>
+ <CANiq72mkTP_m20vqei-cpN+ypQ_gU472qn5m68vb_4Nqj5afMQ@mail.gmail.com>
+ <CAFqt6zaFc_GenhfvsD0VPfepR-jjXypj+4CgNEuHMVq1WXV+8w@mail.gmail.com>
+ <CANiq72kVJn7985EET067Dgj+z0dwb0x2MTUnREMWKCVU6=WnJA@mail.gmail.com>
+ <CAFqt6zZ4sPjtb5BaDfwc5tZv+vMj6ao3NJZ_3quX9AH5pCMwJg@mail.gmail.com> <CANiq72m9u1PL9X+dPNLxgkhvttj=4ijLyM2sFex=Kws7wswKzw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5ce82f591ab9bd1a9a0a476f01bbf4f0fe4ab0e2.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CANiq72m9u1PL9X+dPNLxgkhvttj=4ijLyM2sFex=Kws7wswKzw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Cc: Matthew Wilcox <willy@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin@protonic.nl, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, Andrew Morton <akpm@linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kees Cook <keescook@chromium.org>, treding@nvidia.com, Michal Hocko <mhocko@suse.com>, Dan Williams <dan.j.williams@intel.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, aryabinin@virtuozzo.com, Dmitry Vyukov <dvyukov@google.com>, Kate Stewart <kstewart@linuxfoundation.org>, tchibo@google.com, riel@redhat.com, Minchan Kim <minchan@kernel.org>, Peter Zijlstra <peterz@infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Em Thu, 04 Oct 2018 20:39:31 -0300
-Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
+On Fri, Oct 5, 2018 at 4:19 PM Miguel Ojeda
+<miguel.ojeda.sandonis@gmail.com> wrote:
+>
+> Hi Souptick,
+>
+> On Fri, Oct 5, 2018 at 12:01 PM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+> >
+> > The final goal is to remove vm_insert_page by converting it to
+> > vmf_insert_page. But to do that we have to first introduce the
+> > new API which is similar to vm_insert_page  (for non #PF). I tried this by
+> > introducing vm_insert_kmem_page ( * identical as vm_insert_page
+> > except API name *) in this patch. But this looks like a bad approach.
+>
+> We are going in circles here. That you want to convert vm_insert_page
+> to vmf_insert_page for the PF case is fine and understood. However,
+> you don't *need* to introduce a new name for the remaining non-PF
+> cases if the function is going to be the exact same thing as before.
+> You say "The final goal is to remove vm_insert_page", but you haven't
+> justified *why* you need to remove that name.
+>
+> Now, if we want to rename the function for some reason (e.g. avoid
+> confusion with vmf_insert_page), that is fine but is another topic. It
+> may be or not a good idea, but it is orthogonal to the vmf_ work.
+> Matthew, on this regard, told you that you shouldn't duplicate
+> functions. If you want a rename, do so; but don't copy the code. In
+> other words: nobody said introducing the vm_insert_kmem_page name is a
+> bad idea -- what Matthew told you is that *duplicating* vm_insert_page
+> just for that is bad.
+>
+> Further, you are copying the code (if I understand your thought
+> process) because you want to change the callers of non-PF first, and
+> then do the "full conversion from vm_* to vmf_*". However, that is
+> confusing, because there is no need to change non-PF callers of
+> vm_insert_page since they don't care about the new vmf_* functions.
+>
+> Instead, the proper way of doing this is:
+>
+>   1. Introduce the vmf_* API
+>   2. Change all PF-users users to that (leaving all non-PF ones
+> untouched!) -- if this is too big, you can split this patch into
+> several patches, one per subsystem, etc.
 
-> On Mon, 2018-10-01 at 14:54 -0300, Ezequiel Garcia wrote:
-> > On Fri, 2018-09-28 at 14:33 +0200, Hans Verkuil wrote:  
-> > > On 09/17/2018 07:30 PM, Ezequiel Garcia wrote:  
-> > > > This series adds support for JPEG encoding via the VPU block
-> > > > present in Rockchip platforms. Currently, support for RK3288
-> > > > and RK3399 is included.
-> > > > 
-> > > > Please, see the previous versions of this cover letter for
-> > > > more information.
-> > > > 
-> > > > Compared to v5, the only change is in the V4L2_CID_JPEG_QUANTIZATION
-> > > > control. We've decided to support only baseline profile,
-> > > > and only add 8-bit luma and chroma tables.
-> > > > 
-> > > > struct v4l2_ctrl_jpeg_quantization {
-> > > >        __u8    luma_quantization_matrix[64];
-> > > >        __u8    chroma_quantization_matrix[64];
-> > > > };
-> > > > 
-> > > > By doing this, it's clear that we don't currently support anything
-> > > > but baseline.
-> > > > 
-> > > > This series should apply cleanly on top of
-> > > > 
-> > > >   git://linuxtv.org/hverkuil/media_tree.git br-cedrus tag.
-> > > > 
-> > > > If everyone is happy with this series, I'd like to route the devicetree
-> > > > changes through the rockchip tree, and the rest via the media subsystem.  
-> > > 
-> > > OK, so I have what is no doubt an annoying question: do we really need
-> > > a JPEG_RAW format?
-> > >   
-> > 
-> > Not annoying, as it helps clarify a few things :-)
-> > I think we do need the JPEG_RAW format. The way I see it, using
-> > JPEG opens a can of worms...
-> >   
-> > > The JPEG header is really easy to parse for a decoder and really easy to
-> > > prepend to the compressed image for the encoder.
-> > > 
-> > > The only reason I can see for a JPEG_RAW is if the image must start at
-> > > some specific address alignment. Although even then you can just pad the
-> > > JPEG header that you will add according to the alignment requirements.
-> > > 
-> > > I know I am very late with this question, but I never looked all that
-> > > closely at what a JPEG header looks like. But this helped:
-> > > 
-> > > https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format
-> > > 
-> > > and it doesn't seem difficult at all to parse or create the header.
-> > > 
-> > >   
-> > 
-> > ... I think that having JPEG_RAW as the compressed format
-> > is much more clear for userspace, as it explicitly specifies
-> > what is expected.
-> > 
-> > This way, for a stateless encoder, applications are required
-> > to set quantization and/or entropy tables, and are then in
-> > charge of using the compressed JPEG_RAW payload in whatever form
-> > they want. Stupid simple.
-> > 
-> > On the other side, if the stateless encoder driver supports
-> > JPEG (creating headers in-kernel), it means that:
-> > 
-> > *) applications should pass a quality control, if supported,
-> > and the driver will use hardcoded tables or...
-> > 
-> > *) applications pass quantization control and, if supported,
-> > entropy control. The kernel uses them to create the JPEG frame.
-> > But also, some drivers (e.g. Rockchip), use default entropy
-> > tables, which should now be in the kernel.
-> > 
-> > So the application would have to query controls to find out
-> > what to do. Not exactly hard, but I think having the JPEG_RAW
-> > is much simpler and more clear.
-> > 
-> > Now, for stateless decoders, supporting JPEG_RAW means
-> > the application has to pass quantization and entropy
-> > controls, probably using the Request API.
-> > Given the application has parsed the JPEG,
-> > it knows the width and height and can request
-> > buffers accordingly.
-> > 
-> > The hardware is stateless, and so is the driver.
-> > 
-> > On the other hand, supporting JPEG would mean that
-> > drivers will have to parse the image, extracting
-> > the quantization and entropy tables.
-> > 
-> > Format negotiation is now more complex,
-> > either we follow the stateful spec, introducing a little
-> > state machine in the driver... or we use the Request API,
-> > but that means parsing on both sides kernel and application.
-> > 
-> > Either way, using JPEG_RAW is just waaay simpler and puts
-> > things where they belong. 
-> >   
-> 
-> As discussed on IRC, I'm sending a v7 for this series,
-> fixing only the checkpatch issues and the extra line in the
-> binding document.
-> 
-> We've agreed to move forward with JPEG_RAW, for the reasons
-> stated above.
-> 
-> Plus, we've agreed to keep this in staging until the userspace
-> support for JPEG_RAW format is clear.
+We are done with step 2. All the PF-users are converted to use
+vmf_insert_page. ( Ref - linux-next-20181005)
 
-The problem is that a new format is actually a V4L2 core change, and
-not something for staging.
+>   3. Remove the vm_* functions (except the ones that are still used in
+> non-PF contexts, e.g. vm_insert_page)
 
-IMHO, it is prudent to wait for an userspace code before hushing
-merging this upstream.
+Step 3 is part of step 2. Already done.
 
--
+>
+> Then, optionally, if you want to rename the function for the remaining
+> non-PF users:
+>
+>   4. Rename vm_insert_page (justifying why the current name is
+> confusing *on its own merits*).
+>
+> Otherwise, if you want to pursue Matthew's idea:
+>
+>   4. Introduce the vm_insert_range (possibly leveraging
+> vm_insert_page, or not; you have to see what is best).
+>   5. Replace those callers that can take advantage of vm_insert_range
+>   6. Remove vm_insert_page and replace callers with vm_insert_range
+> (only if it is not worth to keep vm_insert_range, again justifying it
+> *on its own merits*)
 
-I'm concerned about adding a JPEG_RAW format. We had this discussion
-in the past. On that time, it was opted to add a code inside the
-drivers that will be adding the jpeg headers, on the cases where
-the hardware was providing headerless frames.
+Step 4 to 6, going to do it.  It is part of plan now :-)
 
-Among the reasons, different drivers may be requiring different
-logic to add the jpeg headers, depending on how they interpret
-the quality parameters and on the Huffmann tables used by an
-specific codec.
-
-I can't see why this couldn't be done on a stateless codec. I mean:
-in the specific case of JPEG, each frame is independently coded.
-It doesn't need to store anything from a previous frame in order to
-produce a JPEG header.
-
-So, from my side, at least for the first version of this driver,
-please make it produce a full JPEG frame with the headers, and
-use V4L2_PIX_FMT_JPEG format.
-
-That should allow us to add this driver on staging without adding
-a new JPEG_RAW format.
-
-If you still think we'll need a V4L2_PIX_FMT_JPEG_RAW, I'd like
-to merge it by the time we also have a decoder for libv4l. I
-would also like to see, at the Kernel patch series, the addition
-of such support for already existing non-staging camera
-drivers that internally receive headless JPEG headers from the
-hardware. This will allow us to test the userspace code with
-different models and proof that a generic JPEG_RAW decoder on
-userspace is doable.
-
-Thanks,
-Mauro
+>
+> As you see, these are all logical step-by-step improvements, without
+> duplicating functions temporarily, leaving temporary changes or
+> changing current callers to new APIs for unrelated reasons (i.e. no
+> need to introduce vm_insert_kmem_page simply to do a "conversion" to
+> vmf_).
+>
+> Cheers,
+> Miguel
