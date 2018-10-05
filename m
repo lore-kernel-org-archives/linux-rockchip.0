@@ -1,99 +1,49 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add spdif sound node for rock64
-Date: Fri, 5 Oct 2018 17:34:08 +0900
-Message-ID: <9b54c5e6-f705-c792-1f41-c33c3403baa9@katsuster.net>
-References: <20180917122633.31401-1-katsuhiro@katsuster.net>
- <CAGb2v64gTj7766o+6-BZkqKy=cDv9bqLcKHOzj-BiJOtjQMSyQ@mail.gmail.com>
+From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Subject: Re: [PATCH v2] mm: Introduce new function vm_insert_kmem_page
+Date: Fri, 5 Oct 2018 10:52:09 +0200
+Message-ID: <CANiq72kVJn7985EET067Dgj+z0dwb0x2MTUnREMWKCVU6=WnJA@mail.gmail.com>
+References: <20181003185854.GA1174@jordon-HP-15-Notebook-PC>
+ <20181003200003.GA9965@bombadil.infradead.org> <20181003221444.GZ30658@n2100.armlinux.org.uk>
+ <CAFqt6zYHhmPwUdaCZX-BuAvaVwA-x1W39tz+Q50-nbEaW2cYVg@mail.gmail.com>
+ <20181004123400.GC30658@n2100.armlinux.org.uk> <CAFqt6zZPOM17QwmcWKF3F1gqkJm=2PxvuJ3naWuRXZGHc2HrEQ@mail.gmail.com>
+ <20181004181736.GB20842@bombadil.infradead.org> <CAFqt6zaN0PQHkjuwFf8VriROLy7qrPDu-iNE=VPiXJw8C7GpQg@mail.gmail.com>
+ <CANiq72mkTP_m20vqei-cpN+ypQ_gU472qn5m68vb_4Nqj5afMQ@mail.gmail.com> <CAFqt6zaFc_GenhfvsD0VPfepR-jjXypj+4CgNEuHMVq1WXV+8w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGb2v64gTj7766o+6-BZkqKy=cDv9bqLcKHOzj-BiJOtjQMSyQ@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <CAFqt6zaFc_GenhfvsD0VPfepR-jjXypj+4CgNEuHMVq1WXV+8w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chen-Yu Tsai <wens@csie.org>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: Matthew Wilcox <willy@infradead.org>, linux@armlinux.org.uk, Robin van der Gracht <robin@protonic.nl>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Dave Airlie <airlied@linux.ie>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, Andrew Morton <akpm@linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kees Cook <keescook@chromium.org>, treding@nvidia.com, mhocko@suse.com, Dan Williams <dan.j.williams@intel.com>, kirill.shutemov@linux.intel.com, Mark Rutland <mark.rutland@arm.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Dmitry Vyukov <dvyukov@google.com>, Kate Stewart <kstewart@linuxfoundation.org>, tchibo@google.com, riel@redhat.com, minchan@kernel.org, Peter Zijlstra <peterz@infradead.org>, ying.hua
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Hi Souptick,
 
-Sorry for late, thank you for your comments.
+On Fri, Oct 5, 2018 at 7:51 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+>
+> On Fri, Oct 5, 2018 at 1:16 AM Miguel Ojeda
+> <miguel.ojeda.sandonis@gmail.com> wrote:
+> >
+> >
+> > Also, not sure if you saw my comments/review: if the interface is not
+> > going to change, why the name change? Why can't we simply keep using
+> > vm_insert_page?
+>
+> yes, changing the name without changing the interface is a
+> bad approach and this can't be taken. As Matthew mentioned,
+> "vm_insert_range() which takes an array of struct page pointers.
+> That fits the majority of remaining users" would be a better approach
+> to fit this use case.
+>
+> But yes, we can't keep vm_insert_page and vmf_insert_page together
+> as it doesn't guarantee  that future drivers will not use vm_insert_page
+> in #PF context ( which will generate new errno to VM_FAULT_CODE).
+>
 
-On 2018年10月03日 18:53, Chen-Yu Tsai wrote:
-> Hi,
-> 
-> On Mon, Sep 17, 2018 at 8:28 PM Katsuhiro Suzuki
-> <katsuhiro@katsuster.net> wrote:
->>
->> This patch adds sound card node for rock64. Currently we can support
->> S/PDIF only. It seems the lack of codec driver of rk3328 to enable
->> analog audio out.
->>
->> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
->> ---
->>   .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 29 +++++++++++++++++++
->>   1 file changed, 29 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
->> index 5852061e497b..9ee4f57557f3 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
->> @@ -62,6 +62,23 @@
->>                  regulator-min-microvolt = <5000000>;
->>                  regulator-max-microvolt = <5000000>;
->>          };
->> +
->> +       sound {
->> +               compatible = "audio-graph-card";
->> +               label = "rockchip,rk3328";
-> 
-> I understand that this patch has been merged. However, seeing this label
-> I wonder how this works when the analog codec and HDMI audio out are added,
-> and how userspace is supposed to select an output.
-> 
+Maybe I am hard of thinking, but aren't you planning to remove
+vm_insert_page with these changes? If yes, why you can't use the keep
+vm_insert_page name? In other words, keep returning what the drivers
+expect?
 
-I don't know detail of HDMI audio of RK3328, but maybe it has cpu or 
-codec DAIs. The audio-graph-card is supporting to use multiple DAIs on
-a card. This is same as simple-audio-card.
-
-For example, add I2S0 device as hw:X,0
-(and move SPDIF to hw:X,0 -> hw:X,1)
-
-sound {
-	compatible = "audio-graph-card";
-	label = "rockchip,rk3328";
-	dais = <&i2s0_p0
-		&spdif_p0>;
-};
-
-&i2s0 {
-	status = "okay";
-	#sound-dai-cells = <0>;
-
-	i2s0_p0: port {
-		i2s0_p0_0: endpoint {
-			dai-format = "i2s";
-			remote-endpoint = <&some_codec_abcd>;
-		};
-	};
-};
-
-We should write special card driver for RK3328 sound if audio-graph-card
-is not enough to deal with HDMI audio.
-
-
-> On the side, it seems that extra codecs, such as the rock64 add-on board,
-> are easier dealt with by adding a separate simple-audio-card node to couple
-> the codec and i2s nodes.
-
-I think multiple DAIs on single card and single DAI on multiple cards
-are both OK to work. But I cannot decide the way for this issue.
-
-
-> 
-> ChenYu
-> 
-
-Regards,
---
-Katsuhiro Suzuki
+Cheers,
+Miguel
