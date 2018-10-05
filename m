@@ -1,118 +1,73 @@
-From: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 4/6] media: Add JPEG_RAW format
-Date: Fri, 5 Oct 2018 09:20:25 -0300
-Message-ID: <20181005092025.059c03f4@coco.lan>
-References: <20181005001226.12789-1-ezequiel@collabora.com>
- <20181005001226.12789-5-ezequiel@collabora.com>
- <20181005080924.78a1654b@coco.lan>
- <90ef806ecfab6e93dc08e4acdce11cc2e15df637.camel@collabora.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL 1/3] Rockchip ARM64 devicetree updates for 4.20 - round2
+Date: Fri, 5 Oct 2018 17:29:41 +0200
+Message-ID: <CAK8P3a0hkuupjwKmNORK9d7FBJkAXgbd2Oi-vvKAwT0NbXYNOA@mail.gmail.com>
+References: <2559110.ail6FZQ9dJ@phil>
+ <CAK8P3a1EKduDFqJOsXq6W9r=0+-fyrfyTnwPeHEp1BDVRxNk_g@mail.gmail.com>
+ <11931084.yfuDoSsS8u@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <90ef806ecfab6e93dc08e4acdce11cc2e15df637.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <11931084.yfuDoSsS8u@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Em Fri, 05 Oct 2018 08:53:14 -0300
-Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
+On Thu, Oct 4, 2018 at 6:15 PM Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Donnerstag, 4. Oktober 2018, 16:18:06 CEST schrieb Arnd Bergmann:
+> > On Wed, Oct 3, 2018 at 3:38 AM Heiko Stuebner <heiko@sntech.de> wrote:
+> >
+> > >
+> > > The following changes since commit 78f26da3ffbce0ea3692a89fe3f5487cb8dda068:
+> > >
+> > >   arm64: dts: rockchip: Add type-c port supply on rk3399-sapphire board (2018-09-10 19:16:26 +0200)
+> > >
+> > > are available in the Git repository at:
+> > >
+> > >   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.20-rockchip-dts64-2
+> > >
+> > > for you to fetch changes up to e78d53c7b2873e0724eb765a88ccde42560b0e05:
+> > >
+> > >   arm64: dts: rockchip: enable display nodes on rk3328-rock64 (2018-09-28 13:18:37 +0200)
+> > >
+> > > ----------------------------------------------------------------
+> > > Some additional new boards, the rk3399-based RockPro64 from Pine64, as well
+> > > as the Vamrs Rock960. Another big feature is display support including hdmi
+> > > and the Innosilicon hdmiphy on the rk3328, right now enabled on the rock64.
+> > > The rock64 also got its spi-nor and spdif enabled. On the px30 we can see
+> > > dwc2-based usb support now and finally some misc fixes, like for a new dtc
+> > > warning, missing address and size cells and microSD fix on sapphire.
+> >
+> > Nice to see those new boards!
+> >
+> > What about the bugfixes though, shouldn't at least the sapphire microSD fix
+> > be merged into 4.19 and possibly backported to stable kernels?
+> >
+> > I've pulled this into next/dt for now, please have a look at whether we
+> > also want some of them in the fixes branch for 4.19. Thanks,
+>
+> The fixes aren't that critical:
+> - the dtc warning stems from the updated dtc that will get merged
+>   into 4.20, so doesn't affect current kernels
+> - the first board using a dsi-display at all is still in flight, so the
+>   missing -*cells aren't really causing issues on old kernels
+> - and finally I think Vicente is the only actual user of a sapphire
+>   board (they are rk3399 eval boards after all) and he's using new
+>   kernels and is still making new things work on that board.
+>
+> So I'd think it we can save stable-maintainers time for breakage that
+> affects bigger crowds ;-)
 
-> On Fri, 2018-10-05 at 08:09 -0300, Mauro Carvalho Chehab wrote:
-> > Em Thu,  4 Oct 2018 21:12:24 -0300
-> > Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
-> >   
-> > > From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > > 
-> > > Add V4L2_PIX_FMT_JPEG_RAW format that does not contain
-> > > JPEG header in the output frame.
-> > > 
-> > > Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > ---
-> > >  Documentation/media/uapi/v4l/pixfmt-compressed.rst | 9 +++++++++
-> > >  drivers/media/v4l2-core/v4l2-ioctl.c               | 1 +
-> > >  include/uapi/linux/videodev2.h                     | 1 +
-> > >  3 files changed, 11 insertions(+)
-> > > 
-> > > diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> > > index ba0f6c49d9bf..ad73076276ec 100644
-> > > --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> > > +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> > > @@ -23,6 +23,15 @@ Compressed Formats
-> > >        - 'JPEG'
-> > >        - TBD. See also :ref:`VIDIOC_G_JPEGCOMP <VIDIOC_G_JPEGCOMP>`,
-> > >  	:ref:`VIDIOC_S_JPEGCOMP <VIDIOC_G_JPEGCOMP>`.
-> > > +    * .. _V4L2-PIX-FMT-JPEG-RAW:
-> > > +
-> > > +      - ``V4L2_PIX_FMT_JPEG_RAW``
-> > > +      - 'Raw JPEG'
-> > > +      - Raw JPEG bitstream, containing a compressed payload. This format
-> > > +        contains an image scan, i.e. without any metadata or headers.
-> > > +        The user is expected to set the needed metadata such as
-> > > +        quantization and entropy encoding tables, via ``V4L2_CID_JPEG``
-> > > +        controls, see :ref:`jpeg-control-id`.  
-> > 
-> > IMO, it is not very clear when someone should use V4L2_CID_JPEG or
-> > V4L2_PIX_FMT_JPEG_RAW. Some drivers do add a JPEG header internally.
-> >   
-> 
-> For device drivers, if the hardware can parse JPEG frames, then
-> V4L2_PIX_FMT_JPEG should be used. Otherwise, if the hardware can
-> only accept a parsed JPEG (i.e. payload and tables), then
-> only V4L2_PIX_FMT_JPEG_RAW should be supported.
+Ok, thanks for checking!
 
-It seems you're talking here about V4L2 output devices. I'm more
-concerned about its usage on V4L2 capture devices.
-
-Yet, it should be possible to use it with both, as formats should
-be generic enough to work on both directions.
-
-> Parsing headers in the driver is discouraged by the stateful codec
-> API specification.
-
-True, but we do parsing/adding headers for some formats in Kernel
-space, as this is a way to abstract the hardware for applications.
-
-That's specially true for MPEG and JPEG formats.
-
-> With the Request API in place, and the stateful and stateless specs,
-> device driver writers should be now using the right model for each
-> type of hardware.
-> 
-> There are exceptions, though. If the hardware handles full JPEG frames,
-> but requires some extra parsing on the OS side, then the driver
-> should be using V4L2_PIX_FMT_JPEG, and doing some extra parsing.
-> For instance, mtk-jpeg seems to work like this.
-
-Actually, all existing drivers do this.
-
-I'm not saying that this the right/best model, but it is the way
-it is. Changing it is possible, but only if it can be done in
-a driver-independent way and userspace code inside a library
-exists to support it.
-
-
-> 
-> > Also, if we're now starting to accept headerless JPEG images, you should
-> > very patch libv4l as well, in order to accept this new format.
-> >   
-> 
-> Right.
-> 
-> Thanks,
-> Eze
-
-
-
-Thanks,
-Mauro
+       Arnd
