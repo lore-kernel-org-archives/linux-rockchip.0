@@ -1,13 +1,11 @@
 From: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Subject: Re: [PATCH v4 0/2] Reworked rk3288-tinker-s devicetree
-Date: Sat, 6 Oct 2018 13:54:37 +0100
-Message-ID: <5dc8cdc9-20d5-bafa-3693-67ec09577234@davidjohnsummers.uk>
-References: <20180923113807.11558-1-heiko@sntech.de>
+Subject: Rockchip - watchdog - clocks
+Date: Sat, 6 Oct 2018 14:50:07 +0100
+Message-ID: <48a857e2-2a62-ca9b-0299-80a814b78463@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180923113807.11558-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -18,70 +16,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-Re: 
-http://lists.infradead.org/pipermail/linux-rockchip/2018-September/021762.html
-
-We've just had another use on Arm Arch interested in installing on a 
-Tinker Board. So this gives the chance to test the wi-fi patch on a 
-Tinker Board as well as Tinker Board S; so give better of where to apply 
-the patch.
-
-So half thinking of having another go at the wi-fi patch.
-
-But should first check, what problems did you see with the patch? Let me 
-know and I'll see if I can incorporate in patch update. As much as 
-anything, I want to minimize the number of tb{s}.dtb that I send out to 
-arch arm users, as testing before submission. E.g. the users have 
-limited tolerance, may be able to try a few device trees with them - but 
-if it takes too many iterations, they will just switch to linarno kernel ...
-
-Ta,
-
-David.
-
-On 23/09/2018 12:38, Heiko Stuebner wrote:
-> Hi David,
->
-> I've adpated your patches 1+2 like so and would like to add them this way
-> later on. Biggest change is of course making patch 1 solely about moving
-> the shared parts to the dtsi and adding the tinker-s.dts including the
-> emmc in the second patch.
->
-> Apart from that you can also see some previously missing style-related
-> fixes. For example patch subject lines are somewhat specific, to allow
-> people browsing the git history to realize the core patch contents just
-> from the "headline" and also use the "correct" prefixes which vary
-> depending on the subsystem your changing.
->
-> For future patches you can just do a "git log --oneline arch/arm/boot/dts"
-> (change directory depending on location of the change of course), to
-> see that arm32 dts use "ARM: dts: $soc-vendor: foo".
->
->
-> Also providing a commit message describing the individual change
-> in a bit more detail is important.
->
-> The wifi patch is a different issue, so I'll reply there.
->
->
-> Heiko
->
-> David Summers (2):
->    ARM: dts: rockchip: move shared tinker-board nodes to a common dtsi
->    ARM: dts: rockchip: add rk3288-based Tinker board S
->
->   .../devicetree/bindings/arm/rockchip.txt      |   4 +
->   arch/arm/boot/dts/Makefile                    |   1 +
->   arch/arm/boot/dts/rk3288-tinker-s.dts         |  26 +
->   arch/arm/boot/dts/rk3288-tinker.dts           | 498 +----------------
->   arch/arm/boot/dts/rk3288-tinker.dtsi          | 504 ++++++++++++++++++
->   5 files changed, 537 insertions(+), 496 deletions(-)
->   create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
->   create mode 100644 arch/arm/boot/dts/rk3288-tinker.dtsi
->
+SGksCgpUaGlzIGlzIGludGVuZGVkIGFzIGEgc3ViamVjdCBmb3IgZGlzY3Vzc2lvbiwgdG8gc2Vl
+IGlmIHdlIGNhbiBkZWNpZGUgCnRoZSBiZXN0IHdheSBmb3J3YXJkLgoKVGhlIHdhdGNoZG9nIGNs
+b2NrcyBpbiB0aGUga2VybmVsLCBhcmUgbm90IGNvbnNpc3RlbnQsIGFuZCB3aGVyZSB0aGUgCmN1
+cnJlbnQgY29kZSBoYXMgY29tZSBmcm9tLCBhbmQgaG93IGl0IGFwcGxpZXMgYmV0d2VlbiBkaWZm
+ZXJlbnQgY2hpcCAKc2V0cyBpc24ndCBjbGVhci4KCkZpcnN0IG9mZiBhIGNvbmZpZ3VyYXRpb24g
+dGhhdCB3b3JrczogUkszMjg4OgoKYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2k6CgogwqDC
+oMKgIHdkdDogd2F0Y2hkb2dAZmY4MDAwMDAgewogwqDCoMKgIMKgwqDCoCBjb21wYXRpYmxlID0g
+InJvY2tjaGlwLHJrMzI4OC13ZHQiLCAic25wcyxkdy13ZHQiOwogwqDCoMKgIMKgwqDCoCByZWcg
+PSA8MHgwIDB4ZmY4MDAwMDAgMHgwIDB4MTAwPjsKIMKgwqDCoCDCoMKgwqAgY2xvY2tzID0gPCZj
+cnUgUENMS19XRFQ+OwogwqDCoMKgIMKgwqDCoCBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNzkgSVJR
+X1RZUEVfTEVWRUxfSElHSD47CiDCoMKgwqAgwqDCoMKgIHN0YXR1cyA9ICJkaXNhYmxlZCI7CiDC
+oMKgwqAgfTsKCmluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svcmszMjg4LWNydS5oOgoKI2RlZmlu
+ZSBQQ0xLX1dEVMKgwqDCoCDCoMKgwqAgMzY4Cgpkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmsz
+Mjg4LmM6CgogwqDCoMKgIC8qIFdhdGNoZG9nIHBjbGsgaXMgY29udHJvbGxlZCBieSBSSzMyODhf
+U0dSRl9TT0NfQ09OMFsxXS4gKi8KIMKgwqDCoCBjbGsgPSBjbGtfcmVnaXN0ZXJfZml4ZWRfZmFj
+dG9yKE5VTEwsICJwY2xrX3dkdCIsICJwY2xrX3BkX2FsaXZlIiwgCjAsIDEsIDEpOwogwqDCoMKg
+IGlmIChJU19FUlIoY2xrKSkKIMKgwqDCoCDCoMKgwqAgcHJfd2FybigiJXM6IGNvdWxkIG5vdCBy
+ZWdpc3RlciBjbG9jayBwY2xrX3dkdDogJWxkXG4iLAogwqDCoMKgIMKgwqDCoCDCoMKgwqAgX19m
+dW5jX18sIFBUUl9FUlIoY2xrKSk7CiDCoMKgwqAgZWxzZQogwqDCoMKgIMKgwqDCoCByb2NrY2hp
+cF9jbGtfYWRkX2xvb2t1cChjdHgsIGNsaywgUENMS19XRFQpOwoKTm93IHRoZSBzb3VyY2Ugb2Yg
+dGhlIHJvY2tjaGlwIGNydSBmb3IgcmszMjg4IGlzIHRoZSBUUk06CgpodHRwOi8vb3BlbnNvdXJj
+ZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvOC84Zi9Sb2NrY2hpcF9SSzMyODhfVFJNX1YxLjJfUGFy
+dDEtMjAxNzAzMjEucGRmCgpGaWcgMi0yIHRocm91Z2ggdG8gZmlnIDItNSBDUlUgQ2xvY2sgQXJj
+aGl0ZWN0dXJlIC0gYnV0IHRoaXMgZG9lc24ndCAKc2hvdyB0aGUgd2F0Y2hkb2cgY2xvY2suIFRo
+ZSB3YXRjaGRvZyBzZWN0aW9uIG9mIHRoZSBUUk0gc2F5czoKCldEVCBjb3VudGVy4oCZcyBjbG9j
+ayBpcyBwY2xrCgpBbmQgdGhpcyBhbGwgY3JlYXRlcyBhIHdvcmtpbmcgd2F0Y2hkb2cgb24gdGhl
+IHJrMzI4OC4KCkJ1dCBpbnN0ZWFkIGxvb2sgYXQgdGhlIHJrMzMyODoKCmFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszMzI4LmR0c2kKCiDCoMKgwqAgd2R0OiB3YXRjaGRvZ0BmZjFhMDAw
+MCB7CiDCoMKgwqAgwqDCoMKgIGNvbXBhdGlibGUgPSAic25wcyxkdy13ZHQiOwogwqDCoMKgIMKg
+wqDCoCByZWcgPSA8MHgwIDB4ZmYxYTAwMDAgMHgwIDB4MTAwPjsKIMKgwqDCoCDCoMKgwqAgaW50
+ZXJydXB0cyA9IDxHSUNfU1BJIDQwIElSUV9UWVBFX0xFVkVMX0hJR0g+OwogwqDCoMKgIH07CgpB
+bmQgdGhlIHdhdGNoZG9nIGhhcyBubyBjbG9jayBkZWZpbmVkLiBUaGUgY2xvY2sgaXMgYWxzbyBu
+b3QgZGVmaW5lZCBpbiAKaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzMjgtY3J1Lmggbm9y
+IGluIApkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzI4LmMKClRoZSByazMzMjggVFJNIApo
+dHRwOi8vb3BlbnNvdXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvOS85Ny9Sb2NrY2hpcF9SSzMz
+MjhUUk1fVjEuMS1QYXJ0MS0yMDE3MDMyMS5wZGYgCmRvZXNuJ3QgaGF2ZSBhIENSVSBDbG9jayBB
+cmNoaXRlY3R1cmUgZGlhZ3JhbS4gVGhlIHdhdGNoZG9nIHNlY3Rpb24gZG9lcyAKc2F5IHRob3Vn
+aDoKCldEVCBjb3VudGVy4oCZcyBjbG9jayBpcyBwY2xrCgpBbmQgbmVlZGxlc3MgdG8gc2F5IHRo
+ZSByazMzMjggd2F0Y2hkb2cgZG9lc24ndCB3b3JrLCB0aGUgZHctd2R0IGtlcm5lbCAKbW9kdWxl
+IGZhaWxzIHdpdGg6Cgpkd193ZHQ6IHByb2JlIG9mIGZmMWEwMDAwLndhdGNoZG9nIGZhaWxlZCB3
+aXRoIGVycm9yIC0yCgpOb3cgaXNzdWVzIGxpa2UgdGhpcyBzZWVtIHRvIG9jY3VyIGFjcm9zcyB0
+aGUgd2hvbGUgcm9ja2NoaXAgc2V0IHVwLiA3IApmaWxlcyBpbiBpbmNsdWRlL2R0LWJpbmRpbmdz
+L2Nsb2NrL3JrKiBjb250YWluIHNvbWUga2luZCBvZiBfV0RUIGxpbmUsIAphbmQgNCByayogZmls
+ZXMgZG9uJ3QgaGF2ZSBhbnkgX1dEVCBsaW5lLiBJJ3ZlIG5vdCBjaGVja2VkIGFsbCB0aGVpciBU
+Uk0gCnRob3VnaC4gVGhlIG9uZXMgbWlzc2luZyBhIFdEVCBsaW5lIGFyZToKCnJrMzA2NmEtY3J1
+LmgKcmszMjI4LWNydS5oCnJrMzMyOC1jcnUuaApyazMzOTktZGRyLmggKG1heWJlIHRoaXMgc2hv
+dWxkbid0IGhhdmUgb25lIC4uLikKClNvIHR3byBxdWVzdGlvbnM6CgouIElzIGl0IGtub3duIGhv
+dyByb2NrY2hpcCB3aXJlIHRoZSB3YXRjaGRvZyBjbG9jayBpbiB0aGUgcmsgY2hpcHM/Ci4gSG93
+IGlzIGl0IGJlc3QgdG8gc2V0IHRoaXMgdXAgaW4gdGhlIGtlcm5lbD8KLiBDYW4gd2UgZG8gdGhp
+cyBmb3IgYWxsIHJvY2tjaGlwIGRldmljZXM/CgpEb2VzIGFueW9uZSBoYXZlIGFueSB0aG91Z2h0
+cz8KCkRhdmlkCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
