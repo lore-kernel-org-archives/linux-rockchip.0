@@ -1,46 +1,85 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] clk: rockchip: use the newly added clock-id for hdmi on
- RK3066
-Date: Mon,  8 Oct 2018 14:02:47 +0200
-Message-ID: <20181008120247.31242-2-heiko@sntech.de>
-References: <20181008120247.31242-1-heiko@sntech.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 28/36] dt-bindings: arm: Convert Rockchip board/soc
+ bindings to json-schema
+Date: Mon, 8 Oct 2018 08:46:08 -0500
+Message-ID: <CAL_Jsq+79kn8BtL_saZOMGRqJ0kJq14HCekhVPfbFSquBdRAqA@mail.gmail.com>
+References: <20181005165848.3474-1-robh@kernel.org> <20181005165848.3474-29-robh@kernel.org>
+ <1857752.ZLvpeyYpZr@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181008120247.31242-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1857752.ZLvpeyYpZr@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "heiko@sntech.de" <heiko@sntech.de>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Grant Likely <glikely@secretlab.ca>, Kumar Gala <kumar.gala@linaro.org>, Frank Rowand <frowand.list@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Olof Johansson <olof@lixom.net>, Arnd Bergmann <arnd@arndb.de>, Mark Brown <broonie@kernel.org>, Tom Rini <trini@konsulko.com>, Pantelis Antoniou <pantelis.antoniou@konsulko.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Jonathan Cameron <jic23@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>"open list:ARM/Rockchip SoC..." <li>
 List-Id: linux-rockchip.vger.kernel.org
 
-Export the clock for devicetree usage via the newly added id.
+On Mon, Oct 8, 2018 at 4:45 AM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> Hi Rob,
+>
+> either I'm misunderstanding that, or something did go a bit wrong during
+> the conversion, as pointed out below:
+>
+> Am Freitag, 5. Oktober 2018, 18:58:40 CEST schrieb Rob Herring:
+> > Convert Rockchip SoC bindings to DT schema format using json-schema.
+> >
+> > Cc: Mark Rutland <mark.rutland@arm.com>
+> > Cc: Heiko Stuebner <heiko@sntech.de>
+> > Cc: devicetree@vger.kernel.org
+> > Cc: linux-arm-kernel@lists.infradead.org
+> > Cc: linux-rockchip@lists.infradead.org
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  .../devicetree/bindings/arm/rockchip.txt      | 220 ----------------
+> >  .../devicetree/bindings/arm/rockchip.yaml     | 242 ++++++++++++++++++
+> >  2 files changed, 242 insertions(+), 220 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/arm/rockchip.txt
+> >  create mode 100644 Documentation/devicetree/bindings/arm/rockchip.yaml
+> >
+>
+>
+>
+> > +properties:
+> > +  $nodename:
+> > +    const: '/'
+> > +  compatible:
+> > +    oneOf:
+> > +      - items:
+> > +          - enum:
+> > +              - amarula,vyasa-rk3288
+> > +              - asus,rk3288-tinker
+> > +              - radxa,rock2-square
+> > +              - chipspark,popmetal-rk3288
+> > +              - netxeon,r89
+> > +              - firefly,firefly-rk3288
+> > +              - firefly,firefly-rk3288-beta
+> > +              - firefly,firefly-rk3288-reload
+> > +              - mqmaker,miqi
+> > +              - rockchip,rk3288-fennec
+> > +          - const: rockchip,rk3288
+>
+> These are very much distinct boards, so shouldn't they also get
+> individual entries including their existing description like the phytec
+> or google boards below?
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/clk/rockchip/clk-rk3188.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+It is grouped by SoC compatible and # of compatible strings. So this
+one is all the cases that have 2 compatible strings. It is simply
+saying the 1st compatible string must be one of the enums and the 2nd
+compatible string must be "rockchip,rk3288".
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 67e73fd71f09..fa25e35ce7d5 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -645,7 +645,7 @@ static struct rockchip_clk_branch rk3066a_clk_branches[] __initdata = {
- 	GATE(HCLK_I2S1, "hclk_i2s1", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 3, GFLAGS),
- 	GATE(HCLK_I2S2, "hclk_i2s2", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 4, GFLAGS),
- 	GATE(HCLK_CIF1, "hclk_cif1", "hclk_cpu", 0, RK2928_CLKGATE_CON(6), 6, GFLAGS),
--	GATE(0, "hclk_hdmi", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 14, GFLAGS),
-+	GATE(HCLK_HDMI, "hclk_hdmi", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 14, GFLAGS),
- 
- 	GATE(HCLK_OTG1, "hclk_usbotg1", "hclk_peri", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(5), 14, GFLAGS),
--- 
-2.18.0
+>
+> Similarly why is it an enum for those, while the Google boards get a
+> const for each compatible string?
+
+Because each Google board is a fixed list of strings.
+
+> Most non-google boards below also lost their description and where lumped
+> together into combined entries. Was that intentional?
+
+If the description was just repeating the compatible string with
+spaces and capitalization, then yes it was intentional. If your
+description matches what you have for 'model', then I'd prefer to see
+model added as a property schema.
+
+Rob
