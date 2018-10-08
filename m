@@ -1,8 +1,7 @@
-From: 4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Subject: [rk3188-radxa] USB reset, cannot enumerate
-Date: Mon, 08 Oct 2018 12:33:22 +0200
-Message-ID: <1644317.H7zTSKHW2t@think-future.de>
-Reply-To: "4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 1/2] clk: rockchip: add clock-id for HCLK_HDMI on rk3066
+Date: Mon,  8 Oct 2018 14:02:46 +0200
+Message-ID: <20181008120247.31242-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -16,71 +15,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+RK3066 and RK3188 share most of the clock controller but the rk3066 does
+have an internal hdmi encoder and associated clock. Therefore add a
+clock-id so that this clock can be used.
 
-When cloning the micro-sdcard (internal reader, boot device) to a standard 
-size sdcard on a rk3188 based SoC (radxa rock pro) using dd the transfer fails 
-after a couple of seconds. It recovers only after un-/replugging. dmesg shows 
-the following USB device messages:
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ include/dt-bindings/clock/rk3188-cru-common.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-usb 2-1.3: New USB device found, idVendor=05e3, idProduct=0608, 
-bcdDevice=60.52
-usb 2-1.3: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 2-1.3: Product: USB2.0 Hub
-hub 2-1.3:1.0: USB hub found
-hub 2-1.3:1.0: 4 ports detected
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-hub 2-1.3:1.0: hub_ext_port_status failed (err = -71)
-usb 2-1.3: Failed to suspend device, error -71
-usb 2-1.3: USB disconnect, device number 21
-usb 2-1.3: new high-speed USB device number 22 using dwc2
-usb 2-1.3: device descriptor read/64, error -71
-usb 2-1.3: New USB device found, idVendor=05e3, idProduct=0608, 
-bcdDevice=60.52
-usb 2-1.3: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 2-1.3: Product: USB2.0 Hub
-hub 2-1.3:1.0: USB hub found
-hub 2-1.3:1.0: 4 ports detected
-usb 2-1.3.2: new high-speed USB device number 23 using dwc2
-usb 2-1.3.2: New USB device found, idVendor=1bcf, idProduct=0c31, bcdDevice= 
-1.32
+diff --git a/include/dt-bindings/clock/rk3188-cru-common.h b/include/dt-bindings/clock/rk3188-cru-common.h
+index b9462b7d3dfe..dc2101a634be 100644
+--- a/include/dt-bindings/clock/rk3188-cru-common.h
++++ b/include/dt-bindings/clock/rk3188-cru-common.h
+@@ -139,8 +139,9 @@
+ #define HCLK_CIF1		470
+ #define HCLK_VEPU		471
+ #define HCLK_VDPU		472
++#define HCLK_HDMI		473
+ 
+-#define CLK_NR_CLKS		(HCLK_VDPU + 1)
++#define CLK_NR_CLKS		(HCLK_HDMI + 1)
+ 
+ /* soft-reset indices */
+ #define SRST_MCORE		2
 -- 
-
-usb 2-1.3.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-usb 2-1.3.2: Product: USB to Serial-ATA bridge
-usb 2-1.3.2: Manufacturer: Sunplus Innovation Technology 
-usb 2-1.3.2: SerialNumber: FAFDFFF0FF183335804373
-usb-storage 2-1.3.2:1.0: USB Mass Storage device detected
-scsi host0: usb-storage 2-1.3.2:1.0
-usb 2-1.3: USB disconnect, device number 22
-usb 2-1.3.2: USB disconnect, device number 23
-usb 2-1.3: new high-speed USB device number 24 using dwc2
-usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
-usb 2-1.3: new high-speed USB device number 25 using dwc2
-usb 2-1.3: device not accepting address 25, error -71
-usb 2-1-port3: attempt power cycle
-usb 2-1.3: new full-speed USB device number 27 using dwc2
-usb 2-1.3: device descriptor read/64, error -32
-usb 2-1.3: device descriptor read/64, error -32
-
-This happens reproducibly. It happens when using the sdcard-reader connected 
-to an external USB-hub and it also happens when the reader is connected 
-directly to the internal USB-hub. I tried dd bs>=512 and it always failed.
-
-The reader and cable is used on a daily basis w/ other hosts and has always 
-been working reliably.
-
-Is USB on rk3188 known to be unstable? Is it the PCB layout ("Maybe the USB 
-cable is bad?")?
-
-Any ideas, hints anyone?
-
-Cheers
-
-4omecha
+2.18.0
