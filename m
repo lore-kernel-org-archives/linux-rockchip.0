@@ -1,14 +1,14 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 3/3] This patch adds wifi to asus tinker board S
-Date: Mon, 08 Oct 2018 11:30:47 +0200
-Message-ID: <5682345.Yzn33l6ONg@phil>
-References: <20180922170236.8690-1-beagleboard@davidjohnsummers.uk>
- <20180922170236.8690-4-beagleboard@davidjohnsummers.uk>
+Subject: Re: [PATCH v4 0/2] Reworked rk3288-tinker-s devicetree
+Date: Mon, 08 Oct 2018 11:32:28 +0200
+Message-ID: <1701725.aGruVrenYc@phil>
+References: <20180923113807.11558-1-heiko@sntech.de>
+ <5dc8cdc9-20d5-bafa-3693-67ec09577234@davidjohnsummers.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20180922170236.8690-4-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+In-Reply-To: <5dc8cdc9-20d5-bafa-3693-67ec09577234-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,162 +19,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi David,
 
-Am Samstag, 22. September 2018, 19:02:36 CEST schrieb David Summers:
-> Now as fair as I understand. the asus tinker board contains a wifi
-> So should this patch be added to the tinker board dtsi ?
+Am Samstag, 6. Oktober 2018, 14:54:37 CEST schrieb David Summers:
+> Hi Heiko,
 > 
-> It also far move complex - it adds far more things, so consider
+> Re: 
+> http://lists.infradead.org/pipermail/linux-rockchip/2018-September/021762.html
 > 
-> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-> ---
->  arch/arm/boot/dts/rk3288-tinker-s.dts | 93 +++++++++++++++++++++++++++
->  1 file changed, 93 insertions(+)
+> We've just had another use on Arm Arch interested in installing on a 
+> Tinker Board. So this gives the chance to test the wi-fi patch on a 
+> Tinker Board as well as Tinker Board S; so give better of where to apply 
+> the patch.
 > 
-> diff --git a/arch/arm/boot/dts/rk3288-tinker-s.dts b/arch/arm/boot/dts/rk3288-tinker-s.dts
-> index bc691e3f9c07..3d91924fd8db 100644
-> --- a/arch/arm/boot/dts/rk3288-tinker-s.dts
-> +++ b/arch/arm/boot/dts/rk3288-tinker-s.dts
-> @@ -10,6 +10,95 @@
->  / {
->  	model = "Rockchip RK3288 Asus Tinker Board S";
->  	compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
-> +
-> +	wireless-bluetooth {
-> +		compatible = "bluetooth-platdata";
-> +		uart_rts_gpios = <&gpio4 19 GPIO_ACTIVE_LOW>;
-> +		pinctrl-names = "default","rts_gpio";
-> +		pinctrl-0 = <&uart0_rts>;
-> +		pinctrl-1 = <&uart0_gpios>;
-> +		BT,reset_gpio    = <&gpio4 29 GPIO_ACTIVE_HIGH>;
-> +		BT,wake_gpio     = <&gpio4 26 GPIO_ACTIVE_HIGH>;
-> +		BT,wake_host_irq = <&gpio4 31 GPIO_ACTIVE_HIGH>;
-> +		status = "okay";
-> +	};
-
-the basic problem here is, that all these nodes stem from the so called
-soc-vendor-tree. Devicetree bindings normally go through a review process
-while soc vendors often invent their own shortcut that is not and will
-not be supported by the mainline kernel.
-
-Bluetooth-platdata and wlan-platdata are examples of that.
-
-Additionally, the kernel now has the somewhat new "serdev" to manage the
-needed connection between bluetooth and uart. See
-http://events17.linuxfoundation.org/sites/events/files/slides/serdev-elce-2017-2.pdf
-for an introduction.
-
-
-> +	wireless-wlan {
-> +		compatible = "wlan-platdata";
-> +		rockchip,grf = <&grf>;
-> +		wifi_chip_type = "ap6212";
-> +		sdio_vref = <1800>;
-> +		WIFI,host_wake_irq = <&gpio4 30 GPIO_ACTIVE_HIGH>;
-> +		status = "okay";
-> +	};
-> +
-> +	io-domains {
-> +		compatible = "rockchip,rk3288-io-voltage-domain";
-> +		rockchip,grf = <&grf>;
-> +		flash0-supply = <&vcc_flash>;
-> +		gpio30-supply = <&vcc_io>;
-> +		wifi-supply = <&vcc_18>;
-> +		sdcard-supply = <&vccio_sd>;
-> +	};
-
-io-domains node is already present in rk3288-tinker.dtsi, so please
-add additional properties there (compatible + rockchip,grf are not needed)
-
-> +
-> +	sdio_pwrseq: sdio-pwrseq {
-> +		compatible = "mmc-pwrseq-simple";
-> +		clocks = <&rk808 1>;
-> +		clock-names = "ext_clock";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&chip_enable_h>, <&wifi_enable_h>;
-> +
-> +		/*
-> +		 * On the module itself this is one of these (depending
-> +		 * on the actual card populated):
-> +		 * - SDIO_RESET_L_WL_REG_ON
-> +		 * - PDN (power down when low)
-> +		 */
-> +		reset-gpios = <&gpio4 28 GPIO_ACTIVE_LOW>, <&gpio4 27 GPIO_ACTIVE_LOW>;
-> +	};
-> +
-> +	vcc_flash: flash-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_flash";
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +		vin-supply = <&vcc_io>;
-> +	};
-
-that is a supply for the emmc - so not related to wifi at all, and I don't
-think that is actually named that way in the device schematics. Please
-use supply-names as described in the schematics pdf - I'd think Asus
-should provide one for the dev-board somewhere.
-
-
-> +};
-> +
-> +&pinctrl {
-> +	sdio-pwrseq {
-> +		wifi_enable_h: wifi-enable-h {
-> +			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +		chip_enable_h: chip-enable-h {
-> +			rockchip,pins = <4 27 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	wireless-bluetooth {
-> +		uart0_gpios: uart0-gpios {
-> +			rockchip,pins = <4 19 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-
-not needed
-
-> +};
-> +
-> +&sdio0 {
-> +	status = "okay";
-> +	clock-frequency = <50000000>;
-> +	clock-freq-min-max = <200000 50000000>;
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	disable-wp;
-> +	keep-power-in-suspend;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	non-removable;
-> +	num-slots = <1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-> +	sd-uhs-sdr104;
-> +	supports-sdio;
->  };
->  
->  &emmc {
-> @@ -25,3 +114,7 @@
->  	mmc-ddr-1_8v;
->  	status = "okay";
->  };
-> +
-> +&uart0 {
-> +	pinctrl-0 = <&uart0_xfer>, <&uart0_cts>;
-> +};
+> So half thinking of having another go at the wi-fi patch.
 > 
+> But should first check, what problems did you see with the patch? Let me 
+> know and I'll see if I can incorporate in patch update. As much as 
+> anything, I want to minimize the number of tb{s}.dtb that I send out to 
+> arch arm users, as testing before submission. E.g. the users have 
+> limited tolerance, may be able to try a few device trees with them - but 
+> if it takes too many iterations, they will just switch to linarno kernel ...
 
-So ideally, take a look at other Rockchip boards on how they hook up wifi
-and start small by checking what the &sdio part above actually needs to
-function, then expand from there.
-
+I did seem to have procrastinated a bit with my reply there, sorry
+about that. I've replied to the original patch now.
 
 Heiko
+
+
+> 
+> Ta,
+> 
+> David.
+> 
+> On 23/09/2018 12:38, Heiko Stuebner wrote:
+> > Hi David,
+> >
+> > I've adpated your patches 1+2 like so and would like to add them this way
+> > later on. Biggest change is of course making patch 1 solely about moving
+> > the shared parts to the dtsi and adding the tinker-s.dts including the
+> > emmc in the second patch.
+> >
+> > Apart from that you can also see some previously missing style-related
+> > fixes. For example patch subject lines are somewhat specific, to allow
+> > people browsing the git history to realize the core patch contents just
+> > from the "headline" and also use the "correct" prefixes which vary
+> > depending on the subsystem your changing.
+> >
+> > For future patches you can just do a "git log --oneline arch/arm/boot/dts"
+> > (change directory depending on location of the change of course), to
+> > see that arm32 dts use "ARM: dts: $soc-vendor: foo".
+> >
+> >
+> > Also providing a commit message describing the individual change
+> > in a bit more detail is important.
+> >
+> > The wifi patch is a different issue, so I'll reply there.
+> >
+> >
+> > Heiko
+> >
+> > David Summers (2):
+> >    ARM: dts: rockchip: move shared tinker-board nodes to a common dtsi
+> >    ARM: dts: rockchip: add rk3288-based Tinker board S
+> >
+> >   .../devicetree/bindings/arm/rockchip.txt      |   4 +
+> >   arch/arm/boot/dts/Makefile                    |   1 +
+> >   arch/arm/boot/dts/rk3288-tinker-s.dts         |  26 +
+> >   arch/arm/boot/dts/rk3288-tinker.dts           | 498 +----------------
+> >   arch/arm/boot/dts/rk3288-tinker.dtsi          | 504 ++++++++++++++++++
+> >   5 files changed, 537 insertions(+), 496 deletions(-)
+> >   create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
+> >   create mode 100644 arch/arm/boot/dts/rk3288-tinker.dtsi
+> >
+> 
+> 
