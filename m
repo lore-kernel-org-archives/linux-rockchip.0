@@ -1,12 +1,14 @@
-From: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Subject: Rockchip - watchdog - clocks
-Date: Sat, 6 Oct 2018 14:50:07 +0100
-Message-ID: <48a857e2-2a62-ca9b-0299-80a814b78463@davidjohnsummers.uk>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 3/3] This patch adds wifi to asus tinker board S
+Date: Mon, 08 Oct 2018 11:30:47 +0200
+Message-ID: <5682345.Yzn33l6ONg@phil>
+References: <20180922170236.8690-1-beagleboard@davidjohnsummers.uk>
+ <20180922170236.8690-4-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-GB
+In-Reply-To: <20180922170236.8690-4-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,60 +18,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpUaGlzIGlzIGludGVuZGVkIGFzIGEgc3ViamVjdCBmb3IgZGlzY3Vzc2lvbiwgdG8gc2Vl
-IGlmIHdlIGNhbiBkZWNpZGUgCnRoZSBiZXN0IHdheSBmb3J3YXJkLgoKVGhlIHdhdGNoZG9nIGNs
-b2NrcyBpbiB0aGUga2VybmVsLCBhcmUgbm90IGNvbnNpc3RlbnQsIGFuZCB3aGVyZSB0aGUgCmN1
-cnJlbnQgY29kZSBoYXMgY29tZSBmcm9tLCBhbmQgaG93IGl0IGFwcGxpZXMgYmV0d2VlbiBkaWZm
-ZXJlbnQgY2hpcCAKc2V0cyBpc24ndCBjbGVhci4KCkZpcnN0IG9mZiBhIGNvbmZpZ3VyYXRpb24g
-dGhhdCB3b3JrczogUkszMjg4OgoKYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2k6CgogwqDC
-oMKgIHdkdDogd2F0Y2hkb2dAZmY4MDAwMDAgewogwqDCoMKgIMKgwqDCoCBjb21wYXRpYmxlID0g
-InJvY2tjaGlwLHJrMzI4OC13ZHQiLCAic25wcyxkdy13ZHQiOwogwqDCoMKgIMKgwqDCoCByZWcg
-PSA8MHgwIDB4ZmY4MDAwMDAgMHgwIDB4MTAwPjsKIMKgwqDCoCDCoMKgwqAgY2xvY2tzID0gPCZj
-cnUgUENMS19XRFQ+OwogwqDCoMKgIMKgwqDCoCBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNzkgSVJR
-X1RZUEVfTEVWRUxfSElHSD47CiDCoMKgwqAgwqDCoMKgIHN0YXR1cyA9ICJkaXNhYmxlZCI7CiDC
-oMKgwqAgfTsKCmluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svcmszMjg4LWNydS5oOgoKI2RlZmlu
-ZSBQQ0xLX1dEVMKgwqDCoCDCoMKgwqAgMzY4Cgpkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmsz
-Mjg4LmM6CgogwqDCoMKgIC8qIFdhdGNoZG9nIHBjbGsgaXMgY29udHJvbGxlZCBieSBSSzMyODhf
-U0dSRl9TT0NfQ09OMFsxXS4gKi8KIMKgwqDCoCBjbGsgPSBjbGtfcmVnaXN0ZXJfZml4ZWRfZmFj
-dG9yKE5VTEwsICJwY2xrX3dkdCIsICJwY2xrX3BkX2FsaXZlIiwgCjAsIDEsIDEpOwogwqDCoMKg
-IGlmIChJU19FUlIoY2xrKSkKIMKgwqDCoCDCoMKgwqAgcHJfd2FybigiJXM6IGNvdWxkIG5vdCBy
-ZWdpc3RlciBjbG9jayBwY2xrX3dkdDogJWxkXG4iLAogwqDCoMKgIMKgwqDCoCDCoMKgwqAgX19m
-dW5jX18sIFBUUl9FUlIoY2xrKSk7CiDCoMKgwqAgZWxzZQogwqDCoMKgIMKgwqDCoCByb2NrY2hp
-cF9jbGtfYWRkX2xvb2t1cChjdHgsIGNsaywgUENMS19XRFQpOwoKTm93IHRoZSBzb3VyY2Ugb2Yg
-dGhlIHJvY2tjaGlwIGNydSBmb3IgcmszMjg4IGlzIHRoZSBUUk06CgpodHRwOi8vb3BlbnNvdXJj
-ZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvOC84Zi9Sb2NrY2hpcF9SSzMyODhfVFJNX1YxLjJfUGFy
-dDEtMjAxNzAzMjEucGRmCgpGaWcgMi0yIHRocm91Z2ggdG8gZmlnIDItNSBDUlUgQ2xvY2sgQXJj
-aGl0ZWN0dXJlIC0gYnV0IHRoaXMgZG9lc24ndCAKc2hvdyB0aGUgd2F0Y2hkb2cgY2xvY2suIFRo
-ZSB3YXRjaGRvZyBzZWN0aW9uIG9mIHRoZSBUUk0gc2F5czoKCldEVCBjb3VudGVy4oCZcyBjbG9j
-ayBpcyBwY2xrCgpBbmQgdGhpcyBhbGwgY3JlYXRlcyBhIHdvcmtpbmcgd2F0Y2hkb2cgb24gdGhl
-IHJrMzI4OC4KCkJ1dCBpbnN0ZWFkIGxvb2sgYXQgdGhlIHJrMzMyODoKCmFyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzI4LmR0c2kKCiDCoMKgwqAgd2R0OiB3YXRjaGRvZ0BmZjFhMDAw
-MCB7CiDCoMKgwqAgwqDCoMKgIGNvbXBhdGlibGUgPSAic25wcyxkdy13ZHQiOwogwqDCoMKgIMKg
-wqDCoCByZWcgPSA8MHgwIDB4ZmYxYTAwMDAgMHgwIDB4MTAwPjsKIMKgwqDCoCDCoMKgwqAgaW50
-ZXJydXB0cyA9IDxHSUNfU1BJIDQwIElSUV9UWVBFX0xFVkVMX0hJR0g+OwogwqDCoMKgIH07CgpB
-bmQgdGhlIHdhdGNoZG9nIGhhcyBubyBjbG9jayBkZWZpbmVkLiBUaGUgY2xvY2sgaXMgYWxzbyBu
-b3QgZGVmaW5lZCBpbiAKaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzMjgtY3J1Lmggbm9y
-IGluIApkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzI4LmMKClRoZSByazMzMjggVFJNIApo
-dHRwOi8vb3BlbnNvdXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvOS85Ny9Sb2NrY2hpcF9SSzMz
-MjhUUk1fVjEuMS1QYXJ0MS0yMDE3MDMyMS5wZGYgCmRvZXNuJ3QgaGF2ZSBhIENSVSBDbG9jayBB
-cmNoaXRlY3R1cmUgZGlhZ3JhbS4gVGhlIHdhdGNoZG9nIHNlY3Rpb24gZG9lcyAKc2F5IHRob3Vn
-aDoKCldEVCBjb3VudGVy4oCZcyBjbG9jayBpcyBwY2xrCgpBbmQgbmVlZGxlc3MgdG8gc2F5IHRo
-ZSByazMzMjggd2F0Y2hkb2cgZG9lc24ndCB3b3JrLCB0aGUgZHctd2R0IGtlcm5lbCAKbW9kdWxl
-IGZhaWxzIHdpdGg6Cgpkd193ZHQ6IHByb2JlIG9mIGZmMWEwMDAwLndhdGNoZG9nIGZhaWxlZCB3
-aXRoIGVycm9yIC0yCgpOb3cgaXNzdWVzIGxpa2UgdGhpcyBzZWVtIHRvIG9jY3VyIGFjcm9zcyB0
-aGUgd2hvbGUgcm9ja2NoaXAgc2V0IHVwLiA3IApmaWxlcyBpbiBpbmNsdWRlL2R0LWJpbmRpbmdz
-L2Nsb2NrL3JrKiBjb250YWluIHNvbWUga2luZCBvZiBfV0RUIGxpbmUsIAphbmQgNCByayogZmls
-ZXMgZG9uJ3QgaGF2ZSBhbnkgX1dEVCBsaW5lLiBJJ3ZlIG5vdCBjaGVja2VkIGFsbCB0aGVpciBU
-Uk0gCnRob3VnaC4gVGhlIG9uZXMgbWlzc2luZyBhIFdEVCBsaW5lIGFyZToKCnJrMzA2NmEtY3J1
-LmgKcmszMjI4LWNydS5oCnJrMzMyOC1jcnUuaApyazMzOTktZGRyLmggKG1heWJlIHRoaXMgc2hv
-dWxkbid0IGhhdmUgb25lIC4uLikKClNvIHR3byBxdWVzdGlvbnM6CgouIElzIGl0IGtub3duIGhv
-dyByb2NrY2hpcCB3aXJlIHRoZSB3YXRjaGRvZyBjbG9jayBpbiB0aGUgcmsgY2hpcHM/Ci4gSG93
-IGlzIGl0IGJlc3QgdG8gc2V0IHRoaXMgdXAgaW4gdGhlIGtlcm5lbD8KLiBDYW4gd2UgZG8gdGhp
-cyBmb3IgYWxsIHJvY2tjaGlwIGRldmljZXM/CgpEb2VzIGFueW9uZSBoYXZlIGFueSB0aG91Z2h0
-cz8KCkRhdmlkCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hi David,
+
+Am Samstag, 22. September 2018, 19:02:36 CEST schrieb David Summers:
+> Now as fair as I understand. the asus tinker board contains a wifi
+> So should this patch be added to the tinker board dtsi ?
+> 
+> It also far move complex - it adds far more things, so consider
+> 
+> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3288-tinker-s.dts | 93 +++++++++++++++++++++++++++
+>  1 file changed, 93 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288-tinker-s.dts b/arch/arm/boot/dts/rk3288-tinker-s.dts
+> index bc691e3f9c07..3d91924fd8db 100644
+> --- a/arch/arm/boot/dts/rk3288-tinker-s.dts
+> +++ b/arch/arm/boot/dts/rk3288-tinker-s.dts
+> @@ -10,6 +10,95 @@
+>  / {
+>  	model = "Rockchip RK3288 Asus Tinker Board S";
+>  	compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
+> +
+> +	wireless-bluetooth {
+> +		compatible = "bluetooth-platdata";
+> +		uart_rts_gpios = <&gpio4 19 GPIO_ACTIVE_LOW>;
+> +		pinctrl-names = "default","rts_gpio";
+> +		pinctrl-0 = <&uart0_rts>;
+> +		pinctrl-1 = <&uart0_gpios>;
+> +		BT,reset_gpio    = <&gpio4 29 GPIO_ACTIVE_HIGH>;
+> +		BT,wake_gpio     = <&gpio4 26 GPIO_ACTIVE_HIGH>;
+> +		BT,wake_host_irq = <&gpio4 31 GPIO_ACTIVE_HIGH>;
+> +		status = "okay";
+> +	};
+
+the basic problem here is, that all these nodes stem from the so called
+soc-vendor-tree. Devicetree bindings normally go through a review process
+while soc vendors often invent their own shortcut that is not and will
+not be supported by the mainline kernel.
+
+Bluetooth-platdata and wlan-platdata are examples of that.
+
+Additionally, the kernel now has the somewhat new "serdev" to manage the
+needed connection between bluetooth and uart. See
+http://events17.linuxfoundation.org/sites/events/files/slides/serdev-elce-2017-2.pdf
+for an introduction.
+
+
+> +	wireless-wlan {
+> +		compatible = "wlan-platdata";
+> +		rockchip,grf = <&grf>;
+> +		wifi_chip_type = "ap6212";
+> +		sdio_vref = <1800>;
+> +		WIFI,host_wake_irq = <&gpio4 30 GPIO_ACTIVE_HIGH>;
+> +		status = "okay";
+> +	};
+> +
+> +	io-domains {
+> +		compatible = "rockchip,rk3288-io-voltage-domain";
+> +		rockchip,grf = <&grf>;
+> +		flash0-supply = <&vcc_flash>;
+> +		gpio30-supply = <&vcc_io>;
+> +		wifi-supply = <&vcc_18>;
+> +		sdcard-supply = <&vccio_sd>;
+> +	};
+
+io-domains node is already present in rk3288-tinker.dtsi, so please
+add additional properties there (compatible + rockchip,grf are not needed)
+
+> +
+> +	sdio_pwrseq: sdio-pwrseq {
+> +		compatible = "mmc-pwrseq-simple";
+> +		clocks = <&rk808 1>;
+> +		clock-names = "ext_clock";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&chip_enable_h>, <&wifi_enable_h>;
+> +
+> +		/*
+> +		 * On the module itself this is one of these (depending
+> +		 * on the actual card populated):
+> +		 * - SDIO_RESET_L_WL_REG_ON
+> +		 * - PDN (power down when low)
+> +		 */
+> +		reset-gpios = <&gpio4 28 GPIO_ACTIVE_LOW>, <&gpio4 27 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+> +	vcc_flash: flash-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_flash";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		vin-supply = <&vcc_io>;
+> +	};
+
+that is a supply for the emmc - so not related to wifi at all, and I don't
+think that is actually named that way in the device schematics. Please
+use supply-names as described in the schematics pdf - I'd think Asus
+should provide one for the dev-board somewhere.
+
+
+> +};
+> +
+> +&pinctrl {
+> +	sdio-pwrseq {
+> +		wifi_enable_h: wifi-enable-h {
+> +			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +		chip_enable_h: chip-enable-h {
+> +			rockchip,pins = <4 27 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	wireless-bluetooth {
+> +		uart0_gpios: uart0-gpios {
+> +			rockchip,pins = <4 19 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+
+not needed
+
+> +};
+> +
+> +&sdio0 {
+> +	status = "okay";
+> +	clock-frequency = <50000000>;
+> +	clock-freq-min-max = <200000 50000000>;
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	disable-wp;
+> +	keep-power-in-suspend;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	num-slots = <1>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+> +	sd-uhs-sdr104;
+> +	supports-sdio;
+>  };
+>  
+>  &emmc {
+> @@ -25,3 +114,7 @@
+>  	mmc-ddr-1_8v;
+>  	status = "okay";
+>  };
+> +
+> +&uart0 {
+> +	pinctrl-0 = <&uart0_xfer>, <&uart0_cts>;
+> +};
+> 
+
+So ideally, take a look at other Rockchip boards on how they hook up wifi
+and start small by checking what the &sdio part above actually needs to
+function, then expand from there.
+
+
+Heiko
