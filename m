@@ -1,99 +1,286 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 0/2] Reworked rk3288-tinker-s devicetree
-Date: Mon, 08 Oct 2018 11:32:28 +0200
-Message-ID: <1701725.aGruVrenYc@phil>
-References: <20180923113807.11558-1-heiko@sntech.de>
- <5dc8cdc9-20d5-bafa-3693-67ec09577234@davidjohnsummers.uk>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 28/36] dt-bindings: arm: Convert Rockchip board/soc bindings to json-schema
+Date: Mon, 08 Oct 2018 11:45:19 +0200
+Message-ID: <1857752.ZLvpeyYpZr@phil>
+References: <20181005165848.3474-1-robh@kernel.org> <20181005165848.3474-29-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5dc8cdc9-20d5-bafa-3693-67ec09577234-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181005165848.3474-29-robh@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, Grant Likely <glikely@secretlab.ca>, Kumar Gala <kumar.gala@linaro.org>, Frank Rowand <frowand.list@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Olof Johansson <olof@lixom.net>, Arnd Bergmann <arnd@arndb.de>, Mark Brown <broonie@kernel.org>, Tom Rini <trini@konsulko.com>, Pantelis Antoniou <pantelis.antoniou@konsulko.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Jonathan Cameron <jic23@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+Hi Rob,
 
-Am Samstag, 6. Oktober 2018, 14:54:37 CEST schrieb David Summers:
-> Hi Heiko,
-> 
-> Re: 
-> http://lists.infradead.org/pipermail/linux-rockchip/2018-September/021762.html
-> 
-> We've just had another use on Arm Arch interested in installing on a 
-> Tinker Board. So this gives the chance to test the wi-fi patch on a 
-> Tinker Board as well as Tinker Board S; so give better of where to apply 
-> the patch.
-> 
-> So half thinking of having another go at the wi-fi patch.
-> 
-> But should first check, what problems did you see with the patch? Let me 
-> know and I'll see if I can incorporate in patch update. As much as 
-> anything, I want to minimize the number of tb{s}.dtb that I send out to 
-> arch arm users, as testing before submission. E.g. the users have 
-> limited tolerance, may be able to try a few device trees with them - but 
-> if it takes too many iterations, they will just switch to linarno kernel ...
+either I'm misunderstanding that, or something did go a bit wrong during
+the conversion, as pointed out below:
 
-I did seem to have procrastinated a bit with my reply there, sorry
-about that. I've replied to the original patch now.
+Am Freitag, 5. Oktober 2018, 18:58:40 CEST schrieb Rob Herring:
+> Convert Rockchip SoC bindings to DT schema format using json-schema.
+> 
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../devicetree/bindings/arm/rockchip.txt      | 220 ----------------
+>  .../devicetree/bindings/arm/rockchip.yaml     | 242 ++++++++++++++++++
+>  2 files changed, 242 insertions(+), 220 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/rockchip.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/rockchip.yaml
+> 
 
+
+
+> +properties:
+> +  $nodename:
+> +    const: '/'
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - amarula,vyasa-rk3288
+> +              - asus,rk3288-tinker
+> +              - radxa,rock2-square
+> +              - chipspark,popmetal-rk3288
+> +              - netxeon,r89
+> +              - firefly,firefly-rk3288
+> +              - firefly,firefly-rk3288-beta
+> +              - firefly,firefly-rk3288-reload
+> +              - mqmaker,miqi
+> +              - rockchip,rk3288-fennec
+> +          - const: rockchip,rk3288
+
+These are very much distinct boards, so shouldn't they also get
+individual entries including their existing description like the phytec
+or google boards below?
+
+Similarly why is it an enum for those, while the Google boards get a
+const for each compatible string?
+
+
+Most non-google boards below also lost their description and where lumped
+together into combined entries. Was that intentional?
+
+
+Thanks
 Heiko
 
-
-> 
-> Ta,
-> 
-> David.
-> 
-> On 23/09/2018 12:38, Heiko Stuebner wrote:
-> > Hi David,
-> >
-> > I've adpated your patches 1+2 like so and would like to add them this way
-> > later on. Biggest change is of course making patch 1 solely about moving
-> > the shared parts to the dtsi and adding the tinker-s.dts including the
-> > emmc in the second patch.
-> >
-> > Apart from that you can also see some previously missing style-related
-> > fixes. For example patch subject lines are somewhat specific, to allow
-> > people browsing the git history to realize the core patch contents just
-> > from the "headline" and also use the "correct" prefixes which vary
-> > depending on the subsystem your changing.
-> >
-> > For future patches you can just do a "git log --oneline arch/arm/boot/dts"
-> > (change directory depending on location of the change of course), to
-> > see that arm32 dts use "ARM: dts: $soc-vendor: foo".
-> >
-> >
-> > Also providing a commit message describing the individual change
-> > in a bit more detail is important.
-> >
-> > The wifi patch is a different issue, so I'll reply there.
-> >
-> >
-> > Heiko
-> >
-> > David Summers (2):
-> >    ARM: dts: rockchip: move shared tinker-board nodes to a common dtsi
-> >    ARM: dts: rockchip: add rk3288-based Tinker board S
-> >
-> >   .../devicetree/bindings/arm/rockchip.txt      |   4 +
-> >   arch/arm/boot/dts/Makefile                    |   1 +
-> >   arch/arm/boot/dts/rk3288-tinker-s.dts         |  26 +
-> >   arch/arm/boot/dts/rk3288-tinker.dts           | 498 +----------------
-> >   arch/arm/boot/dts/rk3288-tinker.dtsi          | 504 ++++++++++++++++++
-> >   5 files changed, 537 insertions(+), 496 deletions(-)
-> >   create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
-> >   create mode 100644 arch/arm/boot/dts/rk3288-tinker.dtsi
-> >
-> 
+> +
+> +      - description: Phytec phyCORE-RK3288 Rapid Development Kit
+> +        items:
+> +          - const: phytec,rk3288-pcm-947
+> +          - const: phytec,rk3288-phycore-som
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Mickey (Asus Chromebit CS10)
+> +        items:
+> +          - const: google,veyron-mickey-rev8
+> +          - const: google,veyron-mickey-rev7
+> +          - const: google,veyron-mickey-rev6
+> +          - const: google,veyron-mickey-rev5
+> +          - const: google,veyron-mickey-rev4
+> +          - const: google,veyron-mickey-rev3
+> +          - const: google,veyron-mickey-rev2
+> +          - const: google,veyron-mickey-rev1
+> +          - const: google,veyron-mickey-rev0
+> +          - const: google,veyron-mickey
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Minnie (Asus Chromebook Flip C100P)
+> +        items:
+> +          - const: google,veyron-minnie-rev4
+> +          - const: google,veyron-minnie-rev3
+> +          - const: google,veyron-minnie-rev2
+> +          - const: google,veyron-minnie-rev1
+> +          - const: google,veyron-minnie-rev0
+> +          - const: google,veyron-minnie
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Pinky (dev-board)
+> +        items:
+> +          - const: google,veyron-pinky-rev2
+> +          - const: google,veyron-pinky
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Speedy (Asus C201 Chromebook)
+> +        items:
+> +          - const: google,veyron-speedy-rev9
+> +          - const: google,veyron-speedy-rev8
+> +          - const: google,veyron-speedy-rev7
+> +          - const: google,veyron-speedy-rev6
+> +          - const: google,veyron-speedy-rev5
+> +          - const: google,veyron-speedy-rev4
+> +          - const: google,veyron-speedy-rev3
+> +          - const: google,veyron-speedy-rev2
+> +          - const: google,veyron-speedy
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Jaq (Haier Chromebook 11 and more)
+> +        items:
+> +          - const: google,veyron-jaq-rev5
+> +          - const: google,veyron-jaq-rev4
+> +          - const: google,veyron-jaq-rev3
+> +          - const: google,veyron-jaq-rev2
+> +          - const: google,veyron-jaq-rev1
+> +          - const: google,veyron-jaq
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Jerry (Hisense Chromebook C11 and more)
+> +        items:
+> +          - const: google,veyron-jerry-rev7
+> +          - const: google,veyron-jerry-rev6
+> +          - const: google,veyron-jerry-rev5
+> +          - const: google,veyron-jerry-rev4
+> +          - const: google,veyron-jerry-rev3
+> +          - const: google,veyron-jerry
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - description: Google Brain (dev-board)
+> +        items:
+> +          - const: google,veyron-brain-rev0
+> +          - const: google,veyron-brain
+> +          - const: google,veyron
+> +          - const: rockchip,rk3288
+> +
+> +      - items:
+> +          - enum:
+> +              - rockchip,kylin-rk3036
+> +          - const: rockchip,rk3036
+> +
+> +      - items:
+> +          - enum:
+> +              - haoyu,marsboard-rk3066
+> +              - mundoreader,bq-curie2
+> +              - chipspark,rayeager-px2
+> +              - rikomagic,mk80
+> +          - const: rockchip,rk3066a
+> +
+> +      - items:
+> +          - enum:
+> +              - radxa,rock
+> +          - const: rockchip,rk3188
+> +
+> +      - items:
+> +          - const: rockchip,px3-evb
+> +          - const: rockchip,px3
+> +          - const: rockchip,rk3188
+> +
+> +      - items:
+> +          - enum:
+> +              - firefly,roc-rk3328-cc
+> +              - pine64,rock64
+> +              - rockchip,rk3328-evb
+> +          - const: rockchip,rk3328
+> +
+> +      - items:
+> +          - enum:
+> +              - geekbuying,geekbox
+> +              - rockchip,rk3368-evb-act8846
+> +              - rockchip,r88
+> +              - tsd,rk3368-uq7-haikou
+> +              - tronsmart,orion-r68-meta
+> +          - const: rockchip,rk3368
+> +
+> +      - items:
+> +          - enum:
+> +              - geekbuying,geekbox
+> +              - rockchip,rk3368-evb-act8846
+> +              - rockchip,r88
+> +              - tsd,rk3368-uq7-haikou
+> +              - tronsmart,orion-r68-meta
+> +          - const: rockchip,rk3368
+> +
+> +      - items:
+> +          - const: rockchip,px5-evb
+> +          - const: rockchip,px5
+> +          - const: rockchip,rk3368
+> +
+> +      - items:
+> +          - enum:
+> +              - firefly,firefly-rk3399
+> +              - rockchip,rk3399-evb
+> +              - rockchip,rk3399-sapphire
+> +              - rockchip,rk3399-sapphire-excavator
+> +              - tsd,rk3399-q7-haikou
+> +              - vamrs,ficus
+> +          - const: rockchip,rk3399
+> +
+> +      - description: Google Bob (Asus Chromebook Flip C101PA)
+> +        items:
+> +          - const: google,bob-rev13
+> +          - const: google,bob-rev12
+> +          - const: google,bob-rev11
+> +          - const: google,bob-rev10
+> +          - const: google,bob-rev9
+> +          - const: google,bob-rev8
+> +          - const: google,bob-rev7
+> +          - const: google,bob-rev6
+> +          - const: google,bob-rev5
+> +          - const: google,bob-rev4
+> +          - const: google,bob
+> +          - const: google,gru
+> +          - const: rockchip,rk3399
+> +
+> +      - description: Google Gru (dev-board)
+> +        items:
+> +          - const: google,gru-rev15
+> +          - const: google,gru-rev14
+> +          - const: google,gru-rev13
+> +          - const: google,gru-rev12
+> +          - const: google,gru-rev11
+> +          - const: google,gru-rev10
+> +          - const: google,gru-rev9
+> +          - const: google,gru-rev8
+> +          - const: google,gru-rev7
+> +          - const: google,gru-rev6
+> +          - const: google,gru-rev5
+> +          - const: google,gru-rev4
+> +          - const: google,gru-rev3
+> +          - const: google,gru-rev2
+> +          - const: google,gru
+> +          - const: rockchip,rk3399
+> +
+> +      - description: Google Kevin (Samsung Chromebook Plus)
+> +        items:
+> +          - const: google,kevin-rev15
+> +          - const: google,kevin-rev14
+> +          - const: google,kevin-rev13
+> +          - const: google,kevin-rev12
+> +          - const: google,kevin-rev11
+> +          - const: google,kevin-rev10
+> +          - const: google,kevin-rev9
+> +          - const: google,kevin-rev8
+> +          - const: google,kevin-rev7
+> +          - const: google,kevin-rev6
+> +          - const: google,kevin
+> +          - const: google,gru
+> +          - const: rockchip,rk3399
+> +
+> +      - items:
+> +          - enum:
+> +              - rockchip,rv1108-evb
+> +          - const: rockchip,rv1108
+> +
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3228-evb
+> +          - const: rockchip,rk3228
+> +
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3229-evb
+> +          - const: rockchip,rk3229
+> +...
 > 
