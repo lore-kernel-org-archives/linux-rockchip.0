@@ -1,75 +1,82 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: [PATCH 6/6] arm64: dts: xilinx: ultra96: Standardize LED labels and triggers
-Date: Tue,  9 Oct 2018 19:35:22 +0530
-Message-ID: <20181009140522.6492-7-manivannan.sadhasivam@linaro.org>
-References: <20181009140522.6492-1-manivannan.sadhasivam@linaro.org>
+From: Otavio Salvador <otavio@ossystems.com.br>
+Subject: [PATCH] ARM: dts: rv1108-evb: enable eMMC support
+Date: Tue,  9 Oct 2018 18:36:56 -0300
+Message-ID: <20181009213656.27719-1-otavio@ossystems.com.br>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181009140522.6492-1-manivannan.sadhasivam@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, heiko@sntech.de, ezequiel@collabora.com, xuwei5@hisilicon.com, michal.simek@xilinx.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: linux-arm-kernel@lists.infradead.org
+Cc: Otavio Salvador <otavio@ossystems.com.br>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-For all 96Boards, the following standard is used for onboard LEDs.
+Enable eMMC support for rv1108 evaluation board.
 
-device-name:green:user1  default-trigger: heartbeat
-device-name:green:user2  default-trigger: mmc0/disk-activity
-                                          (onboard-storage)
-device-name:green:user3  default-trigger: mmc1 (SD-card)
-device-name:green:user4  default-trigger: none, panic-indicator
-device-name:yellow:wlan  default-trigger: phy0tx
-device-name:blue:bt      default-trigger: hci0-power
-
-So lets adopt the same for Ultra96, which is one of the 96Boards
-CE and AI platform. Since the WLAN and BT LEDs are hardwired onboard,
-consolidate only User LEDs.
-
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
 ---
- arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-index eb5e8bddb610..565ceb390f99 100644
---- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-+++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-@@ -57,29 +57,30 @@
- 	leds {
- 		compatible = "gpio-leds";
- 		ds2 {
--			label = "ds2";
-+			label = "zynqmp-zcu100-revC:green:user1";
- 			gpios = <&gpio 20 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
+ arch/arm/boot/dts/rv1108-evb.dts |  8 ++++++++
+ arch/arm/boot/dts/rv1108.dtsi    | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
+index 70f0106d1252..f3c6f52c49e6 100644
+--- a/arch/arm/boot/dts/rv1108-evb.dts
++++ b/arch/arm/boot/dts/rv1108-evb.dts
+@@ -226,6 +226,14 @@
+ 	status = "okay";
+ };
+ 
++&emmc {
++	cap-mmc-highspeed;
++	supports-emmc;
++	non-removable;
++	num-slots = <1>;
++	status = "okay";
++};
++
+ &u2phy {
+ 	status = "okay";
+ 
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index 76ea24636feb..f14a733d85f6 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -772,6 +772,35 @@
+ 			};
  		};
  
- 		ds3 {
--			label = "ds3";
-+			label = "zynqmp-zcu100-revC:green:user2";
- 			gpios = <&gpio 19 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "phy0tx"; /* WLAN tx */
-+			linux,default-trigger = "mmc0";
- 			default-state = "off";
- 		};
- 
- 		ds4 {
--			label = "ds4";
-+			label = "zynqmp-zcu100-revC:green:user3";
- 			gpios = <&gpio 18 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "phy0rx"; /* WLAN rx */
-+			linux,default-trigger = "mmc1";
- 			default-state = "off";
- 		};
- 
- 		ds5 {
--			label = "ds5";
-+			label = "zynqmp-zcu100-revC:green:user4";
- 			gpios = <&gpio 17 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "bluetooth-power";
-+			linux,default-trigger = "none";
-+			panic-indicator;
- 		};
- 
- 		vbus_det { /* U5 USB5744 VBUS detection via MIO25 */
++		emmc {
++			emmc_clk: emmc-clk {
++				rockchip,pins = <2 RK_PB6 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			};
++
++			emmc_cmd: emmc-cmd {
++				rockchip,pins = <2 RK_PB4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++			};
++
++			emmc_pwren: emmc-pwren {
++				rockchip,pins = <2 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
++			};
++
++			emmc_bus1: emmc-bus1 {
++				rockchip,pins = <2 RK_PA0 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++			};
++
++			emmc_bus8: emmc-bus8 {
++				rockchip,pins = <2 RK_PA0 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA1 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA2 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA3 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA5 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA6 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA7 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++			};
++		};
++
+ 		sdmmc {
+ 			sdmmc_clk: sdmmc-clk {
+ 				rockchip,pins = <3 RK_PC4 RK_FUNC_1 &pcfg_pull_none_drv_4ma>;
 -- 
-2.17.1
+2.19.0
