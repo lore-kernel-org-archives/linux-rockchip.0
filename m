@@ -1,89 +1,41 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH 6/6] arm64: dts: xilinx: ultra96: Standardize LED labels
- and triggers
-Date: Wed, 10 Oct 2018 13:16:41 +0530
-Message-ID: <20181010074641.GB11462@mani>
-References: <20181009140522.6492-1-manivannan.sadhasivam@linaro.org>
- <20181009140522.6492-7-manivannan.sadhasivam@linaro.org>
- <7b94c09d-ecbd-e48e-6583-127566715a76@xilinx.com>
- <20181010073546.GA11462@mani>
- <b35d87b8-b9f0-ead1-2755-0562fa1d7f3e@xilinx.com>
+From: Emil Renner Berthing <kernel@esmil.dk>
+Subject: [PATCH 0/7] Enable spi dma on Rockchip RK3399
+Date: Wed, 10 Oct 2018 11:00:31 +0200
+Message-ID: <20181010090038.20834-1-kernel@esmil.dk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <b35d87b8-b9f0-ead1-2755-0562fa1d7f3e@xilinx.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michal Simek <michal.simek@xilinx.com>, robh+dt@kernel.org
-Cc: heiko@sntech.de, ezequiel@collabora.com, xuwei5@hisilicon.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org
+To: linux-rockchip@lists.infradead.org
+Cc: Emil Renner Berthing <kernel@esmil.dk>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Shunqian Zheng <zhengsq@rock-chips.com>, Nickey Yang <nickey.yang@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Randy Li <ayaka@soulik.info>, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 10, 2018 at 09:40:22AM +0200, Michal Simek wrote:
-> On 10.10.2018 09:35, Manivannan Sadhasivam wrote:
-> > Hi Michal,
-> > 
-> > On Wed, Oct 10, 2018 at 09:25:24AM +0200, Michal Simek wrote:
-> >> On 9.10.2018 16:05, Manivannan Sadhasivam wrote:
-> >>> For all 96Boards, the following standard is used for onboard LEDs.
-> >>>
-> >>> device-name:green:user1  default-trigger: heartbeat
-> >>> device-name:green:user2  default-trigger: mmc0/disk-activity
-> >>>                                           (onboard-storage)
-> >>> device-name:green:user3  default-trigger: mmc1 (SD-card)
-> >>> device-name:green:user4  default-trigger: none, panic-indicator
-> >>> device-name:yellow:wlan  default-trigger: phy0tx
-> >>> device-name:blue:bt      default-trigger: hci0-power
-> >>>
-> >>> So lets adopt the same for Ultra96, which is one of the 96Boards
-> >>> CE and AI platform. Since the WLAN and BT LEDs are hardwired onboard,
-> >>> consolidate only User LEDs.
-> >>>
-> >>> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> >>> ---
-> >>>  arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts | 15 ++++++++-------
-> >>>  1 file changed, 8 insertions(+), 7 deletions(-)
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-> >>> index eb5e8bddb610..565ceb390f99 100644
-> >>> --- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-> >>> +++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-> >>> @@ -57,29 +57,30 @@
-> >>>  	leds {
-> >>>  		compatible = "gpio-leds";
-> >>>  		ds2 {
-> >>> -			label = "ds2";
-> >>> +			label = "zynqmp-zcu100-revC:green:user1";
-> >>
-> >> The purpose of this series should be standardize Led labels that's why I
-> >> would expect that leds will be called in the same way on all these
-> >> boards that's why I am not getting why there is board name.
-> >>
-> >> green:user1 or just user1 should be enough.
-> >>
-> > 
-> > Hmm. That's a good point. My proposal to standardize the labels is inspired from
-> > Dragonboard410c dts [1]. They had the device name in label and I decided to
-> > go with that. But as you said, the board name is not needed and just 
-> > `color:led-name` should be fine.
-> > 
-> > Will modify this in next interation.
-> 
-> The second part of this is that all current DTSes are using some names
-> and by changing it you will break compatibility which is something what
-> you should avoid.
-> That's why it is really a question if this change should be accepted.
->
+Hi all,
 
-You mean userspace compatibility? If yes, then the affected boards are using
-MRAA library for providing the userspace access and I will ensure that it will
-get updated to the new labels.
+The first three patches in this series enable spi dma on rk3399,
+while the remaining patches are meant to be decreasingly obvious
+cleanups to the rockchip spi driver.
 
-But for other userspace scripts which users might be depending on, it will
-break for sure. So, I would like to get some feedback here from Rob.
+Unfortunately I only have rk3399-gru-kevin hardware to test
+this on, so it would be nice if someone would test this on
+other rockchips.
 
-Thanks,
-Mani
- 
-> Thanks,
-> Michal
-> 
+/Emil
+
+Emil Renner Berthing (5):
+  arm64: dts: rockchip: add rk3399 SPI DMAs
+  spi: rockchip: remove unneeded dma_caps
+  spi: rockchip: mark use_dma as bool
+  spi: rockchip: directly use direction constants
+  spi: rockchip: simplify spi enable logic
+
+Huibin Hong (2):
+  spi: rockchip: initialize dma_slave_config properly
+  spi: rockchip: adjust dma watermark and burstlen
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++
+ drivers/spi/spi-rockchip.c               | 62 +++++++++---------------
+ 2 files changed, 32 insertions(+), 40 deletions(-)
+
+-- 
+2.19.1
