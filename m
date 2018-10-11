@@ -1,95 +1,66 @@
-From: Emil Renner Berthing <kernel@esmil.dk>
-Subject: [PATCH 7/7] spi: rockchip: simplify spi enable logic
-Date: Wed, 10 Oct 2018 11:00:38 +0200
-Message-ID: <20181010090038.20834-8-kernel@esmil.dk>
-References: <20181010090038.20834-1-kernel@esmil.dk>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] clk: rockchip: fix wrong mmc sample phase shift for rk3328
+Date: Thu, 11 Oct 2018 15:26:43 +0800
+Message-ID: <1539242803-68356-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181010090038.20834-1-kernel@esmil.dk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Emil Renner Berthing <kernel@esmil.dk>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Shunqian Zheng <zhengsq@rock-chips.com>, Nickey Yang <nickey.yang@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Randy Li <ayaka@soulik.info>, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Let the dma/non-dma code paths handle the spi enable
-flag themselves. This removes some logic to determine
-if the flag should be turned on before or after dma
-and also don't leave the spi enabled if the dma path
-fails.
+From: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
+mmc sample shift is 0 for RK3328 referring to the TRM.
+So fix them.
+
+Signed-off-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/spi/spi-rockchip.c | 28 +++++++++-------------------
- 1 file changed, 9 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 1044849a352d..51ef632bca52 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -379,6 +379,8 @@ static int rockchip_spi_pio_transfer(struct rockchip_spi *rs)
- {
- 	int remain = 0;
+ drivers/clk/rockchip/clk-rk3328.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
+index 252366a..2c54266 100644
+--- a/drivers/clk/rockchip/clk-rk3328.c
++++ b/drivers/clk/rockchip/clk-rk3328.c
+@@ -813,22 +813,22 @@ enum rk3328_plls {
+ 	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "clk_sdmmc",
+ 	    RK3328_SDMMC_CON0, 1),
+ 	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "clk_sdmmc",
+-	    RK3328_SDMMC_CON1, 1),
++	    RK3328_SDMMC_CON1, 0),
  
-+	spi_enable_chip(rs, 1);
-+
- 	do {
- 		if (rs->tx) {
- 			remain = rs->tx_end - rs->tx;
-@@ -501,6 +503,8 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs)
- 		dma_async_issue_pending(rs->dma_rx.ch);
- 	}
+ 	MMC(SCLK_SDIO_DRV, "sdio_drv", "clk_sdio",
+ 	    RK3328_SDIO_CON0, 1),
+ 	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "clk_sdio",
+-	    RK3328_SDIO_CON1, 1),
++	    RK3328_SDIO_CON1, 0),
  
-+	spi_enable_chip(rs, 1);
-+
- 	if (txdesc) {
- 		spin_lock_irqsave(&rs->lock, flags);
- 		rs->state |= TXBUSY;
-@@ -509,7 +513,8 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs)
- 		dma_async_issue_pending(rs->dma_tx.ch);
- 	}
+ 	MMC(SCLK_EMMC_DRV, "emmc_drv", "clk_emmc",
+ 	    RK3328_EMMC_CON0, 1),
+ 	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "clk_emmc",
+-	    RK3328_EMMC_CON1, 1),
++	    RK3328_EMMC_CON1, 0),
  
--	return 0;
-+	/* 1 means the transfer is in progress */
-+	return 1;
- }
+ 	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "clk_sdmmc_ext",
+ 	    RK3328_SDMMC_EXT_CON0, 1),
+ 	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "clk_sdmmc_ext",
+-	    RK3328_SDMMC_EXT_CON1, 1),
++	    RK3328_SDMMC_EXT_CON1, 0),
+ };
  
- static void rockchip_spi_config(struct rockchip_spi *rs)
-@@ -592,7 +597,6 @@ static int rockchip_spi_transfer_one(
- 		struct spi_device *spi,
- 		struct spi_transfer *xfer)
- {
--	int ret = 0;
- 	struct rockchip_spi *rs = spi_master_get_devdata(master);
- 
- 	WARN_ON(readl_relaxed(rs->regs + ROCKCHIP_SPI_SSIENR) &&
-@@ -636,24 +640,10 @@ static int rockchip_spi_transfer_one(
- 
- 	rockchip_spi_config(rs);
- 
--	if (rs->use_dma) {
--		if (rs->tmode == CR0_XFM_RO) {
--			/* rx: dma must be prepared first */
--			ret = rockchip_spi_prepare_dma(rs);
--			spi_enable_chip(rs, 1);
--		} else {
--			/* tx or tr: spi must be enabled first */
--			spi_enable_chip(rs, 1);
--			ret = rockchip_spi_prepare_dma(rs);
--		}
--		/* successful DMA prepare means the transfer is in progress */
--		ret = ret ? ret : 1;
--	} else {
--		spi_enable_chip(rs, 1);
--		ret = rockchip_spi_pio_transfer(rs);
--	}
-+	if (rs->use_dma)
-+		return rockchip_spi_prepare_dma(rs);
- 
--	return ret;
-+	return rockchip_spi_pio_transfer(rs);
- }
- 
- static bool rockchip_spi_can_dma(struct spi_master *master,
+ static const char *const rk3328_critical_clocks[] __initconst = {
 -- 
-2.19.1
+1.9.1
