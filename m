@@ -1,76 +1,70 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "spi: rockchip: remove unneeded dma_caps" to the spi tree
-Date: Thu, 11 Oct 2018 15:56:04 +0100 (BST)
-Message-ID: <20181011145604.4721E11223ED@debutante.sirena.org.uk>
-References: <20181010090038.20834-5-kernel@esmil.dk>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181010090038.20834-5-kernel@esmil.dk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Emil Renner Berthing <kernel@esmil.dk>
-Cc: Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>Mark Brown <broonie@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Shunqian Zheng <zhengsq@rock-chips.com>, Nickey Yang <nickey.yang@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Randy Li <ayaka@soulik.info>, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.orglinux-spi@vger.kernel.org
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/7] dt-bindings: add power-domain header for RK3188
+ SoCs
+Date: Fri, 12 Oct 2018 11:57:46 -0500
+Message-ID: <20181012165746.GA14990@bogus>
+References: <20180923152356.30154-1-heiko@sntech.de>
+ <20180923152356.30154-2-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20180923152356.30154-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On Sun, Sep 23, 2018 at 05:23:50PM +0200, Heiko Stuebner wrote:
+> Add rk3188 power-domains as described by the TRM.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  include/dt-bindings/power/rk3188-power.h | 23 +++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
+>  create mode 100644 include/dt-bindings/power/rk3188-power.h
+> 
+> diff --git a/include/dt-bindings/power/rk3188-power.h b/include/dt-bindings/power/rk3188-power.h
+> new file mode 100644
+> index 000000000000..820db55fc4b7
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rk3188-power.h
+> @@ -0,0 +1,23 @@
 
-   spi: rockchip: remove unneeded dma_caps
+Missing license
 
-has been applied to the spi tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 058f7c509e84abd36f988d4e16432366bd793d8f Mon Sep 17 00:00:00 2001
-From: Emil Renner Berthing <kernel@esmil.dk>
-Date: Wed, 10 Oct 2018 11:00:35 +0200
-Subject: [PATCH] spi: rockchip: remove unneeded dma_caps
-
-We no longer need the dma_caps since the dma driver
-already clamps the burst length to the hardware limit,
-so don't request and store dma_caps in device data.
-
-Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- drivers/spi/spi-rockchip.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 2f825702cd90..6a53b940f2f5 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -207,7 +207,6 @@ struct rockchip_spi {
- 	struct sg_table rx_sg;
- 	struct rockchip_spi_dma_data dma_rx;
- 	struct rockchip_spi_dma_data dma_tx;
--	struct dma_slave_caps dma_caps;
- };
- 
- static inline void spi_enable_chip(struct rockchip_spi *rs, int enable)
-@@ -774,7 +773,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	}
- 
- 	if (rs->dma_tx.ch && rs->dma_rx.ch) {
--		dma_get_slave_caps(rs->dma_rx.ch, &(rs->dma_caps));
- 		rs->dma_tx.addr = (dma_addr_t)(mem->start + ROCKCHIP_SPI_TXDR);
- 		rs->dma_rx.addr = (dma_addr_t)(mem->start + ROCKCHIP_SPI_RXDR);
- 		rs->dma_tx.direction = DMA_MEM_TO_DEV;
--- 
-2.19.0.rc2
+> +#ifndef __DT_BINDINGS_POWER_RK3188_POWER_H__
+> +#define __DT_BINDINGS_POWER_RK3188_POWER_H__
+> +
+> +/* VD_CORE */
+> +#define RK3188_PD_A9_0		0
+> +#define RK3188_PD_A9_1		1
+> +#define RK3188_PD_A9_2		2
+> +#define RK3188_PD_A9_3		3
+> +#define RK3188_PD_DBG		4
+> +#define RK3188_PD_SCU		5
+> +
+> +/* VD_LOGIC */
+> +#define RK3188_PD_VIDEO		6
+> +#define RK3188_PD_VIO		7
+> +#define RK3188_PD_GPU		8
+> +#define RK3188_PD_PERI		9
+> +#define RK3188_PD_CPU		10
+> +#define RK3188_PD_ALIVE		11
+> +
+> +/* VD_PMU */
+> +#define RK3188_PD_RTC		12
+> +
+> +#endif
+> -- 
+> 2.18.0
+> 
