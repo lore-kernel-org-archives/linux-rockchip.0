@@ -1,36 +1,84 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [RFT PATCH] mmc: pwrseq_simple: Fix incorrect handling of GPIO bitmap
-Date: Mon, 15 Oct 2018 16:27:10 +0200
-Message-ID: <CACRpkdYB1Wz8VC3aDpB_4KQcdbE-_Fy48zF_idKDM0pqiOEnXg@mail.gmail.com>
-References: <20180925192433.1377-1-jmkrzyszt@gmail.com> <20181012190901.1243-1-jmkrzyszt@gmail.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v5 5/6] media: Add controls for JPEG quantization tables
+Date: Mon, 15 Oct 2018 13:07:35 -0300
+Message-ID: <1579e9b6bcce59ae43cf92c34e2114ebad45b0e9.camel@collabora.com>
+References: <20180905220011.16612-1-ezequiel@collabora.com>
+ <20180905220011.16612-6-ezequiel@collabora.com>
+ <e7126e89d8984eb93216ec75c83ce1fc5afc437d.camel@paulk.fr>
+ <CAAFQd5Bir0uMsaJPHdgQDvcYHpxZ4sUSn10OPpRXcnn-THUx2A@mail.gmail.com>
+ <2878c8fa36f6e775079f53ba79518a53e1ea6bc5.camel@paulk.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181012190901.1243-1-jmkrzyszt@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Janusz Krzysztofik <jmkrzyszt@gmail.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Sascha Hauer <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Kukjin Kim <kgene@kernel.org>, =?UTF-8?Q?Beno=C3=AEt_Cousson?= <bcousson@baylibre.com>, ext Tony Lindgren <tony@atomide.com>, Enric Balletbo i Serra <eballetbo@gmail.com>, Javier
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2878c8fa36f6e775079f53ba79518a53e1ea6bc5.camel-W9ppeneeCTY@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Oct 12, 2018 at 9:07 PM Janusz Krzysztofik <jmkrzyszt@gmail.com> wrote:
-
-> Commit b9762bebc633 ("gpiolib: Pass bitmaps, not integer arrays, to
-> get/set array") changed the way GPIO values are passed to
-> gpiod_get/set_array_value() and friends.  The new code introduced into
-> mmc_pwrseq_simple_set_gpios_value() incorrectly interpretes the 'value'
-> argument as a bitmap of GPIO values and assigns it directly to the
-> 'values' bitmap variable passed to gpiod_set_array_value_cansleep()
-> instead of filling that bitmap with bits equal to the 'value' argument.
-> As a result, only member 0 of the array is handled correctly.
->
-> Moreover, wrong assumption is taken about the 'values' bitmap size not
-> exceding the number of bits of the 'value' argument type.
->
-> Fix it.
->
-> Signed-off-by: Janusz Krzysztofik <jmkrzyszt@gmail.com>
-
-Patch applied with Ulf's and Marek's tags!
-
-Yours,
-Linus Walleij
+T24gRnJpLCAyMDE4LTEwLTEyIGF0IDIyOjAwICswMjAwLCBQYXVsIEtvY2lhbGtvd3NraSB3cm90
+ZToKPiBIaSwKPiAKPiBMZSBtZXJjcmVkaSAxOSBzZXB0ZW1icmUgMjAxOCDDoCAxMzoyOCArMDkw
+MCwgVG9tYXN6IEZpZ2EgYSDDqWNyaXQgOgo+ID4gT24gVGh1LCBTZXAgMTMsIDIwMTggYXQgOTox
+NSBQTSBQYXVsIEtvY2lhbGtvd3NraSA8Y29udGFjdEBwYXVsay5mcj4gd3JvdGU6Cj4gPiA+IEhp
+LAo+ID4gPiAKPiA+ID4gT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE5OjAwIC0wMzAwLCBFemVxdWll
+bCBHYXJjaWEgd3JvdGU6Cj4gPiA+ID4gRnJvbTogU2h1bnFpYW4gWmhlbmcgPHpoZW5nc3FAcm9j
+ay1jaGlwcy5jb20+Cj4gPiA+ID4gCj4gPiA+ID4gQWRkIFY0TDJfQ0lEX0pQRUdfUVVBTlRJWkFU
+SU9OIGNvbXBvdW5kIGNvbnRyb2wgdG8gYWxsb3cgdXNlcnNwYWNlCj4gPiA+ID4gY29uZmlndXJl
+IHRoZSBKUEVHIHF1YW50aXphdGlvbiB0YWJsZXMuCj4gPiA+ID4gCj4gPiA+ID4gU2lnbmVkLW9m
+Zi1ieTogU2h1bnFpYW4gWmhlbmcgPHpoZW5nc3FAcm9jay1jaGlwcy5jb20+Cj4gPiA+ID4gU2ln
+bmVkLW9mZi1ieTogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEBjb2xsYWJvcmEuY29tPgo+ID4g
+PiA+IC0tLQo+ID4gPiA+ICAuLi4vbWVkaWEvdWFwaS92NGwvZXh0ZW5kZWQtY29udHJvbHMucnN0
+ICAgICAgfCAzMSArKysrKysrKysrKysrKysrKysrCj4gPiA+ID4gIC4uLi9tZWRpYS92aWRlb2Rl
+djIuaC5yc3QuZXhjZXB0aW9ucyAgICAgICAgICB8ICAxICsKPiA+ID4gPiAgZHJpdmVycy9tZWRp
+YS92NGwyLWNvcmUvdjRsMi1jdHJscy5jICAgICAgICAgIHwgMTAgKysrKysrCj4gPiA+ID4gIGlu
+Y2x1ZGUvdWFwaS9saW51eC92NGwyLWNvbnRyb2xzLmggICAgICAgICAgICB8IDEyICsrKysrKysK
+PiA+ID4gPiAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oICAgICAgICAgICAgICAgIHwg
+IDEgKwo+ID4gPiA+ICA1IGZpbGVzIGNoYW5nZWQsIDU1IGluc2VydGlvbnMoKykKPiA+ID4gPiAK
+PiA+ID4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9tZWRpYS91YXBpL3Y0bC9leHRlbmRl
+ZC1jb250cm9scy5yc3QgYi9Eb2N1bWVudGF0aW9uL21lZGlhL3VhcGkvdjRsL2V4dGVuZGVkLWNv
+bnRyb2xzLnJzdAo+ID4gPiA+IGluZGV4IDlmNzMxMmJmMzM2NS4uMTMzNWQyN2QzMGYzIDEwMDY0
+NAo+ID4gPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vbWVkaWEvdWFwaS92NGwvZXh0ZW5kZWQtY29u
+dHJvbHMucnN0Cj4gPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9tZWRpYS91YXBpL3Y0bC9leHRl
+bmRlZC1jb250cm9scy5yc3QKPiA+ID4gPiBAQCAtMzM1NCw3ICszMzU0LDM4IEBAIEpQRUcgQ29u
+dHJvbCBJRHMKPiA+ID4gPiAgICAgIFNwZWNpZnkgd2hpY2ggSlBFRyBtYXJrZXJzIGFyZSBpbmNs
+dWRlZCBpbiBjb21wcmVzc2VkIHN0cmVhbS4gVGhpcwo+ID4gPiA+ICAgICAgY29udHJvbCBpcyB2
+YWxpZCBvbmx5IGZvciBlbmNvZGVycy4KPiA+ID4gPiAKPiA+ID4gPiArLi4gX2pwZWctcXVhbnQt
+dGFibGVzLWNvbnRyb2w6Cj4gPiA+IAo+ID4gPiBJIGp1c3QgaGFkIGEgbG9vayBhdCBob3cgdGhl
+IEFsbHdpbm5lciBWUFUgaGFuZGxlcyBKUEVHIGRlY29kaW5nIGFuZCBpdAo+ID4gPiBzZWVtcyB0
+byByZXF1aXJlIHRoZSBmb2xsb3dpbmcgaW5mb3JtYXRpb24gKGluIGFkZGl0aW9uIHRvCj4gPiA+
+IHF1YW50aXphdGlvbik6Cj4gPiAKPiA+IEkgYXNzdW1lIHRoZSBoYXJkd2FyZSBkb2Vzbid0IGhh
+dmUgdGhlIGFiaWxpdHkgdG8gcGFyc2UgdGhvc2UgZnJvbSB0aGUKPiA+IHN0cmVhbSBhbmQgc28g
+dGhleSBuZWVkIHRvIGJlIHBhcnNlZCBieSB1c2VyIHNwYWNlIGFuZCBnaXZlbiB0byB0aGUKPiA+
+IGRyaXZlcj8KPiAKPiBUaGF0J3MgY29ycmVjdCwgd2UgYXJlIGFsc28gZGVhbGluZyB3aXRoIGEg
+c3RhdGVsZXNzIGRlY29kZXIgaGVyZS4gSXQncwo+IGFjdHVhbGx5IHRoZSBzYW1lIGhhcmR3YXJl
+IGVuZ2luZSB0aGF0J3MgdXNlZCBmb3IgTVBFRzIgZGVjb2RpbmcsIG9ubHkKPiBjb25maWd1cmVk
+IGRpZmZlcmVudGx5Lgo+IAo+IFNvIHdlIHdpbGwgbmVlZCB0byBpbnRyb2R1Y2UgYSBwaXhmbXQg
+Zm9yIGNvbXByZXNzZWQgSlBFRyBkYXRhIHdpdGhvdXQKPiBoZWFkZXJzLCByZXVzZSBKUEVHIGNv
+bnRyb2xzIHRoYXQgYXBwbHkgYW5kIHBlcmhhcHMgaW50cm9kdWNlIG5ldyBvbmVzCj4gdG9vIGlm
+IG5lZWRlZC4KPiAKPiBJIGFtIGFsc28gd29uZGVyaW5nIGFib3V0IGhvdyBNSlBFRyBzdXBwb3J0
+IHNob3VsZCBmaXQgaW50byB0aGlzLiBBcwo+IGZhciBhcyBJIHVuZGVyc3Rvb2QsIGl0IHNob3Vs
+ZG4ndCBiZSB2ZXJ5IGRpZmZlcmVudCBmcm9tIEpQRUcgc28gd2UKPiBtaWdodCB3YW50IHRvIGhh
+dmUgY29tbW9uIGNvbnRyb2xzIGZvciBib3RoLgo+IAoKV2UndmUgcmVjZW50bHkgZGlzY3Vzc2Vk
+IHRoaXMgYW5kIHdlIHdlcmUgcHJvcG9zaW5nIHRvIGp1c3QgZHJvcApNSlBFRyBhbmQgc3RpY2sg
+dG8gSlBFRy4gVGhlIHJlYXNvbiBpcyB0aGF0IE1KUEVHIGlzIG5vdCBjbGVhcmx5CmRlZmluZWQu
+IE5vdGUgdGhhdCBvdGhlcnMgdHJlYXQgTUpQRUcgYW5kIEpQRUcgYXMgYWxpYXNlcy4KClNlZSAi
+UmU6IFtSRkNdIFY0TDJfUElYX0ZNVF9NSlBFRyB2cyBWNEwyX1BJWF9GTVRfSlBFRyIuCgpBbHNv
+LCBJJ2xsIGJlIGFkZGluZyBzdXBwb3J0IGZvciBzcGVjLWNvbXBsaWFudCBKUEVHIGZyYW1lcwpp
+biByb2NrY2hpcCBKUEVHIGVuY29kZXIuIFRoaXMgd2lsbCBhbGxvdyB0byB1c2UgdGhlIGRyaXZl
+cgp3aXRoIGFscmVhZHkgYXZhaWxhYmxlIHVzZXJzcGFjZS4gSU9XLCB3ZSBkb24ndCBhYnNvbHV0
+ZWx5Cm5lZWQgYSBuZXcgcGl4ZWxmb3JtYXQgZm9yIGVuY29kZXJzLgoKRGVjb2RlcnMsIG9uIHRo
+ZSBvdGhlciBzaWRlLCB3b3VsZCBiZSBhIGRpZmZlcmVudCBzdG9yeSwKYXMgcGFyc2luZyBoZWFk
+ZXJzIGluIHRoZSBrZXJuZWwgY2FuIHJhaXNlIHNvbWUgc2FmZXR5CmNvbmNlcm5zLgoKUmVnYXJk
+cywKRXplcXVpZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
