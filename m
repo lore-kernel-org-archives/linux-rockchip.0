@@ -1,113 +1,81 @@
-From: David Summers <beagleboard@davidjohnsummers.uk>
-Subject: Re: [PATCH 1/3] Add the tinker board S to the device tree - just an
- outline
-Date: Mon, 15 Oct 2018 17:49:41 +0100
-Message-ID: <93fc3eda-19b2-2b90-ccc8-4743200bf1b1@davidjohnsummers.uk>
-References: <20180922170236.8690-1-beagleboard@davidjohnsummers.uk>
- <20180922170236.8690-2-beagleboard@davidjohnsummers.uk>
- <20181015161214.GA13740@bogus>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH 6/6] arm64: dts: xilinx: ultra96: Standardize LED labels
+ and triggers
+Date: Mon, 15 Oct 2018 21:56:01 +0200
+Message-ID: <20181015185147.GA29649@amd>
+References: <20181009140522.6492-1-manivannan.sadhasivam@linaro.org>
+ <20181009140522.6492-7-manivannan.sadhasivam@linaro.org>
+ <7b94c09d-ecbd-e48e-6583-127566715a76@xilinx.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20181015161214.GA13740@bogus>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>, David Summers <beagleboard@davidjohnsummers.uk>
-Cc: mark.rutland@arm.com, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+        protocol="application/pgp-signature"; boundary="L6iaP+gRLNZHKoI4"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <7b94c09d-ecbd-e48e-6583-127566715a76@xilinx.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michal Simek <michal.simek@xilinx.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, robh+dt@kernel.org, heiko@sntech.de, ezequiel@collabora.com, xuwei5@hisilicon.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 15/10/2018 17:12, Rob Herring wrote:
-> On Sat, Sep 22, 2018 at 06:02:34PM +0100, David Summers wrote:
->
-> Commit message needed.
->
-> Use subject prefixes that match the subsystem. 'dt-bindings: ...' for
-> binding docs. 'ARM: dts: ...' for ARM dts files.
->
->> Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
->> ---
->>   .../devicetree/bindings/arm/rockchip.txt      |   4 +
-> Bindings should be a separate patch.
->
->>   arch/arm/boot/dts/Makefile                    |   1 +
->>   arch/arm/boot/dts/rk3288-tinker-s.dts         |  13 +
->>   arch/arm/boot/dts/rk3288-tinker.dts           | 498 +----------------
->>   arch/arm/boot/dts/rk3288-tinker.dtsi          | 504 ++++++++++++++++++
->>   5 files changed, 524 insertions(+), 496 deletions(-)
->>   create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
->>   create mode 100644 arch/arm/boot/dts/rk3288-tinker.dtsi
-> Would be better to split the dts changes into 2 patches: restructuring
-> and add Tinker S board. Then we're not re-reviewing the existing stuff.
->
->> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
->> index acfd3c773dd0..037ce94c3a73 100644
->> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
->> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
->> @@ -13,6 +13,10 @@ Rockchip platforms device tree bindings
->>       Required root node properties:
->>         - compatible = "asus,rk3288-tinker", "rockchip,rk3288";
->>   
->> +- Asus Tinker board S
->> +    Required root node properties:
->> +      - compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
->> +
->>   - Kylin RK3036 board:
->>       Required root node properties:
->>         - compatible = "rockchip,kylin-rk3036", "rockchip,rk3036";
->> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
->> index b5bd3de87c33..65c75265adfa 100644
->> --- a/arch/arm/boot/dts/Makefile
->> +++ b/arch/arm/boot/dts/Makefile
->> @@ -864,6 +864,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->>   	rk3288-r89.dtb \
->>   	rk3288-rock2-square.dtb \
->>   	rk3288-tinker.dtb \
->> +	rk3288-tinker-s.dtb \	
->>   	rk3288-veyron-brain.dtb \
->>   	rk3288-veyron-jaq.dtb \
->>   	rk3288-veyron-jerry.dtb \
->> diff --git a/arch/arm/boot/dts/rk3288-tinker-s.dts b/arch/arm/boot/dts/rk3288-tinker-s.dts
->> new file mode 100644
->> index 000000000000..5e1078c6a784
->> --- /dev/null
->> +++ b/arch/arm/boot/dts/rk3288-tinker-s.dts
->> @@ -0,0 +1,13 @@
->> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->> +/*
->> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
->> + */
->> +
->> +/dts-v1/;
->> +
->> +#include "rk3288-tinker.dtsi"
->> +
->> +/ {
->> +	model = "Rockchip RK3288 Asus Tinker Board S";
->> +	compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
-> Perhaps you should have 'asus,rk3288-tinker' as a fallback?
->
->> +};
 
-Hi Rob,
+--L6iaP+gRLNZHKoI4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Heiko already had many of the same thoughts, he respan the patch here:
+On Wed 2018-10-10 09:25:24, Michal Simek wrote:
+> On 9.10.2018 16:05, Manivannan Sadhasivam wrote:
+> > For all 96Boards, the following standard is used for onboard LEDs.
+> >=20
+> > device-name:green:user1  default-trigger: heartbeat
+> > device-name:green:user2  default-trigger: mmc0/disk-activity
+> >                                           (onboard-storage)
+> > device-name:green:user3  default-trigger: mmc1 (SD-card)
+> > device-name:green:user4  default-trigger: none, panic-indicator
 
-http://lists.infradead.org/pipermail/linux-rockchip/2018-September/021766.html
+Actually, having one LED as heartbeat and second as panic indicator
+only... Could those be merged and remaining LED used to something
+useful?
 
-Which you already reviewed ;)
+> > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> > ---
 
-This was my first attempt at a kernel patch, so your thoughts are 
-appreciated.
+> > index eb5e8bddb610..565ceb390f99 100644
+> > --- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
+> > +++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
+> > @@ -57,29 +57,30 @@
+> >  	leds {
+> >  		compatible =3D "gpio-leds";
+> >  		ds2 {
+> > -			label =3D "ds2";
+> > +			label =3D "zynqmp-zcu100-revC:green:user1";
+>=20
+> The purpose of this series should be standardize Led labels that's why I
+> would expect that leds will be called in the same way on all these
+> boards that's why I am not getting why there is board name.
+>=20
+> green:user1 or just user1 should be enough.
 
-David.
+green:user1 is better. Also... I guess this should go to the LEDs
+list... and if you want to make names standard, maybe there's better
+naming than user1..user4?
 
-P.S. Heiko revised patch accepted into 4.20.
+									Pavel
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--L6iaP+gRLNZHKoI4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAlvE8NEACgkQMOfwapXb+vJHYACgg4mhvWXArstGIqpZD5bClCm2
+Wq8AoKo0xwMF3vYNemfu1pJwqXBbKS8n
+=qjFQ
+-----END PGP SIGNATURE-----
+
+--L6iaP+gRLNZHKoI4--
