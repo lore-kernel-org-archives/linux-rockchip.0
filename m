@@ -1,56 +1,110 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH] drm/rockchip: psr: do not dereference encoder before it is
- null checked.
-Date: Sat, 13 Oct 2018 12:56:54 +0200
-Message-ID: <20181013105654.11827-1-enric.balletbo@collabora.com>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [RFT PATCH] mmc: pwrseq_simple: Fix incorrect handling of GPIO
+ bitmap
+Date: Mon, 15 Oct 2018 10:32:08 +0200
+Message-ID: <20181015083209eucas1p2fb3d1961745fdb3007dec317c6441142~duxEkRvmp2005320053eucas1p2D@eucas1p2.samsung.com>
+References: <20180925192433.1377-1-jmkrzyszt@gmail.com>
+        <CGME20181012190748epcas5p3dc41f6d0f9c69f22351209b2e7ea66f3@epcas5p3.samsung.com>
+        <20181012190901.1243-1-jmkrzyszt@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: David Airlie <airlied@linux.ie>
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181012190901.1243-1-jmkrzyszt@gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Janusz Krzysztofik <jmkrzyszt@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, Linux Samsung SOC <linux-samsung-soc@vger.kernel.org>, linux-kernel@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <fabio.estevam@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?= <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Enric Balletbo i Serra <eballetbo@gmail.com>, Javier Martinez Canillas <javier@dowhile0.org>, linux-omap@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-'encoder' is deferenced before it is null sanity checked, hence we
-potentially have a null pointer dereference bug. Instead, initialise
-drm_drv from encoder->dev->dev_private after we are sure 'encoder' is
-not null.
+Hi Janusz,
 
-Fixes: 5182c1a556d7f ("drm/rockchip: add an common abstracted PSR driver")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+On 2018-10-12 21:09, Janusz Krzysztofik wrote:
+> Commit b9762bebc633 ("gpiolib: Pass bitmaps, not integer arrays, to
+> get/set array") changed the way GPIO values are passed to
+> gpiod_get/set_array_value() and friends.  The new code introduced into
+> mmc_pwrseq_simple_set_gpios_value() incorrectly interpretes the 'value'
+> argument as a bitmap of GPIO values and assigns it directly to the
+> 'values' bitmap variable passed to gpiod_set_array_value_cansleep()
+> instead of filling that bitmap with bits equal to the 'value' argument.
+> As a result, only member 0 of the array is handled correctly.
+>
+> Moreover, wrong assumption is taken about the 'values' bitmap size not
+> exceding the number of bits of the 'value' argument type.
+>
+> Fix it.
+>
+> Signed-off-by: Janusz Krzysztofik <jmkrzyszt@gmail.com>
+> ---
+> Hi,
+>
+> I think that patch has been missed while we were resolving issues 
+> related to GPIO fast bitmap processing.  Since all issues other than the 
+> one addreessed by this patch have been been hopefully identified and 
+> fixed, GPIO tree seems now to be in good shape in regard to that. 
+> However, I believe pwrseq_simple is still broken.  Hence, I'm 
+> resubmitting this patch to Ulf for inclusion in MMC tree, Cc: many other 
+> people who are kindly requested to test it if possible.
+>
+> I've identified the following DT files representing devices which may be 
+> affected (have more than one GPIO assigned to pwrseq_simple):
+> - arch/arm/boot/dts/imx6qdl-sr-som-brcm.dtsi
+> - arch/arm/boot/dts/exynos5250-snow-common.dtsi
 
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+On Samsung Snow Chromebook it doesn't change anything. Board boots and
+detects WiFi SDIO card before and after applying it on top on Linux
+next-20181012.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-index 1635485955d3..22a70ab6e214 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-@@ -226,12 +226,14 @@ EXPORT_SYMBOL(rockchip_drm_psr_flush_all);
- int rockchip_drm_psr_register(struct drm_encoder *encoder,
- 			int (*psr_set)(struct drm_encoder *, bool enable))
- {
--	struct rockchip_drm_private *drm_drv = encoder->dev->dev_private;
-+	struct rockchip_drm_private *drm_drv;
- 	struct psr_drv *psr;
- 
- 	if (!encoder || !psr_set)
- 		return -EINVAL;
- 
-+	drm_drv = encoder->dev->dev_private;
-+
- 	psr = kzalloc(sizeof(struct psr_drv), GFP_KERNEL);
- 	if (!psr)
- 		return -ENOMEM;
+Tested-by: Marek Szyprowski <m.szyprowski
+
+> - arch/arm/boot/dts/imx6sl-warp.dts
+> - arch/arm/boot/dts/omap3-igep0030.dts
+> - arch/arm/boot/dts/omap3-igep0020.dts
+> - arch/arm/boot/dts/rk3036-kylin.dts
+> - arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+> - arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
+>
+> Please start with checking if pwrseq_simple from linux-next works for 
+> you and if not, please test if this patch fixes the issue.
+>
+> Thanks,
+> Janusz
+>
+>
+>  drivers/mmc/core/pwrseq_simple.c | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/core/pwrseq_simple.c b/drivers/mmc/core/pwrseq_simple.c
+> index 7f882a2bb872..ece34c734693 100644
+> --- a/drivers/mmc/core/pwrseq_simple.c
+> +++ b/drivers/mmc/core/pwrseq_simple.c
+> @@ -40,13 +40,22 @@ static void mmc_pwrseq_simple_set_gpios_value(struct mmc_pwrseq_simple *pwrseq,
+>  	struct gpio_descs *reset_gpios = pwrseq->reset_gpios;
+>  
+>  	if (!IS_ERR(reset_gpios)) {
+> -		DECLARE_BITMAP(values, BITS_PER_TYPE(value));
+> +		unsigned long *values;
+>  		int nvalues = reset_gpios->ndescs;
+>  
+> -		values[0] = value;
+> +		values = bitmap_alloc(nvalues, GFP_KERNEL);
+> +		if (!values)
+> +			return;
+> +
+> +		if (value)
+> +			bitmap_fill(values, nvalues);
+> +		else
+> +			bitmap_zero(values, nvalues);
+>  
+>  		gpiod_set_array_value_cansleep(nvalues, reset_gpios->desc,
+>  					       reset_gpios->info, values);
+> +
+> +		kfree(values);
+>  	}
+>  }
+>  
+
+Best regards
 -- 
-2.19.1
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
