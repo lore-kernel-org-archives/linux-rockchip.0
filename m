@@ -1,84 +1,100 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v5 5/6] media: Add controls for JPEG quantization tables
-Date: Mon, 15 Oct 2018 13:07:35 -0300
-Message-ID: <1579e9b6bcce59ae43cf92c34e2114ebad45b0e9.camel@collabora.com>
-References: <20180905220011.16612-1-ezequiel@collabora.com>
- <20180905220011.16612-6-ezequiel@collabora.com>
- <e7126e89d8984eb93216ec75c83ce1fc5afc437d.camel@paulk.fr>
- <CAAFQd5Bir0uMsaJPHdgQDvcYHpxZ4sUSn10OPpRXcnn-THUx2A@mail.gmail.com>
- <2878c8fa36f6e775079f53ba79518a53e1ea6bc5.camel@paulk.fr>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] Add the tinker board S to the device tree - just an
+ outline
+Date: Mon, 15 Oct 2018 11:12:14 -0500
+Message-ID: <20181015161214.GA13740@bogus>
+References: <20180922170236.8690-1-beagleboard@davidjohnsummers.uk>
+ <20180922170236.8690-2-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2878c8fa36f6e775079f53ba79518a53e1ea6bc5.camel-W9ppeneeCTY@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20180922170236.8690-2-beagleboard@davidjohnsummers.uk>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: David Summers <beagleboard@davidjohnsummers.uk>
+Cc: mark.rutland@arm.com, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCAyMDE4LTEwLTEyIGF0IDIyOjAwICswMjAwLCBQYXVsIEtvY2lhbGtvd3NraSB3cm90
-ZToKPiBIaSwKPiAKPiBMZSBtZXJjcmVkaSAxOSBzZXB0ZW1icmUgMjAxOCDDoCAxMzoyOCArMDkw
-MCwgVG9tYXN6IEZpZ2EgYSDDqWNyaXQgOgo+ID4gT24gVGh1LCBTZXAgMTMsIDIwMTggYXQgOTox
-NSBQTSBQYXVsIEtvY2lhbGtvd3NraSA8Y29udGFjdEBwYXVsay5mcj4gd3JvdGU6Cj4gPiA+IEhp
-LAo+ID4gPiAKPiA+ID4gT24gV2VkLCAyMDE4LTA5LTA1IGF0IDE5OjAwIC0wMzAwLCBFemVxdWll
-bCBHYXJjaWEgd3JvdGU6Cj4gPiA+ID4gRnJvbTogU2h1bnFpYW4gWmhlbmcgPHpoZW5nc3FAcm9j
-ay1jaGlwcy5jb20+Cj4gPiA+ID4gCj4gPiA+ID4gQWRkIFY0TDJfQ0lEX0pQRUdfUVVBTlRJWkFU
-SU9OIGNvbXBvdW5kIGNvbnRyb2wgdG8gYWxsb3cgdXNlcnNwYWNlCj4gPiA+ID4gY29uZmlndXJl
-IHRoZSBKUEVHIHF1YW50aXphdGlvbiB0YWJsZXMuCj4gPiA+ID4gCj4gPiA+ID4gU2lnbmVkLW9m
-Zi1ieTogU2h1bnFpYW4gWmhlbmcgPHpoZW5nc3FAcm9jay1jaGlwcy5jb20+Cj4gPiA+ID4gU2ln
-bmVkLW9mZi1ieTogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEBjb2xsYWJvcmEuY29tPgo+ID4g
-PiA+IC0tLQo+ID4gPiA+ICAuLi4vbWVkaWEvdWFwaS92NGwvZXh0ZW5kZWQtY29udHJvbHMucnN0
-ICAgICAgfCAzMSArKysrKysrKysrKysrKysrKysrCj4gPiA+ID4gIC4uLi9tZWRpYS92aWRlb2Rl
-djIuaC5yc3QuZXhjZXB0aW9ucyAgICAgICAgICB8ICAxICsKPiA+ID4gPiAgZHJpdmVycy9tZWRp
-YS92NGwyLWNvcmUvdjRsMi1jdHJscy5jICAgICAgICAgIHwgMTAgKysrKysrCj4gPiA+ID4gIGlu
-Y2x1ZGUvdWFwaS9saW51eC92NGwyLWNvbnRyb2xzLmggICAgICAgICAgICB8IDEyICsrKysrKysK
-PiA+ID4gPiAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oICAgICAgICAgICAgICAgIHwg
-IDEgKwo+ID4gPiA+ICA1IGZpbGVzIGNoYW5nZWQsIDU1IGluc2VydGlvbnMoKykKPiA+ID4gPiAK
-PiA+ID4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9tZWRpYS91YXBpL3Y0bC9leHRlbmRl
-ZC1jb250cm9scy5yc3QgYi9Eb2N1bWVudGF0aW9uL21lZGlhL3VhcGkvdjRsL2V4dGVuZGVkLWNv
-bnRyb2xzLnJzdAo+ID4gPiA+IGluZGV4IDlmNzMxMmJmMzM2NS4uMTMzNWQyN2QzMGYzIDEwMDY0
-NAo+ID4gPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vbWVkaWEvdWFwaS92NGwvZXh0ZW5kZWQtY29u
-dHJvbHMucnN0Cj4gPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9tZWRpYS91YXBpL3Y0bC9leHRl
-bmRlZC1jb250cm9scy5yc3QKPiA+ID4gPiBAQCAtMzM1NCw3ICszMzU0LDM4IEBAIEpQRUcgQ29u
-dHJvbCBJRHMKPiA+ID4gPiAgICAgIFNwZWNpZnkgd2hpY2ggSlBFRyBtYXJrZXJzIGFyZSBpbmNs
-dWRlZCBpbiBjb21wcmVzc2VkIHN0cmVhbS4gVGhpcwo+ID4gPiA+ICAgICAgY29udHJvbCBpcyB2
-YWxpZCBvbmx5IGZvciBlbmNvZGVycy4KPiA+ID4gPiAKPiA+ID4gPiArLi4gX2pwZWctcXVhbnQt
-dGFibGVzLWNvbnRyb2w6Cj4gPiA+IAo+ID4gPiBJIGp1c3QgaGFkIGEgbG9vayBhdCBob3cgdGhl
-IEFsbHdpbm5lciBWUFUgaGFuZGxlcyBKUEVHIGRlY29kaW5nIGFuZCBpdAo+ID4gPiBzZWVtcyB0
-byByZXF1aXJlIHRoZSBmb2xsb3dpbmcgaW5mb3JtYXRpb24gKGluIGFkZGl0aW9uIHRvCj4gPiA+
-IHF1YW50aXphdGlvbik6Cj4gPiAKPiA+IEkgYXNzdW1lIHRoZSBoYXJkd2FyZSBkb2Vzbid0IGhh
-dmUgdGhlIGFiaWxpdHkgdG8gcGFyc2UgdGhvc2UgZnJvbSB0aGUKPiA+IHN0cmVhbSBhbmQgc28g
-dGhleSBuZWVkIHRvIGJlIHBhcnNlZCBieSB1c2VyIHNwYWNlIGFuZCBnaXZlbiB0byB0aGUKPiA+
-IGRyaXZlcj8KPiAKPiBUaGF0J3MgY29ycmVjdCwgd2UgYXJlIGFsc28gZGVhbGluZyB3aXRoIGEg
-c3RhdGVsZXNzIGRlY29kZXIgaGVyZS4gSXQncwo+IGFjdHVhbGx5IHRoZSBzYW1lIGhhcmR3YXJl
-IGVuZ2luZSB0aGF0J3MgdXNlZCBmb3IgTVBFRzIgZGVjb2RpbmcsIG9ubHkKPiBjb25maWd1cmVk
-IGRpZmZlcmVudGx5Lgo+IAo+IFNvIHdlIHdpbGwgbmVlZCB0byBpbnRyb2R1Y2UgYSBwaXhmbXQg
-Zm9yIGNvbXByZXNzZWQgSlBFRyBkYXRhIHdpdGhvdXQKPiBoZWFkZXJzLCByZXVzZSBKUEVHIGNv
-bnRyb2xzIHRoYXQgYXBwbHkgYW5kIHBlcmhhcHMgaW50cm9kdWNlIG5ldyBvbmVzCj4gdG9vIGlm
-IG5lZWRlZC4KPiAKPiBJIGFtIGFsc28gd29uZGVyaW5nIGFib3V0IGhvdyBNSlBFRyBzdXBwb3J0
-IHNob3VsZCBmaXQgaW50byB0aGlzLiBBcwo+IGZhciBhcyBJIHVuZGVyc3Rvb2QsIGl0IHNob3Vs
-ZG4ndCBiZSB2ZXJ5IGRpZmZlcmVudCBmcm9tIEpQRUcgc28gd2UKPiBtaWdodCB3YW50IHRvIGhh
-dmUgY29tbW9uIGNvbnRyb2xzIGZvciBib3RoLgo+IAoKV2UndmUgcmVjZW50bHkgZGlzY3Vzc2Vk
-IHRoaXMgYW5kIHdlIHdlcmUgcHJvcG9zaW5nIHRvIGp1c3QgZHJvcApNSlBFRyBhbmQgc3RpY2sg
-dG8gSlBFRy4gVGhlIHJlYXNvbiBpcyB0aGF0IE1KUEVHIGlzIG5vdCBjbGVhcmx5CmRlZmluZWQu
-IE5vdGUgdGhhdCBvdGhlcnMgdHJlYXQgTUpQRUcgYW5kIEpQRUcgYXMgYWxpYXNlcy4KClNlZSAi
-UmU6IFtSRkNdIFY0TDJfUElYX0ZNVF9NSlBFRyB2cyBWNEwyX1BJWF9GTVRfSlBFRyIuCgpBbHNv
-LCBJJ2xsIGJlIGFkZGluZyBzdXBwb3J0IGZvciBzcGVjLWNvbXBsaWFudCBKUEVHIGZyYW1lcwpp
-biByb2NrY2hpcCBKUEVHIGVuY29kZXIuIFRoaXMgd2lsbCBhbGxvdyB0byB1c2UgdGhlIGRyaXZl
-cgp3aXRoIGFscmVhZHkgYXZhaWxhYmxlIHVzZXJzcGFjZS4gSU9XLCB3ZSBkb24ndCBhYnNvbHV0
-ZWx5Cm5lZWQgYSBuZXcgcGl4ZWxmb3JtYXQgZm9yIGVuY29kZXJzLgoKRGVjb2RlcnMsIG9uIHRo
-ZSBvdGhlciBzaWRlLCB3b3VsZCBiZSBhIGRpZmZlcmVudCBzdG9yeSwKYXMgcGFyc2luZyBoZWFk
-ZXJzIGluIHRoZSBrZXJuZWwgY2FuIHJhaXNlIHNvbWUgc2FmZXR5CmNvbmNlcm5zLgoKUmVnYXJk
-cywKRXplcXVpZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Sat, Sep 22, 2018 at 06:02:34PM +0100, David Summers wrote:
+
+Commit message needed.
+
+Use subject prefixes that match the subsystem. 'dt-bindings: ...' for 
+binding docs. 'ARM: dts: ...' for ARM dts files.
+
+> Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
+> ---
+>  .../devicetree/bindings/arm/rockchip.txt      |   4 +
+
+Bindings should be a separate patch.
+
+>  arch/arm/boot/dts/Makefile                    |   1 +
+>  arch/arm/boot/dts/rk3288-tinker-s.dts         |  13 +
+>  arch/arm/boot/dts/rk3288-tinker.dts           | 498 +----------------
+>  arch/arm/boot/dts/rk3288-tinker.dtsi          | 504 ++++++++++++++++++
+>  5 files changed, 524 insertions(+), 496 deletions(-)
+>  create mode 100644 arch/arm/boot/dts/rk3288-tinker-s.dts
+>  create mode 100644 arch/arm/boot/dts/rk3288-tinker.dtsi
+
+Would be better to split the dts changes into 2 patches: restructuring 
+and add Tinker S board. Then we're not re-reviewing the existing stuff.
+
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+> index acfd3c773dd0..037ce94c3a73 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+> @@ -13,6 +13,10 @@ Rockchip platforms device tree bindings
+>      Required root node properties:
+>        - compatible = "asus,rk3288-tinker", "rockchip,rk3288";
+>  
+> +- Asus Tinker board S
+> +    Required root node properties:
+> +      - compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
+> +
+>  - Kylin RK3036 board:
+>      Required root node properties:
+>        - compatible = "rockchip,kylin-rk3036", "rockchip,rk3036";
+> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+> index b5bd3de87c33..65c75265adfa 100644
+> --- a/arch/arm/boot/dts/Makefile
+> +++ b/arch/arm/boot/dts/Makefile
+> @@ -864,6 +864,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+>  	rk3288-r89.dtb \
+>  	rk3288-rock2-square.dtb \
+>  	rk3288-tinker.dtb \
+> +	rk3288-tinker-s.dtb \	
+>  	rk3288-veyron-brain.dtb \
+>  	rk3288-veyron-jaq.dtb \
+>  	rk3288-veyron-jerry.dtb \
+> diff --git a/arch/arm/boot/dts/rk3288-tinker-s.dts b/arch/arm/boot/dts/rk3288-tinker-s.dts
+> new file mode 100644
+> index 000000000000..5e1078c6a784
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rk3288-tinker-s.dts
+> @@ -0,0 +1,13 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3288-tinker.dtsi"
+> +
+> +/ {
+> +	model = "Rockchip RK3288 Asus Tinker Board S";
+> +	compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
+
+Perhaps you should have 'asus,rk3288-tinker' as a fallback?
+
+> +};
