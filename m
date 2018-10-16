@@ -1,80 +1,32 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH] DT: rockchip: Fix stability issues with the
- 'performance' governor on rock960
-Date: Tue, 16 Oct 2018 19:51:38 +0530
-Message-ID: <20181016142138.GA24727@mani>
-References: <1539698431-12616-1-git-send-email-daniel.lezcano@linaro.org>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH] clk: rockchip: Fix static checker warning in
+ rockchip_ddrclk_get_parent call
+Date: Tue, 16 Oct 2018 11:18:15 -0700
+Message-ID: <153971389560.5275.17687261861802609299@swboyd.mtv.corp.google.com>
+References: <20181016134144.12461-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1539698431-12616-1-git-send-email-daniel.lezcano@linaro.org>
+In-Reply-To: <20181016134144.12461-1-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: heiko@sntech.de, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Vicente Bergas <vicencb@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 16, 2018 at 04:00:20PM +0200, Daniel Lezcano wrote:
-> When the performance governor is set as default, the rock960 hangs
-> around one minute after booting, whatever the activity is (idle, key
-> pressed, loaded, ...).
-> 
-> Based on the commit log found at https://patchwork.kernel.org/patch/10092377/
-> 
-> "vdd_log has no consumer and therefore will not be set to a specific
-> voltage. Still the PWM output pin gets configured and thence the vdd_log
-> output voltage will changed from it's default. Depending on the idle
-> state of the PWM this will slightly over or undervoltage the logic supply
-> of the RK3399 and cause instability with GbE (undervoltage) and PCIe
-> (overvoltage). Since the default value set by a voltage divider is the
-> correct supply voltage and we don't need to change it during runtime we
-> remove the rail from the devicetree completely so the PWM pin will not
-> be configured."
-> 
-> After removing the vdd-log from the rock960's specific DT, the board
-> does no longer hang and shows a stable behavior.
-> 
-> Apply the same change for the rock960 by removing the vdd-log from the
-> DT.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+Quoting Enric Balletbo i Serra (2018-10-16 06:41:44)
+> Fixes the signedness bug returning '(-22)' on the return type by removing=
+ the
+> sanity checker in rockchip_ddrclk_get_parent(). The function should return
+> and unsigned value only and it's safe to remove the sanity checker as the
+> core functions that call get_parent like clk_core_get_parent_by_index alr=
+eady
+> ensures the validity of the clk index returned (index >=3D core->num_pare=
+nts).
+> =
 
-Tested on Rock960 v1.2 board, hence
-
-Tested-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-
-Thanks a ton!
-
-Regards,
-Mani
-
+> Fixes: a4f182bf81f18 ("clk: rockchip: add new clock-type for the ddrclk")
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 12 ------------
->  1 file changed, 12 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> index 6c8c4ab..56abbb0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> @@ -57,18 +57,6 @@
->  		regulator-always-on;
->  		vin-supply = <&vcc_sys>;
->  	};
-> -
-> -	vdd_log: vdd-log {
-> -		compatible = "pwm-regulator";
-> -		pwms = <&pwm2 0 25000 0>;
-> -		regulator-name = "vdd_log";
-> -		regulator-min-microvolt = <800000>;
-> -		regulator-max-microvolt = <1400000>;
-> -		regulator-always-on;
-> -		regulator-boot-on;
-> -		vin-supply = <&vcc_sys>;
-> -	};
-> -
->  };
->  
->  &cpu_l0 {
-> -- 
-> 2.7.4
-> 
+
+Reviewed-by: Stephen Boyd <sboyd@kernel.org>
