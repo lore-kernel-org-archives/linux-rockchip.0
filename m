@@ -1,96 +1,48 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rv1108-evb: enable eMMC support
-Date: Tue, 16 Oct 2018 15:09:01 +0200
-Message-ID: <6815120.yyevdQbq0d@phil>
-References: <20181009213656.27719-1-otavio@ossystems.com.br>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH] clk: rockchip: Fix static checker warning in rockchip_ddrclk_get_parent call
+Date: Tue, 16 Oct 2018 15:41:44 +0200
+Message-ID: <20181016134144.12461-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181009213656.27719-1-otavio@ossystems.com.br>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Otavio Salvador <otavio@ossystems.com.br>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+To: linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Otavio,
+Fixes the signedness bug returning '(-22)' on the return type by removing the
+sanity checker in rockchip_ddrclk_get_parent(). The function should return
+and unsigned value only and it's safe to remove the sanity checker as the
+core functions that call get_parent like clk_core_get_parent_by_index already
+ensures the validity of the clk index returned (index >= core->num_parents).
 
-Am Dienstag, 9. Oktober 2018, 23:36:56 CEST schrieb Otavio Salvador:
-> Enable eMMC support for rv1108 evaluation board.
-> 
-> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
-> ---
-> 
->  arch/arm/boot/dts/rv1108-evb.dts |  8 ++++++++
->  arch/arm/boot/dts/rv1108.dtsi    | 29 +++++++++++++++++++++++++++++
->  2 files changed, 37 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-> index 70f0106d1252..f3c6f52c49e6 100644
-> --- a/arch/arm/boot/dts/rv1108-evb.dts
-> +++ b/arch/arm/boot/dts/rv1108-evb.dts
-> @@ -226,6 +226,14 @@
->  	status = "okay";
->  };
->  
-> +&emmc {
-> +	cap-mmc-highspeed;
-> +	supports-emmc;
-> +	non-removable;
-> +	num-slots = <1>;
+Fixes: a4f182bf81f18 ("clk: rockchip: add new clock-type for the ddrclk")
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
 
-num-slots should not be present anymore on new additions
+ drivers/clk/rockchip/clk-ddr.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-Also missing the pinctrl settings you're defining below?
-Aka pinctrl-0 = <&emmc_*>; + pinctrl-names = "default"
-
-
-Heiko
-
-> +	status = "okay";
-> +};
-> +
->  &u2phy {
->  	status = "okay";
->  
-> diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-> index 76ea24636feb..f14a733d85f6 100644
-> --- a/arch/arm/boot/dts/rv1108.dtsi
-> +++ b/arch/arm/boot/dts/rv1108.dtsi
-> @@ -772,6 +772,35 @@
->  			};
->  		};
->  
-> +		emmc {
-> +			emmc_clk: emmc-clk {
-> +				rockchip,pins = <2 RK_PB6 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
-> +			};
-> +
-> +			emmc_cmd: emmc-cmd {
-> +				rockchip,pins = <2 RK_PB4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-> +			};
-> +
-> +			emmc_pwren: emmc-pwren {
-> +				rockchip,pins = <2 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
-> +			};
-> +
-> +			emmc_bus1: emmc-bus1 {
-> +				rockchip,pins = <2 RK_PA0 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-> +			};
-> +
-> +			emmc_bus8: emmc-bus8 {
-> +				rockchip,pins = <2 RK_PA0 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA1 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA2 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA3 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA5 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA6 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
-> +						<2 RK_PA7 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-> +			};
-> +		};
-> +
->  		sdmmc {
->  			sdmmc_clk: sdmmc-clk {
->  				rockchip,pins = <3 RK_PC4 RK_FUNC_1 &pcfg_pull_none_drv_4ma>;
-> 
+diff --git a/drivers/clk/rockchip/clk-ddr.c b/drivers/clk/rockchip/clk-ddr.c
+index de00590af167..fd5c90371dbf 100644
+--- a/drivers/clk/rockchip/clk-ddr.c
++++ b/drivers/clk/rockchip/clk-ddr.c
+@@ -185,16 +185,12 @@ rockchip_ddrclk_sip_recalc_rate(struct clk_hw *hw,
+ static u8 rockchip_ddrclk_get_parent(struct clk_hw *hw)
+ {
+ 	struct rockchip_ddrclk *ddrclk = to_rockchip_ddrclk_hw(hw);
+-	int num_parents = clk_hw_get_num_parents(hw);
+ 	u32 val;
+ 
+ 	val = clk_readl(ddrclk->reg_base +
+ 			ddrclk->mux_offset) >> ddrclk->mux_shift;
+ 	val &= GENMASK(ddrclk->mux_width - 1, 0);
+ 
+-	if (val >= num_parents)
+-		return -EINVAL;
+-
+ 	return val;
+ }
+ 
+-- 
+2.19.1
