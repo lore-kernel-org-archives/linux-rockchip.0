@@ -1,60 +1,79 @@
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Subject: [PATCH 2/5] thermal: rockchip_thermal: simplify getting .driver_data
-Date: Sun, 21 Oct 2018 22:00:49 +0200
-Message-ID: <20181021200053.2194-3-wsa+renesas@sang-engineering.com>
-References: <20181021200053.2194-1-wsa+renesas@sang-engineering.com>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH 6/6] arm64: dts: xilinx: ultra96: Standardize LED labels
+ and triggers
+Date: Mon, 22 Oct 2018 12:20:08 +0530
+Message-ID: <20181022065008.GA10999@mani>
+References: <20181009140522.6492-1-manivannan.sadhasivam@linaro.org>
+ <20181009140522.6492-7-manivannan.sadhasivam@linaro.org>
+ <7b94c09d-ecbd-e48e-6583-127566715a76@xilinx.com>
+ <20181015185147.GA29649@amd>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181021200053.2194-1-wsa+renesas@sang-engineering.com>
+Content-Disposition: inline
+In-Reply-To: <20181015185147.GA29649@amd>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: linux-renesas-soc@vger.kernel.org, Wolfram Sang <wsa+renesas@sang-engineering.com>, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Pavel Machek <pavel@ucw.cz>
+Cc: Michal Simek <michal.simek@xilinx.com>, robh+dt@kernel.org, heiko@sntech.de, ezequiel@collabora.com, xuwei5@hisilicon.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We should get 'driver_data' from 'struct device' directly. Going via
-platform_device is an unneeded step back and forth.
+Hi Pavel,
 
-Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
----
+Sorry for the late reply! Not sure why your resonse was filtered by the
+Spam filter :\
 
-Build tested only. buildbot is happy.
+On Mon, Oct 15, 2018 at 09:56:01PM +0200, Pavel Machek wrote:
+> On Wed 2018-10-10 09:25:24, Michal Simek wrote:
+> > On 9.10.2018 16:05, Manivannan Sadhasivam wrote:
+> > > For all 96Boards, the following standard is used for onboard LEDs.
+> > > 
+> > > device-name:green:user1  default-trigger: heartbeat
+> > > device-name:green:user2  default-trigger: mmc0/disk-activity
+> > >                                           (onboard-storage)
+> > > device-name:green:user3  default-trigger: mmc1 (SD-card)
+> > > device-name:green:user4  default-trigger: none, panic-indicator
+> 
+> Actually, having one LED as heartbeat and second as panic indicator
+> only... Could those be merged and remaining LED used to something
+> useful?
+>
 
- drivers/thermal/rockchip_thermal.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+No. Our intention is to leave one LED as a panic indicator and a dedicated
+LED for heartbeat. If user wants to override the defaults, he can always do
+with any LEDs.
+ 
+> > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> > > ---
+> 
+> > > index eb5e8bddb610..565ceb390f99 100644
+> > > --- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
+> > > +++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
+> > > @@ -57,29 +57,30 @@
+> > >  	leds {
+> > >  		compatible = "gpio-leds";
+> > >  		ds2 {
+> > > -			label = "ds2";
+> > > +			label = "zynqmp-zcu100-revC:green:user1";
+> > 
+> > The purpose of this series should be standardize Led labels that's why I
+> > would expect that leds will be called in the same way on all these
+> > boards that's why I am not getting why there is board name.
+> > 
+> > green:user1 or just user1 should be enough.
+> 
+> green:user1 is better. Also... I guess this should go to the LEDs
+> list... and if you want to make names standard, maybe there's better
+> naming than user1..user4?
+> 
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index f36375d5a16c..9c7643d62ed7 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1327,8 +1327,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
- 
- static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct rockchip_thermal_data *thermal = platform_get_drvdata(pdev);
-+	struct rockchip_thermal_data *thermal = dev_get_drvdata(dev);
- 	int i;
- 
- 	for (i = 0; i < thermal->chip->chn_num; i++)
-@@ -1346,8 +1345,7 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
- 
- static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct rockchip_thermal_data *thermal = platform_get_drvdata(pdev);
-+	struct rockchip_thermal_data *thermal = dev_get_drvdata(dev);
- 	int i;
- 	int error;
- 
-@@ -1376,7 +1374,7 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- 					      id, thermal->regs,
- 					      thermal->tshut_temp);
- 		if (error)
--			dev_err(&pdev->dev, "%s: invalid tshut=%d, error=%d\n",
-+			dev_err(dev, "%s: invalid tshut=%d, error=%d\n",
- 				__func__, thermal->tshut_temp, error);
- 	}
- 
--- 
-2.19.0
+These are user LEDs and that's why the `userN` naming convention comes into
+place. Here I agree to move with "green:user1" format and sending it to the
+LEDs list.
+
+Thanks,
+Mani
+
+> 									Pavel
+> -- 
+> (english) http://www.livejournal.com/~pavelmachek
+> (cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
