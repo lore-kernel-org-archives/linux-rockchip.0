@@ -1,79 +1,76 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH 6/6] arm64: dts: xilinx: ultra96: Standardize LED labels
- and triggers
-Date: Mon, 22 Oct 2018 12:20:08 +0530
-Message-ID: <20181022065008.GA10999@mani>
-References: <20181009140522.6492-1-manivannan.sadhasivam@linaro.org>
- <20181009140522.6492-7-manivannan.sadhasivam@linaro.org>
- <7b94c09d-ecbd-e48e-6583-127566715a76@xilinx.com>
- <20181015185147.GA29649@amd>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add fan on Sapphire board
+Date: Mon, 22 Oct 2018 15:28:49 +0200
+Message-ID: <CAAMcf8Dks7CUaQcYwXwxC6-PCvCDfkYgWF1n-J+AhZuYL4XNKA@mail.gmail.com>
+References: <20180930155033.31105-1-vicencb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181015185147.GA29649@amd>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Pavel Machek <pavel@ucw.cz>
-Cc: Michal Simek <michal.simek@xilinx.com>, robh+dt@kernel.org, heiko@sntech.de, ezequiel@collabora.com, xuwei5@hisilicon.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180930155033.31105-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Pavel,
-
-Sorry for the late reply! Not sure why your resonse was filtered by the
-Spam filter :\
-
-On Mon, Oct 15, 2018 at 09:56:01PM +0200, Pavel Machek wrote:
-> On Wed 2018-10-10 09:25:24, Michal Simek wrote:
-> > On 9.10.2018 16:05, Manivannan Sadhasivam wrote:
-> > > For all 96Boards, the following standard is used for onboard LEDs.
-> > > 
-> > > device-name:green:user1  default-trigger: heartbeat
-> > > device-name:green:user2  default-trigger: mmc0/disk-activity
-> > >                                           (onboard-storage)
-> > > device-name:green:user3  default-trigger: mmc1 (SD-card)
-> > > device-name:green:user4  default-trigger: none, panic-indicator
-> 
-> Actually, having one LED as heartbeat and second as panic indicator
-> only... Could those be merged and remaining LED used to something
-> useful?
->
-
-No. Our intention is to leave one LED as a panic indicator and a dedicated
-LED for heartbeat. If user wants to override the defaults, he can always do
-with any LEDs.
- 
-> > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > > ---
-> 
-> > > index eb5e8bddb610..565ceb390f99 100644
-> > > --- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-> > > +++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dts
-> > > @@ -57,29 +57,30 @@
-> > >  	leds {
-> > >  		compatible = "gpio-leds";
-> > >  		ds2 {
-> > > -			label = "ds2";
-> > > +			label = "zynqmp-zcu100-revC:green:user1";
-> > 
-> > The purpose of this series should be standardize Led labels that's why I
-> > would expect that leds will be called in the same way on all these
-> > boards that's why I am not getting why there is board name.
-> > 
-> > green:user1 or just user1 should be enough.
-> 
-> green:user1 is better. Also... I guess this should go to the LEDs
-> list... and if you want to make names standard, maybe there's better
-> naming than user1..user4?
-> 
-
-These are user LEDs and that's why the `userN` naming convention comes into
-place. Here I agree to move with "green:user1" format and sending it to the
-LEDs list.
-
-Thanks,
-Mani
-
-> 									Pavel
-> -- 
-> (english) http://www.livejournal.com/~pavelmachek
-> (cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
+T24gU3VuLCBTZXAgMzAsIDIwMTggYXQgNTo1MCBQTSBWaWNlbnRlIEJlcmdhcyA8dmljZW5jYkBn
+bWFpbC5jb20+IHdyb3RlOgo+Cj4gVGhlIFNhcHBoaXJlIGJvYXJkIGhhcyBhIDEyViBmYW4uIFNv
+LCBhZGRpbmcgaXQgdG8gdGhlIERUUy4KPiBUaGVyZSBpcyBubyBwb3dlciBzdXBwbHkgZGlyZWN0
+bHkgY29ubmVjdGVkLCBpdCBuZWVkcyB0aGUgYmFzZWJvYXJkIHRvCj4gd29yay4KPiBJZiB0aGUg
+Ym9hcmQgaXMgdXNlZCBzdGFuZGFsb25lIHRoZW4gYSBoYXJkd2FyZSBtb2RpZmljYXRpb24gaXMg
+bmVlZGVkLgo+IE9uIHRoZSBTYXBwaGlyZSBib2FyZCB0aGVyZSBpcyBhbiB1bnBvcHVsYXRlZCBy
+ZXNpc3RvciB0byBjb25uZWN0IGl0IHRvCj4gVkJVU19UWVBFQywgd2hpY2ggaXMgdXN1YWxseSA1
+ViAodG9vIGxvdykgYW5kIGNhbiByYW5nZSB1cCB0byAyMFYKPiAodG9vIGhpZ2gpLgo+IEkgdGVz
+dGVkIGl0IGZvciBhIHdlZWsgY29ubmVjdGVkIHRvIFZDQ19TWVMgd2hpY2ggaXMgOC40ViBhbmQg
+cHJvdmVkIHRvCj4gYmUgbW9yZSB0aGFuIGVub3VnaCBmb3IgdGhlIHJlcXVpcmVkIGNvb2xpbmcg
+bmVlZHMuIFRoaXMgaXMgdGhlCj4gY29ubmVjdGlvbiBkZXNjcmliZWQgaW4gdGhlIGNvbW1lbnQu
+Cj4KPiBTaWduZWQtb2ZmLWJ5OiBWaWNlbnRlIEJlcmdhcyA8dmljZW5jYkBnbWFpbC5jb20+Cj4g
+LS0tCj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaSAgICB8IDM4
+ICsrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDM4IGluc2VydGlvbnMoKykK
+Pgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBw
+aGlyZS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUu
+ZHRzaQo+IGluZGV4IDU0MjFlMjM3NjBjMy4uOTBkODEzYmRhYmRlIDEwMDY0NAo+IC0tLSBhL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kKPiArKysgYi9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCj4gQEAgLTY2
+LDYgKzY2LDE5IEBACj4gICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0g
+PDEyMDAwMDAwPjsKPiAgICAgICAgIH07Cj4KPiArICAgICAgIC8qCj4gKyAgICAgICAgKiBUaGUg
+ZmFuIHBvd2VyIHN1cHBseSBjb21lcyBmcm9tIHRoZSBiYXNlYm9hcmQuCj4gKyAgICAgICAgKiBG
+b3IgdGhlIHN0YW5kYWxvbmUgU2FwcGhpcmUgb25lIG9wdGlvbiBpcyB0byBjb25uZWN0IGEgd2ly
+ZQo+ICsgICAgICAgICogZnJvbSAgUjkwMDMwIEROUCBSMDgwNSBwaW4yICB0byAgQzkwMDAyIDEw
+dUYgQzA4MDUgcGluMSAodmNjX3N5cykuCj4gKyAgICAgICAgKi8KPiArICAgICAgIGZhbjA6IGdw
+aW8tZmFuIHsKPiArICAgICAgICAgICAgICAgI2Nvb2xpbmctY2VsbHMgPSA8Mj47Cj4gKyAgICAg
+ICAgICAgICAgIGNvbXBhdGlibGUgPSAiZ3Bpby1mYW4iOwo+ICsgICAgICAgICAgICAgICBncGlv
+LWZhbixzcGVlZC1tYXAgPSA8MCAwIDMwMDAgMT47Cj4gKyAgICAgICAgICAgICAgIGdwaW9zID0g
+PCZncGlvMSBSS19QQzIgR1BJT19BQ1RJVkVfSElHSD47Cj4gKyAgICAgICAgICAgICAgIHN0YXR1
+cyA9ICJva2F5IjsKPiArICAgICAgIH07Cj4gKwo+ICAgICAgICAga2V5czogZ3Bpby1rZXlzIHsK
+PiAgICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJncGlvLWtleXMiOwo+ICAgICAgICAgICAg
+ICAgICBhdXRvcmVwZWF0Owo+IEBAIC0xODMsNiArMTk2LDI0IEBACj4gICAgICAgICBjcHUtc3Vw
+cGx5ID0gPCZ2ZGRfY3B1X2I+Owo+ICB9Owo+Cj4gKyZjcHVfdGhlcm1hbCB7Cj4gKyAgICAgICB0
+cmlwcyB7Cj4gKyAgICAgICAgICAgICAgIGNwdV9ob3Q6IGNwdV9ob3Qgewo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIGh5c3RlcmVzaXMgPSA8MTAwMDA+Owo+ICsgICAgICAgICAgICAgICAgICAg
+ICAgIHRlbXBlcmF0dXJlID0gPDU1MDAwPjsKPiArICAgICAgICAgICAgICAgICAgICAgICB0eXBl
+ID0gImFjdGl2ZSI7Cj4gKyAgICAgICAgICAgICAgIH07Cj4gKyAgICAgICB9Owo+ICsKPiArICAg
+ICAgIGNvb2xpbmctbWFwcyB7Cj4gKyAgICAgICAgICAgICAgIG1hcDIgewo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIGNvb2xpbmctZGV2aWNlID0KPiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIDwmZmFuMCBUSEVSTUFMX05PX0xJTUlUIFRIRVJNQUxfTk9fTElNSVQ+Owo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgIHRyaXAgPSA8JmNwdV9ob3Q+Owo+ICsgICAgICAgICAgICAgICB9
+Owo+ICsgICAgICAgfTsKPiArfTsKPiArCj4gICZlbW1jX3BoeSB7Cj4gICAgICAgICBzdGF0dXMg
+PSAib2theSI7Cj4gIH07Cj4gQEAgLTQ3Miw2ICs1MDMsMTMgQEAKPiAgICAgICAgICAgICAgICAg
+fTsKPiAgICAgICAgIH07Cj4KPiArICAgICAgIGZhbiB7Cj4gKyAgICAgICAgICAgICAgIG1vdG9y
+X3B3cjogbW90b3ItcHdyIHsKPiArICAgICAgICAgICAgICAgICAgICAgICByb2NrY2hpcCxwaW5z
+ID0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxSS19HUElPMSBSS19QQzIgUktf
+RlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gKyAgICAgICAgICAgICAgIH07Cj4gKyAgICAg
+ICB9Owo+ICsKPiAgICAgICAgIHBtaWMgewo+ICAgICAgICAgICAgICAgICBwbWljX2ludF9sOiBw
+bWljLWludC1sIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICByb2NrY2hpcCxwaW5zID0KPiAt
+LQo+IDIuMTkuMAoKSGksCmNhbiBpIGtpbmRseSBhc2sgZm9yIGZlZWRiYWNrIG9uIHRoaXMgcHJv
+cG9zZWQgcGF0Y2g/CgpSZWdhcmRzLAogIFZpY2Vuw6cuCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
