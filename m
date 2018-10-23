@@ -1,82 +1,57 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
+From: Matthew Wilcox <willy@infradead.org>
 Subject: Re: [PATCH v2] mm: Introduce new function vm_insert_kmem_page
-Date: Tue, 23 Oct 2018 17:44:32 +0530
-Message-ID: <CAFqt6zZ2yHkVcbYtK1dxr9B3K5WVYGboavjP1ibmYei0u4zFbQ@mail.gmail.com>
-References: <20181003185854.GA1174@jordon-HP-15-Notebook-PC>
- <20181003200003.GA9965@bombadil.infradead.org> <20181003221444.GZ30658@n2100.armlinux.org.uk>
- <CAFqt6zYHhmPwUdaCZX-BuAvaVwA-x1W39tz+Q50-nbEaW2cYVg@mail.gmail.com>
- <20181004123400.GC30658@n2100.armlinux.org.uk> <CAFqt6zZPOM17QwmcWKF3F1gqkJm=2PxvuJ3naWuRXZGHc2HrEQ@mail.gmail.com>
- <20181004181736.GB20842@bombadil.infradead.org> <CAFqt6zaN0PQHkjuwFf8VriROLy7qrPDu-iNE=VPiXJw8C7GpQg@mail.gmail.com>
- <CANiq72mkTP_m20vqei-cpN+ypQ_gU472qn5m68vb_4Nqj5afMQ@mail.gmail.com>
+Date: Tue, 23 Oct 2018 05:24:35 -0700
+Message-ID: <20181023122435.GB20085@bombadil.infradead.org>
+References: <CANiq72mkTP_m20vqei-cpN+ypQ_gU472qn5m68vb_4Nqj5afMQ@mail.gmail.com>
  <CAFqt6zaFc_GenhfvsD0VPfepR-jjXypj+4CgNEuHMVq1WXV+8w@mail.gmail.com>
  <CANiq72kVJn7985EET067Dgj+z0dwb0x2MTUnREMWKCVU6=WnJA@mail.gmail.com>
  <CAFqt6zZ4sPjtb5BaDfwc5tZv+vMj6ao3NJZ_3quX9AH5pCMwJg@mail.gmail.com>
  <CANiq72m9u1PL9X+dPNLxgkhvttj=4ijLyM2sFex=Kws7wswKzw@mail.gmail.com>
  <CAFqt6zYH4Aczu8AYke8AfGuMS70SJXCMn-n8X8C_Tz03gTjn8g@mail.gmail.com>
  <CANiq72kRAZE9SyM4EkpaBZH03Ex0Z=4Pk2iOuc2jBDKTfKjHQg@mail.gmail.com>
- <CAFqt6zZCCPFE3sQ3u_gjiN8wwd99nwWatk9JRsiGxbCwhi91mg@mail.gmail.com> <CANiq72k-e_j67==VdrayqggjAd7MAfpaJS-_0=jkmh4OWynukQ@mail.gmail.com>
+ <CAFqt6zZCCPFE3sQ3u_gjiN8wwd99nwWatk9JRsiGxbCwhi91mg@mail.gmail.com>
+ <CANiq72k-e_j67==VdrayqggjAd7MAfpaJS-_0=jkmh4OWynukQ@mail.gmail.com>
+ <CAFqt6zZ2yHkVcbYtK1dxr9B3K5WVYGboavjP1ibmYei0u4zFbQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANiq72k-e_j67==VdrayqggjAd7MAfpaJS-_0=jkmh4OWynukQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Cc: Matthew Wilcox <willy@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin@protonic.nl, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, Andrew Morton <akpm@linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kees Cook <keescook@chromium.org>, treding@nvidia.com, Michal Hocko <mhocko@suse.com>, Dan Williams <dan.j.williams@intel.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, aryabinin@virtuozzo.com, Dmitry Vyukov <dvyukov@google.com>, Kate Stewart <kstewart@linuxfoundation.org>, tchibo@google.com, riel@redhat.com, Minchan Kim <minchan@kernel.org>, Peter Zijlstra <peterz@infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <CAFqt6zZ2yHkVcbYtK1dxr9B3K5WVYGboavjP1ibmYei0u4zFbQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Kate Stewart <kstewart@linuxfoundation.org>, Michal Hocko <mhocko@suse.com>, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, linux@dominikbrodowski.net, linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, cpandya@codeaurora.org, linux1394-devel@lists.sourceforge.net, Marek Szyprowski <m.szyprowski@samsung.com>, ak@linux.intel.com, Minchan Kim <minchan@kernel.org>, linux-rockchip@lists.infradead.org, Russell King - ARM Linux <linux@armlinux.org.uk>, Peter Zijlstra <peterz@infradead.org>, linux-arm-kernel@lists.infradead.org, "Huang, Ying" <ying.huang@intel.com>, tchibo@google.com, aryabinin@virtuozzo.com, treding@nvidia.com, riel@redhat.com, Kees Cook <keescook@chromium.org>, Arnd Bergmann <arnd@arndb.de>, rppt@linux.vnet.ibm.com, dri-devel@lists.freedesktop.org, Dan Williams <dan.j.williams@intel.com>, Andrew Morton <akp>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 6, 2018 at 4:19 PM Miguel Ojeda
-<miguel.ojeda.sandonis@gmail.com> wrote:
->
-> On Sat, Oct 6, 2018 at 7:11 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+On Tue, Oct 23, 2018 at 05:44:32PM +0530, Souptick Joarder wrote:
+> On Sat, Oct 6, 2018 at 4:19 PM Miguel Ojeda
+> <miguel.ojeda.sandonis@gmail.com> wrote:
 > >
-> > On Fri, Oct 5, 2018 at 11:39 PM Miguel Ojeda
-> > <miguel.ojeda.sandonis@gmail.com> wrote:
-> > > They are not supposed to be "steps". You did it with 70+ commits (!!)
-> > > over the course of several months. Why a tree wasn't created, stuff
-> > > developed there, and when done, submitted it for review?
-> >
-> > Because we already have a plan for entire vm_fault_t migration and
-> > the * instruction * was to send one patch per driver.
->
-> The instruction?
-
-Sorry for the delayed response.
-Instruction from Matthew  Wilcox who is supervising the entire vm_fault_t
-migration work :-)
-
->
+> > On Sat, Oct 6, 2018 at 7:11 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
 > > >
-> > > Fine, but you haven't answered to the other parts of my email: you
-> > > don't explain why you choose one alternative over the others, you
-> > > simply keep changing the approach.
+> > > On Fri, Oct 5, 2018 at 11:39 PM Miguel Ojeda
+> > > <miguel.ojeda.sandonis@gmail.com> wrote:
+> > > > They are not supposed to be "steps". You did it with 70+ commits (!!)
+> > > > over the course of several months. Why a tree wasn't created, stuff
+> > > > developed there, and when done, submitted it for review?
+> > >
+> > > Because we already have a plan for entire vm_fault_t migration and
+> > > the * instruction * was to send one patch per driver.
 > >
-> > We are going in circles here. That you want to convert vm_insert_page
-> > to vmf_insert_page for the PF case is fine and understood. However,
-> > you don't *need* to introduce a new name for the remaining non-PF
-> > cases if the function is going to be the exact same thing as before.
-> > You say "The final goal is to remove vm_insert_page", but you haven't
-> > justified *why* you need to remove that name.
-> >
-> > I think I have given that answer. If we don't remove vm_insert_page,
-> > future #PF caller will have option to use it. But those should be
-> > restricted. How are we going to restrict vm_insert_page in one half
-> > of kernel when other half is still using it  ?? Is there any way ? ( I don't
-> > know)
->
-> Ah, so that is what you are concerned about: future misuses. Well, I
-> don't really see the problem. There are only ~18 calls to
-> vm_insert_page() in the entire kernel: checking if people is using it
-> properly for a while should be easy. As long as the new behavior is
-> documented properly, it should be fine. If you are really concerned
-> about mistakes being made, then fine, we can rename it as I suggested.
->
-> Now, the new vm_insert_range() is another topic. It simplifies a few
-> of the callers and buys us the rename at the same time, so I am also
-> OK with it.
->
-> As you see, I am not against the changes -- it is just that they
-> should clearly justified. :-) It wasn't clear what your problem with
-> the current vm_insert_page() is.
->
-> Cheers,
-> Miguel
+> > The instruction?
+> 
+> Sorry for the delayed response.
+> Instruction from Matthew  Wilcox who is supervising the entire vm_fault_t
+> migration work :-)
+
+Hang on.  That was for the initial vm_fault_t conversion in which each
+step was clearly an improvement.  What you're looking at now is far
+from that.
