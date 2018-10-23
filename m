@@ -1,60 +1,88 @@
-From: tony <tony.xie@rock-chips.com>
-Subject: Re: [PATCH v3 1/5] mfd: rk808: Add RK817 and RK809 support
-Date: Tue, 23 Oct 2018 15:21:50 +0800
-Message-ID: <3d96be69-e50c-187e-7d3a-75eec63d2be0@rock-chips.com>
-References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
- <1535081441-20718-2-git-send-email-tony.xie@rock-chips.com>
- <20180911114732.GL4185@dell>
- <b0f9fff3-3084-91b3-fa78-5163ebd43bbb@rock-chips.com>
- <20181023062601.GS4939@dell>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v3 5/7] soc: rockchip: power-domain: add rk3066 powerdomains
+Date: Tue, 23 Oct 2018 12:38:18 +0200
+Message-ID: <20181023103820.6464-6-heiko@sntech.de>
+References: <20181023103820.6464-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181023062601.GS4939@dell>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: heiko@sntech.de, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20181023103820.6464-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Add power-domains found on rk3066 socs.
 
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/soc/rockchip/pm_domains.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-在 2018/10/23 14:26, Lee Jones 写道:
->>>>       The rk809 and rk817 are a Power Management IC (PMIC) for multimedia
->>>>       and handheld devices. It contains the following components:
->>>>
->>>>           - Regulators
->>>>           - RTC
->>>>           - Clocking
->>>>
->>>>       Both RK809 and RK817 chips are using a similar register map,
->>>>       so we can reuse the RTC and Clocking and regulators functionality.
->>>>
->>>> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
->>>> ---
->>>>    drivers/mfd/Kconfig       |   6 +-
->>>>    drivers/mfd/rk808.c       | 218 +++++++++++++++++++++++++++++++++++++++++++++-
->>>>    include/linux/mfd/rk808.h | 172 ++++++++++++++++++++++++++++++++++++
->>>>    kernel/reboot.c           |   1 +
->>>>    4 files changed, 391 insertions(+), 6 deletions(-)
-> [...]
->
->>>> diff --git a/kernel/reboot.c b/kernel/reboot.c
->>>> index e4ced88..83810d7 100644
->>>> --- a/kernel/reboot.c
->>>> +++ b/kernel/reboot.c
->>>> @@ -49,6 +49,7 @@
->>>>     */
->>>>    void (*pm_power_off_prepare)(void);
->>>> +EXPORT_SYMBOL_GPL(pm_power_off_prepare);
->>> Why do you need this where no other driver in the kernel does?
->>      There is a gpio_slp pin for RK809 and RK817，this pin has reset、power
->> down and sleep functions，so
->>      when system is going to power down, this pin is needed to switch to
->> power down function，and then we just only control
->>      this pin to high to power down the system in atf at last。
-> There are other PM call-backs that you can use for this.  There
-> shouldn't be any requirement to export and call functions at this
-> level directly.
-     I will use a shutdown call-backs from syscore to implement it.
->
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 58bd39cd3369..4587b27eeb9f 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -21,6 +21,7 @@
+ #include <linux/mfd/syscon.h>
+ #include <dt-bindings/power/px30-power.h>
+ #include <dt-bindings/power/rk3036-power.h>
++#include <dt-bindings/power/rk3066-power.h>
+ #include <dt-bindings/power/rk3128-power.h>
+ #include <dt-bindings/power/rk3188-power.h>
+ #include <dt-bindings/power/rk3228-power.h>
+@@ -738,6 +739,14 @@ static const struct rockchip_domain_info rk3036_pm_domains[] = {
+ 	[RK3036_PD_SYS]		= DOMAIN_RK3036(8, 22, 29, false),
+ };
+ 
++static const struct rockchip_domain_info rk3066_pm_domains[] = {
++	[RK3066_PD_GPU]		= DOMAIN(9, 9, 3, 24, 29, false),
++	[RK3066_PD_VIDEO]	= DOMAIN(8, 8, 4, 23, 28, false),
++	[RK3066_PD_VIO]		= DOMAIN(7, 7, 5, 22, 27, false),
++	[RK3066_PD_PERI]	= DOMAIN(6, 6, 2, 25, 30, false),
++	[RK3066_PD_CPU]		= DOMAIN(-1, 5, 1, 26, 31, false),
++};
++
+ static const struct rockchip_domain_info rk3128_pm_domains[] = {
+ 	[RK3128_PD_CORE]	= DOMAIN_RK3288(0, 0, 4, false),
+ 	[RK3128_PD_MSCH]	= DOMAIN_RK3288(-1, -1, 6, true),
+@@ -855,6 +864,17 @@ static const struct rockchip_pmu_info rk3036_pmu = {
+ 	.domain_info = rk3036_pm_domains,
+ };
+ 
++static const struct rockchip_pmu_info rk3066_pmu = {
++	.pwr_offset = 0x08,
++	.status_offset = 0x0c,
++	.req_offset = 0x38, /* PMU_MISC_CON1 */
++	.idle_offset = 0x0c,
++	.ack_offset = 0x0c,
++
++	.num_domains = ARRAY_SIZE(rk3066_pm_domains),
++	.domain_info = rk3066_pm_domains,
++};
++
+ static const struct rockchip_pmu_info rk3128_pmu = {
+ 	.pwr_offset = 0x04,
+ 	.status_offset = 0x08,
+@@ -968,6 +988,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 		.compatible = "rockchip,rk3036-power-controller",
+ 		.data = (void *)&rk3036_pmu,
+ 	},
++	{
++		.compatible = "rockchip,rk3066-power-controller",
++		.data = (void *)&rk3066_pmu,
++	},
+ 	{
+ 		.compatible = "rockchip,rk3128-power-controller",
+ 		.data = (void *)&rk3128_pmu,
+-- 
+2.18.0
