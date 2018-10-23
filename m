@@ -1,46 +1,63 @@
-From: tony <tony.xie@rock-chips.com>
-Subject: Re: [PATCH v4 1/5] mfd: rk808: Add RK817 and RK809 support
-Date: Tue, 23 Oct 2018 11:33:10 +0800
-Message-ID: <219a9cdd-00d7-2920-4986-dcc1c8a27f6c@rock-chips.com>
-References: <1535968829-19418-1-git-send-email-tony.xie@rock-chips.com>
- <1535968829-19418-2-git-send-email-tony.xie@rock-chips.com>
- <20180911123907.GN4185@dell>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v3 1/5] mfd: rk808: Add RK817 and RK809 support
+Date: Tue, 23 Oct 2018 07:26:01 +0100
+Message-ID: <20181023062601.GS4939@dell>
+References: <1535081441-20718-1-git-send-email-tony.xie@rock-chips.com>
+ <1535081441-20718-2-git-send-email-tony.xie@rock-chips.com>
+ <20180911114732.GL4185@dell>
+ <b0f9fff3-3084-91b3-fa78-5163ebd43bbb@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180911123907.GN4185@dell>
+Content-Disposition: inline
+In-Reply-To: <b0f9fff3-3084-91b3-fa78-5163ebd43bbb@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
+To: tony <tony.xie@rock-chips.com>
 Cc: heiko@sntech.de, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
+> > >      The rk809 and rk817 are a Power Management IC (PMIC) for multimedia
+> > >      and handheld devices. It contains the following components:
+> > > 
+> > >          - Regulators
+> > >          - RTC
+> > >          - Clocking
+> > > 
+> > >      Both RK809 and RK817 chips are using a similar register map,
+> > >      so we can reuse the RTC and Clocking and regulators functionality.
+> > > 
+> > > Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+> > > ---
+> > >   drivers/mfd/Kconfig       |   6 +-
+> > >   drivers/mfd/rk808.c       | 218 +++++++++++++++++++++++++++++++++++++++++++++-
+> > >   include/linux/mfd/rk808.h | 172 ++++++++++++++++++++++++++++++++++++
+> > >   kernel/reboot.c           |   1 +
+> > >   4 files changed, 391 insertions(+), 6 deletions(-)
 
-> On Mon, 03 Sep 2018, Tony Xie wrote:
->
->>      The rk809 and rk817 are a Power Management IC (PMIC) for multimedia
->>      and handheld devices. It contains the following components:
->>
->>          - Regulators
->>          - RTC
->>          - Clocking
->>
->>      Both RK809 and RK817 chips are using a similar register map,
->>      so we can reuse the RTC and Clocking and regulators functionality.
->>
->> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
->> ---
-> It's often helpful to place a Changelog in this space.
-     I will output the changelog in the first mail when send-mail.
->
->>   drivers/mfd/Kconfig       |   6 +-
->>   drivers/mfd/rk808.c       | 218 +++++++++++++++++++++++++++++++++++++++++++++-
->>   include/linux/mfd/rk808.h | 172 ++++++++++++++++++++++++++++++++++++
->>   kernel/reboot.c           |   1 +
->>   4 files changed, 391 insertions(+), 6 deletions(-)
-> I just reviewed v4.
->
-> It looks like the review comments are still relevant.
-     I will commit the v5 today which includes some modification base on 
-your comments base in the v3.
->
+[...]
+
+> > > diff --git a/kernel/reboot.c b/kernel/reboot.c
+> > > index e4ced88..83810d7 100644
+> > > --- a/kernel/reboot.c
+> > > +++ b/kernel/reboot.c
+> > > @@ -49,6 +49,7 @@
+> > >    */
+> > >   void (*pm_power_off_prepare)(void);
+> > > +EXPORT_SYMBOL_GPL(pm_power_off_prepare);
+> > Why do you need this where no other driver in the kernel does?
+>     There is a gpio_slp pin for RK809 and RK817，this pin has reset、power
+> down and sleep functions，so
+>     when system is going to power down, this pin is needed to switch to
+> power down function，and then we just only control
+>     this pin to high to power down the system in atf at last。
+
+There are other PM call-backs that you can use for this.  There
+shouldn't be any requirement to export and call functions at this
+level directly.
+
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
