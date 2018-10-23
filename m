@@ -1,53 +1,186 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH v2] mm: Introduce new function vm_insert_kmem_page
-Date: Tue, 23 Oct 2018 18:45:56 +0530
-Message-ID: <CAFqt6zYhXDG8276VfnzrBNM9JZnBsk0YeHP+yMAELB9e+Kt8uA@mail.gmail.com>
-References: <CANiq72kVJn7985EET067Dgj+z0dwb0x2MTUnREMWKCVU6=WnJA@mail.gmail.com>
- <CAFqt6zZ4sPjtb5BaDfwc5tZv+vMj6ao3NJZ_3quX9AH5pCMwJg@mail.gmail.com>
- <CANiq72m9u1PL9X+dPNLxgkhvttj=4ijLyM2sFex=Kws7wswKzw@mail.gmail.com>
- <CAFqt6zYH4Aczu8AYke8AfGuMS70SJXCMn-n8X8C_Tz03gTjn8g@mail.gmail.com>
- <CANiq72kRAZE9SyM4EkpaBZH03Ex0Z=4Pk2iOuc2jBDKTfKjHQg@mail.gmail.com>
- <CAFqt6zZCCPFE3sQ3u_gjiN8wwd99nwWatk9JRsiGxbCwhi91mg@mail.gmail.com>
- <CANiq72k-e_j67==VdrayqggjAd7MAfpaJS-_0=jkmh4OWynukQ@mail.gmail.com>
- <CAFqt6zZ2yHkVcbYtK1dxr9B3K5WVYGboavjP1ibmYei0u4zFbQ@mail.gmail.com>
- <20181023122435.GB20085@bombadil.infradead.org> <CAFqt6zZp=UsSGH148=tPWLnSxC51EGdR0Vv4f5tP58MO-6OS_w@mail.gmail.com>
- <20181023125928.GC20085@bombadil.infradead.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: usb typec not doing handling in-kernel
+Date: Tue, 23 Oct 2018 15:49:03 +0200
+Message-ID: <1918448.cp3lcIjlQx@phil>
+References: <3762490.crBoikqiXD@phil> <5292837.COQWy9rWzJ@phil>
+ <20180815144636.GB25757@kuha.fi.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181023125928.GC20085@bombadil.infradead.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthew Wilcox <willy@infradead.org>
-Cc: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin@protonic.nl, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, Andrew Morton <akpm@linux-foundation.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kees Cook <keescook@chromium.org>, treding@nvidia.com, Michal Hocko <mhocko@suse.com>, Dan Williams <dan.j.williams@intel.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, aryabinin@virtuozzo.com, Dmitry Vyukov <dvyukov@google.com>, Kate Stewart <kstewart@linuxfoundation.org>, tchibo@google.com, riel@redhat.com, Minchan Kim <minchan@kernel.org>, Peter Zijlstra <peterz@infrad>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20180815144636.GB25757-FZxXFokcWpatqXYlAKuG4QC/G2K4zDHf@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 23, 2018 at 6:29 PM Matthew Wilcox <willy@infradead.org> wrote:
->
-> On Tue, Oct 23, 2018 at 06:03:42PM +0530, Souptick Joarder wrote:
-> > On Tue, Oct 23, 2018 at 5:54 PM Matthew Wilcox <willy@infradead.org> wrote:
-> > > On Tue, Oct 23, 2018 at 05:44:32PM +0530, Souptick Joarder wrote:
-> > > > Instruction from Matthew  Wilcox who is supervising the entire vm_fault_t
-> > > > migration work :-)
-> > >
-> > > Hang on.  That was for the initial vm_fault_t conversion in which each
-> > > step was clearly an improvement.  What you're looking at now is far
-> > > from that.
-> >
-> > Ok. But my understanding was, the approach of vm_insert_range comes
-> > into discussion as part of converting vm_insert_page into vmf_insert_page
-> > which is still part of original vm_fault_t conversion discussion.  No ?
->
-> No.  The initial part (converting all page fault methods to vm_fault_t)
-> is done.  What remains undone (looking at akpm's tree) is changing the
-> typedef of vm_fault_t from int to unsigned int.  That will prevent new
-> page fault handlers with the wrong type from being added.
+Hi,
 
-Ok, I will post the final typedef of vm_fault_t patch.
+Am Mittwoch, 15. August 2018, 16:46:36 CEST schrieb Heikki Krogerus:
+> On Tue, Aug 14, 2018 at 03:58:31PM +0200, Heiko Stuebner wrote:
+> > Am Montag, 13. August 2018, 15:36:37 CEST schrieb Heikki Krogerus:
+> > > On Mon, Aug 13, 2018 at 12:36:55PM +0200, Heiko Stuebner wrote:=DF
+> > > > I'm currently trying to wrap my head around the new typec subsystem=
+ and
+> > > > also how to do it correctly on Rockchip rk3399 devices.
+> > > > =
 
->
-> I don't necessarily want to get rid of vm_insert_page().  Maybe it will
-> make sense to do that, and maybe not.  What I do want to see is thought,
-> and not "Matthew told me to do it", when I didn't.
+> > > > The issue (and Guenter might know quite a bit about that) is that on
+> > > > ChromeOS devices the embedded controller hides the whole tcpm/vdm
+> > > > logic from the operating system and just provides a custom interfac=
+e to
+> > > > query things like cable state, display-port hotplug status and so o=
+n.
+> > > > =
 
-I didn't mean it in other way. Sorry about it.
-I will work on it.
+> > > > So right now the rk3399-typec-phy uses that extcon-based interface =
+to
+> > > > get all status changes but that of course leaves out all systems di=
+rectly
+> > > > talking to a fusb302. I did a small drawing to showcase that:
+> > > > =
+
+> > > > -------------    ------------------
+> > > > | typec-phy |----| extcon-cros-ec |\
+> > > > -------------    ------------------ \
+> > > >      |        \                      \
+> > > > -------------  \ ------------------   \ -----------
+> > > > |  cdn-dp   |   \|     ?????      |-----| fusb302 |
+> > > > -------------    ------------------     -----------
+> > > > =
+
+> > > > So to bring everything on the same page, I guess the cros-ec extcon
+> > > > (drivers/extcon/extcon-usbc-cros-ec.c) should somehow use the typec
+> > > > functions instead of implementing an extcon?
+> > > =
+
+> > > I don't think the two necessary exclude each other. You can continue
+> > > to register the extcon device and use it for communication with the
+> > > phy driver, and also register your Type-C port(s), partners, and
+> > > optionally the port and partner alternate modes. I guess Guenter has
+> > > patches for that already?
+> > =
+
+> > The issue is less with the working ChromeOS devices :-) .
+> > =
+
+> > What I'm trying to fit in there are all the other boards directly talki=
+ng
+> > to a fusb302 via i2c and needing to do all these negotiations.
+> =
+
+> Ah, OK. Now I get it.
+> =
+
+> > So the rockchip typec phy would need to handle both cases. In the Rockc=
+hip
+> > vendor kernel they bolted the extcon export onto their fusb302 driver
+> > but I don't think that is really future proof ;-) .
+> > =
+
+> > Hence the easiest way would probably be to have everything use the newer
+> > typec APIs and not try to make the Rockchip typec-phy handle both cases.
+> > =
+
+> > =
+
+> > And looking at Guenters mail, it seems like he had the same idea as well
+> > in the past, so I'll hope for his archeology-skills :-) .
+> > =
+
+> > =
+
+> > > It looks to me like that phy driver could just register a Type-C
+> > > switch for the orientation, and mux for the mode. Those seem to be the
+> > > only details the driver needs from extcon-usbc-cros-ec.
+> > =
+
+> > Looks like it - I'm still trying to find my way through the typec subsy=
+stem
+> > though.
+> > =
+
+> > > > But from reading into the typec code, it somehow looks like the
+> > > > typec framework expects to be in control of things like altmode
+> > > > negotiations, or am I misreading something?
+> > > =
+
+> > > The alternate mode drivers will assume they are in control of the
+> > > negotiation with the partner, but note that you will not always need
+> > > them. The rest of the code in the framework doesn't expect to be in
+> > > control of the communication.
+> > > =
+
+> > > If the EC (or some other microcontroller) firmware is taking care of
+> > > the actual entering and configuring of the alternate modes, the port
+> > > driver (so extcon-usbc-cros-ec in your case) will need to "emulate"
+> > > the VDM communication if the alt mode drivers need to be used, and
+> > > that means they need to do so with every supported alternate mode
+> > > separately.
+> > > =
+
+> > > Of course if the details that for example the DisplayPort alt mode
+> > > driver supplies to the user space is not relevant on your system, and
+> > > there is no requirement to allow the user to be able to reconfigure
+> > > the DisplayPort alt mode (note: you will also be unable to exit the
+> > > mode from sysfs in this case), you can still register the partner alt
+> > > mode device and simply allow the binding to the driver fail, or don't
+> > > register the partner alt modes with the USB Type-C framework at all.
+> > =
+
+> > As said above, I'm mainly trying to make the typec framework usable
+> > for all the rk3399 boards using the "standard" setup of talking directly
+> > to the fusb302 but of course want to pull the cros-ec special case alon=
+g,
+> > to not create to much overhead anywhere.
+> > =
+
+> > Thankfully it is really only the DisplayPort Alt Mode that is supported
+> > on the rk3399.
+> > =
+
+> > While the extcon driver doesn't seem to use it right now, looking throu=
+gh
+> > the ec-commands shows that muxes, roles etc seem configurable from the
+> > host side.
+> > =
+
+> > =
+
+> > > I've prepared patches for the ucsi driver that add displayport alt
+> > > mode support to it. UCSI is just a standardised firmware interface for
+> > > USB Type-C conncetors, so the situation is exactly the same as with
+> > > extcon-usbc-cros-ec. I was planning to send the patches out for review
+> > > after next -rc1, but I guess I could send a RFC already. With UCSI we
+> > > do have a requirement to allow the user to reconfigure the DisplayPort
+> > > alternate mode if needed.
+> > =
+
+> > That might be helpful. But you don't really have to hurry that much.
+> > -rc1 isn't that far away and I do have enough individual projects to
+> > keep me busy ;-) .
+> > =
+
+> > Especially also as the device_connection stuff does seem to still
+> > miss graph-parsing [0] to connect my dt-stuff together, there
+> > is no really hurry.
+> =
+
+> True, the graph parsing is indeed missing from that API. I'll see if I
+> can propose something for that at one point (soon hopefully).
+
+as I'm just sitting next to Guenter at ELCE talking about that type-c
+stuff, did you manage that graph parsing patch we talked about
+two months ago ;-) ?
+
+
+Thanks
+Heiko
