@@ -1,59 +1,65 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 3/7] dt-bindings: add compatibles for rk3066/rk3188 power
- controllers
-Date: Tue, 23 Oct 2018 12:38:16 +0200
-Message-ID: <20181023103820.6464-4-heiko@sntech.de>
-References: <20181023103820.6464-1-heiko@sntech.de>
+From: Tony Xie <tony.xie@rock-chips.com>
+Subject: [PATCH v5 0/5] support a new type of PMIC,including two chips(rk817 and rk809)
+Date: Tue, 23 Oct 2018 19:34:22 +0800
+Message-ID: <1540294467-25813-1-git-send-email-tony.xie@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181023103820.6464-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the compatible values for the power-domain controllers found on
-rk3066 and rk3188.
+Most of functions and registers of the rk817 and rk808 are the same,
+so they can share allmost all codes.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- .../devicetree/bindings/soc/rockchip/power_domain.txt         | 4 ++++
- 1 file changed, 4 insertions(+)
+Their specifications are as follows£º
+  1) The RK809 and RK809 consist of 5 DCDCs, 9 LDOs and have the same registers
+     for these components except dcdc5.
+  2) The dcdc5 is a boost dcdc for RK817 and is a buck for RK809.
+  3) The RK817 has one switch but The Rk809 has two.
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-index 5d49d0a2ff29..8304eceb62e4 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-+++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-@@ -7,7 +7,9 @@ Required properties for power domain controller:
- - compatible: Should be one of the following.
- 	"rockchip,px30-power-controller" - for PX30 SoCs.
- 	"rockchip,rk3036-power-controller" - for RK3036 SoCs.
-+	"rockchip,rk3066-power-controller" - for RK3066 SoCs.
- 	"rockchip,rk3128-power-controller" - for RK3128 SoCs.
-+	"rockchip,rk3188-power-controller" - for RK3188 SoCs.
- 	"rockchip,rk3228-power-controller" - for RK3228 SoCs.
- 	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
- 	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
-@@ -23,7 +25,9 @@ Required properties for power domain sub nodes:
- - reg: index of the power domain, should use macros in:
- 	"include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
- 	"include/dt-bindings/power/rk3036-power.h" - for RK3036 type power domain.
-+	"include/dt-bindings/power/rk3066-power.h" - for RK3066 type power domain.
- 	"include/dt-bindings/power/rk3128-power.h" - for RK3128 type power domain.
-+	"include/dt-bindings/power/rk3188-power.h" - for RK3188 type power domain.
- 	"include/dt-bindings/power/rk3228-power.h" - for RK3228 type power domain.
- 	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
- 	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
+Changes in V2:
+1. initialize the pm_pwroff_fn to NULL. 
+2. use EXPORT_SYMBOL_GPL to export pm_power_off_prepare.
+3. change patch 2/3/4/5 subjects. 
+
+Changes in V3£º
+1. change patch 4 subjects
+2. replace pr_ with dev_ for printing in patch 2
+3. modify switch1 and switch2 configs in patch 2
+4. explain gpio information for rk809 and rk817 in patch 4
+
+Changes in V4:
+1. modify some codes for patch 2 and patch 5 according to comments 
+2. add reviewer mail lists for patch 3 and 4
+
+Changes in V5:
+modify some codes for patch 1 according to reveiw comments for v3.
+ 1) remove the pm_power_off_prepare() and replace with shutdown call-back from syscore
+ 2) move the macro REGMAP_IRQ_M into the regmap.h and rename it REGMAP_IRQ_LINE
+ 3) make some dev_warn() log clear
+
+Tony Xie (5):
+  mfd: rk808: Add RK817 and RK809 support
+  regulator: rk808: add RK809 and RK817 support.
+  dt-bindings: mfd: rk808: Add binding information for RK809 and RK817.
+  rtc: rk808: add RK809 and RK817 support.
+  clk: RK808: add RK809 and RK817 support.
+
+ Documentation/devicetree/bindings/mfd/rk808.txt |  44 ++
+ drivers/clk/Kconfig                             |   9 +-
+ drivers/clk/clk-rk808.c                         |  64 ++-
+ drivers/mfd/Kconfig                             |   6 +-
+ drivers/mfd/rk808.c                             | 225 +++++++-
+ drivers/regulator/Kconfig                       |   4 +-
+ drivers/regulator/rk808-regulator.c             | 657 +++++++++++++++++++++++-
+ drivers/rtc/Kconfig                             |   4 +-
+ drivers/rtc/rtc-rk808.c                         |  68 ++-
+ include/linux/mfd/rk808.h                       | 175 +++++++
+ include/linux/regmap.h                          |   6 +
+ 11 files changed, 1193 insertions(+), 69 deletions(-)
+
 -- 
-2.18.0
+1.9.1
