@@ -1,125 +1,72 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v5 3/5] dt-bindings: mfd: rk808: Add binding information
- for RK809 and RK817.
-Date: Thu, 25 Oct 2018 10:38:27 +0100
-Message-ID: <20181025093827.GP4939@dell>
-References: <1540294467-25813-1-git-send-email-tony.xie@rock-chips.com>
- <1540294467-25813-4-git-send-email-tony.xie@rock-chips.com>
+From: Hal Emmerich <hal@halemmerich.com>
+Subject: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk rate
+Date: Thu, 25 Oct 2018 15:43:26 -0500
+Message-ID: <c8030f3d-c579-650c-89d5-6227aacea346@halemmerich.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1540294467-25813-4-git-send-email-tony.xie@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tony Xie <tony.xie@rock-chips.com>
-Cc: heiko@sntech.de, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.orgheiko@sntech.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 23 Oct 2018, Tony Xie wrote:
-
-> Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
-> 
-> Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
->  Documentation/devicetree/bindings/mfd/rk808.txt | 44 +++++++++++++++++++++++++
->  1 file changed, 44 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-> index 91b6522..d575780 100644
-> --- a/Documentation/devicetree/bindings/mfd/rk808.txt
-> +++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-> @@ -3,11 +3,15 @@ RK8XX Power Management Integrated Circuit
->  The rk8xx family current members:
->  rk805
->  rk808
-> +rk809
-> +rk817
->  rk818
->  
->  Required properties:
->  - compatible: "rockchip,rk805"
->  - compatible: "rockchip,rk808"
-> +- compatible: "rockchip,rk809"
-> +- compatible: "rockchip,rk817"
->  - compatible: "rockchip,rk818"
->  - reg: I2C slave address
->  - interrupt-parent: The parent interrupt controller.
-> @@ -46,6 +50,23 @@ Optional RK808 properties:
->    the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
->    very quickly with no slow ramp time.
->  
-> +Optional shared RK809 and RK817 properties:
-> +- vcc1-supply:  The input supply for DCDC_REG1
-> +- vcc2-supply:  The input supply for DCDC_REG2
-> +- vcc3-supply:  The input supply for DCDC_REG3
-> +- vcc4-supply:  The input supply for DCDC_REG4
-> +- vcc5-supply:  The input supply for LDO_REG1, LDO_REG2, LDO_REG3
-> +- vcc6-supply:  The input supply for LDO_REG4, LDO_REG5, LDO_REG6
-> +- vcc7-supply:  The input supply for LDO_REG7, LDO_REG8, LDO_REG9
-> +
-> +Optional RK809 properties:
-> +- vcc8-supply:  The input supply for SWITCH_REG1
-> +- vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
-> +
-> +Optional RK817 properties:
-> +- vcc8-supply:  The input supply for BOOST
-> +- vcc9-supply:  The input supply for OTG_SWITCH
-> +
->  Optional RK818 properties:
->  - vcc1-supply:  The input supply for DCDC_REG1
->  - vcc2-supply:  The input supply for DCDC_REG2
-> @@ -87,6 +108,21 @@ number as described in RK808 datasheet.
->  	- SWITCH_REGn
->  		- valid values for n are 1 to 2
->  
-> +Following regulators of the RK809 and RK817 PMIC blocks are supported. Note that
-> +the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-> +number as described in RK809 and RK817 datasheets.
-> +
-> +	- DCDC_REGn
-> +		- valid values for n are 1 to 5 for RK809.
-> +		- valid values for n are 1 to 4 for RK817.
-> +	- LDO_REGn
-> +		- valid values for n are 1 to 9 for RK809.
-> +		- valid values for n are 1 to 9 for RK817.
-> +	- SWITCH_REGn
-> +		- valid values for n are 1 to 2 for RK809.
-> +	- BOOST for RK817
-> +	- OTG_SWITCH for RK817
-> +
->  Following regulators of the RK818 PMIC block are supported. Note that
->  the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
->  number as described in RK818 datasheet.
-> @@ -99,6 +135,14 @@ number as described in RK818 datasheet.
->  	- HDMI_SWITCH
->  	- OTG_SWITCH
->  
-> +There are three pins needed to config for each of RK809 and RK817,
-
-Nit: "configure" in full please.
-
-Actually: "It is necessary to configure three pins for both the RK809 and RK817"
-
-> +named "gpio_ts" "gpio_gt" "gpio_slp".
-> +	The gpio_gt and gpio_ts pins support the gpio function.
-> +	The gpio_slp pin is for controlling the pmic states, as below:
-> +		- reset
-> +		- power down
-> +		- sleep
-> +
->  Standard regulator bindings are used inside regulator subnodes. Check
->    Documentation/devicetree/bindings/regulator/regulator.txt
->  for more details
-
-Once that's fixed, please apply my:
-
-For my own reference:
-  Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+SGVsbG8gZXZlcnlvbmUsCgpXaGVuIGJvb3RpbmcgYSB2ZXlyb24tc3BlZWR5IGRldmljZSB3aXRo
+IHRoZSByazMyODggYW5kIGtlcm5lbCA0LjE5IEkgZ2V0IHRoZSBmb2xsb3dpbmcgZXJyb3JzIHJl
+Z2FyZGluZyB0aGUgbW1jIGFuZCBpbnZhbGlkIGNsayByYXRlczoKCgpbwqDCoMKgIDAuMDAwMDAw
+XSBOUl9JUlFTOiAxNiwgbnJfaXJxczogMTYsIHByZWFsbG9jYXRlZCBpcnFzOiAxNgpbwqDCoMKg
+IDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRlClvCoMKg
+wqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJhdGUKW8Kg
+wqDCoCAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0ZQpb
+wqDCoMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRl
+ClvCoMKgwqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJh
+dGUKW8KgwqDCoCAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsg
+cmF0ZQpbwqDCoMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNs
+ayByYXRlClvCoMKgwqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQg
+Y2xrIHJhdGUKW8KgwqDCoCAwLjAwMDAwMF0gYXJjaF90aW1lcjogY3AxNSB0aW1lcihzKSBydW5u
+aW5nIGF0IDI0LjAwTUh6IChwaHlzKS4KCmNvbW1pdCBjNDIwYzFlNGRiMjI5YTVkMThmYWVkNGI1
+OGMwMWVmODkwMjdkNWI3IGFkZGVkIHRoZXNlIGVycm9yIG1lc3NhZ2VzLgoKQWRkaW5nIGEgY2Fs
+bCB0byBjbGtfaHdfZ2V0X25hbWUgcmV2ZWFscyB0aGUgY2xvY2tzIHRocm93aW5nIHRoZXNlIGVy
+cm9ycyBhcmU6CnNkbW1jX2RydgpzZG1tdl9zYW1wbGUKc2RpbzBfZHJ2CnNkaW8wX3NhbXBsZQpz
+ZGlvMV9kcnYKc2RpbzFfc2FtcGxlCmVtbWNfZHJ2CmVtbWNfc2FtcGxlCgoKTG9va2luZyBhdCB0
+aGUgZ2l0IGxvZ3MsIG90aGVyIHBsYXRmb3JtcyBqdXN0IG5lZWQgdG8gY2hhbmdlIHdoYXQgY2xv
+c2tzIHRoZSBzZGlvIGFuZCBlbW1jIHVzZWQKaW4gdGhlIHJlc3BlY3RpdmUgY2xrLXJrM1hYWC5j
+IHNvIEknbSBhc3N1bWluZyBzb21ldGhpbmcgaW4gdGhpcyBzZWN0aW9uIG9mIGNsay1yazMyODgu
+YyBpcyB3cm9uZzoKCsKgwqDCoCBDT01QT1NJVEUoU0NMS19TRE1NQywgInNjbGtfc2RtbWMiLCBt
+dXhfbW1jX3NyY19wLCAwLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMyODhfQ0xLU0VMX0NPTigx
+MSksIDYsIDIsIE1GTEFHUywgMCwgNiwgREZMQUdTLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMy
+ODhfQ0xLR0FURV9DT04oMTMpLCAwLCBHRkxBR1MpLArCoMKgwqAgQ09NUE9TSVRFKFNDTEtfU0RJ
+TzAsICJzY2xrX3NkaW8wIiwgbXV4X21tY19zcmNfcCwgMCwKwqDCoMKgIMKgwqDCoCDCoMKgwqAg
+UkszMjg4X0NMS1NFTF9DT04oMTIpLCA2LCAyLCBNRkxBR1MsIDAsIDYsIERGTEFHUywKwqDCoMKg
+IMKgwqDCoCDCoMKgwqAgUkszMjg4X0NMS0dBVEVfQ09OKDEzKSwgMSwgR0ZMQUdTKSwKwqDCoMKg
+IENPTVBPU0lURShTQ0xLX1NESU8xLCAic2Nsa19zZGlvMSIsIG11eF9tbWNfc3JjX3AsIDAsCsKg
+wqDCoCDCoMKgwqAgwqDCoMKgIFJLMzI4OF9DTEtTRUxfQ09OKDM0KSwgMTQsIDIsIE1GTEFHUywg
+OCwgNiwgREZMQUdTLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMyODhfQ0xLR0FURV9DT04oMTMp
+LCAyLCBHRkxBR1MpLArCoMKgwqAgQ09NUE9TSVRFKFNDTEtfRU1NQywgInNjbGtfZW1tYyIsIG11
+eF9tbWNfc3JjX3AsIDAsCsKgwqDCoCDCoMKgwqAgwqDCoMKgIFJLMzI4OF9DTEtTRUxfQ09OKDEy
+KSwgMTQsIDIsIE1GTEFHUywgOCwgNiwgREZMQUdTLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMy
+ODhfQ0xLR0FURV9DT04oMTMpLCAzLCBHRkxBR1MpLAoKwqDCoMKgIE1NQyhTQ0xLX1NETU1DX0RS
+VizCoMKgwqAgInNkbW1jX2RydiIswqDCoMKgICJzY2xrX3NkbW1jIiwgUkszMjg4X1NETU1DX0NP
+TjAsIDEpLArCoMKgwqAgTU1DKFNDTEtfU0RNTUNfU0FNUExFLCAic2RtbWNfc2FtcGxlIiwgInNj
+bGtfc2RtbWMiLCBSSzMyODhfU0RNTUNfQ09OMSwgMCksCgrCoMKgwqAgTU1DKFNDTEtfU0RJTzBf
+RFJWLMKgwqDCoCAic2RpbzBfZHJ2IizCoMKgwqAgInNjbGtfc2RpbzAiLCBSSzMyODhfU0RJTzBf
+Q09OMCwgMSksCsKgwqDCoCBNTUMoU0NMS19TRElPMF9TQU1QTEUsICJzZGlvMF9zYW1wbGUiLCAi
+c2Nsa19zZGlvMCIsIFJLMzI4OF9TRElPMF9DT04xLCAwKSwKCsKgwqDCoCBNTUMoU0NMS19TRElP
+MV9EUlYswqDCoMKgICJzZGlvMV9kcnYiLMKgwqDCoCAic2Nsa19zZGlvMSIsIFJLMzI4OF9TRElP
+MV9DT04wLCAxKSwKwqDCoMKgIE1NQyhTQ0xLX1NESU8xX1NBTVBMRSwgInNkaW8xX3NhbXBsZSIs
+ICJzY2xrX3NkaW8xIiwgUkszMjg4X1NESU8xX0NPTjEsIDApLAoKwqDCoMKgIE1NQyhTQ0xLX0VN
+TUNfRFJWLMKgwqDCoMKgICJlbW1jX2RydiIswqDCoMKgwqAgInNjbGtfZW1tYyIswqAgUkszMjg4
+X0VNTUNfQ09OMCzCoCAxKSwKwqDCoMKgIE1NQyhTQ0xLX0VNTUNfU0FNUExFLMKgICJlbW1jX3Nh
+bXBsZSIswqAgInNjbGtfZW1tYyIswqAgUkszMjg4X0VNTUNfQ09OMSzCoCAwKSwKClNob3VsZCBz
+Y2xrXyogYmUgY2xrXyo/CgpUaGFua3MgYWxsLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
