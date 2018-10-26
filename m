@@ -1,72 +1,428 @@
-From: Hal Emmerich <hal@halemmerich.com>
-Subject: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk rate
-Date: Thu, 25 Oct 2018 15:43:26 -0500
-Message-ID: <c8030f3d-c579-650c-89d5-6227aacea346@halemmerich.com>
+From: "dbasehore ." <dbasehore@chromium.org>
+Subject: Re: [PATCH 3/6] clk: change rates via list iteration
+Date: Thu, 25 Oct 2018 20:29:35 -0700
+Message-ID: <CAGAzgsrMiXHQ9_UMsPp8Wch-3LLkwS+uJgYKOBr_NjNMtcvOaQ@mail.gmail.com>
+References: <20181024013132.115907-1-dbasehore@chromium.org> <20181024013132.115907-4-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.orgheiko@sntech.de
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181024013132.115907-4-dbasehore@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel <linux-kernel@vger.kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, sboyd@kernel.org, Michael Turquette <mturquette@baylibre.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, aisheng.dong@nxp.com, mchehab+samsung@kernel.org, Jonathan Corbet <corbet@lwn.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8gZXZlcnlvbmUsCgpXaGVuIGJvb3RpbmcgYSB2ZXlyb24tc3BlZWR5IGRldmljZSB3aXRo
-IHRoZSByazMyODggYW5kIGtlcm5lbCA0LjE5IEkgZ2V0IHRoZSBmb2xsb3dpbmcgZXJyb3JzIHJl
-Z2FyZGluZyB0aGUgbW1jIGFuZCBpbnZhbGlkIGNsayByYXRlczoKCgpbwqDCoMKgIDAuMDAwMDAw
-XSBOUl9JUlFTOiAxNiwgbnJfaXJxczogMTYsIHByZWFsbG9jYXRlZCBpcnFzOiAxNgpbwqDCoMKg
-IDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRlClvCoMKg
-wqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJhdGUKW8Kg
-wqDCoCAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0ZQpb
-wqDCoMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRl
-ClvCoMKgwqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJh
-dGUKW8KgwqDCoCAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsg
-cmF0ZQpbwqDCoMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNs
-ayByYXRlClvCoMKgwqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQg
-Y2xrIHJhdGUKW8KgwqDCoCAwLjAwMDAwMF0gYXJjaF90aW1lcjogY3AxNSB0aW1lcihzKSBydW5u
-aW5nIGF0IDI0LjAwTUh6IChwaHlzKS4KCmNvbW1pdCBjNDIwYzFlNGRiMjI5YTVkMThmYWVkNGI1
-OGMwMWVmODkwMjdkNWI3IGFkZGVkIHRoZXNlIGVycm9yIG1lc3NhZ2VzLgoKQWRkaW5nIGEgY2Fs
-bCB0byBjbGtfaHdfZ2V0X25hbWUgcmV2ZWFscyB0aGUgY2xvY2tzIHRocm93aW5nIHRoZXNlIGVy
-cm9ycyBhcmU6CnNkbW1jX2RydgpzZG1tdl9zYW1wbGUKc2RpbzBfZHJ2CnNkaW8wX3NhbXBsZQpz
-ZGlvMV9kcnYKc2RpbzFfc2FtcGxlCmVtbWNfZHJ2CmVtbWNfc2FtcGxlCgoKTG9va2luZyBhdCB0
-aGUgZ2l0IGxvZ3MsIG90aGVyIHBsYXRmb3JtcyBqdXN0IG5lZWQgdG8gY2hhbmdlIHdoYXQgY2xv
-c2tzIHRoZSBzZGlvIGFuZCBlbW1jIHVzZWQKaW4gdGhlIHJlc3BlY3RpdmUgY2xrLXJrM1hYWC5j
-IHNvIEknbSBhc3N1bWluZyBzb21ldGhpbmcgaW4gdGhpcyBzZWN0aW9uIG9mIGNsay1yazMyODgu
-YyBpcyB3cm9uZzoKCsKgwqDCoCBDT01QT1NJVEUoU0NMS19TRE1NQywgInNjbGtfc2RtbWMiLCBt
-dXhfbW1jX3NyY19wLCAwLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMyODhfQ0xLU0VMX0NPTigx
-MSksIDYsIDIsIE1GTEFHUywgMCwgNiwgREZMQUdTLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMy
-ODhfQ0xLR0FURV9DT04oMTMpLCAwLCBHRkxBR1MpLArCoMKgwqAgQ09NUE9TSVRFKFNDTEtfU0RJ
-TzAsICJzY2xrX3NkaW8wIiwgbXV4X21tY19zcmNfcCwgMCwKwqDCoMKgIMKgwqDCoCDCoMKgwqAg
-UkszMjg4X0NMS1NFTF9DT04oMTIpLCA2LCAyLCBNRkxBR1MsIDAsIDYsIERGTEFHUywKwqDCoMKg
-IMKgwqDCoCDCoMKgwqAgUkszMjg4X0NMS0dBVEVfQ09OKDEzKSwgMSwgR0ZMQUdTKSwKwqDCoMKg
-IENPTVBPU0lURShTQ0xLX1NESU8xLCAic2Nsa19zZGlvMSIsIG11eF9tbWNfc3JjX3AsIDAsCsKg
-wqDCoCDCoMKgwqAgwqDCoMKgIFJLMzI4OF9DTEtTRUxfQ09OKDM0KSwgMTQsIDIsIE1GTEFHUywg
-OCwgNiwgREZMQUdTLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMyODhfQ0xLR0FURV9DT04oMTMp
-LCAyLCBHRkxBR1MpLArCoMKgwqAgQ09NUE9TSVRFKFNDTEtfRU1NQywgInNjbGtfZW1tYyIsIG11
-eF9tbWNfc3JjX3AsIDAsCsKgwqDCoCDCoMKgwqAgwqDCoMKgIFJLMzI4OF9DTEtTRUxfQ09OKDEy
-KSwgMTQsIDIsIE1GTEFHUywgOCwgNiwgREZMQUdTLArCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMy
-ODhfQ0xLR0FURV9DT04oMTMpLCAzLCBHRkxBR1MpLAoKwqDCoMKgIE1NQyhTQ0xLX1NETU1DX0RS
-VizCoMKgwqAgInNkbW1jX2RydiIswqDCoMKgICJzY2xrX3NkbW1jIiwgUkszMjg4X1NETU1DX0NP
-TjAsIDEpLArCoMKgwqAgTU1DKFNDTEtfU0RNTUNfU0FNUExFLCAic2RtbWNfc2FtcGxlIiwgInNj
-bGtfc2RtbWMiLCBSSzMyODhfU0RNTUNfQ09OMSwgMCksCgrCoMKgwqAgTU1DKFNDTEtfU0RJTzBf
-RFJWLMKgwqDCoCAic2RpbzBfZHJ2IizCoMKgwqAgInNjbGtfc2RpbzAiLCBSSzMyODhfU0RJTzBf
-Q09OMCwgMSksCsKgwqDCoCBNTUMoU0NMS19TRElPMF9TQU1QTEUsICJzZGlvMF9zYW1wbGUiLCAi
-c2Nsa19zZGlvMCIsIFJLMzI4OF9TRElPMF9DT04xLCAwKSwKCsKgwqDCoCBNTUMoU0NMS19TRElP
-MV9EUlYswqDCoMKgICJzZGlvMV9kcnYiLMKgwqDCoCAic2Nsa19zZGlvMSIsIFJLMzI4OF9TRElP
-MV9DT04wLCAxKSwKwqDCoMKgIE1NQyhTQ0xLX1NESU8xX1NBTVBMRSwgInNkaW8xX3NhbXBsZSIs
-ICJzY2xrX3NkaW8xIiwgUkszMjg4X1NESU8xX0NPTjEsIDApLAoKwqDCoMKgIE1NQyhTQ0xLX0VN
-TUNfRFJWLMKgwqDCoMKgICJlbW1jX2RydiIswqDCoMKgwqAgInNjbGtfZW1tYyIswqAgUkszMjg4
-X0VNTUNfQ09OMCzCoCAxKSwKwqDCoMKgIE1NQyhTQ0xLX0VNTUNfU0FNUExFLMKgICJlbW1jX3Nh
-bXBsZSIswqAgInNjbGtfZW1tYyIswqAgUkszMjg4X0VNTUNfQ09OMSzCoCAwKSwKClNob3VsZCBz
-Y2xrXyogYmUgY2xrXyo/CgpUaGFua3MgYWxsLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
-YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On Tue, Oct 23, 2018 at 6:31 PM Derek Basehore <dbasehore@chromium.org> wrote:
+>
+> This changes the clk_set_rate code to use lists instead of recursion.
+> While making this change, also add error handling for clk_set_rate.
+> This means that errors in the set_rate/set_parent/set_rate_and_parent
+> functions will not longer be ignored. When an error occurs, the clk
+> rates and parents are reset, unless an error occurs here, in which we
+> bail and cross our fingers.
+>
+> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> ---
+>  drivers/clk/clk.c | 225 +++++++++++++++++++++++++++++++---------------
+>  1 file changed, 153 insertions(+), 72 deletions(-)
+>
+> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+> index 61de8ad3e4cf..1db44b4e46b0 100644
+> --- a/drivers/clk/clk.c
+> +++ b/drivers/clk/clk.c
+> @@ -42,6 +42,13 @@ static LIST_HEAD(clk_notifier_list);
+>
+>  /***    private data structures    ***/
+>
+> +struct clk_change {
+> +       struct list_head        change_list;
+> +       unsigned long           rate;
+> +       struct clk_core         *core;
+> +       struct clk_core         *parent;
+> +};
+> +
+>  struct clk_core {
+>         const char              *name;
+>         const struct clk_ops    *ops;
+> @@ -52,11 +59,9 @@ struct clk_core {
+>         const char              **parent_names;
+>         struct clk_core         **parents;
+>         u8                      num_parents;
+> -       u8                      new_parent_index;
+>         unsigned long           rate;
+>         unsigned long           req_rate;
+> -       unsigned long           new_rate;
+> -       struct clk_core         *new_parent;
+> +       struct clk_change       change;
+>         struct clk_core         *new_child;
+>         unsigned long           flags;
+>         bool                    orphan;
+> @@ -1719,20 +1724,53 @@ static int __clk_speculate_rates(struct clk_core *core,
+>
+>  static void clk_calc_subtree(struct clk_core *core)
+>  {
+> -       struct clk_core *child;
+> +       LIST_HEAD(tmp_list);
+>
+> -       hlist_for_each_entry(child, &core->children, child_node) {
+> -               child->new_rate = clk_recalc(child, core->new_rate);
+> -               clk_calc_subtree(child);
+> +       list_add(&core->change.change_list, &tmp_list);
+> +       while (!list_empty(&tmp_list)) {
+> +               struct clk_change *change = list_first_entry(&tmp_list,
+> +                               struct clk_change, change_list);
+> +               struct clk_core *tmp = change->core;
+> +               struct clk_core *child;
+> +
+> +               hlist_for_each_entry(child, &tmp->children, child_node) {
+> +                       child->change.rate = clk_recalc(child,
+> +                                       tmp->change.rate);
+> +                       list_add_tail(&child->change.change_list, &tmp_list);
+> +               }
+> +
+> +               list_del_init(&change->change_list);
+> +       }
+> +}
+> +
+> +static void clk_prepare_changes(struct list_head *change_list,
+> +                               struct clk_core *core)
+> +{
+> +       LIST_HEAD(tmp_list);
+> +
+> +       list_add(&core->change.change_list, &tmp_list);
+> +       while (!list_empty(&tmp_list)) {
+> +               struct clk_change *change = list_first_entry(&tmp_list,
+> +                               struct clk_change, change_list);
+> +               struct clk_core *tmp = change->core;
+> +               struct clk_core *child;
+> +
+> +               hlist_for_each_entry(child, &tmp->children, child_node)
+> +                       list_add_tail(&child->change.change_list, &tmp_list);
+> +
+> +               child = tmp->new_child;
+> +               if (child)
+> +                       list_add_tail(&child->change.change_list, &tmp_list);
+> +
+> +               list_move_tail(&tmp->change.change_list, change_list);
+>         }
+>  }
+>
+>  static void clk_set_change(struct clk_core *core, unsigned long new_rate,
+> -                          struct clk_core *new_parent, u8 p_index)
+> +                          struct clk_core *new_parent)
+>  {
+> -       core->new_rate = new_rate;
+> -       core->new_parent = new_parent;
+> -       core->new_parent_index = p_index;
+> +       core->change.rate = new_rate;
+> +       core->change.parent = new_parent;
+>         /* include clk in new parent's PRE_RATE_CHANGE notifications */
+>         core->new_child = NULL;
+>         if (new_parent && new_parent != core->parent)
+> @@ -1752,7 +1790,6 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
+>         unsigned long new_rate;
+>         unsigned long min_rate;
+>         unsigned long max_rate;
+> -       int p_index = 0;
+>         long ret;
+>
+>         /* sanity */
+> @@ -1788,14 +1825,13 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
+>                         return NULL;
+>         } else if (!parent || !(core->flags & CLK_SET_RATE_PARENT)) {
+>                 /* pass-through clock without adjustable parent */
+> -               core->new_rate = core->rate;
+>                 return NULL;
+>         } else {
+>                 /* pass-through clock with adjustable parent */
+>                 top = clk_calc_new_rates(parent, rate);
+> -               new_rate = parent->new_rate;
+> +               new_rate = parent->change.rate;
+>                 hlist_for_each_entry(child, &parent->children, child_node)
+> -                       child->new_rate = clk_recalc(child, new_rate);
+> +                       child->change.rate = clk_recalc(child, new_rate);
+>                 goto out;
+>         }
+>
+> @@ -1807,25 +1843,16 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
+>                 return NULL;
+>         }
+>
+> -       /* try finding the new parent index */
+> -       if (parent && core->num_parents > 1) {
+> -               p_index = clk_fetch_parent_index(core, parent);
+> -               if (p_index < 0) {
+> -                       pr_debug("%s: clk %s can not be parent of clk %s\n",
+> -                                __func__, parent->name, core->name);
+> -                       return NULL;
+> -               }
+> -       }
+> -
+>         if ((core->flags & CLK_SET_RATE_PARENT) && parent &&
+>             best_parent_rate != parent->rate) {
+>                 top = clk_calc_new_rates(parent, best_parent_rate);
+>                 hlist_for_each_entry(child, &parent->children, child_node)
+> -                       child->new_rate = clk_recalc(child, parent->new_rate);
+> +                       child->change.rate = clk_recalc(child,
+> +                                       parent->change.rate);
+>         }
+>
+>  out:
+> -       clk_set_change(core, new_rate, parent, p_index);
+> +       clk_set_change(core, new_rate, parent);
+>
+>         return top;
+>  }
+> @@ -1841,18 +1868,18 @@ static struct clk_core *clk_propagate_rate_change(struct clk_core *core,
+>         struct clk_core *child, *tmp_clk, *fail_clk = NULL;
+>         int ret = NOTIFY_DONE;
+>
+> -       if (core->rate == core->new_rate)
+> +       if (core->rate == core->change.rate)
+>                 return NULL;
+>
+>         if (core->notifier_count) {
+> -               ret = __clk_notify(core, event, core->rate, core->new_rate);
+> +               ret = __clk_notify(core, event, core->rate, core->change.rate);
+>                 if (ret & NOTIFY_STOP_MASK)
+>                         fail_clk = core;
+>         }
+>
+>         hlist_for_each_entry(child, &core->children, child_node) {
+>                 /* Skip children who will be reparented to another clock */
+> -               if (child->new_parent && child->new_parent != core)
+> +               if (child->change.parent && child->change.parent != core)
+>                         continue;
+>                 tmp_clk = clk_propagate_rate_change(child, event);
+>                 if (tmp_clk)
+> @@ -1873,28 +1900,30 @@ static struct clk_core *clk_propagate_rate_change(struct clk_core *core,
+>   * walk down a subtree and set the new rates notifying the rate
+>   * change on the way
+>   */
+> -static void clk_change_rate(struct clk_core *core)
+> +static int clk_change_rate(struct clk_change *change)
+>  {
+> -       struct clk_core *child;
+> -       struct hlist_node *tmp;
+> +       struct clk_core *core = change->core;
+>         unsigned long old_rate;
+>         unsigned long best_parent_rate = 0;
+>         bool skip_set_rate = false;
+> -       struct clk_core *old_parent;
+> +       struct clk_core *old_parent = NULL;
+>         struct clk_core *parent = NULL;
+> +       int p_index;
+> +       int ret = 0;
+>
+>         old_rate = core->rate;
+>
+> -       if (core->new_parent) {
+> -               parent = core->new_parent;
+> -               best_parent_rate = core->new_parent->rate;
+> +       if (change->parent) {
+> +               parent = change->parent;
+> +               best_parent_rate = parent->rate;
+>         } else if (core->parent) {
+>                 parent = core->parent;
+> -               best_parent_rate = core->parent->rate;
+> +               best_parent_rate = parent->rate;
+>         }
+>
+> -       if (clk_pm_runtime_get(core))
+> -               return;
+> +       ret = clk_pm_runtime_get(core);
+> +       if (ret)
+> +               return ret;
+>
+>         if (core->flags & CLK_SET_RATE_UNGATE) {
+>                 unsigned long flags;
+> @@ -1905,35 +1934,55 @@ static void clk_change_rate(struct clk_core *core)
+>                 clk_enable_unlock(flags);
+>         }
+>
+> -       if (core->new_parent && core->new_parent != core->parent) {
+> -               old_parent = __clk_set_parent_before(core, core->new_parent);
+> -               trace_clk_set_parent(core, core->new_parent);
+> +       if (core->flags & CLK_OPS_PARENT_ENABLE)
+> +               clk_core_prepare_enable(parent);
+> +
+> +       if (parent != core->parent) {
+> +               p_index = clk_fetch_parent_index(core, parent);
+> +               if (p_index < 0) {
+> +                       pr_debug("%s: clk %s can not be parent of clk %s\n",
+> +                                __func__, parent->name, core->name);
+> +                       ret = p_index;
+> +                       goto out;
+> +               }
+> +               old_parent = __clk_set_parent_before(core, parent);
+> +
+> +               trace_clk_set_parent(core, change->parent);
+>
+>                 if (core->ops->set_rate_and_parent) {
+>                         skip_set_rate = true;
+> -                       core->ops->set_rate_and_parent(core->hw, core->new_rate,
+> +                       ret = core->ops->set_rate_and_parent(core->hw,
+> +                                       change->rate,
+>                                         best_parent_rate,
+> -                                       core->new_parent_index);
+> +                                       p_index);
+>                 } else if (core->ops->set_parent) {
+> -                       core->ops->set_parent(core->hw, core->new_parent_index);
+> +                       ret = core->ops->set_parent(core->hw, p_index);
+>                 }
+>
+> -               trace_clk_set_parent_complete(core, core->new_parent);
+> -               __clk_set_parent_after(core, core->new_parent, old_parent);
+> -       }
+> +               trace_clk_set_parent_complete(core, change->parent);
+> +               __clk_set_parent_after(core, change->parent, old_parent);
+> +               if (ret)
+> +                       goto out;
+
+Need to handle the set_parent op failing here. __clk_set_parent_before
+needs to be undone, and we need to not call __clk_set_parent_after
+with the failed state.
+
+>
+> -       if (core->flags & CLK_OPS_PARENT_ENABLE)
+> -               clk_core_prepare_enable(parent);
+> +       }
+>
+> -       trace_clk_set_rate(core, core->new_rate);
+> +       trace_clk_set_rate(core, change->rate);
+>
+>         if (!skip_set_rate && core->ops->set_rate)
+> -               core->ops->set_rate(core->hw, core->new_rate, best_parent_rate);
+> +               ret = core->ops->set_rate(core->hw, change->rate,
+> +                               best_parent_rate);
+>
+> -       trace_clk_set_rate_complete(core, core->new_rate);
+> +       trace_clk_set_rate_complete(core, change->rate);
+>
+>         core->rate = clk_recalc(core, best_parent_rate);
+>
+> +out:
+> +       if (core->flags & CLK_OPS_PARENT_ENABLE)
+> +               clk_core_disable_unprepare(parent);
+> +
+> +       if (core->notifier_count && old_rate != core->rate)
+> +               __clk_notify(core, POST_RATE_CHANGE, old_rate, core->rate);
+> +
+>         if (core->flags & CLK_SET_RATE_UNGATE) {
+>                 unsigned long flags;
+>
+> @@ -1943,31 +1992,44 @@ static void clk_change_rate(struct clk_core *core)
+>                 clk_core_unprepare(core);
+>         }
+>
+> -       if (core->flags & CLK_OPS_PARENT_ENABLE)
+> -               clk_core_disable_unprepare(parent);
+> -
+> -       if (core->notifier_count && old_rate != core->rate)
+> -               __clk_notify(core, POST_RATE_CHANGE, old_rate, core->rate);
+> +       clk_pm_runtime_put(core);
+>
+>         if (core->flags & CLK_RECALC_NEW_RATES)
+> -               (void)clk_calc_new_rates(core, core->new_rate);
+> +               (void)clk_calc_new_rates(core, change->rate);
+>
+>         /*
+> -        * Use safe iteration, as change_rate can actually swap parents
+> -        * for certain clock types.
+> +        * Keep track of old parent and requested rate in case we have
+> +        * to undo the change due to an error.
+>          */
+> -       hlist_for_each_entry_safe(child, tmp, &core->children, child_node) {
+> -               /* Skip children who will be reparented to another clock */
+> -               if (child->new_parent && child->new_parent != core)
+> -                       continue;
+> -               clk_change_rate(child);
+> +       change->parent = old_parent;
+> +       change->rate = old_rate;
+> +       return ret;
+> +}
+> +
+> +static int clk_change_rates(struct list_head *list)
+> +{
+> +       struct clk_change *change, *tmp;
+> +       int ret = 0;
+> +
+> +       list_for_each_entry(change, list, change_list) {
+> +               ret = clk_change_rate(change);
+> +               if (ret)
+> +                       goto err;
+>         }
+>
+> -       /* handle the new child who might not be in core->children yet */
+> -       if (core->new_child)
+> -               clk_change_rate(core->new_child);
+> +       return 0;
+> +err:
+> +       list_for_each_entry_safe_continue(change, tmp, list, change_list)
+> +               list_del_init(&change->change_list);
+>
+> -       clk_pm_runtime_put(core);
+> +       list_for_each_entry(change, list, change_list) {
+> +               /* Give up. Driver might want to shutdown/reboot. */
+> +               ret = clk_change_rate(change);
+> +               if (WARN_ON(ret))
+> +                       return ret;
+> +       }
+> +
+> +       return ret;
+>  }
+>
+>  static unsigned long clk_core_req_round_rate_nolock(struct clk_core *core,
+> @@ -2001,7 +2063,9 @@ static int clk_core_set_rate_nolock(struct clk_core *core,
+>                                     unsigned long req_rate)
+>  {
+>         struct clk_core *top, *fail_clk;
+> +       struct clk_change *change, *tmp;
+>         unsigned long rate;
+> +       LIST_HEAD(changes);
+>         int ret = 0;
+>
+>         if (!core)
+> @@ -2028,6 +2092,9 @@ static int clk_core_set_rate_nolock(struct clk_core *core,
+>
+>         clk_calc_subtree(core);
+>
+> +       /* Construct the list of changes */
+> +       clk_prepare_changes(&changes, top);
+> +
+>         /* notify that we are about to change rates */
+>         fail_clk = clk_propagate_rate_change(top, PRE_RATE_CHANGE);
+>         if (fail_clk) {
+> @@ -2039,7 +2106,19 @@ static int clk_core_set_rate_nolock(struct clk_core *core,
+>         }
+>
+>         /* change the rates */
+> -       clk_change_rate(top);
+> +       ret = clk_change_rates(&changes);
+> +       list_for_each_entry_safe(change, tmp, &changes, change_list) {
+> +               change->rate = 0;
+> +               change->parent = NULL;
+> +               list_del_init(&change->change_list);
+> +       }
+> +
+> +       if (ret) {
+> +               pr_debug("%s: failed to set %s rate via top clk %s\n", __func__,
+> +                               core->name, top->name);
+> +               clk_propagate_rate_change(top, ABORT_RATE_CHANGE);
+> +               goto err;
+> +       }
+>
+>         core->req_rate = req_rate;
+>  err:
+> @@ -3306,6 +3385,8 @@ struct clk *clk_register(struct device *dev, struct clk_hw *hw)
+>         core->max_rate = ULONG_MAX;
+>         INIT_LIST_HEAD(&core->prepare_list);
+>         INIT_LIST_HEAD(&core->enable_list);
+> +       INIT_LIST_HEAD(&core->change.change_list);
+> +       core->change.core = core;
+>         hw->core = core;
+>
+>         /* allocate local copy in case parent_names is __initdata */
+> --
+> 2.19.1.568.g152ad8e336-goog
+>
