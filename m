@@ -1,49 +1,34 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: sapphire: add chosen node
-Date: Fri, 26 Oct 2018 15:36:55 +0200
-Message-ID: <20181026133655.1605-1-vicencb@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH] media: rockchip/rga: constify v4l2_m2m_ops structure
+Date: Sat, 27 Oct 2018 14:30:32 +0200
+Message-ID: <1540643432-25969-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob chen <jacob2.chen@rock-chips.com>
+Cc: kernel-janitors@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to use earlycon, the stdout-path property needs to be set in
-the chosen node.
+The v4l2_m2m_ops structure can be const as it is only passed to
+v4l2_m2m_init whose parameter is const.
+
+Done with the help of Coccinelle.
+
+Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
 
 ---
+ drivers/media/platform/rockchip/rga/rga.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also, this works around this kexec bug:
-http://lists.infradead.org/pipermail/kexec/2018-October/021746.html
-
-Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-index 5a5806044..326615018 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-@@ -9,4 +9,8 @@
- / {
- 	model = "Sapphire-RK3399 Board";
- 	compatible = "rockchip,rk3399-sapphire", "rockchip,rk3399";
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 9cc9db083870..dc63c44929de 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -97,7 +97,7 @@ static irqreturn_t rga_isr(int irq, void *prv)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static struct v4l2_m2m_ops rga_m2m_ops = {
++static const struct v4l2_m2m_ops rga_m2m_ops = {
+ 	.device_run = device_run,
  };
--- 
-2.19.1
+ 
