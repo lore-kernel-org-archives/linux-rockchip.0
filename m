@@ -1,15 +1,14 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: move backlight from sapphire to
- excavator
-Date: Tue, 30 Oct 2018 18:19:50 +0100
-Message-ID: <CAAMcf8CYbHR6-H3GPiSt1Ntd7E7BuY+K8K1chaaH4ODami6oiQ@mail.gmail.com>
-References: <20181030150049.16064-1-vicencb@gmail.com>
- <CAFqH_51Bk4RhS5+866XUL_qXTnofg92yT6Yig9gNVytAt+H=bg@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: sapphire: add chosen node
+Date: Tue, 30 Oct 2018 21:34:24 +0100
+Message-ID: <3147034.AKaRkkQLNX@phil>
+References: <5408972.CYYHPefPr5@phil>
+ <20181030145941.15975-1-vicencb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAFqH_51Bk4RhS5+866XUL_qXTnofg92yT6Yig9gNVytAt+H=bg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20181030145941.15975-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,75 +18,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBPY3QgMzAsIDIwMTggYXQgNTo1OSBQTSBFbnJpYyBCYWxsZXRibyBTZXJyYQo8ZWJh
-bGxldGJvQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBIaSBWaWNlbnRlLAo+Cj4gTWlzc2F0Z2UgZGUg
-VmljZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21haWwuY29tPiBkZWwgZGlhIGR0LiwgMzAgZOKAmW9j
-dC4KPiAyMDE4IGEgbGVzIDE2OjIxOgo+ID4KPiA+IFRoZSBiYWNrbGlnaHQgaXMgZm9yIHRoZSBl
-RFAgcGFuZWwgYW5kIGl0IGhhcyB0aGUgY29ubmVjdG9yIG9uIHRoZSBleGNhdmF0b3IgYmFzZWJv
-YXJkLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFZpY2VudGUgQmVyZ2FzIDx2aWNlbmNiQGdtYWls
-LmNvbT4KPiA+IC0tLQo+ID4gIC4uLi9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUtZXhjYXZhdG9y
-LmR0cyAgICB8IDQ2ICsrKysrKysrKysrKysrKysrLS0KPiA+ICAuLi4vYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzk5LXNhcHBoaXJlLmR0c2kgICAgfCAzOSAtLS0tLS0tLS0tLS0tLS0tCj4gPiAgMiBm
-aWxlcyBjaGFuZ2VkLCA0MSBpbnNlcnRpb25zKCspLCA0NCBkZWxldGlvbnMoLSkKPiA+Cj4gPiBk
-aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUt
-ZXhjYXZhdG9yLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBo
-aXJlLWV4Y2F2YXRvci5kdHMKPiA+IGluZGV4IGZlZjJjMDYwOC4uMGI4ZjFlZGJkIDEwMDY0NAo+
-ID4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUtZXhj
-YXZhdG9yLmR0cwo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkt
-c2FwcGhpcmUtZXhjYXZhdG9yLmR0cwo+ID4gQEAgLTQyLDYgKzQyLDQ3IEBACj4gPiAgICAgICAg
-ICAgICAgICAgfTsKPiA+ICAgICAgICAgfTsKPiA+Cj4gPiArICAgICAgIGJhY2tsaWdodDogYmFj
-a2xpZ2h0IHsKPiA+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInB3bS1iYWNrbGlnaHQi
-Owo+ID4gKyAgICAgICAgICAgICAgIGJyaWdodG5lc3MtbGV2ZWxzID0gPAo+ID4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAwICAgMSAgIDIgICAzICAgNCAgIDUgICA2ICAgNwouLi4KPiA+ICsg
-ICAgICAgICAgICAgICAgICAgICAgIDI0OCAyNDkgMjUwIDI1MSAyNTIgMjUzIDI1NCAyNTU+Owo+
-ID4gKyAgICAgICAgICAgICAgIGRlZmF1bHQtYnJpZ2h0bmVzcy1sZXZlbCA9IDwyMDA+Owo+Cj4g
-Q291bGQgeW91IHRyeSBpZiBqdXN0IHJlbW92aW5nIHRoZSBicmlnaHRuZXNzLWxldmVsIHRhYmxl
-IGFuZAo+IGRlZmF1bHQtYnJpZ2h0bmVzcy1sZXZlbCBwcm9wZXJ0aWVzIGdpdmVzIHlvdSBhIGdv
-b2QgYmFja2xpZ2h0Cj4gZXhwZXJpZW5jZT8KPgo+IEFmdGVyIGNvbW1pdCA4OGJhOTViZWRiNzkg
-KCJiYWNrbGlnaHQ6IHB3bV9ibDogQ29tcHV0ZSBicmlnaHRuZXNzIG9mIExFRAo+IGxpbmVhcmx5
-IHRvIGh1bWFuIGV5ZSIpIHRoZSBwd21fYmwgZHJpdmVyIGlzIGFibGUgdG8gY2FsY3VsYXRlIGEg
-ZGVmYXVsdAo+IGJyaWdodG5lc3MgdGFibGUuIFRoZSBjYWxjdWxhdGVkIHRhYmxlIGZvciB0aGlz
-IFBXTSB3aWxsIGhhdmUgbW9yZQo+IGdyYW51bGFyaXR5IGFuZCB3aWxsIGJlIGFkanVzdGVkIHRv
-IGNoYW5nZSB0aGUgYnJpZ2h0bmVzcyBsaW5lYXJseSB0bwo+IHRoZSBodW1hbiBleWUuCj4KPiBJ
-ZiBpdCB3b3JrcyBtYXliZSB3ZSBjYW4ganVzdCBnZXQgcmlkIG9mIHRoaXMgYXdmdWwgYnJpZ2h0
-bmVzcy10YWJsZS4KCkkgaGF2ZSB0ZXN0ZWQgdGhhdCBpdCBkb2VzIG5vdCBicmVhayB0aGUgU2Fw
-cGhpcmUgZGF1Z3RoZXItYm9hcmQsCmJ1dCBoYXZlIG5vIEV4Y2F2YXRvciBiYXNlLWJvYXJkIHRv
-IHRlc3QsIGkgaGF2ZSBqdXN0IGNoZWNrZWQgdGhhdAp0aGUgcmVzdWx0aW5nIGRlY29tcGlsZWQg
-ZHRiIGlzIGVxdWl2YWxlbnQuCgpSZWdhcmRzLAogIFZpY2Vuw6cuCgo+IEJlc3QgcmVnYXJkcywK
-PiAgIEVucmljCj4KPiA+ICsgICAgICAgICAgICAgICBlbmFibGUtZ3Bpb3MgPSA8JmdwaW8xIFJL
-X1BCNSBHUElPX0FDVElWRV9ISUdIPjsKPiA+ICsgICAgICAgICAgICAgICBwd21zID0gPCZwd20w
-IDAgMjUwMDAgMD47Cj4gPiArICAgICAgICAgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gKyAg
-ICAgICB9Owo+ID4gKwo+ID4gICAgICAgICBlZHBfcGFuZWw6IGVkcC1wYW5lbCB7Cj4gPiAgICAg
-ICAgICAgICAgICAgY29tcGF0aWJsZSA9ImxnLGxwMDc5cXgxLXNwMHYiLCAic2ltcGxlLXBhbmVs
-IjsKPiA+ICAgICAgICAgICAgICAgICBiYWNrbGlnaHQgPSA8JmJhY2tsaWdodD47Cj4gPiBAQCAt
-OTUsMTEgKzEzNiw2IEBACj4gPiAgICAgICAgIH07Cj4gPiAgfTsKPiA+Cj4gPiAtJmJhY2tsaWdo
-dCB7Cj4gPiAtICAgICAgIGVuYWJsZS1ncGlvcyA9IDwmZ3BpbzEgUktfUEI1IEdQSU9fQUNUSVZF
-X0hJR0g+Owo+ID4gLSAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gPiAtfTsKPiA+IC0KPiA+ICAm
-ZWRwIHsKPiA+ICAgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4KPiA+IGRpZmYgLS1naXQgYS9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpIGIvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQo+ID4gaW5kZXggMmVi
-NjQ4OWQ0Li42Y2U1YTQyYzkgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCj4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCj4gPiBAQCAtMTUsNDUgKzE1LDYgQEAKPiA+
-ICAgICAgICAgICAgICAgICBzdGRvdXQtcGF0aCA9ICJzZXJpYWwyOjE1MDAwMDBuOCI7Cj4gPiAg
-ICAgICAgIH07Cj4gPgo+ID4gLSAgICAgICBiYWNrbGlnaHQ6IGJhY2tsaWdodCB7Cj4gPiAtICAg
-ICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJwd20tYmFja2xpZ2h0IjsKPiA+IC0gICAgICAgICAg
-ICAgICBicmlnaHRuZXNzLWxldmVscyA9IDwKPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAg
-MCAgIDEgICAyICAgMyAgIDQgICA1ICAgNiAgIDcKLi4uCj4gPiAtICAgICAgICAgICAgICAgICAg
-ICAgICAyNDggMjQ5IDI1MCAyNTEgMjUyIDI1MyAyNTQgMjU1PjsKPiA+IC0gICAgICAgICAgICAg
-ICBkZWZhdWx0LWJyaWdodG5lc3MtbGV2ZWwgPSA8MjAwPjsKPiA+IC0gICAgICAgICAgICAgICBw
-d21zID0gPCZwd20wIDAgMjUwMDAgMD47Cj4gPiAtICAgICAgIH07Cj4gPiAtCj4gPiAgICAgICAg
-IGNsa2luX2dtYWM6IGV4dGVybmFsLWdtYWMtY2xvY2sgewo+ID4gICAgICAgICAgICAgICAgIGNv
-bXBhdGlibGUgPSAiZml4ZWQtY2xvY2siOwo+ID4gICAgICAgICAgICAgICAgIGNsb2NrLWZyZXF1
-ZW5jeSA9IDwxMjUwMDAwMDA+Owo+ID4gLS0KPiA+IDIuMTkuMQo+ID4KPiA+Cj4gPiBfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0Cj4gPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4g
-PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Am Dienstag, 30. Oktober 2018, 15:59:41 CET schrieb Vicente Bergas:
+> In order to use earlycon, the stdout-path property needs to be set in the=
+ chosen node.
+> =
+
+> ---
+> =
+
+> Hi Heiko,
+> =
+
+> > shouldn't that maybe live in the shared .dtsi instead?
+> this v2 applies the change in the .dtsi as suggested.
+> =
+
+> > I do guess the excavator will have the same default serial?
+> Well, in fact it seems to me that serial2 is set as the default serial po=
+rt
+> at the chip level, although there are some exceptions. But on the other h=
+and
+> the baud rate is more free form.
+> So, as suggested, it could be a good compromise to put it at the
+> daugther-card level.
+> =
+
+> The point for working around the kexec bug is still valid, but with
+> the update from the maintainer it is not enough to fix everything:
+> http://lists.infradead.org/pipermail/kexec/2018-October/021762.html
+> =
+
+> Regards,
+>   Vicen=E7.
+> =
+
+> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+applied for 4.21
+
+Thanks
+Heiko
