@@ -1,49 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH V2] DT: rockchip: Fix stability issues with the 'performance' governor on rock960
-Date: Tue, 30 Oct 2018 15:18:06 +0100
-Message-ID: <10930709.0rTHelch2x@phil>
-References: <1539767918-26587-1-git-send-email-daniel.lezcano@linaro.org>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: sapphire: add chosen node
+Date: Tue, 30 Oct 2018 15:59:41 +0100
+Message-ID: <20181030145941.15975-1-vicencb@gmail.com>
+References: <5408972.CYYHPefPr5@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1539767918-26587-1-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Vicente Bergas <vicencb@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, Shawn Lin <shawn.lin@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5408972.CYYHPefPr5@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 17. Oktober 2018, 11:18:30 CET schrieb Daniel Lezcano:
-> When the performance governor is set as default, the rock960 hangs
-> around one minute after booting, whatever the activity is (idle, key
-> pressed, loaded, ...).
-> 
-> Based on the commit log found at https://patchwork.kernel.org/patch/10092377/
-> 
-> "vdd_log has no consumer and therefore will not be set to a specific
-> voltage. Still the PWM output pin gets configured and thence the vdd_log
-> output voltage will changed from it's default. Depending on the idle
-> state of the PWM this will slightly over or undervoltage the logic supply
-> of the RK3399 and cause instability with GbE (undervoltage) and PCIe
-> (overvoltage). Since the default value set by a voltage divider is the
-> correct supply voltage and we don't need to change it during runtime we
-> remove the rail from the devicetree completely so the PWM pin will not
-> be configured."
-> 
-> After removing the vdd-log from the rock960's specific DT, the board
-> does no longer hang and shows a stable behavior.
-> 
-> Apply the same change for the rock960 by removing the vdd-log from the
-> DT.
-> 
-> Fixes: 874846f1fccd ("arm64: dts: rockchip: add 96boards RK3399 Ficus board")
-> Tested-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-
-applied as fix for 4.20
-after including a stable-tag (board entered in previous kernel version)
-and modified subject line a bit.
-
-
-Thanks
-Heiko
+SW4gb3JkZXIgdG8gdXNlIGVhcmx5Y29uLCB0aGUgc3Rkb3V0LXBhdGggcHJvcGVydHkgbmVlZHMg
+dG8gYmUgc2V0IGluIHRoZSBjaG9zZW4gbm9kZS4KCi0tLQoKSGkgSGVpa28sCgo+IHNob3VsZG4n
+dCB0aGF0IG1heWJlIGxpdmUgaW4gdGhlIHNoYXJlZCAuZHRzaSBpbnN0ZWFkPwp0aGlzIHYyIGFw
+cGxpZXMgdGhlIGNoYW5nZSBpbiB0aGUgLmR0c2kgYXMgc3VnZ2VzdGVkLgoKPiBJIGRvIGd1ZXNz
+IHRoZSBleGNhdmF0b3Igd2lsbCBoYXZlIHRoZSBzYW1lIGRlZmF1bHQgc2VyaWFsPwpXZWxsLCBp
+biBmYWN0IGl0IHNlZW1zIHRvIG1lIHRoYXQgc2VyaWFsMiBpcyBzZXQgYXMgdGhlIGRlZmF1bHQg
+c2VyaWFsIHBvcnQKYXQgdGhlIGNoaXAgbGV2ZWwsIGFsdGhvdWdoIHRoZXJlIGFyZSBzb21lIGV4
+Y2VwdGlvbnMuIEJ1dCBvbiB0aGUgb3RoZXIgaGFuZAp0aGUgYmF1ZCByYXRlIGlzIG1vcmUgZnJl
+ZSBmb3JtLgpTbywgYXMgc3VnZ2VzdGVkLCBpdCBjb3VsZCBiZSBhIGdvb2QgY29tcHJvbWlzZSB0
+byBwdXQgaXQgYXQgdGhlCmRhdWd0aGVyLWNhcmQgbGV2ZWwuCgpUaGUgcG9pbnQgZm9yIHdvcmtp
+bmcgYXJvdW5kIHRoZSBrZXhlYyBidWcgaXMgc3RpbGwgdmFsaWQsIGJ1dCB3aXRoCnRoZSB1cGRh
+dGUgZnJvbSB0aGUgbWFpbnRhaW5lciBpdCBpcyBub3QgZW5vdWdoIHRvIGZpeCBldmVyeXRoaW5n
+OgpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9waXBlcm1haWwva2V4ZWMvMjAxOC1PY3RvYmVy
+LzAyMTc2Mi5odG1sCgpSZWdhcmRzLAogIFZpY2Vuw6cuCgpTaWduZWQtb2ZmLWJ5OiBWaWNlbnRl
+IEJlcmdhcyA8dmljZW5jYkBnbWFpbC5jb20+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaSB8IDQgKysrKwogMSBmaWxlIGNoYW5nZWQsIDQgaW5z
+ZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+Mzk5LXNhcHBoaXJlLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1z
+YXBwaGlyZS5kdHNpCmluZGV4IDU0MjFlMjM3Ni4uMmViNjQ4OWQ0IDEwMDY0NAotLS0gYS9hcmNo
+L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCisrKyBiL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kKQEAgLTExLDYgKzEx
+LDEwIEBACiAvIHsKIAljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1zYXBwaGlyZSIsICJy
+b2NrY2hpcCxyazMzOTkiOwogCisJY2hvc2VuIHsKKwkJc3Rkb3V0LXBhdGggPSAic2VyaWFsMjox
+NTAwMDAwbjgiOworCX07CisKIAliYWNrbGlnaHQ6IGJhY2tsaWdodCB7CiAJCWNvbXBhdGlibGUg
+PSAicHdtLWJhY2tsaWdodCI7CiAJCWJyaWdodG5lc3MtbGV2ZWxzID0gPAotLSAKMi4xOS4xCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
