@@ -1,13 +1,13 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: sapphire: add chosen node
-Date: Tue, 30 Oct 2018 15:09:17 +0100
-Message-ID: <5408972.CYYHPefPr5@phil>
-References: <20181026133655.1605-1-vicencb@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable HS200 for eMMC on rock64
+Date: Tue, 30 Oct 2018 15:13:58 +0100
+Message-ID: <2163438.OLGNrv2Hku@phil>
+References: <20181020175756.28072-1-anarsoul@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181026133655.1605-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20181020175756.28072-1-anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,41 +17,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kamil =?utf-8?B?VHJ6Y2nFhHNraQ==?= <ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vicente,
-
-Am Freitag, 26. Oktober 2018, 15:36:55 CET schrieb Vicente Bergas:
-> In order to use earlycon, the stdout-path property needs to be set in
-> the chosen node.
+Am Samstag, 20. Oktober 2018, 19:57:56 CET schrieb Vasily Khoruzhick:
+> eMMC that's sold by Pine64 can do HS200, rk3328 can do it
+> as well, so update DTS to enable it.
 > 
-> ---
-> 
-> Also, this works around this kexec bug:
-> http://lists.infradead.org/pipermail/kexec/2018-October/021746.html
-> 
-> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-> index 5a5806044..326615018 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dts
-> @@ -9,4 +9,8 @@
->  / {
->  	model = "Sapphire-RK3399 Board";
->  	compatible = "rockchip,rk3399-sapphire", "rockchip,rk3399";
-> +
-> +	chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
+> Signed-off-by: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-shouldn't that maybe live in the shared .dtsi instead?
-I do guess the excavator will have the same default serial?
+applied for 4.21 or whatever it will get called
 
-
+Thanks
 Heiko
