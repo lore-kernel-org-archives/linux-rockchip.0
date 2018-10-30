@@ -1,7 +1,7 @@
 From: Tony Xie <tony.xie@rock-chips.com>
-Subject: [PATCH v6 4/6] dt-bindings: mfd: rk808: Add binding information for RK809 and RK817.
-Date: Tue, 30 Oct 2018 18:07:59 +0800
-Message-ID: <1540894081-31270-5-git-send-email-tony.xie@rock-chips.com>
+Subject: [PATCH v6 6/6] clk: RK808: add RK809 and RK817 support.
+Date: Tue, 30 Oct 2018 18:17:06 +0800
+Message-ID: <1540894626-3003-1-git-send-email-tony.xie@rock-chips.com>
 References: <1540894081-31270-1-git-send-email-tony.xie@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1540894081-31270-1-git-send-email-tony.xie@rock-chips.com>
@@ -10,95 +10,120 @@ To: heiko@sntech.de
 Cc: broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
+RK809 and RK817 are power management IC chips for multimedia products.
+most of their functions and registers are same, including the clkout
+funciton.
 
 Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+Acked-by: Stephen Boyd <sboyd@kernel.org>
 ---
- Documentation/devicetree/bindings/mfd/rk808.txt | 44 +++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ drivers/clk/Kconfig     |  9 ++++---
+ drivers/clk/clk-rk808.c | 64 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 67 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 91b6522..f306fa0 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -3,11 +3,15 @@ RK8XX Power Management Integrated Circuit
- The rk8xx family current members:
- rk805
- rk808
-+rk809
-+rk817
- rk818
+diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+index 721572a..92cf5ad 100644
+--- a/drivers/clk/Kconfig
++++ b/drivers/clk/Kconfig
+@@ -46,13 +46,12 @@ config COMMON_CLK_MAX77686
+ 	  clock.
  
- Required properties:
- - compatible: "rockchip,rk805"
- - compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk809"
-+- compatible: "rockchip,rk817"
- - compatible: "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
-@@ -46,6 +50,23 @@ Optional RK808 properties:
-   the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-   very quickly with no slow ramp time.
+ config COMMON_CLK_RK808
+-	tristate "Clock driver for RK805/RK808/RK818"
++	tristate "Clock driver for RK805/RK808/RK809/RK817/RK818"
+ 	depends on MFD_RK808
+ 	---help---
+-	  This driver supports RK805, RK808 and RK818 crystal oscillator clock. These
+-	  multi-function devices have two fixed-rate oscillators,
+-	  clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
+-	  by control register.
++	  This driver supports RK805, RK809 and RK817, RK808 and RK818 crystal oscillator clock.
++	  These multi-function devices have two fixed-rate oscillators, clocked at 32KHz each.
++	  Clkout1 is always on, Clkout2 can off by control register.
  
-+Optional shared RK809 and RK817 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- vcc5-supply:  The input supply for LDO_REG1, LDO_REG2, LDO_REG3
-+- vcc6-supply:  The input supply for LDO_REG4, LDO_REG5, LDO_REG6
-+- vcc7-supply:  The input supply for LDO_REG7, LDO_REG8, LDO_REG9
-+
-+Optional RK809 properties:
-+- vcc8-supply:  The input supply for SWITCH_REG1
-+- vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
-+
-+Optional RK817 properties:
-+- vcc8-supply:  The input supply for BOOST
-+- vcc9-supply:  The input supply for OTG_SWITCH
-+
- Optional RK818 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
-@@ -87,6 +108,21 @@ number as described in RK808 datasheet.
- 	- SWITCH_REGn
- 		- valid values for n are 1 to 2
+ config COMMON_CLK_HI655X
+ 	tristate "Clock driver for Hi655x" if EXPERT
+diff --git a/drivers/clk/clk-rk808.c b/drivers/clk/clk-rk808.c
+index 6461f28..7f9a56b 100644
+--- a/drivers/clk/clk-rk808.c
++++ b/drivers/clk/clk-rk808.c
+@@ -96,6 +96,68 @@ static int rk808_clkout2_is_prepared(struct clk_hw *hw)
+ 	return idx ? &rk808_clkout->clkout2_hw : &rk808_clkout->clkout1_hw;
+ }
  
-+Following regulators of the RK809 and RK817 PMIC blocks are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK809 and RK817 datasheets.
++static int rk817_clkout2_enable(struct clk_hw *hw, bool enable)
++{
++	struct rk808_clkout *rk808_clkout = container_of(hw,
++							 struct rk808_clkout,
++							 clkout2_hw);
++	struct rk808 *rk808 = rk808_clkout->rk808;
 +
-+	- DCDC_REGn
-+		- valid values for n are 1 to 5 for RK809.
-+		- valid values for n are 1 to 4 for RK817.
-+	- LDO_REGn
-+		- valid values for n are 1 to 9 for RK809.
-+		- valid values for n are 1 to 9 for RK817.
-+	- SWITCH_REGn
-+		- valid values for n are 1 to 2 for RK809.
-+	- BOOST for RK817
-+	- OTG_SWITCH for RK817
++	return regmap_update_bits(rk808->regmap, RK817_SYS_CFG(1),
++				  RK817_CLK32KOUT2_EN,
++				  enable ? RK817_CLK32KOUT2_EN : 0);
++}
 +
- Following regulators of the RK818 PMIC block are supported. Note that
- the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
- number as described in RK818 datasheet.
-@@ -99,6 +135,14 @@ number as described in RK818 datasheet.
- 	- HDMI_SWITCH
- 	- OTG_SWITCH
++static int rk817_clkout2_prepare(struct clk_hw *hw)
++{
++	return rk817_clkout2_enable(hw, true);
++}
++
++static void rk817_clkout2_unprepare(struct clk_hw *hw)
++{
++	rk817_clkout2_enable(hw, false);
++}
++
++static int rk817_clkout2_is_prepared(struct clk_hw *hw)
++{
++	struct rk808_clkout *rk808_clkout = container_of(hw,
++							 struct rk808_clkout,
++							 clkout2_hw);
++	struct rk808 *rk808 = rk808_clkout->rk808;
++	unsigned int val;
++
++	int ret = regmap_read(rk808->regmap, RK817_SYS_CFG(1), &val);
++
++	if (ret < 0)
++		return 0;
++
++	return (val & RK817_CLK32KOUT2_EN) ? 1 : 0;
++}
++
++static const struct clk_ops rk817_clkout2_ops = {
++	.prepare = rk817_clkout2_prepare,
++	.unprepare = rk817_clkout2_unprepare,
++	.is_prepared = rk817_clkout2_is_prepared,
++	.recalc_rate = rk808_clkout_recalc_rate,
++};
++
++static const struct clk_ops *rkpmic_get_ops(long variant)
++{
++	switch (variant) {
++	case RK809_ID:
++	case RK817_ID:
++		return &rk817_clkout2_ops;
++	/*
++	 * For the default case, it match the following PMIC type.
++	 * RK805_ID
++	 * RK808_ID
++	 * RK818_ID
++	 */
++	default:
++		return &rk808_clkout2_ops;
++	}
++}
++
+ static int rk808_clkout_probe(struct platform_device *pdev)
+ {
+ 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+@@ -127,7 +189,7 @@ static int rk808_clkout_probe(struct platform_device *pdev)
+ 		return ret;
  
-+It is necessary to configure three pins for both the RK809 and RK817, the three
-+pins are "gpio_ts" "gpio_gt" "gpio_slp".
-+	The gpio_gt and gpio_ts pins support the gpio function.
-+	The gpio_slp pin is for controlling the pmic states, as below:
-+		- reset
-+		- power down
-+		- sleep
-+
- Standard regulator bindings are used inside regulator subnodes. Check
-   Documentation/devicetree/bindings/regulator/regulator.txt
- for more details
+ 	init.name = "rk808-clkout2";
+-	init.ops = &rk808_clkout2_ops;
++	init.ops = rkpmic_get_ops(rk808->variant);
+ 	rk808_clkout->clkout2_hw.init = &init;
+ 
+ 	/* optional override of the clockname */
 -- 
 1.9.1
