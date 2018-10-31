@@ -1,122 +1,36 @@
-From: Emil Renner Berthing <esmil@mailme.dk>
-Subject: [PATCH v1 08/14] spi: rockchip: remove master pointer from dev data
-Date: Wed, 31 Oct 2018 11:57:05 +0100
-Message-ID: <20181031105711.19575-9-esmil@mailme.dk>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 00/14] Rockchip SPI cleanup and use interrupts
+Date: Wed, 31 Oct 2018 12:20:00 +0100
+Message-ID: <4443653.p1DpZLIVTj@diego>
 References: <20181031105711.19575-1-esmil@mailme.dk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20181031105711.19575-1-esmil@mailme.dk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-spi@vger.kernel.org
-Cc: Emil Renner Berthing <kernel@esmil.dk>, Addy Ke <addy.ke@rock-chips.com>, Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Emil Renner Berthing <esmil@mailme.dk>
+Cc: linux-spi@vger.kernel.org, Emil Renner Berthing <kernel@esmil.dk>, Addy Ke <addy.ke@rock-chips.com>, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Emil Renner Berthing <kernel@esmil.dk>
+Am Mittwoch, 31. Oktober 2018, 11:56:57 CET schrieb Emil Renner Berthing:
+> Emil Renner Berthing (14):
+>   spi: rockchip: make spi_enable_chip take bool
+>   spi: rockchip: use designated init for dma config
+>   spi: rockchip: always use SPI mode
+>   spi: rockchip: use atomic_t state
+>   spi: rockchip: disable spi on error
+>   spi: rockchip: read transfer info directly
+>   spi: rockchip: don't store dma channels twice
+>   spi: rockchip: remove master pointer from dev data
+>   spi: rockchip: simplify use_dma logic
+>   spi: rockchip: set min/max speed
+>   spi: rockchip: precompute rx sample delay
+>   spi: rockchip: use irq rather than polling
+>   spi: rockchip: support 4bit words
+>   spi: rockchip: support lsb-first mode
 
-In almost all cases we already have a pointer to the
-spi master structure where we have the driver data.
+The series, on rk3288 with cros-ec and spi-flash, rk3328 with a spi-flash, 
+rk3399 with cros-ec and spi-flash:
 
-The only exceptions are the dma callbacks which are
-easily fixed by passing them the master and using
-spi_master_get_devdata to retrieve the driver data.
-
-Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
----
- drivers/spi/spi-rockchip.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index f3fe6d4cf6f6..45a1479c1a29 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -159,7 +159,6 @@
- 
- struct rockchip_spi {
- 	struct device *dev;
--	struct spi_master *master;
- 
- 	struct clk *spiclk;
- 	struct clk *apb_pclk;
-@@ -350,19 +349,21 @@ static int rockchip_spi_pio_transfer(struct rockchip_spi *rs)
- 
- static void rockchip_spi_dma_rxcb(void *data)
- {
--	struct rockchip_spi *rs = data;
-+	struct spi_master *master = data;
-+	struct rockchip_spi *rs = spi_master_get_devdata(master);
- 	int state = atomic_fetch_andnot(RXDMA, &rs->state);
- 
- 	if (state & TXDMA)
- 		return;
- 
- 	spi_enable_chip(rs, false);
--	spi_finalize_current_transfer(rs->master);
-+	spi_finalize_current_transfer(master);
- }
- 
- static void rockchip_spi_dma_txcb(void *data)
- {
--	struct rockchip_spi *rs = data;
-+	struct spi_master *master = data;
-+	struct rockchip_spi *rs = spi_master_get_devdata(master);
- 	int state = atomic_fetch_andnot(TXDMA, &rs->state);
- 
- 	if (state & RXDMA)
-@@ -372,7 +373,7 @@ static void rockchip_spi_dma_txcb(void *data)
- 	wait_for_idle(rs);
- 
- 	spi_enable_chip(rs, false);
--	spi_finalize_current_transfer(rs->master);
-+	spi_finalize_current_transfer(master);
- }
- 
- static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
-@@ -401,7 +402,7 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
- 			return -EINVAL;
- 
- 		rxdesc->callback = rockchip_spi_dma_rxcb;
--		rxdesc->callback_param = rs;
-+		rxdesc->callback_param = master;
- 	}
- 
- 	txdesc = NULL;
-@@ -426,7 +427,7 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
- 		}
- 
- 		txdesc->callback = rockchip_spi_dma_txcb;
--		txdesc->callback_param = rs;
-+		txdesc->callback_param = master;
- 	}
- 
- 	/* rx must be started before tx due to spi instinct */
-@@ -633,7 +634,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 
- 	spi_enable_chip(rs, false);
- 
--	rs->master = master;
- 	rs->dev = &pdev->dev;
- 	rs->max_freq = clk_get_rate(rs->spiclk);
- 
-@@ -746,9 +746,8 @@ static int rockchip_spi_suspend(struct device *dev)
- {
- 	int ret;
- 	struct spi_master *master = dev_get_drvdata(dev);
--	struct rockchip_spi *rs = spi_master_get_devdata(master);
- 
--	ret = spi_master_suspend(rs->master);
-+	ret = spi_master_suspend(master);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -773,7 +772,7 @@ static int rockchip_spi_resume(struct device *dev)
- 	if (ret < 0)
- 		return ret;
- 
--	ret = spi_master_resume(rs->master);
-+	ret = spi_master_resume(master);
- 	if (ret < 0) {
- 		clk_disable_unprepare(rs->spiclk);
- 		clk_disable_unprepare(rs->apb_pclk);
--- 
-2.19.1
+Tested-by: Heiko Stuebner <heiko@sntech.de>
