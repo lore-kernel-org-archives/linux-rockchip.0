@@ -1,46 +1,32 @@
 From: Linus Walleij <linus.walleij@linaro.org>
 Subject: Re: [PATCH v3 0/7] Standardize onboard LED support for 96Boards
-Date: Wed, 31 Oct 2018 14:38:56 +0100
-Message-ID: <CACRpkdYThcGjdV9Ezs4qMr8K6_jH40SDUgt0Tps8d+_4sSESyg@mail.gmail.com>
+Date: Wed, 31 Oct 2018 22:17:29 +0100
+Message-ID: <CACRpkdarkLuErC_F4ALqOB5Wuf7TnDXmWZVKvfR7iGvOy=j++g@mail.gmail.com>
 References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
+ <CACRpkdYThcGjdV9Ezs4qMr8K6_jH40SDUgt0Tps8d+_4sSESyg@mail.gmail.com> <CAHTX3dJTXtuA0i-ffPjoiWuxEcF_5JY55VJtWd9zxW4HxK1K3w@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
+In-Reply-To: <CAHTX3dJTXtuA0i-ffPjoiWuxEcF_5JY55VJtWd9zxW4HxK1K3w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, ezequiel@collabora.com, Xu Wei <xuwei5@hisilicon.com>, Michal Simek <michal.simek@xilinx.com>, Pavel Machek <pavel@ucw.cz>, Andy Gross <andy.gross@linaro.org>, linux-leds@vger.kernel.org, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-msm@vger.kernel.org, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Koen Kooi <koen.kooi@linaro.org>, Nicolas
+To: Michal Simek <monstr@monstr.eu>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-arm-msm@vger.kernel.org, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Xu Wei <xuwei5@hisilicon.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Dechesne <nicolas.dechesne@linaro.org>, Koen Kooi <koen.kooi@linaro.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Pavel Machek <pavel@ucw.cz>, Andy Gross <andy.gross@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 29, 2018 at 10:43 AM Manivannan Sadhasivam
-<manivannan.sadhasivam@linaro.org> wrote:
+On Wed, Oct 31, 2018 at 4:47 PM Michal Simek <monstr@monstr.eu> wrote:
 
-> This patchset standardizes the onboard LEDs on 96Boards by maintaining
-> common labels and triggers as below:
->
-> green:user1  default-trigger: heartbeat
-> green:user2  default-trigger: mmc0/disk-activity (onboard-storage)
-> green:user3  default-trigger: mmc1 (SD card)
-> green:user4  default-trigger: none, panic-indicator
-> yellow:wlan  default-trigger: phy0tx
-> blue:bt      default-trigger: hci0-power
->
-> This standardization is required to provide a common behaviour of LEDs
-> across all mainline supported 96Boards and also making it easier to
-> control it using an userspace library like MRAA.
->
-> For Rock960 and Ficus boards, the LED support is added in this patchset.
-> Rest of the boards are converted to adopt the standard.
->
-> Note: Since there is no UFS trigger available for now, user2 LED trigger
-> is set to none on HiKey960.
+> No doubt about it that this is good. If this is there from day 1 all will be good.
+> I am just saying that we are all the time
+> saying that we shouldn't break userspace. Right now if there is single application
+> which uses existing names we are breaking it.
 
-This series:
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Yeah that's the problem, the approach is usually that if a tree falls
+in the forest and noone is there to hear it, then it doesn't make a
+sound.
 
-It makes a lot of sense to try to unify the userspace ABI so we get
-some kind of order here instead of trying to counteract it with
-per-device kludges in userspace. It definately makes things better!
+But we can't assume someone is there as the safe default either.
+
+I'd say apply it and see what happens, people are supposed to test.
 
 Yours,
 Linus Walleij
