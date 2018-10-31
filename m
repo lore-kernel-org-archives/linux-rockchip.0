@@ -1,36 +1,46 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 00/14] Rockchip SPI cleanup and use interrupts
-Date: Wed, 31 Oct 2018 12:20:00 +0100
-Message-ID: <4443653.p1DpZLIVTj@diego>
-References: <20181031105711.19575-1-esmil@mailme.dk>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v3 0/7] Standardize onboard LED support for 96Boards
+Date: Wed, 31 Oct 2018 14:38:56 +0100
+Message-ID: <CACRpkdYThcGjdV9Ezs4qMr8K6_jH40SDUgt0Tps8d+_4sSESyg@mail.gmail.com>
+References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181031105711.19575-1-esmil@mailme.dk>
+In-Reply-To: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Emil Renner Berthing <esmil@mailme.dk>
-Cc: linux-spi@vger.kernel.org, Emil Renner Berthing <kernel@esmil.dk>, Addy Ke <addy.ke@rock-chips.com>, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, ezequiel@collabora.com, Xu Wei <xuwei5@hisilicon.com>, Michal Simek <michal.simek@xilinx.com>, Pavel Machek <pavel@ucw.cz>, Andy Gross <andy.gross@linaro.org>, linux-leds@vger.kernel.org, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-msm@vger.kernel.org, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Koen Kooi <koen.kooi@linaro.org>, Nicolas
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 31. Oktober 2018, 11:56:57 CET schrieb Emil Renner Berthing:
-> Emil Renner Berthing (14):
->   spi: rockchip: make spi_enable_chip take bool
->   spi: rockchip: use designated init for dma config
->   spi: rockchip: always use SPI mode
->   spi: rockchip: use atomic_t state
->   spi: rockchip: disable spi on error
->   spi: rockchip: read transfer info directly
->   spi: rockchip: don't store dma channels twice
->   spi: rockchip: remove master pointer from dev data
->   spi: rockchip: simplify use_dma logic
->   spi: rockchip: set min/max speed
->   spi: rockchip: precompute rx sample delay
->   spi: rockchip: use irq rather than polling
->   spi: rockchip: support 4bit words
->   spi: rockchip: support lsb-first mode
+On Mon, Oct 29, 2018 at 10:43 AM Manivannan Sadhasivam
+<manivannan.sadhasivam@linaro.org> wrote:
 
-The series, on rk3288 with cros-ec and spi-flash, rk3328 with a spi-flash, 
-rk3399 with cros-ec and spi-flash:
+> This patchset standardizes the onboard LEDs on 96Boards by maintaining
+> common labels and triggers as below:
+>
+> green:user1  default-trigger: heartbeat
+> green:user2  default-trigger: mmc0/disk-activity (onboard-storage)
+> green:user3  default-trigger: mmc1 (SD card)
+> green:user4  default-trigger: none, panic-indicator
+> yellow:wlan  default-trigger: phy0tx
+> blue:bt      default-trigger: hci0-power
+>
+> This standardization is required to provide a common behaviour of LEDs
+> across all mainline supported 96Boards and also making it easier to
+> control it using an userspace library like MRAA.
+>
+> For Rock960 and Ficus boards, the LED support is added in this patchset.
+> Rest of the boards are converted to adopt the standard.
+>
+> Note: Since there is no UFS trigger available for now, user2 LED trigger
+> is set to none on HiKey960.
 
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+This series:
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+It makes a lot of sense to try to unify the userspace ABI so we get
+some kind of order here instead of trying to counteract it with
+per-device kludges in userspace. It definately makes things better!
+
+Yours,
+Linus Walleij
