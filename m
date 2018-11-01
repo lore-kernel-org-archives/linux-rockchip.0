@@ -1,94 +1,76 @@
-From: Frank Lee <tiny.windzz@gmail.com>
-Subject: Re: [PATCH] i2c: rk3x: fix some typo
-Date: Fri, 2 Nov 2018 00:18:46 +0800
-Message-ID: <CAEExFWsO=piLg_JCCKTH6p49f+RT8qDzii6iwjHuTcwd8j0Okw@mail.gmail.com>
-References: <20181101153749.22935-1-tiny.windzz@gmail.com> <5544442.bXqbKBZQMR@diego>
+From: hal-lDsPURAG5SfNnvze2onX6Q@public.gmane.org
+Subject: Re: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk
+ rate
+Date: Thu, 01 Nov 2018 18:56:08 +0000
+Message-ID: <553bee2038828da6ab2ed7e105cdbd04@halemmerich.com>
+References: <d90cc0db-4fe0-0827-5165-3c9883632e2c@halemmerich.com>
+ <28d02af2-0196-2548-8802-b06f025df664@halemmerich.com>
+ <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6@rock-chips.com>
+ <3121572.l3zVcpjBom@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5544442.bXqbKBZQMR@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3121572.l3zVcpjBom@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
->Hi,
->
->Am Donnerstag, 1. November 2018, 16:37:49 CET schrieb Yangtao Li:
->> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
->
->while the changes really are pretty self-explanatory, it is always
->nice to describe changes in a real commit message, like
->
->Fix multiple instances of a misspelled "Calculates".
->
->Change itself looks good, so
->Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->
->
->Thanks
-
-Yeah,this is my fault.
-
---Yangtao Li
-On Thu, Nov 1, 2018 at 11:56 PM Heiko St=C3=BCbner <heiko@sntech.de> wrote:
->
-> Hi,
->
-> Am Donnerstag, 1. November 2018, 16:37:49 CET schrieb Yangtao Li:
-> > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
->
-> while the changes really are pretty self-explanatory, it is always
-> nice to describe changes in a real commit message, like
->
-> Fix multiple instances of a misspelled "Calculates".
->
-> Change itself looks good, so
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->
->
-> Thanks
-> Heiko
->
-> > ---
-> >  drivers/i2c/busses/i2c-rk3x.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3=
-x.c
-> > index b8a2728dd4b6..fe347e8e2a23 100644
-> > --- a/drivers/i2c/busses/i2c-rk3x.c
-> > +++ b/drivers/i2c/busses/i2c-rk3x.c
-> > @@ -555,7 +555,7 @@ static const struct i2c_spec_values
-> > *rk3x_i2c_get_spec(unsigned int speed) *
-> >   * @clk_rate: I2C input clock rate
-> >   * @t: Known I2C timing information
-> > - * @t_calc: Caculated rk3x private timings that would be written into =
-regs
-> > + * @t_calc: Calculated rk3x private timings that would be written into=
- regs
-> > *
-> >   * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In=
- that
-> > case * a best-effort divider value is returned in divs. If the target r=
-ate
-> > is @@ -716,7 +716,7 @@ static int rk3x_i2c_v0_calc_timings(unsigned lon=
-g
-> > clk_rate, *
-> >   * @clk_rate: I2C input clock rate
-> >   * @t: Known I2C timing information
-> > - * @t_calc: Caculated rk3x private timings that would be written into =
-regs
-> > + * @t_calc: Calculated rk3x private timings that would be written into=
- regs
-> > *
-> >   * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In=
- that
-> > case * a best-effort divider value is returned in divs. If the target r=
-ate
-> > is
->
->
->
->
+SGkgSGVpa28sIFNoYXduCgpPbiAyMDE4LTExLTAxIDEwOjQ0LCBIZWlrbyBTdMO8Ym5lciB3cm90
+ZToKPiBIaSBTaGF3biwgSGFsLAo+IAo+IEFtIERvbm5lcnN0YWcsIDEuIE5vdmVtYmVyIDIwMTgs
+IDAyOjIwOjAzIENFVCBzY2hyaWViIFNoYXduIExpbjoKPj4gT24gMjAxOC8xMS8xIDA6MDcsIEhh
+bCBFbW1lcmljaCB3cm90ZToKPj4gPiBIZWxsbyBldmVyeW9uZSwKPj4gPgo+PiA+IFdoZW4gYm9v
+dGluZyBhIHZleXJvbi1zcGVlZHkgZGV2aWNlIHdpdGggdGhlIHJrMzI4OCBhbmQga2VybmVsIDQu
+MTkgSQo+PiA+IGdldCB0aGUgZm9sbG93aW5nIGVycm9ycyByZWdhcmRpbmcgdGhlIG1tYyBhbmQg
+aW52YWxpZCBjbGsgcmF0ZXM6Cj4+ID4KPj4gPgo+PiA+IFsgICAgMC4wMDAwMDBdIE5SX0lSUVM6
+IDE2LCBucl9pcnFzOiAxNiwgcHJlYWxsb2NhdGVkIGlycXM6IDE2Cj4+ID4gWyAgICAwLjAwMDAw
+MF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0ZQo+PiA+IFsgICAgMC4w
+MDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJhdGUKPj4gPiBbICAg
+IDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRlCj4+ID4g
+WyAgICAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0ZQo+
+PiA+IFsgICAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJh
+dGUKPj4gPiBbICAgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNs
+ayByYXRlCj4+ID4gWyAgICAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxp
+ZCBjbGsgcmF0ZQo+PiA+IFsgICAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGlu
+dmFsaWQgY2xrIHJhdGUKPj4gPiBbICAgIDAuMDAwMDAwXSBhcmNoX3RpbWVyOiBjcDE1IHRpbWVy
+KHMpIHJ1bm5pbmcgYXQgMjQuMDBNSHogKHBoeXMpLgo+PiAKPj4gU29ycnkgZm9yIGxhdGUhCj4+
+IAo+PiBUaGUgbG9nIHNob3VsZCBiZSBiZSBpbXByb3ZlZCBhcyB0aGUgbW1jX3BoYXNlIGNsb2Nr
+IG15IGJlCj4+IHRlbXBvcmFyaWx5IG9ycGhhbmVkIGJlZm9yZSByZS1wYXJlbnRpbmcgdG8gaXRz
+IHBhcmVudHMgd2hlbgo+PiBhbGwgdGhpbmdzIHNldHRsZWQgZG93bi4gQnV0IHdlIGFyZSBkZWZp
+bml0ZWx5IGluIHRyb3VibGUgd2hlbgo+PiBzZWVpbmcgdGhlc2UgbG9nIGlmIG1tYyBkcml2ZXIg
+c3RhcnRzIGRvaW5nIHR1bmluZy4KPj4gCj4+IERpZCB5b3UgY2FyZCBib290IG5vcm1hbGx5IGlu
+IEhTMjAwL1VIUyBtb2RlPyBJZiB5ZXMsIG5vIHRoaW5ncwo+PiB3cm9uZyBoYXBwZW5lZC4KPiAK
+PiBJIGNhbiBzZWUgdGhlc2UgbWVzc2FnZXMgYXMgd2VsbCwgYnV0IG9ubHkgZHVyaW5nIGluaXRp
+YWwgYm9vdHVwLCB3aGVuIAo+IHRoZQo+IGNsb2NrLXRyZWUgZ2V0cyBhc3NlbWJsZWQsIGxpa2Ug
+dGhlIGxvZ3MgYWJvdmUgaW5kaWNhdGUgYXMgd2VsbCBhbmQKPiBtbWMgZGV2aWNlcyB3b3JrIGZp
+bmUgZm9yIG1lIHNvIGZhci4KPiAKPiBTbyBpdCByZWFsbHkgbG9va3MgbGlrZSBzaW1wbHkgdGhl
+IHBoYXNlLWNsb2NrcyBzdGlsbCBiZWluZyBvcnBoYW5zIGF0IAo+IHRoaXMKPiBwb2ludCBhbmQg
+d2UgY291bGQganVzdCBtYWtlIHRoZSBsb2cgYSBiaXQgbGVzcyB0YWxrYXRpdmUuCj4gCj4gCj4g
+SGVpa28KCkFib3V0IDEgYm9vdCBvdXQgb2YgMTAgb3IgMjAgYm9vdCBoYW5ncyBkdWUgdG8gdGhl
+IG1tYy4KICBUaGUgY2FyZCBoYXMgYW4gaXNzdWUgcmVhZGluZyBhIGJsb2NrIGR1cmluZyBib290
+LCBzbyB0aGUKICBtbWMgYmxvY2sgc3lzdGVtIGNhbGxzIGZvciBhIF9fbW1jX2h3X3Jlc2V0KCks
+IHdoaWNoIHRyaWVzIHRvIGZsdXNoIHRoZSAKY2FjaGUgYnV0CnRoZSBjb21tYW5kIHRvIGNsZWFy
+IHRoZSBjYWNoZSBoYW5ncyBpbmRlZmluaXRlbHkgYXMgYXQgdGhpcyBwb2ludCB0aGUgCm1tYyBp
+cyBpbiBhCmJhZCBzdGF0ZSBmb3IgYW4gdW5rbm93biByZWFzb24uIFBvc3NpYmx5IHRoZSB1bmtu
+b3duIHJlYXNvbiBpcyB3aHkgdGhlIApibG9jayByZWFkCiAgZmFpbGVkIGluIHRoZSBmaXJzdCBw
+bGFjZS4KClNvIHRoZXJlcyBsaWtlbHkgYSBkZWVwZXIgcHJvYmxlbSB3aXRoIHRhbGtpbmcgdG8g
+dGhlIG1tYy4KCkkgcmVwb3J0ZWQgdGhhdCBidWcgdG8gdGhlIG1tYyBsaXN0IHdoaWNoIHlvdSBj
+YW4gc2VlIGhlcmU6Cmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LW1tYy9tc2c1
+MTgxNS5odG1sCgoKU28sIGJvb3QgZG9lc24ndCByZWxpYWJseSBnbyBzbW9vdGhseS4gTm90IHN1
+cmUgaWYgdGhpcyBjbG9jayBpc3N1ZSBpcyAKdG8gYmxhbWUgdGhvdWdoLgoKSSBoYXZlIGFkZGVk
+IGRlYnVnIGluZm9ybWF0aW9uIHRvIHRoZSAiaW52YWxpZCBjbGsgcmF0ZSIgZXJyb3JzIHRvIHBy
+aW50IAp0aGVpciBwYXJlbnRzIGZvdW5kCnVzaW5nIGdldFBhcmVudCgpIHNvIEkgZG9uJ3QgdGhp
+bmsgdGhleSBhcmUgb3JwaGFucywgYXMgdGhlIHBhcmVudCBjbG9jayAKZ2V0cyBwcmludGVkIGFz
+IGV4cGVjdGVkLgoKClRoYW5rcywKSGFsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
