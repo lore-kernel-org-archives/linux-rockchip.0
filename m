@@ -1,123 +1,66 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [PATCH 2/6] clk: fix clk_calc_subtree compute duplications
-Date: Wed, 31 Oct 2018 19:58:31 -0700
-Message-ID: <CAGAzgsp-tuSAThRGPtGM98opK0pJ5OfmxB9tx+9VBuxT6rz3cA@mail.gmail.com>
-References: <20181024013132.115907-1-dbasehore@chromium.org> <20181024013132.115907-3-dbasehore@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk
+ rate
+Date: Thu, 01 Nov 2018 11:44:33 +0100
+Message-ID: <3121572.l3zVcpjBom@diego>
+References: <d90cc0db-4fe0-0827-5165-3c9883632e2c@halemmerich.com>
+ <28d02af2-0196-2548-8802-b06f025df664@halemmerich.com>
+ <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181024013132.115907-3-dbasehore@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel <linux-kernel@vger.kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, sboyd@kernel.org, Michael Turquette <mturquette@baylibre.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, aisheng.dong@nxp.com, mchehab+samsung@kernel.org, Jonathan Corbet <corbet@lwn.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Hal Emmerich <hal-lDsPURAG5SfNnvze2onX6Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 23, 2018 at 6:31 PM Derek Basehore <dbasehore@chromium.org> wrote:
->
-> clk_calc_subtree was called at every step up the clk tree in
-> clk_calc_new_rates. Since it recursively calls itself for its
-> children, this means it would be called once on each clk for each
-> step above the top clk is.
->
-> This fixes this by breaking the subtree calculation into two parts.
-> The first part recalcs the rate for each child of the parent clk in
-> clk_calc_new_rates. This part is not recursive itself. The second part
-> recursively calls a new clk_calc_subtree on the clk_core that was
-> passed into clk_set_rate.
->
-> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> ---
->  drivers/clk/clk.c | 30 ++++++++++++++++++++----------
->  1 file changed, 20 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> index 95d818f5edb2..61de8ad3e4cf 100644
-> --- a/drivers/clk/clk.c
-> +++ b/drivers/clk/clk.c
-> @@ -1717,11 +1717,19 @@ static int __clk_speculate_rates(struct clk_core *core,
->         return ret;
->  }
->
-> -static void clk_calc_subtree(struct clk_core *core, unsigned long new_rate,
-> -                            struct clk_core *new_parent, u8 p_index)
-> +static void clk_calc_subtree(struct clk_core *core)
->  {
->         struct clk_core *child;
->
-> +       hlist_for_each_entry(child, &core->children, child_node) {
-> +               child->new_rate = clk_recalc(child, core->new_rate);
-> +               clk_calc_subtree(child);
-> +       }
-> +}
-> +
-> +static void clk_set_change(struct clk_core *core, unsigned long new_rate,
-> +                          struct clk_core *new_parent, u8 p_index)
-> +{
->         core->new_rate = new_rate;
->         core->new_parent = new_parent;
->         core->new_parent_index = p_index;
-> @@ -1729,11 +1737,6 @@ static void clk_calc_subtree(struct clk_core *core, unsigned long new_rate,
->         core->new_child = NULL;
->         if (new_parent && new_parent != core->parent)
->                 new_parent->new_child = core;
-> -
-> -       hlist_for_each_entry(child, &core->children, child_node) {
-> -               child->new_rate = clk_recalc(child, new_rate);
-> -               clk_calc_subtree(child, child->new_rate, NULL, 0);
-> -       }
->  }
->
->  /*
-> @@ -1744,7 +1747,7 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
->                                            unsigned long rate)
->  {
->         struct clk_core *top = core;
-> -       struct clk_core *old_parent, *parent;
-> +       struct clk_core *old_parent, *parent, *child;
->         unsigned long best_parent_rate = 0;
->         unsigned long new_rate;
->         unsigned long min_rate;
-> @@ -1791,6 +1794,8 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
->                 /* pass-through clock with adjustable parent */
->                 top = clk_calc_new_rates(parent, rate);
->                 new_rate = parent->new_rate;
-> +               hlist_for_each_entry(child, &parent->children, child_node)
-> +                       child->new_rate = clk_recalc(child, new_rate);
->                 goto out;
->         }
->
-> @@ -1813,11 +1818,14 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
->         }
->
->         if ((core->flags & CLK_SET_RATE_PARENT) && parent &&
-> -           best_parent_rate != parent->rate)
-> +           best_parent_rate != parent->rate) {
->                 top = clk_calc_new_rates(parent, best_parent_rate);
-> +               hlist_for_each_entry(child, &parent->children, child_node)
-> +                       child->new_rate = clk_recalc(child, parent->new_rate);
-> +       }
->
->  out:
-> -       clk_calc_subtree(core, new_rate, parent, p_index);
-> +       clk_set_change(core, new_rate, parent, p_index);
->
->         return top;
->  }
-> @@ -2018,6 +2026,8 @@ static int clk_core_set_rate_nolock(struct clk_core *core,
->         if (ret)
->                 return ret;
->
-> +       clk_calc_subtree(core);
+Hi Shawn, Hal,
 
-This should be:
-hlist_for_each_entry(child, core->new_parent? core->new_parent :
-core->parent, child_node)
-  clk_calc_subtree(child);
+Am Donnerstag, 1. November 2018, 02:20:03 CET schrieb Shawn Lin:
+> On 2018/11/1 0:07, Hal Emmerich wrote:
+> > Hello everyone,
+> > 
+> > When booting a veyron-speedy device with the rk3288 and kernel 4.19 I
+> > get the following errors regarding the mmc and invalid clk rates:
+> > 
+> > 
+> > [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
+> > [    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
+> 
+> Sorry for late!
+> 
+> The log should be be improved as the mmc_phase clock my be
+> temporarily orphaned before re-parenting to its parents when
+> all things settled down. But we are definitely in trouble when
+> seeing these log if mmc driver starts doing tuning.
+> 
+> Did you card boot normally in HS200/UHS mode? If yes, no things
+> wrong happened.
 
-> +
->         /* notify that we are about to change rates */
->         fail_clk = clk_propagate_rate_change(top, PRE_RATE_CHANGE);
->         if (fail_clk) {
-> --
-> 2.19.1.568.g152ad8e336-goog
->
+I can see these messages as well, but only during initial bootup, when the
+clock-tree gets assembled, like the logs above indicate as well and
+mmc devices work fine for me so far.
+
+So it really looks like simply the phase-clocks still being orphans at this
+point and we could just make the log a bit less talkative.
+
+
+Heiko
