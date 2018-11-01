@@ -1,89 +1,123 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk
- rate
-Date: Thu, 1 Nov 2018 09:20:03 +0800
-Message-ID: <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6@rock-chips.com>
-References: <d90cc0db-4fe0-0827-5165-3c9883632e2c@halemmerich.com>
- <28d02af2-0196-2548-8802-b06f025df664@halemmerich.com>
+From: "dbasehore ." <dbasehore@chromium.org>
+Subject: Re: [PATCH 2/6] clk: fix clk_calc_subtree compute duplications
+Date: Wed, 31 Oct 2018 19:58:31 -0700
+Message-ID: <CAGAzgsp-tuSAThRGPtGM98opK0pJ5OfmxB9tx+9VBuxT6rz3cA@mail.gmail.com>
+References: <20181024013132.115907-1-dbasehore@chromium.org> <20181024013132.115907-3-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <28d02af2-0196-2548-8802-b06f025df664-lDsPURAG5SfNnvze2onX6Q@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hal Emmerich <hal-lDsPURAG5SfNnvze2onX6Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181024013132.115907-3-dbasehore@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel <linux-kernel@vger.kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, sboyd@kernel.org, Michael Turquette <mturquette@baylibre.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, aisheng.dong@nxp.com, mchehab+samsung@kernel.org, Jonathan Corbet <corbet@lwn.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOC8xMS8xIDA6MDcsIEhhbCBFbW1lcmljaCB3cm90ZToKPiBIZWxsbyBldmVyeW9uZSwK
-PiAKPiBXaGVuIGJvb3RpbmcgYSB2ZXlyb24tc3BlZWR5IGRldmljZSB3aXRoIHRoZSByazMyODgg
-YW5kIGtlcm5lbCA0LjE5IEkgCj4gZ2V0IHRoZSBmb2xsb3dpbmcgZXJyb3JzIHJlZ2FyZGluZyB0
-aGUgbW1jIGFuZCBpbnZhbGlkIGNsayByYXRlczoKPiAKPiAKPiBbwqDCoMKgIDAuMDAwMDAwXSBO
-Ul9JUlFTOiAxNiwgbnJfaXJxczogMTYsIHByZWFsbG9jYXRlZCBpcnFzOiAxNgo+IFvCoMKgwqAg
-MC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJhdGUKPiBbwqDC
-oMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRlCj4g
-W8KgwqDCoCAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0
-ZQo+IFvCoMKgwqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xr
-IHJhdGUKPiBbwqDCoMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlk
-IGNsayByYXRlCj4gW8KgwqDCoCAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52
-YWxpZCBjbGsgcmF0ZQo+IFvCoMKgwqAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6
-IGludmFsaWQgY2xrIHJhdGUKPiBbwqDCoMKgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3Bo
-YXNlOiBpbnZhbGlkIGNsayByYXRlCj4gW8KgwqDCoCAwLjAwMDAwMF0gYXJjaF90aW1lcjogY3Ax
-NSB0aW1lcihzKSBydW5uaW5nIGF0IDI0LjAwTUh6IChwaHlzKS4KPiAKClNvcnJ5IGZvciBsYXRl
-IQoKVGhlIGxvZyBzaG91bGQgYmUgYmUgaW1wcm92ZWQgYXMgdGhlIG1tY19waGFzZSBjbG9jayBt
-eSBiZQp0ZW1wb3JhcmlseSBvcnBoYW5lZCBiZWZvcmUgcmUtcGFyZW50aW5nIHRvIGl0cyBwYXJl
-bnRzIHdoZW4KYWxsIHRoaW5ncyBzZXR0bGVkIGRvd24uIEJ1dCB3ZSBhcmUgZGVmaW5pdGVseSBp
-biB0cm91YmxlIHdoZW4Kc2VlaW5nIHRoZXNlIGxvZyBpZiBtbWMgZHJpdmVyIHN0YXJ0cyBkb2lu
-ZyB0dW5pbmcuCgpEaWQgeW91IGNhcmQgYm9vdCBub3JtYWxseSBpbiBIUzIwMC9VSFMgbW9kZT8g
-SWYgeWVzLCBubyB0aGluZ3MKd3JvbmcgaGFwcGVuZWQuCgo+IGNvbW1pdCBjNDIwYzFlNGRiMjI5
-YTVkMThmYWVkNGI1OGMwMWVmODkwMjdkNWI3IGFkZGVkIHRoZXNlIGVycm9yIG1lc3NhZ2VzLgo+
-IAo+IEFkZGluZyBhIGNhbGwgdG8gY2xrX2h3X2dldF9uYW1lIHJldmVhbHMgdGhlIGNsb2NrcyB0
-aHJvd2luZyB0aGVzZSAKPiBlcnJvcnMgYXJlOgo+IHNkbW1jX2Rydgo+IHNkbW12X3NhbXBsZQo+
-IHNkaW8wX2Rydgo+IHNkaW8wX3NhbXBsZQo+IHNkaW8xX2Rydgo+IHNkaW8xX3NhbXBsZQo+IGVt
-bWNfZHJ2Cj4gZW1tY19zYW1wbGUKPiAKPiAKPiBMb29raW5nIGF0IHRoZSBnaXQgbG9ncywgb3Ro
-ZXIgcGxhdGZvcm1zIGp1c3QgbmVlZCB0byBjaGFuZ2Ugd2hhdCBjbG9ja3MgCj4gdGhlIHNkaW8g
-YW5kIGVtbWMgdXNlZAo+IGluIHRoZSByZXNwZWN0aXZlIGNsay1yazNYWFguYyBzbyBJJ20gYXNz
-dW1pbmcgc29tZXRoaW5nIGluIHRoaXMgc2VjdGlvbiAKPiBvZiBjbGstcmszMjg4LmMgaXMgd3Jv
-bmc6Cj4gCj4gIMKgwqDCoCBDT01QT1NJVEUoU0NMS19TRE1NQywgInNjbGtfc2RtbWMiLCBtdXhf
-bW1jX3NyY19wLCAwLAo+ICDCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMyODhfQ0xLU0VMX0NPTigx
-MSksIDYsIDIsIE1GTEFHUywgMCwgNiwgREZMQUdTLAo+ICDCoMKgwqAgwqDCoMKgIMKgwqDCoCBS
-SzMyODhfQ0xLR0FURV9DT04oMTMpLCAwLCBHRkxBR1MpLAo+ICDCoMKgwqAgQ09NUE9TSVRFKFND
-TEtfU0RJTzAsICJzY2xrX3NkaW8wIiwgbXV4X21tY19zcmNfcCwgMCwKPiAgwqDCoMKgIMKgwqDC
-oCDCoMKgwqAgUkszMjg4X0NMS1NFTF9DT04oMTIpLCA2LCAyLCBNRkxBR1MsIDAsIDYsIERGTEFH
-UywKPiAgwqDCoMKgIMKgwqDCoCDCoMKgwqAgUkszMjg4X0NMS0dBVEVfQ09OKDEzKSwgMSwgR0ZM
-QUdTKSwKPiAgwqDCoMKgIENPTVBPU0lURShTQ0xLX1NESU8xLCAic2Nsa19zZGlvMSIsIG11eF9t
-bWNfc3JjX3AsIDAsCj4gIMKgwqDCoCDCoMKgwqAgwqDCoMKgIFJLMzI4OF9DTEtTRUxfQ09OKDM0
-KSwgMTQsIDIsIE1GTEFHUywgOCwgNiwgREZMQUdTLAo+ICDCoMKgwqAgwqDCoMKgIMKgwqDCoCBS
-SzMyODhfQ0xLR0FURV9DT04oMTMpLCAyLCBHRkxBR1MpLAo+ICDCoMKgwqAgQ09NUE9TSVRFKFND
-TEtfRU1NQywgInNjbGtfZW1tYyIsIG11eF9tbWNfc3JjX3AsIDAsCj4gIMKgwqDCoCDCoMKgwqAg
-wqDCoMKgIFJLMzI4OF9DTEtTRUxfQ09OKDEyKSwgMTQsIDIsIE1GTEFHUywgOCwgNiwgREZMQUdT
-LAo+ICDCoMKgwqAgwqDCoMKgIMKgwqDCoCBSSzMyODhfQ0xLR0FURV9DT04oMTMpLCAzLCBHRkxB
-R1MpLAo+IAo+ICDCoMKgwqAgTU1DKFNDTEtfU0RNTUNfRFJWLMKgwqDCoCAic2RtbWNfZHJ2IizC
-oMKgwqAgInNjbGtfc2RtbWMiLCAKPiBSSzMyODhfU0RNTUNfQ09OMCwgMSksCj4gIMKgwqDCoCBN
-TUMoU0NMS19TRE1NQ19TQU1QTEUsICJzZG1tY19zYW1wbGUiLCAic2Nsa19zZG1tYyIsIAo+IFJL
-MzI4OF9TRE1NQ19DT04xLCAwKSwKPiAKPiAgwqDCoMKgIE1NQyhTQ0xLX1NESU8wX0RSVizCoMKg
-wqAgInNkaW8wX2RydiIswqDCoMKgICJzY2xrX3NkaW8wIiwgCj4gUkszMjg4X1NESU8wX0NPTjAs
-IDEpLAo+ICDCoMKgwqAgTU1DKFNDTEtfU0RJTzBfU0FNUExFLCAic2RpbzBfc2FtcGxlIiwgInNj
-bGtfc2RpbzAiLCAKPiBSSzMyODhfU0RJTzBfQ09OMSwgMCksCj4gCj4gIMKgwqDCoCBNTUMoU0NM
-S19TRElPMV9EUlYswqDCoMKgICJzZGlvMV9kcnYiLMKgwqDCoCAic2Nsa19zZGlvMSIsIAo+IFJL
-MzI4OF9TRElPMV9DT04wLCAxKSwKPiAgwqDCoMKgIE1NQyhTQ0xLX1NESU8xX1NBTVBMRSwgInNk
-aW8xX3NhbXBsZSIsICJzY2xrX3NkaW8xIiwgCj4gUkszMjg4X1NESU8xX0NPTjEsIDApLAo+IAo+
-ICDCoMKgwqAgTU1DKFNDTEtfRU1NQ19EUlYswqDCoMKgwqAgImVtbWNfZHJ2IizCoMKgwqDCoCAi
-c2Nsa19lbW1jIiwgIAo+IFJLMzI4OF9FTU1DX0NPTjAswqAgMSksCj4gIMKgwqDCoCBNTUMoU0NM
-S19FTU1DX1NBTVBMRSzCoCAiZW1tY19zYW1wbGUiLMKgICJzY2xrX2VtbWMiLCAgCj4gUkszMjg4
-X0VNTUNfQ09OMSzCoCAwKSwKPiAKPiBTaG91bGQgc2Nsa18qIGJlIGNsa18qPwo+IAo+IERvZXMg
-YW55b25lIGhhdmUgYW55IHN1Z2dlc3Rpb25zIG9mIHdoYXQgdGhlIHBhcmVudHMgb2YgdGhlc2Ug
-Y2xvY2tzIAo+IF9zaG91bGRfIGJlLCBvciBob3cgSSB3b3VsZCBnbyBhYm91dCBmaWd1cmluZyB0
-aGF0IG91dD8gVGhlIGNsb2NrIHN5c3RlbSAKPiBpcyBhIGxpdHRsZSBmb3JlaWduIHRvIG1lLgo+
-IAo+IFRoYW5rcyBhbGwuCj4gCj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Oct 23, 2018 at 6:31 PM Derek Basehore <dbasehore@chromium.org> wrote:
+>
+> clk_calc_subtree was called at every step up the clk tree in
+> clk_calc_new_rates. Since it recursively calls itself for its
+> children, this means it would be called once on each clk for each
+> step above the top clk is.
+>
+> This fixes this by breaking the subtree calculation into two parts.
+> The first part recalcs the rate for each child of the parent clk in
+> clk_calc_new_rates. This part is not recursive itself. The second part
+> recursively calls a new clk_calc_subtree on the clk_core that was
+> passed into clk_set_rate.
+>
+> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> ---
+>  drivers/clk/clk.c | 30 ++++++++++++++++++++----------
+>  1 file changed, 20 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+> index 95d818f5edb2..61de8ad3e4cf 100644
+> --- a/drivers/clk/clk.c
+> +++ b/drivers/clk/clk.c
+> @@ -1717,11 +1717,19 @@ static int __clk_speculate_rates(struct clk_core *core,
+>         return ret;
+>  }
+>
+> -static void clk_calc_subtree(struct clk_core *core, unsigned long new_rate,
+> -                            struct clk_core *new_parent, u8 p_index)
+> +static void clk_calc_subtree(struct clk_core *core)
+>  {
+>         struct clk_core *child;
+>
+> +       hlist_for_each_entry(child, &core->children, child_node) {
+> +               child->new_rate = clk_recalc(child, core->new_rate);
+> +               clk_calc_subtree(child);
+> +       }
+> +}
+> +
+> +static void clk_set_change(struct clk_core *core, unsigned long new_rate,
+> +                          struct clk_core *new_parent, u8 p_index)
+> +{
+>         core->new_rate = new_rate;
+>         core->new_parent = new_parent;
+>         core->new_parent_index = p_index;
+> @@ -1729,11 +1737,6 @@ static void clk_calc_subtree(struct clk_core *core, unsigned long new_rate,
+>         core->new_child = NULL;
+>         if (new_parent && new_parent != core->parent)
+>                 new_parent->new_child = core;
+> -
+> -       hlist_for_each_entry(child, &core->children, child_node) {
+> -               child->new_rate = clk_recalc(child, new_rate);
+> -               clk_calc_subtree(child, child->new_rate, NULL, 0);
+> -       }
+>  }
+>
+>  /*
+> @@ -1744,7 +1747,7 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
+>                                            unsigned long rate)
+>  {
+>         struct clk_core *top = core;
+> -       struct clk_core *old_parent, *parent;
+> +       struct clk_core *old_parent, *parent, *child;
+>         unsigned long best_parent_rate = 0;
+>         unsigned long new_rate;
+>         unsigned long min_rate;
+> @@ -1791,6 +1794,8 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
+>                 /* pass-through clock with adjustable parent */
+>                 top = clk_calc_new_rates(parent, rate);
+>                 new_rate = parent->new_rate;
+> +               hlist_for_each_entry(child, &parent->children, child_node)
+> +                       child->new_rate = clk_recalc(child, new_rate);
+>                 goto out;
+>         }
+>
+> @@ -1813,11 +1818,14 @@ static struct clk_core *clk_calc_new_rates(struct clk_core *core,
+>         }
+>
+>         if ((core->flags & CLK_SET_RATE_PARENT) && parent &&
+> -           best_parent_rate != parent->rate)
+> +           best_parent_rate != parent->rate) {
+>                 top = clk_calc_new_rates(parent, best_parent_rate);
+> +               hlist_for_each_entry(child, &parent->children, child_node)
+> +                       child->new_rate = clk_recalc(child, parent->new_rate);
+> +       }
+>
+>  out:
+> -       clk_calc_subtree(core, new_rate, parent, p_index);
+> +       clk_set_change(core, new_rate, parent, p_index);
+>
+>         return top;
+>  }
+> @@ -2018,6 +2026,8 @@ static int clk_core_set_rate_nolock(struct clk_core *core,
+>         if (ret)
+>                 return ret;
+>
+> +       clk_calc_subtree(core);
+
+This should be:
+hlist_for_each_entry(child, core->new_parent? core->new_parent :
+core->parent, child_node)
+  clk_calc_subtree(child);
+
+> +
+>         /* notify that we are about to change rates */
+>         fail_clk = clk_propagate_rate_change(top, PRE_RATE_CHANGE);
+>         if (fail_clk) {
+> --
+> 2.19.1.568.g152ad8e336-goog
+>
