@@ -1,66 +1,38 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk
- rate
-Date: Thu, 01 Nov 2018 11:44:33 +0100
-Message-ID: <3121572.l3zVcpjBom@diego>
-References: <d90cc0db-4fe0-0827-5165-3c9883632e2c@halemmerich.com>
- <28d02af2-0196-2548-8802-b06f025df664@halemmerich.com>
- <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 0/7] Standardize onboard LED support for 96Boards
+Date: Thu, 01 Nov 2018 11:49:08 +0100
+Message-ID: <1590147.nMxYQPWRVN@diego>
+References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org> <CAHTX3dJTXtuA0i-ffPjoiWuxEcF_5JY55VJtWd9zxW4HxK1K3w@mail.gmail.com> <CACRpkdarkLuErC_F4ALqOB5Wuf7TnDXmWZVKvfR7iGvOy=j++g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Hal Emmerich <hal-lDsPURAG5SfNnvze2onX6Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CACRpkdarkLuErC_F4ALqOB5Wuf7TnDXmWZVKvfR7iGvOy=j++g@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Michal Simek <monstr@monstr.eu>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-arm-msm@vger.kernel.org, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Xu Wei <xuwei5@hisilicon.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Dechesne <nicolas.dechesne@linaro.org>, Koen Kooi <koen.kooi@linaro.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Pavel Machek <pavel@ucw.cz>, Andy Gross <andy.gross@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, ezequiel@col
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn, Hal,
-
-Am Donnerstag, 1. November 2018, 02:20:03 CET schrieb Shawn Lin:
-> On 2018/11/1 0:07, Hal Emmerich wrote:
-> > Hello everyone,
-> > 
-> > When booting a veyron-speedy device with the rk3288 and kernel 4.19 I
-> > get the following errors regarding the mmc and invalid clk rates:
-> > 
-> > 
-> > [    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> > [    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
+Am Mittwoch, 31. Oktober 2018, 22:17:29 CET schrieb Linus Walleij:
+> On Wed, Oct 31, 2018 at 4:47 PM Michal Simek <monstr@monstr.eu> wrote:
+> > No doubt about it that this is good. If this is there from day 1 all will
+> > be good. I am just saying that we are all the time
+> > saying that we shouldn't break userspace. Right now if there is single
+> > application which uses existing names we are breaking it.
 > 
-> Sorry for late!
+> Yeah that's the problem, the approach is usually that if a tree falls
+> in the forest and noone is there to hear it, then it doesn't make a
+> sound.
 > 
-> The log should be be improved as the mmc_phase clock my be
-> temporarily orphaned before re-parenting to its parents when
-> all things settled down. But we are definitely in trouble when
-> seeing these log if mmc driver starts doing tuning.
+> But we can't assume someone is there as the safe default either.
 > 
-> Did you card boot normally in HS200/UHS mode? If yes, no things
-> wrong happened.
+> I'd say apply it and see what happens, people are supposed to test.
 
-I can see these messages as well, but only during initial bootup, when the
-clock-tree gets assembled, like the logs above indicate as well and
-mmc devices work fine for me so far.
+At least for the Rockchip boards I'm somewhat confident, that they should
+be new enough to not have anybody building cludges - especially as I think
+LEDs might not be the most interesting device on such boards :-) .
 
-So it really looks like simply the phase-clocks still being orphans at this
-point and we could just make the log a bit less talkative.
-
+So while I can apply the Rockchip patches, I'm still hoping for some
+kind of consensus beforehand, least we roll it back after the fact  ;-) .
 
 Heiko
