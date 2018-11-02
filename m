@@ -1,22 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/5] thermal: rockchip_thermal: simplify getting .driver_data
-Date: Fri, 02 Nov 2018 13:25:32 +0100
-Message-ID: <2099094.tBqgur4jcY@phil>
-References: <20181021200053.2194-1-wsa+renesas@sang-engineering.com> <20181021200053.2194-3-wsa+renesas@sang-engineering.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Yangtao Li <tiny.windzz@gmail.com>
+Subject: [PATCH v2] i2c: rk3x: fix some typo
+Date: Fri,  2 Nov 2018 08:45:35 -0400
+Message-ID: <20181102124535.24331-1-tiny.windzz@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181021200053.2194-3-wsa+renesas@sang-engineering.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, Yangtao Li <tiny.windzz@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 21. Oktober 2018, 22:00:49 CET schrieb Wolfram Sang:
-> We should get 'driver_data' from 'struct device' directly. Going via
-> platform_device is an unneeded step back and forth.
-> 
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Fix multiple instances of a misspelled "Calculates".
 
+Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
+Changes in v2:
+-add commit message
+---
+ drivers/i2c/busses/i2c-rk3x.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index b8a2728dd4b6..fe347e8e2a23 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -555,7 +555,7 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+  *
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+- * @t_calc: Caculated rk3x private timings that would be written into regs
++ * @t_calc: Calculated rk3x private timings that would be written into regs
+  *
+  * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
+  * a best-effort divider value is returned in divs. If the target rate is
+@@ -716,7 +716,7 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
+  *
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+- * @t_calc: Caculated rk3x private timings that would be written into regs
++ * @t_calc: Calculated rk3x private timings that would be written into regs
+  *
+  * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
+  * a best-effort divider value is returned in divs. If the target rate is
+-- 
+2.17.0
