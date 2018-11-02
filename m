@@ -1,17 +1,14 @@
-From: hal-lDsPURAG5SfNnvze2onX6Q@public.gmane.org
-Subject: Re: [BUG] clk: rockchip: rk3288: rockchip_mmc_get_phase: invalid clk
- rate
-Date: Thu, 01 Nov 2018 18:56:08 +0000
-Message-ID: <553bee2038828da6ab2ed7e105cdbd04@halemmerich.com>
-References: <d90cc0db-4fe0-0827-5165-3c9883632e2c@halemmerich.com>
- <28d02af2-0196-2548-8802-b06f025df664@halemmerich.com>
- <dd6afc5e-02b2-bfdf-e4c9-f2c5ff001cd6@rock-chips.com>
- <3121572.l3zVcpjBom@diego>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: move backlight from sapphire to
+ excavator
+Date: Fri, 02 Nov 2018 13:12:53 +0100
+Message-ID: <5566033.xjZbm30eH9@phil>
+References: <20181030150049.16064-1-vicencb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3121572.l3zVcpjBom@diego>
+In-Reply-To: <20181030150049.16064-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,56 +18,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sIFNoYXduCgpPbiAyMDE4LTExLTAxIDEwOjQ0LCBIZWlrbyBTdMO8Ym5lciB3cm90
-ZToKPiBIaSBTaGF3biwgSGFsLAo+IAo+IEFtIERvbm5lcnN0YWcsIDEuIE5vdmVtYmVyIDIwMTgs
-IDAyOjIwOjAzIENFVCBzY2hyaWViIFNoYXduIExpbjoKPj4gT24gMjAxOC8xMS8xIDA6MDcsIEhh
-bCBFbW1lcmljaCB3cm90ZToKPj4gPiBIZWxsbyBldmVyeW9uZSwKPj4gPgo+PiA+IFdoZW4gYm9v
-dGluZyBhIHZleXJvbi1zcGVlZHkgZGV2aWNlIHdpdGggdGhlIHJrMzI4OCBhbmQga2VybmVsIDQu
-MTkgSQo+PiA+IGdldCB0aGUgZm9sbG93aW5nIGVycm9ycyByZWdhcmRpbmcgdGhlIG1tYyBhbmQg
-aW52YWxpZCBjbGsgcmF0ZXM6Cj4+ID4KPj4gPgo+PiA+IFsgICAgMC4wMDAwMDBdIE5SX0lSUVM6
-IDE2LCBucl9pcnFzOiAxNiwgcHJlYWxsb2NhdGVkIGlycXM6IDE2Cj4+ID4gWyAgICAwLjAwMDAw
-MF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0ZQo+PiA+IFsgICAgMC4w
-MDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJhdGUKPj4gPiBbICAg
-IDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNsayByYXRlCj4+ID4g
-WyAgICAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxpZCBjbGsgcmF0ZQo+
-PiA+IFsgICAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGludmFsaWQgY2xrIHJh
-dGUKPj4gPiBbICAgIDAuMDAwMDAwXSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlOiBpbnZhbGlkIGNs
-ayByYXRlCj4+ID4gWyAgICAwLjAwMDAwMF0gcm9ja2NoaXBfbW1jX2dldF9waGFzZTogaW52YWxp
-ZCBjbGsgcmF0ZQo+PiA+IFsgICAgMC4wMDAwMDBdIHJvY2tjaGlwX21tY19nZXRfcGhhc2U6IGlu
-dmFsaWQgY2xrIHJhdGUKPj4gPiBbICAgIDAuMDAwMDAwXSBhcmNoX3RpbWVyOiBjcDE1IHRpbWVy
-KHMpIHJ1bm5pbmcgYXQgMjQuMDBNSHogKHBoeXMpLgo+PiAKPj4gU29ycnkgZm9yIGxhdGUhCj4+
-IAo+PiBUaGUgbG9nIHNob3VsZCBiZSBiZSBpbXByb3ZlZCBhcyB0aGUgbW1jX3BoYXNlIGNsb2Nr
-IG15IGJlCj4+IHRlbXBvcmFyaWx5IG9ycGhhbmVkIGJlZm9yZSByZS1wYXJlbnRpbmcgdG8gaXRz
-IHBhcmVudHMgd2hlbgo+PiBhbGwgdGhpbmdzIHNldHRsZWQgZG93bi4gQnV0IHdlIGFyZSBkZWZp
-bml0ZWx5IGluIHRyb3VibGUgd2hlbgo+PiBzZWVpbmcgdGhlc2UgbG9nIGlmIG1tYyBkcml2ZXIg
-c3RhcnRzIGRvaW5nIHR1bmluZy4KPj4gCj4+IERpZCB5b3UgY2FyZCBib290IG5vcm1hbGx5IGlu
-IEhTMjAwL1VIUyBtb2RlPyBJZiB5ZXMsIG5vIHRoaW5ncwo+PiB3cm9uZyBoYXBwZW5lZC4KPiAK
-PiBJIGNhbiBzZWUgdGhlc2UgbWVzc2FnZXMgYXMgd2VsbCwgYnV0IG9ubHkgZHVyaW5nIGluaXRp
-YWwgYm9vdHVwLCB3aGVuIAo+IHRoZQo+IGNsb2NrLXRyZWUgZ2V0cyBhc3NlbWJsZWQsIGxpa2Ug
-dGhlIGxvZ3MgYWJvdmUgaW5kaWNhdGUgYXMgd2VsbCBhbmQKPiBtbWMgZGV2aWNlcyB3b3JrIGZp
-bmUgZm9yIG1lIHNvIGZhci4KPiAKPiBTbyBpdCByZWFsbHkgbG9va3MgbGlrZSBzaW1wbHkgdGhl
-IHBoYXNlLWNsb2NrcyBzdGlsbCBiZWluZyBvcnBoYW5zIGF0IAo+IHRoaXMKPiBwb2ludCBhbmQg
-d2UgY291bGQganVzdCBtYWtlIHRoZSBsb2cgYSBiaXQgbGVzcyB0YWxrYXRpdmUuCj4gCj4gCj4g
-SGVpa28KCkFib3V0IDEgYm9vdCBvdXQgb2YgMTAgb3IgMjAgYm9vdCBoYW5ncyBkdWUgdG8gdGhl
-IG1tYy4KICBUaGUgY2FyZCBoYXMgYW4gaXNzdWUgcmVhZGluZyBhIGJsb2NrIGR1cmluZyBib290
-LCBzbyB0aGUKICBtbWMgYmxvY2sgc3lzdGVtIGNhbGxzIGZvciBhIF9fbW1jX2h3X3Jlc2V0KCks
-IHdoaWNoIHRyaWVzIHRvIGZsdXNoIHRoZSAKY2FjaGUgYnV0CnRoZSBjb21tYW5kIHRvIGNsZWFy
-IHRoZSBjYWNoZSBoYW5ncyBpbmRlZmluaXRlbHkgYXMgYXQgdGhpcyBwb2ludCB0aGUgCm1tYyBp
-cyBpbiBhCmJhZCBzdGF0ZSBmb3IgYW4gdW5rbm93biByZWFzb24uIFBvc3NpYmx5IHRoZSB1bmtu
-b3duIHJlYXNvbiBpcyB3aHkgdGhlIApibG9jayByZWFkCiAgZmFpbGVkIGluIHRoZSBmaXJzdCBw
-bGFjZS4KClNvIHRoZXJlcyBsaWtlbHkgYSBkZWVwZXIgcHJvYmxlbSB3aXRoIHRhbGtpbmcgdG8g
-dGhlIG1tYy4KCkkgcmVwb3J0ZWQgdGhhdCBidWcgdG8gdGhlIG1tYyBsaXN0IHdoaWNoIHlvdSBj
-YW4gc2VlIGhlcmU6Cmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LW1tYy9tc2c1
-MTgxNS5odG1sCgoKU28sIGJvb3QgZG9lc24ndCByZWxpYWJseSBnbyBzbW9vdGhseS4gTm90IHN1
-cmUgaWYgdGhpcyBjbG9jayBpc3N1ZSBpcyAKdG8gYmxhbWUgdGhvdWdoLgoKSSBoYXZlIGFkZGVk
-IGRlYnVnIGluZm9ybWF0aW9uIHRvIHRoZSAiaW52YWxpZCBjbGsgcmF0ZSIgZXJyb3JzIHRvIHBy
-aW50IAp0aGVpciBwYXJlbnRzIGZvdW5kCnVzaW5nIGdldFBhcmVudCgpIHNvIEkgZG9uJ3QgdGhp
-bmsgdGhleSBhcmUgb3JwaGFucywgYXMgdGhlIHBhcmVudCBjbG9jayAKZ2V0cyBwcmludGVkIGFz
-IGV4cGVjdGVkLgoKClRoYW5rcywKSGFsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Dienstag, 30. Oktober 2018, 16:00:49 CET schrieb Vicente Bergas:
+> The backlight is for the eDP panel and it has the connector on the excavator baseboard.
+> 
+> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+applied for 4.21 (or whatever it will be called)
+
+The patch itself is good, as it as Vicene said only moved the elements
+and the resulting dtb stays identical for excavator.
+
+Enric, you can propose a patch on top, that removes the backlight
+elements. That way if someone really finds an issue with it, we
+have a clean revert path, which still keeps Vicente's move intact.
+
+
+Heiko
