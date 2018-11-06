@@ -1,41 +1,76 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: add Gru Scarlet devicetrees
-Date: Tue, 06 Nov 2018 12:31:01 +0100
-Message-ID: <55055985.ydjp5xQfPl@phil>
-References: <20181101123639.15560-1-heiko@sntech.de>
- <20181101123639.15560-2-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] i2c: rk3x: fix some typo
+Date: Tue, 06 Nov 2018 13:01:33 +0100
+Message-ID: <12637568.SqdzpTGmKQ@phil>
+References: <20181102124535.24331-1-tiny.windzz@gmail.com> <19a28033-9241-1f4e-97cd-7c6648a73c6d@axentia.se> <CAEExFWtQrPD8hUn15Add-EuueCL5=Crb+yvDckWejG75BExGug@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181101123639.15560-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAEExFWtQrPD8hUn15Add-EuueCL5=Crb+yvDckWejG75BExGug@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Lee <tiny.windzz@gmail.com>, peda@axentia.se
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 1. November 2018, 13:36:39 CET schrieb Heiko Stuebner:
-> Gru-Scarlet is a tablet device using ChomeOS, dual-dsi display
-> and Wacom touchscreen with stylus.
-> 
-> There exist two variants in the market using different displays
-> that are differentiated via their sku-id.
-> The bootloader on them also determines the correct devicetree to
-> load via the sku-id.
-> 
-> So add a common scarlet dtsi and two minimal board devicetrees
-> for the two display variants.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Hi Yangtao, Peter,
 
-looks like I already applied patch1 in time for 4.20
-(and forgot about it), but have now also applied this patch2
-for 4.21 with Rob's review.
+Am Montag, 5. November 2018, 16:59:58 CET schrieb Frank Lee:
+> I am sorry.
+> -- Yangtao
+
+If anything, it is me that should be sorry, as I did suggest the
+patch description, including the new spelling error.
+
+And it took me like the whole weekend to actually realize where the
+Calculated / Calculates error was hiding ;-) .
+
+
+Heiko
+
+> On Fri, Nov 2, 2018 at 8:58 PM Peter Rosin <peda@axentia.se> wrote:
+> >
+> > On 2018-11-02 13:45, Yangtao Li wrote:
+> > > Fix multiple instances of a misspelled "Calculates".
+> >
+> > Yes, it sure is hard to spell "Calcluated," it's almost impossible to
+> > get it completely right and not introduce another typo somewhere... :-)
+> >
+> > Cheers,
+> > Peter
+> >
+> > >
+> > > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+> > > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> > > ---
+> > > Changes in v2:
+> > > -add commit message
+> > > ---
+> > >  drivers/i2c/busses/i2c-rk3x.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+> > > index b8a2728dd4b6..fe347e8e2a23 100644
+> > > --- a/drivers/i2c/busses/i2c-rk3x.c
+> > > +++ b/drivers/i2c/busses/i2c-rk3x.c
+> > > @@ -555,7 +555,7 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+> > >   *
+> > >   * @clk_rate: I2C input clock rate
+> > >   * @t: Known I2C timing information
+> > > - * @t_calc: Caculated rk3x private timings that would be written into regs
+> > > + * @t_calc: Calculated rk3x private timings that would be written into regs
+> > >   *
+> > >   * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
+> > >   * a best-effort divider value is returned in divs. If the target rate is
+> > > @@ -716,7 +716,7 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
+> > >   *
+> > >   * @clk_rate: I2C input clock rate
+> > >   * @t: Known I2C timing information
+> > > - * @t_calc: Caculated rk3x private timings that would be written into regs
+> > > + * @t_calc: Calculated rk3x private timings that would be written into regs
+> > >   *
+> > >   * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
+> > >   * a best-effort divider value is returned in divs. If the target rate is
+> > >
+> >
+> 
