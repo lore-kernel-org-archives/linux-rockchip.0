@@ -1,14 +1,13 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: add Gru Scarlet devicetrees
-Date: Mon, 5 Nov 2018 16:06:18 -0600
-Message-ID: <20181105220618.GA20928@bogus>
+Date: Tue, 06 Nov 2018 12:31:01 +0100
+Message-ID: <55055985.ydjp5xQfPl@phil>
 References: <20181101123639.15560-1-heiko@sntech.de>
  <20181101123639.15560-2-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
 In-Reply-To: <20181101123639.15560-2-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -19,10 +18,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu,  1 Nov 2018 13:36:39 +0100, Heiko Stuebner wrote:
+Am Donnerstag, 1. November 2018, 13:36:39 CET schrieb Heiko Stuebner:
 > Gru-Scarlet is a tablet device using ChomeOS, dual-dsi display
 > and Wacom touchscreen with stylus.
 > 
@@ -35,20 +35,7 @@ On Thu,  1 Nov 2018 13:36:39 +0100, Heiko Stuebner wrote:
 > for the two display variants.
 > 
 > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
-> changes in v2:
-> - drop coreboot param override
-> - rebase against current master state so it will apply against 4.20-rc1
-> 
->  .../devicetree/bindings/arm/rockchip.txt      |  34 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
->  .../dts/rockchip/rk3399-gru-scarlet-inx.dts   |  33 +
->  .../dts/rockchip/rk3399-gru-scarlet-kd.dts    |  33 +
->  .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 594 ++++++++++++++++++
->  5 files changed, 696 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-inx.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-kd.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-> 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+looks like I already applied patch1 in time for 4.20
+(and forgot about it), but have now also applied this patch2
+for 4.21 with Rob's review.
