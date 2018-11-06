@@ -1,105 +1,55 @@
-From: Frank Lee <tiny.windzz@gmail.com>
-Subject: Re: [PATCH v2] i2c: rk3x: fix some typo
-Date: Tue, 6 Nov 2018 21:02:40 +0800
-Message-ID: <CAEExFWuCVzKdvu6VjDxabANV7WqirspBfLSGSVN95LczZfJwCA@mail.gmail.com>
-References: <20181102124535.24331-1-tiny.windzz@gmail.com> <19a28033-9241-1f4e-97cd-7c6648a73c6d@axentia.se>
- <CAEExFWtQrPD8hUn15Add-EuueCL5=Crb+yvDckWejG75BExGug@mail.gmail.com>
- <12637568.SqdzpTGmKQ@phil> <CAEExFWuP2yX9cFSjStosRZZ2aZOKGtekCg-u8UwqeM1909-Hwg@mail.gmail.com>
+From: Damian Kos <dkos@cadence.com>
+Subject: [PATCH] drm/rockchip: fix for mailbox read size
+Date: Tue, 6 Nov 2018 15:37:05 +0000
+Message-ID: <1541518625-25984-1-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAEExFWuP2yX9cFSjStosRZZ2aZOKGtekCg-u8UwqeM1909-Hwg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Yangtao Li <tiny.windzz@gmail.com>
-Cc: peda@axentia.se, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chris Zhong <zyw@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Damian Kos <dkos@cadence.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-add myself.
-On Tue, Nov 6, 2018 at 9:01 PM Frank Lee <tiny.windzz@gmail.com> wrote:
->
-> Hi Heiko=EF=BC=9A
->
-> please=EF=BC=8Ccorrect it in the cimmit message.
->
-> --Yangtao
-> On Tue, Nov 6, 2018 at 8:01 PM Heiko Stuebner <heiko@sntech.de> wrote:
-> >
-> > Hi Yangtao, Peter,
-> >
-> > Am Montag, 5. November 2018, 16:59:58 CET schrieb Frank Lee:
-> > > I am sorry.
-> > > -- Yangtao
-> >
-> > If anything, it is me that should be sorry, as I did suggest the
-> > patch description, including the new spelling error.
-> >
-> > And it took me like the whole weekend to actually realize where the
-> > Calculated / Calculates error was hiding ;-) .
-> >
-> >
-> > Heiko
-> >
-> > > On Fri, Nov 2, 2018 at 8:58 PM Peter Rosin <peda@axentia.se> wrote:
-> > > >
-> > > > On 2018-11-02 13:45, Yangtao Li wrote:
-> > > > > Fix multiple instances of a misspelled "Calculates".
-> > > >
-> > > > Yes, it sure is hard to spell "Calcluated," it's almost impossible =
-to
-> > > > get it completely right and not introduce another typo somewhere...=
- :-)
-> > > >
-> > > > Cheers,
-> > > > Peter
-> > > >
-> > > > >
-> > > > > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-> > > > > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> > > > > ---
-> > > > > Changes in v2:
-> > > > > -add commit message
-> > > > > ---
-> > > > >  drivers/i2c/busses/i2c-rk3x.c | 4 ++--
-> > > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > >
-> > > > > diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i=
-2c-rk3x.c
-> > > > > index b8a2728dd4b6..fe347e8e2a23 100644
-> > > > > --- a/drivers/i2c/busses/i2c-rk3x.c
-> > > > > +++ b/drivers/i2c/busses/i2c-rk3x.c
-> > > > > @@ -555,7 +555,7 @@ static const struct i2c_spec_values *rk3x_i2c=
-_get_spec(unsigned int speed)
-> > > > >   *
-> > > > >   * @clk_rate: I2C input clock rate
-> > > > >   * @t: Known I2C timing information
-> > > > > - * @t_calc: Caculated rk3x private timings that would be written=
- into regs
-> > > > > + * @t_calc: Calculated rk3x private timings that would be writte=
-n into regs
-> > > > >   *
-> > > > >   * Returns: 0 on success, -EINVAL if the goal SCL rate is too sl=
-ow. In that case
-> > > > >   * a best-effort divider value is returned in divs. If the targe=
-t rate is
-> > > > > @@ -716,7 +716,7 @@ static int rk3x_i2c_v0_calc_timings(unsigned =
-long clk_rate,
-> > > > >   *
-> > > > >   * @clk_rate: I2C input clock rate
-> > > > >   * @t: Known I2C timing information
-> > > > > - * @t_calc: Caculated rk3x private timings that would be written=
- into regs
-> > > > > + * @t_calc: Calculated rk3x private timings that would be writte=
-n into regs
-> > > > >   *
-> > > > >   * Returns: 0 on success, -EINVAL if the goal SCL rate is too sl=
-ow. In that case
-> > > > >   * a best-effort divider value is returned in divs. If the targe=
-t rate is
-> > > > >
-> > > >
-> > >
-> >
-> >
-> >
-> >
+Some of the functions (like cdn_dp_dpcd_read, cdn_dp_get_edid_block)
+allow to read 64KiB, but the cdn_dp_mailbox_read_receive, that is
+used by them, can read only up to 255 bytes at once. Normally, it's
+not a big issue as DPCD or EDID reads won't (hopefully) exceed that
+value.
+The real issue here is the revocation list read during the HDCP
+authentication process. (problematic use case:
+https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/gpu/drm/rockchip/cdn-dp-reg.c#1152)
+The list can reach 127*5+4 bytes (num devs * 5 bytes per ID/Bksv +
+4 bytes of an additional info).
+In other words - CTSes with HDCP Repeater won't pass without this
+fix. Oh, and the driver will most likely stop working (best case
+scenario).
+
+Signed-off-by: Damian Kos <dkos@cadence.com>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+index 3105965fc260..5a485489a1e2 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+@@ -147,7 +147,7 @@ static int cdn_dp_mailbox_validate_receive(struct cdn_dp_device *dp,
+ }
+ 
+ static int cdn_dp_mailbox_read_receive(struct cdn_dp_device *dp,
+-				       u8 *buff, u8 buff_size)
++				       u8 *buff, u16 buff_size)
+ {
+ 	u32 i;
+ 	int ret;
+-- 
+2.17.1
