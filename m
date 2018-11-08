@@ -1,97 +1,57 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v6 6/6] drm/bridge: add PHY initialization in mhdp8546
- driver.
-Date: Wed, 7 Nov 2018 12:49:30 +0100
-Message-ID: <df739067-b1a6-2eda-cb75-e008a0e02534@samsung.com>
-References: <1539034953-11274-1-git-send-email-dkos@cadence.com>
-        <CGME20181008214506epcas2p2cf110c14fcc340c42e1c6da4b03d8901@epcas2p2.samsung.com>
-        <1539034953-11274-7-git-send-email-dkos@cadence.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: add Gru Scarlet devicetrees
+Date: Wed, 7 Nov 2018 17:13:02 -0800
+Message-ID: <CA+ASDXO_G9NhmNUh_DVdJ+2S8GsKmHPS4YQwe3H9_SW-a-q6+w@mail.gmail.com>
+References: <20181101123639.15560-1-heiko@sntech.de>
+ <20181101123639.15560-2-heiko@sntech.de> <55055985.ydjp5xQfPl@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1539034953-11274-7-git-send-email-dkos@cadence.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Damian Kos <dkos@cadence.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Gustavo Padovan <gustavo@padovan.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Quentin Schulz <quentin.schulz@free-electrons.com>, Piotr Sroka <piotrs@cadence.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: rafalc@cadence.com, quentin.schulz@bootlin.com, jbergsagel@ti.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <55055985.ydjp5xQfPl@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 08.10.2018 23:42, Damian Kos wrote:
-> This patch modifies the mhdp8546 driver to initialize sd0801 "Torrent" PHY.
+On Tue, Nov 6, 2018 at 3:31 AM Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Am Donnerstag, 1. November 2018, 13:36:39 CET schrieb Heiko Stuebner:
+> > Gru-Scarlet is a tablet device using ChomeOS, dual-dsi display
+> > and Wacom touchscreen with stylus.
+> >
+> > There exist two variants in the market using different displays
+> > that are differentiated via their sku-id.
+> > The bootloader on them also determines the correct devicetree to
+> > load via the sku-id.
+> >
+> > So add a common scarlet dtsi and two minimal board devicetrees
+> > for the two display variants.
+> >
+> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 >
-> And removes the dbg_regs field from cdns_mhdp_device structure.
->
-> Signed-off-by: Damian Kos <dkos@cadence.com>
-> ---
->  drivers/gpu/drm/bridge/cdns-mhdp.c    | 9 +++++++++
->  include/drm/bridge/cdns-mhdp-common.h | 1 -
->  2 files changed, 9 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/bridge/cdns-mhdp.c b/drivers/gpu/drm/bridge/cdns-mhdp.c
-> index 48ac5cf1e031..caaf3c17d74f 100644
-> --- a/drivers/gpu/drm/bridge/cdns-mhdp.c
-> +++ b/drivers/gpu/drm/bridge/cdns-mhdp.c
-> @@ -17,6 +17,7 @@
->  #include <linux/of.h>
->  #include <linux/platform_device.h>
->  #include <linux/slab.h>
-> +#include <linux/phy/phy.h>
->  
->  #include <drm/drm_atomic_helper.h>
->  #include <drm/drm_bridge.h>
-> @@ -1220,6 +1221,12 @@ static int mhdp_probe(struct platform_device *pdev)
->  	if (IS_ERR(mhdp->regs))
->  		return PTR_ERR(mhdp->regs);
->  
-> +	mhdp->phy = devm_phy_get(&pdev->dev, "dpphy");
+> looks like I already applied patch1 in time for 4.20
+> (and forgot about it), but have now also applied this patch2
+> for 4.21 with Rob's review.
 
+Thanks, by the way! This worked well for me today, testing 4.20-rc1.
+Well, except for this silly bit, but that bug has been around (and
+more or less untested) for several releases:
 
-It is not documented in the bindings.
+https://lore.kernel.org/patchwork/patch/1008074/
+[PATCH] input: cros_ec_keyb: fix button/switch capability reports
 
+And this silly one that slipped into this merge window:
 
-> +	if (IS_ERR(mhdp->phy)) {
-> +		dev_err(&pdev->dev, "no PHY configured\n");
+https://lore.kernel.org/patchwork/patch/1008098/
+[PATCH 4.20] ath10k: don't assume 'vif' is non-NULL in flush()
 
-
-dev_err only if err != -EPROBE_DEFER
-
-
-> +		return PTR_ERR(mhdp->phy);
-> +	}
-> +
->  	platform_set_drvdata(pdev, mhdp);
->  
->  	ret = load_firmware(mhdp, FW_NAME, CDNS_MHDP_IMEM);
-> @@ -1291,6 +1298,8 @@ static int mhdp_probe(struct platform_device *pdev)
->  			   mhdp->dev, HDMI_CODEC_DRV_NAME, PLATFORM_DEVID_AUTO,
->  			   &codec_data, sizeof(codec_data));
->  
-> +	phy_init(mhdp->phy);
-> +
-
-
-Beside this:
-
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-
- --
-Regards
-Andrzej
-
-
->  	/* Enable VIF clock for stream 0 */
->  	cdns_mhdp_reg_read(mhdp, CDNS_DPTX_CAR, &resp);
->  	cdns_mhdp_reg_write(mhdp, CDNS_DPTX_CAR,
-> diff --git a/include/drm/bridge/cdns-mhdp-common.h b/include/drm/bridge/cdns-mhdp-common.h
-> index d4711091ff2b..1e8a44138ce2 100644
-> --- a/include/drm/bridge/cdns-mhdp-common.h
-> +++ b/include/drm/bridge/cdns-mhdp-common.h
-> @@ -553,7 +553,6 @@ struct cdns_mhdp_device {
->  	struct cdns_mhdp_sink	sink;
->  	struct cdns_mhdp_bridge	bridge;
->  	struct phy		*phy;
-> -	void __iomem		*dbg_regs;
->  
->  	struct video_info	video_info;
->  	struct drm_display_mode	mode;
+*Grumble*: one would think people would test their changes before
+submitting them, but apparently that's too much to ask.
