@@ -1,15 +1,15 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: ASoC: rockchip_pcm/i2s sound card regression on rk3288 (asus
  c201) (4.19+)
-Date: Sun, 11 Nov 2018 02:07:38 +0900
-Message-ID: <6bf2c789-b9ef-7649-0bd1-f0383b37134a@katsuster.net>
+Date: Sat, 10 Nov 2018 18:23:13 +0000
+Message-ID: <CAPCnQJmkup4R4uJXzkhZHpF7_Pe4h9hbJo0+Uf+os1S5Msadvg@mail.gmail.com>
 References: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA@mail.gmail.com>
+ <6bf2c789-b9ef-7649-0bd1-f0383b37134a@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <6bf2c789-b9ef-7649-0bd1-f0383b37134a-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,40 +19,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudCBhbmQgc29ycnkgZm9yIGJyZWFraW5n
-IHlvdXIgZW52aXJvbm1lbnQuCgpXb3VsZCB5b3UgdHJ5IHRvIGNoYW5nZSB0aGUgYXJndW1lbnRz
-IGFzIGZvbGxvd2luZwogICBkZXZtX3NuZF9kbWFlbmdpbmVfcGNtX3JlZ2lzdGVyKGRldiwgTlVM
-TCwgMCk7CmluIHJvY2tjaGlwX3BjbS5jPwoKSXMgaXQgd29yayBvbiB5b3VyIGVudmlyb25tZW50
-IG9yIG5vdD8gSWYgaXQgd29ya3MsIEkgdGhpbmsgaXQncwpiZXR0ZXIgdG8gcmVtb3ZlIHdob2xl
-IHNuZF9wY21faGFyZHdhcmUgYW5kIHNuZF9kbWFlbmdpbmVfcGNtX2NvbmZpZwpzZXR0aW5ncyBm
-cm9tIHJvY2tjaGlwX3BjbS5jIGluc3RlYWQgb2YgbXkgcHJldmlvdXMgYW5kIGN1cnJlbnQgcGF0
-Y2hlcy4KCkJlc3QgUmVnYXJkcywKLS0tCkthdHN1aGlybyBTdXp1a2kKCgpPbiAyMDE45bm0MTHm
-nIgxMeaXpSAwMTo0NSwgVXJqYSBSYW5uaWtrbyB3cm90ZToKPiBIaSwKPiAKPiBJJ20gaGVyZSBq
-dXN0IHRvIGxldCB5b3Uga25vdyB0aGF0IGNvbW1pdAo+IDc1YjMxMTkyZmU2YWQyMGI0MjI3NmIy
-MGVlM2JkZjE0OTMyMTZkNjMKPiAoIkFTb0M6IHJvY2tjaGlwOiBhZGQgY29uZmlnIGZvciByb2Nr
-Y2hpcCBkbWFlbmdpbmUgcGNtIHJlZ2lzdGVyIikKPiBicm9rZSB0aGUgZHJpdmVyIGZvciB0aGUg
-aW50ZXJuYWwgc291bmQgY2FyZCBvbiB0aGlzIGxhcHRvcCBhbmQgaQo+IHdvdWxkIGFzc3VtZSBt
-b3N0IHJrMzI4OCBkZXZpY2VzLCBhbmQgY29tbWl0Cj4gMjRkNjYzODMwMmI0ODMyOGE1OGMxMzQz
-OTI3NmQ0NTMxYWY0Y2E3ZAo+ICgiQVNvQzogcm9ja2NoaXA6IGFkZCBtaXNzaW5nIElOVEVSTEVB
-VkVEIFBDTSBhdHRyaWJ1dGUiKQo+IGRpZG50IHJlYWxseSBmaXggaXQuCj4gCj4gT24gNC4xOS4w
-IHRoZSBzZWNvbmQgY29tbWl0IGhhcyBub3QgYmVlbiBhcHBsaWVkIHlldCwgc28gdGhlIHJlc3Vs
-dCBpcwo+IEVJTlZBTCAoIkludmFsaWQgYXJndW1lbnQiKSB3aGVuZXZlciB5b3UgdHJ5IHRvIG9w
-ZW4gdGhlIFBDTQo+IGRldmljZSwgYW5kIGlmIEkgYXBwbHkgdGhhdCwgdGhlIHJlc3VsdCBpcyBh
-biBPb3BzIGluIHRoZSBQTDMzMCBETUEgZHJpdmVyLgo+IAo+IEl0J3MgYSBiaXQgZGlmZmljdWx0
-IHRvIGdldCB0aGF0IGxvZyBzaW5jZSB0aGUgbWFjaGluZSB1c3VhbGx5IGhhbmdzIHNvb24gYWZ0
-ZXIsCj4gYnV0IGkgdGhpbmsgaSBkaWQgc2VlIGl0IHNheSAiT29wcyAtIHVuZGVmaW5lZCBpbnN0
-cnVjdGlvbiIgc29tZXdoZXJlCj4gaW4gcGwzMzBfcHJlcF9zbGF2ZV9maWZvLgo+IAo+IElmIEkg
-cmV2ZXJ0IHRoZSB3aG9sZSB0aGluZywgc291bmQgd29ya3MgYWdhaW4uCj4gCj4gSSdtIHZlcnkg
-c3VzcGljaW91cyBvZiB0aGUgbGltaXRzIHNldCBpbiB0aGUgaHcgaW5mbyBhZGRlZCBpbiB0aGF0
-IGNvbW1pdCwKPiBzaW5jZSB3aXRob3V0IGl0IGFuZCBqdXN0IHBsYXlpbmcgc29tZSBhdWRpbyB0
-aGUgcGFyYW1ldGVycyBpbiBod19wYXJhbXMgZXhjZWVkCj4gdGhvc2UgbGltaXRzLCBidXQgaSB3
-b3VsZG50IGtub3cgd2hhdCB0aGV5J3JlIHN1cHBvc2VkIHRvIGJlLCBvciBpZgo+IHRoZSBwcm9i
-bGVtIGlzIGFjdHVhbGx5IGVsc2V3aGVyZS4KPiAKPiBUaGFua3MsCj4gVXJqYSBSYW5uaWtrbwo+
-IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Hi,
+
+On Sat, Nov 10, 2018 at 5:07 PM Katsuhiro Suzuki
+<katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org> wrote:
+>
+> Hello,
+>
+> Thank you for your comment and sorry for breaking your environment.
+To be honest, afaik you didnt really break it, more just showed how
+broken it already was.
+
+> Would you try to change the arguments as following
+>    devm_snd_dmaengine_pcm_register(dev, NULL, 0);
+> in rockchip_pcm.c?
+That is actually what i did to "revert" it since my kernel build tree
+isnt a git tree and doing that was faster,
+so I already did that.
+
+> Is it work on your environment or not? If it works, I think it's
+> better to remove whole snd_pcm_hardware and snd_dmaengine_pcm_config
+> settings from rockchip_pcm.c instead of my previous and current patches.
+Yes it works, whether that is the best course of action is up to you all.
+
+Thanks,
+Urja Rannikko
