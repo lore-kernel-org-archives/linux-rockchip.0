@@ -1,12 +1,15 @@
-From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: ASoC: rockchip_pcm/i2s sound card regression on rk3288 (asus c201)
- (4.19+)
-Date: Sat, 10 Nov 2018 18:45:35 +0200
-Message-ID: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA@mail.gmail.com>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: Re: ASoC: rockchip_pcm/i2s sound card regression on rk3288 (asus
+ c201) (4.19+)
+Date: Sun, 11 Nov 2018 02:07:38 +0900
+Message-ID: <6bf2c789-b9ef-7649-0bd1-f0383b37134a@katsuster.net>
+References: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,35 +19,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-I'm here just to let you know that commit
-75b31192fe6ad20b42276b20ee3bdf1493216d63
-("ASoC: rockchip: add config for rockchip dmaengine pcm register")
-broke the driver for the internal sound card on this laptop and i
-would assume most rk3288 devices, and commit
-24d6638302b48328a58c13439276d4531af4ca7d
-("ASoC: rockchip: add missing INTERLEAVED PCM attribute")
-didnt really fix it.
-
-On 4.19.0 the second commit has not been applied yet, so the result is
-EINVAL ("Invalid argument") whenever you try to open the PCM
-device, and if I apply that, the result is an Oops in the PL330 DMA driver.
-
-It's a bit difficult to get that log since the machine usually hangs soon after,
-but i think i did see it say "Oops - undefined instruction" somewhere
-in pl330_prep_slave_fifo.
-
-If I revert the whole thing, sound works again.
-
-I'm very suspicious of the limits set in the hw info added in that commit,
-since without it and just playing some audio the parameters in hw_params exceed
-those limits, but i wouldnt know what they're supposed to be, or if
-the problem is actually elsewhere.
-
-Thanks,
-Urja Rannikko
+SGVsbG8sCgpUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudCBhbmQgc29ycnkgZm9yIGJyZWFraW5n
+IHlvdXIgZW52aXJvbm1lbnQuCgpXb3VsZCB5b3UgdHJ5IHRvIGNoYW5nZSB0aGUgYXJndW1lbnRz
+IGFzIGZvbGxvd2luZwogICBkZXZtX3NuZF9kbWFlbmdpbmVfcGNtX3JlZ2lzdGVyKGRldiwgTlVM
+TCwgMCk7CmluIHJvY2tjaGlwX3BjbS5jPwoKSXMgaXQgd29yayBvbiB5b3VyIGVudmlyb25tZW50
+IG9yIG5vdD8gSWYgaXQgd29ya3MsIEkgdGhpbmsgaXQncwpiZXR0ZXIgdG8gcmVtb3ZlIHdob2xl
+IHNuZF9wY21faGFyZHdhcmUgYW5kIHNuZF9kbWFlbmdpbmVfcGNtX2NvbmZpZwpzZXR0aW5ncyBm
+cm9tIHJvY2tjaGlwX3BjbS5jIGluc3RlYWQgb2YgbXkgcHJldmlvdXMgYW5kIGN1cnJlbnQgcGF0
+Y2hlcy4KCkJlc3QgUmVnYXJkcywKLS0tCkthdHN1aGlybyBTdXp1a2kKCgpPbiAyMDE45bm0MTHm
+nIgxMeaXpSAwMTo0NSwgVXJqYSBSYW5uaWtrbyB3cm90ZToKPiBIaSwKPiAKPiBJJ20gaGVyZSBq
+dXN0IHRvIGxldCB5b3Uga25vdyB0aGF0IGNvbW1pdAo+IDc1YjMxMTkyZmU2YWQyMGI0MjI3NmIy
+MGVlM2JkZjE0OTMyMTZkNjMKPiAoIkFTb0M6IHJvY2tjaGlwOiBhZGQgY29uZmlnIGZvciByb2Nr
+Y2hpcCBkbWFlbmdpbmUgcGNtIHJlZ2lzdGVyIikKPiBicm9rZSB0aGUgZHJpdmVyIGZvciB0aGUg
+aW50ZXJuYWwgc291bmQgY2FyZCBvbiB0aGlzIGxhcHRvcCBhbmQgaQo+IHdvdWxkIGFzc3VtZSBt
+b3N0IHJrMzI4OCBkZXZpY2VzLCBhbmQgY29tbWl0Cj4gMjRkNjYzODMwMmI0ODMyOGE1OGMxMzQz
+OTI3NmQ0NTMxYWY0Y2E3ZAo+ICgiQVNvQzogcm9ja2NoaXA6IGFkZCBtaXNzaW5nIElOVEVSTEVB
+VkVEIFBDTSBhdHRyaWJ1dGUiKQo+IGRpZG50IHJlYWxseSBmaXggaXQuCj4gCj4gT24gNC4xOS4w
+IHRoZSBzZWNvbmQgY29tbWl0IGhhcyBub3QgYmVlbiBhcHBsaWVkIHlldCwgc28gdGhlIHJlc3Vs
+dCBpcwo+IEVJTlZBTCAoIkludmFsaWQgYXJndW1lbnQiKSB3aGVuZXZlciB5b3UgdHJ5IHRvIG9w
+ZW4gdGhlIFBDTQo+IGRldmljZSwgYW5kIGlmIEkgYXBwbHkgdGhhdCwgdGhlIHJlc3VsdCBpcyBh
+biBPb3BzIGluIHRoZSBQTDMzMCBETUEgZHJpdmVyLgo+IAo+IEl0J3MgYSBiaXQgZGlmZmljdWx0
+IHRvIGdldCB0aGF0IGxvZyBzaW5jZSB0aGUgbWFjaGluZSB1c3VhbGx5IGhhbmdzIHNvb24gYWZ0
+ZXIsCj4gYnV0IGkgdGhpbmsgaSBkaWQgc2VlIGl0IHNheSAiT29wcyAtIHVuZGVmaW5lZCBpbnN0
+cnVjdGlvbiIgc29tZXdoZXJlCj4gaW4gcGwzMzBfcHJlcF9zbGF2ZV9maWZvLgo+IAo+IElmIEkg
+cmV2ZXJ0IHRoZSB3aG9sZSB0aGluZywgc291bmQgd29ya3MgYWdhaW4uCj4gCj4gSSdtIHZlcnkg
+c3VzcGljaW91cyBvZiB0aGUgbGltaXRzIHNldCBpbiB0aGUgaHcgaW5mbyBhZGRlZCBpbiB0aGF0
+IGNvbW1pdCwKPiBzaW5jZSB3aXRob3V0IGl0IGFuZCBqdXN0IHBsYXlpbmcgc29tZSBhdWRpbyB0
+aGUgcGFyYW1ldGVycyBpbiBod19wYXJhbXMgZXhjZWVkCj4gdGhvc2UgbGltaXRzLCBidXQgaSB3
+b3VsZG50IGtub3cgd2hhdCB0aGV5J3JlIHN1cHBvc2VkIHRvIGJlLCBvciBpZgo+IHRoZSBwcm9i
+bGVtIGlzIGFjdHVhbGx5IGVsc2V3aGVyZS4KPiAKPiBUaGFua3MsCj4gVXJqYSBSYW5uaWtrbwo+
+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
