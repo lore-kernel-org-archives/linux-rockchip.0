@@ -1,64 +1,44 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2] i2c: rk3x: fix some typo
-Date: Fri, 9 Nov 2018 17:09:08 +0100
-Message-ID: <20181109160908.GJ1031@kunai>
-References: <20181102124535.24331-1-tiny.windzz@gmail.com>
- <19a28033-9241-1f4e-97cd-7c6648a73c6d@axentia.se>
- <CAEExFWtQrPD8hUn15Add-EuueCL5=Crb+yvDckWejG75BExGug@mail.gmail.com>
- <12637568.SqdzpTGmKQ@phil>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: [PATCH] ASoC: rockchip: add missing slave_config
+	setting for I2S
+Date: Sun, 11 Nov 2018 00:18:44 +0900
+Message-ID: <20181110151844.21362-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="SBT+cnFS/G3NVgv4"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <12637568.SqdzpTGmKQ@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Frank Lee <tiny.windzz@gmail.com>, peda@axentia.se, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+This patch adds missing prepare_sleve_config that is needed for
+setup the DMA slave channel for I2S.
 
---SBT+cnFS/G3NVgv4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+---
+ sound/soc/rockchip/rockchip_pcm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-On Tue, Nov 06, 2018 at 01:01:33PM +0100, Heiko Stuebner wrote:
-> Hi Yangtao, Peter,
->=20
-> Am Montag, 5. November 2018, 16:59:58 CET schrieb Frank Lee:
-> > I am sorry.
-> > -- Yangtao
->=20
-> If anything, it is me that should be sorry, as I did suggest the
-> patch description, including the new spelling error.
->=20
-> And it took me like the whole weekend to actually realize where the
-> Calculated / Calculates error was hiding ;-) .
-
-You guys are fun :) Anyhow, $subject is way too generic, that is the
-real culprit here. I don't mind empty descriptions, so you can basically
-move the message into the header.
-
-
---SBT+cnFS/G3NVgv4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlvlsSQACgkQFA3kzBSg
-KbZszw//YZ3I1+X30cth1s8LYLSktuM1/NVu7Rtej+O2j5wjVhGABg5nj/WsIII1
-9+bu4xZTrV+enypDy40JyCJp68d4BovOExFZJmckOXqCWwveKvjk6nLh1wqNRdfv
-sVlfuD8BRTG4J8Lx9Y4yZCUtOISZAHlndoh9YxdtyASFzXEVzaZ9jm95ulBqXAH4
-ll7LvsnYHhp5kxfbttWiUfsG5zkc5QgQ4IHBik6eh0p/F5Ls8ehoufgQfo+n6H8q
-vnaKf1DYvxQnHOB+CJUO1Ls53uisfoyFDCf8LfrHoEL2gqIq5qnp0+kBv/95YVE9
-Caj5om7c5lylGWnwr3CNyJwHbpBF7zBZSwkueoHIhRTYSye+64T1dpr+foRAy6Ns
-CbOYO6D41Ag8ZyRwMKwrcFDetkm27Zgm5FkxBLq6MEU2qf2iZN3oul3egDtxrZys
-Yke7Ng0FwCls59qZ1L4WMsiqtgQLwd5drfUYh60CNjkXTMx3+kaEbF0fqQpXgUs9
-CvKKsPobqfTW8a2FrfRMSNus7HWt7gOh6cYR/0RwQAQDjjh/+5QmtgBpJNb6kdhM
-WBB34KszLKkJaoF+EQjX0+EFfuy7lEd9MeVghbAG2Q19FONeDbtyGVbn5NOa9jXf
-JhB6k4ziR1YhAaZBiDRG9amrOAl5bkOxd5GjS4jSP32YuIaYCZs=
-=l63O
------END PGP SIGNATURE-----
-
---SBT+cnFS/G3NVgv4--
+diff --git a/sound/soc/rockchip/rockchip_pcm.c b/sound/soc/rockchip/rockchip_pcm.c
+index 9e7b5fa4cf59..4ac78d7a4b2d 100644
+--- a/sound/soc/rockchip/rockchip_pcm.c
++++ b/sound/soc/rockchip/rockchip_pcm.c
+@@ -33,6 +33,7 @@ static const struct snd_pcm_hardware snd_rockchip_hardware = {
+ 
+ static const struct snd_dmaengine_pcm_config rk_dmaengine_pcm_config = {
+ 	.pcm_hardware = &snd_rockchip_hardware,
++	.prepare_slave_config = snd_dmaengine_pcm_prepare_slave_config,
+ 	.prealloc_buffer_size = 32 * 1024,
+ };
+ 
+-- 
+2.19.1
