@@ -1,50 +1,67 @@
-From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: ASoC: rockchip_pcm/i2s sound card regression on rk3288 (asus
- c201) (4.19+)
-Date: Sat, 10 Nov 2018 18:23:13 +0000
-Message-ID: <CAPCnQJmkup4R4uJXzkhZHpF7_Pe4h9hbJo0+Uf+os1S5Msadvg@mail.gmail.com>
-References: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA@mail.gmail.com>
- <6bf2c789-b9ef-7649-0bd1-f0383b37134a@katsuster.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6bf2c789-b9ef-7649-0bd1-f0383b37134a-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 2/2] pinctrl: rockchip: add rk3188 routes to switch between nand and emmc
+Date: Sun, 11 Nov 2018 22:00:47 +0100
+Message-ID: <20181111210047.30375-2-heiko@sntech.de>
+References: <20181111210047.30375-1-heiko@sntech.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181111210047.30375-1-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linus.walleij@linaro.org
+Cc: heiko@sntech.de, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, david.wu@rock-chips.com, Heiko Stuebner <heiko.stuebner@bq.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From: Heiko Stuebner <heiko.stuebner@bq.com>
 
-On Sat, Nov 10, 2018 at 5:07 PM Katsuhiro Suzuki
-<katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org> wrote:
->
-> Hello,
->
-> Thank you for your comment and sorry for breaking your environment.
-To be honest, afaik you didnt really break it, more just showed how
-broken it already was.
+The rk3188 has pins that are not handled through the regular iomuxing
+for handling either nand-flash or an emmc and are set through only one
+specifal setting. So utilize the routing function to simply do that
+setting depending on one of the core nand/emmc signals that are actually
+regular pins handled through pinctrl.
 
-> Would you try to change the arguments as following
->    devm_snd_dmaengine_pcm_register(dev, NULL, 0);
-> in rockchip_pcm.c?
-That is actually what i did to "revert" it since my kernel build tree
-isnt a git tree and doing that was faster,
-so I already did that.
+Signed-off-by: Heiko Stuebner <heiko.stuebner@bq.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-> Is it work on your environment or not? If it works, I think it's
-> better to remove whole snd_pcm_hardware and snd_dmaengine_pcm_config
-> settings from rockchip_pcm.c instead of my previous and current patches.
-Yes it works, whether that is the best course of action is up to you all.
-
-Thanks,
-Urja Rannikko
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 246bf14c7f72..16bf21bf69a2 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -822,6 +822,26 @@ static struct rockchip_mux_route_data rk3128_mux_route_data[] = {
+ 	},
+ };
+ 
++static struct rockchip_mux_route_data rk3188_mux_route_data[] = {
++	{
++		/* non-iomuxed emmc/flash pins on flash-dqs */
++		.bank_num = 0,
++		.pin = 24,
++		.func = 1,
++		.route_location = ROCKCHIP_ROUTE_GRF,
++		.route_offset = 0xa0,
++		.route_val = BIT(16 + 11),
++	}, {
++		/* non-iomuxed emmc/flash pins on emmc-clk */
++		.bank_num = 0,
++		.pin = 24,
++		.func = 2,
++		.route_location = ROCKCHIP_ROUTE_GRF,
++		.route_offset = 0xa0,
++		.route_val = BIT(16 + 11) | BIT(11),
++	},
++};
++
+ static struct rockchip_mux_route_data rk3228_mux_route_data[] = {
+ 	{
+ 		/* pwm0-0 */
+@@ -3626,6 +3646,8 @@ static struct rockchip_pin_ctrl rk3188_pin_ctrl = {
+ 		.label			= "RK3188-GPIO",
+ 		.type			= RK3188,
+ 		.grf_mux_offset		= 0x60,
++		.iomux_routes		= rk3188_mux_route_data,
++		.niomux_routes		= ARRAY_SIZE(rk3188_mux_route_data),
+ 		.pull_calc_reg		= rk3188_calc_pull_reg_and_bit,
+ };
+ 
+-- 
+2.18.0
