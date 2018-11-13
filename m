@@ -1,17 +1,17 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: ASoC: rockchip_pcm/i2s sound card regression on rk3288 (asus
  c201) (4.19+)
-Date: Wed, 14 Nov 2018 01:35:16 +0900
-Message-ID: <2bd4c7d0-c62d-97db-86a2-d9bb67678a86@katsuster.net>
+Date: Tue, 13 Nov 2018 17:25:18 +0000
+Message-ID: <CAPCnQJnZZT5kzd5fmajnban53gJwdqufdBFcgT-Z=WZ0Ab5Kvw@mail.gmail.com>
 References: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA@mail.gmail.com>
  <6bf2c789-b9ef-7649-0bd1-f0383b37134a@katsuster.net>
  <CAPCnQJmkup4R4uJXzkhZHpF7_Pe4h9hbJo0+Uf+os1S5Msadvg@mail.gmail.com>
+ <2bd4c7d0-c62d-97db-86a2-d9bb67678a86@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPCnQJmkup4R4uJXzkhZHpF7_Pe4h9hbJo0+Uf+os1S5Msadvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <2bd4c7d0-c62d-97db-86a2-d9bb67678a86-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,43 +21,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpTb3JyeSB0byBkaXN0cnViIHlvdS4gSSBjYW4ndCByZXByb2R1Y2UgdGhlIHByb2Js
-ZW0gb24gbXkgZGV2aWNlLCBzbwpJIHdhbnQgdG8gY29uZmlybSB0aGUgY3VycmVudCBzaXR1YXRp
-b24uCgpRMS4KV2hpY2ggZGV2aWNlLXRyZWUgYXJlIHlvdSB1c2luZz8KClRoaXMgb25lPwogCmh0
-dHBzOi8vY2hyb21pdW0uZ29vZ2xlc291cmNlLmNvbS9jaHJvbWl1bW9zL3RoaXJkX3BhcnR5L2tl
-cm5lbC8rL3N0YWJpbGl6ZS03MjAyLkItY2hyb21lb3MtMy4xNC9hcmNoL2FybS9ib290L2R0cy9y
-azMyODgtc3BlZWR5LmR0cwoKSXQgc2VlbXMgaTJzIG5vZGUgZG9lcyBub3QgaGF2ZSBkbWEgcHJv
-cGVydGllcy4gSSBndWVzcyB0aGlzIGlzIHRoZQpyZWFzb24gb2YgT29wcy4KCgpRMi4KV2hpY2gg
-Y29tYmluYXRpb24gaXMgd29ya2luZyBvbiB5b3VyIGRldmljZT8gTXkgdW5kZXJzdGFuZGluZyBh
-cwpmb2xsb3dpbmc6Cgo0LjE5IDogV29ya2luZwo0LjE5ICsgKDEpIDogVW5rbm93bgo0LjE5ICsg
-KDIpIDogRUlOVkFMCjQuMTkgKyAoMSkgKyAoMikgOiBPb3BzIGFuZCBjcnVzaAo0LjE5ICsgKDMp
-IDogV29ya2luZz8/CgooMSk6IDc1YjMxMTkyZmU2YWQyMGI0MjI3NmIyMGVlM2JkZjE0OTMyMTZk
-NjMKICAgICAgIkFTb0M6IHJvY2tjaGlwOiBhZGQgY29uZmlnIGZvciByb2NrY2hpcCBkbWFlbmdp
-bmUgcGNtIHJlZ2lzdGVyIgooMik6IDI0ZDY2MzgzMDJiNDgzMjhhNThjMTM0MzkyNzZkNDUzMWFm
-NGNhN2QKICAgICAgIkFTb0M6IHJvY2tjaGlwOiBhZGQgbWlzc2luZyBJTlRFUkxFQVZFRCBQQ00g
-YXR0cmlidXRlIgooMyk6IENoYW5nZSBhcmd1bWVudHMgb2YgZGV2bV9zbmRfZG1hZW5naW5lX3Bj
-bV9yZWdpc3RlcgogICAgICB0byAoZGV2LCBOVUxMLCAwKQoKCkJlc3QgUmVnYXJkcywKLS0tCkth
-dHN1aGlybyBTdXp1a2kKCk9uIDIwMTjlubQxMeaciDEx5pelIDAzOjIzLCBVcmphIFJhbm5pa2tv
-IHdyb3RlOgo+IEhpLAo+IAo+IE9uIFNhdCwgTm92IDEwLCAyMDE4IGF0IDU6MDcgUE0gS2F0c3Vo
-aXJvIFN1enVraQo+IDxrYXRzdWhpcm9Aa2F0c3VzdGVyLm5ldD4gd3JvdGU6Cj4+Cj4+IEhlbGxv
-LAo+Pgo+PiBUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudCBhbmQgc29ycnkgZm9yIGJyZWFraW5n
-IHlvdXIgZW52aXJvbm1lbnQuCj4gVG8gYmUgaG9uZXN0LCBhZmFpayB5b3UgZGlkbnQgcmVhbGx5
-IGJyZWFrIGl0LCBtb3JlIGp1c3Qgc2hvd2VkIGhvdwo+IGJyb2tlbiBpdCBhbHJlYWR5IHdhcy4K
-PiAKPj4gV291bGQgeW91IHRyeSB0byBjaGFuZ2UgdGhlIGFyZ3VtZW50cyBhcyBmb2xsb3dpbmcK
-Pj4gICAgIGRldm1fc25kX2RtYWVuZ2luZV9wY21fcmVnaXN0ZXIoZGV2LCBOVUxMLCAwKTsKPj4g
-aW4gcm9ja2NoaXBfcGNtLmM/Cj4gVGhhdCBpcyBhY3R1YWxseSB3aGF0IGkgZGlkIHRvICJyZXZl
-cnQiIGl0IHNpbmNlIG15IGtlcm5lbCBidWlsZCB0cmVlCj4gaXNudCBhIGdpdCB0cmVlIGFuZCBk
-b2luZyB0aGF0IHdhcyBmYXN0ZXIsCj4gc28gSSBhbHJlYWR5IGRpZCB0aGF0Lgo+IAo+PiBJcyBp
-dCB3b3JrIG9uIHlvdXIgZW52aXJvbm1lbnQgb3Igbm90PyBJZiBpdCB3b3JrcywgSSB0aGluayBp
-dCdzCj4+IGJldHRlciB0byByZW1vdmUgd2hvbGUgc25kX3BjbV9oYXJkd2FyZSBhbmQgc25kX2Rt
-YWVuZ2luZV9wY21fY29uZmlnCj4+IHNldHRpbmdzIGZyb20gcm9ja2NoaXBfcGNtLmMgaW5zdGVh
-ZCBvZiBteSBwcmV2aW91cyBhbmQgY3VycmVudCBwYXRjaGVzLgo+IFllcyBpdCB3b3Jrcywgd2hl
-dGhlciB0aGF0IGlzIHRoZSBiZXN0IGNvdXJzZSBvZiBhY3Rpb24gaXMgdXAgdG8geW91IGFsbC4K
-PiAKPiBUaGFua3MsCj4gVXJqYSBSYW5uaWtrbwo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+On Tue, Nov 13, 2018 at 4:35 PM Katsuhiro Suzuki
+<katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org> wrote:
+>
+> Hello,
+>
+> Sorry to distrub you. I can't reproduce the problem on my device, so
+> I want to confirm the current situation.
+>
+> Q1.
+> Which device-tree are you using?
+>
+> This one?
+>
+> https://chromium.googlesource.com/chromiumos/third_party/kernel/+/stabilize-7202.B-chromeos-3.14/arch/arm/boot/dts/rk3288-speedy.dts
+>
+> It seems i2s node does not have dma properties. I guess this is the
+> reason of Oops.
+No, the one that comes with the mainline kernel slightly modified for
+things like HDMI, but have not touched the sound parts:
+https://github.com/torvalds/linux/blob/v4.19/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+for the sound:
+https://github.com/torvalds/linux/blob/v4.19/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
+
+Just for reference if you need to know the kernel config or something,
+i follow archlinux-arm's linux-armv7
+with my own patches added on top of them at:
+https://github.com/urjaman/arch-c201/tree/master/linux-c201
+
+The commit that it is at currently ("update to linux-4.19.0") is the
+one that has EINVAL.
+I'll push one with a patch doing the (3) below soon-ish.
+
+> Q2.
+> Which combination is working on your device? My understanding as
+> following:
+>
+> 4.19 : Working
+> 4.19 + (1) : Unknown
+> 4.19 + (2) : EINVAL
+> 4.19 + (1) + (2) : Oops and crush
+> 4.19 + (3) : Working??
+>
+> (1): 75b31192fe6ad20b42276b20ee3bdf1493216d63
+>       "ASoC: rockchip: add config for rockchip dmaengine pcm register"
+> (2): 24d6638302b48328a58c13439276d4531af4ca7d
+>       "ASoC: rockchip: add missing INTERLEAVED PCM attribute"
+> (3): Change arguments of devm_snd_dmaengine_pcm_register
+>       to (dev, NULL, 0)
+
+4.19 + (1) is 4.19, that is (1) is included in 4.19.0.
+
+So:
+4.19 : EINVAL
+4.19 + (2): Oops and eventually hang or crash
+4.19 + (3): Working (this tree included (2) but that is irrelevant
+since that info isnt used...)
+
+My last tested working before 4.19.0 was 4.18.8 (i update kinda rarely
+it seems), this doesnt include (1) and was working.
+
+Thanks,
+Urja Rannikko
