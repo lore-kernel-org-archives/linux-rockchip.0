@@ -1,45 +1,63 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH] ARM: dts: rockchip: Fix Rock2 vcc_flash name
-Date: Tue, 13 Nov 2018 15:24:13 +0000
-Message-ID: <20181113152413.11386-1-john@metanate.com>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: Re: ASoC: rockchip_pcm/i2s sound card regression on rk3288 (asus
+ c201) (4.19+)
+Date: Wed, 14 Nov 2018 01:35:16 +0900
+Message-ID: <2bd4c7d0-c62d-97db-86a2-d9bb67678a86@katsuster.net>
+References: <CAPCnQJk_Gd0wNHBdQR9RQb+yzh94HJgEpYfUum2+k_A4m5wfLA@mail.gmail.com>
+ <6bf2c789-b9ef-7649-0bd1-f0383b37134a@katsuster.net>
+ <CAPCnQJmkup4R4uJXzkhZHpF7_Pe4h9hbJo0+Uf+os1S5Msadvg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPCnQJmkup4R4uJXzkhZHpF7_Pe4h9hbJo0+Uf+os1S5Msadvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-There is no functional change from this, but it is confusing to find two
-copies of vcc_sys and no vcc_flash when looking in
-/sys/class/regulator/*/name.
-
-Signed-off-by: John Keeping <john@metanate.com>
----
- arch/arm/boot/dts/rk3288-rock2-som.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-index a610e592c148..b6bb58d9ff91 100644
---- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-+++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-@@ -25,7 +25,7 @@
- 
- 	vcc_flash: flash-regulator {
- 		compatible = "regulator-fixed";
--		regulator-name = "vcc_sys";
-+		regulator-name = "vcc_flash";
- 		regulator-min-microvolt = <1800000>;
- 		regulator-max-microvolt = <1800000>;
- 		startup-delay-us = <150>;
--- 
-2.19.1
+SGVsbG8sCgpTb3JyeSB0byBkaXN0cnViIHlvdS4gSSBjYW4ndCByZXByb2R1Y2UgdGhlIHByb2Js
+ZW0gb24gbXkgZGV2aWNlLCBzbwpJIHdhbnQgdG8gY29uZmlybSB0aGUgY3VycmVudCBzaXR1YXRp
+b24uCgpRMS4KV2hpY2ggZGV2aWNlLXRyZWUgYXJlIHlvdSB1c2luZz8KClRoaXMgb25lPwogCmh0
+dHBzOi8vY2hyb21pdW0uZ29vZ2xlc291cmNlLmNvbS9jaHJvbWl1bW9zL3RoaXJkX3BhcnR5L2tl
+cm5lbC8rL3N0YWJpbGl6ZS03MjAyLkItY2hyb21lb3MtMy4xNC9hcmNoL2FybS9ib290L2R0cy9y
+azMyODgtc3BlZWR5LmR0cwoKSXQgc2VlbXMgaTJzIG5vZGUgZG9lcyBub3QgaGF2ZSBkbWEgcHJv
+cGVydGllcy4gSSBndWVzcyB0aGlzIGlzIHRoZQpyZWFzb24gb2YgT29wcy4KCgpRMi4KV2hpY2gg
+Y29tYmluYXRpb24gaXMgd29ya2luZyBvbiB5b3VyIGRldmljZT8gTXkgdW5kZXJzdGFuZGluZyBh
+cwpmb2xsb3dpbmc6Cgo0LjE5IDogV29ya2luZwo0LjE5ICsgKDEpIDogVW5rbm93bgo0LjE5ICsg
+KDIpIDogRUlOVkFMCjQuMTkgKyAoMSkgKyAoMikgOiBPb3BzIGFuZCBjcnVzaAo0LjE5ICsgKDMp
+IDogV29ya2luZz8/CgooMSk6IDc1YjMxMTkyZmU2YWQyMGI0MjI3NmIyMGVlM2JkZjE0OTMyMTZk
+NjMKICAgICAgIkFTb0M6IHJvY2tjaGlwOiBhZGQgY29uZmlnIGZvciByb2NrY2hpcCBkbWFlbmdp
+bmUgcGNtIHJlZ2lzdGVyIgooMik6IDI0ZDY2MzgzMDJiNDgzMjhhNThjMTM0MzkyNzZkNDUzMWFm
+NGNhN2QKICAgICAgIkFTb0M6IHJvY2tjaGlwOiBhZGQgbWlzc2luZyBJTlRFUkxFQVZFRCBQQ00g
+YXR0cmlidXRlIgooMyk6IENoYW5nZSBhcmd1bWVudHMgb2YgZGV2bV9zbmRfZG1hZW5naW5lX3Bj
+bV9yZWdpc3RlcgogICAgICB0byAoZGV2LCBOVUxMLCAwKQoKCkJlc3QgUmVnYXJkcywKLS0tCkth
+dHN1aGlybyBTdXp1a2kKCk9uIDIwMTjlubQxMeaciDEx5pelIDAzOjIzLCBVcmphIFJhbm5pa2tv
+IHdyb3RlOgo+IEhpLAo+IAo+IE9uIFNhdCwgTm92IDEwLCAyMDE4IGF0IDU6MDcgUE0gS2F0c3Vo
+aXJvIFN1enVraQo+IDxrYXRzdWhpcm9Aa2F0c3VzdGVyLm5ldD4gd3JvdGU6Cj4+Cj4+IEhlbGxv
+LAo+Pgo+PiBUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudCBhbmQgc29ycnkgZm9yIGJyZWFraW5n
+IHlvdXIgZW52aXJvbm1lbnQuCj4gVG8gYmUgaG9uZXN0LCBhZmFpayB5b3UgZGlkbnQgcmVhbGx5
+IGJyZWFrIGl0LCBtb3JlIGp1c3Qgc2hvd2VkIGhvdwo+IGJyb2tlbiBpdCBhbHJlYWR5IHdhcy4K
+PiAKPj4gV291bGQgeW91IHRyeSB0byBjaGFuZ2UgdGhlIGFyZ3VtZW50cyBhcyBmb2xsb3dpbmcK
+Pj4gICAgIGRldm1fc25kX2RtYWVuZ2luZV9wY21fcmVnaXN0ZXIoZGV2LCBOVUxMLCAwKTsKPj4g
+aW4gcm9ja2NoaXBfcGNtLmM/Cj4gVGhhdCBpcyBhY3R1YWxseSB3aGF0IGkgZGlkIHRvICJyZXZl
+cnQiIGl0IHNpbmNlIG15IGtlcm5lbCBidWlsZCB0cmVlCj4gaXNudCBhIGdpdCB0cmVlIGFuZCBk
+b2luZyB0aGF0IHdhcyBmYXN0ZXIsCj4gc28gSSBhbHJlYWR5IGRpZCB0aGF0Lgo+IAo+PiBJcyBp
+dCB3b3JrIG9uIHlvdXIgZW52aXJvbm1lbnQgb3Igbm90PyBJZiBpdCB3b3JrcywgSSB0aGluayBp
+dCdzCj4+IGJldHRlciB0byByZW1vdmUgd2hvbGUgc25kX3BjbV9oYXJkd2FyZSBhbmQgc25kX2Rt
+YWVuZ2luZV9wY21fY29uZmlnCj4+IHNldHRpbmdzIGZyb20gcm9ja2NoaXBfcGNtLmMgaW5zdGVh
+ZCBvZiBteSBwcmV2aW91cyBhbmQgY3VycmVudCBwYXRjaGVzLgo+IFllcyBpdCB3b3Jrcywgd2hl
+dGhlciB0aGF0IGlzIHRoZSBiZXN0IGNvdXJzZSBvZiBhY3Rpb24gaXMgdXAgdG8geW91IGFsbC4K
+PiAKPiBUaGFua3MsCj4gVXJqYSBSYW5uaWtrbwo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
