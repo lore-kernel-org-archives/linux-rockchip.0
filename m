@@ -1,46 +1,60 @@
-From: Christoph Muellner <christoph.muellner@theobroma-systems.com>
-Subject: [PATCH] arm64: dts: rockchip: Fix PCIe reset polarity for
- rk3399-puma-haikou.
-Date: Tue, 13 Nov 2018 11:25:35 +0100
-Message-ID: <20181113102535.444-1-christoph.muellner@theobroma-systems.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 0/6] ARM: dts: rockchip: Add BQ Edison2 QuadCore tablet
+Date: Tue, 13 Nov 2018 14:05:53 +0100
+Message-ID: <20181113130559.31221-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Klaus Goger <klaus.goger@theobroma-systems.com>, Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Christoph Muellner <christoph.muellner@theobroma-systems.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch fixes the wrong polarity setting for the PCIe host driver's
-pre-reset pin for rk3399-puma-haikou. Without this patch link training
-will most likely fail.
+Add a devicetree for the BQ Edison2 tablet from MundoReader.
+Incidentially this is the device I wanted to run mainline Linux
+on when starting the Rockchip port - thinking, "this can't take
+thaaat long" ;-) - so I've come somewhat full-circle now.
 
-Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+With Lima it can also use gpu acceleration for gles2.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index 2dceeea29b83..1e6a71066c16 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -153,7 +153,7 @@
- };
- 
- &pcie0 {
--	ep-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_LOW>;
-+	ep-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
- 	num-lanes = <4>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie_clkreqn_cpm>;
+Notable absent peripherals are the touchscreen (ft5606),
+IT66121 hdmi bridge (internal panel is working nicely) and sound.
+All areas I'm still trying to get working.
+
+The series includes some smallish cleanups before the board
+with cleaning up the cpu-core nodes being a big part.
+
+And there are a number of driver-side additions pending that
+should get accepted before the board itself can go in.
+(bq24196, Innolux panel, tmp108-interrupt).
+
+
+Heiko Stuebner (6):
+  ARM: dts: rockchip: add #sound-dai-cells to Cortex-A9 i2s
+  ARM: dts: rockchip: convert rk3188 to opp-v2
+  ARM: dts: rockchip: add cpu-core resets for rk3188
+  ARM: dts: rockchip: add phandles to secondary cpu cores
+  ARM: dts: rockchip: update cpu supplies on rk3188
+  ARM: dts: rockchip: add BQ Edison 2 QC devicetree
+
+ .../devicetree/bindings/arm/rockchip.txt      |   4 +
+ arch/arm/boot/dts/Makefile                    |   1 +
+ arch/arm/boot/dts/rk3066a.dtsi                |   3 +
+ arch/arm/boot/dts/rk3188-bqedison2qc.dts      | 711 ++++++++++++++++++
+ arch/arm/boot/dts/rk3188-px3-evb.dts          |  14 +-
+ arch/arm/boot/dts/rk3188-radxarock.dts        |  14 +-
+ arch/arm/boot/dts/rk3188.dtsi                 |  66 +-
+ 7 files changed, 797 insertions(+), 16 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3188-bqedison2qc.dts
+
 -- 
-2.11.0
+2.18.0
