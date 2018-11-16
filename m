@@ -1,150 +1,46 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: [PATCH 09/10] ARM64: dts: rockchip: Add all CPUs in cooling maps
-Date: Fri, 16 Nov 2018 15:34:32 +0530
-Message-ID: <ee0bd5fb56652141e5ce23927b258b1779844af6.1542362530.git.viresh.kumar@linaro.org>
-References: <cover.1542362530.git.viresh.kumar@linaro.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3399: Add xin32k clk
+Date: Fri, 16 Nov 2018 08:00:56 -0800
+Message-ID: <CAD=FV=W7sYY5n609erPpTxux+0Efad_0YpPkoVZB14Kqm=baXA@mail.gmail.com>
+References: <20181116051719.23376-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1542362530.git.viresh.kumar@linaro.org>
+In-Reply-To: <20181116051719.23376-1-dbasehore@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, arm@kernel.org, Heiko Stuebner <heiko@sntech.de>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kernel.org, Tony Xie <tony.xie@rock-chips.com>, Chris <zyw@rock-chips.com>, ayaka@soulik.info, "nickey.yang" <nickey.yang@rock-chips.com>, =?UTF-8?B?6YOR6Iic5Lm+?= <zhengsq@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Brian Norris <briannorris@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Each CPU can (and does) participate in cooling down the system but the
-DT only captures a handful of them, normally CPU0, in the cooling maps.
-Things work by chance currently as under normal circumstances its the
-first CPU of each cluster which is used by the operating systems to
-probe the cooling devices. But as soon as this CPU ordering changes and
-any other CPU is used to bring up the cooling device, we will start
-seeing failures.
+Hi,
 
-Also the DT is rather incomplete when we list only one CPU in the
-cooling maps, as the hardware doesn't have any such limitations.
+On Thu, Nov 15, 2018 at 9:17 PM Derek Basehore <dbasehore@chromium.org> wrote:
+>
+> This adds the xin32k clock to the RK3399 CPU. Even though it's not
+> directly used, muxes will end up traversing the entire clk tree on
+> calls to determine_rate if it doesn't exist.
+>
+> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 7 +++++++
+>  1 file changed, 7 insertions(+)
 
-Update cooling maps to include all devices affected by individual trip
-points.
+nit: I would have expected ${SUBJECT} to have v2 in it somewhere.
 
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi          |  5 ++++-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi          | 15 ++++++++++++---
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts |  8 ++++++--
- arch/arm64/boot/dts/rockchip/rk3399.dtsi          | 12 +++++++++---
- 4 files changed, 31 insertions(+), 9 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index e1a33dd981e0..ecd7f19c3542 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -479,7 +479,10 @@
- 			cooling-maps {
- 				map0 {
- 					trip = <&target>;
--					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 					contribution = <4096>;
- 				};
- 			};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 9c24de1ba43c..7014d10b954c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -426,12 +426,18 @@
- 				map0 {
- 					trip = <&cpu_alert0>;
- 					cooling-device =
--					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				};
- 				map1 {
- 					trip = <&cpu_alert1>;
- 					cooling-device =
--					<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				};
- 			};
- 		};
-@@ -459,7 +465,10 @@
- 				map0 {
- 					trip = <&gpu_alert0>;
- 					cooling-device =
--					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				};
- 			};
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 2cc7c47d6a85..81e73103fa78 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -118,13 +118,17 @@
- 			map0 {
- 				trip = <&ppvar_bigcpu_alert>;
- 				cooling-device =
--					<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				contribution = <4096>;
- 			};
- 			map1 {
- 				trip = <&ppvar_bigcpu_alert>;
- 				cooling-device =
--					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+					<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				contribution = <1024>;
- 			};
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 99e7f65c1779..d4ebffc28953 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -770,13 +770,18 @@
- 				map0 {
- 					trip = <&cpu_alert0>;
- 					cooling-device =
--						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				};
- 				map1 {
- 					trip = <&cpu_alert1>;
- 					cooling-device =
- 						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
--						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+						<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				};
- 			};
- 		};
-@@ -804,7 +809,8 @@
- 				map0 {
- 					trip = <&gpu_alert0>;
- 					cooling-device =
--						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 				};
- 			};
- 		};
--- 
-2.19.1.568.g152ad8e3369a
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 99e7f65c1779..3d09472978f8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+
+Aww crud.  I was at the airport yesterday and so I didn't notice that
+you were touching rk3399, not rk3399-gru.  This belongs in the gru
+device tree file, not in the top level rk3399.  As you have written
+this it will break rk3399 boards that have an rk808 on them, AKA:
+
+arch/arm64/boot/dts/rockchip/rk3399-ficus.dts:
+arch/arm64/boot/dts/rockchip/rk3399-firefly.dts:
+arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi:
+arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:
+
+-Doug
