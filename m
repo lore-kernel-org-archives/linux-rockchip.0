@@ -1,79 +1,54 @@
-From: Randy Dunlap <rdunlap@infradead.org>
-Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
-Date: Fri, 16 Nov 2018 08:59:28 -0800
-Message-ID: <b54491c4-c119-6e83-93ae-d0df7fc165a1@infradead.org>
-References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
- <9655a12e-bd3d-aca2-6155-38924028eb5d@infradead.org>
- <CAFqt6zbLjtDab3Bz67trbnQRQdutvgA=YvAFhoW4bxsg657mGQ@mail.gmail.com>
- <20181116064049.GA5320@bombadil.infradead.org>
- <CAFqt6zbL1tu4VWtZ5Wz-BgbOS+M2GJziMj958_h_ri4Th3n9bQ@mail.gmail.com>
+From: "dbasehore ." <dbasehore@chromium.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3399: Add xin32k clk
+Date: Fri, 16 Nov 2018 09:39:09 -0800
+Message-ID: <CAGAzgsq7uF=E3dzhyCjK4gq09_UV_aZhQbyaTnz7yDY_ErQYKQ@mail.gmail.com>
+References: <20181116051719.23376-1-dbasehore@chromium.org> <CAD=FV=W7sYY5n609erPpTxux+0Efad_0YpPkoVZB14Kqm=baXA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqt6zbL1tu4VWtZ5Wz-BgbOS+M2GJziMj958_h_ri4Th3n9bQ@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <CAD=FV=W7sYY5n609erPpTxux+0Efad_0YpPkoVZB14Kqm=baXA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Souptick Joarder <jrdr.linux@gmail.com>, Matthew Wilcox <willy@infradead.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgr>
+To: Doug Anderson <dianders@chromium.org>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, =?UTF-8?B?6LCi5L+u6ZGr?= <tony.xie@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, ayaka@soulik.info, "nickey.yang" <nickey.yang@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, klaus.goger@theobroma-systems.com, Brian Norris <briannorris@chromium.org>, enric.balletbo@collabora.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, robh+dt@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/16/18 12:15 AM, Souptick Joarder wrote:
-> On Fri, Nov 16, 2018 at 12:11 PM Matthew Wilcox <willy@infradead.org> wrote:
->>
->> On Fri, Nov 16, 2018 at 11:00:30AM +0530, Souptick Joarder wrote:
->>> On Thu, Nov 15, 2018 at 11:44 PM Randy Dunlap <rdunlap@infradead.org> wrote:
->>>> On 11/15/18 7:45 AM, Souptick Joarder wrote:
->>>> What is the opposite of vm_insert_range() or even of vm_insert_page()?
->>>> or is there no need for that?
->>>
->>> There is no opposite function of vm_insert_range() / vm_insert_page().
->>> My understanding is, in case of any error, mmap handlers will return the
->>> err to user process and user space will decide the next action. So next
->>> time when mmap handler is getting invoked it will map from the beginning.
->>> Correct me if I am wrong.
->>
->> The opposite function, I suppose, is unmap_region().
->>
->>>> s/no./number/
->>>
->>> I didn't get it ??
->>
->> This is a 'sed' expression.  's' is the 'substitute' command; the /
->> is a separator, 'no.' is what you wrote, and 'number' is what Randy
->> is recommending instead.
-> 
-> Ok. Will change it in v2.
+On Fri, Nov 16, 2018 at 8:01 AM Doug Anderson <dianders@chromium.org> wrote:
+>
+> Hi,
+>
+> On Thu, Nov 15, 2018 at 9:17 PM Derek Basehore <dbasehore@chromium.org> wrote:
+> >
+> > This adds the xin32k clock to the RK3399 CPU. Even though it's not
+> > directly used, muxes will end up traversing the entire clk tree on
+> > calls to determine_rate if it doesn't exist.
+> >
+> > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+>
+> nit: I would have expected ${SUBJECT} to have v2 in it somewhere.
+>
+>
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > index 99e7f65c1779..3d09472978f8 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>
+> Aww crud.  I was at the airport yesterday and so I didn't notice that
+> you were touching rk3399, not rk3399-gru.  This belongs in the gru
+> device tree file, not in the top level rk3399.  As you have written
+> this it will break rk3399 boards that have an rk808 on them, AKA:
 
-Thanks.
+Should this be moved to the rk3399.dtsi file? The RK3399 assumes that
+this clk exists (same as the 24MHz clk which is in rk3399.dtsi). While
+it can function without it defined, it really shouldn't. We can just
+assign the existing labels in the dts files you pointed out.
 
->>>>> +     for (i = 0; i < page_count; i++) {
->>>>> +             ret = vm_insert_page(vma, uaddr, pages[i]);
->>>>> +             if (ret < 0)
->>>>> +                     return ret;
->>>>
->>>> For a non-trivial value of page_count:
->>>> Is it a problem if vm_insert_page() succeeds for several pages
->>>> and then fails?
->>>
->>> No, it will be considered as total failure and mmap handler will return
->>> the err to user space.
->>
->> I think what Randy means is "What happens to the inserted pages?" and
->> the answer is that mmap_region() jumps to the 'unmap_and_free_vma'
->> label, which is an accurate name.
-
-which says:
-
-	/* Undo any partial mapping done by a device driver. */
-	unmap_region(mm, vma, prev, vma->vm_start, vma->vm_end);
-
-and that is what I was missing.  Thanks.
-
-> Sorry for incorrect understanding of the question.
-
-No problem.
-
-
--- 
-~Randy
+>
+> arch/arm64/boot/dts/rockchip/rk3399-ficus.dts:
+> arch/arm64/boot/dts/rockchip/rk3399-firefly.dts:
+> arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi:
+> arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi:
+>
+> -Doug
