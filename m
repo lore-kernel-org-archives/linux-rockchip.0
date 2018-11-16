@@ -1,76 +1,116 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3399: Add xin32k clk
-Date: Fri, 16 Nov 2018 10:23:59 -0800
-Message-ID: <CAD=FV=XVDAjLt+VtxedHEma1FRrG0LuFZ2c7L5-MsdCZkgEcsw@mail.gmail.com>
-References: <20181116051719.23376-1-dbasehore@chromium.org>
- <CAD=FV=W7sYY5n609erPpTxux+0Efad_0YpPkoVZB14Kqm=baXA@mail.gmail.com>
- <CAGAzgsq7uF=E3dzhyCjK4gq09_UV_aZhQbyaTnz7yDY_ErQYKQ@mail.gmail.com>
+From: Mike Rapoport <rppt@linux.ibm.com>
+Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
+Date: Fri, 16 Nov 2018 10:28:37 -0800
+Message-ID: <20181116182836.GB17088@rapoport-lnx>
+References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGAzgsq7uF=E3dzhyCjK4gq09_UV_aZhQbyaTnz7yDY_ErQYKQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Derek Basehore <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "nickey.yang" <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Chris <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?B?6YOR6Iic5Lm+?= <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, linux@armlinux.org.uk, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Thu, Nov 15, 2018 at 09:15:30PM +0530, Souptick Joarder wrote:
+> Previouly drivers have their own way of mapping range of
+> kernel pages/memory into user vma and this was done by
+> invoking vm_insert_page() within a loop.
+> 
+> As this pattern is common across different drivers, it can
+> be generalized by creating a new function and use it across
+> the drivers.
+> 
+> vm_insert_range is the new API which will be used to map a
+> range of kernel memory/pages to user vma.
+> 
+> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> Reviewed-by: Matthew Wilcox <willy@infradead.org>
+> ---
+>  include/linux/mm_types.h |  3 +++
+>  mm/memory.c              | 28 ++++++++++++++++++++++++++++
+>  mm/nommu.c               |  7 +++++++
+>  3 files changed, 38 insertions(+)
+> 
+> diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
+> index 5ed8f62..15ae24f 100644
+> --- a/include/linux/mm_types.h
+> +++ b/include/linux/mm_types.h
+> @@ -523,6 +523,9 @@ extern void tlb_gather_mmu(struct mmu_gather *tlb, struct mm_struct *mm,
+>  extern void tlb_finish_mmu(struct mmu_gather *tlb,
+>  				unsigned long start, unsigned long end);
+> 
+> +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
+> +			struct page **pages, unsigned long page_count);
+> +
+>  static inline void init_tlb_flush_pending(struct mm_struct *mm)
+>  {
+>  	atomic_set(&mm->tlb_flush_pending, 0);
+> diff --git a/mm/memory.c b/mm/memory.c
+> index 15c417e..da904ed 100644
+> --- a/mm/memory.c
+> +++ b/mm/memory.c
+> @@ -1478,6 +1478,34 @@ static int insert_page(struct vm_area_struct *vma, unsigned long addr,
+>  }
+> 
+>  /**
+> + * vm_insert_range - insert range of kernel pages into user vma
+> + * @vma: user vma to map to
+> + * @addr: target user address of this page
+> + * @pages: pointer to array of source kernel pages
+> + * @page_count: no. of pages need to insert into user vma
+> + *
+> + * This allows drivers to insert range of kernel pages they've allocated
+> + * into a user vma. This is a generic function which drivers can use
+> + * rather than using their own way of mapping range of kernel pages into
+> + * user vma.
 
-On Fri, Nov 16, 2018 at 9:39 AM dbasehore . <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->
-> On Fri, Nov 16, 2018 at 8:01 AM Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> >
-> > Hi,
-> >
-> > On Thu, Nov 15, 2018 at 9:17 PM Derek Basehore <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > >
-> > > This adds the xin32k clock to the RK3399 CPU. Even though it's not
-> > > directly used, muxes will end up traversing the entire clk tree on
-> > > calls to determine_rate if it doesn't exist.
-> > >
-> > > Signed-off-by: Derek Basehore <dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > > ---
-> > >  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 7 +++++++
-> > >  1 file changed, 7 insertions(+)
-> >
-> > nit: I would have expected ${SUBJECT} to have v2 in it somewhere.
-> >
-> >
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > index 99e7f65c1779..3d09472978f8 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> >
-> > Aww crud.  I was at the airport yesterday and so I didn't notice that
-> > you were touching rk3399, not rk3399-gru.  This belongs in the gru
-> > device tree file, not in the top level rk3399.  As you have written
-> > this it will break rk3399 boards that have an rk808 on them, AKA:
->
-> Should this be moved to the rk3399.dtsi file? The RK3399 assumes that
-> this clk exists (same as the 24MHz clk which is in rk3399.dtsi). While
-> it can function without it defined, it really shouldn't. We can just
-> assign the existing labels in the dts files you pointed out.
+Please add the return value and context descriptions.
 
-No, it should be in the board files.  Each board may produce the 32k
-clock through a different component.  On gru-based devices we produce
-the 32k clock through a silego part.  On some other ones we produce it
-from rk808.
+> + */
+> +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
+> +			struct page **pages, unsigned long page_count)
+> +{
+> +	unsigned long uaddr = addr;
+> +	int ret = 0, i;
+> +
+> +	for (i = 0; i < page_count; i++) {
+> +		ret = vm_insert_page(vma, uaddr, pages[i]);
+> +		if (ret < 0)
+> +			return ret;
+> +		uaddr += PAGE_SIZE;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +/**
+>   * vm_insert_page - insert single page into user vma
+>   * @vma: user vma to map to
+>   * @addr: target user address of this page
+> diff --git a/mm/nommu.c b/mm/nommu.c
+> index 749276b..d6ef5c7 100644
+> --- a/mm/nommu.c
+> +++ b/mm/nommu.c
+> @@ -473,6 +473,13 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
+>  }
+>  EXPORT_SYMBOL(vm_insert_page);
+> 
+> +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
+> +			struct page **pages, unsigned long page_count)
+> +{
+> +	return -EINVAL;
+> +}
+> +EXPORT_SYMBOL(vm_insert_range);
+> +
+>  /*
+>   *  sys_brk() for the most part doesn't need the global kernel
+>   *  lock, except when an application is doing something nasty
+> -- 
+> 1.9.1
+> 
 
-Technically you could say that we don't _truly_ need to model this
-clock and we could have just inserted a dummy/fixed 32k clock in the
-clk-rk3399.c file.  ...but we did model it so that means we should
-probably model it semi-properly.
-
-If a given board forgets to provide a 32k clock then that's a bug for
-them like it was for us.
-
--Doug
+-- 
+Sincerely yours,
+Mike.
