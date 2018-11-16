@@ -1,69 +1,74 @@
-From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
-Date: Fri, 16 Nov 2018 13:45:48 +0530
-Message-ID: <CAFqt6zbL1tu4VWtZ5Wz-BgbOS+M2GJziMj958_h_ri4Th3n9bQ@mail.gmail.com>
-References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
-	<9655a12e-bd3d-aca2-6155-38924028eb5d@infradead.org>
-	<CAFqt6zbLjtDab3Bz67trbnQRQdutvgA=YvAFhoW4bxsg657mGQ@mail.gmail.com>
-	<20181116064049.GA5320@bombadil.infradead.org>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: [PATCH 0/6] ARM: dts: Fix incomplete cooling-maps
+Date: Fri, 16 Nov 2018 15:31:09 +0530
+Message-ID: <cover.1542362000.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20181116064049.GA5320-PfSpb0PWhxZc2C7mugBRk2EX/6BAtgUQ@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Cc: Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux-MM <linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Stephen Rothwell <sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org>, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, Rik van Riel <riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org>, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, Boris Ostrovsky <boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, Juergen Gross <jgross-IBi9RG/b67k@public.gmane.org>, Randy Dunlap <rdunlap-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, Kyungmin
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Li Yang <leoyang.li@nxp.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Shawn Guo <shawnguo@kernel.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 16, 2018 at 12:11 PM Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
->
-> On Fri, Nov 16, 2018 at 11:00:30AM +0530, Souptick Joarder wrote:
-> > On Thu, Nov 15, 2018 at 11:44 PM Randy Dunlap <rdunlap-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
-> > > On 11/15/18 7:45 AM, Souptick Joarder wrote:
-> > > What is the opposite of vm_insert_range() or even of vm_insert_page()?
-> > > or is there no need for that?
-> >
-> > There is no opposite function of vm_insert_range() / vm_insert_page().
-> > My understanding is, in case of any error, mmap handlers will return the
-> > err to user process and user space will decide the next action. So next
-> > time when mmap handler is getting invoked it will map from the beginning.
-> > Correct me if I am wrong.
->
-> The opposite function, I suppose, is unmap_region().
->
-> > > s/no./number/
-> >
-> > I didn't get it ??
->
-> This is a 'sed' expression.  's' is the 'substitute' command; the /
-> is a separator, 'no.' is what you wrote, and 'number' is what Randy
-> is recommending instead.
+Hello,
 
-Ok. Will change it in v2.
->
-> > > > +     for (i = 0; i < page_count; i++) {
-> > > > +             ret = vm_insert_page(vma, uaddr, pages[i]);
-> > > > +             if (ret < 0)
-> > > > +                     return ret;
-> > >
-> > > For a non-trivial value of page_count:
-> > > Is it a problem if vm_insert_page() succeeds for several pages
-> > > and then fails?
-> >
-> > No, it will be considered as total failure and mmap handler will return
-> > the err to user space.
->
-> I think what Randy means is "What happens to the inserted pages?" and
-> the answer is that mmap_region() jumps to the 'unmap_and_free_vma'
-> label, which is an accurate name.
+Now that the below commit are merged in mainline, we can start fixing
+the platform specific DT files:
 
-Sorry for incorrect understanding of the question.
+commit d7a4303b8d1f ("dt-bindings: thermal: Allow multiple devices to
+share cooling map")
+
+commit a92bab8919e3 ("of: thermal: Allow multiple devices to share
+cooling map")
+
+Each CPU can (and does) participate in cooling down the system but the
+DT only captures a handful of them, normally CPU0, in the cooling maps.
+Things work by chance currently as under normal circumstances its the
+first CPU of each cluster which is used by the operating systems to
+probe the cooling devices. But as soon as this CPU ordering changes and
+any other CPU is used to bring up the cooling device, we will start
+seeing failures.
+
+Also the DT is rather incomplete when we list only one CPU in the
+cooling maps, as the hardware doesn't have any such limitations.
+
+Update cooling maps to include all devices affected by individual trip
+points.
+
+--
+viresh
+
+Viresh Kumar (6):
+  ARM: dts: exynos: Add all CPUs in cooling maps
+  ARM: dts: ls1021a: Add all CPUs in cooling maps
+  ARM: dts: mt7623: Add all CPUs in cooling maps
+  ARM: dts: rockchip: Add all CPUs in cooling maps
+  ARM: dts: sunxi: Add all CPUs in cooling maps
+  ARM: dts: uniphier: Add all CPUs in cooling maps
+
+ arch/arm/boot/dts/exynos3250-artik5.dtsi      |   6 +-
+ arch/arm/boot/dts/exynos3250-monk.dts         |   6 +-
+ arch/arm/boot/dts/exynos3250-rinato.dts       |   6 +-
+ arch/arm/boot/dts/exynos4210-trats.dts        |   4 +-
+ arch/arm/boot/dts/exynos4210.dtsi             |   2 +-
+ .../boot/dts/exynos4412-itop-scp-core.dtsi    |   8 +-
+ arch/arm/boot/dts/exynos4412-midas.dtsi       |   8 +-
+ .../boot/dts/exynos4412-odroid-common.dtsi    |   8 +-
+ arch/arm/boot/dts/exynos4412-odroidu3.dts     |  17 ++-
+ arch/arm/boot/dts/exynos4412.dtsi             |   6 +-
+ arch/arm/boot/dts/exynos5250.dtsi             |   7 +-
+ arch/arm/boot/dts/exynos5422-odroidhc1.dts    | 106 +++++++++++-------
+ .../boot/dts/exynos5422-odroidxu3-common.dtsi | 106 +++++++++++-------
+ arch/arm/boot/dts/ls1021a.dtsi                |   2 +
+ arch/arm/boot/dts/mt7623.dtsi                 |  15 ++-
+ arch/arm/boot/dts/rk322x.dtsi                 |  10 +-
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts    |  24 ++--
+ arch/arm/boot/dts/rk3288.dtsi                 |  15 ++-
+ arch/arm/boot/dts/sun6i-a31.dtsi              |  11 +-
+ arch/arm/boot/dts/sun7i-a20.dtsi              |   5 +-
+ arch/arm/boot/dts/sun8i-a33.dtsi              |  16 ++-
+ arch/arm/boot/dts/uniphier-pxs2.dtsi          |   6 +-
+ 22 files changed, 250 insertions(+), 144 deletions(-)
+
+-- 
+2.19.1.568.g152ad8e3369a
