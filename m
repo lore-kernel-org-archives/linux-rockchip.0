@@ -1,31 +1,47 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 2/2] pinctrl: rockchip: add rk3188 routes to switch
- between nand and emmc
-Date: Sat, 17 Nov 2018 13:19:16 +0100
-Message-ID: <CACRpkdZO852hScSgCGQVspcLSCK99B5ofM9mNkGUj-uQHwfS+g@mail.gmail.com>
-References: <20181111210047.30375-1-heiko@sntech.de> <20181111210047.30375-2-heiko@sntech.de>
+From: Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
+Date: Sat, 17 Nov 2018 06:37:42 -0800
+Message-ID: <20181117143742.GB7861@bombadil.infradead.org>
+References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
+ <20181116182836.GB17088@rapoport-lnx>
+ <CAFqt6zYp0j999WXw9Jus0oZMjADQQkPfso8btv6du6L9CE3PXA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181111210047.30375-2-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, David Wu <david.wu@rock-chips.com>, heiko.stuebner@bq.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <CAFqt6zYp0j999WXw9Jus0oZMjADQQkPfso8btv6du6L9CE3PXA@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: Michal Hocko <mhocko@suse.com>, Heiko Stuebner <heiko@sntech.de>, Peter Zijlstra <peterz@infradead.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux1394-devel@lists.sourceforge.net, Marek Szyprowski <m.szyprowski@samsung.com>, Stephen Rothwell <sfr@canb.auug.org.au>, oleksandr_andrushchenko@epam.com, joro@8bytes.org, Russell King - ARM Linux <linux@armlinux.org.uk>, iommu@lists.linux-foundation.org, rppt@linux.ibm.com, airlied@linux.ie, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, treding@nvidia.com, linux-media@vger.kernel.org, Kees Cook <keescook@chromium.org>, pawel@osciak.com, Rik van Riel <riel@surriel.com>, rppt@linux.vnet.ibm.com, Boris Ostrovsky <boris.ostrovsky@oracle.com>, mchehab@kernel.org, iamjoonsoo.kim@lge.com, vbabka@suse.cz, Juergen Gross <jgross@suse.com>, hjc@rock-chi
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Nov 11, 2018 at 10:01 PM Heiko Stuebner <heiko@sntech.de> wrote:
+On Sat, Nov 17, 2018 at 12:26:38PM +0530, Souptick Joarder wrote:
+> On Fri, Nov 16, 2018 at 11:59 PM Mike Rapoport <rppt@linux.ibm.com> wrote:
+> > > + * vm_insert_range - insert range of kernel pages into user vma
+> > > + * @vma: user vma to map to
+> > > + * @addr: target user address of this page
+> > > + * @pages: pointer to array of source kernel pages
+> > > + * @page_count: no. of pages need to insert into user vma
+> > > + *
+> > > + * This allows drivers to insert range of kernel pages they've allocated
+> > > + * into a user vma. This is a generic function which drivers can use
+> > > + * rather than using their own way of mapping range of kernel pages into
+> > > + * user vma.
+> >
+> > Please add the return value and context descriptions.
+> >
+> 
+> Sure I will wait for some time to get additional review comments and
+> add all of those requested changes in v2.
 
-> From: Heiko Stuebner <heiko.stuebner@bq.com>
->
-> The rk3188 has pins that are not handled through the regular iomuxing
-> for handling either nand-flash or an emmc and are set through only one
-> specifal setting. So utilize the routing function to simply do that
-> setting depending on one of the core nand/emmc signals that are actually
-> regular pins handled through pinctrl.
->
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@bq.com>
-
-Patch applied.
-
-Yours,
-Linus Walleij
+You could send your proposed wording now which might remove the need
+for a v3 if we end up arguing about the wording.
