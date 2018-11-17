@@ -1,25 +1,12 @@
-From: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH] drm/rockchip: support hwc layer
-Date: Sun, 18 Nov 2018 00:58:16 +0800
-Message-ID: <20181117165816.26152-1-ayaka@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Randy Li <ayaka@soulik.info>
+Subject: [PATCH v2] drm/rockchip: support hwc layer
+Date: Sun, 18 Nov 2018 01:27:02 +0800
+Message-ID: <20181117172702.16926-1-ayaka@soulik.info>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, linux-rockchip@lists.infradead.org, Randy Li <ayaka@soulik.info>
 List-Id: linux-rockchip.vger.kernel.org
-
-From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 
 The Windows 2/3 or a RGB UI layer is a high performance flexibly
 plane. It is too waste to use it as a cursor plane.
@@ -28,34 +15,21 @@ I have verified this patch with weston git version, I am not
 sure whether X would meet with this patch. As the previous
 author is gone, I can't confirm this problem with him.
 
-Signed-off-by: Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Also the weston only use the only two achors with a same
+size and pixel format, I need more users to verify this
+patch.
+
+Signed-off-by: Randy Li <ayaka@soulik.info>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 30 +++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 42 ++++++++++++++++++++++++++---
- 2 files changed, 68 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 20 +++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 44 ++++++++++++++++++++++++++---
+ 2 files changed, 60 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 9301006329e8..1103049da91f 100644
+index 51bdc55b4b9c..1fa88000fab7 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -223,6 +223,16 @@ static bool has_rb_swapped(uint32_t format)
- 	}
- }
- 
-+static bool is_yuv_10bit (uint32_t format)
-+{
-+	switch (format) {
-+	case DRM_FORMAT_NV12_10LE40:
-+		return true;
-+	default:
-+		return false;
-+	};
-+}
-+
- static enum vop_data_format vop_convert_format(uint32_t format)
- {
- 	switch (format) {
-@@ -755,6 +765,26 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+@@ -765,6 +765,26 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
  
  	dsp_info = (drm_rect_height(dest) - 1) << 16;
  	dsp_info |= (drm_rect_width(dest) - 1) & 0xffff;
@@ -83,7 +57,7 @@ index 9301006329e8..1103049da91f 100644
  	dsp_stx = dest->x1 + crtc->mode.htotal - crtc->mode.hsync_start;
  	dsp_sty = dest->y1 + crtc->mode.vtotal - crtc->mode.vsync_start;
 diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 6370f7d33273..0f7809511388 100644
+index 6370f7d33273..6eba9ef78865 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
 @@ -64,6 +64,15 @@ static const uint32_t formats_win_lite[] = {
@@ -146,25 +120,28 @@ index 6370f7d33273..0f7809511388 100644
  };
  
  static const struct vop_output rk3368_output = {
-@@ -655,7 +683,10 @@ static const struct vop_win_data rk3399_vop_lit_win_data[] = {
+@@ -654,8 +682,13 @@ static const struct vop_data rk3399_vop_big = {
+ static const struct vop_win_data rk3399_vop_lit_win_data[] = {
  	{ .base = 0x00, .phy = &rk3288_win01_data,
  	  .type = DRM_PLANE_TYPE_PRIMARY },
++	{ .phy = NULL},
  	{ .base = 0x00, .phy = &rk3368_win23_data,
 -	  .type = DRM_PLANE_TYPE_CURSOR},
 +	  .type = DRM_PLANE_TYPE_OVERLAY},
++	{ .phy = NULL},
 +	{ .base = 0x00, .phy = &rk3288_winhwc_data,
 +	  .type = DRM_PLANE_TYPE_CURSOR,
 +	},
  };
  
  static const struct vop_data rk3399_vop_lit = {
-@@ -737,7 +768,10 @@ static const struct vop_win_data rk3328_vop_win_data[] = {
+@@ -737,7 +770,10 @@ static const struct vop_win_data rk3328_vop_win_data[] = {
  	{ .base = 0x1d0, .phy = &rk3288_win01_data,
  	  .type = DRM_PLANE_TYPE_OVERLAY },
  	{ .base = 0x2d0, .phy = &rk3288_win01_data,
 -	  .type = DRM_PLANE_TYPE_CURSOR },
 +	  .type = DRM_PLANE_TYPE_OVERLAY },
-+	{ .base = 0x00, .phy = &rk3288_winhwc_data,
++	{ .base = 0x3d0, .phy = &rk3288_winhwc_data,
 +	  .type = DRM_PLANE_TYPE_CURSOR,
 +	},
  };
