@@ -1,139 +1,353 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [regression, bisected] rockchip rk3399 hdmi audio MIA
-Date: Mon, 19 Nov 2018 19:39:40 +0100
-Message-ID: <CAAMcf8A4izTeZ3_3HNj__v2SSb9YMK3OVS6UTXoKWNz1rujoiA@mail.gmail.com>
-References: <CAAMcf8Anc1Y3Kc6yQUydZs-8o3pYYkcyinbvpYCvdov59SUs9g@mail.gmail.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v3] drm/rockchip: update cursors asynchronously through atomic.
+Date: Mon, 19 Nov 2018 17:08:05 -0200
+Message-ID: <20181119190805.19139-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAAMcf8Anc1Y3Kc6yQUydZs-8o3pYYkcyinbvpYCvdov59SUs9g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>
+Cc: linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU3VuLCBTZXAgMjMsIDIwMTggYXQgNTo1OSBQTSBWaWNlbnRlIEJlcmdhcyA8dmljZW5jYkBn
-bWFpbC5jb20+IHdyb3RlOgo+Cj4gSGksCj4gZnJvbSB2NC4xOCB0byB2NC4xOS1yYzEgdGhlcmUg
-aXMgdGhpcyBjb21taXQKPiAgIDc1YjMxMTkyZmU2YWQyMGI0MjI3NmIyMGVlM2JkZjE0OTMyMTZk
-NjMKPiAgIEFTb0M6IHJvY2tjaGlwOiBhZGQgY29uZmlnIGZvciByb2NrY2hpcCBkbWFlbmdpbmUg
-cGNtIHJlZ2lzdGVyCj4gd2hpY2ggYnJva2UgaGRtaSBhdWRpbyBvbiByb2NrY2hpcC4KPiBOb3cg
-dGVzdGluZyB2NC4xOS1yYzQgd2hpY2ggdGhpcyBzaW5nbGUgY29tbWl0IHJldmVydGVkIGFuZCBp
-dCB3b3JrcyBvay4KPgo+IEFzIHNob3duIGluIGJlbG93IGxvZ3MsIHRoZXJlIGlzIG5vIGV2aWRl
-bmNlIG9mIHRoZSBicmVha2FnZSBmcm9tIGRtZXNnLgo+ICJhcGxheSAtbCIgYWxzbyBzaG93cyBu
-byBpc3N1ZXMsIGJ1dCBwdWxzZWF1ZGlvIGRvZXMgbm90IGRldGVjdCB0aGUKPiBzb3VuZCBjYXJk
-Lgo+IFdoZW4gdGVzdGluZyB3aXRoICJhcGxheSAtdnYgKi53YXYiIGl0IHdvcmtzIGZpbmUgd2l0
-aCB0aGUgY29tbWl0Cj4gcmV2ZXJ0ZWQsIGJ1dCBvdGhlcndpc2UsIGFwbGF5IGp1c3QgdXNlcyBw
-dWxzZWF1ZGlvJ3MgZHVtbXkgb3V0cHV0Lgo+Cj4gUmVnYXJkcywKPiAgIFZpY2Vuw6cuCj4KPiAj
-IyMjIyMjIyMjIyMjIyMjIyMjIwo+ICMgdjQuMTktcmM0IGFzIGlzOiAjCj4gIyMjIyMjIyMjIyMj
-IyMjIyMjIyMKPiAkIGRtZXNnIHwgZmdyZXAgLWkgLWUgaGRtaSAtZSBhdWRpbyAtZSBzb3VuZCAt
-ZSBhbHNhIC1lIGkycwo+ICAgQWR2YW5jZWQgTGludXggU291bmQgQXJjaGl0ZWN0dXJlIERyaXZl
-ciBJbml0aWFsaXplZC4KPiAgIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogTGlua2Vk
-IGFzIGEgY29uc3VtZXIgdG8gZmY5NDAwMDAuaGRtaQo+ICAgcm9ja2NoaXAtZHJtIGRpc3BsYXkt
-c3Vic3lzdGVtOiBmYWlsZWQgdG8gYmluZCBmZjk0MDAwMC5oZG1pIChvcHMKPiAweGZmZmYwMDAw
-MDg5ZGRiZDApOiAtNTE3Cj4gICBkd2hkbWktcm9ja2NoaXAgZmY5NDAwMDAuaGRtaTogRGV0ZWN0
-ZWQgSERNSSBUWCBjb250cm9sbGVyIHYyLjExYQo+IHdpdGggSERDUCAoRFdDIEhETUkgMi4wIFRY
-IFBIWSkKPiAgIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY5NDAwMDAu
-aGRtaSAob3BzIDB4ZmZmZjAwMDAwODlkZGJkMCkKPiAgIGFzb2Mtc2ltcGxlLWNhcmQgaGRtaS1z
-b3VuZDogaTJzLWhpZmkgPC0+IGZmOGEwMDAwLmkycyBtYXBwaW5nIG9rCj4gICBhc29jLXNpbXBs
-ZS1jYXJkIGhkbWktc291bmQ6IEFTb0M6IG5vIERNSSB2ZW5kb3IgbmFtZSEKPiAgIEFMU0EgZGV2
-aWNlIGxpc3Q6Cj4gICAgICMwOiBoZG1pLXNvdW5kCj4KPiAkIGFwbGF5IC1sCj4gKioqKiBMaXN0
-IG9mIFBMQVlCQUNLIEhhcmR3YXJlIERldmljZXMgKioqKgo+IGNhcmQgMDogaGRtaXNvdW5kIFto
-ZG1pLXNvdW5kXSwgZGV2aWNlIDA6IGZmOGEwMDAwLmkycy1pMnMtaGlmaSBpMnMtaGlmaS0wIFtd
-Cj4gICBTdWJkZXZpY2VzOiAxLzEKPiAgIFN1YmRldmljZSAjMDogc3ViZGV2aWNlICMwCj4KPiAk
-IHBhY3RsIGxpc3Qgc2lua3MKPiBTaW5rICMwCj4gICBEZXNjcmlwdGlvbjogRHVtbXkgT3V0cHV0
-Cj4KPiAjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMKPiAjIHY0LjE5LXJj
-NCB3aXRoIHRoZSBjb21taXQgcmV2ZXJ0ZWQ6ICMKPiAjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
-IyMjIyMjIyMjIyMjIyMKPiAkIGRtZXNnIHwgZmdyZXAgLWkgLWUgaGRtaSAtZSBhdWRpbyAtZSBz
-b3VuZCAtZSBhbHNhIC1lIGkycwo+ICAgQWR2YW5jZWQgTGludXggU291bmQgQXJjaGl0ZWN0dXJl
-IERyaXZlciBJbml0aWFsaXplZC4KPiAgIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTog
-TGlua2VkIGFzIGEgY29uc3VtZXIgdG8gZmY5NDAwMDAuaGRtaQo+ICAgcm9ja2NoaXAtZHJtIGRp
-c3BsYXktc3Vic3lzdGVtOiBmYWlsZWQgdG8gYmluZCBmZjk0MDAwMC5oZG1pIChvcHMKPiAweGZm
-ZmYwMDAwMDhhM2UwMjgpOiAtNTE3Cj4gICBkd2hkbWktcm9ja2NoaXAgZmY5NDAwMDAuaGRtaTog
-RGV0ZWN0ZWQgSERNSSBUWCBjb250cm9sbGVyIHYyLjExYQo+IHdpdGggSERDUCAoRFdDIEhETUkg
-Mi4wIFRYIFBIWSkKPiAgIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY5
-NDAwMDAuaGRtaSAob3BzIDB4ZmZmZjAwMDAwOGEzZTAyOCkKPiAgIGFzb2Mtc2ltcGxlLWNhcmQg
-aGRtaS1zb3VuZDogaTJzLWhpZmkgPC0+IGZmOGEwMDAwLmkycyBtYXBwaW5nIG9rCj4gICBhc29j
-LXNpbXBsZS1jYXJkIGhkbWktc291bmQ6IEFTb0M6IG5vIERNSSB2ZW5kb3IgbmFtZSEKPiAgIEFM
-U0EgZGV2aWNlIGxpc3Q6Cj4gICAgICMwOiBoZG1pLXNvdW5kCj4KPiAkIGFwbGF5IC1sCj4gKioq
-KiBMaXN0IG9mIFBMQVlCQUNLIEhhcmR3YXJlIERldmljZXMgKioqKgo+IGNhcmQgMDogaGRtaXNv
-dW5kIFtoZG1pLXNvdW5kXSwgZGV2aWNlIDA6IGZmOGEwMDAwLmkycy1pMnMtaGlmaSBpMnMtaGlm
-aS0wIFtdCj4gICBTdWJkZXZpY2VzOiAxLzEKPiAgIFN1YmRldmljZSAjMDogc3ViZGV2aWNlICMw
-Cj4KPiAkIHBhY3RsIGxpc3Qgc2lua3MKPiBTaW5rICMwCj4gICBOYW1lOiBhbHNhX291dHB1dC5w
-bGF0Zm9ybS1oZG1pLXNvdW5kLnN0ZXJlby1mYWxsYmFjawo+ICAgRGVzY3JpcHRpb246IEJ1aWx0
-LWluIEF1ZGlvIFN0ZXJlbwo+ICAgRHJpdmVyOiBtb2R1bGUtYWxzYS1jYXJkLmMKCkhpLAp3aXRo
-IHY0LjIwLXJjMyB0aGUgc2l0dWF0aW9uIGhhZCBhIHNsaWdodCBpbXByb3ZlbWVudDogbm93CnRo
-ZSBzb3VuZCBjYXJkIGlzIGRldGVjdGVkLiBCdXQgc2FkbHksIHN0aWxsIG5vIHNvdW5kLgpBbnkg
-YXBwbGljYXRpb24gdHJ5aW5nIHRvIHBsYXkgYSBzb3VuZCBoYW5ncyBmb3JldmVyLgoKSGVyZSBp
-cyB0aGUgcmVsZXZhbnQgaW5mb3JtYXRpb246CiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
-IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjCiMgd2l0aAojIDc1YjMxMTkyZmU2YWQyMGI0
-MjI3NmIyMGVlM2JkZjE0OTMyMTZkNjMKIyBhbmQKIyAyNGQ2NjM4MzAyYjQ4MzI4YTU4YzEzNDM5
-Mjc2ZDQ1MzFhZjRjYTdkCiMgQVBQTElFRAojIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
-IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIwokIGRtZXNnIHwgZmdyZXAgLWkgLWUgaGRtaSAt
-ZSBhdWRpbyAtZSBzb3VuZCAtZSBhbHNhIC1lIGkycwpbICAgIDAuMjEwODk2XSBBZHZhbmNlZCBM
-aW51eCBTb3VuZCBBcmNoaXRlY3R1cmUgRHJpdmVyIEluaXRpYWxpemVkLgpbICAgIDguNzg1OTMx
-XSBBTFNBIGRldmljZSBsaXN0OgpbICAgIDguNzg2MTk5XSAgIE5vIHNvdW5kY2FyZHMgZm91bmQu
-ClsgICAyNC41Njc2MjRdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogTGlua2VkIGFz
-IGEgY29uc3VtZXIgdG8KZmY5NDAwMDAuaGRtaQpbICAgMjQuNTczODk0XSBkd2hkbWktcm9ja2No
-aXAgZmY5NDAwMDAuaGRtaTogRGV0ZWN0ZWQgSERNSSBUWApjb250cm9sbGVyIHYyLjExYSB3aXRo
-IEhEQ1AgKERXQyBIRE1JIDIuMCBUWCBQSFkpClsgICAyNC41NzU0NzRdIHJvY2tjaGlwLWRybSBk
-aXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY5NDAwMDAuaGRtaQoob3BzIGR3X2hkbWlfcm9ja2No
-aXBfb3BzIFtyb2NrY2hpcGRybV0pClsgICAyNC43NTA5NjJdIGFzb2Mtc2ltcGxlLWNhcmQgaGRt
-aS1zb3VuZDogaTJzLWhpZmkgPC0+IGZmOGEwMDAwLmkycyBtYXBwaW5nIG9rClsgICAyNC43NTE5
-MTVdIGFzb2Mtc2ltcGxlLWNhcmQgaGRtaS1zb3VuZDogQVNvQzogbm8gRE1JIHZlbmRvciBuYW1l
-IQokIGFwbGF5IC12dnZ2dnZ2diBOb2lzZS53YXYKUGxheWluZyBXQVZFICdOb2lzZS53YXYnIDog
-U2lnbmVkIDE2IGJpdCBMaXR0bGUgRW5kaWFuLCBSYXRlIDQ4MDAwIEh6LCBNb25vCkFMU0EgPC0+
-IFB1bHNlQXVkaW8gUENNIEkvTyBQbHVnaW4KSXRzIHNldHVwIGlzOgogIHN0cmVhbSAgICAgICA6
-IFBMQVlCQUNLCiAgYWNjZXNzICAgICAgIDogUldfSU5URVJMRUFWRUQKICBmb3JtYXQgICAgICAg
-OiBTMTZfTEUKICBzdWJmb3JtYXQgICAgOiBTVEQKICBjaGFubmVscyAgICAgOiAxCiAgcmF0ZSAg
-ICAgICAgIDogNDgwMDAKICBleGFjdCByYXRlICAgOiA0ODAwMCAoNDgwMDAvMSkKICBtc2JpdHMg
-ICAgICAgOiAxNgogIGJ1ZmZlcl9zaXplICA6IDI0MDAwCiAgcGVyaW9kX3NpemUgIDogNjAwMAog
-IHBlcmlvZF90aW1lICA6IDEyNTAwMAogIHRzdGFtcF9tb2RlICA6IE5PTkUKICB0c3RhbXBfdHlw
-ZSAgOiBHRVRUSU1FT0ZEQVkKICBwZXJpb2Rfc3RlcCAgOiAxCiAgYXZhaWxfbWluICAgIDogNjAw
-MAogIHBlcmlvZF9ldmVudCA6IDAKICBzdGFydF90aHJlc2hvbGQgIDogMjQwMDAKICBzdG9wX3Ro
-cmVzaG9sZCAgIDogMjQwMDAKICBzaWxlbmNlX3RocmVzaG9sZDogMAogIHNpbGVuY2Vfc2l6ZSA6
-IDAKICBib3VuZGFyeSAgICAgOiA2NzU1Mzk5NDQxMDU1NzQ0MDAwCiMgTm90aGluZyBoYXBwZW5z
-LCBtYW51YWwgaW50ZXJydXB0IHdpdGggXkMuCkFib3J0ZWQgYnkgc2lnbmFsIEludGVycnVwdC4u
-LgphcGxheTogcGNtX3dyaXRlOjIwNTM6IHdyaXRlIGVycm9yOiBJbnRlcnJ1cHRlZCBzeXN0ZW0g
-Y2FsbAoKCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
-IyMjIyMjIyMjCiMgd2l0aAojIDc1YjMxMTkyZmU2YWQyMGI0MjI3NmIyMGVlM2JkZjE0OTMyMTZk
-NjMKIyBhbmQKIyAyNGQ2NjM4MzAyYjQ4MzI4YTU4YzEzNDM5Mjc2ZDQ1MzFhZjRjYTdkCiMgUkVW
-RVJURUQKIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
-IyMjIyMjIyMKJCBkbWVzZyB8IGZncmVwIC1pIC1lIGhkbWkgLWUgYXVkaW8gLWUgc291bmQgLWUg
-YWxzYSAtZSBpMnMKWyAgICAwLjE2NzIyM10gQWR2YW5jZWQgTGludXggU291bmQgQXJjaGl0ZWN0
-dXJlIERyaXZlciBJbml0aWFsaXplZC4KWyAgICA3LjQzODY2MV0gcm9ja2NoaXAtZHJtIGRpc3Bs
-YXktc3Vic3lzdGVtOiBMaW5rZWQgYXMgYSBjb25zdW1lciB0bwpmZjk0MDAwMC5oZG1pClsgICAg
-Ny40NDcxNjhdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogZmFpbGVkIHRvIGJpbmQK
-ZmY5NDAwMDAuaGRtaSAob3BzIDB4ZmZmZjAwMDAwOGE5MDdhMCk6IC01MTcKWyAgICA3Ljk3Nzgw
-OF0gZHdoZG1pLXJvY2tjaGlwIGZmOTQwMDAwLmhkbWk6IERldGVjdGVkIEhETUkgVFgKY29udHJv
-bGxlciB2Mi4xMWEgd2l0aCBIRENQIChEV0MgSERNSSAyLjAgVFggUEhZKQpbICAgIDcuOTc5Mzcz
-XSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmOTQwMDAwLmhkbWkKKG9w
-cyAweGZmZmYwMDAwMDhhOTA3YTApClsgICAgOC40NTg2NjZdIGFzb2Mtc2ltcGxlLWNhcmQgaGRt
-aS1zb3VuZDogaTJzLWhpZmkgPC0+IGZmOGEwMDAwLmkycyBtYXBwaW5nIG9rClsgICAgOC40NjQ3
-OTRdIGFzb2Mtc2ltcGxlLWNhcmQgaGRtaS1zb3VuZDogQVNvQzogbm8gRE1JIHZlbmRvciBuYW1l
-IQpbICAgIDguNjEwNjA3XSBBTFNBIGRldmljZSBsaXN0OgpbICAgIDguNjIyNjQ5XSAgICMwOiBo
-ZG1pLXNvdW5kCiQgYXBsYXkgLXZ2dnZ2dnZ2IE5vaXNlLndhdgpQbGF5aW5nIFdBVkUgJ05vaXNl
-LndhdicgOiBTaWduZWQgMTYgYml0IExpdHRsZSBFbmRpYW4sIFJhdGUgNDgwMDAgSHosIE1vbm8K
-QUxTQSA8LT4gUHVsc2VBdWRpbyBQQ00gSS9PIFBsdWdpbgpJdHMgc2V0dXAgaXM6CiAgc3RyZWFt
-ICAgICAgIDogUExBWUJBQ0sKICBhY2Nlc3MgICAgICAgOiBSV19JTlRFUkxFQVZFRAogIGZvcm1h
-dCAgICAgICA6IFMxNl9MRQogIHN1YmZvcm1hdCAgICA6IFNURAogIGNoYW5uZWxzICAgICA6IDEK
-ICByYXRlICAgICAgICAgOiA0ODAwMAogIGV4YWN0IHJhdGUgICA6IDQ4MDAwICg0ODAwMC8xKQog
-IG1zYml0cyAgICAgICA6IDE2CiAgYnVmZmVyX3NpemUgIDogMjQwMDAKICBwZXJpb2Rfc2l6ZSAg
-OiA2MDAwCiAgcGVyaW9kX3RpbWUgIDogMTI1MDAwCiAgdHN0YW1wX21vZGUgIDogTk9ORQogIHRz
-dGFtcF90eXBlICA6IEdFVFRJTUVPRkRBWQogIHBlcmlvZF9zdGVwICA6IDEKICBhdmFpbF9taW4g
-ICAgOiA2MDAwCiAgcGVyaW9kX2V2ZW50IDogMAogIHN0YXJ0X3RocmVzaG9sZCAgOiAyNDAwMAog
-IHN0b3BfdGhyZXNob2xkICAgOiAyNDAwMAogIHNpbGVuY2VfdGhyZXNob2xkOiAwCiAgc2lsZW5j
-ZV9zaXplIDogMAogIGJvdW5kYXJ5ICAgICA6IDY3NTUzOTk0NDEwNTU3NDQwMDAKIyBJIGNhbiBo
-ZWFyIGl0IGFuZCBhcHBsaWNhdGlvbiByZXR1cm5zIHN1Y2Nlc3NmdWxseS4KCgpSZWdhcmRzLAog
-IFZpY2Vuw6cuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+Add support to async updates of cursors by using the new atomic
+interface for that.
+
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+[updated for upstream]
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
+
+---
+Hello,
+
+This is the third version of the async-plane update suport to the
+Rockchip driver.
+
+I tested running igt kms_cursor_legacy and kms_atomic tests using a 96Boards Ficus.
+
+Note that before the patch, the following igt tests failed:
+
+        basic-flip-before-cursor-atomic
+        basic-flip-before-cursor-legacy
+        cursor-vs-flip-atomic
+        cursor-vs-flip-legacy
+        cursor-vs-flip-toggle
+        flip-vs-cursor-atomic
+        flip-vs-cursor-busy-crc-atomic
+        flip-vs-cursor-busy-crc-legacy
+        flip-vs-cursor-crc-atomic
+        flip-vs-cursor-crc-legacy
+        flip-vs-cursor-legacy
+
+Full log: https://people.collabora.com/~koike/results-4.20/html/
+
+Now with the patch applied the following were fixed:
+        basic-flip-before-cursor-atomic
+        basic-flip-before-cursor-legacy
+        flip-vs-cursor-atomic
+        flip-vs-cursor-legacy
+
+Full log: https://people.collabora.com/~koike/results-4.20-async/html/
+
+Tomasz, as you mentined in v2 about waiting the hardware before updating
+the framebuffer, now I call the loop you pointed out in the async path,
+was that what you had in mind? Or do you think I would make sense to
+call the vop_crtc_atomic_flush() instead of just exposing that loop?
+
+Thanks
+Helen
+
+Changes in v3:
+- Rebased on top of drm-misc
+- Fix missing include in rockchip_drm_vop.c
+- New function vop_crtc_atomic_commit_flush
+
+Changes in v2:
+- v2: https://patchwork.freedesktop.org/patch/254180/
+- Change the framebuffer as well to cover jumpy cursor when hovering
+  text boxes or hyperlink. (Tomasz)
+- Use the PSR inhibit mechanism when accessing VOP hardware instead of
+  PSR flushing (Tomasz)
+
+Changes in v1:
+- Rebased on top of drm-misc
+- In async_check call drm_atomic_helper_check_plane_state to check that
+  the desired plane is valid and update various bits of derived state
+  (clipped coordinates etc.)
+- In async_check allow to configure new scaling in the fast path.
+- In async_update force to flush all registered PSR encoders.
+- In async_update call atomic_update directly.
+- In async_update call vop_cfg_done needed to set the vop registers and take effect.
+
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  36 -------
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.c |  37 +++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_psr.h |   3 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 108 +++++++++++++++++---
+ 4 files changed, 131 insertions(+), 53 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index ea18cb2a76c0..08bec50d9c5d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -127,42 +127,6 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
+ 	return ERR_PTR(ret);
+ }
+ 
+-static void
+-rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state)
+-{
+-	struct drm_crtc *crtc;
+-	struct drm_crtc_state *crtc_state;
+-	struct drm_encoder *encoder;
+-	u32 encoder_mask = 0;
+-	int i;
+-
+-	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
+-		encoder_mask |= crtc_state->encoder_mask;
+-		encoder_mask |= crtc->state->encoder_mask;
+-	}
+-
+-	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
+-		rockchip_drm_psr_inhibit_get(encoder);
+-}
+-
+-static void
+-rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state)
+-{
+-	struct drm_crtc *crtc;
+-	struct drm_crtc_state *crtc_state;
+-	struct drm_encoder *encoder;
+-	u32 encoder_mask = 0;
+-	int i;
+-
+-	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
+-		encoder_mask |= crtc_state->encoder_mask;
+-		encoder_mask |= crtc->state->encoder_mask;
+-	}
+-
+-	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
+-		rockchip_drm_psr_inhibit_put(encoder);
+-}
+-
+ static void
+ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
+ {
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+index 01ff3c858875..22a70ab6e214 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
+@@ -13,6 +13,7 @@
+  */
+ 
+ #include <drm/drmP.h>
++#include <drm/drm_atomic.h>
+ #include <drm/drm_crtc_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+@@ -109,6 +110,42 @@ int rockchip_drm_psr_inhibit_put(struct drm_encoder *encoder)
+ }
+ EXPORT_SYMBOL(rockchip_drm_psr_inhibit_put);
+ 
++void rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state)
++{
++	struct drm_crtc *crtc;
++	struct drm_crtc_state *crtc_state;
++	struct drm_encoder *encoder;
++	u32 encoder_mask = 0;
++	int i;
++
++	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
++		encoder_mask |= crtc_state->encoder_mask;
++		encoder_mask |= crtc->state->encoder_mask;
++	}
++
++	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
++		rockchip_drm_psr_inhibit_get(encoder);
++}
++EXPORT_SYMBOL(rockchip_drm_psr_inhibit_get_state);
++
++void rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state)
++{
++	struct drm_crtc *crtc;
++	struct drm_crtc_state *crtc_state;
++	struct drm_encoder *encoder;
++	u32 encoder_mask = 0;
++	int i;
++
++	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
++		encoder_mask |= crtc_state->encoder_mask;
++		encoder_mask |= crtc->state->encoder_mask;
++	}
++
++	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
++		rockchip_drm_psr_inhibit_put(encoder);
++}
++EXPORT_SYMBOL(rockchip_drm_psr_inhibit_put_state);
++
+ /**
+  * rockchip_drm_psr_inhibit_get - acquire PSR inhibit on given encoder
+  * @encoder: encoder to obtain the PSR encoder
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+index 860c62494496..25350ba3237b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
+@@ -20,6 +20,9 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev);
+ int rockchip_drm_psr_inhibit_put(struct drm_encoder *encoder);
+ int rockchip_drm_psr_inhibit_get(struct drm_encoder *encoder);
+ 
++void rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state);
++void rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state);
++
+ int rockchip_drm_psr_register(struct drm_encoder *encoder,
+ 			int (*psr_set)(struct drm_encoder *, bool enable));
+ void rockchip_drm_psr_unregister(struct drm_encoder *encoder);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index fb70fb486fbf..176d6e8207ed 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -15,6 +15,7 @@
+ #include <drm/drm.h>
+ #include <drm/drmP.h>
+ #include <drm/drm_atomic.h>
++#include <drm/drm_atomic_uapi.h>
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_crtc_helper.h>
+ #include <drm/drm_flip_work.h>
+@@ -819,10 +820,99 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	spin_unlock(&vop->reg_lock);
+ }
+ 
++static int vop_plane_atomic_async_check(struct drm_plane *plane,
++					struct drm_plane_state *state)
++{
++	struct vop_win *vop_win = to_vop_win(plane);
++	const struct vop_win_data *win = vop_win->data;
++	int min_scale = win->phy->scl ? FRAC_16_16(1, 8) :
++					DRM_PLANE_HELPER_NO_SCALING;
++	int max_scale = win->phy->scl ? FRAC_16_16(8, 1) :
++					DRM_PLANE_HELPER_NO_SCALING;
++	struct drm_crtc_state *crtc_state;
++	int ret;
++
++	if (plane != state->crtc->cursor)
++		return -EINVAL;
++
++	if (!plane->state)
++		return -EINVAL;
++
++	if (!plane->state->fb)
++		return -EINVAL;
++
++	if (state->state)
++		crtc_state = drm_atomic_get_existing_crtc_state(state->state,
++								state->crtc);
++	else /* Special case for asynchronous cursor updates. */
++		crtc_state = plane->crtc->state;
++
++	ret = drm_atomic_helper_check_plane_state(plane->state,
++						  crtc_state,
++						  min_scale, max_scale,
++						  true, true);
++	return ret;
++}
++
++static void vop_crtc_atomic_commit_flush(struct drm_crtc *crtc,
++					 struct drm_crtc_state *old_crtc_state)
++{
++	struct drm_atomic_state *old_state = old_crtc_state->state;
++	struct drm_plane_state *old_plane_state, *new_plane_state;
++	struct vop *vop = to_vop(crtc);
++	struct drm_plane *plane;
++	int i;
++
++	for_each_oldnew_plane_in_state(old_state, plane, old_plane_state,
++				       new_plane_state, i) {
++		if (!old_plane_state->fb)
++			continue;
++
++		if (old_plane_state->fb == new_plane_state->fb)
++			continue;
++
++		drm_framebuffer_get(old_plane_state->fb);
++		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
++		drm_flip_work_queue(&vop->fb_unref_work, old_plane_state->fb);
++		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
++	}
++}
++
++static void vop_plane_atomic_async_update(struct drm_plane *plane,
++					  struct drm_plane_state *new_state)
++{
++	struct vop *vop = to_vop(plane->state->crtc);
++
++	if (vop->crtc.state->state)
++		vop_crtc_atomic_commit_flush(&vop->crtc, vop->crtc.state);
++
++	plane->state->crtc_x = new_state->crtc_x;
++	plane->state->crtc_y = new_state->crtc_y;
++	plane->state->crtc_h = new_state->crtc_h;
++	plane->state->crtc_w = new_state->crtc_w;
++	plane->state->src_x = new_state->src_x;
++	plane->state->src_y = new_state->src_y;
++	plane->state->src_h = new_state->src_h;
++	plane->state->src_w = new_state->src_w;
++
++	drm_atomic_set_fb_for_plane(plane->state, new_state->fb);
++
++	if (vop->is_enabled) {
++		rockchip_drm_psr_inhibit_get_state(new_state->state);
++		vop_plane_atomic_update(plane, plane->state);
++		spin_lock(&vop->reg_lock);
++		vop_cfg_done(vop);
++		spin_unlock(&vop->reg_lock);
++		rockchip_drm_psr_inhibit_put_state(new_state->state);
++	}
++}
++
+ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+ 	.atomic_check = vop_plane_atomic_check,
+ 	.atomic_update = vop_plane_atomic_update,
+ 	.atomic_disable = vop_plane_atomic_disable,
++	.atomic_async_check = vop_plane_atomic_async_check,
++	.atomic_async_update = vop_plane_atomic_async_update,
+ };
+ 
+ static const struct drm_plane_funcs vop_plane_funcs = {
+@@ -1010,11 +1100,7 @@ static void vop_wait_for_irq_handler(struct vop *vop)
+ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+ 				  struct drm_crtc_state *old_crtc_state)
+ {
+-	struct drm_atomic_state *old_state = old_crtc_state->state;
+-	struct drm_plane_state *old_plane_state, *new_plane_state;
+ 	struct vop *vop = to_vop(crtc);
+-	struct drm_plane *plane;
+-	int i;
+ 
+ 	if (WARN_ON(!vop->is_enabled))
+ 		return;
+@@ -1042,19 +1128,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	}
+ 	spin_unlock_irq(&crtc->dev->event_lock);
+ 
+-	for_each_oldnew_plane_in_state(old_state, plane, old_plane_state,
+-				       new_plane_state, i) {
+-		if (!old_plane_state->fb)
+-			continue;
+-
+-		if (old_plane_state->fb == new_plane_state->fb)
+-			continue;
+-
+-		drm_framebuffer_get(old_plane_state->fb);
+-		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
+-		drm_flip_work_queue(&vop->fb_unref_work, old_plane_state->fb);
+-		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
+-	}
++	vop_crtc_atomic_commit_flush(crtc, old_crtc_state);
+ }
+ 
+ static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
+-- 
+2.19.1
