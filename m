@@ -1,64 +1,48 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
-Date: Mon, 19 Nov 2018 20:43:09 +0530
-Message-ID: <CAFqt6zbOWX5LUTWwoGDJsGdf+pTR6N1yTPVxyr1W3-6Fte39ww@mail.gmail.com>
-References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
- <20181116182836.GB17088@rapoport-lnx> <CAFqt6zYp0j999WXw9Jus0oZMjADQQkPfso8btv6du6L9CE3PXA@mail.gmail.com>
- <20181117143742.GB7861@bombadil.infradead.org>
+From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH] drm/rockchip: fix for mailbox read validation.
+Date: Mon, 19 Nov 2018 15:14:14 +0000
+Message-ID: <1542640463-18332-1-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181117143742.GB7861@bombadil.infradead.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthew Wilcox <willy@infradead.org>, rppt@linux.ibm.com
-Cc: Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgr>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sandy
+ Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike,
+This is basically the same fix as in
+commit fa68d4f8476b ("drm/rockchip: fix for mailbox read size")
+but for cdn_dp_mailbox_validate_receive function.
 
-On Sat, Nov 17, 2018 at 8:07 PM Matthew Wilcox <willy@infradead.org> wrote:
->
-> On Sat, Nov 17, 2018 at 12:26:38PM +0530, Souptick Joarder wrote:
-> > On Fri, Nov 16, 2018 at 11:59 PM Mike Rapoport <rppt@linux.ibm.com> wrote:
-> > > > + * vm_insert_range - insert range of kernel pages into user vma
-> > > > + * @vma: user vma to map to
-> > > > + * @addr: target user address of this page
-> > > > + * @pages: pointer to array of source kernel pages
-> > > > + * @page_count: no. of pages need to insert into user vma
-> > > > + *
-> > > > + * This allows drivers to insert range of kernel pages they've allocated
-> > > > + * into a user vma. This is a generic function which drivers can use
-> > > > + * rather than using their own way of mapping range of kernel pages into
-> > > > + * user vma.
-> > >
-> > > Please add the return value and context descriptions.
-> > >
-> >
-> > Sure I will wait for some time to get additional review comments and
-> > add all of those requested changes in v2.
->
-> You could send your proposed wording now which might remove the need
-> for a v3 if we end up arguing about the wording.
+See patchwork.kernel.org/patch/10671981/ for details.
 
-Does this description looks good ?
+Signed-off-by: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/**
- * vm_insert_range - insert range of kernel pages into user vma
- * @vma: user vma to map to
- * @addr: target user address of this page
- * @pages: pointer to array of source kernel pages
- * @page_count: number of pages need to insert into user vma
- *
- * This allows drivers to insert range of kernel pages they've allocated
- * into a user vma. This is a generic function which drivers can use
- * rather than using their own way of mapping range of kernel pages into
- * user vma.
- *
- * Context - Process context. Called by mmap handlers.
- * Return - int error value
- * 0                    - OK
- * -EINVAL              - Invalid argument
- * -ENOMEM              - No memory
- * -EFAULT              - Bad address
- * -EBUSY               - Device or resource busy
- */
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+index 5a485489a1e2..6c8b14fb1d2f 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+@@ -113,7 +113,7 @@ static int cdp_dp_mailbox_write(struct cdn_dp_device *dp, u8 val)
+ 
+ static int cdn_dp_mailbox_validate_receive(struct cdn_dp_device *dp,
+ 					   u8 module_id, u8 opcode,
+-					   u8 req_size)
++					   u16 req_size)
+ {
+ 	u32 mbox_size, i;
+ 	u8 header[4];
+-- 
+2.17.1
