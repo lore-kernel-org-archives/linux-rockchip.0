@@ -1,11 +1,13 @@
-From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH] drm/rockchip: fix for mailbox read validation.
-Date: Mon, 19 Nov 2018 15:14:14 +0000
-Message-ID: <1542640463-18332-1-git-send-email-dkos@cadence.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v8 1/3] ARM: dts: rockchip: add VPU device node for RK3288
+Date: Mon, 19 Nov 2018 12:29:00 -0300
+Message-ID: <20181119152902.31429-2-ezequiel@collabora.com>
+References: <20181119152902.31429-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20181119152902.31429-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,34 +17,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sandy
- Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is basically the same fix as in
-commit fa68d4f8476b ("drm/rockchip: fix for mailbox read size")
-but for cdn_dp_mailbox_validate_receive function.
+Add the Video Processing Unit node for RK3288 SoC.
 
-See patchwork.kernel.org/patch/10671981/ for details.
+Fix the VPU IOMMU node, which was disabled and lacking
+its power domain property.
 
-Signed-off-by: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/cdn-dp-reg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3288.dtsi | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-index 5a485489a1e2..6c8b14fb1d2f 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-@@ -113,7 +113,7 @@ static int cdp_dp_mailbox_write(struct cdn_dp_device *dp, u8 val)
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 0840ffb3205c..40d203cdca09 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1223,6 +1223,18 @@
+ 		};
+ 	};
  
- static int cdn_dp_mailbox_validate_receive(struct cdn_dp_device *dp,
- 					   u8 module_id, u8 opcode,
--					   u8 req_size)
-+					   u16 req_size)
- {
- 	u32 mbox_size, i;
- 	u8 header[4];
++	vpu: video-codec@ff9a0000 {
++		compatible = "rockchip,rk3288-vpu";
++		reg = <0x0 0xff9a0000 0x0 0x800>;
++		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vepu", "vdpu";
++		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
++		clock-names = "aclk", "hclk";
++		power-domains = <&power RK3288_PD_VIDEO>;
++		iommus = <&vpu_mmu>;
++	};
++
+ 	vpu_mmu: iommu@ff9a0800 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff9a0800 0x0 0x100>;
+@@ -1230,8 +1242,8 @@
+ 		interrupt-names = "vpu_mmu";
+ 		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3288_PD_VIDEO>;
+ 		#iommu-cells = <0>;
+-		status = "disabled";
+ 	};
+ 
+ 	hevc_mmu: iommu@ff9c0440 {
 -- 
-2.17.1
+2.19.1
