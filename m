@@ -1,15 +1,19 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v9 3/3] media: add Rockchip VPU JPEG encoder driver
-Date: Wed, 21 Nov 2018 14:10:07 +0100
-Message-ID: <df04e23d-35f8-0fdf-9e14-892e716b1434@xs4all.nl>
-References: <20181120212059.29244-1-ezequiel@collabora.com>
- <20181120212059.29244-4-ezequiel@collabora.com>
-Mime-Version: 1.0
+From: William Kucharski <william.kucharski-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
+Date: Wed, 21 Nov 2018 07:29:37 -0700
+Message-ID: <D13F3DA0-1CD3-43AF-BAF6-5103FE7C4B5A@oracle.com>
+References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
+ <20181116182836.GB17088@rapoport-lnx>
+ <CAFqt6zYp0j999WXw9Jus0oZMjADQQkPfso8btv6du6L9CE3PXA@mail.gmail.com>
+ <20181117143742.GB7861@bombadil.infradead.org>
+ <CAFqt6zbOWX5LUTWwoGDJsGdf+pTR6N1yTPVxyr1W3-6Fte39ww@mail.gmail.com>
+ <833B5050-DEF6-44A0-9832-276F86671212@oracle.com>
+ <20181121123513.GF3065@bombadil.infradead.org>
+Mime-Version: 1.0 (Mac OS X Mail 12.2 \(3445.102.3\))
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181120212059.29244-4-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20181121123513.GF3065-PfSpb0PWhxZc2C7mugBRk2EX/6BAtgUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,140 +23,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+To: Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Cc: Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux-MM <linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Stephen Rothwell <sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org>, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, Rik van Riel <riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org>, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, Boris Ostrovsky <boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, Juergen Gross <jgross-IBi9RG/b67k@public.gmane.org>, hjc@rock-chi
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/20/2018 10:20 PM, Ezequiel Garcia wrote:
-> Add a mem2mem driver for the VPU available on Rockchip SoCs.
-> Currently only JPEG encoding is supported, for RK3399 and RK3288
-> platforms.
+
+
+> On Nov 21, 2018, at 5:35 AM, Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
 > 
-> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->  MAINTAINERS                                   |   7 +
->  drivers/staging/media/Kconfig                 |   2 +
->  drivers/staging/media/Makefile                |   1 +
->  drivers/staging/media/rockchip/vpu/Kconfig    |  14 +
->  drivers/staging/media/rockchip/vpu/Makefile   |  10 +
->  drivers/staging/media/rockchip/vpu/TODO       |   6 +
->  .../media/rockchip/vpu/rk3288_vpu_hw.c        | 118 +++
->  .../rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c     | 133 ++++
->  .../media/rockchip/vpu/rk3288_vpu_regs.h      | 442 +++++++++++
->  .../media/rockchip/vpu/rk3399_vpu_hw.c        | 118 +++
->  .../rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c     | 160 ++++
->  .../media/rockchip/vpu/rk3399_vpu_regs.h      | 600 +++++++++++++++
->  .../staging/media/rockchip/vpu/rockchip_vpu.h | 237 ++++++
->  .../media/rockchip/vpu/rockchip_vpu_common.h  |  29 +
->  .../media/rockchip/vpu/rockchip_vpu_drv.c     | 535 +++++++++++++
->  .../media/rockchip/vpu/rockchip_vpu_enc.c     | 702 ++++++++++++++++++
->  .../media/rockchip/vpu/rockchip_vpu_hw.h      |  58 ++
->  .../media/rockchip/vpu/rockchip_vpu_jpeg.c    | 289 +++++++
->  .../media/rockchip/vpu/rockchip_vpu_jpeg.h    |  12 +
->  19 files changed, 3473 insertions(+)
->  create mode 100644 drivers/staging/media/rockchip/vpu/Kconfig
->  create mode 100644 drivers/staging/media/rockchip/vpu/Makefile
->  create mode 100644 drivers/staging/media/rockchip/vpu/TODO
->  create mode 100644 drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rk3288_vpu_regs.h
->  create mode 100644 drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rk3399_vpu_regs.h
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu.h
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c
->  create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h
+> It's probably better to be more explicit and answer Randy's question:
 > 
+> * If we fail to insert any page into the vma, the function will return
+> * immediately leaving any previously-inserted pages present.  Callers
+> * from the mmap handler may immediately return the error as their
+> * caller will destroy the vma, removing any successfully-inserted pages.
+> * Other callers should make their own arrangements for calling unmap_region().
 
-<snip>
-
-> diff --git a/drivers/staging/media/rockchip/vpu/Kconfig b/drivers/staging/media/rockchip/vpu/Kconfig
-> new file mode 100644
-> index 000000000000..fa65c03d65bf
-> --- /dev/null
-> +++ b/drivers/staging/media/rockchip/vpu/Kconfig
-> @@ -0,0 +1,14 @@
-> +config VIDEO_ROCKCHIP_VPU
-> +	tristate "Rockchip VPU driver"
-> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	depends on VIDEO_DEV && VIDEO_V4L2 && MEDIA_CONTROLLER
-> +	select VIDEOBUF2_DMA_CONTIG
-> +	select VIDEOBUF2_VMALLOC
-> +	select V4L2_MEM2MEM_DEV
-> +	default n
-> +	help
-> +	  Support for the Video Processing Unit present on Rockchip SoC,
-> +	  which accelerates video and image encoding and decoding.
-> +	  To compile this driver as a module, choose M here: the module
-> +	  will be called rockchip-vpu.
-> +
-
-checkpatch warns about empty line at the end of the Kconfig
-
-<snip>
-
-> diff --git a/drivers/staging/media/rockchip/vpu/rk3288_vpu_regs.h b/drivers/staging/media/rockchip/vpu/rk3288_vpu_regs.h
-> new file mode 100644
-> index 000000000000..d6cf9c682e7d
-> --- /dev/null
-> +++ b/drivers/staging/media/rockchip/vpu/rk3288_vpu_regs.h
-> @@ -0,0 +1,442 @@
-> +// SPDX-License-Identifier: GPL-2.0
-
-Headers must use /* */ for the SPDX license. Sorry, I didn't make up these rules.
-
-In any case, checkpatch.pl --strict complains about it.
-
-<snip>
-
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c
-> new file mode 100644
-> index 000000000000..678d53f3c2c2
-> --- /dev/null
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c
-> @@ -0,0 +1,289 @@
-
-Missing SPDX license!
-
-> +/*
-> + * Copyright (C) Collabora, Ltd.
-> + *
-> + * Based on GSPCA and CODA drivers:
-> + * Copyright (C) Jean-Francois Moine (http://moinejf.free.fr)
-> + * Copyright (C) 2014 Philipp Zabel, Pengutronix
-> + */
-
-<snip>
-
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h
-> new file mode 100644
-> index 000000000000..a616d85359e8
-> --- /dev/null
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h
-> @@ -0,0 +1,12 @@
-
-Missing SPDX license!
-
-> +#define JPEG_HEADER_SIZE	601
-> +
-> +struct rockchip_vpu_jpeg_ctx {
-> +	int width;
-> +	int height;
-> +	int quality;
-> +	unsigned char *buffer;
-> +};
-> +
-> +unsigned char *
-> +rockchip_vpu_jpeg_get_qtable(struct rockchip_vpu_jpeg_ctx *ctx, int index);
-> +void rockchip_vpu_jpeg_render(struct rockchip_vpu_jpeg_ctx *ctx);
-> 
-
-So close...
-
-Regards,
-
-	Hans
+That works for me as well.
