@@ -1,10 +1,12 @@
 From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH] arm64: dts: rockchip: Add DT for nanopc-t4
-Date: Fri, 23 Nov 2018 08:26:04 +0100
-Message-ID: <20181123073120.6250-1-tomeu.vizoso@collabora.com>
+Subject: [PATCH v2] arm64: dts: rockchip: Add DT for nanopc-t4
+Date: Fri, 23 Nov 2018 08:46:30 +0100
+Message-ID: <20181123074744.11583-1-tomeu.vizoso@collabora.com>
+References: <20181123073120.6250-1-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181123073120.6250-1-tomeu.vizoso@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
 Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ezequiel Garcia <ezequiel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
@@ -24,17 +26,23 @@ All of the interesting stuff is in a .dtsi because there are at least
 two other boards that share most of it: NanoPi M4 and NanoPi NEO4.
 
 Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+
+---
+
+v2: - Rename compatible from friendlyelec to friendlyarm, to match
+      existing bindings
+    - Remove superfluous node spi1
 ---
  .../devicetree/bindings/arm/rockchip.txt      |   4 +
  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
  .../boot/dts/rockchip/rk3399-nanopc-t4.dts    |  18 +
- .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 782 ++++++++++++++++++
- 4 files changed, 805 insertions(+)
+ .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 770 ++++++++++++++++++
+ 4 files changed, 793 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
 
 diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 0cc71236d639..57e048dfec1f 100644
+index 0cc71236d639..e907d309486e 100644
 --- a/Documentation/devicetree/bindings/arm/rockchip.txt
 +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
 @@ -71,6 +71,10 @@ Rockchip platforms device tree bindings
@@ -43,7 +51,7 @@ index 0cc71236d639..57e048dfec1f 100644
  
 +- FriendlyElec NanoPC-T4 board:
 +    Required root node properties:
-+      - compatible = "friendlyelec,nanopc-t4", "rockchip,rk3399";
++      - compatible = "friendlyarm,nanopc-t4", "rockchip,rk3399";
 +
  - ChipSPARK PopMetal-RK3288 board:
      Required root node properties:
@@ -59,7 +67,7 @@ index 49042c477870..ed90cd1e5a8b 100644
 +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
 new file mode 100644
-index 000000000000..8e716c790d60
+index 000000000000..0965712b4464
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
 @@ -0,0 +1,18 @@
@@ -78,15 +86,15 @@ index 000000000000..8e716c790d60
 +
 +/ {
 +	model = "FriendlyElec NanoPC-T4";
-+	compatible = "friendlyelec,nanopc-t4", "rockchip,rk3399";
++	compatible = "friendlyarm,nanopc-t4", "rockchip,rk3399";
 +};
 +
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
 new file mode 100644
-index 000000000000..01be5cc57213
+index 000000000000..148f85b4bd49
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -0,0 +1,782 @@
+@@ -0,0 +1,770 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * RK3399-based FriendlyElec boards device tree source
@@ -317,18 +325,6 @@ index 000000000000..01be5cc57213
 +	tx_delay = <0x28>;
 +	rx_delay = <0x11>;
 +	status = "okay";
-+};
-+
-+&spi1 {
-+	status = "disabled";
-+	cs-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
-+
-+	spidev0: spidev@0 {
-+		compatible = "rockchip,spidev";
-+		reg = <0>;
-+		spi-max-frequency = <10000000>;
-+		status = "okay";
-+	};
 +};
 +
 +&uart0 {
