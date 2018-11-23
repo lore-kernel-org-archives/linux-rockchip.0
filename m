@@ -1,112 +1,873 @@
-From: Mike Rapoport <rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org>
-Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
-Date: Fri, 23 Nov 2018 09:19:25 +0200
-Message-ID: <20181123071924.GF5704@rapoport-lnx>
-References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
-	<20181116182836.GB17088@rapoport-lnx>
-	<CAFqt6zYp0j999WXw9Jus0oZMjADQQkPfso8btv6du6L9CE3PXA@mail.gmail.com>
-	<20181117143742.GB7861@bombadil.infradead.org>
-	<CAFqt6zbOWX5LUTWwoGDJsGdf+pTR6N1yTPVxyr1W3-6Fte39ww@mail.gmail.com>
-	<20181119162623.GA13200@rapoport-lnx>
-	<CAFqt6zbhodAGQz-RCB3C-wt_Mvb9QDmQ8pFeP2EO+ba2k2OccA@mail.gmail.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: Add DT for nanopc-t4
+Date: Fri, 23 Nov 2018 08:26:04 +0100
+Message-ID: <20181123073120.6250-1-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAFqt6zbhodAGQz-RCB3C-wt_Mvb9QDmQ8pFeP2EO+ba2k2OccA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux-MM <linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Stephen Rothwell <sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org>, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, airlied-cv59FeDIM0c@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, Rik van Riel <riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, Boris Ostrovsky <boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, Juergen Gross <jgross-IBi9RG/b67k@public.gmane.org>, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, Kyungmin
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ezequiel Garcia <ezequiel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 19, 2018 at 11:15:15PM +0530, Souptick Joarder wrote:
-> On Mon, Nov 19, 2018 at 9:56 PM Mike Rapoport <rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org> wrote:
-> >
-> > On Mon, Nov 19, 2018 at 08:43:09PM +0530, Souptick Joarder wrote:
-> > > Hi Mike,
-> > >
-> > > On Sat, Nov 17, 2018 at 8:07 PM Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
-> > > >
-> > > > On Sat, Nov 17, 2018 at 12:26:38PM +0530, Souptick Joarder wrote:
-> > > > > On Fri, Nov 16, 2018 at 11:59 PM Mike Rapoport <rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org> wrote:
-> > > > > > > + * vm_insert_range - insert range of kernel pages into user vma
-> > > > > > > + * @vma: user vma to map to
-> > > > > > > + * @addr: target user address of this page
-> > > > > > > + * @pages: pointer to array of source kernel pages
-> > > > > > > + * @page_count: no. of pages need to insert into user vma
-> > > > > > > + *
-> > > > > > > + * This allows drivers to insert range of kernel pages they've allocated
-> > > > > > > + * into a user vma. This is a generic function which drivers can use
-> > > > > > > + * rather than using their own way of mapping range of kernel pages into
-> > > > > > > + * user vma.
-> > > > > >
-> > > > > > Please add the return value and context descriptions.
-> > > > > >
-> > > > >
-> > > > > Sure I will wait for some time to get additional review comments and
-> > > > > add all of those requested changes in v2.
-> > > >
-> > > > You could send your proposed wording now which might remove the need
-> > > > for a v3 if we end up arguing about the wording.
-> > >
-> > > Does this description looks good ?
-> > >
-> > > /**
-> > >  * vm_insert_range - insert range of kernel pages into user vma
-> > >  * @vma: user vma to map to
-> > >  * @addr: target user address of this page
-> > >  * @pages: pointer to array of source kernel pages
-> > >  * @page_count: number of pages need to insert into user vma
-> > >  *
-> > >  * This allows drivers to insert range of kernel pages they've allocated
-> > >  * into a user vma. This is a generic function which drivers can use
-> > >  * rather than using their own way of mapping range of kernel pages into
-> > >  * user vma.
-> > >  *
-> > >  * Context - Process context. Called by mmap handlers.
-> >
-> > Context:
-> >
-> > >  * Return - int error value
-> >
-> > Return:
-> >
-> > >  * 0                    - OK
-> > >  * -EINVAL              - Invalid argument
-> > >  * -ENOMEM              - No memory
-> > >  * -EFAULT              - Bad address
-> > >  * -EBUSY               - Device or resource busy
-> >
-> > I don't think that elaborate description of error values is needed, just "0
-> > on success and error code otherwise" would be sufficient.
-> 
-> /**
->  * vm_insert_range - insert range of kernel pages into user vma
->  * @vma: user vma to map to
->  * @addr: target user address of this page
->  * @pages: pointer to array of source kernel pages
->  * @page_count: number of pages need to insert into user vma
->  *
->  * This allows drivers to insert range of kernel pages they've allocated
->  * into a user vma. This is a generic function which drivers can use
->  * rather than using their own way of mapping range of kernel pages into
->  * user vma.
->  *
->  * Context: Process context. Called by mmap handlers.
->  * Return: 0 on success and error code otherwise
->  */
+This adds a device tree for the NanoPC-T4 SBC, which is based on the
+Rockchip RK3399 SoC and marketed by FriendlyELEC.
 
-Looks good to me.
+Known working:
 
+- Serial
+- Ethernet
+- HDMI
+- USB 2.0
+
+All of the interesting stuff is in a .dtsi because there are at least
+two other boards that share most of it: NanoPi M4 and NanoPi NEO4.
+
+Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+---
+ .../devicetree/bindings/arm/rockchip.txt      |   4 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3399-nanopc-t4.dts    |  18 +
+ .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 782 ++++++++++++++++++
+ 4 files changed, 805 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+index 0cc71236d639..57e048dfec1f 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.txt
++++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+@@ -71,6 +71,10 @@ Rockchip platforms device tree bindings
+     Required root node properties:
+       - compatible = "firefly,roc-rk3399-pc", "rockchip,rk3399";
+ 
++- FriendlyElec NanoPC-T4 board:
++    Required root node properties:
++      - compatible = "friendlyelec,nanopc-t4", "rockchip,rk3399";
++
+ - ChipSPARK PopMetal-RK3288 board:
+     Required root node properties:
+       - compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 49042c477870..ed90cd1e5a8b 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -20,3 +20,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock960.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+new file mode 100644
+index 000000000000..8e716c790d60
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+@@ -0,0 +1,18 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * FriendlyElec NanoPC-T4 board device tree source
++ *
++ * Copyright (c) 2018 FriendlyElec Computer Tech. Co., Ltd.
++ * (http://www.friendlyarm.com)
++ *
++ * Copyright (c) 2018 Collabora Ltd.
++ */
++
++/dts-v1/;
++#include "rk3399-nanopi4.dtsi"
++
++/ {
++	model = "FriendlyElec NanoPC-T4";
++	compatible = "friendlyelec,nanopc-t4", "rockchip,rk3399";
++};
++
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+new file mode 100644
+index 000000000000..01be5cc57213
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+@@ -0,0 +1,782 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * RK3399-based FriendlyElec boards device tree source
++ *
++ * Copyright (c) 2016 Fuzhou Rockchip Electronics Co., Ltd
++ *
++ * Copyright (c) 2018 FriendlyElec Computer Tech. Co., Ltd.
++ * (http://www.friendlyarm.com)
++ *
++ * Copyright (c) 2018 Collabora Ltd.
++ */
++
++/dts-v1/;
++#include <dt-bindings/input/linux-event-codes.h>
++#include "rk3399.dtsi"
++#include "rk3399-opp.dtsi"
++
++/ {
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	clkin_gmac: external-gmac-clock {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "clkin_gmac";
++		#clock-cells = <0>;
++	};
++
++	vcc3v3_sys: vcc3v3-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++	};
++
++	vcc5v0_host: vcc5v0-host-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_host";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vccadc_ref: vccadc-ref {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc1v8_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++	};
++
++	vcc_sd: vcc-sd {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio0 1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc_sd_h>;
++		regulator-name = "vcc_sd";
++		regulator-min-microvolt = <3000000>;
++		regulator-max-microvolt = <3000000>;
++	};
++
++	vcc_phy: vcc-phy-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_phy";
++		regulator-always-on;
++		regulator-boot-on;
++	};
++
++	vcc_lcd: vcc-lcd {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_lcd";
++		gpio = <&gpio4 30 GPIO_ACTIVE_HIGH>;
++		startup-delay-us = <20000>;
++		enable-active-high;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-boot-on;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_typec: vcc5v0-typec-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpios = <&gpio4 26 GPIO_ACTIVE_HIGH>;
++		regulator-name = "vcc5v0_typec";
++		regulator-always-on;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vdd_log: vdd-log {
++		compatible = "pwm-regulator";
++		pwms = <&pwm2 0 25000 1>;
++		regulator-name = "vdd_log";
++		regulator-min-microvolt = <800000>;
++		regulator-max-microvolt = <1400000>;
++		regulator-always-on;
++		regulator-boot-on;
++
++		/* for rockchip boot on */
++		rockchip,pwm_id = <2>;
++		rockchip,pwm_voltage = <900000>;
++	};
++
++	gpio-keys {
++		compatible = "gpio-keys";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		autorepeat;
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&power_key>;
++
++		button@0 {
++			gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
++			linux,code = <KEY_POWER>;
++			label = "GPIO Key Power";
++			linux,input-type = <1>;
++			gpio-key,wakeup = <1>;
++			debounce-interval = <100>;
++		};
++	};
++
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		poll-interval = <100>;
++		keyup-threshold-microvolt = <1800000>;
++
++		button-up {
++			label = "Volume Up";
++			linux,code = <KEY_VOLUMEUP>;
++			press-threshold-microvolt = <100000>;
++		};
++
++		button-down {
++			label = "Volume Down";
++			linux,code = <KEY_VOLUMEDOWN>;
++			press-threshold-microvolt = <300000>;
++		};
++	};
++
++	leds: gpio-leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 =<&leds_gpio>;
++
++		led@1 {
++			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
++			label = "status_led";
++			linux,default-trigger = "heartbeat";
++			linux,default-trigger-delay-ms = <0>;
++		};
++	};
++
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		clocks = <&rk808 1>;
++		clock-names = "ext_clock";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_enable_h>;
++
++		/*
++		 * On the module itself this is one of these (depending
++		 * on the actual card populated):
++		 * - SDIO_RESET_L_WL_REG_ON
++		 * - PDN (power down when low)
++		 */
++		reset-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>; /* GPIO0_B2 */
++	};
++};
++
++&cpu_l0 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_l1 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_l2 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_l3 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_b0 {
++	cpu-supply = <&vdd_cpu_b>;
++};
++
++&cpu_b1 {
++	cpu-supply = <&vdd_cpu_b>;
++};
++
++&gpu {
++	status = "okay";
++	mali-supply = <&vdd_gpu>;
++};
++
++&gmac {
++	phy-supply = <&vcc_phy>;
++	phy-mode = "rgmii";
++	clock_in_out = "input";
++	snps,reset-gpio = <&gpio3 15 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 10000 50000>;
++	assigned-clocks = <&cru SCLK_RMII_SRC>;
++	assigned-clock-parents = <&clkin_gmac>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&rgmii_pins>;
++	tx_delay = <0x28>;
++	rx_delay = <0x11>;
++	status = "okay";
++};
++
++&spi1 {
++	status = "disabled";
++	cs-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
++
++	spidev0: spidev@0 {
++		compatible = "rockchip,spidev";
++		reg = <0>;
++		spi-max-frequency = <10000000>;
++		status = "okay";
++	};
++};
++
++&uart0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart0_xfer &uart0_cts>;
++	status = "okay";
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&uart4 {
++	status = "okay";
++};
++
++&vopb {
++	status = "okay";
++};
++
++&vopb_mmu {
++	status = "okay";
++};
++
++&vopl {
++	status = "okay";
++};
++
++&vopl_mmu {
++	status = "okay";
++};
++
++&rga {
++	status = "disabled";
++};
++
++&cdn_dp {
++// TODO: typec/fusb302 doesn't have extcon support yet
++//	status = "enabled";
++	extcon = <&fusb0>;
++	phys = <&tcphy0_dp>;
++};
++
++&hdmi {
++	ddc-i2c-bus = <&i2c7>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmi_cec>;
++	status = "okay";
++};
++
++&i2c0 {
++	status = "okay";
++	i2c-scl-rising-time-ns = <160>;
++	i2c-scl-falling-time-ns = <30>;
++	clock-frequency = <400000>;
++
++	vdd_cpu_b: syr827@40 {
++		compatible = "silergy,syr827";
++		reg = <0x40>;
++		vin-supply = <&vcc3v3_sys>;
++		regulator-compatible = "fan53555-reg";
++		pinctrl-names = "default";
++		pinctrl-0 = <&vsel1_gpio>;
++		vsel-gpios = <&gpio1 17 GPIO_ACTIVE_HIGH>;
++		regulator-name = "vdd_cpu_b";
++		regulator-min-microvolt = <712500>;
++		regulator-max-microvolt = <1500000>;
++		regulator-ramp-delay = <1000>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-initial-state = <3>;
++			regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++
++	vdd_gpu: syr828@41 {
++		compatible = "silergy,syr828";
++		reg = <0x41>;
++		vin-supply = <&vcc3v3_sys>;
++		regulator-compatible = "fan53555-reg";
++		pinctrl-names = "default";
++		pinctrl-0 = <&vsel2_gpio>;
++		vsel-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
++		regulator-name = "vdd_gpu";
++		regulator-min-microvolt = <712500>;
++		regulator-max-microvolt = <1500000>;
++		regulator-ramp-delay = <1000>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-initial-state = <3>;
++			regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++
++	rk808: pmic@1b {
++		compatible = "rockchip,rk808";
++		reg = <0x1b>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int_l>;
++		rockchip,system-power-controller;
++		wakeup-source;
++		#clock-cells = <1>;
++		clock-output-names = "rk808-clkout1", "rk808-clkout2";
++
++		vcc1-supply = <&vcc3v3_sys>;
++		vcc2-supply = <&vcc3v3_sys>;
++		vcc3-supply = <&vcc3v3_sys>;
++		vcc4-supply = <&vcc3v3_sys>;
++		vcc6-supply = <&vcc3v3_sys>;
++		vcc7-supply = <&vcc3v3_sys>;
++		vcc8-supply = <&vcc3v3_sys>;
++		vcc9-supply = <&vcc3v3_sys>;
++		vcc10-supply = <&vcc3v3_sys>;
++		vcc11-supply = <&vcc3v3_sys>;
++		vcc12-supply = <&vcc3v3_sys>;
++		vddio-supply = <&vcc_3v0>;
++
++		regulators {
++			vdd_center: DCDC_REG1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <750000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++				regulator-name = "vdd_center";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_cpu_l: DCDC_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <750000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++				regulator-name = "vdd_cpu_l";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vcc_ddr";
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_1v8: DCDC_REG4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc_1v8";
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vcc1v8_dvp: LDO_REG1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc1v8_dvp";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc3v0_tp: LDO_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-name = "vcc3v0_tp";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc1v8_pmu: LDO_REG3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc1v8_pmu";
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vccio_sd: LDO_REG4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-init-microvolt = <3000000>;
++				regulator-name = "vccio_sd";
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++
++			vcca3v0_codec: LDO_REG5 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-name = "vcca3v0_codec";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_1v5: LDO_REG6 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1500000>;
++				regulator-max-microvolt = <1500000>;
++				regulator-name = "vcc_1v5";
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1500000>;
++				};
++			};
++
++			vcca1v8_codec: LDO_REG7 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcca1v8_codec";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_3v0: LDO_REG8 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-name = "vcc_3v0";
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++
++			vcc3v3_s3: SWITCH_REG1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vcc3v3_s3";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc3v3_s0: SWITCH_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vcc3v3_s0";
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++		};
++	};
++};
++
++&i2c1 {
++	status = "okay";
++	i2c-scl-rising-time-ns = <150>;
++	i2c-scl-falling-time-ns = <30>;
++	clock-frequency = <200000>;
++};
++
++&i2c2 {
++	status = "okay";
++};
++
++&i2c4 {
++	status = "okay";
++	i2c-scl-rising-time-ns = <160>;
++	i2c-scl-falling-time-ns = <30>;
++	clock-frequency = <400000>;
++
++	fusb0: typec-portc@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&fusb0_int>;
++		vbus-supply = <&vcc5v0_typec>;
++		status = "okay";
++	};
++};
++
++&i2c7 {
++	status = "okay";
++};
++
++
++&io_domains {
++	status = "okay";
++
++	bt656-supply = <&vcc1v8_dvp>;		/* bt656_gpio2ab_ms */
++	audio-supply = <&vcca1v8_codec>;
++	sdmmc-supply = <&vccio_sd>;		/* sdmmc_gpio4b_ms */
++	gpio1830-supply = <&vcc_3v0>;		/* gpio1833_gpio4cd_ms */
++};
++
++&pmu_io_domains {
++	status = "okay";
++	pmu1830-supply = <&vcc_3v0>;
++};
++
++&pcie_phy {
++	status = "okay";
++	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
++	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
++	assigned-clock-rates = <100000000>;
++};
++
++&pcie0 {
++	status = "okay";
++	ep-gpios = <&gpio2 4 GPIO_ACTIVE_HIGH>;
++	num-lanes = <4>;
++	max-link-speed = <2>;
++};
++
++&pwm0 {
++	status = "okay";
++};
++
++&pwm1 {
++	status = "okay";
++};
++
++&pwm2 {
++	status = "okay";
++	pinctrl-names = "active";
++	pinctrl-0 = <&pwm2_pin_pull_down>;
++};
++
++&saradc {
++	status = "okay";
++	vref-supply = <&vccadc_ref>; /* TBD */
++};
++
++&sdhci {
++	bus-width = <8>;
++	mmc-hs400-1_8v;
++	supports-emmc;
++	non-removable;
++	keep-power-in-suspend;
++	mmc-hs400-enhanced-strobe;
++	status = "okay";
++};
++
++&emmc_phy {
++	status = "okay";
++};
++
++&sdio0 {
++	clock-frequency = <50000000>;
++	clock-freq-min-max = <200000 50000000>;
++	supports-sdio;
++	bus-width = <4>;
++	disable-wp;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	non-removable;
++	num-slots = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
++	sd-uhs-sdr104;
++	status = "okay";
++};
++
++&sdmmc {
++	clock-frequency = <150000000>;
++	clock-freq-min-max = <100000 150000000>;
++	supports-sd;
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	disable-wp;
++	num-slots = <1>;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc_sd>;
++	vqmmc-supply = <&vccio_sd>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
++	status = "okay";
++};
++
++&tsadc {
++	/* tshut mode 0:CRU 1:GPIO */
++	rockchip,hw-tshut-mode = <1>;
++	/* tshut polarity 0:LOW 1:HIGH */
++	rockchip,hw-tshut-polarity = <1>;
++	status = "okay";
++};
++
++&tcphy0 {
++	extcon = <&fusb0>;
++	status = "okay";
++};
++
++&tcphy1 {
++	status = "okay";
++};
++
++&u2phy0 {
++	status = "okay";
++	extcon = <&fusb0>;
++
++	u2phy0_otg: otg-port {
++		status = "okay";
++	};
++
++	u2phy0_host: host-port {
++		phy-supply = <&vcc5v0_host>;
++		status = "okay";
++	};
++};
++
++&u2phy1 {
++	status = "okay";
++
++	u2phy1_otg: otg-port {
++		status = "okay";
++	};
++
++	u2phy1_host: host-port {
++		phy-supply = <&vcc5v0_host>;
++		status = "okay";
++	};
++};
++
++&usbdrd3_0 {
++	status = "okay";
++	extcon = <&fusb0>;
++};
++
++&usbdrd3_1 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_0 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_1 {
++	status = "okay";
++	dr_mode = "host";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
++
++&pinctrl {
++
++	hdmi {
++		/delete-node/ hdmi-i2c-xfer;
++	};
++
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <1 21 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		vsel1_gpio: vsel1-gpio {
++			rockchip,pins = <1 17 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++		vsel2_gpio: vsel2-gpio {
++			rockchip,pins = <1 14 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++
++	vcc_sd {
++		vcc_sd_h: vcc-sd-h {
++			rockchip,pins = <0 1 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	fusb30x {
++		fusb0_int: fusb0-int {
++			rockchip,pins = <1 2 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	sdio-pwrseq {
++		wifi_enable_h: wifi-enable-h {
++			rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	rockchip-key {
++		power_key: power-key {
++			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	gpio-leds {
++		leds_gpio: leds-gpio {
++			rockchip,pins = <0 13 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
 -- 
-Sincerely yours,
-Mike.
+2.19.1
