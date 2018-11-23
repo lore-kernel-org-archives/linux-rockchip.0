@@ -1,69 +1,112 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v3] drm/rockchip: update cursors asynchronously through
- atomic.
-Date: Fri, 23 Nov 2018 14:35:48 +0900
-Message-ID: <CAAFQd5DAti8Vf+jyLp6nVH5FiesE=jLNoLq3AFaqdm2FfY=v9Q@mail.gmail.com>
-References: <20181119190805.19139-1-helen.koike@collabora.com>
- <CAAFQd5DDZwhdMDbrHthQwm2bQ3+NoZNcemAktVTxkR3=LfnnTg@mail.gmail.com>
- <d3fb3b21-6c3d-6b01-727b-dbd66540ce92@collabora.com>
- <CAAFQd5Afa9ndmU0=q5Kjv-BY+0qpvOdq2+eOTO6OebX4-2NENA@mail.gmail.com>
- <1d10a4323a49ca09bbb7dc865aaaf5b8c5e3b3d5.camel@crowfest.net>
+From: Mike Rapoport <rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org>
+Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range API
+Date: Fri, 23 Nov 2018 09:19:25 +0200
+Message-ID: <20181123071924.GF5704@rapoport-lnx>
+References: <20181115154530.GA27872@jordon-HP-15-Notebook-PC>
+	<20181116182836.GB17088@rapoport-lnx>
+	<CAFqt6zYp0j999WXw9Jus0oZMjADQQkPfso8btv6du6L9CE3PXA@mail.gmail.com>
+	<20181117143742.GB7861@bombadil.infradead.org>
+	<CAFqt6zbOWX5LUTWwoGDJsGdf+pTR6N1yTPVxyr1W3-6Fte39ww@mail.gmail.com>
+	<20181119162623.GA13200@rapoport-lnx>
+	<CAFqt6zbhodAGQz-RCB3C-wt_Mvb9QDmQ8pFeP2EO+ba2k2OccA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1d10a4323a49ca09bbb7dc865aaaf5b8c5e3b3d5.camel@crowfest.net>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: mzoran@crowfest.net
-Cc: =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@google.com>, Sean Paul <seanpaul@google.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <iommu@lists.linux-foundation.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, helen.koike@collabora.com, dri-devel <dri-devel@lists.freedesktop.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kernel@collabora.com, Gustavo Padovan <gustavo.padovan@collabora.com>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAFqt6zbhodAGQz-RCB3C-wt_Mvb9QDmQ8pFeP2EO+ba2k2OccA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux-MM <linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, Stephen Rothwell <sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org>, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, airlied-cv59FeDIM0c@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, Rik van Riel <riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, Boris Ostrovsky <boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, Juergen Gross <jgross-IBi9RG/b67k@public.gmane.org>, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, Kyungmin
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWljaGFlbCwKCk9uIEZyaSwgTm92IDIzLCAyMDE4IGF0IDE6NTggUE0gTWljaGFlbCBab3Jh
-biA8bXpvcmFuQGNyb3dmZXN0Lm5ldD4gd3JvdGU6Cj4KPiBPbiBGcmksIDIwMTgtMTEtMjMgYXQg
-MTE6MjcgKzA5MDAsIFRvbWFzeiBGaWdhIHdyb3RlOgo+ID4KPiA+IFRoZSBwb2ludCBoZXJlIGlz
-IG5vdCBhYm91dCBzZXR0aW5nIGFuZCByZXNldHRpbmcgdGhlIHBsYW5lLT5mYgo+ID4gcG9pbnRl
-ci4gSXQncyBhYm91dCB3aGF0IGhhcHBlbnMgaW5zaWRlCj4gPiBkcm1fYXRvbWljX3NldF9mYl9m
-b3JfcGxhbmUoKS4KPiA+Cj4gPiBJdCBjYWxscyBkcm1fZnJhbWVidWZmZXJfZ2V0KCkgZm9yIHRo
-ZSBuZXcgZmIgYW5kCj4gPiBkcm1fZnJhbWVidWZmZXJfcHV0KCkgZm9yIHRoZSBvbGQgZmIuIElu
-IHJlc3VsdCwgaWYgdGhlIGZiIGNoYW5nZXMsCj4gPiB0aGUgb2xkIGZiLCB3aGljaCBoYWQgaXRz
-IHJlZmVyZW5jZSBjb3VudCBpbmNyZW1lbnRlZCBpbiB0aGUgYXRvbWljCj4gPiBjb21taXQgdGhh
-dCBzZXQgaXQgdG8gdGhlIHBsYW5lIGJlZm9yZSwgaGFzIGl0cyByZWZlcmVuY2UgY291bnQKPiA+
-IGRlY3JlbWVudGVkLiBNb3Jlb3ZlciwgaWYgdGhlIG5ldyByZWZlcmVuY2UgY291bnQgYmVjb21l
-cyAwLAo+ID4gZHJtX2ZyYW1lYnVmZmVyX3B1dCgpIHdpbGwgaW1tZWRpYXRlbHkgZnJlZSB0aGUg
-YnVmZmVyLgo+ID4KPiA+IEZyZWVpbmcgYSBidWZmZXIgd2hlbiB0aGUgaGFyZHdhcmUgaXMgc3Rp
-bGwgc2Nhbm5pbmcgb3V0IG9mIGl0IGlzbid0Cj4gPiBhCj4gPiBnb29kIGlkZWEsIGlzIGl0Pwo+
-Cj4gTm8sIGl0J3Mgbm90LiAgQnV0IHRoZSBib2FyZCBJIHN1Ym1pdHRlZCB0aGUgcGF0Y2ggZm9y
-IGRvZXNuJ3QgaGF2ZQo+IGFueXRoaW5nIGxpa2UgaG90IHN3YXBhYmxlIHJhbS4gIFRoZSByYW0g
-YWNjZXNzIGlzIHN0aWxsIGdvaW5nIHRvIHdvcmssCj4ganVzdCBpdCBtaWdodCBkaXNwbGF5IHNv
-bWV0aGluZyBpdCBzaG91bGRuJ3QuIFNheSBmb3IgZXhhbXBsZSBpZiB0aGF0Cj4gZnJhbWUgYnVm
-ZmVyIGdvdCByZXVzZWQgYnkgc29tZXRoaWcgZWxzZSBhbmQgZmlsbGVkIHdpdGggbmV3IGRhdGEg
-aW4KPiB0aGUgdmVyeSBzbWFsbCB3aW5kb3cuCgpUaGFua3MgZm9yIGEgcXVpY2sgcmVwbHkhCgpU
-byBjbGFyaWZ5LCBvbiB0aGUgUm9ja2NoaXAgcGxhdGZvcm0gdGhpcyBwYXRjaCBpcyBmb3IgKGFu
-ZCBtYW55IG90aGVyCmFybS9hcm02NCBTb0NzKSB0aGUgZGlzcGxheSBjb250cm9sbGVyIGlzIGJl
-aGluZCBhbiBJT01NVS4gRnJlZWluZyB0aGUKYnVmZmVyIHdvdWxkIG1lYW4gdW5tYXBwaW5nIHRo
-ZSByZWxhdGVkIElPVkFzIGZyb20gdGhlIElPTU1VLiBJZiB0aGUKaGFyZHdhcmUgaXMgc3RpbGwg
-c2Nhbm5pbmcgb3V0IGZyb20gdGhlIHVubWFwcGVkIGFkZHJlc3NlcywgaXQgd291bGQKY2F1c2Ug
-SU9NTVUgcGFnZSBmYXVsdHMuIFdlIGRvbid0IGhhdmUgYW55IGdvb2QgSU9NTVUgcGFnZSBmYXVs
-dApoYW5kbGluZyBpbiB0aGUga2VybmVsLCBzbyBvbiBtb3N0IHBsYXRmb3JtcyB0aGF0IHdvdWxk
-IGxpa2VseSBlbmQgdXAKc3RhbGxpbmcgdGhlIGRpc3BsYXkgY29udHJvbGxlciBjb21wbGV0ZWx5
-IChvbiBSb2NrY2hpcCBpdCBkb2VzKS4KCj4KPiBCdXQgeWVzLCBJIGFncmVlIHRoZSBiZXN0IHNv
-bHV0aW9uIHdvdWxkIGJlIHRvIG5vdCByZWxlYXNlIHRoZSBidWZmZXIKPiB1bnRpbCB0aGUgbmV4
-dCB2YmxhbmsuCj4KPiBQZXJoYXBzIGEgZ29vZCBzb2x1dGlvbiB3b3VsZCBiZSBmb3IgdGhlIERS
-TSBhcGkgdG8gaGF2ZSB0aGUgY29uY2VwdCBvZgo+IGEgZGVmZXJyZWQgcmVsZWFzZT8gIE1lYW5p
-bmcgaWYgdGhlIHB1dCgpIGNhbGwganVzdCBhZGRlZCB0aGUgZnJhbWUKPiBidWZmZXIgdG8gYSBs
-aXN0IHRoYXQgRFJNIGNvcmUgY291bGQgd2FsayBkdXJpbmcgdGhlIHZibGFuay4gIFRoYXQKPiBt
-aWdodCBiZSBiZXR0ZXIgdGhlbiBldmVyeSBzaW5nbGUgZHJpdmVyIHRyeWluZyB0byB3b3JrIHVw
-IGEgY3VzdG9tCj4gc29sdXRpb24uCgpBZ3JlZWQuCgpCZXN0IHJlZ2FyZHMsClRvbWFzegpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Mon, Nov 19, 2018 at 11:15:15PM +0530, Souptick Joarder wrote:
+> On Mon, Nov 19, 2018 at 9:56 PM Mike Rapoport <rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org> wrote:
+> >
+> > On Mon, Nov 19, 2018 at 08:43:09PM +0530, Souptick Joarder wrote:
+> > > Hi Mike,
+> > >
+> > > On Sat, Nov 17, 2018 at 8:07 PM Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
+> > > >
+> > > > On Sat, Nov 17, 2018 at 12:26:38PM +0530, Souptick Joarder wrote:
+> > > > > On Fri, Nov 16, 2018 at 11:59 PM Mike Rapoport <rppt-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org> wrote:
+> > > > > > > + * vm_insert_range - insert range of kernel pages into user vma
+> > > > > > > + * @vma: user vma to map to
+> > > > > > > + * @addr: target user address of this page
+> > > > > > > + * @pages: pointer to array of source kernel pages
+> > > > > > > + * @page_count: no. of pages need to insert into user vma
+> > > > > > > + *
+> > > > > > > + * This allows drivers to insert range of kernel pages they've allocated
+> > > > > > > + * into a user vma. This is a generic function which drivers can use
+> > > > > > > + * rather than using their own way of mapping range of kernel pages into
+> > > > > > > + * user vma.
+> > > > > >
+> > > > > > Please add the return value and context descriptions.
+> > > > > >
+> > > > >
+> > > > > Sure I will wait for some time to get additional review comments and
+> > > > > add all of those requested changes in v2.
+> > > >
+> > > > You could send your proposed wording now which might remove the need
+> > > > for a v3 if we end up arguing about the wording.
+> > >
+> > > Does this description looks good ?
+> > >
+> > > /**
+> > >  * vm_insert_range - insert range of kernel pages into user vma
+> > >  * @vma: user vma to map to
+> > >  * @addr: target user address of this page
+> > >  * @pages: pointer to array of source kernel pages
+> > >  * @page_count: number of pages need to insert into user vma
+> > >  *
+> > >  * This allows drivers to insert range of kernel pages they've allocated
+> > >  * into a user vma. This is a generic function which drivers can use
+> > >  * rather than using their own way of mapping range of kernel pages into
+> > >  * user vma.
+> > >  *
+> > >  * Context - Process context. Called by mmap handlers.
+> >
+> > Context:
+> >
+> > >  * Return - int error value
+> >
+> > Return:
+> >
+> > >  * 0                    - OK
+> > >  * -EINVAL              - Invalid argument
+> > >  * -ENOMEM              - No memory
+> > >  * -EFAULT              - Bad address
+> > >  * -EBUSY               - Device or resource busy
+> >
+> > I don't think that elaborate description of error values is needed, just "0
+> > on success and error code otherwise" would be sufficient.
+> 
+> /**
+>  * vm_insert_range - insert range of kernel pages into user vma
+>  * @vma: user vma to map to
+>  * @addr: target user address of this page
+>  * @pages: pointer to array of source kernel pages
+>  * @page_count: number of pages need to insert into user vma
+>  *
+>  * This allows drivers to insert range of kernel pages they've allocated
+>  * into a user vma. This is a generic function which drivers can use
+>  * rather than using their own way of mapping range of kernel pages into
+>  * user vma.
+>  *
+>  * Context: Process context. Called by mmap handlers.
+>  * Return: 0 on success and error code otherwise
+>  */
+
+Looks good to me.
+
+-- 
+Sincerely yours,
+Mike.
