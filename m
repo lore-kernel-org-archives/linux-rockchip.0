@@ -1,52 +1,61 @@
-From: Otavio Salvador <otavio.salvador@ossystems.com.br>
-Subject: Re: [PATCH] ARM: dts: rv1108-evb: enable eMMC support
-Date: Sun, 25 Nov 2018 18:53:01 -0200
-Message-ID: <CAP9ODKpnv0FmK1no6mpqR=WGUgwvMUpKjVFNkXsEXReqb9OnXg@mail.gmail.com>
-References: <20181009213656.27719-1-otavio@ossystems.com.br> <6815120.yyevdQbq0d@phil>
+From: Otavio Salvador <otavio@ossystems.com.br>
+Subject: [PATCH v2] ARM: dts: rv1108: enable eMMC support
+Date: Sun, 25 Nov 2018 19:14:27 -0200
+Message-ID: <20181125211427.4926-1-otavio@ossystems.com.br>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6815120.yyevdQbq0d@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Otavio Salvador <otavio@ossystems.com.br>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Kernel development list <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+To: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Otavio Salvador <otavio@ossystems.com.br>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-On Tue, Oct 16, 2018 at 10:09 AM Heiko Stuebner <heiko@sntech.de> wrote:
-> Am Dienstag, 9. Oktober 2018, 23:36:56 CEST schrieb Otavio Salvador:
-> > Enable eMMC support for rv1108 evaluation board.
-> >
-> > Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
-> > ---
-> >
-> >  arch/arm/boot/dts/rv1108-evb.dts |  8 ++++++++
-> >  arch/arm/boot/dts/rv1108.dtsi    | 29 +++++++++++++++++++++++++++++
-> >  2 files changed, 37 insertions(+)
-> >
-> > diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-> > index 70f0106d1252..f3c6f52c49e6 100644
-> > --- a/arch/arm/boot/dts/rv1108-evb.dts
-> > +++ b/arch/arm/boot/dts/rv1108-evb.dts
-> > @@ -226,6 +226,14 @@
-> >       status = "okay";
-> >  };
-> >
-> > +&emmc {
-> > +     cap-mmc-highspeed;
-> > +     supports-emmc;
-> > +     non-removable;
-> > +     num-slots = <1>;
->
-> num-slots should not be present anymore on new additions
->
-> Also missing the pinctrl settings you're defining below?
-> Aka pinctrl-0 = <&emmc_*>; + pinctrl-names = "default"
+Enable eMMC support for rv1108.dtsi as it can be used across multiple
+boards.
 
-Thank you, I am preparing a v2 of this patch together with few more changes.
+Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+---
 
+Changes in v2:
+- rework evb device tree (Heiko Stuebner)
+- avoid adding the evb use as it is not present on evb but
+  minievb (which I don't have to test) and we are using it on a custom
+  customer board.
 
+ arch/arm/boot/dts/rv1108.dtsi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index ed8f6ca52c5b..4f4275599f7a 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -734,6 +734,27 @@
+ 			};
+ 		};
+ 
++		emmc {
++			emmc_clk: emmc-clk {
++				rockchip,pins = <2 RK_PB6 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			};
++
++			emmc_cmd: emmc-cmd {
++				rockchip,pins = <2 RK_PB4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++			};
++
++			emmc_bus8: emmc-bus8 {
++				rockchip,pins = <2 RK_PA0 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA1 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA2 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA3 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA5 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA6 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA7 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++			};
++		};
++
+ 		sdmmc {
+ 			sdmmc_clk: sdmmc-clk {
+ 				rockchip,pins = <3 RK_PC4 RK_FUNC_1 &pcfg_pull_none_drv_4ma>;
 -- 
-Otavio Salvador                             O.S. Systems
-http://www.ossystems.com.br        http://code.ossystems.com.br
-Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
+2.19.1
