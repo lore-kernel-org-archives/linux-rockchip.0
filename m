@@ -1,38 +1,50 @@
-From: Otavio Salvador <otavio@ossystems.com.br>
-Subject: [PATCH 13/13] ARM: dts: rv1108: Pass the 'clock-latency' property
-Date: Sun, 25 Nov 2018 19:19:07 -0200
-Message-ID: <20181125211907.9895-13-otavio@ossystems.com.br>
-References: <20181125211907.9895-1-otavio@ossystems.com.br>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH 02/13] ARM: multi_v7_defconfig: Add missing systemd options
+Date: Sun, 25 Nov 2018 14:25:04 -0800
+Message-ID: <CAOesGMjR--5XC1pNMkPHR9BaPfgGfdC8JHAM3oqS3Xte3TQbGA@mail.gmail.com>
+References: <20181125211907.9895-1-otavio@ossystems.com.br> <20181125211907.9895-2-otavio@ossystems.com.br>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181125211907.9895-1-otavio@ossystems.com.br>
+In-Reply-To: <20181125211907.9895-2-otavio@ossystems.com.br>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Otavio Salvador <otavio@ossystems.com.br>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+To: Otavio Salvador <otavio@ossystems.com.br>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM Mailing List <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, fabio.berton@ossystems.com.br, yannick.fertre@st.com, Arnd Bergmann <arnd@arndb.de>, Eric Anholt <eric@anholt.net>, Alexandre TORGUE <alexandre.torgue@st.com>, Stefan Wahren <stefan.wahren@i2se.com>, Stefan Agner <stefan@agner.ch>, Tony Lindgren <tony@atomide.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Russell King <linux@armlinux.org.uk>, Simon Horman <horms+renesas@verge.net.au>
 List-Id: linux-rockchip.vger.kernel.org
 
-Like it is done on cpu nodes of other Rockchip SoCs, pass the
-'clock-latency' property to the CPU node, so that cpufreq driver
-can take the latency into account when switching frequencies.
+On Sun, Nov 25, 2018 at 1:19 PM Otavio Salvador <otavio@ossystems.com.br> wrote:
+>
+> From: Fabio Berton <fabio.berton@ossystems.com.br>
+>
+> Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
 
-Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
----
+Hi Otavio,
 
- arch/arm/boot/dts/rv1108.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Thanks for these patches. I don't have a reason to _not_ enable
+systemd features, but would you mind providing a brief description of
+what's not working without this change? Is it completely broken, or is
+it just the random-UID featues that don't work, or something else?.
+Useful for others to know what's expected to break if someone turns
+them off, etc.
 
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index d96c58728b28..4e1ca13a1636 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -36,6 +36,7 @@
- 			#cooling-cells = <2>; /* min followed by max */
- 			dynamic-power-coefficient = <75>;
- 			operating-points-v2 = <&cpu_opp_table>;
-+			clock-latency = <40000>;
- 		};
- 	};
- 
--- 
-2.19.1
+Also, I noticed you posted a series of 13 patches, which includes some
+dts files for rv1108, some network driver changes and some of these
+more generic defconfig changes. I would suggest that you split up your
+patches into independent series where possible, especially when they
+end up going to different subsystems. Providing suitable cover letters
+for the series when you post them is also useful to help reviewers by
+summarizing the series, including changes from last time it was
+posted, etc. Please address it to the superset of patch receivers on
+the series.
+
+I'm asking for the cover letter because this time I was wondering if
+there was a reason for the mix of patches so I went looking for it.
+Maybe there is a need to group them together even though the
+sub-series seem somewhat independent -- I can't tell from the way they
+were posted.
+
+
+Thanks!
+
+-Olof
