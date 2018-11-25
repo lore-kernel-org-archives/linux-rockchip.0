@@ -1,44 +1,52 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH] clk: rockchip: add clock gate of ACODEC for rk3328
-Date: Mon, 26 Nov 2018 02:56:03 +0900
-Message-ID: <20181125175603.30592-1-katsuhiro@katsuster.net>
+From: Otavio Salvador <otavio.salvador@ossystems.com.br>
+Subject: Re: [PATCH] ARM: dts: rv1108-evb: enable eMMC support
+Date: Sun, 25 Nov 2018 18:53:01 -0200
+Message-ID: <CAP9ODKpnv0FmK1no6mpqR=WGUgwvMUpKjVFNkXsEXReqb9OnXg@mail.gmail.com>
+References: <20181009213656.27719-1-otavio@ossystems.com.br> <6815120.yyevdQbq0d@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6815120.yyevdQbq0d@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Otavio Salvador <otavio@ossystems.com.br>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Kernel development list <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds small changes into clock gate definition to enable
-ACODEC for rk3328.
+Hi Heiko,
+On Tue, Oct 16, 2018 at 10:09 AM Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Dienstag, 9. Oktober 2018, 23:36:56 CEST schrieb Otavio Salvador:
+> > Enable eMMC support for rv1108 evaluation board.
+> >
+> > Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+> > ---
+> >
+> >  arch/arm/boot/dts/rv1108-evb.dts |  8 ++++++++
+> >  arch/arm/boot/dts/rv1108.dtsi    | 29 +++++++++++++++++++++++++++++
+> >  2 files changed, 37 insertions(+)
+> >
+> > diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
+> > index 70f0106d1252..f3c6f52c49e6 100644
+> > --- a/arch/arm/boot/dts/rv1108-evb.dts
+> > +++ b/arch/arm/boot/dts/rv1108-evb.dts
+> > @@ -226,6 +226,14 @@
+> >       status = "okay";
+> >  };
+> >
+> > +&emmc {
+> > +     cap-mmc-highspeed;
+> > +     supports-emmc;
+> > +     non-removable;
+> > +     num-slots = <1>;
+>
+> num-slots should not be present anymore on new additions
+>
+> Also missing the pinctrl settings you're defining below?
+> Aka pinctrl-0 = <&emmc_*>; + pinctrl-names = "default"
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
----
- drivers/clk/rockchip/clk-rk3328.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thank you, I am preparing a v2 of this patch together with few more changes.
 
-diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
-index 1eb46aa8b2fa..faa94adb2a37 100644
---- a/drivers/clk/rockchip/clk-rk3328.c
-+++ b/drivers/clk/rockchip/clk-rk3328.c
-@@ -804,7 +804,7 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
- 	GATE(PCLK_USB3_GRF, "pclk_usb3_grf", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 2, GFLAGS),
- 	GATE(PCLK_USB2_GRF, "pclk_usb2_grf", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 14, GFLAGS),
- 	GATE(0, "pclk_ddrphy", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 13, GFLAGS),
--	GATE(0, "pclk_acodecphy", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 5, GFLAGS),
-+	GATE(PCLK_ACODECPHY, "pclk_acodecphy", "pclk_phy_pre", 0, RK3328_CLKGATE_CON(17), 5, GFLAGS),
- 	GATE(PCLK_HDMIPHY, "pclk_hdmiphy", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 7, GFLAGS),
- 	GATE(0, "pclk_vdacphy", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 8, GFLAGS),
- 	GATE(0, "pclk_phy_niu", "pclk_phy_pre", 0, RK3328_CLKGATE_CON(15), 15, GFLAGS),
+
 -- 
-2.19.1
+Otavio Salvador                             O.S. Systems
+http://www.ossystems.com.br        http://code.ossystems.com.br
+Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
