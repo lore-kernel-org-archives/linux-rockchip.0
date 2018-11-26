@@ -1,54 +1,50 @@
-From: Otavio Salvador <otavio.salvador@ossystems.com.br>
-Subject: Re: [PATCH 02/13] ARM: multi_v7_defconfig: Add missing systemd options
-Date: Sun, 25 Nov 2018 21:10:51 -0200
-Message-ID: <CAP9ODKrTZm8FuRWLh+5NZSbpMh_yptotdoEgfrARHypUx8FkMg@mail.gmail.com>
-References: <20181125211907.9895-1-otavio@ossystems.com.br>
- <20181125211907.9895-2-otavio@ossystems.com.br> <CAOesGMjR--5XC1pNMkPHR9BaPfgGfdC8JHAM3oqS3Xte3TQbGA@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 07/13] ARM: dts: rv1108: Fix the timer mask
+Date: Mon, 26 Nov 2018 06:26:36 +0100
+Message-ID: <4443441.F7S2jYBxxL@phil>
+References: <20181125211907.9895-1-otavio@ossystems.com.br> <20181125211907.9895-7-otavio@ossystems.com.br>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAOesGMjR--5XC1pNMkPHR9BaPfgGfdC8JHAM3oqS3Xte3TQbGA@mail.gmail.com>
+In-Reply-To: <20181125211907.9895-7-otavio@ossystems.com.br>
 Sender: linux-kernel-owner@vger.kernel.org
-To: olof@lixom.net
-Cc: Otavio Salvador <otavio@ossystems.com.br>, stefan.wahren@i2se.com, Fabio Berton <fabio.berton@ossystems.com.br>, alexandre.torgue@st.com, arnd@arndb.de, eric@anholt.net, Tony Lindgren <tony@atomide.com>, Kernel development list <linux-kernel@vger.kernel.org>, Stefan Agner <stefan@agner.ch>, Russell King <linux@armlinux.org.uk>, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, horms+renesas@verge.net.au, geert+renesas@glider.be, linux-arm-kernel@lists.infradead.org
+To: Otavio Salvador <otavio@ossystems.com.br>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Fabio Berton <fabio.berton@ossystems.com.br>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Olof,
+Am Sonntag, 25. November 2018, 22:19:01 CET schrieb Otavio Salvador:
+> As done in the Rockchip vendor tree and also on other
+> "arm,armv7-timer" instances, the correct GIC_CPU_MASK_SIMPLE mask
+> is 4 instead of 1.
 
-On Sun, Nov 25, 2018 at 8:25 PM Olof Johansson <olof@lixom.net> wrote:
-> Thanks for these patches. I don't have a reason to _not_ enable
-> systemd features, but would you mind providing a brief description of
-> what's not working without this change? Is it completely broken, or is
-> it just the random-UID featues that don't work, or something else?.
-> Useful for others to know what's expected to break if someone turns
-> them off, etc.
+Nope. That value represents the number of cores in the system.
+As the rv1108 only has one core, that should likely stay as it is.
 
-Thank you for your kindness reviewing this. I am not an experienced
-Linux kernel contributor so I am going to do some mistakes during this
-process.
+Also, it seems I only got patches 6-13 what happened to 1-5?
 
-We usually follow the required feature set listed on Gentoo wiki[1] as
-it is usually up to date and avoids a lot of headaches for us when
-dealing with boot issues with SystemD.
+Heiko
 
-1. https://wiki.gentoo.org/wiki/Systemd#Kernel
-
-Do you think mentioning where it has been taken from is enough?
-
-> Also, I noticed you posted a series of 13 patches, which includes some
-> dts files for rv1108, some network driver changes and some of these
-> more generic defconfig changes. I would suggest that you split up your
-> patches into independent series where possible, especially when they
-> end up going to different subsystems. Providing suitable cover letters
-> for the series when you post them is also useful to help reviewers by
-> summarizing the series, including changes from last time it was
-> posted, etc. Please address it to the superset of patch receivers on
-> the series.
-
-I can certainly improve it for the next submission. Should I split
-them all and tag them v2 to easy it?
-
--- 
-Otavio Salvador                             O.S. Systems
-http://www.ossystems.com.br        http://code.ossystems.com.br
-Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
+> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+> Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+> ---
+> 
+>  arch/arm/boot/dts/rv1108.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+> index c7a26f82655b..7b331766120d 100644
+> --- a/arch/arm/boot/dts/rv1108.dtsi
+> +++ b/arch/arm/boot/dts/rv1108.dtsi
+> @@ -71,8 +71,8 @@
+>  
+>  	timer {
+>  		compatible = "arm,armv7-timer";
+> -		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
+> -			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+>  		clock-frequency = <24000000>;
+>  	};
+>  
+> 
