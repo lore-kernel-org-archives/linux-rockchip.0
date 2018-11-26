@@ -1,27 +1,28 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] ARM: dts: rv1108: enable eMMC support
-Date: Mon, 26 Nov 2018 10:03:15 +0100
-Message-ID: <2374110.cSv9E7W1qs@phil>
-References: <20181125211427.4926-1-otavio@ossystems.com.br>
+Subject: Re: [PATCH 06/13] ARM: dts: rv1108: Add GMAC support
+Date: Mon, 26 Nov 2018 10:14:02 +0100
+Message-ID: <1588360.6TRC2vKZya@phil>
+References: <20181125211907.9895-1-otavio@ossystems.com.br> <20181125211907.9895-6-otavio@ossystems.com.br>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181125211427.4926-1-otavio@ossystems.com.br>
+In-Reply-To: <20181125211907.9895-6-otavio@ossystems.com.br>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Otavio Salvador <otavio@ossystems.com.br>
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 25. November 2018, 22:14:27 CET schrieb Otavio Salvador:
-> Enable eMMC support for rv1108.dtsi as it can be used across multiple
-> boards.
+Am Sonntag, 25. November 2018, 22:19:00 CET schrieb Otavio Salvador:
+> Add GMAC support for RV1108.
 > 
 > Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
 
-applied for 4.21 after reordering the emmc pinctrl nodes a bit
-and modifying the suject + commit message to be a bit more specific
-in that we only add the common pin settings.
+applied for 4.21 after modifying the subject a bit and adding
+a comment explaining that the rv1108 only has that rmii interface.
+
+While the dwmac is definitly a big improvement over the arc-emac
+it is still surprising that the gbit mac only gets a 100mbit phy interface.
 
 
 Heiko
