@@ -1,89 +1,99 @@
-From: Boris Brezillon <boris.brezillon@bootlin.com>
-Subject: Re: [PATCH v3] drm/rockchip: update cursors asynchronously through
- atomic.
-Date: Mon, 26 Nov 2018 22:41:02 +0100
-Message-ID: <20181126224102.1efbf2d1@bbrezillon>
-References: <20181119190805.19139-1-helen.koike@collabora.com>
- <CAAFQd5DDZwhdMDbrHthQwm2bQ3+NoZNcemAktVTxkR3=LfnnTg@mail.gmail.com>
- <d3fb3b21-6c3d-6b01-727b-dbd66540ce92@collabora.com>
- <CAAFQd5Afa9ndmU0=q5Kjv-BY+0qpvOdq2+eOTO6OebX4-2NENA@mail.gmail.com>
- <1d10a4323a49ca09bbb7dc865aaaf5b8c5e3b3d5.camel@crowfest.net>
- <87o9abbmq4.fsf@anholt.net>
+From: Paul Gortmaker <paul.gortmaker@windriver.com>
+Subject: [PATCH 2/9] iommu: rockchip: make it explicitly non-modular
+Date: Mon, 26 Nov 2018 17:31:31 -0500
+Message-ID: <1543271498-28966-3-git-send-email-paul.gortmaker@windriver.com>
+References: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <87o9abbmq4.fsf@anholt.net>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Eric Anholt <eric@anholt.net>
-Cc: =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@google.com>, Sean Paul <seanpaul@google.com>, Gustavo Padovan <gustavo.padovan@collabora.com>, David Airlie <airlied@linux.ie>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, helen.koike@collabora.com, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>,	Joerg  Roedel
- <joro@8bytes.org>, " <iommu@lists.linux-foundation.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Michael Zoran <mzoran@crowfest.net>, dri-devel <dri-devel@lists.freedesktop.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kernel@collabora.com, "list@263.net:IOMMU
- DRIVERS <iommu@lists.linux-foundation.org>, Joerg  Roedel
- <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Paul Gortmaker <paul.gortmaker@windriver.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCAyNiBOb3YgMjAxOCAxMjozNjowMyAtMDgwMApFcmljIEFuaG9sdCA8ZXJpY0Bhbmhv
-bHQubmV0PiB3cm90ZToKCj4gTWljaGFlbCBab3JhbiA8bXpvcmFuQGNyb3dmZXN0Lm5ldD4gd3Jp
-dGVzOgo+IAo+ID4gT24gRnJpLCAyMDE4LTExLTIzIGF0IDExOjI3ICswOTAwLCBUb21hc3ogRmln
-YSB3cm90ZTogIAo+ID4+IAo+ID4+IFRoZSBwb2ludCBoZXJlIGlzIG5vdCBhYm91dCBzZXR0aW5n
-IGFuZCByZXNldHRpbmcgdGhlIHBsYW5lLT5mYgo+ID4+IHBvaW50ZXIuIEl0J3MgYWJvdXQgd2hh
-dCBoYXBwZW5zIGluc2lkZQo+ID4+IGRybV9hdG9taWNfc2V0X2ZiX2Zvcl9wbGFuZSgpLgo+ID4+
-IAo+ID4+IEl0IGNhbGxzIGRybV9mcmFtZWJ1ZmZlcl9nZXQoKSBmb3IgdGhlIG5ldyBmYiBhbmQK
-PiA+PiBkcm1fZnJhbWVidWZmZXJfcHV0KCkgZm9yIHRoZSBvbGQgZmIuIEluIHJlc3VsdCwgaWYg
-dGhlIGZiIGNoYW5nZXMsCj4gPj4gdGhlIG9sZCBmYiwgd2hpY2ggaGFkIGl0cyByZWZlcmVuY2Ug
-Y291bnQgaW5jcmVtZW50ZWQgaW4gdGhlIGF0b21pYwo+ID4+IGNvbW1pdCB0aGF0IHNldCBpdCB0
-byB0aGUgcGxhbmUgYmVmb3JlLCBoYXMgaXRzIHJlZmVyZW5jZSBjb3VudAo+ID4+IGRlY3JlbWVu
-dGVkLiBNb3Jlb3ZlciwgaWYgdGhlIG5ldyByZWZlcmVuY2UgY291bnQgYmVjb21lcyAwLAo+ID4+
-IGRybV9mcmFtZWJ1ZmZlcl9wdXQoKSB3aWxsIGltbWVkaWF0ZWx5IGZyZWUgdGhlIGJ1ZmZlci4K
-PiA+PiAKPiA+PiBGcmVlaW5nIGEgYnVmZmVyIHdoZW4gdGhlIGhhcmR3YXJlIGlzIHN0aWxsIHNj
-YW5uaW5nIG91dCBvZiBpdCBpc24ndAo+ID4+IGEKPiA+PiBnb29kIGlkZWEsIGlzIGl0PyAgCj4g
-Pgo+ID4gTm8sIGl0J3Mgbm90LiAgQnV0IHRoZSBib2FyZCBJIHN1Ym1pdHRlZCB0aGUgcGF0Y2gg
-Zm9yIGRvZXNuJ3QgaGF2ZQo+ID4gYW55dGhpbmcgbGlrZSBob3Qgc3dhcGFibGUgcmFtLiAgVGhl
-IHJhbSBhY2Nlc3MgaXMgc3RpbGwgZ29pbmcgdG8gd29yaywKPiA+IGp1c3QgaXQgbWlnaHQgZGlz
-cGxheSBzb21ldGhpbmcgaXQgc2hvdWxkbid0LiBTYXkgZm9yIGV4YW1wbGUgaWYgdGhhdAo+ID4g
-ZnJhbWUgYnVmZmVyIGdvdCByZXVzZWQgYnkgc29tZXRoaWcgZWxzZSBhbmQgZmlsbGVkIHdpdGgg
-bmV3IGRhdGEgaW4KPiA+IHRoZSB2ZXJ5IHNtYWxsIHdpbmRvdy4KPiA+Cj4gPiBCdXQgeWVzLCBJ
-IGFncmVlIHRoZSBiZXN0IHNvbHV0aW9uIHdvdWxkIGJlIHRvIG5vdCByZWxlYXNlIHRoZSBidWZm
-ZXIKPiA+IHVudGlsIHRoZSBuZXh0IHZibGFuay4KPiA+Cj4gPiBQZXJoYXBzIGEgZ29vZCBzb2x1
-dGlvbiB3b3VsZCBiZSBmb3IgdGhlIERSTSBhcGkgdG8gaGF2ZSB0aGUgY29uY2VwdCBvZgo+ID4g
-YSBkZWZlcnJlZCByZWxlYXNlPyAgTWVhbmluZyBpZiB0aGUgcHV0KCkgY2FsbCBqdXN0IGFkZGVk
-IHRoZSBmcmFtZQo+ID4gYnVmZmVyIHRvIGEgbGlzdCB0aGF0IERSTSBjb3JlIGNvdWxkIHdhbGsg
-ZHVyaW5nIHRoZSB2YmxhbmsuICBUaGF0Cj4gPiBtaWdodCBiZSBiZXR0ZXIgdGhlbiBldmVyeSBz
-aW5nbGUgZHJpdmVyIHRyeWluZyB0byB3b3JrIHVwIGEgY3VzdG9tCj4gPiBzb2x1dGlvbi4KPiA+
-ICAKPiA+PiBUaGUgdmM0IGRyaXZlciBzZWVtcyB0byBiZSBhYmxlIHRvIHByb2dyYW0gdGhlIGhh
-cmR3YXJlIHRvIHN3aXRjaCB0aGUKPiA+PiBzY2Fub3V0IHRvIHRoZSBuZXcgYnVmZmVyIGltbWVk
-aWF0ZWx5Ogo+ID4+IAo+ID4+IGh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L3Y0LjIw
-LXJjMy9zb3VyY2UvZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRfcGxhbmUuYyNMNzk0Cj4gPj4gCj4g
-Pj4gQWx0aG91Z2ggSSB3b25kZXIgaWYgdGhlcmUgaXNuJ3Qgc3RpbGwgYSB0aW55IHJhY2UgdGhl
-cmUgLSB0aGUKPiA+PiBoYXJkd2FyZSBtYXkgaGF2ZSBqdXN0IHN0YXJ0ZWQgcmVmaWxsaW5nIHRo
-ZSBGSUZPIGZyb20gdGhlIG9sZAo+ID4+IGFkZHJlc3MuIFN0aWxsLCBpZiB0aGUgRklGTyBpcyBz
-bWFsbCwgdGhlIEZJRk8gcmVmaWxsIG9wZXJhdGlvbiBtYXkKPiA+PiBiZQo+ID4+IG11Y2ggc2hv
-cnRlciB0aGFuIGl0IHRha2VzIGZvciB0aGUga2VybmVsIGNvZGUgdG8gYWN0dWFsbHkgZnJlZSB0
-aGUKPiA+PiBidWZmZXIuIEVyaWMgYW5kIE1pY2hhZWwsIGNvdWxkIHlvdSBjb25maXJtPwo+ID4+
-ICAgCj4gPgo+ID4gSSBkb24ndCBoYXZlIHRob3NlIGJvYXJkcyBhbnltb3JlLCBhbmQgSSBkb24n
-dCBoYXZlIGFjY2VzcyB0byBhbnkKPiA+IHRlY2huaWNhbCBkb2N1bWVudGF0aW9uIG9uIHRoZSBH
-UFUgc28gSSBjYW4ndCByZWFsbHkgYWRkIG11Y2ggaGVyZS4gIAo+ID4gRXJpYyBjYW4gcHJvYmFi
-bHkgcHJvdmlkZSB0aGUgYmVzdCBpbmZvcm1hdGlvbi4gIAo+IAo+IEkgZG9uJ3QgdGhpbmsgSSB1
-bmRlcnN0b29kIG15IHNjYW5vdXQgaGFyZHdhcmUgd2VsbCBlbm91Z2ggd2hlbiBJCj4gc3RhcnRl
-ZCBvbiB0aGUgYXN5bmMgdXBkYXRlIHN0dWZmIGZvciBycGkuICB2YzQgcHJvYmFibHkgbmVlZHMg
-dG8gd2FpdAo+IHVudGlsIHRoZSBIVyBzdGFydHMgc2Nhbm5pbmcgb3V0IGEgbmV3IGxpbmUgYmVm
-b3JlIGxldHRpbmcgdGhlIG9sZCBCTwo+IGdldCBmcmVlZC4KClRoYXQncyBhbHNvIG15IHVuZGVy
-c3RhbmRpbmcuIE5vdGUgdGhhdCBldmVuIGlmIHRoZSBCTyBpcyBmcmVlZCBiZWZvcmUKdGhlIEhW
-UyBoYXMgZmluaXNoZWQgZ2VuZXJhdGluZyBhIGxpbmUgaXQgc2hvdWxkbid0IGNyYXNoLCBiZWNh
-dXNlCmFjY2Vzc2VzIGFyZSBkb25lIHRocm91Z2ggRE1BLiBNaWdodCBiZSBhIHNlY3VyaXR5IGlz
-c3VlIHRob3VnaCBpZiB3ZQpzdGFydCByZS11c2luZyB0aGUgbWVtb3J5IGZvciBzb21ldGhpbmcg
-ZWxzZSB3aGlsZSBpdCdzIHN0aWxsIGJlaW5nCmFjY2Vzc2VkLgoKVGhlIHNvbHV0aW9uIHdvdWxk
-IGJlIHRvIHdhaXQgZm9yIHRoZSBFT0wgKEVuZCBPZiBMaW5lKSBpbnRlcnJ1cHQgaW4KdGhlIGFz
-eW5jIHVwZGF0ZSBwYXRoLCBidXQgSSdtIG5vdCBzdXJlIHRoaXMgaXMgYWxsb3dlZC4KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+The Kconfig currently controlling compilation of this code is:
+
+drivers/iommu/Kconfig:config ROCKCHIP_IOMMU
+drivers/iommu/Kconfig:  bool "Rockchip IOMMU Support"
+
+...meaning that it currently is not being built as a module by anyone.
+
+The bind/unbind/remove was already explicitly disabled in commit
+98b72b94def9 ("iommu/rockchip: Prohibit unbind and remove").
+
+Lets remove the remaining traces of  modular infrastructure, so that
+when reading the driver there is no doubt it is builtin-only.
+
+Since module_init was not in use by this code, the init ordering
+remains unchanged with this commit.
+
+Also note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
+
+We also delete the MODULE_LICENSE tag etc. since all that information
+was (or is now) contained at the top of the file in the comments.
+
+Cc: Joerg Roedel <joro@8bytes.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Simon Xue <xxm@rock-chips.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: iommu@lists.linux-foundation.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Paul Gortmaker <paul.gortmaker@windriver.com>
+---
+ drivers/iommu/rockchip-iommu.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index ad3e2b97469e..c9ba9f377f63 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1,4 +1,9 @@
+ /*
++ * IOMMU API for Rockchip
++ *
++ * Module Authors:	Simon Xue <xxm@rock-chips.com>
++ *			Daniel Kurtz <djkurtz@chromium.org>
++ *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License version 2 as
+  * published by the Free Software Foundation.
+@@ -17,7 +22,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/list.h>
+ #include <linux/mm.h>
+-#include <linux/module.h>
++#include <linux/init.h>
+ #include <linux/of.h>
+ #include <linux/of_iommu.h>
+ #include <linux/of_platform.h>
+@@ -1281,7 +1286,6 @@ static const struct of_device_id rk_iommu_dt_ids[] = {
+ 	{ .compatible = "rockchip,iommu" },
+ 	{ /* sentinel */ }
+ };
+-MODULE_DEVICE_TABLE(of, rk_iommu_dt_ids);
+ 
+ static struct platform_driver rk_iommu_driver = {
+ 	.probe = rk_iommu_probe,
+@@ -1299,8 +1303,3 @@ static int __init rk_iommu_init(void)
+ 	return platform_driver_register(&rk_iommu_driver);
+ }
+ subsys_initcall(rk_iommu_init);
+-
+-MODULE_DESCRIPTION("IOMMU API for Rockchip");
+-MODULE_AUTHOR("Simon Xue <xxm@rock-chips.com> and Daniel Kurtz <djkurtz@chromium.org>");
+-MODULE_ALIAS("platform:rockchip-iommu");
+-MODULE_LICENSE("GPL v2");
+-- 
+2.7.4
