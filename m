@@ -1,29 +1,67 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 12/13] ARM: dts: rv1108: Pass the 'arm,cpu-registers-not-fw-configured' property
-Date: Mon, 26 Nov 2018 10:29:02 +0100
-Message-ID: <21161698.dmfua2PuA8@phil>
-References: <20181125211907.9895-1-otavio@ossystems.com.br> <20181125211907.9895-12-otavio@ossystems.com.br>
+Subject: [GIT PULL 1/3] Rockchip driver updates for 4.21
+Date: Mon, 26 Nov 2018 11:06:06 +0100
+Message-ID: <49803144.2ZsBJmaiIN@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181125211907.9895-12-otavio@ossystems.com.br>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Otavio Salvador <otavio@ossystems.com.br>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 25. November 2018, 22:19:06 CET schrieb Otavio Salvador:
-> Since firmware does not initialize  any of the generic timer CPU
-> registers pass the 'arm,cpu-registers-not-fw-configured' property as
-> suggested in Documentation/devicetree/bindings/timer/arm,arch_timer.txt.
-> 
-> This also aligns with other Rockchip SoC dtsi files.
-> 
-> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+Hi Arnd, Kevin Olof,
 
-applied for 4.21 after adapting the subject a bit.
+please find below and in the replies the first round of Rockchip pull
+requests. I guess the most notable change is the addition of Gru-Scarlet
+devicetree which - judging by the "silence" in the ChromeOS gerrit - may
+conclude the series of rk3399-based ChromeOS devices.
+
+Other than that there are smaller improvements all around,
+so please pull.
 
 
 Thanks
 Heiko
+
+
+The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
+
+  Linux 4.20-rc1 (2018-11-04 15:37:52 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.21-rockchip-drivers-1
+
+for you to fetch changes up to 24869610e867e9791f0fdab70ff60f246299b859:
+
+  soc: rockchip: power-domain: add rk3066 powerdomains (2018-11-06 14:13:32 +0100)
+
+----------------------------------------------------------------
+Powerdomain support for rk3066 and rk3188.
+
+----------------------------------------------------------------
+Heiko Stuebner (6):
+      dt-bindings: add power-domain header for RK3188 SoCs
+      dt-bindings: add power-domain header for RK3066 SoCs
+      dt-bindings: add compatibles for rk3066/rk3188 power controllers
+      Merge branch 'v4.21-shared/pdids' into v4.21-armsoc/drivers
+      soc: rockchip: power-domain: add rk3188 powerdomains
+      soc: rockchip: power-domain: add rk3066 powerdomains
+
+ .../bindings/soc/rockchip/power_domain.txt         |  4 ++
+ drivers/soc/rockchip/pm_domains.c                  | 48 ++++++++++++++++++++++
+ include/dt-bindings/power/rk3066-power.h           | 22 ++++++++++
+ include/dt-bindings/power/rk3188-power.h           | 24 +++++++++++
+ 4 files changed, 98 insertions(+)
+ create mode 100644 include/dt-bindings/power/rk3066-power.h
+ create mode 100644 include/dt-bindings/power/rk3188-power.h
