@@ -1,35 +1,38 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] ARM: dts: rv1108: enable eMMC support
-Date: Mon, 26 Nov 2018 13:01:35 +0100
-Message-ID: <64323039.5I5JKdABON@phil>
-References: <20181125211427.4926-1-otavio@ossystems.com.br> <2374110.cSv9E7W1qs@phil> <CAP9ODKoVG0ceSdRdpMz705=a9Wh0vubE6=ja=bwSF35ORzVOwA@mail.gmail.com>
+Subject: Re: [PATCH 09/10] ARM64: dts: rockchip: Add all CPUs in cooling maps
+Date: Mon, 26 Nov 2018 14:16:23 +0100
+Message-ID: <3451054.D49JNUWnuL@phil>
+References: <cover.1542362530.git.viresh.kumar@linaro.org> <ee0bd5fb56652141e5ce23927b258b1779844af6.1542362530.git.viresh.kumar@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAP9ODKoVG0ceSdRdpMz705=a9Wh0vubE6=ja=bwSF35ORzVOwA@mail.gmail.com>
+In-Reply-To: <ee0bd5fb56652141e5ce23927b258b1779844af6.1542362530.git.viresh.kumar@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Otavio Salvador <otavio.salvador@ossystems.com.br>
-Cc: Otavio Salvador <otavio@ossystems.com.br>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Kernel development list <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, arm@kernel.org, devicetree@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 26. November 2018, 12:58:49 CET schrieb Otavio Salvador:
-> On Mon, Nov 26, 2018 at 7:03 AM Heiko Stuebner <heiko@sntech.de> wrote:
-> > Am Sonntag, 25. November 2018, 22:14:27 CET schrieb Otavio Salvador:
-> > > Enable eMMC support for rv1108.dtsi as it can be used across multiple
-> > > boards.
-> > >
-> > > Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
-> >
-> > applied for 4.21 after reordering the emmc pinctrl nodes a bit
-> > and modifying the suject + commit message to be a bit more specific
-> > in that we only add the common pin settings.
+Am Freitag, 16. November 2018, 11:04:32 CET schrieb Viresh Kumar:
+> Each CPU can (and does) participate in cooling down the system but the
+> DT only captures a handful of them, normally CPU0, in the cooling maps.
+> Things work by chance currently as under normal circumstances its the
+> first CPU of each cluster which is used by the operating systems to
+> probe the cooling devices. But as soon as this CPU ordering changes and
+> any other CPU is used to bring up the cooling device, we will start
+> seeing failures.
 > 
-> Which tree is it applied? I'd like to rebase the patches on top of it.
+> Also the DT is rather incomplete when we list only one CPU in the
+> cooling maps, as the hardware doesn't have any such limitations.
+> 
+> Update cooling maps to include all devices affected by individual trip
+> points.
+> 
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/
+looks like I forgot to respond ... applied like 7 days ago
+and already part of my pull-request for 4.21
 
-and now also pushed to there.
 
-
+Thanks
 Heiko
