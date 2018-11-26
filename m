@@ -1,38 +1,42 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/6] ARM: dts: rockchip: Add all CPUs in cooling maps
-Date: Mon, 26 Nov 2018 14:16:49 +0100
-Message-ID: <3908885.3xsdfg7bED@phil>
-References: <cover.1542362000.git.viresh.kumar@linaro.org> <8e59f97ae89a116b835ee14c63f550b159b000cc.1542362000.git.viresh.kumar@linaro.org>
+From: Otavio Salvador <otavio.salvador@ossystems.com.br>
+Subject: Re: [PATCH 08/13] ARM: dts: rv1108: Fix the PMU interrupt number
+Date: Mon, 26 Nov 2018 11:36:01 -0200
+Message-ID: <CAP9ODKrX__KXo-XEdoaL=qwALFAxyzKV4-xu_t5baMqN1kQH4g@mail.gmail.com>
+References: <20181125211907.9895-1-otavio@ossystems.com.br>
+ <20181125211907.9895-8-otavio@ossystems.com.br> <3361921.c4PKPBIJKP@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8e59f97ae89a116b835ee14c63f550b159b000cc.1542362000.git.viresh.kumar@linaro.org>
+In-Reply-To: <3361921.c4PKPBIJKP@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Otavio Salvador <otavio@ossystems.com.br>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Fabio Berton <fabio.berton@ossystems.com.br>, Kernel development list <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 16. November 2018, 11:01:13 CET schrieb Viresh Kumar:
-> Each CPU can (and does) participate in cooling down the system but the
-> DT only captures a handful of them, normally CPU0, in the cooling maps.
-> Things work by chance currently as under normal circumstances its the
-> first CPU of each cluster which is used by the operating systems to
-> probe the cooling devices. But as soon as this CPU ordering changes and
-> any other CPU is used to bring up the cooling device, we will start
-> seeing failures.
-> 
-> Also the DT is rather incomplete when we list only one CPU in the
-> cooling maps, as the hardware doesn't have any such limitations.
-> 
-> Update cooling maps to include all devices affected by individual trip
-> points.
-> 
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+Hello Heiko,
 
-looks like I forgot to respond ... applied like 7 days ago
-and already part of my pull-request for 4.21
+On Mon, Nov 26, 2018 at 3:59 AM Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Sonntag, 25. November 2018, 22:19:02 CET schrieb Otavio Salvador:
+> > According to the Rockchip vendor tree the PMU interrupt number is
+> > 76, so fix it accordingly.
+> >
+> > Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+> > Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+>
+> looks ok, especially as the TRM I have doesn't list neither irqs :-)
+> But please explain the second Signed-off by Fabio?
+>
+> If Fabio is the original author, the patch From should reflect that
+> and the Signed-off-by lines should be swapped. As it is now
+> I would expect Fabio being the one sending the patches.
+> Or is it supposed to be a "Co-developed-by:"?
+> See Documentation/process/5.Posting.rst.
 
+He works with me and he applied and tested it in our internal tree for
+our customer. He reviewed and tested this with me, so I'd like to
+provide him credit as well.
 
-Thanks
-Heiko
+-- 
+Otavio Salvador                             O.S. Systems
+http://www.ossystems.com.br        http://code.ossystems.com.br
+Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
