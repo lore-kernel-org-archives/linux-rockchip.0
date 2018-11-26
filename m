@@ -1,50 +1,65 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 07/13] ARM: dts: rv1108: Fix the timer mask
-Date: Mon, 26 Nov 2018 06:26:36 +0100
-Message-ID: <4443441.F7S2jYBxxL@phil>
-References: <20181125211907.9895-1-otavio@ossystems.com.br> <20181125211907.9895-7-otavio@ossystems.com.br>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCH 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use vm_insert_range
+Date: Mon, 26 Nov 2018 11:06:42 +0530
+Message-ID: <CAFqt6zZy0-dy=a+KDrx7V1-j37pAVmt2r6bOkjgHwiopG-L+xA@mail.gmail.com>
+References: <20181115154826.GA27948@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181125211907.9895-7-otavio@ossystems.com.br>
+In-Reply-To: <20181115154826.GA27948@jordon-HP-15-Notebook-PC>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Otavio Salvador <otavio@ossystems.com.br>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Fabio Berton <fabio.berton@ossystems.com.br>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie
+Cc: linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 25. November 2018, 22:19:01 CET schrieb Otavio Salvador:
-> As done in the Rockchip vendor tree and also on other
-> "arm,armv7-timer" instances, the correct GIC_CPU_MASK_SIMPLE mask
-> is 4 instead of 1.
+Hi Heiko,
 
-Nope. That value represents the number of cores in the system.
-As the rv1108 only has one core, that should likely stay as it is.
+On Thu, Nov 15, 2018 at 9:14 PM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+>
+> Convert to use vm_insert_range() to map range of kernel
+> memory to user vma.
+>
+> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
 
-Also, it seems I only got patches 6-13 what happened to 1-5?
+Any feedback for this patch ?
 
-Heiko
-
-> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
-> Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
 > ---
-> 
->  arch/arm/boot/dts/rv1108.dtsi | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-> index c7a26f82655b..7b331766120d 100644
-> --- a/arch/arm/boot/dts/rv1108.dtsi
-> +++ b/arch/arm/boot/dts/rv1108.dtsi
-> @@ -71,8 +71,8 @@
->  
->  	timer {
->  		compatible = "arm,armv7-timer";
-> -		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
-> -			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
-> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
->  		clock-frequency = <24000000>;
->  	};
->  
-> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 20 ++------------------
+>  1 file changed, 2 insertions(+), 18 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> index a8db758..2cb83bb 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> @@ -221,26 +221,10 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
+>                                               struct vm_area_struct *vma)
+>  {
+>         struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+> -       unsigned int i, count = obj->size >> PAGE_SHIFT;
+>         unsigned long user_count = vma_pages(vma);
+> -       unsigned long uaddr = vma->vm_start;
+> -       unsigned long offset = vma->vm_pgoff;
+> -       unsigned long end = user_count + offset;
+> -       int ret;
+> -
+> -       if (user_count == 0)
+> -               return -ENXIO;
+> -       if (end > count)
+> -               return -ENXIO;
+>
+> -       for (i = offset; i < end; i++) {
+> -               ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
+> -               if (ret)
+> -                       return ret;
+> -               uaddr += PAGE_SIZE;
+> -       }
+> -
+> -       return 0;
+> +       return vm_insert_range(vma, vma->vm_start, rk_obj->pages,
+> +                               user_count);
+>  }
+>
+>  static int rockchip_drm_gem_object_mmap_dma(struct drm_gem_object *obj,
+> --
+> 1.9.1
+>
