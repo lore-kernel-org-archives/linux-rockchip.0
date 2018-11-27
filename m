@@ -1,847 +1,463 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v4] arm64: dts: rockchip: Add DT for nanopc-t4
-Date: Tue, 27 Nov 2018 10:07:03 +0100
-Message-ID: <20181127091235.50351-1-tomeu.vizoso@collabora.com>
-References: <20181123073120.6250-1-tomeu.vizoso@collabora.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v10 4/4] media: add Rockchip VPU JPEG encoder driver
+Date: Tue, 27 Nov 2018 19:09:59 +0900
+Message-ID: <CAAFQd5Ds=NGfXeEQDkF40-ZPisLah_Bc2j4s4oRp75dKxGr05g@mail.gmail.com>
+References: <20181121195907.23752-1-ezequiel@collabora.com>
+ <CAAFQd5ArFG0hU6MgcyLd+_UOP3+T_U-aw2FXv6sE7fGqVCVGqw@mail.gmail.com>
+ <c36f68773cec5aca0509d8af5172812110df73a5.camel@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181123073120.6250-1-tomeu.vizoso@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ezequiel Garcia <ezequiel@collabora.com>, Liang Chen <cl@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <c36f68773cec5aca0509d8af5172812110df73a5.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds a device tree for the NanoPC-T4 SBC, which is based on the
-Rockchip RK3399 SoC and marketed by FriendlyELEC.
+On Fri, Nov 23, 2018 at 5:24 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+[snip]
+> > > +const struct rockchip_vpu_variant rk3288_vpu_variant = {
+> > > +       .enc_offset = 0x0,
+> > > +       .enc_fmts = rk3288_vpu_enc_fmts,
+> > > +       .num_enc_fmts = ARRAY_SIZE(rk3288_vpu_enc_fmts),
+> > > +       .codec_ops = rk3288_vpu_codec_ops,
+> > > +       .codec = RK_VPU_CODEC_JPEG,
+> > > +       .vepu_irq = rk3288_vepu_irq,
+> > > +       .init = rk3288_vpu_hw_init,
+> > > +       .clk_names = {"aclk", "hclk"},
+> >
+> > nit: Spaces inside the brackets.
+> >
+>
+> You mean you this style is prefered?
+>
+> .clk_names = { "aclk", "hclk" },
+>
+> Grepping thru sources, it seems there is no convention on this,
+> so it's your call.
+>
 
-Known working:
+I thought this is a part of CodingStyle, but it doesn't seem to
+mention it. I personally prefer to have the spaces there, but we can
+go with your personal preferences here. :)
+[snip]
+> > > +        * by .vidioc_s_fmt_vid_cap_mplane() callback
+> > > +        */
+> > > +       reg = VEPU_REG_IN_IMG_CTRL_ROW_LEN(pix_fmt->width);
+> > > +       vepu_write_relaxed(vpu, reg, VEPU_REG_INPUT_LUMA_INFO);
+> > > +
+> > > +       reg = VEPU_REG_IN_IMG_CTRL_OVRFLR_D4(0) |
+> > > +             VEPU_REG_IN_IMG_CTRL_OVRFLB(0);
+> >
+> > For reference, this register controls the input crop, as the offset
+> > from the right/bottom within the last macroblock. The offset from the
+> > right must be divided by 4 and so the crop must be aligned to 4 pixels
+> > horizontally.
+> >
+>
+> OK, I'll add a comment.
+>
 
-- Serial
-- Ethernet
-- HDMI
-- USB 2.0
+I meant to refer to the comment Hans had, about input images of
+resolutions that are not of full macroblocks, so the comment would
+probably go to the TODO file together with Hans's note.
+[snip]
+> > > +static inline u32 vepu_read(struct rockchip_vpu_dev *vpu, u32 reg)
+> > > +{
+> > > +       u32 val = readl(vpu->enc_base + reg);
+> > > +
+> > > +       vpu_debug(6, "MARK: get reg[%03d]: %08x\n", reg / 4, val);
+> >
+> > I remember seeing this "MARK" in the logs when debugging. I don't
+> > think it's desired here.
+> >
+> > How about printing "%s(%03d) = %08x\n" for reads and "%s(%08x,
+> > %03d)\n" for writes?
 
-All of the interesting stuff is in a .dtsi because there are at least
-two other boards that share most of it: NanoPi M4 and NanoPi NEO4.
+Actually, I missed the 0x prefix for hex values and possibly also
+changing the decimal register offset to hexadecimal:
+"%s(0x%04x) = 0x%08x\n"
 
-Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >
+>
+> Makes sense, but why a %s string format?
+>
 
----
+For __func__, so that we end up with messages like:
 
-v2: - Rename compatible from friendlyelec to friendlyarm, to match
-      existing bindings
-    - Remove superfluous node spi1
+vepu_write(0x12345678, 0x0123)
+vepu_read(0x0123) = 0x12345678
 
-v3: - Rewrite regulator tree to match the schematics (Heiko)
-    - Sort top-level nodes alphabetically (Heiko)
-    - Used defines for GPIO numbers (Heiko)
-    - Enabled rga (Heiko)
-    - Removed cdn_dp node (Heiko)
-    - Removed dependencies to fusb0 as extcon (Heiko)
-    - Removed superfluous properties (Heiko)
+[snip]
+> > > +       dst->field = src->field;
+> > > +       dst->timecode = src->timecode;
+> >
+> > Time code is only valid if the buffer has V4L2_BUF_FLAG_TIMECODE set.
+> > I don't think there is any use case for mem2mem devices for it.
+> >
+>
+> Right. Other mem2mem drivers seem to pass thru the timecode like this:
+>
+>         if (in_vb->flags & V4L2_BUF_FLAG_TIMECODE)
+>                 out_vb->timecode = in_vb->timecode;
+>
+> It fails a v4l2-compliance test without it.
+>
 
-v4: - Replace underscores in node names (Heiko)
-    - Reorder entry in makefile (Heiko)
-    - Remove superfluous properties and nodes (Heiko and Shawn)
-    - Use xin32k as one of the clock outputs of the RK808 (Heiko)
----
- .../devicetree/bindings/arm/rockchip.txt      |   4 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3399-nanopc-t4.dts    |  18 +
- .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 732 ++++++++++++++++++
- 4 files changed, 755 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+Hmm, I don't see the spec defining it to be copied by a mem2mem device
+and I wonder if it's actually of any use for those. Hans, could you
+comment on this?
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 0cc71236d639..e907d309486e 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -71,6 +71,10 @@ Rockchip platforms device tree bindings
-     Required root node properties:
-       - compatible = "firefly,roc-rk3399-pc", "rockchip,rk3399";
- 
-+- FriendlyElec NanoPC-T4 board:
-+    Required root node properties:
-+      - compatible = "friendlyarm,nanopc-t4", "rockchip,rk3399";
-+
- - ChipSPARK PopMetal-RK3288 board:
-     Required root node properties:
-       - compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 49042c477870..19c129702e06 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -14,6 +14,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-ficus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-firefly.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-bob.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-kevin.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock960.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-new file mode 100644
-index 000000000000..0965712b4464
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-@@ -0,0 +1,18 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * FriendlyElec NanoPC-T4 board device tree source
-+ *
-+ * Copyright (c) 2018 FriendlyElec Computer Tech. Co., Ltd.
-+ * (http://www.friendlyarm.com)
-+ *
-+ * Copyright (c) 2018 Collabora Ltd.
-+ */
-+
-+/dts-v1/;
-+#include "rk3399-nanopi4.dtsi"
-+
-+/ {
-+	model = "FriendlyElec NanoPC-T4";
-+	compatible = "friendlyarm,nanopc-t4", "rockchip,rk3399";
-+};
-+
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-new file mode 100644
-index 000000000000..e10b98d637d3
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -0,0 +1,732 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * RK3399-based FriendlyElec boards device tree source
-+ *
-+ * Copyright (c) 2016 Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * Copyright (c) 2018 FriendlyElec Computer Tech. Co., Ltd.
-+ * (http://www.friendlyarm.com)
-+ *
-+ * Copyright (c) 2018 Collabora Ltd.
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/linux-event-codes.h>
-+#include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
-+
-+/ {
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	clkin_gmac: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clkin_gmac";
-+		#clock-cells = <0>;
-+	};
-+
-+	vdd_5v: vdd-5v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_5v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
-+	vcc5v0_core: vcc5v0-core {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_core";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vdd_5v>;
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_core>;
-+	};
-+
-+	vcc5v0_sys: vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vdd_5v>;
-+	};
-+
-+	vcc5v0_usb1: vcc5v0-usb1 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb1";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_usb2: vcc5v0-usb2 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb2";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	/* switched by pmic_sleep */
-+	vcc1v8_s3: vcca1v8_s3: vcc1v8-s3 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc1v8_s3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_1v8>;
-+	};
-+
-+	vcc3v0_sd: vcc3v0-sd {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc0_pwr_h>;
-+		regulator-always-on;
-+		regulator-max-microvolt = <3000000>;
-+		regulator-min-microvolt = <3000000>;
-+		regulator-name = "vcc3v0_sd";
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vbus_typec: vbus-typec {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		regulator-name = "vbus_typec";
-+		regulator-always-on;
-+		vin-supply = <&vdd_5v>;
-+	};
-+
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		autorepeat;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&power_key>;
-+
-+		button@0 {
-+			debounce-interval = <100>;
-+			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
-+			label = "GPIO Key Power";
-+			linux,code = <KEY_POWER>;
-+			linux,input-type = <1>;
-+			wakeup-source;
-+		};
-+	};
-+
-+	adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 1>;
-+		io-channel-names = "buttons";
-+		poll-interval = <100>;
-+		keyup-threshold-microvolt = <1800000>;
-+
-+		button-up {
-+			label = "Volume Up";
-+			linux,code = <KEY_VOLUMEUP>;
-+			press-threshold-microvolt = <100000>;
-+		};
-+
-+		button-down {
-+			label = "Volume Down";
-+			linux,code = <KEY_VOLUMEDOWN>;
-+			press-threshold-microvolt = <300000>;
-+		};
-+	};
-+
-+	leds: gpio-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 =<&leds_gpio>;
-+
-+		led@1 {
-+			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
-+			label = "status_led";
-+			linux,default-trigger = "heartbeat";
-+			linux,default-trigger-delay-ms = <0>;
-+		};
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&rk808 1>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_enable_h>;
-+
-+		/*
-+		 * On the module itself this is one of these (depending
-+		 * on the actual card populated):
-+		 * - SDIO_RESET_L_WL_REG_ON
-+		 * - PDN (power down when low)
-+		 */
-+		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&cpu_l0 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_l1 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_l2 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_l3 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_b0 {
-+	cpu-supply = <&vdd_cpu_b>;
-+};
-+
-+&cpu_b1 {
-+	cpu-supply = <&vdd_cpu_b>;
-+};
-+
-+&emmc_phy {
-+	status = "okay";
-+};
-+
-+&gmac {
-+	phy-supply = <&vcc3v3_s3>;
-+	phy-mode = "rgmii";
-+	clock_in_out = "input";
-+	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 50000>;
-+	assigned-clocks = <&cru SCLK_RMII_SRC>;
-+	assigned-clock-parents = <&clkin_gmac>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_pins>;
-+	tx_delay = <0x28>;
-+	rx_delay = <0x11>;
-+	status = "okay";
-+};
-+
-+&gpu {
-+	status = "okay";
-+	mali-supply = <&vdd_gpu>;
-+};
-+
-+&hdmi {
-+	ddc-i2c-bus = <&i2c7>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmi_cec>;
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	status = "okay";
-+	i2c-scl-rising-time-ns = <160>;
-+	i2c-scl-falling-time-ns = <30>;
-+	clock-frequency = <400000>;
-+
-+	vdd_cpu_b: regulator@40 {
-+		compatible = "silergy,syr827";
-+		reg = <0x40>;
-+		vin-supply = <&vcc3v3_sys>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vsel1_gpio>;
-+		regulator-name = "vdd_cpu_b";
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1500000>;
-+		regulator-ramp-delay = <1000>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-initial-state = <3>;
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	vdd_gpu: regulator@41 {
-+		compatible = "silergy,syr828";
-+		reg = <0x41>;
-+		vin-supply = <&vcc3v3_sys>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vsel2_gpio>;
-+		regulator-name = "vdd_gpu";
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1500000>;
-+		regulator-ramp-delay = <1000>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-initial-state = <3>;
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	rk808: pmic@1b {
-+		compatible = "rockchip,rk808";
-+		reg = <0x1b>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+		#clock-cells = <1>;
-+		clock-output-names = "xin32k", "rk808-clkout2";
-+
-+		vcc1-supply = <&vcc3v3_sys>;
-+		vcc2-supply = <&vcc3v3_sys>;
-+		vcc3-supply = <&vcc3v3_sys>;
-+		vcc4-supply = <&vcc3v3_sys>;
-+		vcc6-supply = <&vcc3v3_sys>;
-+		vcc7-supply = <&vcc3v3_sys>;
-+		vcc8-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc3v3_sys>;
-+		vcc10-supply = <&vcc3v3_sys>;
-+		vcc11-supply = <&vcc3v3_sys>;
-+		vcc12-supply = <&vcc3v3_sys>;
-+		vddio-supply = <&vcc_3v0>;
-+
-+		regulators {
-+			vdd_center: DCDC_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-name = "vdd_center";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_cpu_l: DCDC_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-name = "vdd_cpu_l";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vcc_ddr";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8: DCDC_REG4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc1v8_dvp: LDO_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc1v8_dvp";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v0_tp: LDO_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcc3v0_tp";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc1v8_pmu: LDO_REG3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc1v8_pmu";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vccio_sd: LDO_REG4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-init-microvolt = <3000000>;
-+				regulator-name = "vccio_sd";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+
-+			vcca3v0_codec: LDO_REG5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcca3v0_codec";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v5: LDO_REG6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1500000>;
-+				regulator-max-microvolt = <1500000>;
-+				regulator-name = "vcc_1v5";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1500000>;
-+				};
-+			};
-+
-+			vcca1v8_codec: LDO_REG7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcca1v8_codec";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v0: LDO_REG8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcc_3v0";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+
-+			vcc3v3_s3: SWITCH_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vcc3v3_s3";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_s0: SWITCH_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vcc3v3_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+	i2c-scl-rising-time-ns = <150>;
-+	i2c-scl-falling-time-ns = <30>;
-+	clock-frequency = <200000>;
-+};
-+
-+&i2c2 {
-+	status = "okay";
-+};
-+
-+&i2c4 {
-+	status = "okay";
-+	i2c-scl-rising-time-ns = <160>;
-+	i2c-scl-falling-time-ns = <30>;
-+	clock-frequency = <400000>;
-+
-+	fusb0: typec-portc@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&fusb0_int>;
-+		vbus-supply = <&vbus_typec>;
-+		status = "okay";
-+	};
-+};
-+
-+&i2c7 {
-+	status = "okay";
-+};
-+
-+&io_domains {
-+	status = "okay";
-+
-+	bt656-supply = <&vcc1v8_dvp>;
-+	audio-supply = <&vcca1v8_codec>;
-+	sdmmc-supply = <&vccio_sd>;
-+	gpio1830-supply = <&vcc_3v0>;
-+};
-+
-+&pcie_phy {
-+	status = "okay";
-+	assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
-+	assigned-clock-parents = <&cru SCLK_PCIEPHY_REF100M>;
-+	assigned-clock-rates = <100000000>;
-+};
-+
-+&pcie0 {
-+	status = "okay";
-+	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
-+	num-lanes = <4>;
-+	max-link-speed = <2>;
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <RK_GPIO1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		vsel1_gpio: vsel1-gpio {
-+			rockchip,pins = <RK_GPIO1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+		vsel2_gpio: vsel2-gpio {
-+			rockchip,pins = <RK_GPIO1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	sd {
-+		sdmmc0_pwr_h: sdmmc0-pwr-h {
-+			rockchip,pins =
-+				<RK_GPIO0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	fusb30x {
-+		fusb0_int: fusb0-int {
-+			rockchip,pins = <RK_GPIO1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <RK_GPIO0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	rockchip-key {
-+		power_key: power-key {
-+			rockchip,pins = <RK_GPIO0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	gpio-leds {
-+		leds_gpio: leds-gpio {
-+			rockchip,pins = <RK_GPIO0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pmu_io_domains {
-+	status = "okay";
-+	pmu1830-supply = <&vcc_3v0>;
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+&pwm1 {
-+	status = "okay";
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+	pinctrl-names = "active";
-+	pinctrl-0 = <&pwm2_pin_pull_down>;
-+};
-+
-+&saradc {
-+	status = "okay";
-+	vref-supply = <&vcca1v8_s3>;
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs400-1_8v;
-+	non-removable;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&sdio0 {
-+	bus-width = <4>;
-+	disable-wp;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-+	sd-uhs-sdr104;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	disable-wp;
-+	cap-sd-highspeed;
-+	cap-mmc-highspeed;
-+	vmmc-supply = <&vcc3v0_sd>;
-+	vqmmc-supply = <&vccio_sd>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
-+	sd-uhs-sdr104;
-+	status = "okay";
-+};
-+
-+&tcphy0 {
-+	status = "okay";
-+};
-+
-+&tcphy1 {
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	/* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-mode = <1>;
-+	/* tshut polarity 0:LOW 1:HIGH */
-+	rockchip,hw-tshut-polarity = <1>;
-+	status = "okay";
-+};
-+
-+&u2phy0 {
-+	status = "okay";
-+
-+	u2phy0_otg: otg-port {
-+		status = "okay";
-+	};
-+
-+	u2phy0_host: host-port {
-+		phy-supply = <&vcc5v0_usb1>;
-+		status = "okay";
-+	};
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+
-+	u2phy1_otg: otg-port {
-+		status = "okay";
-+	};
-+
-+	u2phy1_host: host-port {
-+		phy-supply = <&vcc5v0_usb2>;
-+		status = "okay";
-+	};
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_xfer &uart0_cts>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&uart4 {
-+	status = "okay";
-+};
-+
-+&usbdrd3_0 {
-+	status = "okay";
-+};
-+
-+&usbdrd3_1 {
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3_0 {
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3_1 {
-+	status = "okay";
-+	dr_mode = "host";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
-+&vopl {
-+	status = "okay";
-+};
-+
-+&vopl_mmu {
-+	status = "okay";
-+};
--- 
-2.19.1
+> > > +       dst->vb2_buf.timestamp = src->vb2_buf.timestamp;
+> > > +       dst->flags &= ~V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
+> > > +       dst->flags |= src->flags & V4L2_BUF_FLAG_TSTAMP_SRC_MASK;
+> >
+> > Not V4L2_BUF_FLAG_TIMESTAMP_COPY?
+> >
+>
+> I believe v4l core should take care of it in __fill_v4l2_buffer,
+> as timestamp_flags is set when the vb2_queue structs are init'ed.
+>
+
+Ah, okay, I confused this with V4L2_BUF_FLAG_TIMESTAMP_MASK.
+
+> > > +
+> > > +       if (bytesused) {
+> >
+> > Should we check whether bytesused (read from hardware) is not bigger
+> > than size of the buffer?
+> >
+>
+> Good catch, makes sense. OTOH, if bytesused is bigger than the dst
+> buffer, it is also bigger than the bounce buffer. I guess the IOMMU
+> helps prevents nasty issues?
+>
+
+Yes, in that case it would likely trigger an IOMMU fault.
+
+Another thing is whether there isn't some special bit somewhere high
+in the register we're reading from that we're not aware of, which
+would make the bytesused bigger than the buffer.
+
+[snip]
+> > > +void rockchip_vpu_irq_done(struct rockchip_vpu_dev *vpu,
+> > > +                          unsigned int bytesused,
+> > > +                          enum vb2_buffer_state result)
+> > > +{
+> > > +       struct rockchip_vpu_ctx *ctx =
+> > > +               (struct rockchip_vpu_ctx *)v4l2_m2m_get_curr_priv(vpu->m2m_dev);
+> >
+> > I don't think we need to cast from void *?
+> >
+>
+> Right.
+>
+> > > +
+> > > +       /* Atomic watchdog cancel. The worker may still be
+> > > +        * running after calling this.
+> > > +        */
+> >
+> > Wrong multi-line comment style.
+> >
+>
+> Right.
+>
+> > > +       cancel_delayed_work(&vpu->watchdog_work);
+> > > +       if (ctx)
+> > > +               rockchip_vpu_job_finish(vpu, ctx, bytesused, result);
+> > > +}
+> > > +
+> > > +void rockchip_vpu_watchdog(struct work_struct *work)
+> > > +{
+> > > +       struct rockchip_vpu_dev *vpu;
+> > > +       struct rockchip_vpu_ctx *ctx;
+> > > +
+> > > +       vpu = container_of(to_delayed_work(work),
+> > > +                          struct rockchip_vpu_dev, watchdog_work);
+> > > +       ctx = (struct rockchip_vpu_ctx *)v4l2_m2m_get_curr_priv(vpu->m2m_dev);
+> >
+> > Ditto.
+> >
+> > > +       if (ctx) {
+> >
+> > Is !ctx possible here?
+> >
+>
+> Yes, it's possible because cancel_delayed_work doesn't flush
+> the worker, so the top-half competes with the watchdog delayed
+> worker.
+>
+
+Ah, right. What prevents a race between rockchip_vpu_irq_done() and
+rockchip_vpu_watchdog() and both running rockchip_job_finish() on the
+same context?
+
+Perhaps in rockchip_vpu_irq_done() we could check the return value of
+cancel_delayed_work() and if it's false, just give up and let the
+watchdog handle the current ctx?
+
+> > > +               vpu_err("frame processing timed out!\n");
+> > > +               ctx->codec_ops->reset(ctx);
+> > > +               rockchip_vpu_job_finish(vpu, ctx, 0, VB2_BUF_STATE_ERROR);
+> > > +       }
+> > > +}
+> > > +
+> > > +static void device_run(void *priv)
+> > > +{
+> > > +       struct rockchip_vpu_ctx *ctx = priv;
+> > > +
+> > > +       pm_runtime_get_sync(ctx->dev->dev);
+> >
+> > Shouldn't we handle errors here?
+> >
+>
+> Yes, definitely.
+>
+> > > +
+> > > +       ctx->codec_ops->run(ctx);
+> > > +}
+> > > +
+> > > +static struct v4l2_m2m_ops vpu_m2m_ops = {
+> > > +       .device_run = device_run,
+> > > +};
+> > > +
+> > > +static int
+> > > +enc_queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+> > > +{
+> > > +       struct rockchip_vpu_ctx *ctx = priv;
+> > > +       int ret;
+> > > +
+> > > +       src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> > > +       src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+> > > +       src_vq->drv_priv = ctx;
+> > > +       src_vq->ops = &rockchip_vpu_enc_queue_ops;
+> > > +       src_vq->mem_ops = &vb2_dma_contig_memops;
+> > > +       src_vq->dma_attrs = DMA_ATTR_ALLOC_SINGLE_PAGES |
+> > > +                           DMA_ATTR_NO_KERNEL_MAPPING;
+> > > +       src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+> > > +       src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> > > +       src_vq->lock = &ctx->dev->vpu_mutex;
+> > > +       src_vq->dev = ctx->dev->v4l2_dev.dev;
+> > > +
+> > > +       ret = vb2_queue_init(src_vq);
+> > > +       if (ret)
+> > > +               return ret;
+> > > +
+> > > +       /* The CAPTURE queue doesn't need dma memory,
+> > > +        * as the CPU needs to create the JPEG frames,
+> > > +        * from the hardware-produced JPEG payload.
+> > > +        *
+> > > +        * For the DMA destination buffer, we use
+> > > +        * a bounce buffer.
+> >
+> > Alternatively we could use a normal buffer and memmove() the payload
+> > to make space for the headers, as we used to do in the VP8 encoder on
+> > rk3288. Either is fine and perhaps we could even do away without that
+> > with some smart trick. Something for the TODO list I guess.
+> >
+>
+> Perhaps we can re-discuss this in IRC? Anyway, it's a nice optimization
+> to keep in mind.
+>
+
+Yeah, just some ideas for the follow up patches.
+
+[snip]
+> > > +static int __maybe_unused rockchip_vpu_runtime_resume(struct device *dev)
+> > > +{
+> > > +       struct rockchip_vpu_dev *vpu = dev_get_drvdata(dev);
+> > > +
+> > > +       return clk_bulk_enable(vpu->variant->num_clocks, vpu->clocks);
+> >
+> > Something for the TODO list: We should disable the clocks as soon as
+> > the hardware becomes idle, because it's super cheap and the delay
+> > between the idle and autosuspend is quite significant.
+> >
+>
+> You mean getting rid of autosuspend, right?
+>
+
+Not exactly. The autosuspend is to avoid too frequent *power*
+transitions, which could be costly. Actually, even if we get rid of
+it, the genpd code will still throttle runtime suspends based on the
+PM domain suspend/resume latency it measured.
+
+The only way to control the clocks without throttling is managing them
+explicitly, just before the call to pm_runtime_put_autosuspend() or
+after pm_runtime_get_sync().
+
+[snip]
+> > > +static int
+> > > +vidioc_try_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> > > +{
+> > > +       struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
+> > > +       struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> > > +       const struct rockchip_vpu_fmt *fmt;
+> > > +
+> > > +       vpu_debug(4, "%c%c%c%c\n",
+> > > +                 (pix_mp->pixelformat & 0x7f),
+> > > +                 (pix_mp->pixelformat >> 8) & 0x7f,
+> > > +                 (pix_mp->pixelformat >> 16) & 0x7f,
+> > > +                 (pix_mp->pixelformat >> 24) & 0x7f);
+> > > +
+> > > +       fmt = rockchip_vpu_find_format(ctx, pix_mp->pixelformat);
+> > > +       if (!fmt) {
+> > > +               fmt = rockchip_vpu_get_default_fmt(ctx, true);
+> > > +               f->fmt.pix.pixelformat = fmt->fourcc;
+> > > +       }
+> > > +
+> > > +       pix_mp->num_planes = 1;
+> > > +       pix_mp->field = V4L2_FIELD_NONE;
+> > > +       pix_mp->width = clamp(pix_mp->width,
+> > > +                             fmt->frmsize.min_width,
+> > > +                             fmt->frmsize.max_width);
+> > > +       pix_mp->height = clamp(pix_mp->height,
+> > > +                              fmt->frmsize.min_height,
+> > > +                              fmt->frmsize.max_height);
+> >
+> > Don't we also need to align to macroblocks?
+> >
+> > > +       pix_mp->plane_fmt[0].sizeimage = fmt->header_size +
+> > > +               pix_mp->width * pix_mp->height * fmt->max_depth;
+> >
+> > I suppose this is a hint for the potential maximum compressed size?
+> >
+>
+> Indeed.
+>
+> > I don't like the idea of enforcing one particular size on the user
+> > space. Or even a minimum size. For example, the user may know that the
+> > image is well-compressible and want to use smaller buffers. Or may
+> > want to try with a smaller buffer first and reallocate to a bigger one
+> > if it turns out to be too small.
+> >
+> > I'd just leave this kind of logic to the user space.
+> >
+>
+> Right. However, it seems to me we still need to set a value,
+> and return it to userspace when userspace doesn't provide any.
+>
+
+There was another discussion about this wrt the venus driver and the
+conclusion is to specify this for codecs as follows:
+
+    For compressed formats (and only those!) userspace can set sizeimage to a
+    proposed value. The driver may either ignore it and just set its own value,
+    or modify it to satisfy HW requirements. The returned value will be used
+    by REQBUFS when it allocates buffers.
+
+So I guess the driver could reset it to default if it doesn't sound
+reasonable (0?).
+
+[snip]
+> > > +void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+> > > +                                   struct rockchip_vpu_ctx *ctx)
+> > > +{
+> > > +       struct v4l2_pix_format_mplane *fmt = &ctx->src_fmt;
+> > > +       unsigned int width, height;
+> > > +
+> > > +       ctx->vpu_src_fmt = rockchip_vpu_get_default_fmt(ctx, false);
+> > > +
+> > > +       memset(fmt, 0, sizeof(*fmt));
+> > > +
+> > > +       width = clamp(fmt->width, ctx->vpu_dst_fmt->frmsize.min_width,
+> > > +                     ctx->vpu_dst_fmt->frmsize.max_width);
+> > > +       height = clamp(fmt->height, ctx->vpu_dst_fmt->frmsize.min_height,
+> > > +                      ctx->vpu_dst_fmt->frmsize.max_height);
+> > > +       fmt->field = V4L2_FIELD_NONE;
+> > > +       fmt->colorspace = ctx->colorspace;
+> > > +       fmt->ycbcr_enc = ctx->ycbcr_enc;
+> > > +       fmt->xfer_func = ctx->xfer_func;
+> > > +       fmt->quantization = ctx->quantization;
+> >
+> > Ditto.
+> >
+> > > +
+> > > +       fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
+> > > +}
+> >
+> > These two don't seem to be very encoder-specific. In particular,
+> > rockchip_vpu_enc_reset_dst_fmt() is not even used by the encoder after
+> > the context is initialized, but it's going to be used by the decoder
+> > to reset the raw format when the coded format changes (similarly to
+> > rockchip_vpu_enc_reset_src_fmt() for encoder).
+> >
+>
+> Yeah, I'm aware there might be some commong logic here, but since
+> the driver is an encoder only for now, I decided to let it be.
+>
+> However, I've made sure the driver is ready to support
+> decoding and other variants, with fairly simple changes.
+>
+
+Fair enough.
+
+[snip]
+> > > +void rockchip_vpu_jpeg_render(struct rockchip_vpu_jpeg_ctx *ctx)
+> >
+> > nit: I'm not sure "render" is the right word here. Maybe it's just me,
+> > but I associate it with rendering of visible graphics. Perhaps
+> > "assemble" would be better?
+> >
+>
+> I don't think render is gfx only, but.. it might be confusing, so
+> how about "rockchip_vpu_jpeg_header_prepare" or "rockchip_vpu_jpeg_header_set" ?
+>
+> This function might be moved to lib/jpeg.c, so getting the name
+> right is not that much of a nitpick.
+>
+
+rockchip_vpu_jpeg_header_assemble()? (My preference for "assemble"
+comes from building the header from the pieces as the function does.)
+
+> > > +{
+> > > +       char *buf = ctx->buffer;
+> > > +
+> > > +       memcpy(buf, rockchip_vpu_jpeg_header,
+> > > +              sizeof(rockchip_vpu_jpeg_header));
+> > > +
+> > > +       buf[HEIGHT_OFF + 0] = ctx->height >> 8;
+> > > +       buf[HEIGHT_OFF + 1] = ctx->height;
+> > > +       buf[WIDTH_OFF + 0] = ctx->width >> 8;
+> > > +       buf[WIDTH_OFF + 1] = ctx->width;
+> > > +
+> > > +       memcpy(buf + HUFF_LUMA_DC_OFF, luma_dc_table, sizeof(luma_dc_table));
+> > > +       memcpy(buf + HUFF_LUMA_AC_OFF, luma_ac_table, sizeof(luma_ac_table));
+> > > +       memcpy(buf + HUFF_CHROMA_DC_OFF, chroma_dc_table,
+> > > +              sizeof(chroma_dc_table));
+> > > +       memcpy(buf + HUFF_CHROMA_AC_OFF, chroma_ac_table,
+> > > +              sizeof(chroma_ac_table));
+> > > +
+> > > +       jpeg_set_quality(buf, ctx->quality);
+> > > +}
+> > > diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h
+> > > new file mode 100644
+> > > index 000000000000..ebe34071851e
+> > > --- /dev/null
+> > > +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.h
+> > > @@ -0,0 +1,14 @@
+> > > +/* SPDX-License-Identifier: GPL-2.0+ */
+> > > +
+> > > +#define JPEG_HEADER_SIZE       601
+> >
+> > Could we just use ARRAY_SIZE() instead?
+> >
+> >
+>
+> We can, just not sure how easily.
+>
+> Thanks a lot for the review!
+
+You're welcome.
+
+Best regards,
+Tomasz
