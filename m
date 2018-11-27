@@ -1,57 +1,74 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 0/6] ARM: dts: rockchip: Add BQ Edison2 QuadCore tablet
-Date: Tue, 27 Nov 2018 15:14:07 +0100
-Message-ID: <1759618.CptkHEOS8g@phil>
-References: <20181113130559.31221-1-heiko@sntech.de>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.
+Date: Tue, 27 Nov 2018 09:39:12 -0500
+Message-ID: <20181127143912.GF14659@windriver.com>
+References: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
+	<20181127101156.GA12298@8bytes.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181113130559.31221-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20181127101156.GA12298-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 13. November 2018, 14:05:53 CET schrieb Heiko Stuebner:
-> Add a devicetree for the BQ Edison2 tablet from MundoReader.
-> Incidentially this is the device I wanted to run mainline Linux
-> on when starting the Rockchip port - thinking, "this can't take
-> thaaat long" ;-) - so I've come somewhat full-circle now.
-> 
-> With Lima it can also use gpu acceleration for gles2.
-> 
-> Notable absent peripherals are the touchscreen (ft5606),
-> IT66121 hdmi bridge (internal panel is working nicely) and sound.
-> All areas I'm still trying to get working.
-> 
-> The series includes some smallish cleanups before the board
-> with cleaning up the cpu-core nodes being a big part.
-> 
-> And there are a number of driver-side additions pending that
-> should get accepted before the board itself can go in.
-> (bq24196, Innolux panel, tmp108-interrupt).
-> 
-> 
-> Heiko Stuebner (6):
->   ARM: dts: rockchip: add #sound-dai-cells to Cortex-A9 i2s
->   ARM: dts: rockchip: convert rk3188 to opp-v2
->   ARM: dts: rockchip: add cpu-core resets for rk3188
->   ARM: dts: rockchip: add phandles to secondary cpu cores
->   ARM: dts: rockchip: update cpu supplies on rk3188
+[Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.] On 27/11/2018 (Tue 11:11) Joerg Roedel wrote:
 
-applied the general cleanups from patch 1-5 for 4.21 now.
+> Hi Paul,
+> 
+> thanks for your cleanup!
+> 
+> The iommu-tree uses another rule for the subject line of patches. Can
+> you please resend with correct subject lines? See below for what is
+> used.
 
+Sure - I'll wait another day or two in case anyone on the Cc sends in
+some additional Acks.
 
->   ARM: dts: rockchip: add BQ Edison 2 QC devicetree
+Thanks,
+Paul.
+--
 
-this one gets a bit more time for possible dt-maintainer Review of the
-small binding addition.
+> 
+> The general format is:
+> 
+> 	iommu/<driver>: _C_apital letter starting subject
+> 
+> Please also collect the Acks you get and add them to the patches before
+> the resend.
+> 
+> On Mon, Nov 26, 2018 at 05:31:29PM -0500, Paul Gortmaker wrote:
+> > Paul Gortmaker (9):
+> >   iommu: audit and remove any unnecessary uses of module.h
+> Fine.
+> >   iommu: rockchip: make it explicitly non-modular
+> 	iommu/rockchip: Make it explicitly non-modular
+> >   iommu: msm_iommu: make it explicitly non-modular
+> 	iommu/msm: Make it explicitly non-modular
+> >   iommu: mtk_iommu: make it explicitly non-modular
+> 	iommu/mediatek: Make it explicitly non-modular
+> >   iommu: ipmmu-vmsa: make it explicitly non-modular
+> 	iommu/ipmmu-vmsa: Make it explicitly non-modular
+> >   iommu: qcom_iommu: make it explicitly non-modular
+> 	iommu/qcom: Make it explicitly non-modular
+> >   iommu: tegra-gart: make it explicitly non-modular
+> 	iommu/tegra: Make it explicitly non-modular
+> >   iommu: arm-smmu: make it explicitly non-modular
+> 	iommu/arm-smmu: Make arm-smmu explicitly non-modular
+> >   iommu: arm-smmu-v3: make it explicitly non-modular
+> 	iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
+> 
+> Thanks a lot,
+> 
+>        Joerg
