@@ -1,115 +1,45 @@
-From: Daniel Vetter <daniel.vetter@ffwll.ch>
-Subject: [PATCH] drm/fbdev: Make skip_vt_switch the default
-Date: Tue, 27 Nov 2018 18:34:24 +0100
-Message-ID: <20181127173424.301-1-daniel.vetter@ffwll.ch>
-References: <20181127170952.28507-1-daniel.vetter@ffwll.ch>
+From: Derek Basehore <dbasehore@chromium.org>
+Subject: [PATCH] arm64: dts: rockchip: Add 32k clk on rk3399-gru
+Date: Tue, 27 Nov 2018 15:23:31 -0800
+Message-ID: <20181127232331.49628-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181127170952.28507-1-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, DRI Development <dri-devel@lists.freedesktop.org>, Huang Rui <ray.huang@amd.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Ben Skeggs <bskeggs@redhat.com>, nouveau@lists.freedesktop.org, Daniel Stone <daniels@collabora.com>, =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel@daenzer.net>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Junwei Zhang <Jerry.Zhang@amd.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer@amd.com>, Samuel Li <Samuel.Li@amd.com>, Shirish S <shirish.s@amd.com>, Alex Deucher <alexander.deucher@amd.com>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, tony.xie@rock-chips.com, zyw@rock-chips.com, ayaka@soulik.info, nickey.yang@rock-chips.com, zhengsq@rock-chips.com, klaus.goger@theobroma-systems.com, dianders@chromium.org, briannorris@chromium.org, enric.balletbo@collabora.com, heiko@sntech.de, mark.rutland@arm.com, robh+dt@kernel.org, Derek Basehore <dbasehore@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-S01TIGRyaXZlcnMgcmVhbGx5IHNob3VsZCBhbGwgYmUgYWJsZSB0byByZXN0b3JlIHRoZWlyIGRp
-c3BsYXkgc3RhdGUKb24gcmVzdW1lIHdpdGhvdXQgZmJjb24gaGVscGluZyBvdXQuIFNvIG1ha2Ug
-dGhpcyB0aGUgZGVmYXVsdC4KClNpbmNlIEknbSBub3QgZW50aXJlbHkgZm9vbGlzaCwgbWFrZSBp
-dCBvbmx5IGEgZGVmYXVsdCwgd2hpY2ggZHJpdmVycwpjYW4gc3RpbGwgb3ZlcnJpZGUuIFRoYXQg
-d2F5IHdoZW4gdGhlIGluZXZpdGFibGUgcmVncmVzc2lvbiByZXBvcnQKaGFwcGVucyBJIGNhbiBm
-aXggdGhpbmdzIHVwIHdpdGggYSBvbmUtbGluZXIgcGx1cyBGSVhNRSBjb21tZW50IHRoYXQKc29t
-ZW9uZSBzaG91bGQgZml4IHVwIHRoZSBzdXNwZW5kL3Jlc3VtZSBjb2RlIGluIHRoYXQgZHJpdmVy
-LgoKQnV0IGF0IGxlYXN0IGFsbCBuZXcgZHJpdmVycyB3b24ndCBiZSBicm9rZW4gYnkgYWNjaWRl
-bnQgYXMgc29vbiBhcwp5b3UgdHVybiBvZmYgZmJjb24gYmVjYXVzZSAic3VzcGVuZC9yZXN1bWUg
-d29ya2VkIHdoZW4gSSB0ZXN0ZWQgaXQiLgoKdjI6IEtlZXAgdGhpcyBmb3IgcmFkZW9uIGJlY2F1
-c2Ugb2YKCmNvbW1pdCAxOGM0MzdjYWE1YjE4YTIzNWRkNjVjZWMyMjRlYWI1NGJlYmNlZTY1CkF1
-dGhvcjogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIuZGV1Y2hlckBhbWQuY29tPgpEYXRlOiAgIFR1
-ZSBOb3YgMTQgMTc6MTk6MjkgMjAxNyAtMDUwMAoKICAgIFJldmVydCAiZHJtL3JhZGVvbjogZG9u
-dCBzd2l0Y2ggdnQgb24gc3VzcGVuZCIKClRoYW5rcyB0byBNaWNoZWwgRMOkbnplciBmb3IgcG9p
-bnRpbmcgdGhpcyBvbmUgb3V0LgoKU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVs
-LnZldHRlckBpbnRlbC5jb20+CkNjOiBNaWNoZWwgRMOkbnplciA8bWljaGVsQGRhZW56ZXIubmV0
-PgpDYzogTWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4LmludGVsLmNv
-bT4KQ2M6IE1heGltZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAYm9vdGxpbi5jb20+CkNjOiBTZWFu
-IFBhdWwgPHNlYW5AcG9vcmx5LnJ1bj4KQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5p
-ZT4KQ2M6IEphbmkgTmlrdWxhIDxqYW5pLm5pa3VsYUBsaW51eC5pbnRlbC5jb20+CkNjOiBKb29u
-YXMgTGFodGluZW4gPGpvb25hcy5sYWh0aW5lbkBsaW51eC5pbnRlbC5jb20+CkNjOiBSb2RyaWdv
-IFZpdmkgPHJvZHJpZ28udml2aUBpbnRlbC5jb20+CkNjOiBCZW4gU2tlZ2dzIDxic2tlZ2dzQHJl
-ZGhhdC5jb20+CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpDYzogIkhlaWtv
-IFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgpDYzogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIu
-ZGV1Y2hlckBhbWQuY29tPgpDYzogIkNocmlzdGlhbiBLw7ZuaWciIDxjaHJpc3RpYW4ua29lbmln
-QGFtZC5jb20+CkNjOiBTYW11ZWwgTGkgPFNhbXVlbC5MaUBhbWQuY29tPgpDYzogIk1pY2hlbCBE
-w6RuemVyIiA8bWljaGVsLmRhZW56ZXJAYW1kLmNvbT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmll
-bC52ZXR0ZXJAZmZ3bGwuY2g+CkNjOiBKdW53ZWkgWmhhbmcgPEplcnJ5LlpoYW5nQGFtZC5jb20+
-CkNjOiBIdWFuZyBSdWkgPHJheS5odWFuZ0BhbWQuY29tPgpDYzogU2hpcmlzaCBTIDxzaGlyaXNo
-LnNAYW1kLmNvbT4KQ2M6IERhbmllbCBTdG9uZSA8ZGFuaWVsc0Bjb2xsYWJvcmEuY29tPgpDYzog
-Ik5vcmFsZiBUcsO4bm5lcyIgPG5vcmFsZkB0cm9ubmVzLm9yZz4KQ2M6IGludGVsLWdmeEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKQ2M6IG5vdXZlYXVAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBs
-aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKLS0tCiBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVf
-ZmIuYyAgICAgICAgfCAxIC0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fZmJfaGVscGVyLmMgICAgICAg
-ICAgICAgICB8IDEgKwogZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfZmJkZXYuYyAgICAgICAg
-ICAgIHwgMyAtLS0KIGRyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L25vdXZlYXVfZmJjb24uYyAgICAg
-ICB8IDEgLQogZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZmIuYyAgICAgICAgICAgIHwg
-MyArKysKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYyB8IDIg
-LS0KIDYgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9mYi5jIGIvZHJpdmVy
-cy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2ZiLmMKaW5kZXggNWNiZGU3NGI5N2RkLi4yNDg5
-MGQ4ZjllZTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9m
-Yi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9mYi5jCkBAIC0yMzQs
-NyArMjM0LDYgQEAgc3RhdGljIGludCBhbWRncHVmYl9jcmVhdGUoc3RydWN0IGRybV9mYl9oZWxw
-ZXIgKmhlbHBlciwKIAl9CiAKIAlpbmZvLT5wYXIgPSByZmJkZXY7Ci0JaW5mby0+c2tpcF92dF9z
-d2l0Y2ggPSB0cnVlOwogCiAJcmV0ID0gYW1kZ3B1X2Rpc3BsYXlfZnJhbWVidWZmZXJfaW5pdChh
-ZGV2LT5kZGV2LCAmcmZiZGV2LT5yZmIsCiAJCQkJCSAgICAgICZtb2RlX2NtZCwgZ29iaik7CmRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZiX2hlbHBlci5jIGIvZHJpdmVycy9ncHUv
-ZHJtL2RybV9mYl9oZWxwZXIuYwppbmRleCA1ZTljYTZmOTYzNzkuLjQxZjM3NzA0ZTBhMyAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9oZWxwZXIuYworKysgYi9kcml2ZXJzL2dw
-dS9kcm0vZHJtX2ZiX2hlbHBlci5jCkBAIC05MzQsNiArOTM0LDcgQEAgc3RydWN0IGZiX2luZm8g
-KmRybV9mYl9oZWxwZXJfYWxsb2NfZmJpKHN0cnVjdCBkcm1fZmJfaGVscGVyICpmYl9oZWxwZXIp
-CiAJfQogCiAJZmJfaGVscGVyLT5mYmRldiA9IGluZm87CisJaW5mby0+c2tpcF92dF9zd2l0Y2gg
-PSB0cnVlOwogCiAJcmV0dXJuIGluZm87CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9p
-OTE1L2ludGVsX2ZiZGV2LmMgYi9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF9mYmRldi5jCmlu
-ZGV4IDI0ODBjN2Q2ZWRlZS4uZDZmOGQ0YmJjOWZjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vaTkxNS9pbnRlbF9mYmRldi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2ludGVsX2Zi
-ZGV2LmMKQEAgLTI1Nyw5ICsyNTcsNiBAQCBzdGF0aWMgaW50IGludGVsZmJfY3JlYXRlKHN0cnVj
-dCBkcm1fZmJfaGVscGVyICpoZWxwZXIsCiAJaW5mby0+c2NyZWVuX2Jhc2UgPSB2YWRkcjsKIAlp
-bmZvLT5zY3JlZW5fc2l6ZSA9IHZtYS0+bm9kZS5zaXplOwogCi0JLyogVGhpcyBkcml2ZXIgZG9l
-c24ndCBuZWVkIGEgVlQgc3dpdGNoIHRvIHJlc3RvcmUgdGhlIG1vZGUgb24gcmVzdW1lICovCi0J
-aW5mby0+c2tpcF92dF9zd2l0Y2ggPSB0cnVlOwotCiAJZHJtX2ZiX2hlbHBlcl9maWxsX2ZpeChp
-bmZvLCBmYi0+cGl0Y2hlc1swXSwgZmItPmZvcm1hdC0+ZGVwdGgpOwogCWRybV9mYl9oZWxwZXJf
-ZmlsbF92YXIoaW5mbywgJmlmYmRldi0+aGVscGVyLCBzaXplcy0+ZmJfd2lkdGgsIHNpemVzLT5m
-Yl9oZWlnaHQpOwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1
-X2ZiY29uLmMgYi9kcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1X2ZiY29uLmMKaW5kZXgg
-MDMyMzE3YzgxYmYwLi42NzU3MjQwOGQ5YWUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9u
-b3V2ZWF1L25vdXZlYXVfZmJjb24uYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2
-ZWF1X2ZiY29uLmMKQEAgLTM2NSw3ICszNjUsNiBAQCBub3V2ZWF1X2ZiY29uX2NyZWF0ZShzdHJ1
-Y3QgZHJtX2ZiX2hlbHBlciAqaGVscGVyLAogCQlyZXQgPSBQVFJfRVJSKGluZm8pOwogCQlnb3Rv
-IG91dF91bmxvY2s7CiAJfQotCWluZm8tPnNraXBfdnRfc3dpdGNoID0gMTsKIAogCWluZm8tPnBh
-ciA9IGZiY29uOwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9m
-Yi5jIGIvZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZmIuYwppbmRleCAxMTc5MDM0MDI0
-YWUuLmQ1MGJmZjIwZjdkZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRl
-b25fZmIuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9mYi5jCkBAIC0yNDQs
-NiArMjQ0LDkgQEAgc3RhdGljIGludCByYWRlb25mYl9jcmVhdGUoc3RydWN0IGRybV9mYl9oZWxw
-ZXIgKmhlbHBlciwKIAkJZ290byBvdXQ7CiAJfQogCisJLyogcmFkZW9uIHJlc3VtZSBpcyBmcmFn
-aWxlIGFuZCBuZWVkcyBhIHZ0IHN3aXRjaCB0byBoZWxwIGl0IGFsb25nICovCisJaW5mby0+c2tp
-cF92dF9zd2l0Y2ggPSBmYWxzZTsKKwogCWluZm8tPnBhciA9IHJmYmRldjsKIAogCXJldCA9IHJh
-ZGVvbl9mcmFtZWJ1ZmZlcl9pbml0KHJkZXYtPmRkZXYsICZyZmJkZXYtPmZiLCAmbW9kZV9jbWQs
-IGdvYmopOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV9mYmRldi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5j
-CmluZGV4IGU2NjUwNTUzZjVkNi4uMzYxNjA0ZTUxMzYxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jCkBAIC0xMTEsOCArMTExLDYgQEAgc3RhdGlj
-IGludCByb2NrY2hpcF9kcm1fZmJkZXZfY3JlYXRlKHN0cnVjdCBkcm1fZmJfaGVscGVyICpoZWxw
-ZXIsCiAJCSAgICAgIHJrX29iai0+a3ZhZGRyLAogCQkgICAgICBvZmZzZXQsIHNpemUpOwogCi0J
-ZmJpLT5za2lwX3Z0X3N3aXRjaCA9IHRydWU7Ci0KIAlyZXR1cm4gMDsKIAogb3V0OgotLSAKMi4x
-OS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+This adds the 32k clock to the RK3399 Gru board file. Even though it's
+not directly used, muxes will end up traversing the entire clk tree on
+calls to determine_rate if it doesn't exist. This is because the 32k
+clk is listed as a possible parent on some clks. Since the clk doesn't
+know about the 32k clk (it was never registered), it triggers a global
+search for it. This can happen about 40 times per second, which isn't
+great for power.
+
+Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index ca07f6032200..a07aa4c570c0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -14,6 +14,13 @@
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
++	ap_rtc_clk: ap-rtc-clk {
++		compatible = "fixed-clock";
++		clock-frequency = <32768>;
++		clock-output-names = "xin32k";
++		#clock-cells = <0>;
++	};
++
+ 	/*
+ 	 * Power Tree
+ 	 *
+-- 
+2.20.0.rc0.387.gc7a69e6b6c-goog
