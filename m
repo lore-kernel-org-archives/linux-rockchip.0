@@ -1,74 +1,98 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.
-Date: Tue, 27 Nov 2018 09:39:12 -0500
-Message-ID: <20181127143912.GF14659@windriver.com>
-References: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
-	<20181127101156.GA12298@8bytes.org>
+From: Daniel Vetter <daniel.vetter@ffwll.ch>
+Subject: [PATCH] drm/fbdev: Make skip_vt_switch the default
+Date: Tue, 27 Nov 2018 18:09:52 +0100
+Message-ID: <20181127170952.28507-1-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20181127101156.GA12298-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, DRI Development <dri-devel@lists.freedesktop.org>, Huang Rui <ray.huang@amd.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Ben Skeggs <bskeggs@redhat.com>, nouveau@lists.freedesktop.org, Daniel Stone <daniels@collabora.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Junwei Zhang <Jerry.Zhang@amd.com>, linux-arm-kernel@lists.infradead.org, =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer@amd.com>, Sandy Huang <hjc@rock-chips.com>, Samuel Li <Samuel.Li@amd.com>, Shirish S <shirish.s@amd.com>, =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>, Alex Deucher <alexander.deucher@amd.com>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-[Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.] On 27/11/2018 (Tue 11:11) Joerg Roedel wrote:
-
-> Hi Paul,
-> 
-> thanks for your cleanup!
-> 
-> The iommu-tree uses another rule for the subject line of patches. Can
-> you please resend with correct subject lines? See below for what is
-> used.
-
-Sure - I'll wait another day or two in case anyone on the Cc sends in
-some additional Acks.
-
-Thanks,
-Paul.
---
-
-> 
-> The general format is:
-> 
-> 	iommu/<driver>: _C_apital letter starting subject
-> 
-> Please also collect the Acks you get and add them to the patches before
-> the resend.
-> 
-> On Mon, Nov 26, 2018 at 05:31:29PM -0500, Paul Gortmaker wrote:
-> > Paul Gortmaker (9):
-> >   iommu: audit and remove any unnecessary uses of module.h
-> Fine.
-> >   iommu: rockchip: make it explicitly non-modular
-> 	iommu/rockchip: Make it explicitly non-modular
-> >   iommu: msm_iommu: make it explicitly non-modular
-> 	iommu/msm: Make it explicitly non-modular
-> >   iommu: mtk_iommu: make it explicitly non-modular
-> 	iommu/mediatek: Make it explicitly non-modular
-> >   iommu: ipmmu-vmsa: make it explicitly non-modular
-> 	iommu/ipmmu-vmsa: Make it explicitly non-modular
-> >   iommu: qcom_iommu: make it explicitly non-modular
-> 	iommu/qcom: Make it explicitly non-modular
-> >   iommu: tegra-gart: make it explicitly non-modular
-> 	iommu/tegra: Make it explicitly non-modular
-> >   iommu: arm-smmu: make it explicitly non-modular
-> 	iommu/arm-smmu: Make arm-smmu explicitly non-modular
-> >   iommu: arm-smmu-v3: make it explicitly non-modular
-> 	iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
-> 
-> Thanks a lot,
-> 
->        Joerg
+S01TIGRyaXZlcnMgcmVhbGx5IHNob3VsZCBhbGwgYmUgYWJsZSB0byByZXN0b3JlIHRoZWlyIGRp
+c3BsYXkgc3RhdGUKb24gcmVzdW1lIHdpdGhvdXQgZmJjb24gaGVscGluZyBvdXQuIFNvIG1ha2Ug
+dGhpcyB0aGUgZGVmYXVsdC4KClNpbmNlIEknbSBub3QgZW50aXJlbHkgZm9vbGlzaCwgbWFrZSBp
+dCBvbmx5IGEgZGVmYXVsdCwgd2hpY2ggZHJpdmVycwpjYW4gc3RpbGwgb3ZlcnJpZGUuIFRoYXQg
+d2F5IHdoZW4gdGhlIGluZXZpdGFibGUgcmVncmVzc2lvbiByZXBvcnQKaGFwcGVucyBJIGNhbiBm
+aXggdGhpbmdzIHVwIHdpdGggYSBvbmUtbGluZXIgcGx1cyBGSVhNRSBjb21tZW50IHRoYXQKc29t
+ZW9uZSBzaG91bGQgZml4IHVwIHRoZSBzdXNwZW5kL3Jlc3VtZSBjb2RlIGluIHRoYXQgZHJpdmVy
+LgoKQnV0IGF0IGxlYXN0IGFsbCBuZXcgZHJpdmVycyB3b24ndCBiZSBicm9rZW4gYnkgYWNjaWRl
+bnQgYmVjYXVzZQoic3VzcGVuZC9yZXN1bWUgd29ya2VkIHdoZW4gSSB0ZXN0ZWQgaXQiIGFzIHNv
+b24gYXMgeW91IHR1cm4gb2ZmCmZiY29uLgoKU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZldHRlciA8
+ZGFuaWVsLnZldHRlckBpbnRlbC5jb20+CkNjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5s
+YW5raG9yc3RAbGludXguaW50ZWwuY29tPgpDYzogTWF4aW1lIFJpcGFyZCA8bWF4aW1lLnJpcGFy
+ZEBib290bGluLmNvbT4KQ2M6IFNlYW4gUGF1bCA8c2VhbkBwb29ybHkucnVuPgpDYzogRGF2aWQg
+QWlybGllIDxhaXJsaWVkQGxpbnV4LmllPgpDYzogSmFuaSBOaWt1bGEgPGphbmkubmlrdWxhQGxp
+bnV4LmludGVsLmNvbT4KQ2M6IEpvb25hcyBMYWh0aW5lbiA8am9vbmFzLmxhaHRpbmVuQGxpbnV4
+LmludGVsLmNvbT4KQ2M6IFJvZHJpZ28gVml2aSA8cm9kcmlnby52aXZpQGludGVsLmNvbT4KQ2M6
+IEJlbiBTa2VnZ3MgPGJza2VnZ3NAcmVkaGF0LmNvbT4KQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9j
+ay1jaGlwcy5jb20+CkNjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBB
+bGV4IERldWNoZXIgPGFsZXhhbmRlci5kZXVjaGVyQGFtZC5jb20+CkNjOiAiQ2hyaXN0aWFuIEvD
+tm5pZyIgPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4KQ2M6IFNhbXVlbCBMaSA8U2FtdWVsLkxp
+QGFtZC5jb20+CkNjOiAiTWljaGVsIETDpG56ZXIiIDxtaWNoZWwuZGFlbnplckBhbWQuY29tPgpD
+YzogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBmZndsbC5jaD4KQ2M6IEp1bndlaSBaaGFu
+ZyA8SmVycnkuWmhhbmdAYW1kLmNvbT4KQ2M6IEh1YW5nIFJ1aSA8cmF5Lmh1YW5nQGFtZC5jb20+
+CkNjOiBTaGlyaXNoIFMgPHNoaXJpc2guc0BhbWQuY29tPgpDYzogRGFuaWVsIFN0b25lIDxkYW5p
+ZWxzQGNvbGxhYm9yYS5jb20+CkNjOiAiTm9yYWxmIFRyw7hubmVzIiA8bm9yYWxmQHRyb25uZXMu
+b3JnPgpDYzogaW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpDYzogbm91dmVhdUBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1
+L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9mYi5jICAgICAgICB8IDEgLQogZHJpdmVycy9ncHUvZHJt
+L2RybV9mYl9oZWxwZXIuYyAgICAgICAgICAgICAgIHwgMSArCiBkcml2ZXJzL2dwdS9kcm0vaTkx
+NS9pbnRlbF9mYmRldi5jICAgICAgICAgICAgfCAzIC0tLQogZHJpdmVycy9ncHUvZHJtL25vdXZl
+YXUvbm91dmVhdV9mYmNvbi5jICAgICAgIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiZGV2LmMgfCAyIC0tCiA1IGZpbGVzIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
+KCspLCA3IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1k
+Z3B1L2FtZGdwdV9mYi5jIGIvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2ZiLmMK
+aW5kZXggNWNiZGU3NGI5N2RkLi4yNDg5MGQ4ZjllZTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9mYi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9hbWQvYW1k
+Z3B1L2FtZGdwdV9mYi5jCkBAIC0yMzQsNyArMjM0LDYgQEAgc3RhdGljIGludCBhbWRncHVmYl9j
+cmVhdGUoc3RydWN0IGRybV9mYl9oZWxwZXIgKmhlbHBlciwKIAl9CiAKIAlpbmZvLT5wYXIgPSBy
+ZmJkZXY7Ci0JaW5mby0+c2tpcF92dF9zd2l0Y2ggPSB0cnVlOwogCiAJcmV0ID0gYW1kZ3B1X2Rp
+c3BsYXlfZnJhbWVidWZmZXJfaW5pdChhZGV2LT5kZGV2LCAmcmZiZGV2LT5yZmIsCiAJCQkJCSAg
+ICAgICZtb2RlX2NtZCwgZ29iaik7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2Zi
+X2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9oZWxwZXIuYwppbmRleCA1ZTljYTZm
+OTYzNzkuLjQxZjM3NzA0ZTBhMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9o
+ZWxwZXIuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZiX2hlbHBlci5jCkBAIC05MzQsNiAr
+OTM0LDcgQEAgc3RydWN0IGZiX2luZm8gKmRybV9mYl9oZWxwZXJfYWxsb2NfZmJpKHN0cnVjdCBk
+cm1fZmJfaGVscGVyICpmYl9oZWxwZXIpCiAJfQogCiAJZmJfaGVscGVyLT5mYmRldiA9IGluZm87
+CisJaW5mby0+c2tpcF92dF9zd2l0Y2ggPSB0cnVlOwogCiAJcmV0dXJuIGluZm87CiAKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2ludGVsX2ZiZGV2LmMgYi9kcml2ZXJzL2dwdS9k
+cm0vaTkxNS9pbnRlbF9mYmRldi5jCmluZGV4IDI0ODBjN2Q2ZWRlZS4uZDZmOGQ0YmJjOWZjIDEw
+MDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF9mYmRldi5jCisrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9pOTE1L2ludGVsX2ZiZGV2LmMKQEAgLTI1Nyw5ICsyNTcsNiBAQCBzdGF0aWMg
+aW50IGludGVsZmJfY3JlYXRlKHN0cnVjdCBkcm1fZmJfaGVscGVyICpoZWxwZXIsCiAJaW5mby0+
+c2NyZWVuX2Jhc2UgPSB2YWRkcjsKIAlpbmZvLT5zY3JlZW5fc2l6ZSA9IHZtYS0+bm9kZS5zaXpl
+OwogCi0JLyogVGhpcyBkcml2ZXIgZG9lc24ndCBuZWVkIGEgVlQgc3dpdGNoIHRvIHJlc3RvcmUg
+dGhlIG1vZGUgb24gcmVzdW1lICovCi0JaW5mby0+c2tpcF92dF9zd2l0Y2ggPSB0cnVlOwotCiAJ
+ZHJtX2ZiX2hlbHBlcl9maWxsX2ZpeChpbmZvLCBmYi0+cGl0Y2hlc1swXSwgZmItPmZvcm1hdC0+
+ZGVwdGgpOwogCWRybV9mYl9oZWxwZXJfZmlsbF92YXIoaW5mbywgJmlmYmRldi0+aGVscGVyLCBz
+aXplcy0+ZmJfd2lkdGgsIHNpemVzLT5mYl9oZWlnaHQpOwogCmRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1X2ZiY29uLmMgYi9kcml2ZXJzL2dwdS9kcm0vbm91dmVh
+dS9ub3V2ZWF1X2ZiY29uLmMKaW5kZXggMDMyMzE3YzgxYmYwLi42NzU3MjQwOGQ5YWUgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L25vdXZlYXVfZmJjb24uYworKysgYi9kcml2
+ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1X2ZiY29uLmMKQEAgLTM2NSw3ICszNjUsNiBAQCBu
+b3V2ZWF1X2ZiY29uX2NyZWF0ZShzdHJ1Y3QgZHJtX2ZiX2hlbHBlciAqaGVscGVyLAogCQlyZXQg
+PSBQVFJfRVJSKGluZm8pOwogCQlnb3RvIG91dF91bmxvY2s7CiAJfQotCWluZm8tPnNraXBfdnRf
+c3dpdGNoID0gMTsKIAogCWluZm8tPnBhciA9IGZiY29uOwogCmRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMKaW5kZXggZTY2NTA1NTNmNWQ2Li4zNjE2MDRl
+NTEzNjEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+ZmJkZXYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2
+LmMKQEAgLTExMSw4ICsxMTEsNiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9mYmRldl9jcmVh
+dGUoc3RydWN0IGRybV9mYl9oZWxwZXIgKmhlbHBlciwKIAkJICAgICAgcmtfb2JqLT5rdmFkZHIs
+CiAJCSAgICAgIG9mZnNldCwgc2l6ZSk7CiAKLQlmYmktPnNraXBfdnRfc3dpdGNoID0gdHJ1ZTsK
+LQogCXJldHVybiAwOwogCiBvdXQ6Ci0tIAoyLjE5LjEKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwtZ2Z4
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2ludGVsLWdmeAo=
