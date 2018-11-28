@@ -1,48 +1,54 @@
-From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Subject: Re: [PATCH] drm/fbdev: Make skip_vt_switch the default
-Date: Wed, 28 Nov 2018 08:17:04 +0100
-Message-ID: <3d406677-9d7d-6d8d-85af-1cfb253d1838@linux.intel.com>
-References: <20181127170952.28507-1-daniel.vetter@ffwll.ch>
- <20181127173424.301-1-daniel.vetter@ffwll.ch>
+From: Max Kellermann <max.kellermann@gmail.com>
+Subject: [PATCH] sound/soc/rockchip: add RT5640 codec option
+Date: Wed, 28 Nov 2018 08:28:52 +0100
+Message-ID: <20181128072852.32760-1-max.kellermann@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20181127173424.301-1-daniel.vetter@ffwll.ch>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Maxime Ripard <maxime.ripard@bootlin.com>, nouveau@lists.freedesktop.org, DRI Development <dri-devel@lists.freedesktop.org>, Huang Rui <ray.huang@amd.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Ben Skeggs <bskeggs@redhat.com>, Daniel Stone <daniels@collabora.com>, =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel@daenzer.net>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Junwei Zhang <Jerry.Zhang@amd.com>, linux-arm-kernel@lists.infradead.org, =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel.daenzer@amd.com>, Sandy Huang <hjc@rock-chips.com>, Samuel Li <Samuel.Li@amd.com>, Shirish S <shirish.s@amd.com>, =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>, Alex Deucher <alexander.deucher@amd.com>, =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, bardliao@realtek.com, oder_chiou@realtek.com, Max Kellermann <max.kellermann@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T3AgMjctMTEtMTggb20gMTg6MzQgc2NocmVlZiBEYW5pZWwgVmV0dGVyOgo+IEtNUyBkcml2ZXJz
-IHJlYWxseSBzaG91bGQgYWxsIGJlIGFibGUgdG8gcmVzdG9yZSB0aGVpciBkaXNwbGF5IHN0YXRl
-Cj4gb24gcmVzdW1lIHdpdGhvdXQgZmJjb24gaGVscGluZyBvdXQuIFNvIG1ha2UgdGhpcyB0aGUg
-ZGVmYXVsdC4KPgo+IFNpbmNlIEknbSBub3QgZW50aXJlbHkgZm9vbGlzaCwgbWFrZSBpdCBvbmx5
-IGEgZGVmYXVsdCwgd2hpY2ggZHJpdmVycwo+IGNhbiBzdGlsbCBvdmVycmlkZS4gVGhhdCB3YXkg
-d2hlbiB0aGUgaW5ldml0YWJsZSByZWdyZXNzaW9uIHJlcG9ydAo+IGhhcHBlbnMgSSBjYW4gZml4
-IHRoaW5ncyB1cCB3aXRoIGEgb25lLWxpbmVyIHBsdXMgRklYTUUgY29tbWVudCB0aGF0Cj4gc29t
-ZW9uZSBzaG91bGQgZml4IHVwIHRoZSBzdXNwZW5kL3Jlc3VtZSBjb2RlIGluIHRoYXQgZHJpdmVy
-Lgo+Cj4gQnV0IGF0IGxlYXN0IGFsbCBuZXcgZHJpdmVycyB3b24ndCBiZSBicm9rZW4gYnkgYWNj
-aWRlbnQgYXMgc29vbiBhcwo+IHlvdSB0dXJuIG9mZiBmYmNvbiBiZWNhdXNlICJzdXNwZW5kL3Jl
-c3VtZSB3b3JrZWQgd2hlbiBJIHRlc3RlZCBpdCIuCj4KPiB2MjogS2VlcCB0aGlzIGZvciByYWRl
-b24gYmVjYXVzZSBvZgo+Cj4gY29tbWl0IDE4YzQzN2NhYTViMThhMjM1ZGQ2NWNlYzIyNGVhYjU0
-YmViY2VlNjUKPiBBdXRob3I6IEFsZXggRGV1Y2hlciA8YWxleGFuZGVyLmRldWNoZXJAYW1kLmNv
-bT4KPiBEYXRlOiAgIFR1ZSBOb3YgMTQgMTc6MTk6MjkgMjAxNyAtMDUwMAo+Cj4gICAgIFJldmVy
-dCAiZHJtL3JhZGVvbjogZG9udCBzd2l0Y2ggdnQgb24gc3VzcGVuZCIKPgo+IFRoYW5rcyB0byBN
-aWNoZWwgRMOkbnplciBmb3IgcG9pbnRpbmcgdGhpcyBvbmUgb3V0LgoKTWF5YmUganVzdCByZWxv
-YWQgdGhlIGdhbW1hIGx1dCBvbiByZXN1bWUgZm9yIHJhZGVvbiwgaW5zdGVhZCBvZiByZWx5aW5n
-IG9uIGZiY29uPwoKT3RoZXJ3aXNlIHBhdGNoIGxvb2tzIHNhbmUsIHdvdWxkIGJlIG5pY2UgaWYg
-cmFkZW9uIHdhcyBmaXhlZCBpbnN0ZWFkIG9mIHdvcmtlZCBhcm91bmQuCgpSZXZpZXdlZC1ieTog
-TWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT4KCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBt
-YWlsaW5nIGxpc3QKSW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeAo=
+The Firefly-RK3399 DeviceTree
+(`arch/arm64/boot/dts/rockchip/rk3399-firefly.dts`) defines a
+`simple-audio-card` device which selects a `realtek,rt5640` codec.
+This codec however is inaccessible in the kernel configuration
+(`SND_SOC_RT5640`) and thus cannot be used.
+
+This patch adds a new configuration option named
+`SND_SOC_ROCKCHIP_RT5640` which selects `SND_SOC_RT5640` and
+`SND_SIMPLE_CARD`, but does nothing else.
+
+It enables `SND_SIMPLE_CARD`, because that's what the Firefly has.
+I'm not sure if there are Rockchip products which need a different
+sound card driver with RT5640.
+
+Signed-off-by: Max Kellermann <max.kellermann@gmail.com>
+---
+ sound/soc/rockchip/Kconfig | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
+index 957046ac6c8c..ac2e27043107 100644
+--- a/sound/soc/rockchip/Kconfig
++++ b/sound/soc/rockchip/Kconfig
+@@ -42,6 +42,16 @@ config SND_SOC_ROCKCHIP_MAX98090
+ 	  Say Y or M here if you want to add support for SoC audio on Rockchip
+ 	  boards using the MAX98090 codec, such as Veyron.
+ 
++config SND_SOC_ROCKCHIP_RT5640
++	tristate "ASoC support for Rockchip boards using a RT5640 codec"
++	depends on SND_SOC_ROCKCHIP
++	select SND_SOC_ROCKCHIP_I2S
++	select SND_SOC_RT5640
++	select SND_SIMPLE_CARD
++	help
++	  Say Y or M here if you want to add support for SoC audio on Rockchip
++	  boards using the RT5640 codec, such as Firefly-RK3399.
++
+ config SND_SOC_ROCKCHIP_RT5645
+ 	tristate "ASoC support for Rockchip boards using a RT5645/RT5650 codec"
+ 	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB && CLKDEV_LOOKUP
+-- 
+2.19.2
