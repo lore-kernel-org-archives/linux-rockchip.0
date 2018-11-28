@@ -1,45 +1,76 @@
-From: Derek Basehore <dbasehore@chromium.org>
-Subject: [PATCH] arm64: dts: rockchip: Add 32k clk on rk3399-gru
-Date: Tue, 27 Nov 2018 15:23:31 -0800
-Message-ID: <20181127232331.49628-1-dbasehore@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add 32k clk on rk3399-gru
+Date: Tue, 27 Nov 2018 16:42:36 -0800
+Message-ID: <CAD=FV=WJCvt-Ez_F+gTJaLWnOOY2J0fXxgq8vy0ojKoHv+AQ7w@mail.gmail.com>
+References: <20181127232331.49628-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181127232331.49628-1-dbasehore@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, tony.xie@rock-chips.com, zyw@rock-chips.com, ayaka@soulik.info, nickey.yang@rock-chips.com, zhengsq@rock-chips.com, klaus.goger@theobroma-systems.com, dianders@chromium.org, briannorris@chromium.org, enric.balletbo@collabora.com, heiko@sntech.de, mark.rutland@arm.com, robh+dt@kernel.org, Derek Basehore <dbasehore@chromium.org>
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kernel.org, Tony Xie <tony.xie@rock-chips.com>, Chris <zyw@rock-chips.com>, ayaka@soulik.info, "nickey.yang" <nickey.yang@rock-chips.com>, =?UTF-8?B?6YOR6Iic5Lm+?= <zhengsq@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Brian Norris <briannorris@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the 32k clock to the RK3399 Gru board file. Even though it's
-not directly used, muxes will end up traversing the entire clk tree on
-calls to determine_rate if it doesn't exist. This is because the 32k
-clk is listed as a possible parent on some clks. Since the clk doesn't
-know about the 32k clk (it was never registered), it triggers a global
-search for it. This can happen about 40 times per second, which isn't
-great for power.
+Hi,
 
-Signed-off-by: Derek Basehore <dbasehore@chromium.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+On Tue, Nov 27, 2018 at 3:23 PM Derek Basehore <dbasehore@chromium.org> wrote:
+>
+> This adds the 32k clock to the RK3399 Gru board file. Even though it's
+> not directly used, muxes will end up traversing the entire clk tree on
+> calls to determine_rate if it doesn't exist. This is because the 32k
+> clk is listed as a possible parent on some clks. Since the clk doesn't
+> know about the 32k clk (it was never registered), it triggers a global
+> search for it. This can happen about 40 times per second, which isn't
+> great for power.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index ca07f6032200..a07aa4c570c0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -14,6 +14,13 @@
- 		stdout-path = "serial2:115200n8";
- 	};
- 
-+	ap_rtc_clk: ap-rtc-clk {
-+		compatible = "fixed-clock";
-+		clock-frequency = <32768>;
-+		clock-output-names = "xin32k";
-+		#clock-cells = <0>;
-+	};
-+
- 	/*
- 	 * Power Tree
- 	 *
--- 
-2.20.0.rc0.387.gc7a69e6b6c-goog
+I seem to remember Heiko requesting something be added to the commit
+message.  Ah yes, he said:
+
+> That would also be a great part of the commit message, like
+> "...on Gru boards the 32kHz clock gets produced by a Silego oscillator"
+> or so when you move it over to rk3399-gru.dtsi .
+
+Presumably Heiko could add that to the commit message when he applies
+the patch, so maybe wait to see if he wants you to respin it?
+
+
+> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> index ca07f6032200..a07aa4c570c0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> @@ -14,6 +14,13 @@
+>                 stdout-path = "serial2:115200n8";
+>         };
+>
+> +       ap_rtc_clk: ap-rtc-clk {
+> +               compatible = "fixed-clock";
+> +               clock-frequency = <32768>;
+> +               clock-output-names = "xin32k";
+> +               #clock-cells = <0>;
+> +       };
+> +
+>         /*
+>          * Power Tree
+
+Really this should be below the power tree, AKA right above
+"gpio-keys".  Convention has typically been that only "special" nodes
+like "chosen" go all the way at the top here.  Then the power tree
+(parents first), then other nodes.
+
+In the Chrome OS tree we had an "/* END REGULATORS */ comment to try
+to separate out the power tree from the rest of the nodes, but I guess
+Heiko didn't like that when this went upstream so now you just have to
+know the convention.  :-P
+
+Possibly Heiko would re-sort this for you himself when applying the
+change if he agrees with my understanding of the conventions.
+
+Other than my nits:
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
