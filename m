@@ -1,89 +1,56 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add 32k clk on rk3399-gru
-Date: Wed, 28 Nov 2018 14:45:59 +0100
-Message-ID: <6602824.AOVt5XvbUN@diego>
-References: <20181127232331.49628-1-dbasehore@chromium.org> <CAD=FV=WJCvt-Ez_F+gTJaLWnOOY2J0fXxgq8vy0ojKoHv+AQ7w@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] drm/fbdev: Make skip_vt_switch the default
+Date: Wed, 28 Nov 2018 16:12:17 +0100
+Message-ID: <48238853.2xeD6gLTbZ@diego>
+References: <20181127170952.28507-1-daniel.vetter@ffwll.ch>
+ <20181127173424.301-1-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WJCvt-Ez_F+gTJaLWnOOY2J0fXxgq8vy0ojKoHv+AQ7w@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Derek Basehore <dbasehore@chromium.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kernel.org, Tony Xie <tony.xie@rock-chips.com>, Chris <zyw@rock-chips.com>, ayaka@soulik.info, "nickey.yang" <nickey.yang@rock-chips.com>, =?utf-8?B?6YOR6Iic5Lm+?= <zhengsq@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Brian Norris <briannorris@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <nouveau-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <20181127173424.301-1-daniel.vetter-/w4YWyX8dFk@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/nouveau>,
+ <mailto:nouveau-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/nouveau>
+List-Post: <mailto:nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:nouveau-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/nouveau>,
+ <mailto:nouveau-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: nouveau-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Nouveau" <nouveau-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Michel =?ISO-8859-1?Q?D=E4nzer?= <michel-otUistvHUpPR7s880joybQ@public.gmane.org>, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Intel Graphics Development <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 28. November 2018, 01:42:36 CET schrieb Doug Anderson:
-> Hi,
-> 
-> On Tue, Nov 27, 2018 at 3:23 PM Derek Basehore <dbasehore@chromium.org> 
-wrote:
-> > This adds the 32k clock to the RK3399 Gru board file. Even though it's
-> > not directly used, muxes will end up traversing the entire clk tree on
-> > calls to determine_rate if it doesn't exist. This is because the 32k
-> > clk is listed as a possible parent on some clks. Since the clk doesn't
-> > know about the 32k clk (it was never registered), it triggers a global
-> > search for it. This can happen about 40 times per second, which isn't
-> > great for power.
-> 
-> I seem to remember Heiko requesting something be added to the commit
-> 
-> message.  Ah yes, he said:
-> > That would also be a great part of the commit message, like
-> > "...on Gru boards the 32kHz clock gets produced by a Silego oscillator"
-> > or so when you move it over to rk3399-gru.dtsi .
-> 
-> Presumably Heiko could add that to the commit message when he applies
-> the patch, so maybe wait to see if he wants you to respin it?
-> 
-> > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> > ---
-> > 
-> >  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 7 +++++++
-> >  1 file changed, 7 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> > b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi index
-> > ca07f6032200..a07aa4c570c0 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-> > @@ -14,6 +14,13 @@
-> > 
-> >                 stdout-path = "serial2:115200n8";
-> >         
-> >         };
-> > 
-> > +       ap_rtc_clk: ap-rtc-clk {
-> > +               compatible = "fixed-clock";
-> > +               clock-frequency = <32768>;
-> > +               clock-output-names = "xin32k";
-> > +               #clock-cells = <0>;
-> > +       };
-> > +
-> > 
-> >         /*
-> >         
-> >          * Power Tree
-> 
-> Really this should be below the power tree, AKA right above
-> "gpio-keys".  Convention has typically been that only "special" nodes
-> like "chosen" go all the way at the top here.  Then the power tree
-> (parents first), then other nodes.
-> 
-> In the Chrome OS tree we had an "/* END REGULATORS */ comment to try
-> to separate out the power tree from the rest of the nodes, but I guess
-> Heiko didn't like that when this went upstream so now you just have to
-> know the convention.  :-P
-> 
-> Possibly Heiko would re-sort this for you himself when applying the
-> change if he agrees with my understanding of the conventions.
-
-We hashed out the dt-conventions somewhat together during veyron
-times, so I'd be surprised if we didn't agree on them :-D .
-
-In any case, I've adapted the commit message to add the Silego part,
-moved the clock to the correct position and applied the result with
-your Reviewed-by for 4.21.
-
-
-Heiko
+QW0gRGllbnN0YWcsIDI3LiBOb3ZlbWJlciAyMDE4LCAxODozNDoyNCBDRVQgc2NocmllYiBEYW5p
+ZWwgVmV0dGVyOgo+IEtNUyBkcml2ZXJzIHJlYWxseSBzaG91bGQgYWxsIGJlIGFibGUgdG8gcmVz
+dG9yZSB0aGVpciBkaXNwbGF5IHN0YXRlCj4gb24gcmVzdW1lIHdpdGhvdXQgZmJjb24gaGVscGlu
+ZyBvdXQuIFNvIG1ha2UgdGhpcyB0aGUgZGVmYXVsdC4KPiAKPiBTaW5jZSBJJ20gbm90IGVudGly
+ZWx5IGZvb2xpc2gsIG1ha2UgaXQgb25seSBhIGRlZmF1bHQsIHdoaWNoIGRyaXZlcnMKPiBjYW4g
+c3RpbGwgb3ZlcnJpZGUuIFRoYXQgd2F5IHdoZW4gdGhlIGluZXZpdGFibGUgcmVncmVzc2lvbiBy
+ZXBvcnQKPiBoYXBwZW5zIEkgY2FuIGZpeCB0aGluZ3MgdXAgd2l0aCBhIG9uZS1saW5lciBwbHVz
+IEZJWE1FIGNvbW1lbnQgdGhhdAo+IHNvbWVvbmUgc2hvdWxkIGZpeCB1cCB0aGUgc3VzcGVuZC9y
+ZXN1bWUgY29kZSBpbiB0aGF0IGRyaXZlci4KPiAKPiBCdXQgYXQgbGVhc3QgYWxsIG5ldyBkcml2
+ZXJzIHdvbid0IGJlIGJyb2tlbiBieSBhY2NpZGVudCBhcyBzb29uIGFzCj4geW91IHR1cm4gb2Zm
+IGZiY29uIGJlY2F1c2UgInN1c3BlbmQvcmVzdW1lIHdvcmtlZCB3aGVuIEkgdGVzdGVkIGl0Ii4K
+PiAKPiB2MjogS2VlcCB0aGlzIGZvciByYWRlb24gYmVjYXVzZSBvZgo+IAo+IGNvbW1pdCAxOGM0
+MzdjYWE1YjE4YTIzNWRkNjVjZWMyMjRlYWI1NGJlYmNlZTY1Cj4gQXV0aG9yOiBBbGV4IERldWNo
+ZXIgPGFsZXhhbmRlci5kZXVjaGVyQGFtZC5jb20+Cj4gRGF0ZTogICBUdWUgTm92IDE0IDE3OjE5
+OjI5IDIwMTcgLTA1MDAKPiAKPiAgICAgUmV2ZXJ0ICJkcm0vcmFkZW9uOiBkb250IHN3aXRjaCB2
+dCBvbiBzdXNwZW5kIgo+IAo+IFRoYW5rcyB0byBNaWNoZWwgRMOkbnplciBmb3IgcG9pbnRpbmcg
+dGhpcyBvbmUgb3V0LgoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9mYmRldi5jCj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2ZiZGV2LmMgaW5kZXgKPiBlNjY1MDU1M2Y1ZDYuLjM2MTYwNGU1MTM2MSAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMKPiArKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMKPiBAQCAtMTEx
+LDggKzExMSw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2ZiZGV2X2NyZWF0ZShzdHJ1Y3QK
+PiBkcm1fZmJfaGVscGVyICpoZWxwZXIsIHJrX29iai0+a3ZhZGRyLAo+ICAJCSAgICAgIG9mZnNl
+dCwgc2l6ZSk7Cj4gCj4gLQlmYmktPnNraXBfdnRfc3dpdGNoID0gdHJ1ZTsKPiAtCj4gIAlyZXR1
+cm4gMDsKPiAKPiAgb3V0OgoKZm9yIHRoZSBSb2NrY2hpcC1wYXJ0CkFja2VkLWJ5OiBIZWlrbyBT
+dHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKSXQgbG9va3Mgc29tZXdoYXQgb2J2aW91cyBmb3Ig
+dGhhdCwgYXMgdGhlIFJvY2tjaGlwIHNldHRpbmcgd2FzIHRydWUKZnJvbSB0aGUgYmVnaW5uaW5n
+LCBidXQgSSBzdGlsbCBnYXZlIGl0IHNvbWUgc3VzcGVuZC1zcGlucyBvbiByazMzOTkKc28gYXMg
+d2VsbApUZXN0ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTm91dmVhdSBtYWlsaW5n
+IGxpc3QKTm91dmVhdUBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9ub3V2ZWF1Cg==
