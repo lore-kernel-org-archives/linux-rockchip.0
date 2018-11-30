@@ -1,15 +1,14 @@
 From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 3/3] Rockchip dts64 updates for 4.21
-Date: Fri, 30 Nov 2018 15:04:16 -0800
-Message-ID: <20181130230416.ord6cimpadbsdknp@localhost>
+Subject: Re: [GIT PULL 1/3] Rockchip driver updates for 4.21
+Date: Fri, 30 Nov 2018 15:36:17 -0800
+Message-ID: <20181130233617.k3c6pze5ofg3wetw@localhost>
 References: <49803144.2ZsBJmaiIN@phil>
- <34315565.W3E18QRAdZ@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <34315565.W3E18QRAdZ@phil>
+In-Reply-To: <49803144.2ZsBJmaiIN@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,27 +22,47 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 26, 2018 at 11:07:16AM +0100, Heiko Stuebner wrote:
+On Mon, Nov 26, 2018 at 11:06:06AM +0100, Heiko Stuebner wrote:
+> Hi Arnd, Kevin Olof,
+> 
+> please find below and in the replies the first round of Rockchip pull
+> requests. I guess the most notable change is the addition of Gru-Scarlet
+> devicetree which - judging by the "silence" in the ChromeOS gerrit - may
+> conclude the series of rk3399-based ChromeOS devices.
+> 
+> Other than that there are smaller improvements all around,
+> so please pull.
+> 
+> 
+> Thanks
+> Heiko
+> 
+> 
 > The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
 > 
 >   Linux 4.20-rc1 (2018-11-04 15:37:52 -0800)
 > 
 > are available in the Git repository at:
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git v4.21-rockchip-dts64-1
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.21-rockchip-drivers-1
 > 
-> for you to fetch changes up to cdd46460fe278e04d8ee665d975aa2962036838f:
+> for you to fetch changes up to 24869610e867e9791f0fdab70ff60f246299b859:
 > 
->   arm64: dts: rockchip: Add all CPUs in cooling maps (2018-11-19 14:45:35 +0100)
+>   soc: rockchip: power-domain: add rk3066 powerdomains (2018-11-06 14:13:32 +0100)
 > 
 > ----------------------------------------------------------------
-> New dts for Gru-Scarlet (tablet device), default backlight brightness
-> for all Gru devices, rk3399 spi dma properties, some improvements for
-> the rk3399-sapphire board (fan, chosen, backlight), hs200 mode for the
-> emmc on the rock64 and declaring all cpu cores in the cooling maps
-> instead of just cpu0.
+> Powerdomain support for rk3066 and rk3188.
+> 
+> ----------------------------------------------------------------
+> Heiko Stuebner (6):
+>       dt-bindings: add power-domain header for RK3188 SoCs
+>       dt-bindings: add power-domain header for RK3066 SoCs
+>       dt-bindings: add compatibles for rk3066/rk3188 power controllers
+>       Merge branch 'v4.21-shared/pdids' into v4.21-armsoc/drivers
+>       soc: rockchip: power-domain: add rk3188 powerdomains
+>       soc: rockchip: power-domain: add rk3066 powerdomains
 
-Merged, thanks!
+Merged, thanks.
 
 
 -Olof
