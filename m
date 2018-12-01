@@ -1,68 +1,102 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 1/3] Rockchip driver updates for 4.21
-Date: Fri, 30 Nov 2018 15:36:17 -0800
-Message-ID: <20181130233617.k3c6pze5ofg3wetw@localhost>
-References: <49803144.2ZsBJmaiIN@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <49803144.2ZsBJmaiIN@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Oskari Lemmela <oskari@lemmela.net>
+Subject: [PATCH 1/2] arm64: dts: rockchip: rockpro64 fix regulator gpios
+Date: Sat,  1 Dec 2018 12:08:16 +0200
+Message-ID: <20181201100817.20688-2-oskari@lemmela.net>
+References: <20181201100817.20688-1-oskari@lemmela.net>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181201100817.20688-1-oskari@lemmela.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Akash Gajjar <Akash_Gajjar@mentor.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Oskari Lemmela <oskari@lemmela.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 26, 2018 at 11:06:06AM +0100, Heiko Stuebner wrote:
-> Hi Arnd, Kevin Olof,
-> 
-> please find below and in the replies the first round of Rockchip pull
-> requests. I guess the most notable change is the addition of Gru-Scarlet
-> devicetree which - judging by the "silence" in the ChromeOS gerrit - may
-> conclude the series of rk3399-based ChromeOS devices.
-> 
-> Other than that there are smaller improvements all around,
-> so please pull.
-> 
-> 
-> Thanks
-> Heiko
-> 
-> 
-> The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
-> 
->   Linux 4.20-rc1 (2018-11-04 15:37:52 -0800)
-> 
-> are available in the Git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.21-rockchip-drivers-1
-> 
-> for you to fetch changes up to 24869610e867e9791f0fdab70ff60f246299b859:
-> 
->   soc: rockchip: power-domain: add rk3066 powerdomains (2018-11-06 14:13:32 +0100)
-> 
-> ----------------------------------------------------------------
-> Powerdomain support for rk3066 and rk3188.
-> 
-> ----------------------------------------------------------------
-> Heiko Stuebner (6):
->       dt-bindings: add power-domain header for RK3188 SoCs
->       dt-bindings: add power-domain header for RK3066 SoCs
->       dt-bindings: add compatibles for rk3066/rk3188 power controllers
->       Merge branch 'v4.21-shared/pdids' into v4.21-armsoc/drivers
->       soc: rockchip: power-domain: add rk3188 powerdomains
->       soc: rockchip: power-domain: add rk3066 powerdomains
+Rockpro64 is not able boot if GPIO1_C1 pin is pulled high
+before loading linux kernel.
 
-Merged, thanks.
+In rockpro64 GPIO1_C1 pin is connected vdd_cpu_b regulator
+VSEL pin. Pin should be pulled down in normal operation and
+pulled high in suspend.
 
+PMIC LDO_REG2 is connected to touch panel connector.
+Rename regulator and set it to correct voltage.
 
--Olof
+PCIe power is controller by GPIO1_D0.
+
+Schematics can be downloaded from:
+http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+
+Signed-off-by: Oskari Lemmela <oskari@lemmela.net>
+---
+ .../boot/dts/rockchip/rk3399-rockpro64.dts    | 20 +++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+index 1d35f5406b5e..5bd4d69914bd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -97,7 +97,7 @@
+ 	vcc3v3_pcie: vcc3v3-pcie-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+-		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pcie_pwr_en>;
+ 		regulator-name = "vcc3v3_pcie";
+@@ -293,12 +293,12 @@
+ 				};
+ 			};
+ 
+-			vcc2v8_dvp: LDO_REG2 {
+-				regulator-name = "vcc2v8_dvp";
++			vcc3v0_touch: LDO_REG2 {
++				regulator-name = "vcc3v0_touch";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+-				regulator-min-microvolt = <2800000>;
+-				regulator-max-microvolt = <2800000>;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
+ 				regulator-state-mem {
+ 					regulator-off-in-suspend;
+ 				};
+@@ -397,7 +397,9 @@
+ 	vdd_cpu_b: regulator@40 {
+ 		compatible = "silergy,syr827";
+ 		reg = <0x40>;
+-		fcs,suspend-voltage-selector = <0>;
++		fcs,suspend-voltage-selector = <1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vsel1_gpio>;
+ 		regulator-name = "vdd_cpu_b";
+ 		regulator-min-microvolt = <712500>;
+ 		regulator-max-microvolt = <1500000>;
+@@ -415,6 +417,8 @@
+ 		compatible = "silergy,syr828";
+ 		reg = <0x41>;
+ 		fcs,suspend-voltage-selector = <1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vsel2_gpio>;
+ 		regulator-name = "vdd_gpu";
+ 		regulator-min-microvolt = <712500>;
+ 		regulator-max-microvolt = <1500000>;
+@@ -519,7 +523,7 @@
+ 
+ 	pcie {
+ 		pcie_pwr_en: pcie-pwr-en {
+-			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+@@ -529,7 +533,7 @@
+ 		};
+ 
+ 		vsel1_gpio: vsel1-gpio {
+-			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		vsel2_gpio: vsel2-gpio {
+-- 
+2.17.1
