@@ -1,205 +1,119 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH] iio: adc: Replace license text w/ SPDX identifier
-Date: Sat, 1 Dec 2018 16:55:50 +0000
-Message-ID: <20181201165550.51a78366@archlinux>
-References: <20181128175312.9634-1-matheus.bernardino@usp.br>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: [PATCH v2 0/9] iommu: clean up/remove modular stuff from non-modules.
+Date: Sat, 1 Dec 2018 14:19:08 -0500
+Message-ID: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181128175312.9634-1-matheus.bernardino@usp.br>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matheus Tavares <matheus.bernardino@usp.br>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, Ludovic Desroches <ludovic.desroches@microchip.com>, Eugen Hristev <eugen.hristev@microchip.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Hans de Goede <hdegoede@redhat.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Jon Mason <jonmason@broadcom.com>, bcm-kernel-feedback-list@broadcom.com, Support Opensource <support.opensource@diasemi.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.o>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 28 Nov 2018 15:53:12 -0200
-Matheus Tavares <matheus.bernardino@usp.br> wrote:
+The work here represents a scan over the iommu dir, looking for files/drivers
+that have nothing to do with a modular use case, but are using modular
+infrastructure regardless.
 
-> From: Lucas Santos <ilucas.ms@gmail.com>
-> 
-> This patch removes all license boilerplate texts from the .c and .h
-> files at drivers/iio/adc/ and, instead, adds the proper SPDX license
-> identifiers.
-> 
-> Signed-off-by: Lucas Santos <ilucas.ms@gmail.com>
-> Signed-off-by: Matheus Tavares <matheus.bernardino@usp.br>
-Hi Lucas, Matheus,
+We are trying to make driver code consistent with the Makefiles/Kconfigs that
+control them.  This means not using modular functions/macros for drivers that
+can never be built as a module.  I've done this in other subsystem dirs
+already, and some of this has already happened in drivers/iommu by others;
+such as 98b72b94def9 ("iommu/rockchip: Prohibit unbind and remove").
 
-Doing this as a large all at once patch may seem like a good idea, but...
+Using modular infrastructure in non-modules might seem harmless, but some
+of the downfalls this leads to are:
 
-Whilst it is now kernel policy (sort of) to use SPDX, that doesn't
-correspond to converting all code without input from the original
-authors.
+ (1) it is easy to accidentally write unused module_exit and remove code
+ (2) it can be misleading when reading the source, thinking it can be
+     modular when the Makefile and/or Kconfig prohibit it
+ (3) it requires the include of the module.h header file which in turn
+     includes nearly everything else, thus adding to CPP overhead.
+ (4) it gets copied/replicated into other drivers and spreads quickly.
 
-As such, I am normally only happy to apply SPDX patches with an
-ack from either the original author, or at least someone from the
-company who holds the copyright.
+The last two commits (arm-smmu related ones) deserve an extra mention,
+and I put them at the end in case they want to be deferred for later or
+altered.  Normally a "module-ectomy" allows us to delete the ".remove"
+function, as per the rockchip commit above, but ...
 
-I have expressed before that I actually consider these mostly
-noise and so am not keen at all unless there is other work
-being done on a particular driver.
+A kexec commit (7aa8619a66ae) tried to improve reliability by trying to
+shutdown the iommu in the compromised/crashing kernel, but of course the
+better solution is to have the recovery kernel be able to handle all of
+the possible initial conditions.  It appears this was done later in the
+commit b63b3439b856 - but I don't know if that means relying on an
+orderly shutdown is no longer required - I don't have the platform and
+am only going on what is in git history.
 
-So please split this up into at least separate patches
-for each of the copyright holders, so they can provide an ACK
-if they are happy with this change.
+So, as the kexec commit recycled the ".remove" handle to also be the
+".shutdown" handle, in this series the remove function was renamed to
+shutdown, and the ".remove" handle was deleted.  This was IMHO the most
+back compatible way to make this update.  If the reliance on the
+compromised kernel to run ".shutdown" is no longer necessary, then it
+can be removed in a future change.
 
-Some companies will for example want their legal departments to
-do a review of whether SPDX is acceptable for their past contributions.
-(lots won't care btw - but the potential is there).
+Patches were build tested on top of next-20181128 for ARM, ARM64, x86-64
+on an allyesconfig.
 
-+CC Linus Walleij as one of his files doesn't have a license...
+Paul.
 
-A few other comments inline...
+---
 
-Thanks,
+[ v2: use recommended iommu subject format, add Acks, trivial tweaks. ]
 
-Jonathan
+Cc: Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Cc: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Nate Watterson <nwatters-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 
-> ---
->  drivers/iio/adc/ad7266.c             |  3 +--
->  drivers/iio/adc/ad7291.c             |  3 +--
->  drivers/iio/adc/ad7298.c             |  3 +--
->  drivers/iio/adc/ad7766.c             |  3 +--
->  drivers/iio/adc/ad7791.c             |  3 +--
->  drivers/iio/adc/ad7793.c             |  3 +--
->  drivers/iio/adc/ad7887.c             |  3 +--
->  drivers/iio/adc/ad7923.c             |  3 +--
->  drivers/iio/adc/ad799x.c             |  5 +----
->  drivers/iio/adc/ad_sigma_delta.c     |  3 +--
->  drivers/iio/adc/aspeed_adc.c         |  6 +-----
->  drivers/iio/adc/at91-sama5d2_adc.c   | 10 +---------
->  drivers/iio/adc/at91_adc.c           |  3 +--
->  drivers/iio/adc/axp20x_adc.c         |  5 +----
->  drivers/iio/adc/axp288_adc.c         | 13 +------------
->  drivers/iio/adc/bcm_iproc_adc.c      | 13 +------------
->  drivers/iio/adc/berlin2-adc.c        |  5 +----
->  drivers/iio/adc/cc10001_adc.c        |  6 +-----
->  drivers/iio/adc/cpcap-adc.c          | 10 +---------
->  drivers/iio/adc/da9150-gpadc.c       |  6 +-----
->  drivers/iio/adc/dln2-adc.c           |  5 +----
->  drivers/iio/adc/ep93xx_adc.c         |  5 +----
->  drivers/iio/adc/exynos_adc.c         | 11 +----------
->  drivers/iio/adc/fsl-imx25-gcq.c      |  5 +----
->  drivers/iio/adc/hi8435.c             |  6 +-----
->  drivers/iio/adc/hx711.c              |  6 +-----
->  drivers/iio/adc/imx7d_adc.c          |  6 +-----
->  drivers/iio/adc/ina2xx-adc.c         |  7 +------
->  drivers/iio/adc/lp8788_adc.c         |  5 +----
->  drivers/iio/adc/lpc18xx_adc.c        |  5 +----
->  drivers/iio/adc/lpc32xx_adc.c        | 15 +--------------
->  drivers/iio/adc/ltc2471.c            |  3 +--
->  drivers/iio/adc/ltc2485.c            |  5 +----
->  drivers/iio/adc/ltc2497.c            |  3 +--
->  drivers/iio/adc/max1027.c            |  5 +----
->  drivers/iio/adc/max1118.c            |  5 +----
->  drivers/iio/adc/max1363.c            |  5 +----
->  drivers/iio/adc/mcp320x.c            |  5 +----
->  drivers/iio/adc/mcp3422.c            |  6 +-----
->  drivers/iio/adc/men_z188_adc.c       |  5 +----
->  drivers/iio/adc/meson_saradc.c       |  5 +----
->  drivers/iio/adc/mt6577_auxadc.c      | 10 +---------
->  drivers/iio/adc/mxs-lradc-adc.c      | 11 +----------
->  drivers/iio/adc/nau7802.c            |  3 +--
->  drivers/iio/adc/palmas_gpadc.c       |  5 +----
->  drivers/iio/adc/qcom-pm8xxx-xoadc.c  |  1 +
->  drivers/iio/adc/qcom-spmi-iadc.c     | 10 +---------
->  drivers/iio/adc/qcom-spmi-vadc.c     | 10 +---------
->  drivers/iio/adc/rockchip_saradc.c    | 11 +----------
->  drivers/iio/adc/spear_adc.c          |  3 +--
->  drivers/iio/adc/stx104.c             | 10 +---------
->  drivers/iio/adc/sun4i-gpadc-iio.c    |  5 +----
->  drivers/iio/adc/ti-adc081c.c         |  5 +----
->  drivers/iio/adc/ti-adc0832.c         |  5 +----
->  drivers/iio/adc/ti-adc084s021.c      |  5 +----
->  drivers/iio/adc/ti-adc108s102.c      | 10 +---------
->  drivers/iio/adc/ti-adc12138.c        |  5 +----
->  drivers/iio/adc/ti-ads1015.c         |  5 +----
->  drivers/iio/adc/ti-ads8688.c         |  5 +----
->  drivers/iio/adc/ti-tlc4541.c         |  5 +----
->  drivers/iio/adc/ti_am335x_adc.c      | 10 +---------
->  drivers/iio/adc/twl4030-madc.c       | 16 +---------------
->  drivers/iio/adc/twl6030-gpadc.c      | 16 +---------------
->  drivers/iio/adc/vf610_adc.c          | 15 +--------------
->  drivers/iio/adc/viperboard_adc.c     |  7 +------
->  drivers/iio/adc/xilinx-xadc-core.c   |  3 +--
->  drivers/iio/adc/xilinx-xadc-events.c |  3 +--
->  drivers/iio/adc/xilinx-xadc.h        |  3 +--
->  68 files changed, 68 insertions(+), 361 deletions(-)
-> 
-...
+Paul Gortmaker (9):
+  iommu: audit and remove any unnecessary uses of module.h
+  iommu/rockchip: Make it explicitly non-modular
+  iommu/msm: Make it explicitly non-modular
+  iommu/mediatek: Make it explicitly non-modular
+  iommu/ipmmu-vmsa: Make it explicitly non-modular
+  iommu/qcom: Make it explicitly non-modular
+  iommu/tegra: Make it explicitly non-modular
+  iommu/arm-smmu: Make arm-smmu explicitly non-modular
+  iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
 
-> diff --git a/drivers/iio/adc/ina2xx-adc.c b/drivers/iio/adc/ina2xx-adc.c
-> index bdd7cba6f6b0..9bbcca9df401 100644
-> --- a/drivers/iio/adc/ina2xx-adc.c
-> +++ b/drivers/iio/adc/ina2xx-adc.c
-> @@ -1,20 +1,15 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-Oh great, contradictory license text.   The first
-part would normally imply GPL-2.0 and the second
-is clearly GPL-2.0+
+ drivers/iommu/arm-smmu-v3.c    | 25 +++++++++----------------
+ drivers/iommu/arm-smmu.c       | 32 +++++++++++++-------------------
+ drivers/iommu/iommu-sysfs.c    |  2 +-
+ drivers/iommu/iommu.c          |  3 ++-
+ drivers/iommu/ipmmu-vmsa.c     | 18 +++---------------
+ drivers/iommu/msm_iommu.c      | 13 +++----------
+ drivers/iommu/mtk_iommu_v1.c   | 15 +++------------
+ drivers/iommu/qcom_iommu.c     | 16 ++--------------
+ drivers/iommu/rockchip-iommu.c | 13 ++++++-------
+ drivers/iommu/tegra-gart.c     | 37 +++++++------------------------------
+ 10 files changed, 49 insertions(+), 125 deletions(-)
 
-I'd leave this one be unless you can get input from the various
-authors.
-
->  /*
->   * INA2XX Current and Power Monitors
->   *
->   * Copyright 2015 Baylibre SAS.
->   *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
->   * Based on linux/drivers/iio/adc/ad7291.c
->   * Copyright 2010-2011 Analog Devices Inc.
->   *
->   * Based on linux/drivers/hwmon/ina2xx.c
->   * Copyright 2012 Lothar Felten <l-felten@ti.com>
->   *
-> - * Licensed under the GPL-2 or later.
-> - *
->   * IIO driver for INA219-220-226-230-231
->   *
->   * Configurable 7-bit I2C slave address from 0x40 to 0x4F
-
-
-...
-
-> diff --git a/drivers/iio/adc/max1363.c b/drivers/iio/adc/max1363.c
-> index a8d35aebee80..6d191ffc4c7e 100644
-> --- a/drivers/iio/adc/max1363.c
-> +++ b/drivers/iio/adc/max1363.c
-> @@ -1,3 +1,4 @@
-> +// SPDX-License-Identifier: GPL-2.0
->   /*
->    * iio/adc/max1363.c
->    * Copyright (C) 2008-2010 Jonathan Cameron
-> @@ -9,10 +10,6 @@
->    * Copyright (C) 2000 Russell King
->    *
->    * Driver for max1363 and similar chips.
-> -  *
-> -  * This program is free software; you can redistribute it and/or modify
-> -  * it under the terms of the GNU General Public License version 2 as
-> -  * published by the Free Software Foundation.
->    */
-
-This one's mine so in a separate patch you can add.
-
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-> diff --git a/drivers/iio/adc/qcom-pm8xxx-xoadc.c b/drivers/iio/adc/qcom-pm8xxx-xoadc.c
-> index c30c002f1fef..648136ed1f85 100644
-> --- a/drivers/iio/adc/qcom-pm8xxx-xoadc.c
-> +++ b/drivers/iio/adc/qcom-pm8xxx-xoadc.c
-> @@ -1,3 +1,4 @@
-> +// SPDX-License-Identifier: GPL-2.0
-
-Oh goody.  A file with out a license.  oops.
-Thankfully an author we can easily get hold of!
-Linus, what should it be?
-
->  /*
->   * Qualcomm PM8xxx PMIC XOADC driver
->   *
+-- 
+2.7.4
