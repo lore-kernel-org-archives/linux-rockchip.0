@@ -1,119 +1,100 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: [PATCH v2 0/9] iommu: clean up/remove modular stuff from non-modules.
-Date: Sat, 1 Dec 2018 14:19:08 -0500
-Message-ID: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
+From: Paul Gortmaker <paul.gortmaker@windriver.com>
+Subject: [PATCH 2/9] iommu/rockchip: Make it explicitly non-modular
+Date: Sat, 1 Dec 2018 14:19:10 -0500
+Message-ID: <1543691957-17608-3-git-send-email-paul.gortmaker@windriver.com>
+References: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Paul Gortmaker <paul.gortmaker@windriver.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-The work here represents a scan over the iommu dir, looking for files/drivers
-that have nothing to do with a modular use case, but are using modular
-infrastructure regardless.
+The Kconfig currently controlling compilation of this code is:
 
-We are trying to make driver code consistent with the Makefiles/Kconfigs that
-control them.  This means not using modular functions/macros for drivers that
-can never be built as a module.  I've done this in other subsystem dirs
-already, and some of this has already happened in drivers/iommu by others;
-such as 98b72b94def9 ("iommu/rockchip: Prohibit unbind and remove").
+drivers/iommu/Kconfig:config ROCKCHIP_IOMMU
+drivers/iommu/Kconfig:  bool "Rockchip IOMMU Support"
 
-Using modular infrastructure in non-modules might seem harmless, but some
-of the downfalls this leads to are:
+...meaning that it currently is not being built as a module by anyone.
 
- (1) it is easy to accidentally write unused module_exit and remove code
- (2) it can be misleading when reading the source, thinking it can be
-     modular when the Makefile and/or Kconfig prohibit it
- (3) it requires the include of the module.h header file which in turn
-     includes nearly everything else, thus adding to CPP overhead.
- (4) it gets copied/replicated into other drivers and spreads quickly.
+The bind/unbind/remove was already explicitly disabled in commit
+98b72b94def9 ("iommu/rockchip: Prohibit unbind and remove").
 
-The last two commits (arm-smmu related ones) deserve an extra mention,
-and I put them at the end in case they want to be deferred for later or
-altered.  Normally a "module-ectomy" allows us to delete the ".remove"
-function, as per the rockchip commit above, but ...
+Lets remove the remaining traces of  modular infrastructure, so that
+when reading the driver there is no doubt it is builtin-only.
 
-A kexec commit (7aa8619a66ae) tried to improve reliability by trying to
-shutdown the iommu in the compromised/crashing kernel, but of course the
-better solution is to have the recovery kernel be able to handle all of
-the possible initial conditions.  It appears this was done later in the
-commit b63b3439b856 - but I don't know if that means relying on an
-orderly shutdown is no longer required - I don't have the platform and
-am only going on what is in git history.
+Since module_init was not in use by this code, the init ordering
+remains unchanged with this commit.
 
-So, as the kexec commit recycled the ".remove" handle to also be the
-".shutdown" handle, in this series the remove function was renamed to
-shutdown, and the ".remove" handle was deleted.  This was IMHO the most
-back compatible way to make this update.  If the reliance on the
-compromised kernel to run ".shutdown" is no longer necessary, then it
-can be removed in a future change.
+Also note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
 
-Patches were build tested on top of next-20181128 for ARM, ARM64, x86-64
-on an allyesconfig.
+We also delete the MODULE_LICENSE tag etc. since all that information
+was (or is now) contained at the top of the file in the comments.
 
-Paul.
-
+Cc: Joerg Roedel <joro@8bytes.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Simon Xue <xxm@rock-chips.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: iommu@lists.linux-foundation.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Paul Gortmaker <paul.gortmaker@windriver.com>
 ---
-
-[ v2: use recommended iommu subject format, add Acks, trivial tweaks. ]
-
-Cc: Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Cc: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Nate Watterson <nwatters-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-
-Paul Gortmaker (9):
-  iommu: audit and remove any unnecessary uses of module.h
-  iommu/rockchip: Make it explicitly non-modular
-  iommu/msm: Make it explicitly non-modular
-  iommu/mediatek: Make it explicitly non-modular
-  iommu/ipmmu-vmsa: Make it explicitly non-modular
-  iommu/qcom: Make it explicitly non-modular
-  iommu/tegra: Make it explicitly non-modular
-  iommu/arm-smmu: Make arm-smmu explicitly non-modular
-  iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
-
- drivers/iommu/arm-smmu-v3.c    | 25 +++++++++----------------
- drivers/iommu/arm-smmu.c       | 32 +++++++++++++-------------------
- drivers/iommu/iommu-sysfs.c    |  2 +-
- drivers/iommu/iommu.c          |  3 ++-
- drivers/iommu/ipmmu-vmsa.c     | 18 +++---------------
- drivers/iommu/msm_iommu.c      | 13 +++----------
- drivers/iommu/mtk_iommu_v1.c   | 15 +++------------
- drivers/iommu/qcom_iommu.c     | 16 ++--------------
  drivers/iommu/rockchip-iommu.c | 13 ++++++-------
- drivers/iommu/tegra-gart.c     | 37 +++++++------------------------------
- 10 files changed, 49 insertions(+), 125 deletions(-)
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index ad3e2b97469e..c9ba9f377f63 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1,4 +1,9 @@
+ /*
++ * IOMMU API for Rockchip
++ *
++ * Module Authors:	Simon Xue <xxm@rock-chips.com>
++ *			Daniel Kurtz <djkurtz@chromium.org>
++ *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License version 2 as
+  * published by the Free Software Foundation.
+@@ -17,7 +22,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/list.h>
+ #include <linux/mm.h>
+-#include <linux/module.h>
++#include <linux/init.h>
+ #include <linux/of.h>
+ #include <linux/of_iommu.h>
+ #include <linux/of_platform.h>
+@@ -1281,7 +1286,6 @@ static const struct of_device_id rk_iommu_dt_ids[] = {
+ 	{ .compatible = "rockchip,iommu" },
+ 	{ /* sentinel */ }
+ };
+-MODULE_DEVICE_TABLE(of, rk_iommu_dt_ids);
+ 
+ static struct platform_driver rk_iommu_driver = {
+ 	.probe = rk_iommu_probe,
+@@ -1299,8 +1303,3 @@ static int __init rk_iommu_init(void)
+ 	return platform_driver_register(&rk_iommu_driver);
+ }
+ subsys_initcall(rk_iommu_init);
+-
+-MODULE_DESCRIPTION("IOMMU API for Rockchip");
+-MODULE_AUTHOR("Simon Xue <xxm@rock-chips.com> and Daniel Kurtz <djkurtz@chromium.org>");
+-MODULE_ALIAS("platform:rockchip-iommu");
+-MODULE_LICENSE("GPL v2");
 -- 
 2.7.4
