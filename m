@@ -1,100 +1,74 @@
-From: Paul Gortmaker <paul.gortmaker@windriver.com>
-Subject: [PATCH 2/9] iommu/rockchip: Make it explicitly non-modular
-Date: Sat, 1 Dec 2018 14:19:10 -0500
-Message-ID: <1543691957-17608-3-git-send-email-paul.gortmaker@windriver.com>
-References: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
+From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2 0/9] Use vm_insert_range
+Date: Sun, 2 Dec 2018 11:47:07 +0530
+Message-ID: <20181202061707.GA3070@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Paul Gortmaker <paul.gortmaker@windriver.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mhocko-IBi9RG/b67k@public.gmane.org, kirill.shutemov-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org, sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, stefanr-MtYdepGKPcBMYopoZt5u/LNAH6kLmebB@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, jgross-IBi9RG/b67k@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The Kconfig currently controlling compilation of this code is:
+Previouly drivers have their own way of mapping range of
+kernel pages/memory into user vma and this was done by
+invoking vm_insert_page() within a loop.
 
-drivers/iommu/Kconfig:config ROCKCHIP_IOMMU
-drivers/iommu/Kconfig:  bool "Rockchip IOMMU Support"
+As this pattern is common across different drivers, it can
+be generalized by creating a new function and use it across
+the drivers.
 
-...meaning that it currently is not being built as a module by anyone.
+vm_insert_range is the new API which will be used to map a
+range of kernel memory/pages to user vma.
 
-The bind/unbind/remove was already explicitly disabled in commit
-98b72b94def9 ("iommu/rockchip: Prohibit unbind and remove").
+All the applicable places are converted to use new vm_insert_range
+in this patch series.
 
-Lets remove the remaining traces of  modular infrastructure, so that
-when reading the driver there is no doubt it is builtin-only.
+v1 -> v2:
+	Address review comment on mm/memory.c. Add EXPORT_SYMBOL
+	for vm_insert_range and corrected the documentation part
+	for this API.
 
-Since module_init was not in use by this code, the init ordering
-remains unchanged with this commit.
+	In drivers/gpu/drm/xen/xen_drm_front_gem.c, replace err
+	with ret as suggested.
 
-Also note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
+	In drivers/iommu/dma-iommu.c, handle the scenario of partial
+	mmap() of large buffer by passing *pages + vma->vm_pgoff* to
+	vm_insert_range().
 
-We also delete the MODULE_LICENSE tag etc. since all that information
-was (or is now) contained at the top of the file in the comments.
+Souptick Joarder (9):
+  mm: Introduce new vm_insert_range API
+  arch/arm/mm/dma-mapping.c: Convert to use vm_insert_range
+  drivers/firewire/core-iso.c: Convert to use vm_insert_range
+  drm/rockchip/rockchip_drm_gem.c: Convert to use vm_insert_range
+  drm/xen/xen_drm_front_gem.c: Convert to use vm_insert_range
+  iommu/dma-iommu.c: Convert to use vm_insert_range
+  videobuf2/videobuf2-dma-sg.c: Convert to use vm_insert_range
+  xen/gntdev.c: Convert to use vm_insert_range
+  xen/privcmd-buf.c: Convert to use vm_insert_range
 
-Cc: Joerg Roedel <joro@8bytes.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Simon Xue <xxm@rock-chips.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: iommu@lists.linux-foundation.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Paul Gortmaker <paul.gortmaker@windriver.com>
----
- drivers/iommu/rockchip-iommu.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ arch/arm/mm/dma-mapping.c                         | 21 +++++--------
+ drivers/firewire/core-iso.c                       | 15 ++-------
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c       | 20 ++----------
+ drivers/gpu/drm/xen/xen_drm_front_gem.c           | 20 ++++--------
+ drivers/iommu/dma-iommu.c                         | 13 ++------
+ drivers/media/common/videobuf2/videobuf2-dma-sg.c | 23 +++++---------
+ drivers/xen/gntdev.c                              | 11 +++----
+ drivers/xen/privcmd-buf.c                         |  8 ++---
+ include/linux/mm_types.h                          |  3 ++
+ mm/memory.c                                       | 38 +++++++++++++++++++++++
+ mm/nommu.c                                        |  7 +++++
+ 11 files changed, 81 insertions(+), 98 deletions(-)
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index ad3e2b97469e..c9ba9f377f63 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1,4 +1,9 @@
- /*
-+ * IOMMU API for Rockchip
-+ *
-+ * Module Authors:	Simon Xue <xxm@rock-chips.com>
-+ *			Daniel Kurtz <djkurtz@chromium.org>
-+ *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License version 2 as
-  * published by the Free Software Foundation.
-@@ -17,7 +22,7 @@
- #include <linux/iopoll.h>
- #include <linux/list.h>
- #include <linux/mm.h>
--#include <linux/module.h>
-+#include <linux/init.h>
- #include <linux/of.h>
- #include <linux/of_iommu.h>
- #include <linux/of_platform.h>
-@@ -1281,7 +1286,6 @@ static const struct of_device_id rk_iommu_dt_ids[] = {
- 	{ .compatible = "rockchip,iommu" },
- 	{ /* sentinel */ }
- };
--MODULE_DEVICE_TABLE(of, rk_iommu_dt_ids);
- 
- static struct platform_driver rk_iommu_driver = {
- 	.probe = rk_iommu_probe,
-@@ -1299,8 +1303,3 @@ static int __init rk_iommu_init(void)
- 	return platform_driver_register(&rk_iommu_driver);
- }
- subsys_initcall(rk_iommu_init);
--
--MODULE_DESCRIPTION("IOMMU API for Rockchip");
--MODULE_AUTHOR("Simon Xue <xxm@rock-chips.com> and Daniel Kurtz <djkurtz@chromium.org>");
--MODULE_ALIAS("platform:rockchip-iommu");
--MODULE_LICENSE("GPL v2");
 -- 
-2.7.4
+1.9.1
