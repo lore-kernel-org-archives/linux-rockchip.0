@@ -1,108 +1,64 @@
-From: agajjar <Akash_Gajjar@mentor.com>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rockpro64 fix regulator gpios
-Date: Wed, 5 Dec 2018 18:29:30 +0530
-Message-ID: <cf83adce-85cf-2251-6e50-3c87c8a01a0c@mentor.com>
-References: <20181201100817.20688-1-oskari@lemmela.net>
- <20181201100817.20688-2-oskari@lemmela.net>
+From: "=?UTF-8?q?Richard=20R=C3=B6jfors?=" <richard.rojfors@gmail.com>
+Subject: [PATCH] drm/rockchip: dw-mipi-dsi: Support MIPI_DSI_DCS_READ
+Date: Wed,  5 Dec 2018 14:02:43 +0100
+Message-ID: <20181205130243.5810-1-richard@puffinpack.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181201100817.20688-2-oskari@lemmela.net>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Oskari Lemmela <oskari@lemmela.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, =?UTF-8?q?Richard=20R=C3=B6jfors?= <richard@puffinpack.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 12/1/2018 3:38 PM, Oskari Lemmela wrote:
-> Rockpro64 is not able boot if GPIO1_C1 pin is pulled high
-> before loading linux kernel.
->
-> In rockpro64 GPIO1_C1 pin is connected vdd_cpu_b regulator
-> VSEL pin. Pin should be pulled down in normal operation and
-> pulled high in suspend.
->
-> PMIC LDO_REG2 is connected to touch panel connector.
-> Rename regulator and set it to correct voltage.
->
-> PCIe power is controller by GPIO1_D0.
->
-> Schematics can be downloaded from:
-> http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
->
-> Signed-off-by: Oskari Lemmela <oskari@lemmela.net>
-Acked-by: Akash Gajjar <Akash_Gajjar@mentor.com>
-> ---
->   .../boot/dts/rockchip/rk3399-rockpro64.dts    | 20 +++++++++++--------
->   1 file changed, 12 insertions(+), 8 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> index 1d35f5406b5e..5bd4d69914bd 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> @@ -97,7 +97,7 @@
->   	vcc3v3_pcie: vcc3v3-pcie-regulator {
->   		compatible = "regulator-fixed";
->   		enable-active-high;
-> -		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-> +		gpio = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
->   		pinctrl-names = "default";
->   		pinctrl-0 = <&pcie_pwr_en>;
->   		regulator-name = "vcc3v3_pcie";
-> @@ -293,12 +293,12 @@
->   				};
->   			};
->   
-> -			vcc2v8_dvp: LDO_REG2 {
-> -				regulator-name = "vcc2v8_dvp";
-> +			vcc3v0_touch: LDO_REG2 {
-> +				regulator-name = "vcc3v0_touch";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-min-microvolt = <2800000>;
-> -				regulator-max-microvolt = <2800000>;
-> +				regulator-min-microvolt = <3000000>;
-> +				regulator-max-microvolt = <3000000>;
->   				regulator-state-mem {
->   					regulator-off-in-suspend;
->   				};
-> @@ -397,7 +397,9 @@
->   	vdd_cpu_b: regulator@40 {
->   		compatible = "silergy,syr827";
->   		reg = <0x40>;
-> -		fcs,suspend-voltage-selector = <0>;
-> +		fcs,suspend-voltage-selector = <1>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vsel1_gpio>;
->   		regulator-name = "vdd_cpu_b";
->   		regulator-min-microvolt = <712500>;
->   		regulator-max-microvolt = <1500000>;
-> @@ -415,6 +417,8 @@
->   		compatible = "silergy,syr828";
->   		reg = <0x41>;
->   		fcs,suspend-voltage-selector = <1>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vsel2_gpio>;
->   		regulator-name = "vdd_gpu";
->   		regulator-min-microvolt = <712500>;
->   		regulator-max-microvolt = <1500000>;
-> @@ -519,7 +523,7 @@
->   
->   	pcie {
->   		pcie_pwr_en: pcie-pwr-en {
-> -			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-> +			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
->   		};
->   	};
->   
-> @@ -529,7 +533,7 @@
->   		};
->   
->   		vsel1_gpio: vsel1-gpio {
-> -			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
-> +			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
->   		};
->   
->   		vsel2_gpio: vsel2-gpio {
+VGhlcmUgaXMgc29tZXRpbWVzIGEgbmVlZCB0byBiZSBhYmxlIHRvIHJlYWQgZnJvbSB0aGUgb3Ro
+ZXIKZW5kIGZvciBpbnN0YW5jZSB0byBpZGVudGlmeSBwYW5lbHMuCgpTaWduZWQtb2ZmLWJ5OiBS
+aWNoYXJkIFLDtmpmb3JzIDxyaWNoYXJkQHB1ZmZpbnBhY2suc2U+Ci0tLQogZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCA1MCArKysrKysrKysrKysrKysrKysrKysrKysr
+KwogMSBmaWxlIGNoYW5nZWQsIDUwIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9kdy1taXBpLWRzaS5jCmluZGV4IDY2MmI2Y2I1ZDNmMC4uODg0MDM5NTRmM2M0IDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwpAQCAtNzE5LDYgKzcxOSw1MyBAQCBzdGF0
+aWMgaW50IGR3X21pcGlfZHNpX2Rjc19sb25nX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNp
+LAogCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIGhkcl92YWwpOwog
+fQogCitzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Rjc19yZWFkKHN0cnVjdCBkd19taXBpX2RzaSAq
+ZHNpLAorCQkJCWNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKK3sKKwlpbnQgcmV0Owor
+CWludCBieXRlc19yZWFkID0gMDsKKwl1MzIgc3RhdHVzOworCisJcmV0ID0gZHdfbWlwaV9kc2lf
+ZGNzX3Nob3J0X3dyaXRlKGRzaSwgbXNnKTsKKwlpZiAocmV0IDwgMCkgeworCQlEUk1fREVWX0VS
+Uk9SKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIGlzc3VlIHJlYWQgY29tbWFuZFxuIik7CisJCXJldHVy
+biByZXQ7CisJfQorCisJLyogTG9vcCBhbmQgZW1wdHkgdGhlIFJYIEZJRk8gKi8KKwlkbyB7CisJ
+CXUzMiB2YWw7CisKKwkJLyogV2FpdCBmb3IgZGF0YSB0byByZWFjaCB0aGUgZmlmbyBvciBjb21t
+YW5kIHRlcm1pbmF0aW9uICovCisJCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2Ug
+KyBEU0lfQ01EX1BLVF9TVEFUVVMsCisJCQkJCSB2YWwsICgodmFsICYgR0VOX1BMRF9SX0VNUFRZ
+KSkgPT0gMCB8fAorCQkJCQkgICAgICAoKHZhbCAmIEdFTl9SRF9DTURfQlVTWSkgPT0gMCksCisJ
+CQkJCSAxMDAwLCBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKKwkJaWYgKHJldCA8IDApIHsK
+KwkJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYsCisJCQkJICAgICAgImZhaWxlZCB0byByZWFkIHBh
+eWxvYWQgZnJvbSBGSUZPXG4iKTsKKwkJCXJldHVybiByZXQ7CisJCX0KKworCQlzdGF0dXMgPSBk
+c2lfcmVhZChkc2ksIERTSV9DTURfUEtUX1NUQVRVUyk7CisKKwkJaWYgKChzdGF0dXMgJiBHRU5f
+UExEX1JfRU1QVFkpID09IDApIHsKKwkJCWludCBpOworCQkJdTggKnJ4X2J1ZiA9IG1zZy0+cnhf
+YnVmOworCisJCQl2YWwgPSBkc2lfcmVhZChkc2ksIERTSV9HRU5fUExEX0RBVEEpOworCisJCQlm
+b3IgKGkgPSAwOyBpIDwgc2l6ZW9mKHUzMikgJiYgYnl0ZXNfcmVhZCA8IG1zZy0+cnhfbGVuOwor
+CQkJICAgICBpKyspIHsKKwkJCQlyeF9idWZbYnl0ZXNfcmVhZCsrXSA9IHZhbCAmIDB4ZmY7CisJ
+CQkJdmFsID4+PSA4OworCQkJfQorCQl9CisJfSB3aGlsZSAoKHN0YXR1cyAmIEdFTl9QTERfUl9F
+TVBUWSkgPT0gMCk7CisKKwlyZXR1cm4gYnl0ZXNfcmVhZDsKK30KKwogc3RhdGljIHNzaXplX3Qg
+ZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwKIAkJ
+CQkJIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKIHsKQEAgLTczNiw2ICs3ODMsOSBA
+QCBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2Rz
+aV9ob3N0ICpob3N0LAogCWNhc2UgTUlQSV9EU0lfRENTX0xPTkdfV1JJVEU6CiAJCXJldCA9IGR3
+X21pcGlfZHNpX2Rjc19sb25nX3dyaXRlKGRzaSwgbXNnKTsKIAkJYnJlYWs7CisJY2FzZSBNSVBJ
+X0RTSV9EQ1NfUkVBRDoKKwkJcmV0ID0gZHdfbWlwaV9kc2lfZGNzX3JlYWQoZHNpLCBtc2cpOwor
+CQlicmVhazsKIAlkZWZhdWx0OgogCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2LCAidW5zdXBwb3J0
+ZWQgbWVzc2FnZSB0eXBlIDB4JTAyeFxuIiwKIAkJCSAgICAgIG1zZy0+dHlwZSk7Ci0tIAoyLjE5
+LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
+eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
+cm0ta2VybmVsCg==
