@@ -1,102 +1,42 @@
 From: Brian Norris <briannorris@chromium.org>
 Subject: Re: [PATCH] drm/rockchip: Allow driver to be shutdown on reboot/kexec
-Date: Wed, 5 Dec 2018 09:42:11 -0800
-Message-ID: <20181205174209.GA224281@google.com>
+Date: Wed, 5 Dec 2018 10:00:47 -0800
+Message-ID: <20181205180046.GA57043@google.com>
 References: <20180805124807.18169-1-marc.zyngier@arm.com>
- <20181205030127.GA200921@google.com> <1693737.bVF0dcvACY@diego>
- <dd1777ad-fe3e-a661-a27f-8ba418064b40@arm.com>
+ <20181205030127.GA200921@google.com>
+ <1693737.bVF0dcvACY@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <dd1777ad-fe3e-a661-a27f-8ba418064b40@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Guenter Roeck <linux@roeck-us.net>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1693737.bVF0dcvACY@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: Marc Zyngier <marc.zyngier@arm.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Guenter Roeck <linux@roeck-us.net>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBXZWQsIERlYyAwNSwgMjAxOCBhdCAwMjoyODo0OFBNICswMDAwLCBNYXJjIFp5bmdp
-ZXIgd3JvdGU6Cj4gT24gMDUvMTIvMjAxOCAxNDoxMSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4g
-PiBBbSBNaXR0d29jaCwgNS4gRGV6ZW1iZXIgMjAxOCwgMDQ6MDE6MzQgQ0VUIHNjaHJpZWIgQnJp
-YW4gTm9ycmlzOgo+ID4+IE9uIFN1biwgQXVnIDA1LCAyMDE4IGF0IDAxOjQ4OjA3UE0gKzAxMDAs
-IE1hcmMgWnluZ2llciB3cm90ZToKPiA+Pj4gTGVhdmluZyB0aGUgRFJNIGRyaXZlciBlbmFibGVk
-IG9uIHJlYm9vdCBvciBrZXhlYyBoYXMgdGhlIGFubm95aW5nCj4gPj4+IGVmZmVjdCBvZiBsZWF2
-aW5nIHRoZSBkaXNwbGF5IGdlbmVyYXRpbmcgdHJhbnNhY3Rpb25zIHdoaWxzdCB0aGUKPiA+Pj4g
-SU9NTVUgaGFzIGJlZW4gc2h1dCBkb3duLgo+ID4+Pgo+ID4+PiBJbiB0dXJuLCB0aGUgSU9NTVUg
-ZHJpdmVyICh3aGljaCBzaGFyZXMgaXRzIGludGVycnVwdCBsaW5lIHdpdGgKPiA+Pj4gdGhlIFZP
-UCkgc3RhcnRzIHdhcm5pbmcgZWl0aGVyIG9uIHNodXRkb3duIG9yIHdoZW4gZW50ZXJpbmcgdGhl
-Cj4gPj4+IHNlY29uZGFyeSBrZXJuZWwgaW4gdGhlIGtleGVjIGNhc2UgKG5vdGhpbmcgaXMgZXhw
-ZWN0ZWQgb24gdGhhdAo+ID4+PiBmcm9udCkuCj4gPj4+Cj4gPj4+IEEgY2hlYXAgd2F5IG9mIGVu
-c3VyaW5nIHRoYXQgdGhpbmdzIGFyZSBuaWNlbHkgc2h1dCBkb3duIGlzIHRvCj4gPj4+IHJlZ2lz
-dGVyIGEgc2h1dGRvd24gY2FsbGJhY2sgaW4gdGhlIHBsYXRmb3JtIGRyaXZlci4KPiA+Pj4KPiA+
-Pj4gU2lnbmVkLW9mZi1ieTogTWFyYyBaeW5naWVyIDxtYXJjLnp5bmdpZXJAYXJtLmNvbT4KPiA+
-Pj4gLS0tCj4gPj4KPiA+PiBUaGlzIHBhdGNoIG1hZGUgaXQgaW50byA0LjIwLXJjMSBhcyB3ZWxs
-IGFzIC1zdGFibGUsIGFuZCBpdCBoYXMgY2F1c2VkCj4gPj4gcmVncmVzc2lvbnMgZm9yIG1lLCBv
-biB0aGUgS2V2aW4gYW5kIFNjYXJsZXQgWzFdIFJLMzM5OSBwbGF0Zm9ybXMuCj4gPj4KPiA+PiBP
-bgo+ID4+IHNodXRkb3duL3JlYm9vdCwgSSBzZWUgdGhpczoKPiA+Pgo+ID4+IFsgICA5NC43NDI1
-NTldIFdBUk5JTkc6IENQVTogNCBQSUQ6IDIwMzUgYXQKPiA+PiBkcml2ZXJzL2dwdS9kcm0vZHJt
-X21vZGVfY29uZmlnLmM6NDc3IGRybV9tb2RlX2NvbmZpZ19jbGVhbnVwKzB4MWM0LzB4Mjk0Cj4g
-Pj4gLi4uCi4uLgo+ID4+IEFueXdheSwgdGhlIGFib3ZlIHdhcm5pbmdzIG9jY3VyIG9uIHY0LjIw
-LXJjLCB3aGljaCBJIHRoaW5rIGlzCj4gPj4ganVzdGlmaWNhdGlvbiBlbm91Z2ggZm9yIGEgcmV2
-ZXJ0Lgo+ID4gCj4gPiBUaGF0J3Mgc3RyYW5nZS4gSSByZW1lbWJlciB0ZXN0aW5nIHF1aXRlIGEg
-bnVtYmVyIG9mIHNodXRkb3duL3JlYm9vdAo+ID4gY3ljbGVzIGJlZm9yZSBhcHBseWluZyB0aGF0
-IHBhdGNoLiBBbmQgZm9yIGdvb2QgbWVhc3VyZSBkaWQgdGhlIHNhbWUKPiA+IGFnYWluIHJpZ2h0
-IG5vdy4KPiA+IAo+ID4gLSBLZXZpbiwgd2l0aCBuZXRib290IGZpcm13YXJlLCBib290aW5nIGlu
-dG8gRGViaWFuK2NvbnNvbGUgb25seQo+ID4gLSBCb2IsIHdpdGggc3RvY2sgZmlybXdhcmUsIGJv
-b3RpbmcgaW50byBEZWJpYW4rS0RFIFBsYXNtYQo+ID4gLSBTY2FybGV0LCB3aXRoIHN0b2NrIGZp
-cm13YXJlLCBib290aW5nIGludG8gRGViaWFuK0tERSBQbGFzbWEKPiA+IAo+ID4gV2l0aCBzb21l
-IHJhbmRvbSBudW1iZXIgb2YgcmVib290IGFuZCBzaHV0ZG93bnMgb24gZWFjaCBJIGRpZG4ndAo+
-ID4gc2VlIGFueSB3YXJuaW5ncyBhdCBhbGwuCj4gCj4gQW5kIEkndmUgYmVlbiB1c2luZyB0aGlz
-IHZlcnkgcGF0Y2ggZm9yIHF1aXRlIGEgd2hpbGUgbm93Lgo+IAo+IEJlZm9yZSBzdWdnZXN0aW5n
-IGEgcmV2ZXJ0LCBJJ2QgcmF0aGVyIHdlIHVuZGVyc3RhbmQgd2hhdCBpcyBnb2luZyBvbiwKPiBh
-bmQgd2h5IGlzIHRoZSBEUk0gbGF5ZXIgY3JhcHBpbmcgaXRzZWxmIHRoYXQgYmFkbHkgZm9yIGEg
-bGVnaXRpbWF0ZQo+IG9wZXJhdGlvbiAoaXQgaXMgY2VydGFpbmx5IGJldHRlciB0byBoYXZlIGEg
-c2h1dGRvd24gdGhhbiB0byBsZXQgdGhlIFZPUAo+IHNjYW4gb3V0IGNyYXAgb25jZSB0aGUgSU9N
-TVUgaGFzIGJlZW4gc2h1dCBkb3duKS4gSW4gc2hvcnQsIGRvbid0IHNob290Cj4gdGhlIG1lc3Nl
-bmdlci4KCkkgaG9uZXN0bHkgZG9uJ3Qga25vdyBtdWNoIGF0IGFsbCBhYm91dCBEUk0uIEJ1dCBJ
-IGRvIHNlZSB0aGlzIHByb2JsZW0Kb24gNC4xOS55IGFsc28gKGFuZCBwcm9iYWJseSA0LjE0Lnkp
-LCBub3cgdGhhdCB0aGlzIHBhdGNoIHdhcyBpbmNsdWRlZAp0aGVyZS4KCkknbSBmaW5lIHdpdGgg
-dHJ5aW5nIHRvICJmaXggZm9yd2FyZCIgaW4gbWFpbmxpbmUsIGJ1dCB1bmZvcnR1bmF0ZWx5LApp
-dCdzIHVzdWFsbHkgcXVpdGUgZGlmZmljdWx0IHRvIGdldCBHcmVnIHRvIGRyb3AgdGhpbmdzIGZy
-b20gLXN0YWJsZSwKZXNwZWNpYWxseSB3aGVuIHRoZSByZWdyZXNzaW9uIGlzIGFscmVhZHkgcHVz
-aGVkIHRvIGEgcmVsZWFzZS4gVGhhdCdzCndoeSBJJ2QgcHJvcG9zZSBhIHJldmVydCBmaXJzdCwg
-d2hpY2ggY2FuIGJlIHNlbnQgYmFjayB0byAtc3RhYmxlIHdoaWxlCnRoaW5ncyBhcmUgZmlndXJl
-ZCBvdXQuCgpJJ20gYWxzbyB3aWxsaW5nIHRvIHRlc3QgYW55IHVwZGF0ZXMsIGlmIHlvdSBoYXZl
-IGJldHRlciBzdWdnZXN0aW9ucy4KCj4gPj4gSSBwbGFuIHRvIHN1Ym1pdCBhIHJldmVydCB3aGlj
-aCBJIGhvcGUgY2FuIGdvIHRvIDQuMjAgYXMgd2VsbCBhcwo+ID4+IC1zdGFibGUuIEknZCBob3Bl
-IHRoZSByZW1vdmUoKS9zaHV0ZG93bigpIHBhdGhzIHNob3VsZCBiZSBmaXhlZCBiZWZvcmUKPiA+
-PiB0aGlzIGdldHMgYXBwbGllZCBhZ2FpbiwgYW5kIHRoYXQgaXQgZG9lcyBub3QgZ2V0IHNoaXBw
-ZWQgdG8gLXN0YWJsZQo+ID4+IGtlcm5lbHMuCj4gPiAKPiA+IEJ1dCBqdWRnaW5nIGJ5IHRoZSBm
-YWN0IHRoYXQgdGhlIHdhcm5pbmcgaW5kaWNhdGVzIHRoYXQgc29tdGhpbmcgaXMgc3RpbGwKPiA+
-IGhvbGRpbmcgb250byBhIGZyYW1lYnVmZmVyIGFuZCBhIHJtbW9kIHJvY2tjaGlwZHJtIGlzIG5v
-dCBwb3NzaWJsZQo+ID4gYXQgcnVucnRpbWUgZm9yIGxpa2VseSB0aGUgc2FtZSByZWFzb24sIEkg
-Z3Vlc3Mgd2UgcmVhbGx5IG1pZ2h0IGJlIGNyZWF0aW5nCj4gPiBhIHByb2JsZW0gd2l0aCB0aGF0
-IHNodXRkb3duLgo+IAo+IFRoYXQncyBhIHBvdGVudGlhbCByb290IGNhdXNlLgo+IAo+ID4gCj4g
-PiBDYW4geW91IG1heWJlIGdpdmUgImRybS9yb2NrY2hpcDogc2h1dGRvd24gZHJtIHN1YnN5c3Rl
-bSBvbiBzaHV0ZG93biIgWzJdCj4gPiBhIHRyeT8gV2hlbiB0aGUgdW5kZXJseWluZyBpc3N1ZSBv
-ZiByZWJvb3Rpbmcgc3VyZmFjZWQgd2UgaGFkIDIgY29tcGV0aW5nIAo+ID4gc29sdXRpb25zLCBz
-byB3ZSBhdCBsZWFzdCBkb24ndCByZW9wZW4gdGhlIGlzc3VlLCB0aGF0IHBlb3BsZSBoYXZlIHBy
-b2JsZW1zCj4gPiByZWJvb3Rpbmc/CgpJJ2xsIHRyeSB0byBnaXZlIHRoYXQgYSBzcGluLgoKPiBr
-ZXhlYyB3b3JraW5nIGlzIGNlcnRhaW5seSBzb21ldGhpbmcgSSBuZWVkLiBBbmQgSSdkIGxpa2Ug
-dG8gdW5kZXJzdGFuZAo+IHdoeSBCcmlhbiBzZWVzIHRoaXMgYW5kIG5vYm9keSBlbHNlLgoKRm9y
-IG9uZSwgSSdtIGFjdHVhbGx5IHJ1bm5pbmcgQ2hyb21lIE9TLiBNeSB0ZXN0cyBjdXJyZW50bHkg
-ZG9uJ3QgaGF2ZQp0aGUgZnVsbCBDaHJvbWUgVUkgd29ya2luZywgc2luY2UgQ2hyb21lIE9TIGhh
-cyBzb21lIGJhc2ljIGdyYXBoaWNzIEFQSQpyZXF1aXJlbWVudHMgYW5kIHRoZXJlJ3Mgbm8gTWFs
-aSBHUFUgZHJpdmVyIHVwc3RyZWFtIChzbyBJIGdldCByZWxlZ2F0ZWQKdG8gb3VyIHNwbGFzaCBz
-Y3JlZW4gYW5kIGNvbnNvbGUgbWFuYWdlciwgZnJlY29uLCBpbnN0ZWFkKS4gQnV0IHNvbWUKcGVv
-cGxlIGhhdmUgYSBzb2Z0d2FyZS1yZW5kZXJlZCBsbHZtcGlwZSBiYWNrZW5kIHdvcmtpbmcsIGFu
-ZCB0aGV5Cmxpa2VseSB3b3VsZCBzZWUgdGhlIHNhbWUgcHJvYmxlbS4KCk1heWJlIGNvbW1vbiBM
-aW51eCBkaXN0cm9zIHRyZWF0ICJubyBHUFUiIHRvbyBzaW1wbGlzdGljYWxseSBhbmQgZG9uJ3QK
-cmVhbGx5IGV4ZXJjaXNlIHRoZSBEUk0gZnJhbWV3b3JrIG11Y2guIEkgZHVubm8uCgpCcmlhbgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Wed, Dec 05, 2018 at 03:11:03PM +0100, Heiko Stuebner wrote:
+> Can you maybe give "drm/rockchip: shutdown drm subsystem on shutdown" [2]
+> a try? When the underlying issue of rebooting surfaced we had 2 competing 
+> solutions, so we at least don't reopen the issue, that people have problems
+> rebooting?
+> 
+> drm-drivers seem to be short on shutdown handlers to peek at but this
+> second variant mimics what tinydrm does in its shutdown
+> (calling drm_atomic_helper_shutdown), so at least shouldn't be completely
+> wrong.
+> 
+> 
+> [2] https://patchwork.kernel.org/patch/10556151/
+
+I tried the linked patch on Kevin and Scarlet with 4.20-rc5-ish, with
+$subject reverted; I saw no warnings/complaints, and things worked OK.
+Same with Kevin on 4.19.6.
+
+I can't test on 4.4.y, since drm_atomic_helper_shutdown() doesn't exist
+there.
+
+I can provide a Tested-by to the original patch if you'd like. (I won't
+provide it here, lest patchwork apply it to the $subject patch.)
+
+Brian
