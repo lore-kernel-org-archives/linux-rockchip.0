@@ -1,42 +1,94 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Allow driver to be shutdown on reboot/kexec
-Date: Wed, 5 Dec 2018 10:00:47 -0800
-Message-ID: <20181205180046.GA57043@google.com>
-References: <20180805124807.18169-1-marc.zyngier@arm.com>
- <20181205030127.GA200921@google.com>
- <1693737.bVF0dcvACY@diego>
+Subject: [PATCH for-4.20] Revert "drm/rockchip: Allow driver to be shutdown on reboot/kexec"
+Date: Wed,  5 Dec 2018 10:16:57 -0800
+Message-ID: <20181205181657.177703-1-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1693737.bVF0dcvACY@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Guenter Roeck <linux@roeck-us.net>, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Guenter Roeck <linux@roeck-us.net>, Brian Norris <briannorris@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>, Marc Zyngier <marc.zyngier@arm.com>, stable@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Dec 05, 2018 at 03:11:03PM +0100, Heiko Stuebner wrote:
-> Can you maybe give "drm/rockchip: shutdown drm subsystem on shutdown" [2]
-> a try? When the underlying issue of rebooting surfaced we had 2 competing 
-> solutions, so we at least don't reopen the issue, that people have problems
-> rebooting?
-> 
-> drm-drivers seem to be short on shutdown handlers to peek at but this
-> second variant mimics what tinydrm does in its shutdown
-> (calling drm_atomic_helper_shutdown), so at least shouldn't be completely
-> wrong.
-> 
-> 
-> [2] https://patchwork.kernel.org/patch/10556151/
+This reverts commit 7f3ef5dedb146e3d5063b6845781ad1bb59b92b5.
 
-I tried the linked patch on Kevin and Scarlet with 4.20-rc5-ish, with
-$subject reverted; I saw no warnings/complaints, and things worked OK.
-Same with Kevin on 4.19.6.
+It causes new warnings [1] on shutdown when running the Google Kevin or
+Scarlet (RK3399) boards under Chrome OS. Presumably our usage of DRM is
+different than what Marc and Heiko test.
 
-I can't test on 4.4.y, since drm_atomic_helper_shutdown() doesn't exist
-there.
+We're looking at a different approach (e.g., [2]) to replace this, but
+IMO the revert should be taken first, as it already propagated to
+-stable.
 
-I can provide a Tested-by to the original patch if you'd like. (I won't
-provide it here, lest patchwork apply it to the $subject patch.)
+[1] Report here:
+http://lkml.kernel.org/lkml/20181205030127.GA200921@google.com
 
-Brian
+WARNING: CPU: 4 PID: 2035 at drivers/gpu/drm/drm_mode_config.c:477 drm_mode_config_cleanup+0x1c4/0x294
+...
+ Call trace:
+  drm_mode_config_cleanup+0x1c4/0x294
+  rockchip_drm_unbind+0x4c/0x8c
+  component_master_del+0x88/0xb8
+  rockchip_drm_platform_remove+0x2c/0x44
+  rockchip_drm_platform_shutdown+0x20/0x2c
+  platform_drv_shutdown+0x2c/0x38
+  device_shutdown+0x164/0x1b8
+  kernel_restart_prepare+0x40/0x48
+  kernel_restart+0x20/0x68
+...
+ Memory manager not clean during takedown.
+ WARNING: CPU: 4 PID: 2035 at drivers/gpu/drm/drm_mm.c:950 drm_mm_takedown+0x34/0x44
+...
+  drm_mm_takedown+0x34/0x44
+  rockchip_drm_unbind+0x64/0x8c
+  component_master_del+0x88/0xb8
+  rockchip_drm_platform_remove+0x2c/0x44
+  rockchip_drm_platform_shutdown+0x20/0x2c
+  platform_drv_shutdown+0x2c/0x38
+  device_shutdown+0x164/0x1b8
+  kernel_restart_prepare+0x40/0x48
+  kernel_restart+0x20/0x68
+...
+
+[2] https://patchwork.kernel.org/patch/10556151/
+    https://www.spinics.net/lists/linux-rockchip/msg21342.html
+    [PATCH] drm/rockchip: shutdown drm subsystem on shutdown
+
+Fixes: 7f3ef5dedb14 ("drm/rockchip: Allow driver to be shutdown on reboot/kexec")
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: Vicente Bergas <vicencb@gmail.com>
+Cc: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: stable@vger.kernel.org
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 941f35233b1f..5864cb452c5c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -448,11 +448,6 @@ static int rockchip_drm_platform_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static void rockchip_drm_platform_shutdown(struct platform_device *pdev)
+-{
+-	rockchip_drm_platform_remove(pdev);
+-}
+-
+ static const struct of_device_id rockchip_drm_dt_ids[] = {
+ 	{ .compatible = "rockchip,display-subsystem", },
+ 	{ /* sentinel */ },
+@@ -462,7 +457,6 @@ MODULE_DEVICE_TABLE(of, rockchip_drm_dt_ids);
+ static struct platform_driver rockchip_drm_platform_driver = {
+ 	.probe = rockchip_drm_platform_probe,
+ 	.remove = rockchip_drm_platform_remove,
+-	.shutdown = rockchip_drm_platform_shutdown,
+ 	.driver = {
+ 		.name = "rockchip-drm",
+ 		.of_match_table = rockchip_drm_dt_ids,
+-- 
+2.20.0.rc1.387.gf8505762e3-goog
