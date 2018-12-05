@@ -1,309 +1,108 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v4] drm/rockchip: update cursors asynchronously through atomic.
-Date: Wed,  5 Dec 2018 10:33:10 -0200
-Message-ID: <20181205123310.7965-1-helen.koike@collabora.com>
+From: agajjar <Akash_Gajjar@mentor.com>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rockpro64 fix regulator gpios
+Date: Wed, 5 Dec 2018 18:29:30 +0530
+Message-ID: <cf83adce-85cf-2251-6e50-3c87c8a01a0c@mentor.com>
+References: <20181201100817.20688-1-oskari@lemmela.net>
+ <20181201100817.20688-2-oskari@lemmela.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181201100817.20688-2-oskari@lemmela.net>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>
-Cc: linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>
+To: Oskari Lemmela <oskari@lemmela.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-Add support to async updates of cursors by using the new atomic
-interface for that.
-
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-[updated for upstream]
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
-
----
-Hello,
-
-This is the forth version of the async-plane update suport to the
-Rockchip driver.
-
-I tested running igt kms_cursor_legacy and kms_atomic tests using a 96Boards Ficus.
-
-Note that before the patch, the following igt tests failed:
-
-        basic-flip-before-cursor-atomic
-        basic-flip-before-cursor-legacy
-        cursor-vs-flip-atomic
-        cursor-vs-flip-legacy
-        cursor-vs-flip-toggle
-        flip-vs-cursor-atomic
-        flip-vs-cursor-busy-crc-atomic
-        flip-vs-cursor-busy-crc-legacy
-        flip-vs-cursor-crc-atomic
-        flip-vs-cursor-crc-legacy
-        flip-vs-cursor-legacy
-
-Full log: https://people.collabora.com/~koike/results-4.20/html/
-
-Now with only the following fails:
-        cursor-vs-flip-legacy
-        flip-vs-cursor-busy-crc-atomic
-        flip-vs-cursor-busy-crc-legacy
-        flip-vs-cursor-crc-atomic
-        flip-vs-cursor-crc-legacy
-
-Full log: https://people.collabora.com/~koike/results-4.20-async/html/
-
-Thanks
-Helen
-
-Changes in v4:
-- Removed vop_crtc_atomic_commit_flush
-- Call drm_atomic_set_fb_for_plane() only when framebuffers are
-different
-- Removed unecessary ret variable from vop_plane_atomic_async_check
-- async_update: duplicate plane state for an atomic swap
-- async_update: prevent releasing buffer current being scaned out by the
-hw by getting a reference and adding a worker
-
-Changes in v3:
-- Rebased on top of drm-misc
-- Fix missing include in rockchip_drm_vop.c
-- New function vop_crtc_atomic_commit_flush
-
-Changes in v2:
-- v2: https://patchwork.freedesktop.org/patch/254180/
-- Change the framebuffer as well to cover jumpy cursor when hovering
-  text boxes or hyperlink. (Tomasz)
-- Use the PSR inhibit mechanism when accessing VOP hardware instead of
-  PSR flushing (Tomasz)
-
-Changes in v1:
-- Rebased on top of drm-misc
-- In async_check call drm_atomic_helper_check_plane_state to check that
-  the desired plane is valid and update various bits of derived state
-  (clipped coordinates etc.)
-- In async_check allow to configure new scaling in the fast path.
-- In async_update force to flush all registered PSR encoders.
-- In async_update call atomic_update directly.
-- In async_update call vop_cfg_done needed to set the vop registers and take effect.
-
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c  | 36 ----------
- drivers/gpu/drm/rockchip/rockchip_drm_psr.c | 37 +++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_psr.h |  3 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 74 +++++++++++++++++++++
- 4 files changed, 114 insertions(+), 36 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index ea18cb2a76c0..08bec50d9c5d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -127,42 +127,6 @@ rockchip_user_fb_create(struct drm_device *dev, struct drm_file *file_priv,
- 	return ERR_PTR(ret);
- }
- 
--static void
--rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state)
--{
--	struct drm_crtc *crtc;
--	struct drm_crtc_state *crtc_state;
--	struct drm_encoder *encoder;
--	u32 encoder_mask = 0;
--	int i;
--
--	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
--		encoder_mask |= crtc_state->encoder_mask;
--		encoder_mask |= crtc->state->encoder_mask;
--	}
--
--	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
--		rockchip_drm_psr_inhibit_get(encoder);
--}
--
--static void
--rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state)
--{
--	struct drm_crtc *crtc;
--	struct drm_crtc_state *crtc_state;
--	struct drm_encoder *encoder;
--	u32 encoder_mask = 0;
--	int i;
--
--	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
--		encoder_mask |= crtc_state->encoder_mask;
--		encoder_mask |= crtc->state->encoder_mask;
--	}
--
--	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
--		rockchip_drm_psr_inhibit_put(encoder);
--}
--
- static void
- rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
- {
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-index 01ff3c858875..22a70ab6e214 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.c
-@@ -13,6 +13,7 @@
-  */
- 
- #include <drm/drmP.h>
-+#include <drm/drm_atomic.h>
- #include <drm/drm_crtc_helper.h>
- 
- #include "rockchip_drm_drv.h"
-@@ -109,6 +110,42 @@ int rockchip_drm_psr_inhibit_put(struct drm_encoder *encoder)
- }
- EXPORT_SYMBOL(rockchip_drm_psr_inhibit_put);
- 
-+void rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state)
-+{
-+	struct drm_crtc *crtc;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_encoder *encoder;
-+	u32 encoder_mask = 0;
-+	int i;
-+
-+	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
-+		encoder_mask |= crtc_state->encoder_mask;
-+		encoder_mask |= crtc->state->encoder_mask;
-+	}
-+
-+	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
-+		rockchip_drm_psr_inhibit_get(encoder);
-+}
-+EXPORT_SYMBOL(rockchip_drm_psr_inhibit_get_state);
-+
-+void rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state)
-+{
-+	struct drm_crtc *crtc;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_encoder *encoder;
-+	u32 encoder_mask = 0;
-+	int i;
-+
-+	for_each_old_crtc_in_state(state, crtc, crtc_state, i) {
-+		encoder_mask |= crtc_state->encoder_mask;
-+		encoder_mask |= crtc->state->encoder_mask;
-+	}
-+
-+	drm_for_each_encoder_mask(encoder, state->dev, encoder_mask)
-+		rockchip_drm_psr_inhibit_put(encoder);
-+}
-+EXPORT_SYMBOL(rockchip_drm_psr_inhibit_put_state);
-+
- /**
-  * rockchip_drm_psr_inhibit_get - acquire PSR inhibit on given encoder
-  * @encoder: encoder to obtain the PSR encoder
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-index 860c62494496..25350ba3237b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_psr.h
-@@ -20,6 +20,9 @@ void rockchip_drm_psr_flush_all(struct drm_device *dev);
- int rockchip_drm_psr_inhibit_put(struct drm_encoder *encoder);
- int rockchip_drm_psr_inhibit_get(struct drm_encoder *encoder);
- 
-+void rockchip_drm_psr_inhibit_get_state(struct drm_atomic_state *state);
-+void rockchip_drm_psr_inhibit_put_state(struct drm_atomic_state *state);
-+
- int rockchip_drm_psr_register(struct drm_encoder *encoder,
- 			int (*psr_set)(struct drm_encoder *, bool enable));
- void rockchip_drm_psr_unregister(struct drm_encoder *encoder);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index fb70fb486fbf..e5fb21e3ccf8 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -15,6 +15,7 @@
- #include <drm/drm.h>
- #include <drm/drmP.h>
- #include <drm/drm_atomic.h>
-+#include <drm/drm_atomic_uapi.h>
- #include <drm/drm_crtc.h>
- #include <drm/drm_crtc_helper.h>
- #include <drm/drm_flip_work.h>
-@@ -819,10 +820,83 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	spin_unlock(&vop->reg_lock);
- }
- 
-+static int vop_plane_atomic_async_check(struct drm_plane *plane,
-+					struct drm_plane_state *state)
-+{
-+	struct vop_win *vop_win = to_vop_win(plane);
-+	const struct vop_win_data *win = vop_win->data;
-+	int min_scale = win->phy->scl ? FRAC_16_16(1, 8) :
-+					DRM_PLANE_HELPER_NO_SCALING;
-+	int max_scale = win->phy->scl ? FRAC_16_16(8, 1) :
-+					DRM_PLANE_HELPER_NO_SCALING;
-+	struct drm_crtc_state *crtc_state;
-+
-+	if (plane != state->crtc->cursor)
-+		return -EINVAL;
-+
-+	if (!plane->state)
-+		return -EINVAL;
-+
-+	if (!plane->state->fb)
-+		return -EINVAL;
-+
-+	if (state->state)
-+		crtc_state = drm_atomic_get_existing_crtc_state(state->state,
-+								state->crtc);
-+	else /* Special case for asynchronous cursor updates. */
-+		crtc_state = plane->crtc->state;
-+
-+	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
-+						   min_scale, max_scale,
-+						   true, true);
-+}
-+
-+static void vop_plane_atomic_async_update(struct drm_plane *plane,
-+					  struct drm_plane_state *new_state)
-+{
-+	struct vop *vop = to_vop(plane->state->crtc);
-+	struct drm_plane_state *plane_state;
-+
-+	plane_state = plane->funcs->atomic_duplicate_state(plane);
-+	plane_state->crtc_x = new_state->crtc_x;
-+	plane_state->crtc_y = new_state->crtc_y;
-+	plane_state->crtc_h = new_state->crtc_h;
-+	plane_state->crtc_w = new_state->crtc_w;
-+	plane_state->src_x = new_state->src_x;
-+	plane_state->src_y = new_state->src_y;
-+	plane_state->src_h = new_state->src_h;
-+	plane_state->src_w = new_state->src_w;
-+
-+	if (plane_state->fb != new_state->fb)
-+		drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
-+
-+	swap(plane_state, plane->state);
-+
-+	if (plane->state->fb && plane->state->fb != new_state->fb) {
-+		drm_framebuffer_get(plane->state->fb);
-+		WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
-+		drm_flip_work_queue(&vop->fb_unref_work, plane->state->fb);
-+		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
-+	}
-+
-+	if (vop->is_enabled) {
-+		rockchip_drm_psr_inhibit_get_state(new_state->state);
-+		vop_plane_atomic_update(plane, plane->state);
-+		spin_lock(&vop->reg_lock);
-+		vop_cfg_done(vop);
-+		spin_unlock(&vop->reg_lock);
-+		rockchip_drm_psr_inhibit_put_state(new_state->state);
-+	}
-+
-+	plane->funcs->atomic_destroy_state(plane, plane_state);
-+}
-+
- static const struct drm_plane_helper_funcs plane_helper_funcs = {
- 	.atomic_check = vop_plane_atomic_check,
- 	.atomic_update = vop_plane_atomic_update,
- 	.atomic_disable = vop_plane_atomic_disable,
-+	.atomic_async_check = vop_plane_atomic_async_check,
-+	.atomic_async_update = vop_plane_atomic_async_update,
- };
- 
- static const struct drm_plane_funcs vop_plane_funcs = {
--- 
-2.19.1
+On 12/1/2018 3:38 PM, Oskari Lemmela wrote:
+> Rockpro64 is not able boot if GPIO1_C1 pin is pulled high
+> before loading linux kernel.
+>
+> In rockpro64 GPIO1_C1 pin is connected vdd_cpu_b regulator
+> VSEL pin. Pin should be pulled down in normal operation and
+> pulled high in suspend.
+>
+> PMIC LDO_REG2 is connected to touch panel connector.
+> Rename regulator and set it to correct voltage.
+>
+> PCIe power is controller by GPIO1_D0.
+>
+> Schematics can be downloaded from:
+> http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+>
+> Signed-off-by: Oskari Lemmela <oskari@lemmela.net>
+Acked-by: Akash Gajjar <Akash_Gajjar@mentor.com>
+> ---
+>   .../boot/dts/rockchip/rk3399-rockpro64.dts    | 20 +++++++++++--------
+>   1 file changed, 12 insertions(+), 8 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> index 1d35f5406b5e..5bd4d69914bd 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> @@ -97,7 +97,7 @@
+>   	vcc3v3_pcie: vcc3v3-pcie-regulator {
+>   		compatible = "regulator-fixed";
+>   		enable-active-high;
+> -		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
+> +		gpio = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&pcie_pwr_en>;
+>   		regulator-name = "vcc3v3_pcie";
+> @@ -293,12 +293,12 @@
+>   				};
+>   			};
+>   
+> -			vcc2v8_dvp: LDO_REG2 {
+> -				regulator-name = "vcc2v8_dvp";
+> +			vcc3v0_touch: LDO_REG2 {
+> +				regulator-name = "vcc3v0_touch";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+> -				regulator-min-microvolt = <2800000>;
+> -				regulator-max-microvolt = <2800000>;
+> +				regulator-min-microvolt = <3000000>;
+> +				regulator-max-microvolt = <3000000>;
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+> @@ -397,7 +397,9 @@
+>   	vdd_cpu_b: regulator@40 {
+>   		compatible = "silergy,syr827";
+>   		reg = <0x40>;
+> -		fcs,suspend-voltage-selector = <0>;
+> +		fcs,suspend-voltage-selector = <1>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&vsel1_gpio>;
+>   		regulator-name = "vdd_cpu_b";
+>   		regulator-min-microvolt = <712500>;
+>   		regulator-max-microvolt = <1500000>;
+> @@ -415,6 +417,8 @@
+>   		compatible = "silergy,syr828";
+>   		reg = <0x41>;
+>   		fcs,suspend-voltage-selector = <1>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&vsel2_gpio>;
+>   		regulator-name = "vdd_gpu";
+>   		regulator-min-microvolt = <712500>;
+>   		regulator-max-microvolt = <1500000>;
+> @@ -519,7 +523,7 @@
+>   
+>   	pcie {
+>   		pcie_pwr_en: pcie-pwr-en {
+> -			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
+> +			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
+>   
+> @@ -529,7 +533,7 @@
+>   		};
+>   
+>   		vsel1_gpio: vsel1-gpio {
+> -			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
+> +			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
+>   		};
+>   
+>   		vsel2_gpio: vsel2-gpio {
