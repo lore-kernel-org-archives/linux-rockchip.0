@@ -1,64 +1,55 @@
-From: "=?UTF-8?q?Richard=20R=C3=B6jfors?=" <richard.rojfors@gmail.com>
-Subject: [PATCH] drm/rockchip: dw-mipi-dsi: Support MIPI_DSI_DCS_READ
-Date: Wed,  5 Dec 2018 14:02:43 +0100
-Message-ID: <20181205130243.5810-1-richard@puffinpack.se>
+From: agajjar <Akash_Gajjar@mentor.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rockpro64 fix video output
+ chain
+Date: Wed, 5 Dec 2018 18:33:29 +0530
+Message-ID: <09287391-d541-cddb-4168-55ca6fee3f16@mentor.com>
+References: <20181201100817.20688-1-oskari@lemmela.net>
+ <20181201100817.20688-3-oskari@lemmela.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, =?UTF-8?q?Richard=20R=C3=B6jfors?= <richard@puffinpack.se>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181201100817.20688-3-oskari@lemmela.net>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Oskari Lemmela <oskari@lemmela.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlcmUgaXMgc29tZXRpbWVzIGEgbmVlZCB0byBiZSBhYmxlIHRvIHJlYWQgZnJvbSB0aGUgb3Ro
-ZXIKZW5kIGZvciBpbnN0YW5jZSB0byBpZGVudGlmeSBwYW5lbHMuCgpTaWduZWQtb2ZmLWJ5OiBS
-aWNoYXJkIFLDtmpmb3JzIDxyaWNoYXJkQHB1ZmZpbnBhY2suc2U+Ci0tLQogZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMgfCA1MCArKysrKysrKysrKysrKysrKysrKysrKysr
-KwogMSBmaWxlIGNoYW5nZWQsIDUwIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9kdy1taXBpLWRzaS5jCmluZGV4IDY2MmI2Y2I1ZDNmMC4uODg0MDM5NTRmM2M0IDEwMDY0NAot
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYworKysgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwpAQCAtNzE5LDYgKzcxOSw1MyBAQCBzdGF0
-aWMgaW50IGR3X21pcGlfZHNpX2Rjc19sb25nX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAqZHNp
-LAogCXJldHVybiBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShkc2ksIGhkcl92YWwpOwog
-fQogCitzdGF0aWMgaW50IGR3X21pcGlfZHNpX2Rjc19yZWFkKHN0cnVjdCBkd19taXBpX2RzaSAq
-ZHNpLAorCQkJCWNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKK3sKKwlpbnQgcmV0Owor
-CWludCBieXRlc19yZWFkID0gMDsKKwl1MzIgc3RhdHVzOworCisJcmV0ID0gZHdfbWlwaV9kc2lf
-ZGNzX3Nob3J0X3dyaXRlKGRzaSwgbXNnKTsKKwlpZiAocmV0IDwgMCkgeworCQlEUk1fREVWX0VS
-Uk9SKGRzaS0+ZGV2LCAiZmFpbGVkIHRvIGlzc3VlIHJlYWQgY29tbWFuZFxuIik7CisJCXJldHVy
-biByZXQ7CisJfQorCisJLyogTG9vcCBhbmQgZW1wdHkgdGhlIFJYIEZJRk8gKi8KKwlkbyB7CisJ
-CXUzMiB2YWw7CisKKwkJLyogV2FpdCBmb3IgZGF0YSB0byByZWFjaCB0aGUgZmlmbyBvciBjb21t
-YW5kIHRlcm1pbmF0aW9uICovCisJCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2Ug
-KyBEU0lfQ01EX1BLVF9TVEFUVVMsCisJCQkJCSB2YWwsICgodmFsICYgR0VOX1BMRF9SX0VNUFRZ
-KSkgPT0gMCB8fAorCQkJCQkgICAgICAoKHZhbCAmIEdFTl9SRF9DTURfQlVTWSkgPT0gMCksCisJ
-CQkJCSAxMDAwLCBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKKwkJaWYgKHJldCA8IDApIHsK
-KwkJCURSTV9ERVZfRVJST1IoZHNpLT5kZXYsCisJCQkJICAgICAgImZhaWxlZCB0byByZWFkIHBh
-eWxvYWQgZnJvbSBGSUZPXG4iKTsKKwkJCXJldHVybiByZXQ7CisJCX0KKworCQlzdGF0dXMgPSBk
-c2lfcmVhZChkc2ksIERTSV9DTURfUEtUX1NUQVRVUyk7CisKKwkJaWYgKChzdGF0dXMgJiBHRU5f
-UExEX1JfRU1QVFkpID09IDApIHsKKwkJCWludCBpOworCQkJdTggKnJ4X2J1ZiA9IG1zZy0+cnhf
-YnVmOworCisJCQl2YWwgPSBkc2lfcmVhZChkc2ksIERTSV9HRU5fUExEX0RBVEEpOworCisJCQlm
-b3IgKGkgPSAwOyBpIDwgc2l6ZW9mKHUzMikgJiYgYnl0ZXNfcmVhZCA8IG1zZy0+cnhfbGVuOwor
-CQkJICAgICBpKyspIHsKKwkJCQlyeF9idWZbYnl0ZXNfcmVhZCsrXSA9IHZhbCAmIDB4ZmY7CisJ
-CQkJdmFsID4+PSA4OworCQkJfQorCQl9CisJfSB3aGlsZSAoKHN0YXR1cyAmIEdFTl9QTERfUl9F
-TVBUWSkgPT0gMCk7CisKKwlyZXR1cm4gYnl0ZXNfcmVhZDsKK30KKwogc3RhdGljIHNzaXplX3Qg
-ZHdfbWlwaV9kc2lfaG9zdF90cmFuc2ZlcihzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwKIAkJ
-CQkJIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKIHsKQEAgLTczNiw2ICs3ODMsOSBA
-QCBzdGF0aWMgc3NpemVfdCBkd19taXBpX2RzaV9ob3N0X3RyYW5zZmVyKHN0cnVjdCBtaXBpX2Rz
-aV9ob3N0ICpob3N0LAogCWNhc2UgTUlQSV9EU0lfRENTX0xPTkdfV1JJVEU6CiAJCXJldCA9IGR3
-X21pcGlfZHNpX2Rjc19sb25nX3dyaXRlKGRzaSwgbXNnKTsKIAkJYnJlYWs7CisJY2FzZSBNSVBJ
-X0RTSV9EQ1NfUkVBRDoKKwkJcmV0ID0gZHdfbWlwaV9kc2lfZGNzX3JlYWQoZHNpLCBtc2cpOwor
-CQlicmVhazsKIAlkZWZhdWx0OgogCQlEUk1fREVWX0VSUk9SKGRzaS0+ZGV2LCAidW5zdXBwb3J0
-ZWQgbWVzc2FnZSB0eXBlIDB4JTAyeFxuIiwKIAkJCSAgICAgIG1zZy0+dHlwZSk7Ci0tIAoyLjE5
-LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
-cm0ta2VybmVsCg==
+
+On 12/1/2018 3:38 PM, Oskari Lemmela wrote:
+> Rockpro64 is not able boot if kernel is compiled with
+> CONFIG_DRM_ROCKCHIP=m
+>
+> Enable Rockpro64 board HDMI output to fix issue.
+
+Hi Oskari,
+
+Could you please describe this issue in detail.
+
+I am not able to reproduce this issue if CONFIG_DRM_ROCKCHIP is compile 
+in or as a loadable module at the same time hdmi node is present or not.
+
+> Signed-off-by: Oskari Lemmela <oskari@lemmela.net>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 7 +++++++
+>   1 file changed, 7 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> index 5bd4d69914bd..be78172abc09 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> @@ -205,6 +205,13 @@
+>   	status = "okay";
+>   };
+>   
+> +&hdmi {
+> +	ddc-i2c-bus = <&i2c3>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&hdmi_cec>;
+> +	status = "okay";
+> +};
+> +
+>   &i2c0 {
+>   	clock-frequency = <400000>;
+>   	i2c-scl-rising-time-ns = <168>;
