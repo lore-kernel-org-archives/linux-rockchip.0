@@ -1,7 +1,7 @@
 From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: [PATCH] media: rockchip vpu: remove some unused vars
-Date: Wed,  5 Dec 2018 18:54:54 -0500
-Message-ID: <be7a207dc092e2d1b80cfdd2e5971e4641cb30c9.1544054086.git.mchehab+samsung@kernel.org>
+Subject: [PATCH v2] media: rockchip vpu: remove some unused vars
+Date: Wed,  5 Dec 2018 19:01:09 -0500
+Message-ID: <10b532d7f12ef0718028a3ecb4f00974ebd80c4c.1544054436.git.mchehab+samsung@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -46,7 +46,9 @@ As complained by gcc:
 Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 ---
  drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c | 5 -----
+ drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c       | 6 ------
+ 3 files changed, 16 deletions(-)
 
 diff --git a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c
 index e27c10855de5..5282236d1bb1 100644
@@ -66,5 +68,65 @@ index e27c10855de5..5282236d1bb1 100644
  	for (i = 0; i < VEPU_JPEG_QUANT_TABLE_COUNT; i++) {
  		reg = get_unaligned_be32(&luma_qtable[i]);
  		vepu_write_relaxed(vpu, reg, VEPU_REG_JPEG_LUMA_QUAT(i));
+diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
+index 5f75e4d11d76..dbc86d95fe3b 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
+@@ -97,13 +97,8 @@ rk3399_vpu_jpeg_enc_set_qtable(struct rockchip_vpu_dev *vpu,
+ 			       unsigned char *luma_qtable,
+ 			       unsigned char *chroma_qtable)
+ {
+-	__be32 *luma_qtable_p;
+-	__be32 *chroma_qtable_p;
+ 	u32 reg, i;
+ 
+-	luma_qtable_p = (__be32 *)luma_qtable;
+-	chroma_qtable_p = (__be32 *)chroma_qtable;
+-
+ 	for (i = 0; i < VEPU_JPEG_QUANT_TABLE_COUNT; i++) {
+ 		reg = get_unaligned_be32(&luma_qtable[i]);
+ 		vepu_write_relaxed(vpu, reg, VEPU_REG_JPEG_LUMA_QUAT(i));
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+index 038a7136d5d1..ab0fb2053620 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+@@ -519,17 +519,14 @@ rockchip_vpu_queue_setup(struct vb2_queue *vq,
+ 			 struct device *alloc_devs[])
+ {
+ 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vq);
+-	const struct rockchip_vpu_fmt *vpu_fmt;
+ 	struct v4l2_pix_format_mplane *pixfmt;
+ 	int i;
+ 
+ 	switch (vq->type) {
+ 	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
+-		vpu_fmt = ctx->vpu_dst_fmt;
+ 		pixfmt = &ctx->dst_fmt;
+ 		break;
+ 	case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+-		vpu_fmt = ctx->vpu_src_fmt;
+ 		pixfmt = &ctx->src_fmt;
+ 		break;
+ 	default:
+@@ -557,7 +554,6 @@ static int rockchip_vpu_buf_prepare(struct vb2_buffer *vb)
+ 	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+ 	struct vb2_queue *vq = vb->vb2_queue;
+ 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vq);
+-	const struct rockchip_vpu_fmt *vpu_fmt;
+ 	struct v4l2_pix_format_mplane *pixfmt;
+ 	unsigned int sz;
+ 	int ret = 0;
+@@ -565,11 +561,9 @@ static int rockchip_vpu_buf_prepare(struct vb2_buffer *vb)
+ 
+ 	switch (vq->type) {
+ 	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
+-		vpu_fmt = ctx->vpu_dst_fmt;
+ 		pixfmt = &ctx->dst_fmt;
+ 		break;
+ 	case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+-		vpu_fmt = ctx->vpu_src_fmt;
+ 		pixfmt = &ctx->src_fmt;
+ 
+ 		if (vbuf->field == V4L2_FIELD_ANY)
 -- 
 2.19.1
