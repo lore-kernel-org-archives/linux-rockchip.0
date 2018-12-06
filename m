@@ -1,38 +1,37 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v11 3/4] arm64: dts: rockchip: add VPU device node for
- RK3399
-Date: Thu, 06 Dec 2018 13:42:13 +0100
-Message-ID: <19304128.WNqjp6BVcH@phil>
-References: <20181130173433.24185-1-ezequiel@collabora.com>
- <20181130173433.24185-4-ezequiel@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rockpro64 fix regulator gpios
+Date: Thu, 06 Dec 2018 13:48:09 +0100
+Message-ID: <1745654.q3GSn5YZ1a@phil>
+References: <20181201100817.20688-1-oskari@lemmela.net> <20181201100817.20688-2-oskari@lemmela.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181130173433.24185-4-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Miouyouyou <myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181201100817.20688-2-oskari@lemmela.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Oskari Lemmela <oskari@lemmela.net>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Akash Gajjar <Akash_Gajjar@mentor.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 30. November 2018, 18:34:32 CET schrieb Ezequiel Garcia:
-> Add the Video Processing Unit node for the RK3399 SoC.
+Am Samstag, 1. Dezember 2018, 11:08:16 CET schrieb Oskari Lemmela:
+> Rockpro64 is not able boot if GPIO1_C1 pin is pulled high
+> before loading linux kernel.
 > 
-> Also, fix the VPU IOMMU node, which was disabled and lacking
-> its power domain property.
+> In rockpro64 GPIO1_C1 pin is connected vdd_cpu_b regulator
+> VSEL pin. Pin should be pulled down in normal operation and
+> pulled high in suspend.
 > 
-> Reviewed-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> PMIC LDO_REG2 is connected to touch panel connector.
+> Rename regulator and set it to correct voltage.
+> 
+> PCIe power is controller by GPIO1_D0.
+> 
+> Schematics can be downloaded from:
+> http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+> 
+> Signed-off-by: Oskari Lemmela <oskari@lemmela.net>
 
-applied for 4.21 after a tiny bit of reordering
+applied as fix for 4.20
 
-Thanks for seeing this through
+Thanks
 Heiko
