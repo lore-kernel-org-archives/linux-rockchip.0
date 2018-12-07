@@ -1,60 +1,46 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v3 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use
- vm_insert_range
-Date: Fri, 7 Dec 2018 14:50:16 +0000
-Message-ID: <ca1779ea-7a87-971c-24c4-4a1c77a72e92@arm.com>
-References: <20181206184227.GA28656@jordon-HP-15-Notebook-PC>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: dw-mipi-dsi: Support MIPI_DSI_DCS_READ
+Date: Fri, 07 Dec 2018 15:58:06 +0100
+Message-ID: <2530200.jDlzaWghUx@phil>
+References: <20181205130243.5810-1-richard@puffinpack.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181206184227.GA28656@jordon-HP-15-Notebook-PC>
-Content-Language: en-GB
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Souptick Joarder <jrdr.linux@gmail.com>, akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie
-Cc: linux-arm-kernel@lists.infradead.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20181205130243.5810-1-richard@puffinpack.se>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Richard =?ISO-8859-1?Q?R=F6jfors?= <richard.rojfors@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Richard =?ISO-8859-1?Q?R=F6jfors?= <richard@puffinpack.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDYvMTIvMjAxOCAxODo0MiwgU291cHRpY2sgSm9hcmRlciB3cm90ZToKPiBDb252ZXJ0IHRv
-IHVzZSB2bV9pbnNlcnRfcmFuZ2UoKSB0byBtYXAgcmFuZ2Ugb2Yga2VybmVsCj4gbWVtb3J5IHRv
-IHVzZXIgdm1hLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNvdXB0aWNrIEpvYXJkZXIgPGpyZHIubGlu
-dXhAZ21haWwuY29tPgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT4KPiBBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0KPiAg
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAyMCArKy0tLS0t
-LS0tLS0tLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMTggZGVs
-ZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jCj4gaW5kZXggYThkYjc1OC4uMmNiODNiYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0yMjEsMjYgKzIyMSwxMCBAQCBzdGF0aWMg
-aW50IHJvY2tjaGlwX2RybV9nZW1fb2JqZWN0X21tYXBfaW9tbXUoc3RydWN0IGRybV9nZW1fb2Jq
-ZWN0ICpvYmosCj4gICAJCQkJCSAgICAgIHN0cnVjdCB2bV9hcmVhX3N0cnVjdCAqdm1hKQo+ICAg
-ewo+ICAgCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmogPSB0b19yb2NrY2hpcF9v
-Ymoob2JqKTsKPiAtCXVuc2lnbmVkIGludCBpLCBjb3VudCA9IG9iai0+c2l6ZSA+PiBQQUdFX1NI
-SUZUOwo+ICAgCXVuc2lnbmVkIGxvbmcgdXNlcl9jb3VudCA9IHZtYV9wYWdlcyh2bWEpOwo+IC0J
-dW5zaWduZWQgbG9uZyB1YWRkciA9IHZtYS0+dm1fc3RhcnQ7Cj4gLQl1bnNpZ25lZCBsb25nIG9m
-ZnNldCA9IHZtYS0+dm1fcGdvZmY7Cj4gLQl1bnNpZ25lZCBsb25nIGVuZCA9IHVzZXJfY291bnQg
-KyBvZmZzZXQ7Cj4gLQlpbnQgcmV0Owo+IC0KPiAtCWlmICh1c2VyX2NvdW50ID09IDApCj4gLQkJ
-cmV0dXJuIC1FTlhJTzsKPiAtCWlmIChlbmQgPiBjb3VudCkKPiAtCQlyZXR1cm4gLUVOWElPOwo+
-ICAgCj4gLQlmb3IgKGkgPSBvZmZzZXQ7IGkgPCBlbmQ7IGkrKykgewo+IC0JCXJldCA9IHZtX2lu
-c2VydF9wYWdlKHZtYSwgdWFkZHIsIHJrX29iai0+cGFnZXNbaV0pOwo+IC0JCWlmIChyZXQpCj4g
-LQkJCXJldHVybiByZXQ7Cj4gLQkJdWFkZHIgKz0gUEFHRV9TSVpFOwo+IC0JfQo+IC0KPiAtCXJl
-dHVybiAwOwo+ICsJcmV0dXJuIHZtX2luc2VydF9yYW5nZSh2bWEsIHZtYS0+dm1fc3RhcnQsIHJr
-X29iai0+cGFnZXMsCj4gKwkJCQl1c2VyX2NvdW50KTsKCldlJ3JlIGxvc2luZyB2bV9wZ29mZiBo
-YW5kbGluZyBoZXJlLCB3aGljaCBnaXZlbiB0aGUgaW1wbGljYXRpb24gaW4gCjU3ZGU1MGFmMTYy
-YiwgbWF5IHdlbGwgYmUgYSByZWdyZXNzaW9uIGZvciBhdCBsZWFzdCBzb21lIGNvbWJpbmF0aW9u
-IG9mIApHUFUgYW5kIHVzZXJzcGFjZSBkcml2ZXIgKEkgYXNzdW1lIHRoYXQgY29tbWl0IHdhcyBp
-biB0aGUgY29udGV4dCBvZiAKc29tZSB2ZXJzaW9uIG9mIHRoZSBBcm0gTWFsaSBkcml2ZXIsIHBv
-c3NpYmx5IG9uIFJLMzI4OCkuCgpSb2Jpbi4KCj4gICB9Cj4gICAKPiAgIHN0YXRpYyBpbnQgcm9j
-a2NoaXBfZHJtX2dlbV9vYmplY3RfbW1hcF9kbWEoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmos
-Cj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Richard,
+
+Am Mittwoch, 5. Dezember 2018, 14:02:43 CET schrieb Richard R=F6jfors:
+> There is sometimes a need to be able to read from the other
+> end for instance to identify panels.
+> =
+
+> Signed-off-by: Richard R=F6jfors <richard@puffinpack.se>
+
+The Rockchip dsi driver got converted to use the generic dw-mipi-dsi
+bridge - will be part of 4.21. And there the different methods seem to
+be implemented already.
+
+So this patch does not seem to be relevant anymore. Please wait for 4.21-rc1
+or check linux-next, if there is still functionality missing.
+
+Also as a general note, please check scripts/get_maintainer.pl when
+sending patches, as that should have also listed the dri-devel list, which
+missing here.
+
+
+Thanks
+Heiko
