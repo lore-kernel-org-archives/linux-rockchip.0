@@ -1,41 +1,70 @@
 From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH v3 1/9] mm: Introduce new vm_insert_range API
-Date: Sat, 8 Dec 2018 00:58:26 +0530
-Message-ID: <CAFqt6zYCWOK-uS85GqCzcgT=+YKn1nBrRPq+M9y6eJjmXEKH+g@mail.gmail.com>
-References: <20181206183945.GA20932@jordon-HP-15-Notebook-PC>
- <53bbc095-c9f5-5d6a-6e50-6e060d17eb68@arm.com> <20181207171116.GA29923@bombadil.infradead.org>
+Subject: Re: [PATCH v3 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use vm_insert_range
+Date: Sat, 8 Dec 2018 02:00:36 +0530
+Message-ID: <CAFqt6zbMbvB1ckwhSsBATrq5M-HQ6qk95sCWCoTTFFnwzBAnng@mail.gmail.com>
+References: <20181206184227.GA28656@jordon-HP-15-Notebook-PC> <ca1779ea-7a87-971c-24c4-4a1c77a72e92@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181207171116.GA29923@bombadil.infradead.org>
+In-Reply-To: <ca1779ea-7a87-971c-24c4-4a1c77a72e92@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthew Wilcox <willy@infradead.org>
-Cc: robin.murphy@arm.com, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgr>
+To: robin.murphy@arm.com
+Cc: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, Linux-MM <linux-mm@kvack.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Dec 7, 2018 at 10:41 PM Matthew Wilcox <willy@infradead.org> wrote:
+On Fri, Dec 7, 2018 at 8:20 PM Robin Murphy <robin.murphy@arm.com> wrote:
 >
-> On Fri, Dec 07, 2018 at 03:34:56PM +0000, Robin Murphy wrote:
-> > > +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-> > > +                   struct page **pages, unsigned long page_count)
-> > > +{
-> > > +   unsigned long uaddr = addr;
-> > > +   int ret = 0, i;
+> On 06/12/2018 18:42, Souptick Joarder wrote:
+> > Convert to use vm_insert_range() to map range of kernel
+> > memory to user vma.
 > >
-> > Some of the sites being replaced were effectively ensuring that vma and
-> > pages were mutually compatible as an initial condition - would it be worth
-> > adding something here for robustness, e.g.:
+> > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> > Tested-by: Heiko Stuebner <heiko@sntech.de>
+> > Acked-by: Heiko Stuebner <heiko@sntech.de>
+> > ---
+> >   drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 20 ++------------------
+> >   1 file changed, 2 insertions(+), 18 deletions(-)
 > >
-> > +     if (page_count != vma_pages(vma))
-> > +             return -ENXIO;
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> > index a8db758..2cb83bb 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> > @@ -221,26 +221,10 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
+> >                                             struct vm_area_struct *vma)
+> >   {
+> >       struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+> > -     unsigned int i, count = obj->size >> PAGE_SHIFT;
+> >       unsigned long user_count = vma_pages(vma);
+> > -     unsigned long uaddr = vma->vm_start;
+> > -     unsigned long offset = vma->vm_pgoff;
+> > -     unsigned long end = user_count + offset;
+> > -     int ret;
+> > -
+> > -     if (user_count == 0)
+> > -             return -ENXIO;
+> > -     if (end > count)
+> > -             return -ENXIO;
+> >
+> > -     for (i = offset; i < end; i++) {
+> > -             ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
+> > -             if (ret)
+> > -                     return ret;
+> > -             uaddr += PAGE_SIZE;
+> > -     }
+> > -
+> > -     return 0;
+> > +     return vm_insert_range(vma, vma->vm_start, rk_obj->pages,
+> > +                             user_count);
 >
-> I think we want to allow this to be used to populate part of a VMA.
-> So perhaps:
->
->         if (page_count > vma_pages(vma))
->                 return -ENXIO;
+> We're losing vm_pgoff handling here, which given the implication in
+> 57de50af162b, may well be a regression for at least some combination of
+> GPU and userspace driver (I assume that commit was in the context of
+> some version of the Arm Mali driver, possibly on RK3288).
 
-Ok, This can be added.
+In commit  57de50af162b, vma->vm_pgoff = 0 for GEM mmap handler context
+and removing it from common path which means if call stack looks like
+rockchip_gem_mmap_buf() -> rockchip_drm_gem_object_mmap() ->
+rockchip_drm_gem_object_mmap_iommu(), then we might have a non zero
+vma->vm_pgoff context which is not handled.
 
-I think Patch [2/9] is the only leftover place where this
-check could be removed.
+This is the problem you are pointing ? right ?
