@@ -1,140 +1,60 @@
-From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Re: [PATCH v3 1/9] mm: Introduce new vm_insert_range API
-Date: Fri, 7 Dec 2018 12:47:37 -0200
-Message-ID: <20181207124737.123cb2e1@coco.lan>
-References: <20181206183945.GA20932@jordon-HP-15-Notebook-PC>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v3 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use
+ vm_insert_range
+Date: Fri, 7 Dec 2018 14:50:16 +0000
+Message-ID: <ca1779ea-7a87-971c-24c4-4a1c77a72e92@arm.com>
+References: <20181206184227.GA28656@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20181206183945.GA20932@jordon-HP-15-Notebook-PC>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: mhocko@suse.com, heiko@sntech.de, peterz@infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux1394-devel@lists.sourceforge.net, m.szyprowski@samsung.com, sfr@canb.auug.org.au, oleksandr_andrushchenko@epam.com, joro@8bytes.org, linux@armlinux.org.uk, willy@infradead.org, airlied@linux.ie, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, treding@nvidia.com, linux-media@vger.kernel.org, keescook@chromium.org, pawel@osciak.com, riel@surriel.com, iommu@lists.linux-foundation.org, rppt@linux.vnet.ibm.com, boris.ostrovsky@oracle.com, iamjoonsoo.kim@lge.com, vbabka@suse.cz, jgross@suse.com, hjc@rock-chips.com, xen-devel@lists.xen.org, kyungmin.park@samsung.com, stefanr@s5r6.in-berlin.de, akpm@linux-foundation.org, robin.murphy@arm.com, kirill.shutemov@linux.intel.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20181206184227.GA28656@jordon-HP-15-Notebook-PC>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Souptick Joarder <jrdr.linux@gmail.com>, akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie
+Cc: linux-arm-kernel@lists.infradead.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Em Fri, 7 Dec 2018 00:09:45 +0530
-Souptick Joarder <jrdr.linux@gmail.com> escreveu:
-
-> Previouly drivers have their own way of mapping range of
-> kernel pages/memory into user vma and this was done by
-> invoking vm_insert_page() within a loop.
-> 
-> As this pattern is common across different drivers, it can
-> be generalized by creating a new function and use it across
-> the drivers.
-> 
-> vm_insert_range is the new API which will be used to map a
-> range of kernel memory/pages to user vma.
-> 
-> This API is tested by Heiko for Rockchip drm driver, on rk3188,
-> rk3288, rk3328 and rk3399 with graphics.
-> 
-> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> Reviewed-by: Matthew Wilcox <willy@infradead.org>
-> Reviewed-by: Mike Rapoport <rppt@linux.ibm.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-
-Looks good to me.
-
-Reviewed-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-
-> ---
->  include/linux/mm.h |  2 ++
->  mm/memory.c        | 38 ++++++++++++++++++++++++++++++++++++++
->  mm/nommu.c         |  7 +++++++
->  3 files changed, 47 insertions(+)
-> 
-> diff --git a/include/linux/mm.h b/include/linux/mm.h
-> index fcf9cc9..2bc399f 100644
-> --- a/include/linux/mm.h
-> +++ b/include/linux/mm.h
-> @@ -2506,6 +2506,8 @@ unsigned long change_prot_numa(struct vm_area_struct *vma,
->  int remap_pfn_range(struct vm_area_struct *, unsigned long addr,
->  			unsigned long pfn, unsigned long size, pgprot_t);
->  int vm_insert_page(struct vm_area_struct *, unsigned long addr, struct page *);
-> +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-> +			struct page **pages, unsigned long page_count);
->  vm_fault_t vmf_insert_pfn(struct vm_area_struct *vma, unsigned long addr,
->  			unsigned long pfn);
->  vm_fault_t vmf_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr,
-> diff --git a/mm/memory.c b/mm/memory.c
-> index 15c417e..84ea46c 100644
-> --- a/mm/memory.c
-> +++ b/mm/memory.c
-> @@ -1478,6 +1478,44 @@ static int insert_page(struct vm_area_struct *vma, unsigned long addr,
->  }
->  
->  /**
-> + * vm_insert_range - insert range of kernel pages into user vma
-> + * @vma: user vma to map to
-> + * @addr: target user address of this page
-> + * @pages: pointer to array of source kernel pages
-> + * @page_count: number of pages need to insert into user vma
-> + *
-> + * This allows drivers to insert range of kernel pages they've allocated
-> + * into a user vma. This is a generic function which drivers can use
-> + * rather than using their own way of mapping range of kernel pages into
-> + * user vma.
-> + *
-> + * If we fail to insert any page into the vma, the function will return
-> + * immediately leaving any previously-inserted pages present.  Callers
-> + * from the mmap handler may immediately return the error as their caller
-> + * will destroy the vma, removing any successfully-inserted pages. Other
-> + * callers should make their own arrangements for calling unmap_region().
-> + *
-> + * Context: Process context. Called by mmap handlers.
-> + * Return: 0 on success and error code otherwise
-> + */
-> +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-> +			struct page **pages, unsigned long page_count)
-> +{
-> +	unsigned long uaddr = addr;
-> +	int ret = 0, i;
-> +
-> +	for (i = 0; i < page_count; i++) {
-> +		ret = vm_insert_page(vma, uaddr, pages[i]);
-> +		if (ret < 0)
-> +			return ret;
-> +		uaddr += PAGE_SIZE;
-> +	}
-> +
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL(vm_insert_range);
-> +
-> +/**
->   * vm_insert_page - insert single page into user vma
->   * @vma: user vma to map to
->   * @addr: target user address of this page
-> diff --git a/mm/nommu.c b/mm/nommu.c
-> index 749276b..d6ef5c7 100644
-> --- a/mm/nommu.c
-> +++ b/mm/nommu.c
-> @@ -473,6 +473,13 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
->  }
->  EXPORT_SYMBOL(vm_insert_page);
->  
-> +int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-> +			struct page **pages, unsigned long page_count)
-> +{
-> +	return -EINVAL;
-> +}
-> +EXPORT_SYMBOL(vm_insert_range);
-> +
->  /*
->   *  sys_brk() for the most part doesn't need the global kernel
->   *  lock, except when an application is doing something nasty
-
-
-
-Thanks,
-Mauro
+T24gMDYvMTIvMjAxOCAxODo0MiwgU291cHRpY2sgSm9hcmRlciB3cm90ZToKPiBDb252ZXJ0IHRv
+IHVzZSB2bV9pbnNlcnRfcmFuZ2UoKSB0byBtYXAgcmFuZ2Ugb2Yga2VybmVsCj4gbWVtb3J5IHRv
+IHVzZXIgdm1hLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNvdXB0aWNrIEpvYXJkZXIgPGpyZHIubGlu
+dXhAZ21haWwuY29tPgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5k
+ZT4KPiBBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0KPiAg
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAyMCArKy0tLS0t
+LS0tLS0tLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMTggZGVs
+ZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
+bS5jCj4gaW5kZXggYThkYjc1OC4uMmNiODNiYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0yMjEsMjYgKzIyMSwxMCBAQCBzdGF0aWMg
+aW50IHJvY2tjaGlwX2RybV9nZW1fb2JqZWN0X21tYXBfaW9tbXUoc3RydWN0IGRybV9nZW1fb2Jq
+ZWN0ICpvYmosCj4gICAJCQkJCSAgICAgIHN0cnVjdCB2bV9hcmVhX3N0cnVjdCAqdm1hKQo+ICAg
+ewo+ICAgCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmogPSB0b19yb2NrY2hpcF9v
+Ymoob2JqKTsKPiAtCXVuc2lnbmVkIGludCBpLCBjb3VudCA9IG9iai0+c2l6ZSA+PiBQQUdFX1NI
+SUZUOwo+ICAgCXVuc2lnbmVkIGxvbmcgdXNlcl9jb3VudCA9IHZtYV9wYWdlcyh2bWEpOwo+IC0J
+dW5zaWduZWQgbG9uZyB1YWRkciA9IHZtYS0+dm1fc3RhcnQ7Cj4gLQl1bnNpZ25lZCBsb25nIG9m
+ZnNldCA9IHZtYS0+dm1fcGdvZmY7Cj4gLQl1bnNpZ25lZCBsb25nIGVuZCA9IHVzZXJfY291bnQg
+KyBvZmZzZXQ7Cj4gLQlpbnQgcmV0Owo+IC0KPiAtCWlmICh1c2VyX2NvdW50ID09IDApCj4gLQkJ
+cmV0dXJuIC1FTlhJTzsKPiAtCWlmIChlbmQgPiBjb3VudCkKPiAtCQlyZXR1cm4gLUVOWElPOwo+
+ICAgCj4gLQlmb3IgKGkgPSBvZmZzZXQ7IGkgPCBlbmQ7IGkrKykgewo+IC0JCXJldCA9IHZtX2lu
+c2VydF9wYWdlKHZtYSwgdWFkZHIsIHJrX29iai0+cGFnZXNbaV0pOwo+IC0JCWlmIChyZXQpCj4g
+LQkJCXJldHVybiByZXQ7Cj4gLQkJdWFkZHIgKz0gUEFHRV9TSVpFOwo+IC0JfQo+IC0KPiAtCXJl
+dHVybiAwOwo+ICsJcmV0dXJuIHZtX2luc2VydF9yYW5nZSh2bWEsIHZtYS0+dm1fc3RhcnQsIHJr
+X29iai0+cGFnZXMsCj4gKwkJCQl1c2VyX2NvdW50KTsKCldlJ3JlIGxvc2luZyB2bV9wZ29mZiBo
+YW5kbGluZyBoZXJlLCB3aGljaCBnaXZlbiB0aGUgaW1wbGljYXRpb24gaW4gCjU3ZGU1MGFmMTYy
+YiwgbWF5IHdlbGwgYmUgYSByZWdyZXNzaW9uIGZvciBhdCBsZWFzdCBzb21lIGNvbWJpbmF0aW9u
+IG9mIApHUFUgYW5kIHVzZXJzcGFjZSBkcml2ZXIgKEkgYXNzdW1lIHRoYXQgY29tbWl0IHdhcyBp
+biB0aGUgY29udGV4dCBvZiAKc29tZSB2ZXJzaW9uIG9mIHRoZSBBcm0gTWFsaSBkcml2ZXIsIHBv
+c3NpYmx5IG9uIFJLMzI4OCkuCgpSb2Jpbi4KCj4gICB9Cj4gICAKPiAgIHN0YXRpYyBpbnQgcm9j
+a2NoaXBfZHJtX2dlbV9vYmplY3RfbW1hcF9kbWEoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmos
+Cj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
