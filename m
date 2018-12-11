@@ -1,67 +1,32 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH for-4.20] Revert "drm/rockchip: Allow driver to be
- shutdown on reboot/kexec"
-Date: Tue, 11 Dec 2018 16:34:35 +0100
-Message-ID: <2584922.nx44hha6lV@phil>
-References: <20181205181657.177703-1-briannorris@chromium.org>
+Subject: Re: [PATCH v3 1/7] arm64: dts: rockchip: ficus: Add on-board LED support
+Date: Tue, 11 Dec 2018 20:11:13 +0100
+Message-ID: <44132232.o28PC2y76u@phil>
+References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org> <20181029094245.7886-2-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181205181657.177703-1-briannorris@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Vicente Bergas <vicencb@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Guenter Roeck <linux@roeck-us.net>, Marc Zyngier <marc.zyngier@arm.com>, stable@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181029094245.7886-2-manivannan.sadhasivam@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: robh@kernel.org, ezequiel@collabora.com, xuwei5@hisilicon.com, michal.simek@xilinx.com, pavel@ucw.cz, andy.gross@linaro.org, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org, nicolas.dechesne@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDUuIERlemVtYmVyIDIwMTgsIDE5OjE2OjU3IENFVCBzY2hyaWViIEJyaWFu
-IE5vcnJpczoKPiBUaGlzIHJldmVydHMgY29tbWl0IDdmM2VmNWRlZGIxNDZlM2Q1MDYzYjY4NDU3
-ODFhZDFiYjU5YjkyYjUuCj4gCj4gSXQgY2F1c2VzIG5ldyB3YXJuaW5ncyBbMV0gb24gc2h1dGRv
-d24gd2hlbiBydW5uaW5nIHRoZSBHb29nbGUgS2V2aW4gb3IKPiBTY2FybGV0IChSSzMzOTkpIGJv
-YXJkcyB1bmRlciBDaHJvbWUgT1MuIFByZXN1bWFibHkgb3VyIHVzYWdlIG9mIERSTSBpcwo+IGRp
-ZmZlcmVudCB0aGFuIHdoYXQgTWFyYyBhbmQgSGVpa28gdGVzdC4KPiAKPiBXZSdyZSBsb29raW5n
-IGF0IGEgZGlmZmVyZW50IGFwcHJvYWNoIChlLmcuLCBbMl0pIHRvIHJlcGxhY2UgdGhpcywgYnV0
-Cj4gSU1PIHRoZSByZXZlcnQgc2hvdWxkIGJlIHRha2VuIGZpcnN0LCBhcyBpdCBhbHJlYWR5IHBy
-b3BhZ2F0ZWQgdG8KPiAtc3RhYmxlLgo+IAo+IFsxXSBSZXBvcnQgaGVyZToKPiBodHRwOi8vbGtt
-bC5rZXJuZWwub3JnL2xrbWwvMjAxODEyMDUwMzAxMjcuR0EyMDA5MjFAZ29vZ2xlLmNvbQo+IAo+
-IFdBUk5JTkc6IENQVTogNCBQSUQ6IDIwMzUgYXQgZHJpdmVycy9ncHUvZHJtL2RybV9tb2RlX2Nv
-bmZpZy5jOjQ3NyBkcm1fbW9kZV9jb25maWdfY2xlYW51cCsweDFjNC8weDI5NAo+IC4uLgo+ICBD
-YWxsIHRyYWNlOgo+ICAgZHJtX21vZGVfY29uZmlnX2NsZWFudXArMHgxYzQvMHgyOTQKPiAgIHJv
-Y2tjaGlwX2RybV91bmJpbmQrMHg0Yy8weDhjCj4gICBjb21wb25lbnRfbWFzdGVyX2RlbCsweDg4
-LzB4YjgKPiAgIHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9yZW1vdmUrMHgyYy8weDQ0Cj4gICByb2Nr
-Y2hpcF9kcm1fcGxhdGZvcm1fc2h1dGRvd24rMHgyMC8weDJjCj4gICBwbGF0Zm9ybV9kcnZfc2h1
-dGRvd24rMHgyYy8weDM4Cj4gICBkZXZpY2Vfc2h1dGRvd24rMHgxNjQvMHgxYjgKPiAgIGtlcm5l
-bF9yZXN0YXJ0X3ByZXBhcmUrMHg0MC8weDQ4Cj4gICBrZXJuZWxfcmVzdGFydCsweDIwLzB4NjgK
-PiAuLi4KPiAgTWVtb3J5IG1hbmFnZXIgbm90IGNsZWFuIGR1cmluZyB0YWtlZG93bi4KPiAgV0FS
-TklORzogQ1BVOiA0IFBJRDogMjAzNSBhdCBkcml2ZXJzL2dwdS9kcm0vZHJtX21tLmM6OTUwIGRy
-bV9tbV90YWtlZG93bisweDM0LzB4NDQKPiAuLi4KPiAgIGRybV9tbV90YWtlZG93bisweDM0LzB4
-NDQKPiAgIHJvY2tjaGlwX2RybV91bmJpbmQrMHg2NC8weDhjCj4gICBjb21wb25lbnRfbWFzdGVy
-X2RlbCsweDg4LzB4YjgKPiAgIHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9yZW1vdmUrMHgyYy8weDQ0
-Cj4gICByb2NrY2hpcF9kcm1fcGxhdGZvcm1fc2h1dGRvd24rMHgyMC8weDJjCj4gICBwbGF0Zm9y
-bV9kcnZfc2h1dGRvd24rMHgyYy8weDM4Cj4gICBkZXZpY2Vfc2h1dGRvd24rMHgxNjQvMHgxYjgK
-PiAgIGtlcm5lbF9yZXN0YXJ0X3ByZXBhcmUrMHg0MC8weDQ4Cj4gICBrZXJuZWxfcmVzdGFydCsw
-eDIwLzB4NjgKPiAuLi4KPiAKPiBbMl0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRj
-aC8xMDU1NjE1MS8KPiAgICAgaHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvbGludXgtcm9j
-a2NoaXAvbXNnMjEzNDIuaHRtbAo+ICAgICBbUEFUQ0hdIGRybS9yb2NrY2hpcDogc2h1dGRvd24g
-ZHJtIHN1YnN5c3RlbSBvbiBzaHV0ZG93bgo+IAo+IEZpeGVzOiA3ZjNlZjVkZWRiMTQgKCJkcm0v
-cm9ja2NoaXA6IEFsbG93IGRyaXZlciB0byBiZSBzaHV0ZG93biBvbiByZWJvb3Qva2V4ZWMiKQo+
-IENjOiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IENjOiBSb2JpbiBN
-dXJwaHkgPHJvYmluLm11cnBoeUBhcm0uY29tPgo+IENjOiBWaWNlbnRlIEJlcmdhcyA8dmljZW5j
-YkBnbWFpbC5jb20+Cj4gQ2M6IE1hcmMgWnluZ2llciA8bWFyYy56eW5naWVyQGFybS5jb20+Cj4g
-Q2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IHN0YWJsZUB2Z2VyLmtl
-cm5lbC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9t
-aXVtLm9yZz4KClNvLCBJJ3ZlIGFwcGxpZWQgdGhpcyByZXZlcnQgdG8gZHJtLW1pc2MtZml4ZXMg
-bm93LCBzbyBpdCBzaG91bGQgc3RpbGwKbGFuZCBpbiA0LjIwLXJjLgoKSSdsbCByZXN1cnJlY3Qg
-VmljZW50ZXMgcGF0Y2ggZm9yIGEgbGF0ZXIgcmVndWxhciBpbmNsdXNpb24gYXMgd2VsbCwKYnV0
-IHdpdGggbW9yZSB0ZXN0aW5nIGludm9sdmVkLgoKCkhlaWtvCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Montag, 29. Oktober 2018, 10:42:39 CET schrieb Manivannan Sadhasivam:
+> Add on-board LED support for Ficus board based on the following
+> standard used by other 96Boards:
+> 
+> red:user1  default-trigger: heartbeat
+> red:user2  default-trigger: mmc0/disk-activity (onboard-storage)
+> red:user3  default-trigger: mmc1 (SD-card)
+> red:user4  default-trigger: none, panic-indicator
+> red:wlan   default-trigger: phy0tx
+> red:bt     default-trigger: hci0-power
+> 
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+
+applied for 4.21
+
+Thanks
+Heiko
