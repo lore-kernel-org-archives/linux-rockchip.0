@@ -1,39 +1,42 @@
-From: =?UTF-8?Q?Richard_R=C3=B6jfors?= <richard.rojfors@gmail.com>
-Subject: Re: [PATCH] drm/rockchip: dw-mipi-dsi: Support MIPI_DSI_DCS_READ
-Date: Tue, 11 Dec 2018 14:34:55 +0100
-Message-ID: <CAHB-PjnCPyf7+7_UHR1V2WM2AeYA8ZscLU9AS9O-u6aohqGVxQ@mail.gmail.com>
-References: <20181205130243.5810-1-richard@puffinpack.se>
- <2530200.jDlzaWghUx@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2.2 24/34] dt-bindings: arm: Convert Rockchip board/soc
+ bindings to json-schema
+Date: Tue, 11 Dec 2018 09:21:09 -0600
+Message-ID: <CAL_Jsq+0+-yzB8mAodaK75Es6RPn=L5SCkFD7wgC-ZxaJtb3mg@mail.gmail.com>
+References: <20181203213223.16986-1-robh@kernel.org> <2386212.ILKoqq0Ivo@phil>
+ <CAL_JsqL9PyD=0jy+GF5g8ee-FO_ijvArnzEohuvqK5Od3yr7fg@mail.gmail.com> <30286035.tdc4tAKEPf@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2530200.jDlzaWghUx@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, =?UTF-8?Q?Richard_R=C3=B6jfors?= <richard@puffinpack.se>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <30286035.tdc4tAKEPf@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "heiko@sntech.de" <heiko@sntech.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sean Hudson <darknighte@darknighte.com>, Frank Rowand <frowand.list@gmail.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Grant Likely <grant.likely@arm.com>, Kumar Gala <kumar.gala@linaro.org>, ARM-SoC Maintainers <arm@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On Fri, Dec 7, 2018 at 3:58 PM Heiko Stuebner <heiko@sntech.de> wrote:
+On Mon, Dec 10, 2018 at 4:45 PM Heiko Stuebner <heiko@sntech.de> wrote:
 >
-> The Rockchip dsi driver got converted to use the generic dw-mipi-dsi
-> bridge - will be part of 4.21. And there the different methods seem to
-> be implemented already.
+> From: Rob Herring <robh@kernel.org>
 >
-> So this patch does not seem to be relevant anymore. Please wait for 4.21-rc1
-> or check linux-next, if there is still functionality missing.
+> Convert Rockchip SoC bindings to DT schema format using json-schema.
+>
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> [move to per-board entries and added recently added boards]
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> Hi Rob,
+>
+> thanks for the libyaml hint, now dtc does check my dts nicely and
+> emits quite a number of little complaints ;-) .
+>
+> Also that suggestion to move the original firefly release+beta boards
+> together was great and I just did that.
+>
+> Should look ok now, if so I'll apply it tomorrow.
 
-Thanks, I didn't know about the conversion, but it makes sense!
-
-BR
---Richard
+LGTM
