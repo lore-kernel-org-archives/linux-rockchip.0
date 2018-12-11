@@ -1,42 +1,67 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2.2 24/34] dt-bindings: arm: Convert Rockchip board/soc
- bindings to json-schema
-Date: Tue, 11 Dec 2018 09:21:09 -0600
-Message-ID: <CAL_Jsq+0+-yzB8mAodaK75Es6RPn=L5SCkFD7wgC-ZxaJtb3mg@mail.gmail.com>
-References: <20181203213223.16986-1-robh@kernel.org> <2386212.ILKoqq0Ivo@phil>
- <CAL_JsqL9PyD=0jy+GF5g8ee-FO_ijvArnzEohuvqK5Od3yr7fg@mail.gmail.com> <30286035.tdc4tAKEPf@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH for-4.20] Revert "drm/rockchip: Allow driver to be
+ shutdown on reboot/kexec"
+Date: Tue, 11 Dec 2018 16:34:35 +0100
+Message-ID: <2584922.nx44hha6lV@phil>
+References: <20181205181657.177703-1-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <30286035.tdc4tAKEPf@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "heiko@sntech.de" <heiko@sntech.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sean Hudson <darknighte@darknighte.com>, Frank Rowand <frowand.list@gmail.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Grant Likely <grant.likely@arm.com>, Kumar Gala <kumar.gala@linaro.org>, ARM-SoC Maintainers <arm@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20181205181657.177703-1-briannorris@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Vicente Bergas <vicencb@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Guenter Roeck <linux@roeck-us.net>, Marc Zyngier <marc.zyngier@arm.com>, stable@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 10, 2018 at 4:45 PM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> From: Rob Herring <robh@kernel.org>
->
-> Convert Rockchip SoC bindings to DT schema format using json-schema.
->
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: devicetree@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> [move to per-board entries and added recently added boards]
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> Hi Rob,
->
-> thanks for the libyaml hint, now dtc does check my dts nicely and
-> emits quite a number of little complaints ;-) .
->
-> Also that suggestion to move the original firefly release+beta boards
-> together was great and I just did that.
->
-> Should look ok now, if so I'll apply it tomorrow.
-
-LGTM
+QW0gTWl0dHdvY2gsIDUuIERlemVtYmVyIDIwMTgsIDE5OjE2OjU3IENFVCBzY2hyaWViIEJyaWFu
+IE5vcnJpczoKPiBUaGlzIHJldmVydHMgY29tbWl0IDdmM2VmNWRlZGIxNDZlM2Q1MDYzYjY4NDU3
+ODFhZDFiYjU5YjkyYjUuCj4gCj4gSXQgY2F1c2VzIG5ldyB3YXJuaW5ncyBbMV0gb24gc2h1dGRv
+d24gd2hlbiBydW5uaW5nIHRoZSBHb29nbGUgS2V2aW4gb3IKPiBTY2FybGV0IChSSzMzOTkpIGJv
+YXJkcyB1bmRlciBDaHJvbWUgT1MuIFByZXN1bWFibHkgb3VyIHVzYWdlIG9mIERSTSBpcwo+IGRp
+ZmZlcmVudCB0aGFuIHdoYXQgTWFyYyBhbmQgSGVpa28gdGVzdC4KPiAKPiBXZSdyZSBsb29raW5n
+IGF0IGEgZGlmZmVyZW50IGFwcHJvYWNoIChlLmcuLCBbMl0pIHRvIHJlcGxhY2UgdGhpcywgYnV0
+Cj4gSU1PIHRoZSByZXZlcnQgc2hvdWxkIGJlIHRha2VuIGZpcnN0LCBhcyBpdCBhbHJlYWR5IHBy
+b3BhZ2F0ZWQgdG8KPiAtc3RhYmxlLgo+IAo+IFsxXSBSZXBvcnQgaGVyZToKPiBodHRwOi8vbGtt
+bC5rZXJuZWwub3JnL2xrbWwvMjAxODEyMDUwMzAxMjcuR0EyMDA5MjFAZ29vZ2xlLmNvbQo+IAo+
+IFdBUk5JTkc6IENQVTogNCBQSUQ6IDIwMzUgYXQgZHJpdmVycy9ncHUvZHJtL2RybV9tb2RlX2Nv
+bmZpZy5jOjQ3NyBkcm1fbW9kZV9jb25maWdfY2xlYW51cCsweDFjNC8weDI5NAo+IC4uLgo+ICBD
+YWxsIHRyYWNlOgo+ICAgZHJtX21vZGVfY29uZmlnX2NsZWFudXArMHgxYzQvMHgyOTQKPiAgIHJv
+Y2tjaGlwX2RybV91bmJpbmQrMHg0Yy8weDhjCj4gICBjb21wb25lbnRfbWFzdGVyX2RlbCsweDg4
+LzB4YjgKPiAgIHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9yZW1vdmUrMHgyYy8weDQ0Cj4gICByb2Nr
+Y2hpcF9kcm1fcGxhdGZvcm1fc2h1dGRvd24rMHgyMC8weDJjCj4gICBwbGF0Zm9ybV9kcnZfc2h1
+dGRvd24rMHgyYy8weDM4Cj4gICBkZXZpY2Vfc2h1dGRvd24rMHgxNjQvMHgxYjgKPiAgIGtlcm5l
+bF9yZXN0YXJ0X3ByZXBhcmUrMHg0MC8weDQ4Cj4gICBrZXJuZWxfcmVzdGFydCsweDIwLzB4NjgK
+PiAuLi4KPiAgTWVtb3J5IG1hbmFnZXIgbm90IGNsZWFuIGR1cmluZyB0YWtlZG93bi4KPiAgV0FS
+TklORzogQ1BVOiA0IFBJRDogMjAzNSBhdCBkcml2ZXJzL2dwdS9kcm0vZHJtX21tLmM6OTUwIGRy
+bV9tbV90YWtlZG93bisweDM0LzB4NDQKPiAuLi4KPiAgIGRybV9tbV90YWtlZG93bisweDM0LzB4
+NDQKPiAgIHJvY2tjaGlwX2RybV91bmJpbmQrMHg2NC8weDhjCj4gICBjb21wb25lbnRfbWFzdGVy
+X2RlbCsweDg4LzB4YjgKPiAgIHJvY2tjaGlwX2RybV9wbGF0Zm9ybV9yZW1vdmUrMHgyYy8weDQ0
+Cj4gICByb2NrY2hpcF9kcm1fcGxhdGZvcm1fc2h1dGRvd24rMHgyMC8weDJjCj4gICBwbGF0Zm9y
+bV9kcnZfc2h1dGRvd24rMHgyYy8weDM4Cj4gICBkZXZpY2Vfc2h1dGRvd24rMHgxNjQvMHgxYjgK
+PiAgIGtlcm5lbF9yZXN0YXJ0X3ByZXBhcmUrMHg0MC8weDQ4Cj4gICBrZXJuZWxfcmVzdGFydCsw
+eDIwLzB4NjgKPiAuLi4KPiAKPiBbMl0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRj
+aC8xMDU1NjE1MS8KPiAgICAgaHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvbGludXgtcm9j
+a2NoaXAvbXNnMjEzNDIuaHRtbAo+ICAgICBbUEFUQ0hdIGRybS9yb2NrY2hpcDogc2h1dGRvd24g
+ZHJtIHN1YnN5c3RlbSBvbiBzaHV0ZG93bgo+IAo+IEZpeGVzOiA3ZjNlZjVkZWRiMTQgKCJkcm0v
+cm9ja2NoaXA6IEFsbG93IGRyaXZlciB0byBiZSBzaHV0ZG93biBvbiByZWJvb3Qva2V4ZWMiKQo+
+IENjOiBKZWZmeSBDaGVuIDxqZWZmeS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IENjOiBSb2JpbiBN
+dXJwaHkgPHJvYmluLm11cnBoeUBhcm0uY29tPgo+IENjOiBWaWNlbnRlIEJlcmdhcyA8dmljZW5j
+YkBnbWFpbC5jb20+Cj4gQ2M6IE1hcmMgWnluZ2llciA8bWFyYy56eW5naWVyQGFybS5jb20+Cj4g
+Q2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IHN0YWJsZUB2Z2VyLmtl
+cm5lbC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9t
+aXVtLm9yZz4KClNvLCBJJ3ZlIGFwcGxpZWQgdGhpcyByZXZlcnQgdG8gZHJtLW1pc2MtZml4ZXMg
+bm93LCBzbyBpdCBzaG91bGQgc3RpbGwKbGFuZCBpbiA0LjIwLXJjLgoKSSdsbCByZXN1cnJlY3Qg
+VmljZW50ZXMgcGF0Y2ggZm9yIGEgbGF0ZXIgcmVndWxhciBpbmNsdXNpb24gYXMgd2VsbCwKYnV0
+IHdpdGggbW9yZSB0ZXN0aW5nIGludm9sdmVkLgoKCkhlaWtvCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
