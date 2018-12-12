@@ -1,759 +1,312 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PATCH 3/3] dt-bindings: arm: Convert Rockchip board/soc bindings
- to json-schema
-Date: Wed, 12 Dec 2018 09:50:11 +0100
-Message-ID: <20181212085011.14282-1-heiko@sntech.de>
-References: <7153021.iXIDTOc0j0@phil>
+From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Subject: Re: [PATCH 7/7] drm: Split out drm_probe_helper.h
+Date: Wed, 12 Dec 2018 11:53:07 +0100
+Message-ID: <20181212105307.GW21184@phenom.ffwll.local>
+References: <20181210100359.22507-1-daniel.vetter@ffwll.ch>
+ <20181210101133.5364-1-daniel.vetter@ffwll.ch>
+ <20181210102426.GG15154@ulmo>
+ <CA+M3ks5MgpCqMDp6DrtyB_Cj_YMryysTmbAaUjzN7sWde5dX6Q@mail.gmail.com>
+ <CA+M3ks7ODkgZe_otsens1H4PoKOdnfHVxUgi84NPyri6Xhh1dg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7153021.iXIDTOc0j0@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CA+M3ks7ODkgZe_otsens1H4PoKOdnfHVxUgi84NPyri6Xhh1dg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: "moderated list:ARM/S5P EXYNOS AR..." <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Intel Graphics Development <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-Convert Rockchip SoC bindings to DT schema format using json-schema.
-
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-[move to per-board entries after confirming with Rob
- and added recently added boards]
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- .../devicetree/bindings/arm/rockchip.txt      | 278 ------------
- .../devicetree/bindings/arm/rockchip.yaml     | 423 ++++++++++++++++++
- 2 files changed, 423 insertions(+), 278 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/rockchip.txt
- create mode 100644 Documentation/devicetree/bindings/arm/rockchip.yaml
-
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-deleted file mode 100644
-index 6445dbc25c29..000000000000
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ /dev/null
-@@ -1,278 +0,0 @@
--Rockchip platforms device tree bindings
-----------------------------------------
--
--- 96boards RK3399 Ficus (ROCK960 Enterprise Edition)
--    Required root node properties:
--      - compatible = "vamrs,ficus", "rockchip,rk3399";
--
--- 96boards RK3399 Rock960 (ROCK960 Consumer Edition)
--    Required root node properties:
--      - compatible = "vamrs,rock960", "rockchip,rk3399";
--
--- Amarula Vyasa RK3288 board
--    Required root node properties:
--      - compatible = "amarula,vyasa-rk3288", "rockchip,rk3288";
--
--- Asus Tinker board
--    Required root node properties:
--      - compatible = "asus,rk3288-tinker", "rockchip,rk3288";
--
--- Asus Tinker board S
--    Required root node properties:
--      - compatible = "asus,rk3288-tinker-s", "rockchip,rk3288";
--
--- Kylin RK3036 board:
--    Required root node properties:
--      - compatible = "rockchip,kylin-rk3036", "rockchip,rk3036";
--
--- MarsBoard RK3066 board:
--    Required root node properties:
--      - compatible = "haoyu,marsboard-rk3066", "rockchip,rk3066a";
--
--- bq Curie 2 tablet:
--    Required root node properties:
--      - compatible = "mundoreader,bq-curie2", "rockchip,rk3066a";
--
--- bq Edison 2 Quad-Core tablet:
--    Required root node properties:
--      - compatible = "mundoreader,bq-edison2qc", "rockchip,rk3188";
--
--- ChipSPARK Rayeager PX2 board:
--    Required root node properties:
--      - compatible = "chipspark,rayeager-px2", "rockchip,rk3066a";
--
--- Radxa Rock board:
--    Required root node properties:
--      - compatible = "radxa,rock", "rockchip,rk3188";
--
--- Radxa Rock2 Square board:
--    Required root node properties:
--      - compatible = "radxa,rock2-square", "rockchip,rk3288";
--
--- Rikomagic MK808 v1 board:
--    Required root node properties:
--      - compatible = "rikomagic,mk808", "rockchip,rk3066a";
--
--- Firefly Firefly-RK3288 board:
--    Required root node properties:
--      - compatible = "firefly,firefly-rk3288", "rockchip,rk3288";
--    or
--      - compatible = "firefly,firefly-rk3288-beta", "rockchip,rk3288";
--
--- Firefly Firefly-RK3288 Reload board:
--    Required root node properties:
--      - compatible = "firefly,firefly-rk3288-reload", "rockchip,rk3288";
--
--- Firefly Firefly-RK3399 board:
--    Required root node properties:
--      - compatible = "firefly,firefly-rk3399", "rockchip,rk3399";
--
--- Firefly roc-rk3328-cc board:
--    Required root node properties:
--      - compatible = "firefly,roc-rk3328-cc", "rockchip,rk3328";
--
--- Firefly ROC-RK3399-PC board:
--    Required root node properties:
--      - compatible = "firefly,roc-rk3399-pc", "rockchip,rk3399";
--
--- ChipSPARK PopMetal-RK3288 board:
--    Required root node properties:
--      - compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
--
--- Netxeon R89 board:
--    Required root node properties:
--      - compatible = "netxeon,r89", "rockchip,rk3288";
--
--- GeekBuying GeekBox:
--    Required root node properties:
--      - compatible = "geekbuying,geekbox", "rockchip,rk3368";
--
--- Google Bob (Asus Chromebook Flip C101PA):
--    Required root node properties:
--	compatible = "google,bob-rev13", "google,bob-rev12",
--		     "google,bob-rev11", "google,bob-rev10",
--		     "google,bob-rev9", "google,bob-rev8",
--		     "google,bob-rev7", "google,bob-rev6",
--		     "google,bob-rev5", "google,bob-rev4",
--		     "google,bob", "google,gru", "rockchip,rk3399";
--
--- Google Brain (dev-board):
--    Required root node properties:
--      - compatible = "google,veyron-brain-rev0", "google,veyron-brain",
--		     "google,veyron", "rockchip,rk3288";
--
--- Google Gru (dev-board):
--    Required root node properties:
--      - compatible = "google,gru-rev15", "google,gru-rev14",
--		     "google,gru-rev13", "google,gru-rev12",
--		     "google,gru-rev11", "google,gru-rev10",
--		     "google,gru-rev9", "google,gru-rev8",
--		     "google,gru-rev7", "google,gru-rev6",
--		     "google,gru-rev5", "google,gru-rev4",
--		     "google,gru-rev3", "google,gru-rev2",
--		     "google,gru", "rockchip,rk3399";
--
--- Google Jaq (Haier Chromebook 11 and more):
--    Required root node properties:
--      - compatible = "google,veyron-jaq-rev5", "google,veyron-jaq-rev4",
--		     "google,veyron-jaq-rev3", "google,veyron-jaq-rev2",
--		     "google,veyron-jaq-rev1", "google,veyron-jaq",
--		     "google,veyron", "rockchip,rk3288";
--
--- Google Jerry (Hisense Chromebook C11 and more):
--    Required root node properties:
--      - compatible = "google,veyron-jerry-rev7", "google,veyron-jerry-rev6",
--		     "google,veyron-jerry-rev5", "google,veyron-jerry-rev4",
--		     "google,veyron-jerry-rev3", "google,veyron-jerry",
--		     "google,veyron", "rockchip,rk3288";
--
--- Google Kevin (Samsung Chromebook Plus):
--    Required root node properties:
--      - compatible = "google,kevin-rev15", "google,kevin-rev14",
--		     "google,kevin-rev13", "google,kevin-rev12",
--		     "google,kevin-rev11", "google,kevin-rev10",
--		     "google,kevin-rev9", "google,kevin-rev8",
--		     "google,kevin-rev7", "google,kevin-rev6",
--		     "google,kevin", "google,gru", "rockchip,rk3399";
--
--- Google Mickey (Asus Chromebit CS10):
--    Required root node properties:
--      - compatible = "google,veyron-mickey-rev8", "google,veyron-mickey-rev7",
--		     "google,veyron-mickey-rev6", "google,veyron-mickey-rev5",
--		     "google,veyron-mickey-rev4", "google,veyron-mickey-rev3",
--		     "google,veyron-mickey-rev2", "google,veyron-mickey-rev1",
--		     "google,veyron-mickey-rev0", "google,veyron-mickey",
--		     "google,veyron", "rockchip,rk3288";
--
--- Google Minnie (Asus Chromebook Flip C100P):
--    Required root node properties:
--      - compatible = "google,veyron-minnie-rev4", "google,veyron-minnie-rev3",
--		     "google,veyron-minnie-rev2", "google,veyron-minnie-rev1",
--		     "google,veyron-minnie-rev0", "google,veyron-minnie",
--		     "google,veyron", "rockchip,rk3288";
--
--- Google Pinky (dev-board):
--    Required root node properties:
--      - compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
--		     "google,veyron", "rockchip,rk3288";
--
--- Google Scarlet - with display from Kingdisplay
--    Required root node properties:
--      - compatible = "google,scarlet-rev15-sku7", "google,scarlet-rev15",
--		     "google,scarlet-rev14-sku7", "google,scarlet-rev14",
--		     "google,scarlet-rev13-sku7", "google,scarlet-rev13",
--		     "google,scarlet-rev12-sku7", "google,scarlet-rev12",
--		     "google,scarlet-rev11-sku7", "google,scarlet-rev11",
--		     "google,scarlet-rev10-sku7", "google,scarlet-rev10",
--		     "google,scarlet-rev9-sku7",  "google,scarlet-rev9",
--		     "google,scarlet-rev8-sku7",  "google,scarlet-rev8",
--		     "google,scarlet-rev7-sku7",  "google,scarlet-rev7",
--		     "google,scarlet-rev6-sku7",  "google,scarlet-rev6",
--		     "google,scarlet-rev5-sku7",  "google,scarlet-rev5",
--		     "google,scarlet-rev4-sku7",  "google,scarlet-rev4",
--		     "google,scarlet-rev3-sku7",  "google,scarlet-rev3",
--		     "google,scarlet", "google,gru", "rockchip,rk3399";
--
--- Google Scarlet - with display from Innolux
--    Required root node properties:
--      - compatible = "google,scarlet-rev15-sku6", "google,scarlet-rev15",
--		     "google,scarlet-rev14-sku6", "google,scarlet-rev14",
--		     "google,scarlet-rev13-sku6", "google,scarlet-rev13",
--		     "google,scarlet-rev12-sku6", "google,scarlet-rev12",
--		     "google,scarlet-rev11-sku6", "google,scarlet-rev11",
--		     "google,scarlet-rev10-sku6", "google,scarlet-rev10",
--		     "google,scarlet-rev9-sku6",  "google,scarlet-rev9",
--		     "google,scarlet-rev8-sku6",  "google,scarlet-rev8",
--		     "google,scarlet-rev7-sku6",  "google,scarlet-rev7",
--		     "google,scarlet-rev6-sku6",  "google,scarlet-rev6",
--		     "google,scarlet-rev5-sku6",  "google,scarlet-rev5",
--		     "google,scarlet-rev4-sku6",  "google,scarlet-rev4",
--		     "google,scarlet", "google,gru", "rockchip,rk3399";
--
--
--- Google Speedy (Asus C201 Chromebook):
--    Required root node properties:
--      - compatible = "google,veyron-speedy-rev9", "google,veyron-speedy-rev8",
--		     "google,veyron-speedy-rev7", "google,veyron-speedy-rev6",
--		     "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
--		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
--		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
--
--- mqmaker MiQi:
--    Required root node properties:
--      - compatible = "mqmaker,miqi", "rockchip,rk3288";
--
--- Phytec phyCORE-RK3288: Rapid Development Kit
--    Required root node properties:
--     - compatible = "phytec,rk3288-pcm-947", "phytec,rk3288-phycore-som", "rockchip,rk3288";
--
--- Pine64 Rock64 board:
--    Required root node properties:
--    - compatible = "pine64,rock64", "rockchip,rk3328";
--
--- Pine64 RockPro64 board:
--    Required root node properties:
--    - compatible = "pine64,rockpro64", "rockchip,rk3399";
--
--- Rockchip PX3 Evaluation board:
--    Required root node properties:
--      - compatible = "rockchip,px3-evb", "rockchip,px3", "rockchip,rk3188";
--
--- Rockchip PX5 Evaluation board:
--    Required root node properties:
--      - compatible = "rockchip,px5-evb", "rockchip,px5", "rockchip,rk3368";
--
--- Rockchip PX30 Evaluation board:
--    Required root node properties:
--      - compatible = "rockchip,px30-evb", "rockchip,px30";
--
--- Rockchip RV1108 Evaluation board
--    Required root node properties:
--      - compatible = "rockchip,rv1108-evb", "rockchip,rv1108";
--
--- Rockchip RK3368 evb:
--    Required root node properties:
--      - compatible = "rockchip,rk3368-evb-act8846", "rockchip,rk3368";
--
--- Rockchip R88 board:
--    Required root node properties:
--      - compatible = "rockchip,r88", "rockchip,rk3368";
--
--- Rockchip RK3228 Evaluation board:
--    Required root node properties:
--     - compatible = "rockchip,rk3228-evb", "rockchip,rk3228";
--
--- Rockchip RK3229 Evaluation board:
--     - compatible = "rockchip,rk3229-evb", "rockchip,rk3229";
--
--- Rockchip RK3288 Fennec board:
--    Required root node properties:
--     - compatible = "rockchip,rk3288-fennec", "rockchip,rk3288";
--
--- Rockchip RK3328 evb:
--    Required root node properties:
--      - compatible = "rockchip,rk3328-evb", "rockchip,rk3328";
--
--- Rockchip RK3399 evb:
--    Required root node properties:
--      - compatible = "rockchip,rk3399-evb", "rockchip,rk3399";
--
--- Rockchip RK3399 Sapphire board standalone:
--    Required root node properties:
--      - compatible = "rockchip,rk3399-sapphire", "rockchip,rk3399";
--
--- Rockchip RK3399 Sapphire Excavator board:
--    Required root node properties:
--      - compatible = "rockchip,rk3399-sapphire-excavator", "rockchip,rk3399";
--
--- Theobroma Systems RK3368-uQ7 Haikou Baseboard:
--    Required root node properties:
--      - compatible = "tsd,rk3368-uq7-haikou", "rockchip,rk3368";
--
--- Theobroma Systems RK3399-Q7 Haikou Baseboard:
--    Required root node properties:
--      - compatible = "tsd,rk3399-q7-haikou", "rockchip,rk3399";
--
--- Tronsmart Orion R68 Meta
--    Required root node properties:
--      - compatible = "tronsmart,orion-r68-meta", "rockchip,rk3368";
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-new file mode 100644
-index 000000000000..b12958bda09c
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -0,0 +1,423 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/rockchip.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip platforms device tree bindings
-+
-+maintainers:
-+  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-+
-+properties:
-+  $nodename:
-+    const: '/'
-+  compatible:
-+    oneOf:
-+
-+      - description: 96boards RK3399 Ficus (ROCK960 Enterprise Edition)
-+        items:
-+          - const: vamrs,ficus
-+          - const: rockchip,rk3399
-+
-+      - description: 96boards RK3399 Rock960 (ROCK960 Consumer Edition)
-+        items:
-+          - const: vamrs,rock960
-+          - const: rockchip,rk3399
-+
-+      - description: Amarula Vyasa RK3288
-+        items:
-+          - const: amarula,vyasa-rk3288
-+          - const: rockchip,rk3288
-+
-+      - description: Asus Tinker board
-+        items:
-+          - const: asus,rk3288-tinker
-+          - const: rockchip,rk3288
-+
-+      - description: Asus Tinker board S
-+        items:
-+          - const: asus,rk3288-tinker-s
-+          - const: rockchip,rk3288
-+
-+      - description: bq Curie 2 tablet
-+        items:
-+          - const: mundoreader,bq-curie2
-+          - const: rockchip,rk3066a
-+
-+      - description: bq Edison 2 Quad-Core tablet
-+        items:
-+          - const: mundoreader,bq-edison2qc
-+          - const: rockchip,rk3188
-+
-+      - description: ChipSPARK PopMetal-RK3288
-+        items:
-+          - const: chipspark,popmetal-rk3288
-+          - const: rockchip,rk3288
-+
-+      - description: ChipSPARK Rayeager PX2
-+        items:
-+          - const: chipspark,rayeager-px2
-+          - const: rockchip,rk3066a
-+
-+      - description: Firefly Firefly-RK3288
-+        items:
-+          - enum:
-+              - firefly,firefly-rk3288
-+              - firefly,firefly-rk3288-beta
-+          - const: rockchip,rk3288
-+
-+      - description: Firefly Firefly-RK3288 Reload
-+        items:
-+          - const: firefly,firefly-rk3288-reload
-+          - const: rockchip,rk3288
-+
-+      - description: Firefly Firefly-RK3399
-+        items:
-+          - const: firefly,firefly-rk3399
-+          - const: rockchip,rk3399
-+
-+      - description: Firefly roc-rk3328-cc
-+        items:
-+          - const: firefly,roc-rk3328-cc
-+          - const: rockchip,rk3328
-+
-+      - description: Firefly ROC-RK3399-PC
-+        items:
-+          - const: firefly,roc-rk3399-pc
-+          - const: rockchip,rk3399
-+
-+      - description: GeekBuying GeekBox
-+        items:
-+          - const: geekbuying,geekbox
-+          - const: rockchip,rk3368
-+
-+      - description: Google Bob (Asus Chromebook Flip C101PA)
-+        items:
-+          - const: google,bob-rev13
-+          - const: google,bob-rev12
-+          - const: google,bob-rev11
-+          - const: google,bob-rev10
-+          - const: google,bob-rev9
-+          - const: google,bob-rev8
-+          - const: google,bob-rev7
-+          - const: google,bob-rev6
-+          - const: google,bob-rev5
-+          - const: google,bob-rev4
-+          - const: google,bob
-+          - const: google,gru
-+          - const: rockchip,rk3399
-+
-+      - description: Google Brain (dev-board)
-+        items:
-+          - const: google,veyron-brain-rev0
-+          - const: google,veyron-brain
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Google Gru (dev-board)
-+        items:
-+          - const: google,gru-rev15
-+          - const: google,gru-rev14
-+          - const: google,gru-rev13
-+          - const: google,gru-rev12
-+          - const: google,gru-rev11
-+          - const: google,gru-rev10
-+          - const: google,gru-rev9
-+          - const: google,gru-rev8
-+          - const: google,gru-rev7
-+          - const: google,gru-rev6
-+          - const: google,gru-rev5
-+          - const: google,gru-rev4
-+          - const: google,gru-rev3
-+          - const: google,gru-rev2
-+          - const: google,gru
-+          - const: rockchip,rk3399
-+
-+      - description: Google Jaq (Haier Chromebook 11 and more)
-+        items:
-+          - const: google,veyron-jaq-rev5
-+          - const: google,veyron-jaq-rev4
-+          - const: google,veyron-jaq-rev3
-+          - const: google,veyron-jaq-rev2
-+          - const: google,veyron-jaq-rev1
-+          - const: google,veyron-jaq
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Google Jerry (Hisense Chromebook C11 and more)
-+        items:
-+          - const: google,veyron-jerry-rev7
-+          - const: google,veyron-jerry-rev6
-+          - const: google,veyron-jerry-rev5
-+          - const: google,veyron-jerry-rev4
-+          - const: google,veyron-jerry-rev3
-+          - const: google,veyron-jerry
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Google Kevin (Samsung Chromebook Plus)
-+        items:
-+          - const: google,kevin-rev15
-+          - const: google,kevin-rev14
-+          - const: google,kevin-rev13
-+          - const: google,kevin-rev12
-+          - const: google,kevin-rev11
-+          - const: google,kevin-rev10
-+          - const: google,kevin-rev9
-+          - const: google,kevin-rev8
-+          - const: google,kevin-rev7
-+          - const: google,kevin-rev6
-+          - const: google,kevin
-+          - const: google,gru
-+          - const: rockchip,rk3399
-+
-+      - description: Google Mickey (Asus Chromebit CS10)
-+        items:
-+          - const: google,veyron-mickey-rev8
-+          - const: google,veyron-mickey-rev7
-+          - const: google,veyron-mickey-rev6
-+          - const: google,veyron-mickey-rev5
-+          - const: google,veyron-mickey-rev4
-+          - const: google,veyron-mickey-rev3
-+          - const: google,veyron-mickey-rev2
-+          - const: google,veyron-mickey-rev1
-+          - const: google,veyron-mickey-rev0
-+          - const: google,veyron-mickey
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Google Minnie (Asus Chromebook Flip C100P)
-+        items:
-+          - const: google,veyron-minnie-rev4
-+          - const: google,veyron-minnie-rev3
-+          - const: google,veyron-minnie-rev2
-+          - const: google,veyron-minnie-rev1
-+          - const: google,veyron-minnie-rev0
-+          - const: google,veyron-minnie
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Google Pinky (dev-board)
-+        items:
-+          - const: google,veyron-pinky-rev2
-+          - const: google,veyron-pinky
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Google Scarlet - Kingdisplay (Acer Chromebook Tab 10)
-+        items:
-+          - const: google,scarlet-rev15-sku7
-+          - const: google,scarlet-rev15
-+          - const: google,scarlet-rev14-sku7
-+          - const: google,scarlet-rev14
-+          - const: google,scarlet-rev13-sku7
-+          - const: google,scarlet-rev13
-+          - const: google,scarlet-rev12-sku7
-+          - const: google,scarlet-rev12
-+          - const: google,scarlet-rev11-sku7
-+          - const: google,scarlet-rev11
-+          - const: google,scarlet-rev10-sku7
-+          - const: google,scarlet-rev10
-+          - const: google,scarlet-rev9-sku7
-+          - const: google,scarlet-rev9
-+          - const: google,scarlet-rev8-sku7
-+          - const: google,scarlet-rev8
-+          - const: google,scarlet-rev7-sku7
-+          - const: google,scarlet-rev7
-+          - const: google,scarlet-rev6-sku7
-+          - const: google,scarlet-rev6
-+          - const: google,scarlet-rev5-sku7
-+          - const: google,scarlet-rev5
-+          - const: google,scarlet-rev4-sku7
-+          - const: google,scarlet-rev4
-+          - const: google,scarlet-rev3-sku7
-+          - const: google,scarlet-rev3
-+          - const: google,scarlet
-+          - const: google,gru
-+          - const: rockchip,rk3399
-+
-+      - description: Google Scarlet - Innolux display (Acer Chromebook Tab 10)
-+        items:
-+          - const: google,scarlet-rev15-sku6
-+          - const: google,scarlet-rev15
-+          - const: google,scarlet-rev14-sku6
-+          - const: google,scarlet-rev14
-+          - const: google,scarlet-rev13-sku6
-+          - const: google,scarlet-rev13
-+          - const: google,scarlet-rev12-sku6
-+          - const: google,scarlet-rev12
-+          - const: google,scarlet-rev11-sku6
-+          - const: google,scarlet-rev11
-+          - const: google,scarlet-rev10-sku6
-+          - const: google,scarlet-rev10
-+          - const: google,scarlet-rev9-sku6
-+          - const: google,scarlet-rev9
-+          - const: google,scarlet-rev8-sku6
-+          - const: google,scarlet-rev8
-+          - const: google,scarlet-rev7-sku6
-+          - const: google,scarlet-rev7
-+          - const: google,scarlet-rev6-sku6
-+          - const: google,scarlet-rev6
-+          - const: google,scarlet-rev5-sku6
-+          - const: google,scarlet-rev5
-+          - const: google,scarlet-rev4-sku6
-+          - const: google,scarlet-rev4
-+          - const: google,scarlet
-+          - const: google,gru
-+          - const: rockchip,rk3399
-+
-+      - description: Google Speedy (Asus C201 Chromebook)
-+        items:
-+          - const: google,veyron-speedy-rev9
-+          - const: google,veyron-speedy-rev8
-+          - const: google,veyron-speedy-rev7
-+          - const: google,veyron-speedy-rev6
-+          - const: google,veyron-speedy-rev5
-+          - const: google,veyron-speedy-rev4
-+          - const: google,veyron-speedy-rev3
-+          - const: google,veyron-speedy-rev2
-+          - const: google,veyron-speedy
-+          - const: google,veyron
-+          - const: rockchip,rk3288
-+
-+      - description: Haoyu MarsBoard RK3066
-+        items:
-+          - const: haoyu,marsboard-rk3066
-+          - const: rockchip,rk3066a
-+
-+      - description: mqmaker MiQi
-+        items:
-+          - const: mqmaker,miqi
-+          - const: rockchip,rk3288
-+
-+      - description: Netxeon R89 board
-+        items:
-+          - const: netxeon,r89
-+          - const: rockchip,rk3288
-+
-+      - description: Phytec phyCORE-RK3288 Rapid Development Kit
-+        items:
-+          - const: phytec,rk3288-pcm-947
-+          - const: phytec,rk3288-phycore-som
-+          - const: rockchip,rk3288
-+
-+      - description: Pine64 Rock64
-+        items:
-+          - const: pine64,rock64
-+          - const: rockchip,rk3328
-+
-+      - description: Pine64 RockPro64
-+        items:
-+          - const: pine64,rockpro64
-+          - const: rockchip,rk3399
-+
-+      - description: Radxa Rock
-+        items:
-+          - const: radxa,rock
-+          - const: rockchip,rk3188
-+
-+      - description: Radxa Rock2 Square
-+        items:
-+          - const: radxa,rock2-square
-+          - const: rockchip,rk3288
-+
-+      - description: Rikomagic MK808 v1
-+        items:
-+          - const: rikomagic,mk808
-+          - const: rockchip,rk3066a
-+
-+      - description: Rockchip Kylin
-+        items:
-+          - const: rockchip,kylin-rk3036
-+          - const: rockchip,rk3036
-+
-+      - description: Rockchip PX3 Evaluation board
-+        items:
-+          - const: rockchip,px3-evb
-+          - const: rockchip,px3
-+          - const: rockchip,rk3188
-+
-+      - description: Rockchip PX30 Evaluation board
-+        items:
-+          - const: rockchip,px30-evb
-+          - const: rockchip,px30
-+
-+      - description: Rockchip PX5 Evaluation board
-+        items:
-+          - const: rockchip,px5-evb
-+          - const: rockchip,px5
-+          - const: rockchip,rk3368
-+
-+      - description: Rockchip R88
-+        items:
-+          - const: rockchip,r88
-+          - const: rockchip,rk3368
-+
-+      - description: Rockchip RK3228 Evaluation board
-+        items:
-+          - const: rockchip,rk3228-evb
-+          - const: rockchip,rk3228
-+
-+      - description: Rockchip RK3229 Evaluation board
-+        items:
-+          - const: rockchip,rk3229-evb
-+          - const: rockchip,rk3229
-+
-+      - description: Rockchip RK3288 Evaluation board
-+        items:
-+          - enum:
-+              - rockchip,rk3288-evb-act8846
-+              - rockchip,rk3288-evb-rk808
-+          - const: rockchip,rk3288
-+
-+      - description: Rockchip RK3288 Fennec
-+        items:
-+          - const: rockchip,rk3288-fennec
-+          - const: rockchip,rk3288
-+
-+      - description: Rockchip RK3328 Evaluation board
-+        items:
-+          - const: rockchip,rk3328-evb
-+          - const: rockchip,rk3328
-+
-+      - description: Rockchip RK3368 Evaluation board (act8846 pmic)
-+        items:
-+          - const: rockchip,rk3368-evb-act8846
-+          - const: rockchip,rk3368
-+
-+      - description: Rockchip RK3399 Evaluation board
-+        items:
-+          - const: rockchip,rk3399-evb
-+          - const: rockchip,rk3399
-+
-+      - description: Rockchip RK3399 Sapphire standalone
-+        items:
-+          - const: rockchip,rk3399-sapphire
-+          - const: rockchip,rk3399
-+
-+      - description: Rockchip RK3399 Sapphire with Excavator Baseboard
-+        items:
-+          - const: rockchip,rk3399-sapphire-excavator
-+          - const: rockchip,rk3399
-+
-+      - description: Rockchip RV1108 Evaluation board
-+        items:
-+          - const: rockchip,rv1108-evb
-+          - const: rockchip,rv1108
-+
-+      - description: Theobroma Systems RK3368-uQ7 with Haikou baseboard
-+        items:
-+          - const: tsd,rk3368-uq7-haikou
-+          - const: rockchip,rk3368
-+
-+      - description: Theobroma Systems RK3399-Q7 with Haikou baseboard
-+        items:
-+          - const: tsd,rk3399-q7-haikou
-+          - const: rockchip,rk3399
-+
-+      - description: Tronsmart Orion R68 Meta
-+        items:
-+          - const: tronsmart,orion-r68-meta
-+          - const: rockchip,rk3368
-+...
--- 
-2.19.2
+T24gTW9uLCBEZWMgMTAsIDIwMTggYXQgMDI6NDA6MjVQTSArMDEwMCwgQmVuamFtaW4gR2FpZ25h
+cmQgd3JvdGU6Cj4gTGUgbHVuLiAxMCBkw6ljLiAyMDE4IMOgIDEyOjEwLCBCZW5qYW1pbiBHYWln
+bmFyZAo+IDxiZW5qYW1pbi5nYWlnbmFyZEBsaW5hcm8ub3JnPiBhIMOpY3JpdCA6Cj4gPgo+ID4g
+TGUgbHVuLiAxMCBkw6ljLiAyMDE4IMOgIDExOjI0LCBUaGllcnJ5IFJlZGluZwo+ID4gPHRoaWVy
+cnkucmVkaW5nQGdtYWlsLmNvbT4gYSDDqWNyaXQgOgo+ID4gPgo+ID4gPiBPbiBNb24sIERlYyAx
+MCwgMjAxOCBhdCAxMToxMTozM0FNICswMTAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+ID4gPiA+
+IEhhdmluZyB0aGUgcHJvYmUgaGVscGVyIHN0dWZmICh3aGljaCBwcmV0dHkgbXVjaCBldmVyeW9u
+ZSBuZWVkcykgaW4KPiA+ID4gPiB0aGUgZHJtX2NydGNfaGVscGVyLmggZmlsZSAod2hpY2ggYXRv
+bWljIGRyaXZlcnMgc2hvdWxkIG5ldmVyIG5lZWQpIGlzCj4gPiA+ID4gY29uZnVzaW5nLiBTcGxp
+dCB0aGVtIG91dC4KPiA+ID4gPgo+ID4gPiA+IFRvIG1ha2Ugc3VyZSBJIGFjdHVhbGx5IGFjaGll
+dmVkIHRoZSBnb2FsIGhlcmUgSSB3ZW50IHRocm91Z2ggYWxsCj4gPiA+ID4gZHJpdmVycy4gQW5k
+IGluZGVlZCwgYWxsIGF0b21pYyBkcml2ZXJzIGFyZSBub3cgZnJlZSBvZgo+ID4gPiA+IGRybV9j
+cnRjX2hlbHBlci5oIGluY2x1ZGVzLgo+ID4gPiA+Cj4gPgo+ID4gSSBoYXZlIGRpZmZpY3VsdGll
+cyB0byBhcHBseSB0aGlzIHdpdGggZ2l0IG9uIHRvcCBvZiBkcm0tbWlzYy1uZXh0Lgo+ID4gSXQg
+aXMgYmVjYXVzZSBvZiB0aGF0IEkgZ290IGVycm9ycyAoZW5jb2RlciBhbmQgY29ubmVjdG9yIHR5
+cGVzIG5vdAo+ID4gZm91bmQpIHdoaWxlIGNvbXBpbGluZyBhZHY3NTExX2F1ZGlvLmMgYW5kIGV4
+eW5vc19kcC5jID8KPiA+Cj4gCj4gTmFjayBvbiB0aGlzIHBhdGNoIGJlY2F1c2UgaXQgYnJlYWsg
+Y29tcGlsaW5nIGF0IGxlYXN0IG9uIHN0aSBkcml2ZXIuCj4gZHJtX3Byb2JlX2hlbHBlci5oIGRv
+ZXNuJ3QgYnJpbmcgdGhlIHNhbWUgaW5jbHVkZXMgdGhhbiBkcm1fY3J0Y19oZWxwZXIuaDoKPiAj
+aW5jbHVkZSA8ZHJtL2RybV9jcnRjLmg+Cj4gI2luY2x1ZGUgPGRybS9kcm1fbW9kZXNldF9oZWxw
+ZXJfdnRhYmxlcy5oPgo+ICNpbmNsdWRlIDxkcm0vZHJtX21vZGVzZXRfaGVscGVyLmg+Cj4gc28g
+c29tZSB0eXBlcywgc3RydWN0dXJlcyBhbmQgZnVuY3Rpb25zIHByb3B0b3R5cGVzIGFyZSBtaXNz
+aW5nIHdoaWxlIGNvbXBpbGluZy4KCkhtLCBJIHRob3VnaHQgSSd2ZSBjb21waWxlLXRlc3RlZCBh
+bGwgdGhlIGFybSBzdHVmZiwgSSBndWVzcyBJJ3ZlIGZhaWxlZC4KV2lsbCByZXNwaW4sIHNvcnJ5
+IGZvciB0aGUgY29uZnVzaW9uLgotRGFuaWVsCgo+IAo+IAo+ID4gQmVuamFtaW4KPiA+ID4gPiBT
+aWduZWQtb2ZmLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGludGVsLmNvbT4KPiA+
+ID4gPiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiA+ID4gQ2M6
+IHZpcnR1YWxpemF0aW9uQGxpc3RzLmxpbnV4LWZvdW5kYXRpb24ub3JnCj4gPiA+ID4gQ2M6IGV0
+bmF2aXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiA+ID4gQ2M6IGxpbnV4LXNhbXN1bmctc29j
+QHZnZXIua2VybmVsLm9yZwo+ID4gPiA+IENjOiBpbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCj4gPiA+ID4gQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+ID4g
+PiBDYzogbGludXgtYW1sb2dpY0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiA+ID4gQ2M6IGxpbnV4
+LWFybS1tc21Admdlci5rZXJuZWwub3JnCj4gPiA+ID4gQ2M6IGZyZWVkcmVub0BsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKPiA+ID4gPiBDYzogbm91dmVhdUBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiA+
+ID4gPiBDYzogc3BpY2UtZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiA+ID4gQ2M6IGFt
+ZC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiA+ID4gQ2M6IGxpbnV4LXJlbmVzYXMtc29j
+QHZnZXIua2VybmVsLm9yZwo+ID4gPiA+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCj4gPiA+ID4gQ2M6IGxpbnV4LXN0bTMyQHN0LW1kLW1haWxtYW4uc3Rvcm1yZXBseS5j
+b20KPiA+ID4gPiBDYzogbGludXgtdGVncmFAdmdlci5rZXJuZWwub3JnCj4gPiA+ID4gQ2M6IHhl
+bi1kZXZlbEBsaXN0cy54ZW4ub3JnCj4gPiA+ID4gLS0tCj4gPiA+ID4gIC4uLi9ncHUvZHJtL2Ft
+ZC9hbWRncHUvYW1kZ3B1X2Nvbm5lY3RvcnMuYyAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2UuYyAgICB8ICAyICstCj4gPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9kcnYuYyAgICAgICB8ICAyICstCj4gPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9tb2RlLmggICAgICB8ICAxICsK
+PiA+ID4gPiAgLi4uL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG1faGVscGVycy5jIHwg
+IDIgKy0KPiA+ID4gPiAgLi4uL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG1fcHBfc211
+LmMgIHwgIDIgKy0KPiA+ID4gPiAgLi4uL2Rpc3BsYXkvYW1kZ3B1X2RtL2FtZGdwdV9kbV9zZXJ2
+aWNlcy5jICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FyYy9hcmNwZ3VfY3J0
+Yy5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FyYy9hcmNw
+Z3VfZHJ2LmMgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2Fy
+Yy9hcmNwZ3Vfc2ltLmMgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUv
+ZHJtL2FybS9oZGxjZF9jcnRjLmMgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVy
+cy9ncHUvZHJtL2FybS9oZGxjZF9kcnYuYyAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAg
+ZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfY3J0Yy5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+
+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgICAgICAgICAgICAgIHwgIDIg
+Ky0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfbXcuYyAgICAgICAgICAgICAg
+IHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfNTEwLmMgICAg
+ICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfY3J0
+Yy5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1h
+ZGFfZHJ2LmMgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFk
+YS9hcm1hZGFfZmIuYyAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJt
+L2FzdC9hc3RfZHJ2LmMgICAgICAgICAgICAgICAgIHwgIDEgKwo+ID4gPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vYXN0L2FzdF9tb2RlLmMgICAgICAgICAgICAgICAgfCAgMSArCj4gPiA+ID4gIC4uLi9n
+cHUvZHJtL2F0bWVsLWhsY2RjL2F0bWVsX2hsY2RjX2NydGMuYyAgICB8ICAyICstCj4gPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS9hdG1lbC1obGNkYy9hdG1lbF9obGNkY19kYy5oICB8ICAyICstCj4g
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9ib2Nocy9ib2Noc19kcnYuYyAgICAgICAgICAgICB8ICAx
+ICsKPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2JvY2hzL2JvY2hzX2ttcy5jICAgICAgICAgICAg
+IHwgIDEgKwo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fkdjc1MTEvYWR2NzUxMS5o
+ICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4LWFu
+eDc4eHguYyAgICAgfCAgMyArLQo+ID4gPiA+ICAuLi4vZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFs
+b2dpeF9kcF9jb3JlLmMgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2NkbnMtZHNpLmMgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2R1bWItdmdhLWRhYy5jICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICAuLi4vYnJpZGdl
+L21lZ2FjaGlwcy1zdGRweHh4eC1nZS1iODUwdjMtZncuYyAgfCAgMiArLQo+ID4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL254cC1wdG4zNDYwLmMgICAgICAgICAgfCAgMiArLQo+ID4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhbmVsLmMgICAgICAgICAgICAgICAgfCAgMiArLQo+
+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhcmFkZS1wczg2MjIuYyAgICAgICAgfCAg
+MiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3NpaTkwMnguYyAgICAgICAgICAg
+ICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhk
+bWkuYyAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
+L2R3LW1pcGktZHNpLmMgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3Rj
+MzU4NzY0LmMgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL3RjMzU4NzY3LmMgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL3RpLXNuNjVkc2k4Ni5jICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL3RpLXRmcDQxMC5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vY2lycnVzL2NpcnJ1c19kcnYuYyAgICAgICAgICAgfCAgMSArCj4gPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9jaXJydXMvY2lycnVzX21vZGUuYyAgICAgICAgICB8ICAxICsK
+PiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVscGVyLmMgICAgICAgICAgIHwg
+IDEgLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2RwX21zdF90b3BvbG9neS5jICAgICAg
+ICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX21vZGVzZXRfaGVscGVyLmMg
+ICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX3Byb2JlX2hlbHBl
+ci5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX3NpbXBs
+ZV9rbXNfaGVscGVyLmMgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZXRu
+YXZpdi9ldG5hdml2X2Rydi5oICAgICAgICAgfCAgMSAtCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9leHlub3MvZXh5bm9zX2RwLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9jcnRjLmMgICAgICB8ICAyICstCj4gPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9kcGkuYyAgICAgICB8ICAyICstCj4gPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9kcnYuYyAgICAgICB8ICAyICst
+Cj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9kc2kuYyAgICAgICB8
+ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9mYi5jICAg
+ICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9m
+YmRldi5jICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9z
+X2RybV92aWRpLmMgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3Mv
+ZXh5bm9zX2hkbWkuYyAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9m
+c2wtZGN1L2ZzbF9kY3VfZHJtX2NydGMuYyAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS9mc2wtZGN1L2ZzbF9kY3VfZHJtX2Rydi5jICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9mc2wtZGN1L2ZzbF9kY3VfZHJtX2ttcy5jICAgICB8ICAyICstCj4gPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS9mc2wtZGN1L2ZzbF9kY3VfZHJtX3BsYW5lLmMgICB8ICAyICstCj4g
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9mc2wtZGN1L2ZzbF9kY3VfZHJtX3JnYi5jICAgICB8ICAy
+ICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9nbWE1MDAvcHNiX2ludGVsX2Rydi5oICAgICAg
+ICB8ICAxICsKPiA+ID4gPiAgLi4uL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1jL2hpYm1jX2RybV9k
+ZS5jICAgIHwgIDIgKy0KPiA+ID4gPiAgLi4uL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1jL2hpYm1j
+X2RybV9kcnYuYyAgIHwgIDIgKy0KPiA+ID4gPiAgLi4uL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1j
+L2hpYm1jX2RybV9mYmRldi5jIHwgIDIgKy0KPiA+ID4gPiAgLi4uL2dwdS9kcm0vaGlzaWxpY29u
+L2hpYm1jL2hpYm1jX2RybV92ZGFjLmMgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJt
+L2hpc2lsaWNvbi9raXJpbi9kd19kcm1fZHNpLmMgIHwgIDIgKy0KPiA+ID4gPiAgLi4uL2dwdS9k
+cm0vaGlzaWxpY29uL2tpcmluL2tpcmluX2RybV9hZGUuYyAgIHwgIDIgKy0KPiA+ID4gPiAgLi4u
+L2dwdS9kcm0vaGlzaWxpY29uL2tpcmluL2tpcmluX2RybV9kcnYuYyAgIHwgIDIgKy0KPiA+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL2kyYy9jaDcwMDZfcHJpdi5oICAgICAgICAgICAgIHwgIDIgKy0K
+PiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2kyYy9zaWwxNjRfZHJ2LmMgICAgICAgICAgICAgIHwg
+IDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2kyYy90ZGE5OTh4X2Rydi5jICAgICAgICAg
+ICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNV9kcnYuYyAgICAg
+ICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfY3J0
+LmMgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50
+ZWxfZGlzcGxheS5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2k5
+MTUvaW50ZWxfZHAuYyAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUv
+ZHJtL2k5MTUvaW50ZWxfZHBfbXN0LmMgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVy
+cy9ncHUvZHJtL2k5MTUvaW50ZWxfZHJ2LmggICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAg
+ZHJpdmVycy9ncHUvZHJtL2lteC9kd19oZG1pLWlteC5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+
+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtZHJtLWNvcmUuYyAgICAgICAgICAgIHwgIDIg
+Ky0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtbGRiLmMgICAgICAgICAgICAgICAg
+IHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtdHZlLmMgICAgICAgICAg
+ICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pcHV2My1jcnRjLmMg
+ICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9wYXJhbGxl
+bC1kaXNwbGF5LmMgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcGkuYyAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYyAgICAgICAgIHwgIDIgKy0KPiA+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgICAgICAgIHwgIDIgKy0K
+PiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgICAgICAgICAgIHwg
+IDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lc29uL21lc29uX2NydGMuYyAgICAgICAg
+ICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lc29uL21lc29uX2Rydi5jICAg
+ICAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lc29uL21lc29uX2R3
+X2hkbWkuYyAgICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lc29uL21l
+c29uX3ZlbmNfY3Zicy5jICAgICAgIHwgIDIgKy0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21n
+YWcyMDAvbWdhZzIwMF9tb2RlLmMgICAgICAgIHwgIDEgKwo+ID4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vbXNtL2Rpc3AvZHB1MS9kcHVfY3J0Yy5jICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vbXNtL2Rpc3AvZHB1MS9kcHVfZW5jb2Rlci5jICAgfCAgMiArLQo+ID4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vbXNtL2Rpc3AvbWRwNC9tZHA0X2NydGMuYyAgICAgfCAgMiArLQo+ID4g
+PiA+ICAuLi4vZ3B1L2RybS9tc20vZGlzcC9tZHA0L21kcDRfZHNpX2VuY29kZXIuYyAgfCAgMiAr
+LQo+ID4gPiA+ICAuLi4vZ3B1L2RybS9tc20vZGlzcC9tZHA0L21kcDRfZHR2X2VuY29kZXIuYyAg
+fCAgMiArLQo+ID4gPiA+ICAuLi4vZ3B1L2RybS9tc20vZGlzcC9tZHA0L21kcDRfbGNkY19lbmNv
+ZGVyLmMgfCAgMiArLQo+ID4gPiA+ICAuLi4vZ3B1L2RybS9tc20vZGlzcC9tZHA1L21kcDVfY21k
+X2VuY29kZXIuYyAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbXNtL2Rpc3AvbWRw
+NS9tZHA1X2NydGMuYyAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbXNtL2Rp
+c3AvbWRwNS9tZHA1X2VuY29kZXIuYyAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0v
+bXNtL21zbV9kcnYuaCAgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vbXNtL21zbV9mYi5jICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vbXhzZmIvbXhzZmJfY3J0Yy5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vbXhzZmIvbXhzZmJfZHJ2LmMgICAgICAgICAgICAgfCAgMiArLQo+
+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbXhzZmIvbXhzZmJfb3V0LmMgICAgICAgICAgICAgfCAg
+MiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9kaXNwbnYwNC90dm52MTcuYyAg
+ICAgfCAgMSArCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L2Rpc3BudjUwL2Rpc3Au
+YyAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L25vdXZlYXVf
+Y29ubmVjdG9yLmMgICB8ICAxICsKPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvbm91
+dmVhdV9kaXNwbGF5LmMgICAgIHwgIDEgKwo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vb21hcGRy
+bS9vbWFwX2Nvbm5lY3Rvci5jICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0v
+b21hcGRybS9vbWFwX2NydGMuYyAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vb21hcGRybS9vbWFwX2Rydi5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vb21hcGRybS9vbWFwX2Rydi5oICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vb21hcGRybS9vbWFwX2VuY29kZXIuYyAgICAgICAgfCAgMiArLQo+
+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vb21hcGRybS9vbWFwX2ZiLmMgICAgICAgICAgICAgfCAg
+MiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcGwxMTEvcGwxMTFfZHJ2LmMgICAgICAgICAg
+ICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcXhsL3F4bF9kaXNwbGF5LmMgICAg
+ICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcXhsL3F4bF9kcnYuYyAg
+ICAgICAgICAgICAgICAgfCAgMyArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcXhsL3F4bF9m
+Yi5jICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcXhs
+L3F4bF9rbXMuYyAgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vcmFkZW9uL3JhZGVvbl9hY3BpLmMgICAgICAgICAgfCAgMSArCj4gPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9yYWRlb24vcmFkZW9uX2Nvbm5lY3RvcnMuYyAgICB8ICAxICsKPiA+ID4gPiAgZHJp
+dmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZGV2aWNlLmMgICAgICAgIHwgIDEgKwo+ID4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9kaXNwbGF5LmMgICAgICAgfCAgMSArCj4g
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2RwX21zdC5jICAgICAgICB8ICAx
+ICsKPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZHJ2LmMgICAgICAgICAg
+IHwgIDEgKwo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9pcnFfa21zLmMg
+ICAgICAgfCAgMSArCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfY3J0
+Yy5jICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJf
+ZHVfZHJ2LmMgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1
+L3JjYXJfZHVfZW5jb2Rlci5jICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9y
+Y2FyLWR1L3JjYXJfZHVfa21zLmMgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS9yY2FyLWR1L3JjYXJfZHVfcGxhbmUuYyAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfdnNwLmMgICAgICAgICB8ICAyICstCj4gPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfbHZkcy5jICAgICAgICAgICB8ICAyICstCj4g
+PiA+ID4gIC4uLi9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgICB8ICAy
+ICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jICAgICAg
+ICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5o
+ICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1p
+LXJvY2tjaGlwLmMgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9p
+bm5vX2hkbWkuYyAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYyB8ICAyICstCj4gPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMgICB8ICAyICstCj4gPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICB8ICAyICst
+Cj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgICAgICB8
+ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9yZ2IuYyAg
+ICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2NydGMuYyAgICAg
+ICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2Rydi5j
+ICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3Rp
+X2R2by5jICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9z
+dGkvc3RpX2hkYS5jICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS9zdGkvc3RpX2hkbWkuYyAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9zdGkvc3RpX3R2b3V0LmMgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS9zdG0vZHJ2LmMgICAgICAgICAgICAgICAgICAgICB8ICAyICstCj4g
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdG0vbHRkYy5jICAgICAgICAgICAgICAgICAgICB8ICAy
+ICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9iYWNrZW5kLmMgICAgICAg
+ICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9jcnRjLmMgICAg
+ICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9kcnYu
+YyAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40
+aV9oZG1pX2VuYy5jICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40
+aS9zdW40aV9sdmRzLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9zdW40aS9zdW40aV9yZ2IuYyAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9zdW40aS9zdW40aV90Y29uLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV90di5jICAgICAgICAgICAgICB8ICAyICstCj4gPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW42aV9taXBpX2RzaS5jICAgICAgICB8ICAyICst
+Cj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW44aV9kd19oZG1pLmMgICAgICAgICB8
+ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW44aV9taXhlci5jICAgICAg
+ICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW44aV91aV9sYXll
+ci5jICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW44aV92
+aV9sYXllci5jICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS90ZWdyYS9k
+cm0uaCAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS90
+ZWdyYS9oZG1pLmMgICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS90ZWdyYS9odWIuYyAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS90aW55ZHJtL2NvcmUvdGlueWRybS1jb3JlLmMgICB8ICAyICstCj4gPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS90aW55ZHJtL2NvcmUvdGlueWRybS1waXBlLmMgICB8ICAyICstCj4g
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS90dmUyMDAvdHZlMjAwX2Rydi5jICAgICAgICAgICB8ICAy
+ICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS91ZGwvdWRsX2Nvbm5lY3Rvci5jICAgICAgICAg
+ICB8ICAxICsKPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3VkbC91ZGxfZHJ2LmMgICAgICAgICAg
+ICAgICAgIHwgIDEgKwo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vdWRsL3VkbF9tYWluLmMgICAg
+ICAgICAgICAgICAgfCAgMSArCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X2NydGMu
+YyAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0
+X2RwaS5jICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92
+YzQvdmM0X2RzaS5jICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS92YzQvdmM0X2hkbWkuYyAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS92YzQvdmM0X2ttcy5jICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X3R4cC5jICAgICAgICAgICAgICAgICB8ICAyICstCj4g
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X3ZlYy5jICAgICAgICAgICAgICAgICB8ICAy
+ICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92aXJ0aW8vdmlydGdwdV9kaXNwbGF5LmMgICAg
+ICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92aXJ0aW8vdmlydGdwdV9kcnYuaCAg
+ICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92a21zL3ZrbXNfY3J0Yy5j
+ICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92a21zL3ZrbXNf
+ZHJ2LmMgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92a21z
+L3ZrbXNfb3V0cHV0LmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS92bXdnZngvdm13Z2Z4X2ttcy5oICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS94ZW4veGVuX2RybV9mcm9udC5jICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS94ZW4veGVuX2RybV9mcm9udF9jb25uLmMgICAgICB8ICAyICstCj4gPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS94ZW4veGVuX2RybV9mcm9udF9nZW0uYyAgICAgICB8ICAyICst
+Cj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS94ZW4veGVuX2RybV9mcm9udF9rbXMuYyAgICAgICB8
+ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfZHJtX2Rydi5jICAgICAgICAg
+ICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfaGRtaS5jICAgICAg
+ICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfdHZlbmMu
+YyAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96dGUvenhf
+dmdhLmMgICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96
+dGUvenhfdm91LmMgICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZlcnMvc3Rh
+Z2luZy92Ym94dmlkZW8vdmJveF9pcnEuYyAgICAgICAgICB8ICAyICstCj4gPiA+ID4gIGRyaXZl
+cnMvc3RhZ2luZy92Ym94dmlkZW8vdmJveF9tb2RlLmMgICAgICAgICB8ICAyICstCj4gPiA+ID4g
+IGluY2x1ZGUvZHJtL2RybV9jcnRjX2hlbHBlci5oICAgICAgICAgICAgICAgICB8IDE2IC0tLS0t
+LQo+ID4gPiA+ICBpbmNsdWRlL2RybS9kcm1fcHJvYmVfaGVscGVyLmggICAgICAgICAgICAgICAg
+fCA1MCArKysrKysrKysrKysrKysrKysrCj4gPiA+ID4gIDIwOCBmaWxlcyBjaGFuZ2VkLCAyNTYg
+aW5zZXJ0aW9ucygrKSwgMjAwIGRlbGV0aW9ucygtKQo+ID4gPiA+ICBjcmVhdGUgbW9kZSAxMDA2
+NDQgaW5jbHVkZS9kcm0vZHJtX3Byb2JlX2hlbHBlci5oCj4gPiA+Cj4gPiA+IExvb2tzIGdvb2Qg
+dG8gbWU6Cj4gPiA+Cj4gPiA+IEFja2VkLWJ5OiBUaGllcnJ5IFJlZGluZyA8dHJlZGluZ0Budmlk
+aWEuY29tPgo+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwo+ID4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPiA+IGRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKPiA+ID4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwKPiAKPiAKPiAKPiAtLSAKPiBCZW5qYW1pbiBHYWlnbmFyZAo+
+IAo+IEdyYXBoaWMgU3R1ZHkgR3JvdXAKPiAKPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBz
+b2Z0d2FyZSBmb3IgQVJNIFNvQ3MKPiAKPiBGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0
+ZXIgfCBCbG9nCgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29y
+cG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KRnJlZWRyZW5vIG1haWxpbmcgbGlzdApGcmVlZHJlbm9AbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZnJlZWRyZW5vCg==
