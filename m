@@ -1,123 +1,59 @@
 From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: [PATCH v4 1/9] mm: Introduce new vm_insert_range API
-Date: Tue, 18 Dec 2018 01:51:21 +0530
-Message-ID: <20181217202121.GA4335@jordon-HP-15-Notebook-PC>
+Subject: [PATCH v4 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use
+ vm_insert_range
+Date: Tue, 18 Dec 2018 01:53:34 +0530
+Message-ID: <20181217202334.GA11758@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
 Sender: linux-kernel-owner@vger.kernel.org
-To: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, linux@armlinux.org.uk, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com
-Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-devel@lists.xen.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org
+To: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Previouly drivers have their own way of mapping range of
-kernel pages/memory into user vma and this was done by
-invoking vm_insert_page() within a loop.
-
-As this pattern is common across different drivers, it can
-be generalized by creating a new function and use it across
-the drivers.
-
-vm_insert_range is the new API which will be used to map a
-range of kernel memory/pages to user vma.
-
-This API is tested by Heiko for Rockchip drm driver, on rk3188,
-rk3288, rk3328 and rk3399 with graphics.
+Convert to use vm_insert_range() to map range of kernel
+memory to user vma.
 
 Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Reviewed-by: Matthew Wilcox <willy@infradead.org>
-Reviewed-by: Mike Rapoport <rppt@linux.ibm.com>
-Reviewed-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 Tested-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 ---
- include/linux/mm.h |  2 ++
- mm/memory.c        | 41 +++++++++++++++++++++++++++++++++++++++++
- mm/nommu.c         |  7 +++++++
- 3 files changed, 50 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 19 ++-----------------
+ 1 file changed, 2 insertions(+), 17 deletions(-)
 
-diff --git a/include/linux/mm.h b/include/linux/mm.h
-index fcf9cc9..2bc399f 100644
---- a/include/linux/mm.h
-+++ b/include/linux/mm.h
-@@ -2506,6 +2506,8 @@ unsigned long change_prot_numa(struct vm_area_struct *vma,
- int remap_pfn_range(struct vm_area_struct *, unsigned long addr,
- 			unsigned long pfn, unsigned long size, pgprot_t);
- int vm_insert_page(struct vm_area_struct *, unsigned long addr, struct page *);
-+int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-+			struct page **pages, unsigned long page_count);
- vm_fault_t vmf_insert_pfn(struct vm_area_struct *vma, unsigned long addr,
- 			unsigned long pfn);
- vm_fault_t vmf_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr,
-diff --git a/mm/memory.c b/mm/memory.c
-index 15c417e..d44d4a8 100644
---- a/mm/memory.c
-+++ b/mm/memory.c
-@@ -1478,6 +1478,47 @@ static int insert_page(struct vm_area_struct *vma, unsigned long addr,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index a8db758..8279084 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -221,26 +221,11 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
+ 					      struct vm_area_struct *vma)
+ {
+ 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+-	unsigned int i, count = obj->size >> PAGE_SHIFT;
+ 	unsigned long user_count = vma_pages(vma);
+-	unsigned long uaddr = vma->vm_start;
+ 	unsigned long offset = vma->vm_pgoff;
+-	unsigned long end = user_count + offset;
+-	int ret;
+-
+-	if (user_count == 0)
+-		return -ENXIO;
+-	if (end > count)
+-		return -ENXIO;
+ 
+-	for (i = offset; i < end; i++) {
+-		ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
+-		if (ret)
+-			return ret;
+-		uaddr += PAGE_SIZE;
+-	}
+-
+-	return 0;
++	return vm_insert_range(vma, vma->vm_start, rk_obj->pages + offset,
++				user_count - offset);
  }
  
- /**
-+ * vm_insert_range - insert range of kernel pages into user vma
-+ * @vma: user vma to map to
-+ * @addr: target user address of this page
-+ * @pages: pointer to array of source kernel pages
-+ * @page_count: number of pages need to insert into user vma
-+ *
-+ * This allows drivers to insert range of kernel pages they've allocated
-+ * into a user vma. This is a generic function which drivers can use
-+ * rather than using their own way of mapping range of kernel pages into
-+ * user vma.
-+ *
-+ * If we fail to insert any page into the vma, the function will return
-+ * immediately leaving any previously-inserted pages present.  Callers
-+ * from the mmap handler may immediately return the error as their caller
-+ * will destroy the vma, removing any successfully-inserted pages. Other
-+ * callers should make their own arrangements for calling unmap_region().
-+ *
-+ * Context: Process context. Called by mmap handlers.
-+ * Return: 0 on success and error code otherwise
-+ */
-+int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-+			struct page **pages, unsigned long page_count)
-+{
-+	unsigned long uaddr = addr;
-+	int ret = 0, i;
-+
-+	if (page_count > vma_pages(vma))
-+		return -ENXIO;
-+
-+	for (i = 0; i < page_count; i++) {
-+		ret = vm_insert_page(vma, uaddr, pages[i]);
-+		if (ret < 0)
-+			return ret;
-+		uaddr += PAGE_SIZE;
-+	}
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL(vm_insert_range);
-+
-+/**
-  * vm_insert_page - insert single page into user vma
-  * @vma: user vma to map to
-  * @addr: target user address of this page
-diff --git a/mm/nommu.c b/mm/nommu.c
-index 749276b..d6ef5c7 100644
---- a/mm/nommu.c
-+++ b/mm/nommu.c
-@@ -473,6 +473,13 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
- }
- EXPORT_SYMBOL(vm_insert_page);
- 
-+int vm_insert_range(struct vm_area_struct *vma, unsigned long addr,
-+			struct page **pages, unsigned long page_count)
-+{
-+	return -EINVAL;
-+}
-+EXPORT_SYMBOL(vm_insert_range);
-+
- /*
-  *  sys_brk() for the most part doesn't need the global kernel
-  *  lock, except when an application is doing something nasty
+ static int rockchip_drm_gem_object_mmap_dma(struct drm_gem_object *obj,
 -- 
 1.9.1
