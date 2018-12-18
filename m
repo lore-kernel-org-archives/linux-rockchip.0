@@ -1,124 +1,60 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH v4 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use vm_insert_range
-Date: Tue, 18 Dec 2018 17:36:04 +0530
-Message-ID: <CAFqt6zaVU-Fme6fErieBfBKwAm9xHUa7cXTOfqzwUJR__0JysQ@mail.gmail.com>
-References: <20181217202334.GA11758@jordon-HP-15-Notebook-PC> <20181218095709.GJ26090@n2100.armlinux.org.uk>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
+Subject: Re: [PATCH v4 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use
+ vm_insert_range
+Date: Tue, 18 Dec 2018 12:33:19 +0000
+Message-ID: <20181218123318.GN26090@n2100.armlinux.org.uk>
+References: <20181217202334.GA11758@jordon-HP-15-Notebook-PC>
+ <20181218095709.GJ26090@n2100.armlinux.org.uk>
+ <CAFqt6zaVU-Fme6fErieBfBKwAm9xHUa7cXTOfqzwUJR__0JysQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181218095709.GJ26090@n2100.armlinux.org.uk>
+Content-Disposition: inline
+In-Reply-To: <CAFqt6zaVU-Fme6fErieBfBKwAm9xHUa7cXTOfqzwUJR__0JysQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, Linux-MM <linux-mm@kvack.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: Michal Hocko <mhocko@suse.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, airlied@linux.ie, hjc@rock-chips.com, Matthew Wilcox <willy@infradead.org>, linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, dri-devel@lists.freedesktop.org, Andrew Morton <akpm@linux-foundation.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Dec 18, 2018 at 3:27 PM Russell King - ARM Linux
-<linux@armlinux.org.uk> wrote:
->
-> On Tue, Dec 18, 2018 at 01:53:34AM +0530, Souptick Joarder wrote:
-> > Convert to use vm_insert_range() to map range of kernel
-> > memory to user vma.
+On Tue, Dec 18, 2018 at 05:36:04PM +0530, Souptick Joarder wrote:
+> On Tue, Dec 18, 2018 at 3:27 PM Russell King - ARM Linux
+> <linux@armlinux.org.uk> wrote:
+> > This looks like a change in behaviour.
 > >
-> > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> > Tested-by: Heiko Stuebner <heiko@sntech.de>
-> > Acked-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> >  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 19 ++-----------------
-> >  1 file changed, 2 insertions(+), 17 deletions(-)
+> > If user_count is zero, and offset is zero, then we pass into
+> > vm_insert_range() a page_count of zero, and vm_insert_range() does
+> > nothing and returns zero.
 > >
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> > index a8db758..8279084 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> > @@ -221,26 +221,11 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
-> >                                             struct vm_area_struct *vma)
-> >  {
-> >       struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
-> > -     unsigned int i, count = obj->size >> PAGE_SHIFT;
-> >       unsigned long user_count = vma_pages(vma);
-> > -     unsigned long uaddr = vma->vm_start;
-> >       unsigned long offset = vma->vm_pgoff;
-> > -     unsigned long end = user_count + offset;
-> > -     int ret;
-> > -
-> > -     if (user_count == 0)
-> > -             return -ENXIO;
-> > -     if (end > count)
-> > -             return -ENXIO;
-> >
-> > -     for (i = offset; i < end; i++) {
-> > -             ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
-> > -             if (ret)
-> > -                     return ret;
-> > -             uaddr += PAGE_SIZE;
-> > -     }
-> > -
-> > -     return 0;
-> > +     return vm_insert_range(vma, vma->vm_start, rk_obj->pages + offset,
-> > +                             user_count - offset);
->
-> This looks like a change in behaviour.
->
-> If user_count is zero, and offset is zero, then we pass into
-> vm_insert_range() a page_count of zero, and vm_insert_range() does
-> nothing and returns zero.
->
-> However, as we can see from the above code, the original behaviour
-> was to return -ENXIO in that case.
+> > However, as we can see from the above code, the original behaviour
+> > was to return -ENXIO in that case.
+> 
+> I think these checks are not necessary. I am not sure if we get into mmap
+> handlers of driver with user_count = 0.
 
-I think these checks are not necessary. I am not sure if we get into mmap
-handlers of driver with user_count = 0.
+I'm not sure either, I'm just pointing out the change of behaviour.
 
->
-> The other thing that I'm wondering is that if (eg) count is 8 (the
-> object is 8 pages), offset is 2, and the user requests mapping 6
-> pages (user_count = 6), then we call vm_insert_range() with a
-> pages of rk_obj->pages + 2, and a pages_count of 6 - 2 = 4. So we
-> end up inserting four pages.
+> > The other thing that I'm wondering is that if (eg) count is 8 (the
+> > object is 8 pages), offset is 2, and the user requests mapping 6
+> > pages (user_count = 6), then we call vm_insert_range() with a
+> > pages of rk_obj->pages + 2, and a pages_count of 6 - 2 = 4. So we
+> > end up inserting four pages.
+> 
+> Considering the scenario, user_count will remain 8 (user_count =
+> vma_pages(vma) ). ? No ?
+> Then we call vm_insert_range() with a pages of rk_obj->pages + 2, and
+> a pages_count
+> of 8 - 2 = 6. So we end up inserting 6 pages.
+> 
+> Please correct me if I am wrong.
 
-Considering the scenario, user_count will remain 8 (user_count =
-vma_pages(vma) ). ? No ?
-Then we call vm_insert_range() with a pages of rk_obj->pages + 2, and
-a pages_count
-of 8 - 2 = 6. So we end up inserting 6 pages.
+vma_pages(vma) is the number of pages that the user requested, it is
+the difference between vma->vm_end and vma->vm_start in pages.  As I
+said above, "the user requests mapping 6 pages", so vma_pages() will
+be 6, and so user_count will also be 6.  You are passing
+user_count - offset into vm_insert_range(), which will be 6 - 2 = 4
+in my example.  This is two pages short of what the user requested.
 
-Please correct me if I am wrong.
-
->
-> The original code would calculate end = 6 + 2 = 8.  i would iterate
-> from 2 through 8, inserting six pages.
->
-> (I hadn't spotted that second issue until I'd gone through the
-> calculations manually - which is worrying.)
->
-> I don't have patches 5 through 9 to look at, but I'm concerned that
-> similar issues also exist in those patches.
-
-yes, you were not cc'd for 5 - 9. Below are the patchwork links -
-
-https://patchwork.kernel.org/patch/10734269/
-https://patchwork.kernel.org/patch/10734271/
-https://patchwork.kernel.org/patch/10734273/
-https://patchwork.kernel.org/patch/10734277/
-https://patchwork.kernel.org/patch/10734279/
-
->
-> I'm concerned that this series seems to be introducing subtle bugs,
-> it seems to be unnecessarily difficult to use this function correctly.
-> I think your existing proposal for vm_insert_range() provides an
-> interface that is way too easy to get wrong, and, therefore, is the
-> wrong interface.
->
-> I think it would be way better to have vm_insert_range() take the
-> object page array without any offset adjustment, and the object
-> page_count again without any adjustment, and have vm_insert_range()
-> itself handle the offsetting and VMA size validation.  That would
-> then give a simple interface and probably give a further reduction
-> in code at each call site.
->
-> Thanks.
->
-> --
-> RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-> According to speedtest.net: 11.9Mbps down 500kbps up
+-- 
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
