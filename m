@@ -1,26 +1,27 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH 0/6] Coordinated Clks
-Date: Thu, 20 Dec 2018 13:15:41 -0800
-Message-ID: <154534054131.79149.12015186156265337224@swboyd.mtv.corp.google.com>
-References: <20181024013132.115907-1-dbasehore@chromium.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 01/15] clk: rockchip: add clock ids for dphy rx and tx
+ channels on rk3368
+Date: Thu, 20 Dec 2018 15:37:35 -0600
+Message-ID: <20181220213735.GA9546@bogus>
+References: <20181217123650.6773-1-heiko@sntech.de>
+ <20181217123650.6773-2-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181024013132.115907-1-dbasehore@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <20181217123650.6773-2-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, mturquette@baylibre.com, heiko@sntech.de, aisheng.dong@nxp.com, mchehab+samsung@kernel.org, corbet@lwn.net, Derek Basehore <dbasehore@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, hjc@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, mark.rutland@arm.com, architt@codeaurora.org, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, linux-clk@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Derek Basehore (2018-10-23 18:31:26)
-> Here's the first set of patches that I'm working on for the Common
-> Clk Framework. Part of this patch series adds a new clk op,
-> pre_rate_req. This is designed to replace the clk notifier approach
-> that many clk drivers use right now to setup alt parents or temporary
-> dividers. This should allow for the removal of the
-> CLK_RECALC_NEW_RATES flag and the implementation of a better locking
-> scheme for the prepare lock.
+On Mon, 17 Dec 2018 13:36:36 +0100, Heiko Stuebner wrote:
+> Add the clock ids so that they can be exported from the clock driver
+> and referenced in the rk3368 devicetree.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  include/dt-bindings/clock/rk3368-cru.h | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
 
-Are you going to resend this series? I can do a review but I wonder how
-much it will change anyway.
+Reviewed-by: Rob Herring <robh@kernel.org>
