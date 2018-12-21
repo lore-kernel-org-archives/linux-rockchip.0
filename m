@@ -1,32 +1,101 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [PATCH 0/6] Coordinated Clks
-Date: Thu, 20 Dec 2018 15:20:13 -0800
-Message-ID: <CAGAzgsq=p-2N6ybFXNTnz5SDkcdktA+Gk6e3gxrjpJB+L8389A@mail.gmail.com>
-References: <20181024013132.115907-1-dbasehore@chromium.org> <154534054131.79149.12015186156265337224@swboyd.mtv.corp.google.com>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH v3 7/7] arm64: dts: qcom: apq8016-sbc: Standardize LED
+ labels
+Date: Fri, 21 Dec 2018 08:05:57 +0530
+Message-ID: <20181221023554.GB3233@Mani-XPS-13-9360>
+References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
+ <20181029094245.7886-8-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <154534054131.79149.12015186156265337224@swboyd.mtv.corp.google.com>
+Content-Disposition: inline
+In-Reply-To: <20181029094245.7886-8-manivannan.sadhasivam@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sboyd@kernel.org
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, aisheng.dong@nxp.com, mchehab+samsung@kernel.org, Jonathan Corbet <corbet@lwn.net>
+To: andy.gross@linaro.org
+Cc: linux-leds@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org, nicolas.dechesne@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 20, 2018 at 1:15 PM Stephen Boyd <sboyd@kernel.org> wrote:
->
-> Quoting Derek Basehore (2018-10-23 18:31:26)
-> > Here's the first set of patches that I'm working on for the Common
-> > Clk Framework. Part of this patch series adds a new clk op,
-> > pre_rate_req. This is designed to replace the clk notifier approach
-> > that many clk drivers use right now to setup alt parents or temporary
-> > dividers. This should allow for the removal of the
-> > CLK_RECALC_NEW_RATES flag and the implementation of a better locking
-> > scheme for the prepare lock.
->
-> Are you going to resend this series? I can do a review but I wonder how
-> much it will change anyway.
+On Mon, Oct 29, 2018 at 03:12:45PM +0530, Manivannan Sadhasivam wrote:
+> For all 96Boards, the following standard is used for onboard LEDs.
+> 
+> green:user1  default-trigger: heartbeat
+> green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
+> green:user3  default-trigger: mmc1 (SD-card)
+> green:user4  default-trigger: none, panic-indicator
+> yellow:wlan  default-trigger: phy0tx
+> blue:bt      default-trigger: hci0-power
+> 
+> So lets adopt the same for APQ8016 SBC (Dragonboard410c), which is
+> one of the 96Boards CE platform.
 >
 
-I'm going to resend next year. I got distracted trying to get other
-code to work. This code has bugs in it, so a new patch set is
-required.
+Hello,
+
+Any update on this patch?
+
+Regards,
+Mani
+
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Acked-by: Amit Kucheria <amit.kucheria@linaro.org>
+> ---
+>  arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi b/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
+> index 46feedf7c989..35f95154316b 100644
+> --- a/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
+> +++ b/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
+> @@ -300,28 +300,28 @@
+>  			compatible = "gpio-leds";
+>  
+>  			led@1 {
+> -				label = "apq8016-sbc:green:user1";
+> +				label = "green:user1";
+>  				gpios = <&msmgpio 21 GPIO_ACTIVE_HIGH>;
+>  				linux,default-trigger = "heartbeat";
+>  				default-state = "off";
+>  			};
+>  
+>  			led@2 {
+> -				label = "apq8016-sbc:green:user2";
+> +				label = "green:user2";
+>  				gpios = <&msmgpio 120 GPIO_ACTIVE_HIGH>;
+>  				linux,default-trigger = "mmc0";
+>  				default-state = "off";
+>  			};
+>  
+>  			led@3 {
+> -				label = "apq8016-sbc:green:user3";
+> +				label = "green:user3";
+>  				gpios = <&pm8916_gpios 1 GPIO_ACTIVE_HIGH>;
+>  				linux,default-trigger = "mmc1";
+>  				default-state = "off";
+>  			};
+>  
+>  			led@4 {
+> -				label = "apq8016-sbc:green:user4";
+> +				label = "green:user4";
+>  				gpios = <&pm8916_gpios 2 GPIO_ACTIVE_HIGH>;
+>  				linux,default-trigger = "none";
+>  				panic-indicator;
+> @@ -329,14 +329,14 @@
+>  			};
+>  
+>  			led@5 {
+> -				label = "apq8016-sbc:yellow:wlan";
+> +				label = "yellow:wlan";
+>  				gpios = <&pm8916_mpps 2 GPIO_ACTIVE_HIGH>;
+>  				linux,default-trigger = "phy0tx";
+>  				default-state = "off";
+>  			};
+>  
+>  			led@6 {
+> -				label = "apq8016-sbc:blue:bt";
+> +				label = "blue:bt";
+>  				gpios = <&pm8916_mpps 3 GPIO_ACTIVE_HIGH>;
+>  				linux,default-trigger = "bluetooth-power";
+>  				default-state = "off";
+> -- 
+> 2.17.1
+> 
