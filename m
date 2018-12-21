@@ -1,45 +1,61 @@
-From: Michal Simek <michal.simek@xilinx.com>
-Subject: Re: [PATCH v3 6/7] arm64: dts: xilinx: ultra96: Standardize LED
- labels and triggers
-Date: Fri, 21 Dec 2018 07:50:29 +0100
-Message-ID: <9f4f05cb-f326-a4e3-e306-cfbf64b629b4@xilinx.com>
-References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
- <20181029094245.7886-7-manivannan.sadhasivam@linaro.org>
- <20181221023708.GC3233@Mani-XPS-13-9360>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: add focaltech touchscreen to
+ rk3188-bqedison2qc
+Date: Fri, 21 Dec 2018 17:51:29 +0100
+Message-ID: <20181221165129.28628-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181221023708.GC3233@Mani-XPS-13-9360>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, michal.simek@xilinx.com, Rob Herring <robh+dt@kernel.org>
-Cc: linux-leds@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-soc@vger.kernel.org, daniel.thompson@linaro.org, amit.kucheria@linaro.org, linus.walleij@linaro.org, koen.kooi@linaro.org, nicolas.dechesne@linaro.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko.stuebner-K3U4GQvHnyU@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 21. 12. 18 3:37, Manivannan Sadhasivam wrote:
-> On Mon, Oct 29, 2018 at 03:12:44PM +0530, Manivannan Sadhasivam wrote:
->> For all 96Boards, the following standard is used for onboard LEDs.
->>
->> green:user1  default-trigger: heartbeat
->> green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
->> green:user3  default-trigger: mmc1 (SD-card)
->> green:user4  default-trigger: none, panic-indicator
->> yellow:wlan  default-trigger: phy0tx
->> blue:bt      default-trigger: hci0-power
->>
->> So lets adopt the same for Ultra96, which is one of the 96Boards
->> CE and AI platform. Since the WLAN and BT LEDs are hardwired onboard,
->> consolidate only User LEDs.
->>
-> 
-> Hello,
-> 
-> Any update on this patch?
+From: Heiko Stuebner <heiko.stuebner-K3U4GQvHnyU@public.gmane.org>
 
-I am still waiting for reaction from Rob.
-We are keep trying to keep backward compatibility and this patch is
-breaking it that's why I want to know DT guys reaction on this change.
+The Edison tablet uses a Focaltech touchscreen, with one speciality
+that the touchscreen resolution doesn't match the display resolution
+(1024x768 vs. 1280x600) which userspace will have to compensate for.
 
-Thanks,
-Michal
+Signed-off-by: Heiko Stuebner <heiko.stuebner-K3U4GQvHnyU@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3188-bqedison2qc.dts | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
+index a7477a09fbe8..3685568f999f 100644
+--- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
++++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
+@@ -408,6 +408,21 @@
+ &i2c2 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
++
++	ft5606: touchscreen@3e {
++		compatible = "edt,edt-ft5506";
++		reg = <0x3e>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <RK_PB7 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&tp_int &tp_rst>;
++		reset-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_LOW>;
++		touchscreen-inverted-y;
++		/* hw ts resolution does not match display */
++		touchscreen-size-y = <1024>;
++		touchscreen-size-x = <768>;
++		touchscreen-swapped-x-y;
++	};
+ };
+ 
+ &i2c3 {
+-- 
+2.19.2
