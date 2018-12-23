@@ -1,7 +1,7 @@
 From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: add rk3328 ACODEC node
-Date: Sun, 23 Dec 2018 19:05:30 +0900
-Message-ID: <20181223100530.12892-1-katsuhiro@katsuster.net>
+Subject: [PATCH] arm64: dts: rockchip: enable analog audio node for rock64
+Date: Sun, 23 Dec 2018 19:10:26 +0900
+Message-ID: <20181223101026.12998-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -19,39 +19,72 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockch
 Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds audio codec (ACODEC) node that converts to analog
-audio signal from I2S for rk3328.
+The Rock64 boards has analog audio jack on it. RK3328 can output
+analog audio signal using I2S1 and ACODEC core.
+
+This patch adds sound node for analog audio for Rock64.
 
 Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 ---
 
-This patch depends on Rockcihp RK3328 ACODEC driver patches that were
-applied in ALSA SoC tree. We can see the patches on this thread.
-  https://lkml.org/lkml/2018/12/20/665
+This patch depends on the following ACODEC node patch. If ACODEC
+patch is not good to you, please drop this patch too.
+  https://lkml.org/lkml/2018/12/23/53
 
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 27 ++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index ecd7f19c3542..0f02b1dc87e3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -672,6 +672,16 @@
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index bd937d68ca3b..0a71e1287a1b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -66,7 +66,8 @@
+ 	sound {
+ 		compatible = "audio-graph-card";
+ 		label = "rockchip,rk3328";
+-		dais = <&spdif_p0>;
++		dais = <&i2s1_p0
++			&spdif_p0>;
  	};
  
-+	codec: codec@ff410000 {
-+		compatible = "rockchip,rk3328-codec";
-+		reg = <0x0 0xff410000 0x0 0x1000>;
-+		rockchip,grf = <&grf>;
-+		clocks = <&cru PCLK_ACODECPHY>, <&cru SCLK_I2S1>;
-+		clock-names = "pclk", "mclk";
-+		#sound-dai-cells = <0>;
-+		status = "disabled";
-+	};
+ 	spdif-dit {
+@@ -81,6 +82,17 @@
+ 	};
+ };
+ 
++&codec {
++	status = "okay";
++	#sound-dai-cells = <0>;
 +
- 	hdmiphy: phy@ff430000 {
- 		compatible = "rockchip,rk3328-hdmi-phy";
- 		reg = <0x0 0xff430000 0x0 0x10000>;
++	port@0 {
++		codec_p0_0: endpoint {
++			remote-endpoint = <&i2s1_p0_0>;
++		};
++	};
++};
++
+ &cpu0 {
+ 	cpu-supply = <&vdd_arm>;
+ };
+@@ -243,6 +255,19 @@
+ 	};
+ };
+ 
++&i2s1 {
++	status = "okay";
++	#sound-dai-cells = <0>;
++
++	i2s1_p0: port {
++		i2s1_p0_0: endpoint {
++			dai-format = "i2s";
++			mclk-fs = <256>;
++			remote-endpoint = <&codec_p0_0>;
++		};
++	};
++};
++
+ &io_domains {
+ 	status = "okay";
+ 
 -- 
 2.19.2
