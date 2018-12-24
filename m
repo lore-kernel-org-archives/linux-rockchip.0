@@ -1,60 +1,127 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: [PATCH v5 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use
- vm_insert_range
-Date: Mon, 24 Dec 2018 18:53:40 +0530
-Message-ID: <20181224132340.GA22112@jordon-HP-15-Notebook-PC>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
+Subject: Re: [PATCH v5 0/9] Use vm_insert_range
+Date: Mon, 24 Dec 2018 15:20:59 +0000
+Message-ID: <20181224152059.GA26090@n2100.armlinux.org.uk>
+References: <20181224131841.GA22017@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20181224131841.GA22017@jordon-HP-15-Notebook-PC>
 Sender: linux-kernel-owner@vger.kernel.org
-To: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, linux@armlinux.org.uk, robin.murphy@arm.com
-Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+To: Souptick Joarder <jrdr.linux@gmail.com>
+Cc: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, xen-devel@lists.xen.org, linux-mm@kvack.org, iommu@lists.linux-foundation.org, linux1394-devel@lists.sourceforge.net, linux-ar
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert to use vm_insert_range() to map range of kernel
-memory to user vma.
+Having discussed with Matthew offlist, I think we've come to the
+following conclusion - there's a number of drivers that buggily
+ignore vm_pgoff.
 
-Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+So, what I proposed is:
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index a8db758..28458ae 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -221,26 +221,18 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
- 					      struct vm_area_struct *vma)
+static int __vm_insert_range(struct vm_struct *vma, struct page *pages,
+			     size_t num, unsigned long offset)
+{
+	unsigned long count = vma_pages(vma);
+	unsigned long uaddr = vma->vm_start;
+	int ret;
+
+	/* Fail if the user requested offset is beyond the end of the object */
+	if (offset > num)
+		return -ENXIO;
+
+	/* Fail if the user requested size exceeds available object size */
+	if (count > num - offset)
+		return -ENXIO;
+
+	/* Never exceed the number of pages that the user requested */
+	for (i = 0; i < count; i++) {
+		ret = vm_insert_page(vma, uaddr, pages[offset + i]);
+		if (ret < 0)
+			return ret;
+		uaddr += PAGE_SIZE;
+	}
+
+	return 0;
+}
+
+/*
+ * Maps an object consisting of `num' `pages', catering for the user's
+ * requested vm_pgoff
+ */
+int vm_insert_range(struct vm_struct *vma, struct page *pages, size_t num)
+{
+	return __vm_insert_range(vma, pages, num, vma->vm_pgoff);
+}
+
+/*
+ * Maps a set of pages, always starting at page[0]
+ */
+int vm_insert_range_buggy(struct vm_struct *vma, struct page *pages, size_t num)
+{
+	return __vm_insert_range(vma, pages, num, 0);
+}
+
+With this, drivers such as iommu/dma-iommu.c can be converted thusly:
+
+ int iommu_dma_mmap(struct page **pages, size_t size, struct vm_area_struct *vma+)
  {
- 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
--	unsigned int i, count = obj->size >> PAGE_SHIFT;
-+	unsigned int count = obj->size >> PAGE_SHIFT;
- 	unsigned long user_count = vma_pages(vma);
 -	unsigned long uaddr = vma->vm_start;
- 	unsigned long offset = vma->vm_pgoff;
- 	unsigned long end = user_count + offset;
--	int ret;
- 
- 	if (user_count == 0)
- 		return -ENXIO;
- 	if (end > count)
- 		return -ENXIO;
- 
--	for (i = offset; i < end; i++) {
--		ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
+-	unsigned int i, count = PAGE_ALIGN(size) >> PAGE_SHIFT;
+-	int ret = -ENXIO;
+-
+-	for (i = vma->vm_pgoff; i < count && uaddr < vma->vm_end; i++) {
+-		ret = vm_insert_page(vma, uaddr, pages[i]);
 -		if (ret)
--			return ret;
+-			break;
+-		uaddr += PAGE_SIZE;
+-	}
+-	return ret;
++	return vm_insert_range(vma, pages, PAGE_ALIGN(size) >> PAGE_SHIFT);
+}
+
+and drivers such as firewire/core-iso.c:
+
+ int fw_iso_buffer_map_vma(struct fw_iso_buffer *buffer,
+ 			  struct vm_area_struct *vma)
+ {
+-	unsigned long uaddr;
+-	int i, err;
+-
+-	uaddr = vma->vm_start;
+-	for (i = 0; i < buffer->page_count; i++) {
+-		err = vm_insert_page(vma, uaddr, buffer->pages[i]);
+-		if (err)
+-			return err;
+-
 -		uaddr += PAGE_SIZE;
 -	}
 -
 -	return 0;
-+	return vm_insert_range(vma, vma->vm_start, rk_obj->pages + offset,
-+				user_count);
- }
- 
- static int rockchip_drm_gem_object_mmap_dma(struct drm_gem_object *obj,
++	return vm_insert_range_buggy(vma, buffer->pages, buffer->page_count);
+}
+
+and this gives us something to grep for to find these buggy drivers.
+
+Now, this may not look exactly equivalent, but if you look at
+fw_device_op_mmap(), buffer->page_count is basically vma_pages(vma)
+at this point, which means this should be equivalent.
+
+We _could_ then at a later date "fix" these drivers to behave according
+to the normal vm_pgoff offsetting simply by removing the _buggy suffix
+on the function name... and if that causes regressions, it gives us an
+easy way to revert (as long as vm_insert_range_buggy() remains
+available.)
+
+In the case of firewire/core-iso.c, it currently ignores the mmap offset
+entirely, so making the above suggested change would be tantamount to
+causing it to return -ENXIO for any non-zero mmap offset.
+
+IMHO, this approach is way simpler, and easier to get it correct at
+each call site, rather than the current approach which seems to be
+error-prone.
+
 -- 
-1.9.1
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
