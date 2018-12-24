@@ -1,41 +1,44 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: fix frac settings of GPLL clock for rk3328
-Date: Mon, 24 Dec 2018 10:18:22 +0100
-Message-ID: <1898630.x4fnsSTjcx@phil>
-References: <20181222164249.25620-1-katsuhiro@katsuster.net>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable analog audio node for rock64
+Date: Mon, 24 Dec 2018 21:58:51 +0900
+Message-ID: <df1c3cb9-5661-724d-4443-5b19930f4348@katsuster.net>
+References: <20181223101026.12998-1-katsuhiro@katsuster.net>
+ <16987084.rf60fZEaYD@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181222164249.25620-1-katsuhiro@katsuster.net>
+In-Reply-To: <16987084.rf60fZEaYD@phil>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 22. Dezember 2018, 17:42:49 CET schrieb Katsuhiro Suzuki:
-> This patch fixes settings of GPLL frequency in fractional mode for
-> rk3328. In this mode, FOUTVCO is calcurated by following formula:
->   FOUTVCO = FREF * FBDIV / REFDIV + ((FREF * FRAC / REFDIV) >> 24)
-> 
-> The problem is in FREF * FRAC >> 24 term. This result always lacks
-> one from target value is specified by rate member. For example first
-> itme of rk3328_pll_frac_rate originally has
->   - rate  : 1016064000
->   - refdiv: 3
->   - fbdiv : 127
->   - frac  : 134217
->   - FREF * FBDIV / REFDIV        = 1016000000
->   - (FREF * FRAC / REFDIV) >> 24 = 63999
-> Thus calculated rate is 1016063999. It seems wrong.
-> 
-> If frac has 134218 (it is increased 1 from original value), second
-> term is 64000. All other items have same situation. So this patch
-> adds 1 to frac member in all items of rk3328_pll_frac_rate.
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Hello Heiko,
 
-applied for 4.22 with Elaine's Acked-by
+I understand. Thanks a lot!
 
-Thanks
-Heiko
+Best Regards,
+Katsuhiro Suzuki
+
+On 2018/12/24 16:16, Heiko Stuebner wrote:
+> Hi,
+> 
+> Am Sonntag, 23. Dezember 2018, 11:10:26 CET schrieb Katsuhiro Suzuki:
+>> The Rock64 boards has analog audio jack on it. RK3328 can output
+>> analog audio signal using I2S1 and ACODEC core.
+>>
+>> This patch adds sound node for analog audio for Rock64.
+>>
+>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> 
+> I've put a patch collecting the sound-dai-cells in rk3328.dtsi
+> before this one, dropped the sound-dai-cells from here and
+> applied the patch for 4.22.
+> 
+> Thanks
+> Heiko
+> 
+> 
+> 
