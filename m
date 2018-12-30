@@ -1,15 +1,15 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/7] ARM: dts: rockchip: rk3066: add HCLK_HDMI to pmu
- node
-Date: Sun, 30 Dec 2018 15:03:43 +0100
-Message-ID: <1546188525.f5QxLQzqUk@phil>
+Subject: Re: [PATCH v2 2/7] clk: rockchip: rk3188: add CLK_SET_RATE_PARENT for
+ lcdc dclk
+Date: Sun, 30 Dec 2018 18:05:00 +0100
+Message-ID: <4934072.iLo9ia0RBU@phil>
 References: <20181229133318.18128-1-jbx6244@gmail.com>
- <20181229133318.18128-2-jbx6244@gmail.com>
+ <20181229133318.18128-3-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181229133318.18128-2-jbx6244@gmail.com>
+In-Reply-To: <20181229133318.18128-3-jbx6244@gmail.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -23,14 +23,12 @@ To: Johan Jonker <jbx6244@gmail.com>
 Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, sboyd@kernel.org, robh+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gU2Ftc3RhZywgMjkuIERlemVtYmVyIDIwMTgsIDE0OjMzOjEyIENFVCBzY2hyaWViIEpvaGFu
-IEpvbmtlcjoKPiBBIE1LODA4IFRWIHN0aWNrIHdpdGggcmszMDY2IHByb2Nlc3Nvcgo+IGJvb3Rz
-IG5vcm1hbCB3aXRoIGxvZ28gYW5kIGNvbnNvbGUsCj4gYnV0IGFmdGVyIGJvb3RpbmcgdGhlIG1v
-bml0b3IgcmVtYWlucyBibGFjay4KPiBUaGlzIHBhdGNoIGZpeGVzIGEgdmJsYW5rIHdhaXQgdGlt
-ZSBvdXQKPiBieSBhZGRpbmcgSENMS19IRE1JIHRvIHRoZSBwbXUgbm9kZS4KPiBUaGUgSENMS19I
-RE1JIGNsb2NrIGlzIG5vdyBwYXJ0IG9mIHRoZSBsb2dpYwo+IHRoYXQgZW5hYmxlcyB0aGUgUksz
-MDY2X1BEX1ZJTyBwb3dlciBkb21haW4uCj4gCj4gU2lnbmVkLW9mZi1ieTogSm9oYW4gSm9ua2Vy
-IDxqYng2MjQ0QGdtYWlsLmNvbT4KCmFwcGxpZWQgZm9yIDQuMjIKClRoYW5rcwpIZWlrbwoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+QW0gU2Ftc3RhZywgMjkuIERlemVtYmVyIDIwMTgsIDE0OjMzOjEzIENFVCBzY2hyaWViIEpvaGFu
+IEpvbmtlcjoKPiBGcm9tOiBGaW5sZXkgWGlhbyA8ZmlubGV5LnhpYW9Acm9jay1jaGlwcy5jb20+
+Cj4gCj4gQWRkIENMS19TRVRfUkFURV9QQVJFTlQgZm9yIGxjZGMgZGNsay4KPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBGaW5sZXkgWGlhbyA8ZmlubGV5LnhpYW9Acm9jay1jaGlwcy5jb20+Cj4gU2lnbmVk
+LW9mZi1ieTogSm9oYW4gSm9ua2VyIDxqYng2MjQ0QGdtYWlsLmNvbT4KCmFwcGxpZWQgZm9yIDQu
+MjIKClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
