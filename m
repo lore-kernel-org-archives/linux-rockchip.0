@@ -1,129 +1,32 @@
-From: Tony Xie <tony.xie@rock-chips.com>
-Subject: [PATCH v7 6/6] clk: RK808: add RK809 and RK817 support.
-Date: Wed,  2 Jan 2019 05:23:55 -0500
-Message-ID: <20190102102355.29377-1-tony.xie@rock-chips.com>
-References: <20190102102002.29245-1-tony.xie@rock-chips.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH] ARM: dts: rockchip: rk3188: remove qos_cif1
+Date: Wed,  2 Jan 2019 20:35:52 +0100
+Message-ID: <20190102193552.5853-1-jbx6244@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190102102002.29245-1-tony.xie@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RK809 and RK817 are power management IC chips for multimedia products.
-most of their functions and registers are same, including the clkout
-funciton.
+While the rk3066 does have 2 camera interfaces, the rk3188 does not, so
+there also isn't a QoS block for that non-existing interface, so remove it.
 
-Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-Acked-by: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- drivers/clk/Kconfig     |  9 +++---
- drivers/clk/clk-rk808.c | 64 ++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 67 insertions(+), 6 deletions(-)
+ arch/arm/boot/dts/rk3188.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index e5b2fe80eab4..532ab112fa8a 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -52,13 +52,12 @@ config COMMON_CLK_MAX9485
- 	  This driver supports Maxim 9485 Programmable Audio Clock Generator
- 
- config COMMON_CLK_RK808
--	tristate "Clock driver for RK805/RK808/RK818"
-+	tristate "Clock driver for RK805/RK808/RK809/RK817/RK818"
- 	depends on MFD_RK808
- 	---help---
--	  This driver supports RK805, RK808 and RK818 crystal oscillator clock. These
--	  multi-function devices have two fixed-rate oscillators,
--	  clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
--	  by control register.
-+	  This driver supports RK805, RK809 and RK817, RK808 and RK818 crystal oscillator clock.
-+	  These multi-function devices have two fixed-rate oscillators, clocked at 32KHz each.
-+	  Clkout1 is always on, Clkout2 can off by control register.
- 
- config COMMON_CLK_HI655X
- 	tristate "Clock driver for Hi655x" if EXPERT
-diff --git a/drivers/clk/clk-rk808.c b/drivers/clk/clk-rk808.c
-index 8d90bdf5b946..75f2cf0dfc9f 100644
---- a/drivers/clk/clk-rk808.c
-+++ b/drivers/clk/clk-rk808.c
-@@ -96,6 +96,68 @@ of_clk_rk808_get(struct of_phandle_args *clkspec, void *data)
- 	return idx ? &rk808_clkout->clkout2_hw : &rk808_clkout->clkout1_hw;
- }
- 
-+static int rk817_clkout2_enable(struct clk_hw *hw, bool enable)
-+{
-+	struct rk808_clkout *rk808_clkout = container_of(hw,
-+							 struct rk808_clkout,
-+							 clkout2_hw);
-+	struct rk808 *rk808 = rk808_clkout->rk808;
-+
-+	return regmap_update_bits(rk808->regmap, RK817_SYS_CFG(1),
-+				  RK817_CLK32KOUT2_EN,
-+				  enable ? RK817_CLK32KOUT2_EN : 0);
-+}
-+
-+static int rk817_clkout2_prepare(struct clk_hw *hw)
-+{
-+	return rk817_clkout2_enable(hw, true);
-+}
-+
-+static void rk817_clkout2_unprepare(struct clk_hw *hw)
-+{
-+	rk817_clkout2_enable(hw, false);
-+}
-+
-+static int rk817_clkout2_is_prepared(struct clk_hw *hw)
-+{
-+	struct rk808_clkout *rk808_clkout = container_of(hw,
-+							 struct rk808_clkout,
-+							 clkout2_hw);
-+	struct rk808 *rk808 = rk808_clkout->rk808;
-+	unsigned int val;
-+
-+	int ret = regmap_read(rk808->regmap, RK817_SYS_CFG(1), &val);
-+
-+	if (ret < 0)
-+		return 0;
-+
-+	return (val & RK817_CLK32KOUT2_EN) ? 1 : 0;
-+}
-+
-+static const struct clk_ops rk817_clkout2_ops = {
-+	.prepare = rk817_clkout2_prepare,
-+	.unprepare = rk817_clkout2_unprepare,
-+	.is_prepared = rk817_clkout2_is_prepared,
-+	.recalc_rate = rk808_clkout_recalc_rate,
-+};
-+
-+static const struct clk_ops *rkpmic_get_ops(long variant)
-+{
-+	switch (variant) {
-+	case RK809_ID:
-+	case RK817_ID:
-+		return &rk817_clkout2_ops;
-+	/*
-+	 * For the default case, it match the following PMIC type.
-+	 * RK805_ID
-+	 * RK808_ID
-+	 * RK818_ID
-+	 */
-+	default:
-+		return &rk808_clkout2_ops;
-+	}
-+}
-+
- static int rk808_clkout_probe(struct platform_device *pdev)
- {
- 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
-@@ -127,7 +189,7 @@ static int rk808_clkout_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	init.name = "rk808-clkout2";
--	init.ops = &rk808_clkout2_ops;
-+	init.ops = rkpmic_get_ops(rk808->variant);
- 	rk808_clkout->clkout2_hw.init = &init;
- 
- 	/* optional override of the clockname */
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 4acb501dd..3ed49898f 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -719,7 +719,6 @@
+ 			pm_qos = <&qos_lcdc0>,
+ 				 <&qos_lcdc1>,
+ 				 <&qos_cif0>,
+-				 <&qos_cif1>,
+ 				 <&qos_ipp>,
+ 				 <&qos_rga>;
+ 		};
 -- 
-2.17.1
+2.11.0
