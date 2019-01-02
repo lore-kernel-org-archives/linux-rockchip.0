@@ -1,97 +1,233 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add ROCK Pi 4 DTS support
-Date: Tue, 01 Jan 2019 13:20:26 +0100
-Message-ID: <5662913.pS8bTmJHpa@phil>
-References: <Pragnesh_Patel@mentor.com>
- <20190101080848.5697-1-Pragnesh_Patel@mentor.com>
- <6B09C29B-CACB-4F71-A812-BE538AE6D996@theobroma-systems.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6B09C29B-CACB-4F71-A812-BE538AE6D996-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Shohei Maruyama <cheat.sc.linux-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pragnesh_Patel-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org, Oskari Lemmela <oskari-fV/XPr6JiiHR7s880joybQ@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Tony Xie <tony.xie@rock-chips.com>
+Subject: [PATCH v7 5/6] rtc: rk808: add RK809 and RK817 support.
+Date: Wed,  2 Jan 2019 05:23:34 -0500
+Message-ID: <20190102102334.29322-1-tony.xie@rock-chips.com>
+References: <20190102102002.29245-1-tony.xie@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190102102002.29245-1-tony.xie@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: broonie@kernel.org, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Pragnesh, Klaus,
+RK809 and RK817 are power management IC chips for multimedia products.
+Most of their functions and registers are same, including the rtc.
 
-Am Dienstag, 1. Januar 2019, 10:54:55 CET schrieb klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org:
-> > On 01.01.2019, at 09:08, <Pragnesh_Patel-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org> <Pragnesh_Patel-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org> wrote:
-> > 
-> > From: Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-> > 
-> > ROCK Pi 4 is RK3399 based SBC from radxa.com. board has a 1G/2G/4G lpddr4, CSI,
-> > DSI, HDMI, OTG, USB 2.0, USB 3.0, 10/100/1000 RGMII Ethernet Phy, es8316 codec,
-> > POE, WIFI (for Model B only), PCIE M.2 support on board.
-> > 
-> > This patch enables
-> > - HDMI Display
-> > - Console
-> > - MMC, EMMC
-> > - USB 2.0, USB-3.0
-> > - Ethernet
-> > 
-> > Signed-off-by: Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-> > Signed-off-by: Pragnesh Patel <Pragnesh_Patel-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
+Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+---
+ drivers/rtc/Kconfig     |  4 +--
+ drivers/rtc/rtc-rk808.c | 68 ++++++++++++++++++++++++++++++++---------
+ 2 files changed, 56 insertions(+), 16 deletions(-)
 
-> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> > index de0c406c20cc..3fab0a3e4eeb 100644
-> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > @@ -18,6 +18,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-scarlet-inx.dtb
-> > dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-scarlet-kd.dtb
-> > dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
-> > dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4.dtb
-> 
-> sort(1) would put it before roc-pc
-
-I'd keep it were it is right now, aka after roc- and before roc960.
-Otherwise we would need to resort the whole list to keep it consistent ;-)
-
-And I really want to minimize resorts, so just keep it were it is now
-and looks sorted :-D
-
-[...]
-
-> > +	usb2 {
-> > +		vcc5v0_host_en: vcc5v0-host-en {
-> > +			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-> > +		};
-> > +	};
-> 
-> Maybe use the GPIO bank macros here?
-> 1 = RK_GPIO1, 2 = RK_GPIO2 and so forth.
-
-Actually the other way around please :-)
-Aka just use numbers for the gpio bank in new files
-and the pin defines RK_PD1 for the pins.
-
-The RK_GPIO1 -> 1, etc... defines don't really bring additional
-usefulnes, so I encourage not using them in new boards.
-
-
-> > +&sdmmc {
-> > +	bus-width = <4>;
-> > +	cap-mmc-highspeed;
-> > +	cap-sd-highspeed;
-> > +	cd-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
-> 
-> RK_PA7 for consistency.
-
-yep, here the mapping iomux 4*8 pins <-> gpio controllers (32 pins)
-is non intuitive and makes it more difficult, so the defines actually help
-in following schematics.
-
-
-Heiko
+diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+index a819ef07b7ec..8c34f7ec0a59 100644
+--- a/drivers/rtc/Kconfig
++++ b/drivers/rtc/Kconfig
+@@ -363,11 +363,11 @@ config RTC_DRV_MAX77686
+ 	  will be called rtc-max77686.
+ 
+ config RTC_DRV_RK808
+-	tristate "Rockchip RK805/RK808/RK818 RTC"
++	tristate "Rockchip RK805/RK808/RK809/RK817/RK818 RTC"
+ 	depends on MFD_RK808
+ 	help
+ 	  If you say yes here you will get support for the
+-	  RTC of RK805, RK808 and RK818 PMIC.
++	  RTC of RK805, RK809 and RK817, RK808 and RK818 PMIC.
+ 
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called rk808-rtc.
+diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
+index 739c0d42e835..5bacdafb7b21 100644
+--- a/drivers/rtc/rtc-rk808.c
++++ b/drivers/rtc/rtc-rk808.c
+@@ -50,9 +50,18 @@
+ #define NUM_TIME_REGS	(RK808_WEEKS_REG - RK808_SECONDS_REG + 1)
+ #define NUM_ALARM_REGS	(RK808_ALARM_YEARS_REG - RK808_ALARM_SECONDS_REG + 1)
+ 
++struct rk_rtc_compat_reg {
++	unsigned int ctrl_reg;
++	unsigned int status_reg;
++	unsigned int alarm_seconds_reg;
++	unsigned int int_reg;
++	unsigned int seconds_reg;
++};
++
+ struct rk808_rtc {
+ 	struct rk808 *rk808;
+ 	struct rtc_device *rtc;
++	struct rk_rtc_compat_reg *creg;
+ 	int irq;
+ };
+ 
+@@ -101,7 +110,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ 	int ret;
+ 
+ 	/* Force an update of the shadowed registers right now */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
+ 	if (ret) {
+@@ -115,7 +124,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ 	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
+ 	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
+ 	 */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+ 				 0);
+ 	if (ret) {
+@@ -123,7 +132,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ 		return ret;
+ 	}
+ 
+-	ret = regmap_bulk_read(rk808->regmap, RK808_SECONDS_REG,
++	ret = regmap_bulk_read(rk808->regmap, rk808_rtc->creg->seconds_reg,
+ 			       rtc_data, NUM_TIME_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
+@@ -166,7 +175,7 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ 	rtc_data[6] = bin2bcd(tm->tm_wday);
+ 
+ 	/* Stop RTC while updating the RTC registers */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M);
+ 	if (ret) {
+@@ -174,14 +183,14 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ 		return ret;
+ 	}
+ 
+-	ret = regmap_bulk_write(rk808->regmap, RK808_SECONDS_REG,
++	ret = regmap_bulk_write(rk808->regmap, rk808_rtc->creg->seconds_reg,
+ 				rtc_data, NUM_TIME_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
+ 		return ret;
+ 	}
+ 	/* Start RTC again */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to update RTC control: %d\n", ret);
+@@ -199,8 +208,13 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	uint32_t int_reg;
+ 	int ret;
+ 
+-	ret = regmap_bulk_read(rk808->regmap, RK808_ALARM_SECONDS_REG,
++	ret = regmap_bulk_read(rk808->regmap,
++			       rk808_rtc->creg->alarm_seconds_reg,
+ 			       alrm_data, NUM_ALARM_REGS);
++	if (ret) {
++		dev_err(dev, "Failed to read RTC alarm date REG: %d\n", ret);
++		return ret;
++	}
+ 
+ 	alrm->time.tm_sec = bcd2bin(alrm_data[0] & SECONDS_REG_MSK);
+ 	alrm->time.tm_min = bcd2bin(alrm_data[1] & MINUTES_REG_MAK);
+@@ -210,7 +224,7 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	alrm->time.tm_year = (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
+ 	rockchip_to_gregorian(&alrm->time);
+ 
+-	ret = regmap_read(rk808->regmap, RK808_RTC_INT_REG, &int_reg);
++	ret = regmap_read(rk808->regmap, rk808_rtc->creg->int_reg, &int_reg);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
+ 		return ret;
+@@ -231,7 +245,7 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
+ 	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	int ret;
+ 
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
+ 
+ 	return ret;
+@@ -242,7 +256,7 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
+ 	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	int ret;
+ 
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
+ 
+@@ -274,7 +288,8 @@ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	alrm_data[4] = bin2bcd(alrm->time.tm_mon + 1);
+ 	alrm_data[5] = bin2bcd(alrm->time.tm_year - 100);
+ 
+-	ret = regmap_bulk_write(rk808->regmap, RK808_ALARM_SECONDS_REG,
++	ret = regmap_bulk_write(rk808->regmap,
++				rk808_rtc->creg->alarm_seconds_reg,
+ 				alrm_data, NUM_ALARM_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bulk write: %d\n", ret);
+@@ -318,7 +333,7 @@ static irqreturn_t rk808_alarm_irq(int irq, void *data)
+ 	struct i2c_client *client = rk808->i2c;
+ 	int ret;
+ 
+-	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
++	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
+ 			   RTC_STATUS_MASK);
+ 	if (ret) {
+ 		dev_err(&client->dev,
+@@ -371,6 +386,22 @@ static int rk808_rtc_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(rk808_rtc_pm_ops,
+ 	rk808_rtc_suspend, rk808_rtc_resume);
+ 
++static struct rk_rtc_compat_reg rk808_creg = {
++	.ctrl_reg = RK808_RTC_CTRL_REG,
++	.status_reg = RK808_RTC_STATUS_REG,
++	.alarm_seconds_reg = RK808_ALARM_SECONDS_REG,
++	.int_reg = RK808_RTC_INT_REG,
++	.seconds_reg = RK808_SECONDS_REG,
++};
++
++static struct rk_rtc_compat_reg rk817_creg = {
++	.ctrl_reg = RK817_RTC_CTRL_REG,
++	.status_reg = RK817_RTC_STATUS_REG,
++	.alarm_seconds_reg = RK817_ALARM_SECONDS_REG,
++	.int_reg = RK817_RTC_INT_REG,
++	.seconds_reg = RK817_SECONDS_REG,
++};
++
+ static int rk808_rtc_probe(struct platform_device *pdev)
+ {
+ 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+@@ -381,11 +412,20 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+ 	if (rk808_rtc == NULL)
+ 		return -ENOMEM;
+ 
++	switch (rk808->variant) {
++	case RK809_ID:
++	case RK817_ID:
++		rk808_rtc->creg = &rk817_creg;
++		break;
++	default:
++		rk808_rtc->creg = &rk808_creg;
++		break;
++	}
+ 	platform_set_drvdata(pdev, rk808_rtc);
+ 	rk808_rtc->rk808 = rk808;
+ 
+ 	/* start rtc running by default, and use shadowed timer. */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M |
+ 				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
+ 				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
+@@ -395,7 +435,7 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
++	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
+ 			   RTC_STATUS_MASK);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+-- 
+2.17.1
