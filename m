@@ -1,39 +1,25 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] ARM: dts: rockchip: fix cif1_pdn pin on rk3188-bqedison2qc
-Date: Wed,  2 Jan 2019 20:45:42 +0100
-Message-ID: <20190102194542.15579-1-heiko@sntech.de>
+Subject: Re: [PATCH] ARM: dts: rockchip: rk3188: remove qos_cif1
+Date: Thu, 03 Jan 2019 12:37:33 +0100
+Message-ID: <2303683.qio212mU3e@phil>
+References: <20190102193552.5853-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190102193552.5853-1-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, jbx6244@gmail.com, Heiko Stuebner <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The powerdown pin for the second camera is gpio3_b5 not b4,
-so fix that. We don't have a working camera setup yet, so this
-is not really critical, but nevertheless better to have fixed
-already.
+Am Mittwoch, 2. Januar 2019, 20:35:52 CET schrieb Johan Jonker:
+> While the rk3066 does have 2 camera interfaces, the rk3188 does not, so
+> there also isn't a QoS block for that non-existing interface, so remove it.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-Fixes: 36ead9149916 ("ARM: dts: rockchip: add BQ Edison 2 QC devicetree")
-Reported-by: Johan Jonker <jbx6244@gmail.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm/boot/dts/rk3188-bqedison2qc.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+applied as fix for 4.21
 
-diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-index a7477a09fbe8..2b5abfb48dd0 100644
---- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-+++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-@@ -526,7 +526,7 @@
- 		};
- 
- 		cif1_pdn: cif1-pdn {
--			rockchip,pins = <3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		cif_avdd_en: cif-avdd-en {
--- 
-2.19.2
+Thanks
+Heiko
