@@ -1,118 +1,171 @@
 From: Randy Li <ayaka@soulik.info>
-Subject: [PATCH 0/4] Rockchip: the vendor video codec for reference
-Date: Sun,  6 Jan 2019 02:31:46 +0800
-Message-ID: <20190105183150.20266-1-ayaka@soulik.info>
+Subject: [PATCH 2/4] staging: video: rockchip: fixup for upstream
+Date: Sun,  6 Jan 2019 02:31:48 +0800
+Message-ID: <20190105183150.20266-3-ayaka@soulik.info>
+References: <20190105183150.20266-1-ayaka@soulik.info>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190105183150.20266-1-ayaka@soulik.info>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
 Cc: Randy Li <ayaka@soulik.info>, nicolas.dufresne@collabora.com, myy@miouyouyou.fr, paul.kocialkowski@bootlin.com, mchehab@kernel.org, linux-media@vger.kernel.org, hverkuil@xs4all.nl, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Those patches are not for merging, I won't dream on it. As I said in
-previous email, this driver is used for checking the status of the other
-drivers. I have checked this driver would memory dump, its output looks
-well. The reason I didn't use the video output is VOP driver doesn't
-work well.
+Fixing those deprecated function from vendor kernel.
+Removing those features don't exist in upstream kernel.
 
-Also I want to offer a reference for those people who want to develop
-the V4L2 request API driver for Rockchip and you can use this driver to
-comparing the result as well. I should said either the one for sunxi nor
-chromium have not reached the vendor production level.
+Signed-off-by: Randy Li <ayaka@soulik.info>
+---
+ drivers/staging/rockchip-mpp/mpp_dev_common.c | 12 ++++++------
+ drivers/staging/rockchip-mpp/mpp_dev_common.h |  2 +-
+ drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c |  7 +++----
+ drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c  |  5 ++---
+ drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  |  5 ++---
+ drivers/staging/rockchip-mpp/mpp_dev_vepu1.c  |  5 ++---
+ drivers/staging/rockchip-mpp/mpp_dev_vepu2.c  |  5 ++---
+ 7 files changed, 18 insertions(+), 23 deletions(-)
 
-I want to point out the obvious problem of the current V4L2 driver, I
-think that is the one I developed years ago and refresh it in the last
-year, then it is merged now.
-
-That driver won't aware the parallel problem between the devices. The
-video codec in Rockchip is very complex, the decoder and encoder are
-NOT paired in some platforms. Also a decoder or encoder can share some
-resource with the other decoder or encoder, requesting a mux in the GRF
-device. We call those devices sharing resource a combo, they may or may
-not having a individual IOMMU for each of its child devices. Also any of
-those devies allowing support less codecs than its full state.
-
-The RK3328 is a good example of that,
----------------------------------------------
-| Video decoder for H264, VP8, JPEG, MPEG-4 Part 2
-| Video decoder for AVS+
-|--------------------------------------------
-| Video decoder for H265, H265, VP9
-|--------------------------------------------
-| Video encoder for H265,
----------------------------------------------
-| Video encoder for H264, JPEG
----------------------------------------------
-that is why I rewrote the device tree files in these patches, the current
-device tree is not suitable for the other platforms.
-
-Besides, the V4L2 driver don't support the error correction and tolerance or
-status recovery. That is more about the parser in the userspace but a
-common parser won't be able to do that, different video codec vendor
-would request a different method, also V4L2 request API is not suitable
-to feedback status.
-
-Anyway, the current developing for decoder is at lease acceptable for
-those simple situations. But I think encoder would become a big issue,
-lucky, it seems that nobody care about encoder. If you have ever looked
-the video encoder for chromium, you would feel disgusted, it is not
-Google's fault, just not suitable for V4L2.
-
-I don't want to talk much about encoder here, basially the encoder is
-much simpler than decoder requesting less dynamic settings, but those
-dynamic settings request a more real time feedback or related.
-
-I don't see much advantage the V4L2 brings, only the compatibility left.
-The previous vendor driver would have DMA buffer problem but it is
-solved in this one. Ndufresne told me about buffer fencing, but I don't
-think it is useful only complication. That is why I didn't develop the
-V4L2 for a long time.
-
-I would attend the FOSDEM 2019, if you have any problem, I think you can
-catch me easily there.
-
-Randy Li (4):
-  staging: video: rockchip: video codec for vendor API
-  staging: video: rockchip: fixup for upstream
-  staging: video: rockchip: add video codec
-  arm64: dts: rockchip: add video codec for rk3399
-
- .../boot/dts/rockchip/rk3399-sapphire.dtsi    |  29 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  68 +-
- drivers/staging/Kconfig                       |   2 +
- drivers/staging/Makefile                      |   1 +
- drivers/staging/rockchip-mpp/Kconfig          |  52 +
- drivers/staging/rockchip-mpp/Makefile         |  16 +
- drivers/staging/rockchip-mpp/mpp_debug.h      |  87 ++
- drivers/staging/rockchip-mpp/mpp_dev_common.c | 971 ++++++++++++++++++
- drivers/staging/rockchip-mpp/mpp_dev_common.h | 219 ++++
- drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c | 855 +++++++++++++++
- drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c  | 614 +++++++++++
- drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  | 576 +++++++++++
- drivers/staging/rockchip-mpp/mpp_dev_vepu1.c  | 480 +++++++++
- drivers/staging/rockchip-mpp/mpp_dev_vepu2.c  | 477 +++++++++
- drivers/staging/rockchip-mpp/mpp_iommu_dma.c  | 292 ++++++
- drivers/staging/rockchip-mpp/mpp_iommu_dma.h  |  42 +
- drivers/staging/rockchip-mpp/mpp_service.c    | 197 ++++
- drivers/staging/rockchip-mpp/mpp_service.h    |  38 +
- include/uapi/video/rk_vpu_service.h           | 101 ++
- 19 files changed, 5110 insertions(+), 7 deletions(-)
- create mode 100644 drivers/staging/rockchip-mpp/Kconfig
- create mode 100644 drivers/staging/rockchip-mpp/Makefile
- create mode 100644 drivers/staging/rockchip-mpp/mpp_debug.h
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_common.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_common.h
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_vepu1.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_vepu2.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_iommu_dma.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_iommu_dma.h
- create mode 100644 drivers/staging/rockchip-mpp/mpp_service.c
- create mode 100644 drivers/staging/rockchip-mpp/mpp_service.h
- create mode 100644 include/uapi/video/rk_vpu_service.h
-
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_common.c b/drivers/staging/rockchip-mpp/mpp_dev_common.c
+index 159aa5d244ce..9a257c254d4d 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_common.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_common.c
+@@ -937,18 +937,18 @@ EXPORT_SYMBOL(mpp_dev_read);
+ void mpp_debug_time_record(struct mpp_task *task)
+ {
+ 	if (unlikely(debug & DEBUG_TIMING) && task)
+-		do_gettimeofday(&task->start);
++		getboottime64(&task->start);
+ }
+ EXPORT_SYMBOL(mpp_debug_time_record);
+ 
+ void mpp_debug_time_diff(struct mpp_task *task)
+ {
+-	struct timeval end;
++	struct timespec64 end;
+ 
+-	do_gettimeofday(&end);
+-	mpp_debug(DEBUG_TIMING, "time: %ld us\n",
+-		  (end.tv_sec  - task->start.tv_sec)  * 1000000 +
+-		  (end.tv_usec - task->start.tv_usec));
++	getboottime64(&end);
++	mpp_debug(DEBUG_TIMING, "time: %lld ms\n",
++		  (end.tv_sec  - task->start.tv_sec)  * 1000 +
++		  (end.tv_nsec - task->start.tv_nsec) / 1000000);
+ }
+ EXPORT_SYMBOL(mpp_debug_time_diff);
+ 
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_common.h b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+index 8a7dc7444dc3..76d53ec2c452 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_common.h
++++ b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+@@ -124,7 +124,7 @@ struct mpp_task {
+ 	struct work_struct work;
+ 
+ 	/* record context running start time */
+-	struct timeval start;
++	struct timespec64 start;
+ };
+ 
+ /*
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c b/drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c
+index a3da27cfc10e..44d76eba901f 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c
+@@ -19,10 +19,10 @@
+ #include <linux/module.h>
+ #include <linux/types.h>
+ #include <linux/of_platform.h>
+-#include <linux/rockchip/rockchip_sip.h>
+ #include <linux/slab.h>
+ #include <linux/uaccess.h>
+ #include <soc/rockchip/pm_domains.h>
++#include <soc/rockchip/rockchip_sip.h>
+ 
+ #include "mpp_debug.h"
+ #include "mpp_dev_common.h"
+@@ -230,8 +230,7 @@ static int fill_scaling_list_pps(struct rkvdec_task *task, int fd, int offset,
+ 		return -ENOENT;
+ 	}
+ 
+-	ret = dma_buf_begin_cpu_access(dmabuf, 0, dmabuf->size,
+-				       DMA_FROM_DEVICE);
++	ret = dma_buf_begin_cpu_access(dmabuf, DMA_FROM_DEVICE);
+ 	if (ret) {
+ 		dev_err(dev, "can't access the pps buffer\n");
+ 		goto done;
+@@ -277,7 +276,7 @@ static int fill_scaling_list_pps(struct rkvdec_task *task, int fd, int offset,
+ 
+ done:
+ 	dma_buf_vunmap(dmabuf, vaddr);
+-	dma_buf_end_cpu_access(dmabuf, 0, dmabuf->size, DMA_FROM_DEVICE);
++	dma_buf_end_cpu_access(dmabuf, DMA_FROM_DEVICE);
+ 	dma_buf_put(dmabuf);
+ 
+ 	return ret;
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c b/drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c
+index 4371a1a6080b..63ffd79bfe83 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vdpu1.c
+@@ -460,9 +460,8 @@ static int rockchip_mpp_rkvdpu_assign_reset(struct rockchip_rkvdpu_dev *dec_dev)
+ {
+ 	struct rockchip_mpp_dev *mpp_dev = &dec_dev->mpp_dev;
+ 
+-	/* TODO: use devm_reset_control_get_share() instead */
+-	dec_dev->rst_a = devm_reset_control_get(mpp_dev->dev, "video_a");
+-	dec_dev->rst_h = devm_reset_control_get(mpp_dev->dev, "video_h");
++	dec_dev->rst_a = devm_reset_control_get_shared(mpp_dev->dev, "video_a");
++	dec_dev->rst_h = devm_reset_control_get_shared(mpp_dev->dev, "video_h");
+ 
+ 	if (IS_ERR_OR_NULL(dec_dev->rst_a)) {
+ 		mpp_err("No aclk reset resource define\n");
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+index b131790f72a3..5789c8940543 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+@@ -428,9 +428,8 @@ static int rockchip_mpp_rkvdpu_assign_reset(struct rockchip_rkvdpu_dev *dec_dev)
+ {
+ 	struct rockchip_mpp_dev *mpp_dev = &dec_dev->mpp_dev;
+ 
+-	/* TODO: use devm_reset_control_get_share() instead */
+-	dec_dev->rst_a = devm_reset_control_get(mpp_dev->dev, "video_a");
+-	dec_dev->rst_h = devm_reset_control_get(mpp_dev->dev, "video_h");
++	dec_dev->rst_a = devm_reset_control_get_shared(mpp_dev->dev, "video_a");
++	dec_dev->rst_h = devm_reset_control_get_shared(mpp_dev->dev, "video_h");
+ 
+ 	if (IS_ERR_OR_NULL(dec_dev->rst_a)) {
+ 		mpp_err("No aclk reset resource define\n");
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vepu1.c b/drivers/staging/rockchip-mpp/mpp_dev_vepu1.c
+index 64619092c792..ebe8174e931e 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vepu1.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vepu1.c
+@@ -330,9 +330,8 @@ static int rockchip_mpp_rkvepu_assign_reset(struct rockchip_rkvepu_dev *enc_dev)
+ {
+ 	struct rockchip_mpp_dev *mpp_dev = &enc_dev->mpp_dev;
+ 
+-	/* TODO: use devm_reset_control_get_share() instead */
+-	enc_dev->rst_a = devm_reset_control_get(mpp_dev->dev, "video_a");
+-	enc_dev->rst_h = devm_reset_control_get(mpp_dev->dev, "video_h");
++	enc_dev->rst_a = devm_reset_control_get_shared(mpp_dev->dev, "video_a");
++	enc_dev->rst_h = devm_reset_control_get_shared(mpp_dev->dev, "video_h");
+ 
+ 	if (IS_ERR_OR_NULL(enc_dev->rst_a)) {
+ 		mpp_err("No aclk reset resource define\n");
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vepu2.c b/drivers/staging/rockchip-mpp/mpp_dev_vepu2.c
+index 48ec401145d5..889aaccf25c5 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vepu2.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vepu2.c
+@@ -327,9 +327,8 @@ static int rockchip_mpp_rkvepu_assign_reset(struct rockchip_rkvepu_dev *enc_dev)
+ {
+ 	struct rockchip_mpp_dev *mpp_dev = &enc_dev->mpp_dev;
+ 
+-	/* TODO: use devm_reset_control_get_share() instead */
+-	enc_dev->rst_a = devm_reset_control_get(mpp_dev->dev, "video_a");
+-	enc_dev->rst_h = devm_reset_control_get(mpp_dev->dev, "video_h");
++	enc_dev->rst_a = devm_reset_control_get_shared(mpp_dev->dev, "video_a");
++	enc_dev->rst_h = devm_reset_control_get_shared(mpp_dev->dev, "video_h");
+ 
+ 	if (IS_ERR_OR_NULL(enc_dev->rst_a)) {
+ 		mpp_err("No aclk reset resource define\n");
 -- 
 2.20.1
