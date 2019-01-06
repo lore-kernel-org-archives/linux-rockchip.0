@@ -1,140 +1,220 @@
-From: Ayaka <ayaka@soulik.info>
+From: Ezequiel Garcia <ezequiel@collabora.com>
 Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add video codec for rk3399
-Date: Sun, 6 Jan 2019 23:06:29 +0800
-Message-ID: <B3E732B3-2A07-4C8E-9B6B-EDE343F54189@soulik.info>
+Date: Sun, 06 Jan 2019 13:04:35 -0300
+Message-ID: <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com>
 References: <20190105183150.20266-1-ayaka@soulik.info>
- <20190105183150.20266-5-ayaka@soulik.info>
- <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: hverkuil@xs4all.nl, nicolas.dufresne@collabora.com, heiko@sntech.de, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, paul.kocialkowski@bootlin.com, linux-rockchip@lists.infradead.org, myy@miouyouyou.fr, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+         <20190105183150.20266-5-ayaka@soulik.info>
+         <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
+         <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ayaka <ayaka@soulik.info>
+Cc: linux-rockchip@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, nicolas.dufresne@collabora.com, myy@miouyouyou.fr, paul.kocialkowski@bootlin.com, mchehab@kernel.org, linux-media@vger.kernel.org, hverkuil@xs4all.nl, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Cj4gT24gSmFuIDYsIDIwMTksIGF0IDEwOjIyIFBNLCBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVs
-QGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IAo+IEhpIFJhbmR5LAo+IAo+IFRoYW5rcyBhIGxvdCBm
-b3IgdGhpcyBwYXRjaGVzLiBUaGV5IGFyZSByZWFsbHkgdXNlZnVsCj4gdG8gcHJvdmlkZSBtb3Jl
-IGluc2lnaHQgaW50byB0aGUgVlBVIGhhcmR3YXJlLgo+IAo+IFRoaXMgY2hhbmdlIHdpbGwgbWFr
-ZSB0aGUgdnB1IGVuY29kZXIgYW5kIHZwdSBkZWNvZGVyCj4gY29tcGxldGVseSBpbmRlcGVuZGVu
-dCwgY2FuIHRoZXkgcmVhbGx5IHdvcmsgaW4gcGFyYWxsZWw/CkFzIEkgc2FpZCBpdCBkZXBlbmRz
-IG9uIHRoZSBwbGF0Zm9ybSwgYnV0IHdpdGggdGhpcyBwYXRjaCwgdGhlIHVzZXIgc3BhY2Ugd291
-bGQgdGhpbmsgdGhleSBjYW4gd29yayBhdCB0aGUgc2FtZSB0aW1lLiBCVFcsIG5vdCBvbmx5IHRo
-ZSBkZWNvZGVyLCB0aGVyZSBpcyBhIHBvc3QgcHJvY2Vzc29yIHdpdGggdGhlIGRlY29kZXIsIGl0
-IGNhbiBiZSB1c2VkIGFzIHBhcnQgb2YgdGhlIGRlY29kZXIgcGlwZWxpbmUgd2l0aCBvbmx5IGEg
-bWFjcm8gYmxvY2sgZGVsYXkgb3IgcHJvY2VzcyB0aGUgZGF0YSBmcm9tIGFuIGV4dGVybmFsIGJ1
-ZmZlci4KSSBmb3JnZXQgdG8gd3JpdGUgYSBub3RlIG9uIHdoYXQgdGhpcyBkcml2ZXIgZG9lc27i
-gJl0IHByZXNlbnQuIFRoZSByZWFsIG9uZSB3b3VsZCBoYXZlIG11Y2ggY29tcGxleCBzY2hlZHVs
-ZXIgc3lzdGVtLCBidXQgdGhpcyBvbmUgaXMganVzdCBhIHF1ZXVlLiBNb3JlIHRhc2sgbWFuYWdl
-bWVudCBmZWF0dXJlIGFyZSBub3QgdGhlcmUuCkFsc28gdGhlIGNsb2NrIGJvb3N0aW5nIGlzIHJl
-bW92aW5nIGFuZCB0aGUgbG9hZGluZyBhbmFseXNpcywgd2hpY2ggYXJlIHVzZWZ1bCBmb3IgZW5j
-b2RlciwgZXNwZWNpYWxseSBvbiB0aGUgcnYxMTA4Lgo+IENvdWxkIHlvdSBwcm92aWRlIG1vcmUg
-ZGV0YWlscyBhYm91dCB3aGF0IGlzCj4gc2hhcmVkIGJldHdlZW4gdGhlc2UgZGV2aWNlcz8KTm8s
-IGlmIFJvY2tjaGlwIGRvZXNu4oCZdCB0ZWxsLCBteSBtb3V0aCBpcyBzZWFsZWQuCj4gVGhhbmtz
-IGEgbG90IQo+IAo+PiBPbiBTdW4sIDIwMTktMDEtMDYgYXQgMDI6MzEgKzA4MDAsIFJhbmR5IExp
-IHdyb3RlOgo+PiBJdCBvZmZlcnMgYW4gZXhhbXBsZSBob3cgYSBmdWxsIGZlYXR1cmVzIHZpZGVv
-IGNvZGVjCj4+IHNob3VsZCBiZSBjb25maWd1cmVkLgo+PiAKPj4gVGhlIG9yaWdpbmFsIGNsb2Nr
-cyBhc3NpZ25tZW50IGRvbid0IGxvb2sgZ29vZCwgaWYgdGhlIGNsb2Nrcwo+PiBsb3dlciB0aGFu
-IDMwME1IWiwgbW9zdCBvZiBkZWNvaW5nIHRhc2tzIHdvdWxkIHN1ZmZlciBmcm9tCj4+IHRpbWVv
-dXQgcHJvYmxlbSwgNTAwTUhaIGlzIGFsc28gYSBsaXR0bGUgaGlnaCBmb3IgUkszMzk5Cj4+IHJ1
-bm5pbmcgaW4gYSBzdGFibGUgc3RhdGUuCj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBSYW5keSBMaSA8
-YXlha2FAc291bGlrLmluZm8+Cj4+IC0tLQo+PiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
-LXNhcHBoaXJlLmR0c2kgICAgfCAyOSArKysrKysrKwo+PiBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS5kdHNpICAgICAgfCA2OCArKysrKysrKysrKysrKysrKy0tCj4+IDIgZmls
-ZXMgY2hhbmdlZCwgOTAgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPj4gCj4+IGRpZmYg
-LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNp
-IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQo+PiBp
-bmRleCA5NDZkMzU4OTU3NWEuLmMzZGI4NzhiYWU0NSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQo+PiArKysgYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCj4+IEBAIC02MzIsNiAr
-NjMyLDM1IEBACj4+ICBkcl9tb2RlID0gImhvc3QiOwo+PiB9Owo+PiAKPj4gKyZya3ZkZWMgewo+
-PiArICAgIHN0YXR1cyA9ICJva2F5IjsKPj4gK307Cj4+ICsKPj4gKyZya3ZkZWNfc3J2IHsKPj4g
-KyAgICBzdGF0dXMgPSAib2theSI7Cj4+ICt9Owo+PiArCj4+ICsmdmRlY19tbXUgewo+PiArICAg
-IHN0YXR1cyA9ICJva2F5IjsKPj4gK307Cj4+ICsKPj4gKyZ2ZHB1IHsKPj4gKyAgICBzdGF0dXMg
-PSAib2theSI7Cj4+ICt9Owo+PiArCj4+ICsmdmVwdSB7Cj4+ICsgICAgc3RhdHVzID0gIm9rYXki
-Owo+PiArfTsKPj4gKwo+PiArJnZwdV9zZXJ2aWNlIHsKPj4gKyAgICBzdGF0dXMgPSAib2theSI7
-Cj4+ICt9Owo+PiArCj4+ICsmdnB1X21tdSB7Cj4+ICsgICAgc3RhdHVzID0gIm9rYXkiOwo+PiAr
-Cj4+ICt9Owo+PiArCj4+ICZ2b3BiIHsKPj4gIHN0YXR1cyA9ICJva2F5IjsKPj4gfTsKPj4gZGlm
-ZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgYi9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+IGluZGV4IGIyMmIyZTQwNDIy
-Yi4uNWZhMzI0N2U3YmYwIDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzM5OS5kdHNpCj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-Mzk5LmR0c2kKPj4gQEAgLTEyNDIsMTYgKzEyNDIsMzkgQEAKPj4gICAgICBzdGF0dXMgPSAiZGlz
-YWJsZWQiOwo+PiAgfTsKPj4gCj4+IC0gICAgdnB1OiB2aWRlby1jb2RlY0BmZjY1MDAwMCB7Cj4+
-IC0gICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMzk5LXZwdSI7Cj4+IC0gICAgICAg
-IHJlZyA9IDwweDAgMHhmZjY1MDAwMCAweDAgMHg4MDA+Owo+PiAtICAgICAgICBpbnRlcnJ1cHRz
-ID0gPEdJQ19TUEkgMTE0IElSUV9UWVBFX0xFVkVMX0hJR0ggMD4sCj4+IC0gICAgICAgICAgICAg
-ICAgIDxHSUNfU1BJIDExMyBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+PiAtICAgICAgICBpbnRl
-cnJ1cHQtbmFtZXMgPSAidmVwdSIsICJ2ZHB1IjsKPj4gKyAgICB2cHVfc2VydmljZTogdnB1LXNy
-diB7Cj4+ICsgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAsbXBwLXNlcnZpY2UiOwo+PiAr
-ICAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+PiArICAgIH07Cj4+ICsKPj4gKyAgICB2ZXB1
-OiB2cHUtZW5jb2RlckBmZjY1MDAwMCB7Cj4+ICsgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2No
-aXAsdnB1LWVuY29kZXItdjIiOwo+PiArICAgICAgICByZWcgPSA8MHgwIDB4ZmY2NTAwMDAgMHgw
-IDB4NDAwPjsKPj4gKyAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExNCBJUlFfVFlQRV9M
-RVZFTF9ISUdIIDA+Owo+PiArICAgICAgICBpbnRlcnJ1cHQtbmFtZXMgPSAiaXJxX2VuYyI7Cj4+
-ICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19WQ09ERUM+LCA8JmNydSBIQ0xLX1ZDT0RFQz47Cj4+
-IC0gICAgICAgIGNsb2NrLW5hbWVzID0gImFjbGsiLCAiaGNsayI7Cj4+ICsgICAgICAgIGNsb2Nr
-LW5hbWVzID0gImFjbGtfdmNvZGVjIiwgImhjbGtfdmNvZGVjIjsKPj4gKyAgICAgICAgcmVzZXRz
-ID0gPCZjcnUgU1JTVF9IX1ZDT0RFQz4sIDwmY3J1IFNSU1RfQV9WQ09ERUM+Owo+PiArICAgICAg
-ICByZXNldC1uYW1lcyA9ICJ2aWRlb19oIiwgInZpZGVvX2EiOwo+PiAgICAgIGlvbW11cyA9IDwm
-dnB1X21tdT47Cj4+ICAgICAgcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszMzk5X1BEX1ZDT0RF
-Qz47Cj4+ICsgICAgICAgIHJvY2tjaGlwLHNydiA9IDwmdnB1X3NlcnZpY2U+Owo+PiArICAgICAg
-ICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+PiArICAgIH07Cj4+ICsKPj4gKyAgICB2ZHB1OiB2cHUt
-ZGVjb2RlckBmZjY1MDQwMCB7Cj4+ICsgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAsdnB1
-LWRlY29kZXItdjIiOwo+PiArICAgICAgICByZWcgPSA8MHgwIDB4ZmY2NTA0MDAgMHgwIDB4NDAw
-PjsKPj4gKyAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExMyBJUlFfVFlQRV9MRVZFTF9I
-SUdIIDA+Owo+PiArICAgICAgICBpbnRlcnJ1cHQtbmFtZXMgPSAiaXJxX2RlYyI7Cj4+ICsgICAg
-ICAgIGlvbW11cyA9IDwmdnB1X21tdT47Cj4+ICsgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtf
-VkNPREVDPiwgPCZjcnUgSENMS19WQ09ERUM+Owo+PiArICAgICAgICBjbG9jay1uYW1lcyA9ICJh
-Y2xrX3Zjb2RlYyIsICJoY2xrX3Zjb2RlYyI7Cj4+ICsgICAgICAgIHJlc2V0cyA9IDwmY3J1IFNS
-U1RfSF9WQ09ERUM+LCA8JmNydSBTUlNUX0FfVkNPREVDPjsKPj4gKyAgICAgICAgcmVzZXQtbmFt
-ZXMgPSAidmlkZW9faCIsICJ2aWRlb19hIjsKPj4gKyAgICAgICAgcG93ZXItZG9tYWlucyA9IDwm
-cG93ZXIgUkszMzk5X1BEX1ZDT0RFQz47Cj4+ICsgICAgICAgIHJvY2tjaGlwLHNydiA9IDwmdnB1
-X3NlcnZpY2U+Owo+PiArICAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+PiAgfTsKPj4gCj4+
-ICB2cHVfbW11OiBpb21tdUBmZjY1MDgwMCB7Cj4+IEBAIC0xMjYxLDExICsxMjg0LDQyIEBACj4+
-ICAgICAgaW50ZXJydXB0LW5hbWVzID0gInZwdV9tbXUiOwo+PiAgICAgIGNsb2NrcyA9IDwmY3J1
-IEFDTEtfVkNPREVDPiwgPCZjcnUgSENMS19WQ09ERUM+Owo+PiAgICAgIGNsb2NrLW5hbWVzID0g
-ImFjbGsiLCAiaWZhY2UiOwo+PiArICAgICAgICBhc3NpZ25lZC1jbG9ja3MgPSA8JmNydSBBQ0xL
-X1ZDT0RFQ19QUkU+Owo+PiArICAgICAgICBhc3NpZ25lZC1jbG9jay1wYXJlbnRzID0gPCZjcnUg
-UExMX0dQTEw+Owo+PiAgICAgICNpb21tdS1jZWxscyA9IDwwPjsKPj4gICAgICBwb3dlci1kb21h
-aW5zID0gPCZwb3dlciBSSzMzOTlfUERfVkNPREVDPjsKPj4gICAgICBzdGF0dXMgPSAiZGlzYWJs
-ZWQiOwo+PiAgfTsKPj4gCj4+ICsgICAgcmt2ZGVjX3Nydjogcmt2ZGVjLXNydiB7Cj4+ICsgICAg
-ICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAsbXBwLXNlcnZpY2UiOwo+PiArICAgICAgICBzdGF0
-dXMgPSAiZGlzYWJsZWQiOwo+PiArICAgIH07Cj4+ICsKPj4gKyAgICBya3ZkZWM6IHZpZGVvLWRl
-Y29kZXJAZmY2NjAwMDAgewo+PiArICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHZpZGVv
-LWRlY29kZXItdjEiOwo+PiArICAgICAgICByZWcgPSA8MHgwIDB4ZmY2NjAwMDAgMHgwIDB4NDAw
-PjsKPj4gKyAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExNiBJUlFfVFlQRV9MRVZFTF9I
-SUdIIDA+Owo+PiArICAgICAgICBpbnRlcnJ1cHQtbmFtZXMgPSAiaXJxX2RlYyI7Cj4+ICsgICAg
-ICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfVkRVPiwgPCZjcnUgSENMS19WRFU+LAo+PiArICAgICAg
-ICAgICAgIDwmY3J1IFNDTEtfVkRVX0NBPiwgPCZjcnUgU0NMS19WRFVfQ09SRT47Cj4+ICsgICAg
-ICAgIGNsb2NrLW5hbWVzID0gImFjbGtfdmNvZGVjIiwgImhjbGtfdmNvZGVjIiwKPj4gKyAgICAg
-ICAgICAgICAgICAgICJjbGtfY2FiYWMiLCAiY2xrX2NvcmUiOwo+PiArICAgICAgICBhc3NpZ25l
-ZC1jbG9ja3MgPSA8JmNydSBBQ0xLX1ZEVV9QUkU+LCA8JmNydSBTQ0xLX1ZEVV9DQT4sCj4+ICsg
-ICAgICAgICAgICAgICAgICA8JmNydSBTQ0xLX1ZEVV9DT1JFPjsKPj4gKyAgICAgICAgYXNzaWdu
-ZWQtY2xvY2stcGFyZW50cyA9IDwmY3J1IFBMTF9OUExMPiwgPCZjcnUgUExMX05QTEw+LAo+PiAr
-ICAgICAgICAgICAgICAgICAgICAgPCZjcnUgUExMX05QTEw+Owo+PiArICAgICAgICByZXNldHMg
-PSA8JmNydSBTUlNUX0hfVkRVPiwgPCZjcnUgU1JTVF9BX1ZEVT4sCj4+ICsgICAgICAgICAgICAg
-PCZjcnUgU1JTVF9WRFVfQ09SRT4sIDwmY3J1IFNSU1RfVkRVX0NBPiwKPj4gKyAgICAgICAgICAg
-ICA8JmNydSBTUlNUX0FfVkRVX05PQz4sIDwmY3J1IFNSU1RfSF9WRFVfTk9DPjsKPj4gKyAgICAg
-ICAgcmVzZXQtbmFtZXMgPSAidmlkZW9faCIsICJ2aWRlb19hIiwgInZpZGVvX2NvcmUiLCAidmlk
-ZW9fY2FiYWMiLAo+PiArICAgICAgICAgICAgICAgICAgIm5pdV9hIiwgIm5pdV9oIjsKPj4gKyAg
-ICAgICAgcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszMzk5X1BEX1ZEVT47Cj4+ICsgICAgICAg
-IHJvY2tjaGlwLHNydiA9IDwmcmt2ZGVjX3Nydj47Cj4+ICsgICAgICAgIGlvbW11cyA9IDwmdmRl
-Y19tbXU+Owo+PiArICAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+PiArICAgIH07Cj4+ICsK
-Pj4gIHZkZWNfbW11OiBpb21tdUBmZjY2MDQ4MCB7Cj4+ICAgICAgY29tcGF0aWJsZSA9ICJyb2Nr
-Y2hpcCxpb21tdSI7Cj4+ICAgICAgcmVnID0gPDB4MCAweGZmNjYwNDgwIDB4MCAweDQwPiwgPDB4
-MCAweGZmNjYwNGMwIDB4MCAweDQwPjsKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51
-eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+On Sun, 2019-01-06 at 23:05 +0800, Ayaka wrote:
+> > On Jan 6, 2019, at 10:22 PM, Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> > 
+> > Hi Randy,
+> > 
+> > Thanks a lot for this patches. They are really useful
+> > to provide more insight into the VPU hardware.
+> > 
+> > This change will make the vpu encoder and vpu decoder
+> > completely independent, can they really work in parallel?
+> As I said it depends on the platform, but with this patch, the user space would think they can work at the same time.
+
+
+I think there is some confusion.
+
+The devicetree is one thing: it is a hardware representation,
+a way to describe the hardware, for the kernel/bootloader to
+parse.
+
+The userspace view will depend on the driver implementation.
+
+The current devicetree and driver (without your patches),
+model the VPU as a single piece of hardware, exposing a decoder
+and an encoder.
+
+The V4L driver will then create two video devices, i.e. /dev/videoX
+and /dev/videoY. So userspace sees an independent view of the
+devices.
+
+However, they are internally connected, and thus we can
+easily avoid two jobs running in parallel.
+
+So, in other words, if the VPU can issue a decoder and encoder
+job in parallel, then it's useful to model it as two independent
+devices. Otherwise, it's better not to.
+
+I hope this can clarify things a bit for you!
+
+PS: Too bad I won't be at FOSDEM to discuss this personally.
+
+Thanks,
+Ezequiel
+
+> BTW, not only the decoder, there is a post processor with the decoder, it can be used as part of the decoder pipeline with only a macro block delay
+> or process the data from an external buffer.
+> I forget to write a note on what this driver doesn’t present. The real one would have much complex scheduler system, but this one is just a queue.
+> More task management feature are not there.
+> Also the clock boosting is removing and the loading analysis, which are useful for encoder, especially on the rv1108.
+> > Could you provide more details about what is
+> > shared between these devices?
+> No, if Rockchip doesn’t tell, my mouth is sealed.
+> > Thanks a lot!
+> > 
+> > > On Sun, 2019-01-06 at 02:31 +0800, Randy Li wrote:
+> > > It offers an example how a full features video codec
+> > > should be configured.
+> > > 
+> > > The original clocks assignment don't look good, if the clocks
+> > > lower than 300MHZ, most of decoing tasks would suffer from
+> > > timeout problem, 500MHZ is also a little high for RK3399
+> > > running in a stable state.
+> > > 
+> > > Signed-off-by: Randy Li <ayaka@soulik.info>
+> > > ---
+> > > .../boot/dts/rockchip/rk3399-sapphire.dtsi    | 29 ++++++++
+> > > arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 68 +++++++++++++++++--
+> > > 2 files changed, 90 insertions(+), 7 deletions(-)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> > > index 946d3589575a..c3db878bae45 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> > > @@ -632,6 +632,35 @@
+> > >   dr_mode = "host";
+> > > };
+> > > 
+> > > +&rkvdec {
+> > > +    status = "okay";
+> > > +};
+> > > +
+> > > +&rkvdec_srv {
+> > > +    status = "okay";
+> > > +};
+> > > +
+> > > +&vdec_mmu {
+> > > +    status = "okay";
+> > > +};
+> > > +
+> > > +&vdpu {
+> > > +    status = "okay";
+> > > +};
+> > > +
+> > > +&vepu {
+> > > +    status = "okay";
+> > > +};
+> > > +
+> > > +&vpu_service {
+> > > +    status = "okay";
+> > > +};
+> > > +
+> > > +&vpu_mmu {
+> > > +    status = "okay";
+> > > +
+> > > +};
+> > > +
+> > > &vopb {
+> > >   status = "okay";
+> > > };
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > index b22b2e40422b..5fa3247e7bf0 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > @@ -1242,16 +1242,39 @@
+> > >       status = "disabled";
+> > >   };
+> > > 
+> > > -    vpu: video-codec@ff650000 {
+> > > -        compatible = "rockchip,rk3399-vpu";
+> > > -        reg = <0x0 0xff650000 0x0 0x800>;
+> > > -        interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>,
+> > > -                 <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > -        interrupt-names = "vepu", "vdpu";
+> > > +    vpu_service: vpu-srv {
+> > > +        compatible = "rockchip,mpp-service";
+> > > +        status = "disabled";
+> > > +    };
+> > > +
+> > > +    vepu: vpu-encoder@ff650000 {
+> > > +        compatible = "rockchip,vpu-encoder-v2";
+> > > +        reg = <0x0 0xff650000 0x0 0x400>;
+> > > +        interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +        interrupt-names = "irq_enc";
+> > >       clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> > > -        clock-names = "aclk", "hclk";
+> > > +        clock-names = "aclk_vcodec", "hclk_vcodec";
+> > > +        resets = <&cru SRST_H_VCODEC>, <&cru SRST_A_VCODEC>;
+> > > +        reset-names = "video_h", "video_a";
+> > >       iommus = <&vpu_mmu>;
+> > >       power-domains = <&power RK3399_PD_VCODEC>;
+> > > +        rockchip,srv = <&vpu_service>;
+> > > +        status = "disabled";
+> > > +    };
+> > > +
+> > > +    vdpu: vpu-decoder@ff650400 {
+> > > +        compatible = "rockchip,vpu-decoder-v2";
+> > > +        reg = <0x0 0xff650400 0x0 0x400>;
+> > > +        interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +        interrupt-names = "irq_dec";
+> > > +        iommus = <&vpu_mmu>;
+> > > +        clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> > > +        clock-names = "aclk_vcodec", "hclk_vcodec";
+> > > +        resets = <&cru SRST_H_VCODEC>, <&cru SRST_A_VCODEC>;
+> > > +        reset-names = "video_h", "video_a";
+> > > +        power-domains = <&power RK3399_PD_VCODEC>;
+> > > +        rockchip,srv = <&vpu_service>;
+> > > +        status = "disabled";
+> > >   };
+> > > 
+> > >   vpu_mmu: iommu@ff650800 {
+> > > @@ -1261,11 +1284,42 @@
+> > >       interrupt-names = "vpu_mmu";
+> > >       clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> > >       clock-names = "aclk", "iface";
+> > > +        assigned-clocks = <&cru ACLK_VCODEC_PRE>;
+> > > +        assigned-clock-parents = <&cru PLL_GPLL>;
+> > >       #iommu-cells = <0>;
+> > >       power-domains = <&power RK3399_PD_VCODEC>;
+> > >       status = "disabled";
+> > >   };
+> > > 
+> > > +    rkvdec_srv: rkvdec-srv {
+> > > +        compatible = "rockchip,mpp-service";
+> > > +        status = "disabled";
+> > > +    };
+> > > +
+> > > +    rkvdec: video-decoder@ff660000 {
+> > > +        compatible = "rockchip,video-decoder-v1";
+> > > +        reg = <0x0 0xff660000 0x0 0x400>;
+> > > +        interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +        interrupt-names = "irq_dec";
+> > > +        clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
+> > > +             <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
+> > > +        clock-names = "aclk_vcodec", "hclk_vcodec",
+> > > +                  "clk_cabac", "clk_core";
+> > > +        assigned-clocks = <&cru ACLK_VDU_PRE>, <&cru SCLK_VDU_CA>,
+> > > +                  <&cru SCLK_VDU_CORE>;
+> > > +        assigned-clock-parents = <&cru PLL_NPLL>, <&cru PLL_NPLL>,
+> > > +                     <&cru PLL_NPLL>;
+> > > +        resets = <&cru SRST_H_VDU>, <&cru SRST_A_VDU>,
+> > > +             <&cru SRST_VDU_CORE>, <&cru SRST_VDU_CA>,
+> > > +             <&cru SRST_A_VDU_NOC>, <&cru SRST_H_VDU_NOC>;
+> > > +        reset-names = "video_h", "video_a", "video_core", "video_cabac",
+> > > +                  "niu_a", "niu_h";
+> > > +        power-domains = <&power RK3399_PD_VDU>;
+> > > +        rockchip,srv = <&rkvdec_srv>;
+> > > +        iommus = <&vdec_mmu>;
+> > > +        status = "disabled";
+> > > +    };
+> > > +
+> > >   vdec_mmu: iommu@ff660480 {
+> > >       compatible = "rockchip,iommu";
+> > >       reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
