@@ -1,220 +1,183 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Ayaka <ayaka@soulik.info>
 Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add video codec for rk3399
-Date: Sun, 06 Jan 2019 13:04:35 -0300
-Message-ID: <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com>
+Date: Mon, 7 Jan 2019 00:15:48 +0800
+Message-ID: <C53B5CFA-2F9C-41E1-BBA8-D63819D0AC3D@soulik.info>
 References: <20190105183150.20266-1-ayaka@soulik.info>
-         <20190105183150.20266-5-ayaka@soulik.info>
-         <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
-         <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ayaka <ayaka@soulik.info>
-Cc: linux-rockchip@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, nicolas.dufresne@collabora.com, myy@miouyouyou.fr, paul.kocialkowski@bootlin.com, mchehab@kernel.org, linux-media@vger.kernel.org, hverkuil@xs4all.nl, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+ <20190105183150.20266-5-ayaka@soulik.info>
+ <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
+ <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
+ <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com>
+Mime-Version: 1.0 (1.0)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: hverkuil@xs4all.nl, nicolas.dufresne@collabora.com, heiko@sntech.de, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, paul.kocialkowski@bootlin.com, linux-rockchip@lists.infradead.org, myy@miouyouyou.fr, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, 2019-01-06 at 23:05 +0800, Ayaka wrote:
-> > On Jan 6, 2019, at 10:22 PM, Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> > 
-> > Hi Randy,
-> > 
-> > Thanks a lot for this patches. They are really useful
-> > to provide more insight into the VPU hardware.
-> > 
-> > This change will make the vpu encoder and vpu decoder
-> > completely independent, can they really work in parallel?
-> As I said it depends on the platform, but with this patch, the user space would think they can work at the same time.
-
-
-I think there is some confusion.
-
-The devicetree is one thing: it is a hardware representation,
-a way to describe the hardware, for the kernel/bootloader to
-parse.
-
-The userspace view will depend on the driver implementation.
-
-The current devicetree and driver (without your patches),
-model the VPU as a single piece of hardware, exposing a decoder
-and an encoder.
-
-The V4L driver will then create two video devices, i.e. /dev/videoX
-and /dev/videoY. So userspace sees an independent view of the
-devices.
-
-However, they are internally connected, and thus we can
-easily avoid two jobs running in parallel.
-
-So, in other words, if the VPU can issue a decoder and encoder
-job in parallel, then it's useful to model it as two independent
-devices. Otherwise, it's better not to.
-
-I hope this can clarify things a bit for you!
-
-PS: Too bad I won't be at FOSDEM to discuss this personally.
-
-Thanks,
-Ezequiel
-
-> BTW, not only the decoder, there is a post processor with the decoder, it can be used as part of the decoder pipeline with only a macro block delay
-> or process the data from an external buffer.
-> I forget to write a note on what this driver doesn’t present. The real one would have much complex scheduler system, but this one is just a queue.
-> More task management feature are not there.
-> Also the clock boosting is removing and the loading analysis, which are useful for encoder, especially on the rv1108.
-> > Could you provide more details about what is
-> > shared between these devices?
-> No, if Rockchip doesn’t tell, my mouth is sealed.
-> > Thanks a lot!
-> > 
-> > > On Sun, 2019-01-06 at 02:31 +0800, Randy Li wrote:
-> > > It offers an example how a full features video codec
-> > > should be configured.
-> > > 
-> > > The original clocks assignment don't look good, if the clocks
-> > > lower than 300MHZ, most of decoing tasks would suffer from
-> > > timeout problem, 500MHZ is also a little high for RK3399
-> > > running in a stable state.
-> > > 
-> > > Signed-off-by: Randy Li <ayaka@soulik.info>
-> > > ---
-> > > .../boot/dts/rockchip/rk3399-sapphire.dtsi    | 29 ++++++++
-> > > arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 68 +++++++++++++++++--
-> > > 2 files changed, 90 insertions(+), 7 deletions(-)
-> > > 
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> > > index 946d3589575a..c3db878bae45 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> > > @@ -632,6 +632,35 @@
-> > >   dr_mode = "host";
-> > > };
-> > > 
-> > > +&rkvdec {
-> > > +    status = "okay";
-> > > +};
-> > > +
-> > > +&rkvdec_srv {
-> > > +    status = "okay";
-> > > +};
-> > > +
-> > > +&vdec_mmu {
-> > > +    status = "okay";
-> > > +};
-> > > +
-> > > +&vdpu {
-> > > +    status = "okay";
-> > > +};
-> > > +
-> > > +&vepu {
-> > > +    status = "okay";
-> > > +};
-> > > +
-> > > +&vpu_service {
-> > > +    status = "okay";
-> > > +};
-> > > +
-> > > +&vpu_mmu {
-> > > +    status = "okay";
-> > > +
-> > > +};
-> > > +
-> > > &vopb {
-> > >   status = "okay";
-> > > };
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > index b22b2e40422b..5fa3247e7bf0 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> > > @@ -1242,16 +1242,39 @@
-> > >       status = "disabled";
-> > >   };
-> > > 
-> > > -    vpu: video-codec@ff650000 {
-> > > -        compatible = "rockchip,rk3399-vpu";
-> > > -        reg = <0x0 0xff650000 0x0 0x800>;
-> > > -        interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>,
-> > > -                 <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > -        interrupt-names = "vepu", "vdpu";
-> > > +    vpu_service: vpu-srv {
-> > > +        compatible = "rockchip,mpp-service";
-> > > +        status = "disabled";
-> > > +    };
-> > > +
-> > > +    vepu: vpu-encoder@ff650000 {
-> > > +        compatible = "rockchip,vpu-encoder-v2";
-> > > +        reg = <0x0 0xff650000 0x0 0x400>;
-> > > +        interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +        interrupt-names = "irq_enc";
-> > >       clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> > > -        clock-names = "aclk", "hclk";
-> > > +        clock-names = "aclk_vcodec", "hclk_vcodec";
-> > > +        resets = <&cru SRST_H_VCODEC>, <&cru SRST_A_VCODEC>;
-> > > +        reset-names = "video_h", "video_a";
-> > >       iommus = <&vpu_mmu>;
-> > >       power-domains = <&power RK3399_PD_VCODEC>;
-> > > +        rockchip,srv = <&vpu_service>;
-> > > +        status = "disabled";
-> > > +    };
-> > > +
-> > > +    vdpu: vpu-decoder@ff650400 {
-> > > +        compatible = "rockchip,vpu-decoder-v2";
-> > > +        reg = <0x0 0xff650400 0x0 0x400>;
-> > > +        interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +        interrupt-names = "irq_dec";
-> > > +        iommus = <&vpu_mmu>;
-> > > +        clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> > > +        clock-names = "aclk_vcodec", "hclk_vcodec";
-> > > +        resets = <&cru SRST_H_VCODEC>, <&cru SRST_A_VCODEC>;
-> > > +        reset-names = "video_h", "video_a";
-> > > +        power-domains = <&power RK3399_PD_VCODEC>;
-> > > +        rockchip,srv = <&vpu_service>;
-> > > +        status = "disabled";
-> > >   };
-> > > 
-> > >   vpu_mmu: iommu@ff650800 {
-> > > @@ -1261,11 +1284,42 @@
-> > >       interrupt-names = "vpu_mmu";
-> > >       clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> > >       clock-names = "aclk", "iface";
-> > > +        assigned-clocks = <&cru ACLK_VCODEC_PRE>;
-> > > +        assigned-clock-parents = <&cru PLL_GPLL>;
-> > >       #iommu-cells = <0>;
-> > >       power-domains = <&power RK3399_PD_VCODEC>;
-> > >       status = "disabled";
-> > >   };
-> > > 
-> > > +    rkvdec_srv: rkvdec-srv {
-> > > +        compatible = "rockchip,mpp-service";
-> > > +        status = "disabled";
-> > > +    };
-> > > +
-> > > +    rkvdec: video-decoder@ff660000 {
-> > > +        compatible = "rockchip,video-decoder-v1";
-> > > +        reg = <0x0 0xff660000 0x0 0x400>;
-> > > +        interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +        interrupt-names = "irq_dec";
-> > > +        clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
-> > > +             <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
-> > > +        clock-names = "aclk_vcodec", "hclk_vcodec",
-> > > +                  "clk_cabac", "clk_core";
-> > > +        assigned-clocks = <&cru ACLK_VDU_PRE>, <&cru SCLK_VDU_CA>,
-> > > +                  <&cru SCLK_VDU_CORE>;
-> > > +        assigned-clock-parents = <&cru PLL_NPLL>, <&cru PLL_NPLL>,
-> > > +                     <&cru PLL_NPLL>;
-> > > +        resets = <&cru SRST_H_VDU>, <&cru SRST_A_VDU>,
-> > > +             <&cru SRST_VDU_CORE>, <&cru SRST_VDU_CA>,
-> > > +             <&cru SRST_A_VDU_NOC>, <&cru SRST_H_VDU_NOC>;
-> > > +        reset-names = "video_h", "video_a", "video_core", "video_cabac",
-> > > +                  "niu_a", "niu_h";
-> > > +        power-domains = <&power RK3399_PD_VDU>;
-> > > +        rockchip,srv = <&rkvdec_srv>;
-> > > +        iommus = <&vdec_mmu>;
-> > > +        status = "disabled";
-> > > +    };
-> > > +
-> > >   vdec_mmu: iommu@ff660480 {
-> > >       compatible = "rockchip,iommu";
-> > >       reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
+CgpTZW50IGZyb20gbXkgaVBhZAoKPiBPbiBKYW4gNywgMjAxOSwgYXQgMTI6MDQgQU0sIEV6ZXF1
+aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4gCj4gT24gU3VuLCAy
+MDE5LTAxLTA2IGF0IDIzOjA1ICswODAwLCBBeWFrYSB3cm90ZToKPj4+IE9uIEphbiA2LCAyMDE5
+LCBhdCAxMDoyMiBQTSwgRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEBjb2xsYWJvcmEuY29tPiB3
+cm90ZToKPj4+IAo+Pj4gSGkgUmFuZHksCj4+PiAKPj4+IFRoYW5rcyBhIGxvdCBmb3IgdGhpcyBw
+YXRjaGVzLiBUaGV5IGFyZSByZWFsbHkgdXNlZnVsCj4+PiB0byBwcm92aWRlIG1vcmUgaW5zaWdo
+dCBpbnRvIHRoZSBWUFUgaGFyZHdhcmUuCj4+PiAKPj4+IFRoaXMgY2hhbmdlIHdpbGwgbWFrZSB0
+aGUgdnB1IGVuY29kZXIgYW5kIHZwdSBkZWNvZGVyCj4+PiBjb21wbGV0ZWx5IGluZGVwZW5kZW50
+LCBjYW4gdGhleSByZWFsbHkgd29yayBpbiBwYXJhbGxlbD8KPj4gQXMgSSBzYWlkIGl0IGRlcGVu
+ZHMgb24gdGhlIHBsYXRmb3JtLCBidXQgd2l0aCB0aGlzIHBhdGNoLCB0aGUgdXNlciBzcGFjZSB3
+b3VsZCB0aGluayB0aGV5IGNhbiB3b3JrIGF0IHRoZSBzYW1lIHRpbWUuCj4gCj4gCj4gSSB0aGlu
+ayB0aGVyZSBpcyBzb21lIGNvbmZ1c2lvbi4KPiAKPiBUaGUgZGV2aWNldHJlZSBpcyBvbmUgdGhp
+bmc6IGl0IGlzIGEgaGFyZHdhcmUgcmVwcmVzZW50YXRpb24sCj4gYSB3YXkgdG8gZGVzY3JpYmUg
+dGhlIGhhcmR3YXJlLCBmb3IgdGhlIGtlcm5lbC9ib290bG9hZGVyIHRvCj4gcGFyc2UuCj4gCj4g
+VGhlIHVzZXJzcGFjZSB2aWV3IHdpbGwgZGVwZW5kIG9uIHRoZSBkcml2ZXIgaW1wbGVtZW50YXRp
+b24uCj4gCj4gVGhlIGN1cnJlbnQgZGV2aWNldHJlZSBhbmQgZHJpdmVyICh3aXRob3V0IHlvdXIg
+cGF0Y2hlcyksCj4gbW9kZWwgdGhlIFZQVSBhcyBhIHNpbmdsZSBwaWVjZSBvZiBoYXJkd2FyZSwg
+ZXhwb3NpbmcgYSBkZWNvZGVyCj4gYW5kIGFuIGVuY29kZXIuCj4gCj4gVGhlIFY0TCBkcml2ZXIg
+d2lsbCB0aGVuIGNyZWF0ZSB0d28gdmlkZW8gZGV2aWNlcywgaS5lLiAvZGV2L3ZpZGVvWAo+IGFu
+ZCAvZGV2L3ZpZGVvWS4gU28gdXNlcnNwYWNlIHNlZXMgYW4gaW5kZXBlbmRlbnQgdmlldyBvZiB0
+aGUKPiBkZXZpY2VzLgo+IApJIGtuZXcgdGhhdCwgdGhlIHByb2JsZW0gaXMgdGhhdCB0aGUgZHJp
+dmVyIHNob3VsZCBub3QgYWx3YXlzIGNyZWF0ZSBhIGRlY29kZXIgYW5kIGVuY29kZXIgcGFpciwg
+dGhleSBtYXkgbm90IGV4aXN0IGF0IHNvbWUgcGxhdGZvcm1zLCBldmVuIHNvbWUgcGxhdGZvcm1z
+IGRvZXNu4oCZdCBoYXZlIGEgZW5jb2Rlci4gWW91IG1heSBoYXZlIGEgbG9vayBvbiB0aGUgcmsz
+MzI4IEkgcG9zdCBvbiB0aGUgZmlyc3QgZW1haWwgYXMgZXhhbXBsZS4KPiBIb3dldmVyLCB0aGV5
+IGFyZSBpbnRlcm5hbGx5IGNvbm5lY3RlZCwgYW5kIHRodXMgd2UgY2FuCj4gZWFzaWx5IGF2b2lk
+IHR3byBqb2JzIHJ1bm5pbmcgaW4gcGFyYWxsZWwuCj4gClRoYXQgaXMgd2hhdCB0aGUgbXBwIHNl
+cnZpY2UgZGlkIGluIG15IHBhdGNoZXMsIGhhbmRpbmcgdGhlIHJlbGF0aW9uc2hpcCBiZXR3ZWVu
+IGVhY2ggZGV2aWNlcy4gQW5kIGl0IGlzIG5vdCBhIGVhc3kgd29yaywgbWF5YmUgYSA0ayBkZWNv
+ZGVyIHdvdWxkIGJlIGJsb2NrZWQgYnkgYW5vdGhlciBoaWdoIGZyYW1lIHJhdGUgZW5jb2Rpbmcg
+d29yayBvciBhbm90aGVyIGRlY29kZXIgc2Vzc2lvbi4gVGhlIHZlbmRvciBrZXJuZWwgaGF2ZSBt
+b3JlIHdvcnJ5IGFib3V0IHRoaXMsICBidXQgbm90IGluIHRoaXMgdmVyc2lvbi4KPiBTbywgaW4g
+b3RoZXIgd29yZHMsIGlmIHRoZSBWUFUgY2FuIGlzc3VlIGEgZGVjb2RlciBhbmQgZW5jb2Rlcgo+
+IGpvYiBpbiBwYXJhbGxlbCwgdGhlbiBpdCdzIHVzZWZ1bCB0byBtb2RlbCBpdCBhcyB0d28gaW5k
+ZXBlbmRlbnQKPiBkZXZpY2VzLiBPdGhlcndpc2UsIGl0J3MgYmV0dGVyIG5vdCB0by4KPiAKPiBJ
+IGhvcGUgdGhpcyBjYW4gY2xhcmlmeSB0aGluZ3MgYSBiaXQgZm9yIHlvdSEKPiAKSSB3b3VsZCBy
+ZXZpZXcgdGhlIHJlcXVlc3QgQVBJIGZvciB0aG9zZSBjb2RlY3Mgc3RydWN0dXJlcyBhbmQgc29t
+ZSBiYXNpYyBkZXNpZ25zLCBwZW9wbGUgZnJvbSBMaWJyZUVMRUMgdG9sZCBtZSBhIGZldyBub3Rp
+Y2VkIGluZm9ybS4KPiBQUzogVG9vIGJhZCBJIHdvbid0IGJlIGF0IEZPU0RFTSB0byBkaXNjdXNz
+IHRoaXMgcGVyc29uYWxseS4KSSBhbSBzdXJlIFBhdWxrIGZyb20gYm9vdGxpbiB3b3VsZCBiZSB0
+aGVyZSBhbmQgc29tZSBvdGhlcnMgZ3V5IHJlbGF0ZWQsIEkgaGF2ZSBub3QgY2FyZWQgYWJvdXQg
+dGhpcyBmb3IgYSBsaXR0bGUgbG9uZyB0aW1lLCB0aGVyZSBhcmUgbW9yZSBodWdlIHByb2JsZW0g
+SSBzaG91bGQgcG9pbnQgb3V0IG5vdy4KPiAKPiBUaGFua3MsCj4gRXplcXVpZWwKPiAKPj4gQlRX
+LCBub3Qgb25seSB0aGUgZGVjb2RlciwgdGhlcmUgaXMgYSBwb3N0IHByb2Nlc3NvciB3aXRoIHRo
+ZSBkZWNvZGVyLCBpdCBjYW4gYmUgdXNlZCBhcyBwYXJ0IG9mIHRoZSBkZWNvZGVyIHBpcGVsaW5l
+IHdpdGggb25seSBhIG1hY3JvIGJsb2NrIGRlbGF5Cj4+IG9yIHByb2Nlc3MgdGhlIGRhdGEgZnJv
+bSBhbiBleHRlcm5hbCBidWZmZXIuCj4+IEkgZm9yZ2V0IHRvIHdyaXRlIGEgbm90ZSBvbiB3aGF0
+IHRoaXMgZHJpdmVyIGRvZXNu4oCZdCBwcmVzZW50LiBUaGUgcmVhbCBvbmUgd291bGQgaGF2ZSBt
+dWNoIGNvbXBsZXggc2NoZWR1bGVyIHN5c3RlbSwgYnV0IHRoaXMgb25lIGlzIGp1c3QgYSBxdWV1
+ZS4KPj4gTW9yZSB0YXNrIG1hbmFnZW1lbnQgZmVhdHVyZSBhcmUgbm90IHRoZXJlLgo+PiBBbHNv
+IHRoZSBjbG9jayBib29zdGluZyBpcyByZW1vdmluZyBhbmQgdGhlIGxvYWRpbmcgYW5hbHlzaXMs
+IHdoaWNoIGFyZSB1c2VmdWwgZm9yIGVuY29kZXIsIGVzcGVjaWFsbHkgb24gdGhlIHJ2MTEwOC4K
+Pj4+IENvdWxkIHlvdSBwcm92aWRlIG1vcmUgZGV0YWlscyBhYm91dCB3aGF0IGlzCj4+PiBzaGFy
+ZWQgYmV0d2VlbiB0aGVzZSBkZXZpY2VzPwo+PiBObywgaWYgUm9ja2NoaXAgZG9lc27igJl0IHRl
+bGwsIG15IG1vdXRoIGlzIHNlYWxlZC4KPj4+IFRoYW5rcyBhIGxvdCEKPj4+IAo+Pj4+IE9uIFN1
+biwgMjAxOS0wMS0wNiBhdCAwMjozMSArMDgwMCwgUmFuZHkgTGkgd3JvdGU6Cj4+Pj4gSXQgb2Zm
+ZXJzIGFuIGV4YW1wbGUgaG93IGEgZnVsbCBmZWF0dXJlcyB2aWRlbyBjb2RlYwo+Pj4+IHNob3Vs
+ZCBiZSBjb25maWd1cmVkLgo+Pj4+IAo+Pj4+IFRoZSBvcmlnaW5hbCBjbG9ja3MgYXNzaWdubWVu
+dCBkb24ndCBsb29rIGdvb2QsIGlmIHRoZSBjbG9ja3MKPj4+PiBsb3dlciB0aGFuIDMwME1IWiwg
+bW9zdCBvZiBkZWNvaW5nIHRhc2tzIHdvdWxkIHN1ZmZlciBmcm9tCj4+Pj4gdGltZW91dCBwcm9i
+bGVtLCA1MDBNSFogaXMgYWxzbyBhIGxpdHRsZSBoaWdoIGZvciBSSzMzOTkKPj4+PiBydW5uaW5n
+IGluIGEgc3RhYmxlIHN0YXRlLgo+Pj4+IAo+Pj4+IFNpZ25lZC1vZmYtYnk6IFJhbmR5IExpIDxh
+eWFrYUBzb3VsaWsuaW5mbz4KPj4+PiAtLS0KPj4+PiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+Mzk5LXNhcHBoaXJlLmR0c2kgICAgfCAyOSArKysrKysrKwo+Pj4+IGFyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgICAgICB8IDY4ICsrKysrKysrKysrKysrKysrLS0KPj4+
+PiAyIGZpbGVzIGNoYW5nZWQsIDkwIGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4+Pj4g
+Cj4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNh
+cHBoaXJlLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGly
+ZS5kdHNpCj4+Pj4gaW5kZXggOTQ2ZDM1ODk1NzVhLi5jM2RiODc4YmFlNDUgMTAwNjQ0Cj4+Pj4g
+LS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQo+
+Pj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0
+c2kKPj4+PiBAQCAtNjMyLDYgKzYzMiwzNSBAQAo+Pj4+ICBkcl9tb2RlID0gImhvc3QiOwo+Pj4+
+IH07Cj4+Pj4gCj4+Pj4gKyZya3ZkZWMgewo+Pj4+ICsgICAgc3RhdHVzID0gIm9rYXkiOwo+Pj4+
+ICt9Owo+Pj4+ICsKPj4+PiArJnJrdmRlY19zcnYgewo+Pj4+ICsgICAgc3RhdHVzID0gIm9rYXki
+Owo+Pj4+ICt9Owo+Pj4+ICsKPj4+PiArJnZkZWNfbW11IHsKPj4+PiArICAgIHN0YXR1cyA9ICJv
+a2F5IjsKPj4+PiArfTsKPj4+PiArCj4+Pj4gKyZ2ZHB1IHsKPj4+PiArICAgIHN0YXR1cyA9ICJv
+a2F5IjsKPj4+PiArfTsKPj4+PiArCj4+Pj4gKyZ2ZXB1IHsKPj4+PiArICAgIHN0YXR1cyA9ICJv
+a2F5IjsKPj4+PiArfTsKPj4+PiArCj4+Pj4gKyZ2cHVfc2VydmljZSB7Cj4+Pj4gKyAgICBzdGF0
+dXMgPSAib2theSI7Cj4+Pj4gK307Cj4+Pj4gKwo+Pj4+ICsmdnB1X21tdSB7Cj4+Pj4gKyAgICBz
+dGF0dXMgPSAib2theSI7Cj4+Pj4gKwo+Pj4+ICt9Owo+Pj4+ICsKPj4+PiAmdm9wYiB7Cj4+Pj4g
+IHN0YXR1cyA9ICJva2F5IjsKPj4+PiB9Owo+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazMzOTkuZHRzaQo+Pj4+IGluZGV4IGIyMmIyZTQwNDIyYi4uNWZhMzI0N2U3YmYwIDEwMDY0
+NAo+Pj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4+
+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+Pj4gQEAg
+LTEyNDIsMTYgKzEyNDIsMzkgQEAKPj4+PiAgICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4+Pj4g
+IH07Cj4+Pj4gCj4+Pj4gLSAgICB2cHU6IHZpZGVvLWNvZGVjQGZmNjUwMDAwIHsKPj4+PiAtICAg
+ICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS12cHUiOwo+Pj4+IC0gICAgICAgIHJl
+ZyA9IDwweDAgMHhmZjY1MDAwMCAweDAgMHg4MDA+Owo+Pj4+IC0gICAgICAgIGludGVycnVwdHMg
+PSA8R0lDX1NQSSAxMTQgSVJRX1RZUEVfTEVWRUxfSElHSCAwPiwKPj4+PiAtICAgICAgICAgICAg
+ICAgICA8R0lDX1NQSSAxMTMgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPj4+PiAtICAgICAgICBp
+bnRlcnJ1cHQtbmFtZXMgPSAidmVwdSIsICJ2ZHB1IjsKPj4+PiArICAgIHZwdV9zZXJ2aWNlOiB2
+cHUtc3J2IHsKPj4+PiArICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLG1wcC1zZXJ2aWNl
+IjsKPj4+PiArICAgICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+Pj4+ICsgICAgfTsKPj4+PiAr
+Cj4+Pj4gKyAgICB2ZXB1OiB2cHUtZW5jb2RlckBmZjY1MDAwMCB7Cj4+Pj4gKyAgICAgICAgY29t
+cGF0aWJsZSA9ICJyb2NrY2hpcCx2cHUtZW5jb2Rlci12MiI7Cj4+Pj4gKyAgICAgICAgcmVnID0g
+PDB4MCAweGZmNjUwMDAwIDB4MCAweDQwMD47Cj4+Pj4gKyAgICAgICAgaW50ZXJydXB0cyA9IDxH
+SUNfU1BJIDExNCBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+Pj4+ICsgICAgICAgIGludGVycnVw
+dC1uYW1lcyA9ICJpcnFfZW5jIjsKPj4+PiAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfVkNPREVD
+PiwgPCZjcnUgSENMS19WQ09ERUM+Owo+Pj4+IC0gICAgICAgIGNsb2NrLW5hbWVzID0gImFjbGsi
+LCAiaGNsayI7Cj4+Pj4gKyAgICAgICAgY2xvY2stbmFtZXMgPSAiYWNsa192Y29kZWMiLCAiaGNs
+a192Y29kZWMiOwo+Pj4+ICsgICAgICAgIHJlc2V0cyA9IDwmY3J1IFNSU1RfSF9WQ09ERUM+LCA8
+JmNydSBTUlNUX0FfVkNPREVDPjsKPj4+PiArICAgICAgICByZXNldC1uYW1lcyA9ICJ2aWRlb19o
+IiwgInZpZGVvX2EiOwo+Pj4+ICAgICAgaW9tbXVzID0gPCZ2cHVfbW11PjsKPj4+PiAgICAgIHBv
+d2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9WQ09ERUM+Owo+Pj4+ICsgICAgICAgIHJv
+Y2tjaGlwLHNydiA9IDwmdnB1X3NlcnZpY2U+Owo+Pj4+ICsgICAgICAgIHN0YXR1cyA9ICJkaXNh
+YmxlZCI7Cj4+Pj4gKyAgICB9Owo+Pj4+ICsKPj4+PiArICAgIHZkcHU6IHZwdS1kZWNvZGVyQGZm
+NjUwNDAwIHsKPj4+PiArICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHZwdS1kZWNvZGVy
+LXYyIjsKPj4+PiArICAgICAgICByZWcgPSA8MHgwIDB4ZmY2NTA0MDAgMHgwIDB4NDAwPjsKPj4+
+PiArICAgICAgICBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTEzIElSUV9UWVBFX0xFVkVMX0hJR0gg
+MD47Cj4+Pj4gKyAgICAgICAgaW50ZXJydXB0LW5hbWVzID0gImlycV9kZWMiOwo+Pj4+ICsgICAg
+ICAgIGlvbW11cyA9IDwmdnB1X21tdT47Cj4+Pj4gKyAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNM
+S19WQ09ERUM+LCA8JmNydSBIQ0xLX1ZDT0RFQz47Cj4+Pj4gKyAgICAgICAgY2xvY2stbmFtZXMg
+PSAiYWNsa192Y29kZWMiLCAiaGNsa192Y29kZWMiOwo+Pj4+ICsgICAgICAgIHJlc2V0cyA9IDwm
+Y3J1IFNSU1RfSF9WQ09ERUM+LCA8JmNydSBTUlNUX0FfVkNPREVDPjsKPj4+PiArICAgICAgICBy
+ZXNldC1uYW1lcyA9ICJ2aWRlb19oIiwgInZpZGVvX2EiOwo+Pj4+ICsgICAgICAgIHBvd2VyLWRv
+bWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9WQ09ERUM+Owo+Pj4+ICsgICAgICAgIHJvY2tjaGlw
+LHNydiA9IDwmdnB1X3NlcnZpY2U+Owo+Pj4+ICsgICAgICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7
+Cj4+Pj4gIH07Cj4+Pj4gCj4+Pj4gIHZwdV9tbXU6IGlvbW11QGZmNjUwODAwIHsKPj4+PiBAQCAt
+MTI2MSwxMSArMTI4NCw0MiBAQAo+Pj4+ICAgICAgaW50ZXJydXB0LW5hbWVzID0gInZwdV9tbXUi
+Owo+Pj4+ICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19WQ09ERUM+LCA8JmNydSBIQ0xLX1ZDT0RF
+Qz47Cj4+Pj4gICAgICBjbG9jay1uYW1lcyA9ICJhY2xrIiwgImlmYWNlIjsKPj4+PiArICAgICAg
+ICBhc3NpZ25lZC1jbG9ja3MgPSA8JmNydSBBQ0xLX1ZDT0RFQ19QUkU+Owo+Pj4+ICsgICAgICAg
+IGFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JmNydSBQTExfR1BMTD47Cj4+Pj4gICAgICAjaW9t
+bXUtY2VsbHMgPSA8MD47Cj4+Pj4gICAgICBwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzMzOTlf
+UERfVkNPREVDPjsKPj4+PiAgICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4+Pj4gIH07Cj4+Pj4g
+Cj4+Pj4gKyAgICBya3ZkZWNfc3J2OiBya3ZkZWMtc3J2IHsKPj4+PiArICAgICAgICBjb21wYXRp
+YmxlID0gInJvY2tjaGlwLG1wcC1zZXJ2aWNlIjsKPj4+PiArICAgICAgICBzdGF0dXMgPSAiZGlz
+YWJsZWQiOwo+Pj4+ICsgICAgfTsKPj4+PiArCj4+Pj4gKyAgICBya3ZkZWM6IHZpZGVvLWRlY29k
+ZXJAZmY2NjAwMDAgewo+Pj4+ICsgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAsdmlkZW8t
+ZGVjb2Rlci12MSI7Cj4+Pj4gKyAgICAgICAgcmVnID0gPDB4MCAweGZmNjYwMDAwIDB4MCAweDQw
+MD47Cj4+Pj4gKyAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExNiBJUlFfVFlQRV9MRVZF
+TF9ISUdIIDA+Owo+Pj4+ICsgICAgICAgIGludGVycnVwdC1uYW1lcyA9ICJpcnFfZGVjIjsKPj4+
+PiArICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX1ZEVT4sIDwmY3J1IEhDTEtfVkRVPiwKPj4+
+PiArICAgICAgICAgICAgIDwmY3J1IFNDTEtfVkRVX0NBPiwgPCZjcnUgU0NMS19WRFVfQ09SRT47
+Cj4+Pj4gKyAgICAgICAgY2xvY2stbmFtZXMgPSAiYWNsa192Y29kZWMiLCAiaGNsa192Y29kZWMi
+LAo+Pj4+ICsgICAgICAgICAgICAgICAgICAiY2xrX2NhYmFjIiwgImNsa19jb3JlIjsKPj4+PiAr
+ICAgICAgICBhc3NpZ25lZC1jbG9ja3MgPSA8JmNydSBBQ0xLX1ZEVV9QUkU+LCA8JmNydSBTQ0xL
+X1ZEVV9DQT4sCj4+Pj4gKyAgICAgICAgICAgICAgICAgIDwmY3J1IFNDTEtfVkRVX0NPUkU+Owo+
+Pj4+ICsgICAgICAgIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JmNydSBQTExfTlBMTD4sIDwm
+Y3J1IFBMTF9OUExMPiwKPj4+PiArICAgICAgICAgICAgICAgICAgICAgPCZjcnUgUExMX05QTEw+
+Owo+Pj4+ICsgICAgICAgIHJlc2V0cyA9IDwmY3J1IFNSU1RfSF9WRFU+LCA8JmNydSBTUlNUX0Ff
+VkRVPiwKPj4+PiArICAgICAgICAgICAgIDwmY3J1IFNSU1RfVkRVX0NPUkU+LCA8JmNydSBTUlNU
+X1ZEVV9DQT4sCj4+Pj4gKyAgICAgICAgICAgICA8JmNydSBTUlNUX0FfVkRVX05PQz4sIDwmY3J1
+IFNSU1RfSF9WRFVfTk9DPjsKPj4+PiArICAgICAgICByZXNldC1uYW1lcyA9ICJ2aWRlb19oIiwg
+InZpZGVvX2EiLCAidmlkZW9fY29yZSIsICJ2aWRlb19jYWJhYyIsCj4+Pj4gKyAgICAgICAgICAg
+ICAgICAgICJuaXVfYSIsICJuaXVfaCI7Cj4+Pj4gKyAgICAgICAgcG93ZXItZG9tYWlucyA9IDwm
+cG93ZXIgUkszMzk5X1BEX1ZEVT47Cj4+Pj4gKyAgICAgICAgcm9ja2NoaXAsc3J2ID0gPCZya3Zk
+ZWNfc3J2PjsKPj4+PiArICAgICAgICBpb21tdXMgPSA8JnZkZWNfbW11PjsKPj4+PiArICAgICAg
+ICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+Pj4+ICsgICAgfTsKPj4+PiArCj4+Pj4gIHZkZWNfbW11
+OiBpb21tdUBmZjY2MDQ4MCB7Cj4+Pj4gICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLGlvbW11
+IjsKPj4+PiAgICAgIHJlZyA9IDwweDAgMHhmZjY2MDQ4MCAweDAgMHg0MD4sIDwweDAgMHhmZjY2
+MDRjMCAweDAgMHg0MD47Cj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtl
+cm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
