@@ -1,83 +1,81 @@
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+From: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add video codec for rk3399
-Date: Sun, 6 Jan 2019 14:21:37 -0300
-Message-ID: <CAAEAJfCLxvJWrC1CNiSyLV9y=pOjzUBik5SUD0ZVUcnA-+HobQ@mail.gmail.com>
-References: <20190105183150.20266-1-ayaka@soulik.info> <20190105183150.20266-5-ayaka@soulik.info>
+Date: Mon, 7 Jan 2019 01:29:54 +0800
+Message-ID: <85C6CA4D-CC54-422B-BC2B-25EA10701696@soulik.info>
+References: <20190105183150.20266-1-ayaka@soulik.info>
+ <20190105183150.20266-5-ayaka@soulik.info>
  <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
- <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info> <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com>
+ <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
+ <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com>
  <C53B5CFA-2F9C-41E1-BBA8-D63819D0AC3D@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <C53B5CFA-2F9C-41E1-BBA8-D63819D0AC3D@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ayaka <ayaka@soulik.info>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, myy@miouyouyou.fr, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media <linux-media@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ <CAAEAJfCLxvJWrC1CNiSyLV9y=pOjzUBik5SUD0ZVUcnA-+HobQ@mail.gmail.com>
+Mime-Version: 1.0 (1.0)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAAEAJfCLxvJWrC1CNiSyLV9y=pOjzUBik5SUD0ZVUcnA-+HobQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org>
+Cc: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, myy-tmjzNUIc0P1+EYZtW95mkQ@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-media <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, 6 Jan 2019 at 13:16, Ayaka <ayaka@soulik.info> wrote:
->
->
->
-> Sent from my iPad
->
-> > On Jan 7, 2019, at 12:04 AM, Ezequiel Garcia <ezequiel@collabora.com> w=
-rote:
-> >
-> > On Sun, 2019-01-06 at 23:05 +0800, Ayaka wrote:
-> >>> On Jan 6, 2019, at 10:22 PM, Ezequiel Garcia <ezequiel@collabora.com>=
- wrote:
-> >>>
-> >>> Hi Randy,
-> >>>
-> >>> Thanks a lot for this patches. They are really useful
-> >>> to provide more insight into the VPU hardware.
-> >>>
-> >>> This change will make the vpu encoder and vpu decoder
-> >>> completely independent, can they really work in parallel?
-> >> As I said it depends on the platform, but with this patch, the user sp=
-ace would think they can work at the same time.
-> >
-> >
-> > I think there is some confusion.
-> >
-> > The devicetree is one thing: it is a hardware representation,
-> > a way to describe the hardware, for the kernel/bootloader to
-> > parse.
-> >
-> > The userspace view will depend on the driver implementation.
-> >
-> > The current devicetree and driver (without your patches),
-> > model the VPU as a single piece of hardware, exposing a decoder
-> > and an encoder.
-> >
-> > The V4L driver will then create two video devices, i.e. /dev/videoX
-> > and /dev/videoY. So userspace sees an independent view of the
-> > devices.
-> >
-> I knew that, the problem is that the driver should not always create a de=
-coder and encoder pair, they may not exist at some platforms, even some pla=
-tforms doesn=E2=80=99t have a encoder. You may have a look on the rk3328 I =
-post on the first email as example.
-
-That is correct. But that still doesn't tackle my question: is the
-hardware able to run a decoding and an encoding job in parallel?
-
-If not, then it's wrong to describe them as independent entities.
-
-> > However, they are internally connected, and thus we can
-> > easily avoid two jobs running in parallel.
-> >
-> That is what the mpp service did in my patches, handing the relationship =
-between each devices. And it is not a easy work, maybe a 4k decoder would b=
-e blocked by another high frame rate encoding work or another decoder sessi=
-on. The vendor kernel have more worry about this,  but not in this version.
-
-Right. That is one way to design it. Another way is having a single
-devicetree node for the VPU encoder/decoder "complex".
-
-Thanks for the input!
---=20
-Ezequiel Garc=C3=ADa, VanguardiaSur
-www.vanguardiasur.com.ar
+SGVsbG8gRXplcXVpZWwKClNlbnQgZnJvbSBteSBpUGFkCgo+IE9uIEphbiA3LCAyMDE5LCBhdCAx
+OjIxIEFNLCBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQHZhbmd1YXJkaWFzdXIuY29tLmFyPiB3
+cm90ZToKPiAKPj4gT24gU3VuLCA2IEphbiAyMDE5IGF0IDEzOjE2LCBBeWFrYSA8YXlha2FAc291
+bGlrLmluZm8+IHdyb3RlOgo+PiAKPj4gCj4+IAo+PiBTZW50IGZyb20gbXkgaVBhZAo+PiAKPj4+
+IE9uIEphbiA3LCAyMDE5LCBhdCAxMjowNCBBTSwgRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEBj
+b2xsYWJvcmEuY29tPiB3cm90ZToKPj4+IAo+Pj4gT24gU3VuLCAyMDE5LTAxLTA2IGF0IDIzOjA1
+ICswODAwLCBBeWFrYSB3cm90ZToKPj4+Pj4gT24gSmFuIDYsIDIwMTksIGF0IDEwOjIyIFBNLCBF
+emVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Pj4+PiAKPj4+
+Pj4gSGkgUmFuZHksCj4+Pj4+IAo+Pj4+PiBUaGFua3MgYSBsb3QgZm9yIHRoaXMgcGF0Y2hlcy4g
+VGhleSBhcmUgcmVhbGx5IHVzZWZ1bAo+Pj4+PiB0byBwcm92aWRlIG1vcmUgaW5zaWdodCBpbnRv
+IHRoZSBWUFUgaGFyZHdhcmUuCj4+Pj4+IAo+Pj4+PiBUaGlzIGNoYW5nZSB3aWxsIG1ha2UgdGhl
+IHZwdSBlbmNvZGVyIGFuZCB2cHUgZGVjb2Rlcgo+Pj4+PiBjb21wbGV0ZWx5IGluZGVwZW5kZW50
+LCBjYW4gdGhleSByZWFsbHkgd29yayBpbiBwYXJhbGxlbD8KPj4+PiBBcyBJIHNhaWQgaXQgZGVw
+ZW5kcyBvbiB0aGUgcGxhdGZvcm0sIGJ1dCB3aXRoIHRoaXMgcGF0Y2gsIHRoZSB1c2VyIHNwYWNl
+IHdvdWxkIHRoaW5rIHRoZXkgY2FuIHdvcmsgYXQgdGhlIHNhbWUgdGltZS4KPj4+IAo+Pj4gCj4+
+PiBJIHRoaW5rIHRoZXJlIGlzIHNvbWUgY29uZnVzaW9uLgo+Pj4gCj4+PiBUaGUgZGV2aWNldHJl
+ZSBpcyBvbmUgdGhpbmc6IGl0IGlzIGEgaGFyZHdhcmUgcmVwcmVzZW50YXRpb24sCj4+PiBhIHdh
+eSB0byBkZXNjcmliZSB0aGUgaGFyZHdhcmUsIGZvciB0aGUga2VybmVsL2Jvb3Rsb2FkZXIgdG8K
+Pj4+IHBhcnNlLgo+Pj4gCj4+PiBUaGUgdXNlcnNwYWNlIHZpZXcgd2lsbCBkZXBlbmQgb24gdGhl
+IGRyaXZlciBpbXBsZW1lbnRhdGlvbi4KPj4+IAo+Pj4gVGhlIGN1cnJlbnQgZGV2aWNldHJlZSBh
+bmQgZHJpdmVyICh3aXRob3V0IHlvdXIgcGF0Y2hlcyksCj4+PiBtb2RlbCB0aGUgVlBVIGFzIGEg
+c2luZ2xlIHBpZWNlIG9mIGhhcmR3YXJlLCBleHBvc2luZyBhIGRlY29kZXIKPj4+IGFuZCBhbiBl
+bmNvZGVyLgo+Pj4gCj4+PiBUaGUgVjRMIGRyaXZlciB3aWxsIHRoZW4gY3JlYXRlIHR3byB2aWRl
+byBkZXZpY2VzLCBpLmUuIC9kZXYvdmlkZW9YCj4+PiBhbmQgL2Rldi92aWRlb1kuIFNvIHVzZXJz
+cGFjZSBzZWVzIGFuIGluZGVwZW5kZW50IHZpZXcgb2YgdGhlCj4+PiBkZXZpY2VzLgo+Pj4gCj4+
+IEkga25ldyB0aGF0LCB0aGUgcHJvYmxlbSBpcyB0aGF0IHRoZSBkcml2ZXIgc2hvdWxkIG5vdCBh
+bHdheXMgY3JlYXRlIGEgZGVjb2RlciBhbmQgZW5jb2RlciBwYWlyLCB0aGV5IG1heSBub3QgZXhp
+c3QgYXQgc29tZSBwbGF0Zm9ybXMsIGV2ZW4gc29tZSBwbGF0Zm9ybXMgZG9lc27igJl0IGhhdmUg
+YSBlbmNvZGVyLiBZb3UgbWF5IGhhdmUgYSBsb29rIG9uIHRoZSByazMzMjggSSBwb3N0IG9uIHRo
+ZSBmaXJzdCBlbWFpbCBhcyBleGFtcGxlLgo+IAo+IFRoYXQgaXMgY29ycmVjdC4gQnV0IHRoYXQg
+c3RpbGwgZG9lc24ndCB0YWNrbGUgbXkgcXVlc3Rpb246IGlzIHRoZQo+IGhhcmR3YXJlIGFibGUg
+dG8gcnVuIGEgZGVjb2RpbmcgYW5kIGFuIGVuY29kaW5nIGpvYiBpbiBwYXJhbGxlbD8KPiAKRm9y
+IHJrMzMyOCwgeWVzLCB5b3Ugc2VlIEkgZGlkbuKAmXQgZHJhdyB0aGVtIGluIHRoZSBzYW1lIGJv
+eC4KPiBJZiBub3QsIHRoZW4gaXQncyB3cm9uZyB0byBkZXNjcmliZSB0aGVtIGFzIGluZGVwZW5k
+ZW50IGVudGl0aWVzLgo+IAo+Pj4gSG93ZXZlciwgdGhleSBhcmUgaW50ZXJuYWxseSBjb25uZWN0
+ZWQsIGFuZCB0aHVzIHdlIGNhbgo+Pj4gZWFzaWx5IGF2b2lkIHR3byBqb2JzIHJ1bm5pbmcgaW4g
+cGFyYWxsZWwuCj4+PiAKPj4gVGhhdCBpcyB3aGF0IHRoZSBtcHAgc2VydmljZSBkaWQgaW4gbXkg
+cGF0Y2hlcywgaGFuZGluZyB0aGUgcmVsYXRpb25zaGlwIGJldHdlZW4gZWFjaCBkZXZpY2VzLiBB
+bmQgaXQgaXMgbm90IGEgZWFzeSB3b3JrLCBtYXliZSBhIDRrIGRlY29kZXIgd291bGQgYmUgYmxv
+Y2tlZCBieSBhbm90aGVyIGhpZ2ggZnJhbWUgcmF0ZSBlbmNvZGluZyB3b3JrIG9yIGFub3RoZXIg
+ZGVjb2RlciBzZXNzaW9uLiBUaGUgdmVuZG9yIGtlcm5lbCBoYXZlIG1vcmUgd29ycnkgYWJvdXQg
+dGhpcywgIGJ1dCBub3QgaW4gdGhpcyB2ZXJzaW9uLgo+IAo+IFJpZ2h0LiBUaGF0IGlzIG9uZSB3
+YXkgdG8gZGVzaWduIGl0LiBBbm90aGVyIHdheSBpcyBoYXZpbmcgYSBzaW5nbGUKPiBkZXZpY2V0
+cmVlIG5vZGUgZm9yIHRoZSBWUFUgZW5jb2Rlci9kZWNvZGVyICJjb21wbGV4Ii4KTm8sIHlvdSBj
+YW7igJl0IGFzc3VtZSB3aGljaCBvbmUgaXMgaW4gdGhlIGNvbWJvIGdyb3VwLCBpdCBjYW4gYmUg
+dmFyaW91cy4geW91IHNlZSwgaW4gdGhlIHJrMzMyOCwgdGhlIHZkcHUgaXMgcGFpcmVkIHdpdGgg
+YW4gYXZzKyBkZWNvZGVyLiBUaGF0IGlzIHdoeSBJIHVzZSBhIHZpcnR1YWwgZGV2aWNlIHN0YW5k
+aW5nIGZvciBzY2hlZHVsZXIuCj4gCj4gVGhhbmtzIGZvciB0aGUgaW5wdXQhCj4gLS0gCj4gRXpl
+cXVpZWwgR2FyY8OtYSwgVmFuZ3VhcmRpYVN1cgo+IHd3dy52YW5ndWFyZGlhc3VyLmNvbS5hcgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
